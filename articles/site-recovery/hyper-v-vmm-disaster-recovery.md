@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495961"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>設定從 Hyper-V VM 到次要內部部署網站的災害復原
@@ -94,7 +94,7 @@ ms.locfileid: "87495961"
 4. 在 [安裝] 中，接受或修改預設安裝位置，然後按一下 [安裝]。
 5. 安裝完成之後，按一下 [註冊] 以在保存庫中註冊伺服器。
 
-    ![提供者安裝畫面的螢幕擷取畫面，包括安裝位置。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![提供者安裝畫面的螢幕擷取畫面，其中包含安裝位置。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. 在 [保存庫名稱] 中，確認要註冊伺服器的保存庫名稱。 按 [下一步] 。
 7. 在 [Proxy 連線] 中，指定 VMM 伺服器上執行的 Provider 連線至 Azure 的方式。
    - 您可以指定提供者應該直接或透過 proxy 連接至網際網路。 視需要指定 Proxy 設定。

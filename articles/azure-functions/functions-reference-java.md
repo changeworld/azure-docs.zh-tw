@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89144918"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
@@ -155,7 +155,7 @@ _JAVA 11 的支援目前為預覽狀態_
 
 Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中的下列元素指出要使用的 JAVA 版本：
 
-| 項目 |  JAVA 8 值 | JAVA 11 值 | 描述 |
+| 元素 |  JAVA 8 值 | JAVA 11 值 | 描述 |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven 編譯器-外掛程式所使用的 JAVA 版本。 |
 | **`JavaVersion`** | 8 | 11 | Azure 中函數應用程式所裝載的 JAVA 版本。 |
@@ -175,7 +175,7 @@ Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中
 
 Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 使用 `os` 元素選擇作業系統。 
 
-| 項目 |  Windows | Linux | Docker |
+| 元素 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
 | **`os`** | windows | Linux | docker |
 

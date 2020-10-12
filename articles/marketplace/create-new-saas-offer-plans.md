@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 63629f32c97611fa8bc57ecdac968552375125f4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380789"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>如何建立 SaaS 供應專案的方案
@@ -30,7 +30,7 @@ ms.locfileid: "89380789"
 
 1. 在 [ **方案名稱** ] 方塊中，輸入此方案的唯一名稱。 最多使用50個字元。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 ## <a name="define-the-plan-listing"></a>定義計畫清單
 
@@ -150,7 +150,7 @@ ms.locfileid: "89380789"
 - 如果方案狀態為 **Draft**，則 [ **動作** ] 欄中的連結將會顯示 [ **刪除草稿**]。
 - 如果方案狀態為 [ **即時**]，[ **動作** ] 資料行中的連結將會 **停止銷售方案** 或 **同步私用物件**。 [ **同步私用物件** ] 連結只會發佈您私用物件的變更，而不會發行您可能對該供應專案所做的任何其他更新。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何透過**與 Microsoft 共同銷售**並**轉售 Csp**計畫的[方式來行銷 SaaS 供應](create-new-saas-offer-marketing.md)專案。
 - [如何測試 SaaS 供應專案並將其發佈至商用 marketplace](test-publish-saas-offer.md)。

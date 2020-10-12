@@ -13,10 +13,10 @@ ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ff1abd48282a4ec9278d7182fea286178b5bd3ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495908"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 區域
@@ -41,13 +41,13 @@ ms.locfileid: "87495908"
 
 在開始設定之前，請確認您具備下列項目。
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 安裝最新版的 Azure CLI，該 CLI 適用於 Windows、Linux 或 MAC。 您可以在 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)中取得詳細資訊。
 
 ### <a name="sign-in-to-your-azure-account"></a>登入您的 Azure 帳戶
 
-開啟主控台視窗，並驗證您的認證。 如需詳細資訊，請參閱[從 Azure CLI 登入 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+開啟主控台視窗，並驗證您的認證。 如需詳細資訊，請參閱 [從 Azure CLI 登入 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ```
 az login
@@ -67,8 +67,8 @@ az account list
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>選擇性：安裝/使用 Azure DNS 私人區域功能
-Azure DNS 私人區域功能可透過 Azure CLI 的延伸模組取得。 安裝 “dns” Azure CLI 擴充功能 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>選用：安裝/使用 Azure DNS 私人區域功能
+Azure DNS 私用區域功能可透過 Azure CLI 的延伸模組取得。 安裝 “dns” Azure CLI 擴充功能 
 ```
 az extension add --name dns
 ``` 
@@ -191,7 +191,7 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何在 DNS 區域中[管理記錄集和記錄](dns-getstarted-create-recordset-cli.md)。
 

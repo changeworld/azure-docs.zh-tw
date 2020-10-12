@@ -9,10 +9,10 @@ ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: bc9e18427bb3b8094911d2ac7f285d271ecd1a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91025351"
 ---
 1. 從 [Azure 入口網站](https://portal.azure.com)功能表選取 [建立資源]。
@@ -36,7 +36,7 @@ ms.locfileid: "91025351"
 
    這是相同的頁面，但是醒目提示 FQDN：
 
-   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-gateway-fqdn.png" alt-text="建立區域網路閘道 FQDN":::
+   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-gateway-fqdn.png" alt-text="建立區域網路閘道 IP 位址":::
 
    > [!NOTE]
    >

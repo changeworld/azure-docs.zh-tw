@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 4dd592cb1b0037e2e1054bb24d987d4456f15e2c
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380777"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>如何設定您的 SaaS 供應專案屬性
@@ -43,7 +43,7 @@ ms.locfileid: "89380777"
 
 ## <a name="provide-terms-and-conditions"></a>提供條款及條件
 
-在 [ **法律**] 下，提供供應專案的條款及條件。 您有兩個選擇：
+在 [ **法律**] 下，提供供應專案的條款及條件。 您有兩個選項：
 
 - [使用標準合約搭配選擇性的修正](#use-the-standard-contract)
 - [使用您自己的條款及條件](#use-your-own-terms-and-conditions)

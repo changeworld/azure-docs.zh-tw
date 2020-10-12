@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303846"
 ---
-# <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED （Azure Cosmos DB）
+# <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB) 
  傳回布林值，表示屬性是否已經指派值。  
   
 ## <a name="syntax"></a>語法
@@ -52,6 +52,6 @@ SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isD
 
 ## <a name="next-steps"></a>後續步驟
 
-- [型別檢查函數 Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [類型檢查函式 Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

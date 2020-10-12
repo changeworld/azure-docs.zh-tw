@@ -19,15 +19,15 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360090"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理與 Azure AD 的 AD FS 信任
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure AD Connect 可以管理內部部署 Active Directory Federation Service (AD FS) 與 Azure AD 之間的同盟。 本文提供下列內容的概觀：
 
@@ -39,7 +39,7 @@ Azure AD Connect 可以管理內部部署 Active Directory Federation Service (A
 
 Azure AD Connect **只**會管理與 Azure AD 信任相關的設定。 Azure AD Connect 不會在 AD FS 中修改有關其他信賴憑證者信任的任何設定。 下表指出由 Azure AD Connect 所控制的設定。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 | :--- | :--- |
 | 權杖簽署憑證 | Azure AD Connect 可以用來重設並重新建立與 Azure AD 的信任。 Azure AD Connect 會針對 AD FS 進行權杖簽署憑證的單次立即變換，並更新 Azure AD 網域同盟設定。|
 | 權杖簽署演算法 | Microsoft 建議使用 SHA-256 作為權杖簽署演算法。 Azure AD Connect 可以偵測是否將權杖簽署演算法設定為比 SHA-256 更不安全的值。 它將在下一個可能的設定作業中將設定更新為 SHA-256。 必須更新其他信賴憑證者信任，才能使用新的權杖簽署憑證。 |
@@ -56,15 +56,15 @@ Azure AD Connect 不會在設定流程期間更新 Azure AD 信任的所有設�
 
 | 執行流程 | 受影響的設定 |
 | :--- | :--- |
-| 首次安裝 (快速) | None |
+| 首次安裝 (快速) | 無 |
 | 首次安裝 (新的 AD FS 伺服器陣列) | 建立新的 AD FS 伺服器陣列，並從頭開始建立與 Azure AD 的信任。 |
 | 首次安裝 (現有的 AD FS 伺服器陣列，現有的 Azure AD 信任) | Azure AD 信任識別碼、發行轉換規則、Azure AD 端點、替代識別碼 (如有必要)、自動中繼資料更新 |
 | 重設 Azure AD 信任 | 權杖簽署憑證、權杖簽署演算法、Azure AD 信任識別碼、發行轉換規則、Azure AD 端點、替代識別碼 (如有必要)、自動中繼資料更新 |
-| 新增同盟伺服器 | None |
-| 新增 WAP 伺服器 | None |
+| 新增同盟伺服器 | 無 |
+| 新增 WAP 伺服器 | 無 |
 | 裝置選項 | 發行轉換規則、適用於裝置註冊的 IWA |
 | 新增同盟網域 | 如果網域是第一次新增，亦即，安裝程式正從單一網域同盟變更為多網域同盟，Azure AD Connect 將從頭開始重新建立信任。 如果已針對多個網域設定與 Azure AD 的信任，則只會修改發行轉換規則 |
-| 更新 TLS | None |
+| 更新 TLS | 無 |
 
 在所有作業期間 (可在其中修改任何設定)，Azure AD Connect 會在 **%ProgramData%\AADConnect\ADFS** 上建立目前信任設定的備份
 
@@ -77,7 +77,7 @@ Azure AD Connect 不會在設定流程期間更新 Azure AD 信任的所有設�
 
 Azure AD Connect 確保一律會使用一組正確的建議宣告規則來設定 Azure AD 信任。 Microsoft 建議使用 Azure AD Connect 來管理您的 Azure AD 信任。 本節會列出發行轉換規則集及其描述。
 
-| 規則名稱 | Description |
+| 規則名稱 | 描述 |
 | --- | --- |
 | 發行 UPN | 此規則會針對 userprincipalname 從同步處理設定中設定的屬性，查詢 userprincipalname 的值。|
 | 針對自訂的 ImmutableId 宣告，查詢 objectguid 和 msdsconsistencyguid | 此規則會在管線中，針對 objectguid 和 msdsconsistencyguid 值 (如果有的話) 新增暫存值 |

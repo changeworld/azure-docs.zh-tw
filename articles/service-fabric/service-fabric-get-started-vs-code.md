@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
 ms.openlocfilehash: a2ac8a84b4df4a241665e7f4269803908733ca82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249904"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
@@ -22,7 +22,7 @@ ms.locfileid: "91249904"
 > [!IMPORTANT]
 > Service Fabric Java 應用程式可以在 Windows 機器上開發，但是只能部署到 Azure Linux 叢集上。 不支援在 Windows 上針對 Java 應用程式進行偵錯。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 必須在所有環境上安裝下列必要條件。
 

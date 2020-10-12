@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85855716"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 的虛擬網路整合
@@ -29,7 +29,7 @@ ms.locfileid: "85855716"
 Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active Directory (Azure AD) 之間使用虛擬網路服務端點安全性，以在存取權杖中產生額外的安全性宣告。 這些宣告隨後會用來對 Data Lake Storage Gen1 帳戶驗證虛擬網路並允許存取。
 
 > [!NOTE]
-> 使用這些功能不會產生額外的相關費用。 帳戶會依照 Data Lake Storage Gen1 的標準費率來計費。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable)。 至於您所使用的所有其他 Azure 服務，則請參閱[定價](https://azure.microsoft.com/pricing/#product-picker)。
+> 使用這些功能不會產生額外的相關費用。 帳戶會依照 Data Lake Storage Gen1 的標準費率來計費。 如需詳細資訊，請參閱 [定價](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable)。 至於您所使用的所有其他 Azure 服務，則請參閱[定價](https://azure.microsoft.com/pricing/#product-picker)。
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的虛擬網路整合案例
 
@@ -120,7 +120,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
 3.  選取 [選取的網路]。
  
-4.  選取 [**新增現有的虛擬網路**]。
+4.  選取 [ **新增現有的虛擬網路**]。
 
     ![新增現有的虛擬網路](media/data-lake-store-network-security/config-adls-2.png)
 
@@ -128,7 +128,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
     ![選擇虛擬網路和子網路](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  確定虛擬網路和子網路正確顯示於清單中。 選取 [儲存]。
+6.  確定虛擬網路和子網路正確顯示於清單中。 選取 [儲存]****。
 
     ![儲存新規則](media/data-lake-store-network-security/config-adls-4.png)
 

@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 備份服務來管理及監視 Azure VM �
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145428"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 備份服務管理 Azure VM 備份
@@ -190,7 +190,7 @@ Azure 備份包含虛刪除功能，以保護您的資料。 使用虛刪除時�
 * 這些備份專案會在系統中保持作用中狀態，並遵守使用者所設定的備份和保留原則。 根據保留原則，將會保留這些 Azure Vm 的備份資料。 過期的復原點 (除了最新的復原點) 會根據備份原則中設定的保留範圍進行清除。
 * 建議您刪除主要資料來源不存在的備份專案，以避免產生任何額外的費用。如果不再需要刪除資源的備份專案/資料，而是將最新的復原點永久保留，且使用者是根據適用的備份定價收費。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [從 VM 的設定中備份 Azure vm](backup-azure-vms-first-look-arm.md)。
 * 瞭解如何 [還原 vm](backup-azure-arm-restore-vms.md)。

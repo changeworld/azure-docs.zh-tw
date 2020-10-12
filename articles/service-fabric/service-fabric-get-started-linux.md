@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-js
 ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249989"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
@@ -26,7 +26,7 @@ ms.locfileid: "91249989"
 不支援在適用於 Linux 的 Windows 子系統上安裝 Service Fabric 執行階段。 您可以使用支援的 Azure Service Fabric 命令列介面 (CLI)，管理裝載於雲端或內部部署中其他地方的 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下為支援開發的作業系統版本。
 

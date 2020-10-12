@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903214"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>透過您 Azure Stack Edge Pro GPU 裝置上的 kubectl 來連線及管理 Kubernetes 叢集
@@ -170,6 +170,6 @@ ms.locfileid: "90903214"
 如需詳細指示，請移至 [移除計算](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration)設定。
    
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在您的 Azure Stack Edge Pro 上部署無狀態應用程式](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。

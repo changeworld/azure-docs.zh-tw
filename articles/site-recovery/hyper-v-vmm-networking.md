@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 在容錯移轉至次要網站之後設定 IP 位址
+title: 使用 Azure Site Recovery，在容錯移轉至次要網站之後設定 IP 位址
 description: 說明如何設定在使用 Azure Site Recovery 進行災害復原和容錯移轉之後，用來連線至次要內部部署網站中 VM 的 IP 定址。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495938"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>設定在容錯移轉後用來連線至次要內部部署網站的 IP 定址
@@ -63,11 +63,11 @@ ms.locfileid: "87495938"
 
 **容錯移轉前**
 
-![此圖顯示容錯移轉之前的子網。](./media/hyper-v-vmm-networking/network-design2.png)
+![此圖表顯示容錯移轉之前的子網。](./media/hyper-v-vmm-networking/network-design2.png)
 
 **容錯移轉後**
 
-![在容錯移轉之後顯示子網的圖表。](./media/hyper-v-vmm-networking/network-design3.png)
+![顯示容錯移轉後子網的圖表。](./media/hyper-v-vmm-networking/network-design3.png)
 
 在容錯移轉後，Site Recovery 會為 VM 上的每個網路介面配置一個 IP 位址。 系統會針對每個 VM 執行個體，從相關網路中的靜態 IP 位址集區配置 IP 位址。
 
@@ -118,14 +118,14 @@ $ip.address
 
 **容錯移轉前**
 
-![此圖顯示容錯移轉之前的不同 IP 位址。](./media/hyper-v-vmm-networking/network-design10.png)
+![此圖表顯示容錯移轉之前的不同 IP 位址。](./media/hyper-v-vmm-networking/network-design10.png)
 
 **容錯移轉後**
 
-![在容錯移轉之後顯示不同 IP 位址的圖表。](./media/hyper-v-vmm-networking/network-design11.png)
+![此圖表顯示容錯移轉後的不同 IP 位址。](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [執行容錯移轉](hyper-v-vmm-failover-failback.md)
 

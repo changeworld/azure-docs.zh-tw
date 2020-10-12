@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378792"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>在商業市場中建立可交易 SaaS 供應專案的登陸頁面
@@ -129,6 +129,6 @@ SaaS 履行 Api 會執行 [解析](./partner-center-portal/pc-saas-fulfillment-a
 > [!NOTE]
 > MSA 租使用者 (中具有租使用者識別碼) 的帳戶， ``9188040d-6c67-4c5b-b112-36a304b66dad`` 將不會傳回超過已使用識別碼權杖收集的資訊。 因此，您可以略過這類帳戶對圖形 API 的呼叫。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何在商業市場中建立 SaaS 供應專案](create-new-saas-offer.md)

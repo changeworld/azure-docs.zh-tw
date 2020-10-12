@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 雲端布建代理程式：自動升級 |Microsoft Docs
-description: 本文說明 Azure AD Connect 雲端布建代理程式中的內建自動升級功能。
+description: 本文說明 Azure AD Connect 雲端布建代理程式中內建的自動升級功能。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d0f7093f44a284ec26907d7c4bcfb2bdfd04763
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360906"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect 雲端布建代理程式：自動升級
 
-透過自動升級功能，確保您的 Azure Active Directory （Azure AD）連接雲端布建代理程式安裝一律是最新的。
+使用自動升級功能，確定您的 Azure Active Directory (Azure AD) Connect 雲端布建代理程式安裝一律保持最新狀態。
 
 代理程式安裝于此處：「Program files\Azure AD Connect 布建 Agent\AADConnectProvisioningAgent.exe」
 
@@ -39,13 +39,13 @@ ms.locfileid: "85360906"
 ![代理程式更新程式版本](media/how-to-automatic-upgrade/agent2.png)
 
 ## <a name="uninstall-the-agent"></a>解除安裝代理程式
-若要移除代理程式，請移至**卸載或變更程式**並卸載下列專案：
+若要移除代理程式，請移至 [ **卸載或變更程式** ] 並卸載下列專案：
 
 - **Microsoft Azure AD Connect 代理程式更新程式**
 - **Microsoft Azure AD Connect 佈建代理程式**
 - **Microsoft Azure AD Connect 佈建代理程式套件**
 
-![代理程式移除](media/how-to-automatic-upgrade/agent3.png)
+![移除代理程式](media/how-to-automatic-upgrade/agent3.png)
 
 ## <a name="next-steps"></a>後續步驟 
 

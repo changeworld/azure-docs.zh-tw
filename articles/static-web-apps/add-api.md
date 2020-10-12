@@ -9,10 +9,10 @@ ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
 ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250142"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 將 API 新增至 Azure 靜態 Web Apps 預覽版
@@ -43,7 +43,7 @@ ms.locfileid: "91250142"
 1. 按 **F1** 鍵，在命令選擇區中開啟命令。
 1. 將 URL 貼到 _Git：複製_  提示字元，然後按 **Enter** 鍵。
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="使用 Visual Studio Code 複製 GitHub 專案":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
     遵循提示來選取要複製專案的存放庫位置。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91250142"
 1. 選取 **api** 資料夾做為專案工作區的目錄
 1. 選擇 [選取]
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
 1. 依照提示提供下列資訊：
 
@@ -145,13 +145,13 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
     Core Tools 會在 _終端_ 機面板中顯示正在執行之應用程式的輸出。 在輸出中，您可以查看在本機執行之 HTTP 觸發函式的 URL 端點。
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
 1. 當核心工具執行時，流覽至下列 URL，以確認 API 是否正確執行： `http://localhost:7071/api/message` 。
 
    瀏覽器中的回應看起來應該類似下列範例：
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
 1. 按 **Shift + F5** 以停止調試會話。
 
@@ -199,7 +199,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
     您現在應該會在網頁中看到 API 訊息。
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
    > [!NOTE]
    > 您可以使用其他 HTTP 伺服器或 Proxy 來提供 `index.html` 檔案。 將無法從 `file:///` 存取 `index.html`。
@@ -251,11 +251,11 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
     當應用程式是在背景中建立時，您可以按一下包含連結的橫幅來查看組建狀態。
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub 工作流程":::
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
 1. 部署完成後，ou 可以按一下 [_總覽_] 頁面上顯示的_URL_連結，以流覽至 web 應用程式。
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="從 Azure 入口網站存取靜態應用程式 URL":::
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -9,16 +9,16 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78898531"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Azure 排程器中的限制、配額以及節流閾值
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快 [遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
 >
 > Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
 
@@ -28,7 +28,7 @@ ms.locfileid: "78898531"
 
 ## <a name="x-ms-request-id-header"></a>x-ms-request-id 標頭
 
-對排程器服務提出的每個要求都會傳回名為**x-ms-request-id**的回應標頭。此標頭包含可唯一識別要求的不透明值。 因此，如果要求一直失敗，並且您確認要求的格式正確，則可以透過提供 **x-ms-request-id** 回應標頭值並包含下列詳細資料，向 Microsoft 回報錯誤： 
+對排程器服務提出的每個要求都會傳回名為 **x-ms-request-id**的回應標頭。此標頭包含可唯一識別要求的不透明值。 因此，如果要求一直失敗，並且您確認要求的格式正確，則可以透過提供 **x-ms-request-id** 回應標頭值並包含下列詳細資料，向 Microsoft 回報錯誤： 
 
 * **x-ms-request-id** 值
 * 提出要求的大約時間 

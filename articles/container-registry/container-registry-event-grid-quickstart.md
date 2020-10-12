@@ -5,13 +5,13 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403235"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入門：將事件從私人容器登錄傳送至事件方格
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入門：將事件從私用容器登錄傳送至事件方格
 
 Azure 事件方格是完全受控的事件路由服務，可使用發佈-訂閱模型提供統一的事件耗用量。 在本快速入門中，您可以使用 Azure CLI 來建立容器登錄、訂閱登錄事件，然後部署範例 Web 應用程式來接收事件。 最後，您會觸發容器映像 `push` 和 `delete` 事件，並在範例應用程式中檢視事件裝載。
 

@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 6884b0c5d351d5cca160a1e00e409397f21311ef
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380825"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>如何設定您的 SaaS 供應專案清單詳細資料
@@ -100,7 +100,7 @@ ms.locfileid: "89380825"
 
 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤：預覽物件。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如果您是透過 Microsoft 銷售您的供應專案，請移至 [如何為您的 SaaS 供應專案新增預覽物件](create-new-saas-offer-preview.md)。 
 - 否則，請移至 [如何行銷 SaaS 供應](create-new-saas-offer-marketing.md)專案。

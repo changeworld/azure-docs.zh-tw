@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect：將群組從一個樹系遷移至另一個樹系
-description: 本文說明將群組從一個樹系成功遷移至另一個樹系以進行 Azure AD Connect 所需的步驟。
+title: Azure AD Connect：將群組從一個樹系遷移到另一個樹系
+description: 本文說明在 Azure AD Connect 的樹系中，成功將群組遷移到另一個樹系所需的步驟。
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,28 +12,28 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358577"
 ---
-# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>將群組從一個樹系遷移至另一個樹系以進行 Azure AD Connect
+# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>將群組從一個樹系遷移到另一個樹系，以進行 Azure AD Connect
 
-本文說明如何將群組從一個樹系遷移至另一個，讓遷移的群組物件符合雲端中的現有物件。
+本文說明如何將群組從一個樹系遷移到另一個樹系，讓遷移的群組物件符合雲端中的現有物件。
 
 ## <a name="prerequisites"></a>必要條件
 
-- Azure AD Connect 1.5.18.0 或更新版本
-- 來源錨點屬性設定為`mS-DS-ConsistencyGuid`
+- Azure AD Connect 1.5.18.0 版或更新版本
+- 來源錨點屬性設定為 `mS-DS-ConsistencyGuid`
 
 ## <a name="migrate-groups"></a>遷移群組
 
-從版本1.5.18.0 開始，Azure AD Connect 支援使用 `mS-DS-ConsistencyGuid` 群組的屬性。 如果您選擇 `mS-DS-ConsistencyGuid` 做為來源錨點屬性，並將值填入 Active Directory 中，Azure AD Connect 會使用的值 `mS-DS-ConsistencyGuid` 做為 `immutableId` 。 否則，它會改回使用 `objectGUID` 。 但請注意，Azure AD Connect 不會將值寫回 `mS-DS-ConsistencyGuid` Active Directory 中的屬性。
+從版本1.5.18.0 開始，Azure AD Connect 支援使用 `mS-DS-ConsistencyGuid` 群組的屬性。 如果您選擇 `mS-DS-ConsistencyGuid` 做為來源錨點屬性，並將值填入 Active Directory 中，Azure AD Connect 會使用的值 `mS-DS-ConsistencyGuid` 做為 `immutableId` 。 否則，它會改為使用 `objectGUID` 。 但是請注意，Azure AD Connect 不會將值寫回 `mS-DS-ConsistencyGuid` Active Directory 中的屬性。
 
-跨樹系移動時，當群組物件從一個樹系（例如 F1）移至另一個樹系（例如 F2）時，您需要將 `mS-DS-ConsistencyGuid` 值（如果有的話）或 `objectGUID` 樹系 F1 中物件的值複製到 `mS-DS-ConsistencyGuid` F2 中的物件屬性。
+在跨樹系移動期間，當群組物件從一個樹系中移動時 (說出另一個樹系的 F1)  (表示 F2) ，您需要將 `mS-DS-ConsistencyGuid` 值 (或樹系中物件的 `objectGUID` 值複製到 `mS-DS-ConsistencyGuid` f2 中物件的屬性。
 
-使用下列腳本作為指南，以瞭解如何將單一群組從一個樹系遷移至另一個。 您也可以使用這些腳本作為遷移多個群組的指南。 這些腳本會針對來源樹系使用樹系名稱 F1，並針對目的地樹系使用 F2。
+使用下列腳本作為指南，以瞭解如何將單一群組從一個樹系遷移到另一個樹系。 您也可以使用這些腳本做為多個群組遷移的指南。 腳本會針對來源樹系使用樹系名稱 F1，並針對目的地樹系使用 F2。
 
 首先，我們會取得 `objectGUID` `mS-DS-ConsistencyGuid` 樹系 F1 中群組物件的和。 這些屬性會匯出至 CSV 檔案。
 ```
@@ -83,7 +83,7 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-接下來，我們會使用產生的輸出 CSV 檔案，對 `mS-DS-ConsistencyGuid` 樹系 F2 中目標物件上的屬性進行戳記：
+接下來，我們會使用產生的輸出 CSV 檔案，對 `mS-DS-ConsistencyGuid` 樹系中的目標物件上的屬性進行戳記：
 
 
 ```
@@ -125,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>後續步驟
-深入瞭解如何[整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。

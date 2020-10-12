@@ -11,10 +11,10 @@ ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85373959"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>轉換擴展集範本至受控磁碟擴展集範本
@@ -138,7 +138,7 @@ ms.locfileid: "85373959"
 
 
 ## <a name="next-steps"></a>後續步驟
-例如，使用擴展集 Resource Manager 範本，請在[Azure 快速入門範本 GitHub](https://github.com/Azure/azure-quickstart-templates)儲存機制中搜尋 "vmss"。
+例如 Resource Manager 使用擴展集的範本，請在 [Azure 快速入門範本 github](https://github.com/Azure/azure-quickstart-templates)存放庫中搜尋 "vmss"。
 
 如需一般資訊，請參閱 [擴展集的主要登陸頁面](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
 

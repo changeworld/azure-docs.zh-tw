@@ -8,10 +8,10 @@ ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322698"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
@@ -76,7 +76,7 @@ SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CO
 
 第一個查詢使用的 RU 可能會比第二個查詢多，因為城鎮的基數高於國家/地區。
 
-如果某些檔的屬性大小包含大於 1 KB，則查詢引擎將需要載入這些檔。 在此情況下，查詢引擎將無法完全評估包含索引的 Contains。 如果您有大量檔的屬性大小超過 1 KB，則「包含」的 RU 費用將會很高。
+如果某些檔的屬性大小在 Contains 中大於 1 KB，則查詢引擎將需要載入這些檔。 在此情況下，查詢引擎將無法以索引完整評估 Contains。 如果您有大量檔的屬性大小超過 1 KB，則 [包含] 的 RU 費用會很高。
 
 ## <a name="next-steps"></a>後續步驟
 

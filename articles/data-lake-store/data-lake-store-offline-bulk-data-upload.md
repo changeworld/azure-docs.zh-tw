@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85855684"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 匯入/匯出服務將資料離線複製到 Data Lake Storage Gen1
 
-在本文中，您將瞭解如何使用離線複製方法（例如[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)）將大型資料集（>200 GB）複製到 Data Lake Storage Gen1。 具體來說，作為本文中範例的檔案是 339,420,860,416 個位元組，或在磁碟上大約是 319 GB。 讓我將此檔案稱為 319GB.tsv。
+在本文中，您將瞭解如何使用離線複製方法（例如 [Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)），將大量資料集 ( # B0 200 GB) 到 Data Lake Storage Gen1 中。 具體來說，作為本文中範例的檔案是 339,420,860,416 個位元組，或在磁碟上大約是 319 GB。 讓我將此檔案稱為 319GB.tsv。
 
 Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安全地傳輸大量資料至 Azure Blob 儲存體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，您必須具備下列條件：
 
@@ -37,10 +37,10 @@ split -b 100m 319GB.tsv
 
 分割作業會建立帶有以下名稱的檔案。
 
-* *319 GB tsv-第 aa 部分*
-* *319 GB tsv-第 ab*
-* *319 GB tsv-第-部分-ac*
-* *319 GB tsv-部分-ad*
+* *319 GB-part-aa*
+* *319 GB tsv-part-ab*
+* *319 GB，第一部分-ac*
+* *319 GB，-part-ad*
 
 ## <a name="get-disks-ready-with-data"></a>備妥資料磁碟
 
@@ -85,7 +85,7 @@ split -b 100m 319GB.tsv
 }
 ```
 
-### <a name="target-linked-service-data-lake-storage-gen1"></a>目標連結服務（Data Lake Storage Gen1）
+### <a name="target-linked-service-data-lake-storage-gen1"></a>目標連結服務 (Data Lake Storage Gen1) 
 
 ```JSON
 {
@@ -218,7 +218,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

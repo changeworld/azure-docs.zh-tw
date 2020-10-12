@@ -8,10 +8,10 @@ ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85361433"
 ---
 # <a name="alias-server-names"></a>伺服器名稱別名
@@ -37,7 +37,7 @@ ms.locfileid: "85361433"
 
 若要建立別名端點，您可以使用任何會傳回有效 Azure Analysis Services 伺服器名稱的方法。 例如，參考 Azure Blob 儲存體中包含實際伺服器名稱的檔案，或建立並發佈 ASP.NET Web Forms 應用程式。
 
-在此範例中，會使用 Visual Studio 建立 ASP.NET Web Forms 應用程式。 頁面參考和使用者控制項都會從 default.aspx 頁面中移除。 Default.aspx 的內容就是下列頁面指示詞：
+在此範例中，會使用 Visual Studio 建立 ASP.NET Web Forms 應用程式。 頁面參考和使用者控制項會從 default.aspx 頁面移除。 Default.aspx 的內容就是下列頁面指示詞：
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>

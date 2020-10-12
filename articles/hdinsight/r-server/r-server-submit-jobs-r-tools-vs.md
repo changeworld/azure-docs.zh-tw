@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435261"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>從 Visual Studio R 工具提交作業
@@ -21,7 +21,7 @@ ms.locfileid: "75435261"
 
 RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (程式碼完成)、[繪圖視覺效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) 等工具，透過例如 ggplot2 和 ggviz、[R 程式碼偵錯](https://docs.microsoft.com/visualstudio/rtvs/debugging) 等程式庫。
 
-## <a name="set-up-your-environment"></a>設定您的環境
+## <a name="set-up-your-environment"></a>設定環境
 
 1. 安裝 [Visual Studio R 工具](/visualstudio/rtvs/installing-r-tools-for-visual-studio)。
 
@@ -32,7 +32,7 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
 3. 您需要有公開和私密金鑰以進行 SSH 驗證。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. 在您的電腦上安裝 [Machine Learning Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供和函式 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) `RxSpark` 。
+4. 在您的電腦上安裝 [Machine Learning Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML 伺服器提供 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 和 `RxSpark` 功能。
 
 5. 安裝 [PuTTY](https://www.putty.org/) 以提供計算內容，從您的本機用戶端將 `RevoScaleR` 函式執行至 HDInsight 叢集。
 
@@ -56,17 +56,17 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
 6. 從檔案頂端開始，按下 Ctrl+Enter 一次傳送一行到 R 互動視窗。 有些行會安裝套件，所以可能需要一些時間。
     * 或者，您可以選取 R 檔案中的所有行 (Ctrl+A)，然後全部執行 (Ctrl+Enter)，或者選取工具列上的 [執行互動] 圖示。
 
-        ![Visual Studio 執行互動](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio 執行互動式](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. 執行指令碼中的所有行之後，您應該會看到類似以下的輸出：
 
-    ![Visual Studio 工作區 R 工具](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio workspace R 工具](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>將作業提交至 HDInsight ML 服務叢集
 
 您可以透過配備 PuTTY 的 Windows 電腦使用 Microsoft Machine Learning Server/Microsoft R Client，建立計算內容，此內容會從本機用戶端將分散式 `RevoScaleR` 函式執行至 HDInsight 叢集。 使用 `RxSpark` 來建立計算內容，指定您的使用者名稱、Apache Hadoop 叢集的邊緣節點、SSH 參數等等。
 
-1. HDInsight 上的 ML 服務邊緣節點位址是， `CLUSTERNAME-ed-ssh.azurehdinsight.net` 其中 `CLUSTERNAME` 是您 ML 服務叢集的名稱。
+1. HDInsight 上的 ML 服務邊緣節點位址是 `CLUSTERNAME-ed-ssh.azurehdinsight.net` `CLUSTERNAME` 您的 ml 服務叢集的名稱。
 
 1. 將下列程式碼貼到 Visual Studio 中的 R 互動視窗，修改設定變數的值以符合您的環境。
 

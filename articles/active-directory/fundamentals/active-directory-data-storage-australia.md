@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f7ed1d4c49c46673f1a1c2b5cb08b2467490acae
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565112"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 中澳大利亞和紐西蘭客戶的身分識別資料儲存體
@@ -36,6 +36,6 @@ ms.locfileid: "89565112"
 
 MFA 會將身分識別客戶資料儲存在全球資料中心。 若要深入瞭解以雲端為基礎的 Azure MFA 和 Azure MFA 伺服器所收集和儲存的使用者資訊，請參閱 [Azure Multi-Factor Authentication 使用者資料收集](../authentication/concept-mfa-data-residency.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需前述任何特性和功能的詳細資訊，請參閱下列文章：
 - [何謂 Multi-Factor Authentication？](../authentication/concept-mfa-howitworks.md)

@@ -8,10 +8,10 @@ ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322681"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
@@ -76,7 +76,7 @@ EndsWith 的 RU 耗用量會隨著系統函式中屬性的基數增加而增加�
 
 第一個查詢使用的 RU 可能會比第二個查詢多，因為城鎮的基數高於國家/地區。
 
-如果某些檔的 EndsWith 屬性大小大於 1 KB，則查詢引擎將需要載入這些檔。 在此情況下，查詢引擎將無法使用索引來完全評估 EndsWith。 如果您有大量的屬性大小大於 1 KB 的檔，EndsWith 的 RU 費用將會很高。
+如果某些檔的 EndsWith 屬性大小大於 1 KB，則查詢引擎將需要載入這些檔。 在此情況下，查詢引擎將無法使用索引來完整評估 EndsWith。 如果您有大量檔的屬性大小超過 1 KB，則 EndsWith 的 RU 費用會很高。
 
 ## <a name="next-steps"></a>後續步驟
 

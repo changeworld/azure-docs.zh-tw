@@ -4,10 +4,10 @@ description: 本文說明如何將 Azure 事件中樞專用叢集從目前區域
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380640"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>將 Azure 事件中樞專用叢集移至另一個區域
@@ -50,7 +50,7 @@ ms.locfileid: "89380640"
     4. 在 [ **設定** ] 區段中，執行下列步驟：    
         1. 輸入新的叢集 **名稱**。 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="部署 Resource Manager 範本":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="下載 Resource Manager 範本":::
     5. 選取頁面底部的 [檢閱 + 建立]。 
     1. 在 [ **審核 + 建立** ] 頁面上，檢查 [設定]，然後選取 [ **建立**]。  
 
@@ -65,7 +65,7 @@ ms.locfileid: "89380640"
 2. 選取要刪除的叢集，然後從工具列中選取 [ **刪除** ]。 
 3. 在 [ **刪除** 叢集] 頁面上，輸入叢集 **名稱**來確認刪除，然後選取 [ **刪除**]。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已瞭解如何將事件中樞專用叢集從某個區域移至另一個區域。 
 
 請參閱「 [跨區域移動事件中樞命名空間](move-across-regions.md) 」一文，以取得將命名空間從某個區域移至另一個區域的指示。 

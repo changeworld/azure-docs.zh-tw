@@ -8,13 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78304254"
 ---
-# <a name="tostring-azure-cosmos-db"></a>ToString （Azure Cosmos DB）
+# <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB) 
  傳回純量運算式的字串表示法。 
   
 ## <a name="syntax"></a>語法
@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- 下列範例顯示如何搭配 `ToString` 使用其他字串函式，例如 `CONCAT` 。   
+ 下列範例會示範如何搭配 `ToString` 其他字串函式使用，例如 `CONCAT` 。   
  
 ```sql
 SELECT 
@@ -78,7 +78,7 @@ FROM p in c.Products
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-下列範例顯示如何搭配 `ToString` 使用其他字串函式，例如 `REPLACE` 。   
+下列範例會示範如何搭配 `ToString` 其他字串函式使用，例如 `REPLACE` 。   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -97,7 +97,7 @@ JOIN n IN food.nutrients
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75430781"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用範本自訂 Azure API 管理開發人員入口網站。
@@ -37,7 +37,7 @@ ms.locfileid: "75430781"
 
 ## <a name="developer-portal-templates-overview"></a>開發人員入口網站範本概觀
 
-當您以系統管理員身分登入時，可從 [開發人員入口網站]**** 編輯範本。 若要開始進行，請開啟 Azure 入口網站，然後從 API 管理實例的服務工具列按一下 [**開發人員入口網站**]。
+當您以系統管理員身分登入時，可從 [開發人員入口網站]**** 編輯範本。 若要開始，請先開啟 Azure 入口網站，然後從 API 管理實例的服務工具列按一下 [ **開發人員入口網站** ]。
 
 若要存取開發人員入口網站範本，請按一下左側的自訂圖示，顯示 [自訂] 功能表，然後按一下 [範本] ****。
 
@@ -47,7 +47,7 @@ ms.locfileid: "75430781"
 
 ![開發人員入口網站範本][api-management-templates-menu]
 
-按一下範本即會將您帶到可使用該範本自訂的開發人員入口網站頁面。 在此範例中，會顯示 [**產品清單**] 範本。 **產品清單** 範本控制的畫面區域會以紅色矩形表示。
+按一下範本即會將您帶到可使用該範本自訂的開發人員入口網站頁面。 在此範例中，會顯示 [ **產品清單** ] 範本。 **產品清單** 範本控制的畫面區域會以紅色矩形表示。
 
 ![產品清單範本][api-management-developer-portal-templates-overview]
 
@@ -65,7 +65,7 @@ ms.locfileid: "75430781"
 
 ![範本資料模型][api-management-template-data]
 
-在上一個範例中，開發人員入口網站中顯示了兩項產品，可從 [**範本資料**] 窗格中顯示的資料抓取，如下列範例所示：
+在上述範例中，開發人員入口網站中會顯示兩個產品，而這些產品是從 [ **範本資料** ] 窗格中顯示的資料抓取，如下列範例所示：
 
 ```json
 {
@@ -162,7 +162,7 @@ ms.locfileid: "75430781"
 
 ![還原範本][api-management-revert-template]
 
-按一下 [是]**** 以確認。
+按一下 [是]  確認。
 
 ![確認][api-management-revert-template-confirm]
 
@@ -175,7 +175,7 @@ ms.locfileid: "75430781"
 
 ![還原範本][api-management-reset-template]
 
-按一下 [是]**** 以確認。
+按一下 [是]  確認。
 
 ![確認][api-management-reset-template-confirm]
 

@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure DevTest Labs 中設定共用映射庫，讓�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271034"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定共用映像庫
@@ -42,7 +42,7 @@ DevTest Labs 現在支援 [共用映射庫](../virtual-machines/windows/shared-i
     ![共用映射資源庫功能表](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
 1. 按一下 [ **附加** ] 按鈕並在下拉式清單中選取您的資源庫，以將現有的共用映射庫連結至您的實驗室。
 
-    ![附加](./media/configure-shared-image-gallery/attach-options.png)
+    ![Attach](./media/configure-shared-image-gallery/attach-options.png)
 1. 程式庫程式庫之後，請選取該映射庫以移至附加的資源庫。 設定您的資源庫，以 **啟用或停** 用建立 VM 的共用映射。 從清單中選取映射庫以進行設定。 
 
     預設會 **允許使用所有映射，因為虛擬機器的基底** 設定為 **[是]**。 這表示在建立新的實驗室 VM 時，實驗室使用者將可使用附加共用映射庫中的所有可用映射。 如果需要限制特定映射的存取權，請將 [ **允許所有映射以虛擬機器為基礎** ] 變更為 [ **否**]，並選取您要在建立 vm 時允許的映射，然後選取 [ **儲存** ] 按鈕。

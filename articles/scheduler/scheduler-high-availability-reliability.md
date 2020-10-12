@@ -9,16 +9,16 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
 ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78898552"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 排程器的高可用性和可靠性
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快 [遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
 >
 > Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
 
@@ -30,7 +30,7 @@ Azure 排程器高度可用，並且會使用異地備援服務部署和地理�
 
 ### <a name="geo-redundant-service-deployment"></a>地理區域備援服務部署
 
-Azure 排程器可在[現今 azure 支援的幾乎每個地理區域](https://azure.microsoft.com/global-infrastructure/regions/#services)中使用。 因此，如果所裝載區域中的 Azure 資料中心變得無法使用，您仍可使用 Azure 排程器，因為服務的容錯移轉功能可讓您從另一個資料中心使用排程器。
+Azure 排程器幾乎可在 [azure 目前支援的每個地理區域](https://azure.microsoft.com/global-infrastructure/regions/#services)中使用。 因此，如果所裝載區域中的 Azure 資料中心變得無法使用，您仍可使用 Azure 排程器，因為服務的容錯移轉功能可讓您從另一個資料中心使用排程器。
 
 ### <a name="geo-regional-job-replication"></a>地理區域工作複寫
 

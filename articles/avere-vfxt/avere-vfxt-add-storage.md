@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271136"
 ---
 # <a name="configure-storage"></a>設定儲存體
@@ -133,7 +133,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
    | 訂用帳戶 | 訂用帳戶識別碼 |
    | Storage Access Key (儲存體存取金鑰) | Azure 儲存體帳戶金鑰 (在上一個步驟中所複製) |
 
-   按一下 [提交] 。
+   按一下 [提交]  。
 
    ![「Avere 控制台」中已完成的雲端認證表單](media/avere-vfxt-new-credential-submit.png)
 
@@ -151,7 +151,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
    * 將 [Bucket contents] \(貯體內容\)**** 設定為 [Empty] \(空白\)****
    * 將 [Certificate verification] \(憑證驗證\)**** 變更為 [Disabled] \(已停用\)****
    * 將 [Compression mode] \(壓縮模式\)**** 變更為 [None] \(無\)****
-   * 按一下 [下一步]  。
+   * 按一下 [下一步]。
    * 在第四頁上，於 [Bucket name] \(貯體名稱\)**** 中將容器名稱輸入為 *storage_account_name*/*container_name*。
    * 視需要將 [Encryption type] \(加密類型\)**** 設定為 [None] \(無\)****。  「Azure 儲存體」預設會經過加密。
    * 按一下 [Add Filer] \(新增檔案管理工具\)****。
@@ -176,7 +176,7 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 * 提供以 / (斜線) 開頭的命名空間路徑，例如 ``/vfxt/data``。
 * 選擇您的核心檔案管理工具。
 * 選擇核心檔案管理工具匯出項。
-* 按一下 [下一步]  。
+* 按一下 [下一步]。
 
   ![已完成連接點、核心檔案管理工具及匯出項欄位的 [Add new junction] \(新增連接點\) 頁面螢幕擷取畫面](media/avere-vfxt-add-junction.png)
 
@@ -186,5 +186,5 @@ NAS 核心檔案管理工具可以是內部部署 NetApp 或 Isilon 設備，也
 
 ## <a name="next-steps"></a>後續步驟
 
-* [裝載 Avere vFXT 叢集](avere-vfxt-mount-clients.md)
+* [掛接 Avere vFXT 叢集](avere-vfxt-mount-clients.md)
 * 瞭解[將資料移至新 Blob 容器的](avere-vfxt-data-ingest.md)有效率方式

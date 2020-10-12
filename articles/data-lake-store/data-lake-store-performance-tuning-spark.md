@@ -1,29 +1,29 @@
 ---
-title: 效能微調-具有 Azure Data Lake Storage Gen1 的 Spark
-description: 瞭解 Azure HDInsight 和 Azure Data Lake Storage Gen1 上的 Spark 效能微調指導方針。
+title: 效能微調-Spark 與 Azure Data Lake Storage Gen1
+description: 瞭解 Azure HDInsight 和 Azure Data Lake Storage Gen1 上的 Spark 效能微調方針。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85856913"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Spark 效能微調方針
 
-在微調 Spark 的效能時，您必須考慮叢集上會執行的應用程式數目。 根據預設，您可以在 HDI 叢集上同時執行四個應用程式（注意：預設設定可能會變更）。 您可能會決定使用較少的應用程式，因此您可以覆寫預設設定，並使用更多的叢集來執行這些應用程式。
+在微調 Spark 的效能時，您必須考慮叢集上會執行的應用程式數目。 根據預設，您可以在 HDI 叢集上同時執行四個應用程式 (注意：預設設定可能會變更) 。 您可能會決定使用較少的應用程式，因此您可以覆寫預設設定，並使用更多的叢集來執行這些應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立的指示，請參閱 [開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
 * **在 Data Lake Storage Gen1 上執行 Spark 叢集**。 如需詳細資訊，請參閱[使用 HDInsight Spark 叢集來分析 Data Lake Storage Gen1 中的資料](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Data Lake Storage Gen1 的效能微調方針**。 如需一般的效能概念，請參閱[Data Lake Storage Gen1 效能微調指導](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)方針 
+* **Data Lake Storage Gen1 的效能微調方針**。 如需一般效能概念，請參閱[Data Lake Storage Gen1 效能微調指導](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)方針 
 
 ## <a name="parameters"></a>參數
 
@@ -37,7 +37,7 @@ ms.locfileid: "85856913"
 
 **Num-executors** Num-executors 會設定可平行執行的工作數目上限。 可平行執行的實際工作數目會受限於叢集中可用的記憶體和 CPU 資源。
 
-**Executor-memory** - 這是要配置給每個執行程式的記憶體數量。 每個執行程式所需的記憶體取決於作業。 複雜的作業需要較高的記憶體。 讀取和寫入等簡單作業的記憶體需求會較低。 您可以在 Ambari 中檢視每個執行程式的記憶體數量。 在 Ambari 中，流覽**至 [Spark** ]，並查看 [[]] 索引標籤。
+**Executor-memory** - 這是要配置給每個執行程式的記憶體數量。 每個執行程式所需的記憶體取決於作業。 複雜的作業需要較高的記憶體。 讀取和寫入等簡單作業的記憶體需求會較低。 您可以在 Ambari 中檢視每個執行程式的記憶體數量。 在 Ambari 中，流覽至 Spark 並查看 **[選項** ] 索引標籤。
 
 **Executor-cores** 這會設定每個執行程式所使用的核心數量，進而決定每個執行程式可以執行的平行執行緒數目。 例如，如果 executor-cores = 2，則每個執行程式可以在執行程式中執行 2 個平行工作。 所需的 executor-cores 取決於該作業。 需要大量 I/O 的作業所需的每一工作記憶體並不需要太多，因此每個執行程式可以處理更多的平行工作。
 
@@ -68,23 +68,23 @@ executor-cores = 4
 
 **步驟 5︰計算 num-executors**
 
-**計算記憶體限制** - num-executors 參數會受到記憶體或 CPU 所限制。 記憶體限制取決於應用程式的可用 YARN 記憶體數量。 拿出 YARN 記憶體的總計，並除以執行程式記憶體。 應用程式數目的限制必須取消調整，因此我們除以應用程式數目。
+**計算記憶體限制** - num-executors 參數會受到記憶體或 CPU 所限制。 記憶體限制取決於應用程式的可用 YARN 記憶體數量。 取得 YARN 記憶體總數，並將其除以執行程式記憶體。 應用程式數目的限制必須取消調整，因此我們除以應用程式數目。
 
-記憶體限制 = （總 YARN 記憶體/執行程式記憶體）/應用程式數目
+記憶體限制 = (YARN 記憶體/執行程式記憶體總計) /應用程式數目
 
 **計算 CPU 限制**-CPU 限制的計算方式為虛擬核心總數除以每個執行程式的核心數目。 每個實體核心有 2 個虛擬核心。 和記憶體限制類似，我們除以應用程式數目。
 
-虛擬核心 = （叢集中的節點 * 節點中的實體核心數 * 2） CPU 條件約束 = （虛擬核心總數/每個執行程式的核心數目）/應用程式數目
+虛擬核心 = 節點 * 2 中實體核心的叢集 * (節點 * 2) CPU 限制 = (虛擬核心數/每個執行程式的核心總數) /# 個應用程式
 
 **設定 num-executors**– num-executors 參數是由記憶體限制和 CPU 限制較小者來決定。 
 
-num –執行程式 = Min （每個執行程式的總虛擬核心數/核心數，可用的 YARN 記憶體/執行程式-記憶體）設定較高的 num 執行程式數目不一定會增加效能。 您應該考慮到，新增更多執行程式會對每個額外的執行程式新增額外的負擔，而可能降低效能。 Num-executors 受到叢集資源的限制。
+執行次數 = 最小 (虛擬核心數/每個執行程式的核心數/每個執行程式的核心數目、可用的 YARN 記憶體/執行程式-記憶體) 設定較高數目的 num-執行程式並不一定會提高效能。 您應該考慮到，新增更多執行程式會對每個額外的執行程式新增額外的負擔，而可能降低效能。 Num-executors 受到叢集資源的限制。
 
 ## <a name="example-calculation"></a>範例計算
 
-假設您目前有一個由8個 D4v2 節點組成的叢集，其中執行兩個應用程式，包括您要執行的應用程式。
+假設您目前有由8個 D4v2 節點組成的叢集，而這些節點正在執行兩個應用程式（包括您要執行的應用程式）。
 
-**步驟1：判斷**您的叢集上有多少個應用程式正在執行–您知道您的叢集上有兩個應用程式，包括您要執行的應用程式。
+**步驟1：決定您的叢集上正在執行多少應用程式** –您知道您的叢集上有兩個應用程式，包括您要執行的應用程式。
 
 **步驟 2︰設定 executor-memory** – 在此範例中，我們判斷 6 GB 的 executor-memory 就足夠 I/O 密集作業使用。
 
@@ -92,7 +92,7 @@ num –執行程式 = Min （每個執行程式的總虛擬核心數/核心數�
 executor-memory = 6GB
 ```
 
-**步驟3：設定執行程式核心**–因為這是需要大量 i/o 的作業，所以我們可以將每個執行程式的核心數目設定為四個。 將每個執行程式的核心設定為大於四個，可能會造成垃圾收集問題。
+**步驟3：設定執行程式-核心** –由於這是 i/o 密集作業，因此我們可以將每個執行程式的核心數目設定為四個。 將每個執行程式的核心設定為大於4，可能會導致垃圾收集問題。
 
 ```console
 executor-cores = 4
@@ -100,16 +100,16 @@ executor-cores = 4
 
 **步驟 4︰決定叢集中的 YARN 記憶體數量** – 我們瀏覽至 Ambari，發現每個 D4v2 有 25 GB 的 YARN 記憶體。 由於有 8 個節點，可用的 YARN 記憶體會乘以 8。
 
-總 YARN 記憶體 = 節點 * YARN memory * 每個節點的 YARN 記憶體總計 = 8 個節點 * 25 GB = 200 GB
+總 YARN 記憶體 = 節點 * 每個節點的 YARN 記憶體 * 總 YARN 記憶體 = 8 個節點 * 25 GB = 200 GB
 
 **步驟 5︰計算 num-executors** – num-executors 參數是由記憶體限制和 CPU 限制較小者除以 Spark 上執行的應用程式數目來決定。
 
 **計算記憶體限制** – 記憶體限制的計算方式為 YARN 記憶體總數除以每個執行程式的記憶體。
 
-記憶體條件約束 = （總 YARN 記憶體/執行程式記憶體）/# of apps 記憶體條件約束 = （200 GB/6 GB）/2 記憶體條件約束 = 16 （進位）**計算 cpu 限制**-cpu 條件約束會計算為總 YARN 核心數除以每個執行程式的核心數目。
+記憶體限制 = (YARN 記憶體/執行程式記憶體總計) /# of apps 記憶體限制 = (200 GB/6 GB) /2 記憶體限制 = 16 (四捨五入) **計算 CPU 限制** -cpu 條件約束的計算方式為 YARN 核心總數除以每個執行程式的核心數目。
 
-YARN 核心 = 叢集中的節點 * 每個節點的核心數 * 2 YARN 核心 = 8 個節點 * 每個 D14 8 個核心 * 2 = 128 CPU 條件約束 = （YARN 核心總數/每個執行程式的核心數目）/應用程式數目 CPU 條件約束 = （128/4）/2 CPU 限制 = 16
+YARN 核心 = 叢集中的節點 * 每個節點的核心數目 * 2 YARN 核心 = 8 個節點 * 8 個核心/D14 * 2 = 128 CPU 限制 = (每個執行程式的 YARN 核心/核心總數) /# 個應用程式 CPU 限制 = (128/4) /2 CPU 限制 = 16
 
 **設定 num-executors**
 
-num-執行次數 = Min （記憶體條件約束，CPU 條件約束） num-執行次數 = Min （16，16） num-執行次數 = 16
+num-執行 = Min (memory 條件約束，CPU 條件約束) num-執行程式 = Min (16，16) num-執行程式 = 16

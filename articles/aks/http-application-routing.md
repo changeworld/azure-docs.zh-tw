@@ -1,32 +1,32 @@
 ---
 title: Azure Kubernetes Service (AKS) 上的 HTTP 應用程式路由附加元件
-description: 使用 HTTP 應用程式路由附加元件來存取部署在 Azure Kubernetes Service （AKS）上的應用程式。
+description: 使用 HTTP 應用程式路由附加元件來存取部署在 Azure Kubernetes Service (AKS) 上的應用程式。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
 ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495143"
 ---
 # <a name="http-application-routing"></a>HTTP 應用程式路由
 
-HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kubernetes Service (AKS) 叢集的應用程式。 啟用解決方案時，它會在您的 AKS 叢集中設定輸入[控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 部署應用程式時，此解決方案也會針對應用程式端點建立可公開存取的 DNS 名稱。
+HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kubernetes Service (AKS) 叢集的應用程式。 當解決方案啟用時，它會在您的 AKS 叢集中設定輸入 [控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) 。 部署應用程式時，此解決方案也會針對應用程式端點建立可公開存取的 DNS 名稱。
 
 啟用附加元件時，它會在您的訂用帳戶中建立 DNS 區域。 如需 DNS 成本的詳細資訊，請參閱 [DNS 定價][dns-pricing]。
 
 > [!CAUTION]
-> HTTP 應用程式路由附加元件依設計可讓您快速建立輸入控制器，以及存取您的應用程式。 此附加元件目前不是設計用於生產環境，因此不建議用於生產環境使用。 若要進行包含多個複本和 TLS 支援的生產環境輸入部署，請參閱[建立 HTTPS 輸入控制器](./ingress-tls.md)。
+> HTTP 應用程式路由附加元件依設計可讓您快速建立輸入控制器，以及存取您的應用程式。 此附加元件目前不是設計用來在生產環境中使用，因此不建議用於實際執行環境。 若要進行包含多個複本和 TLS 支援的生產環境輸入部署，請參閱[建立 HTTPS 輸入控制器](./ingress-tls.md)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解決方案概觀
 
-附加元件會部署兩個元件： [Kubernetes 輸入控制器][ingress]和[外部 DNS][external-dns]控制器。
+附加元件會部署兩個元件： [Kubernetes 輸入控制器][ingress] 和 [外部 DNS][external-dns] 控制器。
 
-- **輸入控制器**：輸入控制器會使用 LoadBalancer 類型的 Kubernetes 服務來向網際網路公開。 輸入控制器會監看並實行[Kubernetes 輸入資源][ingress-resource]，以建立應用程式端點的路由。
+- **輸入控制器**：輸入控制器會使用 LoadBalancer 類型的 Kubernetes 服務來向網際網路公開。 輸入控制器會監看並實行 [Kubernetes 輸入資源][ingress-resource]，以建立應用程式端點的路由。
 - **External-DNS 控制器**：監看 Kubernetes 輸入資源，並在叢集特有的 DNS 區域中建立 DNS A 記錄。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
@@ -52,7 +52,7 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-需要有此名稱，才能將應用程式部署至 AKS 叢集，並顯示在下列範例輸出中：
+將應用程式部署至 AKS 叢集時需要此名稱，如下列範例輸出所示：
 
 ```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-將網頁瀏覽器開啟至*aks-helloworld \<CLUSTER_SPECIFIC_DNS_ZONE\> 。* 例如*aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io*並確認您看到示範應用程式。 應用程式可能需要幾分鐘的時間才會出現。
+開啟網頁瀏覽器以*aks-helloworld。 \<CLUSTER_SPECIFIC_DNS_ZONE\> *例如， *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io*並確認您看到示範應用程式。 應用程式可能需要幾分鐘的時間才會出現。
 
 ## <a name="remove-http-routing"></a>移除 HTTP 路由
 
@@ -259,7 +259,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>清除
 
-使用移除在本文中建立的相關聯 Kubernetes 物件 `kubectl delete` 。
+使用，移除在本文中建立的相關聯 Kubernetes 物件 `kubectl delete` 。
 
 ```bash
 kubectl delete -f samples-http-application-routing.yaml
@@ -275,7 +275,7 @@ service "aks-helloworld" deleted
 ingress "aks-helloworld" deleted
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需在 AKS 中安裝 HTTPS 所保護之輸入控制器的相關資訊，請參閱 [Azure Kubernetes Service (AKS) 上的 HTTPS 輸入][ingress-https]。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270745"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>使用入口網站建立 Azure 堡壘主機

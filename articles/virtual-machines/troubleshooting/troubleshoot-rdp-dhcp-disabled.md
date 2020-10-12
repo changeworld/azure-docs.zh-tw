@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 945f8896a844e7a73107df44d03abc7290f4e3fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999128"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>因為停用 DHCP 用戶端服務，而無法 RDP 連線至 Azure 虛擬機器
@@ -24,10 +24,10 @@ ms.locfileid: "86999128"
 本文描述在 VM 中停用 DHCP 用戶端服務之後，您無法將遠端桌面連線至 Azure Windows 虛擬機器 (VM) 的問題。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 由於 VM 的 DHCP 用戶端服務已停用，因此您無法 RDP 連線至 Azure 中的 VM。 當您檢查 Azure 入口網站中[開機診斷](../troubleshooting/boot-diagnostics.md)的螢幕擷取畫面時，您會在登入畫面中看到 VM 正常開機並等候認證。 您使用事件檢視器從遠端檢視 VM 中的事件記錄。 您會看到 DHCP 用戶端服務未啟動，或無法啟動。 下列為記錄範例：
 
-**記錄名稱**：系統 </br>
+**記錄檔名稱**：系統 </br>
 **來源**：服務控制管理員 </br>
 **日期**：12/16/2015 11:19:36 AM </br>
 **事件識別碼**：7022 </br>
@@ -53,7 +53,7 @@ VM 上的 DHCP 用戶端服務並未執行。
 > [!NOTE]
 > 本文僅適用於 DHCP 用戶端服務而非 DHCP 伺服器。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -111,7 +111,7 @@ VM 上的 DHCP 用戶端服務並未執行。
    $wc = New-Object System.Net.WebClient
    $wc.DownloadFile($source,$destination)
    ```
-3. 現在啟動**procmon**追蹤：
+3. 現在啟動 **procmon** 追蹤：
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
@@ -206,7 +206,7 @@ VM 上的 DHCP 用戶端服務並未執行。
 
 1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 啟動復原 VM 的遠端桌面連線。 確定連結的磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給所連結 OS 磁碟的磁碟機代號。
-3.  開啟提升許可權的命令提示字元實例（以**系統管理員身分執行**）。 然後執行下列指令碼。 此腳本假設指派給所連結 OS 磁片的磁碟機號是**F**。以您 VM 中的值適當地取代字母。
+3.  開啟提升許可權的命令提示字元實例， (以 **系統管理員身分執行**) 。 然後執行下列指令碼。 此腳本假設指派給所連結 OS 磁片的磁碟機號是 **F**。將字母取代為您 VM 中的值適當的值。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

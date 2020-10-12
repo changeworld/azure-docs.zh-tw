@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999491"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple 裝置管理員服務監視硬體元件和狀態
@@ -49,11 +49,11 @@ ms.locfileid: "86999491"
 
 1. 瀏覽至 **裝置**，選取特定的 StorSimple 裝置。 移至 [監視] > [硬體健康狀態]****。
 
-    ![螢幕擷取畫面，其中顯示 [Device Manager] 服務的 [設定] 分頁。 在 [監視] 底下，選取 [硬體健康情況]。](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
+    ![顯示裝置管理員服務的 [設定] 分頁的螢幕擷取畫面。 在 [監視] 下，已選取 [硬體健康狀態]。](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
 2. 找出 [硬體元件]**** 區段並選擇可用的元件。 只要按一下元件標籤，即可展開清單並檢視各種裝置元件的狀態。 請參閱[主要機箱的詳細元件清單](#component-list-for-primary-enclosure-of-storsimple-device)和 [EBOD 機箱的詳細元件清單](#component-list-for-ebod-enclosure-of-storsimple-device)。
 
-    ![螢幕擷取畫面：顯示在 [硬體元件] 區段中選取的一個元件。 連續的分頁會顯示該元件部分的名稱和狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
+    ![顯示在 [硬體元件] 區段中選取一個元件的螢幕擷取畫面。 連續的分頁會顯示該元件部分的名稱和狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. 您可以使用下列色彩編碼配置來解譯元件狀態：
    
@@ -64,22 +64,22 @@ ms.locfileid: "86999491"
    
    下列螢幕擷取畫面顯示有元件處於 [正常]****、[警告]**** 和 [失敗]**** 狀態的裝置。
        
-   ![螢幕擷取畫面，顯示硬體元件區段中的三個元件：一個處於正常狀態、一個處於失敗狀態，另一個處於警告狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
+   ![螢幕擷取畫面，顯示 [硬體元件] 區段中的三個元件：一個處於 [正常] 狀態、一個處於失敗狀態，另一個處於警告狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
    展開 [共用的元件清單]****，我們可以看到 NVRAM 與叢集已降級。
 
-   ![顯示已選取 [共用元件] 專案的螢幕擷取畫面。 在連續的分頁中，N V R A M 和叢集處於警告狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
+   ![螢幕擷取畫面，顯示已選取的共用元件專案。 在連續的 blade 中，N V R A M 和叢集處於警告狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
    展開 [控制器 1 元件]**** 清單，我們可以看到叢集節點失敗。  
 
-   ![顯示已選取 [控制器1元件] 專案的螢幕擷取畫面。 在連續的分頁中，叢集節點處於失敗狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
+   ![螢幕擷取畫面，顯示已選取控制器1元件專案。 在連續的 blade 中，叢集節點處於失敗狀態。](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
 4. 如果您遇到狀態不是「狀況良好」 **** 的元件，請連絡 Microsoft 支援服務。 如果您的裝置上啟用警示，您會收到電子郵件警示。 如果您必須更換失敗的硬體元件，請參閱 [StorSimple 硬體元件更換](storsimple-hardware-component-replacement.md)。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple 裝置之主要機箱的元件清單
 下表摘要列出您內部部署 StorSimple 裝置之主要機箱 (在 8100 和 8600 中皆為贈品) 中包含的實體和邏輯元件。
 
-| 元件 | 模組 | 類型 | Location | 現場可更換單位 (FRU)？ | 描述 |
+| 元件 | 模組 | 類型 | Location | 現場可更換單位 (FRU)？ | 說明 |
 | --- | --- | --- | --- | --- | --- |
 | 插槽 [0-11] 中的磁碟機 |磁碟機 |實體 |共用 |是 |主要機箱中的每個 SSD 或 HDD 磁碟機都表示為一行。 |
 | 周圍溫度感應器 |機箱 |實體 |共用 |否 |測量底座內溫度。 |
@@ -93,18 +93,18 @@ ms.locfileid: "86999491"
 | 電源供應器 [0-1] |PCM |實體 |共用 |是 |位於裝置背面的兩個 PCM 中的每個電源供應器都表示為一行。 |
 | 冷卻 [0-1] |PCM |實體 |共用 |是 |位於兩個 PCM 中的四部冷卻風扇都表示為一行。 |
 | 電池 [0-1] |PCM |實體 |共用 |是 |位於 PCM 中的每個備份電池模組都表示為一行。 |
-| Metis |不適用 |邏輯 |共用 |不適用 |顯示電池狀態：是否需要充電和生命週期是否即將結束。 |
-| 叢集 |不適用 |邏輯 |共用 |不適用 |顯示兩個整合式控制器模組之間建立的叢集狀態。 |
-| 叢集節點 |不適用 |邏輯 |共用 |不適用 |指出做為叢集一部分的控制器狀態。 |
-| 叢集仲裁 |不適用 |邏輯 | |不適用 |指出 HDD 儲存體集區中大部分磁碟成員資格的目前狀態。 |
-| HDD 資料空間 |不適用 |邏輯 |共用 |不適用 |儲存空間可用於硬碟 (HDD) 儲存體集區中的資料。 |
-| HDD 管理空間 |不適用 |邏輯 |共用 |不適用 |管理工作的 HDD 儲存體集區中保留的空間。 |
-| HDD 仲裁空間 |不適用 |邏輯 |共用 |不適用 |叢集仲裁的 HDD 儲存體集區中保留的空間。 |
-| HDD 更換空間 |不適用 |邏輯 |共用 |不適用 |控制器更換的 HDD 儲存體集區中保留的空間。 |
-| SSD 資料空間 |不適用 |邏輯 |共用 |不適用 |儲存空間可用於固態硬碟 (SSD) 存放集區中的資料。 |
-| SSD NVRAM 空間 |不適用 |邏輯 |共用 |不適用 |SSD 儲存體集區中 NVRAM 邏輯專用的儲存空間。 |
-| HDD 儲存體集區 |不適用 |邏輯 |共用 |不適用 |顯示從裝置 HDD 建立之邏輯儲存體集區的狀態。 |
-| SSD 儲存體集區 |不適用 |邏輯 |共用 |不適用 |顯示從裝置 SSD 建立之邏輯儲存體集區的狀態。 |
+| Metis |N/A |邏輯 |共用 |N/A |顯示電池狀態：是否需要充電和生命週期是否即將結束。 |
+| 叢集 |N/A |邏輯 |共用 |N/A |顯示兩個整合式控制器模組之間建立的叢集狀態。 |
+| 叢集節點 |N/A |邏輯 |共用 |N/A |指出做為叢集一部分的控制器狀態。 |
+| 叢集仲裁 |N/A |邏輯 | |N/A |指出 HDD 儲存體集區中大部分磁碟成員資格的目前狀態。 |
+| HDD 資料空間 |N/A |邏輯 |共用 |N/A |儲存空間可用於硬碟 (HDD) 儲存體集區中的資料。 |
+| HDD 管理空間 |N/A |邏輯 |共用 |N/A |管理工作的 HDD 儲存體集區中保留的空間。 |
+| HDD 仲裁空間 |N/A |邏輯 |共用 |N/A |叢集仲裁的 HDD 儲存體集區中保留的空間。 |
+| HDD 更換空間 |N/A |邏輯 |共用 |N/A |控制器更換的 HDD 儲存體集區中保留的空間。 |
+| SSD 資料空間 |N/A |邏輯 |共用 |N/A |儲存空間可用於固態硬碟 (SSD) 存放集區中的資料。 |
+| SSD NVRAM 空間 |N/A |邏輯 |共用 |N/A |SSD 儲存體集區中 NVRAM 邏輯專用的儲存空間。 |
+| HDD 儲存體集區 |N/A |邏輯 |共用 |N/A |顯示從裝置 HDD 建立之邏輯儲存體集區的狀態。 |
+| SSD 儲存體集區 |N/A |邏輯 |共用 |N/A |顯示從裝置 SSD 建立之邏輯儲存體集區的狀態。 |
 | 控制器 [0-1] [狀態] |I/O |實體 |控制器 |是 |顯示控制器的狀態，以及它在底座內是作用中或待命模式。 |
 | 控制器中的溫度感應器 |I/O |實體 |控制器 |否 |I/O 模組、CPU 溫度、DIMM 和 PCIe 感應器等許多溫度感應器都會顯示其狀態，指出溫度是否在容許範圍內。 |
 | SAS 擴展器 |I/O |實體 |控制器 |否 |指出序列連接 SCSI (SAS) 擴展器的狀態，此擴展器用來連接到控制器的整合式儲存體。 |
@@ -120,7 +120,7 @@ ms.locfileid: "86999491"
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>StorSimple 裝置之 EBOD 機箱的元件清單
 下表摘要列出您內部部署 StorSimple 裝置之 EBOD 機箱 (只在 8600 機型中為贈品) 中包含的實體和邏輯元件。
 
-| 元件 | 模組 | 類型 | Location | FRU？ | 描述 |
+| 元件 | 模組 | 類型 | Location | FRU？ | 說明 |
 | --- | --- | --- | --- | --- | --- |
 | 插槽 [0-11] 中的磁碟機 |磁碟機 |實體 |共用 |是 |EBOD 機箱前方的每個 HDD 磁碟機都表示為一行。 |
 | 周圍溫度感應器 |機箱 |實體 |共用 |否 |測量底座內溫度。 |
@@ -133,7 +133,7 @@ ms.locfileid: "86999491"
 | PCM 中的溫度感應器 |PCM |實體 |共用 |否 |許多溫度感應器 (例如入口和熱點感應器) 都會顯示其狀態，其指出測量的溫度是否在容許範圍內。 |
 | 電源供應器 [0-1] |PCM |實體 |共用 |是 |位於裝置背面的兩個 PCM 中的每個電源供應器都表示為一行。 |
 | 冷卻 [0-1] |PCM |實體 |共用 |是 |位於兩個 PCM 中的四部冷卻風扇都表示為一行。 |
-| 本機儲存體 [HDD] |不適用 |邏輯 |共用 |不適用 |顯示從裝置 HDD 建立之邏輯儲存體集區的狀態。 |
+| 本機儲存體 [HDD] |N/A |邏輯 |共用 |N/A |顯示從裝置 HDD 建立之邏輯儲存體集區的狀態。 |
 | 控制器 [0-1] [狀態] |I/O |實體 |控制器 |是 |EBOD 模組中會顯示控制器的狀態。 |
 | EBOD 中的溫度感應器 |I/O |實體 |控制器 |否 |來自每部控制器的許多溫度感應器都會顯示其狀態，其指出溫度是否在容許範圍內。 |
 | SAS 擴展器 |I/O |實體 |控制器 |否 |指出 SAS 擴展器的狀態，此擴展器用來連接到控制器的整合式儲存體。 |

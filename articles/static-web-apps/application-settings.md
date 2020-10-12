@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
 ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250023"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>設定 Azure Static Web Apps 預覽版本的應用程式設定
@@ -110,7 +110,7 @@ Azure 入口網站提供的介面可用來建立、更新、刪除應用程式�
 
 1. 按一下 [確定]。
 
-1. 按一下 [檔案]  。
+1. 按一下 **[儲存]** 。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -144,7 +144,7 @@ Azure CLI 命令需要幾個您帳戶的專屬值才能執行上傳。 從您的
 2. 資源群組名稱
 3. 訂用帳戶識別碼
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps 概觀":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps 的設定檢視":::
 
 4. 從終端機或命令列，執行下列命令。 請務必將預留位置 `<YOUR_STATIC_SITE_NAME>`、`<YOUR_RESOURCE_GROUP_NAME>`、`<YOUR_SUBSCRIPTION_ID>` 取代為您在 [概觀] 視窗中的值。
 

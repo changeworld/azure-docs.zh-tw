@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203849"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>在有中速至高速的網路頻寬之情況下進行大型資料集的資料轉送
@@ -51,7 +51,7 @@ ms.locfileid: "86203849"
 
 - **AzCopy**：使用此命令列工具可獲得最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
 - **Azure 儲存體 REST API/SDK**：當您在建置應用程式時，您可以針對 Azure 儲存體 REST API 來開發應用程式，並使用以多種語言提供的 Azure SDK。
-- **適用于線上傳輸的 Azure 資料箱系列**– Data Box Edge 和資料箱閘道是線上網路裝置，可將資料移入和移出 Azure。 當在上傳資料之前，同時需要持續擷取資料及預先處理資料時，使用 Data Box Edge 實體裝置。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。 在每個案例中，資料轉送都是由裝置管理。
+- **適用于線上傳輸的 Azure 資料箱系列** – Data box Edge 和 Data box Gateway 是可將資料移入和移出 Azure 的線上網路裝置。 當在上傳資料之前，同時需要持續擷取資料及預先處理資料時，使用 Data Box Edge 實體裝置。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。 在每個案例中，資料轉送都是由裝置管理。
 - **Azure Data Factory** - Data Factory 應該用於擴充轉送作業，如果需要協調流程和監視功能也可以使用它。 使用 Azure Data Factory 以在數個 Azure 服務、內部部署之間或這兩者的組合之間，定期轉送檔案。 您可以使用 Data Factory 來建立資料驅動的工作流程 (管線) 並進行排程，工作流程會從不同的資料存放區內嵌資料，並自動進行資料移動和資料轉送。
 
 ## <a name="comparison-of-key-capabilities"></a>主要功能的比較
@@ -65,9 +65,9 @@ ms.locfileid: "86203849"
 |                                     |    資料箱磁碟      |    資料箱                                      |    Data Box Heavy            |    匯入/匯出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    **資料大小**                    |    最多 35 TB                 |    每個裝置最多 80 TB                       |    每個裝置最多 800 TB               |    變數                            |
-|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 檔案儲存體                    |    Azure Blob<br>Azure 檔案儲存體            |    Azure Blob<br>Azure 檔案儲存體          |
+|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 檔案                    |    Azure Blob<br>Azure 檔案            |    Azure Blob<br>Azure 檔案          |
 |    **板型規格**                  |    每筆訂單 5 個 SSD             |    每筆訂單 1 X 50 磅 桌上型電腦大小裝置    |    每筆訂單 1 X ~500 磅 大型裝置    |    每筆訂單最多 10 個 HDD/SSD        |
-|    **初始設定時間**               |    低度 <br>(15 分鐘)            |    低至中度 <br> (<30 分鐘)               |    中度<br>(1-2 小時)               |    中度到困難<br>(變動) |
+|    **初始設定時間**               |    低 <br>(15 分鐘)            |    低至中度 <br> (<30 分鐘)               |    中<br>(1-2 小時)               |    中度到困難<br>(變動) |
 |    **將資料傳送到 Azure**           |    是                          |    是                                           |    是                                   |    是                                 |
 |    **從 Azure 匯出資料**           |    否                           |    否                                            |    否                                    |    是                                 |
 |    **加密**                   |    AES 128 位元                  |    AES 256 位元                                   |    AES 256 位元                           |    AES 128 位元                         |
@@ -87,13 +87,13 @@ ms.locfileid: "86203849"
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    **Data type**              |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案                           |   支援 70 種以上的資料存放區和格式化資料連接器    |
 |    **板型規格**            |    命令列工具                        |    程式設計介面                    |    Microsoft 提供的虛擬 <br>或實體裝置     |    Azure 入口網站中的服務                                            |
-|    **初始的單次設定** |    簡單               |    中度                       |    簡單 (<30 分鐘) 至中度 (1-2 小時)            |    大規模                                                          |
-|    **資料預先處理**          |    否                                        |    否                                        |    是 (使用 Edge 計算)                               |    是                                                                |
+|    **初始的單次設定** |    簡單               |    中                       |    簡單 (<30 分鐘) 至中度 (1-2 小時)            |    大規模                                                          |
+|    **資料前置處理**          |    否                                        |    否                                        |    是 (使用 Edge 計算)                               |    是                                                                |
 |    **從其他雲端轉送**   |    否                                        |    否                                        |    否                                                    |    是                                                                |
 |    **使用者類型**                    |    IT 專業人員或開發人員                                       |    Dev                                       |    IT 專業人員                                                |    IT 專業人員                                                             |
 |    **定價**                      |    適用免費資料輸出費用         |    適用免費資料輸出費用         |    [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [了解如何使用匯入/匯出轉送資料](/azure/storage/common/storage-import-export-data-to-blobs)。
 - 了解如何

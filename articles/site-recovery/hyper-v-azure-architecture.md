@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495721"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 至 Azure 的災害復原架構
@@ -36,7 +36,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 **Hyper-V 至 Azure 架構 (不含 VMM)**
 
-![此圖顯示內部部署 Hyper-v 網站至 Azure 架構（不含 VMM）。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![顯示內部部署 Hyper-v 網站至 Azure 架構的圖表（不含 VMM）。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>架構元件 - 包含 VMM 的 Hyper-V
@@ -53,11 +53,11 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 **Hyper-V 至 Azure 架構 (包含 VMM)**
 
-![顯示內部部署 Hyper-v 網站至 Azure 架構與 VMM 的圖表。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![此圖顯示使用 VMM 的內部部署 Hyper-v 網站與 Azure 架構。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>設定輸出網路連線能力
 
-若要讓 Site Recovery 如預期般運作，您需要修改輸出網路連線能力，以允許您的環境進行複寫。
+如需 Site Recovery 如預期般運作，您必須修改輸出網路連線能力，以允許您的環境進行複寫。
 
 > [!NOTE]
 > Site Recovery 不支援使用驗證 Proxy 來控制網路連線能力。
@@ -66,7 +66,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
 
-| **名稱**                  | **商業**                               | **政府機關**                                 | **說明** |
+| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
@@ -76,7 +76,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 ## <a name="replication-process"></a>複寫程序
 
-![顯示 Hyper-v 到 Azure 複寫程式的圖表](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![顯示 Hyper-v 至 Azure 複寫進程的圖表](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **複寫和復原程序**
 
@@ -86,12 +86,12 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 1. 您在 Azure 入口網站或內部部署針對 Hyper-V VM 啟用保護之後，**啟用保護**隨即啟動。
 2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) 方法，以使用您進行的設定來設定複寫。
 3. 作業會啟動初始複寫，方法是叫用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
-4. 您可以在 [**工作**] 索引標籤中監視作業。     ![[工作] 索引標籤中 [作業] 清單的螢幕擷取畫面。 ](media/hyper-v-azure-architecture/image1.png)![[啟用保護] 畫面的螢幕擷取畫面，其中包含更多詳細資料。](media/hyper-v-azure-architecture/image2.png)
+4. 您可以在 [**工作**] 索引標籤中監視作業。     ![[工作] 索引標籤中 [作業] 清單的螢幕擷取畫面。 ](media/hyper-v-azure-architecture/image1.png)![啟用保護畫面的螢幕擷取畫面，其中包含更多詳細資料。](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始資料複寫
 
-1. 觸發初始複寫時，會建立[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))集快照集。
+1. 觸發初始複寫時，會取得 [HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) 集快照集。
 2. VM 上的虛擬硬碟會逐一複寫，直到它們全部複製到 Azure 為止。 視 VM 大小和網路頻寬而定，這可能需要一些時間。 [了解如何](https://support.microsoft.com/kb/3056159)增加網路頻寬。
 3. 如果在初始複寫進行時發生磁碟變更，Hyper-V 複本複寫追蹤器會以 Hyper-V 複寫記錄 (.hrl) 的形式追蹤變更。 這些記錄檔位於與磁碟相同的資料夾中。 每個磁碟都有一個相關聯的.hrl 檔案會傳送至次要儲存體。 當初始複寫正在進行時，快照和記錄檔會取用磁碟資源。
 4. 初始複寫完成時，就會刪除 VM 快照集。
@@ -123,7 +123,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 2. 重新同步處理完成之後，應會繼續進行正常的差異複寫。
 3. 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 例如，如果發生中斷。 若要這樣做，請在入口網站中選取 VM > [重新同步處理]****。
 
-    ![顯示重新同步處理選項的螢幕擷取畫面。](./media/hyper-v-azure-architecture/image4-site.png)
+    ![顯示 [重新同步處理] 選項的螢幕擷取畫面。](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>重試程序
@@ -148,7 +148,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 1. 開始執行從 Azure 至內部部署網站的計劃性容錯移轉：
     - **將停機時間最小化**：如果您使用這個選項，Site Recovery 會在容錯移轉前同步處理資料。 它會檢查變更的資料區塊並將其下載到內部部署網站，而 Azure VM 會保持執行，以將停機時間最小化。 當您手動指定應該完成的容錯移轉時，系統會關閉 Azure VM，複製任何最終的差異變更，而容錯移轉會開始。
-    - **完整下載**：使用此選項時，資料會在容錯移轉期間進行同步處理。 此選項會下載整個磁碟。 它的速度更快，因為未計算任何總和檢查碼，但有更多的停機時間。 如果您已執行複本 Azure VM 一段時間，或已刪除內部部署 VM，請使用這個選項。
+    - **完整下載**：使用此選項時，資料會在容錯移轉期間同步處理。 此選項會下載整個磁碟。 它的速度更快，因為未計算任何總和檢查碼，但有更多的停機時間。 如果您已執行複本 Azure VM 一段時間，或已刪除內部部署 VM，請使用這個選項。
     - **建立 VM**：您可以選擇容錯回復到相同的 VM 或替代 VM。 您可指定 Site Recovery 應該建立 VM (如果尚未存在)。
 
 2. 初始同步處理完成之後，您可選擇完成容錯移轉。 完成之後，您可登入內部部署 VM 來檢查一切是否如預期般運作。 在 Azure 入口網站中，您可以看到 Azure VM 已停止。
@@ -157,7 +157,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 
 遵循[此教學課程](tutorial-prepare-azure.md)以開始使用 Hyper-V 至 Azure 的複寫。

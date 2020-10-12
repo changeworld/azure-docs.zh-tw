@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75364946"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure 監視器記錄查詢中的 workspace() 運算式
@@ -18,9 +18,9 @@ ms.locfileid: "75364946"
 在 Azure 監視器查詢中，`workspace` 運算式用來從相同資源群組、另一個資源群組或另一個訂用帳戶中的特地工作區擷取資料。 這適用於在 Application Insights 查詢中包含記錄資料，以及在記錄查詢中跨多個工作區查詢資料。
 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
-`workspace(`*標識*`)`
+`workspace(`*識別碼*`)`
 
 ## <a name="arguments"></a>引數
 
@@ -34,7 +34,7 @@ ms.locfileid: "75364946"
 | Azure 資源識別碼 | Azure 資源的識別碼 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>備註
+## <a name="notes"></a>注意
 
 * 您必須有工作區的讀取權限。
 * 相關的運算式是 `app`，這可讓您跨 Application Insights 應用程式執行查詢。
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[應用程式運算式](app-expression.md)來參考 Application Insights 應用程式。
+- 請參閱 [應用程式運算式](app-expression.md) 來參考 Application Insights 應用程式。
 - 了解 [Azure 監視器資料](log-query-overview.md)的儲存方式。
 - 存取 [Kusto 查詢語言](/azure/kusto/query/)的完整文件。

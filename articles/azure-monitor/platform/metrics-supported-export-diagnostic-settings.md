@@ -1,47 +1,47 @@
 ---
 title: 具有 Null 和零值的計量匯出行為
-description: 匯出度量和無法匯出的計量清單的指標時，會討論 Null 和零值。
+description: 匯出度量時的 Null 與零值的討論，以及無法匯出的計量清單指標。
 services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
 ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131679"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可透過診斷設定匯出的 Azure 監視器平台計量
 
 Azure 監視器依預設會提供未設定的[平台計量](data-platform-metrics.md)。 其中提供數種與平台計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 請參閱[支援的計量](metrics-supported.md)，以了解目前可供 Azure 監視器的合併計量管線使用的所有平台計量。 若要查詢及存取這些計量，請使用 [2018-01-01 api-version](/rest/api/monitor/metricdefinitions)。 其他計量可在入口網站中或使用舊版 API 提供。
 
-## <a name="metrics-not-exportable-via-diagnostic-settings"></a>無法透過診斷設定匯出計量
+## <a name="metrics-not-exportable-via-diagnostic-settings"></a>無法透過診斷設定匯出的計量
 
-用在此位置的內容已移至[支援的 Azure 監視器計量清單](metrics-supported.md#exporting-platform-metrics-to-other-locations)。
+在此位置使用的內容已移至 [支援的 Azure 監視器計量清單](metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
-透過診斷設定匯出計量時，會有一些限制。 所有計量都可使用 REST API 進行匯出。 
+透過診斷設定匯出計量時有一些限制。 所有度量都可使用 REST API 匯出。 
 
-## <a name="exported-zero-vs-null-values"></a>已匯出零與 Null 值 
+## <a name="exported-zero-vs-null-values"></a>匯出零與 Null 值 
 
-處理0或 Null 值時，計量會有不同的行為。  某些計量會在未取得任何資料時回報0，例如 HTTP 失敗的計量。 當沒有資料取得時，其他計量會儲存 Null，因為它可能表示資源已離線。 您可以在以[虛線](metrics-troubleshoot.md#chart-shows-dashed-line)顯示具有 Null 值的這些計量圖表時，看到差異。 
+處理0或 Null 值時，計量會有不同的行為。  某些計量會在未取得任何資料（例如 HTTP 失敗的計量）時報告0。 當未取得任何資料時，其他計量會儲存 Null，因為這可能表示資源已離線。 使用 Null 值顯示為 [虛線](metrics-troubleshoot.md#chart-shows-dashed-line)時，您可以看到差異。 
 
-當平臺計量可以透過診斷設定匯出時，它們會符合度量的行為。 也就是說，當資源不傳送任何資料時，它們會匯出 Null。  它們只會匯出 ' 0 '，但只有當基礎資源確實發出它們時。 
+當平臺計量可以透過診斷設定匯出時，它們會符合度量的行為。 也就是說，當資源未傳送任何資料時，它們會匯出 Null。  只有當基礎資源真正發出時，才會匯出 ' 0 '。 
 
-如果您刪除資源群組或特定資源，受影響資源的計量資料就不會再傳送到診斷設定匯出目的地。 也就是說，它不會再出現在事件中樞、Azure 儲存體帳戶和 Log Analytics 工作區中。
+如果您刪除資源群組或特定資源，受影響資源的計量資料將不再傳送到診斷設定匯出目的地。 也就是說，它不會再出現在事件中樞、Azure 儲存體帳戶和 Log Analytics 工作區中。
 
-### <a name="metrics-that-used-to-export-zero-for-null"></a>用來匯出零為 Null 的計量
+### <a name="metrics-that-used-to-export-zero-for-null"></a>用來匯出零值的計量
 
-在2020年6月1日前，下列計量**用來**在沒有資料時發出 ' 0 '。 然後，這些零可以匯出到下游系統（例如 Log Analytics 和 Azure 儲存體）。  這種行為會造成實際 ' 0 ' （由資源所發出）與轉譯 ' 0 ' （Null）之間的混淆，因此行為已變更為符合上一節中所述的基礎度量。 
+在2020年6月1日前，下列計量會在沒有資料時 **用來** 發出 ' 0 '。 然後，您可以將那些零匯出到 Log Analytics 和 Azure 儲存體之類的下游系統。  這種行為會造成資源) 發出的實際 ' 0 ' (之間有一些混淆，並將 ' 0 (' 表示) ，因此行為已變更為符合上一節所述之基礎度量的值。 
 
-變更發生在所有公用和私人雲端。
+變更發生在所有公用和私人雲端中。
 
-這項變更並不會影響下列任何經驗的行為： 
+這項變更不會影響下列任何體驗的行為： 
    - 透過診斷設定匯出的平臺資源記錄
    - 計量瀏覽器中的計量圖表
    - 平台計量的警示
  
-以下是其行為已變更的計量清單。 
+以下是其行為變更的度量清單。 
 
 | ResourceType                    | 計量               |  MetricDisplayName  | 
 |---------------------------------|----------------------|---------------------|
@@ -533,9 +533,9 @@ Azure 監視器依預設會提供未設定的[平台計量](data-platform-metric
 | Microsoft.Sql/servers/databases | wlg_active_queries | 工作負載群組使用中查詢 | 
 | Microsoft.Sql/servers/databases | wlg_queued_queries | 已排入佇列的工作負載群組查詢 | 
 | Microsoft.Sql/servers/databases | active_queries | 現用查詢 | 
-| Microsoft.Sql/servers/databases | queued_queries | 佇列查詢 | 
+| Microsoft.Sql/servers/databases | queued_queries | 排入佇列的查詢 | 
 | Microsoft.Sql/servers/databases | wlg_active_queries_timeouts | 工作負載群組查詢逾時 | 
-| Microsoft.Sql/servers/databases | wlg_queued_queries_timeouts | 工作負載群組佇列查詢超時 | 
+| Microsoft.Sql/servers/databases | wlg_queued_queries_timeouts | 工作負載群組已排入佇列的查詢超時 | 
 | Microsoft.Sql/servers/databases | wlg_effective_min_resource_percent | 有效的最低資源百分比 | 
 | Microsoft.Sql/servers/databases | wlg_effective_cap_resource_percent | 有效的容量資源百分比 | 
 | Microsoft.Sql/servers/elasticPools | cpu_percent | CPU 百分比 | 

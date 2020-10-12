@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145329"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>將 Azure 事件方格自訂主題移至另一個區域
@@ -38,22 +38,10 @@ ms.locfileid: "89145329"
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="搜尋並選取事件方格主題":::
 3. 選取您要匯出至 Resource Manager 範本的 **主題** 。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="選取自訂主題":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="搜尋並選取事件方格主題":::   
 4. 在**事件方格主題**頁面上，選取左側功能表的 **[設定**] 底下的 [**匯出範本**]，然後在工具列上選取 [**下載**]。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="匯出範本-> 下載":::   
-
-    > [!IMPORTANT]
-    > 只會將主題匯出至範本。 未匯出主題的訂閱。 因此，在將主題移至目的地區域之後，您必須建立主題的訂閱。 
-5. 找出您從入口網站下載的 **.zip** 檔案，並將該檔案解壓縮至您選擇的資料夾。 此 zip 檔案包含範本和參數的 JSON 檔案。 
-1. 在您選擇的編輯器中開啟 **template.js** 。 
-8. 將 `location` **主題** 資源更新至目的地區域或位置。 若要取得位置代碼，請參閱 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 區域的程式碼是沒有空格的區功能變數名稱稱，例如， `West US` 等於 `westus` 。
-
-    ```json
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2020-06-01",
-    "name": "[parameters('topics_mytopic0130_name')]",
-    "location": "westus"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="搜尋並選取事件方格主題"
     ```
 1. **儲存** 範本。 
 
@@ -63,7 +51,7 @@ ms.locfileid: "89145329"
 1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 2. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
 3. 選取 **範本部署**。
-4. 選取 [建立]。
+4. 選取 [建立]****。
 5. 選取 [在編輯器中組建您自己的範本]。
 6. 選取 [ **載入**檔案]，然後依照指示載入您在上一節中下載的 **template.js** 檔案。
 7. 選取 [ **儲存** ] 以儲存範本。 
@@ -74,14 +62,14 @@ ms.locfileid: "89145329"
     1. 針對 [ **主題名稱**]，輸入主題的新名稱。 
     1. 選取頁面底部的 [檢閱 + 建立]。 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="自訂部署":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="搜尋並選取事件方格主題":::
     1. 在 [ **審核 + 建立** ] 頁面上，檢查 [設定]，然後選取 [ **建立**]。 
 
 ## <a name="verify"></a>Verify
 
 1. 部署成功之後，選取 [移至資源]****。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="前往資源":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="搜尋並選取事件方格主題":::
 1. 確認您看到自訂主題的 **事件方格主題** 頁面。   
 1. 依照將 [自訂事件路由至 web 端點](custom-event-quickstart-portal.md#send-an-event-to-your-topic) 的步驟，將事件傳送至主題。 確認已叫用 webhook 事件處理常式。 
 
@@ -102,7 +90,7 @@ ms.locfileid: "89145329"
 2. 選取要刪除的資源群組，然後從工具列中選取 [ **刪除** ]。 
 3. 在 [確認] 頁面上，輸入資源群組的名稱，然後選取 [ **刪除**]。  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 您已瞭解如何將事件方格自訂主題從一個區域移至另一個區域。 請參閱下列文章，以瞭解如何跨區域移動系統主題、網域及夥伴命名空間。
 
 - [跨區域移動系統主題](move-system-topics-across-regions.md)。 

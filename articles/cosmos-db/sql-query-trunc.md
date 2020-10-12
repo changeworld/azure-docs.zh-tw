@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 TRUNC
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 TRUNC。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 TRUNC。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8bad33f593bae2679c83d59ae4567dcab4a64809
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78304220"
 ---
-# <a name="trunc-azure-cosmos-db"></a>TRUNC （Azure Cosmos DB）
+# <a name="trunc-azure-cosmos-db"></a>TRUNC (Azure Cosmos DB) 
  傳回數值，截斷至最接近的整數值。  
   
 ## <a name="syntax"></a>語法

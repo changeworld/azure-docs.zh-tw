@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86205845"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自動調整 Azure API 管理執行個體  
@@ -25,9 +25,9 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 本文將逐步解說設定自動調整的程序，並建議自動調整規則的最佳設定。
 
 > [!NOTE]
-> 取用**層中**的 API 管理服務會根據流量自動調整，而不需要任何額外的設定。
+> **使用量**層中的 API 管理服務會根據流量自動調整，而不需要任何額外的設定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依照本文中的步驟進行，您必須：
 
@@ -87,7 +87,7 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
     | *動作*              |                   |                                                                                                                                                                                                                                                                                 |
     | 作業             | 將計數增加 |                                                                                                                                                                                                                                                                                 |
     | 執行個體計數        | 1                 | 將 Azure API 管理執行個體相應放大 1 個單位。                                                                                                                                                                                                                          |
-    | 緩和時間 (分鐘)   | 60                | Azure API 管理服務需要至少20分鐘的時間來相應放大。在大部分情況下，60分鐘的「冷卻」期間，會導致無法觸發許多相應放大。                                                                                                  |
+    | 緩和時間 (分鐘)   | 60                | Azure API 管理服務需要至少20分鐘的時間來相應放大。在大部分的情況下，60分鐘的冷卻期會防止觸發許多相應放大。                                                                                                  |
 
 8. 按一下 [新增]  以儲存規則。
 
@@ -127,9 +127,9 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 
     ![Azure 監視器的相應縮小規則](media/api-management-howto-autoscale/07.png)
 
-13. 按一下 [儲存]。 您已設定自動調整。
+13. 按一下 **[儲存]** 。 您已設定自動調整。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [如何將 Azure API 管理服務執行個體部署到多個 Azure 區域](api-management-howto-deploy-multi-region.md)
 - [優化並節省您的雲端費用](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -7,10 +7,10 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81532576"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
@@ -21,21 +21,21 @@ ms.locfileid: "81532576"
 
 ## <a name="open-ftp-dashboard"></a>開啟 FTP 儀表板
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [**應用程式服務**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [ **應用程式服務**]。
 
-    ![搜尋 [應用程式服務]。](media/app-service-continuous-deployment/search-for-app-services.png)
+    ![搜尋應用程式服務。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-2. 選取您想要部署的 web 應用程式。
+2. 選取您要部署的 web 應用程式。
 
     ![選取您的應用程式。](media/app-service-continuous-deployment/select-your-app.png)
 
-3. 選取 [**部署中心**] [  >  **FTP**  >  **儀表板**]。
+3. 選取 [**部署中心**  >  **FTP**  >  **儀表板**]。
 
     ![開啟 FTP 儀表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>取得 FTP 連線資訊
 
-在 FTP 儀表板中，選取 [**複製**] 以複製 FTPS 端點和應用程式認證。
+在 FTP 儀表板中選取 [ **複製** ]，以複製 FTPS 端點和應用程式認證。
 
 ![複製 FTP 資訊](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
@@ -67,11 +67,11 @@ ms.locfileid: "81532576"
 
 ## <a name="enforce-ftps"></a>強制使用 FTPS
 
-為了加強安全性，您應該只允許透過 TLS/SSL 的 FTP。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
+為了加強安全性，您應該只允許 FTP over TLS/SSL。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
 
-在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中，從左側導覽**中選取**  >  **[設定] [一般設定**]。
+在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中 **，選取**  >  左側導覽中的 **[設定一般設定**]。
 
-若要停用未加密的 FTP，請選取 [僅在**FTP 狀態**中**FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [**停用**]。 完成時，按一下 [儲存]****。 如果**只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定**] 分頁，以強制執行 tls 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS]**** 功能。
+若要停用未加密的 FTP，請選取 [只有**ftp 狀態**的**FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [ **停用**]。 完成時，按一下 [儲存]。 如果 **只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定** ] 分頁，強制執行 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS]**** 功能。
 
 ![停用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "81532576"
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>如何透過被動模式連線到 Azure App Service 中的 FTP？
 Azure App Service 支援透過主動與被動模式進行連線。 建議使用被動模式，因為部署電腦通常位於防火牆背後 (或在作業系統中或是家用或公司網路的一部分)。 請參閱 [WinSCP 文件中的範例](https://winscp.net/docs/ui_login_connection)。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需更多的進階部署案例，請嘗試[使用 Git 部署至 Azure ](deploy-local-git.md)。 Git 型部署至 Azure 可啟用版本控制、封裝還原、MSBuild 等等。
 

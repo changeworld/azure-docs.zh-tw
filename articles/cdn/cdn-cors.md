@@ -15,14 +15,14 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921159"
 ---
 # <a name="using-azure-cdn-with-cors"></a>搭配 CORS 使用 Azure CDN
-## <a name="what-is-cors"></a>CORS 是什麼？
+## <a name="what-is-cors"></a>什麼是 CORS？
 CORS (Cross Origin Resource Sharing；跨來源資源共用) 是一項 HTTP 功能，可讓在某個網域下執行的 Web 應用程式存取其他網域中的資源。 為了減少跨網站指令碼攻擊的可能性，所有現代網頁瀏覽器都實作稱為 [Same-Origin Policy (同源原則)](https://www.w3.org/Security/wiki/Same_Origin_Policy)的安全性限制。  這樣可以防止網頁呼叫其他網域中的 API。  CORS 提供安全的方式來允許從一個來源 (來源網域) 呼叫其他來源中的 API。
 
 ## <a name="how-it-works"></a>運作方式
@@ -30,7 +30,7 @@ CORS 要求有兩種類型，*簡單要求*和*複雜要求*。
 
 ### <a name="for-simple-requests"></a>對於簡單要求︰
 
-1. 瀏覽器會傳送有額外**來源** HTTP 要求標頭的 CORS 要求。 此標頭的值是提供父頁面的來源，是以*通訊協定、* *網域*和*連接埠*的組合來定義的。  當 HTTPs \: //www.contoso.com 的頁面嘗試存取 fabrikam.com 來源中的使用者資料時，會將下列要求標頭傳送到 fabrikam.com：
+1. 瀏覽器會傳送有額外**來源** HTTP 要求標頭的 CORS 要求。 此標頭的值是提供父頁面的來源，是以*通訊協定、* *網域*和*連接埠*的組合來定義的。  當來自 HTTPs \: //www.contoso.com 的頁面嘗試存取位於 fabrikam.com 來源的使用者資料時，會將下列要求標頭傳送到 fabrikam.com：
 
    `Origin: https://www.contoso.com`
 
@@ -64,20 +64,20 @@ CORS 要求有兩種類型，*簡單要求*和*複雜要求*。
 如果您要針對 CORS 允許使用特定清單中的來源，則會稍微複雜一點。 問題會在 CDN 快取第一個 CORS 來源的 **Access-Control-Allow-Origin** 標頭時發生。  當其他 CORS 來源發出後續要求時，CDN 會提供已快取的 **Access-Control-Allow-Origin** 標頭，而此標頭會不相符。  有幾個方法可以修正此問題。
 
 ### <a name="azure-cdn-standard-profiles"></a>標準 Azure CDN 設定檔
-在來自 Microsoft 的標準 Azure CDN 上，您可以在[標準規則引擎](cdn-standard-rules-engine-reference.md)中建立規則，以檢查要求的**原始**標頭。 如果是有效的來源，您的規則會將**存取控制-允許來源**標頭設定為所需的值。 在此情況下，會忽略來自檔案源伺服器的**存取控制-允許來源**標頭，而且 CDN 的規則引擎會完全管理允許的 CORS 來源。
+在來自 Microsoft 的 Azure CDN Standard 上，您可以在 [標準規則引擎](cdn-standard-rules-engine-reference.md) 中建立規則，以檢查要求的 **原始** 標頭。 如果是有效的來源，則您的規則會將具有所需值的 **存取控制允許來源** 標頭設定為。 在此情況下，會忽略來自檔案源伺服器的 **存取控制-允許來源** 標頭，且 CDN 的規則引擎會完全管理允許的 CORS 來源。
 
 ![使用標準規則引擎的規則範例](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> 您可以在規則中新增其他動作，以修改其他回應標頭，例如**存取控制-允許方法**。
+> 您可以將其他動作新增至規則，以修改額外的回應標頭，例如 **存取控制-允許的方法**。
 > 
 
-在**來自 Akamai 的 AZURE CDN 標準**上，允許多個來源而不使用萬用字元來源的唯一機制是使用[查詢字串](cdn-query-string.md)快取。 啟用 CDN 端點的查詢字串設定，然後針對來自每個允許之網域的查詢使用唯一的查詢字串。 這麼做將使 CDN 針對每個唯一的查詢字串快取個別物件。 但是這不是最理想的方法，因為它會導致在 CDN 上快取同一個檔案的多個複本。  
+在 **來自 Akamai 的 AZURE CDN 標準**上，唯一允許多個來源的機制（不使用萬用字元來源）是使用 [查詢字串](cdn-query-string.md)快取。 啟用 CDN 端點的查詢字串設定，然後針對來自每個允許之網域的查詢使用唯一的查詢字串。 這麼做將使 CDN 針對每個唯一的查詢字串快取個別物件。 但是這不是最理想的方法，因為它會導致在 CDN 上快取同一個檔案的多個複本。  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>來自 Verizon 的 Azure CDN 進階
-使用 Verizon Premium 規則引擎時，您必須[建立規則](cdn-rules-engine.md)來檢查要求的**原始**標頭。  如果是有效的來源，您的規則將使用要求中提供的來源設定 **Access-Control-Allow-Origin** 標頭。  如果不允許**原始**標頭中指定的來源，您的規則應該會省略「**存取控制-允許來源**」標頭，這將導致瀏覽器拒絕要求。 
+使用 Verizon Premium 規則引擎時，您必須 [建立規則](cdn-rules-engine.md) 來檢查要求的 **原始** 標頭。  如果是有效的來源，您的規則將使用要求中提供的來源設定 **Access-Control-Allow-Origin** 標頭。  如果不允許 **原始** 標頭中指定的來源，則您的規則應該省略 **存取控制-允許原始** 的標頭，這將導致瀏覽器拒絕要求。 
 
-有兩種方式可以使用 Premium 規則引擎來執行此動作。 在這兩種情況下，會忽略來自檔案原始伺服器的 **Access-Control-Allow-Origin** 標頭，而允許的 CORS 來源會完全由 CDN 的規則引擎來管理。
+有兩種方式可以使用 Premium 規則引擎來進行這種操作。 在這兩種情況下，會忽略來自檔案原始伺服器的 **Access-Control-Allow-Origin** 標頭，而允許的 CORS 來源會完全由 CDN 的規則引擎來管理。
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>包含所有有效來源的規則運算式
 在此情況下，您會建立包含您要允許使用之所有來源的規則運算式。 

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74931792"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure Data Factory 複製活動從 DB2 移動資料
@@ -63,7 +63,7 @@ ms.locfileid: "74931792"
 您可以藉由使用不同的工具和 API，建立內含複製活動的管線，以從內部部署的 DB2 資料存放區移動資料： 
 
 - 建立管線的最簡單方式就是使用「Azure Data Factory 複製精靈」。 如需使用複製精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。 
-- 您也可以使用工具來建立管線，包括 Visual Studio、Azure PowerShell、Azure Resource Manager 範本、.NET API 和 REST API。 如需建立具有複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。 
+- 您也可以使用工具來建立管線，包括 Visual Studio、Azure PowerShell、Azure Resource Manager 範本、.NET API 和 REST API。 如需使用複製活動建立管線的逐步指示，請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。 
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
@@ -78,25 +78,25 @@ ms.locfileid: "74931792"
 ## <a name="db2-linked-service-properties"></a>DB2 連結服務屬性
 下表列出 DB2 連結服務特定的 JSON 屬性。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **type** |此屬性必須設為 **OnPremisesDB2**。 |Yes |
-| **伺服器** |DB2 伺服器的名稱。 |Yes |
-| **database** |DB2 資料庫的名稱。 |Yes |
-| **結構描述** |在 DB2 資料庫中的結構描述名稱。 此屬性必須區分大小寫。 |No |
-| **authenticationType** |用來連接到 DB2 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |Yes |
-| **username** |使用者帳戶的名稱 (如果您使用基本或 Windows 驗證)。 |No |
-| **password** |使用者帳戶的密碼。 |No |
-| **gatewayName** |Data Factory 服務應該用來連接到內部部署 DB2 資料庫的閘道器名稱。 |Yes |
+| **type** |此屬性必須設為 **OnPremisesDB2**。 |是 |
+| **伺服器** |DB2 伺服器的名稱。 |是 |
+| **database** |DB2 資料庫的名稱。 |是 |
+| **schema** |在 DB2 資料庫中的結構描述名稱。 此屬性必須區分大小寫。 |否 |
+| **authenticationType** |用來連接到 DB2 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
+| **username** |使用者帳戶的名稱 (如果您使用基本或 Windows 驗證)。 |否 |
+| **password** |使用者帳戶的密碼。 |否 |
+| **gatewayName** |Data Factory 服務應該用來連接到內部部署 DB2 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的**結構**、**可用性**和**原則**等區段類似於所有的資料集類型 (Azure SQL、Azure Blob 儲存體、Azure 資料表儲存體等)。
 
-每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **RelationalTable** 類型資料集的 **typeProperties** 區段 (包含 DB2 資料集) 具有下列屬性：
+每個資料集類型的 **>typeproperties** 區段都不同，並提供資料存放區中資料位置的相關資訊。 **RelationalTable** 類型資料集的 **typeProperties** 區段 (包含 DB2 資料集) 具有下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **tableName** |DB2 資料庫執行個體中連結服務所參照的資料表名稱。 此屬性必須區分大小寫。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
+| **名** |DB2 資料庫執行個體中連結服務所參照的資料表名稱。 此屬性必須區分大小寫。 |否 (如果指定 **RelationalSource** 類型複製活動的**查詢**屬性) |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需定義複製活動的區段和屬性清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 複製活動屬性 (例如**名稱**、**描述**、**輸入**資料表、**輸出**資料表，以及**原則**) 適用於所有類型的活動。 活動 **typeProperties** 區段中的可用屬性，會因為活動類型不同而有所差異。 就複製活動而言，屬性會根據資料來源和接收的類型而有所不同。
@@ -105,13 +105,13 @@ ms.locfileid: "74931792"
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| **查詢** |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`"query": "select * from "MySchema"."MyTable""` |否 (如果已指定資料集的 **tableName** 屬性) |
+| **查詢** |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from "MySchema"."MyTable""` |否 (如果已指定資料集的 **tableName** 屬性) |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢陳述式中，使用 "" (雙引號) 括住屬性名稱。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON 範例：將資料從 DB2 複製到 Azure Blob 儲存體
-這個範例提供範例 JSON 定義，您可以使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來建立管線。 此範例示範如何將資料從 DB2 資料庫複製到 Blob 儲存體。 不過，可以使用 Azure Data Factory 複製活動，將資料複製到[任何支援的資料存放區接收類型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
+此範例提供範例 JSON 定義，可讓您使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來建立管線。 此範例示範如何將資料從 DB2 資料庫複製到 Blob 儲存體。 不過，可以使用 Azure Data Factory 複製活動，將資料複製到[任何支援的資料存放區接收類型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
 範例有下列 Data Factory 實體：
 
@@ -123,7 +123,7 @@ ms.locfileid: "74931792"
 
 此範例會每個小時將資料從 DB2 資料庫中的查詢結果複製到 Azure Blob。 實體定義後面的各節會說明範例中使用的 JSON 屬性。
 
-第一個步驟是安裝和設定資料閘道。 如需相關指示，請參閱在內部[部署位置與雲端之間移動資料一](data-factory-move-data-between-onprem-and-cloud.md)文。
+第一個步驟是安裝和設定資料閘道。 有關在 [內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 的指示。
 
 **DB2 連結服務**
 
@@ -316,8 +316,8 @@ ms.locfileid: "74931792"
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | 數值 |Decimal |
-| 日期 |Datetime |
-| Time |TimeSpan |
+| Date |Datetime |
+| 時間 |TimeSpan |
 | 時間戳記 |Datetime |
 | Xml |Byte[] |
 | Char |String |
@@ -342,8 +342,8 @@ ms.locfileid: "74931792"
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | 數值 |Decimal |
-| 日期 |Datetime |
-| Time |TimeSpan |
+| Date |Datetime |
+| 時間 |TimeSpan |
 | 時間戳記 |Datetime |
 | Xml |Byte[] |
 | Char |String |

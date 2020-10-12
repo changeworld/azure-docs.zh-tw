@@ -1,7 +1,7 @@
 ---
 title: 在 iOS 應用程式中使用 AppAuth
 titleSuffix: Azure AD B2C
-description: 如何建立使用 AppAuth 搭配 Azure Active Directory B2C 來管理使用者身分識別和驗證使用者的 iOS 應用程式。
+description: 如何建立搭配 Azure Active Directory B2C 使用 AppAuth 來管理使用者身分識別和驗證使用者的 iOS 應用程式。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85384935"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C︰使用 iOS 應用程式登入
@@ -62,7 +62,7 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 > AppAuth 支援 iOS 7 及更新版本。  不過，若要在 Google 上支援社交登入，需要有 SFSafariViewController，而這需要 iOS 9 或更新版本。
 >
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 您可以指定授權端點和權杖端點 URI，以設定與 Azure AD B2C 通訊。  若要產生這些 URI，您需要下列資訊︰
 * 租用戶識別碼 (例如，contoso.onmicrosoft.com)

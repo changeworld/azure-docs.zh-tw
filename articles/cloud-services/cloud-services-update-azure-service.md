@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360339"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新雲端服務
@@ -21,7 +21,7 @@ ms.locfileid: "75360339"
 ## <a name="update-an-azure-service"></a>更新 Azure 服務
 Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯群組。 升級網域 (UD) 是角色執行個體的邏輯集合，會以群組方式進行更新。  Azure 會一次更新一個 UD 的一個雲端服務，讓其他 UD 中的執行個體能夠繼續處理流量。
 
-預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 如需 upgradeDomainCount 屬性的詳細資訊，請參閱[Azure 雲端服務定義架構（檔案）](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
+預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 如需 upgradeDomainCount 屬性的詳細資訊，請參閱 [Azure 雲端服務定義架構 ( ](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)的檔案) 。
 
 當您在服務中執行一或多個角色的就地更新時，Azure 會根據所屬的升級網域來更新角色執行個體集合。 Azure 會更新指定的升級網域中的所有執行個體 (予以停止、更新、重新上線)，然後移到下一個網域。 Azure 只會停止在目前升級網域中執行的執行個體，以確保更新儘可能對執行中的服務造成最小的影響。 如需詳細資訊，請參閱本文後面的 [如何繼續進行更新](#howanupgradeproceeds) 。
 
@@ -47,18 +47,18 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 | 允許對主機、服務和角色進行的變更 | 就地更新 | 預備 (VIP 交換) | 刪除並重新部署 |
 | --- | --- | --- | --- |
-| 作業系統版本 |是 |是 |Yes |
-| .NET 信任等級 |是 |是 |Yes |
-| 虛擬機器大小<sup>1</sup> |是<sup>2</sup> |是 |Yes |
-| 本機儲存體設定 |只會增加<sup>2</sup> |是 |Yes |
-| 在服務中新增或移除角色 |是 |是 |Yes |
-| 特定角色的執行個體數目 |是 |是 |Yes |
+| 作業系統版本 |是 |是 |是 |
+| .NET 信任等級 |是 |是 |是 |
+| 虛擬機器大小<sup>1</sup> |是<sup>2</sup> |是 |是 |
+| 本機儲存體設定 |只會增加<sup>2</sup> |是 |是 |
+| 在服務中新增或移除角色 |是 |是 |是 |
+| 特定角色的執行個體數目 |是 |是 |是 |
 | 服務端點的數目或類型 |是<sup>2</sup> |否 |是 |
-| 組態設定的名稱和值 |是 |是 |Yes |
-| 組態設定的值 (而不是名稱) |是 |是 |Yes |
-| 加入新憑證 |是 |是 |Yes |
-| 變更現有的憑證 |是 |是 |Yes |
-| 部署新程式碼 |是 |是 |Yes |
+| 組態設定的名稱和值 |是 |是 |是 |
+| 組態設定的值 (而不是名稱) |是 |是 |是 |
+| 加入新憑證 |是 |是 |是 |
+| 變更現有的憑證 |是 |是 |是 |
+| 部署新程式碼 |是 |是 |是 |
 
 <sup>1</sup> 大小變更已限制為可供雲端服務使用的大小子集。
 
@@ -99,7 +99,7 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 將服務從單一執行個體升級為多個執行個體時，由於 Azure 升級服務的方式，您的服務將會在執行升級時關閉。 保證服務可用性的服務等級協定僅適用於已部署多個執行個體的服務。 下列清單說明每個 Azure 服務升級案例如何影響每個磁碟機上的資料：
 
-|狀況|C 磁碟機|D 磁碟機|E 磁碟機|
+|案例|C 磁碟機|D 磁碟機|E 磁碟機|
 |--------|-------|-------|-------|
 |VM 重新啟動|保留|保留|保留|
 |入口網站重新啟動|保留|保留|終結|

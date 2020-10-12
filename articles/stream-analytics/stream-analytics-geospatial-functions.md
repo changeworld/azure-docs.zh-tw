@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75426232"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>串流分析地理空間函式簡介
@@ -185,8 +185,8 @@ FROM input
   
 |deliveryDestination|warehouse|  
 |-------------------------|---------------|  
-|{"type"： "Point"，"座標"： [76.6，10.1]}|{"type"： "多邊形"，"座標"： [[0.0，0.0]，[10.0，0.0]，[10.0，10.0]，[0.0，10.0]，[0.0，0.0]]}|  
-|{"type"： "Point"，"座標"： [15.0，15.0]}|{"type"： "多邊形"，"座標"： [[10.0，10.0]，[20.0，10.0]，[20.0，20.0]，[10.0，20.0]，[10.0，10.0]]}|  
+|{"type"： "Point"，"座標"： [76.6，10.1]}|{"type"：「多邊形」、「座標」： [0.0、0.0]、[10.0，0.0]、[10.0、10.0]、[0.0、10.0]、[0.0、0.0]]}|  
+|{"type"： "Point"，"座標"： [15.0，15.0]}|{"type"：「多邊形」、「座標」： [10.0、10.0]、[20.0，10.0]、[20.0、20.0]、[10.0、20.0]、[10.0、10.0]]}|  
   
 ### <a name="output-example"></a>輸出範例  
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5caed64beb43cbb1e884a3dde6bc0052c617f83e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378775"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫安全性
@@ -38,7 +38,7 @@ IP 防火牆規則會根據每個要求的原始 IP 位址來授與伺服器的�
 虛擬網路服務端點會透過 Azure 骨幹擴充您的虛擬網路連線能力。 您可以使用虛擬網路規則，讓您的適用於 MySQL 的 Azure 資料庫伺服器允許從虛擬網路中選取的子網進行連線。 如需詳細資訊，請參閱 [虛擬網路服務端點總覽](concepts-data-access-and-security-vnet.md)。
 
 ### <a name="private-ip"></a>私人 IP
-Private Link 可讓您透過私人端點連接至 Azure 中的適用於 MySQL 的 Azure 資料庫。 Azure Private Link 基本上會將 Azure 服務帶入私人虛擬網路 (VNet) 內部。 您可以使用私人 IP 位址來存取 PaaS 資源，就像 VNet 中的任何其他資源一樣。 如需詳細資訊，請參閱 [private link 總覽](concepts-data-access-security-private-link.md)
+Private Link 可讓您透過私人端點連接至 Azure 中的適用於 MySQL 的 Azure 資料庫。 Azure Private Link 基本上會將 Azure 服務帶入私人虛擬網路 (VNet) 內部。 PaaS 資源可使用私人 IP 位址來存取，就像 VNet 中的任何其他資源一樣。 如需詳細資訊，請參閱 [private link 總覽](concepts-data-access-security-private-link.md)
 
 ## <a name="access-management"></a>存取管理
 
@@ -52,5 +52,5 @@ Private Link 可讓您透過私人端點連接至 Azure 中的適用於 MySQL �
 您可以使用[Audit 記錄](concepts-audit-logs.md)來追蹤資料庫中的活動。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 啟用[ip](concepts-firewall-rules.md)或[虛擬網路](concepts-data-access-and-security-vnet.md)的防火牆規則

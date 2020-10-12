@@ -1,5 +1,5 @@
 ---
-title: 範例 API 管理原則-根據 JWT 宣告授權存取
+title: API 管理原則範例-以 JWT 宣告為基礎的授權存取
 titleSuffix: Azure API Management
 description: Azure API 管理原則範例 - 示範如何在以 JWT 宣告為基礎的 API 上授權存取特定的 HTTP 方法。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75422190"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>以 JWT 宣告為基礎的授權存取

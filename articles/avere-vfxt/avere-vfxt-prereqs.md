@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272411"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>準備建立 Avere vFXT
@@ -34,7 +34,7 @@ ms.locfileid: "88272411"
 
 有一些因應措施可讓非擁有者建立 Avere vFXT for Azure 叢集。 這些案例牽涉到限制資源，以及為建立者指派其他 Azure 角色。 在上述所有情況下，訂用帳戶擁有者也必須事先 [接受 Avere vFXT 軟體條款](#accept-software-terms) 。
 
-| 案例 | 限制 | 建立 Avere vFXT 叢集所需的存取角色 |
+| 狀況 | 限制 | 建立 Avere vFXT 叢集所需的存取角色 |
 |----------|--------|-------|
 | 資源群組系統管理員會建立 vFXT | 您必須在資源群組中建立虛擬網路、叢集控制器和叢集節點。 | [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) 和 [參與者](../role-based-access-control/built-in-roles.md#contributor) 角色，範圍設定為目標資源群組。 |
 | 使用現有的外部虛擬網路 | 叢集控制器和叢集節點會建立在 vFXT 的資源群組內，但會使用不同資源群組中的現有虛擬網路。 |  (1) vFXT 資源群組範圍的 [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator) 和 [參與者](../role-based-access-control/built-in-roles.md#contributor) 角色;和 (2) [虛擬機器參與者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、 [使用者存取系統管理員](../role-based-access-control/built-in-roles.md#user-access-administrator)，以及範圍設定為虛擬網路資源群組的 [Avere 參與者](../role-based-access-control/built-in-roles.md#avere-contributor) 角色。 |

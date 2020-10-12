@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249479"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>整合 Azure 串流分析與 Azure Machine Learning (預覽)
@@ -51,13 +51,13 @@ ms.locfileid: "91249479"
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中新增 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中新增 Azure Machine Learning UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中新增 UDF":::
 
 2. 輸入函式名稱，並在 CodeLens 的訂用帳戶中使用 [ **選取** ] 填入設定檔中的設定。
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="選取 VS Code 中的 Azure Machine Learning UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="在 VS Code 中新增 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中設定 Azure Machine Learning UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中新增 UDF":::
 
 下表說明串流分析中 Azure Machine Learning 服務函式的每個屬性。
 

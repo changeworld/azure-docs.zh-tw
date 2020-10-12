@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 6a38b61ee03aa4853526586ca60542bd3641b66f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249394"
 ---
 # <a name="what-is-delta-lake"></a>什麼是 Delta Lake
@@ -24,7 +24,7 @@ Azure Synapse 隨附的 Delta Lake 目前版本具有 Scala、PySpark 和 .NET �
 
 ## <a name="key-features"></a>主要功能
 
-| 功能 | 說明 |
+| 功能 | 描述 |
 | --- | --- |
 | **ACID 交易** | 通常會透過多個進程和管線來擴展資料 lake，其中有些會與讀取同時寫入資料。 在 Delta Lake 和新增交易之前，資料工程師必須經歷手動錯誤的程式，以確保資料完整性。 Delta Lake 將熟悉的 ACID 交易帶入資料 lake。 它提供可序列化能力，這是最強的隔離層級。 深入瞭解 [Delta Lake：將交易記錄解壓縮](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html)。|
 | **可調整的元資料處理** | 在大資料中，即使中繼資料本身也可以是「big data」。 Delta Lake 處理中繼資料的方式就像資料一樣，利用 Spark 的分散式處理能力來處理其所有中繼資料。 如此一來，Delta Lake 就能輕鬆地以數十億個分割區和檔案處理 pb 規模的資料表。 |

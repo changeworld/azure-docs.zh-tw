@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
 ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289798"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
@@ -265,7 +265,7 @@ Windows 管理中心是 Windows Server 的管理入口網站，這些伺服器�
 
 ## <a name="september-2019"></a>2019 年 9 月
 
-9月更新包括：
+9 月的更新包括：
 
  - [使用自適性應用程式控制改進項目來管理規則](#managing-rules-with-adaptive-application-controls-improvements)
  - [使用 Azure 原則控制容器安全性建議](#control-container-security-recommendation-using-azure-policy)
@@ -286,7 +286,7 @@ Windows 管理中心是 Windows Server 的管理入口網站，這些伺服器�
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-8月更新包括：
+8 月的更新包括：
 
  - [Azure 防火牆的 Just-in-time (JIT) VM 存取](#just-in-time-jit-vm-access-for-azure-firewall)
  - [單鍵補救以提升您的安全性狀態 (預覽)](#single-click-remediation-to-boost-your-security-posture-preview)

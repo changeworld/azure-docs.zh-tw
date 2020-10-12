@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91290682"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>設定連線的處理站解決方案加速器
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 連線的處理站解決方案加速器會針對虛構公司 Contoso 顯示模擬的儀表板。 此公司在全球許多地點都有工廠。
 
@@ -268,9 +268,9 @@ ms.locfileid: "91290682"
 此分類中的屬性會定義連線處理站儀表板的視覺外觀。 範例包括：
 
 * 名稱
-* 說明
+* 描述
 * 映像
-* 位置
+* Location
 * 單位
 * 可見
 
@@ -294,7 +294,7 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 連線的處理站支援簡易的最小/最大閾值型警示產生機制。 為回應那些警示，有數個可以設定的預先定義動作。 下列屬性可控制這個機制：
 
 * 最大值
-* 最小值
+* 最低需求
 * MaximumAlertActions
 * MinimumAlertActions
 

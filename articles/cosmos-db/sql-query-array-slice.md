@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303319"
 ---
-# <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE （Azure Cosmos DB）
+# <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB) 
  傳回陣列運算式的一部分。
   
 ## <a name="syntax"></a>語法
@@ -26,12 +26,12 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 ## <a name="arguments"></a>引數
   
 *arr_expr*  
-   這是任何陣列運算式。  
+   是任何陣列運算式。  
   
 *num_expr*  
    以零為起始的數值索引，可用來開始陣列。 負數值可能會用來指定相對於陣列最後一個元素的起始索引，例如 -1 會參考陣列中的最後一個元素。  
 
-*num_expr*選擇性的數值運算式，可設定產生之陣列中的元素數目上限。    
+*num_expr* 選擇性的數值運算式，會設定產生陣列中的元素數目上限。    
 
 ## <a name="return-types"></a>傳回類型
   
@@ -69,7 +69,7 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

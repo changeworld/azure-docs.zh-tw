@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault 安全世界 | Microsoft Docs
-description: Azure Key Vault 是多租使用者服務。 它會在每個 Azure 位置使用 Hsm 的集區。 地理區域中的所有位置都會共用密碼編譯界限。
+description: Azure Key Vault 是多租使用者服務。 它會在每個 Azure 位置使用 Hsm 集區。 地理區域中的所有位置都會共用密碼編譯界限。
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -9,10 +9,10 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
 ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81428949"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault 安全世界和地理界限
