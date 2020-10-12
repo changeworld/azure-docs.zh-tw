@@ -1,5 +1,5 @@
 ---
-title: Advanced 篩選-Azure Event Grid IoT Edge |Microsoft Docs
+title: Advanced 篩選-Azure 事件方格 IoT Edge |Microsoft Docs
 description: IoT Edge 上事件方格中的 Advanced 篩選。
 author: HiteshMadan
 manager: rajarv
@@ -8,22 +8,22 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171766"
 ---
 # <a name="advanced-filtering"></a>進階篩選
-事件方格允許在 json 承載中的任何屬性上指定篩選。 這些篩選器會模型化為 `AND` 條件集，每個外部條件都具有選擇性的內部 `OR` 條件。 針對每個 `AND` 條件，您可以指定下列值：
+事件方格可讓您針對 json 承載中的任何屬性指定篩選。 這些篩選準則會模型化為一組 `AND` 條件，而每個外部條件都有選擇性的內部 `OR` 條件。 針對每個 `AND` 條件，您可以指定下列值：
 
-* `OperatorType`-比較的類型。
-* `Key`-要套用篩選之屬性的 json 路徑。
-* `Value`-用來執行篩選的參考值 (或) `Values` -執行篩選準則的一組參考值。
+* `OperatorType` -比較的類型。
+* `Key` -要套用篩選之屬性的 json 路徑。
+* `Value` -執行篩選時所針對的參考值 (或) `Values` -執行篩選所針對的參考值集。
 
 ## <a name="json-syntax"></a>JSON 語法
 
-Advanced filter 的 JSON 語法如下所示：
+Advanced 篩選的 JSON 語法如下所示：
 
 ```json
 {
@@ -44,32 +44,32 @@ Advanced filter 的 JSON 語法如下所示：
 
 ## <a name="filtering-on-array-values"></a>篩選陣列值
 
-事件方格目前不支援對值陣列進行篩選。 如果內送事件具有 advanced filter 的索引鍵的陣列值，則比對作業會失敗。 內送事件最後與事件訂用帳戶不相符。
+事件方格目前不支援篩選值的陣列。 如果內送事件具有適用于 advanced filter 的索引鍵的陣列值，則比對作業會失敗。 傳入事件最後不符合事件訂閱。
 
 ## <a name="and-or-not-semantics"></a>AND-OR-NOT 語義
 
-請注意，在先前指定的 json 範例中， `AdvancedFilters` 是一個陣列。 將每個 `AdvancedFilter` 陣列元素視為 `AND` 條件。
+請注意，在稍早指定的 json 範例中， `AdvancedFilters` 是陣列。 請將每個 `AdvancedFilter` 陣列元素視為 `AND` 條件。
 
-針對支援多個值 (的運算子（例如 `NumberIn` 、 `NumberNotIn` 、 `StringIn` 等） ) ，會將每個值視為 `OR` 條件。 因此， `StringBeginsWith("a", "b", "c")` 會符合以或或開頭的任何字串值 `a` `b` `c` 。
+針對支援多個值的運算子 (例如 `NumberIn` 、 `NumberNotIn` 、等等 `StringIn` ) ，會將每個值視為 `OR` 條件。 因此，會比對以 `StringBeginsWith("a", "b", "c")` 或或開頭的任何字串 `a` 值 `b` `c` 。
 
 > [!CAUTION]
-> NOT 運算子- `NumberNotIn` 和 `StringNotIn` 的行為是在欄位中指定的每個值上的和條件 `Values` 。
+> NOT 運算子 `NumberNotIn` ，而且會 `StringNotIn` 針對欄位中提供的每個值，以 and 條件的方式運作 `Values` 。
 >
-> 不這麼做會將篩選準則設為 [接受全部] 篩選準則，並破壞篩選的目的。
+> 若未這麼做，就會讓篩選準則成為 Accept-All 篩選，並使篩選的目的更好。
 
-## <a name="floating-point-rounding-behavior"></a>浮點舍入行為
+## <a name="floating-point-rounding-behavior"></a>浮點數舍入行為
 
-事件方格會使用 `decimal` .net 類型來處理所有數值。 事件訂用帳戶 JSON 中指定的數位值不受浮點舍入行為的制約。
+事件方格會使用 `decimal` .net 型別來處理所有數值。 事件訂用帳戶 JSON 中指定的數值不受浮點數舍入行為的制約。
 
-## <a name="case-sensitivity-of-string-filters"></a>字串篩選準則的區分大小寫
+## <a name="case-sensitivity-of-string-filters"></a>字串篩選的區分大小寫
 
-所有字串比較都不區分大小寫。 目前沒有任何方法可以變更這種行為。
+所有字串比較都不區分大小寫。 目前沒有任何方法可以變更此行為。
 
-## <a name="allowed-advanced-filter-keys"></a>允許的 advanced filter 金鑰
+## <a name="allowed-advanced-filter-keys"></a>允許的 advanced 篩選鍵
 
-`Key`屬性可以是知名的最上層屬性，或為具有多個點的 json 路徑，其中每個點表示逐步執行為嵌套 json 物件。
+`Key`屬性可以是已知的最上層屬性，也可以是具有多個點的 json 路徑，其中每個點表示逐步執行至嵌套的 json 物件。
 
-不同于 JSONPath 規格，事件方格對索引鍵中的字元沒有任何特殊意義 `$` 。
+與 JSONPath 規格不同的是，事件方格對索引鍵中的字元沒有任何特殊意義 `$` 。
 
 ### <a name="event-grid-schema"></a>事件方格架構
 
@@ -77,15 +77,15 @@ Advanced filter 的 JSON 語法如下所示：
 
 * 識別碼
 * 主題
-* 主旨
+* 主體
 * EventType
 * DataVersion
-* Data. Prop1
+* Prop1
 * Data. This.prop2. Prop3. Prop4. Prop5
 
 ### <a name="custom-event-schema"></a>自訂事件架構
 
-`Key`自訂事件架構中沒有的限制，因為事件方格不會在裝載上強制執行任何信封架構。
+`Key`自訂事件架構中沒有任何限制，因為事件方格不會在承載上強制執行任何信封架構。
 
 ## <a name="numeric-single-value-filter-examples"></a>數值單一值篩選範例
 
@@ -147,7 +147,7 @@ Advanced filter 的 JSON 語法如下所示：
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>字串範圍-值篩選範例
+## <a name="string-range-value-filter-examples"></a>字串範圍值篩選範例
 
 * StringContains
 * StringBeginsWith
@@ -189,7 +189,7 @@ Advanced filter 的 JSON 語法如下所示：
 }
 ```
 
-## <a name="boolean-single-value-filter-examples"></a>布林單一值篩選範例
+## <a name="boolean-single-value-filter-examples"></a>布林值單一值篩選範例
 
 * BoolEquals
 

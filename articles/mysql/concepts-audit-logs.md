@@ -1,5 +1,5 @@
 ---
-title: Audit logs-適用於 MySQL 的 Azure 資料庫
+title: Audit 記錄檔-適用於 MySQL 的 Azure 資料庫
 description: 描述適用於 MySQL 的 Azure 資料庫中可用的 audit 記錄，以及可用來啟用記錄層級的參數。
 author: ajlam
 ms.author: andrela
@@ -7,51 +7,51 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362120"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的 Audit 記錄
 
-在適用於 MySQL 的 Azure 資料庫中，審核記錄可供使用者使用。 您可以使用 audit 記錄來追蹤資料庫層級的活動，而且通常會用於合規性。
+在適用於 MySQL 的 Azure 資料庫中，可供使用者使用審核記錄。 Audit 記錄檔可用來追蹤資料庫層級的活動，而且通常會用來進行相容性。
 
-## <a name="configure-audit-logging"></a>設定審核記錄
+## <a name="configure-audit-logging"></a>設定 audit 記錄
 
 >[!IMPORTANT]
-> 建議您只記錄您的審核目的所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重影響。
+> 建議您只針對您的審核目的記錄所需的事件種類和使用者，以確保伺服器的效能不會受到嚴重的影響。
 
-根據預設，會停用 audit 記錄檔。 若要啟用它，請將設定 `audit_log_enabled` 為 ON。
+預設會停用 audit 記錄檔。 若要啟用它，請將設定 `audit_log_enabled` 為 ON。
 
 您可以調整的其他參數包含：
 
 - `audit_log_events`：控制要記錄的事件。 請參閱下表以取得特定的 audit 事件。
-- `audit_log_include_users`：要包含在記錄中的 MySQL 使用者。 這個參數的預設值是空的，這將包含所有用於記錄的使用者。 其優先順序高於 `audit_log_exclude_users` 。 參數的最大長度為512個字元。
+- `audit_log_include_users`：要包含在記錄中的 MySQL 使用者。 這個參數的預設值是空的，它會包含所有用於記錄的使用者。 優先順序高於 `audit_log_exclude_users` 。 參數的最大長度為512個字元。
 - `audit_log_exclude_users`：要排除在記錄之外的 MySQL 使用者。 參數的最大長度為512個字元。
 
 > [!NOTE]
-> `audit_log_include_users`的優先順序高於 `audit_log_exclude_users` 。 例如，如果 `audit_log_include_users`  =  `demouser` 和 `audit_log_exclude_users`  =  `demouser` ，則會將使用者包含在 audit 記錄中，因為 `audit_log_include_users` 具有較高的優先順序。
+> `audit_log_include_users` 的優先順序高於 `audit_log_exclude_users` 。 例如，如果 `audit_log_include_users`  =  `demouser` 和 `audit_log_exclude_users`  =  `demouser` ，使用者將會包含在 audit 記錄中，因為 `audit_log_include_users` 優先順序較高。
 
 | **事件** | **描述** |
 |---|---|
-| `CONNECTION` | -連接起始（成功或失敗） <br> -在會話期間以不同的使用者/密碼重新驗證使用者 <br> -連接終止 |
+| `CONNECTION` | -連接初始 (成功或失敗)  <br> -會話期間使用不同使用者/密碼重新驗證使用者 <br> -連接終止 |
 | `DML_SELECT`| SELECT 查詢 |
 | `DML_NONSELECT` | 插入/刪除/更新查詢 |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
 | `DDL` | 「卸載資料庫」之類的查詢 |
-| `DCL` | 「授與許可權」之類的查詢 |
-| `ADMIN` | 「顯示狀態」之類的查詢 |
-| `GENERAL` | 全部 DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN |
-| `TABLE_ACCESS` | -僅適用于 MySQL 5。7 <br> -資料表讀取語句，例如 SELECT 或 INSERT INTO .。。請 <br> -Table delete 語句，例如 DELETE 或 TRUNCATE TABLE <br> -資料表 insert 語句，例如 INSERT 或 REPLACE <br> -資料表 update 語句，例如 UPDATE |
+| `DCL` | 像是「授與許可權」的查詢 |
+| `ADMIN` | "SHOW STATUS" 之類的查詢 |
+| `GENERAL` | All in DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN |
+| `TABLE_ACCESS` | -僅適用于 MySQL 5。7 <br> -Table read 語句，例如 SELECT 或 INSERT INTO .。。選擇 <br> -資料表 delete 語句，例如 DELETE 或 TRUNCATE TABLE <br> -資料表 insert 語句，例如 INSERT 或 REPLACE <br> -資料表 update 語句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>存取稽核記錄
 
-稽核記錄會與 Azure 監視器診斷記錄整合。 一旦您已在 MySQL 伺服器上啟用稽核記錄，就可以將其發出至 Azure 監視器記錄、事件中樞或 Azure 儲存體。 若要深入瞭解如何在 Azure 入口網站中啟用診斷記錄，請參閱[audit log portal 一文](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)。
+稽核記錄會與 Azure 監視器診斷記錄整合。 一旦您已在 MySQL 伺服器上啟用稽核記錄，就可以將其發出至 Azure 監視器記錄、事件中樞或 Azure 儲存體。 若要深入瞭解如何啟用 Azure 入口網站中的診斷記錄，請參閱 [audit log portal 文章](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)。
 
 ## <a name="diagnostic-logs-schemas"></a>診斷記錄架構
 
-下列各節說明根據事件種類，MySQL audit 記錄的輸出內容。 視輸出方法而定，包含的欄位及其出現的順序可能有所不同。
+下列各節說明 MySQL 根據事件種類所進行的輸出審核記錄。 視輸出方法而定，包含的欄位及其出現的順序可能有所不同。
 
 ### <a name="connection"></a>連線
 
@@ -71,20 +71,20 @@ ms.locfileid: "85362120"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 伺服器的名稱 |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`、 `DISCONNECT` 、 `CHANGE USER` （僅適用于 MySQL 5.7） |
+| `event_subclass_s` | `CONNECT`、 `DISCONNECT` `CHANGE USER` (僅適用于 MySQL 5.7)  |
 | `connection_id_d` | MySQL 產生的唯一連接識別碼 |
-| `host_s` | 空白 |
-| `ip_s` | 連接到 MySQL 的用戶端 IP 位址 |
+| `host_s` | Blank |
+| `ip_s` | 連線至 MySQL 之用戶端的 IP 位址 |
 | `user_s` | 執行查詢的使用者名稱 |
 | `db_s` | 連接的資料庫名稱 |
 | `\_ResourceId` | 資源 URI |
 
 ### <a name="general"></a>一般
 
-以下架構適用于 GENERAL、DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 事件種類。
+下列架構適用于 GENERAL、DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 事件種類。
 
 > [!NOTE]
-> `sql_text`如果是，記錄會在超過2048個字元時截斷。
+> `sql_text`若為，則如果記錄超過2048個字元，則會予以截斷。
 
 | **屬性** | **說明** |
 |---|---|
@@ -102,12 +102,12 @@ ms.locfileid: "85362120"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 伺服器的名稱 |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`、 `ERROR` 、 `RESULT` （僅適用于 MySQL 5.6） |
-| `event_time` | 查詢開始時間（UTC 時間戳記） |
-| `error_code_d` | 如果查詢失敗，則為錯誤碼。 `0`表示沒有錯誤 |
+| `event_subclass_s` | `LOG`、 `ERROR` `RESULT` (僅適用于 MySQL 5.6)  |
+| `event_time` | UTC 時間戳記的查詢開始時間 |
+| `error_code_d` | 如果查詢失敗，則為錯誤碼。 `0` 表示沒有錯誤 |
 | `thread_id_d` | 執行查詢的執行緒識別碼 |
-| `host_s` | 空白 |
-| `ip_s` | 連接到 MySQL 的用戶端 IP 位址 |
+| `host_s` | Blank |
+| `ip_s` | 連線至 MySQL 之用戶端的 IP 位址 |
 | `user_s` | 執行查詢的使用者名稱 |
 | `sql_text_s` | 完整查詢文字 |
 | `\_ResourceId` | 資源 URI |
@@ -115,7 +115,7 @@ ms.locfileid: "85362120"
 ### <a name="table-access"></a>資料表存取
 
 > [!NOTE]
-> 資料表存取記錄僅適用于 MySQL 5.7 的輸出。<br>`sql_text`如果是，記錄會在超過2048個字元時截斷。
+> 資料表存取記錄只是 MySQL 5.7 的輸出。<br>`sql_text`若為，則如果記錄超過2048個字元，則會予以截斷。
 
 | **屬性** | **說明** |
 |---|---|
@@ -140,9 +140,9 @@ ms.locfileid: "85362120"
 | `sql_text_s` | 完整查詢文字 |
 | `\_ResourceId` | 資源 URI |
 
-## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure 監視器記錄中的記錄
+## <a name="analyze-logs-in-azure-monitor-logs"></a>在 Azure 監視器記錄中分析記錄
 
-當您的審核記錄透過診斷記錄傳送至 Azure 監視器記錄後，您就可以進一步分析已審核的事件。 以下是一些可協助您開始使用的範例查詢。 請務必以您的伺服器名稱更新下列各節。
+一旦將您的 audit 記錄輸送至透過診斷記錄 Azure 監視器記錄之後，您就可以進一步分析已審核的事件。 以下是一些可協助您開始使用的範例查詢。 請務必以您的伺服器名稱更新下列。
 
 - 列出特定伺服器上的一般事件
 
@@ -174,7 +174,7 @@ ms.locfileid: "85362120"
     | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
     ```
 
-- 在特定伺服器上建立 audit 事件種類散發的圖表
+- 圖表特定伺服器上的 audit 事件種類散發
 
     ```kusto
     AzureDiagnostics
@@ -185,7 +185,7 @@ ms.locfileid: "85362120"
     | render timechart 
     ```
 
-- 列出所有 MySQL 伺服器上已啟用 audit 記錄之診斷記錄的已審核事件
+- 列出所有 MySQL 伺服器上已啟用審核記錄之診斷記錄的已審核事件
 
     ```kusto
     AzureDiagnostics
@@ -196,4 +196,4 @@ ms.locfileid: "85362120"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [如何設定 Azure 入口網站中的 audit 記錄](howto-configure-audit-logs-portal.md)
+- [如何在 Azure 入口網站中設定 audit 記錄](howto-configure-audit-logs-portal.md)

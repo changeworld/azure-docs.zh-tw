@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的陣列函數
-description: 瞭解陣列函數如何讓您在 Azure Cosmos DB 的陣列上執行作業
+description: 瞭解陣列函數如何讓您在 Azure Cosmos DB 中的陣列上執行作業
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,15 +8,15 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 2a4033088a9152363a91c368109136062cace4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85563509"
 ---
-# <a name="array-functions-azure-cosmos-db"></a>陣列函數（Azure Cosmos DB）
+# <a name="array-functions-azure-cosmos-db"></a>陣列函數 (Azure Cosmos DB) 
 
-陣列函數可讓您在 Azure Cosmos DB 的陣列上執行作業。
+陣列函數可讓您在 Azure Cosmos DB 中的陣列上執行作業。
 
 ## <a name="functions"></a>函式
 
@@ -31,7 +31,7 @@ ms.locfileid: "85563509"
   
   
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

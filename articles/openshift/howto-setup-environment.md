@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470029"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>設定您的 Azure Red Hat OpenShift 開發環境
@@ -107,7 +107,7 @@ Azure Red Hat OpenShift 需要在您的叢集上執行工作的許可權，例�
 
 遵循 [建立 Azure AD 應用程式物件和使用者](howto-aad-app-configuration.md) 中的指示來建立服務主體、產生應用程式的用戶端密碼和驗證回呼 URL，以及建立新的 Azure AD 安全性群組和使用者來存取叢集。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在已準備好使用 Azure Red Hat OpenShift！
 

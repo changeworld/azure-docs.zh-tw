@@ -9,13 +9,13 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905400"
 ---
-# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能 Azure Data Lake Storage Gen2
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能的 Azure Data Lake Storage Gen2
 
 Azure Data Lake Storage Gen2 支援 I/O 密集分析和資料移動的高輸送量。  在 Data Lake Storage Gen2 中，使用所有可用的輸送量 (每秒可以讀取或寫入的資料量) 是取得最佳效能的重要部分。  這可以藉由盡可能平行執行讀取和寫入來達成。
 
@@ -80,7 +80,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 作業屬於下列三個類別之一：
 
 * **CPU 密集作業**  這些作業有很長的計算時間和最短的 I/O 時間。  範例包括機器學習和自然語言處理作業。  
-* **記憶體密集。**  這些作業會使用大量記憶體。  範例包括 PageRank 和即時分析作業。  
+* **記憶體耗用量。**  這些作業會使用大量記憶體。  範例包括 PageRank 和即時分析作業。  
 * **I/O 密集作業**  這些作業花費大部分時間執行 I/O。  常見範例是僅執行讀取和寫入作業的複製作業。  其他範例包括讀取大量資料、執行某些資料轉換，然後將資料寫回存放區的資料準備作業。  
 
 下列指南僅適用於 I/O 密集作業。
@@ -93,14 +93,14 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight 叢集的一般考量
 
 * **HDInsight 版本** 為了達到最佳效能，請使用最新版本的 HDInsight。
-* **各地.** 將 Data Lake Storage Gen2 帳戶放置在與 HDInsight 叢集相同的區域中。  
+* **地區。** 將 Data Lake Storage Gen2 帳戶放置在與 HDInsight 叢集相同的區域中。  
 
 HDInsight 叢集是由兩個前端節點和一些背景工作角色節點所組成。 每個背景工作角色節點提供特定數目的核心和記憶體，由 VM 類型決定。  執行作業時，YARN 是資源交涉程式，它會配置可用記憶體和核心來建立容器。  每個容器會執行完成作業所需的工作。  平行執行容器以快速地處理工作。 因此，盡可能平行執行最多容器可提升效能。
 
 HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使用所有可用的輸送量。  
 
 * **實體層**
-* **YARN 層**
+* **YARN 圖層**
 * **工作負載層**
 
 ### <a name="physical-layer"></a>實體層

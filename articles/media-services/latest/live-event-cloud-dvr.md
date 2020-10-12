@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 11485ebac449cbde0a4f31e2a099a153476577b6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289506"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用時間變化和即時輸出來建立隨選影片播放
@@ -55,7 +55,7 @@ ms.locfileid: "89289506"
 > [!NOTE]
 > 當您刪除即時輸出時，不會刪除資產中的基礎資產和內容。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [子剪輯您的](subclip-video-rest-howto.md)影片。
 * [為您的資產定義篩選準則](filters-dynamic-manifest-rest-howto.md)。

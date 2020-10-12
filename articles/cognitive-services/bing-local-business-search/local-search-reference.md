@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84171458"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing 當地商家搜尋 API v7 參考
 
-當地商家搜尋 API 向 Bing 傳送搜尋查詢以取得包含餐廳、旅館或其他當地商家的結果。 針對地點，查詢可指定本地商家名稱或類別 (例如，我附近的餐廳)。 實體結果包含人員、地點或事項。 此內容中的地點為商業實體、州、國家/地區等。  
+當地商家搜尋 API 向 Bing 傳送搜尋查詢以取得包含餐廳、旅館或其他當地商家的結果。 針對地點，查詢可指定本地商家名稱或類別 (例如，我附近的餐廳)。 實體結果包含人員、地點或事項。 此內容中的位置是商務實體、州、國家/地區等。  
 
 本節將提供關於影響搜尋結果的回應物件，以及查詢參數和標頭的技術詳細資料。 如需示範如何提出要求的範例，請參閱[當地商家搜尋 C# 快速入門](quickstarts/local-quickstart.md)或[當地商家搜尋 Java 快速入門](quickstarts/local-search-java-quickstart.md)。 
   
@@ -47,10 +47,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 > URL 長度上限是 2,048 個字元。 若要確保您的 URL 長度不超過限制，查詢參數的最大長度應小於 1,500 個字元。 如果 URL 超過 2,048 個字元，則伺服器會傳回「404 找不到」。  
   
   
-## <a name="headers"></a>標題  
+## <a name="headers"></a>headers  
 以下是要求和回應可能包含的標頭。  
   
-|Header|描述|  
+|標頭|說明|  
 |------------|-----------------|  
 |接受|選擇性要求標頭。<br /><br /> 預設媒體類型為 application/json。 若要指定回應必須使用 [JSON-LD](https://json-ld.org/)，請將 Accept 標頭設定為 application/ld+json。|  
 |<a name="acceptlanguage"></a>Accept-Language|選擇性要求標頭。<br /><br /> 要用於使用者介面字串語言的逗號分隔清單。 清單採用喜好設定的遞減順序。 如需詳細資訊 (包括預期的格式)，請參閱 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此標頭和 [setLang](#setlang) 查詢參數彼此互斥 &mdash; 請勿同時指定。<br /><br /> 若您設定此標頭，則您也必須指定 cc 查詢參數。 若要決定要傳回結果的市場，Bing 會使用它從清單中找到的第一個支援的語言，然後將其與 `cc` 參數值結合。 如果清單中未包含支援的語言，Bing 會就近尋找支援要求的語言和市場，或將彙總或預設的市場用於結果。 若要判斷 Bing 所使用的市場，請參閱 BingAPIs-Market 標頭。<br /><br /> 只有在指定了多種語言時，才需要使用此標頭和 `cc` 查詢參數。 否則，請使用 [mkt](#mkt) 和 [setLang](#setlang) 查詢參數。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。|  
@@ -73,7 +73,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|必要|  
 |----------|-----------|----------|--------------|
-|<a name="count"></a>count|要傳回的結果數目，從參數所指定的索引開始 `offset` 。|String|否|   
+|<a name="count"></a>count|要傳回的結果數目，從參數指定的索引開始 `offset` 。|String|否|   
 |<a name="localCategories"></a>localCategories|依商家類別定義搜尋的選項清單。  請參閱[當地商家類別搜尋](local-categories.md)|String|否|  
 |<a name="mkt"></a>mkt|產生結果的市場。 <br /><br />如需可能的市場值清單，請參閱市場代碼。<br /><br /> **注意：** 當地商家搜尋 API 目前僅支援 en-us 市場和語言。<br /><br />|String|是|
 |<a name="offset"></a>offset|用於啟動 `count` 參數指定之結果的索引。|整數|否|  
@@ -131,7 +131,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |----------|-----------|----------|  
 |_type|類型提示。|String|  
 |text|顯示文字。|String|  
-|url|一個 URL。 使用 URL 和顯示文字建立超連結。|String|  
+|url|URL。 使用 URL 和顯示文字建立超連結。|String|  
   
 
 
@@ -167,10 +167,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |元素|描述|類型|  
 |-------------|-----------------|----------|  
-|adultIntent|一個布林值，用以指出指定的查詢是否有成人意圖。 如果查詢有成人意圖，則此值為 **true**，若沒有則為 **false**。|布林值|  
+|adultIntent|一個布林值，用以指出指定的查詢是否有成人意圖。 如果查詢有成人意圖，則此值為 **true**，若沒有則為 **false**。|Boolean|  
 |alterationOverrideQuery|要用來強制 Bing 使用原始字串的查詢字串。 例如，如果查詢字串為 *saling downwind*，覆寫查詢字串將是 *+saling downwind*。 請記得編碼會產生 *%2Bsaling+downwind* 的查詢字串。<br /><br /> 只有原始查詢字串包含拼字錯誤時，才需要加入此欄位。|String|  
 |alteredQuery|Bing 用來執行查詢的查詢字串。 如果原始查詢字串包含拼字錯誤，Bing 就會使用更改的查詢字串。 例如，如果查詢字串是 `saling downwind`，更改的查詢字串將是 `sailing downwind`。<br /><br /> 只有原始查詢字串包含拼字錯誤時，才需要加入此欄位。|String|  
-|askUserForLocation|一個布林值，用以指出 Bing 是否需要使用者的位置以提供精確的結果。 如果您已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 標頭指定使用者的位置，則可以忽略此欄位。<br /><br /> 針對需要使用者位置以提供精確結果的位置感知查詢 (例如「今天的天氣」或「這附近的餐廳」)，此欄位會設定為 **true**。<br /><br /> 針對包含位置的位置感知查詢 (例如「西雅圖的天氣」)，此欄位會設定為 **false**。 針對不是位置感知的查詢 (例如「最佳銷售員」)，此欄位也會設定為 **false**。|布林值|  
+|askUserForLocation|一個布林值，用以指出 Bing 是否需要使用者的位置以提供精確的結果。 如果您已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 標頭指定使用者的位置，則可以忽略此欄位。<br /><br /> 針對需要使用者位置以提供精確結果的位置感知查詢 (例如「今天的天氣」或「這附近的餐廳」)，此欄位會設定為 **true**。<br /><br /> 針對包含位置的位置感知查詢 (例如「西雅圖的天氣」)，此欄位會設定為 **false**。 針對不是位置感知的查詢 (例如「最佳銷售員」)，此欄位也會設定為 **false**。|Boolean|  
 |originalQuery|指定於要求中的查詢字串。|String|  
 
 ### <a name="identifiable"></a>Identifiable
@@ -261,7 +261,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 以下是可能的錯誤碼和子錯誤碼值。
 
-|程式碼|子代碼|描述
+|程式碼|子代碼|說明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 狀態碼為 500。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>封鎖|只要要求的任何部分無效，Bing 就會傳回 InvalidRequest。 例如缺少必要的參數或參數值無效。<br/><br/>如果錯誤是 ParameterMissing 或 ParameterInvalidValue，則 HTTP 狀態碼為 400。<br/><br/>如果您使用的是 HTTP 通訊協定，而不是 HTTPS，Bing 會傳回 HttpNotAllowed，且 HTTP 狀態碼為 410。
@@ -269,7 +269,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|當 Bing 無法驗證呼叫者時，Bing 會傳回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 標頭，或訂用帳戶金鑰無效。<br/><br/>如果您指定一個以上的驗證方法，則會出現備援。<br/><br/>如果錯誤是 InvalidAuthorization，則 HTTP 狀態碼為 401。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|當呼叫者沒有資源存取權限時，Bing 會傳回 InsufficientAuthorization。 如果訂用帳戶金鑰已停用或已過期，則會發生此情況。 <br/><br/>如果錯誤是 InsufficientAuthorization，則 HTTP 狀態碼為 403。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [當地商家搜尋快速入門](quickstarts/local-quickstart.md)
 - [當地商家搜尋 Java 快速入門](quickstarts/local-search-java-quickstart.md)
 - [當地商家搜尋 Node 快速入門](quickstarts/local-search-node-quickstart.md)

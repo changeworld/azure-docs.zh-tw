@@ -1,5 +1,5 @@
 ---
-title: 使用雲端 init 將使用者新增至 Azure 上的 Linux VM
+title: 使用 cloud init 將使用者新增至 Azure 上的 Linux VM
 description: 如何透過 Azure CLI 在建立期間使用 cloud-init 將使用者新增至 Linux VM
 author: rickstercdn
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 569ceb4c7158ba9dc08c99c234951fb4507b69f6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87370065"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>使用 cloud-init 將使用者新增至 Azure 上的 Linux 虛擬機器
-本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上新增使用者。 一旦 Azure 佈建資源，此 cloud-init 指令碼就會在初次開機時執行。 如需有關雲端初始化如何在 Azure 和支援的 Linux 散發版本中以原生方式運作的詳細資訊，請參閱[雲端初始化總覽](using-cloud-init.md)。
+本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上新增使用者。 一旦 Azure 佈建資源，此 cloud-init 指令碼就會在初次開機時執行。 如需有關雲端初始如何在 Azure 和支援的 Linux 散發版本中以原生方式運作的詳細資訊，請參閱 [雲端初始總覽](using-cloud-init.md)。
 
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>使用 cloud-init 將使用者新增至 VM
 針對任何新的 Linux 虛擬機器，首要工作之一就是為您自己新增其他使用者，以避免使用「根」**。 SSH 金鑰是提供安全性和可用性的最佳做法。 此 cloud-init 指令碼會將金鑰新增至 *~/.ssh/authorized_keys* 檔案。
@@ -35,7 +35,7 @@ users:
 > [!NOTE] 
 > #cloud-config 檔包含 `- default` 參數。 這會將使用者附加至佈建期間建立的現有管理使用者。 如果您建立的使用者不含 `- default` 參數 - 由 Azure 平台建立的自動產生管理使用者就會遭到覆寫。 
 
-部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
+部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

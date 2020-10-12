@@ -12,10 +12,10 @@ ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908141"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>定義使用者流程的自訂屬性 (預覽)
@@ -31,7 +31,7 @@ ms.locfileid: "87908141"
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-`<extensions-app-id>`專屬於您的租使用者。 若要尋找此識別碼，請流覽至 Azure Active Directory > 應用程式註冊 > [所有應用程式]。 搜尋以「aad-延伸模組-應用程式」開頭的應用程式，並加以選取。 在應用程式的 [總覽] 頁面上，記下應用程式 (用戶端) 識別碼。
+`<extensions-app-id>`是租使用者專用的。 若要尋找此識別碼，請流覽至 Azure Active Directory > 應用程式註冊 > 所有應用程式。 搜尋開頭為「aad-擴充功能-應用程式」的應用程式，並加以選取。 在應用程式的 [總覽] 頁面上，記下應用程式 (用戶端) 識別碼。
 
 ## <a name="create-a-custom-attribute"></a>建立自訂屬性
 
@@ -55,7 +55,7 @@ ms.locfileid: "87908141"
 
 使用者屬性清單現已提供自訂屬性，且您可將其用於使用者流程中。 只有在第一次用於任何使用者流程時才會建立自訂屬性，而不是在您將其新增至使用者屬性清單時建立。
 
-在您使用新建立的自訂屬性建立新的使用者後，即可在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中查詢物件。 您現在應該會在使用者物件上註冊旅程期間所收集的屬性清單中看到**ShoeSize** 。 您可以從應用程式呼叫圖形 API，以便在將此屬性加入至使用者物件之後，從這個屬性取得資料。
+在您使用新建立的自訂屬性建立新的使用者後，即可在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中查詢物件。 您現在應該會在使用者物件上的註冊旅程期間所收集的屬性清單中看到 **ShoeSize** 。 您可以從應用程式呼叫圖形 API，以便在將資料加入至使用者物件之後，從這個屬性取得資料。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
 ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89468533"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>將 Cloud Shell 部署到 Azure 虛擬網路
@@ -113,5 +113,5 @@ ResourceTypes                             RegistrationState
 
 ![說明 Cloud Shell 隔離式 VNET 首次體驗設定。](media/private-vnet/vnet-settings.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [深入瞭解 Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)

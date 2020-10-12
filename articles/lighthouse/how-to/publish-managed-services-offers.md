@@ -4,10 +4,10 @@ description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 
 ms.date: 08/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589719"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
@@ -62,7 +62,7 @@ ms.locfileid: "88589719"
 
 一旦客戶將訂用帳戶委派 (或訂用帳戶) 內的一或多個資源群組，就會為該訂用帳戶註冊 **>microsoft.managedservices** 資源提供者，而且您租使用者中的使用者將能夠根據您供應專案中的授權存取委派的資源。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解 [商用 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)。
 - 了解[跨租用戶管理體驗](../concepts/cross-tenant-management-experience.md)。

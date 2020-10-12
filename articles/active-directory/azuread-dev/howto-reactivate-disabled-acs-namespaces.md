@@ -1,6 +1,6 @@
 ---
-title: 重新啟用已停用的 Azure 存取控制服務（ACS）命名空間
-description: 尋找並啟用您的 Azure 存取控制服務（ACS）命名空間，並要求延伸模組以保持啟用，直到2019年2月4日為止。
+title: 重新啟用已停用的 Azure 存取控制服務 (ACS) 命名空間
+description: 尋找並啟用您的 Azure 存取控制服務 (ACS) 命名空間，並要求延伸模組以在2019年2月4日之前保持啟用狀態。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383712"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>操作說明：重新啟用已停用的存取控制服務命名空間
@@ -26,7 +26,7 @@ ms.locfileid: "85383712"
 
 我們在 2017 年 11 月宣布 Microsoft Azure 存取控制服務 (ACS) 這項 Azure Active Directory (Azure AD) 服務，將於 2018 年 11 月 7 日淘汰。
 
-從那時起，我們已傳送電子郵件給 ACS 訂用帳戶的系統管理員電子郵件，關於 ACS 淘汰12個月、9個月、6個月、3個月、1個月、2周、1周和1天，2018年11月7日淘汰日期。
+從那時開始，我們已傳送電子郵件給 ACS 訂用帳戶的系統管理員電子郵件，其中有 ACS 淘汰12個月、9個月、6個月、3個月、1個月、2周、1周和1天，在2018年11月7日淘汰日期之前。
 
 在 2018 年 10 月 3 日時，我們宣布 (透過電子郵件和[部落格文章](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) 為無法在 2018 年 11 月 7 日之前完成遷移的客戶提供延長時間。 公告也包含要求延長遷移時間的指示。
 
@@ -89,7 +89,7 @@ ms.locfileid: "85383712"
 
 ### <a name="to-request-an-extension"></a>要求延長
 
-1. 登入 Azure 入口網站，並建立新的[支援要求](https://portal.azure.com/#create/Microsoft.Support)。
+1. 登入 Azure 入口網站並建立 [新的支援要求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 填入新的支援要求表單，如下列範例所示。
 
     | 支援要求欄位 | 值 |

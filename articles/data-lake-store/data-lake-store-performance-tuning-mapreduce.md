@@ -1,16 +1,16 @@
 ---
 title: Azure Data Lake Storage Gen1 效能微調-MapReduce
-description: 瞭解 Azure Data Lake Storage Gen1 中 MapReduce 的效能微調，包括參數、指引、範例計算和限制。
+description: 瞭解 Azure Data Lake Storage Gen1 中 MapReduce 的效能調整，包括參數、指引、範例計算和限制。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190210"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 MapReduce 效能微調方針
@@ -18,10 +18,10 @@ ms.locfileid: "88190210"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱 [開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立的指示，請參閱 [開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
 * **在 HDInsight 上使用 MapReduce**。 如需詳細資訊，請參閱[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* 請**參閱 Data Lake Storage Gen1 的效能微調方針**。 如需一般的效能概念，請參閱[Data Lake Storage Gen1 效能微調指導](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)方針
+* **複習 Data Lake Storage Gen1 的效能微調指導方針**。 如需一般效能概念，請參閱[Data Lake Storage Gen1 效能微調指導](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)方針
 
 ## <a name="parameters"></a>參數
 
@@ -29,36 +29,36 @@ ms.locfileid: "88190210"
 
 |參數      | 描述  |
 |---------|---------|
-|`Mapreduce.map.memory.mb`  |  要配置給每個對應程式的記憶體數量。  |
-|`Mapreduce.job.maps`     |  每項作業的對應工作數目。  |
+|`Mapreduce.map.memory.mb`  |  配置給每個對應器的記憶體數量。  |
+|`Mapreduce.job.maps`     |  每個作業的對應工作數目。  |
 |`Mapreduce.reduce.memory.mb`     |  要配置給每個歸納器的記憶體數量。  |
 |`Mapreduce.job.reduces`    |   每項作業的縮減工作數目。  |
 
-### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce. map. memory/Mapreduce. 減少記憶體
+### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce. memory/Mapreduce。減少記憶體
 
-根據對應和（或）減少工作所需的記憶體數量來調整此數目。 您可以透過 Yarn 設定， `mapreduce.map.memory` 在 Ambari 中查看和的預設值 `mapreduce.reduce.memory` 。 在 Ambari 中，流覽至 YARN，並 **查看 [[** ]] 索引標籤。將會顯示 YARN 記憶體。
+根據對應和/或減少工作所需的記憶體數量來調整此數位。 您可以透過 Yarn 設定， `mapreduce.map.memory` 在 Ambari 中查看和的預設值 `mapreduce.reduce.memory` 。 在 Ambari 中，流覽至 YARN 並查看 **[選項** ] 索引標籤。將會顯示 YARN 的記憶體。
 
-### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce. map/Mapreduce. 作業. 減少
+### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce. maps/Mapreduce. 作業。減少
 
-這會決定要建立的對應程式或歸納器數目上限。 分割數目會決定要為 MapReduce 工作建立多少對應程式。 因此，如果分割數目少於所要求的對應程式數，您的對應程式可能會比您所要求的還要少。
+這會決定要建立的對應程式數目或歸納器的最大數目。 分割數目會決定要為 MapReduce 工作建立多少對應程式數目。 因此，當分割數目少於所要求的對應程式數目數目時，可能會比您所要求的對應程式數目少。
 
 ## <a name="guidance"></a>指引
 
-### <a name="step-1-determine-number-of-jobs-running"></a>步驟1：判斷執行的作業數目
+### <a name="step-1-determine-number-of-jobs-running"></a>步驟1：判斷正在執行的作業數目
 
-根據預設，MapReduce 會為您的作業使用整個叢集。 您可以使用較少的對應程式，而不是可用的容器。 本文中的指導方針假設您的應用程式是叢集上唯一執行的應用程式。
+根據預設，MapReduce 會為您的作業使用整個叢集。 您可以使用少於可用容器的對應程式數目，來使用較少的叢集。 本文中的指導方針假設您的應用程式是叢集上唯一執行的應用程式。
 
 ### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步驟2：設定 mapreduce. map. memory/mapreduce. memory
 
-對應和縮減工作的記憶體大小會取決於您的特定作業。 如果您想要增加並行能力，您可以減少記憶體大小。 並行執行工作的數目取決於容器數目。 藉由降低每個對應器或歸納器的記憶體數量，即可建立更多容器，而讓更多的對應器或歸納器並行執行。 減少太多的記憶體數量可能會導致某些處理程序耗盡記憶體。 如果您在執行作業時收到堆積錯誤，請增加每個對應程式或歸納器的記憶體。 請考慮新增更多容器會為每個額外的容器增加額外負荷，這可能會降低效能。 另一個方式是使用擁有較高數量記憶體的叢集，或增加叢集中的節點數目，以獲得更多的記憶體。 更多的記憶體就能使用更多的容器，亦即會有更多並行能力。
+對應和縮減工作的記憶體大小會取決於您的特定作業。 如果您想要增加並行能力，您可以減少記憶體大小。 並行執行工作的數目取決於容器數目。 藉由降低每個對應器或歸納器的記憶體數量，即可建立更多容器，而讓更多的對應器或歸納器並行執行。 減少太多的記憶體數量可能會導致某些處理程序耗盡記憶體。 如果您在執行作業時遇到堆積錯誤，請增加每個對應器或歸納器的記憶體。 請考慮新增更多容器會為每個額外的容器增加額外負荷，這可能會降低效能。 另一個方式是使用擁有較高數量記憶體的叢集，或增加叢集中的節點數目，以獲得更多的記憶體。 更多的記憶體就能使用更多的容器，亦即會有更多並行能力。
 
-### <a name="step-3-determine-total-yarn-memory"></a>步驟3：判斷總 YARN 記憶體
+### <a name="step-3-determine-total-yarn-memory"></a>步驟3：決定總 YARN 記憶體
 
-若要微調 mapreduce. map/mapreduce.，請考慮可供使用的總 YARN 記憶體數量。 這項資訊可在 Ambari 中取得。 流覽至 **YARN，並查看 [[** ]] 索引標籤。YARN 記憶體會顯示在此視窗中。 將 YARN 記憶體與叢集中的節點數目相乘，以取得總 YARN 記憶體。
+若要微調 mapreduce. map/mapreduce. 作業，請考慮可供使用的總 YARN 記憶體數量。 這項資訊可在 Ambari 中取得。 流覽至 **YARN，並查看 [選項** ] 索引標籤。YARN 記憶體會顯示在此視窗中。 將 YARN 記憶體乘以叢集中的節點數目，以取得總 YARN 記憶體。
 
 `Total YARN memory = nodes * YARN memory per node`
 
-如果您使用的是空的叢集，則記憶體可以是叢集的總 YARN 記憶體。 如果有其他應用程式使用記憶體，則您可以選擇僅使用部分的叢集記憶體，方法是將對應器或歸納器的數量減少為您想要使用的容器數量。
+如果您使用的是空的叢集，則記憶體可以是叢集的 YARN 記憶體總計。 如果有其他應用程式使用記憶體，則您可以選擇僅使用部分的叢集記憶體，方法是將對應器或歸納器的數量減少為您想要使用的容器數量。
 
 ### <a name="step-4-calculate-number-of-yarn-containers"></a>步驟4：計算 YARN 容器的數目
 
@@ -76,17 +76,17 @@ CPU 排程和 CPU 隔離預設會關閉，因此 YARN 容器的數目會受記�
 
 設想您目前有由 8 個 D14 節點所組成的叢集，而且您想要執行 I/O 密集作業。 以下是您應該進行的計算︰
 
-### <a name="step-1-determine-number-of-jobs-running"></a>步驟1：判斷執行的作業數目
+### <a name="step-1-determine-number-of-jobs-running"></a>步驟1：判斷正在執行的作業數目
 
-在我們的範例中，我們假設我們的作業是唯一執行的工作。
+在我們的範例中，我們假設我們的作業是唯一正在執行的作業。
 
 ### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步驟2：設定 mapreduce. map. memory/mapreduce. memory
 
-在我們的範例中，您會執行 i/o 密集型作業，並決定 3 GB 的記憶體來進行對應工作已足夠。
+在我們的範例中，您正在執行 i/o 密集的作業，並決定 3 GB 的記憶體用於對應工作。
 
 `mapreduce.map.memory = 3GB`
 
-### <a name="step-3-determine-total-yarn-memory"></a>步驟3：判斷總 YARN 記憶體
+### <a name="step-3-determine-total-yarn-memory"></a>步驟3：決定總 YARN 記憶體
 
 `total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB`
 
@@ -110,11 +110,11 @@ Data Lake Storage Gen1 為多租用戶服務，因此會設定帳戶層級的頻
 
 2. 重新啟動所有節點/服務，以便讓設定生效。
 
-3. 如果您要進行節流，您會在 YARN 記錄檔中看到 HTTP 429 錯誤碼。 YARN 記錄檔位於 /tmp/&lt;user&gt;/yarn.log 中
+3. 如果您正在進行節流，您將會在 YARN 記錄檔中看到 HTTP 429 錯誤碼。 YARN 記錄檔位於 /tmp/&lt;user&gt;/yarn.log 中
 
 ## <a name="examples-to-run"></a>要執行的範例
 
-為了示範 MapReduce 在 Data Lake Storage Gen1 上執行的方式，以下是使用下列設定在叢集上執行的一些範例程式碼：
+為了示範 MapReduce 在 Data Lake Storage Gen1 上的執行方式，以下是使用下列設定在叢集上執行的一些範例程式碼：
 
 * 16 節點 D14v2
 * 執行 HDI 3.6 的 Hadoop 叢集

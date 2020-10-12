@@ -7,10 +7,10 @@ ms.tgt_pltfrm: na
 ms.date: 09/09/2020
 ms.author: bwren
 ms.openlocfilehash: e08c649b9a1d7e8b909a413ee435fce30a8d7e48
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90032757"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure 監視器記錄檔總覽
@@ -51,7 +51,7 @@ Azure 監視器會從各種來源收集記錄資料，包括 Azure 監視器中�
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [記錄查詢](../log-query/log-query-overview.md) ，以從 log Analytics 工作區取出和分析資料。
 - 了解 [Azure 監視器中的計量](data-platform-metrics.md)。

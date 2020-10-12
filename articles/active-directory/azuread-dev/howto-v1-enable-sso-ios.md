@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383694"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>操作說明：使用 ADAL 在 iOS 上啟用跨應用程式的 SSO
@@ -43,7 +43,7 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 
 此操作說明會假設您知道如何：
 
-* 使用 Azure AD 的傳統入口網站佈建應用程式。 如需詳細資訊，請參閱[註冊應用程式](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+* 使用 Azure AD 的傳統入口網站佈建應用程式。 如需詳細資訊，請參閱 [註冊應用程式](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 * 整合應用程式與 [Azure AD iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc)。
 
 ## <a name="single-sign-on-concepts"></a>單一登入概念
@@ -109,7 +109,7 @@ Microsoft 為每個行動平台提供應用程式，允許跨不同廠商的應�
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>我們如何確保應用程式有效
 
-若要確保呼叫訊息代理程式之應用程式的身分識別，對於我們在 broker 輔助登入中提供的安全性非常重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定我們一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 以下將詳細討論開發人員應該如何製作此重新導向 URI。 此自訂的 redirectURI 包含應用程式的搭售識別碼，並透過 Apple App Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 iOS 作業系統搭配呼叫訊息代理程式的配套識別碼來提供它。 訊息代理程式會在對我們身分識別系統的呼叫中將此配套識別碼提供給 Microsoft。 如果應用程式的配套識別碼不符合開發人員在註冊期間提供給我們的配套識別碼，我們將會拒絕存取應用程式所要求之資源的權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
+需要確保呼叫訊息代理程式的應用程式身分識別，對於我們在訊息代理程式輔助登入中提供的安全性很重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定我們一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 以下將詳細討論開發人員應該如何製作此重新導向 URI。 此自訂的 redirectURI 包含應用程式的搭售識別碼，並透過 Apple App Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 iOS 作業系統搭配呼叫訊息代理程式的配套識別碼來提供它。 訊息代理程式會在對我們身分識別系統的呼叫中將此配套識別碼提供給 Microsoft。 如果應用程式的配套識別碼不符合開發人員在註冊期間提供給我們的配套識別碼，我們將會拒絕存取應用程式所要求之資源的權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
 
 **無論 SDK 呼叫訊息代理程式或使用非訊息代理程式協助流程，開發人員都有這個選項。** 不過，如果開發人員選擇不使用訊息代理程式協助流程，他們會失去使用單一登入認證的優點，使用者可能已在裝置上新增這些認證，並防止 Microsoft 提供給客戶的商務功能使用其應用程式，例如條件式存取、Intune 管理功能和以憑證為基礎的驗證。
 
@@ -164,7 +164,7 @@ Microsoft 為每個行動平台提供應用程式，允許跨不同廠商的應�
 
 若要跨您擁有的應用程式啟用 SSO，您需要執行下列動作︰
 
-1. 請確定您所有的應用程式都使用相同的用戶端識別碼或應用程式識別碼。
+1. 確定您的所有應用程式都使用相同的用戶端識別碼或應用程式識別碼。
 2. 請確定您所有的應用程式共用來自 Apple 的相同簽署憑證，以便您可以共用金鑰鏈。
 3. 要求每個應用程式的相同金鑰鏈權利。
 4. 告知 SDK 您想要我們使用的共用金鑰鏈。
@@ -230,7 +230,7 @@ App3 重新導向 URI： `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 </plist>
 ```
 
-一旦您已在每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請使用中的下列設定來告訴身分識別 SDK 有關 keychain 的資訊 `ADAuthenticationSettings` ：
+一旦在您的每個應用程式中啟用 keychain 權利，而且您已準備好使用 SSO，請在中使用下列設定，以使用下列設定來告訴身分識別 SDK 有關 keychain 的資訊 `ADAuthenticationSettings` ：
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -243,7 +243,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>開啟訊息代理程式協助 SSO 的 SSO
 
-應用程式使用任何已安裝在裝置上之 broker 的功能**預設為關閉**。 若要搭配使用應用程式與訊息代理程式，您必須執行一些額外的設定，並將一些程式碼新增至您的應用程式。
+**預設會關閉**應用程式使用安裝在裝置上之任何 broker 的能力。 若要搭配使用應用程式與訊息代理程式，您必須執行一些額外的設定，並將一些程式碼新增至您的應用程式。
 
 要遵循的步驟如下：
 
@@ -297,7 +297,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 例如︰x-msauth-mytestiosapp://com.myapp.mytestapp **
 
-此重新導向 URI 必須在使用[Azure 入口網站](https://portal.azure.com/)的應用程式註冊中指定。 如需 Azure AD 應用程式註冊的詳細資訊，請參閱 [與 Azure Active Directory 整合](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+此重新導向 URI 必須使用 [Azure 入口網站](https://portal.azure.com/)在您的應用程式註冊中指定。 如需 Azure AD 應用程式註冊的詳細資訊，請參閱 [與 Azure Active Directory 整合](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>步驟 3a︰在應用程式與開發人員入口網站中新增重新導向 URI 以支援以憑證為基礎的驗證
 

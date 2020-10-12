@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
 ms.openlocfilehash: 57414828394e7f241cd33b7d56190a3ce9a7eab2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87875995"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 對 Azure Data Lake Storage Gen1 進行帳戶管理作業
@@ -22,7 +22,7 @@ ms.locfileid: "87875995"
 >
 >
 
-瞭解如何使用適用于 Azure Data Lake Storage Gen1 的 Python SDK 來執行基本帳戶管理作業，例如建立 Data Lake Storage Gen1 帳戶、列出 Data Lake Storage Gen1 帳戶等。如需有關如何使用 Python 在 Data Lake Storage Gen1 上執行檔案系統作業的指示，請參閱[使用 python Data Lake Storage Gen1 上的檔案系統作業](data-lake-store-data-operations-python.md)。
+瞭解如何使用適用于 Azure Data Lake Storage Gen1 的 Python SDK 來執行基本帳戶管理作業，例如建立 Data Lake Storage Gen1 帳戶、列出 Data Lake Storage Gen1 帳戶等等。如需有關如何使用 Python 在 Data Lake Storage Gen1 上執行檔案系統作業的指示，請參閱 [使用 python Data Lake Storage Gen1 上的檔案系統作業](data-lake-store-data-operations-python.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -50,7 +50,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
-1. 在您選擇的 IDE 中，建立新的 Python 應用程式，例如**mysample.py**。
+1. 在您選擇的 IDE 中，建立新的 Python 應用程式，例如 **mysample.py**。
 
 2. 新增以下程式碼片段以匯入必要模組
 

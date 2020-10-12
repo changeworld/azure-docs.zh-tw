@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
 ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969523"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 布建如何與 SAP SuccessFactors 整合 
@@ -306,7 +306,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
 * 在員工中心，公司電話設定為主要。 回寫應用程式無法變更此設定，並將行動電話設定為主要。
 * 回寫應用程式無法讀取目前的主要旗標設定，並使用相同的值進行寫入操作。 一律會使用屬性對應中所設定的旗標值。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何設定 SuccessFactors 以 Active Directory 布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 * [瞭解如何設定回寫至 SuccessFactors](../saas-apps/sap-successfactors-writeback-tutorial.md)

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368926"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上建立第一個 Java Service Fabric Reliable Actors 應用程式
@@ -20,7 +20,7 @@ ms.locfileid: "87368926"
 
 本快速入門可協助您在短短幾分鐘內在 Linux 開發環境中建立第一個 Azure Service Fabric Java 應用程式。  當您完成時，您會有一個在本機開發叢集上執行的簡單 Java 單一服務應用程式。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 開始之前，請在 [Linux 開發環境](service-fabric-get-started-linux.md)中安裝 Service Fabric SDK、Service Fabric CLI、Yeoman，然後設定 Java 開發環境，並設定開發叢集。 如果您使用 Mac OS X，您可以[使用 Docker 在 Mac 上設定開發環境](service-fabric-get-started-mac.md)。
 
 另請安裝 [Service Fabric CLI](service-fabric-cli.md)。
@@ -233,7 +233,7 @@ Service Fabric Yeoman 範本包含 [Gradle](https://gradle.org/) 的建置指令
     watch -n 1 ./testclient.sh
     ```
 
-2. 在 Service Fabric Explorer 中，找出裝載動作項目服務主要複本的節點。 在以下的螢幕擷取畫面中是節點 3。 主要服務複本會處理讀取和寫入作業。  服務狀態的變更接著會複寫到次要複本，並在下列螢幕擷取畫面中的節點0和1上執行。
+2. 在 Service Fabric Explorer 中，找出裝載動作項目服務主要複本的節點。 在以下的螢幕擷取畫面中是節點 3。 主要服務複本會處理讀取和寫入作業。  接著會將服務狀態的變更複寫至次要複本，在下列螢幕擷取畫面中的節點0和1上執行。
 
     ![在 Service Fabric Explorer 中尋找主要複本][sfx-primary]
 
@@ -336,12 +336,12 @@ Service Fabric 的系統層級支援，其可與原生 Service Fabric 執行階�
   }
   ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Eclipse 在 Linux 上建立第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)
 * [深入了解 Reliable Actors](service-fabric-reliable-actors-introduction.md)
 * [使用 Service Fabric CLI 與 Service Fabric 叢集互動](service-fabric-cli.md)
-* 瞭解[Service Fabric 支援選項](service-fabric-support.md)
+* 瞭解 [Service Fabric 支援選項](service-fabric-support.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)
 
 <!-- Images -->

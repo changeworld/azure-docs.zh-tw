@@ -1,6 +1,6 @@
 ---
-title: 模組對應項-Azure Event Grid IoT Edge |Microsoft Docs
-description: 透過模組對應項設定。
+title: 模組對應項-Azure 事件方格 IoT Edge |Microsoft Docs
+description: 透過模組對應項進行設定。
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -8,23 +8,23 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171324"
 ---
-# <a name="module-twin-json-schema-azure-event-grid"></a>模組對應項 JSON 架構 (Azure 事件方格) 
+# <a name="module-twin-json-schema-azure-event-grid"></a> (Azure 事件方格) 的模組對應項 JSON 架構
 
-IoT Edge 上的事件方格會與 IoT Edge 生態系統整合，並支援透過模組對應項建立主題和訂用帳戶。 它也會將所有主題和事件訂閱的目前狀態報表到模組對應項上的報告屬性。
+IoT Edge 上的事件方格與 IoT Edge 生態系統整合，並支援透過模組對應項建立主題和訂用帳戶。 它也會將所有主題和事件訂閱的目前狀態報表至模組對應項上的報告屬性。
 
 > [!WARNING]
-> 由於 IoT Edge 生態系統中的限制，下列 json 範例中的所有陣列元素都已編碼為 json 字串。 請 `EventSubscription.Filter.EventTypes` 參閱 `EventSubscription.Filter.AdvancedFilters` 下列範例中的和索引鍵。
+> 由於 IoT Edge 生態系統中的限制，下列 json 範例中的所有陣列元素都已編碼為 json 字串。 請參閱 `EventSubscription.Filter.EventTypes` 和 `EventSubscription.Filter.AdvancedFilters` 下列範例中的索引鍵。
 
-## <a name="desired-properties-json"></a>所需屬性 JSON
+## <a name="desired-properties-json"></a>需要的屬性 JSON
 
-* [主題] 區段中每個索引鍵/值組的值，在建立主題時，會與用於 API 的 JSON 架構完全相同 `Topic.Properties` 。
-* 在建立主題時， **EventSubscriptions**區段中每個索引鍵/值組的值都與用於 API 的 json 架構完全相同 `EventSubscription.Properties` 。
+* 在 [主題] 區段中，每個索引鍵/值組的值都與建立主題時用於 API 的 JSON 架構完全相同 `Topic.Properties` 。
+* 在 **EventSubscriptions** 區段中，每個索引鍵/值組的值都與 `EventSubscription.Properties` 建立主題時用於 API 的 json 架構完全相同。
 * 若要刪除主題，請 `null` 在所需的屬性中將其值設定為。
 * 不支援透過所需的屬性刪除事件訂閱。
 
@@ -77,13 +77,13 @@ IoT Edge 上的事件方格會與 IoT Edge 生態系統整合，並支援透過�
 }
 ```
 
-## <a name="reported-properties-json"></a>報告屬性 JSON
+## <a name="reported-properties-json"></a>報告的屬性 JSON
 
 模組對應項的報告屬性區段包含下列資訊：
 
-* 存在於模組存放區中的主題和訂用帳戶集合
-* 建立所需主題/事件訂閱時所發生的任何錯誤
-* 任何開機錯誤 (例如所需的屬性 JSON 剖析失敗) 
+* 存在於模組存放區中的主題和訂閱集合
+* 建立所需主題/事件訂閱時遇到的任何錯誤
+* 任何啟動錯誤 (例如所需的屬性 JSON 剖析失敗) 
 
 ```json
 {

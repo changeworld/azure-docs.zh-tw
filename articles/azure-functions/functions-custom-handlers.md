@@ -6,10 +6,10 @@ ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
 ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294589"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自訂處理常式 (預覽) 
@@ -58,7 +58,7 @@ ms.locfileid: "89294589"
 | handler.exe
 ```
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 應用程式是透過的 *host.js* 設定，並 * 在檔案上local.settings.js* 。
 

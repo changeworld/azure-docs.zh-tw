@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 入口網站在 Linux 上建立您的第�
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970739"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure App Service 方案中建立 Linux 上的函式應用程式
@@ -44,7 +44,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
     |**版本**| 版本號碼 | 選擇已安裝的執行階段版本。  |
     |**區域**| 慣用區域 | 選擇與您接近的[區域](https://azure.microsoft.com/regions/)，或選擇與函式將會存取之其他服務接近的區域。 |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="基本資料頁面":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="在 Azure 入口網站中建立函式應用程式":::
 
 1. 選取 [下一步：裝載]。 在 [裝載] 頁面中輸入下列設定。
 
@@ -54,7 +54,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
     |**作業系統**| **Linux** | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 |
     | **[規劃](../azure-functions/functions-scale.md)** | **使用量 (無伺服器)** | 會定義如何將資源配置給函式應用程式的主控方案。 在預設**取用**方案中，您的函式會根據需要來動態新增資源。 在此[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)裝載中，您只需要針對函式有執行的時間來付費。 在 App Service 方案中執行時，您必須管理[函式應用程式的調整](../azure-functions/functions-scale.md)。  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="主控頁面":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="在 Azure 入口網站中建立函式應用程式":::
 
 1. 選取 [下一步：監視]。 在 [掛接] 頁面中輸入下列設定。
 
@@ -62,7 +62,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../azure-functions/functions-monitoring.md)** | **是** (預設) | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 展開此設定或選取 [新增]，即可變更 Application Insights 名稱或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中依您希望儲存資料的地點，選擇不同的區域。 |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="監視頁面":::
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="在 Azure 入口網站中建立函式應用程式":::
 
 1. 選取 [檢閱 + 建立]，以檢閱應用程式組態選項。
 

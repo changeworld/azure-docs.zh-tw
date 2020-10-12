@@ -8,10 +8,10 @@ ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 16ee5fb59741d57f47083a0c5db852872ceb91d0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296085"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>適用于 Logic Apps 的 Azure 安全性基準
@@ -1190,13 +1190,13 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 保護備份客戶管理的金鑰。 請注意，這只適用于 (ISE) 的整合服務環境上執行的 Logic Apps。
 
-啟用 Key Vault 中的虛刪除和清除保護，以保護金鑰免于遭到意外或惡意刪除。
+在 Key Vault 中啟用 Soft-Delete 和清除保護，以防止金鑰遭到意外或惡意刪除。
 
 - [深入瞭解 Azure Logic Apps 的商務持續性和嚴重損壞修復](business-continuity-disaster-recovery-guidance.md)
 
 - [設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料](customer-managed-keys-integration-service-environment.md)
 
-- [如何在 Key Vault 中啟用虛刪除和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 

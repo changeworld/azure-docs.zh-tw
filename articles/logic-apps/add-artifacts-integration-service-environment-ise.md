@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269738"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將資源新增至您的整合服務環境 (ISE) 
@@ -20,7 +20,7 @@ ms.locfileid: "91269738"
 > [!IMPORTANT]
 > 若要讓邏輯應用程式和整合帳戶可在 ISE 中一起運作，兩者都必須使用「相同的 ISE」作為其位置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91269738"
 
    ![顯示「邏輯應用程式」「建立」視窗的螢幕擷取畫面，其中包含輸入的範例資訊。](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **名稱** | 是 | 要建立之邏輯應用程式的名稱 |
    | **訂用帳戶** | 是 | 要使用的 Azure 訂用帳戶的名稱 |
@@ -74,7 +74,7 @@ ms.locfileid: "91269738"
 
    ![選取整合服務環境](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **名稱** | 是 | 您要建立的整合帳戶名稱 |
    | **訂用帳戶** | 是 | 您要使用的 Azure 訂用帳戶名稱 |
@@ -101,7 +101,7 @@ ms.locfileid: "91269738"
 
    ![查看受控連接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 [ **新增受管理的連接器** ] 窗格中，開啟 [ **尋找連接器** ] 清單。 選取您要使用但尚未部署在 ISE 中的 ISE 連接器。 選取 [建立]。
+1. 在 [ **新增受管理的連接器** ] 窗格中，開啟 [ **尋找連接器** ] 清單。 選取您要使用但尚未部署在 ISE 中的 ISE 連接器。 選取 [建立]****。
 
    ![選取您要在 ISE 中部署的 ISE 連接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

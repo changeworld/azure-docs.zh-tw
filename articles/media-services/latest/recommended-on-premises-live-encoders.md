@@ -10,10 +10,10 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: media-services
 ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295354"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>已驗證內部部署即時串流編碼器
@@ -120,6 +120,6 @@ ms.locfileid: "89295354"
 
 [使用媒體服務 v3 進行即時串流](live-streaming-overview.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [如何驗證您的編碼器](become-on-premises-encoder-partner.md)

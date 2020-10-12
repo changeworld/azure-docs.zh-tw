@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78940947"
 ---
-下表描述資料表儲存體的容量、擴充性和效能目標。
+下表描述資料表儲存體的容量、延展性和效能目標。
 
 | 資源 | 目標 |
 |----------|---------------|
@@ -20,11 +20,11 @@ ms.locfileid: "78940947"
 | 資料分割中的實體數目 | 僅受限於儲存體帳戶的容量 |
 | 單一資料表的大小上限 | 500 TiB |
 | 單一實體的大小上限，包括所有屬性值 | 1 MiB |
-| 資料表實體中的屬性數目上限 | 255（包括三個系統屬性： **PartitionKey**、 **RowKey**和**Timestamp**） |
-| 實體中個別屬性的總大小上限 | 依屬性類型而有所不同。 如需詳細資訊，請參閱[瞭解表格服務資料模型](/rest/api/storageservices/understanding-the-table-service-data-model)中的**屬性類型**。 |
-| **PartitionKey** | 大小上限為 1 KiB 的字串 |
-| **RowKey** | 大小上限為 1 KiB 的字串 |
-| 實體群組交易的大小 | 交易最多可包含100個實體，而承載的大小必須小於 4 MiB。 實體群組交易只能包含實體一次的更新。 |
-| 每個資料表的預存存取原則數目上限 | 5 |
-| 每一儲存體帳戶的要求率上限 | 每秒20000筆交易，這假設有一個 KiB 的實體大小 |
-| 單一資料表分割的目標輸送量（1個 KiB-個實體） | 最多每秒2000個實體 |
+| 資料表實體中的屬性數目上限 | 255 (包括 3 個系統屬性：**PartitionKey**、**RowKey** 和 **Timestamp**) |
+| 實體中個別屬性的大小總和上限 | 依屬性類型而有所不同。 如需詳細資訊，請參閱[了解資料表服務的資料模型](/rest/api/storageservices/understanding-the-table-service-data-model)中的**屬性類型**。 |
+| **PartitionKey** | 大小最多 1 KiB 的字串 |
+| **RowKey** | 大小最多 1 KiB 的字串 |
+| 實體群組交易的大小 | 交易最多可以包含 100 個實體，而承載大小必須小於 4 MiB。 實體群組交易只能包含實體的更新一次。 |
+| 每個資料表的預存存取原則的最大數目 | 5 |
+| 每一儲存體帳戶的要求率上限 | 每秒 20,000 筆交易，假設實體大小為 1 KiB |
+| 單一資料表分割的目標輸送量 (1 KiB 實體) | 每秒最多 2,000 個實體 |

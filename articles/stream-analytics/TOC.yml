@@ -92,7 +92,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: 資料表儲存體
+        - name: 表格儲存體
           href: table-storage-output.md
         - name: 服務匯流排佇列
           href: service-bus-queues-output.md
@@ -693,7 +693,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-stream-analytics'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
