@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
 ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397040"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
@@ -50,7 +50,7 @@ AKS 針對內建服務和附加元件使用了數個受控識別。
 | 附加元件 | HTTPApplicationRouting | 管理必要的網路資源 | 節點資源群組的讀取者角色，DNS 區域的參與者角色 | 否
 | 附加元件 | 輸入應用程式閘道 | 管理必要的網路資源| 節點資源群組的參與者角色 | 否
 | 附加元件 | omsagent | 用來將 AKS 計量傳送給 Azure 監視器 | 監視計量發行者角色 | 否
-| 附加元件 | 虛擬節點 (ACIConnector)  | 管理 Azure 容器實例 (ACI) 所需的網路資源 | 節點資源群組的參與者角色 | 否
+| 附加元件 | Virtual-Node (ACIConnector)  | 管理 Azure 容器實例 (ACI) 所需的網路資源 | 節點資源群組的參與者角色 | 否
 | OSS 專案 | aad-pod-身分識別 | 可讓應用程式使用 Azure Active Directory (AAD 來安全地存取雲端資源)  | NA | 授與許可權的步驟 https://github.com/Azure/aad-pod-identity#role-assignment 。
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>使用受控識別建立 AKS 叢集

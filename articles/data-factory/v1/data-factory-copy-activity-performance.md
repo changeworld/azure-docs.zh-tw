@@ -13,10 +13,10 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441080"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>複製活動的效能及微調指南
@@ -66,7 +66,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
         <td>32 核心 2.20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>記憶體</td>
+        <td>Memory</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -202,7 +202,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 目前您還無法使用暫存存放區在兩個內部部署資料存放區之間複製資料。 我們預計此選項很快就會推出。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 在複製活動中設定 **enableStaging** 設定，指定您是否想要讓資料在載入至目的地資料存放區之前，暫存在 Blob 儲存體中。 當您將 **enableStaging** 設定為 TRUE 時，請指定下一份資料表所列出的其他屬性。 如果還未指定，您也需要建立 Azure 儲存體或儲存體共用存取簽章連結服務以供暫存使用。
 
 | 屬性 | 描述 | 預設值 | 必要 |

@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317016"
 ---
-# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Azure Vm 上的叢集設定最佳作法 (SQL Server) 
+# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>叢集設定最佳做法 (Azure VM 上的 SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 叢集用於高可用性和嚴重損壞修復 (HADR) 搭配 Azure 虛擬機器 (Vm) 上的 SQL Server。 
@@ -58,7 +58,7 @@ ms.locfileid: "91317016"
 若要開始使用，請參閱 [設定磁片見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支援的作業系統**：全部   
+**支援的 OS**：全部   
 
 
 ### <a name="cloud-witness"></a>雲端見證
@@ -68,7 +68,7 @@ ms.locfileid: "91317016"
 若要開始使用，請參閱 [設定雲端見證](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)。
 
 
-**支援的作業系統**： Windows Server 2016 和更新版本   
+**支援的 OS**：Windows Server 2016 及更新版本   
 
 
 ### <a name="file-share-witness"></a>檔案共用見證
@@ -80,7 +80,7 @@ ms.locfileid: "91317016"
 若要開始使用，請參閱 [設定檔案共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支援的作業系統**： Windows Server 2012 和更新版本   
+**支援的 OS**：Windows Server 2012 及更新版本   
 
 ## <a name="connectivity"></a>連線能力
 
@@ -92,8 +92,8 @@ ms.locfileid: "91317016"
 
 | |**虛擬網路名稱 (VNN)**  |**分散式網路名稱 (DNN)**  |
 |---------|---------|---------|
-|**最低 OS 版本**| 全部 | 全部 |
-|**最小 SQL Server 版本** |全部 |SQL Server 2019 CU2|
+|**作業系統最低版本**| 全部 | 全部 |
+|**最低 SQL Server 版本** |全部 |SQL Server 2019 CU2|
 |**支援的 HADR 解決方案** | 容錯移轉叢集執行個體 <br/> 可用性群組 | 容錯移轉叢集執行個體|
 
 
@@ -105,7 +105,7 @@ ms.locfileid: "91317016"
 
 若要開始使用，請瞭解如何 [設定 FCI 的 Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)。 
 
-**支援的作業系統**：全部   
+**支援的 OS**：全部   
 **支援的 SQL 版本**：全部   
 **支援的 HADR 解決方案**：容錯移轉叢集實例和可用性群組   
 
@@ -125,7 +125,7 @@ ms.locfileid: "91317016"
 
 若要開始使用，請瞭解如何 [設定 FCI 的 DNN 資源](hadr-distributed-network-name-dnn-configure.md)。 
 
-**支援的作業系統**： Windows Server 2016 和更新版本   
+**支援的 OS**：Windows Server 2016 及更新版本   
 **支援的 SQL 版本**： SQL Server 2019 和更新版本   
 **支援的 HADR 解決方案**：僅限容錯移轉叢集實例
 
@@ -136,11 +136,11 @@ ms.locfileid: "91317016"
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transaction Coordinator (MSDTC) ，並在叢集共用磁片區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) ，或在使用 azure 共用磁片的 SQL Server vm 上提供存放裝置。 
+Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上的 Windows Server 2019 上使用 Microsoft 分散式交易協調器 (MSDTC)，也支援在使用 Azure 共用磁碟的 SQL Server VM 上使用 MSDTC。 
 
-在 Azure 虛擬機器上，Windows Server 2016 或更早版本的叢集共用磁片區不支援 MSDTC，原因如下：
+在 Azure 虛擬機器上，具有叢集共用磁碟區的 Windows Server 2016 或更早版本不支援 MSDTC，因為：
 
-- 叢集 MSDTC 資源無法設為使用共用儲存體。 若在 Windows Server 2016 上建立 MSDTC 資源，即使有儲存體可用，系統也不會顯示任何可用的共用儲存體。 Windows Server 2019 中已修正此問題。
+- 叢集化的 MSDTC 資源無法設為使用共用儲存體。 若在 Windows Server 2016 上建立 MSDTC 資源，即使有儲存體可用，系統也不會顯示任何可用的共用儲存體。 Windows Server 2019 中已修正此問題。
 - 基本負載平衡器不處理 RPC 連接埠。
 
 

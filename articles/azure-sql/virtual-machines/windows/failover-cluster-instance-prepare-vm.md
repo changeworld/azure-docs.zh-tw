@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272492"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
@@ -26,7 +26,7 @@ ms.locfileid: "91272492"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 - Microsoft Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - Azure 虛擬機器上的 Windows 網域或內部部署資料中心會透過虛擬網路配對延伸至 Azure。
@@ -105,7 +105,7 @@ ms.locfileid: "91272492"
 
 下表詳細說明您可能需要開啟的埠，取決於您的 FCI 設定： 
 
-   | 目的 | Port | 注意
+   | 目的 | 連接埠 | 注意
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者**：所有 FCI 設定。 |
    | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由**： FCI 與負載平衡器搭配使用。 |
@@ -133,4 +133,4 @@ ms.locfileid: "91272492"
 
 如需相關資訊，請參閱： 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

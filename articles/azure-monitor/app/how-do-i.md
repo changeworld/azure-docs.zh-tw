@@ -4,10 +4,10 @@ description: Application Insights 中的常見問題集。
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319247"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 在 [計量總管](../platform/metrics-charts.md) 中建立圖表來查看您的警示：
 
-![顯示如何在 [計量瀏覽器] 中建立圖表來查看您的警示的螢幕擷取畫面。](./media/how-do-i/010-alarm.png)
+![顯示如何在 [計量瀏覽器] 中建立圖表以查看警示的螢幕擷取畫面。](./media/how-do-i/010-alarm.png)
 
 現在設定警示在計量一段短時間高於中間值時引發：
 
-![螢幕擷取畫面：顯示如何設定當計量在短時間內超過中間值時引發警示。](./media/how-do-i/020-threshold.png)
+![顯示如何設定當計量超過短時間內的中值時，要引發警示的螢幕擷取畫面。](./media/how-do-i/020-threshold.png)
 
 將平均期間設定為最小值。
 
@@ -88,7 +88,7 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 ## <a name="visualize-data"></a>顯現資料
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>具有來自多個 App 之計量的儀表板
-* 在計量[瀏覽器](../platform/metrics-charts.md)中，自訂您的圖表，並將它儲存為我的最愛。 將它釘選到 Azure 儀表板。
+* 在計量 [瀏覽器](../platform/metrics-charts.md)中自訂您的圖表，並將它儲存為我的最愛。 將它釘選到 Azure 儀表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>資料來自其他來源和 Application Insights 的儀表板
 * [將遙測匯出至 Power Bi](./export-power-bi.md)。
@@ -110,7 +110,7 @@ Or
 
 * 篩選匿名或已驗證使用者的計量
 
-![顯示篩選 metrixs 為匿名或已驗證使用者的螢幕擷取畫面。](./media/how-do-i/115-metrics.png)
+![顯示篩選 metrixs 至匿名或已驗證使用者的螢幕擷取畫面。](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>修改屬性名稱或值
 建立 [篩選器](./api-filtering-sampling.md#filtering)。 這可讓您先修改或篩選遙測，然後再將它從您的應用程式傳送至 Application Insights。

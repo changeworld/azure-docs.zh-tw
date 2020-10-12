@@ -4,10 +4,10 @@ description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份�
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332775"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
@@ -60,7 +60,7 @@ ms.locfileid: "91332775"
 
 ### <a name="backup-type-unsupported"></a>不支援的備份類型
 
-| 嚴重性 | 說明 | 可能的原因 | 建議的動作 |
+| 嚴重性 | 描述 | 可能的原因 | 建議的動作 |
 |---|---|---|---|
 | 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定 sp 支援原則中的所有備份類型。 或變更目前的原則，以僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
 
@@ -216,7 +216,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-以下是範例：
+以下為範例：
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -245,7 +245,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 ]
 ```
 
-以下是範例：
+以下為範例：
 
 ```json
 [

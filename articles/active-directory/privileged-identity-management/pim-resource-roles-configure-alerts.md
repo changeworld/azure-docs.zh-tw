@@ -16,15 +16,15 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743757"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure 資源角色的安全性警示
 
-當您的 Azure Active Directory （Azure AD）組織中有可疑或不安全的活動時，Privileged Identity Management （PIM）會產生警示。 觸發後的警示會顯示在 [警示] 頁面上。
+當您的 Azure Active Directory (Azure AD) 組織中有可疑或不安全的活動時，Privileged Identity Management (PIM) 會產生警示。 觸發後的警示會顯示在 [警示] 頁面上。
 
 ![Azure 資源-列出警示、風險層級和計數的警示頁面](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "84743757"
 
 選取警示以查看列出觸發警示之使用者或角色的報告，以及補救指導方針。
 
-![警示報表，顯示上次掃描時間、描述、風險降低步驟、類型、嚴重性、安全性影響，以及如何預防下一次](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
+![警示報表，顯示上次的掃描時間、描述、風險降低步驟、類型、嚴重性、安全性影響，以及如何防止下一次](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>警示
 
@@ -56,8 +56,8 @@ ms.locfileid: "84743757"
 
 自訂不同警示的設定，以便合您的環境和安全性目標。
 
-![設定頁面中的警示以啟用和設定設定](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![設定警示的頁面，以啟用和設定設定](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [在 Privileged Identity Management 中設定 Azure 資源角色設定](pim-resource-roles-configure-role-settings.md)

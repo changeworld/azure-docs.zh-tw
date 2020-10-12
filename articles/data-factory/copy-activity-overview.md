@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440587"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
@@ -65,7 +65,7 @@ ms.locfileid: "89440587"
 
 啟用複製活動的服務可在 [Azure integration runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中所列的區域和地理位置全域取得。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 查看各 [區域的產品](https://azure.microsoft.com/regions/#services) ，以檢查特定區域中 Data Factory 和資料移動的可用性。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -258,7 +258,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 根據預設，複製活動會在來源資料列與接收資料列不相容時，停止複製資料並傳回失敗。 您可以設定複製活動來略過並記錄不相容的資料列，並只複製相容的資料，以使複製成功。 如需詳細資料，請參閱 [複製活動的容錯](copy-activity-fault-tolerance.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱下列快速入門、教學課程和範例：
 
 - [將資料從一個位置複製到相同 Azure Blob 儲存體帳戶中的另一個位置](quickstart-create-data-factory-dot-net.md)

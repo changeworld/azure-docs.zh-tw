@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 817b8976f5d014d990945816c2df1c7e8ed729fb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084880"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>對 Azure HDInsight 上執行的 Apache Spark 作業進行偵錯
 
-在本文中，您將瞭解如何追蹤和調試在 HDInsight 叢集上執行的 Apache Spark 作業。 使用 Apache Hadoop YARN UI、Spark UI 和 Spark 歷程記錄伺服器進行 Debug。 我們會使用 Spark 叢集中可用的 Notebook 啟動 Spark 作業，**機器學習服務︰使用 MLLib 對食物檢查資料進行預測分析**。 使用下列步驟來追蹤您使用任何其他方法提交的應用程式（例如， **spark 提交**）。
+在本文中，您將瞭解如何追蹤和偵測在 HDInsight 叢集上執行的 Apache Spark 作業。 使用 Apache Hadoop YARN UI、Spark UI 和 Spark 歷程記錄伺服器來進行 Debug。 我們會使用 Spark 叢集中可用的 Notebook 啟動 Spark 作業，**機器學習服務︰使用 MLLib 對食物檢查資料進行預測分析**。 您也可以使用下列步驟來追蹤您使用任何其他方法提交的應用程式，例如 **spark 提交**。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -34,9 +34,9 @@ ms.locfileid: "86084880"
     ![Azure 入口網站啟動 YARN UI](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 若要啟動 Ambari UI，請選取 [叢集**儀表板**] 底下的 [ **Ambari 首頁**]。 從 Ambari UI 中，流覽至 [ **YARN**]  >  [**快速連結**]，> 作用中的 Resource Manager > **Resource Manager] UI**。
+   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 若要啟動 Ambari UI，請選取 [叢集**儀表板**] 下的 [ **Ambari 首頁**]。 從 Ambari UI 中，流覽至 [ **YARN**  >  **快速連結**] > 作用中的 Resource Manager > **Resource Manager UI**]。
 
-2. 由於您是使用 Jupyter 筆記本來啟動 Spark 作業，因此應用程式的名稱為**remotesparkmagics** （所有從筆記本啟動的應用程式名稱）。 針對 [應用程式名稱] 選取 [應用程式識別碼]，以取得作業的詳細資訊。 此動作會啟動應用程式視圖。
+2. 由於您已使用 Jupyter 筆記本啟動 Spark 作業，因此應用程式的名稱為 **remotesparkmagics** (從筆記本) 啟動的所有應用程式名稱。 選取應用程式名稱的應用程式識別碼，以取得作業的詳細資訊。 此動作會啟動應用程式視圖。
 
     ![Spark 歷程記錄伺服器尋找 Spark 應用程式識別碼](./media/apache-spark-job-debugging/find-application-id1.png)
 
@@ -50,21 +50,21 @@ ms.locfileid: "86084880"
 
 在 Spark UI 中，您可以向下鑽研至您先前啟動的應用程式所繁衍的 Spark 作業。
 
-1. 若要啟動 Spark UI，請從應用程式視圖中，選取 [**追蹤 URL**] 的連結，如上述螢幕擷取畫面所示。 您可以看到應用程式啟動的所有 Spark 作業在 Jupyter Notebook 中執行。
+1. 若要啟動 Spark UI，請從應用程式視圖中選取 [ **追蹤 URL**] 的連結，如上面的螢幕擷取畫面所示。 您可以看到應用程式啟動的所有 Spark 作業在 Jupyter Notebook 中執行。
 
-    ![[Spark 歷程記錄伺服器工作] 索引標籤](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
+    ![Spark 歷程記錄伺服器工作索引標籤](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 
-2. 選取 [執行程式] 索引卷**標，以**查看每個執行程式的處理和儲存資訊。 您也可以選取 [**執行緒**傾印] 連結來抓取呼叫堆疊。
+2. 選取 [執行程式] 索引卷 **標，以** 查看每個執行程式的處理和儲存資訊。 您也可以選取 [ **執行緒** 傾印] 連結來取出呼叫堆疊。
 
-    ![Spark 歷程記錄伺服器執行的索引標籤](./media/apache-spark-job-debugging/view-spark-executors.png)
+    ![Spark 歷程記錄伺服器執行程式索引標籤](./media/apache-spark-job-debugging/view-spark-executors.png)
 
-3. 選取 [**階段**] 索引標籤，查看與應用程式相關聯的階段。
+3. 選取 [ **階段** ] 索引標籤，以查看與應用程式相關聯的階段。
 
-    ![[Spark 歷程記錄伺服器階段] 索引標籤](./media/apache-spark-job-debugging/view-apache-spark-stages.png "檢視 Spark 階段")
+    ![Spark 歷程記錄伺服器階段索引標籤](./media/apache-spark-job-debugging/view-apache-spark-stages.png "檢視 Spark 階段")
 
     每個階段可以有多個工作，您可以檢視其執行統計資料，如下所示。
 
-    ![[Spark 歷程記錄伺服器階段] 索引標籤詳細資料](./media/apache-spark-job-debugging/view-spark-stages-details.png "觀看 Spark 階段詳細資料")
+    ![Spark 歷程記錄伺服器階段索引標籤詳細資料](./media/apache-spark-job-debugging/view-spark-stages-details.png "查看 Spark 階段詳細資料")
 
 4. 從階段詳細資料頁面上，您可以啟動 DAG 視覺效果。 展開頁面頂端的 [DAG 視覺效果] **** 連結，如下所示。
 
@@ -76,7 +76,7 @@ ms.locfileid: "86084880"
 
     ![檢視 Spark 階段事件時間軸](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
 
-    此影像會以時間軸的形式顯示 Spark 事件。 時間軸檢視有三個層級，跨作業、作業內以及階段內。 以上的映像擷取指定階段的時間軸檢視。
+    此影像以時間軸的形式顯示 Spark 事件。 時間軸檢視有三個層級，跨作業、作業內以及階段內。 以上的映像擷取指定階段的時間軸檢視。
 
    > [!TIP]  
    > 如果您選取 [啟用縮放功能]**** 核取方塊，您可以跨時間軸檢視左右捲動。
@@ -84,7 +84,7 @@ ms.locfileid: "86084880"
 6. Spark UI 中的其他索引標籤也提供 Spark 執行個體的實用資訊。
 
    * [儲存體] 索引標籤-如果您的應用程式建立 RDD，您可以在 [儲存體] 索引標籤中找到資訊。
-   * [環境] 索引標籤-此索引標籤提供有關 Spark 實例的實用資訊，例如：
+   * 環境索引標籤-此索引標籤提供有關 Spark 實例的實用資訊，例如：
      * Scala 版本
      * 與叢集相關聯的事件記錄檔目錄
      * 應用程式的執行程式核心數目
@@ -93,19 +93,19 @@ ms.locfileid: "86084880"
 
 完成作業後，作業的相關資訊會保存在 Spark 歷程記錄伺服器。
 
-1. 若要啟動 Spark 歷程記錄伺服器，請從 [總覽] 頁面選取 [叢集**儀表板**] 底下的 **[** **Spark 歷程記錄伺服器**]。
+1. 若要啟動 Spark 歷程記錄伺服器，請從 [總覽] 頁面的 [叢集**儀表板**] 底下選取 **[** **Spark 歷程記錄伺服器**]。
 
     ![Azure 入口網站啟動 Spark 歷程記錄伺服器](./media/apache-spark-job-debugging/launch-spark-history-server.png "啟動 Spark 歷程記錄 Server1")
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 Spark 歷程記錄伺服器 UI。 若要啟動 Ambari UI，請從 [總覽] 分頁，選取 [叢集**儀表板**] 底下的 [ **Ambari 首頁**]。 從 Ambari UI，流覽至**Spark2**  >  **快速連結**  >  **Spark2 歷程記錄伺服器 UI**。
+   > 或者，您也可以從 Ambari UI 啟動 Spark 歷程記錄伺服器 UI。 若要啟動 Ambari UI，請在 [總覽] 分頁中選取 [叢集**儀表板**] 下的 [ **Ambari 首頁**]。 從 Ambari UI 中，流覽至 [ **Spark2**  >  **快速連結**  >  **Spark2 歷程記錄伺服器 UI**]。
 
 2. 您會看到所有已完成應用程式列出。 選取應用程式識別碼以向下切入至應用程式，以取得詳細資訊。
 
-    ![Spark 歷程記錄伺服器已完成的應用程式](./media/apache-spark-job-debugging/view-completed-applications.png "啟動 Spark 歷程記錄 Server2")
+    ![Spark 歷程記錄伺服器完成的應用程式](./media/apache-spark-job-debugging/view-completed-applications.png "啟動 Spark 歷程記錄 Server2")
 
 ## <a name="see-also"></a>另請參閱
 
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](apache-spark-resource-manager.md)
 * [使用擴充的 Spark 歷程記錄伺服器進行 Apache Spark 作業偵錯](apache-azure-spark-history-server.md)
-* [使用 Azure Toolkit for IntelliJ 透過 SSH 進行 Apache Spark 應用程式的 Debug](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [使用 Azure Toolkit for IntelliJ 透過 SSH 進行 Apache Spark 應用程式的偵錯工具](apache-spark-intellij-tool-debug-remotely-through-ssh.md)

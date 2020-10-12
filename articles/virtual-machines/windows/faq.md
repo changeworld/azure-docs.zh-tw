@@ -1,5 +1,5 @@
 ---
-title: 有關 Azure 中 Windows Vm 的常見問題
+title: Azure 中的 Windows Vm 常見問題
 description: 針對以 Resource Manager 模型建立的 Windows 虛擬機器，提供一些相關常見問題的解答。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
 ms.openlocfilehash: d5dda567d0cfa89863731a3e8e651aede4ab5957
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87825186"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows 虛擬機器的常見問題
-本文可解決在 Azure 中使用 Resource Manager 部署模型建立之 Windows 虛擬機器的一些常見問題。 如需本主題的 Linux 版本，請參閱[關於 Linux 虛擬機器的常見問題](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+本文可解決在 Azure 中使用 Resource Manager 部署模型建立之 Windows 虛擬機器的一些常見問題。 如需本主題的 Linux 版本，請參閱 [關於 Linux 虛擬機器的常見問題](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>我可以在 Azure VM 上執行什麼？
-所有的訂閱者都可以在 Azure 虛擬機器上執行伺服器軟體。 如需在 Azure 中執行 Microsoft 伺服器軟體之支援原則的相關資訊，請參閱[適用于 azure 虛擬機器的 microsoft 伺服器軟體支援](https://support.microsoft.com/kb/2721672)。
+所有的訂閱者都可以在 Azure 虛擬機器上執行伺服器軟體。 如需在 Azure 中執行 Microsoft 伺服器軟體的支援原則相關資訊，請參閱 [Azure 虛擬機器的 microsoft 伺服器軟體支援](https://support.microsoft.com/kb/2721672)。
 
 特定版本的 Windows 7、Windows 8.1 及 Windows 10 可供 MSDN Azure 權益訂閱者和 MSDN 開發和測試隨用隨付訂閱者 (針對開發與測試工作) 使用。 如需詳細資訊 (包括指示和限制)，請參閱 [MSDN 訂閱者的 Windows 用戶端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>我可以使用多少的儲存體搭配虛擬機器？
-每個資料磁片最多可達 32767 GiB。 可使用的資料磁碟數量取決於虛擬機器的大小。 如需詳細資訊，請參閱[虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+每個資料磁片最多可達 32767 GiB。 可使用的資料磁碟數量取決於虛擬機器的大小。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 Azure 受控磁碟是受歡迎磁碟儲存體供應項目，可用在 Azure 虛擬機器當作資料的用續性儲存體。 每部虛擬機器可使用多部受控磁碟。 受控磁碟提供兩種耐久的儲存體選項：進階與標準受控磁碟。 如需定價資訊，請參閱[受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks)。
 
 Azure 儲存體帳戶也提供作業系統磁碟和任何資料磁碟的儲存空間。 每個磁碟是以分頁 Blob 方式儲存的 .vhd 檔案。 如需定價的詳細資料，請參閱 [儲存體定價詳細資料](https://azure.microsoft.com/pricing/details/storage/)。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何存取我的虛擬機器？
-使用遠端桌面連線 (RDP) 為 Windows VM 建立遠端連線。 如需指示，請參閱[如何連線及登入執行 Windows 的 Azure 虛擬機器](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 除非將伺服器設定為遠端桌面服務工作階段主機，否則最多支援兩個並行連線。  
+使用遠端桌面連線 (RDP) 為 Windows VM 建立遠端連線。 如需相關指示，請參閱 [如何連線及登入執行 Windows 的 Azure 虛擬機器](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 除非將伺服器設定為遠端桌面服務工作階段主機，否則最多支援兩個並行連線。  
 
-如果您在遠端桌面遇到問題，請參閱針對[以 Windows 為基礎之 Azure 虛擬機器的遠端桌面連線進行疑難排解](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)。 
+如果您在使用遠端桌面時遇到問題，請參閱 [疑難排解以 Windows 為基礎的 Azure 虛擬機器的遠端桌面](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)連線。 
 
-如果您熟悉 Hyper-v，您可能正在尋找類似 VMConnect 的工具。 Azure 不提供類似的工具，因為不支援對虛擬機器的主控台存取。
+如果您熟悉 Hyper-v，您可能正在尋找類似 VMConnect 的工具。 Azure 不提供類似的工具，因為不支援主控台存取虛擬機器。
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>我可以使用暫存磁碟 (預設為 D: 磁碟機) 儲存資料嗎？
-請勿使用暫存磁片來儲存資料。 這只是暫時的儲存空間，因此您會有遺失無法復原之資料的風險。 當虛擬機器移動到不同的主機時就可能發生資料遺失。 可能要移動虛擬機器的一些原因是調整虛擬機器的大小、更新主機，或主機上的硬體故障等等。
+請勿使用暫存磁片來儲存資料。 這只是暫時的儲存空間，因此您可能會遺失無法復原之資料的風險。 當虛擬機器移動到不同的主機時就可能發生資料遺失。 可能要移動虛擬機器的一些原因是調整虛擬機器的大小、更新主機，或主機上的硬體故障等等。
 
 如果應用程式需要使用 D: 磁碟機代號，您可以重新指派磁碟機代號，讓暫存磁碟使用 D: 以外的代號。 如需相關指示，請參閱 [變更 Windows 暫存磁碟的磁碟機代號](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
@@ -46,7 +46,7 @@ Azure 儲存體帳戶也提供作業系統磁碟和任何資料磁碟的儲存�
 您可以透過移動分頁檔並重新指派磁碟機代號來變更磁碟機代號，但必須確定會以特定的順序執行這些步驟。 如需相關指示，請參閱 [變更 Windows 暫存磁碟的磁碟機代號](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以將現有的 VM 新增到可用性設定組？
-不可以。 如果您希望 VM 屬於可用性設定組的一部分，就必須在設定組當中建立 VM。 目前不支援在建立 VM 之後，再將其加入可用性設定組。
+否。 如果您希望 VM 屬於可用性設定組的一部分，就必須在設定組當中建立 VM。 目前不支援在建立 VM 之後，再將其加入可用性設定組。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以將虛擬機器上傳到 Azure？
 是。 如需指示，請參閱[移轉內部部署 VM 至 Azure](on-prem-to-azure.md)。

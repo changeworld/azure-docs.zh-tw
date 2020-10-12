@@ -1,6 +1,6 @@
 ---
 title: 設定 NFS 磁片區的匯出原則-Azure NetApp Files
-description: 說明如何使用 Azure NetApp Files 設定匯出原則以控制 NFS 磁片區的存取
+description: 說明如何使用 Azure NetApp Files 設定匯出原則來控制 NFS 磁片區的存取
 services: azure-netapp-files
 author: b-juche
 ms.author: b-juche
@@ -9,21 +9,21 @@ ms.workload: storage
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533189"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>設定 NFS 磁碟區的匯出原則
 
-您可以設定匯出原則來控制對 Azure NetApp Files 磁片區的存取。 Azure NetApp Files 匯出原則支援使用 NFS 通訊協定的磁片區（NFSv3 和 NFSv 4.1）和雙重通訊協定（NFSv3 和 SMB）。 
+您可以設定匯出原則來控制 Azure NetApp Files 磁片區的存取權。 Azure NetApp Files 匯出原則支援使用 NFS 通訊協定的磁片區 (NFSv3 和 Nfsv4.1 4.1) 和雙重通訊協定 (NFSv3 和 SMB) 。 
 
 您最多可以建立五個匯出原則規則。
 
 ## <a name="steps"></a>步驟 
 
-1.  從 [磁片區] 頁面中，選取您要設定匯出原則的磁片區，然後按一下 [**匯出原則**]。 
+1.  在 [磁片區] 頁面上，選取您要設定匯出原則的磁片區，然後按一下 [ **匯出原則**]。 
 
     您也可以在建立磁片區期間設定匯出原則。
 
@@ -43,18 +43,18 @@ ms.locfileid: "87533189"
         * 讀取和寫入
         * 唯讀
 
-    * **唯讀**和**讀取/寫入**  
-        如果您使用 Kerberos 加密搭配 NFSv 4.1，請依照[設定 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的指示進行。  如需 Kerberos 的效能影響，請參閱[nfsv 4.1 上 kerberos 的效能影響](configure-kerberos-encryption.md#kerberos_performance)。 
+    * **唯讀** 和 **讀取/寫入**  
+        如果您搭配使用 Kerberos 加密與 Nfsv4.1 4.1，請依照 [設定 nfsv4.1 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的指示操作。  如需 Kerberos 的效能影響，請參閱 [nfsv4.1 4.1 上的 Kerberos 效能影響](configure-kerberos-encryption.md#kerberos_performance)。 
 
         ![Kerberos 安全性選項](../media/azure-netapp-files/kerberos-security-options.png) 
 
-    * **根存取**  
-        指定帳戶是否 `root` 可以存取磁片區。  根據預設，[根存取] 設定為 [**開啟**]，且 `root` 帳戶具有磁片區的存取權。
+    * **根目錄存取**  
+        指定帳戶是否 `root` 可以存取磁片區。  根據預設，根目錄存取設定為 [ **開啟**]，而且 `root` 帳戶可以存取磁片區。
 
 ![匯出原則](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>接下來的步驟 
 * [裝載或取消裝載虛擬機器磁碟區](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [管理快照集](azure-netapp-files-manage-snapshots.md)

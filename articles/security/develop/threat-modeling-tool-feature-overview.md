@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90980679"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威脅模型化工具功能概觀
@@ -29,7 +29,7 @@ ms.locfileid: "90980679"
 
 ![基本威脅模型](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-## <a name="navigation"></a>導覽
+## <a name="navigation"></a>瀏覽
 
 在探討內建功能之前，我們先來看一下工具的主要元件。
 
@@ -160,7 +160,7 @@ ms.locfileid: "90980679"
 
 ![螢幕擷取畫面顯示未連接到元素的威脅模型連接器，並顯示此問題所造成的訊息。](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>備註
+### <a name="notes"></a>注意
 
 若要在圖表中加入附註，請從 [訊息]**** 索引標籤切換到 [附註]****。
 
@@ -192,13 +192,13 @@ ms.locfileid: "90980679"
 
 ![威脅屬性](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
-## <a name="reports"></a>報告
+## <a name="reports"></a>報表
 
 完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表**  >  **建立完整報告**]。 為報告命名，接著您應該會看到類似下圖的內容：
 
 ![螢幕擷取畫面顯示範例威脅模型報表，其中包含摘要、圖表和其他資訊。](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 將您的問題、註解和考量傳送到 tmtextsupport@microsoft.com。 **[下載](https://aka.ms/threatmodelingtool)** 威脅模型化工具來開始。
 - 若要為社群貢獻範本，請移至我們的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 頁面。

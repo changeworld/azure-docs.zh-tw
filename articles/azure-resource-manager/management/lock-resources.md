@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827277"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
@@ -22,7 +22,7 @@ ms.locfileid: "87827277"
 
 當您在父範圍套用鎖定時，該範圍內的所有資源都會都繼承相同的鎖定。 甚至您稍後新增的資源都會繼承父項的鎖定。 繼承中限制最嚴格的鎖定優先順序最高。
 
-不同於角色型存取控制，您可以使用管理鎖定來對所有使用者和角色套用限制。 若要瞭解如何設定使用者和角色的許可權，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。
+不同於角色型存取控制，您可以使用管理鎖定來對所有使用者和角色套用限制。 若要瞭解如何設定使用者和角色的許可權，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。
 
 Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳送至 `https://management.azure.com` 的作業。 鎖定並不會限制資源執行自己函式的方式。 限制資源的變更，但沒有限制資源的作業。 例如，SQL Database 上的唯讀鎖定會防止您刪除或修改資料庫。 它不會防止您建立、更新或刪除資料庫中的資料。 允許資料的交易，因為這些作業不會傳送到 `https://management.azure.com`。
 
@@ -36,7 +36,7 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 * 包含**虛擬機器**的**資源群組**上的唯讀鎖定，會防止所有使用者啟動或重新開機虛擬機器。 這些作業需要 POST 要求。
 
-* 無法-刪除**資源群組**上的鎖定，可防止 Azure Resource Manager[自動刪除](../templates/deployment-history-deletions.md)歷程記錄中的部署。 如果您在歷程記錄中達到800部署，您的部署將會失敗。
+* 無法刪除 **資源群組** 上的鎖定，可防止 Azure Resource Manager [自動刪除](../templates/deployment-history-deletions.md) 歷程記錄中的部署。 如果您在歷程記錄中到達800部署，您的部署將會失敗。
 
 * **Azure 備份服務**所建立之**資源群組**上的無法刪除鎖定會導致備份失敗。 服務最多支援 18 個還原點。 當鎖定時，備份服務無法清除還原點。 如需詳細資訊，請參閱[常見問題 - 備份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
 

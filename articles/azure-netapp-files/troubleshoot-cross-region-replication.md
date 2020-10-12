@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708763"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>針對跨區域複寫進行疑難排解
@@ -64,11 +64,11 @@ ms.locfileid: "90708763"
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     如果您想要刪除此快照集，請驗證您是否已中斷磁片區的複寫。    |
 |     `Cannot delete   volume replication generated snapshot`    |     不允許刪除複寫基準快照集。    |
 
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
 
 * [跨區域複寫](cross-region-replication-introduction.md)
 * [使用跨區域複寫的需求和考慮](cross-region-replication-requirements-considerations.md)
 * [建立複寫對等互連](cross-region-replication-create-peering.md)
-* [顯示覆寫關聯性的健全狀況狀態](cross-region-replication-display-health-status.md)
+* [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)

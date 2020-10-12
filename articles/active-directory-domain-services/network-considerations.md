@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396326"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的虛擬網路設計考慮和設定選項
@@ -104,7 +104,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 
 ## <a name="network-security-groups-and-required-ports"></a>網路安全性群組和必要的埠
 
-[ (NSG) 的網路安全性群組](../virtual-network/security-overview.md)包含規則清單，可允許或拒絕 Azure 虛擬網路中流量的網路流量。 當您部署的受控網域包含一組可讓服務提供驗證和管理功能的規則時，就會建立網路安全性群組。 此預設網路安全性群組會與您的受控網域部署所在的虛擬網路子網相關聯。
+[網路安全性群組 (NSG)](../virtual-network/security-overview.md) 包含規則清單，可允許或拒絕 Azure 虛擬網路中的網路流量。 當您部署的受控網域包含一組可讓服務提供驗證和管理功能的規則時，就會建立網路安全性群組。 此預設網路安全性群組會與您的受控網域部署所在的虛擬網路子網相關聯。
 
 受控網域需要下列網路安全性群組規則，才能提供驗證和管理服務。 請勿針對您的受控網域部署所在的虛擬網路子網，編輯或刪除這些網路安全性群組規則。
 

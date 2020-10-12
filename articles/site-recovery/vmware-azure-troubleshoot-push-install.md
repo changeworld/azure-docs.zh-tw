@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816154"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>針對行動服務推送安裝進行疑難排解
@@ -170,7 +170,7 @@ ms.locfileid: "88816154"
 
      若要停用群組原則設定，並啟用使用者共用檔案的能力，請選取 [ **已停用**]。
 
-  1. 按一下 [確定] 以儲存您的變更。
+  1. 按一下 [確定]  以儲存您的變更。
 
   若要深入瞭解，請參閱 [啟用或停用群組原則的檔案共用](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
 
@@ -347,7 +347,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為篩選器驅動程
     - Exit code: 802
     ```
 
-若要解決此問題：
+若要解決問題：
 
 請洽詢 [Microsoft Windows 平臺小組](https://aka.ms/Windows_Support) ，以取得解決 DCOM 問題的協助。
 
@@ -394,7 +394,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為篩選器驅動程
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
 ```
 
-若要解決此問題：
+若要解決問題：
 
 1. 請確認這部電腦是不是叢集的電腦，而且不會使用叢集元件。
 1. 如果未使用元件，請從電腦移除叢集元件。
@@ -403,7 +403,7 @@ COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Ex
 
 如果行動代理程式安裝失敗，請檢查 _C:\ProgramData\ASRSetupLogs_ 底下的記錄，以判斷某些控制組中是否遺漏了某些必要的驅動程式。
 
-若要解決此問題：
+若要解決問題：
 
 1. 使用登錄編輯程式（例如 `regedit.msc` ），開啟登錄。
 1. 開啟 `HKEY_LOCAL_MACHINE\SYSTEM` 節點。
@@ -418,6 +418,6 @@ COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Ex
 
 1. 重新安裝任何遺失的驅動程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [深入瞭解](vmware-azure-tutorial.md) 如何設定 VMware vm 的嚴重損壞修復。

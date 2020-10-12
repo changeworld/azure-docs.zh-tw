@@ -1,14 +1,14 @@
 ---
 title: 升級 Azure Service Fabric 叢集
-description: 瞭解如何升級 Azure Service Fabric 叢集的版本或設定：設定叢集更新模式、升級憑證、新增應用程式埠、執行 OS 修補程式，以及在執行升級時所能預期的功能。
+description: 瞭解如何升級 Azure Service Fabric 叢集的版本或設定，包括設定叢集更新模式、升級憑證、新增應用程式埠、執行 OS 修補程式，以及在執行升級時所能預期的情況。
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
 ms.openlocfilehash: d92ac90e0e41d534231bafbe991a05764dbee07d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82789550"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升級和更新 Azure Service Fabric 叢集
@@ -17,7 +17,7 @@ ms.locfileid: "82789550"
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>控制叢集上執行的網狀架構版本
 
-請確定您的叢集一律執行支援的網狀[架構版本](service-fabric-versions.md)。 每次 Microsoft 宣佈發行新版本的 Service Fabric 時，會在該日期最短60天后，將先前的版本標示為結束支援。 新版本會在[Service Fabric 小組的 blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)上宣佈。
+確定您的叢集一律執行支援的網狀 [架構版本](service-fabric-versions.md)。 每次 Microsoft 宣佈發行新版本的 Service Fabric 時，先前的版本會在該日期的最短60天后標示為結束支援。 最新發行會在 [Service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)上宣佈。
 
 叢集執行的版本在到期前 14 天會產生健全狀況事件，使您的叢集進入警告健全狀況狀態。 在您升級至支援的網狀架構版本之前，叢集會停留在警告狀態。
 
@@ -25,21 +25,21 @@ ms.locfileid: "82789550"
 
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>自動升級期間的網狀架構升級行為
 
-Microsoft 會維護 Azure 叢集中執行的網狀架構程式碼和組態。 視情況需要，我們會對軟體執行受監視的自動升級。 升級的項目可能是程式碼、組態或兩者。 為了確保您的應用程式不會受到這些升級的影響或影響降至最低，下列階段會執行升級：
+Microsoft 會維護 Azure 叢集中執行的網狀架構程式碼和組態。 視情況需要，我們會對軟體執行受監視的自動升級。 升級的項目可能是程式碼、組態或兩者。 為了確保您的應用程式不會因為這些升級而受到影響或影響最低，請在下列階段執行升級：
 
 ### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>階段 1：使用所有叢集健康狀態原則執行升級
 
-在這個階段，升級會一次進行一個升級網域，而已在叢集中執行的應用程式會繼續執行，而不會產生任何停機時間。 升級期間會遵守叢集健康狀態原則（適用于節點健全狀況和應用程式健全狀況）。
+在這個階段，升級會一次進行一個升級網域，而已在叢集中執行的應用程式會繼續執行，而不會產生任何停機時間。 升級期間會遵守節點健全狀況和應用程式健康情況) 的叢集健康情況原則 (。
 
-如果不符合叢集健康狀態原則，則會回復升級，並將電子郵件傳送給訂用帳戶的擁有者。 電子郵件中包含下列資訊：
+如果不符合叢集健康情況原則，則會回復升級，並將電子郵件傳送給訂用帳戶的擁有者。 電子郵件中包含下列資訊：
 
 * 我們必須回復叢集升級的通知。
 * 建議的修復動作 (如果有的話)。
-* 執行第2階段前的天數（*n*）。
+* 執行第2階段之前， (*n*) 的天數。
 
-如果有任何升級因為基礎結構方面的原因而失敗，我們會試著多執行幾次相同的升級。 在電子郵件寄送日期的*n*天之後，我們會繼續進行第2階段。
+如果有任何升級因為基礎結構方面的原因而失敗，我們會試著多執行幾次相同的升級。 在電子郵件寄送日期的 *n* 天之後，我們會繼續進行第2階段。
 
-如果符合叢集健康狀態原則，則升級會被視為成功並標示為完成。 在此階段執行初次升級或重新執行任何升級期間，可能會發生這種情形。 執行成功不會有任何電子郵件確認。 這是為了避免傳送太多電子郵件給您;接收電子郵件應視為正常的例外狀況。 我們預期大部分的叢集升級都會成功，並不會影響您的應用程式可用性。
+如果符合叢集健康狀態原則，則升級會被視為成功並標示為完成。 在此階段執行初次升級或重新執行任何升級期間，可能會發生這種情形。 執行成功不會有任何電子郵件確認。 這是為了避免傳送太多電子郵件給您;接收電子郵件應視為一般的例外狀況。 我們預期大部分的叢集升級都會成功，並不會影響您的應用程式可用性。
 
 ### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>階段 2：僅使用預設健康狀態原則執行升級
 
@@ -102,11 +102,11 @@ Service Fabric 會使用您建立叢集時指定的 [X.509 伺服器憑證](serv
 
 修補程式協調流程應用程式 (POA) 是 Service Fabric 應用程式，可在 Service Fabric 叢集上將作業系統修補自動化，而不需要停機。 [適用於 Windows 的修補程式協調流程應用程式](service-fabric-patch-orchestration-application.md)可在叢集上部署，以協調的方式安裝修補程式，同時讓服務隨時可供使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 瞭解如何自訂一些[service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
+* 瞭解如何自訂某些 [service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
 * 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-in-out.md)
-* 瞭解[應用程式升級](service-fabric-application-upgrade.md)
+* 深入瞭解 [應用程式升級](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

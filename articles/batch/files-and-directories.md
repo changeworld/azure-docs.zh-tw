@@ -4,17 +4,17 @@ description: 從開發觀點了解檔案和目錄，以及如何在 Azure Batch 
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87552626"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Azure Batch 中的檔案和目錄
 
-在 Azure Batch 中，每個工作都有一個可在其下建立檔案和目錄的工作目錄。 此工作目錄可用來儲存工作所執行的程式、工作所處理的資料，以及工作所執行之處理的輸出。 工作使用者擁有工作的所有檔案和目錄。
+在 Azure Batch 中，每個工作都有一個可在其上建立檔案和目錄的工作目錄。 此工作目錄可用來儲存工作所執行的程式、工作所處理的資料，以及工作所執行之處理的輸出。 工作使用者擁有工作的所有檔案和目錄。
 
-Batch 服務會在節點上公開檔案系統的一部分作為「根目錄」 。 此根目錄位於 VM 的暫存磁片磁碟機上，而不是直接在 OS 磁片磁碟機上。
+Batch 服務會在節點上公開檔案系統的一部分作為「根目錄」 。 這個根目錄位於 VM 的暫存磁片磁碟機上，而不是直接在作業系統磁片磁碟機上。
 
 工作可藉由參考 `AZ_BATCH_NODE_ROOT_DIR` 環境變數來存取根目錄。 如需有關如何使用環境變數的詳細資訊，請參閱 [工作的環境設定](jobs-and-tasks.md#environment-settings-for-tasks)。
 

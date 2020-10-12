@@ -4,10 +4,10 @@ description: 本文描述 Service Fabric 中的錯誤分析服務，以引發錯
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531372"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>錯誤分析服務簡介

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: victorh
 ms.openlocfilehash: 1a35d9c48dd46d5d220699589f4ed758d21feca8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854287"
 ---
 # <a name="use-fqdn-filtering-in-network-rules-preview"></a>在網路規則中使用 FQDN 篩選 (預覽) 
@@ -34,6 +34,6 @@ ms.locfileid: "88854287"
 - HTTP/S 和 MSSQL 應用程式規則中的 FQDN 篩選是根據應用層級的透明 proxy 和 SNI 標頭。 因此，它可以辨別解析為相同 IP 位址的兩個 Fqdn。 在網路規則中使用 FQDN 篩選並不會發生這種情況。 請一律盡可能使用應用程式規則。
 - 在應用程式規則中，您可以使用 HTTP/S 和 MSSQL 作為選取的通訊協定。 在網路規則中，您可以使用任何 TCP/UDP 通訊協定搭配目的地 Fqdn。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Azure 防火牆 DNS 設定](dns-settings.md)

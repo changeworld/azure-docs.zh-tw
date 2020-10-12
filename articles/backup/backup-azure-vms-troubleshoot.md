@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316727"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
@@ -132,7 +132,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 - 將備份原則變更為當 VM 上的負載降到最低時，在離峰時段執行備份。
 - 升級 Azure 磁片以支援更高的 IOPs。 [請於此處深入了解](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
-### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState 快照集作業失敗，因為 VSS (磁片區陰影複製) 服務處於不正確的狀態
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - 快照集作業失敗，因為 VSS (磁碟區陰影複製) 服務處於不良狀態
 
 錯誤碼： ExtensionFailedVssServiceInBadState <br/>
 錯誤訊息：快照集作業失敗，因為 VSS (磁片區陰影複製) 服務處於不正確的狀態。

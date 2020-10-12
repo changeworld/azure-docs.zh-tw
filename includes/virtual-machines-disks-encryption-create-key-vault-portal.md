@@ -9,17 +9,17 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815465"
 ---
 如果您是第一次執行，則為您的磁片設定客戶管理的金鑰將需要您以特定順序建立資源。 首先，您必須建立並設定 Azure Key Vault。
 
 ## <a name="set-up-your-azure-key-vault"></a>設定 Azure 金鑰保存庫
 
-1. 登入 [Azure 入口網站](https://aka.ms/diskencryptionupdates)。
+1. 登入[Azure 入口網站](https://aka.ms/diskencryptionupdates)。
 1. 搜尋並選取 **金鑰保存庫**。
 
     [![展開 [搜尋] 對話方塊之 Azure 入口網站的螢幕擷取畫面。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
@@ -65,7 +65,7 @@ ms.locfileid: "88815465"
 1. 選取 [ **按一下以選取金鑰**]。
 1. 選取您先前建立的金鑰保存庫和金鑰，以及版本。
 1. 按 [選取]****。
-1. 選取 [ **審核] + [建立** ]，然後 **建立**。
+1. 選取 [檢閱 + 建立]，然後選取 [建立]。
 
     ![磁片加密建立分頁的螢幕擷取畫面。 顯示訂用帳戶、資源群組、磁片加密集名稱、區域，以及金鑰保存庫 + 金鑰選取器。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
 

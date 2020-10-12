@@ -1,6 +1,6 @@
 ---
 title: 使用基礎結構自動化工具
-description: 瞭解如何使用 Ansible、Chef、Puppet、Terraform 和 Packer 等基礎結構自動化工具，來建立和管理 Azure 中的虛擬機器。
+description: 瞭解如何使用 Ansible、Chef、Puppet、Terraform 和 Packer 等基礎結構自動化工具，在 Azure 中建立和管理虛擬機器。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
 ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830541"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中使用基礎結構自動化工具搭配虛擬機器
@@ -19,7 +19,7 @@ ms.locfileid: "87830541"
 若要以一致的方式大規模建立並管理 Azure 虛擬機器 (VM)，通常需要某種形式的自動化。 有許多工具和解決方案可讓您將完整的 Azure 基礎結構部署及管理生命週期自動化。 本文介紹的一些基礎結構自動化工具可供您在 Azure 中使用。 這些工具通常符合下列其中一種方法：
 
 - 自動設定 VM
-    - 工具組括[Ansible](#ansible)、 [Chef](#chef)、 [Puppet](#puppet)和[Azure Resource Manager 範本](#azure-resource-manager-template)。
+    - 工具組括 [Ansible](#ansible)、 [Chef](#chef)、 [Puppet](#puppet)和 [Azure Resource Manager 範本](#azure-resource-manager-template)。
     - VM 自訂的特定工具包括 [cloud-init](#cloud-init) (適用於 Linux VM)、[PowerShell 預期狀態設定 (DSC)](#powershell-dsc)，和 [Azure 自訂指令碼擴充功能](#azure-custom-script-extension) (適用於所有 Azure VM)。
 
 - 將基礎結構管理自動化
@@ -61,7 +61,7 @@ ms.locfileid: "87830541"
 
 Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 Cloud-init 會針對您選取的散發套件自動使用原生的套件管理工具。
 
-我們正積極與我們背書的 Linux 散發版本合作夥伴合作，在 Azure Marketplace 中提供啟用雲端初始化的映射。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。
+我們正積極與我們背書的 Linux 發行版本合作夥伴合作，在 Azure Marketplace 中提供已啟用雲端初始化的映射。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。
 在 Azure 上深入了解 Cloud-init 的詳細資料：
 
 - [Azure 中 Linux 虛擬機器的 Cloud-init 支援](./linux/using-cloud-init.md)
@@ -126,7 +126,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 深入了解：
 
-- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts) \(英文\)。
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts)。
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,18 +134,18 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 了解如何：
 
-- [在 Azure 中的 Linux VM 上以 Jenkins、GitHub 及 Docker 建立開發基礎結構](/azure/developer/jenkins/pipeline-with-github-and-docker)。
+- [使用 Jenkins、GitHub 和 Docker，在 Azure 中的 LINUX VM 上建立開發基礎結構](/azure/developer/jenkins/pipeline-with-github-and-docker)。
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
-[Azure Resource Manager](../azure-resource-manager/templates/overview.md)是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
+[Azure Resource Manager](../azure-resource-manager/templates/overview.md) 是適用于 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
 
 了解如何：
 
-- [使用 Resource Manager 範本部署點 vm](./linux/spot-template.md)。
+- [使用 Resource Manager 範本部署](./linux/spot-template.md)現成的 vm。
 - [從 Resource Manager 範本建立 Windows 虛擬機器](./windows/ps-template.md)。
 - [下載 VM 的範本](./windows/download-template.md)。
-- [建立 Azure 映射產生器範本](./linux/image-builder-json.md)。
+- [建立 Azure Image Builder 範本](./linux/image-builder-json.md)。
 
 ## <a name="next-steps"></a>後續步驟
 有許多不同的選項可供您在 Azure 中使用基礎結構自動化工具。 您可以自由使用最適合您需求和環境的解決方案。 若要開始使用並嘗試一些內建於 Azure 的工具，請參閱如何將自訂 [Linux](./linux/tutorial-automate-vm-deployment.md) 或 [Windows](./windows/tutorial-automate-vm-deployment.md) VM 自動化。

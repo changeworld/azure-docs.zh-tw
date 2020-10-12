@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254926"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 授權開發人員帳戶
@@ -38,7 +38,7 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
    > [!NOTE]
    > 如果您尚未建立 API 管理服務實例，請參閱[開始使用 AZURE Api 管理教學][Get started with Azure API Management]課程中的[建立 api 管理服務實例][Create an API Management service instance]。
 
-1. 在 **[** 身分識別] 底下。 按一下頂端的 [ **+ 新增**]。
+1. 在 **[** 身分識別] 下。 按一下頂端的 [ **+ 新增** ]。
 
    [新增識別提供者]**** 窗格隨即出現在右邊。 選擇 [Azure Active Directory B2C]****。
     
@@ -60,7 +60,7 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
    ![註冊新的應用程式 3][api-management-howto-aad-b2c-app-details]
 
-1. 如果您使用的是新的開發人員入口網站 (不是舊版開發人員入口網站) ，請在應用程式宣告中包含**指定的名稱**、**姓氏**和**使用者的物件識別碼**。
+1. 如果您使用的是新的開發人員入口網站 (而不是舊版開發人員入口網站) ，請在應用程式宣告中包含 **指定的名稱**、 **姓氏**和 **使用者的物件識別碼** 。
 
     ![應用程式宣告](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
@@ -80,9 +80,9 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
 1.  切換回 API 管理的 [新增識別提供者]**** 窗格，然後將金鑰貼到 [用戶端密碼]**** 文字方塊。
     
-1.  指定登入**租**使用者中 Azure Active Directory B2C 租使用者的功能變數名稱。
+1.  指定登入 **租**使用者中 Azure Active Directory B2C 租使用者的功能變數名稱。
 
-1.  [**授權**單位] 欄位可讓您控制要使用的 Azure AD B2C 登入 URL。 將值設定為 **<your_b2c_tenant_name>. b2clogin.com**。
+1.  [ **授權** 單位] 欄位可讓您控制要使用的 Azure AD B2C 登入 URL。 將值設定為 **<your_b2c_tenant_name>. b2clogin.com**。
 
 1. 指定 B2C 租用戶原則中的 [註冊原則]**** 和 [登入原則]****。 (選擇性) 您也可以提供 [設定檔編輯原則]**** 和 [密碼重設原則]****。
 
@@ -92,14 +92,14 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>開發人員入口網站-新增 Azure AD B2C 帳戶驗證
 
-在開發人員入口網站中，您可以使用 [登入]**按鈕： [OAuth** widget] 來登入 AAD B2C。 Widget 已包含在預設開發人員入口網站內容的登入頁面上。
+在開發人員入口網站中，您可以使用登入按鈕來登入 AAD B2C **： OAuth** widget。 Widget 已包含在預設開發人員入口網站內容的 [登入] 頁面上。
 
-當新的使用者登入 AAD B2C 時，會自動建立新的帳戶，您可以考慮將相同的 widget 新增至註冊頁面。
+雖然當新的使用者登入 AAD B2C 時，會自動建立新的帳戶，但您可以考慮在註冊頁面上新增相同的 widget。
 
 **註冊表單： oauth** widget 代表用來註冊 OAuth 的表單。
 
 > [!IMPORTANT]
-> 您必須重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)，AAD 變更才會生效。
+> 您必須重新 [發佈入口網站](api-management-howto-developer-portal-customize.md#publish) ，AAD 變更才會生效。
 
 ## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>舊版開發人員入口網站-如何註冊 Azure AD B2C
 
@@ -124,7 +124,7 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
     ![註冊完成][api-management-registration-complete]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 *  [Azure Active Directory B2C 概觀]
 *  [Azure Active Directory B2C：可延伸的原則架構]

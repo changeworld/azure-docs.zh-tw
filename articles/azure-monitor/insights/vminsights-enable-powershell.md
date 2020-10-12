@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87824574"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>使用 PowerShell 啟用適用於 VM 的 Azure 監視器
@@ -19,21 +19,21 @@ ms.locfileid: "87824574"
 - Azure 虛擬機器
 - Azure 虛擬機器擴展集
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-- [建立和設定 Log Analytics 工作區](vminsights-configure-workspace.md)。
-- 請參閱[支援的作業系統](vminsights-enable-overview.md#supported-operating-systems)，以確保支援您要啟用之虛擬機器或虛擬機器擴展集的作業系統。 
+- [建立並設定 Log Analytics 工作區](vminsights-configure-workspace.md)。
+- 請參閱 [支援的作業系統](vminsights-enable-overview.md#supported-operating-systems) ，以確保支援您所啟用之虛擬機器或虛擬機器擴展集的作業系統。 
 
 
 ## <a name="powershell-script"></a>PowerShell 指令碼
 
-若要啟用多個 Vm 或虛擬機器擴展集的適用於 VM 的 Azure 監視器，請使用可從 Azure PowerShell 資源庫取得的 PowerShell 腳本[Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此腳本會逐一查看：
+若要啟用多個 Vm 或虛擬機器擴展集的適用於 VM 的 Azure 監視器，請使用可從 Azure PowerShell 資源庫取得的 PowerShell 腳本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此腳本會逐一查看：
 
-- 您的訂用帳戶中的每個虛擬機器和虛擬機器擴展集。
-- *ResourceGroup*所指定的範圍資源群組。
-- 依*名稱*指定的單一 VM 或虛擬機器擴展集。
+- 您訂用帳戶中的每個虛擬機器和虛擬機器擴展集。
+- *ResourceGroup*所指定的限域資源群組。
+- 依 *名稱*指定的單一 VM 或虛擬機器擴展集。
 
-針對每個虛擬機器或虛擬機器擴展集，腳本會確認是否已安裝 Log Analytics 代理程式和相依性代理程式的 VM 擴充功能。 如果同時安裝這兩個延伸模組，腳本會嘗試重新安裝它。 如果未安裝這兩個延伸模組，腳本就會進行安裝。
+針對每個虛擬機器或虛擬機器擴展集，腳本會確認是否已安裝 Log Analytics 代理程式和 Dependency agent 的 VM 延伸模組。 如果這兩個延伸模組都已安裝，腳本會嘗試重新安裝。 如果這兩個延伸模組都未安裝，腳本會安裝這些延伸模組。
 
 確認您使用的是 `Enable-AzureRM` 已啟用相容性別名的 Azure PowerShell 模組 Az 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱[使用適用於 VM 的 Azure 監視器對應](vminsights-maps.md)來查看探索到的應用程式相依性。 
-* 請參閱[查看 AZURE VM 效能](vminsights-performance.md)以找出瓶頸、整體使用率和 VM 的效能。
+* 請參閱 [使用適用於 VM 的 Azure 監視器對應](vminsights-maps.md) 來查看探索到的應用程式相依性。 
+* 請參閱 [查看 AZURE VM 效能](vminsights-performance.md) 以找出瓶頸、整體使用率和 VM 的效能。

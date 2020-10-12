@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: 018bf7ac9c24669df798e9ba05c667dcb72d94a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321831"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活動記錄警示的 Webhook
@@ -19,7 +19,7 @@ ms.locfileid: "87321831"
 如需有關動作群組的資訊，請參閱如何[建立動作群組](./action-groups.md)。
 
 > [!NOTE]
-> 您也可以使用[一般警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您的 webhook 整合能夠在 Azure 監視器的所有警示服務中擁有單一可延伸和整合的警示承載。 [瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
+> 您也可以使用 [常見的警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您能夠在 Azure 監視器中的所有警示服務上擁有單一可延伸和整合的警示承載，以供您的 webhook 整合使用。 [深入瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 ## <a name="authenticate-the-webhook"></a>驗證 Webhook
@@ -286,9 +286,9 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 
 如需了解所有其他活動記錄警示的特定結構詳細資料，請參閱 [Azure 活動記錄的概觀](./platform-logs-overview.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [深入瞭解活動記錄](./platform-logs-overview.md)。
-* [對 azure 警示執行 azure 自動化腳本（runbook）](https://go.microsoft.com/fwlink/?LinkId=627081)。
+* [在 azure 警示上 (runbook) 執行 azure 自動化腳本](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用邏輯應用程式透過 Twilio 從 Azure 警示傳送 SMS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。
 * [使用邏輯應用程式從 Azure 警示傳送 Slack 訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。
 * [使用邏輯應用程式從 Azure 警示將訊息傳送到 Azure 佇列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。

@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: a88cf9981d4f3a69a503c9caa56be1b5f35029f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105178"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
@@ -21,7 +21,7 @@ ms.locfileid: "86105178"
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在建立匯入作業來將資料傳入 Azure 檔案服務之前，請仔細檢閱並完成下列必要條件清單。 您必須：
 
@@ -30,7 +30,7 @@ ms.locfileid: "86105178"
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
 - 具有執行[受支援 OS 版本](storage-import-export-requirements.md#supported-operating-systems) 的 Windows 系統。
 - 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport` 。
-- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組，網址為 `adbops@microsoft.com` 。  
+- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。  
     - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
     - 產生匯出作業的追蹤號碼。
     - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
@@ -120,7 +120,7 @@ ms.locfileid: "86105178"
 
     ![移至匯入/匯出](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 按一下 [**建立匯入/匯出作業**]。
+3. 按一下 [ **建立匯入/匯出作業**]。
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "86105178"
 
 4. 在 [寄返資訊]**** 中：
 
-    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組， `adbops@microsoft.com` 其中包含您打算使用之電訊廠商的相關資訊。
+    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請從下拉式清單中選擇現有的選項。 請與 `adbops@microsoft.com`  您打算使用的電訊廠商相關資訊，聯絡 Azure 資料箱營運團隊。
     - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯入作業完成時，Microsoft 會透過此帳戶將磁碟機寄還給您。
     - 提供完整且有效的連絡人名稱、電話、電子郵件、街道地址、城市、郵遞區號、州/省和國家/地區。
 
@@ -205,7 +205,7 @@ WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [檢視作業和磁碟機狀態](storage-import-export-view-drive-status.md)
 * [檢閱匯入/匯出的需求](storage-import-export-requirements.md)

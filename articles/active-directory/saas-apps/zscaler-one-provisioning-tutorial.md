@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545855"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler 來自動布建使用者
@@ -106,7 +106,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Zscaler 一個設定 SAML](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. 選取 [ **啟用以 SCIM 為基礎** 的布建]，以取得 **基底 URL** 和 **持有人權杖**中的設定。 然後儲存設定。 將 **基底 url** 設定複製到 Azure 入口網站中的 **租使用者 url** 。 將 **持有人權杖** 設定複製到 Azure 入口網站中的 **秘密權杖** 。
+    b. 選取 [ **啟用 SCIM-Based** 布建]，以取得 **基底 URL** 和 **持有人權杖**中的設定。 然後儲存設定。 將 **基底 url** 設定複製到 Azure 入口網站中的 **租使用者 url** 。 將 **持有人權杖** 設定複製到 Azure 入口網站中的 **秘密權杖** 。
 
 7. 在您填入步驟5所示的方塊之後，請選取 [ **測試連接** ] 以確定 Azure AD 可以連接到 Zscaler。 如果連接失敗，請確定您的 Zscaler 一個帳戶具有系統管理員許可權，然後再試一次。
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Zscaler 一封通知電子郵件](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. 選取 [儲存]。
+9. 選取 [儲存]****。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者] 以 Zscaler 一個**。
 

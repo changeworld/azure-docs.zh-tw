@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891093"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge Pro 的憑證 
@@ -150,6 +150,6 @@ ms.locfileid: "90891093"
 
     `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [部署 Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-deploy-prep.md)

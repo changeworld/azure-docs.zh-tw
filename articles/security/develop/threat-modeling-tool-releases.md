@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 版本資訊
 titleSuffix: Azure
-description: 閱讀 Microsoft Threat Modeling Tool 的所有更新的版本資訊。 請參閱下載連結和系統需求。
+description: 閱讀 Microsoft Threat Modeling Tool 的所有更新版本資訊。 請參閱下載連結和系統需求。
 services: security
 documentationcenter: na
 author: jegeib
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
 ms.openlocfilehash: e6f8ba54218f9b5b730ce3454c087d6072930edf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87825866"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool 版本

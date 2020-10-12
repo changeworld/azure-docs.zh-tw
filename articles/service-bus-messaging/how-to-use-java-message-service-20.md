@@ -1,29 +1,29 @@
 ---
-title: 搭配 Azure 服務匯流排 Premium 使用 JAVA Message Service 2.0 API
+title: 使用 JAVA Message Service 2.0 API 搭配 Azure 服務匯流排 Premium
 description: '如何搭配使用 JAVA 訊息服務與 Azure 服務匯流排 (JMS) '
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 8363011187a4c2ef77681ece4bb8b1de73ec7a63
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87801414"
 ---
-# <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>搭配使用 JAVA Message Service 2.0 API 與 Azure 服務匯流排 Premium (Preview) 
+# <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>使用 JAVA Message Service 2.0 API 搭配 Azure 服務匯流排 Premium (Preview) 
 
-本文說明如何使用常用的**JAVA 訊息服務 (JMS) 2.0** API，透過 Advanced Message 佇列通訊協定 (AMQP 1.0) Protocol 與 Azure 服務匯流排進行互動。
+本文說明如何使用熱門的 **JAVA 訊息服務 (JMS) 2.0** API，透過 Advanced Message 佇列通訊協定 (AMQP 1.0) 通訊協定與 Azure 服務匯流排互動。
 
 > [!NOTE]
-> 支援 JAVA Message Service (JMS) 2.0 API 僅適用于**Azure 服務匯流排**進階層，且目前為**預覽**狀態。
+> 支援 JAVA Message Service (JMS) 2.0 API 僅適用于 **Azure 服務匯流排** 進階層，目前為 **預覽**狀態。
 >
 
 ## <a name="get-started-with-service-bus"></a>開始使用服務匯流排
 
 本指南假設您已經有服務匯流排命名空間。 如果沒有，您可以使用[Azure 入口網站](https://portal.azure.com)[建立命名空間和佇列](service-bus-create-namespace-portal.md)。 
 
-如需如何建立服務匯流排命名空間和佇列的詳細資訊，請參閱[透過 Azure 入口網站開始使用服務匯流排佇列](service-bus-quickstart-portal.md)。
+如需有關如何建立服務匯流排命名空間和佇列的詳細資訊，請參閱 [透過 Azure 入口網站開始使用服務匯流排佇列](service-bus-quickstart-portal.md)。
 
 ## <a name="what-jms-features-are-supported"></a>支援哪些 JMS 功能？
 
@@ -31,23 +31,23 @@ ms.locfileid: "87801414"
 
 ## <a name="downloading-the-java-message-service-jms-client-library"></a> (JMS) 用戶端程式庫下載 JAVA 訊息服務
 
-若要利用 Azure 服務匯流排進階層中可用的所有功能，您必須將下列程式庫新增至專案的組建路徑。
+若要利用 Azure 服務匯流排進階層上可用的所有功能，您必須將下列程式庫新增至專案的組建路徑。
 
-[Azure-層匯流排-jms](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)
+[Azure--匯流排-jms](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)
 
 > [!NOTE]
-> 若要將[Azure-匯流排-jms](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)新增至組建路徑，請利用您的專案慣用的相依性管理工具，例如[Maven](https://maven.apache.org/)或[Gradle](https://gradle.org/)。
+> 若要將 [Azure-匯流排-jms](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) 新增至組建路徑，請針對您的專案（例如 [Maven](https://maven.apache.org/) 或 [Gradle](https://gradle.org/)）利用慣用的相依性管理工具。
 >
 
 ## <a name="coding-java-applications"></a>編寫 Java 應用程式
 
-一旦匯入相依性，JAVA 應用程式就能以 JMS 提供者無從驗證的方式撰寫。
+匯入相依性之後，JAVA 應用程式就能以 JMS 提供者中立的方式撰寫。
 
 ### <a name="connecting-to-azure-service-bus-using-jms"></a>使用 JMS 連接到 Azure 服務匯流排
 
-若要使用 JMS 用戶端與 Azure 服務匯流排連線，您需要在 [**主要連接字串**] 下的 [ [Azure 入口網站](https://portal.azure.com)的 [共用存取原則] 中提供的**連接字串**。
+若要使用 JMS 用戶端與 Azure 服務匯流排連線，您需要在**主要連接字串**下[Azure 入口網站](https://portal.azure.com)的 [共用存取原則] 中可用的**連接字串**。
 
-1. 具現化`ServiceBusJmsConnectionFactorySettings`
+1. 具現化 `ServiceBusJmsConnectionFactorySettings`
 
     ```java
     ServiceBusJmsConnectionFactorySettings connFactorySettings = new ServiceBusJmsConnectionFactorySettings();
@@ -60,13 +60,13 @@ ms.locfileid: "87801414"
     ConnectionFactory factory = new ServiceBusJmsConnectionFactory(ServiceBusConnectionString, connFactorySettings);
     ```
 
-3. 使用 `ConnectionFactory` 建立 `Connection` ，然後選擇`Session` 
+3. 使用 `ConnectionFactory` 建立 `Connection` ，然後使用 `Session` 
 
     ```java
     Connection connection = factory.createConnection();
     Session session = connection.createSession();
     ```
-    或 `JMSContext` JMS 2.0 用戶端的 () 
+    或 `JMSContext` (適用于 JMS 2.0 用戶端) 
 
     ```java
     JMSContext jmsContext = factory.createContext();
@@ -74,9 +74,9 @@ ms.locfileid: "87801414"
 
 ### <a name="write-the-jms-application"></a>撰寫 JMS 應用程式
 
-一旦或已經具 `Session` `JMSContext` 現化，您的應用程式就可以使用熟悉的 JMS api 來執行管理和資料作業。
+一旦 `Session` 或 `JMSContext` 已具現化之後，您的應用程式就可以使用熟悉的 JMS api 來執行管理和資料作業。
 
-請參閱[支援的 JMS 功能](how-to-use-java-message-service-20.md#what-jms-features-are-supported)清單，以查看此預覽中支援的 api。
+請參閱 [支援的 JMS 功能](how-to-use-java-message-service-20.md#what-jms-features-are-supported) 清單，以查看此預覽中支援的 api。
 
 以下是開始使用 JMS 的一些範例程式碼片段-
 
@@ -124,16 +124,16 @@ JMSConsumer sharedDurableConsumer = jmsContext.createSharedDurableConsumer(topic
 Message msg = (Message) sharedDurableConsumer.receive();
 ```
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-本指南會展示使用 JAVA 訊息服務的 JAVA 用戶端應用程式如何 (透過 AMQP 1.0 的 JMS) 可以與 Azure 服務匯流排互動。
+本指南展示了 JAVA 用戶端應用程式如何使用 JAVA 訊息服務 (JMS) over AMQP 1.0 可以與 Azure 服務匯流排互動。
 
 您也可以使用包括 .NET、C、Python 和 PHP 在內的其他語言所撰寫的 Service Bus AMQP 1.0。 使用這些不同的語言撰寫的元件可使用服務匯流排中的 AMQP 1.0 支援確實完整交換訊息。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure 服務匯流排的詳細資訊以及 JAVA 訊息服務的詳細資料 (JMS) 實體，請參閱下列連結- 
-* [服務匯流排-佇列、主題和訂用帳戶](service-bus-queues-topics-subscriptions.md)
+如需有關 Azure 服務匯流排的詳細資訊，以及 JAVA Message Service (JMS) 實體的詳細資訊，請參閱下列連結- 
+* [服務匯流排-佇列、主題和訂閱](service-bus-queues-topics-subscriptions.md)
 * [服務匯流排-JAVA 訊息服務實體](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities-preview)
 * [Azure 服務匯流排中的 AMQP 1.0 支援](service-bus-amqp-overview.md)
 * [服務匯流排 AMQP 1.0 開發人員指南](service-bus-amqp-dotnet.md)

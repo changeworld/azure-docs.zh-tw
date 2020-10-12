@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b0ffe022f6c61cf7d06c510c4f8fa5c764d72b42
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067183"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立命名空間和佇列的服務匯流排授權規則
@@ -30,7 +30,7 @@ ms.locfileid: "88067183"
 > * [建立服務匯流排命名空間與主題和訂用帳戶](service-bus-resource-manager-namespace-topic.md)
 > * [建立服務匯流排命名空間與主題、訂用帳戶和規則](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 若要檢查最新的範本，請造訪[Azure 快速入門範本][Azure Quickstart Templates]資源庫並搜尋**服務匯流排**。
+> 若要檢查最新的範本，請造訪 [Azure 快速入門範本][Azure Quickstart Templates] 資源庫並搜尋 **服務匯流排**。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "88067183"
 
 使用此範本，您將部署命名空間和訊息實體 (在此情況下為佇列) 的服務匯流排授權規則。
 
-此範本使用[共用存取簽章 (SAS) ](service-bus-sas.md)進行驗證。 SAS 可讓應用程式使用在命名空間或在與特定權限相關聯的訊息實體 (佇列或主題) 上設定的存取金鑰，向服務匯流排進行驗證。 您可以接著使用此金鑰來產生 SAS 權杖，以便用戶端用來向服務匯流排進行驗證。
+此範本會使用 [ (SAS) 的共用存取 ](service-bus-sas.md) 簽章進行驗證。 SAS 可讓應用程式使用在命名空間或在與特定權限相關聯的訊息實體 (佇列或主題) 上設定的存取金鑰，向服務匯流排進行驗證。 您可以接著使用此金鑰來產生 SAS 權杖，以便用戶端用來向服務匯流排進行驗證。
 
 若要自動執行部署，請按一下下列按鈕：
 

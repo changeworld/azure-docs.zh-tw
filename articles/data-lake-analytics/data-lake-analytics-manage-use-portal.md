@@ -8,10 +8,10 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531204"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Data Lake Analytics
@@ -28,7 +28,7 @@ ms.locfileid: "87531204"
 ### <a name="create-an-account"></a>建立帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 [**建立資源**  >  **智慧 + 分析**] [  >  **Data Lake Analytics**]。
+2. 按一下 [**建立資源**  >  **智慧 + 分析**]  >  **Data Lake Analytics**。
 3. 選取下列項目的值︰ 
    1. **名稱**：Data Lake Analytics 帳戶的名稱。
    2. **訂用帳戶**：用於此帳戶的 Azure 訂用帳戶。
@@ -58,10 +58,10 @@ Data Lake Analytics 支援下列資料來源：
 
 您可以使用 [資料總管] 來瀏覽資料來源和執行基本檔案管理作業。 
 
-### <a name="add-a-data-source"></a>加入資料來源
+### <a name="add-a-data-source"></a>新增資料來源
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
-2. 按一下 **[資料來源]**。
+2. 按一下 **[資料來源]** 。
 3. 按一下 [ **新增資料來源**]。
     
    * 若要新增 Azure Data Lake Store 帳戶，您需要帳戶名稱及帳戶的存取權才可進行查詢。
@@ -87,7 +87,7 @@ Data Lake Analytics 支援下列資料來源：
 3. 選取使用者，然後按一下 [選取]****。
 4. 選取角色，然後按一下 [選取]****。 若要設定新的開發人員以使用 Azure Data Lake，請選取 [Data Lake Analytics 開發人員]**** 角色。
 5. 選取 U-SQL 資料庫的存取控制清單 (ACL)。 當您對您的選擇感到滿意時，請按一下 [選取]****。
-6. 選取檔案的 ACL。 對於預設存放區，請不要變更根資料夾 "/" 和 /system 資料夾的 ACL。 按一下 [選取]。
+6. 選取檔案的 ACL。 對於預設存放區，請不要變更根資料夾 "/" 和 /system 資料夾的 ACL。 按一下 [選取]。 
 7. 檢閱您選取的所有變更，然後按一下 [執行]****。
 8. 當精靈完成時，按一下 [完成]****。
 
@@ -109,10 +109,10 @@ Data Lake Analytics 支援下列資料來源：
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>將使用者或安全性群組新增到 Data Lake Analytics 帳戶
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
-2. 按一下 **[存取控制（IAM）] [**  >  **新增角色指派**]。
+2. 按一下 [**存取控制] (IAM) **  >  **新增角色指派**]。
 3. 選取角色。
 4. 新增使用者。
-5. 按一下 [確定]。
+5. 按一下 [確定]  。
 
 >[!NOTE]
 >如果使用者或安全性群組需要提交作業，他們也需要有存放區帳戶的權限。 如需詳細資訊，請參閱[保護儲存在 Data Lake Store 中的資料](../data-lake-store/data-lake-store-secure-data.md)。
@@ -148,7 +148,7 @@ Data Lake Analytics 支援下列資料來源：
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [作業深入解析]****。 預設會開啟 [所有作業] 索引標籤，其中顯示執行中、已佇列和已結束的作業清單。
-3. 按一下 [**管線工作**] 索引標籤。管線作業清單會連同每個管線的匯總統計資料一起顯示。
+3. 按一下 [ **管線作業** ] 索引標籤。將會顯示管線作業清單以及每個管線的匯總統計資料。
 
 ### <a name="monitoring-recurring-jobs"></a>監視週期性作業
 週期性作業是具有相同商務邏輯，但每次執行都會使用不同輸入資料的作業。 在理想情況下，週期性作業一律會成功，而且執行時間相當穩定；監視這些行為有助於確保作業狀況良好。 可使用 [週期性] 屬性來找到週期性作業。 使用 ADF V2 排程的作業會自動填入此屬性。
@@ -157,9 +157,9 @@ Data Lake Analytics 支援下列資料來源：
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 [作業深入解析]****。 預設會開啟 [所有作業] 索引標籤，其中顯示執行中、已佇列和已結束的作業清單。
-3. 按一下 [**週期性工作**] 索引標籤。系統會顯示週期性工作清單，以及每個週期性工作的匯總統計資料。
+3. 按一下 [ **週期性工作** ] 索引標籤。週期性作業清單隨即顯示，並列出每個週期性作業的匯總統計資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)

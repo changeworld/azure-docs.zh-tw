@@ -4,10 +4,10 @@ description: 本文提供一些 Azure DevTest Labs 相關常見問題集 (FAQ) �
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289370"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 是，您可以將多個磁碟連結至 VM。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs 是否支援 Gen 2 映像？
-是。 DevTest Labs 服務支援[Gen 2 映射](../virtual-machines/windows/generation-2.md)。 不過，如果第1代和 Gen 2 版本適用于映射，則在建立 VM 時，DevTest Labs 只會顯示映射的 Gen 1 版本。 如果只有 Gen 2 版本可用，您會看到映射。 
+是。 DevTest Labs 服務支援 [第2代映射](../virtual-machines/windows/generation-2.md)。 不過，如果第1代和第2代都可供映射使用，DevTest Labs 只會在建立 VM 時顯示映射的 Gen 1 版本。 如果只有可用的 Gen 2 版本，您會看到映射。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果我想要使用 Windows 作業系統映像進行測試，是否應購買 MSDN 訂用帳戶？
 若要對 Azure 中的開發或測試使用 Windows 用戶端 OS 映像 (Windows 7 或更新版本)，請執行下列其中一個步驟：
@@ -340,9 +340,9 @@ foreach($labVM in $labVMs)
 ## <a name="networking"></a>網路功能
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何時應該針對 DevTest Labs 環境建立新的虛擬網路，而何時該使用現有的虛擬網路？
-如果您的 VM 需要與現有的基礎結構互動，請考慮在 DevTest Labs 環境內使用現有的虛擬網路。 如果您使用 ExpressRoute，您可能會想要將虛擬網路/子網的數目減到最少，如此您就不會分割指派給訂用帳戶中所使用的 IP 位址空間。
+如果您的 VM 需要與現有的基礎結構互動，請考慮在 DevTest Labs 環境內使用現有的虛擬網路。 如果您使用 ExpressRoute，您可能會想要將虛擬網路/子網的數目降至最低，如此您就不會將指派給用於訂用帳戶的 IP 位址空間分割。
 
-請考慮在這裡使用虛擬網路對等互連模式（[中樞輪輻模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）。 這種方法可讓訂用帳戶之間進行 VNet/子網路通訊。 否則，每個 DevTest Labs 環境都可能有它自己的虛擬網路。
+您也應該考慮使用這裡的虛擬網路對等互連模式 ([中樞輪輻模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) 。 這種方法可讓訂用帳戶之間進行 VNet/子網路通訊。 否則，每個 DevTest Labs 環境都可能有它自己的虛擬網路。
 
 每個訂用帳戶都有虛擬網路數目[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 雖然可將此限制提升到 100，但預設數目是 50。
 

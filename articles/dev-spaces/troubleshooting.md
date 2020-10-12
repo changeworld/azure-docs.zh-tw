@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981067"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解

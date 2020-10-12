@@ -1,19 +1,19 @@
 ---
 title: 診斷 Azure DevTest Labs 虛擬機器中的構件失敗
-description: DevTest Labs 提供的資訊可讓您用來診斷構件失敗。 本文說明如何針對成品失敗進行疑難排解。
+description: DevTest Labs 提供的資訊可讓您用來診斷構件失敗。 本文說明如何針對構件失敗進行疑難排解。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480808"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>針對實驗室中的構件失敗進行診斷 
 建立構件之後，您可以檢查以確認其成功或失敗。 Azure DevTest Labs 中的構件記錄會提供資訊供您用來診斷構件失敗。 有幾個選項可供您檢視 Windows VM 的構件記錄資訊：
 
-* 在 Azure 入口網站
+* 在 Azure 入口網站中
 * 在 VM 中
 
 > [!NOTE]
@@ -41,12 +41,12 @@ ms.locfileid: "85480808"
 
 3. 開啟**狀態**檔案。
 
-如需有關在**linux** VM 上尋找記錄檔的指示，請參閱下列文章：搭配[Linux 虛擬機器使用 Azure 自訂腳本擴充功能第2版](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+如需在 **linux** VM 上尋找記錄檔的指示，請參閱下列文章：搭配 [Linux 虛擬機器使用 Azure 自訂腳本擴充功能第2版](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>相關部落格文章
 * [Join a VM to an existing Active Directory domain by using a Resource Manager template in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs) (在 DevTest Labs 中使用 Resource Manager 範本將 VM 加入至現有 Active Directory 網域)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何[將 Git 存放庫新增至實驗室](devtest-lab-add-artifact-repo.md)。
 

@@ -4,19 +4,19 @@ description: 說明用於製作 Azure Resource Manager 範本的建議方法。 
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809250"
 ---
-# <a name="arm-template-best-practices"></a>ARM 範本最佳做法
+# <a name="arm-template-best-practices"></a>ARM 範本的最佳作法
 
-本文說明如何在建立 ARM 範本時使用建議的作法。 當您使用 ARM 範本來部署解決方案時，這些建議可協助您避免常見的問題。
+本文說明如何在建立 ARM 範本時使用建議的作法。 這些建議可協助您避免在使用 ARM 範本部署解決方案時遇到的常見問題。
 
 ## <a name="template-limits"></a>範本限制
 
-將您的範本大小限制為 4 MB，並將每個參數檔案限制為 64 KB。 4 MB 的限制適用于已展開反復資源定義的範本最終狀態，以及變數和參數的值。
+將您的範本大小限制為 4 MB，並將每個參數檔案限制為 64 KB。 4 MB 的限制會套用至範本在使用反復資源定義擴展之後的最終狀態，以及變數和參數的值。
 
 您也受限於：
 
@@ -44,7 +44,7 @@ ms.locfileid: "87809250"
 
 * 參數名稱使用駝峰式大小寫。
 
-* 針對會隨著環境 (例如 SKU、大小或容量) 而有所不同的設定使用參數。
+* 針對根據環境 (例如 SKU、大小或容量) 而有所不同的設定，請使用參數。
 
 * 針對希望能方便識別而指定的資源名稱使用參數。
 
@@ -89,7 +89,7 @@ ms.locfileid: "87809250"
 
 * 針對資源類型的 API 版本，請勿使用參數。 資源屬性和值可能會隨版本號碼而不同。 將 API 版本設定為參數時，程式碼編輯器中的 Intellisense 會無法判斷正確的結構描述。 請改為將 API 版本硬式編碼在範本中。
 
-* 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您的使用量 `allowedValues` 過廣，您可能會因為不讓清單保持最新狀態而封鎖有效的部署。
+* 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您 `allowedValues` 太廣泛地使用，可能會因為不讓清單保持在最新狀態而封鎖有效的部署。
 
 * 當範本中的參數名稱與 PowerShell 部署命令中的參數相符時，Resource Manager 會在範本參數加上後置詞 **FromTemplate** 以避免命名衝突。 例如，如果您在範本中包含名為 **ResourceGroupName** 的參數，它會與 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) Cmdlet 中的 **ResourceGroupName** 參數發生衝突。 部署期間，系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。
 
@@ -158,9 +158,9 @@ ms.locfileid: "87809250"
 
 ## <a name="resource-dependencies"></a>資源相依性
 
-決定[要設定](define-resource-dependency.md)哪些相依性時，請使用下列指導方針：
+決定 [要設定的相依](define-resource-dependency.md) 性時，請使用下列指導方針：
 
-* 使用 **reference** 函式並傳入資源名稱，以便在必須共用屬性的資源之間設定隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。 如需設定隱含相依性的範例，請參閱[隱含](define-resource-dependency.md#reference-and-list-functions)相依性。
+* 使用 **reference** 函式並傳入資源名稱，以便在必須共用屬性的資源之間設定隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。 如需設定隱含相依性的範例，請參閱 [隱含](define-resource-dependency.md#reference-and-list-functions)相依性。
 
 * 設定子資源為相依於其父資源。
 
@@ -200,7 +200,7 @@ ms.locfileid: "87809250"
    }
    ```
    
-   如果儲存體帳戶部署在您要建立的相同範本中，而且儲存體帳戶的名稱不會與範本中的其他資源分享，則當您參考資源時，不需要指定提供者命名空間或 apiVersion。 下列範例顯示簡化的語法：
+   如果儲存體帳戶部署在您要建立的相同範本中，而儲存體帳戶的名稱未與範本中的另一個資源分享，則當您參考資源時，不需要指定提供者命名空間或 apiVersion。 下列範例顯示簡化的語法：
    
    ```json
    "diagnosticsProfile": {
@@ -274,11 +274,11 @@ ms.locfileid: "87809250"
 
 ## <a name="use-test-toolkit"></a>使用測試控管組
 
-ARM 範本測試控管組是一種腳本，可檢查您的範本是否使用建議的作法。 當您的範本不符合建議的做法時，它會傳回包含建議變更的警告清單。 測試控管組可協助您瞭解如何在您的範本中執行最佳作法。
+ARM 範本測試控管組是一種腳本，可檢查您的範本是否使用建議的做法。 當您的範本不符合建議的做法時，它會傳回警告清單以及建議的變更。 測試控管組可協助您瞭解如何在您的範本中執行最佳作法。
 
-完成範本之後，請執行測試控管組，查看是否有方法可以改善 it 的執行。 如需詳細資訊，請參閱[ARM 範本測試控管](test-toolkit.md)組。
+當您完成範本之後，請執行測試控管組，以查看是否有方法可以改善 it 的執行。 如需詳細資訊，請參閱 [ARM 範本測試控管](test-toolkit.md)組。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需範本檔案結構的詳細資訊，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
-* 如需有關如何建立可在所有 Azure 雲端環境中使用之範本的建議，請參閱[開發適用于雲端一致性的 ARM 範本](templates-cloud-consistency.md)。
+* 如需範本檔案結構的詳細資訊，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需有關如何建立可在所有 Azure 雲端環境中運作之範本的建議，請參閱 [開發適用于雲端一致性的 ARM 範本](templates-cloud-consistency.md)。

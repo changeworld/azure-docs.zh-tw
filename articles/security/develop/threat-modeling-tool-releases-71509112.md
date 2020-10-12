@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 版本9/12/2018
 titleSuffix: Azure
-description: 閱讀9/12/2018 上發行之 Microsoft Threat Modeling Tool 的版本資訊。 這些附注包括功能變更和 bug 修正。
+description: 閱讀9/12/2018 版所發行 Microsoft Threat Modeling Tool 的版本資訊。 附注包括功能變更和 bug 修正。
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -9,15 +9,15 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
 ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87539810"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA 版本 7.1.50911.2 - 9/12/2018
 
-我們很興奮地宣布，Microsoft Threat Modeling Tool 現在已是支援的正式上市 (GA) 版本，並且可供下載。 此版本包含重要的隱私權和安全性更新，以及 Bug 修正、功能更新，和穩定性方面的改進。 在開啟用戶端時，系統將提示 2017 預覽版本的現有使用者透過 ClickOnce 技術更新至最新版本。 對於工具的新使用者，您可以[下載用戶端](https://aka.ms/threatmodelingtool)。
+我們很興奮地宣布，Microsoft Threat Modeling Tool 現在已是支援的正式上市 (GA) 版本，並且可供下載。 此版本包含重要的隱私權和安全性更新，以及 Bug 修正、功能更新，和穩定性方面的改進。 在開啟用戶端時，系統將提示 2017 預覽版本的現有使用者透過 ClickOnce 技術更新至最新版本。 針對工具的新使用者，您可以 [下載用戶端](https://aka.ms/threatmodelingtool)。
 
 此版本推出後，我們將結束對 2017 預覽版的支援，並建議所有預覽版使用者更新至 GA 版本。 我們將在 2018 年 10 月 15 日或之後，為 Threat Modeling Tool 設定符合最低需求的 ClickOnce 版本，且所有預覽版用戶端都必須升級。
 

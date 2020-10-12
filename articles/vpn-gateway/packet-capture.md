@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
 ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441590"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>設定 VPN 閘道的封包捕獲
@@ -355,6 +355,6 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - 封包捕獲資料檔案會以 PCAP 格式產生。 使用 Wireshark 或其他常用的應用程式來開啟 PCAP 檔案。
 - 以原則為基礎的閘道不支援封包捕獲。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 VPN 閘道的詳細資訊，請參閱 [什麼是 Vpn 閘道？](vpn-gateway-about-vpngateways.md)。

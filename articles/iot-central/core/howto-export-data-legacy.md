@@ -8,10 +8,10 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974419"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地
@@ -113,7 +113,7 @@ ms.locfileid: "90974419"
 
 7. 在 [ **要匯出的資料**] 底下，將 [類型] 設定為 [ **開啟**]，選擇要匯出的資料類型。
 
-8. 若要開啟資料匯出，請確定已**開啟****啟用**的切換。 選取 [儲存]。
+8. 若要開啟資料匯出，請確定已**開啟****啟用**的切換。 選取 [儲存]****。
 
 9. 幾分鐘後，您的資料就會出現在您選擇的目的地。
 
@@ -750,7 +750,7 @@ ms.locfileid: "90974419"
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何將資料匯出至 Azure 事件中樞、Azure 服務匯流排和 Azure Blob 儲存體，請繼續進行下一個步驟：
 

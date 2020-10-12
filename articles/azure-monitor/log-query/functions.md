@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
 ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87511933"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用函式
@@ -35,7 +35,7 @@ ms.locfileid: "87511933"
 藉由在另一個查詢中包含別名來使用函式。 它可以像任何其他資料表一樣使用。
 
 ## <a name="function-parameters"></a>函數參數 
-您可以將參數新增至函式，讓您可以在呼叫時提供特定變數的值。 目前使用參數來建立函式的唯一方式是使用 Resource Manager 範本。 如需範例，請參閱[Azure 監視器中記錄查詢的 Resource Manager 範本範例](../samples/resource-manager-log-queries.md#parameterized-function)。
+您可以將參數新增至函式，讓您可以在呼叫特定變數時提供這些參數的值。 目前使用參數建立函數的唯一方法是使用 Resource Manager 範本。 如需範例，請參閱 [Azure 監視器中記錄查詢的 Resource Manager 範本範例](../samples/resource-manager-log-queries.md#parameterized-function) 。
 
 ## <a name="example"></a>範例
 下列範例查詢會傳回過去一天內所回報的所有遺漏安全性更新。 將此查詢另存為別名為 _security_updates_last_day_ 的函式。 

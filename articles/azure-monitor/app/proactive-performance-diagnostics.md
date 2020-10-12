@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321304"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
 [Application Insights](./app-insights-overview.md) 會自動分析 Web 應用程式的效能，並且可以警告您有關潛在的問題。 您會讀取到此訊息，可能是因為您收到一個我們的智慧型偵測通知。
 
-除了針對[支援的語言](./platforms.md)設定 Application Insights 的應用程式以外，這項功能不需要進行任何特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
+這項功能不需要特殊的設定，除了針對您 [支援的語言](./platforms.md)設定您的應用程式以進行 Application Insights 之外。 當您的應用程式產生足夠的遙測時，就會是在作用中。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>何時會取得智慧型偵測通知？
 

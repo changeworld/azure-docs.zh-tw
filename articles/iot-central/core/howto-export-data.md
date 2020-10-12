@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
 ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974409"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用資料匯出將 IoT 資料匯出至雲端目的地
@@ -157,7 +157,7 @@ ms.locfileid: "90974409"
     - 針對 Azure 事件中樞、Azure 服務匯流排佇列或主題，貼上資源的連接字串，並視需要輸入區分大小寫的事件中樞、佇列或主題名稱。
     - 針對 Azure Blob 儲存體，貼上資源的連接字串，並視需要輸入區分大小寫的容器名稱。
     - 針對 Webhook，貼上 webhook 端點的回呼 URL。
-    - 選取 [建立]。
+    - 選取 [建立]****。
 
 1. 選取 [ **+ 目的地** ]，然後從下拉式清單中選擇目的地。 您最多可以在單一匯出中新增五個目的地。
 
@@ -281,6 +281,6 @@ ms.locfileid: "90974409"
 | 支援的應用程式版本 | V2、V3 | 僅限第 3 版 |
 | 值得注意的限制 | 每個應用程式5個匯出，每個匯出1個目的地 | 10個匯出-每個應用程式的目的地連線數 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何使用新的資料匯出，建議的下一個步驟是瞭解 [如何在 IoT Central 中流量分析](./howto-create-analytics.md)

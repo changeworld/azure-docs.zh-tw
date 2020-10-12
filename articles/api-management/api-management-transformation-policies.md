@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249598"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>轉換原則
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> 轉換原則
 
 -   [將 JSON 轉換成 XML](api-management-transformation-policies.md#ConvertJSONtoXML) - 將要求或回應內文從 JSON 轉換成 XML。
 
@@ -44,7 +44,7 @@ ms.locfileid: "86249598"
 
 -   [使用 XSLT 轉換 XML](api-management-transformation-policies.md#XSLTransform) - 將 XSL 轉換套用至要求或回應本文中的 XML。
 
-##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a>將 JSON 轉換成 XML
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> 將 JSON 轉換成 XML
  `json-to-xml` 原則將要求或回應本文從 JSON 轉換成 XML。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -69,26 +69,26 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律套用轉換。<br />-   content-type-json - 只有當回應中的 Content-type 標頭指出 JSON 存在時才轉換。|是|N/A|
 |consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 XML，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
 |剖析日期|設定為 `false` 時，只會在轉換期間複製日期值|否|true|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、錯誤
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a>將 XML 轉換成 JSON
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> 將 XML 轉換成 JSON
  `xml-to-json` 原則將要求或回應本文從 XML 轉換成 JSON。 此原則可用於將架構在「僅使用 XML 的後端 Web 服務」上的 API 現代化。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -113,26 +113,26 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |kind|此屬性必須設為下列其中一個值。<br /><br /> -   javascript-friendly - 轉換後的 JSON 有 JavaScript 開發人員熟悉的格式。<br />-   direct -  | 轉換後的 JSON 可反映原始 XML 文件的結構。|是|N/A|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律轉換。<br />-   content-type-xml - 只有當回應中的 Content-type 標頭指出 XML 存在時才轉換。|是|N/A|
 |consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 JSON，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、錯誤
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a>尋找和取代主體中的字串
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> 尋找並取代主體中的字串
  `find-and-replace` 原則會尋找要求或回應子字串，並取代為不同的子字串。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -149,25 +149,25 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |從|要搜尋的字串。|是|N/A|
 |to|取代字串。 指定零長度的取代字串可移除搜尋字串。|是|N/A|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a>遮罩內容中的 Url
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> 遮罩內容中的 Url
  `redirect-content-urls` 原則會重寫 (遮罩) 回應本文中的連結，使其經由閘道器指向同等的連結。 使用在輸出區段中，用以重新撰寫回應本文連結，使其指向閘道。 使用在輸入區段中則效果相反。
 
 > [!NOTE]
@@ -187,18 +187,18 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="set-backend-service"></a><a name="SetBackendService"></a>設定後端服務
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> 設定後端服務
  使用 `set-backend-service` 原則將傳入要求重新導向至不同的後端，而不是 API 設定中為該作業指定的後端。 此原則會將傳入要求中的後端服務基底 URL 變更為原則中指定的 URL。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -214,7 +214,7 @@ ms.locfileid: "86249598"
 ```
 
 > [!NOTE]
-> 您可以透過管理[API](/rest/api/apimanagement/2019-12-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理後端實體。
+> 您可以透過管理 [API](/rest/api/apimanagement/2019-12-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理後端實體。
 
 ### <a name="example"></a>範例
 
@@ -260,30 +260,30 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
-|base-url|新的後端服務基底 URL。|`base-url`必須有或其中之一 `backend-id` 。|N/A|
-|backend-id|要傳送至的後端識別碼。  (的後端實體會透過[API](/rest/api/apimanagement/2019-12-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理。 ) |`base-url`必須有或其中之一 `backend-id` 。|N/A|
+|base-url|新的後端服務基底 URL。|其中一個 `base-url` 或 `backend-id` 必須存在。|N/A|
+|backend-id|要傳送至的後端識別碼。  (後端實體是透過 [API](/rest/api/apimanagement/2019-12-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理。 ) |其中一個 `base-url` 或 `backend-id` 必須存在。|N/A|
 |sf-partition-key|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 用於從名稱解析服務解析特定資料分割。|否|N/A|
 |sf-replica-type|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 控制要求應移至資料分割的主要或次要複本。 |否|N/A|
 |sf-resolve-condition|僅適用於後端為 Service Fabric 服務時。 識別新的解析是否必須重複呼叫 Service Fabric 後端的條件。|否|N/A|
 |sf-service-instance-name|僅適用於後端為 Service Fabric 服務時。 允許在執行階段變更服務執行個體。 |否|N/A|
 |sf-listener-name|僅適用於後端為 Service Fabric 服務並使用 ‘backend-id’ 指定時。 Service Fabric Reliable Services 可讓您在服務中建立多個接聽程式。 後端 Reliable Service 有多個接聽程式時，可使用此屬性來選取特定的接聽程式。 如果未指定此屬性，API 管理會嘗試使用沒有名稱的接聽程式。 沒有名稱的接聽程式通常適用於只有一個接聽程式的 Reliable Services。 |否|N/A|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、後端
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="set-body"></a><a name="SetBody"></a>設定本文
+##  <a name="set-body"></a><a name="SetBody"></a> 設定主體
  使用 `set-body` 原則來設定傳入和傳出要求的訊息本文。 若要存取訊息本文，您可以使用 `context.Request.Body` 屬性或 `context.Response.Body`，取決於原則是在輸入或輸出區段中。
 
 > [!IMPORTANT]
@@ -396,13 +396,13 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含本文文字或會傳回本文的運算式。|是|
 
 ### <a name="properties"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |template|用來變更設定本文原則將在其中執行的範本化模式。 目前唯一支援的值為：<br /><br />- liquid - 設定本文原則將會使用 Liquid 範本化引擎 |否||
 
@@ -446,14 +446,14 @@ OriginalUrl.
 
 
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="set-http-header"></a><a name="SetHTTPheader"></a>設定 HTTP 標頭
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> 設定 HTTP 標頭
  `set-header` 原則會指派值給現有的回應及/或要求標頭，或加入新的回應及/或要求標頭。
 
  將 HTTP 標頭清單插入至 HTTP 訊息中。 放在輸入管線中時，此原則會為傳遞至目標服務的要求設定 HTTP 標頭。 放在輸出管線中時，此原則會為傳送至閘道器用戶端的回應設定 HTTP 標頭。
@@ -468,7 +468,7 @@ OriginalUrl.
 
 ### <a name="examples"></a>範例
 
-#### <a name="example---adding-header-override-existing"></a>範例-新增標頭、覆寫現有的
+#### <a name="example---adding-header-override-existing"></a>範例-新增標頭，覆寫現有的
 
 ```xml
 <set-header name="some header name" exists-action="override">
@@ -497,39 +497,39 @@ OriginalUrl.
  如需詳細資訊，請參閱[原則運算式](api-management-policy-expressions.md)和[內容變數](api-management-policy-expressions.md#ContextVariables)。
 
 > [!NOTE]
-> 標頭的多個值會串連成 CSV 字串，例如：`headerName: value1,value2,value3`
+> 標頭的多個值會串連成 CSV 字串，例如： `headerName: value1,value2,value3`
 >
 > 例外狀況包括值具有下列情況的標準化標頭：
 > - 可能包含逗號 (`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`)，
 > - 可能包含日期 (`Cookie`、`Set-Cookie`、`Warning`)，
 > - 包含日期 (`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`)。
 >
-> 如果發生這些例外狀況，多個標頭值將不會串連成一個字串，並會當做個別的標頭來傳遞，例如：`User-Agent: value1`
+> 在這些例外狀況的情況下，多個標頭值將不會串連成一個字串，且會以個別的標頭形式傳遞，例如： `User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
 |value|指定要設定之標頭的值。 若多個標頭有相同名稱，請額外加入 `value` 元素。|否|
 
 ### <a name="properties"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有標頭的值。<br />-   skip - 不取代現有的標頭值。<br />-   append - 將值附加至現有標頭值之後。<br />-   delete - 移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。|否|override|
-|name|指定要設定之標頭的名稱。|是|N/A|
+|NAME|指定要設定之標頭的名稱。|是|N/A|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a>設定查詢字串參數
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> 設定查詢字串參數
  `set-query-parameter` 原則會新增、取代值或刪除要求查詢字串參數。 可用來傳遞後端服務所需的查詢參數，為選擇性或從未存在於要求中。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -565,26 +565,26 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
 |value|指定要設定之查詢參數的值。 若多個查詢參數有相同名稱，請額外加入 `value` 元素。|是|
 
 ### <a name="properties"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定當已指定查詢參數時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有參數的值。<br />-   skip - 不取代現有的查詢參數值。<br />-   append - 將值附加至現有查詢參數值之後。<br />-   delete - 移除要求中的查詢參數。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定查詢參數 (列出多次)；只有列出的值才會設定在結果中。|否|override|
-|name|指定要設定之查詢參數的名稱。|是|N/A|
+|NAME|指定要設定之查詢參數的名稱。|是|N/A|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、後端
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="rewrite-url"></a><a name="RewriteURL"></a>重寫 URL
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> 重寫 URL
  `rewrite-uri` 原則會將要求 URL 從公用格式轉換成 Web 服務所需的格式，如以下範例中所示。
 
 - 公用 URL - `http://api.example.com/storenumber/ordernumber`
@@ -644,25 +644,25 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|屬性|描述|必要|預設|
+|屬性|說明|必要|預設|
 |---------------|-----------------|--------------|-------------|
 |template|含有任何查詢字串參數的實際 Web 服務 URL。 使用運算式時，整個值必須是運算式。|是|N/A|
 |copy-unmatched-params|指定當連入要求中查詢參數不存在於原始 URL 範本時，是否要將它新增到由重寫範本所定義的 URL|否|true|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** inbound
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a>使用 XSLT 轉換 XML
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> 使用 XSLT 轉換 XML
  `Transform XML using an XSLT` 原則會將 XSL 轉換套用至要求或回應本文中的 XML。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -713,20 +713,20 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
-|參數 (parameter)|用於定義轉換中使用的變數|否|
+|參數|用於定義轉換中使用的變數|否|
 |xsl:stylesheet|根樣式表元素。 遵循 [XSLT 規格](https://www.w3.org/TR/xslt)標準定義的所有的元素和屬性|是|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出
 
 -   **原則範圍：** 所有範圍
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需詳細資訊，請參閱下列主題：
 

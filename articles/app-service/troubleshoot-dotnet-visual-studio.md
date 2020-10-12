@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983004"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
@@ -74,11 +74,11 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 **發生錯誤：**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="螢幕擷取畫面，顯示在網頁瀏覽器中發生一般錯誤的範例。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
 **網站無法顯示頁面**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="顯示網站無法在網頁瀏覽器中顯示分頁錯誤的螢幕擷取畫面。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
 要找到錯誤原因最簡單的方式，往往就是啟用詳細的錯誤訊息，而以上第一個螢幕擷取畫面說明的是其做法。 該做法需要在部署的 Web.config 檔案中進行變更。 您可以編輯專案中的 *Web.config* 檔案並重新部署專案，或建立 [Web.config 轉換](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)並部署偵錯組建，但還有更快的方法：在 [方案總管]**** 中使用 [遠端檢視]** 功能，直接檢視及編輯遠端應用程式中的檔案。
 
@@ -139,7 +139,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 1. 在 [伺服器總管]**** 中，以滑鼠右鍵按一下您的應用程式，接著按一下 [連結偵錯工具]****。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="伺服器總管視窗的螢幕擷取畫面，其中顯示已選取的應用程式，然後按一下 [附加偵錯工具]。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
     瀏覽器會自動開啟至您在 Azure 中執行的首頁。 您可能需要等候 20 秒左右的時間，讓 Azure 設定要偵錯的伺服器。 通常只有當您第一次在應用程式上執行偵錯模式的 48 小時內，才會出現這個延遲現象。 當您於相同期間內再次啟動偵錯時，就不會發生延遲。
 
@@ -192,7 +192,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 8. 按一下 [連結偵錯工具] ****。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="伺服器總管的螢幕擷取畫面，顯示在下拉式功能表中選取的 ContosoAdsWebJob，並已選取 [附加偵錯工具]。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
     瀏覽器會自動開啟至您在 Azure 中執行的首頁。 您可能需要等候 20 秒左右的時間，讓 Azure 設定要偵錯的伺服器。 通常只有當您第一次在應用程式上執行偵錯模式的 48 小時內，才會出現這個延遲現象。 當您於相同期間內再次啟動偵錯時，就不會發生延遲。
 
@@ -340,11 +340,11 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 1. 在瀏覽器視窗的網址列中，將 *trace.axd* 新增至 url，然後按 ENTER (url 類似 `http://localhost:53370/trace.axd`) 。
 1. 在 [應用程式追蹤]**** 頁面上，按一下第一行 (不是 BrowserLink 行) 上的 [檢視詳細資料]****。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Web 瀏覽器中應用程式追蹤頁面的螢幕擷取畫面，其中顯示第一行選取的視圖詳細資料。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
     [要求詳細資訊]**** 頁面隨即顯示，而且在 [追蹤資訊]**** 區段中，您會看到先前加入 `Index` 方法的追蹤陳述式輸出。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="網頁瀏覽器中 [要求詳細資料] 頁面的螢幕擷取畫面，其中顯示 [追蹤資訊] 區段中醒目提示的訊息。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
     根據預設， `trace.axd` 只能在本機使用。 如果您想從遠端應用程式使用它，可以將 `localOnly="false"` 加入 *Web.config* 檔案中的 `trace` 元素，如以下範例所示：
 
@@ -361,11 +361,11 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     當 Visual Studio 成功發行您的更新後，將會開啟瀏覽器視窗至您的首頁 (假設您並未清除 [連線]**** 索引標籤上的 [目的地 URL]****)。
 3. 在 [伺服器總管]**** 中，以滑鼠右鍵按一下您的應用程式，然後選取 [檢視串流記錄]****。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="以滑鼠右鍵按一下您的應用程式，並在新視窗中選取 [View 串流記錄] 之後伺服器總管的螢幕擷取畫面。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
     [輸出] **** 視窗會顯示您已連線至記錄串流服務，並每一分鐘將沒有要顯示的記錄新增一行通知文字。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="輸出視窗的螢幕擷取畫面，其中顯示具有通知行之記錄串流服務的連接範例。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
 4. 在顯示您的應用程式首頁的瀏覽器視窗中，按一下 [連絡人] ****。
 
@@ -394,7 +394,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 ### <a name="output-window-features"></a>輸出視窗功能
 [輸出]**** 視窗的 [Microsoft Azure 記錄]**** 索引標籤具有多個按鈕與一個文字方塊：
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="螢幕擷取畫面，顯示 [輸出] 視窗中 Microsoft Azure [記錄] 索引標籤的按鈕和文字方塊。":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
 這些物件可執行下列功能：
 
@@ -458,15 +458,15 @@ Web 伺服器記錄會記下應用程式的所有 HTTP 活動。 為了在 [輸�
 
 1. 在 [輸出]**** 視窗中，按一下 [Download Streaming Logs]****。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="顯示反白顯示 [下載串流記錄] 按鈕的 [輸出] 視窗螢幕擷取畫面。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
     [檔案總管] 會開啟至您的 *Downloads* 資料夾，並選取下載的檔案。
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="[下載] 檔案總管資料夾的螢幕擷取畫面，其中已選取下載的檔。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
 2. 將 *.zip* 檔案解壓縮後，您會看到下列資料夾結構：
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="解壓縮檔案之後，.zip 檔案資料夾結構的螢幕擷取畫面。":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="顯示在網頁瀏覽器中發生 '/' 應用程式錯誤之伺服器錯誤的螢幕擷取畫面。":::
 
    * 應用程式追蹤記錄位於 LogFiles\Application** 資料夾的 .txt** 檔案中。
    * Web 伺服器記錄位於 LogFiles\http\RawLogs** 資料夾的 .log** 檔案中。 您可以使用 [記錄檔剖析器](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) (英文) 之類的工具來檢視與操作這些檔案。
