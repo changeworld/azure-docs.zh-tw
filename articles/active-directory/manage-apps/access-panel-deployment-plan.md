@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146618"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
@@ -74,8 +74,8 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 | 區域| 描述 |
 | - | - |
-| Access| 您可以從公司網路內的公司和個人裝置存取我的應用程式入口網站。 |
-|Access | 您可以從公司網路外部的公司裝置存取我的應用程式入口網站。 |
+| 存取| 您可以從公司網路內的公司和個人裝置存取我的應用程式入口網站。 |
+|存取 | 您可以從公司網路外部的公司裝置存取我的應用程式入口網站。 |
 | 稽核| 使用量資料會每隔29天下載到公司系統。 |
 | 控管| 定義和監視使用者指派給 Azure AD 連線應用程式和群組的生命週期。 |
 | 安全性| 資源的存取權是透過使用者和群組指派來控制。 只有經過授權的使用者可以管理資源存取權。 |
@@ -117,7 +117,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 下表列出幾個重要的我的應用程式設定，以及您可能使用的一般值：
 
-| 設定| 一般值 |
+| 組態| 一般值 |
 | - | - |
 | 判斷試驗群組| 識別要使用的 Azure AD 安全性群組，並確定所有試驗成員都是群組的一部分。 |
 | 判斷要為生產環境啟用的群組或群組。| 識別要使用的 Azure AD 安全性群組或已同步處理至 Azure AD 的 Active Directory 群組。 確定所有試驗成員都是群組的一部分。 |
@@ -311,5 +311,5 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 您可以使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 管理您的角色，為具有目錄許可權的使用者提供額外的審核、控制和存取權審核。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [規劃 Azure Multi-Factor Authentication 的部署](https://aka.ms/deploymentplans/mfa)

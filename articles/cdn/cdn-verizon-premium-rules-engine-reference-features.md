@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343195"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>來自 Verizon Premium 的 Azure CDN 規則引擎功能
@@ -22,10 +22,10 @@ ms.locfileid: "84343195"
 
 ## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a><a name="top"></a>來自 Verizon Premium 的 Azure CDN 規則引擎功能參考
 
-可用的功能類型如下：
+可用的功能類型為：
 
 * [存取](#access)
-* [快取](#caching)
+* [Caching](#caching)
 * [註解](#comment)
 * [標頭](#headers)
 * [記錄](#logs)
@@ -35,7 +35,7 @@ ms.locfileid: "84343195"
 * [URL](#url)
 * [Web 應用程式防火牆](#waf)
 
-### <a name="access"></a><a name="access"></a>Access
+### <a name="access"></a><a name="access"></a>存取
 
 這些功能是設計來控制內容的存取權。
 
@@ -59,7 +59,7 @@ ms.locfileid: "84343195"
 | [頻寬節流設定](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | 針對我們的 Edge Server 所提供的回應進行頻寬節流設定。 |
 | [略過快取](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | 判斷要求是否可以利用我們的快取技術。 |
 | [Cache-Control 標頭處理](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  當 [外部最大壽命] 功能為作用中時，透過 Edge Server 來控制 Cache-Control 標頭的產生。 |
-| [快取索引鍵查詢字串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 判斷快取索引**鍵*** 是否將包含或排除與要求相關聯的查詢字串參數。 <br> _* 根據快取目的唯一識別資產的相對路徑。 我們的 edge server 會在檢查快取內容時使用此相對路徑。 根據預設，快取索引鍵不會包含查詢字串參數。_ |
+| [快取索引鍵查詢字串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 判斷快取索引 **鍵*** 是否會包含或排除與要求相關聯的查詢字串參數。 <br> _* 針對快取目的唯一識別資產的相對路徑。 我們的 edge server 會在檢查快取的內容時使用這個相對路徑。 根據預設，快取索引鍵不會包含查詢字串參數。_ |
 | [快取索引鍵重寫](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | 重寫與要求相關聯的快取索引鍵。 |
 | [完成快取填滿](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | 判斷在要求於 Edge Server 上產生部分快取遺失時會發生什麼事。 |
 | [壓縮檔案類型](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | 定義將在伺服器上壓縮的檔案格式。 | 
@@ -68,7 +68,7 @@ ms.locfileid: "84343195"
 | [外部最大壽命](https://docs.vdms.com/cdn/Content/HRE/F/External-Max-Age.htm) | 判斷瀏覽器到 Edge Server 快取重新驗證之間的最大壽命間隔。 |
 | [強制執行內部最大壽命](https://docs.vdms.com/cdn/Content/HRE/F/Force-Internal-Max-Age.htm) | 判斷 Edge Server 到原始伺服器快取重新驗證之間的最大壽命間隔。 |
 | [H.264 支援 (HTTP 漸進式下載)](https://docs.vdms.com/cdn/Content/HRE/F/H.264-Support-HPD.htm) | 判斷可能用於串流處理內容的 H.264 檔案格式類型。 |
-| [H.264 支援影片搜尋參數](https://docs.vdms.com/cdn/Content/HRE/F/H.264-Support-VSP-HPD.htm) | 使用 HTTP 漸進式下載時，覆寫指派給透過 h.264 媒體進行搜尋的參數名稱。 |
+| [H.264 支援影片搜尋參數](https://docs.vdms.com/cdn/Content/HRE/F/H.264-Support-VSP-HPD.htm) | 覆寫指派給在使用 HTTP 漸進式下載時，透過 h.264 媒體控制搜尋的參數名稱。 |
 | [接受 No-Cache 要求](https://docs.vdms.com/cdn/Content/HRE/F/Honor-No-Cache-Request.htm) | 判斷是否要將 HTTP 用戶端的 no-cache 要求轉送到原始伺服器。 |
 | [忽略原始的 No-Cache](https://docs.vdms.com/cdn/Content/HRE/F/Ignore-Origin-No-Cache.htm) | 判斷我們的 CDN 是否將忽略原始伺服器所提供的特定指示詞。 |
 | [忽略無法滿足的範圍](https://docs.vdms.com/cdn/Content/HRE/F/Ignore-Unsatisfiable-Ranges.htm) | 判斷在要求產生「416 無法滿足的要求範圍」狀態代碼時將傳回用戶端的要求。 |
@@ -95,7 +95,7 @@ ms.locfileid: "84343195"
 | 名稱       | 目的                                                           |
 |------------|-------------------------------------------------------------------|
 | [Age 回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Age-Response-Header.htm) | 判斷 Age 回應標頭是否將包含於傳送到要求者的回應中。 |
-| [偵錯快取回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | 判斷回應是否可以包含[X-EC-Debug 回應標頭](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm)，以提供所要求資產之快取原則的相關資訊。 |
+| [偵錯快取回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | 判斷回應是否可包含 [X-EC-Debug 回應標頭](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm) ，以提供所要求資產的快取原則資訊。 |
 | [修改用戶端要求標頭](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm) | 覆寫、附加或刪除要求的標頭。 |
 | [修改用戶端回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm) | 覆寫、附加或刪除回應的標頭。 |
 | [設定用戶端 IP 自訂標頭](https://docs.vdms.com/cdn/Content/HRE/F/Set-Client-IP-Custom-Header.htm) | 允許將要新增到要求的要求用戶端 IP 位址做為自訂要求標頭。 |
@@ -113,7 +113,7 @@ ms.locfileid: "84343195"
 
 **[回到頂端](#top)**
 
-### <a name="optimize"></a><a name="optimize"></a>最優化
+### <a name="optimize"></a><a name="optimize"></a>最佳化
 
 這些功能會判斷要求是否將經歷 Edge 最佳化工具所提供的最佳化。
 
@@ -131,7 +131,7 @@ ms.locfileid: "84343195"
 | 名稱       | 目的                                                           |
 |------------|-------------------------------------------------------------------|
 | [Keep-Alive 要求的最大值](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | 判斷在關閉 Keep-Alive 連線之前，適用於該連線的最大要求數目。 |
-| [Proxy 特定的標頭](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | 定義一組將從 edge server 轉送到源伺服器之[CDN 特定的要求標頭](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders)。 |
+| [Proxy 特定的標頭](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | 定義將從 edge server 轉送到源伺服器之 [CDN 特定要求標頭](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders) 的集合。 |
 
 **[回到頂端](#top)**
 
@@ -143,9 +143,9 @@ ms.locfileid: "84343195"
 |------------|-------------------------------------------------------------------|
 | [可快取的 HTTP 方法](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-HTTP-Methods.htm) | 判斷可在我們的網路上快取的其他 HTTP 方法組。 |
 | [可快取的要求主體大小](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-Request-Body-Size.htm) | 定義用以判斷是否可快取 POST 回應的臨界值。 |
-| [停用 QUIC](https://docs.vdms.com/cdn/Content/HRE/F/QUIC.htm) | 判斷用戶端是否會收到通知，指出我們的 CDN 服務是否支援停用 QUIC。 |
-| [串流優化](https://docs.vdms.com/cdn/Content/HRE/F/Streaming-Optimization.htm) | 調整您的快取設定，以優化即時資料流的效能，並減少源伺服器上的負載。 |
-| [User 變數](https://docs.vdms.com/cdn/Content/HRE/F/User-Variable.htm) | 將值指派給使用者定義的變數，該變數會傳遞至您的定制流量處理解決方案。 |
+| [QUIC](https://docs.vdms.com/cdn/Content/HRE/F/QUIC.htm) | 判斷用戶端是否會收到我們的 CDN 服務支援 QUIC 的通知。 |
+| [串流優化](https://docs.vdms.com/cdn/Content/HRE/F/Streaming-Optimization.htm) | 調整您的快取設定，以優化即時資料流的效能，並減少源伺服器的負載。 |
+| [User 變數](https://docs.vdms.com/cdn/Content/HRE/F/User-Variable.htm) | 將值指派給傳遞給定制流量處理解決方案的使用者自訂變數。 |
 
 **[回到頂端](#top)**
 
@@ -163,7 +163,7 @@ ms.locfileid: "84343195"
 
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web 應用程式防火牆
 
-[Web 應用程式防火牆](https://docs.vdms.com/cdn/Content/HRE/F/Web_Application_Firewall.htm)功能會決定是否要透過 Web 應用程式防火牆來篩選要求。
+[Web 應用程式防火牆](https://docs.vdms.com/cdn/Content/HRE/F/Web_Application_Firewall.htm)功能會判斷要求是否會由 Web 應用程式防火牆進行篩選。
 
 **[回到頂端](#top)**
 

@@ -1,16 +1,16 @@
 ---
-title: 做為事件方格來源 Azure 媒體服務
+title: Azure 媒體服務作為事件方格來源
 description: 描述利用 Azure 事件格線提供給媒體服務事件的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105926"
 ---
-# <a name="azure-media-services-as-an-event-grid-source"></a>做為事件方格來源 Azure 媒體服務
+# <a name="azure-media-services-as-an-event-grid-source"></a>以事件方格來源 Azure 媒體服務
 
 本文提供媒體服務事件的結構描述和屬性。
 
@@ -36,11 +36,11 @@ ms.locfileid: "86105926"
 
 ### <a name="monitoring-job-output-state-changes"></a>監視作業輸出狀態變更
 
-作業可以包含多個作業輸出（如果您將轉換設定為具有多個作業輸出）。如果您想要追蹤個別作業輸出的詳細資料，請接聽作業輸出變更事件。
+如果您將轉換設定為具有多個工作輸出，工作可能會包含多個工作輸出 (。 ) 如果您要追蹤個別作業輸出的詳細資料，請接聽作業輸出變更事件。
 
-每項**作業**的層級會高於**JobOutput**，因此作業輸出事件會在對應的作業內引發。 
+每個 **作業** 的層級會高於 **JobOutput**，因此會在對應的作業內引發工作輸出事件。 
 
-中的錯誤訊息 `JobFinished` `JobCanceled` `JobError` 會輸出每個作業輸出的匯總結果–全部完成時。 不過，作業輸出事件會在每個工作完成時引發。 例如，如果您有編碼輸出，接著是影片分析輸出，您會在最後一個 JobFinished 事件引發後，以匯總資料的形式引發兩個事件，做為作業輸出事件。
+中的錯誤訊息 `JobFinished` `JobCanceled` `JobError` 會輸出每個工作輸出的匯總結果（當所有工作都完成時）。 然而，作業輸出事件會在每個工作完成時引發。 例如，如果您有編碼輸出，後面接著影片分析輸出，則會在最後一個 JobFinished 事件以匯總資料引發之前，讓兩個事件引發為工作輸出事件。
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
@@ -83,17 +83,17 @@ ms.locfileid: "86105926"
 資料軌層級事件會以每個資料軌為基礎來引發。 
 
 > [!NOTE]
-> 在即時編碼器連線之後，會引發所有追蹤層級事件。
+> 所有的追蹤層級事件都會在即時編碼器連線之後引發。
 
-追蹤層級的事件種類如下：
+追蹤層級的事件種類為：
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒體伺服器卸除資料區塊，原因是其來得太晚或有重疊的時間戳記 (新資料區塊的時間戳記小於先前資料區塊的結束時間)。 |
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒體伺服器收到資料流或連線中每個資料軌的第一個資料區塊。 |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒體伺服器偵測到音訊和影片串流不同步。請使用做為警告，因為使用者體驗可能不會受到影響。 |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒體伺服器偵測到來自外部編碼器的兩個影片資料流程中，有任何一個都不同步。請使用做為警告，因為使用者體驗可能不會受到影響。 |
-| Microsoft.Media.LiveEventIngestHeartbeat | 當即時事件執行時，會針對每個資料軌每 20 秒發佈一次。 提供內嵌健康情況摘要。<br/><br/>第一次連線編碼器之後，無論編碼器是否仍在連線中，每隔20秒就會繼續發出訊號事件。 |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒體伺服器偵測到音訊和影片資料流程未同步。使用做為警告，因為使用者體驗可能不會受到影響。 |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒體伺服器偵測到來自外部編碼器的兩個影片串流中有任何一個未同步。使用做為警告，因為使用者體驗可能不會受到影響。 |
+| Microsoft.Media.LiveEventIngestHeartbeat | 當即時事件執行時，會針對每個資料軌每 20 秒發佈一次。 提供內嵌健康情況摘要。<br/><br/>在編碼器一開始連接之後，如果編碼器仍在連線，則每隔20秒就會持續發出訊號事件。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒體伺服器偵測到內送的資料軌發生中斷。 |
 
 請參閱接下來將說明的[結構描述範例](#event-schema-examples)。
@@ -124,10 +124,10 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | previousState | 字串 | 工作在該事件之前的狀態。 |
-| state | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
+| 狀態 | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
 
 工作狀態可以是以下其中一個值：*已排入佇列*、*已排程*、*處理中*、*已完成*、*錯誤*、*已取消*、*取消中*
 
@@ -194,7 +194,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | 輸出 | Array | 取得作業輸出。|
 
@@ -310,7 +310,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | streamId | 字串 | 資料流或連線的識別碼。 編碼器或客戶要負責在內嵌 URL 中新增此識別碼。 |  
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |  
@@ -318,7 +318,7 @@ ms.locfileid: "86105926"
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
 | ResultCode | 字串 | 連線遭到拒絕的原因。 結果碼列於下表。 |
 
-您可以在[即時事件錯誤碼](../media-services/latest/live-event-error-codes.md)中找到錯誤的結果碼。
+您可以在 [即時事件錯誤碼](../media-services/latest/live-event-error-codes.md)中找到錯誤的結果碼。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -346,7 +346,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | streamId | 字串 | 資料流或連線的識別碼。 編碼器或客戶要負責在內嵌 URL 中提供此識別碼。 |
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |
@@ -380,7 +380,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | streamId | 字串 | 資料流或連線的識別碼。 編碼器或客戶要負責在內嵌 URL 中新增此識別碼。 |  
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |  
@@ -388,7 +388,7 @@ ms.locfileid: "86105926"
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
 | ResultCode | 字串 | 編碼器中斷連線的原因。 可能是正常中斷連線或錯誤所致。 結果碼列於下表。 |
 
-您可以在[即時事件錯誤碼](../media-services/latest/live-event-error-codes.md)中找到錯誤的結果碼。
+您可以在 [即時事件錯誤碼](../media-services/latest/live-event-error-codes.md)中找到錯誤的結果碼。
 
 正常中斷連線的結果碼如下：
 
@@ -430,11 +430,11 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱。 |
-| bitrate | integer | 資料軌的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
 | timestamp | 字串 | 資料區塊的卸除時間戳記。 |
 | timescale | 字串 | 時間戳記的時幅。 |
 | ResultCode | 字串 | 資料區塊卸除的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
@@ -470,11 +470,11 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | integer | 資料軌的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |
 | encoderIp | 字串  | 編碼器的 IP。 |
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
@@ -509,7 +509,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | minLastTimestamp | 字串 | 所有資料軌 (音訊或視訊) 最後一個時間戳記之間的最小值。 |
 | typeOfTrackWithMinLastTimestamp | 字串 | 最後一個時間戳記為最小值的資料軌 (音訊或視訊) 類型。 |
@@ -545,7 +545,7 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | firstTimestamp | 字串 | 其中一個視訊類型資料軌/品質層級所收到的時間戳記。 |
 | firstDuration | 字串 | 具有第一個時間戳記的資料區塊持續時間。 |
@@ -587,19 +587,19 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | integer | 資料軌的位元速率。 |
-| incomingBitrate | integer | 根據來自編碼器的資料區塊所計算出的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
+| incomingBitrate | 整數 | 根據來自編碼器的資料區塊所計算出的位元速率。 |
 | lastTimestamp | 字串 | 資料軌在過去 20 秒所收到的最新時間戳記。 |
 | timescale | 字串 | 用來表示時間戳記的時幅。 |
-| overlapCount | integer | 在過去 20 秒有重疊時間戳記的資料區塊數目。 |
-| discontinuityCount | integer | 在過去 20 秒所觀察到的中斷次數。 |
-| nonIncreasingCount | integer | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
+| overlapCount | 整數 | 在過去 20 秒有重疊時間戳記的資料區塊數目。 |
+| discontinuityCount | 整數 | 在過去 20 秒所觀察到的中斷次數。 |
+| nonIncreasingCount | 整數 | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
 | unexpectedBitrate | bool | 在過去 20 秒內，預期和實際的位元速率差異是否超過允許的限制。 只有在「incomingBitrate >= 2* 位元速率」或「incomingBitrate <= 位元速率/2」或「IncomingBitrate = 0」時，才會是 true。 |
-| state | 字串 | 即時事件的狀態。 |
+| 狀態 | 字串 | 即時事件的狀態。 |
 | healthy | bool | 根據計數和旗標來指出內嵌是否狀況良好。 如果 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false，則健康情況為 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -631,11 +631,11 @@ ms.locfileid: "86105926"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | integer | 資料軌的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
 | previousTimestamp | 字串 | 上一個片段的時間戳記。 |
 | newTimestamp | 字串 | 當前片段的時間戳記。 |
 | discontinuityGap | 字串 | 上述兩個時間戳記之間的間距。 |
@@ -654,9 +654,9 @@ ms.locfileid: "86105926"
 | id | 字串 | 事件的唯一識別碼。 |
 | data | 物件 (object) | 媒體服務事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [登記工作狀態變更事件](../media-services/latest/job-state-events-cli-how-to.md)
 

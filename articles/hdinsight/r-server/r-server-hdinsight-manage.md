@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
 ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087634"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>在 HDInsight 上管理 ML 服務叢集
 
-在本文中，您將瞭解如何在 Azure HDInsight 上管理現有的 ML 服務叢集，以執行像是新增多個並行使用者、遠端連線至 ML 服務叢集、變更計算內容等工作的工作。
+在本文中，您將瞭解如何在 Azure HDInsight 上管理現有的 ML 服務叢集，以執行像是新增多個並行使用者、遠端連線至 ML 服務叢集、變更計算內容等工作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務]**** 作為 [叢集類型]****。
 
-* 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 如需詳細資訊，請參閱搭配[HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 如需詳細資訊，請參閱搭配[HDInsight 使用 SSH。](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="enable-multiple-concurrent-users"></a>啟用多個並行使用者
 
@@ -110,7 +110,7 @@ mySparkCluster <- RxSpark(
 
 ## <a name="use-a-compute-context"></a>使用計算內容
 
-計算內容可讓您控制要在邊緣節點上本機執行計算，或散發到 HDInsight 叢集的節點中。  如需使用 RStudio 伺服器設定計算內容的範例，請參閱[使用 RStudio 伺服器在 Azure HDInsight 中的 ML 服務叢集上執行 R 腳本](machine-learning-services-quickstart-job-rstudio.md)。
+計算內容可讓您控制要在邊緣節點上本機執行計算，或散發到 HDInsight 叢集的節點中。  如需使用 RStudio 伺服器設定計算內容的範例，請參閱 [使用 RStudio 伺服器在 Azure HDInsight 的 ML 服務叢集上執行 R 腳本](machine-learning-services-quickstart-job-rstudio.md)。
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>將 R 程式碼分散到多個節點
 
@@ -212,13 +212,13 @@ rxSparkDisconnect(myHadoopCluster)
    > [!NOTE]
    > 1. 根據預設，系統在安裝所有的 R 封裝時，會透過已安裝 Machine Learning Server 相同版本的 Microsoft MRAN 存放庫快照。 如果您想要安裝較新版的套件，則會有不相容的風險。 不過，將 `useCRAN` 指定為套件清單的第一個元素 (例如 `useCRAN bitops, stringr, arules`)，這種安裝就可行。  
    > 2. 有些 R 套件需要額外的 Linux 系統程式庫。 為了方便起見，HDInsight ML 服務已預先安裝前 100 個最受歡迎的 R 封裝所需的相依性。 然而，如果您安裝的 R 封裝需要的程式庫不在這之中，則必須下載此處所使用的基底指令碼，並加入安裝系統程式庫的步驟。 接下來，您必須將修改過的指令碼上傳至 Azure 儲存體中的公用 Blob 容器，並使用修改過的指令碼來安裝封裝。
-   >    如需開發腳本動作的詳細資訊，請參閱[腳本動作開發](../hdinsight-hadoop-script-actions-linux.md)。
+   >    如需開發腳本動作的詳細資訊，請參閱 [腳本動作開發](../hdinsight-hadoop-script-actions-linux.md)。
 
    ![Azure 入口網站提交腳本動作](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. 按一下 [建立]**** 執行指令碼。 指令碼完成之後，即可在所有的背景工作角色節點上使用 R 套件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [在 HDInsight 上運作 ML 服務叢集](r-server-operationalize.md)
 * [在 HDInsight 上計算 ML 服務叢集的內容選項](r-server-compute-contexts.md)

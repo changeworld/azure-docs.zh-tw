@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987587"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
@@ -301,7 +301,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 
 或者，您可以檢視特定 Runbook 的作業摘要詳細資料，方法是在您的自動化帳戶中，從 [Runbook] 頁面中選取該 Runbook，然後選取 [作業]。 此動作會顯示 [作業] 頁面。 您可以從此處按一下作業記錄，以檢視其詳細資料和輸出。
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="[工作] 頁面的螢幕擷取畫面，其中反白顯示 [錯誤] 按鈕。":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="[作業] 頁面的螢幕擷取畫面。":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>使用 PowerShell 擷取作業狀態
 

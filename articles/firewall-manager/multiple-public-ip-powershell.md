@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006954"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>部署具有多個公用 IP 位址的 Azure 防火牆
 
-如果您想要使用 Azure 防火牆來保護虛擬中樞，您可以使用 Azure PowerShell 來部署具有多個公用 IP 位址的防火牆。
+如果您想要使用 Azure 防火牆保護虛擬中樞，可以使用 Azure PowerShell 部署具有多個公用 IP 位址的防火牆。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -39,7 +39,7 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
 
 ### <a name="update-a-public-ip-address"></a>更新公用 IP 位址
 
-您可以使用 Azure PowerShell 來更新 Azure 防火牆的公用 IP 位址。 下列範例會從防火牆刪除一個公用 IP 位址。 其開頭為三個公用 IP 位址。
+您可以使用 Azure PowerShell 來更新 Azure 防火牆的公用 IP 位址。 下列範例會從防火牆刪除一個公用 IP 位址。 它會從三個公用 IP 位址開始。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>

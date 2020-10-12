@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504344"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探討 - 進階分析
@@ -114,7 +114,7 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 遵循 [本教學](../spark/apache-spark-microsoft-cognitive-toolkit.md) 課程以端對端執行此解決方案：設定 HDInsight Spark 叢集、安裝 Cognitive Toolkit，以及執行分數為 10000 cifar-10 映射的 Jupyter Notebook。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 Apache Hive 和 Azure Machine Learning
 

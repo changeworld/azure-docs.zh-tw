@@ -4,10 +4,10 @@ description: 本文說明如何將事件張貼到自訂主題。 它會顯示貼
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108238"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>針對 Azure Event Grid 張貼到自訂主題
@@ -34,7 +34,7 @@ az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "e
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Header
+## <a name="header"></a>標頭
 
 在要求中，包含名為 `aeg-sas-key` 的標頭值，其中包含用於驗證的金鑰。
 
@@ -71,10 +71,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-如需這些屬性的說明，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件限制為 64 KB （一般可用性）或 1 MB （預覽）。
+如需這些屬性的說明，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件限制為 64 KB (公開上市) 或 1 MB (預覽) 。
 
 > [!NOTE]
-> [公開上市（GA）服務等級協定（SLA）] 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 的事件支援目前為預覽狀態。 超過 64 KB 的事件會以 64-KB 的增量計費。 
+> 正式運作 (GA) 服務等級協定 (SLA) 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 之事件的支援目前為預覽狀態。 超過 64 KB 的事件會依 64-KB 的遞增計費。 
 
 例如，有效的事件資料結構描述為：
 

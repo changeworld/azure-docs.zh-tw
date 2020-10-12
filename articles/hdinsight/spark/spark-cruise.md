@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88649052"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 上的 SparkCruise
@@ -146,7 +146,7 @@ drwxr-xr-x   - root root          0 2020-07-24 17:21 /peregrine/views/9409467400
 sudo /opt/peregrine/analyze/peregrine.sh clean
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用工作負載深入解析筆記本來判斷 SparkCruise 的優點](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [使用 Azure HDInsight IO 快取改善 Apache Spark 工作負載的效能](apache-spark-improve-performance-iocache.md)

@@ -4,10 +4,10 @@ description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936226"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
@@ -39,7 +39,7 @@ ms.locfileid: "88936226"
 
 ![資料分割索引鍵](./media/event-hubs-features/partition_keys.png)
 
-事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則就會發生錯誤。
+事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則，系統將發生錯誤。
 
 ### <a name="publisher-policy"></a>發佈者原則
 
@@ -67,7 +67,7 @@ ms.locfileid: "88936226"
 
 任何從事件中樞讀取事件資料的實體都是 *事件取用者*。 所有事件中樞取用者都透過 AMQP 1.0 工作階段連接，而可供取用的事件都透過工作階段傳遞。 用戶端不需要輪詢資料可用性。
 
-### <a name="consumer-groups"></a>取用者群組
+### <a name="consumer-groups"></a>用戶群組
 
 事件中心的發佈/訂閱機制是透過「取用者群組」** 啟用。 取用者群組是檢視整個事件中樞 (狀態、位置或位移) 的窗口。 取用者群組能讓多個取用應用程式擁有自己的事件串流檢視，以及按照自己的步調及運用自己的位移自行讀取串流。
 
@@ -133,7 +133,7 @@ Azure Sdk 所提供的部分用戶端是智慧型取用者代理程式，可自�
 
 您必須負責管理位移。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需事件中樞的詳細資訊，請造訪下列連結：
 

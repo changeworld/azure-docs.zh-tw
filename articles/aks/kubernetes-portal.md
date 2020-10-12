@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
 ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335597"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>從 Azure 入口網站 (Preview 存取 Kubernetes 資源) 
@@ -24,7 +24,7 @@ Azure 入口網站中的 Kubernetes 資源檢視會取代 [AKS 儀表板附加][
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要查看 Azure 入口網站中的 Kubernetes 資源，您需要 AKS 叢集。 所有叢集都受到支援，但如果使用 Azure Active Directory (Azure AD) 整合，則您的叢集必須使用 [AKS 管理的 Azure AD 整合][aks-managed-aad]。 如果您的叢集使用舊版 Azure AD，您可以在入口網站中或使用 [Azure CLI][cli-aad-upgrade]升級您的叢集。
 
@@ -48,19 +48,19 @@ Azure 入口網站中的 Kubernetes 資源檢視會取代 [AKS 儀表板附加][
 
 新增 YAML 檔案之後，資源檢視器會顯示已建立的兩個 Kubernetes 服務：內部服務 (azure-投票) ，而外部服務 (azure-投票前) 以存取 Azure 投票應用程式。 外部服務包含連結的外部 IP 位址，因此您可以在瀏覽器中輕鬆地查看應用程式。
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure 入口網站中顯示的 Azure 投票應用程式資訊。" lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Kubernetes 顯示在 Azure 入口網站中的 pod 資訊。" lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>監視部署見解
 
 已啟用 [容器 Azure 監視器的][enable-monitor] AKS 叢集可以快速地查看部署見解。 在 Kubernetes 資源檢視中，使用者可以看到個別部署的即時狀態，包括 CPU 和記憶體使用量，以及轉換至 Azure 監視器，以取得更深入的資訊。 以下是範例 AKS 叢集中的部署見解範例：
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure 入口網站中顯示的部署見解。" lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Kubernetes 顯示在 Azure 入口網站中的 pod 資訊。" lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>編輯 YAML
 
 Kubernetes 資源檢視也包含 YAML 編輯器。 內建的 YAML 編輯器表示您可以在入口網站中更新或建立服務和部署，並立即套用變更。
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure 入口網站中顯示之 Kubernetes 服務的 YAML 編輯器。":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Kubernetes 顯示在 Azure 入口網站中的 pod 資訊。":::
 
 編輯 YAML 之後，請選取 [ **審核] + [儲存**]、確認變更，然後重新儲存，以套用變更。
 
@@ -82,7 +82,7 @@ Kubernetes 資源檢視也包含 YAML 編輯器。 內建的 YAML 編輯器表�
 
 針對現有的叢集，您可能需要啟用 Kubernetes 資源查看。 若要啟用資源檢視，請依照入口網站中的叢集提示進行。
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure 入口網站訊息，以啟用 Kubernetes 資源查看。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes 顯示在 Azure 入口網站中的 pod 資訊。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > 您可以新增 [**api 伺服器授權 IP 範圍**](api-server-authorized-ip-ranges.md) 的 AKS 功能，以將 api 伺服器存取限制為僅限防火牆的公用端點。 這類叢集的另一個選項是更新 `--api-server-authorized-ip-ranges` ，以包含本機用戶端電腦或 IP 位址範圍 (的存取權，) 流覽入口網站。 為了允許此存取，您需要電腦的公用 IPv4 位址。 您可以使用下列命令找到此位址，或在網際網路瀏覽器中搜尋「我的 IP 位址」。

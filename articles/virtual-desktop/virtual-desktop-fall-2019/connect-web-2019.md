@@ -1,5 +1,5 @@
 ---
-title: 連接 Windows 虛擬桌面 (傳統) web 用戶端-Azure
+title: 將 Windows 虛擬桌面 (傳統) web 用戶端連線-Azure
 description: 如何使用 web 用戶端連接到 Windows 虛擬桌面 (傳統) 。
 author: Heidilohr
 ms.topic: how-to
@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008418"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>使用 web 用戶端連接到 Windows 虛擬桌面 (傳統) 
@@ -40,7 +40,7 @@ Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源�
 在瀏覽器中，在 <https://rdweb.wvd.microsoft.com/webclient> 導覽至 Windows 虛擬桌面 Web 用戶端 ，並使用您的使用者帳戶登入。
 
 >[!NOTE]
->如果您使用 Windows 虛擬桌面搭配 Azure Resource Manager 整合，請改為連線到您的資源 <https://rdweb.wvd.microsoft.com/arm/webclient> 。
+>如果您使用 Windows 虛擬桌面與 Azure Resource Manager 整合，請改為連接到您的資源 <https://rdweb.wvd.microsoft.com/arm/webclient> 。
 
 >[!NOTE]
 >如果您已使用不同於您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，請登出或使用私人瀏覽器視窗。

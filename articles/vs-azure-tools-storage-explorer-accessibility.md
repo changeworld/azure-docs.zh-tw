@@ -1,6 +1,6 @@
 ---
-title: Azure 儲存體總管存取範圍 |Microsoft Docs
-description: 瞭解 Azure 儲存體總管中的協助工具。 查看可用的螢幕閱讀者、縮放功能、高對比主題和快速鍵。
+title: Azure 儲存體總管協助工具 |Microsoft Docs
+description: 瞭解 Azure 儲存體總管的協助工具。 複習有哪些螢幕瀏覽器可供使用、縮放功能、高對比主題和快速鍵。
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035480"
 ---
 # <a name="storage-explorer-accessibility"></a>儲存體總管協助工具
@@ -31,11 +31,11 @@ ms.locfileid: "88035480"
 ---------|--------------
 Windows  | NVDA
 Mac      | Voice Over
-Linux    | Linux 上不支援 (螢幕讀取器) 
+Linux    | Linux) 不支援 (畫面讀取器
 
 使用儲存體總管時，如果遇到涉及身障求助方面的問題，請[在 GitHub 回報您的問題](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
-## <a name="zoom"></a>Zoom
+## <a name="zoom"></a>縮放
 
 您可以透過放大讓儲存體總管中的文字變大。 若要放大，按一下 [說明] 功能表中的 [放大]****。 您也可以使用 [說明] 功能表來縮小，並且將縮放層級重設回預設層級。
 
@@ -45,7 +45,7 @@ Linux    | Linux 上不支援 (螢幕讀取器)
 
 ## <a name="high-contrast-themes"></a>高對比主題
 
-儲存體總管有兩個高對比佈景主題，**高對比淺色**和**高對比深色**。 您可以從 [說明] > [主題] 功能表中選取 [in] 來變更您的主題。
+儲存體總管有兩個高對比佈景主題，**高對比淺色**和**高對比深色**。 您可以從 [說明] > 主題] 功能表中選取 [] 來變更您的主題。
 
 ![佈景主題子功能表][1]
 
@@ -66,7 +66,7 @@ Command       | 鍵盤快速鍵
 Command                | 鍵盤快速鍵
 -----------------------|----------------------
 焦點移至下一個窗格       | **F6**
-焦點移至上一個窗格   | **Shift+F6**
+焦點移至上一個窗格   | **Shift + F6**
 總管               | **Control+Shift+E**
 帳戶管理     | **Control+Shift+A**
 切換提要欄位        | **Control+B**
@@ -87,8 +87,8 @@ Command  | 鍵盤快速鍵
 
 Command | 鍵盤快速鍵
 --------|--------------------
-上一步    | **Alt+向左箭**
-下一頁 | **Alt + 向右鍵**
+上一步    | **Alt + 向左鍵**
+轉寄 | **Alt + 向右鍵**
 Up      | **Alt+向上箭**
 
 ### <a name="editor-commands"></a>編輯器命令
@@ -98,14 +98,14 @@ Command | 鍵盤快速鍵
 複製    | **Control+C**
 剪下     | **Control+X**
 貼上   | **Control+V**
-Refresh  | **Control+R**
+重新整理  | **Control+R**
 
 ### <a name="other-commands"></a>其他命令
 
 Command                | 鍵盤快速鍵
 -----------------------|------------------
 切換開發人員工具 | **F12**
-重新載入                 | **Alt + Ctrl + R**
+重新載入                 | **Alt + Control + R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

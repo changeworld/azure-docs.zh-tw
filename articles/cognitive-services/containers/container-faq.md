@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900054"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 認知服務容器的常見問題 (常見問題) 
@@ -37,14 +37,14 @@ ms.locfileid: "90900054"
 
 **答：** 我們想要讓更多認知服務可作為容器供應專案。 請洽詢您的本機 Microsoft 帳戶管理員，以取得新的容器版本和其他認知服務公告的更新。
 
-**問：認知服務容器 (SLA) 的服務等級協定為何？**
+**問：認知服務容器 Service-Level 合約 (SLA) 為何？**
 
 **答：** 認知服務容器沒有 SLA。
 
 資源的認知服務容器設定由客戶控制，因此 Microsoft 不會提供正式運作 (GA) 的 SLA。 客戶可自由地在內部部署容器，因此可定義主機環境。
 
 > [!IMPORTANT]
-> 若要深入瞭解認知服務的服務等級協定，請 [造訪我們的 SLA 頁面](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)。
+> 若要深入瞭解認知服務 Service-Level 協定，請 [造訪我們的 SLA 頁面](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)。
 
 **問：這些容器是否可在主權雲端中使用？**
 
@@ -110,7 +110,7 @@ ms.locfileid: "90900054"
 
 客戶可免費探索 [Azure 知識中心](https://azure.microsoft.com/resources/knowledge-center/) ，以回答問題和支援問題。
 
-### <a name="stack-overflow"></a>Stack Overflow
+### <a name="stack-overflow"></a>堆疊溢位
 
 > [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) 是適用于專業人員和愛好者程式設計師的問題和解答網站。
 
@@ -127,7 +127,7 @@ ms.locfileid: "90900054"
 * [電腦視覺][cv-containers-billing]
 * [臉部][fa-containers-billing]
 * [表單辨識器][fr-containers-billing]
-* [Language Understanding (LUIS) ][lu-containers-billing]
+* [語言理解 (LUIS)][lu-containers-billing]
 * [語音服務 API][sp-containers-billing]
 * [文字分析][ta-containers-billing]
 
@@ -154,7 +154,7 @@ ms.locfileid: "90900054"
 * [電腦視覺][cv-containers-recommendations]
 * [臉部][fa-containers-recommendations]
 * [表單辨識器][fr-containers-recommendations]
-* [Language Understanding (LUIS) ][lu-containers-recommendations]
+* [語言理解 (LUIS)][lu-containers-recommendations]
 * [語音服務 API][sp-containers-recommendations]
 * [文字分析][ta-containers-recommendations]
  

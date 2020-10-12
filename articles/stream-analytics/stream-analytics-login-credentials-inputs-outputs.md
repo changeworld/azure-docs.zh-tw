@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044408"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>針對串流分析作業的輸入和輸出替換登入認證
@@ -31,7 +31,7 @@ ms.locfileid: "86044408"
 4. 在 Azure 入口網站中，瀏覽至您的串流分析作業 > 選取 [停止]****，並等候作業停止。    
 5. 找出您要更新認證的 Blob/表格儲存體輸出/輸入。    
 6. 尋找 [儲存體帳戶金鑰]**** 欄位，然後貼上新產生的金鑰 > 按一下 [儲存]****。    
-7. 當您儲存變更時，會自動啟動連線測試，您可以從 [通知] 索引標籤加以查看。有兩個通知-一個對應于儲存更新，另一個對應至測試連線：  
+7. 當您儲存變更時，將會自動啟動連接測試，您可以從 [通知] 索引標籤加以查看。有兩個通知-一個對應于儲存更新，另一個對應于測試連接：  
    ![編輯金鑰之後的通知](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. 繼續進行[從上次停止的時間啟動您的作業](#start-your-job-from-the-last-stopped-time)一節。
 
@@ -64,7 +64,7 @@ ms.locfileid: "86044408"
 
 4. 記下新的密碼。    
 5. 在 Azure 入口網站中，瀏覽至您的串流分析作業 > 選取 [停止]****，並等候作業停止。    
-6. 找出您要輪替認證的 SQL Database 輸出。 更新密碼並儲存變更。    
+6. 找出您想要輪替認證的 SQL Database 輸出。 更新密碼並儲存變更。    
 7. 當您儲存所做的變更時，系統會自動測試連線，以保證萬無一失。    
 8. 繼續進行[從上次停止的時間啟動您的作業](#start-your-job-from-the-last-stopped-time)一節。
 

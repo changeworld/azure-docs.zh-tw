@@ -1,6 +1,6 @@
 ---
 title: AMD GPU 驅動程式擴充功能-Azure Windows Vm
-description: Microsoft Azure 延伸模組，用於在執行 Windows 的 NVv4 系列 Vm 上安裝 AMD GPU 驅動程式。
+description: 在執行 Windows 的 NVv4 系列 Vm 上安裝 AMD GPU 驅動程式的 Microsoft Azure 延伸模組。
 services: virtual-machines-windows
 documentationcenter: ''
 author: vikancha-MSFT
@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87010864"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>適用于 Windows 的 AMD GPU 驅動程式擴充功能
 
-本文概要說明在 Windows [NVv4 系列](../nvv4-series.md)vm 上部署 AMD GPU 驅動程式的 VM 擴充功能。 當您使用此延伸模組安裝 AMD 驅動程式時，即表示您接受並同意[AMD 使用者授權合約](https://amd.com/radeonsoftwarems)的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
+本文概述在 Windows [NVv4 系列](../nvv4-series.md) vm 上部署 AMD GPU 驅動程式的 VM 擴充功能。 當您使用此擴充功能安裝 AMD 驅動程式時，即表示您接受並同意 [AMD End-User 授權合約](https://amd.com/radeonsoftwarems)的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
 如需手動安裝驅動程式的指示和目前支援的版本，請參閱[這裡](../windows/n-series-amd-driver-setup.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -39,7 +39,7 @@ ms.locfileid: "87010864"
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
-適用于 AMD GPU 驅動程式的 Microsoft Azure 擴充功能會要求目標 VM 必須連線到網際網路並擁有存取權。
+AMD GPU 驅動程式的 Microsoft Azure 擴充功能需要目標 VM 連線到網際網路並擁有存取權。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 

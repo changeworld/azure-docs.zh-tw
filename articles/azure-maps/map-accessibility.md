@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 地圖服務建立無障礙地圖應用程式 | Microsoft Azure 地圖服務
-description: 深入瞭解 Azure 地圖服務中的協助工具考慮。 查看哪些功能可用來讓地圖應用程式可供存取，以及查看協助工具提示。
+description: 瞭解 Azure 地圖服務中的協助工具考慮。 查看有哪些功能可用來讓地圖應用程式可供存取，以及查看協助工具提示。
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006208"
 ---
 # <a name="building-an-accessible-application"></a>建置無障礙應用程式
@@ -22,7 +22,7 @@ ms.locfileid: "88006208"
 若應用程式會提供地圖之類的豐富互動式內容，則以下是一些常見的協助工具考慮事項：
 - 為對於看到 Web 應用程式有困難的使用者提供螢幕助讀程式的支援。
 - 有多種方法可以與 Web 應用程式進行互動和瀏覽，例如滑鼠、觸控和鍵盤。
-- 確保色彩對比，讓色彩不會混合在一起，並且變得難以區分。 
+- 請確定色彩對比，使色彩不會混合在一起，因此難以區分。 
 
 Azure 地圖服務 Web SDK 預先建置了許多協助工具功能，例如：
 - 螢幕助讀程式會在地圖移動時，以及當使用者的焦點位於控制項或快顯時提供描述。
@@ -46,7 +46,7 @@ Azure 地圖服務 Web SDK 預先建置了許多協助工具功能，例如：
 - 將焦點放在地圖上，使用減號 (`-`) 或底線 (`_`) 來縮小一個等級。
 - 使用縮放控制項並搭配滑鼠、觸控或鍵盤 Tab/Enter 鍵。
 - 按住 `Shift` 按鈕並在地圖上按下滑鼠左鍵，然後拖曳來繪製一個區域，以將地圖縮放至其中。
-- 使用一些多點觸控板，將兩個手指上下拖曳以縮小，或向下縮放。
+- 使用一些多點觸控板，將兩個手指拖曳至放大或縮小以放大。
 
 **移動瀏覽地圖**
 
@@ -77,7 +77,7 @@ Azure 地圖服務 Web SDK 預先建置了許多協助工具功能，例如：
 - 載入地圖控制項時，其會檢查以查看是否已啟用高對比，且瀏覽器是否支援。
 - 地圖控制項不會監視裝置的高對比模式。 如果裝置模式變更，地圖將不會變更。 因此，使用者將需要重新整理頁面，以便重新載入地圖。
 - 偵測到高對比時，地圖樣式將自動切換為高對比，而所有內建控制項都將使用高對比樣式。 例如，ZoomControl、PitchControl、CompassControl、StyleControl 和其他內建控制項都將使用高對比樣式。
-- 高對比有兩種類型：淺色和深色。 如果地圖控制項可以偵測到高對比的類型，則地圖的行為將據以調整。 若為淺色，即會載入 grayscale_light 地圖樣式。 如果無法偵測到類型或其為深色，則會載入 high_contrast_dark 樣式。
+- 高對比有兩種類型：淺色和深色。 如果地圖控制項可以偵測到高對比的類型，則地圖的行為將據以調整。 若為淺色，即會載入 grayscale_light 地圖樣式。 如果無法偵測到類型或為深色，則會載入 high_contrast_dark 的樣式。
 - 如果要建立自訂控制項，那麼，知道內建控制項是否正在使用高對比樣式就很實用。 開發人員可以在要檢查的地圖容器 div 上新增 CSS 類別。 要新增的 CSS 類別是 `high-contrast-dark` 和 `high-contrast-light`。 若要使用 JavaScript 進行檢查，請使用：
 
 ```javascript
@@ -111,7 +111,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 | 減號、連字號 (`-`) 或 <sup>*</sup>底線 (`_`) | 縮小 | 
 | `Shift` + 在地圖上拖曳滑鼠以繪製區域 | 放大區域 |
 
-<sup>*</sup> 這些按鍵快速鍵通常會共用鍵盤上的相同按鍵。 這些快速鍵已新增來改善使用者體驗。 如果使用者使用 shift 鍵，或不是針對這些快捷方式，也不會有任何影響。
+<sup>*</sup> 這些按鍵快速鍵通常會共用鍵盤上的相同按鍵。 這些快速鍵已新增來改善使用者體驗。 如果使用者使用 shift 鍵或不是這些快捷方式，也不重要。
 
 ## <a name="screen-reader-support"></a>螢幕助讀程式支援
 

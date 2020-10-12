@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
 ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901337"
 ---
 # <a name="security-alerts-schemas"></a>安全性警示架構
@@ -68,7 +68,7 @@ Sentinel 連接器會從 Azure 資訊安全中心取得警示，並將其傳送�
 
 
 
-### <a name="azure-activity-log"></a>[Azure 活動記錄檔](#tab/schema-activitylog)
+### <a name="azure-activity-log"></a>[Azure 活動記錄](#tab/schema-activitylog)
 
 Azure 資訊安全中心會在 Azure 活動記錄中以事件形式來審核產生的安全性警示。
 
@@ -178,7 +178,7 @@ Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一
 ---
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 本文說明在傳送安全性警示資訊時，Azure 資訊安全中心威脅防護工具所使用的架構。
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.author: alkohli
 ms.openlocfilehash: 85614ab6455e149d64b7d1b9774c37c764bb600f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055872"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Azure Stack Edge 和 Azure 資料箱閘道2007版本資訊
@@ -45,7 +45,7 @@ ms.locfileid: "90055872"
 
 未在此版本中注明任何新問題。 所有發行的問題都已從先前的版本執行。 若要查看已知問題的清單，請移至 [GA 版本中的已知問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [準備部署 Azure Stack Edge](data-box-edge-deploy-prep.md)
 - [準備部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89147438"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>搭配使用 Azure Advisor 與 Windows 虛擬桌面
@@ -32,7 +32,7 @@ Azure Advisor 會分析您的設定和遙測，以提供個人化建議來解決
 
 當您開啟 Azure Advisor 時，您會看到五個類別：
 
-- 成本
+- Cost
 - 安全性
 - 可靠性
 - 卓越營運
@@ -58,7 +58,7 @@ Azure Advisor 會分析您的設定和遙測，以提供個人化建議來解決
 
 - 當您在 Windows 虛擬桌面中遇到問題時，請一律先檢查 Azure Advisor。 Azure Advisor 將提供您如何解決問題的指示，或至少指向可提供協助的資源。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何解決建議，請參閱 [如何解決 Azure Advisor 建議](azure-advisor-recommendations.md)。
 

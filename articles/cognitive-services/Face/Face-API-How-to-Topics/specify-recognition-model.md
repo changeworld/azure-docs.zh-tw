@@ -12,10 +12,10 @@ ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283032"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定臉部辨識模式
@@ -33,7 +33,7 @@ _Recognition_03_模型 (發行的 2020) 是目前可用的最精確模型。 如
 請繼續閱讀以瞭解如何在不同的臉部作業中指定選取的模型，同時避免模型衝突。 如果您是 advanced 使用者，而且想要判斷是否應該切換至最新的模型，請跳至 [ [評估不同](#evaluate-different-models) 的模型] 區段，以評估新的模型，並使用您目前的資料集來比較結果。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您應該熟悉 AI 臉部偵測和識別的概念。 如果不是，請先參閱下列指南：
 
