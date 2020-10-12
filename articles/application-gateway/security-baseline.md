@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: b470fa72518f805c10403931280bdec96bda0fbe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226534"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>適用于 Azure 應用程式閘道的 Azure 安全性基準
@@ -983,7 +983,7 @@ Microsoft 所掃描和修補的基礎平台。 複習 Azure 應用程式閘道�
 
 **指導**方針： Azure 應用程式閘道不會儲存客戶資料。 不過，如果使用自訂的 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-Azure DevOps Services 會利用許多 Azure 儲存體功能，以確保在發生硬體故障、服務中斷或區域嚴重損壞的情況下，可進行資料的可用性。 此外，Azure DevOps 團隊會遵循程式來防止資料遭到意外或惡意刪除。
+Azure DevOps Services 採用許多 Azure 儲存體功能，為的是在發生硬體失敗、服務中斷或區域災害時確保資料的可用性。 此外，Azure DevOps 小組會遵循程序來防止資料遭到意外或惡意刪除。
 
 * [瞭解 Azure DevOps 中的資料可用性](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 

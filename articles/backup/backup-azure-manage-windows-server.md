@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用復原服務保存庫總覽�
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002125"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
@@ -110,8 +110,8 @@ ms.locfileid: "89002125"
 * 警示
 * 備份項目
 * 受保護的伺服器
-* 嚴重性
-* Duration
+* Severity
+* 持續時間
 * 建立時間
 * 狀態
 * 最新發生時間

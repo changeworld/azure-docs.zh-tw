@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2018
 ms.author: duau
 ms.openlocfilehash: f3b34966aa46ca8d663f83ab2aceafa4b0dda2eb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395735"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重設 ExpressRoute 線路對等互連
@@ -141,7 +141,7 @@ ms.locfileid: "89395735"
    ```
    對等互連應該處於您所設定的狀態。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如果您需要協助以進行 ExpressRoute 問題的疑難排解，請參閱下列文章：
 * [確認 ExpressRoute 連線](expressroute-troubleshooting-expressroute-overview.md)
 * [網路效能疑難排解](expressroute-troubleshooting-network-performance.md)

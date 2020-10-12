@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321893"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
@@ -30,7 +30,7 @@ ms.locfileid: "91321893"
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -108,7 +108,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |userName|String|
    |displayName|String|
    |作用中|Boolean|
-   |title|Boolean|
+   |title|布林值|
    |emails[type eq "work"].value|String|
    |name.givenName|String|
    |name.familyName|String|
@@ -131,8 +131,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn:scim:schemas:extension:enterprise:1.0.organization|String|
    |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
-   |urn： scim：架構： extension： facebook： auth_method：1.0： auth_method|String|
-   |urn： scim：架構： extension： facebook： frontline：1.0.is_frontline|Boolean|
+   |urn： scim：架構： extension： facebook： auth_method：1.0： auth_method|字串|
+   |urn： scim：架構： extension： facebook： frontline：1.0.is_frontline|布林值|
    |urn： scim：架構： extension： facebook： starttermdates： 1.0. 開始日期|整數|
 
 

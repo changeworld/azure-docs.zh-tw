@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723923"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
@@ -49,7 +49,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
     
 4. 儲存新設定。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="顯示診斷設定頁面的螢幕擷取畫面，其中使用者已填入診斷設定名稱，並針對 [類別目錄詳細資料] 和 [目的地詳細資料] 選取了一些核取方塊。[儲存] 按鈕會反白顯示。":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
 
 新的設定大約會在 10 分鐘內生效。 之後，記錄會出現在您實例的 [ **診斷設定** ] 頁面上的已設定目標中。 
 
@@ -57,7 +57,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 
 以下是在設定診斷設定時，可以在 [ **類別目錄詳細資料** ] 底下選取之記錄類別的更多詳細資料。
 
-| 記錄分類 | 描述 |
+| 記錄分類 | 說明 |
 | --- | --- |
 | ADTModelsOperation | 記錄與模型相關的所有 API 呼叫 |
 | ADTQueryOperation | 記錄與查詢相關的所有 API 呼叫 |
@@ -223,7 +223,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需有關設定診斷的詳細資訊，請參閱 [*收集和取用來自 Azure 資源的記錄資料*](../azure-monitor/platform/platform-logs-overview.md)。
 * 如需 Azure 數位 Twins 計量的詳細資訊，請參閱 [*疑難排解：使用 Azure 監視器來查看計量*](troubleshoot-metrics.md)。

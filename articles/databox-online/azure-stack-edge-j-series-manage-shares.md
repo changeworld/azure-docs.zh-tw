@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904687"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站來管理 Azure Stack Edge Pro 上的共用
@@ -82,7 +82,7 @@ ms.locfileid: "90904687"
 
 6. 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。
 
-7. 選取 [建立]。 
+7. 選取 [建立]****。 
 
     ![建立本機共用](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -239,6 +239,6 @@ ms.locfileid: "90904687"
 > 您只需要針對指定的儲存體帳戶執行此作業一次。 不需要針對與相同儲存體帳戶相關聯的所有共用，重複此動作。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-j-series-manage-users.md)。

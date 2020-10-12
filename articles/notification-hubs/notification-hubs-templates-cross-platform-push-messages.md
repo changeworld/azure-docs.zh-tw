@@ -1,6 +1,6 @@
 ---
 title: Azure 通知中樞範本
-description: 瞭解如何使用適用于 Azure 通知中樞的範本。
+description: 瞭解如何使用 Azure 通知中樞的範本。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86219958"
 ---
 # <a name="notification-hubs-templates"></a>通知中樞範本
@@ -62,7 +62,7 @@ ms.locfileid: "86219958"
 
 下圖說明整個程序：
 
-![此圖顯示使用跨平臺的範本流程](./media/notification-hubs-templates/notification-hubs-hello.png)
+![此圖顯示跨平臺使用範本的流程](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 iOS 用戶端 app 註冊的範本如下：
 
@@ -121,7 +121,7 @@ iOS 用戶端 app 註冊的範本如下：
 
 藉由使用此模式，後端只需傳送單一訊息，而不需儲存 app 使用者的特定個人化選項。 下圖說明這個案例：
 
-![此圖顯示後端只會將單一訊息傳送到每個平臺。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![此圖顯示後端如何只將單一訊息傳送至每個平臺。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>如何註冊範本
 
@@ -145,7 +145,7 @@ iOS 用戶端 app 註冊的範本如下：
 
 運算式可以是前述任一形式。
 
-使用串連時，整個運算式必須包含在 `{}` 中。 例如，`{$(prop) + ‘ - ’ + $(prop2)}`。
+使用串連時，整個運算式必須包含在 `{}` 中。 例如： `{$(prop) + ‘ - ’ + $(prop2)}` 。
 
 例如，以下的範本不是有效的 XML 範本：
 

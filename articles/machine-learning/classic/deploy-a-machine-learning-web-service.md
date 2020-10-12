@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341845"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure Machine Learning Studio (傳統) web 服務
@@ -27,7 +27,7 @@ Machine Learning Studio (傳統) web 服務會在應用程式和 Machine Learnin
 
 Azure Machine Learning Studio (傳統) 有兩種類型的 web 服務：
 
-* 要求-回應服務 (RR) ：低延遲、高度可調整的服務，以評分單一資料記錄。
+* Request-Response 服務 (RR) ：低延遲、高度可調整的服務，可為單一資料記錄評分。
 * 批次執行服務 (的) ：以一批資料記錄為分數的非同步服務。
 
 BES 的輸入就像 RRS 使用的資料輸入。 主要差異在於，BES 會從各種來源讀取記錄區塊，例如 Azure Blob 儲存體、Azure 表格儲存體、Azure SQL Database、HDInsight (Hive 查詢) 和 HTTP 來源。
@@ -212,7 +212,7 @@ RRS 測試頁面會顯示輸入、輸出以及任何您已為實驗定義的全�
 6. 從 [資源群組] **** 下拉式清單中，選取方案的資源群組。 如需資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 7. 在 [方案名稱] **** 中，輸入方案的名稱。
 8. 在 [方案選項] **** 下，按一下新方案的計費層級。
-9. 按一下頁面底部的 [新增] 。
+9. 按一下 [建立]。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>將 Web 服務部署到另一個區域
 

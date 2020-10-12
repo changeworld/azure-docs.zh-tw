@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: jingwang
 ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84669863"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure Data Factory 複製 Marketo 中的資料 (預覽)
@@ -52,13 +52,13 @@ ms.locfileid: "84669863"
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | type 屬性必須設定為：**Marketo** | Yes |
-| 端點 | Marketo 伺服器的端點。 (亦即 123-ABC-321.mktorest.com)  | Yes |
-| clientId | Marketo 服務的用戶端識別碼。  | Yes |
+| type | type 屬性必須設定為：**Marketo** | 是 |
+| 端點 | Marketo 伺服器的端點。 (亦即 123-ABC-321.mktorest.com)  | 是 |
+| clientId | Marketo 服務的用戶端識別碼。  | 是 |
 | clientSecret | Marketo 服務的用戶端密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | No |
-| useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | No |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
+| useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
 **範例︰**
 
@@ -117,7 +117,7 @@ ms.locfileid: "84669863"
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 type 屬性必須設定為：**MarketoSource** | Yes |
+| type | 複製活動來源的 type 屬性必須設定為：**MarketoSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Activitiy_Types"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
 **範例︰**

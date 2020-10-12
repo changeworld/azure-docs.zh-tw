@@ -1,27 +1,27 @@
 ---
 title: 範本函式-物件
-description: 描述要在 Azure Resource Manager 範本中用來處理物件的函數。
+description: 描述在 Azure Resource Manager 範本中用來處理物件的函數。
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84676789"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 範本的物件函式
 
-Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範本中的物件。
+Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本中的物件。
 
 * [contains](#contains)
 * [empty](#empty)
 * [intersection](#intersection)
 * [json](#json)
-* [length](#length)
+* [length](#length) (長度)
 * [union](#union)
 
-## <a name="contains"></a>包含
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -29,10 +29,10 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| 容器 |Yes |陣列、物件或字串 |其中包含要尋找之值的值。 |
-| itemToFind |Yes |字串或整數 |要尋找的值。 |
+| 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
+| itemToFind |是 |字串或整數 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -110,9 +110,9 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |陣列、物件或字串 |要檢查其是否為空白的值。 |
+| itemToTest |是 |陣列、物件或字串 |要檢查它是否為空的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -175,7 +175,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |要用來尋找共同元素的第一個值。 |
 | arg2 |是 |陣列或物件 |要用來尋找共同元素的第二個值。 |
@@ -241,9 +241,9 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |字串 |要轉換成 JSON 的值。 |
+| arg1 |是 |字串 |要轉換為 JSON 的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -255,7 +255,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="example"></a>範例
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)顯示如何使用 json 函數。 請注意，您可以傳入代表物件的字串，或在不需要任何值時使用**null** 。
+下列 [範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) 示範如何使用 json 函數。 請注意，您可以傳入代表物件的字串，或在不需要任何值時使用 **null** 。
 
 ```json
 {
@@ -306,13 +306,13 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 `length(arg1)`
 
-傳回陣列中的元素數目、字串中的字元，或物件中的根層級屬性。
+傳回陣列中的元素數目、字串中的字元或物件中的根層級屬性。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
+| arg1 |是 |陣列、字串或物件 |用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -386,7 +386,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |用來聯結元素的第一個值。 |
 | arg2 |是 |陣列或物件 |用來聯結元素的第二個值。 |
@@ -444,6 +444,6 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager （ARM）範
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
 ms.openlocfilehash: dd4c6f0b9d518acf06f7d018a65cc2b9b92db33d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395446"
 ---
 # <a name="configure-expressroute-global-reach"></a>設定 ExpressRoute Global Reach
@@ -124,7 +124,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 
 在上述作業完成後，您的內部部署網路之間便無法再透過 ExpressRoute 線路進行連線。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 1. [深入了解 ExpressRoute 觸角擴及全球](expressroute-global-reach.md)
 2. [確認 ExpressRoute 連線能力](expressroute-troubleshooting-expressroute-overview.md)
 3. [將 ExpressRoute 線路連結到 Azure 虛擬網路](expressroute-howto-linkvnet-arm.md)

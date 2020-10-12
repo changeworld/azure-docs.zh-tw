@@ -10,10 +10,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342078"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>已備妥資料來進行資料科學嗎？
@@ -45,7 +45,7 @@ ms.locfileid: "91342078"
 在資料科學中，有某些要素必須同時提取，包括：
 
 * 相關
-* 連線
+* 已連線
 * 精確
 * 足以使用
 

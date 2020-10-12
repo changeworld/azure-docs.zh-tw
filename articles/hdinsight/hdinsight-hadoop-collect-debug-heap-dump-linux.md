@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85962198"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在以 Linux 為基礎的 HDInsight 上啟用 Apache Hadoop 服務的堆積傾印
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-堆積傾印含有應用程式記憶體的快照，其中包括建立傾印時的變數值。 因此，它們很適合用來診斷執行時間發生的問題。
+堆積傾印含有應用程式記憶體的快照，其中包括建立傾印時的變數值。 所以它們很適合用來診斷在執行時間發生的問題。
 
 ## <a name="services"></a>服務
 
@@ -37,7 +37,7 @@ ms.locfileid: "85962198"
 
 堆積傾印的啟用方式，是在服務啟動時將選項 (有時稱為參數) 傳遞至 JVM。 就大部分的 [Apache Hadoop](https://hadoop.apache.org/) 服務而言，您可以修改用於啟動服務的殼層指令碼以略過這些選項。
 
-在每個腳本中，會有 [選擇** \* \_ ] 的匯出，其中**包含傳遞至 JVM 的選項。 例如，在 **hadoop-env.sh** 指令碼中，以 `export HADOOP_NAMENODE_OPTS=` 為開頭的那一行即含有 NameNode 服務的選項。
+在每個腳本中，有一個選擇**的匯出，其中 \* \_ **包含傳遞至 JVM 的選項。 例如，在 **hadoop-env.sh** 指令碼中，以 `export HADOOP_NAMENODE_OPTS=` 為開頭的那一行即含有 NameNode 服務的選項。
 
 map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務的子處理序。 每個 map 或 reduce 處理序都會在一個子容器中執行，且有兩個含有 JVM 選項的項目。 兩者均包含在 **mapred-site.xml** 中：
 
@@ -45,7 +45,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]  
-> 我們建議使用[Apache Ambari](https://ambari.apache.org/)來修改腳本和 mapred-site.xml 設定，因為 Ambari 會處理叢集中跨節點的複寫變更。 如需特定的步驟，請參閱 [使用 Apache Ambari](#using-apache-ambari) 一節。
+> 建議您使用 [Apache Ambari](https://ambari.apache.org/) 來修改腳本和 mapred-site.xml 設定，因為 Ambari 會在叢集中跨節點複寫變更。 如需特定的步驟，請參閱 [使用 Apache Ambari](#using-apache-ambari) 一節。
 
 ### <a name="enable-heap-dumps"></a>啟用堆積傾印
 
@@ -53,7 +53,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 
 `-XX:+HeapDumpOnOutOfMemoryError`
 
-**+** 表示已啟用此選項。 預設值為停用。
+**+** 表示已啟用這個選項。 預設值為停用。
 
 > [!WARNING]  
 > 根據預設不會在 HDInsight 上啟用 Hadoop 服務的堆積傾印，因為傾印檔案可能會很龐大。 如果您為了進行疑難排解而啟用它們，請記得在重現問題並收集傾印檔案之後將其停用。
@@ -91,7 +91,7 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
 
     ![Apache Ambari 設定篩選清單](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. 針對您想要啟用堆積傾** \* \_ 印的服務尋找選擇專案，** 並新增您想要啟用的選項。 在下圖中，我將 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 新增至 **HADOOP\_NAMENODE\_OPTS** 項目：
+4. 尋找您想要啟用堆積傾印之** \* \_ 服務的 [選擇] 專案，** 並新增您想要啟用的選項。 在下圖中，我將 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 新增至 **HADOOP\_NAMENODE\_OPTS** 項目：
 
     ![Apache Ambari hadoop-namenode-選擇](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
@@ -113,6 +113,6 @@ map 和 reduce 處理序會稍有不同，因為這些作業是 MapReduce 服務
     ![Apache Ambari 重新開機所有受影響的專案](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
-   > 其他服務的 [**重新開機**] 按鈕專案可能會有所不同。
+   > 其他服務的 [ **重新開機** ] 按鈕專案可能會不同。
 
 8. 重新啟動服務後，請使用 [服務動作]**** 按鈕**關閉維護模式**。 這麼做可讓 Ambari 繼續監視服務是否有警示。

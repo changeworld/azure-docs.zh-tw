@@ -4,10 +4,10 @@ description: Azure Functions host.json 檔案與 v2 執行階段的參考文件�
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321844"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 

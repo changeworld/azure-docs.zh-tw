@@ -1,6 +1,6 @@
 ---
 title: 在 ASE v1 中調整應用程式
-description: 在 App Service 環境中調整應用程式。 本文件僅提供給使用舊版 v1 ASE 的客戶。
+description: 調整 App Service 環境中的應用程式。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: ccompy
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86220553"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>在 App Service 環境 v1 中調整應用程式
@@ -30,7 +30,7 @@ ms.locfileid: "86220553"
 
 如需變更任一項目，都可以透過針對 ASE 託管之 App Service 方案所顯示的適用 UI 完成。  
 
-![螢幕擷取畫面：顯示調整服務方案和背景工作集區服務方案詳細資料的位置。][1]
+![顯示如何查看調整規模服務方案和背景工作集區服務方案詳細資料的螢幕擷取畫面。][1]
 
 ASP 相應增加的數量無法超過 ASP 所在背景工作集區中可用的計算資源數量。  如果背景工作集區中需要計算資源，您必須讓 ASE 系統管理員增加資源。  如需重新設定 ASE 的資訊，請閱讀以下資訊：[如何設定 App Service 環境][HowtoConfigureASE]。  您也可能需利用 ASE 自動調整功能，以根據排程或計量增加容量。  若要取得設定 ASE 環境本身自動調整的相關詳細資訊，請參閱[如何設定 App Service 環境的自動調整][ASEAutoscale]。
 
@@ -41,14 +41,14 @@ ASP 相應增加的數量無法超過 ASP 所在背景工作集區中可用的�
 
 如果 ASE 有足夠的容量，這就很簡單。  您可移至具有您要相應增加之站台的 App Service 方案，然後選取 [調整]。  這會開啟 UI，您可以在當中為 ASP 手動設定調整或設定自動調整規則。  若要手動調整應用程式，只需將 [調整依據]****** 設為 [手動輸入的執行個體計數]******。  從這裡拖曳滑桿至所需的數量，或將所需數量輸入滑桿旁邊的方塊。  
 
-![螢幕擷取畫面：顯示您可以在哪裡設定 ASP 的規模，或為 ASP 設定自動調整規則。][2] 
+![顯示您可以設定 asp 規模的位置，或為 ASP 設定自動調整規則的螢幕擷取畫面。][2] 
 
 在 ASE 中的 ASP 自動調整規則與一般運作方式相同。  您可以選取 [調整依據]****** 下方的 [CPU 百分比]******，根據 CPU 百分比建立 ASP 的自動調整規則，或使用 [排程和效能規則]****** 建立更複雜的規則。  若要查看有關設定自動調整更完整的詳細資訊，請參閱此處的指南 [Azure App Service 中調整 Web 應用程式規模][AppScale]。 
 
 ### <a name="worker-pool-selection"></a>背景工作集區選取
 如前所述，背景工作角色集區選項需透過 ASP UI 存取。  開啟您想要調整的 ASP 刀鋒視窗，選取 [背景工作集區]。  您會看到您已在 App Service 環境中設定的所有背景工作集區。  如果您只有一個背景工作集區，您只會看到一個集區列出。  若要變更 ASP 所在的背景工作角色集區，您只需選取 App Service 方案所要移入的背景工作角色集區。  
 
-![螢幕擷取畫面：顯示您可以在何處變更 ASP 的背景工作角色集區。][3]
+![螢幕擷取畫面，顯示您可以在哪裡變更 ASP 的背景工作集區。][3]
 
 將 ASP 從一個背景工作角色集區移到另一個集區之前，請務必確定您有足夠的容量可容納該 ASP。  在背景工作集區清單中，不只會列出背景工作集區名稱，您也可以查看該背景工作集區中有多少可用的背景工作。  請確定有足夠的執行個體可包含您的 App Service 方案。  如果您需要在背景工作集區中移入更多計算資雲，則必須讓您的 ASE 系統管理員加以新增。  
 
@@ -58,7 +58,7 @@ ASP 相應增加的數量無法超過 ASP 所在背景工作集區中可用的�
 > 
 
 ## <a name="getting-started"></a>開始使用
-若要開始使用 App Service 環境，請參閱[如何建立 App Service 環境][HowtoCreateASE]
+若要開始使用 App Service 環境，請參閱 [如何建立 App Service 環境][HowtoCreateASE]
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png

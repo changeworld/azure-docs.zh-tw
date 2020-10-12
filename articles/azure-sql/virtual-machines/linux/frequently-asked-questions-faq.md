@@ -12,20 +12,20 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84669455"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Linux 上的 SQL Server 的虛擬機器常見問題
+# <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Linux 上的 SQL Server 虛擬機器的常見問題
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](../windows/frequently-asked-questions-faq.md)
 > * [Linux](frequently-asked-questions-faq.md)
 
-本文提供有關執行[Linux 上的 SQL Server 虛擬機器](sql-server-on-linux-vm-what-is-iaas-overview.md)的一些常見問題的解答。
+本文提供有關執行 [Linux 上的 SQL Server 虛擬機器](sql-server-on-linux-vm-what-is-iaas-overview.md)的一些常見問題的解答。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -33,15 +33,15 @@ ms.locfileid: "84669455"
 
 1. **可用的 SQL Server 虛擬機器資源庫映像有哪些？**
 
-   Azure 會在 Linux 和 Windows 的所有版本上，維護所有受支援主要版本 SQL Server 的虛擬機器（VM）映射。 如需詳細資訊，請參閱完整的 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)清單。
+   Azure 會在 Linux 和 Windows 的所有版本上，針對所有支援的 SQL Server 主要版本，維護虛擬機器 (VM) 映射。 如需詳細資訊，請參閱完整的 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)清單。
 
 1. **現有的 SQL Server 虛擬機器資源庫映像是否已更新？**
 
-   每隔兩個月，系統會以最新的 Linux 和 Windows 更新來更新虛擬機器資源庫中的 SQL Server 映像。 若為 Linux 映像，這包括最新的系統更新。 針對 Windows 映像，這包括 Windows Update 中標示為重要的更新，包括重要的 SQL Server 安全性更新和 service pack。 適用於 Linux 和 Windows 的 SQL Server 累計更新會以不同的方式處理。 針對 Linux，SQL Server 累計更新也會包含在重新整理中。 但此時，系統不會以 SQL Server 或 Windows Server 累計更新來更新 Windows VM。
+   每隔兩個月，系統會以最新的 Linux 和 Windows 更新來更新虛擬機器資源庫中的 SQL Server 映像。 若為 Linux 映像，這包括最新的系統更新。 針對 Windows 映像，這包括 Windows Update 中標示為重要的更新，包括重要 SQL Server 安全性更新和 service pack。 適用於 Linux 和 Windows 的 SQL Server 累計更新會以不同的方式處理。 針對 Linux，SQL Server 累計更新也會包含在重新整理中。 但此時，系統不會以 SQL Server 或 Windows Server 累計更新來更新 Windows VM。
 
 1. **還安裝了哪些相關的 SQL Server 套件？**
 
-   若要查看 Linux 上的 SQL Server Vm 上預設安裝的 SQL Server 套件，請參閱[已安裝的套件](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)。
+   若要查看 Linux 上的 SQL Server Vm 上預設安裝的 SQL Server 套件，請參閱 [已安裝的套件](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)。
 
 1. **是否可以從資源庫中移除 SQL Server 虛擬機器映像？**
 
@@ -49,9 +49,9 @@ ms.locfileid: "84669455"
 
 ## <a name="creation"></a>建立
 
-1. **如何? 使用 SQL Server 建立 Linux 虛擬機器嗎？**
+1. **如何? 使用 SQL Server 建立 Linux 虛擬機器？**
 
-   最簡單的解決方式是建立包含 SQL Server 的 Linux 虛擬機器。 如需註冊 Azure 並從入口網站建立 SQL Server VM 的教學課程，請參閱[在 Azure 入口網站中布建執行 SQL Server 的 Linux 虛擬機器](sql-vm-create-portal-quickstart.md)。 您也可以選擇使用免費授權版本 (Developer 或 Express) 或重複使用內部部署授權，在 VM 上手動安裝 SQL Server。 如果您自備授權，必須具備 [Azure 上透過軟體保證的授權流動性](https://azure.microsoft.com/pricing/license-mobility)。
+   最簡單的解決方案是建立包含 SQL Server 的 Linux 虛擬機器。 如需註冊 Azure 並從入口網站建立 SQL Server VM 的教學課程，請參閱 Azure 入口網站中的布建 [執行 SQL Server 的 Linux 虛擬機器](sql-vm-create-portal-quickstart.md)。 您也可以選擇使用免費授權版本 (Developer 或 Express) 或重複使用內部部署授權，在 VM 上手動安裝 SQL Server。 如果您自備授權，必須具備 [Azure 上透過軟體保證的授權流動性](https://azure.microsoft.com/pricing/license-mobility)。
 
 1. **我為什麼不能使用有消費限制的 Azure 訂用帳戶來佈建 RHEL 或 SLES SQL Server VM？**
 
@@ -73,7 +73,7 @@ ms.locfileid: "84669455"
 
 ## <a name="administration"></a>系統管理
 
-1. **我可以使用 SQL Server Management Studio （SSMS）來管理執行 SQL Server 的 Linux 虛擬機器嗎？**
+1. **我可以使用 SQL Server Management Studio (SSMS) 來管理執行 SQL Server 的 Linux 虛擬機器嗎？**
 
    是，但 SSMS 目前為僅限 Windows 的工具。 您必須從 Windows 電腦遠端連線，才能搭配執行 SQL Server 的 Linux Vm 使用 SSMS。 在 Linux 本機上，新的 [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以執行許多管理工作。 如需跨平台的資料庫管理工具，請參閱 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "84669455"
 
 1. **Azure Vm 上是否支援 SQL Server 高可用性解決方案？**
 
-   目前沒有。 Always On 可用性群組和容錯移轉叢集都需要 Linux 中的群集解決方案，例如 Pacemaker。 支援的 SQL Server Linux 散發套件不支援其在雲端中的高可用性附加元件。
+   目前沒有。 Always On 可用性群組和容錯移轉叢集都需要 Linux 中的群集解決方案，例如 Pacemaker。 SQL Server 支援的 Linux 發行版本不支援其在雲端中的高可用性附加元件。
 
 ## <a name="resources"></a>資源
 

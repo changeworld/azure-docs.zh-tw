@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395548"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>建立和修改 ExpressRoute 線路的對等互連 (傳統)
@@ -302,7 +302,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 公告的首碼：您必須提供一份您打算在 BGP 工作階段上公告的所有首碼的清單。 只接受公用 IP 位址首碼。 如果您打算傳送一組首碼，您可以傳送逗號分隔清單。 這些首碼必須在 RIR / IRR 中註冊給您。
    * 客戶 ASN：如果您要公告的首碼未註冊給對等 AS 編號，您可以指定它們所註冊的 AS 編號。 **選擇項**。
    * 路由登錄名稱：您可以指定可供註冊 AS 編號和首碼的 RIR / IRR。
-   * MD5 雜湊 (如果選擇使用)。 **選。**
+   * MD5 雜湊 (如果選擇使用)。 **選擇性。**
      
    執行下列 Cmdlet 來為線路設定 Microsoft 對等：
  
@@ -350,7 +350,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 接著， [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)。
 

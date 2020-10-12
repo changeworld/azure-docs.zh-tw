@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
 ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342774"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows 停止錯誤-0xC000021A 狀態系統進程已終止
@@ -37,14 +37,14 @@ ms.locfileid: "91342774"
 
 錯誤0xC000021A 表示 **STATUS_SYSTEM_PROCESS_TERMINATED**。
 
-當重要的進程（例如 WinLogon ( # A0) 或用戶端伺服器執行時間子系統 ( # A1) 失敗）時，就會發生此錯誤。 一旦核心偵測到其中一個服務已停止，就會引發停止的 **0xc000021a** 錯誤。 此錯誤可能有數個原因，包括：
+當重要的進程（例如 WinLogon ( # A0) 或用戶端伺服器 Run-Time 子系統 ( # A1) 失敗）時，就會發生此錯誤。 一旦核心偵測到其中一個服務已停止，就會引發停止的 **0xc000021a** 錯誤。 此錯誤可能有數個原因，包括：
 
 - 已安裝不相符的系統檔案。
 - Service Pack 或 KB 更新安裝失敗。
 - 用來還原硬碟的備份程式未正確還原可能已在使用中的檔案。
 - 已安裝不相容的協力廠商程式。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 ### <a name="collect-the-memory-dump-file"></a>收集記憶體傾印檔案
 

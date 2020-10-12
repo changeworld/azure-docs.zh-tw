@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291982"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 將 SQL Server 遷移至 SQL 受控執行個體 & Azure 資料庫移轉服務
@@ -35,7 +35,7 @@ ms.locfileid: "91291982"
 
 本文包含如何執行線上與離線遷移的詳細資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您需要：
 
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 > [!NOTE]
-> Azure 資料庫移轉服務不支援使用帳戶層級 SAS 權杖。 您必須使用儲存體帳戶容器的 SAS URI。 [瞭解如何取得 blob 容器的 SAS URI](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。
+> Azure 資料庫移轉服務不支援使用帳戶層級 SAS 權杖。 您必須使用儲存體帳戶容器的 SAS URI。 [了解如何取得 Blob 容器的 SAS URI](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。
 
 ### <a name="additional-configuration-requirements"></a>其他設定需求
 

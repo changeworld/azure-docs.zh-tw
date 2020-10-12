@@ -1,6 +1,6 @@
 ---
 title: Azure 雲端服務定義結構描述 (.cscfg 檔) | Microsoft Docs
-description: 服務設定（.cscfg）檔案會指定要為每個角色部署的角色實例數目、設定值，以及角色的憑證指紋。
+description: 服務設定 ( .cscfg) 檔會指定角色的每個角色、設定值和憑證指紋所要部署的角色實例數目。
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -10,10 +10,10 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534740"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 雲端服務設定結構描述 (.cscfg 檔)

@@ -1,5 +1,5 @@
 ---
-title: 管理 CI/CD 管線中的 U-SQL 元件-Azure Data Lake
+title: 管理 CI/CD 管線中的 U SQL 元件-Azure Data Lake
 description: 了解透過 Azure DevOps 管理 CI/CD 管線中 U-SQL C# 組件的最佳做法。
 author: liudan66
 ms.author: liud
@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132138"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>管理 CI/CD 管線中 U-SQL 組件的最佳做法
@@ -30,12 +30,12 @@ ms.locfileid: "87132138"
 U-SQL 資料庫專案可以參考「類別庫 (適用於 U-SQL 應用程式)」專案。 您可以使用來自此此「類別庫 (適用於 U-SQL 應用程式)」專案的參考 C# 原始程式碼，建立在 U-SQL 資料庫中註冊的組件。
 
 請依照下列步驟來建立專案及新增參考。
-1. **選取 [** 檔案] [新增] [  >  **New**  >  **專案**]，以建立類別庫（適用于 U-SQL 應用程式）專案。 該專案位於 [Azure Data Lake] > [U-SQL]**** 節點底下。
+1. **選取 [** 檔案  >  **新增**  >  **專案**]，以建立適用于 U SQL 應用程式) 專案的類別庫 (。 該專案位於 [Azure Data Lake] > [U-SQL]**** 節點底下。
 
    ![Data Lake Tools for Visual Studio--建立 C# 類別庫專案](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 1. 將您的使用者定義 C# 程式碼新增到「類別庫 (適用於 U-SQL 應用程式)」專案中。
 
-1. **選取 [** 檔案] [新增] [  >  **New**  >  **專案**] 來建立一個 U-SQL 專案。 專案位於 [Azure Data Lake 的**Azure Data Lake**  >  **U-SQL** ] 節點底下。
+1. **選取 [** 檔案  >  **新增**  >  **專案**] 以建立 U SQL 專案。 專案位於**Azure Data Lake**的  >  **U-SQL**節點下。
 
    ![Data Lake Tools for Visual Studio--建立 U-SQL 資料庫專案](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 1. 新增適用於該 U-SQL 資料庫專案的 C# 類別庫專案參考。
@@ -54,7 +54,7 @@ U-SQL 資料庫專案可以參考「類別庫 (適用於 U-SQL 應用程式)」�
 
 7. 新增 [受控相依性]**** 和 [其他檔案]**** \(若有的話)。 在新增其他檔案時，工具會使用相對路徑來確保能在本機電腦和稍後的組建電腦上找到組件。
 
-底部 [編輯器] 視窗中的** \@ _DeployTempDirectory**是預先定義的變數，會將工具指向組建輸出檔案夾。 在建置輸出資料夾中，每個組件都具有以組件名稱命名的子資料夾。 所有 Dll 和其他檔案都在該子資料夾中。
+在 [編輯器] 視窗中的** \@ _DeployTempDirectory**是預先定義的變數，可將工具指向組建輸出檔案夾。 在建置輸出資料夾中，每個組件都具有以組件名稱命名的子資料夾。 所有 Dll 和其他檔案都在該子資料夾中。
 
 ## <a name="build-a-u-sql-database-project"></a>建置 U-SQL 資料庫專案
 
@@ -86,7 +86,7 @@ U-SQL 資料庫專案的建置輸出是一個 U-SQL 資料庫部署套件。 其
 
 在 Azure DevOps 中，您可以使用命令列工作及此 SDK 來設定自動化管線以進行 U-SQL 資料庫重新整理。 [深入了解 SDK，以及如何為 U-SQL 資料庫部署設定 CI/CD 管線](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [設定 Azure Data Lake Analytics 的 CI/CD 管線](data-lake-analytics-cicd-overview.md)
 * [測試 Azure Data Lake Analytics 程式碼](data-lake-analytics-cicd-test.md)

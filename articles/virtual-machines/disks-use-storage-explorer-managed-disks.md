@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749385"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 儲存體總管來管理 Azure 受控磁片
@@ -43,7 +43,7 @@ ms.locfileid: "88749385"
 
 1. 從清單中選取您的訂用帳戶，然後按一下 [套用]****。
 
-    ![選取訂用帳戶](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
+    ![選取您的訂用帳戶](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
 ## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>從內部內部部署 VHD 上傳受控磁片
 
@@ -129,7 +129,7 @@ ms.locfileid: "88749385"
 
     ![在入口網站中開啟快照集](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 
 瞭解如何 [使用 Azure 入口網站從 VHD 建立 VM](windows/create-vm-specialized-portal.md)。

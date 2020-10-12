@@ -1,6 +1,6 @@
 ---
 title: Azure 雲端服務角色結構描述 | Microsoft Docs
-description: 服務設定檔的 Role 元素會指定要為每個角色、設定值和憑證指紋部署多少個角色實例。
+description: 服務設定檔的 Role 元素會指定要為每個角色、設定值和憑證指紋部署多少角色實例。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79528416"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Azure 雲端服務設定角色結構描述

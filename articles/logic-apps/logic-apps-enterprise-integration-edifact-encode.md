@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82106520"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 將 Azure Logic Apps 的 EDIFACT 訊息編碼
@@ -20,26 +20,26 @@ ms.locfileid: "82106520"
 使用編碼 EDIFACT 訊息連接器，可以驗證 EDI 和夥伴特定屬性，產生每個交易集的 XML 文件，以及要求技術通知、功能通知或兩者。
 若要使用此連接器，您必須將連接器新增至邏輯應用程式中的現有觸發程序。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 以下是您所需的項目︰
 
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
-* 已定義且與您的 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 EDIFACT 訊息連接器。 
+* 已定義且與您的 Azure 訂用帳戶相關聯的 [整合帳戶](logic-apps-enterprise-integration-create-integration-account.md) 。 您必須有整合帳戶才能使用編碼 EDIFACT 訊息連接器。 
 * 至少已經在整合帳戶中定義兩個[夥伴](logic-apps-enterprise-integration-partners.md)
 * 已經在整合帳戶中定義的 [EDIFACT 合約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>編碼 EDIFACT 訊息
 
 > [!IMPORTANT]
-> EDIFACT 連接器僅支援 UTF-8 字元。
+> EDIFACT 連接器只支援 UTF-8 字元。
 > 如果您的輸出包含未預期的字元，請檢查您的 EDIFACT 訊息是否使用 UTF-8 字元集。
 
 1. [建立邏輯應用程式](quickstart-create-first-logic-app-workflow.md)。
 
 2. 編碼 EDIFACT 訊息連接器沒有觸發程序，因此您必須新增觸發程序 (例如要求觸發程序) 來啟動邏輯應用程式。 在 Logic Apps 設計工具中，新增觸發程序，然後將動作新增至您的邏輯應用程式。
 
-3.  在搜尋方塊中，輸入 "EDIFACT" 做為篩選條件。 選取 [**依合約名稱編碼 Edifact 訊息**] 或 [依身分識別**編碼為 edifact 訊息**]。
+3.  在搜尋方塊中，輸入 "EDIFACT" 做為篩選條件。 選取 [ **依合約名稱編碼 Edifact 訊息** ] 或 [依身分識別 **編碼為 edifact 訊息**]。
    
     ![搜尋 EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -95,6 +95,6 @@ ms.locfileid: "82106520"
 ## <a name="view-swagger-file"></a>檢視 Swagger 檔案
 若要檢視 EDIFACT 連接器的 Swagger 詳細資料，請參閱 [EDIFACT](/connectors/edifact/)。
 
-## <a name="next-steps"></a>後續步驟
-[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業整合套件") 
+## <a name="next-steps"></a>接下來的步驟
+[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "深入瞭解企業整合套件") 
 

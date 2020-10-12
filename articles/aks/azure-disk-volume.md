@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 32e9da592d4c8f3997d5b1844065bf550d7d7d48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82207508"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中手動建立和使用 Azure 磁碟的磁碟區
@@ -28,7 +28,7 @@ ms.locfileid: "82207508"
 
 ## <a name="create-an-azure-disk"></a>建立 Azure 磁碟
 
-當您建立與 AKS 搭配使用的 Azure 磁碟時，您可以在**節點**資源群組中建立磁碟資源。 此方法可讓 AKS 叢集存取和管理磁碟資源。 如果您在個別的資源群組中建立磁碟，則必須將磁碟資源群組的 `Contributor` 角色授與叢集的 Azure Kubernetes Service (AKS) 服務主體。 或者，您可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
+當您建立與 AKS 搭配使用的 Azure 磁碟時，您可以在**節點**資源群組中建立磁碟資源。 此方法可讓 AKS 叢集存取和管理磁碟資源。 如果您在個別的資源群組中建立磁碟，則必須將磁碟資源群組的 `Contributor` 角色授與叢集的 Azure Kubernetes Service (AKS) 服務主體。 或者，您可以將系統指派的受控識別用於許可權，而非服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
 在本文中，我們會在節點資源群組中建立磁碟。 首先，使用 [az aks show][az-aks-show] 命令來取得資源群組名稱，並新增 `--query nodeResourceGroup` 查詢參數。 下列範例會在 *myResourceGroup* 資源群組名稱中，取得 AKS 叢集名稱 *myAKSCluster* 的節點資源群組：
 
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-現在，使用 [az disk create][az-disk-create] 命令建立磁碟。 指定在上一個命令中所取得的節點資源群組名稱，然後指定磁碟資源的名稱，例如 myAKSDisk**。 下列範例會建立*20*個 GiB 磁片，並在建立之後輸出磁片的識別碼。 如果您需要建立磁片以用於 Windows Server 容器，請新增 `--os-type windows` 參數以正確格式化磁片。
+現在，使用 [az disk create][az-disk-create] 命令建立磁碟。 指定在上一個命令中所取得的節點資源群組名稱，然後指定磁碟資源的名稱，例如 myAKSDisk**。 下列範例會建立 *20*個 GiB 磁片，並在建立之後輸出磁片的識別碼。 如果您需要建立用於 Windows Server 容器的磁片，請新增 `--os-type windows` 參數以正確格式化磁片。
 
 ```azurecli-interactive
 az disk create \
@@ -49,7 +49,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure 磁碟是按 SKU 的特定大小計費。 這些 Sku 的範圍從32Gib 到 for S4 或 P4 磁片到 32TiB for S80 或 P80 磁片（預覽版）。 進階受控磁碟的輸送量和 IOPS 效能，取決於 SKU 和 AKS 叢集中節點的執行個體大小。 請參閱[受控磁碟的定價和效能][managed-disk-pricing-performance]。
+> Azure 磁碟是按 SKU 的特定大小計費。 這些 Sku 的範圍從32Gib 到 for S4 或 P4 磁片到32TiB，適用于 S80 或 P80 磁片 (預覽) 。 進階受控磁碟的輸送量和 IOPS 效能，取決於 SKU 和 AKS 叢集中節點的執行個體大小。 請參閱[受控磁碟的定價和效能][managed-disk-pricing-performance]。
 
 當命令成功完成之後，磁碟資源識別碼就會隨即顯示，如下列輸出範例所示。 在下一個步驟中，此磁碟識別碼會用來掛接磁碟。
 
@@ -59,7 +59,7 @@ az disk create \
 
 ## <a name="mount-disk-as-volume"></a>將磁碟掛接為磁碟區
 
-若要將 Azure 磁片掛接至您的 pod，請在容器規格中設定磁片區。 `azure-disk-pod.yaml` 使用下列內容建立名為的新檔案。 以上一個步驟中建立的磁碟名稱更新 `diskName`，並以磁碟建立命令輸出中顯示的磁碟識別碼更新 `diskURI`。 若有需要，請更新 `mountPath`，這是 Pod 中 Azure 磁碟掛接所在的路徑。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
+若要將 Azure 磁片掛接至您的 pod，請在容器規格中設定磁片區。使用下列內容建立名為的新檔案 `azure-disk-pod.yaml` 。 以上一個步驟中建立的磁碟名稱更新 `diskName`，並以磁碟建立命令輸出中顯示的磁碟識別碼更新 `diskURI`。 若有需要，請更新 `mountPath`，這是 Pod 中 Azure 磁碟掛接所在的路徑。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
 
 ```yaml
 apiVersion: v1

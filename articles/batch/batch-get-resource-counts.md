@@ -5,15 +5,15 @@ ms.date: 06/18/2020
 ms.topic: how-to
 ms.custom: seodec18
 ms.openlocfilehash: 90f741b9ec5e17da4fd0cc95ef921e116b0c27dc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85960583"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>依狀態計算作業和節點數目以監視 Batch 解決方案
 
-若要監視及管理大規模的 Azure Batch 解決方案，您可能需要判斷各種狀態的資源計數。 Azure Batch 提供有效率的作業，以取得 Batch 工作和計算節點的計數。 您可以使用這些作業，而不是可能耗費時間的清單查詢，以傳回有關大量工作或節點集合的詳細資訊。
+若要監視及管理大規模的 Azure Batch 解決方案，您可能需要判斷處於各種狀態的資源計數。 Azure Batch 可提供有效率的作業來取得批次工作和計算節點的計數。 您可以使用這些作業，而不是可能耗用時間的清單查詢，以傳回有關大型工作或節點集合的詳細資訊。
 
 - [取得工作計數](/rest/api/batchservice/job/gettaskcounts)可取得作業中的作用中、執行中和已完成工作的彙總計數，以及成功或失敗的工作計數。 
 
@@ -23,7 +23,7 @@ ms.locfileid: "85960583"
 
   藉由計算各個狀態的節點數目，您將可判斷是否有足夠的計算資源可執行作業，並找出集區的潛在問題。 「列出集區節點計數」適用於 Batch 服務 API 2018-03-01.6.1 起的版本，以及相關 SDK 和工具。
 
-請注意，在某些情況下，這些作業所傳回的數位可能不是最新狀態。 如果您需要確定計數是正確的，請使用清單查詢來計算這些資源的計數。 [清單查詢] 也可讓您取得其他 Batch 資源（例如應用程式）的相關資訊。 如需將篩選條件套用至清單查詢的詳細資訊，請參閱[建立查詢以便有效率地列出 Batch 資源](batch-efficient-list-queries.md)。
+請注意，在某些情況下，這些作業傳回的數位可能不是最新狀態。 如果您需要確定計數是正確的，請使用清單查詢來計算這些資源。 清單查詢也可讓您取得其他 Batch 資源（例如應用程式）的相關資訊。 如需將篩選條件套用至清單查詢的詳細資訊，請參閱[建立查詢以便有效率地列出 Batch 資源](batch-efficient-list-queries.md)。
 
 ## <a name="task-state-counts"></a>工作狀態計數
 
@@ -50,7 +50,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 您可以使用類似 REST 的模式和其他支援的語言來取得作業的工作計數。 
 
 > [!NOTE]
-> 2018-08-01.7.0 之前的 Batch 服務 API 版本也會在「取得工作計數」回應中傳回 `validationStatus` 屬性。 這個屬性會指出 Batch 是否已檢查狀態計數有沒有與「列出工作 API」所回報的狀態保持一致。 值為 `validated` 只表示 Batch 已至少對作業是否一致檢查過一次。 屬性的值 `validationStatus` 不會指出取得工作計數傳回的計數目前是否為最新狀態。
+> 2018-08-01.7.0 之前的 Batch 服務 API 版本也會在「取得工作計數」回應中傳回 `validationStatus` 屬性。 這個屬性會指出 Batch 是否已檢查狀態計數有沒有與「列出工作 API」所回報的狀態保持一致。 值為 `validated` 只表示 Batch 已至少對作業是否一致檢查過一次。 屬性的值不 `validationStatus` 會指出取得工作計數的計數目前是否為最新狀態。
 
 ## <a name="node-state-counts"></a>節點狀態計數
 
@@ -117,4 +117,4 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
-- 瞭解如何將篩選套用至列出 Batch 資源的查詢，請參閱[建立查詢以有效率地列出 batch 資源](batch-efficient-list-queries.md)。
+- 瞭解如何將篩選套用至列出 Batch 資源的查詢，請參閱 [建立查詢以有效率地列出 batch 資源](batch-efficient-list-queries.md)。

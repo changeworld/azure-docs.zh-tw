@@ -8,14 +8,14 @@ ms.date: 03/12/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 02844569137a46ea030b2189191b84a9db24ed22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79537290"
 ---
-# <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE （Azure Cosmos DB）
- 傳回兩個 GeoJSON 點、多邊形、MultiPolygon 或 LineString 運算式之間的距離。 若要深入瞭解，請參閱[地理空間和 GeoJSON 位置資料](sql-query-geospatial-intro.md)一文。
+# <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB) 
+ 傳回兩個 GeoJSON 點、多邊形、MultiPolygon 或 LineString 運算式之間的距離。 若要深入瞭解，請參閱 [地理空間和 GeoJSON 位置資料](sql-query-geospatial-intro.md) 文章。
   
 ## <a name="syntax"></a>語法
   
@@ -34,7 +34,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例示範如何使用內建函數，傳回位於指定位置30公里內的所有家族檔 `ST_DISTANCE` 。 .  
+  下列範例示範如何使用內建函數，傳回30公里內指定位置內的所有家族檔 `ST_DISTANCE` 。 .  
   
 ```sql
 SELECT f.id
@@ -52,7 +52,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 
 ## <a name="remarks"></a>備註
 
-此系統函數可受益于[地理空間索引](index-policy.md#spatial-indexes)。
+這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
 ## <a name="next-steps"></a>後續步驟
 

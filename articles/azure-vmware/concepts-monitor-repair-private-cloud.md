@@ -4,10 +4,10 @@ description: 瞭解 Azure VMware 解決方案如何監視和修復 Azure VMware 
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.openlocfilehash: bee08304cd14f2aeec6995203638b5a37d9a861c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342317"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>監視及修復 Azure VMware 解決方案私人雲端

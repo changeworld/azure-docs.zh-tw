@@ -1,6 +1,6 @@
 ---
-title: 設定選項–超大規模資料庫（Citus）-適用於 PostgreSQL 的 Azure 資料庫
-description: 超大規模資料庫（Citus）伺服器群組的選項，包括節點計算、儲存體和區域。
+title: 設定選項-超大規模 (Citus) -適用於 PostgreSQL 的 Azure 資料庫
+description: 超大規模 (Citus) 伺服器群組的選項，包括節點計算、儲存體和區域。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,29 +8,29 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/1/2020
 ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964510"
 ---
-# <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>適用於 PostgreSQL 的 Azure 資料庫–超大規模資料庫（Citus）設定選項
+# <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>適用於 PostgreSQL 的 Azure 資料庫–超大規模 (Citus) 設定選項
 
-## <a name="compute-and-storage"></a>計算和儲存體
+## <a name="compute-and-storage"></a>計算和儲存
  
-您可以針對背景工作節點和超大規模資料庫（Citus）伺服器群組中的協調器節點，獨立選取計算和儲存體設定。  計算資源會以 vCore 的形式提供，vCore 代表了基礎硬體的邏輯 CPU。 布建的儲存體大小是指超大規模資料庫（Citus）伺服器群組中協調器和背景工作角色節點可用的容量。 儲存體包括資料庫檔案、暫存檔案、交易記錄和 Postgres 伺服器記錄。
+您可以針對背景工作節點和超大規模 (Citus) 伺服器群組中的協調器節點，分別選取計算和儲存體設定。  計算資源會以 vCore 的形式提供，vCore 代表了基礎硬體的邏輯 CPU。 布建的儲存體大小是指超大規模 (Citus) 伺服器群組中的協調器和背景工作節點可用的容量。 儲存體包括資料庫檔案、暫存檔案、交易記錄和 Postgres 伺服器記錄。
  
 | 資源              | 背景工作節點           | 協調器節點      |
 |-----------------------|-----------------------|-----------------------|
 | Compute、虛擬核心       | 4、8、16、32、64      | 4、8、16、32、64      |
-| 記憶體：每個 vCore、GiB | 8                     | 4                     |
+| 每個 vCore 的記憶體，GiB | 8                     | 4                     |
 | 儲存體大小，TiB     | 0.5、1、2             | 0.5、1、2             |
-| 儲存體類型          | 一般用途（SSD） | 一般用途（SSD） |
+| 儲存體類型          | 一般用途 (SSD)  | 一般用途 (SSD)  |
 | IOPS                  | 最多 3 IOPS/GiB      | 最多 3 IOPS/GiB      |
 
-單一超大規模資料庫（Citus）節點中的 RAM 總量是根據選取的虛擬核心數目。
+單一超大規模 (Citus) 節點的 RAM 總量是根據選取的虛擬核心數目。
 
-| 虛擬核心 | 一個背景工作節點，GiB RAM | 協調器節點、GiB RAM |
+| 虛擬核心 | 一個背景工作節點，GiB RAM | 協調器節點，GiB RAM |
 |--------|--------------------------|---------------------------|
 | 4      | 32                       | 16                        |
 | 8      | 64                       | 32                        |
@@ -38,7 +38,7 @@ ms.locfileid: "85964510"
 | 32     | 256                      | 128                       |
 | 64     | 432                      | 256                       |
 
-您布建的儲存體總量也會定義每個背景工作角色和協調器節點可用的 i/o 容量。
+您布建的儲存體總數量也會定義每個背景工作角色和協調器節點可用的 i/o 容量。
 
 | 儲存體大小，TiB | IOPS 上限 |
 |-------------------|--------------|
@@ -46,9 +46,9 @@ ms.locfileid: "85964510"
 | 1                 | 3,072        |
 | 2                 | 6148        |
 
-對於整個超大規模資料庫（Citus）叢集，匯總的 IOPS 會使用下列值：
+針對整個超大規模 (Citus) 叢集，匯總的 IOPS 會以下列值運作：
 
-| 背景工作節點 | 0.5 TiB，總 IOPS | 1個 TiB，IOPS 總數 | 2 TiB，總 IOPS |
+| 背景工作節點 | 0.5 TiB，總 IOPS | 1 TiB，總 IOPS | 2 TiB，總 IOPS |
 |--------------|---------------------|-------------------|-------------------|
 | 2            | 3,072               | 6,144             | 12296            |
 | 3            | 4608               | 9216             | 18444            |
@@ -71,7 +71,7 @@ ms.locfileid: "85964510"
 | 20           | 30720              | 61440            | 122960           |
 
 ## <a name="regions"></a>區域
-超大規模資料庫（Citus）伺服器群組適用于下列 Azure 區域：
+超大規模 (Citus) 伺服器群組適用于下列 Azure 區域：
 
 * 美洲：
     * 加拿大中部
@@ -85,20 +85,20 @@ ms.locfileid: "85964510"
     * 日本東部
     * 南韓中部
     * 東南亞
-* 歐洲
+* 歐洲：
     * 北歐
     * 英國南部
     * 西歐
 
-某些區域可能一開始不會在所有 Azure 訂用帳戶上啟用。 如果您想要使用上述清單中的區域，且在您的訂用帳戶中看不到它，或如果您想要使用不在此清單上的區域，請開啟[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+某些區域可能不會在所有 Azure 訂用帳戶上一開始啟用。 如果您想要使用上述清單中的區域，但在您的訂用帳戶中看不到該區域，或您想要使用不在此清單上的區域，請開啟 [支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="limits-and-limitations"></a>限制
 
-下一節說明超大規模資料庫（Citus）服務中的容量和功能限制。
+下一節說明超大規模 (Citus) 服務中的容量和功能限制。
 
 ### <a name="maximum-connections"></a>連線數目上限
 
-每個于 postgresql 連線（甚至是閒置的連線）會使用至少 10 MB 的記憶體，因此請務必限制同時連接。 以下是我們選擇讓節點保持狀況良好的限制：
+每個于 postgresql 連接 (甚至是閒置的連接) 使用至少 10 MB 的記憶體，因此請務必限制同時連接。 以下是我們選擇讓節點保持狀況良好的限制：
 
 * 協調器節點
    * 最大連線數：300
@@ -107,21 +107,21 @@ ms.locfileid: "85964510"
    * 最大連線數：600
    * 最大使用者連接數：597
 
-嘗試連接超過這些限制的動作將會失敗，並產生錯誤。 系統會保留三個用於監視節點的連線，這就是為什麼使用者查詢可用的連線數少於連線總計的原因。
+超過這些限制的嘗試連接將會失敗，並出現錯誤。 系統會保留三個用於監視節點的連線，這就是為什麼使用者查詢有三個較少的連接可供使用者查詢使用。
 
-建立新的連接需要一些時間。 這適用于大部分的應用程式，它會要求許多短期的連線。 我們建議使用連接共用器，以減少閒置交易並重複使用現有的連接。 若要深入瞭解，請造訪我們的[blog 文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
+建立新的連接需要一些時間。 這適用于大部分的應用程式，這會要求許多短期的連接。 建議您使用連接共用器，以減少閒置交易並重複使用現有的連接。 若要深入瞭解，請造訪我們的 [blog 文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
 
-### <a name="storage-scaling"></a>存放裝置調整
+### <a name="storage-scaling"></a>儲存體調整
 
-協調器和背景工作節點上的儲存體可以相應增加（增加），但無法縮小（減少）。
+協調器與背景工作節點上的儲存空間可以擴大 (增加) 但無法相應縮小 (減少) 。
 
 ### <a name="storage-size"></a>儲存體大小
 
-協調器和背景工作角色節點支援最多 2 TiB 的儲存體。 如需節點和叢集大小，請參閱[上述](#compute-and-storage)可用的儲存體選項和 IOPS 計算。
+協調器與背景工作節點上支援最多 2 TiB 的儲存體。 如需節點和叢集大小，請參閱 [上面](#compute-and-storage) 的可用儲存體選項和 IOPS 計算。
 
 ## <a name="pricing"></a>定價
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。
-若要查看您所需的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [**設定**] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在[Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 **[新增專案**]，展開 [**資料庫**] 類別，然後選擇 [**適用於 PostgreSQL 的 Azure 資料庫–超大規模資料庫（Citus）** ] 以自訂選項。
+若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 會根據您選取的選項，在 [ **設定** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案**]，展開 [ **資料庫** ] 類別，然後選擇 [ **適用於 PostgreSQL 的 Azure 資料庫–超大規模 (Citus) ** 自訂選項。
  
-## <a name="next-steps"></a>後續步驟
-瞭解如何[在入口網站中建立超大規模資料庫（Citus）伺服器群組](quickstart-create-hyperscale-portal.md)。
+## <a name="next-steps"></a>接下來的步驟
+瞭解如何 [在入口網站中建立超大規模 (Citus) server 群組](quickstart-create-hyperscale-portal.md)。

@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291965"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
@@ -43,7 +43,7 @@ Azure 資料庫移轉服務是一個完全受控的服務，其設計目的是�
 您可以使用 Azure 資料庫移轉服務來執行離線和線上遷移。 在 *離線* 遷移的情況下，應用程式會在開始遷移時啟動。 透過 *線上* 遷移，停機時間僅限於遷移結束時所需的時間。 建議您先測試離線移轉來決定停機時間是否在容忍範圍內；如果無法容忍，則請進行線上移轉。
 
 > [!NOTE]
-> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 如需詳細資訊，請參閱 Azure 資料庫移轉服務 [定價](https://azure.microsoft.com/pricing/details/database-migration/) 頁面。
+> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 如需詳細資訊，請參閱 Azure 資料庫移轉服務的[定價](https://azure.microsoft.com/pricing/details/database-migration/)頁面。
 
 **問。Azure 資料庫移轉服務與其他 Microsoft 資料庫移轉工具（例如資料庫 Migration Assistant (DMA) 或 SQL Server 移轉小幫手 (SSMA) ）有何不同？**
 Azure 資料庫移轉服務是將資料庫移轉至大規模 Microsoft Azure 的慣用方法。 如需有關 Azure 資料庫移轉服務如何與其他 Microsoft 資料庫移轉工具相較之下的詳細資訊，以及在各種案例中使用此服務的建議，請參閱將 [Microsoft 的資料庫移轉工具和服務區分](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)的 blog 張貼。
@@ -58,8 +58,8 @@ Azure Migrate 有助於將內部部署虛擬機器遷移至 Azure IaaS。 此服
 
 Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是通用的，包含以下需求：
 
-* 使用 Azure Resource Manager 部署模型來建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，這會使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。
-* 確定您的虛擬網路網路安全性群組規則不會封鎖下列通訊埠443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱文章 [使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。
+* 確定您的虛擬網路網路安全性群組規則不會封鎖下列通訊埠443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
 
 如需使用 Azure 資料庫移轉服務來競爭特定遷移案例所需的所有必要條件清單，請參閱 docs.microsoft.com 上 Azure 資料庫移轉服務 [檔](https://docs.microsoft.com/azure/dms/dms-overview) 中的相關教學課程。

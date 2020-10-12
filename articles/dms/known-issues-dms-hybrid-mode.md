@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291838"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>使用混合模式的已知問題/遷移限制
@@ -61,7 +61,7 @@ ms.locfileid: "91291838"
 
 根據預設，Azure 資料庫移轉服務混合式背景工作角色服務會以本機系統帳戶的形式執行。 只要您使用的帳戶具有網路許可權，您就可以變更此服務所使用的帳戶。 若要變更服務「執行身份」帳戶，請使用下列進程。
 
-1. 停止服務，方法是透過 Windows 服務，或使用 PowerShell 中的停止服務命令。
+1. 停止服務，不論是透過 Windows 服務，或是在 PowerShell 中使用 Stop-Service 命令。
 
 2. 將服務更新為使用不同的登入帳戶。
 

@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342630"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>開始使用 R 中的 Azure Machine Learning Studio (傳統) 
@@ -160,7 +160,7 @@ RStudio 是適用于 R 的廣泛使用 IDE。我們將使用 RStudio 來編輯�
 1. 在左窗格頂端的 [ **搜尋實驗專案** ] 方塊中，輸入 [ [執行 R 腳本][execute-r-script]]。 模組會出現在搜尋清單中。
 1. 將 [ [執行 R 腳本][execute-r-script] ] 模組拖曳到您的託盤上。
 1. 將**csdairydata.csv 資料集**的輸出連接到[Execute R 腳本][execute-r-script]的最左邊輸入 (**Dataset1**) 。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 此時，您的實驗應該會看起來像此範例。
 
@@ -241,7 +241,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. 在 [ `source()` [執行 R 腳本][execute-r-script] ] 模組的程式碼視窗中，輸入具有您 ZIP 檔案名的函式。 在此案例中，我們輸入了 `source("src/simpleplot.R")` 。
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 完成這些步驟之後， [執行 r 腳本][execute-r-script] 模組會在執行實驗時，執行 zip 檔案中的 r 腳本。 此時，您的實驗應該會看起來像此範例。
 

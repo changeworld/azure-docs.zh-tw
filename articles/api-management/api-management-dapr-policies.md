@@ -7,10 +7,10 @@ ms.date: 9/13/2020
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341878"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 整合原則
@@ -37,7 +37,7 @@ template:
 ```
 
 
-## <a name="distributed-application-runtime-dapr-integration-policies"></a>分散式應用程式執行時間 (Dapr) 整合原則
+## <a name="distributed-application-runtime-dapr-integration-policies"></a>分散式應用程式執行階段 (Dapr) 整合原則
 
 -  將[要求傳送至服務](api-management-dapr-policies.md#invoke)：使用 Dapr 執行時間來找出並與 Dapr 微服務可靠地通訊。 若要深入瞭解 Dapr 中的服務調用，請參閱此 [自述](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) 檔中的描述。
 -  [將訊息傳送至 Pub/Sub 主題](api-management-dapr-policies.md#pubsub)：使用 Dapr runtime 將訊息發行至發佈/訂閱主題。 若要深入瞭解 Dapr 中的發佈/訂閱訊息，請參閱此 [自述](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) 檔中的描述。
@@ -83,13 +83,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 項目             | 描述  | 必要 |
+| 元素             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | set-backend-service | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必須設定為 "dapr"           | 是      | N/A     |
 | dapr-應用程式識別碼      | 目標微服務的名稱。 對應至 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
@@ -150,13 +150,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 項目             | 描述  | 必要 |
+| 元素             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | 發行至 dapr     | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | 主題            | 目標主題名稱               | 是      | N/A     |
 | ignore-error     | 如果設定為， `true` 則會在從 Dapr 執行時間收到錯誤時，指示原則不要觸發「 [發生錯誤](api-management-error-handling-policies.md) 」區段 | 否 | `false` |
@@ -232,16 +232,16 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 項目             | 描述  | 必要 |
+| 元素             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | 根元素 | 是      |
 | 中繼資料            | 以索引鍵/值組的形式系結特定的中繼資料。 對應至 Dapr 中的 [中繼資料](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
-| data            | 訊息內容。 對應至 Dapr 中的 [資料](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
+| 資料            | 訊息內容。 對應至 Dapr 中的 [資料](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
 
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | NAME            | 目標系結名稱。 必須符合 Dapr 中 [定義](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的系結名稱。           | 是      | N/A     |
 | 作業       | 目標操作名稱 (系結特定) 。 對應至 Dapr 中的 [operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 | None |

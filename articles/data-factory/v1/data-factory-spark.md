@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82185586"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>從 Azure Data Factory 叫用 Spark 程式管線
@@ -29,7 +29,7 @@ ms.locfileid: "82185586"
 > * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 > [!NOTE]
@@ -51,7 +51,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 * 建立會參考儲存體已連結服務的資料集。 目前，您必須指定活動的輸出資料集，即使沒有產生任何輸出。
 * 建立含有 Spark 活動的管線，此活動會參考您所建立的 HDInsight 已連結服務。 此活動已使用您在上一個步驟中建立的資料集設定為輸出資料集。 輸出資料集是驅動排程 (每小時、每天) 的因子。 因此，即使活動並不會真的產生輸出，您仍然必須指定輸出資料集。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 1. 依照[建立儲存體帳戶](../../storage/common/storage-account-create.md)中的指示，建立一般用途的儲存體帳戶。
 
 1. 依照教學課程[在 HDInsight 中建立 Spark 叢集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示，在 HDInsight 中建立 Spark 叢集。 將您在步驟 1 中建立的儲存體帳戶與此叢集產生關聯。
@@ -112,7 +112,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 #### <a name="create-an-hdinsight-linked-service"></a>建立 HDInsight 連結服務
 在此步驟中，您會建立一個 HDInsight 已連結服務，以將 HDInsight Spark 叢集連結至資料處理站。 HDInsight 叢集是用來執行此範例管線的 Spark 活動中指定的 Spark 程式。
 
-1. 在 Data Factory 編輯器中，選取 [**更多**  >  **新的計算**] [  >  **HDInsight**叢集]。
+1. 在 Data Factory 編輯器中，選取 [**更多**  >  **新的計算**  >  **HDInsight**叢集]。
 
     ![建立 HDInsight 連結服務](media/data-factory-spark/new-hdinsight-linked-service.png)
 
@@ -215,18 +215,18 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
     ```
     請注意下列幾點：
 
-    a. **Type**屬性設定為**HDInsightSpark**。
+    a. **Type**屬性設為**HDInsightSpark**。
 
-    b. **rootPath** 屬性會設定為 **adfspark\\pyFiles**，其中 adfspark 是 Blob 容器，而 pyFiles 是該容器中的檔案資料夾。 在此範例中，Blob 儲存體是與 Spark 叢集關聯的儲存體。 您可以將檔案上傳至不同的儲存體帳戶。 如果您這麼做，請建立一個儲存體已連結服務，以將該儲存體帳戶連結至資料處理站。 然後，將連結服務的名稱指定為**sparkJobLinkedService**屬性的值。 如需有關此屬性和 Spark 活動所支援之其他屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
+    b. **rootPath** 屬性會設定為 **adfspark\\pyFiles**，其中 adfspark 是 Blob 容器，而 pyFiles 是該容器中的檔案資料夾。 在此範例中，Blob 儲存體是與 Spark 叢集關聯的儲存體。 您可以將檔案上傳至不同的儲存體帳戶。 如果您這麼做，請建立一個儲存體已連結服務，以將該儲存體帳戶連結至資料處理站。 然後，將連結服務的名稱指定為 **sparkJobLinkedService** 屬性的值。 如需有關此屬性和 Spark 活動所支援之其他屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
 
     c. **entryFilePath** 會設定為 **test.py**，也就是 Python 檔案。
 
-    d. **GetDebugInfo**屬性會設定為**always**，這表示一律會產生記錄檔（成功或失敗）。
+    d. **GetDebugInfo**屬性設定為**always**，這表示記錄檔一律會產生 (成功或失敗) 。
 
     > [!IMPORTANT]
     > 建議您在生產環境中不要將這個屬性設定為 `Always`，除非您要針對問題進行疑難排解。
 
-    e. **輸出**區段有一個輸出資料集。 即使 Spark 程式不會產生任何輸出，您仍然必須指定輸出資料集。 輸出資料集會驅動管線的排程 (每小時、每天)。
+    e. 輸出 **區段有** 一個輸出資料集。 即使 Spark 程式不會產生任何輸出，您仍然必須指定輸出資料集。 輸出資料集會驅動管線的排程 (每小時、每天)。
 
     如需有關 Spark 活動所支援之屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
 
@@ -247,7 +247,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 ### <a name="verify-the-results"></a>驗證結果
 
-1. 前往來啟動 HDInsight Spark 叢集的 Jupyter Notebook `https://CLUSTERNAME.azurehdinsight.net/jupyter` 。 您也可以開啟 HDInsight Spark 叢集的叢集儀表板，然後啟動 Jupyter Notebook。
+1. 前往，啟動 HDInsight Spark 叢集的 Jupyter Notebook `https://CLUSTERNAME.azurehdinsight.net/jupyter` 。 您也可以開啟 HDInsight Spark 叢集的叢集儀表板，然後啟動 Jupyter Notebook。
 
 1. 選取 [**新增**  >  **PySpark** ] 以啟動新的筆記本。
 
@@ -273,7 +273,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 如需進行進一步的疑難排解，請執行下列步驟：
 
 
-1. 移至 `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`。
+1. 前往 `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`。
 
     ![YARN UI 應用程式](media/data-factory-spark/yarnui-application.png)
 
@@ -324,7 +324,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 下表說明 JSON 定義中所使用的 JSON 屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | NAME | 管線中的活動名稱。 | 是 |
 | description | 說明活動用途的文字。 | 否 |

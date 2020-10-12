@@ -12,10 +12,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342590"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤 Azure Databricks ML 實驗) 
@@ -32,7 +32,7 @@ ms.locfileid: "91342590"
 > [!TIP]
 > 本文件中的資訊主要適用於想要監視模型定型程序的資料科學家和開發人員。 如果您是系統管理員，且想要從 Azure Machine Learning 監視資源使用量和事件 (例如配額、已完成的定型執行或已完成的模型部署)，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 安裝 `azureml-mlflow` 套件。 
     * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，以提供 MLflow 的連線能力以存取您的工作區。
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 當您準備好建立 ML 模型的端點時。 您可以部署為、 
 
-* 適用于互動式計分的 Azure Machine Learning 要求-回應 web 服務。 此部署可讓您運用 Azure Machine Learning 模型管理，並將資料漂移偵測功能套用至您的生產環境模型。 
+* 適用于互動式計分的 Azure Machine Learning Request-Response web 服務。 此部署可讓您運用 Azure Machine Learning 模型管理，並將資料漂移偵測功能套用至您的生產環境模型。 
 
 * MLFlow 模型物件，可用於串流或批次管線，作為 Python 函式或 Azure Databricks 工作區中的 Pandas Udf。
 
@@ -216,7 +216,7 @@ display(preds)
 
 如果您不打算在您的工作區中使用記錄的計量和構件，則無法個別刪除它們。 相反地，請刪除包含儲存體帳戶和工作區的資源群組，以免產生任何費用：
 
-1. 在 Azure 入口網站中，選取最左邊的 [資源群組]。
+1. 在 Azure 入口網站中，選取最左邊的 [資源群組]  。
 
    ![在 Azure 入口網站中刪除](./media/how-to-use-mlflow-azure-databricks/delete-resources.png)
 

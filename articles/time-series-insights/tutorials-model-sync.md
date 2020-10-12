@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
 ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342374"
 ---
-# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure 數位 Twins 與時間序列深入解析 Gen2 之間的模型同步處理
+# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins 與 Azure 時間序列深入解析 Gen2 之間的模型同步處理
 
 本文說明用來將 Azure 數位 Twins 中的資產模型轉譯 (ADT) 至 Azure 時間序列深入解析 (TSI) 中資產模型的最佳作法和工具。  本文是兩部分教學課程系列的第二部分，說明 Azure 數位 Twins 與 Azure 時間序列深入解析的整合。 Azure 數位 Twins 與時間序列深入解析的整合，可讓您封存和追蹤數位 Twins 的遙測和計算屬性歷程記錄。 這一系列的教學課程的目標是開發人員在使用 Azure 數位 Twins 來整合時間序列深入解析。 第1部分說明  [如何建立資料管線，以將實際的時間序列資料從 Azure 數位 Twins 帶到時間序列深入](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) 解析，而這是教學課程系列的第二個部分說明 Azure 數位 Twins 與時間序列深入解析之間的資產模型同步處理。 本教學課程說明選擇和建立時間序列識別碼的命名慣例 (TS 識別碼) 的最佳作法，並在時間序列模型中手動建立階層)  (的。
 

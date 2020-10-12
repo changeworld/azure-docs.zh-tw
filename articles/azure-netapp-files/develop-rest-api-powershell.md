@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 開發適用于 Azure NetApp Files 的 REST API |Microsoft Docs
+title: 使用 PowerShell 開發 REST API 的 Azure NetApp Files |Microsoft Docs
 description: 說明如何使用 PowerShell 開始使用 Azure NetApp Files REST API。
 services: azure-netapp-files
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961059"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>使用 PowerShell 以 REST API 開發適用于 Azure NetApp Files 的
+# <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>使用 PowerShell 開發 REST API 的 Azure NetApp Files
 
-Azure NetApp Files 服務的 REST API，會根據 NetApp 帳戶、容量集區、磁碟區和快照集等資源定義 HTTP 作業。 本文可協助您開始使用 Azure NetApp Files REST API 使用 PowerShell。
+Azure NetApp Files 服務的 REST API，會根據 NetApp 帳戶、容量集區、磁碟區和快照集等資源定義 HTTP 作業。 本文可協助您使用 PowerShell 來開始使用 Azure NetApp Files REST API。
 
 ## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp Files REST API 規格
 
-Azure NetApp Files 的 REST API 規格會透過[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)發行：
+Azure NetApp Files 的 REST API 規格會透過 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)發佈：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
@@ -44,7 +44,7 @@ Azure NetApp Files 的 REST API 規格會透過[GitHub](https://github.com/Azure
       $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json         
       ```
 
-      若要顯示服務主體資訊，請輸入 `$RBAC_SP` ，然後按 enter 鍵。
+      若要顯示服務主體資訊，請輸入 `$RBAC_SP` ，然後按 enter。
 
       ```output
       appId       : appID displays here
@@ -54,13 +54,13 @@ Azure NetApp Files 的 REST API 規格會透過[GitHub](https://github.com/Azure
       tenant      : your tenant shows here
       ```
         
-      輸出會儲存在變數物件中 `$RBAC_SP` 。 我們會使用 `$RBAC_SP.appId` 、 `$RBAC_SP.password` 和 `$RBAC_SP.tenant` 值。
+      輸出會儲存在變數物件中 `$RBAC_SP` 。 我們將使用 `$RBAC_SP.appId` 、 `$RBAC_SP.password` 和 `$RBAC_SP.tenant` 值。
 
 3. 要求 OAuth 存取權杖：
 
-    本文中的範例使用 PowerShell。 您還可以使用各種 API 工具，例如 [Postman](https://www.getpostman.com/)、[Insomnia](https://insomnia.rest/) 和 [Paw](https://paw.cloud/)。  
+    本文中的範例會使用 PowerShell。 您還可以使用各種 API 工具，例如 [Postman](https://www.getpostman.com/)、[Insomnia](https://insomnia.rest/) 和 [Paw](https://paw.cloud/)。  
 
-    `$RBAC_SP`我們現在會使用變數來取得持有人權杖。 
+    使用 `$RBAC_SP` 變數，我們現在會取得持有人權杖。 
     
     ```azurepowershell
     $body = "grant_type=client_credentials&client_id=$($RBAC_SP.appId)&client_secret=$($RBAC_SP.password)&resource=https://management.azure.com/"
@@ -95,8 +95,8 @@ Azure NetApp Files 的 REST API 規格會透過[GitHub](https://github.com/Azure
 
 `https://management.azure.com/subscriptions/$SUBID/resourceGroups/$RESOURCEGROUP/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01`
 
-在使用您自己的值執行下列範例之前，您應該先指派變數值。 您可以輸入來存取 PowerShell 變數 `$variablename` 。
-PowerShell 變數是使用指派的 `$variablename = “value”` 。
+您應該先指派變數值，然後再以您自己的值執行下列範例。 藉由輸入來存取 PowerShell 變數 `$variablename` 。
+PowerShell 變數是使用來指派 `$variablename = “value”` 。
 
 ```azurepowershell
 $Region = “westus2" 
@@ -117,7 +117,7 @@ $ANFSnapshot = “ANFTestSnapshot"
 
 ### <a name="put-request-examples"></a>PUT 要求範例
 
-您可以使用 PUT 要求在 Azure NetApp Files 中建立新的物件，如下列範例所示。 PUT 要求的主體包含變更的 JSON 格式化資料。 它必須以文字的形式包含在 PowerShell 命令中，或以檔案的形式加以參考。 若要將本文當做檔案來參考，請將 json 範例儲存至檔案，並將新增 `-body (Get-Content @<filename>)` 至 PowerShell 命令。
+您可以使用 PUT 要求在 Azure NetApp Files 中建立新的物件，如下列範例所示。 PUT 要求的主體包含變更的 JSON 格式資料。 它必須包含在 PowerShell 命令中做為文字或作為檔案參考。 若要將主體參考為檔案，請將 json 範例儲存至檔案，並新增 `-body (Get-Content @<filename>)` 至 PowerShell 命令。
 
 ```azurepowershell
     #create a NetApp account  
@@ -210,7 +210,7 @@ $ANFSnapshot = “ANFTestSnapshot"
     }
 ```
 
-下列範例顯示如何建立新的磁片區。 （磁片區的預設通訊協定是 NFSV3）。 
+下列範例顯示如何建立新的磁片區。  (磁片區的預設通訊協定為 NFSV3。 )  
 
 ```json
     {
@@ -268,8 +268,8 @@ Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.co
 Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes/$ANFVOLUME/snapshots?api-version=2019-11-01 | ConvertTo-Json
 ```
 
-### <a name="complete-powershell-scripts"></a>完成 PowerShell 腳本
-本節顯示 PowerShell 的範例腳本。
+### <a name="complete-powershell-scripts"></a>完整的 PowerShell 腳本
+本節說明適用于 PowerShell 的範例腳本。
 
 ```azurepowershell
     <#
@@ -435,6 +435,6 @@ Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.co
        }  
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [請參閱 Azure NetApp Files REST API 參考](https://docs.microsoft.com/rest/api/netapp/)

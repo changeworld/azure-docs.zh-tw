@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
 ms.openlocfilehash: 871af5b767e8cfe10db3a0a1c15c47340e25581f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395021"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 需求
@@ -38,7 +38,7 @@ ms.locfileid: "89395021"
 * 您應在網路中設定並支援多個 QoS 佇列。 語音必須是獨立類別，並接收 [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt)中指定的 EF 處理方式。 
 * 您可以決定適用於每個流量類別的佇列機制、壅塞偵測原則和頻寬配置。 但是必須保留適用於商務用 Skype 工作負載的 DSCP 標示。 如果您使用以上未列出的 DSCP 標示 (例如 AF31 (26))，就必須先將此 DSCP 值重寫為 0，才能將封包傳送給 Microsoft。 Microsoft 只會傳送使用上表所列之 DSCP 值標記的封包。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 請參閱[路由](expressroute-routing.md)和 [NAT](expressroute-nat.md) 的需求。
 * 請參閱下列連結，以設定 ExpressRoute 連線。
   

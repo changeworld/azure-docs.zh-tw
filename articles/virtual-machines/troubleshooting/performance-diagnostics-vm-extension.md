@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090647"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>適用於 Windows 的 Azure 效能診斷 VM 擴充功能
@@ -74,11 +74,11 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 
 ### <a name="property-values"></a>屬性值
 
-|   **Name**   |**值 / 範例**|       **說明**      |
+|   **名稱**   |**值 / 範例**|       **說明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
 |publisher|Microsoft.Azure.Performance.Diagnostics|擴充功能的發行者命名空間。
-|類型|AzurePerformanceDiagnostics|VM 擴充功能的類型。
+|type|AzurePerformanceDiagnostics|VM 擴充功能的類型。
 |typeHandlerVersion|1.0|擴充功能處理常式的版本。
 |performanceScenario|basic|要對其擷取資料的效能案例。 有效值為：**basic**、**vmslow**、**azurefiles** 及 **custom**。
 |traceDurationInSeconds|300|追蹤的持續時間 (若有選取任何追蹤選項)。

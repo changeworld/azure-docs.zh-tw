@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226024"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 開發和部署 Webjob
@@ -53,13 +53,13 @@ Visual Studio 將下列專案新增至啟用 Webjob 的專案：
 
 ![Diagram showing WebJob project linking to web project](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 使用 [Azure 開發工作負載](/visualstudio/install/install-visual-studio#step-4---choose-workloads)安裝 Visual Studio 2017 或 Visual Studio 2019。
 
 ### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> 針對現有的主控台應用程式專案啟用 Webjob 部署
 
-您有兩個選擇：
+您有兩個選項：
 
 * [透過 Web 專案啟用自動部署](#convertlink)。
 

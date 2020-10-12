@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342525"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
@@ -161,7 +161,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
    > [!TIP]
    > 如果您想要先確定文件看起來是正確的，再公開發佈，您可以先將實驗發佈為 [未公開]****。 之後，您可以在實驗詳細資料頁面上將可視性設定變更為 [公開]****。 請注意，將實驗設定為 [公開]**** 之後，稍後便無法將它變更為 [未公開]****。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 您發表的項目隨即出現在 Azure AI 資源庫中。 您發表的項目將列在您帳戶頁面的 [項目]**** 索引標籤上。
 

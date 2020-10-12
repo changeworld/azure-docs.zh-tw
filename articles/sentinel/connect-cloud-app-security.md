@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904562"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>從 Microsoft Cloud App Security 連接資料 
@@ -57,7 +57,7 @@ ms.locfileid: "90904562"
 >
 > 由於 Cloud Discovery 資料是以每天為基礎進行匯總，因此請注意，最多可達24小時的最新資料，並不會反映在 Azure Sentinel 中。 如果低層級調查需要更多的即時資料，則應該直接在原始資料所在的來源設備或服務中進行。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Microsoft Cloud App Security 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 使用 [內建](tutorial-detect-threats.md) 或 [自訂](tutorial-detect-threats-custom.md) 規則開始偵測 Azure Sentinel 的威脅。

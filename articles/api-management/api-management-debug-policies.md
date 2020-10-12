@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341874"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>在 Visual Studio Code 中進行 Azure API 管理原則的調試
@@ -28,7 +28,7 @@ Azure API 管理中的[原則](api-management-policies.md)提供強大的功能�
 > [!NOTE]
 > 這項功能處於公開預覽狀態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 先遵循本 [教學](get-started-create-service-instance.md) 課程，建立 API 管理開發人員層實例。
 
@@ -59,7 +59,7 @@ Azure API 管理中的[原則](api-management-policies.md)提供強大的功能�
 
 ![傳送測試要求](media/api-management-debug-policies/rest-client.png)
 
-## <a name="debug-policies"></a>調試原則
+## <a name="debug-policies"></a>偵錯原則
 在傳送測試 HTTP 要求之後，擴充功能將會開啟 [偵錯工具] 視窗，顯示此作業的有效原則，並在第一個有效的原則下停止。 
 
 ![調試原則](media/api-management-debug-policies/main-window.png)

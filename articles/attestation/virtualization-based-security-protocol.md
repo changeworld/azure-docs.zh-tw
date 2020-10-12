@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e5cc3b5fb7ca38df196119de12d346f5d0346b58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342257"
 ---
 # <a name="virtualization-based-security-vbs-attestation-protocol"></a>以虛擬化為基礎的安全性 (VBS) 證明通訊協定 
@@ -22,7 +22,7 @@ ms.locfileid: "91342257"
 
 ### <a name="init-message"></a>初始訊息
 
-#### <a name="direction"></a>方向
+#### <a name="direction"></a>Direction
 
 用戶端 > 的 Azure 證明
 
@@ -38,7 +38,7 @@ ms.locfileid: "91342257"
 
 ### <a name="challenge-message"></a>挑戰訊息
 
-#### <a name="direction"></a>方向
+#### <a name="direction"></a>Direction
 
 Azure 證明-> 用戶端
 
@@ -61,7 +61,7 @@ Azure 證明-> 用戶端
 
 ### <a name="request-message"></a>要求訊息
 
-#### <a name="direction"></a>方向
+#### <a name="direction"></a>Direction
 
 用戶端 > 的 Azure 證明 
 
@@ -234,7 +234,7 @@ VBS 範例
 
 ### <a name="report-message"></a>報告訊息
 
-#### <a name="direction"></a>方向
+#### <a name="direction"></a>Direction
 
 Azure 證明-> 用戶端
 

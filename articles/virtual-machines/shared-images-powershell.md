@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 建立共用映射資源庫
-description: 瞭解如何使用 Azure PowerShell 在 Azure 中建立共用映射資源庫
+title: 使用 Azure PowerShell 建立共用映射庫
+description: 瞭解如何使用 Azure PowerShell 在 Azure 中建立共用映射庫
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: b6828571499631ae08b077a4b7e3120f599e5b8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84673746"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 建立共用映像資源庫 
@@ -32,11 +32,11 @@ ms.locfileid: "84673746"
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-從[VM](image-version-vm-powershell.md)、[受控映射](image-version-managed-image-powershell.md)或[另一個資源庫中的映射](image-version-another-gallery-powershell.md)建立映射。
+從 [VM](image-version-vm-powershell.md)、 [受控映射](image-version-managed-image-powershell.md)或 [另一個資源庫中的映射](image-version-another-gallery-powershell.md)建立映射。
 
-[Azure 映射產生器（預覽）](./windows/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./windows/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器 (預覽版) ](./windows/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./windows/image-builder-gallery-update-image-version.md)。 
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 

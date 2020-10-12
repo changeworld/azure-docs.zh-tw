@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: duau
 ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395157"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型
@@ -87,15 +87,15 @@ ExpressRoute 線路的作用就像是傳統與 Resource Manager 部署模型之�
 * 從傳統部署模型管理 ExpressRoute 線路的生命週期。
 * 傳統部署模型的角色型存取控制 (RBAC) 支援。 您無法對傳統部署模型中的線路執行 RBAC 控制。 訂用帳戶的所有管理員/共同管理員都可以將虛擬網路連結至線路或取消其連結。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 請遵循 [將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](expressroute-howto-move-arm.md)中所描述的指示。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [將已連結至 ExpressRoute 線路的虛擬網路從傳統模型移轉至 Azure Resource Manager 模型](expressroute-migration-classic-resource-manager.md)
 * 如需工作流程資訊，請參閱 [ExpressRoute 線路佈建工作流程和線路狀態](expressroute-workflows.md)。
 * 若要設定 ExpressRoute 連線：
   
   * [建立 ExpressRoute 線路](expressroute-howto-circuit-arm.md)
   * [設定路由](expressroute-howto-routing-arm.md)
-  * [將虛擬網路連結到 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)
+  * [將虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)
 

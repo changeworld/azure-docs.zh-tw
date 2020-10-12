@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749629"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>設定 Azure Active Directory Domain Services 以支援 SharePoint Server 的使用者設定檔同步處理
@@ -69,7 +69,7 @@ SharePoint Server 的服務帳戶需要有足夠的許可權，才能將變更�
 
     ![將 SharePoint 服務帳戶新增至 AAD DC 服務帳戶安全性群組](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需詳細資訊，請參閱 [管理 SharePoint Server 中的使用者設定檔同步](/SharePoint/administration/manage-profile-synchronization)處理。
 

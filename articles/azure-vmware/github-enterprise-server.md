@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure VMware 解決方案私人雲端上設定 GitH
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 53e5264eed761909217c2e3a902c9fee9faaffaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341897"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>在您的 Azure VMware 解決方案私人雲端上設定 GitHub Enterprise Server
@@ -24,7 +24,7 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="部署 OVA 範本。":::  
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::  
 
 為您的新虛擬機器提供可辨識的名稱，例如 GitHubEnterpriseServer。 您不需要在 VM 名稱中包含發行詳細資料，因為當升級實例時，這些詳細資料會變成過時。 選取所有預設值，現在 (我們稍後會編輯這些詳細資料) 並等待匯入 OVA。
 
@@ -33,7 +33,7 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 | 資源 | 標準設定 | 標準設定 + 「Beta 功能」 (動作)  |
 | --- | --- | --- |
 | vCPU | 4 | 8 |
-| 記憶體 | 32 GB | 61 GB |
+| Memory | 32 GB | 61 GB |
 | 連接的儲存體 | 250 GB | 300 GB |
 | 根儲存體 | 200 GB | 200 GB |
 
@@ -41,11 +41,11 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>設定 GitHub Enterprise 伺服器實例
 
-:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="安裝 GitHub Enterprise。":::  
+:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::  
 
 在新布建的虛擬機器 (VM) 開啟電源之後，請透過 [您的瀏覽器進行設定](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance)。 您必須上傳您的授權檔案並設定管理主控台密碼。 請務必將此密碼寫在安全的地方。
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="透過 SSH 存取系統管理命令介面。":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::    
 
 建議您至少採取下列步驟：
 
@@ -53,11 +53,11 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 2. [在您的實例上設定 TLS](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) ，讓您可以使用由受信任的憑證授權單位單位所簽署的憑證。
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="正在設定您的實例。":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 套用您的設定。  當實例重新開機時，您可以繼續進行下一個步驟， **為 GitHub Actions 設定 Blob 儲存體**。
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="建立您的系統管理員帳戶。":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 實例重新開機之後，在實例上建立新的系統管理員帳戶。 也請務必記下此使用者的密碼。
 
@@ -82,7 +82,7 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 您必須要有外部 blob 儲存體，才能在 GitHub Enterprise Server (上啟用 GitHub Actions，目前提供為「搶鮮版（Beta）」功能) 。 此外部 blob 儲存體是由動作用來儲存成品和記錄。 GitHub Enterprise Server 上 [的動作支援將 Azure Blob 儲存體作為存放裝置提供者](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (以及其他) 。 因此，我們將布建具有 [儲存體帳戶類型](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#types-of-storage-accounts) BlobStorage 的新 Azure 儲存體帳戶：
 
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="布建 Azure Blob 儲存體帳戶。":::
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 當新的 BlobStorage 資源部署完成之後，請複製並記下連接字串， (可在 [存取金鑰]) 下取得。 我們很快就需要這個字串。
 
@@ -97,9 +97,9 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 首先，讓我們在叢集中布建新的 VM。 我們的 VM 會 [以最新版本的 Ubuntu Server 為](http://releases.ubuntu.com/20.04.1/)基礎。
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="布建新的 VM。":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="布建新的 VM 步驟2。":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 一旦建立 VM 之後，請將它開啟，並透過 SSH 連接到 VM。
 
@@ -168,15 +168,15 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 複製 `config.sh` 命令，並將其貼入您先前) 建立的動作執行器 (的會話中。
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="動作執行器。":::
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 使用 run.sh 命令來 *執行* 執行器：
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="執行執行器。":::
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 若要讓您企業中的組織可以使用此執行程式，請編輯其組織存取權：
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="編輯執行器存取。":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 在這裡，我們會將它提供給所有組織使用，但您也可以限制組織子集的存取權，甚至是特定的存放庫。
 
@@ -188,7 +188,7 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 啟用 GitHub Connect 之後，請在 [ **工作流程執行] 選項中選取要使用 GitHub.com 動作的伺服器** 。
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="使用工作流程執行中的 GitHub.com 來啟用動作。":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 ## <a name="setting-up-and-running-your-first-workflow"></a>設定並執行您的第一個工作流程
 
@@ -196,30 +196,30 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 
 在此基本工作流程中，我們將使用， `octokit/request-action` 只在使用 API 的 GitHub 上開啟問題。
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="範例工作流程。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 >[!NOTE]
 >GitHub.com 會裝載動作，但是當它在 GitHub Enterprise 伺服器上執行時，它 *會自動* 使用 GITHUB ENTERPRISE Server API。
 
 如果您選擇不啟用 GitHub Connect，您可以使用下列替代工作流程。
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="替代範例工作流程。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 流覽至實例上的存放庫，並將上述工作流程新增為： `.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="另一個範例工作流程。":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 在存放庫的 [ **動作** ] 索引標籤中，等候工作流程執行。
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="執行的範例工作流程。":::
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 您也可以觀看執行器所處理的專案。
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="執行器所處理的工作流程。":::
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 如果一切順利執行，您應該會在您的存放庫中看到新的問題，其標題為「Hello world」。
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="存放庫中的範例。":::
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 
 恭喜！ 您剛完成在 Azure VMware 解決方案私人雲端上執行的 GitHub Enterprise Server 上的第一個動作工作流程。
 

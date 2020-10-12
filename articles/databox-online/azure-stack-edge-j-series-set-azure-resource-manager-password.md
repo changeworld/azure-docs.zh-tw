@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904487"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上設定 Azure Resource Manager 密碼
@@ -122,7 +122,7 @@ ms.locfileid: "90904487"
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    使用上述產生的安全字串做為 AzDataBoxEdgeUser Cmdlet 中的參數，以重設密碼。 使用您在建立 Azure Stack Edge Pro/Data Box Gateway 資源時所使用的相同資源群組。
+    使用上述產生的安全字串做為 Set-AzDataBoxEdgeUser Cmdlet 中的參數，以重設密碼。 使用您在建立 Azure Stack Edge Pro/Data Box Gateway 資源時所使用的相同資源群組。
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
@@ -146,6 +146,6 @@ ms.locfileid: "90904487"
     ```
 使用新密碼連接到 Azure Resource Manager。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [連線到 Azure Resource Manager](azure-stack-edge-j-series-connect-resource-manager.md)

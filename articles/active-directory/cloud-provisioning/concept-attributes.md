@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226925"
 ---
 # <a name="understand-the-azure-ad-schema"></a>瞭解 Azure AD 架構
@@ -68,7 +68,7 @@ Azure AD 有兩種類型的屬性：
 
 ## <a name="view-the-schema"></a>查看架構
 > [!WARNING]
-> 雲端布建設定會建立服務主體。 服務主體會顯示在 Azure 入口網站中。 您不應該使用 Azure 入口網站中的服務主體體驗來修改屬性對應。  不支援這個動作。
+> 雲端布建設定會建立服務主體。 服務主體會顯示在 Azure 入口網站中。 您不應該使用 Azure 入口網站中的服務主體體驗來修改屬性對應。  不支援此連結方式。
 
 若要查看架構並進行驗證，請遵循下列步驟。
 
@@ -243,7 +243,7 @@ Azure AD 有兩種類型的屬性：
     ```
 1. 現在執行查詢 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` 。
  
-    範例：https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
+    範例： https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
    以您自己的值取代 `{Service Principal Id}` 和 `{AD2ADD Provisioning Id}` 。
 
