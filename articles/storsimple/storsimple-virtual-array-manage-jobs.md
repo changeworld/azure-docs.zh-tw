@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507478"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來檢視 StorSimple Virtual Array 的作業
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [作業]**** 刀鋒視窗提供單一中央入口網站，可檢視和管理已連接至 StorSimple 裝置管理員服務的虛擬陣列上啟動的作業。 您可以針對多個虛擬裝置，檢視執行中、完成和失敗的作業。 結果會以表格式格式呈現。
 
 ![[作業] 刀鋒視窗](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
@@ -36,7 +36,7 @@ ms.locfileid: "85507478"
   * **狀態** – 作業可以是 [全部]****、[進行中]****、[成功]****、[失敗]**** 或 [已取消]****。
   * **實體** – 作業可以與磁碟區、共用或裝置相關聯。
   * **裝置** – 用來啟動工作之裝置的名稱。
-  * **開始**時間–作業的啟動時間。
+  * **開始** 時間–開始作業的時間。
   * **持續時間** – 作業執行的持續時間。
 * **狀態** – 您可以搜尋全部、執行中、完成或已取消的作業。
 * **作業類型** – 作業類型可以是全部、備份、還原、容錯移轉、下載更新或安裝更新。
@@ -63,6 +63,6 @@ ms.locfileid: "85507478"
 
 備份、還原、更新和容錯移轉作業都可能發生這些失敗。 如果您的虛擬機器佈建到 Hyper-V，電腦與您的 Hypervisor 時間最終會同步。 一旦發生這種情況，您可以重新啟動您的作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [瞭解如何使用本機 WEB UI 來管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084013"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 啟動程序停滯於 Windows Update
@@ -36,7 +36,7 @@ ms.locfileid: "86084013"
 - 套用更新作業 ##### (共 ##### 項) 時發生嚴重錯誤 <錯誤碼> ($$...)
 
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 執行更新程序可能需要一些時間，視要更新或回復的更新數而定。 請將 VM 保持在此狀態 8 小時。 如果 VM 在這段期間後仍處於此狀態，請從 Azure 入口網站重新啟動 VM，並確認是否正常啟動。 如果此步驟無法解決問題，請嘗試下列解決方案。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: 43abe6a827af668f2b756e5f00497fbfe1698413
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083231"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全傳輸儲存體帳戶的 Apache Hadoop 叢集
@@ -20,27 +20,27 @@ ms.locfileid: "86083231"
 [需要安全傳輸](../storage/common/storage-require-secure-transfer.md)功能透過安全連線來強制對您帳戶的所有要求，以增強 Azure 儲存體帳戶的安全性。 只有 HDInsight 叢集 3.6 版或更新版本支援這項功能和 wasbs 配置。
 
 > [!IMPORTANT]
-> 在建立叢集之後啟用安全儲存體傳輸，可能會導致使用您的儲存體帳戶發生錯誤，因此不建議您這麼做。 最好是使用已啟用安全傳輸的儲存體帳戶來建立新的叢集。
+> 在建立叢集之後啟用安全儲存體傳輸，可能會在使用您的儲存體帳戶時發生錯誤，因此不建議使用。 最好是使用已啟用安全傳輸的儲存體帳戶來建立新的叢集。
 
 ## <a name="storage-accounts"></a>儲存體帳戶
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-根據預設，當您在 Azure 入口網站中建立儲存體帳戶時，就會啟用 [需要安全傳輸] 屬性。
+當您在 Azure 入口網站中建立儲存體帳戶時，預設會啟用 [需要安全傳輸] 屬性。
 
-若要使用 Azure 入口網站來更新現有的儲存體帳戶，請參閱[需要使用 Azure 入口網站的安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account)。
+若要使用 Azure 入口網站更新現有的儲存體帳戶，請參閱 [需要使用 Azure 入口網站的安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account)。
 
 ### <a name="powershell"></a>PowerShell
 
 針對 PowerShell Cmdlet [New-new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，請確定參數 `-EnableHttpsTrafficOnly` 設定為 `1` 。
 
-若要使用 PowerShell 更新現有的儲存體帳戶，請參閱[使用 Powershell 要求安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
+若要使用 PowerShell 來更新現有的儲存體帳戶，請參閱 [使用 Powershell 要求安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-針對 Azure CLI 命令[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，確定參數 `--https-only` 已設為 `true` 。
+針對 Azure CLI 命令 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，請確定參數 `--https-only` 設定為 `true` 。
 
-若要使用 Azure CLI 來更新現有的儲存體帳戶，請參閱[需要使用 Azure CLI 的安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
+若要使用 Azure CLI 更新現有的儲存體帳戶，請參閱 [需要使用 Azure CLI 的安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
 
 ## <a name="add-additional-storage-accounts"></a>新增其他儲存體帳戶
 
@@ -50,7 +50,7 @@ ms.locfileid: "86083231"
 * 使用 [Azure 入口網站](https://portal.azure.com)建立叢集並指定連結的儲存體帳戶。
 * 使用指令碼動作，將其他已啟用安全傳輸的儲存體帳戶新增至現有的 HDInsight 叢集。 如需詳細資訊，請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * 如何使用「Azure 儲存體」(WASB) (而非 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html))作為預設資料存放區
 * 如需有關 HDInsight 如何使用 Azure 儲存體的資訊，請參閱 [搭配 HDInsight 使用 Azure 儲存體](hdinsight-hadoop-use-blob-storage.md)。

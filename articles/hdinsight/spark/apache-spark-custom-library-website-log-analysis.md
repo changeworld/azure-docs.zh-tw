@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083792"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>使用自訂 Python 程式庫搭配 HDInsight 上的 Apache Spark 叢集來分析網站記錄
@@ -27,19 +27,19 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 在本節中，我們會使用與 HDInsight 中的 Apache Spark 叢集相關聯的 [Jupyter](https://jupyter.org) Notebook，來執行會處理原始範例資料，並將這些資料儲存成 Hive 資料表的作業。 範例資料是所有叢集在預設情況下均有的 .csv 檔案 (hvac.csv)。
 
-當您的資料儲存為 Apache Hive 資料表之後，下一節會使用 Power BI 和 Tableau 等 BI 工具連接到 Hive 資料表。
+當您的資料儲存為 Apache Hive 資料表之後，在下一節中，我們將使用 BI 工具（例如 Power BI 和 Tableau）連接至 Hive 資料表。
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 建立新的 Notebook。 依序選取 [**新增**] 和 [ **PySpark**]。
+1. 建立新的 Notebook。 選取 [ **新增**]，然後 **PySpark**。
 
     ![建立新的 Apache Jupyter 筆記本](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "建立新的 Jupyter Notebook")
 
-1. 系統隨即會建立新 Notebook，並以 Untitled.pynb 的名稱開啟。 選取頂端的 [筆記本名稱]，然後輸入好記的名稱。
+1. 系統隨即會建立新 Notebook，並以 Untitled.pynb 的名稱開啟。 在頂端選取筆記本名稱，然後輸入易記名稱。
 
     ![提供 Notebook 的名稱](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "提供 Notebook 的名稱")
 
-1. 因為您是使用 PySpark 核心建立筆記本，所以您不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 和 Hive 內容。 首先，您可以匯入此案例需要的類型。 將下列程式碼片段貼到空白儲存格中，然後按下**Shift + enter**。
+1. 因為您已使用 PySpark 核心建立筆記本，所以不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 和 Hive 內容。 首先，您可以匯入此案例需要的類型。 將下列程式碼片段貼到空白儲存格中，然後按下 **Shift + enter**。
 
     ```pyspark
     from pyspark.sql import Row
@@ -70,9 +70,9 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 ## <a name="analyze-log-data-using-a-custom-python-library"></a>使用自訂 Python 程式庫來分析記錄資料
 
-1. 在上述輸出中，前幾行包含標頭資訊，其餘各行則符合該標頭中所說明的結構描述。 剖析這類記錄可能是複雜的作業。 因此，我們使用自訂 Python 程式庫 (**iislogparser.py**)，它可大幅簡化這類記錄的剖析。 根據預設，此程式庫會隨附于 HDInsight 上的 Spark 叢集，網址為 `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py` 。
+1. 在上述輸出中，前幾行包含標頭資訊，其餘各行則符合該標頭中所說明的結構描述。 剖析這類記錄可能是複雜的作業。 因此，我們使用自訂 Python 程式庫 (**iislogparser.py**)，它可大幅簡化這類記錄的剖析。 根據預設，此程式庫會隨附于 HDInsight 上的 Spark 叢集中 `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py` 。
 
-    不過，此程式庫不在中， `PYTHONPATH` 因此無法使用匯入語句（例如） `import iislogparser` 。 若要使用此程式庫，我們必須將它散發到所有的背景工作角色節點。 執行下列程式碼片段。
+    但是，此程式庫不在中， `PYTHONPATH` 因此無法使用像這樣的 import 語句 `import iislogparser` 。 若要使用此程式庫，我們必須將它散發到所有的背景工作角色節點。 執行下列程式碼片段。
 
     ```pyspark
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
@@ -100,7 +100,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
     2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
     ```
 
-1. `LogLine` 類別也有一些有用的方法，像是 `is_error()`，它會傳回記錄項目是否有錯誤碼。 使用此類別來計算已解壓縮記錄行中的錯誤數目，然後將所有錯誤記錄到不同的檔案。
+1. `LogLine` 類別也有一些有用的方法，像是 `is_error()`，它會傳回記錄項目是否有錯誤碼。 您可以使用這個類別來計算已解壓縮之記錄行中的錯誤數目，然後將所有錯誤記錄到不同的檔案。
 
     ```pyspark
     errors = logLines.filter(lambda p: p.is_error())
@@ -198,7 +198,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 1. 應用程式執行完畢之後，您應該關閉 Notebook 以釋放資源。 若要這麼做，請從 Notebook 的 [檔案]  功能表中，選取 [關閉並終止]  。 此動作將會關閉並關閉筆記本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 探索下列文章：
 

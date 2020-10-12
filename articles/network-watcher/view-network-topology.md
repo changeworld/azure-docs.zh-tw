@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737524"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>檢視 Azure 虛擬網路的拓撲
@@ -31,7 +31,7 @@ ms.locfileid: "84737524"
 1. 使用具有必要[權限](required-rbac-permissions.md)的帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在入口網站的左上角，選取 [所有服務]****。
 3. 在 [所有服務]**** 篩選方塊中，輸入 [網路監看員]**。 當結果中出現**網路監看員**時，請加以選取。
-4. 選取 [拓撲]****。 若要產生拓撲，在您要產生拓撲的虛擬網路所在的相同區域中必須要有網路監看員。 如果您未在要產生拓撲的虛擬網路所在的相同區域中啟用網路監看員，系統將在所有區域中自動為您建立網路監看員。 網路監看員會建立在名為 NetworkWatcherRG**** 的資源群組中。
+4. 選取 [拓撲]。 若要產生拓撲，在您要產生拓撲的虛擬網路所在的相同區域中必須要有網路監看員。 如果您未在要產生拓撲的虛擬網路所在的相同區域中啟用網路監看員，系統將在所有區域中自動為您建立網路監看員。 網路監看員會建立在名為 NetworkWatcherRG**** 的資源群組中。
 5. 依序選取訂用帳戶、您想要檢視拓撲之虛擬網路的資源群組，以及虛擬網路。 下圖會在名為 *MyResourceGroup* 的資源群組中，針對名為 *MyVnet* 的虛擬網路顯示一個拓撲：
 
     ![檢視拓撲](./media/view-network-topology/view-topology.png)
@@ -88,13 +88,13 @@ ms.locfileid: "84737524"
 
 您所使用的帳戶必須具有必要的[權限](required-rbac-permissions.md)。
 
-1. 如果您在要建立拓撲的虛擬網路所在的相同區域中已有網路監看員，請跳至步驟 3。 建立資源群組，以包含具有[remove-azresourcegroup](/powershell/module/az.Resources/New-azResourceGroup)的網路監看員。 下列範例會在 *eastus* 區域中建立資源群組：
+1. 如果您在要建立拓撲的虛擬網路所在的相同區域中已有網路監看員，請跳至步驟 3。 建立資源群組，以包含具有 [>new-azresourcegroup](/powershell/module/az.Resources/New-azResourceGroup)的網路監看員。 下列範例會在 *eastus* 區域中建立資源群組：
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. 使用[new-aznetworkwatcher](/powershell/module/az.network/new-aznetworkwatcher)建立網路監看員。 下列範例會在 eastus 區域中建立網路監看員：
+2. 使用 [New->new-aznetworkwatcher](/powershell/module/az.network/new-aznetworkwatcher)建立網路監看員。 下列範例會在 eastus 區域中建立網路監看員：
 
     ```azurepowershell-interactive
     New-AzNetworkWatcher `
@@ -102,7 +102,7 @@ ms.locfileid: "84737524"
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. 使用[new-aznetworkwatcher](/powershell/module/az.network/get-aznetworkwatcher)取得網路監看員實例。 下列範例會擷取美國東部區域中的網路監看員：
+3. 使用 [>new-aznetworkwatcher](/powershell/module/az.network/get-aznetworkwatcher)取得網路監看員實例。 下列範例會擷取美國東部區域中的網路監看員：
 
     ```azurepowershell-interactive
     $nw = Get-AzResource `
@@ -112,7 +112,7 @@ ms.locfileid: "84737524"
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. 使用[AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)取得拓撲。 下列範例會擷取資源群組 *MyResourceGroup* 中的虛擬網路的拓撲：
+4. 使用 [AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)取得拓撲。 下列範例會擷取資源群組 *MyResourceGroup* 中的虛擬網路的拓撲：
 
     ```azurepowershell-interactive
     Get-AzNetworkWatcherTopology `
@@ -145,7 +145,7 @@ ms.locfileid: "84737524"
     - **名稱**：所參考資源的名稱。
     - **ResourceId**：關聯性中參考之資源的 URI。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何使用網路監看員的 IP 流量驗證功能[診斷 VM 輸入或輸出的網路流量篩選問題](diagnose-vm-network-traffic-filtering-problem.md)
 - 了解如何使用網路監看員的下一個躍點功能[診斷 VM 輸出的網路流量路由問題](diagnose-vm-network-routing-problem.md)

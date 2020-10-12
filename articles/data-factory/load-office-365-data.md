@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89435553"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Office 365 載入資料
@@ -145,7 +145,7 @@ _擷取資料時的狀態：_
 
 現在移至目的地 Azure Blob 儲存體，並確認已以二進位格式將 Office 365 資料解壓縮。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請繼續閱讀下列文章，以瞭解 Azure Synapse Analytics (先前的 SQL 資料倉儲) 支援： 
 

@@ -4,10 +4,10 @@ description: 說明如何在 Azure Resource Manager 範本的管理群組範圍�
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372420"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源

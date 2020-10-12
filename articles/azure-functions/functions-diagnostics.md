@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122355"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 診斷概觀
@@ -31,11 +31,11 @@ ms.locfileid: "83122355"
 
 選取了最符合函式應用程式問題的首頁類別後，名為 Genie 的 Azure Functions 診斷互動式介面就可以引導您診斷並解決應用程式的問題。 您可以使用 Genie 所提供的圖格快速鍵，來檢視您有興趣了解的問題類別所擁有的完整診斷報告。 圖格快速鍵可讓您直接存取診斷計量。
 
-:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Genie 是 Azure Functions 診斷的介面。" border="false":::
+:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="搜尋 Azure Functions 診斷。" border="false":::
 
 選取圖格之後，您可以看到與圖格中所述問題相關的主題清單。 這些主題會提供完整報告中值得注意的資訊片段。 選取任一主題即可進一步調查問題。 此外，您也可以選取 [檢視完整報告] 以在單一頁面上瀏覽所有主題。
 
-:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="診斷報告預覽" border="false":::
+:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="搜尋 Azure Functions 診斷。" border="false":::
 
 ## <a name="view-a-diagnostic-report"></a>檢視診斷報告
 
@@ -45,9 +45,9 @@ ms.locfileid: "83122355"
 
 對於以指令碼為基礎的函式，您可以使用 [函式應用程式關閉或報告錯誤] 底下的 [函式執行和錯誤]，來縮小造成例外狀況或錯誤的程式碼範圍。 您可以使用此工具來取得根本原因，並修正特定程式碼的問題。 此選項不適用於先行編譯的 C# 和 Java 函式。
 
-:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="函式執行錯誤的診斷報告" border="false":::
+:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="搜尋 Azure Functions 診斷。" border="false":::
 
-:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="例外狀況詳細資料的檢視。" border="false":::
+:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="搜尋 Azure Functions 診斷。" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

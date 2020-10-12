@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure HDInsight 中的 Apache Ambari 優化 Apache Hive
+title: 使用 Azure HDInsight 的 Apache Ambari 優化 Apache Hive
 description: 使用 Apache Ambari web UI 來設定和優化 Apache Hive。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084353"
 ---
-# <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Ambari 優化 Apache Hive
+# <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 的 Apache Ambari 優化 Apache Hive
 
-Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 Ambari Web UI 的簡介，請參閱[使用 Apache Ambari WEB Ui 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)叢集。
+Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 Ambari Web UI 的簡介，請參閱 [使用 Apache Ambari WEB ui 來管理 HDInsight](hdinsight-hadoop-manage-ambari.md)叢集。
 
 下列各節會說明將 Apache Hive 整體效能最佳化的設定選項。
 
@@ -42,7 +42,7 @@ Hadoop 會嘗試將單一檔案分割 (*對應*) 為多個檔案，並且平行�
 * `tez.grouping.min-size`：群組分割大小下限，預設值是 16 MB (16777216 位元組)。
 * `tez.grouping.max-size`：群組分割大小上限，預設值為 1 GB (1,073,741,824 位元組)。
 
-做為效能指導方針，請同時降低這兩個參數來改善延遲，以提高輸送量。
+作為效能指導方針，請降低這兩個參數來改善延遲，增加更多輸送量。
 
 例如，若要設定 128 MB 資料大小的四個對應程式工作，您會將這兩個參數分別設定為 32 MB (33,554,432 位元組)。
 
@@ -50,7 +50,7 @@ Hadoop 會嘗試將單一檔案分割 (*對應*) 為多個檔案，並且平行�
 
 1. 將這兩個參數設定為 **33,554,432** 位元組 (32 MB)。
 
-    ![Apache Ambari Tez 群組大小](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    ![Apache Ambari Tez 分組大小](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
 
 這些變更會影響伺服器的所有 Tez 作業。 若要得到最佳結果，請選擇適當的參數值。
 
@@ -70,9 +70,9 @@ Apache ORC 和 Snappy 均可達到高效能。 不過，Hive 預設的歸納器�
 
 1. 選取 [編輯]**** 將值修改為 128 MB (134,217,728 位元組)，然後按下 **Enter** 儲存。
 
-    ![每個歸納器的 Ambari 資料-已編輯](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    ![Ambari 每個歸納器的資料-編輯](./media/optimize-hive-ambari/data-per-reducer-edited.png)
   
-    假設輸入大小為 1024 MB，每個歸納器有 128 MB 的資料，則有八個歸納器（1024/128）。
+    假設輸入大小為 1024 MB，每個歸納器有 128 MB 的資料，則有八個歸納器 (1024/128) 。
 
 1. [各歸納器的資料]**** 參數的值不正確會導致歸納器的數目增加，而對於查詢效能造成負面影響。 若要限制歸納器數目上限，請將 `hive.exec.reducers.max` 設定為合適的值。 預設值是 1009。
 
@@ -98,11 +98,11 @@ Hive 會逐列處理資料。 向量化會指示 Hive 處理 1,024 列的資料�
 
 ## <a name="enable-cost-based-optimization-cbo"></a>啟用以成本為基礎的最佳化 (CBO)
 
-Hive 預設會遵循一組規則，找出一個最佳的查詢執行計畫。 以成本為基礎的優化（CBO）會評估多個計畫來執行查詢。 並將成本指派給每個方案，然後決定執行查詢的最便宜計畫。
+Hive 預設會遵循一組規則，找出一個最佳的查詢執行計畫。 以成本為基礎的優化 (CBO) 評估多個計畫來執行查詢。 然後將成本指派給每個方案，然後決定執行查詢的最便宜計畫。
 
-若要啟用 CBO，請流覽至 [ **Hive**  >  **Configs**  >  **設定**]，並尋找 [啟用以成本為基礎的優化工具]，然後將切換按鈕切換為 **[****開啟**]
+若要啟用 CBO，請流覽至**Hive**  >  **Configs**  >  **設定設定**，並尋找 [**啟用以成本為基礎的優化**工具]，然後將切換按鈕切換為 [**開啟**]。
 
-![以 HDInsight 成本為基礎的優化工具](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+![HDInsight 以成本為基礎的優化工具](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
 CBO 啟用時，下列的其他設定參數會提高 Hive 查詢效能：
 
@@ -120,7 +120,7 @@ CBO 啟用時，下列的其他設定參數會提高 Hive 查詢效能：
 
 * `hive.stats.fetch.partition.stats`
 
-    基本的分割區統計資料 (例如資料列、資料大小和檔案大小) 儲存在中繼存放區。 如果設定為 true，則會從中繼存放區提取分割區統計資料。 若為 false，則會從檔案系統提取檔案大小。 而且會從資料列架構提取資料列的數目。
+    基本的分割區統計資料 (例如資料列、資料大小和檔案大小) 儲存在中繼存放區。 如果設定為 true，則會從中繼存放區提取分割區統計資料。 若為 false，則會從檔案系統提取檔案大小。 而且會從資料列架構中提取資料列的數目。
 
     ![Hive 統計資料集合分割區統計資料](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
 
@@ -132,14 +132,14 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 可用的壓縮類型包括：
 
-| 格式 | 工具 | 演算法 | 副檔名 | 可分割？ |
+| [格式] | 工具 | 演算法 | 副檔名 | 可分割？ |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | No |
+| Gzip | Gzip | DEFLATE | `.gz` | 否 |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | 是 |
 | LZO | `Lzop` | LZO | `.lzo` | 是，如果已編製索引 |
-| Snappy | N/A | Snappy | Snappy | No |
+| Snappy | N/A | Snappy | Snappy | 否 |
 
-一般的規則是，壓縮方法可分割很重要，否則將會建立少數對應程式。 如果輸入資料為文字，`bzip2` 是最佳選擇。 若為˙ ORC 格式，Snappy 是最快的壓縮選項。
+一般來說，壓縮方法可分割很重要，否則會建立少數的對應程式數目。 如果輸入資料為文字，`bzip2` 是最佳選擇。 若為˙ ORC 格式，Snappy 是最快的壓縮選項。
 
 1. 若要啟用中繼壓縮，請瀏覽至 Hive [設定]**** 索引標籤，然後將 `hive.exec.compress.intermediate` 參數設定為 true。 預設值為 false。
 
@@ -152,9 +152,9 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 1. 若要新增自訂設定：
 
-    a. 流覽至**Hive 配置**  >  **Configs**  >  **Advanced**  >  **自訂 Hive-site**。
+    a. 流覽至**Hive 配置**  >  **Configs**  >  **Advanced**  >  **的 Advanced 自訂 hive 網站**。
 
-    b. 選取 [自訂 hive 網站] 窗格底部的 [**新增屬性 ...** ]。
+    b. 選取 [自訂 hive 網站] 窗格底部的 [ **加入屬性** ]。
 
     c. 在 [新增屬性] 視窗中，輸入 `mapred.map.output.compression.codec` 做為索引鍵，並輸入 `org.apache.hadoop.io.compress.SnappyCodec` 做為值。
 
@@ -175,25 +175,25 @@ Hadoop 工作通常出現 I/O 瓶頸。 壓縮資料可以加快 I/O 和整體�
 
 1. 若要選擇輸出壓縮轉碼器，請將 `mapred.output.compression.codec` 自訂屬性新增至 [自訂 Hive 網站] 窗格，如上一節的步驟 3 中所述。
 
-    ![Apache Hive 自訂的屬性 add2](./media/optimize-hive-ambari/hive-custom-property2.png)
+    ![Apache Hive 自訂屬性 add2](./media/optimize-hive-ambari/hive-custom-property2.png)
 
 ## <a name="enable-speculative-execution"></a>啟用推測性執行
 
-推測性執行會啟動特定數目的重複工作，以偵測和拒絕列出執行緩慢的工作追蹤器。 藉由優化個別工作結果來改善整體作業執行。
+「推測執行」會啟動特定數目的重複工作，以偵測和拒絕列出執行緩慢的工作追蹤程式。 藉由優化個別工作結果來改善整體作業執行。
 
 對於有大量輸入的長時間執行 MapReduce 工作，不應該開啟推測性執行。
 
 * 若要啟用推測性執行，請瀏覽至 Hive [設定]**** 索引標籤，然後將 `hive.mapred.reduce.tasks.speculative.execution` 參數設定為 true。 預設值為 false。
 
-    ![' Hive mapred.max.split.size 減少工作的推測執行 '](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    ![「Hive mapred 減少工作推測執行」](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
 ## <a name="tune-dynamic-partitions"></a>微調動態分割區
 
-Hive 允許在將記錄插入資料表時建立動態資料分割，而不需要預先定義每個資料分割。 這項功能非常強大。 雖然可能會導致建立大量的分割區。 而且每個分割區都有大量的檔案。
+Hive 可在將記錄插入資料表時，建立動態資料分割，而不會預先定義每個資料分割。 這項功能是一項功能強大的功能。 雖然可能會導致建立大量的資料分割。 而且每個分割區都有大量的檔案。
 
 1. 若要 Hive 執行動態分割，`hive.exec.dynamic.partition` 參數值應該為 true (預設值)。
 
-1. 將動態分割模式變更為 [嚴格]**。 在嚴格模式中，至少一個分割區必須為靜態。 這項設定可避免 WHERE 子句中沒有資料分割篩選的查詢，亦即， *strict*會防止掃描所有資料分割的查詢。 瀏覽至 Hive [設定]**** 索引標籤，然後將 `hive.exec.dynamic.partition.mode` 設定為 [嚴格]****。 預設值為 **nonstrict**。
+1. 將動態分割模式變更為 [嚴格]**。 在嚴格模式中，至少一個分割區必須為靜態。 這項設定可防止 WHERE 子句中沒有分割篩選的查詢，也就是 *strict* 會防止掃描所有分割區的查詢。 瀏覽至 Hive [設定]**** 索引標籤，然後將 `hive.exec.dynamic.partition.mode` 設定為 [嚴格]****。 預設值為 **nonstrict**。
 
 1. 若要限制建立的動態分割區數目，請修改 `hive.exec.max.dynamic.partitions` 參數。 預設值為 5000。
 
@@ -201,7 +201,7 @@ Hive 允許在將記錄插入資料表時建立動態資料分割，而不需要
 
 ## <a name="enable-local-mode"></a>啟用本機模式
 
-原生模式可讓 Hive 在單一電腦上執行作業的所有工作。 或有時在單一進程中。 如果輸入資料很小，這種設定可以改善查詢效能。 而啟動查詢工作的額外負荷會耗用大量百分比的整體查詢執行。
+原生模式可讓 Hive 在單一電腦上進行作業的所有工作。 或有時在單一進程中。 如果輸入資料很小，此設定可改善查詢效能。 而啟動查詢工作的額外負荷會耗用大量百分比的整體查詢執行。
 
 若要啟用本機模式，請將 `hive.exec.mode.local.auto` 參數新增至 [自訂 Hive 網站] 面板，如「[啟用中繼壓縮](#enable-intermediate-compression)」一節的步驟 3 所述。
 
@@ -236,12 +236,12 @@ Hive 的預設聯結類型是*隨機聯結*。 在 Hive 中，特殊對應程式
 | 設定 | 建議 | HDInsight 預設 |
 | --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = 較安全、較慢；false = 較快 | false |
-| `tez.am.resource.memory.mb` | 最多 4 GB 上限 | 自動調整 |
+| `tez.am.resource.memory.mb` | 最大 4 GB 上限 | 自動調整 |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

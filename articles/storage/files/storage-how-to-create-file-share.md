@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
 ms.openlocfilehash: 15f9387aac909c0245d25b3a208ed24444b2b343
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329381"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
@@ -32,7 +32,7 @@ ms.locfileid: "91329381"
 
 如需這三個選項的詳細資訊，請參閱 [規劃 Azure 檔案儲存體部署](storage-files-planning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 - 本文會假設您已經建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 - 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
@@ -166,7 +166,7 @@ az storage account create \
 標準檔案共用可能會部署到其中一個標準層：交易優化 (預設) 、經常性存取或非經常性存取。 這是每個檔案共用層，不受儲存體帳戶的 **blob 存取層** 影響 (此屬性只會與 Azure blob 儲存體相關-它與所有) 的 Azure 檔案儲存體無關。 部署共用之後，您可以隨時變更共用的層級。 Premium 檔案共用無法直接轉換成任何標準層中的標準檔案共用。
 
 > [!Important]  
-> 您可以在 GPv2 儲存體帳戶類型內的各層之間移動檔案共用， (交易優化、經常性存取和非經常性存取) 。 在各層之間的共用移動會產生交易：從高階層移至較低層級，將會對共用中的每個檔案產生較低層的寫入交易費用，而從較低層移至高層的情況下，將會產生每個檔案共用的非經常性存取層讀取交易費用。
+> 您可以在 GPv2 儲存體帳戶類型中的各層之間移動檔案共用 (交易最佳化、經常性存取和非經常性存取)。 各層之間的共用移動會產生交易：從經常性存取層移至非經常性存取層，會對共用中的每個檔案產生非經常性存取層的寫入交易費用，而從非經常性存取層移至經常性存取層，則會對共用的每個檔案產生非經常性存取層的讀取交易費用。
 
 [ **配額** ] 屬性工作表示 premium 和標準檔案共用之間稍微有不同的內容：
 

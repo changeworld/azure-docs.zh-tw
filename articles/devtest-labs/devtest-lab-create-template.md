@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 入口網站在 Azure DevTest Labs 中從 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289402"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>從 VHD 檔案建立自訂映像
@@ -24,7 +24,7 @@ ms.locfileid: "87289402"
 
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
+1. 選取 [ **所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 
@@ -72,6 +72,6 @@ ms.locfileid: "87289402"
 - [自訂映像或公式？](./devtest-lab-faq.md#blog-post)
 - [在 Azure DevTest Labs 之間複製自訂映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [將 VM 新增到實驗室](./devtest-lab-add-vm.md)

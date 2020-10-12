@@ -4,10 +4,10 @@ description: 瞭解如何安裝 Microsoft Azure 復原服務 (MARS) 代理程式
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975310"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安裝 Azure 備份 MARS 代理程式
@@ -131,7 +131,7 @@ Azure 備份使用 MARS 代理程式從內部部署機器和 Azure Vm 備份檔�
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. 選取 [儲存]。 檔案會下載到您的 [下載] 資料夾。 您無法開啟保存庫認證檔。
+1. 選取 [儲存]****。 檔案會下載到您的 [下載] 資料夾。 您無法開啟保存庫認證檔。
 
 ## <a name="install-and-register-the-agent"></a>安裝和註冊代理程式
 
@@ -162,6 +162,6 @@ Azure 備份使用 MARS 代理程式從內部部署機器和 Azure Vm 備份檔�
 
 1. 選取 [完成]。 現在已安裝代理程式，且您的電腦已註冊至保存庫。 您已準備好可以設定及排程備份。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [使用 AZURE 備份 MARS 代理程式來備份 Windows 機器](backup-windows-with-mars-agent.md)

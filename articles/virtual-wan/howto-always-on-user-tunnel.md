@@ -1,5 +1,5 @@
 ---
-title: 設定 Always On VPN 使用者通道
+title: 設定 Always-On VPN 使用者通道
 titleSuffix: Azure Virtual WAN
 description: 本文說明如何為您的虛擬 WAN 設定 Always On VPN 使用者通道
 services: virtual-wan
@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e83ca64d2b0e50ec02007a3cd878e6bf034d0961
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313581"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>設定虛擬 WAN 的 Always On VPN 使用者通道
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須建立點對站設定，並編輯虛擬中樞指派。 如需相關指示，請參閱下列各節：
 
@@ -34,7 +34,7 @@ ms.locfileid: "91313581"
 
 若要移除設定檔，請使用下列步驟：
 
-1. 執行下列命令：
+1. 執行以下命令：
 
    ```powershell
    C:\> Remove-VpnConnection UserTest  

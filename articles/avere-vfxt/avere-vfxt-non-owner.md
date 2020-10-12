@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505370"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授權非擁有者部署 Avere vFXT
@@ -72,7 +72,7 @@ ms.locfileid: "85505370"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-完成此程式之後，此角色會為任何使用者指派訂用帳戶的下列許可權：
+完成此程式之後，角色會為任何使用者指派訂用帳戶的下列許可權：
 
 * 建立並設定網路基礎結構
 * 建立叢集控制器

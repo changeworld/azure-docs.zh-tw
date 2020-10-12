@@ -4,10 +4,10 @@ description: 復原服務保存庫的總覽。
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975154"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
@@ -59,7 +59,7 @@ Azure Advisor 針對未備份的 Vm 提供每小時 [建議](../advisor/advisor-
 - [保存庫支援和不支援的案例](backup-support-matrix.md#vault-support)
 - [保存庫的常見問題](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用下列文章進行：
 

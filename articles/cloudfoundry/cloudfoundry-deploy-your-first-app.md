@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
 ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84754318"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>將第一個應用程式部署到 Microsoft Azure 上的 Cloud Foundry
@@ -31,7 +31,7 @@ ms.locfileid: "84754318"
 
 ## <a name="connect-to-the-cloud-controller"></a>連線至 Cloud Controller
 
-Cloud Controller 是到 Cloud Foundry 環境以部署和管理應用程式的主要進入點。 核心 Cloud Controller API (CCAPI) 是 REST API，但是可以透過各種工具存取。 在此情況下，我們透過 [Cloud Foundry CLI][cf-cli] 與它互動。 您可以在 Linux、macOS 或 Windows 上安裝 CLI，但如果您不想安裝它，則可預先安裝在[Azure Cloud Shell][cloudshell-docs]中。
+Cloud Controller 是到 Cloud Foundry 環境以部署和管理應用程式的主要進入點。 核心 Cloud Controller API (CCAPI) 是 REST API，但是可以透過各種工具存取。 在此情況下，我們透過 [Cloud Foundry CLI][cf-cli] 與它互動。 您可以在 Linux、macOS 或 Windows 上安裝 CLI，但如果您不想安裝它，也可以預先安裝在 [Azure Cloud Shell][cloudshell-docs]中。
 
 若要登入，請在您從市集部署取得的 SYSTEMDOMAINURL 前面加上 `api`。 由於預設部署使用自我簽署憑證，您也應該包含 `skip-ssl-validation` 參數。
 
@@ -133,7 +133,7 @@ cf scale -i 2 hello-spring-cloud
 在應用程式上執行 `cf app` 命令，會顯示 Cloud Foundry 正在建立應用程式的另一個執行個體。 應用程式啟動之後，Cloud Foundry 會自動對它啟動負載平衡流量。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [閱讀 Cloud Foundry 文件][cloudfoundry-docs]
 - [設定適用於 Cloud Foundry 的 Azure DevOps Services 外掛程式][vsts-plugin]

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
 ms.openlocfilehash: 5c57ac0fb0ab377f00770e3c9c03a413dcb345bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291042"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>從 Azure 下載 Windows VHD
@@ -22,16 +22,16 @@ ms.locfileid: "87291042"
 
 ## <a name="optional-generalize-the-vm"></a>選擇性：將 VM 一般化
 
-如果您想要使用 VHD 作為[映射](tutorial-custom-images.md)來建立其他 vm，您應該使用[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)將作業系統一般化。 
+如果您想要使用 VHD 作為 [映射](tutorial-custom-images.md) 來建立其他 vm，您應該使用 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) 將作業系統一般化。 
 
 若要使用 VHD 作為映射來建立其他 Vm，請將 VM 一般化。
 
-1. 如果您尚未這麼做，請登入[Azure 入口網站](https://portal.azure.com/)。
-2. [連接到 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+1. 如果您尚未這麼做，請登入 [Azure 入口網站](https://portal.azure.com/)。
+2. [連接至 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 3. 在 VM 上，以系統管理員身分開啟 [命令提示字元] 視窗。
 4. 切換至 *%windir%\system32\sysprep* 目錄並執行 sysprep.exe。
 5. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]****，並確認已選取 [一般化]****。
-6. 在 [關機選項] 中，選取 [**關機**]，然後按一下 **[確定]**。 
+6. 在 [關機選項] 中選取 [ **關機**]，然後按一下 **[確定]**。 
 
 
 ## <a name="stop-the-vm"></a>停止 VM
@@ -45,12 +45,12 @@ ms.locfileid: "87291042"
 
 ## <a name="generate-download-url"></a>產生下載 URL
 
-若要下載 VHD 檔案，您需要產生[共用存取簽章（SAS）](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL。 產生 URL 時，會將到期時間指派給 URL。
+若要下載 VHD 檔案，您需要產生 [ (SAS) URL 的共用存取 ](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) 簽章。 產生 URL 時，會將到期時間指派給 URL。
 
-1. 在 VM 的頁面上，按一下左側功能表中的 [**磁片**]。
+1. 在 VM 的頁面上，按一下左側功能表中的 [ **磁片** ]。
 1. 選取 VM 的作業系統磁片。
-1. 在磁片的頁面上，從左側功能表中選取 [**磁片匯出**]。
-1. URL 的預設到期時間為*3600*秒。 針對 Windows OS 磁片，將此增加至**36000** 。
+1. 在磁片的頁面上，從左側功能表中選取 [ **磁片匯出** ]。
+1. URL 的預設到期時間為 *3600* 秒。 針對 Windows OS 磁片，將此設為 **36000** 。
 1. 按一下 [產生 URL]****。
 
 > [!NOTE]
@@ -61,9 +61,9 @@ ms.locfileid: "87291042"
 ## <a name="download-vhd"></a>下載 VHD
 
 1. 在產生的 URL 之下，按一下 [下載 VHD 檔案]。
-1. 您可能需要在瀏覽器中按一下 [**儲存**]，才能開始下載。 VHD 檔案的預設名稱是 *abcd*。
+1. 您可能需要按一下瀏覽器中的 [ **儲存** ] 以開始下載。 VHD 檔案的預設名稱是 *abcd*。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何[將 VHD 檔案上傳至 Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 - [從儲存體帳戶中的非受控磁片建立受控磁片](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

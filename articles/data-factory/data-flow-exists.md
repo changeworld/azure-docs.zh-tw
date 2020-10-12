@@ -1,6 +1,6 @@
 ---
-title: 對應資料流程中的 Exists 轉換
-description: 使用 Azure Data Factory 對應資料流程中的 exists 轉換來檢查現有的資料列
+title: 存在對應資料流程中的轉換
+description: 使用 Azure Data Factory 對應資料流程中的「存在」轉換來檢查現有的資料列
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82982627"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>對應資料流程中的 Exists 轉換
+# <a name="exists-transformation-in-mapping-data-flow"></a>存在對應資料流程中的轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Exists 轉換是一個資料列篩選轉換，它會檢查您的資料是否存在於另一個來源或資料流程中。 輸出資料流程包含左側資料流程中的所有資料列，其存在或不存在於正確的資料流程中。 Exists 轉換類似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS``` 。
+「存在」轉換是一種資料列篩選轉換，可檢查您的資料是否存在於另一個來源或資料流程中。 輸出資料流程包含左邊資料流程中的所有資料列，這些資料列存在於右邊的資料流程中或不存在於右邊的資料流程中。 「存在」轉換類似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS``` 。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
 ## <a name="configuration"></a>組態
 
-1. 在 [**正確資料流程**] 下拉式清單中，選擇您要檢查哪一個資料流程是否存在。
-1. 指定您要尋找的資料是否存在，或不存在於 [**存在類型**] 設定中。
-1. 選取您是否想要**自訂表格達式**。
-1. 選擇您想要比較哪一個索引鍵資料行做為現有的條件。 根據預設，資料流程會在每個資料流中的資料行之間尋找等式。 若要透過計算值進行比較，請將滑鼠停留在資料行下拉式清單上，然後選取 [計算資料行]。
+1. 選擇您要檢查的資料流程是否存在於右邊的 **資料流程** 下拉式清單中。
+1. 指定您要尋找的資料是否存在，或存在於 **存在型** 別設定中。
+1. 選取您是否想要 **自訂表格達式**。
+1. 選擇您想要比較的索引鍵資料行，做為您的現有條件。 根據預設，資料流程會在每個資料流中的資料行之間尋找等式。 若要透過計算值進行比較，請將滑鼠停留在資料行下拉式清單上，然後選取 [計算資料行]。
 
-![存在設定](media/data-flow/exists.png "存在1")
+![存在的設定](media/data-flow/exists.png "存在1")
 
-### <a name="multiple-exists-conditions"></a>多個存在條件
+### <a name="multiple-exists-conditions"></a>有多個存在條件
 
-若要比較每個資料流程中的多個資料行，請按一下現有資料列旁的加號圖示，以加入新的 exists 條件。 每個額外的條件都是由 "and" 語句聯結。 比較兩個數據行與下列運算式相同：
+若要比較每個資料流程中的多個資料行，請按一下現有資料列旁的加號圖示，以加入新的存在條件。 每個額外的條件都會以 "and" 語句聯結。 比較兩個數據行與下列運算式相同：
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>自訂表格達式
 
-若要建立包含「and」和「equals to」以外之運算子的自由形式運算式，請選取 [**自訂表格達式**] 欄位。 在 [資料流程運算式產生器] 中按一下藍色方塊，以輸入自訂表格達式。
+若要建立包含「和」和「等於」以外之運算子的自由格式運算式，請選取 [ **自訂表格達式** ] 欄位。 透過 [資料流程運算式產生器] 輸入自訂表格達式，方法是按一下藍色方塊。
 
-![已存在自訂設定](media/data-flow/exists1.png "存在自訂")
+![存在自訂設定](media/data-flow/exists1.png "存在自訂")
 
 ## <a name="broadcast-optimization"></a>廣播最佳化
 
@@ -67,7 +67,7 @@ Exists 轉換是一個資料列篩選轉換，它會檢查您的資料是否存�
 
 ### <a name="example"></a>範例
 
-下列範例是名為的 exists 轉換 `checkForChanges` ，它會採用左邊的資料流程 `NameNorm2` 和正確的資料流程 `TypeConversions` 。  Exists 條件是 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` 當 `EMPID` `Region` 每個資料流程中的和資料行都相符時，傳回 true 的運算式。 當我們要檢查是否存在 `negate` 時，是 false。 我們不會在 [優化] 索引標籤中啟用任何廣播，因此 `broadcast` 具有值 `'none'` 。
+下列範例是名為的 exists 轉換 `checkForChanges` ，它會取得左邊的資料流程 `NameNorm2` 和右邊的資料流程 `TypeConversions` 。  `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`如果 `EMPID` 每個資料流程中的和資料行都相符，則存在條件就是傳回 true 的運算式 `Region` 。 由於我們正在檢查是否存在，因此為 `negate` false。 我們不會在 [優化] 索引標籤中啟用任何廣播，因此 `broadcast` 具有值 `'none'` 。
 
 在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
@@ -86,4 +86,4 @@ NameNorm2, TypeConversions
 
 ## <a name="next-steps"></a>後續步驟
 
-類似的轉換是[查閱](data-flow-lookup.md)和[聯結](data-flow-join.md)。
+類似的轉換是 [查閱](data-flow-lookup.md) 和 [聯結](data-flow-join.md)。

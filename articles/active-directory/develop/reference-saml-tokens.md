@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
 ms.openlocfilehash: 6dda32bb2bab4123ede0133b31625c499380fd59
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705702"
 ---
 # <a name="saml-token-claims-reference"></a>SAML 權杖宣告參考
@@ -156,5 +156,5 @@ Microsoft 身分識別平臺會在處理每個驗證流程時發出數種類型�
 
 * 若要深入瞭解如何使用 Microsoft Graph API 來管理權杖存留期原則，請參閱 [Azure AD 原則資源總覽](/graph/api/resources/policy)。
 * 將[自訂和選擇性宣告](active-directory-optional-claims.md)新增至應用程式的權杖。
-* 使用 [單一登入 (SSO) 搭配 SAML](single-sign-on-saml-protocol.md)。
-* 使用 [Azure 單一登出 SAML 通訊協定](single-sign-out-saml-protocol.md)
+* 使用 [單一 Sign-On (SSO) 搭配 SAML](single-sign-on-saml-protocol.md)。
+* 使用 [Azure 單一 Sign-Out SAML 通訊協定](single-sign-out-saml-protocol.md)

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045520"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
@@ -229,7 +229,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>使用活動識別碼計算安全性事件的數目
 
 
-這個範例依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。
+此範例會依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。
 它會將**活動**的值剖析為兩個新的資料行，並計算每個**活動識別碼**的發生次數。
 
 ```Kusto
@@ -270,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>剖析活動名稱和識別碼
-下列兩個範例依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
+下列兩個範例會依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -373,9 +373,9 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
-`Usage`資料類型可以用來依解決方案或資料類型追蹤內嵌資料量。 還有其他技術可依[電腦](../platform/manage-cost-storage.md#data-volume-by-computer)或[Azure 訂用帳戶、資源群組或資源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)來研究內嵌資料量。
+`Usage`資料類型可以用來依方案或資料類型來追蹤內嵌資料量。 有其他技術可依 [電腦](../platform/manage-cost-storage.md#data-volume-by-computer) 或 [Azure 訂用帳戶、資源群組或資源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)來研究內嵌資料磁片區。
 
 #### <a name="data-volume-by-solution"></a>依方案分類的資料量
 
@@ -389,7 +389,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-請注意，子句 `where IsBillable = true` 會篩選掉來自無擷取成本之特定解決方案的資料類型。  和的子句 `TimeGenerated` ，只是為了確保 Azure 入口網站中的查詢體驗會看起來超過預設的24小時。 在使用 Usage 資料類型時，`StartTime` 和 `EndTime` 代表所顯示結果所屬的時段。 
+請注意，子句 `where IsBillable = true` 會篩選掉來自無擷取成本之特定解決方案的資料類型。  此外，的子句 `TimeGenerated` 只是為了確保 Azure 入口網站中的查詢體驗將會回頭查看超過預設的24小時。 在使用 Usage 資料類型時，`StartTime` 和 `EndTime` 代表所顯示結果所屬的時段。 
 
 #### <a name="data-volume-by-type"></a>資料量 (依類型)
 
@@ -435,7 +435,7 @@ Update
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請參閱 [Kusto 語言參考](/azure/kusto/query)了解語言詳細資訊。
 - 進行[在 Azure 監視器中撰寫記錄查詢](get-started-queries.md)課程。

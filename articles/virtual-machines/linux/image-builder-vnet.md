@@ -1,6 +1,6 @@
 ---
-title: '使用適用于 Linux Vm 的 Azure 映射產生器，以允許存取現有的 Azure VNET (預覽) '
-description: 使用 Azure 映射產生器建立 Linux VM 映射，以允許存取現有的 Azure VNET
+title: '使用適用于 Linux Vm 的 Azure 映射產生器，以允許存取現有的 Azure VNET (預覽版) '
+description: 使用 Azure 映射建立器建立 Linux VM 映射，以允許存取現有的 Azure VNET
 author: danielsollondon
 ms.author: danis
 ms.date: 08/10/2020
@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068105"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用適用于 Linux Vm 的 Azure 映射產生器，以允許存取現有的 Azure VNET
 
-本文說明如何使用 Azure 映射產生器來建立可存取 VNET 上現有資源的基本自訂 Linux 映射。 您所建立的組建 VM 會部署到您在訂用帳戶中指定的新或現有 VNET。 當您使用現有的 Azure VNET 時，Azure 映射產生器服務不需要公用網路連線。
+本文說明如何使用 Azure 映射產生器來建立可存取 VNET 上現有資源的基本自訂 Linux 映射。 您所建立的組建 VM 會部署到您在訂用帳戶中指定的新或現有的 VNET。 當您使用現有的 Azure VNET 時，Azure 映射產生器服務不需要公用網路連線能力。
 
 > [!IMPORTANT]
 > Azure Image Builder 目前處於公開預覽狀態。
@@ -27,7 +27,7 @@ ms.locfileid: "88068105"
 
 ## <a name="register-the-features"></a>註冊各項功能
 
-首先，您必須註冊 Azure 映射產生器服務。 註冊會授與服務許可權，以建立、管理和刪除暫存資源群組。 此服務也具有將映射組建所需的群組加入資源的許可權。
+首先，您必須註冊 Azure 映射建立器服務。 註冊會授與服務許可權，以建立、管理及刪除預備資源群組。 服務也有許可權可新增映射組建所需的群組資源。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -107,7 +107,7 @@ az network vnet subnet update \
 
 ### <a name="add-network-security-group-rule"></a>新增網路安全性群組規則
 
-此規則允許從 Azure 映射產生器負載平衡器連線到 proxy VM。 埠60001適用于 Linux OSs，而埠60000則適用于 Windows 作業系統。 Proxy VM 會使用適用于 Linux Os 的埠22或適用于 Windows 作業系統的埠5986，連接到組建 VM。
+此規則可讓您從 Azure 映射產生器的負載平衡器連線到 proxy VM。 埠60001適用于 Linux OSs，埠60000適用于 Windows Os。 Proxy VM 會使用適用于 Linux OSs 的埠22或適用于 Windows Os 的埠5986來連線至組建 VM。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -122,7 +122,7 @@ az network nsg rule create \
     --description "Allow Image Builder Private Link Access to Proxy VM"
 ```
 
-### <a name="disable-private-service-policy-on-subnet"></a>停用子網上的私人服務原則
+### <a name="disable-private-service-policy-on-subnet"></a>在子網上停用私人服務原則
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -132,7 +132,7 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 
-如需有關映射產生器網路功能的詳細資訊，請參閱[Azure 映射產生器服務網路功能選項](image-builder-networking.md)。
+如需有關 Image Builder 網路功能的詳細資訊，請參閱 [Azure 映射產生器服務網路功能選項](image-builder-networking.md)。
 
 ## <a name="modify-the-example-template-and-create-role"></a>修改範例範本並建立角色
 
@@ -188,7 +188,7 @@ sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g
 sed -i -e "s/Azure Image Builder Service Networking Role/$netRoleDefName/g" aibRoleNetworking.json
 ```
 
-您可以建立兩個角色，而不是授與映射產生器較低的細微性和提高的許可權。 一個可讓產生器建立映射的許可權，另一個則允許它將組建 VM 和負載平衡器連線到您的 VNET。
+您可以建立兩個角色，而不是授與 Image Builder 更低的細微性和提高許可權。 其中一個會提供建立程式的建立者許可權，另一個則允許它將組建 VM 和負載平衡器連線至您的 VNET。
 
 ```bash
 # create role definitions
@@ -207,7 +207,7 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$vnetRgName
 ```
 
-如需許可權的詳細資訊，請參閱[使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md)或[使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)。
+如需許可權的詳細資訊，請參閱 [使用 Azure CLI 設定 Azure 映射產生器服務許可權](image-builder-permissions-cli.md) 或 [使用 PowerShell 設定 azure 映射產生器服務許可權](image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>建立映像
 
@@ -271,10 +271,10 @@ ssh aibuser@<publicIpAddress>
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您想要立即嘗試 recustomizing 映射版本以建立相同映射的新版本，請略過後續步驟，並繼續[使用 Azure 映射產生器來建立另一個映射版本](image-builder-gallery-update-image-version.md)。
+如果您想要立即嘗試 recustomizing 映射版本以建立相同映射的新版本，請略過下一個步驟，並繼續 [使用 Azure 映射產生器來建立另一個映射版本](image-builder-gallery-update-image-version.md)。
 
 
-以下會刪除已建立的映射，以及其他所有資源檔。 在刪除資源前，請先確定您已完成此部署。
+以下會刪除已建立的映射，以及所有其他資源檔。 在刪除資源前，請先確定您已完成此部署。
 
 刪除映像庫資源時，您必須先刪除所有映像版本，才能刪除用來建立它們的映像定義。 若要刪除資源庫，您必須先刪除資源庫中的所有映像定義。
 
@@ -312,7 +312,7 @@ az identity delete --ids $imgBuilderId
 az group delete -n $imageResourceGroup
 ```
 
-如果您已在本快速入門中建立 VNET，您可以刪除不再使用的 VNET。
+如果您已在此快速入門中建立 VNET，您可以刪除不再使用的 VNET。
 
 ## <a name="next-steps"></a>後續步驟
 

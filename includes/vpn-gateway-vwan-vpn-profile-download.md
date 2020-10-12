@@ -9,10 +9,10 @@ ms.date: 07/31/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87515299"
 ---
 ## <a name="1-download-the-file"></a>1.下載檔案
@@ -31,7 +31,7 @@ $PROFILE.VpnProfileSASUrl
 
 * AzureVPN
 * 泛型
-* OpenVPN （如果您已使用閘道上的**Azure 憑證**或**RADIUS 驗證**設定來啟用 OpenVPN）。 針對 VPN 閘道，請參閱[建立租用戶](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 針對虛擬 WAN，請參閱[建立租用戶 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
+* 如果您已在閘道) 上使用 **Azure 憑證** 或 **RADIUS 驗證** 設定來啟用 OpenVPN，OpenVPN (。 針對 VPN 閘道，請參閱[建立租用戶](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 針對虛擬 WAN，請參閱[建立租用戶 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
 
 ## <a name="3-retrieve-information"></a>3.擷取資訊
 

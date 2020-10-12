@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: kumud
 ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047074"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>使用影片索引子 API 自訂語言模型
@@ -34,12 +34,12 @@ ms.locfileid: "87047074"
 
 若要上傳要新增至語言模型的檔案，除了提供上述必要參數的值之外，您還必須使用 FormData 上傳主體中的檔案。 有兩種方式可以執行這項工作：
 
-* 金鑰會是檔案名，而值則是 txt 檔案。
-* 金鑰會是檔案名，而值則是 txt 檔案的 URL。
+* 索引鍵將是檔案名，而值則是 txt 檔案。
+* 索引鍵將是檔案名，而值則是 txt 檔案的 URL。
 
 ### <a name="response"></a>回應
 
-回應會依照下列範例 JSON 輸出的格式，提供新建立之語言模型的中繼資料，以及每個模型檔案的中繼資料：
+回應會提供新建立之語言模型的中繼資料，以及每個模型檔案的中繼資料，並遵循此範例 JSON 輸出的格式：
 
 ```json
 {
@@ -70,14 +70,14 @@ ms.locfileid: "87047074"
 
 ## <a name="train-a-language-model"></a>將語言模型定型
 
-[訓練語言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)API 會在指定的帳號中訓練自訂語言模型，其中包含已上傳至語言模型並在其中啟用的檔案內容。
+[定型語言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)API 會在指定的帳號中，將自訂語言模型定型，並將檔案中的內容上傳到語言模型並加以啟用。
 
 > [!NOTE]
-> 您必須先建立語言模型，再上傳其檔案。 建立語言模型或更新語言模型時，您可以上傳檔案。
+> 您必須先建立語言模型，再上傳其檔案。 您可以在建立語言模型或更新語言模型時上傳檔案。
 
 ### <a name="response"></a>回應
 
-回應會依照下列範例 JSON 輸出的格式，提供新定型之語言模型的中繼資料，以及每個模型檔案的中繼資料：
+回應會提供新定型之語言模型的中繼資料，以及每個模型檔案的中繼資料，並遵循此範例 JSON 輸出的格式：
 
 ```json
 {
@@ -105,15 +105,15 @@ ms.locfileid: "87047074"
 }
 ```
 
-傳回的 `id` 是用來區別語言模型的唯一識別碼，而 `languageModelId` 則是用來[上傳影片來編制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)並重新[編制影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)Api （也稱為 `linguisticModelId` 在影片索引子上傳/重新編制 api）。
+傳回的 `id` 是用來區別語言模型的唯一識別碼，而 `languageModelId` 是用來[上傳影片來對](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)[影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api 進行索引和重新編制索引， (也稱為 `linguisticModelId` 影片索引子上傳/重新索引 api) 。
 
 ## <a name="delete-a-language-model"></a>刪除語言模型
 
-[刪除語言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)API 會從指定的帳號中刪除自訂語言模型。 任何使用已刪除之語言模型的影片都會保留相同的索引，直到您重新編制影片索引為止。 如果您將影片重新編制索引，您可以將新的語言模型指派給影片。 否則，影片索引子會使用其預設模型來重新編制影片索引。
+「 [刪除語言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API」會從指定的帳號刪除自訂語言模型。 任何使用已刪除語言模型的影片都會保留相同的索引，直到您重新索引影片為止。 如果您重新索引影片，您可以將新的語言模型指派給影片。 否則，影片索引子將會使用其預設模型來重新編制影片索引。
 
 ### <a name="response"></a>回應
 
-成功刪除語言模型時，沒有任何傳回的內容。
+成功刪除語言模型時，不會傳回任何內容。
 
 ## <a name="update-a-language-model"></a>更新語言模型
 
@@ -124,12 +124,12 @@ ms.locfileid: "87047074"
 
 若要上傳要新增至語言模型的檔案，除了提供上述必要參數的值之外，您還必須使用 FormData 上傳主體中的檔案。 有兩種方式可以執行這項工作：
 
-* 金鑰會是檔案名，而值則是 txt 檔案。
-* 金鑰會是檔案名，而值則是 txt 檔案的 URL。
+* 索引鍵將是檔案名，而值則是 txt 檔案。
+* 索引鍵將是檔案名，而值則是 txt 檔案的 URL。
 
 ### <a name="response"></a>回應
 
-回應會依照下列範例 JSON 輸出的格式，提供新定型之語言模型的中繼資料，以及每個模型檔案的中繼資料：
+回應會提供新定型之語言模型的中繼資料，以及每個模型檔案的中繼資料，並遵循此範例 JSON 輸出的格式：
 
 ```json
 {
@@ -157,11 +157,11 @@ ms.locfileid: "87047074"
 }
 ```
 
-使用 `id` 回應中所傳回檔案的來下載檔案的內容。
+使用 `id` 回應中傳回的檔案，以下載檔案的內容。
 
 ## <a name="update-a-file-from-a-language-model"></a>從語言模型更新檔案
 
-[[更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)檔案] 可讓您 `enable` 在指定的帳號中，更新自訂語言模型中檔案的名稱和狀態。
+[ [更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) 檔案] 可讓您在 `enable` 指定的帳號中，更新自訂語言模型中檔案的名稱和狀態。
 
 ### <a name="response"></a>回應
 
@@ -177,11 +177,11 @@ ms.locfileid: "87047074"
 }
 ```
 
-使用 `id` 回應中所傳回之檔案的來下載檔案的內容。
+使用 `id` 回應中傳回的檔案，以下載檔案的內容。
 
 ## <a name="get-a-specific-language-model"></a>取得特定的語言模型
 
-[Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API 會傳回指定之帳戶中指定語言模型的相關資訊，例如語言和語言模型中的檔案。
+[Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API 會傳回指定的帳號中指定之語言模型的相關資訊，例如語言和語言模型中的檔案。
 
 ### <a name="response"></a>回應
 
@@ -213,15 +213,15 @@ ms.locfileid: "87047074"
 }
 ```
 
-使用 `id` 回應中所傳回之檔案的來下載檔案的內容。
+使用 `id` 回應中傳回的檔案，以下載檔案的內容。
 
 ## <a name="get-all-the-language-models"></a>取得所有語言模型
 
-「[取得所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)API」會傳回清單中指定之帳戶內的所有自訂語言模型。
+[取得所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)API 會傳回清單中指定帳戶的所有自訂語言模型。
 
 ### <a name="response"></a>回應
 
-回應會以下列範例 JSON 輸出的格式，提供您帳戶中所有語言模型的清單，以及其每個中繼資料和檔案：
+回應會根據此範例 JSON 輸出的格式，提供您帳戶中所有語言模型的清單，以及其每個中繼資料和檔案：
 
 ```json
 [
@@ -261,19 +261,19 @@ ms.locfileid: "87047074"
 
 ## <a name="delete-a-file-from-a-language-model"></a>從語言模型刪除檔案
 
-[Delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API 會從指定之帳戶中指定的語言模型刪除指定的檔案。
+「 [刪除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API」會從指定的帳號中指定的語言模型刪除指定的檔案。
 
 ### <a name="response"></a>回應
 
-成功從語言模型中刪除檔案時，沒有任何傳回的內容。
+從語言模型成功刪除檔案時，不會傳回任何內容。
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>從語言模型取得檔案的中繼資料
 
-檔案 API 的[取得中繼資料](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)會從您帳戶中所選的語言模型，傳回指定檔案的和中繼資料內容。
+檔案 API 的 [取得中繼資料](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) 會從您帳戶中選擇的語言模型傳回指定檔案的內容和中繼資料。
 
 ### <a name="response"></a>回應
 
-回應會以 JSON 格式提供檔案的內容和中繼資料，與下列範例類似：
+回應會以 JSON 格式提供檔案的內容和中繼資料，如下例所示：
 
 ```json
 {
@@ -291,12 +291,12 @@ ms.locfileid: "87047074"
 
 ## <a name="download-a-file-from-a-language-model"></a>從語言模型下載檔案
 
-[下載](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)檔案 API 會從指定之帳戶中指定的語言模型，下載包含指定檔案內容的文字檔。 此文字檔應符合原本上傳之文字檔的內容。
+[下載檔案](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)API 會從指定的帳號中指定的語言模型，下載包含指定檔案內容的文字檔。 此文字檔應符合原本上傳之文字檔的內容。
 
 ### <a name="response"></a>回應
 
 回應將會是以 JSON 格式，下載具有檔案內容的文字檔。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [使用網站自訂語言模型](customize-language-model-with-website.md)

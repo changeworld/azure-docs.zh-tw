@@ -4,17 +4,17 @@ description: 本文章提供升級 Service Fabric 應用程式的簡介，其中
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067506"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 應用程式升級
 Azure Service Fabric 應用程式是服務集合。 在升級期間，Service Fabric 會比較新的 [應用程式資訊清單](service-fabric-application-and-service-manifests.md) 與舊版本，並決定應用程式中哪些服務需要更新。 Service Fabric 會比較服務資訊清單中的版本號碼和上一版中的版本號碼。 如果服務未變更，則該服務不會升級。
 
 > [!NOTE]
-> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應該先取得參數，然後將它們傳遞至升級 API 呼叫，如下所示：
+> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應先取得參數，並將其傳遞至升級 API 呼叫，如下所示：
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -76,16 +76,16 @@ Service Fabric 在升級期間進行的健康狀態原則以及檢查不限於�
 ![Service Fabric 應用程式的升級程序][image]
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md)會逐步引導您使用 Visual Studio 進行應用程式升級。
+[使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md) 會逐步引導您使用 Visual Studio 進行應用程式升級。
 
 [使用 PowerShell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md)將引導您完成使用 PowerShell 進行應用程式升級的步驟。
 
 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。
 
-瞭解如何使用[資料序列化](service-fabric-application-upgrade-data-serialization.md)，讓您的應用程式升級相容。
+瞭解如何使用 [資料序列化](service-fabric-application-upgrade-data-serialization.md)，讓您的應用程式升級相容。
 
-瞭解如何在升級您的應用程式時使用 advanced 功能，方法是參考[Advanced 主題](service-fabric-application-upgrade-advanced.md)。
+瞭解如何在升級您的應用程式時使用先進的功能，方法是參考 [Advanced 主題](service-fabric-application-upgrade-advanced.md)。
 
-參考[疑難排解應用程式升級](service-fabric-application-upgrade-troubleshooting.md)中的步驟，以修正應用程式升級中常見的問題。
+藉由參考針對 [應用程式升級進行疑難排解](service-fabric-application-upgrade-troubleshooting.md)的步驟，修正應用程式升級中常見的問題。
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png

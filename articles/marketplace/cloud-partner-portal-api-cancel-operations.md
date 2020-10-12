@@ -1,6 +1,6 @@
 ---
 title: 取消作業 API-Microsoft 商業 marketplace
-description: 用來取消目前在供應專案上進行之作業的 API
+description: 此 API 可取消目前在供應專案上進行中的作業
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 095d9cf68374ee81cafdb6e7a32df29a57d122cb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287916"
 ---
 # <a name="cancel-operation"></a>取消作業
 
 > [!NOTE]
-> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
+> Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱 [CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md) 中所列的變更，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
 此 API 會取消目前正在供應項目上進行的作業。 使用[擷取作業 API](./cloud-partner-portal-api-retrieve-operations.md) 來取得要傳遞至此 API 的 `operationId`。 取消通常是一個同步作業，但在某些複雜的案例中，新的作業可能需要取消現有作業。 在此情況下，HTTP 回應本文會包含應用來查詢狀態的作業位置。
 
@@ -27,14 +27,14 @@ ms.locfileid: "87287916"
 
 --------------
 
-|  **名稱**    |      **說明**                                  |    **Data type**  |
+|  **名稱**    |      **描述**                                  |    **Data type**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  發行者識別碼，例如 `contoso`         |   String          |
 | offerId      |  供應項目識別碼                                     |   String          |
 | api-version  |  API 目前的版本                               |    Date           |
 |  |  |  |
 
-## <a name="header"></a>頁首
+## <a name="header"></a>標頭
 ------
 
 |  **名稱**              |  **ReplTest1**         |
@@ -58,7 +58,7 @@ ms.locfileid: "87287916"
 
 ### <a name="request-body-properties"></a>要求本文屬性
 
-|  **名稱**                |  **說明**                                               |
+|  **名稱**                |  **描述**                                               |
 |  --------                |  ---------------                                               |
 |  notification-emails     | 以逗號分隔的電子郵件識別碼清單，這些電子郵件識別碼將會收到關於發行作業進度的通知。 |
 |  |  |
@@ -77,12 +77,12 @@ ms.locfileid: "87287916"
 
 |  **名稱**             |    **ReplTest1**                       |
 |  ---------            |    ----------                      |
-| 位置    | 要取出此作業狀態的相對路徑。 |
+| Location    | 取得此作業狀態的相對路徑。 |
 |  |  |
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code**  |  **說明**                                                                       |
+| **程式碼**  |  **描述**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
 |  200      | 正常。 已成功處理要求，並同步取消作業。 |
 |  202      | 已接受。 已成功處理要求，而且正在取消該作業。 取消作業的位置會在回應標頭中傳回。 |

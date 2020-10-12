@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
 ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274430"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
@@ -71,7 +71,7 @@ Oracle Data Guard 可確保企業資料的高可用性、資料保護和嚴重�
 > Active Data Guard 需要額外的授權。 您也需要此授權，才能使用最遠的同步處理功能。 請與您的 Oracle 代表交流，以討論授權的含意。
 
 #### <a name="oracle-data-guard-with-fsfo"></a>使用 FSFO 的 Oracle Data Guard
-具有快速啟動容錯移轉的 Oracle Data Guard (FSFO) 可以在個別電腦上設定訊息代理程式，以提供額外的復原能力。 Data Guard 訊息代理程式和次要資料庫都會執行觀察器，並觀察主資料庫的停機時間。 如此一來，您也可以在資料防護觀察器設定中提供冗余。 
+具有 Fast-Start 容錯移轉 (FSFO) 的 Oracle Data Guard 可在個別電腦上設定訊息代理程式，以提供額外的復原能力。 Data Guard 訊息代理程式和次要資料庫都會執行觀察器，並觀察主資料庫的停機時間。 如此一來，您也可以在資料防護觀察器設定中提供冗余。 
 
 使用 Oracle Database 12.2 版和更新版本，您也可以使用單一 Oracle Data Guard broker 設定來設定多個觀察者。 這項設定可提供額外的可用性，以防一個觀察者和次要資料庫體驗停機。 Data Guard 訊息代理程式很輕量，可以裝載于相對較小的虛擬機器上。 若要深入瞭解 Data Guard Broker 及其優點，請流覽本主題的 [Oracle 檔](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) 。
 
@@ -152,7 +152,7 @@ Oracle 分區化主要是由下列元件所組成。 您可以在 [Oracle 分區
 
 - **全域服務** -全域服務類似于一般資料庫服務。 除了資料庫服務的所有屬性之外，全域服務還具有分區化資料庫的屬性，例如用戶端與分區之間的區域親和性，以及複寫延遲容錯。 只需要建立一個全域服務，就可以在分區化資料庫中讀取/寫入資料。 使用 Active Data Guard 並設定分區的唯讀複本時，您可以為唯讀工作負載建立另一個 gGobal 服務。 用戶端可以使用這些全域服務連接到資料庫。
 
-- **分區資料庫** -分區資料庫是您的 Oracle 資料庫。 每個資料庫都會在具有快速啟動容錯移轉 (FSFO) 啟用的訊息代理程式設定中，使用 Oracle Data Guard 進行複寫。 您不需要在每個分區上設定「資料防護」容錯移轉和複寫。 這會在共用資料庫建立時自動設定和部署。 如果特定分區失敗，Oracle 共用會自動將資料庫連接從主要複本容錯移轉到待命。
+- **分區資料庫** -分區資料庫是您的 Oracle 資料庫。 在啟用 Fast-Start 容錯移轉 (FSFO) 的 Broker 設定中，會使用 Oracle Data Guard 來複寫每個資料庫。 您不需要在每個分區上設定「資料防護」容錯移轉和複寫。 這會在共用資料庫建立時自動設定和部署。 如果特定分區失敗，Oracle 共用會自動將資料庫連接從主要複本容錯移轉到待命。
 
 您可以使用兩個介面來部署和管理 Oracle 分區化資料庫： Oracle Enterprise Manager Cloud Control GUI 和/或 `GDSCTL` 命令列公用程式。 您甚至可以使用雲端控制來監視不同分區的可用性和效能。 此 `GDSCTL DEPLOY` 命令會自動建立分區及其各自的接聽程式。 此外，此命令會自動部署用於系統管理員所指定之分區層級高可用性的複寫設定。
 
@@ -232,6 +232,6 @@ Oracle Data Guard 可以用來分區化具有系統管理、使用者定義和�
 
 - [Oracle Data Guard 簡介](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Oracle Data Guard Broker 概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [針對主動-主動高可用性設定 Oracle GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [針對 Active-Active 高可用性設定 Oracle GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Oracle 分區化總覽](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle Active Data Guard 遠距任意距離的零資料遺失](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

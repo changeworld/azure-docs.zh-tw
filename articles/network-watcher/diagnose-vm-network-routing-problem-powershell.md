@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738782"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>診斷虛擬機器網路路由問題 - Azure PowerShell
@@ -40,7 +40,7 @@ ms.locfileid: "84738782"
 
 ## <a name="create-a-vm"></a>建立 VM
 
-您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 來建立資源群組。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
+您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -82,7 +82,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-next-hop"></a>使用下一個躍點
 
-Azure 會自動建立通往預設目的地的路由。 您可以建立覆寫預設路由的自訂路由。 有時候，自訂路由可能會導致通訊失敗。 若要測試來自 VM 的路由，請使用[AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)命令來判斷流量以特定位址為目標時的下一個路由躍點。
+Azure 會自動建立通往預設目的地的路由。 您可以建立覆寫預設路由的自訂路由。 有時候，自訂路由可能會導致通訊失敗。 若要測試來自 VM 的路由，請使用 [AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) 命令來判斷流量是否以特定位址為目標的下一個路由躍點。
 
 測試從 VM 輸出至 www.bing.com 其中一個 IP 位址的通訊：
 
@@ -110,7 +110,7 @@ Get-AzNetworkWatcherNextHop `
 
 ## <a name="view-details-of-a-route"></a>檢視路由的詳細資料
 
-若要進一步分析路由，請使用[AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)命令來檢查網路介面的有效路由：
+若要進一步分析路由，請使用 [AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) 命令來檢查網路介面的有效路由：
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `

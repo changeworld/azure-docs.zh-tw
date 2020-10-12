@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80297715"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列軟體、高可用性和網路需求
@@ -63,7 +63,7 @@ ms.locfileid: "80297715"
 
 您的 StorSimple 裝置是鎖定的裝置。 不過，您的防火牆中必須開啟連接埠，以允許 iSCSI、雲端和管理流量。 下表列出必須在防火牆中開啟的連接埠。 在這個資料表中，*in* 或 *inbound* 指的是輸入用戶端要求存取裝置的方向。 *Out* 或 *outbound* 指的是 StorSimple 裝置於外部傳送資料至部署之上的方向：例如，輸出到網際網路。
 
-| 連接埠號碼 <sup>1,2</sup> | 內或外 | 連接埠範圍 | 必要 | 備忘稿 |
+| 連接埠號碼 <sup>1,2</sup> | 內或外 | 連接埠範圍 | 必要 | 注意 |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |外 |WAN |否 |<ul><li>輸出連接埠用於網際網路存取以擷取更新。</li><li>輸出 Web Proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 IP 開啟。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |外 |WAN |是 |<ul><li>輸出連接埠用來存取雲端中的資料。</li><li>輸出 Web Proxy 可由使用者設定。</li><li>若要允許系統更新，此連接埠也必須為控制器固定 IP 開啟。</li><li>在這兩個控制器上也使用此連接埠進行記憶體回收。</li></ul> |
@@ -91,7 +91,7 @@ ms.locfileid: "80297715"
 我們建議您，在大部分情況下，根據固定 IP 位址為輸出流量設定防火牆規則。 不過，您可以使用下列資訊設定建立安全環境所需的進階防火牆規則。
 
 > [!NOTE]
-> 裝置 (來源) IP 應該一律設定為所有啟用的網路介面。 目的地 IP 應該設為 [Azure 資料中心 IP 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
+> 裝置 (來源) IP 應該一律設定為所有啟用的網路介面。 目的地 Ip 應設定為 [Azure 資料中心 IP 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
 
 
 #### <a name="url-patterns-for-azure-portal"></a>Azure 入口網站的 URL 模式
@@ -129,7 +129,7 @@ ms.locfileid: "80297715"
 * 一組預先決定的值已指派給網路介面。
 * 當網路介面已啟用雲端或已停用雲端功能，但是已設定閘道器時，請考量以下所示的範例資料表，其中包含指派給各種網路介面的值。 請注意，此處指派的值僅為範例值。
 
-    | Linux | 已啟用雲端 | 已停用雲端且具有閘道器 |
+    | 網路介面 | 已啟用雲端 | 已停用雲端且具有閘道器 |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
@@ -233,7 +233,7 @@ StorSimple 裝置包含使用鏡像空間保護的固態硬碟 (SSD) 與硬碟 (
 * 請隨時確定這兩個 EBOD 機箱控制器模組，兩條 SAS 纜線，以及所有硬碟都已安裝。
 * 如果 EBOD 機箱控制器模組故障，請立即要求替代品。
 * 如果一個 EBOD 機箱控制器模組失敗，請先確定另一個控制器模組處於主動狀態，才取代失敗的模組。 若要確認控制器為作用中，請移至 [識別您裝置上的作用中控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。
-* 在更換 EBOD 控制器模組期間，請存取 [**監視**] [  >  **硬體健康**情況]，以持續監視 StorSimple Device Manager 服務中的元件狀態。
+* 在更換 EBOD 控制器模組期間，藉由存取**監視**  >  **硬體健全狀況**，持續監視 StorSimple 裝置管理員服務中元件的狀態。
 * 如果 SAS 纜線失敗或需要替代品 (Microsoft 支援應涉入這類決定)，請確定您只移除了需要替代品的 SAS 纜線。
 * 請勿於任何時間同時從系統移除兩條 SAS 纜線。
 

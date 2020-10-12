@@ -1,15 +1,15 @@
 ---
 title: 作業系統功能
-description: 瞭解 Windows Azure App Service 中的 OS 功能。 瞭解您的應用程式所取得的檔、網路和登錄存取類型。
+description: 瞭解 Windows 上 Azure App Service 中的作業系統功能。 瞭解您應用程式取得的檔案、網路和登錄存取類型。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080193"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
@@ -55,12 +55,12 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 
 - 應用程序可能會擲回錯誤，指出磁碟上沒有足夠的空間。
 - 瀏覽至 Kudu 主控台時，您可能會看到磁碟錯誤。
-- 從 Azure DevOps 或 Visual Studio 的部署可能會失敗，並出現 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` 。
+- 從 Azure DevOps 或 Visual Studio 部署可能會失敗 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` 。
 - 您的應用程式可能會效能變慢。
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-unc-shares"></a> (UNC 共用) 的網路磁碟機機
+### <a name="network-drives-unc-shares"></a> (UNC 共用的網路磁碟機機) 
 App Service 將所有使用者內容儲存在一組 UNC 共用上，此種獨特做法讓應用程式的部署和維護變得直接。 此種模型非常符合一種內容儲存體模式，該模式通常是由具有多個負載平衡伺服器的內部部署虛擬主機所使用。 
 
 在 App Service 中，每個資料中心內都已建立許多 UNC 共用。 每個 UNC 共用都會配置每個資料中心內各客戶某個百分比的使用者內容。 此外，單一客戶訂閱的所有檔案內容一律放在相同的 UNC 共用上。 
@@ -76,7 +76,7 @@ App Service 將所有使用者內容儲存在一組 UNC 共用上，此種獨特
 
 App Service 對於暫存本機儲存體的兩種使用方式範例：暫存 ASP.NET 檔案的目錄和 IIS 壓縮檔案的目錄。 ASP.NET 編譯系統會使用 "Temporary ASP.NET Files" 目錄作為暫存編譯快取位置。 IIS 則使用 "IIS Temporary Compressed Files" 目錄來儲存壓縮回應輸出。 這兩種檔案使用方式 (和其他方式) 都會在 App Service 中重新對應至每個應用程式的暫存本機儲存體。 此重新對應可確保功能如預期般繼續運作。
 
-App Service 中的每個應用程式都會以隨機唯一的低許可權背景工作進程身分識別來執行，稱為「應用程式集區身分識別」，如下所述： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
+App Service 中的每個應用程式都會以隨機唯一的低許可權背景工作進程身分識別（稱為「應用程式集區身分識別」）執行，如下所述： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
 
 <a name="multipleinstances"></a>
 
@@ -86,7 +86,7 @@ App Service 中的每個應用程式都會以隨機唯一的低許可權背景�
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>網路存取
-應用程式程式碼可以使用 TCP/IP 和 UDP 型通訊協定，對公開外部服務的網際網路可存取端點進行輸出網路連線。 應用程式可以使用這些相同的通訊協定來連線到 Azure 中的服務，例如，藉由建立 SQL Database 的 HTTPS 連線。
+應用程式程式碼可以使用 TCP/IP 和 UDP 型通訊協定，對公開外部服務的網際網路可存取端點進行輸出網路連線。 應用程式可以使用這些相同的通訊協定來連線至 Azure 中的服務，例如，藉由建立與 SQL Database 的 HTTPS 連接。
 
 此外，應用程式可以在有限的情況下建立一個本機回送連線，並且讓應用程式在該本機回送通訊端上接聽。 這項功能主要是讓在本機回送通訊端上接聽的應用程式成為其功能的一部分。 每個應用程式都會看到「私人」回送連線。 應用程式 "A" 無法接聽由應用程式 "B" 建立的本機回送通訊端。
 
@@ -123,7 +123,7 @@ App Service 中的每個應用程式都會以隨機唯一的低許可權背景�
 
 App Service 並未提供對 VM 執行個體的遠端桌面存取。
 
-## <a name="more-information"></a>其他資訊
+## <a name="more-information"></a>詳細資訊
 
 [Azure App Service 沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - 有關 App Service 執行環境的最新資訊。 本頁面由 App Service 開發團隊直接維護。
 

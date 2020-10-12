@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705855"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家雲端環境中使用 MSAL
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 本指南示範如何登入公司和學校帳戶、取得存取權杖，以及在 [Azure Government 雲端](https://azure.microsoft.com/global-infrastructure/government/) 環境中呼叫 Microsoft Graph API。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您符合這些必要條件。
 
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 1. 在應用程式 [概觀]**** 頁面上，記下 [應用程式 (用戶端) 識別碼]**** 值。
 1. 本教學課程會要求您啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
 1. 在 [進階設定] 的 [隱含授與] 底下，選取 [識別碼權杖] 和 [存取權杖] 核取方塊。 識別碼權杖和存取權杖是必要的，因為此應用程式需要登入使用者並呼叫 API。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>步驟2：設定您的 web 伺服器或專案
 

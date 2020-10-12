@@ -4,10 +4,10 @@ description: 使用 PowerShell 在 Azure DevTest Labs 中從 VHD 檔案自動建
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b0712fdbec1ce23ad9e09d972e425cb7941107b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288976"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 從 VHD 檔案建立自訂映像
@@ -24,20 +24,20 @@ ms.locfileid: "87288976"
 
 下列步驟將逐步引導您使用 PowerShell 從 VHD 檔案建立自訂映像：
 
-1. 在 PowerShell 提示字元中，使用**disconnect-azaccount** Cmdlet 的下列呼叫來登入您的 Azure 帳戶。
+1. 在 PowerShell 提示字元中，使用下列對 **disconnect-azaccount 指令程式** 的呼叫來登入您的 Azure 帳戶。
 
     ```powershell
     Connect-AzAccount
     ```
 
-1.  藉由呼叫**get-azsubscription** Cmdlet 來選取所需的 Azure 訂用帳戶。 以有效的 Azure 訂用帳戶 ID 取代 **$subscriptionId** 變數的下列預留位置。
+1.  藉由呼叫 **>select-azsubscription** Cmdlet 來選取所需的 Azure 訂用帳戶。 以有效的 Azure 訂用帳戶 ID 取代 **$subscriptionId** 變數的下列預留位置。
 
     ```powershell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  藉由呼叫**get-azresource** Cmdlet 來取得實驗室物件。 以您環境的適當值取代 **$labRg** 和 **$labName** 變數的下列預留位置。
+1.  藉由呼叫 **get-azresource** Cmdlet 來取得實驗室物件。 以您環境的適當值取代 **$labRg** 和 **$labName** 變數的下列預留位置。
 
     ```powershell
     $labRg = '<Specify your lab resource group name here>'
@@ -51,7 +51,7 @@ ms.locfileid: "87288976"
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
-1.  使用**new-azresourcegroupdeployment** Cmdlet 建立自訂映射。 將 **$customImageName** 和 **$customImageDescription** 變數的下列預留位置取代為對您環境有意義的名稱。
+1.  使用 **>new-azresourcegroupdeployment** Cmdlet 來建立自訂映射。 將 **$customImageName** 和 **$customImageDescription** 變數的下列預留位置取代為對您環境有意義的名稱。
 
     ```powershell
     $customImageName = '<Specify the custom image name>'
@@ -98,6 +98,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 - [自訂映像或公式？](./devtest-lab-faq.md#blog-post)
 - [在 Azure DevTest Labs 之間複製自訂映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [將 VM 新增到實驗室](devtest-lab-add-vm.md)

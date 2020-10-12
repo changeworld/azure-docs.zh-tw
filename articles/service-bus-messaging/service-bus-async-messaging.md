@@ -1,13 +1,13 @@
 ---
 title: 服務匯流排非同步傳訊 |Microsoft Docs
-description: 瞭解 Azure 服務匯流排如何透過具有佇列、主題和訂用帳戶的儲存和轉寄機制來支援 asynchronism。
+description: 瞭解 Azure 服務匯流排如何透過使用佇列、主題和訂閱的儲存和轉送機制來支援 asynchronism。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 0ea2a2f51d29f1a65926509581df49b453bde59f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067540"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同步傳訊模式和高可用性

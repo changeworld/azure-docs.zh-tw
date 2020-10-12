@@ -4,10 +4,10 @@ description: 針對新的建議建立 Azure Advisor 警示
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973655"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 入口網站建立新建議的 Azure Advisor 警示 
@@ -187,11 +187,11 @@ ms.locfileid: "90973655"
 
 1. 在 **入口網站**中，選取 [ **Azure Advisor**]。
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Azure 入口網站功能表的螢幕擷取畫面，其中顯示已選取 Azure Advisor。":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="[警示詳細資料] 區段的螢幕擷取畫面。":::
 
 2. 在左側功能表的 [ **監視** ] 區段中，選取 [ **警示**]。
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Azure 入口網站功能表的螢幕擷取畫面，其中顯示已選取的警示。":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="[警示詳細資料] 區段的螢幕擷取畫面。":::
 
 3. 若要編輯警示，請按一下警示名稱以開啟警示，並編輯您要編輯的欄位。
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: aahi
 ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460266"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
@@ -171,11 +171,11 @@ JSON 回應中的下列屬性名稱已變更，適用于：
     * 技能
 
 * 僅) 下列個人資訊實體類型的識別 (英文：
-    * 人
+    * 個人
     * 組織
     * 作為 [數量] 下的子類型的年齡
     * 日期為 DateTime 下的子類型
-    * Email 
+    * 電子郵件 
     * 電話號碼僅 (US) 
     * URL
     * IP 位址

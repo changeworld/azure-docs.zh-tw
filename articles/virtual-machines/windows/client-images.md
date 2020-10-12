@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292047"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 用戶端進行開發/測試案例
@@ -21,8 +21,8 @@ ms.locfileid: "87292047"
 ![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 如需 azure 資源庫中的 windows 10 專業版和 windows 10 專業版 N 映射，請參閱[如何在 azure 上部署 windows 10 （含](windows-desktop-multitenant-hosting-deployment.md)多組織使用者共用許可權 
-> ![ Pro）的詳細資料，Azure 入口網站](./media/client-images/windows-client-pro-images.png) 
+> 如需 azure 資源庫中的 Windows 10 專業版和 Windows 10 專業版 N 映射，請參閱[如何在 azure 上部署 Windows 10，其中有多租使用者裝載 Rights](windows-desktop-multitenant-hosting-deployment.md) 
+> ![ Pro 映射詳細資料 Azure 入口網站](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>訂用帳戶資格
@@ -57,5 +57,5 @@ ms.locfileid: "87292047"
 
 ![Azure 帳戶入口網站中的供應項目識別碼詳細資料](./media/client-images/offer-id-azure-account-portal.png) 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 您現在可以使用 [PowerShell](quick-create-powershell.md)、[Resource Manager templates](ps-template.md) 或 [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) 來部署您的 VM。

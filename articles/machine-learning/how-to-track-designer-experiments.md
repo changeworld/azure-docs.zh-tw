@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885973"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>啟用 Azure Machine Learning 設計工具管線中的記錄
@@ -74,7 +74,7 @@ ms.locfileid: "90885973"
 
     ![在 studio 中查看執行計量](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何在設計工具中使用記錄。 如需後續步驟，請參閱下列相關文章：
 

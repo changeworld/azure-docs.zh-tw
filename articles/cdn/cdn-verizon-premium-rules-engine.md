@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040217"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon Premium 規則引擎的 Azure CDN 覆寫 HTTP 行為
@@ -55,7 +55,7 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
     ![CDN 新規則選項](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > 多項規則的列出順序會影響規則的處理方式。 後一項規則可能會覆寫前一項規則所指定的動作。 例如，如果您的規則允許根據要求屬性存取資源，以及拒絕存取所有要求的規則，則第二個規則會覆寫第一個。 只有當規則與相同的屬性互動時，才會覆寫先前的規則。
+   > 多項規則的列出順序會影響規則的處理方式。 後一項規則可能會覆寫前一項規則所指定的動作。 例如，如果您的規則允許根據要求屬性存取資源，以及拒絕存取所有要求的規則，則第二個規則會覆寫第一個規則。 只有當規則與相同的屬性互動時，規則才會覆寫先前的規則。
    >
 
 3. 在 [名稱/描述]  文字方塊中輸入名稱。

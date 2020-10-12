@@ -4,10 +4,10 @@ description: 本文提供在例外狀況發生時所要採取的 Azure 服務匯
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4813ad7386af3d9dd730b74e6b815ff173cfe809
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885742"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服務匯流排傳訊例外狀況
@@ -183,6 +183,6 @@ Aliases:  <mynamespace>.servicebus.windows.net
    * 針對 **暫時性問題** (其中 ***isTransient*** 設為 ***true***) 或針對 **節流問題**，重試作業可能會解決此問題。 您可以利用 SDK 上的預設重試原則來進行此操作。
    * 針對其他問題，例外狀況中的詳細資料會指出問題和解決步驟可以從相同的方式推斷。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如需完整的服務匯流排 .NET API 參考資料，請參閱 [Azure .NET API 參考資料](/dotnet/api/overview/azure/service-bus)。
 如需疑難排解秘訣，請參閱 [疑難排解指南](service-bus-troubleshooting-guide.md)

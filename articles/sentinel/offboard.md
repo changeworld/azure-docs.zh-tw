@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885845"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>從您的工作區移除 Azure Sentinel
@@ -76,6 +76,6 @@ ms.locfileid: "90885845"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何移除 Azure Sentinel 服務。 如果您改變主意，並且想要再次安裝它：
 - 開始 [Azure Sentinel](quickstart-onboard.md)。

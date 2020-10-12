@@ -1,6 +1,6 @@
 ---
 title: 部署 Azure 虛擬網路容器網路功能 | Microsoft Docs
-description: 瞭解如何部署適用于 Kubernetes 叢集的 Azure 虛擬網路容器網路介面（CNI）外掛程式。
+description: 瞭解如何部署適用于 Kubernetes 叢集 (CNI) 外掛程式的 Azure 虛擬網路容器網路介面。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -17,10 +17,10 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289587"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虛擬網路容器網路介面外掛程式
@@ -168,8 +168,8 @@ CNI 網路組態檔是以 JSON 格式描述。 根據預設，它出現在 Linux
 
 從 [GitHub](https://github.com/Azure/azure-container-networking/releases) 下載外掛程式。 下載適用於您使用平台的最新版本：
 
-- **Linux**： [azure-vnet-cni-linux-amd64- \<version no.\> . tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
-- **Windows**： [azure-vnet-cni-windows-amd64- \<version no.\> .zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
+- **Linux**： [azure-vnet-cni-Linux-amd64- \<version no.\> . tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
+- **Windows**： [azure-vnet-cni-Windows-amd64- \<version no.\> .zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
 將 [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) 或 [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) 的安裝指令碼複製到您的電腦。 將指令碼儲存到電腦上的 `scripts` 目錄，並將檔案命名為 `install-cni-plugin.sh` (Linux) 或 `install-cni-plugin.ps1` (Windows)。 若要安裝外掛程式，請針對平台執行適當的指令碼，指定所使用外掛程式的版本。 例如，您可以指定 *v1.0.12-rc3*：
 

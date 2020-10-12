@@ -1,5 +1,5 @@
 ---
-title: 管理封包捕獲-Azure PowerShell
+title: 管理封包捕捉-Azure PowerShell
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 PowerShell 管理網路監看員的封包擷取功能
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737915"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>使用 PowerShell 以 Azure 網路監看員管理封包擷取
@@ -274,11 +274,11 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
-造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來尋找 VM 是否允許特定流量流入或流出
+造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)，以找出您的 VM 是否允許特定流量
 
 <!-- Image references -->
 

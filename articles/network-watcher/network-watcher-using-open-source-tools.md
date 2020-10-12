@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738629"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用開放原始碼工具將往返於 VM 的網路流量模式視覺化
@@ -25,7 +25,7 @@ ms.locfileid: "84738629"
 
 Azure 的網路監看員可讓您在網路上執行封包擷取，以便擷取資料。 本文提供逐步解說，示範如何使用 CapAnalysis 搭配網路監看員，以視覺化和深入探索封包擷取。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 您在 Azure 的 VM 上部署簡單的 Web 應用程式，而且想要使用開放原始碼工具將網路流量視覺化，以快速識別流程模式和任何可能異常情況。 您可以利用網路監看員取得網路環境的封包擷取，並直接儲存在儲存體帳戶中。 然後，CapAnalysis 可以直接從儲存體 blob 內嵌封包擷取，並將其內容視覺化。
 
@@ -74,7 +74,7 @@ CapAnalysis 提供各種選項將封包擷取視覺化，各以不同的觀點�
 
 1. Geomap
 
-    此窗格會提供您網路流量的地圖視圖，其中的色彩會調整為每個國家/地區的流量量。 您可以選取反白顯示的國家/地區來查看額外的流量統計資料，例如從該國家/地區的 Ip 傳送和接收的資料比例。
+    此窗格提供您網路流量的地圖視圖，並將色彩調整為每個國家/地區的流量量。 您可以選取反白顯示的國家/地區來查看其他流量統計資料，例如從該國家/地區的 Ip 傳送和接收的資料比例。
 
     ![geomap][8]
 
@@ -90,7 +90,7 @@ CapAnalysis 提供各種選項將封包擷取視覺化，各以不同的觀點�
 
 網路監看員的封包擷取功能可讓您擷取執行網路鑑識所需的資料，並深入了解您的網路流量。 在此案例中，我們示範如何使用開放原始碼視覺效果工具，輕鬆地整合來自網路監看員的封包擷取。 使用 CapAnalysis 之類的開放原始碼工具將封包擷取視覺化，可讓您執行深入的封包檢查，並快速識別網路流量的趨勢。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 NSG 流程記錄，請參閱 [NSG 流程記錄](network-watcher-nsg-flow-logging-overview.md)
 

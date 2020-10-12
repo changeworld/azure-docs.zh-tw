@@ -1,5 +1,5 @@
 ---
-title: 翻譯工具語言方法
+title: Translator 語言方法
 titleSuffix: Azure Cognitive Services
 description: 語言方法會取得翻譯工具的其他作業目前支援的語言集合。
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588593"
 ---
-# <a name="translator-30-languages"></a>翻譯工具3.0：語言
+# <a name="translator-30-languages"></a>Translator 3.0：語言
 
-取得 Translator 的其他作業目前支援的語言集合。 
+取得翻譯工具目前支援的語言集合。 
 
 ## <a name="request-url"></a>要求 URL
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必要參數<em></em>。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。</td>
+    <td><em>必要參數</em>。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。</td>
   </tr>
   <tr>
     <td>scope</td>
@@ -52,12 +52,12 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>Accept-Language</td>
-    <td>*選擇性要求標頭*。<br/>用於使用者介面字串的語言。 回應中的某些欄位是語言名稱或區域名稱。 您可以使用此參數來定義傳回這些名稱的語言。 提供語式正確的的 BCP 47 語言標記即可指定語言。 舉例而言，值 `fr` 可要求傳回法文名稱，使用值 `zh-Hant` 則可要求繁體中文的名稱。<br/>未指定目標語言或無法進行當地語系化時，會提供英文名稱。
+    <td>*選用的要求標頭*。<br/>用於使用者介面字串的語言。 回應中的某些欄位是語言名稱或區域名稱。 您可以使用此參數來定義傳回這些名稱的語言。 提供語式正確的的 BCP 47 語言標記即可指定語言。 舉例而言，值 `fr` 可要求傳回法文名稱，使用值 `zh-Hant` 則可要求繁體中文的名稱。<br/>未指定目標語言或無法進行當地語系化時，會提供英文名稱。
     </td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*選擇性要求標頭*。<br/>用於識別唯一要求的 GUID，由用戶端產生。</td>
+    <td>*選用的要求標頭*。<br/>用於識別唯一要求的 GUID，由用戶端產生。</td>
   </tr>
 </table> 
 
@@ -275,7 +275,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在 [V3 Translator](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)的 [參考] 頁面上找到常見的錯誤碼。 
 
 ## <a name="examples"></a>範例
 

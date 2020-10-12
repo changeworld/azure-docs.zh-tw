@@ -1,6 +1,6 @@
 ---
 title: 建立具有靜態公用 IP 位址的 VM - PowerShell | Microsoft Docs
-description: 使用 PowerShell 建立具有靜態公用 IP 位址的虛擬機器（VM）。 靜態公用 IP 位址是永遠不會變更的位址。
+description: 使用 PowerShell 建立具有靜態公用 IP 位址的虛擬機器 (VM) 。 靜態公用 IP 位址是永遠不會變更的位址。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
 ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287698"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>使用 PowerShell 建立具有靜態公用 IP 位址的虛擬機器
@@ -36,7 +36,7 @@ ms.locfileid: "87287698"
    New-AzResourceGroup -Name myResourceGroup -Location EastUS
    ```
 
-3. 使用[update-azvm](/powershell/module/az.Compute/New-azVM)命令建立虛擬機器。 `-AllocationMethod "Static"` 選項可將靜態公用 IP 位址指派給虛擬機器。 下列範例會建立 Windows Server 虛擬機器，其具有名為 *myPublicIpAddress* 的靜態、基本 SKU 公用 IP 位址。 出現提示時，請提供使用者名稱與密碼以作為虛擬機器的登入認證：
+3. 使用 [new-azvm](/powershell/module/az.Compute/New-azVM) 命令來建立虛擬機器。 `-AllocationMethod "Static"` 選項可將靜態公用 IP 位址指派給虛擬機器。 下列範例會建立 Windows Server 虛擬機器，其具有名為 *myPublicIpAddress* 的靜態、基本 SKU 公用 IP 位址。 出現提示時，請提供使用者名稱與密碼以作為虛擬機器的登入認證：
 
    ```azurepowershell-interactive
    New-AzVm `
@@ -49,7 +49,7 @@ ms.locfileid: "87287698"
 
    如果公用 IP 位址必須是標準 SKU，您必須在不同的步驟中[建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)[將公用 IP 位址指派給網路介面](virtual-network-network-interface-addresses.md#add-ip-addresses)，然後[透過網路介面建立虛擬機器](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)。 深入了解[公用 IP 位址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虛擬機器將會新增至公用 Azure Load Balancer 的後端集區，則虛擬機器公用 IP 位址的 SKU 必須符合負載平衡器公用 IP 位址的 SKU。 如需詳細資訊，請參閱 [Azure Load Balancer](../load-balancer/skus.md)。
 
-4. 查看指派的公用 IP 位址，並確認它已建立為靜態位址，並使用[get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress)：
+4. 查看指派的公用 IP 位址，並確認它已建立為靜態位址，並具有 [>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress)：
 
    ```azurepowershell-interactive
    Get-AzPublicIpAddress `
@@ -75,6 +75,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- 深入瞭解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
+- 深入瞭解所有 [公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
 - 深入了解[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，並將[靜態私人 IP 位址](virtual-network-network-interface-addresses.md#add-ip-addresses)指派給 Azure 虛擬機器
 - 深入了解如何建立 [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器
