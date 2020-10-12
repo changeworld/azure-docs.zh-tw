@@ -1,5 +1,5 @@
 ---
-title: 找不到應用程式 Proxy 應用程式的作用中連接器群組
+title: 找不到應用程式 Proxy 應用程式的工作連接器群組
 description: 解決在具有 Azure AD 應用程式 Proxy 之應用程式的連接器群組中沒有作用中的連接器時可能會遇到問題
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a9b43660889a318b2085f3aa8c1060daebe0244
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764735"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>針對應用程式 Proxy 應用程式找不到作用中的連接器群組
@@ -32,7 +32,7 @@ ms.locfileid: "84764735"
 
 -   如果群組中沒有連接器，您可以：
 
-    -   在適當的內部部署伺服器上下載新的連接器，並將其指派給此群組
+    -   在內部部署伺服器上下載新的連接器，並將其指派給此群組
 
     -   將作用中的連接器移至群組中
 

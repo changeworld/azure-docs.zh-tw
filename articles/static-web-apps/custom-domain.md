@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563341"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽中設定自訂網域
@@ -31,7 +31,7 @@ ms.locfileid: "87563341"
 
 | 如果要                                 | 結果為                                                |
 | -----------------------------------------------| --------------------------------------------------- |
-| 支援 `www.example.com` 或`blog.example.net`| [對應 CNAME 記錄](#map-a-cname-record)           |
+| 支援 `www.example.com` 或 `blog.example.net`| [對應 CNAME 記錄](#map-a-cname-record)           |
 | 支援 `example.com`                          | [設定根網域](#configure-a-root-domain) |
 | 將所有子網域指向 `www.example.com`      | [對應萬用字元](#map-a-wildcard-domain)            |
 

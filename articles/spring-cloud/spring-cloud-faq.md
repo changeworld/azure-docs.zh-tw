@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888715"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
@@ -76,7 +76,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支援分散式追蹤？
 
-可以。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
+是。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服務繫結支援的資源類型為何？
@@ -89,7 +89,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>我可以從我的應用程式內查看、新增或移動永久性磁片區嗎？
 
-可以。
+是。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>當我刪除/移動 Azure 春天雲端服務實例時，是否也會刪除/移動其擴充功能資源？
 
@@ -151,19 +151,19 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季雲端是否支援藍綠部署？
-可以。 如需詳細資訊，請參閱 [設定預備環境](spring-cloud-howto-staging-environment.md)。
+是。 如需詳細資訊，請參閱 [設定預備環境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不可以。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+否。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
-可以。 如需詳細資訊，請參閱 [從原始程式碼啟動您的春季 Cloud 應用程式](spring-cloud-quickstart.md)。
+是。 如需詳細資訊，請參閱 [從原始程式碼啟動您的春季 Cloud 應用程式](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 
-不可以。
+否。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>將現有的春季 Cloud 微服務遷移到 Azure 春季雲端的最佳作法為何？
@@ -206,6 +206,6 @@ RetryableEurekaHttpClient: Request execution failure with status code 401; retry
 我們將在不久的將來增強這個部分，並避免使用者的應用程式發生此錯誤。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您有其他問題，請參閱《 [Azure 春季雲端疑難排解指南》](spring-cloud-troubleshoot.md)。

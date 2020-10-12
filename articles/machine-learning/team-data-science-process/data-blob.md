@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb2a9bf8c26b1abfca0685248fef2058d63c03bf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087550"
 ---
 # <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>處理使用進階分析的 Azure Blob 資料
 本文件涵蓋探索資料以及從 Azure Blob 儲存體中儲存的資料產生功能的說明。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>將資料載入至 Pandas 資料框架
-若要探索和運算元據集，必須從 blob 來源將它下載到本機檔案，然後再將該檔案載入 Pandas 資料框架中。 以下是此程序的遵循步驟：
+若要探索和運算元據集，必須從 blob 來源將資料集下載到可在 Pandas 資料框架中載入的本機檔案。 以下是此程序的遵循步驟：
 
-1. 使用 Blob 服務，透過下列範例 Python 程式碼，從 Azure blob 下載資料。 使用您的特定值來取代下列程式碼中的變數： 
+1. 使用 Blob 服務，透過下列 Python 程式碼範例，從 Azure blob 下載資料。 使用您的特定值來取代下列程式碼中的變數： 
    
     ```python
     from azure.storage.blob import BlobService
@@ -169,7 +169,7 @@ ms.locfileid: "86087550"
     ```  
 
 ## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>將資料寫回 Azure Blob 並在 AzureMachine Learning 中取用
-在您探索資料並建立必要的功能之後，您可以將資料（取樣或特徵化）上傳至 Azure blob，並使用下列步驟在 Azure Machine Learning 中取用：其他功能也可以在 Azure Machine Learning Studio （傳統）中建立。 
+在您探索資料並建立必要的功能之後，您可以使用下列步驟，將資料 (取樣或特徵化) 上傳至 Azure blob，並在 Azure Machine Learning 中使用：其他功能也可在 Azure Machine Learning Studio (傳統) 中建立。 
 
 1. 將資料框架寫入本機檔案中
    

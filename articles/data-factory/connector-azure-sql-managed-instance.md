@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/21/2020
 ms.openlocfilehash: 3a9216c665cfdcdaf07980ace0399fd927885262
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332112"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure SQL 受控執行個體或從中複製資料
@@ -43,7 +43,7 @@ ms.locfileid: "91332112"
 >[!NOTE]
 > 此連接器目前不支援 SQL 受控執行個體 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 。 若要解決這個問題，您可以透過自我裝載的整合執行時間，使用 [一般 odbc 連接器](connector-odbc.md) 和 SQL Server ODBC 驅動程式。 若要深入瞭解，請 [使用 Always Encrypted](#using-always-encrypted) 一節。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要存取 SQL 受控執行個體 [公用端點](../azure-sql/managed-instance/public-endpoint-overview.md)，您可以使用 Azure Data Factory 受控 Azure integration runtime。 請確定您已啟用公用端點，而且也允許網路安全性群組上的公用端點流量，讓 Azure Data Factory 可以連接到您的資料庫。 如需詳細資訊，請參閱 [本指引](../azure-sql/managed-instance/public-endpoint-configure.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91332112"
 
 以下是 SQL 受控執行個體連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設為 **AzureSqlMI**。 | 是 |
 | connectionString |這個屬性會指定使用 SQL 驗證連接到 SQL 受控執行個體所需的 **connectionString** 資訊。 如需詳細資訊，請參閱下列範例。 <br/>預設的連接埠為 1433。 如果您使用具有公用端點的 SQL 受控執行個體，請明確指定埠3342。<br> 您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱下表中的 JSON 範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
@@ -229,7 +229,7 @@ ms.locfileid: "91332112"
 
 若要將資料複製到 SQL 受控執行個體或從中複製資料，支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 type 屬性必須設為 **AzureSqlMITable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -268,7 +268,7 @@ ms.locfileid: "91332112"
 
 若要從 SQL 受控執行個體複製資料，[複製活動來源] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設為 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |否 |
@@ -381,7 +381,7 @@ GO
 
 若要將資料複製到 SQL 受控執行個體，「複製活動接收」區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 type 屬性必須設為 **SqlMISink**。 | 是 |
 | preCopyScript |這個屬性會指定在將資料寫入 SQL 受控執行個體之前，要執行的複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 您可以使用此屬性來清除預先載入的資料。 |否 |
@@ -667,7 +667,7 @@ END
 | smalldatetime |Datetime |
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
-| sql_variant |物件 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
@@ -675,7 +675,7 @@ END
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |String |
+| Xml |字串 |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您的資料需要大於 28 個有效位數，請考慮轉換成 SQL 查詢中的字串。

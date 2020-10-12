@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 取得 Azure 虛擬機器使用量資料
+title: 使用 REST API 取得 Azure 虛擬機器使用方式資料
 description: 使用 Azure REST API 來收集虛擬機器的使用量計量。
 author: rloutlaw
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 925246eb2adae59ca74e363c4d4a6952f11c3744
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292324"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 來取得虛擬機器的使用量計量
@@ -40,9 +40,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI 參數
 
-| 名稱 | 說明 |
+| 名稱 | 描述 |
 | :--- | :---------- |
-| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱使用 [多個訂閱](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 與資源相關聯的 Azure資源群組名稱。 您可以從 Azure Resource Manager API、CLI 或入口網站取得這個值。 |
 | vmname | Azure 虛擬機器的名稱。 |
 | metricnames | 以逗號分隔的有效 [Load Balancer 計量](../../load-balancer/load-balancer-standard-diagnostics.md)清單。 |

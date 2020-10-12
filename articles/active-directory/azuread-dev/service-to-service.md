@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154758"
 ---
 # <a name="service-to-service-apps"></a>服務對服務應用程式
@@ -32,7 +32,7 @@ ms.locfileid: "80154758"
 
 - 伺服器應用程式 (例如 Web API)，需要呼叫 Web API 且以 OAuth 2.0 代理者草稿規格為基礎
 
-    在此案例中，假設使用者已在原生應用程式上驗證，而此原生應用程式需要呼叫 Web API。 Azure AD 會發出 JWT 存取權杖來呼叫 Web API。 如果 Web API 需要呼叫另一個下游 Web API，它可以使用代理者流程來委派使用者的身分識別，並向第二層 Web API 進行驗證。
+    在此案例中，假設使用者已在原生應用程式上驗證，而此原生應用程式需要呼叫 Web API。 Azure AD 會發出 JWT 存取權杖來呼叫 Web API。 如果 web API 需要呼叫另一個下游 web API，則可以使用代理者流程來委派使用者的身分識別，並向第二層 web API 進行驗證。
 
 ## <a name="diagram"></a>圖表
 
@@ -44,24 +44,24 @@ ms.locfileid: "80154758"
 
 1. 首先，伺服器應用程式本身必須向 Azure AD 驗證，沒有任何人為互動，例如互動式登入對話方塊。 它會向 Azure AD 的權杖端點提出要求，並提供認證、應用程式識別碼和應用程式識別碼 URI。
 1. Azure AD 驗證應用程式，並傳回用來呼叫 Web API 的 JWT 存取權杖。
-1. Web 應用程式會透過 HTTPS，使用傳回的 JWT 存取權杖，將要求的授權標頭中具有「持有人」指定的 JWT 字串新增至 Web API。 接著，Web API 驗證 JWT 權杖，如果驗證成功，則傳回所需的資源。
+1. 透過 HTTPS，web 應用程式會使用傳回的 JWT 存取權杖，在 web API 要求的授權標頭中新增具有「持有人」指定的 JWT 字串。 接著，Web API 驗證 JWT 權杖，如果驗證成功，則傳回所需的資源。
 
 ### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>採用 OAuth 2.0 On-Behalf-Of 草稿規格的委派使用者識別
 
 下面討論的流程假設使用者已在另一個應用程式上驗證 (例如，原生應用程式)，且其使用者識別已用來取得第一層 Web API 的存取權杖。
 
 1. 原生應用程式將存取權杖傳送到第一層 Web API。
-1. 第一層 Web API 會將要求傳送至 Azure AD 的權杖端點，並提供其應用程式識別碼和認證，以及使用者的存取權杖。 此外，傳送的要求包含 on_behalf_of 參數，指出 Web API 正在代表原始使用者要求新權杖來呼叫下游 Web API。
+1. 第一層 web API 會將要求傳送至 Azure AD 的權杖端點，並提供其應用程式識別碼和認證，以及使用者的存取權杖。 此外，傳送的要求包含 on_behalf_of 參數，指出 Web API 正在代表原始使用者要求新權杖來呼叫下游 Web API。
 1. Azure AD 確認第一層 Web API 有權存取第二層 Web API，並驗證要求，然後傳回 JWT 存取權杖和 JWT 重新整理權杖給第一層 Web API。
 1. 接著，第一層 Web API 透過 HTTPS，在要求的 Authorization 標頭中附加權杖字串，以呼叫第二層 Web API。 只要存取權杖和重新整理權杖有效，第一層 Web API 就可以繼續呼叫第二層 Web API。
 
 ## <a name="code-samples"></a>程式碼範例
 
-請參閱 Daemon 或伺服器應用程式到 Web API 案例的程式碼範例：[伺服器或背景工作應用程式至 WEB api](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+請參閱適用于 Daemon 或伺服器應用程式到 Web API 案例的程式碼範例： [伺服器或背景程式應用程式到 WEB api](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>應用程式註冊
 
-* 單一租用戶 - 無論是應用程式識別或委派的使用者識別的情況，精靈或伺服器應用程式都必須註冊在 Azure AD 的相同目錄中。 Web API 可以設定為公開一組許可權，用來限制守護程式或伺服器對其資源的存取權。 如果使用委派的使用者識別類型，伺服器應用程式必須選取所需的許可權。 在應用程式註冊的 [ **API 許可權**] 頁面中，選取 [**新增許可權**] 並選擇 [API 系列] 之後，選擇 [**委派的許可權**]，然後選取您的許可權。 如果使用應用程式識別類型，則不需要此步驟。
+* 單一租用戶 - 無論是應用程式識別或委派的使用者識別的情況，精靈或伺服器應用程式都必須註冊在 Azure AD 的相同目錄中。 Web API 可以設定為公開一組許可權，用來限制守護程式或伺服器對其資源的存取權。 如果使用委派的使用者識別類型，伺服器應用程式必須選取所需的許可權。 在應用程式註冊的 [ **API 許可權** ] 頁面中，在您選取 [ **新增許可權** ] 並選擇 API 系列之後，選擇 [ **委派許可權**]，然後選取您的許可權。 如果使用應用程式識別類型，則不需要此步驟。
 * 多租用戶 - 首先，設定精靈或伺服器應用程式來指出它運作所需的權限。 當目的地目錄中的使用者或系統管理員同意應用程式時 (使得應用程式可供組織使用)，這份必要權限清單會顯示在對話方塊中。 有些應用程式只需要使用者層級權限，亦即組織中的任何使用者都可以同意應用程式。 其他應用程式需要系統管理員層級權限，亦即組織中的使用者無法同意應用程式。 只有目錄管理員才能對需要此權限層級的應用程式表示同意。 當使用者或系統管理員同意時，這兩個 Web API 都會註冊在他們的目錄中。
 
 ## <a name="token-expiration"></a>權杖到期
@@ -71,4 +71,4 @@ ms.locfileid: "80154758"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解其他[應用程式類型和案例](app-types.md)
-- 瞭解 Azure AD[驗證基本概念](v1-authentication-scenarios.md)
+- 瞭解 Azure AD [authentication 基本概念](v1-authentication-scenarios.md)

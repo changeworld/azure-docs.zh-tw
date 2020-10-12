@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
 ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886502"
 ---
 # <a name="data-discovery--classification"></a>資料探索與分類
@@ -25,7 +25,7 @@ ms.locfileid: "90886502"
 
 資料探索 & 分類內建于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 它提供探索、分類、標記和報告資料庫中敏感性資料的先進功能。
 
-您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類此資料可以在組織的資訊保護方法中扮演 pivotal 角色。 它可以作為以下的基礎結構：
+您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類此資料可以在組織的資訊保護方法中扮演 pivotal 角色。 它可以作為下列的基礎結構：
 
 - 協助符合法規合規性的資料隱私權和需求標準。
 - 各種安全性案例，例如針對敏感性資料異常存取的監視 (稽核) 及警示。
@@ -105,7 +105,7 @@ ms.locfileid: "90886502"
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>對敏感性資料的審核存取
 
-資訊保護範例的重要層面，就是監視機密資料存取的能力。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md) 已增強，可在名為的 audit 記錄中包含新的欄位 `data_sensitivity_information` 。 此欄位會記錄查詢所傳回的資料 (標籤) 的敏感度分類。 以下是範例：
+資訊保護範例的重要層面，就是監視機密資料存取的能力。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md) 已增強，可在名為的 audit 記錄中包含新的欄位 `data_sensitivity_information` 。 此欄位會記錄查詢所傳回的資料 (標籤) 的敏感度分類。 以下為範例：
 
 ![稽核記錄檔](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507529"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array 上的共用
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務，在 StorSimple Virtual Array 上建立和管理共用。
 
@@ -142,6 +142,6 @@ StorSimple 服務摘要刀鋒視窗的 [共用]**** 功能表會顯示給定 Sto
 3. 檢查您想要刪除之共用的狀態。 如果您想要刪除的共用未離線，請先讓它離線。 請遵循[讓共用離線](#take-a-share-offline)中的步驟進行。
 4. 當 [刪除]**刪除** 刀鋒視窗中提示您確認時，請接受確認並按一下 [刪除]****。 現在將刪除共用，[共用]**** 刀鋒視窗會顯示虛擬陣列內更新的共用清單。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解如何[複製 StorSimple 共用](storsimple-virtual-array-clone.md)。
 

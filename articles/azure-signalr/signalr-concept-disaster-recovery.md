@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976502"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR Service 中的復原和災害復原
@@ -132,7 +132,7 @@ SignalR 服務可支援這兩種模式，主要差異在於您如何實作應用
 也因為 SignalR 連線的本質 (很長的連線)，用戶端會在發生災害和容錯移轉時遇到連線中斷。
 您必須在用戶端處理這類情況，讓終端客戶了解此情況。 例如，在連線關閉後重新連線。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已經了解如何設定您的應用程式以恢復 SignalR 服務的功能。 若要深入了解 SignalR 服務中的伺服器/用戶端連線及連線路由，您可以閱讀[這篇文章](signalr-concept-internals.md)，以了解 SignalR 服務的內部運作。
 

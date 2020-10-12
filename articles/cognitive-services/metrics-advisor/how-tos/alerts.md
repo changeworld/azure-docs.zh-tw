@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977784"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>How to：使用攔截設定警示和取得通知
@@ -36,7 +36,7 @@ ms.locfileid: "90977784"
 
 |參數 |描述  |
 |---------|---------|
-| Name | 電子郵件掛勾的名稱 |
+| 名稱 | 電子郵件掛勾的名稱 |
 | 傳送電子郵件給| 傳送警示的電子郵件地址|
 | 外部連結 | 此為選擇性欄位，可啟用自訂的重新導向，例如疑難排解附注。 |
 | 自訂異常警示標題 | Title 範本支援 `${severity}` 、 `${alertSettingName}` 、 `${datafeedName}` 、 `${metricName}` 、 `${detectConfigName}` 、 `${timestamp}` `${topDimension}` 、、 `${incidentCount}` 、 `${anomalyCount}`
@@ -75,9 +75,9 @@ Webhook 是計量顧問服務所提供之所有資訊的進入點，並會在觸
 
 |參數 |描述  |
 |---------|---------|
-| Name | 攔截的名稱 |
+| 名稱 | 攔截的名稱 |
 | 組織 | 您的 DevOps 所屬的組織 |
-| Project | DevOps 中的特定專案。 |
+| 專案 | DevOps 中的特定專案。 |
 | 存取權杖 |  用來驗證 DevOps 的權杖。 | 
 
 > [!Note]
@@ -88,11 +88,11 @@ Webhook 是計量顧問服務所提供之所有資訊的進入點，並會在觸
 移至 [計量詳細資料] 頁面，以尋找 [計量詳細資料] 頁面左下角的 [ **警示設定** ] 區段。 它會列出所有適用于所選偵測設定的警示設定。 建立新的偵測設定時，不會有警示設定，也不會傳送任何警示。  
 您可以使用 [ **新增**]、[ **編輯** ] 和 [ **刪除** ] 圖示來修改警示設定。
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="警示設定功能表項目。":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="webhook 建立視窗。":::
 
 按一下 [ **新增** ] 或 [ **編輯** ] 按鈕，以取得可新增或編輯警示設定的視窗。
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="新增或編輯警示設定":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="webhook 建立視窗。":::
 
 **警示設定名稱**：此警示設定的名稱。 它會顯示在警示電子郵件標題中。
 
@@ -132,11 +132,11 @@ Webhook 是計量顧問服務所提供之所有資訊的進入點，並會在觸
 |運算子  |描述  |
 |---------|---------|
 |AND     | 只有當數列符合每個警示區段，而且所有資料點都是異常時，才傳送警示。 如果計量具有不同的維度名稱，則永遠不會觸發警示。         |
-|或者     | 如果至少有一個區段包含異常，則傳送警示。         |
+|OR     | 如果至少有一個區段包含異常，則傳送警示。         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="多個警示設定區段的運算子":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="webhook 建立視窗。":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用意見反應來調整異常偵測](anomaly-feedback.md)
 - [診斷事件](diagnose-incident.md)。

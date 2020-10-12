@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440281"
 ---
 # <a name="agile-development-of-data-science-projects"></a>敏捷式資料科學專案開發
@@ -152,7 +152,7 @@ ms.locfileid: "89440281"
    1. 在 [ **名稱**] 底下，將 [ **長篇故事** ] 取代為 *TDSP 專案*。 
    1. 在 **此待處理專案層級的 [工作專案類型**] 底下，選取 [ **新增工作專案類型**]、輸入 *TDSP 專案*，然後選取 [ **加入**]。 
    1. 在 [ **預設工作專案類型**] 底下，下拉並選取 [ **TDSP 專案**]。 
-   1. 選取 [儲存]。
+   1. 選取 [儲存]****。
    
    ![設定待辦專案組合層級](./media/agile-development/13-rename.png)  
    
@@ -208,7 +208,7 @@ ms.locfileid: "89440281"
 ![18](./media/agile-development/18-workitems1.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [使用 git](collaborative-coding-with-git.md) 共同作業程式碼描述如何使用 git 作為共用程式碼開發架構來進行資料科學專案的共同作業程式碼開發，以及如何將這些編碼活動連結到以 agile 程式規劃的工作。
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265485"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
@@ -26,7 +26,7 @@ ms.locfileid: "89265485"
 本文列出一些最常見的 Microsoft Azure 媒體服務限制，有時也稱為「配額」。
 
 > [!NOTE]
-> 針對未修正的資源，請開啟支援票證以要求增加配額。 請勿在嘗試取得較高的限制的情況中建立額外的 Azure 媒體服務帳戶。
+> 對於未修正的資源，請開啟支援票證以要求增加配額。 請勿為了嘗試取得更高的限制而建立其他 Azure 媒體服務。
 
 ## <a name="account-limits"></a>帳戶限制
 
@@ -47,11 +47,11 @@ ms.locfileid: "89265485"
 | 檔案大小| 在某些情況下，對於媒體服務中支援處理的檔案大小上限有所限制。 <sup>(1)</sup> |
 | [儲存體帳戶](storage-account-concept.md) | 100<sup> (2) </sup> (固定)  |
 
-<sup>1</sup> 單一 blob 支援的大小上限目前在 Azure Blob 儲存體是最多 5 TB。 其他限制則適用于以服務所使用的 VM 大小為基礎的媒體服務。 大小限制適用于您上傳的檔案，以及由於媒體服務處理而產生的檔案 (編碼或分析) 。 如果原始程式檔超過 260 GB，您的工作可能會失敗。 
+<sup>1</sup> 單一 blob 支援的大小上限目前在 Azure Blob 儲存體是最多 5 TB。 其他限制會根據服務所使用的 VM 大小，套用在 Azure 媒體服務中。 大小限制適用於您所上傳的檔案，以及因媒體服務處理 (編碼或分析) 而產生的檔案。 如果原始程式檔超過 260 GB，您的工作可能會失敗。 
 
-下表顯示媒體保留單元 S1、S2 和 S3 的限制。 如果您的原始程式檔大於資料表中所定義的限制，則編碼作業會失敗。 如果您針對長時間的4K 解析來源進行編碼，則必須使用 S3 媒體保留單元來達成所需的效能。 如果您的4K 內容大於 S3 媒體保留單元的 260 GB 限制，請開啟支援票證。
+下表顯示媒體保留單元 (S1、S2 和 S3) 上的限制。 如果來源檔案大於資料表中定義的限制，編碼作業就會失敗。 如果您要編碼長時間的 4k 解析來源，就必須使用 S3 媒體保留單位來達成所需的效能。 如果您的4K 內容大於 S3 媒體保留單元的 260 GB 限制，請開啟支援票證。
 
-|媒體保留單元類型|輸入大小上限 (GB) |
+|媒體保留單元類型|輸入大小上限 (GB)|
 |---|---|
 |S1 |    26|
 |S2    | 60|

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087736"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虛擬網路中的 HDInsight 上建立 Apache HBase 叢集
@@ -43,17 +43,17 @@ ms.locfileid: "86087736"
 > * **子網名稱**： subnet1
 > * **子網路位址範圍**︰10.0.0.0/24
 >
-> `CLUSTERNAME`會取代為您在使用範本時提供的叢集名稱。
+> `CLUSTERNAME` 會取代為您在使用範本時所提供的叢集名稱。
 
 1. 選取以下影像，在 Azure 入口網站中開啟範本。 範本位在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-1. 從 [**自訂部署**] 對話方塊中，選取 [**編輯範本**]。
+1. 從 [ **自訂部署** ] 對話方塊中，選取 [ **編輯範本**]。
 
-1. 在第165行上，將值變更 `Standard_A3` 為 `Standard_A4_V2` 。 接著，選取 [儲存]。
+1. 在第165行，將值變更 `Standard_A3` 為 `Standard_A4_V2` 。 然後選取 [儲存]。
 
-1. 使用下列資訊完成剩餘的範本：
+1. 以下列資訊完成剩餘的範本：
 
     |屬性 |值 |
     |---|---|
@@ -61,12 +61,12 @@ ms.locfileid: "86087736"
     資源群組|選取 [新建]**** 並指定新的資源群組名稱。|
     |Location|選取資源群組的位置。|
     |叢集名稱|輸入要建立的 Hadoop 叢集的名稱。|
-    |叢集登入使用者名稱和密碼|預設的使用者名稱是**admin**。請提供密碼。|
-    |Ssh 使用者名稱和密碼|預設的使用者名稱是**sshuser**。  提供密碼。|
+    |叢集登入使用者名稱和密碼|預設的使用者名稱是 **admin**。提供密碼。|
+    |Ssh 使用者名稱和密碼|預設的使用者名稱是 **sshuser**。  提供密碼。|
 
     選取 **[我同意上方所述的條款及條件**]。
 
-1. 選取 [購買]。 大約需要 20 分鐘的時間來建立叢集。 建立叢集之後，您可以在入口網站中選取叢集來開啟它。
+1. 選取 [購買]。 大約需要 20 分鐘的時間來建立叢集。 叢集建立之後，您可以在入口網站中選取叢集來開啟它。
 
 完成本文之後，您可能會想要刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地進行刪除。 您也需支付 HDInsight 叢集的費用 (即使未使用)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。 如需有關刪除叢集的指示，請參閱[使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](../hdinsight-administer-use-portal-linux.md#delete-clusters)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "86087736"
 * **子網**： subnet1
 
 > [!IMPORTANT]  
-> 以 `CLUSTERNAME` 您在先前步驟中建立 HDInsight 叢集時所使用的名稱取代。
+> 以 `CLUSTERNAME` 您在先前步驟中建立 HDInsight 叢集時所用的名稱取代。
 
 使用這些值會將虛擬機器放置在與 HDInsight 叢集相同的虛擬網路和子網路。 此組態可讓它們彼此直接通訊。 有一個使用空白邊緣節點建立 HDInsight 叢集的方法。 邊緣節點可用來管理叢集。  如需詳細資訊，請參閱 [Use empty edge nodes in HDInsight (在 HDInsight 中使用空白的邊緣節點)](../hdinsight-apps-use-edge-node.md)。
 
@@ -92,12 +92,12 @@ ms.locfileid: "86087736"
 
 * 使用網頁瀏覽器進行 [Apache Ambari](https://ambari.apache.org/) 呼叫︰
 
-    瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true` 。 它會傳回具有 DNS 尾碼的 JSON 檔案。
+    瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts?minimal_response=true`。 它會傳回具有 DNS 尾碼的 JSON 檔案。
 
 * 使用 Ambari 網站︰
 
-    1. 瀏覽至 `https://CLUSTERNAME.azurehdinsight.net` 。
-    2. 從頂端功能表中選取 [**主機**]。
+    1. 瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`。
+    2. 從頂端功能表中選取 [ **主機** ]。
 
 * 使用 Curl 進行 REST 呼叫︰
 
@@ -128,7 +128,7 @@ ms.locfileid: "86087736"
     5. Reboot the virtual machine.
 -->
 
-### <a name="verify-communication-inside-virtual-network"></a>驗證虛擬網路內的通訊
+### <a name="verify-communication-inside-virtual-network"></a>確認虛擬網路內的通訊
 
 若要驗證虛擬機器能夠與 HBase 叢集通訊，請從虛擬機器使用命令 `ping headnode0.<dns suffix>` 。 例如： `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net` 。
 
@@ -144,7 +144,7 @@ ms.locfileid: "86087736"
 > [!NOTE]  
 > 如需 Azure 虛擬網路中名稱解析的詳細資訊，包括如何使用您自己的 DNS 伺服器，請參閱[名稱解析 (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已瞭解如何建立 Apache HBase 叢集。 若要深入了解，請參閱：
 

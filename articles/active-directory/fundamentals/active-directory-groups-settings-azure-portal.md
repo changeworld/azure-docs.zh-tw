@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797520"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 來編輯群組資訊
@@ -39,7 +39,7 @@ ms.locfileid: "87797520"
 
 4. 選取 [MDM 原則 - 西部]**** 群組，然後從 [管理] 區域選取 [屬性] ********。
 
-    ![反白顯示成員選項和資訊的群組總覽頁面](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![醒目提示 [成員選項] 和 [資訊] 的 [群組總覽] 頁面](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. 視需要更新 [一般設定] **** 資訊，包括：
 
@@ -51,7 +51,7 @@ ms.locfileid: "87797520"
 
     - **群組類型。** 群組類型一旦建立便無法變更。 若要變更 [群組類型]****，您必須先刪除群組再建立新群組。
     
-    - **成員資格類型。** 變更成員資格類型。 如需各種可用成員資格類型的詳細資訊，請參閱[如何：使用 Azure Active Directory 入口網站建立基本群組和新增成員](active-directory-groups-create-azure-portal.md)。
+    - **成員資格類型。** 變更成員資格類型。 如需各種可用成員資格類型的詳細資訊，請參閱 [如何：使用 Azure Active Directory 入口網站建立基本群組和新增成員](active-directory-groups-create-azure-portal.md)。
     
     - **物件識別碼。** 物件識別碼無法變更，但可以將它複製以便在 PowerShell 命令中用於群組。 如需使用 PowerShell Cmdlet 的詳細資訊，請參閱[用於進行群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
 

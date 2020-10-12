@@ -5,10 +5,10 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88641954"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
@@ -185,7 +185,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 >__使用時機：__ 入口網站是開始使用 Azure Functions 的好方法。 針對更密集的開發工作，建議您使用下列其中一種用戶端工具：
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](functions-create-first-function-vs-code.md) \(英文\)
 >* [Azure Functions Core Tools (命令列) ](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
@@ -214,7 +214,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 當您將函數應用程式部署至 Azure 時，您可以部署到個別的部署位置，而不是直接部署到生產環境。 如需部署位置的詳細資訊，請參閱 [Azure Functions 部署](../app-service/deploy-staging-slots.md) 位置檔以取得詳細資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解如何部署函數應用程式，請參閱下列文章：
 

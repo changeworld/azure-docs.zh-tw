@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-csharp
 ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018300"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在您的 Azure IoT 中樞中設定 X.509 安全性
@@ -96,7 +96,7 @@ ms.locfileid: "90018300"
 
 接下來，我們將示範如何建立 C# 應用程式來模擬為您 IoT 中樞註冊的 X.509 裝置。 我們會將氣溫和溼度值從模擬裝置傳送至您的中樞。 在本教學課程中，我們只會建立裝置應用程式。 它會保留給讀者作為練習建立 IoT 中樞服務應用程式，將回應傳送給此模擬裝置所傳送的事件。 C# 應用程式假設您已依照[管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟操作。
 
-1. 開啟 Visual Studio，選取 [ **建立新專案**]，然後選擇 [ **主控台應用程式] ( .NET Framework) ** 專案範本。 選取 [下一步] 。
+1. 開啟 Visual Studio，選取 [ **建立新專案**]，然後選擇 [ **主控台應用程式] ( .NET Framework) ** 專案範本。 選取 [下一步]  。
 
 1. 在 [ **設定新專案**] 中，將專案命名為 *>simulatex509device*，然後選取 [ **建立**]。
 
@@ -196,7 +196,7 @@ ms.locfileid: "90018300"
 
    ![執行裝置應用程式](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解如何保護您的 IoT 解決方案，請參閱︰
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316557"
 ---
 # <a name="extract-data-with-entities"></a>使用實體將資料解壓縮
@@ -32,7 +32,7 @@ ms.locfileid: "91316557"
 
  您可以定義自己的實體，或使用預先建立的實體來節省常見概念的時間，例如 [datetimeV2](luis-reference-prebuilt-datetimev2.md)、 [序數](luis-reference-prebuilt-ordinal.md)、 [電子郵件](luis-reference-prebuilt-email.md)和 [電話號碼](luis-reference-prebuilt-phonenumber.md)。
 
-|語句|單位|資料|
+|語句|實體|資料|
 |--|--|--|
 |購買 3 張到紐約的機票|預先建置的號碼<br>Destination|3<br>紐約|
 
@@ -105,7 +105,7 @@ ms.locfileid: "91316557"
 |[**清單**](reference-entity-list.md)|使用 **完全相符文字**進行解壓縮的專案清單及其同義字。|
 |[**模式。任何**](#patternany-entity)|找出實體結尾的實體很難判斷，因為實體是自由格式的。 僅適用于 [模式](luis-concept-patterns.md)。|
 |[**預建**](luis-reference-prebuilt-entities.md)|已定型以解壓縮特定種類的資料，例如 URL 或電子郵件。 在開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案中已定義部分這些預建實體。 如果目前不支援您的特定文化特性或實體，請向專案提出。|
-|[**正則運算式**](reference-entity-regular-expression.md)|使用正則運算式進行 **完全相符的文字**。|
+|[**規則運算式**](reference-entity-regular-expression.md)|使用正則運算式進行 **完全相符的文字**。|
 
 
 ## <a name="extraction-versus-resolution"></a>解壓縮與解析

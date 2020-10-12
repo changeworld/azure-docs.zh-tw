@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317171"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
@@ -204,8 +204,8 @@ module.exports = (context) => {
 | 屬性名稱  | 類型  | 描述 |
 |---------|---------|---------|
 | `invocationId` | String | 提供特定函式呼叫的唯一識別碼。 |
-| `functionName` | String | 提供正在執行之函式的名稱 |
-| `functionDirectory` | String | 提供函數應用程式目錄。 |
+| `functionName` | 字串 | 提供正在執行之函式的名稱 |
+| `functionDirectory` | 字串 | 提供函數應用程式目錄。 |
 
 下列範例顯示如何傳回 `invocationId` 。
 
@@ -293,7 +293,7 @@ context.log(message)
 可讓您寫入預設追蹤層級的資料流函式記錄。 `context.log` 上有其他可用的記錄方法，可讓您在其他追蹤層級寫入函式記錄︰
 
 
-| 方法                 | 說明                                |
+| 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
 | **_訊息_ (錯誤) **   | 寫入錯誤層級或更低層級的記錄。   |
 | **warn(_message_)**    | 寫入警告層級或更低層級的記錄。 |
@@ -370,7 +370,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 `context.req` (要求) 物件具有下列屬性：
 
-| 屬性      | 說明                                                    |
+| 屬性      | 描述                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 包含要求本文的物件。               |
 | _頭_     | 包含要求標頭的物件。                   |
@@ -385,7 +385,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 `context.res` (回應) 物件具有下列屬性：
 
-| 屬性  | 說明                                               |
+| 屬性  | 描述                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 包含回應本文的物件。         |
 | _頭_ | 包含回應標頭的物件。             |

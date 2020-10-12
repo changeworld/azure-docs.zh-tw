@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88794443"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>從 Azure 資訊保護連接資料
@@ -35,7 +35,7 @@ ms.locfileid: "88794443"
     
     如果您變更工作區，Azure 資訊保護的新報告資料現在會儲存在您用於 Azure Sentinel 的工作區中，而歷程記錄資料無法供 Azure Sentinel 使用。 此外，如果先前的工作區設定自訂查詢、警示或 REST Api，如果您想要使用它們來進行 Azure 資訊保護，則必須針對 Azure Sentinel 工作區重新設定這些專案。 使用 Azure 資訊保護的用戶端和服務不需要重新設定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您租使用者的下列其中一項 Azure AD 系統管理員角色： 
     - Azure 資訊保護管理員
@@ -71,7 +71,7 @@ ms.locfileid: "88794443"
     
     若要在此報表資料的 Azure 監視器中使用相關的架構，請搜尋 **>informationprotectionevents**。 如需有關這些事件函數的詳細資訊，請參閱 Azure 資訊保護檔中的事件函式的 [易記架構參考](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) 一節。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本檔中，您已瞭解如何將 Azure 資訊保護連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。

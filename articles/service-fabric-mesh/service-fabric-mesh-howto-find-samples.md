@@ -1,13 +1,13 @@
 ---
-title: 尋找 Azure Service Fabric 網格範例
-description: 以下是可用 Service Fabric 網格範例應用程式的索引。 這些範例中的原始程式碼可說明如何使用 Service Fabric 資源模型達成特定案例。
+title: 尋找 Azure Service Fabric 網狀範例
+description: 以下是可用 Service Fabric 網狀範例應用程式的索引。 這些範例中的原始程式碼可說明如何使用 Service Fabric 資源模型達成特定案例。
 ms.date: 12/03/2018
 ms.topic: conceptual
 ms.openlocfilehash: 64d9e4e112f26f83eedd02b034c8191c6f677618
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261277"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>尋找 Service Fabric Mesh 範例

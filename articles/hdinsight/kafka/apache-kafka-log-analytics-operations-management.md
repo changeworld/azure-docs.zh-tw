@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087396"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上分析 Apache Kafka 的記錄
@@ -23,34 +23,34 @@ ms.locfileid: "86087396"
 
 ## <a name="logs-location"></a>記錄位置
 
-叢集中的 Apache Kafka 記錄檔位於 `/var/log/kafka` 。 無論是否使用受控磁片，Kafka 記錄都不會在叢集生命週期中儲存或保存。 下表顯示可用的記錄檔。
+叢集中的 Apache Kafka 記錄檔位於 `/var/log/kafka` 。 不論是否使用受控磁片，Kafka 記錄都不會儲存或保存在叢集生命週期內。 下表顯示可用的記錄。
 
-|記錄檔 |描述 |
+|Log |說明 |
 |---|---|
-|kafka。|Kafka 進程的 stdout 和 stderr。 您會在此檔案中找到 Kafka 的啟動和關閉記錄。|
-|伺服器 .log|主要的 Kafka 伺服器記錄檔。 所有 Kafka broker 記錄都會在此結束。|
-|控制器 .log|如果訊息代理程式作為控制器，則為控制器記錄檔。|
-|statechange .log|訊息代理程式的所有狀態變更事件都會記錄在此檔案中。|
+|kafka|Kafka 進程的 stdout 和 stderr。 您會在此檔案中找到 Kafka 的啟動和關閉記錄。|
+|伺服器 .log|主要 Kafka 伺服器記錄檔。 所有 Kafka broker 記錄都會在這裡結束。|
+|controller .log|如果 broker 作為控制器，則為控制器記錄檔。|
+|statechange .log|所有對訊息代理程式的狀態變更事件都會記錄在此檔案中。|
 |kafka-gc .log|Kafka 垃圾收集統計資料。|
 
-## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>啟用 Apache Kafka 的 Azure 監視器記錄
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>啟用 Apache Kafka Azure 監視器記錄
 
-為 HDInsight 啟用 Azure 監視器記錄的步驟，適用于所有 HDInsight 叢集。 若要了解如何建立和設定所需的服務，請使用下列連結：
+針對所有 HDInsight 叢集啟用 HDInsight Azure 監視器記錄的步驟都相同。 若要了解如何建立和設定所需的服務，請使用下列連結：
 
-1. 建立 Log Analytics 工作區。 如需詳細資訊，請參閱[Azure 監視器檔中的記錄](../../azure-monitor/platform/data-platform-logs.md)。
+1. 建立 Log Analytics 工作區。 如需詳細資訊，請參閱 [Azure 監視器檔中的記錄](../../azure-monitor/platform/data-platform-logs.md) 檔。
 
 2. 在 HDInsight 叢集上建立 Kafka。 如需詳細資訊，請參閱[開始使用 HDInsight 上的 Apache Kafka](apache-kafka-get-started.md) 文件。
 
-3. 設定 Kafka 叢集以使用 Azure 監視器記錄。 如需詳細資訊，請參閱[使用 Azure 監視器記錄來監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md)檔。
+3. 設定 Kafka 叢集以使用 Azure 監視器記錄。 如需詳細資訊，請參閱 [使用 Azure 監視器記錄來監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 檔。
 
 > [!IMPORTANT]  
 > 可能需要大約20分鐘的時間，資料才可用於 Azure 監視器記錄。
 
 ## <a name="query-logs"></a>查詢記錄
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com)] 中，選取您的 Log Analytics 工作區。
+1. 從 [Azure 入口網站](https://portal.azure.com)中，選取您的 Log Analytics 工作區。
 
-2. 在左側功能表中，選取 **[一般**] 底下的 [**記錄**]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [**執行**]。 以下是一些範例搜尋：
+2. 從左側功能表的 **[一般**] 底下，選取 [ **記錄**]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [ **執行**]。 以下是一些範例搜尋：
 
 * 磁片使用量：
 
@@ -68,7 +68,7 @@ ms.locfileid: "86087396"
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* 每秒傳入訊息數：（ `your_kafka_cluster_name` 以您的叢集名稱取代）。
+* 每秒傳入訊息數： (取代 `your_kafka_cluster_name` 為您的叢集名稱。 ) 
 
     ```kusto
     metrics_kafka_CL 
@@ -76,7 +76,7 @@ ms.locfileid: "86087396"
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* 每秒的傳入位元組數：（取代 `wn0-kafka` 為背景工作節點主機名稱）。
+* 每秒傳入位元組： (取代 `wn0-kafka` 為背景工作節點主機名稱。 ) 
 
     ```kusto
     metrics_kafka_CL 
@@ -84,7 +84,7 @@ ms.locfileid: "86087396"
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* 每秒傳出位元組數：（ `your_kafka_cluster_name` 以您的叢集名稱取代）。
+* 每秒傳出位元組數： (取代 `your_kafka_cluster_name` 為您的叢集名稱。 ) 
 
     ```kusto
     metrics_kafka_CL 
@@ -94,7 +94,7 @@ ms.locfileid: "86087396"
 
     您也可以輸入 `*` 來搜尋所有記錄的類型。 目前我們提供以下記錄的查詢：
 
-    | 記錄類型 | 描述 |
+    | 記錄類型 | 說明 |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka broker server.log |
     | log\_kafkacontroller\_CL | Kafka broker controller.log |
@@ -102,13 +102,13 @@ ms.locfileid: "86087396"
 
     ![Apache kafka log analytics cpu 使用量](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需有關 Azure 監視器的詳細資訊，請參閱[Azure 監視器總覽](../../log-analytics/log-analytics-get-started.md)，並[查詢 Azure 監視器記錄以監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md)叢集。
+如需 Azure 監視器的詳細資訊，請參閱 [Azure 監視器總覽](../../log-analytics/log-analytics-get-started.md)和 [查詢 Azure 監視器記錄來監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md)叢集。
 
 如需使用 Apache Kafka 的詳細資訊，請參閱下列文件：
 
 * [在 HDInsight 叢集之間製作 Apache Kafka 的鏡像](apache-kafka-mirroring.md)
-* [增加 HDInsight 上 Apache Kafka 的規模](apache-kafka-scalability.md)
+* [增加 HDInsight 上的 Apache Kafka 規模](apache-kafka-scalability.md)
 * [搭配 Apache Kafka 使用 Apache Spark 串流 (DStream) ](../hdinsight-apache-spark-with-kafka.md)
 * [將 Apache Spark 結構化串流用於 Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

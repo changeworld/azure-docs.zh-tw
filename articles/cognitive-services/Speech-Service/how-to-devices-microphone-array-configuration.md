@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
 ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82781774"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>如何設定麥克風陣列
 
-在本文中，您將瞭解如何設定[麥克風陣列](https://aka.ms/sdsdk-microphone)。 其中包括設定工作角度，以及如何選取要用於語音裝置 SDK 的麥克風。
+在本文中，您將瞭解如何設定 [麥克風陣列](https://aka.ms/sdsdk-microphone)。 它包括設定工作角度，以及如何選取要用於語音裝置 SDK 的麥克風。
 
-語音裝置 SDK 最適合用來根據[我們的指導方針](https://aka.ms/sdsdk-microphone)設計的麥克風陣列。 麥克風陣列設定可由作業系統提供，或透過下列其中一種方法提供。
+語音裝置 SDK 最適合與已根據 [我們的指導方針](https://aka.ms/sdsdk-microphone)設計的麥克風陣列搭配使用。 麥克風陣列設定可以由作業系統提供，或透過下列其中一種方式提供。
 
-語音裝置 SDK 一開始支援的麥克風陣列，是從一組固定的設定中選取。
+語音裝置 SDK 一開始會支援麥克風陣列，方法是從一組固定的設定中進行選取。
 
 ```java
 private static String DeviceGeometry = "Circular6+1"; // "Circular6+1", "Linear4",
 private static String SelectedGeometry = "Circular6+1"; // "Circular6+1", "Circular3+1", "Linear4", "Linear2"
 ```
 
-在 Windows 上，麥克風陣列設定是由音訊驅動程式提供。
+在 Windows 上，麥克風陣列設定是由音訊驅動程式所提供。
 
-從1.11.0 開始，語音裝置 SDK 也支援從[JSON](https://aka.ms/sdsdk-micarray-json)檔案進行設定。
+從 v 1.11.0，語音裝置 SDK 也支援 [JSON](https://aka.ms/sdsdk-micarray-json)檔案的設定。
 
 
 ## <a name="windows"></a>Windows
-在 Windows 上，會自動從音訊驅動程式取得麥克風陣列幾何資訊。 因此，屬性`DeviceGeometry`、 `SelectedGeometry`和`MicArrayGeometryConfigFile`都是選擇性的。 我們使用提供的[JSON](https://aka.ms/sdsdk-micarray-json)檔案`MicArrayGeometryConfigFile` ，僅取得波束成形範圍。
+在 Windows 上，麥克風陣列幾何資訊會自動從音訊驅動程式取得。 因此，屬性 `DeviceGeometry` 、  `SelectedGeometry` 和 `MicArrayGeometryConfigFile` 都是選擇性的。 我們會使用提供的 [JSON](https://aka.ms/sdsdk-micarray-json) 檔案 `MicArrayGeometryConfigFile` ，僅取得波束成形範圍。
 
-如果使用`AudioConfig::FromMicrophoneInput`指定麥克風陣列，則會使用指定的麥克風。 如果沒有指定或`AudioConfig::FromDefaultMicrophoneInput`呼叫麥克風，則會使用 Windows 上的 [聲音設定] 中指定的預設麥克風。
-「語音裝置 SDK」中的 Microsoft 音訊堆疊僅針對 16 KHz 整數倍數的取樣速率，支援關閉取樣。
+如果使用指定麥克風陣列 `AudioConfig::FromMicrophoneInput` ，則會使用指定的麥克風。 如果未指定或 `AudioConfig::FromDefaultMicrophoneInput` 呼叫麥克風，則會使用預設的麥克風（在 Windows 上的 [音效設定] 中指定）。
+語音裝置 SDK 中的 Microsoft 音訊堆疊僅支援以 16 KHz 的整數倍數進行取樣率的取樣率。
 
 ## <a name="linux"></a>Linux
-在 Linux 上，必須提供麥克風幾何資訊。 使用`DeviceGeometry`和`SelectedGeometry`仍然受支援。 也可以透過使用`MicArrayGeometryConfigFile`屬性的 JSON 檔案來提供。 類似于 Windows，JSON 檔案可以提供波束成形範圍。
+在 Linux 上，必須提供麥克風幾何資訊。 使用 `DeviceGeometry` 並 `SelectedGeometry` 保持支援。 您也可以使用屬性，透過 JSON 檔案來提供 `MicArrayGeometryConfigFile` 。 類似于 Windows，JSON 檔案可以提供波束成形範圍。
 
-如果使用`AudioConfig::FromMicrophoneInput`指定麥克風陣列，則會使用指定的麥克風。 如果沒有指定或`AudioConfig::FromDefaultMicrophoneInput`呼叫麥克風，我們會從名為*default*的 ALSA 裝置記錄。 根據預設，*預設*一律會指向 [卡片0裝置 0]，但使用者可以在檔案`asound.conf`中變更它。 
+如果使用指定麥克風陣列 `AudioConfig::FromMicrophoneInput` ，則會使用指定的麥克風。 如果未指定或 `AudioConfig::FromDefaultMicrophoneInput` 呼叫麥克風，則我們會從名為 *DEFAULT*的 ALSA 裝置記錄。 依預設， *預設* 一律會指向卡片0裝置0，但使用者可以在檔案中變更它 `asound.conf` 。 
 
-「語音裝置 SDK」中的 Microsoft 音訊堆疊僅針對 16 KHz 的整數倍數，支援取樣率的縮減取樣。 此外，也支援下列格式： 32-bit IEEE 小 endian 浮點數、32位小數位格式帶正負號的 int、24位小數位序帶正負號的 int、16位小數位的帶正負號的 int 和8位帶正負號的 int。
+語音裝置 SDK 中的 Microsoft 音訊堆疊僅支援以 16 KHz 的整數倍數取樣率進行縮減取樣。 此外，也支援下列格式：32位的 IEEE 位元組由小到大浮點數、32位的位元組由小到大帶正負號的 int、24位小位元組、帶正負號的 int、16位小位元組帶正負號的 int，以及8位帶正負號的 int。
 
 ## <a name="android"></a>Android
-語音裝置 SDK 目前僅支援[Roobo v1](speech-devices-sdk-android-quickstart.md) 。 行為與舊版相同，但是 now `MicArrayGeometryConfigFile`屬性可以用來指定包含波束成形範圍的 JSON 檔案。
+語音裝置 SDK 目前僅支援 [Roobo v1](speech-devices-sdk-android-quickstart.md) 。 行為與舊版相同，但現在 `MicArrayGeometryConfigFile` 屬性可以用來指定包含波束成形範圍的 JSON 檔案。
 
 ## <a name="microphone-array-configuration-json"></a>麥克風陣列設定 JSON
 
-麥克風陣列幾何設定的 JSON 檔案會遵循[json 架構](https://aka.ms/sdsdk-micarray-json)。 以下是遵循架構的一些範例。
+麥克風陣列幾何設定的 JSON 檔案會遵循 [json 架構](https://aka.ms/sdsdk-micarray-json)。 以下是遵循架構的一些範例。
 
 
 ```json
@@ -109,7 +109,7 @@ Or
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [選擇您的語音裝置](get-speech-devices-sdk.md)

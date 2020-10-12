@@ -4,10 +4,10 @@ description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務 (
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332673"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
@@ -44,7 +44,7 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 **Cache** | **詳細資料**
 --- | ---
 大小 |  快取資料夾中的可用空間應該至少為備份資料的整體大小5到10%。
-位置 | 快取資料夾必須在要備份的機器上儲存在本機，而且必須在線上。 快取資料夾不應位於網路共用、卸載式媒體或離線磁片區上。
+Location | 快取資料夾必須在要備份的機器上儲存在本機，而且必須在線上。 快取資料夾不應位於網路共用、卸載式媒體或離線磁片區上。
 資料夾 | 快取資料夾不應該在重復資料刪除磁片區或壓縮的資料夾中加密，也就是稀疏或有重新分析點。
 位置變更 | 您可以藉由停止備份引擎 (`net stop bengine`) ，並將快取資料夾複製到新的磁片磁碟機，來變更快取位置。  (確定新磁片磁碟機有足夠的空間。 ) 接著在 **HKLM\SOFTWARE\Microsoft\Windows Azure 備份** (**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**) 更新兩個登錄專案，然後重新開機引擎。
 
@@ -67,7 +67,7 @@ MARS 伺服器需要存取這些 URL：
 
 存取上述所有 Url 和 IP 位址時，會使用埠443上的 HTTPS 通訊協定。
 
-使用 MARS 代理程式從 Azure Vm 備份檔案和資料夾時，也需要設定 Azure 虛擬網路以允許存取。 如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標記之外，您還需要針對 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (*儲存體*) 建立類似的[NSG 規則](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)，以允許驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
+使用 MARS 代理程式從 Azure Vm 備份檔案和資料夾時，也需要設定 Azure 虛擬網路以允許存取。 如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 2. 選取 [設定] 底下的 [輸出安全性規則]。

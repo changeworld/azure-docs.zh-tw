@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 5c038cc309d8f1f13a04de01ed83e04afa70ba6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546163"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教學課程︰設定 Zendesk 來自動佈建使用者
@@ -116,7 +116,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Zendesk 通知電子郵件](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
-9. 選取 [儲存]。
+9. 選取 [儲存]****。
 
 10. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 Zendesk]****。
 

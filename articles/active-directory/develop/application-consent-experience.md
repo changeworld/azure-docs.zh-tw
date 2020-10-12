@@ -14,10 +14,10 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115470"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 應用程式同意體驗
@@ -83,4 +83,4 @@ ms.locfileid: "88115470"
 ## <a name="next-steps"></a>後續步驟
 - 取得有關 [Azure AD 同意架構如何實作同意](./quickstart-register-app.md)的逐步概觀。
 - 深入了解[多租用戶應用程式如何使用同意架構](./howto-convert-app-to-be-multi-tenant.md)來實作「使用者」與「系統管理員」同意，進而支援更進階的多層應用程式模式。
-- 瞭解[如何設定應用程式的發行者網域](howto-configure-publisher-domain.md)。
+- 瞭解 [如何設定應用程式的發行者網域](howto-configure-publisher-domain.md)。

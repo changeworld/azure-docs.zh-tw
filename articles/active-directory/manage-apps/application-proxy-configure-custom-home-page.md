@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642056"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 為發佈的應用程式設定自訂首頁
@@ -39,7 +39,7 @@ ms.locfileid: "88642056"
 > [!NOTE]
 > 當您將已發佈應用程式的存取權授與使用者時，應用程式會顯示在 [我的應用程式](../user-help/my-apps-portal-end-user-access.md) 和 [Office 365 應用程式啟動器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 設定首頁 URL 之前，請記住下列需求︰
 
@@ -63,7 +63,7 @@ ms.locfileid: "88642056"
 
    ![顯示 [首頁 URL] 欄位之已註冊應用程式的商標頁面](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="change-the-home-page-with-powershell"></a>使用 PowerShell 變更首頁
 
@@ -178,7 +178,7 @@ ms.locfileid: "88642056"
 > [!NOTE]
 > 您對應用程式所做的任何變更都可能會重設首頁 URL。 如果您的首頁 URL 重設，請重複本節中的步驟重新設定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [使用 Azure AD 應用程式 Proxy 啟用 SharePoint 的遠端存取](application-proxy-integrate-with-sharepoint-server.md)
 - [教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md)

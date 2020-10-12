@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/21/2020
 ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332129"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure SQL Database 中複製和轉換資料
@@ -61,7 +61,7 @@ ms.locfileid: "91332129"
 
 以下是支援 Azure SQL Database 已連結服務的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**AzureSqlDatabase**。 | 是 |
 | connectionString | 指定連接到 **connectionString** 屬性 Azure SQL Database 實例所需的資訊。 <br/>您也可以在 Azure Key Vault 中放置密碼或服務主體金鑰。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱下表中的 JSON 範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 | 是 |
@@ -222,7 +222,7 @@ ms.locfileid: "91332129"
 
 以下是針對 Azure SQL Database 資料集支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **AzureSqlTable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -261,7 +261,7 @@ ms.locfileid: "91332129"
 
 若要從 Azure SQL Database 複製資料，[複製活動 **來源** ] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **AzureSqlSource**。 仍支援 ">sqlsource" 類型以提供回溯相容性。 | 是 |
 | sqlReaderQuery | 此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 | 否 |
@@ -374,7 +374,7 @@ GO
 
 若要將資料複製到 Azure SQL Database，「複製活動 **接收** 」區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 **type** 屬性必須設為 **AzureSqlSink**。 仍支援 "SqlSink" 類型以提供回溯相容性。 | 是 |
 | preCopyScript | 針對要在將資料寫入 Azure SQL Database 之前執行的複製活動，指定 SQL 查詢。 每一複製回合只會叫用此查詢一次。 使用此屬性來清除預先載入的資料。 | 否 |
@@ -710,7 +710,7 @@ ADF 將會在後續的 update、upsert、delete 中使用您選擇做為金鑰�
 | smalldatetime |Datetime |
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
-| sql_variant |物件 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
@@ -718,7 +718,7 @@ ADF 將會在後續的 update、upsert、delete 中使用您選擇做為金鑰�
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |String |
+| Xml |字串 |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您有有效位數大於28的資料，請考慮在 SQL 查詢中轉換成字串。

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: f983c0f5fc951376246fdbed9869211c8b495402
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977948"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD (舊版建立和設定 Azure 磁碟加密的金鑰保存庫) 
@@ -129,7 +129,7 @@ Azure 磁碟加密會與 [Azure Key Vault](https://azure.microsoft.com/documenta
 3. [取得應用程式識別碼和驗證金鑰](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 
      - 驗證金鑰是用戶端密碼，用來做為 >set-azvmdiskencryptionextension 的 AadClientSecret。 
         - 應用程式會使用驗證金鑰作為認證來登入 Azure AD。 在 Azure 入口網站中，此密碼稱為金鑰，但實際上與金鑰保存庫並無任何關聯。 請適當地保護這個祕密。 
-     - 應用程式識別碼稍後將用來做為 >set-azvmdiskencryptionextension 的 AadClientId，以及做為 >set-azkeyvaultaccesspolicy 的 ServicePrincipalName。 
+     - 應用程式識別碼稍後將用來作為 Set-AzVMDiskEncryptionExtension 的 AadClientId，以及做為 >set-azkeyvaultaccesspolicy 的 ServicePrincipalName。 
 
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a>設定 Azure AD 應用程式的金鑰保存庫存取原則
 為了將加密祕密寫入指定的 Key Vault，Azure 磁碟加密需要有權將祕密寫入 Key Vault 的 Azure Active Directory 應用程式用戶端識別碼和用戶端密碼。 
@@ -220,7 +220,7 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 1. 選取金鑰保存庫，移至 [存取原則]****，然後**按一下以顯示進階存取原則**。
 2. 選取標示為**為磁碟區加密啟用對 Azure 磁碟加密的存取**的方塊。
 3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]**** 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]****。 
-4. 按一下 [檔案]  。
+4. 按一下 **[儲存]** 。
 
 ![Azure 金鑰保存庫進階存取原則](../media/disk-encryption/keyvault-portal-fig4.png)
 
@@ -455,6 +455,6 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 ```
 
  
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [在 Windows Vm 上使用 Azure AD (舊版啟用 Azure 磁碟加密) ](disk-encryption-windows-aad.md)

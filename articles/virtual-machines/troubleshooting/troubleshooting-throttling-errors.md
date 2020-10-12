@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074282"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>針對 API 節流錯誤進行疑難排解 
@@ -32,7 +32,7 @@ Azure 計算要求可在訂用帳戶上和個別區域中受到節流，以利�
 
 ## <a name="call-rate-informational-response-headers"></a>呼叫率資訊回應標頭 
 
-| 頁首                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
+| 標頭                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 涵蓋資源貯體或作業群組 (包括此要求的目標) 的節流原則剩餘的 API 呼叫計數                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 此 HTTP 要求計入適用原則限制的呼叫計數。 此值通常是 1。 對於批次要求 (例如，用來調整虛擬機器擴展集)，則可能計入多個計數。 |
@@ -98,6 +98,6 @@ PowerShell Cmdlet 目前使用 REST 服務 API，這是用戶端可直接輕鬆�
 - 如果用戶端程式碼需要特定 Azure 位置中的 VM、磁碟和快照集，請使用以位置為基礎的查詢表單，而不要查詢所有訂用帳戶 VM，然後在用戶端上依位置進行篩選：對計算資源提供者區域端點發出 `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` 查詢。 
 -   在建立或更新 API 資源時 (尤其是 VM 與虛擬機器擴展集)，相較於輪詢資源 URL 本身 (根據 `provisioningState`)，追蹤已完成並傳回的非同步作業會有效率得多。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若想進一步了解 Azure 中其他資源的重試指引，請參閱[特定服務的重試指引](/azure/architecture/best-practices/retry-service-specific)

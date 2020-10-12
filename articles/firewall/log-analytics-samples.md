@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
 ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90023868"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Azure 防火牆的 Azure 監視器記錄
@@ -28,9 +28,9 @@ ms.locfileid: "90023868"
 
 1. 在 Azure 入口網站中開啟 Log Analytics 工作區。
 2. 開啟位於 [一般]**** 底下的 [檢視設計工具]****。
-3. 按一下 [匯入]  。
+3. 按一下 [匯入] 。
 4. 瀏覽並選取您之前所下載的 **AzureFirewall.omsview** 檔案。
-5. 按一下 [儲存]。
+5. 按一下 **[儲存]** 。
 
 以下是針對應用程式規則記錄資料的檢視外觀：
 
@@ -175,6 +175,6 @@ AzureDiagnostics
 ![記錄專案二 ](media/log-analytics-samples/log2.png)
 
 ![記錄專案三](media/log-analytics-samples/log3.png)
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要了解 Azure 防火牆監視與診斷，請參閱[教學課程：監視 Azure 防火牆記錄和計量](tutorial-diagnostics.md)。

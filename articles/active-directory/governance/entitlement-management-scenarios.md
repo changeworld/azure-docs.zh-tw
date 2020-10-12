@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f8a8f76ce7d46c0a44dd86ef1490c1c74a7992a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979503"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 權利管理的常見案例
@@ -156,7 +156,7 @@ ms.locfileid: "90979503"
 
 您也可以使用 Microsoft Graph 來管理存取套件、類別目錄、原則、要求和指派。  具有具有委派許可權之應用程式的適當角色中的使用者 `EntitlementManagement.ReadWrite.All` 可以呼叫 [權利管理 API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta )。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [委派與角色](entitlement-management-delegate.md)
 - [要求進程和電子郵件通知](entitlement-management-process.md)

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708579"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>使用跨區域複寫的需求和考慮 
@@ -39,9 +39,9 @@ ms.locfileid: "90708579"
 * 設定跨區域複寫之後，複寫程式會建立 *snapmirror 的快照* 集，以提供來源磁片區和目的地磁片區之間的參考。 當針對每個增量傳輸建立新的快照集時，系統會自動迴圈 Snapmirror 快照集。 在刪除複寫關聯性和磁片區之前，您無法刪除 snapmirror 的快照集。 
 * 當複寫關聯性為作用中或已中斷，以及刪除複寫關聯性之後，您可以在複寫關聯性的來源磁片區上刪除手動快照集。 在複寫關聯性中斷之前，您無法刪除目的地磁片區的手動快照。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [建立複寫對等互連](cross-region-replication-create-peering.md)
-* [顯示覆寫關聯性的健全狀況狀態](cross-region-replication-display-health-status.md)
+* [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)

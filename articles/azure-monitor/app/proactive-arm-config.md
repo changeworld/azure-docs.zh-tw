@@ -1,5 +1,5 @@
 ---
-title: 智慧偵測規則設定-Azure 應用程式深入解析
+title: 智慧偵測規則設定-Azure 應用程式見解
 description: 使用 Azure Resource Manager 範本來自動管理和設定 Azure Application Insights 智慧偵測規則
 ms.topic: conceptual
 author: harelbr
@@ -7,10 +7,10 @@ ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87309336"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則
@@ -21,10 +21,10 @@ ms.locfileid: "87309336"
 ## <a name="smart-detection-rule-configuration"></a>智慧偵測規則設定
 
 您可以設定智慧偵測規則的下列設定：
-- 是否啟用規則 (預設值是 **true**)。
-- 如果在找到偵測時，應該將電子郵件傳送給與訂用帳戶的[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)和[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)角色相關聯的使用者（預設值為**true**）。
+- 如果已啟用規則 (預設值為 **true**。 ) 
+- 如果在找到偵測時，應該將電子郵件傳送給與訂用帳戶的 [監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader) 和 [監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 角色相關聯的使用者 (預設值為 **true**。 ) 
 - 應該在找到偵測時收到通知的任何其他電子郵件收件者。
-    -  電子郵件設定不適用於標示為_預覽_的智慧偵測規則。
+    -  電子郵件設定不適用於標示為 _預覽版_的智慧偵測規則。
 
 為了允許透過 Azure Resource Manager 設定規則設定，智慧偵測規則設定現在可作為 Application Insights 資源 (名為 **ProactiveDetectionConfigs**) 中的內部資源。
 為獲得最大彈性，您可以使用唯一的通知設定來設定每個智慧偵測規則。
@@ -135,7 +135,7 @@ ms.locfileid: "87309336"
 下表有智慧偵測規則在入口網站中的顯示名稱，以及其應該在 Azure Resource Manager 範本中使用的內部名稱。
 
 > [!NOTE]
-> 標示為_預覽_的智慧偵測規則不支援電子郵件通知。 因此，您只能為這些規則設定_enabled_屬性。 
+> 標示為 _預覽版_ 的智慧偵測規則不支援電子郵件通知。 因此，您只能為這些規則設定 _enabled_ 屬性。 
 
 | Azure 入口網站規則名稱 | 內部名稱
 |:---|:---|
@@ -148,14 +148,14 @@ ms.locfileid: "87309336"
 | 磁碟區例外狀況異常升高 (預覽) | extension_exceptionchangeextension |
 | 偵測到潛在記憶體流失 (預覽) | extension_memoryleakextension |
 | 偵測到潛在安全性問題 (預覽) | extension_securityextensionspackage |
-| 每日資料量的異常上升（預覽） | extension_billingdatavolumedailyspikeextension |
+| 每日資料量 (預覽) 的異常上升 | extension_billingdatavolumedailyspikeextension |
 
 ### <a name="failure-anomalies-alert-rule"></a>失敗異常警示規則
 
-此 Azure Resource Manager 範本示範如何設定嚴重性為2的失敗異常警示規則。 這個新版本的失敗異常警示規則是新的 Azure 警示平臺的一部分，並取代[傳統警示淘汰](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)程式中淘汰的傳統版本。
+此 Azure Resource Manager 範本示範如何設定嚴重性為2的失敗異常警示規則。 這個新版本的失敗異常警示規則是新 Azure 警示平臺的一部分，並取代傳統 [警示淘汰](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)程式中即將淘汰的傳統版本。
 
 > [!NOTE]
-> 失敗異常是全域服務，因此會在全域位置上建立規則位置。
+> 失敗異常是全域服務，因此會在全域位置建立規則位置。
 
 ```json
 {
@@ -186,7 +186,7 @@ ms.locfileid: "87309336"
 ```
 
 > [!NOTE]
-> 此 Azure Resource Manager 範本對於失敗異常警示規則而言是唯一的，而且不同于本文中所述的其他傳統智慧偵測規則。 如果您想要手動管理失敗異常，這會在 Azure 監視器警示中完成，而其他所有智慧偵測規則則會在 UI 的 [智慧偵測] 窗格中進行管理。
+> 此 Azure Resource Manager 範本對失敗異常警示規則是唯一的，而且與本文所述的其他傳統智慧型偵測規則不同。 如果您想要手動管理失敗異常，這會在 Azure 監視器警示中完成，而在 UI 的 [智慧偵測] 窗格中會管理所有其他智慧偵測規則。
 
 ## <a name="next-steps"></a>後續步驟
 

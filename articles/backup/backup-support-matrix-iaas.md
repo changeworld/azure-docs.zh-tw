@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
 ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332724"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
@@ -164,7 +164,7 @@ Azure VM 資料磁碟 | 支援最多32個磁片的 Azure Vm 備份。<br><br> �
 備份和還原已刪除重複資料的 VM/磁碟 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這篇[文章](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure 備份不會跨復原服務保存庫中的 Vm 刪除 <br/> <br/>  -如果在還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫無法理解格式。 不過，您可以成功執行完整的 VM 還原。
 將磁碟新增至受保護的 VM | 支援。
 在受保護的 VM 上調整磁碟大小 | 支援。
-共用存放裝置| 不支援使用叢集共用磁碟區 (CSV) 或向外延展檔案伺服器備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁碟區的磁碟可能無法執行。
+共用存放裝置| 不支援使用叢集共用磁碟區 (CSV) 或 Scale-Out 檔案伺服器來備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁碟區的磁碟可能無法執行。
 [共用磁碟](../virtual-machines/disks-shared-enable.md) | 不支援。
 
 ## <a name="vm-network-support"></a>VM 網路支援

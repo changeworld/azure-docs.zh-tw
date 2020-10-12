@@ -8,10 +8,10 @@ ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329086"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用適用於 Kubernetes 的 Azure RBAC 授權 (預覽)
@@ -27,7 +27,7 @@ ms.locfileid: "91329086"
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>必要條件 
 - 確定您有 Azure CLI 2.9.0 版版或更新版本
 - 確定已 `EnableAzureRBACPreview` 啟用功能旗標。
 - 確定您已安裝 `aks-preview` [CLI 擴充][az-extension-add] 功能 v 0.4.55 或更高版本

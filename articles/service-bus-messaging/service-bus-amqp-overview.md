@@ -1,13 +1,13 @@
 ---
 title: Azure 服務匯流排中的 AMQP 1.0 總覽
-description: 瞭解 Azure 服務匯流排如何支援先進的訊息佇列通訊協定 (AMQP) （開放式標準通訊協定）。
+description: 瞭解 Azure 服務匯流排如何 (AMQP) （開放式標準通訊協定）支援先進訊息佇列通訊協定。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066333"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
@@ -54,13 +54,13 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 下圖說明的是一個部署範例，其中的 Java 用戶端是在 Linux 上執行並使用標準的 Java 訊息服務 (JMS) API 撰寫而成，而 .NET 用戶端則是在 Windows 上執行並使用 AMQP 1.0 透過服務匯流排來交換訊息。
 
-![此圖顯示一個服務匯流排交換包含兩個 Linux 環境和兩個 Windows 環境的訊息。][0]
+![此圖顯示一個服務匯流排與兩個 Linux 環境和兩個 Windows 環境交換訊息。][0]
 
 **圖 1：範例部署案例示範使用服務匯流排和 AMQP 1.0 的跨平台訊息服務**
 
 目前已知下列用戶端程式庫可以使用服務匯流排：
 
-| 語言 | 程式庫 |
+| Language | 程式庫 |
 | --- | --- |
 | Java |Apache Qpid Java 訊息服務 (JMS) 用戶端<br/>IIT Software SwiftMQ Java 用戶端 |
 | C |Apache Qpid Proton-C |
@@ -80,7 +80,7 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 * [搭配使用 .NET 的服務匯流排與 AMQP]
 * [搭配使用 Java 的服務匯流排與 AMQP]
 * [在 Azure Linux VM 上安裝 Apache Qpid Proton-C]
-* [Windows Server 服務匯流排中的 AMQP]
+* [適用于 Windows Server 的服務匯流排中的 AMQP]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [搭配使用 .NET 的服務匯流排與 AMQP]: service-bus-amqp-dotnet.md

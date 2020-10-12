@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515396"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 開發 Azure 檔案服務
@@ -69,7 +69,7 @@ storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_sto
 
 ## <a name="connecting-to-an-azure-storage-account"></a>連接到 Azure 儲存體帳戶
 
-您可以使用**cloud_storage_account**類別來代表您的儲存體帳戶資訊。 若要從儲存體連接字串擷取儲存體帳戶資訊，您可以使用 **parse** 方法。
+您可以使用 **cloud_storage_account** 類別來代表您的儲存體帳戶資訊。 若要從儲存體連接字串擷取儲存體帳戶資訊，您可以使用 **parse** 方法。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -107,7 +107,7 @@ if (share.create_if_not_exists()) {
 
 ## <a name="delete-an-azure-file-share"></a>刪除 Azure 檔案共用
 
-刪除共用是藉由在 cloud_file_share 物件上呼叫**delete_if_exists**方法來完成。 以下是執行該作業的範例程式碼。
+藉由呼叫 cloud_file_share 物件上的 **delete_if_exists** 方法，即可刪除共用。 以下是執行該作業的範例程式碼。
 
 ```cpp
 // Get a reference to the share.
@@ -189,7 +189,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 
 Azure 檔案共用至少包含根目錄，檔案可以放置其中。 在本節中，您將學習如何從本機儲存體將檔案上傳至共用的根目錄。
 
-上傳檔案的第一個步驟是取得檔案所在之目錄的參考。 您可以藉由呼叫 share 物件的**get_root_directory_reference**方法來達到此目的。
+上傳檔案的第一個步驟是取得檔案所在之目錄的參考。 若要這麼做，請呼叫共用物件的 **get_root_directory_reference** 方法。
 
 ```cpp
 //Get a reference to the root directory for the share.
@@ -220,9 +220,9 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 
 ## <a name="download-a-file"></a>下載檔案
 
-若要下載檔案，請先取出檔案參考，然後呼叫**download_to_stream**方法，將檔案內容傳輸至資料流程物件，然後您可以將它保存到本機檔案。 或者，您可以使用 **download_to_file** 方法，將檔案內容下載到本機檔案。 您可以使用 **download_text** 方法，將檔案內容當成文字字串下載。
+若要下載檔案，請先取出檔案參考，然後呼叫 **download_to_stream** 方法將檔案內容傳輸至資料流程物件，然後再將檔案內容保存到本機檔案。 或者，您可以使用 **download_to_file** 方法，將檔案內容下載到本機檔案。 您可以使用 **download_text** 方法，將檔案內容當成文字字串下載。
 
-下列範例會使用**download_to_stream**和**download_text**方法來示範如何下載先前章節中所建立的檔案。
+下列範例會使用 **download_to_stream** 和 **download_text** 方法來示範如何下載先前章節中所建立的檔案。
 
 ```cpp
 // Download as text
@@ -363,7 +363,7 @@ if (share.exists())
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需深入了解 Azure 儲存體，請探索這些資源：
 

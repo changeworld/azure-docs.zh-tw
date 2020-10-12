@@ -12,10 +12,10 @@ ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890171"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning 工作流程的資料內嵌選項
@@ -74,7 +74,7 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
 
 ![Azure 管線 + SDK 資料內嵌](media/concept-data-ingestion/data-ingest-option-two.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 遵循下列操作說明文章：
 * [使用 Azure Data Factory 建立資料內嵌管線](how-to-data-ingest-adf.md)

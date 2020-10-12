@@ -1,6 +1,6 @@
 ---
 title: Azure 基礎結構監視
-description: 瞭解 Azure 生產網路的基礎結構監視層面，例如弱點掃描。
+description: 深入瞭解 Azure 生產網路的基礎結構監視層面，例如弱點掃描。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7b75c9dc874a41d4221c55a8b00dd12d943e80fc
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542937"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure 基礎結構監視   

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314431"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
@@ -31,7 +31,7 @@ ms.locfileid: "91314431"
 
 建議是讓您採取的動作，以便保護您的資源。
 
-安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，它會提供有關如何補救這些弱點的建議。
+資訊安全中心會定期分析 Azure 資源的安全性狀態，以識別潛在的安全性弱點。 然後為您提供如何補救這些弱點的建議。
 
 每項建議都會提供：
 
@@ -67,17 +67,17 @@ ms.locfileid: "91314431"
         - **狀況不良的資源** –仍受識別問題影響的資源。
         - **不適用的資源** –建議無法提供明確答案的資源。 [不適用] 索引標籤也包含每個資源的原因。 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="不適用資源，原因如下。":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="建議詳細資料頁面。":::
 
 ## <a name="preview-recommendations"></a>預覽建議
 
 標示為 **預覽** 的建議不包含在您的安全分數的計算中。
 
-您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
+這些建議仍會盡可能進行補救，以在預覽期間結束時計入您的分數。
 
 預覽建議的範例：
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="建議詳細資料頁面。":::
  
 ## <a name="next-steps"></a>後續步驟
 

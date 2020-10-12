@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250017"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理的頁面控制項
@@ -40,17 +40,17 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [app-actions](#app-actions)  
 -   [basic-signin](#basic-signin)  
--   [分頁控制](#paging-control)  
+-   [分頁控制項](#paging-control)  
 -   [提供者](#providers)  
--   [搜尋-控制項](#search-control)  
--   [sign-up](#sign-up)  
+-   [搜尋控制項](#search-control)  
+-   [註冊](#sign-up)  
 -   [訂閱-按鈕](#subscribe-button)  
 -   [訂用帳戶-取消](#subscription-cancel)  
   
-##  <a name="app-actions"></a><a name="app-actions"></a>應用程式動作  
+##  <a name="app-actions"></a><a name="app-actions"></a> 應用程式-動作  
  `app-actions` 控制項會提供使用者介面，以便與開發人員入口網站中 [使用者設定檔] 頁面上的應用程式互動。  
   
- ![應用程式&#45;動作控制](./media/api-management-page-controls/APIM-app-actions-control.png "APIM 應用程式動作控制項")  
+ ![應用程式&#45;動作控制項](./media/api-management-page-controls/APIM-app-actions-control.png "APIM 應用程式-動作控制項")  
   
 ### <a name="usage"></a>使用量  
   
@@ -60,7 +60,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 ### <a name="parameters"></a>參數  
   
-|參數|描述|  
+|參數|說明|  
 |---------------|-----------------|  
 |appId|應用程式的識別碼。|  
   
@@ -69,10 +69,10 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [應用程式](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a><a name="basic-signin"></a>基本-登入  
+##  <a name="basic-signin"></a><a name="basic-signin"></a> 基本-登入  
  `basic-signin` 控制項會提供用來在開發人員入口網站的登入頁面中收集使用者登入資訊的控制項。  
   
- ![基本&#45;登入控制項](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM 基本-登錄控制項")  
+ ![基本&#45;登入控制](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM 基本登錄控制項")  
   
 ### <a name="usage"></a>使用量  
   
@@ -111,7 +111,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [產品清單](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a><a name="providers"></a>都會  
+##  <a name="providers"></a><a name="providers"></a> 供應商  
  `providers` 控制項會提供用來在開發人員入口網站的登入頁面中選取驗證提供者的控制項。  
   
  ![提供者控制項](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供者控制項")  
@@ -151,10 +151,10 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [產品清單](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a><a name="sign-up"></a>註冊  
+##  <a name="sign-up"></a><a name="sign-up"></a> 註冊  
  `sign-up` 控制項會提供用來在開發人員入口網站的註冊頁面中收集使用者設定檔資訊的控制項。  
   
- ![簽署&#45;控制](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 註冊控制")  
+ ![sign&#45;up 控制項](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 註冊控制項")  
   
 ### <a name="usage"></a>使用量  
   
@@ -214,5 +214,5 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [產品](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](api-management-developer-portal-templates.md)。

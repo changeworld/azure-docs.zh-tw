@@ -1,15 +1,15 @@
 ---
 title: 區段 UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.Section UI 元素。 用來將入口網站中的元素群組在一起，以部署受控應用程式。
+description: 描述 Azure 入口網站的 Microsoft.Common.Section UI 元素。 用來群組入口網站中的元素，以部署受控應用程式。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063973"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
 ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83655083"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>以 Azure 防火牆威脅情報為主的篩選
@@ -27,7 +27,7 @@ ms.locfileid: "83655083"
 
 根據預設，警示模式下會啟用威脅情報篩選。 在區域中的入口網站介面變成可用為止之前，您都無法關閉此功能或變更模式。
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="威脅情報篩選的入口網站介面":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="防火牆威脅情報":::
 
 ## <a name="logs"></a>記錄
 

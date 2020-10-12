@@ -1,6 +1,6 @@
 ---
-title: 透明資料加密（入口網站）
-description: Azure Synapse Analytics 中的透明資料加密（TDE）
+title: '透明資料加密 (入口網站) '
+description: 透明資料加密 (TDE) Azure Synapse Analytics
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b530b3a049f41a54ab98cc7d1454018cfc990f75
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86495664"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-azure-synapse-analytics"></a>開始使用 Azure Synapse Analytics 中的透明資料加密（TDE）
+# <a name="get-started-with-transparent-data-encryption-tde-in-azure-synapse-analytics"></a>透明資料加密中的 (TDE) 開始使用 Azure Synapse Analytics
 
 > [!div class="op_single_selector"]
 >
-> * [安全性總覽](sql-data-warehouse-overview-manage-security.md)
+> * [安全性概觀](sql-data-warehouse-overview-manage-security.md)
 > * [驗證](sql-data-warehouse-authentication.md)
 > * [加密 (入口網站)](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
@@ -35,23 +35,23 @@ ms.locfileid: "86495664"
 
 若要啟用 TDE，請遵循下列步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中開啟資料庫
+1. 在[Azure 入口網站](https://portal.azure.com)中開啟資料庫
 2. 在資料庫刀鋒視窗中，按一下 [設定] **** 按鈕
-3. 選取 [**透明資料加密**] 選項 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. 在 [**設定** ![ 入口網站設定] 上選取 [開啟]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
+3. 選取 **透明資料加密** 選項 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. 選取 [ **開啟] 上** 的 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
 5. 選取 [**儲存** 
-    ![ 入口網站設定] [儲存]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
+    ![ 入口網站設定儲存]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
 
 ## <a name="disabling-encryption"></a>停用加密
 
 若要停用 TDE，請遵循下列步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中開啟資料庫
+1. 在[Azure 入口網站](https://portal.azure.com)中開啟資料庫
 2. 在資料庫刀鋒視窗中，按一下 [設定] **** 按鈕
-3. 選取 [**透明資料加密**] 選項 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. 選取 [**關閉**] 設定 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
-5. 選取 [**儲存**] 
-    ![ 入口網站設定 [儲存 2]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
+3. 選取 **透明資料加密** 選項 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. 選取 **關閉** 設定 ![ 入口網站設定](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
+5. 選取 [**儲存** 
+    ![ 入口網站] 設定 [儲存 2]](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
 
 ## <a name="encryption-dmvs"></a>加密 DMV
 

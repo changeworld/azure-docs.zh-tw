@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d8ddf372e234bab242e4b28ba53dce7dd68cc89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976049"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的多重要素驗證需求
@@ -55,7 +55,7 @@ ms.locfileid: "90976049"
 * 貴公司需要針對這些應用程式的合格使用者，或只針對系統管理員啟用 MFA？
 * 您需要一律啟用 MFA，或者只有在使用者於公司網路外部登入時啟用？
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 [定義混合式身分識別採用策略](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>另請參閱

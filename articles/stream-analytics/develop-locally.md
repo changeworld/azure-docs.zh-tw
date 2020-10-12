@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 797577ce976f71f41ece0d103bd0145775d48b56
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885585"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>在本機開發和調試 Azure 串流分析作業
@@ -29,7 +29,7 @@ ms.locfileid: "90885585"
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |串流分析工具是 Azure 開發的一部分，也是 Visual Studio 中的資料儲存和處理工作負載的一部分。 您可以使用 Visual Studio 來撰寫自訂的 c # 使用者定義函式和還原序列化程式。 若要深入瞭解，請參閱 [使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)。|
 |[命令提示字元或終端機](stream-analytics-tools-for-visual-studio-cicd.md)|Azure 串流分析 CI/CD NuGet 套件提供適用于 Visual studio 專案組建的工具，在任意電腦上進行本機測試。 Azure 串流分析 CI/CD npm 套件提供 Visual Studio Code 專案組建的工具， (在任意電腦上產生 Azure Resource Manager 範本) 。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Visual Studio Code 和範例資料在本機測試串流分析查詢](visual-studio-code-local-run.md)
 * [使用 Visual Studio Code 在本機針對即時資料流輸入測試串流分析查詢](visual-studio-code-local-run-live-input.md)

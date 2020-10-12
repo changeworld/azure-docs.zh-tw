@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 例外狀況
+title: OutOfMemoryError Azure HDInsight 中 Apache Spark 的例外狀況
 description: Azure HDInsight 中 Apache Spark 叢集的各種 OutOfMemoryError 例外狀況
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709040"
 ---
-# <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 例外狀況
+# <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError Azure HDInsight 中 Apache Spark 的例外狀況
 
 本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和可能的解決方案。
 
@@ -22,7 +22,7 @@ ms.locfileid: "84709040"
 
 ### <a name="issue"></a>問題
 
-您的 Apache Spark 應用程式因 OutOfMemoryError 未處理的例外狀況而失敗。 您可能會收到類似下列的錯誤訊息：
+因為 OutOfMemoryError 未處理的例外狀況，所以您的 Apache Spark 應用程式失敗。 您可能會收到類似下列的錯誤訊息：
 
 ```error
 ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439)
@@ -54,17 +54,17 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>原因
 
-此例外狀況最可能發生的原因，就是未配置足夠的堆積記憶體給 Java 虛擬機器 (JVM)。 這些 Jvm 會以執行程式或驅動程式的形式啟動，做為 Apache Spark 應用程式的一部分。
+此例外狀況最可能發生的原因，就是未配置足夠的堆積記憶體給 Java 虛擬機器 (JVM)。 這些 Jvm 會在 Apache Spark 應用程式中以執行程式或驅動程式的形式啟動。
 
 ### <a name="resolution"></a>解決方案
 
-1. 決定 Spark 應用程式將處理的資料大小上限。 根據輸入資料大小的最大值、轉換輸入資料所產生的中繼資料，以及進一步轉換中繼資料所產生的輸出資料，來預估大小。 如果初始估計值不足，請稍微增加大小，然後反復執行直到記憶體錯誤減少為止。
+1. 決定 Spark 應用程式將處理的資料大小上限。 根據輸入資料的大小上限、轉換輸入資料所產生的中繼資料，以及進一步轉換中繼資料所產生的輸出資料，來預估大小。 如果初始估計值不足，請稍微增加大小，然後反覆運算至記憶體錯誤減少。
 
-1. 請確定要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 這可以藉由在叢集的 YARN UI 的 [叢集計量] 區段中，查看已使用的**記憶體**值和 [**記憶體總計**] 和 [已**使用的虛擬核心**] 與 [**虛擬核心總計**]。
+1. 請確定要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 您可以藉由在叢集的 YARN UI 的 [叢集計量] 區段中，針對 [已使用的**記憶體****總計**] 和 [已**使用的虛擬核心**] 與 [**虛擬核心總計**] 的值，查看叢集計量區段。
 
     ![yarn 核心記憶體視圖](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
-1. 將下列 Spark 設定設為適當的值。 平衡應用程式需求與叢集中可用的資源。 這些值不應超過 YARN 所查看的可用記憶體和核心90%，而且也應該符合 Spark 應用程式的最小記憶體需求：
+1. 將下列 Spark 設定設定為適當的值。 使用叢集中的可用資源來平衡應用程式需求。 這些值不應超過90% 的可用記憶體和核心（由 YARN 查看），也應符合 Spark 應用程式的最小記憶體需求：
 
     ```
     spark.executor.instances (Example: 8 for 8 executor count)
@@ -94,7 +94,7 @@ java.lang.OutOfMemoryError
 
 ### <a name="issue"></a>問題
 
-在 Spark 歷程記錄伺服器中開啟事件時，您會收到下列錯誤：
+開啟 Spark 歷程記錄伺服器中的事件時，您會收到下列錯誤：
 
 ```
 scala.MatchError: java.lang.OutOfMemoryError: Java heap space (of class java.lang.OutOfMemoryError)
@@ -102,9 +102,9 @@ scala.MatchError: java.lang.OutOfMemoryError: Java heap space (of class java.lan
 
 ### <a name="cause"></a>原因
 
-此問題通常是因為在開啟大型 spark 事件檔案時發生資源不足所造成。 根據預設，Spark 堆積大小會設定為 1 GB，但大型 Spark 事件檔案可能需要超過此值。
+此問題通常是在開啟大型 spark 事件檔案時，因資源不足所造成。 Spark 堆積大小預設會設定為 1 GB，但大型 Spark 事件檔可能需要超過此值。
 
-如果您想要確認您嘗試載入的檔案大小，您可以執行下列命令：
+如果您想要驗證您嘗試載入的檔案大小，您可以執行下列命令：
 
 ```bash
 hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0274_1/
@@ -116,13 +116,13 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>解決方案
 
-您可以藉由編輯 `SPARK_DAEMON_MEMORY` spark 設定中的屬性並重新啟動所有服務，來增加 spark 歷程記錄伺服器記憶體。
+您可以藉由編輯 `SPARK_DAEMON_MEMORY` spark 設定中的屬性，並重新啟動所有服務，來增加 spark 歷程記錄伺服器記憶體。
 
-您可以在 Ambari 瀏覽器 UI 中選取 Spark2/Config/Advanced Spark2-env 區段來執行此動作。
+您可以藉由選取 Spark2/Config/Advanced Spark2-env 區段，從 Ambari 瀏覽器 UI 內進行此作業。
 
 ![Advanced spark2-env 區段](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-新增下列屬性，以將 Spark 歷程記錄伺服器記憶體從1g 變更為4g： `SPARK_DAEMON_MEMORY=4g` 。
+新增下列屬性以將 Spark 歷程記錄伺服器記憶體從1g 變更為4g： `SPARK_DAEMON_MEMORY=4g` 。
 
 ![Spark 屬性](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
@@ -130,11 +130,11 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>案例： Apache Spark 叢集上的 Livy 伺服器無法啟動
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>案例： Livy 伺服器無法在 Apache Spark 叢集上啟動
 
 ### <a name="issue"></a>問題
 
-無法在 Apache Spark [（Linux 上的 Spark 2.1 （HDI 3.6）] 上啟動 Livy 伺服器。 嘗試重新開機會導致下列錯誤堆疊中的 Livy 記錄檔：
+無法在 Apache Spark [ (Linux 上的 Spark 2.1 (HDI 3.6) ] 上啟動 Livy 伺服器。 嘗試從 Livy 記錄中重新開機下列錯誤堆疊的結果：
 
 ```log
 17/07/27 17:52:50 INFO CuratorFrameworkImpl: Starting
@@ -194,52 +194,52 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>原因
 
-`java.lang.OutOfMemoryError: unable to create new native thread`反白顯示 OS 無法將更多原生執行緒指派給 Jvm。 確認此例外狀況是因為違反每個進程的執行緒計數限制所造成。
+`java.lang.OutOfMemoryError: unable to create new native thread` 重點：作業系統無法指派更多原生執行緒給 Jvm。 確認此例外狀況是因為違反每個進程的執行緒計數限制所造成。
 
-當 Livy 伺服器意外終止時，Spark 叢集的所有連接也會終止，這表示所有作業和相關資料都會遺失。 在 HDP 2.6 中引進了會話復原機制，Livy 會將會話詳細資料儲存在 Zookeeper 中，以在 Livy 伺服器回復後復原。
+當 Livy Server 意外終止時，與 Spark 叢集的所有連線也會終止，這表示將會遺失所有的作業和相關資料。 在引進的 HDP 2.6 會話復原機制中，Livy 會將會話詳細資料儲存在 Zookeeper 中，以在 Livy 伺服器回復之後復原。
 
-透過 Livy 提交大量的作業時，在 Livy 伺服器的高可用性中，會將這些會話狀態儲存在 ZK （在 HDInsight 叢集上），並在 Livy 服務重新開機時復原那些會話。 在非預期終止後重新開機時，Livy 會為每個會話建立一個執行緒，而這會累積特定數目的待復原會話，而造成建立太多執行緒。
+當透過 Livy 提交大量的作業時，Livy 伺服器的高可用性會將這些會話狀態儲存在 HDInsight 叢集上的 ZK (中) 並在 Livy 服務重新開機時復原那些會話。 在非預期的終止後重新開機時，Livy 會為每個會話建立一個執行緒，這會累積特定數目的復原會話，導致建立的執行緒太多。
 
 ### <a name="resolution"></a>解決方案
 
 使用下面詳述的步驟來刪除所有專案。
 
-1. 使用取得 zookeeper 節點的 IP 位址
+1. 使用 < 取得 zookeeper 節點的 IP 位址
 
     ```bash
     grep -R zk /etc/hadoop/conf  
     ```
 
-1. 上述命令會列出我的叢集的所有 zookeeper
+1. 上述命令列出我的叢集的所有 zookeeper
 
     ```bash
     /etc/hadoop/conf/core-site.xml:      <value>zk1-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk2-      hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk4-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181</value>
     ```
 
-1. 使用 ping 取得 zookeeper 節點的所有 IP 位址，或者也可以使用 zk 名稱從前端節點連接到 zookeeper
+1. 使用 ping 取得 zookeeper 節點的所有 IP 位址，或者您也可以使用 zk 名稱從前端節點連線至 zookeeper
 
     ```bash
     /usr/hdp/current/zookeeper-client/bin/zkCli.sh -server zk2-hwxspa:2181
     ```
 
-1. 連線到 zookeeper 之後，請執行下列命令來列出所有嘗試重新開機的會話。
+1. 連接至 zookeeper 之後，請執行下列命令來列出所有嘗試重新開機的會話。
 
-    1. 大部分的情況下，這可能是超過8000個會話的清單####
+    1. 大部分情況下，這可能是超過8000個會話的清單####
 
         ```bash
         ls /livy/v1/batch
         ```
 
-    1. 下列命令會移除所有要復原的會話。 #####
+    1. 下列命令會移除所有復原中的會話。 #####
 
         ```bash
         rmr /livy/v1/batch
         ```
 
-1. 等候上述命令完成，並傳回游標以傳回提示，然後從 Ambari 重新開機 Livy 服務，這應該會成功。
+1. 等候上述命令完成，並將游標傳回提示，然後從 Ambari 重新開機 Livy 服務，這應該會成功。
 
 > [!NOTE]
-> `DELETE`完成執行時，livy 會話。 Spark 應用程式完成後，就不會自動刪除 Livy 批次會話，這是設計的。 Livy 會話是針對 Livy Rest 伺服器的 POST 要求所建立的實體。 `DELETE`需要呼叫才能刪除該實體。 或者，我們應該等待 GC 開始。
+> `DELETE` livy 會話完成其執行之後。 當 spark 應用程式完成（依設計）時，將不會自動刪除 Livy 批次會話。 Livy 會話是針對 Livy Rest 伺服器的 POST 要求所建立的實體。 `DELETE`需要呼叫才能刪除該實體。 或者，我們應該等候 GC 啟動。
 
 ---
 
@@ -249,7 +249,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 * [Spark 記憶體管理總覽](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
 
-* [在 HDInsight 叢集上進行 Spark 應用程式的偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
+* [在 HDInsight 叢集上將 Spark 應用程式進行偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
 * 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 

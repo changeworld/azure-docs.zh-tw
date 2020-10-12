@@ -1,6 +1,6 @@
 ---
-title: 在範本中設定部署腳本的開發環境 |Microsoft Docs
-description: 在 Azure Resource Manager 範本中設定部署腳本的開發環境。
+title: 針對範本中的部署腳本設定開發環境 |Microsoft Docs
+description: 針對 Azure Resource Manager 範本中的部署腳本設定開發環境。
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: jgao
 ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294072"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>在範本中設定部署腳本的開發環境（預覽）
+# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>在範本 (預覽版中設定部署腳本的開發環境) 
 
-瞭解如何建立開發環境，以使用部署腳本映射來開發和測試部署腳本。 您可以建立[Azure 容器實例](../../container-instances/container-instances-overview.md)或使用[Docker](https://docs.docker.com/get-docker/)。 這兩者都涵蓋在本文中。
+瞭解如何使用部署腳本映射來建立開發和測試部署腳本的開發環境。 您可以建立 [Azure 容器實例](../../container-instances/container-instances-overview.md) 或使用 [Docker](https://docs.docker.com/get-docker/)。 這兩篇文章皆涵蓋在內。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-如果您沒有部署腳本，可以建立包含下列內容的**hello.ps1**檔案：
+如果您沒有部署腳本，您可以使用下列內容建立 **hello.ps1** 檔案：
 
 ```powershell
 param([string] $name)
@@ -32,14 +32,14 @@ $DeploymentScriptOutputs['text'] = $output
 
 ## <a name="use-azure-container-instance"></a>使用 Azure 容器實例
 
-若要在電腦上撰寫腳本，您必須建立儲存體帳戶，並將儲存體帳戶掛接到容器實例。 如此一來，您就可以將腳本上傳至儲存體帳戶，並在容器實例上執行腳本。
+若要在電腦上撰寫您的腳本，您必須建立儲存體帳戶，並將儲存體帳戶掛接到容器實例。 如此您就可以將腳本上傳至儲存體帳戶，並在容器實例上執行腳本。
 
 > [!NOTE]
-> 您建立用來測試腳本的儲存體帳戶不是部署腳本服務用來執行腳本的相同儲存體帳戶。 部署腳本服務會在每次執行時，建立一個唯一的名稱做為檔案共用。
+> 您所建立用來測試腳本的儲存體帳戶，與部署腳本服務用來執行腳本的儲存體帳戶不同。 部署腳本服務會在每次執行時，將唯一的名稱建立為檔案共用。
 
 ### <a name="create-an-azure-container-instance"></a>建立 Azure 容器實例
 
-下列 ARM 範本會建立容器實例和檔案共用，然後將檔案共用裝載至容器映射。
+下列 ARM 範本會建立容器實例和檔案共用，然後將檔案共用掛接至容器映射。
 
 ```json
 {
@@ -153,11 +153,11 @@ $DeploymentScriptOutputs['text'] = $output
   ]
 }
 ```
-掛接路徑的預設值為**deploymentScript**。  這是在容器實例中掛接至檔案共用的路徑。
+掛接路徑的預設值為 **deploymentScript**。  這是在容器實例中掛接至檔案共用的路徑。
 
-範本中指定的預設容器映射為**mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3 "**。  如需支援的 Azure PowerShell 版本和 Azure CLI 版本清單，請參閱[Azure PowerShell 或 Azure CLI](./deployment-script-template.md#prerequisites)。
+範本中指定的預設容器映射是 **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3**」。  如需支援的 Azure PowerShell 版本和 Azure CLI 版本清單，請參閱 [Azure PowerShell 或 Azure CLI](./deployment-script-template.md#prerequisites)。
 
-範本會暫停容器實例1800秒。 您有30分鐘的時間，容器實例進入終端機狀態，而且會話結束。
+範本會暫停容器實例1800秒。 您有30分鐘的時間，您的容器實例進入終端狀態，且會話結束。
 
 若要部署範本：
 
@@ -191,13 +191,13 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 
 ### <a name="test-the-deployment-script"></a>測試部署腳本
 
-1. 從 [Azure 入口網站] 中，開啟您已部署容器實例和儲存體帳戶的資源群組。
-1. 開啟容器群組。 預設容器組名是已附加**cg**的專案名稱。 您應該會看到容器實例**處於 [執行**中] 狀態。
-1. 從左側功能表中選取 [**容器**]。 您應該會看到一個容器實例。  容器實例名稱是已附加**容器**的專案名稱。
+1. 從 Azure 入口網站中，開啟您在其中部署容器實例和儲存體帳戶的資源群組。
+1. 開啟容器群組。 預設容器組名是附加 **cg** 的專案名稱。 您應該會看到容器實例處於執行中**狀態。**
+1. 從左側功能表中選取 [ **容器** ]。 您應該會看到容器實例。  容器實例名稱是附加了 **容器** 的專案名稱。
 
-    ![部署腳本連接容器實例](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
+    ![部署腳本 connect 容器實例](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
-1. 選取 **[連線]**，然後選取 **[連線]**。 如果您無法連接到容器實例，請重新開機容器群組，然後再試一次。
+1. 選取 **[連接]**，然後選取 **[連接]**。 如果您無法連接到容器實例，請重新開機容器群組，然後再試一次。
 1. 在主控台窗格中，執行下列命令：
 
     ```
@@ -206,14 +206,14 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     pwsh ./hello.ps1 "John Dole"
     ```
 
-    輸出是**Hello John Dole**。
+    輸出為 **Hello John Dole**。
 
     ![部署腳本容器實例測試](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
 
 ## <a name="use-docker"></a>使用 Docker
 
-您可以使用預先設定的 Docker 容器映像做為部署指令碼開發環境。 若要安裝 Docker，請參閱[取得 docker](https://docs.docker.com/get-docker/)。
-您也需要設定檔案共用，將包含部署腳本的目錄掛接到 Docker 容器。
+您可以使用預先設定的 Docker 容器映像做為部署指令碼開發環境。 若要安裝 Docker，請參閱 [取得 docker](https://docs.docker.com/get-docker/)。
+您也需要設定檔案共用，以將包含部署腳本的目錄掛接至 Docker 容器。
 
 1. 將部署指令碼容器映像提取到本機電腦：
 
@@ -221,7 +221,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    此範例使用 PowerShell 版本4.3.0。
+    此範例會使用 PowerShell 4.3.0 版。
 
     從 Microsoft Container Registry (MCR) 提取 CLI 映像：
 
@@ -251,7 +251,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. 下列螢幕擷取畫面顯示如何執行 PowerShell 腳本（假設您在共用磁片磁碟機中有 helloworld.ps1 檔案）。
+1. 下列螢幕擷取畫面顯示當您在共用磁片磁碟機中有 helloworld.ps1 檔案時，如何執行 PowerShell 腳本。
 
     ![Resource Manager 範本部署指令碼 Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
