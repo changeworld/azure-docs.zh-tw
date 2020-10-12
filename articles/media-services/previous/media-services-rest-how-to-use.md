@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264278"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒體服務作業 REST API 概觀
@@ -65,9 +65,9 @@ ms.locfileid: "89264278"
 | 標頭 | 類型 | 值 |
 | --- | --- | --- |
 | 授權 |持有人 |Bearer 是唯一接受的授權機制。 此值也必須包含 Azure Active Directory 所提供的存取權杖。 |
-| x-ms-version |小數位數 |2.17 (或最新版本)|
-| DataServiceVersion |小數位數 |3.0 |
-| MaxDataServiceVersion |小數位數 |3.0 |
+| x-ms-version |Decimal |2.17 (或最新版本)|
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > 因為媒體服務使用 OData 來公開其 REST API，因此 DataServiceVersion 和 MaxDataServiceVersion 標頭應該包含在所有要求中。不過，如果沒有，則目前媒體服務會假設使用的 DataServiceVersion 值是 3.0。
@@ -78,7 +78,7 @@ ms.locfileid: "89264278"
 
 | 標頭 | 類型 | 值 |
 | --- | --- | --- |
-| 日期 |RFC 1123 日期 |要求的時間戳記 |
+| Date |RFC 1123 日期 |要求的時間戳記 |
 | 接受 |內容類型 |如下所示的回應要求內容類型：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 回應可能會有不同的內容類型，例如 Blob 擷取，成功的回應會在其中包含 Blob 資料流做為裝載。 |
 | Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 編碼 (適用時)。 注意：若是大型資源，媒體服務可能會忽略此標頭，並傳回未壓縮的資料。 |
 | Accept-Language |"en"、"es" 等。 |指定回應的慣用語言。 |
@@ -94,7 +94,7 @@ ms.locfileid: "89264278"
 | --- | --- | --- |
 | request-id |字串 |目前作業的唯一識別碼，由服務產生。 |
 | client-request-id |字串 |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
-| 日期 |RFC 1123 日期 |處理要求的日期/時間。 |
+| Date |RFC 1123 日期 |處理要求的日期/時間。 |
 | Content-Type |不定 |回應主體的內容類型。 |
 | Content-Encoding |不定 |Gzip 或 deflate (視情況)。 |
 

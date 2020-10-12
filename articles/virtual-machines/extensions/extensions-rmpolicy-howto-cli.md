@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 原則來限制 VM 延伸模組安裝（Linux）
+title: 使用 Azure 原則來限制 (Linux) 的 VM 延伸模組安裝
 description: 使用 Azure 原則來限制 VM 延伸模組部署。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: 2129130dab58c9e1fb98878efc3ec668eeb45359
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87069782"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure 原則來限制 Linux VM 上的延伸模組安裝
 
-如果您想要防止在 Linux Vm 上使用或安裝特定的擴充功能，您可以使用 CLI 來建立 Azure 原則定義，以限制資源群組內的 Vm 擴充功能。 
+如果您想要防止在 Linux Vm 上使用或安裝特定的延伸模組，您可以使用 CLI 來建立 Azure 原則定義，以限制資源群組內 Vm 的延伸模組。 
 
 本教學課程會使用 Azure Cloud Shell 內的 CLI，這會不斷更新至最新版本。 如果您想要在本機執行 Azure CLI，則必須安裝 2.0.26 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
@@ -170,6 +170,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需詳細資訊，請參閱 [Azure 原則](../../governance/policy/overview.md)。

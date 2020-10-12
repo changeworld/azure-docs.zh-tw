@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515432"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array
 ![安裝程序流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文描述 StorSimple 裝置管理員服務介面，包括如何連接它和各種可用的選項，並提供可以透過此 UI 執行的特定工作流程的連結。
 
 閱讀本文之後，您將了解如何：
@@ -42,7 +42,7 @@ ms.locfileid: "85515432"
 StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連接至多個 StorSimple Virtual Array。 您可以使用在瀏覽器中執行的中央 Microsoft Azure 入口網站來管理這些裝置。 若要連接至 StorSimple 裝置管理員服務，請執行下列動作。
 
 #### <a name="to-connect-to-the-service"></a>連接至此服務
-1. 移至 [https://ms.portal.azure.com](https://ms.portal.azure.com)。
+1. 前往 [https://ms.portal.azure.com](https://ms.portal.azure.com)。
 2. 使用您的 Microsoft 帳戶認證，登入 Microsoft Azure 入口網站 (位於窗格右上角)。
 3. 在 StorSimple 裝置管理員上瀏覽至 [瀏覽] --> [篩選]，以檢視指定訂用帳戶中所有的裝置管理員。
 
@@ -71,11 +71,11 @@ StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連�
 > 您必須使用 [本機 Web UI](storsimple-ova-web-ui-admin.md) 以執行下列工作：
 > 
 > * [擷取服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
-> * [建立支援套件](storsimple-ova-web-ui-admin.md#generate-a-log-package)
+> * [建立支援封裝](storsimple-ova-web-ui-admin.md#generate-a-log-package)
 > * [停止和重新啟動 Virtual Array](storsimple-ova-web-ui-admin.md#shut-down-and-restart-your-device)
 > 
 > 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需 Web UI 及如何使用的詳細資訊，請移至 [使用 StorSimple Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

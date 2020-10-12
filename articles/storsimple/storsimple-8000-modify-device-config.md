@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514681"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 裝置管理員服務來修改 StorSimple 裝置組態
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段包含所有裝置參數，可讓您重新設定 StorSimple 裝置管理員服務所管理的 StorSimple 裝置。 本教學課程說明如何使用 [設定]**** 刀鋒視窗來執行下列裝置層級的工作：
 
@@ -44,7 +44,7 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 系統會為連線到 StorSimple 裝置管理員服務的 StorSimple 裝置指派預設名稱。 預設名稱通常會反映裝置的序號。 例如，長度為 15 個字元的預設裝置名稱，如 8600-SHX0991003G44HT，將表示以下項目：
 
-* **8600** –表示裝置型號。
+* **8600**  –表示裝置型號。
 * **SHX** – 表示製造地點。
 * **0991003** - 表示特定產品。
 * **G44HT**- 最後 5 位數會遞增，以產生唯一序號。 這可能不是連續的組合。
@@ -165,7 +165,7 @@ DATA 0 依預設已啟用雲端功能。 設定 DATA 0 時，您也需要設定�
 1. 清除兩個介面的 IP 位址。
 2. 清除 IP 位址之後，指派新的 IP 位址給個別的介面。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 了解如何 [為 StorSimple 裝置設定 MPIO](storsimple-8000-configure-mpio-windows-server.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。

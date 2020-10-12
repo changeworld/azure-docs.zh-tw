@@ -1,6 +1,6 @@
 ---
-title: Azure AD 儲存報告資料多久？ | Microsoft Docs
-description: 瞭解 Azure 儲存各種類型報告資料的時間長度。
+title: Azure AD 儲存報表資料的時間長度為何？ | Microsoft Docs
+description: 瞭解 Azure 儲存各種類型的報告資料的時間長度。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80239553"
 ---
-# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 儲存報告資料多久？
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 儲存報表資料的時間長度為何？
 
 
 在本文中，您會了解 Azure Active Directory 中不同活動報告的資料保留原則。 
@@ -40,7 +40,7 @@ ms.locfileid: "80239553"
 
 ### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>何時可在 Azure 入口網站中取得活動資料？
 
-- **立即**-如果您已經在 Azure 入口網站中使用報表。
+- **立即** -如果您已經使用 Azure 入口網站中的報表。
 - **2 小時內** - 如果您尚未在 Azure 入口網站中開啟報告功能。
 
 ---
@@ -71,7 +71,7 @@ ms.locfileid: "80239553"
 | :--                    | :--           | :--                 | :--                 |
 | 稽核記錄             | 7 天        | 30 天             | 30 天             |
 | 登入               | 7 天        | 30 天             | 30 天             |
-| Azure MFA 使用量        | 30 天       | 30 天             | 30 天             |
+| Azure MFA 使用方式        | 30 天       | 30 天             | 30 天             |
 
 使用 Azure 監視器將稽核和登入活動資料傳送至 Azure 儲存體帳戶，即可將它保留超過上述的預設保留期間。 如需詳細資訊，請參閱[將 Azure AD 記錄封存到 Azure 儲存體帳戶](quickstart-azure-monitor-route-logs-to-storage-account.md)。
 

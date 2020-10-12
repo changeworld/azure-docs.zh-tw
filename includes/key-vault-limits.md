@@ -5,44 +5,44 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
 ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85838694"
 ---
-### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>金鑰交易（每個區域的每個保存庫在10秒內允許的最大交易數<sup>1</sup>）：
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>金鑰交易 (每個區域中的每個保存庫在 10 秒內允許的交易上限<sup>1</sup>)：
 
-|金鑰類型|HSM 金鑰<br>建立金鑰|HSM 金鑰<br>所有其他交易|軟體金鑰<br>建立金鑰|軟體金鑰<br>所有其他交易|
+|金鑰類型|HSM 金鑰<br>CREATE 金鑰|HSM 金鑰<br>所有其他交易|軟體金鑰<br>CREATE 金鑰|軟體金鑰<br>所有其他交易|
 |:---|---:|---:|---:|---:|
-|RSA 2048 位|5|1,000|10|2,000|
-|RSA 3072 位|5|250|10|500|
-|RSA 4096 位|5|125|10|250|
+|RSA 2,048 位元|5|1,000|10|2,000|
+|RSA 3,072 位元|5|250|10|500|
+|RSA 4,096 位元|5|125|10|250|
 |ECC P-256|5|1,000|10|2,000|
 |ECC P-384|5|1,000|10|2,000|
 |ECC P-521|5|1,000|10|2,000|
 |ECC SECP256K1|5|1,000|10|2,000|
 
 > [!NOTE]
-> 在上表中，我們看到 RSA 2048 位軟體金鑰的2000取得每10秒的交易數。 針對 RSA 2048 位 HSM 金鑰1000，允許每10秒取得筆交易。
+> 在上表中，我們看到 RSA 2,048 位元軟體金鑰，每 10 秒允許的 2,000 個 GET 交易。 對於 RSA 2,048 位元 HSM 金鑰，每 10 秒允許 1,000 個 GET 交易。
 >
-> 節流臨界值為加權，強制執行于其總和。 例如，如上表所示，當您在 RSA HSM 金鑰上執行 GET 作業時，使用4096位金鑰比2048位金鑰更昂貴。 這是因為 1000/125 = 8。
+> 節流閾值會進行加權，並依其總和強制執行。 例如，如上表所示，當您在 RSA HSM 金鑰上執行 GET 作業時，使用 4,096 位元金鑰比起使用 2,048 位元金鑰貴八倍。 這是因為 1,000/125 = 8。
 >
-> 在指定的10秒間隔內，Azure Key Vault 用戶端只能在遇到節流 HTTP 狀態碼之前，執行下列*其中一項*作業 `429` ：
-> - 2000 RSA 2048 位軟體-金鑰取得交易
-> - 1000 RSA 2048-位 HSM-金鑰取得交易
-> - 125 RSA 4096-位 HSM-金鑰取得交易
-> - 124 RSA 4096 位 HSM-金鑰取得交易和 8 RSA 2048-位 HSM-金鑰取得交易
+> 在指定的 10 秒間隔內，Azure Key Vault 用戶端在遇到 `429` 節流 HTTP 狀態碼之前，只能執行下列其中一項作業：
+> - 2,000 個 RSA 2,048 位元軟體金鑰 GET 交易
+> - 1,000 個 RSA 2,048 位元 HSM 金鑰 GET 交易
+> - 125 個 RSA 4,096 位元 HSM 金鑰 GET 交易
+> - 124 RSA 4,096 位元 HSM 金鑰 GET 交易和 8 RSA 2,048 位元 HSM 金鑰 GET 交易
 
-### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>秘密、受控儲存體帳戶金鑰和保存庫交易：
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>祕密、受控儲存體帳戶金鑰和保存庫交易：
 
-| 交易類型 | 每個區域的每個保存庫10秒內允許的最大交易數<sup>1</sup> |
+| 交易類型 | 每個區域中的每個保存庫在 10 秒內允許的交易上限<sup>1</sup> |
 | --- | --- |
 | 所有交易 |2,000 |
 
-如需如何在超過這些限制時處理節流的資訊，請參閱[Azure Key Vault 節流指導](../articles/key-vault/key-vault-ovw-throttling.md)方針。
+如需有關如何在超過這些限制時處理節流的相關資訊，請參閱 [Azure Key Vault 節流指引](../articles/key-vault/key-vault-ovw-throttling.md)。
 
-<sup>1</sup>所有交易類型的訂用帳戶範圍限制為每個金鑰保存庫限制的五次。 例如，每個訂用帳戶的 HSM-其他交易限制為每個訂用帳戶10秒內的5000筆交易。
+<sup>1</sup> 適用於所有交易類型的全訂用帳戶限制，是每個金鑰保存庫限制的五倍。 例如，每個訂用帳戶的 HSM - 其他交易受限於每個訂閱 10 秒內 5,000 筆交易。
 
 ### <a name="azure-private-link-integration"></a>Azure 私人連結整合
 

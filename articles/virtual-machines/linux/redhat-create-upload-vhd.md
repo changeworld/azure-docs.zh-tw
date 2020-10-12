@@ -9,24 +9,24 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: guybo
 ms.openlocfilehash: cc8d4458de5f3bbf1eaf111aa10f1377f3c9d46a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292288"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 Red Hat 型虛擬機器
-在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 如需自動建立 RHEL 映射的方式，請參閱[Azure 映射](./image-builder-overview.md)產生器。
+在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 如需自動建立 RHEL 映射的方式，請參閱 [Azure 映射](./image-builder-overview.md)產生器。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 Red Hat 型虛擬機器
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 本節假設您已經從 Red Hat 網站取得 ISO 檔案並將 RHEL 映像安裝至虛擬硬碟 (VHD)。 如需有關如何使用 Hyper-V 管理員來安裝作業系統映像的詳細資訊，請參閱[安裝 Hyper-V 角色和設定虛擬機器](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 **RHEL 安裝注意事項**
 
 * Azure 不支援 VHDX 格式。 Azure 只支援固定 VHD。 您可以使用 Hyper-V 管理員將磁碟轉換為 VHD 格式，或者使用 convert-vhd Cmdlet。 如果您使用 VirtualBox，請選取 [固定大小]  ，而不是預設在建立磁碟時動態配置的選項。
-* Azure 支援 Gen1 （BIOS 開機） & Gen2 （UEFI 開機）虛擬機器。
+* Azure 支援 Gen1 (BIOS 開機) & Gen2 (UEFI 開機) 虛擬機器。
 * 允許的 VHD 大小上限為 1,023 GB。
 * 邏輯磁碟區管理員 (LVM) 受到支援，而且可能會在 OS 磁碟或 Azure 虛擬機器中的資料磁碟上使用。 不過，通常建議在 OS 磁碟上使用標準磁碟分割，而不是 LVM。 此練習可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部相同虛擬機器時。 另請參閱 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。
 * 需要掛接通用磁碟格式 (UDF) 檔案系統的核心支援。 在 Azure 上第一次開機時，連結至客體的 UDF 格式媒體會將佈建組態傳遞至 Linux 虛擬機器。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統，才能讀取其組態並佈建虛擬機器。
@@ -125,7 +125,7 @@ ms.locfileid: "87292288"
 
 1. 請勿在作業系統磁碟上建立交換空間。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，它可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 /etc/waagent.conf 中適當修改下列參數：
 
     ```config-cong
     ResourceDisk.Format=y
@@ -153,7 +153,7 @@ ms.locfileid: "87292288"
     # logout
     ```
 
-1. 按一下 [hyper-v 管理員] 中的 [**動作**  >  **關閉**]。 您現在可以將 Linux VHD 上傳至 Azure。
+1. 按一下 [hyper-v 管理員] 中的 [**動作**  >  **關機**]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 7 虛擬機器
@@ -265,7 +265,7 @@ ms.locfileid: "87292288"
     # logout
     ```
 
-1. 按一下 [hyper-v 管理員] 中的 [**動作**  >  **關閉**]。 您現在可以將 Linux VHD 上傳至 Azure。
+1. 按一下 [hyper-v 管理員] 中的 [**動作**  >  **關機**]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>從 KVM 準備 Red Hat 型虛擬機器
@@ -399,7 +399,7 @@ ms.locfileid: "87292288"
     # chkconfig waagent on
     ```
 
-1. Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟中安裝 Azure Linux 代理程式之後，請在 **/etc/waagent.conf**中適當地修改下列參數：
+1. Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 當您在上一個步驟中安裝 Azure Linux 代理程式之後，請在 **/etc/waagent.conf** 中適當地修改下列參數：
 
     ```config-conf
     ResourceDisk.Format=y
@@ -458,7 +458,7 @@ ms.locfileid: "87292288"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-    或者，使用 qemu-img convert 版本**2.6 +** 包含 `force_size` 選項：
+    或者，使用 qemu-img convert **2.6 版 +** 包含 `force_size` 選項：
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
@@ -657,14 +657,14 @@ ms.locfileid: "87292288"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-    或者，使用 qemu-img convert 版本**2.6 +** 包含 `force_size` 選項：
+    或者，使用 qemu-img convert **2.6 版 +** 包含 `force_size` 選項：
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>從 VMware 準備 Red Hat 型虛擬機器
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 本節假設您已在 VMware 中安裝 RHEL 虛擬機器。 如需有關如何在 VMware 中安裝作業系統的詳細資訊，請參閱 [VMware 客體作業系統安裝指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 安裝 Linux 作業系統時，我們建議您使用標準磁碟分割而不是 LVM (這通常是許多安裝的預設設定)。 這可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部虛擬機器時。 如果願意，您可以在資料磁碟上使用 LVM 或 RAID。
@@ -824,7 +824,7 @@ ms.locfileid: "87292288"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-    或者，使用 qemu-img convert 版本**2.6 +** 包含 `force_size` 選項：
+    或者，使用 qemu-img convert **2.6 版 +** 包含 `force_size` 選項：
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
@@ -977,7 +977,7 @@ ms.locfileid: "87292288"
     # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-    或者，使用 qemu-img convert 版本**2.6 +** 包含 `force_size` 選項：
+    或者，使用 qemu-img convert **2.6 版 +** 包含 `force_size` 選項：
 
     ```console
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
@@ -1133,7 +1133,7 @@ ms.locfileid: "87292288"
 
 在某些情況下，Linux 安裝程式可能不會在初始 RAM 磁碟 (initrd 或 initramfs) 中包含 Hyper-V 的驅動程式，除非 Linux 偵測到自己在 Hyper-V 環境中執行。
 
-當您使用不同的虛擬化系統（也就是 VirtualBox、Xen 等）來準備您的 Linux 映射時，可能需要重建 initrd，以確保初始 RAM 磁碟上至少有 hv_vmbus 和 hv_storvsc 核心模組可供使用。 目前至少已知在以上游 Red Hat 散發套件為基礎的系統上有此問題。
+當您使用不同的虛擬化系統 (也就是 VirtualBox、Xen 等 ) 準備 Linux 映射時，可能需要重建 initrd，以確保至少有 hv_vmbus 和 hv_storvsc 核心模組可在初始 RAM 磁碟上使用。 目前至少已知在以上游 Red Hat 散發套件為基礎的系統上有此問題。
 
 若要解決這個問題，請將 Hyper-V 模組新增至 initramfs 並加以重建︰
 
@@ -1154,4 +1154,4 @@ add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 ## <a name="next-steps"></a>後續步驟
 * 您現在可以開始使用您的 Red Hat Enterprise Linux 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 * 如需已通過認證可執行 Red Hat Enterprise Linux 之 Hypervisor 的詳細資訊，請參閱 [Red Hat 網站](https://access.redhat.com/certified-hypervisors)。
-* 若要深入瞭解如何使用已準備好用於生產環境的 RHEL BYOS 映射，請移至[BYOS](../workloads/redhat/byos.md)的檔頁面。
+* 若要深入瞭解如何使用已準備好用於生產環境的 RHEL BYOS 映射，請移至 [BYOS](../workloads/redhat/byos.md)的檔頁面。

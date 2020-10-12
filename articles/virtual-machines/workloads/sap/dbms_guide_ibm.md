@@ -14,10 +14,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331262"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
@@ -84,7 +84,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 以下是各種大小的基準設定，以及從小規模到大型部署的 SAP 部署使用。 此清單是以 Azure premium 儲存體為基礎。 不過，Azure Ultra 磁片也完全支援 Db2，也可以使用。 只要使用容量、高載輸送量和高載 IOPS 的值，即可定義 Ultra 磁片設定。 您可以限制/db2//log_dir 的 IOPS， <SID> 大約是 5000 iops。 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超小型 SAP 系統：資料庫大小 50-200 GB：範例解決方案管理員
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
 |vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |唯讀 |
@@ -93,7 +93,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系統：資料庫大小 200-750 GB： small Business Suite
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
 |vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4400  |500  |1.024  |14,000  |680  |256 KB |唯讀 |
@@ -102,7 +102,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中 SAP 系統：資料庫大小 500-1000 GB： small Business Suite
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
 |vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |唯讀 |
@@ -111,7 +111,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系統：資料庫大小 750-2000 GB： Business Suite
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
 |vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |唯讀 |
@@ -120,7 +120,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
 
 #### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大型多 tb 的 SAP 系統：資料庫大小 2 TB +：通用 Business Suite 系統
-| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | 快取 |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
 |vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |唯讀 |

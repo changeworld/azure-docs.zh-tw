@@ -12,13 +12,13 @@ ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330778"
 ---
-# <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>彈性集區可協助您在 Azure SQL Database 中管理及調整多個資料庫
+# <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>彈性集區可協助您管理及調整 Azure SQL Database 中的多個資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL Database 彈性集區是一種簡單、符合成本效益的解決方案，可用於管理及調整具有不同且無法預測之使用需求的多個資料庫。 彈性集區中的資料庫位於單一伺服器上，並以設定的價格共用設定的資源數量。 Azure SQL Database 中的彈性集區可讓 SaaS 開發人員將一組資料庫的價格效能最佳化在規定的預算內，同時為每個資料庫提供效能彈性。

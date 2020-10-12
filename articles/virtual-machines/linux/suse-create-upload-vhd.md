@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
 ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292129"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>準備適用於 Azure 的 SLES 或 openSUSE 虛擬機器
@@ -133,11 +133,11 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 3. 在 Shell 上執行命令 '`zypper lr`'。 如果此命令傳回的輸出與下列類似，則該儲存機制已如預期設定，不需進行調整 (請注意，版本號碼可能會不同)：
 
-   | # | Alias                 | Name                  | 啟用 | Refresh
+   | # | Alias                 | 名稱                  | 啟用 | 重新整理
    | - | :-------------------- | :-------------------- | :------ | :------
    | 1 | 雲端： Tools_13 1      | 雲端： Tools_13 1      | 是     | 是
-   | 2 | openSUSE_13。1_OSS     | openSUSE_13。1_OSS     | 是     | 是
-   | 3 | openSUSE_13。1_Updates | openSUSE_13。1_Updates | 是     | 是
+   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | 是     | 是
+   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | 是     | 是
 
     如果命令傳回 "No repositories defined..."，則使用下列命令來新增這些儲存機制：
 

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 07/17/2020
 ms.author: tamram
 ms.openlocfilehash: 85e7cb86217340e77a6f597a357c3de1f91fb8d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070561"
 ---
-Azurite 支援單一固定帳戶及已知的驗證金鑰，以進行共用金鑰驗證。 此帳戶和金鑰是唯一允許與 Azurite 搭配使用的共用金鑰認證。 其中包括：
+Azurite 支援單一固定帳戶及已知的驗證金鑰來進行共用金鑰驗證。 此帳戶和金鑰是唯一允許與 Azurite 搭配使用的共用金鑰認證。 其中包括：
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> Azurite 支援的驗證金鑰僅適用于測試用戶端驗證程式代碼的功能。 它不提供任何安全性用途。 您不能搭配 Azurite 使用您的生產儲存體帳戶和金鑰。 您不應該將開發帳戶與生產資料搭配使用。
+> Azurite 所支援的驗證金鑰僅適用于測試用戶端驗證碼的功能。 它不提供任何安全性用途。 您無法搭配 Azurite 使用生產儲存體帳戶和金鑰。 您不應該將開發帳戶與生產資料搭配使用。
 > 
 > Azurite 僅支援透過 HTTP 連接。 不過，HTTPS 是建議的通訊協定，用於存取生產 Azure 儲存體帳戶中的資源。
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>使用捷徑連接到模擬器帳戶
-從您的應用程式連線到 Azurite 最簡單的方式，就是在應用程式的設定檔中設定參考快捷方式的連接字串 `UseDevelopmentStorage=true` 。 以下是在*app.config*檔案中 Azurite 的連接字串範例： 
+從應用程式連線到 Azurite 最簡單的方式，就是在應用程式佈建檔中設定參考快捷方式的連接字串 `UseDevelopmentStorage=true` 。 以下是在 *app.config* 檔案中 Azurite 的連接字串範例： 
 
 ```xml
 <appSettings>

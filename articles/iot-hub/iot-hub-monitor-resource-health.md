@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438393"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>監視 Azure IoT 中樞的健康情況並快速診斷問題
@@ -388,8 +388,8 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
-| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
+| **isRoutingEnabled** | 字串 | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
+| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中樞輸出記錄
 
@@ -420,9 +420,9 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **點** | String | 路由端點的名稱 |
-| **endpointType** | String | 路由端點的類型 |
-| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
+| **點** | 字串 | 路由端點的名稱 |
+| **endpointType** | 字串 | 路由端點的類型 |
+| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
 
 #### <a name="configurations"></a>組態
 
@@ -478,7 +478,7 @@ IoT 中樞設定記錄會追蹤自動裝置管理功能集的事件和錯誤。
 
 下表顯示用於不同 Azure IoT Sdk 的 SDK 名稱：
 
-| SdkVersion 屬性中的 SDK 名稱 | 語言 |
+| SdkVersion 屬性中的 SDK 名稱 | Language |
 |----------|----------|
 | .NET | .NET (C#) |
 | microsoft azure. 裝置 | .NET (c # ) service SDK |
@@ -593,7 +593,7 @@ class Program
 
 若要深入瞭解如何解讀健康情況資料，請參閱 [Azure 資源健康狀態總覽](../service-health/resource-health-overview.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [了解 IoT 中樞計量](iot-hub-metrics.md)
 * [搭配連接 IoT 中樞和信箱的 Azure Logic Apps 進行 IoT 遠端監視和通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

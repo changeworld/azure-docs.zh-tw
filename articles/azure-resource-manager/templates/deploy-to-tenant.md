@@ -4,10 +4,10 @@ description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍�
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372386"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租用戶層級建立資源

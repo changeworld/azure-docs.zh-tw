@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ad64d56899a9a54f4c8aede78ba6b4f2b77b8249
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331534"
 ---
 # <a name="azcopy-make"></a>azcopy 製作
@@ -42,14 +42,14 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 
 ## <a name="options"></a>選項。
 
-|選項|說明|
+|選項|描述|
 |--|--|
 |-h, --help|顯示 make 命令的說明內容。 |
 |--配額-gb uint32|指定共用的大小上限（gb） (GB) ，零表示您接受檔案服務的預設配額。|
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
 |--cap-mbps float|以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。|
 |--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|

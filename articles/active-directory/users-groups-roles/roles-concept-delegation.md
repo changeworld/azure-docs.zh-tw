@@ -16,10 +16,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798596"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委派系統管理
@@ -112,6 +112,6 @@ Azure AD 提供一份廣泛的指南來規劃和執行關於您 Azure AD 系統�
 
 對於大部分的日常活動，並非所有使用者都需要全域管理員權限，且並非所有使用者都應永久指派全域管理員角色。 當使用者需要全域系統管理員的使用權限時，他們應該在其自己的帳戶或其他系統管理帳戶上，於 Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 中啟動角色指派。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Azure AD 角色描述的參考，請參閱[在 Azure AD 中指派系統管理員角色](directory-assign-admin-roles.md)

@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439770"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>雲端中的新 DBA-在遷移之後管理 Azure SQL Database
@@ -101,7 +101,7 @@ SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層�
 
 SQL Database 提供兩個驗證方法：
 
-- [Azure Active Directory 驗證](authentication-aad-overview.md)
+- [Azure Active Directory Authentication](authentication-aad-overview.md)
 - [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支援傳統 Windows 驗證。 Azure Active Directory (Azure AD) 是集中式身分識別和存取管理服務。 利用此服務，您可以非常輕鬆地為組織中的所有人員提供單一登入存取 (SSO)。 這表示認證會在所有 Azure 服務間共用，以簡化驗證。 
@@ -174,7 +174,7 @@ Azure AD 支援 [Azure Multi-Factor Authentication](authentication-mfa-ssms-over
 |**加密範圍**|端對端|待用資料|
 |**伺服器可以存取敏感性資料**|否|是，因為加密用於待用資料|
 |**允許的 T-SQL 作業**|相等比較|所有 T-SQL 介面區域可供使用|
-|**使用此功能需要進行應用程式變更**|基本|非常有限|
+|**使用此功能需要進行應用程式變更**|最小|非常有限|
 |**加密資料細微度**|資料行層級|資料庫層級|
 ||||
 
@@ -293,7 +293,7 @@ SQL Azure 平台會分析伺服器中不同資料庫的使用量歷程記錄，�
 
 對效能進行疑難排解時，請務必找出影響應用程式效能的是否只是應用程式或是後端資料庫。 往往效能問題會出在應用程式層。 可能是架構或資料存取模式。 例如，假設您有對網路延遲敏感的交談應用程式。 在此情況下，因為在應用程式與伺服器之間有許多往返傳送的簡短要求 (「交談」)，而在網路壅塞時，這些來回會快速增加，使得您的應用程式遭遇困境。 若要改善此情況下的效能，您可以使用[批次查詢](performance-guidance.md#batch-queries)。 使用批次對您大有幫助，因為現在系統會以批次處理您的要求，因此可協助您減少來回延遲，並改善您的應用程式效能。
 
-此外，如果您發現資料庫的整體效能降低，您可以監視 [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 動態管理檢視，以便了解 CPU、IO 和記憶體耗用量。 您的效能可能受到影響，因為您的資料庫極需要資源。 您可能需要根據成長和縮減的工作負載需求來變更計算大小和/或服務層級。
+此外，如果您發現資料庫的整體效能降低，您可以監視 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 並 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 動態管理檢視，以便了解 CPU、IO 和記憶體耗用量。 您的效能可能受到影響，因為您的資料庫極需要資源。 您可能需要根據成長和縮減的工作負載需求來變更計算大小和/或服務層級。
 
 如需一組完整的調整效能問題相關建議，請參閱[微調資料庫](performance-guidance.md#tune-your-database)。
 
@@ -335,6 +335,6 @@ SQL Database 會使用的一些智慧技術可讓它自動處理特定類別的�
 - **[資料同步](sql-data-sync-data-sql-server-sql-database.md)** –這項功能可協助您在多個 SQL Server 資料庫與 SQL Database 之間雙向同步處理資料。 若要與 SQL Server 資料庫同步，您必須在本機電腦或虛擬機器上安裝並設定同步代理程式，然後開啟輸出 TCP 埠1433。
 - **[異動複寫](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** -透過異動複寫，您可以將 SQL Server 資料庫的資料同步處理至 Azure SQL Database，並將 SQL Server 實例設為發行者，並將 Azure SQL Database 做為訂閱者。 目前僅支援此安裝程式。 如需有關如何將資料從 SQL Server 資料庫移轉至 Azure SQL 的詳細資訊，並將停機時間降至下限，請參閱： [使用異動複寫](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解 [SQL Database](sql-database-paas-overview.md)。
