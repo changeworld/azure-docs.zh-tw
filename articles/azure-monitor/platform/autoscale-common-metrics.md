@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327033"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 監視器自動調整的常用度量
@@ -36,7 +36,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 - [以 Resource Manager 為基礎的 Windows 和 Linux VM 的主機度量](./metrics-supported.md#microsoftcomputevirtualmachines)
 - [以 Resource Manager 為基礎的 Windows 和 Linux VM 擴展集的主機度量](./metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Resource Manager 為基礎的 Windows Vm 的客體作業系統計量
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>以 Resource Manager 為基礎的 Windows Vm 的來賓 OS 計量
 在 Azure 中建立 VM 時會使用診斷擴充來啟用診斷。 診斷擴充會發出一組取自 VM 內的度量。 這表示您可以關閉自動調整依預設不發出的度量。
 
 您可以在 PowerShell 中使用下列命令產生度量清單。
@@ -47,15 +47,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 您可以建立下列度量的警示：
 
-| 標準名稱 | 單位 |
+| 標準名稱 | Unit |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |百分比 |
 | \Processor(_Total)\% Privileged Time |百分比 |
 | \Processor(_Total)\% User Time |百分比 |
-| \Processor Information(_Total)\Processor Frequency |計數 |
-| \System\Processes |計數 |
-| \Process(_Total)\Thread Count |計數 |
-| \Process(_Total)\Handle Count |計數 |
+| \Processor Information(_Total)\Processor Frequency |Count |
+| \System\Processes |Count |
+| \Process(_Total)\Thread Count |Count |
+| \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |百分比 |
 | \Memory\Available Bytes |位元組 |
 | \Memory\Committed Bytes |位元組 |
@@ -71,11 +71,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒位元組 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒位元組 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒位元組 |
-| \PhysicalDisk （_Total） \Avg. 磁片佇列長度 |計數 |
-| \PhysicalDisk （_Total） \Avg. 磁片讀取佇列長度 |計數 |
-| \PhysicalDisk （_Total） \Avg. 磁片寫入佇列長度 |計數 |
+| \PhysicalDisk (_Total) \Avg. 磁片佇列長度 |Count |
+| \PhysicalDisk (_Total) \Avg. 磁片讀取佇列長度 |Count |
+| \PhysicalDisk (_Total) \Avg. 磁片寫入佇列長度 |Count |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
-| \LogicalDisk(_Total)\Free Megabytes |計數 |
+| \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>客體 OS 度量 Linux VM
 當您在 Azure 中建立 VM 時，根據預設會使用診斷擴充來啟用診斷。
@@ -88,7 +88,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  您可以建立下列度量的警示：
 
-| 標準名稱 | 單位 |
+| 標準名稱 | Unit |
 | --- | --- |
 | \Memory\AvailableMemory |位元組 |
 | \Memory\PercentAvailableMemory |百分比 |
@@ -119,18 +119,18 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |秒 |
 | \PhysicalDisk\AverageWriteTime |秒 |
 | \PhysicalDisk\AverageTransferTime |秒 |
-| \PhysicalDisk\AverageDiskQueueLength |計數 |
+| \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |位元組 |
 | \NetworkInterface\BytesReceived |位元組 |
-| \NetworkInterface\PacketsTransmitted |計數 |
-| \NetworkInterface\PacketsReceived |計數 |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |位元組 |
-| \NetworkInterface\TotalRxErrors |計數 |
-| \NetworkInterface\TotalTxErrors |計數 |
-| \NetworkInterface\TotalCollisions |計數 |
+| \NetworkInterface\TotalRxErrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \NetworkInterface\TotalCollisions |Count |
 
-## <a name="commonly-used-app-service-server-farm-metrics"></a>常用 App Service （伺服器陣列）計量
-您也可以根據常用的 Web 伺服器度量 (如 Http 佇列長度) 執行自動調整。 其度量名稱是**HttpQueueLength**。  下一節會列出可用的伺服器陣列（App Service）計量。
+## <a name="commonly-used-app-service-server-farm-metrics"></a>常用 App Service (Server Farm) 計量
+您也可以根據常用的 Web 伺服器度量 (如 Http 佇列長度) 執行自動調整。 它的度量名稱是 **HttpQueueLength**。  下一節列出可用的伺服器陣列 (App Service) 計量。
 
 ### <a name="web-apps-metrics"></a>Web Apps 度量
 您可以在 PowerShell 中使用下列命令產生 Web Apps 清單。
@@ -141,12 +141,12 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 您可以針對這些度量發出警示通知或以其為調整依據。
 
-| 標準名稱 | 單位 |
+| 標準名稱 | Unit |
 | --- | --- |
 | CpuPercentage |百分比 |
 | MemoryPercentage |百分比 |
-| DiskQueueLength |計數 |
-| HttpQueueLength |計數 |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |位元組 |
 | BytesSent |位元組 |
 

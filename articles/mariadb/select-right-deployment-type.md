@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 47aff04dfd44ea7fd892fdee763e93d7fd13a9d1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542388"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中選擇正確的適用于 mariadb 伺服器選項
@@ -33,7 +33,7 @@ ms.locfileid: "91542388"
 
 | 屬性          | 適用於 MariaDB 的 Azure 資料庫 | Azure Vm 上的適用于 mariadb    |
 |:-------------------|:-----------------------------|:--------------------|
-| 服務等級協定 (SLA)                 | 提供99.99% 可用性的 SLA| 同一個可用性設定組中的兩個或多個實例最高可達99.95% 的可用性。<br/><br/>使用 premium 儲存體的單一實例 VM 可用99.9% 的可用性。<br/><br/>使用可用性區域具有多個可用性設定組中的多個實例時，99.99%。<br/><br/>請參閱 [虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
+| 服務等級協定 (SLA)                | 提供99.99% 可用性的 SLA| 同一個可用性設定組中的兩個或多個實例最高可達99.95% 的可用性。<br/><br/>使用 premium 儲存體的單一實例 VM 可用99.9% 的可用性。<br/><br/>使用可用性區域具有多個可用性設定組中的多個實例時，99.99%。<br/><br/>請參閱 [虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
 | 作業系統修補        | 自動  | 由客戶管理 |
 | 適用于 mariadb 修補     | 自動  | 由客戶管理 |
 | 高可用性 | 高可用性 (HA) 模型是根據發生節點層級中斷時的內建容錯移轉機制。 在這種情況下，服務會自動建立新的實例，並將儲存體附加到這個實例。 | 客戶設計師、實行、測試及維護高可用性。 功能可能包括 always on 容錯移轉叢集、always on 群組複寫、記錄傳送或異動複寫。|
@@ -102,4 +102,4 @@ ms.locfileid: "91542388"
 ## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [適用於 MariaDB 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/MariaDB/)。
-* [建立您的第一部伺服器](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)，開始使用。
+* 從[建立您的第一部伺服器](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)開始。

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337223"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中建立規則的 Webhook 動作
@@ -29,7 +29,7 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
 
 1. 建立新的 RequestBin，並複製 **Bin URL**。
 
-1. 建立[遙測規則](tutorial-create-telemetry-rules.md)。 儲存規則，然後新增動作。
+1. 建立 [遙測規則](tutorial-create-telemetry-rules.md)。 儲存規則，然後新增動作。
 
     ![Webhook 建立畫面](media/howto-create-webhooks/webhookcreate.png)
 
@@ -37,11 +37,11 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
 
 1. 儲存規則。
 
-現在當觸發規則時，您會在 RequestBin 中看到新的要求。
+現在當規則引發時，您會看到新的要求出現在 RequestBin 中。
 
 ## <a name="payload"></a>Payload
 
-觸發規則時，會向包含 json 承載的回呼 URL 發出 HTTP POST 要求，其中含有遙測、裝置、規則和應用程式詳細資料。 承載看起來可能如下所示：
+觸發規則時，會對包含 json 承載的回呼 URL 發出 HTTP POST 要求，其中包含遙測、裝置、規則和應用程式詳細資料。 承載看起來可能如下所示：
 
 ```json
 {
@@ -95,7 +95,7 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
     }
 }
 ```
-如果規則會在一段時間內監視匯總的遙測，承載將會包含不同的遙測區段。
+如果規則在一段時間內監視匯總的遙測，承載將會包含不同的遙測區段。
 
 ```json
 {
@@ -111,9 +111,9 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
 
 ## <a name="data-format-change-notice"></a>資料格式變更通知
 
-如果您在**2020 年4月 3**日之前建立並儲存一或多個 webhook，您將需要刪除 webhook 並建立新的 webhook。 這是因為較舊的 webhook 會使用未來即將淘汰的舊版承載格式。
+如果您有一或多個 webhook 在 **2020 年4月 3**日之前建立並儲存，您將需要刪除 webhook 並建立新的 webhook。 這是因為較舊的 webhook 會使用未來將淘汰的舊版裝載格式。
 
-### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook 承載（從2020年4月3日起已淘汰的格式）
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>從2020年4月3日起，Webhook 承載 (格式已淘汰) 
 
 ```json
 {
@@ -154,8 +154,8 @@ Webhook 可讓您將 IoT Central 應用程式連線至其他應用程式和服�
 
 目前並無法以程式設計方式透過 API 來訂閱/取消訂閱這些 Webhook。
 
-如果您有關于如何改進這項功能的想法，請將您的建議張貼到我們的[User voice 論壇](https://feedback.azure.com/forums/911455-azure-iot-central)。
+如果您有關于如何改進這項功能的構想，請將您的建議張貼到我們的 [使用者語音論壇](https://feedback.azure.com/forums/911455-azure-iot-central)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-既然您已瞭解如何設定和使用 webhook，建議的下一個步驟是探索如何設定[Azure 監視器動作群組](howto-use-action-groups.md)。
+現在您已瞭解如何設定和使用 webhook，建議的下一個步驟是探索設定 [Azure 監視器動作群組](howto-use-action-groups.md)。

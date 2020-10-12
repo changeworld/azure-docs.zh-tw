@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞裝置串流 |Microsoft Docs
-description: 概述 Azure IoT 中樞裝置串流，這可針對各種雲端到裝置的通訊案例，加速安全的雙向 TCP 通道。
+description: 概述 Azure IoT 中樞裝置串流，以促進各種雲端到裝置通訊案例的安全雙向 TCP 通道。
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327679"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中樞裝置串流 (預覽)
@@ -30,17 +30,17 @@ Azure IoT 中樞「裝置串流」** 能協助建立適用於各種不同雲端�
 
 IoT 中樞裝置串流提供下列優點：
 
-* **防火牆易記的安全連線能力：** 您可以從服務端點連線到 IoT 裝置，而不需在裝置或網路周邊開啟輸入防火牆埠（只需要透過埠443對 IoT 中樞的輸出連線）。
+* **防火牆易記的安全連線能力：** 您可以從服務端點連線到 IoT 裝置，而不需要在裝置或網路周邊開啟輸入防火牆埠 (只需要透過埠 443) 對 IoT 中樞的輸出連線能力。
 
-* **驗證：** 通道的裝置和服務端都需要使用其對應的認證，向 IoT 中樞進行驗證。
+* **驗證：** 通道的裝置和服務端都必須使用其對應的認證向 IoT 中樞進行驗證。
 
-* **加密：** 根據預設，IoT 中樞裝置串流會使用具備 TLS 功能的連接。 這可確保不論應用程式是否使用加密，流量都一律會加密。
+* **加密：** 根據預設，IoT 中樞裝置串流會使用啟用 TLS 的連線。 這可確保不論應用程式是否使用加密，流量都一律會加密。
 
-* **簡單的連線能力：** 在許多情況下，使用裝置串流就不需要複雜的虛擬私人網路設定，即可啟用 IoT 裝置的連線能力。
+* **簡單的連線能力：** 在許多情況下，使用裝置串流不需要複雜的虛擬私人網路設定，就能讓 IoT 裝置連線。
 
 * **與 tcp/ip 堆疊的相容性：** IoT 中樞裝置串流可以容納 TCP/IP 應用程式流量。 這表示廣泛的專利與標準型的通訊協定都可以運用這個功能。
 
-* **在私人網路設置中便於使用：** 服務可以藉由參考裝置識別碼（而不是裝置的 IP 位址）來與裝置通訊。 這在裝置位於私人網路內且具有私人 IP 位址，或其 IP 位址為動態指派且無法由服務端得知的情況下非常有用。
+* **易於在私人網路中使用：** 服務可以藉由參考裝置識別碼（而不是裝置的 IP 位址）來與裝置通訊。 這在裝置位於私人網路內且具有私人 IP 位址，或其 IP 位址為動態指派且無法由服務端得知的情況下非常有用。
 
 ## <a name="device-stream-workflows"></a>裝置串流工作流程
 
@@ -52,7 +52,7 @@ IoT 中樞裝置串流提供下列優點：
 
 使用 SDK 以程式設計方式建立裝置串流會涉及下列步驟，這些步驟也詳述於下圖之中：
 
-![「裝置串流交握進程」](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
+![「裝置資料流程交握進程」](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
 
 1. 裝置應用程式會事先登錄回呼，以在新的裝置串流對裝置起始時收到通知。 此步驟通常在裝置開機並連線到 IoT 中樞時發生。
 
@@ -86,7 +86,7 @@ IoT 中樞裝置串流提供下列優點：
 
 ![「裝置串流端點」](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-或者，您也可以使用中樞的 properties 區段下的 Azure CLI 來抓取端點資訊，特別是 `property.hostname` 和 `property.deviceStreams` 金鑰。
+或者，您也可以使用中樞的 [屬性] 區段下的 Azure CLI 來抓取端點資訊，具體而言，就是索引 `property.hostname` `property.deviceStreams` 鍵。
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -103,14 +103,14 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
+> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
 >
 
-## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>允許裝置串流端點的輸出連線能力
+## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>允許對裝置串流端點的輸出連線能力
 
-如同本文開頭所述，您的裝置會在裝置串流初始化程式期間，建立 IoT 中樞串流端點的輸出連線。 您裝置或其網路上的防火牆必須允許透過連接埠 443 對串流閘道進行傳出連線 (請注意，通訊會透過以 TLS 加密的 WebSocket 連線進行)。
+如同本文開頭所述，您的裝置會在裝置串流初始進程期間，建立連到 IoT 中樞串流端點的輸出連線。 您裝置或其網路上的防火牆必須允許透過連接埠 443 對串流閘道進行傳出連線 (請注意，通訊會透過以 TLS 加密的 WebSocket 連線進行)。
 
-您可以在 Azure IoT 中樞入口網站的 [總覽] 索引標籤底下找到裝置串流端點的主機 ![ 名。裝置串流端點 "](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+裝置串流端點的主機名稱可以在 Azure IoT 中樞入口網站的 [總覽] 索引標籤下 ![ 找到。裝置串流端點](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 或者，您也可以使用 Azure CLI 找到此資訊：
 
@@ -119,32 +119,32 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
+> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
 >
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>透過裝置串流活動記錄進行疑難排解
 
-您可以設定 Azure 監視器記錄檔，以便在您的 IoT 中樞中收集裝置串流的活動記錄。 這對於針對案例進行疑難排解來說很有幫助。
+您可以設定 Azure 監視器記錄檔，以收集 IoT 中樞內裝置串流的活動記錄。 這對於針對案例進行疑難排解來說很有幫助。
 
-請遵循下列步驟，為您 IoT 中樞的裝置串流活動設定 Azure 監視器記錄：
+請遵循下列步驟來設定 IoT 中樞裝置串流活動的 Azure 監視器記錄：
 
 1. 瀏覽至您 IoT 中樞中的 [診斷設定]** 索引標籤，然後按一下 [開啟診斷]** 連結。
 
-   ![[啟用診斷記錄]](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+   ![「啟用診斷記錄」](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
 
-2. 提供診斷設定的名稱，然後選擇 [傳送至 Log Analytics]** 選項。 系統會引導您選擇現有的 Log Analytics 工作區資源，或建立一個新資源。 此外，請核取清單中的 [DeviceStreams]**。
+2. 提供診斷設定的名稱，然後選擇 [傳送至 Log Analytics]** 選項。 系統會引導您選擇現有的 Log Analytics 工作區資源，或建立一個新的資源。 此外，請核取清單中的 [DeviceStreams]**。
 
-    ![「啟用裝置串流記錄」](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
+    ![「啟用裝置資料流程記錄」](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
 3. 您現在可以在 IoT 中樞入口網站中的 [記錄]** 索引標籤下存取您的裝置串流記錄。 裝置串流活動記錄將會出現在 `AzureDiagnostics` 資料表中，並具有 `Category=DeviceStreams`。
 
-   如下所示，記錄中也會提供目標裝置的身分識別和作業的結果。
+   如下所示，記錄中也會提供目標裝置的身分識別，以及作業的結果。
 
-   ![「存取裝置串流記錄」](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+   ![「存取裝置資料流程記錄」](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
 ## <a name="regional-availability"></a>區域可用性
 
-在公開預覽期間，[美國中部]、[美國中部] EUAP、[北歐] 和 [東南亞] 區域都有提供 IoT 中樞的裝置串流。 請務必在這其中一個區域建立您的中樞。
+在公開預覽期間，IoT 中樞裝置串流可在美國中部、美國中部 EUAP、北歐和東南亞區域中使用。 請務必在這其中一個區域建立您的中樞。
 
 ## <a name="sdk-availability"></a>SDK 可用性
 
@@ -156,9 +156,9 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT 中樞裝置串流範例
 
-[IoT 中樞] 頁面上提供兩個[快速入門範例](/azure/iot-hub)。 這些會示範應用程式如何使用裝置串流。
+IoT 中樞頁面上有兩個 [快速入門範例](/azure/iot-hub) 可供使用。 這些會示範應用程式使用裝置串流的方式。
 
-* *Echo*範例示範如何以程式設計方式使用裝置串流（藉由直接呼叫 SDK API）。
+* *Echo*範例示範如何透過呼叫 SDK API 的直接) ，以程式設計方式使用裝置串流 (。
 
 * 「本機 Proxy」** 範例示範透過裝置資料流建立現成的用戶端/伺服器應用程式流量通道 (例如 SSH、RDP 或 Web)。
 
@@ -172,11 +172,11 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 * [C # 服務和服務程式](quickstart-device-streams-echo-csharp.md)
 
-* [Node.js 服務程式](quickstart-device-streams-echo-nodejs.md)
+* [Node.js 服務方案](quickstart-device-streams-echo-nodejs.md)
 
 * [C 裝置程式](quickstart-device-streams-echo-c.md)
 
-### <a name="local-proxy-sample-for-ssh-or-rdp"></a>本機 proxy 範例（適用于 SSH 或 RDP）
+### <a name="local-proxy-sample-for-ssh-or-rdp"></a>SSH 或 RDP) 的本機 proxy 範例 (
 
 本機 Proxy 範例會示範為現有應用程式流量 (涉及用戶端和伺服器程式之間的通訊) 啟用通道的方式。 此設定適用於 SSH 和 RDP 等用戶端/伺服器通訊協定，其中服務端會作為用戶端 (執行 SSH 或 RDP 用戶端程式)，而裝置端則會作為伺服器 (執行 SSH 精靈或 RDP 伺服器程式)。
 
@@ -184,7 +184,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 該設定會利用下圖中的兩個「本機 Proxy」** 程式，也就是「裝置本機 Proxy」** 和「服務本機 Proxy」**。 本機 Proxy 程式會負責執行與「IoT 中樞」的[裝置資料流起始交握](#device-stream-creation-flow)，並使用一般用戶端/伺服器通訊端來與 SSH 用戶端和 SSH 精靈進行互動。
 
-![「適用于 SSH/RDP 的裝置串流 proxy 設定」](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
+![「SSH/RDP 的裝置串流 proxy 設定」](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
 1. 使用者會執行服務本機 Proxy 以起始針對裝置的裝置串流。
 
@@ -202,19 +202,19 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 * 在服務本機 Proxy 上選擇使用連接埠 2222 是任意選擇。 Proxy 可以設定為使用任何其他可用的連接埠。
 
-* 埠22的選擇與通訊協定相關，在此案例中是 SSH 特有的。 針對 RDP 的案例，則必須使用連接埠 3389。 這可以在所提供的範例程式中設定。
+* 在此情況下，埠22的選擇是與通訊協定相關的，而且是 SSH 專用的。 針對 RDP 的案例，則必須使用連接埠 3389。 這可以在所提供的範例程式中設定。
 
 使用以下連結來取得如何以您偏好的語言執行本機 Proxy 程式的指示。 與[回應範例](#echo-sample)類似，您可以執行以不同語言撰寫的裝置本機 Proxy 程式和服務本機 Proxy 程式，因為它們完全互通。
 
 * [C # 服務和服務程式](quickstart-device-streams-proxy-csharp.md)
 
-* [Node.js 服務程式](quickstart-device-streams-proxy-nodejs.md)
+* [Node.js 服務方案](quickstart-device-streams-proxy-nodejs.md)
 
 * [C 裝置程式](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-若要深入瞭解裝置串流，請使用下列連結。
+您可以使用下列連結來深入瞭解裝置串流。
 
 > [!div class="nextstepaction"]
-> [IoT show 上的裝置串流（Channel 9）](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)
+> [IoT 上的裝置串流顯示 (Channel 9) ](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)

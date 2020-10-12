@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337665"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>將 IoT DevKit 裝置連線到遠端監視解決方案加速器
@@ -46,16 +46,16 @@ ms.locfileid: "87337665"
 
 若要在您的 DevKit 裝置上設定 IoT 中樞裝置連接字串：
 
-1. 將 IoT DevKit 切換為設定**模式**：
+1. 將 IoT DevKit 切換至設定 **模式**：
 
     * 按住 **A** 按鈕。
-    * 推送並放開 [**重設**] 按鈕。
+    * 推送並放開 [ **重設** ] 按鈕。
 
 1. 畫面會顯示 DevKit 識別碼和 `Configuration`。
 
     ![IoT DevKit 設定模式](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. 按**F1**以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺]： [設定裝置設定 ...] > Config 裝置連接字串**]。
+1. 按下 **F1** 以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...] > Config 裝置連接字串**。
 
 1. 貼上您先前複製的連接字串，然後按 **Enter** 鍵設定裝置。
 
@@ -63,7 +63,7 @@ ms.locfileid: "87337665"
 
 若要建置並上傳裝置程式碼：
 
-1. 按 `F1` 以開啟命令選擇區，輸入並選取 **[Azure IoT 裝置工作臺：上傳裝置程式碼**]：
+1. 按下 `F1` 以開啟命令選擇區，輸入並選取 **Azure IoT 裝置工作臺：上傳裝置程式碼**：
 
 1. VS Code 會編譯程式碼並上傳到您的 DevKit 裝置：
 

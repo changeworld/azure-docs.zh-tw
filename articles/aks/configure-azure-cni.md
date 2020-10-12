@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426141"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 網路
@@ -73,7 +73,7 @@ AKS 叢集中每個節點的最大 pod 數目是250。 每個節點「預設」*
 
 系統會強制執行每個節點的最大 pod 數目的最小值，以保證叢集健全狀況的重要系統 pod 空間。 只有在每個節點集區的設定至少有30個 pod 的空間時，可為每個節點的最大 pod 設定的最小值為10。 例如，將每個節點的最大 pod 數設定為最小值10，需要每個個別節點集區至少有3個節點。 這項需求也適用于每個建立的新節點集區，因此，如果將10定義為每個節點的最大 pod 數目，每個新增的節點集區都必須至少有3個節點。
 
-| 網路 | 最小值 | 最大值 |
+| 網路功能 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
@@ -151,7 +151,7 @@ az aks create \
 
 * 是否可以在叢集子網路中部署 VM？**
 
-  可以。
+  是。
 
 * *外部系統的哪些來源 IP 適用于源自啟用 Azure CNI 之 pod 的流量？*
 
@@ -175,7 +175,7 @@ az aks create \
 
   不建議，但此組態是可行的。 服務位址範圍是 Kubernetes 指派給您叢集中內部服務的一組虛擬 IP (VIP)。 Azure 網路功能無法查看 Kubernetes 叢集的服務 IP 範圍。 因為無法查看叢集的服務位址範圍，所以稍後有可能在與服務位址範圍重疊的叢集虛擬網路中建立新的子網路。 如果發生這類重疊，Kubernetes 可能會將子網路中另一項資源已經使用的 IP 指派給服務，因而造成無法預期的行為或失敗。 您可藉由確保您使用叢集虛擬網路外部的位址範圍，避免此重疊風險。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在下列文章中深入了解 AKS 的網路功能：
 

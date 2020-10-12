@@ -7,17 +7,17 @@ ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255293"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
 建立 AKS 叢集的過程中，可能需要自訂叢集設定來配合您的需求。 本文會介紹幾種可用來自訂 AKS 叢集的選項。
 
-## <a name="os-configuration"></a>作業系統設定
+## <a name="os-configuration"></a>OS 設定
 
 AKS 現在支援 Ubuntu 18.04 作為節點作業系統 (OS) 在高於1.18.8 的 kubernetes 版本中的叢集正式運作。 針對小於 1.18. x 的版本，AKS Ubuntu 16.04 仍是預設的基底映射。 從 kubernetes v 1.18. x 和之後，預設基底為 AKS Ubuntu 18.04。
 

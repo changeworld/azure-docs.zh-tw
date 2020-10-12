@@ -1,7 +1,7 @@
 ---
-title: '從快取中取得 (MSAL.NET 的權杖) '
+title: '從快取 (MSAL.NET 取得權杖) '
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用適用于 .NET (MSAL.NET) 的 Microsoft 驗證程式庫，以無訊息方式從權杖快取) 取得存取權杖 (。
+description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) ，以無訊息方式從權杖快取) 取得存取權杖 (。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 95cfb937ce236d0acd1a3369068afc6f3b505aed
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166241"
 ---
-# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>使用 MSAL.NET 從權杖快取取得權杖
+# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>使用 MSAL.NET 從權杖快取中取得權杖
 
-當您使用適用于 .NET (MSAL.NET) 的 Microsoft 驗證程式庫取得存取權杖時，會快取權杖。 當應用程式需要權杖時，它應該會先呼叫 `AcquireTokenSilent` 方法，以確認快取中是否有可接受的 token。 在許多情況下，您可以根據快取中的權杖，取得具有更多範圍的另一個權杖。 您也可以在權杖接近到期 (時重新整理權杖，因為權杖快取也會包含) 的重新整理權杖。
+當您使用適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 取得存取權杖時，會快取權杖。 當應用程式需要權杖時，應該先呼叫 `AcquireTokenSilent` 方法來確認快取中是否有可接受的權杖。 在許多情況下，您可以根據快取中的權杖，取得具有更多範圍的另一個權杖。 您也可以在權杖接近到期 (時重新整理權杖，因為權杖快取也包含) 的重新整理權杖。
 
 建議的模式是 `AcquireTokenSilent` 先呼叫方法。  如果 `AcquireTokenSilent` 失敗，則使用其他方法取得權杖。
 

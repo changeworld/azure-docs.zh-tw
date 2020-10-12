@@ -1,16 +1,16 @@
 ---
 title: Azure 監視器記錄查詢中的 app() 運算式 |Microsoft Docs
-description: 應用程式運算式會用於 Azure 監視器記錄查詢中，以從相同資源群組、另一個資源群組或另一個訂用帳戶中的特定 Application Insights 應用程式抓取資料。
+description: 應用程式運算式用於 Azure 監視器記錄查詢，以從相同資源群組、另一個資源群組或另一個訂用帳戶中的特定 Application Insights 應用程式取出資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
 ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324534"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure 監視器查詢中的 app() 運算式
@@ -18,11 +18,11 @@ ms.locfileid: "87324534"
 在 Azure監視器記錄查詢中，`app` 運算式可用來從相同資源群組、其他資源群組或其他訂用帳戶中的特定 Application Insights 應用程式擷取資料。 這適用於在 Azure 監視器記錄查詢中包含應用程式資料，以及在 Application Insights 查詢中跨多個應用程式查詢資料。
 
 > [!IMPORTANT]
-> 如果您使用以[工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md)，則不會使用應用程式（）運算式，因為記錄資料儲存在 log Analytics 工作區中。 使用 log （）運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對同一個工作區中的多個應用程式，您不需要跨工作區查詢。
+> 如果您使用以 [工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md) ，則不會使用應用程式 ( # A1 運算式，因為記錄資料儲存在 log Analytics 工作區中。 使用 log ( # A1 運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對相同工作區中的多個應用程式，您不需要跨工作區查詢。
 
 ## <a name="syntax"></a>語法
 
-`app(`*標識*`)`
+`app(`*識別碼*`)`
 
 
 ## <a name="arguments"></a>引數
@@ -31,7 +31,7 @@ ms.locfileid: "87324534"
 
 | 識別碼 | 描述 | 範例
 |:---|:---|:---|
-| 資源名稱 | 人類看得懂的應用程式名稱（也稱為「元件名稱」） | app("fabrikamapp") |
+| 資源名稱 | 人們看得懂的應用程式名稱 (也稱為「元件名稱」 )  | app("fabrikamapp") |
 | 完整名稱 | 使用下列形式的應用程式完整名稱："subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
 | 識別碼 | 應用程式的 GUID | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure 資源識別碼 | Azure 資源的識別碼 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
@@ -70,7 +70,7 @@ union
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請參閱 [workspace 運算式](workspace-expression.md)，以參考 Log Analytics 工作區。
 - 了解 [Azure 監視器資料](./log-query-overview.md)的儲存方式。

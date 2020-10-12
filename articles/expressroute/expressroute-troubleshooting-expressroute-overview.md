@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401736"
 ---
 # <a name="verifying-expressroute-connectivity"></a>確認 ExpressRoute 連線
@@ -50,10 +50,10 @@ ms.locfileid: "89401736"
 
 如果使用雲端交換共置、點對點乙太網路或直接連線模型，CEs (2) 使用 Msee (5) 建立 BGP 對等互連。 
 
-如果使用 IPVPN) 連線模型的任意對任何 (， (Msee 4) 建立與 Msee (5) 之間的 BGP 對等互連。 Msee 會透過 IPVPN 服務提供者網路，將接收自 Microsoft 的路由傳回到客戶網路。
+如果使用任何 (IPVPN) 連線模型，PE-MSEEs (4) 使用 Msee (5) 建立 BGP 對等互連。 PE-MSEEs 透過 IPVPN 服務提供者網路，將接收自 Microsoft 的路由傳回到客戶網路。
 
 > [!NOTE]
->為了達到高可用性，Microsoft 會在 Msee (5) 和 PE Msee (4) 組之間建立完全重複的平行連接。 在客戶網路和 PE CEs 配對之間，也鼓勵使用完全重複的平行網路路徑。 如需有關高可用性的詳細資訊，請參閱[使用 ExpressRoute 設計高可用性][HA]的文章
+>為了達到高可用性，Microsoft 會在 Msee (5) 和 PE-MSEEs (4) 配對之間，建立完全重複的平行連線。 在客戶網路和 PE-CEs 配對之間，也鼓勵使用完全重複的平行網路路徑。 如需有關高可用性的詳細資訊，請參閱[使用 ExpressRoute 設計高可用性][HA]的文章
 >
 >
 

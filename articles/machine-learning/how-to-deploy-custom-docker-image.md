@@ -12,10 +12,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: ea8b100e8a690cf4f400dda02f2a58b6500d5f31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328440"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自訂的 Docker 基底映射部署模型
@@ -39,7 +39,7 @@ ms.locfileid: "91328440"
 * 建立自訂基底映射：提供資訊給系統管理員和 DevOps，以建立自訂映射，以及使用 Azure CLI 和 Machine Learning CLI 來設定對 Azure Container Registry 的驗證。
 * 使用自訂基底映射部署模型：從 Python SDK 或 ML CLI 部署定型的模型時，提供資訊給資料科學家和 DevOps/ML 工程師使用自訂映射。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure Machine Learning workgroup。 如需詳細資訊，請參閱 [建立工作區](how-to-manage-workspace.md) 文章。
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 

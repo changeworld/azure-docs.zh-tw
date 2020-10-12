@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric Reliable Services 生命週期
-description: 瞭解在 Azure Service Fabric Reliable Services 應用程式中，使用 JAVA 進行具狀態和無狀態服務的生命週期事件。
+description: 瞭解在 Azure Service Fabric Reliable Services 應用程式中，針對具狀態和無狀態服務使用 JAVA 的生命週期事件。
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: b22c78a0259e4430ac6bfae1c0a9379c4a832cd4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324602"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services 生命週期
@@ -116,7 +116,7 @@ Service Fabric 基於多種原因變更具狀態服務的主要。 最常見的�
 
 因為這些服務是具有狀態的，所以服務會使用[可靠集合](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，當主要降級時，首先發生的事情是撤銷基礎狀態的寫入存取權。 這會導致可能影響服務生命週期的第二組問題。 集合會根據時間和複本是否正在移動或關機而傳回例外狀況。 務必正確處理這些例外狀況。 
 
-Service Fabric 擲回的例外狀況為永久[（ `FabricException` ）](/java/api/system.fabric.exception)或暫時性[（ `FabricTransientException` ）](/java/api/system.fabric.exception.fabrictransientexception)。 應該記錄並擲回永久例外狀況。 可以根據重試邏輯重試暫時性例外狀況。
+Service Fabric 擲回的例外狀況為永久 [ (`FabricException`) ](/java/api/system.fabric.exception) 或暫時性 [ (`FabricTransientException`) ](/java/api/system.fabric.exception.fabrictransientexception)。 應該記錄並擲回永久例外狀況。 可以根據重試邏輯重試暫時性例外狀況。
 
 測試和驗證 Reliable Services 時，請記得處理因將 `ReliableCollections` 而與服務生命週期事件搭配使用所導致的例外狀況，這是相當重要的一環。 建議您一律在負載下執行您的服務。 也應該先執行升級和[混亂測試](service-fabric-controlled-chaos.md)，再部署至生產環境。 下列基本步驟協助確保您的服務正確地實作，並正確地處理生命週期事件。
 
@@ -128,6 +128,6 @@ Service Fabric 擲回的例外狀況為永久[（ `FabricException` ）](/java/a
 * `onCloseAsync()` 路徑的失敗會導致呼叫 `onAbort()`。 此呼叫是服務清除並釋放已宣告之任何資源的最後努力機會。 這個一般會在於節點上偵測到永久錯誤，或因內部失敗而 Service Fabric 無法可靠地管理服務執行個體生命週期時呼叫。
 * 具狀態服務複本變更角色 (例如變更為主要或次要角色) 時，會呼叫 `OnChangeRoleAsync()`。 主要複本會獲得寫入狀態 (可建立並寫入可靠的集合)。 次要複本則會獲得讀取狀態 (只能從現有的可靠集合讀取)。 具狀態服務中的大部分工作會在主要複本執行。 次要複本可以執行唯讀驗證、產生報表、資料採礦或其他唯讀作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [Reliable Services 簡介](service-fabric-reliable-services-introduction.md)
 * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start-java.md)

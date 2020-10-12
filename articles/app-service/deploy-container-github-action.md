@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728483"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893351"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署到 App Service
 
@@ -138,10 +138,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 下列範例會顯示建立 Node.JS Docker 映射的部分工作流程。 使用 [Docker 登](https://github.com/azure/docker-login) 入登入私人容器登錄。 此範例使用 Azure Container Registry，但相同的動作適用于其他登錄。 
 
-# <a name="publish-profile"></a>[發行設定檔](#tab/publish-profile)
-
-此範例示範如何使用發行設定檔來建立 Node.JS Docker 映射以進行驗證。
-
 
 ```yaml
 name: Linux Container Node Workflow
@@ -191,41 +187,6 @@ jobs:
         docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
-# <a name="service-principal"></a>[服務主體](#tab/service-principal)
-
-此範例說明如何使用服務主體來建立 Node.JS Docker 映射以進行驗證。 
-
-```yaml
-on: [push]
-
-name: Linux_Container_Node_Workflow
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}   
-    - uses: azure/docker-login@v1
-      with:
-        login-server: mycontainer.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}  
-    - run: |
-        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}      
-    - name: Azure logout
-      run: |
-        az logout
-```
-
----
 
 ## <a name="deploy-to-an-app-service-container"></a>部署至 App Service 容器
 
@@ -237,7 +198,7 @@ jobs:
 | **publish-profile** | (選擇性) 包含 Web Deploy 祕密的發行設定檔檔案內容 |
 | **images** | 完整的容器映射 (s) 名稱。 例如，' myregistry.azurecr.io/nginx:latest ' 或 ' python： 3.7.2-alpine/'。 針對多容器案例，可以提供多行分隔的多個容器映射名稱 (多行分隔)  |
 | **slot-name** | (選擇性) 輸入生產位置以外的現有位置。 |
-| **設定檔** |  (選用的 Docker 撰寫檔案) 路徑 |
+| **設定檔** |  (Docker-Compose 檔案的選擇性) 路徑 |
 
 # <a name="publish-profile"></a>[發行設定檔](#tab/publish-profile)
 

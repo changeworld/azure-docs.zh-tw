@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434634"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>針對使用雲端初始化的 VM 布建進行疑難排解
@@ -131,6 +131,6 @@ Cloud init 具有多個相依性，這些相依性記載于 Azure 上的映射�
 - 您也應該檢查 `customData` 提供給 VM 的資料設定，這是位於 `/var/lib/cloud/instances/<unique-instance-identifier>/user-data.txt` 。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您仍然無法找出雲端初始化未執行設定的原因，您需要更仔細地查看每個雲端初始化階段和模組執行時所發生的情況。 如需詳細資訊，請參閱深入瞭解 [雲端初始](./cloud-init-deep-dive.md) 設定。 

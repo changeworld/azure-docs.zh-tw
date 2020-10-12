@@ -1,23 +1,23 @@
 ---
 title: Azure 監視器中的容器監視解決方案 |Microsoft Docs
-description: Azure 監視器中的容器監視解決方案，可協助您在單一位置中查看及管理您的 Docker 和 Windows 容器主機。
+description: Azure 監視器中的容器監視解決方案可協助您在單一位置中查看和管理 Docker 和 Windows 容器主機。
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
 ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326897"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure 監視器中的容器監視解決方案
 
 ![容器符號](./media/containers/containers-symbol.png)
 
-本文說明如何在 Azure 監視器中設定及使用容器監視解決方案，這可協助您在單一位置中查看及管理您的 Docker 和 Windows 容器主機。 Docker 是用來建立容器的軟體虛擬化系統，自動將軟體部署至其 IT 基礎結構。
+本文說明如何在 Azure 監視器中設定和使用容器監視解決方案，以協助您在單一位置中查看和管理 Docker 和 Windows 容器主機。 Docker 是用來建立容器的軟體虛擬化系統，自動將軟體部署至其 IT 基礎結構。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -29,11 +29,11 @@ ms.locfileid: "87326897"
 - Service Fabric
 - Red Hat OpenShift
 
-如果您已在[Azure Service Fabric](../../service-fabric/service-fabric-overview.md)中部署容器，建議您同時啟用[Service Fabric 解決方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md)和此解決方案，以包含監視叢集事件。 在啟用 Service Fabric 解決方案之前，請先參閱[使用 Service Fabric 解決方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)，以瞭解其提供的內容和使用方式。
+如果您已在 Azure 中部署容器 [Service Fabric](../../service-fabric/service-fabric-overview.md)，建議您同時啟用 [Service Fabric 解決方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md) 和此解決方案，以包含監視叢集事件。 在啟用 Service Fabric 的解決方案之前，請先 [使用 Service Fabric 解決方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) 來瞭解它所提供的內容，以及其使用方式。
 
 對於部署到 Azure Container Service (AKS) 上所裝載 Kubernetes 環境的工作負載，若要監視其效能，請參閱[監視 Azure Kubernetes Service](./container-insights-overview.md)。 容器監視解決方案不支援監視該平臺。  
 
-下圖顯示各種容器主機與具有 Azure 監視器之代理程式之間的關聯性。
+下圖顯示各種容器主機和代理程式與 Azure 監視器之間的關聯性。
 
 ![容器圖表](./media/containers/containers-diagram.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "87326897"
 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>容器監視解決方案支援 Docker Orchestrator 和作業系統平台
 
-下表概述具有 Azure 監視器之容器清查、效能和記錄的 Docker 協調流程和作業系統監視支援。   
+下表概述使用 Azure 監視器的容器清查、效能和記錄的 Docker 協調流程與作業系統監視支援。   
 
 |Docker 協調流程 | ACS | Linux | Windows | 容器<br>清查 | 映像<br>清查 | 節點<br>清查 | 容器<br>效能 | 容器<br>事件 | 事件<br>Log | 容器<br>Log |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -92,7 +92,7 @@ ms.locfileid: "87326897"
 
 請使用下列資訊來安裝和設定方案。
 
-1. 從[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) ，或使用[從方案庫新增監視解決方案](./solutions.md)中所述的程式，將容器監視解決方案新增至您的 Log Analytics 工作區。
+1. 從 [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) 將容器監視解決方案新增至您的 Log Analytics 工作區，或使用 [從方案庫新增監視解決方案](./solutions.md)中所述的程式。
 
 2. 安裝和使用 Docker 搭配 Log Analytics 代理程式。 根據您的作業系統和 Docker Orchestrator，您可以使用下列方法來設定代理程式。
    - 若為獨立式主機：
@@ -105,9 +105,9 @@ ms.locfileid: "87326897"
        - 參閱[為 Kubernetes 設定 Log Analytics Linux 代理程式](#configure-a-log-analytics-linux-agent-for-kubernetes)。
        - 參閱[為 Kubernetes 設定 Log Analytics Windows 代理程式](#configure-a-log-analytics-windows-agent-for-kubernetes)。
        - 參閱使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理程式。
-     - 如果您有 Azure Container Service DC/OS 叢集，請在[使用 Azure 監視器監視 AZURE CONTAINER SERVICE DC/os](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms)叢集中深入瞭解。
+     - 如果您有 Azure Container Service DC/OS 叢集，請深入瞭解如何 [使用 Azure 監視器監視 AZURE CONTAINER SERVICE DC/os](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms)叢集。
      - 如果您有 Docker Swarm 模式環境，請參閱為 Docker Swarm 設定 Log Analytics 代理程式，以進一步瞭解。
-     - 如果您有 Service Fabric 叢集，請在[使用 Azure 監視器監視容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中深入瞭解。
+     - 如果您有 Service Fabric 叢集，請在 [使用 Azure 監視器的監視器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中深入瞭解。
 
 檢閱 [Windows 上的 Docker 引擎](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)文章，以取得有關如何在執行 Windows 的電腦上安裝和設定您 Docker 引擎的資訊。
 
@@ -116,7 +116,7 @@ ms.locfileid: "87326897"
 
 ### <a name="install-and-configure-linux-container-hosts"></a>安裝和設定 Linux 容器主機
 
-在您安裝 Docker 之後，使用容器主機的下列設定來設定可搭配 Docker 使用的代理程式。 首先您需要 Log Analytics 工作區識別碼和金鑰，這些可以在 Azure 入口網站中找到。 在您的工作區中，按一下 [**快速啟動**  >  **電腦**] 以查看您的**工作區識別碼**和**主要金鑰**。  將兩者複製並貼到您最愛的編輯器。
+在您安裝 Docker 之後，使用容器主機的下列設定來設定可搭配 Docker 使用的代理程式。 首先您需要 Log Analytics 工作區識別碼和金鑰，這些可以在 Azure 入口網站中找到。 在您的工作區中，按一下 [**快速入門**  >  **電腦**] 以查看您的**工作區識別碼**和**主要金鑰**。  將兩者複製並貼到您最愛的編輯器。
 
 **適用於 CoreOS 以外的所有 Linux 容器主機：**
 
@@ -187,7 +187,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 * 直接在每個 OpenShift 節點上[安裝適用于 Linux 的 Log Analytics 代理程式](../learn/quick-collect-linux-computer.md)  
 * 在位於 Azure 中的每個 OpenShift 節點上[啟用記錄分析 VM 延伸模組](../learn/quick-collect-azurevm.md)  
-* 將 Log Analytics 代理程式安裝為 OpenShift daemon-set  
+* 將 Log Analytics 代理程式安裝為 OpenShift daemon 集  
 
 在本節中，我們會討論安裝 Log Analytics 代理程式作為 OpenShift 精靈集所需的步驟。  
 
@@ -492,9 +492,9 @@ KEY:    88 bytes
 
 #### <a name="preparation-before-installing-windows-agents"></a>安裝 Windows 代理程式之前的準備動作
 
-在執行 Windows 的電腦上安裝代理程式之前，您需要設定 Docker 服務。 此設定可讓 Windows 代理程式或 Azure 監視器的虛擬機器擴充功能使用 Docker TCP 通訊端，讓代理程式可以從遠端存取 Docker daemon，並捕捉資料進行監視。
+在執行 Windows 的電腦上安裝代理程式之前，您需要設定 Docker 服務。 設定可讓 Windows 代理程式或 Azure 監視器的虛擬機器擴充功能使用 Docker TCP 通訊端，讓代理程式可以從遠端存取 Docker daemon，以及捕捉資料以進行監視。
 
-##### <a name="to-configure-the-docker-service"></a>若要設定 Docker 服務  
+##### <a name="to-configure-the-docker-service"></a>設定 Docker 服務  
 
 執行下列 PowerShell 命令，以啟用 Windows Server 的 TCP 管道和具名管道：
 
@@ -509,7 +509,7 @@ Start-Service docker
 
 #### <a name="install-windows-agents"></a>安裝 Windows 代理程式
 
-若要啟用 Windows 和 Hyper-V 容器監視，請在容器主機的 Windows 電腦上安裝 Microsoft Monitoring Agent (MMA)。 針對在您的內部部署環境中執行 Windows 的電腦，請參閱[將 Windows 電腦連線到 Azure 監視器](../platform/agent-windows.md)。 針對在 Azure 中執行的虛擬機器，使用[虛擬機器擴充](../learn/quick-collect-azurevm.md)功能將它們連接到 Azure 監視器。
+若要啟用 Windows 和 Hyper-V 容器監視，請在容器主機的 Windows 電腦上安裝 Microsoft Monitoring Agent (MMA)。 針對在內部部署環境中執行 Windows 的電腦，請參閱 [將 Windows 電腦連線到 Azure 監視器](../platform/agent-windows.md)。 針對在 Azure 中執行的虛擬機器，請使用 [虛擬機器擴充](../learn/quick-collect-azurevm.md)功能將它們連接到 Azure 監視器。
 
 您可以監視 Service Fabric 上執行的 Windows 容器。 不過，Service Fabric 目前只支援 [Azure 中執行的虛擬機器](../learn/quick-collect-azurevm.md)和[在內部部署環境中執行 Windows 的電腦](../platform/agent-windows.md)。
 
@@ -529,7 +529,7 @@ Start-Service docker
 
 - [Log Analytics Linux 代理程式](../learn/quick-collect-linux-computer.md)
 - [Windows 代理程式](../platform/agent-windows.md)
-- [Log Analytics VM 擴充功能](../learn/quick-collect-azurevm.md)
+- [Log Analytics VM 延伸模組](../learn/quick-collect-azurevm.md)
 
 ### <a name="container-records"></a>容器資料列
 
@@ -550,7 +550,7 @@ Start-Service docker
 附加到 PodLabel** 資料類型的標籤是您自己的自訂標籤。 資料表中所顯示的附加 PodLabel 標籤就是範例。 因此，`PodLabel_deployment_s`、`PodLabel_deploymentconfig_s`、`PodLabel_docker_registry_s` 在環境的資料集中會有所不同，且一般而言會類似 `PodLabel_yourlabel_s`。
 
 ## <a name="monitor-containers"></a>監視容器
-在 Azure 入口網站中啟用解決方案之後，[**容器**] 圖格會顯示容器主機和主機中執行之容器的相關摘要資訊。
+在 Azure 入口網站中啟用解決方案之後，[ **容器** ] 圖格會顯示容器主機和主機中執行之容器的相關摘要資訊。
 
 ![容器圖格](./media/containers/containers-title.png)
 
@@ -582,11 +582,11 @@ Start-Service docker
 
 ![容器狀態](./media/containers/containers-status.png)
 
-[Log Analytics] 隨即開啟，顯示容器狀態的相關資訊。
+Log Analytics 會開啟，並顯示容器狀態的相關資訊。
 
 ![適用于容器的 Log Analytics](./media/containers/containers-log-search.png)
 
-在這裡，您可以編輯搜尋查詢來進行修改，以尋找您感興趣的特定資訊。 如需記錄查詢的詳細資訊，請參閱[Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)。
+在這裡，您可以編輯搜尋查詢來進行修改，以尋找您感興趣的特定資訊。 如需有關記錄查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)。
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>尋找失敗的容器以進行疑難排解
 
@@ -598,11 +598,11 @@ Start-Service docker
    ![容器狀態](./media/containers/containers-status.png)
 2. Log Analytics 會開啟並顯示您的容器狀態，如下所示。  
    ![容器狀態](./media/containers/containers-log-search.png)
-3. 展開失敗的行，然後按一下 [+] 將其準則加入至查詢。 然後將查詢中的總結行加上批註。
+3. 展開失敗的行，然後按一下 [+]，將其準則新增至查詢。 然後批註查詢中的摘要行。
    ![失敗的容器](./media/containers/containers-state-failed-select.png)  
-1. 執行查詢，然後在結果中展開一行來查看影像識別碼。  
+1. 執行查詢，然後在結果中展開一行以查看影像識別碼。  
    ![失敗的容器](./media/containers/containers-state-failed.png)  
-1. 在記錄查詢中輸入下列文字。 `ContainerImageInventory | where ImageID == <ImageID>`可查看關於映像的詳細資料，例如停止和失敗映像的映像大小與數目。  
+1. 在記錄查詢中輸入下列各項。 `ContainerImageInventory | where ImageID == <ImageID>`可查看關於映像的詳細資料，例如停止和失敗映像的映像大小與數目。  
    ![失敗的容器](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>容器資料的查詢記錄
@@ -623,11 +623,11 @@ Start-Service docker
 * 選擇您知道最近失敗的映像並尋找其錯誤記錄。 首先，透過 **ContainerInventory** 搜尋來尋找正在執行該映像的容器名稱。 例如，搜尋 `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![搜尋 Ubuntu 容器](./media/containers/search-ubuntu.png)
 
-  展開結果中的任何一列，以查看該容器的詳細資料。
+  展開結果中的任何資料列，以查看該容器的詳細資料。
 
 ## <a name="example-log-queries"></a>範例記錄查詢
 
-從一或兩個範例開始建置查詢，然後加以修改以符合您的環境，通常很實用。 做為起點，您可以試驗 [方案] 頁面最右邊的 [**範例查詢**] 區域，以協助您建立更先進的查詢。
+從一或兩個範例開始建置查詢，然後加以修改以符合您的環境，通常很實用。 作為起點，您可以嘗試使用 [方案] 頁面最右邊的 [ **範例查詢** ] 區域，以協助您建立更先進的查詢。
 
 ![容器查詢](./media/containers/containers-queries.png)
 
@@ -637,7 +637,7 @@ Start-Service docker
 
 建立您覺得有用的查詢之後，按一下 [記錄檔搜尋] 頁面頂端的 [我的最愛]**** 來儲存它。 然後您稍後即可輕易地從 [我的儀表板]**** 頁面進行存取。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-[查詢記錄](../log-query/log-query-overview.md)以查看詳細的容器資料記錄。
+[查詢記錄](../log-query/log-query-overview.md) 以查看詳細的容器資料記錄。
 

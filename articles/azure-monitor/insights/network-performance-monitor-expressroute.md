@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326149"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 監視
@@ -24,7 +24,7 @@ ms.locfileid: "87326149"
 ![ExpressRoute 監視](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>組態 
-若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
+若要開啟網路效能監控的設定，請開啟 [網路效能監控方案](network-performance-monitor.md) ，然後選取 [ **設定**]。
 
 ### <a name="configure-network-security-group-rules"></a>設定網路安全性群組規則 
 針對 Azure 中用來透過網路效能監控進行監視的伺服器，設定網路安全性群組 (NSG) 規則，以在網路效能監控用來進行綜合交易的連接埠上允許 TCP 流量。 預設連接部是 8084。 此組態允許安裝在 Azure 虛擬機器上的 Log Analytics 代理程式與內部部署監視代理程式通訊。 
@@ -57,7 +57,7 @@ ms.locfileid: "87326149"
 3. 如果您要建立此連線的健康情況事件，請選取 [啟用此對等互連的健康狀況監視]****。 
 4. 選擇監視條件。 您可以輸入閾值，以設定健康情況事件產生的自訂閾值。 只要條件值高於為對等互連連線選取的閾值時，就會產生健康情況事件。 
 5. 選取 [新增代理程式]**** 以選擇您要用來監視此對等互連連線的監視代理程式。 請確定您在連線的兩端都新增代理程式。 您在連線到此對等互連的虛擬網路中需要至少一個代理程式。 您也需要至少一個連線到此對等互連的內部部署代理程式。 
-6. 選取 [**儲存**] 以儲存設定。 
+6. 選取 [ **儲存** ] 以儲存設定。 
 
    ![ExpressRoute 監視組態](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "87326149"
 
 您可以查看通知代碼，並透過 **LogAnalytics** 設定其警示。 在 [NPM 診斷]**** 頁面上，您可以看到每個觸發診斷訊息的描述。
 
-| 通知代碼 (記錄) | 描述 |
+| 通知代碼 (記錄) | 說明 |
 | --- | --- |
 | 5501 | 無法周遊通過 ExpressRoute 線路的次要連線 |
 | 5502 | 無法周遊通過 ExpressRoute 線路的主要連線 |
@@ -139,6 +139,6 @@ ms.locfileid: "87326149"
 
  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [搜尋記錄](../log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
 

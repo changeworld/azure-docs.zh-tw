@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893668"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>使用 Azure 防火牆原則來定義規則階層
@@ -48,7 +48,7 @@ Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
 - 資料庫防火牆原則。 資料庫防火牆原則會繼承基本防火牆原則。
 - 工程防火牆原則。 工程防火牆原則也會繼承基本防火牆原則。
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="原則階層" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="小組和需求" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>建立自訂角色以存取規則集合群組 
 
@@ -62,7 +62,7 @@ Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
 2. 執行下列命令：
 
    `Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize`
-3. 使用 >get-azroledefinition 命令來輸出 JSON 格式的讀取者角色。 
+3. 使用 Get-AzRoleDefinition 命令來輸出 JSON 格式的讀取者角色。 
 
    `Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json`
 4. 在編輯器中開啟檔案 ReaderSupportRole.js。
@@ -122,21 +122,21 @@ Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
                              "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx"] 
 } 
 ```
-9. 若要建立新的自訂角色，請使用 >get-azroledefinition 命令，並指定 JSON 角色定義檔。 
+9. 若要建立新的自訂角色，請使用 New-AzRoleDefinition 命令，並指定 JSON 角色定義檔。 
 
    `New-AzRoleDefinition -InputFile "C:\CustomRoles\RuleCollectionGroupRole.json`
 
 ### <a name="list-custom-roles"></a>列出自訂角色
 
-若要列出所有自訂角色，您可以使用 >get-azroledefinition 命令：
+若要列出所有自訂角色，您可以使用 Get-AzRoleDefinition 命令：
 
    `Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom`
 
 您也可以在 Azure 入口網站中看到自訂角色。 移至您的訂用帳戶，選取 [ **存取控制] (IAM) **、[ **角色**]。
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="小組和需求":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy read 許可權":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="小組和需求":::
 
 如需詳細資訊，請參閱 [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](../role-based-access-control/tutorial-custom-role-powershell.md)。
 
@@ -162,7 +162,7 @@ Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
 
 安全性系統管理員可以使用基本原則來強制執行護欄，並封鎖特定類型的流量 (例如，其企業要求的 ICMP) 。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 [Azure 防火牆原則](policy-overview.md)。
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831221"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解當您在 Azure 中管理虛擬機器時，常見的錯誤訊息
@@ -99,8 +99,8 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  InvalidParameter  |  提供的密碼長度必須介於 {0}-{1} 個字元之間，而且至少必須符合下列其中 {2} 項對密碼複雜性的要求： <ol><li> 包含大寫字元</li><li>包含小寫字元</li><li>包含數字</li><li>包含特殊字元。</li></ol>  |
 |  InvalidParameter  |  不允許指定的系統管理員使用者名稱。  |
 |  InvalidParameter  |  如果從平台或使用者映像建立 VM，將無法連結現有的作業系統磁碟。  |
-|  InvalidParameter  |  容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號的前面必須加上英數位元。  |
-|  InvalidParameter  |  URL {1} 中的容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號的前面必須加上英數位元。  |
+|  InvalidParameter  |  容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號前面必須加上英數位元。  |
+|  InvalidParameter  |  URL {1} 中的容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號前面必須加上英數位元。  |
 |  InvalidParameter  |  URL {0} 中的 blob 名稱包含斜線。 磁碟目前不支援這種作法。  |
 |  InvalidParameter  |  URI {0} 似乎不是正確的 blob URI。  |
 |  InvalidParameter  |  名為 '{0}' 的磁碟已使用相同的 LUN：{1}。  |
@@ -176,7 +176,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  OSProvisioningClientError  |  對 VM 指定的使用者名稱不適用於此 Linux 散發套件。 錯誤詳細資料：{0}。  |
 |  OSProvisioningInternalError  |  由於發生內部錯誤，VM '{0}' 的 OS 佈建失敗。  |
 |  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。  |
-|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。 也請確認已正確備妥 (一般化) 映像。   <ul><li>適用于[Windows]( ../windows/upload-generalized-managed.md)的指示。</li><li> 適用于[Linux](../linux/capture-image.md)的指示</li></ul>  |
+|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。 也請確認已正確備妥 (一般化) 映像。   <ul><li>適用于 [Windows]( ../windows/upload-generalized-managed.md)的指示。</li><li> 適用于[Linux](../linux/capture-image.md)的指示</li></ul>  |
 |  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 不過，已偵測到 VM 客體代理程式正在執行。 這表示客體 OS 尚未備妥做為 VM 映像 (CreateOption=FromImage)。 若要解決此問題，請依現狀使用 VHD 並指定 CreateOption=Attach，或適當備妥它做為映像：   <ul><li>適用於 Windows 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  選取的位置目前沒有所要求的 VM 大小可用。  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  因為目前正在執行平台更新，所以無法更新資源。 請稍後再試一次。  |
@@ -205,7 +205,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  VMExtensionManagementInternalError  |  準備 VM 擴充時發生多個錯誤。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
 |  VMExtensionProvisioningError  |  VM 回報在處理擴充 '{0}' 時失敗。 錯誤訊息："{1}"。  |
 |  VMExtensionProvisioningError  |  多個 VM 擴充無法佈建在 VM 上。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
-|  VMExtensionProvisioningTimeout  |  VM 擴充功能 ' ' 的布建 {0} 已超時。延伸模組安裝可能會花費太長的時間，或無法取得延伸模組狀態。  |
+|  VMExtensionProvisioningTimeout  |  布建 VM 擴充功能 ' {0} ' 已超時。延伸模組安裝可能會花費太長的時間，或無法取得延伸模組狀態。  |
 |  VMMarketplaceInvalidInput  |  從非 Marketplace 映像建立虛擬機器不需要方案資訊，請移除要求中的方案資訊。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  購買資訊不符。 無法從 Marketplace 映像部署。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  要求中必須有方案資訊，才能從 Marketplace 映像建立虛擬機器。 作業系統磁碟名稱是 {0}。  |

@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
 ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325299"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自動化的指令碼建立 Service Manager Web 應用程式
@@ -26,13 +26,13 @@ ms.locfileid: "87325299"
 - Web 應用程式的網站名稱前置詞
 - 服務匯流排命名空間。
 
-指令碼會使用您指定的名稱 (與其他可使它成為唯一的字串) 來建立 Web 應用程式。 它會產生**Web 應用程式 URL**、**用戶端識別碼**和**用戶端秘密**。
+指令碼會使用您指定的名稱 (與其他可使它成為唯一的字串) 來建立 Web 應用程式。 它會產生 **Web 應用程式 URL**、 **用戶端識別碼**和 **用戶端密碼**。
 
 儲存這些值，當您使用 IT 服務管理連接器建立連線時會用到這些值。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
  Windows Management Framework 5.0 或更新版本。
 Windows 10 依預設包含 5.1。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=50395)下載架構：
@@ -317,6 +317,6 @@ if(!$err)
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [設定混合式連接](./itsmc-connections.md#configure-the-hybrid-connection)。
 

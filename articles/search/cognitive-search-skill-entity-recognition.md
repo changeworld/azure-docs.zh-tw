@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542456"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>實體辨識認知技能
@@ -47,7 +47,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
-| `languageCode`    | 選擇性。 預設為 `"en"`。  |
+| `languageCode`    | 選擇性。 預設值為 `"en"`。  |
 | `text`          | 要分析的文字。          |
 
 ## <a name="skill-outputs"></a>技能輸出
@@ -55,7 +55,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 > [!NOTE]
 > 並非所有的實體類別都支援所有語言。 `"Person"` `"Location"` `"Organization"` 上述語言的完整清單支援、和實體類別目錄類型。 只有 _de_、 _en_、 _es_、 _fr_和 _zh-hans_ 支援解壓縮 `"Quantity"` 、 `"Datetime"` 、 `"URL"` 和 `"Email"` 類型。 如需詳細資訊，請參閱 [文字分析 API 的語言和區域支援](../cognitive-services/text-analytics/language-support.md)。  
 
-| 輸出名稱      | 說明                   |
+| 輸出名稱      | 描述                   |
 |---------------|-------------------------------|
 | `persons`       | 字串陣列，其中每個字串代表人員名稱。 |
 | `locations`  | 字串陣列，其中每個字串代表位置。 |

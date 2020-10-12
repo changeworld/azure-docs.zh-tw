@@ -1,23 +1,23 @@
 ---
 title: 大規模地將 Azure 原則部署至委派的訂用帳戶
-description: 瞭解 Azure 燈塔如何讓您跨多個租使用者部署原則定義和原則指派。
+description: 瞭解 Azure Lighthouse 如何讓您在多個租使用者之間部署原則定義和原則指派。
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167278"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>大規模地將 Azure 原則部署至委派的訂用帳戶
 
-身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure Lighthouse 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
+作為服務提供者，您可能已上線多個客戶租使用者來 [Azure Lighthouse](../overview.md)。 Azure Lighthouse 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
 
 本主題說明如何使用 [Azure 原則](../../governance/policy/index.yml)，使用 PowerShell 命令在多個租用戶之間部署原則定義和原則指派。 在此範例中，原則定義可確保只允許 HTTPS 流量來保護儲存體帳戶。
 
 > [!TIP]
-> 雖然我們在本主題中參考服務提供者和客戶，但[管理多個](../concepts/enterprise.md)租使用者的企業可以使用相同的程式。
+> 雖然我們會在本主題中參考服務提供者和客戶，但 [管理多個](../concepts/enterprise.md) 租使用者的企業可以使用相同的程式。
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客戶租用戶之間進行查詢
 
@@ -35,7 +35,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 ## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>在多個客戶租用戶之間部署原則
 
-下列範例顯示如何使用 [Azure Resource Manager 範本](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)，在多個客戶租用戶中的委派訂用帳戶之間，部署原則定義和原則指派。 此原則定義會要求所有儲存體帳戶都使用 HTTPS 流量，以防止在沒有設定為不符合規範的情況下，建立不符合並標示現有儲存體帳戶的任何新儲存體帳戶。
+下列範例顯示如何使用 [Azure Resource Manager 範本](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)，在多個客戶租用戶中的委派訂用帳戶之間，部署原則定義和原則指派。 此原則定義需要所有儲存體帳戶使用 HTTPS 流量，以防止建立不符合規範的任何新儲存體帳戶，並在沒有設定為不符合規範的情況下標記現有的儲存體帳戶。
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -53,7 +53,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="validate-the-policy-deployment"></a>驗證原則部署
 
-部署 Azure Resource Manager 範本之後，您可以嘗試在其中一個委派的訂用帳戶中建立**enableHTTPstrafficonly 屬性**設定為**false**的儲存體帳戶，以確認已成功套用原則定義。 因為原則指派，所以您應該無法建立此儲存體帳戶。  
+部署 Azure Resource Manager 範本之後，您可以嘗試在其中一個委派的訂用帳戶中建立 **enableHTTPstrafficonly 屬性** 設為 **false** 的儲存體帳戶，以確認已成功套用原則定義。 因為原則指派，所以您應該無法建立此儲存體帳戶。  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `

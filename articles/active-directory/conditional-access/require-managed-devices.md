@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258637"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>作法：透過條件式存取要求受管理的裝置進行雲端應用程式存取
@@ -24,7 +24,7 @@ ms.locfileid: "91258637"
 
 本文說明如何設定條件式存取原則，以要求受管理的裝置存取您環境中的特定雲端應用程式。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 需要受控裝置才能進行雲端應用程式存取， **Azure AD 條件式存取** 和 **Azure AD 裝置管理** 。 如果您還不熟悉上述其中一種領域，您應該先閱讀下列主題：
 

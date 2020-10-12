@@ -12,69 +12,69 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337444"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>如何：設定及啟用風險原則
 
-如我們在上一篇文章中所學到的身分[識別保護原則](concept-identity-protection-policies.md)，我們有兩個可在目錄中啟用的風險原則。 
+如同我們在前一篇文章中所學到的身分 [識別保護原則](concept-identity-protection-policies.md) ，我們有兩個可以在目錄中啟用的風險原則。 
 
 - 登入風險原則
 - 使用者風險原則
 
 ![啟用使用者和登入風險原則的安全性總覽頁面](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-這兩個原則都適用于將環境中風險偵測的回應自動化，並可讓使用者在偵測到風險時自行補救。 
+這兩個原則都可在您的環境中自動回應風險偵測，並可讓使用者在偵測到風險時自動進行補救。 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
-如果您的組織想要允許使用者在偵測到風險時進行自我補救，則必須註冊自助式密碼重設和 Azure 多重要素驗證的使用者。 我們建議您[啟用結合的安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md)，以獲得最佳體驗。 允許使用者進行自我補救，讓他們更快速地回到生產力狀態，而不需要系統管理員介入。 系統管理員仍然可以看到這些事件，並在事實之後進行調查。 
+如果您的組織想要允許使用者在偵測到風險時自行進行補救，則必須同時註冊自助密碼重設和 Azure Multi-Factor Authentication 的使用者。 建議您 [啟用合併的安全性資訊註冊體驗](../authentication/howto-registration-mfa-sspr-combined.md) ，以獲得最佳體驗。 讓使用者能在不需要系統管理員介入的情況下，以更快的速度讓使用者進行自動補救。 系統管理員仍然可以看到這些事件，並在事實之後進行調查。 
 
 ## <a name="choosing-acceptable-risk-levels"></a>選擇可接受的風險層級
 
-組織必須決定他們願意接受平衡使用者體驗和安全性狀態的風險層級。 
+組織必須決定他們願意接受平衡使用者經驗和安全性狀態的風險層級。 
 
-Microsoft 的建議是將使用者風險原則閾值設為 [**高**]，並將 [登入風險原則] 設定為 [**中] 和 [上**一層]。
+Microsoft 的建議是將 [使用者風險原則] 閾值設定為 [ **高** ]，並將 [登入風險] 原則設定為 [ **中] 或 [上**]。
 
-選擇 [高] **** 臨界值可減少觸發原則的次數，並將對使用者的影響降至最低。 不過，它會從原則中排除**低**和**中度**風險偵測，這可能不會阻止攻擊者利用遭到入侵的身分識別。 選取 [**低**] 臨界值會引進額外的使用者中斷，但會增加安全性狀態。
+選擇 [高] **** 臨界值可減少觸發原則的次數，並將對使用者的影響降至最低。 不過，它會從原則中排除 **低** 和 **中度** 風險偵測，這可能不會封鎖攻擊者利用遭盜用的身分識別。 選取 [ **低** ] 閾值會導致額外的使用者中斷，但會增加安全性狀態。
 
 ## <a name="exclusions"></a>排除
 
-所有原則都允許排除使用者，例如您的[緊急存取或急用管理員帳戶](../users-groups-roles/directory-emergency-access.md)。 組織可能會根據帳戶的使用方式，判斷他們需要從特定原則排除其他帳戶。 所有的排除專案都應該定期檢查，以查看它們是否仍適用。
+所有原則都允許排除使用者，例如您的[緊急存取或急用管理員帳戶](../users-groups-roles/directory-emergency-access.md)。 組織可能會根據帳戶的使用方式，判斷是否需要從特定原則中排除其他帳戶。 所有排除專案都應定期檢查，以查看是否仍適用。
 
-在某些風險偵測中，Identity Protection 會使用設定的受信任[網路位置](../conditional-access/location-condition.md)來減少誤報。
+某些風險偵測中的 Identity Protection 會使用設定的受信任 [網路位置](../conditional-access/location-condition.md) ，以減少誤報。
 
 ## <a name="enable-policies"></a>啟用原則
 
 若要啟用使用者風險和登入風險原則，請完成下列步驟。
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **識別保護**]  >  **總覽**。
-1. 選取 [**使用者風險原則**]。
-   1. 在 [**指派**] 底下
-      1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
-         1. （選擇性）您可以選擇從原則中排除使用者。
+1. 流覽至**Azure Active Directory**  >  **安全性**身分  >  **識別保護**  >  **總覽**。
+1. 選取 [ **使用者風險原則**]。
+   1. 在**指派**下
+      1. **使用者** -選擇 [ **所有使用者** ] **，或選取 [個人和群組** ] 以限制您的首度發行。
+         1. （選擇性）您可以選擇將使用者從原則中排除。
       1. **條件**  - **使用者風險**Microsoft 的建議是將此選項設定為 [**高**]。
-   1. 在**控制項**底下
-      1. **存取**-Microsoft 的建議是**允許存取**，而且**需要變更密碼**。
-   1. **強制執行原則**  - **于**
-   1. **儲存**-此動作會讓您回到 [**總覽**] 頁面。
-1. 選取 [登**入風險原則**]。
-   1. 在 [**指派**] 底下
-      1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
-         1. （選擇性）您可以選擇從原則中排除使用者。
-      1. **條件**  - 登**入風險**Microsoft 的建議是將此選項設定為 [**中] 和 [以上**]。
-   1. 在**控制項**底下
-      1. **存取**-Microsoft 的建議是**允許存取**，而且**需要多重要素驗證**。
-   1. **強制執行原則**  - **于**
+   1. 在**控制項**下
+      1. **存取** -Microsoft 的建議是 **允許存取** ，而且 **需要變更密碼**。
+   1. **強制執行原則**  - **開啟**
+   1. **儲存** -此動作會讓您回到 [ **總覽** ] 頁面。
+1. 選取 [登 **入風險原則**]。
+   1. 在**指派**下
+      1. **使用者** -選擇 [ **所有使用者** ] **，或選取 [個人和群組** ] 以限制您的首度發行。
+         1. （選擇性）您可以選擇將使用者從原則中排除。
+      1. **條件**  - 登**入風險**Microsoft 的建議是將此選項設定為 [**中] 或更高**的版本。
+   1. 在**控制項**下
+      1. **存取** -Microsoft 的建議是 **允許存取** ，而且 **需要多重要素驗證**。
+   1. **強制執行原則**  - **開啟**
    1. **儲存**
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [啟用 Azure Multi-Factor Authentication 註冊原則](howto-identity-protection-configure-mfa-policy.md)
 

@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 入口網站來備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890343"
 ---
 # <a name="back-up-azure-file-shares"></a>備份 Azure 檔案共用
@@ -21,7 +21,7 @@ ms.locfileid: "88890343"
 * 從 [檔案共用] 窗格設定備份
 * 執行隨選備份作業以建立還原點
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [瞭解](azure-file-share-backup-overview.md) 以 Azure 檔案共用快照集為基礎的備份解決方案。
 * 確定檔案共用存在於其中一種 [支援的儲存體帳戶類型](azure-file-share-support-matrix.md)中。
@@ -67,7 +67,7 @@ ms.locfileid: "88890343"
 
 1. [ **選取檔案共用** ] 內容窗格隨即在右側開啟。 Azure 會在儲存體帳戶中搜尋可備份的檔案共用。 如果您最近新增了檔案共用，但在清單中看不到它們，請等候一段時間讓檔案共用出現。
 
-1. 從 [ **選取檔案共用** ] 清單中，選取您要備份的一或多個檔案共用。 選取 [確定]。
+1. 從 [ **選取檔案共用** ] 清單中，選取您要備份的一或多個檔案共用。 選取 [確定]  。
 
    ![選取檔案共用](./media/backup-afs/select-file-shares.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "88890343"
 
 1. 選取 [ **啟用備份** ] 以開始保護檔案共用。
 
-   ![選取 [啟用備份]](./media/backup-afs/select-enable-backup.png)
+   ![選取啟用備份](./media/backup-afs/select-enable-backup.png)
 
 1. 您可以在入口網站通知中追蹤設定進度，或監視您要用來保護檔案共用的保存庫下的備份工作。
 
@@ -206,7 +206,7 @@ ms.locfileid: "88890343"
 
    ![保留備份日期](./media/backup-afs/retain-backup-date.png)
 
-1. 選取 [確定] 來確認。
+1. 選取 [確定]  來確認。
 
 >[!NOTE]
 >當您在對應的帳戶中設定任何檔案共用的保護時，Azure 備份鎖定儲存體帳戶。 這可防止意外刪除已備份檔案共用的儲存體帳戶。

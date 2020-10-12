@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: e8f2d9495484b781b26962c2946b5bada6c38b4c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663985"
 ---
 # <a name="text-visualizations"></a>文字視覺效果
@@ -66,7 +66,7 @@ ms.locfileid: "89663985"
 
 ![警告樣式外觀的螢幕擷取畫面。](./media/workbooks-text-visualizations/text-warning-style.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [在活頁簿中建立圖表](workbooks-chart-visualizations.md)。
 * 瞭解如何 [在活頁簿中建立方格](workbooks-grid-visualizations.md)。

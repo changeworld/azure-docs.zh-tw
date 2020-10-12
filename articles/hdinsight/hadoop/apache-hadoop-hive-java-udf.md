@@ -1,5 +1,5 @@
 ---
-title: JAVA 使用者定義函數（UDF）與 Apache Hive Azure HDInsight
+title: JAVA 使用者定義函式 (UDF) 與 Apache Hive Azure HDInsight
 description: 了解如何建立能配合 Apache Hive 使用的以 Java 為基礎的使用者定義函式 (UDF)。 此範例 UDF 會將文字字串的資料表轉換成小寫。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
 ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323786"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>在 HDInsight 中搭配使用 Java UDF 和 Apache Hive
 
 了解如何建立能配合 Apache Hive 使用的以 Java 為基礎的使用者定義函式 (UDF)。 此範例中的 Java UDF 會將文字字串的資料表轉換成全部小寫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
-* [JAVA 開發人員套件（JDK）第8版](https://aka.ms/azure-jdks)
+* [JAVA Developer 套件 (JDK) 第8版](https://aka.ms/azure-jdks)
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
-* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這會是 wasb://，適用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://的 Azure 儲存體、abfs://。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這會 wasb://到適用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://的 Azure 儲存體、abfs://。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文字編輯器或 Java IDE
 
@@ -33,9 +33,9 @@ ms.locfileid: "87323786"
 
 ## <a name="test-environment"></a>測試環境
 
-本文所使用的環境是執行 Windows 10 的電腦。  命令會在命令提示字元中執行，並使用 [記事本] 來編輯各種檔案。 針對您的環境進行相應的修改。
+本文所使用的環境是執行 Windows 10 的電腦。  命令會在命令提示字元中執行，並使用「記事本」編輯各種不同的檔案。 據以針對您的環境進行修改。
 
-從命令提示字元中，輸入下列命令以建立可運作的環境：
+從命令提示字元中，輸入下列命令來建立工作環境：
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -52,7 +52,7 @@ cd C:\HDI
 
     此命令會建立名為的目錄 `exampleudf` ，其中包含 Maven 專案。
 
-2. 建立專案之後，請 `exampleudf/src/test` 輸入下列命令，以刪除專案中建立的目錄：
+2. 一旦建立專案之後，請 `exampleudf/src/test` 輸入下列命令來刪除已建立為專案一部分的目錄：
 
     ```cmd
     cd ExampleUDF
@@ -65,7 +65,7 @@ cd C:\HDI
     notepad pom.xml
     ```
 
-    然後 `<dependencies>` 以下列 XML 取代現有的專案：
+    然後使用下列 XML 來取代現有的 `<dependencies>` 專案：
 
     ```xml
     <dependencies>
@@ -144,13 +144,13 @@ cd C:\HDI
 
     完成變更後，儲存檔案。
 
-4. 輸入下列命令以建立並開啟新檔案 `ExampleUDF.java` ：
+4. 輸入下列命令以建立並開啟新的檔案 `ExampleUDF.java` ：
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    然後將下列 java 程式碼複製並貼到新檔案中。 然後關閉檔案。
+    然後將下列 java 程式碼複製並貼到新的檔案中。 然後關閉檔案。
 
     ```java
     package com.microsoft.examples;
@@ -181,7 +181,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>建置及安裝 UDF
 
-在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同的話）。 `mycluster`將取代為實際的叢集名稱。
+在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同）。 取代 `mycluster` 為實際的叢集名稱。
 
 1. 輸入下列命令來編譯和封裝 UDF：
 
@@ -232,7 +232,7 @@ cd C:\HDI
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    此查詢會從資料表中選取狀態，並將字串轉換為小寫，然後將其與未修改的名稱一起顯示。 此輸出看起來類似下列文字：
+    此查詢會從資料表中選取狀態、將字串轉換為小寫，然後將它們連同未修改的名稱一起顯示。 此輸出看起來類似下列文字：
 
     ```output
     +---------------+---------------+--+
@@ -269,7 +269,7 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Hive 的其他操作方法，請參閱 [搭配 HDInsight 使用 Apache Hive](hdinsight-use-hive.md)。
 

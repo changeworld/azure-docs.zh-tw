@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542928"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 blob 索引子和技能集為加密的 blob 編制索引
@@ -31,7 +31,7 @@ ms.locfileid: "91542928"
 
 如果您沒有 Azure 訂用帳戶，請在開始前開啟[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此範例假設您已將檔案上傳至 Azure Blob 儲存體，並已在程式中將它們加密。 如果您需要有關讓檔案一開始上傳及加密的協助，請參閱 [本教學](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) 課程以瞭解如何執行此操作。
 
@@ -96,7 +96,7 @@ AI 擴充和技能集執行是由認知服務所支援，包括自然語言和�
 
 不過，在此練習中，您可以略過資源佈建，因為 Azure 認知搜尋可以在幕後連線到認知服務，並為每個索引子執行提供 20 筆免費交易。 處理20份檔之後，除非將認知服務金鑰附加至技能集，否則索引子會失敗。 針對較大型的專案，請考慮以隨用隨付 S0 層來佈建認知服務。 如需詳細資訊，請參閱[連結認知服務](cognitive-search-attach-cognitive-services.md)。 請注意，即使您選取的認知 (技能未在) 中新增任何技能，也必須要有認知服務金鑰才能執行具有超過20份檔的技能集。
 
-### <a name="azure-cognitive-search"></a>Azure 認知搜尋
+### <a name="azure-cognitive-search"></a>Azue 認知搜尋
 
 最後一個元件是 Azure 認知搜尋，您可以 [在入口網站中建立](search-create-service-portal.md)。 您可以使用免費層來完成本指南。 
 

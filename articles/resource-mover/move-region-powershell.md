@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89670332"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>在 PowerShell 中跨區域移動資源
@@ -19,7 +19,7 @@ ms.locfileid: "89670332"
 瞭解如何使用 Azure 資源移動器中的 PowerShell 將 Azure 資源移至不同的區域。 
 
 > [!NOTE]
-> Azure 資源移動器目前為預覽狀態。
+> Azure Resource Mover 目前處於預覽狀態。
 
 
 
@@ -34,7 +34,7 @@ ms.locfileid: "89670332"
 
 我們在腳本範例中使用這些值：
 
-**設定** | **值** 
+**設定** | **ReplTest1** 
 --- | ---
 訂用帳戶識別碼 | subscription-id
 資源移動器服務位置 | 美國東部 2
@@ -344,10 +344,10 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 
 ## <a name="discard-or-commit-the-move"></a>捨棄或認可移動
 
-在初始移動之後，您可以決定是否要認可移動或捨棄它。 
+起始移動後，您可以決定要認可移動還是加以捨棄。 
 
-- **捨棄**：如果您要進行測試，而且不想要實際移動來源資源，您可能會捨棄移動。 捨棄 move 會將資源傳回 *起始移動暫*止的狀態。 然後，您可以視需要再次起始移動。
-- **Commit**： commit 完成移至目的地區域。 認可之後，來源資源會處於「 *刪除來源擱置*中」狀態，您可以決定是否要將它刪除。
+- **捨棄**：如果您要測試，而且不想實際移動來源資源，建議您捨棄移動。 捨棄移動會將資源傳回「起始移動擱置」狀態。 然後，您可以視需要再次起始移動。
+- **認可**：認可完成移至目標區域的作業。 認可後，來源資源將處於「刪除來源擱置」狀態，您可以決定是否要加以刪除。
 
 ### <a name="discard"></a>捨棄
 
@@ -377,6 +377,6 @@ Invoke-AzResourceMoverCommit -SubscriptionId  <subscription-id> -ResourceGroupNa
 
 認可移動之後，以及確認資源在目的地區域中如預期般運作之後，您可以[使用 PowerShell](../azure-resource-manager/management/manage-resources-powershell.md#delete-resources)或[Azure CLI](../azure-resource-manager/management/manage-resources-cli.md#delete-resources)刪除[Azure 入口網站](../azure-resource-manager/management/manage-resources-portal.md#delete-resources)中的來源資源。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [瞭解如何](remove-move-resources.md) 移除移動集合中的資源。

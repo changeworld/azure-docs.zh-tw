@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: a538eaf06013dcce6529c91816b419159a2600a1
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89664029"
 ---
 # <a name="graph-visualizations"></a>圖形視覺效果
@@ -149,7 +149,7 @@ ms.locfileid: "89664029"
 
 [![顯示如何使用 [欄位基底] 節點著色建立圖形視覺效果的螢幕擷取畫面。](./media/workbooks-graph-visualizations/graph-field-based.png)](./media/workbooks-graph-visualizations/graph-field-based.png#lightbox)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 圖形也支援複合條形轉譯器。 若要深入瞭解，請造訪 [複合 Bar 檔](workbooks-composite-bar.md)。
 * 深入瞭解您可以在活頁簿中使用的 [資料來源](workbooks-data-sources.md) 。

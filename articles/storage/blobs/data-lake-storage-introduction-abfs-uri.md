@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Storage Gen2 URI
-description: 瞭解 abfs 配置識別碼的 URI 語法，其代表 Azure Data Lake Storage Gen2) 的 Azure Blob 檔案系統驅動程式 (Hadoop Filesystem 驅動程式。
+description: 瞭解 abfs 配置識別碼的 URI 語法，代表 Azure Data Lake Storage Gen2) 的 Azure Blob File System driver (Hadoop Filesystem 驅動程式。
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: 7c9c452d608bc2c5f64292d72f3eae6825bf1ce2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828246"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 的 URI 語法取決於您的儲存體帳戶是否設定�
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **配置識別碼**：此 `abfs` 通訊協定作為配置識別碼。 您可以選擇連接或不使用傳輸層安全性 (TLS) ，先前稱為安全通訊端層 (SSL) ）連線。 使用 `abfss` 來連接 TLS 連線。
+1. **配置識別碼**：此 `abfs` 通訊協定作為配置識別碼。 您可以選擇連接或不使用傳輸層安全性 (TLS) （先前稱為安全通訊端層 (SSL) ）連接。 使用連線 `abfss` 到 TLS 連接。
 
 2. **檔案系統**：保存檔案和資料夾的上層位置。 這與 Azure 儲存體 Blob 服務中的容器相同。
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91260405"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用延伸 Apache Spark 歷程記錄伺服器來對 Apache Spark 應用程式進行偵錯工具和診斷
@@ -143,7 +143,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 > [!NOTE]  
 > 允許播放每個工作。 針對未完成的作業，不支援播放。
 
-### <a name="zoom"></a>Zoom
+### <a name="zoom"></a>縮放
 
 您可以使用滑鼠滾輪來放大和縮小作業圖形，或選取 [ **縮放至適當比例** ]，使其符合螢幕大小。
 
@@ -157,7 +157,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 在 [作業圖形] 索引標籤上，階段會有工具提示，而如果有符合下列條件的工作，就會顯示小圖示：
 
-|條件|說明|
+|條件|描述|
 |-|-|
 |資料扭曲|資料讀取大小 > 此階段中所有工作的平均資料讀取大小 * 2 和資料讀取大小 > 10 MB|
 |時間誤差|執行時間 > 這個階段中所有工作的平均執行時間 * 2，而執行時間 > 2 分鐘|

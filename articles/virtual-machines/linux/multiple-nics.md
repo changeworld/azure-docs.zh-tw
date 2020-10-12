@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中建立具有多個 Nic 的 Linux VM
+title: 在具有多個 Nic 的 Azure 中建立 Linux VM
 description: 了解如何使用 Azure CLI 或 Resource Manager 範本，來建立連接多個 NIC 的 Linux VM。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836916"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中建立有多個網路介面卡的 Linux 虛擬機器
@@ -81,7 +81,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>建立 VM 並附加 NIC
 當您建立 VM 時，指定您使用 `--nics` 建立的 NIC。 當您選取 VM 大小時也需多加注意。 您可以新增至 VM 的 NIC 總數是有限制的。 深入了解 [Linux VM 大小](../sizes.md)。
 
-使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會建立名為*myVM*的 VM：
+使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會建立名為 myVM  的 VM。
 
 ```azurecli
 az vm create \
@@ -169,7 +169,7 @@ Azure Resource Manager 範本會使用宣告式 JSON 檔案來定義您的環境
 
 深入了解[使用 *copy* 建立多個執行個體](../../azure-resource-manager/templates/copy-resources.md)。 
 
-您也可以使用， `copyIndex()` 然後在資源名稱後面附加一個數位，讓您能夠建立、等等 `myNic1` `myNic2` 。以下顯示附加索引值的範例：
+您也可以使用將 `copyIndex()` 數位附加至資源名稱，讓您建立 `myNic1` 、等等 `myNic2` 。以下顯示附加索引值的範例：
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 

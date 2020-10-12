@@ -1,5 +1,5 @@
 ---
-title: 策劃環境
+title: 策展的環境
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning 中提供的策劃環境集合
 services: machine-learning
@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662086"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning 策劃環境
@@ -311,7 +311,7 @@ ms.locfileid: "89662086"
 * azureml-train-automl-runtime
 * azureml-contrib-automl-dnn-預測
 
-## <a name="azureml-minimal"></a>AzureML-基本
+## <a name="azureml-minimal"></a>AzureML-Minimal
 
 **封裝通道：**
 
@@ -937,7 +937,7 @@ ms.locfileid: "89662086"
 * tensorflow-gpu
 * horovod
 
-## <a name="azureml-tutorial"></a>AzureML-教學課程
+## <a name="azureml-tutorial"></a>AzureML-Tutorial
 
 **封裝通道：**
 

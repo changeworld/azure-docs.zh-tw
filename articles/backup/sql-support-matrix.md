@@ -4,12 +4,12 @@ description: 提供使用 Azure 備份服務在 Azure Vm 中備份 SQL Server �
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926445"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946343"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure Vm 中 SQL Server 備份的支援矩陣
 
@@ -22,7 +22,7 @@ ms.locfileid: "87926445"
 **支援的部署** | 支援 SQL Marketplace Azure VM 和非 Marketplace (手動安裝 SQL Server) VM。
 **支援區域** | 澳大利亞東南部 (ASE)、澳大利亞東部 (AE)、澳大利亞中部 (AC)、澳大利亞中部 2 (AC) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大東部 (CE)<br> 東南亞 (SEA)、東亞 (EA) <br> 美國東部 (EUS)、美國東部 2 (EUS2)、美國中西部 (WCUS)、美國西部 (WUS)、美國西部 2 (WUS2)、美國中北部 (NCUS)、美國中部 (CUS)、美國中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS)、印度西部 <br> 日本東部 (JPE)、日本西部 (JPW) <br> 南韓中部 (KRC)、南韓南部 (KRS) <br> 北歐 (NE)、西歐 <br> 英國南部 (UKS)、英國西部 (UKW) <br> US Gov 亞利桑那州、US Gov 維吉尼亞州、US Gov 德克薩斯州、US DoD 中部、US DoD 東部 <br> 德國北部、德國中西部 <br> 瑞士北部、瑞士西部 <br> 法國中部 <br> 中國東部、中國東部 2、中國北部、中國北部 2
 **支援的作業系統** | Windows Server 2019、Windows Server 2016、Windows Server 2012、Windows Server 2008 R2 SP1 <br/><br/> 目前不支援 Linux。
-**支援的 SQL Server 版本** | SQL Server 2019、SQL Server 2017 (如 [搜尋產品生命週期](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) 頁面所述)、SQL Server 2016 and SPs (如 [搜尋產品生命週期](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) 頁面所述)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。
+**支援的 SQL Server 版本** | SQL Server 2019、SQL Server 2017 (如 [搜尋產品生命週期](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) 頁面所述)、SQL Server 2016 and SPs (如 [搜尋產品生命週期](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) 頁面所述)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。<br><br>不支援 Express 本機資料庫版本。
 **支援的 .NET 版本** | 安裝在 VM 上的 .NET Framework 4.5.2 或更新版本
 
 ## <a name="feature-considerations-and-limitations"></a>功能考慮和限制

@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: System Architecture'
 ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324721"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT 中樞的裝置管理概觀
@@ -89,7 +89,7 @@ IoT 本身伴隨著一組獨特的管理挑戰，因此每個企業級解決方�
     * [大規模設定和監視 IoT 裝置](iot-hub-auto-device-config.md)
     * [IoT 解決方案內的裝置設定最佳做法](iot-hub-configuration-best-practices.md)
 
-* **淘汰**：在失敗、升級週期或服務存留期結束後，更換或解除委任裝置。  如果實體裝置正被取代，則使用裝置對應項來維護裝置資訊，若正在淘汰中則加以封存。 使用 IoT 中樞身分識別登錄，安全地撤銷裝置身分識別與認證。
+* **淘汰**：在失敗、升級週期或服務存留期結束後取代或解除委任裝置。  如果實體裝置正被取代，則使用裝置對應項來維護裝置資訊，若正在淘汰中則加以封存。 使用 IoT 中樞身分識別登錄，安全地撤銷裝置身分識別與認證。
   
     *進一步閱讀*： 
     * [如何使用裝置對應項屬性](tutorial-device-twins.md)
