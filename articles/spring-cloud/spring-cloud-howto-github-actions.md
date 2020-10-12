@@ -9,10 +9,10 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906954"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>使用 GitHub Actions 的 Azure 春季 Cloud CI/CD
@@ -337,7 +337,7 @@ jobs:
 
 ![重新執行檢查](./media/github-actions/actions4.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [適用于春季雲端 GitHub 動作的 Key Vault](./spring-cloud-github-actions-key-vault.md)
 * [Azure Active Directory 服務主體](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)

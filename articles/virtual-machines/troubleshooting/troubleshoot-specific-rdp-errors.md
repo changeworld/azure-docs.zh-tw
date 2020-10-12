@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028238"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>針對 Azure 中 Windows VM 的特定 RDP 錯誤訊息進行疑難排解
@@ -73,7 +73,7 @@ mstsc <File name>.RDP /admin
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>發生驗證錯誤。 無法連絡本機安全性授權。
 原因：目標 VM 在認證的使用者名稱部分找不到安全性授權。
 
-當您的使用者名稱格式為*SecurityAuthority* \\ *UserName* （範例： CORP\User1）時， *SecurityAuthority*部分會是 VM 的電腦名稱稱（代表本地安全機構）或 Active Directory 功能變數名稱。
+當您的使用者名稱格式為 *>securityauthority* \\ *UserName* (example： CORP\User1) 時， *>securityauthority*部分就是本地安全機構) 或 Active Directory 功能變數名稱的 VM 電腦名稱稱 (。
 
 可能的解決方案：
 
@@ -88,8 +88,8 @@ mstsc <File name>.RDP /admin
 
 以 Windows 為基礎的電腦可以驗證本機帳戶或網域帳戶之認證。
 
-* 若為本機帳戶，請使用*ComputerName* \\ *UserName*語法（範例： SQL1\Admin4798）。
-* 若為網域帳戶，請使用*DomainName* \\ *UserName*語法（範例： CONTOSO\peterodman）。
+* 若為本機帳戶，請使用*ComputerName* \\ *UserName*語法 (範例： SQL1\Admin4798) 。
+* 若為網域帳戶，請使用*DomainName* \\ *UserName*語法 (範例： CONTOSO\peterodman) 。
 
 如果您在新的 Active Directory 樹系將 VM 提升為網域控制站，您用來登入的本機系統管理員帳戶會轉換為對等的帳戶，在新樹系和網域中使用相同的密碼。 本機帳戶隨即刪除。
 

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88794484"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
@@ -158,7 +158,7 @@ NVMe 磁片將在下列案例中未初始化：
 
 - 解除配置之後啟動 VM
 - 服務修復
-- 備份
+- Backup
 
 在這些情況下，NVMe 磁片必須在 VM 啟動之後初始化。 若要在 NVMe 磁片上啟用加密，請執行命令，在 NVMe 磁片初始化之後再次啟用 Azure 磁碟加密。
 
@@ -188,7 +188,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 您可以使用 PowerShell 或[透過 Azure 入口網站](attach-managed-disk-portal.md)，[將新的磁碟新增至 Windows VM](attach-disk-ps.md)。 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>透過 Azure PowerShell 在新增的磁碟上啟用加密
- 使用 PowerShell 將 Windows Vm 的新磁片加密時，應指定新的序列版本。 序列版本必須是唯一的。 下列指令碼會產生序列版本的 GUID。 在某些情況下，Azure 磁碟加密擴充功能可能會自動加密新增的資料磁碟。 當 VM 在新磁碟上線後重新開機時，通常會發生自動加密。 原因通常是磁碟加密之前在 VM 上執行時，將磁碟區類型指定為 "All"。 如果在新加入的資料磁片上發生自動加密，建議您以新的順序版本再次執行 >set-azvmdiskencryptionextension Cmdlet。 如果新的資料磁碟自動加密，但您不想要加密，請先將所有磁碟機解密，再以磁碟區類型指定為 OS 的新序列版本重新加密。 
+ 使用 PowerShell 將 Windows Vm 的新磁片加密時，應指定新的序列版本。 序列版本必須是唯一的。 下列指令碼會產生序列版本的 GUID。 在某些情況下，Azure 磁碟加密擴充功能可能會自動加密新增的資料磁碟。 當 VM 在新磁碟上線後重新開機時，通常會發生自動加密。 原因通常是磁碟加密之前在 VM 上執行時，將磁碟區類型指定為 "All"。 如果在新加入的資料磁片上發生自動加密，建議您以新的順序版本再次執行 Set-AzVmDiskEncryptionExtension Cmdlet。 如果新的資料磁碟自動加密，但您不想要加密，請先將所有磁碟機解密，再以磁碟區類型指定為 OS 的新序列版本重新加密。 
   
  
 
@@ -246,7 +246,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ## <a name="disable-encryption"></a>停用加密
 [!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
 
-## <a name="unsupported-scenarios"></a>不支援的情節
+## <a name="unsupported-scenarios"></a>不支援的案例
 
 Azure 磁碟加密不適用於下列案例、功能和技術：
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659547"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>定義混合式身分識別解決方案的資料保護策略
@@ -168,7 +168,7 @@ Azure AD 中還有其他可在事件回應調查期間使用的重要內建報�
 
 由於事件回應的選項採用多層式方法，因此在執行這項工作時無法比較這些選項。 請確實針對每個要求您在公司的事件回應程序中使用 Azure AD 報告功能的案例，使用所有適用的選項。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [判斷混合式身分識別管理工作](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 ## <a name="see-also"></a>另請參閱

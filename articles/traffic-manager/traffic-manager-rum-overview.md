@@ -13,10 +13,10 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 45c889ef8d67570fb075ec710616f20d110b7f50
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401600"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>流量管理員實際使用者度量概觀
@@ -75,7 +75,7 @@ ms.locfileid: "89401600"
 
 * [使用「實際使用者度量」時，我的 Azure 頻寬使用量是否會增加？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 了解如何使用[具有網頁的實際使用者度量](traffic-manager-create-rum-web-pages.md)
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
 - 深入了解 [Mobile Center](https://docs.microsoft.com/mobile-center/)

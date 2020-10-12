@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84702834"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>檢視與修改主機名稱
@@ -41,7 +41,7 @@ ms.locfileid: "84702834"
 
 1. 確定您有連線到 Azure 入口網站的用戶端憑證 若要取得用戶端憑證，請遵循[做法：下載與匯入發行設定與訂用帳戶資訊](https://msdn.microsoft.com/library/dn385850.aspx)中的步驟。 
 2. 設定名稱為 x-ms-version，值為 2013-11-01 的標頭項目。
-3. 以下列格式傳送要求： HTTPs： \/ /management.core.windows.net/ \<subscrition-id\> /services/hostedservices/service-name? \<service-name\> ？內嵌-詳細資料 = true
+3. 傳送下列格式的要求： HTTPs： \/ /management.core.windows.net/ \<subscrition-id\> /services/hostedservices/ \<service-name\> ？ embed-detail = true
 4. 尋找 每個 **RoleInstance** 元素的 **HostName** 元素。
 
 > [!WARNING]
@@ -52,7 +52,7 @@ ms.locfileid: "84702834"
 ## <a name="modifying-a-hostname"></a>修改主機名稱
 您可以透過上傳已修改的服務組態檔，或是從遠端桌面工作階段重新命名電腦，來修改任何虛擬機器或角色執行個體的主機名稱。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [名稱解析 (DNS)](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 [Azure 服務組態結構描述 (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)

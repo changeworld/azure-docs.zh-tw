@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323632"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>瞭解 Azure 春季雲端中的應用程式和部署
@@ -26,10 +26,10 @@ ms.locfileid: "91323632"
 
 Azure 春季雲端標準層可讓一個應用程式有一個生產部署和一個預備部署，讓您可以輕鬆地在其上進行 blue/綠部署。
 
-## <a name="app"></a>App
+## <a name="app"></a>應用程式
 以下是在應用層級上定義的功能/屬性。
 
-| 特性 | 說明 |
+| 特性 | 描述 |
 |:--|:----------------|
 | 公用</br>端點 | 用來存取應用程式的 URL |
 | 自訂</br>網域 | 保護自訂網域的 CNAME 記錄 |
@@ -44,8 +44,8 @@ Azure 春季雲端標準層可讓一個應用程式有一個生產部署和一�
 | 特性 | 說明 |
 |:--|:----------------|
 | CPU | 每個應用程式實例的虛擬核心數目 |
-| 記憶體 | 每個應用程式實例的記憶體 Gb|
-| 執行個體</br>計數 | 應用程式實例的數目，手動或自動設定 |
+| Memory | 每個應用程式實例的記憶體 Gb|
+| 執行個體</br>Count | 應用程式實例的數目，手動或自動設定 |
 | 自動調整 | 根據預先定義的規則和排程自動調整實例計數 |
 | Jvm</br>選項。 | 設定 JVM 選項  |
 | 環境</br>變數 | 設定環境變數 |
@@ -55,7 +55,7 @@ Azure 春季雲端標準層可讓一個應用程式有一個生產部署和一�
 
 * **應用程式必須有一個生產部署**： API 已封鎖刪除生產部署。 您應該先將它交換到預備環境，然後再刪除。
 * **應用程式最多可以有兩個部署**： API 已封鎖建立兩個以上的部署。 將新的二進位檔部署至現有的生產或預備部署。
-* **基本層中不提供部署管理**：使用標準層以提供藍色-綠色的部署功能。
+* **基本層中不提供部署管理**： Blue-Green 部署功能使用標準層。
 
 ## <a name="see-also"></a>另請參閱
 * [在 Azure 春季雲端中設定預備環境](spring-cloud-howto-staging-environment.md)

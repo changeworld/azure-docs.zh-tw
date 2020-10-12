@@ -4,10 +4,10 @@ description: 瞭解如何在使用 Azure Resource Graph 查詢 Azure 資源時�
 ms.date: 08/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 052c3e1c10f1b0ca94653f086e2df4f3d395070e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056936"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>針對使用 Azure Resource Graph 發生的錯誤進行疑難排解

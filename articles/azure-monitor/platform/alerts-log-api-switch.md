@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 868a8eb6cf38d471eb9dc1f47c903404d05ffc0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294507"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>從舊版 Log Analytics 警示 API 升級至目前的記錄警示 API
@@ -38,7 +38,7 @@ ms.locfileid: "91294507"
 - 所有新規則都必須使用目前的 API 來建立/編輯。 請參閱透過 [Azure 資源範本使用範例](alerts-log-create-templates.md) 和透過 [PowerShell 的範例使用](alerts-log.md#managing-log-alerts-using-powershell)。
 - 當規則變成目前 API 中 Azure Resource Manager 追蹤的資源，且必須是唯一的，規則資源識別碼將會變更為此結構： `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` 。 警示規則的顯示名稱將保持不變。
 
-## <a name="process"></a>Process
+## <a name="process"></a>處理序
 
 切換的程式並不是互動式程式，在大部分情況下都不需要手動步驟。 在切換期間或之後，您的警示規則不會停止或停止。
 進行此呼叫，以切換與特定 Log Analytics 工作區相關聯的所有警示規則：

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
 ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659648"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>從 Azure 資訊安全中心連接 Azure Defender 警示資料
@@ -38,7 +38,7 @@ ms.locfileid: "89659648"
 
 1. 若要在 Log Analytics 中使用適用于 Azure Defender 警示的相關架構，請搜尋 **SecurityAlert**。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Azure Defender 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

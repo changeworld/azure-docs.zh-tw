@@ -12,17 +12,17 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80244506"
 ---
 # <a name="applying-content-tags-to-images"></a>將內容標記套用到影像
 
-「電腦視覺」會依據數千個可辨識的物件、生物、景象及動作傳回標記。 若標記不明確或不屬於常識，API 回應會提供「提示」來釐清標記在已知設定內容中的意涵。 標籤不會組織成分類，且不會有繼承階層存在。 內容標記的集合會形成影像「描述」的基礎，讓此描述顯示為完整句子中已格式化而可供閱讀的語言。 請注意，英文是影像描述目前唯一支援的語言。
+「電腦視覺」會依據數千個可辨識的物件、生物、景象及動作傳回標記。 若標記不明確或不屬於常識，API 回應會提供「提示」來釐清標記在已知設定內容中的意涵。 標記不是按照分類組織的，而且不存在任何繼承階層。 內容標記的集合會形成影像「描述」的基礎，讓此描述顯示為完整句子中已格式化而可供閱讀的語言。 請注意，英文是影像描述目前唯一支援的語言。
 
-在上傳影像或指定影像 URL 之後，電腦視覺的演算法會根據在影像中識別出的物件、生物和動作來輸出標記。 標記並未限定於主體 (例如前景中的人物)，而是包含周遭環境 (室內或室外)、家具、工具、植物、動物、配件和小工具等。
+上傳影像或指定影像 URL 之後，電腦視覺演算法會根據物體、生物和影像中識別的動作，輸出標記。 標記並未限定於主體 (例如前景中的人物)，而是包含周遭環境 (室內或室外)、家具、工具、植物、動物、配件和小工具等。
 
 ## <a name="image-tagging-example"></a>影像標記範例
 
@@ -85,11 +85,11 @@ ms.locfileid: "80244506"
 
 ## <a name="use-the-api"></a>使用 API
 
-標記功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含`Tags`在**visualFeatures**查詢參數中。 然後，當您取得完整的 JSON 回應時，只要剖析`"tags"`區段內容的字串即可。
+標記功能是「 [分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API」的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含 `Tags` 在 **visualFeatures** 查詢參數中。 然後，當您取得完整 JSON 回應時，只要剖析該區段內容的字串即可 `"tags"` 。
 
 * [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [快速入門：分析影像（REST API）](./quickstarts/csharp-analyze.md)
+* [快速入門：分析影像 (REST API) ](./quickstarts/csharp-analyze.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解[分類影像](concept-categorizing-images.md)和[描述影像](concept-describing-images.md)的相關概念。
+瞭解將 [影像分類](concept-categorizing-images.md) 和 [描述影像](concept-describing-images.md)的相關概念。

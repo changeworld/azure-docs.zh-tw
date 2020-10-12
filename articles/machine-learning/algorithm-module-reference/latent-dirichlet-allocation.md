@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907861"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>潛在的狄氏配置模組
@@ -181,7 +181,7 @@ LDA 流程識別的 *主題* 可能代表個別產品的評論，或可能代表
 
 ###  <a name="module-parameters"></a>模組參數
 
-|名稱|類型|範圍|選擇性|預設|描述|  
+|名稱|類型|範圍|選用|預設|描述|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |目標資料行|資料行選取||必要|StringFeature|目標資料行名稱或索引。|  
 |要建立模型的主題數目|整數|[1; 1000]|必要|5|針對 N 個主題建立檔散發的模型。|  

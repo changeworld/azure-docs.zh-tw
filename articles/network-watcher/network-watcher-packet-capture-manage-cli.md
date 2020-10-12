@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84724912"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>使用 Azure CLI，利用 Azure 網路監看員管理封包擷取
@@ -29,7 +29,7 @@ ms.locfileid: "84724912"
 
 網路監看員封包擷取可讓您建立擷取工作階段來追蹤虛擬機器的流入和流出流量。 系統會為擷取工作階段提供篩選器，以確保您只會擷取到您想要的流量。 封包擷取有助於被動和主動地診斷網路異常。 其他用途包括收集網路統計資料、取得有關網路入侵的資訊，以及偵錯用戶端與伺服器間的通訊等等。 藉由能夠從遠端觸發封包擷取，這項功能可以減輕在所需機器上手動執行封包擷取的工作負擔，進而省下寶貴的時間。
 
-若要執行本文中的步驟，您必須[安裝適用于 Mac、Linux 和 Windows 的 Azure 命令列介面（Azure CLI）](/cli/azure/install-azure-cli)。
+若要執行本文中的步驟，您需要 [安裝適用于 Mac、Linux 和 Windows 的 Azure Command-Line 介面 (Azure CLI) ](/cli/azure/install-azure-cli)。
 
 本文會帶領您逐步完成封包擷取目前可用的不同管理工作。
 
@@ -52,7 +52,7 @@ ms.locfileid: "84724912"
 
 ### <a name="step-1"></a>步驟 1
 
-執行 `az vm extension set` 命令以在來賓虛擬機器上安裝封包捕獲代理程式。
+執行 `az vm extension set` 命令，在來賓虛擬機器上安裝封包捕獲代理程式。
 
 若為 Windows 虛擬機器：
 
@@ -118,7 +118,7 @@ az storage account list
 
 ### <a name="step-2"></a>步驟 2
 
-此時，您已準備好建立封包捕獲。  首先，讓我們來檢查您可能想要設定的參數。 篩選器是一個這類參數，可以用來限制封包捕獲所儲存的資料。 下列範例會設定具有多個篩選器的封包擷取。  前三個篩選器只會收集從本機 IP 10.0.0.3 流往目的地連接埠 20、80 和 443 的連出 TCP 流量。  最後一個篩選器只會收集 UDP 流量。
+至此，您已準備好建立封包捕獲。  首先，讓我們檢查您可能想要設定的參數。 篩選是一個這類參數，可用來限制封包捕獲所儲存的資料。 下列範例會設定具有多個篩選器的封包擷取。  前三個篩選器只會收集從本機 IP 10.0.0.3 流往目的地連接埠 20、80 和 443 的連出 TCP 流量。  最後一個篩選器只會收集 UDP 流量。
 
 ```azurecli-interactive
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
@@ -179,7 +179,7 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>取得封包擷取
 
-`az network watcher packet-capture show-status`執行命令時，會抓取目前正在執行或已完成之封包捕獲的狀態。
+`az network watcher packet-capture show-status`執行命令，以抓取目前正在執行或已完成的封包捕獲的狀態。
 
 ```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
@@ -204,14 +204,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>停止封包擷取
 
-藉由 `az network watcher packet-capture stop` 執行命令，如果 capture 會話正在進行中，就會停止。
+藉由 `az network watcher packet-capture stop` 執行命令，如果正在進行 capture 會話，就會停止。
 
 ```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> 在目前正在執行的 capture 會話或已經停止的現有會話上執行時，此命令不會傳回任何回應。
+> 在目前正在執行的捕獲會話或已停止的現有會話上執行時，此命令不會傳回任何回應。
 
 ## <a name="delete-a-packet-capture"></a>刪除封包擷取
 
@@ -232,10 +232,10 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
-造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來尋找 VM 是否允許特定流量流入或流出
+造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)，以找出您的 VM 是否允許特定流量
 
 <!-- Image references -->

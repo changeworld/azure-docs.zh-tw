@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: b94fb5aba8cc54d9014a01610f467776c3a3784a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075938"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中建立以 Linux 為基礎的叢集
@@ -23,11 +23,11 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/install-Az-ps)Az 模組。
+[Azure PowerShell](/powershell/azure/install-Az-ps) Az 模組。
 
 ## <a name="create-cluster"></a>建立叢集
 
@@ -60,7 +60,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 ## <a name="create-cluster-configuration-object"></a>建立叢集：設定物件
 
-您也可以使用 Cmdlet 建立 HDInsight 設定物件 [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) 。 然後，您可以修改此設定物件來啟用叢集的其他設定選項。 最後，使用 `-Config` Cmdlet 的參數 [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 來使用設定。
+您也可以使用 Cmdlet 來建立 HDInsight 設定物件 [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) 。 然後，您可以修改此設定物件來啟用叢集的其他設定選項。 最後，使用 `-Config` Cmdlet 的參數 [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 來使用設定。
 
 下列指令碼會建立可在 HDInsight 叢集類型上設定 R 伺服器的設定物件。 此設定可啟用邊緣節點、RStudio 和其他儲存體帳戶。
 
@@ -82,7 +82,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已成功建立 HDInsight 叢集，請使用下列資源來瞭解如何使用您的叢集。
 

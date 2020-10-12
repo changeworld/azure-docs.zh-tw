@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
 ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028442"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>針對在 Azure 中建立新 Linux 虛擬機器的 Resource Manager 部署問題進行疑難排解
@@ -50,9 +50,9 @@ ms.locfileid: "87028442"
 
 **N<sup>2</sup>：** 如果作業系統是特殊化的 Linux，但是上傳它時是以一般化形式上傳，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。
 
-**解決方案：**
+**解決方法：**
 
-若要解決這兩個錯誤，請上傳原始 VHD （可供內部部署使用），其設定與 OS （一般化/特製化）相同。 若要以一般化形式上傳，請務必先執行 -deprovision。
+若要解決這兩個錯誤，請上傳原始 VHD （可在內部部署使用），其設定與作業系統 (一般化/特製化) 的設定相同。 若要以一般化形式上傳，請務必先執行 -deprovision。
 
 **擷取錯誤：**
 
@@ -60,7 +60,7 @@ ms.locfileid: "87028442"
 
 **N<sup>4</sup>：** 如果作業系統是特殊化的 Linux，但是擷取它時是以一般化形式擷取，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
 
-**解決方案：**
+**解決方法：**
 
 若要解決這兩個錯誤，請從入口網站中刪除目前的映像，然後使用與作業系統相同的設定 (一般化/特殊化) [從目前的 VHD 重新擷取映像](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -74,9 +74,9 @@ ms.locfileid: "87028442"
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   * 停止可用性設定組中的所有 VM。
-    按一下 [**資源**群組] 資源  >  *群組*  >  **Resources**  >  *your availability set*  >  **虛擬機器**  >  *虛擬機器*  >  **停止**的可用性設定組資源。
+    按一下**資源群組資源**  >  *群組*  >  **資源**：您的  >  *your availability set*  >  **Virtual Machines**  >  *虛擬機器*  >  **停止**的可用性設定虛擬機器。
   * 所有 VM 都停止後，建立所需大小的新 VM。
-  * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [**啟動**]。
+  * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [ **啟動**]。
 
 **原因 2：** 叢集沒有可用的資源。
 

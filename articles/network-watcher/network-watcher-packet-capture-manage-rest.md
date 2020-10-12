@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 38d55c14690a838e853c873a066eae6534d49c6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84725047"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>使用 Azure REST API 以 Azure 網路監看員管理封包擷取
@@ -42,7 +42,7 @@ ms.locfileid: "84725047"
 
 ## <a name="before-you-begin"></a>開始之前
 
-在此案例中，您可以呼叫網路監看員 REST API 以執行 IP 流量驗證。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的[ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
+在此案例中，您可以呼叫網路監看員 REST API 以執行 IP 流量驗證。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的 [ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
@@ -60,7 +60,7 @@ armclient login
 
 下列程式碼需要變數︰
 
-- **subscriptionId** -訂用帳戶識別碼也可以使用 get-azsubscription Cmdlet 來**取得**。
+- **subscriptionId** -訂用帳戶識別碼也可以使用 >select-azsubscription Cmdlet 來 **取得** 。
 - **resourceGroupName** - 包含虛擬機器的資源群組名稱。
 
 ```powershell
@@ -299,9 +299,9 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 > [!NOTE]
 > 刪除封包擷取不會刪除儲存體帳戶中的檔案
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 如需儲存體總管的詳細資訊，請參閱下列連結：[儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 您可以在下列連結找到儲存體總管的詳細資訊： [儲存體總管](https://storageexplorer.com/)
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 

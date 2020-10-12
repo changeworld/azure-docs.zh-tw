@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441200"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
@@ -241,7 +241,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 ![啟用 ultra 磁片相容性的螢幕擷取畫面。](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- 選取 [儲存]。
+- 選取 [儲存]****。
 - 選取 [ **新增資料磁片** ]，然後在 [ **名稱** ] 的下拉式清單中選取 [ **建立磁片**]。
 
 ![磁片分頁的螢幕擷取畫面，新增磁片。](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
@@ -378,7 +378,7 @@ Ultra 磁片提供獨特的功能，可讓您調整其效能。 您可以根據�
 ![虛擬機器上的磁片分頁的螢幕擷取畫面，已反白顯示 ultra 磁片。](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - 選取 [設定] **，然後進行** 修改。
-- 選取 [儲存]。
+- 選取 [儲存]****。
 
 ![已反白顯示 ultra 磁片、磁片大小、iops 和輸送量的設定分頁螢幕擷取畫面，並醒目提示 [儲存]。](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 

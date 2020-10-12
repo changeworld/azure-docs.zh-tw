@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171646"
 ---
-# <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>使用 Azure Active Directory 透過於 postgresql 進行驗證
+# <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>使用 Azure Active Directory 以于 postgresql 進行驗證
 
 本文將逐步引導您完成如何使用適用於 PostgreSQL 的 Azure 資料庫來設定 Azure Active Directory 存取的步驟，以及如何使用 Azure AD 權杖來連線的步驟。
 
@@ -54,19 +54,19 @@ ms.locfileid: "87171646"
 
 使用者/應用程式為了使用 Azure AD 進行驗證所必須執行的步驟如下所述：
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
-您可以依照 Azure Cloud Shell、Azure VM 或本機電腦上的指示進行。 請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+您可以在 Azure Cloud Shell、Azure VM 或本機電腦上執行。 請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="step-1-authenticate-with-azure-ad"></a>步驟 1:使用 Azure AD 進行驗證
 
-一開始請先使用 Azure CLI 工具向 Azure AD 進行驗證。 Azure Cloud Shell 中不需要這個步驟。
+首先，使用 Azure CLI 工具向 Azure AD 進行驗證。 Azure Cloud Shell 不需要此步驟。
 
 ```
 az login
 ```
 
-此命令將會啟動瀏覽器視窗至 Azure AD 驗證頁面。 您需要提供 Azure AD 的使用者識別碼和密碼。
+此命令會啟動 Azure AD authentication 頁面的瀏覽器視窗。 您需要提供 Azure AD 的使用者識別碼和密碼。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>步驟 2:擷取 Azure AD 存取權杖
 
@@ -137,12 +137,12 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 
 連接時的重要考慮事項：
 
-* `user@tenant.onmicrosoft.com`這是您嘗試連接的 Azure AD 使用者或群組的名稱
-* 請一律在 Azure AD 的使用者/組名後面附加伺服器名稱（例如 `@mydb` ）
+* `user@tenant.onmicrosoft.com` 這是您嘗試連接的 Azure AD 使用者或組名
+* 一律在 Azure AD 使用者/組名之後附加伺服器名稱 (例如 `@mydb`) 
 * 請務必使用正確的 Azure AD 使用者或組名的拼寫方式
-* Azure AD 使用者和組名會區分大小寫
-* 以群組方式連接時，只使用組名（例如 `GroupName@mydb` ）
-* 如果名稱包含空格，請 `\` 在每個空格前面使用來將它取消
+* Azure AD 的使用者和組名會區分大小寫
+* 以群組方式連接時，請只使用組名 (例如 `GroupName@mydb`) 
+* 如果名稱包含空格，請 `\` 在每個空間之前使用，以將其換用。
 
 您現在已使用 Azure AD 驗證向 PostgreSQL 伺服器進行驗證。
 

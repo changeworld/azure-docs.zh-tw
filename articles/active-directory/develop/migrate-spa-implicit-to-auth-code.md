@@ -13,10 +13,10 @@ ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027082"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>將 JavaScript 單一頁面應用程式從隱含授與遷移至授權碼流程
@@ -48,11 +48,11 @@ MSAL.js 2.x 改良了 MSAL.js 1.x，可在瀏覽器中支援授權碼流程，�
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure 入口網站中 Web 應用程式磚上的隱含流程警告橫幅":::
 1. *僅*選取其應用程式將使用 MSAL.js 2.x 的重新導向 URI，然後選取 [設定]。
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="在 Azure 入口網站的 SPA 窗格中選取重新導向 URI 窗格":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure 入口網站中 Web 應用程式磚上的隱含流程警告橫幅":::
 
 這些重新導向 URI 現在應該會出現在 [單一頁面應用程式] 平台磚中，顯示具有授權碼流程的 CORS 支援，以及已針對這些 URI 啟用 PKCE。
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure 入口網站中的應用程式註冊單一頁面應用程式磚":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure 入口網站中 Web 應用程式磚上的隱含流程警告橫幅":::
 
 您也可以[建立新的應用程式註冊](scenario-spa-app-registration.md)，而非更新現有註冊中的重新導向 URI。
 

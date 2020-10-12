@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652812"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>應用程式閘道 HTTP 設定
@@ -43,7 +43,7 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 這項設定與接聽程式中的 HTTPS 結合， [可支援端對端 TLS](ssl-overview.md)。 這可讓您安全地傳輸加密至後端的機密資料。 在已啟用端對端 TLS 的後端集區中，每個後端伺服器都必須使用憑證來設定，以允許安全通訊。
 
-## <a name="port"></a>Port
+## <a name="port"></a>連接埠
 
 此設定會指定後端伺服器接聽來自應用程式閘道之流量的埠。 您可以設定介於1到65535之間的埠。
 
@@ -106,6 +106,6 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 
 例如，如果在 [**主機名稱**] 設定中指定*www.contoso.com* ，則將 `https://appgw.eastus.cloudapp.azure.com/path1` `https://www.contoso.com/path1` 要求轉送至後端伺服器時，原始的要求 * 會變更為 *。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解後端集區](configuration-overview.md#back-end-pool)

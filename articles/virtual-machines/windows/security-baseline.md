@@ -8,10 +8,10 @@ ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400376"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>適用于 Windows 虛擬機器的 Azure 安全性基準
@@ -969,7 +969,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導**方針：使用受控服務識別搭配 Azure Key Vault，以簡化和保護雲端應用程式的秘密管理。
 
-* [如何與 Azure 受控識別整合](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+* [如何整合 Azure-Managed 身分識別](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 * [如何建立 Key Vault](../../key-vault/secrets/quick-create-portal.md)
 

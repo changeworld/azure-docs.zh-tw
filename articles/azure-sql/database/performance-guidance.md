@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645782"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>在 Azure SQL Database 和 Azure SQL 受控執行個體中調整應用程式和資料庫的效能
@@ -265,7 +265,7 @@ ORDER BY start_time DESC
 
 某些資料庫應用程式具有大量讀取工作負載。 快取層可能會減少資料庫上的負載，而且可能會降低使用 Azure SQL Database 和 Azure SQL 受控執行個體支援資料庫所需的計算大小。 使用 [Azure Cache for Redis](https://azure.microsoft.com/services/cache/)時，如果您有大量讀取的工作負載，就可以在每個應用層電腦 (讀取資料一次，或在每個應用層電腦上讀取一次資料（視其) 設定方式而定），然後將該資料儲存在資料庫之外。 此方式可減少資料庫負載 (CPU 和讀取 IO)，但會對交易一致性造成影響，因為從快取讀取的資料可能不會與資料庫中的資料同步。 雖然許多應用程式可接受一定程度的不一致性，但並非所有工作負載都是如此。 您應該充分了解應用程式的任何需求，然後再實作應用程式層快取策略。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需以 DTU 為基礎的服務層詳細資訊，請參閱[以 DTU 為基礎的購買模型](service-tiers-dtu.md)。
 - 如需以虛擬核心為基礎的服務層詳細資訊，請參閱[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)。

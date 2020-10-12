@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: 114b8b32d4abb1fd9b7e641625cd1b132470bafd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281441"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>將邏輯應用程式遷移至最新的結構描述版本
@@ -34,11 +34,11 @@ ms.locfileid: "87281441"
 
 * 將已遷移的指令碼複製到新的邏輯應用程式。 在完成測試並確認已遷移的應用程式如預期般運作後，再覆寫舊版本。
 
-* 進入生產環境之前，請**先**測試您的邏輯應用程式。
+* 先測試您的邏輯應用程式， **再** 進入生產環境。
 
 * 移轉完成後，開始更新邏輯應用程式，盡可能使用[受控 API](../connectors/apis-list.md)。 例如，在您使用 DropBox v1 的每個地方開始使用 Dropbox v2。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 了解如何[手動遷移邏輯應用程式](../logic-apps/logic-apps-schema-2016-04-01.md)
 

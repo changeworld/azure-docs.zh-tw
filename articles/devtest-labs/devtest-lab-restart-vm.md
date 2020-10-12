@@ -1,13 +1,13 @@
 ---
 title: 在 Azure DevTest Labs 的實驗室中重新啟動 VM | Microsoft Docs
-description: 本文提供的步驟可讓您快速且輕鬆地在 Azure DevTest Labs 中重新開機虛擬機器（VM）。
+description: 本文提供的步驟可讓您快速且輕鬆地在 Azure DevTest Labs 中 (VM) 重新開機虛擬機器。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d2bcbcbea613aa84da91789fb9f118afd7023fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481983"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 的對實驗室中重新啟動 VM
@@ -43,6 +43,6 @@ ms.locfileid: "85481983"
 
 ![透過省略符號重新啟動 VM](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 一旦重新啟動後，您可以選取其管理窗格上的 [連線]**** 來重新連線至 VM。
-* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)
+* 探索 [DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

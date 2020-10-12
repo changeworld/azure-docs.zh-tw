@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
 ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907784"
 ---
 # <a name="train-wide--deep-recommender"></a>訓練 Wide & 深層推薦
@@ -80,7 +80,7 @@ Recommender 系統有兩種主要方法。
 |MovieId|標題|原始語言|流派|Year|
 |-------------|-------------|-------------------|-----------|---------------|
 |68646|Godfather|英文|戲劇|1972|
-|31381|離開風|英文|記錄|1939|
+|31381|離開風|英文|歷程記錄|1939|
 
 ### <a name="train-the-model"></a>將模型定型
 
@@ -144,6 +144,6 @@ Recommender 系統有兩種主要方法。
 在廣泛 & 深層推薦的執行中，模組會使用預設的模型結構。 寬元件會採用使用者識別碼和專案識別碼的使用者內嵌、專案內嵌和交叉乘積轉換來作為輸入。 針對模型的深度部分，會針對每個類別特徵學會內嵌向量。 這些向量會與其他數值特性向量一起輸送至深層饋送轉寄類神經網路。 寬部分和深度的組合是藉由將最終輸出記錄檔的機率加總，以做為預測，最後移至共同定型的一個常見損失函數。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱 Azure Machine Learning [可用的模組集合](module-reference.md) 。 

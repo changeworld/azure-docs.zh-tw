@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9712aedd3d6748f3bceea67a3270b6c080cc16f2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88794282"
 ---
 # <a name="round-azure-cosmos-db"></a>四捨五入 (Azure Cosmos DB) 
@@ -57,7 +57,7 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

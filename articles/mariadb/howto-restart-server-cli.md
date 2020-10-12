@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c1e7db129b29cfa1109b3c79bd8590a99779e361
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503084"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機適用於 MariaDB 的 Azure 資料庫伺服器
@@ -21,7 +21,7 @@ ms.locfileid: "87503084"
 
 完成重新啟動所需的時間取決於 MariaDB 復原程序。 若要減少重新啟動時間，建議您先盡量減少伺服器上發生的活動數量，再進行重新啟動。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
 - [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
@@ -39,6 +39,6 @@ ms.locfileid: "87503084"
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-瞭解[如何在適用於 MariaDB 的 Azure 資料庫中設定參數](howto-configure-server-parameters-cli.md)
+瞭解 [如何在適用於 MariaDB 的 Azure 資料庫中設定參數](howto-configure-server-parameters-cli.md)

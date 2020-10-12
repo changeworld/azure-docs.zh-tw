@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401294"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用網頁將實際使用者度量傳送給 Azure 流量管理員
@@ -64,7 +64,7 @@ ms.locfileid: "89401294"
 4. 下一次此網頁在網頁瀏覽器上呈現時，會下載 JavaScript 參考，且指令碼會執行測量並報告作業。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 深入了解[實際使用者度量](traffic-manager-rum-overview.md)
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
 - 深入了解流量管理員支援的 [流量路由方法](traffic-manager-routing-methods.md)

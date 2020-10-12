@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657108"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>接下來的步驟，以及如何管理 Azure AD Connect
@@ -56,12 +56,12 @@ ms.locfileid: "89657108"
 如果您需要執行同步處理工作，您可以執行下列動作：
 
 1. 按兩下 Azure AD Connect 桌面快捷方式，啟動精靈。
-2. 按一下 [設定]****。
+2. 按一下 [設定]  。
 3. 在 [工作] 畫面上選取 [ **自訂同步** 處理] 選項，然後按 **[下一步**
 4. 輸入您的 Azure AD 認證
-5. 按 [下一步] 。 按 [下一步] 。  按 [下一步] 。
+5. 按一下 [下一步]。 按一下 [下一步]。  按一下 [下一步]。
 5.  在 [ **準備設定** ] 畫面上，確定已選取 [ **在設定完成時啟動同步處理** 程式] 方塊。
-6.  按一下 [設定]****。
+6.  按一下 [設定]  。
 
 如需 Azure AD Connect 同步處理排程器的詳細資訊，請參閱 [Azure AD Connect](how-to-connect-sync-feature-scheduler.md)排程器。
 
@@ -84,5 +84,5 @@ ms.locfileid: "89657108"
 |**管理同盟**|管理您的 AD FS 基礎結構、更新憑證，以及新增 AD FS 伺服器|
 |**疑難排解**|協助疑難排解 Azure AD Connect 問題|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。

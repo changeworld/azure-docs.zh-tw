@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs 基礎結構的治理-資源
-description: 本文說明組織內 Azure DevTest Labs 資源的對齊與管理。
+title: 治理 Azure DevTest Labs 基礎結構-資源
+description: 本文說明在組織內 Azure DevTest Labs 資源的調整與管理。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1e470da5cd317d49f0d0734caa11eed6630d3f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480910"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>治理 Azure DevTest Labs 基礎結構 - 資源
@@ -29,7 +29,7 @@ ms.locfileid: "85480910"
 
 **第一個建議的做法**是檢閱組織的 Azure 分類法，其概述如何在生產與開發訂用帳戶之間進行劃分。 在下圖中，建議的分類法允許進行開發/測試和生產環境的邏輯分隔。 使用此方法，組織就能導入計費代碼，個別追蹤與每個環境相關聯的成本。 如需詳細資訊，請參閱[ 規定的訂用帳戶治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold)。 此外，您可以基於追蹤與計費目的，使用 [Azure 標記](../azure-resource-manager/management/tag-resources.md)來組織資源。
 
-**第二個建議的做法**是在 Azure 企業版入口網站內啟用 DevTest 訂用帳戶。 它讓組織能夠執行通常不會在 Azure 企業版訂用帳戶中提供的用戶端作業系統。 然後，使用您只需支付計算費用的企業軟體，而不必擔心授權。 它可確保對於指定服務 (包括像是 Microsoft SQL Server 之 IaaS 中的資源庫映像) 的計費只會以使用量為基礎。 有關 Azure DevTest 訂用帳戶的詳細資料，可在[此處](https://azure.microsoft.com/offers/ms-azr-0148p/)找到適用於 Enterprise 合約 (EA) 客戶的資料，並在[這裡](https://azure.microsoft.com/offers/ms-azr-0023p/)找到適用於隨用隨付客戶的資料。
+**第二個建議的做法**是在 Azure 企業版入口網站內啟用 DevTest 訂用帳戶。 它讓組織能夠執行通常不會在 Azure 企業版訂用帳戶中提供的用戶端作業系統。 然後，使用企業軟體，您只需支付計算費用，也不必擔心授權。 它可確保對於指定服務 (包括像是 Microsoft SQL Server 之 IaaS 中的資源庫映像) 的計費只會以使用量為基礎。 有關 Azure DevTest 訂用帳戶的詳細資料，可在[此處](https://azure.microsoft.com/offers/ms-azr-0148p/)找到適用於 Enterprise 合約 (EA) 客戶的資料，並在[這裡](https://azure.microsoft.com/offers/ms-azr-0023p/)找到適用於隨用隨付客戶的資料。
 
 ![透過訂用帳戶進行資源調整](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 
@@ -77,5 +77,5 @@ ms.locfileid: "85480910"
 ### <a name="answer"></a>回答
 是。 從您的實驗室首頁瀏覽至 [資源群組] 頁面。 接著，選取工具列上的 [移動]****，然後選取您想要移至不同資源群組的實驗室。 當您建立實驗室時，即會自動為您建立資源群組。 不過，您可能想要將該實驗室移至不同的資源群組，以遵循企業命名慣例。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱[管理成本與擁有權](devtest-lab-guidance-governance-cost-ownership.md)。

@@ -9,20 +9,20 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507628"
 ---
-本文會說明如何將 IaaS 資源從傳統部署模型遷移至 Resource Manager 部署模型，並詳述如何使用虛擬網路站對站閘道，從並存於訂用帳戶中的兩個部署模型連線到資源。 您可以深入瞭解[Azure Resource Manager 功能和優點](../articles/azure-resource-manager/management/overview.md)。 
+本文會說明如何將 IaaS 資源從傳統部署模型遷移至 Resource Manager 部署模型，並詳述如何使用虛擬網路站對站閘道，從並存於訂用帳戶中的兩個部署模型連線到資源。 您可以閱讀更多有關 [Azure Resource Manager 功能和優點](../articles/azure-resource-manager/management/overview.md)的資訊。 
 
 ## <a name="goal-for-migration"></a>移轉目標
 Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，還可使用 VM 擴充功能來設定虛擬機器，並且納入了存取管理和標記功能。 Azure Resource Manager 還將虛擬機器的可調整、平行部署納入可用性設定組中。 新部署模型也針對計算、網路及儲存體個別提供生命週期管理功能。 最後，將焦點放在藉由在虛擬網路中強制使用虛擬機器的方式，預設啟用安全性。
 
 在 Azure Resource Manager 之下，針對來自傳統部署模型的幾乎所有功能，都有提供計算、網路及儲存體支援。 若要享有 Azure Resource Manager 新功能的好處，您可以從「傳統」部署模型移轉現有的部署。
 
-## <a name="supported-resources--configurations-for-migration"></a>支援的資源 & 設定以進行遷移
+## <a name="supported-resources--configurations-for-migration"></a>支援用於遷移的資源 & 設定
 
 ### <a name="supported-resources-for-migration"></a>支援移轉的資源
 * 虛擬機器
@@ -35,7 +35,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 * 路由表
 * 保留的 IP
 
-## <a name="supported-configurations-for-migration"></a>支援的遷移設定
+## <a name="supported-configurations-for-migration"></a>支援遷移的設定
 移轉期間支援這些傳統 IaaS 資源
 
 | 服務 | 組態 |
@@ -80,13 +80,13 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 > [!NOTE]
 > Resource Manager 部署模型並沒有「傳統」映像和磁碟的概念。 移轉儲存體帳戶時，「傳統」映像和磁碟不會顯示在 Resource Manager 堆疊中，但是作為基礎的 VHD 會繼續留在儲存體帳戶中。
 
-下列螢幕擷取畫面顯示如何使用 Azure 入口網站將傳統儲存體帳戶升級至 Azure Resource Manager 儲存體帳戶：
+下列螢幕擷取畫面顯示如何使用 Azure 入口網站將傳統儲存體帳戶升級為 Azure Resource Manager 儲存體帳戶：
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至儲存體帳戶。
-3. 在 [**設定**] 區段中，按一下 [**遷移至 ARM**]。
-4. 按一下 [**驗證**] 以判斷遷移可行性。
-5. 如果通過驗證，請按一下 [**準備**] 以建立遷移的儲存體帳戶。
-6. 輸入 **[是]** 確認遷移，然後按一下 [**認可**] 以完成遷移。
+3. 在 [ **設定** ] 區段中，按一下 [ **遷移至 ARM**]。
+4. 按一下 [ **驗證** ] 以判斷遷移可行性。
+5. 如果通過驗證，請按一下 [ **準備** ] 以建立已遷移的儲存體帳戶。
+6. 鍵入 **[是** ] 以確認遷移，然後按一下 [ **認可** ] 以完成遷移。
 
     ![驗證儲存體帳戶](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
@@ -120,17 +120,17 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 
 | 服務 | 組態 | 建議 |
 | --- | --- | --- |
-| Resource Manager |傳統資源以角色為基礎的存取控制（RBAC） |由於資源的 URI 在移轉後會經過修改，因此建議您規劃需要在移轉後進行的 RBAC 原則更新。 |
+| Resource Manager |針對傳統資源 Role-Based 存取控制 (RBAC)  |由於資源的 URI 在移轉後會經過修改，因此建議您規劃需要在移轉後進行的 RBAC 原則更新。 |
 | 計算 |與 VM 關聯的多個子網路 |將子網路組態更新為只參考一個子網路。 這可能要求您從 VM 移除次要 NIC (其參考另一個子網路)，並在移轉完成後重新連結它。 |
 | 計算 |隸屬於虛擬網路但未獲指派明確子網路的虛擬機器。 |您可以選擇刪除此 VM。 |
 | 計算 |具有警示、自動調整原則的虛擬機器 |移轉會進行到完成，但會捨棄這些設定。 強烈建議您在執行移轉前先評估您的環境。 或者，您也可以在移轉完成之後重新設定警示設定。 |
-| 計算 |XML VM 擴充功能 (BGInfo 1.*、Visual Studio Debugger、Web Deploy 及遠端偵錯) |不支援這個動作。 建議您從虛擬機器中移除這些擴充功能以繼續進行移轉，否則系統會在移轉過程中自動卸除它們。 |
+| 計算 |XML VM 擴充功能 (BGInfo 1.*、Visual Studio Debugger、Web Deploy 及遠端偵錯) |不支援此連結方式。 建議您從虛擬機器中移除這些擴充功能以繼續進行移轉，否則系統會在移轉過程中自動卸除它們。 |
 | 計算 |使用進階儲存體進行開機診斷 |先停用 VM 的「開機診斷」功能，再繼續進行移轉。 您可以在移轉完成之後，於 Resource Manager 堆疊中重新啟用開機診斷。 此外，應該將用於快照和序列記錄的 Blob 刪除，這樣您就不再需要支付這些 Blob 的費用。 |
 | 計算 | 包含 Web 角色/背景工作角色的雲端服務 | 目前不支援。 |
 | 計算 | 包含一個以上可用性設定組或多個可用性設定組的雲端服務。 |目前不支援。 請先將虛擬機器移至相同可用性設定組，然後再移轉。 |
 | 計算 | 具 Azure 資訊安全中心擴充功能的 VM | 「Azure 資訊安全中心」會自動在「虛擬機器」上安裝擴充功能，以監視其安全性並引發警示。 如果已在訂用帳戶上啟用「Azure 資訊安全中心」原則，通常就會自動安裝這些擴充功能。 若要移轉虛擬機器，請停用訂用帳戶上的資訊安全中心原則，這將會從虛擬機器移除資訊安全中心監視擴充功能。 |
 | 計算 | 具備份或快照集擴充功能的 VM | 這些擴充功能都安裝在使用 Azure 備份功能設定的虛擬機器上。 雖然不支援這些 VM 的移轉，但是可依照[這裡](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指引，保留在移轉之前所執行的備份。  |
-| 計算 | 具有 Azure Site Recovery 擴充功能的 VM | 這些延伸模組會安裝在以 Azure Site Recovery 服務設定的虛擬機器上。 雖然將與 Site Recovery 搭配使用的儲存體遷移，但目前的複寫會受到影響。 您必須在儲存體遷移後停用和啟用 VM 複寫。 |
+| 計算 | 具有 Azure Site Recovery 擴充功能的 VM | 這些延伸模組會安裝在以 Azure Site Recovery 服務設定的虛擬機器上。 雖然與 Site Recovery 搭配使用的儲存體遷移將可運作，但目前的複寫將會受到影響。 您必須在儲存體遷移後停用並啟用 VM 複寫。 |
 | 網路 |包含虛擬機器和 Web 角色/背景工作角色的虛擬網路 |目前不支援。 請先將 Web/背景工作角色移至他們自己的虛擬網路，然後再移轉。 在移轉傳統虛擬網路之後，移轉的 Azure Resource Manager 虛擬網路可以和傳統虛擬網路對等互連，達到類似之前的組態。|
 | 網路 | 傳統 ExpressRoute 線路 |目前不支援。 在開始 IaaS 移轉之前，需要將這些線路移轉至 Azure Resource Manager。 若要深入了解，請參閱[將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。|
 | Azure App Service |包含 App Service 環境的虛擬網路 |目前不支援。 |

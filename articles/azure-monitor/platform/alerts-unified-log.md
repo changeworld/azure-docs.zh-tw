@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294133"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
@@ -25,7 +25,7 @@ ms.locfileid: "91294133"
 > [!NOTE]
 > API 版本 `2020-05-01-preview` 和以資源為中心的記錄警示目前不會產生額外費用。  預覽版中的功能價格將于未來宣佈，並在開始計費之前提供通知。 如果您選擇在通知期間之後繼續使用新的 API 版本和以資源為中心的記錄警示，將會以適用的費率計費。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 記錄警示會對 Log Analytics 資料執行查詢。 首先，您應該開始 [收集記錄資料](resource-logs.md) 並查詢記錄資料中的問題。 您可以使用 Log Analytics 中的 [警示查詢範例主題](../log-query/saved-queries.md) ，來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/get-started-portal.md)。
 
@@ -182,11 +182,11 @@ requests
 
 請參閱此警示評估範例：
 
-| Time    | 記錄條件評估 | 結果 
+| 時間    | 記錄條件評估 | 結果 
 | ------- | ----------| ----------| ------- 
 | 00:05 | false | 不會引發警示。 未呼叫任何動作。
-| 00:10 | TRUE  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
-| 00:15 | TRUE  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
+| 00:10 | true  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
+| 00:15 | true  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
 | 00:20 | false | 不會引發警示。 未呼叫任何動作。 舊警示狀態維持使用中狀態。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>記錄警示的定價和計費

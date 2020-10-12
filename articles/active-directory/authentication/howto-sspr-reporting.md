@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9118a99f285dedfe0b76e890db001627e4f85969
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657133"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD 密碼管理的報告選項
@@ -44,7 +44,7 @@ ms.locfileid: "89657133"
 在 Azure 入口網站體驗中，我們找到更好的方式來檢視密碼重設和密碼重設註冊活動。 使用下列步驟，尋找密碼重設和密碼重設註冊事件：
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側窗格中選取 [所有服務]  。
+2. 在左側窗格中選取 [所有服務]****。
 3. 在服務清單中搜尋並選取 **Azure Active Directory**。
 4. 從 [管理] 區段中選取 [ **使用者** ]。
 5. 選取 [**使用者**] 分頁的 [**審核記錄**]。 這會顯示目錄中所有使用者發生的稽核事件。 您可以篩選此檢視，查看密碼相關的所有事件。
@@ -169,7 +169,7 @@ ms.locfileid: "89657133"
      >[!NOTE]
      >失敗並不代表使用者無法重設自己的密碼。 這表示它們未完成註冊程序。 如果帳戶上有未驗證但正確的資料 (例如未驗證的電話號碼)，即使此電話號碼尚未驗證，仍然可用來重設密碼。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [SSPR 和 MFA 使用方式與見解報告](howto-authentication-methods-usage-insights.md)
 * [如何完成 SSPR 成功首度發行？](howto-sspr-deployment.md)

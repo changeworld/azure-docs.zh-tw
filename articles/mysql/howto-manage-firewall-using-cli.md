@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503050"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
-伺服器層級防火牆規則可用來管理從特定 IP 位址或 IP 位址範圍的適用於 MySQL 的 Azure 資料庫伺服器存取。 透過方便的 Azure CLI 命令，您可以建立、更新、刪除、列出及顯示防火牆規則，以管理您的伺服器。 如需適用於 MySQL 的 Azure 資料庫防火牆的總覽，請參閱[適用於 MySQL 的 Azure 資料庫伺服器防火牆規則](./concepts-firewall-rules.md)。
+您可以使用伺服器層級防火牆規則，從特定 IP 位址或 IP 位址範圍管理適用於 MySQL 的 Azure 資料庫伺服器的存取權。 透過方便的 Azure CLI 命令，您可以建立、更新、刪除、列出及顯示防火牆規則，以管理您的伺服器。 如需適用於 MySQL 的 Azure 資料庫防火牆的總覽，請參閱 [適用於 MySQL 的 Azure 資料庫伺服器防火牆規則](./concepts-firewall-rules.md)。
 
-虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure CLI 建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)。
+虛擬網路 (VNet) 規則也可以用來保護對伺服器的存取。 深入瞭解如何 [使用 Azure CLI 來建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 * [適用於 MySQL 的 Azure 資料庫伺服器和資料庫](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87503050"
 命令：
 - **create**︰建立 Azure MySQL 伺服器防火牆規則。
 - **delete**︰刪除 Azure MySQL 伺服器防火牆規則。
-- **list**：列出 Azure MySQL 伺服器防火牆規則。
+- **清單**：列出 Azure MySQL 伺服器防火牆規則。
 - **顯示**：顯示 Azure MySQL 伺服器防火牆規則的詳細資料。
 - **update**：更新 Azure MySQL 伺服器防火牆規則。
 
@@ -119,7 +119,7 @@ az mysql server firewall-rule delete --resource-group myresourcegroup --server-n
 ```
 成功時，沒有任何輸出。 發生錯誤時，就會顯示錯誤訊息文字。
 
-## <a name="next-steps"></a>後續步驟
-- 深入瞭解[適用於 MySQL 的 Azure 資料庫伺服器防火牆規則](./concepts-firewall-rules.md)。
+## <a name="next-steps"></a>接下來的步驟
+- 深入瞭解 [適用於 MySQL 的 Azure 資料庫 Server 防火牆規則](./concepts-firewall-rules.md)。
 - [使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則](./howto-manage-firewall-using-portal.md)。
-- 藉由[使用 Azure CLI 建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)，進一步保護您的伺服器存取。
+- [使用 Azure CLI 來建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-cli.md)，以進一步保護對伺服器的存取。

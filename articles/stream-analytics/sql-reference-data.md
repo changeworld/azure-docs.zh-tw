@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039291"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業
@@ -69,7 +69,7 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
 ### <a name="create-a-sql-database-table"></a>建立 SQL Database 資料表
 
-使用 SQL Server Management Studio 來建立資料表以儲存您的參考資料。 如需詳細資訊，請參閱[使用 SSMS 設計您的第一個 Azure SQL Database](../azure-sql/database/design-first-database-tutorial.md) 。
+使用 SQL Server Management Studio 來建立資料表以儲存您的參考資料。 如需詳細資訊，請參閱 [使用 SSMS 設計您的第一個 Azure SQL Database](../azure-sql/database/design-first-database-tutorial.md) 。
 
 用於下列範例中的範例資料表是建立自下列陳述式：
 
@@ -115,7 +115,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. 在編輯器中開啟該 SQL 檔案，並寫入 SQL 查詢。
 
-5. 如果您是使用 Visual Studio 2019，且已安裝 SQL Server Data Tools，便可以按一下 [執行] 來測試查詢。 [Wizard] 視窗會快顯以協助您連接到 SQL Database，而查詢結果會出現在視窗的底部。
+5. 如果您是使用 Visual Studio 2019，且已安裝 SQL Server Data Tools，便可以按一下 [執行] 來測試查詢。 將會顯示一個嚮導視窗，協助您連接 SQL Database，查詢結果會出現在視窗底部。
 
 ### <a name="specify-storage-account"></a>指定儲存體帳戶
 
@@ -147,7 +147,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. 撰寫快照集查詢。 
 
-   您可以使用** \@ snapshotTime**參數來指示串流分析執行時間從 SQL Database 時態表取得參考資料集，這是在系統期間有效的。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
+   使用** \@ snapshotTime**參數來指示串流分析執行時間，從在系統時間有效的 SQL Database 時態表中取得參考資料集。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,7 +156,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 撰寫差異查詢。 
    
-   此查詢會抓取在開始時間、 ** \@ deltaStartTime**和結束時間** \@ deltaEndTime**內插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 查詢也必須新增來自 SQL Server 端的**浮水印**，以確保系統能適當地擷取差異期間中的所有更新。 在沒有**浮水印**的情況下使用差異查詢，可能會導致不正確的參考資料集。  
+   此查詢會抓取在開始時間、 ** \@ deltaStartTime**和結束時間** \@ deltaEndTime**中插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 查詢也必須新增來自 SQL Server 端的**浮水印**，以確保系統能適當地擷取差異期間中的所有更新。 在沒有**浮水印**的情況下使用差異查詢，可能會導致不正確的參考資料集。  
 
    針對已更新的記錄，時態表會透過擷取插入和刪除作業來進行記錄。 串流分析執行階段接著便會將差異查詢的結果套用到先前的快照集，以將參考資料保持為最新狀態。 差異查詢的範例如下所示：
 
@@ -183,12 +183,12 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **如何確認已從 SQL DB 查詢資料快照集，並已將它用於 Azure 串流分析作業？**
 
-有兩個依邏輯名稱篩選的計量（在 [計量 Azure 入口網站] 底下），您可以用來監視 SQL Database 參考資料輸入的健全狀況。
+有兩個依邏輯名稱篩選的計量 (在 [計量] Azure 入口網站) 可用來監視 SQL Database 參考資料輸入的健康情況。
 
-   * InputEvents：此計量會測量從 SQL Database 參考資料集載入的記錄數目。
+   * InputEvents：此度量會測量從 SQL Database 參考資料集載入的記錄數目。
    * InputEventBytes：此計量會測量載入串流分析作業之記憶體的參考資料快照集大小。 
 
-這兩個度量的組合可以用來推斷工作是否正在查詢 SQL Database 以提取參考資料集，然後將它載入記憶體。
+這兩個度量的組合可以用來推斷作業是否正在查詢 SQL Database 來提取參考資料集，然後將它載入記憶體中。
 
 **我是否需要特別類型的 Azure SQL Database？**
 

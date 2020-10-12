@@ -1,7 +1,7 @@
 ---
-title: 翻譯工具字典範例方法
+title: Translator Dictionary 範例方法
 titleSuffix: Azure Cognitive Services
-description: 翻譯工具字典範例方法提供範例，示範如何在內容中使用字典中的詞彙。
+description: Translator Dictionary 範例方法提供的範例會示範如何在內容中使用字典中的詞彙。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592503"
 ---
-# <a name="translator-30-dictionary-examples"></a>翻譯工具3.0：字典範例
+# <a name="translator-30-dictionary-examples"></a>Translator 3.0：字典範例
 
 提供範例以說明字典中的字詞在內容中的使用方式。 此作業會與[字典查閱](./v3-0-dictionary-lookup.md)搭配使用。
 
@@ -33,22 +33,22 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 在查詢字串上傳遞的要求參數為：
 
-| 查詢參數 | 描述 |
+| 查詢參數 | 說明 |
 | --------- | ----------- |
-| api-version <img width=200/> | 必要參數****。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。 |
-| 從 | 必要參數****。<br/>指定輸入文字的語言。 來源語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。 |
-| to | 必要參數****。<br/>指定輸出文字的語言。 目標語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。  | 
+| api-version <img width=200/> | **必要參數**。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。 |
+| 從 | **必要參數**。<br/>指定輸入文字的語言。 來源語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。 |
+| to | **必要參數**。<br/>指定輸出文字的語言。 目標語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。  | 
 
 要求標頭包括：
 
 | 標題  | 描述 |
 | ------ | ----------- |
-| 驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
-| Content-Type | 必要的要求標頭****。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
-| Content-Length   | 必要的要求標頭****。<br/>要求本文的長度。 |
+| 驗證標頭 <img width=200/>  | 必要的要求標頭。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
+| Content-Type | 必要的要求標頭。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
+| Content-Length   | 必要的要求標頭。<br/>要求本文的長度。 |
 | X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。 |
 
-## <a name="request-body"></a>要求本文
+## <a name="request-body"></a>Request body
 
 要求的本文是 JSON 陣列。 每個陣列元素都是具有下列屬性的 JSON 物件：
 
@@ -64,7 +64,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 ]
 ```
 
-套用下列限制：
+適用下列限制：
 
 * 陣列最多可以有 10 個項目。
 * 陣列項目的文字值不能超過 100 個字元，包括空格。

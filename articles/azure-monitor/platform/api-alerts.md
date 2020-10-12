@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294070"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>使用 REST API 在 Log Analytics 中建立及管理警示規則 
@@ -20,14 +20,14 @@ Log Analytics 警示 REST API 可讓您在 Log Analytics 中建立及管理警�
 
 Log Analytics 搜尋 API 是 RESTful，可透過 Azure Resource Manager REST API 來存取。 在本檔中，您將找到使用  [ARMClient](https://github.com/projectkudu/ARMClient)從 PowerShell 命令列存取 api 的範例，這是可簡化叫用 Azure Resource Manager API 的開放原始碼命令列工具。 使用 ARMClient 和 PowerShell 是存取 Log Analytics 搜尋 API 的許多選項之一。 這些工具可讓您利用 RESTful Azure Resource Manager API 呼叫 Log Analytics 工作區，並在其中執行搜尋命令。 API 會以 JSON 格式向您輸出搜尋結果，讓您以程式設計方式透過許多不同的方法使用搜尋結果。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 目前，在 Log Analytics 中只能使用已儲存的搜尋來建立警示。  如需詳細資訊，請參閱 [記錄檔搜尋 REST API](../log-query/log-query-overview.md) 。
 
 ## <a name="schedules"></a>排程
 一個已儲存的搜尋可以有一或多個排程。 排程中定義搜尋的執行頻率及識別準則的時間間隔。
 排程具有下表中的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 間隔 |執行搜尋的頻率。 以分鐘為單位。 |
 | QueryTimeSpan |準則評估的時間間隔。 必須等於或大於 Interval。 以分鐘為單位。 |
@@ -95,7 +95,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 
 所有動作具有下表中的屬性。  不同類型的警示有不同的額外屬性，如下所述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | `Type` |動作的類型。  目前可能的值為 Alert 和 Webhook。 |
 | `Name` |警示的顯示名稱。 |
@@ -139,7 +139,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 | 區段 | 描述 | 使用量 |
 |:--- |:--- |:--- |
 | 閾值 |執行動作的準則。| 將警示延伸至 Azure 之前或之後，都必須為每個警示指定。 |
-| 嚴重性 |用來在觸發時將警示分類的標籤。| 將警示延伸至 Azure 之前或之後，都必須為每個警示指定。 |
+| Severity |用來在觸發時將警示分類的標籤。| 將警示延伸至 Azure 之前或之後，都必須為每個警示指定。 |
 | 隱藏 |可停止來自警示之通知的選項。 | 將警示延伸至 Azure 之前或之後，可依選擇為每個警示指定。 |
 | 動作群組 |已指定所需動作之 Azure ActionGroup 的識別碼，例如 - 電子郵件、簡訊、語音通話、Webhook、自動化 Runbook、ITSM 連接器等。| 將警示延伸至 Azure 之後，就必須指定|
 | 自訂動作|修改來自 ActionGroup 之所選動作的標準輸出| 就每個警示而言為選擇性，可在將警示延伸至 Azure 之後使用。 |
@@ -149,7 +149,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 
 臨界值具有下表中的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | `Operator` |用於比較臨界值的運算子。 <br> gt = 大於 <br>  lt = 小於 |
 | `Value` |臨界值。 |
@@ -185,7 +185,7 @@ $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','p
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 ```
 
-#### <a name="severity"></a>嚴重性
+#### <a name="severity"></a>Severity
 Log Analytics 可讓您將警示分類成數個類別，以便於管理和分級。 已定義的警示嚴重性包括：資訊、警告及嚴重。 這些會以下列方式對應至「Azure 警示」的標準化嚴重性級別：
 
 |Log Analytics 嚴重性等級  |Azure 警示嚴重性等級  |

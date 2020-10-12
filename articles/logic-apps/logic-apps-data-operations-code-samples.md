@@ -1,16 +1,16 @@
 ---
 title: 使用資料作業的程式碼範例
-description: 請嘗試這些程式碼範例，示範如何在使用 Azure Logic Apps 建立的自動化工作流程中使用資料作業
+description: 嘗試這些程式碼範例，示範如何在使用 Azure Logic Apps 建立的自動化工作流程中使用資料作業
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712440"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的資料作業程式碼範例
@@ -322,7 +322,7 @@ ms.locfileid: "84712440"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>選取
+## <a name="select"></a>Select
 
 若要嘗試[**選取**動作範例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，以下是您可以使用的動作定義：
 
@@ -363,6 +363,6 @@ ms.locfileid: "84712440"
 },
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [執行資料作業](../logic-apps/logic-apps-perform-data-operations.md)

@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: allensu
 ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708156"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 設定虛擬機器的私人 IP 位址
@@ -234,6 +234,6 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     > [!NOTE]
     > 如果 VM 夠大而可容納多個 NIC，請執行 **azure network nic delete** 命令，以刪除舊 NIC。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何管理 [IP 位址設定](virtual-network-network-interface-addresses.md)。

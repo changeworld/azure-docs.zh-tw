@@ -4,10 +4,10 @@ description: 使用 Azure Resource Manager 範本中的複製作業和陣列來�
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293963"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
@@ -281,7 +281,7 @@ mode 屬性也接受**平行**，這是預設值。
 
 下列範例顯示為資源或屬性建立多個執行個體的常見案例。
 
-|[範本]  |說明  |
+|範本  |描述  |
 |---------|---------|
 |[複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |利用名稱中的索引編號來部署多個儲存體帳戶。 |
 |[序列複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次一個部署數個儲存體帳戶。 名稱包含索引編號。 |

@@ -6,10 +6,10 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
 ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87024566"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>使用 Azure 監視器的 Application Insights 監視 Azure Functions
@@ -20,10 +20,10 @@ Application Insights 會收集記錄、效能和錯誤資料，並自動偵測�
 
 所需的 Application Insights 檢測已內建於 Azure Functions 中。 您唯一需要的是有效的檢測金鑰，以將您的函式應用程式連線至 Application Insights 資源。 當您在 Azure 中建立函式應用程式資源時，應該將檢測金鑰新增至應用程式設定。 如果您的函式應用程式還沒有這個金鑰，您可以手動設定。 如需詳細資訊，請深入了解[監視 Azure Functions](../../azure-functions/functions-monitoring.md?tabs=cmd)。
 
-## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Windows 上 JAVA 應用程式的分散式追蹤（公開預覽）
+## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Windows 上適用于 JAVA 應用程式的分散式追蹤 (公開預覽) 
 
 > [!IMPORTANT]
-> 這項功能目前處於 Windows 上的 JAVA Azure Functions 公開預覽狀態，不支援 Linux 上的 JAVA Azure Functions 的分散式追蹤。 針對取用方案，其冷啟動時間為8-9 秒。
+> 這項功能目前處於公開預覽狀態，適用于 Windows 上的 JAVA Azure Functions，不支援 Linux 上的 JAVA Azure Functions 的分散式追蹤。 針對取用方案，它的冷開始時間為8-9 秒。
 
 如果您的應用程式是以 JAVA 撰寫的，您可以從函式應用程式中檢視更豐富的資料，包括要求、相依性、記錄和計量。 此外有額外的資料可讓您看見與診斷端對端交易，及看見可彙總許多交易的應用程式對應，以顯示系統互動方式的拓撲檢視，及平均效能和錯誤率。
 

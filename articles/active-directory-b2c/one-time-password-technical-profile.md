@@ -12,10 +12,10 @@ ms.date: 09/02/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418903"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義一次性密碼技術設定檔
@@ -168,7 +168,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 </TechnicalProfile>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列文章，以取得使用單次密碼技術設定檔與自訂電子郵件驗證的範例：
 

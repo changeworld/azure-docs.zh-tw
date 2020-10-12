@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249507"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的使用者設定檔範本
@@ -40,10 +40,10 @@ ms.locfileid: "86249507"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>特徵  
+##  <a name="profile"></a><a name="Profile"></a> 配置 檔  
  **設定檔**範本可讓您自訂開發人員入口網站中 [使用者設定檔] 頁面的使用者設定檔區段。  
   
- ![[使用者設定檔] 頁面](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM 使用者設定檔頁面")  
+ ![使用者設定檔頁面](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM 使用者設定檔頁面")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -98,7 +98,7 @@ ms.locfileid: "86249507"
 ```  
   
 ### <a name="controls"></a>控制項  
- 此範本可能不會使用任何[頁面控制項](api-management-page-controls.md)。  
+ 此範本可能不會使用任何 [頁面控制項](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>資料模型  
   
@@ -185,10 +185,10 @@ ms.locfileid: "86249507"
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>訂戶  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a> 訂閱  
  **訂用帳戶**範本可讓您自訂開發人員入口網站中 [使用者設定檔] 頁面的訂用帳戶區段。  
   
- ![[使用者訂用帳戶] 頁面](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM 使用者訂用帳戶頁面")  
+ ![使用者訂用帳戶頁面](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM 使用者訂用帳戶頁面")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -317,7 +317,7 @@ ms.locfileid: "86249507"
 ```  
   
 ### <a name="controls"></a>控制項  
- 此範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
+ 此範本可能會使用下列 [頁面控制項](api-management-page-controls.md)。  
   
 -   [訂用帳戶-取消](api-management-page-controls.md#subscription-cancel)  
   
@@ -406,10 +406,10 @@ ms.locfileid: "86249507"
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>應用程式  
+##  <a name="applications"></a><a name="Applications"></a> 應用  
  **應用程式**範本可讓您自訂開發人員入口網站中 [使用者設定檔] 頁面的訂用帳戶區段。  
   
- ![[使用者帳戶應用程式] 頁面](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM 使用者帳戶應用程式頁面")  
+ ![使用者帳戶應用程式頁面](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM 使用者帳戶應用程式頁面")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -480,7 +480,7 @@ ms.locfileid: "86249507"
 ```  
   
 ### <a name="controls"></a>控制項  
- 此範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
+ 此範本可能會使用下列 [頁面控制項](api-management-page-controls.md)。  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
   
@@ -607,7 +607,7 @@ ms.locfileid: "86249507"
 ```  
   
 ### <a name="controls"></a>控制項  
- 此範本可能不會使用任何[頁面控制項](api-management-page-controls.md)。  
+ 此範本可能不會使用任何 [頁面控制項](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>資料模型  
  [使用者帳戶資訊](api-management-template-data-model-reference.md#UserAccountInfo)實體。  
@@ -626,5 +626,5 @@ ms.locfileid: "86249507"
 }  
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](api-management-developer-portal-templates.md)。

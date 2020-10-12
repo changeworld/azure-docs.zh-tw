@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021370"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>部署和管理 Azure 中的 StorSimple 雲端設備 (Update 3 和更新版本)
@@ -47,7 +47,7 @@ StorSimple 雲端設備可以在兩種模型中使用，標準 8010 (前身為 1
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 核心、7 GB 記憶體)| Standard_DS3 (4 核心、14 GB 記憶體)|
 | **區域可用性** |所有 Azure 區域 |支援進階儲存體和 DS3 Azure VM 的 Azure 區域<br></br>使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」**** 和「儲存體 > 磁碟儲存體」****。 |
-| **儲存類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
+| **儲存體類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
 | **工作負載指引** |從備份的檔案的項目層級擷取 |雲端開發和測試案例 <br></br>低延遲和更高的效能工作負載<br></br>災害復原的次要裝置 |
 
 <sup>1</sup> *前身為 1100*。

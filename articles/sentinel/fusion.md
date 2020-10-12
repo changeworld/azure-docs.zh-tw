@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906289"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的 Advanced 多階段攻擊偵測
@@ -40,7 +40,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 
 1. 選取 [作用中**規則**]，然後藉由篩選**融合**規則類型的清單，在 [**名稱**] 資料行中找出**Advanced 多階段攻擊偵測**。 請檢查 [ **狀態** ] 資料行，確認是否已啟用或停用此偵測。
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{替代文字}":::
 
 1. 若要變更狀態，請選取此專案，並在 [ **Advanced 多階段攻擊偵測** ] 分頁上，選取 [ **編輯**]。
 
@@ -422,13 +422,13 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 
 **MITRE ATT&CK 策略：** 初始存取、執行、橫向移動、許可權提升
 
-**MITRE ATT&CK 技術：** 利用公眾對應的應用程式 (T1190) 、利用用戶端執行 (T1203) 、利用遠端服務 (T1210) 、惡意探索許可權擴大 (T1068) 
+**MITRE ATT&CK 技術：** 惡意探索 Public-Facing 應用程式 (T1190) 、惡意探索用戶端執行 (T1203) 、利用遠端服務 (T1210) 、惡意探索許可權擴大 (T1068) 
 
 **資料連線器來源：** 適用于端點 (的 Microsoft Defender 先前 MDATP) ，Palo Alto Networks 
 
 **描述：** 此類型的融合事件表示偵測不到的通訊協定（類似于使用 Metasploit 等攻擊架構）的非標準用法，以及之後，Palo Alto Networks 防火牆偵測到可疑的輸入活動。 這可能是因為攻擊者已利用服務來取得網路資源的存取權，或攻擊者已經取得存取權，並嘗試進一步利用可用的系統/服務，以橫向及/或提升許可權。 在 Palo Alto 記錄中，Azure Sentinel 著重于 [威脅記錄](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，並在允許威脅時，將流量視為可疑 (可疑的資料、檔案、氾濫、封包、掃描、間諜軟體、url、病毒、弱點、wildfire 病毒、野火) 。 另請參考對應到融合事件描述中所列 [威脅/內容類型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威脅記錄檔，以取得其他警示詳細資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解有關 advanced 多階段攻擊偵測的詳細資訊，您可能會對下列快速入門感興趣，以瞭解如何查看您的資料和潛在威脅： [開始使用 Azure Sentinel](quickstart-get-visibility.md)。
 

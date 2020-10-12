@@ -8,15 +8,15 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/30/2020
 ms.openlocfilehash: ceb4a3356ef78d2129f76bd11f555a9ca5206d51
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87505831"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI 腳本範例-建立邏輯應用程式
 
-此腳本會透過[Azure CLI Logic Apps 延伸](/cli/azure/ext/logic/logic?view=azure-cli-latest)模組（）建立範例邏輯應用程式 `az logic` 。 如需透過 Azure CLI 建立及管理邏輯應用程式的詳細指南，請參閱[Azure CLI 的 Logic Apps 快速入門](quickstart-logic-apps-azure-cli.md)。
+此腳本會透過 [Azure CLI Logic Apps 延伸](/cli/azure/ext/logic/logic?view=azure-cli-latest)模組建立範例邏輯應用程式， (`az logic`) 。 如需透過 Azure CLI 建立和管理邏輯應用程式的詳細指南，請參閱 [Azure CLI 的 Logic Apps 快速入門](quickstart-logic-apps-azure-cli.md)。
 
 > [!WARNING]
 > Azure CLI Logic Apps 擴充功能目前為「實驗性」擴充功能，不在客戶支援涵蓋範圍內。 請小心使用此 CLI 擴充功能，特別是當您選擇在生產環境中使用擴充功能時。
@@ -26,8 +26,8 @@ ms.locfileid: "87505831"
 * 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 在您的本機電腦上安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * 在您的電腦上安裝 [Logic Apps Azure CLI 擴充功能](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest)。 若要安裝此擴充功能，請使用下列命令：`az extension add --name logic`
-* 邏輯應用程式的[工作流程定義](quickstart-logic-apps-azure-cli.md#workflow-definition)。 此 JSON 檔案必須遵循[工作流程定義語言架構](logic-apps-workflow-definition-language.md)。
-* 透過與邏輯應用程式相同的資源群組中支援的[Logic Apps 連接器](../connectors/apis-list.md)，與電子郵件帳戶的 API 連線。 此範例使用[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)連接器，但您也可以使用其他連接器，例如[Outlook.com](../connectors/connectors-create-api-outlook.md)。
+* 邏輯應用程式的 [工作流程定義](quickstart-logic-apps-azure-cli.md#workflow-definition) 。 此 JSON 檔案必須遵循 [工作流程定義語言架構](logic-apps-workflow-definition-language.md)。
+* 在與邏輯應用程式相同的資源群組中，透過支援的 [Logic Apps 連接器](../connectors/apis-list.md) ，對電子郵件帳戶的 API 連線。 此範例使用 [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) 連接器，但您也可以使用其他連接器，例如 [Outlook.com](../connectors/connectors-create-api-outlook.md)。
 
 ### <a name="prerequisite-check"></a>先決條件檢查
 
@@ -41,23 +41,23 @@ ms.locfileid: "87505831"
 
 ### <a name="sample-workflow-explanation"></a>範例工作流程說明
 
-這個範例工作流程定義檔會建立相同的基本邏輯應用程式，做為[Azure 入口網站的 Logic Apps 快速入門](quickstart-create-first-logic-app-workflow.md)。 
+此範例工作流程定義檔會建立與 [Azure 入口網站的 Logic Apps 快速入門](quickstart-create-first-logic-app-workflow.md)相同的基本邏輯應用程式。 
 
-這個範例工作流程： 
+此範例工作流程： 
 
 1. 指定 `$schema` 邏輯應用程式的架構。
 
-1. 在觸發程式清單中定義邏輯應用程式的觸發程式 `triggers` 。 觸發程式會 `recurrence` 每3小時重複一次。 針對指定的 RSS 摘要（）發行新的摘要專案時，就會觸發這些動作 `When_a_feed_item_is_published` `feedUrl` 。
+1. 在觸發程式清單中定義邏輯應用程式的觸發程式 `triggers` 。 觸發程式會 `recurrence` 每3小時重複 () 。 `When_a_feed_item_is_published`針對指定的 rss 摘要 () 的 () 發佈新的摘要專案時，就會觸發這些動作 `feedUrl` 。
 
-1. 在動作清單中定義邏輯應用程式的動作 `actions` 。 動作會透過 Microsoft 365 傳送電子郵件（ `Send_an_email_(V2)` ），其中包含來自動作輸入（）之主體區段（）中所指定的 RSS 摘要專案的詳細資料 `body` `inputs` 。
+1. 在動作清單中定義邏輯應用程式的動作 `actions` 。 此動作會傳送電子郵件 (`Send_an_email_(V2)`) 到 Microsoft 365，其中包含 RSS 摘要專案的詳細資料，如 [主體] 區段中所指定 (`body`) 動作輸入 (`inputs`) 。
 
 ## <a name="sample-workflow-definition"></a>範例工作流程定義
 
-執行範例腳本之前，您必須先建立範例[工作流程定義](#prerequisites)。
+執行範例腳本之前，您必須先建立範例 [工作流程定義](#prerequisites)。
 
 1. `testDefinition.json`在您的電腦上建立 JSON 檔案。 
 
-1. 將下列內容複寫到 JSON 檔案： 
+1. 將下列內容複寫到 JSON 檔案中： 
     ```json
     
     {
@@ -136,18 +136,18 @@ ms.locfileid: "87505831"
 
 1. 使用您自己的資訊來更新預留位置值：
 
-    1. 取代預留位置電子郵件地址（ `"To": "test@example.com"` ）。 您必須使用與 Logic Apps 連接器相容的電子郵件地址。 如需詳細資訊，請參閱[必要條件](#prerequisites)。
+    1. 取代 () 的預留位置電子郵件地址 `"To": "test@example.com"` 。 您必須使用與 Logic Apps 連接器相容的電子郵件地址。 如需詳細資訊，請參閱 [必要條件](#prerequisites)。
 
-    1. 如果您所使用的電子郵件連接器與 Office 365 Outlook 連接器不同，請更換其他連接器詳細資料。
+    1. 如果您使用的是與 Office 365 Outlook 連接器不同的電子郵件連接器，請更換其他連接器詳細資料。
 
-    1. `00000000-0000-0000-0000-000000000000` `connectionId` `id` `$connections` 使用您自己的訂用帳戶值，取代 connections 參數（）底下的連接識別碼（和）預留位置訂用帳戶值（）。
+    1. `00000000-0000-0000-0000-000000000000`以您自己的訂用帳戶值取代 () 的連接識別碼 (`connectionId` 和) 下的預留位置訂 `id` `$connections` 用 (帳戶值。
 
 1. 儲存您的變更。
 
 ## <a name="sample-script"></a>範例指令碼
 
 > [!NOTE]
-> 這個範例是針對 shell 所撰寫 `bash` 。 如果您想要在另一個 shell （例如 Windows PowerShell 或命令提示字元）中執行此範例，您可能需要修改您的腳本。
+> 此範例是針對 shell 所撰寫 `bash` 。 如果您想要在另一個 shell （例如 Windows PowerShell 或命令提示字元）中執行此範例，您可能需要對腳本進行修改。
 
 執行此範例腳本之前，請執行下列命令以連線到 Azure：
 
@@ -183,7 +183,7 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ### <a name="clean-up-deployment"></a>清除部署
 
-當您完成使用範例腳本之後，請執行下列命令來移除資源群組及其所有的嵌套資源，包括邏輯應用程式。
+當您使用完範例腳本之後，請執行下列命令來移除資源群組及其所有的嵌套資源，包括邏輯應用程式。
 
 ```azurecli-interactive
 
@@ -198,11 +198,11 @@ az group delete --name testResourceGroup --yes
 | Command | 注意 |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來儲存邏輯應用程式資源的資源群組。 |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | 根據在參數中定義的工作流程，建立邏輯應用程式 `--definition` 。 |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | 根據參數中定義的工作流程建立邏輯應用程式 `--definition` 。 |
 | [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | 刪除資源群組及其所有的嵌套資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure/?view=azure-cli-latest)。
 
-您可以在[Microsoft 的程式碼範例瀏覽器](/samples/browse/?products=azure-logic-apps)中找到其他 Logic Apps CLI 腳本範例。
+您可以在 [Microsoft 的程式碼範例瀏覽器](/samples/browse/?products=azure-logic-apps)中找到其他 Logic Apps CLI 指令碼範例。

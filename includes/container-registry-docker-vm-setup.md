@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 05/07/2020
 ms.author: danlep
 ms.openlocfilehash: be170144fddeb1a69592f1714ec745d559665832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82982412"
 ---
-## <a name="create-a-docker-enabled-virtual-machine"></a>建立具備 Docker 功能的虛擬機器
+## <a name="create-a-docker-enabled-virtual-machine"></a>建立啟用 Docker 的虛擬機器
 
-基於測試目的，請使用已啟用 Docker 的 Ubuntu VM 來存取 Azure container registry。 若要對登錄使用 Azure Active Directory 驗證，請同時在 VM 上安裝[Azure CLI][azure-cli] 。 如果您已經有 Azure 虛擬機器，請略過此建立步驟。
+基於測試目的，請使用已啟用 Docker 的 Ubuntu VM 來存取 Azure container registry。 若要對登錄使用 Azure Active Directory authentication，也請在 VM 上安裝 [Azure CLI][azure-cli] 。 如果您已經有 Azure 虛擬機器，請略過此建立步驟。
 
-您可以將相同的資源群組用於虛擬機器和容器登錄。 此安裝程式會在結束時簡化清理，但不需要。 如果您選擇為虛擬機器和虛擬網路建立個別的資源群組，請執行[az group create][az-group-create]。 下列範例假設您已為資源組名和登錄位置設定環境變數：
+您可以針對您的虛擬機器和容器登錄使用相同的資源群組。 此安裝程式會在結束時簡化清除，但不是必要的。 如果您選擇為虛擬機器和虛擬網路建立個別的資源群組，請執行 [az group create][az-group-create]。 下列範例假設您已為資源組名和登錄位置設定環境變數：
 
 ```azurecli
 az group create --name $RESOURCE_GROUP --location $REGISTRY_LOCATION
 ```
 
-現在，使用[az vm create][az-vm-create]部署預設的 Ubuntu Azure 虛擬機器。 下列範例會建立名為*myDockerVM*的 VM。
+現在使用 [az vm create][az-vm-create]部署預設的 Ubuntu Azure 虛擬機器。 下列範例會建立名為 *myDockerVM*的 VM。
 
 ```azurecli
 VM_NAME=myDockerVM
@@ -44,7 +44,7 @@ az vm create \
 ssh azureuser@publicIpAddress
 ```
 
-執行下列命令以在 Ubuntu VM 上安裝 Docker：
+執行下列命令，在 Ubuntu VM 上安裝 Docker：
 
 ```bash
 sudo apt-get update
@@ -73,7 +73,7 @@ This message shows that your installation appears to be working correctly.
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-結束 SSH 連線。
+結束 SSH 連接。
 
 [azure-cli]: /cli/azure/install-azure-cli
 [az-vm-create]: /cli/azure/vm#az-vm-create
