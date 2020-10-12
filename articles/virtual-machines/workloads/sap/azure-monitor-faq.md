@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987241"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>適用于 SAP 解決方案的 Azure 監視器常見問題 (預覽版) 
@@ -72,11 +72,11 @@ SQL Server 2012 SP4 或更新版本。
 您目前可以監視 HANA 資料庫、基礎結構、高可用性叢集，以及 Microsoft SQL server 的公開預覽。  
 
  - **這種服務會取代 SAP Solution manager 嗎？**  
-不可以。 客戶仍然可以使用 SAP Solution manager 進行商務程式監視。  
+否。 客戶仍然可以使用 SAP Solution manager 進行商務程式監視。  
 
  - **這項服務的價值是傳統解決方案，例如 SAP Hana 環境/Studio 嗎？**  
 適用于 SAP 解決方案的 Azure 監視器不是 HANA 資料庫專屬的。 SAP 解決方案的 Azure 監視器也支援 AnyDB。  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 為 SAP 解決方案資源建立您的第一個 Azure 監視器。

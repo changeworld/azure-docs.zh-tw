@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654798"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Premium 頁面 blob 儲存體帳戶的擴充性和效能目標
@@ -43,7 +43,7 @@ Premium 頁面 blob 帳戶是針對 premium 效能設定的一般用途帳戶。
 
 如果您無法遷移至受控磁片，請建立您的應用程式以使用多個儲存體帳戶，並在這些儲存體帳戶之間分割資料。 例如，如果您想要將 51 TB 的磁碟連結至多個 VM，可將其分散到兩個儲存體帳戶。 單一進階儲存體帳戶的限制是 35 TB。 請確定單一 premium 效能儲存體帳戶永遠不會有超過 35 TB 的布建磁片。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [標準儲存體帳戶的延展性和效能目標](../common/scalability-targets-standard-account.md)
 - [Premium 區塊 blob 儲存體帳戶的擴充性目標](../blobs/scalability-targets-premium-block-blobs.md)

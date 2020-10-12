@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902252"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 授權開發人員帳戶
@@ -50,7 +50,7 @@ ms.locfileid: "87902252"
     > [!NOTE]
     > 這些欄位可用來在目前的 API 管理服務執行個體中識別 OAuth 2.0 授權伺服器，且欄位的值並非來自 OAuth 2.0 伺服器。
 
-3. 輸入 [用戶端註冊頁面 URL]****。 此頁面可供使用者建立及管理帳戶，並且會因為使用的 OAuth 2.0 提供者不同而有所差異。 [**用戶端註冊頁面 URL** ] 指向的頁面，可讓使用者用來建立及設定自己的 OAuth 2.0 提供者帳戶，以支援帳戶的使用者管理，例如 `https://contoso.com/login` 。 即使 OAuth 2.0 提供者支援這項功能，有些組織還是未設定或未使用這項功能。 如果您的 OAuth 2.0 提供者未設定使用者帳戶管理，請在這裡輸入預留位置 URL (例如您公司的 URL) 或 `https://placeholder.contoso.com` 這類 URL。
+3. 輸入 [用戶端註冊頁面 URL]****。 此頁面可供使用者建立及管理帳戶，並且會因為使用的 OAuth 2.0 提供者不同而有所差異。 [ **用戶端註冊頁面 URL** ] 會指向頁面，讓使用者可以用來建立及設定自己的帳戶，以供支援帳戶使用者管理的 OAuth 2.0 提供者使用，例如 `https://contoso.com/login` 。 即使 OAuth 2.0 提供者支援這項功能，有些組織還是未設定或未使用這項功能。 如果您的 OAuth 2.0 提供者未設定使用者帳戶管理，請在這裡輸入預留位置 URL (例如您公司的 URL) 或 `https://placeholder.contoso.com` 這類 URL。
 
     ![OAuth 2.0 新伺服器](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "87902252"
 
     勾選需要的類型以指定 [授權授與類型]****。 **** 。
 
-    輸入 [Authorization endpoint URL] ****。 針對 Azure Active Directory，此 URL 將與下列 URL 類似，其中 `<tenant_id>` 會以您的 Azure AD 租使用者識別碼取代。
+    輸入 [Authorization endpoint URL] ****。 針對 Azure Active Directory，此 URL 會類似下列 URL，其中 `<tenant_id>` 以您 Azure AD 租使用者的識別碼取代。
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
@@ -76,10 +76,10 @@ ms.locfileid: "87902252"
 
 6. [用戶端認證]**** 區段含有 [用戶端識別碼]**** 和 [用戶端密碼]****，這兩個項目可在 OAuth 2.0 伺服器的建立和組態程序中取得。 指定 [用戶端識別碼]**** 和 [用戶端密碼]**** 後，系統便會產生 [授權碼]**** 的 **redirect_uri**。 此 URI 可用來設定 OAuth 2.0 伺服器組態中的回覆 URL。
 
-    在新的開發人員入口網站中，URI 尾碼的格式如下：
+    在新的開發人員入口網站中，URI 尾碼的形式如下：
 
-    - `/signin-oauth/code/callback/{authServerName}`授權碼授與流程
-    - `/signin-oauth/implicit/callback`針對隱含授與流程
+    - `/signin-oauth/code/callback/{authServerName}` 授權碼授與流程
+    - `/signin-oauth/implicit/callback` 針對隱含授與流程
 
     ![OAuth 2.0 新伺服器](./media/api-management-howto-oauth2/oauth-04.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "87902252"
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 從您的 Azure API 管理實例 [**總覽**] 頁面中，按一下頂端功能表中的 [**開發人員入口網站 (舊版) ** 。
+設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 從您的 Azure API 管理實例**總覽**頁面，按一下頂端功能表中的 [**開發人員入口網站 (舊版]) ** 。
 
 在上方功能表中按一下 [API]****，然後選取 [Echo API]****。
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074320"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中的遠端桌面時常斷線
@@ -32,9 +32,9 @@ ms.locfileid: "87074320"
 
 如果 RDP 接聽程式的設定不正確，就可能發生此問題。 一般而言，此問題會發生在使用自訂映像的 VM 上。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
-在您遵循這些步驟之前，請將受影響 VM 的[OS 磁片快照](../windows/snapshot-copy-managed-disk.md)集作為備份。 
+在您執行這些步驟之前，請先將受影響 VM [的 OS 磁片快照](../windows/snapshot-copy-managed-disk.md) 集作為備份。 
 
 若要針對此問題進行疑難排解，請使用「序列控制項」，或藉由將 VM 的 OS 磁碟連結至復原 VM 來[修復離線的 VM](#repair-the-vm-offline)。
 
@@ -99,8 +99,8 @@ ms.locfileid: "87074320"
 2. 在 OS 磁碟連結至復原 VM 後，請確定該磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給已連結 OS 磁碟的磁碟機代號。
 3. 在您連接的 OS 磁碟上，瀏覽至 **\windows\system32\config** 資料夾。 複製此資料夾中的所有檔案作為備份，以在需要復原時使用。
 4. 啟動 [登錄編輯程式] (regedit.exe)。
-5. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取 [** 檔案] [  >  **載入 Hive**]：
-6. 流覽至您連接的 OS 磁片上的**\windows\system32\config\SYSTEM**資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。 載入 **HKEY_LOCAL_MACHINE** 機碼下的軟體 hive **\windows\system32\config\SOFTWARE**。 針對 Hive 軟體的名稱，輸入 **BROKENSOFTWARE**。 
+5. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取 [** 檔案  >  **載入 Hive**：
+6. 流覽至您連接的 OS 磁片上的 **\windows\system32\config\SYSTEM** 資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。 載入 **HKEY_LOCAL_MACHINE** 機碼下的軟體 hive **\windows\system32\config\SOFTWARE**。 針對 Hive 軟體的名稱，輸入 **BROKENSOFTWARE**。 
 7. 開啟提升權限的命令提示字元視窗 (**以系統管理員身分執行**)，並執行其餘步驟中的命令，以重設 RDP 組態。 
 8. 將 RDP 安全性階層降低至 0，好讓伺服器和用戶端之間的通訊會使用原生 RDP 加密：
 

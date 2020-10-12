@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335325"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務的地圖控制項
 
 地圖控制項用戶端 JavaScript 程式庫可讓您在 web 或行動應用程式中呈現地圖和內嵌 Azure 地圖服務功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要在網頁中使用地圖控制項，您必須具備下列其中一個必要條件：
 
@@ -256,10 +256,10 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 如果使用 JavaScript 架構進行開發，下列其中一個開放原始碼專案可能會很有用：
 
-- [ng-azure](https://github.com/arnaudleclerc/ng-azure-maps) 地圖服務-azure 地圖服務周圍的角度10包裝函式。
-- [AzureMapsControl 元件](https://github.com/arnaudleclerc/AzureMapsControl.Components) -Azure 地圖服務 Blazor 元件。
-- [Azure 地圖服務反應元件](https://github.com/WiredSolutions/react-azure-maps) -Azure 地圖服務控制項的回應包裝函式。
-- [Vue Azure 地圖服務](https://github.com/rickyruiz/vue-azure-maps) -適用于 Vue 應用程式的 Azure 地圖服務元件。
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure 地圖服務的 Angular 10 包裝函式。
+- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure 地圖服務 Blazor 元件。
+- [Azure 地圖服務 React 元件](https://github.com/WiredSolutions/react-azure-maps) - Azure 地圖服務控制項的反應包裝函式。
+- [Vue Azure 地圖服務](https://github.com/rickyruiz/vue-azure-maps) - Vue 應用程式的 Azure 地圖服務元件。
 
 ## <a name="next-steps"></a>後續步驟
 

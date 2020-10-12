@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理層的功能式比較 | Microsoft Docs
-description: 根據 API 管理層所提供的功能來進行比較。 請參閱摘要說明每個定價層中可用主要功能的表格。
+description: 根據 API 管理層所提供的功能進行比較。 請參閱表格，以摘要說明每個定價層中可用的主要功能。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905137"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理層的功能式比較
@@ -26,7 +26,7 @@ ms.locfileid: "87905137"
 > [!IMPORTANT]
 > 請注意，開發人員層適用于非生產環境的使用案例和評估。 它不提供 SLA。
 
-| 特徵                                                                                      | 耗用量 | 開發人員 | 基本 | 標準 | Premium |
+| 功能                                                                                      | 耗用量 | 開發人員 | 基本 | 標準 | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 整合<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虛擬網路 (VNet) 支援                                                               | 否          | 是       | 否    | 否       | 是     |
@@ -45,6 +45,6 @@ ms.locfileid: "87905137"
 | Azure 監視器記錄和計量                                                               | 是         | 是       | 是   | 是      | 是     |
 | 靜態 IP                                                                                    | 否          | 是       | 是   | 是      | 是     |
 
-<sup>1</sup>可在開發人員入口網站上，使用 Azure AD (和 Azure AD B2C) 做為使用者登入的身分識別提供者。<br/>
+<sup>1</sup> 可讓您使用 Azure AD (和 Azure AD B2C) 作為開發人員入口網站上使用者登入的身分識別提供者。<br/>
 <sup>2</sup> 包括相關的功能，例如使用者、群組、問題、應用程式以及電子郵件範本和通知。<br/>
-<sup>3</sup>在開發人員層中，自我裝載的閘道僅限於單一閘道節點。<br/>
+開發人員層中的<sup>3</sup> ：自我裝載的閘道僅限單一閘道節點。<br/>

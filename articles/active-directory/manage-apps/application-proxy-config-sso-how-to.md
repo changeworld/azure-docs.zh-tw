@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642124"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何針對應用程式 Proxy 應用程式設定單一登入
@@ -51,7 +51,7 @@ ms.locfileid: "88642124"
 
 這個選項可讓系統管理員建立應用程式連結，以供使用者首次存取應用程式時使用。 例如，如果有一個應用程式設定為使用 Active Directory 同盟服務2.0 來驗證使用者，系統管理員可以使用 [連結的登入] 選項，在我的應用程式上建立該應用程式的連結。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [使用應用程式 Proxy 進行單一登入的密碼保存庫](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [可供使用應用程式 Proxy 單一登入的 Kerberos 限制委派](application-proxy-configure-single-sign-on-with-kcd.md)
 - [使用應用程式 Proxy 單一登入的標頭型驗證](application-proxy-configure-single-sign-on-with-ping-access.md) 

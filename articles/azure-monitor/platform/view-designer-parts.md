@@ -1,20 +1,20 @@
 ---
-title: Azure 監視器中視圖設計工具元件的參考指南 |Microsoft Docs
-description: 藉由在 Azure 監視器中使用 View Designer，您可以建立顯示在 Azure 入口網站中的自訂視圖，並包含 Log Analytics 工作區中資料的各種視覺效果。 此文章是自訂檢視中可用的視覺效果組件設定的參考指南。
+title: Azure 監視器視圖設計工具元件的參考指南 |Microsoft Docs
+description: 藉由使用 Azure 監視器中的 [View Designer]，您可以建立 Azure 入口網站中顯示的自訂視圖，並在 Log Analytics 工作區中包含資料的各種視覺效果。 此文章是自訂檢視中可用的視覺效果組件設定的參考指南。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539392"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure 監視器中的視圖設計工具視覺效果元件參考指南
-藉由在 Azure 監視器中使用 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 此文章是自訂檢視中可用的視覺效果組件設定的參考指南。
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>在 Azure 監視器中查看設計工具視覺效果元件的參考指南
+藉由使用 Azure 監視器中的 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 此文章是自訂檢視中可用的視覺效果組件設定的參考指南。
 
 如需檢視設計工具的詳細資訊，請參閱：
 
@@ -24,11 +24,11 @@ ms.locfileid: "86539392"
 
 下表說明可用的檢視設計工具圖格類型：
 
-| 檢視類型 | 描述 |
+| 檢視類型 | 說明 |
 |:--- |:--- |
-| [查詢清單](#list-of-queries-part) |顯示記錄查詢的清單。 您可以選取每個查詢以顯示其結果。 |
-| [數字與清單](#number-and-list-part) |標頭會顯示一個數位，以顯示來自記錄查詢的記錄計數。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。 |
-| [兩個數字與清單](#two-numbers-and-list-part) |標頭會顯示兩個數字，以顯示來自不同記錄查詢的記錄計數。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。 |
+| [查詢清單](#list-of-queries-part) |顯示記錄查詢清單。 您可以選取每個查詢以顯示其結果。 |
+| [數字與清單](#number-and-list-part) |標頭會顯示單一數位，以顯示記錄查詢中的記錄計數。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。 |
+| [兩個數字與清單](#two-numbers-and-list-part) |標頭會顯示兩個數字，以顯示個別記錄查詢中的記錄計數。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。 |
 | [環圈圖與清單](#donut-and-list-part) |標頭會顯示一個數字，彙總了記錄檔查詢中的值資料行。 環圈會以圖形方式顯示前三筆記錄的結果。 |
 | [兩個時間軸與清單](#two-timelines-and-list-part) |標頭會將一段時間內兩個記錄檔查詢的結果顯示為直條圖，其圖說文字會顯示一個數字，彙總了記錄檔查詢中的值資料行。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。 |
 | [資訊](#information-part) |標頭會顯示靜態文字和選擇性連結。 清單會顯示一或多個包含靜態標題和文字的項目。 |
@@ -39,10 +39,10 @@ ms.locfileid: "86539392"
 以下幾節詳細說明圖格類型和其屬性。
 
 > [!NOTE]
-> Views 中的元件是以 Log Analytics 工作區中的[記錄查詢](../log-query/log-query-overview.md)為基礎。 它們目前不支援[跨資源查詢](../log-query/cross-workspace-query.md)，以從 Application Insights 取出資料。
+> Views 中的元件是以 Log Analytics 工作區中的 [記錄查詢](../log-query/log-query-overview.md) 為基礎。 它們目前不支援 [跨資源查詢](../log-query/cross-workspace-query.md) ，以從 Application Insights 取出資料。
 
 ## <a name="list-of-queries-part"></a>查詢清單部分
-查詢的清單部分會顯示記錄查詢的清單。 您可以選取每個查詢以顯示其結果。 根據預設，檢視會包含單一查詢，您可以選取 [+ 查詢]**** 來新增額外的查詢。
+查詢清單部分會顯示記錄查詢清單。 您可以選取每個查詢以顯示其結果。 根據預設，檢視會包含單一查詢，您可以選取 [+ 查詢]**** 來新增額外的查詢。
 
 ![查詢清單檢視](media/view-designer-parts/view-list-queries.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "86539392"
 | 易記名稱 | 顯示的描述性名稱。 |
 
 ## <a name="number-and-list-part"></a>數字與清單組件
-標頭會顯示一個數位，以顯示來自記錄查詢的記錄計數。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。
+標頭會顯示單一數位，以顯示記錄查詢中的記錄計數。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。
 
 ![查詢清單檢視](media/view-designer-parts/view-number-list.png)
 
@@ -209,7 +209,7 @@ ms.locfileid: "86539392"
 | Url |連結的 URL。 |
 | **資訊項目** | |
 | 標題 |對每個項目的標題顯示的文字。 |
-| 內容 |對每個項目顯示的文字。 |
+| Content |對每個項目顯示的文字。 |
 
 ## <a name="line-chart-callout-and-list-part"></a>折線圖、圖說文字與清單組件
 標頭會顯示一個折線圖，其中包含一段時間內記錄查詢中的多個數列，以及包含彙總值的圖說文字。 清單會顯示查詢的前 10 筆結果，並包含表示數值資料行的相對值或一段時間內之變更的圖表。
@@ -313,34 +313,34 @@ ms.locfileid: "86539392"
 以下小節說明幾個視覺化組件的通用設定。
 
 ### <a name="name-and-value-separator"></a><a name="name-value-separator"></a>名稱和值分隔符號
-名稱和值分隔符號是單一字元分隔符號，用來將來自清單查詢的文字屬性剖析成多個值。 如果您指定分隔符號，您可以提供每個欄位的名稱，並在 [**名稱**] 方塊中以相同的分隔符號分隔。
+名稱和值分隔符號是單一字元分隔符號，用來將來自清單查詢的文字屬性剖析成多個值。 如果您指定分隔符號，您可以在 [ **名稱** ] 方塊中提供每個欄位的名稱（以相同的分隔符號分隔）。
 
 例如，考慮名為 *Location* 的屬性，其包含 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 您可以指定虛線 (-) 作為名稱和值分隔符號，以及指定 *City-Building* 作為名稱。 此方法會將每個值剖析成兩個名為 *City* 和 *Building* 的屬性。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>點選瀏覽
-點選瀏覽會定義當您按一下標頭或檢視中的清單項目時，要採取哪個動作。  這會在[Log Analytics](../log-query/log-query-overview.md)中開啟查詢，或啟動另一個視圖。
+點選瀏覽會定義當您按一下標頭或檢視中的清單項目時，要採取哪個動作。  這會在 [Log Analytics](../log-query/log-query-overview.md) 中開啟查詢，或啟動另一個 view。
 
 下表描述點選瀏覽的設定。
 
-| 設定           | 描述 |
+| 設定           | 說明 |
 |:--|:--|
-| 記錄搜尋 (自動) | 當您選取標頭專案時要執行的記錄查詢。  這是專案所依據的相同記錄檔查詢。
-| 記錄搜尋        | 當您選取清單中的專案時要執行的記錄查詢。  將查詢輸入 [瀏覽查詢]**** 方塊。   使用 *{selected item}* 來包含使用者所選項目的語法。  例如，如果查詢具有名為 *Computer* 的資料行且瀏覽查詢是 *{selected item}*，則會在您選取電腦時執行 *Computer="MyComputer"* 之類的查詢。 如果瀏覽查詢是 *Type=Event {selected item}*，則會執行 *Type=Event Computer="MyComputer"*。 |
+| 記錄搜尋 (自動) | 當您選取標頭專案時要執行的記錄查詢。  這是以專案為基礎的相同記錄查詢。
+| 記錄搜尋        | 當您在清單中選取專案時要執行的記錄查詢。  將查詢輸入 [瀏覽查詢]**** 方塊。   使用 *{selected item}* 來包含使用者所選項目的語法。  例如，如果查詢具有名為 *Computer* 的資料行且瀏覽查詢是 *{selected item}*，則會在您選取電腦時執行 *Computer="MyComputer"* 之類的查詢。 如果瀏覽查詢是 *Type=Event {selected item}*，則會執行 *Type=Event Computer="MyComputer"*。 |
 | 檢視              | 當您選取標頭項目或清單項目時開啟的檢視。  在 [檢視名稱]**** 方塊中，選取工作區中的檢視名稱。 |
 
 
 
-### <a name="sparklines"></a><a name="sparklines"></a>走勢圖
+### <a name="sparklines"></a><a name="sparklines"></a>圖表
 走勢圖是說明一段時間內清單項目值的小型折線圖。 針對包含清單的視覺化組件，您可以選取要顯示表示數值資料行相對值的水平橫條圖，或顯示表示其一段時間內的值的走勢圖。
 
 下表描述走勢圖的設定：
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |:--- |:--- |
 | 啟用走勢圖 |選取此連結可顯示走勢圖 (而非水平橫條圖)。 |
 | 作業 |如果啟用走勢圖，此即為對清單中每個屬性執行的作業，以計算走勢圖的值。<ul><li>最後一個範例︰時間間隔內數列的最後一個值。</li><li>最大值︰時間間隔內數列的最大值。</li><li>最小值︰時間間隔內數列的最小值。</li><li>總和︰時間間隔內數列的值總和。</li><li>摘要︰使用相同的 `measure` 命令做為標頭中的查詢。</li></ul> |
 
-### <a name="thresholds"></a><a name="thresholds"></a>=
+### <a name="thresholds"></a><a name="thresholds"></a>閾 值
 藉由使用閾值，您可以在清單中的每個項目旁顯示彩色的圖示。 閾值是當項目超過特定值或落在特定範圍內的快速視覺指標。 例如，您可以為含有可接受值的項目顯示綠色圖示，如果值是在指示警告的範圍內就顯示黃色圖示，如果值超出錯誤值，則顯示紅色圖示。
 
 當您針對組件啟用臨界值時，必須指定一或多個臨界值。 如果項目的值大於某個閾值，並低於下一個閾值，就使用該值的色彩。 如果項目大於最高閾值，就會使用另一個色彩。 
@@ -349,12 +349,12 @@ ms.locfileid: "86539392"
 
 下表描述閾值的設定：
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |:--- |:--- |
 | 啟用臨界值 |選取此連結可在每個值的左側顯示色彩圖示。 圖示表示相對於指定的閾值，值的健全狀況。 |
 | 名稱 |閾值的名稱。 |
 | 閾值 |閾值。 每個清單項目的健康狀態色彩都是設定為項目值所超出之最高閾值的色彩。 如果未超過任何閾值，即會使用預設色彩。 |
 | Color |表示閾值的色彩。 |
 
-## <a name="next-steps"></a>後續步驟
-* 瞭解[記錄查詢](../log-query/log-query-overview.md)以支援視覺效果元件中的查詢。
+## <a name="next-steps"></a>接下來的步驟
+* 瞭解 [記錄查詢](../log-query/log-query-overview.md) 以支援視覺效果元件中的查詢。

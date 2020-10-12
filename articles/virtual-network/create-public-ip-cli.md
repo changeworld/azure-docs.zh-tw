@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 4d0934dd30f9738e2a67d4aff23c96a48aaaa61b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89302001"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>快速入門：使用 Azure CLI 建立公用 IP 位址
@@ -106,7 +106,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 如需上列個別變數的詳細資訊，請參閱 [管理公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 將 [公用 IP 位址與虛擬機器](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)產生關聯。
 - 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 深入了解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)。

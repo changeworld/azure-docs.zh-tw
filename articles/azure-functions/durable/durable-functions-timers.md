@@ -5,25 +5,25 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87056233"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的計時器
 
-[Durable Functions](durable-functions-overview.md) 提供「永久性計時器」**，用於協調器函式中實作延遲，或在非同步動作上設定逾時。 持久性計時器應該用於協調器函式，而不是 `Thread.Sleep` 和 `Task.Delay` （c #）、 `setTimeout()` 和（ `setInterval()` JavaScript），或 `time.sleep()` （Python）。
+[Durable Functions](durable-functions-overview.md) 提供「永久性計時器」**，用於協調器函式中實作延遲，或在非同步動作上設定逾時。 永久性計時器應該用於協調器函式，而不是 `Thread.Sleep` 和 `Task.Delay` (c # ) ，或 `setTimeout()` `setInterval()` (JavaScript) 或 `time.sleep()` (Python) 。
 
-您可以藉由呼叫協調流程觸發程式系結的 `CreateTimer` （.net）方法或 `createTimer` （JavaScript） [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)方法來建立持久計時器。 方法會傳回在指定的日期和時間完成的工作。
+您可以藉由呼叫 `CreateTimer` ( .net) 方法或 `createTimer` [協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系結的 (JavaScript) 方法來建立持久計時器。 方法會傳回在指定的日期和時間完成的工作。
 
 ## <a name="timer-limitations"></a>計時器限制
 
-當您建立在下午4:30 到期的計時器時，基礎的長期工作架構會將只有在下午4:30 才會顯示的訊息。 在 Azure Functions 耗用量方案中執行時，新顯示的計時器訊息會確保函式應用程式會在適當的 VM 上啟用。
+當您建立在下午4:30 到期的計時器時，基礎的長期工作架構會將只有在下午4:30 才會顯示的訊息。 在 Azure Functions 取用方案中執行時，新顯示的計時器訊息可確保函式應用程式會在適當的 VM 上啟用。
 
 > [!NOTE]
-> * 持久性計時器目前限制為7天。 如果需要較長的延遲，可以使用迴圈中的計時器 Api 來模擬它們 `while` 。
-> * 在 `CurrentUtcDateTime` `DateTime.UtcNow` `currentUtcDateTime` `Date.now` `Date.UTC` 計算持久性計時器的觸發時間時，請一律使用 .net 中的，而不是或 JavaScript 中的或。 如需詳細資訊，請參閱協調器函式程式[代碼條件約束](durable-functions-code-constraints.md)一文。
+> * 持久計時器目前的限制為7天。 如果需要較長的延遲，您可以在迴圈中使用計時器 Api 來模擬它們 `while` 。
+> * 在 `CurrentUtcDateTime` `DateTime.UtcNow` 計算永久性 `currentUtcDateTime` `Date.now` `Date.UTC` 計時器的引發時間時，請一律使用而不是在 .Net 中，或使用 JavaScript。 如需詳細資訊，請參閱協調器函式程式 [代碼條件約束](durable-functions-code-constraints.md) 文章。
 
 ## <a name="usage-for-delay"></a>延遲的使用方式
 
@@ -46,7 +46,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 先前的 c # 範例是以 Durable Functions 2.x 為目標。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例以 Durable Functions 2.x 為目標。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -118,7 +118,7 @@ public static async Task<bool> Run(
 ```
 
 > [!NOTE]
-> 先前的 c # 範例是以 Durable Functions 2.x 為目標。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例以 Durable Functions 2.x 為目標。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -171,13 +171,13 @@ main = df.Orchestrator.create(orchestrator_function)
 ---
 
 > [!WARNING]
-> `CancellationTokenSource` `cancel()` `TimerTask` 如果您的程式碼不會等待它完成，請使用（.net）或在傳回的（JavaScript）上呼叫來取消永久性計時器。 長期工作架構在完成或取消所有未完成的工作之前，不會將協調流程的狀態變更為「已完成」。
+> `CancellationTokenSource` `cancel()` `TimerTask` 如果您的程式碼不會等候它完成，請使用 ( .net) 或在傳回的 (JavaScript) 上呼叫來取消永久性計時器。 在完成或取消所有未完成的工作之前，長期工作架構不會將協調流程的狀態變更為「已完成」。
 
-此取消機制不會終止進行中的活動函數或子協調流程執行。 只是讓協調器函式略過結果並繼續執行。 如果您的函式應用程式使用取用方案，您仍需支付已放棄的活動功能所耗用的任何時間和記憶體。 根據預設，在取用量方案中執行的函式會在五分鐘後逾時。 如果超過此限制，Azure Functions 主機會重新開機來停止所有執行，以避免計費失控狀況發生。 [函式逾時可設定](../functions-host-json.md#functiontimeout)。
+這項取消機制不會終止進行中的活動函式或子協調流程執行。 只是讓協調器函式略過結果並繼續執行。 如果您的函式應用程式使用取用方案，您仍需支付已放棄的活動函式所耗用的任何時間和記憶體。 根據預設，在取用量方案中執行的函式會在五分鐘後逾時。 如果超過此限制，Azure Functions 主機會重新開機來停止所有執行，以避免計費失控狀況發生。 [函式逾時可設定](../functions-host-json.md#functiontimeout)。
 
-如需如何在協調器函式中執行超時的更深入範例，請參閱[人類互動 & 超時電話驗證一](durable-functions-phone-verification.md)文。
+如需如何在協調器函式中執行超時的更深入範例，請參閱「 [人為互動 & 超時-電話驗證」一](durable-functions-phone-verification.md) 文。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [了解如何引發和處理外部事件](durable-functions-external-events.md)

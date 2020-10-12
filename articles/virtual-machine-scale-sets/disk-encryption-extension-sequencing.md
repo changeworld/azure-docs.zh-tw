@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988033"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>使用搭配虛擬機器擴展集擴充功能排序的 Azure 磁碟加密
@@ -158,7 +158,7 @@ Azure 磁片加密等擴充功能可以依指定的順序新增至 Azure 虛擬�
 * 將 Azure 磁碟加密擴充功能套用至將磁片格式化 (Linux) ： [deploy-extseq-linux-ADE-after-customscript.js開啟](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)的自訂 shell 腳本
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解擴充功能排序： [虛擬機器擴展集中的時序擴充](virtual-machine-scale-sets-extension-sequencing.md)功能布建。
 - 深入瞭解 `provisionAfterExtensions` 屬性： [Microsoft. Compute virtualMachineScaleSets/extensions 範本參考](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
 - [適用於虛擬機器擴展集的 Azure 磁碟加密](disk-encryption-overview.md)

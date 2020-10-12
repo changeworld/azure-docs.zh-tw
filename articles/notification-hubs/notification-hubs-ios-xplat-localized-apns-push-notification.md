@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 4bc392cb6d499d967656358e920f46e261af2906
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87030329"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將當地語系化的推播通知傳送至 iOS
@@ -29,7 +29,7 @@ ms.locfileid: "87030329"
 > * [Windows 市集 C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-本教學課程說明如何使用 Azure 通知中樞的[範本](notification-hubs-templates-cross-platform-push-messages.md)功能，廣播已依語言及裝置進行當地語系化的即時新聞通知。 在本教學課程中，您會從使用中建立的 iOS 應用程式開始，[通知中樞來傳送即時新聞]。 完成時，您可以註冊您感興趣的類別、指定用來接收通知的語言，以及僅接收該語言中所選類別的推播通知。
+本教學課程說明如何使用 Azure 通知中樞的[範本](notification-hubs-templates-cross-platform-push-messages.md)功能，廣播已依語言及裝置進行當地語系化的即時新聞通知。 在本教學課程中，您會從使用「通知中樞」中建立的 iOS 應用程式開始， [以傳送即時新聞]。 完成時，您可以註冊您感興趣的類別、指定要接收通知的語言，並只接收該語言中所選類別的推播通知。
 
 此案例分成兩部分：
 
@@ -44,14 +44,14 @@ ms.locfileid: "87030329"
 > * 從 .NET 主控台應用程式傳送當地語系化的範本通知
 > * 從裝置傳送當地語系化的範本通知
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-在 [[使用通知中樞傳送即時新聞]] 中，您所建立的應用程式會使用**標記**來訂閱不同新聞類別的通知。 但有許多應用程式是以多個市場為目標的，因此需要當地語系化。 這表示通知本身的內容必須進行當地語系化，並傳遞至正確的裝置集。 本教學課程會說明如何使用通知中樞的**範本**功能，輕鬆地傳遞已當地語系化的即時新聞通知。
+[使用通知中樞傳送即時新聞]時，您所建立的應用程式會使用**標記**來訂閱不同新聞類別的通知。 但有許多應用程式是以多個市場為目標的，因此需要當地語系化。 這表示通知本身的內容必須進行當地語系化，並傳遞至正確的裝置集。 本教學課程會說明如何使用通知中樞的**範本**功能，輕鬆地傳遞已當地語系化的即時新聞通知。
 
 > [!NOTE]
 > 傳送當地語系化通知的其中一個方法，是為每個標記建立多個版本。 例如，若要支援英文、法文和中文，您必須為世界新聞建立三個不同的標記："world_en"、"world_fr" 和 "world_ch"。 接著，您必須將世界新聞的當地語系化版本分別傳送至這三個標記。 在本主題中，您會使用範本來避免使用過多的標籤和傳送過多訊息。
 
-範本是指定特定裝置應如何接收通知的方式。 範本可參照您的應用程式後端所傳送的訊息中包含的屬性，藉以指定確切的裝載格式。 在您的案例中，您會傳送地區設定無從驗證且包含所有支援語言的訊息：
+範本可讓您指定特定裝置接收通知的方式。 範本可參照您的應用程式後端所傳送的訊息中包含的屬性，藉以指定確切的裝載格式。 在您的案例中，您會傳送地區設定無從驗證且包含所有支援語言的訊息：
 
 ```json
 {
@@ -73,7 +73,7 @@ ms.locfileid: "87030329"
 
 如需範本的詳細資訊，請參閱[範本](notification-hubs-templates-cross-platform-push-messages.md)一文。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[將通知推送至特定的 iOS 裝置](notification-hubs-ios-xplat-segmented-apns-push-notification.md)教學課程並具備該教學課程中的程式碼，因為本教學課程是以該程式碼為基礎。
 * Visual Studio 2019 是選擇性的。
@@ -82,7 +82,7 @@ ms.locfileid: "87030329"
 
 在本節中，您會修改在[使用通知中樞傳送即時新聞]主題中所建立的即時新聞應用程式，以使用範本來傳送當地語系化的即時新聞。
 
-在您的中 `MainStoryboard_iPhone.storyboard` ，新增具有三種語言的分段控制：英文、法文和普通話。
+在中 `MainStoryboard_iPhone.storyboard` ，新增三種語言的分段控制項：英文、法文和中文。
 
 ![建立 iOS UI 分鏡腳本][13]
 
@@ -92,7 +92,7 @@ ms.locfileid: "87030329"
 
 ## <a name="build-the-ios-app"></a>建置 iOS 應用程式
 
-1. 在您的中 `Notification.h` ，新增 `retrieveLocale` 方法，並修改 store 和訂閱者法，如下列程式碼所示：
+1. 在中 `Notification.h` ，新增 `retrieveLocale` 方法，並修改 store 和訂閱者法，如下列程式碼所示：
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -261,7 +261,7 @@ ms.locfileid: "87030329"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已將當地語系化通知傳送至 iOS 裝置。 若要了解如何將通知推送至 iOS 應用程式的特定使用者，請繼續進行下列教學課程：
 

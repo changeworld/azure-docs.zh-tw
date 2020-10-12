@@ -1,5 +1,5 @@
 ---
-title: '使用 WhiteNoise 套件 (preview 來執行差異隱私權) '
+title: '使用 WhiteNoise 套件 (預覽版來實施差異隱私權) '
 titleSuffix: Azure Machine Learning
 description: 了解什麼是差異隱私權，以及 WhiteNoise 套件如何協助您實作可保留資料隱私權的差異隱私系統。
 author: luisquintanilla
@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86199803"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>使用差異隱私權和 WhiteNoise 套件 (preview 來保留資料隱私權) 
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>使用差異隱私權和 WhiteNoise 套件 (預覽版來保留資料隱私權) 
 
 了解什麼是差異隱私權，以及 WhiteNoise 套件如何協助您實作差異隱私系統。
 
 由於組織收集並用於分析的資料量增加，隱私權和安全性也會受到重視。 分析必要資料。 一般來說，用來定型模型的資料越多，結果就越精確。 當使用個人資訊進行這些分析時，資料在整個使用過程中都必須保持隱私。
 
 > [!NOTE]
-> 請注意，我們會重新命名此工具組，並會在接下來的幾周內引進新的名稱。 
+> 請注意，我們會重新命名此工具組，並將在未來幾周推出新的名稱。 
 
 ## <a name="how-differential-privacy-works"></a>差異隱私如何運作
 
@@ -63,7 +63,7 @@ Epsilon 值為非負值。 低於 1 的值會提供完整的合理推諉。 大�
 
 核心程式庫包含下列用來實作差異隱私系統的隱私權機制：
 
-|元件  |說明  |
+|元件  |描述  |
 |---------|---------|
 |分析     | 任意計算的圖表描述。 |
 |驗證程式     | Rust 程式庫包含一組工具，可用來檢查及衍生要進行差異隱私之分析的必要條件。          |
@@ -84,4 +84,4 @@ Epsilon 值為非負值。 低於 1 的值會提供完整的合理推諉。 大�
 
 保留 Azure Machine Learning 中的[資料隱私權](how-to-differential-privacy.md)。
 
-若要深入瞭解 WhiteNoise 的元件，請參閱 GitHub 存放庫中的[WhiteNoise 核心套件](https://github.com/opendifferentialprivacy/whitenoise-core)、 [WhiteNoise 系統套件](https://github.com/opendifferentialprivacy/whitenoise-system)和[WhiteNoise 範例](https://github.com/opendifferentialprivacy/whitenoise-samples)。
+若要深入瞭解 WhiteNoise 的元件，請參閱適用于 [WhiteNoise Core 套件](https://github.com/opendifferentialprivacy/whitenoise-core)、 [WhiteNoise 系統套件](https://github.com/opendifferentialprivacy/whitenoise-system) 和 [WhiteNoise 範例](https://github.com/opendifferentialprivacy/whitenoise-samples)的 GitHub 存放庫。

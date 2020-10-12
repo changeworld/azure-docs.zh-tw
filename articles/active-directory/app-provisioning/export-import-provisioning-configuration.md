@@ -1,6 +1,6 @@
 ---
-title: 匯出布建設定並復原至已知的良好狀態以進行嚴重損壞修復
-description: 瞭解如何匯出您的布建設定，並復原至已知的良好狀態以進行嚴重損壞修復。
+title: 匯出布建設定，並復原為已知的良好狀態，以進行嚴重損壞修復
+description: 瞭解如何匯出布建設定，並復原為已知的良好狀態，以進行嚴重損壞修復。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,45 +11,45 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235812"
 ---
-# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>如何：匯出布建設定並復原至已知的良好狀態
+# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>How to：匯出布建設定，並回復為已知的良好狀態
 
 在本文中，您將學會如何：
 
-- 從 Azure 入口網站匯出和匯入您的布建設定
-- 使用 Microsoft Graph API 匯出和匯入您的布建設定
+- 從 Azure 入口網站匯出並匯入您的布建設定
+- 使用 Microsoft Graph API 來匯出和匯入布建設定
 
-## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>從 Azure 入口網站匯出和匯入您的布建設定
+## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>從 Azure 入口網站匯出並匯入您的布建設定
 
-### <a name="export-your-provisioning-configuration"></a>匯出您的布建設定
+### <a name="export-your-provisioning-configuration"></a>匯出布建設定
 
 若要匯出您的設定：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的左方瀏覽窗格中，選取 [Azure Active Directory]。
 1. 在 [ **Azure Active Directory** ] 窗格中，選取 [ **企業應用程式** ]，然後選擇您的應用程式。
-1. 在左側流覽窗格中 **，選取 [** 布建]。 在 [布建設定] 頁面上，依序按一下 [ **屬性**對應] 和 [顯示] [ **advanced options**]，最後再 **檢查您的架構**。 這會帶您前往 [架構編輯器]。
-1. 在頁面頂端的命令列中，按一下 [下載] 以下載您的架構。
+1. 在左側流覽窗格中 **，選取 [** 布建]。 在 [布建設定] 頁面上，按一下 [ **屬性**對應]，然後 **顯示 [advanced options**]，最後再 **檢查您的架構**。 這會將您帶到架構編輯器。
+1. 在頁面頂端的命令列中按一下 [下載]，以下載您的架構。
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>嚴重損壞修復-復原至已知的良好狀態
 
-匯出和儲存您的設定可讓您復原到先前版本的設定。 我們建議您匯出布建設定並加以儲存，以供稍後在變更屬性對應或範圍篩選器時使用。 您只需要開啟您在上述步驟中下載的 JSON 檔案、複製 JSON 檔案的完整內容、在架構編輯器中取代 JSON 承載的完整內容，然後儲存。 如果有作用中的布建週期，它將會完成，而下一個週期會使用更新的架構。 下一個週期也會是初始迴圈，它會根據新的設定重新評估每個使用者和群組。 回復到先前的設定時，請考慮下列事項：
+匯出和儲存您的設定，可讓您復原至先前版本的設定。 建議您在變更屬性對應或範圍篩選器時，匯出布建設定並加以儲存，以供稍後使用。 您只需要開啟您在上述步驟中下載的 JSON 檔案，複製 JSON 檔案的整個內容，在架構編輯器中取代 JSON 承載的整個內容，然後再儲存。 如果有作用中的布建週期，則會完成，而且下一個週期將會使用更新的架構。 下一個週期也會是初始迴圈，這會根據新的設定重新評估每個使用者和群組。 回復為先前的設定時，請考慮下列事項：
 
-- 系統會再次評估使用者，以判斷它們是否應在範圍內。 如果範圍篩選器已變更，則使用者不在範圍內，將會停用它們。 雖然在大部分情況下，這是想要的行為，但有時您可能會想要避免這種情況，並且可以使用 [跳過範圍的刪除](./skip-out-of-scope-deletions.md) 功能。 
-- 變更您的布建設定會重新開機服務並觸發 [初始迴圈](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。
+- 系統會再次評估使用者，以判斷是否應該在範圍內。 如果範圍篩選器變更了使用者不在範圍內，則會停用它們。 雖然這在大部分情況下都是所要的行為，但有時候您可能會想要避免這個問題，而且可以使用 [略過範圍的刪除](./skip-out-of-scope-deletions.md) 功能。 
+- 變更您的布建設定會重新開機服務，並觸發 [初始週期](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。
 
-## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 匯出和匯入您的布建設定
+## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 來匯出和匯入布建設定
 
-您可以使用 Microsoft Graph API 和 Microsoft Graph Explorer，將您的使用者布建屬性對應和架構匯出至 JSON 檔案，並將其匯入回 Azure AD。 您也可以使用此處所提供的步驟來建立布建設定的備份。
+您可以使用 Microsoft Graph API 和 Microsoft Graph Explorer，將使用者布建屬性對應和架構匯出至 JSON 檔案，並將它匯入回 Azure AD。 您也可以使用此處所提供的步驟來建立布建設定的備份。
 
-### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步驟1：取出您的布建 App Service 主體識別碼 (物件識別碼) 
+### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步驟1： (物件識別碼取得布建 App Service 主體識別碼) 
 
-1. 啟動 [Azure 入口網站](https://portal.azure.com)，然後流覽至布建應用程式的 [屬性] 區段。 例如，如果您想要將 Workday 匯出 *至 AD 使用者布建應用程式* 對應，請流覽至該應用程式的 [屬性] 區段。
-1. 在佈建應用程式的 [屬性] 區段中，複製與 [物件識別碼]** 欄位相關的 GUID 值。 這個值也稱為應用程式的 **ServicePrincipalId** ，它將用於 Microsoft Graph Explorer 作業中。
+1. 啟動 [Azure 入口網站](https://portal.azure.com)，然後流覽至布建應用程式的 [屬性] 區段。 例如，如果您想要將 Workday 匯出 *至 AD 使用者布建應用程式* 對應，請流覽至該應用程式的屬性區段。
+1. 在佈建應用程式的 [屬性] 區段中，複製與 [物件識別碼]** 欄位相關的 GUID 值。 此值也稱為應用程式的 **ServicePrincipalId** ，將用於 Microsoft Graph Explorer 作業中。
 
    ![Workday 應用程式服務主體識別碼](./media/export-import-provisioning-configuration/wd_export_01.png)
 

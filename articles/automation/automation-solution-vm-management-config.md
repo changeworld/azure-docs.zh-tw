@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987200"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>設定在停機期間啟動/停止 VM
@@ -143,13 +143,13 @@ ms.locfileid: "90987200"
 
 2. 在 [StartStop_VM_Notification] 頁面上，按一下 [詳細資料] 底下的 [編輯詳細資料]。 隨即會開啟 [電子郵件/SMS/推播/語音] 頁面。 請更新電子郵件地址，然後按一下 [確定] 以儲存變更。
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="[電子郵件/SMS/推播/語音] 頁面的螢幕擷取畫面，其中顯示已更新的電子郵件地址範例。":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="[監視-動作群組] 頁面的螢幕擷取畫面。":::
 
     或者，您也可以將其他動作新增至動作群組中；若要深入了解動作群組，請參閱[動作群組](../azure-monitor/platform/action-groups.md)
 
 下列是當功能關閉虛擬機器時，所傳送的範例電子郵件。
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="當此功能關閉虛擬機器時傳送的範例電子郵件螢幕擷取畫面。":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="[監視-動作群組] 頁面的螢幕擷取畫面。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>新增或排除 VM
 

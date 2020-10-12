@@ -4,10 +4,10 @@ description: 本文提供 Azure 轉送服務的一些常見問題的解答。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299281"
 ---
 # <a name="azure-relay-faqs"></a>Azure 轉送常見問題集
@@ -120,9 +120,9 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 共用存取簽章 (SAS) 是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 如需如何在 Node.js、PHP、Python、JAVA、C 和 c # 中產生您自己的簽章的詳細資訊，請參閱 [使用共用存取簽章的服務匯流排驗證][Shared Access Signatures]。
 
 ### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>是否有可能只允許某些轉送端點？
-可以。 轉送用戶端會使用完整的網域名稱連線至 Azure 轉送服務。 客戶可以 `*.servicebus.windows.net` 在支援 DNS 核准清單的防火牆上新增專案。
+是。 轉送用戶端會使用完整的網域名稱連線至 Azure 轉送服務。 客戶可以 `*.servicebus.windows.net` 在支援 DNS 核准清單的防火牆上新增專案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [建立命名空間](relay-create-namespace-portal.md)
 * [開始使用 .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [開始使用 Node](relay-hybrid-connections-node-get-started.md)

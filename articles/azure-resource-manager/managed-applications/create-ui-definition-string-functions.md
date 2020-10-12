@@ -1,20 +1,20 @@
 ---
 title: 建立 UI 定義字串函數
-description: 描述在為 Azure 受控應用程式的 UI 定義進行建立時，所要使用的字串函式
+description: 描述為 Azure 受控應用程式建立 UI 定義時要使用的字串函式
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: c662948542c36cd93f889ca045ee245c15c7bb11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096230"
 ---
 # <a name="createuidefinition-string-functions"></a>CreateUiDefinition 字串函數
 
-要與 JSON 字串搭配使用的這些函式。
+這些函式可搭配 JSON 字串使用。
 
 ## <a name="concat"></a>concat
 
@@ -40,7 +40,7 @@ ms.locfileid: "87096230"
 
 產生全域唯一字串 (GUID)。
 
-下列範例會傳回如下的值 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"` ：
+下列範例會傳回類似以下的值 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"` ：
 
 ```json
 "[guid()]"
@@ -48,7 +48,7 @@ ms.locfileid: "87096230"
 
 ## <a name="indexof"></a>indexOf
 
-傳回字串內值的第一個位置，如果找不到，則傳回-1。
+傳回值在字串中的第一個位置，如果找不到，則為-1。
 
 下列範例會傳回2。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87096230"
 
 ## <a name="lastindexof"></a>lastIndexOf
 
-傳回值在字串中的最後一個位置，如果找不到，則傳回-1。
+傳回值在字串中的最後一個位置，如果找不到，則為-1。
 
 下列範例會傳回3。
 
@@ -116,7 +116,7 @@ ms.locfileid: "87096230"
 "[toUpper('contoso')]"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure Resource Manager 的簡介，請參閱 [Azure Resource Manager 概觀](../management/overview.md)。
 

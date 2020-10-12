@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935750"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點，以 Azure 認知搜尋的安全連線
@@ -96,7 +96,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 私人 DNS 區域  | 保留預設值 [ (新的) privatelink.search.windows.net * *。 |
     |||
 
-1. 選取 [確定]。 
+1. 選取 [確定]  。 
 
 1. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 
@@ -176,7 +176,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 

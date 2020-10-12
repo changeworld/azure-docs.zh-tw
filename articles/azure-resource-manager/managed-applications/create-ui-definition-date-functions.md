@@ -1,20 +1,20 @@
 ---
-title: 建立 UI 定義日期函式
-description: 描述處理日期值時所要使用的函數。
+title: 建立 UI 定義日期函數
+description: 描述使用日期值時要使用的函數。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 80484fd15e51bae7036c43bd3ca8fe8167387ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096236"
 ---
 # <a name="createuidefinition-date-functions"></a>CreateUiDefinition date 函數
 
-處理日期值時所要使用的函數。
+使用日期值時要使用的函數。
 
 ## <a name="addhours"></a>addHours
 
@@ -55,6 +55,6 @@ ms.locfileid: "87096236"
 "[utcNow()]"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure Resource Manager 的簡介，請參閱 [Azure Resource Manager 概觀](../management/overview.md)。

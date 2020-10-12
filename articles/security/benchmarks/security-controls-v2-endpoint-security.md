@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91402917"
 ---
 # <a name="security-control-v2-endpoint-security"></a>安全性控制 V2：端點安全性
@@ -60,7 +60,7 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 - [如何設定雲端服務和虛擬機器的 Microsoft Antimalware](../fundamentals/antimalware.md)
 
-- [支援的端點保護解決方案](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions-)
+- [支援的 endpoint protection 解決方案](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions-)
 
 **責任**：客戶
 

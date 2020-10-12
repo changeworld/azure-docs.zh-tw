@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984153"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>建立已啟用基礎結構加密的儲存體帳戶，以進行資料的雙重加密
@@ -180,7 +180,7 @@ az storage account create \
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
 1. 在 [ **設定**] 底下，選擇 [ **加密**]。
 
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="顯示如何確認已針對帳戶啟用基礎結構加密的螢幕擷取畫面":::
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="顯示如何在建立帳戶時啟用基礎結構加密的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

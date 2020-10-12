@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 49a89ee90d28c9c7a3f59424b773ee0f221381e4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89301627"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立公用 IP 位址
@@ -36,7 +36,7 @@ ms.locfileid: "89301627"
     | ---                     | ---                         |
     | IP 版本              | 選取 IPv4                 |    
     | SKU                     | 選取 [標準]         |
-    | Name                    | 輸入 *myStandardZRPublicIP*          |
+    | 名稱                    | 輸入 *myStandardZRPublicIP*          |
     | IP 位址指派   | 請注意，這會鎖定為「靜態」                                        |
     | 閒置超時 (分鐘)   | 將值保留為4        |
     | DNS 名稱標籤          | 將值保留為空白    |
@@ -61,7 +61,7 @@ ms.locfileid: "89301627"
     | ---                     | ---                         |
     | IP 版本              | 選取 IPv4                 |    
     | SKU                     | 選取 [標準]         |
-    | Name                    | 輸入 *myStandardPublicIP*          |
+    | 名稱                    | 輸入 *myStandardPublicIP*          |
     | IP 位址指派   | 請注意，這會鎖定為「靜態」                                        |
     | 閒置超時 (分鐘)   | 將值保留為4        |
     | DNS 名稱標籤          | 將值保留為空白    |
@@ -86,7 +86,7 @@ ms.locfileid: "89301627"
     | ---                     | ---                         |
     | IP 版本              | 選取 IPv4                 |    
     | SKU                     | 選取 [標準]         |
-    | Name                    | 輸入 *myBasicPublicIP*          |
+    | 名稱                    | 輸入 *myBasicPublicIP*          |
     | IP 位址指派   | 選擇 **靜態** (請參閱下面的附注)                                      |
     | 閒置超時 (分鐘)   | 將值保留為4        |
     | DNS 名稱標籤          | 將值保留為空白    |
@@ -102,7 +102,7 @@ ms.locfileid: "89301627"
 
 如需上列個別欄位的詳細資訊，請參閱 [管理公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 將[公用 IP 位址與虛擬機器](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)產生關聯
 - 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 深入了解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)。

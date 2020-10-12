@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129856"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>將 Azure VM 重新開機時，Windows 會在藍色畫面上顯示 "CRITICAL SERVICE FAILED"
@@ -37,7 +37,7 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 - 系統檔案或記憶體損毀
 - 應用程式存取記憶體的禁止磁區
 
-## <a name="solution"></a>解決方案 
+## <a name="solution"></a>解決方法 
 
 若要解決此問題，請[連絡支援人員並提交傾印檔案](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)，這有助我們更快診斷問題，或是嘗試下列自助解決方案。
 
@@ -110,19 +110,19 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>選用：分析傾印損毀模式中的傾印記錄
 
-若要自行分析傾印記錄，請遵循下列步驟：
+若要自行分析傾印記錄檔，請遵循下列步驟：
 
 1. 將 OS 磁碟連結至還原 VM。
-2. 在您連接的 OS 磁片上，流覽至**\windows\system32\config**。複製所有檔案作為備份，以防需要復原。
+2. 在您連接的 OS 磁片上，流覽至 **\windows\system32\config**。複製所有檔案作為備份，以防需要回復。
 3. 啟動 [登錄編輯程式]**** (regedit.exe)。
-4. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取 [** 檔案] [  >  **載入 Hive**]。
-5. 流覽至您連接的 OS 磁片上的**\windows\system32\config\SYSTEM**資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。
+4. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取 [** 檔案  >  **載入 Hive**]。
+5. 流覽至您連接的 OS 磁片上的 **\windows\system32\config\SYSTEM** 資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。
 6. 瀏覽至 **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** 並進行下列變更：
 
     Autoreboot = 0
 
     CrashDumpEnabled = 2
-7.  選取 [BROKENSYSTEM]****。 從功能表中 **，選取**  >  **[** 檔案] [卸載 Hive]。
+7.  選取 [BROKENSYSTEM]****。 從**功能表選取**  >  **[** 檔案卸載 Hive]。
 8.  修改 BCD 設定以開機進入偵錯模式。 從提升權限的命令提示字元執行下列命令：
 
     ```cmd

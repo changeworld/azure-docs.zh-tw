@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83772831"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Microsoft 帳戶登入
@@ -28,7 +28,7 @@ ms.locfileid: "83772831"
 1. 在 Azure 入口網站中移至[**應用程式註冊**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。 如有需要，請使用您的 Microsoft 帳戶登入。
 1. 選取 [新增註冊]，然後輸入應用程式名稱。
 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)]
-1. 在 [重新導向 URI] 底下，選取 [Web]，然後輸入 `https://<app-domain-name>/.auth/login/aad/callback`。 以應用程式的網域名稱取代 *\<app-domain-name>* 。  例如： `https://contoso.azurewebsites.net/.auth/login/aad/callback` 。 請務必在 URL 中使用 HTTPS 配置。
+1. 在 [重新導向 URI] 底下，選取 [Web]，然後輸入 `https://<app-domain-name>/.auth/login/aad/callback`。 *\<app-domain-name>* 以您應用程式的功能變數名稱取代。  例如： `https://contoso.azurewebsites.net/.auth/login/aad/callback` 。 請務必在 URL 中使用 HTTPS 配置。
 
 1. 選取 [註冊]。
 1. 複製 [應用程式 (用戶端) 識別碼]。 稍後您將會用到此資訊。

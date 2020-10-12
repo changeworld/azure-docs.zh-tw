@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 支援 Hyper-v Vm 至 Azure 的嚴重損壞修復
+title: 支援使用 Azure Site Recovery 將 Hyper-v Vm 故障復原至 Azure
 description: 摘要說明使用 Azure Site recovery 將 Hyper-V VM 災害復原至 Azure 的支援元件和需求
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386702"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
@@ -19,7 +19,7 @@ ms.locfileid: "87386702"
 本文摘要說明將內部部署 Hyper-V VM 災害復原至 Azure (使用 [Azure Site Recovery](site-recovery-overview.md)) 所支援的元件和設定。
 
 >[!NOTE]
-> Site Recovery 不會在目的地區域中移動或儲存客戶資料，因為來源機器已設定嚴重損壞修復。 如果客戶選擇復原服務保存庫，則可以從不同的區域中選取。 復原服務保存庫包含中繼資料，但沒有實際的客戶資料。
+> Site Recovery 不會在目的地區域中移動或儲存客戶資料，因為來源機器已設定嚴重損壞修復。 客戶可以選擇不同區域中的復原服務保存庫（如果有的話）。 復原服務保存庫包含中繼資料，但不包含實際的客戶資料。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
@@ -30,13 +30,13 @@ Hyper-V (不含 Virtual Machine Manager) | 您可以針對在不是由 Virtual M
 
 ## <a name="on-premises-servers"></a>內部部署伺服器
 
-**Server** | **需求** | **詳細資料**
+**Server** | **Requirements** | **詳細資料**
 --- | --- | ---
-Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 （含最新的更新） <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。 | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。
-Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。  | 如果使用 Virtual Machine Manager，則應該在 Virtual Machine Manager 2019 中管理 Windows Server 2019 主機。 同樣地，Windows Server 2016 主機也應該在 Virtual Machine Manager 2016 中進行管理。
+Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 （含最新更新） <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。 | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。
+Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。  | 如果使用 Virtual Machine Manager，Windows Server 2019 主機應該在 Virtual Machine Manager 2019 中進行管理。 同樣地，Windows Server 2016 主機應該在 Virtual Machine Manager 2016 中進行管理。
 
 > [!NOTE]
-> 請確定內部部署伺服器上有 .NET Framework 4.6.2 或更高版本。
+> 確定內部部署伺服器上有 .NET Framework 4.6.2 或更高版本。
 
 ## <a name="replicated-vms"></a>複寫 VM
 
@@ -53,12 +53,12 @@ VM 設定 | 複寫到 Azure 的 VM 必須符合 [Azure 需求](#azure-vm-require
 
 **動作** | **詳細資料**
 --- | ---
-在複寫的 Hyper-V VM 上調整磁碟大小 | 不支援。 停用複寫、進行變更，然後重新啟用 VM 的複寫。
-在複寫的 Hyper-V VM 上新增磁碟 | 不支援。 停用複寫、進行變更，然後重新啟用 VM 的複寫。
+在複寫的 Hyper-V VM 上調整磁碟大小 | 不支援。 停用複寫，進行變更，然後重新啟用 VM 的複寫。
+在複寫的 Hyper-V VM 上新增磁碟 | 不支援。 停用複寫，進行變更，然後重新啟用 VM 的複寫。
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V 網路組態
 
-**元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**元件** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 主機網路：NIC 小組 | 是 | 是
 主機網路：VLAN | 是 | 是
@@ -71,14 +71,14 @@ VM 設定 | 複寫到 Azure 的 VM 必須符合 [Azure 需求](#azure-vm-require
 客體 VM 網路：靜態 IP (Linux) | 否 | 否
 客體 VM 網路：多重 NIC | 是 | 是
 Https Proxy | 否 | 否
-Site Recovery 服務的私用連結存取 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
+Site Recovery 服務的 Private link 存取權 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
 
 
 
 
 ## <a name="azure-vm-network-configuration-after-failover"></a>Azure VM 網路組態 (容錯移轉後)
 
-**元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**元件** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 Azure ExpressRoute | 是 | 是
 ILB | 是 | 是
@@ -94,21 +94,21 @@ Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | �
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V 主機儲存體
 
-**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
-多重路徑 (MPIO)。 測試工具：<br></br> Microsoft DSM，EMC PowerPath 5.7 SP4，EMC PowerPath DSM for CLARiiON | 是 | 是
+多重路徑 (MPIO)。 測試工具：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 客體儲存體
 
-**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | 是 | 是
 第 2 代 VM | 是 | 是
-EFI/UEFI<br></br>Azure 中已遷移的 VM 會自動轉換為 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片最多隻能有五個磁碟分割或更少，且 OS 磁片的大小應小於 300 GB。| 是 | 是
+EFI/UEFI<br></br>Azure 中已遷移的 VM 將會自動轉換成 BIOS 開機 VM。 VM 應僅執行 Windows Server 2012 和更新版本。 OS 磁片應該有最多五個磁碟分割或較少，且 OS 磁片的大小應小於 300 GB。| 是 | 是
 共用叢集磁碟 | 否 | 否
 已加密磁碟 | 否 | 否
 NFS | NA | NA
@@ -126,7 +126,7 @@ RDM | NA | NA
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
-**元件** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**元件** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 本地備援儲存體 | 是 | 是
 異地備援儲存體 | 是 | 是
@@ -135,19 +135,19 @@ RDM | NA | NA
 經常性存取儲存體| 否 | 否
 區塊 Blob | 否 | 否
 待用加密 (SSE)| 是 | 是
-待用加密 (CMK) <br></br> （僅適用于容錯移轉至受控磁片）| 是（透過 PowerShell Az 3.3.0 module 開始） | 是（透過 PowerShell Az 3.3.0 module 開始）
-靜態加密 <br></br> （僅適用于容錯移轉至受控磁片） <br></br> 深入瞭解[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)支援的區域 | 是（透過 PowerShell Az 3.3.0 module 開始） | 是（透過 PowerShell Az 3.3.0 module 開始）
+待用加密 (CMK) <br></br>  (僅適用于容錯移轉至受控磁片) | 是 (via PowerShell Az 3.3.0 module)  | 是 (via PowerShell Az 3.3.0 module) 
+靜態加密 <br></br>  (僅適用于容錯移轉至受控磁片)  <br></br> 深入瞭解適用于[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)的支援區域 | 是 (via PowerShell Az 3.3.0 module)  | 是 (via PowerShell Az 3.3.0 module) 
 進階儲存體 | 是 | 是
 標準儲存體 | 是 | 是
 匯入/匯出服務 | 否 | 否
-已啟用防火牆的 Azure 儲存體帳戶 | 是。 適用于目標儲存體和快取。 | 是。 適用于目標儲存體和快取。
-修改儲存體帳戶 | 不可以。 啟用複寫之後，即無法修改目標 Azure 儲存體帳戶。 修改、停用再重新啟用嚴重損壞修復。 | 否
+Azure 儲存體已啟用防火牆的帳戶 | 是。 適用于目標儲存體和快取。 | 是。 適用于目標儲存體和快取。
+修改儲存體帳戶 | 否。 啟用複寫之後，便無法修改目標 Azure 儲存體帳戶。 若要修改，請停用再重新啟用嚴重損壞修復。 | 否
 安全傳輸選項 | 是
 
 
 ## <a name="azure-compute-features"></a>Azure 計算功能
 
-**功能** | **具有 Virtual Machine Manager 的 hyper-v** | **不 Virtual Machine Manager 的 hyper-v**
+**功能** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 可用性設定組 | 是 | 是
 中樞 | 是 | 是  
@@ -157,10 +157,10 @@ RDM | NA | NA
 
 您複寫到 Azure 的內部部署 VM 必須符合此表中摘要說明的 VM 需求。
 
-**元件** | **需求** | **詳細資料**
+**元件** | **Requirements** | **詳細資料**
 --- | --- | ---
-客體作業系統 | Site Recovery 支援[Azure 支援](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))的所有作業系統。  | 若不支援，則必要條件檢查會失敗。
-客體作業系統架構 | 32位（Windows Server 2008）/64-bit | 若不支援，則必要條件檢查會失敗。
+客體作業系統 | Site Recovery 支援 [Azure 支援](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))的所有作業系統。  | 若不支援，則必要條件檢查會失敗。
+客體作業系統架構 | 32位 (Windows Server 2008) /64 位 | 若不支援，則必要條件檢查會失敗。
 作業系統磁碟大小 | 第 1 代 VM 高達 2,048 G。<br/><br/> 第 2 代 VM 高達 300 GB。  | 若不支援，則必要條件檢查會失敗。
 作業系統磁碟計數 | 1 | 若不支援，則必要條件檢查會失敗。
 資料磁碟計數 | 16 或以下  | 若不支援，則必要條件檢查會失敗。
@@ -181,14 +181,14 @@ VM 類型 | 第 1 代<br/><br/> 第 2 代--Windows | OS 磁碟基本類型的第
 跨資源群組間移動儲存體、網路、Azure VM<br/><br/> 內及跨訂用帳戶 | 否 | 否
 
 > [!NOTE]
-> 將虛擬機器從內部部署複寫至 Azure 時，您只能從一個特定環境複寫到一個 AD 租使用者-Hyper-v 網站或適用于 VMM 的 Hyper-v。
+> 將 Hyper-VMs 從內部部署複寫至 Azure 時，您只能從一個特定的環境（Hyper-v 網站或使用 VMM 的 Hyper-v）複寫至一個 AD 租使用者。
 
 
 ## <a name="provider-and-agent"></a>Provider 和代理程式
 
 若要確定您的部署與本文中的設定相容，請確定您所執行的是最新的提供者和代理程式版本。
 
-**名稱** | **說明** | **詳細資料**
+**名稱** | **描述** | **詳細資料**
 --- | --- | --- 
 Azure Site Recovery 提供者 | 協調內部部署伺服器與 Azure 之間的通訊 <br/><br/> HYPER-V (含 Virtual Machine Manager)：安裝在 Virtual Machine Manager 伺服器上<br/><br/> HYPER-V (不含 Virtual Machine Manager)：安裝在 HYPER-V 主機上| 最新版本：5.1.2700.1 (可從 Azure 入口網站取得)<br/><br/> [最新功能和修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure 復原服務代理程式 | 協調 HYPER-V VM 與 Azure 之間的複寫<br/><br/> 安裝在內部部署 Hyper-V 伺服器上 (無論是否有 Virtual Machine Manager) | 最新的代理程式可從入口網站取得
@@ -198,5 +198,5 @@ Microsoft Azure 復原服務代理程式 | 協調 HYPER-V VM 與 Azure 之間的
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解如何[準備 Azure](tutorial-prepare-azure.md) 的內部部署 Hyper-V VM 災害復原。

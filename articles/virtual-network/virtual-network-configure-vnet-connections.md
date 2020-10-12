@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400701"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>設定及驗證虛擬網路或 VPN 連線
@@ -64,7 +64,7 @@ Azure VPN 閘道可讓您彈性地在 Azure 中排列幾乎任何一種已連線
 
 ![檢查虛擬網路對等互連設定的選項](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-針對 Azure PowerShell，請執行 [>set-azurermvirtualnetworkpeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) 命令以取得虛擬網路對等互連。 以下是範例：
+針對 Azure PowerShell，請執行 [>set-azurermvirtualnetworkpeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) 命令以取得虛擬網路對等互連。 以下為範例：
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets

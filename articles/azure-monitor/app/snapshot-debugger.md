@@ -6,10 +6,10 @@ ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935801"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 應用程式中的例外狀況偵錯快照集
@@ -128,7 +128,7 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 > [!TIP]
 > 在應用程式服務中安裝 Application Insights 網站延伸模組，以取得取消最佳化支援。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 為您的應用程式啟用 Application Insights 快照偵錯工具：
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)

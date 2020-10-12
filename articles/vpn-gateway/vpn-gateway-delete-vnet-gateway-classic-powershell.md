@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: ded1887248e7313c2a284388e8338af96ad7614c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987422"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell (傳統) 刪除虛擬網路閘道
@@ -35,7 +35,7 @@ ms.locfileid: "84987422"
 
 以提高的權限開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
 
-1. 以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
+1. 以較高的許可權開啟 PowerShell 主控台。 若要切換到服務管理，請使用此命令：
 
    ```powershell
    azure config mode asm
@@ -80,7 +80,7 @@ Status : Successful
 
 ### <a name="local-network-site-references"></a><a name="lnsref"></a>區域網路網站參考
 
-若要移除網站參考資訊，請對 **ConnectionsToLocalNetwork/LocalNetworkSiteRef** 進行組態變更。 移除區域網站參考會觸發 Azure 刪除通道。 根據您所建立的設定，您可能不會列出**LocalNetworkSiteRef** 。
+若要移除網站參考資訊，請對 **ConnectionsToLocalNetwork/LocalNetworkSiteRef** 進行組態變更。 移除區域網站參考會觸發 Azure 刪除通道。 根據您所建立的設定，您可能沒有列出 **LocalNetworkSiteRef** 。
 
 ```
 <Gateway>
@@ -137,7 +137,7 @@ Status : Successful
 
 ### <a name="client-addresspool"></a><a name="clientaddresss"></a>用戶端 AddressPool
 
-如果您有 VNet 的 P2S 連線，您將會有**VPNClientAddressPool**。 移除對應至您已刪除之虛擬網路閘道的用戶端位址集區。
+如果您的 VNet 有 P2S 連接，您將會有 **VPNClientAddressPool**。 移除對應至您已刪除之虛擬網路閘道的用戶端位址集區。
 
 ```
 <Gateway>
@@ -158,7 +158,7 @@ Status : Successful
 
 ### <a name="gatewaysubnet"></a><a name="gwsub"></a>GatewaySubnet
 
-刪除對應至 VNet 的**GatewaySubnet** 。
+刪除對應至 VNet 的 **GatewaySubnet** 。
 
 ```
 <Subnets>

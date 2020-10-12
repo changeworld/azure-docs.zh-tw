@@ -1,26 +1,26 @@
 ---
 title: 跨範圍部署資源
-description: 顯示如何在部署期間將目標設為多個範圍。 範圍可以是租使用者、管理群組、訂用帳戶和資源群組。
+description: 示範如何在部署期間將一個以上的範圍設為目標。 範圍可以是租使用者、管理群組、訂用帳戶和資源群組。
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 6161401ac039551a814b595715f56df1ac62dd6c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374510"
 ---
 # <a name="deploy-azure-resources-across-scopes"></a>跨範圍部署 Azure 資源
 
-使用 Azure Resource Manager 範本（ARM 範本），您可以在單一部署中部署至一個以上的範圍。 可用的範圍包括租使用者、管理群組、訂用帳戶和資源群組。 例如，您可以將資源部署到一個資源群組，然後在相同的範本中，將資源部署至另一個資源群組。 或者，您也可以將資源部署至管理群組，並將資源部署到該管理群組內的資源群組。
+使用 Azure Resource Manager 範本 (ARM 範本) ，您可以在單一部署中部署至多個範圍。 可用的範圍包括租使用者、管理群組、訂用帳戶和資源群組。 例如，您可以將資源部署至一個資源群組，並在相同的範本中將資源部署至另一個資源群組。 或者，您也可以將資源部署至管理群組，也可以將資源部署到該管理群組內的資源群組。
 
-您可以使用[嵌套或連結的範本](linked-templates.md)來指定與部署作業的主要範圍不同的範圍。
+您可以使用 [嵌套或連結的範本](linked-templates.md) ，來指定與部署作業的主要範圍不同的範圍。
 
 ## <a name="available-scopes"></a>可用的範圍
 
-您用於部署作業的範圍會決定可用的其他範圍。 您可以部署至[租](deploy-to-tenant.md)使用者、[管理群組](deploy-to-management-group.md)、[訂](deploy-to-subscription.md)用帳戶或[資源群組](deploy-powershell.md)。 從主要部署層級中，您無法在階層中往上移層級。 例如，如果您部署至訂用帳戶，則無法逐步執行將資源部署至管理群組的層級。 不過，您可以部署至管理群組和步驟降低層級，以部署至訂用帳戶或資源群組。
+您用於部署作業的範圍會決定有哪些其他可用的範圍。 您可以部署至 [租](deploy-to-tenant.md)使用者、 [管理群組](deploy-to-management-group.md)、 [訂](deploy-to-subscription.md)用帳戶或 [資源群組](deploy-powershell.md)。 從主要部署層級中，您無法在階層中往上移層級。 例如，如果您部署至訂用帳戶，就無法將資源部署到管理群組。 不過，您可以部署至管理群組和逐步執行層級，以部署至訂用帳戶或資源群組。
 
-針對每個範圍，部署範本的使用者必須具有建立資源所需的許可權。
+針對每個範圍，部署範本的使用者必須擁有建立資源的必要許可權。
 
 ## <a name="cross-resource-groups"></a>跨資源群組
 
@@ -127,15 +127,15 @@ az deployment group create \
 
 ## <a name="cross-subscription-management-group-and-tenant"></a>跨訂用帳戶、管理群組和租使用者
 
-為訂用帳戶、管理群組和租使用者層級部署指定不同的範圍時，您可以使用像是資源群組範例的嵌套部署。 您用來指定範圍的屬性可能不同。 這些案例涵蓋在部署層級的相關文章中。 如需詳細資訊，請參閱
+針對訂用帳戶、管理群組和租使用者層級部署指定不同的範圍時，您會使用像是資源群組範例的嵌套部署。 您用來指定範圍的屬性可能會不同。 這些案例包含在有關部署層級的文章中。 如需詳細資訊，請參閱
 
 * [在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)
 * [在管理群組層級建立資源](deploy-to-management-group.md)
 * [在租用戶層級建立資源](deploy-to-tenant.md)
 
-## <a name="how-functions-resolve-in-scopes"></a>函數在範圍中的解析方式
+## <a name="how-functions-resolve-in-scopes"></a>函數在範圍內的解析方式
 
-當您部署到一個以上的範圍時， [resourceGroup （）](template-functions-resource.md#resourcegroup)和[訂用帳戶（）](template-functions-resource.md#subscription)函式會根據您指定範本的方式，以不同方式進行解析。 當您連結至外部範本時，函式一律會解析為該範本的範圍。 當您將範本巢狀嵌入父代範本中時，請使用 `expressionEvaluationOptions` 屬性來指定函式要解析為父代範本或巢狀範本的資源群組和訂用帳戶。 屬性設定為 `inner`，會解析成巢狀範本的範圍。 屬性設定為 `outer`，會解析成父代範本的範圍。
+當您部署至一個以上的範圍時， [resourceGroup ( # B1 ](template-functions-resource.md#resourcegroup) 和 [訂用帳戶 ( # B3 ](template-functions-resource.md#subscription) 函式會根據您指定範本的方式，以不同的方式進行解析。 當您連結至外部範本時，函式一律會解析為該範本的範圍。 當您將範本巢狀嵌入父代範本中時，請使用 `expressionEvaluationOptions` 屬性來指定函式要解析為父代範本或巢狀範本的資源群組和訂用帳戶。 屬性設定為 `inner`，會解析成巢狀範本的範圍。 屬性設定為 `outer`，會解析成父代範本的範圍。
 
 下表顯示函式會解析成父代或內嵌的資源群組和訂用帳戶。
 

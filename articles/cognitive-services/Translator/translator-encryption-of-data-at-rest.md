@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079195"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>待用資料的 Translator 加密
@@ -37,7 +37,7 @@ Translator 會自動將您上傳的資料加密，以建立自訂翻譯模型（
 根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 您也可以選擇使用您自己的金鑰來管理訂用帳戶，稱為客戶管理的金鑰 (CMK) 。 CMK 提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。 如果已針對您的訂用帳戶設定 CMK，則會提供雙重加密，以提供第二層保護，並可讓您透過 Azure Key Vault 控制加密金鑰。
 
 > [!IMPORTANT]
-> 客戶管理的金鑰適用于 Translator 服務的所有定價層。 若要要求能夠使用客戶管理的金鑰，請填寫並提交 [Translator 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk) ，大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配 Translator 服務之後，您將需要建立新的翻譯工具資源。 建立 Translator 資源之後，您可以使用 Azure Key Vault 來設定受控識別。
+> 客戶管理的金鑰適用于 Translator 服務的所有定價層。 若要要求使用客戶管理金鑰的能力，請填寫並提交 [翻譯工具 Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk) ，大約需要3-5 個工作天的時間，才能收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配 Translator 服務之後，您將需要建立新的翻譯工具資源。 建立 Translator 資源之後，您可以使用 Azure Key Vault 來設定受控識別。
 
 請遵循下列步驟，為 Translator 啟用客戶管理的金鑰：
 
@@ -47,7 +47,7 @@ Translator 會自動將您上傳的資料加密，以建立自訂翻譯模型（
 
 ### <a name="enable-customer-managed-keys"></a>啟用客戶管理的金鑰
 
-您必須使用 Azure Key Vault 儲存客戶管理的金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+您必須使用 Azure Key Vault 來儲存客戶自控金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
 
 新的認知服務資源一律會使用 Microsoft 管理的金鑰進行加密。 建立資源時，無法啟用客戶管理的金鑰。 客戶管理的金鑰會儲存在 Azure Key Vault 中，而金鑰保存庫必須布建存取原則，以將金鑰許可權授與與認知服務資源相關聯的受控識別。 一旦建立資源之後，就可以使用受控識別。
 

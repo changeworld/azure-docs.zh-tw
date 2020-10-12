@@ -4,10 +4,10 @@ description: Azure Functions 中的 OpenAPI 支援概觀
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385818"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 中繼資料支援 (預覽)
@@ -36,9 +36,9 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 
 如需逐步指示，請參閱[快速入門教學課程](./functions-openapi-definition.md)。
 
-### <a name="available-templates"></a><a name="templates"></a>可用範本
+### <a name="available-templates"></a><a name="templates"></a>可用的範本
 
-|名稱| 描述 |
+|名稱| 說明 |
 |:-----|:-----|
 |已產生的定義|具有可從函式現有中繼資料推斷之最大數量資訊的 OpenAPI 定義。|
 
@@ -73,7 +73,7 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 
 現在，您對存放庫中的 swagger.json 所進行之變更，會由您在步驟 1.c 中記下的 API 定義 URL 及金鑰之函式應用程式進行裝載。
 
-## <a name="next-steps"></a>後續步驟
-* [入門教學](./functions-openapi-definition.md)課程。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
+## <a name="next-steps"></a>接下來的步驟
+* [快速入門教學](./functions-openapi-definition.md)課程。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
 * [Azure Functions GitHub 存放庫](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存放庫以提供我們 API 定義支援預覽的意見反應。 針對您想在更新看到的任何功能提出 GitHub 問題。
 * [Azure Functions 開發人員參考](functions-reference.md)。 深入了解如何撰寫函式程式碼及定義觸發程序和繫結。

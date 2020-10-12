@@ -6,15 +6,15 @@ ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185597"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理變更追蹤和清查
 
-當您新增要追蹤的新檔案或登錄機碼時，Azure 自動化可讓它進行[變更追蹤和清查](change-tracking.md)。 本文說明如何設定追蹤、審核追蹤結果，以及在偵測到變更時處理警示。
+當您新增要追蹤的新檔案或登錄機碼時，Azure 自動化可讓它進行 [變更追蹤和清查](change-tracking.md)。 本文描述如何設定追蹤、查看追蹤結果，以及在偵測到變更時處理警示。
 
 使用本文中的程式之前，請確定您已使用下列其中一種技術，在您的 Vm 上啟用變更追蹤和清查：
 
@@ -25,7 +25,7 @@ ms.locfileid: "86185597"
 
 ## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>限制部署的範圍
 
-變更追蹤和清查會使用工作區中的範圍設定，來設定要接收變更的目標電腦。 如需詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
+變更追蹤和清查會使用工作區中的範圍設定，來設定要接收變更的目標電腦。 如需詳細資訊，請參閱 [限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
 
 ## <a name="track-files"></a>追蹤檔案
 
@@ -38,15 +38,15 @@ ms.locfileid: "86185597"
 1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 
 2. 按一下 [編輯設定] \(齒輪符號)。
 3. 在 [工作區設定] 頁面上選取 [Windows 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
-4. 在 [新增變更追蹤的 Windows 檔案] 窗格中，輸入要追蹤之檔案或資料夾的資訊，然後按一下 [**儲存**]。 下表定義可用於資訊的屬性。
+4. 在 [新增變更追蹤的 Windows 檔案] 窗格上，輸入要追蹤的檔案或資料夾的資訊，然後按一下 [ **儲存**]。 下表定義可用於資訊的屬性。
 
-    |屬性  |描述  |
+    |屬性  |說明  |
     |---------|---------|
     |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之檔案的易記名稱。        |
     |群組     | 以邏輯方式分組檔案的群組名稱。        |
     |輸入路徑     | 要檢查檔案的路徑，例如 **c:\temp\\\*.txt**。 您也可以使用環境變數，例如 `%winDir%\System32\\\*.*`。       |
-    |路徑類型     | 路徑的類型。 可能的值為 File 和 Folder。        |    
+    |路徑類型     | 路徑的類型。 可能的值為檔案和資料夾。        |    
     |遞迴     | 如果在尋找要追蹤的項目時使用遞迴，則為 True，否則為 False。        |    
     |上傳檔案內容 | True 會針對追蹤的變更上傳檔案內容，False 則不會。|
 
@@ -61,7 +61,7 @@ ms.locfileid: "86185597"
 3. 在 [工作區設定] 頁面上選取 [Linux 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
 4. 在 [為變更追蹤新增 Linux 檔案] 窗格上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存]。 下表定義可用於資訊的屬性。
 
-    |屬性  |描述  |
+    |屬性  |說明  |
     |---------|---------|
     |啟用     | 如果已套用設定，則為 True，否則為 False。        |
     |項目名稱     | 要追蹤之檔案的易記名稱。        |
@@ -70,7 +70,7 @@ ms.locfileid: "86185597"
     |路徑類型     | 路徑的類型。 可能值為「檔案」和「目錄」。        |
     |遞迴     | 如果在尋找要追蹤的項目時使用遞迴，則為 True，否則為 False。        |
     |使用 Sudo     | True 會在檢查項目時使用 sudo，False 否不會。         |
-    |連結     | 此設定會決定在周遊目錄時處理符號連結的方式。 可能的值包括：<br> 忽略 - 忽略符號連結，而不包含參考的檔案/目錄。<br>遵循 - 在遞迴期間遵循符號連結，並且包含參考的檔案/目錄。<br>管理-遵循符號連結並允許變更傳回的內容。<br>**注意：** 不建議使用 [管理] 選項，因為它不支援檔案內容抓取。    |
+    |連結     | 此設定會決定在周遊目錄時處理符號連結的方式。 可能的值包括：<br> 忽略 - 忽略符號連結，而不包含參考的檔案/目錄。<br>遵循 - 在遞迴期間遵循符號連結，並且包含參考的檔案/目錄。<br>管理-遵循符號連結，並允許變更傳回的內容。<br>**注意：** 不建議使用 [管理] 選項，因為它不支援檔案內容抓取。    |
     |上傳檔案內容 | True 會針對追蹤的變更上傳檔案內容，False 則不會。 |
 
 5. 請確實將 [上傳檔案內容] 指定為 True。 此設定會針對指定的檔案路徑啟用檔案內容追蹤。
@@ -79,16 +79,16 @@ ms.locfileid: "86185597"
 
 ## <a name="track-file-contents"></a>追蹤檔案內容
 
-檔案內容追蹤可讓您在追蹤變更前後，檢視檔案的內容。 功能會在每次變更之後，將檔案內容[儲存至儲存體帳戶](../storage/common/storage-account-overview.md)。 以下是追蹤檔案內容時需遵循的一些規則：
+檔案內容追蹤可讓您在追蹤變更前後，檢視檔案的內容。 這項功能會在每次變更之後，將檔案內容 [儲存至儲存體帳戶](../storage/common/storage-account-overview.md) 。 以下是追蹤檔案內容時需遵循的一些規則：
 
 * 儲存檔案內容需要有使用 Resource Manager 部署模型的標準儲存體帳戶。 
 * 請勿使用進階和傳統的部署模型儲存體帳戶。 請參閱[關於 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。
-* 您只能將儲存體帳戶連線到一個自動化帳戶。
-* 必須在您的自動化帳戶中啟用[變更追蹤和清查](change-tracking.md)。
+* 您只能將儲存體帳戶連接到一個自動化帳戶。
+* 您的自動化帳戶中必須啟用[變更追蹤和清查](change-tracking.md)。
 
 ### <a name="enable-tracking-for-file-content-changes"></a>啟用檔案內容變更的追蹤
 
-使用下列步驟啟用追蹤檔案內容的變更：
+使用下列步驟來啟用追蹤檔案內容的變更：
 
 1. 在 Azure 入口網站中開啟您的自動化帳戶，然後選取 [組態管理] 底下的 [變更追蹤]。
 2. 按一下 [編輯設定] \(齒輪符號)。
@@ -114,7 +114,7 @@ ms.locfileid: "86185597"
 
 1. 在 Azure 入口網站中開啟您的自動化帳戶，然後選取 [組態管理] 底下的 [變更追蹤]。
 
-2. 在變更清單中選擇檔案，然後選取 [檢視檔案內容變更]，以查看檔案的內容。 [變更詳細資料] 窗格會顯示每個屬性的檔案資訊前後的標準。
+2. 在變更清單中選擇檔案，然後選取 [檢視檔案內容變更]，以查看檔案的內容。 [變更詳細資料] 窗格會顯示每個屬性的標準前後檔案資訊。
 
    ![變更詳細資料](./media/change-tracking-file-contents/change-details.png)
 
@@ -143,21 +143,21 @@ ms.locfileid: "86185597"
 
 |查詢  |描述  |
 |---------|---------|
-|`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 針對已設為 [自動]、但回報為 [正在停止] 的 Microsoft 服務顯示最新的清查記錄。 結果會限定為指定的軟體名稱和電腦的最新記錄。    |
-|`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|顯示已移除之軟體的變更記錄。|
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 針對已設為 [自動]、但回報為 [正在停止] 的 Microsoft 服務顯示最新的清查記錄。 結果會限定為指定的軟體名稱和電腦的最新記錄。    |
+|`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|顯示已移除之軟體的變更記錄。|
 
 ## <a name="create-alerts-on-changes"></a>建立變更的警示
 
-下列範例顯示已在機器上修改檔案**c:\windows\system32\drivers\etc\hosts** 。 這個檔案很重要，因為 Windows 會使用此檔案將主機名稱解析為 IP 位址。 這項作業的優先順序高於 DNS，且可能會導致連線問題。 此外也可能會導致流量重新導向至惡意或危險的網站。
+下列範例顯示已在電腦上修改 **c:\windows\system32\drivers\etc\hosts** 檔案。 這個檔案很重要，因為 Windows 會使用此檔案將主機名稱解析為 IP 位址。 這項作業的優先順序高於 DNS，且可能會導致連線問題。 此外也可能會導致流量重新導向至惡意或危險的網站。
 
 ![顯示主機檔案變更的圖表](./media/change-tracking-file-contents/changes.png)
 
 我們將使用此範例來討論建立變更警示的步驟。
 
 1. 在您的自動化帳戶中，選取 [組態管理]下的 [變更追蹤]，然後選取 [Log Analytics]。 
-2. 在 [記錄] 搜尋中，使用查詢 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 尋找 **hosts** 檔案的內容變更。 此查詢會尋找完整路徑名稱包含單字之檔案的內容變更 `hosts` 。 您也可以將路徑部分變更為其完整形式以要求特定檔案，例如使用 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`。
+2. 在 [記錄] 搜尋中，使用查詢 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 尋找 **hosts** 檔案的內容變更。 此查詢會尋找包含單字的完整路徑名稱之檔案的內容變更 `hosts` 。 您也可以將路徑部分變更為其完整形式以要求特定檔案，例如使用 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`。
 
-3. 查詢傳回其結果之後，請按一下記錄搜尋中的 [**新增警示規則**]，以開啟 [警示建立] 頁面。 您也可以在 Azure 入口網站中透過 [Azure 監視器] 瀏覽至此頁面。 
+3. 查詢傳回結果之後，請按一下 [記錄搜尋] 中的 [ **新增警示規則** ] 以開啟 [警示建立] 頁面。 您也可以在 Azure 入口網站中透過 [Azure 監視器] 瀏覽至此頁面。 
 
 4. 再次檢查我們的查詢並修改警示邏輯。 在此情況下，即使在環境中的所有電腦上偵測到一項變更，也要觸發警示。
 
@@ -169,8 +169,8 @@ ms.locfileid: "86185597"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需範圍設定的詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
+* 如需範圍設定的詳細資訊，請參閱 [限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
 * 如果您需要搜尋儲存在 Log Analytics 工作區中的記錄，請參閱 [Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)。
-* 如果已完成部署，請參閱[從自動化帳戶取消連結工作區以進行變更追蹤和清查](automation-unlink-workspace-change-tracking.md)。
-* 若要從變更追蹤和清查中刪除您的 Vm，請參閱[從變更追蹤和清查移除 vm](automation-remove-vms-from-change-tracking.md)。
+* 如果已完成部署，請參閱 [變更追蹤和清查的 [自動化帳戶取消連結工作區](automation-unlink-workspace-change-tracking.md)]。
+* 若要從變更追蹤和清查中刪除您的 Vm，請參閱 [從變更追蹤和清查中移除 vm](automation-remove-vms-from-change-tracking.md)。
 * 若要針對功能錯誤進行疑難排解，請參閱[針對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

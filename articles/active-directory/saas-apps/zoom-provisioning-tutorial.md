@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333438"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Zoom
@@ -30,7 +30,7 @@ ms.locfileid: "91333438"
 > * 讓使用者屬性在 Azure AD 和 Zoom 之間保持同步
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) 以縮放 (建議) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

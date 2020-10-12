@@ -16,20 +16,20 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213312"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>在 Azure API 管理中自訂快取
-Azure API 管理服務以資源 URL 做為索引鍵，內建對 [HTTP 回應的快取](api-management-howto-cache.md) 的支援。 可以在要求標頭中使用 `vary-by` 屬性修改索引鍵。 這適用于快取整個 HTTP 回應 (也稱為表示) ，但有時只會快取部分的標記法會很有用。 新的 [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) 和 [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) 原則提供了可儲存及擷取原則定義中任意資料的能力。 這個能力也讓先前推出的 [send-request](./api-management-advanced-policies.md#SendRequest) 原則更有價值，因為您現在可以快取外部服務的回應。
+Azure API 管理服務以資源 URL 做為索引鍵，內建對 [HTTP 回應的快取](api-management-howto-cache.md) 的支援。 可以在要求標頭中使用 `vary-by` 屬性修改索引鍵。 這對於快取整個 HTTP 回應（ (也稱為表示) 而言很有用，但有時只要快取部分表示，就很有用。 新的 [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) 和 [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) 原則提供了可儲存及擷取原則定義中任意資料的能力。 這個能力也讓先前推出的 [send-request](./api-management-advanced-policies.md#SendRequest) 原則更有價值，因為您現在可以快取外部服務的回應。
 
 ## <a name="architecture"></a>架構
 API 管理服務使用共用的個別租用戶資料快取，所以，當您相應增加為多個單位時，您仍可以存取相同的快取資料。 不過，使用多區域部署時，在每個區域內有獨立的快取。 切勿將快取視為資料存放區，資料存放區是部分資訊片段的唯一來源。 如果您這麼做，之後又決定要採用多區域部署，擁有旅遊使用者的客戶可能會失去該快取資料的存取權。
 
 ## <a name="fragment-caching"></a>片段快取
-在某些案例中，傳回的回應包含的某些資料不但判斷代價昂貴，而且還會保留一段合理的長時間。 例如，請考慮航空公司所建立的服務，它會提供航班保留、航班狀態等相關資訊。如果使用者是「航空公司點數」計畫的成員，他們也會擁有與其目前狀態和累積里程相關的資訊。 這些使用者相關資訊可能儲存在不同的系統中，但有可能需要包含在航班狀態和訂位相關的傳回回應中。 這可以用稱為｢片段快取｣的程序做到。 可從原始伺服器傳回主要的表示法，並使用某種權杖來指示要將使用者相關資訊插入何處。 
+在某些案例中，傳回的回應包含的某些資料不但判斷代價昂貴，而且還會保留一段合理的長時間。 例如，請考慮航空公司所建立的服務，以提供相關的航班保留、航班狀態等相關資訊。如果使用者是航空公司點數計畫的成員，他們也會有與其目前狀態和累積里程相關的資訊。 這些使用者相關資訊可能儲存在不同的系統中，但有可能需要包含在航班狀態和訂位相關的傳回回應中。 這可以用稱為｢片段快取｣的程序做到。 可從原始伺服器傳回主要的表示法，並使用某種權杖來指示要將使用者相關資訊插入何處。 
 
 考慮下列來自後端 API 的 JSON 回應。
 

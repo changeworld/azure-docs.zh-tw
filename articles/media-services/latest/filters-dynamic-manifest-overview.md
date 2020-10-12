@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299026"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>使用動態封裝程式篩選您的資訊清單
@@ -150,7 +150,7 @@ Azure 媒體服務支援 HLS、MPEG 破折號和 Smooth Streaming 的通訊協�
     - 若要判斷資產中的追蹤屬性，請 [取得並檢查資訊清單](#get-and-examine-manifest-files)檔案。
     - 設定資產篩選時間戳記屬性的公式為： <br/>startTimestamp = 在 &lt; 資訊清單中的開始時間 &gt;  +   &lt; （以秒為單位）篩選器開始時間 &gt; * 時間
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下列文章說明如何以程式設計方式建立篩選器：  
 

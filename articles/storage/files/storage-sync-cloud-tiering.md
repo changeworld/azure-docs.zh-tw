@@ -8,10 +8,10 @@ ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538175"
 ---
 # <a name="cloud-tiering-overview"></a>雲端階層處理概觀
@@ -184,7 +184,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCoun
 ``` 
 
 > [!Note]  
-> - 將新的伺服器端點新增至現有的同步處理群組時，也可以使用 StorageSyncFileRecall 指令程式來改善檔案下載效能。  
+> - 將新的伺服器端點新增至現有的同步處理群組時，也可以使用 Invoke-StorageSyncFileRecall Cmdlet 來改善檔案下載效能。  
 >- 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  
 
 <a id="sizeondisk-versus-size"></a>

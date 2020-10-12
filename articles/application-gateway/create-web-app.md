@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 152f3c3254ab01c8aa61acd12c39bd98c8f55038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808045"
 ---
-# <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 設定應用程式閘道的 App Service
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 以應用程式閘道設定 App Service
 
 應用程式閘道可讓您以 Azure App Service 應用程式或其他多租用戶的服務作為後端集區成員。 在本文中，您將了解如何透過應用程式閘道設定 App Service 應用程式。 第一個範例示範如何將現有的應用程式閘道設定為以 Web 應用程式作為後端集區成員。 第二個範例示範如何建立新的應用程式閘道，並以 Web 應用程式作為後端集區成員。
 
@@ -164,6 +164,6 @@ DnsSettings              : {
 
 您可以限制存取 Web 應用程式的其中一個方法是使用 [Azure App Service 靜態 IP 限制](../app-service/app-service-ip-restrictions.md)。 例如，您可以限制 Web 應用程式，使它只會從應用程式閘道接收流量。 您可以使用應用程式服務 IP 限制功能，將應用程式閘道 VIP 列為具有存取權的唯一位址。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需了解如何設定重新導向，請參閱[使用 PowerShell 在 Azure 應用程式閘道上設定重新導向](redirect-overview.md)。

@@ -9,10 +9,10 @@ ms.date: 01/26/2017
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 2fa5cfcf0cb6c20a8a0b64651da0b365e12a3d05
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056317"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>使用複製記錄檔來檢閱 Azure 匯入/匯出作業狀態
@@ -28,7 +28,7 @@ ms.locfileid: "90056317"
 
  如需複製記錄的格式和狀態碼的完整清單，請參閱匯 [入/匯出服務記錄檔格式](../storage-import-export-file-format-log.md) 。  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
  * [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
  * [準備匯入作業的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

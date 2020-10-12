@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 44cfc5b651bdd5dc0d7abee575bd964ad0b603d0
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505007"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集規模
@@ -152,7 +152,7 @@ yarn application -kill <application_id>
 yarn application -kill "application_1499348398273_0003"
 ```
 
-### <a name="getting-stuck-in-safe-mode"></a>進入安全模式
+### <a name="getting-stuck-in-safe-mode"></a>無法脫離安全模式
 
 當您調整叢集時，HDInsight 會使用 Apache Ambari 管理介面，先將額外的背景工作節點解除委任。 節點會將其 HDFS 區塊複寫至其他線上背景工作節點。 之後，HDInsight 會安全地調整叢集規模。 HDFS 會在調整作業期間進入安全模式。 當調整完成之後，HDFS 應該會立即推出。 不過，在某些情況下，因為複寫中的檔案區塊，所以在調整作業期間，HDFS 會停滯于安全模式。
 
@@ -268,7 +268,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
     balancer
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [自動調整 Azure HDInsight 叢集規模](hdinsight-autoscale-clusters.md)
 
