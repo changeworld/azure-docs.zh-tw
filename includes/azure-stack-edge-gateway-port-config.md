@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 12/16/2019
 ms.author: alkohli
 ms.openlocfilehash: baf18ae0263215e6ff83570557255d06c3117fd4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083382"
 ---
-| 連接埠號碼| 內或外 | 連接埠範圍| 必要|   備註 |   |
+| 連接埠號碼| 內或外 | 連接埠範圍| 必要|   注意 |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80 (HTTP)|外|WAN |否|輸出連接埠用於網際網路存取以擷取更新。 <br>輸出 Web Proxy 可由使用者設定。 |
 | TCP 443 (HTTPS)|外|WAN|是|輸出連接埠用來存取雲端中的資料。<br>輸出 Web Proxy 可由使用者設定。|

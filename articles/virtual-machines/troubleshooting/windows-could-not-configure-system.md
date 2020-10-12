@@ -1,5 +1,5 @@
 ---
-title: 疑難排解 Windows 無法完成設定系統
+title: 針對 Windows 無法完成系統設定進行疑難排解
 titlesuffix: Azure Virtual Machines
 description: 本文提供的步驟可解決 Sysprep 程式無法啟動 Azure VM 的問題。
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
 ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90078801"
 ---
-# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>疑難排解 Windows 無法完成設定系統
+# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>針對 Windows 無法完成系統設定進行疑難排解
 
 本文提供的步驟可解決 Sysprep 程式無法將 Azure 虛擬機器 (VM) 啟動的問題。
 
@@ -38,6 +38,6 @@ ms.locfileid: "90078801"
 
 當作業系統 (OS) 無法完成 [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-process-overview)程式時，就會導致此錯誤。 當您嘗試進行一般化 VM 的初始開機時，將會發生此錯誤。 如果您遇到此問題，請重新建立一般化映射，因為映射處於無法部署的狀態，且無法復原。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要修正此問題，請遵循 [Azure 有關準備/捕獲映射的指引](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) ，並準備新的一般化映射。

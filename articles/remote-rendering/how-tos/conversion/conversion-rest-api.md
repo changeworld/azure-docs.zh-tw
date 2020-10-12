@@ -6,44 +6,44 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87985609"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型轉換 REST API
 
-[模型轉換](model-conversion.md)服務是透過[REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)來控制。 本文說明轉換服務 API 的詳細資料。
+[模型轉換](model-conversion.md)服務是透過[REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)來控制。 本文描述轉換服務 API 詳細資料。
 
 ## <a name="regions"></a>區域
 
-查看基底 Url 用來傳送要求的[可用區域清單](../../reference/regions.md)。
+查看要將要求傳送至的基底 Url 的 [可用區域清單](../../reference/regions.md) 。
 
 ## <a name="common-headers"></a>一般標頭
 
 ### <a name="common-request-headers"></a>常見的要求標頭
 
-所有要求都必須指定這些標頭：
+您必須為所有要求指定這些標頭：
 
-- **Authorization**標頭的值必須是 "持有人 [*token*]"，其中 [*token*] 是[服務存取權杖](../tokens.md)。
+- **授權**標頭的值必須是「持有人 [*權杖*]」，其中 [*token*] 是[服務存取權杖](../tokens.md)。
 
 ### <a name="common-response-headers"></a>常見的回應標頭
 
 所有回應都包含下列標頭：
 
-- **MS-CV**標頭包含唯一的字串，可用來追蹤服務內的呼叫。
+- **MS CV**標頭包含唯一的字串，可用來追蹤服務內的呼叫。
 
 ## <a name="endpoints"></a>端點
 
-轉換服務會提供三個 REST API 端點來執行下列動作：
+轉換服務提供三個 REST API 端點：
 
-- 使用與您的 Azure 遠端轉譯帳戶連結的儲存體帳戶，啟動模型轉換。 
-- 使用提供的*共用存取簽章 (SAS) *啟動模型轉換。
+- 使用與您的 Azure 遠端轉譯帳戶連結的儲存體帳戶來開始模型轉換。 
+- 使用提供的 *共用存取簽章 (SAS) *啟動模型轉換。
 - 查詢轉換狀態
 
 ### <a name="start-conversion-using-a-linked-storage-account"></a>使用連結的儲存體帳戶開始轉換
-您的 Azure 遠端轉譯帳戶必須遵循如何[連結儲存體帳戶](../create-an-account.md#link-storage-accounts)中的步驟，才能存取提供的儲存體帳戶。
+您的 Azure 遠端轉譯帳戶必須遵循有關如何 [連結儲存體帳戶](../create-an-account.md#link-storage-accounts)的步驟，才能存取所提供的儲存體帳戶。
 
 | 端點 | 方法 |
 |-----------|:-----------|
@@ -54,7 +54,7 @@ ms.locfileid: "87985609"
 #### <a name="request-body"></a>Request body
 
 > [!NOTE]
-> 下的所有專案 `input.folderPath` 都會取得，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，則會抓取容器的完整內容。 取得抓取的所有 blob 和資料夾都必須有[有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
+> 下的所有專案 `input.folderPath` 都會被抓取，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，將會取得容器的整個內容。 取出的所有 blob 和資料夾都必須有 [有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -75,7 +75,7 @@ ms.locfileid: "87985609"
 }
 ```
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>使用提供的共用存取簽章開始轉換
-如果您的 ARR 帳戶未連結至您的儲存體帳戶，此 REST 介面可讓您使用*共用存取簽章 (SAS) *提供存取權。
+如果您的 ARR 帳戶未連結至您的儲存體帳戶，這個 REST 介面可讓您使用 * (SAS) 的共用存取 *簽章來提供存取權。
 
 | 端點 | 方法 |
 |-----------|:-----------|
@@ -85,13 +85,13 @@ ms.locfileid: "87985609"
 
 #### <a name="request-body"></a>Request body
 
-要求主體與上述的建立 REST 呼叫中的相同，但輸入和輸出包含* (SAS) 權杖的共用存取*簽章。 這些權杖可讓您存取儲存體帳戶以讀取輸入和寫入轉換結果。
+要求主體與上述的 create REST 呼叫相同，但輸入和輸出包含 * (SAS) 權杖的共用存取*簽章。 這些權杖可讓您存取儲存體帳戶，以讀取輸入及寫入轉換結果。
 
 > [!NOTE]
 > 這些 SAS URI 權杖是查詢字串，而不是完整的 URI。 
 
 > [!NOTE]
-> 下的所有專案 `input.folderPath` 都會取得，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，則會抓取容器的完整內容。 取得抓取的所有 blob 和資料夾都必須有[有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
+> 下的所有專案 `input.folderPath` 都會被抓取，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，將會取得容器的整個內容。 取出的所有 blob 和資料夾都必須有 [有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -115,21 +115,21 @@ ms.locfileid: "87985609"
 ```
 
 ### <a name="poll-conversion-status"></a>輪詢轉換狀態
-使用上述其中一個 REST 呼叫來開始進行中的轉換狀態，可以使用下列介面來進行查詢：
+使用上述其中一個 REST 呼叫開始進行中轉換的狀態，可使用下列介面進行查詢：
 
 
 | 端點 | 方法 |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/**conversionId** | GET |
 
-傳回具有 "status" 欄位且具有下列值的 JSON 檔：
+傳回具有 "status" 欄位的 JSON 檔，其值可以是下列值：
 
-- 已
-- 運行
+- 建立
+- 耗盡
 - "Success"
-- 出
+- 發生
 
-如果狀態為「失敗」，則會有一個額外的「錯誤」欄位，內含含有錯誤資訊的「訊息」子欄位。 其他記錄將會上傳至您的輸出容器。
+如果狀態為「失敗」，則會有一個額外的「錯誤」欄位，包含包含錯誤資訊的「訊息」子欄位。 系統會將其他記錄上傳到您的輸出容器。
 
 ## <a name="next-steps"></a>後續步驟
 

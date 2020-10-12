@@ -8,10 +8,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
 ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125627"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
@@ -19,7 +19,7 @@ ms.locfileid: "87125627"
 
 本文說明如何使用 Azure PowerShell 來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -137,7 +137,7 @@ $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
 ```
 
-### <a name="add-a-data-source"></a>建立資料來源
+### <a name="add-a-data-source"></a>新增資料來源
 
 ```powershell
 
@@ -241,7 +241,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 使用 `-Result` 參數來偵測已結束的工作是否順利完成。 它有下列值：
 
 * 已取消
-* 失敗
+* Failed
 * 無
 * 成功
 
@@ -553,7 +553,7 @@ foreach ($sub in $subs)
 
 您也可以使用下列範例來使用 Azure 資源群組範本：[使用範本建立 Data Lake Analytics 帳戶](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * 使用[Azure 入口網站](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)開始使用 Data Lake Analytics  |  [Azure CLI](data-lake-analytics-get-started-cli.md)
-* 使用[Azure 入口網站](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure Data Lake Analytics 
+* 使用[Azure 入口網站](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)來管理 Azure Data Lake Analytics 

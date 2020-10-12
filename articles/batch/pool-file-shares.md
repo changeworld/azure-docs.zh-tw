@@ -4,10 +4,10 @@ description: 如何從 Linux 中的計算節點或 Azure Batch 中的 Windows �
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986418"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>搭配 Batch 集區使用 Azure 檔案共用
@@ -16,11 +16,11 @@ ms.locfileid: "87986418"
 
 ## <a name="considerations-for-use-with-batch"></a>搭配 Batch 的使用考量
 
-* 當您使用非 premium Azure 檔案儲存體時，如果您的集區執行的平行工作數目相對較低，請考慮使用 Azure 檔案共用。 根據您預期的集區大小和資產檔案數量，檢閱[效能和擴充目標](../storage/files/storage-files-scale-targets.md)，以判斷是否要使用 (使用 Azure 儲存體帳戶的) Azure Files。 
+* 如果使用非 premium Azure 檔案儲存體，當您的集區執行相對較低數目的平行工作時，請考慮使用 Azure 檔案共用。 根據您預期的集區大小和資產檔案數量，檢閱[效能和擴充目標](../storage/files/storage-files-scale-targets.md)，以判斷是否要使用 (使用 Azure 儲存體帳戶的) Azure Files。 
 
 * Azure 檔案共用不但[符合成本效益](https://azure.microsoft.com/pricing/details/storage/files/)，還能設定將資料複寫到另一個區域，因此達成全域備援的目標。 
 
-* 您可同時從內部部署電腦裝載 Azure 檔案共用。 不過，請確定您瞭解使用 REST Api 時特別的[並行影響](../storage/common/storage-concurrency.md)。
+* 您可同時從內部部署電腦裝載 Azure 檔案共用。 不過，請確定您瞭解在使用 REST Api 時的 [並行影響](../storage/common/storage-concurrency.md) 。
 
 * 另請參閱 Azure 檔案共用的一般[規劃考量](../storage/files/storage-files-planning.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "87986418"
 
 ## <a name="mount-an-azure-file-share-on-a-batch-pool"></a>在 Batch 集區上掛接 Azure 檔案共用
 
-如需如何[在 Batch 集區上掛接虛擬檔案系統](virtual-file-mount.md)的相關檔，請參閱。
+請參閱檔，以瞭解如何在 [Batch 集區上掛接虛擬檔案系統](virtual-file-mount.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

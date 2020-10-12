@@ -1,5 +1,5 @@
 ---
-title: 啟用 Azure AD 自訂角色 Privileged Identity Management （PIM）
+title: '啟用 Azure AD 自訂角色-Privileged Identity Management (PIM) '
 description: 如何啟用 Privileged Identity Management (PIM) 的 Azure AD 自訂角色指派
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421156"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中啟用 Azure AD 自訂角色
@@ -28,15 +28,15 @@ ms.locfileid: "87421156"
 Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在支援對為了在「身分識別與存取管理」管理體驗中管理應用程式而建立的自訂角色進行 Just-In-Time 和有時限的指派。 如需關於在 Azure AD 中建立自訂角色以委派應用程式管理的詳細資訊，請參閱 [Azure Active Directory 中的自訂系統管理員角色 (預覽)](../users-groups-roles/roles-custom-overview.md)。
 
 > [!NOTE]
-> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該[以內建角色的體驗](pim-how-to-activate-role.md)進行管理，本文並不適用：
+> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該 [在內建角色體驗中](pim-how-to-activate-role.md) 進行管理，而本文並不適用：
 >
 > :::image type="content" source="media/pim-how-to-add-role-to-user/pim-new-version.png" alt-text="選取 Azure AD 中的 Privileged Identity Management。" lightbox="media/pim-how-to-add-role-to-user/pim-new-version.png":::
 
 ## <a name="activate-a-role"></a>啟用角色
 
-當您需要啟動 Azure AD 自訂角色時，請選取 Privileged Identity Management 中的 [我的角色] 導覽選項來要求啟用。
+當您需要啟用 Azure AD 自訂角色時，請選取 Privileged Identity Management 中的 [我的角色] 流覽選項來要求啟用。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 開啟 Azure AD [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
 
 1. 選取[Azure AD 自訂角色]****，以查看您符合資格的 Azure AD 自訂角色指派清單。
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在�
    ![查看符合資格的 Azure AD 自訂角色指派清單](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
-> 指派角色之前，您必須建立/設定角色。 如需有關設定 AAD 自訂角色的進一步資訊，請參閱[在 Privileged Identity Management 中設定 Azure AD 自訂角色](azure-ad-custom-roles-configure.md)。
+> 指派角色之前，您必須建立/設定角色。 如需有關設定 AAD 自訂角色的詳細資訊，請參閱 [Privileged Identity Management 中的設定 Azure AD 自訂角色](azure-ad-custom-roles-configure.md)。
 
 1. 在 [Azure AD 自訂角色 (預覽)]**** 頁面上，尋找您需要的指派。
 1. 選取 [啟用您的角色]****，以開啟 [啟用]**** 頁面。
@@ -56,13 +56,13 @@ Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在�
 
 1. 如有需要，請指定自訂的啟用開始時間。 使用時，角色成員會在指定的時間啟用。
 1. 在 [原因]**** 方塊中輸入此啟用要求的原因。 這在角色設定中可以是必要或非必要的項目。
-1. 選取 [啟用]  。
+1. 選取 [啟用]。
 
 如果角色不需要核准，則會根據您的設定加以啟用，並新增至作用中角色的清單。 如果您想要使用已啟用的角色，請從[在 Privileged Identity Management 中指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)中的步驟開始操作。
 
 如果角色需要核准才能啟用，您將會收到 Azure 通知，告知您要求正在等待核准。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)
 - [移除或更新 Azure AD 自訂角色指派](azure-ad-custom-roles-update-remove.md)

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448879"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
@@ -139,9 +139,9 @@ FROM data
 
 如果查詢中有三個以上的輸入與同一個事件中樞取用者群組連線，請建立個別的取用者群組。 這需要建立其他串流分析輸入。
 
-### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的取用者群組來建立個別的輸入
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的取用者群組建立個別的輸入
 
-您可以針對相同的事件中樞，使用不同的取用者群組來建立不同的輸入。 下列聯集查詢是一個範例，其中*InputOne*和*InputTwo*指的是相同的事件中樞來源。 任何查詢都可以具有不同的取用者群組的個別輸入。 UNION 查詢只是其中一個範例。
+您可以針對相同的事件中樞，使用不同的取用者群組來建立不同的輸入。 下列聯集查詢是一個範例，其中 *InputOne* 和 *InputTwo* 參考相同的事件中樞來源。 任何查詢可以有不同的輸入與不同的取用者群組。 UNION 查詢只是一個範例。
 
 ```sql
 WITH 
@@ -163,7 +163,7 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每個分割區的讀取器超過 IoT 中樞限制
 
-串流分析作業會使用 IoT 中樞內建[事件中樞相容端點](../iot-hub/iot-hub-devguide-messages-read-builtin.md)來連接和讀取來自 IoT 中樞的事件。 如果您的每個分割區讀取超過 IoT 中樞的限制，您可以使用[事件中樞的解決方案](#readers-per-partition-exceeds-event-hubs-limit)來解決此問題。 您可以透過 IoT 中樞入口網站端點會話或透過[IOT 中樞 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)，建立內建端點的取用者群組。
+串流分析作業會使用 IoT 中樞內建的 [事件中樞相容端點](../iot-hub/iot-hub-devguide-messages-read-builtin.md) 來連線和讀取來自 IoT 中樞的事件。 如果您讀取的每個資料分割超過 IoT 中樞的限制，您可以使用 [事件中樞的解決方案](#readers-per-partition-exceeds-event-hubs-limit) 來解決此問題。 您可以透過 IoT 中樞入口網站端點會話或透過 [Iot 中樞 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)，建立內建端點的取用者群組。
 
 ## <a name="get-help"></a>取得說明
 

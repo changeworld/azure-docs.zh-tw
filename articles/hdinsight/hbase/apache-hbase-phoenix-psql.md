@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 513d48114d73b2c91ebecf06f9492a6ebf0ba1cf
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504701"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 將資料大量載入至 Apache Phoenix
@@ -181,7 +181,7 @@ ms.locfileid: "89504701"
 
 * 避免產生區域伺服器作用區。 如果您的資料列索引鍵以單純方式遞增，HBase 循序寫入可能會導致產生區域伺服器作用區。 對資料列索引鍵進行 *Salt* 處理將可減少循序寫入次數。 Phoenix 提供一個可在背景中以 Salt 位元組對特定資料表的資料列索引鍵進行 Salt 處理的方法，如以下參考資料所述。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Phoenix 來進行大量資料載入](https://phoenix.apache.org/bulk_dataload.html) \(英文\)
 * [在 HDInsight 中搭配 Linux 型 Apache HBase 叢集使用 Apache Phoenix](../hbase/apache-hbase-query-with-phoenix.md)

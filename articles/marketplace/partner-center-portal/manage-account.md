@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
 ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400684"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
@@ -237,7 +237,7 @@ ms.locfileid: "91400684"
 4. 指定群組的角色或自訂權限。 群組的所有成員都能以您在這裡套用的權限，存取您的合作夥伴中心帳戶，而不論與其個別帳戶相關聯的角色/權限為何。
 5. 從顯示的清單中選取新群組的使用者。 您可以使用搜尋方塊來搜尋特定使用者。
 6. 當您完成選取使用者時，請選取 [新增 **選取** 專案] 將其新增至新群組。
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 
 這個新群組也會在您組織的工作帳戶中建立 (Azure AD 租使用者) ，而不只是在您的合作夥伴中心帳戶中。
 

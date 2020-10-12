@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319855"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：從舊版升級到最新版本
@@ -33,7 +33,7 @@ ms.locfileid: "91319855"
 
 您可以使用幾種不同的策略來升級 Azure AD Connect。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 | --- | --- |
 | [自動升級](how-to-connect-install-automatic-upgrade.md) |對於使用快速安裝的客戶，這是最簡單的方法。 |
 | [就地升級](#in-place-upgrade) |如果您只有一台伺服器，您可以在該伺服器上就地升級安裝。 |

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 95bd83575809f6ecda716ff751b47b7bb499cae3
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85073242"
 ---
-## <a name="configure-an-environment-variable-for-authentication"></a>設定環境變數以進行驗證
+## <a name="configure-an-environment-variable-for-authentication"></a>設定用於驗證的環境變數
 
-應用程式需要驗證其所使用之認知服務的存取權。 若要進行驗證，我們建議您建立環境變數來儲存 Azure 資源的金鑰。 
+應用程式需要驗證其所使用之認知服務的存取權。 若要進行驗證，建議您建立環境變數來儲存 Azure 資源的金鑰。 
 
-擁有金鑰之後，請在執行應用程式的本機電腦上，將它寫入新的環境變數。 若要設定環境變數，請開啟主控台視窗，並遵循您的作業系統所適用的指示。 將取代為 `your-key` 您資源的其中一個金鑰。
+當您擁有金鑰之後，請將它寫入至執行應用程式的本機電腦上的新環境變數。 若要設定環境變數，請開啟主控台視窗，並遵循您的作業系統所適用的指示。 取代為 `your-key` 您的資源的其中一個金鑰。
 
 #### <a name="windows"></a>[Windows](#tab/windows)
 

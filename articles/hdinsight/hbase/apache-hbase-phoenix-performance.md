@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: 0dfb93db1af807459c37653189a90b754c933aa4
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504786"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 效能最佳做法
@@ -256,7 +256,7 @@ CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
 如需這個選項及其他選項的詳細資料，請參閱 [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html#options)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Apache Phoenix 微調指南](https://phoenix.apache.org/tuning_guide.html)
 * [次要索引](https://phoenix.apache.org/secondary_indexing.html)

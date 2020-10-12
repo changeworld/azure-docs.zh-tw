@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 043cf83d804803e1b5b47d3ac51bbccaa06e4e87
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116410"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自訂原則
@@ -26,14 +26,14 @@ ms.locfileid: "87116410"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比較使用者流程與自訂原則
 
-| 內容 | 使用者流程 | 自訂原則 |
+| Context | 使用者流程 | 自訂原則 |
 |-|-------------------|-----------------|
-| 目標使用者 | 所有具備或不具備身分識別專業知識的應用程式開發人員。 | 身分識別專業人員、系統整合人員、顧問和內部身分識別小組。 他們熟悉 OpenID Connect 流程，並瞭解身分識別提供者和以宣告為基礎的驗證。 |
+| 目標使用者 | 所有具備或不具備身分識別專業知識的應用程式開發人員。 | 身分識別專業人員、系統整合人員、顧問和內部身分識別小組。 他們熟悉 OpenID Connect 流程，並瞭解身分識別提供者和宣告式驗證。 |
 | 設定方法 | 有使用者介面 (UI) 方便使用的 Azure 入口網站。 | 直接編輯 XML 檔案，然後上傳至 Azure 入口網站。 |
 | UI 自訂 | 完整的 UI 自訂，包括 HTML、CSS 和 JavaScript。<br><br>使用自訂字串支援多語言。 | 相同 |
 | 屬性自訂 | 標準和自訂屬性。 | 相同 |
 | 權杖和工作階段管理 | 自訂權杖和多個工作階段選項。 | 相同 |
-| 識別提供者 | 預先定義的本機或社交提供者，以及大部分的 OIDC 身分識別提供者，例如與 Azure Active Directory 租使用者的同盟。 | 標準式 OIDC、OAUTH 和 SAML。  您也可以使用與 REST Api 的整合來進行驗證。 |
+| 識別提供者 | 預先定義的本機或社交提供者以及大部分的 OIDC 身分識別提供者，例如與 Azure Active Directory 租使用者的同盟。 | 標準式 OIDC、OAUTH 和 SAML。  使用與 REST Api 的整合也可以進行驗證。 |
 | 身分識別工作 | 使用本機或許多社交帳戶來註冊或登入。<br><br>自助式密碼重設。<br><br>設定檔編輯。<br><br>Multi-Factor Authentication。<br><br>自訂權杖和工作階段。<br><br>存取權杖流程。 | 使用自訂識別提供者完成與使用者流程相同的工作，或使用自訂範圍。<br><br>註冊時將使用者帳戶佈建在另一個系統中。<br><br>使用您自己的電子郵件服務提供者傳送歡迎電子郵件。<br><br>使用 Azure AD B2C 外部的使用者存放區。<br><br>使用 API 向受信任的系統驗證使用者所提供的資訊。 |
 
 ## <a name="policy-files"></a>原則檔
@@ -44,9 +44,9 @@ ms.locfileid: "87116410"
 - **擴充檔案** - 保存租用戶的唯一組態變更。
 - **信賴憑證者 (RP) 檔案** - 以單一工作為主的檔案，直接由應用程式或服務 (也稱為信賴憑證者) 叫用。 每個唯一的工作需要自己的 RP，而根據品牌需求而定，數目可能是「應用程式總數 x 使用案例總數」。
 
-Azure AD B2C 中的使用者流程遵循上面所述的檔案模式，但開發人員只會看到 RP 檔案，而 Azure 入口網站會在背景中變更擴充檔案。
+Azure AD B2C 中的使用者流程遵循上述的檔案模式，但開發人員只會看到 RP 檔案，而 Azure 入口網站會在背景中變更擴充檔案。
 
-雖然原則檔案有三種類型，但您不能只限于三個檔案。 您可能會有每個檔案類型的多個檔案。 例如，如果您不想變更延伸模組檔案，您可以建立 Extensions2 檔案來進一步擴充擴充檔案。
+雖然有三種類型的原則檔案，但您不只限於三個檔案。 您可能會有多個檔案類型的檔案。 例如，如果您不想要變更擴充檔案，您可以建立 Extensions2 檔案來進一步擴充擴充檔。
 
 ## <a name="custom-policy-core-concepts"></a>自訂原則的核心概念
 
@@ -58,7 +58,7 @@ Azure 中的客戶身分識別和存取管理 (CIAM) 服務包括：
 
 Azure AD B2C 會依序與身分識別提供者、使用者、其他系統和本機使用者目錄互動，以達成身分識別工作。 例如讓使用者登入、註冊新的使用者或重設密碼。 識別體驗架構和原則 (也稱為使用者旅程圖或信任架構原則) 會建立多方信任，並明確定義動作項目、動作、通訊協定及完成的步驟順序。
 
-Identity Experience Framework 是完全可設定、以原則為導向的雲端式 Azure 平臺，可協調標準通訊協定格式（例如 OpenID Connect、OAuth、SAML 和一些非標準）實體之間的信任，例如以 REST API 為基礎的系統對系統宣告交換。 此架構會建立方便使用、白色標籤體驗，支援 HTML 和 CSS。
+Identity Experience Framework 是完全可設定、原則導向、雲端式的 Azure 平臺，可協調標準通訊協定格式（例如 OpenID Connect、OAuth、SAML 和一些非標準通訊協定）之間實體之間的信任，例如以 REST API 為基礎的系統對系統宣告交換。 此架構會建立方便使用、白色標籤體驗，支援 HTML 和 CSS。
 
 自訂原則以一或多個 XML 格式的檔案表示，各檔案在階層鏈中彼此參考。 XML 元素會定義宣告結構描述、宣告轉換、內容定義、宣告提供者、技術設定檔和使用者旅程圖協調流程步驟等元素。 自訂原則可以一或多個 XML 檔案的形式存取，當信賴憑證者叫用時，會由識別體驗架構執行這些檔案。 設定自訂原則的開發人員必須仔細定義信任關係，以包含中繼資料端點、精確的宣告交換定義，並設定每個識別提供者所需的祕密、金鑰和憑證。
 
@@ -66,7 +66,7 @@ Identity Experience Framework 是完全可設定、以原則為導向的雲端�
 
 當應用程式呼叫 RP 原則檔時，Azure AD B2C 中的識別體驗架構將先後從基底原則檔、擴充原則檔和 RP 原則檔，新增所有元素，以組合目前生效的原則。  RP 檔案會覆寫擴充原則檔中相同類型和名稱的元素，而擴充原則檔會覆寫基底原則檔。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [開始使用自訂原則](custom-policy-get-started.md)

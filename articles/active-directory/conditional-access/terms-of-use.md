@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90085904"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
@@ -129,7 +129,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
     自訂條件式存取原則可對特定雲端應用程式或使用者群組啟用細微的使用規定。 如需詳細資訊，請參閱 [快速入門：在存取雲端應用程式之前，必須先接受使用](require-tou.md)規定。
 
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -225,7 +225,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
    ![編輯使用規定窗格，顯示名稱和展開選項](./media/terms-of-use/edit-tou.png)
 
-1. 按一下 [儲存] 以儲存變更。
+1. 按一下 [確定] 儲存變更。
 
    儲存您的變更後，使用者將不需要重新接受這些編輯後的規定。
 

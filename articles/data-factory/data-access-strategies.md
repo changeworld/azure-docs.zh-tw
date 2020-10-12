@@ -9,10 +9,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616851"
 ---
 # <a name="data-access-strategies"></a>資料存取策略
@@ -47,7 +47,7 @@ ms.locfileid: "91616851"
 如需 Azure Integration Runtime 和自我裝載整合執行階段中資料存放區上支援網路安全性機制的詳細資訊，請參閱以下兩個資料表。  
 * **Azure Integration Runtime**
 
-    | 資料存放區                  | 資料存放區上支援的網路安全性機制 | Private Link     | 信任的服務     | 靜態 IP 範圍 | 服務標籤 | 允許 Azure 服務 |
+    | 資料存放區                  | 資料存放區上支援的網路安全性機制 | 私人連結     | 信任的服務     | 靜態 IP 範圍 | 服務標籤 | 允許 Azure 服務 |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|-----------------|
     | Azure PaaS 資料存放區       | Azure Cosmos DB                                     | 是              | -                   | 是             | -            | 是                  |
     |                              | Azure 資料總管                                 | -                | -                   | 是*            | 是*         | -                    |

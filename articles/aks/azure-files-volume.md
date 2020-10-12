@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281203"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中手動建立和使用 Azure 檔案共用的磁碟區
@@ -26,7 +26,7 @@ ms.locfileid: "87281203"
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 
-在使用 Azure 檔案服務作為 Kubernetes 磁碟區之前，您必須建立 Azure 儲存體帳戶與檔案共用。 下列命令會建立名為*myAKSShare*的資源群組、儲存體帳戶，以及名為*aksshare*的檔案共用：
+在使用 Azure 檔案服務作為 Kubernetes 磁碟區之前，您必須建立 Azure 儲存體帳戶與檔案共用。 下列命令會建立名為 *myAKSShare*的資源群組、儲存體帳戶，以及名為 *aksshare*的檔案共用：
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>將檔案共用掛接為磁碟區
 
-若要將 Azure 檔案儲存體共用掛接至您的 pod，請在容器規格中設定磁片區。請 `azure-files-pod.yaml` 使用下列內容建立名為的新檔案。 如果您變更了檔案共用或祕密的名稱，請更新 shareName** 和 secretName**。 若有需要，請更新 `mountPath`，這是 Pod 中檔案共用掛接所在的路徑。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
+若要將 Azure 檔案儲存體共用掛接至您的 pod，請在容器規格中設定磁片區。使用下列內容建立名為的新檔案 `azure-files-pod.yaml` 。 如果您變更了檔案共用或祕密的名稱，請更新 shareName** 和 secretName**。 若有需要，請更新 `mountPath`，這是 Pod 中檔案共用掛接所在的路徑。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
 
 ```yaml
 apiVersion: v1
@@ -133,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>掛接選項
 
-*適用于*Kubernetes 版本1.9.1 和以上的*dirMode*的預設值為*0755* 。 如果使用 Kubernetes version 1.8.5 版或更高版本的叢集，並以靜態方式建立持續性磁片區物件，則必須在*PersistentVolume*物件上指定掛接選項。 下列範例會設定 0777：
+Kubernetes 版本1.9.1 和更新*版本的預設*值為0755，而*dirMode*為*0755* 。 如果使用 Kubernetes 版本1.8.5 版或更高的叢集，並以靜態方式建立永久性磁片區物件，則必須在 *PersistentVolume* 物件上指定掛接選項。 下列範例會設定 0777：
 
 ```yaml
 apiVersion: v1
@@ -161,7 +161,7 @@ spec:
 
 如果您是使用 1.8.0-1.8.4 版的叢集，可將 runAsUser** 值設定為 0** 來指定資訊安全內容。 如需關於 Pod 資訊安全內容的詳細資訊，請參閱[設定資訊安全內容][kubernetes-security-context]。
 
-若要更新您的掛接選項，請使用*PersistentVolume*建立*azurefile-掛接-選項-yaml*檔案。 例如：
+若要更新您的掛接選項，請使用*PersistentVolume*建立*azurefile-掛接選項-pv. yaml*檔案。 例如：
 
 ```yaml
 apiVersion: v1
@@ -187,7 +187,7 @@ spec:
   - nobrl
 ```
 
-建立*azurefile yaml*檔案，其中包含使用*PersistentVolume*的*PersistentVolumeClaim* 。 例如：
+以使用*PersistentVolume*的*PersistentVolumeClaim*建立*azurefile 掛接選項-yaml*檔案。 例如：
 
 ```yaml
 apiVersion: v1
@@ -203,14 +203,14 @@ spec:
       storage: 5Gi
 ```
 
-使用 `kubectl` 命令來建立*PersistentVolume*和*PersistentVolumeClaim*。
+使用 `kubectl` 命令來建立 *PersistentVolume* 和 *PersistentVolumeClaim*。
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-確認您的*PersistentVolumeClaim*已建立並系結至*PersistentVolume*。
+確認已建立 *PersistentVolumeClaim* ，並將其系結至 *PersistentVolume*。
 
 ```console
 $ kubectl get pvc azurefile
@@ -219,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-更新您的容器規格以參考您的*PersistentVolumeClaim* ，並更新您的 pod。 例如：
+更新您的容器規格，以參考您的 *PersistentVolumeClaim* 並更新您的 pod。 例如：
 
 ```yaml
 ...
@@ -235,7 +235,7 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 
 如需有關 AKS 叢集與 Azure 檔案服務互動的詳細資訊，請參閱[適用於 Azure 檔案服務的 Kubernetes 外掛程式][kubernetes-files]。
 
-如需儲存類別參數，請參閱靜態布建[（攜帶您自己的檔案共用）](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share)。
+如需儲存類別參數，請參閱靜態布建 [ (攜帶您自己的檔案共用) ](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share)。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

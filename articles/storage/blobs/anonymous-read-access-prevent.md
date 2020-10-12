@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086567"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>防止對容器和 blob 進行匿名公用讀取存取
 
-Azure 儲存體中容器和 blob 的匿名公用讀取權限是共用資料的便利方式，但可能也會帶來安全性風險。 請務必謹慎地管理匿名存取，以及瞭解如何評估匿名存取您的資料。 對可公開存取的資料進行作業複雜性、人為錯誤或惡意攻擊可能會導致成本高昂的資料缺口。 Microsoft 建議您只在應用程式案例需要時，才啟用匿名存取。
+以匿名的公開讀取權限來存取 Azure 儲存體中的容器和 Blob，是共用資料的便利方式，但也可能會帶來安全性風險。 請務必謹慎地管理匿名存取，以及瞭解如何評估匿名存取您的資料。 對可公開存取的資料進行作業複雜性、人為錯誤或惡意攻擊可能會導致成本高昂的資料缺口。 Microsoft 建議您只在應用程式案例需要時，才啟用匿名存取。
 
-依預設，一律禁止公開存取 blob 資料。 不過，儲存體帳戶的預設設定可讓具有適當許可權的使用者，在儲存體帳戶中設定容器和 blob 的公用存取權。 為了加強安全性，不論個別容器的公用存取設定為何，您都可以不允許所有對儲存體帳戶的公用存取。 不允許公用存取儲存體帳戶，以防止使用者啟用帳戶中容器的公用存取。 Microsoft 建議您除非您的案例需要，否則不允許對儲存體帳戶進行公用存取。 不允許公用存取有助於防止不想要的匿名存取所造成的資料缺口。
+依預設，一律禁止公開存取 blob 資料。 不過，儲存體帳戶的預設設定可讓具有適當許可權的使用者，在儲存體帳戶中設定容器和 blob 的公用存取權。 為了加強安全性，不論個別容器的公用存取設定為何，您都可以不允許所有對儲存體帳戶的公用存取。 不允許公開存取儲存體帳戶可防止使用者啟用帳戶中容器的公用存取權。 除非您的案例需要對儲存體帳戶使用公開存取，否則 Microsoft 建議您不要對帳戶使用公開存取。 不允許公開存取有助於防止非預期匿名存取所造成的資料洩漏。
 
 如果您不允許儲存體帳戶的公用 blob 存取，Azure 儲存體會拒絕對該帳戶的所有匿名要求。 帳戶不允許公用存取之後，該帳戶中的容器就無法接著設定為公開存取。 任何已針對公用存取設定的容器將不再接受匿名要求。 如需詳細資訊，請參閱 [設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
 
@@ -59,7 +59,7 @@ Azure 儲存體中容器和 blob 的匿名公用讀取權限是共用資料的�
 
 設定計量之後，匿名要求會開始出現在圖形上。 下圖顯示過去三十分鐘內匯總的匿名要求。
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="顯示對 Blob 儲存體進行匯總之匿名要求的螢幕擷取畫面":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
 
 您也可以設定警示規則，在對您的儲存體帳戶進行特定數目的匿名要求時通知您。 如需詳細資訊，請參閱[使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
@@ -85,7 +85,7 @@ Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記�
 1. 在 [ **類別細節**] 下的 [ **記錄** ] 區段中，選擇要記錄的要求類型。 所有匿名要求都會被讀取要求，所以請選取 **StorageRead** 來捕捉匿名要求。
 1. 在 [ **目的地詳細資料**] 底下，選取 [ **傳送至 Log Analytics**]。 選取您的訂用帳戶和您稍早建立的 Log Analytics 工作區，如下列影像所示。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
 
 建立診斷設定之後，系統會根據該設定，對儲存體帳戶的要求進行記錄。 如需詳細資訊，請參閱 [建立診斷設定以收集 Azure 中的資源記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
 
@@ -241,7 +241,7 @@ Azure 原則支援的效果，可決定針對資源評估原則規則時所發�
 1. 篩選您在上一個步驟中建立的原則指派名稱結果。 報表會顯示有多少資源不符合原則。
 1. 您可以向下切入報表以取得其他詳細資料，包括不符合規範的儲存體帳戶清單。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="顯示適用于 blob 公用存取之稽核原則合規性報告的螢幕擷取畫面":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>使用 Azure 原則強制執行授權存取
 
@@ -277,7 +277,7 @@ Azure 原則藉由確保 Azure 資源遵守需求和標準，來支援雲端治�
 
 下圖顯示當您嘗試建立儲存體帳戶以允許公用存取 (新帳戶的預設值時，所發生的錯誤) 當具有 Deny 效果的原則需要不允許公用存取時。
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="螢幕擷取畫面，顯示在違反原則時建立儲存體帳戶時所發生的錯誤":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="顯示如何設定計量以將 blob 交易加總的螢幕擷取畫面":::
 
 ## <a name="next-steps"></a>後續步驟
 

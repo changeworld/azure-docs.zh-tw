@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899083"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91617157"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro with GPU 是什麼？
 
@@ -44,11 +44,10 @@ Azure Stack Edge Pro 具有下列功能：
 |---------|---------|
 |加速 AI 推斷| 由內建 GPU 啟用 (根據模型來決定啟用一個或兩個)。|
 |Edge 計算      |支援 VM 和容器化工作負載，以允許分析、處理和篩選資料。 |
-|高效能 | 高效能計算與資料傳輸。|
 |資料存取     | 能使用雲端 API 直接從 Azure 儲存體 Blob 與 Azure 檔案存取資料，以在雲端中進行額外的資料處理。 裝置上的本機快取可用來快速存取最近使用的檔案。|
 |雲端管理     |裝置與服務是透過 Azure 入口網站來管理的。  |
 |離線上傳     | 中斷連線模式支援離線上傳案例。|
-|支援的儲存體通訊協定     | 支援用於資料擷取的標準 SMB、NFS 與 REST 通訊協定。 <br> 如需支援版本的詳細資訊，請參閱 [ 系統需求](azure-stack-edge-system-requirements.md)。|
+|支援的檔案傳輸通訊協定      | 支援用於資料擷取的標準 SMB、NFS 與 REST 通訊協定。 <br> 如需支援版本的詳細資訊，請參閱 [ 系統需求](azure-stack-edge-system-requirements.md)。|
 |資料重新整理     | 能夠以來自雲端的最新檔案對本機檔案進行重新整理。|
 |加密    | 支援使用 BitLocker 在本機加密資料，並透過 *https* 保護對雲端的資料傳輸。|
 |頻寬節流設定| 節流以限制尖峰時間的頻寬使用量。|
@@ -73,6 +72,8 @@ Azure Stack Edge Pro 解決方案由 Azure Stack Edge 資源、Azure Stack Edge 
 Azure Stack Edge Pro 實體裝置、Azure 資源，以及您要傳輸資料的目標儲存體帳戶，不需全都位於相同區域。
 
 - **資源可用性** - 針對此預覽版本，該資源可用於美國東部、西歐和東南亞區域。
+
+- **裝置可用性** - 如需適用 Azure Stack Edge Pro 裝置的所有國家/地區的清單，請移至 [Azure Stack Edge Pro 定價](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)，參閱 [Azure Stack Edge Pro] 索引標籤中的 [可用性] 區段。
     
 - **目的地儲存體帳戶** - 儲存資料的儲存體帳戶在所有 Azure 區域都可用。 若要獲得最佳效能，儲存 Azure Stack Edge Pro 資料的儲存體帳戶應位於接近裝置所在的位置。 儲存體帳戶的位置若離裝置遙遠，將會導致較長的延遲時間與較緩慢的效能。
 

@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - contperfq1
 ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500363"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊
@@ -73,13 +73,13 @@ Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
 
 下列步驟示範使用引數進行 windows 安裝的範例 `-proxy` ：
 
-1. WebRequest 命令需要用來存取安裝程式腳本的 proxy 資訊。 然後，IoTEdge 命令需要 proxy 資訊來下載安裝檔案。
+1. Invoke-WebRequest 命令需要用來存取安裝程式腳本的 proxy 資訊。 然後 Deploy-IoTEdge 命令需要 proxy 資訊來下載安裝檔案。
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. IoTEdge 命令不需要通過 proxy 伺服器，因此第二個步驟只需要 WebRequest 的 proxy 資訊。
+2. Initialize-IoTEdge 命令不需要經過 proxy 伺服器，因此第二個步驟只需要 WebRequest 的 proxy 資訊。
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
@@ -271,7 +271,7 @@ IoT Edge 代理程式是在任何 IoT Edge 裝置上皆應第一個啟動的模�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解 [IoT Edge 執行階段](iot-edge-runtime.md)的角色。
 

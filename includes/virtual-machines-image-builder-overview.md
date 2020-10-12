@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
 ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89303946"
 ---
 標準化虛擬機器 (VM) 映像可讓組織遷移至雲端，並確保部署的一致性。 映像通常包含預先定義的安全性和組態設定，以及必要的軟體。 設定您自己的映像處理管線需要一些時間、基礎結構和設定，但透過 Azure VM Image Builder，只要提供簡單的組態來描述您的映像、將其提交至服務，然後就會建立映像並加以散發。

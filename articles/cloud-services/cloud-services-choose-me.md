@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure 雲端服務 | Microsoft Docs
-description: 瞭解 Azure 雲端服務是什麼，具體來說，它是設計來支援可調整、可靠且運作成本低廉的應用程式。
+description: 瞭解 Azure 雲端服務的內容，特別是設計來支援可調整、可靠且運作成本低廉的應用程式。
 services: cloud-services
 author: tgore03
 ms.service: multiple
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88224283"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure 雲端服務概觀

@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure DevTest Labs 中使用客戶管理的金鑰�
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489803"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中使用客戶管理的金鑰，將作業系統 (OS) 磁片加密
@@ -39,14 +39,14 @@ ms.locfileid: "89489803"
     1. 在 [ **磁片加密集** ] 頁面上，選取左側功能表上的 [ **存取控制] (IAM) ** 。 
     1. 選取工具列上的 [ **+ 新增** ]，然後選取 [ **新增角色指派**]。  
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="新增角色管理-功能表":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="受控金鑰":::
     1. 在 [ **新增角色指派** ] 頁面上，選取 [ **讀取** 者] 角色或允許更多存取權的角色。 
     1. 輸入將使用磁片加密集的實驗室名稱，然後從下拉式清單中選取實驗室名稱 (系統指派的身分識別) 實驗室的身分識別。 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="選取實驗室的系統管理身分識別":::        
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="受控金鑰":::        
     1. 在工具列上選取 [儲存]  。 
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="儲存角色指派":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="受控金鑰":::
 3. 使用**訂**用帳戶**system-assigned identity** **Virtual Machine Contributor**  ->  **存取控制 (IAM) **頁面，將實驗室的系統指派身分識別新增至虛擬機器參與者角色。 這些步驟與先前步驟中的步驟類似。 
 
     
@@ -54,7 +54,7 @@ ms.locfileid: "89489803"
     1. 選取 [存取控制 (IAM)]  。 
     1. 選取工具列上的 [ **+ 新增** ]，然後選取 [ **新增角色指派**]。 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="訂用帳戶 > 存取控制 (IAM) 頁面":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="受控金鑰":::
     1. 在 [ **新增角色指派** ] 頁面上，為角色選取 [ **虛擬機器參與者** ]。
     1. 輸入實驗室名稱，然後從下拉式清單中選取實驗室 **名稱** (系統指派的身分識別) 實驗室的身分識別。 
     1. 在工具列上選取 [儲存]  。 
@@ -64,12 +64,12 @@ ms.locfileid: "89489803"
 1. 在 Azure 入口網站的實驗室首頁上，選取左側功能表上的 [設定 **與原則** ]。 
 1. 在 [設定**與原則**] 頁面的 [**加密**] 區段中，選取 [**磁片 (預覽]) ** 。 根據預設， **加密類型** 會設定為 **使用平臺管理的金鑰**進行待用加密。
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="設定和原則頁面的 [磁片] 索引標籤":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="受控金鑰":::
 1. 針對 [ **加密類型**]，請從下拉式清單中選取 [ **使用客戶管理的金鑰** 進行待用加密]。 
 1. 針對 **磁片加密集**，請選取您稍早建立的磁片加密集。 它是系統指派的實驗室身分識別所能存取的相同磁片加密集。
 1. 在工具列上選取 [儲存]  。 
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="使用客戶管理的金鑰來啟用加密":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="受控金鑰":::
 1. 在具有下列文字的訊息方塊上： *此設定將套用至實驗室中新建立的電腦。舊的 OS 磁片會以舊的磁片加密集保持加密*狀態，請選取 **[確定]**。 
 
     一旦設定之後，實驗室作業系統磁片將會以使用磁片加密集提供的客戶管理金鑰進行加密。 
@@ -79,15 +79,15 @@ ms.locfileid: "89489803"
 1. 移至在實驗室中使用客戶管理的金鑰啟用磁片加密後所建立的實驗室虛擬機器。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="已啟用磁片加密的 VM":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="受控金鑰":::
 1. 按一下 VM 的資源群組，然後按一下 OS 磁片。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="VM 資源群組":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="受控金鑰":::
 1. 移至 [加密]，然後使用您選取的磁片加密集，驗證加密是否設定為客戶管理的金鑰。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="驗證加密":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="受控金鑰":::
   
 ## <a name="next-steps"></a>後續步驟
 
