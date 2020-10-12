@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Cosmos DB 的適用于 MongoDB 的 API 複製資料
+title: 從 Azure Cosmos DB 適用于 MongoDB 的 API 複製資料
 description: 了解如何使用 Data Factory 將資料從支援的來源資料存放區複製到 Azure Cosmos DB 的 MongoDB 版 API，或從 Azure Cosmos DB 的 MongoDB 版 API 複製到支援的接收存放區。
 services: data-factory, cosmosdb
 ms.author: jingwang
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
 ms.openlocfilehash: 9b23f46a418f2663531cc121f00b83d00d84e48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415452"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure Cosmos DB 的 MongoDB 版 API，或從中複製資料
@@ -50,7 +50,7 @@ ms.locfileid: "81415452"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **type** 屬性必須設定為 **CosmosDbMongoDbApi**。 | 是 |
-| connectionString |為 Azure Cosmos DB 的 MongoDB 版 API 指定連接字串。 其提供在 Azure 入口網站 -> [Cosmos DB] 刀鋒視窗 -> 主要或次要連接字串中，模式為 `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`。 <br/><br />您也可以將密碼放在 Azure Key Vault 中，並  `password`   從連接字串中提取設定。如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)   。|是 |
+| connectionString |為 Azure Cosmos DB 的 MongoDB 版 API 指定連接字串。 其提供在 Azure 入口網站 -> [Cosmos DB] 刀鋒視窗 -> 主要或次要連接字串中，模式為 `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`。 <br/><br />您也可以將密碼放在 Azure Key Vault 中，並  `password`   從連接字串中提取設定。如需詳細資訊，請參閱 [Azure Key Vault 中的儲存認證](store-credentials-in-key-vault.md)   。|是 |
 | [資料庫] | 您要存取的資料庫名稱。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或自我裝載整合執行階段 (如果您的資料存放區位於私人網路中)。 如果未指定此屬性，則會使用預設的 Azure Integration Runtime。 |否 |
 
@@ -114,12 +114,12 @@ ms.locfileid: "81415452"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設定為 **CosmosDbMongoDbApiSource**。 |是 |
-| filter | 使用查詢運算子指定選取範圍篩選。 若要傳回集合中的所有文件，請省略此參數，或傳遞空白文件 ({})。 | 否 |
+| 篩選條件 | 使用查詢運算子指定選取範圍篩選。 若要傳回集合中的所有文件，請省略此參數，或傳遞空白文件 ({})。 | 否 |
 | cursorMethods.project | 指定要在文件中傳回以便投影的欄位。 若要傳回比對文件中的所有欄位，請省略此參數。 | 否 |
 | cursorMethods.sort | 指定查詢傳回比對文件的順序。 請參閱 [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)。 | 否 |
 | cursorMethods.limit | 指定伺服器傳回的文件數目上限。 請參閱 [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)。  | 否 | 
 | cursorMethods.skip | 指定要跳過的文件數，以及 MongoDB 開始傳回結果的位置。 請參閱 [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)。 | 否 |
-| batchSize | 指定要在回應的每個批次中從 MongoDB 執行個體傳回的文件數目。 在大部分情況下，修改批次大小不會影響使用者或應用程式。 Cosmos DB 限制每個批次的大小不能超過 40 MB，也就是文件大小的 batchSize 總數，因此如果您的文件大小很大，請降低此值。 | 否<br/>（預設值為**100**） |
+| batchSize | 指定要在回應的每個批次中從 MongoDB 執行個體傳回的文件數目。 在大部分情況下，修改批次大小不會影響使用者或應用程式。 Cosmos DB 限制每個批次的大小不能超過 40 MB，也就是文件大小的 batchSize 總數，因此如果您的文件大小很大，請降低此值。 | 否<br/> (預設值為 **100**)  |
 
 >[!TIP]
 >ADF 支援在 **Strict 模式**中取用 BSON 文件。 請確定您的篩選查詢處於 Strict 模式，而非 Shell 模式。 如需詳細說明，請參閱 [MongoDB manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html) (MongoDB 手冊)。
@@ -169,9 +169,9 @@ ms.locfileid: "81415452"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 **type** 屬性必須設定為 **CosmosDbMongoDbApiSink**。 |是 |
-| writeBehavior |描述如何將資料寫入至 Azure Cosmos DB。 允許的值：**insert** 和 **upsert**。<br/><br/>如果已有相同的檔存在，則**upsert**的行為是取代檔 `_id` ; 否則，請插入檔。<br /><br />**注意**： `_id` 如果 `_id` 未在原始檔案中或透過資料行對應指定，Data Factory 會自動為檔產生。 這表示您必須確定，為了讓 **upsert** 如預期般運作，您的文件具有識別碼。 |否<br />(預設值為 **insert**) |
-| writeBatchSize | **writeBatchSize** 屬性可控制在每個批次中寫入的文件大小。 您可以嘗試增加 **writeBatchSize** 的值來改善效能，如果您的文件大小很大，則可嘗試降低此值。 |否<br />（預設值為**10000**） |
-| writeBatchTimeout | 批次插入作業在超時之前完成的等候時間。允許的值為 timespan。 | 否<br/>(預設為 **00:30:00** - 30 分鐘) |
+| writeBehavior |描述如何將資料寫入至 Azure Cosmos DB。 允許的值：**insert** 和 **upsert**。<br/><br/>如果已存在具有相同的檔，則 **upsert** 的行為是取代檔 `_id` ; 否則，插入檔。<br /><br />**注意**： `_id` 如果 `_id` 未在原始檔案中或藉由資料行對應來指定，Data Factory 會自動產生檔的。 這表示您必須確定，為了讓 **upsert** 如預期般運作，您的文件具有識別碼。 |否<br /> (預設值為 **insert**)  |
+| writeBatchSize | **writeBatchSize** 屬性可控制在每個批次中寫入的文件大小。 您可以嘗試增加 **writeBatchSize** 的值來改善效能，如果您的文件大小很大，則可嘗試降低此值。 |否<br /> (預設值為 **10000**)  |
+| writeBatchTimeout | 批次插入作業在結束之前完成的等候時間。允許的值為 timespan。 | 否<br/>(預設為 **00:30:00** - 30 分鐘) |
 
 >[!TIP]
 >若要以現況匯入 JSON 文件，請參閱[匯入或匯出 JSON 文件](#import-and-export-json-documents)一節；若要從表格式資料複製，請參閱[結構描述對應](#schema-mapping)。
@@ -213,7 +213,7 @@ ms.locfileid: "81415452"
 您可以使用 Azure Cosmos DB 連接器輕鬆地：
 
 * 在兩個 Azure Cosmos DB 集合之間依原樣複製文件。
-* 將 JSON 檔從各種來源匯入到 Azure Cosmos DB，包括 MongoDB、Azure Blob 儲存體、Azure Data Lake 存放區，以及 Azure Data Factory 支援的其他檔案架構存放區。
+* 將 JSON 檔從各種來源匯入到 Azure Cosmos DB，包括 MongoDB、Azure Blob 儲存體、Azure Data Lake 存放區，以及 Azure Data Factory 支援的其他檔案型存放區。
 * 將 JSON 文件從 Azure Cosmos DB 集合匯出至各種檔案型存放區。
 
 若要達成無從驗證結構描述的複製：

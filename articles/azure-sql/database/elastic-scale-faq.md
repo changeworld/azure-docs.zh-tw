@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8998f03fa44529a5f006936a01f711a279178245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84032019"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>彈性資料庫工具常見問題集 (FAQ)
@@ -31,7 +31,7 @@ ms.locfileid: "84032019"
 
 ## <a name="how-much-do-elastic-database-tools-cost"></a>使用彈性資料庫工具的成本要多少
 
-使用彈性資料庫用戶端程式庫不會產生任何成本。 成本只會針對您用於分區和分區對應管理員的 Azure SQL Database 資料庫，以及您為分割合併工具布建的 web/背景工作角色而產生。
+使用彈性資料庫用戶端程式庫不會產生任何成本。 成本只會針對您用於分區和分區對應管理員的 Azure SQL Database 中的資料庫，以及您為分割合併工具布建的 web/背景工作角色而產生。
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>為什麼從其他伺服器新增分區時，我的認證無法使用
 
@@ -39,11 +39,11 @@ ms.locfileid: "84032019"
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>每次啟動應用程式時，是否都需要建立分區對應管理員和填入分區
 
-否，建立分區對應管理員 (例如，[ShardMapManagerFactory.CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) 是一次性作業。  您的應用程式應在應用程式啟動時使用 [ShardMapManagerFactory.TryGetSqlShardMapManager()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) 呼叫。  每個應用程式域應該只有一個這類呼叫。
+否，建立分區對應管理員 (例如，[ShardMapManagerFactory.CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) 是一次性作業。  您的應用程式應在應用程式啟動時使用 [ShardMapManagerFactory.TryGetSqlShardMapManager()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) 呼叫。  每個應用程式域只能有一個這類呼叫。
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>我有關於使用彈性資料庫工具的疑問，要如何尋求解答
 
-請在[Microsoft Q&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)上與我們聯繫。
+請在 [Microsoft 問&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)中與我們聯繫。
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>當我使用分區化索引鍵連接資料庫時，我仍然可以在相同的分區上查詢其他分區化索引鍵的資料。  這是原先的設計嗎
 

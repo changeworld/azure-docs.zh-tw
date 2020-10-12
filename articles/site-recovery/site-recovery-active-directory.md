@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132330"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>設定 Active Directory 和 DNS 的災害復原
 
-企業應用程式 (例如 SharePoint、Dynamics AX 和 SAP) 須倚賴 Active Directory 和 DNS 基礎結構才能正確運作。 當您設定應用程式的嚴重損壞修復時，您通常需要先復原 Active Directory 和網域名稱系統（DNS），然後再復原其他應用程式元件，以確保應用程式能夠正確運作。
+企業應用程式 (例如 SharePoint、Dynamics AX 和 SAP) 須倚賴 Active Directory 和 DNS 基礎結構才能正確運作。 當您設定應用程式的嚴重損壞修復時，您通常需要在復原其他應用程式元件之前，先復原 Active Directory 和網域名稱系統 (DNS) ，以確保應用程式功能正確。
 
 您可以使用 [Site Recovery](site-recovery-overview.md) 來建立 Active Directory 的災害復原計劃。 發生中斷的狀況時，您可以起始容錯移轉。 您可以讓 Active Directory 在短短幾分鐘內啟動並執行。 如果您已在主要站台 (例如 SharePoint 和 SAP) 中為多個應用程式部署 Active Directory，您可能會想要容錯移轉至完整的網站。 您可以先使用 Site Recovery 進行 Active Directory 的容錯移轉。 接著，您可以使用應用程式專屬復原計劃進行其他應用程式的容錯移轉。
 
 本文說明如何建立 Active Directory 的災害復原解決方案。 其中包括先決條件，以及容錯移轉指示。 開始之前，您應該先熟悉 Active Directory 與 Site Recovery。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您要複寫至 Azure，請[準備 Azure 資源](tutorial-prepare-azure.md)，包括訂用帳戶、Azure 虛擬網路、儲存體帳戶和復原服務保存庫。
-- 請參閱所有元件的[支援需求](./vmware-physical-azure-support-matrix.md)。
+- 檢閱所有元件的[支援需求](./vmware-physical-azure-support-matrix.md)。
 
 ## <a name="replicate-the-domain-controller"></a>複寫網域控制站
 
-- 您必須在至少一個裝載網域控制站或 DNS 的虛擬機器（VM）上設定 Site Recovery 複寫。
+- 您必須在至少一個裝載網域控制站或 DNS (VM) 的虛擬機器上設定 Site Recovery 複寫。
 - 如果您的環境中有多個網域控制站，則您也必須在目標站台上設定額外的網域控制站。 額外的網域控制站可位於 Azure 中，或位於次要內部部署資料中心。
-- 如果您有只有少數幾個應用程式和一個網域控制站，您可以將整個站台一併容錯移轉。 在此情況下，建議使用 Site Recovery，將網域控制站複寫至 Azure 或次要內部部署資料中心內的目標網站。 相同的複寫網域控制站或 DNS 虛擬機器也可用於[測試容錯移轉](#test-failover-considerations)。
-- 如果您的環境中有許多應用程式和多個網域控制站，或您打算一次容錯移轉數個應用程式，建議您除了使用 Site Recovery 複寫網域控制站虛擬機器之外，也應在目標站台 (位於 Azure 或次要內部部署資料中心) 上設定額外的網域控制站。 針對[測試容錯移轉](#test-failover-considerations)，您可以使用 Site Recovery 所複寫的網域控制站。 對於容錯移轉，您可以在目標站台上使用額外的網域控制站。
+- 如果您有只有少數幾個應用程式和一個網域控制站，您可以將整個站台一併容錯移轉。 在此情況下，我們建議使用 Site Recovery 將網域控制站複寫到 Azure 或次要內部部署資料中心的目標網站。 相同的複寫網域控制站或 DNS 虛擬機器也可用於[測試容錯移轉](#test-failover-considerations)。
+- 如果您的環境中有許多應用程式和多個網域控制站，或您打算一次容錯移轉數個應用程式，建議您除了使用 Site Recovery 複寫網域控制站虛擬機器之外，也應在目標站台 (位於 Azure 或次要內部部署資料中心) 上設定額外的網域控制站。 針對 [測試容錯移轉](#test-failover-considerations)，您可以使用 Site Recovery 所複寫的網域控制站。 對於容錯移轉，您可以在目標站台上使用額外的網域控制站。
 
 ## <a name="enable-protection-with-site-recovery"></a>使用 Site Recovery 啟用保護
 
@@ -43,7 +43,7 @@ ms.locfileid: "86132330"
 使用 Site Recovery 複寫的網域控制站會用於[測試容錯移轉](#test-failover-considerations)。 請確定它符合下列需求︰
 
 1. 網域控制站是通用類別目錄伺服器。
-1. 網域控制站應該是測試容錯移轉期間所需角色的彈性單一主機操作（FSMO）角色擁有者。 否則在容錯移轉之後，將必須[收回](https://support.microsoft.com/help/255504/using-ntdsutil-exe-to-transfer-or-seize-fsmo-roles-to-a-domain-control)這些角色。
+1. 網域控制站應為測試容錯移轉期間所需角色的彈性單一主機操作 (FSMO) 角色擁有者。 否則在容錯移轉之後，將必須[收回](https://support.microsoft.com/help/255504/using-ntdsutil-exe-to-transfer-or-seize-fsmo-roles-to-a-domain-control)這些角色。
 
 ### <a name="configure-vm-network-settings"></a>進行 VM 網路設定
 
@@ -53,7 +53,7 @@ ms.locfileid: "86132330"
 
 ### <a name="site-to-site-protection"></a>站對站保護
 
-請在次要網站上建立網域控制站。 當您將伺服器升級為網域控制站角色時，請指定主要網站上所使用之相同網域的名稱。 您可以使用 **Active Directory 網站和服務** 嵌入式管理單元來設定網站要新增至的網站連結物件上的設定。 藉由設定網站連結，您可以控制兩個以上的網站之間執行複寫的時機和頻率。 如需詳細資訊，請參閱[排程網站之間的複寫](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731862(v=ws.11))。
+請在次要網站上建立網域控制站。 當您將伺服器升級為網域控制站角色時，請指定主要網站上所用的相同網域的名稱。 您可以使用 **Active Directory 網站和服務** 嵌入式管理單元來設定網站要新增至的網站連結物件上的設定。 藉由設定網站連結，您可以控制兩個以上的網站之間執行複寫的時機和頻率。 如需詳細資訊，請參閱[排程網站之間的複寫](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731862(v=ws.11))。
 
 ### <a name="site-to-azure-protection"></a>站對 Azure 保護
 
@@ -79,7 +79,7 @@ ms.locfileid: "86132330"
 1. 建立隔離的網路。 在 Azure 中建立的任何虛擬網路，依預設都會與其他網路隔離。 建議您對此網路使用您的生產網路所使用的相同 IP 範圍。 請勿在此網路上啟用網站對網站連線能力。
 1. 提供隔離網路中 DNS IP 位址。 請使用您想要讓 DNS 虛擬機器取得的 IP 位址。 如果您要複寫至 Azure，請提供用於容錯移轉之虛擬機器的 IP 位址。 若要輸入 IP 位址，請在複寫虛擬機器的 [計算和網路]**** 設定中選取 [目標 IP]**** 設定。
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure 測試網路":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure 網路":::
 
    > [!TIP]
    > Site Recovery 會嘗試在名稱相同的子網路中建立測試虛擬機器，並使用虛擬機器的 [計算與網路]**** 設定中提供的 IP 位址。 如果針對測試容錯移轉提供的 Azure 虛擬網路中沒有名稱相同的子網路，則會在依字母順序的第一個子網路中建立測試虛擬機器。
@@ -102,13 +102,13 @@ ms.locfileid: "86132330"
 > [!IMPORTANT]
 > 本節所述的部分組態不是標準或預設的網域控制站組態。 如果您不想對生產網域控制站進行這些變更，您可以建立專門供 Site Recovery 用於測試容錯移轉的網域控制站。 您只需對該網域控制站進行這些變更即可。
 
-從 Windows Server 2012 開始，[Active Directory Domain Services (AD DS) 已內建額外保護措施](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 這些保護措施有助於保護虛擬網域控制站，以避免基礎的虛擬機器平臺支援**GenerationID**時，針對更新序號（USN）復原。 Azure 支援 **VM-GenerationID**。 因此，在 Azure 虛擬機器上執行 Windows Server 2012 或更新版本的網域控制站，具有額外的保護措施。
+從 Windows Server 2012 開始，[Active Directory Domain Services (AD DS) 已內建額外保護措施](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 如果基礎基礎程式平臺支援 **VM >generationid**，這些保護措施可協助保護虛擬網域控制站，以防止更新序號 (USN) 復原。 Azure 支援 **VM-GenerationID**。 因此，在 Azure 虛擬機器上執行 Windows Server 2012 或更新版本的網域控制站，具有額外的保護措施。
 
-當 **VM-GenerationID** 重設時，AD DS 資料庫的 **InvocationID** 值也會重設。 此外，也會捨棄相對識別碼（RID）集區，並 `SYSVOL` 將資料夾標示為非授權。 如需詳細資訊，請參閱[Active Directory Domain Services 虛擬化簡介](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全地虛擬化分散式檔案系統複寫（DFSR）](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671)。
+當 **VM-GenerationID** 重設時，AD DS 資料庫的 **InvocationID** 值也會重設。 此外，也會捨棄相對識別碼 (RID) 集區，並 `SYSVOL` 將資料夾標示為非授權。 如需詳細資訊，請參閱 [Active Directory Domain Services 虛擬化的簡介](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) ，以及 [安全地將分散式檔案系統複寫 (DFSR 虛擬化) ](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671)。
 
 容錯移轉至 Azure 可能會導致 **VM-GenerationID** 重設。 重設 **VM-GenerationID** 後，在網域控制站虛擬機器於 Azure 中啟動時將會執行額外的保護措施。 這可能會導致無法登入網域控制站虛擬機器的明顯延遲。
 
-此網域控制站只會用於測試容錯移轉，因此不需要虛擬化保護措施。 若要確保網域控制站虛擬機器的**VM GenerationID**值不會變更，您可以 `DWORD` 在內部部署網域控制站中，將下列值變更為**4** ：
+此網域控制站只會用於測試容錯移轉，因此不需要虛擬化保護措施。 若要確保網域控制站虛擬機器的 **VM >generationid** 值不會變更，您可以將內部 `DWORD` 部署網域控制站中的下列值變更為 **4** ：
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
@@ -116,30 +116,30 @@ ms.locfileid: "86132330"
 
 如果在測試容錯移轉之後觸發了虛擬化保護措施，您可能會看到下列一或多個徵兆︰
 
-- **GenerationID**值會變更：
+- **>generationid**值會變更：
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="世代識別碼變更":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure 網路":::
 
 - **InvocationID**值會變更：
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="調用識別碼變更":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure 網路":::
 
-- `SYSVOL`資料夾和 `NETLOGON` 共用無法使用。
+- `SYSVOL` 資料夾和 `NETLOGON` 共用都無法使用。
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL 資料夾共用":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure 網路":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL 資料夾":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure 網路":::
 
 - DFSR 資料庫會被刪除。
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR 資料庫會被刪除":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure 網路":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>在測試容錯移轉期間，對網域控制站問題進行疑難排解
 
 > [!IMPORTANT]
 > 本節所述的部分組態不是標準或預設的網域控制站組態。 如果您不想對生產網域控制站進行這些變更，您可以建立 Site Recovery 測試容錯移轉專用的網域控制站。 您只需對此專用的網域控制站進行變更即可。
 
-1. 在命令提示字元中，執行下列命令來檢查 `SYSVOL` 資料夾和 `NETLOGON` 資料夾是否共用：
+1. 在命令提示字元中執行下列命令，以檢查是否 `SYSVOL` 共用資料夾和 `NETLOGON` 資料夾：
 
     `NET SHARE`
 
@@ -157,31 +157,31 @@ ms.locfileid: "86132330"
 
 1. 執行網域控制站的權威復原。 記住下列資訊：
 
-    - 雖然我們不建議使用檔案複寫[服務（frs）](https://techcommunity.microsoft.com/t5/storage-at-microsoft/the-end-is-nigh-for-frs-8211-updated-for-ws2016/ba-p/425379)進行複寫，但如果您使用 frs 複寫，請遵循授權還原的步驟。 其程序請見[使用 BurFlags 登錄機碼重新初始化檔案複寫服務](https://support.microsoft.com/kb/290762)。
+    - 雖然我們不建議使用 [ (frs) ](https://techcommunity.microsoft.com/t5/storage-at-microsoft/the-end-is-nigh-for-frs-8211-updated-for-ws2016/ba-p/425379)的檔案複寫服務進行複寫，但如果您使用 frs 複寫，請依照授權還原的步驟進行。 其程序請見[使用 BurFlags 登錄機碼重新初始化檔案複寫服務](https://support.microsoft.com/kb/290762)。
 
       如需 BurFlags 的詳細資訊，請參閱部落格文章 [D2 和 D4：有何功用？](/archive/blogs/janelewis/d2-and-d4-what-is-it-for)。
 
-    - 如果您使用 DFSR 複寫，請完成權威還原的步驟。 [針對 DFSR 複寫的 SYSVOL 資料夾（例如 FRS 的 "D4/D2"）強制執行權威和非權威同步](https://support.microsoft.com/kb/2218556)處理中會說明此程式。
+    - 如果您使用 DFSR 複寫，請完成權威還原的步驟。 針對 DFSR 複寫的 [SYSVOL (資料夾，強制執行權威和非權威的同步處理（如適用于 FRS) 的 "D4/D2"） ](https://support.microsoft.com/kb/2218556)，會說明此程式。
 
       您也可以使用 PowerShell 函式。 如需詳細資訊，請參閱 [DFSR-SYSVOL 授權/非權威還原 PowerShell 函式](/archive/blogs/thbouche/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions)。
 
-1. 將內部部署網域控制站中的下列登錄機碼設為 **0**，以略過初始同步需求。 如果 `DWORD` 不存在，您可以在 [**參數**] 節點下建立它。
+1. 將內部部署網域控制站中的下列登錄機碼設為 **0**，以略過初始同步需求。 如果 `DWORD` 不存在，您可以在 [ **參數** ] 節點下建立它。
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
    如需詳細資訊，請參閱[疑難排解 DNS 事件識別碼 4013：DNS 伺服器無法載入 AD 整合的 DNS 區域](https://support.microsoft.com/kb/2001093)。
 
-1. 停用讓通用類別目錄伺服器可用來驗證使用者登入的需求。 若要這麼做，請在內部部署網域控制站中，將下列登錄機碼設為 **1**。 如果 `DWORD` 不存在，您可以在**Lsa**節點下建立它。
+1. 停用讓通用類別目錄伺服器可用來驗證使用者登入的需求。 若要這麼做，請在內部部署網域控制站中，將下列登錄機碼設為 **1**。 如果 `DWORD` 不存在，您可以在 **Lsa** 節點下建立它。
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-   如需詳細資訊，請參閱[通用類別目錄的運作方式](/previous-versions/windows/it-pro/windows-server-2003/cc737410(v=ws.10))。
+   如需詳細資訊，請參閱 [通用類別目錄的運作方式](/previous-versions/windows/it-pro/windows-server-2003/cc737410(v=ws.10))。
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>不同電腦上的 DNS 和網域控制站
 
 如果您在相同的 VM 上執行網域控制站和 DNS，您可以略過此程序。
 
-如果 DNS 與網域控制站不在相同的 VM 上，您必須為測試容錯移轉建立 DNS VM。 您可以使用全新的 DNS 伺服器，並建立所有的必要區域。 例如，如果您的 Active Directory 網域是 `contoso.com` ，您可以使用名稱來建立 DNS 區域 `contoso.com` 。 DNS 中對應至 Active Directory 的項目必須更新，如下所示：
+如果 DNS 與網域控制站不在相同的 VM 上，您必須為測試容錯移轉建立 DNS VM。 您可以使用全新的 DNS 伺服器，並建立所有的必要區域。 例如，如果您的 Active Directory 網域是 `contoso.com` ，則可以使用名稱建立 DNS 區域 `contoso.com` 。 DNS 中對應至 Active Directory 的項目必須更新，如下所示：
 
 1. 確定在復原計劃中的任何其他虛擬機器啟動之前，下列設定均已完成：
 
@@ -206,6 +206,6 @@ ms.locfileid: "86132330"
    dnscmd /config contoso.com /allowupdate 1
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-[深入瞭解](site-recovery-workload.md)如何使用 Azure Site Recovery 保護企業工作負載。
+[深入瞭解](site-recovery-workload.md) 如何使用 Azure Site Recovery 來保護企業工作負載。

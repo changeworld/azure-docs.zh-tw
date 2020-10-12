@@ -13,10 +13,10 @@ ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: ff92f66d4d7b96660fe83b79273f65ca50eb22f9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89292889"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>驗證流程和應用程式情節
@@ -192,7 +192,7 @@ MSAL iOS 和 MSAL Android 預設會使用系統網頁瀏覽器。 不過，您�
 
 <table>
  <thead>
-  <tr><th>案例</th> <th>詳細案例逐步解說</th> <th>OAuth 2.0 流程和授與</th> <th>對象</th></tr>
+  <tr><th>狀況</th> <th>詳細案例逐步解說</th> <th>OAuth 2.0 流程和授與</th> <th>對象</th></tr>
  </thead>
  <tbody>
   <tr>
@@ -298,7 +298,7 @@ Microsoft 驗證程式庫支援多種平臺：
 
 在下表的 Windows 欄中，每次提及 .NET Core 時，也可能是 .NET Framework。 省略後者可避免表格雜亂。
 
-|案例  | Windows | Linux | Mac | iOS | Android
+|狀況  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [單一頁面應用程式](scenario-spa-overview.md) <br/>[![單一頁面應用程式驗證](media/scenarios/spa-app-auth.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [單一頁面應用程式](scenario-spa-overview.md) <br/>[![單一頁面應用程式隱含](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
@@ -311,7 +311,7 @@ Microsoft 驗證程式庫支援多種平臺：
 
 如需詳細資訊，請參閱 [Microsoft 支援的程式庫（依 OS/語言](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)）。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解[Microsoft 身分識別平臺中的](access-tokens.md)[驗證基本概念](./authentication-vs-authorization.md)和存取權杖。
 * 深入瞭解 [如何保護 IoT 應用程式的存取](/azure/architecture/example-scenario/iot-aad/iot-aad)。

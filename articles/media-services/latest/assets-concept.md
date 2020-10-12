@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
 ms.openlocfilehash: 99101f31ec955c822c784180dd8b04bfb8e5f73c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291597"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure 媒體服務 v3 中的資產
@@ -42,7 +42,7 @@ ms.locfileid: "89291597"
 
 資產中的檔案/Blob 名稱必須遵循 [Blob 名稱需求](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)與 [NTFS 名稱需求](/windows/win32/fileio/naming-a-file)。 之所以會有這些需求，是因為檔案會從 Blob 儲存體複製到本機 NTFS 磁碟加以處理。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [媒體服務總覽](media-services-overview.md)
 

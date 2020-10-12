@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708691"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>針對 Azure NFS 檔案共用進行疑難排解
@@ -90,7 +90,7 @@ NFS 僅適用于具有下列設定的儲存體帳戶：
     - 虛擬網路對等互連與裝載于私人端點的虛擬網路對等互連，可讓 NFS 共用存取對等互連虛擬網路中的用戶端。
     - 私人端點可與 ExpressRoute、點對站和站對站 Vpn 搭配使用。
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="私人端點連線能力的圖表。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="公用端點連線能力的圖表。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>原因2：已啟用需要安全傳輸
 
@@ -100,7 +100,7 @@ NFS 僅適用于具有下列設定的儲存體帳戶：
 
 停用儲存體帳戶設定分頁中所需的安全傳輸。
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="儲存體帳戶設定分頁的螢幕擷取畫面，需要停用安全傳輸。":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="公用端點連線能力的圖表。":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>原因3： nfs-未安裝一般套件
 執行掛接命令之前，請執行下列發行版本專用的命令來安裝套件。

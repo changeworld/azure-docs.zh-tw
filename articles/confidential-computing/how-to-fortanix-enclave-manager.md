@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462423"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>How To：使用 Fortanix 記憶體保護區管理員執行應用程式 
@@ -28,7 +28,7 @@ Fortanix 是協力廠商軟體廠商，其產品和服務建置於 Azure 基礎�
 
 
 
-本教學課程說明如何將您的應用程式映射轉換成受機密計算保護的映射。 此環境使用 [Fortanix](https://www.fortanix.com/) 軟體，由 Azure 的 DCsv2 系列 Intel 已啟用 SGX 的虛擬機器提供技術支援。 此解決方案會協調重要的安全性原則，例如身分識別驗證和資料存取控制。
+本教學課程說明如何將您的應用程式映射轉換成受機密計算保護的映射。 此環境會使用 [Fortanix](https://www.fortanix.com/) 軟體，由 Azure DCsv2-Series 支援 SGX 的虛擬機器提供支援。 此解決方案會協調重要的安全性原則，例如身分識別驗證和資料存取控制。
 
  如需 Fortanix 特定的支援，請加入 Fortanix 的 [ [時差](https://fortanix.com/community/) ]，並使用 channel #enclavemanager。
 
@@ -117,10 +117,10 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
      ![搜尋 marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. 選取 [ **立即取得**]，視需要填寫您的資訊，然後選取 [ **繼續**]。 您會被重新導向至 Azure 入口網站。 
 1. 選取 [ **建立** ]，輸入 Fortanix 的機密計算節點代理程式部署頁面。
-1. 在此頁面上，您將會輸入資訊以部署虛擬機器。 具體而言，此 VM 是已安裝 Fortanix 節點代理程式軟體的 Azure 中，已啟用 DCsv2 系列 Intel SGX 的虛擬機器。 節點代理程式可讓您的已轉換影像安全地在 Azure 的 Intel SGX 節點上執行。  選取您要在其中部署虛擬機器和相關聯資源的 **訂** 用帳戶和 **資源群組** 。 
+1. 在此頁面上，您將會輸入資訊以部署虛擬機器。 具體而言，此 VM 是已安裝 Fortanix Node Agent 軟體的 Azure 中，已啟用 Intel SGX 的虛擬機器 DCsv2-Series。 節點代理程式可讓您的已轉換影像安全地在 Azure 的 Intel SGX 節點上執行。  選取您要在其中部署虛擬機器和相關聯資源的 **訂** 用帳戶和 **資源群組** 。 
  
     > [!NOTE]
-    > 在 Azure 中部署 DCsv2 系列虛擬機器時，會有一些限制。 您可能需要為其他核心要求配額。 如需詳細資訊，請參閱 [Azure vm 上的機密計算解決方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
+    > 在 Azure 中部署 DCsv2-Series 的虛擬機器時，會有一些限制。 您可能需要為其他核心要求配額。 如需詳細資訊，請參閱 [Azure vm 上的機密計算解決方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
 
 1. 選取可用的區域。
 1. 在 [ **節點名稱** ] 欄位中輸入虛擬機器的名稱。 
@@ -130,7 +130,7 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
      ![部署資源](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. 選取 [檢閱 + 建立]。 確定驗證通過，然後選取 [ **建立**]。 當所有資源都部署完成之後，計算節點現在會在記憶體保護區 Manager 中註冊。 
+1. 選取 [檢閱 + 建立]  。 確定驗證通過，然後選取 [ **建立**]。 當所有資源都部署完成之後，計算節點現在會在記憶體保護區 Manager 中註冊。 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>在計算節點上執行應用程式映射
 執行下列命令來執行應用程式。 請務必將節點 IP、埠和已轉換的映射名稱變更為特定應用程式的輸入。 
@@ -162,13 +162,13 @@ Fortanix EM 映射是應用程式的軟體版本或版本。 每個映射都與�
 
 若不再需要，您可以刪除資源群組、虛擬機器和相關聯的資源。 刪除資源群組將會取消註冊與您已轉換之影像相關聯的節點。 
 
-請選取虛擬機器的資源群組，然後選取 [刪除]。 確認要完成資源刪除作業的資源群組名稱。
+請選取虛擬機器的資源群組，然後選取 [刪除]  。 確認要完成資源刪除作業的資源群組名稱。
 
 若要刪除您所建立的 Fortanix 記憶體保護區管理員帳戶，請移至記憶體保護區管理員中的 [ [帳戶] 頁面](https://em.fortanix.com/accounts) 。 將滑鼠停留在您想要刪除的帳戶上方。 選取右上角的垂直黑色點，然後選取 [ **刪除帳戶**]。
 
-  ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![[刪除]](media/how-to-fortanix-enclave-manager/delete-account.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您已使用 Fortanix 工具，將您的應用程式映射轉換成在機密計算虛擬機器上執行。 如需有關 Azure 上機密運算虛擬機器的詳細資訊，請參閱[虛擬機器的解決方案](virtual-machine-solutions.md)。 
 

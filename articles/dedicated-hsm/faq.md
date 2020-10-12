@@ -1,6 +1,6 @@
 ---
 title: 常見問題集：Azure 專用硬體安全模組 (HSM) | Microsoft Docs
-description: 尋找關於 Azure 專用硬體安全模組常見問題的解答，例如基本資訊、互通性、高可用性和支援。
+description: 尋找有關 Azure 專用硬體安全性模組的常見問題解答，例如基本資訊、互通性、高可用性和支援。
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189862"
 ---
 # <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
@@ -34,13 +34,13 @@ HSM 是用來保護及管理密碼編譯金鑰的實體運算裝置。 儲存在
 
 Azure 專用硬體安全模組 (HSM) 是雲端式服務，可提供裝載於 Azure 資料中心 (直接連線至客戶虛擬網路) 的 HSM。 這些 HSM是專用的網路設備 (Gemalto 的 SafeNet Network HSM 7 型號 A790)。 會直接部署至客戶的私人 IP 位址空間，Microsoft 對於 HSM 的密碼編譯功能並沒有任何存取權。 只有客戶對這些裝置擁有完整的系統管理和密碼編譯控制權。 客戶需負責管理裝置，且可以直接從裝置取得完整的活動記錄。 專用 HSM 可協助客戶滿足法規/合規性需求，例如 FIPS 140-2 等級 3、HIPAA、PCI DSS、eIDAS 以及許多其他需求。
 
-### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>問：專用 HSM 使用哪個硬體？
+### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>問：專用 HSM 所使用的硬體為何？
 
 Microsoft 與 Gemalto 合作，提供 Azure 專用硬體安全模組 (HSM) 服務。 使用的特定裝置為 [SafeNet Luna Network HSM 7 型號 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)。 此裝置不只提供 FIPS 140-2 等級 3 驗證的韌體，也透過 10 個分割區提供低延遲、高效能和高容量服務。 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>問：HSM 的用途為何？
 
-Hsm 用於儲存密碼編譯金鑰，用於加密功能，例如 TLS (傳輸層安全性) 、加密資料、PKI (公開金鑰基礎結構) 、DRM (數位版權管理) 和簽署檔。
+Hsm 可用來儲存密碼編譯金鑰，以用於加密功能，例如 TLS (傳輸層安全性) 、加密資料、PKI (公開金鑰基礎結構) 、DRM (數位版權管理) 和簽署檔。
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>問：專用 HSM 如何運作？
 
@@ -48,23 +48,23 @@ Hsm 用於儲存密碼編譯金鑰，用於加密功能，例如 TLS (傳輸層�
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>問：專用 HSM 服務會隨附哪些軟體？
 
-由 Microsoft 佈建 HSM 後，Gemalto 會提供 HSM 裝置的所有軟體。 您可在 [Gemalto 客戶支援入口網站](https://supportportal.gemalto.com/csm/)取得軟體。 使用專用 HSM 服務的客戶必須註冊 Gemalto 支援，並擁有可存取和下載相關軟體的客戶識別碼。 支援的用戶端軟體為7.2 版，與 FIPS 140-2 Level 3 驗證的固件版本7.0.3 相容。 
+由 Microsoft 佈建 HSM 後，Gemalto 會提供 HSM 裝置的所有軟體。 您可在 [Gemalto 客戶支援入口網站](https://supportportal.gemalto.com/csm/)取得軟體。 使用專用 HSM 服務的客戶必須註冊 Gemalto 支援，並擁有可存取和下載相關軟體的客戶識別碼。 支援的用戶端軟體是版本7.2，與 FIPS 140-2 Level 3 驗證的固件版本7.0.3 相容。 
 
-### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>問： Azure 專用 HSM 是否提供密碼型和 ED 為基礎的驗證？
+### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>問： Azure 專用 HSM 是否提供以密碼為基礎和 ED 為基礎的驗證？
 
 目前 Azure 專用硬體安全模組 (HSM) 只對硬體安全模組 (HSM) 提供密碼型驗證。
 
-### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>問：是否 Azure 專用 HSM 為我裝載 Hsm？
+### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>問：是否 Azure 專用 HSM 裝載我的 Hsm？
 
 Microsoft 僅透過專用硬體安全模組 (HSM) 服務提供 Gemalto SafeNet Luna Network HSM，而無法裝載任何客戶提供的裝置。
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>問： Azure 專用 HSM 是否支援付款 (PIN/EFT) 功能？
 
-Azure 專用硬體安全模組 (HSM) 服務使用 SafeNet Luna Network HSM 7 (型號 A790) 裝置。 這些裝置不支援付款 HSM 特有的功能 (例如 PIN 或 EFT) 或認證。 如果您想要 Azure 專用 HSM 服務在未來支援付款 Hsm，請將意見反應傳遞給您的 Microsoft 客戶代表。
+Azure 專用硬體安全模組 (HSM) 服務使用 SafeNet Luna Network HSM 7 (型號 A790) 裝置。 這些裝置不支援付款 HSM 的特定功能 (例如 PIN 或 EFT) 或認證。 如果您想要 Azure 專用 HSM 服務在未來支援付款 Hsm，請將意見反應傳遞給您的 Microsoft 客戶代表。
 
-### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>問：哪些 Azure 區域專用 HSM 在中提供？
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>問：有哪些 Azure 區域是專用 HSM？
 
-從2019年3月底起，下列14個區域提供專用 HSM。 已規劃進一步的區域，並可透過您的 Microsoft 客戶代表來加以討論。
+從2019年3月底起，以下14個區域提供專用 HSM。 系統會規劃進一步的區域，並可透過您的 Microsoft 帳戶代表進行討論。
 
 * 美國東部
 * 美國東部 2
@@ -106,7 +106,7 @@ Azure 專用硬體安全模組 (HSM) 服務使用 SafeNet Luna Network HSM 7 (�
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>問：我是否可以使用儲存在專用 HSM 的金鑰，來加密用於其他 Azure 服務的資料？
 
-不正確。 您只能從您的虛擬網路內存取 Azure 專用硬體安全模組 (HSM)。
+否。 您只能從您的虛擬網路內存取 Azure 專用硬體安全模組 (HSM)。
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>問：我是否可以從現有內部部署 HSM 將金鑰匯入專用 HSM？
 
@@ -137,7 +137,7 @@ PKCS #11、Java (JCA/JCE)、Microsoft CAPI 和 CNG、OpenSSL
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>問：我應如何決定要使用 Azure Key Vault 還是 Azure 專用硬體安全模組 (HSM)？
 
-對於要遷移至使用 HSM 之 Azure 內部部署應用程式的企業來說，Azure 專用硬體安全模組 (HSM) 是適當的選擇。 專用 HSM 可讓您以最低限度的變更來遷移應用程式。 如果密碼編譯作業在執行 Azure VM 或 Web 應用程式的程式碼中執行，則這些作業可以使用專用 HSM。 一般而言，在 IaaS 中執行的壓縮包裝軟體 (基礎結構即服務) 模型，支援 Hsm 作為金鑰存放區的功能，可以使用專用 HSM，例如應用程式閘道或流量管理員，以無索引鍵 TLS、ADCS (Active Directory 憑證服務) 或類似的 PKI 工具、用於檔簽署的工具/應用程式、程式碼簽署，或 (使用 EKM) 可延伸金鑰管理 (提供者的 HSM 中的主要金鑰設定的 SQL Server Azure Key Vault 適用于「雲端內建」應用程式或待用加密案例，其中客戶資料是由 PaaS (平臺即服務) 或 SaaS (軟體即服務) 案例，例如 Office 365 客戶金鑰、Azure 資訊保護、Azure 磁碟加密、Azure Data Lake 使用客戶管理的金鑰進行加密、以客戶管理的金鑰 Azure 儲存體加密，以及使用客戶管理的金鑰進行 Azure SQL。
+對於要遷移至使用 HSM 之 Azure 內部部署應用程式的企業來說，Azure 專用硬體安全模組 (HSM) 是適當的選擇。 專用 HSM 可讓您以最低限度的變更來遷移應用程式。 如果密碼編譯作業在執行 Azure VM 或 Web 應用程式的程式碼中執行，則這些作業可以使用專用 HSM。 一般來說，在 IaaS 中執行的壓縮包裝軟體 (基礎結構即服務) 模型，這項支援 Hsm 作為金鑰存放區，可以使用專用的 HSM，例如適用于無索引鍵 TLS 的應用程式閘道或流量管理員、ADC (Active Directory 憑證服務) ，或類似的 PKI 工具、用於檔簽署的工具/應用程式、程式碼簽署，或使用 TDE (可延伸金鑰管理) 提供者的 HSM (透明資料庫加密) SQL Server 中的主要金鑰。 Azure Key Vault 適用于「雲端內建」應用程式或待用加密案例，其中客戶資料是由 PaaS (平臺即服務) 或 SaaS (軟體即服務) 案例（例如 Office 365 客戶金鑰、Azure 資訊保護、Azure 磁碟加密、使用客戶管理的金鑰 Azure Data Lake 加密、使用客戶管理的金鑰進行加密，以及使用客戶管理的金鑰的 Azure SQL）進行處理。
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>問：哪些使用案例最適用於 Azure 專用硬體安全模組 (HSM)？
 
@@ -152,7 +152,7 @@ Azure 專用硬體安全模組 (HSM) 最適合移轉案例。 意即，如果您
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>問：專用 HSM 是否可以搭配 Office 365 客戶金鑰、Azure 資訊保護、Azure Data Lake Store、磁碟加密、Azure 儲存體加密、Azure SQL TDE 使用？
 
-不正確。 專用 HSM 會直接布建到客戶的私人 IP 位址空間，因此無法由其他 Azure 或 Microsoft 服務存取。
+否。 專用 HSM 會直接布建到客戶的私人 IP 位址空間，因此無法供其他 Azure 或 Microsoft 服務存取。
 
 ## <a name="administration-access-and-control"></a>管理、存取和控制
 
@@ -162,19 +162,19 @@ Azure 專用硬體安全模組 (HSM) 最適合移轉案例。 意即，如果您
 
 ### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>問：Microsoft 對我的 HSM 具有何種層級的存取權？
 
-Microsoft 對您的 HSM 並沒有任何管理或密碼編譯控制權。 Microsoft 具有監視層級存取權 (透過序列埠連線)，以便擷取基本的遙測 (例如溫度和元件的健康狀態)。 這可讓 Microsoft 提供健康狀態問題的主動式通知。 如有需要，客戶可以停用此帳戶。
+Microsoft 對您的 HSM 並沒有任何管理或密碼編譯控制權。 Microsoft 具有監視層級存取權 (透過序列埠連線)，以便擷取基本的遙測 (例如溫度和元件的健康狀態)。 這可讓 Microsoft 提供健康狀態問題的主動式通知。 如有必要，客戶可以停用此帳戶。
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>問： Microsoft 使用的「tenantadmin」帳戶為何，我在 SafeNet Hsm 上使用「系統管理員」身分管理使用者？
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>問： Microsoft 使用什麼「tenantadmin」帳戶，我曾在 SafeNet Hsm 上使用「系統管理員」的系統管理使用者？
 
-HSM 裝置隨附預設的 admin 使用者和一般的預設密碼。 當任何裝置都在等待客戶布建的集區中時，Microsoft 不想要使用預設密碼。 這不符合嚴格的安全性需求。 基於這個理由，我們會設定強式密碼，這會在布建時間捨棄。 此外，在布建時間，我們會以名為 "tenantadmin" 的管理員角色來建立新的使用者。 此使用者具有預設密碼，而客戶會在第一次登入新布建的裝置時，將其變更為第一個動作。 此程式可確保高安全性，並維護我們對客戶的唯一系統管理控制權。 請注意，如果客戶偏好使用該帳戶，則可以使用 "tenantadmin" 使用者來重設系統管理員使用者密碼。 
+HSM 裝置隨附預設的系統管理員使用者，其一般的預設密碼。 當任何裝置位於等候客戶布建的集區中時，Microsoft 不希望使用預設密碼。 這不符合嚴格的安全性需求。 基於這個理由，我們會設定強式密碼，這會在布建時捨棄。 此外，在布建期間，我們會以名為 "tenantadmin" 的管理員角色來建立新的使用者。 此使用者有預設密碼，而客戶在第一次登入新布建的裝置時，會將其變更為第一個動作。 此程式可確保高度的安全性，並維持我們對客戶唯一系統管理控制的承諾。 請注意，如果客戶偏好使用該帳戶，則可以使用 "tenantadmin" 使用者來重設系統管理員使用者密碼。 
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>問：Microsoft 或任何 Microsoft 員工是否可在我的專用 HSM 中存取金鑰？
 
-不正確。 對於儲存在客戶配置專用 HSM 中的金鑰，Microsoft 並不具有任何存取權。
+否。 對於儲存在客戶配置專用 HSM 中的金鑰，Microsoft 並不具有任何存取權。
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>問：是否可以為配置給我的 HSM 升級軟體/韌體？
 
-為獲得最佳支援，Microsoft 強烈建議不要升級 HSM 上的軟體/韌體。 不過，如果需要不同韌體版本的特定功能，則客戶擁有完整的管理控制權 (包括升級軟體/韌體)。 進行變更之前，必須先瞭解這種影響，例如，這可能會影響 FIPS 驗證狀態。 
+為獲得最佳支援，Microsoft 強烈建議不要升級 HSM 上的軟體/韌體。 不過，如果需要不同韌體版本的特定功能，則客戶擁有完整的管理控制權 (包括升級軟體/韌體)。 在進行變更之前，必須先瞭解其含意，例如，這可能會影響 FIPS 驗證狀態。 
 
 ### <a name="q-how-do-i-manage-dedicated-hsm"></a>問：如何管理專用 HSM？
 
@@ -196,19 +196,19 @@ Gemalto HSM 用戶端軟體可用於管理 HSM 和分割區。
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>問：是否可以在相同區域或跨多個區域中設定高可用性？
 
-是。 高可用性設定和設定，會在 Gemalto 提供的 HSM 用戶端軟體中執行。 相同區域或跨區域的相同 VNET 或其他 Vnet 中的 Hsm，或使用站對站或點對點 VPN 連線到 VNET 的內部部署 Hsm，都可以新增至相同的高可用性設定。 請注意，這只會同步處理金鑰內容，而非特定設定專案（例如角色）。
+是。 高可用性設定和設定，會在 Gemalto 提供的 HSM 用戶端軟體中執行。 相同 VNET 中的 Hsm 或相同區域中的其他 Vnet，或使用站對站或點對點 VPN 連線至 VNET 的內部部署 Hsm，都可以新增至相同的高可用性設定。 請注意，這只會同步處理金鑰內容，而非特定的設定專案，例如角色。
 
-### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>問：我可以將內部部署網路中的 Hsm 新增至具有 Azure 專用 HSM 的高可用性群組嗎？
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>問：我是否可以使用 Azure 專用 HSM 將來自內部部署網路的 Hsm 新增至高可用性群組？
 
 是。 您的 HSM 必須符合 SafeNet Luna Network HSM 7 的高可用性需求。
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>問：是否可以使用 Azure 專用 HSM 將 Luna 5/6 Hsm 從內部部署網路新增至高可用性群組？
 
-不正確。
+否。
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>問：我可以從單一應用程式將多少 HSM 新增至相同高可用性設定？
 
-有16個 HA 群組的成員具有絕佳的結果，且具備良好的完整節流測試。
+有16個 HA 群組的成員沒有現成的完整節流測試，並提供絕佳的結果。
 
 ## <a name="support"></a>支援
 
@@ -230,19 +230,19 @@ Azure 資料中心具有大量的實體和程序安全性控制。 此外，專�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>問：如何取得專用 HSM 的支援？
 
-Microsoft 和 Gemalto 都提供支援。  如果您有硬體或網路存取的問題，請向 Microsoft 提出支援要求，如果您有 HSM 設定、軟體和應用程式開發的問題，請使用 Gemalto 提出支援要求。 如果您有不確定的問題，請向 Microsoft 提出支援要求，然後 Gemalto 可以視需要參與。 
+Microsoft 和 Gemalto 都提供支援。  如果您有硬體或網路存取的問題，請向 Microsoft 提出支援要求，如果您有 HSM 設定、軟體和應用程式開發的問題，請向 Gemalto 提出支援要求。 如果您有未確定的問題，請向 Microsoft 提出支援要求，然後 Gemalto 可依需求參與。 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>問：如何? 取得 SafeNet Luna 7 HSM 的用戶端軟體、檔和存取整合指引嗎？
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>問：如何? 取得用戶端軟體、檔及存取 SafeNet Luna 7 HSM 的整合指引？
 
-在註冊服務之後，將會提供 Gemalto 客戶識別碼，以允許在 Gemalto 客戶支援入口網站中註冊。 這會啟用所有軟體和檔的存取權，以及直接使用 Gemalto 啟用支援要求。
+註冊服務之後，將會提供 Gemalto 客戶識別碼，以允許在 Gemalto 客戶支援入口網站中註冊。 這會啟用所有軟體和檔的存取權，以及直接使用 Gemalto 來啟用支援要求。
 
 ### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>問：如果發現安全性弱點，且 Gemalto 發行了修補程式，誰將負責升級/修補 OS/韌體？
 
 Microsoft 無法連線至配置給客戶的 HSM。 客戶必須自行升級與修補其 HSM。
 
-### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>問：如果我需要重新開機 HSM，該怎麼辦？
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>問：如果我需要重新開機我的 HSM，該怎麼辦？
 
-HSM 有命令列重新開機選項，不過，我們遇到了重新開機停止回應的問題，因此，建議您在最安全的重新開機中提出支援要求，以讓裝置實際重新開機。 
+HSM 有命令列重新開機選項，不過，我們遇到的問題是因為重新開機會間歇性地停止回應，而基於這個原因，建議您在最安全的重新開機期間，向 Microsoft 提出支援要求，讓裝置實際重新開機。 
 
 ## <a name="cryptography-and-standards"></a>密碼編譯和標準
 
@@ -282,7 +282,7 @@ HSM 有命令列重新開機選項，不過，我們遇到了重新開機停止�
 
 專用 HSM 服務佈建 SafeNet Luna Network HSM 7 設備。 這些設備使用經 FIPS 140-2 等級 3 驗證的 HSM。 預設部署設定、作業系統和韌體也已通過 FIPS 驗證。 您不需要為 FIPS 140-2 等級 3 的合規性採取任何動作。
 
-### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>問：客戶如何確保在取消布建 HSM 時，會抹除所有金鑰內容？
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>問：客戶如何確保取消布建 HSM 時，會清除所有的金鑰內容？
 
 在要求取消佈建前，客戶必須先使用 Gemalto 提供的 HSM 用戶端工具，將 HSM 歸零。
 
@@ -298,11 +298,11 @@ HSM 有命令列重新開機選項，不過，我們遇到了重新開機停止�
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>問：我可以在專用 HSM 中建立多少分割區？
 
-使用的 SafeNet Luna HSM 7 模型 A790 包含10個數據分割的授權，這是服務的成本。 裝置的限制為100個磁碟分割，而新增到此限制的分割區會產生額外的授權成本，並要求在裝置上安裝新的授權檔案。
+使用的 SafeNet Luna HSM 7 模型 A790 包含10個數據分割的授權，以服務的成本為限。 裝置的限制為100個分割區，而增加此限制的資料分割會產生額外的授權成本，並要求在裝置上安裝新的授權檔案。
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>問：專用 HSM 可支援多少金鑰？
 
-索引鍵的最大數目是可用記憶體的功能。 使用中的 SafeNet Luna 7 模型 A790 具有32MB 的記憶體。 如果使用非對稱金鑰，下列數位也適用于金鑰組。
+索引鍵的最大數目是可用記憶體的功能。 使用中的 SafeNet Luna 7 模型 A790 有 32 MB 的記憶體。 如果使用非對稱金鑰，下列數位也適用于金鑰組。
 
 * RSA-2048 - 19,000
 * ECC-P256 - 91,000

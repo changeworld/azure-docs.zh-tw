@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: a19f0a204bec1c0a43a84d93c2dc4b70ef6ecbe6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069898"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>靜態資料的個人化工具服務加密
@@ -23,11 +23,11 @@ ms.locfileid: "89069898"
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 
 > [!IMPORTANT]
-> 客戶管理的金鑰僅適用于 E0 定價層。 若要要求能夠使用客戶管理的金鑰，請填寫並提交 [個人化工具 Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配個人化工具服務之後，您將需要建立新的個人化工具資源，並選取 E0 作為定價層。 一旦建立了具有 E0 定價層的個人化工具資源之後，您就可以使用 Azure Key Vault 來設定受控識別。
+> 客戶管理的金鑰僅適用于 E0 定價層。 若要要求使用客戶管理金鑰的能力，請填寫並提交 [個人化工具服務 Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配個人化工具服務之後，您將需要建立新的個人化工具資源，並選取 E0 作為定價層。 一旦建立了具有 E0 定價層的個人化工具資源之後，您就可以使用 Azure Key Vault 來設定受控識別。
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-* [個人化工具 Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)
+* [個人化工具 Service Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)
 * [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

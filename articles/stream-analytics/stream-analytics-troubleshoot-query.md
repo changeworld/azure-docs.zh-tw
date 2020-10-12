@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337801"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
@@ -28,7 +28,7 @@ ms.locfileid: "87337801"
     - 在 Azure 入口網站的 [查詢] 索引標籤上，選取 [測試]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
     - 您也可以使用適用於 Visual Studio 的 Azure 串流分析工具或 [Visual Studio Code](visual-studio-code-local-run-live-input.md)，[在本機測試查詢](stream-analytics-live-data-local-testing.md)。 
 
-2.  在適用于 Visual Studio Code 的 Azure 串流分析工具中，[使用工作圖表在本機逐步執行 Debug 查詢](debug-locally-using-job-diagram-vs-code.md)。 作業圖表顯示資料如何從輸入來源 (事件中樞、IoT 中樞等)，經過多個查詢步驟，最後流向輸出接收。 每個查詢步驟都使用 WITH 陳述式，對應到指令碼中定義的暫存結果集。 您可以在每個中繼結果集檢視資料和計量，以找出問題的來源。
+2.  使用 Azure 串流分析工具中的工作圖表，在本機進行 Visual Studio Code 的[偵錯工具逐步](debug-locally-using-job-diagram-vs-code.md)解說。 作業圖表顯示資料如何從輸入來源 (事件中樞、IoT 中樞等)，經過多個查詢步驟，最後流向輸出接收。 每個查詢步驟都使用 WITH 陳述式，對應到指令碼中定義的暫存結果集。 您可以在每個中繼結果集檢視資料和計量，以找出問題的來源。
 
     ![作業圖表預覽結果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 

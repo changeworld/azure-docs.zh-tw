@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706263"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>與 Azure Multi-Factor Authentication 相關的常見問題
@@ -182,7 +182,7 @@ ms.locfileid: "90706263"
 
 協力廠商安全性應用程式也可能會封鎖驗證碼文字訊息或通話。 如果使用協力廠商安全性應用程式，請嘗試停用保護，然後再要求傳送另一個 MFA 驗證碼。
 
-如果您的使用者通常會有可靠地接收文字訊息的問題，請告知他們改為使用 Microsoft Authenticator 應用程式或通話方法。 Microsoft Authenticator 可以透過行動電話通訊和 Wi-fi 連線接收通知。 此外，即使裝置收不到訊號，行動應用程式可以產生驗證碼。 適用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)的 Microsoft Authenticator 應用程式。
+如果您的使用者通常會有可靠地接收文字訊息的問題，請告知他們改為使用 Microsoft Authenticator 應用程式或通話方法。 Microsoft Authenticator 可以透過行動電話和 Wi-Fi 連接來接收通知。 此外，即使裝置收不到訊號，行動應用程式可以產生驗證碼。 適用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)的 Microsoft Authenticator 應用程式。
 
 ### <a name="can-i-change-the-amount-of-time-my-users-have-to-enter-the-verification-code-from-a-text-message-before-the-system-times-out"></a>可變更使用者必須在系統逾時前，輸入簡訊上驗證碼的時間限制嗎？
 
@@ -190,7 +190,7 @@ ms.locfileid: "90706263"
 
 若為具有 Azure MFA Server v7.0 或更高版本的單向 SMS，您可以設定登錄機碼來設定逾時設定。 MFA 雲端服務傳送文字訊息之後，驗證碼 (或單次密碼) 就會傳回 MFA 伺服器。 依預設，MFA 伺服器會將程式碼儲存在記憶體中達 300 秒。 如果使用者在 300 秒內未輸入代碼，則他們的驗證會遭到拒絕。 若要變更預設逾時設定，請使用下列步驟：
 
-1. 移至 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
+1. 前往 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
 2. 建立名為*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**登錄機碼，並設定您想要 Azure MFA 伺服器儲存單次密碼的時間（以秒為單位）。
 
 >[!TIP]

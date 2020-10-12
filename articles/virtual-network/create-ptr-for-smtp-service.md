@@ -14,15 +14,15 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c8ffadb8d54db0c2a99dc12e45b5990155a0505e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135060"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>設定反向對應區域用於 SMTP Banner 檢查
 
-本文說明如何在 Azure DNS 中使用反向區域，並建立用於 SMTP 橫幅檢查的反向 DNS （PTR）記錄。
+本文說明如何在 Azure DNS 中使用反向區域，以及為 SMTP 橫幅檢查建立反向 DNS (PTR) 記錄。
 
 ## <a name="symptom"></a>徵狀
 
@@ -30,7 +30,7 @@ ms.locfileid: "86135060"
 
 **554：沒有 PTR 記錄**
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 對於 Azure 中的虛擬 IP 位址，反向記錄建立在 Microsoft 擁有的網域區域中，而不是自訂網域區域。
 

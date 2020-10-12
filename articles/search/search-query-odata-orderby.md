@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88926825"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $orderby 語法
@@ -32,7 +32,7 @@ ms.locfileid: "88926825"
 
 ## <a name="syntax"></a>語法
 
-**$Orderby**參數接受以逗號分隔的清單，最多可達32個**order by 子句**。 Order by 子句的語法如下所述 EBNF ([外延巴克斯-格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) ：
+**$Orderby**參數接受以逗號分隔的清單，最多可達32個**order by 子句**。 Order by 子句的語法如下所示 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

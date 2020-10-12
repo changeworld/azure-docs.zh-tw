@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523973"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 至 V3 的遷移
 
 > [!NOTE]
-> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以利用在 V3 中專門提供的新功能。
+> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以充分利用 V3 提供的新功能。
 > 
-> Microsoft Translator Hub 將于 2019 5 月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator Hub 將于2019年5月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
 
-Microsoft Translator 小組已發行翻譯工具的第3版（V3）。 本版包含對 Microsoft Translator 服務傳送和接收資料的新功能、汰用方法和新格式。 本文件提供將應用程式變更為使用 V3 的資訊。 
+Microsoft Translator 團隊已發行第3版 (V3) 的翻譯工具。 本版包含對 Microsoft Translator 服務傳送和接收資料的新功能、汰用方法和新格式。 本文件提供將應用程式變更為使用 V3 的資訊。 
 
 本文件結尾處包含多個有用的連結，以供您深入了解。
 
@@ -32,12 +32,12 @@ Microsoft Translator 小組已發行翻譯工具的第3版（V3）。 本版包�
 
 * 無追蹤 - 在 V3 中，Azure 入口網站中的所有定價層都會套用「無追蹤」。 此功能表示 Microsoft 將不會儲存任何提交至 V3 API 的文字。
 * JSON - XML 已由 JSON 取代。 所有傳送至服務和從服務接收的資料均採用 JSON 格式。
-* 單一要求中的多個目的語言-「轉譯」方法會接受多個「到」語言，以在單一要求中轉譯。 例如，單一要求可以是「來自」英文、「到」德文、西班牙文和日文，或任何其他語言群組。
-* 雙語字典 - API 中新增了雙語字典方法。 這個方法包含「查閱」和「範例」。
+* 單一要求中的多個目的語言-轉譯方法接受單一要求中翻譯的多個「到」語言。 例如，單一要求可以是「來自」英文和「到」德文、西班牙文和日文，或任何其他語言群組。
+* 雙語字典 - API 中新增了雙語字典方法。 此方法包含「查閱」和「範例」。
 * 音譯 - API 中新增了音譯方法。 此方法會將一個指令碼中的字組和句子 (例如 阿拉伯文) 轉換為另一個指令碼 (例如 拉丁文)。
-* 語言-新的「語言」方法會以 JSON 格式傳遞語言資訊，以與「翻譯」、「字典」和「直譯」方法搭配使用。
-* 翻譯的新手-新功能已新增至「翻譯」方法，以支援 V2 API 中的某些功能作為個別的方法。 例如，TranslateArray 就是其中之一。
-* 說話方法-Microsoft Translator 已不再支援文字轉換語音功能。 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中有提供文字轉語音功能。
+* 語言-新的「語言」方法會以 JSON 格式傳遞語言資訊，以搭配「轉譯」、「字典」和「直譯」方法使用。
+* 轉譯的新功能已新增至「翻譯」方法，以支援 V2 API 中的某些功能作為個別方法。 例如，TranslateArray 就是其中之一。
+* Microsoft Translator 不再支援說出方法文字轉換語音功能。 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中有提供文字轉語音功能。
 
 下列 V2 和 V3 方法清單列出將提供 V2 隨附功能的 V3 方法和 API。
 
@@ -59,7 +59,7 @@ Microsoft Translator 小組已發行翻譯工具的第3版（V3）。 本版包�
 
 ## <a name="move-to-json-format"></a>移轉至 JSON 格式
 
-Microsoft Translator 轉譯 V2 接受並傳回 XML 格式的資料。 在 V3 中，所有使用 API 傳送和接收的資料均採用 JSON 格式。 在 V3 中將不再接受或傳回 XML。
+Microsoft Translator 翻譯 V2 接受並傳回 XML 格式的資料。 在 V3 中，所有使用 API 傳送和接收的資料均採用 JSON 格式。 在 V3 中將不再接受或傳回 XML。
 
 此變更將對為 V2 文字翻譯 API 撰寫的應用程式產生若干層面的影響。 例如：語言 API 會傳回文字翻譯、音譯和兩個字典方法的語言資訊。 您可以在單一呼叫中要求所有方法的所有語言資訊，或是個別要求。
 
@@ -86,7 +86,7 @@ Microsoft Translator V3 的定價方式與 V2 相同，即依字元計價，包�
 
 ## <a name="v3-end-points"></a>V3 結束點
 
-全域
+全球
 
 * api.cognitive.microsofttranslator.com
 
@@ -110,7 +110,7 @@ Microsoft Translator V3 的定價方式與 V2 相同，即依字元計價，包�
 
 > [!NOTE]
 > 
-> Microsoft Translator Hub 將于 2019 5 月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。   
+> Microsoft Translator Hub 將于2019年5月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。   
 
 Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無法搭配 Microsoft Translator Hub 使用。 Translator Hub 僅支援傳統統計機器翻譯。 類神經翻譯現在已可使用自訂翻譯工具進行自訂。 [深入了解如何自訂類神經機器翻譯](custom-translator/overview.md)
 
@@ -118,7 +118,7 @@ Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無�
 
 | 版本 | 端點 | GDPR 處理器合規性 | 使用 Translator Hub | 使用自訂翻譯 (預覽) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator 第2版|    api.microsofttranslator.com|    否    |是    |否|
+|Translator 版本2|    api.microsofttranslator.com|    否    |是    |否|
 |Translator 第3版|    api.cognitive.microsofttranslator.com|    是|    否|    是|
 
 **Translator 第3版**
@@ -127,15 +127,15 @@ Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無�
 * 允許您叫用您透過自訂翻譯 (預覽) (新的 Translator NMT 自訂功能) 所自訂的類神經網路翻譯系統。 
 * 無法用於存取使用 Microsoft Translator Hub 所建立的自訂翻譯系統。
 
-如果您使用 api.cognitive.microsofttranslator.com 端點，您會使用第3版的翻譯工具。
+如果您使用的是 api.cognitive.microsofttranslator.com 端點，則會使用第3版的翻譯工具。
 
-**Translator 第2版**
+**Translator 版本2**
 * 未滿足所有 20001、20018 ISO 和 SOC 3 認證需求。 
 * 不允許您叫用您透過 Translator 自訂功能所自訂的類神經網路翻譯系統。
 * 可供存取使用 Microsoft Translator Hub 所建立的自訂翻譯系統。
-* 如果您使用 api.microsofttranslator.com 端點，則會使用第2版的翻譯工具。
+* 如果您使用的是 api.microsofttranslator.com 端點，則會使用第2版的翻譯工具。
 
-翻譯工具的任何版本都不會建立您的翻譯記錄。 您的翻譯永遠不會與任何人共用。 [Translator 無追蹤](https://www.aka.ms/NoTrace)網頁上有更多資訊。
+沒有任何版本的翻譯工具會建立翻譯的記錄。 您的翻譯永遠不會與任何人共用。 [Translator 無追蹤](https://www.aka.ms/NoTrace)網頁上有更多資訊。
 
 ## <a name="links"></a>連結
 
@@ -143,7 +143,7 @@ Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無�
 * [Microsoft Azure 法律資訊](https://azure.microsoft.com/support/legal)
 * [線上服務條款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [檢視 V3.0 文件](reference/v3-0-reference.md)

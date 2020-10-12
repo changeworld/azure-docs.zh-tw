@@ -8,10 +8,10 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069012"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虛擬桌面 (傳統) 管理工具
@@ -60,7 +60,7 @@ ms.locfileid: "89069012"
     Connect-AzureAD
     ```
 
-4. 之後，流覽至您從 RDS 範本 GitHub 存放庫儲存兩個 PowerShell 腳本的資料夾。
+4. 之後，流覽至您從 RDS-Templates GitHub 存放庫儲存兩個 PowerShell 腳本的資料夾。
 
 將您用來登入的 PowerShell 視窗保持在開啟狀態，以在登入時執行額外的 PowerShell Cmdlet。
 
@@ -167,7 +167,7 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
    > [!NOTE]
    > 若您有自訂租用戶群組，請手動輸入名稱，不要從下拉式清單選擇。
 
-## <a name="report-issues"></a>報告問題
+## <a name="report-issues"></a>回報問題
 
 如果管理工具或其他 Windows 虛擬桌面工具發生任何問題，請依照[遠端桌面服務的 Azure Resource Manager 範本](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的指示，在 GitHub 上回報問題。
 

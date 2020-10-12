@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 設定 VMware 嚴重損壞修復至 Azure 的來源設定
+title: 使用 Azure Site Recovery 設定 VMware 災難復原至 Azure 的來源設定
 description: 本文說明如何設定您的內部部署環境，以利用 Azure Site Recovery 將 VMware 虛擬機器複寫到 Azure。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189730"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>設定從 VMware 複寫到 Azure 的來源環境
@@ -41,7 +41,7 @@ ms.locfileid: "88189730"
 
 1. 深入了解組態伺服器部署的[必要條件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 2. [檢查部署的容量數字](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements)。
-3. [下載](vmware-azure-deploy-configuration-server.md#download-the-template)和[匯入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVF 範本來設定執行組態伺服器的內部部署 VMware VM。 範本所提供的授權是評估授權，有效期限為180天。 在這段期間後，客戶必須使用購買的授權來啟用 windows。
+3. [下載](vmware-azure-deploy-configuration-server.md#download-the-template)和[匯入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVF 範本來設定執行組態伺服器的內部部署 VMware VM。 範本所提供的授權是評估授權，有效期為180天。 在這段期間之後，客戶必須使用採購的授權來啟用 windows。
 4. 開啟 VMware VM，並在復原服務保存庫中[註冊它](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)。
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>將 Azure Site Recovery 的資料夾從防毒程式中排除

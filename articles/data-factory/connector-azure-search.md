@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418230"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 認知搜尋索引
@@ -26,7 +26,7 @@ ms.locfileid: "81418230"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料複製到「Azure 認知搜尋索引」。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
+本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料複製到 Azure 認知搜尋索引。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
@@ -36,11 +36,11 @@ ms.locfileid: "81418230"
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-下列各節提供屬性的相關詳細資料，這些屬性是用來定義 Azure 認知搜尋連接器的特定 Data Factory 實體。
+下列各節提供屬性的相關詳細資料，這些屬性是用來定義 Azure 認知搜尋連接器專屬的 Data Factory 實體。
 
 ## <a name="linked-service-properties"></a>連結服務屬性
 
-以下是 Azure 認知搜尋已連結服務支援的屬性：
+以下是針對 Azure 認知搜尋已連結服務支援的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -50,7 +50,7 @@ ms.locfileid: "81418230"
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或「自我裝載 Integration Runtime」(如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 > [!IMPORTANT]
-> 將資料從雲端資料存放區複製到搜尋索引時，在 Azure 認知搜尋連結服務中，您需要在 connactVia 中參考明確區域的 Azure Integration Runtime。 將 [區域] 設定為搜尋服務所在的位置。 請參閱 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 以深入了解。
+> 從雲端資料存放區將資料複製到搜尋索引時，在 Azure 認知搜尋連結服務中，您需要在 connactVia 中以明確區域來參考 Azure Integration Runtime。 將區域設定為您的搜尋服務所在的區域。 請參閱 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 以深入了解。
 
 **範例︰**
 
@@ -78,7 +78,7 @@ ms.locfileid: "81418230"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Azure 認知搜尋資料集所支援的屬性清單。
 
-若要將資料複製到「Azure 認知搜尋」，以下是支援的屬性：
+若要將資料複製到 Azure 認知搜尋中，支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -106,11 +106,11 @@ ms.locfileid: "81418230"
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供「Azure 認知搜尋」來源所支援的屬性清單。
+如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 Azure 認知搜尋來源所支援的屬性清單。
 
-### <a name="azure-cognitive-search-as-sink"></a>Azure 認知搜尋作為接收
+### <a name="azure-cognitive-search-as-sink"></a>Azure 認知搜尋為接收
 
-若要將資料複製到「Azure 認知搜尋」，請將複製活動中的來源類型設定為**AzureSearchIndexSink**。 複製活動的 **sink** 區段支援下列屬性：
+若要將資料複製到 Azure 認知搜尋，請將複製活動中的來源類型設定為 **>azuresearchindexsink**。 複製活動的 **sink** 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -120,7 +120,7 @@ ms.locfileid: "81418230"
 
 ### <a name="writebehavior-property"></a>WriteBehavior 屬性
 
-AzureSearchSink 會在寫入資料時更新插入。 換句話說，寫入檔時，如果檔索引鍵已存在於搜尋索引中，Azure 認知搜尋就會更新現有的檔，而不會擲回衝突例外狀況。
+AzureSearchSink 會在寫入資料時更新插入。 換句話說，寫入檔時，如果檔索引鍵已經存在於搜尋索引中，Azure 認知搜尋會更新現有的檔，而不是擲回衝突例外狀況。
 
 AzureSearchSink (藉由使用 AzureSearch SDK) 提供下列兩種更新插入行為：
 
@@ -169,7 +169,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 
 下表指定是否支援 Azure 認知搜尋資料類型。
 
-| Azure 認知搜尋資料類型 | Azure 認知搜尋接收中支援 |
+| Azure 認知搜尋資料類型 | Azure 認知搜尋接收器中支援 |
 | ---------------------- | ------------------------------ |
 | String | Y |
 | Int32 | Y |
@@ -180,7 +180,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 | 字串陣列 | N |
 | GeographyPoint | N |
 
-目前不支援其他資料類型（例如 ComplexType）。 如需 Azure 認知搜尋支援的資料類型完整清單，請參閱[支援的資料類型（Azure 認知搜尋）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。
+目前不支援其他資料類型，例如 ComplexType。 如需 Azure 認知搜尋支援資料類型的完整清單，請參閱 [支援的資料類型 (Azure 認知搜尋) ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -1,7 +1,7 @@
 ---
-title: '沒有 (預覽的程式碼部署) '
+title: '沒有程式碼部署 (預覽) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何部署沒有專案腳本的模型。
+description: 瞭解如何部署不含輸入腳本的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,22 +10,22 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185480"
 ---
-# <a name="preview-no-code-model-deployment"></a> (預覽) 無程式碼模型部署
+# <a name="preview-no-code-model-deployment"></a> (Preview) 無程式碼模型部署
 
 無程式碼模型部署目前為預覽狀態，並支援下列機器學習架構：
 
 ## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel 格式
-TensorFlow 模型必須以**SavedModel 格式**註冊，才能與無程式碼模型部署搭配使用。
+TensorFlow 模型必須以 **SavedModel 格式** 註冊，才能使用無程式碼模型部署。
 
-如需如何建立 SavedModel 的相關資訊，請參閱[此連結](https://www.tensorflow.org/guide/saved_model)。
+如需有關如何建立 SavedModel 的詳細資訊，請參閱 [此連結](https://www.tensorflow.org/guide/saved_model) 。
 
-我們支援[TensorFlow 服務 DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags)的 [標記] 底下所列的任何 TensorFlow 版本。
+我們支援在 [TensorFlow 服務 DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags)的 [標記] 底下列出的任何 TensorFlow 版本。
 
 ```python
 from azureml.core import Model
@@ -61,19 +61,19 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-若要為模型評分，請參閱[使用部署為 web 服務的 Azure Machine Learning 模型](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 許多 ONNX 專案會使用 protobuf 檔案來簡潔地儲存訓練和驗證資料，這可能會讓您難以得知服務所預期的資料格式。 身為模型開發人員，您應該為開發人員提供檔：
+若要對模型進行評分，請參閱 [使用部署為 web 服務的 Azure Machine Learning 模型](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 許多 ONNX 專案都會使用 protobuf 檔來簡潔地商店定型和驗證資料，而這可能會讓您難以知道服務所預期的資料格式。 作為模型開發人員，您應該為開發人員記錄：
 
 *  (JSON 或二進位) 的輸入格式
-* 輸入資料圖形和類型 (例如，圖形的浮動陣列 [100100，3] ) 
-*  (的網域資訊，例如影像、色彩空間、元件順序，以及值是否正規化) 
+* 輸入資料圖形和類型 (例如，圖形 [100100，3] 的浮動陣列 ) 
+* 網域資訊 (例如，影像、色彩空間、元件順序，以及值是否正規化) 
 
-如果您使用 Pytorch，將[模型從 Pytorch 匯出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) ，會有轉換和限制的詳細資料。 
+如果您使用的是 Pytorch，則將 [模型從 Pytorch 匯出至 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) ，會有轉換和限制的詳細資料。 
 
 ## <a name="scikit-learn-models"></a>Scikit-learn 模型
 
-所有內建的 scikit-learn-學習模型類型都不支援任何程式碼模型部署。
+所有內建 scikit-learn 學習模型類型都不支援任何程式碼模型部署。
 
-以下範例示範如何註冊和部署 sklearn 模型，而不需要額外的程式碼：
+以下範例示範如何註冊及部署 sklearn 模型，而不需要額外的程式碼：
 
 ```python
 from azureml.core import Model
@@ -93,7 +93,7 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 > [!NOTE]
-> 支援 predict_proba 的模型預設會使用該方法。 若要覆寫此內容以使用「預測」，您可以如下所示修改 POST 主體：
+> 支援 predict_proba 的模型預設會使用該方法。 若要覆寫此使用預測，您可以修改 POST 主體，如下所示：
 
 ```python
 import json

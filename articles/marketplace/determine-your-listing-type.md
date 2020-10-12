@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
 ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90032379"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
@@ -98,6 +98,6 @@ SaaS 供應專案可以發佈至 Azure Marketplace 或 AppSource。 如果您的
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 一旦您決定發佈選項，請參閱「 [依供應專案類型的發佈指南](./publisher-guide-by-offer-type.md)」。

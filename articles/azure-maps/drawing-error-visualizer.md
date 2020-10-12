@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524738"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure 地圖服務繪製錯誤視覺化檢視
@@ -82,11 +82,11 @@ ms.locfileid: "86524738"
 
 _ConversionWarningsAndErrors.json_ 檔案已放在下載目錄的根目錄中。 若要載入 _ConversionWarningsAndErrors.json_，您可以將檔案放拖到方塊上，或按一下方塊，在 [檔案總管] 對話方塊中尋找檔案，然後上傳檔案。
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="繪製錯誤視覺化檢視應用程式 - 藉由拖放載入資料":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
 
-_ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯誤和警告清單。 每個錯誤或警告皆由圖層、層級和詳細訊息所指定。 若要查看有關錯誤或警告的詳細資訊，請按一下 [**詳細資料**] 連結。 棘手區段就會出現在清單下方。 此時您可以瀏覽至每個錯誤，以深入了解如何解決錯誤。
+_ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯誤和警告清單。 每個錯誤或警告皆由圖層、層級和詳細訊息所指定。 若要查看錯誤或警告的詳細資訊，請按一下 [ **詳細資料** ] 連結。 棘手區段接著會出現在清單下方。 此時您可以瀏覽至每個錯誤，以深入了解如何解決錯誤。
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="繪製錯誤視覺化檢視應用程式 - 錯誤和警告":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
 
 ## <a name="next-steps"></a>後續步驟
 

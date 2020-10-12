@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523990"
 ---
 # <a name="customize-your-text-translations"></a>自訂文字翻譯
 
-自訂翻譯是 Translator 服務的功能，可讓使用者在使用翻譯工具（僅限第3版）翻譯文字時，自訂 Microsoft Translator 的先進類神經機器翻譯。
+自訂翻譯是 Translator 服務的功能，可讓使用者在使用翻譯工具轉譯文字時，自訂 Microsoft Translator 的 advanced 類神經機器翻譯 (第3版) 。
 
 此功能在搭配使用[認知服務語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/)時，也可用來自訂語音翻譯。
 
@@ -27,13 +27,13 @@ ms.locfileid: "86523990"
 
 利用自訂翻譯工具，您可以建置類神經翻譯系統，以了解您自己的企業和產業中使用的術語。 然後，自訂的翻譯系統會整合到現有的應用程式、工作流程和網站。
 
-### <a name="how-does-it-work"></a>如何運作？
+### <a name="how-does-it-work"></a>運作方式
 
-使用您先前翻譯的檔（傳單、網頁、檔等）來建立轉譯系統，以反映您領域專屬的術語和樣式，優於標準翻譯系統。 使用者可以上傳 TMX、XLIFF、TXT、DOCX 和 XLSX 文件。  
+使用您先前翻譯過的檔 (傳單、網頁、檔等 ) 建立轉譯系統，以反映您的領域專屬術語和樣式（優於標準翻譯系統）。 使用者可以上傳 TMX、XLIFF、TXT、DOCX 和 XLSX 文件。  
 
 系統也接受在文件層級上為平行處理、但在句子層級上尚未對齊的資料。 若使用者可以存取使用多種語言、但位於在不同文件中的相同內容版本，自訂翻譯工具就能夠自動比對文件之間的句子。  系統還可以使用其中一或二種語言的單語資料，補充平行訓練資料來改善翻譯。
 
-然後使用 category 參數，透過定期呼叫 Translator 來提供自訂系統。
+接著，您可以使用類別參數定期呼叫轉譯程式來使用自訂系統。
 
 假設有適當的訓練資料類型和數量，透過使用自訂翻譯工具預期翻譯品質取得介於 5 到 10 之間或甚至更多的 BLEU 點數並不罕見。
 
@@ -43,7 +43,7 @@ ms.locfileid: "86523990"
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> 舊版 Microsoft Translator Hub 將于 2019 5 月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
+> 舊版 Microsoft Translator Hub 將于2019年5月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自訂翻譯工具與中樞
 
@@ -59,9 +59,9 @@ ms.locfileid: "86523990"
 ## <a name="collaborative-translations-framework"></a>共同作業翻譯架構
 
 > [!NOTE]
-> 從2018年2月1日起，AddTranslation （）和 AddTranslationArray （）已無法再與 Translator 2.0 搭配使用。 這些方法將會失敗，不會寫入任何內容。 Translator v3.0 不支援這些方法。
+> 從2018年2月1日開始，AddTranslation ( # A1 和 AddTranslationArray ( # A3 不再適用于 Translator 2.0 版。 這些方法將會失敗，不會寫入任何內容。 Translator v3.0 不支援這些方法。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [使用自訂翻譯工具設定自訂的語言系統](https://aka.ms/CustomTranslatorDocs)

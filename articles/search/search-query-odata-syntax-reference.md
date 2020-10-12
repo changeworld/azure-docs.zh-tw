@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928848"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 認知搜尋的 OData 運算式語法參考
@@ -34,7 +34,7 @@ Azure 認知搜尋使用 [OData 運算式](https://docs.oasis-open.org/odata/oda
 
 ## <a name="formal-grammar"></a>正式文法
 
-我們可以使用 EBNF ([外延巴克斯格斯](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 文法，來描述 Azure 認知搜尋支援的 OData 語言子集。 規則會列出「由上而下」，從最複雜的運算式開始，然後將它們細分成更基本的運算式。 頂端有文法規則，對應至 Azure 認知搜尋 REST API 的特定參數：
+我們可以使用 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 文法來描述 Azure 認知搜尋支援的 OData 語言子集。 規則會列出「由上而下」，從最複雜的運算式開始，然後將它們細分成更基本的運算式。 頂端有文法規則，對應至 Azure 認知搜尋 REST API 的特定參數：
 
 - [`$filter`](search-query-odata-filter.md)，由規則所定義 `filter_expression` 。
 - [`$orderby`](search-query-odata-orderby.md)，由規則所定義 `order_by_expression` 。
@@ -214,7 +214,7 @@ search_mode ::= "'any'" | "'all'"
 > [!div class="nextstepaction"]
 > [Azure 認知搜尋的 OData 語法圖](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
 - [搜尋檔 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/Search-Documents)

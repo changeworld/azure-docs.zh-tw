@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929428"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>在 Azure 入口網站中產生並儲存 SSH 金鑰
@@ -48,7 +48,7 @@ ms.locfileid: "88929428"
 
 1. 然後，您會看到一個快顯視窗，選取 [ **下載私密金鑰] 和 [建立資源**]。 這會將 SSH 金鑰下載為 pem 檔案。
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="將私密金鑰下載為 pem 檔案":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="建立新的資源群組，並產生 SSH 金鑰組":::
 
 1. 下載 pem 檔案之後，您可能會想要將它移到您電腦上的某個位置，以便從 SSH 用戶端輕鬆地指向該檔案。
 
@@ -74,7 +74,7 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 
 1. 在 [ **SSH 金鑰** ] 頁面上，選取 [ **建立**]。
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="上傳要儲存在 Azure 中的 SSH 公開金鑰":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="建立新的資源群組，並產生 SSH 金鑰組":::
 
 1. 在 **資源群組** 中，選取 [ **建立新** 的] 以建立新的資源群組來儲存您的金鑰。 輸入資源群組的名稱，然後選取 **[確定]**。
 
@@ -98,7 +98,7 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 1. 在 [篩選器] 中，選取 [ **類型**]，取消選取 [ **全選** ] 選項以清除清單。
 1. 在篩選器中輸入 **ssh** ，然後選取 **ssh 金鑰**。
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="如何篩選清單以查看所有 SSH 金鑰的螢幕擷取畫面。":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="建立新的資源群組，並產生 SSH 金鑰組":::
 
 ## <a name="get-the-public-key"></a>取得公開金鑰
 

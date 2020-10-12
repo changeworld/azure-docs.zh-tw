@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462355"
 ---
 # <a name="securing-paas-deployments"></a>保護 PaaS 部署
@@ -150,7 +150,7 @@ Application Insights 具有廣泛的工具，能與它所收集的資料進行�
 模糊測試是一種方法，可讓您藉由將格式不正確的輸入資料提供給程式介面 (進入點) 剖析和取用這項資料，以找出程式失敗 (程式碼錯誤) 。 [Microsoft 安全性風險偵測](https://www.microsoft.com/en-us/security-risk-detection/) 是一種雲端式工具，您可以在將軟體部署至 Azure 之前，先用來尋找軟體的錯誤和其他安全性弱點。 此工具的設計是為了在您部署軟體之前攔截弱點，因此您不必修補 bug、處理損毀，或在軟體發行之後回應攻擊。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在此文章中，我們是將焦點放在 Azure PaaS 部署的安全性優點和雲端應用程式的安全性最佳做法。 接下來，請了解使用特定 Azure 服務保護 PaaS Web 和行動解決方案的建議做法。 我們將開始 Azure App Service、Azure SQL Database 和 Azure Synapse Analytics，以及 Azure 儲存體。 當有適用於其他 Azure 服務的建議做法文章推出時，就會在以下清單中提供連結：
 
 - [Azure App Service](paas-applications-using-app-services.md)

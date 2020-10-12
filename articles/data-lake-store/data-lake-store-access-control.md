@@ -1,6 +1,6 @@
 ---
 title: Data Lake Storage Gen1 中的存取控制概觀 | Microsoft Docs
-description: 深入瞭解從 HDFS 衍生的 Azure Data Lake Storage Gen1 存取控制模型的基本概念。
+description: 瞭解從 HDFS 衍生的 Azure Data Lake Storage Gen1 存取控制模型的基本概念。
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190156"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
@@ -216,9 +216,9 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含 **擁有使用者**、 **擁有群組**及 **其他**的 RWX 值。
+建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含 **擁有使用者**、 **擁有群組**和 **其他**的 RWX 值。
 
-Azure Data Lake Storage Gen1 的 umask 是設定為007的常數值。 此值會轉譯成
+Azure Data Lake Storage Gen1 的 umask 是設定為007的固定值。 此值會轉譯成
 
 | umask 元件     | 數值形式 | 簡短形式 | 意義 |
 |---------------------|--------------|------------|---------|
@@ -250,7 +250,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-不正確。 Data Lake Storage Gen1 帳戶一律會啟用透過 ACL 的存取控制。
+否。 Data Lake Storage Gen1 帳戶一律會啟用透過 ACL 的存取控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>若要以遞迴方式刪除資料夾與其內容，需要哪些權限？
 
@@ -295,8 +295,8 @@ ACL 中的項目會儲存為對應於 Azure AD 中使用者的 GUID。 API 會�
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 * [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [在 Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: RpcTimeoutException for Apache Spark thrift-Azure HDInsight
-description: 使用 Apache Spark thrift 伺服器處理大型資料集時，您會看到502錯誤
+title: 適用于 Apache Spark thrift 的 RpcTimeoutException-Azure HDInsight
+description: 使用 Apache Spark thrift server 處理大型資料集時，您會看到502錯誤
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: a29d36c5ba6fdd51de27afa3ab4dfe1258332200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85208411"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>案例： Azure HDInsight 中 Apache Spark thrift 伺服器的 RpcTimeoutException
@@ -20,14 +20,14 @@ ms.locfileid: "85208411"
 
 ## <a name="issue"></a>問題
 
-Spark 應用程式失敗並出現 `org.apache.spark.rpc.RpcTimeoutException` 例外狀況和訊息： `Futures timed out` ，如下列範例所示：
+Spark 應用程式失敗， `org.apache.spark.rpc.RpcTimeoutException` 並出現例外狀況和訊息： `Futures timed out` ，如下列範例所示：
 
 ```
 org.apache.spark.rpc.RpcTimeoutException: Futures timed out after [120 seconds]. This timeout is controlled by spark.rpc.askTimeout
  at org.apache.spark.rpc.RpcTimeout.org$apache$spark$rpc$RpcTimeout$$createRpcTimeoutException(RpcTimeout.scala:48)
 ```
 
-`OutOfMemoryError`和 `overhead limit exceeded` 錯誤可能也會出現在中， `sparkthriftdriver.log` 如下列範例所示：
+`OutOfMemoryError` 和 `overhead limit exceeded` 錯誤也會出現在中， `sparkthriftdriver.log` 如下列範例所示：
 
 ```
 WARN  [rpc-server-3-4] server.TransportChannelHandler: Exception in connection from /10.0.0.17:53218
@@ -36,13 +36,13 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 ## <a name="cause"></a>原因
 
-這些錯誤是因為在資料處理期間缺乏記憶體資源所造成。 如果 JAVA 垃圾收集進程啟動，可能會導致 Spark 應用程式停止回應。 查詢將會開始進行，並停止處理。 此 `Futures timed out` 錯誤表示在嚴重壓力下的叢集。
+這些錯誤是因為資料處理期間記憶體資源不足所造成。 如果 JAVA 垃圾收集處理常式啟動，可能會導致 Spark 應用程式停止回應。 查詢將會開始時間並停止處理。 此 `Futures timed out` 錯誤表示在嚴重壓力下的叢集。
 
 ## <a name="resolution"></a>解決方案
 
-新增更多背景工作節點，或增加現有叢集節點的記憶體容量，以增加叢集大小。 您也可以調整資料管線，以減少一次處理的資料量。
+藉由新增更多背景工作節點或增加現有叢集節點的記憶體容量，來增加叢集大小。 您也可以調整資料管線，以減少一次處理的資料量。
 
-會 `spark.network.timeout` 控制所有網路連接的超時時間。 增加網路超時時間可能會讓某些重要作業更久，但這不會完全解決問題。
+會 `spark.network.timeout` 控制所有網路連接的超時時間。 增加網路延遲可能會讓某些重要作業的時間變得更久，但這並不會完全解決問題。
 
 ## <a name="next-steps"></a>後續步驟
 

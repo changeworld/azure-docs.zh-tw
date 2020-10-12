@@ -12,10 +12,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030305"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重新導向 URI (回復 URL) 限制和限制
@@ -95,6 +95,6 @@ Azure Active Directory (Azure AD) 應用程式模型目前支援在任何組織�
 > [!WARNING]
 > 此方法可讓遭入侵的用戶端修改狀態參數中傳送的其他參數，藉此將使用者重新導向至不同的 URL，也就是 RFC 6819 中所述的[開放重新導向程式威脅](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，用戶端必須藉由將狀態加密或透過其他方式進行驗證，來保護這些參數，例如在重新導向 URI 中針對權杖驗證功能變數名稱。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解應用程式註冊 [應用程式資訊清單](reference-app-manifest.md)。

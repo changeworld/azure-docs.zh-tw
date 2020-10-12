@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293637"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 的設計助理體驗
@@ -161,7 +161,7 @@ Contoso assistant 在工作列上有一個首頁：其 swirling、圓形圖示�
 
 ![在展開壓縮視圖之前和之後，Windows 上的語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/compact_transition.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [開始開發您的語音助理](how-to-windows-voice-assistants-get-started.md)

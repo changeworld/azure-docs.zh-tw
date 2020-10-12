@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: cd1342ae5912a9a91f1bd8d1bdacecdb5a2bbdb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416518"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>建立 Azure Data Factory 資料流程
@@ -20,7 +20,7 @@ ms.locfileid: "81416518"
 
 對應 ADF 中的資料流程可以大規模轉換資料，完全不需要撰寫任何程式碼。 您可以建構一系列轉換，以便在資料流設計工具中設計資料轉換作業。 先進行不限次數的來源轉換，然後進行資料轉換步驟。 接著，使用接收完成資料流程，以便將結果置於目的地中。
 
-首先從 Azure 入口網站建立新的 V2 Data Factory 來開始著手。 建立新的中心之後，按一下「作者與監視器」磚以啟動 Data Factory 使用者介面。
+先從 Azure 入口網站建立新的 V2 Data Factory 開始著手。 建立新的中心之後，按一下「作者與監視器」磚以啟動 Data Factory 使用者介面。
 
 ![資料流程選項](media/data-flow/v2portal.png "資料流程建立")
 
@@ -42,4 +42,4 @@ ms.locfileid: "81416518"
 
 ## <a name="next-steps"></a>後續步驟
 
-使用[來源轉換](data-flow-source.md)開始建立您的資料轉換。
+使用 [來源轉換](data-flow-source.md)開始建立您的資料轉換。

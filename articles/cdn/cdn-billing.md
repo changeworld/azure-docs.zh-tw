@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191164"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
@@ -62,7 +62,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - 傳輸量 (GB)：填滿 CDN 快取的資料傳輸量。
 
 > [!NOTE]
-> 從2019年10月開始，如果您使用來自 Microsoft 的 Azure CDN，則從 Azure 裝載的原始來源到 CDN Pop 的資料傳輸成本是免費的。 來自 Verizon 的 azure CDN 和來自 Akamai 的 Azure CDN 受限於以下所述的費率。
+> 從2019年10月開始，如果您使用來自 Microsoft 的 Azure CDN，從 Azure 中裝載的來源到 CDN Pop 的資料傳輸成本都是免費的。 來自 Verizon 的 azure CDN 和來自 Akamai 的 Azure CDN 受限於如下所述的費率。
 
 如需 Azure 儲存體計費的詳細資訊，請參閱[了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
@@ -88,13 +88,13 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - TTL 影響：物件的 TTL 越高，表示從來源擷取的頻率越低。 這也代表用戶端 (如瀏覽器) 將物件留在快取中的時間較長，因此能減少 CDN 的交易數。
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些原始服務符合 Microsoft Azure CDN 的免費資料傳輸資格？ 
-如果您使用下列其中一項 Azure 服務作為 CDN 原點，則不會向您收取從來源到 CDN Pop 的資料傳輸費用。 
+如果您使用下列其中一個 Azure 服務作為 CDN 來源，則不會向您收取從來源到 CDN Pop 的資料傳輸費用。 
 
 - Azure 儲存體
 - Azure 媒體服務
 - Azure 虛擬機器
 - 虛擬網路
-- Load Balancer
+- 負載平衡器
 - 應用程式閘道
 - Azure DNS
 - ExpressRoute

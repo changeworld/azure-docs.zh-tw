@@ -1,5 +1,5 @@
 ---
-title: 從 Oracle Eloqua 複製資料（預覽）
+title: '從 Oracle Eloqua 複製資料 (預覽版) '
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 Oracle Eloqua 複製到支援的接收資料存放區。
 services: data-factory
 ms.author: jingwang
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416858"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Oracle Eloqua 複製資料 (預覽)
@@ -28,7 +28,7 @@ ms.locfileid: "81416858"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此 Oracle Eloqua 連接器：
+此 Oracle Eloqua 連接器支援下列活動：
 
 - 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
@@ -55,7 +55,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 密碼 | 對應到使用者名稱的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
 **範例︰**
 
