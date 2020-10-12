@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531280"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Zoho 複製資料 (預覽)
@@ -54,16 +54,16 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 |:--- |:--- |:--- |
 | type | type 屬性必須設定為：**Zoho** | 是 |
 | connectionProperties | 定義如何連接到 Zoho 的一組屬性。 | 是 |
-| ***在 `connectionProperties` 下列底下：*** | | |
+| ***在 `connectionProperties` 下列情況下：*** | | |
 | 端點 | Zoho 伺服器的端點 (`crm.zoho.com/crm/private`)。 | 是 |
 | authenticationType | 允許的值為 `OAuth_2.0` 和 `Access Token` 。 | 是 |
-| clientId | 與您的 Zoho 應用程式相關聯的用戶端識別碼。 | 是，適用于 OAuth 2.0 驗證 | 
-| clientSecrect | 與您的 Zoho 應用程式相關聯的 clientsecret。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是，適用于 OAuth 2.0 驗證 | 
-| refreshToken | 與您的 Zoho 應用程式相關聯的 OAuth 2.0 重新整理權杖，用來在存取權杖過期時進行重新整理。 重新整理權杖永遠不會過期。 若要取得重新整理權杖，您必須要求 `offline` access_type，請參閱[這篇文章](https://www.zoho.com/crm/developer/docs/api/auth-request.html)以深入瞭解。 <br>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。| 是，適用于 OAuth 2.0 驗證 |
+| clientId | 與您的 Zoho 應用程式相關聯的用戶端識別碼。 | Yes 表示 OAuth 2.0 驗證 | 
+| clientSecrect | 與您的 Zoho 應用程式相關聯的 clientsecret。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | Yes 表示 OAuth 2.0 驗證 | 
+| refreshToken | 與您的 Zoho 應用程式相關聯的 OAuth 2.0 重新整理權杖，用來在存取權杖過期時重新整理。 重新整理權杖永遠不會過期。 若要取得重新整理權杖，您必須要求 `offline` access_type 的詳細資訊，請參閱 [這篇文章](https://www.zoho.com/crm/developer/docs/api/auth-request.html)。 <br>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。| Yes 表示 OAuth 2.0 驗證 |
 | accessToken | 用於 Zoho 驗證的存取權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
 **範例： OAuth 2.0 驗證**
 

@@ -9,15 +9,15 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377370"
 ---
 **應用程式範本**
 
-| [範本]                 | 名稱        | 說明 |
+| 範本                 | 名稱        | 描述 |
 | ------------------------ | ----------- | ----------- |
 | iotc-explorer-pnp-預覽         | 自訂應用程式 | 為您建立空的應用程式，以填入您自己的裝置範本和裝置。 |
 | iotc-explorer-條件           | 店內分析-條件監視 | 建立應用程式來連接及監視存放區環境。 |

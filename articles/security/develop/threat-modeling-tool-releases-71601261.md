@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 版本1/29/2019
 titleSuffix: Azure
-description: 閱讀1/29/2019 上發行之 Microsoft Threat Modeling Tool 的版本資訊。 這些注意事項包含功能變更和已知問題。
+description: 閱讀1/29/2019 版所發行 Microsoft Threat Modeling Tool 的版本資訊。 附注包括功能變更和已知問題。
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -9,17 +9,17 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/25/2019
 ms.openlocfilehash: 17147d412bd888cdd3cd270829ad6d6103867b34
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87539045"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新版本 7.1.60126.1 - 1/29/2019
 
 Microsoft Threat Modeling Tool 7.1.60126.1 版已於 2019 年 1 月 29 日發行，其中包含下列變更：
 
-- .NET 的最低必要版本已增加至[.net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)。
+- .NET 的最低必要版本已增加至 [.net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)。
 - Windows 的最低必要版本已提高到 [Windows 10 年度更新版](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)，以因應 .NET 相依性的需求。
 - 工具的 [選項] 功能表已新增模型驗證切換功能。
 - 已更新威脅屬性中的幾個連結。
@@ -30,7 +30,7 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已於 2019 年 1 月 29 日發行
 
 ### <a name="model-validation-option"></a>模型驗證選項
 
-根據客戶的意見反應，工具中已新增啟用或停用模型驗證的選項。 先前，如果您的範本在兩個物件之間使用單一單向資料流程，您可能會在訊息框架中收到錯誤訊息，指出： ObjectsName 至少需要一個 ' Any '。 停用模型驗證會防止在檢視中顯示這些警告。
+根據客戶的意見反應，工具中已新增啟用或停用模型驗證的選項。 先前，如果您的範本在兩個物件之間使用單一單向資料流程，您可能會在訊息框架中收到錯誤訊息，指出： ObjectsName 需要至少一個 ' Any '。 停用模型驗證會防止在檢視中顯示這些警告。
 
 將模型驗證切換為開啟和關閉的選項可在 [檔案]-> [設定]-> [選項] 功能表中找到。 此設定的預設值為 [停用]。
 
@@ -39,9 +39,9 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已於 2019 年 1 月 29 日發行
 ## <a name="system-requirements"></a>系統需求
 
 - 支援的作業系統
-  - [Microsoft Windows 10 年度更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)版（含）以後版本
+  - [Microsoft Windows 10 年度更新版](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) 或更新版本
 - 必要的 .NET 版本
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更新版本
+  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更新版本
 - 其他需求
   - 必須有網際網路連線可接收工具和範本的更新。
 

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 018dc1802d4f0b4b498d3993b8753990598a16ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86251139"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的容器映像管理與安全性最佳做法
@@ -23,7 +23,7 @@ ms.locfileid: "86251139"
 
 您也可以閱讀適用於[叢集安全性][best-practices-cluster-security]與 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-您也可以使用[資訊安全中心中的容器安全性][security-center-containers]，協助掃描您的容器是否有弱點。  此外，也[Azure Container Registry][security-center-acr]與資訊安全中心整合，以協助保護您的映射和登錄不受弱點影響。
+您也可以使用資訊 [安全中心的容器安全性][security-center-containers] ，協助掃描您的容器是否有弱點。  此外，也 [Azure Container Registry][security-center-acr] 與資訊安全中心整合，以協助保護您的映射和登錄免于弱點。
 
 ## <a name="secure-the-images-and-run-time"></a>保護映像與執行階段
 
@@ -45,7 +45,7 @@ Azure Container Registry 工作也可在更新基底映像時自動更新容器�
 
 如需基底映像更新的詳細資訊，請參閱[使用 Azure Container Registry 工作在基底映像更新時自動執行映像建置][acr-base-image-update]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文著重在如何保護您的容器。 若要實作這些部分的一些內容，請參閱下列文章：
 

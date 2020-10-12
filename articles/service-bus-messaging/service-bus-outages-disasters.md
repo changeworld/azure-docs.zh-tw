@@ -1,13 +1,13 @@
 ---
-title: 將 Azure 服務匯流排應用程式與中斷和災難隔離
-description: 這篇文章提供保護應用程式免于潛在 Azure 服務匯流排中斷的技術。
+title: 對抗 Azure 服務匯流排的應用程式免于中斷和災難
+description: 本文提供保護應用程式免于潛在 Azure 服務匯流排中斷的技術。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065619"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>將應用程式與服務匯流排中斷和災難隔絕的最佳做法
@@ -27,7 +27,7 @@ ms.locfileid: "88065619"
 
 ### <a name="availability-zones"></a>可用性區域
 
-「服務匯流排進階 SKU」支援[可用性區域](../availability-zones/az-overview.md)，可在 Azure 區域內提供錯誤隔離位置。 服務匯流排管理訊息存放區的三個複本， (1 個主要和2個次要) 。 服務匯流排會將三個複本保持同步，以進行資料和管理作業。 如果主要複本失敗，其中一個次要複本會升級為主要複本，而不會察覺到停機時間。 如果應用程式看到暫時性中斷與服務匯流排的連線，SDK 中的重試邏輯會自動重新連線到服務匯流排。 
+「服務匯流排進階 SKU」支援[可用性區域](../availability-zones/az-overview.md)，可在 Azure 區域內提供錯誤隔離位置。 服務匯流排會管理訊息存放區的三個複本 (1 個主要和2個次要) 。 服務匯流排會針對資料和管理作業，將所有三份複本保持同步。 如果主要複本失敗，則其中一個次要複本會升級為主要複本，且不會有察覺的停機時間。 如果應用程式看到暫時性中斷與服務匯流排的連線，SDK 中的重試邏輯會自動重新連線至服務匯流排。 
 
 > [!NOTE]
 > 「Azure 服務匯流排進階層」的「可用性區域」支援僅適用於有可用性區域存在的 [Azure 區域](../availability-zones/az-region.md)。
@@ -72,7 +72,7 @@ ms.locfileid: "88065619"
 [搭配服務匯流排標準層的異地複寫][Geo-replication with Service Bus Standard Tier] \(英文\) 範例示範傳訊實體的被動複寫。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>保護轉送端點免於發生資料中心中斷或災害
-[Azure 轉送](../azure-relay/relay-what-is-it.md)端點的異地複寫可讓公開轉送端點的服務在發生服務匯流排中斷時可連線。 若要達到異地複寫，服務必須在不同的命名空間中建立兩個轉送端點。 命名空間必須位於不同的資料中心而兩個端點必須具有不同的名稱。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下找到主要端點，並在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下找到其次要的對應項目。
+[Azure 轉送](../azure-relay/relay-what-is-it.md)端點的異地複寫可讓公開轉送端點的服務，在服務匯流排中斷時能夠觸達。 若要達到異地複寫，服務必須在不同的命名空間中建立兩個轉送端點。 命名空間必須位於不同的資料中心而兩個端點必須具有不同的名稱。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下找到主要端點，並在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下找到其次要的對應項目。
 
 然後服務會接聽這兩個端點，且用戶端可以透過任一端點叫用服務。 用戶端應用程式會隨機挑選其中一個轉送做為主要端點，並將其要求傳送至作用中的端點。 如果作業失敗並出現錯誤代碼，此失敗代表轉送端點無法使用。 應用程式會開啟備份端點的通道並重新發出要求。 作用中和備份端點會在這一點交換角色：用戶端應用程式會將舊的使用中端點視為新的備份端點，而將舊的備份端點視為新的作用中端點。 如果這兩個傳送作業都失敗，兩個實體的角色會保持不變並傳回錯誤。
 

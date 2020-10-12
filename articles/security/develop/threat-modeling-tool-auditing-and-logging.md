@@ -1,6 +1,6 @@
 ---
 title: 稽核和記錄 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 瞭解 Threat Modeling Tool 中的審核和記錄功能降低。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 中的審核和記錄緩和措施。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542988"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架︰稽核和記錄 | 緩和措施 
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **Dynamics CRM**    | <ul><li>[識別解決方案中的敏感性實體並執行變更審核](#sensitive-entities)</li></ul> |
-| **Web 應用程式** | <ul><li>[確保在應用程式上強制執行審核和記錄](#auditing)</li><li>[確定已備妥記錄輪替和分隔](#log-rotation)</li><li>[確保應用程式不會記錄敏感性使用者資料](#log-sensitive-data)</li><li>[確保稽核和記錄檔有限制存取](#log-restricted-access)</li><li>[確保已記錄使用者管理事件](#user-management)</li><li>[確保系統已內建誤用防禦措施](#inbuilt-defenses)</li><li>[在 Azure App Service 中針對 Web 應用程式啟用診斷記錄功能。](#diagnostics-logging)</li></ul> |
+| **Dynamics CRM**    | <ul><li>[在您的解決方案中識別敏感性實體並執行變更審核](#sensitive-entities)</li></ul> |
+| **Web 應用程式** | <ul><li>[確定已在應用程式上強制執行審核和記錄](#auditing)</li><li>[確定已備妥記錄輪替和分隔](#log-rotation)</li><li>[確保應用程式不會記錄敏感性使用者資料](#log-sensitive-data)</li><li>[確保稽核和記錄檔有限制存取](#log-restricted-access)</li><li>[確保已記錄使用者管理事件](#user-management)</li><li>[確保系統已內建誤用防禦措施](#inbuilt-defenses)</li><li>[在 Azure App Service 中針對 Web 應用程式啟用診斷記錄功能。](#diagnostics-logging)</li></ul> |
 | **Database** | <ul><li>[確保已在 SQL Server 上啟用登入稽核功能](#identify-sensitive-entities)</li><li>[在 Azure SQL 上啟用威脅偵測功能](#threat-detection)</li></ul> |
 | **Azure 儲存體** | <ul><li>[使用 Azure 儲存體分析來稽核 Azure 儲存體的存取](#analytics)</li></ul> |
 | **WCF** | <ul><li>[實作足夠的記錄](#sufficient-logging)</li><li>[實作足夠的稽核失敗處理](#audit-failure-handling)</li></ul> |
-| **Web API** | <ul><li>[確保在 Web API 上強制執行審核和記錄](#logging-web-api)</li></ul> |
+| **Web API** | <ul><li>[確定已在 Web API 上強制執行審核和記錄](#logging-web-api)</li></ul> |
 | **IoT 現場閘道** | <ul><li>[確保在現場閘道上強制執行適當的稽核和記錄功能](#logging-field-gateway)</li></ul> |
-| **IoT 雲端閘道** | <ul><li>[確保在雲端閘道上強制執行適當的審核和記錄](#logging-cloud-gateway)</li></ul> |
+| **IoT 雲端閘道** | <ul><li>[確定已在雲端閘道上強制執行適當的審核和記錄](#logging-cloud-gateway)</li></ul> |
 
 ## <a name="identify-sensitive-entities-in-your-solution-and-implement-change-auditing"></a><a id="sensitive-entities"></a>在您的解決方案中識別敏感性實體及實作變更稽核
 
@@ -142,7 +142,7 @@ ms.locfileid: "87542988"
 | **SDL 階段**               | Build |  
 | **適用的技術** | SQL Azure |
 | **屬性**              | SQL 版本 - V12 |
-| **參考**              | [開始使用 SQL Database 威脅偵測](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **參考**              | [使用 SQL Database 威脅偵測開始](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
 | **步驟** |<p>威脅偵測會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。 其提供新的一層安全性，在發生異常活動時會提供安全性警示，讓客戶偵測並回應潛在威脅。</p><p>使用者可以使用 Azure SQL Database 稽核來探查可疑的事件，判斷是否有人嘗試存取、破壞或利用資料庫中的資料。</p><p>您不必是安全性專家，也不需要管理進階的安全性監視系統，威脅偵測讓您輕鬆解決資料庫的潛在威脅</p>|
 
 ## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>使用 Azure 儲存體分析來稽核 Azure 儲存體的存取

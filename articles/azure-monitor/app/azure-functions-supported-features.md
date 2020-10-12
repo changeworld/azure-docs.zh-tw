@@ -7,19 +7,19 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033508"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
 Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)指南。
 
-如需函數執行時間版本的詳細資訊，請參閱[這裡](../../azure-functions/functions-versions.md)。
+如需函數執行階段版本的詳細資訊，請參閱 [這裡](../../azure-functions/functions-versions.md)。
 
-如需 Application Insights 相容版本的詳細資訊，請[參閱相依](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)性。
+如需 Application Insights 相容版本的詳細資訊，請參閱相依[性。](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)
 
 ## <a name="supported-features"></a>支援的功能
 
@@ -42,7 +42,7 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 | &bull; 取樣                     | 是             | 是               | 
 | &bull; 活動訊號                   |                 | 是               | 
 | | | | 
-| **Correlation (相互關聯)**                        |                   |                   |               
+| **Correlation**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
@@ -63,9 +63,9 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 
 Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](../../azure-functions/functions-monitoring.md#configure-sampling)。
 
-如果您的專案相依于 Application Insights SDK 以進行手動遙測追蹤，則如果您的取樣設定與函式的取樣設定不同，可能會遇到奇怪的行為。 
+如果您的專案相依于 Application Insights SDK 以進行手動的遙測追蹤，而您的取樣設定與函數的取樣設定不同，您可能會遇到奇怪的行為。 
 
-我們建議使用與函式相同的設定。 使用**函數 v2**，您可以在您的函式中使用相依性插入來取得相同的設定：
+我們建議使用與函式相同的設定。 使用函式 **v2**，您可以使用您的函式中的相依性插入來取得相同的設定：
 
 ```csharp
 using Microsoft.ApplicationInsights;

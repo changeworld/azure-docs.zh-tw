@@ -12,10 +12,10 @@ ms.author: dfurman
 ms.reviewer: sstein
 ms.date: 09/16/2020
 ms.openlocfilehash: 9674c319cfd51726218e2c6a20197ea15d0ee683
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330718"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>密集彈性集區中的資源管理
@@ -52,7 +52,7 @@ Azure SQL Database 藉由使用多個資源治理機制（包括進程層級資�
 
 Azure SQL Database 提供與這種監視相關的數個計量。 超過每個計量的建議平均值表示集區中的資源爭用，而且應該使用先前所述的其中一個動作來解決。
 
-|度量名稱|說明|建議的平均值|
+|度量名稱|描述|建議的平均值|
 |----------|--------------------------------|------------|
 |`avg_instance_cpu_percent`|與彈性集區相關聯之 SQL 進程的 CPU 使用率（以基礎作業系統測量）。 可以在每個資料庫的 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 視圖，以及資料庫的 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 視圖中使用 `master` 。 此計量也會發出至 Azure 監視器，並將其 [命名](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)為 `sqlserver_process_core_percent` ，並可在 Azure 入口網站中查看。 相同彈性集區中的每個資料庫都有相同的值。|低於70%。 可能可以接受最多90% 的短暫尖峰。|
 |`max_worker_percent`|[工作者執行緒]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide) 使用率。 針對集區中的每個資料庫，以及集區本身提供。 在資料庫層級上，背景工作執行緒數目會有不同的限制，因此，建議您在這兩個層級監視此度量。 可以在每個資料庫的 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 視圖，以及資料庫的 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 視圖中使用 `master` 。 此計量也會發出至 Azure 監視器，並將其 [命名](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)為 `workers_percent` ，並可在 Azure 入口網站中查看。|低於80%。 最高100% 的尖峰會導致連接嘗試和查詢失敗。|

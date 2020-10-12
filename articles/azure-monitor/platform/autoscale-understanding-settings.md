@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317462"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
@@ -91,7 +91,7 @@ ms.locfileid: "87317462"
 | 設定 | NAME | 自動調整規模設定名稱。 |
 | 設定 | location | 自動調整規模設定的位置。 此位置可以與要調整規模的資源位置不同。 |
 | properties | targetResourceUri | 要調整規模之資源的資源識別碼。 每個資源都只能有一個自動調整規模設定。 |
-| properties | 設定檔 | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
+| properties | profiles | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
 | profile | NAME | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
 | profile | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
 | profile | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
@@ -298,7 +298,7 @@ ms.locfileid: "87317462"
 
 例如，假設有目前容量為 10 的虛擬機器擴展集。 相應縮小規則有兩個：一個會減少 50% 的容量，而另一個則會使容量的計數減少 3。 第一個規則會產生新容量 5，而第二個規則則會產生容量 7。 為了確保服務可用性，自動調整會選擇產生最大容量的動作，因此會選擇第二個規則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參考下列各項，以深入了解自動調整︰
 
 * [自動調整的概觀](./autoscale-overview.md)

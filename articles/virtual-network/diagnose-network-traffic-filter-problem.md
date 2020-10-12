@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704942"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>診斷虛擬機器網路流量篩選問題
@@ -28,7 +28,7 @@ ms.locfileid: "84704942"
 
 NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您可以將 NSG 關聯至 Azure 虛擬網路中的子網路、附加至 VM 的網路介面，或是上述兩者。 套用至網路介面的有效安全性規則，乃是針對網路介面及該網路介面所在子網路關聯的 NSG，存在其中的規則彙總。 不同 NSG 中的規則有時會互相衝突，並影響 VM 的網路連線能力。 您可以從 VM 網路介面上套用的 NSG 中檢視所有的有效安全性規則。 如果您不熟悉虛擬網路、網路介面或 NSG 概念，請參閱[虛擬網路概觀](virtual-networks-overview.md)、[網路介面](virtual-network-network-interface.md)及[網路安全性群組概觀](security-overview.md)。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 您嘗試從網際網路透過連接埠 80 連線到 VM，但連線失敗。 若要判斷為何無法從網際網路存取連接埠 80，您可以使用 Azure [入口網站](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell) 或 [Azure CLI](#diagnose-using-azure-cli) 來檢視網路介面的有效安全性規則。
 
@@ -79,9 +79,9 @@ NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，您需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，還需要執行 `Connect-AzAccount` 以使用具有[必要權限](virtual-network-network-interface.md#permissions)的帳戶登入 Azure。
+您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，則需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，還需要執行 `Connect-AzAccount` 以使用具有[必要權限](virtual-network-network-interface.md#permissions)的帳戶登入 Azure。
 
-取得具有[AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)之網路介面的有效安全性規則。 下列範例會針對名為 *myVMVMNic* 的網路介面取得有效的安全性規則，該介面位於名為 *myResourceGroup* 的資源群組中：
+取得具有 [AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)之網路介面的有效安全性規則。 下列範例會針對名為 *myVMVMNic* 的網路介面取得有效的安全性規則，該介面位於名為 *myResourceGroup* 的資源群組中：
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -115,7 +115,7 @@ NetworkInterfaces
 
 如果使用命令列介面 (CLI) 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/bash) \(英文\) 中執行命令，或從您的電腦執行 CLI。 本文需要 Azure CLI 2.0.32 版或更新的版本。 執行 `az --version` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 Azure CLI，還需要執行 `az login` 並使用具有[必要權限](virtual-network-network-interface.md#permissions)的帳戶登入 Azure。
 
-使用 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) 來取得網路介面的有效安全性規則。 下列範例會針對名稱為*myResourceGroup*的資源群組中名為*myVMVMNic*的網路介面，取得有效的安全性規則：
+使用 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) 來取得網路介面的有效安全性規則。 下列範例會取得名為 *>myvmvmnic* 的網路介面的有效安全性規則，該介面位於名為 *myResourceGroup*的資源群組中：
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -170,20 +170,20 @@ az vm show \
 
 | 屬性                | 值                                                                              |
 |---------                |---------                                                                           |
-| 來源                  | 任意                                                                                |
+| 來源                  | 任何                                                                                |
 | 來源連接埠範圍      | 任意                                                                                |
 | Destination             | VM 的 IP 位址、IP 位址範圍，或是子網路中的所有位址。 |
 | 目的地連接埠範圍 | 80                                                                                 |
 | 通訊協定                | TCP                                                                                |
-| 動作                  | Allow                                                                              |
+| 動作                  | 允許                                                                              |
 | 優先順序                | 100                                                                                |
-| Name                    | Allow-HTTP-All                                                                     |
+| 名稱                    | Allow-HTTP-All                                                                     |
 
 當您建立規則之後，系統就會允許從網際網路經由連接埠 80 進行輸入，因為該規則的優先順序高於名為 *DenyAllInBound* 且會拒絕該流量的預設安全性規則。 了解如何[建立安全性規則](manage-network-security-group.md#create-a-security-rule)。 如果有不同的 NSG 同時關聯至網路介面和子網路，您就必須在那兩個 NSG 中建立相同的規則。
 
 當 Azure 處理輸入流量時，會先處理與子網路關聯 NSG 中的規則 (如果有相關聯的 NSG 的話)，然後再處理與網路介面相關聯 NSG 中的規則。 如果有某個 NSG 同時關聯至網路介面和子網路，就必須同時在那兩個 NSG 中開啟該連接埠來使流量能抵達 VM。 為了簡化管理和通訊問題，我們建議您將 NSG 關聯至子網路，而不是個別的網路介面。 如果子網路內的 VM 需要不同的安全性規則，您可以使網路介面成為應用程式安全性群組 (ASG) 的成員，並將 ASG 指定為安全性規則的來源和目的地。 深入了解[應用程式安全性群組](security-overview.md#application-security-groups)。
 
-如果您仍有通訊問題，請參閱[考慮](#considerations)和其他診斷。
+如果您仍有通訊問題，請參閱 [考慮](#considerations) 和其他診斷。
 
 ## <a name="considerations"></a>考量
 
@@ -201,7 +201,7 @@ az vm show \
   * VM 作業系統內執行的防火牆軟體
   * 為虛擬設備或內部部署流量設定的路由。 網際網路流量可以透過[強制通道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)重新導向至您的內部部署網路。 如果您透過強制通道將網際網路流量重新導向至虛擬設備或內部部署，便可能會無法從網際網路連線至 VM。 若要了解如何診斷可能會妨礙從 VM 流出流量的路由問題，請參閱[診斷虛擬機器網路流量路由問題](diagnose-network-routing-problem.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解適用於[網路安全性群組](manage-network-security-group.md#work-with-network-security-groups)和[安全性規則](manage-network-security-group.md#work-with-security-rules)的所有工作、屬性和設定。
 - 了解適用於 VM 的[預設安全性規則](security-overview.md#default-security-rules)、[服務標籤](security-overview.md#service-tags)，以及 [Azure 如何處理輸入和輸出流量的安全性規則](security-overview.md#network-security-groups)。

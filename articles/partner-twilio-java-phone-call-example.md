@@ -14,25 +14,25 @@ ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
 ms.openlocfilehash: 9a28677063c6f6dd7bb7bcf6746dbc541308891f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305902"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>如何在 Azure 上的 Java 應用程式中使用 Twilio 撥打電話
-下列範例將說明如何從 Azure 代管的網頁上使用 Twilio 撥打電話。 產生的應用程式會提示使用者提供通話值，如下列螢幕擷取畫面所示。
+下列範例將說明如何從 Azure 代管的網頁上使用 Twilio 撥打電話。 產生的應用程式會提示使用者輸入通話值，如下列螢幕擷取畫面所示。
 
 ![Azure Call Form Using Twilio and Java][twilio_java]
 
 您必須執行下列動作才能使用本主題中的程式碼：
 
-1. 取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請評估的定價 [https://www.twilio.com/pricing][twilio_pricing] 。 您可以在註冊 [https://www.twilio.com/try-twilio][try_twilio] 。 如需 Twilio 所提供之 API 的相關資訊，請參閱 [https://www.twilio.com/api][twilio_api] 。
-2. 取得 Twilio JAR。 在 [https://github.com/twilio/twilio-java][twilio_java_github] 中，您可以下載 GitHub 來源並建立您自己的 jar，或下載預先建立的 jar （不論是否有相依性）。
+1. 取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請評估價格 [https://www.twilio.com/pricing][twilio_pricing] 。 您可以在中註冊 [https://www.twilio.com/try-twilio][try_twilio] 。 如需 Twilio 所提供之 API 的詳細資訊，請參閱 [https://www.twilio.com/api][twilio_api] 。
+2. 取得 Twilio JAR。 在 [https://github.com/twilio/twilio-java][twilio_java_github] 中，您可以下載 GitHub 來源及建立自己的 jar，或下載預先建立的 jar (（具有或不含相依性) ）。
    本主題中的程式碼是以預先建置的 TwilioJava-3.3.8-with-dependencies JAR 撰寫的。
 3. 將 JAR 新增至您的 Java 建置路徑。
 4. 如果您使用 Eclipse 建立此 Java 應用程式，請使用 Eclipse 的部署組件功能在應用程式部署檔案 (WAR) 中加入 Twilio JAR。 如果您並非使用 Eclipse 建立此 Java 應用程式，請確定 Twilio JAR 與您的 Java 應用程式包含在相同的 Azure 角色內，且已新增至應用程式的類別路徑。
-5. 確定您的 cacerts 金鑰存放區包含 Equifax Secure Certificate Authority 憑證，且具有 MD5 指模 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF，SHA1 指模為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。 這是服務的憑證授權單位單位（CA）憑證 [https://api.twilio.com][twilio_api_service] ，會在您使用 Twilio api 時呼叫。 如需將此 CA 憑證新增至 JDK cacert 存放區的相關資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
+5. 確定您的 cacerts 金鑰存放區包含 Equifax Secure Certificate Authority 憑證，且具有 MD5 指模 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF，SHA1 指模為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。 這是服務 (CA) 憑證的憑證授權單位單位 [https://api.twilio.com][twilio_api_service] ，當您使用 Twilio api 時，會呼叫此憑證。 如需將此 CA 憑證新增至 JDK cacert 存放區的相關資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
 
 此外，強烈建議您熟悉[使用 Eclipse 的 Azure 工具組建立 Hello World 應用程式][azure_java_eclipse_hello_world]上的資訊，或熟悉其他在 Azure 中代管 Java 應用程式的技術 (如果您未使用 Eclipse)。
 
@@ -165,7 +165,7 @@ catch (Exception e)
 </html>
 ```
 
-除了撥打電話以外，makecall.jsp 也會顯示 Twilio 端點、API 版本和通話狀態。 例如，下列螢幕擷取畫面：
+除了撥打電話以外，makecall.jsp 也會顯示 Twilio 端點、API 版本和通話狀態。 下列螢幕擷取畫面範例如下：
 
 ![Azure Call Response Using Twilio and Java][twilio_java_response]
 
@@ -176,18 +176,18 @@ catch (Exception e)
 2. 修改 **startup.cmd** ，以將 TwilioCloud WAR 解壓縮。
 3. 針對計算模擬器編譯您的應用程式。
 4. 在計算模擬器中開始進行部署。
-5. 開啟瀏覽器並執行 `http://localhost:8080/TwilioCloud/callform.jsp`。
+5. 開啟瀏覽器並執行 `http://localhost:8080/TwilioCloud/callform.jsp` 。
 6. 輸入表單中的值，按一下 [Make this call] ****，然後在 makecall.jsp 中檢視結果。
 
 當您做好部署至 Azure 的準備後，您可以針對雲端環境重新編譯部署、部署至 Azure，以及在瀏覽器中執行 http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp (請將 *your_hosted_name* 取代為您的值)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 此程式可說明在 Azure 上的 Java 中使用 Twilio 的基本功能。 在部署至生產環境中的 Azure 之前，您可以新增更多錯誤處理或其他功能。 例如：
 
 * 除了使用 Web 表單以外，您也可以使用 Azure 儲存體 Blob 或 SQL Database 來儲存電話號碼和通話文字。 如需在 Java 中使用 Azure 儲存體 Blob 的相關資訊，請參閱[如何使用 Java 的 Blob 儲存體服務][howto_blob_storage_java]。 
-* 您可以使用 **RoleEnvironment.getConfigurationSettings** ，從部署的組態設定中擷取 Twilio 帳戶 ID 和驗證權杖，而不要在 makecall.jsp 中進行值的硬式編碼。 如需**RoleEnvironment**類別的詳細資訊，請參閱[在 JSP 中使用 Azure 服務運行][azure_runtime_jsp]時間程式庫。
-* makecall.jsp 程式碼會將 Twilio 提供的 URL 指派 [https://twimlets.com/message][twimlet_message_url] 給**url**變數。 此 URL 會提供 Twilio 標記語言 (TwiML) 回應，告知 Twilio 應如何執行通話。 例如，傳回的 TwiML 可能會包含「 ** &lt; 說出 &gt; **動詞」，而這會導致呼叫收件者讀出文字。 除了使用 Twilio 提供的 URL 以外，您也可以建置自己的服務來回應 Twilio 的要求；如需詳細資訊，請參閱[如何在 Java 中透過 Twilio 使用語音和簡訊功能][howto_twilio_voice_sms_java]。 如需 TwiML 的詳細資訊 [https://www.twilio.com/docs/api/twiml][twiml] ，請參閱，如需有關** &lt; 指示 &gt; **和其他 Twilio 動詞的詳細資訊，請參閱 [https://www.twilio.com/docs/api/twiml/say][twilio_say] 。
-* 閱讀 Twilio 安全性方針，網址為 [https://www.twilio.com/docs/security][twilio_docs_security] 。
+* 您可以使用 **RoleEnvironment.getConfigurationSettings** ，從部署的組態設定中擷取 Twilio 帳戶 ID 和驗證權杖，而不要在 makecall.jsp 中進行值的硬式編碼。 如需 **RoleEnvironment** 類別的詳細資訊，請參閱 [在 JSP 中使用 Azure 服務運行][azure_runtime_jsp]時間程式庫。
+* makecall.jsp 程式碼會將 Twilio 提供的 URL 指派 [https://twimlets.com/message][twimlet_message_url] 給 **url** 變數。 此 URL 會提供 Twilio 標記語言 (TwiML) 回應，告知 Twilio 應如何執行通話。 例如，傳回的 TwiML 可以包含「 ** &lt; 說 &gt; ** 」動詞命令，而這會導致文字被來電的收件者讀出。 除了使用 Twilio 提供的 URL 以外，您也可以建置自己的服務來回應 Twilio 的要求；如需詳細資訊，請參閱[如何在 Java 中透過 Twilio 使用語音和簡訊功能][howto_twilio_voice_sms_java]。 您可以在中找到有關 TwiML 的詳細資訊 [https://www.twilio.com/docs/api/twiml][twiml] ，以及** &lt; 如 &gt; **需有關和其他 Twilio 動詞的詳細資訊，請參閱 [https://www.twilio.com/docs/api/twiml/say][twilio_say] 。
+* 請參閱中的 Twilio 安全性指導方針 [https://www.twilio.com/docs/security][twilio_docs_security] 。
 
 如需 Twilio 的詳細資訊，請參閱 [https://www.twilio.com/docs][twilio_docs] 。
 

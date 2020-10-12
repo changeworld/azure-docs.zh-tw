@@ -6,10 +6,10 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: 136a5da8d9956e034532c14b6fce011e4e7ce415
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563883"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>從 Azure 入口網站啟用更新管理
@@ -44,25 +44,25 @@ ms.locfileid: "87563883"
 
     [![啟用更新管理](./media/update-mgmt-enable-portal/onboard-feature.png)](./media/update-mgmt-enable-portal/onboard-feature-expanded.png#lightbox)
 
-3. 選取 [**服務**]，然後針對 [更新管理] 功能選取 [**更新管理**]。
+3. 選取 [ **服務** ]，然後選取 [更新管理] 功能的 [ **更新管理** ]。
 
 4. 虛擬機器清單會加以篩選，只顯示位在相同訂用帳戶及位置中的虛擬機器。 如果您的虛擬機器位於三個以上的資源群組中，則會選取前三個資源群組。
 
-5. 預設會選取現有的 Log Analytics 工作區和自動化帳戶。 如果您想要使用不同的 Log Analytics 工作區和自動化帳戶，請選取 [**自**定義]，從 [自訂設定] 頁面中選取它們。 當您選擇 Log Analytics 工作區時，系統會檢查此工作區是否與自動化帳戶連結。 如果找到連結的自動化帳戶，您會看到下列畫面。 完成時，選取 [確認]****。
+5. 預設會選取現有的 Log Analytics 工作區和自動化帳戶。 如果您想要使用不同的 Log Analytics 工作區和自動化帳戶，請選取 [ **自** 定義]，從 [自訂設定] 頁面選取它們。 當您選擇 Log Analytics 工作區時，系統會檢查此工作區是否與自動化帳戶連結。 如果找到連結的自動化帳戶，您會看到下列畫面。 完成時，選取 [確認]****。
 
     [![選取工作區和帳戶](./media/update-mgmt-enable-portal/select-workspace-and-account.png)](./media/update-mgmt-enable-portal/select-workspace-and-account-expanded.png#lightbox)
 
-6. 如果所選的工作區未連結到自動化帳戶，您會看到下列畫面。 選取自動化帳戶，然後在完成時選取 **[確定]** 。
+6. 如果所選的工作區未連結到自動化帳戶，您會看到下列畫面。 選取自動化帳戶，並在完成時選取 **[確定]** 。
 
     ![沒有工作區](media/update-mgmt-enable-portal/no-workspace.png)
 
-7. 取消選取您不想啟用的任何虛擬機器。 無法啟用的 VM 已取消選取。
+7. 取消選取您不想要啟用的任何虛擬機器。 無法啟用的 VM 已取消選取。
 
-8. 選取 [**啟用**] 以啟用功能。 啟用更新管理之後，可能需要約15分鐘的時間，才能從這些專案中查看更新評估。
+8. 選取 [ **啟用** ] 以啟用此功能。 在您啟用更新管理之後，可能需要大約15分鐘的時間，您才能從中查看更新評定。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要使用 Vm 的更新管理，請參閱[管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)。
+* 若要使用 Vm 的更新管理，請參閱 [管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)。
 * 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](../troubleshoot/update-management.md)。
 * 若要針對 Windows 更新代理程式的問題進行疑難排解，請參閱[針對 Windows 更新代理程式問題進行疑難排解](../troubleshoot/update-agent-issues.md)。
 * 若要針對 Linux 更新代理程式的問題進行疑難排解，請參閱[針對 Linux 更新代理程式問題進行疑難排解](../troubleshoot/update-agent-issues-linux.md)。

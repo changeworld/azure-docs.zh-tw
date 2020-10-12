@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117612"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 端點中的權限和同意
@@ -33,8 +33,8 @@ Azure Active Directory (Azure AD) 廣泛使用 OAuth 和 OpenID Connect (OIDC) �
 
 Azure AD 定義兩種權限：
 
-* **委派權限** - 供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員要同意應用程式所要求的權限，然後對應用程式委派權限，讓其在呼叫 API 時以登入使用者的身分行事。 視 API 而定，使用者可能無法直接同意 API，而是[需要系統管理員提供「管理員同意](../develop/howto-convert-app-to-be-multi-tenant.md)」。
-* **應用程式權限** - 供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。 應用程式許可權只能[由系統管理員同意](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)，因為它們通常是強大的功能，允許跨使用者界限存取資料，或在其他情況下限制系統管理員的資料。 定義為資源應用程式擁有者的使用者 (也就是發佈許可權) 的 API，也可以授與他們所擁有之 Api 的應用程式許可權。
+* **委派權限** - 供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員要同意應用程式所要求的權限，然後對應用程式委派權限，讓其在呼叫 API 時以登入使用者的身分行事。 視 API 而定，使用者可能無法直接同意 API，而是 [需要系統管理員提供「管理員同意](../develop/howto-convert-app-to-be-multi-tenant.md)」。
+* **應用程式權限** - 供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。 應用程式許可權只能 [由系統管理員同意](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) ，因為它們通常都是強大的功能，而且允許跨使用者界限存取資料，或僅限於系統管理員的資料。 定義為資源應用程式擁有者的使用者 (也就是發佈許可權) 的 API，也可以授與其所擁有之 Api 的應用程式許可權。
 
 有效權限是應用程式向 API 提出要求時會具備的權限。 
 

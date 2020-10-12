@@ -4,10 +4,10 @@ description: 使用 Azure 入口網站或 PowerShell 在 Azure DevTest Labs 中�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533320"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中新增擁有者和使用者
@@ -15,7 +15,7 @@ ms.locfileid: "87533320"
 > 
 > 
 
-Azure DevTest Labs 中的存取是由[azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)所控制。 RBAC 可讓您將小組內的職責區隔為「角色」 ** ，而僅授與使用者執行作業所需的存取權數量。 其中三個 Azure 角色是*擁有*者、 *DevTest Labs 使用者*和*參與者*。 在本文中，您會瞭解哪些動作可以在三個主要 Azure 角色中執行。 從中您將會了解如何透過入口網站和透過 PowerShell 指令碼將使用者新增至實驗室，以及如何在訂用帳戶層級新增使用者。
+Azure DevTest Labs 中的存取權是由 [AZURE RBAC)  (azure 角色型存取控制 ](../role-based-access-control/overview.md)所控制。 RBAC 可讓您將小組內的職責區隔為「角色」 ** ，而僅授與使用者執行作業所需的存取權數量。 其中三個 Azure 角色為 *擁有*者、 *DevTest Labs 使用者*和 *參與者*。 在本文中，您將瞭解可在三個主要 Azure 角色中執行的動作。 從中您將會了解如何透過入口網站和透過 PowerShell 指令碼將使用者新增至實驗室，以及如何在訂用帳戶層級新增使用者。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>可在每個角色執行的動作
 您可以對使用者指派三個主要角色︰
@@ -54,15 +54,15 @@ Azure DevTest Labs 中的存取是由[azure 角色型存取控制（AZURE RBAC�
 下列步驟會引導您進行在 Azure DevTest Labs 新增擁有者或使用者至實驗室的程序︰
 
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
+2. 選取 [ **所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 3. 從實驗室清單中，選取所需的實驗室。
-4. 在實驗室的分頁上，選取 [設定**和原則**]。 
+4. 在實驗室的分頁上，選取 [設定 **與原則**]。 
 5. 請在 [組態和原則]**** 頁面上，從左側功能表中選取 [存取控制 (IAM)]****。 
 6. 在工具列上選取 [新增角色指派]**** 以將使用者新增至角色。
 1. 在 [新增權限]**** 視窗中，執行下列動作： 
     1. 選取角色 (例如：DevTest Labs 使用者)。 [可在每個角色執行的動作](#actions-that-can-be-performed-in-each-role) 一節列出使用者可在擁有者、DevTest 使用者和參與者角色中執行的各種動作。
     2. 選取要新增至角色的使用者。 
-    3. 選取 [儲存]  。 
+    3. 選取 [儲存]****。 
 11. 當您返回 [使用者] **** 刀鋒視窗時，該使用者已新增。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 將外部使用者新增至實驗室
@@ -116,7 +116,7 @@ New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs Us
 4. 選取 [存取] **** 圖示。 
    
     ![存取使用者](./media/devtest-lab-add-devtest-user/access-users.png)
-5. 在 [**使用者**] 分頁上，選取 [**新增**]。
+5. 在 [ **使用者** ] 分頁上，選取 [ **新增**]。
    
     ![新增使用者](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
 6. 在 [選取角色]**** 刀鋒視窗中，選取 [擁有者]****。

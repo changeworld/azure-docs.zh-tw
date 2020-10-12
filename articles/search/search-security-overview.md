@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314695"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
@@ -40,7 +40,7 @@ ms.locfileid: "91314695"
 
 針對搜尋服務在內部處理的資料，下表描述 [資料加密模型](../security/fundamentals/encryption-models.md)。 某些功能（例如知識存放區、增量擴充和索引子型索引、讀取或寫入其他 Azure 服務中的資料結構）。 這些服務本身具有不同于 Azure 認知搜尋的加密支援層級。
 
-| 型號 | 鑰匙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 適用於 |
+| 模型 | 鑰匙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 適用於 |
 |------------------|-------|-------------|--------------|------------|
 | 伺服器端加密 | Microsoft 管理的金鑰 | 無 (內建)  | 無，適用于所有區域中的所有層級（在 24 2018 年1月之後建立的內容）。 | 內容 (索引和同義字對應) 和定義 (索引子、資料來源、技能集)  |
 | 伺服器端加密 | 客戶管理的金鑰 | Azure 金鑰保存庫 | 適用于所有區域中的可計費層級（適用于2019年1月之後建立的內容）。 | 資料磁片上) 的內容 (索引和同義字對應 |
@@ -94,7 +94,7 @@ ms.locfileid: "91314695"
 
 若要進一步控制搜尋服務的存取權，您可以建立允許存取特定 IP 位址或 IP 位址範圍的輸入防火牆規則。 所有用戶端連線都必須透過允許的 IP 位址進行，否則連接會遭到拒絕。
 
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="ip 限制存取的範例架構圖表":::
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="描述每個服務參與層級之不同安全性類型的圖表":::
 
 您可以使用入口網站來 [設定輸入存取權](service-configure-firewall.md)。
 
@@ -106,7 +106,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 私人端點會使用來自虛擬網路位址空間的 IP 位址來連接到您的搜尋服務。 用戶端與搜尋服務之間的網路流量會在 Microsoft 骨幹網路上進行虛擬網路和私人連結，以消除公用網際網路的暴露。 VNET 允許資源之間的安全通訊，以及內部部署網路和網際網路。
 
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="私人端點存取的範例架構圖表":::
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="描述每個服務參與層級之不同安全性類型的圖表":::
 
 雖然這是最安全的解決方案，但使用額外的服務會增加成本，因此請務必清楚瞭解這些優點，再進行深入瞭解。 如需成本的詳細資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/private-link/)。 如需這些元件如何搭配運作的詳細資訊，請觀看本文頂端的影片。 私人端點選項的涵蓋範圍從5:48 開始進入影片。 如需有關如何設定端點的指示，請參閱 [建立 Azure 認知搜尋的私人端點](service-create-private-endpoint.md)。
 
@@ -126,7 +126,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 如果您需要對搜尋結果進行細微的每個使用者控制，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 身分識別型存取控制會實作為 *篩選* 條件，以根據身分識別來修剪檔和內容的搜尋結果，而不是預先定義的角色和角色指派。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |----------|-------------|
 |[根據身分識別篩選進行安全性範圍縮減](search-security-trimming-for-azure-search.md)  | 記載實作使用者身分識別存取控制的基本工作流程。 其中涵蓋在索引中新增安全性識別碼，然後說明如何針對該欄位進行篩選來縮減所禁止內容的結果。 |
 |[根據 Azure Active Directory 身分識別進行安全性範圍縮減](search-security-trimming-for-azure-search-with-aad.md)  | 本文將擴充先前的文章，提供從 Azure 雲端平臺中的其中一項 [免費服務](https://azure.microsoft.com/free/) Azure Active Directory (Azure AD) 中取得身分識別的步驟。 |

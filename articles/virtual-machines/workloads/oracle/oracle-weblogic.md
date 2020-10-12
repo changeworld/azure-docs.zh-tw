@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
 ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274362"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>什麼是在 Azure 虛擬機器上執行 Oracle WebLogic Server 的解決方案？
@@ -56,7 +56,7 @@ _如果您想要與開發這些供應專案的工程小組密切合作來處理�
 
 這些解決方案將可讓您以相對簡單的方式啟用各式各樣的生產環境就緒部署架構。 您可以藉由允許專注于商務應用程式開發，以最有效率的方式來滿足大部分的遷移案例。
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="在 Azure 上啟用複雜的 WebLogic 伺服器部署":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="您可以使用 Azure 入口網站在 Azure 上部署 WebLogic Server":::
 
 除了解決方案自動布建的功能之外，客戶還可以完整彈性地自訂其部署。 可能是在部署應用程式的最上層，客戶會將進一步的 Azure 資源與其部署整合。 建議客戶提供進一步改進解決方案的意見反應。
 

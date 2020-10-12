@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888240"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>連接及查詢 Azure SQL Edge
@@ -30,7 +30,7 @@ ms.locfileid: "90888240"
 您可以從下列任何一個常見工具連接到 Azure SQL Edge 實例的實例：
 
 * [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)： sqlcmd 用戶端工具已包含在 Azure SQL Edge 的容器映射中。 如果您使用互動式 Bash Shell 來附加至正在執行的容器，則您可以在本機執行這些工具。 SQL 用戶端工具無法在 ARM64 平臺上使用，因為它們不包含在 SQL Edge 容器的 ARM64 版本中。 
-* [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
+* [Transact-SQL](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
 
@@ -114,7 +114,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 若要使用 Windows、Mac 或 Linux 機器上的 Azure Data Studio 連接到 Azure SQL Edge 的實例，請參閱 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [連接和查詢](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 

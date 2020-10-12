@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317377"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure 監視器停用計量與自動調整的傳統部署模型 API
@@ -58,7 +58,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 - 支援維度
 - 所有服務之間有一致的 1 分鐘計量細微性 
 - 更好的查詢功能
-- 較高的資料保留期（93天的計量與30天） 
+- 較高的資料保留期 (93 天的計量和30天)  
 
 整體而言，Resource Manager 型的 Azure 監視器 API 與 Azure 中所有其他的服務一樣，效能、延展性及可靠性都更好。 
 
@@ -72,9 +72,9 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 任何對先前所列傳統 API 的呼叫將會失敗，並傳回如下的錯誤訊息：
 
-針對自動調整：*此 API 已被取代。使用 [Azure 入口網站]、[Azure 監視器 SDK]、[PowerShell]、[CLI] 或 Resource Manager 範本來管理自動調整設定*。  
+自動調整： *此 API 已被取代。使用 Azure 入口網站、Azure 監視器 SDK、PowerShell、CLI 或 Resource Manager 範本來管理自動調整設定*。  
 
-針對計量：*這個 API 已被取代。使用 Azure 入口網站、Azure 監視器 SDK、PowerShell、CLI 來查詢計量*。
+針對度量： *這個 API 已被取代。使用 Azure 入口網站、Azure 監視器 SDK、PowerShell、CLI 來查詢計量*。
 
 ## <a name="email-notifications"></a>電子郵件通知
 

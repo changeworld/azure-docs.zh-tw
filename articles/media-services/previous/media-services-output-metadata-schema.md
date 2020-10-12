@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261303"
 ---
 # <a name="output-metadata"></a>輸出中繼資料
@@ -40,7 +40,7 @@ ms.locfileid: "89261303"
 編碼作業的 AssetFile 項目集合。  
 
 ### <a name="child-elements"></a>子元素
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |屬於 AssetFiles 集合的 AssetFile 元素。 |
 
@@ -48,14 +48,14 @@ ms.locfileid: "89261303"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | **名稱**<br/><br/> 必要 |**xs:string** |媒體資產檔案名稱。 |
 | **大小**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:long** |資產檔案大小 (以位元組為單位)。 |
 | **有效期間**<br/><br/> 必要 |**xs:duration** |內容播放持續時間。 |
 
 ### <a name="child-elements"></a>子元素
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | **來源** |為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。 如需詳細資訊，請參閱來源元素。 |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |每個實體 AssetFile 都可以內含零或多個交錯形成適當容器格式的視訊播放軌。 如需詳細資訊，請參閱 VideoTracks 元素。 |
@@ -67,7 +67,7 @@ ms.locfileid: "89261303"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | **Source**<br/><br/> minOccurs="1" maxOccurs="unbounded" |產生此資產時所使用的輸入/來源檔案。 如需詳細資訊，請參閱來源元素。 |
 
@@ -77,7 +77,7 @@ ms.locfileid: "89261303"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | **名稱**<br/><br/> 必要 |**xs:string** |輸入的來源檔案名稱。 |
 
@@ -87,7 +87,7 @@ ms.locfileid: "89261303"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |父系 AssetFile 中的特定視訊播放軌。 如需詳細資訊，請參閱 VideoTrack 元素。 |
 
@@ -119,7 +119,7 @@ ms.locfileid: "89261303"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |父系 AssetFile 中的特定音訊播放軌。 如需詳細資訊，請參閱 AudioTrack 元素。 |
 
@@ -140,7 +140,7 @@ ms.locfileid: "89261303"
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> 必要 |**xs:int** |wFormatTag 格式類型的每樣本位元數。 |
 
 ### <a name="child-elements"></a>子元素
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |音量計量結果參數。 如需詳細資訊，請參閱 LoudnessMeteringResultParameters 元素。 |
 
@@ -150,7 +150,7 @@ ms.locfileid: "89261303"
 您可以找到 XML 範例 [XML 範例](#xml)。  
 
 ### <a name="attributes"></a>屬性
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |**Dolby** 專業音量計量開發套件版本。 |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> 必要 |**xs:int** |透過 DPLM 產生的 DialogNormalization，若設定了 LoudnessMetering 則為必要 |

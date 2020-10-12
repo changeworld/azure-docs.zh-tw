@@ -4,10 +4,10 @@ description: Analytics 查詢可以在 Power BI 中顯示。
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979163"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>從 Application Insights 提供 Power BI
@@ -144,7 +144,7 @@ ms.locfileid: "90979163"
 
 初始匯入之後，儀表板和報告會持續每日更新。 您可以控制資料集上的重新整理排程。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [Power BI - 了解](https://www.powerbi.com/learning/)
 * [Analytics 教學課程](../log-query/get-started-portal.md)
 

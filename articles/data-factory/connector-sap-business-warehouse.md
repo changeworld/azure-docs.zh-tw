@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534374"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business Warehouse 複製資料
@@ -28,11 +28,11 @@ ms.locfileid: "87534374"
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Business Warehouse (BW) 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，以及每個 sap 連接器、comparsion 和指引的詳細介紹。
+>若要瞭解 ADF 對 SAP 資料整合案例的整體支援，請參閱 [使用 Azure Data Factory 白皮書的 sap 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) ，其中包含每個 sap 連接器、比較和指引的詳細簡介。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 SAP 商務倉儲連接器支援下列活動：
+下列活動支援此 SAP 商務倉儲連接器：
 
 - 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
@@ -45,12 +45,12 @@ ms.locfileid: "87534374"
 - 使用 MDX 查詢從 **InfoCube 和 QueryCube** (包括 BEx 查詢) 複製資料。
 - 使用基本驗證來複製資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用這個 SAP Business Warehouse 連接器，您必須：
 
-- 設定一個「自我裝載 Integration Runtime」。 如需詳細資訊，請參閱[自我裝載 Integration Runtime](create-self-hosted-integration-runtime.md)一文。
-- 在 Integration Runtime 電腦上安裝 **SAP NetWeaver 程式庫**。 您可以從 SAP 系統管理員那裡取得 SAP Netweaver 程式庫，或直接從 [SAP 軟體下載中心](https://support.sap.com/swdc)取得。 搜尋 **SAP 附註 #1025361** 以取得最新版本的下載位置。 請確定您挑選的是符合 Integration Runtime 安裝的**64 位**SAP NetWeaver 程式庫。 然後根據 SAP 附註，安裝 SAP NetWeaver RFC SDK 中包含的所有檔案。 SAP NetWeaver 程式庫也隨附於 SAP 用戶端工具安裝。
+- 設定一個「自我裝載 Integration Runtime」。 如需詳細資訊，請參閱自我裝載的 [Integration Runtime](create-self-hosted-integration-runtime.md) 文章。
+- 在 Integration Runtime 電腦上安裝 **SAP NetWeaver 程式庫**。 您可以從 SAP 系統管理員那裡取得 SAP Netweaver 程式庫，或直接從 [SAP 軟體下載中心](https://support.sap.com/swdc)取得。 搜尋 **SAP 附註 #1025361** 以取得最新版本的下載位置。 請確定您挑選的是符合 Integration Runtime 安裝的 **64 位** SAP NetWeaver 程式庫。 然後根據 SAP 附註，安裝 SAP NetWeaver RFC SDK 中包含的所有檔案。 SAP NetWeaver 程式庫也隨附於 SAP 用戶端工具安裝。
 
 >[!TIP]
 >若要對 SAP BW 的連線問題進行疑難排解，請確定：
@@ -67,7 +67,7 @@ ms.locfileid: "87534374"
 
 以下是針對 SAP Business Warehouse (BW) 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**SapBw** | 是 |
 | 伺服器 | SAP BW 執行個體所在之伺服器的名稱。 | 是 |
@@ -106,7 +106,7 @@ ms.locfileid: "87534374"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP BW 資料集所支援的屬性清單。
 
-若要從 SAP BW 複製資料，請將資料集的 type 屬性設定為**SapBwCube**。 針對 RelationalTable 類型的 SAP BW 資料集，不支援任何類型特定的屬性。
+若要從 SAP BW 複製資料，請將資料集的類型屬性設定為 **SapBwCube**。 針對 RelationalTable 類型的 SAP BW 資料集，不支援任何類型特定的屬性。
 
 **範例︰**
 
@@ -133,11 +133,11 @@ ms.locfileid: "87534374"
 
 ### <a name="sap-bw-as-source"></a>SAP BW 作為來源
 
-若要從 SAP BW 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
+若要從 SAP BW 複製資料，[複製活動 **來源** ] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為： **SapBwSource** | 是 |
+| type | 複製活動來源的 type 屬性必須設定為： **SapBwSource** | 是 |
 | 查詢 | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | 是 |
 
 **範例︰**
@@ -182,26 +182,26 @@ ms.locfileid: "87534374"
 |:--- |:--- |
 | ACCP | Int |
 | CHAR | String |
-| CLNT | String |
+| CLNT | 字串 |
 | CURR | Decimal |
-| CUKY | String |
+| CUKY | 字串 |
 | DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | String |
-| LCHR | String |
+| LANG | 字串 |
+| LCHR | 字串 |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
-| 單位 | String |
-| DATS | String |
-| NUMC | String |
-| TIMS | String |
+| STRING | 字串 |
+| 單位 | 字串 |
+| DATS | 字串 |
+| NUMC | 字串 |
+| TIMS | 字串 |
 
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性

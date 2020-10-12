@@ -8,10 +8,10 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045197"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虛擬機器擴展集的 Azure Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
@@ -33,19 +33,19 @@ ms.locfileid: "87045197"
 - 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>設定 Azure 監視器作為資料接收器 
-Azure 診斷延伸模組會使用稱為**資料接收**的功能，將計量和記錄路由至不同的位置。 下列步驟示範如何使用新的「Azure 監視器 」資料接收器，使用 Resource Manager 範本與 PowerShell 來部署 VM。 
+Azure 診斷擴充功能會使用稱為「 **資料接收** 」的功能，將計量和記錄路由至不同的位置。 下列步驟示範如何使用新的「Azure 監視器 」資料接收器，使用 Resource Manager 範本與 PowerShell 來部署 VM。 
 
 ## <a name="author-a-resource-manager-template"></a>撰寫 Resource Manager 範本 
-在此範例中，您可以使用公開提供的[範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)：  
+在此範例中，您可以使用公開可用的 [範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)：  
 
-- **上的Azuredeploy.js**是預先設定的 Resource Manager 範本，可用於部署虛擬機器擴展集。
+- **Azuredeploy.json** 是預先設定的 Resource Manager 範本，可用於部署虛擬機器擴展集。
 
 - **Azuredeploy.parameters.json** 是參數檔案，儲存您要為 VM 設定的使用者名稱與密碼等資訊。 在部署期間，Resource Manager 範本會使用此檔案中設定的參數。 
 
 下載這兩個檔案並儲存在本機。 
 
 ###  <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
-開啟檔案**上的azuredeploy.parameters.js** ：  
+開啟檔案 ** 上的azuredeploy.parameters.js** ：  
  
 - 提供您想要部署的 **vmSKU**。 建議使用 Standard_D2_v3。 
 - 指定您要用於虛擬機器擴展集的 **windowsOSVersion**。 建議使用 2016-Datacenter。 
@@ -55,7 +55,7 @@ Azure 診斷延伸模組會使用稱為**資料接收**的功能，將計量和�
 
 
 ###  <a name="modify-azuredeployjson"></a>修改 azuredeploy.json
-開啟檔案**上的azuredeploy.js** 。 
+開啟檔案 ** 上的azuredeploy.js** 。 
 
 新增變數來儲存 Resource Manager 範本中的儲存體帳戶資訊。 診斷設定檔中指定的任何記錄或效能計數器，都會寫入 Azure 監視器計量存放區和此處指定的儲存體帳戶： 
 
@@ -65,7 +65,7 @@ Azure 診斷延伸模組會使用稱為**資料接收**的功能，將計量和�
 "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]", 
 ```
  
-在 [資源] 區段中尋找虛擬機器擴展集定義，然後將 [身分**識別**] 區段新增至設定。 此新增作業可確保 Azure 對其指派系統身分識別。 這個步驟也可確保擴展集中的 VM 可對 Azure 監視器發出與本身相關的客體計量：  
+在 [資源] 區段中尋找虛擬機器擴展集定義，然後將 [身分 **識別** ] 區段新增至設定。 此新增作業可確保 Azure 對其指派系統身分識別。 這個步驟也可確保擴展集中的 VM 可對 Azure 監視器發出與本身相關的客體計量：  
 
 ```json
     { 
@@ -197,7 +197,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 ```
 
 
-為儲存體帳戶新增**dependsOn** ，以確保它會以正確的順序建立： 
+為儲存體帳戶新增 **dependsOn** ，以確保它會以正確的順序建立： 
 
 ```json
 "dependsOn": [ 
@@ -232,7 +232,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 ## <a name="deploy-the-resource-manager-template"></a>部署 Resource Manager 範本 
 
 > [!NOTE]  
-> 您必須執行 Azure 診斷擴充功能1.5 或更高版本 **，並**在您的 Resource Manager 範本中將**autoUpgradeMinorVersion：** 屬性設定為**true** 。 接著，Azure 會在啟動 VM 時載入適當的擴充功能。 如果您的範本中沒有這些設定，請進行變更，並重新部署該範本。 
+> 您必須執行 Azure 診斷延伸模組版本1.5 或更高版本 **，並** 在 Resource Manager 範本中將 [ **autoUpgradeMinorVersion：** ] 屬性設定為 [ **true** ]。 接著，Azure 會在啟動 VM 時載入適當的擴充功能。 如果您的範本中沒有這些設定，請進行變更，並重新部署該範本。 
 
 
 請使用 Azure PowerShell 來部署 Resource Manager 範本：  
@@ -245,7 +245,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. 為要部署的 VM 建立新的資源群組。 執行以下命令： 
+1. 為要部署的 VM 建立新的資源群組。 執行下列命令： 
 
    ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
@@ -266,7 +266,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 1. 部署成功之後，您應該會在 Azure 入口網站中發現虛擬機器擴展集。 它應該會對 Azure 監視器發出計量。 
 
    > [!NOTE]  
-   > 您可能會在選取的**vmSkuSize**周圍遇到錯誤。 在該狀況下，請回到 **azuredeploy.json** 檔案，然後更新 **vmSkuSize** 參數的預設值。 我們建議您嘗試使用 **Standard_DS1_v2**。 
+   > 您可能會遇到有關所選 **vmSkuSize**的錯誤。 在該狀況下，請回到 **azuredeploy.json** 檔案，然後更新 **vmSkuSize** 參數的預設值。 我們建議您嘗試使用 **Standard_DS1_v2**。 
 
 
 ## <a name="chart-your-metrics"></a>繪製計量圖表 
@@ -275,7 +275,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 
 1. 在左側功能表中，選取 [監視]****。 
 
-1. 在 [**監視**] 頁面上，選取 [**計量**]。 
+1. 在 [ **監視** ] 頁面上選取 [ **計量**]。 
 
    ![監視 - 計量頁面](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 

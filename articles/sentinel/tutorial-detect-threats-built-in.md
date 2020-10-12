@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605444"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>教學課程：偵測現成的威脅
+# <a name="tutorial-detect-threats-out-of-the-box"></a>教學課程：偵測現成的威脅 (機器翻譯)
 
 
 > [!IMPORTANT]
@@ -65,13 +65,13 @@ ms.locfileid: "88605444"
 
 1. 若要使用內建範本，請按一下範本名稱，然後按一下 [詳細資料] 窗格上的 [ **建立規則** ] 按鈕，根據該範本建立新的作用中規則。 每個範本都有必要的資料來源清單。 當您開啟範本時，系統會自動檢查資料來源的可用性。 如果有可用性問題，可能會停用 [ **建立規則** ] 按鈕，否則您可能會看到該效果的警告。
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="偵測規則預覽面板":::
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="使用內建偵測來尋找 Azure Sentinel 的威脅":::
  
 1. 按一下 [ **建立規則** ] 按鈕，就會根據選取的範本開啟規則建立嚮導。 所有詳細資料都是自動填入，而使用已 **排程** 或 **Microsoft 的安全性** 範本，您可以自訂邏輯和其他規則設定，以更符合您的特定需求。 您可以重複此程式，根據內建範本建立其他規則。 遵循規則建立嚮導中的步驟結束之後，您將完成根據範本建立規則。 新的規則會顯示在 [作用中 **規則** ] 索引標籤中。
 
     如需如何在規則建立嚮導中自訂規則的詳細資訊，請參閱 [教學課程：建立自訂分析規則來偵測威脅](tutorial-detect-threats-custom.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已瞭解如何使用 Azure Sentinel 開始偵測威脅。 
 

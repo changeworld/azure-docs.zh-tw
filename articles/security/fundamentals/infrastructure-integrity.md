@@ -1,6 +1,6 @@
 ---
 title: Azure 基礎結構完整性
-description: 瞭解 Azure 基礎結構完整性，以及 Microsoft 用來保護它的步驟，例如軟體元件組建的病毒掃描。
+description: 深入瞭解 Azure 基礎結構的完整性，以及 Microsoft 用來保護它的步驟，例如軟體元件組建上的病毒掃描。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: b0df14dfcf66f53e01989a27a95afa5e19fcb2fe
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543634"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure 基礎結構完整性

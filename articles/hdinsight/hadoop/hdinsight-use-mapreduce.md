@@ -1,6 +1,6 @@
 ---
 title: 搭配 MapReduce 與 HDInsight 上的 Apache Hadoop
-description: 瞭解如何在 HDInsight 叢集的 Apache Hadoop 上執行 Apache MapReduce 作業。
+description: 瞭解如何在 HDInsight 叢集中的 Apache Hadoop 上執行 Apache MapReduce 作業。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 8b683f12a17d6aabbcdce3190a34675951567f64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075836"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>搭配 MapReduce 與 HDInsight 上的 Apache Hadoop
@@ -21,7 +21,7 @@ ms.locfileid: "86075836"
 
 ## <a name="example-data"></a>範例資料
 
-HDInsight 提供各種範例資料集，這些範例資料及儲存在 `/example/data` 和 `/HdiSamples` 目錄。 這些目錄位於您的叢集預設儲存體中。 在本文件中，我們使用 `/example/data/gutenberg/davinci.txt` 檔案。 此檔案包含達文西 da Vinci 的筆記本。
+HDInsight 提供各種範例資料集，這些範例資料及儲存在 `/example/data` 和 `/HdiSamples` 目錄。 這些目錄位於您的叢集預設儲存體中。 在本文件中，我們使用 `/example/data/gutenberg/davinci.txt` 檔案。 此檔案包含達文西 da 達文西的筆記本。
 
 ## <a name="example-mapreduce"></a>範例 MapReduce
 
@@ -101,7 +101,7 @@ public class WordCount {
 }
 ```
 
-如需撰寫自己的 MapReduce 應用程式的指示，請參閱[開發適用于 HDInsight 的 JAVA MapReduce 應用程式](apache-hadoop-develop-deploy-java-mapreduce-linux.md)。
+如需撰寫您自己的 MapReduce 應用程式的指示，請參閱 [開發適用于 HDInsight 的 JAVA MapReduce 應用程式](apache-hadoop-develop-deploy-java-mapreduce-linux.md)。
 
 ## <a name="run-the-mapreduce"></a>執行 MapReduce
 
@@ -110,10 +110,10 @@ HDInsight 可以使用各種方法執行 HiveQL 工作。 請使用下表決定�
 | **使用此**.。。 | **...若要這樣做** |  ...從此 **用戶端作業系統** |
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |透過 **SSH** |Linux、Unix、Mac OS X 或 Windows |
-| [彎曲](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
+| [捲曲](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell**  |Windows |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解如何處理 HDInsight 的資料，請參閱下列文件：
 

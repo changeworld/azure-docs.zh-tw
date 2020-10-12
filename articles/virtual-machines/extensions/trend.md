@@ -1,5 +1,5 @@
 ---
-title: 在 VM 上安裝 Trend 微深度安全性
+title: 在 VM 上安裝 Trend 微深層安全性
 description: 本文說明如何在 Azure 中，在以傳統部署模型建立的 VM 上安裝和設定 Trend Micro 安全性。
 author: axayjo
 tags: azure-service-management
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288511"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安裝和設定 Trend Micro Deep Security as a Service
@@ -51,7 +51,7 @@ ms.locfileid: "87288511"
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>在現有 VM 上安裝 Deep Security 代理程式
 若要在現有的 VM 上安裝代理程式，您需要下列項目：
 
-* 在本機電腦上安裝 Azure PowerShell 模組 0.8.2 版或更新版本。 您可以使用 **Get-Module azure | format-table version** 命令來檢查已安裝的 Azure PowerShell 版本。 如需最新版本的指示與連結，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)。 使用 `Add-AzureAccount`登入您的 Azure 訂用帳戶。
+* 在本機電腦上安裝 Azure PowerShell 模組 0.8.2 版或更新版本。 您可以使用 **Get-Module azure | format-table version** 命令來檢查已安裝的 Azure PowerShell 版本。 如需最新版本的指示與連結，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。 使用 `Add-AzureAccount`登入您的 Azure 訂用帳戶。
 * 在目標虛擬機器上安裝 VM 代理程式。
 
 首先，確認已安裝 VM 代理程式。 填寫雲端服務名稱和虛擬機器名稱，然後在系統管理員層級 Azure PowerShell 命令提示字元上執行下列命令。 取代括弧內 (包括 < 和 > 字元) 的所有項目。
@@ -85,7 +85,7 @@ Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Versio
 ## <a name="additional-resources"></a>其他資源
 [如何登入執行 Windows Server 的虛擬機器]
 
-[Azure VM 延伸模組和功能]
+[Azure VM 擴充功能和功能]
 
 <!-- Image references -->
 [1]: ./media/trend/new_vm_Blade3.png
@@ -94,4 +94,4 @@ Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Versio
 
 <!-- Link references -->
 [如何登入執行 Windows Server 的虛擬機器]:../windows/classic/connect-logon.md
-[Azure VM 延伸模組和功能]: features-windows.md
+[Azure VM 擴充功能和功能]: features-windows.md

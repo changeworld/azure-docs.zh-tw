@@ -1,17 +1,17 @@
 ---
-title: Azure 轉送 Azure 監視器中的計量 |Microsoft Docs
-description: 本文提供有關如何使用 Azure 監視器來監視 Azure 轉送狀態的資訊。
+title: Azure 監視器中的 Azure 轉送計量 |Microsoft Docs
+description: 本文提供如何使用 Azure 監視器監視 Azure 轉送狀態的相關資訊。
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532878"
 ---
-# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 轉送 Azure 監視器中的計量 
+# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 轉送計量 
 Azure 轉送計量會提供您 Azure 訂用帳戶中的資源狀態。 您可以使用豐富的計量資料集，評估轉送資源的整體健康狀態，不只在命名空間層級，還有實體層級。 這些統計資料相當重要，因為它們可協助您監視 Azure 轉送的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
 
 「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../azure-monitor/overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
@@ -29,7 +29,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 您可以在 [Azure 入口網站](https://portal.azure.com)中監視一段時間的計量。 下列範例示範如何檢視帳戶層級的成功要求及連入要求：
 
-![標題為「監視-計量（預覽）」的頁面會顯示過去30天內的記憶體使用量折線圖。][1]
+![標題為「監視器-計量 (預覽) 」的頁面會顯示過去30天記憶體使用量的折線圖。][1]
 
 您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 
 
@@ -37,7 +37,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="billing"></a>計費
 
-在預覽版「Azure 監視器」中使用計量目前是免費的。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行先進的分析，則也會以 Azure 監視器記錄來計費。
+在預覽版「Azure 監視器」中使用計量目前是免費的。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行高階分析，則也會以 Azure 監視器記錄來計費。
 
 下列計量會提供您服務健康狀態的概觀。 
 
@@ -58,14 +58,14 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 |SenderConnections-ServerError |指定時段內，寄件者連線發生的伺服器錯誤數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |ListenerConnections-TotalRequests |指定時段內，接聽程式連線的總數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |SenderConnections-TotalRequests |指定時段內，寄件者發出的連線要求。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ActiveConnections |使用中的連接數目。 這個值是時間點值。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ActiveListeners |使用中的接聽程式數目。 這個值是時間點值。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveConnections |使用中的連接數目。 此值為時間點值。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveListeners |使用中接聽程式的數目。 此值為時間點值。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |ListenerDisconnects |指定時段內，中斷連線的接聽程式數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |SenderDisconnects |指定時段內，中斷連線的寄件者數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>記憶體使用量計量
 
-| 標準名稱 | 說明 |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 |BytesTransferred |在指定時段內，傳輸的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
@@ -77,7 +77,7 @@ Azure 轉送支援下列的 Azure 監視器計量維度。 將維度新增至計
 | ------------------- | ----------------- |
 |EntityName| Azure 轉送支援命名空間下的訊息實體。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱 [Azure 監視概觀](../azure-monitor/overview.md)。
 

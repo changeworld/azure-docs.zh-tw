@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530148"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive Tools for Visual Studio Code
 
-瞭解如何使用 Apache Spark & Hive 工具進行 Visual Studio Code。 使用這些工具來建立及提交 Apache Hive 的批次作業、互動式 Hive 查詢和 PySpark 腳本，以進行 Apache Spark。 首先，我們將說明如何在 Visual Studio Code 中安裝 Spark & Hive 工具。 接著，我們將逐步解說如何將作業提交至 Spark & Hive 工具。  
+了解如何使用 Apache Spark & Hive Tools for Visual Studio Code。 使用工具建立並提交適用於 Apache Spark 的 Apache Hive 批次作業、互動式 Hive 查詢和 PySpark 指令碼。 首先，我們將說明如何在 Visual Studio Code 中安裝 Spark & Hive Tools。 然後，我們將逐步解說如何將作業提交至 Spark & Hive Tools。  
 
-Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 請注意下列不同平臺的必要條件。
+您可以在 Visual Studio Code 支援的平台上安裝 Spark & Hive Tools。 請留意下列適用於不同平台的必要條件。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,35 +27,35 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
 - Azure HDInsight 叢集。 若要建立叢集，請參閱[開始使用 HDInsight](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)。 或使用支援 Apache Livy 端點的 Spark 和 Hive 叢集。
 - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
-- [Mono](https://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 才需要 Mono。
+- [Mono](https://www.mono-project.com/docs/getting-started/install/) \(英文\)。 只有 Linux 和 macOS 才需要 Mono。
 - [Visual Studio Code 的 PySpark 互動式環境](set-up-pyspark-interactive-environment.md)。
 - 本機目錄。 此文章使用 **C:\HD\HDexample**。
 
 ## <a name="install-spark--hive-tools"></a>安裝 Spark & Hive Tools
 
-符合必要條件之後，您可以依照下列步驟，安裝 Spark & Hive Tools for Visual Studio Code：
+符合必要條件後，您即可依照下列步驟安裝 Spark & Hive Tools for Visual Studio Code：
 
 1. 開啟 Visual Studio Code。
 
-2. 從功能表列，流覽至 [**查看**  >  **延伸**模組]。
+2. 從功能表列，瀏覽至 [檢視] > [擴充功能]。
 
 3. 在搜尋方塊中，輸入 **Spark & Hive**。
 
-4. 從搜尋結果中選取 [ **Spark & Hive 工具** ]，然後選取 [ **安裝**：
+4. 從搜尋結果中選取 [Spark & Hive Tools]，然後選取 [安裝]：
 
-   ![適用于 Visual Studio Code Python 安裝的 Spark & Hive](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
+   ![Spark & Hive for Visual Studio Code Python 安裝](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-5. 視需要選取 [ **重載** ]。
+5. 視需要選取 [重新載入]。
 
 ## <a name="open-a-work-folder"></a>開啟工作資料夾
 
-若要開啟工作資料夾並在 Visual Studio Code 中建立檔案，請遵循下列步驟：
+若要在 Visual Studio Code 中開啟工作資料夾並建立檔案，請執行下列步驟：
 
 1. 從功能表列，**流覽至 [** 檔案  >  **開啟資料夾**  >  ]。**C:\HD\HDexample**，然後選取 [**選取資料夾**] 按鈕。 該資料夾會出現在左側的 [檔案總管]**** 檢視中。
 
 2. 在 **Explorer** 視圖中，選取 [ **先前 >hdexample** ] 資料夾，然後選取工作資料夾旁的 [ **新增** 檔案] 圖示：
 
-   ![visual studio code 新檔案圖示](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
+   ![Visual Studio Code 的新增檔案圖示](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. 使用 `.hql` (Hive 查詢) 或 `.py` (Spark 腳本) 副檔名來為新檔案命名。 這個範例使用 **HelloWorld.hql**。
 
@@ -71,13 +71,13 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
 ## <a name="connect-to-an-azure-account"></a>連線到 Azure 帳戶
 
-您可以從 Visual Studio Code 將腳本提交至叢集之前，使用者可以登入 Azure 訂用帳戶，或 [連結 HDInsight](#link-a-cluster)叢集。 針對 ESP 叢集使用 Ambari 使用者名稱/密碼或加入網域的認證，以連線到您的 HDInsight 叢集。 請遵循下列步驟來連線到 Azure：
+您可以從 Visual Studio Code 將腳本提交至叢集之前，使用者可以登入 Azure 訂用帳戶，或 [連結 HDInsight](#link-a-cluster)叢集。 針對 ESP 叢集使用 Ambari 使用者名稱/密碼或加入網域的認證，以連線到您的 HDInsight 叢集。 依照下列步驟連線至 Azure：
 
-1. 從功能表列，流覽至 [ **View**  >  **命令**選擇區]，然後輸入**Azure： Sign In**：
+1. 從功能表列中，瀏覽至 [檢視] >  [命令選擇區...]，然後輸入 **Azure:Sign In**：
 
-    ![適用于 Visual Studio Code 登入的 Spark & Hive 工具](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+    ![Spark & Hive Tools for Visual Studio Code 登入](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. 遵循登入指示以登入 Azure。 連線之後，您的 Azure 帳戶名稱會顯示在 [Visual Studio Code] 視窗底部的狀態列上。  
+2. 依照登入指示登入 Azure。 連線之後，您的 Azure 帳戶名稱會顯示在 Visual Studio Code 視窗底部的狀態列上。  
 
 ## <a name="link-a-cluster"></a>連結叢集
 
@@ -134,13 +134,13 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
 1. 如果已關閉，請重新開啟稍[早](#open-a-work-folder)所討論的**先前 >hdexample**資料夾。  
 
-2. 選取稍[早](#open-a-work-folder)建立的**HelloWorld。** 它會在腳本編輯器中開啟。
+2. 選取稍[早](#open-a-work-folder)建立的**HelloWorld。** 檔案會在指令碼編輯器中開啟。
 
 3. 以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark/Hive：設定預設**叢集]。  
 
 4. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
 
-5. 選取某個叢集作為目前指令檔的預設叢集。 這些工具會自動更新設定檔 ** 上的.VSCode\settings.js** ：
+5. 選取某個叢集作為目前指令檔的預設叢集。 工具會自動更新 **.VSCode\settings.json** 組態檔：
 
    ![設定預設叢集設定](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
@@ -150,7 +150,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
 1. 如果已關閉，請重新開啟稍[早](#open-a-work-folder)所討論的**先前 >hdexample**資料夾。  
 
-2. 選取稍[早](#open-a-work-folder)建立的**HelloWorld。** 它會在腳本編輯器中開啟。
+2. 選取稍[早](#open-a-work-folder)建立的**HelloWorld。** 檔案會在指令碼編輯器中開啟。
 
 3. 將下列程式碼複製並貼到 Hive 檔案中，然後儲存它：
 
@@ -175,11 +175,11 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 使用者可以透過下列方式執行 PySpark 互動：
 
 ### <a name="using-the-pyspark-interactive-command-in-py-file"></a>在 .PY 檔案中使用 PySpark interactive 命令
-使用 PySpark interactive 命令來提交查詢，請遵循下列步驟：
+使用 PySpark interactive 命令提交查詢，並執行下列步驟：
 
 1. 如果已關閉，請重新開啟稍[早](#open-a-work-folder)所討論的**先前 >hdexample**資料夾。  
 
-2. 遵循[先前](#open-a-work-folder)的步驟，建立新的**HelloWorld.py**檔案。
+2. 依照[先前的](#open-a-work-folder)步驟建立新檔案 **HelloWorld.py**。
 
 3. 將下列程式碼複製並貼到該指令檔：
 
@@ -201,12 +201,12 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
    ![螢幕擷取畫面顯示略過 PySpark 安裝的選項。](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-5. 如果您稍後需要安裝它，您可以**流覽至檔案**  >  **喜好**  >  **設定**，然後取消核取 [設定] 中的 [ **Hdinsight：啟用 Skip Pyspark 安裝**]。 
+5. 如果後續需要安裝，您可以瀏覽至 [檔案] > [喜好設定] > [設定]，然後取消核取設定中的 [Hdinsight：啟用略過 Pyspark 安裝]。 
     
     ![螢幕擷取畫面顯示啟用 Skip Pyspark 安裝的選項。](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
-6. 如果在步驟4中安裝成功，視窗的右下角就會顯示 [已成功安裝 PySpark] 訊息方塊。 按一下 [ **重載** ] 按鈕以重載視窗。
-    ![pyspark 安裝成功](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+6. 如果在步驟4中安裝成功，視窗的右下角就會顯示 [已成功安裝 PySpark] 訊息方塊。 按一下 [重新載入] 按鈕以重新載入視窗。
+    ![已成功安裝 pyspark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
 7. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
 
@@ -214,7 +214,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
     ![[PySpark 互動式] 內容功能表](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換至 [ **PySpark**]，程式碼將會成功執行。 這些工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
+9. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換至 [ **PySpark**]，程式碼將會成功執行。 工具也可讓您使用內容功能表來提交程式碼區塊，而非整個指令檔：
 
    ![PySpark 互動式 Python 互動式視窗](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
@@ -227,37 +227,37 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
    ![pyspark 互動視圖結果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
 
-### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>使用 #%% 批註在 .PY 檔案中執行互動式查詢
+### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>使用 #%% 註解在 PY 檔案中執行互動式查詢
 
 1. 在 **#%%** .py 程式碼之前新增以取得筆記本體驗。
 
-    ![新增 #%%](./media/hdinsight-for-vscode/run-cell.png)
+    ![加上 #%%](./media/hdinsight-for-vscode/run-cell.png)
 
-2. 按一下 [ **執行儲存格**]。 幾分鐘後，[Python 互動式] 結果便會出現在新的索引標籤中。
+2. 按一下 [執行資料格]。 幾分鐘後，[Python 互動式] 結果便會出現在新的索引標籤中。
 
    ![執行資料格結果](./media/hdinsight-for-vscode/run-cell-get-results.png)
 
    > [!NOTE]  
    > 當核心或設定搞上時，請使用 **Python：選取解譯器來啟動 Jupyter server** 命令並 **重新開機 IPython 核心**，然後重載 VSCode，即可加以解決。
 
-## <a name="leverage-ipynb-support-from-python-extension"></a>利用 Python 擴充功能的 .IPYNB 支援
+## <a name="leverage-ipynb-support-from-python-extension"></a>運用 Python 延伸模組的 IPYNB 支援
 
-1. 您可以從命令選擇區建立 Jupyter Notebook by 命令，或在您的工作區中建立新的 .ipynb 檔案。 如需詳細資訊，請參閱 [使用 Visual Studio Code 中的 Jupyter 筆記本](https://code.visualstudio.com/docs/python/jupyter-support)
+1. 您可以從命令選擇區使用命令建立 Jupyter Notebook，或藉由在工作區中建立新的 .ipynb 檔案來建立。 如需詳細資訊，請參閱[在 Visual Studio Code 中使用 Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support)
 
 2. 按一下 [PySpark] 將核心切換至 [ **PySpark**]，然後按一下 [ **執行資料格**]，在一段時間之後，將會顯示結果。
 
-   ![執行 .ipynb 結果](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+   ![執行 ipynb 結果](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
 > [!NOTE]
 >
->Ms-python >= 此擴充功能上不支援2020.5.78807 版本是 [已知問題](#known-issues)。
+>此延伸模組不支援 2020.5.78807 版或更新版本的 ms-python，這是[已知問題](#known-issues)。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批次工作
 
 1. 如果已關閉，請重新開啟您稍[早](#open-a-work-folder)所討論的**先前 >hdexample**資料夾。  
 
-2. 遵循[先前](#open-a-work-folder)的步驟來建立新的**BatchFile.py**檔案。
+2. 依照[先前](#open-a-work-folder)的步驟建立新檔案 **BatchFile.py**。
 
 3. 將下列程式碼複製並貼到該指令檔：
 
@@ -331,34 +331,34 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
     **張貼/batches** 要求本文
 
-    | 名稱 | description | 類型 |
+    | 名稱 | description | type |
     | --- | --- | --- |
     | 檔案 | 包含要執行之應用程式的檔案 | 需要 (路徑)  |
-    | proxyUser | 執行作業時要模擬的使用者 | String |
-    | className | 應用程式 Java/Spark 主要類別 | String |
+    | proxyUser | 執行作業時要模擬的使用者 | 字串 |
+    | className | 應用程式 Java/Spark 主要類別 | 字串 |
     | args | 應用程式的命令列引數 | 字串清單 |
     | jars | 要在此會話中使用的 jar | 字串清單 | 
     | pyFiles | 要用於此工作階段的 Python 檔案 | 字串清單 |
     | files | 要在此會話中使用的檔案 | 字串清單 |
-    | driverMemory | 要用於驅動程式程序的記憶體數量 | String |
+    | driverMemory | 要用於驅動程式程序的記憶體數量 | 字串 |
     | driverCores | 要用於驅動程式程序的核心數目 | Int |
-    | executorMemory | 要用於每個執行程式程序的記憶體數量 | String |
+    | executorMemory | 要用於每個執行程式程序的記憶體數量 | 字串 |
     | executorCores | 要用於每個執行程式的核心數目 | Int |
     | numExecutors | 要針對此工作階段啟動的執行程式數目 | Int |
     | archives | 要用於此工作階段的封存 | 字串清單 |
-    | queue | 要提交的 YARN 佇列名稱| String |
-    | NAME | 此會話的名稱 | String |
+    | queue | 要提交的 YARN 佇列名稱| 字串 |
+    | NAME | 此會話的名稱 | 字串 |
     | conf | Spark 設定屬性 | key=val 的對應 |
 
     已建立的批次物件的回應主體。
 
-    | 名稱 | description | 類型 |
+    | 名稱 | description | type |
     | --- | ---| --- |
     | 識別碼 | 工作階段識別碼 | Int |
-    | appId | 此會話的應用程式識別碼 | String |
+    | appId | 此會話的應用程式識別碼 | 字串 |
     | appInfo | 詳細的應用程式資訊 | key=val 的對應 |
     | log | 記錄行 | 字串清單 |
-    | 狀態 |批次狀態 | String |
+    | 狀態 |批次狀態 | 字串 |
 
     > [!NOTE]
     > 當您提交腳本時，[輸出] 窗格中會顯示指派的 Livy 設定。
@@ -367,7 +367,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 
 您可以直接透過 **Azure HDInsight** explorer，在叢集中預覽 Hive 資料表：
 
-1. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶（如果您尚未這樣做）。
+1. [連線](#connect-to-an-azure-account)到 Azure 帳戶 (如果您尚未這樣做)。
 
 2. 從最左邊的資料行中選取 **Azure** 圖示。
 
@@ -467,9 +467,9 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 所支援的平臺上。 �
 從功能表列，移至 [ **View**]  >  **命令**選擇區，然後輸入**Azure：登出**。
 
 ## <a name="known-issues"></a>已知問題
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>ms-python >= 此擴充功能不支援2020.5.78807 版本 
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>此延伸模組不支援 2020.5.78807 版或更新版本的 ms-python 
 
-「無法連接到 Jupyter 筆記本」。 是 python 版本 >= 2020.5.78807 的已知問題。 建議使用者使用 **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** 版本的 ms python 來避免此問題。
+「無法連線至 Jupyter Notebook。」 是 2020.5.78807 或更新 Python 版本的已知問題。 建議使用者使用 **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** 版的 ms-python，以避免發生此問題。
 
 ![已知問題](./media/hdinsight-for-vscode/known-issue.png)
 

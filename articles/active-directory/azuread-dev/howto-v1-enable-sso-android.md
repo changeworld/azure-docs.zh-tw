@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev, devx-track-java
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9d1faf7aed5cf4c4975925c7a56d169dc99a7bd5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87313586"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>操作說明：使用 ADAL 在 Android 上啟用跨應用程式的 SSO
@@ -32,11 +32,11 @@ Microsoft 的身分識別平台搭配 SDK，能讓您在整個裝置中，更輕
 
 在本操作說明中，您會了解如何在應用程式中設定 SDK 以提供 SSO 給客戶。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 此操作說明會假設您知道如何：
 
-- 使用 Azure Active Directory (Azure AD) 的傳統入口網站佈建應用程式。 如需詳細資訊，請參閱[註冊應用程式](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+- 使用 Azure Active Directory (Azure AD) 的傳統入口網站佈建應用程式。 如需詳細資訊，請參閱 [註冊應用程式](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 - 整合應用程式與 [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)。
 
 ## <a name="single-sign-on-concepts"></a>單一登入概念
@@ -60,7 +60,7 @@ Microsoft 為每個行動平台提供應用程式，允許跨不同廠商的應�
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft 如何確保應用程式的有效性
 
-需要確保呼叫訊息代理程式的應用程式身分識別，對於 broker 輔助登入中所提供的安全性很重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定 Microsoft 一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 **以下將詳細討論開發人員應該如何製作此重新導向 URI。** 此自訂的 redirectURI 包含應用程式的憑證指紋，並透過 Google Play Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 Android 作業系統搭配呼叫訊息代理程式的憑證指紋來提供它。 訊息代理程式會在對身分識別系統的呼叫中，將此憑證指紋提供給 Microsoft。 如果應用程式的憑證指紋不符合開發人員在註冊期間提供給我們的憑證指紋，就會拒絕存取應用程式所要求的資源權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
+需要確認呼叫訊息代理程式的應用程式身分識別，對於 broker 輔助登入中提供的安全性很重要。 IOS 和 Android 都不會強制執行僅對特定應用程式有效的唯一識別碼，因此，惡意應用程式可能會「詐騙」合法應用程式的識別碼，並接收適用於合法應用程式的權杖。 若要確定 Microsoft 一律會在執行階段與正確的應用程式進行通訊，我們會要求開發人員在向 Microsoft 註冊應用程式時提供自訂的 redirectURI。 **以下將詳細討論開發人員應該如何製作此重新導向 URI。** 此自訂的 redirectURI 包含應用程式的憑證指紋，並透過 Google Play Store 確保它對應用程式而言是唯一的。 當應用程式呼叫訊息代理程式時，訊息代理程式會要求 Android 作業系統搭配呼叫訊息代理程式的憑證指紋來提供它。 訊息代理程式會在對身分識別系統的呼叫中，將此憑證指紋提供給 Microsoft。 如果應用程式的憑證指紋不符合開發人員在註冊期間提供給我們的憑證指紋，就會拒絕存取應用程式所要求的資源權杖。 這項檢查可確保只有開發人員所註冊的應用程式能夠接收權杖。
 
 訊息代理程式的 SSO 登入具備下列優點︰
 
@@ -116,7 +116,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 #### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>步驟 2︰利用 URL 配置建立新的重新導向 URI
 
-為了確保正確的應用程式會接收傳回的認證權杖，必須以 Android 作業系統可以驗證的方式，來確保對您應用程式的回呼。 Android 作業系統會使用 Google Play 商店中的憑證雜湊。 惡意應用程式無法假冒此憑證雜湊。 搭配訊息代理程式應用程式的 URI，Microsoft 可確保權杖會傳回給正確的應用程式。 唯一的重新導向 URI 必須註冊於應用程式上。
+為了確保正確的應用程式會收到傳回的認證權杖，需要以 Android 作業系統可以驗證的方式來確認回呼您的應用程式。 Android 作業系統會使用 Google Play 商店中的憑證雜湊。 惡意應用程式無法假冒此憑證雜湊。 搭配訊息代理程式應用程式的 URI，Microsoft 可確保權杖會傳回給正確的應用程式。 唯一的重新導向 URI 必須註冊於應用程式上。
 
 您的重新導向 URI 必須是適當的格式︰
 
@@ -142,6 +142,6 @@ MANAGE_ACCOUNTS
 
 現在身分識別 SDK 會自動跨應用程式共用認證，並在訊息代理程式出現在其裝置上時叫用它。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入了解[單一登入 SAML 通訊協定](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

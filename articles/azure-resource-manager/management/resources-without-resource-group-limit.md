@@ -4,10 +4,10 @@ description: 列出可在資源群組中有超過800個實例的 Azure 資源類
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330752"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>資源不限於每個資源群組800個實例

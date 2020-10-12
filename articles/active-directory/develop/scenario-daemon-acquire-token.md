@@ -1,6 +1,6 @@
 ---
-title: 取得權杖以呼叫 Web API (daemon 應用程式) -Microsoft 身分識別平臺 |Azure
-description: '瞭解如何建立會呼叫 web Api (取得權杖的 daemon 應用程式) '
+title: 取得權杖以呼叫 web API (daemon 應用程式) -Microsoft 身分識別平臺 |蔚藍
+description: '瞭解如何建立可呼叫 web Api (取得權杖的 daemon 應用程式) '
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119210"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>呼叫 web Api 的 Daemon 應用程式-取得權杖
 
-在您已建立機密用戶端應用程式之後，您可以藉由呼叫 `AcquireTokenForClient` 、傳遞範圍，並選擇性地強制重新整理權杖，來取得應用程式的權杖。
+在您建立機密用戶端應用程式之後，您可以藉由呼叫 `AcquireTokenForClient` 、傳遞範圍，並選擇性地強制重新整理權杖，來取得應用程式的權杖。
 
-## <a name="scopes-to-request"></a>要求的範圍
+## <a name="scopes-to-request"></a>要要求的範圍
 
-要求用戶端認證流程的範圍是資源的名稱，後面接著 `/.default` 。 此標記法會告訴 Azure Active Directory (Azure AD) 使用在應用程式註冊期間以靜態方式宣告的*應用層級許可權*。 此外，租使用者系統管理員必須授與這些 API 許可權。
+用戶端認證流程要求的範圍是資源的名稱，後面接著 `/.default` 。 此標記法會告知 Azure Active Directory (Azure AD) 使用在應用程式註冊期間以靜態方式宣告的 *應用層級許可權* 。 此外，租使用者系統管理員必須授與這些 API 許可權。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -35,7 +35,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="python"></a>[Python](#tab/python)
 
-在 MSAL Python 中，設定檔看起來就像下面這個程式碼片段：
+在 MSAL Python 中，設定檔看起來會像下列程式碼片段：
 
 ```Json
 {
@@ -53,15 +53,15 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) 資源
 
-用於用戶端認證的範圍應該一律是資源識別碼，後面接著 `/.default` 。
+用戶端認證所使用的範圍應一律為資源識別碼，後面接著 `/.default` 。
 
 > [!IMPORTANT]
-> 當 MSAL 針對接受版本1.0 存取權杖的資源要求存取權杖時，Azure AD 會在最後一個斜線之前取得所有專案，並使用它做為資源識別碼，以從要求的範圍中剖析所需的物件。
-> 因此，如果 Azure SQL Database (**HTTPs： \/ /database.windows.net**) ，資源預期會以 Azure SQL Database 的斜線 (結尾的物件， `https://database.windows.net/`) ，您將需要要求的範圍 `https://database.windows.net//.default` 。  (請注意雙斜線。 ) 另請參閱 MSAL.NET 問題[#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 當 MSAL 要求接受版本1.0 存取權杖之資源的存取權杖時，Azure AD 會取得最後一個斜線之前的所有內容，並將其作為資源識別碼，藉此從要求的範圍剖析所需的物件。
+> 因此，如果 Azure SQL Database (**HTTPs： \/ /database.windows.net**) ，則資源預期會有一個以斜線 (結尾的物件 Azure SQL Database， `https://database.windows.net/`) ，您必須要求的範圍 `https://database.windows.net//.default` 。  (記下雙斜線。 ) 另請參閱 MSAL.NET 問題 [#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
-若要取得應用程式的權杖，您將使用 `AcquireTokenForClient` 或其對等的（視平臺而定）。
+若要取得應用程式的權杖，您將使用 `AcquireTokenForClient` 或其對等專案（視平臺而定）。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -118,7 +118,7 @@ else:
 
 # <a name="java"></a>[Java](#tab/java)
 
-這段程式碼是從[MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)中解壓縮而來。
+此程式碼會從 [MSAL JAVA dev 範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)中解壓縮。
 
 ```Java
 private static IAuthenticationResult acquireToken() throws Exception {
@@ -169,9 +169,9 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 ### <a name="protocol"></a>通訊協定
 
-如果您還沒有所選語言的程式庫，您可能會想要直接使用此通訊協定：
+如果您還沒有所選語言的程式庫，您可能會想要直接使用通訊協定：
 
-#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一種案例：使用共用密碼存取權杖要求
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一個案例：使用共用密碼存取權杖要求
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
@@ -184,7 +184,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二個案例：使用憑證存取權杖要求
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二種案例：使用憑證存取權杖要求
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
@@ -202,18 +202,18 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ## <a name="application-token-cache"></a>應用程式權杖快取
 
-在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken*XX*方法都會使用使用者 token 快取。 `AcquireTokenSilent` 在您呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用*使用者*token 快取。 `AcquireTokenForClient`檢查*應用程式*權杖快取本身並加以更新。
+在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken*XX* 方法都會使用使用者權杖快取。 `AcquireTokenSilent` 在呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用 *使用者* 權杖快取。 `AcquireTokenForClient` 檢查 *應用程式* 權杖快取本身，並加以更新。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>您使用的是 resource/. 預設範圍嗎？
+### <a name="did-you-use-the-resourcedefault-scope"></a>您使用資源/. 預設範圍嗎？
 
-如果您收到錯誤訊息，告知您使用了不正確範圍，表示您可能未使用 `resource/.default` 範圍。
+如果您收到錯誤訊息，告知您使用了不正確範圍，您可能未使用該 `resource/.default` 範圍。
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>您忘了提供系統管理員同意嗎？ Daemon 應用程式需要！
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>您是否忘了提供管理員同意？ Daemon 應用程式需要！
 
-如果您在呼叫 API 時取得的**許可權不足，無法完成**作業錯誤，租使用者系統管理員必須授與許可權給應用程式。 請參閱上面的註冊用戶端應用程式的步驟6。
-您通常會看到類似此錯誤的錯誤：
+如果您在呼叫 API 時， **沒有足夠的許可權來完成** 作業錯誤，租使用者系統管理員必須將許可權授與應用程式。 請參閱上述註冊用戶端應用程式的步驟6。
+您通常會看到類似下列錯誤的錯誤：
 
 ```json
 Failed to call the web API: Forbidden
@@ -234,16 +234,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 Web API](./scenario-daemon-call-api.md?tabs=dotnet)
+> [Daemon 應用程式-呼叫 web API](./scenario-daemon-call-api.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 Web API](./scenario-daemon-call-api.md?tabs=python)
+> [Daemon 應用程式-呼叫 web API](./scenario-daemon-call-api.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 Web API](./scenario-daemon-call-api.md?tabs=java)
+> [Daemon 應用程式-呼叫 web API](./scenario-daemon-call-api.md?tabs=java)
 
 ---

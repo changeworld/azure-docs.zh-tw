@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: c8251eb2a89a7481ebc981f2b89668c363651b39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315009"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>管理適用於 MySQL 的 Azure 資料庫-彈性伺服器的排程維護設定
@@ -20,7 +20,7 @@ ms.locfileid: "91315009"
 > [!IMPORTANT]
 > 適用於 MySQL 的 Azure 資料庫彈性的伺服器處於預覽階段。
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
 - [適用於 MySQL 的 Azure 資料庫彈性的伺服器](quickstart-create-server-portal.md)
  

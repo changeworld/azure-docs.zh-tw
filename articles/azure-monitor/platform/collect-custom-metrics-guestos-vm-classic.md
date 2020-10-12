@@ -8,27 +8,27 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045210"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>將客體作業系統計量傳送至 Windows 虛擬機器的 Azure 監視器計量資料庫（傳統）
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>將來賓 OS 計量傳送到 Windows 虛擬機器 (傳統) 的 Azure 監視器計量資料庫
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure 監視器[診斷擴充功能](./diagnostics-extension-overview.md) (也稱為 "WAD" 或「診斷」) 可讓您從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](./data-platform.md?toc=/azure/azure-monitor/toc.json)。
 
-本文說明將 Windows 虛擬機器（傳統）的來賓 OS 效能計量傳送至 Azure 監視器公制資料庫的程式。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 
+本文說明將 Windows 虛擬機器的「客體作業系統」效能度量傳送至 Azure 監視器計量資料庫 (傳統) 的流程。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 
 
 將計量儲存在此位置，可讓您存取與您對平台計量執行的相同動作。 動作包括近乎即時的警示、圖表、路由、從 REST API 存取以及更多功能。 在過去，診斷擴充功能會寫入到 Azure 儲存體，而不是 Azure 監視器資料存放區。 
 
 本文所述的流程僅適用於執行 Windows 作業系統的傳統虛擬機器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
+- 您必須是 Azure 訂用 [帳戶的服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md) 。 
 
 - 您必須先向 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) 註冊您的訂用帳戶。 
 
@@ -48,7 +48,7 @@ Azure 監視器[診斷擴充功能](./diagnostics-extension-overview.md) (也稱
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-使用[建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)中的指示，在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
+使用「 [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)」中的指示，在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
 - 為此應用程式建立新用戶端密碼。
 - 儲存金鑰與用戶端識別碼，以便在稍後的步驟中使用。
 
@@ -188,7 +188,7 @@ Azure 監視器[診斷擴充功能](./diagnostics-extension-overview.md) (也稱
 
 1.  前往 Azure 入口網站。 
 
-1.  在左側功能表上，選取 [**監視]。**
+1.  在左側功能表上選取 [ **監視]。**
 
 1.  在 [監視]**** 刀鋒視窗上，選取 [計量]****。
 
@@ -198,7 +198,7 @@ Azure 監視器[診斷擴充功能](./diagnostics-extension-overview.md) (也稱
 
 1. 在 [命名空間] 下拉式功能表中，選取 [ **azure**]。
 
-1. 在 [計量] 下拉式功能表中，選取 [ **Memory\committed bytes 使用中的位元組**]。
+1. 在 [計量] 下拉式功能表中，選取 [ **Memory\committed bytes 使用的位元組**]。
    ![計量繪圖](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 

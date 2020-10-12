@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530607"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署位置
@@ -87,7 +87,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 當您建立插槽時，位置是空的。 您可以使用任何支援的 [部署技術](./functions-deployment-technologies.md) ，將您的應用程式部署至某個位置。
 
-## <a name="scaling"></a>擴縮
+## <a name="scaling"></a>調整大小
 
 所有位置會調整為與生產位置相同的背景工作數目。
 
@@ -153,7 +153,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
 - [create](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [delete](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- list
+- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
 - [交換](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [自動交換](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
@@ -176,7 +176,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行不同的實例�
 
     :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="尋找 Azure 入口網站中的位置。" border="true":::
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 ## <a name="limitations"></a>限制
 

@@ -6,10 +6,10 @@ manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534017"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常見問題：Azure 至 Azure 災害復原
@@ -53,13 +53,13 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
   - 若為 Azure 磁碟加密 1.1 版，您必須使用 Windows VM 搭配受控磁碟。
   - [深入了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何啟用已加密 VM 的複寫。
 
-### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>我可以從不同的資源群組中選取自動化帳戶嗎？
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>我可以從不同的資源群組選取自動化帳戶嗎？
 
-目前不支援透過入口網站，但您可以透過 Powershell 從不同的資源群組中選擇自動化帳戶。
+這目前不支援透過入口網站，但您可以透過 Powershell 從不同的資源群組中選擇自動化帳戶。
 
-### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>在指定的自動化帳戶與保存庫位於不同的資源群組之後，如果沒有其他保存庫可供指定，我是否允許刪除 runbook？
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>在指定的自動化帳戶與保存庫位於不同的資源群組中之後，如果沒有其他保存庫可指定，我是否允許刪除 runbook？
 
-建立的自訂 runbook 是一種工具，如果不需要相同的時間較長，則可以放心刪除。
+建立的自訂 runbook 是一種工具，如果相同的時間較長，則可以放心刪除。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>我可以將 VM 複寫至另一個訂用帳戶嗎？
 
@@ -71,9 +71,9 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 
 是的，您可以[將區域固定的 VM 複寫到另一個區域](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region)。
 
-### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>我是否可以將區域中的 Vm 從非區域複寫到區域性設定？
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>是否可以將區域中有區域的 Vm 複寫至區域設定？
 
-否，目前不支援這種情況。 因應措施是，您可以使用 ASR 將 VM 複寫至另一個區域中的區域性設定，然後停用複寫。 接下來，重新啟用從該區域到原始區域的複寫，然後選擇要進行容錯移轉的區域性設定。
+否，目前不支援此功能。 因應措施是，您可以使用 ASR 將 VM 複寫至另一個區域中的區域性設定，然後停用複寫。 接著，重新啟用從該區域到原始區域的複寫，然後選擇用於容錯移轉的區域性設定。
 
 ### <a name="can-i-exclude-disks"></a>是否可排除磁碟嗎？
 
@@ -185,9 +185,9 @@ Site Recovery 會每 5 分鐘建立一次當機時保持一致復原點。 您�
 
 是，如果您將保留週期從 24 小時增加到 72 小時，Site Recovery 將把復原點再多儲存 48 小時。 增加的時間將產生儲存體費用。 例如，單一復原點可能會有 10 GB 的差異變更，每個月的每 GB 成本為 $0.16。 額外費用將是每月 $1.60 × 48。
 
-### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>我可以在 Linux 伺服器中使用應用程式一致性來啟用複寫嗎？
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>是否可以在 Linux 伺服器中啟用具有應用程式一致性的複寫？
 
-是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會在應用程式一致性期間由 Azure Site Recovery 行動代理程式使用。 [深入了解](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式自訂腳本以進行應用程式一致性。 使用前置和後置選項的自訂腳本，將會由 Azure Site Recovery 行動代理程式在應用程式一致性期間使用。 [深入了解](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 

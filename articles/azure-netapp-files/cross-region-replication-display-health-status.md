@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708584"
 ---
-# <a name="display-health-status-of-replication-relationship"></a>顯示覆寫關聯性的健全狀況狀態 
+# <a name="display-health-status-of-replication-relationship"></a>顯示複寫關聯性的健全狀態 
 
 您可以查看來源磁片區或目的地磁片區上的複寫狀態。  
 
@@ -53,7 +53,7 @@ ms.locfileid: "90708584"
 > [!NOTE] 
 > 如果先前的複寫作業未完成，則複寫關聯性會將健全狀況狀態顯示為狀況 *不良* 。 此狀態是以較低的傳輸視窗傳輸大型磁片區的結果 (例如，大型磁片區) 的10分鐘傳輸時間。 在此情況下，關聯性狀態會顯示 [ *傳輸* 中] 和 [健康情況] 顯示狀況 *不良*。
 
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
 
 * [跨區域複寫](cross-region-replication-introduction.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)

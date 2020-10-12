@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888104"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中建立資料串流作業 
@@ -250,7 +250,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 | 已停止 | 串流作業已停止。 |
 | Failed | 串流作業失敗。 這通常表示處理期間發生嚴重錯誤。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在 Azure SQL Edge 中查看與串流作業相關聯的中繼資料](streaming-catalog-views.md) 
 - [建立外部資料流](create-external-stream-transact-sql.md)

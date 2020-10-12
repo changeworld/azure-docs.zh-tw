@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 692b20bf301bbd7bf03ea1af5527e08d947b50da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798358"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中依管理工作區分的系統管理員角色
@@ -359,7 +359,7 @@ Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 提交支援票證 | 服務管理員 | 應用程式系統管理員、Azure 資訊保護系統管理員、計費管理員、雲端應用程式系統管理員、合規性管理員、Dynamics 365 系統管理員、電腦分析系統管理員、Exchange 系統管理員、密碼管理員、Intune 系統管理員、商務用 Skype 系統管理員、Power BI 系統管理員、特殊許可權驗證管理員、SharePoint 系統管理員、小組通訊管理員、小組系統管理員、使用者系統管理員、工作地點分析管理員
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [如何指派或移除 azure AD 系統管理員角色](directory-manage-roles-portal.md)
 * [Azure AD 系統管理員角色參考](directory-assign-admin-roles.md)

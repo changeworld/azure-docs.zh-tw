@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082211"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 為 HDInsight 叢集建立 Apache Spark 應用程式
@@ -23,17 +23,17 @@ ms.locfileid: "86082211"
 * 存取您的 Azure HDInsight Spark 叢集資源。
 * 在本機開發並執行 Scala Spark 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
-* [JAVA 開發工具組（JDK）第8版](https://aka.ms/azure-jdks)。
+* [JAVA Developer 套件 (JDK) 第8版](https://aka.ms/azure-jdks)。
 
 * [ECLIPSE IDE](https://www.eclipse.org/downloads/)。 本文使用適用于 JAVA 開發人員的 Eclipse IDE。
 
 ## <a name="install-required-plug-ins"></a>安裝必要的外掛程式
 
-### <a name="install-azure-toolkit-for-eclipse"></a>安裝適用於 Eclipse 的 Azure 工具組
+### <a name="install-azure-toolkit-for-eclipse"></a>安裝 Azure Toolkit for Eclipse
 
 如需安裝指示，請參閱[安裝適用於 Eclipse 的 Azure 工具組](https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "86082211"
 
 ### <a name="confirm-plug-ins"></a>確認外掛程式
 
-1. 流覽至 [ **Help**  >  **Eclipse Marketplace ...**]。
+1. 流覽至**Help**  >  **Eclipse Marketplace**.。。
 
 1. 選取 [已安裝] 索引標籤。
 
@@ -57,23 +57,23 @@ ms.locfileid: "86082211"
 
 1. 啟動 Eclipse IDE。
 
-1. 流覽至 [**視窗]**[  >   **顯示視圖**] [  >  **其他 ...**  >  ]登**入 ...**
+1. 流覽至**視窗**  >   **顯示視圖**  >  **其他 ...**  > 登**入 ...**
 
-1. 從 [**顯示視圖**] 對話方塊中，流覽至 [ **azure**  >  **azure Explorer**]，然後選取 [**開啟**]。
+1. 從 [**顯示視圖**] 對話方塊中，流覽至**azure**  >  **azure Explorer**，然後選取 [**開啟**]。
 
    ![Apache Spark Eclipse 顯示視圖](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
 
-1. 在**Azure Explorer**中，以滑鼠右鍵按一下 [ **azure** ] 節點，然後選取 [登**入**]。
+1. 從 **Azure Explorer**中，以滑鼠右鍵按一下 [ **azure** ] 節點，然後選取 [登 **入**]。
 
-1. 在 [ **Azure 登入**] 對話方塊中，選擇 [驗證方法]、選取 [登**入**]，然後完成登入程式。
+1. 在 [ **Azure 登入** ] 對話方塊中，選擇 [驗證方法]，選取 [登 **入**]，然後完成登入程式。
 
    ![Apache Spark Eclipse Azure Sign](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
-1. 登入之後，[訂用**帳戶] 對話方塊**會列出與認證相關聯的所有 Azure 訂用帳戶。 按下 [**選取**] 以關閉對話方塊。
+1. 登入之後，[您的 **訂閱** ] 對話方塊會列出與認證相關聯的所有 Azure 訂用帳戶。 按下 [ **選取** ] 以關閉對話方塊。
 
    ![[選取訂用帳戶] 對話方塊](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. 從**azure Explorer**流覽至**azure**  >   **hdinsight** ，以查看您的訂用帳戶下的 HDInsight Spark 叢集。
+1. 從**azure Explorer**中，流覽至**azure**  >   **hdinsight**以查看您訂用帳戶下的 hdinsight Spark 叢集。
 
    ![Azure Explorer3 中的 HDInsight Spark 叢集](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -85,21 +85,21 @@ ms.locfileid: "86082211"
 
 您可以使用 Ambari 受控使用者名稱來連結一般的叢集。 同樣地，對於已加入網域的 HDInsight 叢集，您可以使用網域和使用者名稱進行連結，例如 `user1@contoso.com`。
 
-1. 從**Azure Explorer**中，以滑鼠右鍵按一下 [ **HDInsight**]，然後選取 [**連結**叢集]。
+1. 從 **Azure Explorer**中，以滑鼠右鍵按一下 [ **HDInsight**]，然後選取 [ **連結**叢集]。
 
-   ![Azure Explorer 連結叢集功能表](./media/apache-spark-eclipse-tool-plugin/link-a-cluster-context-menu.png)
+   ![Azure Explorer 連結群集功能表](./media/apache-spark-eclipse-tool-plugin/link-a-cluster-context-menu.png)
 
-1. 輸入 [叢集**名稱**]、[**使用者名稱**] 和 [**密碼**]，然後選取 **[確定]**。 您也可以選擇輸入 [儲存體帳戶]、[儲存體金鑰]，然後選取 [儲存體容器]，讓儲存體總管在左側樹狀檢視中工作
+1. 輸入 [叢集 **名稱**]、[ **使用者名稱**] 和 [ **密碼**]，然後選取 **[確定]**。 您也可以選擇輸入 [儲存體帳戶]、[儲存體金鑰]，然後選取 [儲存體容器]，讓儲存體總管在左側樹狀檢視中工作
 
-   ![[連結新的 HDInsight 叢集] 對話方塊](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog1.png)
+   ![連結新的 HDInsight 叢集對話方塊](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog1.png)
 
    > [!NOTE]  
    > 如果叢集已登入 Azure 訂用帳戶並連結叢集，我們會使用連結的儲存體金鑰、使用者名稱和密碼。
    > ![Azure Explorer 儲存體帳戶](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
    >
-   > 對於僅限鍵盤的使用者，當目前的焦點是在**儲存體金鑰**時，您必須使用**Ctrl + TAB**將焦點放在對話方塊中的下一個欄位。
+   > 針對僅限鍵盤的使用者，當目前的焦點位於 **儲存體金鑰**時，您需要使用 **Ctrl + TAB** 以將焦點放在對話方塊中的下一個欄位。
 
-1. 您可以在**HDInsight**底下看到連結的叢集。 您現在可以將應用程式提交至此連結的叢集。
+1. 您可以在 **HDInsight**下看見連結的叢集。 您現在可以將應用程式提交至此連結的叢集。
 
    ![Azure Explorer hdi 連結的叢集](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
 
@@ -109,16 +109,16 @@ ms.locfileid: "86082211"
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>設定 HDInsight Spark 叢集的 Spark Scala 專案
 
-1. 從 Eclipse IDE 工作區中，**選取 [** 檔案] [新增] [  >  **New**  >  **專案**]。
+1. 從 Eclipse IDE 工作區中，**選取 [** 檔案  >  **新增**  >  **專案 ...**]。
 
-1. 在 [**新增專案**] 中，選取 [hdinsight 上的**hdinsight 專案**  >  **Spark （Scala）**]。 然後選取 [下一步]。
+1. 在 [**新增專案**] 中，選取 [hdinsight 上的**hdinsight 專案**  >  **Spark] (Scala) **。 然後選取 [下一步]。
 
    ![選取 Spark HDInsight (Scala) 專案](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
 1. 在 [新增 HDInsight Scala 專案]**** 對話方塊中，提供下列值，然後選取 [下一步]****：
    * 輸入專案的名稱。
    * 在 [JRE]**** 區域中，請確定已將 [使用執行環境 JRE]**** 設為 [JavaSE-1.7]**** 或更新版本。
-   * 在 [Spark 程式庫]**** 區域中，您可以選擇 [使用 Maven 設定 Spark SDK ]**** 選項。  我們的工具為 Spark SDK 和 Scala SDK 整合正確的版本。 您也可以手動選擇 [**手動新增 SPARK sdk** ] 選項、[下載] 和 [新增 spark sdk]。
+   * 在 [Spark 程式庫]**** 區域中，您可以選擇 [使用 Maven 設定 Spark SDK ]**** 選項。  我們的工具為 Spark SDK 和 Scala SDK 整合正確的版本。 您也可以手動選擇 [ **手動新增 SPARK sdk** ] 選項、下載和新增 spark sdk。
 
    ![[新增 HDInsight Scala 專案] 對話方塊](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
 
@@ -126,15 +126,15 @@ ms.locfileid: "86082211"
 
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>建立 HDInsight Spark 叢集的 Scala 應用程式
 
-1. 從 [**封裝瀏覽器**] 中，展開您稍早建立的專案。 以滑鼠右鍵按一下 [ **src**]，然後選取 [**新增**  >  **其他 ...**]。
+1. 從 [ **封裝瀏覽器**] 中，展開您稍早建立的專案。 以滑鼠右鍵按一下 [ **src**]，然後選取 [**新增**  >  **其他 ...**]。
 
-1. 在 [**選取嚮導**] 對話方塊中，選取 [ **Scala**wizard  >  **Scala 物件**]。 然後選取 [下一步]。
+1. 在 [**選取嚮導**] 對話方塊中，選取 [ **Scala**wizard  >  **Scala Object**]。 然後選取 [下一步]。
 
    ![選取建立 Scala 物件的 wizard](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
 1. 在 [建立新檔案]**** 對話方塊中輸入物件的名稱，然後選取 [完成]****。 文字編輯器隨即開啟。
 
-   ![新增檔案嚮導建立新檔案](./media/apache-spark-eclipse-tool-plugin/create-scala-project2.png)
+   ![新增檔案 Wizard 建立新檔案](./media/apache-spark-eclipse-tool-plugin/create-scala-project2.png)
 
 1. 在文字編輯器中，以下列程式碼取代目前的內容：
 
@@ -161,12 +161,12 @@ ms.locfileid: "86082211"
 
    a. 從 [封裝總管] 中，以滑鼠右鍵按一下專案名稱，然後選取 [將 Spark 應用程式提交給 HDInsight]****。
 
-   b. 在 [**提交 Spark** ] 對話方塊中，提供下列值，然後選取 [**提交**]：
+   b. 在 [ **提交 Spark** ] 對話方塊中，提供下列值，然後選取 [ **提交**]：
 
    * 針對 **叢集名稱**，選取您要在其上執行應用程式的 HDInsight Spark 叢集。
    * 從 Eclipse 專案中選取構件，或從硬碟中選取一個。 預設值取決於您在套件總管中以滑鼠右鍵按一下的項目。
    * 在 [主要類別名稱]**** 下拉式清單中，提交精靈會顯示您的所有物件名稱。 選取或輸入您需要執行的物件名稱。 如果您從硬碟選取構件，就必須手動輸入主要的類別名稱。 
-   * 因為此範例中的應用程式代碼不需要任何命令列引數或參考 Jar 或檔案，所以您可以將其餘的文字方塊保留空白。
+   * 因為此範例中的應用程式程式碼不需要任何命令列引數或參考 Jar 或檔案，所以您可以將其餘的文字方塊保留空白。
 
      ![Apache Spark 提交] 對話方塊](./media/apache-spark-eclipse-tool-plugin/create-scala-project3.png)
 
@@ -180,13 +180,13 @@ ms.locfileid: "86082211"
 
 ### <a name="access-the-job-view"></a>存取作業檢視
 
-1. 在**Azure Explorer**中，依序展開 [ **HDInsight**] 和 Spark 叢集名稱，然後選取 [**作業**]。
+1. 在 **Azure Explorer**中，依序展開 [ **HDInsight**] 和 [Spark 叢集名稱]，然後選取 [ **作業**]。
 
    ![Azure Explorer Eclipse 工作檢視節點](./media/apache-spark-eclipse-tool-plugin/eclipse-job-view-node.png)
 
 1. 選取 [作業]**** 節點。 如果 Java 版本低於 **1.8**，HDInsight 工具會自動提醒您安裝 **E(fx)clipse** 外掛程式。 選取 [確定]**** 繼續作業，然後遵循精靈安裝 Eclipse Marketplace 並重新啟動 Eclipse。
 
-   ![安裝遺失的外掛程式 E （fx） clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
+   ![安裝遺失的外掛程式 E (fx) clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
 
 1. 從 [作業]**** 節點開啟 [作業] 檢視。 在右窗格中，[Spark 作業檢視] **** 索引標籤會顯示已在叢集上執行的所有應用程式。 選取您想要查看更多詳細資料的應用程式名稱。
 
@@ -200,7 +200,7 @@ ms.locfileid: "86082211"
 
    * 選取 [記錄]**** 索引標籤可檢視經常使用的記錄 (包括「驅動程式 Stderr」****、「驅動程式 Stdout」**** 和「目錄資訊」****)。
 
-     ![Apache Spark Eclipse 作業記錄檔資訊](./media/apache-spark-eclipse-tool-plugin/eclipse-job-log-info.png)
+     ![Apache Spark Eclipse 作業記錄資訊](./media/apache-spark-eclipse-tool-plugin/eclipse-job-log-info.png)
 
    * 選取視窗頂端的超連結，在應用程式層級開啟 Spark 歷程記錄 UI 和 Apache Hadoop YARN UI。
 
@@ -240,15 +240,15 @@ ms.locfileid: "86082211"
 
 ### <a name="prerequisite"></a>必要條件
 
-當您在 Windows 電腦上執行本機 Spark Scala 應用程式時，您可能會收到如[Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)中所述的例外狀況。 發生這個例外狀況是因為 Windows 中遺失 **WinUtils.exe**。
+當您在 Windows 電腦上執行本機 Spark Scala 應用程式時，您可能會收到如 [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)中所述的例外狀況。 發生這個例外狀況是因為 Windows 中遺失 **WinUtils.exe**。
 
-若要解決此錯誤，您需要[Winutils.exe](https://github.com/steveloughran/winutils)至**C:\WinUtils\bin**之類的位置，然後**HADOOP_HOME**新增環境變數，並將變數的值設定為**設為 c\winutils**。
+若要解決這個錯誤，您需要 [Winutils.exe](https://github.com/steveloughran/winutils) 到 **C:\WinUtils\bin**之類的位置，然後新增環境變數 **HADOOP_HOME** 並將變數的值設定為 **C\WinUtils**。
 
 ### <a name="run-a-local-spark-scala-application"></a>執行本機 Spark Scala 應用程式
 
 1. 啟動 Eclipse，然後建立專案。 在 [新增專案]**** 對話方塊中選取下列選項，然後選取 [下一步]****。
 
-1. 在 [**新增專案**] 的 [hdinsight **HDInsight Project**  >  **本機執行範例（Scala）**] 中，選取 [hdinsight 專案 Spark]。 然後選取 [下一步]。
+1. 在 [**新增專案**] 中，選取 [hdinsight **HDInsight Project**  >  **本機執行範例上的 hdinsight 專案 Spark] (Scala) **。 然後選取 [下一步]。
 
    ![[新增專案] 選取嚮導對話方塊](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
@@ -258,7 +258,7 @@ ms.locfileid: "86082211"
 
    ![LogQuery 本機 scala 應用程式的位置](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
-1. 以滑鼠右鍵按一下**LogQuery scala** ，然後選取 [**執行**身分  >  **1 scala 應用程式**]。 在 [主控台]**** 索引標籤上隨即顯示像這樣的輸出：
+1. 以滑鼠右鍵按一下**LogQuery scala** ，然後選取 [**執行為**  >  **1 scala 應用程式**]。 在 [主控台]**** 索引標籤上隨即顯示像這樣的輸出：
 
    ![Spark 應用程式本機執行結果](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
@@ -281,7 +281,7 @@ ms.locfileid: "86082211"
 4. 如果已成功連結叢集，HDInsight 將會重新整理。
    叢集的階段會成為「已連結」。
   
-    ![Azure Explorer 中的 HDInsight Spark 叢集已連結](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer8.png)
+    ![Azure Explorer 中已連結的 HDInsight Spark 叢集](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>藉由展開作業節點來連結叢集
 
@@ -295,13 +295,13 @@ ms.locfileid: "86082211"
 
 1. 建立 HDInsight 專案。
 
-2. 以滑鼠右鍵按一下封裝。 然後選取 [**將 Spark 應用程式提交給 HDInsight**]。
+2. 以滑鼠右鍵按一下封裝。 然後選取 [ **將 Spark 應用程式提交給 HDInsight**]。
 
    ![Azure Explorer 中的 HDInsight Spark 叢集提交](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer11.png)
 
-3. 選取叢集，此叢集具有叢集**名稱**的「僅限讀取者」角色許可權。 警告訊息會顯示。您可以按一下 [**連結此**叢集以連結叢集]。
+3. 選取叢集，其具有叢集 **名稱**的僅限讀取者角色許可權。 警告訊息會顯示出來。您可以按一下 [ **連結此** 叢集以連結叢集]。
 
-   ![Azure Explorer 中的 HDInsight Spark 叢集連結此](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
+   ![Azure Explorer 中的 HDInsight Spark 叢集連結至此](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
 
 ### <a name="view-storage-accounts"></a>檢視儲存體帳戶
 
@@ -309,17 +309,17 @@ ms.locfileid: "86082211"
 
    ![Azure Explorer 儲存體中的 HDInsight Spark 叢集](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer13.png)
 
-   ![Azure Explorer 中的 HDInsight Spark 叢集已拒絕](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer12.png)
+   ![已拒絕 Azure Explorer 中的 HDInsight Spark 叢集](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer12.png)
 
 * 針對連結的叢集，按一下 [儲存體帳戶]**** 節點，[儲存體存取遭拒]**** 視窗隨即快顯。
 
-   ![Azure Explorer 中的 HDInsight Spark 叢集 denied2](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer14.png)
+   ![Azure Explorer 中的 HDInsight Spark 叢集拒絕2](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer14.png)
 
 ## <a name="known-problems"></a>已知的問題
 
-使用**連結**叢集時，建議您提供儲存體的認證。
+使用 **連結**叢集時，建議您提供儲存體的認證。
 
-![連結叢集與儲存體認證刪節符號](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
+![連結叢集與儲存體認證 eclipses](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
 提交工作有兩種模式。 如果提供儲存體認證，將使用批次模式提交工作。 否則，將使用互動模式。 如果叢集忙碌，您可能會收到以下錯誤。
 

@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606265"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化開發與測試成本
@@ -48,7 +48,7 @@ Azure Cosmos DB 已包含在 [Azure 免費帳戶](https://azure.microsoft.com/fr
 
 例如，假設您的開發或測試帳戶有四個容器。 如果您建立具有專用輸送量的四個容器 (最少 400 RU/秒) ，則 RU/秒總數將會是 1600 RU/秒。 相反地，如果您建立共用輸送量資料庫 (最小 400 RU/秒) 並將容器放在該處，則 RU/秒總數將只會是 400 RU/秒。 一般情況下，共用輸送量資料庫很適合用於您不需要在任何個別容器上保證輸送量的案例。  深入瞭解 [共用輸送量資料庫。](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您可以透過下列文章來開始使用模擬器或免費的 Azure Cosmos DB 帳戶：
 

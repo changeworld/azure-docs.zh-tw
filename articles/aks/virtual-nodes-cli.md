@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
 ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543073"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 美國西部 2 (westus2)
 
 ## <a name="known-limitations"></a>已知限制
-虛擬節點功能非常依賴 ACI 的功能集。 除了[Azure 容器實例的配額和限制](../container-instances/container-instances-quotas.md)以外，虛擬節點尚不支援下列案例：
+虛擬節點功能非常依賴 ACI 的功能集。 除了 [Azure 容器實例的配額和限制](../container-instances/container-instances-quotas.md)之外，虛擬節點尚未支援下列案例：
 
 * 使用服務主體來提取 ACR 映像。 [因應措施](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) \(英文\) 是使用 [Kubernetes 祕密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) \(英文\)
 * [虛擬網路限制](../container-instances/container-instances-vnet.md)包括 VNet 對等互連、Kubernetes 網路原則，以及搭配網路安全性群組的網際網路輸出流量。
@@ -69,7 +69,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 適用於 ACI 中 exec 的[引數](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSet](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不會將 Pod 部署至虛擬節點
 * 虛擬節點支援對 Linux Pod 進行排程。 您可以手動安裝開放原始碼 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) \(英文\) 提供者，以針對 ACI 對 Windows Server 容器進行排程。
-* 虛擬節點需要具有 Azure CNI 網路的 AKS 叢集
+* 虛擬節點需要 AKS 叢集搭配 Azure CNI 網路
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
@@ -81,7 +81,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 使用 [az group create][az-group-create] 命令來建立資源群組。 下列範例會在*westus*位置中建立名為*myResourceGroup*的資源群組。
+Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 使用 [az group create][az-group-create] 命令來建立資源群組。 下列範例會在*westus*位置建立名為*myResourceGroup*的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -158,7 +158,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立名為 myAKSCluster 並包含一個節點的叢集。 將取代 `<subnetId>` 為在上一個步驟中取得的識別碼，然後使用 `<appId>` `<password>` 上一節中所搜集的值來取代。
+使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立名為 myAKSCluster  並包含一個節點的叢集。 取代為 `<subnetId>` 在上一個步驟中取得的識別碼，並 `<appId>` 以 `<password>` 上一節中收集的值取代。
 
 ```azurecli-interactive
 az aks create \
@@ -176,7 +176,7 @@ az aks create \
 
 在數分鐘之後，該命令會完成並傳回關於節點的 JSON 格式資料。
 
-## <a name="enable-virtual-nodes-addon"></a>啟用虛擬節點增益集
+## <a name="enable-virtual-nodes-addon"></a>啟用虛擬節點附加元件
 
 若要啟用虛擬節點，請立即使用 [az aks enable-addons][az-aks-enable-addons] 命令。 下列範例會使用上一個步驟所建立的子網路，其名稱為 myVirtualNodeSubnet**：
 
@@ -303,9 +303,9 @@ curl -L http://10.241.0.4
 
 如果您不想再使用虛擬節點，則可以使用 [az aks disable-addons][az aks disable-addons] 命令來予以停用。 
 
-如有需要，請移至， [https://shell.azure.com](https://shell.azure.com) 以在瀏覽器中開啟 Azure Cloud Shell。
+如有必要，請移至， [https://shell.azure.com](https://shell.azure.com) 以在瀏覽器中開啟 Azure Cloud Shell。
 
-首先，刪除在 `aci-helloworld` 虛擬節點上執行的 pod：
+首先，刪除 `aci-helloworld` 虛擬節點上執行的 pod：
 
 ```console
 kubectl delete -f virtual-node.yaml

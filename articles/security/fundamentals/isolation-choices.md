@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533898"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 
-Azure 可讓您在共用實體基礎結構上執行應用程式和虛擬機器（Vm）。 在雲端環境中執行應用程式的主要經濟動機之一是，能夠將共用資源的成本分散到多位客戶。 這種多重租用的作法會以低成本在不同客戶間進行資源的多工處理來提升效率。 不幸的是，它也會導致下列風險：共用實體伺服器和其他基礎結構資源來執行您的機密應用程式和 VM，而它們或許隸屬於可能惡意的任意使用者。
+Azure 可讓您在共用的實體基礎結構上執行 (Vm) 的應用程式和虛擬機器。 在雲端環境中執行應用程式的主要經濟動機之一是，能夠將共用資源的成本分散到多位客戶。 這種多重租用的作法會以低成本在不同客戶間進行資源的多工處理來提升效率。 不幸的是，它也會導致下列風險：共用實體伺服器和其他基礎結構資源來執行您的機密應用程式和 VM，而它們或許隸屬於可能惡意的任意使用者。
 
-本文概述 Azure 如何為惡意和非惡意使用者提供隔離，並藉由為架構設計人員提供各種隔離選項，做為架構雲端解決方案的指南。
+本文概述 Azure 如何針對惡意和非惡意使用者提供隔離，並可為架構設計人員提供各種隔離選項，以作為架構雲端解決方案的指南。
 
 ## <a name="tenant-level-isolation"></a>租用戶層級隔離
 
@@ -54,7 +54,7 @@ Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [A
 
 - Azure AD 使用者無法存取實體資產或位置，因此，不可能略過以下所述的邏輯 RBAC 原則檢查。
 
-針對診斷與維護需求，必須使用採用 Just-In-Time 權限提高系統的作業模型。 Azure AD Privileged Identity Management （PIM）引進了合格管理員的概念。[符合資格](../../active-directory/privileged-identity-management/pim-configure.md)的系統管理員應該是現在需要特殊許可權存取的使用者，而不是每天。 在使用者需要存取權之前，角色會處於非作用中狀態，然後使用者須完成啟用程序，才能在一段預定的時間內成為作用中的系統管理員。
+針對診斷與維護需求，必須使用採用 Just-In-Time 權限提高系統的作業模型。 Azure AD Privileged Identity Management (PIM) 引進合格系統管理員的概念。合格的系統 [管理員](../../active-directory/privileged-identity-management/pim-configure.md) 應該是現在需要特殊許可權存取權的使用者，而不是每天都有。 在使用者需要存取權之前，角色會處於非作用中狀態，然後使用者須完成啟用程序，才能在一段預定的時間內成為作用中的系統管理員。
 
 ![Azure AD 特殊權限身分識別管理](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -64,19 +64,19 @@ Azure Active Directory 會透過租用戶單獨擁有且管理之容器內的原
 
 即使將來自多個 Azure Active Directory 租用戶的中繼資料儲存於同一個實體磁碟，在目錄服務所定義之容器以外的容器間還是不會有任何關聯性，而目錄服務是由租用戶管理員所決定。
 
-### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 角色型存取控制（Azure RBAC）
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 角色型存取控制 (Azure RBAC)
 
-[Azure 角色型存取控制（AZURE RBAC）](../../role-based-access-control/overview.md)可為 azure 提供更細緻的存取權管理，協助您共用 azure 訂用帳戶內可用的各種元件。 Azure RBAC 可讓您隔離組織內的責任，並根據使用者需要哪些權限執行其工作來授與他們存取權。 您不需為每個人授與 Azure 訂用帳戶或資源中無限制的權限，而是只允許執行特定的動作。
+Azure [ (AZURE RBAC) 的 azure 角色型存取控制](../../role-based-access-control/overview.md)可協助您在 azure 訂用帳戶中共用各種可在 azure 訂用帳戶中使用的元件，方法是提供更細緻的 azure 存取管理。 Azure RBAC 可讓您隔離組織內的責任，並根據使用者需要哪些權限執行其工作來授與他們存取權。 您不需為每個人授與 Azure 訂用帳戶或資源中無限制的權限，而是只允許執行特定的動作。
 
 Azure RBAC 有適用於所有資源類型的三個基本角色：
 
-- **擁有**者具有所有資源的完整存取權，包括將存取權委派給其他人的許可權。
+- **擁有** 者具有所有資源的完整存取權，包括將存取權委派給其他人的許可權。
 
-- **參與者**可以建立和管理所有類型的 Azure 資源，但無法將存取權授與其他人。
+- **參與者** 可以建立和管理所有類型的 Azure 資源，但無法將存取權授與其他人。
 
-- **讀者** 可以檢視現有的 Azure 資源。
+- **讀者** 可以看到現有的 Azure 資源。
 
-![Azure 角色型存取控制（Azure RBAC）](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure 角色型存取控制 (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Azure 中的其餘 Azure 角色允許管理特定的 Azure 資源。 例如，「虛擬機器參與者」角色可讓使用者建立和管理虛擬機器。 但不會授予他們存取虛擬機器所連接之 Azure 虛擬網路或子網路的存取權。
 
@@ -84,7 +84,7 @@ Azure 中的其餘 Azure 角色允許管理特定的 Azure 資源。 例如，�
 
 Azure Active Directory 的一些其他功能包括：
 
-- Azure AD 會啟用 SaaS 應用程式的 SSO，而無論應用程式裝載於何處。 有些應用程式會與 Azure AD 同盟，有些則使用密碼 SSO。 同盟應用程式也可以支援使用者布建和[密碼](https://www.techopedia.com/definition/31415/password-vault)保存庫。
+- Azure AD 會啟用 SaaS 應用程式的 SSO，而無論應用程式裝載於何處。 有些應用程式會與 Azure AD 同盟，有些則使用密碼 SSO。 同盟應用程式也可以支援使用者布建和 [密碼](https://www.techopedia.com/definition/31415/password-vault)保存庫。
 
 - 對 [Azure 儲存體](https://azure.microsoft.com/services/storage/)的資料存取可透過驗證來控制。 每個儲存體帳戶都有主要金鑰 ([儲存體帳戶金鑰](../../storage/common/storage-create-storage-account.md)，或稱 SAK) 和次要金鑰 (共用存取簽章，或稱 SAS)。
 
@@ -119,7 +119,7 @@ Microsoft Azure 提供各種雲端式計算服務，其中包含各式各樣的�
 
 ### <a name="dedicated-hosts"></a>專用主機
 
-除了上一節所述的隔離主機以外，Azure 也提供專用主機。 Azure 中的專用主機是一項服務，可提供實體伺服器來裝載一或多部虛擬機器，並專門用於單一 Azure 訂用帳戶。 專用主機會在實體伺服器層級提供硬體隔離。 主機上不會放置其他 Vm。 專用主機會部署在相同的資料中心，並與其他非隔離的主機共用相同的網路和基礎儲存體基礎結構。 如需詳細資訊，請參閱[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的詳細總覽。
+除了上一節所述的隔離主機之外，Azure 也提供專用主機。 Azure 中的專用主機提供可裝載一或多部虛擬機器的實體伺服器，而且專用於單一 Azure 訂用帳戶的服務。 專用主機提供實體伺服器層級的硬體隔離。 系統不會在您的主機上放置其他 Vm。 專用主機會部署在相同的資料中心，並與其他非隔離的主機共用相同的網路和基礎的儲存基礎結構。 如需詳細資訊，請參閱 [Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的詳細總覽。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 與客體 VM 之間的 Hyper-V 和根 OS 隔離
 
@@ -145,7 +145,7 @@ Azure 網狀架構控制器會負責配置基礎結構資源給租用戶工作�
 
 Azure hypervisor 會強制執行虛擬機器之間的記憶體和程序區隔，並安全地將網路流量路由傳送至客體 OS 租用戶。 這會消除 VM 層級發生旁道攻擊的可能性。
 
-在 Azure 中，根 VM 是特殊的：它會執行稱為根 OS 的強化作業系統，其中裝載了網狀架構代理程式 (FA)。 FAs 是用來在客戶 Vm 上的客體作業系統中管理來賓代理程式（GA）。 FA 也會管理儲存體節點。
+在 Azure 中，根 VM 是特殊的：它會執行稱為根 OS 的強化作業系統，其中裝載了網狀架構代理程式 (FA)。 接著會使用 FAs 來管理來賓代理程式， (客戶 Vm 上的客體作業系統內的正式) 。 FA 也會管理儲存體節點。
 
 Azure Hypervisor、根 OS/FA 和客戶 VM/GA 的集合會組成一個計算節點。 FA 是由網狀架構控制器 (FC) 管理的，其存在於計算和儲存體節點 (計算和儲存體叢集是由個別 FC 管理的) 以外的地方。 如果客戶於應用程式正在執行時更新其組態檔，FC 就會與 FA 通訊，然後連絡 GA，後者會通知應用程式組態變更。 發生硬體故障時，FC 將自動尋找可用的硬體，並在該處重新啟動 VM。
 
@@ -166,7 +166,7 @@ Hypervisor 與主機 OS 提供網路封包 - 篩選器，以協助保證不受�
 以下為要進行程式設計的兩種規則：
 
 - **電腦設定或基礎結構規則：** 預設會封鎖所有通訊。 有部分例外狀況可允許虛擬機器傳送與接收 DHCP 和 DNS 流量。 虛擬機器也可以將流量傳送至「公用」網際網路，以及將流量傳送至同一個 Azure 虛擬網路和 OS 啟用伺服器內的其他虛擬機器。 虛擬機器允許的連出目的地清單不包含 Azure 路由器子網路、Azure 管理和其他 Microsoft 屬性。
-- **角色設定檔案：** 這會根據租使用者的服務模型定義輸入存取控制清單（Acl）。
+- **角色設定檔案：** 這會根據租使用者的服務模型，定義 (Acl) 的輸入存取控制清單。
 
 ### <a name="vlan-isolation"></a>VLAN 隔離
 
@@ -215,16 +215,16 @@ Azure 提供下列加密類型來保護資料：
 
 傳輸中加密是透過網路傳輸資料時用來保護資料的機制。 透過 Azure 儲存體，您可以使用下列各項來保護資料：
 
-- [傳輸層級加密](../../storage/blobs/security-recommendations.md)，例如當您將資料移入或移出 Azure 儲存體時的 HTTPS。
-- [有線加密](../../storage/blobs/security-recommendations.md)，例如 Azure 檔案共用的 SMB 3.0 加密。
-- [用戶端加密](../../storage/blobs/security-recommendations.md)，以在將資料傳輸至儲存體之前進行加密，並在從儲存體傳出後解密資料。
+- [傳輸層級加密](../../storage/blobs/security-recommendations.md)，例如當您將資料傳入或傳出 Azure 儲存體時的 HTTPS。
+- [網路加密](../../storage/blobs/security-recommendations.md)，例如 Azure 檔案共用的 SMB 3.0 加密。
+- [用戶端加密](../../storage/blobs/security-recommendations.md)，可在資料傳輸至儲存體之前加密資料，並在資料從儲存體傳出後解密。
 
 #### <a name="encryption-at-rest"></a>待用加密
 
-對於許多組織而言，待用[資料加密是達到](isolation-choices.md)資料隱私權、合規性和資料主權的必要步驟。 有三個 Azure 功能可提供「待用」資料的加密。
+對於許多組織而言，待用 [資料加密](isolation-choices.md) 是資料隱私權、合規性及資料主權的必要步驟。 有三個 Azure 功能可提供「待用」資料的加密。
 
 - [儲存體服務加密](../../storage/blobs/security-recommendations.md) 可讓您要求儲存體服務在將資料寫入 Azure 儲存體時自動加密資料。
-- [用戶端加密](../../storage/blobs/security-recommendations.md)也會提供待用加密的功能。
+- [用戶端加密](../../storage/blobs/security-recommendations.md) 也提供待用加密的功能。
 - [Azure 磁碟加密](../azure-security-disk-encryption-overview.md) 允許您加密 IaaS 虛擬機器所使用的作業系統磁碟和資料磁碟。
 
 #### <a name="azure-disk-encryption"></a>Azure 磁碟加密
@@ -261,17 +261,17 @@ SQL Database 是 Microsoft Cloud 中以領先市場的 Microsoft SQL Server 引�
 
 ### <a name="sql-database-application-model"></a>SQL Database 應用程式模型
 
-[Microsoft SQL Database](../../azure-sql/database/single-database-create-quickstart.md)是以 SQL Server 技術為基礎的雲端式關係資料庫服務。 它會在雲端中提供由 Microsoft 裝載的高可用性、可調整、多租用戶的資料庫服務。
+[Microsoft SQL Database](../../azure-sql/database/single-database-create-quickstart.md) 是以 SQL Server 技術為基礎的雲端式關係資料庫服務。 它會在雲端中提供由 Microsoft 裝載的高可用性、可調整、多租用戶的資料庫服務。
 
-從應用程式的觀點來看，SQL Database 提供下列階層：每個層級都有下列層級的一對多內含專案。
+從應用程式的觀點來看，SQL Database 提供下列階層：每個層級都有一對多層級的內含專案。
 
 ![SQL Database 應用程式模型](./media/isolation-choices/azure-isolation-fig10.png)
 
 帳戶和訂用帳戶是關聯計費與管理的 Microsoft Azure 平台概念。
 
-邏輯 SQL server 和資料庫是 SQL Database 特定的概念，而且是使用 SQL Database （提供的 OData 和 TSQL 介面）或透過 Azure 入口網站來管理。
+邏輯 SQL 伺服器和資料庫是 SQL Database 特有的概念，而且是使用 SQL Database （提供 OData 和 TSQL 介面或透過 Azure 入口網站）進行管理。
 
-SQL Database 中的伺服器不是實體或 VM 實例，而是儲存在中的資料庫、共用管理和安全性原則的集合，稱為「邏輯 master」資料庫。
+SQL Database 中的伺服器不是實體或 VM 實例，而是儲存在所謂的「邏輯 master」資料庫中的資料庫集合，也就是共用管理與安全性原則。
 
 ![SQL Database](./media/isolation-choices/azure-isolation-fig11.png)
 
@@ -280,20 +280,20 @@ SQL Database 中的伺服器不是實體或 VM 實例，而是儲存在中的資
 - 用來連接到伺服器的 SQL 登入
 - 防火牆規則
 
-來自相同伺服器的資料庫計費和使用方式相關資訊不保證會在叢集中的相同實體實例上，而是在連接時，應用程式必須提供目標資料庫名稱。
+來自相同伺服器之資料庫的計費和使用量相關資訊不保證會在叢集中相同的實體實例上，而是在連接時，應用程式必須提供目標資料庫名稱。
 
-從客戶的觀點來看，伺服器會建立在地理位置繪圖區域中，而實際建立伺服器的情況則會出現在該區域的其中一個叢集中。
+從客戶的觀點來看，伺服器是在地理圖形區中建立，而實際建立的伺服器則是在該區域的其中一個叢集中進行。
 
 ### <a name="isolation-through-network-topology"></a>透過網路拓撲進行隔離
 
-當建立伺服器並註冊其 DNS 名稱時，DNS 名稱會指向伺服器所在的特定資料中心內稱為「閘道 VIP」的位址。
+當您建立伺服器並註冊其 DNS 名稱時，DNS 名稱會指向放置伺服器的特定資料中心內稱為「閘道 VIP」位址。
 
 在 VIP (虛擬 IP 位址) 背後，我們擁有一組無狀態閘道服務。 通常，若在多個資料來源 (master 資料庫、使用者資料庫等) 之間需要進行協調，就會牽涉到閘道。 閘道服務會實作下列各項：
 
 - **TDS 連接 Proxy 處理。** 這包括在後端叢集中尋找使用者資料庫、實作登入順序，然後將 TDS 封包轉送至後端，並往回執行。
 - **資料庫管理。** 這包括實作執行一組工作流程來執行 CREATE/ALTER/DROP 資料庫作業。 資料庫作業可以透過探查 TDS 封包或明確的 OData API 來叫用。
 - CREATE/ALTER/DROP 登入/使用者作業
-- 透過 OData API 的伺服器管理作業
+- 經由 OData API 的伺服器管理作業
 
 ![透過網路拓撲進行隔離](./media/isolation-choices/azure-isolation-fig12.png)
 
@@ -303,7 +303,7 @@ SQL Database 中的伺服器不是實體或 VM 實例，而是儲存在中的資
 
 ### <a name="isolation-by-machine-function-and-access"></a>透過機器功能與存取進行隔離
 
-SQL Database （是由在不同電腦功能上執行的服務所組成。 SQL Database 分成「後端」雲端資料庫和「前端」（閘道/管理）環境，其中流量的一般原則只會進入後端而不是輸出。前端環境可以與其他服務的外部通訊，而且通常在後端只有有限的許可權（足以呼叫它必須叫用的進入點）。
+SQL Database (是由在不同電腦功能上執行的服務所組成。 SQL Database 分成「後端」雲端資料庫和「前端」 (閘道/管理) 環境中，而且流量的一般原則只會進入後端，而不是輸出。前端環境可以與其他服務的外界通訊，而且一般而言，在後端中只有有限的許可權， (足以呼叫) 所需的進入點。
 
 ## <a name="networking-isolation"></a>網路隔離
 
@@ -317,6 +317,6 @@ Azure 部署具有多層網路隔離。 下圖顯示 Azure 提供給客戶的各
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[Windows Azure 虛擬網路中電腦的網路隔離選項](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 這包括傳統的前端和後端案例，其中特定後端網路或子網中的機器可能只允許特定的用戶端或其他電腦根據允許的 IP 位址清單來連線到特定端點。
+- 瞭解 [Windows Azure 虛擬網路中的電腦網路隔離選項](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 這包括傳統前端和後端案例，特定後端網路或子網中的電腦可能只允許特定用戶端或其他電腦根據 IP 位址的允許清單連接到特定端點。
 
-- 瞭解[Azure 中的虛擬機器隔離](../../virtual-machines/isolation.md)。 Azure 計算提供的虛擬機器大小會隔離到特定的硬體類型，並專供單一客戶使用。
+- 瞭解 [Azure 中的虛擬機器隔離](../../virtual-machines/isolation.md)。 Azure 計算提供隔離于特定硬體類型的虛擬機器大小，並專用於單一客戶。

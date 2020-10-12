@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315966"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>相依性遙測：Application Insights 資料模型
 
 相依性遙測 (在 [Application Insights](./app-insights-overview.md) 中) 代表受監視元件與遠端元件 (例如 SQL 或 HTTP 端點) 的互動。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名稱
 
 使用此相依性呼叫所起始之命令的名稱。 基數值低。 範例為預存程序名稱和 URL 路徑範本。
 
@@ -35,7 +35,7 @@ ms.locfileid: "87315966"
 
 相依性呼叫的目標網站。 範例為伺服器名稱、主機位址。 如需詳細資訊，請參閱[相互關聯](./correlation.md)頁面。
 
-## <a name="duration"></a>Duration
+## <a name="duration"></a>持續時間
 
 要求持續時間格式為︰`DD.HH:MM:SS.MMMMMM`。 必須小於 `1000` 天。
 
@@ -43,7 +43,7 @@ ms.locfileid: "87315966"
 
 相依性呼叫的結果碼。 範例為 SQL 錯誤碼與 HTTP 狀態碼。
 
-## <a name="success"></a>Success
+## <a name="success"></a>成功
 
 表示成功或失敗的呼叫。
 
@@ -56,7 +56,7 @@ ms.locfileid: "87315966"
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 設定 [.NET](./asp-net-dependencies.md) 的相依性追蹤。
 - 設定 [Java](./java-agent.md) 的相依性追蹤。

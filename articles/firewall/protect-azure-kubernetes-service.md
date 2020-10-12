@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: victorh
 ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437848"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火牆來保護 Azure Kubernetes Service (AKS) 部署
@@ -74,6 +74,6 @@ Azure 防火牆提供 AKS FQDN 標記以簡化設定。 使用下列步驟來允
    ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入瞭解 Azure Kubernetes Service，請參閱 [Azure Kubernetes Service (AKS) 的 Kubernetes 核心概念 ](../aks/concepts-clusters-workloads.md)。

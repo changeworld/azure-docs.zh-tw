@@ -7,41 +7,41 @@ ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
 ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318142"
 ---
 # <a name="troubleshooting"></a>疑難排解
 
-本文將協助您針對使用可用性監視時可能發生的常見問題進行疑難排解。
+本文將協助您針對使用可用性監視時可能會發生的常見問題進行疑難排解。
 
 ## <a name="ssltls-errors"></a>SSL/TLS 錯誤
 
 |徵兆/錯誤訊息| 可能的原因|
 |--------|------|
 |無法建立 SSL/TLS 安全通道  | SSL 版本。 僅支援 TLS 1.0、1.1 和1.2。 **不支援 SSLv3。**
-|Tlsv1.1 1.2 記錄層：警示（層級：嚴重、描述：不正確的記錄 MAC）| 如需[詳細資訊](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)，請參閱 stackexchange.redis 執行緒。
-|失敗的 URL 是 CDN （內容傳遞網路） | 這可能是因為您的 CDN 設定錯誤 |  
+|Tlsv1.1 1.2 記錄層：警示 (層級：嚴重、描述：記錄 MAC) 不正確| 如需 [詳細資訊](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)，請參閱 >stackexchange.redis 執行緒。
+|失敗的 URL 會是 CDN (內容傳遞網路)  | 這可能是因為 CDN 的設定不正確所造成 |  
 
 ### <a name="possible-workaround"></a>可能的解決方法
 
-* 如果發生問題的 Url 一律會相依于資源，建議您停用 web 測試的**剖析相依要求**。
+* 如果發生問題的 Url 一律是相依的資源，建議您停用 web 測試的 **剖析相依要求** 。
 
 ## <a name="test-fails-only-from-certain-locations"></a>測試只會從特定位置失敗
 
 |徵兆/錯誤訊息| 可能的原因|
 |----|---------|
-|連接嘗試失敗，因為連線的合作物件在一段時間後未正確回應  | 特定位置中的測試代理程式遭到防火牆封鎖。|
-|    |透過（負載平衡器、地理流量管理員、Azure Express Route）進行特定 IP 位址的重新路由。 
-|    |如果使用 Azure ExpressRoute，在[發生非對稱式路由](../../expressroute/expressroute-asymmetric-routing.md)的情況下，可以捨棄封包。|
+|連接嘗試失敗，因為連線的合作物件在一段時間後未正確回應  | 防火牆會封鎖特定位置的測試代理程式。|
+|    |您可以透過 (負載平衡器、地理流量管理員、Azure Express Route，在特定 IP 位址的路由傳送。 )  
+|    |如果使用 Azure ExpressRoute，在 [發生非對稱式路由](../../expressroute/expressroute-asymmetric-routing.md)的情況下，有可能會卸載封包。|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>測試失敗，發生通訊協定違規錯誤
 
 |徵兆/錯誤訊息| 可能的原因| 可能的解決方式 |
 |----|---------|-----|
-|伺服器已認可通訊協定違規。 Section = ResponseHeader Detail = CR 後面必須接著 LF | 偵測到不正確的標頭時，就會發生這種情況 具體而言，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格。 Application Insights 會強制執行此 HTTP 規格，並以格式不正確的標頭回應失敗。| a. 請洽詢網站主機提供者/CDN 提供者，以修正故障的伺服器。 <br> b. 如果失敗的要求是資源（例如樣式檔案、影像、腳本），您可以考慮停用相依要求的剖析。 請記住，如果這麼做，您將無法監視這些檔案的可用性）。
+|伺服器認可了通訊協定違規。 Section = ResponseHeader Detail = CR 之後必須接著 LF | 偵測到格式錯誤的標頭時，就會發生此情況。 具體來說，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格。 Application Insights 強制執行此 HTTP 規格，但標頭格式錯誤的回應失敗。| a. 請聯絡網站主機提供者/CDN 提供者，以修正故障的伺服器。 <br> b. 如果失敗的要求是資源 (例如樣式檔案、影像、腳本) ，您可以考慮停用相依要求的剖析。 請記住，如果您這樣做，將會失去監視這些檔案) 的能力。
 
 > [!NOTE]
 > 在 HTTP 標頭驗證寬鬆的瀏覽器上，此 URL 可能不會失敗。 如需問題的詳細說明，請參閱此部落格文章：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
@@ -50,9 +50,9 @@ ms.locfileid: "87318142"
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>網站看似正常，但我看到測試失敗？ 為什麼 Application Insights 發出警示？
 
-   * 您的測試是否已啟用「**剖析相依要求**」？ 這會導致對諸如腳本、影像等資源進行嚴格的檢查。這些類型的失敗在瀏覽器上可能不會很明顯。 請檢查所有映像、指令碼、樣式表和頁面載入的任何其他檔案。 如果其中有任何一個失敗，即使主要的 HTML 頁面載入時沒有問題，測試也會回報為失敗。 若要將測試 desensitize 到這類資源失敗，只要取消核取 [從測試設定剖析相依要求] 即可。
+   * 您的測試是否已啟用 **剖析相依要求** ？ 這會導致對像是腳本、影像等資源的嚴格檢查。在瀏覽器中，這些類型的失敗可能不明顯。 請檢查所有映像、指令碼、樣式表和頁面載入的任何其他檔案。 如果其中任何一個失敗，則測試會回報為失敗，即使主要的 HTML 網頁載入卻沒有問題。 若要將測試 desensitize 到這類資源失敗，只要取消核取 [從測試設定剖析相依要求] 即可。
 
-   * 若要減少暫時性網路短暫中斷等的雜訊機率，請確定已核取 [啟用測試失敗的重試] 設定。 您也可以從更多位置進行測試並據以管理警示規則閾值，以免發生會造成過度警示的位置特定問題。
+   * 若要減少暫時性網路標誌等雜訊的機率，請確認已核取 [啟用測試失敗的重試] 設定。 您也可以從更多位置進行測試並據以管理警示規則閾值，以免發生會造成過度警示的位置特定問題。
 
    * 從可用性體驗中按一下任何一個紅點，或從 [搜尋總管] 中按一下任何可用性失敗，查看為什麼回報失敗的詳細資料。 測試結果以及相關聯的伺服器端遙測資料 (如已啟用) 應該有助於您了解測試失敗的原因。 暫時性問題的常見原因是網路或連線問題。
 
@@ -70,11 +70,11 @@ ms.locfileid: "87318142"
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>我收到403禁止的錯誤，這代表什麼意思？
 
-此錯誤表示您需要加入防火牆例外狀況，以允許可用性代理程式測試您的目標 url。 如需允許之代理程式 IP 位址的完整清單，請參閱[IP 例外](./ip-addresses.md#availability-tests)狀況一文。
+此錯誤表示您需要新增防火牆例外，以允許可用性代理程式測試您的目標 url。 如需允許的代理程式 IP 位址完整清單，請參閱 [IP 例外狀況文章](./ip-addresses.md#availability-tests)。
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>包含通訊協定違規錯誤的間歇性測試失敗？
 
-此錯誤 (「通訊協定違規..CR 後面必須接著 LF」) 表示伺服器 (或相依性) 有問題。 這會發生於回應中設定的標頭格式不正確時。 可能是由負載平衡器或 CDN 所造成。 具體而言，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格，因此在 .NET WebRequest 層級驗證失敗。 檢查回應以找出可能違反的標頭。
+此錯誤 (「通訊協定違規..CR 後面必須接著 LF」) 表示伺服器 (或相依性) 有問題。 這會發生於回應中設定的標頭格式不正確時。 可能是由負載平衡器或 CDN 所造成。 具體來說，某些標頭可能不會使用 CRLF 來指出行尾，這違反了 HTTP 規格，因此無法在 .NET WebRequest 層級進行驗證。 檢查回應以找出可能違反的標頭。
 
 > [!NOTE]
 > 在 HTTP 標頭驗證寬鬆的瀏覽器上，此 URL 可能不會失敗。 如需問題的詳細說明，請參閱此部落格文章：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
@@ -85,7 +85,7 @@ ms.locfileid: "87318142"
 
 ### <a name="can-i-call-code-from-my-web-test"></a>可以從我的 Web 測試呼叫程式碼嗎？
 
-不可以。 測試步驟必須在 .webtest 檔案中。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
+否。 測試步驟必須在 .webtest 檔案中。 而且您不能呼叫其他 Web 測試或使用迴圈。 但是這裡有一些您會覺得有用的外掛程式。
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>「Web 測試」和「可用性測試」之間有任何差異嗎？
@@ -97,7 +97,7 @@ ms.locfileid: "87318142"
    有兩種可能的解決方法：
 
    * 設定防火牆以允許來自[我們 Web 測試代理程式的 IP 位址](./ip-addresses.md)所發出的內送要求。
-   * 撰寫您自己的程式碼以定期測試您的內部伺服器。 執行程式碼作為您防火牆後方測試伺服器上的背景處理序。 您的測試處理序可以使用核心 SDK 套件中的 [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API，將其結果傳送至 Application Insights。 這需要測試伺服器具有 Application Insights 內嵌端點的連出存取，但這比起替代的允許連入要求是較小的安全性風險。 結果會顯示在 [可用性 web 測試] blade 中，但體驗會稍微簡化，可供透過入口網站所建立的測試使用。 自訂可用性測試也會在分析、搜尋和計量中顯示為可用性結果。
+   * 撰寫您自己的程式碼以定期測試您的內部伺服器。 執行程式碼作為您防火牆後方測試伺服器上的背景處理序。 您的測試處理序可以使用核心 SDK 套件中的 [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API，將其結果傳送至 Application Insights。 這需要測試伺服器具有 Application Insights 內嵌端點的連出存取，但這比起替代的允許連入要求是較小的安全性風險。 結果會出現在可用性 web 測試的 blade 中，不過體驗將會稍微簡化，因為可透過入口網站建立的測試。 自訂可用性測試也會以可用性結果形式出現在分析、搜尋和計量中。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>上傳多步驟 Web 測試失敗
 
@@ -123,14 +123,14 @@ ms.locfileid: "87318142"
 
 * 如果是有關 Y 個位置之中有 X 個失敗的警示，[大量/群組]**** 核取方塊選項 (如已啟用) 就會傳送給具有管理員/共同管理員角色的使用者。  基本上，「訂用帳戶」__ 的「所有」__ 管理員都將收到通知。
 
-* 針對可用性計量的警示，如果啟用 [**大量/群組**] 核取方塊選項，則會傳送給訂用帳戶中具有擁有者、參與者或讀取者角色的使用者。 實際上，「所有」__ 有權存取 Application Insights 資源訂用帳戶的使用者都在涵蓋範圍內，而且將會收到通知。 
+* 如需可用性計量的警示，請在 [ **大量/群組** ] 核取方塊選項啟用時，傳送給訂用帳戶中具有擁有者、參與者或讀者角色的使用者。 實際上，「所有」__ 有權存取 Application Insights 資源訂用帳戶的使用者都在涵蓋範圍內，而且將會收到通知。 
 
 > [!NOTE]
 > 如果您目前使用 [大量/群組]**** 核取方塊選項並停用它，您將無法還原變更。
 
 如果您需要根據使用者的角色來通知他們，請使用新警示體驗/近乎即時警示。 使用[動作群組](../platform/action-groups.md)，您可以為具有任一個參與者/擁有者/讀者角色 (不會結合來作為單一選項) 的使用者設定電子郵件通知。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [多步驟 web 測試](availability-multistep.md)
 * [URL ping 測試](monitor-web-app-availability.md)

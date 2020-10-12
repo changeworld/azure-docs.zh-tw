@@ -8,15 +8,15 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067387"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立服務匯流排命名空間
 
-瞭解如何部署 Azure Resource Manager 範本來建立服務匯流排命名空間。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 如需建立範本的詳細資訊，請參閱[Azure Resource Manager 檔](../azure-resource-manager/index.yml)。
+瞭解如何部署 Azure Resource Manager 範本，以建立服務匯流排命名空間。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 如需建立範本的詳細資訊，請參閱 [Azure Resource Manager 檔](../azure-resource-manager/index.yml)。
 
 下列範本也可用於建立服務匯流排命名空間：
 
@@ -37,9 +37,9 @@ ms.locfileid: "88067387"
 
 若要尋找更多範本範例，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
 
-若要藉由部署範本來建立服務匯流排命名空間：
+若要透過部署範本來建立服務匯流排命名空間：
 
-1. 從下列程式碼區塊中選取 [**試試看**]，然後依照指示登入 Azure Cloud shell。
+1. 從下列程式碼區塊中選取 [ **試試看** ]，然後依照指示登入 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"
@@ -53,7 +53,7 @@ ms.locfileid: "88067387"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-    資源組名是已附加**rg**的服務匯流排命名空間名稱。
+    資源組名是具有 **rg** 附加的服務匯流排命名空間名稱。
 
 2. 選取 [複製] 來複製 PowerShell 指令碼。
 3. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]。
@@ -62,7 +62,7 @@ ms.locfileid: "88067387"
 
 ## <a name="verify-the-deployment"></a>驗證部署
 
-若要查看已部署的服務匯流排命名空間，您可以從 [Azure 入口網站] 開啟資源群組，或使用下列 Azure PowerShell 腳本。 如果 Cloud shell 仍為開啟狀態，您就不需要複製/執行下列腳本的第一行和第二行。
+若要查看已部署的服務匯流排命名空間，您可以從 Azure 入口網站開啟資源群組，或使用下列 Azure PowerShell 腳本。 如果 Cloud shell 仍處於開啟狀態，您就不需要複製/執行下列腳本的第一和第二行。
 
 ```azurepowershell-interactive
 $serviceBusNamespaceName = Read-Host -Prompt "Enter the same service bus namespace name used earlier"
@@ -81,7 +81,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="clean-up-resources"></a>清除資源
 
-不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。 如果 Cloud shell 仍為開啟狀態，您就不需要複製/執行下列腳本的第一行和第二行。
+不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。 如果 Cloud shell 仍處於開啟狀態，您就不需要複製/執行下列腳本的第一和第二行。
 
 ```azurepowershell-interactive
 $serviceBusNamespaceName = Read-Host -Prompt "Enter the same service bus namespace name used earlier"

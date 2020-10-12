@@ -1,13 +1,13 @@
 ---
-title: 描述 Azure Service Fabric 應用程式和服務
+title: 描述 Azure Service Fabric apps 和服務
 description: 說明如何使用資訊清單來描述 Service Fabric 應用程式和服務。
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248215"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 應用程式和服務資訊清單
@@ -63,7 +63,7 @@ ms.locfileid: "86248215"
 
 **EntryPoint** 指定的可執行檔通常是長時間執行的服務主機。 **SetupEntryPoint** 是以與 Service Fabric 相同的認證執行的特殊權限進入點 (通常 *LocalSystem* 帳戶)，優先於任何其他進入點。  有個別設定的進入點，就不需要使用較高權限來長時間執行服務主機。 **EntryPoint** 指定的可執行檔是在 **SetupEntryPoint** 成功結束之後執行。 如果程序曾經終止或當機，則產生的程序會受到監視並重新啟動 (以 **SetupEntryPoint**再次開始)。  
 
-使用 **SetupEntryPoint** 的一般案例，是當您在服務啟動之前執行可執行檔，或使用提高的權限來執行作業時。 例如︰
+使用 **SetupEntryPoint** 的一般案例，是當您在服務啟動之前執行可執行檔，或使用提高的權限來執行作業時。 例如：
 
 * 設定及初始化服務可執行檔需要的環境變數。 這不限於透過 Service Fabric 程式設計模型撰寫的執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
@@ -85,11 +85,11 @@ ms.locfileid: "86248215"
 </Settings>
 ```
 
-Service Fabric 服務**端點**是 Service Fabric 資源的範例。 Service Fabric 的資源可以宣告/變更，而不需要變更已編譯的程式碼。 透過應用程式資訊清單中的 **SecurityGroup**，即可控制存取服務資訊清單中指定的 Service Fabric 資源。 在服務資訊清單中定義端點資源時，若沒有明確指定連接埠，Service Fabric 會從保留的應用程式連接埠範圍指派連接埠。 深入了解[指定或覆寫端點資源](service-fabric-service-manifest-resources.md)。
+Service Fabric 服務 **端點** 是 Service Fabric 資源的範例。 您可以宣告/變更 Service Fabric 資源，而不需變更已編譯的程式碼。 透過應用程式資訊清單中的 **SecurityGroup**，即可控制存取服務資訊清單中指定的 Service Fabric 資源。 在服務資訊清單中定義端點資源時，若沒有明確指定連接埠，Service Fabric 會從保留的應用程式連接埠範圍指派連接埠。 深入了解[指定或覆寫端點資源](service-fabric-service-manifest-resources.md)。
 
  
 > [!WARNING]
-> 依照設計，靜態埠不應該與 ClusterManifest 中指定的應用程式埠範圍重迭。 如果您指定靜態通訊埠，請在應用程式埠範圍外指派它，否則會導致埠衝突。 在 release 6.5 CU2 中，我們會在偵測到這類衝突時發出**健全狀況警告**，但讓部署繼續與隨附的6.5 行為同步。 不過，我們可能會防止應用程式部署到下一個主要版本。
+> 根據設計，靜態埠不應與 ClusterManifest 中指定的應用程式埠範圍重迭。 如果您指定靜態埠，請將它指派給應用程式埠範圍之外，否則會導致埠衝突。 在 release 6.5 CU2 中，我們會在偵測到這類衝突時發出 **健康情況警告** ，但讓部署繼續與隨附的6.5 行為同步。 不過，我們可能會防止應用程式部署到下一個主要版本。
 >
 
 <!--
@@ -157,12 +157,12 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates** (未設定於前一個範例中) 會宣告用來[設定 HTTPS 端點](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)或[在應用程式資訊清單中加密密碼](service-fabric-application-secret-management.md)。
 
-**放置條件約束**是定義服務應在何處執行的語句。 這些語句會附加至您為一個或多個節點屬性選取的個別服務。 如需詳細資訊，請參閱[放置條件約束和節點屬性語法](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)
+**放置條件約束** 是定義服務執行位置的語句。 這些語句會附加至您為一或多個節點屬性選取的個別服務。 如需詳細資訊，請參閱 [放置條件約束和節點屬性語法](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)
 
-前述範例中未設定的**原則** () 描述要在應用層級設定的記錄集合、[預設執行](service-fabric-application-runas-security.md)身分、[健康](service-fabric-health-introduction.md#health-policies)情況和[安全性存取](service-fabric-application-runas-security.md)原則，包括服務 () 是否有 Service Fabric 執行時間的存取權。
+未在上述範例中設定的**原則** () 描述要在應用層級設定的記錄集合、[預設的執行方式](service-fabric-application-runas-security.md)、[健全狀況](service-fabric-health-introduction.md#health-policies)和[安全性存取](service-fabric-application-runas-security.md)原則，包括服務 () 是否可存取 Service Fabric 執行時間。
 
 > [!NOTE] 
-> 根據預設，Service Fabric 應用程式可以存取 Service Fabric 執行時間，其格式為接受應用程式特定要求的端點，以及指向包含網狀架構和應用程式特定檔案之主機上檔案路徑的環境變數。 當應用程式裝載不受信任的程式碼時，請考慮停用此存取 (也就是來源未知的程式碼，或應用程式擁有者知道不安全地執行) 。 如需詳細資訊，請參閱[Service Fabric 中的安全性最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 
+> 根據預設，Service Fabric 應用程式可存取 Service Fabric 執行時間（以接受應用程式特定要求的端點形式），以及指向包含網狀架構和應用程式特定檔案之主機上檔案路徑的環境變數。 當應用程式裝載不受信任的程式碼時，請考慮停用此存取 (也就是來源未知的程式碼，或應用程式擁有者知道不安全地執行) 。 如需詳細資訊，請參閱 [Service Fabric 中的安全性最佳作法](service-fabric-best-practices-security.md#platform-isolation)。 
 >
 
 **Principals** (未設定於前一個範例中) 說明[執行服務和保護服務資源](service-fabric-application-runas-security.md)所需的安全性主體 (使用者或群組)。  主體會在 **Policies** 區段中參考。
@@ -180,7 +180,7 @@ For more information about other features supported by application manifests, re
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [封裝應用程式](service-fabric-package-apps.md)並讓它準備好進行部署。
 - [部署與移除應用程式](service-fabric-deploy-remove-applications.md)。
 - [為不同的應用程式執行個體設定參數和環境變數](service-fabric-manage-multiple-environment-app-configuration.md)。
