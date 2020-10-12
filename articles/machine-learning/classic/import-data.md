@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
 ms.openlocfilehash: 085f865b567cf67adfd6f50a37e07ac40b36f871
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356565"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>從各種資料來源將定型資料匯入 Azure Machine Learning Studio (傳統) 
 
-**適用于：** ![適用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) 不 ![ 適用。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 若要在 Machine Learning Studio (傳統) 中使用您自己的資料來開發和定型預測性分析解決方案，您可以使用下列資料： 

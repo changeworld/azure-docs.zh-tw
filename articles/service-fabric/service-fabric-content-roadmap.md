@@ -4,10 +4,10 @@ description: 了解 Azure Service Fabric 的核心概念和主要領域。 提�
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836695"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>您想要了解 Service Fabric 嗎？
@@ -17,20 +17,20 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 [Service Fabric 術語](service-fabric-technical-overview.md)、[應用程式模型](service-fabric-application-model.md)及[支援的程式設計模型](service-fabric-choose-framework.md)提供更多概念和描述，但這裡提供基本概念。
 
 ### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>設計階段：服務類型、服務封裝和資訊清單、應用程式類型、應用程式封裝和資訊清單
-服務類型是指派給服務的程式碼封裝、資料封裝及組態封裝的名稱/版本。 這會在 ServiceManifest.xml 檔案中定義。 服務類型是由可執行程式碼和服務設定（在執行時間載入），以及服務所使用的靜態資料所組成。
+服務類型是指派給服務的程式碼封裝、資料封裝及組態封裝的名稱/版本。 這是在 ServiceManifest.xml 檔案中定義。 服務類型是由可執行檔程式碼和服務設定所組成，這些設定會在執行時間載入，以及服務所取用的靜態資料。
 
 服務封裝是一個磁碟目錄，其中包含服務類型的 ServiceManifest.xml 檔案，此檔案會參考服務類型的程式碼、靜態資料及組態封裝。 例如，服務套件可能會參考構成資料庫服務的程式碼、靜態資料和組態封裝。
 
-應用程式類型是指派給服務類型集合的名稱/版本。 這會在 ApplicationManifest.xml 檔案中定義。
+應用程式類型是指派給服務類型集合的名稱/版本。 這是在 ApplicationManifest.xml 檔案中定義。
 
 ![Service Fabric 應用程式類型和服務類型][cluster-imagestore-apptypes]
 
-應用程式封裝是一個磁碟目錄，其中包含應用程式類型的 ApplicationManifest.xml 檔案，該檔案會參考組成應用程式類型之每個服務類型的服務封裝。 例如，電子郵件應用程式類型的應用程式封裝可能包含指向佇列服務封裝、前端服務封裝、資料庫服務封裝的參考。  
+應用程式封裝是一個磁碟目錄，其中包含應用程式類型的 ApplicationManifest.xml 檔案，此檔案會參考組成應用程式類型之每個服務類型的服務封裝。 例如，電子郵件應用程式類型的應用程式封裝可能包含指向佇列服務封裝、前端服務封裝、資料庫服務封裝的參考。  
 
-應用程式封裝目錄中的檔案會複製到 Service Fabric 叢集的映像存放區。 您可以接著從這個應用程式類型建立一個具名應用程式，然後在叢集內執行該應用程式。 建立名為的應用程式之後，您可以從應用程式類型的其中一個服務類型建立名為的服務。 
+應用程式封裝目錄中的檔案會複製到 Service Fabric 叢集的映像存放區。 您可以接著從這個應用程式類型建立一個具名應用程式，然後在叢集內執行該應用程式。 建立命名的應用程式之後，您可以從應用程式類型的其中一個服務類型建立命名服務。 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>執行階段︰叢集和節點、具名應用程式、具名服務、分割區及複本
-[Service Fabric](service-fabric-deploy-anywhere.md)叢集是一組由網路連接的虛擬或實體機器，您的微服務會在其中部署和管理。 叢集可擴充至數千部機器。
+[Service Fabric 叢集](service-fabric-deploy-anywhere.md)是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 叢集可擴充至數千部機器。
 
 隸屬於叢集的機器或 VM 即稱為節點。 需為每個節點指派節點名稱 (字串)。 節點具有各種特性，如 placement 屬性。 每個電腦或 VM 皆有自動啟動的 Windows 服務 `FabricHost.exe`，該服務會在開機時開始執行，然後啟動兩個執行檔：`Fabric.exe` 和 `FabricGateway.exe`。 這兩個執行檔構成節點。 針對開發或測試案例，您可以藉由執行多個 `Fabric.exe` 和 `FabricGateway.exe` 執行個體，在單一電腦或 VM 上裝載多個節點。
 
@@ -47,16 +47,16 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 ![服務內的分割和複本][cluster-application-instances]
 
 ### <a name="partitioning-scaling-and-availability"></a>資料分割、調整大小和可用性
-資料[分割](service-fabric-concepts-partitioning.md)不是 Service Fabric 唯一的。 資料分割是一種知名的資料分割形式，也稱為分區化。 含有大量狀態的具狀態服務，會跨資料分割切割其資料。 每個資料分割會負責服務完整狀態的一部分。 
+[分割](service-fabric-concepts-partitioning.md) 對 Service Fabric 而言並不是唯一的。 資料分割是一種知名的資料分割形式，也稱為分區化。 含有大量狀態的具狀態服務，會跨資料分割切割其資料。 每個資料分割會負責服務完整狀態的一部分。 
 
 每個資料分割的複本會分散至各個叢集節點，以允許[調整](service-fabric-concepts-scalability.md)具名服務的狀態規模。 資料需求成長時，資料分割也會成長，而 Service Fabric 會重新平衡全體節點之間的資料分割，以期有效率地使用硬體資源。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的資料分割複本。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本，以善加使用每個節點上的硬體。
 
-在分割內，無狀態的具名服務會有執行個體，而具狀態的具名服務則有複本。 通常，無狀態具名服務只會有 1 個分割，因為它們有沒有內部狀態。 資料分割實例提供[可用性](service-fabric-availability-services.md)。 若某個執行個體失敗，其他執行個體會繼續正常運作，接著 Service Fabric 會建立新的執行個體。 具狀態的具名服務會在複本中維持其狀態，且每個資料分割都有自己的複本集。 讀取與寫入作業會在單一複本上執行 (稱為「主要複本」)。 從寫入作業對狀態進行的變更，會複寫至多個其他複本 (稱為「作用中次要複本」)。 複本失敗失敗時，Service Fabric 會從現有複本建立新的複本。
+在分割內，無狀態的具名服務會有執行個體，而具狀態的具名服務則有複本。 通常，無狀態具名服務只會有 1 個分割，因為它們有沒有內部狀態。 資料分割實例提供 [可用性](service-fabric-availability-services.md)。 若某個執行個體失敗，其他執行個體會繼續正常運作，接著 Service Fabric 會建立新的執行個體。 具狀態的具名服務會在複本中維持其狀態，且每個資料分割都有自己的複本集。 讀取與寫入作業會在單一複本上執行 (稱為「主要複本」)。 從寫入作業對狀態進行的變更，會複寫至多個其他複本 (稱為「作用中次要複本」)。 複本失敗失敗時，Service Fabric 會從現有複本建立新的複本。
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric 的無狀態與具狀態微服務
 Service Fabric 可讓您建置由微服務或容器組成的應用程式。 無狀態微服務 (如通訊協定閘道器、Web Proxy) 不會維護要求之外的可變動狀態及來自服務的回應。 Azure 雲端服務背景工作角色即為無狀態服務的範例。 可設定狀態的微服務 (如使用者帳戶、資料庫、裝置、購物車、佇列) 會維護要求及其回應外的可變動授權狀態。 現今的網際網路級別應用程式包含無狀態與可設定狀態微服務的組合。 
 
-與 Service Fabric 的主要差異在於，它會以[內建的程式設計模型](service-fabric-choose-framework.md)或容器化的具狀態服務，建立具狀態服務的強大焦點。 [應用程式案例](service-fabric-application-scenarios.md)說明使用具狀態服務的案例。
+Service Fabric 的主要差異在於，它的重點在於建立具狀態服務，不論是使用 [內建的程式設計模型](service-fabric-choose-framework.md) 或容器具狀態服務。 [應用程式案例](service-fabric-application-scenarios.md)說明使用具狀態服務的案例。
 
 為什麼有具狀態的微服務以及無狀態的微服務？ 兩個主要原因如下：
 
@@ -70,10 +70,10 @@ Service Fabric 提供多種撰寫和管理服務的方式。 服務可以使用 
 根據預設，Service Fabric 會以處理程序形式部署和啟用這些服務。 Service Fabric 也可以在[容器](service-fabric-containers-overview.md)中部署服務。 重要的是，您可以在相同應用程式中混合容器中的服務和處理序中的服務。 Service Fabric 支援在 Windows Server 2016 上部署 Linux 容器和 Windows 容器。 您可以在容器中部署現有的應用程式、無狀態服務或具狀態服務。 
 
 ### <a name="reliable-services"></a>Reliable Services
-[Reliable Services](service-fabric-reliable-services-introduction.md)是一種輕量架構，用於撰寫與 Service Fabric 平臺整合的服務，並受益于整組的平臺功能。 Reliable Services 可以是無狀態的 (類似大多數服務平台，例如「Azure 雲端服務」中的 Web 伺服器或「背景工作角色」)，其中狀態會保存在外部解決方案中，例如 Azure DB 或「Azure 資料表儲存體」。 Reliable Services 也可以是具狀態的，其狀態是使用 Reliable Collections 直接保存在服務本身中。 狀態透過複寫變得[高度可用](service-fabric-availability-services.md)，並透過[資料分割](service-fabric-concepts-partitioning.md)散發，全由 Service Fabric 自動管理。
+[Reliable Services](service-fabric-reliable-services-introduction.md) 是用來撰寫服務的輕量架構，這些服務可與 Service Fabric 平臺整合，並受益于完整的平臺功能組合。 Reliable Services 可以是無狀態的 (類似大多數服務平台，例如「Azure 雲端服務」中的 Web 伺服器或「背景工作角色」)，其中狀態會保存在外部解決方案中，例如 Azure DB 或「Azure 資料表儲存體」。 Reliable Services 也可以是具狀態的，其狀態是使用 Reliable Collections 直接保存在服務本身中。 狀態透過複寫變得[高度可用](service-fabric-availability-services.md)，並透過[資料分割](service-fabric-concepts-partitioning.md)散發，全由 Service Fabric 自動管理。
 
 ### <a name="reliable-actors"></a>Reliable Actors
-以 Reliable Services 為基礎，[可靠](service-fabric-reliable-actors-introduction.md)的動作專案架構是一種應用程式架構，可根據動作專案設計模式來執行虛擬執行者模式。 Reliable Actor 架構使用獨立的計算單位，和以單一執行緒方式執行稱為動作項目的狀態。 Reliable Actor 架構提供動作項目的內建通訊，以及預先設定狀態持續性和相應放大組態。
+在 Reliable Services 之上， [可靠](service-fabric-reliable-actors-introduction.md) 的動作專案架構是一種應用程式架構，可根據動作專案設計模式來執行虛擬動作專案模式。 Reliable Actor 架構使用獨立的計算單位，和以單一執行緒方式執行稱為動作項目的狀態。 Reliable Actor 架構提供動作項目的內建通訊，以及預先設定狀態持續性和相應放大組態。
 
 ### <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric 與 [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 整合，可作為建置 Web 和 API 應用程式的最高等級程式設計模型。  可在 Service Fabric 中以兩種方式使用 ASP.NET Core︰
@@ -90,7 +90,7 @@ Service Fabric 與 [ASP.NET Core](service-fabric-reliable-services-communication
 您可使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java APIs](/java/api/overview/azure/servicefabric) 和 [REST APIs](/rest/api/servicefabric/) 來管理整個應用程式生命週期。 您也可使用 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) 等工具來設定持續整合/持續部署管線。
 
 ## <a name="test-applications-and-services"></a>測試應用程式與服務
-為了建立真正雲端級別的服務，確保應用程式和服務可以禁得起真實世界失敗考驗便至關重要。 錯誤分析服務的設計用意，是測試建置於 Service Fabric 的服務。 使用[錯誤分析服務](service-fabric-testability-overview.md)，您可以引發有意義的錯誤，並對應用程式執行完整的測試案例。 這些錯誤及案例會在受控制、安全且一致的情況下，執行及驗證服務在其生命週期會發生的各種狀態和轉換情形。
+為了建立真正雲端級別的服務，確保應用程式和服務可以禁得起真實世界失敗考驗便至關重要。 錯誤分析服務的設計用意，是測試建置於 Service Fabric 的服務。 使用 [錯誤分析服務](service-fabric-testability-overview.md)時，您可以引發有意義的錯誤，並針對您的應用程式執行完整的測試案例。 這些錯誤及案例會在受控制、安全且一致的情況下，執行及驗證服務在其生命週期會發生的各種狀態和轉換情形。
 
 [動作](service-fabric-testability-actions.md)可鎖定服務並以個別錯誤執行測試。 服務開發人員可以使用這些動作當做建置組塊，來撰寫複雜的案例。 模擬錯誤的範例如下︰
 
@@ -99,13 +99,13 @@ Service Fabric 與 [ASP.NET Core](service-fabric-reliable-services-communication
 * 在具狀態服務上叫用仲裁遺失，以建立無法繼續進行寫入作業的狀況，因為可接受新資料的「備份」或「次要」複本不足。
 * 在具狀態服務上叫用資料遺失，以建立所有記憶體內狀態為完全抹除的狀況。
 
-[案例](service-fabric-testability-scenarios.md)是由一或多個動作組成的複雜作業。 錯誤分析服務提供兩個內建的完整案例︰
+[案例](service-fabric-testability-scenarios.md) 是由一或多個動作組成的複雜作業。 錯誤分析服務提供兩個內建的完整案例︰
 
 * [混亂案例](service-fabric-controlled-chaos.md)會以很長的時間在整個叢集上模擬連續的交錯錯誤 (包括非失誤性和失誤性錯誤)。
 * [容錯移轉測試案例](service-fabric-testability-scenarios.md#failover-test)是以特定服務資料分割為目標的混亂測試案例版本，且其他服務不會受到任何影響。
 
 ## <a name="clusters"></a>叢集
-[Service Fabric](service-fabric-deploy-anywhere.md)叢集是一組由網路連接的虛擬或實體機器，您的微服務會在其中部署和管理。 叢集可擴充至數千部機器。 隸屬於叢集的機器或 VM 稱為叢集模式。 需為每個節點指派節點名稱 (字串)。 節點具有各種特性，如 placement 屬性。 每部電腦或 VM 皆有自動啟動服務 `FabricHost.exe`，此服務會在開機時開始執行，然後啟動兩個可執行檔：Fabric.exe 和 FabricGateway.exe。 這兩個執行檔構成節點。 在測試案例中，您可以藉由執行 `Fabric.exe` 和 `FabricGateway.exe` 的多個執行個體，在單一電腦或 VM 上裝載多個節點。
+[Service Fabric 叢集](service-fabric-deploy-anywhere.md)是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 叢集可擴充至數千部機器。 隸屬於叢集的機器或 VM 稱為叢集模式。 需為每個節點指派節點名稱 (字串)。 節點具有各種特性，如 placement 屬性。 每部電腦或 VM 皆有自動啟動服務 `FabricHost.exe`，此服務會在開機時開始執行，然後啟動兩個可執行檔：Fabric.exe 和 FabricGateway.exe。 這兩個執行檔構成節點。 在測試案例中，您可以藉由執行 `Fabric.exe` 和 `FabricGateway.exe` 的多個執行個體，在單一電腦或 VM 上裝載多個節點。
 
 您可在執行 Windows Server 或 Linux 的虛擬機器或實體機器上，建立 Service Fabric 叢集。 只要有一組互連式 Windows Server 或 Linux 電腦，不論是在內部部署、Microsoft Azure 或透過任何雲端提供者，您皆可在任何環境中部署和執行 Service Fabric 應用程式。
 
@@ -143,7 +143,7 @@ Service Fabric 提供安裝套件，可讓您在內部部署環境或任何雲�
 
 Service Fabric 叢集是由您所擁有，但由 Microsoft 部分管理的資源。 Microsoft 負責修補基礎 OS，以及在叢集上執行網狀架構升級。 您可以設定您的叢集 (當 Microsoft 發行新版本時) 接收自動網狀架構升級，或選擇選取您需要的受支援網狀架構版本。 您可透過 Azure 入口網站或 Resource Manager，設定網狀架構和組態升級。 如需詳細資訊，請參閱[升級 Service Fabric 叢集](service-fabric-cluster-upgrade.md)。 
 
-獨立叢集是由您完全擁有的資源。 由您負責修補基礎 OS 和起始網狀架構升級。 如果您的叢集可以連接到 [https://www.microsoft.com/download](https://www.microsoft.com/download) ，您可以將叢集設定為自動下載並布建新的 Service Fabric 執行時間套件。 接著您即會起始升級。 如果您的叢集無法存取 [https://www.microsoft.com/download](https://www.microsoft.com/download) ，您可以從連線到網際網路的電腦手動下載新的執行時間套件，然後起始升級。 如需詳細資訊，請參閱[升級獨立 Service Fabric 叢集](service-fabric-cluster-upgrade-windows-server.md)。
+獨立叢集是由您完全擁有的資源。 由您負責修補基礎 OS 和起始網狀架構升級。 如果您的叢集可以連接到 [https://www.microsoft.com/download](https://www.microsoft.com/download) ，您可以將叢集設定為自動下載並布建新的 Service Fabric 執行時間套件。 接著您即會起始升級。 如果您的叢集無法存取 [https://www.microsoft.com/download](https://www.microsoft.com/download) ，您可以從連線到網際網路的電腦手動下載新的執行時間套件，然後啟動升級。 如需詳細資訊，請參閱[升級獨立 Service Fabric 叢集](service-fabric-cluster-upgrade-windows-server.md)。
 
 ## <a name="health-monitoring"></a>健康狀況監視
 Service Fabric 引入了[健康狀態模型](service-fabric-health-introduction.md)，主要用於在特定實體 (例如叢集節點和服務複本) 上標示狀況不良的叢集和應用程式條件。 健康狀態模型使用健康狀態報告程式 (系統元件及看門狗)。 目標為輕易迅速的診斷並修復問題。 服務撰寫者必須預先考量健康狀態以及如何[設計健康狀態報告](service-fabric-report-health.md#design-health-reporting)等相關層面。 任何可能會影響到健康狀態的條件都需加以回報，尤其是如果它有助標示出接近根目錄的問題。 一旦在生產階段大規模啟動並執行服務，健康狀態資訊將可有效減少偵錯和調查工作所需的時間和心力。
@@ -156,10 +156,10 @@ Service Fabric 報告程式可監控感興趣的已識別條件。 它們會依�
 * 在 Service Fabric 節點上執行，但未以 Service Fabric 服務實作的內部看門狗監視程式。
 * 從 Service Fabric 叢集外探查資源的外部看門狗監視程式 (例如，監視 Gomez 等服務)。
 
-Service Fabric 元件會針對叢集中的所有實體，提供現成的報告。 [系統健康狀態報表](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)可讓您看到叢集和應用程式功能，並透過健康情況來標示問題。 系統健康狀態報告會針對應用程式和服務來確認實體是否已實作，並從 Service Fabric 執行階段的角度來確認其是行為是否正確。 這些報告不會提供任何服務商務邏輯的健康情況監視，也不會偵測已停止回應的處理常式。 若要將特定的健康狀態資訊新增至服務的邏輯，請在服務中[實作自訂健康狀態報告](service-fabric-report-health.md)。
+Service Fabric 元件會針對叢集中的所有實體，提供現成的報告。 [系統健康狀態報表](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) 可讓您查看叢集和應用程式功能，並透過健康情況來旗標問題。 系統健康狀態報告會針對應用程式和服務來確認實體是否已實作，並從 Service Fabric 執行階段的角度來確認其是行為是否正確。 這些報表不會提供任何服務商務邏輯的健康情況監視，也不會偵測已停止回應的處理常式。 若要將特定的健康狀態資訊新增至服務的邏輯，請在服務中[實作自訂健康狀態報告](service-fabric-report-health.md)。
 
 Service Fabric 提供多種[健康狀態報告檢視](service-fabric-view-entities-aggregated-health.md)方式，且會將此報告彙總於健康狀態資料存放區：
-* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)或其他視覺效果工具。
+* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他視覺效果工具。
 * 健康情況查詢 (透過 [PowerShell](/powershell/module/ServiceFabric/)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) 和 [Java FabricClient API](/java/api/system.fabric)，或是 [REST API](/rest/api/servicefabric))。
 * 一般查詢會傳回一份實體清單，這些實體的其中一個屬性即為健康情況 (透過 Powershell、CLI、API 或 REST)。
 

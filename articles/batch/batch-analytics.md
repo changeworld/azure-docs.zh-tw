@@ -4,10 +4,10 @@ description: 批次分析中的主題包含批次服務資源所適用事件和�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 0d55ecd7f10e267a9cb469dffcdf26c131c8ce41
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91849506"
 ---
 # <a name="batch-analytics"></a>批次分析

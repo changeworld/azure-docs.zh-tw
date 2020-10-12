@@ -17,10 +17,10 @@ ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871511"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>使用 SAP ASCS/SCS 的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構
@@ -174,7 +174,7 @@ ms.locfileid: "88871511"
 > Azure 鄰近放置群組是使用 Azure 共用磁片的先決條件。
  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始安裝之前，請檢閱這篇文章：
 
@@ -261,7 +261,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 - KeepAliveTime
 - KeepAliveInterval
 
-| 路徑| 變數名稱 | 變數類型  | 值 | 文件 |
+| Path| 變數名稱 | 變數類型  | 值 | 文件 |
 | --- | --- | --- |---| ---|
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (十進位) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (十進位) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
@@ -555,6 +555,6 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
    _「容錯移轉叢集管理員」顯示 DataKeeper 複寫的磁碟_
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Windows 容錯移轉叢集和共用磁碟為 SAP ASCS/SCS 執行個體安裝 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]

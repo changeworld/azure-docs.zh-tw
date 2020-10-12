@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297601"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>在 Azure Data Factory 中取得中繼資料活動
@@ -44,7 +44,7 @@ ms.locfileid: "91297601"
 
 **檔案儲存體**
 
-| 連接器/中繼資料 | itemName<br>(檔案/資料夾) | itemType<br>(檔案/資料夾) | 大小<br>(檔案) | created<br>(檔案/資料夾) | lastModified<br>(檔案/資料夾) |childItems<br>(資料夾) |contentMD5<br>(檔案) | structure<br/>(檔案) | columnCount<br>(檔案) | exists<br>(檔案/資料夾) |
+| 連接器/中繼資料 | itemName<br>(檔案/資料夾) | itemType<br>(檔案/資料夾) | size<br>(檔案) | created<br>(檔案/資料夾) | lastModified<br>(檔案/資料夾) |childItems<br>(資料夾) |contentMD5<br>(檔案) | structure<br/>(檔案) | columnCount<br>(檔案) | exists<br>(檔案/資料夾) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
@@ -63,7 +63,7 @@ ms.locfileid: "91297601"
 - 取得中繼資料活動不支援資料夾/檔案上的萬用字元篩選。
 - `structure``columnCount`從二進位、JSON 或 XML 檔案取得中繼資料時，不支援和。
 
-**關係資料庫**
+**關聯式資料庫**
 
 | 連接器/中繼資料 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
@@ -76,11 +76,11 @@ ms.locfileid: "91297601"
 
 您可以在 [取得中繼資料] 作用欄位清單中指定下列元資料類型，以取得對應的資訊：
 
-| 中繼資料類型 | 說明 |
+| 中繼資料類型 | 描述 |
 |:--- |:--- |
 | itemName | 檔案或資料夾的名稱。 |
 | itemType | 檔案或資料夾的類型。 傳回的值為 `File` 或 `Folder` 。 |
-| 大小 | 檔案的大小（以位元組為單位）。 僅適用于檔案。 |
+| size | 檔案的大小（以位元組為單位）。 僅適用于檔案。 |
 | created | 檔案或資料夾的建立日期時間。 |
 | lastModified | 檔案或資料夾的上次修改日期時間。 |
 | childItems | 指定資料夾中的子資料夾和檔案的清單。 僅適用于資料夾。 傳回的值是每個子專案的名稱和類型清單。 |
@@ -166,7 +166,7 @@ ms.locfileid: "91297601"
 
 目前，取得中繼資料活動可能會傳回下列類型的中繼資料資訊：
 
-屬性 | 說明 | 必要
+屬性 | 描述 | 必要
 -------- | ----------- | --------
 欄位清單 | 需要的中繼資料資訊類型。 如需支援之中繼資料的詳細資訊，請參閱本文的 [中繼資料選項](#metadata-options) 一節。 | 是 
 資料集 | 取得中繼資料活動要取出其中繼資料的參考資料集。 如需支援之連接器的資訊，請參閱 [功能](#capabilities) 一節。 請參閱特定的連接器主題以取得資料集語法詳細資料。 | 是

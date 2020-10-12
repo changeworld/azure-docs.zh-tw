@@ -10,15 +10,15 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
 ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532625"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>整合 Azure 儲存體以取得通知和備份
 
-您可以整合自訂視覺專案與 Azure blob 儲存體佇列，以取得專案定型/匯出活動的推播通知，以及已發行之模型的備份副本。 這項功能非常適合用來避免在長時間作業執行時，持續輪詢服務的結果。 相反地，您可以將儲存體佇列通知整合到您的工作流程中。
+您可以將自訂視覺專案與 Azure Blob 儲存體佇列整合，以取得專案訓練/匯出活動的推播通知，以及已發行模型的備份副本。 這項功能有助於避免長時間執行作業時，系統持續輪詢服務來取得結果。 相反地，您可以將儲存體佇列通知整合到您的工作流程中。
 
 本指南說明如何透過捲曲使用這些 REST Api。 您也可以使用 HTTP 要求服務（例如 Postman）發出要求。
 

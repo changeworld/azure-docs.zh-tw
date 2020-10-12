@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357776"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>使用 Azure SQL Database 彈性集區之應用程式的嚴重損壞修復策略
@@ -186,7 +186,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 ## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解 Azure SQL Database 自動備份的相關資訊，請參閱 [Azure SQL Database 自動備份](automated-backups-overview.md)。
-* 如需商務持續性的總覽和案例，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+* 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 * 若要瞭解如何使用自動備份進行復原，請參閱 [從服務起始的備份還原資料庫](recovery-using-backups.md)。
 * 若要了解更快速的復原選項，請參閱[主動式異地複寫](active-geo-replication-overview.md)和[自動容錯移轉群組](auto-failover-group-overview.md)。
 * 若要瞭解如何使用自動備份進行封存，請參閱 [資料庫複製](database-copy.md)。

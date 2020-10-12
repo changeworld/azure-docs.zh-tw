@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache Maven 建立適用于 Azure HDInsight 的 JAVA HBase 用戶端
+title: 使用 Apache Maven 來建立適用于 Azure HDInsight 的 JAVA HBase 用戶端
 description: 了解如何使用 Apache Maven 建置以 Java 為基礎的 Apache HBase 應用程式，然後將它部署至 Azure HDInsight 上的 HBase。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323769"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>建置 Apache HBase 的 Java 應用程式
@@ -21,25 +21,25 @@ ms.locfileid: "87323769"
 
 此文件中的步驟使用 [Apache Maven](https://maven.apache.org/) \(英文\) 來建立及建置專案。 Maven是軟體專案管理和理解工具，可讓您建置 Java 專案的軟體、文件及報告。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache HBase 叢集。 請參閱[開始使用 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)。
+* HDInsight 上的 Apache HBase 叢集。 請參閱 [開始使用 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)。
 
-* [JAVA 開發工具組（JDK）第8版](https://aka.ms/azure-jdks)。
+* [JAVA Developer 套件 (JDK) 第8版](https://aka.ms/azure-jdks)。
 
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 如果使用 PowerShell，您將需要[AZ 模組](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，您將需要 [AZ 模組](https://docs.microsoft.com/powershell/azure/)。
 
 * 文字編輯器。 本文使用 Microsoft 記事本。
 
 ## <a name="test-environment"></a>測試環境
 
-本文所使用的環境是執行 Windows 10 的電腦。  命令會在命令提示字元中執行，並使用 [記事本] 來編輯各種檔案。 針對您的環境進行相應的修改。
+本文所使用的環境是執行 Windows 10 的電腦。  命令會在命令提示字元中執行，並使用「記事本」編輯各種不同的檔案。 據以針對您的環境進行修改。
 
-從命令提示字元中，輸入下列命令以建立可運作的環境：
+從命令提示字元中，輸入下列命令來建立工作環境：
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -48,7 +48,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
-1. 輸入下列命令，以建立名為**hbaseapp**的 Maven 專案：
+1. 輸入下列命令，以建立名為 **>hbaseapp**的 Maven 專案：
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -59,11 +59,11 @@ cd C:\HDI
 
     此命令會在目前的位置建立名為 `hbaseapp` 的目錄，其內含基本 Maven 專案。 第二個命令會將工作目錄變更為 `hbaseapp` 。 第三個命令會建立新的目錄， `conf` 稍後將會用到。 `hbaseapp` 目錄包含下列項目：
 
-    * `pom.xml`：專案物件模型（[POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)）包含用來建立專案的資訊和設定詳細資料。
+    * `pom.xml`：專案物件模型 ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) 包含用來建立專案的資訊和設定詳細資料。
     * `src\main\java\com\microsoft\examples`︰包含應用程式的程式碼。
     * `src\test\java\com\microsoft\examples`︰包含應用程式的測試。
 
-2. 移除產生的範例程式碼。 刪除產生的測試和應用程式檔 `AppTest.java` ，然後 `App.java` 輸入下列命令：
+2. 移除產生的範例程式碼。 刪除產生的測試和應用程式檔 `AppTest.java` ，並 `App.java` 輸入下列命令：
 
     ```cmd
     DEL src\main\java\com\microsoft\examples\App.java
@@ -169,7 +169,7 @@ maven-shade-plugin 也會產生 uber jar，其中含有應用程式需要的所�
 
 ### <a name="download-the-hbase-sitexml"></a>下載 hbase-site.xml
 
-使用下列命令將 HBase 組態，從 HBase 叢集複製到 `conf` 目錄。 `CLUSTERNAME`將取代為您的 HDInsight 叢集名稱，然後輸入命令：
+使用下列命令將 HBase 組態，從 HBase 叢集複製到 `conf` 目錄。 `CLUSTERNAME`以您的 HDInsight 叢集名稱取代，然後輸入下列命令：
 
 ```cmd
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -185,7 +185,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 notepad src\main\java\com\microsoft\examples\CreateTable.java
 ```
 
-然後將下列 java 程式碼複製並貼到新檔案中。 然後關閉檔案。
+然後將下列 java 程式碼複製並貼到新的檔案中。 然後關閉檔案。
 
 ```java
 package com.microsoft.examples;
@@ -257,9 +257,9 @@ public class CreateTable {
 }
 ```
 
-此程式碼是 `CreateTable` 類別，它會建立名為的資料表 `people` ，並填入一些預先定義的使用者。
+此程式碼是 `CreateTable` 類別，它會建立名為的資料表，並在其中 `people` 填入一些預先定義的使用者。
 
-### <a name="implement-a-searchbyemail-class"></a>執行 Searchbyemail.java 類別
+### <a name="implement-a-searchbyemail-class"></a>執行 >searchbyemail.java 類別
 
 輸入下列命令以建立並開啟新的檔案 `SearchByEmail.java` 。 在提示中選取 **[是]** ，以建立新的檔案。
 
@@ -267,7 +267,7 @@ public class CreateTable {
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
 ```
 
-然後將下列 java 程式碼複製並貼到新檔案中。 然後關閉檔案。
+然後將下列 java 程式碼複製並貼到新的檔案中。 然後關閉檔案。
 
 ```java
 package com.microsoft.examples;
@@ -342,9 +342,9 @@ public class SearchByEmail {
 }
 ```
 
-`SearchByEmail`類別可用來依電子郵件地址查詢資料列。 因為此類別使用規則運算式篩選器，您可以在使用此類別時提供字串或規則運算式。
+`SearchByEmail`類別可以用來依據電子郵件地址查詢資料列。 因為此類別使用規則運算式篩選器，您可以在使用此類別時提供字串或規則運算式。
 
-### <a name="implement-a-deletetable-class"></a>執行 Deletetable.java 類別
+### <a name="implement-a-deletetable-class"></a>執行 >deletetable.java 類別
 
 輸入下列命令以建立並開啟新的檔案 `DeleteTable.java` 。 在提示中選取 **[是]** ，以建立新的檔案。
 
@@ -352,7 +352,7 @@ public class SearchByEmail {
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
 ```
 
-然後將下列 java 程式碼複製並貼到新檔案中。 然後關閉檔案。
+然後將下列 java 程式碼複製並貼到新的檔案中。 然後關閉檔案。
 
 ```java
 package com.microsoft.examples;
@@ -376,7 +376,7 @@ public class DeleteTable {
 }
 ```
 
-類別會藉 `DeleteTable` 由停用和卸載類別所建立的資料表，清除在此範例中建立的 HBase 資料表 `CreateTable` 。
+類別會藉 `DeleteTable` 由停用和卸載類別所建立的資料表，清除此範例中建立的 HBase 資料表 `CreateTable` 。
 
 ## <a name="build-and-package-the-application"></a>建置和封裝應用程式
 
@@ -397,13 +397,13 @@ public class DeleteTable {
 
 下列步驟使用 `scp`，將 JAR 複製到 HDInsight 叢集上 Apache HBase 的主要前端節點。 接著，會使用 `ssh` 命令連接到該叢集並直接在前端節點上執行範例。
 
-1. 將 jar 上傳至叢集。 `CLUSTERNAME`將取代為您的 HDInsight 叢集名稱，然後輸入下列命令：
+1. 將 jar 上傳到叢集。 `CLUSTERNAME`以您的 HDInsight 叢集名稱取代，然後輸入下列命令：
 
     ```cmd
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-2. 連接到 HBase 叢集。 `CLUSTERNAME`將取代為您的 HDInsight 叢集名稱，然後輸入下列命令：
+2. 連接到 HBase 叢集。 `CLUSTERNAME`以您的 HDInsight 叢集名稱取代，然後輸入下列命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -442,9 +442,9 @@ public class DeleteTable {
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>上傳 JAR 並執行作業 (PowerShell)
 
-下列步驟會使用 Azure PowerShell [AZ 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)，將 JAR 上傳至 Apache HBase 叢集的預設儲存體。 接著，會使用 HDInsight Cmdlet 從遠端執行範例。
+下列步驟會使用 Azure PowerShell [AZ 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) ，將 JAR 上傳至 Apache HBase 叢集的預設儲存體。 接著，會使用 HDInsight Cmdlet 從遠端執行範例。
 
-1. 安裝並設定 AZ 模組之後，請建立名為的檔案 `hbase-runner.psm1` 。 使用下列文字做為此檔案的內容：
+1. 安裝和設定 AZ 模組之後，請建立名為的檔案 `hbase-runner.psm1` 。 使用下列文字做為此檔案的內容：
 
    ```powershell
     <#
@@ -650,7 +650,7 @@ public class DeleteTable {
 
 2. 將檔案儲存 `hbase-runner.psm1` 在 `hbaseapp` 目錄中。
 
-3. 向 Azure PowerShell 註冊模組。 開啟新的 Azure PowerShell 視窗，並以您的叢集名稱取代，以編輯下面的命令 `CLUSTERNAME` 。 然後輸入下列命令：
+3. 向 Azure PowerShell 註冊模組。 開啟新的 Azure PowerShell 視窗，並以您的叢集名稱取代以編輯下列命令 `CLUSTERNAME` 。 然後輸入下列命令：
 
     ```powershell
     cd C:\HDI\hbaseapp
@@ -707,6 +707,6 @@ public class DeleteTable {
 
 請使用 `-showErr` 參數，以檢視執行工作時所產生的標準錯誤 (STDERR)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [瞭解如何搭配使用 SQLLine 與 Apache HBase](apache-hbase-query-with-phoenix.md)

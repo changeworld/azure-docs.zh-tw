@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
 ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89667507"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署指令碼 (預覽)
@@ -344,7 +344,7 @@ reference('<ResourceName>').output.text
 - [AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript)：移除部署腳本及其相關聯的資源。
 - [AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog)：將部署腳本執行的記錄儲存至磁片。
 
-AzDeploymentScript 輸出類似于：
+Get-AzDeploymentScript 輸出類似于：
 
 ```output
 Name                : runPowerShellInlineWithOutput

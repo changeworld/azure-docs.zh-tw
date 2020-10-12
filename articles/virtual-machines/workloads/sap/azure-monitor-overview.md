@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 8d97c713dfec574a8ef7f3f0dde4701ddea0e98b
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669004"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>適用于 SAP 解決方案的 Azure 監視器 (預覽) 
@@ -110,9 +110,9 @@ Azure 監視器 SAP 解決方案會收集系統中繼資料，為我們的 Azure
 ## <a name="pricing"></a>定價
 適用于 SAP 解決方案的 Azure 監視器是免費的產品 (不提供授權費用) 。 客戶須負責支付受控資源群組中基礎元件的成本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解提供者，並建立您的第一個 SAP 解決方案資源 Azure 監視器。
  - 深入瞭解 [提供者](./azure-monitor-providers.md)
- - [使用 Azure PowerShell 部署適用于 SAP 解決方案的 Azure 監視器](azure-monitor-sap-quickstart-powershell.md)
+ - [使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions](azure-monitor-sap-quickstart-powershell.md)
  - 您有關于 SAP 解決方案 Azure 監視器的問題嗎？ 查看 [常見問題](./azure-monitor-faq.md) 區段

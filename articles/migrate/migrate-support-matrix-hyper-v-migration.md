@@ -4,10 +4,10 @@ description: 深入瞭解使用 Azure Migrate 進行 Hyper-v 遷移的支援。
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442304"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 遷移的支援矩陣
@@ -86,7 +86,7 @@ time.nist.gov | 驗證系統時間與通用時間之間的時間同步處理。
 
 所有複寫到 Azure 的內部部署 Vm 都必須符合下表中摘要說明的 Azure VM 需求。
 
-**元件** | **需求** | **詳細資料**
+**元件** | **Requirements** | **詳細資料**
 --- | --- | ---
 作業系統磁碟大小 | 最多 2,048 GB。 | 若不支援，則檢查會失敗。
 作業系統磁碟計數 | 1 | 若不支援，則檢查會失敗。

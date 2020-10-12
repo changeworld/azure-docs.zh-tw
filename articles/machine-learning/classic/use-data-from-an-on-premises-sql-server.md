@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357483"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>使用 SQL Server 資料庫 Azure Machine Learning Studio (傳統) 執行分析
 
-**適用于：** ![適用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) 不 ![ 適用。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 使用內部部署資料的企業通常會想要針對他們的機器學習服務工作負載來利用雲端的範圍和靈活度。 但是他們又不想因為將內部部署資料移至雲端而中斷目前的商務程序和工作流程。 Azure Machine Learning Studio (傳統) 現在支援從 SQL Server 資料庫讀取資料，然後使用此資料對模型進行定型和評分。 您不再需要手動複製和同步處理雲端與內部部署伺服器之間的資料。 相反地，Azure Machine Learning Studio 中的「匯 **入資料** 」模組 (傳統) 現在可以直接從您的 SQL Server 資料庫讀取，以進行定型和評分工作。

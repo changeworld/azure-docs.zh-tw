@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
 ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669187"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>標準 Load Balancer 和可用性區域
@@ -153,7 +153,7 @@ Load Balancer 可簡化以單一 IP 作為區域備援前端的作業。 區域�
 
 查看 [Azure 雲端設計模式](https://docs.microsoft.com/azure/architecture/patterns/) ，以改善應用程式對失敗案例的復原能力。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [可用性區域](../availability-zones/az-overview.md)
 - 深入瞭解 [Standard Load Balancer](load-balancer-standard-overview.md)
 - 了解如何[使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](load-balancer-standard-public-zonal-cli.md)

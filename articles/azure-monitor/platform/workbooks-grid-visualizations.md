@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 114245030ba2356861b83a580f103d3b84c0eae3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663936"
 ---
 # <a name="grid-visualizations"></a>方格視覺效果
@@ -276,7 +276,7 @@ requests
 
 [![螢幕擷取畫面：已使用不同寬度單位的方格中的資料行](./media/workbooks-grid-visualizations/custom-column-width-fr3.png)](./media/workbooks-grid-visualizations/custom-column-width-fr3.png#lightbox)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [在活頁簿中建立樹狀結構](workbooks-tree-visualizations.md)。
 * 瞭解如何建立活頁 [簿文字參數](workbooks-text.md)。

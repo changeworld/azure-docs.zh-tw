@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
 ms.openlocfilehash: d1d4abbcc0768915d7d2e693cfc76a699ed21a91
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669630"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>瞭解 Azure IoT Edge 如何使用憑證
@@ -105,7 +105,7 @@ IoT Edge 中樞伺服器憑證是提供給分葉裝置和模組的實際憑證�
 | 工作負載 CA 憑證     | IoT Edge 工作負載 CA                                                                                       |
 | IoT Edge 中樞伺服器憑證 | iotedgegw.local (與 config.yaml 的「hostname」相符)                                            |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [了解 Azure IoT Edge 模組](iot-edge-modules.md)
 

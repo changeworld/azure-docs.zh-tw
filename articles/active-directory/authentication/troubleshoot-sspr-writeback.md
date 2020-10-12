@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50e202d26574c0fc8adfeb7f73eb150ebb1781af
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663858"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>針對 Azure Active Directory 中的自助式密碼重設回寫進行疑難排解
@@ -104,29 +104,29 @@ Azure AD Connect 需要 AD DS **重設密碼** ] 許可權才能執行密碼回�
 1. 登入 Azure AD Connect 伺服器，並啟動 **Synchronization Service Manager**，方法是選取 [開始] > [同步處理服務]。
 1. 在 [連接器] 索引標籤下，選取內部部署 [Active Directory Domain Services] 連接器，然後選取 [屬性]。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="示範如何編輯屬性的 Synchronization Server Manager" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="使用 GUI 重新啟動 Azure AD 同步服務" border="false":::
   
 1. 在快顯視窗中，選取 [連線到 Active Directory 樹系] 索引標籤，然後記下 [使用者名稱] 屬性。 這個屬性是 Azure AD Connect 用來執行目錄同步作業的 AD DS 帳戶。
 
     若要讓 Azure AD Connect 能夠執行密碼回寫，AD DS 帳戶必須有「重設密碼」權限。 您可以在下列步驟中檢查此使用者帳戶的許可權。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="尋找同步處理服務 Active Directory 使用者帳戶" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="使用 GUI 重新啟動 Azure AD 同步服務" border="false":::
   
 1. 登入內部部署網域控制站，然後啟動 **Active Directory 使用者和電腦**應用程式。
 1. 選取 [檢視]，並確定 [進階功能] 選項已啟用。  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Active Directory 使用者和電腦會顯示進階功能" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="使用 GUI 重新啟動 Azure AD 同步服務" border="false":::
   
 1. 尋找您要驗證的 AD DS 使用者帳戶。 以滑鼠右鍵按一下帳戶名稱，然後選取 [屬性]。  
 1. 在快顯視窗中，移至 [安全性] 索引標籤，然後選取 [進階]。  
 1. 在 [系統管理員的進階安全性設定] 快顯視窗中，移至 [有效存取權] 索引標籤。
 1. 選擇 [ **選取使用者**]，選取 Azure AD Connect 使用的 AD DS 帳戶，然後選取 [ **View 有效率存取**]。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="顯示同步處理帳戶的 [有效存取權] 索引標籤" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="使用 GUI 重新啟動 Azure AD 同步服務" border="false":::
   
 1. 向下捲動並尋找 [重設密碼]。 如果該項目有核取記號，AD DS 帳戶就有權限可重設選定 Active Directory 使用者帳戶的密碼。  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="驗證同步帳戶具備重設密碼權限" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="使用 GUI 重新啟動 Azure AD 同步服務" border="false":::
 
 ## <a name="common-password-writeback-errors"></a>一般密碼回寫錯誤
 
@@ -217,7 +217,7 @@ Azure AD Connect 需要 AD DS **重設密碼** ] 許可權才能執行密碼回�
 * **支援碼**：使用者看到錯誤時所產生的支援碼？
    * 若要找到支援碼，請重現錯誤，然後按一下畫面底部的 [支援碼] 連結，將所產生的 GUID 傳送給支援工程師。
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="支援碼位於網頁瀏覽器視窗右下方。":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="使用 GUI 重新啟動 Azure AD 同步服務":::
 
   * 如果您所在的頁面底部沒有支援碼，請選取 F12，搜尋 SID 和 CID，然後將這兩個結果傳送給支援工程師。
 * **日期、時間和時區**：請包含發生錯誤的精確日期和時間 (含時區)。
@@ -229,6 +229,6 @@ Azure AD Connect 需要 AD DS **重設密碼** ] 許可權才能執行密碼回�
 * **授權**：使用者是否獲得指派 Azure AD 授權？
 * **應用程式事件記錄**：如果您使用密碼回寫，而且錯誤位於您的內部部署基礎結構中，請包含來自 Azure AD Connect 伺服器的應用程式事件記錄壓縮複本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解 SSPR，請參閱 [運作方式： Azure AD 自助式密碼重設](concept-sspr-howitworks.md) ，或 [自助式密碼重設回寫在 Azure AD 中的運作](concept-sspr-writeback.md)方式。

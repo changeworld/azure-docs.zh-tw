@@ -1,6 +1,6 @@
 ---
 title: 使用 HDFS CLI 搭配 Azure Data Lake Storage Gen2
-description: 針對 Azure Data Lake Storage Gen2 使用 Hadoop 分散式檔案系統 (HDFS) CLI。 建立容器、取得檔案或目錄的清單，以及其他資訊。
+description: 使用 Hadoop 分散式檔案系統 (HDFS) CLI 來進行 Azure Data Lake Storage Gen2。 建立容器、取得檔案或目錄的清單等等。
 services: storage
 author: normesta
 ms.service: storage
@@ -10,22 +10,22 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836304"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>使用 HDFS CLI 搭配 Data Lake Storage Gen2
 
-您可以使用命令列介面來存取和管理儲存體帳戶中的資料，就像使用[Hadoop 分散式檔案系統 (HDFS) ](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 本文提供一些可協助您開始使用的範例。
+您可以使用命令列介面來存取和管理儲存體帳戶中的資料，就如同使用 [Hadoop 分散式檔案系統 (HDFS) ](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 本文提供一些可協助您開始使用的範例。
 
-HDInsight 提供本機連接至計算節點之分散式容器的存取權。 您可以使用直接與 HDFS 和 Hadoop 支援的其他檔案系統互動的 shell 來存取此容器。
+HDInsight 可讓您存取本機連接到計算節點的分散式容器。 您可以使用 shell 來存取此容器，此介面會直接與 HDFS 和 Hadoop 所支援的其他檔案系統互動。
 
-如需 HDFS CLI 的詳細資訊，請參閱[官方檔](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和[hdfs 許可權指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+如需 HDFS CLI 的詳細資訊，請參閱 [官方檔](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) 和 [hdfs 許可權指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->如果您使用 Azure Databricks 而非 HDInsight，而且想要使用命令列介面與資料互動，您可以使用 Databricks CLI 與 Databricks 檔案系統互動。 請參閱[DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
+>如果您使用 Azure Databricks 而非 HDInsight，而且想要使用命令列介面來與您的資料互動，您可以使用 Databricks CLI 與 Databricks 檔案系統互動。 請參閱 [DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上搭配使用 HDFS CLI 和 HDInsight Hadoop 叢集
 
@@ -64,7 +64,7 @@ hdfs dfs -mkdir /samplefolder
 
 `hdfs dfs -mkdir [-p] <path>`
 
-將預留位置取代為 `<path>` 根容器名稱或容器中的資料夾。
+將預留位置取代為 `<path>` 容器中的根容器名稱或資料夾。
 
 例如： `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
@@ -120,4 +120,4 @@ hdfs dfs -mkdir /samplefolder
 
 * [在 Azure Databricks 中使用具有 Azure Data Lake Storage Gen2 功能的帳戶](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [瞭解檔案和目錄的存取控制清單](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [深入瞭解檔案和目錄的存取控制清單](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
