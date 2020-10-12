@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480842"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>協調 Azure DevTest Labs 的實作
@@ -51,5 +51,5 @@ ms.locfileid: "85480842"
 4. 根據最初的理解，確認 IP 位址空間的原始預測仍然合理且準確
 5. 確定已完成適當的合規性與安全性檢閱
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱本系列的下一篇文章：[治理 Azure DevTest Labs 基礎結構](devtest-lab-guidance-governance-resources.md)

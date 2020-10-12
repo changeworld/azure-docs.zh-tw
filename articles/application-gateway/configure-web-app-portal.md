@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
 ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323361"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
@@ -26,7 +26,7 @@ ms.locfileid: "91323361"
 - 編輯後端集區，並在其中新增 App Service
 - 已啟用 [挑選主機名稱] 切換的 [編輯 HTTP 設定]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 應用程式閘道：建立不具後端集區目標的應用程式閘道。 如需詳細資訊，請參閱 [快速入門：使用 Azure 應用程式閘道引導網路流量-Azure 入口網站](quick-create-portal.md)
 
@@ -46,7 +46,7 @@ ms.locfileid: "91323361"
    
    > [!NOTE]
    > 下拉式清單只會填入與您應用程式閘道位於相同訂用帳戶中的應用程式服務。 如果您想要使用與應用程式閘道不同的訂用帳戶中的 app service，請**選擇 [** **IP 位址] 或 [主機名稱**] 選項，並輸入主機名稱 (範例。 **App Services** app service 的 azurewebsites.net) 。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="edit-http-settings-for-app-service"></a>編輯 App Service 的 HTTP 設定
 
@@ -54,9 +54,9 @@ ms.locfileid: "91323361"
 
 2. 在 [ **以新的主機名稱覆寫**] 下，選取 **[是]**。
 3. 在 [ **主機名稱覆寫**] 下，選取 [ **從後端目標挑選主機名稱**]。
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="從後端 HTTP 設定挑選主機名稱":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App service 後端":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>重新導向至 app service 的相對路徑時的其他設定
 

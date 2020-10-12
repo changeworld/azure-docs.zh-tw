@@ -1,6 +1,6 @@
 ---
 title: 如何使用 C++ 的物件 (Blob) 儲存體 - Azure | Microsoft Docs
-description: 瞭解如何使用 c + + 將非結構化資料儲存在雲端中，並使用 Azure Blob (物件) 儲存體來儲存 (blob) 。
+description: 瞭解如何使用 c + + 將非結構化)  (資料儲存在雲端中，並搭配 Azure Blob (物件) 儲存體。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/16/2020
@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033626"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何使用 C++ 的 Blob 儲存體
@@ -31,14 +31,14 @@ ms.locfileid: "88033626"
 
 若要安裝 Azure Storage Client Library for C++，您可以使用下列方法：
 
-- **Linux：** 請遵循[Azure 儲存體 Client Library For c + + 讀我檔案：在 Linux 上消費者入門](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)頁面中提供的指示。
-- **Windows：** 在 Windows 上，請使用[vcpkg](https://github.com/microsoft/vcpkg)做為相依性管理員。 遵循[快速入門](https://github.com/microsoft/vcpkg#quick-start)來初始化 vcpkg。 然後，使用下列命令安裝二進位檔：
+- **Linux：** 依照 [Azure Storage Client Library for C++ 讀我檔案：在 Linux 上開始使用](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)頁面中提供的指示操作。
+- **Windows：** 在 Windows 上，請使用 [vcpkg](https://github.com/microsoft/vcpkg) 作為相依性管理員。 遵循 [快速入門](https://github.com/microsoft/vcpkg#quick-start) 以初始化 vcpkg。 然後，使用下列命令安裝二進位檔：
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-您可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)檔中找到如何建立原始程式碼並匯出至 NuGet 的指南。
+您可以在 [自述](https://github.com/Azure/azure-storage-cpp#download--install) 檔中找到如何建立原始程式碼並匯出至 NuGet 的指南。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>設定您的應用程式以存取 Blob 儲存體
 在您要使用 Azure 儲存體 API 來存取 Blob 的 C++ 檔案頂端，加入下列 include 陳述式：
@@ -51,26 +51,26 @@ ms.locfileid: "88033626"
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>設定 Azure 儲存體連接字串
-Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串，並使用您的儲存體帳戶名稱，以及[Azure 入口網站](https://portal.azure.com)中針對*AccountName*和*AccountKey*值列出之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱[關於 Azure 儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
+Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串：使用您的儲存體帳戶名稱，以及 AccountKey [Azure 入口網站](https://portal.azure.com)中針對*AccountName*和*AccountKey*值所列之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱 [關於 Azure 儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-若要在本機 Windows 電腦中測試您的應用程式，您可以使用[Azurite 儲存體模擬器](../common/storage-use-azurite.md)。 Azurite 是一種公用程式，可在您的本機開發電腦上模擬 Azure 中可用的 Blob 和佇列服務。 下列範例示範如何宣告靜態欄位以便將連接字串存放到本機儲存體模擬器中：
+若要在本機 Windows 電腦中測試您的應用程式，您可以使用 [Azurite 儲存體模擬器](../common/storage-use-azurite.md)。 Azurite 是一種公用程式，可在您的本機開發電腦上模擬 Azure 提供的 Blob 和佇列服務。 下列範例示範如何宣告靜態欄位以便將連接字串存放到本機儲存體模擬器中：
 
 ```cpp
 // Define the connection-string with Azurite.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));
 ```
 
-若要開始 Azurite，請參閱[使用 Azurite 模擬器進行本機 Azure 儲存體開發](../common/storage-use-azurite.md)。
+若要開始 Azurite，請參閱 [使用 Azurite 模擬器進行本機 Azure 儲存體開發](../common/storage-use-azurite.md)。
 
 下列範例假設您已經使用這兩個方法之一來取得儲存體連接字串。
 
-## <a name="retrieve-your-storage-account"></a>取得您的儲存體帳戶
-您可以使用**cloud_storage_account**類別來代表您的儲存體帳戶資訊。 若要從儲存體連接字串擷取儲存體帳戶資訊，您可以使用 **parse** 方法。
+## <a name="retrieve-your-storage-account"></a>取出您的儲存體帳戶
+您可以使用 **cloud_storage_account** 類別來代表您的儲存體帳戶資訊。 若要從儲存體連接字串擷取儲存體帳戶資訊，您可以使用 **parse** 方法。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -157,7 +157,7 @@ blob3.upload_text(U("other text"));
 或者，您可以使用 **upload_from_file** 方法，將檔案上傳至區塊 Blob。
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>作法：列出容器中的 Blob
-若要列出容器中的 Blob，請先取得容器參照。 然後，您可以使用容器的**list_blobs**方法來抓取 blob 和（或）其中的目錄。 若要存取傳回的 **list_blob_item** 中豐富的屬性和方法，您必須呼叫 **list_blob_item.as_blob** 方法來取得 **cloud_blob** 物件，或呼叫 **list_blob.as_directory** 方法來取得 cloud_blob_directory 物件。 下列程式碼示範如何擷取和輸出 **my-sample-container** 容器中每個項目的 URI：
+若要列出容器中的 Blob，請先取得容器參照。 然後，您可以使用容器的 **list_blobs** 方法來取得 blob 和/或其中的目錄。 若要存取傳回的 **list_blob_item** 中豐富的屬性和方法，您必須呼叫 **list_blob_item.as_blob** 方法來取得 **cloud_blob** 物件，或呼叫 **list_blob.as_directory** 方法來取得 cloud_blob_directory 物件。 下列程式碼示範如何擷取和輸出 **my-sample-container** 容器中每個項目的 URI：
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -187,7 +187,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 如需列出作業的詳細資訊，請參閱 [以 C++ 列出 Azure 儲存體資源](../storage-c-plus-plus-enumeration.md)。
 
 ## <a name="how-to-download-blobs"></a>作法：下載 Blob
-若要下載 blob，請先取出 blob 參考，然後再呼叫**download_to_stream**方法。 下列範例會使用**download_to_stream**方法，將 blob 內容傳送給資料流程物件，然後您可以將它保存到本機檔案。
+若要下載 blob，請先取得 blob 參考，然後呼叫 **download_to_stream** 方法。 下列範例會使用 **download_to_stream** 方法將 blob 內容傳送至資料流程物件，您接著可以將這些內容保存到本機檔案。
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -258,9 +258,9 @@ blockBlob.delete_blob();
 了解 Blob 儲存體的基礎概念之後，請依照下列連結深入了解 Azure 儲存體。
 
 - [如何使用 C++ 的佇列儲存體](../storage-c-plus-plus-how-to-use-queues.md)
-- [如何使用 c + + 的表格儲存體](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+- [如何使用 c + + 的資料表儲存體](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 - [列出 c + + 中的 Azure 儲存體資源](../storage-c-plus-plus-enumeration.md)
-- [Storage Client Library for c + + 參考](https://azure.github.io/azure-storage-cpp)
+- [適用于 c + + 的儲存體用戶端程式庫參考](https://azure.github.io/azure-storage-cpp)
 - [Azure 儲存體檔](https://azure.microsoft.com/documentation/services/storage/)
 - [使用 AzCopy 命令列公用程式傳輸資料](../storage-use-azcopy.md)
 

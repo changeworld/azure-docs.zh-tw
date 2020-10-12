@@ -16,10 +16,10 @@ ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650695"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
@@ -135,7 +135,7 @@ ms.locfileid: "89650695"
             - Oracle Linux 7.5。 如果您使用的是 RHCKL 核心，則需要發行 3.10.0-862.13.1. el7。 如果您是使用 Oracle UEK 核心，則需要版本5。
         - 根據 SAP 支援附注 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 針對 [SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如 [本文中所](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)述。
         - 請確定 ILB 部署已設定為使用伺服器直接回傳。 當 Azure Ilb 用於 DBMS 層的高可用性設定時，此設定將會降低延遲。
-        - 如果您搭配使用 Azure Load Balancer 與 Linux 客體作業系統，請檢查 Linux 網路參數 **net.tcp. tcp_timestamps** 是否設定為 **0**。 這項建議與舊版 [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建議相衝突。 SAP note 現在已更新，以指出此參數必須設定為 **0** ，才能與 Azure 負載平衡器搭配運作。
+        - 如果您搭配使用 Azure Load Balancer 與 Linux 客體作業系統，請確認 Linux 網路參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 這項建議與舊版 [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建議相衝突。 SAP note 現在已更新，以指出此參數必須設定為 **0** ，才能與 Azure 負載平衡器搭配運作。
         - 請考慮使用 [Azure 鄰近放置群組](../../linux/co-location.md) 來取得最佳的網路延遲。 如需詳細資訊，請參閱 [Azure 鄰近放置群組，以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
    4. 高可用性和嚴重損壞修復部署。
         - 如果您部署 SAP 應用層，但未定義特定的 Azure 可用性區域，請確定執行 SAP 對話實例的所有 Vm 或單一 SAP 系統的中介軟體實例都部署在 [可用性設定組](../../windows/manage-availability.md)中。
@@ -161,7 +161,7 @@ ms.locfileid: "89650695"
             -   [SAP 支援附注 #2753418-計時器回復可能會導致效能降低](https://launchpad.support.sap.com/#/notes/2753418)
             -   [SAP 支援附注 #2791572-因為 Azure 中的 Hyper-v 缺少 VDSO 支援，所以效能降低](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP 支援附注 #2382421-將 HANA 和 OS 層級上的網路設定優化](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [SAP 支援附注 #2694118-Red Hat Enterprise Linux Azure 上的 HA 附加元件](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP 支援附注 #2694118-Red Hat Enterprise Linux Azure 上的 HA Add-On](https://launchpad.support.sap.com/#/notes/2694118)
             -   [SAP 支援附注 #1984787-SUSE LINUX Enterprise Server 12：安裝注意事項](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP 支援附注 #2002167-Red Hat Enterprise Linux 7.x：安裝和升級](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP 支援附註 #2292690 - SAP HANA DB：適用於 RHEL 7 的建議作業系統設定](https://launchpad.support.sap.com/#/notes/0002292690)
@@ -298,7 +298,7 @@ ms.locfileid: "89650695"
 3. 將您可以關閉系統的時間優化。  
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱以下文章：
 
 - [SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南](./planning-guide.md)

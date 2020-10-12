@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907497"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Private Link
@@ -42,7 +42,7 @@ ms.locfileid: "90907497"
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
     | Location | 選取 [西歐]  。|
-    | 子網路 - 名稱 | 輸入 mySubnet**。 |
+    | 子網路 - 名稱 | 輸入 *>mysubnet*。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
 3. 將其他項目保留為預設值，然後選取 [建立]。
@@ -121,7 +121,7 @@ ms.locfileid: "90907497"
     | 計算 + 儲存體| 根據工作負載選取伺服器所需的定價層。 |
     |||
  
-7. 選取 [確定]。 
+7. 選取 [確定]  。 
 8. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 9. 當您看到 [通過驗證] 訊息時，請選取 [ **建立**]。 
 10. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
@@ -166,7 +166,7 @@ ms.locfileid: "90907497"
     | 虛擬網路| 選取 [MyVirtualNetwork]。 |
     | 子網路 | 選取 [mySubnet]。 |
     |**私人 DNS 整合**||
-    |與私人 DNS 區域整合 |選取 [是]  。 |
+    |與私人 DNS 區域整合 |選取 [是]。 |
     |私人 DNS 區域 |選取 * (新增) privatelink.postgres.database.azure.com* |
     |||
 
@@ -176,7 +176,7 @@ ms.locfileid: "90907497"
 1. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 2. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Private Link 建立":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Private Link 總覽":::
 
     > [!NOTE] 
     > 客戶 DNS 設定中的 FQDN 無法解析為已設定的私人 IP。 您將必須為設定的 FQDN 設定 DNS 區域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
@@ -201,7 +201,7 @@ ms.locfileid: "90907497"
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -230,7 +230,7 @@ ms.locfileid: "90907497"
     | ------- | ----- |
     | 伺服器類型| 選取 [ **于 postgresql**]。|
     | 伺服器名稱| 選取 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | 使用者名稱 | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
+    | [使用者名稱] | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
     |密碼 |輸入在於 postgresql 伺服器建立期間提供的密碼。 |
     |SSL|選取 [ **必要**]。|
     ||
@@ -250,7 +250,7 @@ ms.locfileid: "90907497"
 2. 選取 [刪除資源群組]。
 3. 輸入 **資源組名類型的** myResourceGroup，然後選取 [ **刪除**]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在此操作說明中，您已在虛擬網路、適用於 PostgreSQL 的 Azure 資料庫單一伺服器和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與于 postgresql 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
 

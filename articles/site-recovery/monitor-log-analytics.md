@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006936"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>透過 Azure 監視器記錄監視 Site Recovery
@@ -30,7 +30,7 @@ Azure 監視器記錄檔會提供記錄資料平臺，以收集活動和資源�
 > [!NOTE]
 > 若要取得 VMware 和實體機器的流失資料記錄和上傳速率記錄，您需要在進程伺服器上安裝 Microsoft monitoring agent。 此代理程式會將複寫機器的記錄傳送至工作區。 這項功能僅適用于9.30 的行動代理程式版本。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 以下是所需項目：
 
@@ -49,7 +49,7 @@ Azure 監視器記錄檔會提供記錄資料平臺，以收集活動和資源�
 2. 在 [ **診斷設定**] 中指定名稱，然後選取 [ **傳送至 Log Analytics**] 方塊。
 3. 選取 [Azure 監視器記錄] 訂用帳戶和 Log Analytics 工作區。
 4. 選取切換中的 **Azure 診斷** 。
-5. 從記錄清單中，選取前置詞為 **AzureSiteRecovery**的所有記錄。 然後按一下 [確定]  。
+5. 從記錄清單中，選取前置詞為 **AzureSiteRecovery**的所有記錄。 然後按一下 [確定] 。
 
     ![[診斷設定] 畫面的螢幕擷取畫面。](./media/monitoring-log-analytics/select-workspace.png)
 

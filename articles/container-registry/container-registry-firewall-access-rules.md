@@ -1,14 +1,14 @@
 ---
 title: 防火牆存取規則
-description: 設定可以從防火牆後方存取 Azure 容器登錄的規則，方法是允許存取 (「允許清單」) REST API 和資料端點網域名稱或服務特定的 IP 位址範圍。
+description: 設定可以從防火牆後方存取 Azure 容器登錄的規則，方法是允許存取 (「白名單」) REST API 和資料端點網域名稱或服務特定的 IP 位址範圍。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849975"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86246974"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>設定可以從防火牆後方存取 Azure 容器登錄的規則
 
@@ -183,7 +183,7 @@ az acr show-endpoints --name myregistry
 
 * 了解[適用於網路安全性的 Azure 最佳做法](../security/fundamentals/network-best-practices.md)
 
-* 了解 Azure 虛擬網路中的[安全性群組](/azure/virtual-network/security-overview)
+* 了解 Azure 虛擬網路中的[安全性群組](../virtual-network/security-overview.md)
 
 * 了解如何設定容器登錄的[私人連結](container-registry-private-link.md)
 
@@ -199,4 +199,3 @@ az acr show-endpoints --name myregistry
 
 [az-acr-update]: /cli/azure/acr#az-acr-update
 [az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
-

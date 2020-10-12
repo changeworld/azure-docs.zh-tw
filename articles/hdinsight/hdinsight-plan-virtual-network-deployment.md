@@ -1,6 +1,6 @@
 ---
 title: 為 Azure HDInsight 規劃虛擬網路
-description: 瞭解如何規劃 Azure 虛擬網路部署，以將 HDInsight 連線至其他雲端資源或資料中心內的資源。
+description: 瞭解如何規劃 Azure 虛擬網路部署，以將 HDInsight 連線至其他雲端資源或您資料中心內的資源。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82786609"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>為 Azure HDInsight 規劃虛擬網路
 
-本文提供搭配 Azure HDInsight 使用[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)（vnet）的背景資訊。 它也會討論在您可以為 HDInsight 叢集執行虛擬網路之前，必須進行的設計和實施決策。 規劃階段完成後，您可以繼續為 Azure HDInsight 叢集[建立虛擬網路](hdinsight-create-virtual-network.md)。 如需有關正確設定網路安全性群組（Nsg）和使用者定義路由所需之 HDInsight 管理 IP 位址的詳細資訊，請參閱[hdinsight 管理 ip 位址](hdinsight-management-ip-addresses.md)。
+本文提供有關使用 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md) (vnet) 搭配 Azure HDInsight 的背景資訊。 此外，也會討論在您可以為 HDInsight 叢集執行虛擬網路之前，必須先進行的設計和實行決策。 規劃階段完成後，您可以繼續 [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)。 如需正確設定網路安全性群組所需的 HDInsight 管理 IP 位址 (Nsg) 和使用者定義路由的詳細資訊，請參閱 [hdinsight 管理 ip 位址](hdinsight-management-ip-addresses.md)。
 
 使用 Azure 虛擬網路可啟用下列案例：
 
@@ -26,9 +26,9 @@ ms.locfileid: "82786609"
 * 直接存取無法透過網際網路公開使用的 Apache Hadoop 服務。 例如，Apache Kafka API 或 Apache HBase Java API。
 
 > [!IMPORTANT]
-> 在 VNET 中建立 HDInsight 叢集將會建立數個網路資源，例如 Nic 和負載平衡器。 請勿**刪除這些**網路資源，因為您的叢集需要它們才能正確地與 VNET 搭配運作。
+> 在 VNET 中建立 HDInsight 叢集將會建立數個網路資源，例如 Nic 和負載平衡器。 請勿 **刪除這些** 網路資源，因為您的叢集需要這些網路資源才能正確地搭配 VNET 運作。
 >
-> 2019年2月28日之後，在 VNET 中建立的新 HDInsight 叢集的網路資源（例如 Nic、磅等等）將會布建在相同的 HDInsight 叢集資源群組中。 先前，這些資源已布建在 VNET 資源群組中。 目前執行中的叢集和未使用 VNET 建立的叢集並沒有任何變更。
+> 2019年2月28日之後，在 VNET 中建立的新 HDInsight 叢集的網路資源 (例如 Nic、磅等) 將會布建在同一個 HDInsight 叢集資源群組中。 先前已在 VNET 資源群組中布建這些資源。 目前執行中的叢集和在沒有 VNET 的情況下建立的叢集沒有任何變更。
 
 ## <a name="planning"></a>規劃
 
@@ -36,7 +36,7 @@ ms.locfileid: "82786609"
 
 * 您需要將 HDInsight 安裝到現有虛擬網路嗎？ 或者，您要建立新的網路嗎？
 
-    如果您使用現有的虛擬網路，您可能需要先修改網路設定，才能安裝 HDInsight。 如需詳細資訊，請參閱[將 HDInsight 新增至現有虛擬網路](#existingvnet)一節。
+    如果您是使用現有的虛擬網路，您可能需要先修改網路設定，才能安裝 HDInsight。 如需詳細資訊，請參閱[將 HDInsight 新增至現有虛擬網路](#existingvnet)一節。
 
 * 您要將包含 HDInsight 的虛擬網路連線至另一個虛擬網路或內部部署網路嗎？
 
@@ -44,7 +44,7 @@ ms.locfileid: "82786609"
 
 * 您要將輸入或輸出流量限制/重新導向至 HDInsight 嗎？
 
-    HDInsight 必須具有 Azure 資料中心內特定 IP 位址的無限制通訊。 另外還有數個連接埠必須允許通過防火牆才能進行用戶端通訊。 如需詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
+    HDInsight 必須具有 Azure 資料中心內特定 IP 位址的無限制通訊。 另外還有數個連接埠必須允許通過防火牆才能進行用戶端通訊。 如需詳細資訊，請參閱 [控制網路流量](./control-network-traffic.md)。
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>將 HDInsight 新增至現有虛擬網路
 
@@ -65,13 +65,13 @@ ms.locfileid: "82786609"
 
     HDInsight 是一個受控服務，需要 Azure 資料中心內數個 IP 位址的無限制存取權。 若要允許與這些 IP 位址的通訊，請更新任何現有網路安全性群組或使用者定義路由。
 
-    HDInsight 會裝載多個使用各種連接埠的服務。 不要封鎖這些埠的流量。 如需允許通過虛擬設備防火牆的連接埠清單，請參閱「安全性」一節。
+    HDInsight 會裝載多個使用各種連接埠的服務。 請勿封鎖這些埠的流量。 如需允許通過虛擬設備防火牆的連接埠清單，請參閱「安全性」一節。
 
     若要尋找現有安全性設定，請使用下列 Azure PowerShell 或 Azure CLI 命令：
 
     * 網路安全性群組
 
-        將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
+        `RESOURCEGROUP`以包含虛擬網路的資源組名取代，然後輸入命令：
 
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ ms.locfileid: "82786609"
 
     * 使用者定義的路由
 
-        將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
+        `RESOURCEGROUP`以包含虛擬網路的資源組名取代，然後輸入命令：
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -118,14 +118,14 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
 * 網際網路上的任何可用資源。 例如，microsoft.com、windowsupdate.com。
 
-* 相同 Azure 虛擬網路中的任何資源，方法是使用資源的「內部 DNS 名稱」____。 例如，使用預設名稱解析時，以下是指派給 HDInsight 背景工作角色節點的內部 DNS 名稱範例：
+* 相同 Azure 虛擬網路中的任何資源，方法是使用資源的「內部 DNS 名稱」____。 例如，使用預設名稱解析時，下列是指派給 HDInsight 背景工作節點的內部 DNS 名稱範例：
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     這些節點可以使用內部 DNS 名稱彼此直接通訊，以及與 HDInsight 中的其他節點通訊。
 
-預設名稱解析「不」____ 允許 HDInsight 解析加入虛擬網路之網路中的資源名稱。 例如，通常會將內部部署網路加入虛擬網路。 根據預設名稱解析，HDInsight 無法依名稱存取內部部署網路中的資源。 相反地，內部部署網路中的資源無法依名稱存取虛擬網路中的資源。
+預設名稱解析「不」____ 允許 HDInsight 解析加入虛擬網路之網路中的資源名稱。 例如，將您的內部部署網路加入虛擬網路是很常見的情況。 根據預設名稱解析，HDInsight 無法依名稱存取內部部署網路中的資源。 相反的也是，內部部署網路中的資源無法依名稱存取虛擬網路中的資源。
 
 > [!WARNING]  
 > 您必須建立自訂 DNS 伺服器，並設定虛擬網路使用它，再建立 HDInsight 叢集。
@@ -174,7 +174,7 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
 1. 若要探索 HDInsight 叢集節點的內部完整網域名稱 (FQDN)，請使用下列其中一種方法：
 
-    將取代 `RESOURCEGROUP` 為包含虛擬網路的資源組名，然後輸入命令：
+    `RESOURCEGROUP`以包含虛擬網路的資源組名取代，然後輸入命令：
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -203,7 +203,7 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
 ## <a name="load-balancing"></a>負載平衡
 
-當您建立 HDInsight 叢集時，也會建立負載平衡器。 此負載平衡器的類型位於[基本 SKU 層級](../load-balancer/skus.md)，其具有特定的條件約束。 其中一個條件約束是，如果您在不同的區域中有兩個虛擬網路，您就無法連線至基本負載平衡器。 如需詳細資訊，請參閱[虛擬網路常見問題：全域 vnet 對等互連的條件約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+當您建立 HDInsight 叢集時，也會建立負載平衡器。 此負載平衡器的類型是 [基本 SKU 層級](../load-balancer/skus.md)，其具有某些條件約束。 其中一個條件約束是，如果您在不同區域中有兩個虛擬網路，則無法連線至基本負載平衡器。 如需詳細資訊，請參閱 [虛擬網路常見問題：全域 vnet 對等互連的條件約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -212,4 +212,4 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
 * 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 * 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
-* 如需控制流量的詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
+* 如需控制流量的詳細資訊，請參閱 [控制網路流量](./control-network-traffic.md)。

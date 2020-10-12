@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
 ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397843"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API 開發和整合
@@ -82,6 +82,6 @@ ExpressRoute 合作夥伴會針對 expressRouteCrossConnections 資源發出 RES
 
 如需 REST API 檔，請參閱 [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需所有 ExpressRoute REST Api 的詳細資訊，請參閱 [EXPRESSROUTE Rest api](https://docs.microsoft.com/rest/api/expressroute/)。

@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398439"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 安全性基準
@@ -598,7 +598,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針：虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 進行靜態加密。 Azure 磁碟加密利用 Linux 的 DM Crypt 功能，利用來賓 VM 內客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
+**指導**方針：虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 進行靜態加密。 Azure 磁碟加密利用 Linux 的 DM-Crypt 功能，利用來賓 VM 內客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
 * [虛擬機器擴展集的 Azure 磁碟加密](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-overview)
 
@@ -1096,7 +1096,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：使用鎖定為受控磁片啟用刪除保護。 啟用 Key Vault 中的虛刪除和清除保護，以保護金鑰免于遭到意外或惡意刪除。
+**指導**方針：使用鎖定為受控磁片啟用刪除保護。 在 Key Vault 中啟用 Soft-Delete 和清除保護，以防止金鑰遭到意外或惡意刪除。
 
 * [鎖定資源以防止非預期的變更](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)
 

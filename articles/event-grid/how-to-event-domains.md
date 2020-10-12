@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502030"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件網域管理主題並發佈事件
@@ -143,7 +143,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>將事件發佈到事件方格網域
 
-將事件發佈至網域與[發行至自訂主題](./post-to-custom-topic.md)相同。 不過，您會所有事件發佈至網域端點，而不是發佈至自訂主題。 在 JSON 事件資料中，您可指定希望事件移至的主題。 下列事件陣列會將 `"id": "1111"` 的事件傳送到主題 `demotopic1`，同時將 `"id": "2222"` 的事件傳送到主題 `demotopic2`：
+將事件發佈至網域與 [發行至自訂主題](./post-to-custom-topic.md)的方式相同。 不過，您會所有事件發佈至網域端點，而不是發佈至自訂主題。 在 JSON 事件資料中，您可指定希望事件移至的主題。 下列事件陣列會將 `"id": "1111"` 的事件傳送到主題 `demotopic1`，同時將 `"id": "2222"` 的事件傳送到主題 `demotopic2`：
 
 ```json
 [{
@@ -209,6 +209,6 @@ Get-AzureRmEventGridDomainKey `
 
 然後使用您慣用的方法，讓 HTTP POST 將您的事件發佈至事件方格網域。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需深入了解事件網域和其為何實用的整體概念，請參閱[事件網域的概觀](event-domains.md)。

@@ -13,10 +13,10 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707356"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure Data Factory 從 Sybase 移動資料
@@ -27,11 +27,11 @@ ms.locfileid: "84707356"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Sybase 連接器](../connector-sybase.md)。
 
-本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 Sybase 資料庫移動資料。 它是以[資料移動活動](data-factory-data-movement-activities.md)一文為基礎，其中呈現使用複製活動移動資料的一般總覽。
+本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 Sybase 資料庫移動資料。 它是以「 [資料移動活動](data-factory-data-movement-activities.md) 」一文為基礎，提供使用複製活動來移動資料的一般總覽。
 
-您可以將資料從內部部署的 Sybase 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格。 Data Factory 目前只支援將資料從 Sybase 資料存放區移到其他資料存放區，而不支援將資料從其他資料存放區移到 Sybase 資料存放區。 
+您可以將資料從內部部署的 Sybase 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱 [支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 資料表。 Data Factory 目前只支援將資料從 Sybase 資料存放區移到其他資料存放區，而不支援將資料從其他資料存放區移到 Sybase 資料存放區。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 Sybase 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文來了解資料管理閘道和設定閘道的逐步指示。
 
 即使 Sybase 資料庫裝載於 Azure IaaS VM 中，也必須要有閘道。 您可以將閘道安裝在與資料存放區相同或相異的 IaaS VM 上，只要閘道可以連線到資料庫即可。
@@ -47,14 +47,14 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Sybase
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從內部部署的 Cassandra 資料存放區移動資料。 
 
-- 建立管線的最簡單方式是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。 
-- 您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。 
+- 若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。 
+- 您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。 
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**來代表複製作業的輸入和輸出資料。 
-3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 
+2. 建立 **資料集** 以代表複製作業的輸入和輸出資料。 
+3. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。 
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來從內部部署 Sybase 資料存放區複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Sybase 複製到 Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) 一節。 
 
@@ -65,14 +65,14 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Sybase
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設為： **OnPremisesSybase** |Yes |
+| type |類型屬性必須設為： **OnPremisesSybase** |是 |
 | 伺服器 |Sybase 伺服器的名稱。 |是 |
-| [資料庫] |Sybase 資料庫的名稱。 |Yes |
+| [資料庫] |Sybase 資料庫的名稱。 |是 |
 | 結構描述 |在資料庫中的結構描述名稱。 |否 |
-| authenticationType |用來連接到 Sybase 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |Yes |
-| username |如果您使用基本或 Windows 驗證，請指定使用者名稱。 |No |
-| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |No |
-| gatewayName |Data Factory 服務應該用來連接到內部部署 Sybase 資料庫的閘道器名稱。 |Yes |
+| authenticationType |用來連接到 Sybase 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
+| username |如果您使用基本或 Windows 驗證，請指定使用者名稱。 |否 |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
+| gatewayName |Data Factory 服務應該用來連接到內部部署 Sybase 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
@@ -96,7 +96,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Sybase
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON 範例：將資料從 Sybase 複製到 Azure Blob
-下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 這些範例示範如何將資料從 Sybase 資料庫複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。   
+下列範例提供您可以使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來建立管線的範例 JSON 定義。 這些範例示範如何將資料從 Sybase 資料庫複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。   
 
 此範例具有下列 Data Factory 實體：
 
@@ -293,7 +293,7 @@ Sybase 支援 T-SQL 和 T-SQL 類型。 如需從 sql 類型到.NET 類型的對
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>從關聯式來源進行可重複的讀取
-從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱[從關聯式來源重複讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱 [關聯式來源的可重複讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)一文，以了解在 Azure Data Factory 中會影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法。

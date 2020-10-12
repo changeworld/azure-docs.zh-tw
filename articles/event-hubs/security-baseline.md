@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401124"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>適用于事件中樞的 Azure 安全性基準
@@ -970,7 +970,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **指導**方針： Azure 事件中樞使用 Azure SSE)  (的 Azure 儲存體服務加密，提供待用資料加密。 事件中樞依賴 Azure 儲存體儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 如果您使用 Azure Key Vault 儲存客戶管理的金鑰，請確定金鑰的定期自動備份。
 
-使用下列 PowerShell 命令，確保 Key Vault 秘密定期自動備份：備份-AzKeyVaultSecret
+使用下列 PowerShell 命令，確保 Key Vault 秘密的定期自動備份： Backup-AzKeyVaultSecret
 
 如何設定客戶管理的金鑰來加密待用 Azure 事件中樞資料： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 

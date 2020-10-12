@@ -1,7 +1,7 @@
 ---
-title: 雙類別羅吉斯回歸：模組參考
+title: Two-Class 羅吉斯回歸：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 中使用二級羅吉斯回歸模組來建立羅吉斯回歸模型，此模型可用來預測兩個 (，而且只有兩個) 結果。
+description: 瞭解如何使用 Azure Machine Learning 中的 Two-Class 羅吉斯回歸模組來建立羅吉斯回歸模型，此模型可用來預測兩個 (，以及僅兩個) 結果。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907699"
 ---
-# <a name="two-class-logistic-regression-module"></a>雙類別羅吉斯回歸模組
+# <a name="two-class-logistic-regression-module"></a>Two-Class 羅吉斯回歸模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 

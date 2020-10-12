@@ -78,7 +78,7 @@
       items:
         - name: 取得支援
           href: 'https://aka.ms/adsupport'
-        - name: Stack Overflow
+        - name: 堆疊溢位
           href: 'https://aka.ms/adso'
         - name: MSDN
           href: 'https://aka.ms/admsdn'

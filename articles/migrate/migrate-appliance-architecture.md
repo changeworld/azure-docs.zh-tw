@@ -4,10 +4,10 @@ description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的�
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322252"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 設備架構
@@ -85,7 +85,7 @@ ms.locfileid: "91322252"
 
 設備會隨著應用在裝置上執行的 Azure Migrate 代理程式更新而升級。 因為預設會在設備上啟用自動更新，所以會自動發生這種情況。 您可以變更此預設設定，以手動更新代理程式。
 
-您可以將 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance 「自動更新」機碼設為 0 (DWORD) ，以關閉登錄中的自動更新。
+您可以將 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance 「自動更新」機碼設定為 0 (DWORD) ，以關閉登錄中的自動更新。
 
 
 ## <a name="next-steps"></a>後續步驟

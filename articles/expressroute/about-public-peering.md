@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
 ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398081"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>建立和管理 ExpressRoute 公用對等互連
@@ -296,7 +296,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 選取刪除圖示來移除對等互連設定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下一步，將 [虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)。
 

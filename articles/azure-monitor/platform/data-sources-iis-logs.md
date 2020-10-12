@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87008178"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure 監視器中收集 IIS 記錄
@@ -27,7 +27,7 @@ Azure 監視器只支援以 W3C 格式儲存的 IIS 記錄檔，不支援自訂�
 
 
 ## <a name="data-collection"></a>資料收集
-Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式收集 IIS 記錄專案。 記錄會每隔**5 分鐘**讀取一次。 如果基於任何原因，IIS 不會在建立新檔案的變換時間之前更新時間戳記，則會在建立新檔案後收集項目。 新檔案建立的頻率是由 IIS 網站的 [**記錄檔變換排程**] 設定所控制，預設為一天一次。 如果設定為 [**每小時**]，Azure 監視器會每小時收集記錄一次。 如果設定為 [**每日**]，Azure 監視器每24小時會收集記錄一次。
+Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式收集 IIS 記錄專案。 每隔 **5 分鐘**就會讀取一次記錄。 如果基於任何原因，IIS 在建立新檔案時不會更新變換時間的時間戳記，則會在建立新檔案之後收集項目。 新檔案建立的頻率是由 IIS 網站的 **記錄檔變換排程** 設定所控制，預設為一天一次。 如果設定為 [ **每**小時]，Azure 監視器每小時會收集記錄檔。 如果設定為 [ **每日**]，Azure 監視器每隔24小時會收集記錄一次。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 記錄檔記錄屬性
@@ -65,7 +65,7 @@ IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 | W3CIISLog |所有 IIS 記錄檔記錄。 |
 | W3CIISLog &#124; where scStatus==500 |具有傳回狀態 500 的所有 IIS 記錄。 |
 | W3CIISLog &#124; summarize count() by cIP |依據用戶端 IP 位址的 IIS 記錄項目計數。 |
-| W3CIISLog &#124; where csHost = = "www \. contoso.com" &#124; 摘要 count （） By csUriStem |主機 www contoso.com 的 IIS 記錄專案計數（依 URL） \. 。 |
+| W3CIISLog &#124; 其中 csHost = = "www \. contoso.com" &#124; 摘要計數 ( # A2 By csUriStem |主機 www contoso.com 的 IIS 記錄專案計數（依 URL） \. 。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每部 IIS 電腦所接收的位元組總數。 |
 
 ## <a name="next-steps"></a>接下來的步驟

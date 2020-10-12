@@ -1,15 +1,15 @@
 ---
-title: 在 Windows 中對 Azure Service Fabric 應用程式進行 Debug
+title: 在 Windows 中進行 Azure Service Fabric 應用程式的偵錯工具
 description: 了解如何監視和診斷在本機開發電腦上使用 Microsoft Azure Service Fabric 所撰寫的服務。
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247416"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>監視和診斷本機開發設定中的服務
@@ -53,7 +53,7 @@ Service Fabric Visual Studio 專案範本包含範例程式碼。 程式碼示�
 
 將自訂 ETW 追蹤新增至服務程式碼之後，您可以再次建置、部署，以及執行應用程式以查看診斷事件檢視器中的事件。 如果您使用 **F5**來偵錯應用程式，診斷事件檢視器將會自動開啟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 在 Azure 叢集上執行應用程式時，您針對本機診斷在上方應用程式所新增的相同追蹤程式碼，將會使用可以用來檢視這些事件的工具。 請參閱下列文章，其中討論各種適用於工具的選項，並說明如何設定它們。
 
 * [如何利用 Azure 診斷收集記錄](./service-fabric-diagnostics-event-aggregation-wad.md)

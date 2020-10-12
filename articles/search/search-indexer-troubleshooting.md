@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355120"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中常見的索引子問題進行疑難排解
@@ -20,7 +20,7 @@ ms.locfileid: "91355120"
 索引子可能會在將資料編制索引至 Azure 認知搜尋時遇到一些問題。 失敗的主要類別包括：
 
 * [連接至資料來源或其他資源](#connection-errors)
-* [文件處理](#document-processing-errors)
+* [檔處理](#document-processing-errors)
 * [擷取文件到索引](#index-errors)
 
 ## <a name="connection-errors"></a>連接錯誤

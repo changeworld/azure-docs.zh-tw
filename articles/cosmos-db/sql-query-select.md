@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB 中的 SELECT 子句
-description: 瞭解 Azure Cosmos DB 的 SQL SELECT 子句。 使用 SQL 做為 Azure Cosmos DB JSON 查詢語言。
+description: 瞭解 Azure Cosmos DB 的 SQL SELECT 子句。 使用 SQL 做為 Azure Cosmos DB 的 JSON 查詢語言。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005942"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
-每個查詢都包含一個 `SELECT` 子句和選擇性的[From](sql-query-from.md)和[WHERE](sql-query-where.md)子句（根據 ANSI SQL 標準）。 通常 `FROM` 會列舉子句中的來源，而 `WHERE` 子句會在來源上套用篩選，以抓取 JSON 專案的子集。 `SELECT`然後，子句會在選取清單中投射要求的 JSON 值。
+每個查詢都是由 `SELECT` 每個 ANSI SQL 標準的子句以及選擇性的 [From](sql-query-from.md) 和 [WHERE](sql-query-where.md) 子句所組成。 通常 `FROM` 會列舉子句中的來源，而 `WHERE` 子句會在來源上套用篩選，以取得 JSON 專案的子集。 `SELECT`子句接著會在選取清單中投射要求的 JSON 值。
 
 ## <a name="syntax"></a>語法
 
@@ -51,7 +51,7 @@ SELECT <select_specification>
 
 - `DISTINCT`
   
-  指定應該移除投影屬性的重複專案。  
+  指定應該移除重複的投射屬性。  
 
 - `<scalar_expression>`  
 
@@ -77,7 +77,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>範例
 
-下列 SELECT 查詢範例會 `address` 從 `Families` 符合的 `id` 傳回 `AndersenFamily` ：
+下列 SELECT 查詢範例會 `address` 從其符合專案傳回 `Families` `id` `AndersenFamily` ：
 
 ```sql
     SELECT f.address

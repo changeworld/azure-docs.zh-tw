@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 8ca054b3a3d5147b7d98a021ce1e26d02d5581b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050480"
 ---
 ### <a name="record-names"></a>記錄名稱
 
-在 Azure DNS 中，記錄是使用相對名稱來指定。 *完整*功能變數名稱（FQDN）包含區功能變數名稱稱，而*相對*名稱則不會。 例如，區域中的相對記錄名稱會 `www` `contoso.com` 提供完整的記錄名稱 `www.contoso.com` 。
+在 Azure DNS 中，記錄是使用相對名稱來指定。  (FQDN 的 *完整* 功能變數名稱) 包含區功能變數名稱稱，而 *相對* 名稱則否。 例如，區域中的相對記錄名稱會 `www` `contoso.com` 提供完整的記錄名稱 `www.contoso.com` 。
 
-「頂點」** 記錄是 DNS 區域根目錄 (或「頂點」**) 的 DNS 記錄。 例如，在 DNS 區域中 `contoso.com` ，頂點記錄也具有完整名稱 `contoso.com` （這有時稱為「*裸*網域」）。  依照慣例，相對名稱 '\@' 用來代表頂點記錄。
+「頂點」** 記錄是 DNS 區域根目錄 (或「頂點」**) 的 DNS 記錄。 例如，在 DNS 區域中 `contoso.com` ，頂點記錄也有完整名稱 `contoso.com` (這有時稱為 *naked* 網域) 。  依照慣例，相對名稱 '\@' 用來代表頂點記錄。
 
 ### <a name="record-types"></a>記錄類型
 

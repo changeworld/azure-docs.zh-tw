@@ -1,6 +1,6 @@
 ---
 title: 取得供應專案狀態-Azure Marketplace
-description: API 以取得供應專案的目前狀態。
+description: API 來取得供應專案的目前狀態。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272006"
 ---
 # <a name="retrieve-offer-status"></a>擷取供應項目狀態
 
 > [!NOTE]
-> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
+> Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱 [CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md) 中所列的變更，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
 擷取供應項目的目前狀態。
 
@@ -25,14 +25,14 @@ ms.locfileid: "87272006"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-|  **名稱**       |   **說明**                            |  **Data type** |
+|  **名稱**       |   **描述**                            |  **Data type** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | 發行者識別碼，例如 `Contoso`  |     String     |
 |  offerId        | 可唯一識別供應項目的 GUID      |     String     |
 |  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
-## <a name="header"></a>頁首
+## <a name="header"></a>標頭
 
 
 |  名稱           |  值               |
@@ -118,7 +118,7 @@ ms.locfileid: "87272006"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**             |    **說明**                                                                             |
+|  **名稱**             |    **描述**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | 供應項目的狀態。 如需可能值清單，請參閱下面的[供應項目狀態](#offer-status)。 |
 |  messages             | 與供應項目相關聯的訊息陣列                                                    |
@@ -132,12 +132,12 @@ ms.locfileid: "87272006"
 |  processPercentage    | 步驟的完成百分比                                                              |
 |  previewLinks         | *目前未執行*                                                                    |
 |  liveLinks            | *目前未執行*                                                                    |
-|  notificationEmails   | 已針對遷移至合作夥伴中心的供應專案淘汰。 遷移供應專案的通知電子郵件將會傳送至 [帳戶設定] 中的 [賣方連絡人資訊] 底下指定的電子郵件。<br><br>若為非遷移的供應專案，則為以逗號分隔的電子郵件地址清單，以取得作業進度的通知        |
+|  notificationEmails   | 已針對遷移至合作夥伴中心的優惠淘汰。 已遷移優惠的通知電子郵件將會傳送至 [帳戶設定] 中賣方連絡人資訊下指定的電子郵件。<br><br>針對非遷移的供應專案，這是要在作業進度通知的電子郵件地址清單（以逗號分隔）        |
 |  |  |
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code** |   **說明**                                                                                 |
+| **程式碼** |   **描述**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` - 已成功處理要求，並已傳回供應項目的最新狀態。 |
 |  400     | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                 |
@@ -146,7 +146,7 @@ ms.locfileid: "87272006"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    |    **說明**                                       |
+|  **名稱**                    |    **描述**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                          |
 |  NotStarted                  | 供應項目是新的，且未啟動。                            |
@@ -154,12 +154,12 @@ ms.locfileid: "87272006"
 |  執行中                     | 正在處理供應項目提交。                     |
 |  成功                   | 已完成處理供應項目提交。               |
 |  已取消                    | 已取消供應項目提交。                           |
-|  失敗                      | 供應項目提交失敗。                                 |
+|  Failed                      | 供應項目提交失敗。                                 |
 |  |  |
 
 ### <a name="step-status"></a>步驟狀態
 
-|  **名稱**                    |    **說明**                           |
+|  **名稱**                    |    **描述**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步驟尚未啟動。                        |
 |  InProgress                  | 步驟正在執行。                             |

@@ -1,7 +1,7 @@
 ---
-title: 雙類別平均認知：模組參考
+title: Two-Class 平均認知：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 中使用雙類別平均認知模組，以根據平均認知演算法建立機器學習模型。
+description: 瞭解如何在 Azure Machine Learning 中使用 Two-Class 平均認知模組，以根據平均認知演算法建立機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907752"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>雙類別平均認知模組
+# <a name="two-class-averaged-perceptron-module"></a>Two-Class 平均認知模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 
@@ -30,7 +30,7 @@ ms.locfileid: "90907752"
 
 較簡單的認知模型適合以線性方式學習可區分的模式，而類神經網路 (尤其是深度神經網路) 可以模型化更複雜的級別界限。 不過，感知器較快速，因為它們會循序處理案例，適用於連續定型。
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>如何設定雙類別平均認知
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>如何設定 Two-Class 平均認知
 
 1.  將 **雙類別平均認知** 模組新增至您的管線。  
 

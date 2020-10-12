@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: a6e9bea5d600771a7754142a4df4c0af503ccf5d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075479"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>將以 Windows 為基礎的 HDInsight 適用的 .NET 方案移轉至以 Linux 為基礎的 HDInsight
@@ -34,15 +34,15 @@ ms.locfileid: "86075479"
 
 1. 安裝 [.NET Portability Analyzer (英文)](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)。 在安裝期間，選取要使用的 Visual Studio 版本。
 
-2. 從 Visual Studio 2015，選取 [__分析__  >  可__移植性分析器設定__]，並確定已核取 [ __Mono__ ] 區段中的 [ __4.5__ ]。
+2. 在 Visual Studio 2015 中，選取 [__分析__  >  可__移植性分析器] 設定__，並確定已在__Mono__區段中檢查__4.5__ 。
 
     ![分析器設定的 [Mono] 區段中已選取 4.5](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     選取 [確定] 儲存設定。
 
-3. 選取 [__分析__] [  >  __分析元件可攜性__]。 選取包含您的方案的組件，然後選取 [開啟]____ 以開始分析。
+3. 選取 [__分析__  >  __元件可攜性__]。 選取包含您的方案的組件，然後選取 [開啟]____ 以開始分析。
 
-4. 分析完成之後，請選取 [__分析__] [視圖] [  >  __分析報表__]。 在 [可攜性分析結果]____ 中，選取 [開啟報告]____ 以開啟報告。
+4. 分析完成後，請選取 [__分析__  >  __視圖分析報表__]。 在 [可攜性分析結果]____ 中，選取 [開啟報告]____ 以開啟報告。
 
     ![Portability Analyzer 結果對話方塊](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "86075479"
 
 * [在以 Linux 為基礎的 HDInsight 上存取 Apache Hadoop YARN 應用程式記錄](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [在 HDInsight 上搭配 MapReduce 使用 C#](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 

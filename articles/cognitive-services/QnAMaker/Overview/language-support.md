@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
 ms.openlocfilehash: c990b6980dea871679b0b301e293e4fb94748db7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650891"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 資源和知識庫的語言支援
@@ -51,7 +51,7 @@ ms.locfileid: "89650891"
 
 下列清單包含 QnA Maker 資源支援的語言。 
 
-|語言|
+|Language|
 |--|
 |阿拉伯文|
 |亞美尼亞文|
@@ -131,7 +131,7 @@ QnA Maker 相依于 [Azure 認知搜尋語言分析器](https://docs.microsoft.c
 
 這項額外的排名是 QnA Maker 的 ranker 內部工作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [語言選擇](../how-to/language-knowledge-base.md)

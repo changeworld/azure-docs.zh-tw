@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480927"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>治理 Azure DevTest Labs 基礎結構 - 公司原則和合規性
@@ -67,5 +67,5 @@ ms.locfileid: "85480927"
 最後，需要在整個組織中套用相同類型的限制，其也必須負責可能會接受內容貼文之抽取式媒體或外部 URL 的所有可能方法。 請洽詢您的安全性專業人員來檢閱並實作安全性原則。 如需其他建議，請參閱 [Microsoft 網路安全性](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱[應用程式移轉與整合](devtest-lab-guidance-governance-application-migration-integration.md)。

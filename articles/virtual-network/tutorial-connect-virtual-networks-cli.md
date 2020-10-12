@@ -1,5 +1,5 @@
 ---
-title: 使用 VNet 對等互連來連接虛擬網路-Azure CLI
+title: 使用 VNet 對等互連連接虛擬網路-Azure CLI
 description: 在本文中，您將了解如何使用 Azure CLI，透過虛擬網路對等互連來連線虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 855ea936ff91d4c22b0670cd989f91c692c567c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502591"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>使用 Azure CLI 以虛擬網路對等互連連線虛擬網路
@@ -31,7 +31,7 @@ ms.locfileid: "87502591"
 * 將虛擬機器 (VM) 部署到每個虛擬網路
 * 虛擬機器之間的通訊
 
-如尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "87502591"
 
 ## <a name="create-virtual-networks"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -56,7 +56,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-建立名為*myVirtualNetwork2*的虛擬網路，其位址首碼為*10.1.0.0/16*：
+建立名為 *myVirtualNetwork2* 的虛擬網路，其位址首碼為 *10.1.0.0/16*：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -97,7 +97,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在上一個命令執行後傳回的輸出中，您會看到**peeringState**已*起始*。 對等互連會持續處於「已啟動」** 狀態，直到您建立從 myVirtualNetwork2** 到 myVirtualNetwork1** 的對等互連為止。 建立從 myVirtualNetwork2** 到 myVirtualNetwork1** 的對等互連。 
+在執行上一個命令之後所傳回的輸出中，您會看到 **>peeringstate** 已 *初始化*。 對等互連會持續處於「已啟動」** 狀態，直到您建立從 myVirtualNetwork2** 到 myVirtualNetwork1** 的對等互連為止。 建立從 myVirtualNetwork2** 到 myVirtualNetwork1** 的對等互連。 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在上一個命令執行後傳回的輸出中，您會看到**peeringState**已*連接*。 Azure 也會將 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 確認 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。
+在執行上一個命令之後所傳回的輸出中，您會看到 **>peeringstate** 已 *連接*。 Azure 也會將 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 確認 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -118,7 +118,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-一個虛擬網路中的資源無法與其他虛擬網路中的資源通訊，直到兩個虛擬網路中對等互連的**peeringState**都已*連線*為止。 
+一個虛擬網路中的資源無法與另一個虛擬網路中的資源進行通訊，直到兩個虛擬網路中的對等互連 **>peeringstate** *連線*為止。 
 
 ## <a name="create-virtual-machines"></a>建立虛擬機器
 
@@ -196,7 +196,7 @@ ping 10.0.0.4 -c 4
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已了解如何使用虛擬網路對等互連來連線相同 Azure 區域中的兩個網路。 您也可以針對不同[支援區域](virtual-network-manage-peering.md#cross-region)和[不同 Azure 訂用帳戶](create-peering-different-subscriptions.md#cli)中的虛擬網路進行對等互連，以及使用對等互連來建立[中樞和輪輻網路設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)。 若要深入了解虛擬網路對等互連，請參閱[虛擬網路對等互連概觀](virtual-network-peering-overview.md)和[管理虛擬網路對等互連](virtual-network-manage-peering.md)。
 

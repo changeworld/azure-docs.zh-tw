@@ -8,63 +8,63 @@ ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86230820"
 ---
 # <a name="key-vault-versions"></a>Key Vault 版本
 
-以下是 Azure Key Vault 的新這是什麼。 [Azure updates Key Vault 通道](https://azure.microsoft.com/updates/?category=security&query=Key%20vault)也會宣佈新功能和改進。
+以下是 Azure Key Vault 的新功能。 您也可以在 [Azure 更新 Key Vault 通道](https://azure.microsoft.com/updates/?category=security&query=Key%20vault)上宣佈新功能和改善項目。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-Key Vault 的 Azure 監視器現在為預覽狀態。  Azure 監視器藉由提供您的 Key Vault 要求、效能、失敗和延遲的統一觀點，全面監視您的金鑰保存庫。 如需詳細資訊，請參閱[Key Vault (preview) 的 Azure 監視器](../../azure-monitor/insights/key-vault-insights-overview.md)。
+適用於 Key Vault 的 Azure 監視器目前為預覽狀態。  Azure 監視器可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。 如需詳細資訊，請參閱[適用於 Key Vault 的 Azure 監視器 (預覽)](../../azure-monitor/insights/key-vault-insights-overview.md)。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
-Key Vault 「攜帶您自己的金鑰」 (BYOK) 現已正式推出。 請參閱[AZURE KEY VAULT BYOK 規格](../keys/byok-specification.md)，並瞭解如何將[受 HSM 保護的金鑰匯入至 Key Vault (BYOK) ](../keys/hsm-protected-keys-byok.md)。
+Key Vault「攜帶您自己的金鑰」 (BYOK) 現已正式發行。 請參閱 [Azure Key Vault BYOK 規格](../keys/byok-specification.md)，並了解如何[將受 HSM 保護的金鑰匯入至 Key Vault (BYOK)](../keys/hsm-protected-keys-byok.md)。
 
 ## <a name="march-2020"></a>2020 年 3 月
 
-私人端點現已提供預覽。 Azure 私人連結服務可讓您透過虛擬網路中的私人端點，存取 Azure Key Vault 和 Azure 託管的客戶/合作夥伴服務。  瞭解如何將[Key Vault 與 Azure 私人連結整合](private-link-service.md)。
+私人端點現已提供預覽版本。 Azure Private Link 服務可讓您透過虛擬網路中的私人端點存取 Azure Key Vault 和 Azure 裝載的客戶/合作夥伴服務。  了解如何[整合 Key Vault 與 Azure Private Link](private-link-service.md)。
 
 ## <a name="2019"></a>2019
 
-- 發行下一代 Azure Key Vault Sdk。 如需其用法的範例，請參閱適用于[Python](../secrets/quick-create-python.md)、 [.net](../secrets/quick-create-net.md)、 [JAVA](../secrets/quick-create-java.md)和[Node.js](../secrets/quick-create-node.md)的 Azure Key Vault 秘密快速入門
-- 用來管理金鑰保存庫憑證的新 Azure 原則。 請參閱[Key Vault 的 Azure 原則內建定義](../policy-samples.md)。
-- Azure Key Vault 虛擬機器擴充功能現已正式運作。  請參閱[適用于 Linux 的 Key Vault 虛擬機器擴充](../../virtual-machines/extensions/key-vault-linux.md)功能和[適用于 Windows 的 Key Vault 虛擬機器擴充](../../virtual-machines/extensions/key-vault-windows.md)功能。
-- Azure 事件方格現已提供 Azure Key Vault 事件驅動的秘密管理。 如需詳細資訊，請參閱 [Azure Key Vault 中的事件的事件方格架構] (。/../event-grid/event-schema-key-vault.md]，並瞭解如何[使用 Azure 事件方格來接收和回應金鑰保存庫通知](event-grid-tutorial.md)。
+- 下一代 Azure Key Vault SDK 發行版本。 如需用法範例，請參閱適用於 [Python](../secrets/quick-create-python.md)、[.NET](../secrets/quick-create-net.md)、[Java](../secrets/quick-create-java.md) 和 [Node.js](../secrets/quick-create-node.md) 的 Azure Key Vault 祕密快速入門
+- 管理金鑰保存庫憑證的新 Azure 原則。 請參閱[適用於 Key Vault 的 Azure 原則內建定義](../policy-samples.md)。
+- Azure Key Vault 虛擬機器擴充功能現已正式發行。  請參閱[適用於 Linux 的 Key Vault 虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-linux.md)和[適用於 Windows 的 Key Vault 虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-windows.md)。
+- Azure 事件方格現已提供 Azure Key Vault 事件驅動的祕密管理。 如需詳細資訊，請參閱 [Azure Key Vault 中的事件方格結構描述](../../event-grid/event-schema-key-vault.md]，並了解如何[使用 Azure 事件方格接收和回應金鑰保存庫通知](event-grid-tutorial.md)。
 
 ## <a name="2018"></a>2018
 
-今年發行的新功能與整合：
+今年發行的新功能與整合項目：
 
-- 與 Azure Functions 整合。 如需運用金鑰保存庫作業[Azure Functions](../../azure-functions/index.yml)的範例案例，請參閱[自動化密碼輪替](../secrets/tutorial-rotation.md)。 
-- [與 Azure Databricks 整合](/azure/databricks/scenarios/store-secrets-azure-key-vault)。 如此一來，Azure Databricks 現在支援兩種類型的秘密範圍： Azure Key Vault 支援和 Databricks。 如需詳細資訊，請參閱[建立 Azure Key Vault 支援的秘密範圍](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)
+- 與 Azure Functions 整合。 如需利用 [Azure Functions](../../azure-functions/index.yml) 進行金鑰保存庫作業的範例案例，請參閱[祕密自動輪替](../secrets/tutorial-rotation.md)。 
+- [與 Azure Databricks 整合](/azure/databricks/scenarios/store-secrets-azure-key-vault)。 如此一來，Azure Databricks 現在支援兩種類型的祕密範圍：Azure Key Vault 支援和 Databricks 支援。 如需詳細資訊，請參閱[建立 Azure Key Vault 支援的祕密範圍](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)
 - [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)。
 
 ## <a name="2016"></a>2016
 
 今年發行的新功能：
 
-- 受控儲存體帳戶金鑰。 儲存體帳戶金鑰功能新增與 Azure 儲存體的整合更容易。 如需詳細資訊，請參閱概觀主題：[受控儲存體帳戶金鑰概觀](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys)。
-- 虛刪除。 虛刪除功能可改善金鑰保存庫和金鑰保存庫物件的資料保護。 如需詳細資訊，請參閱概觀主題：[虛刪除概觀](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。
+- 受控儲存體帳戶金鑰。 儲存體帳戶金鑰功能已新增可與 Azure 儲存體更輕鬆地整合。 如需詳細資訊，請參閱概觀主題：[受控儲存體帳戶金鑰概觀](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys)。
+- 虛刪除。 虛刪除功能，改善金鑰保存庫和金鑰保存庫物件的資料保護。 如需詳細資訊，請參閱概觀主題：[虛刪除概觀](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。
 
 ## <a name="2015"></a>2015
 
 今年發行的新功能：
-- 憑證管理。 已在2016年9月26日新增為 GA 版本2015-06-01 的功能。
+- 憑證管理。 在 2016 年 9 月 26 日，已作為功能新增至正式發行版本 2015-06-01。
 
-正式運作 (版本 2015-06-01) 已于2015年6月24日宣佈發行。 此版本已進行下列變更： 
-- 刪除金鑰-已移除 [使用] 欄位。
-- 取得金鑰的相關資訊-已移除 [使用] 欄位。
-- 將金鑰匯入保存庫-已移除 [使用] 欄位。
-- 還原金鑰-已移除 [使用] 欄位。     
-- 已將 RSA 演算法的「RSA_OAEP」變更為「RSA-OAEP」。 請參閱[關於金鑰、秘密和憑證](about-keys-secrets-certificates.md)。    
+於 2015 年 6 月 24 日宣佈正式發行 (版本 2015-06-01)。 此版本已進行下列變更： 
+- 刪除金鑰 - 已移除 "use" 欄位。
+- 取得金鑰的相關資訊 - 已移除 "use" 欄位。
+- 將金鑰匯入保存庫 - 已移除 "use" 欄位。
+- 還原金鑰 - 已移除 "use" 欄位。     
+- 針對 RSA 演算法，已將 "RSA_OAEP" 變更為 "RSA-OAEP"。 請參閱[關於金鑰、祕密與憑證](about-keys-secrets-certificates.md)。    
  
-第二個預覽版本 (版本 2015-02-01-preview) 已于2015年4月20日宣佈。 如需詳細資訊，請參閱 [REST API 更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update)部落格文章。 已更新下列工作：
+於 2015 年 4 月 20 日宣佈第二個預覽版本 (版本 2015-02-01-preview)。 如需詳細資訊，請參閱 [REST API 更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update)部落格文章。 已更新下列工作：
  
 - 列出保存庫中的工作 - 已將分頁支援新增至作業。
 - 列出金鑰的版本 - 已新增作業，來列出金鑰的版本。  
@@ -80,7 +80,7 @@ Key Vault 「攜帶您自己的金鑰」 (BYOK) 現已正式推出。 請參閱[
  
 ## <a name="2014"></a>2014
  
-第一個預覽版本 (版本 2014-12-08-preview) 已于2015年1月8日宣佈。  
+於 2015 年 1 月 8 日宣佈第一個預覽版本 (版本 2014-12-08-preview)。  
  
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250476"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>新增快取以改善 Azure API 管理的效能
@@ -39,7 +39,7 @@ ms.locfileid: "86250476"
 > [!NOTE]
 > 內部快取不適用於 Azure API 管理的 [耗用量]**** 層。 您可以[改用外部 Azure Redis 快取](api-management-howto-cache-external.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -89,7 +89,7 @@ ms.locfileid: "86250476"
 3. 選取您已新增快取原則的 API。
 4. 選取 **GetSpeakers** 作業。
 5. 按一下右上方功能表中的 [測試]**** 索引標籤。
-6. 按 [傳送]。
+6. 按 [傳送]  。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 * 如需快取原則的詳細資訊，請參閱 [API 管理原則參考文件][API Management policy reference]中的[快取原則][Caching policies]。

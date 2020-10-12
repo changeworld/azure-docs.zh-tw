@@ -4,10 +4,10 @@ description: 使用 Azure 資源的受控識別來設定 Azure Container Registr
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86057345"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>在 ACR 工作中使用 Azure 受控識別進行跨登錄驗證 
@@ -105,7 +105,7 @@ az role assignment create \
   --role acrpull
 ```
 
-繼續[將目標登錄認證新增至](#add-target-registry-credentials-to-task)工作。
+繼續 [將目標登錄認證新增至](#add-target-registry-credentials-to-task)工作。
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>選項 2：使用系統指派的身分識別來建立工作
 

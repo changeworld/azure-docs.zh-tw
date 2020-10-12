@@ -1,13 +1,13 @@
 ---
 title: 在 Azure DevTest Labs 中設定及使用公用環境 | Microsoft Docs
-description: 本文說明如何在 Azure DevTest Labs 中設定及使用公用環境（Azure Resource Manager Git 存放庫中的範本）。
+description: 本文說明如何在 Azure DevTest Labs 的) Git 存放庫中設定及使用公用環境 (Azure Resource Manager 範本。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482661"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定及使用公用環境
@@ -25,7 +25,7 @@ Azure DevTest Labs 有 [Azure Resource Manager 範本的公用存放庫](https:/
 
 1. 為您的實驗室選取 [設定與原則]****。 
 2. 在 [虛擬機器基底]**** 區段中，選取 [公用環境]****。
-3. 若要為實驗室啟用公用環境，請選取 [是]****。 否則，請選取 [否]。 
+3. 若要為實驗室啟用公用環境，請選取 [是]****。 否則，請選取 [否]  。 
 4. 若您已啟用公用環境，預設也會啟用該存放庫中的所有環境。 您可以取消選取環境，這樣該環境就不會提供給您的實驗室使用者使用。 
 
 ![公用環境頁面](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
@@ -35,5 +35,5 @@ Azure DevTest Labs 有 [Azure Resource Manager 範本的公用存放庫](https:/
 
 ![公用環境範本](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 此存放庫是開放原始碼存放庫，您可以將自己的常用與實用 Resource Manager 範本加到其中以對它做出貢獻。 若要做出貢獻，只要對存放庫提交提取要求即可。  

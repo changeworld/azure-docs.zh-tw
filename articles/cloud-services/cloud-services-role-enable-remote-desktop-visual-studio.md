@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio，啟用角色的遠端桌面（Azure 雲端服務）
+title: '使用 Visual Studio， (Azure 雲端服務啟用角色的遠端桌面) '
 description: 如何設定 Azure 雲端服務應用程式以允許遠端桌面連線
 services: cloud-services
 author: ghogen
@@ -13,10 +13,10 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80294379"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>使用 Visual Studio 啟用 Azure 雲端服務中角色的遠端桌面連線
@@ -47,7 +47,7 @@ Visual Studio 針對雲端服務所提供的發佈精靈包含一個選項，可
    > [!Note]
    > 遠端桌面連線所需的憑證不同於用於其他 Azure 作業的憑證。 遠端存取憑證必須具有私密金鑰。
 
-5. 從清單中選取憑證，或選擇 [ ** &lt; 建立 &gt; **]。 如果您要建立新的憑證，請在出現提示時為新的憑證提供易記名稱，然後選取 [確定]****。 新的憑證會出現在下拉式清單方塊中。
+5. 從清單中選取憑證，或選擇 [ ** &lt; 建立 ... &gt; **]。 如果您要建立新的憑證，請在出現提示時為新的憑證提供易記名稱，然後選取 [確定]****。 新的憑證會出現在下拉式清單方塊中。
 
 6. 提供使用者名稱和密碼。 您無法使用現有的帳戶。 請勿使用 "Administrator" 作為新帳戶的使用者名稱。
 

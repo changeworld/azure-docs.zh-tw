@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80234165"
 ---
 ### <a name="standard-and-neural-voices"></a>標準和類神經語音
 
-使用此表格來判斷標準和類神經語音的可用性（依區域/端點）：
+您可以使用此資料表來依區域/端點判斷標準和類神經語音的可用性：
 
 | 區域 | 端點 | 標準語音 | 類神經語音 |
 |--------|----------|-----------------|---------------|
@@ -40,7 +40,7 @@ ms.locfileid: "80234165"
 
 ### <a name="custom-voices"></a>自訂語音
 
-如果您已建立自訂語音字型，請使用您所建立的端點。 您也可以使用下面所列的端點，將`{deploymentId}`取代為您的語音模型的部署識別碼。
+如果您已建立自訂語音字型，請使用您所建立的端點。 您也可以使用下面所列的端點，將取代為 `{deploymentId}` 語音模型的部署識別碼。
 
 | 區域 | 端點 |
 |--------|----------|

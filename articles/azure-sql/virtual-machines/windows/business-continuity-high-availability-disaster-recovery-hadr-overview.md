@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
 ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293453"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
@@ -55,7 +55,7 @@ Azure 支援下列商務持續性 SQL Server 技術：
 | 技術 | 範例架構 |
 | --- | --- |
 | **可用性群組** |在相同區域的 Azure VM 中執行的可用性複本提供高可用性。 由於 Windows 容錯移轉叢集需要使用 Active Directory 網域，因此您需要設定網域控制站 VM。<br/><br/> 為了提高冗余和可用性，Azure Vm 可以部署在[可用性群組總覽](availability-group-overview.md)中所記載的不同[可用性區域](../../../availability-zones/az-overview.md)中。 如果可用性群組中的 SQL Server Vm 部署在可用性區域中，則請使用 [azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 作為接聽程式，如 [AZURE SQL VM CLI](availability-group-az-cli-configure.md) 和 [azure 快速入門範本](availability-group-quickstart-template-configure.md) 文章中所述。<br/> ![可用性群組](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>如需詳細資訊，請參閱[在 Azure (GUI) 中設定可用性群組](availability-group-azure-marketplace-template-configure.md)。 |
-| **容錯移轉叢集執行個體** |SQL Server Vm 支援容錯移轉叢集實例。 因為 FCI 功能需要共用儲存體，所以有五個解決方案可搭配 Azure Vm 上的 SQL Server 使用： <br/><br/> -使用適用于 Windows Server 2019 的 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 。 共用受控磁片是允許將受控磁片同時連結至多個虛擬機器的 Azure 產品。 叢集中的 Vm 可以根據叢集應用程式透過 SCSI 持續保留 (SCSI PR) 所選擇的保留，來讀取或寫入連接的磁片。 SCSI PR 是業界標準的儲存體解決方案，可供在存放區域網路上執行的應用程式使用， (SAN) 內部部署。 在受控磁片上啟用 SCSI PR，可讓您依原樣將這些應用程式遷移至 Azure。 <br/><br/>-使用[儲存空間直接存取 \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md)提供適用于 Windows Server 2016 和更新版本的軟體式虛擬 SAN。<br/><br/>-使用適用于 Windows Server 2012 和更新版本的 [Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 。 Premium 檔案共用是支援 SSD、持續低延遲，而且完全支援與 FCI 搭配使用。<br/><br/>-使用合作夥伴解決方案所支援的儲存體進行叢集化。 如需使用 SIOS DataKeeper 的特定範例，請參閱 blog 專案 [容錯移轉叢集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>-透過 Azure ExpressRoute 使用遠端 iSCSI 目標的共用區塊儲存體。 例如，NetApp 私用儲存體 (NPS) 會透過 ExpressRoute 使用 Equinix 將 iSCSI 目標公開至 Azure VM。<br/><br/>若為 Microsoft 合作夥伴提供的共用儲存體和資料複寫解決方案，請洽詢廠商，以取得任何與存取容錯移轉資料相關的問題。<br/><br/>||
+| **容錯移轉叢集執行個體** |SQL Server Vm 支援容錯移轉叢集實例。 因為 FCI 功能需要共用儲存體，所以有五個解決方案可搭配 Azure Vm 上的 SQL Server 使用： <br/><br/> -使用適用于 Windows Server 2019 的 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 。 共用受控磁片是允許將受控磁片同時連結至多個虛擬機器的 Azure 產品。 叢集中的 Vm 可以根據叢集應用程式透過 SCSI 持續保留 (SCSI PR) 所選擇的保留，來讀取或寫入連接的磁片。 SCSI PR 是業界標準的儲存體解決方案，可供在存放區域網路上執行的應用程式使用， (SAN) 內部部署。 在受控磁片上啟用 SCSI PR，可讓您依原樣將這些應用程式遷移至 Azure。 <br/><br/>-使用[儲存空間直接存取 \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md)提供適用于 Windows Server 2016 和更新版本的軟體式虛擬 SAN。<br/><br/>-使用適用于 Windows Server 2012 和更新版本的 [Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 。 Premium 檔案共用是支援 SSD、持續低延遲，而且完全支援與 FCI 搭配使用。<br/><br/>-使用合作夥伴解決方案所支援的儲存體進行叢集化。 如需使用 SIOS DataKeeper 的特定範例，請參閱 blog 專案 [容錯移轉叢集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>-透過 Azure ExpressRoute 使用遠端 iSCSI 目標的共用區塊儲存體。 例如，NetApp 私用儲存體 (NPS) 會透過 ExpressRoute 使用 Equinix 將 iSCSI 目標公開至 Azure VM。<br/><br/>對於 Microsoft 合作夥伴所提供的共用儲存體和資料複寫解決方案，如有關於存取容錯移轉資料的任何問題，請與廠商連絡。<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>僅限 Azure：嚴重損壞修復解決方案
 您可以使用可用性群組、資料庫鏡像，或使用儲存體 blob 進行備份和還原，以在 Azure 中為您的 SQL Server 資料庫提供嚴重損壞修復解決方案。

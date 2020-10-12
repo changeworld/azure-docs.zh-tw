@@ -4,10 +4,10 @@ description: 使用 Azure 原則為指定範圍中的所有保存庫設定 Log A
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293079"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模設定保存庫診斷設定

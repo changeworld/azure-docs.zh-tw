@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907113"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>搭配 Kubernetes 和 Helm 使用電腦視覺容器
@@ -25,7 +25,7 @@ ms.locfileid: "90907113"
 
 使用內部部署電腦視覺容器之前的必要條件如下：
 
-| 必要 | 用途 |
+| 必要 | 目的 |
 |----------|---------|
 | Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][free-azure-account]。 |
 | Kubernetes CLI | 需要 [KUBERNETES CLI][kubernetes-cli] 才能管理容器登錄中的共用認證。 Helm 之前也需要 Kubernetes，也就是 Kubernetes 套件管理員。 |
@@ -290,7 +290,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式的詳細資訊，請 [造訪這裡][installing-helm-apps-in-aks]。
 

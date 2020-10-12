@@ -1,6 +1,6 @@
 ---
 title: 取出作業 API-Azure Marketplace
-description: API，用來抓取供應專案上的所有作業，或取得指定之 operationId 的特定操作。
+description: API 來取得供應專案上的所有作業，或針對指定的 operationId 取得特定的作業。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271938"
 ---
 # <a name="retrieve-operations"></a>擷取作業
 
 > [!NOTE]
-> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
+> Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱 [CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md) 中所列的變更，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
 擷取供應項目上的所有作業，或取得指定之 operationId 的特定作業。 用戶端可以使用查詢參數來篩選正在執行的作業。
 
@@ -31,7 +31,7 @@ ms.locfileid: "87271938"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-|  **名稱**          |      **說明**                                                                                           | **Data type** |
+|  **名稱**          |      **描述**                                                                                           | **Data type** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  發行者識別碼，例如 `Contoso`                                                                   |  String       |
 |  offerId           |  供應項目識別碼                                                                                              |  String       |
@@ -39,7 +39,7 @@ ms.locfileid: "87271938"
 |  api-version       | API 的最新版本 |    Date      |
 |  |  |  |
 
-## <a name="header"></a>頁首
+## <a name="header"></a>標頭
 
 |  **名稱**          |  **ReplTest1**           |
 |  ---------------   | -------------------- |
@@ -169,32 +169,32 @@ ms.locfileid: "87271938"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**                    |  **說明**                                                                                  |
+|  **名稱**                    |  **描述**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 可唯一識別作業的 GUID                                                       |
 |  submissionType              | 識別針對供應項目報告的作業類型，例如 `Publish/GoLive`      |
 |  createdDateTime             | 建立作業的 UTC 日期時間                                                       |
 |  lastActionDateTime          | 上次更新作業的 UTC 日期時間                                       |
 |  status                      | 作業的狀態，可能是 `not started` \| `running` \| `failed` \| `completed` 。 一次只有一項作業可以有 `running` 狀態。 |
-|  錯誤                       | 作業失敗的錯誤訊息                                                               |
+|  error                       | 作業失敗的錯誤訊息                                                               |
 |  |  |
 
 ### <a name="response-step-properties"></a>回應步驟屬性
 
-|  **名稱**                    |  **說明**                                                                                  |
+|  **名稱**                    |  **描述**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | 這項作業的預估持續時間 |
 | id | 步驟進程的唯一識別碼 |
 | description | 步驟的說明 |
 | stepName | 步驟的易記名稱 |
-| status | 步驟的狀態，可能是 `notStarted` \| `running` \| `failed` \|`completed` |
+| status | 步驟的狀態，也就是 `notStarted` \| `running` \| `failed` \|`completed` |
 | messages | 在步驟期間遇到的任何通知或警告。 字串陣列 |
-| System.componentmodel.progresschangedeventargs.progresspercentage | 從0到100的整數，表示步驟的進度 |
+| System.componentmodel.progresschangedeventargs.progresspercentage | 從0到100的整數，表示步驟的進展 |
 | | |
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code**  |   **說明**                                                                                  |
+| **程式碼**  |   **描述**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
 |  200      | `OK` - 已成功處理要求，並傳回要求的作業。        |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                    |

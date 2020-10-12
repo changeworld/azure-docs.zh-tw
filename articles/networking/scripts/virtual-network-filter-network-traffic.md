@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 指令碼範例 - 篩選 VM 網路流量 | Microsoft Docs
-description: 使用 Azure CLI 腳本來篩選輸入和輸出虛擬機器 (VM) 使用前端和後端子網的網路流量。
+description: 使用 Azure CLI 腳本， (VM) 具有前端和後端子網的網路流量，以篩選輸入和輸出虛擬機器。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 61f2441d68954a167b9887a4dfd4b99a53c14166
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037213"
 ---
 # <a name="use-an-azure-cli-script-to-filter-inbound-and-outbound-vm-network-traffic"></a>使用 Azure CLI 腳本來篩選輸入和輸出 VM 網路流量
@@ -60,4 +60,4 @@ az group delete --name MyResourceGroup --yes
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-您可以在[Azure 網路功能總覽檔](../cli-samples.md)中找到其他的網路 CLI 腳本範例
+您可以在[Azure 網路總覽檔](../cli-samples.md)中找到其他網路 CLI 腳本範例

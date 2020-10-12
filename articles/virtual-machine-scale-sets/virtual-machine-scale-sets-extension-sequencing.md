@@ -10,10 +10,10 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83121026"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>為虛擬機器擴展集中的擴充功能佈建排序
@@ -23,7 +23,7 @@ Azure 虛擬機器擴充功能可提供多種功能，例如部署後的設定�
 
 本文詳細說明如何對要為虛擬機器擴展集中的 VM 執行個體設定的擴充功能進行排序。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已熟悉以下各項：
 -   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)功能
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集

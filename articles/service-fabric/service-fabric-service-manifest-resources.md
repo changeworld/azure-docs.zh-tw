@@ -4,10 +4,10 @@ description: 如何在服務資訊清單中描述端點資源，包括如何設�
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91354754"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
@@ -220,7 +220,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 假設應用程式參數的 Port1 和 Protocol1 值為 null 或空白。 埠將會由 ServiceFabric 決定，而且通訊協定會是 tcp。
 
-假設您指定錯誤的值。 比方說，您指定了字串值 "Foo" 而非 int。 >get-servicefabricapplication 命令將會失敗，並出現錯誤： `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+假設您指定錯誤的值。 比方說，您指定了字串值 "Foo" 而非 int。 New-ServiceFabricApplication 命令將會失敗，並出現錯誤： `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89399934"
 ---
 # <a name="application-layer-security-with-front-door"></a>Front Door 的應用程式層安全性
@@ -38,7 +38,7 @@ Front Door 的應用程式保護是在全球各地的每個邊緣環境配合應
 ## <a name="centralized-protection-policy"></a>集中式保護原則
 - 您可以定義數個保護規則，並依優先順序將其增至「原則」。 自訂規則的優先順序高於受控規則集，以允許例外。 單一原則會與您的 Web 應用程式相關聯。  相同的 Web 應用程式保護原則會複寫到所有位置的所有 Edge Server ，確保所有區域都有一致的安全性原則
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 - 在預覽期間，您可以使用 REST API、PowerShell 或 CLI 來建立及部署 Front Door 的應用程式保護規則與原則。 在服務公開推出之前，支援以入口網站存取。 
 
 

@@ -1,6 +1,6 @@
 ---
 title: 將 Blob 資料從封存層解除凍結
-description: 從封存儲存體解除凍結 blob，讓您可以存取 blob 資料。 將封存的 blob 複製到線上層。
+description: 從封存儲存體解除凍結您的 blob，讓您可以存取 blob 資料。 將封存的 blob 複製到線上層。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035139"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>將 Blob 資料從封存層解除凍結

@@ -12,10 +12,10 @@ author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
 ms.openlocfilehash: 6d62c9aa7be1511cdac6404ac7c42200677e56fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651621"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 發生什麼事？
@@ -92,7 +92,7 @@ run = exp.submit(source_directory=script_folder,
 + [部署模型的位置和方式](how-to-deploy-and-where.md)
 + [教學課程：使用 Azure Machine Learning 部署模型](tutorial-deploy-models-with-aml.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解 [Azure Machine Learning 的最新架構](concept-azure-machine-learning-architecture.md)。
 

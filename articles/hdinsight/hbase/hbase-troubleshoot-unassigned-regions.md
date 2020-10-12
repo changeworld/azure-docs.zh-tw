@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 中區域伺服器的問題
-description: Azure HDInsight 中區域伺服器的問題
+title: Azure HDInsight 中的區域伺服器問題
+description: Azure HDInsight 中的區域伺服器問題
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707645"
 ---
-# <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 中區域伺服器的問題
+# <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 中的區域伺服器問題
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="scenario-unassigned-regions"></a>案例：未指派的區域
 
@@ -28,7 +28,7 @@ ms.locfileid: "84707645"
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-從 Apache HBase Master UI 中，您可以看到所有區域伺服器之間不平衡的區域數目。 然後，您可以執行 `hbase hbck` 命令來查看區域鏈結中的漏洞。
+從 Apache HBase Master UI，您可以查看所有區域伺服器之間的不平衡區域數目。 然後，您可以執行 `hbase hbck` 命令來查看區域鏈結中的漏洞。
 
 ### <a name="cause"></a>原因
 
@@ -48,11 +48,11 @@ multiple regions being unassigned or holes in the chain of regions
 
 1. 開啟 Apache Ambari UI，然後重新啟動 Active HBase Master 服務。
 
-1. `hbase hbck`再次執行命令（不含任何進一步的選項）。 檢查輸出，並確定已指派所有區域。
+1. `hbase hbck`重新執行命令 (沒有任何進一步的選項) 。 檢查輸出，並確定已指派所有區域。
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>案例：無作用的區域伺服器
+## <a name="scenario-dead-region-servers"></a>案例：死的區域伺服器
 
 ### <a name="issue"></a>問題
 
@@ -64,15 +64,15 @@ multiple regions being unassigned or holes in the chain of regions
 
 1. 取得目前 Wal 的清單： `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` 。
 
-1. 檢查檔案 `wals.out` 。 如果有太多分割目錄（從 *-分割開始），區域伺服器可能會因為這些目錄而失敗。
+1. 檢查檔案 `wals.out` 。 如果有太多的分割目錄 (從 * 分割) 開始，區域伺服器可能會因為這些目錄而失敗。
 
 ### <a name="resolution"></a>解決方案
 
 1. 從 Ambari 入口網站停止 HBase。
 
-1. 執行 `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` 以取得最新的 wal 清單。
+1. 執行 `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` 以取得 wal 的新清單。
 
-1. 將 *-分割目錄移至暫存資料夾， `splitWAL` 並刪除 * 分割目錄。
+1. 將 * 分割目錄移至暫存資料夾， `splitWAL` 然後刪除 * 分割目錄。
 
 1. 執行 `hbase zkcli` 命令以使用 zookeeper shell 進行連接。
 

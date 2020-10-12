@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322303"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
@@ -33,7 +33,7 @@ ms.locfileid: "91322303"
 > * 使用刪除要求來清除資源 
 > * 使用以金鑰為基礎的授權來評分已部署的模型
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 您擁有系統管理許可權的 **Azure 訂** 用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
 - [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -202,7 +202,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 請注意，若要列出實驗，路徑的開頭為 `history/v1.0` 列出模型，路徑的開頭為 `modelmanagement/v1.0` 。 REST API 分成數個作業群組，每個都有不同的路徑。 
 
-|區域|路徑|
+|區域|Path|
 |-|-|
 |Artifacts|/rest/api/azureml|
 |資料存放區|/azure/machine-learning/how-to-access-data|

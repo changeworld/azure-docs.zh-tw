@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400155"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作夥伴 VPN 裝置設定的概觀
@@ -32,7 +32,7 @@ Azure VPN 閘道會針對站對站 (S2S) VPN 通道使用標準的 IPsec/IKE 通
 ### <a name="connection-parameters"></a>連線參數
 本節列出先前章節所述之範例的參數。
 
-| **參數**                | **值**                    |
+| **參數**                | **ReplTest1**                    |
 | ---                          | ---                          |
 | 虛擬網路位址首碼        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 閘道 IP         | Azure VPN 閘道 IP         |
@@ -148,6 +148,6 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需設定主動-主動 VPN 閘道的逐步指示，請參閱[設定跨單位和 VNet 對 VNet 連線的主動-主動 VPN 閘道](vpn-gateway-activeactive-rm-powershell.md)。
 

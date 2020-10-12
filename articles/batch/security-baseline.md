@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400971"
 ---
 # <a name="azure-security-baseline-for-batch"></a>適用于 Batch 的 Azure 安全性基準
@@ -366,7 +366,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **責任**：客戶
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3.4：利用單一登入 (SSO) 搭配 Azure Active Directory
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3.4：利用單一 Sign-On (SSO) 搭配 Azure Active Directory
 
 **指導**方針：不適用，但 Azure Batch 支援 Azure AD 驗證，則不支援單一登入。
 
@@ -1135,7 +1135,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：如果 Azure Key Vault 用來保存任何與 Azure Batch 集區儲存體帳戶相關的金鑰，請在 Azure Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
+**指導**方針：如果 Azure Key Vault 用來保存任何與 Azure Batch 集區儲存體帳戶相關的金鑰，請啟用 Azure Key Vault 中的 Soft-Delete，以防止遭到意外或惡意刪除的金鑰。
 
 如何在 Azure Key Vault 中啟用虛刪除：
 

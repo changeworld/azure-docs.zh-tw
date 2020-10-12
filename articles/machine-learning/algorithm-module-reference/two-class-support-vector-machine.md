@@ -1,5 +1,5 @@
 ---
-title: 雙類別支援向量機器：模組參考
+title: Two-Class 支援向量機器：模組參考
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在 Azure Machine Learning 中使用 **二級支援向量機器** 模組，以建立以支援向量機器演算法為基礎的模型。
 services: machine-learning
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907658"
 ---
-# <a name="two-class-support-vector-machine-module"></a>雙類別支援向量機器模組
+# <a name="two-class-support-vector-machine-module"></a>Two-Class 支援向量機器模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 
