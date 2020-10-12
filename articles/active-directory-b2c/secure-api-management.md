@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482833"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保護 Azure API 管理 API
@@ -42,7 +42,7 @@ ms.locfileid: "87482833"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
 1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 選取 [**應用程式註冊**]，然後選取 [**擁有的應用程式**] 索引標籤。
+1. 選取 **應用程式註冊**，然後選取 [ **擁有的應用程式** ] 索引標籤。
 1. 針對 *webapp1* 或您先前建立的另一個應用程式，記錄 [應用程式 (用戶端) 識別碼] 欄的值。
 
 #### <a name="applications-legacy"></a>[應用程式 (舊版)](#tab/applications-legacy/)
@@ -50,7 +50,7 @@ ms.locfileid: "87482833"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選取包含您 Azure AD B2C 租用戶的目錄。
 1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 在 [**管理**] 底下，選取 **[應用程式（舊版）**]。
+1. 在 [ **管理**] 底下，選取 [ **應用程式] (舊版) **。
 1. 針對 *webapp1* 或您先前建立的另一個應用程式，記錄 [應用程式識別碼] 欄的值。
 
 * * *
@@ -60,7 +60,7 @@ ms.locfileid: "87482833"
 接下來，針對您的一個 Azure AD B2C 使用者流程取得已知的設定 URL。 您還需要您想在 Azure API 管理中支援的權杖簽發者端點 URI。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 Azure AD B2C 租用戶。
-1. 在 [**原則**] 底下，選取 [**使用者流程**]。
+1. 在 [原則] 底下，選取 [使用者流程]。
 1. 選取現有的原則 (例如 *B2C_1_signupsignin1*)，然後選取 [執行使用者流程]。
 1. 記錄顯示於頁面頂端附近 [執行使用者流程] 標題底下之超連結中的 URL。 此 URL 是使用者流程的 OpenID Connect 已知探索端點，您會在下一節，於 Azure API 管理中設定輸入原則時使用此端點。
 
@@ -88,7 +88,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 1. 選取 [API]。
 1. 選取您想要使用 Azure AD B2C 保護的 API。
 1. 選取 [設計] 索引標籤。
-1. 在 [**輸入處理**] 底下，選取 **\</\>** 以開啟 [原則程式碼編輯器]。
+1. 在 [ **輸入處理**] 底下，選取 **\</\>** 以開啟 [原則程式碼編輯器]。
 1. 將下列 `<validate-jwt>` 標記放置於 `<inbound>` 原則內。
 
     1. 使用原則已知的設定 URL 來更新 `<openid-config>` 元素中的 `url` 值。
@@ -126,7 +126,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 您首先需要 Azure AD B2C 所簽發的權杖，以在 Postman 的 `Authorization` 標頭中使用。 您可以在您應該已建立來作為先決條件之一的註冊/登入使用者流程中，使用 [立即執行] 功能來取得一個。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 Azure AD B2C 租用戶。
-1. 在 [**原則**] 底下，選取 [**使用者流程**]。
+1. 在 [原則] 底下，選取 [使用者流程]。
 1. 選取現有的註冊/登入使用者流程，例如 *B2C_1_signupsignin1*。
 1. 針對 [應用程式] 選取 [webapp1]。
 1. 針對 [回覆 URL] 選擇 `https://jwt.ms`。

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717841"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用網路原則伺服器 (NPS) 擴充功能和 Azure AD 整合遠端桌面閘道基礎結構
@@ -207,7 +207,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![建立共用密碼以建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 按一下 **[確定]** ，關閉對話方塊。
+1. 按一下 [確定]  關閉對話方塊。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在遠端桌面閘道 NPS 上設定 RADIUS 逾時值
 
@@ -306,7 +306,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![選擇性地指定連接條件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 按一下 [確定]。 當系統提示您檢視對應的說明主題時，請按一下 [否]****。
+1. 按一下 [確定]  。 當系統提示您檢視對應的說明主題時，請按一下 [否]****。
 1. 請確定新原則位於清單的頂端，已啟用原則，而且它會授與存取權。
 
    ![將您的原則移至清單頂端](./media/howto-mfa-nps-extension-rdg/image24.png)
@@ -390,7 +390,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ![Microsoft Message Analyzer 顯示篩選的流量](./media/howto-mfa-nps-extension-rdg/image36.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [如何取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)
 

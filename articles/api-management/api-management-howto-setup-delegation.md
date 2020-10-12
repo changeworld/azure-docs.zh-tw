@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.author: apimpm
 ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460995"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派使用者註冊和產品訂閱
@@ -114,9 +114,9 @@ ms.locfileid: "87460995"
      * "Subscribe"：為使用者訂閱具有提供之識別碼的 (請參閱下面) 指定產品的要求
      * "Unsubscribe"：將為使用者取消訂閱產品的要求
      * "Renew"：訂閱續訂要求 (例如，可能過期)
-   * **productId**：*訂閱*時-使用者要求訂閱之產品的識別碼
+   * **productId**： *訂閱* 時-使用者要求訂閱之產品的識別碼
    * **subscriptionId**：在 [取消訂閱] 和 [更新] 上 - 產品訂閱的識別碼
-   * **userId**：*訂閱*時-提出要求之使用者的識別碼
+   * **userId**： *訂閱* 時-提出要求之使用者的識別碼
    * **salt**：特殊 salt 字串，用於計算安全性雜湊
    * **sig**：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
 

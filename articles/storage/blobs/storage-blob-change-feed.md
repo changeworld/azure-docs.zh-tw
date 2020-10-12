@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568229"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 儲存體中的變更摘要支援
@@ -309,7 +309,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ### <a name="should-i-use-change-feed-or-storage-events"></a>我應該使用變更摘要或儲存體事件嗎？
 您可以同時利用這兩項功能，因為變更摘要和 [Blob 儲存體事件](storage-blob-event-overview.md) 都提供相同的資訊給相同的傳遞可靠性保證，主要差異在於事件記錄的延遲、排序和儲存。 變更摘要會在變更的幾分鐘內將記錄發佈到記錄，也可保證每個 blob 的變更作業順序。 儲存體事件會即時推送，而且可能不會進行排序。 變更摘要事件會永久儲存在儲存體帳戶內，並以您自己定義的保留區作為唯讀穩定記錄，而事件處理常式會暫時取用儲存體事件，除非您明確儲存它們。 有了變更摘要，任何數目的應用程式都可以使用 blob Api 或 Sdk，自行使用記錄。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱如何使用 .NET 用戶端應用程式讀取變更摘要的範例。 請參閱 [Azure Blob 儲存體中的處理變更摘要記錄](storage-blob-change-feed-how-to.md)。
 - 瞭解如何即時回應事件。 查看 [對 Blob 儲存體事件的反應](storage-blob-event-overview.md)

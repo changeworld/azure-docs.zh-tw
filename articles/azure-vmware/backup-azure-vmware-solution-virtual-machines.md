@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份 Azure VMware 解決方案 Vm
 description: 使用 Azure 備份伺服器設定您的 Azure VMware 解決方案環境，以備份虛擬機器。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: a62bccb729cfa6aec89a3ce6de7283f5d9412428
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579714"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893011"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器備份 Azure VMware 解決方案 Vm
 
@@ -105,36 +105,6 @@ VMware 6.7 已將 TLS 啟用為通訊協定。
 
 1. 以滑鼠右鍵按一下 TLS。REG 檔案，然後選取 [ **合併** ] 或 [ **開啟** ]，將設定新增至登錄。
 
-## <a name="add-the-provisioning-ip-address"></a>新增布建 IP 位址 
-
-在預覽期間，Azure VMware 解決方案不會從虛擬網路中部署的虛擬機器解析 ESX 主機。 您必須執行額外的步驟，以在 Azure 備份伺服器虛擬機器上新增主機檔案專案。
-
-### <a name="identify-the-ip-address-for-esxi-hosts"></a>識別 ESXi 主機的 IP 位址
-
-1. 開啟瀏覽器，然後登入 vCenter Url。 
-
-   > [!TIP]
-   > 您可以在 [連線 [至私人雲端的本機 VCenter]](tutorial-access-private-cloud.md#connect-to-the-local-vcenter-of-your-private-cloud)中找到 url。
-
-1. 在 vSphere 用戶端中，選取您打算啟用備份的叢集。
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vsphere-client-select-host.png" alt-text="vSphere Web 用戶端":::
-
-1. 選取 [**設定**  >  **網路**  >  **VMKernel 介面卡**]。 在裝置清單下，找出已啟用布 **建角色的** 網路介面卡。 記下 **IP 位址** 和 ESXi 主機名稱。
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vmkernel-adapters-provisioning-enabled.png" alt-text="vSphere Web 用戶端":::
-
-1. 針對您打算啟用備份的每個叢集下的每個 ESXi 主機，重複上述步驟。
-
-### <a name="update-the-host-file-on-azure-backup-server"></a>更新 Azure 備份伺服器上的主機檔案
-
-1. 以系統管理員身分開啟 [記事本]。
-
-1. 選取 **[**  >  **開啟**檔案]，然後搜尋 c:\Windows\System32\Drivers\etc\hosts。
-
-1. 新增每個 ESXi 主機的專案，以及您在上一節中所識別的 IP 位址。
-
-1. 儲存您的變更，並關閉 [記事本]。
 
 ## <a name="add-the-account-on-azure-backup-server"></a>在 Azure 備份伺服器上新增帳戶
 

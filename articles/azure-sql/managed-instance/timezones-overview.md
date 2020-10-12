@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617904"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 受控執行個體中的時區
@@ -144,7 +144,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 聖聖皮爾標準時間 |  (UTC-03:00) 聖聖匹島 |
 | 巴伊亞標準時間 |  (UTC-03:00)  |
 | UTC-02 |  (UTC-02:00) 國際標準時間-02 |
-| 大西洋中部標準時間 |  (UTC-02:00) 中大西洋-舊 |
+| 大西洋中部標準時間 |  (UTC-02:00) Mid-Atlantic-舊 |
 | 亞速爾標準時間 |  (UTC-01:00) 亞速爾 |
 | 維德角標準時間 |  (UTC-01:00) 維德角。 |
 | UTC | (UTC) 國際標準時間 |
@@ -199,7 +199,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 鄂木斯克標準時間 |  (UTC + 06： 00) 鄂木斯克 |
 | 緬甸標準時間 |  (UTC + 06： 30) 仰光 (仰光)  |
 | 東南亞標準時間 |  (UTC + 07： 00) 曼谷，河內，雅加達 |
-| 阿勒泰標準時間 |  (UTC + 07： 00) 巴爾瑙爾，戈爾諾-阿勒泰斯克 |
+| 阿勒泰標準時間 |  (UTC + 07： 00) 巴爾瑙爾，Gorno-Altaysk |
 | W. 蒙古標準時間 |  (UTC + 07： 00) 哈霍德 |
 | 北亞標準時間 |  (UTC + 07： 00) 的克拉 |
 | N. 中亞標準時間 |  (UTC + 07： 00) 新西伯利亞 |
@@ -230,11 +230,11 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 諾福克標準時間 |  (UTC + 11： 00) 諾福克島 |
 | 庫頁島標準時間 |  (UTC + 11： 00) 庫頁島 |
 | 太平洋中部標準時間 |  (UTC + 11： 00) 索羅門群島，新赫里多尼亞 |
-| 俄羅斯時區11 |  (UTC + 12： 00) 阿納底，彼得保羅夫斯克-Kamchatsky |
+| 俄羅斯時區11 |  (UTC + 12： 00) 阿納底，Petropavlovsk-Kamchatsky |
 | 紐西蘭標準時間 |  (UTC + 12： 00) 奧克蘭，威靈頓 |
 | UTC + 12 |  (UTC + 12： 00) 國際標準時間 + 12 |
 | 斐濟標準時間 |  (UTC + 12： 00) 斐濟 |
-| 勘察加標準時間 |  (UTC + 12： 00) 彼得保羅夫斯克-Kamchatsky-舊 |
+| 勘察加標準時間 |  (UTC + 12： 00) Petropavlovsk-Kamchatsky-舊 |
 | 查塔姆群島標準時間 |  (UTC + 12： 45) 查塔姆群島 |
 | UTC + 13 |  (UTC + 13： 00) 國際標準時間 + 13 |
 | 東加標準時間 |  (UTC + 13： 00) Nuku'alofa |

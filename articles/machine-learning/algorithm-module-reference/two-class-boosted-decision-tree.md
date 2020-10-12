@@ -1,7 +1,7 @@
 ---
-title: 雙類別促進式決策樹：模組參考
+title: Two-Class 促進式決策樹：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [二級促進式決策樹] 模組，建立以促進式決策樹演算法為基礎的機器學習模型。
+description: 瞭解如何使用 Azure Machine Learning 中的 Two-Class 促進式決策樹模組，建立以促進式決策樹演算法為基礎的機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907741"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>雙類別促進式決策樹模組
+# <a name="two-class-boosted-decision-tree-module"></a>Two-Class 促進式決策樹模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 

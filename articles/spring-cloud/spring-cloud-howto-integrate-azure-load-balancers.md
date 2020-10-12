@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906941"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>整合 Azure Spring Cloud 與 Azure 負載平衡解決方案
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 Azure 春季 Cloud 支援 Azure 上的微服務。  提高企業需求的多個資料中心，可以管理多個 Azure 春季雲端實例。
 
@@ -41,7 +41,7 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
 在流量管理員中新增端點：
 1.  將 **類型** 指定為 *外部端點*。
 1.  輸入每個 Azure 春季雲端公用端點 (FQDN) 的完整功能變數名稱。
-1. 按一下 [確定]  。
+1. 按一下 [確定]。
 
     ![流量管理員 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ 流量管理員2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 
@@ -91,7 +91,7 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
 
     ![Front Door 2](media/spring-cloud-load-balancers/front-door-2.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [如何建立流量管理員](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
 * [如何建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 * [如何建立前門](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)

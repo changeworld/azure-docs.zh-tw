@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994542"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>監視 Azure SQL 受控執行個體管理作業
@@ -46,7 +46,7 @@ Azure SQL 受控執行個體提供 [管理作業](management-operations-overview
 | 選項 | 保留 | 支援取消 | 建立 | 更新 | 刪除 | 取消 | 步驟 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 資源群組部署 | 無限<sup>1</sup> | 否<sup>2</sup> | 可見 | 可見 | 不可見 | 可見 | 不可見 |
-| 活動記錄檔 | 90 天 | No | 可見 | 可見 | 可見 | 可見 |  不可見 |
+| 活動記錄檔 | 90 天 | 否 | 可見 | 可見 | 可見 | 可見 |  不可見 |
 | 受控實例作業 API | 24 小時 | [是](management-operations-cancel.md) | 可見 | 可見 | 可見 | 可見 | 可見 |
 |  |  |  |  |  |  |  | |
 
@@ -60,7 +60,7 @@ Azure SQL 受控執行個體提供 [管理作業](management-operations-overview
 
 這些是 Api： 
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[受控執行個體作業-取得](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|取得受控實例上的管理作業。|
 |[受控執行個體作業-取消](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|取消受控實例上的非同步作業。|
@@ -88,7 +88,7 @@ Azure SQL 受控執行個體提供 [管理作業](management-operations-overview
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-AzSqlInstanceOperation 指令 Cmdlet 會取得受控實例上之作業的相關資訊。 您可以藉由提供作業名稱來查看受控實例上的所有作業，或查看特定的作業。
+Get-AzSqlInstanceOperation Cmdlet 會取得受控實例上之作業的相關資訊。 您可以藉由提供作業名稱來查看受控實例上的所有作業，或查看特定的作業。
 
 ```powershell-interactive
 $managedInstance = "yourInstanceName"
@@ -112,10 +112,10 @@ az sql mi op list -g yourResourceGroupName --mi yourInstanceName
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解如何建立您的第一個受控實例，請參閱 [快速入門手冊](instance-create-quickstart.md)。
+- 若要了解如何建立您的第一個受控執行個體，請參閱[快速入門指南](instance-create-quickstart.md)。
 - 如需功能和比較清單，請參閱 [一般 SQL 功能](../database/features-comparison.md)。
-- 如需 VNet 設定的詳細資訊，請參閱 [SQL 受控執行個體 vnet](connectivity-architecture-overview.md)設定。
-- 如需建立受控實例，並從備份檔案還原資料庫的快速入門，請參閱 [建立受控實例](instance-create-quickstart.md)。
-- 如需使用 Azure 資料庫移轉服務進行遷移的教學課程，請參閱 [SQL 受控執行個體使用資料庫移轉服務進行遷移](../../dms/tutorial-sql-server-to-managed-instance.md)。
+- 如需 VNet 組態的詳細資訊，請參閱 [SQL 受控執行個體 VNet 組態](connectivity-architecture-overview.md)。
+- 如需建立受控執行個體，並從備份檔案還原資料庫的快速入門，請參閱[建立受控執行個體](instance-create-quickstart.md)。
+- 如需使用 Azure 資料庫移轉服務進行移轉的教學課程，請參閱[使用資料庫移轉服務的 SQL 受控執行個體移轉](../../dms/tutorial-sql-server-to-managed-instance.md)。

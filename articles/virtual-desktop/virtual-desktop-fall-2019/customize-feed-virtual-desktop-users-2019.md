@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: cd7496690ec88fbe4297386c32d1b8a2c3234577
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540756"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>自訂 Windows 虛擬桌面 (傳統) 使用者的摘要
@@ -37,7 +37,7 @@ Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 的螢幕擷取畫面，以自訂顯示名稱。](../media/get-rdsremoteapp.png)
+> ![PowerShell Cmdlet Get-RDSRemoteApp 的螢幕擷取畫面，其中已反白顯示 [名稱] 和 [FriendlyName] 以自訂顯示名稱。](../media/get-rdsremoteapp.png)
 
 若要將易記名稱指派給 RemoteApp，請執行下列 PowerShell Cmdlet：
 
@@ -46,7 +46,7 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 設定-RDSRemoteApp 的螢幕擷取畫面，以自訂顯示名稱。](../media/set-rdsremoteapp.png)
+> ![PowerShell Cmdlet Set-RDSRemoteApp 的螢幕擷取畫面，其中已醒目提示 [名稱] 和 [新增 FriendlyName] 以自訂顯示名稱。](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>自訂遠端桌面的顯示名稱
 
@@ -59,7 +59,7 @@ Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已反白顯示 [名稱] 和 [FriendlyName] 的 PowerShell Cmdlet RDSRemoteApp 螢幕擷取畫面。](../media/get-rdsremotedesktop.png)
+> ![PowerShell Cmdlet Get-RDSRemoteApp 的螢幕擷取畫面，其中已反白顯示名稱和 FriendlyName。](../media/get-rdsremotedesktop.png)
 
 若要為遠端桌面資源指派易記名稱，請執行下列 PowerShell Cmdlet：
 
@@ -68,7 +68,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 設定-RDSRemoteApp 的螢幕擷取畫面。](../media/set-rdsremotedesktop.png)
+> ![PowerShell Cmdlet Set-RDSRemoteApp 的螢幕擷取畫面，其中已醒目提示 [名稱] 和 [新增 FriendlyName]。](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>後續步驟
 

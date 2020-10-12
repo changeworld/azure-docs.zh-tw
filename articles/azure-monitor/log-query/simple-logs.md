@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
 ms.openlocfilehash: 4926e18aa6b00fe36608843ea5253903ace774e2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089103"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure 監視器 (Preview 中的簡單記錄體驗) 
@@ -20,7 +20,7 @@ Azure 監視器可提供 [豐富的體驗](get-started-portal.md) ，讓您使�
 > 簡單記錄目前實作為 Cosmos DB 和金鑰保存庫的測試。 請透過 [使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor) 與 Microsoft 分享您的體驗，以協助我們判斷我們是否將擴充及發行這項功能。
 
 
-## <a name="scope"></a>範圍
+## <a name="scope"></a>影響範圍
 簡單的記錄體驗會從所選資源的 *AzureDiagnostics*、 *AzureMetrics*和 *AzureActivity* 資料表中取出資料。 
 
 ## <a name="using-simple-logs"></a>使用簡單記錄

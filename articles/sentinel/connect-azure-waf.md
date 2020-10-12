@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
 ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88263923"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>從 Azure Web 應用程式防火牆連接資料 (WAF) 
@@ -21,7 +21,7 @@ ms.locfileid: "88263923"
 Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目標。 Azure Web 應用程式防火牆 (WAF) 為您的 Web 應用程式提供集中式保護，使其免于遭受常見的惡意探索和威脅，例如程式碼插入和跨網站腳本。 Azure WAF 可以部署在 [Azure 應用程式閘道](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) 服務、 [Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) 服務，以及透過 [AZURE 內容傳遞網路 (CDN) ](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF 原則 (目前處於公開預覽狀態的) 。
 您可以將 Azure WAF 記錄連線到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並加以合併以改善您的調查。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
@@ -52,7 +52,7 @@ Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目�
         | CDN WAF 原則      | WebApplicationFirewallLogs |
         |
 
-    1. 選取 [儲存]。
+    1. 選取 [儲存]****。
 
 ### <a name="next-steps-tab"></a>後續步驟索引標籤
 

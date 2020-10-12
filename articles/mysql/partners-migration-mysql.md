@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87285402"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>適用於 MySQL 的 Azure 資料庫移轉合作夥伴
@@ -26,7 +26,7 @@ ms.locfileid: "87285402"
 | ![credativ][5] |**credativ**<br>credativ 是一家獨立的顧問暨服務公司。 此公司自 1999 年開始提供商務應用程式中開放原始碼軟體實作及作業的全方位服務及技術支援。 這些全方位的服務範圍包括策略諮詢、健全的技術建議、合格的培訓以及每天 24 小時的個人化支援，滿足您所有的 IT 需求。|[Marketplace][credativ_marketplace] \(英文\)<br>[網站][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[Contact][credativ_contact] | |
 | ![Pactera][6] |**Pactera**<br>Pactera 是一家全球性公司，提供顧問、數位、與營運服務給全球領先企業。 從其工程方面根基，到數位轉換中的最新技術，他們都能為客戶提供最具競爭優勢的產品與服務。 其經過實證的方法和工具可確保您資料的安全性、真確性與精確性。|[網站][pactera_website]<br>[Twitter][pactera_twitter]<br>[Contact][pactera_contact] | |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入了解 Microsoft 的其他某些合作夥伴，請參閱 [Microsoft 合作夥伴網站](https://partner.microsoft.com/)。
 
 <!--Image references-->

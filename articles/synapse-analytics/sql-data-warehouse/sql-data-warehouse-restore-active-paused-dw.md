@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: dead71d08b5a7a16871816580107c8aed8a0a77c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405100"
 ---
 # <a name="restore-an-existing-sql-pool"></a>還原現有的 SQL 集區
@@ -97,7 +97,7 @@ $RestoredDatabase.status
 
     ![ 還原概觀](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. 選取 [自動還原點]**** 或 [使用者定義的還原點]****。 如果 SQL 集區沒有任何自動還原點，請等候幾個小時，或在還原之前先建立使用者定義的還原點。 針對使用者定義的還原點，請選取現有的還原點，或建立一個新的還原點。 針對 **伺服器**，您可以選擇不同資源群組和區域中的伺服器，或建立一個新的伺服器。 提供所有參數之後，請按一下 [ **審核 + 還原**]。
+4. 選取 [自動還原點]**** 或 [使用者定義的還原點]****。 如果 SQL 集區沒有任何自動還原點，請等候幾個小時，或在還原之前先建立使用者定義的還原點。 針對 User-Defined 還原點，請選取現有的還原點，或建立一個新的。 針對 **伺服器**，您可以選擇不同資源群組和區域中的伺服器，或建立一個新的伺服器。 提供所有參數之後，請按一下 [ **審核 + 還原**]。
 
     ![自動還原點](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

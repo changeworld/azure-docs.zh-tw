@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
 ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566393"
 ---
 # <a name="about-expressroute-direct"></a>關於 ExpressRoute Direct
@@ -91,6 +91,6 @@ ExpressRoute Direct 支援 QinQ 與 Dot1Q VLAN 標記。
 
 ExpressRoute Direct 提供與 Microsoft 全球網路的主動/主動備援連線相同的企業級 SLA。 ExpressRoute 基礎結構可作為備援，而 Microsoft 全球網路的連線具有備援性和多樣性，並且可依據客戶的需求進行調整。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [設定 ExpressRoute Direct](expressroute-howto-erdirect.md)

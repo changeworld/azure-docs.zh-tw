@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116308"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何讓 AppSource 取得 Azure Active Directory 認證
@@ -30,7 +30,7 @@ ms.locfileid: "88116308"
 
 ## <a name="guides-and-code-samples"></a>指南與程式碼範例
 
-如果您想要瞭解如何使用 Open ID connect 來整合您的應用程式與 Azure AD，請遵循[Azure Active Directory 開發人員指南](v1-overview.md#get-started "開始使用適用于開發人員的 Azure AD")中的指南和程式碼範例。
+如果您想要瞭解如何使用 Open ID connect 來整合應用程式與 Azure AD，請遵循《 [Azure Active Directory 開發人員指南》](v1-overview.md#get-started "為開發人員提供 Azure AD 的開始")中的指南和程式碼範例。
 
 ## <a name="multi-tenant-applications"></a>多租用戶應用程式
 
@@ -75,7 +75,7 @@ ms.locfileid: "88116308"
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt="Shows Contact me for partner-led trial experience"/><ul><li>使用者會在 AppSource 網站中尋找您的應用程式</li><li>選取 [聯絡我] 選項</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt="Shows Contact me for partner-led trial experience"/><ul><li>使用者會在 AppSource 網站中尋找您的應用程式</li><li>選取 [Contact Me] 選項</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt="Shows an example form with contact info"/><ul><li>將連絡人資訊填入表單</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
@@ -102,7 +102,7 @@ ms.locfileid: "88116308"
 </tr>
 </table>
 
-### <a name="more-information"></a>其他資訊
+### <a name="more-information"></a>詳細資訊
 
 如需 AppSource 試用體驗的詳細資訊，請參閱[這段影片](https://aka.ms/trialexperienceforwebapps)。 
 
@@ -115,7 +115,7 @@ ms.locfileid: "88116308"
 
 對於 Azure AD 整合，我們使用 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) \(英文\) 搭配社群來提供支援。
 
-我們強烈建議您先在 Stack Overflow 上詢問您的問題，並瀏覽現有的問題，以查看先前是否有人已提出您的問題。 請確定您的問題或意見已標記為[ `[azure-active-directory]` 和 `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)。
+我們強烈建議您先在 Stack Overflow 上詢問您的問題，並瀏覽現有的問題，以查看先前是否有人已提出您的問題。 請確定您的問題或意見已標記[ `[azure-active-directory]` 和 `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)。
 
 使用下列意見區段來提供意見反應，並協助我們改善及設計我們的內容。
 

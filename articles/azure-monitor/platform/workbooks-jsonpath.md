@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081384"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何使用 JSONPath 轉換活頁簿中的 JSON 資料
 
-活頁簿能夠查詢許多來源的資料。 某些端點（例如[Azure Resource Manager](../../azure-resource-manager/management/overview.md)或自訂端點）可能會以 JSON 格式傳回結果。 如果所查詢端點所傳回的 JSON 資料未以您想要的格式設定，您可以使用 JSONPath 來轉換結果。
+活頁簿可以查詢來自許多來源的資料。 某些端點（例如 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 或自訂端點）可以傳回 JSON 格式的結果。 如果查詢的端點所傳回的 JSON 資料未使用您想要的格式進行設定，則可以使用 JSONPath 來轉換結果。
 
-JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JSONPath 允許從 JSON 結構提取和篩選資料。
+JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一樣，JSONPath 可讓您從 JSON 結構中解壓縮和篩選資料。
 
-藉由使用 JSONPath 轉換，活頁簿作者就能夠將 JSON 轉換成資料表結構。 接著，您可以使用此資料表來繪製活頁[簿視覺效果](workbooks-visualizations.md)。
+藉由使用 JSONPath 轉換，活頁簿作者可以將 JSON 轉換成資料表結構。 然後，您可以使用該資料表來繪製活頁 [簿視覺效果](workbooks-visualizations.md)。
 
 ## <a name="using-jsonpath"></a>使用 JSONPath
 
-1. 按一下 [*編輯*] 工具列專案，將活頁簿切換至編輯模式。
+1. 按一下 [ *編輯* ] 工具列專案，將活頁簿切換至編輯模式。
 2. 使用 [*加入*  >  *加入查詢*] 連結，將查詢控制項加入至活頁簿。
-3. 選取*JSON*格式的資料來源。
+3. 將資料來源選取為 *JSON*。
 4. 使用 JSON 編輯器來輸入下列 JSON 程式碼片段
     ```json
     { "store": {
@@ -64,12 +64,12 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
     }
     ```  
 
-假設我們將上述 JSON 物件指定為存放區清查的標記法。 我們的工作是藉由列出員工的標題、作者和價格，來建立商店可用書籍的表格。
+假設我們將上述 JSON 物件指定為商店清查的標記法。 我們的工作是藉由列出商店的標題、作者和價格，來建立商店可用書籍的表格。
 
-1. 選取 [*結果設定*] 索引標籤，並將結果格式切換為 [ *JSON 路徑*]。
+1. 選取 [ *結果設定* ] 索引標籤，並將結果格式切換至 [ *JSON 路徑*]。
 2. 套用下列 JSON 路徑設定：
 
-    JSON 路徑資料表： `$.store.books` 。 此欄位代表資料表根目錄的路徑。 在此情況下，我們在意商店的書籍清查。 資料表路徑會將 JSON 篩選為書籍資訊。
+    JSON 路徑表： `$.store.books` 。 此欄位代表資料表根目錄的路徑。 在此情況下，我們在意商店的書籍清查。 資料表路徑會將 JSON 篩選至書籍資訊。
 
    | 資料行識別碼 | 資料行 JSON 路徑 |
    |:-----------|:-----------------|
@@ -77,12 +77,12 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
    | 作者     | `$.author`       |
    | 價格      | `$.price`        |
 
-    資料行識別碼會是資料行標頭。 資料行 JSON 路徑欄位代表從資料表根到資料行值的路徑。
+    資料行識別碼將會是資料行標頭。 [資料行 JSON 路徑] 欄位代表從資料表根目錄到資料行值的路徑。
 
-1. 按一下 [*執行查詢*] 套用上述設定
+1. 按一下 [*執行查詢*] 以套用上述設定
 
-![ 編輯具有 JSON 資料來源和 JSON 路徑結果格式的查詢專案](./media/workbooks-jsonpath/query-jsonpath.png)
+![ 使用 JSON 資料來源和 JSON 路徑結果格式編輯查詢專案](./media/workbooks-jsonpath/query-jsonpath.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [活頁簿總覽](workbooks-overview.md)
 - [Azure 監視器活頁簿中的群組](workbooks-groups.md)

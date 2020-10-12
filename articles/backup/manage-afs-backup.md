@@ -4,10 +4,10 @@ description: 本文說明用來管理和監視 Azure 備份所備份之 Azure �
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88757620"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 檔案共用備份
@@ -163,6 +163,6 @@ ms.locfileid: "88757620"
 
    ![選取 [取消註冊]](./media/manage-afs-backup/select-unregister.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需詳細資訊，請參閱針對 [Azure 檔案共用備份進行疑難排解](./troubleshoot-azure-files.md)。

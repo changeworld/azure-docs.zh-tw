@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118258"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
@@ -71,4 +71,4 @@ Azure AD 會將此值設為 `https://login.microsoftonline.com/<TenantIdGUID>/`�
 若要評估 `Issuer` 元素的值，請使用應用程式註冊期間提供的 **應用程式識別碼 URI** 的值。
 
 ### <a name="status"></a>狀態
-Azure AD 使用 `StatusCode` 元素中的專案 `Status` ，來表示登出成功或失敗。當登出嘗試失敗時， `StatusCode` 元素也可以包含自訂錯誤訊息。
+Azure AD 會使用專案 `StatusCode` 中的元素 `Status` 來指出登出成功或失敗。當登出嘗試失敗時， `StatusCode` 元素也可以包含自訂錯誤訊息。

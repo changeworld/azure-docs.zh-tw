@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540960"
 ---
 # <a name="add-entities-to-extract-data"></a>新增實體以將資料解壓縮
@@ -70,7 +70,7 @@ ms.locfileid: "91540960"
 1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在 **我的應用程式** ] 頁面上選取應用程式的名稱，以開啟您的應用程式。
 1. 從 [ **組建** ] 區段中，選取左面板中的 [ **實體** ]，然後選取 [ **+ 建立**]。
-1. 在 [ **建立實體類型** ] 對話方塊中，輸入實體的名稱並選取 [已 **學習的機器**]，然後選取 []。 若要加入子實體，請選取 [ **加入結構**]。 選取 [建立]。
+1. 在 [ **建立實體類型** ] 對話方塊中，輸入實體的名稱並選取 [已 **學習的機器**]，然後選取 []。 若要加入子實體，請選取 [ **加入結構**]。 選取 [建立]****。
 
     > [!div class="mx-imgBorder"]
     > ![建立機器學習實體的螢幕擷取畫面。](media/add-entities/machine-learned-entity-with-structure.png)

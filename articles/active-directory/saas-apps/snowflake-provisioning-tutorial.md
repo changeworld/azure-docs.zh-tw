@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: f4c6eb8ad8e3d69d2b3545bc5754e1a632f5cc8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285788"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的雪花
@@ -34,7 +34,7 @@ ms.locfileid: "91285788"
 > * 在雪花中布建群組和群組成員資格
 > * 使用[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial)來進行雪花 (建議) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -107,7 +107,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案]  。
+8. 按一下 **[儲存]** 。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到雪花**]。
 
@@ -121,8 +121,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |userName|String|
    |name.givenName|String|
    |name.familyName|String|
-   |urn： ietf： params： scim：架構： extension： enterprise：2.0： User： defaultRole|String|
-   |urn： ietf： params： scim：架構： extension： enterprise：2.0： User： defaultWarehouse|String|
+   |urn： ietf： params： scim：架構： extension： enterprise：2.0： User： defaultRole|字串|
+   |urn： ietf： params： scim：架構： extension： enterprise：2.0： User： defaultWarehouse|字串|
 
 11. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至雪花**]。
 
