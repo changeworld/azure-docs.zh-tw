@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 安全性最佳做法
-description: 維護 Azure Service Fabric 叢集和應用程式安全的最佳作法和設計考慮。
+description: 讓 Azure Service Fabric 叢集和應用程式保持安全的最佳作法和設計考慮。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257599"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全性 
@@ -87,7 +87,7 @@ ms.locfileid: "86257599"
 > [!NOTE]
 > Service Fabric 叢集將會使用在主機的憑證存放區中找到的第一個有效憑證。 在 Windows 中，這將會是到期日期最慢、並且與一般名稱和簽發者指紋相符的憑證。
 
-Azure 網域（例如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> . trafficmanager.net）由 Microsoft 所擁有。 憑證授權單位不會發出網域憑證給未經授權的使用者。 大部分的使用者必須向註冊機構購買網域，或本身為授權的網域系統管理員，憑證授權單位才會發出具備該一般名稱的憑證給您。
+Azure 網域（例如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> trafficmanager.net）是由 Microsoft 所擁有。 憑證授權單位不會發出網域憑證給未經授權的使用者。 大部分的使用者必須向註冊機構購買網域，或本身為授權的網域系統管理員，憑證授權單位才會發出具備該一般名稱的憑證給您。
 
 如需有關如何設定 DNS 服務以將網域解析為 Microsoft IP 位址的其他詳細資訊，請檢閱如何設定 [Azure DNS 來裝載您的網域](../dns/dns-delegate-domain-azure-dns.md)。
 
@@ -145,7 +145,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 ## <a name="include-certificate-in-service-fabric-applications"></a>在 Service Fabric 應用程式中包含憑證
 
-若要讓您的應用程式存取秘密，請將**SecretsCertificate**元素新增至應用程式資訊清單，以包含憑證。
+若要為您的應用程式提供秘密的存取權，請將 **SecretsCertificate** 元素加入至應用程式資訊清單，以包含憑證。
 
 ```xml
 <ApplicationManifest … >
@@ -191,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在您的 Service Fabric 應用程式代碼中，藉由建立 Azure Resource Manager 的[存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http)，其方式與下列內容相同：
+在您的 Service Fabric 應用程式程式碼中，建立 Azure Resource Manager 的 [存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http) ，方法是建立與下列內容相似的部分：
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -205,24 +205,24 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全性基準
-[我們建議您執行廣為知名且經過妥善測試的業界標準設定，例如 Microsoft 安全性基準，而不是自行建立基準](/windows/security/threat-protection/windows-security-baselines);在您的虛擬機器擴展集上布建這些功能的選項是使用 Azure Desired State Configuration (DSC) 延伸模組處理常式，以在 Vm 上線時進行設定，使其執行生產環境軟體。
+[我們建議您採用廣泛已知且經過妥善測試的產業標準設定，例如 Microsoft 安全性基準，而不是自行建立基準](/windows/security/threat-protection/windows-security-baselines);在您的虛擬機器擴展集上布建這些 Vm 的選項是使用 Azure Desired State Configuration (DSC) 擴充處理常式，在 Vm 上線時設定 Vm，以便執行生產環境軟體。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
-[Azure 防火牆是受控的雲端式網路安全性服務，可保護您的 Azure 虛擬網路資源。它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端擴充性。](../firewall/overview.md)這讓您能夠將輸出 HTTP/S 流量限制為指定的完整功能變數名稱清單 (FQDN) 包括萬用字元）。 這項功能不需要 TLS/SSL 終止。 建議您利用適用于 Windows Update 的[Azure 防火牆 FQDN](../firewall/fqdn-tags.md)標籤，並讓 Microsoft Windows Update 端點的網路流量可以流經您的防火牆。 [使用範本部署 Azure 防火牆](../firewall/deploy-template.md)提供了適用于 Microsoft 網路/azureFirewalls 資源範本定義的範例。 Service Fabric 應用程式通用的防火牆規則，是針對您的叢集虛擬網路允許下列各項：
+[Azure 防火牆是受控的雲端式網路安全性服務，可保護您的 Azure 虛擬網路資源。它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端擴充性。](../firewall/overview.md)如此一來，就能將輸出 HTTP/S 流量限制為指定的完整功能變數名稱清單， (FQDN) 包括萬用字元在內。 這項功能不需要 TLS/SSL 終止。 建議您利用適用于 Windows Update 的 [Azure 防火牆 FQDN](../firewall/fqdn-tags.md) 標籤，並啟用 Microsoft Windows Update 端點的網路流量，以流經您的防火牆。 [使用範本部署 Azure 防火牆](../firewall/deploy-template.md) 提供適用于 Microsoft/azureFirewalls 資源範本定義的範例。 Service Fabric 應用程式通用的防火牆規則是允許叢集虛擬網路的下列各項：
 
 - * download.microsoft.com
 - * servicefabric.azure.com
 - *.core.windows.net
 
-這些防火牆規則可讓您的允許輸出網路安全性群組（包括 ServiceFabric 和儲存體）成為虛擬網路中允許的目的地。
+這些防火牆規則會將您允許的輸出網路安全性群組（包括 ServiceFabric 和儲存體）補充為允許來自您虛擬網路的目的地。
 
 ## <a name="tls-12"></a>TLS 1.2
 
-Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有客戶完整遷移至支援傳輸層安全性 (TLS) 1.2 的解決方案，並確保預設會使用 tls 1.2。
+Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/) 所有客戶都能以支援傳輸層安全性 (TLS) 1.2 的解決方案完成遷移，並確保預設使用 tls 1.2。
 
-包括[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)在內的 Azure 服務已完成工程工作，以移除對 TLS 1.0/1.1 通訊協定的相依性，並為想要將其工作負載設定為接受並僅起始 tls 1.2 連線的客戶提供完整支援。
+Azure 服務（包括 [Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作以移除對 TLS 1.0/1.1 通訊協定的相依性，並為想要將其工作負載設定為僅接受和起始 TLS 1.2 連線的客戶提供完整的支援。
 
-客戶應設定其 Azure 裝載的工作負載，以及與 Azure 服務互動的內部部署應用程式，以預設使用 TLS 1.2。 以下說明如何將[Service Fabric 叢集節點和應用程式設定](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)為使用特定的 TLS 版本。
+客戶應設定其 Azure 裝載的工作負載，以及與 Azure 服務互動的內部部署應用程式，以依預設使用 TLS 1.2。 以下說明如何 [設定 Service Fabric 叢集節點和應用程式](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md) ，以使用特定的 TLS 版本。
 
 ## <a name="windows-defender"></a>Windows Defender 
 
@@ -259,7 +259,7 @@ Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有�
 > 如果您沒有使用 Windows Defender，請參閱您的反惡意程式碼文件，以了解設定規則。 Linux 不支援 Windows Defender。
 
 ## <a name="platform-isolation"></a>平臺隔離
-根據預設，Service Fabric 應用程式會被授與 Service Fabric 執行時間本身的存取權，這會以不同的形式來列出本身：[環境變數](service-fabric-environment-variables-reference.md)會指向對應至應用程式和網狀架構檔案之主機上的檔案路徑、可接受應用程式特定要求的處理序間通訊端點，以及網狀架構預期應用程式用來驗證本身的用戶端憑證。 在服務裝載本身不受信任程式碼的可能性中，建議您停用此 SF 執行時間的存取權，除非明確需要。 在應用程式資訊清單的 [原則] 區段中，會使用下列宣告來移除執行時間的存取： 
+根據預設，Service Fabric 的應用程式會被授與 Service Fabric 執行時間本身的存取權，它會以不同的形式出現： [環境變數](service-fabric-environment-variables-reference.md) 指向主機上對應于應用程式和網狀架構檔案的檔案路徑、可接受應用程式特定要求的處理序間通訊端點，以及網狀架構預期應用程式用來驗證本身的用戶端憑證。 在服務裝載本身未受信任程式碼的可能性中，建議您停用此 SF 執行時間的存取權，除非明確需要。 使用應用程式資訊清單的 [原則] 區段中的下列宣告，即可移除對執行時間的存取： 
 
 ```xml
 <ServiceManifestImport>
@@ -270,10 +270,10 @@ Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有�
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 在執行 Windows Server 的 Vm 或電腦上建立叢集：[針對 Windows server 建立 Service Fabric](service-fabric-cluster-creation-for-windows-server.md)叢集。
-* 在執行 Linux 的 Vm 或電腦上建立叢集：[建立 linux](service-fabric-cluster-creation-via-portal.md)叢集。
+* 在執行 Windows Server 的 Vm 或電腦上建立叢集： [Service Fabric 建立 Windows server 的](service-fabric-cluster-creation-for-windows-server.md)叢集。
+* 在執行 Linux 的 Vm 或電腦上建立叢集： [建立 linux](service-fabric-cluster-creation-via-portal.md)叢集。
 * 了解 [Service Fabric 支援選項](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

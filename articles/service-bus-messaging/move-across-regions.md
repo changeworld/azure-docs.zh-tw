@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860796"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>將 Azure 服務匯流排命名空間移至另一個區域
@@ -22,7 +22,7 @@ ms.locfileid: "88860796"
 1. 確認部署，以確保所有主題的命名空間、佇列、主題和訂用帳戶都已在目的地區域中建立。 
 1. 在處理所有訊息之後，從來源區域刪除命名空間來完成移動。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 確定目的地區域中支援您的帳戶所使用的 Azure 服務匯流排和功能。
  
 ## <a name="prepare"></a>準備
@@ -48,46 +48,46 @@ ms.locfileid: "88860796"
 1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 2. 在 **[搜尋 Marketplace**] 中，輸入 [搜尋文字的 **範本部署** ]，選取 [ **使用自訂範本部署範本部署 (]) **，然後按 **enter**。
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="新範本部署":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="下載 Resource Manager 範本":::    
 1. 在 [ **範本部署** ] 頁面上，選取 [ **建立**]。
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="新範本部署-建立按鈕":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="下載 Resource Manager 範本":::        
 1. 在 [ **自訂部署** ] 頁面上，選取 **編輯器中的 [建立您自己的範本**]。
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="在編輯器中建立您自己的範本-連結":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="下載 Resource Manager 範本":::            
 1. 在 [ **編輯範本** ] 頁面上，選取工具列上的 [ **載入** 檔案]，然後依照指示載入您在上一節中下載的 **template.js** 檔案。
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="選取範本":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="下載 Resource Manager 範本":::                
 1. 選取 [ **儲存** ] 以儲存範本。 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="儲存範本":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="下載 Resource Manager 範本":::                    
 1. 在 [ **自訂部署** ] 頁面上，依照下列步驟執行： 
     1. 選取 Azure **訂**用帳戶。 
     2. 選取現有的**資源群組**，或建立一個群組。 
     3. 選取目標 **位置** 或區域。 如果您選取現有的資源群組，這項設定是唯讀的。 
     4. 輸入 **命名空間**的新名稱。
-    1. 選取 [檢閱 + 建立]。 
+    1. 選取 [檢閱 + 建立]****。 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="部署 Resource Manager 範本":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="下載 Resource Manager 範本":::
     1. 在 [ **審核 + 建立** ] 頁面上，選取頁面底部的 [ **建立** ]。 
     
 ## <a name="verify"></a>Verify
 1. 部署成功後，請選取 [ **移至資源群組**]。
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="移至資源群組連結":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="下載 Resource Manager 範本":::    
 1. 在 [ **資源群組** ] 頁面上，選取 [服務匯流排命名空間]。 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="選取服務匯流排命名空間":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="下載 Resource Manager 範本":::    
 1. 在 [ **服務匯流排命名空間** ] 頁面上，確認您看到來自來源區域的佇列、主題和訂閱。 
     1. 您會在右窗格底部的命名空間中看到 **佇列** 。         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="命名空間中的佇列":::
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="下載 Resource Manager 範本":::
     2. 切換至 [ **主題** ] 索引標籤，以查看命名空間中的主題
     
-        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="命名空間中的主題":::
+        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="下載 Resource Manager 範本":::
     3. 選取主題以確認已建立訂閱。 
 
-        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="主題訂閱":::      
+        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="下載 Resource Manager 範本":::      
     
     
 
@@ -106,7 +106,7 @@ ms.locfileid: "88860796"
 
     另一個選項是刪除具有服務匯流排命名空間的資源群組。 在 [ **資源群組** ] 頁面上，選取工具列上的 [ **刪除資源群組** ]，然後確認刪除。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已將 Azure 服務匯流排命名空間從某個區域移至另一個區域，並清除來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 

@@ -10,15 +10,15 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828909"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 入口網站在可用性區域中建立 Windows 虛擬機器
 
-本文逐步引導您使用 Azure 入口網站在 Azure 可用性區域中建立虛擬機器。 [可用性區域](../../availability-zones/az-overview.md)是 Azure 區域中的實體獨立區域。 萬一整個資料中心失敗或遺失，使用可用性區域可保護您的應用程式和資料免於受害。
+本文逐步引導您使用 Azure 入口網站在 Azure 可用性區域中建立虛擬機器。 [可用性區域](../../availability-zones/az-overview.md)是 Azure 區域中的實際個別區域。 萬一整個資料中心失敗或遺失，使用可用性區域可保護您的應用程式和資料免於受害。
 
 若要使用可用性區域，請在[支援的 Azure 區域](../../availability-zones/az-region.md)中建立虛擬機器。
 
@@ -40,7 +40,7 @@ ms.locfileid: "87828909"
 
     ![選取 VM 大小](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. 在 **[設定**  >  ] [**高可用性**] 底下，從 [**可用性區域**] 下拉式清單中選取其中一個編號區域，保留剩餘的預設值，然後按一下 **[確定]**。
+5. 在 [**設定**  >  **高可用性**] 下，從 [**可用性區域**] 下拉式清單中選取其中一個編號的區域，保留其餘的預設值，然後按一下 **[確定]**。
 
     ![選取可用性區域](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
@@ -68,4 +68,4 @@ ms.locfileid: "87828909"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已學到如何在可用性區域中建立 VM。 深入瞭解 Azure Vm 的[可用性](../availability.md)。
+在本文中，您已學到如何在可用性區域中建立 VM。 深入瞭解 Azure Vm 的 [可用性](../availability.md) 。

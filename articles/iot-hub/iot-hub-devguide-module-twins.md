@@ -11,15 +11,15 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323004"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
 
-本文假設您已先讀過[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。 在 IoT 中樞中，您可以在每個裝置身分識別下建立最多50個模組身分識別。 每個模組身分識別都會隱含地產生模組對應項。 模組對應項和裝置對應項很類似，它們是存放模組狀態資訊 (包括中繼資料、設定和條件) 的 JSON 文件。 Azure IoT 中樞會為您連線到 IoT 中樞的每個模組維護模組對應項。 
+本文假設您已先讀過[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。 在 IoT 中樞的每個裝置身分識別下，您最多可以建立50個模組身分識別。 每個模組身分識別都會隱含地產生模組對應項。 模組對應項和裝置對應項很類似，它們是存放模組狀態資訊 (包括中繼資料、設定和條件) 的 JSON 文件。 Azure IoT 中樞會為您連線到 IoT 中樞的每個模組維護模組對應項。 
 
 在裝置端，IoT 中樞裝置 SDK 可讓您建立會個別向 IoT 中樞建立獨立連線的模組。 這項功能可讓您針對裝置上的不同元件使用不同的命名空間。 例如，您的販賣機具有三個不同的感應器。 每個感應器都由公司中的不同部門控制。 您可以為每個感應器建立一個模組。 如此一來，每個部門只能將作業或直接方法傳送至其所控制的感應器，以避免衝突和使用者錯誤。
 
@@ -196,7 +196,7 @@ ms.locfileid: "87323004"
 
   - 主體
         
-    本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如
+    本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如，
 
     ```json
     {
@@ -239,15 +239,15 @@ ms.locfileid: "87323004"
 
 標籤、所需屬性和報告屬性是具有下列限制的 JSON 物件：
 
-* **金鑰**： JSON 物件中的所有金鑰都是以 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
+* **金鑰**： JSON 物件中的所有索引鍵都是 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
 
-* **值**： json 物件中的所有值都可以是下列 JSON 類型：布林值、數位、字串、物件。 不允許使用陣列。
+* **值**： json 物件中的所有值都可以是下列 json 類型：布林值、數位、字串、物件。 不允許使用陣列。
 
-    * 整數的最小值可以是-4503599627370496，而最大值為4503599627370495。
+    * 整數最小值為-4503599627370496，最大值為4503599627370495。
 
-    * 字串值是以 UTF-8 編碼，且最大長度可以是 4 KB。
+    * 字串值為 UTF-8 編碼，最大長度可以是 4 KB。
 
-* **深度**：標記、所需屬性和報告屬性中的 JSON 物件深度上限為10。 例如，下列物件是有效的：
+* **深度**：標記、所需屬性和報告屬性中 JSON 物件的最大深度為10。 例如，下列物件有效：
 
    ```json
    {
@@ -281,19 +281,19 @@ ms.locfileid: "87323004"
 
 ## <a name="module-twin-size"></a>模組對應項大小
 
-IoT 中樞在的值上強制執行 8 KB 的大小限制 `tags` ，以及每個和的值都有 32 kb 的大小限制 `properties/desired` `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
+IoT 中樞會在的值上強制執行 8 KB 大小的限制 `tags` ，且每個值的大小上限為 32 `properties/desired` kb `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
 
 對應項大小的計算方式如下：
 
-* 針對 JSON 檔中的每個屬性，IoT 中樞累積的計算，並加入屬性的索引鍵和值的長度。
+* 針對 JSON 檔中的每個屬性，IoT 中樞會累積計算並新增屬性的索引鍵和值的長度。
 
-* 屬性索引鍵會被視為以 UTF8 編碼的字串。
+* 屬性索引鍵會被視為 UTF8 編碼的字串。
 
-* 簡單的屬性值會視為 UTF8 編碼的字串、數值（8個位元組）或布林值（4個位元組）。
+* 簡單的屬性值會被視為 UTF8 編碼的字串、數值 (8 個位元組) ，或 (4 個位元組) 的布林值。
 
-* 以 UTF8 編碼的字串大小是藉由計算所有字元來計算，但不包括 UNICODE 控制字元（區段 C0 和 C1）。
+* UTF8 編碼字串的大小是藉由計算所有字元來計算，不包括 UNICODE 控制字元 (區段 C0 和 C1) 。
 
-* 複雜的屬性值（嵌套物件）是根據屬性索引鍵的匯總大小和其所包含的屬性值計算而得。
+*  (的嵌套物件) 的複雜屬性值會根據屬性索引鍵的匯總大小以及它們所包含的屬性值來計算。
 
 IoT 中樞會拒絕 (並出現錯誤) 將會讓這些文件的大小增加到超過限制的所有作業。
 
@@ -352,13 +352,13 @@ IoT 中樞會為模組對應項所需屬性和報告屬性中的每個 JSON 物�
 ## <a name="optimistic-concurrency"></a>開放式並行存取
 
 標籤、所需屬性和報告屬性全都支援開放式並行存取。
-標記具有每個[依據 rfc7232](https://tools.ietf.org/html/rfc7232)的 ETag，代表標記的 JSON 標記法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
+標記具有 ETag （依 [>rfc7232](https://tools.ietf.org/html/rfc7232)），代表標記的 JSON 標記法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
 
 模組對應項所需屬性和報告屬性沒有 ETag，但是有一定會遞增的 `$version` 值。 類似於 ETag，更新端可以使用版本強制達到更新的一致性。 例如報告屬性的模組應用程式，或是所需屬性的解決方案後端。
 
 當觀察端代理程式 (例如，觀察所需屬性的模組應用程式) 必須協調擷取作業結果與更新通知之間的競爭情況時，版本也相當有用。 [裝置重新連線流程](iot-hub-devguide-device-twins.md#device-reconnection-flow)一節會提供詳細資訊。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要嘗試本文所述的一些概念，請參閱下列「IoT 中樞」教學課程：
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.openlocfilehash: 6473b6b69ba45138c30e4f2c8a7f1ba1a7f2ae7e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816842"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 中的驗證問題
@@ -36,7 +36,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 Azure AD 錯誤碼50126表示租使用者 `AllowCloudPasswordValidation` 尚未設定原則。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 Azure AD 租使用者的公司系統管理員應可讓 Azure AD 將密碼雜湊用於 ADFS 支援的使用者。  套用， `AllowCloudPasswordValidationPolicy` 如在 [HDInsight 中使用企業安全性套件](../domain-joined/apache-domain-joined-architecture.md)一文所示。
 
@@ -56,7 +56,7 @@ Azure AD 租使用者的公司系統管理員應可讓 Azure AD 將密碼雜湊�
 
 使用者名稱不正確 (不存在) 。 使用者未使用 Azure 入口網站中使用的相同使用者名稱。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用在該入口網站中運作的相同使用者名稱。
 
@@ -76,7 +76,7 @@ Azure AD 租使用者的公司系統管理員應可讓 Azure AD 將密碼雜湊�
 
 使用錯誤密碼的登入嘗試太多次。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 等候30分鐘，然後停止任何可能嘗試驗證的應用程式。
 
@@ -96,7 +96,7 @@ Azure AD 租使用者的公司系統管理員應可讓 Azure AD 將密碼雜湊�
 
 密碼已過期。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 變更內部部署系統上 Azure 入口網站 (中的密碼) 然後等待30分鐘讓同步處理趕上。
 
@@ -112,7 +112,7 @@ Azure AD 租使用者的公司系統管理員應可讓 Azure AD 將密碼雜湊�
 
 使用者套用了條件式存取原則或 MFA。 由於尚不支援互動式驗證，因此使用者或叢集必須從 MFA/條件式存取中免除。 如果您選擇豁免叢集 (以 IP 位址為基礎的豁免原則) ，請確定 `ServiceEndpoints` 已針對該 vnet 啟用 AD。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用條件式存取原則，並豁免 MFA 中的 HDInisght 叢集，如 [使用 Azure Active Directory Domain Services 的企業安全性套件設定 HDInsight](./apache-domain-joined-configure-using-azure-adds.md)叢集所示。
 
@@ -128,7 +128,7 @@ Azure AD 租使用者的公司系統管理員應可讓 Azure AD 將密碼雜湊�
 
 若要進入此階段，您的 OAuth 驗證不成問題，但 Kerberos 驗證是。 如果此叢集是由 ADLS 所支援，則在嘗試 Kerberos 驗證之前，OAuth 登入已成功。 在 WASB 叢集上，不會嘗試 OAuth 登入。 Kerberos 失敗的原因有很多，例如密碼雜湊不同步、使用者帳戶在 Azure AD DS 中被鎖定等等。 只有當使用者變更密碼時，才會同步處理密碼雜湊。 當您建立 Azure AD DS 實例時，它會開始同步建立之後變更的密碼。 它不會追溯開始之前設定的同步密碼。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 如果您認為密碼可能不同步，請嘗試變更密碼，並等候幾分鐘的時間進行同步處理。
 
@@ -146,7 +146,7 @@ Kinit 失敗。
 
 變動。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 Kinit 若要成功，您必須知道您 `sAMAccountName` 的 (這是沒有領域) 的簡短帳戶名稱。 `sAMAccountName` 通常是帳戶前置詞， (像是) 中的 bob `bob@contoso.com` 。 針對某些使用者，可能會不同。 您將需要能夠流覽/搜尋目錄以瞭解您的 `sAMAccountName` 。
 
@@ -172,7 +172,7 @@ Kinit 失敗， `Preauthentication` 發生失敗。
 
 使用者名稱或密碼不正確。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 檢查您的使用者名稱和密碼。 也請檢查上面所述的其他屬性。 若要啟用詳細資訊調試，請在 `export KRB5_TRACE=/tmp/krb.log` 嘗試 kinit 之前從會話執行。
 
@@ -188,7 +188,7 @@ Kinit 失敗， `Preauthentication` 發生失敗。
 
 找不到必要的 OAuth 存取權杖，使作業/命令無法成功。 ADLS/ABFS 驅動程式將會嘗試從認證服務中取出 OAuth 存取權杖，然後再提出儲存體要求。 當您使用相同的使用者登入 Ambari 入口網站時，會註冊此權杖。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 確定您已透過用來執行作業的使用者名稱，成功登入 Ambari 入口網站。
 
@@ -204,7 +204,7 @@ Kinit 失敗， `Preauthentication` 發生失敗。
 
 當使用者嘗試使用 Acl 存取 ADLS Gen2，且 Kerberos 權杖已過期時，就會發生此錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 * 針對 Azure Data Lake Storage Gen1，請清除瀏覽器快取，然後再次登入 Ambari。
 

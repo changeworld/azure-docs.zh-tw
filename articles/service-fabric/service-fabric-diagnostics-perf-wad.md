@@ -1,15 +1,15 @@
 ---
-title: 使用 Windows Azure 診斷進行效能監視
+title: Windows Azure 診斷的效能監視
 description: 使用 Windows Azure 診斷收集 Azure Service Fabric 叢集的效能計數器。
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258625"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 診斷延伸模組進行效能監視
@@ -189,9 +189,9 @@ ms.locfileid: "86258625"
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. 升級推出完畢後 (大約需要 15-45 分鐘，視其是否為第一次部署，以及您資源群組的大小而定)，WAD 應該會收集效能計數器，並將其傳送至與您叢集相關的儲存體帳戶中，名為 WADPerformanceCountersTable 的表格。 藉由[將 AI 接收新增至 Resource Manager 範本](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，在 Application Insights 中查看效能計數器。
+1. 升級推出完畢後 (大約需要 15-45 分鐘，視其是否為第一次部署，以及您資源群組的大小而定)，WAD 應該會收集效能計數器，並將其傳送至與您叢集相關的儲存體帳戶中，名為 WADPerformanceCountersTable 的表格。 藉由 [將 AI 接收新增至 Resource Manager 範本](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，在 Application Insights 中查看您的效能計數器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 為您的叢集收集更多效能計數器。 請參閱[效能度量](service-fabric-diagnostics-event-generation-perf.md)，以取得您應該收集的計數器清單。
 * [透過 Windows VM 與 Azure Resource Manager 範本使用監視和診斷](../virtual-machines/extensions/diagnostics-template.md)，對 `WadCfg` 做進一步的修改，包括設定診斷資料要傳送到的其他儲存體帳戶。
-* 請造訪[diagnostics.wadcfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/)從頭開始建立範本，並確定您的語法正確。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 從頭開始建立範本，並確定您的語法正確。
+* 請造訪 [diagnostics.wadcfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) 以從頭開始建立範本，並確定您的語法正確。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 從頭建立範本，並確定您的語法正確無誤。

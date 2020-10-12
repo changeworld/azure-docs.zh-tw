@@ -1,5 +1,5 @@
 ---
-title: 管理封包捕獲-Azure 入口網站
+title: 管理封包捕捉-Azure 入口網站
 titleSuffix: Azure Network Watcher
 description: 了解如何使用 Azure 入口網站管理網路監看員的封包擷取功能。
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
 ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84736725"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>使用入口網站以 Azure 網路監看員管理封包擷取
@@ -28,15 +28,15 @@ ms.locfileid: "84736725"
 ## <a name="before-you-begin"></a>開始之前
 
 封包捕獲需要下列輸出 TCP 連線能力：
-- 透過埠443的所選儲存體帳戶
-- 透過埠80進行169.254.169.254
-- 透過埠8037進行168.63.129.16
+- 透過埠443的選擇儲存體帳戶
+- 透過埠 80 169.254.169.254
+- 透過埠 8037 168.63.129.16
 
 > [!NOTE]
-> 上述兩個案例中所述的埠，在所有涉及網路監看員延伸模組的網路監看員功能中是常見的，而且可能偶爾會變更。
+> 上述兩個案例中提及的埠，在所有包含網路監看員延伸模組且可能偶爾變更的網路監看員功能之間是共通的。
 
 
-如果網路安全性群組與網路介面或網路介面所在的子網路相關聯，請確定有允許前述連接埠的規則存在。 同樣地，將使用者定義的流量路由新增至您的網路，可能會導致無法連線到上述的 Ip 和埠。 請確定可連線到它們。 
+如果網路安全性群組與網路介面或網路介面所在的子網路相關聯，請確定有允許前述連接埠的規則存在。 同樣地，新增使用者定義的流量路由到您的網路，可能會導致無法連線到上述的 Ip 和埠。 請確定可連線。 
 
 ## <a name="start-a-packet-capture"></a>啟動封包擷取
 
@@ -67,7 +67,7 @@ ms.locfileid: "84736725"
      > [!NOTE]
      > 連接埠和 IP 位址的值可以是單一值、值的範圍，或特定範圍 (如 80-1024) 的連接埠。 您可以視需要定義不限數量的篩選。
 
-4. 選取 [確定]。
+4. 選取 [確定]  。
 
 對封包擷取設定的時間限制到期之後，封包擷取即會停止，且可供檢閱。 您也可以手動停止封包擷取工作階段。
 
@@ -100,7 +100,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 如果您在建立擷取時選取了 [檔案]****，您可以從您在虛擬機器上設定的路徑檢視或下載檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要了解如何透過虛擬機器警示將封包擷取自動化，請檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)。
 - 若要判斷是否允許進出於虛擬機器的特定流量，請參閱[診斷虛擬機器網路流量篩選問題](diagnose-vm-network-traffic-filtering-problem.md)。

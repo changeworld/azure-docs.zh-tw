@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Container Instances 來執行工作，該�
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798936"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重新啟動原則執行容器化工作
@@ -94,7 +94,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 這個範例會顯示指令碼傳送到 STDOUT 的輸出。 您容器化工作，不過，可能會改為將其輸出寫入永續性儲存體以供日後擷取。 例如，寫入至 [Azure 檔案共用](./container-instances-volume-azure-files.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 以工作為基礎的案例（例如批次處理含有數個容器的大型資料集），可以在執行時間利用自訂 [環境變數](container-instances-environment-variables.md) 或 [命令列](container-instances-start-command.md) 。
 

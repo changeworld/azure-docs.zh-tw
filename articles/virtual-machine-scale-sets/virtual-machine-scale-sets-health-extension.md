@@ -1,5 +1,5 @@
 ---
-title: 搭配 Azure 虛擬機器擴展集使用應用程式健康狀態延伸模組
+title: 使用應用程式健康狀態延伸模組搭配 Azure 虛擬機器擴展集
 description: 了解如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 author: ju-shim
 ms.author: jushiman
@@ -10,14 +10,14 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783039"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>搭配虛擬機器擴展集使用應用程式健康狀態延伸模組
-監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。 您也可以使用健康情況延伸模組來監視擴展集中每個實例的應用程式健全狀況，並使用[自動實例修復](virtual-machine-scale-sets-automatic-instance-repairs.md)來執行實例修復。
+監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。 您也可以使用健全狀況延伸模組來監視擴展集中每個實例的應用程式健全狀況，並使用 [自動實例修復](virtual-machine-scale-sets-automatic-instance-repairs.md)來執行實例修復。
 
 本文描述如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 
@@ -33,7 +33,7 @@ ms.locfileid: "84783039"
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 會顯示應用程式健康狀態延伸模組的結構描述。 延伸模組需要至少有一個相關聯埠或要求路徑的 "tcp"、"HTTP" 或 "HTTPs" 要求。
+下列 JSON 會顯示應用程式健康狀態延伸模組的結構描述。 此延伸模組至少需要具有相關聯埠或要求路徑的 "tcp"、"HTTP" 或 "HTTPs" 要求。
 
 ```json
 {
@@ -69,8 +69,8 @@ ms.locfileid: "84783039"
 | 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ----
 | protocol | `http`、`https` 或 `tcp` | 字串 |
-| 連接埠 | 當通訊協定為 `http` 或時 `https` 為選擇性，當通訊協定為時為必要`tcp` | int |
-| requestPath | 當通訊協定是 `http` 或 `https` 時，不允許使用`tcp` | 字串 |
+| 連接埠 | 當 protocol 為或時為選擇性 `http` `https` ，當通訊協定為時為必要 `tcp` | int |
+| requestPath | 當通訊協定為 `http` 或時 `https` ，不允許通訊協定為 `tcp` | 字串 |
 
 ## <a name="deploy-the-application-health-extension"></a>部署應用程式健康狀態延伸模組
 有多種方法可以將應用程式健康狀態延伸模組部署至您的擴展集，如下面的範例所詳述。
@@ -143,7 +143,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set)，可將應用程式健康狀態延伸模組新增至擴展集模型定義。
 
-下列範例會將應用程式健康情況擴充功能新增至以 Linux 為基礎的擴展集的擴展集模型。
+下列範例會將應用程式健康狀態延伸模組新增至以 Linux 為基礎的擴展集的擴展集模型。
 
 ```azurecli-interactive
 az vmss extension set \
