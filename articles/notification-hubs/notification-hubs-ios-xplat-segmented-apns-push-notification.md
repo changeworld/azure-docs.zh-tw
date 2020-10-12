@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞將推播通知傳送至特定的 iOS 裝置 |Microsoft Docs
+title: 使用 Azure 通知中樞將推播通知傳送至特定 iOS 裝置 |Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞將推播通知傳送至特定的 iOS 裝置。
 services: notification-hubs
 documentationcenter: ios
@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530027"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 iOS 裝置
@@ -39,7 +39,7 @@ ms.locfileid: "86530027"
 > * 從裝置傳送通知
 > * 執行應用程式並產生通知
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 這個主題會以您在[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]中所建立的應用程式為基礎。 在開始進行本教學課程之前，您必須先完成[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]。
 
@@ -157,7 +157,7 @@ ms.locfileid: "86530027"
 9. 在 `AppDelegate.m` 的 `didRegisterForRemoteNotificationsWithDeviceToken` 方法中，使用下列程式碼來取代方法中的程式碼，以將裝置權杖傳遞給 `notifications` 類別。 `notifications` 類別會為通知執行與類別之間的註冊。 如果使用者變更類別選取項目，則可以呼叫 `subscribeWithCategories` 方法以回應 [subscribe]**** \(訂閱\) 按鈕來更新它們。
 
     > [!NOTE]
-    > 因為 Apple Push Notification Service （APNS）所指派的裝置權杖可以隨時變更，您應經常註冊通知以避免通知失敗。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
+    > 因為 Apple Push Notification Service (APNS) 指派的裝置權杖可能會隨時變更，您應經常註冊通知以避免通知失敗。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
 
     ```objc
     self.notifications.deviceToken = deviceToken;
@@ -349,7 +349,7 @@ ms.locfileid: "86530027"
 
 3. 每個訂閱即時新聞的裝置都會收到您剛剛傳送的即時新聞通知。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已將廣播通知傳送至註冊相關類別的特定 iOS 裝置。 若要了解如何推送當地語系化的通知，請繼續進行下列教學課程：
 

@@ -1,5 +1,5 @@
 ---
-title: 關於 Hyper-v （含 VMM）與 Site Recovery 的網路對應
+title: 關於 VMM 的 Hyper-v () 使用 Site Recovery 的網路對應
 description: 說明如何使用 Azure Site Recovery 對 (VMM 雲端所管理的) Hyper-V VM 的災害復原設定網路對應。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082565"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>準備「Hyper-V VM 災害復原至 Azure」的網路對應

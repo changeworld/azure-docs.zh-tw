@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271540"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
@@ -160,7 +160,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>我的快照集會跟保存庫中的復原點是否遵循相同的生命週期？
 
-可以。
+是。
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何針對虛刪除的資源再次觸發排程備份？
 

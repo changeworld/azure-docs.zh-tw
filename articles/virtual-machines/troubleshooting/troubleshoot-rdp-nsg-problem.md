@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77918167"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因 NSG 中未啟用 RDP 連接埠而無法從遠端連線到 VM
@@ -28,19 +28,19 @@ ms.locfileid: "77918167"
 
 您無法對 Azure 中的 VM 建立 RDP 連線，因為網路安全性群組中未開啟 RDP 連接埠。
 
-## <a name="solution"></a>解決方案 
+## <a name="solution"></a>解決方法 
 
 當您建立新 VM 時，根據預設，系統會封鎖所有來自網際網路的流量。 
 
 若要啟用 NSG 中的 RDP 連接埠，請遵循下列步驟：
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [虛擬機器] **** 中，選取有此問題的 VM。 
 3. 在 [設定]  中，選取 [網路]  。 
 4. 在 [輸入連接埠規則]**** 中，檢查是否已正確設定 RDP 的連接埠。 以下是設定範例： 
 
     **優先順序**：300 </br>
     **名稱**：Port_3389 </br>
-    **埠（目的地）**：3389 </br>
+    **埠 (目的地) **：3389 </br>
     **通訊協定**： TCP </br>
     **來源**：任何 </br>
     **目的地**：任何 </br>

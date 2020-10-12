@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526464"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>當您連線到 Azure VM 時無法使用遠端桌面授權伺服器
 
 本文可協助解決因為沒有提供授權的遠端桌面授權伺服器可以使用，而無法連線到 Azure 虛擬機器 (VM) 的問題。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您在嘗試連線到虛擬機器 (VM) 時遇到下列案例：
 
@@ -50,7 +50,7 @@ mstsc /v:<Server>[:<Port>] /admin
 - 已在環境中安裝遠端桌面授權。 有可用的 CAL，但並未正確設定它們。
 - 遠端桌面授權具有 CAL，且已經啟動。 不過，一些關於遠端桌面授權伺服器的其他問題會導致它無法在環境中提供授權。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要解決此問題，請[備份 OS 磁碟](../windows/snapshot-copy-managed-disk.md)並遵循下列步驟：
 

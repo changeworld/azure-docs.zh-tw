@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588053"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳作法
@@ -91,6 +91,6 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 應用程式設定是區域服務。 針對每個區域具有不同設定的應用程式，將這些設定儲存在一個實例中，可能會產生單一失敗點。 跨區域跨多個區域部署一個應用程式設定實例，可能是較好的選項。 它有助於進列區域嚴重損壞修復、效能和安全性 siloing。 依區域設定也可改善延遲，並使用分開的節流配額，因為節流是針對每個實例。 若要套用嚴重損壞修復的風險降低，您可以使用 [多個](./concept-disaster-recovery.md)設定存放區。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [索引鍵和值](./concept-key-value.md)

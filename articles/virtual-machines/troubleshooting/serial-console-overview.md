@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374060"
 ---
 # <a name="azure-serial-console"></a>Azure 序列主控台
@@ -27,7 +27,7 @@ Azure 入口網站上的序列主控台可讓您針對執行 Linux 或 Windows �
 
 序列主控台的運作方式與 VM 和虛擬機器擴展集執行個體相同。 在本文件中，除非另有指示，否則所有提及的 VM 都會隱含虛擬機器擴展集執行個體。
 
-序列主控台已在全球 Azure 區域正式推出，並在 Azure Government 中公開預覽。 目前尚未在「Azure 中國」雲端中提供序列主控台。
+序列主控台已在全球 Azure 區域正式推出，並在 Azure Government 公開預覽。 目前尚未在「Azure 中國」雲端中提供序列主控台。
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>存取 Azure 序列主控台的必要條件
 若要在 VM 或虛擬機器擴展集執行個體上執行序列主控台，您需要下列各項：
@@ -38,7 +38,7 @@ Azure 入口網站上的序列主控台可讓您針對執行 Linux 或 Windows �
 - 不支援傳統部署。 您的 VM 或虛擬機器擴展集執行個體必須使用 Azure Resource Manager 部署模型。
 
 > [!NOTE]
-> 序列主控台目前與受管理的開機診斷儲存體帳戶不相容。 若要使用序列主控台，請確定您使用的是自訂儲存體帳戶。
+> 序列主控台目前與受控開機診斷儲存體帳戶不相容。 若要使用序列主控台，請確定您使用的是自訂的儲存體帳戶。
 
 ## <a name="get-started-with-the-serial-console"></a>開始使用序列主控台
 只有透過 Azure 入口網站，才能存取虛擬機器和虛擬機器擴展集的序列主控台：

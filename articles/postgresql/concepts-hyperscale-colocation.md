@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884423"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的資料表共置–超大規模 (Citus) 
@@ -47,7 +47,7 @@ CREATE TABLE page (
 
 現在我們想要回答客戶面向儀表板可能發出的查詢。 查詢範例是「傳回過去一周內，租使用者6中以 '/blog ' 開頭的所有頁面的造訪次數」。
 
-如果我們的資料是在單一伺服器部署選項中，我們可以使用 SQL 提供的一組豐富關聯式作業，輕鬆地表達我們的查詢：
+如果我們的資料位於 Single-Server 部署選項，我們可以使用 SQL 提供的一組豐富關聯式作業，輕鬆地表達我們的查詢：
 
 ```sql
 SELECT page_id, count(event_id)
@@ -96,7 +96,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 執行查詢必須查閱分散在各節點間分區的資料。
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="無效率的查詢":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="碎片":::
 
 在此情況下，資料散發會產生顯著的缺點：
 
@@ -134,10 +134,10 @@ GROUP BY page_id;
 
 由於 tenant_id 的篩選和聯結，超大規模 (Citus) 知道可以使用包含該特定租使用者資料的共置分區集合來回答整個查詢。 單一于 postgresql 節點可以單一步驟回答查詢。
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="更好的查詢":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="碎片":::
 
 在某些情況下，必須變更查詢和資料表架構，以在 unique 條件約束和聯結條件中包含租使用者識別碼。 這項變更通常很簡單。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 查看租使用者資料如何在 [多租使用者教學](tutorial-design-database-hyperscale-multi-tenant.md)課程中共置。

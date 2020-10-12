@@ -1,5 +1,5 @@
 ---
-title: 使用雲端 init 來設定 Linux VM 的主機名稱
+title: 使用雲端初始化來設定 Linux VM 的主機名稱
 description: 如何透過 Azure CLI 在建立期間使用 cloud-init 來自訂 Linux VM
 author: rickstercdn
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 85d2772596224a3c4252d950ca6ca8d6af02991b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373652"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>使用 cloud-init 為 Azure 上的 Linux 虛擬機器設定主機名稱
@@ -26,7 +26,7 @@ ms.locfileid: "87373652"
 hostname: myhostname
 ```
 
-部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
+部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

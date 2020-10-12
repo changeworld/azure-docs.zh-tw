@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670282"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure 監視器中撰寫進階查詢
 
 > [!NOTE]
-> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)和[開始使用查詢](get-started-queries.md)，再完成此課程。
+> 完成本課程之前，您應該先完成 [Azure 監視器 Log Analytics](get-started-portal.md) 和 [開始使用查詢](get-started-queries.md) 的入門。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -69,7 +69,7 @@ Event
 ```
 
 ## <a name="print"></a>列印
-`print` 將會傳回具有單欄與單列的表格，顯示計算的結果。 當您需要簡單的計算時，通常會使用這種方式。 例如，尋找太平洋標準時間 (PST) 的目前時間並加上美國東部標準時間 (EST) 欄：
+`print` 將會傳回具有單欄與單列的表格，顯示計算的結果。 這通常會在您需要簡單計算的情況下使用。 例如，尋找太平洋標準時間 (PST) 的目前時間並加上美國東部標準時間 (EST) 欄：
 
 ```Kusto
 print nowPst = now()-8h

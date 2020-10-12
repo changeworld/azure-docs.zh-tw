@@ -1,5 +1,5 @@
 ---
-title: 從 Oracle 服務雲端複製資料（預覽）
+title: 從 Oracle Service Cloud (Preview) 複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 Oracle Service Cloud 複製到支援的接收資料存放區。
 services: data-factory
 ms.author: jingwang
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: c3f9046bd0cca8cb191397413c09a72c4cc11c55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416803"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Oracle Service Cloud 複製資料 (預覽)
@@ -55,7 +55,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 密碼 | 密碼，與您在使用者名稱金鑰中提供的使用者名稱相對應。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
 **範例︰**
 

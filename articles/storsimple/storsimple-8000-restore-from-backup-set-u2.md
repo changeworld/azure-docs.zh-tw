@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527824"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>從備份組還原 StorSimple 磁碟區
@@ -27,7 +27,7 @@ ms.locfileid: "86527824"
 
 在開始還原之前，請先檢閱下列注意事項：
 
-* **必須使磁碟區離線** – 起始還原作業之前，同時讓主機和裝置上的磁碟區離線。 雖然還原作業會自動使裝置上的磁碟區連線，但您必須手動讓主機上的裝置連線。 在裝置上的磁碟區連線之後，您就可以立即讓主機上的磁碟區連線。 （您不需要等到還原作業完成。）如需相關程式，請移至將磁片區設為[離線](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)。
+* **必須使磁碟區離線** – 起始還原作業之前，同時讓主機和裝置上的磁碟區離線。 雖然還原作業會自動使裝置上的磁碟區連線，但您必須手動讓主機上的裝置連線。 在裝置上的磁碟區連線之後，您就可以立即讓主機上的磁碟區連線。  (您不需要等到還原作業完成 ) 。如需相關程式，請移至「 [讓磁片區離線](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)」。
 
 * **還原後的磁碟區類型** – 已刪除的磁碟區會根據快照集中的類型還原；亦即，固定在本機的磁碟機會還原為固定在本機的磁碟機，而分層磁碟機會還原為分層磁碟機。
 
@@ -82,7 +82,7 @@ ms.locfileid: "86527824"
 * **名稱** – 與備份組相關聯的備份原則或磁碟區的名稱。
 * **類型** – 備份組可以是本機快照或雲端快照。 本機快照是本機儲存於裝置上的所有磁碟區資料備份，而雲端快照是指位於雲端的磁碟區資料備份。 本機快照可提供更快速的存取，而雲端快照是選擇來進行資料復原。
 * **大小** – 備份組的實際大小。
-* **建立于**–建立備份的日期和時間。 
+* **建立** 日期-建立備份的日期和時間。 
 * **磁碟區** - 與備份組相關聯的磁碟區數目。
 * **起始方式** - 備份可根據排程自動起始，或由使用者手動起始。 (您可以使用備份原則來排程備份。 或者，可以使用 [進行備份]**** 選項來進行互動式或隨選備份。)
 
@@ -121,7 +121,7 @@ ms.locfileid: "86527824"
    
     ![確認電子郵件](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7. 按一下 [**還原**]。 這將會起始還原工作，而您可以存取 [工作]**** 頁面來檢視。
+7. 按一下 [還原]。 這將會起始還原工作，而您可以存取 [工作]**** 頁面來檢視。
 
    ![確認電子郵件](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "86527824"
 
 若要完成還原作業，請使主機上的磁碟區離線，然後重試還原作業。 請注意，在還原程序期間所執行的磁碟區資料修改將會遺失。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何 [管理 StorSimple 磁碟區](storsimple-8000-manage-volumes-u2.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

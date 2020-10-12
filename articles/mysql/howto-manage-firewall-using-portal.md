@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 7c5bc010653a936c00c5995142b5b34829591d24
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884703"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
@@ -26,7 +26,7 @@ ms.locfileid: "90884703"
 
 2. 按一下工具列上的 [新增我的 IP]****。 這樣會使用 Azure 系統發現的電腦公用 IP 位址自動建立防火牆規則。
 
-   :::image type="content" source="./media/howto-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure 入口網站 - 按一下 [新增我的 IP]":::
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure 入口網站按一下 [連接安全性]":::
 
 3. 儲存設定之前，請確認您的 IP 位址。 在某些情況下，Azure 入口網站觀察到的 IP 位址，不同於用來存取網際網路和 Azure 伺服器的 IP 位址。 因此，您可能需要變更起始 IP 和結束 IP，規則才會正常運作。
 
@@ -34,11 +34,11 @@ ms.locfileid: "90884703"
 
 4. 新增其他位址範圍。 在適用於 MySQL 的 Azure 資料庫的防火牆規則中，您可以指定單一 IP 位址或位址範圍。 如果您想要將規則限制到單一 IP 位址，請在 [起始 IP] 和 [結尾 IP] 欄位中輸入相同位址。 開放防火牆可讓系統管理員、使用者和應用程式存取他們在 MySQL 伺服器上具備有效認證的任何資料庫。
 
-   :::image type="content" source="./media/howto-manage-firewall-using-portal/4-specify-addresses.png" alt-text="Azure 入口網站防火牆規則":::
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/4-specify-addresses.png" alt-text="Azure 入口網站按一下 [連接安全性]":::
 
 5. 按一下工具列上的 [儲存]，儲存此伺服器等級防火牆規則。 等待確認已成功更新防火牆規則。
 
-   :::image type="content" source="./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png" alt-text="Azure 入口網站 - 按一下 [儲存]":::
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png" alt-text="Azure 入口網站按一下 [連接安全性]":::
 
 ## <a name="connecting-from-azure"></a>從 Azure 連線
 若要允許應用程式從 Azure 連線到您適用於 MySQL 的 Azure 資料庫伺服器，必須啟用 Azure 連線。 例如，裝載 Azure Web Apps 應用程式或在 Azure VM 中執行的應用程式，或是從 Azure Data Factory 資料管理閘道連線。 資源不需要在相同虛擬網路 (VNet) 或資源群組，防火牆規則就可以啟用這些連線。 當 Azure 的應用程式嘗試連線到您的資料庫伺服器時，防火牆會確認是否允許 Azure 連線。 有幾種方法可以啟用這些類型的連線。 開始和結束位址等於 0.0.0.0 的防火牆設定表示允許這些連線。 或者，您可以在入口網站的 [連線**安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為**ON** ，然後點擊 [**儲存**]。 如果不允許連線嘗試，要求就不會到達適用於 MySQL 的 Azure 資料庫伺服器。

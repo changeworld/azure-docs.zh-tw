@@ -1,6 +1,6 @@
 ---
 title: 支援 Azure Data Lake Storage Gen2 的開放原始碼平臺 |Microsoft Docs
-description: 瞭解支援的開放原始碼平臺 Azure Data Lake Storage Gen2
+description: 瞭解支援哪些開放原始碼平臺 Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 422b814f1d9738ca4f03d08dfecc6761b764f997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78196020"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>支援 Azure Data Lake Storage Gen2 的開放原始碼平台

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
 ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85609498"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>從 Azure Logic Apps 連線到 IBM MQ 伺服器
@@ -94,7 +94,7 @@ IBM MQ 連接器包含這些動作，但不提供任何觸發程序：
      > [!IMPORTANT]
      > 請確定您將憑證安裝在 [憑證-本機電腦]  >  [信任的根憑證授權單位] 存放區。
 
-* MQ server 會要求您定義要用於 TLS/SSL 連線的加密規格。 不過，.NET 中的 SslStream 不允許您指定加密規格的順序。 若要解決這項限制，您可以變更 MQ 伺服器設定，使其符合連接器在 TLS/SSL 協調中傳送的第一個加密規格。
+* MQ server 需要您定義要用於 TLS/SSL 連線的密碼規格。 不過，.NET 中的 SslStream 不允許您指定密碼規格的順序。 若要解決這項限制，您可以變更 MQ 伺服器設定，使其符合套件中的第一個加密規格（連接器會在 TLS/SSL 協商中傳送）。
 
   當您嘗試連線時，MQ 伺服器會記錄事件訊息，其中指出連線失敗是因為另一端使用了不正確的加密規格。 事件訊息包含第一個出現在清單中的加密規格。 更新通道設定中的加密規格，以符合事件訊息中的加密規格。
 

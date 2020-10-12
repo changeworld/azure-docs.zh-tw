@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973087"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中建立由計時器觸發的函式
@@ -36,15 +36,15 @@ ms.locfileid: "90973087"
 
 1. 在您的函式應用程式下，選取 [函數]，然後選取 [+ 新增]。 
 
-   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 1. 選取 [計時器觸發程序] 範本。 
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="在 Azure 入口網站中選取計時器觸發程序。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 1. 使用影像下方表格中指定的設定來設定新觸發程序，然後選取 [建立函式]。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="螢幕擷取畫面顯示已選取計時器觸發程式範本的 [新增函數] 頁面。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="已成功建立函數應用程式。" border="true":::
     
     | 設定 | 建議的值 | 描述 |
     |---|---|---|
@@ -55,11 +55,11 @@ ms.locfileid: "90973087"
 
 1. 在您的函式中，選取 [程式碼 + 測試]，然後展開記錄。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="在 Azure 入口網站中測試計時器觸發程序。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 1. 檢視寫入到記錄的資訊以確認執行情形。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="在 Azure 入口網站中檢視計時器觸發程序。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 現在，您可以變更函式的排程，使其每小時執行一次，而非每分鐘執行一次。
 
@@ -69,11 +69,11 @@ ms.locfileid: "90973087"
 
 1. 選取 [計時器 (myTimer)]。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="在 Azure 入口網站中更新計時器排程。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 1. 將 [排程] 值更新為 `0 0 */1 * * *`，然後選取 [儲存]。  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="函式便會在 Azure 入口網站中更新計時器排程。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 您現在已擁有每小時整點執行一次的函式。
 

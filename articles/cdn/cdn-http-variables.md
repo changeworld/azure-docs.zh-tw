@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 規則引擎的 HTTP 變數 | Microsoft Docs
-description: 瞭解 HTTP 變數，其可讓您取得某些規則引擎功能的 HTTP 要求和回應中繼資料。 使用中繼資料來改變要求/回應。
+description: 深入瞭解 HTTP 變數，這可讓您取得某些規則引擎功能的 HTTP 要求和回應中繼資料。 使用中繼資料來改變要求/回應。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192679"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 HTTP 變數
@@ -187,7 +187,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 下表示範此語法的運作方式。
 
-| 範例語法 | 結果 | Description |
+| 範例語法 | 結果 | 描述 |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | 由於變數是以該模式作為開頭，因此會被取代。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | 由於變數沒有以該模式作為結尾，因此沒有任何變更。|

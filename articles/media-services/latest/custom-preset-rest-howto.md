@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295626"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼-REST
@@ -151,6 +151,6 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 針對媒體服務將轉換套用至指定的影片或音訊，您需要在該轉換下提交作業。 如需示範如何在轉換下提交作業的完整範例，請參閱 [教學課程：串流影片檔案-REST](stream-files-tutorial-with-rest.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 查看 [其他 REST 作業](/rest/api/media/)

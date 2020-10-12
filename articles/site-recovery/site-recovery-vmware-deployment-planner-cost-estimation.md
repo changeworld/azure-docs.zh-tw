@@ -1,6 +1,6 @@
 ---
 title: 查看 Azure Site Recovery 部署規劃工具中的成本估計
-description: 這篇文章說明如何在 VMware 嚴重損壞修復的 Azure Site Recovery 部署規劃工具中，檢查成本估計。
+description: 此文章說明如何在 Azure Site Recovery 部署規劃工具中檢查 VMware 嚴重損壞修復的成本估計。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528956"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>查看 VMware 部署規劃工具中的成本估計 
@@ -19,7 +19,7 @@ ms.locfileid: "86528956"
 部署規劃工具報告在[建議](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)工作表中提供成本估計摘要，以及在成本估計工作表中提供詳細的成本分析。 其中包含每部 VM 的詳細成本分析。 
 
 >[!Note]
->部署規劃工具的最新版本會針對複寫至受控磁碟的 Vm 提供成本預估。
+>部署規劃工具的最新版本，可針對複寫至受控磁碟的 Vm 提供成本估計。
 
 ### <a name="cost-estimation-summary"></a>成本估計摘要 
 此圖形會就您所選的目標區域和您針對報告產生所指定的貨幣，顯示災害復原 (DR) 至 Azure 之估計總成本的摘要檢視。
@@ -101,7 +101,7 @@ DR 總成本是根據兩個不同的狀態來分類 - 複寫和 DR 演練。
 
 * VM 數目、IaaS 大小 (您的選擇)
 * 儲存體類型 (標準/進階)
-* 來源機器的 VM 總儲存體大小（GB）
+* 來源電腦的 VM 總儲存體大小 (GB) 
 * 一年中的 DR 演練次數 
 * 每次 DR 演練持續時間 (天) 
 * OS 類型
@@ -122,7 +122,7 @@ DR 總成本是根據兩個不同的狀態來分類 - 複寫和 DR 演練。
 
 **儲存體類型**：VM 所使用的儲存體類型。 這是標準或進階儲存體。
 
-**VM 總儲存體大小（GB）**：來源 vm 的總儲存體。
+**VM 總儲存體大小 (GB) **：來源 VM 的總儲存體。
 
 **一年中的 DR 演練次數**：您在一年中執行 DR 演練的次數。 根據預設，一年中有 4 次。 在頂端列輸入新值，然後按一下 [套用到全部] 按鈕，即可修改特定 VM 的期間，或將新值套用至所有 VM。 根據一年中的 DR 演練次數和每次 DR 演練持續期間，計算 DR 演練總成本。  
 
@@ -161,5 +161,5 @@ Azure Site Recovery 部署規劃工具可以使用下列任何貨幣來產生成
 |SAR 里亞爾|沙烏地里亞爾 (SR)|瑞典克朗|瑞典克朗 (kr)|新台幣|新台幣 (NT$)|
 |土耳其里拉|土耳其里拉 (TL)|美元| 美元 ($)|南非幣|南非蘭特 (R)|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解[使用 Azure Site Recovery 在 Azure 中保護 VMware](./vmware-azure-tutorial.md)。

@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77614573"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>大型執行個體的其他網路需求
@@ -38,7 +38,7 @@ ms.locfileid: "77614573"
 
 ## <a name="increase-expressroute-circuit-bandwidth"></a>增加 ExpressRoute 線路頻寬
 
-請洽詢「SAP HANA on Microsoft 服務管理」。 如果他們建議您增加 SAP HANA on Azure (大型執行個體) ExpressRoute 線路的頻寬，請建立 Azure 支援要求。 （您可以要求增加單一線路頻寬，最多 10 Gbps）。您接著會在作業完成之後收到通知;您不需要執行其他任何動作，即可在 Azure 中啟用這個較高的速度。
+請洽詢「SAP HANA on Microsoft 服務管理」。 如果他們建議您增加 SAP HANA on Azure (大型執行個體) ExpressRoute 線路的頻寬，請建立 Azure 支援要求。  (您可以要求增加到最多 10 Gbps 的單一線路頻寬。 ) 之後，您會在作業完成時收到通知;您不需要採取任何其他動作，即可在 Azure 中啟用這個較高的速度。
 
 ## <a name="add-an-additional-expressroute-circuit"></a>新增額外的 ExpressRoute 線路
 
@@ -48,7 +48,7 @@ ms.locfileid: "77614573"
 
 ## <a name="delete-a-subnet"></a>刪除子網路
 
-若要移除虛擬網路子網路，您可以使用 Azure 入口網站、PowerShell 或 Azure CLI。 如果您的 Azure 虛擬網路 IP 位址範圍或位址空間是一個彙總的範圍，Microsoft 就無須為您提供後續的協助。 （請注意，虛擬網路仍會傳播包含已刪除之子網的 BGP 路由位址空間）。您可能已將 Azure 虛擬網路位址範圍或位址空間定義為多個 IP 位址範圍，其中一個已指派給您已刪除的子網。 請務必先從您的虛擬網路位址空間中刪除該範圍。 接著，請通知「SAP HANA on Microsoft 服務管理」，以將其從可與 SAP HANA on Azure (大型執行個體) 通訊的範圍中移除。
+若要移除虛擬網路子網路，您可以使用 Azure 入口網站、PowerShell 或 Azure CLI。 如果您的 Azure 虛擬網路 IP 位址範圍或位址空間是一個彙總的範圍，Microsoft 就無須為您提供後續的協助。 但 (請注意，虛擬網路仍在傳播包含已刪除之子網的 BGP 路由位址空間。 ) 您可能已將 Azure 虛擬網路位址範圍或位址空間定義為多個 IP 位址範圍，其中一個是指派給已刪除子網的 IP 位址範圍。 請務必先從您的虛擬網路位址空間中刪除該範圍。 接著，請通知「SAP HANA on Microsoft 服務管理」，以將其從可與 SAP HANA on Azure (大型執行個體) 通訊的範圍中移除。
 
 如需詳細資訊，請參閱[刪除子網路](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)。
 

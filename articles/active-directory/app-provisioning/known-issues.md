@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.reviewer: arvinh
 ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052373"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
@@ -87,5 +87,5 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 當群組在範圍內，而成員超出範圍時，就會布建群組。 不會布建超出範圍的使用者。 如果成員回到範圍中，服務將不會立即偵測變更。 重新開機布建將會解決此問題。 建議您定期重新開機服務，以確保所有使用者都已正確布建。  
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [佈建運作方式](how-provisioning-works.md)

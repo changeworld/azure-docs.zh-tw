@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973591"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>即時計量資料流︰以 1 秒的延遲進行監視與診斷
@@ -238,7 +238,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 ## <a name="supported-features-table"></a>支援的功能資料表
 
-| 語言                         | 基本計量       | 效能度量 | 自訂篩選    | 範例遙測    | 依進程分割的 CPU |
+| Language                         | 基本計量       | 效能度量 | 自訂篩選    | 範例遙測    | 依進程分割的 CPU |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
 | .NET Framework                   | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)   |
 | .NET Core (target = .NET Framework) | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)   |
@@ -259,7 +259,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 即時計量資料流會使用與其他 Application Insights 遙測不同的 IP 位址。 請確定[這些 IP 位址](./ip-addresses.md)在您的防火牆中為開啟狀態。 此外，請檢查 [即時計量資料流的傳出埠](./ip-addresses.md#outgoing-ports) 是否已在您伺服器的防火牆中開啟。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Application Insights 監視使用情況](./usage-overview.md)
 * [使用診斷搜尋](./diagnostic-search.md)

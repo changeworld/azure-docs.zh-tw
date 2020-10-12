@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085228"
 ---
 要診斷 Microsoft Azure 雲端服務的問題，必須在問題發生時收集服務在虛擬機器上的記錄檔。 您可以視需要使用 AzureLogCollector 延伸模組，從一或多個雲端服務虛擬機器 (從 Web 角色和背景工作角色) 執行一次性的記錄收集作業，並將收集到的檔案傳輸到 Azure 儲存體帳戶，完全不必遠端登入任何虛擬機器。
 
 > [!NOTE]
-> 如需大部分已記錄資訊的說明，請參閱https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
+> 大部分記錄資訊的描述位於 https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
 根據要收集的檔案類型，會有兩種收集模式。
 
-* **僅限 Azure 來賓代理程式記錄（GA）**。 此收集模式包含所有與 Azure 客體代理程式和其他 Azure 元件相關的記錄。
-* **所有記錄（完整）**。 此收集模式會收集 GA 模式中的所有檔案，外加：
+* **Azure 來賓代理程式只會記錄 (GA) **。 此收集模式包含所有與 Azure 客體代理程式和其他 Azure 元件相關的記錄。
+* **所有記錄 (完整) **。 此收集模式會收集 GA 模式中的所有檔案，外加：
   
   * 系統和應用程式事件記錄
   * HTTP 錯誤記錄
@@ -36,12 +36,12 @@ ms.locfileid: "74085228"
 * **SearchPattern**：要收集之檔案的名稱模式。 預設值為 “\*”
 * **遞迴**：如果要收集的檔案以遞迴方式位於指定位置底下。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 * 擁有儲存體帳戶可進行擴充，以儲存產生的 ZIP 檔案。
-* Azure PowerShell。 如需安裝指示，請參閱[install Azure PowerShell](/powershell/azure/install-az-ps)]。
+* Azure PowerShell。 如需安裝指示，請參閱 [安裝 Azure PowerShell](/powershell/azure/install-az-ps)]。
 
 ## <a name="add-the-extension"></a>新增延伸模組
 您可以使用 [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) Cmdlet 或[服務管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx)，來新增 AzureLogCollector 延伸模組。
@@ -181,7 +181,7 @@ param (
 * **Roles**：一份角色清單，例如 “WebRole1” 或 ”WorkerRole1”。
 * **Instances**：一份以逗號分隔的角色執行個體名稱 -- 所有角色執行個體皆使用萬用字元字串 ("*")。
 * **Slot**：位置名稱。 「生產」或「預備」。
-* **Mode**：收集模式。 「完整」或「GA」。
+* **模式**：收集模式。 「完整」或「GA」。
 * **StorageAccountName**：用來儲存收集之資料的 Azure 儲存體帳戶名稱。
 * **StorageAccountKey**： Azure 儲存體帳戶金鑰的名稱。
 * **AdditionalDataLocationList**：下列結構的清單：
@@ -261,7 +261,7 @@ param (
 
 * **ServiceName**：您的雲端服務名稱。
 * **VMName**： VM 的名稱。
-* **Mode**：收集模式。 「完整」或「GA」。
+* **模式**：收集模式。 「完整」或「GA」。
 * **StorageAccountName**：用來儲存收集之資料的 Azure 儲存體帳戶名稱。
 * **StorageAccountKey**： Azure 儲存體帳戶金鑰的名稱。
 * **AdditionalDataLocationList**：下列結構的清單：

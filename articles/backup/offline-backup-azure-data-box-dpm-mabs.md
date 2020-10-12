@@ -4,10 +4,10 @@ description: 您可以使用 Azure 資料箱從 DPM 與 MABS 離線植入初始�
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271489"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (Preview) 的 Azure 資料箱進行離線植入

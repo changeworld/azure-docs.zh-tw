@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311592"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 遷移至 v2
@@ -37,7 +37,7 @@ ms.locfileid: "91311592"
 * 新的 v2 閘道具有新的公用和私人 IP 位址。 您無法將與現有 v1 閘道聯的 IP 位址順暢地移至 v2。 不過，您可以將現有的 (未配置) 公用或私人 IP 位址配置給新的 v2 閘道。
 * 您必須為您的 v1 閘道所在的虛擬網路內的另一個子網提供 IP 位址空間。 腳本無法在任何已有 v1 閘道的現有子網中建立 v2 閘道。 但是，如果現有的子網已經有 v2 閘道，在有足夠的 IP 位址空間時，仍可正常運作。
 * 如果您有與 v2 閘道子網相關聯的網路安全性群組或使用者定義的路由，請確定其符合成功遷移的[NSG 需求](../application-gateway/configuration-infrastructure.md#network-security-groups)和[UDR 需求](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes)
-* 應用程式閘道子網目前不支援[虛擬網路服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
+* 應用程式閘道子網路中目前不支援[虛擬網路服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 * 若要遷移 TLS/SSL 設定，您必須指定 v1 閘道中使用的所有 TLS/SSL 憑證。
 * 如果您的 V1 閘道已啟用 FIPS 模式，則不會遷移至新的 v2 閘道。 V2 不支援 FIPS 模式。
 * v2 不支援 IPv6，所以已啟用 IPv6 的 v1 閘道不會遷移。 如果您執行腳本，則可能無法完成。
@@ -57,7 +57,7 @@ ms.locfileid: "91311592"
 
 若要判斷您是否已安裝 Azure Az 模組，請執行 `Get-InstalledModule -Name az` 。 如果您沒有看到任何已安裝的 Az 模組，則可以使用 `Install-Script` 方法。
 
-### <a name="install-using-the-install-script-method"></a>使用安裝腳本方法安裝
+### <a name="install-using-the-install-script-method"></a>使用 Install-Script 方法安裝
 
 若要使用此選項，您的電腦上不能安裝 Azure Az 模組。 如果已安裝，則下列命令會顯示錯誤。 您可以卸載 Azure Az 模組，或使用另一個選項來手動下載腳本並加以執行。
   
@@ -174,11 +174,11 @@ ms.locfileid: "91311592"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>將設定從 v1 遷移至 v2 的 Azure PowerShell 腳本是否有任何限制？
 
-可以。 請參閱 [警告/限制](#caveatslimitations)。
+是。 請參閱 [警告/限制](#caveatslimitations)。
 
 ### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>本文和適用于應用程式閘道 WAF 產品的 Azure PowerShell 腳本是否也適用？ 
 
-可以。
+是。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell 腳本是否也會將來自 v1 閘道的流量切換至新建立的 v2 閘道？
 

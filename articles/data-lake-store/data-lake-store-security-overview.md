@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192835"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
@@ -39,7 +39,7 @@ ms.locfileid: "88192835"
 
 在使用者通過 Azure Active Directory 驗證因而可以存取 Data Lake Storage Gen1 之後，授權便會控制 Data Lake Storage Gen1 的存取權限。 Data Lake Storage Gen1 會以下列方式分隔授權的帳戶以及資料相關的活動：
 
-* Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)進行帳戶管理
+* [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以進行帳戶管理
 * 適用於存取存放區資料的 POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>用於帳戶管理的 RBAC
@@ -54,7 +54,7 @@ ms.locfileid: "88192835"
 | --- | --- | --- | --- |
 | 未指派角色 |無 |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
 | 擁有者 |全部 |全部 |擁有者角色是超級使用者。 此角色可管理所有事項，且具有資料的完整存取權。 |
-| 讀者 |唯讀 |由 ACL 控管 |讀取者角色可以檢視有關帳戶管理的所有事項，例如哪個使用者被指派給哪個角色。 讀取者角色無法進行任何變更。 |
+| 讀取者 |唯讀 |由 ACL 控管 |讀取者角色可以檢視有關帳戶管理的所有事項，例如哪個使用者被指派給哪個角色。 讀取者角色無法進行任何變更。 |
 | 參與者 |除了新增和移除角色以外的一切 |由 ACL 控管 |參與者角色可以管理帳戶的某些層面，例如部署以及警示建立和管理。 參與者無法新增或移除角色。 |
 | 使用者存取系統管理員 |新增和移除角色 |由 ACL 控管 |使用者存取管理員角色可管理使用者對帳戶的存取權。 |
 
@@ -105,7 +105,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 ### <a name="diagnostics-logs"></a>診斷記錄
 
-您可以在 Azure 入口網站中啟用資料存取 audit 和診斷記錄，並將記錄傳送到 Azure Blob 儲存體帳戶、事件中樞或 Azure 監視器記錄。
+您可以在 Azure 入口網站中啟用資料存取審核和診斷記錄，並將記錄傳送至 Azure Blob 儲存體帳戶、事件中樞或 Azure 監視器記錄。
 
 ![診斷記錄](./media/data-lake-store-security-overview/diagnostic-logs.png "診斷記錄")
 
@@ -117,7 +117,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如果您想要在 Data Lake Storage Gen1 中看到新功能，請在 [Data Lake Storage Gen1 UserVoice 論壇](https://feedback.azure.com/forums/327234-data-lake)將您的意見反應傳給我們。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)

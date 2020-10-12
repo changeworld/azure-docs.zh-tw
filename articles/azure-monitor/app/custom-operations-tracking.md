@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933302"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
@@ -170,7 +170,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>程序
+#### <a name="process"></a>處理序
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -301,7 +301,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>程序
+#### <a name="process"></a>處理序
 
 在下列範例中，追蹤連入訊息的方式類似於追蹤連入 HTTP 要求的方式：
 
@@ -476,7 +476,7 @@ public async Task RunAllTasks()
 
 每個 Application Insights 作業 (要求或相依性) 牽涉到 `Activity` `StartOperation` 呼叫時，它會在下方建立活動。 `StartOperation` 建議您以手動方式追蹤要求或相依性遙測，並確保所有專案相互關聯。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解 Application Insights 中[遙測相互關聯](correlation.md)的基本概念。
 - 查看相互關聯資料如何支援 [交易診斷體驗](./transaction-diagnostics.md) 和 [應用程式對應](./app-map.md)。

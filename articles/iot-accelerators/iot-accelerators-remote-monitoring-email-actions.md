@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74168358"
 ---
 # <a name="add-an-email-action"></a>新增電子郵件動作
@@ -49,7 +49,7 @@ ms.locfileid: "74168358"
 
 1. 確定 [規則狀態]**** 已設為 [已啟用]****。
 
-1. 按一下 [套用] 。
+1. 按一下 [套用]。
 
 ## <a name="create-a-new-rule"></a>建立新的規則
 
@@ -77,7 +77,7 @@ ms.locfileid: "74168358"
 
 1. 確定 [規則狀態]**** 已設為 [已啟用]****。
 
-1. 按一下 [套用] 。
+1. 按一下 [套用]。
 
 現在已啟用您具有電子郵件動作的規則。 每次觸發此動作時，就會將新的電子郵件傳送給收件者。
 
@@ -132,7 +132,7 @@ ms.locfileid: "74168358"
 
 1. 按一下 [授權]****。 系統會提示您登入。 您用來登入的帳戶應該是應用程式用來傳送電子郵件通知的電子郵件地址：
 
-1. 按一下 [檔案] 。 移至您的解決方案加速器並重新整理頁面。
+1. 按一下 [儲存]。 移至您的解決方案加速器並重新整理頁面。
 
 1. 如果您已成功設定電子郵件通知，您會看到此訊息：
 

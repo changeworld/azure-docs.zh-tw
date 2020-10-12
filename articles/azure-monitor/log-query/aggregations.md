@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670299"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的彙總
@@ -72,7 +72,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>評估子群組
-若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，若要計算在每個國家/地區傳送了心跳的相異 Linux 電腦數目：
+若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，若要計算每個國家/地區中傳送之心跳的相異 Linux 電腦數目：
 
 ```Kusto
 Heartbeat 
@@ -89,7 +89,7 @@ Heartbeat
 |荷蘭      | 2                   |
 
 
-若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能會想要計算每個 OSType 每個國家/地區的相異電腦數：
+若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能會想要計算每個國家/地區每個 OSType 的相異電腦數：
 
 ```Kusto
 Heartbeat 
@@ -121,7 +121,7 @@ Perf
 
 這可能會顯示某些電腦 CPU 有相同的中位數，但某些電腦 CPU 都持續接近中位數，而其他電腦則回報低很多與高很多的 CPU 值，表示它們遇到峰值。
 
-### <a name="variance"></a>Variance
+### <a name="variance"></a>變異數
 若要直接評估值的變異數，請使用標準差與變異數方法：
 
 ```Kusto

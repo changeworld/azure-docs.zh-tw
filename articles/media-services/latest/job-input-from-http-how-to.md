@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e440e4393065d2bc1cad1a96b4f8c975624faa11
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295507"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>從 HTTPS URL 建立工作輸入
@@ -37,6 +37,6 @@ ms.locfileid: "89295507"
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [從本機檔案建立工作輸入](job-input-from-local-file-how-to.md).

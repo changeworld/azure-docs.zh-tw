@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77617066"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>從 HANA 端進行監視和疑難排解
@@ -35,7 +35,7 @@ ms.locfileid: "77617066"
 
 ## <a name="sap-hana-alerts"></a>SAP HANA 警示
 
-第一個步驟是查看目前的 SAP HANA 警示記錄。 在 SAP Hana Studio 中，移至 [**管理主控台：警示：顯示：所有警示**]。 此索引標籤會顯示在所設定最小和最大臨界值範圍外之特定值的所有 SAP HANA 警示 (可用實體記憶體、CPU 使用率等)。 根據預設，檢查會每隔 15 分鐘自動重新整理一次。
+第一個步驟是查看目前的 SAP HANA 警示記錄。 在 SAP Hana Studio 中，移至 [ **管理主控台：警示：顯示：所有警示**]。 此索引標籤會顯示在所設定最小和最大臨界值範圍外之特定值的所有 SAP HANA 警示 (可用實體記憶體、CPU 使用率等)。 根據預設，檢查會每隔 15 分鐘自動重新整理一次。
 
 ![在 SAP HANA Studio 中，移至 [Administration Console: Alerts: Show: all alerts] \(管理主控台：警示：顯示：所有警示)。](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
@@ -62,7 +62,7 @@ Load (負載) 圖表可能會顯示 CPU 耗用量過高，或過去耗用量過�
 
 ![Load (負載) 圖表可能會顯示 CPU 耗用量過高，或過去耗用量過高](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-由於 CPU 使用率過高而觸發的警示可能是由多種原因所造成，包括但不限於：執行特定交易、資料載入、沒有回應的作業、長時間執行的 SQL 語句，以及不良的查詢效能（例如，在 HANA cube 上使用 BW）。
+由於高 CPU 使用率所造成的警示，可能有許多原因，包括（但不限於）執行某些交易、資料載入、沒有回應的作業、長時間執行的 SQL 語句，以及不正確的查詢效能 (例如，在 HANA cube) 上使用 BW。
 
 如需詳細的疑難排解步驟，請參考 [SAP HANA 疑難排解：CPU 相關的原因和解決方案](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)網站。
 
@@ -75,7 +75,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 以下 Linux 命令應該不會傳回任何項目：**rpm -qa | grep ulimit**。 如果顯示安裝的是 _ulimit_，請立即將它解除安裝。
 
-## <a name="memory"></a>Memory
+## <a name="memory"></a>記憶體
 
 您可能會注意到 SAP HANA 資料庫所配置的記憶體數量高於預期。 下列警示表示有記憶體使用量過高的問題：
 
@@ -107,7 +107,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ## <a name="storage"></a>儲存體
 
-從使用者的觀點來看，應用程式（或整個系統）會執行緩慢、沒有回應，或甚至可能會在 i/o 效能發生問題時停止回應。 在 SAP HANA Studio 的 [Volumes] \(磁碟區)**** 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。
+從使用者的觀點來看，應用程式 (或整個) 的系統會執行緩慢、沒有回應，或者即使 i/o 效能有問題，也可能會停止回應。 在 SAP HANA Studio 的 [Volumes] \(磁碟區)**** 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。
 
 ![在 SAP HANA Studio 的 [Volumes] \(磁碟區) 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -123,7 +123,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 請參考 [SAP 附註 #1969700 - SAP HANA 的 SQL 陳述式集合](https://launchpad.support.sap.com/#/notes/1969700)，並下載該附註隨附的 SQL Statements.zip 檔案。 請將這個 .zip 檔案儲存在本機硬碟。
 
-在 SAP Hana Studio 的 [**系統資訊**] 索引標籤上，以滑鼠右鍵按一下 [**名稱**] 資料行，然後選取 [匯**入 SQL 語句]**。
+在 SAP Hana Studio 的 [ **系統資訊** ] 索引標籤上，以滑鼠右鍵按一下 [ **名稱** ] 資料行，然後選取 [匯 **入 SQL 語句]**。
 
 ![在 SAP HANA Studio 的 [System Information] \(系統資訊) 索引標籤上，於 [Name] \(名稱) 資料行上按一下滑鼠右鍵，然後選取 [Import SQL Statements] \(匯入 SQL 陳述式)](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
@@ -135,7 +135,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ![將會開啟完整的 SQL 陳述式，讓您變更輸入參數 (modification 區段)，然後加以執行](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一個範例是在 [Replication: Overview] \(複寫：概觀)**** 底下的陳述式上按一下滑鼠右鍵。 從內容功能表中選取 [**執行**]：
+另一個範例是在 [Replication: Overview] \(複寫：概觀)**** 底下的陳述式上按一下滑鼠右鍵。 從內容功能表中選取 [ **執行** ]：
 
 ![另一個範例是在 [Replication: Overview] \(複寫：概觀) 底下的陳述式上按一下滑鼠右鍵。 從操作功能表中，選取 [Execute] \(執行)](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -163,7 +163,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ![HANA\_Configuration\_Overview\_Rev110+：：適用於 SAP HANA 執行個體的一般相關資訊](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA \_設定 \_ 參數 \_ rev70: 用 +** 以檢查 SAP Hana 參數。
+**HANA \_設定 \_ 參數 \_ Rev70 +** 檢查 SAP Hana 參數。
 
 ![HANA\_Configuration\_Parameters\_Rev70+：用來檢查 SAP HANA 參數](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

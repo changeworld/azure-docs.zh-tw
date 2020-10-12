@@ -4,10 +4,10 @@ description: 使用 Microsoft Azure 復原服務 (MARS) 代理程式來備份 Wi
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052217"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>將 Windows Server 檔案和資料夾備份至 Azure
@@ -53,7 +53,7 @@ Azure 備份不會自動將日光節約時間 (DST) 列入考慮。 此預設值
     ![選取要備份的項目](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. 在 [ **選取要備份的專案** ] 頁面上，選取 **[下一步]**。
-1. 在 [ **指定備份排程** ] 頁面上，指定每日或每週備份的時間。 然後，選取 [下一步]。
+1. 在 [ **指定備份排程** ] 頁面上，指定每日或每週備份的時間。 然後選取 [下一步]。
 
     * 執行備份時，會建立復原點。
     * 在您的環境中建立的復原點數目取決於您的備份排程。
@@ -65,7 +65,7 @@ Azure 備份不會自動將日光節約時間 (DST) 列入考慮。 此預設值
 
         ![設定每週備份排程](./media/backup-configure-vault/week-schedule.png)
 
-1. 在 [ **選取保留原則** ] 頁面上，指定如何儲存資料的歷程記錄複本。 然後，選取 [下一步]。
+1. 在 [ **選取保留原則** ] 頁面上，指定如何儲存資料的歷程記錄複本。 然後選取 [下一步]。
 
     * 保留設定會指定要儲存的復原點，以及儲存它們的時間長度。
     * 針對每日保留設定，您表示在指定的每日保留時間內，最新的復原點會保留指定的天數。 或者，您可以指定每月的保留原則，以指出在每個月的30日建立的復原點應儲存12個月。
@@ -155,7 +155,7 @@ Azure 備份中的網路節流會使用本機作業系統上的 [服務品質 (Q
 
 如需詳細資訊，請參閱 [建立備份原則](#create-a-backup-policy)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [在 Azure 中還原](backup-azure-restore-windows-server.md)檔案。
 * 尋找 [有關備份檔案和資料夾的常見問題](backup-azure-file-folder-backup-faq.md)

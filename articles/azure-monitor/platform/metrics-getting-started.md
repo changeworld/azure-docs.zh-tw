@@ -8,10 +8,10 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590178"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
@@ -42,7 +42,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 4. （選擇性）您可以 [變更計量匯總](metrics-charts.md#changing-aggregation)。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
 
 > [!TIP]
-> 如果您想要查看在相同圖表中繪製的多個計量，請使用 [新增計量]**** 按鈕，並重複前述步驟。 針對單一視圖中的多個圖表，選取頂端的 [ **新增圖表** ] 按鈕。
+> 如果您想要查看在相同圖表中繪製的多個計量，請使用 [新增計量]  按鈕，並重複前述步驟。 針對單一視圖中的多個圖表，選取頂端的 [ **新增圖表** ] 按鈕。
 
 ## <a name="select-a-time-range"></a>選取時間範圍
 
@@ -70,7 +70,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 您可以自訂圖表樣式、標題，以及修改進階圖表設定。 完成自訂後，請將其釘選到儀表板，以儲存您的工作。 您也可以設定計量警示。 遵循 [產品檔](metrics-charts.md) ，瞭解 Azure 監視器計量瀏覽器的這些功能和其他先進功能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [瞭解計量瀏覽器的 advanced 功能](metrics-charts.md)
 * [計量瀏覽器的疑難排解](metrics-troubleshoot.md)

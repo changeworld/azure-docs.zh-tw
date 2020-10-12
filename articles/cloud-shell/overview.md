@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
 ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89468652"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概觀
@@ -47,7 +47,7 @@ Azure Cloud Shell 是可經由瀏覽器存取的已驗證互動式殼層，應�
 
     若要執行命令，請使用程式碼片段中的 [**複製**]、使用**Ctrl** + **shift** + **v** (Windows/Linux) 或**Cmd** + **shift** + **v** (macOS) 貼上命令，然後按**enter**鍵。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 ### <a name="browser-based-shell-experience"></a>以瀏覽器為基礎的體驗
 
@@ -117,7 +117,7 @@ Cloud Shell 的機器是暫時性的，但您的檔案會以兩種方式保存�
 
 裝載 Cloud Shell 的機器是免費提供的，但前提是必須掛接「Azure 檔案」共用。 所需成本和一般儲存體相同。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [Cloud Shell 中 Bash 的快速入門](quickstart.md) <br>
 [Cloud Shell 中 PowerShell 的快速入門](quickstart-powershell.md)

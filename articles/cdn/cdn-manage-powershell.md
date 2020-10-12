@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 管理 Azure CDN | Microsoft Docs
-description: 使用此教學課程來瞭解如何使用 PowerShell 來管理 Azure 內容傳遞網路端點設定檔和端點的各個層面。
+description: 您可以使用本教學課程來瞭解如何使用 PowerShell 來管理 Azure 內容傳遞網路端點設定檔和端點的各個層面。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
 ms.openlocfilehash: b5fa1cedf4cc5e87d11dc4b5c453d9cb2a307c3c
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192657"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>使用 PowerShell 管理 Azure CDN
@@ -251,7 +251,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
 ## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>建立標準規則引擎原則並套用至現有的 CDN 端點
-`New-AzCdnDeliveryRule`、 `New=AzCdnDeliveryRuleCondition` 和 `New-AzCdnDeliveryRuleAction` 可以用來在來自 Microsoft 的 azure cdn 設定檔中設定 Azure Cdn 標準規則引擎。 
+`New-AzCdnDeliveryRule`、 `New=AzCdnDeliveryRuleCondition` 和 `New-AzCdnDeliveryRuleAction` 可以用來在 azure cdn 上設定 Microsoft 設定檔的 Azure Cdn 標準規則引擎。 
 
 ```powershell
 # Create a new http to https redirect rule

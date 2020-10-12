@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416756"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 PostgreSQL 複製資料
@@ -54,7 +54,7 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 
 以下是針對 PostgreSQL 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**PostgreSql** | 是 |
 | connectionString | ODBC 連接字串，用於連線到適用於 PostgreSQL 的 Azure 資料庫。 <br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
@@ -143,7 +143,7 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 
 若要從于 postgresql 複製資料，支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **PostgreSqlTable** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
@@ -168,7 +168,7 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 }
 ```
 
-如果您使用的 `RelationalTable` 是具類型的資料集，則仍會受到支援，但建議您在未來使用新的 dataset。
+如果您使用的 `RelationalTable` 是具類型的資料集，則仍可依原樣受到支援，但建議您繼續使用新的資料集。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -176,11 +176,11 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 
 ### <a name="postgresql-as-source"></a>PostgreSQL 作為來源
 
-若要從于 postgresql 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
+若要從于 postgresql 複製資料，[複製活動 **來源** ] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為： **PostgreSqlSource** | 是 |
+| type | 複製活動來源的 type 屬性必須設定為： **PostgreSqlSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"query": "SELECT * FROM \"MySchema\".\"MyTable\""` 。 | 否 (如果已指定資料集中的 "tableName") |
 
 > [!NOTE]

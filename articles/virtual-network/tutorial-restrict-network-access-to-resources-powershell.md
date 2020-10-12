@@ -18,10 +18,10 @@ ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 92a5ce539cdd61feb57722756ec8722916f346de
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89072378"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>透過使用 PowerShell 和虛擬網路服務端點來限制對 PaaS 資源的網路存取
@@ -37,7 +37,7 @@ ms.locfileid: "89072378"
 * 確認從子網路對資源的存取
 * 確認從子網路和網際網路對資源的存取遭到拒絕
 
-如您尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -205,7 +205,7 @@ $storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 
 使用 [AzStorageShare](/powershell/module/az.storage/new-azstorageshare)建立檔案共用：
 
-$share = AzStorageShare my-檔案共用-CoNtext $storageCoNtext
+$share = New-AzStorageShare 我的檔案共用-內容 $storageCoNtext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>拒絕所有對儲存體帳戶的網路存取
 
@@ -297,7 +297,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
+將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]  。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
 
 在 myVmPrivate** VM 上，使用 PowerShell 將 Azure 檔案共用對應至磁碟機 Z。 在執行後續命令之前，請將 `<storage-account-key>` 和 `<storage-account-name>` 取代為您在[建立儲存體帳戶](#create-a-storage-account)中提供或取出的值。
 

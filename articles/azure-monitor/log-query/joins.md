@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670197"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的聯結
 
 > [!NOTE]
-> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)並[Azure 監視器記錄查詢](get-started-queries.md)，再完成此課程。
+> 完成本課程之前，您應該先完成 [Azure 監視器 Log Analytics](get-started-portal.md) 和 [Azure 監視器記錄查詢](get-started-queries.md) 的入門。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -79,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>聯結類型
 使用 _kind_ 引數指定聯結類型。 每種類型都會在給定資料表的記錄之間執行不同的比對，如下表所示。
 
-| 聯結類型 | Description |
+| 聯結類型 | 描述 |
 |:---|:---|
 | innerunique | 這是預設聯結模式。 首先，系統會找到左側資料表上的相符資料行，然後移除重複值。  接著，會和右側資料表比對唯一值集合。 |
 | inner | 只有兩個資料表中都有的相符記錄才會包含在結果中。 |

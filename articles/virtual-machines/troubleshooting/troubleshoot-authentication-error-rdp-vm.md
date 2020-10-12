@@ -1,6 +1,6 @@
 ---
 title: 針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解 | Microsoft Docs
-description: 瞭解如何對使用遠端桌面通訊協定（RDP）連線到 Azure 虛擬機器（VM）時所發生的驗證錯誤進行疑難排解。
+description: 瞭解如何針對使用遠端桌面通訊協定 (RDP) 連接至 Azure 虛擬機器 (VM) 時所發生的驗證錯誤進行疑難排解。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088558"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
 
 本文可協助您針對使用「遠端桌面通訊協定」(RDP) 連線來連線至 Azure 虛擬機器 (VM) 時發生的驗證錯誤進行疑難排解。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您擷取一個顯示「歡迎」畫面並指出作業系統正在執行的 Azure VM 螢幕擷取畫面。 不過，當您嘗試使用「遠端桌面連線」來連線到該 VM 時，收到下列其中一個錯誤訊息。
 
@@ -35,11 +35,11 @@ ms.locfileid: "87088558"
 
 ### <a name="error-message-2"></a>錯誤訊息 2
 
-**您嘗試連線的遠端電腦需要網路層級驗證（NLA），但無法連線到您的 Windows 網域控制站來執行 NLA。如果您是遠端電腦上的系統管理員，您可以使用 [系統內容] 對話方塊的 [遠端] 索引標籤上的選項來停用 NLA。**
+**您嘗試連接的遠端電腦需要網路層級驗證 (NLA) ，但無法連絡您的 Windows 網域控制站來執行 NLA。如果您是遠端電腦上的系統管理員，您可以使用 [系統內容] 對話方塊的 [遠端] 索引標籤上的選項停用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>錯誤訊息 3 (一般連線錯誤)
 
-**這部電腦無法連接到遠端電腦。再次嘗試連線，如果問題持續發生，請洽詢遠端電腦的擁有者或您的網路系統管理員。**
+**這部電腦無法連線到遠端電腦。再次嘗試連接，如果問題持續發生，請洽詢遠端電腦的擁有者或您的網路系統管理員。**
 
 ## <a name="cause"></a>原因
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 如果 DC 與 VM 之間的通訊良好，但 DC 狀況未良好到足以開啟 RDP 工作階段，則您可以嘗試重新啟動 DC。
 
-如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要這樣做，請遵循下列步驟：
+如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要執行此動作，請依照下列步驟執行：
 
 1. 使用下列內容來建立名為 Unjoin.ps1 的指令碼，然後在 Azure 入口網站上將該指令碼部署為「自訂指令碼延伸模組」：
 
@@ -274,7 +274,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 重新啟動 VM 以讓登錄變更生效。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Win32_TSGeneralSetting 類別的 SetEncryptionLevel 方法](/windows/desktop/termserv/win32-tsgeneralsetting-setencryptionlevel) \(英文\)
 

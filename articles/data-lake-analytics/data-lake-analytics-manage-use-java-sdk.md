@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: bac13f187c99166bc868112792d80833387a84dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373771"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 應用程式來管理 Azure Data Lake Analytics
@@ -20,9 +20,9 @@ ms.locfileid: "87373771"
 
 本文說明如何使用以 Azure Java SDK 所撰寫的應用程式，來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。 
 
-## <a name="prerequisites"></a>先決條件
-* **JAVA 開發工具組（JDK） 8** （使用 java 版本1.8）。
-* **IntelliJ**或其他合適的 JAVA 開發環境。 本文件中的指示使用 IntelliJ。
+## <a name="prerequisites"></a>Prerequisites
+* 使用 JAVA 1.8 版) ** (JDK) 8 (的 JAVA 開發工具組**。
+* **IntelliJ** 或其他合適的 JAVA 開發環境。 本文件中的指示使用 IntelliJ。
 * 建立 Azure Active Directory (AAD) 應用程式，並擷取其**用戶端識別碼**、**租用戶識別碼**和**金鑰**。 如需了解 AAD 應用程式，以及如何取得用戶端識別碼的指示，請參閱 [使用入口網站建立 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 建立應用程式並產生金鑰後，可以從入口網站取得回覆 URI 和金鑰。
 
 ## <a name="authenticating-using-azure-active-directory"></a>使用 Azure Active Directory 進行驗證
@@ -32,7 +32,7 @@ ms.locfileid: "87373771"
 ## <a name="create-a-java-application"></a>建立 Java 應用程式
 1. 開啟 IntelliJ，並使用 [命令列應用程式]**** 範本建立 Java 專案。
 2. 在畫面左側的專案上按一下滑鼠右鍵，然後按一下 [新增架構支援] ****。 選擇 [Maven]**** 並按一下 [確定]****。
-3. 開啟新建立的 **"pom.xml"** 檔案，並在 **\</version>** 標記和標記之間加入下列程式碼片段 **\</project>** ：
+3. 開啟新建立的 **"pom.xml"** 檔案，並在 **\</version>** 標記和標記之間新增下列文字片段 **\</project>** ：
 
 ```xml
 <dependencies>
@@ -77,7 +77,7 @@ ms.locfileid: "87373771"
 
 移至 [檔案] > [設定] > [建置] > [執行] > [部署]****。 選取 [建置工具] > [Maven] > [匯入]****。 然後勾選 [自動匯入 Maven 專案] ****。
 
-開啟 `Main.java` ，並將現有的程式碼區塊取代為下列程式碼：
+開啟 `Main.java` 並以下列程式碼取代現有的程式碼區塊：
 
 ```java
 import com.microsoft.azure.CloudException;
@@ -316,7 +316,7 @@ public class Main {
 * `_clientId`
 * `_clientSecret`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要了解 U-SQL，請參閱[開始使用 Azure Data Lake Analytics U-SQL 語言](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 語言參考](https://docs.microsoft.com/u-sql/)。
 * 針對管理工作，請參閱 [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)。

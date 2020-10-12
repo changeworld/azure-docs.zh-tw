@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 規劃 VMware 損毀修復的容量
+title: 使用 Azure Site Recovery 規劃 VMware 災難復原的容量
 description: 本文可協助您在使用 Azure Site Recovery 來設定 VMware VM 到 Azure 的災害復原時，進行容量和規模調整規劃。
 author: nsoneji
 manager: garavd
@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135453"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>針對復原到 Azure 的 VMware 災害復原進行容量和規模調整規劃
@@ -29,14 +29,14 @@ ms.locfileid: "86135453"
 元件 | 詳細資料
 --- | ---
 **複寫** | **每日變更率上限**︰受保護的機器只能使用一個處理序伺服器。 單一處理序伺服器可以處理多達 2 TB 的每日變動率。 因此，針對受保護機器支援的每日資料變更率上限為 2 TB。<br /><br /> **最大輸送量**：複寫的機器可以屬於 Azure 中的一個儲存體帳戶。 一個標準「Azure 儲存體」帳戶每秒最多可以處理 20,000 個要求。 建議您將整個來源機器的每秒輸入/輸出作業數 (IOPS) 保持為 20,000。 例如，如果您有一部具備 5 個磁碟的來源機器，而每個磁碟會在來源機器上產生 120 個 IOPS (8 K 大小)，則來源機器會在 Azure 的每一磁碟 IOPS 限制 (500) 範圍內。 (所需的儲存體帳戶數目等於來源機器 IOPS 總數除以 20,000)。
-**設定伺服器** | 設定伺服器必須能夠處理在受保護機器上執行之所有工作負載的每日變更率容量。 設定機器必須有足夠的頻寬以持續地將資料複寫到「Azure 儲存體」。<br /><br /> 最佳做法是將設定伺服器放在與您想要保護之機器相同的網路和 LAN 區段上。 您可以將設定伺服器放在不同的網路上，但是您想要保護的機器應該具備第 3 層網路可見性。<br /><br /> 下一節的資料表會摘要說明組態伺服器的大小建議。
+**組態伺服器** | 設定伺服器必須能夠處理在受保護機器上執行之所有工作負載的每日變更率容量。 設定機器必須有足夠的頻寬以持續地將資料複寫到「Azure 儲存體」。<br /><br /> 最佳做法是將設定伺服器放在與您想要保護之機器相同的網路和 LAN 區段上。 您可以將設定伺服器放在不同的網路上，但是您想要保護的機器應該具備第 3 層網路可見性。<br /><br /> 下一節的資料表會摘要說明組態伺服器的大小建議。
 **進程伺服器** | 組態伺服器上會安裝第一部處理序伺服器。 您可以部署額外的處理序伺服器來調整您的環境。 <br /><br /> 處理伺服器會從受保護的機器接收複寫資料。 處理伺服器會藉由使用快取、壓縮及加密，將資料最佳化。 接著，處理伺服器會將資料傳送給 Azure。 處理伺服器機器必須具備足夠的資源來執行這些工作。<br /><br /> 處理序伺服器使用磁碟快取。 請另外使用一個 600 GB 以上的快取磁碟，來處理發生網路瓶頸或中斷時所儲存的資料變更。
 
 ## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>設定伺服器和內建處理伺服器的大小建議
 
 設定伺服器如果使用內建處理伺服器來保護工作負載，根據下列設定，最多可處理 200 部虛擬機器：
 
-CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
+CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的電腦
 --- | --- | --- | --- | ---
 8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5GHz) | 16 GB | 300 GB | 500 GB 或更少 | 用來複寫少於 100 部機器。
 12 個 vCPU (2 個插槽 * 6 核心 \@ 2.5GHz) | 18 GB | 600 GB | 501 GB 至 1 TB | 用來複寫 100 至 150 部機器。
@@ -62,7 +62,7 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 * 您已設定讓受保護的虛擬機器使用向外延展處理伺服器。
 * 每個受保護的來源機器都有三個各 100 GB 的磁碟。
 
-額外處理序伺服器 | 快取磁碟大小 | 資料變更率 | 受保護的機器
+額外處理序伺服器 | 快取磁碟大小 | 資料變更率 | 受保護的電腦
 --- | --- | --- | ---
 4 個 vCPU (2 個通訊端 * 2 核心 \@ 2.5 GHz)，8 GB 記憶體 | 300 GB | 250 GB 或更少 | 用來複寫 85 部以內的機器。
 8 個 vCPU (2 個通訊端 * 4 核心 \@ 2.5 GHz)，12 GB 記憶體 | 600 GB | 251 GB 至 1 TB | 用來複寫 86 至 150 部機器。
@@ -78,13 +78,13 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 在使用 [Site Recovery 部署規劃工具](site-recovery-deployment-planner.md)來計算複寫 (初始複寫，然後是差異複寫) 所需的頻寬之後，有幾個選項可供您用來控制用於複寫的頻寬大小：
 
 * **節流頻寬**︰複寫至 Azure 的 VMware 流量會經過特定的處理序伺服器。 您可在以處理伺服器身分執行的機器上進行頻寬節流。
-* 會**影響頻寬**.. 您可以使用幾個登錄機碼來影響用於複寫的頻寬：
+* **影響頻寬**：您可以使用幾個登錄機碼來影響用於複寫的頻寬：
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** 登錄值可指定用於磁碟資料傳輸 (初始或差異複寫) 的執行緒數目。 較高的值可增加用於複寫的網路頻寬。
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** 登錄值會指定在容錯回復期間用於資料傳輸的執行緒數目。
 
 ### <a name="throttle-bandwidth"></a>頻寬節流處理
 
-1. 在作為處理伺服器的機器上，開啟「Azure 備份」MMC 嵌入式管理單元。 根據預設，備份的快捷方式位於桌面上或在下列資料夾中： C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
+1. 在作為處理伺服器的機器上，開啟「Azure 備份」MMC 嵌入式管理單元。 根據預設，備份的快捷方式位於桌面上或下列資料夾中： C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
 2. 在嵌入式管理單元中，選取 [變更內容]****。
 
     ![用以變更內容的「Azure 備份」MMC 嵌入式管理單元選項螢幕擷取畫面](./media/site-recovery-vmware-to-azure/throttle1.png)
@@ -92,7 +92,7 @@ CPU | 記憶體 | 快取磁碟大小 | 資料變更率 | 受保護的機器
 
     ![[Azure 備份內容] 對話方塊的螢幕擷取畫面](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-您也可以使用 [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) Cmdlet 來設定節流。 以下是範例：
+您也可以使用 [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) Cmdlet 來設定節流。 以下為範例：
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -122,11 +122,11 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ## <a name="deploy-additional-process-servers"></a>部署額外處理序伺服器
 
-如果您將部署規模相應放大到超過 200 部來源機器，或是您的每日變換率總計超過 2 TB，就必須新增處理伺服器來處理流量。 我們已增強9.24 版中的產品，以便在設定相應放大進程伺服器的時機提供[進程伺服器警示](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。 [設定進程伺服器](vmware-azure-set-up-process-server-scale.md)來保護新的來源電腦或[平衡負載](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
+如果您將部署規模相應放大到超過 200 部來源機器，或是您的每日變換率總計超過 2 TB，就必須新增處理伺服器來處理流量。 我們已增強9.24 版中的產品，以提供設定相應放大進程伺服器時的 [進程伺服器警示](vmware-physical-azure-monitor-process-server.md#process-server-alerts) 。 [設定進程伺服器](vmware-azure-set-up-process-server-scale.md) ，以保護新的來源電腦或 [平衡負載](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>移轉機器以使用新的處理序伺服器
 
-1. 選取 [**設定**] [  >  **Site Recovery 伺服器**]。 選取設定伺服器，然後展開 [處理伺服器]****。
+1. 選取**Settings**[  >  **伺服器] Site Recovery**的設定。 選取設定伺服器，然後展開 [處理伺服器]****。
 
     ![[處理伺服器] 對話方塊的螢幕擷取畫面](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. 在目前使用中的處理伺服器上按一下滑鼠右鍵，然後選取 [切換]****。
@@ -146,7 +146,7 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 為 Windows 型虛擬機器新增主要目標伺服器：
 
-1. 前往 [復原**服務保存庫**] Site Recovery [  >  **基礎結構**設定  >  **伺服器**]。
+1. 移至 [復原**服務保存庫**  >  **Site Recovery 基礎結構**設定  >  **伺服器**]。
 2. 選取所需的設定伺服器，然後選取 [主要目標伺服器]****。
 
     ![顯示 [新增主要目標伺服器] 按鈕的螢幕擷取畫面](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
@@ -165,11 +165,11 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
     ![顯示設定伺服器 IP 位址和複雜密碼輸入位置的螢幕擷取畫面](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. 選取 [註冊]。 註冊完成時，選取 [Finish] \(完成)****。
 
-當註冊成功完成時，伺服器會列在**Recovery Services Vault**  >  **Site Recovery Infrastructure**  >  **Configuration servers**設定伺服器的主要目標伺服器的復原服務保存庫 Site Recovery 的 Azure 入口網站中。
+當註冊順利完成時，伺服器會列在 [復原服務保存庫] 的 [Azure 入口網站的 [復原**服務保存庫**] Site Recovery [  >  **基礎結構**設定伺服器] 的 [  >  **Configuration servers**設定伺服器的主要目標伺服器]。
 
  > [!NOTE]
  > 請下載 [Windows 的主要目標伺服器統一安裝程式檔案](https://aka.ms/latestmobsvc)最新版本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 下載並執行 [Site Recovery 部署規劃工具](https://aka.ms/asr-deployment-planner)。

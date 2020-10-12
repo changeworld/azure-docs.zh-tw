@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206203"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
@@ -26,7 +26,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 
 ## <a name="supported-versions"></a>支援的版本
 
-函數執行時間的版本適用于特定版本的 .NET。 下表顯示可搭配專案中特定版本函式使用的最高層級 .NET Core 和 .NET Framework 和 .NET Core。 
+函數執行時間的版本適用于特定版本的 .NET。 下表顯示 .NET Core 和 .NET Framework 的最高層級，以及可與專案中特定版本的函式搭配使用的 .NET Core。 
 
 | 函數執行階段版本 | 最大 .NET 版本 |
 | ---- | ---- |
@@ -41,9 +41,9 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 在 Visual Studio 中，**Azure Functions** 專案範本可建立 C# 類別庫專案，其中包含下列檔案：
 
 * [host.json](functions-host-json.md) - 儲存會影響在本機或 Azure 中執行之專案中所有函式的組態設定。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 儲存在本機執行時所使用的應用程式設定和連接字串。 此檔案包含密碼，不會發佈至 Azure 中的函數應用程式。 相反地，請 [將應用程式設定新增至您](functions-develop-vs.md#function-app-settings)的函式應用程式。
+* [local.settings.json](functions-run-local.md#local-settings-file) - 儲存在本機執行時所使用的應用程式設定和連接字串。 此檔案包含密碼，不會發佈至 Azure 中的函數應用程式。 相反地，請 [將應用程式設定新增至函數應用程式](functions-develop-vs.md#function-app-settings)。
 
-當您建立專案時，在組建輸出目錄中會產生如下列範例所示的資料夾結構：
+當您建立專案時，組建輸出目錄中會產生類似下列範例的資料夾結構：
 
 ```
 <framework.version>
@@ -78,7 +78,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 屬性會將方法標記為函式進入點。 名稱在專案中必須是唯一的，以字母開頭，而且只包含字母、數位、 `_` 和 `-` ，長度最多127個字元。 專案範本通常會建立名為 `Run` 的方法，不過任何有效的 C# 方法名稱都能成為方法名稱。
+`FunctionName` 屬性會將方法標記為函式進入點。 名稱在專案中必須是唯一的，以字母開頭，且只包含字母、數位、 `_` 和 `-` ，長度最多為127個字元。 專案範本通常會建立名為 `Run` 的方法，不過任何有效的 C# 方法名稱都能成為方法名稱。
 
 觸發程序屬性可指定觸發程序類型，並將輸入資料繫結至方法參數。 範例函式是由佇列訊息所觸發，該佇列訊息會接著傳遞給 `myQueueItem` 參數中的方法。
 
@@ -137,7 +137,7 @@ public static class BindingExpressionsExample
 
 建置流程在組建資料夾的函式資料夾中建立 *function.json* 檔案。 如稍早所述，此檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 
 
-此檔案的目的是要提供資訊給調整控制器，以用於針對取用 [方案的調整決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
+此檔案的目的是要提供資訊給調整控制器，以用於調整取用 [方案的決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
 
 產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下為範例：
 
@@ -187,7 +187,7 @@ Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1.x �
 </ItemGroup>
 ```
 
-在 `Sdk` 套件相依性中的是觸發程序和繫結。 1.x 專案會參考1.x 觸發程式和系結，因為這些觸發程式和系結是以 .NET Framework 為目標，而2.x 觸發程式和系結是以 .NET Core 為目標。
+在 `Sdk` 套件相依性中的是觸發程序和繫結。 1.x 專案指的是1.x 觸發程式和系結，因為這些觸發程式和系結的目標是 .NET Framework，而2.x 觸發程式和系結則以 .NET Core 為目標。
 
 `Sdk` 套件也會相依於 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) \(英文\)，並間接相依於 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage) \(英文\)。 這些相依性可確保您的專案會使用能夠搭配專案所設為目標之 Functions 執行階段版本運作的套件版本。 例如，`Newtonsoft.Json` 含有適用於 .NET Framework 4.6.1 的 11 版，但目標為 .NET Framework 4.6.1 的 Functions 執行階段只能與 `Newtonsoft.Json` 9.0.1 相容。 因此，您在該專案中的函式程式碼也必須使用 `Newtonsoft.Json` 9.0.1。
 
@@ -205,9 +205,9 @@ Visual Studio 會使用 [Azure Functions Core Tools](functions-run-local.md#inst
 
 ## <a name="readytorun"></a>ReadyToRun
 
-您可以將函數應用程式編譯為 [ReadyToRun 二進位](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)檔。 ReadyToRun 是一種預先編譯的形式，可以改善啟動效能，以協助降低在取用[方案](functions-scale.md#consumption-plan)中執行時[冷啟動](functions-scale.md#cold-start)的影響。
+您可以將函數應用程式編譯為 [ReadyToRun 二進位](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)檔。 ReadyToRun 是一種預先編譯的形式，可改善啟動效能，以協助降低在取用[方案](functions-scale.md#consumption-plan)中執行時[冷啟動](functions-scale.md#cold-start)的影響。
 
-ReadyToRun 可在 .NET 3.0 中取得，而且需要 [3.0 版的 Azure Functions 運行](functions-versions.md)時間。
+ReadyToRun 可在 .NET 3.0 中取得，且需要 [3.0 版的 Azure Functions 運行](functions-versions.md)時間。
 
 若要將您的專案編譯為 ReadyToRun，請藉由新增和專案來更新您的專案檔 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 以下是發佈至 Windows 32 位函式應用程式的設定。
 
@@ -221,7 +221,7 @@ ReadyToRun 可在 .NET 3.0 中取得，而且需要 [3.0 版的 Azure Functions 
 ```
 
 > [!IMPORTANT]
-> ReadyToRun 目前不支援交叉編譯。 您必須在與部署目標相同的平臺上建立應用程式。 此外，請注意函數應用程式中設定的「位」。 例如，如果您在 Azure 中的函式應用程式是 Windows 64 位，您就必須使用 `win-x64` 作為 [執行時間識別碼](/dotnet/core/rid-catalog)，在 Windows 上編譯您的應用程式。
+> ReadyToRun 目前不支援跨編譯。 您必須在與部署目標相同的平臺上建立您的應用程式。 此外，請注意函數應用程式中所設定的「位」。 例如，如果您在 Azure 中的函式應用程式是 Windows 64 位，您必須使用 `win-x64` 做為 [執行時間識別碼](/dotnet/core/rid-catalog)，在 Windows 上編譯您的應用程式。
 
 您也可以從命令列使用 ReadyToRun 來建立應用程式。 如需詳細資訊，請參閱 `-p:PublishReadyToRun=true` 中的選項 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
 

@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311303"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
 
 本文說明如何使用 Azure 地圖服務 Android SDK 在地圖上呈現圖案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的程式，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 以載入地圖。
 

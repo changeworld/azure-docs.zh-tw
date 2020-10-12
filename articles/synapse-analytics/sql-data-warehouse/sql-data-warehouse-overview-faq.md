@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462644"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (先前的 SQL DW) 常見問題
@@ -109,6 +109,6 @@ A. 您可以在 [ [連接字串](../sql/connection-strings.md) ] 頁面上找到
 
 答︰HDI 可以使用 ADLS 或 WASB 作為 HDFS 層。 如果您是使用 HDFS 層，則可以將該資料載入至 Synapse SQL 集區。 不過，您無法針對 HDI 執行個體產生下推計算。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure Synapse 整體的詳細資訊，請參閱我們的 [總覽](sql-data-warehouse-overview-faq.md) 頁面。

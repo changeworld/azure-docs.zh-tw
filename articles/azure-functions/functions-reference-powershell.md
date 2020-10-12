@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071154"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 開發人員指南
@@ -145,7 +145,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 如需詳細資訊，請參閱 [關於 CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
 
-#### <a name="push-outputbinding-example-http-responses"></a>OutputBinding 範例： HTTP 回應
+#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding 範例： HTTP 回應
 
 HTTP 觸發程式會使用名為的輸出系結來傳迴響應 `response` 。 在下列範例中，的輸出系結 `response` 具有 "output #1" 的值：
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>OutputBinding 範例：佇列輸出系結
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding 範例：佇列輸出系結
 
 `Push-OutputBinding` 用來將資料傳送至輸出系結，例如 [Azure 佇列儲存體輸出](functions-bindings-storage-queue-output.md)系結。 在下列範例中，寫入佇列的訊息具有 "output #1" 的值：
 
