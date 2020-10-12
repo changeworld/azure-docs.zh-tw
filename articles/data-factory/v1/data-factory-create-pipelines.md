@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 2d7701e215011165ffef33353de7f9372b1142cf
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440740"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管線及活動
@@ -97,7 +97,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 | NAME |管線的名稱。 指定代表管線所執行之動作的名稱。 <br/><ul><li>字元數目上限︰260</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元： "."、"+"、"？"、"/"、"<"、">"、" \* "、"%"、"&"、"："、" \\ "</li></ul> |是 |
 | description | 指定說明管線用途的文字。 |是 |
 | 活動 | [ **活動** ] 區段內可以有一或多個已定義的活動。 如需有關活動 JSON 元素的詳細資料，請參閱下一節。 | 是 |
-| start | 管線的開始日期時間。 必須使用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如： `2016-10-14T16:32:41Z` 。 <br/><br/>您可以指定本地時間，如 EST 時間。 範例如下︰`2016-02-27T06:00:00-05:00`，這是美加東部標準時間上午 6 點。<br/><br/>管線的 start 和 end 屬性共同指定管線的作用中期間。 輸出配量只會在作用中期間內產生。 |否<br/><br/>如果您指定 end 屬性的值，也必須指定 start 屬性的值。<br/><br/>開始和結束時間都可以是空白來建立管線。 必須指定兩個值，才能設定執行管線的作用中時間。 如果您在建立管線時未指定開始和結束時間，您可以稍後使用 AzDataFactoryPipelineActivePeriod 指令程式來設定它們。 |
+| start | 管線的開始日期時間。 必須使用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如： `2016-10-14T16:32:41Z` 。 <br/><br/>您可以指定本地時間，如 EST 時間。 範例如下︰`2016-02-27T06:00:00-05:00`，這是美加東部標準時間上午 6 點。<br/><br/>管線的 start 和 end 屬性共同指定管線的作用中期間。 輸出配量只會在作用中期間內產生。 |否<br/><br/>如果您指定 end 屬性的值，也必須指定 start 屬性的值。<br/><br/>開始和結束時間都可以是空白來建立管線。 必須指定兩個值，才能設定執行管線的作用中時間。 如果您在建立管線時未指定開始和結束時間，您可以稍後使用 Set-AzDataFactoryPipelineActivePeriod Cmdlet 進行設定。 |
 | end | 管線的結束日期時間。 如果已指定，則必須使用 ISO 格式。 例如： `2016-10-14T17:32:41Z` <br/><br/>您可以指定本地時間，如 EST 時間。 範例如下︰`2016-02-27T06:00:00-05:00`，這是 6 AM EST。<br/><br/>若要無限期地執行管線，請指定 9999-09-09 做為 end 屬性的值。 <br/><br/> 管線僅在其開始時間與結束時間之間有作用。 在開始時間之前或結束時間之後就不會執行。 如果管線已暫停，不論其開始和結束時間為何，都不會執行。 若要執行管線，則不該將它暫停。 請參閱 [排程和執行](data-factory-scheduling-and-execution.md) ，以了解如何在 Azure Data Factory 中排程和執行。 |否 <br/><br/>如果您指定 start 屬性的值，也必須指定 end 屬性的值。<br/><br/>請參閱 **start** 屬性的註釋。 |
 | isPaused | 如果設定為 true，管線就不會執行。 它會處於暫停狀態。 預設值 = false。 您可以使用此屬性來啟用或停用管線。 |否 |
 | pipelineMode | 排程管線執行的方法。 允許的值包括：scheduled (預設值)、onetime。<br/><br/>‘Scheduled’ 表示管線會根據其作用中期間 (開始和結束時間) 依指定的時間間隔執行。 ‘Onetime’ 表示管線只會執行一次。 目前，Onetime 管線在建立之後即無法進行修改/更新。 如需 onetime 設定的詳細資料，請參閱 [Onetime 管線](#onetime-pipeline)。 |否 |
@@ -257,7 +257,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 }
 ```
 
-請注意下列事項：
+請注意下列幾點：
 
 * 在活動區段中，只會有一個 **type** 設為 **HDInsightHive** 的活動。
 * Hive 指令碼檔案 **partitionweblogs.hql** 儲存於 Azure 儲存體帳戶 (透過名為 **AzureStorageLinkedService** 的 scriptLinkedService 指定)，且位於 **adfgetstarted** 容器的 **script** 資料夾中。
@@ -351,6 +351,6 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 * 圖表檢視不會顯示一次性管線。 這是設計的行為。
 * 一次性管線無法更新。 您可以複製一次性管線、將其重新命名、更新屬性，以及加以部署來建立另一個管線。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 如需有關資料集的詳細資訊，請參閱[建立資料集](data-factory-create-datasets.md)一文。
 - 如需有關管線的排程和執行方式的詳細資訊，請參閱 [Azure Data Factory 中的排程和執行](data-factory-scheduling-and-execution.md)一文。

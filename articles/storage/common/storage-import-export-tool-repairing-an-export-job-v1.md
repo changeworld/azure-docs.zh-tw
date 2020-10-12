@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056334"
 ---
 # <a name="repairing-an-export-job"></a>修復匯出作業
@@ -150,7 +150,7 @@ G:\pictures\wild\canyon.jpg.properties
 
 工具將會下載驗證失敗的所有元件，並將它們重新寫入至磁碟機上的相同檔案。  
   
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
  
 * [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
 * [準備匯入作業的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

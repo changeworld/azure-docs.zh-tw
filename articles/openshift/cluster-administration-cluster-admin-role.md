@@ -8,10 +8,10 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 38686ba35285159d7a27724b5402a6b6e2f3a696
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815516"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat OpenShift 客戶系統管理員角色
@@ -41,7 +41,7 @@ ms.locfileid: "88815516"
 
 若要進一步探索叢集中的角色和許可權，您可以使用 [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) 命令。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 設定客戶-管理叢集叢集角色：
 > [!div class="nextstepaction"]

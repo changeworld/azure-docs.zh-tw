@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 92cd3a9cc82a38cae6a56b7796e22d035979f2d5
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439845"
 ---
 # <a name="azure-synapse-analytics-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>在 Azure 上使用 T-sql 和 Python Azure Synapse Analytics 資料科學逐步解說
@@ -30,7 +30,7 @@ ms.locfileid: "89439845"
 [使用 Azure Synapse Analytics 逐步](sqldw-walkthrough.md)解說會示範如何使用 Azure Synapse Analytics 來建立和部署機器學習服務分類和回歸模型。  資料是公開可用的 NYC 計程車行程和費用資料集。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需組成 Team Data Science Process 之主要元件的討論，請參閱 [Team Data Science Process 概觀](overview.md)。
 

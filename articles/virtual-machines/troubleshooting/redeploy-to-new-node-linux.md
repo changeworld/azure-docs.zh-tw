@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6b6abaf10f74b29685309ed5a24a5e6b9f261014
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074429"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>將 Linux 虛擬機器重新部署至新的 Azure 節點
@@ -51,5 +51,5 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您在連接至 VM 時發生問題，您可以在[針對 SSH 連線進行疑難排解](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[詳細的 SSH 疑難排解步驟](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到具體的說明。 如果無法存取在您 VM 上執行的應用程式，您也可以參閱[應用程式疑難排解問題](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

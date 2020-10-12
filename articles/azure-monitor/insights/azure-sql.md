@@ -8,10 +8,10 @@ ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397074"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL 分析來監視 Azure SQL Database (預覽)
@@ -54,7 +54,7 @@ Azure SQL 分析是僅限雲端的監視解決方案，支援所有 Azure SQL �
 | 查詢持續時間 | 可透過階層的方式，向下鑽研至查詢執行統計資料，例如查詢持續時間、CPU 使用量、資料 IO 使用量、記錄 IO 使用量。 | 是 | 是 |
 | 查詢等候 | 可透過階層的方式，依等候類別，向下鑽研至查詢等候統計資料。 | 是 | 是 |
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 使用 [從方案庫新增 Azure 監視器解決方案](./solutions.md) 中所述的程式，將 Azure SQL 分析 (Preview) 新增至 Log Analytics 工作區。
 

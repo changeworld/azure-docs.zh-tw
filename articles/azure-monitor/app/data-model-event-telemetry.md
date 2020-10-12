@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 69685afa14352a22b58bccbea342038e4273696e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320607"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>事件遙測：Application Insights 資料模型
 
 您可以建立事件遙測項目 (在 [Application Insights](./app-insights-overview.md) 中) 來代表發生在您應用程式中的事件。 通常它是與使用者互動的事件，例如按一下按鈕或簽出訂單。 它也可以是初始化或組態更新等應用程式生命週期事件。 
 
-事件在語意上不一定會與要求相互關聯。 不過，如果使用得當，事件遙測比要求或追蹤更重要。 事件代表商務遙測，且應受限於個別、較不積極的[取樣](./api-filtering-sampling.md)。
+事件在語意上不一定會與要求相互關聯。 不過，如果使用得當，事件遙測比要求或追蹤更重要。 事件代表商務遙測，且應受限於個別、較不積極的 [取樣](./api-filtering-sampling.md)。
 
 ## <a name="name"></a>名稱
 
@@ -31,7 +31,7 @@ ms.locfileid: "87320607"
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
 - [撰寫自訂事件遙測](./api-custom-events-metrics.md#trackevent)

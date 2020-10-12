@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: a8172b63039d2d247f30fca4099254cb8fca068e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073414"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI 元素
@@ -64,9 +64,9 @@ ms.locfileid: "87073414"
 - 會根據 `count`，依辭典編纂順序產生儲存體帳戶名稱。 例如，如果 `count` 為 10，儲存體帳戶名稱就會以 2 位數的整數 (01、02、03) 作為結尾。
 - `defaultValue.prefix` 的預設值為 **null**，`defaultValue.type` 的預設值則為 **Premium_LRS**。
 - `constraints.allowedTypes` 中未指定的任何類型都會加以隱藏，`constraints.excludedTypes` 中未指定的任何類型都會加以顯示。 `constraints.allowedTypes` 和 `constraints.excludedTypes` 都是選擇性的，但不能同時使用。
-- 除了產生儲存體帳戶名稱之外，`count` 還會用來設定元素的適當乘數。 它支援靜態值 (例如 **2**)，或者另一個元素的動態值 (例如 `[steps('step1').storageAccountCount]`)。 預設值為**1**。
+- 除了產生儲存體帳戶名稱之外，`count` 還會用來設定元素的適當乘數。 它支援靜態值 (例如 **2**)，或者另一個元素的動態值 (例如 `[steps('step1').storageAccountCount]`)。 預設值是 **1**秒。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
 ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279785"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密範例腳本
@@ -43,7 +43,7 @@ ms.locfileid: "91279785"
 下表顯示可在 PowerShell 指令碼中使用的參數： 
 
 
-|參數|說明|是否為強制？|
+|參數|描述|是否為強制？|
 |------|------|------|
 |$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
 |$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
@@ -108,7 +108,7 @@ ms.locfileid: "91279785"
 
 5. 使用[下一節](#monitoring-os-encryption-progress)的指示定期監視加密進度。
 
-6. >get-azvmdiskencryptionstatus 顯示「>vmrestartpending」之後，請使用入口網站、PowerShell 或 CLI 來重新開機您的 VM。
+6. Get-AzVmDiskEncryptionStatus 顯示「>vmrestartpending」之後，請使用入口網站、PowerShell 或 CLI 登入，以重新開機 VM。
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -371,7 +371,7 @@ ms.locfileid: "91279785"
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   至
+   to
    ```bash
     if [ 1 ]; then
    ```
@@ -401,7 +401,7 @@ ms.locfileid: "91279785"
     ![CentOS 7 設定 - 執行 /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>上傳加密的 VHD 至 Azure 儲存體帳戶
-啟用 DM Crypt 加密之後，需要將本機加密的 VHD 上傳至您的儲存體帳戶。
+啟用 DM-Crypt 加密之後，需要將本機加密的 VHD 上傳至您的儲存體帳戶。
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```

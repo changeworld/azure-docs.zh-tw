@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648984"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虛擬機器支援案例上的 SAP 工作負載
@@ -102,7 +102,7 @@ HANA 大型實例的磁片設定已設定，並在 [Hana 大型實例的支援�
 - 使用 SUSE 和 Red Hat 上的 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) ，SAP Hana 相應放大 n + m 設定。 下列文章列出詳細資料：
     - [使用 SUSE Linux Enterprise Server} 上的 Azure NetApp Files，在 Azure Vm 上部署具有待命節點的 SAP Hana 相應放大系統](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [在 Red Hat Enterprise Linux 上使用 Azure NetApp Files 於 Azure VM 上部署 SAP HANA 擴增系統與待命節點](./sap-hana-scale-out-standby-netapp-files-rhel.md) \(部分機器翻譯\)
-- 根據 Windows 向外延展檔服務 SQL Server 容錯移轉叢集。 雖然生產系統的建議是使用 SQL Server Always On，而不是群集。 SQL Server Always On 使用個別儲存體提供更佳的可用性。 本文將說明詳細資料： 
+- 根據 Windows Scale-Out 檔案服務 SQL Server 容錯移轉叢集。 雖然生產系統的建議是使用 SQL Server Always On，而不是群集。 SQL Server Always On 使用個別儲存體提供更佳的可用性。 本文將說明詳細資料： 
     - [在 Azure 虛擬機器上設定 SQL Server 容錯移轉叢集執行個體](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - 適用于 Azure 上 SQL Server 的 Windows 作業系統支援 SQL Server Always On。 這是 Azure 上生產 SQL Server 實例的預設建議。 這些文章會說明詳細資料：
     - [Azure 虛擬機器上的 SQL Server Always On 可用性群組簡介](../../../azure-sql/virtual-machines/windows/availability-group-overview.md) \(機器翻譯\)。

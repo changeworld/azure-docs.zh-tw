@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: d291adcf53469825f32b664cb7f4ffdb0bbf244b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441012"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>使用每一租使用者一個資料庫模式搭配 Azure SQL Database 的多租使用者 SaaS 應用程式簡介
@@ -53,7 +53,7 @@ Wingtip SaaS 應用程式會使用每一租用戶一個資料庫的模型。 它
 |[根據擷取的租用戶資料執行分析](saas-tenancy-tenant-analytics.md) | 將租用戶資料擷取到分析資料庫或資料倉儲中，以便執行離線分析查詢。 |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [部署和使用 Wingtip Tickets SaaS 應用程式範例時的一般指引和秘訣](saas-tenancy-wingtip-app-guidance-tips.md)
 - [部署 Wingtip SaaS 應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)

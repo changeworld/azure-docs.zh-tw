@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 78ac7e849a3a8f1742701006638a2cb72299bad7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055770"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>從 StorSimple 8000 系列遷移資料的選項
@@ -109,6 +109,6 @@ A. 使用 Azure 檔案同步時，可能會收取服務的訂用帳戶費用。 
 
 A. 移轉資料的所需時間，取決於資料量和選取的升級選項。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [將 StorSimple 8000 系列的資料移轉至 Azure 檔案同步](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)

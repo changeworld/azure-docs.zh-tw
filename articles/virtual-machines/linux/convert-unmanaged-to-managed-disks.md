@@ -8,10 +8,10 @@ ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 89035d26e05ca4b93dc271f02fef1afea24b0f20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815329"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>將 Linux 虛擬機器從非受控磁碟轉換成受控磁碟
@@ -102,6 +102,6 @@ ms.locfileid: "88815329"
 
 VM 將會停止，並且在移轉完成後重新啟動。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需儲存體選項的詳細資訊，請參閱 [Azure 受控磁碟總覽](../managed-disks-overview.md)。

@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務和 Power
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88826492"
 ---
 # <a name="restore-azure-files-with-powershell"></a>使用 PowerShell 還原 Azure 檔案儲存體
@@ -169,6 +169,6 @@ azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM      
 
 如果您想要將多個檔案或資料夾還原到替代位置，請透過指定目標位置相關的參數值來使用上述腳本，如上面的將 [Azure 檔案還原至替代位置](#restore-an-azure-file-to-an-alternate-location)中所述。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [瞭解如何](restore-afs.md) 還原 Azure 入口網站中的 Azure 檔案儲存體。

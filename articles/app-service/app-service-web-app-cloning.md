@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
 ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815380"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 複製 Azure App Service App
@@ -124,7 +124,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 如果複製到不同縮放單位，輸出 IP 位址將會變更
 * 不適用於 Linux 應用程式
 
-### <a name="references"></a>參考資料
+### <a name="references"></a>參考
 * [App Service 複製](app-service-web-app-cloning.md)
 * [在 Azure App Service 中備份應用程式](manage-backup.md)
 * [Azure Resource Manager 的 Azure 流量管理員支援預覽](../traffic-manager/traffic-manager-powershell-arm.md)

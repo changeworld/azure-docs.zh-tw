@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055906"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>使用 StorSimple Snapshot Manager 使用者介面來管理備份作業與備份類別目錄
@@ -74,7 +74,7 @@ StorSimple Snapshot Manager 使用者介面支援 Windows 作業系統和 Micros
 | 儲存 |按一下 **[儲存]** 可儲存目前的主控台。 |
 | 另存新檔 |按一下 **[另存新檔]** 可以從目前主控台建立新的、重新命名的執行個體。 使用 [ **另存新檔** ] 選項，可自訂檢視並加以儲存，以供稍後擷取。 例如，您可以建立 StorSimple Snapshot Manager 嵌入式管理單元，指向特定伺服器。 |
 | 新增/移除嵌入式管理單元 |按一下 **[新增/移除嵌入式管理單元]** 可新增或移除嵌入式管理單元，以及組織 **[領域]** 窗格中的節點。 如需詳細資訊，請移至《 [在 MMC 3.0 中新增、移除及組織嵌入式管理單元和延伸](https://technet.microsoft.com/library/cc722035.aspx)》。 |
-| 選項 |按一下 **[選項]** 可變更主控台圖示、指定使用者存取模式和權限，或刪除主控台檔案以增加可用的磁碟空間。 |
+| 選項。 |按一下 **[選項]** 可變更主控台圖示、指定使用者存取模式和權限，或刪除主控台檔案以增加可用的磁碟空間。 |
 | 檔案路徑的清單 |按一下編號清單中的路徑，可重新開啟您最近開啟的檔案。 |
 | 結束 |按一下 **[結束]** 可關閉 **[檔案]** 功能表。 |
 
@@ -107,7 +107,7 @@ StorSimple Snapshot Manager 使用者介面支援 Windows 作業系統和 Micros
 > 
 > 
 
-| 動作 | 導覽 | 描述 |
+| 動作 | 瀏覽 | 描述 |
 |:--- |:--- |:--- |
 | Authenticate |按一下 [裝置]**** 節點，並以滑鼠右鍵按一下 [結果]**** 窗格中的裝置。 |按一下 [ **驗證** ]，以輸入您為裝置設定的密碼。 |
 | 複製 |展開 **[備份類別目錄]**、展開 **[雲端快照]**，按一下有註明日期的備份，然後在 **[結果]** 窗格中選取磁碟區。 |按一下 **[複製]**，建立雲端快取的複本並儲存在您指定的位置中。 |
@@ -447,7 +447,7 @@ StorSimple Snapshot Manager 可啟用 Windows 作業系統和 Microsoft Manageme
 | L |開啟 [匯出清單]**** 頁面。 |
 | H |開啟線上說明 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何 [使用 StorSimple Snapshot Manager 來連接和管理裝置](storsimple-snapshot-manager-manage-devices.md)。
 

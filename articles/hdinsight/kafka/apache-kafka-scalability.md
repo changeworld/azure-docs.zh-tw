@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
 ms.openlocfilehash: 586094f9e6ee696487064dcfea68af0bfc26c1ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88649103"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上設定 Apache Kafka 的儲存體和延展性
@@ -50,7 +50,7 @@ HDInsight 上的 Kafka 會在 HDInsight 叢集中使用虛擬機器的本機磁�
 
 您可以在中找到示範如何設定受控磁片的完整範本 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需使用 HDInsight 上 Apache Kafka 的詳細資訊，請參閱下列文件：
 

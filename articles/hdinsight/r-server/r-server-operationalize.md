@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087685"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上運作 ML 服務叢集
 
 當您使用 HDInsight 中的 ML 服務叢集來完成資料模型建構之後，便可以讓該模型運作以做出預測。 本文提供如何執行此工作的相關指示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務]**** 作為 [叢集類型]****。
 
@@ -74,13 +74,13 @@ ms.locfileid: "86087685"
 
     ![R 伺服器管理公用程式診斷](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. 從 [診斷測試] 功能表中，選取 [ **A**]。出現提示時，請輸入您提供給本機系統管理員使用者的密碼。
+    b. 從 [診斷測試] 功能表中 **，選取。** 出現提示時，請輸入您提供給本機系統管理員使用者的密碼。
 
     ![R 伺服器管理公用程式測試](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. 確認輸出會顯示整體健康情況是良好的。
 
-    ![R 伺服器管理公用程式通過](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![R 伺服器管理公用程式傳遞](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. 從顯示的功能表選項中，輸入 **E** 以返回主功能表，然後輸入 **8** 以結束管理公用程式。
 
@@ -155,17 +155,17 @@ ML 服務叢集並非透過 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 選取背景工作節點 (以解除委任)。
 
-1. 按一下 [**動作**] [選取的主機] [主機] 會  >  **Selected Hosts**  >  **Hosts**  >  **開啟維護模式**。 例如，在以下映像中，我們選取了要解除委任 wn3 和 wn4。  
+1. 按一下 [**動作**  >  **選取的主機**  >  **主機**  >  **] 開啟維護模式**。 例如，在以下映像中，我們選取了要解除委任 wn3 和 wn4。  
 
    ![Apache Ambari 開啟維護模式](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* 選取 [**動作**] [選取  >  的**主機**]  >  **datanode** > 按一下 [**解除**委任]。
-* 選取 [**動作**] [選取  >  的**主機**]  >  **NodeManagers** > 按一下 [**解除**委任]。
-* 選取 [**動作**] [選取的  >  **主機**]  >  **datanode** > 按一下 [**停止**]。
-* 選取 [**動作**] [選取的  >  **主機**]  >  **NodeManagers** > 按一下 [**停止**]。
-* 選取 [已選取的**動作**] [主機]  >  **Selected Hosts**  >  **Hosts** > 按一下 [**停止所有元件**]。
+* 選取 [選取**動作**  >  的**主機**]  >  **[datanode** > 按一下 [**解除**委任]。
+* 選取 [選取**動作**  >  的**主機**]  >  **[nodemanagers** > 按一下 [**解除**委任]。
+* 選取 [選取**動作**的  >  **主機**]  >  **[datanode** > 按一下 [**停止**]。
+* 選取 [選取**動作**  >  的**主機**]  >  **[nodemanagers** > 按一下 [**停止**]。
+* 選取**Actions**[選取  >  **主機**  >  **主機**的動作] > 按一下 [**停止所有元件**]。
 * 將背景工作節點取消選取，並選取前端節點。
-* 選取 [已選取的**動作**  >  **Selected Hosts** ] [主機] > [**主機**  >  **重新開機所有元件**]。
+* 選取選取的**動作**  >  **主機**> 「**主機**  >  **重新開機所有元件**」。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步驟 2：在每個已解除委任的背景工作節點上設定計算節點
 
@@ -202,7 +202,7 @@ ML 服務叢集並非透過 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
     }
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [在 HDInsight 上管理 ML 服務叢集](r-server-hdinsight-manage.md)
 * [在 HDInsight 上計算 ML 服務叢集的內容選項](r-server-compute-contexts.md)

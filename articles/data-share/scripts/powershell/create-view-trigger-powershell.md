@@ -1,5 +1,5 @@
 ---
-title: PowerShell 腳本：建立和查看 Azure 資料共用快照集觸發程式 |Microsoft Docs
+title: PowerShell 腳本：建立和查看 Azure Data Share 快照集觸發程式 |Microsoft Docs
 description: 此 PowerShell 腳本會建立並取得共用快照集觸發程式。
 services: data-share
 author: joannapea
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497160"
 ---
-# <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>使用 PowerShell 來建立和共用快照集觸發程式
+# <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>使用 PowerShell 建立和共用快照集觸發程式
 
 此 PowerShell 腳本會建立並取得共用快照集觸發程式。
 
@@ -47,7 +47,7 @@ Get-AzDataShareTrigger -ResourceGroupName $resourceGroupName -AccountName $dataS
 
 | Command | 注意 |
 |---|---|
-| [新增-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | 建立共用快照集觸發程式。 |
+| [新 AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | 建立共用快照集觸發程式。 |
 | [AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | 取得共用同步處理的同步處理設定。 |
 |||
 
@@ -55,4 +55,4 @@ Get-AzDataShareTrigger -ResourceGroupName $resourceGroupName -AccountName $dataS
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
 
-您可以在[Azure 資料共用 powershell 範例](../../samples-powershell.md)中找到其他 Azure 資料共用 powershell 腳本範例。
+您可以在 [azure Data Share powershell 範例](../../samples-powershell.md)中找到其他 Azure Data Share powershell 腳本範例。

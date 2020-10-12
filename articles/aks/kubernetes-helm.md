@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/24/2020
 ms.author: zarhoads
 ms.openlocfilehash: d05d0166724e586fa79e58e2e74fb583b45d0cc6
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852879"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝現有的應用程式
@@ -207,7 +207,7 @@ $ helm uninstall my-nginx-ingress
 release "my-nginx-ingress" uninstalled
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需使用 Helm 管理 Kubernetes 應用程式部署的詳細資訊，請參閱 Helm 文件。
 

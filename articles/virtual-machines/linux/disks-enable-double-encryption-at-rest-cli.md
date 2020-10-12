@@ -9,10 +9,10 @@ ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 76e5ab49e354faac085be533fed1ff16c0315a5e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816825"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure CLI 啟用受控磁片的雙重靜態加密
@@ -23,7 +23,7 @@ Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜�
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 安裝最新的 [Azure CLI](/cli/azure/install-az-cli2) ，並使用 [az Login](/cli/azure/reference-index)登入 Azure 帳戶。
 
@@ -69,7 +69,7 @@ Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜�
         az keyvault set-policy -n $keyVaultName -g $rgName --object-id $desIdentity --key-permissions wrapkey unwrapkey get
         ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已建立並設定這些資源，您可以使用它們來保護受控磁片。 下列連結包含範例腳本，每個都有各自的案例，可讓您用來保護您的受控磁片。
 

@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86496174"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 檔案服務延展性和效能目標
@@ -29,29 +29,29 @@ Azure 檔案共用的父資源是 Azure 儲存體帳戶。 儲存體帳戶代表
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> 其他儲存體服務的一般用途儲存體帳戶使用量會影響儲存體帳戶中的 Azure 檔案共用。 比方說，如果達到 Azure Blob 儲存體的最大儲存體帳戶容量，您將無法在 Azure 檔案共用上建立新檔案，即使您的 Azure 檔案共用低於最大共用大小也一樣。
+> 其他儲存體服務的一般用途儲存體帳戶使用量，會影響您儲存體帳戶中的 Azure 檔案共用。 比方說，如果達到 Azure Blob 儲存體的最大儲存體帳戶容量，您將無法在 Azure 檔案共用上建立新檔案，即使您的 Azure 檔案共用低於最大共用大小也一樣。
 
 ## <a name="azure-files-scale-targets"></a>Azure 檔案擴展目標
 
-Azure 檔案儲存體需要考慮的限制有三個類別：儲存體帳戶、共用和檔案。
+Azure 檔案儲存體有三個要考慮的限制類別：儲存體帳戶、共用和檔案。
 
-例如：使用 premium 檔案共用時，單一共用可以達到 100000 IOPS，而單一檔案可以相應增加至 5000 IOPS。 因此，如果您在一個共用中有三個檔案，則可以從該共用取得的最大 IOPS 為15000。
+例如：使用 premium 檔案共用時，單一共用可以達到 100000 IOPS，而單一檔案最多可擴大至 5000 IOPS。 因此，如果一個共用中有三個檔案，您可以從該共用取得的最大 IOPS 為15000。
 
 ### <a name="standard-storage-account-limits"></a>標準儲存體帳戶限制
 
-如需這些限制，請參閱[Azure 儲存體帳戶調整目標](#azure-storage-account-scale-targets)一節。
+如需這些限制，請參閱 [Azure 儲存體帳戶擴展目標](#azure-storage-account-scale-targets) 一節。
 
 ### <a name="premium-filestorage-account-limits"></a>Premium FileStorage 帳戶限制
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> 儲存體帳戶限制適用于所有共用。 只有在每個 FileStorage 帳戶只有一個共用時，相應增加至 FileStorage 帳戶的最大值才可達到上限。
+> 儲存體帳戶限制適用于所有共用。 只有在每個 FileStorage 帳戶只有一個共用時，才能達到 FileStorage 帳戶的最大值。
 
-### <a name="file-share-and-file-scale-targets"></a>檔案共用和檔案調整目標
+### <a name="file-share-and-file-scale-targets"></a>檔案共用和檔案擴展目標
 
 > [!NOTE]
-> 大於 5 TiB 的標準檔案共用有特定限制。 如需啟用更大檔案共用大小的限制和指示清單，請參閱《規劃指南》中的在[標準檔案共用上啟用較大](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)的檔案共用一節。
+> 超過 5 TiB 的標準檔案共用具有某些限制。 如需啟用較大檔案共用大小的限制和指示清單，請參閱規劃指南中的在 [標準檔案共用上啟用較大](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) 的檔案共用一節。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -77,7 +77,7 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 | 系統設定 | 詳細資料 |
 |-|-|
 | CPU | 具有 64 MiB L3 快取的 64 個虛擬核心 |
-| 記憶體 | 128 GiB |
+| Memory | 128 GiB |
 | 磁碟 | 具有電池供電式快取記憶體 RAID 10 的 SAS 磁碟 |
 | 網路 | 1 Gbps 的網路 |
 | 工作負載 | 一般用途檔案伺服器|
@@ -86,8 +86,8 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 |-|-|
 | 物件數目 | 2500 萬個物件 |
 | 資料集大小| ~ 4.7 TiB |
-| 平均檔案大小 | ~ 200 KiB （最大檔案： 100 GiB） |
-| 上傳輸送量 | 每個同步群組每秒20個物件 |
+| 平均檔案大小 | ~ 200 KiB (最大的檔案： 100 GiB)  |
+| 上傳輸送量 | 每個同步處理群組每秒20個物件 |
 | 命名空間下載輸送量* | 每秒 400 個物件 |
 
 *在建立新的伺服器端點時，Azure 檔案同步代理程式不會下載任何檔案內容。 它會先同步完整命名空間，然後再觸發背景回復以下載檔案；有可能是下載完整檔案，或者，如果已啟用雲端分層處理，則會根據伺服器端點上設定的雲端分層處理原則進行下載。
@@ -97,7 +97,7 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 | 已同步的物件數目| 125,000 個物件 (~1% 變換) |
 | 資料集大小| 50 GiB |
 | 平均檔案大小 | ~500 KiB |
-| 上傳輸送量 | 每個同步群組每秒20個物件 |
+| 上傳輸送量 | 每個同步處理群組每秒20個物件 |
 | 完整下載輸送量* | 每秒 60 個物件 |
 
 *如果雲端分層處理已啟用，您應該會發現效能有所提升，因為只會下載部分檔案資料。 只有在任何端點上的快取檔案資料有所變更時，Azure 檔案同步才會下載這些資料。 對於任何分層或新建的檔案，代理程式並不會下載檔案資料，而只會將命名空間同步至所有伺服器端點。 代理程式也支援在使用者存取分層的檔案時進行檔案的部分下載。 
@@ -112,5 +112,5 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 
 ## <a name="see-also"></a>另請參閱
 
-- [規劃 Azure 檔案服務部署](storage-files-planning.md) (機器翻譯)
-- [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)
+- [規劃 Azure 檔案部署](storage-files-planning.md)
+- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853118"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Sap NetWeaver 在 Windows 上的 Azure Vm 上的高可用性，適用于 SAP 應用程式的 Azure NetApp Files (SMB) 
@@ -143,7 +143,7 @@ Azure NetApp Files 提供此參考架構中 SAP Central services 的共用：
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>在第一個 ASCS/SCS 叢集節點上安裝 ASCS/SCS 實例
 
-1. 在第一個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至：**產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > 高可用性系統 > 第一個叢集節點 > ASCS/SCS 實例。  
+1. 在第一個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至：「**產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > High-Availability System > ASCS/SCS 實例 > 第一個叢集節點。  
 
 2. 選取 [檔案 **共用** 叢集] 作為 SWPM 中的叢集共用設定。  
 3. 當系統提示您輸入 **SAP 系統叢集參數**時，請輸入您已建立為檔案 **共用主機名稱**之 Azure NetApp Files SMB 共用的主機名稱。  在此範例中，SMB 共用主機名稱為 **anfsmb-9562**。 
@@ -158,7 +158,7 @@ Azure NetApp Files 提供此參考架構中 SAP Central services 的共用：
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>在第二個 ASCS/SCS 叢集節點上安裝 ASCS/SCS 實例
 
-1. 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至**產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > 高可用性系統 > ASCS/SCS 實例 > 其他叢集節點。  
+1. 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 啟動 SAP SWPM 安裝工具，然後流覽至**產品**  >  **DBMS** > 安裝 > 應用程式伺服器 ABAP (或 JAVA) > High-Availability System > ASCS/SCS 實例 > 其他叢集節點。  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>安裝 DBMS 執行個體和 SAP 應用程式伺服器
 

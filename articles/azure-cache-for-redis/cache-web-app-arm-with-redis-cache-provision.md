@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.openlocfilehash: ec8d4f5611425734974d07ae6ee7008b10b9b406
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85833769"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用範本來建立 Web 應用程式加 Azure Redis 快取
@@ -83,7 +83,7 @@ ms.locfileid: "85833769"
 ### <a name="web-app"></a>Web 應用程式
 使用 **webSiteName** 變數中所指定的名稱來建立 Web 應用程式。
 
-請注意，Web 應用程式上會設定可讓它與「Azure Redis 快取」搭配運作的應用程式設定屬性。 這些應用程式設定是根據部署期間提供的值來動態建立的。
+請注意，Web 應用程式上會設定可讓它與「Azure Redis 快取」搭配運作的應用程式設定屬性。 這些應用程式設定會根據部署期間所提供的值，以動態方式建立。
 
 ```json
 {

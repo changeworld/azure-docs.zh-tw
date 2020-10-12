@@ -9,10 +9,10 @@ ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440774"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>設定 Azure VPN 閘道的主動-主動 S2S VPN 連線
@@ -447,5 +447,5 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeatu
 
 此更新最多可能需要 30 到 45 分鐘。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以取得相關步驟。

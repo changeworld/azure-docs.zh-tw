@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019771"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>使用 Active Directory 身分識別來修剪 Azure 認知搜尋結果的安全性篩選
@@ -31,7 +31,7 @@ ms.locfileid: "89019771"
 > [!NOTE]
 > 本文中的範例程式碼片段是以 C# 撰寫。 您可以 [在 GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)找到完整的原始程式碼。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您 Azure 認知搜尋中的索引必須具有 [安全性欄位](search-security-trimming-for-azure-search.md) ，才能儲存具有檔讀取權限的群組身分識別清單。 此使用案例會假設安全性實體項目 (例如個人的大學應用程式) 與指定可存取該項目之人員 (許可人員) 的安全性欄位之間的一對一對應。
 

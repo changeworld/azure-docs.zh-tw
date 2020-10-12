@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120893"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 與 ADAL JS 之間的差異
@@ -61,7 +61,7 @@ ms.locfileid: "88120893"
 
     您可以使用以下格式之 API 的 URI，要求任何資源 API 的範圍：appidURI/scope，例如：https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    僅針對 MS 圖形 API，範圍值 `user.read` 會對應至 HTTPs： \/ /graph.microsoft.com/User.Read，並可交替使用。
+    只有在 MS 圖形 API，範圍值 `user.read` 會對應至 HTTPs： \/ /graph.microsoft.com/User.Read，而且可以交換使用。
 
     ```javascript
     var request = {

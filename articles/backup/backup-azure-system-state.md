@@ -4,10 +4,10 @@ description: 瞭解如何將 Windows Server 電腦的系統狀態備份至 Azure
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332879"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
@@ -86,7 +86,7 @@ ms.locfileid: "91332879"
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保存庫認證會下載到您的 [ **下載** ] 資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 選取 [儲存]。 如果您不小心選取 [ **開啟**]，請讓嘗試開啟保存庫認證的對話方塊失敗。 您將無法開啟保存庫認證。 繼續進行下一個步驟。 保存庫認證位於 [ **下載** ] 資料夾中。
+    保存庫認證會下載到您的 [ **下載** ] 資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 選取 [儲存]****。 如果您不小心選取 [ **開啟**]，請讓嘗試開啟保存庫認證的對話方塊失敗。 您將無法開啟保存庫認證。 繼續進行下一個步驟。 保存庫認證位於 [ **下載** ] 資料夾中。
 
     ![保存庫認證下載完成](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]

@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何設定 Microsoft Azure 備份 Serv
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332809"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>備份 Azure Stack 中的 SQL Server
@@ -48,7 +48,7 @@ ms.locfileid: "91332809"
   * SQL Server 2014 加入了新功能，可為 [Windows Azure Blob 儲存空間的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 MABS 不能用來保護此設定。
   * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 MABS 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 [安裝及準備 Azure 備份伺服器](backup-mabs-install-azure-stack.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "91332809"
 
     ![資料保護方式 - 短期磁碟和線上 Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. 在 [ **指定短期目標** ] 畫面中，包含建立備份點至磁片所需的輸入，然後選取 **[下一步]**。
+6. 在 [ **指定 Short-Term 目標** ] 畫面中，包含建立備份點至磁片所需的輸入，然後選取 **[下一步]**。
 
     在此範例中，[保留範圍]**** 是 **5 天**，[同步處理頻率]**** 是每 **15 分鐘**一次，即是備份的頻率。 [快速完整備份]**** 設定為 [下午 8:00]****。
 

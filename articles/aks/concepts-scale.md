@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499880"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中調整應用程式的選項
@@ -24,9 +24,9 @@ ms.locfileid: "86499880"
 
 ## <a name="manually-scale-pods-or-nodes"></a>手動調整 Pod 或節點
 
-您可以手動調整複本 (Pod) 及節點，來測試您的應用程式如何回應可用資源和狀態中的變更。 手動調整資源也可讓您定義用來維護固定成本的資源集數量，例如節點的數目。 若要手動調整，您可以定義複本或節點計數。 Kubernetes API 接著會根據該複本或節點計數，排程建立額外的 pod 或清空節點。
+您可以手動調整複本 (Pod) 及節點，來測試您的應用程式如何回應可用資源和狀態中的變更。 手動調整資源也可讓您定義用來維護固定成本的資源集數量，例如節點的數目。 若要手動調整，您可以定義複本或節點計數。 然後，Kubernetes API 會根據該複本或節點計數，排程建立額外的 pod 或清空節點。
 
-向下調整節點時，Kubernetes API 會呼叫相關的 Azure 計算 API，並系結至您的叢集所使用的計算類型。 例如，針對以為基礎的叢集 VM 擴展集用來選取要移除哪些節點的邏輯，是由 VM 擴展集 API 所決定。 若要深入瞭解如何在相應減少時選取要移除的節點，請參閱[VMSS 常見問題](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
+向下調整節點時，Kubernetes API 會呼叫相關的 Azure 計算 API，並系結至您叢集所使用的計算類型。 例如，針對在 VM 擴展集上建立的叢集，選取要移除哪些節點的邏輯取決於 VM 擴展集 API。 若要深入瞭解如何選取節點以在縮小時移除，請參閱 [VMSS 常見問題](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
 
 若要開始手動調整 Pod 和節點，請參閱[在 AKS 中調整應用程式][aks-scale]。
 
@@ -42,15 +42,15 @@ Kubernetes 會使用水平 Pod 自動調整程式 (HPA) 來監視資源需求，
 
 ### <a name="cooldown-of-scaling-events"></a>調整事件中的冷卻時間
 
-因為水平 Pod 自動調整程式每隔 30 秒會檢查計量 API，因此在進行另一項檢查之前，先前的調整事件可能尚未成功完成。 此行為可能會導致水準 pod 自動調整程式在先前的調整事件可以接收應用程式工作負載之前變更複本數目，並據此調整資源需求。
+因為水平 Pod 自動調整程式每隔 30 秒會檢查計量 API，因此在進行另一項檢查之前，先前的調整事件可能尚未成功完成。 此行為可能會導致水準 pod 自動調整程式變更複本數目，而先前的調整事件可能會接收應用程式工作負載和資源需求，以便據以進行調整。
 
-若要將競爭事件降至最低，請設定延遲值。 這個值會定義在可觸發另一個調整事件之前，水準 pod 自動調整程式必須等待的時間長度。 此行為可讓新的複本計數生效，而計量 API 會反映分散式工作負載。 [Kubernetes 1.12 的相應增加事件沒有延遲](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay)，不過，scale down 事件的延遲預設為5分鐘。
+為了將競爭事件降至最低，會設定延遲值。 此值定義在可觸發另一個調整事件之前，水準 pod 自動調整程式必須在調整事件之後等候的時間長度。 此行為可讓新的複本計數生效，並使用計量 API 來反映分散式工作負載。 [Kubernetes 1.12 的擴充事件](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay)不會有延遲，不過縮小事件的延遲預設為5分鐘。
 
-目前，您無法從預設值微調這些 cooldown 值。
+目前，您無法從預設值調整這些 cooldown 值。
 
 ## <a name="cluster-autoscaler"></a>叢集自動調整程式
 
-為了回應變更的 pod 需求，Kubernetes 有一個叢集自動調整程式，可根據節點集區中要求的計算資源來調整節點數目。 根據預設，叢集自動調整程式會每隔10秒檢查一次計量 API 伺服器，以取得節點計數中的任何必要變更。 如果叢集自動調整判斷需要變更，則您 AKS 叢集中的節點數目會據以增加或減少。 叢集自動調整程式會使用已啟用 RBAC 功能且執行 Kubernetes 1.10.x 或更高版本的 AKS 叢集。
+為了回應變更的 pod 需求，Kubernetes 具有叢集自動調整程式，可根據節點集區中要求的計算資源來調整節點數目。 根據預設，叢集自動調整程式會每隔10秒檢查計量 API 伺服器，以瞭解節點計數中的任何必要變更。 如果叢集自動調整判斷需要變更，則您 AKS 叢集中的節點數目會據以增加或減少。 叢集自動調整程式會使用已啟用 RBAC 功能且執行 Kubernetes 1.10.x 或更高版本的 AKS 叢集。
 
 ![Kubernetes 叢集自動調整程式](media/concepts-scale/cluster-autoscaler.png)
 
@@ -58,17 +58,17 @@ Kubernetes 會使用水平 Pod 自動調整程式 (HPA) 來監視資源需求，
 
 若要在 AKS 中開始使用叢集自動調整程式，請參閱 [AKS 上的叢集自動調整程式][aks-cluster-autoscaler]。
 
-### <a name="scale-out-events"></a>相應放大事件
+### <a name="scale-out-events"></a>Scale out 事件
 
-如果節點沒有足夠的計算資源可執行要求的 pod，該 pod 就無法透過排程程式進行。 除非節點集區中有額外的計算資源可供使用，否則 pod 無法啟動。
+如果節點沒有足夠的計算資源可執行要求的 pod，則 pod 無法透過排程程式進行。 除非節點集區中有其他計算資源可供使用，否則 pod 無法啟動。
 
-當叢集自動調整程式注意到因為節點集區資源條件約束而無法排程的 pod 時，節點集區中的節點數目會增加，以提供額外的計算資源。 當這些額外的節點已成功部署且可供在節點集區內使用時，就會將 Pod 排程在節點上執行。
+當叢集自動調整程式通知 pod 因為節點集區資源的限制而無法排程時，節點集區中的節點數目會增加，以提供額外的計算資源。 當這些額外的節點已成功部署且可供在節點集區內使用時，就會將 Pod 排程在節點上執行。
 
 如果您必須快速調整應用程式，某些 Pod 會維持在等候排程的狀態，直到由叢集自動調整程式部署的其他節點可以接受排程的 Pod 為止。 對於具有高載需求的應用程式，您可以使用虛擬節點與 Azure 容器執行個體進行調整。
 
-### <a name="scale-in-events"></a>相應縮小事件
+### <a name="scale-in-events"></a>縮小事件
 
-叢集自動調整程式也會監視最近尚未收到新排程要求之節點的 pod 排程狀態。 此案例指出節點集區具有比所需更多的計算資源，而且可以減少節點數目。
+叢集自動調整程式也會監視尚未最近收到新排程要求之節點的 pod 排程狀態。 此案例表示節點集區具有比所需更多的計算資源，而且可以減少節點數目。
 
 依預設，節點若超過 10 分鐘未使用的閾值，則會安排將此節點刪除。 當這種情況發生時，Pod 會排程在節點集區內的其他節點上執行，且叢集自動調整程式會減少節點的數目。
 
@@ -80,19 +80,19 @@ Kubernetes 會使用水平 Pod 自動調整程式 (HPA) 來監視資源需求，
 
 ![Kubernetes 高載調整至 ACI](media/concepts-scale/burst-scaling.png)
 
-ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成本。 當您與 AKS 連線時，ACI 會變成您 AKS 叢集的安全邏輯擴充功能。 [虛擬節點][virtual-nodes-cli]元件是以[virtual Kubelet][virtual-kubelet]為基礎，安裝在您的 AKS 叢集中，以虛擬 Kubernetes 節點的形式呈現 ACI。 接著，Kubernetes 可以排程透過虛擬節點以 ACI 執行個體身分執行的 Pod，而非直接在 AKS 叢集中，以 VM 節點上的 Pod 身分執行。
+ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成本。 當您與 AKS 連線時，ACI 會變成您 AKS 叢集的安全邏輯擴充功能。 [虛擬節點][virtual-nodes-cli]元件（以[virtual Kubelet][virtual-kubelet]為基礎）會安裝在您的 AKS 叢集中，以虛擬 Kubernetes 節點的形式呈現 ACI。 接著，Kubernetes 可以排程透過虛擬節點以 ACI 執行個體身分執行的 Pod，而非直接在 AKS 叢集中，以 VM 節點上的 Pod 身分執行。
 
 您的應用程式不需要進行任何修改即可使用虛擬節點。 部署可以跨 AKS 和 ACI 調整，且當叢集自動調整程式在 AKS 叢集中部署新的節點時沒有延遲。
 
 虛擬節點會部署到與您 AKS 叢集相同虛擬網路中的其他子網路。 此虛擬網路設定可維護 ACI 與 AKS 之間流量的安全。 如同 AKS 叢集，ACI 執行個體是安全的邏輯計算資源，會與其他使用者隔離。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要開始使用調整應用程式，首先請遵循[使用 Azure CLI 建立 AKS 叢集的快速入門][aks-quickstart]。 接著，您可以在 AKS 叢集中開始手動或自動調整應用程式：
 
 - 手動調整 [Pod][aks-manually-scale-pods] 或[節點][aks-manually-scale-nodes]
 - 使用[水平 Pod 自動調整程式][aks-hpa]
-- 使用叢集[自動調整程式][aks-cluster-autoscaler]
+- 使用叢集 [自動調整程式][aks-cluster-autoscaler]
 
 如需有關 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
 

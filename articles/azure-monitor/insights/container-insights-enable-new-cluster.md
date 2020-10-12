@@ -1,19 +1,19 @@
 ---
-title: 監視新的 Azure Kubernetes Service （AKS）叢集 |Microsoft Docs
-description: 瞭解如何使用容器訂用帳戶的 Azure 監視器，為新的 Azure Kubernetes Service （AKS）叢集啟用監視。
+title: 監視新的 Azure Kubernetes Service (AKS) 叢集 |Microsoft Docs
+description: 瞭解如何使用適用于容器訂用帳戶的 Azure 監視器來啟用新 Azure Kubernetes Service (AKS) 叢集的監視。
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
 ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320318"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>啟用新 Azure Kubernetes Service （AKS）叢集的監視
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>啟用監視新 Azure Kubernetes Service (AKS) 叢集
 
-本文說明如何設定容器的 Azure 監視器，以監視您在訂用帳戶中準備部署[Azure Kubernetes Service](../../aks/index.yml)上所裝載的受管理 Kubernetes 叢集。
+本文說明如何設定容器的 Azure 監視器，以監視您準備在訂用帳戶中部署的 [Azure Kubernetes Service](../../aks/index.yml) 上裝載的受控 Kubernetes 叢集。
 
 您可以使用其中一種支援的方法來啟用 AKS 叢集的監視：
 
@@ -25,7 +25,7 @@ ms.locfileid: "87320318"
 若要使用 Azure CLI 針對建立的新 AKS 叢集啟用監視，請依照快速入門文章中[建立 AKS 叢集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)一節下的步驟執行。  
 
 >[!NOTE]
->如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.74 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您已安裝 aks-preview CLI 擴充功能版本0.4.12 或更高版本，請移除您所做的任何變更以啟用預覽延伸模組，因為它可以覆寫預設的 Azure CLI 行為，因為 Azure US Governmnet cloud 中無法使用 AKS 預覽功能。
+>如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 2.0.74 版版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您已安裝 aks-preview CLI 擴充功能版本0.4.12 或更高版本，請移除您為了啟用預覽延伸模組所做的任何變更，因為它可以覆寫預設的 Azure CLI 行為，因為 Azure US Governmnet cloud 中無法使用 AKS 預覽功能。
 
 ## <a name="enable-using-terraform"></a>啟用使用 Terraform
 
@@ -113,9 +113,9 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
   }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如果您在試著將解決方案上線時遇到問題，請檢閱[疑難排解指南](container-insights-troubleshoot.md)
 
-* 啟用監視以收集 AKS 叢集的健康情況和資源使用率，以及在其上執行的工作負載，瞭解[如何使用](container-insights-analyze.md)容器的 Azure 監視器。
+* 啟用監視以收集 AKS 叢集和其上執行之工作負載的健康情況和資源使用量，瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
 

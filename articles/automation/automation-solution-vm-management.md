@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317356"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>停機期間啟動/停止 VM 概觀
@@ -78,7 +78,7 @@ ms.locfileid: "91317356"
 
 您可以使用新的自動化帳戶和 Log Analytics 工作區，以啟用 VM 的「停機期間啟動/停止 VM」功能。 在此情況下，您需要上一節所定義的權限及本節所定義的權限。 您也需要下列角色：
 
-- 訂用帳戶的共同管理員。 如果您要管理傳統 VM，則需要此角色才能建立「傳統執行身分帳戶」。 預設不會再建立[傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+- 訂用帳戶上的 Co-Administrator。 如果您要管理傳統 VM，則需要此角色才能建立「傳統執行身分帳戶」。 預設不會再建立[傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
 - [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 應用程式開發人員角色的成員資格。 如需設定「執行身分帳戶」的詳細資訊，請參閱[設定「執行身分帳戶」所需的權限](manage-runas-account.md#permissions)。
 - 訂用帳戶的參與者，或下列權限。
 

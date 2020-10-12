@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 1b40eef0a4cae8fa68631426ff72003db43d7530
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88817464"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure 入口網站針對受控磁片使用客戶管理的金鑰啟用伺服器端加密
@@ -72,7 +72,7 @@ VM 部署程式類似于標準部署程式，唯一的差異在於您需要將 V
     ![範例 VM 的螢幕擷取畫面，其中已開啟 [磁片] 分頁。 系統會反白顯示 OS 磁片，作為您要選取的範例磁片。](media/virtual-machines-disk-encryption-portal/server-side-encryption-existing-disk-select.png)
 
 1. 選取 [ **加密** ]，並選取 [ **使用客戶管理的金鑰進行待用加密** ]，然後在下拉式清單中選取您的磁片加密集。
-1. 選取 [儲存]  。
+1. 選取 [儲存]****。
 
     ![範例 OS 磁片的螢幕擷取畫面。 加密分頁已開啟、已選取使用客戶管理的金鑰進行待用加密，以及您的範例 Azure Key Vault。 進行這些選擇之後，就會選取 [儲存] 按鈕。](media/virtual-machines-disk-encryption-portal/server-side-encryption-encrypt-existing-disk-customer-managed-key.png)
 

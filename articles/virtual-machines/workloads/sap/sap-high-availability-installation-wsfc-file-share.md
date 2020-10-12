@@ -17,10 +17,10 @@ ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760884"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Azure 之 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用上安裝 SAP NetWeaver 高可用性
@@ -199,7 +199,7 @@ ms.locfileid: "87760884"
 
 本文說明如何在 Azure 上透過 Windows 容錯移轉叢集 (WSFC) 和向外延展檔案共用作為叢集 SAP ASCS/SCS 執行個體的選項，以安裝並設定高可用的 SAP 系統。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在開始安裝之前，請檢閱下列文章：
 
@@ -309,7 +309,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 若要安裝執行個體，在 SAP SWPM 安裝工具中，移至：
 
-**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或**JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  **額外**的叢集節點。
+**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或**JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  **其他叢集節點**。
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 執行個體設定檔
@@ -324,7 +324,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 | service/ha_check_node | **1** |
 
 `enque/encni/set_so_keepalive`只有在使用 ENSA1 時，才需要參數。  
-重新開機 SAP ASCS/SCS 實例。 `KeepAlive`在 SAP ASCS/scs 叢集節點上設定參數遵循指示，在[sap ASCS/scs 實例的叢集節點上設定登錄專案][high-availability-guide]。 
+重新開機 SAP ASCS/SCS 實例。 `KeepAlive`在 SAP ASCS/scs 叢集節點上設定參數時，請遵循指示，在[sap ASCS/scs 實例的叢集節點上設定登錄專案][high-availability-guide]。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安裝 DBMS 執行個體和 SAP 應用程式伺服器
 
@@ -339,6 +339,6 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 * [Windows Server 2016 中的儲存空間直接存取][s2d-in-win-2016]
 
-* [適用于應用程式資料的向外延展檔案伺服器總覽][sofs-overview]
+* [應用程式資料的向外延展檔案伺服器總覽][sofs-overview]
 
-* [Windows Server 2016 中存放裝置的新功能][new-in-win-2016-storage]
+* [Windows Server 2016 中儲存體的新功能][new-in-win-2016-storage]

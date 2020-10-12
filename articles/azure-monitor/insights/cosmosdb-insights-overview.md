@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
 ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498911"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索適用於 Azure Cosmos DB 的 Azure 監視器
@@ -122,7 +122,7 @@ ms.locfileid: "86498911"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如需疑難排解指引，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
+如需疑難排解指引，請參閱專用的以活頁簿為基礎的深入解析 [疑難排解文章](troubleshoot-workbooks.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

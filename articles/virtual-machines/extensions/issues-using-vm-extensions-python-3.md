@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
 ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852603"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在已啟用 Python 3 的 Linux Azure 虛擬機器系統中使用 VM 擴充功能的問題
@@ -41,7 +41,7 @@ ms.locfileid: "88852603"
 
 就地升級（例如從 **Ubuntu 18.04 LTS** 升級為 **ubuntu 20.04 LTS**）應該保留 `/usr/bin/python` 符號，且不受影響。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 在先前的摘要所述的已知受影響案例中部署擴充功能之前，請先考慮這些一般建議：
 
@@ -90,6 +90,6 @@ ms.locfileid: "88852603"
        },
      ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需其他資訊，請參閱 [18.04 LTS 之後的其他基底系統變更（預設為 Python 3）](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default) 。

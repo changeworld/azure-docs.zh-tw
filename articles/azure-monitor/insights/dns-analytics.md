@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498996"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>收集搭配 DNS 分析預覽版解決方案使用 DNS 基礎結構的深入解析
@@ -33,7 +33,7 @@ DNS 分析可協助您︰
 
 下表描述此方案支援的連線來源：
 
-| **連線的來源** | **支援** | **說明** |
+| **連線的來源** | **支援** | **描述** |
 | --- | --- | --- |
 | [Windows 代理程式](../platform/agent-windows.md) | 是 | 此解決方案會收集來自 Windows 代理程式的 DNS 資訊。 |
 | [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 | 此解決方案不會收集來自直接 Linux 代理程式的 DNS 資訊。 |
@@ -44,7 +44,7 @@ DNS 分析可協助您︰
 
 此解決方案會從已安裝 Log Analytics 代理程式的 DNS 伺服器收集 DNS 清查和 DNS 事件相關資料。 這項資料會再上傳至 Azure 監視器，並顯示在解決方案儀表板中。 清查相關資料 (例如 DNS 伺服器數目、區域和資源記錄) 的收集方式是執行 DNS PowerShell Cmdlet。 此資料每兩天會更新一次。 事件相關資料是以接近即時的方式，從 Windows Server 2012 R2 增強的 DNS 記錄與診斷功能所提供的[分析和稽核記錄](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)進行收集。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 請使用下列資訊來設定此解決方案：
 
@@ -99,7 +99,7 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 
 ![[DNS 安全性] 刀鋒視窗](./media/dns-analytics/dns-security-blade.png)
 
-當您按一下清單中的用戶端 IP 時，記錄搜尋就會開啟，其中顯示個別查詢的查閱詳細資料。 在下列範例中，DNS 分析偵測到已使用[IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621)完成通訊：
+當您按一下清單中的用戶端 IP 時，記錄搜尋就會開啟，其中顯示個別查詢的查閱詳細資料。 在下列範例中，DNS 分析偵測到使用 [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621)完成通訊：
 
 ![顯示 ircbot 的記錄搜尋結果](./media/dns-analytics/ircbot.png)
 
@@ -177,12 +177,12 @@ DNS 圖格包含收集到的資料所在的 DNS 伺服器之數目。 它也包�
 
 常見的疑難排解步驟：
 
-1. 遺失 DNS 查閱資料-若要對此問題進行疑難排解，請嘗試重設設定，或只在入口網站中載入設定頁面一次。 若要重設，只要將設定變更為另一個值，然後將它變更回原始值，然後儲存 config 即可。
+1. 遺漏 DNS 查閱資料-若要針對此問題進行疑難排解，請嘗試重設設定，或只在入口網站中載入設定頁面。 若要重設，只需將設定變更為另一個值，然後將其變更回原始值，然後儲存設定。
 
 ## <a name="suggestions"></a>建議
 
-若要提供意見反應，請造訪[Log Analytics UserVoice 頁面](https://aka.ms/dnsanalyticsuservoice)來張貼 DNS 分析功能的想法，以進行處理。 
+若要提供意見反應，請造訪 [Log Analytics UserVoice 頁面](https://aka.ms/dnsanalyticsuservoice) ，以張貼要處理 DNS 分析功能的構想。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [查詢記錄](../log-query/log-query-overview.md)以檢視詳細的 DNS 記錄。

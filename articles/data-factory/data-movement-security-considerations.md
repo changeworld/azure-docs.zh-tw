@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440553"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>在 Azure Data Factory 中資料移動的安全性考量
@@ -194,14 +194,14 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 **是否可以跨不同的 Data Factory 共用自我裝載整合執行階段？**
 
-可以。 更多詳細資料在[這裡](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)。
+是。 更多詳細資料在[這裡](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)。
 
 **自我裝載整合執行階段需要什麼連接埠才能運作？**
 
 自我裝載整合執行階段會建立 HTTP 型連線來存取網際網路。 必須開啟輸出連接埠 443，自我裝載整合執行階段才能建立此連線。 僅在電腦層級開啟輸入埠8060， (不是認證管理員應用程式的公司防火牆層級) 。 若 Azure SQL Database 或 Azure Synapse Analytics 作為來源或目的地，您也必須開啟埠1433。 如需詳細資訊，請參閱 [IP 位址的防火牆設定和允許清單設定](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) 一節。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需有關 Azure Data Factory 複製活動效能的詳細資訊，請參閱[複製活動的效能及微調指南](copy-activity-performance.md)。
 
  

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020213"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何處理和解壓縮 AI 擴充案例中的影像資訊
@@ -63,7 +63,7 @@ Azure 認知搜尋有許多功能可處理影像和影像檔案。 在文件破�
 
 | 影像成員       | 描述                             |
 |--------------------|-----------------------------------------|
-| data               | 以 BASE64 編碼的 JPEG 格式標準化影像字串。   |
+| 資料               | 以 BASE64 編碼的 JPEG 格式標準化影像字串。   |
 | width              | 標準化影像的寬度，以像素為單位。 |
 | 身高             | 標準化影像的高度，以像素為單位。 |
 | originalWidth      | 影像標準化之前的原始寬度。 |

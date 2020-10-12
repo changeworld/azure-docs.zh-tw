@@ -1,13 +1,13 @@
 ---
-title: 例外狀況磁片區中異常上升-Azure 應用程式深入解析
-description: 針對例外狀況磁片區中不尋常的模式，使用 Azure 應用程式 Insights 中的智慧型偵測來監視應用程式例外狀況。
+title: 例外狀況磁片區異常上升-Azure 應用程式見解
+description: 針對例外狀況磁片區中不尋常的模式，在 Azure 應用程式見解中監視應用程式例外狀況的智慧型偵測。
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: 00b7a28a51f91c969b41d2ab85b611f6dde51396
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499421"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>磁碟區例外狀況異常升高 (預覽)
@@ -25,6 +25,6 @@ Application Insights 會自動分析應用程式中擲回的例外狀況，並�
 
 ## <a name="how-do-i-fix-it"></a>如何修正問題？
 通知包括要在診斷程序中支援的診斷資訊：
-1. **選.** 通知會顯示受影響的使用者人數或要求數。 這可協助您將優先順序指派給此問題。
-2. **範圍.** 此問題是否會影響所有流量，還是只會影響某些作業？ 可以從通知取得這項資訊。
-3. **診斷.** 偵測包含了擲回例外狀況的方法及例外狀況類型的相關資訊。 您也可以使用連結到支援資訊的相關項目和報表，協助您進一步診斷問題。
+1. **分流。** 通知會顯示受影響的使用者人數或要求數。 這可協助您將優先順序指派給此問題。
+2. **範圍。** 此問題是否會影響所有流量，還是只會影響某些作業？ 可以從通知取得這項資訊。
+3. **診斷。** 偵測包含了擲回例外狀況的方法及例外狀況類型的相關資訊。 您也可以使用連結到支援資訊的相關項目和報表，協助您進一步診斷問題。

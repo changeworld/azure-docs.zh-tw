@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265910"
 ---
 # <a name="streaming-endpoints-overview"></a>串流端點概觀  
@@ -52,7 +52,7 @@ Azure 媒體服務將下列屬性新增至串流端點實體： **>cdnprovider**
 從媒體服務的2017年1月版本開始，您有兩種串流類型： **標準** (預覽版) 和 **Premium**。 這些類型是串流端點 "2.0" 版的一部分。
 
 
-|類型|說明|
+|類型|描述|
 |--------|--------|  
 |**Standard**|預設串流端點是 **標準** 型別，可以藉由調整串流單位來變更為 Premium 類型。|
 |**高級** |這個選項適用於需要更大規模或控制的專業案例。 您可以藉由調整串流單位來移至 **Premium** 類型。<br/>專用串流端點存留于隔離的環境中，且不會競爭資源。|

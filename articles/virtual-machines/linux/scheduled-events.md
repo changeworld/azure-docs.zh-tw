@@ -9,10 +9,10 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
 ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816723"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 中繼資料服務：Linux VM 的已排定事件
@@ -138,7 +138,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | 資源| 受此事件影響的資源清單。 其中最多只能包含來自一個[更新網域](manage-availability.md)的機器，但不能包含更新網域中的所有機器。 <br><br> 範例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`:此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`:已啟動事件。</ul> 未曾提供 `Completed` 或類似的狀態。 當事件完成時，不會再傳回事件。
 | NotBefore| 自此之後可啟動此事件的時間。 <br><br> 範例： <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
-| 描述 | 此事件的描述。 <br><br> 範例： <br><ul><li> 主機伺服器正在進行維護。 |
+| 說明 | 此事件的描述。 <br><br> 範例： <br><ul><li> 主機伺服器正在進行維護。 |
 | EventSource | 事件的起始端。 <br><br> 範例： <br><ul><li> `Platform`：這個事件是由平臺所起始。 <li>`User`：這個事件是由使用者所起始。 |
 
 ### <a name="event-scheduling"></a>事件排程

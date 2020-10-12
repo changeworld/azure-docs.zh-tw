@@ -1,7 +1,7 @@
 ---
 title: 針對索引鍵/值使用 JSON 內容類型
 titleSuffix: Azure App Configuration
-description: 瞭解如何使用索引鍵/值的 JSON 內容類型
+description: 瞭解如何使用 JSON content-type 來輸入索引鍵/值
 services: azure-app-configuration
 author: avanigupta
 ms.assetid: ''
@@ -11,37 +11,37 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
 ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121991"
 ---
-# <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>利用 content-type 將 JSON 索引鍵/值儲存在應用程式組態
+# <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>利用 content-type 將 JSON 索引鍵/值儲存在應用程式設定中
 
-資料會以索引鍵/值的形式儲存在應用程式組態中，其中的值預設會視為字串類型。 不過，您可以利用與每個索引鍵值相關聯的 content-type 屬性來指定自訂類型，讓您可以保留資料的原始類型，或讓您的應用程式根據內容類型而有不同的行為。
+資料會儲存在應用程式設定中做為索引鍵/值，預設會將值視為字串類型。 不過，您可以利用與每個索引鍵/值相關聯的 content-type 屬性來指定自訂類型，如此您就可以保留資料的原始類型，或讓您的應用程式根據內容類型而有不同的行為。
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-在應用程式組態中，您可以使用 JSON 媒體類型做為金鑰值的內容類型，以獲得如下的優點：
-- **較簡單的資料管理**：管理索引鍵/值（例如陣列）在 Azure 入口網站中會變得很容易。
-- **增強的資料匯出**：在資料匯出期間，將會保留基本型別、陣列和 JSON 物件。
-- **應用程式組態提供者的原生支援**：在應用程式中應用程式組態提供者程式庫取用時，JSON 內容類型的索引鍵/值將可正常使用。
+在 [應用程式設定] 中，您可以使用 JSON 媒體類型作為索引鍵-值的內容類型，以使用如下的優點：
+- **更簡單的資料管理**：管理索引鍵/值（例如陣列）在 Azure 入口網站中會變得很簡單。
+- **增強的資料匯出**：資料匯出期間將會保留基本類型、陣列和 JSON 物件。
+- **使用應用程式設定提供者的原生支援**：當應用程式中的應用程式設定提供者程式庫取用時，具有 JSON content-type 的索引鍵/值將可正常運作。
 
 #### <a name="valid-json-content-type"></a>有效的 JSON 內容類型
 
-如[這裡](https://www.iana.org/assignments/media-types/media-types.xhtml)所定義的媒體類型，可以指派給與每個索引鍵/值相關聯的內容類型。
+您可以在 [此處](https://www.iana.org/assignments/media-types/media-types.xhtml)定義的媒體類型，指派給與每個索引鍵/值相關聯的 content-type。
 媒體類型包含類型和子類型。 如果類型為， `application` 且子類型 (或尾碼) 為 `json` ，則媒體類型會被視為有效的 JSON 內容類型。
 有效 JSON 內容類型的一些範例如下：
 
 - application/json
 - 應用程式/活動 + json
-- application/application. foobar + json; 字元集 = utf-8
+- application/vnd.openxmlformats-officedocument.spreadsheetml.sheet. foobar + json; 字元集 = utf-8
 
 #### <a name="valid-json-values"></a>有效的 JSON 值
 
-當索引鍵/值具有 JSON 內容類型時，其值必須是有效的 JSON 格式，用戶端才能正確地處理它。 否則，用戶端可能會失敗或切換回，並將其視為字串格式。
+當索引鍵-值具有 JSON 內容類型時，其值必須是有效的 JSON 格式，用戶端才能正確地進行處理。 否則，用戶端可能會失敗或回復，並將其視為字串格式。
 有效 JSON 值的一些範例如下：
 
 - "John Doe"
@@ -53,20 +53,20 @@ ms.locfileid: "88121991"
 - {"ObjectSetting"： {"目標"： {"Default"： true，"Level"： "Information"}}}
 
 > [!NOTE]
-> 在本文的其餘部分，應用程式組態中具有有效 JSON 內容類型和有效 JSON 值的索引鍵/值，將稱為**JSON 索引鍵/值**。 
+> 在本文的其餘部分中，應用程式設定中具有有效 JSON 內容類型和有效 JSON 值的任何索引鍵/值，都將稱為 JSON 索引 **鍵/值**。 
 
-您將在本教學課程中了解如何：
+在本教學課程中，您將了解如何：
 > [!div class="checklist"]
-> * 在應用程式組態中建立 JSON 索引鍵/值。
+> * 在應用程式設定中建立 JSON 索引鍵/值。
 > * 從 JSON 檔案匯入 JSON 索引鍵/值。
 > * 將 JSON 索引鍵/值匯出至 JSON 檔案。
 > * 在您的應用程式中使用 JSON 索引鍵/值。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
-- 最新版的 Azure CLI (2.10.0 或更新版本) 。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您使用 Azure CLI，則必須先使用登入 `az login` 。 您可以選擇性地使用 Azure Cloud Shell。
+- Azure CLI (2.10.0 或更新版本) 的最新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您使用 Azure CLI，則必須先使用登入 `az login` 。 您可以選擇性地使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -76,17 +76,17 @@ ms.locfileid: "88121991"
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
 
-## <a name="create-json-key-values-in-app-configuration"></a>在應用程式組態中建立 JSON 索引鍵/值
+## <a name="create-json-key-values-in-app-configuration"></a>在應用程式設定中建立 JSON 索引鍵/值
 
-JSON 索引鍵-值可以使用 Azure 入口網站、Azure CLI 或從 JSON 檔案匯入來建立。 在本節中，您會找到使用這三種方法來建立相同 JSON 索引鍵/值的指示。
+您可以使用 Azure 入口網站、Azure CLI 或從 JSON 檔案匯入來建立 JSON 索引鍵/值。 在本節中，您會找到使用這三種方法建立相同 JSON 索引鍵值的指示。
 
 ### <a name="create-json-key-values-using-azure-portal"></a>使用 Azure 入口網站建立 JSON 索引鍵/值
 
-流覽至您的應用程式組態存放區，**然後選取 [** 設定] [  >  **建立**索引  >  **鍵-值**] 來新增下列索引鍵/值組：
+流覽至您的應用程式設定存放區，然後選取 [ **Configuration Explorer**  >  **建立**索引  >  **鍵/值**]，以新增下列索引鍵/值組：
 
 | 機碼 | 值 | 內容類型 |
 |---|---|---|
-| 設定： BackgroundColor | 環保 | application/json |
+| 設定： BackgroundColor | 亮起 | application/json |
 | 設定： FontSize | 24 | application/json |
 | 設定： UseDefaultRouting | false | application/json |
 | 設定： BlockedUsers | null | application/json |
@@ -94,11 +94,11 @@ JSON 索引鍵-值可以使用 Azure 入口網站、Azure CLI 或從 JSON 檔案
 | 設定： RolloutPercentage | [25，50，75100] | application/json |
 | 設定：記錄 | {"Test"： {"Level"： "Debug"}，"生產"： {"Level"： "Warning"}} | application/json |
 
-將 [**標籤**] 保留空白，**然後選取 [** 套用]。
+將 [ **標籤** ] 保留空白， **然後選取 [** 套用]。
 
 ### <a name="create-json-key-values-using-azure-cli"></a>使用 Azure CLI 建立 JSON 索引鍵/值
 
-下列命令會在您的應用程式組態存放區中建立 JSON 索引鍵/值。 `<appconfig_name>`以您應用程式組態存放區的名稱取代。
+下列命令會在您的應用程式設定存放區中建立 JSON 索引鍵/值。 `<appconfig_name>`以您的應用程式設定存放區名稱取代。
 
 ```azurecli-interactive
 appConfigName=<appconfig_name>
@@ -116,7 +116,7 @@ az appconfig kv set -n $appConfigName --content-type application/json --key Sett
 
 ### <a name="import-json-key-values-from-a-file"></a>從檔案匯入 JSON 索引鍵/值
 
-使用下列內容建立名為的 JSON 檔案 `Import.json` ，並將索引鍵/值匯入應用程式組態：
+使用下列內容建立名為的 JSON 檔案 `Import.json` ，並以索引鍵/值形式匯入至應用程式設定：
 
 ```json
 {
@@ -137,18 +137,18 @@ az appconfig kv import -s file --format json --path "~/Import.json" --content-ty
 ```
 
 > [!Note]
-> `--depth`引數是用來從檔案將階層式資料簡維至索引鍵/值組。 在本教學課程中，會指定深度以示範您也可以將 JSON 物件儲存為應用程式組態中的值。 如果未指定深度，JSON 物件預設會壓平合併至最深的層級。
+> 自 `--depth` 變數是用來將檔案中的階層式資料簡維化成成對的索引鍵/值組。 在本教學課程中，會指定深度來示範您也可以將 JSON 物件儲存為應用程式設定中的值。 如果未指定 depth，預設會將 JSON 物件壓平合併為最深的層級。
 
-您所建立的 JSON 索引鍵-值在應用程式組態中看起來應該像這樣：
+您在應用程式設定中所建立的 JSON 索引鍵/值看起來應該像這樣：
 
-![包含 JSON 索引鍵/值的設定存放區](./media/create-json-settings.png)
+![包含 JSON 索引鍵/值的 Config 存放區](./media/create-json-settings.png)
 
 
 ## <a name="export-json-key-values-to-a-file"></a>將 JSON 索引鍵/值匯出至檔案
 
-使用 JSON 索引鍵/值的其中一個主要優點是，可以在匯出時保留值的原始資料類型。 如果應用程式組態中的索引鍵/值沒有 JSON content-type，則會將其值視為字串。 
+使用 JSON 索引鍵/值的其中一個主要優點是，可以在匯出時保留值的原始資料類型。 如果應用程式設定中的索引鍵/值沒有 JSON 內容類型，則會將其值視為字串。 
 
-請考慮下列沒有 JSON 內容類型的索引鍵-值：
+請考慮這些索引鍵/值，但不要輸入 JSON content-type：
 
 | 機碼 | 值 | 內容類型 |
 |---|---|---|
@@ -165,24 +165,24 @@ az appconfig kv import -s file --format json --path "~/Import.json" --content-ty
 }
 ```
 
-不過，當您將 JSON 索引鍵/值匯出至檔案時，所有的值都會保留其原始資料類型。 若要確認這一點，請將索引鍵/值從您的應用程式組態匯出至 JSON 檔案。 您會看到匯出的檔案與您先前匯入的檔案具有相同的內容 `Import.json` 。
+但是，當您將 JSON 索引鍵/值匯出至檔案時，所有值都會保留其原始資料類型。 若要確認這一點，請將索引鍵/值從您的應用程式設定匯出至 JSON 檔案。 您會看到匯出的檔案與您先前匯入的檔案具有相同的內容 `Import.json` 。
 
 ```azurecli-interactive
 az appconfig kv export -d file --format json --path "~/Export.json" --separator :
 ```
 
 > [!NOTE]
-> 如果您的應用程式組態存放區具有某些索引鍵/值，而沒有 JSON 內容類型，它們也會以字串格式匯出至相同的檔案。 如果您只想匯出 JSON 索引鍵/值，請將唯一的標籤或前置詞指派給 JSON 索引鍵值，並在匯出期間使用標籤或前置詞篩選。
+> 如果您的應用程式設定存放區有一些沒有 JSON content-type 的索引鍵/值，則它們也會以字串格式匯出至相同檔案。 如果您只想匯出 JSON 索引鍵/值，請在 JSON 索引鍵/值中指派唯一的標籤或前置詞，並在匯出期間使用標籤或前置詞篩選。
 
 
 ## <a name="consuming-json-key-values-in-applications"></a>使用應用程式中的 JSON 索引鍵/值
 
-在您的應用程式中取用 JSON 索引鍵/值的最簡單方式是透過應用程式組態提供者程式庫。 有了提供者程式庫，您就不需要在應用程式中執行 JSON 索引鍵/值的特殊處理。 它們一律會以其他 JSON 設定提供者程式庫執行的相同方式還原序列化應用程式。 
+在應用程式中取用 JSON 索引鍵/值最簡單的方式是透過應用程式設定提供者程式庫。 使用提供者程式庫時，您不需要在應用程式中執行 JSON 索引鍵/值的特殊處理。 它們一律會針對您的應用程式還原序列化，就像其他 JSON 設定提供者程式庫一樣。 
 
 > [!Important]
-> JSON 索引鍵/值的原生支援可在 .NET 設定提供者版本4.0.0 中取得 (或更新版本的) 。 如需詳細資訊，請參閱[*後續步驟*](#next-steps)一節。
+> JSON 索引鍵/值的原生支援可在 .NET 設定提供者版本 4.0.0 (或更新版本) 中取得。 請參閱 [*後續步驟*](#next-steps) 一節，以取得詳細資料。
 
-如果您使用 SDK 或 REST API 從應用程式組態讀取索引鍵/值（根據 content-type），您的應用程式會負責使用任何標準 JSON 還原序列化程式，將 JSON 索引鍵值的值還原序列化。
+如果您使用 SDK 或 REST API 從應用程式設定讀取索引鍵/值，則根據內容類型，您的應用程式會負責使用任何標準 JSON 還原序列化程式來還原序列化 JSON 索引鍵/值的值。
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -191,10 +191,10 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已經知道如何使用應用程式組態存放區中的 JSON 索引鍵/值，請建立應用程式來使用這些索引鍵/值：
+現在您已瞭解如何在您的應用程式設定存放區中使用 JSON 索引鍵/值，請建立應用程式來使用這些索引鍵/值：
 
 * [ASP.NET Core 快速入門](./quickstart-aspnet-core-app.md)
-    * 先決條件： [AppConfiguration. AspNetCore](https://www.nuget.org/packages/Microsoft.Azure.AppConfiguration.AspNetCore) package v 4.0.0 或更新版本。
+    * 必要條件： [AppConfiguration. AspNetCore](https://www.nuget.org/packages/Microsoft.Azure.AppConfiguration.AspNetCore) package v 4.0.0 或更新版本。
 
 * [.NET Core 快速入門](./quickstart-dotnet-core-app.md)
-    * 必要條件： [Microsoft.Extensions.Configuration。AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration) package v 4.0.0 或更新版本。
+    * 先決條件： [Microsoft.Extensions.Configuration。AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration) 套件 v 4.0.0 或更新版本。

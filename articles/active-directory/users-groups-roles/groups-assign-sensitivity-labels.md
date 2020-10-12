@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056263"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>將敏感度標籤指派給 Azure Active Directory 中的 Microsoft 365 群組
@@ -114,7 +114,7 @@ Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](http
 
 1. 標籤會在此 Azure AD 組織的 Microsoft 365 合規性中心內發佈。
 1. 這項功能已啟用，Azure AD PowerShell 模組中的 EnableMIPLabels 設定為 True。
-1. Lables 會使用 AzureAdLabelSync Cmdlet 在安全性 & 合規性 PowerShell 模組中同步處理至 Azure AD。
+1. Lables 會使用安全性 & 合規性 PowerShell 模組中的 Execute-AzureAdLabelSync Cmdlet，同步處理至 Azure AD。
 1. 群組是 Microsoft 365 群組。
 1. 組織具有 active Azure Active Directory Premium P1 授權。
 1. 目前已登入的使用者有足夠的許可權可指派標籤。 使用者必須是全域管理員、群組系統管理員或群組擁有者。
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](http
 1. 選取 [群組]。
 1. 在 [ **所有群組** ] 頁面上，選取您要加上標籤的群組。
 1. 在所選群組的頁面上，選取 [ **屬性** ]，然後從清單中選取新的敏感度標籤。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>群組的設定變更已發行的標籤不會更新
 
@@ -144,7 +144,7 @@ Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](http
 
 如果您必須進行變更，請使用 [Azure AD PowerShell 腳本](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) ，手動將更新套用到受影響的群組。 這個方法可確保所有現有的群組都強制執行新的設定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [搭配 Microsoft 小組、Microsoft 365 群組和 SharePoint 網站使用敏感度標籤](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [使用 Azure AD PowerShell 腳本手動變更標籤原則之後更新群組](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)

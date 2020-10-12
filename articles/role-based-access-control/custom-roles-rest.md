@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 建立或更新 Azure 自訂角色-Azure RBAC
-description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC）來列出、建立、更新或刪除 Azure 自訂角色。
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制來列出、建立、更新或刪除 azure 自訂角色 (Azure RBAC) 。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790181"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>使用 REST API 建立或更新 Azure 自訂角色
 
 > [!IMPORTANT]
-> 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+> 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "84790181"
 
 ## <a name="list-custom-roles"></a>列出自訂角色
 
-若要列出目錄中的所有自訂角色，請使用[角色定義-list](/rest/api/authorization/roledefinitions/list) REST API。
+若要列出目錄中的所有自訂角色，請使用 [角色定義清單](/rest/api/authorization/roledefinitions/list) REST API。
 
 1. 從下列要求著手：
 
@@ -44,13 +44,13 @@ ms.locfileid: "84790181"
 1. 將 *{filter}* 取代為角色類型。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | Description |
+    > | Filter | 說明 |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | 根據 CustomRole 類型篩選 |
 
-## <a name="list-custom-roles-at-a-scope"></a>列出範圍中的自訂角色
+## <a name="list-custom-roles-at-a-scope"></a>列出範圍內的自訂角色
 
-若要列出範圍中的自訂角色，請使用[角色定義-list](/rest/api/authorization/roledefinitions/list) REST API。
+若要列出某個範圍的自訂角色，請使用 [角色定義清單](/rest/api/authorization/roledefinitions/list) REST API。
 
 1. 從下列要求著手：
 
@@ -71,13 +71,13 @@ ms.locfileid: "84790181"
 1. 將 *{filter}* 取代為角色類型。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | Description |
+    > | Filter | 說明 |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | 根據 CustomRole 類型篩選 |
 
 ## <a name="list-a-custom-role-definition-by-name"></a>依名稱列出自訂角色定義
 
-若要依其顯示名稱取得自訂角色的相關資訊，請使用[角色定義-get](/rest/api/authorization/roledefinitions/get) REST API。
+若要依據自訂角色的顯示名稱取得相關資訊，請使用 [角色定義-get](/rest/api/authorization/roledefinitions/get) REST API。
 
 1. 從下列要求著手：
 
@@ -98,13 +98,13 @@ ms.locfileid: "84790181"
 1. 將 *{filter}* 取代為角色的顯示名稱。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | Description |
+    > | Filter | 說明 |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | 使用角色確切顯示名稱的 URL 編碼型式。 例如 `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>依識別碼列出自訂角色定義
 
-若要依其唯一識別碼取得自訂角色的相關資訊，請使用[角色定義-get](/rest/api/authorization/roledefinitions/get) REST API。
+若要根據自訂角色的唯一識別碼取得相關資訊，請使用 [角色定義-get](/rest/api/authorization/roledefinitions/get) REST API。
 
 1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list) REST API 來取得角色的 GUID 識別碼。
 
@@ -128,7 +128,7 @@ ms.locfileid: "84790181"
 
 ## <a name="create-a-custom-role"></a>建立自訂角色
 
-若要建立自訂角色，請使用[角色定義 - 建立或更新](/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要呼叫此 API，您必須使用已指派角色的使用者來登入，其具有 `Microsoft.Authorization/roleDefinitions/write` 所有的許可權 `assignableScopes` 。 在內建角色中，只有[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)才會包含此許可權。
+若要建立自訂角色，請使用[角色定義 - 建立或更新](/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要呼叫此 API，您必須使用已指派具有擁有權限之角色的使用者登入 `Microsoft.Authorization/roleDefinitions/write` `assignableScopes` 。 在內建角色中，只有「 [擁有](built-in-roles.md#owner) 者」和「 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 」才會包含此許可權。
 
 1. 檢閱可用來為自訂角色建立權限的[資源提供者作業](resource-provider-operations.md)清單。
 
@@ -177,19 +177,19 @@ ms.locfileid: "84790181"
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 資源群組 |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
 
-1. 將 *{roleDefinitionId}* 取代為自訂角色的 GUID 識別碼。
+1. 以自訂角色的 GUID 識別碼取代 *{roleDefinitionId}* 。
 
-1. 在要求本文中，將 *{roleDefinitionId}* 取代為 GUID 識別碼。
+1. 在要求主體中，將 *{roleDefinitionId}* 取代為 GUID 識別碼。
 
 1. 如果 `assignableScopes` 是訂用帳戶或資源群組，請將 *{subscriptionId}* 或 *{resourceGroup}* 實例取代為您的識別碼。
 
-1. 如果 `assignableScopes` 是管理群組，請將 *{groupId}* 實例取代為您的管理群組識別碼。 將管理群組新增至 `assignableScopes` 目前為預覽狀態。
+1. 如果 `assignableScopes` 是管理群組，請將 *{groupId}* 實例取代為您的管理群組識別碼。 將管理群組新增至的 `assignableScopes` 功能目前為預覽狀態。
 
 1. 在 `actions` 屬性中，新增角色允許執行的作業。
 
 1. 在 `notActions` 屬性中，新增從允許的 `actions` 中排除的作業。
 
-1. 在 `roleName` 和 `description` 屬性中，指定唯一角色名稱和描述。 如需有關屬性的詳細資訊，請參閱[Azure 自訂角色](custom-roles.md)。
+1. 在 `roleName` 和 `description` 屬性中，指定唯一角色名稱和描述。 如需屬性的詳細資訊，請參閱 [Azure 自訂角色](custom-roles.md)。
 
     以下顯示要求本文範例：
 
@@ -227,9 +227,9 @@ ms.locfileid: "84790181"
 
 ## <a name="update-a-custom-role"></a>更新自訂角色
 
-若要更新自訂角色，請使用[角色定義 - 建立或更新](/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要呼叫此 API，您必須使用已指派角色的使用者來登入，其具有 `Microsoft.Authorization/roleDefinitions/write` 所有的許可權 `assignableScopes` 。 在內建角色中，只有[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)才會包含此許可權。
+若要更新自訂角色，請使用[角色定義 - 建立或更新](/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要呼叫此 API，您必須使用已指派具有擁有權限之角色的使用者登入 `Microsoft.Authorization/roleDefinitions/write` `assignableScopes` 。 在內建角色中，只有「 [擁有](built-in-roles.md#owner) 者」和「 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 」才會包含此許可權。
 
-1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list)或[角色定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API 來取得自訂角色的相關資訊。 如需詳細資訊，請參閱先前的[清單自訂角色](#list-custom-roles)一節。
+1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list)或[角色定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API 來取得自訂角色的相關資訊。 如需詳細資訊，請參閱先前的 [清單自訂角色](#list-custom-roles) 一節。
 
 1. 從下列要求著手：
 
@@ -246,7 +246,7 @@ ms.locfileid: "84790181"
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 資源群組 |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
 
-1. 將 *{roleDefinitionId}* 取代為自訂角色的 GUID 識別碼。
+1. 以自訂角色的 GUID 識別碼取代 *{roleDefinitionId}* 。
 
 1. 根據自訂角色的相關資訊，以下列格式建立要求本文：
 
@@ -317,9 +317,9 @@ ms.locfileid: "84790181"
 
 ## <a name="delete-a-custom-role"></a>刪除自訂角色
 
-若要刪除自訂角色，請使用[角色定義 - 刪除](/rest/api/authorization/roledefinitions/delete) REST API。 若要呼叫此 API，您必須使用已指派角色的使用者來登入，其具有 `Microsoft.Authorization/roleDefinitions/delete` 所有的許可權 `assignableScopes` 。 在內建角色中，只有[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)才會包含此許可權。
+若要刪除自訂角色，請使用[角色定義 - 刪除](/rest/api/authorization/roledefinitions/delete) REST API。 若要呼叫此 API，您必須使用已指派具有擁有權限之角色的使用者登入 `Microsoft.Authorization/roleDefinitions/delete` `assignableScopes` 。 在內建角色中，只有「 [擁有](built-in-roles.md#owner) 者」和「 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 」才會包含此許可權。
 
-1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list)或[角色定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API 來取得自訂角色的 GUID 識別碼。 如需詳細資訊，請參閱先前的[清單自訂角色](#list-custom-roles)一節。
+1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list)或[角色定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API 來取得自訂角色的 GUID 識別碼。 如需詳細資訊，請參閱先前的 [清單自訂角色](#list-custom-roles) 一節。
 
 1. 從下列要求著手：
 
@@ -336,10 +336,10 @@ ms.locfileid: "84790181"
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 資源群組 |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
 
-1. 將 *{roleDefinitionId}* 取代為自訂角色的 GUID 識別碼。
+1. 以自訂角色的 GUID 識別碼取代 *{roleDefinitionId}* 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [Azure 自訂角色](custom-roles.md)
+- [Azure 自訂角色](custom-roles.md) (機器翻譯)
 - [使用 REST API 新增或移除 Azure 角色指派](role-assignments-rest.md)
 - [Azure REST API 參考](/rest/api/azure/)

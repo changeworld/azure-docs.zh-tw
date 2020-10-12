@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979841"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教學課程：設定 SAP SuccessFactors 來 Active Directory 使用者布建 
@@ -353,7 +353,7 @@ SuccessFactors 布建應用程式設定完成之後，您就可以在 Azure 入�
    > [!div class="mx-imgBorder"]
    > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解輸入布建的支援 SuccessFactors 屬性](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [瞭解如何設定電子郵件回寫至 SuccessFactors](sap-successfactors-writeback-tutorial.md)

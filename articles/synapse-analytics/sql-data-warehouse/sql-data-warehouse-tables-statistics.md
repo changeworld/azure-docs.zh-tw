@@ -11,11 +11,11 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799310"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 集區中的資料表統計資料
@@ -70,7 +70,7 @@ SET AUTO_CREATE_STATISTICS ON
 若要避免測量效能降低，請在分析系統前，先執行基準測試的工作負載，以確定會先建立統計資料。
 
 > [!NOTE]
-> 建立統計資料時，會以不同的使用者內容，在 [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中記錄。
+> 建立統計資料時，會以不同的使用者內容登入 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
 
 當自動統計資料建立完成時，會採用以下格式：_WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>。 您可以藉由執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令來查看已建立的統計資料：
 
@@ -149,9 +149,6 @@ left join
 on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
-
->[!TIP]
-> 為了改善 Synapse SQL 中的效能，請考慮在永久使用者資料表上使用 **sys. pdw_permanent_table_mappings** 而不是 **sys. pdw_table_mappings** 。 如需詳細資訊，請參閱 **[sys. pdw_permanent_table_mappings &#40;transact-sql&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
 
 **查詢2：** 藉由檢查每個資料表上上次更新統計資料的時間，找出統計資料的存在時間。 
 

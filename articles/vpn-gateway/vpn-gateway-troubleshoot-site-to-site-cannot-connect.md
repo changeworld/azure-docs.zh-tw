@@ -1,5 +1,5 @@
 ---
-title: 針對無法連線至 titleSuffix 的 Azure 站對站 VPN 連線進行疑難排解： Azure VPN 閘道
+title: 針對無法連線到 titleSuffix 的 Azure 站對站 VPN 連線進行疑難排解： Azure VPN 閘道
 description: 了解如何針對突然停止運作且無法重新連線的站對站 VPN 連線進行疑難排解。
 services: vpn-gateway
 author: chadmath
@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037829"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>疑難排解：Azure 站對站 VPN 連線無法連線並停止運作
@@ -50,7 +50,7 @@ ms.locfileid: "86037829"
 
 1. 移至您建立的 VPN 閘道站對站連線。
 
-2. 在 [**設定**] 區段中，按一下 [**共用金鑰**]。
+2. 在 [ **設定** ] 區段中，按一下 [ **共用金鑰**]。
     
     ![共用金鑰](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/sharedkey.png)
 
@@ -108,7 +108,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 完整轉寄密碼功能可能會造成連線中斷的問題。 如果 VPN 裝置已啟用完整轉寄密碼，請停用該功能。 然後更新 VPN 閘道 IPsec 原則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 -   [設定虛擬網路的站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [設定站對站 VPN 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)

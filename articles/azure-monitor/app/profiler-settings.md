@@ -7,70 +7,70 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499404"
 ---
 # <a name="configure-application-insights-profiler"></a>設定 Application Insights Profiler
 
-## <a name="updated-profiler-agent"></a>已更新 Profiler 代理程式
-觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，您的代理程式會自動更新。 如果您移至網站的 Kudu URL，並將 \DiagnosticServices 附加至它的結尾，您可以查看正在執行的代理程式版本，如下所示： `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` 。 Application Insights Profiler Webjob 應為2.6 或更新版本。 您可以重新開機 web 應用程式來強制升級。 
+## <a name="updated-profiler-agent"></a>更新的 Profiler 代理程式
+觸發程式功能只適用于2.6 版或更新版本的 profiler 代理程式。 如果您正在執行 Azure App Service，則會自動更新您的代理程式。 如果您移至網站的 Kudu URL，並將 \DiagnosticServices 附加至它的結尾，則可以查看您正在執行的代理程式版本，如下所示：  `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` 。 Application Insights Profiler Webjob 應為2.6 版或更新版本。 您可以重新開機您的 web 應用程式，以強制進行升級。 
 
-如果您是在 VM 或雲端服務上執行分析工具，您必須安裝 Windows Azure 診斷（WAD）延伸模組版本16.0.4 版或更新版本。 您可以藉由登入您的 VM 並查看此目錄，來檢查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目錄名稱是已安裝的 WAD 版本。 當有新版本可用時，Azure VM 代理程式會自動更新 WAD。
+如果您在 VM 或雲端服務上執行分析工具，您必須安裝 Windows Azure 診斷 (WAD) 擴充功能版本16.0.4 版或更新版本。 您可以登入 VM 並查看此目錄來檢查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目錄名稱是已安裝的 WAD 版本。 當有新版本可用時，Azure VM 代理程式會自動更新 WAD。
 
 ## <a name="profiler-settings-page"></a>Profiler 設定頁面
 
-若要開啟 [Azure 應用程式 Insights Profiler 設定] 窗格，請移至 [Application Insights 效能] 窗格，然後選取 [**設定 Profiler** ] 按鈕。
+若要開啟 [Azure 應用程式 Insights Profiler 設定] 窗格，請移至 [Application Insights 效能] 窗格，然後選取 [ **設定** 分析工具] 按鈕。
 
 ![開啟 Profiler 設定頁面的連結][configure-profiler-entry]
 
-這會開啟一個頁面，看起來像這樣：
+這會開啟如下所示的頁面：
 
 ![Profiler 設定頁面][configure-profiler-page]
 
-[**設定 Application Insights Profiler** ] 頁面具有下列功能：
+[ **設定 Application Insights Profiler** ] 頁面包含下列功能：
 
 | 功能 | 說明 |
 |-|-|
 立即分析 | 開始為所有連結至此 Application Insights 執行個體的應用程式分析工作階段。
-觸發程序 | 可讓您設定導致 profiler 執行的觸發程式。 
+觸發程序 | 可讓您設定觸發程式來執行程式碼剖析工具。 
 最近的分析會話 | 顯示過往分析工作階段的相關資訊。
 
 ## <a name="profile-now"></a>立即分析
-此選項可讓您視需要啟動分析會話。 當您按一下此連結時，傳送資料至此 Application Insights 實例的所有 profiler 代理程式都會開始捕獲設定檔。 5到10分鐘後，設定檔會話會顯示在下列清單中。
+此選項可讓您依需求啟動分析會話。 當您按一下此連結時，傳送資料至此 Application Insights 實例的所有 profiler 代理程式都會開始捕獲設定檔。 5到10分鐘之後，設定檔會話將會顯示在下列清單中。
 
-若要讓使用者手動觸發 profiler 會話，他們必須在其 Application Insights 元件的角色上至少有「寫入」存取權。 在大部分情況下，您會自動取得此存取權，而不需要額外的工作。 如果您遇到問題，要新增的訂用帳戶範圍角色會是「Application Insights 元件參與者」角色。 [深入瞭解使用 Azure 監視的角色存取控制](./resources-roles-access-control.md)。
+若要讓使用者手動觸發 profiler 會話，它們至少需要針對 Application Insights 元件的角色進行「寫入」存取。 在大多數情況下，您會自動取得此存取權，不需要額外的工作。 如果您遇到問題，要新增的訂用帳戶範圍角色會是「Application Insights 元件參與者」角色。 [深入瞭解使用 Azure 監視的角色存取控制](./resources-roles-access-control.md)。
 
 ## <a name="trigger-settings"></a>觸發程序設定
 ![觸發程式設定飛出視窗][trigger-settings-flyout]
 
-按一下功能表列上的 [觸發程式] 按鈕會開啟 [觸發程式設定] 方塊。 您可以設定觸發程式，以便在 CPU 或記憶體使用量百分比達到您設定的層級時開始進行分析。
+按一下功能表列上的 [觸發程式] 按鈕，就會開啟 [觸發程式設定] 方塊。 您可以設定觸發程式，以在 CPU 或記憶體使用百分比達到您設定的層級時開始分析。
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |-|-|
-開啟/關閉按鈕 | 在上：此觸發程式可以啟動 profiler;Off：此觸發程式不會啟動 profiler。
-記憶體閾值 | 當此百分比的記憶體使用中時，就會啟動 profiler。
-Duration | 設定觸發時，分析工具將執行的時間長度。
-Cooldown | 設定分析工具在觸發後再次檢查記憶體或 CPU 使用量之前，所要等待的時間長度。
+開啟/關閉按鈕 | On：此觸發程式可以啟動 profiler;Off：此觸發程式不會啟動 profiler。
+記憶體閾值 | 當這個百分比的記憶體正在使用中時，將會啟動分析工具。
+持續時間 | 設定觸發程式時，profiler 將執行的時間長度。
+Cooldown | 設定分析工具在其觸發之後，再次檢查記憶體或 CPU 使用量之前，會等待的時間長度。
 
 ## <a name="recent-profiling-sessions"></a>最近的分析會話
-頁面的這個區段會顯示最近分析會話的相關資訊。 分析會話代表 profiler 代理程式在其中一部裝載您應用程式的電腦上取得設定檔的時間。 您可以按一下其中一個資料列，從會話開啟設定檔。 針對每個會話，我們會示範：
+頁面的這個區段會顯示最近程式碼剖析會話的相關資訊。 分析會話代表分析工具代理程式在裝載您應用程式的其中一部電腦上取得設定檔的時間期間。 您可以按一下其中一個資料列，從會話開啟設定檔。 在每個會話中，我們會示範：
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |-|-|
-觸發者 | 會話如何藉由觸發程式、立即分析或預設取樣來啟動。 
-應用程式名稱 | 已分析之應用程式的名稱。
-機器實例 | Profiler 代理程式執行所在的電腦名稱稱。
-Timestamp | 設定檔的捕捉時間。
-Tracee | 已附加至個別要求的追蹤數目。
-CPU % | Profiler 執行時所使用的 CPU 百分比。
-快閃記憶體 | Profiler 執行時所使用的記憶體百分比。
+觸發者 | 會話的啟動方式，可以是觸發程式、立即設定檔或預設取樣。 
+應用程式名稱 | 已分析的應用程式名稱。
+電腦實例 | Profiler 代理程式執行所在的電腦名稱稱。
+時間戳記 | 捕獲設定檔的時間。
+Tracee | 附加至個別要求的追蹤數目。
+CPU % | 分析工具執行時所使用的 CPU 百分比。
+緩存 | Profiler 執行時所使用的記憶體百分比。
 
-## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a>使用 web 效能測試來產生應用程式的流量
+## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a> 使用 web 效能測試來產生應用程式的流量
 
-您可以按一下滑鼠以手動觸發 Profiler。 假設您正在執行 Web 效能測試。 您將需要追蹤，以協助您瞭解您的 web 應用程式在負載下的執行情況。 在擷取追蹤時擁有控制權是很重要的，因為這樣您才知道何時會執行負載測試。 但隨機取樣間隔可能會錯過這項資訊。
+您可以按一下滑鼠以手動觸發 Profiler。 假設您正在執行 Web 效能測試。 您將需要追蹤，以協助您瞭解 web 應用程式在負載下執行的方式。 在擷取追蹤時擁有控制權是很重要的，因為這樣您才知道何時會執行負載測試。 但隨機取樣間隔可能會錯過這項資訊。
 
 以下幾節將說明此案例的運作方式：
 
@@ -105,7 +105,7 @@ CPU % | Profiler 執行時所使用的 CPU 百分比。
 
 在 Profiler 執行完成後，請依照通知中的指示移至 [效能] 窗格，並檢視追蹤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [啟用 Profiler 和檢視追蹤](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png

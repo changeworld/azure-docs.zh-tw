@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797741"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中於 SUSE Linux Enterprise Server 上設定 Pacemaker
@@ -34,9 +34,9 @@ ms.locfileid: "87797741"
 
 有兩個選項可以在 Azure 中設定 Pacemaker 叢集。 您可以使用隔離代理程式，這個代理程式會透過 Azure API 來重新啟動失敗的節點，或者您可以使用 SBD 裝置。
 
-SBD 裝置至少需要一部額外的虛擬機器，作為 iSCSI 目標伺服器並且提供 SBD 裝置。 不過，這些 iSCSI 目標伺服器可以與其他 Pacemaker 叢集共用。 使用 SBD 裝置的優點是，如果您已在內部部署環境中使用 SBD 裝置，則不需要變更您操作 pacemaker 叢集的方式。 您可以對一個 Pacemaker 叢集使用最多三個 SBD 裝置，以容許在 iSCSI 目標伺服器的 OS 修補期間 (舉例來說)，有一個 SBD 裝置無法使用。 如果您想要使用一個以上的 SBD 裝置每 Pacemaker，請務必部署多部 iSCSI 目標伺服器，並從每部 iSCSI 目標伺服器連線一個 SBD。 我們建議使用一個或三個 SBD 裝置。 如果您只設定兩個 SBD 裝置，而且其中一個無法使用，Pacemaker 將無法自動隔離叢集節點。 如果您想要在其中一部 iSCSI 目標伺服器關閉時受到防護，您必須使用三個 SBD 裝置，因此有三個 iSCSI 目標伺服器，這是使用 SBDs 時最具彈性的設定。
+SBD 裝置至少需要一部額外的虛擬機器，作為 iSCSI 目標伺服器並且提供 SBD 裝置。 不過，這些 iSCSI 目標伺服器可以與其他 Pacemaker 叢集共用。 使用 SBD 裝置的優點是，如果您已在內部部署使用 SBD 裝置，則不需要對如何操作 pacemaker 叢集進行任何變更。 您可以對一個 Pacemaker 叢集使用最多三個 SBD 裝置，以容許在 iSCSI 目標伺服器的 OS 修補期間 (舉例來說)，有一個 SBD 裝置無法使用。 如果您想要使用一個以上的 SBD 裝置每 Pacemaker，請務必部署多部 iSCSI 目標伺服器，並從每部 iSCSI 目標伺服器連線一個 SBD。 我們建議使用一個或三個 SBD 裝置。 如果您只設定兩個 SBD 裝置，而且其中一個無法使用，Pacemaker 將無法自動隔離叢集節點。 如果您想要在其中一部 iSCSI 目標伺服器關閉時受到防護，您必須使用三個 SBD 裝置，因此，您必須使用三個 iSCSI 目標伺服器，這是使用 SBDs 時最具復原能力的設定。
 
-Azure 隔離代理程式不需要 () 部署額外的虛擬機器。   
+Azure 隔離代理程式不需要部署額外的虛擬機器 () 。   
 
 ![SLES 上的 Pacemaker 概觀](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,17 +413,17 @@ o- / ...........................................................................
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** 使用以 Azure 隔離代理程式為基礎的 STONITH 裝置，安裝隔離代理程式套件。  
+1. **[A]** 根據 Azure 隔離代理程式使用 STONITH 裝置，來安裝隔離代理程式套件。  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > 已安裝的套件隔離版本-如果需要圍住叢集節點，則**代理程式**必須至少是**4.4.0** ，才能受益于使用 Azure 隔離代理程式的更快速容錯移轉時間。 如果執行較舊的版本，我們建議您更新套件。  
+   > 已安裝的套件 **隔離版本-代理** 程式必須至少為 **4.4.0**  ，才能在需要隔離叢集節點的情況下，使用 Azure 隔離代理程式來獲得更快的容錯移轉時間。 建議您在執行較舊的版本時，更新套件。  
 
 
 1. **[A]** 安裝 AZURE Python SDK 
-   - 在 SLES 12 SP4 或 SLES 12 SP5 上
+   - SLES 12 SP4 或 SLES 12 SP5
    <pre><code>
     # You may need to activate the Public cloud extention first
     SUSEConnect -p sle-module-public-cloud/12/x86_64
@@ -438,11 +438,11 @@ o- / ...........................................................................
    </code></pre> 
  
    >[!IMPORTANT]
-   >根據您的版本和映射類型而定，您可能需要啟用作業系統版本的公用雲端擴充功能，才能安裝 Azure Python SDK。
-   >您可以藉由執行 SUSEConnect---清單-延伸模組來檢查延伸模組。  
-   >使用 Azure 隔離代理程式達到更快速的容錯移轉時間：
-   > - 在 SLES 12 SP4 或 SLES 12 SP5 安裝 version **4.6.2**或更高版本的套件 python-azure-管理-計算  
-   > - 在 SLES 15 上安裝**4.6.2**或更高版本的套件 python**3**-azure-管理-計算 
+   >視您的版本和映射類型而定，您可能需要啟用作業系統版本的公用雲端延伸模組，才能安裝 Azure Python SDK。
+   >您可以藉由執行 SUSEConnect---清單延伸來檢查擴充功能。  
+   >使用 Azure 隔離代理程式達成更快速的容錯移轉時間：
+   > - 在 SLES 12 SP4 或 SLES 12 SP5 上安裝版本 **4.6.2** 或更高版本的套件 python-azure-管理-計算  
+   > - 在 SLES 15 安裝版本 **4.6.2** 或更高版本的套件 python**3**-azure-管理-計算 
 
 1. **[A]** 設定主機名稱解析
 
@@ -450,7 +450,7 @@ o- / ...........................................................................
    請取代下列命令中的 IP 位址和主機名稱。
 
    >[!IMPORTANT]
-   > 如果在叢集設定中使用主機名稱，請務必要有可靠的主機名稱解析。 如果名稱無法使用，而且可能會導致叢集容錯移轉延遲，叢集通訊將會失敗。
+   > 如果在叢集設定中使用主機名稱，則必須有可靠的主機名稱解析。 如果名稱無法使用，而且可能會導致叢集容錯移轉延遲，則叢集通訊將會失敗。
    > 使用 /etc/hosts 的好處在於，您的叢集會變成不受 DNS 影響，而 DNS 也可能是單一失敗點。  
      
    <pre><code>sudo vi /etc/hosts
@@ -478,7 +478,7 @@ o- / ...........................................................................
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-- 如果*未使用*SBD 裝置進行隔離
+- 如果 *未使用* SBD 裝置進行隔離
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -570,7 +570,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="create-azure-fence-agent-stonith-device"></a>建立 Azure Fence 代理程式 STONITH 裝置
 
-檔集的這一節僅適用于以 Azure 範圍代理程式為基礎的 STONITH。
+本檔的這一節僅適用于以 Azure 隔離代理程式為基礎的 STONITH。
 STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下列步驟來建立服務主體。
 
 1. 移至 <https://portal.azure.com>。
@@ -649,7 +649,7 @@ sudo crm configure property stonith-timeout=900
 </code></pre>
 
 > [!IMPORTANT]
-> 監視和隔離作業會解除序列化。 因此，如果有較長的執行中監視作業和同時隔離的事件，叢集容錯移轉就不會延遲，因為已經在執行監視作業。
+> 監視和隔離作業會解除序列化。 如此一來，如果有較長的執行中監視作業和同時隔離事件，叢集容錯移轉就不會延遲，因為已有執行中的監視作業。
 
 > [!TIP]
 >Azure 柵欄代理程式需要[使用標準 ILB 的 VM 公用端點連線](./high-availability-guide-standard-load-balancer-outbound-connections.md)中記載的公用端點輸出連線能力，以及可能的解決方案。  
