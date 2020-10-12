@@ -1,7 +1,7 @@
 ---
-title: 以 PCA 為基礎的異常偵測：模組參考
+title: PCA-Based 異常偵測：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用以 PCA 為基礎的異常偵測模組，根據主體元件分析 (PCA) 來建立異常偵測模型。
+description: 瞭解如何使用 PCA-Based 異常偵測模組，根據主體元件分析 (PCA) 來建立異常偵測模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898459"
 ---
-# <a name="pca-based-anomaly-detection-module"></a>以 PCA 為基礎的異常偵測模組
+# <a name="pca-based-anomaly-detection-module"></a>PCA-Based 異常偵測模組
 
-本文說明如何在 Azure Machine Learning 設計工具中使用以 PCA 為基礎的異常偵測模組，根據主體元件分析 (PCA) 來建立異常偵測模型。
+本文說明如何使用 Azure Machine Learning 設計工具中的 PCA-Based 異常偵測模組，根據主體元件分析 (PCA) 來建立異常偵測模型。
 
 此課程模組可協助您在很容易從某個類別取得定型資料（例如有效的交易）的情況下建立模型，但很難取得足夠的目標異常樣本。 
 
-例如，若要偵測詐騙交易，您通常沒有足夠的詐騙範例來進行訓練。 但是您可能會有許多良好交易的範例。 以 PCA 為基礎的異常偵測模組會藉由分析可用的功能來解決問題，以判斷構成「正常」類別的內容。 然後，模組會套用距離度量來識別代表異常狀況的案例。 這種方法可讓您使用現有的不平衡資料來定型模型。
+例如，若要偵測詐騙交易，您通常沒有足夠的詐騙範例來進行訓練。 但是您可能會有許多良好交易的範例。 PCA-Based 異常偵測模組會藉由分析可用的功能來判斷構成「正常」類別的內容，藉此解決此問題。 然後，模組會套用距離度量來識別代表異常狀況的案例。 這種方法可讓您使用現有的不平衡資料來定型模型。
 
 ## <a name="more-about-principal-component-analysis"></a>關於主體元件分析的詳細資訊
 
@@ -38,7 +38,7 @@ PCA 藉由分析包含多個變數的資料來運作。 它會尋找變數之間
 
 - [尋找具有隨機性的結構：概率演算法來建立大約的矩陣分解](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF 下載) 、Halko、Martinsson 和 Tropp
 
-## <a name="how-to-configure-pca-based-anomaly-detection"></a>如何設定以 PCA 為基礎的異常偵測
+## <a name="how-to-configure-pca-based-anomaly-detection"></a>如何設定 PCA-Based 異常偵測
 
 1. 在設計工具中，將以 **PCA 為基礎的異常偵測** 模組新增至您的管線。 您可以在 **異常偵測** 類別中找到此模組。
 

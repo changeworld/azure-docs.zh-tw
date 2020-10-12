@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: 039e5b94bbd9d3b6c3edcb92eff88e7a9931205d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448725"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773445"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
 
@@ -56,7 +56,7 @@ Front Door 隨附的重要功能：
 
 * 定義您自己的 **[自訂網域](front-door-custom-domain.md)** 。 
 
-* 具有自訂 **[Web 應用程式防火牆 (WAF)](../web-application-firewall/overview.md)** 規則和 **[Azure DDoS 保護](../virtual-network/ddos-protection-overview.md)** 的應用程式安全性。
+* 具有整合式 **[Web 應用程式防火牆 (WAF)](../web-application-firewall/overview.md)** 的應用程式安全性。
 
 * 使用 **[URL 重新導向](front-door-url-redirect.md)** ，將 HTTP 流量重新導向到 HTTPS。
 

@@ -4,10 +4,10 @@ description: 在本文中，您將探索如何還原在 Azure 虛擬機器上執
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986116"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>在 Azure Vm 上還原 SAP Hana 資料庫
@@ -112,7 +112,7 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
     > 單一資料庫容器 (SDC) 還原必須遵循這些 [檢查](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore)。
 
 1. 如果 **有相同名稱的資料庫已經存在於所選的 HANA 實例上**，請選取 [覆寫]。
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
     ![還原設定-最終畫面](media/sap-hana-db-restore/restore-configuration-last.png)
 
@@ -295,6 +295,6 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
 
     ![已篩選的備份作業](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何](sap-hana-db-manage.md) 使用 Azure 備份來管理 SAP Hana 資料庫備份

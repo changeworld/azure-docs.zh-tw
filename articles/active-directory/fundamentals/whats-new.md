@@ -17,10 +17,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773500"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
@@ -320,13 +320,13 @@ Azure AD Domain Services 中資源樹系的功能現已正式推出。 您現在
 
 ---
 
-### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Azure AD 我的登入正式推出
+### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Azure AD My Sign-Ins 正式推出
 
 **類型：** 新功能  
 **服務類別：** 驗證 (登入)  
 **產品功能：** 終端使用者體驗
  
-Azure AD 我的登入是一項新功能，可讓企業使用者檢查其登入歷程記錄，以檢查是否有任何不尋常的活動。 此外，這項功能可讓終端使用者在可疑活動上報告「這不是我」或「這是我」。 若要深入瞭解如何使用這項功能，請參閱 [從 [我的登入] 頁面查看並搜尋最近的登入活動](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
+Azure AD 我的 Sign-Ins 是一項新功能，可讓企業使用者檢查其登入歷程記錄，以檢查是否有任何不尋常的活動。 此外，這項功能可讓終端使用者在可疑活動上報告「這不是我」或「這是我」。 若要深入瞭解如何使用這項功能，請參閱 [從我的 Sign-Ins 頁面查看和搜尋最近的登入活動](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
  
 ---
 
@@ -460,7 +460,7 @@ Azure AD 布建服務會利用 SCIM 標準來與應用程式整合。 我們的 
  
 Windows Hello 企業版可讓終端使用者使用手勢登入 Windows 電腦 (例如 PIN 或生物特徵辨識) 。 Azure AD 系統管理員可能會想要區分 Windows Hello 企業版從其他 Windows 登入的登入，作為組織無密碼驗證的旅程。 
 
-系統管理員現在可以在 Azure 入口網站的 Azure AD 登入] 分頁中，檢查 Windows 登入事件的 [驗證詳細資料] 索引標籤，以查看 Windows 驗證是否使用 Windows Hello 企業版。 Windows Hello 企業版驗證會在 [驗證方法] 欄位中包含 "WindowsHelloForBusiness"。 如需有關解讀登入記錄的詳細資訊，請參閱 [登入記錄檔](../reports-monitoring/concept-sign-ins.md)。
+系統管理員現在可以在 Azure 入口網站的 Azure AD Sign-Ins] 分頁中，檢查 Windows 登入事件的 [驗證詳細資料] 索引標籤，以查看 Windows 驗證是否使用 Windows Hello 企業版。 Windows Hello 企業版驗證會在 [驗證方法] 欄位中包含 "WindowsHelloForBusiness"。 如需有關解讀 Sign-In 記錄的詳細資訊，請參閱 [登入記錄檔](../reports-monitoring/concept-sign-ins.md)。
  
 ---
 
@@ -593,7 +593,7 @@ Azure AD 條件式存取原則中的使用者風險支援，可讓您建立多�
 **服務類別：** 企業應用程式  
 **產品功能：** SSO
  
-某些 SAML 應用程式需要在要求時，于判斷提示主體中傳回 SPNameQualifier。 現在 Azure AD 在要求 NameID 原則中要求 SPNameQualifier 時，會正確地回應。 這也適用于 SP 起始登入，而 IdP 起始的登入將會遵循。  若要深入瞭解 Azure Active Directory 中的 SAML 通訊協定，請參閱 [單一登入 saml 通訊協定](../develop/single-sign-on-saml-protocol.md)。
+某些 SAML 應用程式需要在要求時，于判斷提示主體中傳回 SPNameQualifier。 現在 Azure AD 在要求 NameID 原則中要求 SPNameQualifier 時，會正確地回應。 這也適用于 SP 起始登入，而 IdP 起始的登入將會遵循。  若要深入瞭解 Azure Active Directory 中的 SAML 通訊協定，請參閱 [單一 Sign-On SAML 通訊協定](../develop/single-sign-on-saml-protocol.md)。
 
 ---
 
@@ -1039,7 +1039,7 @@ Azure AD B2C 應用程式註冊體驗是根據 Azure AD 租使用者的一般 [�
 
 **產品功能：** 身分識別安全性 & 保護
 
-Multi-Factor Authentication (MFA) 和自助式密碼重設 (SSPR) 的結合註冊體驗現已正式推出。 這項新的註冊體驗可讓使用者在單一逐步程式中註冊 MFA 和 SSPR。 當您為您的組織部署新的體驗時，使用者可以在較短的時間內註冊，而且也比較少。 請參閱 [這裡](https://bit.ly/3etiRyQ)的 blog 文章。
+Multi-Factor Authentication (MFA) 和 Self-Service 密碼重設 (SSPR) 的結合註冊體驗現已正式推出。 這項新的註冊體驗可讓使用者在單一逐步程式中註冊 MFA 和 SSPR。 當您為您的組織部署新的體驗時，使用者可以在較短的時間內註冊，而且也比較少。 請參閱 [這裡](https://bit.ly/3etiRyQ)的 blog 文章。
 
 ---
 

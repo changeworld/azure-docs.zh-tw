@@ -9,23 +9,23 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282018"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>建立並部署 OPC 保存庫憑證管理服務
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 本文說明如何在 Azure 中部署 OPC 保存庫憑證管理服務。
 
 > [!NOTE]
 > 如需詳細資訊，請參閱 GitHub [OPC 保存庫存放庫](https://github.com/Azure/azure-iiot-opc-vault-service)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="install-required-software"></a>安裝必要軟體
 
@@ -97,7 +97,7 @@ PowerShell 腳本提供簡單的方式來部署 OPC 保存庫微服務和應用�
 2. 移至部署服務的資源群組。
 3. 選取 [刪除資源群組] 並且確認。
 4. 不久之後，就會刪除所有已部署的服務元件。
-5. 移至**Azure Active Directory**  >  **應用程式註冊**。
+5. 前往 [Azure Active Directory] > [應用程式註冊]。
 6. 針對每個已部署的資源群組，應會列出三個註冊。 註冊的名稱如下： `resourcegroup-client` 、 `resourcegroup-module` 、 `resourcegroup-service` 。 分別刪除每個註冊。
 
 現在會移除所有已部署的元件。

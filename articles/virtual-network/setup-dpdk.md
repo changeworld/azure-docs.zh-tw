@@ -1,6 +1,6 @@
 ---
 title: Azure Linux VM 中的 DPDK | Microsoft Docs
-description: 瞭解資料平面開發工具組（DPDK）的優點，以及如何在 Linux 虛擬機器上設定 DPDK。
+description: 瞭解資料平面開發工具組的優點 (DPDK) 以及如何在 Linux 虛擬機器上設定 DPDK。
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
 ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387552"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虛擬機器中設定 DPDK

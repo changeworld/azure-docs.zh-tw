@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 串流分析 CI/CD NuGet 套件
-description: 本文說明如何使用 Azure 串流分析 CI/CD NuGet 封裝來設定持續整合和部署程式。
+description: 本文說明如何使用 Azure 串流分析 CI/CD NuGet 套件來設定持續整合和部署程式。
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187654"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 串流分析 CI/CD NuGet 套件進行整合和開發 
-本文說明如何使用 Azure 串流分析 CI/CD NuGet 封裝來設定持續整合和部署程式。
+本文說明如何使用 Azure 串流分析 CI/CD NuGet 套件來設定持續整合和部署程式。
 
 使用 2.3.0000.0 版或更新版本的[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)來取得 MSBuild 支援。
 
-Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本機執行和部署工具，可支援[串流分析 Visual Studio 專案](stream-analytics-vs-tools.md)的持續整合和部署程式。 
+Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本機執行和部署工具，可支援 [串流分析 Visual Studio 專案](stream-analytics-vs-tools.md)的持續整合和部署程式。 
 > [!NOTE]
 > NuGet 套件僅能搭配 2.3.0000.0 或更新版本之適用於 Visual Studio 的串流分析工具使用。 如果您有使用舊版 Visual Studio 工具建立的專案，請直接使用 2.3.0000.0 或更新版本加以開啟並儲存。 接著啟用新功能。 
 
@@ -90,7 +90,7 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [快速入門：在 Visual Studio 中建立 Azure 串流分析雲端作業](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)

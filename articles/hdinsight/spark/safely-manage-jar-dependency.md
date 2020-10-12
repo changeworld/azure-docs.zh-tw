@@ -9,13 +9,13 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.openlocfilehash: b5b8c014a7150ad83875b9fd361c3538d865d153
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064105"
 ---
-# <a name="safely-manage-jar-dependencies"></a>安全地管理 jar 相依性
+# <a name="safely-manage-jar-dependencies"></a>安全地管理 Jar 相依性
 
 安裝在 HDInsight 叢集上的元件具有協力廠商程式庫的相依性。 通常，這些內建元件會參考特定版本的常見模組（例如 Guava）。 當您提交具有相依性的應用程式時，可能會導致相同模組的不同版本之間發生衝突。 如果您先在類別路徑中參考的元件版本，內建元件可能會因為版本不相容而擲回例外狀況。 但是，如果內建元件先將其相依性插入至類別路徑，您的應用程式可能會擲回錯誤，例如 `NoSuchMethod` 。
 
@@ -27,7 +27,7 @@ ms.locfileid: "90064105"
 ## <a name="how-to-shade-a-package"></a>如何為套件加上網底？
 
 ### <a name="use-uber-jar"></a>使用 uber-jar
-Uber-jar 是一個 jar 檔案，其中包含應用程式 jar 及其相依性。 Uber 中的相依性依預設不會加上陰影。 在某些情況下，如果其他元件或應用程式參考不同版本的程式庫，這可能會導致版本衝突。 若要避免這種情況，您可以建立 Uber Jar 檔案，其中包含部分 (或所有相依性的) 陰影。
+Uber-jar 是一個 jar 檔案，其中包含應用程式 jar 及其相依性。 Uber 中的相依性依預設不會加上陰影。 在某些情況下，如果其他元件或應用程式參考不同版本的程式庫，這可能會導致版本衝突。 若要避免這種情況，您可以建立 Uber-Jar 檔案，其中包含部分 (或所有相依性的) 陰影。
 
 ### <a name="shade-package-using-maven"></a>使用 Maven 將封裝加上陰影
 Maven 可以建立以 JAVA 和 Scala 撰寫的應用程式。 Maven-陰影-外掛程式可協助您輕鬆建立陰影的 uber jar。

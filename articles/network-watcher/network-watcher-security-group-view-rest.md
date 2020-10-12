@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 156da7504a1a5e2a704e52a783fcd3e437a59867
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986262"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API，利用安全性群組檢視分析虛擬機器的安全性
@@ -183,7 +183,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請瀏覽[使用網路監看員稽核網路安全性群組 (NSG)](network-watcher-security-group-view-powershell.md) 以了解如何自動驗證網路安全性群組。
 

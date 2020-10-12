@@ -10,10 +10,10 @@ ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319719"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>版本資訊-Azure Arc 啟用的資料服務 (預覽) 
@@ -54,7 +54,7 @@ ms.locfileid: "91319719"
 
 - SQL 受控實例名稱不能超過13個字元
 - 沒有 Azure Arc 資料控制器或資料庫實例的就地升級。
-- 已啟用 Arc 的資料服務容器映射未簽署。  您可能需要設定 Kubernetes 節點，以允許提取未簽署的容器映射。  例如，如果您使用 Docker 作為容器執行時間，您可以設定 DOCKER_CONTENT_TRUST = 0 環境變數並重新啟動。  其他容器執行時間具有類似的選項，例如在 [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration)中。
+- 未簽署已啟用 Arc 的資料服務容器映像。  您可能需要設定 Kubernetes 節點，以允許提取未簽署的容器映像。  例如，如果您使用 Docker 作為容器執行時間，您可以設定 DOCKER_CONTENT_TRUST = 0 環境變數並重新啟動。  其他容器執行階段具有類似的選項，例如 [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration) 中就是如此。
 - 無法從 Azure 入口網站建立 Azure Arc 啟用的 SQL 受控實例或于 postgresql 超大規模伺服器群組。
 - 現在，如果您使用 NFS，則在建立 Azure Arc 資料控制器之前，您必須先將部署設定檔檔案中的 allowRunAsRoot 設定為 true。
 - 僅限 SQL 和于 postgresql 登入驗證。  不支援 Azure Active Directory 或 Active Directory。

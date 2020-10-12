@@ -10,10 +10,10 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187229"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>針對變更追蹤和清查問題進行疑難排解
@@ -37,7 +37,7 @@ ms.locfileid: "86187229"
 * 無法下載變更追蹤和清查管理組件。
 * 正在啟用的 VM 可能來自於未使用系統準備 (sysprep) 做準備，且已安裝適用於 Windows 的 Log Analytics 代理程式的複製電腦。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 在 Log Analytics 代理程式電腦上，移至 **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** 並執行下列命令：
 

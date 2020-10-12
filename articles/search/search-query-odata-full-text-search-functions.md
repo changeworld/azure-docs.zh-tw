@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935784"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 認知搜尋中的 OData 全文檢索搜尋函數 `search.ismatch` 和 `search.ismatchscoring`
@@ -35,7 +35,7 @@ Azure 認知搜尋透過和函式，支援 [OData 篩選運算式](query-odata-f
 
 ## <a name="syntax"></a>語法
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義和函式的文法 `search.ismatch` `search.ismatchscoring` ：
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義和函數的文法 `search.ismatch` `search.ismatchscoring` ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -69,7 +69,7 @@ search_mode ::= "'any'" | "'all'"
 
 這些參數定義于下表中：
 
-| 參數名稱 | 類型 | 描述 |
+| 參數名稱 | 類型 | 說明 |
 | --- | --- | --- |
 | `search` | `Edm.String` | 搜尋查詢 ([簡單](query-simple-syntax.md) 或 [完整](query-lucene-syntax.md) 的 Lucene 查詢語法) 。 |
 | `searchFields` | `Edm.String` | 要在其中搜尋的可搜尋欄位清單（以逗號分隔）;預設為索引中所有可搜尋的欄位。 在參數中使用 [回復搜尋](query-lucene-syntax.md#bkmk_fields) 時 `search` ，Lucene 查詢中的欄位規範會覆寫此參數中指定的任何欄位。 |
@@ -128,7 +128,7 @@ search_mode ::= "'any'" | "'all'"
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
 ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)

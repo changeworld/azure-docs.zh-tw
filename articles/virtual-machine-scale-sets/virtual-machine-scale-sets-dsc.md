@@ -1,6 +1,6 @@
 ---
-title: 搭配虛擬機器擴展集使用 Desired State Configuration
-description: 使用虛擬機器擴展集搭配 Azure Desired State Configuration 延伸模組來設定虛擬機器。
+title: 使用 Desired State Configuration 搭配虛擬機器擴展集
+description: 使用虛擬機器擴展集搭配 Azure Desired State Configuration 擴充功能來設定虛擬機器。
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -10,10 +10,10 @@ ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 20e5bff87d5cd0d6e0a35a558462bb5598bfe3f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080483"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>搭配 Azure DSC 擴充功能使用虛擬機器擴展集
@@ -93,7 +93,7 @@ ms.locfileid: "87080483"
 ## <a name="behavior-for-a-virtual-machine-scale-set"></a>虛擬機器擴展集的行為
 虛擬機器擴展集的行為與單一 VM 的行為完全相同。 建立新的 VM 時，會使用 DSC 擴充功能自動進行佈建。 如果擴充功能需要較新版本的 WMF，VM 會在上線之前重新開機。 一旦上線之後，它就會下載 DSC 組態 .zip，並在 VM 上佈建它。 您可以在 [Azure DSC 擴充功能概觀](../virtual-machines/extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json)中找到更多詳細資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 查看 [適用於 DSC 擴充功能的 Azure Resource Manager 範本](../virtual-machines/extensions/dsc-template.md?toc=/azure/virtual-machines/windows/toc.json)。
 
 了解 [DSC 擴充功能如何安全地處理認證](../virtual-machines/extensions/dsc-credentials.md?toc=/azure/virtual-machines/windows/toc.json)。 

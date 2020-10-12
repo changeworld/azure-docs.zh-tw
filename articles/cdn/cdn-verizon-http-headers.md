@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343212"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 Verizon 專屬 HTTP 標頭
@@ -35,7 +35,7 @@ ms.locfileid: "84343212"
 
 要求標頭 | 描述 | 範例
 ---------------|-------------|--------
-[透過](#via-request-header) | 識別已將要求透過 Proxy 處理至原始伺服器的 POP 伺服器。 | HTTP/1.1 ECS (dca/1A2B)
+[通過](#via-request-header) | 識別已將要求透過 Proxy 處理至原始伺服器的 POP 伺服器。 | HTTP/1.1 ECS (dca/1A2B)
 X-Forwarded-For | 表示要求者的 IP 位址。| 10.10.10.10
 X-Forwarded-Proto | 表示要求的通訊協定。 | http
 X-Host | 表示要求的主機名稱。 | cdn.mydomain.com

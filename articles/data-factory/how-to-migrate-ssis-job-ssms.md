@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984907"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 將 SQL Server Agent 作業遷移至 ADF
@@ -31,7 +31,7 @@ ms.locfileid: "90984907"
     > 僅支援檔案系統的封裝位置。
 - 使用適用的作業步驟將適用的作業遷移至對應的 ADF 資源，如下所示：
 
-|SQL Agent 工作物件  |ADF 資源  |備註|
+|SQL Agent 工作物件  |ADF 資源  |注意|
 |---------|---------|---------|
 |SQL Agent 作業|管線     |將*產生 \<job name> *管線的名稱。 <br> <br> 內建的代理程式作業不適用： <li> SSIS 伺服器維護作業 <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
 |SSIS 作業步驟|執行 SSIS 套件活動|<li> 活動的名稱將是 \<step name> 。 <li> 在作業步驟中使用的 Proxy 帳戶將會遷移為此活動的 Windows 驗證。 <li> 在作業步驟中定義的*使用32位運行*時間以外的*執行選項*會在遷移時忽略。 <li> 在作業步驟中定義的*驗證*將會在遷移時忽略。|
@@ -80,6 +80,6 @@ ms.locfileid: "90984907"
 1. 遷移，然後檢查結果。
 ![螢幕擷取畫面顯示 [遷移結果] 頁面，其中顯示遷移進度。](media/how-to-migrate-ssis-job-ssms/step5.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [執行及監視管線](how-to-invoke-ssis-package-ssis-activity.md)

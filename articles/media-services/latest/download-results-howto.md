@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b3decdd4a2855382b27cb426d7fb030b46a2458c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89298023"
 ---
 # <a name="download-the-results-of-a-job"></a>下載作業的結果
@@ -121,6 +121,6 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 
 請參閱完整的程式碼範例： [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [從 HTTPS URL 建立作業輸入](job-input-from-http-how-to.md)。

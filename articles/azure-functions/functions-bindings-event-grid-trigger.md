@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214137"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件方格觸發程序
@@ -407,7 +407,7 @@ Python 指令碼不支援屬性。
 
 當您選取此連結時，入口網站會開啟**建立事件訂用帳戶**頁面，其中已定義目前的觸發程序端點。
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="使用已定義的函式端點建立事件訂用帳戶" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="將新的事件訂用帳戶連線至入口網站中的觸發程序。" :::
 
 如需如何使用 Azure 入口網站建立訂用帳戶的詳細資訊，請參閱 Event Grid 文件中的[建立自訂事件 - Azure 入口網站](../event-grid/custom-event-quickstart-portal.md)。
 

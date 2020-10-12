@@ -7,10 +7,10 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079752"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>使用 Azure Desired State Configuration 延伸模組版本歷程記錄
@@ -24,7 +24,7 @@ Azure Desired State Configuration (DSC) VM 延伸模組會視需求進行更新�
 ### <a name="version-280"></a>版本2.80
 
 - **發行日期：**
-  - 9月26日-2019 （Azure） |2020年7月6日（Azure 中國 Vianet 21） |2020年7月20日（Azure Government）
+  - 2019年9月26日 (Azure) |2020年7月6日 (Azure 中國 Vianet 21) |2020年7月20日 (Azure Government) 
 - **OS 支援：**
   - Windows Server 2019
   - Windows Server 2016
@@ -42,7 +42,7 @@ Azure Desired State Configuration (DSC) VM 延伸模組會視需求進行更新�
   - Azure
   - Azure 中國 Vianet 21
   - Azure Government
-- **備註：** 此版本中未包含任何新功能。
+- **備註：** 此版本未包含任何新功能。
 
 ### <a name="version-276"></a>版本 2.76
 

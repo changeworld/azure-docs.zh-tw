@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88660507"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
@@ -18,7 +18,7 @@ ms.locfileid: "88660507"
 
 在您成功部署 Runbook 背景工作角色後，請檢閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)，以了解如何設定 Runbook 以將內部部署資料中心或其他雲端環境中的程序自動化。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您具有下列各項。
 
@@ -61,7 +61,7 @@ Windows 混合式 Runbook 背景工作角色已正式支援下列 Windows 作業
 * Windows 8 企業版和專業版
 * Windows 7 SP1
 
-### <a name="minimum-requirements"></a>最低需求
+### <a name="minimum-requirements"></a>最低要求條件
 
 「Windows 混合式 Runbook 背景工作角色」的最低需求如下：
 

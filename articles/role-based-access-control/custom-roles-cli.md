@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 建立或更新 Azure 自訂角色-Azure RBAC
-description: 瞭解如何使用 Azure CLI 和 Azure 角色型存取控制（Azure RBAC）來列出、建立、更新或刪除 Azure 自訂角色。
+description: 瞭解如何使用 Azure CLI 和 Azure 角色型存取控制來列出、建立、更新或刪除 azure 自訂角色 (Azure RBAC) 。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,24 +15,24 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984168"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>使用 Azure CLI 建立或更新 Azure 自訂角色
 
 > [!IMPORTANT]
-> 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+> 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果 [Azure 內建的角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 本文說明如何使用 Azure CLI 列出、建立、更新或刪除自訂角色。
 
-如需如何建立自訂角色的逐步教學課程，請參閱[教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)。
+如需如何建立自訂角色的逐步教學課程，請參閱 [教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立自訂角色，您需要：
 
@@ -66,13 +66,13 @@ az role definition list --custom-role-only true --output json --query '[].{roleN
 
 ## <a name="list-a-custom-role-definition"></a>列出自訂角色定義
 
-若要列出自訂角色定義，請使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)。 這是您用於內建角色的相同命令。
+若要列出自訂角色定義，請使用 [az 角色定義清單](/cli/azure/role/definition#az-role-definition-list)。 這是您將用於內建角色的相同命令。
 
 ```azurecli
 az role definition list --name {roleName}
 ```
 
-下列範例會列出*虛擬機器操作員*角色定義：
+下列範例會列出 *虛擬機器操作員* 角色定義：
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator"
@@ -114,7 +114,7 @@ az role definition list --name "Virtual Machine Operator"
 ]
 ```
 
-下列範例只會列出*虛擬機器操作員*角色的動作：
+下列範例只會列出 *虛擬機器操作員* 角色的動作：
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator" --output json --query '[].permissions[0].actions'
@@ -189,7 +189,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition {roleDefinition}
 ```
 
-下列範例會將*diagnosticSettings/* 操作新增至 `Actions` ，並將管理群組新增至 `AssignableScopes` *虛擬機器操作員*自訂角色。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+下列範例會將 *diagnosticSettings/* 作業加入至 `Actions` `AssignableScopes` *虛擬機器操作員* 自訂角色的管理群組，並將其新增至。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 
 vmoperator.json
 
@@ -234,14 +234,14 @@ az role definition update --role-definition ~/roles/vmoperator.json
 az role definition delete --name {roleNameOrId}
 ```
 
-下列範例會刪除「*虛擬機器操作員*」自訂角色。
+下列範例會刪除 *虛擬機器操作員* 自訂角色。
 
 ```azurecli
 az role definition delete --name "Virtual Machine Operator"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)
-- [Azure 自訂角色](custom-roles.md)
-- [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)
+- [Azure 自訂角色](custom-roles.md) (機器翻譯)
+- [Azure Resource Manager 資源提供者作業](resource-provider-operations.md) (機器翻譯)

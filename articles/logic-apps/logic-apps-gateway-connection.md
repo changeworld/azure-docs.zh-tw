@@ -7,10 +7,10 @@ ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 08/18/2020
 ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88661192"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>從 Azure Logic Apps 連線到內部部署資料來源
@@ -50,7 +50,7 @@ ms.locfileid: "88661192"
 
 您也可以使用 REST 或 SOAP，建立透過 HTTP 或 HTTPS 連接到資料來源的 [自訂連接器](../logic-apps/custom-connector-overview.md) 。 雖然閘道本身不會產生額外的費用，但 [Logic Apps 的定價模式](../logic-apps/logic-apps-pricing.md) 適用于這些連接器以及 Azure Logic Apps 中的其他作業。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您已在 [本機電腦上安裝內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)。 此閘道安裝必須先存在，您才能建立連結至此安裝的閘道資源。
 
@@ -76,7 +76,7 @@ ms.locfileid: "88661192"
 
    ![新增適用于資料閘道的 Azure 資源](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. 在 [ **建立連線閘道**] 下，為您的閘道資源提供此資訊。 當您完成時，選取 [建立]  。
+1. 在 [ **建立連線閘道**] 下，為您的閘道資源提供此資訊。 當您完成時，選取 [建立]。
 
    | 屬性 | 描述 |
    |----------|-------------|
@@ -116,11 +116,11 @@ ms.locfileid: "88661192"
 
    唯一的連線名稱可協助您稍後輕鬆找到該連接，特別是當您建立多個連接時。 如果情況允許，也請在使用者名稱中包含完整網域。
 
-   請看以下範例：
+   範例如下：
 
    ![建立邏輯應用程式與資料閘道之間的連線](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. 當您完成時，選取 [建立]  。
+1. 當您完成時，選取 [建立]。
 
 您的閘道連線現已可供邏輯應用程式使用。
 
@@ -175,7 +175,7 @@ ms.locfileid: "88661192"
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [保護邏輯應用程式](./logic-apps-securing-a-logic-app.md)
 * [Logic Apps 範例和常見案例](./logic-apps-examples-and-scenarios.md)

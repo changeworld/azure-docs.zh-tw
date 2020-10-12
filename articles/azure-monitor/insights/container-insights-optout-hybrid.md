@@ -4,10 +4,10 @@ description: 本文說明如何使用容器的 Azure 監視器來停止監視混
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986049"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>如何停止監視混合式叢集

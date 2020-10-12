@@ -10,17 +10,17 @@ ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080415"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>在 Linux 擴展集範本中使用客體計量自動調整規模
 
-Azure 中有兩種廣泛的計量類型，從 Vm 和擴展集收集：主機計量和來賓計量。 概括而言，如果您想要使用標準 CPU、磁片和網路計量，那麼主機計量就很適合。 不過，如果您需要更大的計量選取範圍，則應該查閱來賓計量。
+Azure 中有兩種廣泛的計量類型，從 Vm 和擴展集收集：主機計量和來賓計量。 概括而言，如果您想要使用標準的 CPU、磁片和網路計量，則主機計量很適合。 但是，如果您需要更大的計量選取範圍，則應查看來賓度量。
 
-主機計量不需要額外的安裝，因為它們是由主機 VM 所收集，而來賓計量則會要求您在來賓 VM 中安裝[Windows Azure 診斷擴充](../virtual-machines/extensions/diagnostics-template.md)功能或[Linux Azure 診斷延伸](../virtual-machines/extensions/diagnostics-linux.md)模組。 使用客體計量而非主機計量的一個常見原因是，客體計量會提供比主機計量更大的計量選取範圍。 記憶體耗用量計量即為一例，這類計量只能透過客體計量使用。 [這裡](../azure-monitor/platform/metrics-supported.md)會列出支援的主機度量，而常用的客體計量則列於[這裡](../azure-monitor/platform/autoscale-common-metrics.md)。 本文說明如何修改[基本可行擴展集範本](virtual-machine-scale-sets-mvss-start.md)，以使用以 Linux 擴展集的來賓計量為基礎的自動調整規則。
+主機計量不需要額外的設定，因為它們是由主機 VM 所收集，而來賓計量要求您在來賓 VM 中安裝 [Windows Azure 診斷擴充](../virtual-machines/extensions/diagnostics-template.md) 功能或 [Linux Azure 診斷擴充](../virtual-machines/extensions/diagnostics-linux.md) 功能。 使用客體計量而非主機計量的一個常見原因是，客體計量會提供比主機計量更大的計量選取範圍。 記憶體耗用量計量即為一例，這類計量只能透過客體計量使用。 [這裡](../azure-monitor/platform/metrics-supported.md)會列出支援的主機度量，而常用的客體計量則列於[這裡](../azure-monitor/platform/autoscale-common-metrics.md)。 本文說明如何修改 [基本的可行擴展集範本](virtual-machine-scale-sets-mvss-start.md) ，以使用以 Linux 擴展集的來賓計量為基礎的自動調整規則。
 
 ## <a name="change-the-template-definition"></a>變更範本定義
 

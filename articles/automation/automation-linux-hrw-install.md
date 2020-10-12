@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776267"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合式 Runbook 背景工作角色
@@ -62,7 +62,7 @@ ms.locfileid: "91776267"
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 12 (x86/x64) 
 
-### <a name="minimum-requirements"></a>最低需求
+### <a name="minimum-requirements"></a>最低要求條件
 
 Linux 混合式 Runbook 背景工作角色的最低需求如下：
 

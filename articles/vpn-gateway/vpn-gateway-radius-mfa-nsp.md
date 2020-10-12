@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987076"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>整合 Azure VPN 閘道 RADIUS 驗證與 NPS 伺服器以進行多重要素驗證 
@@ -52,7 +52,7 @@ ms.locfileid: "84987076"
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>步驟 2：設定 Azure MFA 的 NPS
 
 1. 在 NPS 伺服器上，[安裝 Azure MFA 的 NPS 延伸模組](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)。
-2. 開啟 NPS 主控台，以滑鼠右鍵按一下 [ **RADIUS 用戶端**]，然後選取 [**新增**]。 藉由指定下列設定來建立 RADIUS 用戶端：
+2. 開啟 NPS 主控台，在 [ **RADIUS 用戶端**] 上按一下滑鼠右鍵，然後選取 [ **新增**]。 藉由指定下列設定來建立 RADIUS 用戶端：
 
     - **易記名稱**：輸入任何名稱。
     - **位址 (IP 或 DNS)**：輸入您在步驟 1 建立的閘道子網路。
@@ -65,13 +65,13 @@ ms.locfileid: "84987076"
 
     ![RADIUS 用戶端 Advanced 設定的相關影像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. 移至 [**原則**] [  >  **網路原則**]，按兩下 [**連接到 Microsoft 路由及遠端存取服務器**原則]，選取 **[授與存取權**]，然後按一下 **[確定]**。
+4. 移至 [**原則**  >  **網路原則**]，再按兩下 [連線**到 Microsoft 路由及遠端存取服務器**原則]，選取 **[授與存取權**]，然後按一下 **[確定]**。
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>步驟 3：設定虛擬網路閘道
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟您建立的虛擬網路閘道。 確定閘道類型已設定為 **VPN****路由型**。
-3. 按一下 [**點對站**設定] [  >  **立即設定**]，然後指定下列設定：
+3. 按一下 [立即設定] 的 [**點對站**  >  **設定**]，然後指定下列設定：
 
     - **位址集區**：輸入您在步驟 1 建立的閘道子網路。
     - **驗證類型**：選取 [RADIUS 驗證]****。
@@ -79,7 +79,7 @@ ms.locfileid: "84987076"
 
       ![關於點對站設定的影像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 - [將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合](../active-directory/authentication/howto-mfa-nps-extension.md)

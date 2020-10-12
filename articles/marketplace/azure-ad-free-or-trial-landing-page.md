@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488604"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>在商業市場中建立免費或試用 SaaS 供應專案的登陸頁面
@@ -102,5 +102,5 @@ Microsoft 已提供數個範例應用程式，這些應用程式會使用已啟�
 > [!NOTE]
 > MSA 租使用者 (中具有租使用者識別碼) 的帳戶， `9188040d-6c67-4c5b-b112-36a304b66dad` 將不會傳回超過已使用識別碼權杖收集的資訊。 因此，您可以略過這類帳戶對圖形 API 的呼叫。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [如何在商業市場中建立 SaaS 供應專案](create-new-saas-offer.md)

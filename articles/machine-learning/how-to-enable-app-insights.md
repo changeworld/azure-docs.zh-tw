@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90897657"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
@@ -210,7 +210,7 @@ Azure 應用程式 Insights 會將您的服務記錄儲存在與 Azure Machine L
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="連續匯出":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何啟用 web 服務端點的記錄和查看記錄。 請嘗試下列文章以取得後續步驟：
 

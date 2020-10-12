@@ -18,10 +18,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c94c7709a8066b31a6ac1ebc54180d41a303f44a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078209"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 以路由表路由傳送網路流量
@@ -38,7 +38,7 @@ ms.locfileid: "89078209"
 * 將虛擬機器 (VM) 部署到不同子網路
 * 透過 NVA 從一個子網路將流量路由傳送到另一個子網路
 
-如您尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -13,10 +13,10 @@ ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297955"
 ---
 # <a name="streaming-locators"></a>串流定位器
@@ -91,7 +91,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 若要根據相關聯的資產名稱取得串流定位器，請使用下列作業：
 
-|語言|API|
+|Language|API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az ams 資產清單-串流-定位器](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
@@ -106,6 +106,6 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 * [內容金鑰原則](content-key-policy-concept.md)
 * [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [如何建立串流定位器和組建 Url](create-streaming-locator-build-url.md)
