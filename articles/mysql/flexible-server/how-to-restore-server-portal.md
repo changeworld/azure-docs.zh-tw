@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933899"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的時間點還原
@@ -48,7 +48,7 @@ ms.locfileid: "90933899"
 
     :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="最早的還原時間":::
 
-8.  按一下 [確定]  。
+8.  按一下 [確定]。
 
 9.  系統會顯示已起始還原作業的通知。
 
@@ -72,12 +72,12 @@ ms.locfileid: "90933899"
 
 6.  在 [ **還原到新伺服器** ] 欄位中提供新的伺服器名稱。 
    
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="視圖總覽":::
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="最早的還原時間":::
  
-7.  按一下 [確定]  。
+7.  按一下 [確定]。
 
 8.  系統會顯示已起始還原作業的通知。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 預留位置

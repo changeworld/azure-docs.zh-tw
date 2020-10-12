@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933872"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的高可用性概念
@@ -18,7 +18,7 @@ ms.locfileid: "90933872"
 > [!IMPORTANT] 
 > 適用於 MySQL 的 Azure 資料庫 - 彈性伺服器目前處於公開預覽狀態。
 
-適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽版) ，可讓您使用 **區域冗余** 高可用性選項來設定具有自動容錯移轉的高可用性。 在區域冗余設定中部署時，有彈性的伺服器會在不同的可用性區域中自動布建和管理待命複本。 使用儲存體層級複寫時，資料會以 **同步** 方式複寫至次要區域中的待命伺服器，以在容錯移轉之後啟用零資料遺失。 用戶端應用程式的容錯移轉完全透明，不需要任何使用者動作。 待命伺服器無法供任何讀取或寫入作業使用，而是被動待命，以啟用快速容錯移轉。 容錯移轉時間通常的範圍是60-120 秒。
+適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽版) ，可讓您使用 **區域冗余** 高可用性選項來設定具有自動容錯移轉的高可用性。 部署於區域備援設定時，彈性伺服器會自動在不同的可用性區域中佈建和管理待命複本。 使用儲存體層級複寫時，資料會以 **同步** 方式複寫至次要區域中的待命伺服器，以在容錯移轉之後啟用零資料遺失。 用戶端應用程式的容錯移轉完全透明，不需要任何使用者動作。 待命伺服器無法供任何讀取或寫入作業使用，而是被動待命，以啟用快速容錯移轉。 容錯移轉時間通常的範圍是60-120 秒。
 
 區域冗余高可用性設定可在規劃的事件期間啟用自動容錯移轉，例如，基礎硬體和軟體錯誤、網路失敗，甚至是可用性區域失敗。
 
@@ -97,7 +97,7 @@ HA 的健康情況會持續受到監視，並在 [總覽] 頁面上報告。
 -   規劃的事件（例如調整計算和次要版本升級）會同時在主要和待命中進行。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
 -   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)

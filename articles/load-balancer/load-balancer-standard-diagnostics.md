@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717331"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
@@ -35,7 +35,7 @@ Azure Load Balancer 透過 Azure 入口網站的 Azure 計量提供多維度計�
 
 各種標準 Load Balancer 組態提供下列計量：
 
-| 計量 | 資源類型 | 描述 | 建議的彙總 |
+| 計量 | 資源類型 | 說明 | 建議的彙總 |
 | --- | --- | --- | --- |
 | 資料路徑可用性 | 公用和內部負載平衡器 | 標準 Load Balancer 會在資料路徑上持續運用，從區域內到 Load Balancer 前端，再一路到支援 VM 的 SDN 堆疊。 只要狀況良好的執行個體持續存在，測量就會依循與您應用程式的負載平衡流量相同的路徑。 此外，也會驗證您客戶所使用的資料路徑。 此測量對您的應用程式來說是看不見的，也不會干擾到其他作業。| Average |
 | 健康情況探查狀態 | 公用和內部負載平衡器 | 標準 Load Balancer 使用分散式健康情況探查服務，可根據您的組態設定監視應用程式端點的健康情況。 這個計量會提供負載平衡器集區中每個執行個體端點的彙總檢視，或各端點篩選過的檢視。 您可以看到 Load Balancer 藉由健康情況探查設定如何檢視應用程式的健康情況。 |  Average |
@@ -200,7 +200,7 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 
 若要取得位元組或封包計數統計資料：
 1. 選取 [位元組計數]**** 和/或 [封包計數]**** 計量類型，並選取 [平均]**** 作為彙總。 
-2. 執行下列任一步驟：
+2. 請執行下列其中一個動作：
    * 對特定前端 IP、前端連接埠或後端 IP 或後端連接埠套用篩選器。
    * 取得負載平衡器資源的整體統計資料 (不使用任何篩選)。
 
@@ -254,7 +254,7 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
  
 一般資源健康狀態原因可在 [RHC 檔](https://docs.microsoft.com/azure/service-health/resource-health-overview)中取得。 下表列出 Azure Load Balancer 的特定狀態： 
 
-| 資源健康情況狀態 | 描述 |
+| 資源健康情況狀態 | 說明 |
 | --- | --- |
 | 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
 | 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量回報低於90%，但至少有兩分鐘的健康狀態超過25%。 您將體驗到嚴重的效能影響。 [遵循疑難排解資料路徑可用性指南]，判斷是否有使用者起始的事件造成影響您的可用性。

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 09/05/2020
 ms.author: mikeray
 ms.openlocfilehash: 4bb2089d4240e5ff926e9bf667a2252ffaa9011f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934511"
 ---
-- **[將資源清查、使用量資料、計量和記錄上傳至 Azure 監視器](../articles/azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md)**
+- **[將資源詳細目錄、使用量資料、計量和記錄上傳至 Azure 監視器](../articles/azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md)**
 
 - **[在 Azure 入口網站中查看 Azure Arc 的資料控制器資源](../articles/azure-arc/data/view-data-controller-in-azure-portal.md)**
 

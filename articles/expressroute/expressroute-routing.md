@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
 ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89569606"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由需求
@@ -260,7 +260,7 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 | 商務用 Skype Online |12076:5130 |
 | 其他 Office 365 Online 服務 |12076:5200 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 設定 ExpressRoute 連線。
   
   * [建立及修改電路](expressroute-howto-circuit-arm.md)

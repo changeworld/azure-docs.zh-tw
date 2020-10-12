@@ -4,15 +4,15 @@ description: 以事件為基礎的影片錄製 (EVR) 是指事件觸發的影片
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568474"
 ---
 # <a name="event-based-video-recording"></a>以事件為基礎的影片錄製  
  
-## <a name="suggested-pre-reading"></a>建議的閱讀準備事項  
+## <a name="suggested-pre-reading"></a>建議的預先閱讀  
 
 * [連續影片錄製](continuous-video-recording-concept.md)
 * [播放錄製的內容](video-playback-concept.md)
@@ -46,7 +46,7 @@ ms.locfileid: "89568474"
 在此使用案例中，來自另一個 IoT 感應器的信號可以用來觸發影片的錄製。 下圖顯示可處理此使用案例之媒體圖形的圖形標記法。 這類媒體圖形的圖形拓撲的 JSON 標記法可在 [這裡](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json)找到。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="根據其他來源的事件錄製影片":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="根據動作偵測錄製影片":::
 
 在圖表中，外部感應器會將事件傳送至 IoT Edge 中樞。 然後會透過 [IoT 中樞訊息來源](media-graph-concept.md#iot-hub-message-source) 節點，將事件路由傳送至信號閘道處理器節點。 信號閘道處理器節點的行為與先前的使用案例相同-它將會開啟，並讓即時影片摘要從 RTSP 來源節點流向 file sink 節點 (或資產接收器節點，) 由外來事件觸發。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "89568474"
 在此使用案例中，您可以根據外部邏輯系統的信號錄製影片剪輯。 這種使用案例的範例，只有在高速公路上的流量的影片摘要中偵測到貨車時，才能錄製影片剪輯。 下圖顯示可處理此使用案例之媒體圖形的圖形標記法。 這類媒體圖形的圖形拓撲的 JSON 標記法可在 [這裡](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)找到。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="以外部推斷模組為依據的影片錄製":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="根據動作偵測錄製影片":::
 
 在圖表中，RTSP 來源節點會從相機中捕捉實況影片摘要，並將其傳遞至兩個分支：一個具有「 [信號閘道處理器](media-graph-concept.md#signal-gate-processor) 」節點，另一個則使用 [HTTP 擴充](media-graph-concept.md) 節點將資料傳送至外部邏輯模組。 [HTTP 擴充功能] 節點可讓 media graph 以 JPEG、BMP 或 PNG 格式將影像框架 (傳送) 至外部推斷服務的 REST。 此信號路徑通常只能支援低畫面播放速率 ( # B0 5fps) 。 您可以使用 [ [畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor) ] 節點來降低進入 HTTP 擴充功能節點之影片的畫面播放速率。
 
@@ -65,6 +65,6 @@ ms.locfileid: "89568474"
 
 此範例的增強功能是在畫面播放速率篩選處理器節點之前使用動作偵測器處理器。 這會減少推斷服務的負載，例如，當高速公路上沒有車輛時，夜間可能會很長的時間。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [教學課程：以事件為基礎的影片錄製](event-based-video-recording-tutorial.md)

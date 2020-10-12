@@ -13,10 +13,10 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320948"
 ---
 # <a name="blocking-legacy-authentication"></a>封鎖舊版驗證
@@ -96,7 +96,7 @@ Office 2010 不支援新式驗證。 您必須將任何使用 Office 2010 的使
 * [如何設定 Exchange Server 內部部署以使用混合式新式驗證](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 * [如何使用適用于商務用 Skype) 的新式驗證 (ADAL](/skypeforbusiness/manage/authentication/use-adal)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何設定 Exchange Server 內部部署以使用混合式新式驗證](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [如何使用適用于商務用 Skype) 的新式驗證 (ADAL](/skypeforbusiness/manage/authentication/use-adal)

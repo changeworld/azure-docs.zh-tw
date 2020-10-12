@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
 ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86505324"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用資料收集器 API 建立資料管線
@@ -20,7 +20,7 @@ ms.locfileid: "86505324"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>問題範例
-在本文的其餘部分中，我們將透過 Application Insights 檢查頁面檢視資料。 在我們的假設案例中，我們想要將 Application Insights SDK 預設收集的地理資訊相互關聯至包含全球每個國家/地區擴展的自訂資料，其目標是要找出我們應該花費最多行銷金額的位置。 
+在本文的其餘部分中，我們將透過 Application Insights 檢查頁面檢視資料。 在我們的假設案例中，我們想要將 Application Insights SDK 預設收集的地理資訊，與包含世界中每個國家/地區人口的自訂資料相互關聯，其目標是要找出最多行銷的費用。 
 
 我們會使用 [UN World Population Prospects](https://esa.un.org/unpd/wpp/) (聯合國世界人口展望) 等公開資料來源來完成此目的。 資料會有下列簡易結構描述：
 
@@ -165,5 +165,5 @@ app("fabrikamprod").pageViews
 * 如果您要上傳多個不同的資料類型，請將這些類型分散在 Blob 容器內的個別資料夾，並建立可根據資料類型扇出 (fan out) 邏輯的邏輯。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解[資料收集器 API](data-collector-api.md)，以將資料從任何 REST API 用戶端寫入 Log Analytics 工作區。

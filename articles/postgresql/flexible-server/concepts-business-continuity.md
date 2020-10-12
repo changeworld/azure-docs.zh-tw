@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 264bb8c66510c90fecf12d2e4e68bd969b4fb474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934151"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器來概述商務持續性
@@ -72,7 +72,7 @@ ms.locfileid: "90934151"
 >  **無法**   還原已刪除的伺服器。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用[Azure 資源鎖定](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)   來協助防止意外刪除您的伺服器。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
 -   瞭解[備份和](./concepts-backup-restore.md)復原

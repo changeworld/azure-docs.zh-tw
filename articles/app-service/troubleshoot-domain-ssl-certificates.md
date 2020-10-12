@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958383"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>針對 Azure App Service 中的網域與 TLS/SSL 憑證問題進行疑難排解
@@ -38,7 +38,7 @@ ms.locfileid: "88958383"
 
 多個應用程式之間，如果有多個基於相同 IP 位址的 IP 為主 SSL 繫結，可能會發生此問題。 例如，應用程式 A 的以 IP 為主 SSL 使用舊憑證。 應用程式 B 的以 IP 為主 SSL 使用同一個 IP 位址的新憑證。 當您使用新憑證來更新應用程式 TLS 系結時，會因為另一個應用程式正在使用相同的 IP 位址而失敗，並出現此錯誤。 
 
-#### <a name="solution"></a>解決方案 
+#### <a name="solution"></a>解決方法 
 
 若要修正問題，請使用下列其中一種方法：
 
@@ -57,7 +57,7 @@ ms.locfileid: "88958383"
 
 如果有另一個應用程式使用憑證，可能會出現這個問題。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 從應用程式移除該憑證的 TLS 系結。 接著再嘗試刪除憑證。 如果您仍然無法刪除憑證，請清除網際網路瀏覽器快取，然後在新的瀏覽器視窗中重新開啟 Azure 入口網站。 接著再嘗試刪除憑證。
 
@@ -128,7 +128,7 @@ ms.locfileid: "88958383"
 
 您無法將新主機名稱新增至應用程式來指派子網域。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 - 請洽詢訂用帳戶管理員，確認您擁有將主機名稱新增至應用程式的權限。
 - 如果您需要更多子域，建議您將裝載的網域變更為 Azure 功能變數名稱服務 (DNS) 。 只要使用 Azure DNS，您就可以將 500 個主機名稱新增至應用程式。 如需詳細資訊，請參閱[新增子網域](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website)。
@@ -147,7 +147,7 @@ ms.locfileid: "88958383"
 - 存留時間 (TTL) 期間尚未到期。 請檢查網域的 DNS 組態以判斷 TTL 值，然後等待期間到期。
 - DNS 組態不正確。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 - 等候 48 小時讓該問題自行解決。
 - 如果您可以變更 DNS 組態中的 TTL 設定，請將值變更為 5 分鐘，看看是否能解決問題。
 - 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 來確認網域是否指向應用程式的 IP 位址。 如果情況並非如此，請設定 A 記錄來更正應用程式的 IP 位址。
@@ -160,7 +160,7 @@ ms.locfileid: "88958383"
 #### <a name="cause"></a>原因 
 訂用帳戶的擁有者可能已意外刪除網域。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 如果網域遭到刪除的時間距離今天不到七天，網域的刪除程序可能尚未開始。 此時，您可以 Azure 入口網站中以同一個訂用帳戶再次購買相同的網域。  (請務必在 [搜尋] 方塊中輸入確切的功能變數名稱。 ) 此網域不會再向您收費。 如果網域在七天前遭到刪除，請聯絡 [Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 以取得還原網域的協助。
 
 ## <a name="domain-problems"></a>網域問題
@@ -171,7 +171,7 @@ ms.locfileid: "88958383"
 
 您買到錯誤網域的 App Service 憑證。 您無法更新憑證以使用正確網域。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 刪除憑證，然後再購買新憑證。
 
@@ -186,7 +186,7 @@ App Service 憑證已更新，不過使用 App Service 憑證的應用程式仍�
 #### <a name="cause"></a>原因 
 App Service 在48小時內自動同步處理您的憑證。 當您輪替或更新憑證時，有時候應用程式仍會擷取舊憑證，而非更新後的憑證。 這是因為同步處理憑證資源的作業尚未執行。 按一下 [同步]。同步作業會自動更新 App Service 中憑證的主機名稱系結，而不會導致您的應用程式停止運作。
  
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 您可以強制同步處理憑證：
 
@@ -199,7 +199,7 @@ App Service 在48小時內自動同步處理您的憑證。 當您輪替或更�
 #### <a name="symptom"></a>徵狀 
 App Service 憑證必須經過網域驗證才能使用。 當您選取 [驗證]**** 時，程序會失敗。
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 新增 TXT 記錄來手動驗證網域：
  
 1.  前往主控網域名稱的網域名稱服務 (DNS) 提供者。

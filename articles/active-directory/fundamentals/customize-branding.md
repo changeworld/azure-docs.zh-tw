@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565849"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>將商標新增至組織的 Azure Active Directory 登入頁面
@@ -74,7 +74,7 @@ ms.locfileid: "89565849"
           
           > 強調： ``` ++text++ ``` 
 
-    - **進階設定**
+    - **Advanced 設定**
             
         ![設定公司商標頁面，進階設定已完成](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
@@ -113,7 +113,7 @@ ms.locfileid: "89565849"
 
 3. 請在 [設定公司商標]**** 頁面上，按照本文的[自訂您的 Azure AD 登入頁面](#customize-your-azure-ad-sign-in-page)一節的說明，新增、移除或變更任何資訊。
 
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
    您對登入頁面商標所做的任何變更可能最多需要一個小時才會顯示。
 
@@ -130,7 +130,7 @@ ms.locfileid: "89565849"
 
 3. 請在 [設定公司商標]**** 頁面上，選取您的語言 (例如，法文)，然後按照本文的[自訂您的 Azure AD 登入頁面](#customize-your-azure-ad-sign-in-page)一節的說明，新增經過翻譯的資訊。
 
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
     [Contoso - 公司商標]**** 頁面會更新，以顯示新的法文設定。
 

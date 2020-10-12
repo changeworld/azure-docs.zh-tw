@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 888fdbb2352c4ac972eac8b24c29d22ce973e04d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934559"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>開始使用適用于 IoT 的 Azure Defender 裝置安全性代理程式
@@ -39,7 +39,7 @@ ms.locfileid: "90934559"
 1. 驗證 Defender 的 IoT 警示，以回應上一個步驟中的模擬攻擊。 執行腳本後的五分鐘開始驗證。
 1. 使用「IoT 中樞」探索[使用 Log Analytics](how-to-security-data-access.md)的[警示](concept-security-alerts.md)、[建議](concept-recommendations.md)和深入探討。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 設定您的 [解決方案](quickstart-configure-your-solution.md)
 - [建立安全性模組](quickstart-create-security-twin.md)

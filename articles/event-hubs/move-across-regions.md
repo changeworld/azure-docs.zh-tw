@@ -4,10 +4,10 @@ description: 本文說明如何將 Azure 事件中樞命名空間從目前區域
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89375188"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>將 Azure 事件中樞命名空間移至另一個區域
@@ -80,7 +80,7 @@ ms.locfileid: "89375188"
     ![刪除命名空間-按鈕](./media/move-across-regions/delete-namespace-button.png)
 3. 在 [ **刪除命名空間** ] 頁面上，輸入 **命名空間名稱**來確認刪除，然後選取 [ **刪除**]。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已將 Azure 事件中樞命名空間從某個區域移至另一個區域，並清除來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 

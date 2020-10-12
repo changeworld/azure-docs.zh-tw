@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
 ms.openlocfilehash: becbc3e59663c1898cc4e635f61f63d54360a6f5
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086533"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>網站可靠性工程資訊的來源
@@ -24,7 +24,7 @@ ms.locfileid: "90086533"
 
 * [傑出的網站可靠性工程](https://github.com/dastergon/awesome-sre)
 * [傑出的網站可靠性工程工具](https://github.com/SquadcastHub/awesome-sre-tools)
-* [可調整、可靠且高效能的大型系統模式](http://awesome-scalability.com)
+* [可擴充、可靠且高效能 Large-Scale 系統的模式](http://awesome-scalability.com)
 * [很棒的分散式系統](https://github.com/theanalyst/awesome-distributed-systems)
 * [很棒的共識](https://github.com/dgryski/awesome-consensus)
 * [傑出-監視](https://github.com/crazy-canux/awesome-monitoring)

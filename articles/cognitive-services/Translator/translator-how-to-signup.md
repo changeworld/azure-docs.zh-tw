@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88244307"
 ---
-# <a name="how-to-sign-up-for-translator"></a>如何註冊 Translator
+# <a name="how-to-sign-up-for-translator"></a>如何註冊翻譯工具
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -26,10 +26,10 @@ ms.locfileid: "88244307"
 
 ## <a name="create-a-subscription-for-translator"></a>建立 Translator 的訂用帳戶
 
-登入入口網站之後，您可以建立翻譯工具的訂用帳戶，如下所示：
+登入入口網站之後，您可以依照下列方式建立對翻譯工具的訂用帳戶：
 
 1. 選取 [+ 建立資源]。
-1. 在 [ **搜尋 Marketplace** ] 搜尋方塊中，輸入 **Translator** ，然後從結果中選取。
+1. 在 [ **搜尋 Marketplace** 搜尋] 方塊中，輸入 **Translator** ，然後從結果中選取。
 1. 選取 [建立]**** 定義訂用帳戶的詳細資料。
 1. 從 [定價層]**** 清單中，選取最符合您需求的定價層。
     1. 每個訂用帳戶都有一個免費層。 免費層與付費方案的特色與功能都相同，但是不會過期。
@@ -38,7 +38,7 @@ ms.locfileid: "88244307"
 
 ## <a name="authentication-key"></a>驗證金鑰
 
-當您註冊 Translator 時，您會取得訂用帳戶獨有的個人化存取金鑰。 每次呼叫 Translator 時都需要此金鑰。
+當您註冊翻譯工具時，您會取得訂用帳戶獨有的個人化存取金鑰。 每次呼叫翻譯工具都需要此金鑰。
 
 1. 先選取適當的訂用帳戶，擷取驗證金鑰。
 1. 在訂用帳戶詳細資料的 [資源管理]**** 區段中，選取 [金鑰]****。

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933851"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>在彈性的伺服器中管理區域冗余高可用性
@@ -35,26 +35,26 @@ ms.locfileid: "90933851"
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="查看訂用帳戶和區域":::
 
 2.  選擇您的 **可用性區域**。 如果您想要在與資料庫相同的可用性區域中共置應用程式，以降低延遲，這會很有用。 如果您想要讓有彈性的伺服器部署到任何可用性區域，請選擇 [ **無偏好** 設定]。
-    ![AZ selection ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Availability zone 選取專案":::  
+    ![AZ selection ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="查看訂用帳戶和區域":::  
 
 3.  在可用性選項中，按一下 [ **區域冗余高可用性** ] 的核取方塊。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="高可用性核取方塊":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="查看訂用帳戶和區域":::
 
 4.  如果您想要變更預設的計算和儲存體，請按一下 [  **設定伺服器**]。
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="設定伺服器-計算 + 儲存體":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="查看訂用帳戶和區域":::  
 
 5.  如果選取 [高可用性] 選項，高載層將無法供選擇。 您可以選擇 **一般用途** 或 **記憶體優化** 計算層級。 然後，您可以從下拉式清單中選取您選擇的 **計算大小** 。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="計算層選取專案":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="查看訂用帳戶和區域":::  
 
 
 6.  使用滑動軸在 GiB 中選取 [ **儲存體大小** ]，並選取7天到35天之間的 **備份保留期限** 。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="儲存體備份"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="查看訂用帳戶和區域"::: 
 
-7. 按一下 [檔案]  。 
+7. 按一下 **[儲存]** 。 
 
 ## <a name="enable-high-availability-post-server-creation"></a>在伺服器建立後啟用高可用性
 
@@ -64,11 +64,11 @@ ms.locfileid: "90933851"
 
 2.  在 [彈性伺服器] 頁面上，按一下左側面板中的 [ **高可用性** ] 以開啟 [高可用性] 頁面。
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左面板選取範圍"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="查看訂用帳戶和區域"::: 
 
 3.  按一下 [**區域冗余高可用性**] 核取方塊來**啟用**此選項，然後按一下 [ **儲存**]   以儲存變更。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="啟用高可用性"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="查看訂用帳戶和區域"::: 
 
 4.  確認對話方塊將會顯示，表示藉由啟用高可用性，您的成本將會因為額外的伺服器和存放裝置部署而增加。
 
@@ -84,11 +84,11 @@ ms.locfileid: "90933851"
 
 2.  在 [彈性伺服器] 頁面上，按一下前端面板中的 [ **高可用性** ] 以開啟 [高可用性] 頁面。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左面板選取範圍"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="查看訂用帳戶和區域"::: 
 
 3.  按一下 [ **區域冗余高可用性** ] 核取方塊以 **停** 用此選項。 然後按一下 [ **儲存**]   以儲存變更。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="停用高可用性"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="查看訂用帳戶和區域"::: 
 
 4.  確認對話方塊將會顯示，您可以在其中確認停用高可用性。
 
@@ -96,7 +96,7 @@ ms.locfileid: "90933851"
 
 6.  通知將會顯示高可用性部署的解除委任正在進行中。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
 -   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)

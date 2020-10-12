@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
 ms.openlocfilehash: 678de4354012dcea5b954980109fd71c1004aca4
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619282"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>設定 Azure SQL Database 的 Advanced 威脅防護
@@ -28,7 +28,7 @@ Azure SQL Database 的[Advanced 威脅防護](threat-detection-overview.md)會�
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>在 Azure 入口網站中設定 Advanced 威脅防護
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 2. 流覽至您要保護之伺服器的設定頁面。 在 [安全性設定] 中，選取 [ **安全性中心**]。
 3. 在 [ **Azure Defender** 設定] 頁面上：
 

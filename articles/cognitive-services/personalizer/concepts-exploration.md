@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.openlocfilehash: 00b9cc881d9414e957d7503bb6156095bb821c06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128143"
 ---
 # <a name="exploration-and-exploitation"></a>探索 (Exploration) 和利用 (Exploitation)
@@ -27,7 +27,7 @@ ms.locfileid: "87128143"
 
 ## <a name="choosing-an-exploration-setting"></a>選擇探索設定
 
-您可以在個人化工具的 Azure 入口網站 [設定 **] 頁面中**，設定用於探索的流量百分比。 此設定會決定執行探索的排名呼叫百分比。 
+您可以在個人化工具的 Azure 入口網站 [設定 **] 頁面中** ，設定要用於探索的流量百分比。 此設定會決定執行探索的排名呼叫百分比。 
 
 個人化工具會決定是否要探索或利用每個排名呼叫上的此機率。 這有別於某些 A/B 架構中的行為，也就是鎖定特定使用者識別碼上的處理方式。
 
@@ -41,6 +41,6 @@ ms.locfileid: "87128143"
 
 無論您使否看到個人化工具正在使用探索或利用，請絕對不要隨之變更應用程式行為。 這會導致學習偏差，最終將會降低潛在效能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [增強式學習](concepts-reinforcement-learning.md) 

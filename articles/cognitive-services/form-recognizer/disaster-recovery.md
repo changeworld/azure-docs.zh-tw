@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718810"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>備份和復原您的表單辨識器模型
@@ -26,7 +26,7 @@ ms.locfileid: "88718810"
 
 如果您的應用程式或業務相依于使用表單辨識器自訂模型，建議您將模型複製到另一個區域中的另一個表單辨識器帳戶。 如果發生區域性中斷，您就可以在複製的區域中存取您的模型。
 
-##  <a name="prerequisites"></a>Prerequisites
+##  <a name="prerequisites"></a>必要條件
 
 1. 不同 Azure 區域中的兩個表單辨識器 Azure 資源。 如果您沒有這些專案，請移至 Azure 入口網站並 <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" 建立新的表單辨識器資源，以 " target="_blank"> 建立新的表單辨識器資源 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 。
 1. 表單辨識器資源的訂用帳戶金鑰、端點 URL 和訂用帳戶識別碼。 您可以在 Azure 入口網站上資源的 [ **總覽** ] 索引標籤中找到這些值。
@@ -82,7 +82,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 > [!NOTE]
 > 複製 API 會以透明的方式支援 [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) 功能。 這並不需要任何特殊處理，但請注意，如果您要在未加密的資源之間複製到加密資源，則必須包含要求標頭 `x-ms-forms-copy-degrade: true` 。 如果未包含此標頭，則複製作業會失敗並傳回 `DataProtectionTransformServiceError` 。
 
-您將會收到 `202\Accepted` 操作位置標頭的回應。 此值是您將用來追蹤作業進度的 URL。 將它複製到暫存位置以供下一個步驟使用。
+您將會收到 `202\Accepted` Operation-Location 標頭的回應。 此值是您將用來追蹤作業進度的 URL。 將它複製到暫存位置以供下一個步驟使用。
 
 ```
 HTTP/1.1 202 Accepted
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>常見錯誤
 
-|錯誤|解決方法|
+|錯誤|解決方案|
 |:--|:--|
 | 400/不正確的要求 `"code:" "1002"` | 指出驗證錯誤或格式不正確的複製要求。 常見的問題包括：) 無效或已修改的承載 `copyAuthorization` 。 b) 權杖的過期值 `expirationDateTimeTicks` (承載 `copyAuhtorization` 的有效時間為24小時) 。 c) 無效或不受支援 `targetResourceRegion` 。 d) 無效或格式錯誤 `targetResourceId` 的字串。
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>常見錯誤
 
-|錯誤|解決方法|
+|錯誤|解決方案|
 |:--|:--|
 |「錯誤」： [{"code"： "AuthorizationError"，<br>"message"： "授權失敗，原因為 <br>授權宣告遺失或無效。」}]   | 當從 API 傳回的內容修改內容時，就會發生 `copyAuthorization` `copyAuthorization` 。 請確定承載與先前呼叫所傳回的內容完全相同 `copyAuthorization` 。|
 |「錯誤」： [{"code"： "AuthorizationError"，<br>"message"： "無法取出授權 <br>元。 如果此問題持續發生，請使用不同的 <br>要複製到其中的目標模型。」}] | 指出 `copyAuthorization` 正在使用複製要求來重複使用裝載。 成功的複製要求將不允許任何其他使用相同承載的要求 `copyAuthorization` 。 如果您引發個別的錯誤 (如下所述) ，然後再以相同的授權承載重試複製，則會引發此錯誤。 解決方法是產生新的承載 `copyAuthorization` ，然後重新發出複製要求。|

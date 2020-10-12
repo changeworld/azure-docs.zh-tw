@@ -4,10 +4,10 @@ description: 了解如何針對 Durable Functions 設定自動 Azure 事件方�
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081741"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>發佈至 Azure 事件方格 (預覽) 的 Durable Functions
@@ -132,11 +132,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 1. 搜尋 [事件方格]，然後選取 **Azure 事件方格觸發程序**範本。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 入口網站中選取事件方格觸發程式範本。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
 1. 將新的觸發程式命名，然後選取 [建立函式]。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 入口網站中將事件方格觸發程序命名。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
 
     隨即建立具有下列程式碼的函式：
@@ -172,11 +172,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 1. 在您的新函式中，選取 [整合]，然後選取 [事件方格觸發程式 (eventGridEvent)]。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="選取事件方格觸發程序連結。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
 1. 選取 [建立事件方格描述]。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="建立事件方格訂用帳戶。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
 1. 為您的事件訂用帳戶命名，並選取 [事件方格主題] 主題類型。 
 
@@ -184,7 +184,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 1. 選取 [建立]。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="建立事件格線訂用帳戶。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
 您現在已經準備好接收生命週期事件。
 

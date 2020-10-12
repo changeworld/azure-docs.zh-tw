@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934582"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的正規化
@@ -97,7 +97,7 @@ Azure Sentinel 與 [開放原始碼安全性事件中繼資料 (OSSEM) ](https:/
 
     1. **類別**：您可以選取現有的類別，或建立新的類別 (例如 *NormalizedNetworkSessionsParsers*) 
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="儲存剖析器":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="安裝新的剖析器":::
 
 若要正確地使用剖析器，您也必須安裝空的網路架構剖析器 (這會建立所有網路會話架構之欄位的空白表格式視圖) 和網路中繼剖析器 (將所有啟用的剖析器串連在一起，以建立網路架構) 中不同來源的單一資料檢視。 安裝這兩個剖析器時，會以類似上述步驟的方式來完成。
 
@@ -107,15 +107,15 @@ Azure Sentinel 與 [開放原始碼安全性事件中繼資料 (OSSEM) ](https:/
 
 啟用之後，您就可以使用中繼剖析器，在所有目前啟用的剖析器上查詢統一的觀點。 若要這樣做，請移至 Sentinel 記錄頁面並查詢中繼剖析器：
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="查詢剖析器":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="安裝新的剖析器":::
  
 您也可以在 [Sentinel 記錄] 頁面中，按一下 [查詢瀏覽器]，以存取中繼剖析器或個別的剖析器：
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="查詢總管":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="安裝新的剖析器":::
 
 在右側窗格中，展開 [已儲存的查詢] 區段，並尋找 (的 ' NormalizedNetworkParsers ' 資料夾，或您在建立剖析器) 時所選擇的類別目錄名稱：
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="尋找您的剖析器":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="安裝新的剖析器":::
 
 您可以按一下每個個別的剖析器，並查看它所使用的基礎函式， (或直接透過別名來存取它，如上述) 所述。 請注意，有些剖析器可以將原始欄位並存保留給正規化欄位，以方便使用。 您可以輕鬆地在剖析器的查詢中編輯這項功能。
 
@@ -124,18 +124,18 @@ Azure Sentinel 與 [開放原始碼安全性事件中繼資料 (OSSEM) ](https:/
 您可以重複上述步驟 (在 [查詢 explorer] 中尋找剖析器) 、按一下相關的剖析器，並查看其函數的執行。
 例如，您可以決定編輯中繼剖析器，以新增/移除個別剖析器。
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="自訂剖析器":::
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="安裝新的剖析器":::
  
 更改函數之後，請再按一下 [儲存]，然後使用相同的名稱、別名和類別。 將開啟覆寫對話方塊–請按 [確定]：
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="是否確定":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="安裝新的剖析器":::
 
 #### <a name="additional-information"></a>其他資訊
 
 深入瞭解 Log Analytics 中的查詢時間剖析器執行)  ([儲存的查詢](../azure-monitor/log-query/saved-queries.md) 。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本檔中，您已瞭解 Azure Sentinel 的正規化架構。 如需參考架構本身，請參閱 [Azure Sentinel 資料正規化架構參考](./normalization-schema.md)。
 

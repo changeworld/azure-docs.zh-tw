@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716430"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上的 Azure Active Directory 憑證式驗證
@@ -30,7 +30,7 @@ ms.locfileid: "88716430"
 
 ## <a name="microsoft-mobile-applications-support"></a>Microsoft 行動應用程式支援
 
-| 應用程式 | 支援 |
+| [App] | 支援 |
 | --- | --- |
 | Azure 資訊保護應用程式 |![核取記號表示此應用程式的支援][1] |
 | Intune 公司入口網站 |![核取記號表示此應用程式的支援][1] |
@@ -85,7 +85,7 @@ Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disab
 
 iOS 9 或更新版本支援原生 iOS 郵件用戶端。 若要判斷所有其他 Exchange ActiveSync 應用程式是否支援這項功能，請洽詢您的應用程式開發人員。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要在您的環境中設定以憑證為基礎的驗證，請參閱以 [憑證為基礎的驗證入門](active-directory-certificate-based-authentication-get-started.md) 以取得指示。
 

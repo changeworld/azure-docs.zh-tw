@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506361"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的永久性協調流程
@@ -18,11 +18,11 @@ ms.locfileid: "86506361"
 
 ## <a name="orchestration-history"></a>協調流程記錄
 
-如[協調流程歷程記錄](durable-functions-orchestrations.md#orchestration-history)主題中所述，長期工作架構會持續追蹤每個函式協調流程的歷程記錄。 只要協調器函式繼續排程新的工作，此記錄就會持續成長。 如果協調器函式進入無限迴圈，並持續排程工作，此記錄可能會變得非常大，而造成明顯的效能問題。 「永久協調流程」** 概念是設計讓需要無限迴圈的應用程式減少發生這類問題。
+如 [協調流程歷程記錄](durable-functions-orchestrations.md#orchestration-history) 主題所述，長期工作架構會持續追蹤每個函式協調流程的歷程記錄。 只要協調器函式繼續排程新的工作，此記錄就會持續成長。 如果協調器函式進入無限迴圈，並持續排程工作，此記錄可能會變得非常大，而造成明顯的效能問題。 「永久協調流程」** 概念是設計讓需要無限迴圈的應用程式減少發生這類問題。
 
 ## <a name="resetting-and-restarting"></a>重設和重新啟動
 
-協調器函式會呼叫協調流程觸發程式系結的 `ContinueAsNew` （.net）、 `continueAsNew` （JavaScript）或 `continue_as_new` （ [ ](durable-functions-bindings.md#orchestration-trigger)Python）方法，以重設其狀態，而不是使用無限迴圈。 此方法接受單一 JSON 序列化參數，此參數會變成新的輸入來產生下一個協調器函式。
+協調器函式會藉由呼叫 `ContinueAsNew` ( .net) 、 `continueAsNew` (JavaScript) 或 `continue_as_new` [協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系結的 (Python) 方法來重設其狀態，而不是使用無限迴圈。 此方法接受單一 JSON 序列化參數，此參數會變成新的輸入來產生下一個協調器函式。
 
 呼叫 `ContinueAsNew` 時，執行個體在結束之前會將訊息加入其本身的佇列。 此訊息會以新的輸入值來重新啟動執行個體。 相同的執行個體識別碼會保留下來，但協調器函式的記錄實際上會截斷。
 
@@ -51,7 +51,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -95,10 +95,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="starting-an-eternal-orchestration"></a>啟動永久性協調流程
 
-使用 `StartNewAsync` （.net）、 `startNew` （JavaScript）、 `start_new` （Python）方法來啟動永久性協調流程，就像任何其他協調流程函數一樣。  
+使用 `StartNewAsync` ( .net) 、 `startNew` (JavaScript) 、 `start_new` (Python) 方法來啟動永久性協調流程，就像是任何其他協調流程函式一樣。  
 
 > [!NOTE]
-> 如果您需要確保單一永久性協調流程正在執行，請務必在 `id` 啟動協調流程時維護相同的實例。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
+> 如果您需要確保單一永久性協調流程正在執行，請務必 `id` 在啟動協調流程時維護相同的實例。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -116,7 +116,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> 先前的程式碼適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `OrchestrationClient` 屬性，而不是 `DurableClient` 屬性，而且您必須使用 `DurableOrchestrationClient` 參數類型，而不是 `IDurableOrchestrationClient` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的程式碼適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用屬性（attribute），而不是 `OrchestrationClient` `DurableClient` 屬性（attribute），而且必須使用 `DurableOrchestrationClient` 參數類型，而不是 `IDurableOrchestrationClient` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -154,9 +154,9 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 如果協調器函式最終一定要完成，則您完全「不」** 需要呼叫 `ContinueAsNew`，讓函式自然結束即可。
 
-如果協調器函式是無限迴圈，而且需要停止，請使用 `TerminateAsync` 協調流程用戶端系結的（.net）、 `terminate` （JavaScript）或 `terminate` （Python [orchestration client binding](durable-functions-bindings.md#orchestration-client) ）方法來停止它。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
+如果協調器函式在無限迴圈中，而且需要停止，請使用 `TerminateAsync` ( .net) 、 `terminate` (JavaScript) 或 `terminate` [協調流程用戶端](durable-functions-bindings.md#orchestration-client) 系結的 (Python) 方法來停止它。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [了解如何實作單次協調流程](durable-functions-singletons.md)

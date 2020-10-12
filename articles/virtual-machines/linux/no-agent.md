@@ -10,10 +10,10 @@ ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322546"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>在沒有布建代理程式的情況下建立一般化映射
@@ -271,6 +271,6 @@ Jun 11 20:28:56 thstringnopa2 systemd[1]: Started Azure Provisioning.
 
 如果您執行自己的布建程式碼/代理程式，則您擁有此程式碼的支援，Microsoft 支援服務只會調查與無法使用的布建介面相關的問題。 我們會持續在此區域進行改進和變更，因此您必須監視雲端初始化和 Azure Linux 代理程式中的變更，以布建 API 變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [Linux](provisioning.md)布建。

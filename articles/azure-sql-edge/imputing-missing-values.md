@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 03896f4f7aa4e6efc78b498406e79a299318ed7a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934051"
 ---
 # <a name="filling-time-gaps-and-imputing-missing-values"></a>填滿時間間距並輸入遺漏值 
@@ -179,7 +179,7 @@ timestamp               OrigVoltageVals  ImputedVoltage  OrigPressureVals  Imput
 > [!NOTE]
 > 上述查詢會使用 `FIRST_VALUE()` 函數，以下一個觀察到的值取代遺漏值。 使用函數搭配子句可以達成相同的結果 `LAST_VALUE()` `ORDER BY <ordering_column> DESC` 。
 
-## <a name="next-steps"></a>下一步 
+## <a name="next-steps"></a>後續步驟 
 
 - [FIRST_VALUE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json)
 - [LAST_VALUE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json)

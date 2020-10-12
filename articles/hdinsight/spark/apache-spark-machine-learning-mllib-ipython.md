@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
 ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230410"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 建置機器學習應用程式及分析資料集
@@ -44,7 +44,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>建立 Apache Spark MLlib 機器學習應用程式
 
-1. 使用 PySpark 核心建立 Jupyter Notebook。 如需相關指示，請參閱 [建立 Jupyter 筆記本](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)檔案。
+1. 使用 PySpark 核心建立 Jupyter Notebook。 如需指示，請參閱[建立 Jupyter Notebook 檔案](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)。
 
 2. 匯入此應用程式所需的類型。 將下列程式碼複製並貼到空白儲存格中，然後按下 **SHIFT + enter**。
 

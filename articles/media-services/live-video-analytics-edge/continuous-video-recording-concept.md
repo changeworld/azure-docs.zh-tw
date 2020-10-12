@@ -4,15 +4,15 @@ description: 持續錄製的影片 (CVR) 是指從影片來源持續錄製影片
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566684"
 ---
 # <a name="continuous-video-recording"></a>連續影片錄製  
 
-## <a name="suggested-pre-reading"></a>建議的閱讀準備事項  
+## <a name="suggested-pre-reading"></a>建議的預先閱讀  
 
 * [媒體圖表概念](media-graph-concept.md)
 * [影片錄製概念](video-recording-concept.md)
@@ -58,6 +58,6 @@ SegmentLength 屬性可確保 edge 模組每 segmentLength 秒最多可上傳一
 * [發生事件時錄製影片](event-based-video-recording-concept.md)
 * [播放錄製的內容](video-playback-concept.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [教學課程：持續錄製影片](continuous-video-recording-tutorial.md)

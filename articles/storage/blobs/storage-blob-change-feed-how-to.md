@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568246"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob 儲存體中的處理變更摘要
@@ -214,6 +214,6 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 您提供的開始時間會四捨五入到最接近的小時，而結束時間則會四捨五入到最接近的小時。 使用者可能會看到在開始時間之前和結束時間之後發生的事件。 在開始與結束時間之間發生的某些事件也可能不會出現。 這是因為事件可能會在開始時間之前的一小時內，或在結束時間之後的一小時內記錄。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解變更摘要記錄。 請參閱[Azure Blob 儲存體中的變更](storage-blob-change-feed.md)摘要

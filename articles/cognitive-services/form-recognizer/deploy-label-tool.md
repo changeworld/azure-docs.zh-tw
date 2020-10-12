@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717892"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署範例標籤工具
@@ -80,7 +80,7 @@ ms.locfileid: "88717892"
    * 持續部署-如果您想要在開發小組對範例標籤工具進行變更時接收自動更新，請將此設定為 **On** 。
    * 啟動命令-將此設定為 `./run.sh eula=accept`
 
-    # <a name="v21-preview"></a>[2.1 版預覽](#tab/v2-1) 
+    # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1) 
    * 選項-選取 **單一容器**
    * 映射來源-選取**私人**登錄 
    * 伺服器 URL-將此設定為 `https://mcr.microsoft.com`
@@ -95,7 +95,7 @@ ms.locfileid: "88717892"
    > [!div class="mx-imgBorder"]
    > ![設定 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 這樣就大功告成了！ 接下來，選取 [ **審核 + 建立**]，然後選取 [ **建立** ] 以部署您的 web 應用程式。 完成時，您可以在資源 **總覽** 中提供的 URL 存取您的 web 應用程式。
+7. 就這麼簡單。 接下來，選取 [ **審核 + 建立**]，然後選取 [ **建立** ] 以部署您的 web 應用程式。 完成時，您可以在資源 **總覽** 中提供的 URL 存取您的 web 應用程式。
 
 > [!NOTE]
 > 建立您的 web 應用程式時，您也可以設定授權/驗證。 這不是開始使用的必要條件。 
@@ -129,7 +129,7 @@ az container create \
   --memory 8 \
   --command-line "./run.sh eula=accept"
 ``` 
-# <a name="v21-preview"></a>[2.1 版預覽](#tab/v2-1)    
+# <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1)    
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -155,6 +155,6 @@ az container create \
 
 OCR 表單圖章工具也可做為 GitHub 上的開放原始碼專案。 此工具是使用 React + Redux 建置的 Web 應用程式，並以 TypeScript 撰寫。 若要深入了解或參與，請參閱 [OCR 表單標籤工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 使用「 [使用標籤定型](./quickstarts/label-tool.md) 」快速入門，以瞭解如何使用此工具手動標示定型資料並執行受監督的學習。

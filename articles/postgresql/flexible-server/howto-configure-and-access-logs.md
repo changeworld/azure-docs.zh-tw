@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934214"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中設定和存取記錄
@@ -36,7 +36,7 @@ ms.locfileid: "90934214"
 4. 選取您慣用的端點 (儲存體帳戶、事件中樞、log analytics) 。 
 
 5. 選取記錄類型 **PostgreSQLLogs**。
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="選擇于 postgresql 記錄":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="[新增診斷設定] 按鈕":::
 
 7. 儲存您的設定。
 
@@ -69,7 +69,7 @@ AzureDiagnostics
 
 上述查詢會針對此工作區中的任何 Postgres 伺服器記錄，顯示過去6小時內的結果。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [開始使用 log analytics 查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
 - 瞭解 [Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-about)

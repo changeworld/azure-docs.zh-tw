@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c24698736d611604c39b6fa91aef97f73576c6c6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716194"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory 自助式密碼重設的授權需求
@@ -43,7 +43,7 @@ SSPR 是依使用者授權。 為了維持合規性，組織必須將適當的�
 
 * [Azure Active Directory 價格](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory 功能和功用](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
-* [企業行動力 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
+* [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 企業版 ](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 商務版 ](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
@@ -53,7 +53,7 @@ Azure AD 支援以群組為基礎的授權。 系統管理員可以將大量授�
 
 某些 Microsoft 服務無法在所有位置使用。 系統管理員必須先指定使用者的 [ **使用位置** ] 屬性，才可以將授權指派給使用者。 指派授權可以在 Azure 入口網站的 [**使用者**  >  **設定檔**  >  **設定**] 區段下完成。 使用群組授權指派時，未指定使用位置的任何使用者在指派期間會繼承目錄的位置。**
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要開始使用 SSPR，請完成下列教學課程：
 

@@ -4,10 +4,10 @@ description: 本文包含使用 Microsoft Azure 備份 Server (MABS) 來備份�
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377993"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 備份伺服器備份 Hyper-v 虛擬機器
@@ -84,7 +84,7 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
 
 5. 在 [選擇資料保護方式]**** 頁面上，指定保護群組名稱。 選取 [我想要使用磁碟執行短期保護] **** ；如果您想要使用 Azure 備份服務將資料備份到 Azure，請選取 [我要執行線上保護] **** 。
 
-6. 在 [**指定短期目標**  >  **保留範圍**] 中，指定您要保留磁片資料的時間長度。 在 **[同步處理頻率**] 中，指定應執行增量備份資料的頻率。 或者，不要選取增量備份間隔，而是改為啟用 [恰好在復原點之前] ****。 啟用此設定後，MABS 就會在每個排程的復原點之前執行快速完整備份。
+6. 在 [**指定 Short-Term 目標**  >  **保留範圍**] 中，指定您要保留磁片資料的時間長度。 在 **[同步處理頻率**] 中，指定應執行增量備份資料的頻率。 或者，不要選取增量備份間隔，而是改為啟用 [恰好在復原點之前] ****。 啟用此設定後，MABS 就會在每個排程的復原點之前執行快速完整備份。
 
     > [!NOTE]
     >
@@ -132,7 +132,7 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
 
 3. 從 [ **動作** ] 功能表中選取 [復原]，以開啟 [ **復原** 嚮導]。
 
-    您所選取的 VM 和復原點會出現在 [檢閱復原選項]**** 畫面。 選取 [下一步] 。
+    您所選取的 VM 和復原點會出現在 [檢閱復原選項]**** 畫面。 選取 [下一步]  。
 
 4. 在 [ **選取復原類型** ] 畫面上，選取您要還原資料的位置，然後選取 **[下一步]**。
 
@@ -153,6 +153,6 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
 
 7. [復原狀態]**** 畫面會提供有關復原工作的資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [從 Azure 備份伺服器復原資料](./backup-azure-alternate-dpm-server.md)

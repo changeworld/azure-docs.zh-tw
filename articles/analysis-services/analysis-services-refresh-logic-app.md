@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540722"
 ---
 # <a name="refresh-with-logic-apps"></a>使用 Logic Apps 重新整理
@@ -67,7 +67,7 @@ ms.locfileid: "91540722"
 |---------|---------|
 |**方法**     |POST         |
 |**URI**     | HTTPs://*您的伺服器區域**/servers/您**的資料庫名稱/models/的*伺服器區域對/refreshes <br /> <br /> 例如： HTTPs： \/ /westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**標頭**     |   Content-type、application/json <br /> <br />  ![標題](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**標頭**     |   Content-type、application/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**本文**     |   若要深入瞭解如何形成要求本文，請參閱 [使用 REST API POST 對/refreshes 進行非同步](analysis-services-async-refresh.md#post-refreshes)重新整理。 |
 |**驗證**     |Active Directory OAuth         |
 |**租用戶**     |填入您的 Azure Active Directory TenantId         |

@@ -3,12 +3,12 @@ title: 偵測動作、將影片錄製到 Azure 媒體服務
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，以偵測即時影片串流中的動作，並將視訊剪輯錄製到 Azure 媒體服務。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568996"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776471"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入門：偵測動作、將影片錄製到媒體服務
 
@@ -39,6 +39,16 @@ ms.locfileid: "89568996"
 ## <a name="use-direct-method-calls"></a>使用直接方法呼叫
 
 您可以使用模組，藉由叫用直接方法來分析即時影片串流。 請參閱 [IoT Edge 上 Live Video Analytics 的直接方法](direct-methods.md)，以了解模組所提供的所有直接方法。 
+
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="根據動作事件對資產進行以事件為基礎的影片錄製":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="根據動作事件對資產進行以事件為基礎的影片錄製":::
 
 ### <a name="invoke-graphtopologylist"></a>叫用 GraphTopologyList
 此步驟會列舉模組中的所有[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)。

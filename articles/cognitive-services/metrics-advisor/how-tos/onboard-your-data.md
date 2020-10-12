@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934687"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>How to：將您的計量資料上架到計量 Advisor
@@ -82,7 +82,7 @@ ms.locfileid: "90934687"
 
 如果您想要忽略資料行，我們建議您更新查詢或資料來源，以排除這些資料行。 您也可以使用 [略過資料 **行** ] 來略過資料行，然後在特定資料行上 **略** 過。 如果資料行應該是維度，並錯誤地設定為 *忽略*，則計量審查程式最後可能會擷取部分資料。 例如，假設查詢中的資料如下所示：
 
-| 資料列識別碼 | 時間戳記 | 國家/地區 | 語言 | Income |
+| 資料列識別碼 | 時間戳記 | 國家/地區 | Language | Income |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | 中國 | ZH-CN | 10000 |
 | 2 | 2019/11/10 | 中國 | ZH-TW | 1000 |
@@ -99,7 +99,7 @@ ms.locfileid: "90934687"
 
 計量建議程式可以在內嵌期間，自動執行每個維度之 SUM、MAX、MIN) 的匯總 (，然後建立將用於根案例分析和其他診斷功能的階層。 
 
-請考慮下列情況：
+請考慮下列案例：
 
 * *我不需要包含資料的匯總分析。*
 
@@ -109,7 +109,7 @@ ms.locfileid: "90934687"
 
     此選項表示計量建議程式不需要匯總資料，因為資料列已加總。 例如，如果您只選取 [ *Null*]，則下列範例中的第二個數據列會顯示為所有國家/地區和語言 *en-us*的匯總。但是，第四個數據列的 *國家/地區* 有空白值，則會顯示為一般資料列，這可能表示未完成的資料。
     
-    | 國家/地區 | 語言 | Income |
+    | 國家/地區 | Language | Income |
     |---------|----------|--------|
     | 中國   | ZH-CN    | 10000  |
     |  (Null)   | ZH-TW    | 999999 |
@@ -188,14 +188,14 @@ ms.locfileid: "90934687"
 2. 按一下 [ **狀態** ]，然後選擇 [ **失敗** ] 或 [ **錯誤**]。
 3. 將滑鼠停留在失敗的內嵌上方，並查看顯示的詳細資料訊息。
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="檢查失敗的內嵌":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="內嵌進度列":::
 
 *失敗*狀態表示此資料來源的內嵌將于稍後重試。
 *錯誤*狀態表示「計量顧問」不會重試資料來源。 若要重載資料，您需要手動觸發回填/重載。
 
 您也可以按一下 [重新整理 **進度**]，重載內嵌的進度。 資料內嵌完成之後，您就可以按一下 [計量]，並檢查異常偵測結果。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [管理您的資料摘要](manage-data-feeds.md)
 - [不同資料來源的組態](../data-feeds-from-different-sources.md)
 - [設定計量和微調偵測組態](configure-metrics.md)

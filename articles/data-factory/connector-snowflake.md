@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
 ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405168"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure Data Factory 在雪花中複製和轉換資料
@@ -153,7 +153,7 @@ ms.locfileid: "91405168"
 | 查詢          | 指定從雪花讀取資料的 SQL 查詢。 如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。<br>不支援執行預存程式。 | 否       |
 | exportSettings | 用來從雪花式取出資料的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否       |
 | ***在 `exportSettings` 下列情況下：*** |  |  |
-| 類型 | 匯出命令的類型，設定為 **SnowflakeExportCopyCommand**。 | 是 |
+| type | 匯出命令的類型，設定為 **SnowflakeExportCopyCommand**。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： MAX_FILE_SIZE、覆寫。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供用來複製命令做為機碼值組字典的其他檔案格式選項。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -284,7 +284,7 @@ ms.locfileid: "91405168"
 | preCopyScript     | 針對複製活動指定一個 SQL 查詢，在每次執行時將資料寫入雪花之前執行。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | importSettings | 用來將資料寫入雪花的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否 |
 | ***在 `importSettings` 下列情況下：*** |                                                              |  |
-| 類型 | 匯入命令的類型，設定為 **SnowflakeImportCopyCommand**。 | 是 |
+| type | 匯入命令的類型，設定為 **SnowflakeImportCopyCommand**。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供給 COPY 命令的其他檔案格式選項，提供做為索引鍵/值組的字典。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)。 | 否 |
 

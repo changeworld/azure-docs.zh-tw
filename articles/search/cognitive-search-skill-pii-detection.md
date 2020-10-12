@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540518"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII 偵測認知技能
@@ -50,14 +50,14 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
-| `languageCode`    | 選擇性。 預設為 `en`。  |
+| `languageCode`    | 選擇性。 預設值為 `en`。  |
 | `text`          | 要分析的文字。          |
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出名稱      | 說明                   |
+| 輸出名稱      | 描述                   |
 |---------------|-------------------------------|
-| `piiEntities` | 複雜類型的陣列，包含下列欄位： <ul><li>將實際 PII (為已解壓縮的文字) </li> <li>類型</li><li>亞</li><li>分數 (更高的值表示更可能是真實的實體) </li><li> (至輸入文字的位移) </li><li>長度</li></ul> </br> [您可以在這裡找到可能的類型和子類型。](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal) |
+| `piiEntities` | 複雜類型的陣列，包含下列欄位： <ul><li>將實際 PII (為已解壓縮的文字) </li> <li>type</li><li>亞</li><li>分數 (更高的值表示更可能是真實的實體) </li><li> (至輸入文字的位移) </li><li>長度</li></ul> </br> [您可以在這裡找到可能的類型和子類型。](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal) |
 | `maskedText` | 如果 `maskingMode` 設定為以外的值，則 `none` 此輸出將會是在輸入文字上執行之遮罩的字串結果（如選取的所述） `maskingMode` 。  如果 `maskingMode` 設定為 `none` ，將不會顯示此輸出。 |
 
 ## <a name="sample-definition"></a>範例定義

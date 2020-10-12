@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89321509"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理作業參考指南
@@ -56,7 +56,7 @@ ms.locfileid: "89321509"
 
 在測試時，有一些需要特殊考慮的變更，從簡單的技術（例如，在平行測試租使用者中推出使用者的目標子集）部署變更。 如果您尚未實行測試策略，您應該根據下表中的指導方針來定義測試方法：
 
-| 案例| 建議 |
+| 狀況| 建議 |
 |-|-|
 |將驗證類型從同盟變更為 PHS/PTA 或反之亦然| 使用 [分段推出](../hybrid/how-to-connect-staged-rollout.md) 來測試變更驗證類型的影響。|
 | (CA) 原則或 Identity Protection 原則中推出新的條件式存取|建立新的 CA 原則，並指派給測試使用者。|
@@ -141,6 +141,6 @@ ms.locfileid: "89321509"
 - 鎖定 Azure EA 入口網站的存取權。
 - 實行權利管理，以提供資源集合的控管存取。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 開始使用 [Azure AD 操作檢查和動作](active-directory-ops-guide-ops.md)。

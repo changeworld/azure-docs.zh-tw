@@ -4,10 +4,10 @@ description: 了解如何透過新增虛擬機器擴展集來相應放大 Servic
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: efd329c07b4881c6710d4173857b4186965438d8
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719320"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>透過新增虛擬機器擴展集來相應放大 Service Fabric 叢集
@@ -52,7 +52,7 @@ NodeTypeRef 屬性會在虛擬機器擴展集 Service Fabric 擴充功能屬性�
 <snip>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何[相應增加主要節點類型](service-fabric-scale-up-primary-node-type.md)
 * 深入了解[應用程式延展性](service-fabric-concepts-scalability.md)。
 * [將 Azure 叢集相應縮小或相應放大](service-fabric-tutorial-scale-cluster.md)。

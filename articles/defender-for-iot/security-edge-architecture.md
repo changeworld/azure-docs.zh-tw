@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 1933e60892430b907e070ea04f39d8acc86ddac2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933989"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>適用于 IoT Edge 安全性的 Azure Defender 模組
@@ -52,7 +52,7 @@ Defender for IoT security 模組為您的 IoT Edge 裝置提供了全方位的�
 
 適用于 IoT Edge 的 Defender for IoT 安全性模組目前僅適用于 Linux。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解適用于 IoT Edge 的 Defender for IoT 安全性模組的架構和功能。
 

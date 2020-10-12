@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064112"
 ---
 # <a name="manage-spark-application-dependencies"></a>管理 Spark 應用程式相依性
@@ -23,7 +23,7 @@ ms.locfileid: "90064112"
 * [使用 Jupyter 筆記本設定 Spark 作業 jar 相依性](#use-jupyter-notebook)
 * [使用 Use Azure Toolkit for IntelliJ 設定 Spark 作業 jar 相依性](#use-azure-toolkit-for-intellij)
 * [設定 Spark 叢集的 jar 相依性](#jar-libs-for-cluster)
-* [安全地管理 jar 相依性](#safely-manage-jar-dependencies)
+* [安全地管理 Jar 相依性](#safely-manage-jar-dependencies)
 * [使用 Jupyter 筆記本設定 Spark 作業 Python 套件](#use-jupyter-notebook-1)
 * [安全地管理適用于 Spark 叢集的 Python 套件](#python-packages-for-cluster)
 
@@ -98,7 +98,7 @@ import com.microsoft.azure.cosmosdb.spark._
 
 您可以使用 [腳本動作](../hdinsight-hadoop-customize-cluster-linux.md)將步驟自動化。 [新增 Hive 自訂程式庫](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)的腳本動作是很好的參考。 變更 Spark 服務設定時，請務必使用 Ambari Api，而不是直接修改設定檔。 
 
-## <a name="safely-manage-jar-dependencies"></a>安全地管理 jar 相依性
+## <a name="safely-manage-jar-dependencies"></a>安全地管理 Jar 相依性
 HDInsight 叢集有內建的 jar 相依性，而這些 jar 版本的更新會在一段時間內進行。 若要避免內建 jar 和您所提供的 jar 之間發生版本衝突，請考慮 [將應用程式](./safely-manage-jar-dependency.md)相依性加上陰影。
 
 ## <a name="python-packages-for-one-spark-job"></a>適用于一個 Spark 作業的 Python 套件

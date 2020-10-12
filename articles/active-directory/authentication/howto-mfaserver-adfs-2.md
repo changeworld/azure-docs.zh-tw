@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949655"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>設定 Azure Multi-Factor Authentication Server 以與 AD FS 2.0 搭配運作
@@ -45,10 +45,10 @@ ms.locfileid: "88949655"
 
    ![MFA Server IIS 驗證視窗](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. 若要自動偵測使用者名稱、密碼和網域變數，請在 `https://sso.contoso.com/adfs/ls` [自動設定表單架構網站] 對話方塊中輸入登入 URL (例如) ，然後按一下 **[確定]**。
+4. 若要自動偵測使用者名稱、密碼和網域變數，請在 `https://sso.contoso.com/adfs/ls` [自動設定 Form-Based 網站] 對話方塊中輸入登入 URL (例如) ，然後按一下 **[確定]**。
 5. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]**** 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。
 6. 如果無法自動偵測頁面變數，請按一下 [自動設定表單架構網站] 對話方塊中的 [手動指定...]**** 按鈕。
-7. 在 [新增表單架構網站] 對話方塊中，于 [提交 URL] 欄位中輸入 AD FS 登入頁面的 URL (例如 `https://sso.contoso.com/adfs/ls`) 並輸入應用程式名稱 (選擇性) 。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
+7. 在 [新增 Form-Based 網站] 對話方塊中，于 [提交 URL] 欄位中輸入 AD FS 登入頁面的 URL (例如 `https://sso.contoso.com/adfs/ls`) ，然後輸入 (選擇性) 的應用程式名稱。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
 8. 將要求格式設定為 **POST 或 GET**。
 9. 輸入使用者名稱變數 (ctl00$ContentPlaceHolder1$UsernameTextBox) 和密碼變數 (ctl00$ContentPlaceHolder1$PasswordTextBox)。 如果表單架構登入頁面顯示網域文字方塊，請輸入網域變數。 若要尋找登入頁面內的輸入方塊名稱，請移至網頁瀏覽器中的登入頁面，在頁面上按一下滑鼠右鍵，並選取 [檢視來源]****。
 10. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]**** 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。
@@ -61,9 +61,9 @@ ms.locfileid: "88949655"
     - 使用 Cookie 快取網站的成功驗證
     - 選取如何驗證主要認證
 
-12. 因為 AD FS Proxy 伺服器不可能加入網域，您可以使用 LDAP 連接到您的網域控制站，以便使用者匯入和預先驗證。 在 [以表單為基礎的網站] 對話方塊中，按一下 [ **主要驗證** ] 索引標籤，然後針對 [預先驗證驗證類型] 選取 [ **LDAP** 系結]。
+12. 因為 AD FS Proxy 伺服器不可能加入網域，您可以使用 LDAP 連接到您的網域控制站，以便使用者匯入和預先驗證。 在 [Advanced Form-Based 網站] 對話方塊中，按一下 [ **主要驗證** ] 索引標籤，然後針對 [預先驗證驗證類型] 選取 [ **LDAP** 系結]。
 13. 完成時，按一下 [確定]**** 以返回 [新增表單架構網站] 對話方塊。
-14. 按一下 **[確定]** ，關閉對話方塊。
+14. 按一下 [確定]  關閉對話方塊。
 15. 偵測到或已輸入 URL 和頁面變數後，網站資料就會顯示在表單架構面板中。
 16. 按一下 [ **原生模組** ] 索引標籤，然後選取伺服器、AD FS proxy 執行所在的網站 (例如「預設的網站」 ) ，或 AD FS proxy 應用程式 (例如 "adfs" 下的 "ls"，以在所需的層級啟用 IIS 外掛程式。
 17. 按一下畫面頂端的 [啟用 IIS 驗證] 方塊。

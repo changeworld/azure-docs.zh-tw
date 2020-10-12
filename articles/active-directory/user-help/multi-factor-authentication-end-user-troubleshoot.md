@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
 ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322597"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的公司或學校帳戶常見問題
@@ -109,7 +109,7 @@ ms.locfileid: "89322597"
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>我在旅行時登入行動裝置遇到問題
 
-當您在國外時，您可能會發現使用行動裝置相關驗證方法 (例如文字簡訊) 更加困難。 您的行動裝置可能會導致產生漫遊費用。 在此情況下，建議您使用 Microsoft Authenticator 應用程式，並選擇連線至 Wi-fi 作用點的選項。 如需如何在行動裝置上設定 Microsoft Authenticator 應用程式的詳細資訊，請參閱 [下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章。
+當您在國外時，您可能會發現使用行動裝置相關驗證方法 (例如文字簡訊) 更加困難。 您的行動裝置可能會導致產生漫遊費用。 在此情況下，建議您使用 Microsoft Authenticator 應用程式，並使用連線到 Wi-Fi 作用點的選項。 如需如何在行動裝置上設定 Microsoft Authenticator 應用程式的詳細資訊，請參閱 [下載並安裝 Microsoft Authenticator 應用程式](user-help-auth-app-download-install.md) 文章。
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>我無法讓應用程式密碼正常執行
 

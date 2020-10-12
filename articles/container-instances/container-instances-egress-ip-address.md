@@ -4,10 +4,10 @@ description: 針對使用防火牆的公用 IP 位址進行輸入和輸出的 Az
 ms.topic: article
 ms.date: 07/16/2020
 ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566563"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>針對容器群組的輸出和輸入流量設定單一公用 IP 位址
@@ -278,7 +278,7 @@ az container logs \
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 52.142.18.133</body></html>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您會在 Azure 防火牆後方的虛擬網路中設定容器群組。 您已在防火牆上設定使用者定義的路由和 NAT 和應用程式規則。 藉由使用此設定，您可以設定單一的靜態 IP 位址，以便從 Azure 容器實例進行輸入和輸出。
 

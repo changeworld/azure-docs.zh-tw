@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 入口網站從 Azure 備份所建立的�
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89376769"
 ---
 # <a name="restore-azure-file-shares"></a>還原 Azure 檔案共用
@@ -162,6 +162,6 @@ ms.locfileid: "89376769"
 
     ![查看還原的詳細資料](./media/restore-afs/restore-details.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [管理 Azure 檔案共用備份](manage-afs-backup.md)。

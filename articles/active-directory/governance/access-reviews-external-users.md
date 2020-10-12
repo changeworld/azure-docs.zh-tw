@@ -14,10 +14,10 @@ ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: barclayn
 ms.openlocfilehash: 64ff2a2a7ad6f07aac959422eadec7f24b210d88
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505816"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>使用 Azure Active Directory (Azure AD) 身分識別治理來檢查和移除不再具有資源存取權的外部使用者
@@ -74,7 +74,7 @@ ms.locfileid: "89505816"
 建立新的存取權審查時，在「完成設定」一節中， **若要在拒絕的使用者上套用動作** ，您可以定義 **封鎖使用者登入30天，然後從租使用者中移除使用者**。
 此設定目前為預覽狀態，可讓您識別、封鎖和刪除 Azure AD 租使用者中的外部身分識別。 無論資源存取或群組成員資格為何，都將封鎖並刪除審核者已審核並拒絕繼續存取的外部身分識別。 這項設定最適合在您驗證外部使用者已不再擁有資源存取權，且可以安全地從您的租使用者中移除，或如果您想要確保其被移除（不論其持續存取權為何）的最後一個步驟。 [停用和刪除] 功能會先封鎖外部使用者，讓他們能夠登入您的租使用者並存取資源。 在這個階段中不會撤銷資源存取權，如果您想要 reinstantiate 外部使用者，可以重新設定其登入的能力。 如果沒有進一步的動作，系統會在30天后將封鎖的外部身分識別從目錄中刪除，並移除帳戶以及其存取權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [存取審查 - 圖形 API](/graph/api/resources/accessreviews-root?view=graph-rest-beta)
 - [權利管理 - 圖形 API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)

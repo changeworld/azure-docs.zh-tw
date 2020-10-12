@@ -4,10 +4,10 @@ description: 本文列出可協助您在 Azure Stack Edge 上部署即時影片�
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933968"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署即時影片分析
@@ -58,11 +58,11 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
     |名稱|輸入 IoT 中樞資源的名稱。|
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge 開始使用":::
-1. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]  圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算]  圖格上的 [檢視計算]  。
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
+1. 選取 [建立]  。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]  圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算]  圖格上的 [檢視計算]  。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="建立 IoT 中樞資源":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
 
     > [!NOTE]
     > 如果在 IoT 中樞與 Azure Stack Edge 資源相關聯之前關閉 [設定計算] 對話方塊，則會建立 IoT 中樞，但不會顯示在計算設定中。 在幾分鐘後重載頁面，並看到它出現。
@@ -72,7 +72,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
     填妥所有資訊之後，您會看到「設定 Edge 計算卡」，如下所示：
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="設定 Edge 計算卡片 ":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
  
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>在 Azure Stack Edge 本機 UI 上啟用計算必要條件
 
@@ -89,7 +89,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
         * 選取套用-此操作大約需要2分鐘。
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Azure Stack Edge 本機 UI 上的計算必要條件":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge":::
 
         * 如果未針對 Kubernetes API 和 Azure Stack Edge 資源設定 DNS，您可以更新視窗的主機檔案。
         
@@ -185,7 +185,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
     1. 按一下 [ **建立**]。
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="本機共用":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
     
 1. 建立檔案同步儲存的遠端共用。
 
@@ -203,36 +203,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
     1. 按一下 [ **建立**]。    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="遠端共用":::
-    
-    > [!TIP]
-    > 使用與您的 Azure Stack Edge 連線的 Windows 用戶端，請遵循 [本檔中所述](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)的步驟連接到 SMB 共用。
-    
-1. 更新即時影片分析 Edge 模組的容器建立選項 (請參閱 [新增模組檔](deploy-iot-edge-device.md#add-modules)) 中的點4，以使用磁片區裝載。
-
-   ```json
-    // Original (Bind Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Binds": [
-                "/var/lib/azuremediaservices:/var/lib/azuremediaservices",
-                "/var/media:/var/media"
-            ]
-        }
-    }
-    // Updated (Volume Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Mounts": [
-            {
-                "Target": "/var/lib/azuremediaservices",
-                "Source": "lva",
-                "Type": "volume"
-            },
-            {
-                "Target": "/var/media",
-                "Source": "media",
-                "Type": "volume"
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
             }]
         }
     }
@@ -248,7 +219,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 1. 選取 [模組] 磚。 這會帶您前往 [模組] 刀鋒視窗。 在模組清單中，找出您所部署的模組。 您新增的模組應處於「執行中」的執行階段狀態。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="自訂模組":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>設定 Azure IoT Tools 延伸模組
 
@@ -347,6 +318,6 @@ Kubernetes 具有 [Pod 親和性](https://kubernetes.io/docs/concepts/scheduling
             topologyKey: "kubernetes.io/hostname"
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您可以使用模組，藉由叫用直接方法來分析即時影片串流。 在模組上叫用[直接方法](get-started-detect-motion-emit-events-quickstart.md#use-direct-method-calls)。

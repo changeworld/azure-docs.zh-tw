@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962157"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>在 Azure App Service 中設定預備環境
@@ -238,7 +238,7 @@ ms.locfileid: "88962157"
 
 1. 移至您應用程式的資源頁面，然後選取 [ **部署**位置]。
 
-2. 針對您要路由到的位置，在其 [流量百分比]**** 資料行中指定百分比 (介於 0 到 100 之間)，以代表您要路由的總流量。 選取 [儲存]  。
+2. 針對您要路由到的位置，在其 [流量百分比]**** 資料行中指定百分比 (介於 0 到 100 之間)，以代表您要路由的總流量。 選取 [儲存]****。
 
     ![設定流量百分比](./media/web-sites-staged-publishing/RouteTraffic.png)
 
