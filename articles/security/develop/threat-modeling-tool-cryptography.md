@@ -1,6 +1,6 @@
 ---
 title: 密碼編譯 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 瞭解 Threat Modeling Tool 中公開之威脅的密碼編譯緩和措施。 請參閱風險降低資訊和查看程式碼範例。
+description: 瞭解 Threat Modeling Tool 中公開的威脅的密碼編譯緩和措施。 查看緩和資訊並查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87539946"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全性架構︰密碼編譯 | 風險降低 
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **Web 應用程式** | <ul><li>[僅使用已核准的對稱區塊密碼和金鑰長度](#cipher-length)</li><li>[針對對稱編碼器使用核准的區塊編碼器模式和初始化向量](#vector-ciphers)</li><li>[使用核准的非對稱演算法、金鑰長度和填補](#padding)</li><li>[使用核准的亂數產生器](#numgen)</li><li>[請勿使用對稱串流編碼器](#stream-ciphers)</li><li>[使用已核准的 MAC/HMAC/金鑰雜湊演算法](#mac-hash)</li><li>[僅使用已核准的密碼編譯雜湊函式](#hash-functions)</li></ul> |
-| **Database** | <ul><li>[使用強式加密演算法來加密資料庫中的資料](#strong-db)</li><li>[SSIS 套件應經過加密和數位簽章](#ssis-signed)</li><li>[將數位簽章新增至重要資料庫安全性實體](#securables-db)</li><li>[使用 SQL server EKM 來保護加密金鑰](#ekm-keys)</li><li>[如果不應對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
+| **Web 應用程式** | <ul><li>[只使用核准的對稱封鎖密碼和金鑰長度](#cipher-length)</li><li>[針對對稱編碼器使用核准的區塊編碼器模式和初始化向量](#vector-ciphers)</li><li>[使用核准的非對稱演算法、金鑰長度和填補](#padding)</li><li>[使用核准的亂數產生器](#numgen)</li><li>[請勿使用對稱串流密碼](#stream-ciphers)</li><li>[使用已核准的 MAC/HMAC/金鑰雜湊演算法](#mac-hash)</li><li>[只使用核准的密碼編譯雜湊函數](#hash-functions)</li></ul> |
+| **Database** | <ul><li>[使用強式加密演算法來加密資料庫中的資料](#strong-db)</li><li>[SSIS 套件應經過加密和數位簽署](#ssis-signed)</li><li>[將數位簽章新增至重要資料庫安全性實體](#securables-db)</li><li>[使用 SQL server EKM 來保護加密金鑰](#ekm-keys)</li><li>[如果不應該對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
 | **IoT 裝置** | <ul><li>[在 IoT 裝置上安全地儲存密碼編譯金鑰](#keys-iot)</li></ul> | 
-| **IoT 雲端閘道** | <ul><li>[產生足夠長度的隨機對稱金鑰，以便驗證 IoT 中樞](#random-hub)</li></ul> | 
+| **IoT 雲端閘道** | <ul><li>[產生足夠長度的隨機對稱金鑰以向 IoT 中樞進行驗證](#random-hub)</li></ul> | 
 | **Dynamics CRM 行動用戶端** | <ul><li>[確定已備妥需要使用 PIN 並允許遠端抹除的裝置管理原則](#pin-remote)</li></ul> | 
-| **Dynamics CRM Outlook 用戶端** | <ul><li>[確定已備妥需要 PIN/密碼/自動鎖定並加密所有資料的裝置管理原則（例如 BitLocker）](#bitlocker)</li></ul> | 
-| **身分識別伺服器** | <ul><li>[確定在使用 Identity Server 時，會變換簽署金鑰](#rolled-server)</li><li>[確定身分識別伺服器中使用的密碼編譯增強式用戶端識別碼、用戶端密碼](#client-server)</li></ul> | 
+| **Dynamics CRM Outlook 用戶端** | <ul><li>[確定已備妥需要 PIN/密碼/自動鎖定的裝置管理原則，並將所有資料加密 (例如 BitLocker) ](#bitlocker)</li></ul> | 
+| **身分識別伺服器** | <ul><li>[確定在使用 Identity Server 時，會匯總簽署金鑰](#rolled-server)</li><li>[確定 Identity Server 中使用的是密碼編譯強式用戶端識別碼、用戶端密碼](#client-server)</li></ul> | 
 
 ## <a name="use-only-approved-symmetric-block-ciphers-and-key-lengths"></a><a id="cipher-length"></a>只使用核准的對稱區塊編碼器和金鑰長度
 
@@ -109,7 +109,7 @@ ms.locfileid: "87539946"
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
-| **步驟** | <p>產品必須使用 SHA-2 系列的雜湊演算法 (SHA256、SHA384 及 SHA512)。 如果需要較短的雜湊，例如 128 位元的輸出長度，以配合設計時預設使用較短 MD5 雜湊的資料結構，產品小組可截斷其中一個 SHA2 雜湊 (通常是 SHA256)。 請注意，SHA384 是 SHA512 的截斷版本。 不允許基於安全性考量而將密碼編譯雜湊截斷為少於 128 位元。 新的程式碼不得使用 MD2、MD4、MD5、SHA-0、SHA-1 或 RIPEMD 雜湊演算法。 這些演算法在計算時可能會發生雜湊衝突，而結果便是打斷演算法。</p><p>為了實現受控密碼編譯靈活性所允許的 .NET 雜湊演算法 (依偏好順序)：</p><ul><li>SHA512Cng (符合 FIPS 規範)</li><li>SHA384Cng (符合 FIPS 規範)</li><li>SHA256Cng (符合 FIPS 規範)</li><li>SHA512Managed （不符合 FIPS 標準）（在對 HashAlgorithm 的呼叫中使用 SHA512 作為演算法名稱）</li><li>SHA384Managed （不符合 FIPS 標準）（在對 HashAlgorithm 的呼叫中使用 SHA384 作為演算法名稱）</li><li>SHA256Managed （不符合 FIPS 標準）（在 HashAlgorithm 的呼叫中使用 SHA256 作為演算法名稱）</li><li>SHA512CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA256CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA384CryptoServiceProvider (符合 FIPS 規範)</li></ul>| 
+| **步驟** | <p>產品必須使用 SHA-2 系列的雜湊演算法 (SHA256、SHA384 及 SHA512)。 如果需要較短的雜湊，例如 128 位元的輸出長度，以配合設計時預設使用較短 MD5 雜湊的資料結構，產品小組可截斷其中一個 SHA2 雜湊 (通常是 SHA256)。 請注意，SHA384 是 SHA512 的截斷版本。 不允許基於安全性考量而將密碼編譯雜湊截斷為少於 128 位元。 新的程式碼不得使用 MD2、MD4、MD5、SHA-0、SHA-1 或 RIPEMD 雜湊演算法。 這些演算法在計算時可能會發生雜湊衝突，而結果便是打斷演算法。</p><p>為了實現受控密碼編譯靈活性所允許的 .NET 雜湊演算法 (依偏好順序)：</p><ul><li>SHA512Cng (符合 FIPS 規範)</li><li>SHA384Cng (符合 FIPS 規範)</li><li>SHA256Cng (符合 FIPS 規範)</li><li>SHA512Managed (不符合 FIPS 規範的)  (在呼叫 HashAlgorithm. Create 或 Cryptoconfig.createfromname. CreateFromName 時，使用 SHA512 作為演算法名稱) </li><li>SHA384Managed (不符合 FIPS 規範的)  (在呼叫 HashAlgorithm. Create 或 Cryptoconfig.createfromname. CreateFromName 時，使用 SHA384 作為演算法名稱) </li><li>SHA256Managed (不符合 FIPS 規範的)  (在 HashAlgorithm. Create 或 Cryptoconfig.createfromname. CreateFromName 的呼叫中使用 SHA256 作為演算法名稱) </li><li>SHA512CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA256CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA384CryptoServiceProvider (符合 FIPS 規範)</li></ul>| 
 
 ## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>使用增強式加密演算法來加密資料庫中的資料
 
@@ -211,7 +211,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **參考**              | N/A  |
 | **步驟** | 確定已備妥需要使用 PIN 並允許遠端抹除的裝置管理原則 |
 
-## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-pinpasswordauto-lock-and-encrypts-all-data-eg-bitlocker"></a><a id="bitlocker"></a>確定已備妥需要 PIN/密碼/自動鎖定並加密所有資料的裝置管理原則（例如 BitLocker）
+## <a name="ensure-a-device-management-policy-is-in-place-that-requires-a-pinpasswordauto-lock-and-encrypts-all-data-eg-bitlocker"></a><a id="bitlocker"></a>確定已備妥需要 PIN/密碼/自動鎖定的裝置管理原則，並將所有資料加密 (例如 BitLocker) 
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |
@@ -233,7 +233,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **參考**              | [身分識別伺服器-金鑰、簽章和密碼編譯](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
 | **步驟** | 確定在使用 Identity Server 時會變換簽署金鑰。 [參考] 區段中的連結會說明該如何進行規劃，而不會造成仰賴 Identity Server 的應用程式發生中斷。 |
 
-## <a name="ensure-that-cryptographically-strong-client-id-client-secret-are-used-in-identity-server"></a><a id="client-server"></a>確定身分識別伺服器中使用的密碼編譯增強式用戶端識別碼、用戶端密碼
+## <a name="ensure-that-cryptographically-strong-client-id-client-secret-are-used-in-identity-server"></a><a id="client-server"></a>確定 Identity Server 中使用的是密碼編譯強式用戶端識別碼、用戶端密碼
 
 | Title                   | 詳細資料      |
 | ----------------------- | ------------ |

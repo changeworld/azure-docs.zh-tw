@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
 ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566580"
 ---
 # <a name="request-limits-for-translator"></a>Translator 的要求限制
@@ -44,7 +44,7 @@ ms.locfileid: "89566580"
 
 如果您達到或超過這些限制，或在短時間內傳送太大部分的配額，您可能會收到超出配額的回應。 並行要求沒有任何限制。
 
-| 層 | 字元限制 |
+| 服務層級 | 字元限制 |
 |------|-----------------|
 | F0 | 每小時 2 百萬個字元 |
 | S1 | 每小時 4 千萬個字元 |
@@ -64,7 +64,7 @@ ms.locfileid: "89566580"
 
 使用 [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) 函式時，句子長度受限於 275 個字元。 下列語言有一些例外狀況：
 
-| 語言 | 程式碼 | 字元限制 |
+| Language | 程式碼 | 字元限制 |
 |----------|------|-----------------|
 | 中文 | zh | 166 |
 | 德文 | de | 800 |
@@ -77,7 +77,7 @@ ms.locfileid: "89566580"
 > [!NOTE]
 > 這項限制不適用於翻譯。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [定價](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [區域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

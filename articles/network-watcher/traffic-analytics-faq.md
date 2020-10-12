@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87479841"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
@@ -36,7 +36,7 @@ ms.locfileid: "87479841"
 
 您的帳戶必須符合下列其中一項才能啟用流量分析：
 
-- 您的帳戶必須具有下列訂用帳戶範圍中的任何一個 Azure 角色：擁有者、參與者、讀者或網路參與者。
+- 您的帳戶在訂用帳戶範圍中必須有下列其中一個 Azure 角色：擁有者、參與者、讀者或網路參與者。
 - 如果您的帳戶未指派給其中一個之前列出的角色，則必須指派給一個自訂角色，且該角色已獲得下列訂用帳戶層級的動作。
             
     - Microsoft.Network/applicationGateways/read
@@ -52,11 +52,11 @@ ms.locfileid: "87479841"
         
 檢查指派給訂用帳戶使用者的角色：
 
-1. 使用**Disconnect-azaccount 登**入 Azure。 
+1. 使用 **登入 Disconnect-azaccount 登**入 Azure。 
 
-2. 使用 [ **get-azsubscription**] 選取所需的訂用帳戶。 
+2. 使用 **select->select-azsubscription**來選取所需的訂用帳戶。 
 
-3. 若要列出指派給指定使用者的所有角色，請使用**new-azroleassignment-SignInName [使用者電子郵件]-IncludeClassicAdministrators**。 
+3. 若要列出指派給指定使用者的所有角色，請使用  **>new-azroleassignment-SignInName [使用者電子郵件]-IncludeClassicAdministrators**。 
 
 如果看不到任何輸出，請聯絡個別訂用帳戶管理員，取得執行命令的權限。 如需詳細資料，請參閱[使用 Azure PowerShell 管理角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
@@ -126,7 +126,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-use-an-existing-workspace"></a>我可以使用現有的工作區嗎？
 
-是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱[Azure 監視器記錄升級至新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
+是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱 [Azure 監視器記錄升級至新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可以讓我的 Azure 儲存體帳戶位於某個訂用帳戶，而讓我的 Log Analytics 工作區位於不同的訂用帳戶中？
 
@@ -134,7 +134,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>可以在不同的訂用帳戶中儲存原始記錄嗎？
 
-是。 您可以將 NSG 流量記錄設定為要傳送至位於不同訂用帳戶中的儲存體帳戶，前提是您擁有適當的許可權，而且儲存體帳戶位於與 NSG 相同的區域中。 NSG 和目的地儲存體帳戶也必須共用相同的 Azure Active Directory 租使用者。
+是。 您可以設定 NSG 流量記錄，以傳送至位於不同訂用帳戶中的儲存體帳戶，前提是您具有適當的許可權，而且儲存體帳戶位於與 NSG 相同的區域中。 NSG 和目的地儲存體帳戶也必須共用相同的 Azure Active Directory 租使用者。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>因為發生「找不到」錯誤而無法設定 NSG 進行流量分析，該怎麼辦？
 
@@ -176,7 +176,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>我可以使用 PowerShell 或 Azure Resource Manager 範本或用戶端來設定流量分析嗎？
 
-您可以使用 Windows PowerShell 6.2.1 以上版本設定流量分析。 若要使用 Set Cmdlet 來設定特定 NSG 的流量記錄和流量分析，請參閱[AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要取得特定 NSG 的流量記錄和流量分析狀態，請參閱[AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+您可以使用 Windows PowerShell 6.2.1 以上版本設定流量分析。 若要使用 Set Cmdlet 為特定 NSG 設定流程記錄和流量分析，請參閱 [AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要取得特定 NSG 的流量記錄和流量分析狀態，請參閱 [AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前您無法使用 Azure Resource Manager 範本來設定流量分析。
 
@@ -250,19 +250,19 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析處理資料的頻率為何？
 
-請參閱流量分析架構和資料匯總檔中的[資料匯總一節](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
+請參閱流量分析架構與資料匯總檔中的[資料匯總區段](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
 
-## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何判斷 IP 是惡意的？ 
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何決定 IP 為惡意？ 
 
-流量分析會依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統會運用各種遙測來源，例如 Microsoft 產品和服務、Microsoft 數位犯罪單位（DCU）、Microsoft Security Response Center （MSRC）和外部摘要，並在其上建立許多智慧。 這其中一些資料是 Microsoft Internal。 如果已知的 IP 標示為惡意，請提出支援票證以瞭解詳細資料。
+流量分析依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統利用各式各樣的遙測來源，像是 Microsoft 產品和服務、Microsoft 數位犯罪單位 (DCU) 、Microsoft Security Response Center (MSRC) 和外部摘要，並且在其上建立許多智慧。 這部分資料是 Microsoft 內部的。 如果已知 IP 被標示為惡意，請提出支援票證以瞭解詳細資料。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何設定流量分析資料的警示？
 
-流量分析不具有警示的內建支援。 不過，因為流量分析資料儲存在 Log Analytics 中，所以您可以撰寫自訂查詢並對其設定警示。 步驟
-- 您可以在流量分析中將簡短連結用於 Log Analytics。 
-- 使用[這裡記載的架構](traffic-analytics-schema.md)來撰寫您的查詢 
+流量分析沒有內建的警示支援。 不過，由於流量分析資料儲存在 Log Analytics 中，您可以撰寫自訂查詢並在其上設定警示。 步驟：
+- 您可以在流量分析中使用 Log Analytics 的 shortlink。 
+- 使用 [此處記載的架構](traffic-analytics-schema.md) 來撰寫您的查詢 
 - 按一下 [新增警示規則] 以建立警示
-- 請參閱[記錄警示檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以建立警示
+- 請參閱 [記錄警示檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) 以建立警示
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何? 檢查哪些 Vm 會接收大部分的內部部署流量？
 
@@ -292,7 +292,7 @@ AzureNetworkAnalytics_CL
 
 針對時間，請使用格式： yyyy-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何? 檢查我的 Vm 從內部部署機器收到的流量標準差嗎？
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何? 檢查我的 Vm 從內部部署電腦接收到的流量是否有標準差？
 
 ```
 AzureNetworkAnalytics_CL
@@ -316,7 +316,7 @@ AzureNetworkAnalytics_CL
 | summarize deviation = stdev(traffic)  by IP
 ```
 
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查 IP 組與 NSG 規則之間可連線（或封鎖）哪些埠？
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查哪些埠可在 IP 配對之間 (或封鎖) NSG 規則？
 
 ```
 AzureNetworkAnalytics_CL
@@ -333,8 +333,8 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 
 地理地圖頁面包含兩大區段：
     
-- **橫幅**：地理地圖頂端的橫幅會提供按鈕來選取流量發佈篩選器（例如，部署、來自國家/地區的流量，以及惡意的流量）。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
-- **Map**：在橫幅底下，[地圖] 區段會顯示 Azure 資料中心與國家/地區之間的流量分配。
+- **橫幅**：地理地圖頂端的橫幅提供按鈕，可選取流量發佈篩選器 (例如，部署、來自國家/地區的流量，以及惡意的) 。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
+- **地圖**：橫幅下方的地圖區段會顯示 Azure 資料中心與國家/地區之間的流量分配。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>橫幅上的鍵盤瀏覽
     

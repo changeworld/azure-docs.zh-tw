@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855384"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 入口網站大規模部署 IoT Edge 模組
@@ -183,7 +183,7 @@ IoT Edge 提供兩種不同類型的自動部署，您可以用來自訂您的�
 
 1. 在 IoT 中樞中，從左窗格功能表中選取 [ **IoT Edge** ]。
 1. 選取 [ **IoT Edge 部署** ] 索引標籤，然後選取您要設定的部署。
-1. 選取 [ **目標條件** ] 索引標籤。將 **目標條件** 變更為目標裝置。 您也可以調整 **優先順序**。  選取 [儲存]。
+1. 選取 [ **目標條件** ] 索引標籤。將 **目標條件** 變更為目標裝置。 您也可以調整 **優先順序**。  選取 [儲存]****。
 
     如果您更新目標條件，就會發生下列更新：
 
@@ -191,7 +191,7 @@ IoT Edge 提供兩種不同類型的自動部署，您可以用來自訂您的�
     * 如果目前執行此部署的裝置不再符合目標條件，它會解除安裝此部署，並採用下一個最高優先順序的部署。
     * 如果目前執行此部署的裝置不再符合目標條件，且不符合任何其他部署的目標條件，則不會在裝置上發生任何變更。 裝置會以模組目前的狀態繼續執行它目前的模組，但不再將其當成此部署的一部分來管理。 一旦它符合任何其他部署的目標條件之後，就會解除安裝此部署，並採用新的部署。
 
-1. 選取 [ **計量** ] 索引標籤，然後按一下 [ **編輯計量** ] 按鈕。 使用範例語法作為指南，以新增或修改自訂計量。 選取 [儲存]。
+1. 選取 [ **計量** ] 索引標籤，然後按一下 [ **編輯計量** ] 按鈕。 使用範例語法作為指南，以新增或修改自訂計量。 選取 [儲存]****。
 
     ![編輯部署中的自訂計量](./media/how-to-deploy-monitor/metric-list.png)
 

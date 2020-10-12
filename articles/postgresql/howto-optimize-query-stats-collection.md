@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bc731f6f6a5a60bce0851bf8fe5874f7149f3899
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901465"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的查詢統計資料收集
@@ -34,7 +34,7 @@ ms.locfileid: "90901465"
 ## <a name="use-the-query-store"></a>使用查詢存放區 
 在適用於 PostgreSQL 的 Azure 資料庫中，[查詢存放區](concepts-query-store.md)功能提供更有效率的方法來追蹤查詢統計資料。 我們建議使用這項功能替代 pg_stats_statements**。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 考慮在 [Azure 入口網站](howto-configure-server-parameters-using-portal.md)中或使用 [Azure CLI](howto-configure-server-parameters-using-cli.md) 來設定 `pg_stat_statements.track = NONE`。
 
 如需詳細資訊，請參閱 

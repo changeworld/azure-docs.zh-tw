@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707756"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>監視媒體服務診斷記錄
@@ -52,7 +52,7 @@ ms.locfileid: "91707756"
 
    ![診斷設定區段](media/media-services-diagnostic-logs/logs02.png)
 1. 將 [保留期 (天數)]**** 滑桿設為 30。 此滑桿可設定監視資料在儲存體帳戶中的保留天數。 Azure 監視器會自動刪除比指定天數更舊的資料。 保留天數為 0 會無限期地儲存資料。
-1. 按一下 [檔案] 。
+1. 按一下 **[儲存]** 。
 
 來自資源的監視資料現在開始流入儲存體帳戶。
 

@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
 ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777368"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker 解答文字中支援的 Markdown 格式
@@ -28,7 +28,7 @@ QnA Maker 會將回應文字儲存為 markdown。 Markdown 有許多種。 為�
 
 以下是您可以在 QnA Maker 的解答文字中使用的 markdown 格式清單。
 
-|目的|格式|範例 Markdown|轉譯<br>在聊天機器人中顯示|
+|目的|[格式]|範例 Markdown|轉譯<br>在聊天機器人中顯示|
 |--|--|--|--|
 2個句子之間的新行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![將兩個句子的新行格式化](./media/qnamaker-concepts-datasources/format-newline.png)|
 |從 h1 到 h6 的標頭，的數目 `#` 表示所要的標頭。 1 `#` 是 h1。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![具有 markdown 標頭的格式](./media/qnamaker-concepts-datasources/format-headers.png)<br>![使用 markdown 標頭 H1 至 H5 的格式](./media/qnamaker-concepts-datasources/format-h1-h5.png)|

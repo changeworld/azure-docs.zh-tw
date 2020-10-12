@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
 ms.openlocfilehash: a2c322c765d39a3afe4974ed88bf4dc18fd467a3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89569640"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 需求
@@ -65,7 +65,7 @@ Azure 公用對等路徑可讓您連接到裝載於 Azure 中的所有服務的�
 > 
 > 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 請參閱[路由](expressroute-routing.md)和 [QoS](expressroute-qos.md) 的需求。
 * 如需工作流程資訊，請參閱 [ExpressRoute 線路佈建工作流程和線路狀態](expressroute-workflows.md)。
 * 設定 ExpressRoute 連線。

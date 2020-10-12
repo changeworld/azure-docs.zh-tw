@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
 ms.openlocfilehash: fdb3bd034d93e623037be9fa0721a805924af5c3
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88864848"
 ---
 確認您已成功設定角色指派的其中一種方式，是在 [Azure 入口網站](https://portal.azure.com)中查看 Azure 數位 Twins 實例的角色指派。 在 Azure 入口網站中，移至您的 Azure 數位 Twins 實例 (您可以在 [Azure 數位 Twins 實例](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) 的頁面上查閱，或在入口網站的搜尋列中搜尋其名稱) 。

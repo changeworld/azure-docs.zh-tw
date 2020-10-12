@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994621"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
@@ -47,7 +47,7 @@ Azure Sentinel 中的 UEBA 功能可消除分析師工作負載的 drudgery，�
 
 - **分析：** 使用各種機器學習服務 (ML) 演算法，Azure Sentinel 識別異常的活動，並以內容擴充的形式清楚且簡潔地呈現辨識項，如下所示的一些範例。
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="行為分析以外的方法":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="實體行為分析架構":::
 
 Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內容中的異常活動，以及與使用者的基準設定檔相比較。 使用者 (或主機或位址) 所執行的動作會評估內容，其中「true」結果表示已識別異常：
 - 跨地理位置、裝置和環境。
@@ -55,7 +55,7 @@ Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內�
 - 相較于對等的行為。
 - 相較于組織的行為。
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="實體內容":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="實體行為分析架構":::
 
 
 ### <a name="scoring"></a>計分
@@ -79,7 +79,7 @@ Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內�
 
 ### <a name="the-timeline"></a>時間軸
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="實體頁面時間軸":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="實體行為分析架構":::
 
 時間軸是實體頁面在 Azure Sentinel 中的行為分析貢獻的主要部分。 它提供有關實體相關事件的故事，協助您瞭解實體在特定時間範圍內的活動。
 
@@ -107,7 +107,7 @@ Entity insights 是 Microsoft 安全性研究人員所定義的查詢，可協�
 
 實體頁面是設計為多個使用案例的一部分，而且可以從 [事件管理]、[調查圖表]、[書簽]，或是直接從 [Azure Sentinel 主功能表的 [ **實體行為分析** ] 下的實體搜尋頁面存取。
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="實體頁面使用案例":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="實體行為分析架構":::
 
 
 ## <a name="data-schema"></a>資料結構描述
@@ -156,7 +156,7 @@ BehaviorAnalytics
 
 Azure Sentinel 會根據使用者的 Azure AD 安全性群組成員資格、郵寄清單等來計算和排名使用者的對等，並將對等排名1-20 儲存在 **UserPeerAnalytics** 資料表中。 下列螢幕擷取畫面顯示 UserPeerAnalytics 資料表的架構，並顯示使用者肯德爾 Collins 的前八個排名對等。 Azure Sentinel 使用「 *頻率-反向檔頻率* 」 (TF-IDF) 演算法來正規化計算排名的加權：較小的群組，權數愈高。 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="使用者對等中繼資料資料表的螢幕擷取畫面":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="實體行為分析架構":::
 
 您可以使用 Azure Sentinel GitHub 存放庫中提供的 [Jupyter 筆記本](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) ，將使用者對等中繼資料視覺化。 如需有關如何使用筆記本的詳細指示，請參閱 [引導式分析-使用者安全性中繼資料](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) 筆記本。
 
@@ -166,7 +166,7 @@ Azure Sentinel 會根據使用者的 Azure AD 安全性群組成員資格、郵�
 
 Azure Sentinel 藉由評估使用者可以直接存取的 Azure 訂用帳戶，或透過群組或服務主體，來判斷指定使用者對 Azure 資源所持有的直接和可轉移存取權。 這項資訊以及使用者 Azure AD 安全性群組成員資格的完整清單會儲存在 **UserAccessAnalytics** 資料表中。 下列螢幕擷取畫面顯示 [使用者 Alex] Johnson 的 UserAccessAnalytics 資料表中的範例資料列。 **來源實體** 是使用者或服務主體帳戶，而 **目標實體** 是來源實體可存取的資源。 **存取層級**和**存取類型**的值取決於目標實體的存取控制模型。 您可以看到 Alex 具有 Azure 訂用帳戶 *Contoso 旅館租*使用者的參與者存取權。 訂用帳戶的存取控制模型是 RBAC。   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="使用者存取分析資料表的螢幕擷取畫面":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="實體行為分析架構":::
 
 您可以使用 [Jupyter 筆記本](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (上述) 從 Azure Sentinel GitHub 存放庫中所述的相同筆記本，將許可權分析資料視覺化。 如需有關如何使用筆記本的詳細指示，請參閱 [引導式分析-使用者安全性中繼資料](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) 筆記本。
 
@@ -176,7 +176,7 @@ Azure Sentinel 根據 BehaviorAnalytics 資料表，提供現成可用的一組�
 
 深入瞭解 Azure Sentinel 中 [的搜尋和調查圖表](./hunting.md) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解 Azure Sentinel 的實體行為分析功能。 如需有關實施的實用指導方針，以及使用您所獲得的見解，請參閱下列文章：
 
 - 在 Azure Sentinel 中[啟用實體行為分析](./enable-entity-behavior-analytics.md)。

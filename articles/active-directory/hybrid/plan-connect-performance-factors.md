@@ -14,17 +14,17 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087004"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影響 Azure AD Connect 效能的因素
 
 Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服器是在將使用者身分識別移往雲端時的重要元件。 影響 Azure AD Connect 效能的主要因素如下：
 
-| **設計因素**| **定義** |
+| **設計因素**| **[定義]** |
 |:-|-|
 | 拓撲| Azure AD Connect 必須在網路上管理的端點和元件發佈。 |
 | 調整| 要由 Azure AD Connect 管理的使用者、群組和 OU 等物件的數目。 |

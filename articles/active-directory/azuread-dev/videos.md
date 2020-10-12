@@ -1,6 +1,6 @@
 ---
-title: MSAL 遷移影片的 Azure ADAL |Azure
-description: 可協助您從 Azure Active Directory 開發人員平臺遷移至 Microsoft 身分識別平臺的影片
+title: Azure ADAL 以 MSAL 遷移影片 |蔚藍
+description: 協助您從 Azure Active Directory 開發人員平臺遷移至 Microsoft 身分識別平臺的影片
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,15 +14,15 @@ ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
 ms.openlocfilehash: 7865fbe758b35ae9ff1ffe526da5e7100e83c966
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117544"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 開發人員平臺影片
 
-深入瞭解新的 Microsoft 身分識別平臺，以及如何從 Azure Active Directory (Azure AD) 開發人員平臺進行遷移。 影片的長度通常為1-2 分鐘。
+瞭解新的 Microsoft 身分識別平臺，以及如何從 Azure Active Directory (Azure AD) 開發人員平臺遷移至該平臺。 影片的長度通常是1-2 分鐘。
 
 ## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移至 v2.0
 
@@ -73,4 +73,4 @@ ms.locfileid: "88117544"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解新的[Microsoft 身分識別平臺](../develop/index.yml)
+瞭解新的 [Microsoft 身分識別平臺](../develop/index.yml)

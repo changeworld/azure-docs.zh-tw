@@ -12,10 +12,10 @@ manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136026"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
@@ -28,11 +28,11 @@ ms.locfileid: "88136026"
 
 若要使用 Azure Data Factory UI 建立共用的自我裝載 IR，您可採取下列步驟：
 
-1. 在要共用的自我裝載 IR 中，選取 [**授與許可權給另一個 Data factory** ]，然後在 [整合執行時間設定] 頁面中，選取您要在其中建立連結 IR 的 Data factory。
+1. 在要共用的自我裝載 IR 中，選取 [將 **許可權授與另一個 Data factory** ]，然後在 [整合執行時間設定] 頁面中，選取您要在其中建立連結 IR 的 data factory。
       
     ![在 [共用] 索引標籤上的權限授與按鈕](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. 請注意，並複製自我裝載 IR 的上述「資源識別碼」以供共用。
+2. 請注意並複製您要共用的自我裝載 IR 的上方「資源識別碼」。
          
 3. 在已授與權限的資料處理站中，建立新的自我裝載 IR (已連結) 並輸入資源識別碼。
       
@@ -155,7 +155,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>建立另一個資料處理站
 
 > [!NOTE]  
-> 此為選用步驟。 如果您已有要共用的資料處理站，請略過此步驟。 但是，若要新增或移除其他資料處理站的角色指派，您必須具有 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 許可權，例如 [[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)] 或 [[擁有](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)者]。
+> 此為選用步驟。 如果您已有要共用的資料處理站，請略過此步驟。 但是，若要新增或移除其他 data factory 的角色指派，您必須具有 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 許可權，例如 [使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) 或 [擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

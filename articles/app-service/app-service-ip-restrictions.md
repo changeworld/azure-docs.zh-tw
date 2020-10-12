@@ -8,10 +8,10 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962956"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 存取限制
@@ -133,7 +133,7 @@ management.azure.com/subscriptions/**subscription ID**/resourceGroups/**resource
 
 存取限制也適用于具有 App Service 方案相同功能的函式應用程式。 啟用存取限制將會停用任何不允許的 Ip 的入口網站程式碼編輯器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [Azure Functions 的存取限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [應用程式閘道與服務端點的整合](networking/app-gateway-with-service-endpoints.md)

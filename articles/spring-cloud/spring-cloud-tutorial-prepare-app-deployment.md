@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906831"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
@@ -23,7 +23,7 @@ Azure 春季 Cloud 提供健全的服務來裝載、監視、調整及更新 Ste
 本文說明在 Azure 春季雲端中執行 .NET Core Steeltoe 應用程式所需的相依性、設定和程式碼。 如需如何將應用程式部署到 Azure 春季雲端的詳細資訊，請參閱 [部署您的第一個 Azure 春季 cloud 應用程式](spring-cloud-quickstart.md)。
 
 >[!Note]
-> Azure 春季雲端的 Steeltoe 支援目前以公開預覽形式提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需有關預覽期間支援的詳細資訊，請參閱 [常見問題](https://azure.microsoft.com/support/faq/) 或 [支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)的檔。
+> Steeltoe 對於 Azure Spring Cloud 的支援目前是以公開預覽版的形式來提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需預覽期間的支援詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
 ##  <a name="supported-versions"></a>支援的版本
 

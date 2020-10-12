@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888715"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945391"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -45,7 +45,7 @@ Azure 春季 Cloud 藉由整合 Azure 監視器、Application Insights 和 Log A
 Azure 春季雲端具有下列已知限制：
     
 * `spring.application.name` 將會由用來建立每個應用程式的應用程式名稱來覆寫。
-* `server.port` 預設為埠1025。 如果套用任何其他值，則會將其覆寫為1025。
+* `server.port` 預設為埠1025。 如果套用任何其他值，則會覆寫它。 也請遵循這項設定，而不要在您的程式碼中指定伺服器埠。
 * Azure 入口網站和 Azure Resource Manager 範本不支援上傳應用程式封裝。 您只能透過 Azure CLI 部署應用程式來上傳應用程式封裝。
 
 ### <a name="what-pricing-tiers-are-available"></a>有哪些定價層可供使用？ 
@@ -76,7 +76,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支援分散式追蹤？
 
-是。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
+可以。 如需詳細資訊，請參閱 [教學課程：搭配使用分散式追蹤與 Azure 春季雲端](spring-cloud-tutorial-distributed-tracing.md)。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服務繫結支援的資源類型為何？
@@ -89,7 +89,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>我可以從我的應用程式內查看、新增或移動永久性磁片區嗎？
 
-是。
+可以。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>當我刪除/移動 Azure 春天雲端服務實例時，是否也會刪除/移動其擴充功能資源？
 
@@ -151,7 +151,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季雲端是否支援藍綠部署？
-是。 如需詳細資訊，請參閱 [設定預備環境](spring-cloud-howto-staging-environment.md)。
+可以。 如需詳細資訊，請參閱 [設定預備環境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
@@ -159,7 +159,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
-是。 如需詳細資訊，請參閱 [從原始程式碼啟動您的春季 Cloud 應用程式](spring-cloud-quickstart.md)。
+可以。 如需詳細資訊，請參閱 [從原始程式碼啟動您的春季 Cloud 應用程式](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 

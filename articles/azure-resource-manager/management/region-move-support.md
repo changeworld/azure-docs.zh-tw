@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: dc931b910981578a3257c9131bea93cd836d1def
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004301"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945158"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨區域移動 Azure 資源的支援
 
@@ -411,7 +411,7 @@ ms.locfileid: "90004301"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | containerservices | 不會。<br/><br/> 服務已 [淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
+> | containerservices | 否。<br/><br/> 服務已 [淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -579,8 +579,8 @@ ms.locfileid: "90004301"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | elasticpools | 不會。 未公開資源。
-> | elasticpools / iothubtenants | 不會。 未公開資源。
+> | elasticpools | 否。 未公開資源。
+> | elasticpools / iothubtenants | 否。 未公開資源。
 > | iothubs | 可以。 [深入了解](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | 否 | 
 
@@ -696,7 +696,7 @@ ms.locfileid: "90004301"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | accounts | 否 | 
+> | accounts | 否。 [深入了解](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。
 > | actiongroups |  否 | 
 > | activitylogalerts | 否 | 
 > | alertrules |  否 | 
@@ -716,7 +716,7 @@ ms.locfileid: "90004301"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | checknameavailability |  不會。<br/><br/> IoT Central 適用于地理位置，而非區域。
+> | checknameavailability |  否。<br/><br/> IoT Central 適用于地理位置，而非區域。
 > | graph | 否
 
 ## <a name="microsoftiothub"></a>Microsoft.IoTHub
@@ -1012,7 +1012,7 @@ ms.locfileid: "90004301"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | vaults | 不會。<br/><br/> 不支援在 Azure 區域間移動 Azure 備份的復原服務保存庫。<br/><br/> 在 Azure Site Recovery 的復原服務保存庫中，您可以在目的地區域中 [停用並重新](../../site-recovery/move-vaults-across-regions.md) 建立保存庫。 | 
+> | vaults | 否。<br/><br/> 不支援在 Azure 區域間移動 Azure 備份的復原服務保存庫。<br/><br/> 在 Azure Site Recovery 的復原服務保存庫中，您可以在目的地區域中 [停用並重新](../../site-recovery/move-vaults-across-regions.md) 建立保存庫。 | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay

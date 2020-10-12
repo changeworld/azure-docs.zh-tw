@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503934"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案，以及 ACL
@@ -68,7 +68,7 @@ ms.locfileid: "87503934"
 
 ## <a name="create-a-container"></a>建立容器
 
-容器會作為檔案的檔案系統。 您可以使用 `az storage fs create` 命令來建立檔案系統。 
+容器可作為檔案的檔案系統。 您可以使用 `az storage fs create` 命令來建立檔案系統。 
 
 這個範例會建立名為的容器 `my-file-system` 。
 
@@ -88,7 +88,7 @@ az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode
 
 使用 `az storage fs file list` 命令，列出目錄的內容。
 
-這個範例會列出名為之容器的內容 `my-file-system` 。
+此範例會列出名為的容器的內容 `my-file-system` 。
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -98,7 +98,7 @@ az storage fs file list -f my-file-system --account-name mystorageaccount --auth
 
 使用命令來刪除容器 `az storage fs delete` 。
 
-這個範例會刪除名為的容器 `my-file-system` 。 
+此範例會刪除名為的容器 `my-file-system` 。 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -108,7 +108,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 使用 `az storage fs directory create` 命令，建立目錄參考。 
 
-這個範例會將名為的目錄新增至名為 `my-directory` `my-file-system` 的容器中，該容器位於名為的帳戶中 `mystorageaccount` 。
+此範例會將名為 `my-directory` 的目錄新增至名為的容器， `my-file-system` 該容器位於名為的帳戶中 `mystorageaccount` 。
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -126,13 +126,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 使用 `az storage fs directory move` 命令，重新命名或移動目錄。
 
-這個範例會將名稱的目錄重新命名 `my-directory` 為 `my-new-directory` 相同容器中的名稱。
+此範例會將目錄從名稱重新命名 `my-directory` 為 `my-new-directory` 相同容器中的名稱。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-這個範例會將目錄移至名為的容器 `my-second-file-system` 。
+此範例會將目錄移至名為的容器 `my-second-file-system` 。
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -152,7 +152,7 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 使用命令判斷容器中是否有特定的目錄 `az storage fs directory exists` 。
 
-這個範例會顯示名為的目錄是否 `my-directory` 存在於 `my-file-system` 容器中。 
+此範例會顯示容器中是否有名稱為的目錄 `my-directory` `my-file-system` 。 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -172,7 +172,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 使用 `az storage fs file list` 命令，列出目錄的內容。
 
-這個範例會列出名為的目錄內容 `my-directory` ，該目錄位於 `my-file-system` 名為之儲存體帳戶的容器中 `mystorageaccount` 。 
+此範例會列出名為之目錄的內容，該目錄 `my-directory` 位於 `my-file-system` 名為之儲存體帳戶的容器中 `mystorageaccount` 。 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login

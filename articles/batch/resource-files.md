@@ -4,10 +4,10 @@ description: 了解如何從各種輸入來源建立 Batch 資源檔。 此文�
 ms.date: 03/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230937"
 ---
 # <a name="creating-and-using-resource-files"></a>建立和使用資源檔

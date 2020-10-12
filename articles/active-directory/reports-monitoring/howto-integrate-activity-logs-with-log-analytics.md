@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230563"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>整合 Azure AD 記錄與 Azure 監視器記錄
@@ -51,13 +51,13 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
-若要使用此功能，您需要：
+若要使用此功能，您必須要有：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以[註冊免費試用](https://azure.microsoft.com/free/)。
 * Azure AD 租用戶。
-* 屬於 Azure AD 租使用者之 *全域管理員* 或 *安全性系統管理員* 的使用者。
+* 使用者，身分是該 Azure AD 租用戶的「全域管理員」  或「安全性管理員」  。
 * Azure 訂用帳戶中的 Log Analytics 工作區。 了解如何[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="licensing-requirements"></a>授權需求
@@ -78,7 +78,7 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
     * 若要將稽核記錄傳送到 Log Analytics 工作區，請選取 [AuditLogs]**** 核取方塊。 
     * 若要將登入記錄傳送到 Log Analytics 工作區，請選取 [SignInLogs]**** 核取方塊。
 
-6. 選取 [儲存]**** 以儲存設定。
+6. 選取 [儲存]  以儲存設定。
 
     ![診斷設定](./media/howto-integrate-activity-logs-with-log-analytics/Configure.png)
 

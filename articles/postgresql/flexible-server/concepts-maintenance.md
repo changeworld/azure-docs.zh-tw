@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336304"
 ---
-# <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的排程維護
+# <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的排程維護 - 彈性伺服器
  
 適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器會執行定期維護，讓您的受控資料庫保持安全、穩定且最新。 在維護期間，伺服器會取得新的功能、更新和修補程式。
  

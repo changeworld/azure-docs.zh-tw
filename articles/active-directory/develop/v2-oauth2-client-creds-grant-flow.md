@@ -1,6 +1,6 @@
 ---
-title: Microsoft 身分識別平臺上的 OAuth 2.0 用戶端認證流程 |Azure
-description: 使用 OAuth 2.0 驗證通訊協定的 Microsoft 身分識別平臺執行來建立 web 應用程式。
+title: Microsoft 身分識別平臺上的 OAuth 2.0 用戶端認證流程 |蔚藍
+description: 使用 Microsoft 身分識別平臺實施 OAuth 2.0 驗證通訊協定來建立 web 應用程式。
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -13,21 +13,21 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87759065"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程
 
-您可以使用 RFC 6749 中指定的 [OAuth 2.0 用戶端認證授與](https://tools.ietf.org/html/rfc6749#section-4.4) (有時稱為「雙方 OAuth」**，透過使用應用程式識別碼來存取 Web 主控資源。 這類型的授與通常用於必須在背景中執行 (不需與使用者直接互動) 的伺服器對伺服器互動。 這些類型的應用程式通常稱為「*守護*程式」或「*服務帳戶*」。
+您可以使用 RFC 6749 中指定的 [OAuth 2.0 用戶端認證授與](https://tools.ietf.org/html/rfc6749#section-4.4) (有時稱為「雙方 OAuth」**，透過使用應用程式識別碼來存取 Web 主控資源。 這種類型的授與通常用於必須在背景中執行的伺服器對伺服器互動，無須與使用者即時互動。 這些類型的應用程式通常稱為「 *守護* 程式」或「 *服務帳戶*」。
 
 本文說明如何在您的應用程式中直接針對通訊協定進行程式設計。 可能的話，建議您改為使用支援的 Microsoft 驗證程式庫 (MSAL)，以[取得權杖並呼叫受保護的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
 
 OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (機密用戶端) 在呼叫其他 Web 服務時，使用自己的認證來驗證，而不是藉由模擬使用者。 在此案例中，用戶端通常是中介層 Web 服務、精靈服務或網站。 對於較高層級的保證，Microsoft 身分識別平台也可讓呼叫服務使用憑證 (而非共用密碼) 做為認證。
 
-在用戶端認證流程中，系統管理員會直接將許可權授與應用程式本身。 當應用程式向資源出示權杖時，資源會強制應用程式本身擁有執行動作的授權，因為沒有任何使用者牽涉到驗證。  本文涵蓋[授權應用程式呼叫 api](#application-permissions)所需的步驟，以及[如何取得呼叫該 api 所需的權杖](#get-a-token)。
+在用戶端認證流程中，系統管理員會直接將許可權授與應用程式本身。 當應用程式向資源出示權杖時，資源會強制應用程式本身擁有執行動作的授權，因為沒有任何使用者參與驗證。  本文涵蓋 [授權應用程式呼叫 api](#application-permissions)所需的兩個步驟，以及 [如何取得呼叫該 api 所需的權杖](#get-a-token)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
@@ -46,42 +46,42 @@ OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (機密用戶端) 在�
 
 ### <a name="access-control-lists"></a>存取控制清單
 
-資源提供者可能會根據它所知的應用程式 (用戶端) 識別碼清單，強制執行授權檢查並授與特定層級的存取權。 當資源從 Microsoft 身分識別平臺端點收到權杖時，它可以將權杖解碼，並從和宣告解壓縮用戶端的應用程式識別碼 `appid` `iss` 。 然後，它會將應用程式與它所保有的存取控制清單 (ACL) 進行比較。 各資源之間的 ACL 細微性及方法可能有極大的差異。
+資源提供者可能會根據它所知的應用程式 (用戶端) 識別碼清單，強制執行授權檢查並授與特定層級的存取權。 當資源接收來自 Microsoft 身分識別平臺端點的權杖時，它可以將權杖解碼，並從和宣告中解壓縮用戶端的應用程式識別碼 `appid` `iss` 。 然後，它會將應用程式與它所保有的存取控制清單 (ACL) 進行比較。 各資源之間的 ACL 細微性及方法可能有極大的差異。
 
 常見的使用案例是使用 ACL 來針對 Web 應用程式或 Web API 執行測試。 Web API 可能只會將完整權限中的一部分授與特定用戶端。 若要在 API 上執行端對端測試，請建立測試用戶端，以從 Microsoft 身分識別平臺端點取得權杖，然後將它們傳送至 API。 接著，API 會檢查 ACL 是否有測試用戶端的應用程式識別碼，以便提供 API 完整功能的完整存取權。 如果您使用這類 ACL，請務必不要只驗證呼叫者的 `appid` 值，還要驗證權杖的 `iss` 值是否可信任。
 
 對於需要存取具有個人 Microsoft 帳戶之取用者使用者所擁有資料的精靈和服務帳戶來說，這種授權相當常見。 對於組織所擁有的資料，建議您透過應用程式權限取得必要的授權。
 
 > [!NOTE]
-> 為了啟用此以 ACL 為基礎的授權模式，Azure AD 不需要授權應用程式取得另一個應用程式的權杖-因此，只有在沒有宣告的情況下，才能發出僅限應用程式的權杖 `roles` 。 公開 Api 的應用程式必須執行許可權檢查，才能接受權杖。
+> 為了啟用此以 ACL 為基礎的授權模式，Azure AD 不會要求應用程式取得其他應用程式的權杖，因此，不需要宣告即可發出僅限應用程式的權杖 `roles` 。 公開 Api 的應用程式必須執行許可權檢查，才能接受權杖。
 
 ### <a name="application-permissions"></a>應用程式權限
 
-您可以使用 Api 來公開一組**應用程式許可權**，而不是使用 acl。 應用程式權限是由組織的系統管理員授與應用程式，並且只能用來存取該組織及其員工所擁有的資料。 例如，Microsoft Graph 會公開數個可執行下列操作的應用程式權限︰
+您可以使用 Api 來公開一組 **應用程式許可權**，而不是使用 acl。 應用程式權限是由組織的系統管理員授與應用程式，並且只能用來存取該組織及其員工所擁有的資料。 例如，Microsoft Graph 會公開數個可執行下列操作的應用程式權限︰
 
 * 讀取所有信箱中的郵件
 * 讀取和寫入所有信箱中的郵件
 * 以任何使用者身分傳送郵件
 * 讀取目錄資料
 
-若要搭配使用應用程式許可權與您自己的 API (而不是 Microsoft Graph) ，您必須先在 Azure 入口網站中的 API 應用程式註冊中定義範圍，以[公開 api](quickstart-configure-app-expose-web-apis.md) 。 然後，在用戶端應用程式的應用程式註冊中選取這些許可權，[以設定對 API 的存取權](quickstart-configure-app-access-web-apis.md)。 如果您未在 API 的應用程式註冊中公開任何範圍，您將無法在 Azure 入口網站的用戶端應用程式註冊中指定該 API 的應用程式許可權。
+若要搭配使用應用程式許可權與您自己的 API (而不是 Microsoft Graph) ，您必須先在 Azure 入口網站的 API 應用程式註冊中定義範圍，以 [公開 api](quickstart-configure-app-expose-web-apis.md) 。 然後，在用戶端應用程式的應用程式註冊中選取這些許可權， [以設定 API 的存取權](quickstart-configure-app-access-web-apis.md) 。 如果您尚未在 API 的應用程式註冊中公開任何範圍，您將無法在 Azure 入口網站的用戶端應用程式註冊中，指定該 API 的應用程式許可權。
 
-當以應用程式 (而非使用者) 進行驗證時，您無法使用使用者授與的*委派許可權*範圍。 您必須使用由系統管理員授與的應用程式許可權（也稱為角色），或透過 Web API 的預先授權。
+以應用程式進行驗證時， (與使用者) 相反，您無法使用使用者所授與的 *委派許可權* 範圍。 您必須使用應用程式的系統管理員所授與的應用程式許可權（也稱為角色），或透過 web API 預先授權。
 
-如需應用程式許可權的詳細資訊，請參閱[許可權和同意](v2-permissions-and-consent.md#permission-types)。
+如需應用程式許可權的詳細資訊，請參閱 [許可權與同意](v2-permissions-and-consent.md#permission-types)。
 
 #### <a name="recommended-sign-the-user-into-your-app"></a>建議：將使用者登入您的應用程式
 
 通常，當您建置使用應用程式權限的應用程式時，應用程式會需要一個可供系統管理員核准應用程式權限的頁面或檢視。 此頁面可以是應用程式登入流程的一部分、應用程式設定的一部分，或是專用的「連接」流程。 在許多情況下，應用程式只在使用者利用工作或學校 Microsoft 帳戶登入之後顯示此「連接」檢視是很合理的。
 
-如果您將使用者登入應用程式，您可以先識別使用者所屬的組織，然後再要求使用者核准應用程式許可權。 雖然這並非絕對必要，但這麼做可協助您為使用者建立更直覺式的體驗。 若要將使用者登入，請遵循我們的[Microsoft 身分識別平臺通訊協定教學](active-directory-v2-protocols.md)課程。
+如果您將使用者登入您的應用程式，您可以先識別使用者所屬的組織，然後再要求使用者核准應用程式許可權。 雖然這並非絕對必要，但這麼做可協助您為使用者建立更直覺式的體驗。 若要將使用者登入，請遵循我們的 [Microsoft 身分識別平臺通訊協定教學](active-directory-v2-protocols.md)課程。
 
 #### <a name="request-the-permissions-from-a-directory-admin"></a>向目錄管理員要求權限
 
-當您準備好向組織的系統管理員要求許可權時，您可以將使用者重新導向至 Microsoft 身分識別平臺系統*管理員同意端點*。
+當您準備好向組織的系統管理員要求許可權時，您可以將使用者重新導向至 Microsoft 身分識別平臺系統 *管理員同意端點*。
 
 > [!TIP]
-> 嘗試在 Postman 中執行這項要求！  (使用您自己的應用程式識別碼來獲得最佳結果-教學課程應用程式不會要求有用的許可權。 ) [ ![ 請嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 嘗試在 Postman 中執行這項要求！  (使用您自己的應用程式識別碼來獲得最佳結果，教學課程應用程式不會要求有用的許可權。 ) [ ![ 嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -92,7 +92,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http://localhost/myapp/permissions
 ```
 
-Pro 提示：嘗試在瀏覽器中貼上下列要求。
+Pro 提示：請嘗試在瀏覽器中貼上下列要求。
 
 ```
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
@@ -107,7 +107,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 此時，Azure AD 會強制只有租使用者系統管理員可以登入完成要求。 系統會請系統管理員核准您在應用程式註冊入口網站中，為您應用程式要求的所有直接應用程式權限。
 
-##### <a name="successful-response"></a>成功回應
+##### <a name="successful-response"></a>成功的回應
 
 如果系統管理員為您的應用程式核准權限，則成功的回應看起來會像這樣︰
 
@@ -141,7 +141,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 取得應用程式的必要授權後，請繼續取得 API 的存取權杖。 若要使用用戶端認證授與來取得權杖，請將 POST 要求傳送至 `/token` Microsoft 身分識別平臺端點：
 
 > [!TIP]
-> 嘗試在 Postman 中執行這項要求！  (使用您自己的應用程式識別碼來獲得最佳結果-教學課程應用程式不會要求有用的許可權。 ) [ ![ 請嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 嘗試在 Postman 中執行這項要求！  (使用您自己的應用程式識別碼來獲得最佳結果，教學課程應用程式不會要求有用的許可權。 ) [ ![ 嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一個案例：含有共用祕密的存取權杖要求
 
@@ -165,7 +165,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | --- | --- | --- |
 | `tenant` | 必要 | 應用程式預期要對其執行作業的目錄租用戶 (以 GUID 或網域名稱格式)。 |
 | `client_id` | 必要 | 指派給應用程式的應用程式識別碼。 您可以在用來註冊應用程式的入口網站中找到這項資訊。 |
-| `scope` | 必要 | 在這個要求中針對 `scope` 參數傳遞的值應該是您所要資源的資源識別碼 (應用程式識別碼 URI)，並附加 `.default` 尾碼。 就 Microsoft Graph 範例而言，值為 `https://graph.microsoft.com/.default`。 <br/>此值會告訴 Microsoft 身分識別平臺端點，其中包含您已為應用程式設定的所有直接應用程式許可權，而端點應針對與您要使用之資源相關聯的使用者發出權杖。 若要深入了解有關 `/.default` 範圍，請參閱[同意文件](v2-permissions-and-consent.md#the-default-scope)。 |
+| `scope` | 必要 | 在這個要求中針對 `scope` 參數傳遞的值應該是您所要資源的資源識別碼 (應用程式識別碼 URI)，並附加 `.default` 尾碼。 就 Microsoft Graph 範例而言，值為 `https://graph.microsoft.com/.default`。 <br/>此值會告訴 Microsoft 身分識別平臺端點，其中包含您已為應用程式設定的所有直接應用程式許可權，端點應該會針對與您想要使用之資源相關聯的應用程式，發出權杖。 若要深入了解有關 `/.default` 範圍，請參閱[同意文件](v2-permissions-and-consent.md#the-default-scope)。 |
 | `client_secret` | 必要 | 您在應用程式註冊入口網站中為應用程式產生的用戶端密碼。 用戶端密碼必須在傳送之前先進行 URL 編碼。 |
 | `grant_type` | 必要 | 必須設為 `client_credentials`。 |
 
@@ -187,14 +187,14 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | --- | --- | --- |
 | `tenant` | 必要 | 應用程式預期要對其執行作業的目錄租用戶 (以 GUID 或網域名稱格式)。 |
 | `client_id` | 必要 |指派給應用程式的應用程式 (用戶端) 識別碼。 |
-| `scope` | 必要 | 在這個要求中針對 `scope` 參數傳遞的值應該是您所要資源的資源識別碼 (應用程式識別碼 URI)，並附加 `.default` 尾碼。 就 Microsoft Graph 範例而言，值為 `https://graph.microsoft.com/.default`。 <br/>此值會通知 Microsoft 身分識別平臺端點，其中包含您為應用程式設定的所有直接應用程式許可權，它應該針對與您要使用之資源相關聯的使用者發出權杖。 若要深入了解有關 `/.default` 範圍，請參閱[同意文件](v2-permissions-and-consent.md#the-default-scope)。 |
+| `scope` | 必要 | 在這個要求中針對 `scope` 參數傳遞的值應該是您所要資源的資源識別碼 (應用程式識別碼 URI)，並附加 `.default` 尾碼。 就 Microsoft Graph 範例而言，值為 `https://graph.microsoft.com/.default`。 <br/>此值會通知 Microsoft 身分識別平臺端點，其中包含您已為應用程式設定的所有直接應用程式許可權，它應該會針對與您想要使用之資源相關聯的應用程式，發出權杖。 若要深入了解有關 `/.default` 範圍，請參閱[同意文件](v2-permissions-and-consent.md#the-default-scope)。 |
 | `client_assertion_type` | 必要 | 此值必須設為 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 請參閱[憑證認證](active-directory-certificate-credentials.md)，以了解如何註冊您的憑證與判斷提示的格式。|
 | `grant_type` | 必要 | 必須設為 `client_credentials`。 |
 
 請注意，在透過共用密碼要求的情況中，參數幾乎相同，不同之處在於使用下列兩個參數來取代 client_secret 參數：client_assertion_type 和 client_assertion。
 
-### <a name="successful-response"></a>成功回應
+### <a name="successful-response"></a>成功的回應
 
 成功的回應看起來會像這樣：
 
@@ -208,7 +208,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | 參數 | 描述 |
 | --- | --- |
-| `access_token` | 所要求的存取權杖。 應用程式可以使用此權杖來驗證受保護的資源，例如 Web API。 |
+| `access_token` | 所要求的存取權杖。 應用程式可以使用此權杖來對受保護的資源（例如 web API）進行驗證。 |
 | `token_type` | 表示權杖類型值。 Microsoft 身分識別平台唯一支援的類型是 `bearer`。 |
 | `expires_in` | 存取權杖的有效時間長度 (以秒為單位)。 |
 

@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91287316"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 檔案儲存體和 AD DS 建立設定檔容器
@@ -19,7 +19,7 @@ ms.locfileid: "91287316"
 
 此程式會使用 Active Directory Domain Services (AD DS) ，也就是內部部署的目錄服務。 如果您要尋找如何使用 Azure AD DS 建立 FSLogix 設定檔容器的相關資訊，請參閱 [使用 Azure 檔案儲存體建立 FSLogix 設定檔容器](create-profile-container-adds.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您的網域控制站已同步處理至 Azure，並可從您的工作階段主機所連線的 Azure 虛擬網路 (VNET) 解析。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91287316"
 
 3. 選取 [ **+ 檔案共用**]，建立名為 **設定檔**的新檔案共用，然後輸入適當的配額，或將欄位保留空白表示無配額。
 
-4. 選取 [建立]。
+4. 選取 [建立]****。
 
 ## <a name="enable-active-directory-authentication"></a>啟用 Active Directory authentication
 
@@ -102,7 +102,7 @@ ms.locfileid: "91287316"
 
      若要為使用者指派其 FSLogix 設定檔的權限，請依照相同的指示操作。 但是，當您進入步驟5時，請改為選取 **儲存體檔案資料 SMB 共用參與者** 。
 
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>在 Azure 檔案共用上指派使用者的許可權
 

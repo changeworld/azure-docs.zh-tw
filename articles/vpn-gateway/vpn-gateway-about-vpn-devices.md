@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/01/2020
 ms.author: yushwang
 ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318942"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
@@ -35,7 +35,7 @@ ms.locfileid: "89318942"
 
 為了協助設定您的 VPN 裝置，請參閱對應到適當裝置系列的連結。 會以最佳方式來提供組態指示的連結。 如需 VPN 裝置的支援，請連絡裝置製造商。
 
-|**廠商**          |**裝置系列**     |**最低 OS 版本** |**原則式設定指示** |**路由式設定指示** |
+|**廠商**          |**裝置系列**     |**作業系統最低版本** |**原則式設定指示** |**路由式設定指示** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不相容  |[設定指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
@@ -156,24 +156,24 @@ ms.locfileid: "89318942"
 
 |-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
-| 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
+| 1 |GCM AES256    |GCM (AES256)      |無         |
+| 2 |AES256        |SHA1              |無         |
+| 3 |3DES          |SHA1              |無         |
+| 4 |AES256        |SHA256            |無         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
+| 6 |3DES          |SHA256            |無         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure 閘道器為回應者
 
 |-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
-| 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
+| 1 |GCM AES256    |GCM (AES256)      |無         |
+| 2 |AES256        |SHA1              |無         |
+| 3 |3DES          |SHA1              |無         |
+| 4 |AES256        |SHA256            |無         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
-| 7 |DES           |SHA1              |None         |
+| 6 |3DES          |SHA256            |無         |
+| 7 |DES           |SHA1              |無         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -188,7 +188,7 @@ ms.locfileid: "89318942"
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |None         |
+| 22|AES128        |SHA256            |無         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

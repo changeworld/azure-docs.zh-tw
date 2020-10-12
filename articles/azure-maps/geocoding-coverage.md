@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps 搜尋服務中的地理編碼涵蓋範圍
-description: 查看 Azure 地圖服務搜尋涵蓋的區域。 地理編碼類別包括位址點、房屋號碼、街道層級、城市層級，以及相關點數。
+title: Microsoft Azure Maps 中的地理編碼涵蓋範圍搜尋服務
+description: 查看 Azure 地圖服務搜尋涵蓋的區域。 地理編碼類別包括位址點、房屋號碼、街道層級、城市層級，以及感興趣的點。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037434"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure 地圖地理編碼涵蓋範圍
 
-Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)支援地理編碼，這表示您的 API 要求可以具有搜尋詞彙，例如位址或位置的名稱，並以緯度和經度座標的形式傳回結果。 例如，Azure 地圖服務[取得搜尋位址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)會接收包含位置資訊的查詢，並以緯度和經度座標的形式傳回結果。
+Azure 地圖服務 [搜尋服務](https://docs.microsoft.com/rest/api/maps/search) 支援地理編碼，這表示您的 API 要求可以有搜尋詞彙，例如位址或位置名稱，並將結果傳回為緯度和經度座標。 例如，Azure 地圖服務 [取得搜尋位址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) 會接收包含位置資訊的查詢，並將結果傳回為緯度和經度座標。
 
-不過，Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)對於所有區域和國家沒有相同層級的資訊和精確度。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。
+不過，Azure 地圖服務 [搜尋服務](https://docs.microsoft.com/rest/api/maps/search) 不會有相同層級的資訊和精確度適用于所有區域和國家/地區。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。
 
-在國家/地區地理編碼的能力，取決於地理編碼服務的道路資料涵蓋範圍和地理編碼精確度。 下列分類可用來指定每個國家/地區中的地理編碼支援層級。
+在國家/地區中地理編碼的功能取決於道路資料涵蓋範圍，以及地理編碼服務的地理編碼精確度。 下列分類可用來指定每個國家/地區的地理編碼支援層級。
 
-* **位址點**-位址資料可以解析為位址包裹內的緯度/經度座標， (屬性界限) 。 位址點通常稱為「屋頂」精確，這是位址可用的最高精確度層級。
+* **位址點** -位址資料可解析為位址包裹內的緯度/經度座標 (屬性界限) 。 位址點通常稱為「屋頂」準確，也就是位址可用的最高精確度層級。
 * **門牌號碼** - 地址會插入到街道上的緯度/經度座標。
 * **街道層級** - 地址會解析為包含地址的街道緯度/經度座標。 可能不會處理門牌號碼。
 * **縣 (市) 層級** - 支援城市位置的名稱。

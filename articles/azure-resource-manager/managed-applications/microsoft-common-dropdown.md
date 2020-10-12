@@ -1,44 +1,44 @@
 ---
-title: DropDown UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.DropDown UI 元素。 當部署受控應用程式時，使用從可用的選項中選取。
+title: 下拉式 UI 元素
+description: 描述 Azure 入口網站的 Microsoft.Common.DropDown UI 元素。 用來在部署受控應用程式時，從可用的選項中進行選取。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474337"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 元素
 
-下拉式清單中的選取控制項。 您可以只選取單一專案或多個專案。 您也可以選擇性地包含專案的描述。
+下拉式清單中的選取控制項。 您可以只允許選取單一專案或多個專案。 您也可以選擇性地包含專案的描述。
 
 ## <a name="ui-sample"></a>UI 範例
 
-下拉式元素具有不同的選項，可決定其在入口網站中的外觀。
+下拉式元素有不同的選項，可決定其在入口網站中的外觀。
 
-只有在允許選取單一專案時，控制項才會顯示為：
+當只允許選取單一專案時，控制項會顯示為：
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-1.png" alt-text="[一般] 下拉式清單單選":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-1.png" alt-text="Microsoft. 常用的單一選取專案":::
 
-當包含說明時，控制項會顯示為：
+當包含描述時，控制項會顯示為：
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="包含描述的 [Microsoft 一般] 下拉式清單選取專案":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. 常用的單一選取專案":::
 
-啟用多重選取時，控制項會新增 [**全選**] 選項和核取方塊，以選取一個以上的專案：
+啟用複選時，控制項會新增 [ **選取全部** ] 選項和核取方塊，以選取一個以上的專案：
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="[一般] 下拉式清單複選":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. 常用的單一選取專案":::
 
-可以在啟用多重選取的情況下包含說明。
+描述可以包含在啟用多重選取的情況下。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="[Microsoft 一般] 下拉式清單複選包含描述":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. 常用的單一選取專案":::
 
-啟用篩選時，控制項會包含一個文字方塊，用以加入篩選值。
+啟用篩選時，控制項就會包含用來加入篩選值的文字方塊。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="[Microsoft 一般] 下拉式清單複選包含描述":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. 常用的單一選取專案":::
 
 ## <a name="schema"></a>結構描述
 
@@ -83,17 +83,17 @@ ms.locfileid: "87474337"
 
 ## <a name="remarks"></a>備註
 
-- 用 `multiselect` 來指定使用者是否可以選取一個以上的專案。
-- 根據預設， `selectAll` `true` 當啟用多重選取時，會是。
-- `filter`屬性可讓使用者在較長的選項清單中進行搜尋。
+- 使用 `multiselect` 指定使用者是否可以選取一個以上的專案。
+- 依預設， `selectAll` 會 `true` 在啟用多重選取時使用。
+- `filter`屬性可讓使用者在很長的選項清單中進行搜尋。
 - `constraints.allowedValues` 的標籤是項目的顯示文字，其值為選取時的元素輸出值。
 - 如果指定，預設值必須是 `constraints.allowedValues` 中存在的標籤。 如果未指定，則會選取 `constraints.allowedValues` 中的第一個項目。 預設值為 **null**。
 - `constraints.allowedValues` 必須有至少一個項目。
 - 若要模擬不需要的值，將包含標籤和 `""` (空字串) 值的項目新增至 `constraints.allowedValues`。
 - `defaultDescription`屬性用於沒有描述的專案。
-- `placeholder`屬性是使用者開始編輯時消失的解說文字。 如果 `placeholder` `defaultValue` 同時定義和，則 `defaultValue` 會優先使用並顯示。
+- `placeholder`當使用者開始編輯時，屬性是解說文字會消失。 如果 `placeholder` 和 `defaultValue` 都已定義， `defaultValue` 就會優先使用並顯示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

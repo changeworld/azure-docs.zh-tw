@@ -4,10 +4,10 @@ description: 本文說明如何使用具有適用于容器 Azure 監視器的 NV
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89569691"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>使用容器的 Azure 監視器設定 GPU 監視
@@ -20,7 +20,7 @@ ms.locfileid: "89569691"
 
 - [Nvidia](https://developer.nvidia.com/kubernetes-gpu)
 
-- [Amd](https://github.com/RadeonOpenCompute/k8s-device-plugin)
+- [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
 適用于容器的 Azure 監視器會在60sec 間隔收集下列計量，並將其儲存在 **InsightMetrics** 資料表中，以自動開始監視節點的 gpu 使用量，以及要求 pod 和工作負載的 gpu。
 
@@ -41,7 +41,7 @@ ms.locfileid: "89569691"
 
 容器的 Azure 監視器包括先前在資料表中為每個叢集的 GPU 活頁簿所列的計量預先設定的圖表。 您可以從左側窗格中選取活頁**簿**，以及從深入解析的 [**查看活頁簿**] 下拉式清單中，直接從 AKS 叢集尋找 GPU 活頁簿**節點 gpu** 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何部署包含已啟用 GPU 之節點的 AKS 叢集，請參閱在 Azure Kubernetes Service (AKS) [上使用 gpu 進行需要大量計算的工作負載](../../aks/gpu-cluster.md) 。
 

@@ -7,10 +7,10 @@ ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91287333"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>與 Windows 桌面用戶端連線
@@ -18,7 +18,7 @@ ms.locfileid: "91287333"
 > 適用於：Windows 10、Windows 10 IoT 企業版和 Windows 7
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
 
 您可以使用 Windows 桌面用戶端，在具有 Windows 10、Windows 10 IoT 企業版和 Windows 7 的裝置上存取 Windows 虛擬桌面資源。 用戶端不支援 Window 8 或 Windows 8.1。
 

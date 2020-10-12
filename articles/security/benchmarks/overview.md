@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777100"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure 安全性基準測試 (V2) 總覽
@@ -22,7 +22,7 @@ Azure 安全性基準測試 (ASB) 提供規定的最佳作法和建議，以協�
 此基準測試是一組整體安全性指導方針的一部分，其中也包含：
 
 - **雲端採用架構** –有關安全性的指引，包括 [策略](/azure/cloud-adoption-framework/strategy/define-security-strategy)、 [角色和責任](/azure/cloud-adoption-framework/organize/cloud-security)、 [Azure 前10個安全性最佳作法](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)，以及 [參考實行](/azure/cloud-adoption-framework/ready/enterprise-scale/)。
-- **Azure 架構良好的架構** -在 Azure 上 [保護工作負載](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) 的指引。
+- **Azure Well-Architected Framework** -在 azure 上 [保護工作負載](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) 的指引。
 - **Microsoft 安全性最佳作法** -使用 Azure 的 [建議](/security/compass/microsoft-security-compass-introduction) 。
 
  Azure 安全性基準測試著重于以雲端為中心的控制區。 這些控制項與知名的安全性效能評定一致，例如，透過網際網路安全性的中心所述的 (CIS) 控制7.1 版和美國國家標準規範的標準與技術 (NIST) SP800-53。
