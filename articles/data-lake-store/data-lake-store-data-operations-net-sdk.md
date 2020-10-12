@@ -8,10 +8,10 @@ ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022457"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK 在 Data Lake Storage Gen1 上進行檔案系統作業
@@ -28,7 +28,7 @@ ms.locfileid: "89022457"
 
 如需有關如何使用 .NET SDK 在 Data Lake Storage Gen1 上進行帳戶管理作業的指示，請參閱 [使用 .NET sdk Data Lake Storage Gen1 上的帳戶管理作業](data-lake-store-get-started-net-sdk.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * **Visual Studio 2013 或**更新版本。 本文中的指示使用 Visual Studio 2019。
 

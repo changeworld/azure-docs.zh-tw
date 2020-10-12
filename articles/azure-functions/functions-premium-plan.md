@@ -9,10 +9,10 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578031"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
@@ -124,7 +124,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 建立或調整您的方案時，您可以選擇三種實例大小。  您將會依每秒配置給您的核心和記憶體總數來計費。  您的應用程式可以視需要自動相應放大至多個實例。  
 
-|SKU|核心|記憶體|儲存體|
+|SKU|核心|Memory|儲存體|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7 GB|250GB|

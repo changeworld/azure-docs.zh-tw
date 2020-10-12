@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277286"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安裝並執行空間分析容器 (預覽版) 
 
 空間分析容器可讓您分析即時串流影片，以瞭解人員之間的空間關聯性、其移動和實體環境中物件的互動。 容器非常適合用於特定的安全性和資料控管需求。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
@@ -63,9 +63,9 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 ---
 
-| 需求 | 說明 |
+| 需求 | 描述 |
 |--|--|
-| 相機 | 空間分析容器未系結至特定的相機品牌。 攝影機裝置必須：支援即時串流通訊協定 (RTSP) 和 h.264 編碼，可供主機電腦存取，而且能夠以15FPS 和1080p 解析度進行串流處理。 |
+| 相機 | 空間分析容器未系結至特定的相機品牌。 攝影機裝置必須：支援 Real-Time 串流通訊協定 (RTSP) 和 h.264 編碼，可供主機電腦存取，而且能夠以15FPS 和1080p 解析度進行串流處理。 |
 | Linux 作業系統 | 您必須在主機電腦上安裝[Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) 。  |
 
 
@@ -111,7 +111,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 在 [ **設定 Edge 計算**]   頁面中，選擇現有的 IoT 中樞，或選擇建立一個新的。 根據預設，會使用標準 (S1) 定價層來建立 IoT 中樞資源。 若要使用免費層 IoT 中樞資源，請建立一個，然後選取它。 IoT 中樞資源使用 Azure Stack Edge 資源所使用的相同訂用帳戶和資源群組 
 
-按一下頁面底部的 [新增] 。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
+按一下 [建立]。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
 
 在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 Azure IoT Edge 執行時間將已在 IoT Edge 裝置上執行。            
 
@@ -318,7 +318,7 @@ sudo systemctl restart iotedge
 
 下表顯示 IoT Edge 模組所使用的各種環境變數。 您也可以使用中的屬性，在上述連結的部署資訊清單中設定它們 `env` `spatialanalysis` ：
 
-| 設定名稱 | 值 | 說明|
+| 設定名稱 | 值 | 描述|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 更多資訊詳細 | 記錄層級，請選取兩個值的其中一個|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不要修改|
@@ -343,7 +343,7 @@ az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
 ```
 
-|參數  |說明  |
+|參數  |描述  |
 |---------|---------|
 | `--deployment-id` | 部署的新名稱。 |
 | `--hub-name` | 您的 Azure IoT 中樞名稱。 |

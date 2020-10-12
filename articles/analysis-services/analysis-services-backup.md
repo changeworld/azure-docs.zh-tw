@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506990"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services 資料庫備份和還原
@@ -25,7 +25,7 @@ ms.locfileid: "86506990"
 > 
 
 > [!NOTE]
-> 如果儲存體帳戶位於不同的區域，請設定儲存體帳戶防火牆設定，以允許來自**所選網路**的存取。 在 [防火牆**位址範圍**] 中，指定 Analysis Services 伺服器所在區域的 IP 位址範圍。 支援將儲存體帳戶防火牆設定為允許從所有網路進行存取，但最好是選擇選取的網路並指定 IP 位址範圍。 若要深入瞭解，請參閱[網路連線常見問題](analysis-services-network-faq.md#backup-and-restore)。
+> 如果儲存體帳戶位於不同的區域，請設定儲存體帳戶防火牆設定，以允許從 **選取的網路**進行存取。 在 [防火牆 **位址範圍**] 中，指定 Analysis Services 伺服器所在區域的 IP 位址範圍。 您可以設定儲存體帳戶防火牆設定以允許來自所有網路的存取，不過最好是選擇 [選取的網路]，並指定 [IP 位址範圍]。 若要深入瞭解，請參閱 [網路連接常見問題](analysis-services-network-faq.md#backup-and-restore)。
 
 備份會以 .abf 副檔名儲存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
 

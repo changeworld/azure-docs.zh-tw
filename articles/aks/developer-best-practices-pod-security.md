@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022270"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的 Pod 安全性最佳做法
@@ -97,7 +97,7 @@ Azure 資源其受控識別可讓 Pod 向任何支援此功能的 Azure 服務�
 
 當應用程式需要認證時會與數位保存庫通訊、擷取最新的祕密內容，然後連線到所需的服務。 這個數位保存庫可以是 Azure Key Vault。 下圖顯示使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程：
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Azure 中 Pod 受控身分識別的簡化工作流程":::
 
 有了 Key Vault，您就可以儲存並定期輪替使用祕密，例如認證、儲存體帳戶金鑰或憑證。 您可使用[祕密存放區 CSI 驅動程式的 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)來整合 Azure Key Vault 與 AKS 叢集。 祕密存放區 CSI 驅動程式可讓 AKS 叢集從 Key Vault 原生擷取祕密內容，並只會將其安全地提供給提出要求的 Pod。 請與叢集操作員合作，以將祕密存放區 CSI 驅動程式部署至 AKS 背景工作節點。 您可使用 Pod 受控身分識別向 Key Vault 要求存取權，並透過祕密存放區 CSI 驅動程式擷取所需的祕密內容。
 

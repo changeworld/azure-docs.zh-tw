@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 7b70460af8126199b19c18118897c93f0477791c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89442198"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何為指定的 API 選取權限
@@ -26,6 +26,6 @@ ms.locfileid: "89442198"
 - 查看有關如何[設定用戶端應用程式的權限要求](./quickstart-configure-app-access-web-apis.md)的逐步指示。
 - 您可以深入研究資源應用程式如何將[範圍](./developer-glossary.md#scopes)與[應用程式角色](./developer-glossary.md#roles)公開至用戶端應用程式，這在 Azure 入口網站中分別以委派與應用程式權限表示。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [AzureAD StackOverflow (英文)](https://stackoverflow.com/questions/tagged/azure-active-directory)

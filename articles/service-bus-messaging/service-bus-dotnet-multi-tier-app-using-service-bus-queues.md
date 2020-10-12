@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 746257195220d26ad5d011a39022a3957e8cb1ae
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021777"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服務匯流排佇列的 .NET 多層應用程式
@@ -66,13 +66,13 @@ ms.locfileid: "89021777"
 1. 使用系統管理員權限啟動 Visual Studio：在 **Visual Studio** 程式圖示上按一下滑鼠右鍵，然後按一下 [以系統管理員身分執行]****。 這篇文章稍後討論的 Azure 計算模擬器需要 Visual Studio 以系統管理員權限啟動。
    
    在 Visual Studio 的 [檔案] 功能表中，按一下 [新增]，然後按一下 [專案]。
-2. 從 [已安裝的範本]**** 的 [Visual C#]**** 下，按一下 [雲端]****，然後按一下 [Azure 雲端服務]****。 將專案命名為 **MultiTierApp**。 然後按一下 [確定]  。
+2. 從 [已安裝的範本]**** 的 [Visual C#]**** 下，按一下 [雲端]****，然後按一下 [Azure 雲端服務]****。 將專案命名為 **MultiTierApp**。 然後按一下 [確定] 。
    
    ![[新增專案] 對話方塊的螢幕擷取畫面，其中已選取雲端和 Azure 雲端服務 Visual c # 已反白顯示並以紅色標示。][9]
 3. 從 [角色]**** 窗格，按兩下 [ASP.NET Web 角色]****。
    
    ![[新增 Microsoft Azure 雲端服務] 對話方塊的螢幕擷取畫面，其中已選取 ASP.NET Web 角色，並同時選取 WebRole1。][10]
-4. 將滑鼠移至 [Azure 雲端服務解決方案]**** 下的 [WebRole1]****，按一下鉛筆圖示，將 Web 角色重新命名為 **FrontendWebRole**。 然後按一下 [確定]  。 (請確定您輸入 "Frontend"，其中 e 為小寫，而不是 "FrontEnd"。)
+4. 將滑鼠移至 [Azure 雲端服務解決方案]**** 下的 [WebRole1]****，按一下鉛筆圖示，將 Web 角色重新命名為 **FrontendWebRole**。 然後按一下 [確定] 。 (請確定您輸入 "Frontend"，其中 e 為小寫，而不是 "FrontEnd"。)
    
    ![[新增 Microsoft Azure 雲端服務] 對話方塊的螢幕擷取畫面，其中方案已重新命名為 FrontendWebRole。][11]
 5. 在 [新增 ASP.NET 專案]**** 對話方塊的 [選取範本]**** 清單中，按一下 [MVC]****。

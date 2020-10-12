@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142531"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱的自我管理寄送
@@ -43,7 +43,7 @@ ms.locfileid: "88142531"
 3. 在您提供交貨地址之後，您必須驗證該地址並完成您的訂單。
    ![自我管理寄送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. 備妥裝置並收到電子郵件通知之後，您就可以排程取貨。
+4. 一旦裝置已備妥且您收到電子郵件通知，您就可以排程取貨。
 
    在您的 Azure 資料箱訂單中，移至 [概觀]，然後選取 [排程取貨]。
 
@@ -59,7 +59,7 @@ ms.locfileid: "88142531"
 
    ![檢視您的授權碼](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   請記下此 [授權碼]。 根據安全性需求，在排程挑選時，必須為要取得挑選的人員，出示名稱，才會出現。
+   請記下此 [授權碼]。 根據安全性需求，在排程挑選時，必須提供要取得取貨的人員姓名，才能進行挑選。
 
    您也必須提供將前往資料中心取貨人員的詳細資料。 您或連絡人必須攜帶政府核准使用附相片的身分證，以供資料中心驗證。
 

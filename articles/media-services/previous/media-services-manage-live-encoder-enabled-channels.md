@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268300"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒體服務執行即時串流，以建立多位元速率串流
@@ -40,7 +40,7 @@ ms.locfileid: "89268300"
   > 
   > 
 
-自媒體服務 2.10 版起，當您建立通道時，您可以指定您希望通道接收輸入串流的方式，以及您是否想要通道執行串流的即時編碼。 您有兩個選擇：
+自媒體服務 2.10 版起，當您建立通道時，您可以指定您希望通道接收輸入串流的方式，以及您是否想要通道執行串流的即時編碼。 您有兩個選項：
 
 * **無** – 如果您想要使用會輸出多位元速率串流 (傳遞串流) 的內部部署即時編碼器，請指定這個值。 在此情況下，連入的串流會傳遞至輸出，無須任何編碼。 這是在 2.10 版以前的通道行為。  如需使用此種通道類型的詳細資訊，請參閱[使用會從建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)。
 * **標準** – 如果您打算使用媒體服務將單一位元速率即時串流編碼成多位元速率串流，請選擇這個值。 請注意即時編碼有計費影響，而且您應該記住將即時編碼通道保持在「執行中」狀態會產生費用。  建議您在即時串流事件完成之後立即停止執行的通道，以避免額外的每小時費用。
@@ -209,7 +209,7 @@ ms.locfileid: "89268300"
 #### <a name="index"></a>索引
 建議您傳送單一程式傳輸串流 (SPTS)。 如果輸入串流包含多個程式，通道內的即時編碼器會剖析輸入中的程式對應資料表 (PMT)、識別具有串流類型名稱 MPEG-2 AAC ADTS 或 AC-3 System-A 或 AC-3 System-B 或 MPEG-2 Private PES 或 MPEG-1 音訊或 MPEG-2 音訊的輸入，並以 PMT 中指定的順序加以排列。 接著會使用以零起始的索引，在排列中挑選第 n 個項目。
 
-#### <a name="language"></a>語言
+#### <a name="language"></a>Language
 音訊串流的語言識別碼，符合 ISO 639-2，例如 ENG。 如果不存在，則預設為 UND (未定義)。
 
 ### <a name="system-preset"></a><a id="preset"></a>系統預設
@@ -242,7 +242,7 @@ ms.locfileid: "89268300"
 
 以下是發送信號給廣告時，您可以設定的屬性。 
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>持續時間
 廣告插播的持續時間，以秒為單位。 必須為非零的正整數值才能開始廣告插播。 當廣告插播正在進行中，持續時間設為零，且 CueId 符合正在進行的廣告插播，則會取消插播。
 
 ### <a name="cueid"></a>CueId
@@ -258,7 +258,7 @@ ms.locfileid: "89268300"
 
 即時編碼器可設定為切換至 slate 映像，並在某些情況下隱藏連入的視訊信號 – 例如在廣告插播期間。 如果未設定此 slate，就不會在廣告插播期間遮罩處理輸入視訊。
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>持續時間
 slate 的持續時間，以秒為單位。 必須為非零的正整數值才能開始 slate。 如果沒有進行中的 slate，就會指定玲為持續時間，進行中的 slate 就會終止。
 
 ### <a name="insert-slate-on-ad-marker"></a>插入 ad 標記上的 slate

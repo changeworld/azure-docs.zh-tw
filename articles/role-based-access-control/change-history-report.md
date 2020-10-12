@@ -1,6 +1,6 @@
 ---
 title: 查看 Azure RBAC 變更的活動記錄
-description: 針對過去90天的 Azure 資源，查看 Azure 角色型存取控制（Azure RBAC）變更的活動記錄。
+description: 查看 azure 角色型存取控制的活動記錄， (Azure RBAC) 過去90天對 Azure 資源的變更。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,15 +16,15 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 332d9a9ec28c4309fb1cf1d3e24d3cfd2d7d13d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321967"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>查看 Azure RBAC 變更的活動記錄
 
-有時候您需要 Azure 角色型存取控制（Azure RBAC）變更的相關資訊，例如用於進行審核或疑難排解。 每當有人對您訂用帳戶中的角色指派或角色定義進行變更時，這些變更就會記錄在[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)中。 您可以查看活動記錄，以查看過去90天的所有 Azure RBAC 變更。
+有時，您需要 azure 角色型存取控制 (Azure RBAC) 變更的相關資訊，例如基於審核或疑難排解用途。 每當有人變更訂用帳戶內的角色指派或角色定義時，變更就會記錄在 [Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)中。 您可以查看活動記錄，以查看過去90天的所有 Azure RBAC 變更。
 
 ## <a name="operations-that-are-logged"></a>記錄的作業
 
@@ -37,7 +37,7 @@ ms.locfileid: "87321967"
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-最簡單的開始方式就是使用 Azure 入口網站檢視活動記錄。 下列螢幕擷取畫面顯示活動記錄中角色指派作業的範例。 它也包含將記錄下載為 CSV 檔案的選項。
+最簡單的開始方式就是使用 Azure 入口網站檢視活動記錄。 下列螢幕擷取畫面顯示活動記錄中的角色指派作業範例。 它也包含將記錄下載為 CSV 檔案的選項。
 
 ![使用入口網站的活動記錄 - 螢幕擷取畫面](./media/change-history-report/activity-log-portal.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "87321967"
 | 事件類別目錄 | <ul><li>系統管理</li></ul> |
 | 作業 | <ul><li>建立角色指派</li><li>刪除角色指派</li><li>建立或更新自訂角色定義</li><li>刪除自訂角色定義</li></ul> |
 
-如需有關活動記錄的詳細資訊，請參閱[查看活動記錄以監視資源上的動作](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
+如需有關活動記錄的詳細資訊，請參閱 [View 活動記錄以監視資源上的動作](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -92,7 +92,7 @@ Properties              :
 
 ```
 
-如果您使用服務主體來建立角色指派，則呼叫者屬性會是物件識別碼。 您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)來取得服務主體的相關資訊。
+如果您使用服務主體來建立角色指派，呼叫端屬性將會是物件識別碼。 您可以使用 [>get-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) 來取得服務主體的相關資訊。
 
 ```Example
 Caller                  : 44444444-4444-4444-4444-444444444444
@@ -108,13 +108,13 @@ Properties              :
 
 若要使用 Azure CLI 檢視活動記錄，請使用 [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) 命令。
 
-此命令會列出資源群組中的活動記錄（從2月27日起，期待七天）：
+此命令會列出資源群組中的活動記錄，從2月27日起，期待七天：
 
 ```azurecli
 az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
 ```
 
-此命令會列出來自2月27日的授權資源提供者的活動記錄，並期待七天：
+此命令會列出2月27日的授權資源提供者的活動記錄，並持續七天：
 
 ```azurecli
 az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Azure 監視器記錄
 
-[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)檔是另一種工具，您可以用來收集和分析所有 azure 資源的 azure RBAC 變更。 Azure 監視器記錄具有下列優點：
+[Azure 監視器記錄](../log-analytics/log-analytics-overview.md) 是另一項工具，可用來收集並分析所有 azure 資源的 azure RBAC 變更。 Azure 監視器記錄有下列優點：
 
 - 撰寫複雜的查詢和邏輯
 - 整合警示、Power BI 和其他工具
@@ -135,11 +135,11 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 1. 為您的工作區[設定活動記錄分析解決方案](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-1. [檢視活動記錄](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 流覽至 [活動記錄分析解決方案] [總覽] 頁面的快速方式是按一下 [**記錄**] 選項。
+1. [檢視活動記錄](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 您可以透過 [ **記錄** ] 選項，快速流覽至 [活動記錄分析的解決方案總覽] 頁面。
 
    ![入口網站中的 Azure 監視器記錄] 選項](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 選擇性地使用[Azure 監視器 Log Analytics](../azure-monitor/log-query/get-started-portal.md)來查詢和查看記錄。 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
+1. 選擇性地使用 [Azure 監視器 Log Analytics](../azure-monitor/log-query/get-started-portal.md) 來查詢和查看記錄。 如需詳細資訊，請參閱 [開始使用 Azure 監視器記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
 
 以下查詢會傳回由目標資源提供者所組織的新角色指派：
 
@@ -161,6 +161,6 @@ AzureActivity
 
 ![使用進階分析入口網站的活動記錄 - 螢幕擷取畫面](./media/change-history-report/azure-log-analytics.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [檢視活動記錄中的事件](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [使用 Azure 活動記錄監視訂用帳戶活動](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

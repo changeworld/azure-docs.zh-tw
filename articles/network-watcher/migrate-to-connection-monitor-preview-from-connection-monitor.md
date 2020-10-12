@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
 ms.openlocfilehash: 05b42024529b8d9de3590488ecafbdf83283e007
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441811"
 ---
 # <a name="migrate-to-connection-monitor-preview-from-connection-monitor"></a>從連線監視器遷移至連線監視器 (預覽版) 
@@ -61,7 +61,7 @@ ms.locfileid: "89441811"
 * 已遷移的連線監視器不會再顯示為較舊的連線監視器解決方案。 它們現在僅適用于連線監視器 (Preview) 。
 * 任何外部整合（例如 Power BI 和 Grafana 中的儀表板，以及與安全性資訊和事件管理)  (的整合，都必須以手動方式遷移）。 這是遷移安裝程式所需執行的唯一手動步驟。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解連接監視器 (Preview) ，請參閱：
 * [從網路效能監控遷移至連線監視器 (Preview) ](migrate-to-connection-monitor-preview-from-network-performance-monitor.md)

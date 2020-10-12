@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
 ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89447767"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows 開機管理程式錯誤-0xC0000428 狀態不正確映射雜湊
@@ -58,13 +58,13 @@ ms.locfileid: "89447767"
 
 `a699494373c04fc0bc8f2bb1389d6106__Windows-Server-Technical-Preview-201505.01-en.us-127GB.vhd`
 
-您無法延長預覽影像的到期日。 預覽版到期後，VM 將無法再開機。
+您無法延長預覽映像的到期日。 預覽過期後，VM 將無法再開機。
 
 - 根據產品而定，試用期限可能會有所不同。 例如，Windows preview 映射有180天的試用期。
 
 - 在 Azure 中，所有預覽版本的 Windows 映像都會在其描述中包含備註，這些映射不適合用于生產環境，而且僅適用于指定的試用期或「預覽版本」。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 如果您的映射是預覽影像，則無法延長所用映射的到期日，您將需要使用非預覽映射來 [部署新的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 。 下列步驟可協助您識別您是否已使用預覽映射，以及提供資源來協助您將資料從此 VM 傳送至新的 VM。 如果您已將影像識別為預覽影像，則映射無法復原，因為它現在已過期。
 

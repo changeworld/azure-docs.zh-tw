@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 507ef3cffb2570ad759445fd80c513ea2b08d994
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333460"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>教學課程：設定 Rollbar 來自動布建使用者
@@ -31,7 +31,7 @@ ms.locfileid: "91333460"
 > * 在 Rollbar 中布建群組和群組成員資格
 > * Rollbar (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/rollbar-tutorial)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -118,7 +118,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |作用中|Boolean|
    |name.familyName|String|
    |name.givenName|String|
-   |電子郵件 [type eq "work"]|String|
+   |電子郵件 [type eq "work"]|字串|
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Rollbar**]。
 

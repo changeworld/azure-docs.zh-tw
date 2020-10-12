@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
 ms.openlocfilehash: dcbb82c1315e6150ddcfadbb52b2976447329b87
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441828"
 ---
 # <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>從網路效能監控遷移至連線監視器 (預覽) 
@@ -70,7 +70,7 @@ ms.locfileid: "89441828"
 * 將任何外部整合遷移至 ConnectionMonitor_CL 資料表。 外部整合的範例包括 Power BI 和 Grafana 的儀表板，以及與安全性資訊和事件管理 (SIEM) 系統的整合。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解連接監視器 (Preview) ，請參閱：
 * [從連線監視器遷移至連線監視器 (預覽版) ](migrate-to-connection-monitor-preview-from-connection-monitor.md)

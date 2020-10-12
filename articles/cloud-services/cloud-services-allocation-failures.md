@@ -1,6 +1,6 @@
 ---
 title: 針對雲端服務配置失敗進行疑難排解 | Microsoft Docs
-description: 當您部署 Azure 雲端服務時，針對配置失敗進行疑難排解。 瞭解配置的運作方式，以及配置可能失敗的原因。
+description: 針對部署 Azure 雲端服務時發生的配置失敗進行疑難排解。 瞭解配置的運作方式，以及配置可能失敗的原因。
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,14 +15,14 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142480"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>疑難排解在 Azure 中部署雲端服務時發生的配置失敗
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 當您部署執行個體至雲端服務或加入新的 Web 或背景工作角色執行個體時，Microsoft Azure 會配置計算資源。 執行這些作業時，即使尚未達到 Azure 訂用帳戶限制，也可能偶爾發生錯誤。 本文說明一些常見配置失敗的原因，並建議可能的補救方法。 規劃服務的部署時，本資訊可能也很有用。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -41,7 +41,7 @@ Azure 資料中心的伺服器分割成叢集。 在多個叢集中嘗試新的�
 ### <a name="error-message"></a>錯誤訊息
 您可能會看到下列錯誤訊息：
 
-> 「Azure 作業 ' {operation id} ' 失敗，程式碼計算 ConstrainedAllocationFailed。 詳細資料：配置失敗;無法滿足要求中的條件約束。 要求的新服務部署繫結至同質群組，或以虛擬網路為目標，或此託管服務下已經有部署。 任何這些情況會將新的部署侷限於特定的 Azure 資源。 請稍後重試，或嘗試減少 VM 大小或角色執行個體的數量。 或者，可能的話，移除先前提到的條件約束，或嘗試部署至不同的區域。」
+> 「Azure 作業 ' {operation id} ' 失敗，程式碼 ConstrainedAllocationFailed。 詳細資料：配置失敗;無法滿足要求中的條件約束。 要求的新服務部署繫結至同質群組，或以虛擬網路為目標，或此託管服務下已經有部署。 任何這些情況會將新的部署侷限於特定的 Azure 資源。 請稍後重試，或嘗試減少 VM 大小或角色執行個體的數量。 或者，可能的話，移除先前提到的條件約束，或嘗試部署至不同的區域。」
 
 ### <a name="common-issues"></a>常見的問題
 以下是造成配置要求釘選到單一叢集的常見配置案例。

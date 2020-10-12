@@ -1,5 +1,5 @@
 ---
-title: 瞭解 IoT 隨插即用數位 twins
+title: 了解 IoT 隨插即用數位分身
 description: 瞭解 IoT 隨插即用如何使用數位 twins
 author: prashmo
 ms.author: prashmo
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578048"
 ---
-# <a name="understand-iot-plug-and-play-digital-twins"></a>瞭解 IoT 隨插即用數位 twins
+# <a name="understand-iot-plug-and-play-digital-twins"></a>了解 IoT 隨插即用數位分身
 
 IoT 隨插即用裝置會執行 [數位 Twins 定義語言 ](https://github.com/Azure/opendigitaltwins-dtdl) 所描述的模型， (DTDL) 架構。 模型描述特定裝置所能擁有的一組元件、屬性、命令和遙測訊息。 當 IoT 隨插即用裝置第一次連線到 IoT 中樞時，裝置對應項和數位對應項會初始化。
 
@@ -22,7 +22,7 @@ IoT 隨插即用使用 DTDL 第2版。 如需此版本的詳細資訊，請參�
 
 DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數位 Twins](../digital-twins/overview.md)）使用它來代表整個環境，例如建築物和能源網路。 若要深入瞭解，請參閱 [瞭解 Azure 數位 Twins 中的對應項模型](../digital-twins/concepts-models.md)。
 
-本文說明如何在裝置對應項的 *所需* 和 *報告* 區段中表示元件和屬性。 它也會描述這些概念如何對應至對應的數位對應項。
+本文說明如何在裝置對應項的 *所需* 和 *報告* 區段中表示元件和屬性。 其也會說明這些概念如何對應到相對應的數位分身。
 
 本文中的 IoT 隨插即用裝置，可使用[控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)元件來執行[溫度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)。
 
@@ -230,7 +230,7 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 在此範例中， `3.0` 是裝置所報告之屬性的目前值 `fanSpeed` 。 `2.0` 是解決方案所設定的所需值。 根層級屬性所需的值和同步處理狀態，是在數位對應項的根層級中設定 `$metadata` 。 當裝置上線時，它可以套用此更新，並回報更新的值。
 
-### <a name="components"></a>組件
+### <a name="components"></a>元件
 
 元件可讓您將模型介面建立成其他介面的元件。
 請考慮定義為模型的 [控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) 介面。
@@ -311,7 +311,7 @@ Azure 數位 Twins 配備了 **取得數位**對應項、 **更新數位**對應
 
 ## <a name="digital-twin-change-events"></a>數位分身變更事件
 
-當數位對應項變更事件已啟用時，每當元件或屬性的目前或所需值變更時，就會觸發事件。 數位對應項變更事件會以 [JSON 修補程式](http://jsonpatch.com/) 格式產生。 如果已啟用對應項變更事件，就會以裝置對應項的格式產生對應的事件。
+當數位分身變更事件啟用時，每當元件或屬性的目前值或所需值變更時，就會觸發事件。 數位對應項變更事件會以 [JSON 修補程式](http://jsonpatch.com/) 格式產生。 如果已啟用對應項變更事件，就會以裝置對應項的格式產生對應的事件。
 
 若要瞭解如何啟用裝置和數位對應項事件的路由，請參閱 [使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 若要瞭解訊息格式，請參閱 [建立和讀取 IoT 中樞訊息](../iot-hub/iot-hub-devguide-messages-construct.md)。
 

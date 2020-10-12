@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827447"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
@@ -270,7 +270,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 若要設定這個屬性，網路介面必須存在。 因此，您需要相依性。 您在另一個資源 (父系) 內定義一項資源 (子系) 時，也需要設定相依性。 例如，診斷設定和自訂指令碼延伸模組都定義為虛擬機器的子資源。 在虛擬機器存在之後，它們才能建立。 因此，這兩個資源都會標示為相依於虛擬機器。
 
-## <a name="profiles"></a>設定檔
+## <a name="profiles"></a>Profiles
 
 定義虛擬機器資源時，會使用數個設定檔項目。 某些是必要的而有些則是選擇性。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必要的，但 diagnosticsProfile 為選擇性。 這些設定檔會定義設定，例如︰
    

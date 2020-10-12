@@ -8,15 +8,15 @@ ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892548"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud 災害復原
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 本文說明一些您可以用來保護 Azure Spring Cloud 應用程式，以避免發生停機的策略。  任何區域或資料中心都可能會遭遇因區域性災害而造成的停機狀況，但謹慎規劃可以減緩對客戶的影響。
 
@@ -65,7 +65,7 @@ Azure Spring Cloud 應用程式會在特定區域中執行。  Azure 能在世�
 
 5. 現在，環境已設定完成。 客戶應該可以透過 bcdr-test.contoso.com 存取應用程式
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：部署您的第一個 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)
  

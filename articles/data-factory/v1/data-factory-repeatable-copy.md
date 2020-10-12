@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441624"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory 中的可重複複製
@@ -147,7 +147,7 @@ Azure Data Factory 會根據其需求來填入此資料行，以確保來源和�
 
 與機制 1 類似，「複製活動」也會自動從目的地 SQL 資料表中清除所指定配量的資料。 接著，它會將來自來源的資料插入到目的地資料表中。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需完整的 JSON 範例，請檢閱下列連接器文章： 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

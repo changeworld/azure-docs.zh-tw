@@ -17,10 +17,10 @@ ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855222"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性
@@ -47,7 +47,7 @@ ms.locfileid: "88855222"
 
 如需負載平衡器限制的詳細資訊，請參閱[網路限制：Azure Resource Manager][networking-limits-azure-resource-manager] 中的「每個負載平衡器的私人前端 IP」一節。 也請考慮使用 [Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) 而非 Azure 負載平衡器的基本 SKU。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您已經使用**檔案共用**來設定要用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如下圖所示。
 
@@ -289,7 +289,7 @@ _**圖 13：** 已建立繫結至 sapglobal2 主機和 Volume2 的第二個 sapm
 ### <a name="install-dbms-and-sap-application-servers"></a>安裝 DBMS 和 SAP 應用程式伺服器
 安裝的 DBMS 和 SAP 應用程式伺服器，如先前所述。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [在沒有共用磁碟的容錯移轉叢集上安裝 ASCS/SCS 執行個體][sap-official-ha-file-share-document]：HA 檔案共用的官方 SAP 指導方針
 

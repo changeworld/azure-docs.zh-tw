@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021658"
 ---
 # <a name="get-started-with-service-bus-queues"></a>開始使用服務匯流排佇列
@@ -39,7 +39,7 @@ ms.locfileid: "89021658"
 ### <a name="add-the-service-bus-nuget-package"></a>新增服務匯流排 NuGet 封裝
 
 1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]****。
-1. 選取 [瀏覽]  。 搜尋並選取 [ **[Azure 服務匯流排](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**]。
+1. 選取 [瀏覽]。 搜尋並選取 [ **[Azure 服務匯流排](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**]。
 1. 選取 [ **安裝** ] 以完成安裝，然後關閉 NuGet 封裝管理員。
 
     ![選取 NuGet 封裝][nuget-pkg]

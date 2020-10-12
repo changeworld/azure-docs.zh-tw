@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049141"
 ---
 # <a name="conditional-access-block-access-by-location"></a>條件式存取：依位置封鎖存取
@@ -48,7 +48,7 @@ ms.locfileid: "89049141"
    1. 將 [設定] 設定為 [是]
    1. 在 [**包含**] 下，選取 [選取的**位置**]
    1. 選取您為組織建立的已封鎖位置。
-   1. 按一下 [選取]。
+   1. 按一下 [選取]。 
 1. 在 [ **存取控制** ] 底下 > 選取 [ **封鎖存取**]，然後選取 [ **選取**]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [ **建立** ] 以建立條件式存取原則。

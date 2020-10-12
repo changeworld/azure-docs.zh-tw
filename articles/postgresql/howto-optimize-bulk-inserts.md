@@ -1,5 +1,5 @@
 ---
-title: 優化大量插入-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+title: 優化大量插入-適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 description: 本文說明如何在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上優化大量插入作業。
 author: dianaputnam
 ms.author: dianas
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116279"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的大量插入和使用暫時性資料 
@@ -34,7 +34,7 @@ ms.locfileid: "86116279"
 
 在某些客戶工作負載中，使用未記錄的資料表約可帶來 15-20% 的效能提升。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 檢閱您的工作負載是否使用了暫時性資料和大量插入。 請參閱下列 PostgreSQL 文件：
  
 - [建立資料表 SQL 命令](https://www.postgresql.org/docs/current/static/sql-createtable.html)

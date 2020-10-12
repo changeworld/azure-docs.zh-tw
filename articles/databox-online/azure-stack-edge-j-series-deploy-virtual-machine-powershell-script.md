@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890652"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>透過 Azure PowerShell 腳本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
@@ -27,7 +27,7 @@ ms.locfileid: "90890652"
 
 ### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>透過本機 web UI 進行 Azure Stack Edge Pro 裝置
 
-1. 您已完成 Azure Stack Edge Pro 裝置上的網路設定，如 [步驟1：設定 Azure Stack Edge Pro 裝置](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
+1. 您已在 Azure Stack Edge Pro 裝置上完成網路設定，如[步驟1：設定 Azure Stack Edge Pro 裝置](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)所述。
 
 2. 已啟用網路介面進行計算。 此網路介面 IP 用來建立 VM 部署的虛擬交換器。 下列步驟會逐步引導您進行程序：
 
@@ -36,7 +36,7 @@ ms.locfileid: "90890652"
         > [!IMPORTANT] 
         > 您只能設定一個連接埠進行計算。
 
-    2. 在網路介面上啟用計算。 Azure Stack Edge Pro 會建立和管理對應于該網路介面的虛擬交換器。
+    2. 在網路介面上啟用計算。 Azure Stack Edge Pro 會建立和管理對應至該網路介面的虛擬交換器。
 
 3. 您已在 Azure Stack Edge Pro 裝置和用戶端的受根信任存放區中建立並安裝所有憑證。 請遵循[步驟 2：建立和安裝用戶端憑證](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述的程序。
 
@@ -116,6 +116,6 @@ ms.locfileid: "90890652"
     ```
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [使用 Azure PowerShell Cmdlet 部署 Vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)

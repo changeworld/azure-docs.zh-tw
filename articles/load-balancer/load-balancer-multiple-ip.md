@@ -1,7 +1,7 @@
 ---
 title: 在多個 IP 設定上進行負載平衡 - Azure 入口網站
 titleSuffix: Azure Load Balancer
-description: 在本文中，您將瞭解如何使用 Azure 入口網站，在主要和次要 IP 設定間進行負載平衡。
+description: 在本文中，您將瞭解如何使用 Azure 入口網站，在主要和次要 IP 設定之間進行負載平衡。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84803625"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 入口網站在多個 IP 組態上進行負載平衡
@@ -42,7 +42,7 @@ ms.locfileid: "84803625"
 - Azure Load Balancer 用來公開兩個前端 IP 位址 (每個網站一個)。 前端 IP 位址用於將流量分散至每個網站的各自 IP 組態。
 - 前端 IP 位址和後端集區 IP 位址使用相同的連接埠號碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 我們的案例假設您有一個名為 **contosofabrikam** 的資源群組，其設定如下︰
 
@@ -78,7 +78,7 @@ ms.locfileid: "84803625"
 
         2. 針對 [私人 IP 位址]**** 的 [配置]**** 設定，選取 [靜態]****。
 
-        3. 選取 [確定]。
+        3. 選取 [確定]  。
 
 在次要 NIC 的第二個 IP 設定完成時，它會顯示在指定 NIC 的 [IP 組態]**** 設定之下。
 
@@ -88,11 +88,11 @@ ms.locfileid: "84803625"
 
 1. 瀏覽至 Azure 入口網站：https://portal.azure.com。 使用您的 Azure 帳戶進行登入。
 
-2. 在畫面的左上方，選取 [**建立資源**] [網路] [  >  **Networking**  >  **Load Balancer**]。 接下來，選取 [建立]****。
+2. 在畫面的左上方，選取 [**建立資源**  >  **網路**]  >  **Load Balancer**。 接下來，選取 [建立]****。
 
 3. 在 [建立負載平衡器]**** 之下，輸入負載平衡器的名稱。 在此案例中，我們會使用名稱 **mylb**。
 
-4. 在 [**公用 ip 位址**] 下，建立名為**PublicIP1**的新公用 ip。
+4. 在 [ **公用 ip 位址**] 底下，建立名為 **PublicIP1**的新公用 ip。
 
 5. 在 [資源群組]**** 底下，選取 VM 的現有資源群組 (例如，**contosofabrikam**)。 選取要部署負載平衡器的位置，然後選取 [確定]****。
 
@@ -112,13 +112,13 @@ ms.locfileid: "84803625"
 
    3. 在 [位置]**** 中選取和 VM 相同的位置。
 
-   4. 選取 [確定]。
+   4. 選取 [確定]  。
 
       建立公用 IP 位址之後，它們便會顯示在 [公用 IP]**** 位址之下。
 
 3. <a name="step3-3"></a>在入口網站中，選取 [更多服務]****。 在篩選方塊中，輸入**負載平衡器**，然後選取 [負載平衡器]****。 
 
-4. 選取您想要新增前端 IP 集區的負載平衡器（**mylb**）。
+4. 選取您要新增前端 IP 集區的負載平衡器 (**mylb**) 。
 
 5. 在 [設定]**** 底下選取 [前端 IP 組態]****。 在下一個窗格中，選取頂端附近的 [新增]****。
 
@@ -138,7 +138,7 @@ ms.locfileid: "84803625"
 
 2. 選取要新增後端集區的負載平衡器 (**mylb**)。
 
-3. 在 [**設定**] 底下，選取 [**後端**集區]。 輸入後端集區的名稱（例如， **contosopool**或**fabrikampool**）。 在下一個窗格中，選取頂端附近的 [新增]****。 
+3. 在 [ **設定**] 底下，選取 [ **後端**集區]。 輸入您後端集區的名稱 (例如， **contosopool** 或 **fabrikampool**) 。 在下一個窗格中，選取頂端附近的 [新增]****。 
 
 4. 在 [關聯到]**** 中，選取 [可用性設定組]****。
 
@@ -148,11 +148,11 @@ ms.locfileid: "84803625"
 
     ![設定負載平衡器的後端集區](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
     
-    1. 針對 [**目標虛擬機器**]，選取您要新增至後端集區的 VM （例如， **VM1**或**VM2**）。
+    1. 針對 [ **目標虛擬機器**]，選取您要新增至後端集區的 VM (例如 **VM1** 或 **VM2**) 。
 
     2. 在 [網路 IP 組態]**** 中，針對您在前一個步驟中選取的 VM，選取次要 NIC 的 IP 組態 (例如，**VM1NIC2-ipconfig2** 或 **VM2NIC2-ipconfig2**)。
 
-7. 選取 [確定]。
+7. 選取 [確定]  。
 
 設定後端集區之後，位址會顯示在負載平衡器的 [後端集區]**** 設定之下。
 
@@ -166,13 +166,13 @@ ms.locfileid: "84803625"
 
 3. 在 [設定]**** 下，選取 [健康狀態探查]****。 在下一個窗格中，選取頂端附近的 [新增]****。 
 
-4. 輸入健康狀態探查的名稱 (例如，**HTTP**)。 選取 [確定]。
+4. 輸入健康狀態探查的名稱 (例如，**HTTP**)。 選取 [確定]  。
 
 ### <a name="step-6-configure-load-balancing-rules"></a>步驟 6：設定負載平衡規則
 
 針對每個網站 (contoso.com 和 fabrikam.com)，設定負載平衡規則：
     
-1. <a name="step6-1"></a>在 [**設定**] 下，選取 [**負載平衡規則**]。 在下一個窗格中，選取頂端附近的 [新增]****。 
+1. <a name="step6-1"></a>在 [ **設定**] 底下，選取 [ **負載平衡規則**]。 在下一個窗格中，選取頂端附近的 [新增]****。 
 
 2. 在 [名稱]**** 中，輸入負載平衡規則的名稱 (例如，對 contoso.com 輸入 **HTTPc**，或對 fabrikam.com 輸入 **HTTPf**)。
 
@@ -192,6 +192,6 @@ ms.locfileid: "84803625"
 
 在最後一個步驟中，將 DNS 資源記錄設定為指向負載平衡器的個別前端 IP 位址。 您可以在 Azure DNS 中裝載網域。 如需搭配使用 Azure DNS 與 Load Balancer 的詳細資訊，請參閱[使用 Azure DNS 搭配其他 Azure 服務](../dns/dns-for-azure-services.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 若要深入了解如何在 Azure 中合併負載平衡服務，請參閱[在 Azure 中使用負載平衡服務](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 瞭解如何在[Azure Load Balancer 的 Azure 監視器記錄](../load-balancer/load-balancer-monitor-log.md)中，使用不同類型的記錄來管理負載平衡器，並對其進行疑難排解。
+- 瞭解如何使用不同類型的記錄來管理 Azure 監視器記錄檔中的負載平衡器，並進行疑難排解以 [進行 Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md)。

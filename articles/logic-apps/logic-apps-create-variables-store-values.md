@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333897"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用變數來儲存和管理值
@@ -29,7 +29,7 @@ ms.locfileid: "91333897"
 > [!IMPORTANT]
 > 根據預設，"For each" 迴圈中的迴圈會平行執行。 當您在迴圈中使用變數時，請 [依序](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) 執行迴圈，讓變數傳回可預測的結果。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請 [註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -59,13 +59,13 @@ ms.locfileid: "91333897"
 
    * 若要在步驟之間新增動作，請將滑鼠移至連接箭號上方，以顯示加號 (**+**) 。 選取加號，然後選取 [ **新增動作**]。
 
-1. 在 [選擇動作]  底下的搜尋方塊中，輸入 `variables` 作為篩選條件。 從 [動作] 清單中選取 [ **初始化變數**]。
+1. 在 [選擇動作] 底下的搜尋方塊中，輸入 `variables` 作為篩選條件。 從 [動作] 清單中選取 [ **初始化變數**]。
 
    ![選取動作](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
 1. 提供變數的相關資訊，如下所述：
 
-   | 屬性 | 必要 | 值 |  說明 |
+   | 屬性 | 必要 | 值 |  描述 |
    |----------|----------|-------|--------------|
    | **名稱** | 是 | <*變數名稱*> | 要遞增的變數名稱 |
    | **型別** | 是 | <*變數類型*> | 變數的資料類型 |
@@ -205,7 +205,7 @@ ms.locfileid: "91333897"
 
 1. 提供下列資訊來遞增您的變數：
 
-   | 屬性 | 必要 | 值 |  說明 |
+   | 屬性 | 必要 | 值 |  描述 |
    |----------|----------|-------|--------------|
    | **名稱** | 是 | <*變數名稱*> | 要遞增的變數名稱 |
    | **ReplTest1** | 否 | <*遞增-值*> | 用來遞增變數的值。 預設值為 1。 <p><p>**提示**：雖然此值為選擇性，但最佳做法是設定此值，如此您便一律知道用來遞增變數的特定值。 |
@@ -282,7 +282,7 @@ ms.locfileid: "91333897"
 
    ![新增會傳送結果的動作](./media/logic-apps-create-variables-store-values/send-email-results.png)
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 ### <a name="test-your-logic-app"></a>測試應用程式邏輯
 
@@ -326,7 +326,7 @@ ms.locfileid: "91333897"
 
 以下是 [遞減變數]**** 動作的屬性：
 
-| 屬性 | 必要 | 值 |  說明 |
+| 屬性 | 必要 | 值 |  描述 |
 |----------|----------|-------|--------------|
 | **名稱** | 是 | <*變數名稱*> | 要遞減的變數名稱 | 
 | **ReplTest1** | 否 | <*遞增-值*> | 用來遞減變數的值。 預設值為 1。 <p><p>**提示**：雖然此值為選擇性，但最佳做法是設定此值，如此您便一律知道用來遞減變數的特定值。 |
@@ -359,7 +359,7 @@ ms.locfileid: "91333897"
 
 以下是 [設定變數]**** 動作的屬性：
 
-| 屬性 | 必要 | 值 |  說明 |
+| 屬性 | 必要 | 值 |  描述 |
 |----------|----------|-------|--------------|
 | **名稱** | 是 | <*變數名稱*> | 要變更的變數名稱 |
 | **ReplTest1** | 是 | <*新值*> | 您想要指派給變數的值。 兩者必須具有相同的資料類型。 |
@@ -417,7 +417,7 @@ ms.locfileid: "91333897"
 
 以下是 [附加至...]**** 動作的屬性：
 
-| 屬性 | 必要 | 值 |  說明 |
+| 屬性 | 必要 | 值 |  描述 |
 |----------|----------|-------|--------------|
 | **名稱** | 是 | <*變數名稱*> | 要變更的變數名稱 |
 | **ReplTest1** | 是 | <*附加-值*> | 您想要附加的值 (可以具有任何類型) |

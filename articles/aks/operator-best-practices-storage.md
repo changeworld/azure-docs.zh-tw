@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653965"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
@@ -94,7 +94,7 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 請了解不同資料備份方法的限制，以及您是否需要在擷取快照集之前使資料靜止。 資料備份並不一定能讓您還原您的叢集部署應用程式環境。 如需那些案例的詳細資訊，請參閱 [AKS 中商務持續性和災害復原的最佳做法][best-practices-multi-region]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文著重於 AKS 中的儲存體最佳做法。 如需 Kubernetes 中儲存體基本概念的詳細資訊，請參閱 [AKS 中適用於應用程式的儲存體概念][aks-concepts-storage]。
 

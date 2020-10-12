@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268378"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 入口網站開始傳遞點播內容
@@ -30,7 +30,7 @@ ms.locfileid: "89268378"
 
 本教學課程會逐步引導您在 Azure 入口網站中透過 Azure 媒體服務 (AMS) 應用程式實作基本點播視訊內容傳遞服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 需要有下列項目，才能完成教學課程：
 
 * 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
@@ -93,7 +93,7 @@ ms.locfileid: "89268378"
    為了協助您管理資源，您可以編輯輸出資產的名稱和作業的名稱。
    
    ![為資產編碼](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 選取 [建立]  。
+5. 選取 [建立]****。
 
 ### <a name="monitor-encoding-job-progress"></a>監視編碼作業進度
 若要監視編碼作業的進度，請按一下 [設定]****，然後選取 [作業]****。
@@ -137,7 +137,7 @@ ms.locfileid: "89268378"
 2. 選取 **設定** > **資產**。 選取您要發佈的資產。
 3. 選取 [發佈] 按鈕。
 4. 選取定位器類型。
-5. 選取 [新增]  。
+5. 選取 [新增]。
    
     ![發佈影片](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

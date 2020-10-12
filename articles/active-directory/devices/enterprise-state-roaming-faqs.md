@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268531"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定和資料漫遊常見問題集
@@ -29,7 +29,7 @@ ms.locfileid: "89268531"
 * 佈景主題，包括桌面佈景主題和工作列設定等功能。
 * Internet Explorer 設定，包括最近所開啟索引標籤和我的最愛。
 * *Microsoft Edge 瀏覽器設定*- 例如我的最愛和閱讀清單。
-* *密碼*，包括網際網路密碼、wi-fi 設定檔和其他密碼。
+* *密碼*，包括網際網路密碼、Wi-Fi 設定檔和其他密碼。
 * 語言喜好設定，包括鍵盤配置、系統語言、日期和時間等設定。
 * 輕鬆存取功能，例如高對比主題、朗讀程式和放大鏡。
 * 其他 Windows 設定，例如滑鼠設定。
@@ -77,7 +77,7 @@ ms.locfileid: "89268531"
 當來自不同 Azure AD 租用戶的多個 Azure AD 帳戶位於相同的裝置時，您必須更新裝置的登錄，才能與每個 Azure AD 租用戶的 Azure Rights Management 服務進行通訊。  
 
 1. 尋找每個 Azure AD 租用戶的 GUID。 開啟 Azure 入口網站，然後選取 Azure AD 租用戶。 租用戶的 GUID 是在所選租用戶的 [屬性] 頁面 (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) 上，其標示為 [目錄識別碼]****。 
-2. 擁有 GUID 之後，您必須將登錄機碼新增**HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **。
+2. 擁有 GUID 之後，您將需要新增登錄機碼**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **。
    從「租用戶識別碼 GUID」**** 機碼，建立一個名為 **AllowedRMSServerUrls** 的新多字串值 (REG-MULTI-SZ)。 針對其資料，指定裝置所存取之其他 Azure 租用戶的授權發佈點 URL。
 3. 您可以藉由從 AADRM 模組執行 **Get-AadrmConfiguration** Cmdlet 來尋找授權發佈點 URL。 如果 **LicensingIntranetDistributionPointUrl** 與 **LicensingExtranetDistributionPointUrl** 的值不同，則請同時指定這兩個值。 如果值相同，則只要指定值一次。
 

@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 41495f6f10f7337c065a06d0d9b71142475bb5c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506310"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中樞觸發程式和系結
@@ -24,7 +24,7 @@ ms.locfileid: "86506310"
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [回應傳送至事件中樞事件資料流程的事件（觸發程式）](./functions-bindings-event-hubs-trigger.md)
-- [將事件寫入事件資料流程（輸出系結）](./functions-bindings-event-hubs-output.md)
+- [回應傳送至事件中樞事件資料流程的事件 (觸發程式) ](./functions-bindings-event-hubs-trigger.md)
+- [ (輸出系結將事件寫入事件資料流程) ](./functions-bindings-event-hubs-output.md)

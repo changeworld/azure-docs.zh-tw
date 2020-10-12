@@ -4,10 +4,10 @@ description: 本文說明如何將已啟用受控識別的 Service Fabric 應用
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333625"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>將 Service Fabric 應用程式的受控識別存取權授與 Azure 資源
@@ -20,7 +20,7 @@ ms.locfileid: "91333625"
 在此情況下，您可以使用 Service Fabric 應用程式的受控識別 (使用者指派的) ，以從 Azure 儲存體 blob 中取出資料。 使用下列步驟，將 Azure 入口網站中的必要許可權授與身分識別：
 
 1. 流覽至儲存體帳戶
-2. 按一下左側面板中的 [存取控制 (IAM)] 連結。
+2. 按一下左側面板中的 [存取控制 (IAM)]  連結。
 3.  (選擇性) 檢查現有的存取權：在 [尋找] 控制項中選取系統或使用者指派的受控識別;從後續結果清單中選取適當的身分識別
 4. 按一下頁面頂端的 [+ 新增角色指派]，為應用程式的身分識別新增角色指派。
 在 [角色] 下，從下拉式清單中，選取 [儲存體 Blob 資料讀取器]。

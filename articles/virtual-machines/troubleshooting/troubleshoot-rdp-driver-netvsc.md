@@ -13,19 +13,19 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508996"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>因為 netvsc.sys 而無法從遠端連線到 Azure 中的 Windows 10 或 Windows Server 2016 VM
 
 此文章說明如何針對當您連線到 Hyper-V Server 2016 上的 Windows 10 或 Windows Server 2016 Datacenter 虛擬機器 (VM) 時沒有網路連線的問題進行疑難排解。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-您無法使用遠端桌面通訊協定（RDP）來連接到 Azure Windows 10 或 Windows Server 2016 VM。 在 [開機診斷](boot-diagnostics.md) 中，畫面中的網路介面卡 (NIC) 上方顯示紅色打叉符號。 這表示 VM 在作業系統完全載入之後沒有連線。
+您無法使用遠端桌面通訊協定 (RDP) 連接到 Azure Windows 10 或 Windows Server 2016 VM。 在 [開機診斷](boot-diagnostics.md) 中，畫面中的網路介面卡 (NIC) 上方顯示紅色打叉符號。 這表示 VM 在作業系統完全載入之後沒有連線。
 
 一般而言，此問題發生在 Windows [組建 14393](https://support.microsoft.com/help/4093120/) 與[組建 15063](https://support.microsoft.com/help/4015583/) 中。 若您的作業系統版本比這些版本新，此文章不適用於您的案例。 若要檢查系統版本，請在[序列存取主控台](serial-console-windows.md) 中開啟 CMD 工作階段，然後執行 **Ver**。
 
@@ -34,9 +34,9 @@ ms.locfileid: "86508996"
 若安裝之 netvsc.sys 系統檔案的版本是 **10.0.14393.594** 或 **10.0.15063.0**，則可能會發生此問題。 這些版本的 netvsc.sys 可能會使得系統無法與 Azure 平台互動。
 
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
-在您遵循這些步驟之前，請將受影響 VM[的系統磁片快照](../windows/snapshot-copy-managed-disk.md)集作為備份。 若要針對此問題進行疑難排解，請使用「序列主控台」，或是將 VM 系統磁碟連結至復原 VM，藉以[修復離線的 VM](#repair-the-vm-offline)。
+在您執行這些步驟之前，請將受影響 VM 的 [系統磁片快照](../windows/snapshot-copy-managed-disk.md) 集作為備份。 若要針對此問題進行疑難排解，請使用「序列主控台」，或是將 VM 系統磁碟連結至復原 VM，藉以[修復離線的 VM](#repair-the-vm-offline)。
 
 
 ### <a name="use-the-serial-console"></a>使用序列主控台
@@ -73,13 +73,13 @@ ms.locfileid: "86508996"
 
 2. 啟動復原 VM 的遠端桌面連線。
 
-3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結系統磁碟的磁碟機代號。
+3. 確定磁片在磁片管理主控台中標示為 [ **線上** ]。 記下指派給已連結系統磁碟的磁碟機代號。
 
 4. 建立 **\Windows\System32\config** 資料夾的複本，以便在需要回復變更時使用。
 
 5. 在救援 VM 上，啟動 [登錄編輯程式] \(regedit.exe\)。
 
-6. 選取 [ **HKEY_LOCAL_MACHINE** ] 索引鍵，然後**File**  >  從功能表中選取 [檔案] [**載入 Hive** ]。
+6. 選取**HKEY_LOCAL_MACHINE**機碼，然後從功能表中**選取 [** 檔案  >  **載入 Hive** ]。
 
 7. 在 **\Windows\System32\config** 資料夾中尋找 SYSTEM 檔案。
 
