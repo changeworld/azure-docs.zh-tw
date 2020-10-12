@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89290773"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
@@ -81,7 +81,7 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 如果您在 Azure 數位 Twins 應用程式中使用版本 **1.2.0** ，或將程式庫新增至您的專案，但未指定 (的版本，這也會預設為此最新版本) ，您將會看到此問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure 數位 Twins 的安全性和許可權：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

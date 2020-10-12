@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75465556"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric Testability 案例：服務通訊
@@ -35,7 +35,7 @@ ms.locfileid: "75465556"
 
 妥善處理這些案例，對於系統流暢運作至關重要。 若要這樣做，請注意下列事項：
 
-* 可連接的各項服務都有「位址」 ** 可接聽 (例如 HTTP 或 WebSockets)。 當服務執行個體或分割移動時，其位址端點會變更。 （它會移至具有不同 IP 位址的不同節點）。如果您使用內建的通訊元件，則會為您處理重新解析的服務位址。
+* 可連接的各項服務都有「位址」 ** 可接聽 (例如 HTTP 或 WebSockets)。 當服務執行個體或分割移動時，其位址端點會變更。  (它會移至具有不同 IP 位址的不同節點。 ) 如果您使用內建的通訊元件，則會為您處理重新解析的服務位址。
 * 當服務執行個體再次開啟接聽程式時，服務延遲時間可能會短暫增加。 這需取決於服務在服務執行個體移動後開啟接聽程式的速度。
 * 必須先關閉任何現有的連線，然後等服務於新的節點上開啟之後再重新開啟。 妥善關閉節點或重新開啟，可讓現有連線擁有足夠時間正常關閉。
 

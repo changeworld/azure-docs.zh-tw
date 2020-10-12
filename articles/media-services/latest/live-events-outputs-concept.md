@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291461"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時事件和即時輸出
@@ -60,7 +60,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ![使用媒體服務的即時編碼範例圖表](./media/live-streaming/live-encoding.svg)
 
-搭配媒體服務使用即時編碼時，您可以設定內部部署即時編碼器，以使用 RTMP 或分散的通訊協定) ，將單一位元速率的影片作為發佈摘要傳送給實況活動 (。 接著，您會設定實況活動，讓它將該傳入的單一位元速率串流編碼為 [多位元率影片串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，並讓輸出可供傳遞，以透過 MPEG、HLS 和 Smooth Streaming 等通訊協定播放裝置。
+搭配媒體服務使用即時編碼時，您可以設定內部部署即時編碼器，以使用 RTMP 或 Fragmented-Mp4 通訊協定) ，將單一位元速率的影片作為發佈摘要傳送至實況活動 (。 接著，您會設定實況活動，讓它將該傳入的單一位元速率串流編碼為 [多位元率影片串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，並讓輸出可供傳遞，以透過 MPEG、HLS 和 Smooth Streaming 等通訊協定播放裝置。
 
 當您使用即時編碼時，您只能以每秒30個畫面格速率的解析度，以每秒30個畫面格速率的解析度傳送投稿摘要，並使用 h.264/AVC video 編解碼器和 AAC (AAC-LC、He-aacv1 或 He-aacv2) 音訊編解碼器。 請注意，傳遞實況活動最多可支援60個畫面格每秒最高4K 的解析度。 如需詳細資訊，請參閱 [即時事件種類比較](live-event-types-comparison.md)。
 
@@ -71,7 +71,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="creating-live-events"></a>建立實況活動
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 建立「實況活動」時，您可以指定下列選項：
 
@@ -124,7 +124,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
     使用下列 Api 來啟用虛名 URL，並將存取權杖設定為有效的 GUID (例如 `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) 。  
 
-    |語言|啟用虛名 URL|設定存取權杖|
+    |Language|啟用虛名 URL|設定存取權杖|
     |---|---|---|
     |REST|[vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--虛名-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|

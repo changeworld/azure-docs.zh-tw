@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure 監視器建立和管理傳統計量警示
+title: 使用 Azure 監視器建立及管理傳統計量警示
 description: 了解如何使用 Azure 入口網站、CLI 或 Powershell 來建立、檢視及管理傳統計量警示規則。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852135"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理傳統計量警示
 
 > [!WARNING]
-> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](./alerts-overview.md)。 傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。
+> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援 [較新的近乎即時計量警示和新的警示體驗](./alerts-overview.md)。 傳統警示已 [淘汰](./monitoring-classic-retirement.md)，但仍對尚未支援新警示的資源使用限制。
 >
 
 想在其中一個計量超過閾值時收到通知，可以利用 Azure 監視器中的傳統計量警示。 傳統計量警示是較舊的功能，允許只針對無維度計量發出警示。 現有的較新功能稱為計量警示，和傳統計量警示相比，功能更強。 您可以在[計量警示概觀](./alerts-metric-overview.md)深入了解新的計量警示功能。 在此文章中，我們將會說明如何透過 Azure 入口網站、Azure CLI 與 Powershell 建立、檢視及管理傳統計量警示規則。
@@ -38,7 +38,7 @@ ms.locfileid: "87852135"
 
 6. 如果您想要讓系統管理員和共同管理員在警示引發時收到電子郵件通知，請選取 [電子郵件的擁有者...] ****。
 
-7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 以分號分隔多個電子郵件，格式如下： *email \@ contoso .com; email2 \@ contoso.com*
+7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 使用分號分隔多個電子郵件，格式如下： * \@ contoso .com; email2 \@ contoso.com*
 
 8. 如果您想在警示引發時呼叫 Webhook，在 [Webhook] **** 欄位中放入有效的 URI。
 
@@ -130,7 +130,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. 無法再透過 PowerShell 建立傳統的警示規則。 若要建立警示規則，您必須使用新的[' AzMetricAlertRule '](/powershell/module/az.monitor/add-azmetricalertrule)命令。
+8. 無法再透過 PowerShell 建立傳統的警示規則。 若要建立警示規則，您必須使用新的 [' AzMetricAlertRule '](/powershell/module/az.monitor/add-azmetricalertrule) 命令。
 
 ## <a name="next-steps"></a>後續步驟
 

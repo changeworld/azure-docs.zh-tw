@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928678"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>設定適用于系統管理存取權的 Azure 角色 Azure 認知搜尋
@@ -26,7 +26,7 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 
 針對 Azure 認知搜尋，角色會與支援下列管理工作的許可權層級相關聯：
 
-| [角色] | Task |
+| 角色 | Task |
 | --- | --- |
 | 擁有者 |建立或刪除服務或服務上的任何物件，包括 api 索引鍵、索引、索引子、索引子資料來源和索引子排程。<p>檢視服務狀態，包括計數和儲存體大小。<p>新增或刪除角色成員資格 (只有「擁有者」可以管理角色成員資格)。<p>訂用帳戶管理員和服務擁有者在擁有者角色具有自動成員資格。 |
 | 參與者 |與擁有者相同層級的存取權，減去 Azure 角色管理。 例如，參與者可以建立或刪除物件，或檢視和重新產生 [API 金鑰](search-security-api-keys.md)，但不能修改角色成員資格。 |
@@ -50,8 +50,8 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 | 管理管理金鑰 | 管理金鑰、資源的 RBAC 擁有者或參與者 |
 | 管理查詢金鑰 |  管理金鑰、資源的 RBAC 擁有者或參與者  |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [使用 Powershell 管理](search-manage-powershell.md) 
 + [Azure 認知搜尋中的效能和優化](search-performance-optimization.md)
-+ [開始使用 Azure 入口網站中的角色型存取控制](../role-based-access-control/overview.md)。
++ [Role-Based Azure 入口網站中的存取控制開始使用](../role-based-access-control/overview.md)。

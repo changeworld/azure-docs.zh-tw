@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90031240"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>關於 Microsoft 安全性程式碼分析
@@ -104,7 +104,7 @@ Microsoft 安全性程式碼分析延伸模組也有三個作業中的工作。 
 >[!NOTE]
 >根據設計，如果工作成功完成，每個組建工作都會成功。 無論工具是否找到問題，都是如此，如此一來，就可以藉由允許所有工具執行來完成組建。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需如何上架及安裝 Microsoft 安全性程式碼分析的指示，請參閱我們的上線 [和安裝指南](security-code-analysis-onboard.md)。
 

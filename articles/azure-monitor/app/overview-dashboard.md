@@ -4,10 +4,10 @@ description: 使用 Azure Application Insights 和概觀儀表板的功能監控
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970619"
 ---
 # <a name="application-insights-overview-dashboard"></a>Azure Application Insights 概觀儀表板
@@ -55,7 +55,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 如果您選取 [設定 **磚設定** ]，並設定超過31天的自訂時間範圍，您的儀表板不會顯示超過31天的資料，即使預設資料保留期為90天。 此行為目前沒有任何因應措施。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [漏斗圖](./usage-funnels.md)
 - [保留](./usage-retention.md)

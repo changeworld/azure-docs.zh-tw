@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883719"
 ---
 # <a name="connect-windows-security-events"></a>連線 Windows 安全性事件 
@@ -79,7 +79,7 @@ ms.locfileid: "90883719"
 
 1. 選取您要串流 ([ [所有]、[一般] 或 [基本](#event-sets) ]) 的事件集。
 
-1. 按一下 [更新]。
+1. 按一下 [更新] 。
 
 1. 若要在 Log Analytics 中使用適用于 Windows 安全性事件的相關架構，請 `SecurityEvent` 在 [查詢] 視窗中輸入。
 
@@ -111,7 +111,7 @@ Azure Sentinel 可以將機器學習 (ML) 套用至安全性事件資料，以�
     > [!NOTE]
     > 由於機器學習演算法需要30天的資料來建立使用者行為的基準設定檔，因此您必須允許在偵測到任何事件之前，先收集30天的安全性事件資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Windows 安全性事件連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 使用 [內建](tutorial-detect-threats-built-in.md) 或 [自訂](tutorial-detect-threats-custom.md) 規則開始偵測 Azure Sentinel 的威脅。

@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86520744"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure Logic Apps 與 Azure Functions 來建立串流的客戶深入解析儀表板
@@ -50,7 +50,7 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 2. 尋找 [文字分析]**** 連接器。
 
-3. 選取 [偵測情感]**** 動作。
+3. 選取 [偵測 **情感** ] 動作。
 
 4. 如果出現提示，請提供適用於文字分析服務的有效認知服務金鑰。
 
@@ -59,7 +59,7 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 取得推文資料與推文的深入解析之後，您現在可以使用其他數個相關的連接器以及其動作：
 
 * **Power BI - 將資料列新增至串流資料集**︰在 Power BI 儀表板上檢視傳入的推文。
-* **Azure Data Lake 附加**檔案：將客戶資料新增至要包含在分析作業中的 Azure Data Lake 資料集。
+* **Azure Data Lake 附加**檔案：將客戶資料新增至要納入分析作業的 Azure Data Lake 資料集。
 * **SQL-加入資料列**：將資料儲存在資料庫中，以供日後抓取。
 * **Slack - 傳送訊息**︰通知 Slack 通道有關可能需要有所行動的負面意見反應。
 
@@ -104,11 +104,11 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 ## <a name="create-automated-deployment-templates"></a>建立自動部署範本
 
-建立邏輯應用程式解決方案之後，您可以擷取您的應用程式並將其當作 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)，部署至世界上任何 Azure 區域。 您可以使用這項功能來修改參數，以建立應用程式的不同版本，以及將您的解決方案整合至 Azure Pipelines。 您也可以將 Azure Functions 納入部署範本中，以便將整個解決方案與所有相依性當作單一範本來管理。 瞭解如何將[邏輯應用程式部署自動化](logic-apps-azure-resource-manager-templates-overview.md)。
+建立邏輯應用程式解決方案之後，您可以擷取您的應用程式並將其當作 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)，部署至世界上任何 Azure 區域。 您可以使用這項功能來修改參數，以建立應用程式的不同版本，以及將您的解決方案整合至 Azure Pipelines。 您也可以將 Azure Functions 納入部署範本中，以便將整個解決方案與所有相依性當作單一範本來管理。 瞭解如何將 [邏輯應用程式部署自動化](logic-apps-azure-resource-manager-templates-overview.md)。
 
 如需 Azure 函式的部署範本範例，請查看 [Azure 快速入門範本存放庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [尋找 Azure Logic Apps 的其他範例和案例](logic-apps-examples-and-scenarios.md)
 

@@ -1,22 +1,22 @@
 ---
 title: Azure Service Fabric 環境變數
-description: 瞭解 Azure Service Fabric 中的環境變數。 包含變數及其用法的完整清單參考。
+description: 瞭解 Azure Service Fabric 中的環境變數。 包含變數完整清單及其用法的參考。
 author: mikkelhegn
 ms.topic: reference
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75645679"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 環境變數
 
 Service Fabric 具有針對每個服務執行個體所設定的內建環境變數。 環境變數的完整清單如下：
 
-| 環境變數                         | 說明                                                            | 範例                                                              |
+| 環境變數                         | 描述                                                            | 範例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | 應用程式的網狀架構 URI 名稱                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | 處理序所屬的程式碼套件名稱              | 程式碼                                                                 |

@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269755"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>封鎖連接器在 Azure Logic Apps 中建立的連接
@@ -19,7 +19,7 @@ ms.locfileid: "91269755"
 
 本主題說明如何使用 Azure 入口網站來設定用來封鎖特定連線的原則，但您可以透過其他方式建立原則定義，例如透過 Azure REST API、Azure PowerShell、Azure CLI 和 Azure Resource Manager 範本。 如需詳細資訊，請參閱 [教學課程：建立和管理原則以強制執行合規性](../governance/policy/tutorials/create-and-manage.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請在開始前 [建立免費的 Azure 帳戶](https://azure.microsoft.com/free/) 。
 
@@ -123,7 +123,7 @@ ms.locfileid: "91269755"
 
    ![顯示「原則定義」屬性的螢幕擷取畫面。](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號 (**...**) 按鈕。 <br>2. 從 **訂** 用帳戶清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，請選取 [ **選取**]。 |
    | **名稱** | 是 | <*原則定義名稱*> | 要用於原則定義的名稱 |
@@ -150,7 +150,7 @@ ms.locfileid: "91269755"
     }
     ```
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 決定原則所評估之資源類型的模式。 <p><p>此案例會將設定 `mode` 為，以將 `All` 原則套用至 Azure 資源群組、訂用帳戶和所有資源類型。 <p><p>如需詳細資訊，請參閱 [原則定義結構模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 決定何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷 `api.id` 中的值是否 `Microsoft.Web/connections/api.id` 符合 `*managedApis/{connector-name}` ，這會指定萬用字元 ( * ) 值。 <p><p>如需詳細資訊，請參閱 [原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -244,7 +244,7 @@ ms.locfileid: "91269755"
 
    ![原則定義屬性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號 (**...**) 按鈕。 <br>2. 從 **訂** 用帳戶清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，請選取 [ **選取**]。 |
    | **名稱** | 是 | <*原則定義名稱*> | 要用於原則定義的名稱 |
@@ -271,7 +271,7 @@ ms.locfileid: "91269755"
     }
     ```
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 決定原則所評估之資源類型的模式。 <p><p>此案例會將設定 `mode` 為，以將 `All` 原則套用至 Azure 資源群組、訂用帳戶和所有資源類型。 <p><p>如需詳細資訊，請參閱 [原則定義結構模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 決定何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷的字串輸出是否 `[string(field('Microsoft.Logic/workflows/parameters'))]` 包含字串 `{connector-name}` 。 <p><p>如需詳細資訊，請參閱 [原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -329,7 +329,7 @@ ms.locfileid: "91269755"
 
 1. 在 [ **基本**] 下，為原則指派提供下列資訊：
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **範圍** | 是 | 您要強制執行原則指派的資源。 <p><p>1. 在 [ **範圍** ] 方塊旁邊，選取省略號 (**...**) 按鈕。 <br>2. 從 **訂** 用帳戶清單中，選取 Azure 訂用帳戶。 <br>3. （選擇性）從 [ **資源群組** ] 清單中選取資源群組。 <br>4. 當您完成時，請選取 [ **選取**]。 |
    | **排除** | 否 | 要從原則指派中排除的任何 Azure 資源。 <p><p>1. 在 [ **排除** 專案] 方塊旁邊，選取省略號 (**...**) 按鈕。 <br>2. 從 **資源清單** 中，選取資源 > **新增至選取的範圍**。 <br>3. 當您完成時，請選取 [ **儲存**]。 |

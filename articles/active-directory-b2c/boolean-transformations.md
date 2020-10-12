@@ -12,10 +12,10 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201271"
 ---
 # <a name="boolean-claims-transformations"></a>布林值宣告轉換
@@ -48,7 +48,7 @@ ms.locfileid: "85201271"
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-andclaims"></a>AndClaims 的範例
+### <a name="example-of-andclaims"></a>AndClaims 範例
 
 - 輸入宣告：
     - **inputClaim1**：true
@@ -108,7 +108,7 @@ ms.locfileid: "85201271"
 </TechnicalProfile>
 ```
 
-### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue 的範例
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue 範例
 
 - 輸入宣告：
     - **inputClaim**：false
@@ -141,7 +141,7 @@ ms.locfileid: "85201271"
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue 的範例
+### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue 範例
 
 - 輸入宣告：
     - **inputClaim**：false
@@ -172,7 +172,7 @@ ms.locfileid: "85201271"
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-notclaims"></a>NotClaims 的範例
+### <a name="example-of-notclaims"></a>NotClaims 範例
 
 - 輸入宣告：
     - **inputClaim**：false
@@ -203,7 +203,7 @@ ms.locfileid: "85201271"
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-orclaims"></a>OrClaims 的範例
+### <a name="example-of-orclaims"></a>OrClaims 範例
 
 - 輸入宣告：
     - **inputClaim1**：true

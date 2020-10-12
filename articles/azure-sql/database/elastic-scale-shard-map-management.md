@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 503a55bf49d97f00f26044aef3e19b0fec58b37d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84034579"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分區對應管理員相應放大資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-若要在 Azure SQL Database 上輕鬆地相應放大資料庫，請使用分區對應管理員。 分區對應管理員是特殊的資料庫，負責維護分區集中所有分區 (資料庫) 的全域對應資訊。 此中繼資料可讓應用程式根據 **分區化索引鍵**的值，連線到正確的資料庫。 此外，分區集中的每個分區都包含可追蹤本機分區資料的對應 (稱為 **shardlet**)。
+若要輕鬆地在 Azure SQL Database 上擴充資料庫，請使用分區對應管理員。 分區對應管理員是特殊的資料庫，負責維護分區集中所有分區 (資料庫) 的全域對應資訊。 此中繼資料可讓應用程式根據 **分區化索引鍵**的值，連線到正確的資料庫。 此外，分區集中的每個分區都包含可追蹤本機分區資料的對應 (稱為 **shardlet**)。
 
 ![分區對應管理](./media/elastic-scale-shard-map-management/glossary.png)
 
@@ -54,7 +54,7 @@ Elastic Scale 支援下列類型作為分區化索引鍵：
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
+| 整數 |整數 |
 | long |long |
 | guid |uuid |
 | byte[]  |byte[] |
@@ -70,7 +70,7 @@ Elastic Scale 支援下列類型作為分區化索引鍵：
 
 **分區**包含 **Shardlet**，Shardlet 至分區的對應是由分區對應所維護。 **清單分區對應** 是個別索引鍵值 (識別 Shardlet) 與資料庫 (做為分區) 之間的關聯。  **清單對應** 十分明確，而且不同的索引鍵值可以對應到相同資料庫。 例如，索引鍵值 1 對應到 Database A，而索引鍵值 3 和 6 都會對應到 Database B。
 
-| 答案 | 分區位置 |
+| 機碼 | 分區位置 |
 | --- | --- |
 | 1 |Database_A |
 | 3 |Database_B |
@@ -84,7 +84,7 @@ Elastic Scale 支援下列類型作為分區化索引鍵：
 
 例如，**[0, 100)** 包含所有大於或等於 0 且小於 100 的整數。 請注意，多個範圍可指向相同的資料庫，而且可支援不相連的範圍 (例如 [100, 200) 和 [400, 600) 都指向下列範例中的資料庫 C。)
 
-| 答案 | 分區位置 |
+| 機碼 | 分區位置 |
 | --- | --- |
 | [1,50) |Database_A |
 | [50,100) |Database_B |
@@ -221,7 +221,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 ### <a name="only-metadata-affected"></a>只影響中繼資料
 
-用來填入或變更 **ShardMapManager** 資料的方法不會改變分區本身中儲存的使用者資料。 比方說，**CreateShard**、**DeleteShard**、**UpdateMapping** 等方法只會影響分區對應中繼資料。 它們不會移除、新增或改變分區中所包含的使用者資料。 相反地，這些方法是設計來搭配其他作業一起使用，例如，您可能執行這些作業來建立或移除實際的資料庫，或將資料列從一個分區移至另一個分區，以重新平衡分區化環境。  （彈性資料庫工具隨附的**分割合併**工具會使用這些 api，以及協調分區之間實際的資料移動。）請參閱[使用彈性資料庫分割合併工具進行調整](elastic-scale-overview-split-and-merge.md)。
+用來填入或變更 **ShardMapManager** 資料的方法不會改變分區本身中儲存的使用者資料。 比方說，**CreateShard**、**DeleteShard**、**UpdateMapping** 等方法只會影響分區對應中繼資料。 它們不會移除、新增或改變分區中所包含的使用者資料。 相反地，這些方法是設計來搭配其他作業一起使用，例如，您可能執行這些作業來建立或移除實際的資料庫，或將資料列從一個分區移至另一個分區，以重新平衡分區化環境。   (彈性資料庫工具隨附的 **分割合併** 工具，會使用這些 api，並協調分區之間的實際資料移動。 ) 請參閱 [使用彈性資料庫分割合併工具進行調整](elastic-scale-overview-split-and-merge.md)。
 
 ## <a name="data-dependent-routing"></a>資料相依路由
 
@@ -254,7 +254,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
   
     只有當對應處於「離線」狀態時，才允許分區對應上的某些作業，包括 **UpdateMapping** 和 **DeleteMapping**。 對應離線時，根據該對應中包含的索引鍵來提出資料相依要求會傳回錯誤。 此外，當範圍第一次離線時，受影響分區的所有連線會自動終止，以避免查詢要變更的範圍時產生不一致或不完整的結果。
 
-對應在 .NET 中是不可變的物件。  以上會變更對應的所有方法也會使您的程式碼中任何對它們的參考失效。 為了輕鬆執行作業序列來變更對應的狀態，所有會變更對應的方法都會傳回新的對應參考，如此就能鏈結作業。 例如，若要在 shardmap sm 中刪除包含索引鍵 25 的現有對應，您可以執行下列方法：
+對應是 .NET 中不可變的物件。  以上會變更對應的所有方法也會使您的程式碼中任何對它們的參考失效。 為了輕鬆執行作業序列來變更對應的狀態，所有會變更對應的方法都會傳回新的對應參考，如此就能鏈結作業。 例如，若要在 shardmap sm 中刪除包含索引鍵 25 的現有對應，您可以執行下列方法：
 
 ```
     sm.DeleteMapping(sm.MarkMappingOffline(sm.GetMappingForKey(25)));

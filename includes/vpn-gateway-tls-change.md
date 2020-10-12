@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2ed141847f923a847443d2293e850519357cdae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173870"
 ---
 從 2018 年 7 月 1 日起，對 TLS 1.0 和 1.1 的支援將會從 Azure VPN 閘道移除。 VPN 閘道僅支援 TLS 1.2。 只有點對站連線會受到影響，站對站連線沒有影響。 如果您針對 Windows 10 用戶端上的點對站 VPN 使用 TLS，則您不需要採取任何動作。 如果您針對 Windows 7 和 Windows 8 用戶端上的點對站連線使用 TLS，請參閱 [VPN 閘道常見問題集](../articles/vpn-gateway/vpn-gateway-vpn-faq.md#P2S)以取得更新指示。

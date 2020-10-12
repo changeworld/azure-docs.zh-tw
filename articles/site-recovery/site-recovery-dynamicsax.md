@@ -1,15 +1,15 @@
 ---
-title: Dynamics AX 與 Azure Site Recovery 的嚴重損壞修復
+title: Dynamics AX 與 Azure Site Recovery 的災難復原
 description: 瞭解如何使用 Azure Site Recovery 設定 Dynamics AX 的嚴重損壞修復
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133816"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>設定多層式 Dynamics AX 應用程式的災害復原   
@@ -25,7 +25,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要完成下列必要條件，才能使用 Site Recovery 實作 Dynamics AX 應用程式的災害復原：
 
@@ -37,7 +37,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 
 ## <a name="site-recovery-support"></a>Site Recovery 支援
 
-我們為了編寫本文而使用的設備是 Windows Server 2012 R2 Enterprise 上的 VMware 虛擬機器與 Dynamics AX 2012R3。 由於 Site Recovery 複寫與應用程式無關，因此我們預期此處提供的建議可保留下列案例。
+我們為了編寫本文而使用的設備是 Windows Server 2012 R2 Enterprise 上的 VMware 虛擬機器與 Dynamics AX 2012R3。 由於 Site Recovery 複寫與應用程式無關，因此我們預期此處提供的建議適用于下列案例。
 
 ### <a name="source-and-target"></a>來源與目標
 
@@ -68,7 +68,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 ### <a name="2-set-up-sql-server-replication"></a>2. 設定 SQL Server 複寫
 如需有關保護 SQL 層的建議選項技術指引，請參閱[以 SQL Server 及 Azure Site Recovery 複寫應用程式](site-recovery-sql.md)。
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. 為 Dynamics AX 用戶端和應用程式物件伺服器 Vm 啟用保護
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. 啟用 Dynamics AX 用戶端和應用程式物件伺服器 Vm 的保護
 根據 VM 是部署於 [Hyper-V](./hyper-v-azure-tutorial.md) 還是 [VMware](./vmware-azure-tutorial.md)，執行相關的 Site Recovery 設定。
 
 > [!TIP]
@@ -181,5 +181,5 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 ## <a name="summary"></a>摘要
 使用 Site Recovery，可以為 Dynamics AX 應用程式建立一個完整的自動化災害復原方案。 當發生中斷時，可以在幾秒鐘內從任何地方起始容錯移轉，並且在數分鐘內啟動並執行應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需了解如何以 Azure Site Recovery 保護企業工作負載，請參閱[我可以保護哪些工作負載?](site-recovery-workload.md)。

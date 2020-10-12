@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84040879"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 範例 SaaS 應用程式的一般指導方針
@@ -25,20 +25,20 @@ ms.locfileid: "84040879"
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>下載並解除封鎖 Wingtip Tickets SaaS 指令碼
 
-從外部來源下載 zip 檔案並進行解壓縮時，Windows 可能會封鎖可執行的內容 (指令碼、dll)。 從 zip 檔案解壓縮腳本時，**請遵循下列步驟來解除封鎖 .zip 檔案，再進行解壓縮**。 這可確保允許執行指令碼。
+從外部來源下載 zip 檔案並進行解壓縮時，Windows 可能會封鎖可執行的內容 (指令碼、dll)。 從 zip 檔案解壓縮腳本時， **請遵循下列步驟來解除封鎖 .zip 檔案，再進行解壓縮**。 這可確保允許執行指令碼。
 
 1. 瀏覽至您要探索資料庫租用戶模式的 Wingtip Tickets SaaS GitHub 存放庫：
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. 按一下 [複製或下載]****。
-3. 按一下 [下載 zip]****，並儲存檔案。
+3. 按一下 [ **下載 zip** ]，然後儲存檔案。
 4. 請以滑鼠右鍵按一下 zip 檔案，然後選取 [屬性]****。 ZIP 檔案會對應至存放庫名稱。 (例如 _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. 在 [一般]**** 索引標籤上，選取 [解除封鎖]****。
-6. 按一下 [確定]。
-7. 將檔案解壓縮。
+6. 按一下 [確定]  。
+7. 解壓縮檔案。
 
-腳本位於.。 * \\學習模組*資料夾。
+腳本位於 *中 \\ 。學習模組* 資料夾。
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>使用 Wingtip Tickets PowerShell 指令碼
@@ -77,7 +77,7 @@ ms.locfileid: "84040879"
 
 使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 來連線及瀏覽應用程式伺服器和資料庫。
 
-部署一開始會有租使用者和目錄伺服器來連接。 伺服器的命名取決於資料庫租用戶模式 (如需詳細資訊，請參閱下方)。
+部署一開始會有要連接的租使用者和目錄伺服器。 伺服器的命名取決於資料庫租用戶模式 (如需詳細資訊，請參閱下方)。
 
    - **獨立應用程式：** 每個租用戶的伺服器 (例如 contosoconcerthall-&lt;User&gt;** 伺服器) 和 catalog-sa-&lt;User&gt;**
    - **每一租用戶一個資料庫：tenants1-dpt-&lt;User&gt;** ** 和 catalog-dpt-&lt;User&gt;** 伺服器
@@ -90,11 +90,11 @@ ms.locfileid: "84040879"
     - **獨立應用程式：** 個別租用戶的伺服器 (例如 contosoconcerthall-&lt;User&gt;.database.windows.net**)
     - **每一租用戶一個資料庫：tenants1-dpt-&lt;User&gt;.database.windows.net** **
     - **多租用戶資料庫：tenants1-mt-&lt;User&gt;.database.windows.net** **
-2. 按一下 **[連接**  >  **資料庫引擎 ...**]：
+2. 按一下 **[連接**  >  **資料庫引擎 ...**：
 
    ![目錄伺服器](./media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. 示範認證包括：登入 = *developer*、Password = *P \@ ssword1*
+3. 示範認證包括： Login = *developer*、Password = *P \@ ssword1*
 
     下圖會示範*每一租用戶一個資料庫*模式的登入。
     ![connection](./media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
@@ -115,7 +115,7 @@ ms.locfileid: "84040879"
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [部署 Wingtip Tickets SaaS Standalone 應用程式](../../sql-database/saas-standaloneapp-get-started-deploy.md)
 - [部署 Wingtip Tickets SaaS Database Per Tenant 應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)
 - [部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式](../../sql-database/saas-multitenantdb-get-started-deploy.md)

@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: b3b6c9d5835f6d81ab8641d8a43fb7228b6b53ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085634"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>使用 VMAccess 擴充功能搭配 Azure CLI 在 Linux VM 上管理系統管理使用者、SSH 及檢查或修復磁碟
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Linux VM 的磁碟顯示錯誤。 您不知怎麼重設 Linux VM的根密碼，或不小心刪除了 SSH 私密金鑰。 如果是過去資料中心的時代發生此狀況，您必須親赴現場，然後再開啟 KVM 才能存取伺服器主控台。 請將 Azure VMAccess 擴充功能想成 KVM 交換器，在此可以存取主控台重設 Linux 存取或執行磁碟等級維護。
 
 本文將說明在這些項目以 Azure Resource Manager 虛擬機器的形式執行時，如何使用 Azure VMAccess 擴充功能來檢查或修復磁碟、重設使用者存取、管理系統管理使用者帳戶或更新 Linux 上的 SSH 組態。 如果您需要管理傳統虛擬機器，您可以依照[傳統 VM 文件](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)中的指示操作。 
@@ -31,7 +31,7 @@ Linux VM 的磁碟顯示錯誤。 您不知怎麼重設 Linux VM的根密碼，�
 > [!NOTE]
 > 如果您在安裝 AAD 登入擴充功能之後，使用 VMAccess 擴充功能重設 VM 的密碼，則您必須重新執行 AAD 登入擴充功能以便為您的機器重新啟用 AAD 登入。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 ### <a name="operating-system"></a>作業系統
 
 您可以對這類 Linux 發行版執行 VM 存取擴充功能。

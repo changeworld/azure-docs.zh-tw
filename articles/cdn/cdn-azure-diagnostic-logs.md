@@ -1,7 +1,7 @@
 ---
 title: 診斷記錄
 titleSuffix: Azure Content Delivery Network
-description: 瞭解如何使用 Azure 診斷記錄來儲存核心分析，這可讓您從 Azure 內容傳遞網路端點匯出使用計量。
+description: 瞭解如何使用 Azure 診斷記錄來儲存核心分析，讓您能夠從 Azure 內容傳遞網路端點匯出使用計量。
 services: cdn
 author: asudbring
 manager: KumudD
@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191277"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診斷記錄-Azure 內容傳遞網路
@@ -30,36 +30,36 @@ ms.locfileid: "88191277"
 
 這項功能適用於所有定價層的 CDN 端點。 
 
-診斷記錄可讓您將 CDN 端點的基本使用方式計量匯出到不同種類的來源，讓您可以使用自訂的方式取用它們。 您可以執行下列類型的資料匯出：
+診斷記錄可讓您將 CDN 端點的基本使用計量匯出至不同種類的來源，讓您可以使用自訂的方式來取用它們。 您可以執行下列類型的資料匯出：
 
 * 匯出資料至 Blob 儲存體、匯出至 CSV，以及在 Excel 中產生圖表。
 * 匯出資料至事件中樞，並將資料與其他 Azure 服務相互關聯。
-* 將資料匯出至您自己的 Log Analytics 工作區中 Azure 監視器記錄及查看資料
+* 將資料匯出至 Azure 監視器記錄，並在您自己的 Log Analytics 工作區中查看資料
 
 需要有 Azure CDN 設定檔，才能執行下列步驟。 請參閱 [建立 AZURE CDN 設定檔和端點](cdn-create-new-endpoint.md) ，再繼續進行操作。
 
 ## <a name="enable-logging-with-the-azure-portal"></a>使用 Azure 入口網站啟用記錄
 
-請遵循下列步驟來啟用 Azure CDN 端點的記錄：
+遵循下列步驟來為您的 Azure CDN 端點啟用記錄：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 在 [Azure 入口網站中，流覽至 [**所有資源**]  ->  **-[cdn-設定檔**]
+2. 在 Azure 入口網站中，流覽至**All resources**  ->  **您的 cdn 設定檔**的所有資源
 
 2. 選取您要啟用診斷記錄的 CDN 端點：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="選取 [CDN 端點]。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="選取 CDN 端點。" border="true":::
 
-3. 在 [**監視**] 區段中選取 [**診斷記錄**]：
+3. 在 [**監視**] 區段中選取**診斷記錄**：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="選取 [診斷記錄]。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="選取 CDN 端點。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>使用 Azure 儲存體來啟用記錄功能
 
 若要使用儲存體帳戶來儲存記錄，請遵循下列步驟：
 
  >[!NOTE] 
- >需要有儲存體帳戶，才能完成這些步驟。 如需詳細資訊，請參閱： **[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 。
+ >需要儲存體帳戶才能完成這些步驟。 如需詳細資訊，請參閱： **[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 。
     
 1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
  
@@ -69,43 +69,43 @@ ms.locfileid: "88191277"
 
 4. 選取記錄的訂用帳戶和儲存體帳戶。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="診斷記錄-存放裝置。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="選取 CDN 端點。" border="true":::
 
-3. 選取 [儲存]。
+3. 選取 [儲存]****。
 
 ### <a name="send-to-log-analytics"></a>傳送至 Log Analytics
 
 若要針對記錄使用 Log Analytics，請遵循下列步驟：
 
 >[!NOTE] 
->需要有 log analytics 工作區，才能完成這些步驟。 如需詳細資訊，請參閱： **[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 。
+>需要 log analytics 工作區才能完成這些步驟。 如需詳細資訊，請參閱： **[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 。
     
 1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
 
-2. 選取 [ **傳送至 Log Analytics**]，然後選取 [ **CoreAnalytics**]。 
+2. 選取 [ **傳送至 Log Analytics**]，然後選取 [ **[coreanalytics**]。 
 
 3. 選取記錄的訂用帳戶和 Log Analytics 工作區。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="診斷記錄-Log Analytics。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="選取 CDN 端點。" border="true":::
 
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
 ### <a name="stream-to-an-event-hub"></a>串流至事件中樞
 
-若要使用記錄的事件中樞，請遵循下列步驟：
+若要針對記錄使用事件中樞，請遵循下列步驟：
 
 >[!NOTE] 
->必須要有事件中樞，才能完成這些步驟。 如需詳細資訊，請參閱： **[快速入門：使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** 。
+>需要事件中樞才能完成這些步驟。 如需詳細資訊，請參閱： **[快速入門：使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** 。
     
 1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
 
-2. 選取 [ **串流至事件中樞**]，然後選取 [ **CoreAnalytics**]。 
+2. 選取 [ **串流至事件中樞**]，然後選取 [ **[coreanalytics**]。 
 
 3. 選取記錄的訂用帳戶和事件中樞命名空間。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="診斷記錄-事件中樞。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="選取 CDN 端點。" border="true":::
 
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
 
 ## <a name="enable-logging-with-powershell"></a>使用 PowerShell 啟用記錄
@@ -114,15 +114,15 @@ ms.locfileid: "88191277"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="enable-diagnostic-logs-in-a-storage-account"></a>啟用儲存體帳戶中的診斷記錄
+### <a name="enable-diagnostic-logs-in-a-storage-account"></a>在儲存體帳戶中啟用診斷記錄
 
-1. 登入以 Azure PowerShell：
+1. 登入 Azure PowerShell：
 
     ```azurepowershell-interactive
     Connect-AzAccount 
     ```
 
-2. 若要啟用儲存體帳戶中的診斷記錄，請輸入下列命令。 將變數取代為您的值：
+2. 若要在儲存體帳戶中啟用診斷記錄，請輸入下列命令。 將變數取代為您的值：
 
     ```azurepowershell-interactive
     $rsg = <your-resource-group-name>
@@ -140,7 +140,7 @@ ms.locfileid: "88191277"
 
 ### <a name="enable-diagnostics-logs-for-log-analytics-workspace"></a>啟用 Log Analytics 工作區的診斷記錄
 
-1. 登入以 Azure PowerShell：
+1. 登入 Azure PowerShell：
 
     ```azurepowershell-interactive
     Connect-AzAccount 
@@ -162,7 +162,7 @@ ms.locfileid: "88191277"
     ```
 ### <a name="enable-diagnostics-logs-for-event-hub-namespace"></a>啟用事件中樞命名空間的診斷記錄
 
-1. 登入以 Azure PowerShell：
+1. 登入 Azure PowerShell：
 
     ```azurepowershell-interactive
     Connect-AzAccount 
@@ -182,7 +182,7 @@ ms.locfileid: "88191277"
     ```
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>從 Azure 儲存體取用診斷記錄
-本節說明 CDN 核心分析的架構、Azure 儲存體帳戶中的組織，並提供範例程式碼來下載 CSV 檔案中的記錄檔。
+本節說明 CDN 核心分析的架構、Azure 儲存體帳戶中的組織，並提供可在 CSV 檔案中下載記錄的範例程式碼。
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管
 若要下載此工具，請參閱 [Azure 儲存體總管](https://storageexplorer.com/)。 下載並安裝軟體後，請將其設定為使用同一個已設定為 CDN 診斷記錄目的地的 Azure 儲存體帳戶。
@@ -198,7 +198,7 @@ ms.locfileid: "88191277"
 
 #### <a name="blob-path-format"></a>Blob 路徑格式
 
-每個小時會產生 Core Analytics 記錄，且會收集資料並加以儲存在單一 Azure blob 作為 JSON 承載。 Storage explorer 工具會將 '/' 解讀為目錄分隔符號，並顯示階層。 Azure blob 的路徑會顯示為具有階層式結構並表示 blob 名稱。 此 blob 名稱會遵循下列命名慣例：    
+每個小時會產生 Core Analytics 記錄，且會收集資料並加以儲存在單一 Azure blob 作為 JSON 承載。 Storage explorer 工具會將 '/' 解讀為目錄分隔符號，並顯示階層。 Azure blob 的路徑看起來會像是階層式結構，並代表 blob 名稱。 此 blob 名稱會遵循下列命名慣例：    
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
@@ -217,11 +217,11 @@ ms.locfileid: "88191277"
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>將 Core Analytics 資料匯出至 CSV 檔案
 
-若要存取核心分析，請提供工具的範例程式碼。 此工具可讓您將 JSON 檔案下載至以逗號分隔的一般檔案格式，用來建立圖表或其他彙總。
+若要存取核心分析，可提供工具的範例程式碼。 此工具可讓您將 JSON 檔案下載至以逗號分隔的一般檔案格式，用來建立圖表或其他彙總。
 
 以下為使用此工具的方式：
 
-1.  請造訪 GitHub 連結： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  造訪 GitHub 連結： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下載程式碼。
 3.  依照指示編譯與設定。
 4.  執行工具。
@@ -244,7 +244,7 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 
 * **來自 Microsoft 的 Azure CDN 標準**
 * **來自 Akamai 的 Azure CDN 標準**
-* **來自 Verizon 的 Azure CDN 標準/Premium**
+* **來自 Verizon 的 Azure CDN Standard/Premium**
 
 並非所有提供者的所有計量皆可用，雖然這樣的差異極少。 下表也顯示提供者是否提供指定的計量。 計量僅適用於有流量的 CDN 端點。
 
@@ -263,9 +263,9 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 | RequestCountHttpStatus304 | 產生 304 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus404 | 產生 404 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountCacheHit | 產生快取命中之所有要求的計數。 資產是從 POP 直接提供給用戶端。 | 是 | 是 | 否  |
-| RequestCountCacheMiss | 產生快取遺漏之所有要求的計數。 快取遺漏表示資產在最接近用戶端的 POP 上找不到，而是從來源抓取。 | 是 | 是 | 否 |
-| RequestCountCacheNoCache | 因邊緣的使用者設定而無法快取之資產的所有要求計數。 | 是 | 是 | 否 |
-| RequestCountCacheUncacheable | 資產的快取控制和過期標頭無法快取的所有資產要求計數。 此計數表示不應在 POP 上或由 HTTP 用戶端快取。 | 是 | 是 | 否 |
+| RequestCountCacheMiss | 產生快取遺漏之所有要求的計數。 快取遺漏表示在最接近用戶端的 POP 上找不到資產，且已從來源抓取。 | 是 | 是 | 否 |
+| RequestCountCacheNoCache | 因為邊緣上的使用者設定，而無法快取的資產所有要求計數。 | 是 | 是 | 否 |
+| RequestCountCacheUncacheable | 資產的 Cache-Control 和 Expires 標頭無法快取的所有資產要求計數。 此計數表示不應在 POP 上或由 HTTP 用戶端快取它。 | 是 | 是 | 否 |
 | RequestCountCacheOthers | 非上述快取狀態的所有要求計數。 | 否 | 是 | 否  |
 | EgressTotal | 輸出資料傳輸 (單位 GB) | 是 |是 |是 |
 | EgressHttpStatus2xx | 狀態代碼為 2xx HTTP 之回應的輸出資料傳輸* (單位為 GB)。 | 是 | 是 | 否  |
@@ -274,9 +274,9 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 | EgressHttpStatus5xx | 狀態代碼為 5xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否 |
 | EgressHttpStatusOthers | 狀態代碼為其他 HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
 | EgressCacheHit | 直接從 CDN POP/邊緣上 CDN 快取所傳遞回應的輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheMiss。 | 在最近的 POP 伺服器上找不到回應的輸出資料傳輸，並從源伺服器抓取。 | 是 | 是 | 否 |
+| EgressCacheMiss。 | 在最接近的 POP 伺服器上找不到回應的輸出資料傳輸，並從源伺服器抓取。 | 是 | 是 | 否 |
 | EgressCacheNoCache | 因為邊緣上的使用者設定，而無法快取的資產輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheUncacheable | 無法由資產的快取控制和或過期標頭快取的資產輸出資料傳輸。 表示不應在 POP 上或由 HTTP 用戶端快取。 | 是 | 是 | 否 |
+| EgressCacheUncacheable | 無法由資產的 Cache-Control 和或 Expires 標頭快取的資產輸出資料傳輸。 指出不應該在 POP 上或由 HTTP 用戶端快取它。 | 是 | 是 | 否 |
 | EgressCacheOthers | 其他快取案例的輸出資料傳輸。 | 否 | 是 | 否 |
 
 *輸出資料傳輸是指從 CDN POP 伺服器傳遞到用戶端的流量。
@@ -329,7 +329,7 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 }
 ```
 
-其中 time** 代表報告某段時間統計資料時該時間範圍的開始時間。 CDN 提供者不支援的計量（而不是雙精度浮點數或整數值）會產生 null 值。 此 null 值表示沒有計量，且與 0 值不同。 在端點上設定了每個網域的一組計量。
+其中 time** 代表報告某段時間統計資料時該時間範圍的開始時間。 CDN 提供者不支援的計量，而不是雙精度浮點數或整數值，因此會產生 null 值。 此 null 值表示沒有計量，且與 0 值不同。 您可以在端點上設定每個網域的其中一組計量。
 
 範例屬性︰
 

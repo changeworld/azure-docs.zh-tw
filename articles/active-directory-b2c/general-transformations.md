@@ -1,7 +1,7 @@
 ---
 title: 自訂原則的一般宣告轉換範例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的一般宣告轉換範例。
+description: Azure Active Directory B2C Identity Experience Framework (IEF) 架構的一般宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,21 +12,21 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202215"
 ---
 # <a name="general-claims-transformations"></a>一般宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供在 Azure Active Directory B2C （Azure AD B2C）中使用 Identity Experience Framework 架構之一般宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+本文提供在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架構的一般宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="copyclaim"></a>CopyClaim
 
-將宣告的值複製到另一個。 這兩個宣告必須來自相同的類型。
+將宣告的值複製到另一個。 這兩個宣告都必須來自相同的類型。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
@@ -49,7 +49,7 @@ ms.locfileid: "85202215"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-    - **inputClaim**：bob@contoso.com
+    - **inputClaim**： bob@contoso.com
 - 輸出宣告：
     - **outputClaim**：bob@contoso.com
 
@@ -78,7 +78,7 @@ ms.locfileid: "85202215"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **inputClaim**：someone@contoso.com
+  - **inputClaim**： someone@contoso.com
 - 輸出宣告：
   - **outputClaim**：true
 
@@ -90,8 +90,8 @@ ms.locfileid: "85202215"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | 字串 | 要加密的輸入宣告 |
 | InputClaim | salt | 字串 | Salt 參數。 您可以使用 `CreateRandomString` 宣告轉換來建立隨機值。 |
-| InputParameter | randomizerSecret | 字串 | 指向現有的 Azure AD B2C**原則金鑰**。 若要建立新的原則金鑰：在您的 Azure AD B2C 租使用者的 [**管理**] 底下，選取 [ **Identity Experience Framework**]。 選取 [原則] [**金鑰**] 以查看您的租使用者中可用的金鑰。 選取 [新增]。 針對 [選項]，選取 [手動]。 提供名稱（可能會自動新增*B2C_1A_* 前置詞）。 在 [**密碼**] 文字方塊中，輸入您想要使用的任何密碼，例如1234567890。 針對 [金鑰使用方法] 選取 [簽章]。 選取 [建立]。 |
-| OutputClaim | hash | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 設定於 `plaintext` inputClaim 中的宣告。 |
+| InputParameter | randomizerSecret | 字串 | 指向現有的 Azure AD B2C **原則金鑰**。 若要建立新的原則金鑰：在您的 Azure AD B2C 租使用者中，于 [ **管理**] 底下選取 [ **Identity Experience Framework**]。 選取 [ **原則金鑰** ] 以查看您租使用者中可用的金鑰。 選取 [新增]。 針對 [選項]，選取 [手動]。 提供名稱 (首碼 *B2C_1A_* 可能會自動新增。 ) 。 在 [ **秘密** ] 文字方塊中，輸入您想要使用的任何秘密，例如1234567890。 針對 [金鑰使用方法] 選取 [簽章]。 選取 [建立]。 |
+| OutputClaim | 雜湊 | 字串 | 叫用此宣告轉換之後所產生的 ClaimType。 設定於 `plaintext` inputClaim 中的宣告。 |
 
 ```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -111,7 +111,7 @@ ms.locfileid: "85202215"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **純文字**：MyPass@word1
+  - **純文字**： MyPass@word1
   - **salt**：487624568
   - **randomizerSecret**：B2C_1A_AccountTransformSecret
 - 輸出宣告：

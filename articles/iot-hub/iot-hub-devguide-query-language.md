@@ -9,10 +9,10 @@ ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90031172"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>裝置與模組對應項、作業和訊息路由的 IoT 中樞查詢語言
@@ -448,13 +448,13 @@ GROUP BY <group_by_element>
 
 支援下列運算子：
 
-| 系列 | 操作員 |
+| Family | 操作員 |
 | --- | --- |
 | 算術 |+, -, *, /, % |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>函數
+### <a name="functions"></a>函式
 
 查詢對應項和作業時唯一支援的函式為：
 
@@ -503,6 +503,6 @@ GROUP BY <group_by_element>
 | ENDS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |
 | CONTAINS(x,y) | 傳回布林值，表示第一個字串運算式是否包含第二個字串運算式。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何使用 [Azure IoT SDK](iot-hub-devguide-sdks.md) 在應用程式中執行查詢。

@@ -12,10 +12,10 @@ ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88584959"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>使用 Mailjet 進行自訂電子郵件驗證
@@ -162,7 +162,7 @@ ms.locfileid: "88584959"
     1. 針對 [主旨 **]，輸入主體的**預設值。 當 API 未包含 subject 參數時，Mailjet 會使用此值。
     1. 針對 [ **名稱**]，輸入您的公司名稱。
     1. 針對 **位址**，請選取您的電子郵件地址
-    1. 選取 [儲存]。
+    1. 選取 [儲存]****。
 1. 從右上方選取 [ **儲存 & 發佈**]，然後 **發佈變更**
 1. 記錄您為了在後續步驟中所建立之範本的 **範本識別碼** 。 當您 [新增宣告轉換](#add-the-claims-transformation)時，可以指定此識別碼。
 

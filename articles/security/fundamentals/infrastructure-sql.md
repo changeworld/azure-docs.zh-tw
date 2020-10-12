@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021852"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database 安全性功能    
@@ -31,7 +31,7 @@ Azure SQL Database 在 Azure 中提供關聯式資料庫服務。 為了保護�
 Azure SQL Database 僅支援表格式資料流 (TDS) 通訊協定，該通訊協定會要求只能透過預設連接埠 TCP/1433 存取資料庫。
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL Database 防火牆
-為了協助保護客戶資料，Azure SQL Database 包括防火牆功能，預設會防止所有對 SQL Database 的存取，如下所示。
+為了協助保護客戶資料，Azure SQL Database 包含防火牆功能，此功能預設會防止對 SQL Database 的所有存取，如下所示。
 
 ![Azure SQL Database 防火牆](./media/infrastructure-sql/sql-database-firewall.png)
 
@@ -75,7 +75,7 @@ IP 篩選器和根 OS 與客體 OS 上實作的軟體防火牆，會強制執行
 ### <a name="types-of-rules-on-firewalls"></a>防火牆上的規則類型
 規則定義為：
 
-{Src IP、Src 埠、目的地 IP、目的地埠、目的地通訊協定、傳入/傳出、具狀態/無狀態、具狀態流程超時}。
+{Src IP、Src Port、Destination IP、Destination Port、Destination Protocol、In/Out、具狀態/無狀態、具狀態流程 Timeout}。
 
 同步閒置字元 (SYN) 封包只有在任何一個規則允許時，才可以輸入或輸出。 針對 TCP，Azure 會使用無狀態規則，原則是只允許所有非 SYN 封包輸入或輸出 VM。 安全性前提是任何主機堆疊具有彈性，如果它先前沒有見過 SYN 封包，則略過非 SYN。 TCP 通訊協定本身具狀態，與無狀態 SYN 型規則搭配，以達成具狀態實作的整體行為。
 
@@ -92,7 +92,7 @@ IP 篩選器和根 OS 與客體 OS 上實作的軟體防火牆，會強制執行
 
 同樣地，硬體和網路變更也有既定的驗證步驟，來評估是否遵循組建需求。 這些版本是透過跨堆疊個別群組的協調變更諮詢委員會 (CAB)，進行檢閱及授權。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入了解 Microsoft 為保護 Azure 基礎結構執行了哪些動作，請參閱：
 
 - [Azure 設施、廠房以及實體安全性](physical-security.md)

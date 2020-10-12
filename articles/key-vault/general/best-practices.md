@@ -1,6 +1,6 @@
 ---
-title: 使用 Key Vault Azure Key Vault 的最佳做法 |Microsoft Docs
-description: 瞭解 Azure Key Vault 的最佳作法，包括控制存取、使用不同的金鑰保存庫、備份、記錄和復原選項。
+title: 使用 Key Vault Azure Key Vault 的最佳作法 |Microsoft Docs
+description: 瞭解 Azure Key Vault 的最佳作法，包括控制存取、使用個別金鑰保存庫、備份、記錄和修復選項的時機。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189886"
 ---
-# <a name="best-practices-to-use-key-vault"></a>使用 Key Vault 的最佳做法
+# <a name="best-practices-to-use-key-vault"></a>使用 Key Vault 的最佳作法
 
 ## <a name="control-access-to-your-vault"></a>控制您保存庫的存取權
 
-Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字串和密碼) 的雲端服務。 由於這項資料相當敏感且攸關業務，所以您必須藉由只允許獲得授權的應用程式和使用者，來保護金鑰保存庫的存取權。 [本文](secure-your-key-vault.md)提供 Key Vault 存取模型的總覽。 文中會說明驗證和授權，並說明如何保護金鑰保存庫的存取權。
+Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字串和密碼) 的雲端服務。 由於這項資料相當敏感且攸關業務，所以您必須藉由只允許獲得授權的應用程式和使用者，來保護金鑰保存庫的存取權。 本文 [提供 Key Vault](secure-your-key-vault.md) 存取模型的總覽。 文中會說明驗證和授權，並說明如何保護金鑰保存庫的存取權。
 
-控制對保存庫的存取時的建議如下：
-1. 鎖定您的訂用帳戶、資源群組和金鑰保存庫的存取權 (RBAC) 
-2. 為每個保存庫建立存取原則
+控制保存庫存取時的建議如下：
+1. 鎖定訂用帳戶、資源群組和金鑰保存庫 (RBAC) 的存取權
+2. 建立每個保存庫的存取原則
 3. 使用最低許可權存取主體來授與存取權
 4. 開啟防火牆和 [VNET 服務端點](overview-vnet-service-endpoints.md)
 
-## <a name="use-separate-key-vault"></a>使用不同的 Key Vault
+## <a name="use-separate-key-vault"></a>使用個別 Key Vault
 
-我們的建議是在每個環境中使用每個應用程式的保存庫 (開發、進入生產階段前和生產) 。 這可協助您在不同的環境之間共用秘密，同時也會在發生缺口時減少威脅。
+我們的建議是在每個環境中使用每個應用程式的保存庫 (開發、進入生產階段前和生產) 。 這可協助您在不同的環境中共用秘密，也可在發生缺口時減少威脅。
 
 ## <a name="backup"></a>Backup
 
-請確定您在保存庫中的物件上進行更新/刪除/建立時，定期備份您的保存庫。
+請確定您在保存庫中的物件更新/刪除/建立時，定期備份保存庫。
 
 ### <a name="azure-powershell-backup-commands"></a>Azure PowerShell 備份命令
 
@@ -50,9 +50,9 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 * [備份密碼](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-backup)
 
 
-## <a name="turn-on-logging"></a>開啟記錄功能
+## <a name="turn-on-logging"></a>開啟記錄
 
-開啟保存庫的[記錄功能](logging.md)。 同時設定警示。
+[開啟](logging.md) 您保存庫的記錄。 也請設定警示。
 
 ## <a name="turn-on-recovery-options"></a>開啟修復選項
 

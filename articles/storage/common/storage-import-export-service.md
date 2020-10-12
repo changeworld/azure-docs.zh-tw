@@ -9,10 +9,10 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185378"
 ---
 # <a name="what-is-azure-importexport-service"></a>什麼是 Azure 匯入/匯出服務？
@@ -29,7 +29,7 @@ Azure 匯入/匯出服務可用來將硬碟運送到 Azure 資料中心，安全
 
 * **將資料移轉至雲端**︰快速地將大量資料移至 Azure，並符合成本效益。
 * **內容發佈**：快速將資料傳送至您的客戶網站。
-* **備份**：將內部部署資料的備份儲存在 Azure 儲存體中。
+* **備份**：取得內部部署資料的備份以儲存在 Azure 儲存體中。
 * **資料復原**︰復原儲存在儲存體中的大量資料，並將其傳遞到您的內部部署位置。
 
 ## <a name="importexport-components"></a>匯入/匯出元件
@@ -41,7 +41,7 @@ Azure 匯入/匯出服務可用來將硬碟運送到 Azure 資料中心，安全
 * **WAImportExport 工具**：此為執行下列項目的命令列工具：
   * 將運送的磁碟機準備好進行匯入。
   * 協助將資料複製到磁碟機。
-  * 使用 AES 256 位 BitLocker 將磁片磁碟機上的資料加密。 您可以使用外部金鑰保護裝置來保護您的 BitLocker 金鑰。
+  * 使用 AES 256 位 BitLocker 加密磁片磁碟機上的資料。 您可以使用外部金鑰保護裝置來保護 BitLocker 金鑰。
   * 產生匯入建立期間所使用的磁碟機日誌檔案。
   * 協助識別匯出作業所需的磁碟機數目。
 
@@ -77,7 +77,7 @@ Azure 匯入/匯出服務可讓您建立作業，將資料轉送到 Azure Blob �
 > [!NOTE]
 > 若為資料中心國家/地區內的本機 () 出貨，請分享國內貨運公司帳戶。
 >
-> 針對位於資料中心國家/地區外的國外 () 出貨，請分享國際貨運公司帳戶。
+> 針對位於資料中心國家/地區外的國外 () 出貨，請共用國際貨運公司帳戶。
 
  ![圖 1: 匯入工作流程](./media/storage-import-export-service/importjob.png)
 
@@ -106,7 +106,7 @@ Azure 匯入/匯出服務可讓您建立作業，將資料轉送到 Azure Blob �
 > [!NOTE]
 > 若為資料中心國家/地區內的本機 () 出貨，請分享國內貨運公司帳戶。
 >
-> 針對位於資料中心國家/地區外的國外 () 出貨，請分享國際貨運公司帳戶。
+> 針對位於資料中心國家/地區外的國外 () 出貨，請共用國際貨運公司帳戶。
   
  ![圖 2: 匯出工作流程](./media/storage-import-export-service/exportjob.png)
 
@@ -138,9 +138,9 @@ Azure 匯入/匯出服務支援與所有 Azure 儲存體帳戶相互複製資料
 
 * 在磁碟機準備期間執行 WAImportExport 工具時，於使用 dataset.csv** 檔案時指定選項。
 
-* 在磁碟機上手動啟用 BitLocker 加密。 在磁碟機準備期間，於執行 WAImportExport 工具命令列時，在 driveset.csv** 中指定加密金鑰。 使用外部金鑰保護裝置 (也稱為 Microsoft 管理的金鑰) 或客戶管理的金鑰，可以進一步保護 BitLocker 加密金鑰。 如需詳細資訊，請參閱如何[使用客戶管理的金鑰來保護您的 BitLocker 金鑰](storage-import-export-encryption-key-portal.md)。
+* 在磁碟機上手動啟用 BitLocker 加密。 在磁碟機準備期間，於執行 WAImportExport 工具命令列時，在 driveset.csv** 中指定加密金鑰。 您可以使用外部金鑰保護裝置來進一步保護 BitLocker 加密金鑰 (也稱為 Microsoft 管理的金鑰) 或客戶管理的金鑰。 如需詳細資訊，請參閱如何 [使用客戶管理的金鑰來保護您的 BitLocker 金鑰](storage-import-export-encryption-key-portal.md)。
 
-針對匯出作業，您的資料複製到磁碟機之後，服務會使用 BitLocker 將磁碟機加密，然後才運送回去給您。 加密金鑰會透過 Azure 入口網站提供給您。 必須使用 WAImporExport 工具，使用金鑰來解除鎖定磁片磁碟機。
+針對匯出作業，您的資料複製到磁碟機之後，服務會使用 BitLocker 將磁碟機加密，然後才運送回去給您。 加密金鑰會透過 Azure 入口網站提供給您。 使用 WAImporExport 工具時，必須使用金鑰將磁片磁碟機解除鎖定。
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

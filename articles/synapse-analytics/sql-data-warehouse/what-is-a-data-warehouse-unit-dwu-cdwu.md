@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461979"
 ---
 # <a name="data-warehouse-units-dwus"></a>資料倉儲單位 (Dwu) 
@@ -51,7 +51,7 @@ ms.locfileid: "89461979"
  (SLO) 的服務等級目標是可調整的調整規模設定，可決定您 SQL 集區的成本和效能層級。 Gen2 SQL 集區的服務等級會以資料倉儲單位 (DWU) 來測量，例如 DW2000c。
 
 > [!NOTE]
-> Azure Synapse Analytics Gen2 最近新增了額外的擴充功能，以支援最低 100 cDWU 的計算層級。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> Azure Synapse Analytics Gen2 最近新增了其他調整規模功能，以支援最低 100 計算資料倉儲單位的計算層。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 在 T-SQL 中，SERVICE_OBJECTIVE 設定會決定您 SQL 集區適用的服務等級和效能層級。
 
@@ -129,7 +129,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在 [調整] 下方，將滑桿向左或右移動來變更 DWU 設定。
 
-3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
+3. 按一下 [檔案] 。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -141,7 +141,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-如需詳細資訊，請參閱 [Azure Synapse Analytics 的 PowerShell Cmdlet](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+如需詳細資訊，請參閱[適用於 Azure Synapse Analytics 的 PowerShell Cmdlet](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-如需詳細 REST API 範例，請參閱 [Azure Synapse Analytics 的 REST api](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+如需更多 REST API 範例，請參閱[適用於 Azure Synapse Analytics 的 REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="check-status-of-dwu-changes"></a>檢查 DWU 變更的狀態
 

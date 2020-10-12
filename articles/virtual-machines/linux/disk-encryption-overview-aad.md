@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: b258d499c78aa5fb734cbee01fb753c292bf2678
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970891"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure 磁碟加密與 Azure Active Directory (AD)  (先前的版本) 
@@ -57,7 +57,7 @@ Azure 磁碟加密需要 Azure Key Vault 控制和管理磁片加密金鑰和秘
 
 如需詳細資訊，請參閱 [使用 Azure AD (舊版) Azure 磁碟加密建立和設定金鑰保存庫 ](disk-encryption-key-vault-aad.md)。
  
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure AD (舊版建立和設定 Azure 磁碟加密的金鑰保存庫) ](disk-encryption-key-vault-aad.md)
 - [在 Linux Vm 上使用 Azure AD 啟用 Azure 磁碟加密 (舊版) ](disk-encryption-linux-aad.md)

@@ -4,10 +4,10 @@ description: 本文提供有關如何使用「Azure 監視」來監視「Azure �
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88931143"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 事件中樞計量
@@ -112,7 +112,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 - 如果有內送訊息，但 **沒有任何外寄訊息**，則表示 SIEM 應用程式未讀取訊息。 請聯絡 SIEM 提供者，以判斷事件中樞的設定是否正確。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 請參閱 [Azure 監視概觀](../azure-monitor/overview.md)。
 * GitHub 上的[使用 .NET 擷取 Azure 監視計量](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) \(英文\) 範例。 

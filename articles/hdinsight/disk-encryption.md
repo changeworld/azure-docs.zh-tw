@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: 97d899d73359cc45daf88940b815ed262c3b4766
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89290832"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
@@ -403,7 +403,7 @@ HDInsight 會使用您與 HDInsight 叢集相關聯的受控識別來存取您�
 
 **如果相應增加叢集，新的節點是否能順暢地支援客戶管理的金鑰？**
 
-可以。 叢集在相應增加期間需要存取金鑰保存庫中的金鑰。 使用相同的金鑰來加密叢集中的受控磁片和資源磁片。
+是。 叢集在相應增加期間需要存取金鑰保存庫中的金鑰。 使用相同的金鑰來加密叢集中的受控磁片和資源磁片。
 
 **是否可在我的位置使用客戶管理的金鑰？**
 
@@ -467,7 +467,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 是什麼](../key-vault/general/overview.md)。
 * [Azure HDInsight 中的企業安全性總覽](./domain-joined/hdinsight-security-overview.md)。

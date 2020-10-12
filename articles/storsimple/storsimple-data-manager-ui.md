@@ -1,21 +1,21 @@
 ---
 title: Microsoft Azure StorSimple 資料管理員 UI
-description: 瞭解如何使用 StorSimple 資料管理員 UI 來轉換位於 StorSimple 8000 系列裝置上的資料。
+description: 瞭解如何使用 StorSimple 資料管理員 UI 來轉換 StorSimple 8000 系列裝置上的資料。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184528"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>在 Azure 入口網站中管理 StorSimple 資料管理員服務
 
-本文說明如何使用 StorSimple 資料管理員 UI 來轉換 StorSimple 8000 系列裝置上的資料。 轉換後的資料可供其他 Azure 服務使用，例如 Azure 媒體服務、Azure HDInsight、Azure Machine Learning 和 Azure 認知搜尋。
+本文說明如何使用 StorSimple 資料管理員 UI 來轉換 StorSimple 8000 系列裝置上的資料。 然後，您可以使用其他 Azure 服務（例如 Azure 媒體服務、Azure HDInsight、Azure Machine Learning 和 Azure 認知搜尋）來取用轉換的資料。
 
 
 ## <a name="use-storsimple-data-transformation"></a>使用 StorSimple 資料轉換
@@ -40,7 +40,7 @@ ms.locfileid: "88184528"
 
    1. 為您的 StorSimple 資料管理員提供唯一的 [服務名稱]****。 這是可以用來識別服務的易記名稱。 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 名稱必須以字母或數字為開頭或結尾。
 
-   2. 從下拉式清單中選擇**訂**用帳戶。 訂用帳戶會連結到您的帳單帳戶。 如果您只有一個訂用帳戶，此欄位會自動填入該訂用帳戶 (且無法供您選取)。
+   2. 從下拉式清單中選擇 **訂** 用帳戶。 訂用帳戶會連結到您的帳單帳戶。 如果您只有一個訂用帳戶，此欄位會自動填入該訂用帳戶 (且無法供您選取)。
 
    3. 選取現有資源群組或建立新的群組。 如需詳細資訊，請參閱 [Azure 資源群組](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
@@ -102,7 +102,7 @@ ms.locfileid: "88184528"
 
    3. 在 [篩選]**** 子區段中，以 \MyRootDirectory\Data __ 格式輸入感興趣資料所在的根目錄。 系統不支援 \C:\Data__ 之類的磁碟機代號。 您也可以在這裡新增任何檔案篩選。
 
-   4. 資料轉換服務僅適用于推送至 Azure 之資料的最新快照集。
+   4. 資料轉換服務只適用于最新的快照集，該資料會推送至 Azure。
 
    5. 按一下 [確定]。
 
@@ -139,7 +139,7 @@ ms.locfileid: "88184528"
      
      ![啟動作業執行 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. 按一下 [**立即執行**]。
+2. 按一下 [ **立即執行**]。
      
      ![啟動作業執行 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
@@ -151,10 +151,10 @@ ms.locfileid: "88184528"
 
     ![啟動作業執行 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
-### <a name="view-logs-after-job-completion"></a>作業完成後查看記錄
+### <a name="view-logs-after-job-completion"></a>在作業完成之後查看記錄
 
-完成作業之後，您可以查看作業的狀態。 作業狀態可以是 [**成功**]、[**部分成功**] 和 [**失敗**]。 您可以查看已成功複製的檔案清單，以及無法複製的檔案。 這些清單可用於您目標儲存體帳戶中名為 **"joblogs"** 的容器。 在此容器中，您可以尋找名稱與您的作業定義相同的資料夾。 在此情況下，將會為每個包含您清單的工作執行建立一個資料夾。 此資料夾的名稱將會是作業的 GUID，您可以從 [作業詳細資料] 頁面取得。 或者，在大多數情況下，您會在 [作業] 頁面中看到複製記錄的連結。
-您會在此資料夾中看到2組 csv 檔案。 以**copiedfilelist**開頭的所有檔案都會包含成功複製檔案的清單。 以**failedfilelist**開頭的所有檔案都包含無法複製的檔案，以及錯誤訊息。
+完成工作之後，您就可以查看作業的狀態。 作業狀態可能 **成功**、 **部分成功** 且 **失敗**。 您可以查看已成功複製的檔案清單，以及無法複製的檔案。 您可以在目標儲存體帳戶內，從名為 **"joblogs"** 的容器中取得這些清單。 在此容器中，您可以尋找與作業定義同名的資料夾。 在此情況下，將會為每個將包含您清單的工作執行建立一個資料夾。 此資料夾的名稱將會是作業的 GUID，您可以從 [作業詳細資料] 頁面取得這些 GUID。 或者，在大部分情況下，您會在 [作業] 頁面本身看到複製記錄的連結。
+您會在此資料夾中看到2組 csv 檔案。 以 **copiedfilelist** 開頭的所有檔案都將包含已成功複製的檔案清單。 開頭為 **failedfilelist** 的所有檔案都包含無法複製的檔案，以及錯誤訊息。
 
 
 ## <a name="next-steps"></a>後續步驟

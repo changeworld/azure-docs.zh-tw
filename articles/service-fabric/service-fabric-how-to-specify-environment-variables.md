@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614310"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>如何在 Service Fabric 中指定服務的環境變數
@@ -48,7 +48,7 @@ ms.locfileid: "75614310"
 
 ## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>使用 Docker Compose 動態指定環境變數
 
-Service Fabric 支援[使用 Docker Compose 進行部署](service-fabric-docker-compose.md#supported-compose-directives)的功能。 撰寫檔案可以來自 shell 的來源環境變數。 這種行為可以用來動態替代所需的環境值：
+Service Fabric 支援 [使用 Docker Compose 進行部署](service-fabric-docker-compose.md#supported-compose-directives)的能力。 撰寫檔案可以從 shell 進行來源環境變數。 此行為可用來動態取代所需的環境值：
 
 ```yml
 environment:

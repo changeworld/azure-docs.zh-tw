@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
 ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883823"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>將 Windows Defender 防火牆與 Advanced Security 連線至 Azure Sentinel
@@ -83,7 +83,7 @@ ms.locfileid: "90883823"
  
 由於 Windows 防火牆記錄只會在本機記錄檔達到容量時傳送給 Azure Sentinel，因此保留記錄檔的預設大小 4096 KB，很可能會導致收集延遲很高。 您可以藉由減少記錄檔大小來降低延遲。 請參閱 [設定 Windows 防火牆記錄](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)檔的指示。 請注意，在定義可能的記錄檔大小下限時 (1 KB) 幾乎會消除收集延遲，但可能也會對本機電腦的效能造成負面影響。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Windows 防火牆連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

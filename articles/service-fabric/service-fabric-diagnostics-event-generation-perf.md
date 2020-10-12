@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464713"
 ---
 # <a name="performance-metrics"></a>效能度量
@@ -31,7 +31,7 @@ ms.locfileid: "75464713"
 | PhysicalDisk(per Disk) | Disk Read Bytes/sec |
 | PhysicalDisk(per Disk) | Disk Writes/sec |
 | PhysicalDisk(per Disk) | Disk Write Bytes/sec |
-| Memory | 可用的 MB |
+| 記憶體 | 可用的 MB |
 | PagingFile | % 使用量 |
 | Processor(Total) | % Processor Time |
 | Process (per service) | % Processor Time |

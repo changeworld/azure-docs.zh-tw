@@ -4,10 +4,10 @@ description: 在本文中，您將了解如何使用 Azure 備份伺服器來保
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970230"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安裝 Azure 備份伺服器
@@ -255,7 +255,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
    > 建議讓 Windows Update 重新導向至 Microsoft Update，此網站為 Windows 和 Microsoft Azure 備份伺服器等其他產品提供安全性和重要更新。
    >
 
-    ![Microsoft Update 加入宣告畫面](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Microsoft Update Opt-In 畫面](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. 檢查 *設定的摘要* ，然後選取 [ **安裝**]。
 

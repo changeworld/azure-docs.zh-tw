@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970078"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>使用影片索引子編輯器來建立專案
@@ -55,7 +55,7 @@ ms.locfileid: "90970078"
 
     您可以藉由選取 [ **篩選結果**] 來進一步篩選結果。 您可以篩選以顯示有特定人員的影片，或指定您只想要查看屬於特定語言或具有特定擁有者的影片結果。 <br/> 您也可以指定查詢的範圍。 例如，如果您想要在 OCR 中搜尋 "GitHub"，請選取 [ **視覺效果文字**]。
 
-    ![篩選](./media/video-indexer-view-edit/visual-text.png)
+    ![Filter](./media/video-indexer-view-edit/visual-text.png)
 
     您可以將多個篩選準則分層到您的查詢。 使用 **+** / **-** 按鈕來新增/移除篩選。 使用 **清除篩選** 來移除所有篩選。
 1. 若要新增影片，請選取影片，然後選取 [ **新增**]。
