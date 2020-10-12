@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325400"
 ---
 # <a name="set-up-a-capacity-pool"></a>設定容量集區
@@ -41,7 +41,7 @@ ms.locfileid: "91325400"
     [新增容量集區] 視窗隨即出現。
 
 3. 請提供新容量集區的下列資訊：  
-   * **Name**  
+   * **名稱**  
      指定容量集區的名稱。  
      每個 NetApp 帳戶的容量集區名稱必須是唯一的。
 
@@ -60,11 +60,11 @@ ms.locfileid: "91325400"
 
      > [!IMPORTANT] 
      > 將 **QoS 類型** 設定為 [ **手動** ] 是永久性的。 您無法轉換手動 QoS 容量集區以使用自動 QoS。 不過，您可以轉換自動 QoS 容量集區以使用手動 QoS。 請參閱 [變更容量集區以使用手動 QoS](manage-manual-qos-capacity-pool.md#change-to-qos)。   
-     > 針對容量集區使用手動 QoS 類型需要註冊。 請參閱 [管理手動 QoS 容量集](manage-manual-qos-capacity-pool.md#register-the-feature)區。 
+     > 將手動 QoS 類型用於容量集區需要註冊。 請參閱[管理手動 QoS 容量集區](manage-manual-qos-capacity-pool.md#register-the-feature)。 
 
     ![新增容量集區](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 按一下頁面底部的 [新增] 。
+4. 按一下 [建立]。
 
 ## <a name="next-steps"></a>後續步驟 
 

@@ -2,14 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: aee830c86476d645839cc14ac1aea780c3b928ee
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d0b88fb81ca539949a8a2bcf8764d3732b1dcdfe
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91641129"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945819"
 ---
 | 類別              | 資料存放區                                                   | [複製活動](../articles/data-factory/copy-activity-overview.md) (來源/接收) | [對應資料流程](../articles/data-factory/concepts-data-flow-overview.md) (來源/接收) | [查閱活動](../articles/data-factory/control-flow-lookup-activity.md) | [取得中繼資料活動](../articles/data-factory/control-flow-get-metadata-activity.md)/[驗證活動](../articles/data-factory/control-flow-validation-activity.md) | [刪除活動](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -59,6 +59,7 @@ ms.locfileid: "91641129"
 | **NoSQL**             | [Cassandra](../articles/data-factory/connector-cassandra.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Couchbase (預覽)](../articles/data-factory/connector-couchbase.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [MongoDB](../articles/data-factory/connector-mongodb.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [MongoDB 塔](../articles/data-factory/connector-mongodb-atlas.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
 | **檔案**              | [Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [檔案系統](../articles/data-factory/connector-file-system.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [FTP](../articles/data-factory/connector-ftp.md)             | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |

@@ -7,28 +7,35 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 241ccbda67f7a2518d0c44a0d362673922ad4284
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652838"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945938"
 ---
-# <a name="remove-resources-from-a-move-collection"></a>從移動集合中移除資源
+# <a name="manage-move-collections-and-resource-groups"></a>管理移動集合和資源群組
 
-本文說明如何從 [Azure 資源移動器](overview.md)的移動集合中移除資源。 移動集合是在 Azure 區域之間移動 Azure 資源時使用。
+本文說明如何在 [Azure 資源移動器](overview.md)中移除移動集合中的資源，或移除移動集合/資源群組。 移動集合是在 Azure 區域之間移動 Azure 資源時使用。
 
 ## <a name="remove-a-resource-portal"></a>移除資源 (入口網站) 
 
-在資源移動器入口網站中移除，如下所示：
+您可以在資源移動器入口網站中移除移動集合中的資源，如下所示：
 
-1. 在 [ **跨區域**] 中，選取您要從集合移除的資源 > **移除**]。
+1. 在 [ **跨區域**] 中，選取您要從集合中移除的所有資源，然後選取 [ **移除**]。 
 
     ![要選取以移除的按鈕](./media/remove-move-resources/portal-select-resources.png)
 
-1. 在 [ **移除資源**] 中，按一下 [ **移除**]。
+2. 在 [ **移除資源**] 中，按一下 [ **移除**]。
 
     ![用來選取要從移動集合移除資源的按鈕](./media/remove-move-resources/remove-portal.png)
+
+## <a name="remove-a-move-collectionresource-group-portal"></a> (入口網站) 移除移動集合/資源群組
+
+您可以在入口網站中移除移動集合/資源群組。
+
+1. 依照上述程式中的指示來移除集合中的資源。 如果您要移除資源群組，請確定它不包含任何資源。
+2. 刪除移動集合或資源群組。  
 
 ## <a name="remove-a-resource-powershell"></a> (PowerShell) 移除資源
 
@@ -41,16 +48,20 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **預期的輸出** 
  ![從移動集合移除資源之後的輸出文字](./media/remove-move-resources/remove-resource.png)
 
+
+
 ## <a name="remove-a-collection-powershell"></a> (PowerShell) 移除集合
 
 使用 PowerShell 移除整個移動集合，如下所示：
 
-```azurepowershell-interactive
-# Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
-```
-**預期的輸出** 
- ![移除移動集合之後的輸出文字](./media/remove-move-resources/remove-collection.png)
+1. 遵循上面的指示，使用 PowerShell 移除集合中的資源。
+2. 執行：
+
+    ```azurepowershell-interactive
+    # Remove a resource using the resource ID
+    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    ```
+    **預期的輸出** ![移除移動集合之後的輸出文字](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>移除後的 VM 資源狀態
 
@@ -91,6 +102,6 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **刪除來源暫止** | 已從移動集合中刪除。<br/><br/> 它不會刪除在目的地區域中建立的任何事物。 
 **刪除來源失敗** | 已從移動集合中刪除。<br/><br/> 它不會刪除在目的地區域中建立的任何事物。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請嘗試使用資源移動器將 [VM 移](tutorial-move-region-virtual-machines.md) 至另一個區域。

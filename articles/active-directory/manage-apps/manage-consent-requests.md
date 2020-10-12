@@ -12,10 +12,10 @@ ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89420450"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理應用程式的同意和評估同意要求
@@ -115,7 +115,7 @@ Microsoft [建議](https://docs.microsoft.com/azure/security/fundamentals/steps-
 5.  選取 [ **使用者設定**]。
 6.  將 [使用者可以允許應用程式存取其資料]**** 切換開關設為 [否]****，並按一下 [儲存]**** 按鈕，以停用所有未來的使用者同意作業。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [可保護身分識別基礎結構的五個步驟](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 * [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 * [設定使用者同意應用程式的方式](configure-user-consent.md)

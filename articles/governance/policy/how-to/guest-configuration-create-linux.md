@@ -4,12 +4,12 @@ description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf798a18f28c490d95b28c6ea8f02c6f22eee8
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076356"
+ms.locfileid: "91893232"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -171,7 +171,7 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-建立設定套件之後，在將其發佈至 Azure 前，您可在工作站或 CI/CD 環境中測試套件。 GuestConfiguration Cmdlet `Test-GuestConfigurationPackage` 在開發環境中所包含的代理程式，會與 Azure 電腦所使用的代理程式相同。 使用此解決方案，即可先在本機執行整合式測試，再發行到需要計費的雲端環境。
+建立設定套件之後，但在將它發佈至 Azure 之前，您可以從您的工作站或持續整合和持續部署 (CI/CD) 環境中測試套件。 GuestConfiguration Cmdlet `Test-GuestConfigurationPackage` 在開發環境中所包含的代理程式，會與 Azure 電腦所使用的代理程式相同。 使用此解決方案，即可先在本機執行整合式測試，再發行到需要計費的雲端環境。
 
 由於代理程式實際上是評估本機環境，因此在大部分的情況下會需要在打算進行稽核的相同 OS 平台上執行 Test- Cmdlet。
 
@@ -194,7 +194,7 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-下一個步驟是將檔案發佈至 blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
+下一步是要將檔案發佈至 Azure Blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
 
 ```azurepowershell-interactive
 function publish {

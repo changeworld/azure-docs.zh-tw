@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3471b9988b154ccb38dc56545e769a7179a4026f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258721"
 ---
 # <a name="legacy-user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的舊版使用者流程版本
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的使用者流程，可協助您�
 
 ## <a name="v1"></a>V1
 
-| 使用者流程 | 建議 | 說明 |
+| 使用者流程 | 建議 | 描述 |
 | --------- | ----------- | ----------- |
 | 密碼重設 | 是 | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
 | 設定檔編輯 | 是 | 讓使用者能夠設定其使用者屬性。 使用此使用者流程，您可以設定： <ul><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li></ul> |
@@ -39,13 +39,13 @@ Azure Active Directory B2C (Azure AD B2C) 中的使用者流程，可協助您�
 
 ## <a name="v11"></a>1.1 版
 
-| 使用者流程 | 建議 | 說明 |
+| 使用者流程 | 建議 | 描述 |
 | --------- | ----------- | ----------- |
 | 密碼重設 v1。1 | 否 | 可讓使用者在確認電子郵件 (新的頁面配置之後，選擇新的密碼) 。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
 
 ## <a name="v2"></a>V2
 
-| 使用者流程 | 建議 | 說明 |
+| 使用者流程 | 建議 | 描述 |
 | --------- | ----------- | ----------- |
 | 密碼重設 v2 | 否 | 讓使用者能夠在驗證電子郵件後選擇新密碼。 使用此使用者流程，您可以設定： <ul><li>[多重要素驗證](custom-policy-multi-factor-authentication.md)</li><li>權杖相容性設定</li><li>[年齡管制](basic-age-gating.md)</li><li>[密碼複雜性需求](user-flow-password-complexity.md)</li></ul> |
 | 設定檔編輯 v2 | 是 | 讓使用者能夠設定其使用者屬性。 使用此使用者流程，您可以設定： <ul><li>[權杖存留期](tokens-overview.md)</li><li>權杖相容性設定</li><li>工作階段行為</li></ul> |

@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652080"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步來實作密碼雜湊同步處理
@@ -113,7 +113,7 @@ Continue with this operation?
 
 建議您先啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，然後再啟用密碼雜湊同步處理，如此一來，密碼雜湊的初始同步處理就不會將 `DisablePasswordExpiration` 值新增至使用者的 >passwordpolicies 屬性。
 
-預設的 Azure AD 密碼原則會要求使用者每隔90天變更其密碼。 如果您在 AD 中的原則也是90天，則這兩個原則應該相符。 不過，如果 AD 原則不是90天，您可以使用 Set-msolpasswordpolicy PowerShell 命令，將 Azure AD 密碼原則更新為相符。
+預設的 Azure AD 密碼原則會要求使用者每隔90天變更其密碼。 如果您在 AD 中的原則也是90天，則這兩個原則應該相符。 不過，如果 AD 原則不是90天，您可以使用 Set-MsolPasswordPolicy PowerShell 命令來更新 Azure AD 密碼原則，以符合此原則。
 
 Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 
@@ -122,7 +122,7 @@ Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Set-msolpasswordpolicy PowerShell 命令將無法在同盟網域上運作。 
+> Set-MsolPasswordPolicy PowerShell 命令將無法在同盟網域上運作。 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步處理暫時密碼和「下次登入時強制變更密碼」
 
@@ -231,7 +231,7 @@ Azure AD 針對每個已註冊的網域支援不同的密碼到期原則。
 ## <a name="troubleshoot-password-hash-synchronization"></a>針對密碼雜湊同步處理進行疑難排解
 如果您在進行密碼雜湊同步處理時發生問題，請參閱[針對密碼雜湊同步處理進行疑難排解](tshoot-connect-password-hash-synchronization.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [Azure AD Connect 同步：自訂同步處理選項](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 * [取得從 ADFS 遷移至密碼雜湊同步處理的逐步部署方案](https://aka.ms/authenticationDeploymentPlan)

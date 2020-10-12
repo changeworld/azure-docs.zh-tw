@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 52f896e5cbcc8089ee8683338c99fb514400be4a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511138"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>適用於 Linux 的 NVIDIA GPU 驅動程式擴充功能
@@ -148,7 +148,7 @@ az vm extension set \
   --version 1.3 
 ```
 
-下列範例也會新增兩個選用的自訂設定，做為非預設驅動程式安裝的範例。 具體而言，它會將作業系統核心更新為最新版本，並安裝特定的 CUDA 工具組版本驅動程式。 同樣地，請注意，[--settings] 是選擇性和預設值。 請注意，更新核心可能會增加延伸模組的安裝時間。 此外，選擇特定（較舊）的 CUDA tolkit 版本可能不一定會與較新的核心相容。
+下列範例也會新增兩個選擇性的自訂設定，作為非預設驅動程式安裝的範例。 具體來說，它會將作業系統核心更新為最新版本，並安裝特定的 CUDA 工具組版本驅動程式。 同樣地，請注意，[--settings] 是選擇性和預設值。 請注意，更新核心可能會增加延伸模組的安裝時間。 此外，選擇特定 (較舊的) CUDA tolkit 版本可能不一定會與較新的核心相容。
 
 ```azurecli
 az vm extension set \
@@ -177,7 +177,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-延伸模組執行輸出會記錄至下列檔案。 請參閱此檔案，以追蹤（任何長時間執行）安裝的狀態，以及針對任何失敗進行疑難排解。
+擴充功能執行輸出會記錄至下列檔案。 請參閱此檔案來追蹤 (任何長時間執行的) 安裝的狀態，以及針對任何失敗進行疑難排解的狀態。
 
 ```bash
 /var/log/azure/nvidia-vmext-status

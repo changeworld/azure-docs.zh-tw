@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87309285"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 診斷與 Azure Application Insights 的整合對 Azure 雲端服務的問題發出警示
@@ -91,7 +91,7 @@ EventLogs
 在 [搜尋查詢]**** 方塊中，貼入您在上一個步驟中備妥的合併查詢。
 
 然後，繼續前往 [閾值]**** 方塊，並將其值設定為 0。 您可能會選擇調整 [期間]**** 和 [頻率]**** 欄位。
-按一下 [完成] 。
+按一下 [完成]。
 
 ![設定訊號邏輯查詢的螢幕擷取畫面](./media/proactive-cloud-services/003.png)
 

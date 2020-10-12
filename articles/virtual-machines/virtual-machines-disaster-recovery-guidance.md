@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
 ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831136"
 ---
-# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服務中斷影響 Azure Vm，該怎麼辦？
+# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服務中斷影響 Azure Vm，該怎麼辦
 Microsoft 的同仁一向努力確保提供您需要的服務。 有時候因為不可抗力之影響，造成服務意外中斷。
 
 Microsoft 為其服務提供服務等級協定 (SLA)，作為執行時間和連接承諾。 個別的 Azure 服務 SLA 位於 [Azure 服務等級協定](https://azure.microsoft.com/support/legal/sla/)。

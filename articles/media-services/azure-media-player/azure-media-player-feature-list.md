@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296360"
 ---
 # <a name="feature-list"></a>功能清單 #
@@ -59,7 +59,7 @@ ms.locfileid: "91296360"
 | 分析                               |        | X                |          |             | AMP 提供接聽分析和診斷事件的能力，以傳送至您選擇的分析後端。  由於平臺限制，所有的事件和屬性都不會跨 techs 使用。                                                                            |
 | 自訂外觀                            |        |                  | X        |             | 您可以藉由在 AMP 中將控制項設定為 false，並使用您自己的 HTML 和 CSS 來達成此案例。           |
 | 搜尋列清理                      |        |                  |          | X           |                                                                                                                      |
-| 訣竅-玩                              |        |                  |          | X           |                                                                                                                      |
+| Trick-Play                              |        |                  |          | X           |                                                                                                                      |
 | 僅限音訊                              | X      |                  |          |           | 在 AzureHtml5JS 中支援。 如果平臺支援，則漸進式的 MP3 播放可以搭配 HTML5 技術使用。                                                                                                        |
 | 僅影片                              | X      |                  |          |           | 在 AzureHtml5JS 中支援。                                                                                                        |
 | 多重期間簡報               |        |                  |          | X                                                                                                                                  |

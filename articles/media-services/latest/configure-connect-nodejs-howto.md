@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: d32f39daeb66990d99915e8bbcca5dd637d4f914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296258"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>連接至媒體服務 v3 API-Node.js
@@ -27,7 +27,7 @@ ms.locfileid: "91296258"
 
 本文說明如何使用服務主體登入方法，連線到 Azure 媒體服務 v3 node.js SDK。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 安裝 [Node.js](https://nodejs.org/en/download/)。
 - [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。

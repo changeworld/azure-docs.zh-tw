@@ -12,10 +12,10 @@ ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852081"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
@@ -146,6 +146,6 @@ ms.locfileid: "88852081"
 
 - 初始版本
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需如何在自訂原則中自訂應用程式使用者介面的詳細資訊，請參閱 [使用自訂原則來自訂應用程式的使用者介面](custom-policy-ui-customization.md)。

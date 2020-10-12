@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fe035d99f8a5962406d5aae3f093d71d432b310
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860774"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>在 Azure Stack 上執行 Azure 串流分析 (預覽版) 
@@ -128,7 +128,7 @@ ASA Edge 作業在部署到 Azure IoT Edge 裝置的容器中執行。 它們是
    > [!div class="mx-imgBorder"]
    > [![IoT 中樞輸入 ](media/on-azure-stack/iot-hub-input.png)](media/on-azure-stack/iot-hub-input.png#lightbox)
 
-6. 將其他欄位保留為預設值，然後選取 [儲存]。
+6. 保留其他欄位的預設值，然後選取 [儲存]。
 7. 在 [作業拓撲] 下方開啟 [輸出]，然後選取 [新增]。
 8. 從下拉式清單中選擇 Blob 儲存體、事件中樞或 Edge 中樞。
 9. 如果輸出是 Azure Stack Hub 訂用帳戶中的事件中樞或 Blob 儲存體，請以手動方式提供資訊，如下所示。

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936711"
 ---
 # <a name="offline-deployment-overview"></a>離線部署總覽
@@ -29,7 +29,7 @@ ms.locfileid: "90936711"
 
 腳本會以互動方式提示您輸入下列資訊。  或者，如果您想要在沒有互動式提示的情況下執行腳本，您可以在執行腳本之前設定對應的環境變數。
 
-|Prompt|環境變數|備註|
+|Prompt|環境變數|注意|
 |---|---|---|
 |提供來源容器登錄-按 ENTER 以使用 `mcr.microsoft.com`|SOURCE_DOCKER_REGISTRY|一般而言，您會從 Microsoft Container Registry 提取映射，但如果您使用不同的登錄來參與私人預覽，則可以使用提供給您的資訊作為預覽程式的一部分。|
 |提供來源容器登錄存放庫-按 ENTER 以使用 `arcdata` ：|SOURCE_DOCKER_REPOSITORY|如果您要從 Microsoft Container Registry 提取，存放庫將會是 `arcdata` 。|

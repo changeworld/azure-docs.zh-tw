@@ -2,15 +2,13 @@
 title: 使用 Azure Functions 建立和執行自訂可用性測試
 description: '本檔將說明如何使用 TrackAvailability ( # A1 來建立 Azure 函式，該函式會根據 TimerTrigger 函式中指定的設定定期執行。 這項測試的結果會傳送到您的 Application Insights 資源，您可以在其中查詢可用性結果資料併發出警示。 自訂測試可讓您撰寫更複雜的可用性測試，而非使用入口網站 UI、監視 Azure VNET 內的應用程式、變更端點位址，或建立可用性測試（如果您的區域中沒有提供的話）。'
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: bf756255d5eb0ffb3e57f13f4248fb8e38f26129
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773173"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945646"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 建立和執行自訂可用性測試
 

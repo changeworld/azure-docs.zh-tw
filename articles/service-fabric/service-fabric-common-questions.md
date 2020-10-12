@@ -1,14 +1,14 @@
 ---
-title: 有關 Microsoft Azure Service Fabric 的常見問題
-description: 有關 Service Fabric 的常見問題，包括功能、使用案例和常見案例。
+title: Microsoft Azure Service Fabric 的常見問題
+description: 關於 Service Fabric 的常見問題，包括功能、使用案例和一般案例。
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292854"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 的常見問題
@@ -36,7 +36,7 @@ ms.locfileid: "87292854"
 
 需考量的事項： 
 
-1. 目前在 Azure 中的 Service Fabric 叢集資源是地區性的，據以建置叢集的虛擬機器擴展集也是。 這表示在發生區域失敗時，您可能就無法透過 Azure Resource Manager 或 Azure 入口網站來管理叢集。 即使叢集仍在執行，而且您可以直接與其進行互動，還是可能發生此情況。 此外，Azure 目前並無法讓您擁有可跨區域使用的單一虛擬網路。 這表示 Azure 中的多區域叢集需要虛擬機器擴展集或[AZURE VPN 網](../vpn-gateway/vpn-gateway-about-vpngateways.md)關中的[每個 VM 都有公用 IP 位址](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)。 這些網路選擇對於成本、效能以及某種程度的應用程式設計會有不同的影響，因此請先謹慎地分析和規劃，再建立這樣的環境。
+1. 目前在 Azure 中的 Service Fabric 叢集資源是地區性的，據以建置叢集的虛擬機器擴展集也是。 這表示在發生區域失敗時，您可能就無法透過 Azure Resource Manager 或 Azure 入口網站來管理叢集。 即使叢集仍在執行，而且您可以直接與其進行互動，還是可能發生此情況。 此外，Azure 目前並無法讓您擁有可跨區域使用的單一虛擬網路。 這表示 Azure 中的多區域叢集需要 [虛擬機器擴展集中的每個 VM 都有公用 IP 位址](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) ，或 [Azure VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 這些網路選擇對於成本、效能以及某種程度的應用程式設計會有不同的影響，因此請先謹慎地分析和規劃，再建立這樣的環境。
 2. 維護、管理和監視這些機器的程序可能會變得複雜，特別是在跨_數種類型_的環境時，例如在不同雲端提供者之間或在內部部署資源和 Azure 之間。 請務必謹慎，確保您已了解叢集和應用程式的升級、監視、管理和診斷方式，再於這類環境中執行生產工作負載。 如果您對於在 Azure 中或自己的資料中心內解決這些問題已有豐富經驗，則在建置或執行 Service Fabric 叢集時或許也可以套用同樣的一套解決方案。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric 節點是否會自動接收作業系統更新？
@@ -59,7 +59,7 @@ ms.locfileid: "87292854"
 
 執行生產工作負載的 Service Fabric 叢集所支援的大小下限為五個節點。 針對開發人員案例，我們支援一個節點 (已針對在 Visual Studio 中提供快速開發體驗最佳化) 和五個節點的叢集。
 
-因為下列三個原因，所以生產叢集需要至少有五個節點：
+因為下列三個原因，我們需要生產叢集至少有五個節點：
 1. 即使未執行任何使用者服務，Service Fabric 叢集仍會執行一組具設定狀態的系統服務，包括命名服務及容錯移轉管理員服務。 這些系統服務對於維持叢集的運作是不可或缺的。
 2. 我們一律會針對每個節點放置一個服務複本，因此叢集大小是服務 (實際上是分割區) 可以擁有的複本數量上限。
 3. 由於叢集升級將會至少讓一個節點停機，我們希望擁有至少一個節點的緩衝，因此我們希望生產環境叢集在最低限度以外** 能有至少兩個節點。 最低限度是系統服務的仲裁大小，其說明如下。  
@@ -94,10 +94,10 @@ ms.locfileid: "87292854"
 在我們努力改善體驗時，您的責任是升級。 您必須升級叢集的虛擬機器上的作業系統映像，一次一部 VM。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何將叢集節點類型 (虛擬機器擴展集) 中已連結的資料磁碟加密？
-是。  如需詳細資訊，請參閱[使用連接的資料磁片建立](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)叢集和[虛擬機器擴展集的 Azure 磁碟加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
+是。  如需詳細資訊，請參閱 [使用連接的資料磁片](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) 和 [虛擬機器擴展集的 Azure 磁碟加密來](../virtual-machine-scale-sets/disk-encryption-overview.md)建立叢集。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何在叢集節點類型 (虛擬機器擴展集) 中使用低優先順序的 VM？
-不可以。 不支援低優先順序的 VM。 
+否。 不支援低優先順序的 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>當我在叢集中執行防毒程式時需要排除哪些目錄和處理序？
 
@@ -123,10 +123,10 @@ ms.locfileid: "87292854"
 | FileStoreService.exe |
  
 ### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>我的應用程式如何向 Key Vault 驗證以取得秘密？
-下列是讓您的應用程式取得認證以驗證 Key Vault 的方法：
+以下是讓您的應用程式取得認證以驗證 Key Vault 的方法：
 
-A. 在您的應用程式組建/封裝作業期間，您可以將憑證提取到 SF 應用程式的資料套件中，並使用它來驗證 Key Vault。
-B. 對於已啟用虛擬機器擴展集的 MSI 主機，您可以為 SF 應用程式開發簡單的 PowerShell SetupEntryPoint，以[從 MSI 端點取得存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)，然後[從 Key Vault 取出您的秘密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
+A. 在您的應用程式建立/封裝作業期間，您可以將憑證提取至 SF 應用程式的資料套件，並使用此憑證來向 Key Vault 進行驗證。
+B. 針對啟用虛擬機器擴展集的 MSI 主機，您可以針對 SF 應用程式開發簡單的 PowerShell SetupEntryPoint，以 [從 MSI 端點取得存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)，然後 [從 Key Vault 取出您的秘密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
 ## <a name="application-design"></a>應用程式設計
 
@@ -136,8 +136,8 @@ B. 對於已啟用虛擬機器擴展集的 MSI 主機，您可以為 SF 應用�
 
 - 建立會查詢另一個服務所有分割的服務，以提取所需資料。
 - 建立可接收來自另一個服務所有分割之資料的服務。
-- 定期從每個服務將資料推送至外部存放區。 只有當您所執行的查詢不是核心商務邏輯的一部分，因為外部存放區的資料會過時，這種方法才適用。
-- 或者，儲存必須支援直接在資料存放區中查詢所有記錄的資料，而不是在可靠的集合中。 這可排除過時資料的問題，但不允許利用可靠集合的優點。
+- 定期從每個服務將資料推送至外部存放區。 只有當您所執行的查詢不是核心商務邏輯的一部分時，才適用這種方法，因為外部商店的資料將會過時。
+- 或者，將必須支援查詢的資料，直接儲存在資料存放區，而不是在可靠的集合中。 這可排除過時資料的問題，但不允許利用可靠集合的優點。
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>在所有動作項目查詢資料的最佳方式為何？
@@ -168,7 +168,7 @@ B. 對於已啟用虛擬機器擴展集的 MSI 主機，您可以為 SF 應用�
 正如同可靠的服務，您可以在動作項目服務中儲存的資料量僅受限於叢集中所有節點可用的整體磁碟空間以及記憶體。 不過，個別的動作項目在用來封裝少量的狀態以及相關聯商務邏輯時最為有效。 一般而言，個別的動作項目應該會有以 kb 為單位所測量的狀態。
 
 
-### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Azure Service Fabric 資源提供者會將客戶資料儲存在何處？
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Azure Service Fabric 資源提供者儲存客戶資料的位置？
 
 Azure Service Fabric 資源提供者不會在其部署所在的區域中移動或儲存客戶資料。
 
@@ -183,10 +183,10 @@ Azure Service Fabric 資源提供者不會在其部署所在的區域中移動�
 
 我們在 GitHub 上有開放部分 Service Fabric 原始碼 ([可靠的服務架構](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[可靠的執行者架構](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 整合程式庫](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)，以及 [Service Fabric CLI](https://github.com/Azure/service-fabric-cli))，並接受社群對這些專案的貢獻。 
 
-我們[最近宣佈](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)計劃開放 Service Fabric 執行階段原始碼。 到目前為止，我們已在 GitHub 上使用 Linux 組建和測試控管來[Service Fabric](https://github.com/Microsoft/service-fabric/)存放庫，這表示您可以複製存放庫、建立 Linux 的 Service Fabric、執行基本測試、開啟問題，以及提交提取要求。 我們正努力讓 Windows 組建環境以及完整的 CI 環境進行移轉。
+我們[最近宣佈](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)計劃開放 Service Fabric 執行階段原始碼。 到目前為止，我們已在 GitHub 上使用 Linux 組建和測試控管 [Service Fabric](https://github.com/Microsoft/service-fabric/) 存放庫，這表示您可以複製存放庫、建立 Linux 的 Service Fabric、執行基本測試、開啟問題，以及提交提取要求。 我們正努力讓 Windows 組建環境以及完整的 CI 環境進行移轉。
 
 請關注 [Service Fabric 部落格](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)，以便在公告更多詳細資料時進行了解。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)

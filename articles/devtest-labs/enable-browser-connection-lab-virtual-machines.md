@@ -4,10 +4,10 @@ description: DevTest Labs 現在與 Azure 防禦整合，作為實驗室的擁�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870488"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>在 Azure DevTest Labs 虛擬機器上啟用瀏覽器連線 
@@ -18,7 +18,7 @@ DevTest Labs 與 [Azure](../bastion/index.yml)防禦整合，可讓您透過瀏�
 
 本文說明如何在實驗室虛擬機器上啟用瀏覽器連線。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 - 在現有實驗室的虛擬網路中部署堡壘主機 ** (或) ** 將您的實驗室與已設定的虛擬網路連線。
 若要瞭解如何在虛擬網路中部署堡壘主機，請參閱  [建立 Azure 堡壘主機](../bastion/bastion-create-host-portal.md)。 建立堡壘主機時，請選取實驗室的虛擬網路。 
 - 實驗室使用者必須在防禦主機和已設定防禦的虛擬網路上具有「 **讀取** 者」角色。 

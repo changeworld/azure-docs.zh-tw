@@ -4,10 +4,10 @@ description: 本文說明如何從容器 Azure 監視器建立自訂記錄警示
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294541"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器建立記錄警示

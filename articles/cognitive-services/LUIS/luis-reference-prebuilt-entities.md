@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541997"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>在您 LUIS 模型中，每個文化特性的實體
@@ -28,13 +28,13 @@ Language Understanding (LUIS) 提供預先建置的實體。
 ## <a name="availability"></a>可用性
 除非另有註明，否則預先建置的實體在所有 LUIS 應用程式地區設定 (文化特性) 中均適用。 下表列出支援各種文化特性的預先建置實體。
 
-|文化特性|次文化特性|備註|
+|文化特性|次文化特性|注意|
 |--|--|--|
 |中文|[zh-CN](#chinese-entity-support)||
 |荷蘭文|[nl-NL](#dutch-entity-support)||
 |英文|[en-US (美式)](#english-american-entity-support)||
 |法文|[fr-CA (加拿大)](#french-canadian-entity-support), [fr-FR (法國)](#french-france-entity-support), ||
-|德文|[de 消除](#german-entity-support)||
+|德文|[de-DE](#german-entity-support)||
 |義大利文|[it-IT](#italian-entity-support)||
 |日文|[ja-JP](#japanese-entity-support)||
 |韓文|[ko-KR](#korean-entity-support)||
@@ -94,7 +94,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 
 支援下列實體：
 
-| 預建實體 | en-US |
+| 預建實體 | zh-TW |
 | --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |

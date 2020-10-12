@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658517"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
@@ -197,7 +197,7 @@ Azure AD 租用戶在設計上是隔離的。 下列工作不受支援：
 
 Azure Active Directory Connect 伺服器會透過 Azure Active Directory Connect 後端與 Azure Active Directory 進行通訊。 唯一可以用來與此後端通訊的軟體是 Azure Active Directory Connect。 不支援使用任何其他軟體或方法與 Azure Active Directory Connect 後端通訊。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要了解如何安裝這些案例的 Azure AD Connect，請參閱[自訂 Azure AD Connect 安裝](how-to-connect-install-custom.md)。
 
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: a5382313c837482f116f498f3a05c36447062b0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936879"
 ---
 # <a name="security-module"></a>安全性模組
@@ -28,7 +28,7 @@ ms.locfileid: "90936879"
 
 對 Azure 內所建置的 IoT 解決方案來說，裝置對應項在裝置管理和程序自動化中同時扮演重要的角色。
 
-Defender for IoT 可與您現有的 IoT 裝置管理平臺完全整合，讓您能夠管理裝置的安全性狀態，以及利用現有的裝置控制功能。 藉由使用 IoT 中樞對應項機制來達成整合。
+適用於 IoT 的 Defender 可與您現有的 IoT 裝置管理平台完全整合，讓您能夠管理裝置的安全性狀態，以及利用現有的裝置控制功能。 藉由使用 IoT 中樞對應項機制來達成整合。
 
 深入瞭解 Azure IoT 中樞中 [裝置 twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) 的概念。
 

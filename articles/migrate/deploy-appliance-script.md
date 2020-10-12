@@ -4,10 +4,10 @@ description: 瞭解如何使用腳本設定 Azure Migrate 設備
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91438914"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用腳本設定設備
@@ -46,12 +46,12 @@ Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大�
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. 確認適用于 Azure 公用雲端的最新設備版本和腳本：
 
     **演算法** | **下載** | **SHA256**
     --- | --- | ---
-    VMware (85.8 MB)  | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
+    VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
 
 
 
@@ -94,13 +94,13 @@ Hyper-V | Windows Server 2016 （含 16 GB 的記憶體）、八個 vcpu、大�
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. 確認適用于 Azure 公用雲端的最新設備版本和腳本：
 
     **案例** | **下載** | **SHA256**
     --- | --- | ---
-    Hyper-v (85.8 MB)  | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
+    Hyper-V (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
 
 ### <a name="run-the-script"></a>執行指令碼
 

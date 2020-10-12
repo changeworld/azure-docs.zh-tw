@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: aaed6cd789ca6178410c05b940a8f498e2c067a8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936873"
 ---
 # <a name="get-started-with-defender-for-iot"></a>開始使用適用于 IoT 的 Defender
@@ -43,7 +43,7 @@ ms.locfileid: "90936873"
 
 使用以代理程式為基礎的全方位威脅防護和安全性狀態管理解決方案，開始 [增強的部署](security-agents.md) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [為 IoT 啟用 Defender](quickstart-onboard-iot-hub.md)
 - 設定您的 [解決方案](quickstart-configure-your-solution.md)

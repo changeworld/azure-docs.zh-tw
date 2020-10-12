@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936874"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender for IoT 事件匯總
@@ -89,7 +89,7 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 | aggregationIntervalProcessTerminate | PT1H|
 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Defender for IoT 安全性代理程式匯總，以及可用的事件設定選項。
 

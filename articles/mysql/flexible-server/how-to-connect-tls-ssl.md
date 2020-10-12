@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936651"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>使用傳輸層安全性 (TLS 1.2) 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中進行加密的連接
@@ -222,7 +222,7 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [使用 MySQL 工作臺在適用於 MySQL 的 Azure 資料庫彈性的伺服器中連接和查詢資料](./connect-workbench.md)
 - [使用 PHP 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中連接和查詢資料](./connect-php.md)
 - [使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫彈性的伺服器虛擬網路](./how-to-manage-virtual-network-cli.md)。

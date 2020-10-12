@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936772"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>使用 Azure CLI 為適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器自訂伺服器參數
@@ -63,6 +63,6 @@ az postgres flexible-server parameter set --name log_min_messages --resource-gro
 
 此命令會將 **log \_ min \_ messages** 參數重設為預設值 **WARNING**。 如需有關伺服器參數和允許值的詳細資訊，請參閱于 postgresql [設定參數](https://www.postgresql.org/docs/12/config-setting.html)的檔。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要設定及存取伺服器記錄，請參閱[適用於 PostgreSQL 的 Azure 資料庫中的伺服器記錄](concepts-logging.md)

@@ -10,10 +10,10 @@ services: iot-central
 manager: peterpr
 ms.custom: contperfq2
 ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850093"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中管理裝置
@@ -52,7 +52,7 @@ ms.locfileid: "91850093"
 
 1. **開啟或****關閉****模擬**切換。 真實裝置是您連線至 Azure IoT Central 應用程式的實體裝置。 模擬裝置具有由 Azure IoT Central 為您產生的範例資料。
 
-1. 選取 [建立]  。
+1. 選取 [建立]****。
 
 1. 此裝置現在會出現在此範本的裝置清單中。 選取裝置以查看包含裝置所有視圖的裝置詳細資料頁面。
 

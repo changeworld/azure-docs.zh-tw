@@ -4,10 +4,10 @@ description: 本文說明如何設定事件方格主題或網域的防火牆設�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324156"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的 IP 防火牆 
@@ -35,7 +35,7 @@ ms.locfileid: "91324156"
 本節說明如何使用 Azure CLI 命令來建立具有輸入 IP 規則的主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立 **網域**的輸入 IP 規則。 
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 執行下列命令，以更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
@@ -162,7 +162,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>使用 PowerShell
 本節說明如何使用 Azure PowerShell 命令來建立具有輸入 IP 防火牆規則的 Azure 事件方格主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立 **網域**的輸入 IP 規則。 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 遵循 [如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md) ，以建立 Azure Active Directory 應用程式，並記下下列值：
 
 - 目錄 (租用戶) 識別碼

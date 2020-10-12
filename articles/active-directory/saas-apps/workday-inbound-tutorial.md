@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541283"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
@@ -258,7 +258,7 @@ ms.locfileid: "91541283"
 > 如果您想要將布建代理程式限制為只基於測試目的而從特定 OU 建立和讀取使用者，建議您在測試執行期間，于適當的 OU 層級委派控制項。
 
 4. 按一下 [歡迎使用] 畫面上的 **[下一步]** 。 
-5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按 [下一步]  。
+5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按一下 [下一步]。
    >[!div class="mx-imgBorder"]
    >![新增畫面](./media/workday-inbound-tutorial/delegation-wizard-01.png "新增畫面")
 
@@ -396,7 +396,7 @@ ms.locfileid: "91541283"
 
       > [!NOTE]
      > 如果未在 URL 中指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
-     > 範例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
+     > 範例： `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
      > <br> 如果您是使用 WWS API v 30.0 +，在開啟布建作業之前，請更新 [屬性對應] 下的 **XPATH API 運算式** **-> Advanced Options-> 編輯屬性清單（workday** 參考 [管理您](#managing-your-configuration) 的設定和 [Workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)的區段）。  
 
    * **Active Directory 樹系** – 向代理程式註冊的 Active Directory 網域「名稱」。 請使用下拉式清單來選取用於佈建的目標網域。 此值通常是如下的字串：*contoso.com*

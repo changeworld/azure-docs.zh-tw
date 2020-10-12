@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
 ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324700"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
@@ -28,7 +28,7 @@ LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可�
 | [批次測試][batch-testing]| 10 個資料集，每個資料集 1000 個語句|
 | 明確清單 | 每個應用程式 50 個|
 | 外部實體 | 無限制 |
-| [意圖][intents]|每個應用程式500：499個自訂意圖，以及所需的 _None_ 意圖。<br>[分派](https://aka.ms/dispatch-tool) 應用程式有對應的500分派來源。|
+| [對應方式][intents]|每個應用程式500：499個自訂意圖，以及所需的 _None_ 意圖。<br>[分派](https://aka.ms/dispatch-tool) 應用程式有對應的500分派來源。|
 | [列出實體](./luis-concept-entity-types.md) | 父系：50 個項目，子系：20,000 個項目。 正式名稱為*預設字元上限。同義值沒有長度限制。 |
 | [機器學習實體 + 角色](./luis-concept-entity-types.md)：<br> 複合<br>簡單<br>實體角色|100父實體或330實體的限制，以較小者為准。 角色會計算為此限制用途的實體。 範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 個簡單 + 2 個角色 = 4 個330實體。<br>子實體最多可以嵌套到5個層級。|
 |模型即功能| 可做為特定模型之功能的最大模型數目，以做為10個模型。 用來作為特定模型之功能的片語清單最大數目是10個片語清單。|
@@ -63,7 +63,7 @@ LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可�
 
 請勿在下列名稱中使用下列字元：
 
-|物件|排除字元|
+|Object|排除字元|
 |--|--|
 |意圖、實體和角色名稱|`:`<br>`$` <br> `&`|
 |版本名稱|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
@@ -108,7 +108,7 @@ _kind_ `LUIS` 篩選 Azure 入口網站中的資源時，請使用類型。在�
 
 ## <a name="keyboard-controls"></a>鍵盤控制項
 
-|鍵盤輸入 | 說明 |
+|鍵盤輸入 | 描述 |
 |--|--|
 |Ctrl+E|在語句清單上的權杖和實體之間切換|
 

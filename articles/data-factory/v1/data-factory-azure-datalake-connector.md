@@ -14,10 +14,10 @@ ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: fe3401354d4853b875cdd001d5074ebdf0d3377b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019533"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用 Data Factory 從 Data Lake Storage Gen1 來回複製資料
@@ -189,7 +189,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 如需程式碼中所使用 Data Factory 類別的詳細資料，請參閱 [AzureDataLakeStoreLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主題。 新增程式碼中所使用 `WindowsFormsWebAuthenticationDialog` 類別的 `2.9.10826.1824` 版 `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` 參考。
 
-## <a name="troubleshooting-tips"></a>疑難排解秘訣
+## <a name="troubleshooting-tips"></a>疑難排解提示
 
 **徵兆：** 將資料複製**到** Azure Data Lake Store 時，如果複製活動因以下錯誤而發生失敗：
 
@@ -240,7 +240,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | **folderPath** |Data Lake Store 中容器與資料夾的路徑。 |是 |
-| **檔案名** |Azure Data Lake Store 中的檔案名稱。 fileName 屬性是選擇性的，而且區分大小寫****。 <br/><br/>如果您指定 fileName****，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會在輸入資料集中包含 folderPath 中的所有檔案********。<br/><br/>如果未指定輸出資料集的 **fileName** ，且未在活動接收中指定 **preserveHierarchy** ，則產生之檔案的名稱格式為 `Data._Guid_.txt` 。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |否 |
+| **fileName** |Azure Data Lake Store 中的檔案名稱。 fileName 屬性是選擇性的，而且區分大小寫****。 <br/><br/>如果您指定 fileName****，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會在輸入資料集中包含 folderPath 中的所有檔案********。<br/><br/>如果未指定輸出資料集的 **fileName** ，且未在活動接收中指定 **preserveHierarchy** ，則產生之檔案的名稱格式為 `Data._Guid_.txt` 。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |否 |
 | **partitionedBy** |partitionedBy**** 屬性為選擇性。 您可以用來指定時間序列資料的動態路徑與檔案名稱。 例如，folderPath **** 可針對每小時的資料進行參數化。 如需詳細資料和範例，請參閱「partitionedBy 屬性」。 |否 |
 | **format** | 支援下列格式類型：TextFormat****、JsonFormat****、AvroFormat****、OrcFormat**** 和 ParquetFormat****。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md)一文中[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)及 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)各節。 <br><br> 如果您想要在以檔案為基礎的存放區之間「依原樣」複製檔案 (二進位複本)，請略過輸入和輸出資料集定義中的 `format` 區段。 |否 |
 | **compression** | 指定此資料的壓縮類型和層級。 支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。 支援的層級為 **Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |

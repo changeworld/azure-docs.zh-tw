@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439520"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>使用 Azure 入口網站來設定現有 Azure Load Balancer 的虛擬機器擴展集
@@ -38,7 +38,7 @@ ms.locfileid: "91439520"
 
 1. 在畫面的左上方，按一下 [**建立資源**  >  **計算**  >  **虛擬機器擴展集**]，或在 marketplace 搜尋中搜尋**虛擬機器擴展集**。
 
-2. 選取 [建立]。
+2. 選取 [建立]****。
 
 3. 在 [ **建立虛擬機器擴展集**] 中，于 [ **基本** ] 索引標籤中輸入或選取這項資訊：
 

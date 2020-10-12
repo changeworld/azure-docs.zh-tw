@@ -4,10 +4,10 @@ description: 使用受 SAS 權杖保護的 Azure Resource Manager 範本，將�
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855664"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 權杖部署私用 ARM 範本
@@ -144,6 +144,6 @@ az deployment group create \
 如需使用包含已連結範本的 SAS Token 範例，請參閱 [透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 如需部署範本的簡介，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。
 * 若要在範本中定義參數，請參閱 [編寫範本](template-syntax.md#parameters)。

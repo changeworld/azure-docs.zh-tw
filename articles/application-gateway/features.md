@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355732"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 應用程式閘道功能
@@ -24,7 +24,7 @@ ms.locfileid: "91355732"
 
 - [安全通訊端層 (SSL/TLS) 終止](#secure-sockets-layer-ssltls-termination)
 - [自動調整](#autoscaling)
-- [區域冗余](#zone-redundancy)
+- [區域備援](#zone-redundancy)
 - [靜態 VIP](#static-vip)
 - [Web 應用程式防火牆](#web-application-firewall)
 - [AKS 的輸入控制器](#ingress-controller-for-aks)
@@ -155,7 +155,7 @@ Application Gateway 和 WAF v2 SKU 支援在要求及回應封包於用戶端與
 
 下表顯示每個應用程式閘道 v1 執行個體，在啟用 SSL 卸載時的平均效能輸送量：
 
-| 平均後端頁面回應大小 | 小 | 中型 | 大 |
+| 平均後端頁面回應大小 | 小型 | 中 | 大型 |
 | --- | --- | --- | --- |
 | 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
 | 100 KB |35 Mbps |100 Mbps |200 Mbps |

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708606"
 ---
 # <a name="logical-decoding"></a>邏輯解碼
@@ -50,7 +50,7 @@ ms.locfileid: "91708606"
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-1. 將 Azure 複寫支援設定為 **邏輯**。 選取 [儲存]  。
+1. 將 Azure 複寫支援設定為 **邏輯**。 選取 [儲存]****。
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
 

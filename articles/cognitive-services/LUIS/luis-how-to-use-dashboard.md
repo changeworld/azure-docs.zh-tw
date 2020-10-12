@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541402"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用儀表板來改善您的應用程式
@@ -152,7 +152,7 @@ ms.locfileid: "91541402"
 
 篩選器可讓您尋找具有特定問題的意圖：
 
-|篩選|建議的百分比|目的|
+|Filter|建議的百分比|目的|
 |--|--|--|
 |最有問題的意圖|-|**從這裡開始** -修正此意圖中的語句，可改善應用程式，而不是其他修正程式。|
 |更正下列預測|60%|這是所選意圖中正確的語句百分比，但低於閾值的信賴分數。 |

@@ -4,11 +4,11 @@ description: 設定存放庫認證以從 container registry 下載映射
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421419"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>設定應用程式的存放庫認證以下載容器映射
@@ -83,10 +83,6 @@ Service Fabric 接著會使用可在區段底下的 ClusterManifest 中指定的
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
-          },
-          {
-        "name": "DefaultMSIEndpointForTokenAuthentication",
-        "value": "URI"
           }
         ]
       },
@@ -122,25 +118,6 @@ Service Fabric 支援使用權杖作為認證，以下載容器的映射。  這
     > [!NOTE]
     > 當為 true 時，會將旗標 `UseDefaultRepositoryCredentials` 設為 true， `UseTokenAuthenticationCredentials` 會在部署期間造成錯誤。
 
-### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>使用 Azure 全球雲端以外的權杖認證
-
-使用以權杖為基礎的登錄認證時，Service Fabric 會代表虛擬機器提取權杖，以呈現給 ACR。 根據預設，Service Fabric 會要求其物件為全域 Azure 雲端端點的權杖。 如果您要部署到另一個雲端實例，例如 Azure 德國或 Azure Government，您將需要覆寫參數的預設值 `DefaultMSIEndpointForTokenAuthentication` 。 如果您不是部署到特殊環境，請勿覆寫此參數。 如果是，您將取代預設值，也就是
-
-```
-http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
-```
-
-針對您的環境使用適當的資源端點。 例如，針對 [Azure 德國](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)，覆寫會是 
-
-```json
-{
-    "name": "DefaultMSIEndpointForTokenAuthentication",
-    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
-}
-```
-
-[深入瞭解如何提取虛擬機器擴展集權杖](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)。
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [Container registry 驗證](../container-registry/container-registry-authentication.md)。

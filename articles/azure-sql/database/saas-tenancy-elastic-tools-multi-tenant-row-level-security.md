@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619928"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>使用彈性資料庫工具和資料列層級安全性的多租用戶應用程式
@@ -344,7 +344,7 @@ GO
 - **新增分區**：執行 T-SQL 指令碼來啟用所有新分區上的 RLS，否則系統不會篩選這些分區的查詢。
 - **新增資料表**：在每次建立新資料表時，將 FILTER 和 BLOCK 述詞新增到所有分區上的安全性原則。 否則，系統不會篩選針對新資料表的查詢。 如[自動將資料列層級安全性套用至新建立的資料表 (部落格)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393) \(英文\) 中所述，此新增動作可以使用 DDL 觸發程序來自動執行。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 您可以將彈性資料庫工具與資料列層級安全性搭配使用，以支援多租用戶和單一租用戶的分區，藉此向外延展應用程式的資料層。 多租用戶分區可以用來更有效率地儲存資料。 當大量租用戶只有少量資料列的資料時，此效率特別顯著。 單一租用戶分區可支援效能和隔離需求更嚴格的進階租用戶。 如需詳細資訊，請參閱[資料列層級安全性參考資料][rls]。
 

@@ -4,10 +4,10 @@ description: 瞭解以代理程式為基礎的 VMWare 遷移的 Azure Migrate �
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532115"
 ---
 # <a name="replication-appliance"></a>複寫設備
@@ -88,8 +88,8 @@ MySQL 必須安裝在複寫設備電腦上。 您可以使用下列其中一種�
 https:\//management.azure.com | 用於複寫管理作業和協調
 *.services.visualstudio.com | 用於遙測目的 (此為選擇性項目)
 time.windows.com | 用於檢查系統時間與通用時間之間的時間同步處理。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> HTTPs： \/ /login.live.com <br/> HTTPs： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> HTTPs： \/ /www.live.com <br/> HTTPs： \/ /www.microsoft.com  | 設備設定需要存取這些 Url。 其可供 Azure Active Directory 用於管理存取控制和身分識別
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成下載 MySQL。 在幾個區域中，下載可能會重新導向至 CDN URL。 如果需要，請確定 CDN URL 也可供使用。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | 設備設定需要存取這些 Url。 其可供 Azure Active Directory 用於管理存取控制和身分識別
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 若要完成 MySQL 下載。 在幾個區域中，下載可能會重新導向至 CDN URL。 如果需要，請確定 CDN URL 也可供使用。
 
 
 ## <a name="azure-government-url-access"></a>Azure Government URL 存取
@@ -105,8 +105,8 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 https:\//management.usgovcloudapi.net | 用於複寫管理作業和協調
 *.services.visualstudio.com | 用於遙測目的 (此為選擇性項目)
 time.nist.gov | 用於檢查系統時間與通用時間之間的時間同步處理。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> HTTPs： \/ /login.live.com <br/> HTTPs： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> HTTPs： \/ /www.live.com <br/> HTTPs： \/ /www.microsoft.com  | 使用 OVA 的設備設定需要存取這些 Url。 它們是用來 Azure Active Directory 的存取控制和身分識別管理。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成下載 MySQL。 在幾個區域中，下載可能會重新導向至 CDN URL。 如果需要，請確定 CDN URL 也可供使用。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | 使用 OVA 的設備設定需要存取這些 Url。 它們是用來 Azure Active Directory 的存取控制和身分識別管理。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 若要完成 MySQL 下載。 在幾個區域中，下載可能會重新導向至 CDN URL。 如果需要，請確定 CDN URL 也可供使用。
 
 ## <a name="port-access"></a>連接埠存取
 
