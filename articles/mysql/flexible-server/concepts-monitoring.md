@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: f3a58a6766c42385dd6611c2014ba36fd1078710
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934391"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>使用內建計量監視適用於 MySQL 的 Azure 資料庫彈性的伺服器
@@ -31,7 +31,7 @@ ms.locfileid: "90934391"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 MySQL 的 Azure 資料庫使用：
 
-|度量顯示名稱|計量|單位|描述|
+|度量顯示名稱|計量|Unit|描述|
 |---|---|---|---|
 |主機 CPU 百分比|cpu_percent|百分比|伺服器上 CPU 使用率的百分比，包括客戶工作負載和 Azure MySQL 進程的 CPU 使用率|
 |中的主機網路 |network_bytes_ingress|位元組|伺服器上的連入網路流量，包括來自客戶資料庫和 Azure MySQL 功能（例如複寫、監視、記錄等）的流量。|
@@ -48,6 +48,6 @@ ms.locfileid: "90934391"
 |中止的連線|aborted_connections|Count|連線至 MySQL 的失敗嘗試次數，例如因為認證不正確而導致連線失敗。|
 |查詢|查詢|Count|每秒查詢次數|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 請參閱[如何設定警示](./how-to-alert-on-metric.md)，取得根據計量來建立警示的指引。
 - 深入瞭解 [調整 IOPS](./concepts/../concepts-compute-storage.md#iops) 以改善效能。

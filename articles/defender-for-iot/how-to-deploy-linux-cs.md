@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 48737831440a1402b6974955b4da61a4216b011f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934467"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>為適用于 Linux 的 IoT c # 型安全性代理程式部署 Defender
@@ -119,7 +119,7 @@ ms.locfileid: "90934467"
 
        根據您在步驟 2 為 **logFilePath** 選擇的名稱，來變更檔案位置路徑。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀適用于 IoT 的 Defender 服務 [總覽](overview.md)
 - 深入瞭解適用于 IoT 的 Defender [架構](architecture.md)

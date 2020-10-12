@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934105"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
@@ -52,7 +52,7 @@ ms.locfileid: "90934105"
 2. 輸入新密碼並確認密碼。 文字方塊會提示您輸入密碼複雜性需求。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="重設您的密碼以提供彈性的伺服器":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="調整儲存體彈性伺服器":::
 
 3. 選取 [ **儲存** ] 以儲存新密碼。
 
@@ -63,7 +63,7 @@ ms.locfileid: "90934105"
 1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **刪除**]。
 2. 在 [輸入] 方塊中輸入伺服器的名稱，以確認您要刪除伺服器。
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="刪除彈性的伺服器":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="調整儲存體彈性伺服器":::
 
    > [!IMPORTANT]
    > 刪除伺服器無法復原。

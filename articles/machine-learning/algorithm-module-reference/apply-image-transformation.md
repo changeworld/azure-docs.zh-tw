@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898903"
 ---
 # <a name="apply-image-transformation"></a>套用映像轉換 
@@ -47,7 +47,7 @@ ms.locfileid: "90898903"
 
 ### <a name="module-parameters"></a>模組參數
 
-| Name | 範圍 | 類型 | 預設                   | 描述                              |
+| 名稱 | 範圍 | 類型 | 預設                   | 描述                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | [模式] | 任意   | 模式 |  (需要使用者指定)  | 您使用輸入轉換的目的。 您應該在推斷中排除「隨機」轉換作業，但將它們保留在定型中 |
 

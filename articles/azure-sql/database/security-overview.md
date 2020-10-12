@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
 ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321419"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database 與 SQL 受控執行個體安全性功能的總覽
@@ -75,9 +75,9 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 ### <a name="row-level-security"></a>資料列層級安全性
 
-資料列層級安全性可讓客戶根據執行查詢的使用者特性 (例如群組成員資格或執行內容)，來控制對資料庫資料表中資料列的存取。 資料列層級安全性也可以用來執行自訂的標籤式安全性概念。 如需詳細資訊，請參閱資料 [列層級安全性](/sql/relational-databases/security/row-level-security)。
+資料列層級安全性可讓客戶根據執行查詢的使用者特性 (例如群組成員資格或執行內容)，來控制對資料庫資料表中資料列的存取。 Row-Level 的安全性也可以用來執行以標籤為基礎的自訂安全性概念。 如需詳細資訊，請參閱資料 [列層級安全性](/sql/relational-databases/security/row-level-security)。
 
-![圖表顯示資料列層級安全性會防止使用者透過用戶端應用程式存取 SQL 資料庫的個別資料列。](./media/security-overview/azure-database-rls.png)
+![圖表顯示 Row-Level 的安全性會防止使用者透過用戶端應用程式存取 SQL 資料庫的個別資料列。](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>威脅保護
 

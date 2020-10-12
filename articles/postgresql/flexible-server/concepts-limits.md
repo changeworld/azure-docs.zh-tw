@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936604"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器的限制
@@ -66,7 +66,7 @@ ms.locfileid: "90936604"
 
 - 目前不支援在主要資料庫引擎版本之間進行自動轉換。 如果您希望升級至下個主要版本，請將資料庫[備份和還原](../howto-migrate-using-dump-and-restore.md)至使用新引擎版本所建立的伺服器。
 
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 
 - 目前不支援從 VNET 移入和移出。
 - 目前不支援將公用存取與 VNET 內的部署結合在一起。
@@ -75,7 +75,7 @@ ms.locfileid: "90936604"
 
 ### <a name="high-availability"></a>高可用性
 
-- 高載伺服器目前不支援區域冗余 HA。
+- 高載伺服器目前不支援 Zone-Redundant HA。
 - 當伺服器容錯移轉至 HA 待命時，資料庫伺服器的 IP 位址會變更。 請確定您使用的是 DNS 記錄，而不是伺服器 IP 位址。
 
 ### <a name="availability-zones"></a>可用性區域
@@ -116,7 +116,7 @@ ms.locfileid: "90936604"
 * 尚未支援讀取複本。 如果您需要讀取複本，建議使用 [單一伺服器](../overview-single-server.md) 選項。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [計算和儲存選項的可用功能](concepts-compute-storage.md)
 - 了解[支援的 PostgreSQL 資料庫版本](concepts-supported-versions.md)

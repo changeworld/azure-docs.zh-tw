@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
 ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328848"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全匯出將 Azure 連接至 ITSM 工具
@@ -68,7 +68,7 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 1. 選取 [**應用程式識別碼 URI**的**設定**]。
 
    [![設定我的應用程式 U R I D 的選項螢幕擷取畫面。](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="create-a-secure-webhook-action-group"></a>建立安全 Webhook 動作群組
 
@@ -107,7 +107,7 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 下列各節提供有關如何在 Azure 中連接您的 BMC Helix 產品和安全匯出的詳細資料。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 確定您符合下列必要條件：
 

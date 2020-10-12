@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 5cd4454d5b77d18940f6693a25a691a01f4fedec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936598"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>伺服器-適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
@@ -68,7 +68,7 @@ PostgreSQL 伺服器參數會判斷伺服器的設定。 在適用於 PostgreSQL
 
 適用於 PostgreSQL 的 Azure 資料庫是 Postgres 的受控服務，其中的可設定參數是本機 Postgres 執行個體中參數的子集 (如需有關 Postgres 參數的詳細資訊，請參閱 [PostgreSQL 文件](https://www.postgresql.org/docs/12/static/runtime-config.html))。 適用於 PostgreSQL 的 Azure 資料庫伺服器會在建立時為每個參數啟用預設值。 需要伺服器重新啟動或是需要 superuser 存取之後變更才會生效的部分參數，無法由使用者設定。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需服務的概觀，請參閱[適用於 PostgreSQL 的 Azure 資料庫概觀](overview.md)。
 - 如需根據您的設定的特定資源配額和限制的詳細資訊 **，請參閱**[計算和儲存選項](concepts-compute-storage.md)。

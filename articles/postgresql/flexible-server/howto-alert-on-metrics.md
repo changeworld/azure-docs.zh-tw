@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d3d5ced5860c14e9e4d522c42ffd0bc71341a9c4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934142"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>使用 Azure 入口網站針對適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器設定計量警示
@@ -46,19 +46,19 @@ ms.locfileid: "90934142"
 
 4. [建立規則]**** 頁面隨即開啟，如下所示。 填寫必要資訊：
 
-   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="[新增計量警示] 表單":::
+   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="選取警示規則":::
 
 5. 在 [條件]**** 區段中，選取 [新增條件]****。
 
 6. 從要提醒的訊號清單中選擇一個計量。 在此範例中，選取 "Storage percent"。
 
-   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="選取計量":::
+   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="選取警示規則":::
 
 7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， 「過去30分鐘內」 ) 和 **頻率**。
 
    完成時選取 [完成]****。
 
-   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="設定閾值":::
+   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="選取警示規則":::
 
 8. 在 [動作群組]**** 區段中，選取 [建立]**** 建立新的群組，以接收警示通知。
 
@@ -72,11 +72,11 @@ ms.locfileid: "90934142"
 
     3. 完成時選取 [確定]****。
 
-    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="動作群組":::
+    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="選取警示規則":::
 
 11. 指定 [警示規則名稱]、[描述] 與 [嚴重性]。
 
-    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="指定、名稱描述和嚴重性"::: 
+    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="選取警示規則"::: 
 
 12. 選取 [建立警示規則]**** 以建立警示。
 
@@ -90,7 +90,7 @@ ms.locfileid: "90934142"
 * **編輯**或**刪除**警示規則。
 * 如果您想要暫時停止或恢復接收通知，可以將警示**停用**或**啟用**。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [在警示中設定 webhook](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-webhooks)。
 * 依照 [計量集合概觀](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-how-to-customize-monitoring) 中的做法，確保您的服務可使用且有回應。

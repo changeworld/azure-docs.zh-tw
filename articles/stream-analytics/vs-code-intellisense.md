@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
 ms.openlocfilehash: bd72866e3e3db21691fda6aaec864a76af7414a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903728"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>適用于 Visual Studio Code 的 Azure 串流分析工具中的 IntelliSense
@@ -37,7 +37,7 @@ IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://ma
 |Completion     |  類型       |
 | ----- | ------- |
 | 關鍵字 | `keyword`
-| 函數 | `build-in function`, `user defined function`  |
+| 函式 | `build-in function`, `user defined function`  |
 | 資料集名稱| `input`, `output`, `intermediate result set`|
 | 資料集資料行名稱|`input`, `intermediate result set`|
 
@@ -69,7 +69,7 @@ IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://ma
 
 此問題的原因是提供資料的輸入設定遺失。 您可以檢查 [本機輸入](visual-studio-code-local-run.md#define-a-local-input) 或 [即時輸入](visual-studio-code-local-run-live-input.md#define-a-live-stream-input) 是否已正確設定。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)
 * [使用 Visual Studio Code 和範例資料在本機測試串流分析查詢](visual-studio-code-local-run.md)

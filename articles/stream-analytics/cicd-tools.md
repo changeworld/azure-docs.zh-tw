@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: e772701396f172eaab906f99463bd9019728b531
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934021"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具將 Azure 串流分析作業的組建、測試和部署自動化
@@ -241,7 +241,7 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 
 您可以使用從 Build 產生的 Azure Resource Manager 範本和參數檔案，將 [您的作業部署到 Azure](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 串流分析的持續整合與持續部署](cicd-overview.md)
 * [使用 Azure Pipelines 為串流分析作業設定 CI/CD 管線](set-up-cicd-pipeline.md)

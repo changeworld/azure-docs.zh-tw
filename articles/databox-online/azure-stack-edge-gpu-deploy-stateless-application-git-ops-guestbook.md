@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899556"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上，使用啟用 Redis on Arc 的 Kubernetes 叢集來部署 PHP 意見簿無狀態應用程式
@@ -174,6 +174,6 @@ C:\Users\user>
 ```-->
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [使用 Kubernetes 儀表板來監視 Azure Stack Edge Pro 裝置上的部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

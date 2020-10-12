@@ -4,10 +4,10 @@ description: 瞭解如何設定實驗室的自動關機原則，讓虛擬機器�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320705"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定實驗室和計算虛擬機器的自動關機
@@ -43,7 +43,7 @@ Azure DevTest Labs 可讓您管理每個實驗室的原則 (設定)，以控制�
 6. 選取 [開啟]**** 來啟用此原則，以及選取 [關閉]**** 來停用它。
 7. 如果您啟用這個原則，請指定時間 (和時區) 以關閉目前實驗室中的所有 VM。
 8. 針對選項指定 [ **是]** 或 [ **否** ]，在指定的自動關機時間之前的30分鐘傳送通知。 如果您選擇 [是]****，請輸入 Webhook URL 端點或電子郵件地址，指定您要在哪裡張貼或傳送通知。 使用者會收到通知，並且給予延遲關機的選項。 如需詳細資訊，請參閱 [ [通知](#notifications) ] 區段。 
-9. 選取 [儲存]。
+9. 選取 [儲存]****。
 
     根據預設，這個原則一經啟用，就會套用到目前實驗室的所有 VM。 若要從特定的 VM 移除此設定，請開啟 VM 的管理窗格並變更其 **自動關機** 設定。
     
@@ -184,7 +184,7 @@ Azure DevTest Labs 可讓您管理每個實驗室的原則 (設定)，以控制�
 2. 在 [ **自動關機** ] 頁面上，選取 [ **開啟** ] 以啟用此原則，並選取 [ **關閉** ] 來停用此原則。
 3. 如果您啟用此原則，請指定應關閉 VM 的 **時間** ** (和時區**) 。
 4. 針對選項指定 [ **是]** 或 [ **否** ]，在指定的自動關機時間之前的30分鐘傳送通知。 如果您選擇 [是]****，請輸入 Webhook URL 端點或電子郵件地址，指定您要在哪裡張貼或傳送通知。 使用者會收到通知，並且給予延遲關機的選項。 如需詳細資訊，請參閱 [ [通知](#notifications) ] 區段。 
-9. 選取 [儲存]。
+9. 選取 [儲存]****。
 
     ![設定計算 VM 的自動關機](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
 

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323720"
 ---
 # <a name="system-requirements"></a>系統需求
@@ -68,7 +68,7 @@ Azure 遠端轉譯目前僅支援 **HoloLens 2** 和 Windows 桌面做為目標�
 
 請確定您的防火牆 (在裝置上、路由器內部等等) 不會封鎖下列連接埠：
 
-| 連接埠              | 通訊協定 | 允許    | 說明 |
+| 連接埠              | 通訊協定 | 允許    | 描述 |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | 傳出 |  (HTTP 信號交換的初始連接)  |
 | 8266              | UDP      | 傳出 | 資料傳輸 |

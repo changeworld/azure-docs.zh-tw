@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: d4385ccda665e9acd2d2f9fd340e675b8a9dfe6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936664"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>使用 Azure 入口網站針對適用於 MySQL 的 Azure 資料庫彈性的伺服器設定計量警示 
@@ -44,7 +44,7 @@ ms.locfileid: "90936664"
     - 如果您使用的是 **靜態** 閾值，請繼續定義 **臨界值** (例如。 ) 85%。 度量圖表可協助判斷哪些可能是合理的閾值。
     - 如果您使用的是 **動態** 閾值，請繼續定義 **閾值敏感度**。 計量圖表會顯示以最近資料為基礎的計算臨界值。 [深入了解動態閾值條件類型和敏感度選項](../../azure-monitor/platform/alerts-dynamic-thresholds.md)。
 9. 藉由使用「匯總類型」函數 (例如，將 **匯總資料細微性調整 (期間) ** 間隔，來調整條件。 「30分鐘」 ) ， **頻率** (例如「每隔15分鐘」 ) 。
-10. 按一下 [完成] 。
+10. 按一下 [完成]。
 11. 新增動作群組。 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 在 [ **動作群組** ] 區段中，選擇 [ **選取動作群組** ]，以選取現有的動作群組以附加至警示規則。
 12. 您也可以建立新的動作群組，以接收警示的通知。 如需詳細資訊，請參閱 [建立和管理動作群組](../../azure-monitor/platform/action-groups.md) 。
 13. 若要建立新的動作群組，請選擇 [ **+ 建立動作群組**]。 以 **訂**用帳戶、 **資源群組**、 **動作組名** 和 **顯示名稱**填寫「建立動作群組」表單。
@@ -71,7 +71,7 @@ ms.locfileid: "90936664"
 * 如果您想要暫時停止或恢復接收通知，可以將警示**停用**或**啟用**。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解如何 [設定計量警示](../../azure-monitor/platform/alerts-metric.md)。
 - 深入瞭解 [適用於 MySQL 的 Azure 資料庫彈性伺服器中的可用計量](./concepts-monitoring.md)。
 - [瞭解計量警示在 Azure 監視器中的運作方式](../../azure-monitor/platform/alerts-metric-overview.md)

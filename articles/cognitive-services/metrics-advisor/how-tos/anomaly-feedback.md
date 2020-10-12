@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934023"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>使用意見反應來調整異常偵測
@@ -37,19 +37,19 @@ ms.locfileid: "90934023"
 
 請考慮同時在 **批註** 文字方塊中留下批註，然後按一下 [ **儲存** ] 以儲存您的意見反應。
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="意見反應功能表。":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="意見反應批註模式。":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>提供多個連續點的意見反應
 
 您可以按一下 [向下]，然後將滑鼠拖曳至您想要加上批註的點，藉此一次提供多個連續點的意見反應。 您會看到與上述相同的意見反應功能表。 當您按一下 [ **儲存**] 之後，就會對所有選擇的點套用相同的意見反應。
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="選擇多個點":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="意見反應批註模式。":::
 
 ## <a name="how-to-view-my-feedback"></a>如何查看我的意見反應
 
 若要查看點的異常偵測是否已變更，請將滑鼠停留在該點上。 工具提示會顯示 **因意見反應而受到影響：** 如果偵測已變更，則為 true。 如果顯示 [ **False**]，則會在該點上進行意見計算，但異常偵測結果不會變更。
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="受意見反應影響的點":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="意見反應批註模式。":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>我何時應該將異常標注為「正常」
 
@@ -62,7 +62,7 @@ ms.locfileid: "90934023"
 |異常是由假日所造成。     | 使用預設 [事件](configure-metrics.md#preset-events) 來標記指定時間的異常偵測。       |
 |偵測到異常的一般模式 (例如在週末) ，而且不應該是異常。      |使用意見反應功能或預設事件。        |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [診斷事件](diagnose-incident.md)。
 - [設定計量和微調偵測組態](configure-metrics.md)
 - [使用掛勾來設定警示並取得通知](../how-tos/alerts.md)

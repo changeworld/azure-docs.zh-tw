@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933902"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站為適用於 MySQL 的 Azure 資料庫彈性的伺服器建立及管理虛擬網路
@@ -49,7 +49,7 @@ ms.locfileid: "90933902"
 >[!Note]
 > 將彈性伺服器部署到虛擬網路和子網之後，您就無法將它移至公用存取 (允許的 IP 位址) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫彈性的伺服器虛擬網路](./how-to-manage-virtual-network-cli.md)。
 - 深入瞭解[適用於 MySQL 的 Azure 資料庫彈性伺服器中的網路](./concepts-networking.md)功能
 - 深入瞭解 [適用於 MySQL 的 Azure 資料庫彈性的伺服器虛擬網路](./concepts-networking.md#private-access-vnet-integration)。

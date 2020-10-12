@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320892"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure 原則來實作 Azure Cosmos DB 資源的治理和控制
@@ -126,7 +126,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 - 兩個帳戶中的零個符合需要針對多個寫入位置設定帳戶的原則
 - 兩個帳戶中的零個符合原則，可將資源部署至允許的 Azure 區域。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="列出 Azure 原則指派的合規性結果":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="搜尋 Azure Cosmos DB 內建原則定義":::
 
 若要修復不符合規範的資源，請參閱 [如何使用 Azure 原則來補救資源](../governance/policy/how-to/remediate-resources.md)。
 

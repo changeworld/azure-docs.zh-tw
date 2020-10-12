@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933905"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>使用 Azure 入口網站管理適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 
@@ -50,7 +50,7 @@ ms.locfileid: "90933905"
 2. 輸入新密碼並確認密碼。 文字方塊會提示您輸入密碼複雜性需求。
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="重設您的密碼以提供彈性的伺服器":::
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="調整儲存體彈性伺服器":::
 
 3. 選取 [ **儲存** ] 以儲存新密碼。
 
@@ -63,7 +63,7 @@ ms.locfileid: "90933905"
 2. 在 [輸入] 方塊中輸入伺服器的名稱，以確認您要刪除伺服器。
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="刪除彈性的伺服器":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="調整儲存體彈性伺服器":::
 
    > [!NOTE]
    > 刪除伺服器無法復原。

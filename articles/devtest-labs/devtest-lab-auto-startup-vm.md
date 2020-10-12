@@ -4,10 +4,10 @@ description: 瞭解如何針對實驗室中的 Vm 設定自動啟動設定。 �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328474"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>自動啟動實驗室虛擬機器  

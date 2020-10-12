@@ -1,14 +1,14 @@
 ---
 title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541759"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91614252"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 
@@ -74,7 +74,10 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 ## <a name="blueprint-assignment"></a>藍圖指派
 
-藍圖的每個**已發佈** **版本**都可指派 (具有最長 90 個字元的名稱) 給現有的訂用帳戶。 在入口網站中，藍圖會將**版本**預設為最近**已發佈**的版本。 如果有成品參數 (或是藍圖參數)，則參數將會在指派過程中定義。
+藍圖的每個**已發佈** **版本**都可指派 (具有最長 90 個字元的名稱) 給現有的管理群組或訂用帳戶。 在入口網站中，藍圖會將**版本**預設為最近**已發佈**的版本。 如果有成品參數或藍圖參數，則參數將會在指派過程中定義。
+
+> [!NOTE]
+> 將藍圖定義指派給管理群組，表示指派物件存在於管理群組中。 成品的部署仍以訂用帳戶為目標。 若要執行管理群組指派，必須使用[建立或更新 REST API](/rest/api/blueprints/assignments/createorupdate) ，而且要求本文必須包含 `properties.scope` 的值，才能定義目標訂用帳戶。
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure 藍圖中的權限
 

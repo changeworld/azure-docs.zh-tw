@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: victorh
 ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320637"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>監視 Azure 防火牆記錄和計量
@@ -24,7 +24,7 @@ ms.locfileid: "91320637"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您應該先閱讀 [Azure 防火牆記錄和計量](logs-and-metrics.md) ，以瞭解適用于 azure 防火牆的診斷記錄和計量。
 
@@ -48,7 +48,7 @@ ms.locfileid: "91320637"
 6. 在 [ **記錄**] 底下，選取 [ **>azurefirewallapplicationrule**]、[ **AzureFirewallNetworkRule**]、[ **AzureFirewallThreatIntelLog**] 和 [ **AzureFirewallDnsProxy** ] 以收集記錄。
 7. 選取 [ **傳送至 Log Analytics** ] 以設定您的工作區。
 8. 選取您的訂用帳戶。
-9. 選取 [儲存]。
+9. 選取 [儲存]****。
 
 ## <a name="enable-logging-with-powershell"></a>使用 PowerShell 啟用記錄
 

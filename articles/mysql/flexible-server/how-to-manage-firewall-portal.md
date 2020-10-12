@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 132319575147c2ff1075881b1f1faec8bc5029f4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936633"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫彈性伺服器的防火牆規則
@@ -48,21 +48,21 @@ ms.locfileid: "90936633"
 
 3. 按一下 [ **將目前的用戶端 IP 位址新增** 至防火牆規則]。 這樣會使用 Azure 系統發現的電腦公用 IP 位址自動建立防火牆規則。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Add My IP":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
 
 4. 儲存設定之前，請確認您的 IP 位址。 在某些情況下，Azure 入口網站觀察到的 IP 位址，不同於用來存取網際網路和 Azure 伺服器的 IP 位址。 因此，您可能需要變更起始 IP 位址和結束 IP 位址，才能讓規則如預期般運作。
 
    您可以使用搜尋引擎或其他線上工具來檢查您自己的 IP 位址。 例如，搜尋「我的 IP 是什麼」。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Bing search for What is my IP":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
 
 5. 新增其他位址範圍。 在適用於 MySQL 的 Azure 資料庫彈性伺服器的防火牆規則中，您可以指定單一 IP 位址或位址範圍。 如果您想要將規則限制為單一 IP 位址，請在 [起始 IP 位址] 和 [結束 IP 位址] 欄位中輸入相同的位址。 開啟防火牆可讓系統管理員、使用者和應用程式存取 MySQL 伺服器上具有有效認證的任何資料庫。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - firewall rules":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - click Connection Security":::-->
 
 6. 按一下工具列上的 [ **儲存** ]，儲存此防火牆規則。 等待確認已成功更新防火牆規則。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Save":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Connection Security":::-->
 
 ## <a name="connect-from-azure"></a>從 Azure 連接
 

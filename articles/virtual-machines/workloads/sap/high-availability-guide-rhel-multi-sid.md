@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319957"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 Red Hat Enterprise Linux
@@ -191,7 +191,7 @@ SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高�
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>必要條件 
 
 > [!IMPORTANT]
 > 依照指示，在叢集中部署其他 SAP 系統之前，請遵循指示，在叢集中部署第一個 SAP 系統，因為只有在第一次部署系統時才需要執行這些步驟。  

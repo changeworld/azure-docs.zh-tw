@@ -4,10 +4,10 @@ description: 說明 Azure Event Grid 的 SDK。 這些 SDK 提供管理、發佈
 ms.topic: reference
 ms.date: 07/07/2019
 ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322524"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用來管理及發佈的 Event Grid SDK

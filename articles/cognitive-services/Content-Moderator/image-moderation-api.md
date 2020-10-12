@@ -1,7 +1,7 @@
 ---
 title: 影像仲裁 - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 使用內容仲裁的電腦輔助影像仲裁和人對迴圈審核工具來審核成人和猥褻內容的影像。
+description: 使用內容仲裁的電腦輔助影像仲裁和人為迴圈審核工具，來仲裁成人和猥褻內容的影像。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800990"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解影像仲裁概念
 
-使用內容仲裁的電腦輔助影像仲裁和[審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
+使用內容仲裁的電腦輔助影像審核和 [審核工具](Review-Tool-User-Guide/human-in-the-loop.md) 來仲裁成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>評估成人和猥褻內容
 
@@ -147,10 +147,10 @@ ms.locfileid: "85800990"
 
 ## <a name="review-tool"></a>檢閱工具
 
-如需更差別細微的案例，請使用內容仲裁[審查工具](Review-Tool-User-Guide/human-in-the-loop.md)和其 API，為您的人力仲裁者呈現審核結果和內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
+如需更差別細微的案例，請使用內容仲裁者 [審核工具](Review-Tool-User-Guide/human-in-the-loop.md) 和其 API 來呈現審核結果，以及審核您的人力審核者的內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
 
 ![給人工仲裁的影像檢閱](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 另請參閱[審查、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核。
+試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 另請參閱 [評論、工作流程和工作](./review-api.md) ，以瞭解如何設定人工審核。

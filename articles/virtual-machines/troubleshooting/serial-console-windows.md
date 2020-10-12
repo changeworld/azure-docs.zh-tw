@@ -1,6 +1,6 @@
 ---
 title: 適用於 Windows 的 Azure 序列主控台 | Microsoft Docs
-description: 使用 Windows 範例的 Azure 虛擬機器和虛擬機器擴展集的雙向序列主控台。
+description: 使用 Windows 範例，為 Azure 虛擬機器和虛擬機器擴展集 Bi-Directional 序列主控台。
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325975"
 ---
 # <a name="azure-serial-console-for-windows"></a>適用於 Windows 的 Azure 序列主控台

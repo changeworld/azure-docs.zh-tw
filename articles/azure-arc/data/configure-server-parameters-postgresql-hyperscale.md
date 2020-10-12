@@ -11,15 +11,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934358"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>設定 Azure Arc enabled 于 postgresql 超大規模的 database engine 設定
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>為已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫設定資料庫引擎設定
 
-本檔說明將于 postgresql 超大規模伺服器群組的 database engine 設定設定為自訂 (非預設) 值的步驟。 如需可設定哪些資料庫引擎參數及其預設值的詳細資訊，請參閱 [此處](https://www.postgresql.org/docs/current/runtime-config.html)的于 postgresql 檔。
+本文件說明用來將 PostgreSQL 超大規模資料庫伺服器群組的資料庫引擎設定設為自訂 (非預設) 值的步驟。 如需可設定哪些資料庫引擎參數及其預設值的詳細資訊，請參閱 [此處](https://www.postgresql.org/docs/current/runtime-config.html)的于 postgresql 檔。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "90934358"
 > - `ssl`
 > - `wal_level`
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 設定 database engine 設定的命令一般格式為：
 

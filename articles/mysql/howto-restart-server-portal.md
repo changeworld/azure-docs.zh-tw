@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: d885cc64eeebd4873ad5993b39b48845d1365c23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902755"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 入口網站重新啟動適用於 MySQL 的 Azure 資料庫伺服器
@@ -36,16 +36,16 @@ ms.locfileid: "90902755"
 
 3. 按一下 [是]**** 以確認要重新啟動伺服器。
 
-   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 -重新啟動確認":::
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
 
 4. 您會發現伺服器的狀態變更為「正在重新啟動」。
 
-   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="適用於 MySQL 的 Azure 資料庫 -重新啟動狀態":::
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
 
 5. 確認伺服器重新啟動已成功。
 
-   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="適用於 MySQL 的 Azure 資料庫 -重新啟動成功":::
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="適用於 MySQL 的 Azure 資料庫 - 概觀 - 重新啟動按鈕":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [快速入門：使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)

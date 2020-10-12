@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: f29a34fd8916110355c0122fee9db29599a01231
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933868"
 ---
 # <a name="supported-versions-for-azure-database-for-mysql---flexible-server"></a>適用於 MySQL 的 Azure 資料庫彈性伺服器的支援版本
@@ -40,7 +40,7 @@ Bug 修正版本：5.7.29
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升級
 服務會自動管理對於錯誤 (bug) 修正版本更新的修補。 例如，5.7.29 至5.7.30。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 >[使用 MySQL 在 Windows 上建立 PHP 應用程式](../../app-service/app-service-web-tutorial-php-mysql.md)<br/>

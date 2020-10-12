@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 434a977a6d8c5b2243996063f758f409c20723fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936862"
 ---
 # <a name="introducing-azure-defender-for-iot"></a>適用于 IoT 的 Azure Defender 簡介
 
-統一安全性管理，並在混合式雲端工作負載和您的 Azure IoT 解決方案之間啟用端對端威脅偵測與分析。
+整合安全性管理，並在混合式雲端工作負載和您的 Azure IoT 解決方案之間啟用端對端威脅偵測和分析。
 
 ## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保護從 IoT 裝置到 Azure 雲端的整個 IoT 解決方案
 
@@ -36,7 +36,7 @@ Defender for IoT 藉由提供統一的可見度和控制、彈性威脅防護，
 
 ### <a name="unified-visibility-and-control"></a>統一的可見性和控制
 
-取得所有內部部署和雲端工作負載（包括您的 Azure IoT 解決方案）之間的安全性統一觀點。 將新的裝置上線，並將安全性原則套用至您的工作負載 (分葉裝置、Microsoft Edge 裝置、IoT 中樞) ，以確保符合安全性標準並改善安全性狀態。
+取得所有內部部署和雲端工作負載（包括您的 Azure IoT 解決方案）之間的安全性統一觀點。 將新裝置上線，並在您的工作負載 (分葉裝置、Microsoft Edge 裝置、IoT 中樞) 間套用安全性原則，以確保能符合安全性標準以及改善安全性態勢。
 
 ### <a name="adaptive-threat-prevention"></a>調適性威脅防護
 
@@ -46,7 +46,7 @@ Defender for IoT 藉由提供統一的可見度和控制、彈性威脅防護，
 
 使用先進的分析和 Microsoft Intelligent Security Graph 來獲得不斷演進的網路攻擊。 內建的行為分析和機器學習服務會識別攻擊和零時差攻擊。 監視您的 IoT 解決方案是否有傳入攻擊和入侵後活動。 使用互動式工具和內容相關威脅情報來簡化裝置調查和補救。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在此總覽中，您已瞭解適用于 IoT 的 Defender 功能和服務。 若要深入瞭解適用于 IoT 的 Defender 架構、必要條件，並瞭解如何開始使用，請參閱下列文章：
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320807"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上 Kubernetes 以角色為基礎的存取控制
@@ -42,7 +42,7 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
     - kube-系統
     - metallb-系統
     - dbe-命名空間
-    - 預設
+    - default
     - kubernetes-儀表板
     - kube-節點-租用
     - kube-public

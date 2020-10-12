@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934519"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>使用 Kibana 和 Grafana 來查看記錄和計量
 
-系統會提供 Kibana 和 Grafana web 儀表板，以針對 Azure Arc 啟用的資料服務所使用的 Kubernetes 命名空間提供深入解析和清楚瞭解。
+在資料服務已啟用 Azure Arc 的情況下，Kibana 和 Grafana Web 儀表板可針對資料服務所使用的 Kubernetes 命名空間提供深入解析和清楚說明。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "90934519"
 
 ### <a name="azure-virtual-machine"></a>Azure 虛擬機器
 
-若要取得公用 IP 位址，請使用下列命令：
+若要擷取公用 IP 位址，請使用下列命令：
 
 ```console
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
@@ -95,7 +95,7 @@ https://<external-ip-from-above>:30777/grafana
 https://<external-ip-from-above>:30777/kibana
 ```
 
-相關的儀表板如下：
+相關儀表板如下：
 
 * 「Azure SQL 受控實例計量」
 * 「主機節點計量」
@@ -110,14 +110,14 @@ https://<external-ip-from-above>:30777/grafana
 https://<external-ip-from-above>:30777/kibana
 ```
 
-相關的儀表板如下：
+相關儀表板如下：
 
 * 「Postgres 計量」
 * 「Postgres 資料表度量」
 * 「主機節點計量」
 * 「主機 pod 計量」
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 請嘗試 [將計量和記錄上傳至 Azure 監視器](upload-metrics-and-logs-to-azure-monitor.md)
 - 閱讀 Grafana：
    - [快速入門](https://grafana.com/docs/grafana/latest/getting-started/getting-started)

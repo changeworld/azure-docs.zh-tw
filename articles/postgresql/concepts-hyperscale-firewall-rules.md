@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 559c5eca6fa8a6eceb37ade003d4f1983c0a1a1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902089"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫-超大規模 (Citus 中的防火牆規則) 
@@ -52,6 +52,6 @@ ms.locfileid: "90902089"
 
 * 改為針對您的用戶端電腦取得靜態 IP 位址，然後將該靜態 IP 位址新增為防火牆規則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如需有關建立伺服器層級和資料庫層級防火牆規則的文章，請參閱：
 * [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-hyperscale-manage-firewall-using-portal.md)

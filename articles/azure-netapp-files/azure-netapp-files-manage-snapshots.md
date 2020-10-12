@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
 ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325684"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
@@ -97,7 +97,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 [檔案]  。  
+4.  按一下 **[儲存]** 。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您建立的原則會出現在 [快照集原則] 頁面中。
@@ -161,7 +161,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![還原至新的磁片區](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 按一下 [ **審核 + 建立**]。  按一下頁面底部的 [新增] 。   
+4. 按一下 [ **審核 + 建立**]。  按一下 [建立]。   
     新的磁片區會使用快照集所使用的相同通訊協定。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 

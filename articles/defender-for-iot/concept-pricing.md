@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 24ae6c4014948639aa737a0d2d88ec15f98a7cb4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934486"
 ---
 # <a name="pricing-and-associated-costs"></a>定價和相關成本
@@ -52,7 +52,7 @@ ms.locfileid: "90934486"
 
 下表提供每個選項相關成本和含意的摘要。
 
-| 選項 | 使用方式 | 註解 |
+| 選項 | 使用量 | 註解 |
 | --- | --- | --- |
 | **Log Analytics 儲存體** |  |
 | 裝置建議和警示| 服務所產生的安全性建議和警示 | 非選擇性 |

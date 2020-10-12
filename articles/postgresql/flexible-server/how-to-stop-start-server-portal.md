@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 4c393e0048a0058ebe0fbf2b0ee65f6ae2e184c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934218"
 ---
 # <a name="stopstart-an-azure-database-for-postgresql---flexible-server-preview"></a>停止/啟動適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器 (Preview) 
@@ -46,6 +46,6 @@ ms.locfileid: "90934218"
 > [!NOTE]
 > 一旦啟動伺服器，所有的管理作業現在都可供彈性的伺服器使用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [適用於 PostgreSQL 的 Azure 資料庫彈性伺服器中的計算和儲存體選項](./concepts-compute-storage.md)。

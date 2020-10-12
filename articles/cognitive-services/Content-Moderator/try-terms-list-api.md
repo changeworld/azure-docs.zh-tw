@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800035"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>使用 API 主控台中的自訂字詞清單進行審核
 
 Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內容審核需求。 不過，您可能會需要審查屬於您組織的特定字詞。 例如，您可能要標記競爭對手名稱以供進一步檢閱。 
 
-使用[清單管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) 可建立自訂字詞清單，以搭配文字審核 API 使用。 此**文字畫面**作業會掃描您的文字是否不雅內容，並將文字與自訂和共用封鎖清單做比較。
+使用[清單管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) 可建立自訂字詞清單，以搭配文字審核 API 使用。 **文字畫面**作業會掃描您的文字是否有不雅內容，同時也會比較文字與自訂和共用的 blocklists。
 
 > [!NOTE]
 > 上限是 **5 個字詞清單**，其中每個清單**不可超過 10,000 個字詞**。
@@ -172,6 +172,6 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
    ![[字詞清單 - 更新詳細資料] 主控台的 [要求本文] 編輯](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在您的程式碼中使用 REST API，或從[字詞清單 .NET 快速入門](term-lists-quickstart-dotnet.md)開始著手，以便與您的應用程式進行整合。

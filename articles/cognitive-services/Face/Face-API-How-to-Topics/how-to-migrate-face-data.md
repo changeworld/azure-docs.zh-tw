@@ -12,10 +12,10 @@ ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324887"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>將您的臉部資料移轉至其他臉部訂用帳戶
@@ -24,7 +24,7 @@ ms.locfileid: "91324887"
 
 相同的移轉策略也適用於 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱 [臉部辨識概念](../concepts/face-recognition.md) 指南中的定義。 本指南使用臉部 .NET 用戶端程式庫搭配 c #。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要下列專案：
 

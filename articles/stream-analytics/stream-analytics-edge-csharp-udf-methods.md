@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9cf929a3a6f5b3752b030f449b3b24b2bdc941a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907289"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>針對 Azure 串流分析作業開發 .NET Standard 使用者定義的函式 (Preview) 
@@ -110,21 +110,21 @@ namespace CSharpUDFProject
 
 1. 在 [ **函數** ] 資料夾上按一下滑鼠右鍵，然後選擇 [ **加入專案**]。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="在 Azure 串流分析專案中新增函數":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 2. 將 c # 函式 **SquareFunction** 新增至您的 Azure 串流分析專案。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="從 VS Code 中的串流分析專案選取 CSharp 函數":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="在 VS Code 中輸入 CSharp 函數名稱":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 3. 在 c # 函式設定中，選取 [ **選擇程式庫專案路徑** ]，從下拉式清單中選擇您的 c # 專案，然後選取 [ **建立專案** ] 以建立專案。 然後選擇 [ **選取類別** ] 並 **選取 [方法** ]，從下拉式清單中選取相關的類別和方法名稱。 若要參考串流分析查詢中的方法、類型和函式，必須將類別定義為 *公用* ，而且必須將物件定義為 *靜態公用*。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="串流分析 C 銳化函數設定 VS Code":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
     如果您想要從 DLL 使用 c # UDF，請選取 [ **選擇程式庫 DLL 路徑** ] 以選擇 dll。 然後選擇 [ **選取類別** ] 並 **選取 [方法** ]，從下拉式清單中選取相關的類別和方法名稱。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="串流分析 C sharp 函式設定":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 4. 在您的 Azure 串流分析查詢中叫用 UDF。
 
@@ -136,7 +136,7 @@ namespace CSharpUDFProject
 
 5. 將作業提交至 Azure 之前，請在作業設定檔案的 CustomCodeStorage 區段中設定封裝路徑 `JobConfig.json` 。 **CustomCodeStorage** 使用 CodeLens 中的 [ **從您的訂** 用帳戶選取] 來選擇您的訂用帳戶，然後從下拉式清單中選擇儲存體帳戶和容器名稱。 將 **路徑** 保留為預設值。 本機測試不需要此步驟。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="選擇程式庫路徑":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 ## <a name="develop-a-udf-in-visual-studio"></a>在 Visual Studio 中開發 UDF
 
@@ -166,39 +166,39 @@ namespace CSharpUDFProject
 
 在此範例中， **>udftest** 是 c # 類別庫專案，而 **ASAUDFDemo** 是 Azure 串流分析專案，將會參考 **>udftest**。
 
-:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Visual Studio 中的 Azure 串流分析 IoT Edge 專案":::
+:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 1. 建置您的 C# 專案，讓您能夠從 Azure 串流分析查詢新增對您 C# UDF 的參照。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="在 Visual Studio 中建置 Azure 串流分析 IoT Edge 專案":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 2. 將參考新增至 ASA 專案中的 c # 專案。 以滑鼠右鍵按一下 [參照] 節點，然後選擇 [新增參照]。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="在 Visual Studio 中新增對 C# 專案的參照":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 3. 從清單中選擇 C# 專案名稱。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="從參照清單中選擇 C# 專案名稱":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 4. 您應該會在 [方案總管]**** 中 [參照]**** 的下方看見 [UDFTest]****。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="在方案總管中檢視使用者定義的函式參照":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 5. 以滑鼠右鍵按一下 [函式]**** 資料夾，然後選擇 [新項目]****。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="在 Azure 串流分析 Edge 解決方案中將新項目新增至 Functions":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 6. 將 C# 函式 **SquareFunction.json** 新增至 Azure 串流分析專案。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="在 Visual Studio 中，從 Azure 串流分析 Edge 項目中選取 C Sharp 函式":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 7. 按兩下 [方案總管]**** 中的函式，以開啟設定對話方塊。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Visual Studio 中的 C sharp 函式設定":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 8. 在 C# 函式設定中，選擇 [從 ASA 專案參照載入]****，然後從下拉式清單中選擇相關的組件、類別與方法名稱。 若要參考串流分析查詢中的方法、類型和函式，必須將類別定義為 *公用* ，而且必須將物件定義為 *靜態公用*。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="串流分析 C 銳化函數設定 Visual Studio":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Visual Studio Code 中的 Azure 串流分析專案":::
 
 ## <a name="existing-packages"></a>現有封裝
 
@@ -273,7 +273,7 @@ UDF 預覽目前有以下限制：
 
 * 使用者自訂程式碼不支援空的資料夾。 請勿將空的資料夾加入專案中的支援檔案。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [教學課程：為 Azure 串流分析作業撰寫 c # 使用者定義函式 (預覽版) ](stream-analytics-edge-csharp-udf.md)
 * [教學課程：Azure 串流分析 JavaScript 使用者定義函式](stream-analytics-javascript-user-defined-functions.md)

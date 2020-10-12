@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: e9e892ae08c65ee5c5008bbdc1b419d8dec30183
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934101"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>將資料從 Microsoft 365 Defender 連接至 Azure Sentinel
@@ -98,7 +98,7 @@ let Now = now();
 
 在 [ **後續步驟** ] 索引標籤中，您會找到一些已包含的範例查詢。 您可以在位置執行，或修改並儲存它們。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何使用 Microsoft 365 Defender 連接器，從 Microsoft Defender for Endpoint 取得原始事件資料至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。

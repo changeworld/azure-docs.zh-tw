@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
 ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324326"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>複製活動效能優化功能
@@ -42,7 +42,7 @@ ms.locfileid: "91324326"
 
 您將會被收取 **# 個已使用的 diu \* 複製持續時間 \* 單位價格/DIU 小時**。 請參閱 [此處](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)的目前價格。 每一訂用帳戶類型可能會套用本地貨幣和個別折扣。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -100,7 +100,7 @@ ms.locfileid: "91324326"
 
 當您指定屬性的值時 `parallelCopies` ，請將來源和接收資料存放區的負載增加到帳戶。 此外，如果複製活動是由自我裝載整合執行時間所提升，也請考慮將其提升至自我裝載的整合執行時間。 當您對相同的資料存放區執行相同活動的多個活動或並存執行時，就會發生這種負載增加。 如果您注意到資料存放區或自我裝載整合執行時間在負載上感到不知所措，請減少此 `parallelCopies` 值以減輕負載。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -144,7 +144,7 @@ ms.locfileid: "91324326"
 
 目前，您無法在透過不同自我裝載的 IRs 連接的兩個數據存放區之間複製資料，兩者都不具有分段複製。 在這種情況下，您可以設定兩個明確連結的複製活動，從來源複製到預備環境，然後從預備環境複製到接收。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 在複製活動中設定 **>enablestaging** 設定，以指定是否要在將資料載入至目的地資料存放區之前，先在儲存體中暫存資料。 當您將 **>enablestaging** 設定為時 `TRUE` ，請指定下表所列的其他屬性。 
 

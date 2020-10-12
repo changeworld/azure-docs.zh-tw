@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 88c7d29681146f7b81f085bdf6452d5b35fb7dae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934518"
 ---
-# <a name="monitoring-log-analytics-billing-information-azure-portal-sql-managed-instance"></a>監視、記錄分析、帳單資訊 Azure 入口網站 (SQL 受控執行個體) 
+# <a name="monitoring-log-analytics-billing-information-azure-portal-sql-managed-instance"></a>監視、記錄分析、計費資訊、Azure 入口網站 (SQL 受控執行個體)
 
 本文列出 Azure Arc 啟用的資料服務所能擁有的額外體驗。
 
@@ -26,6 +26,6 @@ ms.locfileid: "90934518"
 
 [!INCLUDE [azure-arc-common-monitoring](../../../includes/azure-arc-common-monitoring.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [瞭解 Azure Arc enabled data services 的總覽](overview.md)
 - [閱讀連接模式和 Azure Arc 啟用的資料服務的需求](connectivity.md)

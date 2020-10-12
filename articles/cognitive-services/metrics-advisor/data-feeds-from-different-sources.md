@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
 ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324462"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>將來自不同資料來源的資料摘要新增至計量 Advisor
@@ -40,10 +40,10 @@ ms.locfileid: "91324462"
 |[**Azure Application Insights**](#appinsights)|  基本 |
 |[**Azure Blob 儲存體 (JSON) **](#blob) | 基本<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL) **](#cosmosdb) | 基本 |
-|[**Azure 資料總管 (Kusto) **](#kusto) | 基本<br>ManagedIdentity|
+|[**Azure 資料總管 (Kusto)**](#kusto) | 基本<br>ManagedIdentity|
 |[**Azure Data Lake Storage Gen2**](#adl) | 基本<br>DataLakeGen2SharedKey<br>服務主體<br>Key vault 中的服務主體<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | 基本<br>ManagedIdentity<br>服務主體<br>Key vault 中的服務主體<br>AzureSQLConnectionString
-|[**Azure 表格儲存體**](#table) | 基本 | 
+|[**Azure 資料表儲存體**](#table) | 基本 | 
 |[**ElasticSearch**](#es) | 基本 |
 |[**Http 要求**](#http) | 基本 | 
 |[**InfluxDB (InfluxQL) **](#influxdb) | 基本 |
@@ -82,7 +82,7 @@ ms.locfileid: "91324462"
 
 * **容器**：計量顧問預期會將時間序列資料儲存為 blob 檔案， (單一容器下的每個時間戳記) 一個 blob。 這是 [容器名稱] 欄位。
 
-* **Blob 範本**：這是 blob 檔案名的範本。 例如：`/%Y/%m/X_%Y-%m-%d-%h-%M.json`。 支援下列參數：
+* **Blob 範本**：這是 blob 檔案名的範本。 例如： `/%Y/%m/X_%Y-%m-%d-%h-%M.json` 。 支援下列參數：
   * `%Y` 年份的格式為 `yyyy`
   * `%m` 月份的格式為 `MM`
   * `%d` 日期格式為 `dd`
@@ -131,7 +131,7 @@ ms.locfileid: "91324462"
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure 資料總管 (Kusto) </span>
+## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure 資料總管 (Kusto)</span>
 
 * **連接字串**：如需如何從 Azure 資料總管 (Kusto) 取得連接字串的詳細資訊，請參閱 [查看和複製連接字串](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) 。
 
@@ -232,7 +232,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP 要求</span>
 
-* **要求 url**：可以傳回 JSON 的 HTTP URL。 支援預留位置% Y，% m，% d，% h，% M：% Y = year （格式為 yyyy，% m = month，格式為 MM，% d = day，格式為 HH，% M = hour，格式為 mm）。 例如：`http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`。
+* **要求 url**：可以傳回 JSON 的 HTTP URL。 支援預留位置% Y，% m，% d，% h，% M：% Y = year （格式為 yyyy，% m = month，格式為 MM，% d = day，格式為 HH，% M = hour，格式為 mm）。 例如： `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M` 。
 * **要求 HTTP 方法**：使用 GET 或 POST。
 * **要求標頭**：可能會新增基本驗證。 
 * **要求**承載：僅支援 JSON 承載。 裝載 @StartTime 中支援預留位置。 回應應採用下列 JSON 格式： [{"timestamp"： "2018-01-01T00：00： 00Z"，"市"： "en-us"，"count"：11，"收益"： 1.23}、{"timestamp"： "2018-01-01T00：00： 00Z"、"市"： "zh-cn"、"count"：22、"收益"： 4.56}]。 (例如，當 2020-06-21T00：00：00Z 的資料是內嵌時， @StartTime = 2020-06-21T00：00： 00.0000000 + 00： 00) 

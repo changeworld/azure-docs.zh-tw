@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 17e3e8dca1c03f9783c0ca94350bb8a4ba5aca64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934134"
 ---
 # <a name="securing-azure-sql-edge"></a>保護 Azure SQL Edge
@@ -107,7 +107,7 @@ Azure SQL Edge 安全性最佳作法包括撰寫安全的用戶端應用程式�
 Azure SQL Edge 提供與 SQL Server 相同的審核機制。 如需詳細資訊，請參閱 [SQL Server Audit (資料庫引擎) ](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [具有安全性功能的消費者入門](https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started)
 - [以非根使用者的身份執行 Azure SQL Edge](configure.md#run-azure-sql-edge-as-non-root-user)
