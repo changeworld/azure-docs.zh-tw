@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073689"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure 監視器中的代理程式資料來源
@@ -39,7 +39,7 @@ Azure 監視器從代理程式收集的資料由您設定的資料來源設定�
 ![設定 Windows 事件](media/agent-data-sources/configure-events.png)
 
 1. 在 Azure 入口網站中，選取 [Log Analytics 工作區]**** > 您的工作區 > [進階設定]****。
-2. 選取 [**資料**]。
+2. 選取 [ **資料**]。
 3. 按一下要設定的資料來源。
 4. 參閱上表中每個資料來源的文件連結，即可取得其組態的詳細資訊。
 
@@ -54,7 +54,7 @@ Azure 監視器從代理程式收集的資料由您設定的資料來源設定�
 ## <a name="log-records"></a>所有記錄
 Azure 監視器收集的所有記錄資料都會以記錄形式儲存在工作區中。  不同資料來源所收集的記錄會有自己的一組屬性，並由其 **類型** 屬性來識別。  如需每種記錄類型的詳細資訊，請參閱各資料來源和方案的文件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解可將功能新增至 Azure 監視器，並會將資料收集到工作區的[監視解決方案](../insights/solutions.md)。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和監視解決方案收集到的資料。  
 * 設定[警示](alerts-overview.md)，以便從資料來源和監視解決方案收集到重要資料時主動通知您。

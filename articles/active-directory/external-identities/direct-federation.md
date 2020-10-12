@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908680"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>直接與來賓使用者的 AD FS 和第三方提供者同盟 (預覽)
@@ -223,4 +223,4 @@ IdP 所簽發 WS-Fed 權杖所需的宣告：
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解外部使用者使用各種身分識別提供者登入時的[邀請兌換體驗](redemption-experience.md)。
+深入瞭解當外部使用者以各種身分識別提供者登入時的 [邀請兌換體驗](redemption-experience.md) 。

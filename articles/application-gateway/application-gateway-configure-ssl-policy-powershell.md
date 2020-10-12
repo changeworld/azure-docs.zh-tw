@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808230"
 ---
-# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>在應用程式閘道上設定 TLS 原則版本和加密套件
+# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>設定應用程式閘道上的 TLS 原則版本和加密套件
 
-瞭解如何在應用程式閘道上設定 TLS/SSL 原則版本和加密套件。 您可以從預先定義的原則清單中選取，其中包含不同的 TLS 原則版本設定和啟用的加密套件。 您也能夠根據您的需求定義[自訂 TLS 原則](#configure-a-custom-tls-policy)。
+瞭解如何在應用程式閘道上設定 TLS/SSL 原則版本和加密套件。 您可以從包含不同 TLS 原則版本和已啟用加密套件設定的預先定義原則清單中選取。 您也可以根據您的需求定義 [自訂的 TLS 原則](#configure-a-custom-tls-policy) 。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,7 +73,7 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-tls-policies"></a>列出預先定義的 TLS 原則
 
-應用程式閘道隨附三個可用的預先定義原則。 `Get-AzApplicationGatewaySslPredefinedPolicy` Cmdlet 會擷取這些原則。 每個原則都有不同的通訊協定版本與已啟用的加密套件。 這些預先定義的原則可以用來在您的應用程式閘道上快速設定 TLS 原則。 根據預設，如果未定義任何特定的 TLS 原則，則會選取 [ **AppGwSslPolicy20150501** ]。
+應用程式閘道隨附三個可用的預先定義原則。 `Get-AzApplicationGatewaySslPredefinedPolicy` Cmdlet 會擷取這些原則。 每個原則都有不同的通訊協定版本與已啟用的加密套件。 這些預先定義的原則可以用來在您的應用程式閘道上快速設定 TLS 原則。 如果未定義特定的 TLS 原則，預設會選取 [ **AppGwSslPolicy20150501** ]。
 
 以下輸出是執行 `Get-AzApplicationGatewaySslPredefinedPolicy` 的範例。
 
@@ -106,17 +106,17 @@ CipherSuites:
 ...
 ```
 
-## <a name="configure-a-custom-tls-policy"></a>設定自訂 TLS 原則
+## <a name="configure-a-custom-tls-policy"></a>設定自訂的 TLS 原則
 
-設定自訂 TLS 原則時，您會傳遞下列參數： PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。 
+設定自訂的 TLS 原則時，您會傳遞下列參數： PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。 
 
-下列範例會在應用程式閘道上設定自訂 TLS 原則。 它會設定 `TLSv1_1` 的最小通訊協定版本，並且啟用下列加密套件：
+下列範例會在應用程式閘道上設定自訂的 TLS 原則。 它會設定 `TLSv1_1` 的最小通訊協定版本，並且啟用下列加密套件：
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> 設定自訂 TLS 原則時，必須選取 TLS_RSA_WITH_AES_256_CBC_SHA256。 應用程式閘道會使用此加密套件進行後端管理。 您可以將它與其他任何套件搭配使用，但也必須選取此選項。 
+> 設定自訂的 TLS 原則時，必須選取 TLS_RSA_WITH_AES_256_CBC_SHA256。 應用程式閘道會使用此加密套件來進行後端管理。 您可以將它與其他任何套件搭配使用，但也必須選取此項。 
 
 ```powershell
 # get an application gateway resource
@@ -136,7 +136,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 設定預先定義的 TLS 原則時，您會傳遞下列參數： PolicyType、PolicyName 和 ApplicationGateway。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。
 
-下列範例會使用預先定義的 TLS 原則來建立新的應用程式閘道。
+下列範例會使用預先定義的 TLS 原則建立新的應用程式閘道。
 
 ```powershell
 # Create a resource group
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>以預先定義的 TLS 原則更新現有的應用程式閘道
 
-若要設定自訂 TLS 原則，請傳遞下列參數： **PolicyType**、 **MinProtocolVersion**、 **CipherSuite**和**ApplicationGateway**。 若要設定預先定義的 TLS 原則，請傳遞下列參數： **PolicyType**、 **PolicyName**和**ApplicationGateway**。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。
+若要設定自訂的 TLS 原則，請傳遞下列參數： **PolicyType**、 **MinProtocolVersion**、 **CipherSuite**和 **ApplicationGateway**。 若要設定預先定義的 TLS 原則，請傳遞下列參數： **PolicyType**、 **PolicyName**和 **ApplicationGateway**。 如果您嘗試傳遞其他參數，會在建立或更新應用程式閘道時發生錯誤。
 
 在下列範例中，有自訂原則和預先定義原則兩者的程式碼範例。 對您想要使用的原則取消註解。
 
@@ -215,6 +215,6 @@ $AppGw = get-Azapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱[應用程式閘道重新導向概觀](application-gateway-redirect-overview.md)以了解如何將 HTTP 流量重新導向至 HTTPS 端點。

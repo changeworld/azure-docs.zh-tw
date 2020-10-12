@@ -10,10 +10,10 @@ ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87029275"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虛擬機器擴展集垂直自動調整
@@ -39,7 +39,7 @@ ms.locfileid: "87029275"
 > [!NOTE]
 > 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 也不支援限制的虛擬機器大小擴大/縮小。 您可以在以下大小配對之間選擇調整︰
 > 
-> | VM 大小調整配對成員 | 成員 |
+> | 調整成對成員的 VM 大小 | 成員 |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |

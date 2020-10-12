@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538716"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的反復式應用程式設計
@@ -21,10 +21,10 @@ ms.locfileid: "91538716"
 Language Understanding (LUIS) 應用程式會使用反復專案來學習和執行最有效率的工作。 以下是典型的反復專案迴圈：
 
 * 建立新版本
-* 編輯 LUIS 應用程式架構。 其中包括：
+* 編輯 LUIS 應用程式架構。 這包括：
     * 使用範例語句的意圖
     * 實體
-    * 功能
+    * 特性
 * 定型、測試和發佈
     * 在預測端點上測試主動式學習
 * 從端點查詢收集資料
@@ -71,7 +71,7 @@ LUIS 需要每個 **意圖**中語句的一些範例。 範例語句需要足夠
 |Key 元素|目的|
 |--|--|
 |Intent|將使用者語句**分類**成單一意圖或動作。 例如 `BookFlight` 與 `GetWeather`。|
-|單位|將完成意圖所需的語句的資料**解壓縮**。 範例包括出差的日期和時間，以及位置。|
+|實體|將完成意圖所需的語句的資料**解壓縮**。 範例包括出差的日期和時間，以及位置。|
 
 LUIS 應用程式的設計可將語句指派給 **None** 意圖，以忽略與應用程式網域無關的語句。
 

@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
 ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88261883"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虛擬機器的生命週期和狀態
@@ -288,7 +288,7 @@ Azure 虛擬機器 (VM) 會經歷不同狀態，這些狀態可以分成「佈�
 :::row:::
    :::column span="":::
 
-   **刪除中**
+   **刪除**
 
    :::column-end:::
    :::column span="2":::
@@ -424,7 +424,7 @@ Azure 資源總管會提供一個簡單的 UI 供您檢視 VM 的執行中狀態
 
 佈建狀態可於 VM 屬性和執行個體檢視中看到。 電源狀態可於 VM 的執行個體檢視中看到。
 
-若要取得訂用帳戶中所有 Vm 的電源狀態，請使用 [虛擬機器-列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) ，並將參數 **statusOnly** 設定為 *true*。
+若要取得訂用帳戶中所有 VM 的電源狀態，請使用[虛擬機器 - 列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)，並將參數 **statusOnly** 設定為 True。
 
 ## <a name="next-steps"></a>後續步驟
 

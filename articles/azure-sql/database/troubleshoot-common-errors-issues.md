@@ -11,10 +11,10 @@ ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: aa4bcee7a2eaf5e6ec11b9066ed6eca6b33bdba1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91284115"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>針對 Azure SQL Database 和 Azure SQL 受控執行個體的連線能力問題和其他錯誤進行疑難排解
@@ -28,7 +28,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 ### <a name="list-of-transient-fault-error-codes"></a>暫時性錯誤代碼的清單
 
-| 錯誤碼 | 嚴重性 | 說明 |
+| 錯誤碼 | 嚴重性 | 描述 |
 | ---:| ---:|:--- |
 | 4060 |16 |無法開啟登入所要求的資料庫 "%.&#x2a;ls"。 登入失敗。 如需詳細資訊，請參閱 [錯誤4000到 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |服務處理您的要求時發生錯誤。 請再試一次。 錯誤代碼 %d。<br/><br/>當服務因為軟體或硬體升級、硬體故障或任何其他容錯移轉問題而關閉時，您會收到這個錯誤。 內嵌在錯誤 40197 訊息中的錯誤代碼 (%d) 提供發生的失敗或容錯移轉種類的其他資訊。 錯誤代碼會內嵌在錯誤 40197 的訊息錯誤範例包括 40020、40143、40166 和 40540。<br/><br/>重新連接會自動將您連線到資料庫的狀況良好複本。 您的應用程式必須攔截錯誤 40197、記錄訊息中內嵌的錯誤碼 (%d) 以進行疑難排解，並嘗試重新連接到 SQL Database 直到資源可供使用，並再次建立您的連線。 如需詳細資訊，請參閱 [暫時性錯誤](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)。|
@@ -296,7 +296,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>其他資源治理錯誤訊息的表格
 
-| 錯誤碼 | 嚴重性 | 說明 |
+| 錯誤碼 | 嚴重性 | 描述 |
 | ---:| ---:|:--- |
 | 10928 |20 |資源識別碼：%d。 資料庫的 %s 限制是 %d，且已達到。 如需詳細資訊，請參閱[單一和集區資料庫的 SQL Database 資源限制](resource-limits-logical-server.md)。<br/><br/>資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。<br/><br/>如需有關此錯誤以及其解決方法的詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
 | 10929 |20 |資源識別碼：%d。 %s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。 如需詳細資訊，請參閱 <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 <br/>或者，請稍後再試一次。 |
@@ -311,7 +311,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 下列錯誤與建立及使用彈性集區有關：
 
-| 錯誤碼 | 嚴重性 | 說明 | 更正措施 |
+| 錯誤碼 | 嚴重性 | 描述 | 更正措施 |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |彈性集區已達到其儲存體限制。 彈性集區的儲存體使用量不能超過 (%d) MB。 當彈性集區達到儲存體限制時，嘗試將資料寫入資料庫。 如需資源限制的詳細資訊，請參閱： <br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)。 <br/> |請考慮盡可能增加彈性集區的 DTU 及/或儲存體，以提高其儲存體限制、減少彈性集區中個別資料庫所使用的儲存體量，或是從彈性集區移除資料庫。 如需彈性集區的調整，請參閱 [調整彈性集區資源](elastic-pool-scale.md)。|
 | 10929 | 16 |%s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 如需資源限制的詳細資訊，請參閱： <br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)。 <br/> 或者，請稍後再試一次。 每個資料庫的最小 DTU / vCore；每個資料庫的最大 DTU / vCore。 彈性集區中的所有資料庫並行背景工作 (要求) 總數試圖超過集區限制。 |請考慮盡可能增加彈性集區的 DTU 或 vCore，以提高其背景工作數的限制，或是從彈性集區移除資料庫。 |

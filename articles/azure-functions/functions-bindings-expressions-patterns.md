@@ -1,21 +1,21 @@
 ---
 title: Azure Functions 系結運算式和模式
-description: 瞭解如何根據常見模式建立不同的 Azure Functions 系結運算式。
+description: 瞭解如何根據常見的模式建立不同的 Azure Functions 系結運算式。
 author: craigshoemaker
 ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212604"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 系結運算式模式
 
-[觸發程式和](./functions-triggers-bindings.md)系結的其中一個最強大功能就是系結*運算式*。 在 function.json** 檔案以及函式參數與程式碼中，您可以使用多個運算式，這些運算式會將各種來源解析為相對應的多個值。
+[觸發程式和](./functions-triggers-bindings.md)系結最強大的功能之一就是系結*運算式*。 在 function.json** 檔案以及函式參數與程式碼中，您可以使用多個運算式，這些運算式會將各種來源解析為相對應的多個值。
 
 大多數運算式會藉由以大括號括住以供您識別。 例如，在佇列觸發程序函式中，`{queueTrigger}` 會解析為佇列訊息文字。 如果 Blob 輸出繫結的 `path` 屬性是 `container/{queueTrigger}`，且函式是由佇列訊息 `HelloWorld` 所觸發，則系統會建立名為 `HelloWorld` 的 Blob。
 
@@ -39,7 +39,7 @@ ms.locfileid: "88212604"
 在本機執行函式時，應用程式設定值來自 local.settings.json** 檔案。
 
 > [!NOTE]
-> `connection`觸發程式和系結的屬性是特殊案例，會自動將值解析為應用程式設定，而不含百分比符號。 
+> `connection`觸發程式和系結的屬性是特殊案例，會自動將值解析為應用程式設定，而不使用百分比符號。 
 
 下列範例是使用應用程式設定 `%input-queue-name%` 來定義要觸發之佇列的 Azure 佇列儲存體觸發程序。
 
@@ -133,7 +133,7 @@ public static void Run(
 
 ```
 
-您也可以為部分檔案名建立運算式。 在下列範例中，只會在符合模式的檔案名上觸發函數： `anyname-anyfile.csv`
+您也可以為檔案名的部分建立運算式。 在下列範例中，只會針對符合模式的檔案名觸發函數： `anyname-anyfile.csv`
 
 ```json
 {

@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Kubernetes Service (AKS) 中檢視 kubelet 記錄
-description: 瞭解如何在 Azure Kubernetes Service （AKS）節點的 kubelet 記錄中查看疑難排解資訊
+description: 瞭解如何在 kubelet 記錄中查看 (AKS) 節點 Azure Kubernetes Service 的疑難排解資訊
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87056764"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>從 Azure Kubernetes Service (AKS) 叢集節點取得 kubelet 記錄
 
-在操作 AKS 叢集的過程中，您可能需要檢查記錄檔以疑難排解問題。 內建的 Azure 入口網站可讓您在 AKS 叢集中查看[AKS 主要元件][aks-master-logs]或[容器][azure-container-logs]的記錄。 有時候，您可能需要從 AKS 節點取得*kubelet*記錄，以供疑難排解之用。
+在操作 AKS 叢集時，您可能需要檢查記錄以針對問題進行疑難排解。 內建 Azure 入口網站是在 AKS 叢集中查看 [AKS 主要元件][aks-master-logs] 或 [容器][azure-container-logs]記錄的能力。 有時候，您可能需要從 AKS 節點取得 *kubelet* 記錄，以供疑難排解之用。
 
-本文說明如何使用 `journalctl` 來查看 AKS 節點上的*kubelet*記錄。
+本文會說明如何使用 `journalctl` 來查看 AKS 節點上的 *kubelet* 記錄。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -34,7 +34,7 @@ sudo journalctl -u kubelet -o cat
 ```
 
 > [!NOTE]
-> 對於 Windows 節點而言，記錄資料會在中， `C:\k` 而且可以使用 [*更多*] 命令來查看：
+> 針對 Windows 節點，記錄資料會在中， `C:\k` 而且可以使用 [ *更多* ] 命令來查看：
 > ```
 > more C:\k\kubelet.log
 > ```

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934849"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $filter 語法
@@ -32,7 +32,7 @@ Azure 認知搜尋使用 [OData 篩選運算式](query-odata-filter-orderby-synt
 
 ## <a name="syntax"></a>語法
 
-OData 語言中的篩選準則是布林運算式，它可以是數種運算式類型的其中一種，如下列 EBNF 所示 ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) ：
+OData 語言中的篩選準則是布林運算式，它可以是數種運算式類型的其中一種，如下列 EBNF 所示 ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -75,7 +75,7 @@ variable ::= identifier | field_path
 
 如果您撰寫的篩選運算式的子運算式周圍沒有括弧，Azure 認知搜尋將根據一組運算子優先順序規則來進行評估。 這些規則是根據用來合併子運算式的運算子。 下表依序列出運算子群組，順序是從最高到最低優先順序：
 
-| 分組 | 運算子 (s)  |
+| 群組 | 運算子 (s)  |
 | --- | --- |
 | 邏輯運算子 | `not` |
 | 比較運算子 | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
@@ -244,7 +244,7 @@ variable ::= identifier | field_path
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
 ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)

@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908782"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允許或封鎖對特定組織的 B2B 使用者的邀請
@@ -27,9 +27,9 @@ ms.locfileid: "87908782"
 
 - 您可以建立允許清單或拒絕清單。 您無法同時設定這兩種清單。 根據預設，未列入允許清單的網域即會列於拒絕清單中，反之亦然。 
 - 您對每個組織只能建立一個原則。 您可以更新原則以包含多個網域，或者，您可以刪除原則以建立新的原則。 
-- 您可以新增至允許清單或拒絕清單的網域數目，只受限於原則的大小。 整個原則的大小上限為 25 KB (25000 個字元) ，其中包括允許清單或拒絕清單，以及為其他功能設定的任何其他參數。
+- 您可以新增到允許清單或拒絕清單的網域數目僅受限於原則的大小。 整個原則的大小上限為 25 KB (25000 個字元) ，其中包含允許清單或拒絕清單，以及針對其他功能設定的任何其他參數。
 - 此清單會在商務用 OneDrive 和 SharePoint Online 允許/封鎖清單以外獨立運作。 如果您想要在 SharePoint Online 中限制個別的檔案共用，您必須設定商務用 OneDrive 和 SharePoint Online 的允許或拒絕清單。 如需詳細資訊，請參閱[在 SharePoint Online 和商務用 OneDrive 中限制網域共用](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)。
-- 此清單不適用於已經兌換邀請的外部使用者。 清單在設定後將會強制執行。 如果使用者邀請處於擱置狀態，而且您設定了封鎖其網域的原則，則使用者兌換邀請的嘗試將會失敗。
+- 此清單不會套用至已兌換邀請的外部使用者。 清單在設定後將會強制執行。 如果使用者邀請處於擱置狀態，而且您設定了封鎖其網域的原則，則使用者兌換邀請的嘗試將會失敗。
 
 ## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>在入口網站中設定允許或拒絕清單原則
 
@@ -42,8 +42,8 @@ ms.locfileid: "87908782"
 若要新增拒絕清單：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [ **Azure Active Directory**  >  **使用者**] [  >  **使用者設定**]。
-3. 在 [**外部使用者**] 底下，選取 [**管理外部**共同作業設定]。
+2. 選取**Azure Active Directory**  >  **使用者**  >  的**使用者設定**。
+3. 在 [ **外部使用者**] 下，選取 [ **管理外部**共同作業設定]。
 4. 在 [共同作業限制]**** 下，選取 [拒絕對指定網域的邀請]****。
 5. 在 [目標網域]**** 下，輸入您要封鎖的網域之一的名稱。 若有多個網域，請將每個網域輸入於不同行。 例如：
 
@@ -63,8 +63,8 @@ ms.locfileid: "87908782"
 若要新增允許清單：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [ **Azure Active Directory**  >  **使用者**] [  >  **使用者設定**]。
-3. 在 [**外部使用者**] 底下，選取 [**管理外部**共同作業設定]。
+2. 選取**Azure Active Directory**  >  **使用者**  >  的**使用者設定**。
+3. 在 [ **外部使用者**] 下，選取 [ **管理外部**共同作業設定]。
 4. 在 [共同作業限制]**** 下，選取 [僅允許對指定網域的邀請 (限制性最高)]****。
 5. 在 [目標網域]**** 下，輸入您要允許的網域之一的名稱。 若有多個網域，請將每個網域輸入於不同行。 例如：
 
@@ -161,7 +161,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>後續步驟
 
 - 如需 Azure AD B2B 的概觀，請參閱[何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
-- 如需條件式存取和 B2B 共同作業的相關資訊，請參閱 B2B 共同作業[使用者的條件式存取](conditional-access.md)。
+- 如需條件式存取和 B2B 共同作業的相關資訊，請參閱 B2B 共同作業 [使用者的條件式存取](conditional-access.md)。
 
 
 

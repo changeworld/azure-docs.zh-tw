@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86107813"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>使用重新導向連線到適用於 MySQL 的 Azure 資料庫
@@ -20,11 +20,11 @@ ms.locfileid: "86107813"
 ## <a name="before-you-begin"></a>開始之前
 登入 [Azure 入口網站](https://portal.azure.com)。 建立具有引擎版本 5.6、5.7 或 8.0 的適用於 MySQL 的 Azure 資料庫伺服器。 
 
-如需詳細資訊，請參閱如何使用[Azure 入口網站](quickstart-create-mysql-server-database-using-azure-portal.md)或[Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)建立適用於 MySQL 的 Azure 資料庫伺服器。
+如需詳細資訊，請參閱如何使用 [Azure 入口網站](quickstart-create-mysql-server-database-using-azure-portal.md) 或 [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)建立適用於 MySQL 的 Azure 資料庫的伺服器。
 
 ## <a name="enable-redirection"></a>啟用重新導向
 
-在您的適用於 MySQL 的 Azure 資料庫伺服器上，將 `redirect_enabled` 參數設定為， `ON` 以允許具有重新導向模式的連接。 若要更新此伺服器參數，請使用[Azure 入口網站](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)。
+在適用於 MySQL 的 Azure 資料庫伺服器上，將 `redirect_enabled` 參數設定為， `ON` 以允許具有重新導向模式的連接。 若要更新此伺服器參數，請使用 [Azure 入口網站](howto-server-parameters.md) 或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 ## <a name="php"></a>PHP
 

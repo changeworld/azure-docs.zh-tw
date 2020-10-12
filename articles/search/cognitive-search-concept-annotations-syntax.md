@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935529"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何參考 Azure 認知搜尋技能集中的注釋
@@ -120,7 +120,7 @@ ms.locfileid: "88935529"
 
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 + [如何將自訂技能整合到擴充管線中](cognitive-search-custom-skill-interface.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [建立技能集 (REST)](/rest/api/searchservice/create-skillset)

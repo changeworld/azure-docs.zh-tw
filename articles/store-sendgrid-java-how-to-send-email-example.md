@@ -17,10 +17,10 @@ ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
 ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225949"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件
@@ -210,7 +210,7 @@ ms.locfileid: "88225949"
 </html>
 ```
 
-除了傳送電子郵件，emailform.jsp 也會提供使用者的結果;例如，下列螢幕擷取畫面：
+除了傳送電子郵件之外，emailform.jsp 也提供使用者的結果;下列螢幕擷取畫面範例如下：
 
 ![Send mail result][emailresult]
 

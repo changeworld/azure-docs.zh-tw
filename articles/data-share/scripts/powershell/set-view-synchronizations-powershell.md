@@ -1,5 +1,5 @@
 ---
-title: PowerShell 腳本：設定及查看 Azure 資料共用同步處理設定 |Microsoft Docs
+title: PowerShell 腳本：設定和查看 Azure Data Share 同步處理設定 |Microsoft Docs
 description: 此 PowerShell 腳本會設定並取得共用同步處理設定。
 services: data-share
 author: joannapea
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 0ced66c1d3023b7edb3220b45e24d3eb54098df8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512481"
 ---
-# <a name="use-powershell-to-set-azure-data-share-sychronization-settings"></a>使用 PowerShell 設定 Azure 資料共用同步處理設定
+# <a name="use-powershell-to-set-azure-data-share-sychronization-settings"></a>使用 PowerShell 設定 Azure Data Share 同步處理設定
 
 此 PowerShell 腳本會設定並取得共用同步處理設定。
 
@@ -48,7 +48,7 @@ Get-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroupName -Acc
 
 | Command | 注意 |
 |---|---|
-| [新增-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | 建立共用同步處理。 |
+| [新 AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | 建立共用同步處理。 |
 | [AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | 取得共用同步處理的同步處理設定。 |
 |||
 
@@ -56,4 +56,4 @@ Get-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroupName -Acc
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
 
-您可以在[Azure 資料共用 powershell 範例](../../samples-powershell.md)中找到其他 Azure 資料共用 powershell 腳本範例。
+您可以在 [azure Data Share powershell 範例](../../samples-powershell.md)中找到其他 Azure Data Share powershell 腳本範例。

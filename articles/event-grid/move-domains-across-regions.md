@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083633"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>將 Azure 事件方格網域移至另一個區域
@@ -37,10 +37,10 @@ ms.locfileid: "89083633"
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="搜尋並選取事件方格網域":::
 3. 選取您要匯出至 Resource Manager 範本的 **網域** 。 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="選取網域":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="搜尋並選取事件方格網域":::   
 4. 在 [**事件方格網域**] 頁面上，選取左側功能表的 [**設定**] 底下的 [**匯出範本**]，然後在工具列上選取 [**下載**]。 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="匯出範本-> 下載" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="搜尋並選取事件方格網域" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > 匯出網域和網域主題。 不會匯出網域主題的訂閱。 因此，您必須在移動網域主題之後，建立網域主題的訂閱。 
@@ -62,7 +62,7 @@ ms.locfileid: "89083633"
 1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 2. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
 3. 選取 **範本部署**。
-4. 選取 [建立]。
+4. 選取 [建立]****。
 5. 選取 [在編輯器中組建您自己的範本]。
 6. 選取 [ **載入**檔案]，然後依照指示載入您在上一節中下載的 **template.js** 檔案。
 7. 選取 [ **儲存** ] 以儲存範本。 
@@ -71,9 +71,9 @@ ms.locfileid: "89083633"
     1. 選取目的地區域中的現有 **資源群組** ，或建立一個。 
     1. 針對 [ **區域**]，選取目的地區域。 如果您選取現有的資源群組，這項設定是唯讀的。 
     1. 在 [ **功能變數名稱**] 中，輸入網域的新名稱。 
-    1. 選取 [檢閱 + 建立]。 
+    1. 選取 [檢閱 + 建立]****。 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="部署範本":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="搜尋並選取事件方格網域":::        
     1. 成功驗證範本之後，請選取頁面底部的 [ **建立** ] 以部署資源。 
     1. 部署成功後，請選取 [ **移至資源群組** ] 以流覽至 [資源群組] 頁面。 確認資源群組中有一個網域。 選取網域。 確認網域中有網域主題。 
 

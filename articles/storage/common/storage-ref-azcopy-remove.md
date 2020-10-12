@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078215"
 ---
 # <a name="azcopy-remove"></a>azcopy 移除
@@ -85,11 +85,11 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SA
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
 ```
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 **--delete-** 依預設，如果 blob 有快照集，刪除作業將會失敗。 指定 `include` 以移除根 blob 及其所有快照集，或者指定 `only` 只移除快照集，但保留根 blob。
 
-**--排除-** 移除時排除這些路徑的路徑字串。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如：`myFolder;myFolder/subDirName/file.pdf`
+**--排除-** 移除時排除這些路徑的路徑字串。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如： `myFolder;myFolder/subDirName/file.pdf`
 
 **--排除-模式** 字串排除名稱符合模式清單的檔案。 例如： `*.jpg` ; `*.pdf` ;`exactName`
 
@@ -97,7 +97,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--**   說明移除的協助。
 
-**--include-路徑** 字串在移除時只會包含這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如：`myFolder;myFolder/subDirName/file.pdf`
+**--include-路徑** 字串在移除時只會包含這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如： `myFolder;myFolder/subDirName/file.pdf`
 
 **--include-模式** 字串只包含名稱符合模式清單的檔案。 例如： * `.jpg` ;* `.pdf` ;`exactName`
 

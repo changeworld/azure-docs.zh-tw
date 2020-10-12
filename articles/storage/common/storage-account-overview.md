@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280142"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
@@ -32,7 +32,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 - Blob (所有類型：區塊、附加、分頁)
 - Data Lake Gen2
-- 檔案
+- 檔案儲存體
 - 磁碟
 - 佇列
 - 資料表
@@ -49,7 +49,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 一般用途 v1 儲存體帳戶提供所有 Azure 儲存體服務的存取權，但可能沒有最新的功能或每 gb 的最低定價。 一般用途 v1 儲存體帳戶支援這些 Azure 儲存體服務：
 
 - Blobs (所有類型)
-- 檔案
+- 檔案儲存體
 - 磁碟
 - 佇列
 - 資料表
@@ -167,7 +167,7 @@ Microsoft 會提供一些公用程式和程式庫，以便將從內部部署儲�
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 Azure 儲存體，以及從 Azure 儲存體複製資料。 您可以使用 AzCopy 將資料從現有一般用途的儲存體帳戶複製到 Blob 儲存體帳戶中，或從內部部署儲存體裝置上傳資料。 如需詳細資訊，請參閱 [使用 AzCopy 命令列公用程式傳送資料](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 Azure 儲存體，以及從 Azure 儲存體複製資料。 您可以使用 AzCopy 將資料從現有一般用途的儲存體帳戶複製到 Blob 儲存體帳戶中，或從內部部署儲存體裝置上傳資料。 如需詳細資訊，請參閱 [使用 AzCopy 傳輸資料 Command-Line 公用程式](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="data-movement-library"></a>資料移動程式庫
 

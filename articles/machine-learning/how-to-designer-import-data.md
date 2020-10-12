@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985606"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>將資料匯入 Azure Machine Learning 設計工具
@@ -105,6 +105,6 @@ ms.locfileid: "90985606"
 
 如果您的工作區位於虛擬網路中，您必須執行其他設定步驟，以在設計工具中將資料視覺化。 如需如何在虛擬網路中使用資料存放區和資料集的詳細資訊，請參閱 [在 Azure 虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用本教學課程瞭解設計工具的基本概念 [：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)。

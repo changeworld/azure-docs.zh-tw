@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083632"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>將 Azure 事件方格夥伴命名空間移至另一個區域
@@ -59,7 +59,7 @@ ms.locfileid: "89083632"
 1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 2. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
 3. 選取 **範本部署**。
-4. 選取 [建立]。
+4. 選取 [建立]****。
 5. 選取 [在編輯器中組建您自己的範本]。
 6. 選取 [ **載入**檔案]，然後依照指示載入您在上一節中下載的 **template.js** 檔案。
 7. 選取 [ **儲存** ] 以儲存範本。 

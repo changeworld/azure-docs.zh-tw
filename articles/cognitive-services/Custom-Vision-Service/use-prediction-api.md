@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934747"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>使用您的模型搭配預測 API
@@ -43,7 +43,7 @@ ms.locfileid: "88934747"
 
 ![[效能] 索引標籤會顯示在 [預測 URL] 按鈕周圍的紅色矩形。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![[效能] 索引標籤會顯示在預測 URL 值周圍的紅色矩形，以使用影像檔案和預測金鑰值。](./media/use-prediction-api/prediction-api-info.png)
+![[效能] 索引標籤會顯示在預測 URL 值周圍的紅色矩形，以使用影像檔和 Prediction-Key 值。](./media/use-prediction-api/prediction-api-info.png)
 
 
 在本指南中，您將使用本機映射，因此， **如果您有** 一個暫存位置的影像檔案，請複製下的 URL。 也複製對應的 __預測__ 索引鍵值。
@@ -131,7 +131,7 @@ ms.locfileid: "88934747"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本指南中，您已瞭解如何將影像提交至自訂影像分類器/偵測器，並使用 c # SDK 以程式設計方式接收回應。 接下來，瞭解如何使用 c # 完成端對端案例，或開始使用不同的語言 SDK。
 

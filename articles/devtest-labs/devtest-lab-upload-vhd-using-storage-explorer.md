@@ -4,10 +4,10 @@ description: 使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282522"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
@@ -102,7 +102,7 @@ ms.locfileid: "91282522"
     
     1. 在回到 [上傳檔案]**** 對話方塊時，將 [Blob 類型]**** 變更為 [分頁 Blob]****。
     
-    1. 選取 [上傳]  。
+    1. 選取 [上傳] 。
 
         ![選取檔案][9]  
     

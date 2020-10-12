@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934832"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 認知搜尋中的 OData 異地空間函數 `geo.distance` 和 `geo.intersects`
@@ -37,7 +37,7 @@ Azure 認知搜尋透過和函式在 [OData 篩選條件運算式](query-odata-f
 
 ## <a name="syntax"></a>語法
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義和函式的文法 `geo.distance` `geo.intersects` ，以及其運作所在的地理空間值：
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義和函式的 `geo.distance` 文法 `geo.intersects` ，以及它們在其上運作的地理空間值：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -129,7 +129,7 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)

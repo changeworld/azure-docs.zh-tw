@@ -7,10 +7,10 @@ ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988037"
 ---
 # <a name="server-sizes"></a>伺服器大小
@@ -83,7 +83,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 如需每種設定類型定價的詳細明細，請參閱 [遠端轉譯定價](https://azure.microsoft.com/pricing/details/remote-rendering) 頁面。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [PowerShell 指令碼範例](../samples/powershell-example-scripts.md)
 * [模型轉換](../how-tos/conversion/model-conversion.md)
 

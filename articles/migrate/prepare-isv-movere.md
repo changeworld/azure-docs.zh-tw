@@ -4,10 +4,10 @@ description: 此文章描述如何準備 Azure Migrate 以搭配 ISV 工具或 M
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103920"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>準備使用 ISV 工具或 Movere
@@ -40,7 +40,7 @@ ms.locfileid: "86103920"
 
 ## <a name="allow-access-to-urls"></a>允許存取 URL
 
-針對 ISV 工具和 Azure 資料庫移轉小幫手，允許存取資料表中摘要說明的公用雲端 Url。 如果您使用 URL 型 Proxy 來連線到網際網路，請確定 Proxy 會解析查詢 URL 時所收到的任何 CNAME 記錄。 
+針對 ISV 工具和 Azure 資料庫 Migration Assistant，允許存取資料表中摘要說明的公用雲端 Url。 如果您使用 URL 型 Proxy 來連線到網際網路，請確定 Proxy 會解析查詢 URL 時所收到的任何 CNAME 記錄。 
 
 **URL** | **詳細資料**
 --- | ---
@@ -48,7 +48,7 @@ ms.locfileid: "86103920"
 *.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | 登入您的 Azure 訂用帳戶。 
 *.microsoftonline.com<br/> *.microsoftonline-p.com | 建立 Azure Active Directory (AD) 應用程式，以便設備與 Azure Migrate 通訊。 
 management.azure.com | 對 Azure Migrate 專案進行 Azure Resource Manager 呼叫。
-*.servicebus.windows.net | 設備與 EventHub 之間用於傳送訊息的通訊。
+*.servicebus.windows.net | 設備與 EventHub 之間的通訊，以傳送訊息。
 
 
 ## <a name="start-using-the-tool"></a>開始使用工具

@@ -4,10 +4,10 @@ description: 使用 Azure 角色型存取控制 (Azure RBAC) 和身分識別和�
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88661379"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
@@ -113,7 +113,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 若要使用 JSON 描述來建立或更新自訂角色，請使用 [Azure CLI](../role-based-access-control/custom-roles-cli.md)、 [Azure Resource Manager 範本](../role-based-access-control/custom-roles-template.md)、 [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)或其他 Azure 工具。 以您管理內建 Azure 角色的角色指派的相同方式，新增或移除自訂角色的角色指派。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入瞭解如何使用 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../role-based-access-control/role-assignments-cli.md)或其他 Azure 工具，將 Azure 角色指派給 azure 身分識別。
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935274"
 ---
 # <a name="sentiment-cognitive-skill"></a>情感認知技能
@@ -42,14 +42,14 @@ Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="skill-inputs"></a>技能輸入 
 
-| 輸入名稱 | 描述 |
+| 輸入名稱 | 說明 |
 |--------------------|-------------|
 | `text` | 要分析的文字。|
 | `languageCode`    |  (選用) 此字串表示記錄的語言。 如果未指定此屬性，則預設值為 "en"。 <br/>請參閱[支援語言的完整清單](../cognitive-services/text-analytics/language-support.md)。|
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出名稱 | 描述 |
+| 輸出名稱 | 說明 |
 |--------------------|-------------|
 | `score` | 介於 0 與 1 之間的值代表所分析文字的情感。 接近 0 的值具有負面情感、接近 0.5 的值具有中性情感，而接近 1 的值具有正面情感。|
 
@@ -110,7 +110,7 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>備註
+## <a name="notes"></a>注意
 如果是空的，這些記錄不會傳回情感分數。
 
 ## <a name="error-cases"></a>錯誤案例

@@ -1,5 +1,5 @@
 ---
-title: 使用 REST Api 來執行 CI/CD 以進行 Azure IoT Edge 串流分析
+title: 使用 REST Api 進行 Azure IoT Edge 串流分析的 CI/CD
 description: 了解如何使用 REST API 實作適用於 Azure 串流分析的持續整合和部署管線。
 author: mamccrea
 ms.author: mamccrea
@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039070"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>為 IoT Edge 串流分析實作 CI/CD
@@ -255,7 +255,7 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 部署資訊清單設定完成後，請參閱[使用 Azure CLI 部署 Azure IoT Edge 模組](../iot-edge/how-to-deploy-modules-cli.md)進行部署。
 
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>接下來的步驟 
  
 * [Azure IoT Edge 串流分析](stream-analytics-edge.md)
 * [ASA IoT Edge 教學課程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

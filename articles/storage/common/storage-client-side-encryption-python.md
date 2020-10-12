@@ -12,17 +12,17 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84804910"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 的用戶端加密
 
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [Azure Storage Client Library for Python (適用於 Python 的 Azure 儲存體用戶端程式庫)](https://pypi.python.org/pypi/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。
 
 > [!NOTE]
@@ -97,7 +97,7 @@ ms.locfileid: "84804910"
 
    請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串會做為二進位屬性儲存在服務上，並在解密後轉換回字串 (原始字串，而不是具有 EdmType.STRING 類型的 EntityProperties)。
 
-   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
+   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。  (例如，如果是 X，則加密屬性 A;否則，請將屬性 A 和 B 加密。 ) 請注意，在讀取或查詢實體時不需要提供這項資訊。
 
 ### <a name="batch-operations"></a>批次作業
 單一加密原則適用於批次中的所有資料列。 用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。
@@ -244,6 +244,6 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ## <a name="encryption-and-performance"></a>加密和效能
 請注意，加密您的儲存體資料會造成額外的效能負擔。 必須產生內容金鑰和 IV，內容本身必須經過加密，而且其他中繼資料必須格式化並上傳。 這個額外負荷會因所加密的資料數量而有所不同。 我們建議客戶一定要在開發期間測試其應用程式的效能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 下載 [適用於 Java PyPi 封裝的 Azure 儲存體用戶端程式庫](https://pypi.python.org/pypi/azure-storage)
 * 從 GitHub 下載 [適用於 Python 的 Azure 儲存體用戶端程式庫來源程式碼](https://github.com/Azure/azure-storage-python)

@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297088"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI 在共用映射庫中建立受控磁片或快照集的映射
@@ -123,7 +123,7 @@ az sig image-version create \
 > 您也可以在建立映射版本時新增，以將所有的映射版本複本儲存在 [區域重複的儲存體](../storage/common/storage-redundancy.md) 中 `--storage-account-type standard_zrs` 。
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 從 [特製化映射版本](vm-specialized-image-version-cli.md)建立 VM。
 

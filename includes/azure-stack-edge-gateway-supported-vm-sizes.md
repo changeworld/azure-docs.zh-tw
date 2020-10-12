@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
 ms.openlocfilehash: 7ce49873b4e59bcf474deaea4420f56a72c9c589
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083460"
 ---
 VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體) 數量。 虛擬機器必須適用於工作負載的 VM 大小來建立。 即使所有電腦都在相同的硬體上執行，電腦大小還是會有不同的磁片存取限制，這可協助您管理整個 Vm 的整體磁片存取。 如果工作負載增加，可以調整現有虛擬機器的大小。

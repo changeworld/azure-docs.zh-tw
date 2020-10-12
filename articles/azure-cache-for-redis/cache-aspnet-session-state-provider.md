@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213300"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>適用於 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者
 
-Azure Cache for Redis 提供工作階段狀態提供者，可讓您用來將記憶體內部工作階段狀態儲存在 Azure Cache for Redis 中，而不是 SQL Server 資料庫中。 若要使用快取工作階段狀態提供者，請先設定快取，再使用「Azure Cache for Redis 工作階段狀態 NuGet 套件」設定 ASP.NET 應用程式的快取。 如需 ASP.NET Core 應用程式，請參閱 [ASP.NET Core 中的會話和狀態管理](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)。
+Azure Cache for Redis 提供工作階段狀態提供者，可讓您用來將記憶體內部工作階段狀態儲存在 Azure Cache for Redis 中，而不是 SQL Server 資料庫中。 若要使用快取工作階段狀態提供者，請先設定快取，再使用「Azure Cache for Redis 工作階段狀態 NuGet 套件」設定 ASP.NET 應用程式的快取。 對於 ASP.NET Core 應用程式，請 [在 ASP.NET Core 中讀取會話和狀態管理](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)。
 
 在實際的雲端應用程式中，避免儲存使用者工作階段某種形式的狀態通常並非理想做法，但某些方法會比其他方法更加影響效能和延展性。 如果您需要儲存狀態，最好的方法是將狀態的數量控制得較低，並將其儲存在 Cookie 中。 如果此方法不可行，次佳的方法是使用 ASP.NET 工作階段狀態搭配提供者，進行分散式的記憶體中快取。 從效能和延展性的觀點來看，最差的解決方法是使用資料庫備份的工作階段狀態提供者。 本主題提供使用 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者的指引。 如需其他工作階段狀態選項的相關資訊，請參閱 [ASP.NET 工作階段狀態選項](#aspnet-session-state-options)。
 
@@ -83,10 +83,10 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 以來自 Microsoft Azure 入口網站之快取刀鋒視窗的值來設定屬性，並視需要設定其他值。 如需關於存取快取屬性的指示，請參閱[設定 Azure Cache for Redis 設定](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
 * **主機** – 指定您的快取端點。
-* **埠** –使用您的非 TLS/ssl 埠或 TLS/ssl 埠，視 tls 設定而定。
+* **埠** –根據 TLS 設定，使用您的非 TLS/ssl 埠或 TLS/ssl 埠。
 * **accessKey** – 用於快取的主要或次要金鑰。
 * **ssl** –如果您想要使用 TLS 來保護快取/用戶端通訊，則為 true;否則為 false。 請務必指定正確的連接埠。
-  * 針對新的快取，非 TLS 埠預設為停用。 指定 true 表示此設定會使用 TLS 埠。 如需啟用非 TLS 埠的詳細資訊，請參閱[設定](cache-configure.md)快取主題中的[存取埠](cache-configure.md#access-ports)一節。
+  * 新快取的非 TLS 埠預設為停用。 針對此設定指定 true，以使用 TLS 埠。 如需啟用非 TLS 埠的詳細資訊，請參閱[設定](cache-configure.md)快取主題中的「[存取埠](cache-configure.md#access-ports)」一節。
 * **throwOnError** – true (如果您想在發生失敗時擲出例外狀況) 或 false (如果您想在作業失敗時為無訊息模式)。 您可以核取靜態 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 屬性以檢查失敗。 預設值是 true。
 * **retryTimeoutInMilliseconds** – 會在此間隔期間 (以毫秒指定) 重試失敗的作業。 第一次重試會在 20 毫秒後發生，然後每秒進行重試，直到 retryTimeoutInMilliseconds 間隔到期為止。 緊接著此間隔之後，作業會進行最後一次重試。 如果作業仍失敗，會視 throwOnError 設定將例外狀況擲回給呼叫者。 預設值為 0，表示不會重試。
 * **databaseId** – 指定快取輸出資料所使用的資料庫。 若未指定，就會使用預設值 0。

@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948125"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>在 Microsoft 身分識別平臺中簽署金鑰變換
@@ -37,7 +37,7 @@ OpenID Connect 探索文件和同盟中繼資料文件中永遠有一個以上�
 * [存取資源的原生用戶端應用程式](#nativeclient)
 * [存取資源的 Web 應用程式 / API](#webclient)
 * [保護資源且使用 Azure App Service 建置的 Web 應用程式 / API](#appservices)
-* [使用 .NET OWIN OpenID Connect、WS-饋送或 WindowsAzureActiveDirectoryBearerAuthentication 中介軟體保護資源的 Web 應用程式/Api](#owin)
+* [使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中介軟體保護資源的 Web 應用程式/Api](#owin)
 * [使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中介軟體保護資源的 Web 應用程式 / API](#owincore)
 * [使用 Node.js passport-azure-ad 模組保護資源的 Web 應用程式 / API](#passport)
 * [保護資源且使用 Visual Studio 2015 或更新版本建立的 Web 應用程式/Api](#vs2015)
@@ -284,7 +284,7 @@ namespace JWTValidation
           </keys>
    ```
 2. 在 **\<add thumbprint="">** 設定中，以不同的字元取代任何字元來變更指紋值。 儲存 **Web.config** 檔案。
-3. 建置應用程式，然後加以執行。 如果您可以完成登入程序，則應用程式已從目錄的同盟中繼資料文件下載所需資訊，而成功地更新金鑰。 如果您在登入時遇到問題，請參閱 [使用 Microsoft 身分識別平臺的新增登入 Web 應用](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) 程式，或下載並檢查下列程式碼範例： [Azure Active Directory 的多租使用者雲端應用程式](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)，以確定應用程式中的變更是否正確。
+3. 建置應用程式，然後加以執行。 如果您可以完成登入程序，則應用程式已從目錄的同盟中繼資料文件下載所需資訊，而成功地更新金鑰。 如果您在登入時遇到問題，請參閱 [使用 Microsoft 身分識別平臺文章來閱讀將 Sign-On 新增至 Web 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) ，或下載並檢查下列程式碼範例： [適用于 Azure Active Directory 的多租使用者雲端應用程式](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)，以確保應用程式中的變更正確無誤。
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>保護資源且使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 建立的 Web 應用程式
 如果您在 WIF v1.0 上建置應用程式，則沒有提供相關機制來將應用程式的組態自動重新整理為使用新的金鑰。

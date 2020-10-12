@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083621"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>將 Azure 事件方格系統主題移至另一個區域
@@ -35,22 +35,7 @@ ms.locfileid: "89083621"
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="資源群組頁面":::        
 3. 在左側功能表中，選取 [**設定**] 下的 [**匯出範本**]，然後在工具列上選取 [**下載**]。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="儲存體帳戶-匯出範本頁面":::        
-5. 找出您從入口網站下載的 **.zip** 檔案，並將該檔案解壓縮至您選擇的資料夾。 此 zip 檔案包含範本和參數的 JSON 檔案。 
-1. 在您選擇的編輯器中開啟 **template.js** 。 
-1. Webhook 的 URL 不會匯出至範本。 因此，請執行下列步驟：
-    1. 在範本檔案中，搜尋 **WebHook**。 
-    1. 在 [ **屬性** ] 區段中，于最後一行的結尾加入逗號 (`,`) 字元。 在此範例中為 `"preferredBatchSizeInKilobytes": 64`。 
-    1. 將 `endpointUrl` 設定值的屬性新增至您的 WEBHOOK URL，如下列範例所示。 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="資源群組頁面"
         }
         ```
 
@@ -80,7 +65,7 @@ ms.locfileid: "89083621"
 1. 在 [Azure 入口網站中，選取 [ **建立資源**]。
 2. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
 3. 選取 **範本部署**。
-4. 選取 [建立]。
+4. 選取 [建立]****。
 5. 選取 [在編輯器中組建您自己的範本]。
 6. 選取 [ **載入**檔案]，然後依照指示載入您在上一節中下載的 **template.js** 檔案。
 7. 選取 [ **儲存** ] 以儲存範本。 
@@ -91,7 +76,7 @@ ms.locfileid: "89083621"
     1. 針對 [ **系統主題名稱**]，輸入將與儲存體帳戶相關聯之系統主題的名稱。  
     1. 針對 [ **儲存體帳戶名稱**]，輸入要在目的地區域中建立之儲存體帳戶的名稱。 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="部署 Resource Manager 範本":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="資源群組頁面":::
     5. 選取頁面底部的 [檢閱 + 建立]。 
     1. 在 [ **審核 + 建立** ] 頁面上，檢查 [設定]，然後選取 [ **建立**]。 
 
@@ -110,7 +95,7 @@ ms.locfileid: "89083621"
 1. 在 Azure 入口網站頂端的 [搜尋] 視窗中，輸入 **資源群組**，然後從搜尋結果中選取 **資源群組** 。 
 2. 選取要刪除的資源群組，然後從工具列中選取 [ **刪除** ]。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="刪除資源群組":::
+    刪除資源群組
 3. 在 [確認] 頁面上，輸入資源群組的名稱，然後選取 [ **刪除**]。  
 
 ## <a name="next-steps"></a>後續步驟

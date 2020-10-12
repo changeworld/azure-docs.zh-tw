@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898544"
 ---
 # <a name="decision-forest-regression-module"></a>決策樹系回歸模組
@@ -38,7 +38,7 @@ ms.locfileid: "90898544"
 
 此迴歸模型由決策樹的集團所組成。 回歸決策樹系中的每個樹狀結構都會輸出高斯分佈作為預測。 系統會對樹狀結構的集團執行匯總，以找出最接近模型中所有樹狀結構之合併分佈的高斯散發。
 
-如需有關此演算法及其實作為理論架構的詳細資訊，請參閱這篇文章：決策樹系 [：適用于分類、回歸、密度估計、各種方式學習和半監督式學習的統一架構](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+如需有關此演算法及其實作為理論架構的詳細資訊，請參閱這篇文章：決策樹系 [：適用于分類、回歸、密度估計、各種方式學習和 Semi-Supervised 學習的統一架構](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>如何設定決策樹系回歸模型
 

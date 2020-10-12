@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087600"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>在 HDInsight 上計算 ML 服務的內容選項
@@ -23,7 +23,7 @@ Azure HDInsight 上的 ML 服務控制如何透過設定計算內容來執行呼
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML 服務
 
-[Azure HDInsight 上的 ML 服務](r-server-overview.md)可提供最新的 R 型分析功能。 它可以使用儲存在[Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 儲存體")儲存體帳戶、Data Lake Store 或本機 Linux 檔案系統中的 APACHE Hadoop HDFS 容器中的資料。 由於 ML 服務是以開放原始碼 R 為基礎，因此，您所建立的 R 型應用程式可以套用任何 8000 + 開放原始碼 R 套件。 它們也可以使用 [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (ML 服務隨附的 Microsoft 巨量資料分析套件) 中的常式。  
+[Azure HDInsight 上的 ML 服務](r-server-overview.md)可提供最新的 R 型分析功能。 它可以使用儲存在 [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 儲存體") 儲存體帳戶、Data Lake Store 或本機 Linux 檔案系統中 APACHE Hadoop HDFS 容器中的資料。 由於 ML 服務是以開放原始碼 R 為基礎，因此您所建立的 R 應用程式可以套用任何 8000 + 開放原始碼 R 套件。 它們也可以使用 [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (ML 服務隨附的 Microsoft 巨量資料分析套件) 中的常式。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>邊緣節點的計算內容
 
@@ -47,7 +47,7 @@ local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式
 
 ## <a name="guidelines-for-deciding-on-a-compute-context"></a>用於決定計算內容的指導方針
 
-在這三個提供平行執行的選項中，選擇哪個選項取決於資料的分析工作本質、大小與位置。 沒有簡單的公式可以告訴您，要使用哪個計算內容。 不過，有一些指導原則可協助您做出正確的選擇，或至少幫助您縮小選擇範圍，然後再執行效能評定。 這些指導原則包括︰
+在這三個提供平行執行的選項中，選擇哪個選項取決於資料的分析工作本質、大小與位置。 沒有簡單的公式可以告訴您，要使用的計算內容。 不過，有一些指導原則可協助您做出正確的選擇，或至少幫助您縮小選擇範圍，然後再執行效能評定。 這些指導原則包括︰
 
 - 本機 Linux 檔案系統比 HDFS 還快。
 - 如果資料位於本機，且是 XDF 格式，則重複分析會比較快。
@@ -59,7 +59,7 @@ local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式
 
 ### <a name="local"></a>本機
 
-- 如果要分析的資料量很小，而且不需要重複分析，請使用*local*或*localpar*將它直接串流到分析常式。
+- 如果要分析的資料量很小，而且不需要重複分析，請使用 *本機* 或 *localpar*，直接將它串流到分析常式。
 - 如果要分析的資料量很小或是中等大小，而且需要重複分析，請將它複製到本機檔案系統、匯入至 XDF，然後透過 local** 或 localpar** 分析。
 
 ### <a name="apache-spark"></a>Apache Spark
@@ -68,7 +68,7 @@ local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
 
-- 只有當您遇到 Spark 計算內容的無法克服問題時，才使用對應縮減計算內容，因為它的速度通常較慢。  
+- 只有當您在 Spark 計算內容中遇到無法克服問題時，才使用地圖減少計算內容，因為它的速度通常較慢。  
 
 ## <a name="inline-help-on-rxsetcomputecontext"></a>rxSetComputeContext 的內嵌說明
 如需 RevoScaleR 計算內容的詳細資訊和範例，請參閱 R 中有關 rxSetComputeContext 方法的內嵌說明，例如︰
@@ -79,7 +79,7 @@ local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式
 
 您也可以參考 [Machine Learning Server 文件](https://docs.microsoft.com/machine-learning-server/)中的[分散式計算概觀](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 在此文章中，您可以了解可用於指定是否以及如何跨邊緣節點核心或 HDInsight 叢集將執行作業平行化的選項。 若要深入了解如何使用 HDInsight 叢集上的 ML 服務，請參閱下列主題：
 
