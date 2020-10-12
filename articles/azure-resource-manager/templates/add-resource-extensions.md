@@ -1,15 +1,15 @@
 ---
-title: 使用擴充功能進行部署後設定
+title: 使用延伸模組的部署後設定
 description: 了解如何使用 Azure Resource Manager 範本擴充功能提供部署後的設定。
 author: mumian
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
 ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86055037"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>使用擴充功能提供部署後的設定
@@ -20,7 +20,7 @@ ms.locfileid: "86055037"
 
 現有的擴充功能有：
 
-- [Microsoft。計算/virtualMachines/延伸模組](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
+- [Microsoft. Compute/virtualMachines/extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
 - [Microsoft.Compute virtualMachineScaleSets/extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions) \(英文\)
 - [Microsoft.HDInsight clusters/extensions](/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters) \(英文\)
 - [Microsoft.Sql servers/databases/extensions](/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) \(英文\) 
@@ -33,7 +33,7 @@ ms.locfileid: "86055037"
 - [教學課程：使用 Azure Resource Manager 範本部署虛擬機器擴充](template-tutorial-deploy-vm-extensions.md)功能。
 - [教學課程：使用 Azure Resource Manager 範本匯入 SQL BACPAC 檔案](template-tutorial-deploy-sql-extensions-bacpac.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [教學課程：使用 Azure Resource Manager 範本部署虛擬機器擴充功能](template-tutorial-deploy-vm-extensions.md)

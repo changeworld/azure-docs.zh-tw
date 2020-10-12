@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247610"
 ---
 # <a name="monitoring-the-cluster"></a>監視叢集
@@ -20,7 +20,7 @@ ms.locfileid: "86247610"
 
 在 Windows 上，透過一組用來挑選「作業和資料」與「傳訊」通道的相關 `logLevelKeywordFilters`，就能從單一 ETW 提供者取得 Service Fabric 事件 - 這是我們在需要時區分出待篩選傳出 Service Fabric 事件的方法。
 
-* **營運**Service Fabric 和叢集執行的高階作業，包括即將推出的節點、正在部署的新應用程式，或升級復原等事件。請參閱[這裡](service-fabric-diagnostics-event-generation-operational.md)的完整事件清單。  
+* **操作** 由 Service Fabric 和叢集執行的高階作業，包括即將進行的節點事件、正在部署的新應用程式，或升級復原等。請參閱 [這裡](service-fabric-diagnostics-event-generation-operational.md)的完整事件清單。  
 
 * **作業 - 詳細**  
 健康情況報告和負載平衡決策。
@@ -81,13 +81,13 @@ Service Fabric 有自己的健全狀況模型，詳述於下列文件：
 以下是您可以設定收集叢集效能資料的兩個常用方式：
 
 * **使用代理程式**  
-這是從電腦收集效能的慣用方法，因為代理程式通常會有一份可收集的效能計量清單，而且選擇您要收集或變更的計量是相當簡單的程序。 閱讀關於 Azure 監視器在 Service Fabric 的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)中提供 Azure 監視器記錄，以及[設定 log analytics 代理程式](../azure-monitor/platform/agent-windows.md)以深入瞭解 log analytics 代理程式，這種監視代理程式可以挑選叢集 vm 和已部署容器的效能資料。
+這是從電腦收集效能的慣用方法，因為代理程式通常會有一份可收集的效能計量清單，而且選擇您要收集或變更的計量是相當簡單的程序。 關於 Azure 監視器 Azure 監視器供應專案的詳細資訊，請參閱 Service Fabric 的 [Azure 監視器記錄檔整合](service-fabric-diagnostics-event-analysis-oms.md) 和 [設定 log analytics 代理程式](../azure-monitor/platform/agent-windows.md) ，以深入瞭解 log analytics 代理程式，這是一個可為叢集 vm 和已部署容器挑選效能資料的監視代理程式。
 
 * **Azure 表格儲存體的效能計數器**  
 您也可以將效能計量傳送給與事件相同的表格儲存體。 這需要變更 Azure 診斷設定來反映叢集中 VM 的適當效能計數器，並在您要部署任何容器時，讓它反映 Docker 統計資料。 請閱讀在 Service Fabric 中設定 [WAD 中的效能計數器](service-fabric-diagnostics-event-aggregation-wad.md)，以設定效能計數器集合。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 閱讀 Service Fabric 的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)，以收集叢集診斷並建立自訂查詢和警示
+* 閱讀 Service Fabric 的 [Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md) ，以收集叢集診斷和建立自訂查詢和警示
 * 了解 Service Fabric 的內建診斷經驗 ([EventStore](service-fabric-diagnostics-eventstore.md))
 * 瀏覽 Service Fabric 中的一些[常見診斷案例](service-fabric-diagnostics-common-scenarios.md)

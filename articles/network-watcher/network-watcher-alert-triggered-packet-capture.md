@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975066"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視
@@ -91,7 +91,7 @@ ms.locfileid: "90975066"
     |---|---|---|
     |**案例**|實驗|案例類型|
     |**函式命名**|AlertPacketCapturePowerShell|函式的名稱|
-    |**授權等級**|功能|函式的授權層級|
+    |**授權等級**|函式|函式的授權層級|
 
 ![函式範例][functions1]
 
@@ -344,7 +344,7 @@ $Encryptedpassword
 
   |**設定** | **值** | **詳細資料** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
+  |**名稱**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
   |**說明**|傳送的 TCP 區段超出閾值|警示規則的描述。|
   |**計量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
   |**Condition**|大於| 評估計量所用的條件。|
@@ -370,7 +370,7 @@ $Encryptedpassword
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [WireShark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瀏覽[使用 Wireshark 的封包擷取分析](network-watcher-deep-packet-inspection.md)，了解如何檢視封包擷取。
 

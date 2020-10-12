@@ -1,6 +1,6 @@
 ---
-title: '使用現有的 VNET (preview 來建立具有 Azure 映射產生器的 Windows VM) '
-description: 使用現有的 VNET，透過 Azure 映射產生器建立 Windows VM
+title: '使用現有的 VNET (預覽版建立具有 Azure 映射產生器的 Windows VM) '
+description: 使用現有的 VNET 來建立具有 Azure 映射產生器的 Windows VM
 author: cynthn
 ms.author: cynthn
 ms.date: 05/29/2020
@@ -9,15 +9,15 @@ ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 07339ea6c53b2abe959e8e0f164412e502bb06b5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068093"
 ---
-# <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用適用于 Windows Vm 的 Azure 映射產生器，允許存取現有的 Azure VNET
+# <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>針對允許存取現有 Azure VNET 的 Windows Vm 使用 Azure 映射產生器
 
-本文說明如何使用 Azure 映射產生器來建立可存取 VNET 上現有資源的基本自訂 Windows 映像。 您所建立的組建 VM 會部署到您在訂用帳戶中指定的新或現有 VNET。 當您使用現有的 Azure VNET 時，Azure 映射產生器服務不需要公用網路連線。
+本文說明如何使用 Azure 映射產生器來建立可存取 VNET 上現有資源的基本自訂 Windows 映像。 您所建立的組建 VM 會部署到您在訂用帳戶中指定的新或現有的 VNET。 當您使用現有的 Azure VNET 時，Azure 映射產生器服務不需要公用網路連線能力。
 
 > [!IMPORTANT]
 > Azure Image Builder 目前處於公開預覽狀態。
@@ -27,7 +27,7 @@ ms.locfileid: "88068093"
 
 ## <a name="register-the-features"></a>註冊各項功能
 
-首先，您必須註冊 Azure 映射產生器服務。 註冊會授與服務許可權，以建立、管理和刪除暫存資源群組。 此服務也具有將映射組建所需的群組加入資源的許可權。
+首先，您必須註冊 Azure 映射建立器服務。 註冊會授與服務許可權，以建立、管理及刪除預備資源群組。 服務也有許可權可新增映射組建所需的群組資源。
 
 ```powershell-interactive
 # Register for Azure Image Builder Feature
@@ -111,13 +111,13 @@ New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRgName -Location $l
 
 ### <a name="add-network-security-group-rule"></a>新增網路安全性群組規則
 
-此規則允許從 Azure 映射產生器負載平衡器連線到 proxy VM。 埠60001適用于 Linux OSs，而埠60000則適用于 Windows 作業系統。 Proxy VM 會使用適用于 Linux Os 的埠22或適用于 Windows 作業系統的埠5986，連接到組建 VM。
+此規則可讓您從 Azure 映射產生器的負載平衡器連線到 proxy VM。 埠60001適用于 Linux OSs，埠60000適用于 Windows Os。 Proxy VM 會使用適用于 Linux OSs 的埠22或適用于 Windows Os 的埠5986來連線至組建 VM。
 
 ```powershell-interactive
 Get-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $vnetRgName  | Add-AzNetworkSecurityRuleConfig -Name AzureImageBuilderAccess -Description "Allow Image Builder Private Link Access to Proxy VM" -Access Allow -Protocol Tcp -Direction Inbound -Priority 400 -SourceAddressPrefix AzureLoadBalancer -SourcePortRange * -DestinationAddressPrefix VirtualNetwork -DestinationPortRange 60000-60001 | Set-AzNetworkSecurityGroup
 ```
 
-### <a name="disable-private-service-policy-on-subnet"></a>停用子網上的私人服務原則
+### <a name="disable-private-service-policy-on-subnet"></a>在子網上停用私人服務原則
 
 ```powershell-interactive
 $virtualNetwork= Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRgName 
@@ -127,7 +127,7 @@ $virtualNetwork= Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRg
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-如需有關映射產生器網路功能的詳細資訊，請參閱[Azure 映射產生器服務網路功能選項](../linux/image-builder-networking.md)。
+如需有關 Image Builder 網路功能的詳細資訊，請參閱 [Azure 映射產生器服務網路功能選項](../linux/image-builder-networking.md)。
 
 ## <a name="modify-the-example-template-and-create-role"></a>修改範例範本並建立角色
 
@@ -201,7 +201,7 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $networkRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$vnetRgName"
 ```
 
-如需許可權的詳細資訊，請參閱[使用 Azure CLI 設定 Azure 映射產生器服務許可權](../linux/image-builder-permissions-cli.md)或[使用 PowerShell 設定 azure 映射產生器服務許可權](../linux/image-builder-permissions-powershell.md)。
+如需許可權的詳細資訊，請參閱 [使用 Azure CLI 設定 Azure 映射產生器服務許可權](../linux/image-builder-permissions-cli.md) 或 [使用 PowerShell 設定 azure 映射產生器服務許可權](../linux/image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>建立映像
 
@@ -221,7 +221,7 @@ Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $ima
 
 ## <a name="get-image-build-status-and-properties"></a>取得映射組建狀態和屬性
 
-### <a name="query-the-image-template-for-current-or-last-run-status-and-image-template-settings"></a>查詢影像範本中的目前或上次執行狀態和影像範本設定
+### <a name="query-the-image-template-for-current-or-last-run-status-and-image-template-settings"></a>查詢目前或上次執行狀態和影像範本設定的影像範本
 ```powerShell
 $managementEp = $currentAzureContext.Environment.ResourceManagerUrl
 
@@ -233,7 +233,7 @@ $buildJsonStatus
 
 ```
 
-此範例的映射組建大約需要50分鐘 (多次重新開機，windows update 會安裝/重新開機) ，當您查詢狀態時，您需要尋找*lastRunStatus*，下方顯示組建仍在執行中，如果已順利完成，則會顯示「成功」。
+此範例的映射組建大約需要50分鐘 (多次重新開機、windows update 安裝/重新開機) 。當您查詢狀態時，您需要尋找 *lastRunStatus*，如下所示，如果組建已順利完成，則會顯示「成功」。
 
 ```text
   "lastRunStatus": {
@@ -246,7 +246,7 @@ $buildJsonStatus
 ```
 
 ### <a name="query-the-distribution-properties"></a>查詢散發屬性
-如果您要發佈至 VHD 位置、需要受控映射位置屬性或共用映射庫複寫狀態，您必須在每次有發佈目標時查詢 ' runOutput '，您將會有唯一的 runOutput，以描述發佈類型的屬性。
+如果您要散發至 VHD 位置、需要受控映射位置屬性或共用映射庫的複寫狀態，則您需要查詢 ' runOutput '，每次有散發目標時，您將會有唯一的 runOutput，以描述散發類型的屬性。
 
 ```powerShell
 $managementEp = $currentAzureContext.Environment.ResourceManagerUrl
@@ -258,11 +258,11 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>建立 VM
 
-現在組建已完成，您可以從映射建立 VM。 使用[PowerShell update-azvm 檔](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的範例。
+組建完成後，您就可以從映射建立 VM。 使用 [PowerShell New-AzVM 檔](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的範例。
 
 ## <a name="clean-up"></a>清除
 
-### <a name="delete-image-template-artifact"></a>刪除影像範本成品
+### <a name="delete-image-template-artifact"></a>刪除映射範本成品
 ```powerShell
 # Get ResourceID of the Image Template
 $resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14"

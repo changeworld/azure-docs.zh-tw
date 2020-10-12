@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82784107"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>地緣政治區域內的 Azure 區域
@@ -22,7 +22,7 @@ ms.locfileid: "82784107"
 |地緣政治區域 | Azure 區域|
 |---|---|
 | 澳洲政府 | 澳大利亞中部、澳大利亞中部 2 |
-| 歐洲 | 法國中部、法國南部、德國北部、德國中西部、北歐、挪威東部、瑞士北部、瑞士西部、西歐、英國西部、英國南部 |
+| 歐洲 | 法國中部，法國南部，德國北部，德國中西部，北歐，挪威東部，瑞士北部，瑞士西部，西歐，英國西部，英國南部 |
 | 北美洲 | 美國東部、美國西部、美國東部 2、美國西部 2、美國中部、美國中南部、美國中北部、美國中西部、加拿大中部、加拿大東部 |
 | 亞洲 | 東亞、東南亞 |
 | 印度 | 印度西部、印度中部、印度南部 |

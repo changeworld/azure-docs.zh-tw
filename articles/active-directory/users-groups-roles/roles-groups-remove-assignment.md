@@ -14,27 +14,27 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15312159bc0487f7d03c06fa947f69b1f6f9600c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513395"
 ---
-# <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>從 Azure Active Directory 中的群組移除角色指派
+# <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中從群組移除角色指派
 
-本文說明 IT 系統管理員可以如何移除指派給群組 Azure AD 角色。 在 Azure 入口網站中，您現在可以移除使用者的直接和間接角色指派。 如果群組成員資格將角色指派給使用者，請從群組中移除該使用者，以移除角色指派。
+本文說明 IT 系統管理員如何移除指派給群組 Azure AD 角色。 在 Azure 入口網站中，您現在可以移除使用者的直接與間接角色指派。 如果群組成員資格將角色指派給使用者，請從群組中移除使用者，以移除角色指派。
 
 ## <a name="using-azure-admin-center"></a>使用 Azure 系統管理中心
 
-1. 使用特殊權限角色管理員或全域管理員 Azure AD 組織中的許可權登入[Azure AD 系統管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
 
-1. 選取 [**角色和系統管理員**  >  ***角色名稱***]。
+1. 選取**角色和系統管理員**  >  ***角色名稱***。
 
-1. 選取您要移除角色指派的群組，然後選取 [**移除指派**]。
+1. 選取您要從中移除角色指派的群組，然後選取 [ **移除指派**]。
 
    ![從選取的群組中移除角色指派。](./media/roles-groups-remove-assignment/remove-assignment.png)
 
-1. 當系統要求您確認動作時，請選取 **[是]**。
+1. 當系統要求您確認您的動作時，請選取 **[是]**。
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
@@ -44,7 +44,7 @@ ms.locfileid: "87513395"
 $group = New-AzureADMSGroup -DisplayName "Contoso_Helpdesk_Administrators" -Description "This group is assigned to Helpdesk Administrator built-in role in Azure AD." -MailEnabled $true -SecurityEnabled $true -MailNickName "contosohelpdeskadministrators" -IsAssignableToRole $true
 ```
 
-### <a name="get-the-role-definition-you-want-to-assign-the-group-to"></a>取得您想要為群組指派的角色定義
+### <a name="get-the-role-definition-you-want-to-assign-the-group-to"></a>取得您想要指派群組的角色定義
 
 ```powershell
 $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Helpdesk Administrator'"
@@ -105,7 +105,7 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/<Id of role assignment>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)
-- [針對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)
+- [對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)

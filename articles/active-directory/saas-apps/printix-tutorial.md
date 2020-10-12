@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>教學課程：Azure Active Directory 與 Printix 整合
@@ -108,7 +108,7 @@ Printix 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/printix-tutorial/tutorial_printix_url.png)
 
-    在 [登 **入 url** ] 文字方塊中，使用下列模式輸入 URL： `https://<subdomain>.printix.net`
+    在 [登入 URL]  文字方塊中，使用下列模式輸入 URL︰ `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Printix 客戶支援小組](mailto:support@printix.net)以取得此值。 

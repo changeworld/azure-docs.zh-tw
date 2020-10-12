@@ -4,10 +4,10 @@ description: 取得有關使用 Azure Migrate Server 遷移來遷移機器的常
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275535"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見問題
@@ -135,7 +135,7 @@ Azure Migrate：伺服器遷移提供無代理程式複寫選項，可讓您遷�
 
 要在 >new-netqospolicy 中使用的 AppNamePrefix 是 "GatewayWindowsService.exe"。 您可以建立 Azure Migrate 設備的原則，藉由建立如下的原則來節流設備的複寫流量：
 
->new-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1 MB
+New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1 MB
 
 ## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>如何將資料從內部內部部署環境傳輸到 Azure？ 它會在傳輸前加密嗎？
 

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709193"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中託管反向 DNS 對應區域
@@ -37,7 +37,7 @@ ms.locfileid: "84709193"
 
 ### <a name="ipv4"></a>IPv4
 
-IPv4 反向對應區域的名稱是以其所代表的 IP 範圍為基礎。 格式應如下：`<IPv4 network prefix in reverse order>.in-addr.arpa`。 如需範例，請參閱[Azure 反向 DNS 和支援的總覽](dns-reverse-dns-overview.md#ipv4)。
+IPv4 反向對應區域的名稱是以其所代表的 IP 範圍為基礎。 格式應如下：`<IPv4 network prefix in reverse order>.in-addr.arpa`。 如需範例，請參閱 [Azure 中反向 DNS 和支援的總覽](dns-reverse-dns-overview.md#ipv4)。
 
 > [!NOTE]
 > 在 Azure DNS 中建立無類別反向 DNS 對應區域時，區域名稱中必須使用連字號 (`-`) 而不是正斜線 (`/`)。
@@ -74,7 +74,7 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-IPv6 反向對應區域的名稱格式應該如下：`<IPv6 network prefix in reverse order>.ip6.arpa`。  如需範例，請參閱[Azure 反向 DNS 和支援的總覽](dns-reverse-dns-overview.md#ipv6)。
+IPv6 反向對應區域的名稱格式應該如下：`<IPv6 network prefix in reverse order>.ip6.arpa`。  如需範例，請參閱 [Azure 中反向 DNS 和支援的總覽](dns-reverse-dns-overview.md#ipv6)。
 
 
 下例示範如何透過 Azure 入口網站，在 Azure DNS 中建立名為 `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` 的 IPv6 反向 DNS 對應區域：
@@ -262,7 +262,7 @@ az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0
 
 如需詳細資訊，請參閱[使用 Azure CLI 匯入及匯出 DNS 區域檔案](dns-import-export.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需反向 DNS 的詳細資訊，請參閱維基百科的 [reverse DNS lookup](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) (反向 DNS 對應)。
 <br>

@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329426"
 ---
 # <a name="security-control-v2-network-security"></a>安全性控制 V2：網路安全性
@@ -116,7 +116,7 @@ ms.locfileid: "91329426"
 -   藉由在 Azure 虛擬網路上啟用 DDoS 標準保護，來保護您的資產免于 DDoS 攻擊。 
 -   使用 Azure 資訊安全中心來偵測與上述相關的設定錯誤的風險。 
 
-- [Azure 防火牆文件](/azure/firewall/)
+- [Azure 防火牆檔](/azure/firewall/)
 
 - [如何部署 Azure WAF](../../web-application-firewall/overview.md)
 

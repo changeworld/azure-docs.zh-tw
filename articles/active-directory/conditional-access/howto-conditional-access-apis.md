@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007979"
 ---
 # <a name="conditional-access-programmatic-access"></a>條件式存取：以程式設計方式存取
@@ -92,7 +92,7 @@ Microsoft Graph 提供統一的可程式性模型，可讓組織用來與 Micros
 
 這些範例可在我們的 [GitHub 存放庫](https://github.com/Azure-Samples/azure-ad-conditional-access-apis)中取得。 我們很樂意支援 GitHub 問題和提取要求的社區貢獻。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Microsoft Graph 概觀](/graph/overview)
 

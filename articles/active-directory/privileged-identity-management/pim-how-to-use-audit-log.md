@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530114"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure AD 角色的審核歷程記錄
@@ -93,7 +93,7 @@ ms.locfileid: "91530114"
     | Time | 當動作發生時。 |
     | 要求者 | 要求啟用或變更角色的使用者。 如果值是 **Azure 系統**，請查看 azure 審核歷程記錄以取得詳細資訊。 |
     | 動作 | 要求者所採取的動作。 動作可以包括指派、取消指派、啟動、停用或 AddedOutsidePIM。 |
-    | member | 啟用或指派給角色的使用者。 |
+    | 成員 | 啟用或指派給角色的使用者。 |
     | 角色 | 使用者指派或啟用的角色。 |
     | 理由 | 啟用期間在 [原因] 欄位中輸入的文字。 |
     | 到期 | 當啟用的角色過期時。 僅適用于合格的角色指派。 |

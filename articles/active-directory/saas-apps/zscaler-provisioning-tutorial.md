@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 52c18f8d51f18b9bc167a99fbafda2365824dfc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312068"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler 來自動布建使用者
@@ -26,7 +26,7 @@ ms.locfileid: "91312068"
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../active-directory-saas-app-provisioning.md)。
 >
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -108,7 +108,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![[設定 S] 對話方塊的螢幕擷取畫面，其中已將基底 U R L 和持有人權杖的文字方塊稱為 out。](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    選取 [ **啟用以 SCIM 為基礎的布建** ]，以抓取 **基底 URL** 和 **持有人權杖**，然後儲存設定。 將 **基底 url** 複製 **到租使用者 url**，並將持有人 **權杖**  複製到 Azure 入口網站中的 **秘密權杖** 。
+    選取 [ **啟用 SCIM-Based** 布建] 以取出 **基底 URL** 和 **持有人權杖**，然後儲存設定。 將 **基底 url** 複製 **到租使用者 url**，並將持有人 **權杖**  複製到 Azure 入口網站中的 **秘密權杖** 。
 
 7. 填入步驟5所示的欄位後，按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Zscaler。 如果連接失敗，請確定您的 Zscaler 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -118,7 +118,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![通知電子郵件文字方塊的螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/notification.png)
 
-9. 按一下 [檔案]  。
+9. 按一下 **[儲存]** 。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Zscaler**]。
 
@@ -126,7 +126,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Zscaler 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![顯示有七個對應的 [屬性對應] 區段螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Zscaler**]。
 

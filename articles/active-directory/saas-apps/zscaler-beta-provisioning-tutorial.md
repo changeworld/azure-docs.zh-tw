@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 71b40fe903e5a837046b9b29f62ef4875e3139e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545912"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Beta 來自動布建使用者
@@ -109,7 +109,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler Beta 布建](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    選取 [ **啟用以 SCIM 為基礎的布建** ]，以抓取 **基底 URL** 和 **持有人權杖**，然後儲存設定。 將 **基底 url** 複製 **到租使用者 url**，並將持有人 **權杖**  複製到 Azure 入口網站中的 **秘密權杖** 。
+    選取 [ **啟用 SCIM-Based** 布建] 以取出 **基底 URL** 和 **持有人權杖**，然後儲存設定。 將 **基底 url** 複製 **到租使用者 url**，並將持有人 **權杖**  複製到 Azure 入口網站中的 **秘密權杖** 。
 
 7. 填入步驟5所示的欄位後，按一下 [ **測試連接** ] 以確保 Azure AD 可以連線到 Zscaler Beta。 如果連接失敗，請確定您的 Zscaler Beta 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -119,7 +119,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![Zscaler Beta 布建](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. 按一下 [檔案] 。
+9. 按一下 **[儲存]** 。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Zscaler Beta**]。
 

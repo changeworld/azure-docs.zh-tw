@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: sideeksh
 ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007786"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>啟用可用性區域之間的 Azure VM 嚴重損壞修復
@@ -123,7 +123,7 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 **5. 來源和目標資源群組可以相同嗎？**
 否，您必須容錯移轉至不同的資源群組。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 執行嚴重損壞修復、容錯移轉、重新保護和容錯回復所需遵循的步驟，與 Azure 到 Azure 嚴重損壞修復案例中的步驟相同。
 

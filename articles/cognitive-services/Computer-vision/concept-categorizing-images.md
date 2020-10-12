@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 477349f1addf71a30e8ecb179266d8eac5510887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80244745"
 ---
 # <a name="categorize-images-by-subject-matter"></a>依主題分類影像
@@ -24,7 +24,7 @@ ms.locfileid: "80244745"
 
 ## <a name="the-86-category-concept"></a>86 類別概念
 
-電腦視覺可以使用下圖中的86類別清單，大致或具體地分類影像。 如需文字格式的完整分類，請參閱[類別分類](category-taxonomy.md)。
+電腦視覺可以使用下圖中的86類別清單，廣泛或明確地將影像分類。 如需文字格式的完整分類，請參閱[類別分類](category-taxonomy.md)。
 
 ![類別分類法中所有類別的分組清單](./Images/analyze_categories-v2.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "80244745"
 
 下表所列的是一般的影像集和電腦視覺針對每個影像所傳回的類別。
 
-| Image | 類別 |
+| 映像 | 類別 |
 |-------|----------|
 | ![拍全家福的四個人](./Images/family_photo.png) | people_group |
 | ![坐在草地上的小狗](./Images/cute_dog.png) | animal_dog |
@@ -62,11 +62,11 @@ ms.locfileid: "80244745"
 
 ## <a name="use-the-api"></a>使用 API
 
-分類功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含`Categories`在**visualFeatures**查詢參數中。 然後，當您取得完整的 JSON 回應時，只要剖析`"categories"`區段內容的字串即可。
+分類功能是「 [分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API」的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含 `Categories` 在 **visualFeatures** 查詢參數中。 然後，當您取得完整 JSON 回應時，只要剖析該區段內容的字串即可 `"categories"` 。
 
 * [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [快速入門：分析影像（REST API）](./quickstarts/csharp-analyze.md)
+* [快速入門：分析影像 (REST API) ](./quickstarts/csharp-analyze.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解[標記影像](concept-tagging-images.md)和[描述影像](concept-describing-images.md)的相關概念。
+瞭解 [標記影像](concept-tagging-images.md) 和 [描述影像](concept-describing-images.md)的相關概念。

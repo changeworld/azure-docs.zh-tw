@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705481"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的身分識別安全分數？
@@ -110,7 +110,7 @@ ms.locfileid: "90705481"
 - 資料
 - 裝置
 - 基礎結構
-- 應用程式
+- [App]
 
 身分識別安全分數表示 Microsoft 安全分數的身分識別部分。 此重迭表示您對於身分識別安全分數和 Microsoft 中的身分識別分數的建議相同。
 

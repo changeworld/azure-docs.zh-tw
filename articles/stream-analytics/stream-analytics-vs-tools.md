@@ -1,6 +1,6 @@
 ---
 title: 在 Visual Studio 中檢視 Azure 串流分析工作
-description: 瞭解如何使用 Visual Studio 來觀看、啟動和停止、測試連線、檢查結果，以及匯出您的 Azure 串流分析作業。
+description: 瞭解如何使用 Visual Studio 來查看、啟動和停止、測試連線、檢查結果，以及匯出您的 Azure 串流分析作業。
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
 ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045547"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 檢視 Azure 串流分析工作
@@ -78,9 +78,9 @@ ms.locfileid: "86045547"
 
    ![測試連接結果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Visual Studio 監視和管理 Azure 串流分析工作](stream-analytics-monitor-jobs-use-vs.md)
 * [快速入門：使用 Visual Studio 建立串流分析工作](stream-analytics-quick-create-vs.md)
-* [教學課程：使用 Azure Pipelines 部署具有 CI/CD 的 Azure 串流分析作業](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [教學課程：使用 Azure Pipelines 來部署具有 CI/CD 的 Azure 串流分析作業](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [使用串流分析工具持續進行整合及開發](stream-analytics-tools-for-visual-studio-cicd.md)

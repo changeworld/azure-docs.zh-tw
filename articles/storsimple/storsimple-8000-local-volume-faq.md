@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511505"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本機固定磁碟區︰常見問題集 (FAQ)
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 以下是在建立 StorSimple 本機固定磁碟區、將階層式磁碟區轉換成本機固定磁碟區 (反之亦然)，或備份及還原本機固定磁碟區時，您可能會有的問題和解答。
 
 問題和解答可分為下列幾個類別：
@@ -178,7 +178,7 @@ ms.locfileid: "85511505"
 
 **問：**  是否可以複製本機固定磁碟區？
 
-**答：**  是，您可以這麼做。 不過，本機固定磁碟區預設會複製為階層式磁碟區。 有關如何[複製本機固定磁片區的](storsimple-8000-clone-volume-u2.md)詳細資訊
+**答：** 是，您可以。 不過，本機固定磁碟區預設會複製為階層式磁碟區。 有關如何[複製固定在本機的磁片](storsimple-8000-clone-volume-u2.md)區的詳細資訊
 
 ## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>有關容錯移轉本機固定磁碟區的問題
 **問：**  我需要將裝置容錯移轉到另一個實體裝置。 我的本機固定磁碟區將會容錯移轉為本機固定或階層式磁碟區？
@@ -201,5 +201,5 @@ ms.locfileid: "85511505"
 
 **問：**  是否可以將具有本機固定磁碟區的磁碟區容器容錯移轉到雲端應用裝置？
 
-**答：**  是，您可以這麼做。 本機固定磁碟區會容錯移轉為階層式磁碟區。 [跨越版本的本機固定磁碟區容錯移轉和 DR](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
+**答：** 是，您可以。 本機固定磁碟區會容錯移轉為階層式磁碟區。 [跨越版本的本機固定磁碟區容錯移轉和 DR](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
 

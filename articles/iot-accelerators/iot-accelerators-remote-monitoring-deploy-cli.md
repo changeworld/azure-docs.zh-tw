@@ -9,15 +9,15 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80258289"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署遠端監視解決方案加速器
 
-本操作指南會示範如何部署遠端監視解決方案加速器。 您將使用 CLI 來部署解決方案。 您也可以在 azureiotsolutions.com 上使用 web 型 UI 來部署解決方案，若要瞭解此選項，請參閱[部署遠端監視解決方案加速器](quickstart-remote-monitoring-deploy.md)快速入門。
+本操作指南會示範如何部署遠端監視解決方案加速器。 您將使用 CLI 來部署解決方案。 您也可以使用 azureiotsolutions.com 的 web 型 UI 來部署解決方案，若要瞭解此選項，請參閱 [部署遠端監視解決方案加速器](quickstart-remote-monitoring-deploy.md) 快速入門。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -62,7 +62,7 @@ pcs login
 
 ### <a name="basic"></a>基本
 
-您可以從[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)或使用 CLI 進行基本部署。
+您可以從 [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) 或使用 CLI 來進行基本部署。
 
 基本部署是專門設計來展示解決方案。 為了降低成本，所有微服務都會部署在單一虛擬機器中。 此部署不會使用已準備好用於生產環境的架構。
 
@@ -83,7 +83,7 @@ pcs login
 
 ### <a name="standard"></a>標準
 
-您只能使用 CLI 執行標準部署。
+您只能使用 CLI 來進行標準部署。
 
 標準部署是已準備好用於生產環境的部署，開發人員可以自訂和擴充。 當您準備自訂已準備好用於生產環境的架構 (基於規模調整與擴充性而建置) 時，請使用標準部署選項。 應用程式微服務是建置為 Docker 容器並使用 Azure Kubernetes Service 部署。 Kubernetes 協調器可部署、調整規模及管理微服務。
 
@@ -103,7 +103,7 @@ pcs login
 | 1     | [Azure 時間序列深入解析](https://azure.microsoft.com/services/time-series-insights/)        |   S1 - 1 個單位              | 適用於訊息資料的儲存體，並能提供深入遙測分析 |
 
 > [!NOTE]
-> 您可以在找到這些服務的定價資訊 [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) 。 您可以在 [Azure 入口網站](https://portal.azure.com/)中找到訂用帳戶的使用量與計費詳細資料。
+> 您可以在中找到這些服務的價格資訊 [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) 。 您可以在 [Azure 入口網站](https://portal.azure.com/)中找到訂用帳戶的使用量與計費詳細資料。
 
 ## <a name="deploy-the-solution-accelerator"></a>部署解決方案加速器
 

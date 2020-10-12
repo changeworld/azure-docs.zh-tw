@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331194"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>規劃 Azure Active Directory 報告和監視部署
@@ -99,7 +99,7 @@ Azure AD 報告提供您環境中 Azure AD 活動的完整觀點和記錄，包�
 * 滿足商務需求的理想
 * 不適用
 
-|區域 |說明 |
+|區域 |描述 |
 |-|-|
 |保留| 超過**30 天的記錄保留期**。 由於法律或業務需求，需要儲存 Azure AD 超過30天的審核記錄和登入記錄。 |
 |分析| **記錄檔必須是可搜尋的**。 儲存的記錄必須可流量分析工具來搜尋。 |

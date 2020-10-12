@@ -10,10 +10,10 @@ ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 3b18bba04d313091cb579498febb3f383f018bff
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88604646"
 ---
 您也可以選擇性地選取最多兩個產業，以及在每個產業底下選取最多兩個縱向市場。 當產業和縱向用於搜尋篩選，並套用於線上商店時，這些類別會用來顯示您的供應專案。 如果您的供應專案是以特定產業和/或垂直為目標，請說明您的供應專案如何支援供應專案描述中所選的產業或縱向。 否則，如果您的供應專案不是產業專屬的，請不要選取並將此區段保留空白。

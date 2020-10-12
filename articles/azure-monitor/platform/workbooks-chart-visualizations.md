@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 139c8cdb1a227595d728d2acc0b09cf1eb210715
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90006375"
 ---
 # <a name="chart-visualizations"></a>圖表視覺效果
@@ -225,7 +225,7 @@ requests
 
 ![數列設定的螢幕擷取畫面。](./media/workbooks-chart-visualizations/series-settings.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [在活頁簿中建立磚](workbooks-tile-visualizations.md)。
 - 瞭解如何建立 [互動式活頁簿](workbooks-interactive.md)。

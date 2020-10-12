@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543804"
 ---
 # <a name="the-azure-production-network"></a>Azure 生產網路
@@ -64,7 +64,7 @@ Azure 會在生產網路內實作以主機為基礎的軟體防火牆。 核心 
 
 **原生主機防火牆**：Azure 服務網狀架構和 Azure 儲存體會在沒有 Hypervisor 的原生 OS 上執行，因此系統會使用上述兩組規則來設定 Windows 防火牆。
 
-**主機防火牆**：主機防火牆會保護執行虛擬機器的主機磁碟分割。 規則設計成僅允許 FC，並以跳躍方式在特定連接埠上與主機分割區通訊。 其他例外狀況則會允許 DHCP 回應與 DNS 回覆。 Azure 會使用機器設定檔，該檔案具有主機分割區的防火牆規則範本。 同時也存在主機防火牆例外狀況，能允許 VM 透過特定通訊協定/連接埠來與主機元件、線路伺服器和中繼資料伺服器通訊。
+**主機防火牆**：主機防火牆會保護執行程式管理的主機磁碟分割。 規則設計成僅允許 FC，並以跳躍方式在特定連接埠上與主機分割區通訊。 其他例外狀況則會允許 DHCP 回應與 DNS 回覆。 Azure 會使用機器設定檔，該檔案具有主機分割區的防火牆規則範本。 同時也存在主機防火牆例外狀況，能允許 VM 透過特定通訊協定/連接埠來與主機元件、線路伺服器和中繼資料伺服器通訊。
 
 **客體防火牆**：客體 OS 的 Windows 防火牆片段，可由客戶在客戶 VM 和儲存體上進行設定。
 

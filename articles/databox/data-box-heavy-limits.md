@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84705554"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy 限制
@@ -26,8 +26,8 @@ ms.locfileid: "84705554"
 
 ## <a name="data-box-heavy-limits"></a>Data Box Heavy 限制
 
-- Data Box Heavy 可以儲存每個節點最多1000000000個檔案。
-- Data Box Heavy 在雲端中支援的每個節點最多512個容器或共用。 使用者共用中的最上層目錄會成為雲端中的容器或 Azure 檔案共用。
+- Data Box Heavy 最多可為每個節點儲存1000000000個檔案。
+- Data Box Heavy 最多可支援雲端中的512個容器或各節點的共用。 使用者共用內的最上層目錄會成為雲端中的容器或 Azure 檔案共用。
 
 ## <a name="azure-storage-limits"></a>Azure 儲存體限制
 

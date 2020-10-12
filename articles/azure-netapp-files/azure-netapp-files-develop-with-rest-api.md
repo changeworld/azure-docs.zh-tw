@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 開發 Azure NetApp 檔案 | Microsoft Docs
-description: Azure NetApp Files 服務的 REST API 定義了資源的 HTTP 作業，例如 NetApp 帳戶、容量集區、磁片區和快照。
+description: Azure NetApp Files 服務的 REST API 會定義資源的 HTTP 作業，例如 NetApp 帳戶、容量集區、磁片區和快照集。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513004"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 為 Azure NetApp Files 進行開發 
@@ -27,7 +27,7 @@ Azure NetApp Files 服務的 REST API，會根據 NetApp 帳戶、容量集區�
 
 ## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp Files REST API 規格
 
-Azure NetApp Files 的 REST API 規格會透過[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)發行：
+Azure NetApp Files 的 REST API 規格會透過 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)發佈：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
@@ -115,7 +115,7 @@ curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: applicati
 
 ### <a name="put-request-examples"></a>PUT 要求範例
 
-您可以使用 PUT 要求在 Azure NetApp Files 中建立新的物件，如下列範例所示。 PUT 要求的主體可以包含變更的 JSON 格式化資料。 它必須以文字或參考的形式包含在捲曲命令中作為檔案。 若要將本文當做檔案來參考，請將 json 範例儲存至檔案，並將新增 `-d @<filename>` 至捲曲命令。
+您可以使用 PUT 要求在 Azure NetApp Files 中建立新的物件，如下列範例所示。 PUT 要求的主體可以包含變更的 JSON 格式資料。 它必須以文字或參考的形式包含在捲曲命令中，以做為檔案。 若要將主體參考為檔案，請將 json 範例儲存至檔案，並新增 `-d @<filename>` 至捲曲命令。
 
 ```azurecli
 #create a NetApp account  
@@ -167,7 +167,7 @@ curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-
 }
 ```
 
-下列範例顯示如何建立新的磁片區。 （磁片區的預設通訊協定是 NFSV3）。 
+下列範例顯示如何建立新的磁片區。  (磁片區的預設通訊協定為 NFSV3。 )  
 
 ```json
 {
@@ -201,6 +201,6 @@ curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-
 > [!NOTE] 
 > 您必須指定 `fileSystemId` 才能建立快照集。  您可以透過對磁碟區的 GET 要求取得 `fileSystemId` 值。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [請參閱 Azure NetApp Files REST API 參考](https://docs.microsoft.com/rest/api/netapp/)

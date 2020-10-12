@@ -4,10 +4,10 @@ description: 了解如何在您的 Azure 容器登錄中啟用保留原則，以
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83683450"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>針對未標記的資訊清單設定保留原則

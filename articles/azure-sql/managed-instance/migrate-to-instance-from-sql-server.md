@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
 ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887649"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server 實例遷移至 Azure SQL 受控執行個體
@@ -139,7 +139,7 @@ SQL 受控執行個體支援下列資料庫移轉選項 (目前這些是唯一�
 
 > [!IMPORTANT]
 >
-> - 當您使用原生還原選項將受 [透明資料加密](../database/transparent-data-encryption-tde-overview.md) 保護的資料庫移轉到受控實例時，來自內部部署或 Azure VM SQL Server 的對應憑證必須在資料庫還原之前進行遷移。 如需詳細步驟，請參閱將 [TDE Cert 遷移至受控實例](tde-certificate-migrate.md)。
+> - 當您使用原生還原選項將受 [透明資料加密](../database/transparent-data-encryption-tde-overview.md) 保護的資料庫移轉到受控實例時，來自內部部署或 Azure VM SQL Server 的對應憑證必須在資料庫還原之前進行遷移。 如需詳細步驟，請參閱[將 TDE 憑證移轉至受控執行個體](tde-certificate-migrate.md)。
 > - 不支援系統資料庫還原。 若要遷移 (儲存在 master 或 msdb 資料庫) 中的實例層級物件，建議您將它們編寫腳本，並在目的地實例上執行 T-sql 腳本。
 
 如需顯示如何使用 SAS 認證將資料庫備份還原至受控實例的快速入門，請參閱 [從備份還原至受控實例](restore-sample-database-quickstart.md)。
@@ -202,7 +202,7 @@ SQL 受控執行個體提供許多用於監視和疑難排解的 advanced tools�
 
 除了先進的管理和安全性功能之外，受控實例還提供一組可協助您 [監視和調整工作負載](../database/monitor-tune-overview.md)的 advanced tools。 [Azure SQL 分析](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) 可讓您監視大量的受控實例，並集中監視大量的實例和資料庫。 受控實例中的[自動調整](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)會持續監視 SQL 計畫執行統計資料的效能，並自動修正已識別的效能問題。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 Azure SQL 受控執行個體的詳細資訊，請參閱 [什麼是 AZURE sql 受控執行個體？](sql-managed-instance-paas-overview.md)。
 - 如需包含從備份進行還原的教學課程，請參閱 [建立受控實例](instance-create-quickstart.md)。

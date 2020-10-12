@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888126"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>使用保留原則管理歷程記錄資料
@@ -70,7 +70,7 @@ select @rowcnt
 
 下列六個擴充的事件有助於追蹤清除作業的狀態。 
 
-| Name | 描述 |
+| 名稱 | 描述 |
 |------| ------------|
 | data_retention_task_started  | 當具有保留原則的資料表的清除背景工作開始時發生。 |
 | data_retention_task_completed  | 在具有保留原則的資料表的清除背景工作結束時，即會發生。 |

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513600"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用及刪除 StorSimple Virtual Array
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 當您停用 StorSimple Virtual Array 時，您會切斷裝置與相對應 StorSimple 裝置管理員服務之間的連接。 本教學課程說明如何：
 
@@ -86,7 +86,7 @@ ms.locfileid: "85513600"
    
     刪除裝置後，您可以檢視更新的裝置清單。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需如何容錯移轉的相關資訊，請參閱 [StorSimple Virtual Array 的容錯移轉和災害復原](storsimple-virtual-array-failover-dr.md)。
 

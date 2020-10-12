@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007633"
 ---
 # <a name="moving-azure-resources-across-regions"></a>跨區域移動 Azure 資源
@@ -22,23 +22,23 @@ Azure 地理位置、區域和可用性區域形成 Azure 全球基礎結構的�
 在特定 Azure 區域中部署資源之後，有幾個原因可能會讓您將資源移至不同的區域。
 
 - **對應至區域啟動**：將您的資源移至先前未提供的新推出 Azure 區域。
-- **服務/功能的對齊**：移動資源以利用特定區域中可用的服務或功能。
-- **回應商務開發**：將資源移至區域以回應業務變更，例如合併或收購。
-- **對齊鄰近**性：將資源移至您公司的本機區域。
+- **對齊服務/功能**：移動資源以利用特定區域中可用的服務或功能。
+- **回應商業發展**：將資源移至某個區域以回應商業變化，例如合併或收購。
+- **對齊鄰近性**：將資源移至您公司所在的區域。
 - **符合資料需求**：移動資源以便與資料落地需求或資料分類需求一致。 [深入了解](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf)。
-- **回應部署需求**：移動發生錯誤的資源，或移動以回應容量需求。 
+- **回應部署需求**：移動部署錯誤的資源，或進行移動以回應容量需求。 
 - **回應解除**委任：由於區域解除委任而移動資源。
 
 ## <a name="move-resources-with-resource-mover"></a>使用資源移動器移動資源
 
-您可以使用 [Azure 資源移動器](../../resource-mover/overview.md)將資源移至不同的區域。 資源移動器提供：
+您可以使用 [Azure 資源移動器](../../resource-mover/overview.md)將資源移至不同的區域。 Resource Mover 提供：
 
-- 跨區域移動資源的單一中樞。
-- 縮短移動時間和複雜度。 您需要的所有專案都在單一位置。
-- 移動不同 Azure 資源類型的簡單且一致體驗。
-- 識別您想要移動之資源之間相依性的簡單方式。 這可協助您將相關的資源一起移動，如此一來，在移動之後，所有專案都能如預期般在目的地區域中運作。
-- 如果您想要在移動之後將其刪除，請自動清除來源區域中的資源。
-- 測試。 您可以嘗試移動，如果您不想要進行完整移動，請將它捨棄。
+- 用於在區域之間移動資源的單一中樞。
+- 減少移動時間和複雜度。 您需要的所有項目都在單一位置。
+- 移動不同類型 Azure 資源的簡單且一致體驗。
+- 一個簡單的方法，可識別您想要移動的資源之間的相依性。 這可協助您將相關的資源一起移動，以便在移動之後，所有項目在目標區域中都能如預期般運作。
+- 自動清除來源區域中的資源 (如果您想要在移動之後將其刪除)。
+- 測試： 如果您不想要進行完整移動，您可以嘗試移動，然後將其捨棄。
 
 您可以使用幾種不同的方法，將資源移至另一個區域：
 
@@ -50,12 +50,12 @@ Azure 地理位置、區域和可用性區域形成 Azure 全球基礎結構的�
 
 您目前可以使用資源移動器將這些資源移至另一個區域：
 
-- Azure Vm 和相關聯的磁片
+- Azure VM 和相關聯的磁碟
 - NIC
 - 可用性設定組
 - Azure 虛擬網路
 - 公用 IP 位址
-- 網路安全性群組 (NSG)
+- 網路安全性群組 (NSG)。
 - 內部和公用負載平衡器
 - Azure SQL 資料庫和彈性集區
 
@@ -73,6 +73,6 @@ Azure 地理位置、區域和可用性區域形成 Azure 全球基礎結構的�
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解](../../resource-mover/about-move-process.md) 資源移動器中的移動程式。

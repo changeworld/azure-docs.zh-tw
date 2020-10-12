@@ -1,5 +1,5 @@
 ---
-title: Apache Spark 效能-Azure HDInsight IO 快取（預覽）
+title: 'Apache Spark 效能-Azure HDInsight IO 快取 (預覽) '
 description: 了解 Azure HDInsight IO 快取以及如何使用它來改進 Apache Spark 效能。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
 ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081752"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 快取來改善 Apache Spark 工作負載的效能
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 快取改善 Apache Spark 工作負載的效能
 
 IO 快取是適用於 Azure HDInsight 的資料快取服務，可改進 Apache Spark 作業效能。 IO 快取也可搭配 [Apache TEZ](https://tez.apache.org/) 與 [Apache Hive](https://hive.apache.org/) 工作負載使用，這些工作負載可在 [Apache Spark](https://spark.apache.org/) 叢集上執行。 IO 快取使用稱為 RubiX 的開放原始碼快取元件。 RubiX 是可搭配巨量資料分析引擎使用的本機磁碟快取，這些引擎通常會從雲端儲存體系統存取資料。 RubiX 在快取系統中是獨一無二的，因為它針對快取用途使用固態硬碟 (SSDs) 而非保留作業記憶體。 IO 快取服務會在叢集的每個背景工作角色上啟動並管理 RubiX 中繼資料伺服器。 它也會設定叢集的所有服務，在背景使用 RubiX 快取。
 
@@ -22,7 +22,7 @@ IO 快取是適用於 Azure HDInsight 的資料快取服務，可改進 Apache S
 
 > [!Note]  
 > IO 快取目前使用 RubiX 做為快取元件，但在未來的服務版本中可能會變更。 請使用 IO 快取介面，而不要直接相依於任何 RubiX 實作。
->目前只有 Azure BLOB 儲存體支援 IO 快取。
+>目前僅支援 Azure BLOB 儲存體使用 IO 快取。
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO 快取的優點
 
@@ -32,13 +32,13 @@ IO 快取是適用於 Azure HDInsight 的資料快取服務，可改進 Apache S
 
 ## <a name="getting-started"></a>開始使用
 
-Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure HDInsight 3.6+ Spark 叢集中使用 IO 快取，這些叢集執行 Apache Spark 2.3。  若要在 HDInsight 4.0 上啟用 IO 快取，請執行下列步驟：
+Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure HDInsight 3.6+ Spark 叢集中使用 IO 快取，這些叢集執行 Apache Spark 2.3。  若要在 HDInsight 4.0 上啟動 IO 快取，請執行下列步驟：
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
 1. 選取左邊的 [IO 快取]****。
 
-1. 選取 [**動作**] （HDI 3.6 中的**服務動作**）和 [**啟動**]。
+1. 選取 [ **動作** ] (HDI 3.6 中的 **服務動作**) 和 [ **啟用**]。
 
     ![在 Ambari 中啟用 IO 快取服務](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "在 Ambari 中啟用 IO 快取服務")
 
@@ -67,13 +67,13 @@ Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure
 
 1. 選取右上角的 [儲存]****。
 
-1. 選取 [**重新**啟動  >  **所有受影響**的]。
+1. 選取 [**重新**啟動  >  **所有受影響**的重新開機]。
 
     ![Apache Ambari 會重新開機所有受影響的](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新開機所有受影響的")
 
-1. 選取 [**確認全部重新開機**]。
+1. 選取 [ **確認全部重新開機**]。
 
-如果沒有作用，請停用 IO 快取。
+如果無法運作，請停用 IO 快取。
 
 ## <a name="next-steps"></a>後續步驟
 
