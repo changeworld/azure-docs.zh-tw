@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404711"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945782"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory 中的 ORC 格式
 
@@ -59,7 +59,7 @@ ms.locfileid: "91404711"
 
 請注意下列幾點：
 
-* 不支援複雜資料類型 (STRUCT、MAP、LIST、UNION)。
+* 複雜的資料類型 (例如，MAP、LIST、STRUCT) 目前僅支援資料流程，而不是複製活動中。 若要在資料流程中使用複雜類型，請勿在資料集中匯入檔案架構，將架構留白。 然後，在來源轉換中匯入投射。
 * 不支援資料行名稱中的空白字元。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
@@ -105,9 +105,9 @@ ms.locfileid: "91404711"
 
 使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| [格式] | 格式必須是 `orc` | 是 | `orc` | format |
+| 格式 | 格式必須是 `orc` | 是 | `orc` | format |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
 | 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | 字串 | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
@@ -133,9 +133,9 @@ source(allowSchemaDrift: true,
 
 使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| [格式] | 格式必須是 `orc` | 是 | `orc` | format |
+| 格式 | 格式必須是 `orc` | 是 | `orc` | format |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | [檔案名] 選項 | 寫入之資料的命名格式。 依預設，每個資料分割的一個檔案格式為 `part-#####-tid-<guid>` | 否 | 模式：字串 <br> 每個分割區：字串 [] <br> 做為資料行中的資料：字串 <br> 輸出至單一檔案： `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 

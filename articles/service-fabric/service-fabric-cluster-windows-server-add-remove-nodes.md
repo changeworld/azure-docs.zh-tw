@@ -4,10 +4,10 @@ description: 了解如何在執行 Windows Server 的實體或虛擬電腦上 (�
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842915"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>在執行於 Windows Server 上的獨立 Service Fabric 叢集中新增或移除節點

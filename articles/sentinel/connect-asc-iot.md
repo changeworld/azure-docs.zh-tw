@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/07/2020
 ms.author: yelevin
 ms.openlocfilehash: 822d0c742bbd54b5bab0c69e82652743584a0696
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659607"
 ---
 # <a name="connect-your-data-from-azure-defender-formerly-azure-security-center-for-iot-to-azure-sentinel"></a>將您的資料從 Azure Defender (先前 Azure 資訊安全中心適用于 IoT 的) 連線至 Azure Sentinel 
@@ -63,7 +63,7 @@ SecurityAlert | where ProductName == "Azure Defender for IoT"
 連線 IoT 中樞之後，中樞資料會在大約15分鐘後 Azure Sentinel 提供。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本檔中，您已瞭解如何將適用于 IoT 的 Azure Defender 資料連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。

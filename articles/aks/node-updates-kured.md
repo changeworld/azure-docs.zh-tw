@@ -1,27 +1,27 @@
 ---
 title: 使用 kured 處理 Linux 節點重新開機
 titleSuffix: Azure Kubernetes Service
-description: '瞭解如何使用 Azure Kubernetes Service (AKS 中的 kured 來更新 Linux 節點並自動重新開機它們) '
+description: '瞭解如何更新 Linux 節點，並使用 Azure Kubernetes Service (AKS 中的 kured 自動將它們重新開機) '
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88164235"
 ---
-# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>將安全性和核心更新套用至 Azure Kubernetes Service (AKS 中的 Linux 節點) 
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>將安全性和核心更新套用至 Azure Kubernetes Service (AKS) 中的 Linux 節點
 
-為了保護您的叢集，安全性更新會自動套用至 AKS 中的 Linux 節點。 這些更新包括 OS 安全性修正或核心更新。 這其中有一些更新需要重新啟動節點，才能完成此程序。 AKS 不會自動重新開機這些 Linux 節點來完成更新程式。
+為了保護您的叢集，系統會自動將安全性更新套用至 AKS 中的 Linux 節點。 這些更新包括 OS 安全性修正或核心更新。 這其中有一些更新需要重新啟動節點，才能完成此程序。 AKS 不會自動重新開機這些 Linux 節點來完成更新程式。
 
-讓 Windows Server 節點保持在最新狀態的程式稍有不同。 Windows Server 節點不會收到每日更新。 相反地，您會執行 AKS 升級，以使用最新的基底視窗伺服器映射和修補程式來部署新的節點。 如需使用 Windows Server 節點的 AKS 叢集，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+讓 Windows Server 節點保持在最新狀態的程式稍有不同。 Windows Server 節點不會收到每日更新。 相反地，您會執行 AKS 升級，以使用最新的基底視窗伺服器映射和修補程式來部署新的節點。 針對使用 Windows Server 節點的 AKS 叢集，請參閱 [在 AKS 中升級節點集][nodepool-upgrade]區。
 
-本文說明如何使用開放原始碼[kured (KUbernetes 重新開機][kured]背景程式) 來監看需要重新開機的 Linux 節點，然後自動處理執行中 pod 和節點重新開機程式的重新排定。
+本文說明如何使用開放原始碼 [kured (KUbernetes 重新開機 ][kured] 背景程式) 監看需要重新開機的 Linux 節點，然後自動處理執行中 pod 和節點重新開機程式的重新排定。
 
 > [!NOTE]
-> `Kured` 是由 Weaveworks 所提供的開放原始碼專案。 我們會盡力在 AKS 中提供對此專案的支援。 您可以在 #weave 社區的「時差」頻道中找到其他支援。
+> `Kured` 是由 Weaveworks 所提供的開放原始碼專案。 我們會盡力在 AKS 中提供對此專案的支援。 您可以在 #weave-社區時差頻道中找到其他支援。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -37,7 +37,7 @@ ms.locfileid: "88164235"
 
 某些安全性更新 (例如核心更新) 需要重新啟動節點，才能完成此程序。 需要重新開機的 Linux 節點會建立名為 */var/run/reboot-required*的檔案。 此重新啟動程序不會自動執行。
 
-您可以使用自己的工作流程和程序來處理節點重新啟動，或使用 `kured` 來協調此程序。 在中 `kured` ，會部署[DaemonSet][DaemonSet] ，在叢集中的每個 Linux 節點上執行 pod。 DaemonSet 中的這些 pod 會監看是否有 */var/run/reboot-required*檔案，然後起始重新開機節點的程式。
+您可以使用自己的工作流程和程序來處理節點重新啟動，或使用 `kured` 來協調此程序。 在 `kured` 中，會部署 [DaemonSet][DaemonSet] ，以在叢集中的每個 Linux 節點上執行 pod。 DaemonSet 中的這些 pod 會監看是否存在 */var/run/reboot-required* 檔案，然後起始程式來重新開機節點。
 
 ### <a name="node-upgrades"></a>節點升級
 
@@ -52,7 +52,7 @@ AKS 中有一個額外的程序可讓您的「升級」** 叢集。 升級通常
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>在 AKS 叢集中部署 Kured
 
-若要部署 `kured` DaemonSet，請安裝下列官方 Kured Helm 圖表。 這會建立角色和叢集角色、系結和服務帳戶，然後使用來部署 DaemonSet `kured` 。
+若要部署 `kured` DaemonSet，請安裝下列官方 Kured Helm 圖表。 這會建立角色和叢集角色、系結和服務帳戶，然後使用部署 DaemonSet `kured` 。
 
 ```console
 # Add the Kured Helm repository
@@ -68,11 +68,11 @@ kubectl create namespace kured
 helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-您也可以設定適用於 `kured` 的其他參數，例如，與 Prometheus 或 Slack 整合。 如需其他設定參數的詳細資訊，請參閱[Kured Helm 圖表][kured-install]。
+您也可以設定適用於 `kured` 的其他參數，例如，與 Prometheus 或 Slack 整合。 如需其他設定參數的詳細資訊，請參閱 [Kured Helm 圖表][kured-install]。
 
 ## <a name="update-cluster-nodes"></a>更新叢集節點
 
-根據預設，AKS 中的 Linux 節點會每天晚上檢查更新。 如果您不想等待，則可手動執行更新以檢查 `kured` 能夠正確執行。 首先，遵循步驟以 [SSH 到您的其中一個 AKS 節點][aks-ssh]。 一旦您具備 Linux 節點的 SSH 連線，請檢查更新並套用它們，如下所示：
+根據預設，AKS 中的 Linux 節點會每晚上檢查是否有更新。 如果您不想等待，則可手動執行更新以檢查 `kured` 能夠正確執行。 首先，遵循步驟以 [SSH 到您的其中一個 AKS 節點][aks-ssh]。 一旦您有 Linux 節點的 SSH 連線，請檢查是否有更新，並將其套用如下：
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -91,7 +91,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-當更新程序完成之後，您就可以使用 [kubectl get nodes][kubectl-get-nodes] 命令搭配 `--output wide` 參數來檢視節點狀態。 這個額外的輸出可讓您查看 *KERNEL-VERSION* 基礎節點中的差異，如下列範例輸出所示。 *Aks-nodepool1-28993262-0*已在上一個步驟中更新，並顯示 [核心版本*4.15.0-1039-azure*]。 尚未更新的節點*aks-nodepool1*會顯示 [核心版本*4.15.0-1037-azure*]。
+當更新程序完成之後，您就可以使用 [kubectl get nodes][kubectl-get-nodes] 命令搭配 `--output wide` 參數來檢視節點狀態。 這個額外的輸出可讓您查看 *KERNEL-VERSION* 基礎節點中的差異，如下列範例輸出所示。 *Aks-nodepool1-28993262-0*已在上一個步驟中更新，並顯示核心版本*4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 節點會顯示核心版本 *4.15.0-1037-azure*。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -101,9 +101,9 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>後續步驟
 
-本文詳細說明如何使用 `kured` 在安全性更新程式中自動重新開機 Linux 節點。 若要升級至最新版的 Kubernetes，您可以[升級 AKS 叢集][aks-upgrade]。
+本文詳細說明如何使用 `kured` ，在安全性更新程式中自動重新開機 Linux 節點。 若要升級至最新版的 Kubernetes，您可以[升級 AKS 叢集][aks-upgrade]。
 
-如需使用 Windows Server 節點的 AKS 叢集，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+針對使用 Windows Server 節點的 AKS 叢集，請參閱 [在 AKS 中升級節點集][nodepool-upgrade]區。
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured

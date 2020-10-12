@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
 ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326451"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>適用于 Azure 事件方格資源的網路安全性
@@ -33,7 +33,7 @@ ms.locfileid: "91326451"
 ## <a name="ip-firewall"></a>IP 防火牆 
 Azure Event Grid 支援以 IP 為基礎的存取控制，以發佈至主題和網域。 使用以 IP 為基礎的控制項時，您可以將一組核准的電腦和雲端服務的發行者限制為僅限一個主題或網域。 這項功能可以補充事件方格所支援的 [驗證機制](security-authentication.md) 。
 
-根據預設，只要要求提供有效的驗證與授權，就可以從網際網路存取主題和網域。 使用 IP 防火牆，您可以將它進一步限制為 CIDR 中的一組 IP 位址或 IP 位址範圍 [ (無類別網域間路由) ](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法。 源自其他任何 IP 位址的發行者將會遭到拒絕，且會收到 403 (禁止的) 回應。
+根據預設，只要要求提供有效的驗證與授權，就可以從網際網路存取主題和網域。 使用 IP 防火牆，您可以將它進一步限制為 [CIDR (無類別 Inter-Domain 路由) ](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法中的一組 ip 位址或 ip 位址範圍。 源自其他任何 IP 位址的發行者將會遭到拒絕，且會收到 403 (禁止的) 回應。
 
 如需為主題和網域設定 IP 防火牆的逐步指示，請參閱 [設定 ip 防火牆](configure-firewall.md)。
 

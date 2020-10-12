@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
 ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89596105"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
@@ -36,7 +36,7 @@ ms.locfileid: "89596105"
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>透過 Azure PowerShell 建立自我裝載 IR
 
-1. 您可以使用此工作的 Azure PowerShell。 請看以下範例：
+1. 您可以使用此工作的 Azure PowerShell。 範例如下：
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -66,7 +66,7 @@ ms.locfileid: "89596105"
 
 1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [ **繼續**]。 
 
-1. 在下列頁面上，選取 [ **自我** 裝載] 以建立自我裝載 IR，然後選取 [ **繼續**]。
+1. 在下列頁面上，選取 [ **自我** 裝載] 以建立 Self-Hosted IR，然後選取 [ **繼續**]。
    ![建立 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. 輸入 IR 的名稱，然後選取 [ **建立**]。
@@ -118,7 +118,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | 產生目前節點的備份檔案。 備份檔案包含節點金鑰和資料存放區認證。 | 否       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | 從備份檔案還原節點。                          | 否       |
 | **重新啟動**                                                     | 重新開機自我裝載 integration runtime 主機服務。   | 否       |
-| **啟動**                                                       | 啟動自我裝載 integration runtime 主機服務。     | 否       |
+| **開始**                                                       | 啟動自我裝載 integration runtime 主機服務。     | 否       |
 | **停止**                                                        | 停止自我裝載 integration runtime 主機服務。        | 否       |
 | **StartUpgradeService**                                         | 啟動自我裝載整合執行時間升級服務。       | 否       |
 | **StopUpgradeService**                                          | 停止自我裝載整合執行時間升級服務。        | 否       |
@@ -157,7 +157,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 - 支援的 Windows 版本為：
   + Windows 7 Service Pack 1
-  + Windows 8。1
+  + Windows 8.1
   + Windows 10
   + Windows Server 2008 R2 SP1
   + Windows Server 2012
@@ -363,7 +363,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 開啟 [Microsoft Integration Runtime 管理員]****。
 1. 選取 [Settings] \(設定\) 索引標籤。
 1. 在 [ **Http proxy**] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
-1. 選取 [下一步] 。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
+1. 選取 [下一步]  。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
 
@@ -440,6 +440,6 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 如果您選擇不開啟自我裝載整合執行時間電腦上的埠8060，請使用 [設定認證] 應用程式以外的機制來設定資料存放區認證。 例如，您可以使用 **AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell Cmdlet。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需逐步指示，請參閱教學課程 [：將內部部署資料複製到雲端](tutorial-hybrid-copy-powershell.md)。

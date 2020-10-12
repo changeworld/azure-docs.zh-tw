@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595898"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>建立應用程式閘道及重寫 HTTP 標題
@@ -171,6 +171,6 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立包含 URL 路徑型路由規則的應用程式閘道](./tutorial-url-route-powershell.md)

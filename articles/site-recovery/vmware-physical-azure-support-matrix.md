@@ -4,10 +4,10 @@ description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺�
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.openlocfilehash: 81cab05b9ad8d6d2bb7f37bc743b5237a4dd6d68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323612"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
@@ -29,7 +29,7 @@ VMware Vm 的嚴重損壞修復 | 將內部部署 VMware 虛擬機器複寫至 A
 
 ## <a name="on-premises-virtualization-servers"></a>內部部署虛擬化伺服器
 
-**Server** | **需求** | **詳細資料**
+**Server** | **Requirements** | **詳細資料**
 --- | --- | ---
 vCenter Server | 版本 7.0 & 此版本的後續更新、6.7、6.5、6.0 或5。5 | 我們建議您在嚴重損壞修復部署中使用 vCenter 伺服器。
 vSphere 主機 | 版本 7.0 & 此版本的後續更新、6.7、6.5、6.0 或5。5 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，處理序伺服器會在設定伺服器上執行。 [深入了解](vmware-physical-azure-config-process-server-overview.md)。
@@ -41,7 +41,7 @@ vSphere 主機 | 版本 7.0 & 此版本的後續更新、6.7、6.5、6.0 或5。
 - 針對 VMware Vm，您可以藉由下載 OVF 範本來建立 VMware VM，以設定設定伺服器。
 - 對於實體伺服器，您可以手動設定設定伺服器電腦。
 
-**元件** | **需求**
+**元件** | **Requirements**
 --- |---
 CPU 核心 | 8
 RAM | 16 GB
@@ -178,16 +178,16 @@ XFSv5 | XFS 檔案系統上的 XFSv5 功能（例如中繼資料總和檢查碼�
 **元件** | **支援**
 --- | ---
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
-主機網路 VLAN | 可以。
-主機網路 IPv4 | 可以。
+主機網路 VLAN | 是。
+主機網路 IPv4 | 是。
 主機網路 IPv6 | 否。
 客體/伺服器網路 NIC 小組 | 否。
-客體/伺服器網路 IPv4 | 可以。
+客體/伺服器網路 IPv4 | 是。
 客體/伺服器網路 IPv6 | 否。
-客體/伺服器網路靜態 IP (Windows) | 可以。
-客體/伺服器網路靜態 IP (Linux) | 可以。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
-客體/伺服器網路多重 NIC | 可以。
-Site Recovery 服務的 Private link 存取權 | 可以。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
+客體/伺服器網路靜態 IP (Windows) | 是。
+客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
+客體/伺服器網路多重 NIC | 是。
+Site Recovery 服務的 Private link 存取權 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 網路 (容錯移轉後)
@@ -259,7 +259,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 進階儲存體 | 是
 安全傳輸選項 | 是
 匯入/匯出服務 | 否
-適用于 Vnet 的 Azure 儲存體防火牆 | 可以。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
+適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
 一般用途 v2 儲存體帳戶 (經常性存取層和非經常性存取層)  | 是，V2 相較于 V1) ， (的交易成本明顯較高
 
 ## <a name="azure-compute"></a>Azure 計算
@@ -275,7 +275,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 
 複寫到 Azure 的內部部署 Vm 必須符合下表中摘要說明的 Azure VM 需求。 當 Site Recovery 執行複寫的必要條件檢查時，如果不符合某些需求，檢查將會失敗。
 
-**元件** | **需求** | **詳細資料**
+**元件** | **Requirements** | **詳細資料**
 --- | --- | ---
 客體作業系統 | 驗證複寫的機器[所支援的作業系統](#replicated-machines)。 | 若不支援，則檢查會失敗。
 客體作業系統架構 | 64 位元。 | 若不支援，則檢查會失敗。

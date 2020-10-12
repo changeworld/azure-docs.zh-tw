@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288336"
 ---
 # <a name="query-folders-and-multiple-files"></a>查詢資料夾和多個檔案  
@@ -22,9 +22,9 @@ ms.locfileid: "91288336"
 
 SQL 隨選支援使用萬用字元（類似于 Windows OS 中使用的萬用字元）來讀取多個檔案/資料夾。 不過，因為允許多個萬用字元，所以會有更大的彈性。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-您的第一個步驟是建立要執行查詢的 **資料庫** 。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+您的第一個步驟是**建立資料庫**，您將在其中執行查詢。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
 您將使用資料夾 *csv/計程車* 來遵循範例查詢。 它包含從2016年7月到6月2018的 NYC 計程車-黃色計程車行程記錄資料。 *Csv/計程車*中的檔案會使用下列模式，以年和月命名： yellow_tripdata_ <year> - <month> .csv
 

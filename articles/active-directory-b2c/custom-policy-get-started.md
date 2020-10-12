@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163181"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
@@ -75,7 +75,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 ### <a name="register-the-identityexperienceframework-application"></a>註冊 IdentityExperienceFramework 應用程式
 
-若要在您的 Azure AD B2C 租使用者中註冊應用程式，您可以使用**應用程式註冊**體驗。
+若要在您的 Azure AD B2C 租使用者中註冊應用程式，您可以使用 **應用程式註冊** 體驗。
 
 1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
 1. 針對 [名稱] 輸入 `IdentityExperienceFramework`。
@@ -87,7 +87,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 接下來，藉由新增範圍來公開 API：
 
-1. 在左側功能表的 [**管理**] 底下，選取 [**公開 API**]。
+1. 在左側功能表的 [ **管理**] 底下，選取 [ **公開 API**]。
 1. 依序選取 [新增範圍]、[儲存並繼續]，接受預設的應用程式識別碼 URI。
 1. 輸入下列值，以建立允許在 Azure AD B2C 租用戶中執行自訂原則的範圍：
     * **範圍名稱**：`user_impersonation`
@@ -116,7 +116,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 現在，將權限授與稍早在 *IdentityExperienceFramework* 註冊中公開的 API 範圍：
 
-1. 在左側功能表的 [**管理**] 底下，選取 [ **API 許可權**]。
+1. 在左側功能表的 [ **管理**] 底下，選取 [ **API 許可權**]。
 1. 在 [已設定的權限] 底下，選取 [新增權限]。
 1. 選取 [我的 API] 索引標籤，然後選取 [IdentityExperienceFramework] 應用程式。
 1. 在 [權限] 下，選取稍早定義的 [user_impersonation] 範圍。
@@ -124,7 +124,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 1. 選取 [授與管理員同意 (您的租用戶名稱)]。
 1. 選取您目前登入的系統管理員帳戶，或使用 Azure AD B2C 租用戶中的帳戶 (該租用戶至少已指派「雲端應用程式管理員」角色) 來登入。
 1. 選取 [接受]。
-1. 選取 **[** 重新整理]，然後確認「已授與 ...」出現在 [範圍-offline_access]、[openid] 和 [user_impersonation] 的 [**狀態**] 之下。 權限可能需要幾分鐘的時間來傳播。
+1. 選取 **[** 重新整理]，然後確認 [授與 ...]顯示于範圍 offline_access、openid 和 user_impersonation 的 **狀態** 下。 權限可能需要幾分鐘的時間來傳播。
 
 * * *
 
@@ -213,6 +213,6 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，嘗試新增 Azure Active Directory (Azure AD) 作為識別提供者。 此入門指南中所使用的基底檔案已經包含新增其他識別提供者 (例如 Azure AD) 時所需部分內容。 如需設定 Azure AD 做為身分識別提供者的詳細資訊，請參閱[使用 Active Directory B2C 自訂原則，設定使用 Azure Active Directory 帳戶的註冊和登入](identity-provider-azure-ad-single-tenant-custom.md)。 
+接下來，嘗試新增 Azure Active Directory (Azure AD) 作為識別提供者。 此入門指南中所使用的基底檔案已經包含新增其他識別提供者 (例如 Azure AD) 時所需部分內容。 如需將 Azure AD 設定為身分識別提供者的相關資訊，請參閱 [使用 Active Directory B2C 自訂原則，以 Azure Active Directory 帳戶設定註冊和登入](identity-provider-azure-ad-single-tenant-custom.md)。 
 
-請造訪我們的[合作夥伴資源庫](partner-gallery.md)，以深入瞭解如何使用自訂原則來執行 ISV 整合。 
+請造訪我們的 [合作夥伴資源庫](partner-gallery.md) ，以深入瞭解如何使用自訂原則來實施 ISV 整合。 

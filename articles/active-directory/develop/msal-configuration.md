@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854908"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 驗證程式庫設定檔案
@@ -86,7 +86,7 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>將 AAD 授權單位 & 的使用者對應到 Microsoft 身分識別平臺端點
 
-| 類型 | 對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 備註 |
+| 類型 | 對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 注意 |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` 這是帳戶所在的租使用者別名。 例如，特定的 Azure Active Directory 租使用者或 Microsoft 帳戶系統。 |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | 只有存在於 contoso.com 中的帳戶可以取得權杖。 任何已驗證的網域或租使用者 GUID 都可作為租使用者識別碼使用。 |
@@ -138,7 +138,7 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 
 設定 HTTP 超時的全域設定，例如：
 
-| 屬性 | 資料類型 | 必要 | 備註 |
+| 屬性 | 資料類型 | 必要 | 注意 |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | int | 否 | 時間（毫秒） |
 | `read_timeout` | int | 否 | 時間（毫秒） |
@@ -147,7 +147,7 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 
 下列全域設定適用于記錄：
 
-| 屬性 | 資料類型  | 必要 | 備註 |
+| 屬性 | 資料類型  | 必要 | 注意 |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | boolean | 否 | 是否要發出個人資料 |
 | `log_level`   | 字串 | No | 要輸出的記錄訊息。 支援的記錄層級包括 `ERROR` 、、 `WARNING` `INFO` 和 `VERBOSE` 。 |

@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89647329"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中搭配使用 Azure AD 身分識別與您的機器學習 Web 服務
@@ -177,7 +177,7 @@ blob_data = blob_client.download_blob()
 blob_data.readall()
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需有關如何使用 Python Azure 身分識別用戶端程式庫的詳細資訊，請參閱 GitHub 上的存放 [庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python) 。
 * 如需將模型部署到 Azure Kubernetes Service 叢集的詳細指南，請參閱操作 [說明](how-to-deploy-azure-kubernetes-service.md)。

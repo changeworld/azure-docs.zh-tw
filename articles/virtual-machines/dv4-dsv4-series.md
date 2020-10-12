@@ -9,22 +9,22 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 959906f25cbae0158dfb0baf0b7664b8f9b9b5d4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649541"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945663"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
 
-Dv4 和 Dsv4 系列是在 Intel 8272CL &reg; &reg; 白金級 (串聯 Lake) 處理器上的超執行緒設定中執行，為大部分的一般用途工作負載提供更好的價值主張。 它有一種持續的核心 Turbo 頻率速度 3.4 GHz。 
+Dv4 和 Dsv4 系列是在 Intel 8272CL &reg; &reg; 白金級 (串聯 Lake) 處理器上的超執行緒設定中執行，為大部分的一般用途工作負載提供更好的價值主張。 它具備 3.4 GHz 的所有核心 Turbo 頻率速度。 
 
 > [!NOTE]
 > 關於常見問題，請參閱  [沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
 ## <a name="dv4-series"></a>Dv4 系列
 
-Dv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Dv4 系列大小提供 vCPU、記憶體和遠端儲存體選項的組合，適用于大多數生產工作負載。 Dv4 系列 Vm 功能 [Intel &reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)。
+Dv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Dv4 系列大小提供 vCPU、記憶體和遠端儲存體選項的組合，適用于大多數生產工作負載。 Dv4 系列 Vm 具備 [Intel &reg; Hyper-Threading 技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)的特色。
 
 遠端資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium 儲存體磁片，請使用 Dsv4 大小。 Dsv4 大小的定價和計費方式與 Dv4 系列相同。
 
@@ -48,7 +48,7 @@ Dv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Dv4 
 
 ## <a name="dsv4-series"></a>Dsv4 系列
 
-Dsv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Dv4 系列大小提供 vCPU、記憶體和遠端儲存體選項的組合，適用于大多數生產工作負載。 Dsv4 系列 Vm 功能 [Intel &reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)。 遠端資料磁碟儲存體與虛擬機器分開計費。
+Dsv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Dv4 系列大小提供 vCPU、記憶體和遠端儲存體選項的組合，適用于大多數生產工作負載。 Dsv4 系列 Vm 具備 [Intel &reg; Hyper-Threading 技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)的特色。 遠端資料磁碟儲存體與虛擬機器分開計費。
 
 [ACU](acu.md)：195-210<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>

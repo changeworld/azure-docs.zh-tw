@@ -13,10 +13,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/09/2020
 ms.openlocfilehash: d135320d8dd9f86fbc313b17b8b55ed3c609e9dc
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595014"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>將自我裝載 IR 設定為 Azure Data Factory 中 Azure-SSIS IR 的 proxy
@@ -72,7 +72,7 @@ ms.locfileid: "89595014"
 
 1. 在 [ **Advanced settings** ] 區段中，執行下列動作：
 
-   1. 選取 [ **將自我裝載的 Integration Runtime 設定為您的 Azure-SSIS Integration Runtime 的 proxy** ] 核取方塊。 
+   1. 選取 [ **將 Self-Hosted Integration Runtime 設定為 Azure-SSIS Integration Runtime 的 proxy** ] 核取方塊。 
 
    1. 在 [ **自我裝載 Integration Runtime** ] 下拉式清單中，選取您現有的自我裝載 IR 作為 Azure-SSIS IR 的 proxy。
 
@@ -80,7 +80,7 @@ ms.locfileid: "89595014"
 
    1. 在 [ **暫存路徑** ] 方塊中，指定您所選 Azure blob 儲存體帳戶中的 blob 容器，或將其保留空白，以使用預設值來進行暫存。
 
-   1. 選取 [繼續]  。
+   1. 選取 [繼續]。
 
    ![使用自我裝載 IR 的 Advanced 設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -179,6 +179,6 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 - 目前僅支援使用 *帳戶金鑰*、 *共用存取簽章 (SAS) URI*或 *服務主體* 驗證設定的 Azure Blob 儲存體連結服務。
 - 目前不支援 OLEDB 來源中的*ParameterMapping* 。 因應措施是，請使用 *來引數的 Sql 命令* 做為 *AccessMode* ，並使用 *運算式* 在 sql 命令中插入您的變數/參數。 如需說明，請參閱 *ParameterMappingSample .dtsx* 套件，此套件可在我們的公開預覽容器的 *SelfHostedIRProxy/限制* 資料夾中找到。 您可以使用 Azure 儲存體總管，輸入上述的 SAS URI，以連接到我們的公開預覽容器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在您將自我裝載 IR 設定為 Azure-SSIS IR 的 proxy 之後，您可以部署和執行您的封裝，以存取內部部署資料，作為 Data Factory 管線中的執行 SSIS 套件活動。 若要深入瞭解，請參閱 [在 Data Factory 管線中執行 Ssis 封裝作為執行 Ssis 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。

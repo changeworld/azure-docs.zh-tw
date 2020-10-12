@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 2f8718b108ca5af0034d4d70c10422d6ac73e892
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89260844"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>使用 Azure 入口網站建立媒體服務帳戶
@@ -37,7 +37,7 @@ Azure 入口網站提供一種方法來快速建立 Azure 媒體服務 (AMS) 帳
 > [!NOTE]
 > 如需不同區域中 Azure 媒體服務功能可用性的資訊，請參閱[跨資料中心的 AMS 功能可用性](scenarios-and-availability.md#availability)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 

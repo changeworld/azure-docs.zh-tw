@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659864"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料
@@ -612,7 +612,7 @@ async function queryDvds(blob)
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Data Lake Storage 查詢加速](data-lake-storage-query-acceleration.md)
 - [查詢加速 SQL 語言參考](query-acceleration-sql-reference.md)

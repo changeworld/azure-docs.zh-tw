@@ -9,10 +9,10 @@ ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816434"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>管理 Azure Red Hat OpenShift 叢集中的專案、範本、影像資料流程
@@ -25,7 +25,7 @@ ms.locfileid: "88816434"
 
 提交專案要求時，API 會替代範本中的下列參數：
 
-| 參數               | 描述                                    |
+| 參數               | 說明                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 專案的名稱。 必要。             |
 | PROJECT_DISPLAYNAME     | 專案的顯示名稱。 可以是空的。 |
@@ -124,7 +124,7 @@ ms.locfileid: "88816434"
 
    在命名空間中的任何個別物件 `openshift` 都可以藉由新增批註來從更新程式中移除 `openshift.io/reconcile-protect: "true"` 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 試用教學課程：
 > [!div class="nextstepaction"]

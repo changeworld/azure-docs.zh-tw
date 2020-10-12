@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: duau
 ms.openlocfilehash: 0ab74a14c16b7ea1d587cfcc82eea689e2f98c83
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393015"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>使用 S2S VPN 作為 ExpressRoute 私人對等互連的備份
@@ -302,7 +302,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 若要確認流量已切換回 ExpressRoute，請重複追蹤路由，並確定它是透過 ExpressRoute 私用對等互連。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 ExpressRoute 是針對高可用性而設計的，在 Microsoft 網路內不會有單一失敗點。 您仍然可以將 ExpressRoute 線路限制在單一地理區域和服務提供者。 S2S VPN 可以是 ExpressRoute 線路的良好嚴重損壞修復被動備份解決方案。 針對可靠的被動備份連線解決方案，被動設定和定期驗證的定期維護是很重要的。 請勿讓 VPN 設定變得過時，且每季定期 (，) 在維護期間重複本文中所述的驗證和容錯移轉測試步驟。
 

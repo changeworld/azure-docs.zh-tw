@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540943"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一組範例語句的批次測試
@@ -49,7 +49,7 @@ ms.locfileid: "91540943"
 
 可下載的資料集和針對批次測試所上傳的檔案相同。
 
-|州|意義|
+|State|意義|
 |--|--|
 |![測試成功的綠色圓圈圖示](./media/luis-how-to-batch-test/batch-test-result-green.png)|所有語句皆成功。|
 |![測試失敗紅色 x 圖示](./media/luis-how-to-batch-test/batch-test-result-red.png)|至少有一個語句意圖不符合預測。|

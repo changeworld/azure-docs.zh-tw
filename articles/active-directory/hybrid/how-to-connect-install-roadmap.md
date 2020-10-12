@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662147"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安裝藍圖
@@ -29,7 +29,7 @@ ms.locfileid: "89662147"
 
 您可以在 [Microsoft 下載中心](https://go.microsoft.com/fwlink/?LinkId=615771)下載 Azure AD Connect。
 
-| 解決方案 | 案例 |
+| 解決方法 | 狀況 |
 | --- | --- |
 | 開始之前 - [硬體和必要條件](how-to-connect-install-prerequisites.md) |<li>開始安裝 Azure AD Connect 之前所應完成的步驟。</li> |
 | [快速設定](how-to-connect-install-express.md) |<li>如果您有單一樹系 AD，則這是建議使用的選項。</li> <li>使用密碼同步處理以相同的密碼進行使用者登入。</li> |
@@ -165,7 +165,7 @@ Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情�
 * **Active Directory Domain Services**：此選項會顯示 Azure AD Connect Health 目前正在監視的所有 AD DS 樹系。 當您選取樹系時，開啟的刀鋒視窗會顯示該樹系的相關資訊。 這項資訊包括基本資訊概觀、網域控制站儀表板、複寫狀態儀表板、警示和監視。 如需深入了解這些功能，請參閱[在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
 * **設定**︰本節包含開啟或關閉下列功能的選項︰
 
-   - Azure AD Connect Health 代理程式 **自動更新** 為最新版本：當有新版本可用時，Azure AD Connect Health 代理程式會自動更新。 此選項預設為啟用。
+   - Azure AD Connect Health 代理程式 **自動更新** 為最新版本：當有新版本可用時，Azure AD Connect Health 代理程式會自動更新。 這個選項預設為啟用。
    - 由 Microsoft 的 Azure AD 目錄完整性**存取資料**，僅供疑難排解之用：如果啟用此選項，microsoft 可以存取使用者所查看的相同資料。 此資訊有助於進行疑難排解和提供必要的協助。 預設會停用此選項
 * **角色型存取控制 (IAM)** 是用來管理角色基底中 Connect Health 資料存取權的區段。 
 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: duau
 ms.openlocfilehash: 78a1681c743f65081b30657f4fd747ff8aaef5f5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89392828"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理員端點監視
@@ -67,7 +67,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 端點監視狀態是流量管理員所產生的值，會顯示端點的狀態。 您無法手動變更此設定。 端點監視狀態是端點監視的結果以及設定端點狀態的組合。 下表顯示端點監視狀態的可能值：
 
-| 設定檔狀態 | 端點狀態 | 端點監視狀態 | 備註 |
+| 設定檔狀態 | 端點狀態 | 端點監視狀態 | 注意 |
 | --- | --- | --- | --- |
 | 已停用 |啟用 |非使用中 |已停用設定檔。 儘管端點狀態為「已啟用」，但會優先採用設定檔狀態 (「已停用」)。 不會監視「已停用」設定檔中的端點。 會針對 DNS 查詢傳回 NXDOMAIN 回應碼。 |
 | &lt;any&gt; |已停用 |已停用 |端點已停用。 不會監視「已停用」的端點。 端點未包含於 DNS 回應中，因此不會接收流量。 |
@@ -85,7 +85,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 設定檔監視狀態是所有端點的端點監視狀態值，以及設定之設定檔狀態所形成的組合。 下表說明可用的值：
 
-| 設定檔狀態 (依設定) | 端點監視狀態 | 設定檔監視狀態 | 備註 |
+| 設定檔狀態 (依設定) | 端點監視狀態 | 設定檔監視狀態 | 注意 |
 | --- | --- | --- | --- |
 | 已停用 |&lt;任何&gt;或未定義端點的設定檔。 |已停用 |已停用設定檔。 |
 | 啟用 |至少有一個端點的狀態為「已降級」。 |已降級 |檢閱個別端點狀態值，以判斷哪些端點需要進一步注意。 |
@@ -193,7 +193,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 * [如果我的其中一個端點關閉，我如何取得通知？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解 [流量管理員的運作方式](traffic-manager-how-it-works.md)
 

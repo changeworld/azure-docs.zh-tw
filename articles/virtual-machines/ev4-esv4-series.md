@@ -9,23 +9,23 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 97d3b87edad56394d42daca19cdb8dbf962fade9
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 2c6540513c46307e4bd51b163dd77984395006c5
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649502"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945425"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
-Ev4 和 Esv4 系列是在 Intel 8272CL 白金級 &reg; &reg; (在超執行緒設定中的串聯式 Lake) 處理器上執行，適用于各種需要大量記憶體的企業應用程式和功能，最高可達504GIB 的 RAM。 它有一種持續的核心 Turbo 頻率速度 3.4 GHz。
+Ev4 和 Esv4 系列是在 Intel 8272CL 白金級 &reg; &reg; (在超執行緒設定中的串聯式 Lake) 處理器上執行，適用于各種需要大量記憶體的企業應用程式和功能，最高可達504GIB 的 RAM。 它具備 3.4 GHz 的所有核心 Turbo 頻率速度。
 
 > [!NOTE]
 > 關於常見問題，請參閱  [沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
 
 ## <a name="ev4-series"></a>Ev4 系列
 
-Ev4 系列大小會在 Intel &reg; 8272CL (Cascade Lake) 上執行。 Ev4 系列實例很適合記憶體密集型企業應用程式。 Ev4 系列 Vm 功能 Intel &reg; 超執行緒技術。
+Ev4 系列大小會在 Intel &reg; 8272CL (Cascade Lake) 上執行。 Ev4 系列實例很適合記憶體密集型企業應用程式。 Ev4 系列 Vm 具備 Intel &reg; Hyper-Threading 技術的特色。
 
 遠端資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium 儲存體磁片，請使用 Esv4 大小。 Esv4 大小的定價和計費方式與 Ev4 系列相同。
 
@@ -51,7 +51,7 @@ Ev4 系列大小會在 Intel &reg; 8272CL (Cascade Lake) 上執行。 Ev4 系列
 
 ## <a name="esv4-series"></a>Esv4 系列
 
-Esv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Esv4 系列實例很適合記憶體密集型企業應用程式。 Evs4 系列 Vm 功能 Intel &reg; 超執行緒技術。 遠端資料磁碟儲存體與虛擬機器分開計費。
+Esv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Esv4 系列實例很適合記憶體密集型企業應用程式。 Evs4 系列 Vm 具備 Intel &reg; Hyper-Threading 技術的特色。 遠端資料磁碟儲存體與虛擬機器分開計費。
 
 [ACU](acu.md)：195-210<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>

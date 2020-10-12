@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 將計量傳送至 Azure 監視器公制資料庫
+title: 使用 REST API 將計量傳送至 Azure 監視器度量資料庫
 description: 使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
 author: anirudhcavale
 services: azure-monitor
@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321253"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
@@ -93,7 +93,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 1. 您不能發出訂用帳戶或資源群組的計量作為您的 Azure 資源。 
 1. 您不能將計量放入超過 20 分鐘的存放區。 計量存放區已針對警示與即時圖表而最佳化。 
 2. 維度名稱的數目應該符合值，反之亦然。 檢查值。 
-2. 您所發出的計量，其區域不支援自訂計量。 請參閱[支援的區域](./metrics-custom-overview.md#supported-regions)。 
+2. 您所發出的計量，其區域不支援自訂計量。 請參閱 [支援的區域](./metrics-custom-overview.md#supported-regions)。 
 
 
 
@@ -103,7 +103,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
 1. 在左側功能表中，選取 [監視]****。 
 
-1. 在 [**監視**] 頁面上，選取 [**計量**]。 
+1. 在 [ **監視** ] 頁面上選取 [ **計量**]。 
 
    ![選取計量](./media/metrics-store-custom-rest-api/metrics.png) 
 

@@ -19,10 +19,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231124"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>適用於報表的 Azure AD PowerShell Cmdlet
@@ -49,12 +49,12 @@ Install-module AzureADPreview
 您可以使用 ' AzureADAuditDirectoryLogs Cmdlet 取得審核記錄的存取權。
 
 
-| 案例                      | PowerShell 命令 |
+| 狀況                      | PowerShell 命令 |
 | :--                           | :--                |
-| 應用程式顯示名稱      | AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName eq ' Azure AD Cloud Sync '" |
-| 類別                      | AzureADAuditDirectoryLogs-Filter "category eq ' ApplicationManagement '" |
-| 活動日期時間            | AzureADAuditDirectoryLogs-Filter "activityDateTime gt 2019-04-18" |
-| 以上皆是              | AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName eq ' Azure AD Cloud Sync ' 和 category eq ' ApplicationManagement ' 和 activityDateTime gt 2019-04-18"|
+| 應用程式顯示名稱      | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName eq ' Azure AD Cloud Sync '" |
+| 類別                      | Get-AzureADAuditDirectoryLogs 篩選 "category eq ' ApplicationManagement '" |
+| 活動日期時間            | Get-AzureADAuditDirectoryLogs-Filter "activityDateTime gt 2019-04-18" |
+| 以上皆是              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName eq ' Azure AD Cloud Sync ' 和 category eq ' ApplicationManagement ' 和 activityDateTime gt 2019-04-18"|
 
 
 下圖顯示此命令的範例。 
@@ -70,13 +70,13 @@ Install-module AzureADPreview
 您可以使用 ' AzureADAuditSignInLogs Cmdlet 取得登入記錄的存取權。
 
 
-| 案例                      | PowerShell 命令 |
+| 狀況                      | PowerShell 命令 |
 | :--                           | :--                |
-| 使用者顯示名稱             | AzureADAuditSignInLogs-Filter "userDisplayName eq ' Timothy Perkins '" |
-| 建立日期時間              | AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17：30： 00.0 Z" (4/18) 上下午5:30 之後的所有專案 |
-| 狀態                        | AzureADAuditSignInLogs-Filter "status/errorCode eq 50105" |
-| 應用程式顯示名稱      | AzureADAuditSignInLogs-Filter "appDisplayName eq ' StoreFrontStudio [wsfed enabled] '" |
-| 以上皆是              | AzureADAuditSignInLogs-Filter "userDisplayName eq ' Timothy Perkins ' and status/errorCode ne 0 and appDisplayName eq ' StoreFrontStudio [wsfed enabled] '" |
+| 使用者顯示名稱             | Get-AzureADAuditSignInLogs-Filter "userDisplayName eq ' Timothy Perkins '" |
+| 建立日期時間              | Get-AzureADAuditSignInLogs 篩選 "createdDateTime gt 2019-04-18T17：30： 00.0 Z" (4/18) 上下午5:30 之後的所有專案 |
+| 狀態                        | Get-AzureADAuditSignInLogs-Filter "status/errorCode eq 50105" |
+| 應用程式顯示名稱      | Get-AzureADAuditSignInLogs-Filter "appDisplayName eq ' StoreFrontStudio [wsfed enabled] '" |
+| 以上皆是              | Get-AzureADAuditSignInLogs-Filter "userDisplayName eq ' Timothy Perkins ' and status/errorCode ne 0 and appDisplayName eq ' StoreFrontStudio [wsfed enabled] '" |
 
 
 下圖顯示此命令的範例。 

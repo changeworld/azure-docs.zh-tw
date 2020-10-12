@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661452"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>更新 Microsoft 365 和 Azure Active Directory 的同盟憑證
@@ -167,7 +167,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 1. 開啟適用於 Windows PowerShell 的 Microsoft Azure Active Directory 模組。
 2. 執行 $cred=Get-Credential。 當此 Cmdlet 提示您輸入認證時，請輸入您的雲端服務系統管理員帳戶認證。
-3. 執行 Connect-Connect-msolservice – Credential $cred。此 Cmdlet 會將您連接到雲端服務。 在您執行由工具安裝的任何其他 Cmdlet 之前，必須先建立讓您連線到雲端服務的環境。
+3. 執行 Connect-MsolService – Credential $cred。此 Cmdlet 會將您連接到雲端服務。 在您執行由工具安裝的任何其他 Cmdlet 之前，必須先建立讓您連線到雲端服務的環境。
 4. 如果您不是在 AD FS 主要同盟伺服器的電腦上執行這些命令，請執行 Set-MSOLAdfscontext -Computer &lt;AD FS primary server&gt;，其中 &lt;AD FS primary server&gt; 是主要 AD FS 伺服器的內部 FQDN 名稱。 此 Cmdlet 會建立讓您連線到 AD FS 的環境。
 5. 執行 Update-MSOLFederatedDomain –DomainName &lt;domain&gt;。 此 Cmdlet 會將 AD FS 的設定更新成雲端服務，並設定兩者之間的信任關係。
 

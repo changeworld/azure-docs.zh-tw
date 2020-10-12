@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 930dae7ae163a04fb8b5fc5ae44b9170a7e3c6ce
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614014"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893130"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -197,6 +197,23 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 限制來自 AKS 叢集的連出流量時，有[必要和選用的建議](limit-egress-traffic.md)輸出連接埠 / 網路規則，以及適用於 AKS 的 FQDN / 應用程式規則。 如果您的設定與上述任何規則發生衝突，某些 `kubectl` 命令將無法正確運作。 您可能也會在建立 AKS 叢集時看到錯誤。
 
 確認您的設定不會與任何必要或選用的建議輸出連接埠 / 網路規則和 FQDN / 應用程式規則相衝突。
+
+## <a name="im-receiving-429---too-many-requests-errors"></a>我收到「429-太多要求」錯誤 
+
+當 Azure 上的 kubernetes 叢集 (AKS 或沒有) 頻繁地向上/向下延展或使用叢集自動調整程式 (CA) 時，這些作業可能會導致大量的 HTTP 呼叫，進而導致失敗的指派訂用帳戶配額。 錯誤看起來會像這樣
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+[這裡](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)會詳細說明這些節流錯誤[here](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshooting-throttling-errors)
+
+AKS 工程團隊的 recommandation，是要確保您執行的版本至少為 1.18. x，其中包含許多改進功能。 您可以在 [這裡](https://github.com/Azure/AKS/issues/1413) 和 [這裡](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)找到更多詳細資料。
+
+由於這些節流錯誤會在訂用帳戶層級進行測量，如果發生下列情況，可能仍會發生這些錯誤：
+- 有協力廠商應用程式提出 GET 要求 (例如 監視應用程式等 .。。) 。建議您減少這些呼叫的頻率。
+- VMSS 中有許多 AKS 叢集/nodepools。 一般建議是在指定的訂用帳戶中具有少於20-30 的叢集。
+
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure 儲存體和 AKS 疑難排解
 

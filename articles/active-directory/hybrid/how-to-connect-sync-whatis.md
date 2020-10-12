@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662381"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步處理：了解及自訂同步處理
@@ -64,7 +64,7 @@ Azure Active Directory Connect 同步處理服務 (Azure AD Connect 同步處理
 | **詳細資訊和參考** | |
 | [連接埠](reference-connect-ports.md) |列出您需要在同步處理引擎以及內部部署目錄與 Azure AD 之間開啟的連接埠。 |
 | [將屬性同步處理至 Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |列出在內部部署 AD 與 Azure AD 之間進行同步處理的所有屬性。 |
-| [函式參考](reference-connect-sync-functions-reference.md) |列出宣告式佈建中可用的所有函式。 |
+| [函數參考](reference-connect-sync-functions-reference.md) |列出宣告式佈建中可用的所有函式。 |
 
 ## <a name="additional-resources"></a>其他資源
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)

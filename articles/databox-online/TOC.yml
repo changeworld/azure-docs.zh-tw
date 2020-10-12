@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 - 設定計算
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: 9A - 新增並連線到共用
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: 9B - 新增並連線到儲存體帳戶
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: 概念
       items:
         - name: 檢閱需求
@@ -87,6 +83,8 @@
               items:
                 - name: 無狀態應用程式
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: 開發 C# 模組
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: 透過 Azure Arc (預覽)
               items:
                 - name: 在 Kubernetes 叢集上啟用 Arc
@@ -123,12 +121,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: 針對憑證錯誤進行疑難排解
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: 開發 C# 模組
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: 管理 Edge 計算
           href: azure-stack-edge-j-series-manage-compute.md
         - name: 管理儲存體閘道
           items:
+            - name: 新增並連線到共用
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 新增並連線到儲存體帳戶
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: 共用
               href: azure-stack-edge-j-series-manage-shares.md
             - name: 使用者
@@ -149,6 +149,10 @@
               href: azure-stack-edge-return-device.md
             - name: 更換裝置
               href: azure-stack-edge-replace-device.md
+            - name: 為裝置失敗做準備
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: 從裝置失敗復原
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: 監視
           items:
             - name: 使用計量圖表
@@ -267,7 +271,7 @@
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
 - name: Azure Stack Edge Pro R
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: Azure Stack Edge Pro R 是什麼？
           href: azure-stack-edge-j-series-overview.md

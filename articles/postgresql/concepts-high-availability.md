@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707926"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的高可用性–單一伺服器
@@ -36,7 +36,7 @@ ms.locfileid: "91707926"
 3. 您可以在不停機的情況下執行擴充儲存體。 遠端存放可讓您在容錯移轉之後快速卸離/重新連接。
 以下是一些規劃的維護案例：
 
-| **案例** | **描述**|
+| **案例** | **說明**|
 | ------------ | ----------- |
 | <b>計算擴大/縮小 | 當使用者執行計算擴大/減少作業時，會使用調整的計算設定來布建新的資料庫伺服器。 在舊的資料庫伺服器中，允許使用中的檢查點完成，用戶端連接已清空，任何未認可的交易都會取消，然後關閉。 然後，存放裝置會從舊的資料庫伺服器卸離，並附加至新的資料庫伺服器。 當用戶端應用程式重試連線，或嘗試建立新的連線時，閘道會將連接要求導向至新的資料庫伺服器。|
 | <b>擴充儲存體 | 相應增加儲存體是一項線上作業，不會中斷資料庫伺服器。|

@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326808"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
@@ -197,7 +197,7 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>客戶加密箱
 
-[適用于 Microsoft Azure 的客戶加密箱](../security/fundamentals/customer-lockbox-overview.md) 會提供介面供客戶審核，並核准或拒絕客戶資料存取要求。 當 Microsoft 工程師需要在支援要求期間存取客戶資料時，就會使用此功能。 如需有關如何起始、追蹤和儲存客戶加密箱要求的詳細資訊，請參閱 [客戶加密箱](../security/fundamentals/customer-lockbox-overview.md)。 
+[適用于 Microsoft Azure 的客戶加密箱](../security/fundamentals/customer-lockbox-overview.md) 會提供介面供客戶審核，並核准或拒絕客戶資料存取要求。 在 Microsoft 工程師必須於支援要求期間存取客戶資料的情況下，便會使用此功能。 如需有關如何起始、追蹤和儲存客戶加密箱要求的詳細資訊，請參閱 [客戶加密箱](../security/fundamentals/customer-lockbox-overview.md)。 
 
 客戶加密箱適用于此認知服務：
 

@@ -1,5 +1,5 @@
 ---
-title: 適用于 Azure Vm 的 Chef 擴充功能
+title: 適用于 Azure Vm 的 Chef 延伸模組
 description: 使用 Chef VM Extension，將 Chef Client 部署至虛擬機器。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082608"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>適用於 Linux 和 Windows 的 Chef VM Extension
 
 Chef 軟體是適用於 Linux 和 Windows 的 DevOps 自動化平台，而 Windows 同時啟用實體和虛擬伺服器組態的管理。 Chef VM Extension 是可以在虛擬機器上啟用 Chef 的擴充功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -104,7 +104,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 可以使用範本來部署一或多部虛擬機器、安裝 Chef Client、連線至 Chef Server 以及在伺服器上執行初始設定，如同[執行清單](https://docs.chef.io/run_lists.html)所定義
 
-您可以在[Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 擴充功能的範例 Resource Manager 範本。
+您可以在 [Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 延伸模組的範例 Resource Manager 範本。
 
 虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。
 
@@ -153,8 +153,8 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 其他疑難排解資訊可以在 [Chef VM Extension 讀我檔案](https://github.com/chef-partners/azure-chef-extension)中找到。
 
 > [!NOTE]
-> 如需與 Chef 直接相關的任何其他專案，請聯絡[Chef 支援](https://www.chef.io/support/)。
+> 如需與 Chef 直接相關的任何其他資訊，請聯絡 [Chef 支援](https://www.chef.io/support/)人員。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

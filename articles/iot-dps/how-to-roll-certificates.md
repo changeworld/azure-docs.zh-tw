@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531401"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何輪替 X.509 裝置憑證
@@ -57,7 +57,7 @@ ms.locfileid: "90531401"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，以瀏覽至具有您裝置註冊項目的 IoT 中樞裝置佈建服務執行個體。
 
-2. 按一下 [管理註冊]****。
+2. 按一下 [管理註冊]  。
 
     ![管理註冊](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "90531401"
 
 1. 按一下 [個別註冊]****，然後按一下清單中的註冊識別碼項目。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案] 。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 **[儲存]** 。
 
     ![使用次要憑證到期管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "90531401"
 
 1. 按一下 [註冊群組]****，然後按一下清單中的群組名稱。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案] 。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 **[儲存]** 。
 
     這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-x509-attestation.md#x509-certificates)。
 

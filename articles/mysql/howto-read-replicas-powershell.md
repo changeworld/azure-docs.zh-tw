@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540994"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本
