@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
 ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617446"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 受控執行個體內容參考
@@ -67,7 +67,7 @@ ms.locfileid: "91617446"
 - [使用查詢存放區來監視效能](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [使用 Intelligent Insights 針對效能問題進行疑難排解](../database/intelligent-insights-troubleshoot-performance.md)
 - [使用 Intelligent Insights 診斷記錄](../database/intelligent-insights-use-diagnostics-log.md)
-- [監視記憶體內部 OLTP 空間](../in-memory-oltp-monitor-space.md)
+- [監視 In-Memory OLTP 空間](../in-memory-oltp-monitor-space.md)
 
 ### <a name="extended-events"></a>擴充事件
 
@@ -79,7 +79,7 @@ ms.locfileid: "91617446"
 
 - [在受控執行個體上建立警示](alerts-create.md)
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>作業
 
 - [SQL 受控執行個體上使用者起始的手動容錯移轉](user-initiated-failover.md)
 

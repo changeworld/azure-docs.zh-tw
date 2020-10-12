@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI-sfctl store
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來在叢集映射存放區上執行檔案層級作業的命令清單。
+description: 瞭解 Azure Service Fabric 命令列介面的 sfctl。 包含用來在叢集映射存放區上執行檔案層級作業的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: af5399be44d2946775622598c5c1db3d8355f7cd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257065"
 ---
 # <a name="sfctl-store"></a>sfctl store
@@ -17,9 +17,9 @@ ms.locfileid: "86257065"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|說明|
 | --- | --- |
-| 刪除 | 刪除現有映像存放區內容。 |
+| [刪除] | 刪除現有映像存放區內容。 |
 | root-info | 取得映像存放區根的內容資訊。 |
 | stat | 取得映像存放區內容資訊。 |
 
@@ -33,7 +33,7 @@ ms.locfileid: "86257065"
 |引數|說明|
 | --- | --- |
 | --content-path [必要] | 映像存放區中檔案或資料夾與其根的相對路徑。 |
-| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+| --timeout -t | 用來執行作業的伺服器超時（以秒為單位）。 此超時時間指定用戶端願意等候要求的作業完成的持續時間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -54,7 +54,7 @@ ms.locfileid: "86257065"
 
 |引數|說明|
 | --- | --- |
-| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+| --timeout -t | 用來執行作業的伺服器超時（以秒為單位）。 此超時時間指定用戶端願意等候要求的作業完成的持續時間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -76,7 +76,7 @@ ms.locfileid: "86257065"
 |引數|說明|
 | --- | --- |
 | --content-path [必要] | 映像存放區中檔案或資料夾與其根的相對路徑。 |
-| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+| --timeout -t | 用來執行作業的伺服器超時（以秒為單位）。 此超時時間指定用戶端願意等候要求的作業完成的持續時間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903979"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的基礎結構雙重加密
@@ -33,15 +33,15 @@ ms.locfileid: "90903979"
 
 3. 提供伺服器的基本資訊。 選取 [ **其他設定** ] 並啟用 [ **基礎結構雙重加密** ] 核取方塊，以設定參數。
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="適用於 MySQL 的 Azure 資料庫選取專案":::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
 
 4. 選取 [檢閱+建立] 以佈建伺服器。
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="適用於 MySQL 的 Azure 資料庫摘要":::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
 
 5. 建立伺服器之後，您可以藉由檢查 **資料加密** 伺服器分頁中的狀態，驗證基礎結構雙重加密。
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="適用於 MySQL 的 Azure 資料庫驗證":::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
 
 ## <a name="create-an-azure-database-for-mysql-server-with-infrastructure-double-encryption---cli"></a>使用基礎結構雙重加密建立適用於 MySQL 的 Azure 資料庫伺服器-CLI
 
@@ -58,6 +58,6 @@ az group create --name myresourcegroup --location westus
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
  若要深入瞭解資料加密，請參閱 [適用於 MySQL 的 Azure 資料庫資料基礎結構雙重加密](concepts-Infrastructure-double-encryption.md)。

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: afbea39a080e1dd768a14d6e0eacda1bad23c5a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074422"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>將 Windows 虛擬機器重新部署至新的 Azure 節點
@@ -38,5 +38,5 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您在連接至 VM 時發生問題，您可以在[針對 RDP 連線進行疑難排解](troubleshoot-rdp-connection.md)或[詳細的 RDP 疑難排解步驟中找到具體的說明](detailed-troubleshoot-rdp.md)。 如果無法存取在您 VM 上執行的應用程式，您也可以參閱[應用程式疑難排解問題](./troubleshoot-app-connection.md)。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
 ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899327"
 ---
 # <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置中的 Kubernetes 網路
@@ -78,7 +78,7 @@ IP 指派適用于：
 - **Kubernetes 外部服務 ip**：此 IP 範圍適用于外部服務 (也稱為在 Kubernetes 叢集外部公開的 Load Balancer 服務) 。  
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要在 Azure Stack Edge Pro 上設定 Kubernetes 網路，請參閱：
 

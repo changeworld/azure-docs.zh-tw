@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936940"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 內容的到期
@@ -67,7 +67,7 @@ ms.locfileid: "88936940"
 
    這個全域快取規則會設定一小時的快取期間，並影響針對端點的所有要求。 它會覆寫由端點指定之原始伺服器所傳送的任何 `Cache-Control` 或 `Expires` HTTP 標頭。   
 
-1. 選取 \[儲存\]。
+1. 選取 [儲存]****。
 
 **使用自訂快取規則設定 Web 伺服器檔案的 Cache-Control 標頭：**
 
@@ -81,7 +81,7 @@ ms.locfileid: "88936940"
 
     第一個自訂快取規則會替您的端點指定之原始伺服器上 `/webfolder1` 資料夾中的所有檔案，設定四個小時的快取期間。 第二個規則只會針對 `file1.txt` 檔案覆寫第一個規則，並為其設定兩個小時的快取期間。
 
-1. 選取 \[儲存\]。
+1. 選取 [儲存]****。
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用組態檔設定 Cache-Control 標頭

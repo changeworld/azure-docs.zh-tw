@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 09/06/2020
 ms.author: alkohli
 ms.openlocfilehash: b9ff5968b4bb406f1a96780985b5c6fe64ca976c
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505898"
 ---
-| 連接埠號碼| 內或外 | 連接埠範圍| 必要| 備註 |
+| 連接埠號碼| 內或外 | 連接埠範圍| 必要| 注意 |
 |--------|-----|-----|-----------|----------|
 | TCP 80 (HTTP)|位於|LAN|是|此埠是用來透過 HTTP 連接到資料箱 Blob 儲存體 REST Api。 如果未連線至 REST Api，則會自動重新導向至本機 web UI （8443）。 |
 | TCP 443 (HTTPS)|位於|LAN|是|此埠是用來透過 HTTPS 連接到資料箱 Blob 儲存體 REST Api。 如果未連線至 REST Api，則會自動重新導向至本機 web UI （8443）。 |

@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949536"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server 與 Active Directory 之間的目錄整合
@@ -104,14 +104,14 @@ Azure Multi-Factor Authentication 具有下列三個篩選選項：
 | 傳真 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的傳真號碼。  預設值是 facsimileTelephoneNumber。 |
 | IP 電話 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的 IP 電話號碼。  預設值是 ipPhone。 |
 | 自訂 |輸入屬性的屬性名稱，其中包含使用者記錄中的自訂電話號碼。  預設值為空白。 |
-| 延伸模組 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的分機電話號碼。  分機欄位的值只會做為主要電話號碼的分機。  預設值為空白。 <br><br>如果不指定分機屬性，則可以在電話屬性中包含分機。 在此情況下，在分機前面加上 'x'，便可得到正確剖析。  例如，555-123-4567 x890 會形成電話號碼 555-123-4567 和分機 890。 |
+| 分機 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的分機電話號碼。  分機欄位的值只會做為主要電話號碼的分機。  預設值為空白。 <br><br>如果不指定分機屬性，則可以在電話屬性中包含分機。 在此情況下，在分機前面加上 'x'，便可得到正確剖析。  例如，555-123-4567 x890 會形成電話號碼 555-123-4567 和分機 890。 |
 | [還原預設值] 按鈕 |按一下 [還原預設值]****，可將所有屬性還原為預設值。  在一般 Active Directory 或 ADAM 結構描述中，預設值應該可以正確運作。 |
 
 若要編輯屬性，請按一下 [屬性] 索引標籤上的 [ **編輯** ]。 這會顯示一個視窗，您可以在其中編輯屬性。 選取任何屬性旁邊的 [...]**** 可開啟視窗供您選擇要顯示的屬性。
 
 ![在 MFA Server 中編輯目錄屬性對應](./media/howto-mfaserver-dir-ad/dirint4.png)
 
-## <a name="synchronization"></a>Synchronization
+## <a name="synchronization"></a>同步處理
 
 同步處理可將 Azure MFA 使用者資料庫與 Active Directory 或另一個輕量型目錄存取通訊協定 (LDAP) 目錄中的使用者保持同步。 此程序類似於從 Active Directory 手動匯入使用者，但會定期輪詢 Active Directory 使用者和安全性群組是否有需要處理的變更。  它也可停用或移除已從容器、安全性群組或 Active Directory 中移除的使用者。
 

@@ -10,16 +10,16 @@ ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282063"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>從頭開始部署 OPC 對應項模組和相依性
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登錄服務提供數個 Edge 服務。 
 
@@ -113,7 +113,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 將模組部署到 Azure IoT Edge 閘道裝置最簡單的方式是透過 Azure 入口網站。  
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 1. 部署 OPC 對應 [項](howto-opc-twin-deploy-dependencies.md) 相依性，並取得產生的檔案 `.env` 。 請注意產生的檔案中已部署的 `hub name` `PCS_IOTHUBREACT_HUB_NAME` 變數 `.env` 。
 
@@ -174,13 +174,13 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
     然後選取 **[下一步]**
 
-11. 檢查您的部署資訊與資訊清單。  它看起來應該像上述的部署資訊清單。  選取 [提交]。
+11. 檢查您的部署資訊與資訊清單。  它看起來應該像上述的部署資訊清單。  選取 [提交]  。
 
 12. 一旦您將模組部署到您的裝置，就可以在入口網站的 [裝置詳細資料]**** 頁面中檢視所有項目。 此頁面會顯示每個已部署模組的名稱，以及像是部署狀態和結束代碼的實用資訊。
 
 ## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 部署
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 1. 從[這裡](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)安裝最新版本的[Azure 命令列介面 (AZ) ](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
 

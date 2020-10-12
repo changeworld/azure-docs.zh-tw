@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318585"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中新增或移除群組擁有者
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理�
 
     移除擁有者之後，返回 [擁有者]**** 頁面即可看到該名稱已從擁有者清單移除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [使用 Azure Active Directory 群組管理資源的存取權](active-directory-manage-groups.md)
 
 - [設定群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-cmdlets.md)

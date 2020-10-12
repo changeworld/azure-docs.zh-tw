@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950199"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 的使用者體驗
@@ -67,7 +67,7 @@ IT 人員可以依照 [ [解除封鎖使用者](howto-identity-protection-remedi
 
 1. 使用者獲知其帳戶安全性因為可疑活動或認證外洩而有風險。
    
-    ![補救](./media/concept-identity-protection-user-experience/101.png)
+    ![修復](./media/concept-identity-protection-user-experience/101.png)
 
 1. 使用者必須透過其先前註冊的其中一個方法來完成 Azure MFA，以證明其身分識別。 
 1. 最後，會強制使用者使用自助式密碼重設來變更其密碼，因為其他人可能會擁有其帳戶的存取權。

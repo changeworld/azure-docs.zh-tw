@@ -1,5 +1,5 @@
 ---
-title: Microsoft 商業 marketplace 分析中的使用方式儀表板，Azure Marketplace 和 Microsoft AppSource
+title: Microsoft 商用 marketplace 分析中的使用量儀表板，Azure Marketplace 和 Microsoft AppSource
 description: 了解如何存取所有的 VM 供應項目使用量和計量付費度量。 移至 [商業市集] 下方 [合作夥伴中心] 中的 [使用量] 儀表板。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245327"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商業市集分析中的使用量儀表板
@@ -32,13 +32,13 @@ ms.locfileid: "88245327"
 - [使用量摘要](#usage-summary)
 - [依地理位置的使用量](#usage-by-geography)
 - [依供應項目的使用量](#usage-by-offers)
-- [依供應專案和方案的使用量趨勢](#usage-trend-by-offers-and-plans)
+- [依優惠和方案的使用量趨勢](#usage-trend-by-offers-and-plans)
 - [以供應項目類型的使用量](#usage-by-offer-type)
 - [依 VM 大小的使用量](#usage-by-vm-size)
 - [依銷售通路的使用量](#usage-by-sales-channel)
 - [詳細使用量資料](#detailed-usage-data)
 
-在合作夥伴中心產生和報告的使用事件之間的最大延遲為48小時。
+使用事件產生和合作夥伴中心中報告的最大延遲為48小時。
 
 ### <a name="usage-summary"></a>使用量摘要
 
@@ -53,7 +53,7 @@ ms.locfileid: "88245327"
 
 ### <a name="usage-by-geography"></a>依地理位置的使用量
 
-[ **依地理位置的正規化使用量** ] 熱度圖會根據客戶國家/地區顯示對應的使用時數。 國家/區域的色彩變化代表標準化的使用密度。 按下地圖中的 [首頁] 按鈕可還原為原始檢視。
+**依地理位置**熱度圖的正規化使用量會顯示根據客戶國家/地區對應的使用時數。 國家/區域的色彩變化代表標準化的使用密度。 按下地圖中的 [首頁] 按鈕可還原為原始檢視。
 
 ### <a name="usage-by-offers"></a>依供應項目的使用量
 
@@ -61,9 +61,9 @@ ms.locfileid: "88245327"
 - 橫條圖會描述所選日期範圍的每月成長趨勢。 月份資料行代表個別月份使用時數最高的供應項目的使用時數。 折線圖描述繪製在次要 Y 軸上的成長百分比趨勢。
 - 使用圖表頂端的滑杆，沿著 X 軸由右向左捲動，並/或將焦點放在特定資料點。
 
-### <a name="usage-trend-by-offers-and-plans"></a>依供應專案和方案的使用量趨勢
+### <a name="usage-trend-by-offers-and-plans"></a>依優惠和方案的使用量趨勢
 
-此圖表顯示所選方案的正規化使用量趨勢， (先前稱為供應專案的 Sku) 。 供應項目排行榜會顯示前 50 個使用量最高的供應項目，依使用時數排序。 [方案排行榜] 會顯示前50方案，其中包含所選供應專案的最高使用量。
+此圖表會顯示所選方案的標準化使用量趨勢， (先前稱為供應專案的 Sku) 。 供應項目排行榜會顯示前 50 個使用量最高的供應項目，依使用時數排序。 [方案排行榜] 會顯示所選供應專案使用量最高的前50計畫。
 
 ### <a name="usage-by-offer-type"></a>以供應項目類型的使用量
 
@@ -73,7 +73,7 @@ ms.locfileid: "88245327"
 
 ### <a name="usage-by-vm-size"></a>依 VM 大小的使用量
 
-此圖表代表所選 VM 大小的使用趨勢， (所有供應專案/方案的最大五個) 。 直條圖會以所選 VM 大小的使用時數來堆疊。
+此圖表表示所選 VM 大小的使用量趨勢， (所有供應專案/方案的最多五個) 。 直條圖會以所選 VM 大小的使用時數堆疊。
 
 排行榜會顯示最高使用量的前 50 個 VM 大小，並依使用時數排序。
 
@@ -108,11 +108,11 @@ ms.locfileid: "88245327"
 [計量付費使用量] 索引標籤會顯示供應項目類型的使用量資訊，其中使用量是根據計量維度測量而得。 目前顯示的是 SaaS 供應項目類型超額部分。 此索引標籤會將 SaaS 計量付費使用量的超額趨勢以圖形表示：
 
 - **依計量維度的超額趨勢**：顯示供應項目其所選計量維度的每月超額趨勢。 X 軸代表月份，而 Y 軸代表使用數量。 自訂計量的測量單位也會顯示在 Y 軸上。
-- **依計畫的超額趨勢**：代表所選計量維度依方案的使用數量趨勢。 顯示的方案將代表所選供應專案使用量最高的前五個計畫。
+- **依方案的超額趨勢**：依方案表示所選計量維度的使用量趨勢。 所顯示的方案將代表選取的供應專案使用量最高的前五個方案。
 - **前 50 名客戶的超額趨勢**：在***排行榜***上顯示前 50 名使用時數最高的供應項目，依客戶計量的最高使用量排名。 選取排行榜中的客戶可檢視所選計量維度的使用趨勢。
 - **高排名客戶的的超額趨勢**：列出佔總使用量百分比的高排名客戶百分位數。 沿著 X 軸會顯示高排名客戶的百分位數，由客戶的使用數量決定。 Y 軸會顯示使用數量。 將滑鼠暫留在折線圖的點上可顯示詳細資料。
 
-如果您有多個使用自訂計量的供應專案，計量付費使用量報表會根據其自訂計量維度，顯示您所有供應專案的使用量資訊。
+如果您有多個使用自訂計量的供應專案，計量付費使用量報表會根據其自訂計量維度顯示所有供應專案的使用量資訊。
 
 > [!NOTE]
 > 系統會針對頁面篩選條件所選取的任何計量維度，顯示此頁面上的使用量詳細資料和所有圖表。

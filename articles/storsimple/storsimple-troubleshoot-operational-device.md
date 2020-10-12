@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056484"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>可運作的 StorSimple 裝置疑難排解
@@ -45,7 +45,7 @@ ms.locfileid: "90056484"
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>在安裝精靈後續執行期間發生的錯誤
 下表說明當您在可運作的裝置上執行安裝精靈時可能遇到的錯誤、產生錯誤的可能原因，以及建議用來解決這些錯誤的動作。 
 
-| 不會。 | 錯誤訊息或情況 | 可能的原因 | 建議的動作 |
+| 否。 | 錯誤訊息或情況 | 可能的原因 | 建議的動作 |
 |:--- |:--- |:--- |:--- |
 | 1 |錯誤 350032：此裝置已經停用。 |如果您在已停用的裝置上執行安裝精靈，就會看到這個錯誤。 |[連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) 以進行後續步驟。 已停用的裝置無法處於執行狀態。 您可能需要進行原廠重設，裝置才能再次啟用。 |
 | 2 |Invoke-HcsSetupWizard：ERROR_INVALID_FUNCTION (發生例外狀況於 HRESULT：0x80070001) |DNS 伺服器更新失敗。 DNS 設定是全域設定，並會在所有已啟用的網路介面上加以套用。 |啟用介面並重新套用 DNS 設定。 因為這些設定是全域的，所以這樣做可能會中斷其他已啟用介面的網路。 |
@@ -63,7 +63,7 @@ ms.locfileid: "90056484"
 | 390061 |系統忙碌或無法使用。 |請等候幾分鐘，然後再次嘗試。 如果問題持續發生，請連絡 Microsoft 支援服務以進行後續步驟。 |
 | 390143 |發生錯誤碼為 390143 的錯誤。 (未知的錯誤。) |如果問題持續發生，請連絡 Microsoft 支援服務以進行後續步驟。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如果您無法解決問題，請 [連絡 Microsoft 支援服務](storsimple-contact-microsoft-support.md) ，尋求協助。 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285378"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>藉由新增更多背景工作節點來向外擴充您的 Azure Arc 啟用的于 postgresql 超大規模伺服器群組
@@ -46,7 +46,7 @@ ms.locfileid: "91285378"
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-例如：
+例如：\
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -152,7 +152,7 @@ azdata arc postgres server edit -n <server group name> -w <target number of work
 ```
 
 > [!CAUTION]
-> 預覽版本不支援相應縮小。 例如，您尚無法減少背景工作節點的數目。 如果您需要這樣做，您需要解壓縮/備份資料、卸載伺服器群組、使用較少的背景工作節點建立新的伺服器群組，然後再匯入資料。
+> 預覽版本不支援縮減回原本的規模。 例如，目前還無法減少背景工作角色節點的數目。 如果您需要執行此動作，您必須擷取/備份資料、卸載伺服器群組、建立具有較少背景工作角色節點的新伺服器群組，然後匯入資料。
 
 在此範例中，我們會執行下列命令，以將背景工作節點數目從2增加為4：
 

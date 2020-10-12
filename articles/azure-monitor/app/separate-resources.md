@@ -4,10 +4,10 @@ description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258715"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>我應該部署多少 Application Insights 資源
@@ -41,7 +41,7 @@ ms.locfileid: "88258715"
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動態檢測金鑰
 
-為了讓您在程式碼于生產階段之間移動時更容易變更 ikey，請在程式碼中以動態方式參考金鑰，而不是使用硬式編碼/靜態值。
+若要在程式碼于生產階段之間移動時更輕鬆地變更 ikey，請在程式碼中以動態方式參考金鑰，而不是使用硬式編碼的/靜態值。
 
 在初始化方法中設定金鑰，例如 ASP.NET 服務中的 global.aspx.cs：
 

@@ -1,6 +1,6 @@
 ---
 title: 將 SLE VM 加入 Azure AD Domain Services |Microsoft Docs
-description: 瞭解如何設定 SUSE Linux Enterprise 虛擬機器並將其加入 Azure AD Domain Services 受控網域。
+description: 瞭解如何設定 SUSE Linux Enterprise 虛擬機器，並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: iainfou
 ms.openlocfilehash: 9f50be95e456802c6ad403acd6a2f539780e53a2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88251163"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 SUSE Linux Enterprise 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
-若要讓使用者能夠使用一組認證來登入虛擬機器 (Azure 中) 的 Vm，您可以將 Vm 加入 Azure Active Directory Domain Services (Azure AD DS) 受控網域。 當您將 VM 加入 Azure AD DS 受控網域時，可以使用網域中的使用者帳戶和認證來登入和管理伺服器。 也會套用來自受控網域的群組成員資格，讓您控制對 VM 上檔案或服務的存取。
+若要讓使用者使用一組認證來登入 Azure 中的虛擬機器 (Vm) ，您可以將 Vm 加入至 Azure Active Directory Domain Services (Azure AD DS) 受控網域。 當您將 VM 加入 Azure AD DS 受控網域時，網域中的使用者帳戶和認證可以用來登入及管理伺服器。 也會套用來自受控網域的群組成員資格，讓您控制對 VM 上檔案或服務的存取。
 
 本文說明如何將 SUSE Linux Enterprise (SLE) VM 加入受控網域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -37,30 +37,30 @@ ms.locfileid: "88251163"
 
 ## <a name="create-and-connect-to-a-sle-linux-vm"></a>建立並連接到 SLE Linux VM
 
-如果您在 Azure 中有現有的 SLE Linux VM，請使用 SSH 連接到它，然後繼續進行下一個步驟以 [開始設定 VM](#configure-the-hosts-file)。
+如果您在 Azure 中有現有的 SLE Linux VM，請使用 SSH 連接到該 VM，然後繼續進行下一個步驟，以 [開始設定 VM](#configure-the-hosts-file)。
 
-如果您需要建立 SLE Linux VM，或想要建立要與本文搭配使用的測試 VM，您可以使用下列其中一種方法：
+如果您需要建立 SLE Linux VM，或想要建立測試 VM 以便與本文搭配使用，您可以使用下列其中一種方法：
 
 * [Azure 入口網站](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-當您建立 VM 時，請注意虛擬網路設定，以確保 VM 可以與受控網域進行通訊：
+當您建立 VM 時，請注意虛擬網路設定，以確保 VM 可以與受控網域通訊：
 
-* 將 VM 部署到已啟用 Azure AD Domain Services 的相同或對等互連虛擬網路中。
-* 將 VM 部署到與您的 Azure AD Domain Services 受控網域不同的子網。
+* 將 VM 部署到您已在其中啟用 Azure AD Domain Services 的相同或對等互連虛擬網路。
+* 將 VM 部署到與您 Azure AD Domain Services 受控網域不同的子網中。
 
-部署 VM 之後，請遵循使用 SSH 連接到 VM 的步驟。
+部署 VM 之後，請遵循下列步驟以使用 SSH 連線到 VM。
 
 ## <a name="configure-the-hosts-file"></a>設定 hosts 檔案
 
-為確保受控網域已正確設定 VM 主機名稱，請編輯 */etc/hosts* 檔案，並設定主機名稱：
+若要確定已正確設定受控網域的 VM 主機名稱，請編輯 */etc/hosts* 檔案，並設定主機名稱：
 
 ```console
 sudo vi /etc/hosts
 ```
 
-在 *hosts* 檔案中，更新 *localhost* 位址。 在下例中︰
+在 *主機* 檔案中，更新 *localhost* 位址。 在下例中︰
 
 * *aaddscontoso.com* 是受控網域的 DNS 功能變數名稱。
 * *linux-q2gr* 是您要加入受控網域之 SLE VM 的主機名稱。
@@ -71,7 +71,7 @@ sudo vi /etc/hosts
 127.0.0.1 linux-q2gr linux-q2gr.aaddscontoso.com
 ```
 
-完成時，請使用編輯器的命令來儲存並結束 *hosts* 檔案 `:wq` 。
+完成時，請使用編輯器的命令儲存和結束 *主機* 檔案 `:wq` 。
 
 ## <a name="join-vm-to-the-managed-domain-using-sssd"></a>使用 SSSD 將 VM 加入受控網域
 
@@ -85,17 +85,17 @@ sudo vi /etc/hosts
 
 1. 開啟 YaST。
 
-1. 若要在稍後成功使用 DNS 自動搜索，請將受控網域 IP 位址設定 (*Active Directory 伺服器*) 做為用戶端的名稱伺服器。
+1. 若要在稍後成功使用 DNS 自動探索，請將受控網域 IP 位址設定 (*Active Directory 伺服器*) 作為用戶端的名稱伺服器。
 
-    在 [YaST] 中，選取 [ **系統 > 網路設定**]。
+    在 YaST 中，選取 [ **系統 > 網路設定**]。
 
-1. 選取 [ *主機名稱/DNS* ] 索引標籤，然後在文字方塊 *名稱伺服器 1*中輸入受控網域 (es) 的 IP 位址。 這些 IP 位址會顯示在受控網域之 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
+1. 選取 [ *主機名稱/DNS* ] 索引標籤，然後在文字方塊 *名稱伺服器 1*中輸入受控網域的 IP 位址 (es) 。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
 
     新增您自己的受控網域 IP 位址，然後選取 **[確定]**。
 
-1. 從 [YaST] 主視窗中，選擇 [*網絡服務*  >  *使用者登入管理*]。
+1. 從 YaST 主視窗中，選擇 [*網路服務*  >  *使用者登入管理*]。
 
-    此模組隨即開啟，其中會顯示您電腦的不同網路屬性和目前使用中的驗證方法，如下列範例螢幕擷取畫面所示：
+    此課程模組隨即開啟，其中會顯示您電腦的不同網路屬性和目前使用中的驗證方法，如下列範例螢幕擷取畫面所示：
 
     ![YaST 中 [使用者登入管理] 視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/overview-window.png)
 
@@ -103,9 +103,9 @@ sudo vi /etc/hosts
 
 若要將 VM 加入受控網域，請完成下列步驟：
 
-1. 在對話方塊中，選取 [ **新增網域**]。
+1. 在對話方塊中，選取 [ **加入定義域**]。
 
-1. 指定正確的 *功能變數名稱*（例如 *aaddscontoso.com*），然後指定要用於識別資料和驗證的服務。 同時選取 [ *Microsoft Active Directory* ]。
+1. 指定正確的 *功能變數名稱*（例如 *aaddscontoso.com*），然後指定用於識別資料和驗證的服務。 針對兩者選取 [ *Microsoft Active Directory* ]。
 
     請確定已選取 [ *啟用網域* ] 的選項。
 
@@ -115,69 +115,69 @@ sudo vi /etc/hosts
 
 1. VM 會視需要安裝其他軟體，然後檢查受控網域是否可用。
 
-    如果所有專案都正確，則會顯示下列範例對話方塊，指出 VM 已探索到受控網域，但您尚未 *註冊*。
+    如果一切都正確，則會顯示下列範例對話方塊，指出 VM 已探索到受控網域，但您尚未 *註冊*。
 
-    ![YaST 中 [Active Directory 註冊] 視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/enroll-window.png)
+    ![YaST 中 Active Directory 註冊視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/enroll-window.png)
 
-1. 在對話方塊中，指定隸屬于受控網域的使用者 *名稱* 和 *密碼* 。 如有需要，請 [將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 在對話方塊中，指定屬於受控網域一部分之使用者的使用者 *名稱* 和 *密碼* 。 如有需要，請 [將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    若要確定已針對 Samba 啟用目前的網域，請啟用 [ *覆寫 Samba 設定] 以與此 AD 搭配*使用。
+    若要確定已針對 Samba 啟用目前的網域，請啟用 *覆寫 samba 設定以與此 AD 搭配運作*。
 
 1. 若要註冊，請選取 **[確定]**。
 
 1. 系統會顯示一則訊息，確認您已成功註冊。 若要完成，請選取 **[確定]**。
 
-在受控網域中註冊 VM 之後，使用 [ *管理網域使用者登*入] 來設定用戶端，如下列範例螢幕擷取畫面所示：
+在受控網域中註冊 VM 之後，請使用 [ *管理網域使用者登*入] 設定用戶端，如下列範例螢幕擷取畫面所示：
 
 ![YaST 中 [管理網域使用者登入] 視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/manage-domain-user-logon-window.png)
 
-1. 若要允許使用受控網域所提供的資料登入，請核取 [ *允許網域使用者登*入] 核取方塊。
+1. 若要允許使用受控網域提供的資料進行登入，請核取 [ *允許網域使用者登*入] 的核取方塊。
 
-1. （選擇性）在 [ *啟用網域資料來源*] 下，視您的環境需要檢查其他資料來源。 這些選項包括允許哪些使用者使用 **sudo** ，或哪些網路磁碟機機可供使用。
+1. （選擇性）在 [ *啟用網域資料來源*] 下，視您的環境需要檢查額外的資料來源。 這些選項包括允許使用 **sudo** 的使用者，或可使用的網路磁碟機機。
 
-1. 若要讓受控網域中的使用者擁有 VM 上的主目錄，請核取 [ *建立主目錄*] 的方塊。
+1. 若要允許受控網域中的使用者具有 VM 上的主目錄，請核取 [ *建立主目錄*] 的方塊。
 
-1. 從側邊列中，依序選取 [ **服務選項] [›名稱**] 和 [ *擴充選項*]。 從該視窗中，選取 [ *fallback_homedir* ] 或 [ *override_homedir*]，然後選取 [ **新增**]。
+1. 從側邊列選取 [ **服務選項›名稱切換**]，然後選取 [ *擴充選項*]。 在該視窗中，選取 [ *fallback_homedir* ] 或 [ *override_homedir*]，然後選取 [ **新增**]。
 
-1. 指定主目錄位置的值。 若要讓主目錄遵循 */home/USER_NAME*的格式，請使用 */home/%u*。 如需可能變數的詳細資訊，請參閱 (`man 5 sssd.conf`) ，一節 *override_homedir*中的 sssd man 頁面。
+1. 指定主目錄位置的值。 若要讓主目錄遵循 */home/USER_NAME*的格式，請使用 */home/%u*。 如需可能變數的詳細資訊，請參閱 sssd 中的「 (」 `man 5 sssd.conf` 一節 *override_homedir*的) 。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
-1. 若要儲存變更，請選取 **[確定]**。 然後，請確定顯示的值現在是正確的。 若要離開對話方塊，請選取 [ **取消**]。
+1. 若要儲存變更，請選取 **[確定]**。 然後，請確定顯示的值是正確的。 若要離開對話方塊，請選取 [ **取消**]。
 
-1. 如果您想要同時執行 SSSD 和 Winbind (例如透過 SSSD 聯結，但接著在) 中執行 Samba 檔案伺服器，則必須將 Samba 選項 *kerberos 方法* 設定為在 smb 中的 *秘密和 keytab* 。 SSSD 選項 *ad_update_samba_machine_account_password* 也應該在 SSSD 中設定為 *true* 。 這些選項會防止系統 keytab 同步。
+1. 如果您想要同時執行 SSSD 和 Winbind (例如透過 SSSD 聯結，然後執行 Samba 檔案伺服器) ，則必須將 Samba 選項 *kerberos 方法* 設定為 *秘密，並* 在中設定 keytab。 SSSD 選項 *ad_update_samba_machine_account_password* 在 SSSD 中也應該設定為 *true* 。 這些選項會防止系統 keytab 同步。
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind"></a>使用 Winbind 將 VM 加入受控網域
 
 若要使用 **winbind** 和 YaST 的 *Windows 網域成員資格* 模組來加入受控網域，請完成下列步驟：
 
-1. 在 [YaST] 中，選取 [ **網絡服務 > Windows 網域成員資格**]。
+1. 在 YaST 中，選取 [ **網路服務] > Windows 網域成員資格**]。
 
-1. 在 [ *Windows 網域成員資格*] 畫面中，輸入要加入*網域或工作組*的網域。 輸入受控功能變數名稱，例如 *aaddscontoso.com*。
+1. 在 [ *Windows 網域成員資格*] 畫面中，輸入網域*或工作組*要加入的網域。 輸入受控功能變數名稱，例如 *aaddscontoso.com*。
 
     ![YaST 中 Windows 網域成員資格視窗的範例螢幕擷取畫面](./media/join-suse-linux-vm/samba-client-window.png)
 
-1. 若要使用 SMB 來源進行 Linux 驗證，請核取 [ *使用適用于 Linux 驗證的 Smb 資訊*] 選項。
+1. 若要使用 SMB 來源進行 Linux 驗證，請核取 [ *使用 Smb 資訊進行 Linux 驗證*] 的選項。
 
-1. 若要在 VM 上自動建立受控網域使用者的本機主目錄，請核取 [ *登入時建立主目錄*] 選項。
+1. 若要在 VM 上自動建立受控網域使用者的本機主目錄，請核取 [ *登入時建立主目錄*] 的選項。
 
-1. 核取 [ *離線驗證* ] 的選項，以允許您的網域使用者登入，即使受控網域暫時無法使用也是如此。
+1. 檢查 *離線驗證* 的選項，以允許您的網域使用者登入，即使受控網域暫時無法使用。
 
 1. 如果您想要變更 Samba 使用者和群組的 UID 和 GID 範圍，請選取 [ *專家設定*]。
 
-1. 藉由選取 [ *ntp*設定]，為您的受控網域設定 ntp 時間同步處理。 輸入受控網域的 IP 位址。 這些 IP 位址會顯示在受控網域之 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
+1. 選取 [ *ntp*設定]，為您的受控網域設定 ntp 時間同步處理。 輸入受控網域的 IP 位址。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
 
 1. 選取 **[確定]** ，並在出現提示時確認加入網域。
 
-1. 提供受控網域中系統管理員的密碼，然後選取 **[確定]**。
+1. 提供受控網域中的系統管理員密碼，然後選取 **[確定]**。
 
-    ![將 SLE VM 加入受控網域時，驗證對話方塊提示的範例螢幕擷取畫面](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
+    ![當您將 SLE VM 加入受控網域時，驗證對話提示的範例螢幕擷取畫面](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
-加入受控網域之後，您可以使用桌面或主控台的 [顯示管理員]，從您的工作站登入。
+加入受控網域之後，您可以使用桌面或主控台的顯示管理員，從您的工作站登入。
 
 ## <a name="allow-password-authentication-for-ssh"></a>允許 SSH 的密碼驗證
 
-根據預設，使用者只能使用 SSH 公用金鑰驗證來登入 VM。 以密碼為基礎的驗證失敗。 當您將 VM 加入受控網域時，這些網域帳戶必須使用密碼型驗證。 將 SSH 設定更新為允許以密碼為基礎的驗證，如下所示。
+根據預設，使用者只能使用以 SSH 公開金鑰為基礎的驗證來登入 VM。 以密碼為基礎的驗證失敗。 當您將 VM 加入受控網域時，這些網域帳戶必須使用密碼型驗證。 更新 SSH 設定以允許以密碼為基礎的驗證，如下所示。
 
 1. 使用編輯器開啟 *sshd_conf* 檔案：
 
@@ -185,7 +185,7 @@ sudo vi /etc/hosts
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. 將 *passwordauthentication 開頭* 的行更新為 *[是]*：
+1. 將 *>passwordauthentication* 的行更新為 *[是]*：
 
     ```console
     PasswordAuthentication yes
@@ -201,7 +201,7 @@ sudo vi /etc/hosts
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>授與 'AAD DC Administrators' 群組 sudo 權限
 
-若要為 *AAD DC 系統管理員* 群組授與 SLE VM 上系統管理許可權的成員，請在 */etc/sudoers*中新增一個專案。 新增之後， *AAD DC 系統管理員* 群組的成員就可以 `sudo` 在 SLE VM 上使用命令。
+若要將 SLE VM 的系統管理許可權授與 *AAD DC 系統管理員* 群組的成員，請將專案新增至 */etc/sudoers*。 新增之後， *AAD DC 系統管理員* 群組的成員可以使用 `sudo` SLE VM 上的命令。
 
 1. 開啟 *sudoers* 檔案進行編輯：
 
@@ -220,23 +220,23 @@ sudo vi /etc/hosts
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>使用網域帳戶登入 VM
 
-若要確認 VM 已成功加入受控網域，請使用網域使用者帳戶啟動新的 SSH 連線。 確認已建立主目錄，並已套用網域的群組成員資格。
+若要確認已成功將 VM 加入受控網域，請使用網域使用者帳戶啟動新的 SSH 連線。 確認已建立主目錄，並套用網域的群組成員資格。
 
-1. 從您的主控台建立新的 SSH 連線。 使用屬於受控網域的網域帳戶（ `ssh -l` 例如）， `contosoadmin@aaddscontoso.com` 然後輸入您 VM 的位址，例如 *linux-q2gr.aaddscontoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
+1. 從您的主控台建立新的 SSH 連線。 使用屬於受控網域的網域帳戶 `ssh -l` （例如）， `contosoadmin@aaddscontoso.com` 然後輸入 VM 的位址，例如 *linux-q2gr.aaddscontoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com linux-q2gr.aaddscontoso.com
     ```
 
-2. 當您成功連線到 VM 時，請確認已正確初始化主目錄：
+2. 當您成功連線至 VM 時，請確認已正確初始化主目錄：
 
     ```console
     pwd
     ```
 
-    您應該會在 */home* 目錄中，其中包含符合使用者帳戶的專屬目錄。
+    您應該會在 */home* 目錄中，並在您自己的目錄中與使用者帳戶相符。
 
-3. 現在檢查是否已正確解析群組成員資格：
+3. 現在，請檢查是否已正確解析群組成員資格：
 
     ```console
     id
@@ -244,7 +244,7 @@ sudo vi /etc/hosts
 
     您應該會看到來自受控網域的群組成員資格。
 
-4. 如果您已以 *AAD DC 系統管理員* 群組的成員身分登入 VM，請檢查您是否可以正確地使用 `sudo` 命令：
+4. 如果您以 *AAD DC 系統管理員* 群組的成員身分登入 VM，請確認您可以正確地使用 `sudo` 下列命令：
 
     ```console
     sudo zypper update
@@ -252,7 +252,7 @@ sudo vi /etc/hosts
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在將 VM 連線到受控網域或使用網域帳戶登入時發生問題，請參閱針對 [網域加入問題進行疑難排解](join-windows-vm.md#troubleshoot-domain-join-issues)。
+如果您在將 VM 連接到受控網域或以網域帳戶登入時發生問題，請參閱 [疑難排解網域加入問題](join-windows-vm.md#troubleshoot-domain-join-issues)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

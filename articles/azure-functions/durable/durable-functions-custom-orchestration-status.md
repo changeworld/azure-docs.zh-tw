@@ -5,20 +5,20 @@ ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: azfuncdf
 ms.openlocfilehash: bb5c6ee15a5a445b4b762bd9eaf8919e1396f8ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081826"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自訂協調流程狀態 (Azure Functions)
 
-自訂協調流程狀態可讓您為協調器函式設定自訂狀態值。 此狀態是透過[HTTP GETSTATUS API](durable-functions-http-api.md#get-instance-status)或協調流程用戶端上的[ `GetStatusAsync` api](durable-functions-instance-management.md#query-instances)提供。
+自訂協調流程狀態可讓您為協調器函式設定自訂狀態值。 此狀態是透過[HTTP GETSTATUS API](durable-functions-http-api.md#get-instance-status)或協調流程用戶端上的[ `GetStatusAsync` api](durable-functions-instance-management.md#query-instances)所提供。
 
 ## <a name="sample-use-cases"></a>範例使用案例
 
 > [!NOTE]
-> 下列範例示範如何使用 c #、JavaScript 和 Python 中的自訂狀態功能。 C # 範例是針對 Durable Functions 2.x 而撰寫的，與 Durable Functions 1.x 不相容。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 下列範例示範如何在 c #、JavaScript 和 Python 中使用自訂狀態功能。 C # 範例是針對 Durable Functions 2.x 撰寫的，與 Durable Functions 1.x 不相容。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 ### <a name="visualize-progress"></a>進度視覺化
 
@@ -53,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`E1_HelloSequence`協調器函式：
+`E1_HelloSequence` 協調器函式：
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello`活動函式：
+`E1_SayHello` 活動函式：
 
 ```javascript
 module.exports = async function(context, name) {
@@ -82,7 +82,7 @@ module.exports = async function(context, name) {
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence`協調器函式
+### <a name="e1_hellosequence-orchestrator-function"></a>`E1_HelloSequence` 協調器函式
 ```python
 import azure.functions as func
 import azure.durable_functions as df
@@ -102,7 +102,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-### <a name="e1_sayhello-activity-function"></a>`E1_SayHello`活動函式
+### <a name="e1_sayhello-activity-function"></a>`E1_SayHello` 活動函式
 ```python
 def main(name: str) -> str:
     return f"Hello {name}!"
@@ -201,7 +201,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 ```
 
 > [!NOTE]
-> 在 Python 中， `custom_status` 會在排程下一個或動作時設定此欄位 `yield` `return` 。
+> 在 Python 中， `custom_status` 系統會在排定下一個或動作時設定欄位 `yield` `return` 。
 
 ---
 
@@ -249,7 +249,7 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`orchestrator
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` 協調
 
 ```javascript
 const df = require("durable-functions");
@@ -284,7 +284,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-#### <a name="cityrecommender-orchestrator"></a>`CityRecommender`orchestrator
+#### <a name="cityrecommender-orchestrator"></a>`CityRecommender` 協調
 
 ```python
 import azure.functions as func
@@ -475,9 +475,9 @@ GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
 > [!WARNING]
-> 自訂狀態承載僅限為 16 KB 的 UTF-16 JSON 文字，因為它必須符合 Azure 資料表儲存體資料行的大小。 如果您需要較大的承載，建議使用外部儲存體。
+> 自訂狀態承載僅限為 16 KB 的 UTF-16 JSON 文字，因為它必須符合 Azure 資料表儲存體資料行的大小。 如果您需要較大的承載，建議您使用外部儲存體。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [瞭解持久計時器](durable-functions-timers.md)

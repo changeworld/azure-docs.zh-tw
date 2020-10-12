@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
 ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082098"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>使用入口網站從不同的部署模型連接虛擬網路
@@ -99,7 +99,7 @@ SKU = VpnGw1 <br>
 ### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> 設定本機網站
 
 1. 瀏覽至 [所有資源]****，並且在清單中找出 **ClassicVNet**。
-2. 在功能表的 [**設定**] 區段中，按一下 [**閘道**]，然後按一下橫幅以建立閘道。
+2. 在功能表的 [**設定**] 區段中按一下 [**閘道**]，然後按一下橫幅以建立閘道。
   ![設定 VPN 閘道](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "設定 VPN 閘道")
 3. 在 [新增 VPN 連線]**** 頁面上，針對 [連線類型]**** 選取 [站對站]****。
 4. 針對 [本機站台]****，按一下 [設定必要設定]****。 這會開啟 [本機網站]**** 頁面。
@@ -113,14 +113,14 @@ SKU = VpnGw1 <br>
 1. 在 [新增 VPN 連線]**** 頁面上，選取 [立即建立閘道]**** 核取方塊。
 2. 按一下 [選擇性閘道組態]**** 可開啟 [閘道組態]**** 頁面。
 
-   ![[開啟閘道設定] 頁面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[開啟閘道設定] 頁面")
+   ![開啟閘道設定頁面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "開啟閘道設定頁面")
 3. 按一下 [子網路 - 設定必要設定]**** 以開啟 [新增子網路]**** 頁面。 [名稱]**** 已使用必要值 **GatewaySubnet** 進行設定。
 4. [位址範圍]**** 指的是閘道子網路的範圍。 雖然您可以使用 /29 位址範圍 (3 個位址) 建立閘道子網路，但是我們建議您建立包含更多 IP 位址的閘道子網路。 這可以容納未來可能需要更多可用 IP 位址的組態。 可能的話，請使用 /27 或 /28。 如果您使用這些步驟作為練習，您可以參考[範例值](#values)。 在此範例中，我們使用 '10.0.0.32/28'。 按一下 [確定]**** 以建立閘道子網路。
 5. 在 [閘道設定]**** 頁面上，[大小]**** 指的是閘道 SKU。 選取您 VPN 閘道的閘道 SKU。
 6. 確認 [路由類型]**** 是 [動態]****，然後按一下 [確定]**** 以返回 [新增 VPN 連線]**** 頁面。
 7. 在 [新增 VPN 連線]**** 頁面上，按一下 [確定]**** 以開始建立您的 VPN 閘道。 建立 VPN 閘道可能需要 45 分鐘的時間才能完成。
 
-### <a name="4-copy-the-virtual-network-gateway-public-ip-address"></a><a name="ip"></a>4. 複製虛擬網路閘道公用 IP 位址
+### <a name="4-copy-the-virtual-network-gateway-public-ip-address"></a><a name="ip"></a>4. 複製虛擬網路閘道的公用 IP 位址
 
 建立虛擬網路閘道之後，您可以檢視閘道 IP 位址。 
 
@@ -193,10 +193,10 @@ SKU = VpnGw1 <br>
    ![網站名稱](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "本機網站名稱")
 5. 在您本機站台的 [連線] 頁面上，按一下本機站台的名稱以開啟 [本機站台]**** 頁面。
 
-   ![開放-本機-網站](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "開啟本機網站")
+   ![開啟-本機網站](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "開啟本機網站")
 6. 在 [本機網站]**** 頁面上，使用 Resource Manager 閘道的 IP 位址取代 [VPN 閘道 IP 位址]****。
 
-   ![閘道-ip 位址](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "閘道 IP 位址")
+   ![閘道 ip 位址](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "閘道 IP 位址")
 7. 按一下 [確定]**** 以更新 IP 位址。
 
 ## <a name="section-4---create-resource-manager-to-classic-connection"></a><a name="RMtoclassic"></a>第 4 節 - 建立 Resource Manager 與傳統的連線

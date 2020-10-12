@@ -10,10 +10,10 @@ ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080449"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 擴展集 VM 的執行個體識別碼
@@ -27,7 +27,7 @@ REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/res
 
 Powershell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (如需詳細資訊，請參閱 [Powershell 文件](/powershell/module/az.compute/set-azvmssvm) \(英文\))
 
-CLI： `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` （如需詳細資訊，請參閱[CLI 檔](/cli/azure/vmss?view=azure-cli-latest)）。
+CLI： `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (如需詳細資訊，請參閱 [CLI 檔](/cli/azure/vmss?view=azure-cli-latest)) 。
 
 您可以列出擴展集中的所有執行個體，以取得執行個體識別碼的清單：
 
@@ -35,7 +35,7 @@ REST API：`GET https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 Powershell：`Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (如需詳細資訊，請參閱 [Powershell 文件](/powershell/module/az.compute/get-azvmssvm) \(英文\))
 
-CLI： `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` （如需詳細資訊，請參閱[CLI 檔](/cli/azure/vmss?view=azure-cli-latest)）。
+CLI： `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (如需詳細資訊，請參閱 [CLI 檔](/cli/azure/vmss?view=azure-cli-latest)) 。
 
 您也可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/) 來列出擴展集中的 VM。
 
@@ -66,7 +66,7 @@ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 在上述範例輸出中，還有 VM 的 "name"。 此名稱採用 "{scale-set-name}_{instance-id}" 形式。 當您列出擴展集中的執行個體時，您就會在 Azure 入口網站中看到這個名稱：
 
-![顯示 Azure 入口網站中虛擬機器擴展集之實例清單的螢幕擷取畫面。](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![顯示 Azure 入口網站中虛擬機器擴展集實例清單的螢幕擷取畫面。](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 名稱的 {instance-id} 部分與先前所討論的 "instanceId" 屬性是相同的十進位數字。
 
