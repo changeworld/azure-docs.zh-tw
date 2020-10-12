@@ -12,20 +12,20 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
 ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85558040"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用受控識別
 
-本文說明如何建立 Azure API 管理實例的受控識別，以及如何存取其他資源。 Azure Active Directory （Azure AD）所產生的受控識別，可讓您的 API 管理實例輕鬆且安全地存取其他受 Azure AD 保護的資源，例如 Azure Key Vault。 Azure 會管理此身分識別，因此您不需要布建或輪替任何秘密。 如需受控識別的詳細資訊，請參閱[什麼是適用于 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。
+本文說明如何建立 Azure API 管理實例的受控識別，以及如何存取其他資源。 由 Azure Active Directory (Azure AD) 產生的受控識別可讓您的 API 管理實例輕鬆且安全地存取其他受 Azure AD 保護的資源，例如 Azure Key Vault。 Azure 會管理此身分識別，因此您不需要布建或輪替任何秘密。 如需受控識別的詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。
 
 您可以將兩種類型的身分識別授與 API 管理實例：
 
-- *系統指派*的身分識別會系結至您的服務，如果您的服務遭到刪除，則會予以刪除。 服務只能有一個系統指派的身分識別。
-- *使用者指派*的身分識別是一種獨立的 Azure 資源，可指派給您的服務。 服務可以有多個使用者指派的身分識別。
+- *系統指派*的身分識別會系結至您的服務，如果您的服務已刪除，則會將其刪除。 服務只能有一個系統指派的身分識別。
+- *使用者指派*的身分識別是可指派給您服務的獨立 Azure 資源。 服務可以有多個使用者指派的身分識別。
 
 ## <a name="create-a-system-assigned-managed-identity"></a>建立系統指派的受控識別
 
@@ -33,9 +33,9 @@ ms.locfileid: "85558040"
 
 若要在 Azure 入口網站中設定受控識別，您必須先建立 API 管理實例，然後再啟用此功能。
 
-1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該檔案。
-2. 選取 [**受控**識別]。
-3. 在 [**系統指派**] 索引標籤上，將 [**狀態**] 切換為**開啟**。 選取 [儲存]。
+1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該網站。
+2. 選取 [ **受控**識別]。
+3. 在 [ **系統指派** ] 索引標籤上，將 [ **狀態** ] 切換為 **開啟**。 選取 [儲存]****。
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="啟用系統指派的受控識別的選取專案" border="true":::
 
@@ -44,11 +44,11 @@ ms.locfileid: "85558040"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-下列步驟會逐步引導您建立 API 管理實例，並使用 Azure PowerShell 為其指派身分識別。 
+下列步驟將逐步引導您建立 API 管理實例，並使用 Azure PowerShell 為其指派身分識別。 
 
-1. 如有需要，請使用[Azure PowerShell 指南](/powershell/azure/install-az-ps)中的指示來安裝 Azure PowerShell。 然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
+1. 如有需要，請使用 [Azure PowerShell 指南](/powershell/azure/install-az-ps)中的指示來安裝 Azure PowerShell。 然後執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-2. 使用下列程式碼來建立實例。 如需如何搭配 API 管理實例使用 Azure PowerShell 的更多範例，請參閱[Api 管理 PowerShell 範例](powershell-samples.md)。
+2. 使用下列程式碼來建立實例。 如需如何搭配 API 管理實例使用 Azure PowerShell 的更多範例，請參閱 [Api 管理 PowerShell 範例](powershell-samples.md)。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -107,7 +107,7 @@ ms.locfileid: "85558040"
 }
 ```
 
-建立實例時，它具有下列其他屬性：
+建立實例時，它會有下列額外屬性：
 
 ```json
 "identity": {
@@ -117,7 +117,7 @@ ms.locfileid: "85558040"
 }
 ```
 
-`tenantId`屬性會識別身分識別所屬的 Azure AD 租使用者。 `principalId`屬性是實例新身分識別的唯一識別碼。 在 Azure AD 內，服務主體的名稱與您提供給 API 管理實例的名稱相同。
+`tenantId`屬性會識別身分識別所屬 Azure AD 租使用者。 `principalId`屬性是實例新身分識別的唯一識別碼。 在 Azure AD 中，服務主體的名稱與您提供給 API 管理實例的名稱相同。
 
 
 > [!NOTE]
@@ -128,15 +128,15 @@ ms.locfileid: "85558040"
 #### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>從 Azure Key Vault 取得 API 管理實例的自訂 TLS/SSL 憑證
 您可以使用 API 管理實例的系統指派身分識別，來取出儲存在 Azure Key Vault 中的自訂 TLS/SSL 憑證。 然後，您可以將這些憑證指派給 API 管理實例中的自訂網域。 請記住這些考量：
 
-- 密碼的內容類型必須是*application/x-pkcs12*。
-- 使用 Key Vault 憑證密碼端點，其中包含密碼。
+- 秘密的內容類型必須是 *application/x-pkcs12*。
+- 使用包含秘密的 Key Vault 憑證秘密端點。
 
 > [!Important]
-> 如果您未提供憑證的物件版本，則 API 管理會在 Key Vault 中更新之後的四個小時內自動取得憑證的較新版本。
+> 如果您未提供憑證的物件版本，API 管理會在 Key Vault 中更新後的四個小時內自動取得憑證的較新版本。
 
 下列範例顯示的 Azure Resource Manager 範本包含下列步驟：
 
-1. 建立具有受控識別的 API 管理實例。
+1. 使用受控識別建立 API 管理實例。
 2. 更新 Azure Key Vault 執行個體的存取原則，以允許「API 管理」執行個體從它取得祕密。
 3. 透過來自 Key Vault 執行個體的憑證來設定自訂網域名稱，以更新「API 管理」執行個體。
 
@@ -264,7 +264,7 @@ ms.locfileid: "85558040"
 
 #### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>使用 API 管理身分識別來驗證後端
 
-您可以使用系統指派的身分識別，透過[驗證管理](api-management-authentication-policies.md#ManagedIdentity)的身分識別原則來驗證後端。
+您可以使用系統指派的身分識別，透過 [驗證管理](api-management-authentication-policies.md#ManagedIdentity) 的身分識別原則來驗證後端。
 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別
@@ -276,22 +276,22 @@ ms.locfileid: "85558040"
 
 若要在入口網站中設定受控識別，您必須先建立 API 管理實例，然後再啟用此功能。
 
-1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該檔案。
-2. 選取 [**受控**識別]。
-3. 在 [**使用者指派**] 索引標籤上，選取 [**新增**]。
-4. 搜尋您稍早建立的身分識別，並加以選取。 選取 [新增]。
+1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該網站。
+2. 選取 [ **受控**識別]。
+3. 在 [ **使用者指派** ] 索引標籤上，選取 [ **新增**]。
+4. 搜尋您稍早建立的身分識別，然後選取它。 選取 [新增]。
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="用於啟用使用者指派受控識別的選取專案" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="啟用系統指派的受控識別的選取專案" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-下列步驟會逐步引導您建立 API 管理實例，並使用 Azure PowerShell 為其指派身分識別。 
+下列步驟將逐步引導您建立 API 管理實例，並使用 Azure PowerShell 為其指派身分識別。 
 
-1. 如有需要，請使用[Azure PowerShell 指南](/powershell/azure/install-az-ps)中的指示來安裝 Azure PowerShell。 然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
+1. 如有需要，請使用 [Azure PowerShell 指南](/powershell/azure/install-az-ps)中的指示來安裝 Azure PowerShell。 然後執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-2. 使用下列程式碼來建立實例。 如需如何搭配 API 管理實例使用 Azure PowerShell 的更多範例，請參閱[Api 管理 PowerShell 範例](powershell-samples.md)。
+2. 使用下列程式碼來建立實例。 如需如何搭配 API 管理實例使用 Azure PowerShell 的更多範例，請參閱 [Api 管理 PowerShell 範例](powershell-samples.md)。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -333,7 +333,7 @@ ms.locfileid: "85558040"
 }
 ```
 
-新增使用者指派的類型，會告訴 Azure 使用為您的實例指定的使用者指派身分識別。
+新增使用者指派的類型可告知 Azure 使用為您的實例指定的使用者指派身分識別。
 
 例如，完整的 Azure Resource Manager 範本可能看起來如下：
 
@@ -368,7 +368,7 @@ ms.locfileid: "85558040"
 }
 ```
 
-建立服務時，它具有下列其他屬性：
+建立服務時，會有下列其他屬性：
 
 ```json
 "identity": {
@@ -391,14 +391,14 @@ ms.locfileid: "85558040"
 
 #### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用使用者指派的身分識別來驗證後端
 
-您可以使用使用者指派的身分識別，透過[驗證管理](api-management-authentication-policies.md#ManagedIdentity)的身分識別原則來驗證後端。
+您可以使用使用者指派的身分識別，透過 [驗證管理](api-management-authentication-policies.md#ManagedIdentity) 的身分識別原則來向後端進行驗證。
 
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>移除身分識別
 
-您可以移除系統指派的身分識別，方法是透過入口網站或 Azure Resource Manager 範本停用該功能，方法與建立的方式相同。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請將識別類型設定為 `"None"` 。
+若要移除系統指派的身分識別，您可以透過入口網站或 Azure Resource Manager 範本停用該功能，方法與建立的方式相同。 使用者指派的身分識別可以個別移除。 若要移除所有身分識別，請將識別類型設定為 `"None"` 。
 
-以這種方式移除系統指派的身分識別，也會從 AAD 將其刪除。 系統指派的身分識別也會在 API 管理實例被刪除時，自動從 Azure AD 中移除。
+以這種方式移除系統指派的身分識別，也會從 AAD 將其刪除。 當 API 管理實例被刪除時，系統也會自動從 Azure AD 移除系統指派的身分識別。
 
 若要使用 Azure Resource Manager 範本移除所有身分識別，請更新此區段：
 
@@ -409,14 +409,14 @@ ms.locfileid: "85558040"
 ```
 
 > [!Important]
-> 如果 API 管理實例是以來自 Key Vault 的自訂 SSL 憑證設定，而您嘗試停用受控識別，則要求將會失敗。
+> 如果已使用來自 Key Vault 的自訂 SSL 憑證設定 API 管理實例，而您嘗試停用受控識別，則要求將會失敗。
 >
-> 您可以從 Azure Key Vault 憑證切換到內嵌編碼的憑證，然後停用受控識別，以解除封鎖自己。 如需詳細資訊，請參閱[設定自訂網域名稱](configure-custom-domain.md)。
+> 您可以從 Azure Key Vault 憑證切換至內嵌編碼憑證，然後停用受控識別，以解除封鎖。 如需詳細資訊，請參閱[設定自訂網域名稱](configure-custom-domain.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-深入瞭解適用于 Azure 資源的受控識別：
+深入瞭解 Azure 資源的受控識別：
 
-* [什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)
+* [什麼是 Azure 資源受控識別？](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure 資源管理員範本](https://github.com/Azure/azure-quickstart-templates)
-* [在原則中使用受控識別進行驗證](./api-management-authentication-policies.md#ManagedIdentity)
+* [使用原則中的受控識別進行驗證](./api-management-authentication-policies.md#ManagedIdentity)

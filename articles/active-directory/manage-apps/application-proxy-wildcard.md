@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367728"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 應用程式 Proxy 中的萬用字元應用程式
@@ -43,7 +43,7 @@ ms.locfileid: "85367728"
 
 如果內部和外部 URL 都是以下格式，您可以發行具有萬用字元的應用程式：
 
-> HTTP （s）：//*。\<domain\>
+> HTTP (s) ：//*。\<domain\>
 
 例如： `http(s)://*.adventure-works.com` 。
 
@@ -53,14 +53,14 @@ ms.locfileid: "85367728"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要開始使用，請確定您符合這些需求。
+若要開始使用，請確定您已符合這些需求。
 
 ### <a name="custom-domains"></a>自訂網域
 
 雖然[自訂網域](application-proxy-configure-custom-domain.md)對於所有其他應用程式是選擇性的，它們是萬用字元應用程式的必要條件。 建立自訂網域需要您：
 
 1. 在 Azure 中建立已驗證的網域。
-1. 將 TLS/SSL 憑證（PFX 格式）上傳至您的應用程式 proxy。
+1. 以 PFX 格式將 TLS/SSL 憑證上傳至您的應用程式 proxy。
 
 您應該考慮使用萬用字元憑證，以符合您打算建立的應用程式。 
 
@@ -76,17 +76,17 @@ ms.locfileid: "85367728"
 
 ## <a name="considerations"></a>考量
 
-以下是您應該考慮萬用字元應用程式的一些注意事項。
+以下是您在萬用字元應用程式中應考慮的一些事項。
 
 ### <a name="accepted-formats"></a>接受的格式
 
 針對萬用字元應用程式，**內部 URL** 必須格式化為 `http(s)://*.<domain>`。
 
-![針對 [內部 URL]，使用 HTTP （s）：//* 格式。 \<網域>](./media/application-proxy-wildcard/22.png)
+![若為內部 URL，請使用 HTTP (s 的格式) ：//*。 \<網域>](./media/application-proxy-wildcard/22.png)
 
 在設定**外部 URL** 時，您必須使用下列格式：`https://*.<custom domain>`
 
-![若為外部 URL，請使用 HTTPs://* 格式。 \<自訂網域>](./media/application-proxy-wildcard/21.png)
+![若為外部 URL，請使用格式 HTTPs://*。 \<自訂網域>](./media/application-proxy-wildcard/21.png)
 
 其他位置的萬用字元、多個萬用字元或其他 regex 字串不受支援，而且會導致錯誤。
 
@@ -103,7 +103,7 @@ ms.locfileid: "85367728"
 
 如果您使用此選項，您也需要另一個 CNAME 項目值 `AppId.domain`，例如 `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`，也指向相同的位置。 您可以在萬用字元應用程式的應用程式屬性分頁上找到 **AppId**：
 
-![在應用程式的 [屬性] 頁面上尋找應用程式識別碼](./media/application-proxy-wildcard/01.png)
+![在應用程式的屬性頁面上尋找應用程式識別碼](./media/application-proxy-wildcard/01.png)
 
 ### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>設定 MyApps 面板的首頁 URL
 
@@ -156,9 +156,9 @@ ms.locfileid: "85367728"
 
 ![顯示範例設定所執行的結構](./media/application-proxy-wildcard/05.png)
 
-| Color | Description |
+| Color | 描述 |
 | ---   | ---         |
-| 藍色  | 應用程式會明確發佈並顯示在 Azure 入口網站中。 |
+| 藍色  | 在 Azure 入口網站中明確發佈並顯示的應用程式。 |
 | 灰色  | 可以透過父代應用程式存取的應用程式。 |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>案例 2：一般萬用字元應用程式具有例外狀況
@@ -191,5 +191,5 @@ ms.locfileid: "85367728"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解**自訂網域**，請參閱[在 Azure AD 應用程式 Proxy 中使用自訂網域](application-proxy-configure-custom-domain.md)。
-- 若要深入瞭解如何**發佈應用程式**，請參閱[使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)
+- 若要深入瞭解 **自訂網域**，請參閱 [在 Azure AD 應用程式 Proxy 中使用自訂網域](application-proxy-configure-custom-domain.md)。
+- 若要深入瞭解如何 **發佈應用**程式，請參閱 [使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)

@@ -1,13 +1,13 @@
 ---
 title: 使用 Azure Notebooks 預覽的專案匯入和匯出資料
-description: 瞭解如何將資料從外部來源帶入 Azure Notebooks 預覽專案，以及如何從專案匯出資料。
+description: 瞭解如何從外部來源將資料帶入 Azure Notebooks 預覽專案，以及如何從專案匯出資料。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85834109"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>使用 Azure Notebooks 預覽專案中的資料檔案
@@ -34,11 +34,11 @@ ms.locfileid: "85834109"
 
 1. 選取 [上傳]**** 命令，然後選取 [從 URL]**** 或 [從電腦]**** 及專案的必要資詳細資料，以用於您要匯入資料：
 
-   - **從 URL**：在 [檔案**url** ] 欄位中輸入來源位址，並在 **[檔案名] 欄位中**輸入要指派給專案中筆記本的檔案名。 接著，選取 [+ 新增檔案]****，將 URL 新增至上傳清單。 針對任何其他 URL 重複此程序，然後選取 [完成]****。
+   - **從 URL**：在 [檔案 **url** ] 欄位中輸入來源位址，然後在 **[檔案名] 欄位中** 輸入要指派給專案中筆記本的檔案名。 接著，選取 [+ 新增檔案]****，將 URL 新增至上傳清單。 針對任何其他 URL 重複此程序，然後選取 [完成]****。
 
      ![從 URL 上傳的快顯視窗](media/quickstarts/upload-from-url-popup.png)
 
-   - **從 [電腦**]：將檔案拖放到快顯視窗中，或選取 **[選擇**檔案]，然後流覽至並選取您要匯入的資料檔案。 您可以放入或選擇任意數量且類型與格式不拘的檔案，因為是根據 Notebook 中的程式碼來開啟檔案和剖析其資料。
+   - **從 [電腦**]：將檔案拖放到快顯視窗，或選取 [ **選擇**檔案]，然後流覽至並選取您要匯入的資料檔案。 您可以放入或選擇任意數量且類型與格式不拘的檔案，因為是根據 Notebook 中的程式碼來開啟檔案和剖析其資料。
 
      ![從電腦上傳的快顯視窗](media/quickstarts/upload-from-computer-popup.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "85834109"
 
 1. 在顯示的 [上傳狀態]**** 快顯視窗中，從下拉式清單中選取 [目的資料夾]****：
 
-    - 會話資料夾（ *~/* ）：將檔案上傳到目前的筆記本會話，但不會在專案中建立檔案。 工作階段資料夾與專案資料夾是對等資料夾，但在工作階段結束之後即不存在。 若要存取程式碼中的工作階段檔案，請在檔案名稱前面加上相對路徑 *.../*。
+    - 會話資料夾 (*~/* ) ：將檔案上傳至目前的筆記本會話，但不會在專案中建立檔案。 工作階段資料夾與專案資料夾是對等資料夾，但在工作階段結束之後即不存在。 若要存取程式碼中的工作階段檔案，請在檔案名稱前面加上相對路徑 *.../*。
 
         使用工作階段資料夾可幫助進行實驗，並避免而長期來說可有可無的檔案造成專案過於凌亂。 您也可以將檔案上傳到專案中包含同名檔案的資料夾中，而不會造成衝突，也無需將檔案重新命名。 例如，假設專案中已有一個版本的*data.csv*，但您想要試驗不同版本的*data.csv*。 將檔案上傳到工作階段資料夾，您就可以使用所上傳檔案中的資料來執行 Notebook (使用 *.../data.csv* 在程式碼中參考)，而不是專案檔中的資料。
 
@@ -112,6 +112,6 @@ wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 
 1. Notebook 會準備單一 *.zip* 檔案，其中包含所選取的檔案，然後您可以如往常一樣從瀏覽器來儲存。 即使您要下載單一檔案，Notebook 仍會建立 *.zip* 檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [在 Notebook 中存取雲端資料](access-data-resources-jupyter-notebooks.md)
+- [存取筆記本中的雲端資料](access-data-resources-jupyter-notebooks.md)

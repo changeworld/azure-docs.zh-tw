@@ -1,16 +1,16 @@
 ---
 title: 使用 REST 管理 Azure Data Lake Storage Gen1 帳戶
-description: 使用 WebHDFS REST API 來執行 Azure Data Lake Storage Gen1 帳戶的帳戶管理作業。
+description: 使用 WebHDFS REST API 在 Azure Data Lake Storage Gen1 帳戶上執行帳戶管理作業。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85857192"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 對 Azure Data Lake Storage Gen1 進行帳戶管理作業
@@ -21,9 +21,9 @@ ms.locfileid: "85857192"
 >
 >
 
-在此文章中，您會了解如何使用 REST API 在 Azure Data Lake Storage Gen1 上執行帳戶管理作業。 帳戶管理作業包括建立 Data Lake Storage Gen1 帳戶、刪除 Data Lake Storage Gen1 帳戶等。如需有關如何使用 REST API 在 Data Lake Storage Gen1 上執行檔案系統作業的指示，請參閱[使用 REST API Data Lake Storage Gen1 上的檔案系統作業](data-lake-store-data-operations-rest-api.md)。
+在此文章中，您會了解如何使用 REST API 在 Azure Data Lake Storage Gen1 上執行帳戶管理作業。 帳戶管理作業包括建立 Data Lake Storage Gen1 帳戶、刪除 Data Lake Storage Gen1 帳戶等等。如需有關如何使用 REST API 在 Data Lake Storage Gen1 上執行檔案系統作業的指示，請參閱 [使用 REST API Data Lake Storage Gen1 上的檔案系統作業](data-lake-store-data-operations-rest-api.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **[捲曲](https://curl.haxx.se/)**。 此文章使用 cURL 示範如何對 Data Lake Storage Gen1 進行 REST API 呼叫。
@@ -59,7 +59,7 @@ curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: applicati
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>刪除 Data Lake Storage Gen1 帳戶
 這項作業以在 [這裡](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete)定義的 REST API 呼叫為基礎。
 
-使用下列 cURL 命令刪除 Data Lake Storage Gen1 帳戶。 **\<yourstoragegen1name>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+使用下列 cURL 命令刪除 Data Lake Storage Gen1 帳戶。 **\<yourstoragegen1name>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
@@ -73,7 +73,7 @@ HTTP/1.1 200 OK
 ...
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [使用 REST API 在 Data Lake Storage Gen1 上進行檔案系統作業](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>另請參閱

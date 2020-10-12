@@ -15,13 +15,13 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272390"
 ---
-# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 安全性考慮
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 安全性考量
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本主題包含整體安全性指導方針，可協助制定 Azure 虛擬機器 (VM) 中 SQL Server 執行個體的存取安全。
@@ -59,7 +59,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ## <a name="encryption"></a>加密
 
-受控磁片提供伺服器端加密，並 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption) 提供待用加密，並保護資料安全，以符合組織的安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)會使用 Bitlocker 或 DM Crypt 技術並與 Azure Key Vault 整合，以加密 OS 和資料磁碟。 
+受控磁片提供 Server-Side 加密及 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption) 提供待用加密，並保護資料安全，以符合組織的安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)會使用 Bitlocker 或 DM Crypt 技術並與 Azure Key Vault 整合，以加密 OS 和資料磁碟。 
 
 ## <a name="use-a-non-default-port"></a>使用非預設連接埠
 

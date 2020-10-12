@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
 ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462525"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>保護 Azure 中 PaaS 資料庫的最佳做法
@@ -84,7 +84,7 @@ Azure SQL 可透過 [Always Encrypted](/sql/relational-databases/security/encryp
 
 您可以採取其他預防措施來協助保護資料庫，例如設計安全系統、加密機密資產，以及建置圍繞資料庫伺服器的防火牆。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文介紹了 SQL Database 的集合，以及用來保護 PaaS web 和行動應用程式的 Azure Synapse Analytics 安全性最佳作法。 若要深入了解如何保護您的 PaaS 部署，請參閱︰
 

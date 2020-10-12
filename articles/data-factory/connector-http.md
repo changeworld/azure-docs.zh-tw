@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416948"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 HTTP 端點複製資料 | Microsoft Docs
@@ -68,9 +68,9 @@ ms.locfileid: "81416948"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設定為**HttpServer**。 | 是 |
+| type | **Type**屬性必須設為 **>HTTPserver**。 | 是 |
 | url | Web 伺服器的基底 URL。 | 是 |
-| enableServerCertificateValidation | 指定當您連接到 HTTP 端點時，是否要啟用伺服器 TLS/SSL 憑證驗證。 如果 HTTPS 伺服器使用自我簽署的憑證，請將此屬性設定為 **false**。 | 否<br /> （預設值為**true**） |
+| enableServerCertificateValidation | 指定當您連接至 HTTP 端點時，是否要啟用伺服器 TLS/SSL 憑證驗證。 如果 HTTPS 伺服器使用自我簽署的憑證，請將此屬性設定為 **false**。 | 否<br />  (預設值為 **true**)  |
 | authenticationType | 指定驗證類型。 允許的值為**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱此表格後面幾節。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[必要條件](#prerequisites)一節深入了解。 如果未指定，則會使用預設的 Azure Integration Runtime。 |否 |
 
@@ -120,8 +120,8 @@ ms.locfileid: "81416948"
 如果您使用 **certThumbprint** 進行驗證，且憑證已安裝在本機電腦的個人存放區中，請將讀取權限授予自我裝載整合執行階段︰
 
 1. 開啟 Microsoft Management Console (MMC)。 新增目標為 [本機電腦]**** 的 [憑證]**** 嵌入式管理單元。
-2. 展開 [**憑證**] [  >  **個人**]，然後選取 [**憑證**]。
-3. 以滑鼠右鍵按一下 [個人] 存放區中的憑證，然後選取 [**所有**工作] [  >  **管理私密金鑰**]。
+2. 展開 [**憑證**  >  **個人**]，然後選取 [**憑證**]。
+3. 以滑鼠右鍵按一下個人存放區中的憑證，**然後選取 [**  >  **管理私密金鑰**]。
 3. 在 [安全性]**** 索引標籤上，新增使用憑證讀取存取全執行整合執行階段主機服務 (DIAHostService) 的使用者帳戶。
 
 **範例1：使用 certThumbprint**
@@ -174,12 +174,12 @@ ms.locfileid: "81416948"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性支援以格式為基礎之 `location` 資料集的設定下的 HTTP：
+以下是針對 `location` 以格式為基礎的資料集設定中的 HTTP 所支援的屬性：
 
 | 屬性    | 描述                                                  | 必要 |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | `location`資料集內的類型屬性必須設定為**HttpServerLocation**。 | 是      |
-| relativeUrl | 包含資料之資源的相對 URL。 HTTP 連接器會從合併的 URL 複製資料： `[URL specified in linked service][relative URL specified in dataset]` 。   | 否       |
+| type        | Dataset 中的 type 屬性 `location` 必須設為 **HttpServerLocation**。 | 是      |
+| relativeUrl | 包含資料之資源的相對 URL。 HTTP 連接器會從結合的 URL 複製資料： `[URL specified in linked service][relative URL specified in dataset]` 。   | 否       |
 
 > [!NOTE]
 > 支援的 HTTP 要求承載大小是大約 500 KB。 如果您希望傳遞至 Web 端點的承載大小大於 500 KB，請考慮將承載分批處理成較小的區塊。
@@ -220,11 +220,11 @@ ms.locfileid: "81416948"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性在 `storeSettings` 以格式為基礎之複製來源的設定下支援 HTTP：
+下列屬性在以 `storeSettings` 格式為基礎的複製來源的設定下支援 HTTP：
 
 | 屬性                 | 描述                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | 底下的 type 屬性 `storeSettings` 必須設定為**HttpReadSettings**。 | 是      |
+| type                     | 下的類型屬性 `storeSettings` 必須設為 **HttpReadSettings**。 | 是      |
 | requestMethod            | HTTP 方法。 <br>允許的值為 **Get** (預設值) 和 **Post**。 | 否       |
 | addtionalHeaders         | 其他 HTTP 要求標頭。                             | 否       |
 | requestBody              | HTTP 要求的主體。                               | 否       |
@@ -285,13 +285,13 @@ ms.locfileid: "81416948"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的**類型**屬性必須設定為**HttpFile**。 | 是 |
+| type | 資料集的 **type** 屬性必須設為 **>HTTPfile**。 | 是 |
 | relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 | 否 |
 | requestMethod | HTTP 方法。 允許的值為 **Get** (預設值) 和 **Post**。 | 否 |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的主體。 | 否 |
 | format | 如果您想要依原樣擷取 HTTP 端點的資料而不進行剖析，然後將資料複製到以檔案為基礎的存放區，請略過輸入和輸出資料集定義中的 **format** 區段。<br/><br/>如果您想要在複製期間剖析 HTTP 回應內容，支援下列檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 在 **format** 之下，將 **type** 屬性設定為上述其中一個值。 如需詳細資訊，請參閱 [JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)。 |否 |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/><br/>支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級：**最佳**和**最快**。 |否 |
+| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/><br/>支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級：  **最佳** 和 **最快速**。 |否 |
 
 > [!NOTE]
 > 支援的 HTTP 要求承載大小是大約 500 KB。 如果您希望傳遞至 Web 端點的承載大小大於 500 KB，請考慮將承載分批處理成較小的區塊。
@@ -339,7 +339,7 @@ ms.locfileid: "81416948"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的**類型**屬性必須設定為**HttpSource**。 | 是 |
+| type | 複製活動來源的 **type** 屬性必須設為 **>HTTPsource**。 | 是 |
 | httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 預設值為 **00:01:40**。  | 否 |
 
 **範例**

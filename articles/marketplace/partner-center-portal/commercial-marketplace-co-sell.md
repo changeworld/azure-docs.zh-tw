@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
 ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033246"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作夥伴中心內的共同銷售選項
@@ -52,7 +52,7 @@ ms.locfileid: "90033246"
 | 裝置 (硬體)  | 牽涉到從裝置製造商建立或銷售硬體的供應專案。 |
 | IP (應用程式)  | 授權給客戶使用的應用程式或其他 copyrightable 材料。 例如：可在內部部署授權及安裝的 CRM 程式。 |
 | 服務 | 特定一次性專案的實際操作專長，通常是透過顧問提供。 例如：將用戶端的用戶端 (設定為用戶端，並假設負責在傳遞) 之後運算元據庫。 |
-| 受控服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
+| 受管理的服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
 
 ### <a name="solution-areas"></a>解決方案區域
 
@@ -101,6 +101,6 @@ ms.locfileid: "90033246"
 
 * *州/省 (選用) ：*  填寫範本時，請使用 [ [州/省] 資料表](./commercial-marketplace-co-sell-states.md)中所列的 XX-xx 格式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需詳細資訊，請參閱 [使用 Microsoft 銷售](https://partner.microsoft.com/membership/sell-with-microsoft)。

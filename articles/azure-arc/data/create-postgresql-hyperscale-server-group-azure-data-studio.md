@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273002"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>使用 Azure Data Studio 建立 Azure Arc 啟用的于 postgresql 超大規模
@@ -56,7 +56,7 @@ _**伺服器組名** 是您將在下一個步驟中部署的伺服器組名。_
 如需 OpenShift 中 SCCs 的詳細資訊，請參閱 [OpenShift 檔](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)。
 您現在可以執行下一個步驟。
 
-## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組
 
 1. 啟動 Azure Data Studio
 1. 在 [連接] 索引標籤上，按一下左上方的三個點，然後選擇 [新增部署]。
@@ -91,7 +91,7 @@ _**伺服器組名** 是您將在下一個步驟中部署的伺服器組名。_
 
     > \* 在上述檔中，略過登 **入 Azure 入口網站**的區段，& **建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) **。 在 Azure Arc 部署中執行其餘步驟。 這些區段僅適用于適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 提供作為 Azure 雲端中的 PaaS 服務，但檔的其他部分直接適用于您 Azure Arc 啟用的于 postgresql 超大規模。
 
-- [向外擴充您的適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
+- [擴增適用於 PostgreSQL 超大規模資料庫的 Azure 資料庫伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
 - [儲存體設定和 Kubernetes 儲存體概念](storage-configuration.md)
 - [Kubernetes 資源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

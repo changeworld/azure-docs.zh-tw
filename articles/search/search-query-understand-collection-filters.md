@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932911"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>瞭解 Azure 認知搜尋中的 OData 集合篩選
@@ -198,7 +198,7 @@ ms.locfileid: "88932911"
 
 如需允許何種篩選準則的特定範例，請參閱 [如何撰寫有效的集合篩選](search-query-troubleshoot-collection-filters.md#bkmk_examples)。
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [疑難排解 Azure 認知搜尋中的 OData 集合篩選](search-query-troubleshoot-collection-filters.md)
 - [Azure 認知搜尋中的篩選](search-filters.md)

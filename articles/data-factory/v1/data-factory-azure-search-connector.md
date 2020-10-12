@@ -1,6 +1,6 @@
 ---
 title: 使用 Data Factory 將資料推送至搜尋索引
-description: 深入瞭解如何使用 Azure Data Factory 將資料推送至 Azure 認知搜尋索引。
+description: 瞭解如何使用 Azure Data Factory 將資料推送至 Azure 認知搜尋索引。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194925"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料推送至 Azure 認知搜尋索引
@@ -25,9 +25,9 @@ ms.locfileid: "84194925"
 > * [第 2 版 (目前的版本)](../connector-azure-search.md)
 
 > [!NOTE]
-> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱第[2 版中的 Azure 認知搜尋連接器](../connector-azure-search.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱第 [2 版中的 Azure 認知搜尋連接器](../connector-azure-search.md)。
 
-本文說明如何使用複製活動，將資料從支援的來源資料存放區推送至 Azure 認知搜尋索引。 支援的來源資料存放區會列於[支援的來源與接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格的 [來源] 欄中。 本文是以[資料移動活動](data-factory-data-movement-activities.md)一文為基礎，其中呈現使用複製活動移動資料的一般總覽，以及支援的資料存放區組合。
+本文說明如何使用複製活動，將資料從支援的來源資料存放區推送至 Azure 認知搜尋索引。 支援的來源資料存放區會列於[支援的來源與接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格的 [來源] 欄中。 本文是以「 [資料移動活動](data-factory-data-movement-activities.md) 」一文為基礎，這篇文章提供了使用複製活動來移動資料以及支援的資料存放區組合的一般總覽。
 
 ## <a name="enabling-connectivity"></a>啟用連線
 若要讓 Data Factory 服務連接到內部部署資料存放區，您要在內部部署環境中安裝資料管理閘道。 您可以在裝載來源資料存放區的同一部電腦上或個別電腦上安裝閘道，以避免與資料存放區競用資源。
@@ -35,31 +35,31 @@ ms.locfileid: "84194925"
 資料管理閘道會透過安全且可管理的方式，將內部部署資料來源連接到雲端服務。 如需資料管理閘道的詳細資訊，請參閱 [在內部部署和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文。
 
 ## <a name="getting-started"></a>開始使用
-您可以建立具有複製活動的管線，使用不同的工具/Api 將資料從來源資料存放區推送至搜尋索引。
+您可以建立具有複製活動的管線，使用不同的工具/Api 將資料從來源資料存放區推送到搜尋索引。
 
-建立管線的最簡單方式是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 
-您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
+您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**來代表複製作業的輸入和輸出資料。
-3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。
+2. 建立 **資料集** 以代表複製作業的輸入和輸出資料。
+3. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。
 
-使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來將資料複製到搜尋索引之 Data Factory 實體的 JSON 定義，請參閱本文的[json 範例：將資料從 SQL Server 複製到 Azure 認知搜尋索引](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index)一節。
+使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來將資料複製到搜尋索引的 Data Factory 實體的 JSON 定義，請參閱本文的 [json 範例：將資料從 SQL Server 複製到 Azure 認知搜尋索引](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index) 一節。
 
 下列各節提供 JSON 屬性的相關詳細資料，這些屬性是用來定義搜尋索引特定的 Data Factory 實體：
 
 ## <a name="linked-service-properties"></a>連結服務屬性
 
-下表提供 Azure 認知搜尋連結服務特有的 JSON 元素說明。
+下表提供 Azure 認知搜尋連結服務專屬之 JSON 元素的描述。
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
 | type | Type 屬性必須設定為： **AzureSearch**。 | 是 |
-| url | 搜尋服務的 URL。 | Yes |
-| 索引鍵 | 搜尋服務的管理金鑰。 | Yes |
+| url | 搜尋服務的 URL。 | 是 |
+| 索引鍵 | 搜尋服務的管理金鑰。 | 是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 
@@ -67,8 +67,8 @@ ms.locfileid: "84194925"
 
 | 屬性 | 說明 | 必要 |
 | -------- | ----------- | -------- |
-| type | type 屬性必須設為 **AzureSearchIndex**。| Yes |
-| IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | Yes |
+| type | type 屬性必須設為 **AzureSearchIndex**。| 是 |
+| IndexName | 搜尋索引的名稱。 Data Factory 不會建立索引。 索引必須存在於 Azure 認知搜尋中。 | 是 |
 
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
@@ -78,11 +78,11 @@ ms.locfileid: "84194925"
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | 指定若文件已經存在於索引中，是否要合併或取代。 請參閱 [WriteBehavior 屬性](#writebehavior-property)。| 合併 (預設值)<br/>上傳| No |
-| WriteBatchSize | 當緩衝區大小達到 writeBatchSize 時，將資料上傳至搜尋索引。 如需詳細資訊，請參閱 [WriteBatchSize 屬性](#writebatchsize-property)。 | 1 到 1000。 預設值為 1000。 | No |
+| WriteBehavior | 指定若文件已經存在於索引中，是否要合併或取代。 請參閱 [WriteBehavior 屬性](#writebehavior-property)。| 合併 (預設值)<br/>上傳| 否 |
+| WriteBatchSize | 當緩衝區大小達到 writeBatchSize 時，將資料上傳至搜尋索引。 如需詳細資訊，請參閱 [WriteBatchSize 屬性](#writebatchsize-property)。 | 1 到 1000。 預設值為 1000。 | 否 |
 
 ### <a name="writebehavior-property"></a>WriteBehavior 屬性
-AzureSearchSink 會在寫入資料時更新插入。 換句話說，寫入檔時，如果檔索引鍵已存在於搜尋索引中，Azure 認知搜尋就會更新現有的檔，而不會擲回衝突例外狀況。
+AzureSearchSink 會在寫入資料時更新插入。 換句話說，寫入檔時，如果檔索引鍵已經存在於搜尋索引中，Azure 認知搜尋會更新現有的檔，而不是擲回衝突例外狀況。
 
 AzureSearchSink (藉由使用 AzureSearch SDK) 提供下列兩種更新插入行為：
 
@@ -97,7 +97,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 ### <a name="data-type-support"></a>資料類型支援
 下表指定是否支援 Azure 認知搜尋資料類型。
 
-| Azure 認知搜尋資料類型 | Azure 認知搜尋接收中支援 |
+| Azure 認知搜尋資料類型 | Azure 認知搜尋接收器中支援 |
 | ---------------------- | ------------------------------ |
 | String | Y |
 | Int32 | Y |
@@ -185,7 +185,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 
 **Azure 認知搜尋輸出資料集：**
 
-此範例會將資料複製到名為**products**的 Azure 認知搜尋索引。 Data Factory 不會建立索引。 若要測試範例，請以此名稱建立索引。 使用與輸入資料集相同的資料行數目來建立搜尋索引。 每小時會將新的專案新增至搜尋索引。
+此範例會將資料複製到名為 **products**的 Azure 認知搜尋索引。 Data Factory 不會建立索引。 若要測試範例，請以此名稱建立索引。 使用與輸入資料集相同的資料行數目來建立搜尋索引。 每小時會將新專案新增至搜尋索引。
 
 ```JSON
 {
@@ -204,7 +204,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 }
 ```
 
-**具有 SQL 來源和 Azure 認知搜尋索引接收器之管線中的複製活動：**
+**具有 SQL 來源和 Azure 認知搜尋索引接收器的管線中複製活動：**
 
 此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中，將 **source** 類型設為 **SqlSource**，並且將 **sink** 類型設為 **AzureSearchIndexSink**。 針對 **SqlReaderQuery** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
 
@@ -255,7 +255,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 }
 ```
 
-如果您要將資料從雲端資料存放區複製到「Azure 認知搜尋」， `executionLocation` 則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
+如果您要將資料從雲端資料存放區複製到 Azure 認知搜尋， `executionLocation` 則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
 
 ```JSON
 "typeProperties": {
@@ -271,7 +271,7 @@ Azure 認知搜尋服務支援以批次方式撰寫檔。 一個批次可包含 
 
 
 ## <a name="copy-from-a-cloud-source"></a>從雲端來源複製
-如果您要將資料從雲端資料存放區複製到「Azure 認知搜尋」， `executionLocation` 則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
+如果您要將資料從雲端資料存放區複製到 Azure 認知搜尋， `executionLocation` 則需要屬性。 下列 JSON 程式碼片段顯示必須在「複製活動」的 `typeProperties` 下進行的變更。 參閱[在雲端資料存放區之間複製資料](data-factory-data-movement-activities.md#global)一節以取得支援的值和更多詳細資料。
 
 ```JSON
 "typeProperties": {

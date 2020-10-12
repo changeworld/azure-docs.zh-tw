@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851383"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 中的 Azure 儲存體總覽
 
 Azure 儲存體是強大的一般用途儲存體解決方案，其完美整合了 HDInsight。 HDInsight 可以使用 Azure 儲存體中的 Blob 容器做為叢集的預設檔案系統。 透過 HDFS 介面，HDInsight 中的完整元件集可直接處理儲存為 Blob 的結構化或非結構化資料。
 
-我們建議針對您的預設叢集儲存體和您的商務資料使用個別的儲存體容器。 不同之處在于將 HDInsight 記錄檔和暫存檔案與您自己的商務資料分開。 我們也建議您刪除預設的 blob 容器，其中包含應用程式和系統記錄檔，然後在每次使用之後，以降低儲存成本。 請務必先擷取記錄再刪除容器。
+建議您針對預設叢集儲存體和您的商務資料使用不同的儲存體容器。 分隔是將 HDInsight 記錄和暫存檔案與您自己的商務資料隔離。 我們也建議您在每次使用時刪除包含應用程式和系統記錄的預設 blob 容器，以降低儲存成本。 請務必先擷取記錄再刪除容器。
 
-如果您選擇使用**所選網路**上的**防火牆和虛擬網路**限制來保護您的儲存體帳戶，請務必啟用 [**允許信任的 Microsoft 服務**] 例外狀況。例外狀況是讓 HDInsight 能夠存取您的儲存體帳戶。
+如果您選擇使用**所選網路**上的**防火牆和虛擬網路**限制來保護儲存體帳戶，請務必啟用 [**允許信任的 Microsoft 服務 ...**] 例外狀況。例外狀況是讓 HDInsight 可以存取您的儲存體帳戶。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 儲存架構
 
@@ -33,7 +33,7 @@ HDInsight 可以存取本機連接至計算節點的分散式檔案系統。 可
 
 `hdfs://<namenodehost>/<path>`
 
-透過 HDInsight，您也可以存取 Azure 儲存體中的資料。 語法如下所示：
+透過 HDInsight，您也可以存取 Azure 儲存體中的資料。 語法如下：
 
 `wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
@@ -50,7 +50,7 @@ HDInsight 可以存取本機連接至計算節點的分散式檔案系統。 可
 
 建立程序及其金鑰中定義的儲存體帳戶會儲存在叢集節點的 %HADOOP_HOME%/conf/core-site.xml 中。 根據預設，HDInsight 會使用 core-site.xml 檔案中定義的儲存體帳戶。 您可以使用 [Apache Ambari](./hdinsight-hadoop-manage-ambari.md) 來修改此設定。
 
-多個 WebHCat 作業，包括 Apache Hive。 和 MapReduce、Apache Hadoop 串流和 Apache Pig，都會提供儲存體帳戶和中繼資料的描述。 （這個層面目前適用于具有儲存體帳戶的 Pig，但不適用於中繼資料）。如需詳細資訊，請參閱搭配[使用 HDInsight 叢集與替代儲存體帳戶和中繼存放區](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)。
+多個 WebHCat 作業，包括 Apache Hive。 以及 MapReduce、Apache Hadoop 串流和 Apache Pig 會提供儲存體帳戶和中繼資料的描述。  (這項功能目前適用于 Pig 儲存體帳戶，但不適用於中繼資料 ) 。如需詳細資訊，請參閱搭配 [使用 HDInsight 叢集與替代儲存體帳戶和中繼存放區](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)。
 
 Blob 可使用於結構化和非結構化資料。 Blob 容器會將資料儲存為索引鍵/值組，沒有目錄階層。 但是，索引鍵名稱可以包含斜線字元 ( / )，使檔案變成好像儲存在目錄結構中一樣。 例如，Blob 的機碼可以是 `input/log1.txt`。 實際上，`input` 目錄並不存在，但是因為索引碼名稱中有斜線字元，索引碼才會看起來像是檔案路徑。
 
@@ -62,11 +62,11 @@ Blob 可使用於結構化和非結構化資料。 Blob 容器會將資料儲存
 
 * **資料重複使用和共用：** HDFS 中的資料位於計算叢集內。 只有可存取計算叢集的應用程式，才能利用 HDFS API 來使用資料。 相較之下，可以透過 HDFS API 或 Blob 儲存體 REST API 存取 Azure 儲存體中的資料。 因為這種安排，許多應用程式 (包括其他 HDInsight 叢集) 和工具都可用來產生和取用資料。
 
-* **資料封存：** 當資料儲存在 Azure 儲存體中時，可安全地刪除用於計算的 HDInsight 叢集，而不會遺失使用者資料。
+* **資料封存：** 當資料儲存在 Azure 儲存體時，可以安全地刪除用於計算的 HDInsight 叢集，而不會遺失使用者資料。
 
 * **資料儲存成本：** 長期將資料儲存在 DFS 中的成本高於將資料儲存在 Azure 儲存體中。 因為計算叢集的成本高於 Azure 儲存體的成本。 此外，因為不需要每次產生計算叢集時都重新載入資料，也能節省資料載入成本。
 
-* **彈性向外延展：** 雖然HDFS 提供向外延展的檔案系統，但延展程度取決於您建立給叢集的節點數目。 變更調整規模可能會比您在 Azure 儲存體中自動取得的彈性調整功能來得複雜。
+* **彈性向外延展：** 雖然HDFS 提供向外延展的檔案系統，但延展程度取決於您建立給叢集的節點數目。 變更調整可能會比您在 Azure 儲存體中自動取得的彈性調整功能更複雜。
 
 * **異地複寫：** 您的 Azure 儲存體可以進行異地複寫。 雖然異地複寫可提供地理位置復原和資料備援性，但容錯移轉至異地複寫的位置會嚴重影響效能，且可能產生額外的成本。 因此，請謹慎選擇異地複寫，且最好在資料的價值大於額外成本時才這樣做。
 
@@ -75,7 +75,7 @@ Blob 可使用於結構化和非結構化資料。 Blob 容器會將資料儲存
 > [!NOTE]  
 > 大部分 HDFS 命令 (例如，`ls`、`copyFromLocal` 和 `mkdir`) 可在 Azure 儲存體中正常運作。 只有原生 HDFS 實作 (稱為 DFS) 的特定命令 (例如 `fschk` 和 `dfsadmin`) 才會在 Azure 儲存體上出現不同的行為。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure 儲存體簡介](../storage/common/storage-introduction.md)

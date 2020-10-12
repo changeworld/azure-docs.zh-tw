@@ -1,5 +1,5 @@
 ---
-title: 從 Oracle Responsys 複製資料（預覽）
+title: '從 Oracle Responsys 複製資料 (預覽版) '
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 Oracle Responsys 複製到支援的接收資料存放區。
 services: data-factory
 ms.author: jingwang
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: cde0e2d118490801aeee3874e220d298fea24598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416846"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Oracle Responsys 複製資料 (預覽)
@@ -28,7 +28,7 @@ ms.locfileid: "81416846"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此 Oracle Responsys 連接器：
+此 Oracle Responsys 連接器支援下列活動：
 
 - 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
@@ -39,7 +39,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="getting-started"></a>開始使用
 
-您可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure Resource Manager 範本來建立具有複製活動的管線。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](quickstart-create-data-factory-dot-net.md)課程。
+您可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure Resource Manager 範本來建立具有複製活動的管線。 請參閱「 [複製活動」教學](quickstart-create-data-factory-dot-net.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 下列各節提供屬性的相關詳細資料，這些屬性是用來定義 Oracle Responsys 連接器專屬的 Data Factory 實體。
 
@@ -55,7 +55,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | clientSecret | 與 Respopnsys 應用程式相關聯的用戶端密碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
 **範例︰**
 

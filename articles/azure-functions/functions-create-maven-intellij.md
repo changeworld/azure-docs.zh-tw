@@ -7,16 +7,16 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
 ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373363"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 JAVA 和 IntelliJ 建立您的第一個 Azure 函式
 
 本文說明：
-- 如何使用 IntelliJ 概念建立[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)函式專案
+- 如何使用 IntelliJ 構想建立 [無伺服器](https://azure.microsoft.com/overview/serverless-computing/) 函式專案
 - 在您自己的電腦上對整合式開發環境 (IDE) 中的函式進行測試和偵錯的步驟
 - 將函式專案部署至 Azure Functions 的指示
 

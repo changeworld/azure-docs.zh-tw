@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850975"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 參考
@@ -59,7 +59,7 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ### <a name="examples"></a>範例
 
 #### <a name="example-1"></a>範例 1
-在 ' Contoso ' 網域中尋找已停用繼承的物件（根據預設，只會傳回 ' organizationalUnit ' 物件）
+在 ' Contoso ' 網域 (中尋找已停用繼承的物件預設只會傳回 ' organizationalUnit ' 物件) 
 ```
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 ```
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-要搜尋之物件的類別可以是 ' * ' （適用于任何物件類別）、' user '、' group '、' container ' 等。根據預設，此函式會搜尋 ' organizationalUnit ' 物件類別。
+要搜尋的物件類別可以是任何物件類別的 ' * ' () 、' user '、' group '、' container ' 等等。根據預設，此函式會搜尋 ' organizationalUnit ' 物件類別。
 
 ```yaml
 Type: String
@@ -1087,7 +1087,7 @@ Set-ADSyncRestrictedPermissions 函式會對提供的帳戶限定權限。
 
    | 類型 | 名稱 | 存取 | 套用至 |
    |------|------|--------|------------|
-   | 允許 | 系統 | 完全控制 | 此物件 |
+   | Allow | 系統 | 完全控制 | 此物件 |
    | Allow | 企業系統管理員 | 完全控制 | 此物件 |
    | Allow | 網域管理員 | 完全控制 | 此物件 | 
    | Allow | 系統管理員 | 完全控制 | 此物件 |

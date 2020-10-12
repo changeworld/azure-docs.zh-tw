@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84235612"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 檔案的共用快照集概觀
@@ -30,7 +30,7 @@ Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照�
 
 ### <a name="general-backup-purposes"></a>一般備份用途
 
-建立檔案共用之後，您可以定期建立檔案共用的共用快照集，以供資料備份之用。 定期建立的共用快照集，有助於維護先前版本的檔案，因應未來的稽核需求或災害復原之需。 我們建議使用[Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md)做為備份解決方案，以取得和管理快照集。 您也可以使用 CLI 或 PowerShell，自行接管和管理快照集。
+建立檔案共用之後，您可以定期建立檔案共用的共用快照集，以供資料備份之用。 定期建立的共用快照集，有助於維護先前版本的檔案，因應未來的稽核需求或災害復原之需。 我們建議使用 [Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md) 作為備份解決方案，以取得及管理快照集。 您也可以使用 CLI 或 PowerShell 自行接管及管理快照集。
 
 ## <a name="capabilities"></a>功能
 
@@ -85,7 +85,7 @@ Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 20
 
 ## <a name="general-best-practices"></a>一般最佳作法
 
-我們建議使用[Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md)做為備份解決方案，以自動化製作快照集及管理快照集。 在 Azure 上執行基礎結構時，請盡可能將資料復原所需的備份作業自動化。 自動化的動作比手動程序來得可靠，能協助您加強資料保護和復原能力。 您可以使用 Azure 檔案共用備份、REST API、用戶端 SDK 或腳本來進行自動化。
+我們建議使用 [Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md) 作為備份解決方案，以自動化建立快照集，以及管理快照集。 在 Azure 上執行基礎結構時，請盡可能將資料復原所需的備份作業自動化。 自動化的動作比手動程序來得可靠，能協助您加強資料保護和復原能力。 您可以使用 Azure 檔案共用備份、REST API、用戶端 SDK 或腳本來進行自動化。
 
 在部署共用快照集排程器之前，請審慎考慮共用快照集頻率和保留設定，以避免產生不必要的共用快照集費用。
 

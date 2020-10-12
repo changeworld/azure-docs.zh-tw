@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77617216"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>在 SAP HANA on Azure (大型執行個體) 上安裝 HANA
@@ -39,7 +39,7 @@ HANA 大型執行個體單位不會直接連線到網際網路。 您無法直�
 
 您需要 SAP S-user 或其他使用者，以便能夠存取 SAP Marketplace。
 
-1. 登入並移至 [SAP Service Marketplace](https://support.sap.com/en/index.html)。 選取**Download Software**[依  >  字母順序的索引下載軟體**安裝及升級**]  >  ** **。 然後選取 [ **H – SAP Hana platform edition**]  >  **SAP Hana platform edition 2.0**  >  **安裝**。 下載下列螢幕擷取畫面所示的檔案。
+1. 登入並移至 [SAP Service Marketplace](https://support.sap.com/en/index.html)。 選取 [**下載軟體**  >  **安裝，並**  >  **依字母順序**升級]。 然後選取 [ **H – SAP Hana platform edition**]  >  **SAP Hana platform edition 2.0**  >  **安裝**。 下載下列螢幕擷取畫面所示的檔案。
 
    ![螢幕擷取畫面：要下載的檔案](./media/hana-installation/image16_download_hana.PNG)
 

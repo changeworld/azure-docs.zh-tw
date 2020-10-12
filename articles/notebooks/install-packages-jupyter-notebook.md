@@ -1,16 +1,16 @@
 ---
-title: 在 Jupyter 筆記本中安裝套件-Azure Notebooks 預覽
-description: '瞭解如何從在 Azure 上執行的 Jupyter 筆記本中安裝 Python、R 和 F # 套件。'
+title: 在 Jupyter 筆記本中安裝套件-Azure Notebooks 預覽版
+description: '瞭解如何在 Azure 上執行的 Jupyter 筆記本內安裝 Python、R 和 F # 套件。'
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85831211"
 ---
-# <a name="install-packages-from-within-azure-notebooks-preview"></a>從 Azure Notebooks Preview 中安裝套件
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>從 Azure Notebooks 預覽版中安裝套件
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -73,7 +73,7 @@ Paket.Package
 open MathNet.Numerics
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [如何：設定和管理專案](configure-manage-azure-notebooks-projects.md)
+- [How to：設定和管理專案](configure-manage-azure-notebooks-projects.md)
 - [如何：顯示投影片放映](present-jupyter-notebooks-slideshow.md)

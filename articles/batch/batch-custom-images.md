@@ -1,23 +1,23 @@
 ---
 title: 使用受控映射來建立自訂映射集區
-description: 從受控映射建立 Batch 自訂映射集區，以使用應用程式的軟體和資料來布建計算節點。
+description: 從受控映射建立 Batch 自訂映射集區，以布建具有您應用程式之軟體和資料的計算節點。
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851289"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用受控映射來建立自訂映射集區
 
-若要為 Batch 集區的虛擬機器（Vm）建立自訂映射集區，您可以使用受控映射來建立[共用映射庫映射](batch-sig-images.md)。 也支援只使用受控映像，但僅適用於截至 2019-08-01 (含) 為止的 API 版本。 
+若要為 Batch 集區的虛擬機器建立自訂映射集區 (Vm) ，您可以使用受控映射來建立 [共用映射庫映射](batch-sig-images.md)。 也支援只使用受控映像，但僅適用於截至 2019-08-01 (含) 為止的 API 版本。 
 
 > [!IMPORTANT]
 > 在大部分情況下，您應該使用共用映像庫來建立自訂映像。 共用映像庫可讓您更快速佈建集區、調整更多 VM，以及更可靠地佈建 VM。 若要深入了解，請參閱[使用共用映像庫來建立自訂集區](batch-sig-images.md)。
 
-本主題說明如何使用僅限受控映射來建立自訂映射集區。
+本主題說明如何使用受控映射來建立自訂映射集區。
 
 ## <a name="prerequisites"></a>Prerequisites
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800143"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>使用 API 主控台中的自訂影像清單進行仲裁
@@ -166,6 +166,6 @@ ms.locfileid: "85800143"
    ![[Image Lists - Update Details] \(影像清單 - 更新詳細資料\) 主控台 [Request body] \(要求本文\) 編輯](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在您的程式碼中使用 REST API，或從[影像清單 .NET 快速入門](image-lists-quickstart-dotnet.md)開始著手，以便與您的應用程式進行整合。

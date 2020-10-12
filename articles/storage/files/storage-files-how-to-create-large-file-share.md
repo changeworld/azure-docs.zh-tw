@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069131"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用和建立大型檔案共用
@@ -37,7 +37,7 @@ ms.locfileid: "89069131"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站中，選取 [所有服務]。 
-1. 在資源清單中，輸入 **儲存體帳戶**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [ **儲存體帳戶**]。
+1. 在資源清單中，輸入 **儲存體帳戶**。 當您輸入時，清單會根據您輸入的文字進行篩選。 選取 [儲存體帳戶]  。
 1. 在出現的 [ **儲存體帳戶** ] 視窗上，選取 [ **新增**]。
 1. 選取您將用來建立儲存體帳戶的訂用帳戶。
 1. 在 [資源群組]**** 欄位下方，選取 [新建]****。 為新的資源群組輸入名稱。
@@ -61,7 +61,7 @@ ms.locfileid: "89069131"
 
     ![Azure 入口網站中新儲存體帳戶的 [已啟用] 選項按鈕的螢幕擷取畫面](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

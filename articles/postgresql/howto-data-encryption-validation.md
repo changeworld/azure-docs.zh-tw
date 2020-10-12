@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 0a1b8eaee0a483fb4ce09a33d3c7ca9fe6f980e1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884350"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>正在驗證適用於 PostgreSQL 的 Azure 資料庫的資料加密
@@ -53,6 +53,6 @@ ms.locfileid: "90884350"
 
 您也可以複習[審核報告](https://servicetrust.microsoft.com)，以提供有關資料保護標準和法規需求的合規性資訊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解資料加密，請參閱 [使用客戶管理的金鑰適用於 PostgreSQL 的 Azure 資料庫單一伺服器資料加密](concepts-data-encryption-postgresql.md)。

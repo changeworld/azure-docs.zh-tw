@@ -13,10 +13,10 @@ ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
 ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84196078"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL 資料庫搭配 Azure App Service 的常見問題集
@@ -50,7 +50,7 @@ ms.locfileid: "84196078"
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虛擬機器上執行 MySQL。 可以將我的 Azure Web 應用程式連接到我的資料庫嗎？
 是。 只要您的 Azure VM 已將遠端存取權提供給 Web 應用程式，Web 應用程式就能連線到您的資料庫。 如需詳細資訊，請參閱 [在虛擬機器上安裝 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>哪些國家/地區支援 ClearDB Premium MySQL 叢集？
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>支援 ClearDB Premium MySQL 叢集的國家/地區有哪些？
 ClearDB Premium MySQL 叢集適用於下列區域以外的全球所有 Azure 區域：印度、澳洲、巴西南部及中國。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>可以於使用 ClearDB Premium 叢集解決方案建立資料庫之前建立新的叢集嗎？
@@ -69,7 +69,7 @@ Azure Marketplace 無法供在亞塞拜然、克羅埃西亞、挪威或波多�
 在 [Azure 入口網站](https://portal.azure.com)，您可以相應增加 ClearDB 共用裝載資料庫。 閱讀[本文](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)以深入了解。 我們目前不支援 Azure 入口網站中的 ClearDB 進階叢集升級。
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>我在 Azure 入口網站中看不到我的 ClearDB 資料庫？
-如果您已在傳統中建立 ClearDB 資料庫，將無法在[Azure 入口網站](https://portal.azure.com)中看到您的資料庫。 這個問題目前無法解決。
+如果您在傳統中建立 ClearDB 資料庫，將無法在 [Azure 入口網站](https://portal.azure.com)中看到您的資料庫。 這個問題目前無法解決。
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>我的資料庫關閉時應向誰連絡尋求支援？
 如有任何資料庫相關的問題，請連絡 [ClearDB 支援](https://www.cleardb.com/developers/help/support) 。 準備好提供問題資訊與您的 Azure 訂用帳戶資訊。
@@ -106,6 +106,6 @@ Azure Marketplace 無法供在亞塞拜然、克羅埃西亞、挪威或波多�
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>若對我的 EA 訂用帳戶中 ClearDB 服務的帳單有問題，應該連絡誰？
 如有任何關於自己 EA 註冊的計費問題，請連絡 [企業版客戶支援](https://aka.ms/AzureEntSupport) 。 EA 入口網站支援小組會回答您的問題或協助解決您的問題。
 
-## <a name="more-information"></a>更多資訊
+## <a name="more-information"></a>詳細資訊
 [Azure Marketplace 常見問題集](https://azure.microsoft.com/marketplace/faq/)
 

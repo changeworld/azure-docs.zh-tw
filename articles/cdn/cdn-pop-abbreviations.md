@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81260236"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>依縮寫排列的 Azure CDN POP 位置
@@ -30,7 +30,7 @@ ms.locfileid: "81260236"
 
 本文會針對**來自 Verizon 的 Azure CDN** 列出 POP 位置，並依 POP 縮寫排序。
 
-縮寫 | 位置 | 區域
+縮寫 | Location | 區域
 | --- | --- | --- |
 AGA | 美國喬治亞州亞特蘭大 | 北美洲：美國東岸
 AGB | 美國喬治亞州亞特蘭大 | 北美洲：美國東岸
@@ -47,7 +47,7 @@ BOS | 美國麻塞諸塞州波士頓 | 北美洲：美國東岸
 BTH | 巴淡島，印尼 | 亞洲
 BUE | 布宜諾斯艾利斯，阿根廷 | 拉丁美洲
 BUR | 美國加利福尼亞州洛杉磯 | 北美洲：美國西岸
-CDG | 巴黎，法國 | 歐洲
+CDG | 法國巴黎 | 歐洲
 CGH | 聖保羅，巴西 | 拉丁美洲
 CGK | 雅加達，印尼 | 亞洲
 CHA | 美國伊利諾斯州芝加哥 | 北美洲：美國東岸
@@ -80,7 +80,7 @@ HEL | 赫爾辛基，芬蘭 | 歐洲
 HHP | 香港特別行政區 | 亞洲
 HKC | 香港特別行政區 | 亞洲
 HKG | 香港特別行政區 | 亞洲
-HND | 東京，日本 | 亞洲
+HND | 日本東京 | 亞洲
 IAD | 美國維吉尼亞州阿什本 | 北美洲：美國東岸
 ICN | 南韓首爾 | 亞洲
 ITM | 大阪，日本 | 亞洲
@@ -115,19 +115,19 @@ MRS | 馬賽，法國 | 歐洲
 MXP | 米蘭，義大利 | 歐洲
 NAG | 孟買，印度 | 亞洲
 NDL | 新德里，印度 | 亞洲
-NRT | 東京，日本 | 亞洲
+NRT | 日本東京 | 亞洲
 NYA | 美國紐約州紐約 | 北美洲：美國東岸
 NYB | 美國紐約州紐約 | 北美洲：美國東岸
 OMM | 馬斯喀特，阿曼 | 中東
 ORD | 美國伊利諾斯州芝加哥 | 北美洲：美國中部
-ORY | 巴黎，法國 | 歐洲
+ORY | 法國巴黎 | 歐洲
 OXR | 美國加利福尼亞州洛杉磯 | 北美洲：美國西岸
-PAB | 巴黎，法國 | 歐洲
+PAB | 法國巴黎 | 歐洲
 PAE | 美國華盛頓州西雅圖 | 北美洲：美國西岸
 PBC | 普埃布拉，墨西哥 | 北美洲
 PHL | 美國賓夕法尼亞州費城 | 北美洲：美國東岸
 PNQ | 孟買，印度 | 亞洲
-POX | 巴黎，法國 | 歐洲
+POX | 法國巴黎 | 歐洲
 QRO | 墨西哥奎雷塔洛州聖地牙哥 | 北美洲
 RHV | 美國加利福尼亞州聖荷西 | 北美洲：美國西岸
 RIB | 里約熱內盧，巴西 | 拉丁美洲
@@ -146,8 +146,8 @@ SJO | 美國加利福尼亞州聖荷西 | 北美洲：美國西岸
 STO | 瑞典斯德哥爾摩 | 歐洲
 SYD | 雪梨，澳大利亞 | 亞洲
 TIR | 辰內，印度 | 亞洲
-TKA | 東京，日本 | 亞洲
-TKB | 東京，日本 | 亞洲
+TKA | 日本東京 | 亞洲
+TKB | 日本東京 | 亞洲
 TOJ | 馬德里，西班牙 | 歐洲
 阿拉伯聯合大公國 | 阿拉伯聯合大公國富吉拉 | 歐洲
 UIO | 基多，厄瓜多 | 拉丁美洲

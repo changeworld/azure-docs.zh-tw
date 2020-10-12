@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75645713"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 監視合作夥伴
@@ -18,7 +18,7 @@ ms.locfileid: "75645713"
 
 ## <a name="dynatrace"></a>Dynatrace
 
-我們與 Dynatrace 整合之後，可以提供許多現成的功能來監視 Service Fabric 叢集。 在 VMSS 執行個體上安裝 Dynatrace OneAgent 可為您提供效能計數器，並將 Service Fabric 的拓撲向下部署至應用程式層級。 Dynatrace 也是內部部署監視的絕佳選擇。 請查看[公告](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)中列出的更多功能，以及在您的叢集上啟用 Dynatrace 的[指示](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)。 
+我們與 Dynatrace 整合之後，可以提供許多現成的功能來監視 Service Fabric 叢集。 在 VMSS 執行個體上安裝 Dynatrace OneAgent 可為您提供效能計數器，並將 Service Fabric 的拓撲向下部署至應用程式層級。 Dynatrace 也是內部部署監視的絕佳選擇。 查看 [公告](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) 中列出的更多功能和 [指示](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) ，以在您的叢集上啟用 Dynatrace。 
 
 ## <a name="datadog"></a>Datadog
 
@@ -34,11 +34,11 @@ New Relic 是另一個應用程式效能管理工具，可充分整合 Service F
 
 ## <a name="elk"></a>ELK 
 
-ELK 堆疊是開放原始碼技術的集合： Elasticsearch、Logstash 和 Kibana。 藉由使用這些技術組合，您可以收集、儲存和分析 Service Fabric 的監視和診斷資料。 我們在[這裡](service-fabric-tutorial-java-elk.md)有如何使用 Service Fabric 原生 Java 應用程式執行此動作的教學課程。 
+ELK 堆疊是開放原始碼技術的集合： Elasticsearch、Logstash 和 Kibana。 藉由結合使用這些技術，您可以收集、儲存及分析 Service Fabric 監視和診斷資料。 我們在[這裡](service-fabric-tutorial-java-elk.md)有如何使用 Service Fabric 原生 Java 應用程式執行此動作的教學課程。 
 
 ## <a name="humio"></a>Humio
 
-Humio 是一種記錄收集服務，可即時從雲端或內部部署中的 Service Fabric 收集應用程式和事件的記錄。 除了即時可檢視性之外，Humio 還提供最先進的分析和視覺效果功能，以從您的診斷中查看和收集資訊。 Humio 具有符合成本效益的定價方案，並建立以進行調整，同時保持速度快速。 它會直接與 Service Fabric 平臺事件和應用程式遙測整合。 您可以在[這裡](https://github.com/humio/service-fabric-humio)閱讀更多有關 Humio 和 Service Fabric 整合的資訊。
+Humio 是一種記錄收集服務，可即時從雲端或內部部署中的 Service Fabric 收集應用程式和事件的記錄。 除了即時可檢視性之外，Humio 還提供最先進的分析和視覺效果功能，可用於從您的診斷中查看和收集資訊。 Humio 具有符合成本效益的定價方案，而且是為了調整規模而設計，同時維持其速度快速。 它會直接整合 Service Fabric 的平臺事件和應用程式遙測。 您可以在 [這裡](https://github.com/humio/service-fabric-humio)閱讀更多有關 Humio 和 Service Fabric 整合的資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

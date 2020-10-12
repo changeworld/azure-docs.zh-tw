@@ -6,10 +6,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
 ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85801024"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>針對功能部署問題進行疑難排解
@@ -68,7 +68,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解決方案
 
-請確定您有正確的[功能部署權限](../automation-role-based-access-control.md#feature-setup-permissions)，然後再次嘗試部署該功能。 如果您收到錯誤訊息 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` ，請參閱下列[疑難排解資訊](update-management.md#failed-to-enable-error)。
+請確定您有正確的[功能部署權限](../automation-role-based-access-control.md#feature-setup-permissions)，然後再次嘗試部署該功能。 如果您收到錯誤訊息 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` ，請參閱下列 [疑難排解資訊](update-management.md#failed-to-enable-error)。
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>案例：功能部署失敗，並出現「無法設定自動化帳戶以進行診斷記錄」訊息
 

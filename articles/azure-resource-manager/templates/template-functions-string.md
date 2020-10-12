@@ -4,15 +4,15 @@ description: 描述 Azure Resource Manager 範本中用來使用字串的函式�
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85962062"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 範本的字串函式
 
-Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （ARM）範本中使用字串：
+Resource Manager 提供下列函式，可在您的 Azure Resource Manager (ARM) 範本中使用字串：
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -29,7 +29,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 * [indexOf](#indexof)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
-* [length](#length)
+* [length](#length) (長度)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [replace](#replace)
@@ -55,7 +55,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字串 |要以 base64 表示法傳回的值。 |
 
@@ -187,7 +187,7 @@ JSON 物件。
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |字串 |要轉換為字串的 base64 表示法。 |
+| base64Value |是 |字串 |要轉換為字串的 base64 表示法。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -250,12 +250,12 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或陣列 |要串連的第一個字串或陣列。 |
-| 其他引數 |否 |字串或陣列 |以串連順序排列的其他字串或陣列。 |
+| 其他引數 |否 |字串或陣列 |串連的其他字串或陣列（依序排列）。 |
 
-此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 不過，您無法同時為參數提供陣列和字串。 字串只會與其他字串串連。
+此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 不過，您無法為參數提供陣列和字串。 字串只會與其他字串串連。
 
 ### <a name="return-value"></a>傳回值
 
@@ -332,7 +332,7 @@ JSON 物件。
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>包含
+## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
@@ -340,10 +340,10 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| 容器 |Yes |陣列、物件或字串 |其中包含要尋找之值的值。 |
-| itemToFind |Yes |字串或整數 |要尋找的值。 |
+| 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
+| itemToFind |是 |字串或整數 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -421,7 +421,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |字串 |要轉換為資料 URI 的值。 |
 
@@ -476,7 +476,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |字串 |要轉換的資料 URI 值。 |
 
@@ -531,9 +531,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |陣列、物件或字串 |要檢查其是否為空白的值。 |
+| itemToTest |是 |陣列、物件或字串 |要檢查它是否為空的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -596,7 +596,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -662,9 +662,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列或字串 |要擷取其第一個元素或字元的值。 |
+| arg1 |是 |陣列或字串 |要擷取其第一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -714,19 +714,19 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | formatString | 是 | 字串 | 複合格式字串。 |
-| arg1 | Yes | 字串、整數或布林值 | 要包含在格式化字串中的值。 |
+| arg1 | 是 | 字串、整數或布林值 | 要包含在格式化字串中的值。 |
 | 其他引數 | 否 | 字串、整數或布林值 | 要包含在格式化字串中的其他值。 |
 
 ### <a name="remarks"></a>備註
 
-使用此函式來格式化範本中的字串。 它會使用與 .NET 中的[System.string 格式](/dotnet/api/system.string.format)相同的格式選項。
+您可以使用此函式來格式化範本中的字串。 它使用的格式選項與 .NET 中的 [System.string 格式](/dotnet/api/system.string.format) 方法相同。
 
 ### <a name="examples"></a>範例
 
-下列範例範本顯示如何使用 format 函數。
+下列範例範本示範如何使用 format 函數。
 
 ```json
 {
@@ -761,7 +761,7 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| formatTest | String | Hello，User。 格式化的數位：8175133 |
+| formatTest | String | Hello，User。 格式化數位：8175133 |
 
 ## <a name="guid"></a>guid
 
@@ -771,7 +771,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字串 |雜湊函式中用來建立 GUID 的值。 |
 | 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
@@ -780,7 +780,7 @@ JSON 物件。
 
 當您需要建立格式為全域唯一識別碼的值時，此函式很有幫助。 您提供限制結果唯一性範圍的參數值。 您可以指定名稱對於訂用帳戶、資源群組或部署是否唯一。
 
-傳回的值不是隨機字串，而是參數上雜湊函數的結果。 傳回的值為 36 個字元長。 這不是全域唯一的。 若要建立不是以參數的雜湊值為基礎的新 GUID，請使用[newGuid](#newguid)函數。
+傳回的值不是隨機字串，而是參數上雜湊函數的結果。 傳回的值為 36 個字元長。 它不是全域唯一的。 若要建立新的 GUID，而不是以該參數的雜湊值為基礎，請使用 [newGuid](#newguid) 函數。
 
 下列範例顯示如何使用 guid 來建立常用層級的唯一值。
 
@@ -842,7 +842,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -903,9 +903,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列或字串 |要擷取其最後一個元素或字元的值。 |
+| arg1 |是 |陣列或字串 |要擷取其最後一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -955,7 +955,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -1016,9 +1016,9 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
+| arg1 |是 |陣列、字串或物件 |用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1088,21 +1088,21 @@ JSON 物件。
 
 `newGuid()`
 
-傳回格式為全域唯一識別碼的值。 **這個函數只能用於參數的預設值。**
+以全域唯一識別碼的格式傳回值。 **此函數只能用於參數的預設值。**
 
 ### <a name="remarks"></a>備註
 
-您只能針對參數的預設值，在運算式中使用這個函數。 在範本中的任何其他地方使用此函數會傳回錯誤。 函式在範本的其他部分中不允許，因為它會在每次呼叫時傳回不同的值。 使用相同的參數部署相同的範本，並不會可靠地產生相同的結果。
+您只能在運算式中使用此函式，以取得參數的預設值。 在範本中的其他地方使用此函式會傳回錯誤。 範本的其他部分不允許函數，因為它會在每次呼叫時傳回不同的值。 使用相同的參數部署相同的範本，並不會可靠地產生相同的結果。
 
-NewGuid 函數與[guid](#guid)函數不同，因為它不接受任何參數。 當您呼叫具有相同參數的 guid 時，每次都會傳回相同的識別碼。 當您需要針對特定環境可靠地產生相同的 GUID 時，請使用 guid。 當您每次需要不同的識別碼（例如將資源部署到測試環境）時，請使用 newGuid。
+NewGuid 函式與 [guid](#guid) 函數不同，因為它不會採用任何參數。 當您使用相同的參數呼叫 guid 時，每次都會傳回相同的識別碼。 當您需要為特定環境可靠地產生相同的 GUID 時，請使用 guid。 當您每次需要不同的識別碼（例如將資源部署至測試環境）時，請使用 newGuid。
 
-NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.guid)來產生全域唯一識別碼。
+NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.guid) 來產生全域唯一識別碼。
 
-如果您使用[選項來重新部署先前成功的部署](rollback-on-error.md)，而先前的部署包含使用 newGuid 的參數，則不會重新評估參數。 相反地，先前部署的參數值會自動在復原部署中重複使用。
+如果您使用 [選項來重新部署先前成功的部署](rollback-on-error.md)，而先前的部署包含使用 newGuid 的參數，則不會重新評估參數。 相反地，會在復原部署中自動重複使用先前部署的參數值。
 
-在測試環境中，您可能需要在短時間內重複部署只存留的資源。 您可以使用 newGuid 搭配[uniqueString](#uniquestring)來建立唯一的名稱，而不是建立唯一的名稱。
+在測試環境中，您可能需要重複部署只存留短時間的資源。 您可以使用 newGuid 搭配 [uniqueString](#uniquestring) 來建立唯一的名稱，而不是建立唯一的名稱。
 
-請小心重新部署依賴 newGuid 函數的範本，以取得預設值。 當您重新部署，但未提供參數的值時，會重新評估函式。 如果您想要更新現有的資源，而不是建立新的資源，請傳入先前部署的參數值。
+請小心重新部署依賴 newGuid 函式作為預設值的範本。 當您重新部署但未提供參數的值時，會重新評估函式。 如果您想要更新現有的資源，而不是建立新的資源，請從先前的部署傳入參數值。
 
 ### <a name="return-value"></a>傳回值
 
@@ -1110,7 +1110,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="examples"></a>範例
 
-下列範例範本顯示具有新識別碼的參數。
+下列範例範本會顯示具有新識別碼的參數。
 
 ```json
 {
@@ -1133,13 +1133,13 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 }
 ```
 
-上述範例的輸出會因每個部署而有所不同，但會類似于：
+上述範例的輸出會因每個部署而異，但如下所示：
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | guidOutput | 字串 | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-下列範例會使用 newGuid 函數來建立儲存體帳戶的唯一名稱。 此範本可能適用于儲存體帳戶存在短時間且未重新部署的測試環境。
+下列範例會使用 newGuid 函數來建立儲存體帳戶的唯一名稱。 此範本可能適用于儲存體帳戶已存在且未重新部署的測試環境。
 
 ```json
 {
@@ -1176,7 +1176,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 }
 ```
 
-上述範例的輸出會因每個部署而有所不同，但會類似于：
+上述範例的輸出會因每個部署而異，但如下所示：
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
@@ -1191,11 +1191,11 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |字串或整數 |要靠右對齊的值。 |
-| totalLength |Yes |int |傳回字串中的字元總數。 |
-| paddingCharacter |No |單一字元 |要用於左側填補直到達到總長度的字元。 預設值是空格。 |
+| valueToPad |是 |字串或整數 |要靠右對齊的值。 |
+| totalLength |是 |int |傳回字串中的字元總數。 |
+| paddingCharacter |否 |單一字元 |要用於左側填補直到達到總長度的字元。 預設值是空格。 |
 
 如果原始字串長度超過要填補的字元數，則不會新增任何字元。
 
@@ -1241,7 +1241,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | originalString |是 |字串 |具備由另一個字串取代的一個字串之所有執行個體的值。 |
 | oldString |是 |字串 |要從原始字串中移除的字串。 |
@@ -1294,10 +1294,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |陣列或字串 |要用於略過的陣列或字串。 |
-| numberToSkip |Yes |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果大於陣列或字串的長度，則會傳回空陣列或字串。 |
+| originalValue |是 |陣列或字串 |要用於略過的陣列或字串。 |
+| numberToSkip |是 |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果大於陣列或字串的長度，則會傳回空的陣列或字串。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1362,10 +1362,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字串 |要分割的字串。 |
-| 分隔符號 |Yes |字串或字串陣列 |用於分割字串的分隔符號。 |
+| 分隔符號 |是 |字串或字串陣列 |用於分割字串的分隔符號。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1421,10 +1421,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |字串 |其中包含要尋找之項目的值。 |
-| stringToFind |Yes |字串 |要尋找的值。 |
+| stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
+| stringToFind |是 |字串 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1487,7 +1487,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要轉換成字串的值。 任何類型的值均可轉換，包括物件和陣列。 |
 
@@ -1558,11 +1558,11 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Yes |字串 |要用來擷取子字串的原始字串。 |
-| startIndex |No |int |起始字元位置為零的子字串。 |
-| 長度 |No |int |子字串的字元數。 必須參考字串內的位置。 必須是零或更大的值。 |
+| stringToParse |是 |字串 |要用來擷取子字串的原始字串。 |
+| startIndex |否 |int |起始字元位置為零的子字串。 |
+| 長度 |否 |int |子字串的字元數。 必須參考字串內的位置。 必須是零或更大的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1619,10 +1619,10 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |陣列或字串 |要從其中擷取元素的陣列或字串。 |
-| numberToTake |Yes |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
+| originalValue |是 |陣列或字串 |要從其中擷取元素的陣列或字串。 |
+| numberToTake |是 |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1687,7 +1687,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字串 |要轉換成小寫字母的值。 |
 
@@ -1738,7 +1738,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字串 |要轉換成大寫字母的值。 |
 
@@ -1789,7 +1789,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |字串 |要修剪的值。 |
 
@@ -1835,7 +1835,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字串 |雜湊函式中用來建立唯一字串的值。 |
 | 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
@@ -1844,7 +1844,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 當您需要建立資源的唯一名稱時，這個函式很有幫助。 您提供限制結果唯一性範圍的參數值。 您可以指定名稱對於訂用帳戶、資源群組或部署是否唯一。
 
-傳回的值不是隨機字串，而是雜湊函數的結果。 傳回的值為 13 個字元長。 這不是全域唯一的。 建議您將值與來自命名慣例的前置詞結合，建立有意義的名稱。 下列範例顯示傳回值的格式。 依提供的參數而改變的實際值。
+傳回的值不是隨機字串，而是雜湊函數的結果。 傳回的值為 13 個字元長。 它不是全域唯一的。 建議您將值與來自命名慣例的前置詞結合，建立有意義的名稱。 下列範例顯示傳回值的格式。 依提供的參數而改變的實際值。
 
 `tcvhiyu5h2o5o`
 
@@ -1868,7 +1868,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-下列範例顯示如何根據您的資源群組建立儲存體帳戶的唯一名稱。 在資源群組內，如果以相同的方式來建立，則名稱不是唯一的。
+下列範例顯示如何根據您的資源群組建立儲存體帳戶的唯一名稱。 在資源群組中，如果是以相同的方式建立，則名稱不是唯一的。
 
 ```json
 "resources": [{
@@ -1877,7 +1877,7 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
     ...
 ```
 
-如果您需要在每次部署範本時建立新的唯一名稱，而不想要更新資源，您可以使用[utcNow](template-functions-date.md#utcnow)函數搭配 uniqueString。 您可以在測試環境中使用這個方法。 如需範例，請參閱[utcNow](template-functions-date.md#utcnow)。
+如果您需要在每次部署範本時建立新的唯一名稱，而不想要更新資源，您可以搭配 uniqueString 使用 [utcNow](template-functions-date.md#utcnow) 函式。 您可以在測試環境中使用此方法。 如需範例，請參閱 [utcNow](template-functions-date.md#utcnow)。
 
 ### <a name="return-value"></a>傳回值
 
@@ -1913,18 +1913,18 @@ NewGuid 函數會使用 .NET Framework 中的[Guid 結構](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| baseUri |是 |字串 |基底 uri 的字串。 請小心觀察有關處理尾端斜線（'/'）的行為，如下表所述。  |
+| baseUri |是 |字串 |基底 uri 的字串。 請小心觀察有關處理尾端斜線 ( '/' ) 的行為，如下表所述。  |
 | relativeUri |是 |字串 |要加入至基底 uri 字串的相對 uri 字串。 |
 
-* 如果**baseuri**以尾端斜線結束，則結果只是**baseUri** ，後面接著**relativeUri**。
+* 如果 **baseuri** 以尾端斜線結尾，則結果只是 **baseUri** ，後面接著 **relativeUri**。
 
-* 如果**baseUri**結尾不是兩個專案的尾端斜線，則會發生這種情況。
+* 如果 **baseUri** 的結尾不是兩個專案中的尾端斜線，就會發生這種情況。
 
-   * 如果**baseUri**完全沒有任何斜線（除了前面的 "//" 之外），結果只是**baseUri** ，後面接著**relativeUri**。
+   * 如果 **baseUri** 沒有任何 (斜線存在於) 前方的 "//" 附近，則結果只是 **baseuri** ，後面接著 **relativeUri**。
 
-   * 如果**baseUri**有一些斜線，但結尾不是斜線，則會從**baseuri**移除最後一個斜線的所有內容，而結果會是**baseuri** ，後面接著**relativeUri**。
+   * 如果 **baseUri** 有一些斜線，但不是以斜線結尾，則最後一個斜線開頭的所有專案都會從 **baseuri** 中移除，而結果會是 **baseuri** ，其後接著 **relativeUri**。
 
 以下是一些範例：
 
@@ -1934,7 +1934,7 @@ uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstp
 uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
 uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
 ```
-如需完整的詳細資訊，請依照[RFC 3986 第5節](https://tools.ietf.org/html/rfc3986#section-5)中的指定來解析**baseUri**和**relativeUri**參數。
+如需完整的詳細資料，請依照[RFC 3986 第5節](https://tools.ietf.org/html/rfc3986#section-5)中的指定來解析**baseUri**和**relativeUri**參數。
 
 ### <a name="return-value"></a>傳回值
 
@@ -1993,7 +1993,7 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |字串 |要編碼的值。 |
 
@@ -2048,7 +2048,7 @@ URI 編碼值的字串。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |字串 |要轉換為字串的 URI 編碼值。 |
 

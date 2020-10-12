@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 74527f57340f850b60dd00dcd054992c423a49c7
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039001"
 ---
 # <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>從 Windows 虛擬桌面手動遷移 (傳統) 
@@ -35,7 +35,7 @@ Windows 虛擬桌面最新的重大更新，會將服務中的轉移標示為完
 - 透過 Azure 入口網站管理 Windows 虛擬桌面。
 - 將 Azure Active Directory (AD) 使用者群組指派給應用程式群組。
 - 使用改良的 Log Analytics 功能來疑難排解您的部署。
-- 使用 Azure 原生角色型存取控制來管理系統管理存取權。
+- 使用 Azure 原生 Role-Based 存取控制來管理系統管理存取權。
 
 ## <a name="when-should-i-migrate"></a>我應該在何時遷移？
 
@@ -78,7 +78,7 @@ Windows 虛擬桌面最新的重大更新，會將服務中的轉移標示為完
 
 為了避免停機，您應該先將現有的工作階段主機註冊至小型群組中 Azure Resource Manager 整合的主機集區。 之後，將您的使用者慢慢帶到新的 Azure Resource Manager 整合式應用程式群組。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 遷移之後，請查看 [我們的教學](create-host-pools-azure-marketplace.md)課程，瞭解 Windows 虛擬桌面的運作方式。 深入瞭解如何 [展開現有的主機集](expand-existing-host-pool.md) 區和 [自訂 RDP 屬性](customize-rdp-properties.md)，以進行先進的管理功能。
 

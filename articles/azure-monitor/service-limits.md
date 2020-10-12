@@ -1,16 +1,16 @@
 ---
 title: Azure 監視器服務限制 |Microsoft Docs
-description: 列出 Azure 監視器的不同區域中的限制。
+description: 列出 Azure 監視器不同區域的限制。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77657906"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure 監視器服務限制

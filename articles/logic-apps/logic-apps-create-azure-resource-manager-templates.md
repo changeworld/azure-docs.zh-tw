@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971790"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>建立 Azure Resource Manager 範本以自動部署 Azure Logic Apps
@@ -121,11 +121,11 @@ Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileN
 
 | 參數 | 必要 | 描述 |
 |------------|----------|-------------|
-| TemplateFile | Yes | 範本檔案的檔案路徑 |
-| KeyVault | No | 描述如何處理可能的金鑰保存庫值的列舉。 預設值為 `None`。 |
+| TemplateFile | 是 | 範本檔案的檔案路徑 |
+| KeyVault | 否 | 描述如何處理可能的金鑰保存庫值的列舉。 預設為 `None`。 |
 ||||
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [部署邏輯應用程式範本](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)

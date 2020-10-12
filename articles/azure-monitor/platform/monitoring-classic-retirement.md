@@ -1,6 +1,6 @@
 ---
-title: Azure 監視器中 & 監視的傳統警示更新
-description: 淘汰傳統監視服務和功能的說明，先前 Azure 入口網站 (傳統) 的警示底下所示。
+title: Azure 監視器中的傳統警示 & 監視更新
+description: 傳統監視服務和功能的淘汰說明，稍早顯示于警示 (傳統) 的 Azure 入口網站。
 author: yanivlavi
 services: azure-monitor
 ms.topic: conceptual
@@ -8,17 +8,17 @@ ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848120"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure 監視器中的整合警示和監視取代了傳統警示和監視
 
 Azure 監視器現在已成為整合的完整堆疊監視服務，其現在可跨資源支援「一個計量」和「一個警示」；如需詳細資訊，請參閱[關於新 Azure 監視器的部落格文章](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)。新的 Azure 監視和警示平台經過建置，變得更快速、更聰明，且可擴充，以跟上雲端運算日益擴張的版圖，並和 Microsoft Intelligent Cloud 的原則保持一致。
 
-隨著新的 Azure 監視和警示平臺準備就緒，Azure 監視器中的傳統警示將會淘汰，但仍會受限地用於尚未支援新警示的資源。 這些警示的停用日期已進一步擴充。 即將推出的新日期將會針對剩餘的警示遷移、 [Azure Government 雲端](../../azure-government/documentation-government-welcome.md)和[Azure 中國世紀](https://docs.azure.cn/)。
+有了新的 Azure 監視和警示平臺之後，Azure 監視器中的傳統警示就會淘汰，但仍可針對尚未支援新警示的資源使用。 這些警示的停用日期已進一步延伸。 即將針對剩餘的警示遷移、 [Azure Government 雲端](../../azure-government/documentation-government-welcome.md)和 [Azure 中國的世紀](https://docs.azure.cn/)宣佈新的日期。
 
  ![Azure 入口網站中的傳統警示](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
@@ -36,7 +36,7 @@ Azure 監視器的較新計量平台現在可強化來自 Application Insights �
 - **Application Insights 平台計量** - 可提供來自 Application Insights 產品的熱門預建計量。 如需詳細資訊，請參閱這篇關於使用[新 Azure 監視器上的 Application Insights 平台計量](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)的文章。
 - **Application Insights 可用性和 Web 測試** - 可讓您能夠評估 Web 應用程式或伺服器的回應能力和可用性。 如需詳細資訊，請參閱這篇關於使用[新 Azure 監視器上的 Application Insights 可用性測試和警示](../app/monitor-web-app-availability.md)的文章。
 - **Application Insights 自訂計量** - 可讓您定義和發出自己的監視和警示計量。 如需詳細資訊，請參閱這篇關於使用[新 Azure 監視器上的 Application Insights 自訂計量](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)的文章。
-- **Application Insights 失敗異常 (智慧偵測的一部分)** - 可在 Web 應用程式的失敗 HTTP 要求或相依性呼叫比率異常增加時，以幾乎即時的方式自動通知您。 如需詳細資訊，請參閱關於使用[智慧型偵測-失敗異常](../app/proactive-failure-diagnostics.md)的文章。
+- **Application Insights 失敗異常 (智慧偵測的一部分)** - 可在 Web 應用程式的失敗 HTTP 要求或相依性呼叫比率異常增加時，以幾乎即時的方式自動通知您。 如需詳細資訊，請參閱這篇有關使用 [智慧型偵測失敗異常](../app/proactive-failure-diagnostics.md)的文章。
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>其他 Azure 資源的整合計量和警示
 
@@ -48,7 +48,7 @@ Azure 監視器的較新計量平台現在可強化來自 Application Insights �
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>淘汰傳統監視和警示平台
 
-如先前所述，舊版傳統監視和警示已淘汰;其中包括相關 Api 的關閉、Azure 入口網站介面和服務，但仍會受限地用於尚未支援新警示的資源。 具體來說，這些功能將會淘汰：
+如先前所述，舊的傳統監視和警示已淘汰;但仍會將相關的 Api、Azure 入口網站介面和服務的服務關閉，但對於尚未支援新警示的資源仍有限制。 具體來說，這些功能將會淘汰：
 
 - 目前可透過 Azure 入口網站 [[警示 (傳統)] 區段](./alerts-classic.overview.md)使用的 Azure 資源舊版 (傳統) 計量和警示；可以 [microsoft.insights/alertrules](/rest/api/monitor/alertrules) 資源的形式來存取
 - 目前可透過 Azure 入口網站 [[警示 (傳統)] 區段](./alerts-classic.overview.md)使用的 Application Insights 舊版 (傳統) 平台與自訂計量及警示；且可以 [microsoft.insights/alertrules](/rest/api/monitor/alertrules) 資源的形式來存取
@@ -56,29 +56,29 @@ Azure 監視器的較新計量平台現在可強化來自 Application Insights �
 
 這表示：
 
-- 傳統監視和警示服務將會停用，且無法再用於建立新的警示規則。
-- 繼續存在於警示 (傳統) 中的任何警示規則將會繼續執行並引發通知。
-- 在傳統監視中的警示規則 & 可遷移的警示，Microsoft 會在短短幾周的階段，自動在新的 Azure 監視器平臺中將其移到其對等的。 此程序無須停機即可順利進行，而且客戶不會遺失任何監視涵蓋範圍。
-- 移轉至新警示平台的警示規則將提供與之前一樣的監視涵蓋範圍，但會引發具有新承載的通知。 在遷移時，與傳統警示規則相關聯的任何電子郵件地址、webhook 端點或邏輯應用程式連結都會繼續執行，但可能無法正確運作，因為新平臺中的警示承載會有所不同。
-- 某些[傳統警示規則無法自動遷移](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)，而且需要使用者手動採取動作，將會繼續執行。
+- 傳統監視和警示服務將會淘汰，而且無法再建立新的警示規則。
+- 任何持續存在於警示 (傳統) 中的警示規則，都會繼續執行並引發通知。
+- 傳統監視中的警示規則 & 可遷移的警示，將會在幾周內，由 Microsoft 自動移至新 Azure 監視器平臺的對等專案。 此程序無須停機即可順利進行，而且客戶不會遺失任何監視涵蓋範圍。
+- 移轉至新警示平台的警示規則將提供與之前一樣的監視涵蓋範圍，但會引發具有新承載的通知。 任何與傳統警示規則相關聯的電子郵件地址、webhook 端點或邏輯應用程式連結都會在遷移時繼續執行，但可能無法正確運作，因為新平臺中的警示承載將會不同。
+- 某些 [傳統警示規則無法自動遷移](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts) ，而需要使用者手動執行動作時，將會繼續執行。
 
 > [!IMPORTANT]
-> Microsoft Azure Monitor 已推出階段[工具，可主動](alerts-using-migration-tool.md)將其傳統警示規則立即遷移至新的平臺。 並針對仍然存在且可遷移的所有傳統警示規則，強制執行此程式。 移轉至傳統警示規則之後，客戶必須確實調整使用傳統警示規則的自動化作業，以處理來自 [Application Insights 中的整合計量和警示](#unified-metrics-and-alerts-in-application-insights)或[其他 Azure 資源的整合計量和警示](#unified-metrics-and-alerts-for-other-azure-resources)的新承載。 如需詳細資訊，請參閱[準備傳統警示規則遷移](alerts-prepare-migration.md)
+> Microsoft Azure 監視器已在階段中推出 [，這項工具可主動](alerts-using-migration-tool.md) 將傳統警示規則遷移至新的平臺。 並針對仍然存在且可遷移的所有傳統警示規則強制執行它。 移轉至傳統警示規則之後，客戶必須確實調整使用傳統警示規則的自動化作業，以處理來自 [Application Insights 中的整合計量和警示](#unified-metrics-and-alerts-in-application-insights)或[其他 Azure 資源的整合計量和警示](#unified-metrics-and-alerts-for-other-azure-resources)的新承載。 如需詳細資訊，請參閱 [為傳統警示規則遷移做好準備](alerts-prepare-migration.md)
 
 本文將持續更新關於新 Azure 監視和警示功能的連結和詳細資料，以及工具的可用性，以協助使用者採用新的 Azure 監視器平台。
 
-## <a name="pricing-for-migrated-alert-rules"></a>已遷移警示規則的價格
+## <a name="pricing-for-migrated-alert-rules"></a>已遷移警示規則的定價
 
-我們即將推出遷移工具，可協助您將 Azure 監視器[傳統警示](./alerts-classic.overview.md)遷移至新的警示體驗。 遷移的警示規則和對應的已遷移動作群組 (電子郵件、webhook 或 LogicApp) 將維持免費。 您在傳統警示中所擁有的功能，包括編輯閾值、匯總類型和匯總資料細微性的能力，將可透過您遷移的警示規則繼續免費使用。 不過，如果您編輯遷移的警示規則以使用任何新的警示平臺功能、通知或動作類型，則會套用對應的費用。 如需警示規則和通知的價格詳細資訊，請參閱[Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
+我們即將推出遷移工具，協助您將 Azure 監視器 [傳統警示](./alerts-classic.overview.md) 遷移至新的警示體驗。 已遷移的警示規則和對應的已遷移動作群組 (的電子郵件、webhook 或 LogicApp) 將保持免費。 您使用傳統警示所擁有的功能，包括編輯臨界值、匯總類型和匯總資料細微性的功能，可以繼續與您已遷移的警示規則一起使用。 但是，如果您編輯已遷移的警示規則以使用任何新的警示平臺功能、通知或動作類型，則會套用對應的費用。 如需有關警示規則和通知定價的詳細資訊，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
-以下是您將會產生警示規則費用的案例範例：
+以下是您會產生警示規則費用的案例範例：
 
 - 在新的 Azure 監視器平台上，超出免費單位所建立的任何新的 (非遷移) 警示規則
 - 超出 Azure 監視器所含免費單位而擷取和保留的任何資料
 - Application Insights 所執行的任何多測試 Web 測試
 - 超出 Azure 監視器所含免費單位而儲存的任何自訂計量
-- 任何已遷移的警示規則會進行編輯，以使用較新的計量警示功能，例如頻率、多個資源/維度、[動態閾值](alerts-dynamic-thresholds.md)、變更資源/信號等等。
-- 已編輯以使用較新通知或動作類型（例如 SMS、語音通話和/或 ITSM 整合）的任何已遷移動作群組。
+- 已編輯為使用較新計量警示功能的任何已遷移警示規則，例如頻率、多重資源/維度、 [動態閾值](alerts-dynamic-thresholds.md)、變更資源/信號等等。
+- 任何已被編輯為使用較新通知或動作類型（如 SMS、語音通話及/或 ITSM 整合）的已遷移動作群組。
 
 ## <a name="next-steps"></a>後續步驟
 

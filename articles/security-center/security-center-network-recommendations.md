@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883879"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
@@ -48,7 +48,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 1. 在 [安全性中心] 功能表中，開啟 Azure Defender 儀表板，然後選取 [ **網路對應**]。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="從 Azure Defender 儀表板開啟網路地圖" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="資產清查網路資源類型" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. 選取 [ **圖層** ] 功能表選擇 [ **拓撲**]。
  
@@ -116,7 +116,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 [![網路流量地圖](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解適用於其他 Azure 資源類型的建議，請參閱下列文章︰
 

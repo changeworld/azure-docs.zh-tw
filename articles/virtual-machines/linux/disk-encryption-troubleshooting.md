@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5ca6431531f8cebf1205aa555c5545f4dc44abd3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372207"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux Vm 的 Azure 磁碟加密疑難排解指南
@@ -31,7 +31,7 @@ ms.locfileid: "87372207"
 
 Linux 作業系統 (OS) 磁碟加密必須先將 OS 磁碟機取消掛接後，才能透過完整磁碟加密流程加以執行。 如果無法取消掛接磁碟機，則可能出現「後續無法取消掛接...」錯誤訊息。
 
-嘗試在已從支援的股票主機庫映射變更環境的 VM 上進行 OS 磁片加密時，就會發生此錯誤。 來自受支援映像的偏差可能會干擾 OS 磁碟機取消掛接擴充功能。 偏差的範例可能包括下列項目：
+如果 VM 上的 OS 磁片加密的環境已從支援的股票資源庫映射變更，就會發生此錯誤。 來自受支援映像的偏差可能會干擾 OS 磁碟機取消掛接擴充功能。 偏差的範例可能包括下列項目：
 - 不再符合支援的檔案系統或資料分割配置的自訂映像。
 - 在加密之前已於 OS 中安裝且執行諸如 SAP、MongoDB 或 Apache Cassandra 與 Docker 等大型應用程式時，則不支援這些應用程式。 在依要求準備 OS 磁碟機進行磁碟加密時，Azure 磁碟加密無法安全地關閉這些處理序。 如果仍然有作用中的處理序持有 OS 磁碟機的開啟檔案控制代碼，則 OS 磁碟機無法取消掛接，因而造成無法加密 OS 磁碟機。 
 - 自訂指令碼與要啟用的加密在相近時間下執行，或在加密流程期間對 VM 進行任何其他變更。 當 Azure Resource Manager 範本定義要同時執行的多個擴充功能，或當自訂指令碼擴充功能或其他動作同時對磁碟加密執行時，會發生此衝突。 將這些步驟序列化和隔離，就可解決此問題。
@@ -58,11 +58,11 @@ uname -a
 
 ## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>更新 Azure 虛擬機器代理程式和擴充功能版本
 
-使用不支援的 Azure 虛擬機器代理程式版本，虛擬機器映射上的 Azure 磁碟加密作業可能會失敗。 在啟用加密之前，必須先更新代理程式版本早于2.2.38 的 Linux 映射。 如需詳細資訊，請參閱[如何在 VM 上更新 Azure Linux 代理程式](../extensions/update-linux-agent.md)和[azure 中虛擬機器代理程式的最低版本支援](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+使用不支援的 Azure 虛擬機器代理程式版本的虛擬機器映射上的 Azure 磁碟加密作業可能會失敗。 在啟用加密之前，應先更新代理程式版本早于2.2.38 的 Linux 映射。 如需詳細資訊，請參閱 [如何在 VM 上更新 Azure Linux 代理程式](../extensions/update-linux-agent.md) ，以及 [在 azure 中更新虛擬機器代理程式的最低版本支援](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
-AzureDiskEncryption 或 AzureDiskEncryptionForLinux 來賓代理程式擴充功能的正確版本也是必要的。（必要條件）。 當滿足 Azure 虛擬機器代理程式必要條件並使用支援的虛擬機器代理程式版本時，平臺會自動維護和更新擴充功能版本。
+此外，也需要正確的 AzureDiskEncryption 版本或 AzureDiskEncryptionForLinux 來賓代理程式延伸模組的版本。 當符合 Azure 虛擬機器代理程式必要條件，並使用支援的虛擬機器代理程式版本時，平臺會自動維護和更新延伸模組版本。
 
-Microsoft.ostcextensions.customscriptforlinux. AzureDiskEncryptionForLinux 擴充功能已被取代，不再受到支援。  
+Microsoft.ostcextensions.customscriptforlinux. AzureDiskEncryptionForLinux 延伸模組已被取代，不再受到支援。  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>無法將 Linux 磁碟加密
 
@@ -70,7 +70,7 @@ Microsoft.ostcextensions.customscriptforlinux. AzureDiskEncryptionForLinux 擴�
 
 Linux OS 磁碟加密順序會暫時取消掛接 OS 磁碟機。 然後會對整個 OS 磁碟執行逐區塊加密，再於它處於已加密狀態時重新掛接。 進行加密時，Linux 磁片加密不允許同時使用 VM。 VM 的效能特性在完成加密所需的時間上有顯著差異。 這些特性包括磁碟的大小以及儲存體帳戶是標準或進階 (SSD) 儲存體。
 
-當 OS 磁片磁碟機正在加密時，VM 會進入服務狀態並停用 SSH，以避免中斷進行中的進程。  若要檢查加密狀態，請使用 Azure PowerShell [AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令，並檢查**ProgressMessage**欄位。 **ProgressMessage**會報告一系列的狀態，因為資料和 OS 磁片已加密：
+當 OS 磁片磁碟機加密時，VM 會進入服務狀態並停用 SSH，以防止任何正在進行的進程中斷。  若要檢查加密狀態，請使用 Azure PowerShell [>get-azvmdiskencryptionstatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 命令，並檢查 **ProgressMessage** 欄位。 **ProgressMessage** 將報告一系列的狀態，因為資料和作業系統磁片已加密：
 
 ```azurepowershell
 PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
@@ -102,7 +102,7 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OS disk encryption started
 ```
 
-在大部分的加密程式中， **ProgressMessage**將會保留在**OS 磁片加密中啟動**。  加密完成且成功時， **ProgressMessage**會傳回：
+**ProgressMessage**將會保留在**作業系統磁片加密**中，以進行大部分的加密處理常式。  加密完成且成功時， **ProgressMessage** 會傳回：
 
 ```azurepowershell
 PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
@@ -115,13 +115,13 @@ ProgressMessage            : Encryption succeeded for all volumes
 
 可以使用此訊息之後，加密的 OS 磁碟機應該會就緒可供使用，且 VM 也就緒可再次使用。
 
-如果開機資訊、進度訊息或錯誤報表在此程式中途發生 OS 加密失敗，請將 VM 還原至在加密之前立即建立的快照集或備份。 訊息的範本是本指南中所述的「無法取消掛接」錯誤。
+如果開機資訊、進度訊息或錯誤報表作業系統加密在此程式中失敗，請將 VM 還原至在加密之前立即執行的快照集或備份。 訊息的範本是本指南中所述的「無法取消掛接」錯誤。
 
 在重新嘗試加密之前，請重新評估 VM 的特性，並確定所有必要條件都已滿足。
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>針對防火牆後方的 Azure 磁碟加密進行疑難排解
 
-請參閱[隔離網路上的磁片加密](disk-encryption-isolated-network.md)
+查看 [隔離網路上的磁片加密](disk-encryption-isolated-network.md)
 
 ## <a name="troubleshooting-encryption-status"></a>針對加密狀態進行疑難排解 
 

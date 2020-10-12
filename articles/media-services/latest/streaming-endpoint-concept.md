@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297190"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中 (原始) 的串流端點
@@ -43,7 +43,7 @@ ms.locfileid: "89297190"
 * 串流端點名稱的最大值為24個字元。
 * 此名稱應遵循此 [RegEx](/dotnet/standard/base-types/regular-expression-language-quick-reference) 模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
 
-## <a name="types"></a>類型
+## <a name="types"></a>型別
 
 有兩種 **串流端點** 類型： **Standard** (preview) 和 **Premium**。 類型會根據您為串流端點配置的縮放單位數 (`scaleUnits`) 來定義。
 
@@ -156,7 +156,7 @@ IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
     
 ## <a name="scaling-streaming-with-cdn"></a>使用 CDN 調整串流作業的規模
 
-查看下列文章：
+請參閱下列文章：
 
 - [CDN 總覽](../../cdn/cdn-overview.md)
 - [使用 CDN 調整串流作業的規模](scale-streaming-cdn.md)
@@ -169,6 +169,6 @@ IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
 
 [動態封裝](dynamic-packaging-overview.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [管理串流端點](manage-streaming-endpoints-howto.md)

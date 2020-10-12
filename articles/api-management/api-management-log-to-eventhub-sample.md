@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205516"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>利用 Azure API 管理、事件中樞與 Moesif 監視您的 API
@@ -80,7 +80,7 @@ Azure 事件中樞已設計用來輸入大量資料，其能夠處理的事件�
 ### <a name="policy-declaration"></a>原則宣告
 此原則運算式有一些值得一提的特別之處。 log-to-eventhub 原則有一個名為 logger-id 的屬性，這是指已在 API 管理服務中建立的記錄器名稱。 在 [如何在 Azure API 管理中將事件記錄至 Azure 事件中樞](api-management-howto-log-event-hubs.md)文件中可以找到如何在 API 管理服務中設定事件中樞記錄器的詳細資訊。 第二個屬性是一個選擇性參數，其指示事件中樞要在哪個資料分割中儲存訊息。 事件中樞使用資料分割來達到延展性，而且需要至少兩個資料分割。 只保證在一個資料分割內的訊息會依序傳遞。 如果我們未指示事件中樞要在哪一個資料分割中放置訊息，它會使用循環配置資源演算法來分散負載。 不過，這可能導致一些訊息未依順序處理。
 
-### <a name="partitions"></a>分割區
+### <a name="partitions"></a>資料分割
 若要確保我們的訊息依序傳遞給取用者並利用資料分割的負載分散功能，我選擇將 HTTP 要求訊息傳送到一個資料分割，將 HTTP 回應訊息傳送到第二個資料分割。 如此可確保負載平均分散，而且我們可以保證所有要求和所有回應都會依序取用。 回應有可能在對應要求之前取用，但這不成問題，因為我們有不同的機制可讓要求與回應相互關聯，而且我們知道要求一律會出現在回應之前。
 
 ### <a name="http-payloads"></a>HTTP 裝載
@@ -295,7 +295,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用[適用於 Moesif 的 C# API 程式庫](https://www.moesif.com/docs/api?csharp#events)，此程式庫可讓您輕鬆將 HTTP 事件資料推送到其服務。 若要將 HTTP 資料傳送至 Moesif 收集器 API，您需要一個帳戶和一個應用程式識別碼。您可以在[Moesif 的網站](https://www.moesif.com)上建立帳戶，然後移至_右上方功能表_  ->  _應用程式設定_，以取得 Moesif 應用程式識別碼。
+`MoesifHttpMessageProcessor` 利用[適用於 Moesif 的 C# API 程式庫](https://www.moesif.com/docs/api?csharp#events)，此程式庫可讓您輕鬆將 HTTP 事件資料推送到其服務。 為了將 HTTP 資料傳送至 Moesif 收集器 API，您需要帳戶和應用程式識別碼。您可以在[Moesif 的網站](https://www.moesif.com)上建立帳戶，然後移至_右上方功能表_  ->  _應用程式設定_，以取得 Moesif 應用程式識別碼。
 
 ## <a name="complete-sample"></a>完整範例
 範例的[原始程式碼](https://github.com/dgilling/ApimEventProcessor)和測試位於 GitHub 上。 您需要 [API 管理服務](get-started-create-service-instance.md)、[已連線的事件中樞](api-management-howto-log-event-hubs.md)及[儲存體帳戶](../storage/common/storage-account-create.md)，才能自行執行此範例。   

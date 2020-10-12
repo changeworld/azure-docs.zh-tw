@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590110"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 檔案共用上啟用虛刪除
@@ -68,13 +68,13 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
     這會顯示目前處於 [已刪除] 狀態的任何共用。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="如果 [狀態] 資料行 ([名稱] 資料行旁邊的資料行) 設定為 [已刪除]，則表示您的檔案共用處於虛刪除狀態。並且在您指定的保留期間之後永久刪除。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
 
 1. 選取 [共用]，然後選取 [取消刪除]，這會還原共用。
 
     您可以確認共用已還原，因為其狀態會切換為 [作用中]。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="如果 [狀態] 資料行 ([名稱] 資料行旁邊的資料行) 設定為 [作用中]，則表示您的檔案共用已還原。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -95,7 +95,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 1. 在 [檔案共用] 下，針對 [檔案共用的虛刪除] 選取 [停用]。
 1. 選取 [儲存] 以確認您的資料保留設定。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="停用虛刪除可讓您立即並永久刪除儲存體帳戶中的所有檔案共用。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="[儲存體帳戶虛刪除設定] 窗格的螢幕擷取畫面。反白顯示 [檔案共用] 區段，啟用切換、設定保留期間及儲存。這會對您儲存體帳戶中的所有檔案共用啟用虛刪除。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -106,6 +106,6 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountNa
 ```
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要瞭解另一種形式的資料保護和復原，請參閱 [Azure 檔案儲存體的共用快照集簡介](storage-snapshots-files.md)。

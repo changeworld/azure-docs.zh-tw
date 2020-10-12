@@ -4,10 +4,10 @@ description: 在 Azure 原則中指派內建原則，以針對 Azure container r
 ms.topic: article
 ms.date: 06/11/2020
 ms.openlocfilehash: 26c56616bcc411063d0ebfda28ba1e6fdf44c7fb
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291005"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure 原則的 Azure container registry 審核合規性
@@ -85,7 +85,7 @@ az policy state list \
  --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 Azure 原則 [定義](../governance/policy/concepts/definition-structure.md) 和 [效果](../governance/policy/concepts/effects.md)。
 

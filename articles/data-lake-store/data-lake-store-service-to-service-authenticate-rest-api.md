@@ -1,16 +1,16 @@
 ---
 title: REST-服務對服務驗證-Data Lake Storage Gen1-Azure
-description: 瞭解如何使用 REST API 以 Azure Data Lake Storage Gen1 和 Azure Active Directory 完成服務對服務驗證。
+description: 瞭解如何使用 REST API 以 Azure Data Lake Storage Gen1 和 Azure Active Directory 達成服務對服務驗證。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85857122"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
@@ -22,9 +22,9 @@ ms.locfileid: "85857122"
 > 
 > 
 
-在本文中，您將瞭解如何使用 REST API，以 Azure Data Lake Storage Gen1 進行服務對服務驗證。 如須使用 REST API 向 Data Lake Storage Gen1 進行使用者驗證，請參閱[使用 REST API 向 Data Lake Storage Gen1 進行終端使用者驗證](data-lake-store-end-user-authenticate-rest-api.md)。
+在本文中，您將瞭解如何使用 REST API，透過 Azure Data Lake Storage Gen1 來進行服務對服務驗證。 如須使用 REST API 向 Data Lake Storage Gen1 進行使用者驗證，請參閱[使用 REST API 向 Data Lake Storage Gen1 進行終端使用者驗證](data-lake-store-end-user-authenticate-rest-api.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -50,7 +50,7 @@ curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
 
 本文使用 **非互動式** 方法。 如需有關非互動式 (服務對服務呼叫) 的詳細資訊，請參閱 [使用認證進行服務對服務呼叫](https://msdn.microsoft.com/library/azure/dn645543.aspx)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已了解如何搭配使用 REST API 與服務對服務驗證向 Data Lake Storage Gen1 進行驗證。 您現在可以查看下列文章，了解如何搭配使用 REST API 與 Data Lake Storage Gen1。
 

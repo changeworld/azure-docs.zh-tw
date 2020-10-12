@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372513"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Application Insights for Java 的疑難排解和問答集
@@ -27,19 +27,19 @@ ms.locfileid: "87372513"
 * 確認 xml 檔案中沒有 `<DisableTelemetry>true</DisableTelemetry>` 節點。
 * 在防火牆中，您可能必須開啟 TCP 連接埠 80 和 443，以允許連出流量送往 dc.services.visualstudio.com。 請參閱 [完整的防火牆例外狀況清單](./ip-addresses.md)
 * 在 Microsoft Azure 開始面板中，查看服務狀態對應。 如果看到一些警示指示，請等待它們恢復 [正常]，然後關閉再重新開啟 Application Insights 應用程式刀鋒視窗。
-* [Turn on logging](#debug-data-from-the-sdk)藉由在 `<SDKLogger />` ApplicationInsights.xml 檔案（位於專案的 resources 資料夾）的根節點下加入元素，來開啟記錄功能，並檢查是否有任何可疑記錄檔前面加上 AI： INFO/警告/ERROR 的專案。 
+* [Turn on logging](#debug-data-from-the-sdk)藉由在專案) 中的 [資源] 資料夾中，于 [資源] 資料夾內的 [ `<SDKLogger />` ApplicationInsights.xml 檔 (的根節點下加入專案，然後檢查前面加上 AI： INFO/警告/錯誤的專案，以開啟記錄。 
 * 藉由查看主控台的輸出訊息「已成功找到組態檔」陳述式，確定 Java SDK 已成功載入正確的 ApplicationInsights.xml 檔案。
 * 如果找不到組態檔，請檢查輸出訊息以查看在何處搜尋組態檔，並確定 ApplicationInsights.xml 位在這些搜尋位置中的其中一個位置。 根據經驗法則，您可以將組態檔置於 Application Insights SDK JAR 附近。 例如：在 Tomcat 中，這可能表示 WEB-INF/classes 資料夾。 在開發過程中，您可以將 ApplicationInsights.xml 放在您 Web 專案的 resources 資料夾中。
 * 另外也請查看 [GitHub 問題頁面](https://github.com/Microsoft/ApplicationInsights-Java/issues) \(英文\) 以了解 SDK 的已知問題。
 * 請務必使用相同版本的 Application Insights 核心、Web、代理程式和記錄附加器，以避免任何版本衝突問題。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我曾經看到資料，但是已停止
-* 您有達到資料點的每月配額嗎？ 開啟 [設定]/[配額和定價] 以找出。若是如此，您可以升級您的方案，或支付額外的容量。 請參閱 [定價配置](https://azure.microsoft.com/pricing/details/application-insights/)。
+* 您有達到資料點的每月配額嗎？ 開啟 [設定/配額和定價] 以找出。若是如此，您可以升級您的方案，或支付額外容量。 請參閱 [定價配置](https://azure.microsoft.com/pricing/details/application-insights/)。
 * 您最近是否升級了 SDK？ 請確定專案目錄中只有「唯一」的 SDK jar。 不應該有兩個不同版本的 SDK 存在。
 * 正在尋找適當的 AI 資源嗎？ 請比對應用程式的 iKey 與您預期遙測的資源。 它們應該相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>我並沒有看到預期的所有資料
-* 開啟 [使用量和估計成本] 頁面，並檢查[取樣](./sampling.md)是否正在運作。 （100% 傳輸表示取樣不在作業中。）Application Insights 服務可以設定為只接受從您的應用程式抵達的一小部分遙測。 這有助於您維持在每月的遙測配額內。
+* 開啟 [使用量和估計成本] 頁面，並檢查[取樣](./sampling.md)是否正在運作。  (100% 傳輸表示取樣不在運作中。 ) Application Insights 服務可以設定為只接受來自您應用程式的一小部分遙測。 這有助於您維持在每月的遙測配額內。
 * 您是否已開啟 SDK 取樣？ 如果是，則應該會針對所有適用的類型以指定的速率進行資料取樣。
 * 您正在執行較舊版本的 Java SDK？ 從 2.0.1 版開始，我們引進容錯機制來處理間歇性的網路和後端失敗，以及本機磁碟上的資料持續性。
 * 是否因為過多的遙測而遭到節流？ 如果您開啟 INFO 記錄，將會看到記錄訊息「應用程式已節流」。 我們目前的限制為每秒 32,000 個遙測項目。
@@ -70,7 +70,7 @@ ms.locfileid: "87372513"
     config.setTrackingIsDisabled(true);
 ```
 
-**或**
+**Or**
 
 更新 ApplicationInsights.xml (位於專案的 resources 資料夾)。 在根節點下加入下列程式碼：
 
@@ -109,7 +109,7 @@ ms.locfileid: "87372513"
 
 ### <a name="spring-boot-starter"></a>春季開機 Starter
 
-若要使用 Application Insights 春季開機 Starter 來啟用具有春季開機應用程式的 SDK 記錄，請將下列內容新增至檔案 `application.properties` ：
+若要使用 Application Insights 春季 Boot Starter 來啟用具有春季 Boot 應用程式的 SDK 記錄，請將下列內容新增至檔案 `application.properties` ：
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -126,7 +126,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Java 代理程式
 
-若要啟用 JVM 代理程式記錄，請更新[AI-Agent.xml](java-agent.md)檔案：
+若要啟用 JVM 代理程式記錄，請更新 [AI-Agent.xml](java-agent.md)檔案：
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
@@ -137,9 +137,9 @@ azure.application-insights.logger.level=trace
 ```
 
 ### <a name="java-command-line-properties"></a>JAVA 命令列屬性
-_自版本2.4。0_
+_因為版本2.4。0_
 
-若要使用命令列選項來啟用記錄，而不變更設定檔：
+若要使用命令列選項來啟用記錄，而不需要變更設定檔：
 
 ```
 java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
@@ -152,7 +152,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 ```
 
 ## <a name="the-azure-start-screen"></a>Azure 開始畫面
-**我正在查看[Azure 入口網站](https://portal.azure.com)。地圖會告訴我我的應用程式有什麼問題嗎？**
+**我正在查看 [Azure 入口網站](https://portal.azure.com)。地圖會告訴我我的應用程式有什麼關係？**
 
 否，它會顯示世界各地 Azure 伺服器的健全狀況。
 
@@ -179,7 +179,7 @@ Application insights 會使用 `org.apache.http`。 這會重新配置在 Applic
 >如果您針對應用程式中的所有命名空間啟用 DEBUG 層級的記錄功能，它將適用於所有執行中的模組，包括已重新命名為 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`。 Application Insights 將無法針對這些呼叫套用篩選，因為正在由 Apache 程式庫發出記錄呼叫。 DEBUG 層級記錄會產生相當大量的記錄資料，因此不建議用於即時生產環境執行個體。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 **設定 Java 伺服器應用程式的 Application Insights。我還可以做什麼？**
 
 * [監視網頁可用性][availability]

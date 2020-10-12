@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294708"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在執行 CentOS 的 StorSimple 主機上設定 MPIO
@@ -357,7 +357,7 @@ A. 一般情況下，看不到任何多重路徑路徑會對多重路徑的背�
   
     `$ dmesg | grep sd*`
      
-     或
+     或者
   
     `$ fdisk -l`
   
@@ -438,13 +438,13 @@ dm-3 devnode blacklisted, unmonitored
 | **多重路徑** |`service multipathd start` |啟動多重路徑 daemon |
 | &nbsp; |`service multipathd stop` |停止多重路徑 daemon |
 | &nbsp; |`service multipathd restart` |重新啟動多重路徑 daemon |
-| &nbsp; |`chkconfig multipathd on` </br> 或者 </br> `mpathconf -with_chkconfig y` |啟用多重路徑 daemon 以在開機時啟動 |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |啟用多重路徑 daemon 以在開機時啟動 |
 | &nbsp; |`multipathd -k` |啟動互動式主控台以進行疑難排解 |
 | &nbsp; |`multipath -l` |列出多重路徑連接和裝置 |
 | &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 當您在 Linux 主機上設定 MPIO 時，您可能也需要參考下列 CentoS 6.6 文件︰
 
 * [在 CentOS 上設定 MPIO](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)

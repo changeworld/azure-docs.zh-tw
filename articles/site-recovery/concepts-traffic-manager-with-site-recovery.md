@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86134954"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure 流量管理員搭配 Azure Site Recovery
@@ -115,7 +115,7 @@ Azure 流量管理員的[加權](../traffic-manager/traffic-manager-configure-we
 
 如果用戶端與授權 DNS 伺服器之間的 DNS 解析程式數目增加，用戶端所經歷的 TTL 也不會增加。 DNS 解析程式會「倒數」TTL，並僅傳遞 TTL 值來反映快取記錄後所經過的時間。 這可確保無論鏈結中的 DNS 解析程式數目為何，用戶端在 TTL 之後都會更新 DNS 記錄。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入了解流量管理員的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 - 深入了解[巢狀流量管理員設定檔](../traffic-manager/traffic-manager-nested-profiles.md)。
 - 深入了解[端點監視](../traffic-manager/traffic-manager-monitoring.md)。

@@ -3,11 +3,11 @@ title: 以儲存體佇列作為 Azure 事件方格事件的事件處理常式
 description: 說明如何使用 Azure 儲存體佇列作為「Azure 事件方格」事件的事件處理常式。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fdbc292f066a3eb06f17fd144d26d484d2a25f21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270180"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>以儲存體佇列作為 Azure 事件方格事件的事件處理常式
@@ -136,9 +136,6 @@ ms.locfileid: "91270180"
     }
 }
 ```
-
-> [!NOTE]
-> 不支援將事件傳遞至 **另一個租** 使用者中的 Azure 儲存體佇列。 
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

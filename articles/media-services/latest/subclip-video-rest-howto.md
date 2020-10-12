@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
 ms.openlocfilehash: 2a78e8c8c204e5cedeb8bdd2a25cff40a3e5cc44
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296544"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒體服務編碼時子剪輯影片-REST
@@ -84,6 +84,6 @@ ms.locfileid: "89296544"
 
     您會看到 **回應** ，其中包含已建立和提交作業的相關資訊，以及作業的狀態。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [如何使用自訂轉換進行編碼](custom-preset-rest-howto.md) 
