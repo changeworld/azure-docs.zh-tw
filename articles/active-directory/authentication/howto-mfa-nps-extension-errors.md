@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716719"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息
@@ -91,7 +91,7 @@ ms.locfileid: "88716719"
 | **VersionNotSupported** |  |
 | **MFAPinNotSetup** |  |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 ### <a name="troubleshoot-user-accounts"></a>針對使用者帳戶進行移難排解
 
@@ -101,7 +101,7 @@ ms.locfileid: "88716719"
 
 當您針對 NPS 擴充功能進行疑難排解時， [Azure MFA NPS 延伸模組健康情況檢查腳本](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) 會執行基本健康情況檢查。 執行腳本，然後選擇 [選項 3]。
 
-### <a name="contact-microsoft-support"></a>連絡 Microsoft 支援
+### <a name="contact-microsoft-support"></a>連絡 Microsoft 支援服務
 
 如需其他協助，請透過 [Azure Multi-Factor Authentication Server 支援](https://support.microsoft.com/oas/default.aspx?prid=14947)連絡支援專業人員。 連絡我們時，請盡量包含有關問題的最多資訊，這樣會十分有幫助。 您可以提供的資訊包含您看到錯誤的頁面、特定錯誤碼、特定工作階段 ID、使用者 (看到錯誤者) 識別碼，以及偵錯記錄。
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180638"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
@@ -30,7 +30,7 @@ Azure Functions 部署通常包含下列資源：
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
 | 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
 | [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選用    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
 | [主控方案](./functions-scale.md)                                             | 選用<sup>1</sup>    | [Microsoft. Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup>只有當您選擇在 [Premium 方案](./functions-premium-plan.md) 或 [App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
@@ -114,7 +114,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
-### <a name="function-app"></a>函數應用程式
+### <a name="function-app"></a>函式應用程式
 
 函數應用程式資源是 **使用類型為** **functionapp**的資源所定義：
 
@@ -137,7 +137,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 函數應用程式必須包含下列應用程式設定：
 
-| 設定名稱                 | 說明                                                                               | 範例值                        |
+| 設定名稱                 | 描述                                                                               | 範例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | 函數執行時間用於內部佇列的儲存體帳戶連接字串 | 查看 [儲存體帳戶](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~2`                                  |

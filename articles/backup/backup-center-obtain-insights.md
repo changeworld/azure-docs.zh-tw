@@ -4,10 +4,10 @@ description: 瞭解如何使用備份中心來分析歷程趨勢，並取得備�
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 5964f285089feea721a0b452efed884e905b89cc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994415"
 ---
 # <a name="obtain-insights-using-backup-center"></a>使用備份中心取得見解
@@ -54,7 +54,7 @@ ms.locfileid: "90994415"
 
 1. **優化** -使用此索引標籤可讓您查看備份的潛在成本優化機會。 [深入了解](https://docs.microsoft.com/azure/backup/configure-reports#optimize)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [監視和操作備份](backup-center-monitor-operate.md)
 - [管理您的備份資產](backup-center-govern-environment.md)

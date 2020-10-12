@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532359"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>教學課程：設定 Velpic 來自動布建使用者
@@ -52,7 +52,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 本節會引導您將 Azure AD 連接至 Velpic 的使用者帳戶布建 API，以及根據 Azure AD 中的使用者和群組指派，設定布建服務以在 Velpic 中建立、更新和停用指派的使用者帳戶。
 
 > [!TIP]
-> 您也可以選擇啟用 Velpic 的 SAML 型單一登入，請遵循 [Azure 入口網站](https://portal.azure.com)中提供的指示。 可以獨立設定自動佈建的單一登入，雖然這兩個功能彼此補充。
+> 您也可以選擇啟用 Velpic 的 SAML 型單一 Sign-On，請遵循 [Azure 入口網站](https://portal.azure.com)中提供的指示。 可以獨立設定自動佈建的單一登入，雖然這兩個功能彼此補充。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>若要在 Azure AD 中設定自動使用者帳戶布建至 Velpic：
 
@@ -74,7 +74,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 7. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-8. 按一下 [檔案] 。
+8. 按一下 **[儲存]** 。
 
 9. 在 [對應] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 Velpic**]。
 
@@ -82,7 +82,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 11. 若要啟用 Velpic 的 Azure AD 布建服務，請在 [**設定**] 區段中，將布建**狀態**變更為 [**開啟**]
 
-12. 按一下 [檔案] 。
+12. 按一下 **[儲存]** 。
 
 這會對 [使用者和群組] 區段中指派給 Velpic 的任何使用者和/或群組，啟動首次同步處理。 請注意，初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並遵循連結來佈建活動報告，報告中會描述佈建服務執行的所有動作。
 

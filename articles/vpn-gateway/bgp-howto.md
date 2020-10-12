@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994547"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>如何在 Azure VPN 閘道上設定 BGP
@@ -45,7 +45,7 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 **圖表 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="顯示虛擬網路閘道設定的圖表" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="顯示網路架構和設定的圖表" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. 建立和設定 TestVNet1
 
@@ -53,11 +53,11 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 * 虛擬網路：
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="具有對應位址首碼的 TestVNet1":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="顯示網路架構和設定的圖表":::
 
 * 子網路：
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1 子網":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="顯示網路架構和設定的圖表":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. 使用 BGP 參數建立 TestVNet1 的 VPN 閘道
 
@@ -67,11 +67,11 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 1. 填入參數，如下所示：
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="建立 VNG1":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="顯示網路架構和設定的圖表":::
 
 1. 在頁面的醒目提示 [ **設定 BGP** ] 區段中，設定下列設定：
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="設定 BGP":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="顯示網路架構和設定的圖表":::
 
    * 選取 [**設定 bgp**  -  **已啟用**]，以顯示 [bgp 設定] 區段。
 
@@ -96,7 +96,7 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 1. 流覽至虛擬網路閘道資源，然後選取 [設定 **] 頁面以** 查看 BGP 設定資訊，如下列螢幕擷取畫面所示。 在此頁面上，您可以在 azure 端上查看 Azure VPN 閘道上的所有 BGP 設定資訊： ASN、公用 IP 位址，以及 Azure 端的對應 BGP 對等 IP 位址 (預設和 APIPA) 。
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP 閘道":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="顯示網路架構和設定的圖表":::
 
 1. **在 [設定] 頁面上**，您可以進行下列設定變更：
 
@@ -111,13 +111,13 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 **圖表 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="顯示 IPsec 的圖表" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="顯示網路架構和設定的圖表" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. 在局域網路閘道上設定 BGP
 
 在此步驟中，您會在局域網路閘道上設定 BGP。 使用下列螢幕擷取畫面作為範例。 螢幕擷取畫面顯示 [局域網路閘道] (Site5) ，其中包含 [圖 3] 中指定的參數。
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="設定局域網路閘道的 BGP":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="顯示網路架構和設定的圖表":::
 
 #### <a name="important-configuration-considerations"></a>重要的設定考慮
 
@@ -130,7 +130,7 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 此範例使用 (169.254.100.1) 作為內部部署 BGP 對等 IP 位址的 APIPA 位址：
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="局域網路閘道 APIPA 和 BGP":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="顯示網路架構和設定的圖表":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. 設定已啟用 BGP 的 S2S 連接
 
@@ -140,13 +140,13 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 若要建立已啟用 BGP 的新連線，請在 [ **新增** 連線] 頁面上填入值，然後核取 [ **啟用 bgp** ] 選項，以在此連線上啟用 bgp。 選取 [OK] \(確定\) 以建立連線。
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="使用 BGP 的 IPsec 跨單位連接":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="顯示網路架構和設定的圖表":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>更新現有的連接
 
-如果您想要變更連線上的 BGP 選項，請流覽至連線資源的 [設定 **] 頁面，** 然後切換 **BGP** 選項，如下列範例中所強調。 選取 [儲存]**** 以儲存任何變更。
+如果您想要變更連線上的 BGP 選項，請流覽至連線資源的 [設定 **] 頁面，** 然後切換 **BGP** 選項，如下列範例中所強調。 選取 [儲存]  以儲存任何變更。
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="更新連接的 BGP":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="顯示網路架構和設定的圖表":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>第3部分：設定 VNet 對 VNet 連線上的 BGP
 
@@ -160,8 +160,8 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 **圖表 4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="顯示完整網路的圖表" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="顯示網路架構和設定的圖表" border="false":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/windows/quick-create-portal.md) 以取得相關步驟。

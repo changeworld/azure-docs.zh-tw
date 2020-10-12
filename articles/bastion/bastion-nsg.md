@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
 ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987705"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
@@ -42,7 +42,7 @@ Azure 防禦專門部署至 ***AzureBastionSubnet***。
    * **從 Azure 防禦控制平面輸入流量：** 針對控制平面連線能力，請從 **GatewayManager** 服務標記啟用埠443輸入。 這可讓控制平面（也就是閘道管理員）能夠與 Azure 防禦對話。
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連接的輸入安全性規則。":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
 
 * **輸出流量：**
 
@@ -50,7 +50,7 @@ Azure 防禦專門部署至 ***AzureBastionSubnet***。
    * **Azure 中其他公用端點的輸出流量：** Azure 防禦必須能夠連線到 Azure (中的各種公用端點，例如，用來儲存診斷記錄和計量記錄) 。 基於這個理由，Azure 防禦需要輸出至443至 **AzureCloud** 服務標記。
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連線的輸出安全性規則。":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
 
 ### <a name="target-vm-subnet"></a>目標 VM 子網
 這是包含您想要 RDP/SSH 連線之目標虛擬機器的子網。
@@ -58,6 +58,6 @@ Azure 防禦專門部署至 ***AzureBastionSubnet***。
    * **從 Azure 防禦輸入流量：** Azure 防禦會透過私人 IP 到達目標 VM。 RDP/SSH 埠分別 (埠 3389/22) 必須在私人 IP 的目標 VM 端上開啟。 最佳做法是，您可以在此規則中新增 Azure 防禦子網 IP 位址範圍，以只允許防禦在目標 VM 子網中的目標 Vm 上開啟這些埠。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure 防禦的詳細資訊，請參閱 [常見問題](bastion-faq.md)。

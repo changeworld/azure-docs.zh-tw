@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88257520"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
@@ -38,7 +38,7 @@ ms.locfileid: "88257520"
 
 如需更多叢集自動調整程式可能無法縮小的相關資訊，請參閱[哪些類型的 Pod 可以防止叢集自動調整程式移除節點？][autoscaler-scaledown](英文)。
 
-叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需叢集自動調整程式所使用之參數的詳細資訊，請參閱 [使用自動調整程式設定檔](#using-the-autoscaler-profile)。
+叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需有關叢集自動調整程式使用哪些參數的詳細資訊，請參閱 [使用自動調整程式設定檔](#using-the-autoscaler-profile)。
 
 叢集和水平 Pod 自動調整程式可以搭配運作，而且通常會同時部署在一個叢集中。 當兩者組合時，水平 Pod 自動調整程式著重於執行符合應用程式需求的 Pod 數目。 叢集自動調整程式著重於執行支援排程 Pod 所需的節點數目。
 
@@ -74,12 +74,12 @@ az aks create \
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>更新現有的 AKS 叢集以啟用叢集自動調整程式
 
-使用 [az aks update][az-aks-update] 命令，在現有叢集的節點集區上啟用和設定叢集自動調整程式。 使用 *--enable-cluster-自動調整程式* 參數，並指定節點 *--min-count* 和 *--max 計數*。
+使用 [az aks update][az-aks-update] 命令，在節點集區上啟用和設定現有叢集的叢集自動調整程式。 使用 *--enable-自動調整程式* 參數，並指定節點 *--最小計數* 和 *--最大計數*。
 
 > [!IMPORTANT]
 > 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？][aks-faq-node-resource-group]
 
-下列範例會更新現有的 AKS 叢集，以在叢集的節點集區上啟用叢集自動調整程式，並設定最少 *1* 個和最多 *3* 個節點：
+下列範例會更新現有的 AKS 叢集，以啟用叢集節點集區上的叢集自動調整程式，並設定最少 *1* 個和最多 *3* 個節點：
 
 ```azurecli-interactive
 az aks update \
@@ -113,7 +113,7 @@ az aks update \
 上述範例會將 myAKSCluster 中單一節點集區上的叢集自動調整程式更新為最少 1 個、最多 5 個節點。
 
 > [!NOTE]
-> 叢集自動調整程式會根據每個節點集區上設定的最小和最大計數來做出調整決策，但在更新最小或最大計數之後，並不會強制執行。 例如，當目前節點計數為3時，將最小計數設定為5，將不會立即將集區調整為5。 如果節點集區上的最小計數具有高於目前節點數目的值，則會在有足夠的設無法排程 pod 存在時，遵守新的 min 或 max 設定，而這需要2個新的額外節點並觸發自動調整程式事件。 在調整事件之後，會遵守新的計數限制。
+> 叢集自動調整程式會根據每個節點集區上設定的最小和最大計數來做出調整決策，但不會在更新最小或最大計數之後強制執行。 例如，當目前節點計數為3時，將最小計數設為5，將不會立即將集區調整為5。 如果節點集區的最小計數值高於目前的節點數目，則當有足夠的設無法排程 pod 需要2個新的額外節點，並觸發自動調整程式事件時，將會遵守新的 min 或 max 設定。 在調整事件之後，會遵守新的計數限制。
 
 監視應用程式和服務的效能，並調整叢集自動調整程式節點計數，以符合所需的效能。
 

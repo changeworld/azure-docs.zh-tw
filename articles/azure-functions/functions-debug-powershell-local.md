@@ -7,10 +7,10 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89177086"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>在本機上對 PowerShell 進行 Azure Functions 調試
@@ -132,7 +132,7 @@ PowerShell Core 與 Windows PowerShell 並存安裝。 將 PowerShell Core 設�
 * 將 PowerShell 偵錯工具附加至函式執行時間內的 PowerShell 執行時間。
 
 >[!NOTE]
-> 您必須確定 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試經驗。 這是預設值。
+> 您必須確定 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試經驗。 此為預設值。
 
 當您的函式應用程式正在執行時，您需要個別的 PowerShell 主控台來呼叫 HTTP 觸發的函式。
 

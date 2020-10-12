@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994404"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用儲存在 Azure Key Vault 中客戶管理的金鑰來設定加密
@@ -157,7 +157,7 @@ az keyvault key create \
 
 ---
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>使用客戶管理的金鑰設定加密
+## <a name="configure-encryption-with-customer-managed-keys"></a>使用客戶自控金鑰來設定加密
 
 接下來，設定您的 Azure 儲存體帳戶以搭配 Azure Key Vault 使用客戶管理的金鑰，然後指定要與儲存體帳戶建立關聯的金鑰。
 
@@ -190,7 +190,7 @@ Azure 儲存體可以自動更新用來加密的客戶管理金鑰，以使用�
 
 當您指定金鑰之後，Azure 入口網站會指出已啟用金鑰版本的自動更新，並顯示目前用於加密的金鑰版本。
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="螢幕擷取畫面，顯示已啟用金鑰版本的自動更新":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="顯示如何在建立金鑰保存庫時啟用清除保護的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -385,7 +385,7 @@ az storage account update
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
 - [Azure 儲存體加密的客戶管理金鑰](customer-managed-keys-overview.md)

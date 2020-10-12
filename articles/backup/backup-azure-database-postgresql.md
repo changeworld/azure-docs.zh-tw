@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
 ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994677"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>使用長期保留的適用於 PostgreSQL 的 Azure 資料庫備份 (預覽) 
@@ -323,6 +323,6 @@ Azure 備份遵循嚴格的安全性指導方針。 雖然它是原生的 Azure 
 
         ![搜尋保存庫名稱](./media/backup-azure-database-postgresql/search-for-vault-name.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [備份保存庫總覽](backup-vault-overview.md)

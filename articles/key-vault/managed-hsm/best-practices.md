@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 7a30a7ab6689b602bc9ad4f696a6fe54c80f2151
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994544"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>使用受控 HSM 的最佳作法
@@ -30,7 +30,7 @@ ms.locfileid: "90994544"
 
 - 若要確保最佳的高可用性和區域復原，請選擇支援 [可用性區域](../../availability-zones/az-overview.md) 的 Azure 區域。 這些區域在 Azure 入口網站中會顯示為「建議的區域」。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 - 請務必定期備份 HSM。 備份可在 HSM 層級和特定金鑰上完成。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "90994544"
 - 預設會開啟虛[刪除](../general/soft-delete-overview.md)。
 - 如果您想要防止在虛刪除開啟之後強制刪除 HSM，請開啟 [清除保護]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需完整 HSM 備份/還原的詳細資訊，請參閱 [完整備份/還原](backup-restore.md) 。
 - 請參閱 [受控 HSM 記錄](logging.md) ，以瞭解如何使用 Azure 監視器設定記錄

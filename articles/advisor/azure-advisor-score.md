@@ -4,10 +4,10 @@ description: 使用 Advisor 分數充分運用 Azure
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335614"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>使用 Advisor 分數將 Azure 工作負載優化
@@ -17,11 +17,11 @@ ms.locfileid: "91335614"
 Azure Advisor 為您的工作負載提供最佳做法建議。 這些建議是個人化且可採取動作的，可協助您：
 * 改善工作負載的狀態，並將您的 Azure 部署優化
 * 遵循最佳作法主動預防最重要的問題
-* 針對[Microsoft Azure 架構良好架構](https://docs.microsoft.com/azure/architecture/framework/)的五個要素來評定您的 Azure 工作負載
+* 針對[Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)的五個要素來評定您的 Azure 工作負載
 
 建議程式 **分數** 是 advisor 的核心功能，可協助您有效且有效率地達成這些目標。 
 
-若要充分利用 Azure，請務必瞭解您在工作負載優化旅程的哪個階段，哪些服務/資源的使用方式和不是。 此外，您也會想要瞭解如何根據建議來設定動作的優先順序，以最大化結果。 追蹤和報告您在此優化旅程中所做的進展也很重要。 有了 **Advisor 分數**，您就可以使用新的遊戲化體驗輕鬆完成這些工作。 作為您的個人化雲端顧問，Azure Advisor 持續評估您的使用量遙測和資源設定，以檢查產業的最佳作法。 Advisor 接著會將其結果匯總成單一分數，讓您在採取必要的步驟來建立可靠、安全且符合成本效益的解決方案時，一眼就能看出。 Advisor 分數是由整體分數所組成，可進一步細分為五個分類分數，每個類別的 Azure Advisor，代表架構良好架構的五個支柱。 您可以透過每日、每週和每月的趨勢來查看您的整體分數和類別分數，並設定基準測試以協助您達成目標，藉此追蹤您所進行的進度。 
+若要充分利用 Azure，請務必瞭解您在工作負載優化旅程的哪個階段，哪些服務/資源的使用方式和不是。 此外，您也會想要瞭解如何根據建議來設定動作的優先順序，以最大化結果。 追蹤和報告您在此優化旅程中所做的進展也很重要。 有了 **Advisor 分數**，您就可以使用新的遊戲化體驗輕鬆完成這些工作。 作為您的個人化雲端顧問，Azure Advisor 持續評估您的使用量遙測和資源設定，以檢查產業的最佳作法。 Advisor 接著會將其結果匯總成單一分數，讓您在採取必要的步驟來建立可靠、安全且符合成本效益的解決方案時，一眼就能看出。 Advisor 分數是由整體分數所組成，可進一步細分為五個分類分數，每個類別的 Azure Advisor 代表 Well-Architected Framework 的五個支柱。 您可以透過每日、每週和每月的趨勢來查看您的整體分數和類別分數，並設定基準測試以協助您達成目標，藉此追蹤您所進行的進度。 
 
  ![Advisor 分數體驗](./media/advisor-score-1.png)
 

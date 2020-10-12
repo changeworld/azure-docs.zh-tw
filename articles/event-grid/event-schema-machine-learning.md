@@ -1,16 +1,16 @@
 ---
-title: 做為事件方格來源 Azure Machine Learning
-description: 說明使用 Azure 事件方格為 Machine Learning 工作區事件提供的屬性
+title: Azure Machine Learning 作為事件方格來源
+description: 描述使用 Azure 事件方格為 Machine Learning 工作區事件提供的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458037"
 ---
-# <a name="azure-machine-learning-as-an-event-grid-source"></a>做為事件方格來源 Azure Machine Learning
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>以事件方格來源 Azure Machine Learning
 
 本文提供機器學習服務工作區事件的屬性和架構。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
@@ -22,11 +22,11 @@ Azure Machine Learning 會發出下列事件種類：
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
-| Microsoft.machinelearningservices. ModelRegistered | 已成功註冊新的模型或模型版本時引發。 |
-| Microsoft.machinelearningservices. ModelDeployed | 當模型已成功部署至端點時引發。 |
-| Microsoft.machinelearningservices. RunCompleted | 成功完成執行時引發。 |
-| Microsoft.machinelearningservices. DatasetDriftDetected | 資料集漂移監視器偵測到漂移時引發。 |
-| Microsoft.machinelearningservices. RunStatusChanged | 當執行狀態變更時引發。 |
+| MachineLearningServices. ModelRegistered | 當新的模型或模型版本已成功註冊時引發。 |
+| MachineLearningServices. ModelDeployed | 當模型 (s) 已成功部署至端點時引發。 |
+| MachineLearningServices. RunCompleted | 順利完成執行時引發。 |
+| MachineLearningServices. DatasetDriftDetected | 當資料集漂移監視器偵測到漂移時引發。 |
+| MachineLearningServices. RunStatusChanged | 當執行狀態變更時引發。 |
 
 ### <a name="the-contents-of-an-event-response"></a>事件回應的內容
 
@@ -34,7 +34,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 本節包含每個事件的資料外觀範例。
 
-### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft.machinelearningservices. ModelRegistered 事件
+### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>MachineLearningServices. ModelRegistered 事件
 
 ```json
 [{
@@ -59,7 +59,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft.machinelearningservices. ModelDeployed 事件
+### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>MachineLearningServices. ModelDeployed 事件
 
 ```json
 [{
@@ -85,7 +85,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft.machinelearningservices. RunCompleted 事件
+### <a name="microsoftmachinelearningservicesruncompleted-event"></a>MachineLearningServices. RunCompleted 事件
 
 ```json
 [{
@@ -121,7 +121,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Microsoft.machinelearningservices. DatasetDriftDetected 事件
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>MachineLearningServices. DatasetDriftDetected 事件
 
 ```json
 [{
@@ -145,7 +145,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft.machinelearningservices. RunStatusChanged 事件
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>MachineLearningServices. RunStatusChanged 事件
 
 ```json
 [{
@@ -186,7 +186,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主旨的路徑。 |
@@ -197,71 +197,71 @@ Azure Machine Learning 會發出下列事件種類：
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
-針對每個事件種類，資料物件都有下列屬性：
+資料物件具有每個事件種類的下列屬性：
 
-### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.machinelearningservices. ModelRegistered
+### <a name="microsoftmachinelearningservicesmodelregistered"></a>MachineLearningServices. ModelRegistered
 
 | 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | ModelName | 字串 | 已註冊的模型名稱。 |
 | ModelVersion | 字串 | 已註冊的模型版本。 |
-| ModelTags | object | 已註冊的模型標記。 |
-| ModelProperties | object | 已註冊之模型的屬性。 |
+| ModelTags | 物件 (object) | 已註冊之模型的標記。 |
+| ModelProperties | 物件 (object) | 已註冊的模型屬性。 |
 
-### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.machinelearningservices. ModelDeployed
+### <a name="microsoftmachinelearningservicesmodeldeployed"></a>MachineLearningServices. ModelDeployed
 
 | 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | ServiceName | 字串 | 已部署之服務的名稱。 |
-| ServiceComputeType | 字串 | 已部署之服務的計算類型（例如 ACI、AKS）。 |
-  | ModelIds | 字串 | 以逗號分隔的模型識別碼清單。 部署在服務中的模型識別碼。 |
-| ServiceTags | object | 已部署之服務的標記。 |
-| ServiceProperties | object | 已部署之服務的屬性。 |
+| ServiceComputeType | 字串 | 計算類型 (例如，已部署服務的 ACI、AKS) 。 |
+  | ModelIds | 字串 | 以逗號分隔的模型識別碼清單。 服務中部署之模型的識別碼。 |
+| ServiceTags | 物件 (object) | 已部署之服務的標記。 |
+| ServiceProperties | 物件 (object) | 已部署之服務的屬性。 |
 
-### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.machinelearningservices. RunCompleted
+### <a name="microsoftmachinelearningservicesruncompleted"></a>MachineLearningServices. RunCompleted
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | experimentId | 字串 | 執行所屬之實驗的識別碼。 |
-| experimentName | 字串 | 執行所屬的實驗名稱。 |
-| runId | 字串 | 已完成的執行識別碼。 |
+| experimentName | 字串 | 執行所屬之實驗的名稱。 |
+| runId | 字串 | 已完成之執行的識別碼。 |
 | runType | 字串 | 已完成執行的執行類型。 |
-| runTags | object | 已完成執行的標記。 |
-| runProperties | object | 已完成執行的屬性。 |
+| runTags | 物件 (object) | 已完成執行的標記。 |
+| runProperties | 物件 (object) | 已完成執行的屬性。 |
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.machinelearningservices. DatasetDriftDetected
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>MachineLearningServices. DatasetDriftDetected
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
-| DataDriftId | 字串 | 觸發事件的資料漂移監視器識別碼。 |
+| DataDriftId | 字串 | 觸發事件的資料漂移監視識別碼。 |
 | DataDriftName | 字串 | 觸發事件的資料漂移監視名稱。 |
-| RunId | 字串 | 偵測到資料漂移的執行識別碼。 |
-| BaseDatasetId | 字串 | 用來偵測漂移的基底資料集識別碼。 |
+| RunId | 字串 | 偵測到的資料漂移之執行的識別碼。 |
+| BaseDatasetId | 字串 | 用來偵測漂移之基底資料集的識別碼。 |
 | TargetDatasetId | 字串 | 用來偵測漂移的目標資料集識別碼。 |
-| DriftCoefficient | double | 觸發事件的係數。 |
+| DriftCoefficient | double | 觸發事件的係數結果。 |
 | StartTime | Datetime | 導致漂移偵測的目標資料集時間序列的開始時間。  |
 | EndTime | Datetime | 導致漂移偵測的目標資料集時間序列的結束時間。 |
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.machinelearningservices. RunStatusChanged
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>MachineLearningServices. RunStatusChanged
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | experimentId | 字串 | 執行所屬之實驗的識別碼。 |
-| experimentName | 字串 | 執行所屬的實驗名稱。 |
-| runId | 字串 | 已完成的執行識別碼。 |
+| experimentName | 字串 | 執行所屬之實驗的名稱。 |
+| runId | 字串 | 已完成之執行的識別碼。 |
 | runType | 字串 | 已完成執行的執行類型。 |
-| runTags | object | 已完成執行的標記。 |
-| runProperties | object | 已完成執行的屬性。 |
+| runTags | 物件 (object) | 已完成執行的標記。 |
+| runProperties | 物件 (object) | 已完成執行的屬性。 |
 | runStatus | 字串 | 執行的狀態。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 | 標題 | 說明 |
 | ----- | ----- |
-| [取用 Azure Machine Learning 事件](../machine-learning/how-to-use-event-grid.md) | 整合 Azure Machine Learning 與事件方格的總覽。 |
+| [使用 Azure Machine Learning 事件](../machine-learning/how-to-use-event-grid.md) | 整合 Azure Machine Learning 與事件方格的總覽。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需 Azure Event Grid 的簡介，請參閱[什麼是 Event Grid？](overview.md)
-* 如需有關建立 Azure 事件方格訂用帳戶的詳細資訊，請參閱[Event grid 訂](subscription-creation-schema.md)用帳戶架構
-* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的簡介，請參閱取用[Azure Machine Learning 事件](../machine-learning/how-to-use-event-grid.md)
-* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的範例，請參閱[建立事件驅動機器學習工作流程](../machine-learning/how-to-use-event-grid.md)
+* 如需建立 Azure 事件方格訂用帳戶的詳細資訊，請參閱[事件方格訂](subscription-creation-schema.md)用帳戶架構
+* 如需搭配使用 Azure Event Grid 與 Azure Machine Learning 的簡介，請參閱取用 [Azure Machine Learning 事件](../machine-learning/how-to-use-event-grid.md)
+* 如需搭配 Azure Machine Learning 使用 Azure 事件方格的範例，請參閱 [建立事件驅動的機器學習工作流程](../machine-learning/how-to-use-event-grid.md)

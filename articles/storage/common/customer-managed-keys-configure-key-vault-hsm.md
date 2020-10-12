@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9c742ca2fd9779589a3c8aea7f030460c5db8b5d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994402"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>使用儲存在 Azure Key Vault 受控 HSM (preview) 中的客戶管理金鑰來設定加密
@@ -94,7 +94,7 @@ az storage account update
 
 當您手動更新金鑰版本時，您必須將儲存體帳戶的加密設定更新為使用新版本。 首先，藉由呼叫 [az keyvault show](/cli/azure/keyvault#az-keyvault-show)來查詢金鑰保存庫 URI，並藉由呼叫 [az keyvault key list-](/cli/azure/keyvault/key#az-keyvault-key-list-versions)version 來查詢金鑰版本。 然後呼叫 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 更新儲存體帳戶的加密設定，以使用新版本的金鑰，如先前範例所示。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
 - [Azure 儲存體加密的客戶管理金鑰](customer-managed-keys-overview.md)

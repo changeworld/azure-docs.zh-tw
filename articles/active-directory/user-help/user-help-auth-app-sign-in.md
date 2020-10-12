@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 19e441334395f600c3adaa867660345164537f96
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799446"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式登入帳戶
@@ -55,7 +55,7 @@ ms.locfileid: "88799446"
 - **如果您已使用應用程式進行雙因素驗證**，您可以按一下 [帳戶] 磚，以查看帳戶的全螢幕視圖。 然後，點選 [啟用手機登入] 以開啟手機登入。
 - 如果在應用程式的 [帳戶] 畫面上**找不到您的公司或學校帳戶**，表示您還沒有將帳戶新增到應用程式中。 遵循 [ [新增您的工作或學校帳戶](user-help-auth-app-add-work-school-account.md)說明] 中的步驟，以新增您的工作或學校帳戶。
 
-開啟手機登入之後，您只能使用 Microsoft Authenticator 應用程式登入。 方法如下：
+開啟手機登入之後，您只能使用 Microsoft Authenticator 應用程式登入。 其做法如下：
 
 1. 登入您的公司或學校帳戶。
 

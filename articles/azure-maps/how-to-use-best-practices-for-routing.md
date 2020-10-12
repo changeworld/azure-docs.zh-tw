@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086397"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure 地圖服務路線規劃服務的最佳作法
@@ -21,7 +21,7 @@ ms.locfileid: "90086397"
 
 > [!div class="checklist"]
 > * 選擇路由路線 Api 和矩陣路由 API
-> * 根據即時和歷程的交通資料，要求歷程記錄和預測的行進時間
+> * 根據即時和歷史交通資料，要求歷史和預測的行車時間
 > * 要求路由詳細資料，例如時間和距離，適用于整個路由和路由的每個階段
 > * 商業車輛的要求路線，例如貨車
 > * 要求沿著路線的交通資訊，例如卡出和收費資訊
@@ -75,7 +75,7 @@ ms.locfileid: "90086397"
 
 如果您在要求中包含 **computeTravelTimeFor = all** 參數，則回應中的摘要元素將會有下列額外的欄位，包括歷史流量條件：
 
-| 項目 | 描述|
+| 元素 | 描述|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | 預估行進時間的計算方式，是因為流量狀況（例如因為擁塞）而不會延遲路由 |
 | historicTrafficTravelTimeInSeconds | 使用時間相依的歷史流量資料計算的預估行進時間 |
@@ -205,7 +205,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![地圖上呈現的彩色區段](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>計算和優化多個停止路由
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>計算並最佳化有多個站點的路線
 
 Azure 地圖服務目前提供兩種形式的路由優化：
 

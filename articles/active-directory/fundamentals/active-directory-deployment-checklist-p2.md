@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318404"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
@@ -34,7 +34,7 @@ ms.locfileid: "89318404"
 
 * [Azure AD 授權](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 企業版 ](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
-* [企業行動力 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
+* [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD B2B 授權指導方針](../external-identities/licensing-guidance.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>第1階段：打造安全性基礎
@@ -97,7 +97,7 @@ ms.locfileid: "89318404"
 | [實作群組型應用程式佈建](../manage-apps/what-is-access-management.md) | 使用群組型存取管理佈建，為 SaaS 應用程式自動佈建使用者。 |  |
 | [自動化使用者佈建和解除佈建](../app-provisioning/user-provisioning.md) | 從您員工帳戶的生命週期移除手動步驟，以防止未經授權的存取。 將真實來源 (HR系統) 中的身分識別同步至 Azure AD。 |  |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [Azure AD 授權和定價詳細資料](https://azure.microsoft.com/pricing/details/active-directory/)
 

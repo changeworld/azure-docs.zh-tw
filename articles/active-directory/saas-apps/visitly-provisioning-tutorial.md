@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88531798"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>教學課程：設定 Visitly 來自動布建使用者
@@ -27,7 +27,7 @@ ms.locfileid: "88531798"
 >
 > 此連接器目前為公開預覽版。 如需預覽功能的一般 Microsoft Azure 使用條款的詳細資訊，請參閱 [Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -120,13 +120,13 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Visitly**]。
 
     ![Visitly 使用者對應](media/visitly-provisioning-tutorial/usermapping.png)
 
-9. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Visitly 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Visitly 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。
+9. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Visitly 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Visitly 中的使用者帳戶以進行更新作業。 選取 [儲存]  認可任何變更。
 
     ![Visitly 使用者屬性](media/visitly-provisioning-tutorial/userattribute.png)
 

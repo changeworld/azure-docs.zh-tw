@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504668"
 ---
 # <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN 端點多來源 (預覽) 
@@ -42,7 +42,7 @@ ms.locfileid: "89504668"
 
 4. 若要啟用多個來源，您需要至少一個來源群組。 選取 [ **建立原始群組**]：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="原始設定" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="CDN 端點" border="true":::
 
 5. 在 [ **新增原始群組** ] 設定中，輸入或選取下列資訊：
 
@@ -56,7 +56,7 @@ ms.locfileid: "89504668"
    | 探查方法      | 選取 [ **Head** ] 或 [ **Get**]。                                           |
    | 預設來源群組 | 選取要設為預設來源群組的方塊。
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="新增來源群組" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="CDN 端點" border="true":::
 
 6. 選取 [新增]。
 
@@ -64,7 +64,7 @@ ms.locfileid: "89504668"
 
 1. 在您端點的原始設定中，選取 [ **+ 建立來源**：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="建立來源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="CDN 端點" border="true":::
 
 2. 在 [ **新增原始** 設定] 中，輸入或選取下列資訊：
 
@@ -82,15 +82,15 @@ ms.locfileid: "89504668"
     > [!NOTE]
     > 在原始群組內建立來源時，必須根據優先順序和權數。 如果來源群組只有一個來源，則預設的 [優先順序] 和 [權數] 會設定為1。 如果來源狀況良好，流量會路由傳送至最高優先順序的來源。 如果來源判斷為狀況不良，則會以優先權順序將連接轉向另一個來源。 如果兩個來源具有相同的優先順序，則會根據針對來源指定的權數來散發流量 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="新增額外的來源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="CDN 端點" border="true":::
 
 3. 選取 [新增]。
 
 4. 選取 [設定 **來源** ] 以設定所有來源的原始路徑：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="設定來源路徑" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="CDN 端點" border="true":::
 
-5. 選取 [確定]。
+5. 選取 [確定]  。
 
 ## <a name="configure-origins-and-origin-group-settings"></a>設定來源和來源群組設定
 
@@ -98,27 +98,27 @@ ms.locfileid: "89504668"
 
 1. 在 Azure CDN 端點的原始設定中，選取您要設定的來源組名：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="設定來源和來源群組設定" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN 端點" border="true":::
 
 2. 在 [ **更新來源] 群組**中，選取 [ **+ 選取來源**：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="更新原始群組" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="CDN 端點" border="true":::
 
 4. 在下拉式方塊中選取要新增至群組的來源，然後選取 **[確定]**。
 
 5. 確認已將來源新增至群組，然後選取 [ **儲存**]：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="確認已將其他來源新增至群組" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="CDN 端點" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>從原始群組移除來源
 
 1. 在 Azure CDN 端點的 [來源] 設定中，選取來源組名：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="從群組移除來源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN 端點" border="true":::
 
 2. 若要從原始群組移除來源，請選取來源旁的垃圾桶圖示，然後選取 [ **儲存**]：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="更新原始群組刪除來源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="CDN 端點" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>使用規則引擎覆寫來源群組
 
@@ -128,7 +128,7 @@ ms.locfileid: "89504668"
 
 1. 在您的 CDN 端點中，選取 [**設定**] 下的 [**規則引擎**]：
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="規則引擎" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="CDN 端點" border="true":::
 
 2. 選取 [ **+ 新增規則**]。
 
@@ -144,7 +144,7 @@ ms.locfileid: "89504668"
 
 8. 在 [ **來源] 群組**中，選取下拉式清單方塊中的來源群組。
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="規則引擎條件" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="CDN 端點" border="true":::
 
 針對所有連入要求，如果 URL 路徑包含 **/images**，則會將要求指派給 [動作] 區段中的原始群組 ** (myorigingroup) **。 
 

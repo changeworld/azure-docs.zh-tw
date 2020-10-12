@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508877"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>遠端桌面服務未在 Azure VM 上啟動
@@ -24,7 +24,7 @@ ms.locfileid: "86508877"
 本文說明如何針對在遠端桌面服務 (或 TermService) 未啟動或無法啟動的問題，以及連線到 Azure 虛擬機器 (VM) 的問題進行疑難排解。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 當您嘗試連線到 VM 時，會遇到下列案例：
 
@@ -56,10 +56,10 @@ ms.locfileid: "86508877"
 此問題的發生原因是遠端桌面服務未在 VM 上執行。 原因可能取決於下列案例： 
 
 - 已將 TermService 服務設定為**停用**。 
-- TermService 服務已損毀或沒有回應。 
-- 因為的設定不正確，所以無法啟動 TermService。
+- TermService 服務損毀或沒有回應。 
+- 因為設定不正確，所以無法啟動 TermService。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要對此問題進行疑難排解，請使用序列主控台。 或者，藉由將 VM 的 OS 磁碟連結至復原 VM，進行[離線修復 VM](#repair-the-vm-offline)。
 
@@ -99,21 +99,21 @@ ms.locfileid: "86508877"
     |  錯誤 |  建議 |
     |---|---|
     |5- 拒絕存取 |請參閱 [TermService 服務因為拒絕存取錯誤而停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)。 |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |請參閱[TermService 服務已停用](#termservice-service-is-disabled)。  |  
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |請參閱 [TermService 服務已停用](#termservice-service-is-disabled)。  |  
     |1058 - ERROR_SERVICE_DISABLED  |請參閱 [TermService 服務當機或停止回應](#termservice-service-crashes-or-hangs)。  |
-    |1059 - ERROR_CIRCULAR_DEPENDENCY |[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人員以快速解決您的問題。|
+    |1059 - ERROR_CIRCULAR_DEPENDENCY |[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 人員，以快速解決您的問題。|
     |1067 - ERROR_PROCESS_ABORTED  |請參閱 [TermService 服務當機或停止回應](#termservice-service-crashes-or-hangs)。  |
-    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人員以快速解決您的問題。|
+    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 人員，以快速解決您的問題。|
     |1069 - ERROR_SERVICE_LOGON_FAILED  |請參閱 [TermService 服務因為登入失敗而失敗](#termservice-service-fails-because-of-logon-failure) |
     |1070 - ERROR_SERVICE_START_HANG   | 請參閱 [TermService 服務當機或停止回應](#termservice-service-crashes-or-hangs)。 |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | 請參閱[TermService 服務已停用](#termservice-service-is-disabled)。  |
-    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人員以快速解決您的問題。 |
-    |1753   |[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)人員以快速解決您的問題。   |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | 請參閱 [TermService 服務已停用](#termservice-service-is-disabled)。  |
+    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 人員，以快速解決您的問題。 |
+    |1753   |[請聯絡支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 人員，以快速解決您的問題。   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService 服務因為拒絕存取問題而停止
 
 1. 連線至[序列主控台](serial-console-windows.md)並開啟 PowerShell 執行個體。
-2. 執行下列腳本來下載進程監視工具：
+2. 藉由執行下列腳本來下載流程監視器工具：
 
    ```
    remove-module psreadline  
@@ -123,7 +123,7 @@ ms.locfileid: "86508877"
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. 現在啟動**procmon**追蹤：
+3. 現在啟動 **procmon** 追蹤：
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -141,16 +141,16 @@ ms.locfileid: "86508877"
    procmon /Terminate 
    ```
 
-5. 收集檔案**c:\temp\ProcMonTrace.PML**：
+5. 收集 file **c:\temp\ProcMonTrace.PML**：
 
     1. [將資料磁碟連結至 VM](../windows/attach-managed-disk-portal.md
 )。
     2. 您可以使用序列主控台，將檔案複製到新的磁碟機。 例如： `copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是所連結之資料磁碟的磁碟機代號。
     3. 將資料磁碟機中斷連結，並連結到作用中且已安裝處理序監視的 VM。
 
-6. 使用作用中 VM 的處理序監視開啟 **ProcMonTrace.PML**。 然後依**結果篩選為拒絕存取**，如下列螢幕擷取畫面所示：
+6. 使用作用中 VM 的處理序監視開啟 **ProcMonTrace.PML**。 然後依 **結果篩選為拒絕存取**，如下列螢幕擷取畫面所示：
 
-    ![依進程監視器中的結果篩選](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![依流程監視器中的結果篩選](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
 6. 修正輸出上的登錄機碼、資料夾或檔案。 當用於服務上的登入帳戶沒有存取這些物件的 ACL 權限時，通常會發生此問題。 若要知道登入帳戶的正確 ACL 權限，您可以在狀況良好的 VM 上查看。 
@@ -220,7 +220,7 @@ ms.locfileid: "86508877"
 
 1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 啟動復原 VM 的遠端桌面連線。 確定連結的磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給所連結 OS 磁碟的磁碟機代號。
-3. 開啟提升許可權的命令提示字元實例（以**系統管理員身分執行**）。 然後執行下列指令碼。 我們假設指派給所連結 OS 磁片的磁碟機號是**F**。將它取代為您 VM 中的適當值。 
+3. 開啟提升許可權的命令提示字元實例， (以 **系統管理員身分執行**) 。 然後執行下列指令碼。 我們假設指派給已連結 OS 磁片的磁碟機號是 **F**。將它取代為您 VM 中的適當值。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

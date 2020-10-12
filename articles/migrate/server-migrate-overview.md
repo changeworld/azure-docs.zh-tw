@@ -4,10 +4,10 @@ description: 提供使用 Azure Migrate Server 遷移將 VMware Vm 遷移至 Azu
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950216"
 ---
 # <a name="select-a-vmware-migration-option"></a>選取 VMware 遷移選項
@@ -51,7 +51,7 @@ ms.locfileid: "88950216"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用無代理程式遷移來[遷移 VMware vm](tutorial-migrate-vmware.md) 。
 

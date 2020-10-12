@@ -1,16 +1,16 @@
 ---
-title: 使用備份中心來監視和操作備份
+title: 使用備份中心監視和操作備份
 description: 本文說明如何使用備份中心大規模監視和操作備份
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994514"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>使用備份中心來監視和操作備份
+# <a name="monitor-and-operate-backups-using-backup-center"></a>使用備份中心監視和操作備份
 
 作為備份系統管理員，您可以使用 [備份中心] 作為單一的單一窗格，以每日一天監視您的作業和備份清查。 您也可以使用備份中心來執行一般作業，例如回應隨選備份要求、還原備份、建立備份原則等等。
 
@@ -89,7 +89,7 @@ ms.locfileid: "90994514"
 
 ![備份中心-原則](./media/backup-center-monitor-operate/backup-center-policies.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [管理您的備份資產](backup-center-govern-environment.md)
 * [使用備份中心執行動作](backup-center-actions.md)

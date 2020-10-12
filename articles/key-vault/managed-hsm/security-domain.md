@@ -8,10 +8,10 @@ author: amitbapat
 ms.author: ambapat
 ms.date: 09/15/2020
 ms.openlocfilehash: 37e2541d0b53c96fd3f85da31b2c0ce5b68b551a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994642"
 ---
 # <a name="about-the-managed-hsm-security-domain"></a>關於受管理的 HSM 安全性網域
@@ -37,8 +37,8 @@ ms.locfileid: "90994642"
 
 備份 (完整備份或單一金鑰備份) 只有在來源管理的 HSM (建立備份) ，以及將還原備份的目的地管理 HSM () 共用相同的安全性網域時，才能成功還原。 如此一來，安全性網域也會定義每個受控 HSM 的密碼編譯界限。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- 閱讀 [受控 HSM 的總覽](overview.md)
+- 閱讀[受控 HSM 的概觀](overview.md)
 - 瞭解如何 [使用 Azure CLI 管理受控 HSM](key-management.md)
-- 查看 [受控 HSM 的最佳作法](best-practices.md)
+- 檢閱[受控 HSM 最佳做法](best-practices.md)

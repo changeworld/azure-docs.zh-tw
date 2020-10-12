@@ -4,10 +4,10 @@ description: 本文將回答有關備份中心的常見問題
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994801"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>備份中心-常見問題
@@ -26,11 +26,11 @@ ms.locfileid: "90994801"
 
 備份中心的目標是提供即時資訊。 實體在個別保存庫畫面上顯示的時間可能會有幾秒鐘的時間，以及在備份中心內顯示相同實體的時間。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="do-i-need-to-configure-anything-to-see-data-in-backup-center"></a>我是否需要在備份中心內設定任何專案來查看資料？
 
-不可以。 備份中心已準備就緒。 不過，若要在 [備份中心] 下查看 [備份報告](https://docs.microsoft.com/azure/backup/configure-reports) ，您必須設定保存庫的報告。
+否。 備份中心已準備就緒。 不過，若要在 [備份中心] 下查看 [備份報告](https://docs.microsoft.com/azure/backup/configure-reports) ，您必須設定保存庫的報告。
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>我是否需要有任何特殊許可權才能使用備份中心？
 
@@ -42,7 +42,7 @@ ms.locfileid: "90994801"
 
 目前，除了您的備份成本之外，還沒有額外的成本 (使用備份中心) 。 但是，如果您在 [備份中心] 下使用 [備份報告](https://docs.microsoft.com/azure/backup/configure-reports) ，則需要使用備份報告的 Azure 監視器記錄的 [相關成本](https://azure.microsoft.com/pricing/details/monitor/) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀其他常見問題集：
 

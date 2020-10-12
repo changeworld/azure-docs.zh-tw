@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962021"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>透過可預測方式在 Azure 中佈建和部署微服務
@@ -228,7 +228,7 @@ ms.locfileid: "88962021"
     > 自動調整是**標準**層級或更高層級所提供的功能，而計劃層級警示是**基本**層級或更高層級所提供的功能，您需要將 **sku** 參數設為**標準**或**進階**，才能看到所有新的 App Insights 資源都已啟動。
     > 
     > 
-16. 按一下 [ **部署**]。 如果您選取 [儲存密碼]****，則會將密碼**以純文字形式**儲存至參數檔。 否則，系統會在部署過程要求您輸入資料庫密碼。
+16. 按一下 [部署]。 如果您選取 [儲存密碼]****，則會將密碼**以純文字形式**儲存至參數檔。 否則，系統會在部署過程要求您輸入資料庫密碼。
 
 這樣就大功告成了！ 現在，您只需要移至 [Azure 入口網站](https://portal.azure.com/)和 [Azure 資源總管工具](https://resources.azure.com)，即可查看已新增 JSON 已部署應用程式中的新警示和自動調整設定。
 
@@ -244,7 +244,7 @@ ms.locfileid: "88962021"
 
 最後一個 Cmdlet ( `New-AzureResourceGroup`) 是實際執行動作的 Cmdlet。 所有這些動作都是在告訴您，在工具的協助下，透過可預測方式部署您的雲端應用程式相當簡單。 每次對具有相同參數檔案的相同範本執行 Cmdlet 時，結果都會相同。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在 DevOps 中，重複性和可預測性是任何成功部署包含微服務之高級別應用程式的關鍵。 在本教學課程中，您已使用 Azure 資源管理員範本將雙微服務應用程式部署至 Azure 以做為單一資源群組。 希望這可讓您了解如何開始將 Azure 中的應用程式轉換成範本，而且可以透過可預測方式進行佈建和部署。 
 
 <a name="resources"></a>
@@ -257,7 +257,7 @@ ms.locfileid: "88962021"
 * [搭配使用 Azure PowerShell 與 Azure 資源管理員](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Azure 中的資源群組部署疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解本文中所部署資源類型的 JSON 語法和屬性，請參閱：
 

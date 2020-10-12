@@ -6,10 +6,10 @@ ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
 ms.openlocfilehash: e2959403d2e5db38d03013e798fe299d56837227
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962106"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 檔案將您的應用程式部署至 Azure App Service
@@ -31,7 +31,7 @@ WAR 檔案部署會將您的 [WAR](https://wikipedia.org/wiki/WAR_(file_format))
 > [!NOTE]
 > 使用時 `ZipDeploy` ，只有當檔案的時間戳記不符合已部署的檔案時，才會複製檔案。 使用可快取輸出的組建進程產生 zip，可能會導致更快速的部署。 如需詳細資訊，請參閱 [從 zip 檔案或 url 進行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的步驟，請 [建立 App Service 應用程式](./index.yml)，或使用您為另一個教學課程所建立的應用程式。
 

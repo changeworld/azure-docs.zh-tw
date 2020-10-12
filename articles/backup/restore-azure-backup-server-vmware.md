@@ -4,10 +4,10 @@ description: 使用 Azure 備份伺服器 (MABS) 來還原 vmware vCenter/ESXi �
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.openlocfilehash: b3f61aa828db39aeb11b1ce46a850d9a5b868653
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88263515"
 ---
 # <a name="restore-vmware-virtual-machines"></a>還原 VMware 虛擬機器
@@ -38,7 +38,7 @@ ms.locfileid: "88263515"
 
 6. 如果您想要啟用網路頻寬節流，請在 [ **指定復原選項** ] 畫面上選取 [ **修改**]。 若要讓網路節流保持停用，請選取 **[下一步]**。 此精靈畫面上沒有任何其他選項適用於 VMware VM。 如果您選擇修改網路頻寬節流設定，在 [節流處理] 對話方塊中，選取 [啟用網路頻寬使用節流設定] 來開啟它。 啟用之後，進行**設定**和**工作排程**的設定。
 
-7. 在 [ **選取復原類型** ] 畫面上，選擇要復原到原始實例，還是要復原到新的位置。 然後選取 [下一步]  。
+7. 在 [ **選取復原類型** ] 畫面上，選擇要復原到原始實例，還是要復原到新的位置。 然後選取 [下一步]。
 
      * 如果您選擇 [復原到原始執行個體]，就不需在精靈中進行任何更多選擇。 系統會使用原始執行個體的資料。
 

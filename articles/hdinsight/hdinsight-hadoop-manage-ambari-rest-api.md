@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081061"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 來管理 HDInsight 叢集
@@ -23,36 +23,36 @@ ms.locfileid: "87081061"
 
 ## <a name="what-is-apache-ambari"></a>什麼是 Apache Ambari
 
-Apache Ambari 藉由提供簡單易用的 web UI （由其[REST api](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)支援），簡化了 Hadoop 叢集的管理和監視。  以 Linux 為基礎的 HDInsight 叢集預設會提供 Ambari。
+Apache Ambari 藉由提供容易使用的 web UI （其 [REST api](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)支援），來簡化 Hadoop 叢集的管理和監視。  以 Linux 為基礎的 HDInsight 叢集預設會提供 Ambari。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-* Windows 10 上 Ubuntu 的 Bash。  本文中的命令列範例會在 Windows 10 上使用 Bash 殼層。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix 殼層](https://www.gnu.org/software/bash/)也可正常運作。  有些微修改的範例可以在 Windows 命令提示字元上使用。  或者，您可以使用 Windows PowerShell。
+* Windows 10 上 Ubuntu 的 Bash。  本文中的命令列範例會在 Windows 10 上使用 Bash 殼層。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix 殼層](https://www.gnu.org/software/bash/)也可正常運作。  您可以在 Windows 命令提示字元中使用一些稍微修改的範例。  或者，您可以使用 Windows PowerShell。
 
 * jq，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-* Windows PowerShell  或者您可以使用 Bash。
+* Windows PowerShell  或者，您也可以使用 Bash。
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API 的基底統一資源識別項
 
- HDInsight 上 Ambari REST API 的基底統一資源識別元（URI）是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （）的完整功能變數名稱（FQDN）部分中的叢集名稱 `CLUSTERNAME.azurehdinsight.net` 不區分大小寫，但 uri 中的其他專案會區分大小寫。
+ Ambari REST API on HDInsight 的基底統一資源識別項 (URI) 是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分 **大小寫**。  雖然完整功能變數名稱中的叢集名稱 (FQDN) 一部分的 URI (`CLUSTERNAME.azurehdinsight.net`) 不區分大小寫，但 uri 中的其他出現專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
 連線到 HDInsight 上的 Ambari 需要 HTTPS。 請使用您在叢集建立期間所提供的管理帳戶名稱 (預設值是 **admin**) 和密碼。
 
-針對企業安全性套件叢集，請使用如的完整使用者名稱，而不是 `admin` `username@domain.onmicrosoft.com` 。
+針對企業安全性套件叢集，而不是使用完整的使用者名稱（例如 `admin` ） `username@domain.onmicrosoft.com` 。
 
 ## <a name="examples"></a>範例
 
-### <a name="setup-preserve-credentials"></a>安裝程式（保留認證）
+### <a name="setup-preserve-credentials"></a>設定 (保留認證) 
 
 保留您的認證，以避免在每個範例中重新輸入。  叢集名稱將會在個別的步驟中保留。
 
-**A Bash**  
-`PASSWORD`以您的實際密碼取代，以編輯下面的腳本。  然後輸入命令。
+**答： Bash**  
+以您的實際密碼取代，以編輯以下腳本 `PASSWORD` 。  然後輸入命令。
 
 ```bash
 export password='PASSWORD'
@@ -64,11 +64,11 @@ export password='PASSWORD'
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-### <a name="identify-correctly-cased-cluster-name"></a>識別正確大小寫的叢集名稱
+### <a name="identify-correctly-cased-cluster-name"></a>識別正確的大小寫叢集名稱
 
-叢集名稱的實際大小寫可能與您預期的不同。  此處的步驟會顯示實際的大小寫，然後將它儲存在所有後續範例的變數中。
+叢集名稱的實際大小寫可能會與您預期的不同。  此處的步驟會顯示實際的大小寫，然後將它儲存在所有後續範例的變數中。
 
-編輯下列腳本，將取代為 `CLUSTERNAME` 您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
+編輯下面的腳本，將取代為 `CLUSTERNAME` 您的叢集名稱。 然後輸入命令。  (FQDN 的叢集名稱不區分大小寫。 ) 
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -87,7 +87,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>剖析 JSON 資料
 
-下列範例會使用[jq](https://stedolan.github.io/jq/)或[CONVERTFROM-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json)來剖析 Json 回應檔，並只顯示 `health_report` 結果中的資訊。
+下列範例會使用 [jq](https://stedolan.github.io/jq/) 或 [convertfrom-string JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) 來剖析 Json 回應檔，並只顯示 `health_report` 結果中的資訊。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -103,7 +103,7 @@ $respObj.Clusters.health_report
 
 ### <a name="get-the-fqdn-of-cluster-nodes"></a>取得叢集節點的 FQDN
 
-您可能需要知道叢集節點的完整功能變數名稱（FQDN）。 您可以使用下列範例，輕鬆地擷取叢集中不同節點的 FQDN：
+您可能需要知道叢集節點 (FQDN) 的完整功能變數名稱。 您可以使用下列範例，輕鬆地擷取叢集中不同節點的 FQDN：
 
 **所有節點**  
 
@@ -163,9 +163,9 @@ $respObj.host_components.HostRoles.host_name
 
 ### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>取得叢集節點的內部 IP 位址
 
-本節中的範例所傳回的 IP 位址無法直接透過網際網路存取。 只有在包含 HDInsight 叢集的 Azure 虛擬網路中，才可存取它們。
+本節中的範例所傳回的 IP 位址無法直接透過網際網路存取。 它們只能在包含 HDInsight 叢集的 Azure 虛擬網路內進行存取。
 
-如需使用 HDInsight 和虛擬網路的詳細資訊，請參閱[規劃 hdinsight 的虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
+如需使用 HDInsight 和虛擬網路的詳細資訊，請參閱 [規劃 hdinsight 的虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
 
 若要尋找 IP 位址，您必須知道叢集節點的內部完整網域名稱 (FQDN)。 一旦您擁有 FQDN，就可以取得主機的 IP 位址。 下列範例會先查詢 Ambari，以取得所有主機節點的 FQDN。 然後查詢會 Ambari 每個主機的 IP 位址。
 
@@ -193,7 +193,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>取得預設儲存體
 
-HDInsight 叢集必須使用 Azure 儲存體帳戶或 Data Lake Storage 做為預設儲存體。 在建立叢集之後，您可以使用 Ambari 來擷取這項資訊。 例如，如果您想要讀取/寫入資料至 HDInsight 以外的容器。
+HDInsight 叢集必須使用 Azure 儲存體帳戶或 Data Lake Storage 作為預設儲存體。 在建立叢集之後，您可以使用 Ambari 來擷取這項資訊。 例如，如果您想要讀取/寫入資料至 HDInsight 以外的容器。
 
 下列範例會從叢集擷取預設儲存體組態：
 
@@ -253,7 +253,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     傳回值類似 `/clusters/CLUSTERNAME/`。 這個值是 Data Lake Storage 帳戶內的路徑。 這個路徑是叢集的 HDFS 相容檔案系統的根目錄。  
 
 > [!NOTE]  
-> [Azure PowerShell](/powershell/azure/)提供的[new-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) Cmdlet 也會傳回叢集的儲存體資訊。
+> [Azure PowerShell](/powershell/azure/)提供的[>new-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster)指令程式也會傳回叢集的儲存體資訊。
 
 ### <a name="get-all-configurations"></a>取得所有設定
 
@@ -269,7 +269,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-這個範例會傳回 JSON 檔，其中包含已安裝之元件的目前設定。 請參閱*標記*值。 下列範例是從 Spark 叢集類型傳回之資料的摘要。
+此範例會傳回 JSON 檔，其中包含已安裝元件的目前設定。 請參閱 *標記* 值。 下列範例是從 Spark 叢集類型傳回之資料的摘要。
 
 ```json
 "jupyter-site" : {
@@ -288,7 +288,7 @@ $respObj.Content
 
 ### <a name="get-configuration-for-specific-component"></a>取得特定元件的設定
 
-取得您感興趣之元件的設定。 在下列範例中，以前一個要求傳回的標記值取代 `INITIAL`。
+取得您想要的元件設定。 在下列範例中，以前一個要求傳回的標記值取代 `INITIAL`。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -308,9 +308,9 @@ $resp.Content
    修改，然後輸入下列命令：
 
    * 取代 `livy2-conf` 為新的元件。
-   * 取代 `INITIAL` 為 `tag` 從[取得所有](#get-all-configurations)設定中抓取的實際值。
+   * 取代 `INITIAL` 為 `tag` 從 [取得所有](#get-all-configurations)設定取出的實際值。
 
-     **A Bash**
+     **答： Bash**
 
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
@@ -318,7 +318,7 @@ $resp.Content
      ```
 
      **B. PowerShell**  
-     PowerShell 腳本會使用[jq](https://stedolan.github.io/jq/)。  編輯 `C:\HD\jq\jq-win64` 下方的以反映[jq](https://stedolan.github.io/jq/)的實際路徑和版本。
+     PowerShell 腳本會使用 [jq](https://stedolan.github.io/jq/)。  編輯 `C:\HD\jq\jq-win64` 下方以反映實際的 [jq](https://stedolan.github.io/jq/)路徑和版本。
 
      ```powershell
      $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
@@ -329,7 +329,7 @@ $resp.Content
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     Jq 是用來將從 HDInsight 擷取到的資料轉換至新的組態範本。 具體而言，這些範例會執行下列動作：
+     Jq 是用來將從 HDInsight 擷取到的資料轉換至新的組態範本。 具體來說，這些範例會執行下列動作：
 
    * 建立唯一的值，其中包含字串 "version" 和日期，會儲存在 `newtag`。
 
@@ -368,7 +368,7 @@ $resp.Content
     "livy.server.csrf_protection.enabled": "false",
     ```
 
-    完成修改後，請儲存檔案。
+    完成修改之後，請儲存檔案。
 
 3. 提交 `newconfig.json` 。  
    使用以下命令將更新的組態提交至 Ambari。
@@ -387,11 +387,11 @@ $resp.Content
     $resp.Content
     ```  
 
-    這些命令會將檔案**上newconfig.js**的內容提交至叢集，做為新的設定。 要求會傳回 JSON 文件。 這份文件中的 **versionTag** 元素應符合您所提交的版本，**configs** 物件將會包含您所要求的組態變更。
+    這些命令會將檔案 **newconfig.js** 的內容提交至叢集做為新的設定。 要求會傳回 JSON 文件。 這份文件中的 **versionTag** 元素應符合您所提交的版本，**configs** 物件將會包含您所要求的組態變更。
 
 ### <a name="restart-a-service-component"></a>重新啟動服務元件
 
-此時，Ambari web UI 會指出 Spark 服務需要重新開機，新的設定才會生效。 使用下列步驟重新啟動服務。
+此時，Ambari web UI 會指出需要重新開機 Spark 服務，新的設定才會生效。 使用下列步驟重新啟動服務。
 
 1. 使用下列程式來啟用 Spark2 服務的維護模式：
 
@@ -409,7 +409,7 @@ $resp.Content
         -Body '{"RequestInfo": {"context": "turning on maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}'
     ```
 
-2. 驗證維護模式  
+2. 確認維護模式  
 
     這些命令會將 JSON 文件傳送至伺服器，該伺服器以維護模式開啟。 您可以使用下列要求驗證服務現在處於維護模式中：
 
@@ -460,8 +460,8 @@ $resp.Content
     > [!IMPORTANT]  
     > 這個 URI 所傳回的 `href` 值會使用叢集節點的內部 IP 位址。 若要從叢集外部使用它，請將部分取代為叢集 `10.0.0.18:8080` 的 FQDN。  
 
-4. 驗證要求。  
-    `29`以上一個步驟所傳回的實際值取代，以編輯下面的命令 `id` 。  下列命令會擷取要求的狀態：
+4. 確認要求。  
+    以 `29` 先前步驟傳回的實際值取代，以編輯下列命令 `id` 。  下列命令會擷取要求的狀態：
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -478,7 +478,7 @@ $resp.Content
 
     `COMPLETED` 的回應表示要求已完成。
 
-5. 上一個要求完成後，請使用下列各項來啟動 Spark2 服務。
+5. 當先前的要求完成之後，請使用下列各項來啟動 Spark2 服務。
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -513,6 +513,6 @@ $resp.Content
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需 REST API 的完整參考，請參閱 [Apache Ambari API 參考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) \(英文\)。  另請參閱[授權使用者以取得 Apache Ambari Views](./hdinsight-authorize-users-to-ambari.md)
+如需 REST API 的完整參考，請參閱 [Apache Ambari API 參考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) \(英文\)。  另請參閱 [授權使用者進行 Apache Ambari Views](./hdinsight-authorize-users-to-ambari.md)

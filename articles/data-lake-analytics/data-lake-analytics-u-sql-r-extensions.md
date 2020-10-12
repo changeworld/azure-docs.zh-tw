@@ -1,16 +1,16 @@
 ---
 title: 在 Azure Data Lake Analytics 中使用 R 擴充 U-SQL 指令碼
-description: 瞭解如何使用 Azure Data Lake Analytics 在 U-SQL 腳本中執行 R 程式碼。 從檔案內嵌 R 程式碼內嵌或參考。
+description: 瞭解如何使用 Azure Data Lake Analytics 在雙 SQL 腳本中執行 R 程式碼。 內嵌 R 程式碼內嵌或從檔案參考。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127395"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 程式碼擴充 U-SQL 指令碼
@@ -20,7 +20,7 @@ ms.locfileid: "87127395"
 * 使用 `REFERENCE ASSEMBLY` 陳述式啟用 U-SQL 指令碼的 R 延伸模組。
 * 使用作業 `REDUCE` 來分割索引鍵上的輸入資料。
 * U-SQL 的 R 延伸模組有內建的歸納器 (`Extension.R.Reducer`)，會在指派給歸納器的每一個頂點上執行 R 程式碼。
-* 使用名為和的專用命名資料框架， `inputFromUSQL` `outputToUSQL` 分別用來在 U-SQL 和 R 之間傳遞資料。輸入和輸出資料框架識別碼名稱是固定的（亦即，使用者無法變更輸入和輸出資料框架識別碼的預先定義名稱）。
+* 使用分別稱為和的專用命名資料框架，在 `inputFromUSQL` `outputToUSQL` U-SQL 與 R 之間傳遞資料。輸入和輸出資料框架識別碼名稱是固定的 (也就是說，使用者無法變更這些預先定義的輸入和輸出資料框架識別碼的名稱) 。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>將 R 程式碼內嵌在 U-SQL 指令碼中
 
@@ -208,7 +208,7 @@ USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix")
 OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Data Lake Tools for Visual Studio 開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)

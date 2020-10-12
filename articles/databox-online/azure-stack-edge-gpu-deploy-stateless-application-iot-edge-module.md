@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
 ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899522"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>使用 IoT Edge 模組在 Azure Stack Edge Pro GPU 裝置上執行 Kubernetes 無狀態應用程式
@@ -74,11 +74,11 @@ ms.locfileid: "90899522"
         }
         ```
 
-        此設定可讓您透過 *TCP 通訊埠 8080 (上的* 計算網路 IP 來存取此模組，並使用預設的 web 伺服器埠 80) 。 選取 [新增]  。
+        此設定可讓您透過 *TCP 通訊埠 8080 (上的* 計算網路 IP 來存取此模組，並使用預設的 web 伺服器埠 80) 。 選取 [新增]。
 
         ![在 IoT Edge 自訂模組分頁中指定埠資訊](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 
-    4. 選取 [檢閱 + 建立]。 檢查模組詳細資料，然後選取 [ **建立**]。
+    4. 選取 [檢閱 + 建立]****。 檢查模組詳細資料，然後選取 [ **建立**]。
 
 ## <a name="verify-module-access"></a>確認模組存取
 
@@ -97,6 +97,6 @@ ms.locfileid: "90899522"
 
     ![確認透過指定的埠連接到模組](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-webserver-app-1.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何透過 IoT Edge 模組公開具狀態應用程式<!--insert link-->.

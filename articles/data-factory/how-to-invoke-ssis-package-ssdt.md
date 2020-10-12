@@ -13,10 +13,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
 ms.openlocfilehash: fb5b5cb0ac4a9ace7b5de5e92308da58fd2b1fec
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504939"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>從 SSDT 在 Azure 中執行 SSIS 套件
@@ -204,6 +204,6 @@ ms.locfileid: "89504939"
 
 -  啟用 Azure 的 SSDT 僅支援商業/全球雲端區域，目前不支援政府/國家雲端區域。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 當您滿意從 SSDT 在 Azure 中執行套件之後，您就可以在 ADF 管線中將其部署並執行為執行 SSIS 套件活動，請參閱 [在 adf 管線中執行 ssis 套件作為執行 Ssis 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。

@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300250"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 在共用映射庫中的受控磁片或快照集建立映射
@@ -156,7 +156,7 @@ $job.State
 一旦您確認新的映射版本可以正常運作，您就可以使用 [>new-azsnapshot](/powershell/module/Az.Compute/Remove-AzSnapshot) 或 [>get-azdisk](/powershell/module/az.compute/remove-azdisk)來刪除映射的來源。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 確認複寫完成之後，您就可以從 [特製化映射](vm-specialized-image-version-powershell.md)建立 VM。
 
