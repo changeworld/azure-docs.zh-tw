@@ -8,10 +8,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87126477"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用 Azure Data Lake Tools for Visual Studio Code
@@ -20,7 +20,7 @@ ms.locfileid: "87126477"
 
 [![影片播放程式：適用于 VS Code 的 Azure Data Lake 工具](media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png)](https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode")
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure Data Lake Tools for VS Code 支援 Windows、Linux 與 macOS。U-SQL 本機執行與本機偵錯僅適用於 Windows。
 
@@ -78,7 +78,7 @@ Azure Data Lake Tools for VS Code 支援 Windows、Linux 與 macOS。U-SQL 本�
                  D( DepID, DepName );
    ```
 
-   @departments      使用 Outputters.Csv （），輸出至 "/Output/departments.csv";
+   @departments      使用 Outputters.Csv ( # A2; 輸出至 "/Output/departments.csv"
 
     這個指令碼會在 /output 資料夾中建立 departments.csv 檔案並納入一些資料。
 
@@ -119,8 +119,8 @@ Azure Data Lake Tools for VS Code 支援 Windows、Linux 與 macOS。U-SQL 本�
 3. xxx_settings.json 檔案隨即開啟，其中含有下列屬性：
 
    - **account**：您 Azure 訂用帳戶底下編譯和執行 U-SQL 作業所需的 Azure Data Lake Analytics 帳戶。 您必須在編譯和執行 U-SQL 作業之前，先設定電腦帳戶。
-   - **資料庫**：您帳戶底下的資料庫。 預設值為**master**。
-   - **架構**：您資料庫底下的架構。 預設值為**dbo**。
+   - **資料庫**：您的帳戶底下的資料庫。 預設值為 **master**。
+   - **架構**：您資料庫底下的架構。 預設值為 **dbo**。
    - **optionalSettings**：
         - **priority**︰優先順序範圍是從 1 到 1000，其中 1 是最高優先順序。 預設值為 **1000**。
         - **degreeOfParallelism**︰平行處理原則的範圍是從 1 到 150。 預設值為您 Azure Data Lake Analytics 帳戶中允許的平行處理原則上限。
@@ -171,7 +171,7 @@ Azure Data Lake Tools 支援多個自訂程式碼。 如需相關指示，請參
 1. 選取 Ctrl+Shift+P 以開啟命令選擇區。
 2. 輸入 **ADL: Register Assembly (Advanced)**。
 3. 指定本機組件路徑。
-4. 隨即會顯示 JSON 檔案。 請視需要檢閱並編輯組件相依性及資源參數。 指令會顯示在 [**輸出**] 視窗中。 若要繼續進行組件註冊，請儲存 (Ctrl + S) JSON 檔案。
+4. 隨即會顯示 JSON 檔案。 請視需要檢閱並編輯組件相依性及資源參數。 指示會顯示在 [ **輸出** ] 視窗中。 若要繼續進行組件註冊，請儲存 (Ctrl + S) JSON 檔案。
 
    ![含有組件相依性和資源參數的 JSON 檔案](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
 
@@ -372,7 +372,7 @@ U-SQL 本機執行會先測試您的本機資料並在本機驗證您的指令�
 ### <a name="to-download-a-file-through-the-adl-download-file-advanced-command"></a>透過 ADL: Download File (Advanced) 命令來下載檔案
 
 1. 以滑鼠右鍵按一下指令碼編輯器，然後選取 [Download File (Advanced)]****。
-2. VS Code 會顯示一個 JSON 檔案。 您可以輸入檔案路徑，然後同時下載多個檔案。 指令會顯示在 [**輸出**] 視窗中。 若要繼續下載一或多個檔案，請儲存 (Ctrl+S) JSON 檔案。
+2. VS Code 會顯示一個 JSON 檔案。 您可以輸入檔案路徑，然後同時下載多個檔案。 指示會顯示在 [ **輸出** ] 視窗中。 若要繼續下載一或多個檔案，請儲存 (Ctrl+S) JSON 檔案。
 
     ![含有檔案下載路徑的 JSON 檔案](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
 
@@ -495,7 +495,7 @@ Data Lake Tools for VSCode 支援下列功能︰
 > [!NOTE]
 > 建議您升級至 Azure Data Lake Tools for Visual Studio 2.3.3000.4 版或更新版本。 舊版目前已淘汰，不再提供下載。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [在 VS Code 中使用 Python、R 和 C Sharp 來開發適用於 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [使用 Visual Studio Code 來進行 U-SQL 本機執行和本機偵錯](data-lake-tools-for-vscode-local-run-and-debug.md)

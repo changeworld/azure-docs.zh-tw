@@ -14,10 +14,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
 ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334900"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>授權資料庫存取 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics
@@ -34,7 +34,7 @@ ms.locfileid: "91334900"
 > [!IMPORTANT]
 > 本文的其餘部分會將 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse 中的資料庫統稱為資料庫，而且伺服器會參考管理資料庫的 [伺服器](logical-servers.md) ，以進行 Azure SQL Database 和 Azure Synapse。
 
-## <a name="authentication-and-authorization"></a>驗證和授權
+## <a name="authentication-and-authorization"></a>驗證與授權
 
 [**驗證**](security-overview.md#authentication) 是證明使用者是他們宣稱的流程。 使用者會使用使用者帳戶連接至資料庫。
 當使用者嘗試連接至資料庫時，會提供使用者帳戶和驗證資訊。 使用者會使用下列兩種驗證方法的其中一種進行驗證：
@@ -42,7 +42,7 @@ ms.locfileid: "91334900"
 - [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
 
   使用此驗證方法時，使用者會提交使用者帳戶名稱和相關聯的密碼以建立連線。 此密碼會儲存在 master 資料庫中，以用於連結至登入的使用者帳戶，或儲存在包含 *未* 連結至登入之使用者帳戶的資料庫中。
-- [Azure Active Directory 驗證](authentication-aad-overview.md)
+- [Azure Active Directory Authentication](authentication-aad-overview.md)
 
   使用此驗證方法，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory (Azure AD) 中的認證資訊。
 

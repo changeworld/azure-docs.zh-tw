@@ -12,16 +12,16 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829428"
 ---
 # <a name="split-merge-security-configuration"></a>分割合併安全性設定
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-若要使用 Split/Merge 服務，您必須正確地設定安全性。 此服務是 Azure SQL Database 的彈性調整功能的一部分。 如需詳細資訊，請參閱 [Elastic Scale 分割及合併服務教學課程](elastic-scale-configure-deploy-split-and-merge.md)
+若要使用 Split/Merge 服務，您必須正確地設定安全性。 服務是 Azure SQL Database 的彈性調整功能的一部分。 如需詳細資訊，請參閱 [Elastic Scale 分割及合併服務教學課程](elastic-scale-configure-deploy-split-and-merge.md)
 
 ## <a name="configuring-certificates"></a>設定憑證
 
@@ -55,12 +55,12 @@ ms.locfileid: "85829428"
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>設定 TLS/SSL 憑證
 
-必須要有 TLS/SSL 憑證，才能將通訊加密和驗證服務器。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
+需要 TLS/SSL 憑證，才能將通訊加密和驗證服務器。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
 
 ### <a name="create-a-new-self-signed-certificate"></a>建立新的自我簽署憑證
 
-1. [建立自我簽署憑證](#create-a-self-signed-certificate)
-2. [建立自我簽署 TLS/SSL 憑證的 PFX 檔案](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [建立 Self-Signed 憑證](#create-a-self-signed-certificate)
+2. [建立 Self-Signed TLS/SSL 憑證的 PFX 檔案](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [將 TLS/SSL 憑證上傳至雲端服務](#upload-tlsssl-certificate-to-cloud-service)
 4. [更新服務設定檔中的 TLS/SSL 憑證](#update-tlsssl-certificate-in-service-configuration-file)
 5. [匯入 TLS/SSL 憑證頒發機構單位](#import-tlsssl-certification-authority)
@@ -105,7 +105,7 @@ ms.locfileid: "85829428"
 需要憑證來加密儲存在中繼資料存放區中的認證。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
 
 ### <a name="use-a-new-self-signed-certificate"></a>使用新的自我簽署憑證
-1. [建立自我簽署憑證](#create-a-self-signed-certificate)
+1. [建立 Self-Signed 憑證](#create-a-self-signed-certificate)
 2. [建立自我簽署加密憑證的 PFX 檔案](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [將加密憑證上傳至雲端服務](#upload-encryption-certificate-to-cloud-service)
 4. [在服務組態檔中更新加密憑證](#update-encryption-certificate-in-service-configuration-file)
@@ -124,7 +124,7 @@ ms.locfileid: "85829428"
 預設組態會允許對 HTTPS 端點的所有存取。 這項設定可能會進一步限制。
 
 ### <a name="changing-the-configuration"></a>變更組態
-適用于和端點的存取控制規則群組是在 **\<EndpointAcls>** **服務設定檔**的區段中設定。
+適用于和端點的存取控制規則群組會在 **\<EndpointAcls>** **服務設定檔**的區段中設定。
 
 ```xml
 <EndpointAcls>
@@ -230,7 +230,7 @@ pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
   * 如果可能的話，包含憑證路徑中的所有憑證 *匯出所有延伸內容
 
 ## <a name="upload-tlsssl-certificate-to-cloud-service"></a>將 TLS/SSL 憑證上傳至雲端服務
-上傳具有現有或已產生的憑證。具有 TLS 金鑰組的 PFX 檔案：
+以現有的或產生的憑證上傳憑證。具有 TLS 金鑰組的 PFX 檔案：
 
 * 輸入密碼以保護私密金鑰資訊
 
@@ -258,7 +258,7 @@ pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-然後，複製與 [CA 憑證] 設定中的 TLS/SSL 憑證相同的指紋：
+然後，在 CA 憑證設定中複製與 TLS/SSL 憑證相同的指紋：
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -442,10 +442,10 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 1. 執行 mmc.exe。
 2. [檔案] -> [新增/移除嵌入式管理單元]
 3. 選取 [ **憑證**]。
-4. 按一下 **[新增]** 。
+4. 按一下 [新增] 。
 5. 選擇憑證存放區位置。
 6. 按一下 [完成] 。
-7. 按一下 [確定]。
+7. 按一下 [確定]  。
 8. 展開 [憑證]  。
 9. 展開憑證存放區節點。
 10. 展開 [憑證] 子節點。
@@ -454,18 +454,18 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 ## <a name="export-certificate"></a>匯出憑證
 在 [ **憑證匯出精靈**] 中：
 
-1. 按 [下一步] 。
+1. 按一下 [下一步]。
 2. 選取 [是]****，再選取 [匯出私密金鑰]****。
-3. 按 [下一步] 。
+3. 按一下 [下一步]。
 4. 選取想要的輸出檔案格式。
 5. 核取所需的選項。
 6. 核取 [ **密碼**]。
 7. 輸入強式密碼並加以確認。
-8. 按 [下一步] 。
+8. 按一下 [下一步]。
 9. 輸入或瀏覽至用來儲存憑證的檔案名稱 (使用 .PFX 副檔名)。
 10. 按 [下一步] 。
 11. 按一下 [完成] 。
-12. 按一下 [確定]。
+12. 按一下 [確定]  。
 
 ## <a name="import-certificate"></a>匯入憑證
 在 [憑證匯入精靈] 中：
@@ -474,7 +474,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
    
    * 如果只有在目前使用者下執行的處理程序會存取服務，請選取 [ **目前使用者** ]
    * 如果這台電腦中的其他處理程序會存取服務，請選取 [ **本機電腦** ]
-2. 按 [下一步] 。
+2. 按一下 [下一步]。
 3. 如果從檔案匯入，請確認檔案路徑。
 4. 如果匯入 .PFX 檔案：
    1. 輸入密碼以保護私密金鑰
@@ -488,7 +488,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 9. 在所有對話方塊視窗上，按一下 [ **確定** ]。
 
 ## <a name="upload-certificate"></a>Upload certificate
-在 [ [Azure 入口網站](https://portal.azure.com/)
+在 [Azure 入口網站](https://portal.azure.com/)
 
 1. 選取 [雲端服務]。
 2. 選取雲端服務。
@@ -499,7 +499,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 7. 完成後，從清單中的新項目複製憑證指紋。
 
 ## <a name="other-security-considerations"></a>其他安全性考量
-使用 HTTPS 端點時，本檔中所述的 TLS 設定會加密服務及其用戶端之間的通訊。 這很重要，因為通訊中包含用來存取資料庫和其他可能機密資訊的認證。 不過，請注意，服務會將內部狀態（包括認證）保存在資料庫中的內部資料表內，而您已在 Azure SQL Database 中提供，以供 Microsoft Azure 訂用帳戶中的中繼資料儲存。 在服務組態檔中 (.CSCFG 檔案)，下列設定中已定義該資料庫： 
+使用 HTTPS 端點時，本檔中所述的 TLS 設定會加密服務及其用戶端之間的通訊。 這很重要，因為通訊中包含用來存取資料庫和其他可能機密資訊的認證。 不過請注意，服務會將內部資料表中的內部資料表（包括認證）保存在您為 Microsoft Azure 訂用帳戶中的中繼資料儲存提供的 Azure SQL Database 中的資料庫內部資料表中。 在服務組態檔中 (.CSCFG 檔案)，下列設定中已定義該資料庫： 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

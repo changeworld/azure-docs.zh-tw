@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319889"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：設定 Microsoft 365 資源的慣用資料位置
@@ -44,7 +44,7 @@ Microsoft 365 中的地區可供多地理位置使用：
 | --- | --- |
 | 亞太地區 | APC |
 | 澳洲 | AUS |
-| Canada | CAN |
+| 加拿大 | CAN |
 | 歐盟 | 歐元 |
 | 法國 | FRA |
 | 印度 | IND |
@@ -143,7 +143,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
     | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
     | 名稱 | 提供名稱 | 例如，“In from AD – User preferredDataLocation” |
-    | 說明 | *提供自訂描述* |  |
+    | 描述 | *提供自訂描述* |  |
     | 連線系統 | 挑選內部部署 Active Directory 連接器** |  |
     | 連線系統物件類型 | **使用者** |  |
     | Metaverse 物件類型 | **人員** |  |

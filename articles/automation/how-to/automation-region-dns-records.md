@@ -1,34 +1,34 @@
 ---
 title: Azure 自動化使用的 Azure 資料中心 DNS 記錄 |Microsoft Docs
-description: 本文提供在限制對裝載該自動化帳戶之特定 Azure 區域的通訊時，Azure 自動化功能所需的 DNS 記錄。
+description: 本文提供限制與裝載該自動化帳戶之特定 Azure 區域的通訊時，Azure 自動化功能所需的 DNS 記錄。
 services: automation
 ms.subservice: process-automation
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117187"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure 自動化所使用之 Azure 區域的 DNS 記錄
 
-[Azure 自動化](../automation-intro.md)服務會使用一些功能的 DNS 記錄來連接服務。 如果您有針對特定區域定義的自動化帳戶，您可以將通訊限制為該區域資料中心。 您可能需要知道這些記錄，以允許下列自動化功能在防火牆後方主控時正常執行：
+[Azure 自動化](../automation-intro.md)服務會使用多項功能的 DNS 記錄來連接至服務。 如果您有針對特定區域定義的自動化帳戶，您可以將通訊限制為該區域資料中心。 您可能需要知道這些記錄，以允許下列自動化功能在防火牆後方託管時運作：
 
 * Hybrid Runbook Worker
 * State Configuration
 * Webhook
 
 >[!NOTE]
->Linux 混合式 Runbook 背景工作角色註冊將會失敗，並出現新的記錄，除非它是1.6.10.2 或更高版本。 您必須升級為適用于[Linux 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-linux.md)的較新版本，電腦才能接收背景工作角色的更新版本，並使用這些新記錄。 現有的機器會繼續運作，而不會發生任何問題。  
+>Linux 混合式 Runbook 背景工作註冊將會失敗，並出現新的記錄，除非它是1.6.10.2 版或更高版本。 您必須升級為 [適用于 Linux 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-linux.md) 的較新版本，才能讓電腦接收已更新版本的背景工作角色，並使用這些新的記錄。 現有的電腦將繼續運作，而不會發生任何問題。  
 
 ## <a name="dns-records-per-region"></a>每個區域的 DNS 記錄
 
 下表提供每個區域的 DNS 記錄。
 
 >[!NOTE]
->雖然此處提供的自動化 DNS 記錄清單已淘汰，但仍可繼續運作，讓您可以將時間遷移至 [[私人連結支援](#support-for-private-link)] 底下所列的新記錄，並防止自動化程式失敗。
+>雖然此處提供的自動化 DNS 記錄清單已淘汰，但仍可繼續運作，以允許您遷移至 [支援 Private Link](#support-for-private-link) 所列的新記錄，並避免自動化程式失敗。
 
 | **區域** | **DNS 記錄** |
 | --- | --- |
@@ -48,9 +48,9 @@ ms.locfileid: "87117187"
 | 西歐 |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | 美國西部 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
 
-### <a name="support-for-private-link"></a>私用連結的支援
+### <a name="support-for-private-link"></a>支援 Private Link
 
-為了支援 Azure 自動化中的[私用連結](../../private-link/private-link-overview.md)，已更新每個受支援資料中心的 DNS 記錄。 Url 是自動化帳戶特有的，而不是特定區域的 Url。
+為了支援 Azure 自動化中的 [Private Link](../../private-link/private-link-overview.md) ，每個支援資料中心的 DNS 記錄都已更新。 Url 不是特定區域的 Url，而是特定的自動化帳戶。
 
 | **區域** | **DNS 記錄** |
 | --- | --- |
@@ -64,7 +64,7 @@ ms.locfileid: "87117187"
 | 美國東部 2 |`https://<accountId>.webhook.eus2.azure-automation.net`<br>`https://<accountId>.agentsvc.eus2.azure-automation.net`<br>`https://<accountId>.jrds.eus2.azure-automation.net` |
 | 加拿大中部 |`https://<accountId>.webhook.cc.azure-automation.net`<br>`https://<accountId>.agentsvc.cc.azure-automation.net`<br>`https://<accountId>.jrds.cc.azure-automation.net` |
 | 西歐 |`https://<accountId>.webhook.we.azure-automation.net`<br>`https://<accountId>.agentsvc.we.azure-automation.net`<br>`https://<accountId>.jrds.we.azure-automation.net` |
-| 歐洲北部 |`https://<accountId>.webhook.ne.azure-automation.net`<br>`https://<accountId>.agentsvc.ne.azure-automation.net`<br>`https://<accountId>.jrds.ne.azure-automation.net` |
+| 北歐 |`https://<accountId>.webhook.ne.azure-automation.net`<br>`https://<accountId>.agentsvc.ne.azure-automation.net`<br>`https://<accountId>.jrds.ne.azure-automation.net` |
 | 東南亞 |`https://<accountId>.webhook.sea.azure-automation.net`<br>`https://<accountId>.agentsvc.sea.azure-automation.net`<br>`https://<accountId>.jrds.sea.azure-automation.net` |
 | 東亞 |`https://<accountId>.webhook.ea.azure-automation.net`<br>`https://<accountId>.agentsvc.ea.azure-automation.net`<br>`https://<accountId>.jrds.ea.azure-automation.net` |
 | 印度中部 |`https://<accountId>.webhook.cid.azure-automation.net`<br>`https://<accountId>.agentsvc.cid.azure-automation.net`<br>`https://<accountId>.jrds.cid.azure-automation.net` |
@@ -84,18 +84,18 @@ ms.locfileid: "87117187"
 | US Gov 德克薩斯州 |`https://<accountId>.webhook.ussc.azure-automation.us`<br>`https://<accountId>.agentsvc.ussc.azure-automation.us`<br>`https://<accountId>.jrds.ussc.azure-automation.us` |
 | US Gov 亞利桑那州 |`https://<accountId>.webhook.phx.azure-automation.us`<br>`https://<accountId>.agentsvc.phx.azure-automation.us`<br>`https://<accountId>.jrds.phx.azure-automation.us` |
 
-在 `<accountId>` DNS 記錄中，以代表您的自動化帳戶識別碼的 GUID 取代為值**URL**。 您可以從 Azure 入口網站中 [**帳戶設定**] 下的 [**金鑰**] 取得識別碼。
+在 `<accountId>` DNS 記錄中取代為值 **URL**中代表您自動化帳戶識別碼的 GUID。 您可以在 Azure 入口網站中，從 [**帳戶設定**] 下的**金鑰**取得所需的識別碼。
 
 ![自動化帳戶的主要金鑰頁面](./media/automation-region-dns-records/automation-account-keys.png)
 
-在 [帳戶] */* [ **URL** ] 欄位中複製值-`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+在 [帳戶] */* [ **URL** ] 欄位中複製值- `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
 建議您使用定義[例外狀況](../automation-runbook-execution.md#exceptions)時所列出的位址。 如需區域 IP 位址的清單，而不是區功能變數名稱稱，請從 Microsoft 下載中心下載下列雲端環境的 JSON 檔案：
 
-* [Azure IP 範圍和服務標記-Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
+* [Azure IP 範圍和服務標籤-Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
 * [Azure IP 範圍和服務標籤-Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
 * [Azure IP 範圍和服務標籤-Azure 德國](https://www.microsoft.com/download/details.aspx?id=57064)
-* [Azure IP 範圍和服務標記-Azure 中國 Vianet 21](https://www.microsoft.com/download/details.aspx?id=57062)
+* [Azure IP 範圍和服務標籤– Azure 中國 Vianet 21](https://www.microsoft.com/download/details.aspx?id=57062)
 
 IP 位址檔案會列出用於 Microsoft Azure 資料中心的 IP 位址範圍。 其包含計算、SQL 和儲存體範圍，並反映目前已部署的範圍及任何即將進行的 IP 範圍變更。 出現在檔案中的新範圍至少有一週的時間不會在資料中心中使用。
 
@@ -104,8 +104,8 @@ IP 位址檔案會列出用於 Microsoft Azure 資料中心的 IP 位址範圍�
 > [!NOTE]
 > 如果您是使用 Azure ExpressRoute，請記得在每個月的第一週，該 IP 位址檔案會用來更新 Azure 空間的邊界閘道協定 (BGP) 公告。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要了解如何對混合式 Runbook 背景工作角色進行疑難排解，請參閱[對混合式 Runbook 背景工作角色問題進行疑難排解](../troubleshoot/hybrid-runbook-worker.md#general)。
 
-* 若要瞭解如何針對狀態設定的問題進行疑難排解，請參閱針對[狀態設定問題進行疑難排解](../troubleshoot/desired-state-configuration.md)。
+* 若要瞭解如何疑難排解狀態設定的問題，請參閱 [疑難排解狀態設定問題](../troubleshoot/desired-state-configuration.md)。

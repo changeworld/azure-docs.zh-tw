@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure CLI 在 AKS 叢集上建立 Windows Server 容器
-description: 瞭解如何快速建立 Kubernetes 叢集、使用 Azure CLI 在 Azure Kubernetes Service （AKS）的 Windows Server 容器中部署應用程式。
+description: 瞭解如何使用 Azure CLI，快速建立 Kubernetes 叢集、在 Azure Kubernetes Service (AKS) 的 Windows Server 容器中部署應用程式。
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
 ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421224"
 ---
-# <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service （AKS）叢集上建立 Windows Server 容器
+# <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
 
-Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 在本文中，您會使用 Azure CLI 來部署 AKS 叢集。 您也可以將 Windows Server 容器中的 ASP.NET 範例應用程式部署到叢集。
+Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 在本文中，您會使用 Azure CLI 部署 AKS 叢集。 您也會將 Windows Server 容器中的 ASP.NET 範例應用程式部署到叢集。
 
 ![瀏覽至 ASP.NET 應用程式範例的影像](media/windows-container/asp-net-sample-app.png)
 
@@ -42,8 +42,8 @@ Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立
 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 > [!NOTE]
-> 本文會針對本教學課程中的命令使用 Bash 語法。
-> 如果您使用 Azure Cloud Shell，請確定 [Cloud Shell] 視窗左上角的下拉式清單已設定為 [ **Bash**]。
+> 本文針對本教學課程中的命令使用 Bash 語法。
+> 如果您使用 Azure Cloud Shell，請確定 Cloud Shell 視窗左上角的下拉式清單設定為 **Bash**。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -67,16 +67,16 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
-若要執行支援 Windows Server 容器之節點集區的 AKS 叢集，您的叢集必須採用使用 [Azure CNI][azure-cni-about] (advanced) 網路外掛程式的網路原則。 如需協助方案必要子網路範圍和網路考慮的詳細資訊，請參閱[設定 Azure CNI 網路][use-advanced-networking]。 使用[az aks create][az-aks-create]命令來建立名為*myAKSCluster*的 aks 叢集。 此命令將會建立所需的網路資源（如果不存在）。
+若要執行支援 Windows Server 容器之節點集區的 AKS 叢集，您的叢集必須採用使用 [Azure CNI][azure-cni-about] (advanced) 網路外掛程式的網路原則。 如需協助方案必要子網路範圍和網路考慮的詳細資訊，請參閱[設定 Azure CNI 網路][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令來建立名為 *myAKSCluster*的 aks 叢集。 此命令將會建立必要的網路資源（如果不存在的話）。
 
-* 叢集設定了兩個節點
-* *Windows-admin-password*和*windows-admin-username*參數會針對在叢集上建立的任何 windows server 容器，設定系統管理員認證，而且必須符合[windows server 密碼需求][windows-server-password]。
-* 節點集區使用`VirtualMachineScaleSets`
+* 叢集已設定兩個節點
+* *Windows-admin-password*和*windows-admin-username*參數會設定在叢集上建立之任何 windows server 容器的系統管理員認證，而且必須符合[windows server 密碼需求][windows-server-password]。
+* 節點集區使用 `VirtualMachineScaleSets`
 
 > [!NOTE]
-> 若要確保您的叢集能夠可靠地運作，您應該在預設節點集區中至少執行2（兩個）節點。
+> 為了確保您的叢集能可靠地運作，您應該在預設節點集區中至少執行2個 (兩個) 節點。
 
-提供您自己的安全*PASSWORD_WIN* （請記住，本文中的命令會進入 BASH shell）：
+提供您自己的安全 *PASSWORD_WIN* (請記住，本文中的命令會輸入 BASH shell) ：
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -94,13 +94,13 @@ az aks create \
 ```
 
 > [!NOTE]
-> 如果您收到密碼驗證錯誤，請確認*windows-admin-password*參數符合[windows Server 密碼需求][windows-server-password]。 如果您的密碼符合需求，請嘗試在另一個區域中建立您的資源群組。 然後嘗試使用新的資源群組來建立叢集。
+> 如果您收到密碼驗證錯誤，請確認 *windows-admin-password* 參數符合 [windows Server 密碼需求][windows-server-password]。 如果您的密碼符合需求，請嘗試在另一個區域中建立您的資源群組。 然後嘗試使用新的資源群組來建立叢集。
 
 在幾分鐘之後，此命令就會完成，並以 JSON 格式傳回叢集的相關資訊。 叢集有時可能需要超過幾分鐘的時間來佈建。 在這些情況下，最多允許 10 分鐘的時間。
 
 ## <a name="add-a-windows-server-node-pool"></a>新增 Windows Server 節點集區
 
-根據預設，系統會使用可執行 Linux 容器的節點集區來建立 AKS 叢集。 使用 `az aks nodepool add` 命令來新增可在 Linux 節點集區旁執行 Windows Server 容器的其他節點集區。
+根據預設，系統會使用可執行 Linux 容器的節點集區來建立 AKS 叢集。 使用 `az aks nodepool add` 命令新增可執行 Windows Server 容器與 Linux 節點集區的其他節點集區。
 
 ```azurecli
 az aks nodepool add \
@@ -111,7 +111,7 @@ az aks nodepool add \
     --node-count 1
 ```
 
-上述命令會建立名為 *npwin* 的新節點集區，並將此新增至 *myAKSCluster*。 建立節點集區以執行 Windows Server 容器時，[*節點-vm-大小*] 的預設值為 [ *Standard_D2s_v3*]。 如果您選擇設定 [*節點-vm 大小*] 參數，請檢查[受限制的 vm 大小][restricted-vm-sizes]清單。 最小的建議大小是 *Standard_D2s_v3*。 上述命令也會使用執行時所建立之預設 vnet 中的預設子網 `az aks create` 。
+上述命令會建立名為 *npwin* 的新節點集區，並將此新增至 *myAKSCluster*。 建立節點集區以執行 Windows Server 容器時，會*Standard_D2s_v3**節點 vm 大小*的預設值。 如果您選擇設定 *節點 vm 大小* 參數，請檢查 [受限制的 vm][restricted-vm-sizes]大小清單。 最小的建議大小是 *Standard_D2s_v3*。 上述命令也會使用執行時所建立的預設 vnet 中的預設子網 `az aks create` 。
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
@@ -236,7 +236,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ![瀏覽至 ASP.NET 應用程式範例的影像](media/windows-container/asp-net-sample-app.png)
 
 > [!Note]
-> 如果您在嘗試載入頁面時收到連接逾時，您應該使用下列命令來確認範例應用程式已就緒 [kubectl get pod--watch]。 有時候，當您的外部 IP 位址可供使用時，Windows 容器將不會啟動。
+> 如果您在嘗試載入頁面時收到連接逾時，您應該使用下列命令確認範例應用程式已準備就緒 [kubectl get pod--watch]。 有時候，當您的外部 IP 位址可供使用時，Windows 容器將不會啟動。
 
 ## <a name="delete-cluster"></a>刪除叢集
 

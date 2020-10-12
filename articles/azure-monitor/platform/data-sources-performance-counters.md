@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85955483"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 和 Linux 效能資料來源
@@ -25,7 +25,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 對於 Windows 效能計數器，您可以選擇每個效能計數器的特定執行個體。 對於 Linux 效能計數器，您選擇的每個計數器的執行個體會套用至父計數器的所有子計數器。 下表顯示可用於 Linux 和 Windows 效能計數器的常見執行個體。
 
-| 執行個體名稱 | Description |
+| 執行個體名稱 | 說明 |
 | --- | --- |
 | \_總計 |所有執行個體的總數 |
 | \* |所有執行個體 |
@@ -41,7 +41,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
     從具名執行個體收集 SQL Server 效能計數器時，所有具名執行個體的計數器會以 MSSQL$** 作為開頭，後面接著執行個體的名稱。  例如，若要從具名 SQL 執行個體 INST2 的資料庫效能物件收集所有資料庫的「記錄快取命中率」計數器，請指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
 
-2. 按一下 **+** 或按**enter** ，將計數器新增至清單。
+2. 按一下 **+** 或按下 **enter** ，將計數器新增至清單。
 3. 新增計數器時，它會以 10 秒作為 [取樣間隔時間]**** 的預設值。  如果您想要降低所收集之效能資料的儲存需求，可以將此值變更為最多 1800 秒 (30 分鐘)。
 4. 加入所要的計數器後，請按一下畫面頂端的 [儲存] **** 按鈕以儲存設定。
 
@@ -53,7 +53,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 1. 根據預設，所有組態變更都會自動發送給所有代理程式。  若是 Linux 代理程式，組態檔會傳送給 Fluentd 資料收集器。  如果您想在每個 Linux 代理程式上手動修改這個檔案，請取消核取 [將下列設定套用至我的 Linux 機器]** 方塊，並遵循下列指引。
 2. 在文字方塊中輸入計數器名稱，格式為 *object(instance)\counter*。  開始輸入時，您就會看到符合的常用計數器清單。  您可以從清單中選取計數器，或自行輸入。  
-3. 按一下 **+** 或按下**enter** ，將計數器新增至物件的其他計數器清單。
+3. 按一下 **+** 或按下 **enter** ，將計數器新增至物件的其他計數器清單。
 4. 物件的所有計數器都會使用相同的 [取樣間隔時間] ****。  預設值是 10 秒。  如果您想要降低所收集之效能資料的儲存空間需求，請將此值變更為最多 1800 秒 (30 分鐘)。
 5. 加入所要的計數器後，請按一下畫面頂端的 [儲存] **** 按鈕以儲存設定。
 
@@ -121,10 +121,10 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | Physical Disk | Avg.Disk sec/Transfer |
 | Physical Disk | Avg.Disk sec/Write |
 | Physical Disk | Physical Disk Bytes/sec |
-| 程序 | Pct Privileged Time |
-| 程序 | Pct User Time |
-| 程序 | Used Memory kBytes |
-| 程序 | Virtual Shared Memory |
+| 處理序 | Pct Privileged Time |
+| 處理序 | Pct User Time |
+| 處理序 | Used Memory kBytes |
+| 處理序 | Virtual Shared Memory |
 | 處理器 | % DPC Time |
 | 處理器 | % Idle Time |
 | 處理器 | % Interrupt Time |
@@ -179,7 +179,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 ```
 
 ## <a name="data-collection"></a>資料收集
-只要代理程式有安裝相關計數器，Azure 監視器就會依照其指定的取樣間隔時間，收集全部代理程式上所有指定的效能計數器。  資料不會匯總，而且原始資料會在 log analytics 工作區所指定的持續期間內，于所有記錄查詢檢視中提供。
+只要代理程式有安裝相關計數器，Azure 監視器就會依照其指定的取樣間隔時間，收集全部代理程式上所有指定的效能計數器。  資料不會匯總，且記錄分析工作區所指定的持續時間內，所有記錄查詢檢視中都會提供原始資料。
 
 ## <a name="performance-record-properties"></a>效能記錄屬性
 效能記錄都具有 **Perf** 類型以及下表中的屬性。
@@ -188,7 +188,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 |:--- |:--- |
 | 電腦 |收集事件的來源電腦。 |
 | CounterName |效能計數器的名稱 |
-| CounterPath |[表單 \\ \\ \<Computer> \\ 物件（實例）] 計數器中計數器的完整路徑 \\ 。 |
+| CounterPath |表單物件中計數器的完整路徑 \\ \\ \<Computer> \\ (實例) \\ 計數器。 |
 | CounterValue |計數器的數值。 |
 | InstanceName |事件執行個體的名稱。  如果沒有執行個體即為空白。 |
 | ObjectName |效能物件的名稱 |
@@ -198,7 +198,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 ## <a name="sizing-estimates"></a>大小估計值
  特定計數器集合的約略估計是依照每個執行個體 10 秒間隔，每天約 1 MB。  您可以使用下列公式，評估特定計數器的儲存需求。
 
-> 1 MB x （計數器數目） x （代理程式數目） x （實例數目）
+> 1 MB x (的計數器數目) x (代理程式數目) x (實例數目) 
 
 ## <a name="log-queries-with-performance-records"></a>記錄查詢與效能記錄
 下表提供擷取效能記錄的不同記錄查詢範例。
@@ -208,10 +208,10 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | Perf |所有效能資料 |
 | Perf &#124; where Computer == "MyComputer" |來自特定電腦的所有效能資料 |
 | Perf &#124; where CounterName == "Current Disk Queue Length" |來自特定計數器的所有效能資料 |
-| 效能 &#124;，其中 ObjectName = = "Processor" and CounterName = = "% Processor Time" 和 InstanceName = = "_Total" &#124; 依電腦匯總 AVGCPU = avg （CounterValue） |所有電腦的平均 CPU 使用率 |
-| 效能 &#124;，其中 CounterName = = "% Processor Time" &#124; 摘要 AggregatedValue = 最大值（CounterValue）（依電腦） |所有電腦的最大 CPU 使用率 |
-| 效能 &#124;，其中 ObjectName = = "LogicalDisk" 和 CounterName = = "目前磁片佇列長度" 和 Computer = = "MyComputerName" &#124; 摘要 AggregatedValue = avg （CounterValue） by InstanceName |指定電腦之所有執行個體的平均目前磁碟佇列長度 |
-| 效能 &#124;，其中 CounterName = = "磁片傳輸/秒" &#124; 總結 AggregatedValue = 每台電腦的百分位數（CounterValue，95） |所有電腦之第 95 個百分位數的 Disk Transfers/Sec |
+| 效能 &#124; 其中 ObjectName = = "Processor" and CounterName = = "% Processor Time" and InstanceName = = "_Total" &#124; 摘要 AVGCPU = avg (CounterValue) by Computer |所有電腦的平均 CPU 使用率 |
+| 效能 &#124;，其中 CounterName = = "% Processor Time" &#124; 摘要 AggregatedValue = 電腦) 最大 (CounterValue |所有電腦的最大 CPU 使用率 |
+| 效能 &#124; 其中 ObjectName = = "LogicalDisk" and CounterName = = "Current Disk Queue Length" and Computer = = "MyComputerName" &#124; 摘要 AggregatedValue = avg (CounterValue) by InstanceName |指定電腦之所有執行個體的平均目前磁碟佇列長度 |
+| 效能 &#124;，其中 CounterName = = "Disk transfer/sec" &#124; 摘要 AggregatedValue = 百分位數 (CounterValue，95) 依電腦 |所有電腦之第 95 個百分位數的 Disk Transfers/Sec |
 | Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |所有電腦每小時平均 CPU 使用率 |
 | Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 特定電腦每小時每個 % 百分比計數器的 70 個百分位數 |
 | Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |特定電腦每小時平均、最小、最大和 75 個百分位數的 CPU 使用量 |
@@ -220,7 +220,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [從 Linux 應用程式收集效能計數器](data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。  
 * 將收集的資料匯出至 [Power BI](powerbi.md) 以進行其他視覺效果和分析。

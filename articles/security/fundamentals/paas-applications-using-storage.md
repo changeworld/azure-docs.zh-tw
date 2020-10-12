@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: fa23637500755f43bb380a9f20cbe3acc7c3a394
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925799"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 儲存體保護 PaaS Web 與行動應用程式的最佳做法
@@ -56,9 +56,9 @@ SAS 可讓您以您想要的方式來共用內容，而不必交出儲存體帳�
 若要深入了解共用存取簽章，請參閱[使用共用存取簽章](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。 
 
 ## <a name="use-role-based-access-control"></a>使用角色型存取控制
-另一種管理存取權的方式是使用[azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)。 若使用 RBAC，您就可以根據須知事項和最低權限安全性原則來專注在為員工提供確實符合其所需的權限。 權限太多可能會讓帳戶暴露在攻擊者的威脅下。 權限太少則會讓員工無法有效率地完成工作。 RBAC 可以為 Azure 提供更細緻的存取管理來協助解決這個問題。 對於想要強制執行資料存取安全性原則的組織，這是必須做的事。
+管理存取權的另一種方式是使用 [azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)。 若使用 RBAC，您就可以根據須知事項和最低權限安全性原則來專注在為員工提供確實符合其所需的權限。 權限太多可能會讓帳戶暴露在攻擊者的威脅下。 權限太少則會讓員工無法有效率地完成工作。 RBAC 可以為 Azure 提供更細緻的存取管理來協助解決這個問題。 對於想要強制執行資料存取安全性原則的組織，這是必須做的事。
 
-您可以在 Azure 中使用 Azure 內建角色，將許可權指派給使用者。 例如，將儲存體帳戶參與者用於需要管理儲存體帳戶的雲端操作者，並使用傳統儲存體帳戶參與者角色管理傳統儲存體帳戶。 對於需要管理 VM 而非其所連線的虛擬網路或儲存體帳戶的雲端操作者，您可以將他們新增至虛擬機器參與者角色。
+您可以使用 Azure 中的內建角色，將許可權指派給使用者。 例如，將儲存體帳戶參與者用於需要管理儲存體帳戶的雲端操作者，並使用傳統儲存體帳戶參與者角色管理傳統儲存體帳戶。 對於需要管理 VM 而非其所連線的虛擬網路或儲存體帳戶的雲端操作者，您可以將他們新增至虛擬機器參與者角色。
 
 未利用諸如 RBAC 等功能來強制執行資料存取控制的組織，可能會對其使用者提供超過所需的權限。 這可能會讓某些使用者一開始就能存取他們不應能夠存取的資料，而導致資料外洩。
 
@@ -73,7 +73,7 @@ SAS 可讓您以您想要的方式來共用內容，而不必交出儲存體帳�
 
 用戶端加密也可讓您成為唯一掌控加密金鑰的人。 您可以產生和管理自己的加密金鑰。 它使用信封技術，透過此技術，Azure 儲存體用戶端程式庫會先產生內容加密金鑰 (CEK)，隨後再使用金鑰加密金鑰 (KEK) 來包裝 (加密) 它。 KEK 由金鑰識別碼所識別，可以是非對稱金鑰組或對稱金鑰，且可以在本機管理或儲存在 [Azure Key Vault](/azure/key-vault/key-vault-overview) 中。
 
-用戶端加密會內建在 Java 和 .NET 儲存體用戶端程式庫中。 如需有關在用戶端應用程式中加密資料，以及產生和管理您自己的加密金鑰的詳細資訊，請參閱[用戶端加密和 Microsoft Azure 儲存體 Azure Key Vault](/azure/storage/common/storage-client-side-encryption) 。
+用戶端加密會內建在 Java 和 .NET 儲存體用戶端程式庫中。 如需有關在用戶端應用程式中加密資料，以及產生和管理您自己的加密金鑰的詳細資訊，請參閱 [用戶端加密和 Azure Key Vault Microsoft Azure 儲存體](/azure/storage/common/storage-client-side-encryption) 。
 
 ## <a name="enable-storage-service-encryption-for-data-at-rest"></a>啟用待用資料的儲存體服務加密
 當檔案儲存體的[儲存體服務加密](/azure/storage/common/storage-service-encryption)啟用時，系統會自動使用 AES-256 加密來將資料加密。 Microsoft 會處理所有的加密、解密和金鑰管理工作。 這項功能適用於 LRS 及 GRS 備援類型。

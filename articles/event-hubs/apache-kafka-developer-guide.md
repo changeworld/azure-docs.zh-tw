@@ -4,10 +4,10 @@ description: 本文提供文章的連結，說明如何將您的 Kafka 應用程
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061728"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure 事件中樞的 Apache Kafka 開發人員指南
@@ -63,7 +63,7 @@ ms.locfileid: "90061728"
 ## <a name="how-to-guides"></a>操作指南
 請參閱檔中的下列操作指南：
 
-| 文章 | 描述 | 
+| 發行項 | 描述 | 
 | ------- | ----------- | 
 | [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md) | 說明如何使用 Kafka MirrorMaker 在事件中樞中鏡像 Kafka 訊息代理程式。 |
 | [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md) | 引導您將 Spark 應用程式連線到事件中樞，以進行即時串流。 |

@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515300"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>在 Linux 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體
@@ -119,7 +119,7 @@ Azure 虛擬網路閘道是您的內部部署 Linux 機器所將連線到的服�
 > [!Note]  
 > 部署 Azure 虛擬網路閘道最多可能需要 45 分鐘的時間。 在此資源部署期間，此 Bash 指令碼將會進行封鎖，以讓部署完成。
 >
-> **基本**SKU 不支援 P2S IKEv2/OpenVPN 連接。 此腳本會據以使用虛擬網路閘道的**VpnGw1** SKU。
+> **基本**SKU 不支援 P2S IKEv2/OpenVPN 連接。 此腳本會據以使用虛擬網路閘道的 **VpnGw1** SKU。
 
 ```bash
 vpnName="<desired-vpn-name-here>"

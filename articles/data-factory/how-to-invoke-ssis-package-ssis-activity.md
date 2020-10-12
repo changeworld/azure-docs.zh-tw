@@ -15,10 +15,10 @@ manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077841"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用 Execute SSIS 套件活動執行 SSIS 套件
@@ -251,7 +251,7 @@ ms.locfileid: "89077841"
 
       例如，不在 SSDT 上修改原始封裝，您可以在執行時間覆寫現有連線管理員中的 **ConnectByProxy**、 **ConnectionString**和 **>connectusingmanagedidentity** 屬性值，將在 SQL Server 上執行的內部部署對內部部署資料流程轉換成在 ADF 上執行的內部部署到雲端資料流程。
       
-      這些執行時間覆寫可以在存取內部部署資料時，啟用自我裝載的 IR (SHIR) 作為 SSIS IR 的 proxy，請參閱將 [SHIR 設定為 SSIS ir 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，以及使用最新 msoledbsql.h 驅動程式 Azure SQL Database/受控執行個體連線，進而 Azure Active Directory 啟用使用 adf 受控識別的 [adf 受控識別來進行 aad 驗證](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+      這些執行時間覆寫可以在存取內部部署資料時，啟用 Self-Hosted IR (SHIR) 作為 SSIS IR 的 proxy，請參閱將 [SHIR 設定為 SSIS ir 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，以及使用最新 msoledbsql.h 驅動程式的 Azure SQL Database/受控執行個體連線，進而啟用使用 adf 受控識別的 [adf 受控識別來進行 aad 驗證](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
 
       ![在 [連接管理員] 索引標籤上設定 SSDT 的屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    

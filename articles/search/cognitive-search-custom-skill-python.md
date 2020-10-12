@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936124"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>範例：使用 Python 建立自訂技能
@@ -22,14 +22,14 @@ ms.locfileid: "88936124"
 
 自訂技能很容易設計 (它會串連兩個字串) ，讓您可以專注于用於 Python 中自訂技能開發的工具和技術。 當您成功使用簡單的技巧之後，您就可以在更複雜的案例中進行分支。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 請參閱 [自訂技能介面](cognitive-search-custom-skill-interface.md) ，以取得自訂技能應該實行的輸入/輸出介面簡介。
 
 + 設定您的環境。 本教學課程會以 [端對端的端對端](/azure/python/tutorial-vs-code-serverless-python-01) ，使用 Visual Studio Code 和 Python 擴充功能來設定無伺服器的 Azure 函式。 本教學課程會引導您安裝下列工具和元件： 
 
   + [Python 3.75](https://www.python.org/downloads/release/python-375/)
-  + [Visual Studio Code](https://code.visualstudio.com/)
+  + [Visual Studio Code](https://code.visualstudio.com/) \(英文\)
   + [適用於 Visual Studio Code 的 Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python) \(英文\)
   + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [適用於 Visual Studio Code 的 Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) \(英文\)

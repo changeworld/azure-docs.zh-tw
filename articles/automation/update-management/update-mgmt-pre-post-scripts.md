@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 32a8214a5bd6844c9177c7af159a453bc3673efc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87449988"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前指令碼和後指令碼
@@ -92,7 +92,7 @@ ms.locfileid: "87449988"
 > `SoftwareUpdateConfigurationRunContext` 物件可包含機器的重複項目。 這可能會導致前置指令碼和後置指令碼在相同機器上執行多次。 此行為的因應措施是使用 `Sort-Object -Unique`，僅選取唯一的 VM 名稱。
 
 > [!NOTE]
-> 目前僅支援 PowerShell runbook 做為前置/後置腳本。 其他 runbook 類型（例如 Python、圖形、PowerShell 工作流程、圖形化 PowerShell 工作流程）目前不支援做為前置/後置腳本。
+> 目前僅支援將 PowerShell runbook 作為前置/後置腳本。 其他 runbook 類型（如 Python、圖形化、PowerShell 工作流程、圖形化 PowerShell 工作流程）目前不支援做為前置/後置腳本。
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>在部署中使用前置指令碼或後置指令碼
 
@@ -246,4 +246,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需更新管理的詳細資訊，請參閱[管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)。
+* 如需更新管理的詳細資訊，請參閱 [管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)。

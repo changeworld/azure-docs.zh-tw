@@ -10,37 +10,37 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387314"
 ---
-# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 來監視您的工作區管線執行
+# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 監視您的工作區管線執行
 
-透過 Azure Synapse 分析，您可以建立複雜的管線，以自動化及協調您的解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio （預覽）來撰寫和監視這些管線。
+使用 Azure Synapse Analytics，您可以建立複雜的管線，以自動化和協調您解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio (preview) 來撰寫和監視這些管線。
 
-本文說明如何監視您的管線執行，讓您留意管線的最新狀態、問題和進度。
+本文說明如何監視您的管線執行，這可讓您留意管線的最新狀態、問題和進度。
 
 ## <a name="access-pipeline-runs-list"></a>存取管線執行清單
 
-若要查看您工作區中的管線執行清單，請先[開啟 Synapse Studio](https://web.azuresynapse.net/) ，然後選取您的工作區。
+若要查看工作區中的管線執行清單，請先 [開啟 Synapse Studio](https://web.azuresynapse.net/) ，然後選取您的工作區。
 
 ![登入工作區](./media/common/login-workspace.png)
 
-開啟工作區之後，請選取左側的 [**監視**] 區段。
+開啟您的工作區之後，請選取左側的 [ **監視** ] 區段。
 
 ![選取監視中樞](./media/common/left-nav.png)
 
-選取 [**管線執行**] 以查看管線執行的清單。
+選取 [ **管線執行** ] 以查看管線執行的清單。
 
 ![選取管線執行](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
 ## <a name="filter-your-pipeline-runs"></a>篩選您的管線執行
 
-您可以篩選您感興趣的管線執行清單。 畫面頂端的篩選準則可讓您指定您想要篩選的欄位。
+您可以將管線執行清單篩選至您感興趣的專案。 畫面頂端的篩選器可讓您指定想要篩選的欄位。
 
-例如，您可以篩選此視圖，只查看名為「假日」之管線的管線執行：
+例如，您可以篩選視圖，只查看名為「假日」之管線的管線執行：
 
 ![[篩選] 按鈕](./media/common/filter-button.png)
 
@@ -50,6 +50,6 @@ ms.locfileid: "87387314"
 
 若要查看管線執行的詳細資料，請選取管線執行。 然後，查看與管線執行相關聯的活動執行。 如果管線仍在執行中，您可以監視進度。 
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-若要深入瞭解監視應用程式，請參閱[監視 Apache Spark 應用程式](how-to-monitor-spark-applications.md)一文。 
+若要深入瞭解監視應用程式，請參閱 [Monitor Apache Spark applications](how-to-monitor-spark-applications.md) 文章。 

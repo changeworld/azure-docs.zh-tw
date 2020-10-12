@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
 ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528939"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>關於 Hyper-V 至 Azure 災害復原的 Azure Site Recovery 部署規劃工具
@@ -79,12 +79,12 @@ Azure Site Recovery 部署規劃工具是一項命令列工具，適用於 Hyper
 
 *此工具主要用於 Hyper-V 到 Azure 的災害復原案例。 若為 Hyper-V 到次要站台的災害復原，此工具只能用來了解來源端建議，例如所需的網路頻寬、每個來源 Hyper-V 伺服器上所需的可用儲存體空間，以及初始複寫批次處理數目和批次定義。  請忽略報告中的 Azure 建議和成本。 此外，取得輸送量作業不適用於 Hyper-V 到次要站台的災害復原案例。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 對於 Hyper-V，此工具有三個主要階段：取得 VM 清單、分析，以及產生報告。 另外還有第四個選項：只計算輸送量。 下表顯示必須用來執行不同階段之伺服器的需求：
 
-| 伺服器需求 | 描述 |
+| 伺服器需求 | 說明 |
 |---|---|
-|取得 VM 清單、分析，以及測量輸送量 |<ul><li>作業系統：Microsoft Windows Server 2016 或 Microsoft Windows Server 2012 R2 </li><li>機器組態︰8 個 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[適用於 Visual Studio 2012 的 Microsoft Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>從這部伺服器的網際網路存取 Azure （*. blob.core.windows.net），埠443<br>[這是選擇性的。 您可以選擇在報告產生期間手動提供可用的頻寬。]</li><li>Azure 儲存體帳戶</li><li>伺服器的系統管理員存取權</li><li>100 GB 的可用磁碟空間下限 (假設剖析平均各有 3 個磁碟的 1000 部 VM 30 天)</li><li>用來執行 Azure Site Recovery 部署規劃工具的 VM 必須新增到所有 Hyper-V 伺服器的 TrustedHosts 清單。</li><li>要分析的所有 Hyper-V 伺服器必須新增到要用來執行此工具之用戶端 VM 的 TrustedHosts 清單。 [進一步了解如何將伺服器新增到 TrustedHosts 清單](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> 請從用戶端上的 PowerShell 或命令列主控台，以系統管理權限執行此工具</ul></ul>|
+|取得 VM 清單、分析，以及測量輸送量 |<ul><li>作業系統：Microsoft Windows Server 2016 或 Microsoft Windows Server 2012 R2 </li><li>機器組態︰8 個 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[適用於 Visual Studio 2012 的 Microsoft Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>從這部伺服器的網際網路存取 Azure ( *. blob.core.windows.net) ，埠443<br>[這是選擇性的。 您可以選擇在產生報告時，以手動方式提供可用的頻寬。]</li><li>Azure 儲存體帳戶</li><li>伺服器的系統管理員存取權</li><li>100 GB 的可用磁碟空間下限 (假設剖析平均各有 3 個磁碟的 1000 部 VM 30 天)</li><li>用來執行 Azure Site Recovery 部署規劃工具的 VM 必須新增到所有 Hyper-V 伺服器的 TrustedHosts 清單。</li><li>要分析的所有 Hyper-V 伺服器必須新增到要用來執行此工具之用戶端 VM 的 TrustedHosts 清單。 [進一步了解如何將伺服器新增到 TrustedHosts 清單](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> 請從用戶端上的 PowerShell 或命令列主控台，以系統管理權限執行此工具</ul></ul>|
 | 報告產生 | 具有 Microsoft Excel 2013 和更新版本的 Windows PC 或 Windows Server |
 | 使用者權限 | 系統管理員帳戶，可在取得 VM 清單和分析作業期間，用來存取 Hyper-V 叢集/Hyper-v 主機。<br>所有必須進行分析之主機所擁有的網域系統管理員帳戶，都應該具有相同認證 (也就是使用者名稱和密碼)
  |
@@ -111,7 +111,7 @@ Azure Site Recovery 部署規劃工具是一項命令列工具，適用於 Hyper
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>下載部署規劃工具並解壓縮
 
-1.  下載最新版本的[Azure Site Recovery deployment planner](https://aka.ms/asr-deployment-planner)。
+1.  下載 [Azure Site Recovery deployment planner](https://aka.ms/asr-deployment-planner)的最新版本。
 此工具封裝在 .zip 資料夾中。 同一個工具可同時支援 VMware 到 Azure 和 Hyper-V 到 Azure 災害復原案例。 您也可以將此工具用於 Hyper-V 到次要站台的災害復原案例，但請忽略報告中的 Azure 基礎結構建議。
 
 1.  將 .zip 資料夾複製到您要用來執行此工具的 Windows Server。 您可以在 Windows Server 2012 R2 或 Windows Server 2016 上執行此工具。 伺服器必須能存取網路，以便連線到保有要分析之 VM 的 Hyper-V 叢集或 Hyper-V 主機。 建議您 VM (將用來執行此工具的所在位置) 的硬體設定，要和您想要保護之 Hyper-V 伺服器的硬體設定相同。 這種組態可確保工具報告的達成輸送量符合 Azure Site Recovery 在複寫期間可達到的實際輸送量。 輸送量計算取決於伺服器可用的網路頻寬和伺服器的硬體組態 (CPU、儲存體等等)。 系統會計算從工具執行所在之伺服器到 Azure 的輸送量。 如果該伺服器的硬體設定與 Hyper-V 伺服器的設定不同，工具所報告的達成輸送量不會正確。
@@ -126,7 +126,7 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>更新至最新版的部署規劃工具
 
-部署規劃工具[版本歷程記錄](site-recovery-deployment-planner-history.md)中會摘要說明最新的更新。
+部署規劃工具 [版本歷程記錄](site-recovery-deployment-planner-history.md)中會摘要說明最新的更新。
 
 如果您的部署規劃工具是舊版的，請執行下列任一動作：
  * 如果最新版本不包含分析修正程式，並已在您目前的規劃工具版本上進行分析，則會繼續執行分析。
@@ -141,8 +141,8 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ## <a name="version-history"></a>版本歷程記錄
 最新的 Azure Site Recovery 部署規劃工具工具版本為2.5。
-請參閱[Azure Site Recovery 部署規劃工具版本歷程記錄](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)頁面，以取得每個更新中所新增的修正程式。
+請參閱 [Azure Site Recovery 部署規劃工具版本歷程記錄](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) 頁面，以取得每個更新中所新增的修正程式。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [執行部署規劃](./hyper-v-deployment-planner-run.md)工具。

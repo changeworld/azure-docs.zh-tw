@@ -1,5 +1,5 @@
 ---
-title: 將受控映射遷移至共用映射資源庫
+title: 將受控映射遷移至共用映射庫
 description: 瞭解如何使用 Azure PowerShell 將受控映射遷移至共用映射庫中的映射版本。
 author: cynthn
 ms.topic: how-to
@@ -10,24 +10,24 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225531"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>從受控映射遷移至共用映射庫映射
 
-如果您有想要遷移到共用映射資源庫的現有受控映射，您可以直接從受控映射建立共用映射庫映射。 測試新的映射之後，您就可以刪除來源受控映射。 您也可以使用 [Azure CLI](image-version-managed-image-cli.md)，從受控映射遷移到共用映射資源庫。
+如果您想要將現有的受控映射遷移至共用映射庫，您可以直接從受控映射建立共用映射庫映射。 當您測試新映射之後，就可以刪除來源受控映射。 您也可以使用 [Azure CLI](image-version-managed-image-cli.md)，從受控映射遷移至共用映射庫。
 
-映射庫中的映射有兩個元件，我們將在此範例中建立：
-- **映射定義**會攜帶影像的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化還是一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
-- 使用共用映射資源庫時， **映射版本** 是用來建立 VM 的。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來為 VM 建立新的磁片。 映像版本可以使用多次。
+映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
+- **映射定義**會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
+- **映射版本**是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您必須具有現有的受控映射。 如果受控映射包含資料磁片，資料磁片大小不能超過 1 TB。
+若要完成這篇文章，您必須擁有現有的受控映射。 如果受控映射包含資料磁片，資料磁片大小不能超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
@@ -39,7 +39,7 @@ ms.locfileid: "88225531"
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-找到正確的資源庫之後，請建立變數以供稍後使用。 這個範例會取得*myResourceGroup*資源群組中名為*myGallery*的圖庫。
+找到正確的圖庫之後，請建立變數以供稍後使用。 此範例會取得*myResourceGroup*資源群組中名為 *>mygalleryrg*的資源庫。
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `
@@ -52,11 +52,11 @@ $gallery = Get-AzGallery `
 
 映像定義會建立映像的邏輯群組。 它們可用來管理影像的相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-建立映射定義時，請確定具有所有正確的資訊。 由於受控映射一律會一般化，因此您應該設定 `-OsState generalized` 。 
+進行映射定義時，請確定已有所有正確的資訊。 由於受控映射一律一般化，因此您應該設定 `-OsState generalized` 。 
 
 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./windows/shared-image-galleries.md#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，映射定義名為 *myImageDefinition*，而適用于一般化 Windows OS。 若要使用 Linux OS 來建立映射的定義，請使用 `-OsType Linux` 。 
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，映射定義名為 *myImageDefinition*，適用于一般化 Windows 作業系統。 若要使用 Linux OS 建立映射的定義，請使用 `-OsType Linux` 。 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -84,11 +84,11 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>建立映像版本
 
-使用 [new-azgalleryimageversion](/powershell/module/az.compute/new-azgalleryimageversion)從受控映射建立映射版本。 
+使用 [新的-new-azgalleryimageversion](/powershell/module/az.compute/new-azgalleryimageversion)從受控映射建立映射版本。 
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」** 和「美國中南部」** 資料中心。 選擇要複寫的目的地區域時，請記住，您也必須將 *來源* 區域納入做為複寫的目標。 
+在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」** 和「美國中南部」** 資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。 
 
 
 ```azurepowershell-interactive
@@ -117,12 +117,12 @@ $job.State
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。 
 >
-> 您也可以藉由新增 `-StorageAccountType Premium_LRS` ，或在[Zone Redundant Storage](../storage/common/storage-redundancy.md) `-StorageAccountType Standard_ZRS` 建立映射版本時新增，以將映射儲存在 Premium 儲存體中。
+> 您也可以在 `-StorageAccountType Premium_LRS` 建立映射版本時新增或 [區域多餘的儲存體](../storage/common/storage-redundancy.md) ，藉以將映射儲存在 Premium 儲存體中 `-StorageAccountType Standard_ZRS` 。
 >
 
 ## <a name="delete-the-managed-image"></a>刪除受控映射
 
-一旦您確認新的映射版本能夠正常運作，就可以刪除受控映射。
+一旦您確認新的映射版本可以正常運作，就可以刪除受控映射。
 
 ```azurepowershell-interactive
 Remove-AzImage `
@@ -132,6 +132,6 @@ Remove-AzImage `
 
 ## <a name="next-steps"></a>後續步驟
 
-一旦確認複寫已完成，您就可以從 [一般化映射](vm-generalized-image-version-powershell.md)建立 VM。
+確認複寫完成之後，您就可以從 [一般化映射](vm-generalized-image-version-powershell.md)建立 VM。
 
-如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。
+如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 採購方案資訊](marketplace-images.md)。

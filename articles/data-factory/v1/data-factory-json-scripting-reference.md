@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89490117"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON 指令碼參考
@@ -50,7 +50,7 @@ ms.locfileid: "89490117"
 | NAME | 管線的名稱。 指定一個名稱，以表示活動或管線設定要進行的動作<br/><ul><li>字元數目上限︰260</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> |是 |
 | description |說明活動或管線用途的文字 | 否 |
 | 活動 | 包含活動清單。 | 是 |
-| start |管線的開始日期時間。 必須使用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如︰2014-10-14T16:32:41。 <br/><br/>您可以指定本地時間，如 EST 時間。 範例如下︰`2016-02-27T06:00:00**-05:00`，這是 6 AM EST。<br/><br/>管線的 start 和 end 屬性共同指定管線的作用中期間。 輸出配量只會在作用中期間內產生。 |否<br/><br/>如果您指定 end 屬性的值，也必須指定 start 屬性的值。<br/><br/>開始和結束時間都可以是空白來建立管線。 必須指定兩個值，才能設定執行管線的作用中時間。 如果您在建立管線時未指定開始和結束時間，您可以稍後使用 AzDataFactoryPipelineActivePeriod 指令程式來設定它們。 |
+| start |管線的開始日期時間。 必須使用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如︰2014-10-14T16:32:41。 <br/><br/>您可以指定本地時間，如 EST 時間。 範例如下︰`2016-02-27T06:00:00**-05:00`，這是 6 AM EST。<br/><br/>管線的 start 和 end 屬性共同指定管線的作用中期間。 輸出配量只會在作用中期間內產生。 |否<br/><br/>如果您指定 end 屬性的值，也必須指定 start 屬性的值。<br/><br/>開始和結束時間都可以是空白來建立管線。 必須指定兩個值，才能設定執行管線的作用中時間。 如果您在建立管線時未指定開始和結束時間，您可以稍後使用 Set-AzDataFactoryPipelineActivePeriod Cmdlet 進行設定。 |
 | end |管線的結束日期時間。 如果已指定，則必須使用 ISO 格式。 例如：2014-10-14T17:32:41 <br/><br/>您可以指定本地時間，如 EST 時間。 範例如下︰`2016-02-27T06:00:00**-05:00`，這是 6 AM EST。<br/><br/>若要無限期地執行管線，請指定 9999-09-09 做為 end 屬性的值。 |否 <br/><br/>如果您指定 start 屬性的值，也必須指定 end 屬性的值。<br/><br/>請參閱 **start** 屬性的註釋。 |
 | isPaused |如果設為 true，管線不會執行。 預設值 = false。 您可以使用此屬性來啟用或停用。 |否 |
 | pipelineMode |排程管線執行的方法。 允許的值包括：scheduled (預設值)、onetime。<br/><br/>‘Scheduled’ 表示管線會根據其作用中期間 (開始和結束時間) 依指定的時間間隔執行。 ‘Onetime’ 表示管線只會執行一次。 目前，Onetime 管線在建立之後即無法進行修改/更新。 如需 onetime 設定的詳細資料，請參閱 [Onetime 管線](data-factory-create-pipelines.md#onetime-pipeline)。 |否 |
@@ -217,7 +217,7 @@ ms.locfileid: "89490117"
 }
 ```
 
-請注意下列事項：
+請注意下列幾點：
 
 * 在活動區段中，只會有一個 **type** 設為 **HDInsightHive** 的活動。
 * Hive 指令碼檔案 **partitionweblogs.hql** 儲存於 Azure 儲存體帳戶 (透過名為 **AzureStorageLinkedService** 的 scriptLinkedService 指定)，且位於 **adfgetstarted** 容器的 **script** 資料夾中。
@@ -298,7 +298,7 @@ Azure Data Factory 中的資料集定義如下：
 | --- | --- | --- |
 | NAME |資料行的名稱。 |是 |
 | type |資料行的資料類型。  |否 |
-| culture |.NET 型文化特性是在已指定類型 (type) 且是 .NET 類型 `Datetime` 或 `Datetimeoffset` 時使用。 預設為 `en-us`。 |否 |
+| culture |.NET 型文化特性是在已指定類型 (type) 且是 .NET 類型 `Datetime` 或 `Datetimeoffset` 時使用。 預設值為 `en-us`。 |否 |
 | format |格式字串是在已指定類型且是 .NET 類型 `Datetime` 或 `Datetimeoffset` 時使用。 |否 |
 
 在下列範例中，資料集有三個資料行 `slicetimestamp`、`projectname` 及 `pageviews`，類型分別為：String、String 及 Decimal。
@@ -1398,7 +1398,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type |Type 屬性必須設定為： **AzureStorage** |是 |
+| type |類型屬性必須設定為：**AzureStorage** |是 |
 | connectionString |針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 |是 |
 
 **範例︰**
@@ -1444,7 +1444,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| tableName |Azure 資料表資料庫執行個體中連結服務所參照的資料表名稱。 |可以。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
+| tableName |Azure 資料表資料庫執行個體中連結服務所參照的資料表名稱。 |是。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 
 #### <a name="example"></a>範例
 
@@ -1480,7 +1480,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |不會。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
+| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |否。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 | azureTableSourceIgnoreTableNotFound |指出是否忍受資料表不存在的例外狀況。 |true<br/>false |否 |
 
 #### <a name="example"></a>範例
@@ -2976,7 +2976,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | 查詢 |使用自訂查詢來讀取資料。 |SQL-92 查詢或 CQL 查詢。 請參閱 [CQL 參考資料](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)。 <br/><br/>在使用 SQL 查詢時，指定 **keyspace name.table 名稱** 來代表您想要查詢的資料表。 |否 (如果已定義資料集上的 tableName 和 keyspace)。 |
-| consistencyLevel |一致性層級可指定必須先有多少複本回應讀取要求，才會將資料傳回用戶端應用程式。 Cassandra 會檢查要讓資料滿足讀取要求的指定複本數目。 |ONE、TWO、THREE、QUORUM、ALL、LOCAL_QUORUM、EACH_QUORUM、LOCAL_ONE。 如需詳細資訊，請參閱 [設定資料一致性](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 。 |不會。 預設值為 ONE。 |
+| consistencyLevel |一致性層級可指定必須先有多少複本回應讀取要求，才會將資料傳回用戶端應用程式。 Cassandra 會檢查要讓資料滿足讀取要求的指定複本數目。 |ONE、TWO、THREE、QUORUM、ALL、LOCAL_QUORUM、EACH_QUORUM、LOCAL_ONE。 如需詳細資訊，請參閱 [設定資料一致性](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 。 |否。 預設值為 ONE。 |
 
 #### <a name="example"></a>範例
 
@@ -3176,9 +3176,9 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | bucketName |S3 貯體名稱。 |String |是 |
-| 索引鍵 |S3 物件索引鍵。 |String |否 |
-| prefix |S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有當索引鍵空白時才適用。 |String |否 |
-| version |如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 |String |否 |
+| 索引鍵 |S3 物件索引鍵。 |字串 |否 |
+| prefix |S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有當索引鍵空白時才適用。 |字串 |否 |
+| version |如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 |字串 |否 |
 | format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 <br><br> 如果您想要在以檔案為基礎的存放區之間**依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 |否 | |
 | compression | 指定此資料的壓縮類型和層級。 支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級為：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 | |
 
@@ -3319,12 +3319,12 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 | 主機 |指定想要複製之資料夾的根路徑。 字串中的特殊字元需使用逸出字元 ‘ \ ’。 如需範例，請參閱「範例連結服務和資料集定義」。 |是 |
 | userid |指定具有伺服器存取權之使用者的識別碼。 |否 (如果您選擇 encryptedCredential) |
 | 密碼 |指定使用者 (userid) 的密碼。 |否 (如果您選擇 encryptedCredential) |
-| encryptedCredential |藉由執行 AzDataFactoryEncryptValue Cmdlet，指定您可以取得的加密認證。 |否 (如果您選擇以純文字指定使用者識別碼和密碼) |
+| encryptedCredential |藉由執行 New-AzDataFactoryEncryptValue Cmdlet，指定您可以取得的加密認證。 |否 (如果您選擇以純文字指定使用者識別碼和密碼) |
 | gatewayName |指定 Data Factory 應該用來連接到內部部署檔案伺服器的閘道器名稱。 |是 |
 
 #### <a name="sample-folder-path-definitions"></a>範例資料夾路徑定義
 
-| 案例 | 連結服務定義中的主機 | 資料集定義中的 folderPath |
+| 狀況 | 連結服務定義中的主機 | 資料集定義中的 folderPath |
 | --- | --- | --- |
 | 資料管理閘道電腦上的本機資料夾︰ <br/><br/>範例：D:\\\* 或 D:\folder\subfolder\\* |D:\\\\ (適用於資料管理閘道 2.0 和更新版本) <br/><br/> localhost (適用於比資料管理閘道 2.0 更早的版本) |.\\\\ 或 folder\\\\subfolder (適用於資料管理閘道 2.0 和更新版本) <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder (適用低於閘道 2.0 的版本) |
 | 遠端共用資料夾︰ <br/><br/>範例︰\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
@@ -3867,10 +3867,10 @@ auto-
 | 主機 | SFTP 伺服器的名稱或 IP 位址。 |是 |
 | 連接埠 |SFTP 伺服器所接聽的連接埠。 預設值：21 |否 |
 | authenticationType |指定驗證類型。 允許的值︰**Basic**、**SshPublicKey**。 <br><br> 請參閱使用基本驗證和[使用 SSH 公開金鑰驗證](#using-ssh-public-key-authentication)章節，分別取得更多屬性和 JSON 範例。 |是 |
-| skipHostKeyValidation | 指定是否略過主機金鑰驗證。 | 不會。 預設值：false |
+| skipHostKeyValidation | 指定是否略過主機金鑰驗證。 | 否。 預設值：false |
 | hostKeyFingerprint | 指定主機金鑰的指紋。 | 如果 `skipHostKeyValidation` 設為 false，則為 [是]。  |
 | gatewayName |要連線至內部部署 SFTP 伺服器的資料管理閘道名稱。 | 如果從內部部署 SFTP 伺服器複製資料，則為 [是]。 |
-| encryptedCredential | 用來存取 SFTP 伺服器的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中指定基本驗證 (使用者名稱 + 密碼) 或 SshPublicKey 驗證 (使用者名稱 + 私密金鑰路徑或內容) 時自動產生。 | 不會。 僅當從內部部署 SFTP 伺服器複製資料時才套用。 |
+| encryptedCredential | 用來存取 SFTP 伺服器的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中指定基本驗證 (使用者名稱 + 密碼) 或 SshPublicKey 驗證 (使用者名稱 + 私密金鑰路徑或內容) 時自動產生。 | 否。 僅當從內部部署 SFTP 伺服器複製資料時才套用。 |
 
 #### <a name="example-using-basic-authentication"></a>範例：使用基本驗證
 
@@ -4075,7 +4075,7 @@ auto-
 | authenticationType | 指定驗證類型。 允許的值為︰**匿名**、**基本**、**摘要**、**Windows**、**ClientCertificate**。 <br><br> 請分別參閱此關於更多屬性的下列資料表各節以及這些驗證類型的 JSON 範例。 | 是 |
 | enableServerCertificateValidation | 如果來源是 HTTPS Web 服務器，指定是否啟用伺服器 TLS/SSL 憑證驗證 | 否，預設值是 True |
 | gatewayName | 連接至內部部署 HTTP 來源的「資料管理閘道」閘道。 | 如果從內部部署 HTTP 來源複製資料，則為是。 |
-| encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中設定驗證資訊時會自動產生。 | 不會。 僅當從內部部署 HTTP 伺服器複製資料時才套用。 |
+| encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中設定驗證資訊時會自動產生。 | 否。 僅當從內部部署 HTTP 伺服器複製資料時才套用。 |
 
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>範例︰使用基本、摘要或 Windows 驗證
 將 `authenticationType` 設定為 `Basic`、`Digest`或 `Windows`，並指定除了上面介紹的 HTTP 連接器泛用的下列屬性︰
@@ -4160,7 +4160,7 @@ auto-
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)，範例︰`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`。 | 否 |
-| requestMethod | HTTP 方法。 允許的值為 **GET** 或 **POST**。 | 不會。 預設為 `GET`。 |
+| requestMethod | HTTP 方法。 允許的值為 **GET** 或 **POST**。 | 否。 預設值為 `GET`。 |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的內文。 | 否 |
 | format | 如果您只想要**從 HTTP 端點依現狀擷取資料**而不剖析它，請略過此格式設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 |否 |
@@ -4215,7 +4215,7 @@ auto-
 
 | 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | HTTP 的逾時 (TimeSpan) 要求取得回應。 逾時會取得回應，而非逾時讀取回應資料。 | 不會。 預設值：00:01:40 |
+| httpRequestTimeout | HTTP 的逾時 (TimeSpan) 要求取得回應。 逾時會取得回應，而非逾時讀取回應資料。 | 否。 預設值：00:01:40 |
 
 
 #### <a name="example"></a>範例
@@ -4744,7 +4744,7 @@ auto-
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type |資料集的類型。 必須設定為 **WebTable** |是 |
-| path |包含資料表之資源的相對 URL。 |不會。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
+| path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
 | 索引 |資源中資料表的索引。 如需如何取得 HTML 網頁中資料表索引的步驟，請參閱「取得 HTML 網頁中資料表的索引」一節。 |是 |
 
 #### <a name="example"></a>範例
@@ -5333,7 +5333,7 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
     }
 }
 ```
-請注意下列事項：
+請注意下列幾點：
 
 - **Type**屬性設為**HDInsightSpark**。
 - **RootPath**會設定為**adfspark \\ pyFiles** ，其中 adfspark 是 Azure Blob 容器，而 pyFiles 是該容器中的正確資料夾。 在此範例中，Azure Blob 儲存體是與 Spark 叢集相關聯的儲存體。 您可以將檔案上傳至不同的 Azure 儲存體。 如果您這麼做，請建立 Azure 儲存體連結服務，以將該儲存體帳戶連結至資料處理站。 然後，將連結服務的名稱指定為 **sparkJobLinkedService** 屬性的值。 如需此屬性和 Spark 活動所支援的其他屬性詳細資訊，請參閱「Spark 活動屬性」。

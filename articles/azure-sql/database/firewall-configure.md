@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
 ms.openlocfilehash: 9b6b0ee6fa33ecd0d677d7d075236517d85d4ab7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335108"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
@@ -83,7 +83,7 @@ ms.locfileid: "91335108"
 
 *我可以混合使用伺服器層級和資料庫層級 IP 防火牆規則嗎？*
 
-可以。 某些使用者（例如系統管理員）可能需要伺服器層級 IP 防火牆規則。 其他使用者 (例如資料庫應用程式的使用者) 可能需要資料庫層級 IP 防火牆規則。
+是。 某些使用者（例如系統管理員）可能需要伺服器層級 IP 防火牆規則。 其他使用者 (例如資料庫應用程式的使用者) 可能需要資料庫層級 IP 防火牆規則。
 
 ### <a name="connections-from-the-internet"></a>從網際網路的連接
 
@@ -136,7 +136,7 @@ ms.locfileid: "91335108"
 
     ![伺服器 IP 防火牆規則](./media/firewall-configure/sql-database-server-set-firewall-rule.png)
 
-    伺服器的 [防火牆設定] 頁面隨即開啟。
+    伺服器的 [防火牆設定] 頁面會隨即開啟。
 
 2. 選取工具列上的 [ **新增用戶端 IP** ]，以新增您所使用之電腦的 ip 位址，然後選取 [ **儲存**]。 系統便會為目前的 IP 位址建立伺服器層級 IP 防火牆規則。
 
@@ -184,7 +184,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但所有開發現在都適用于 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](/powershell/module/AzureRM.Sql/) Az 和 AzureRm 模組中命令的引數本質上相同。
+> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但所有開發現在都適用于 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 和 AzureRm 模組中命令的引數本質上相同。
 
 | Cmdlet | 層級 | 描述 |
 | --- | --- | --- |

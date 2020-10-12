@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808202"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>透過 PowerShell 使用應用程式閘道來設定端對端 SSL
@@ -167,7 +167,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > [!NOTE]
    > 預設探查會從後端 IP 位址上的「預設」TLS 繫結取得公開金鑰，並將所收到的公開金鑰值與您在此處提供的公開金鑰值做比較。 
    > 
-   > 如果您在後端上使用主機標頭和伺服器名稱指示 (SNI)，擷取的公開金鑰不一定就是流量要流向的預定網站。 如果不確定，請在後端伺服器上造訪 https://127.0.0.1/ ，以確認哪個憑證用於「預設」TLS 繫結。 請使用來自本節該要求的公開金鑰。 如果您在 HTTPS 繫結上使用主機標頭和 SNI，但在後端伺服器上從瀏覽器手動向 https://127.0.0.1/ 要求時，並未收到回應和憑證，則必須在後端伺服器上設定預設 TLS 繫結。 如果您未這麼做，探查將會失敗，而且不允許後端。
+   > 如果您在後端上使用主機標頭和伺服器名稱指示 (SNI)，擷取的公開金鑰不一定就是流量要流向的預定網站。 如果不確定，請在後端伺服器上造訪 https://127.0.0.1/ ，以確認哪個憑證用於「預設」TLS 繫結。 請使用來自本節該要求的公開金鑰。 如果您在 HTTPS 繫結上使用主機標頭和 SNI，但在後端伺服器上從瀏覽器手動向 https://127.0.0.1/ 要求時，並未收到回應和憑證，則必須在後端伺服器上設定預設 TLS 繫結。 如果您沒有這麼做，探查將會失敗，且不允許後端。
    
    關於應用程式閘道中的 SNI，如需詳細資訊，請參閱[應用程式閘道的 TLS 終止和端對端 TLS 概觀](ssl-overview.md)。
 
@@ -176,7 +176,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > 上一個步驟中提供的憑證，應該是後端出現的 .pfx 憑證的公開金鑰。 將安裝在後端伺服器上的憑證 (非根憑證) 以「宣告、證據和推論」(CER) 格式匯出，並將它用於此步驟。 此步驟允許使用應用程式閘道的後端。
+   > 上一個步驟中提供的憑證，應該是後端出現的 .pfx 憑證的公開金鑰。 將安裝在後端伺服器上的憑證 (非根憑證) 以「宣告、證據和推論」(CER) 格式匯出，並將它用於此步驟。 此步驟可讓後端使用應用程式閘道。
 
    如果您使用「應用程式閘道 v2 SKU」，則請建立受信任的根憑證，而不是建立驗證憑證。 如需詳細資訊，請參閱[應用程式閘道的端對端 TLS 概觀](ssl-overview.md#end-to-end-tls-with-the-v2-sku)：
 

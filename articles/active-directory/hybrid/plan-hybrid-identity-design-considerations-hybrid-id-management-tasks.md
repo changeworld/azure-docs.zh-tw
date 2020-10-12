@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986532"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>規劃混合式身分識別生命週期
@@ -66,7 +66,7 @@ ms.locfileid: "90986532"
 *    有哪些可用的單一登入功能？
 *    B2B 和 B2C 之間的身分識別同盟有哪些選項？
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 [判斷混合式身分識別管理採用策略](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>另請參閱

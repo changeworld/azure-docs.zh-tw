@@ -1,6 +1,6 @@
 ---
 title: 當地語系化字串識別碼 - Azure Active Directory B2C | Microsoft Docs
-description: 在 Azure Active Directory B2C 的自訂原則中，以 signuporsignin.xml 的識別碼指定內容定義的識別碼。
+description: 在 Azure Active Directory B2C 的自訂原則中，使用 signuporsignin.xml 的識別碼指定內容定義的識別碼。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,10 +11,10 @@ ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87428124"
 ---
 # <a name="localization-string-ids"></a>當地語系化字串識別碼
@@ -33,7 +33,7 @@ ms.locfileid: "87428124"
 | **logonIdentifier_email** | 電子郵件地址 |
 | **requiredField_email** | 請輸入您的電子郵件 |
 | **invalid_email** | 請輸入有效的電子郵件地址 |
-| **email_pattern** | ^ [a-zA-Z0-9.！# $% & ' '*+/=？ ^ _ \` { \| } ~-] + @ [a-zA-Z0-9-] + （？： \\ . [a-zA-Z0-9-] +）*$ |
+| **email_pattern** | ^ [a-zA-Z0-9.！# $% & ' '*+/=？ ^ _ \` { \| } ~-] + @ [Z0-9-] + (？： \\ . [a-zA-Z0-9-] +) *$ |
 | **local_intro_username** | 使用您的使用者名稱登入 |
 | **logonIdentifier_username** | 使用者名稱 |
 | **requiredField_username** | 請輸入您的使用者名稱 |
@@ -88,7 +88,7 @@ ms.locfileid: "87428124"
 | **UserMessageIfOldPasswordUsed** | 您使用的似乎是舊密碼。 |
 | **DefaultMessage** | 無效的使用者名稱或密碼。 |
 | **UserMessageIfUserAccountDisabled** | 您的帳戶已遭鎖定。 請連絡您的支援人員將其解除鎖定，然後再試一次。 |
-| **UserMessageIfUserAccountLocked** | 您的帳戶已暫時鎖定以防未經授權的使用。 請稍後再試一次。 |
+| **UserMessageIfUserAccountLocked** | 您的帳戶已暫時鎖定以防未經授權的使用。 請稍後再試。 |
 | **AADRequestsThrottled** | 目前的要求過多。 請稍後再重試。 |
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>註冊和自我判斷頁面使用者介面元素
@@ -104,7 +104,7 @@ ms.locfileid: "87428124"
 | **ver_but_send** | 傳送驗證碼 |
 | **alert_yes** | 是 |
 | **error_fieldIncorrect** | 有一或多個欄位填寫不正確。 請檢查您的輸入，然後再試一次。 |
-| **year** | 年 |
+| **year** | Year |
 | **verifying_blurb** | 正在處理您的資訊，請稍候。 |
 | **button_cancel** | 取消 |
 | **ver_fail_no_retry** | 您已嘗試太多次，但都不正確。 請稍後再試一次。 |
@@ -132,7 +132,7 @@ ms.locfileid: "87428124"
 | **ver_intro_msg** | 必須進行驗證。 請按一下 [傳送] 按鈕。 |
 | **ver_input** | 驗證碼 |
 
-### <a name="sign-up-and-self-asserted-pages-error-messages"></a>註冊和自我判斷分頁錯誤訊息
+### <a name="sign-up-and-self-asserted-pages-error-messages"></a>註冊和自我判斷頁面的錯誤訊息
 
 | 識別碼 | 預設值 |
 | -- | ------------- |
@@ -146,7 +146,7 @@ ms.locfileid: "87428124"
 
 下列範例示範在註冊頁面中使用某些使用者介面元素的方式：
 
-![已標記其 UI 元素名稱的註冊頁面](./media/localization-string-ids/localization-sign-up.png)
+![標記為其 UI 元素名稱的註冊頁面](./media/localization-string-ids/localization-sign-up.png)
 
 下列範例示範在使用者按一下傳送驗證碼按鈕之後，於註冊頁面中使用某些使用者介面元素的方式：
 
@@ -190,7 +190,7 @@ ms.locfileid: "87428124"
 | **number_label** | 電話號碼 |
 | **error_tryagain** | 提供的電話號碼目前忙線中或不通。 請檢查號碼，然後再試一次。 |
 | **error_incorrect_code** | 您輸入的驗證碼與我們的記錄不符。 請再試一次，或要求新的驗證碼。 |
-| **countryList** | 請參閱[國家/地區清單](#countries-list)。 |
+| **countryList** | 請參閱 [國家/地區清單](#countries-list)。 |
 | **error_448** | 提供的手機號碼不通。 |
 | **error_449** | 使用者已超過重試次數限制。 |
 | **verification_code_input_placeholder_text** | 驗證碼 |
@@ -213,7 +213,7 @@ ms.locfileid: "87428124"
 |verification_control_fail_send_code |無法傳送程式碼，請稍後再試一次。 |
 |verification_control_fail_verify_code |無法驗證程式代碼，請稍後再試一次。 |
 |verification_control_but_send_code |傳送驗證碼 |
-|verification_control_but_send_new_code |傳送新程式碼 |
+|verification_control_but_send_new_code |傳送新的程式碼 |
 |verification_control_but_verify_code |驗證碼 |
 |verification_control_code_sent| 已傳送驗證碼。 請將其複製到下方輸入方塊。 |
 
@@ -235,14 +235,14 @@ ms.locfileid: "87428124"
 
 ## <a name="restful-service-error-messages"></a>Restful 服務錯誤訊息
 
-以下是[Restful 服務技術設定檔](restful-technical-profile.md)錯誤訊息的識別碼：
+以下是 [Restful 服務技術設定檔](restful-technical-profile.md) 錯誤訊息的識別碼：
 
 | 識別碼 | 預設值 |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | 無法建立與 restful 服務端點的連接。 Restful 服務 URL：{0} |
-|UserMessageIfCircuitOpen | {0}Restful 服務 URL：{1} |
-|UserMessageIfDnsResolutionFailed | 無法解析 restful 服務端點的主機名稱。 Restful 服務 URL：{0} |
-|UserMessageIfRequestTimeout | 無法在超時限制秒內建立與 restful 服務端點的連接 {0} 。 Restful 服務 URL：{1} |
+|DefaultUserMessageIfRequestFailed | 無法建立與 restful 服務端點的連接。 Restful 服務 URL： {0} |
+|UserMessageIfCircuitOpen | {0} Restful 服務 URL： {1} |
+|UserMessageIfDnsResolutionFailed | 無法解析 restful 服務端點的主機名稱。 Restful 服務 URL： {0} |
+|UserMessageIfRequestTimeout | 無法在超時限制秒內建立與 restful 服務端點的連接 {0} 。 Restful 服務 URL： {1} |
 
 
 ### <a name="example"></a>範例
@@ -260,16 +260,16 @@ ms.locfileid: "87428124"
 
 ## <a name="azure-mfa-error-messages"></a>Azure MFA 錯誤訊息
 
-以下是[AZURE MFA 技術設定檔](multi-factor-auth-technical-profile.md)錯誤訊息的識別碼：
+以下是 [Azure MFA 技術設定檔](multi-factor-auth-technical-profile.md) 錯誤訊息的識別碼：
 
 | 識別碼 | 預設值 |
 | -- | ------------- |
-|UserMessageIfCouldntSendSms | 無法傳送 SMS 到手機，請嘗試另一個電話號碼。 |
-|UserMessageIfInvalidFormat | 您的電話號碼格式無效，請更正後再試一次。|
+|UserMessageIfCouldntSendSms | 無法將 SMS 傳送至電話，請嘗試另一個電話號碼。 |
+|UserMessageIfInvalidFormat | 您的電話號碼格式不正確，請更正它，然後再試一次。|
 |UserMessageIfMaxAllowedCodeRetryReached | 輸入錯誤的程式碼太多次，請稍後再試一次。|
 |UserMessageIfServerError | 無法使用 MFA 服務，請稍後再試一次。|
-|UserMessageIfThrottled | 您的要求已進行節流處理，請稍後再試一次。|
-|UserMessageIfWrongCodeEntered|輸入的代碼錯誤，請再試一次。|
+|UserMessageIfThrottled | 已對您的要求進行節流處理，請稍後再試一次。|
+|UserMessageIfWrongCodeEntered|輸入了錯誤的代碼，請再試一次。|
 
 ### <a name="example"></a>範例
 
@@ -288,14 +288,14 @@ ms.locfileid: "87428124"
 
 ## <a name="azure-ad-sspr"></a>Azure AD SSPR
 
-以下是[AZURE AD SSPR 技術設定檔](aad-sspr-technical-profile.md)錯誤訊息的識別碼：
+以下是 [AZURE AD SSPR 技術設定檔](aad-sspr-technical-profile.md) 錯誤訊息的識別碼：
 
 | 識別碼 | 預設值 |
 | -- | ------------- |
 |UserMessageIfChallengeExpired | 程式碼已過期。|
 |UserMessageIfInternalError | 電子郵件服務發生內部錯誤，請稍後再試一次。|
 |UserMessageIfThrottled | 您傳送了太多要求，請稍後再試一次。|
-|UserMessageIfVerificationFailedNoRetry | 您已超過驗證嘗試次數的上限。|
+|UserMessageIfVerificationFailedNoRetry | 您已超過驗證嘗試次數上限。|
 |UserMessageIfVerificationFailedRetryAllowed | 驗證失敗，請再試一次。|
 
 
@@ -313,16 +313,16 @@ ms.locfileid: "87428124"
 </LocalizedResources>
 ```
 
-## <a name="one-time-password-error-messages"></a>一次密碼錯誤訊息
+## <a name="one-time-password-error-messages"></a>單次密碼錯誤訊息
 
-以下是[一次性密碼技術設定檔](one-time-password-technical-profile.md)錯誤訊息的識別碼
+以下是 [一次性密碼技術設定檔](one-time-password-technical-profile.md) 錯誤訊息的識別碼
 
 | 識別碼 | 預設值 |
 | -- | ------------- |
-|UserMessageIfMaxRetryAttempted |一次密碼提供的驗證已超過嘗試次數上限 |
-|UserMessageIfSessionDoesNotExist |一次密碼驗證會話已過期 |
+|UserMessageIfMaxRetryAttempted |一次提供的密碼驗證超過嘗試次數上限 |
+|UserMessageIfSessionDoesNotExist |單次密碼驗證會話已過期 |
 |UserMessageIfSessionConflict |單次密碼驗證會話發生衝突 |
-|UserMessageIfInvalidCode |提供給驗證的一次密碼不正確 |
+|UserMessageIfInvalidCode |提供驗證的一次密碼不正確 |
 |UserMessageIfVerificationFailedRetryAllowed |該驗證碼不正確。 請再試一次。 | 
 
 ### <a name="example"></a>範例
@@ -345,9 +345,9 @@ ms.locfileid: "87428124"
 
 | 識別碼 | 宣告轉換 | 預設值 |
 | -- | ------------- |------------- |
-|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 宣告類型 "inputClaim" 的布林宣告值比較失敗。| 
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 宣告類型 "inputClaim" 的布林值宣告值比較失敗。| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 宣告值比較失敗：提供的左運算元大於右運算元。|
-|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison "OrdinalIgnoreCase" 的宣告值比較失敗。|
+|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison "OrdinalIgnoreCase" 進行宣告值比較失敗。|
 
 ### <a name="example"></a>範例
 
@@ -369,9 +369,9 @@ ms.locfileid: "87428124"
 {"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需當地語系化範例，請參閱下列文章：
+請參閱下列文章以取得當地語系化範例：
 
 - [在 Azure Active Directory B2C 中使用自訂原則進行語言自訂](custom-policy-localization.md)
-- [在 Azure Active Directory B2C 中使用使用者流程進行語言自訂](user-flow-language-customization.md)
+- [使用 Azure Active Directory B2C 中的使用者流程進行語言自訂](user-flow-language-customization.md)

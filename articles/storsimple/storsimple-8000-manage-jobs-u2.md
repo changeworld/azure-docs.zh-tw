@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513932"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 裝置管理員服務來檢視和管理作業 (Update 3 和更新版本)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [作業]**** 刀鋒視窗提供單一中央入口網站，可針對連接到 StorSimple 裝置管理員服務的裝置，檢視及管理在裝置上啟動的作業。 您可以針對多個裝置，檢視已排程、執行中、完成、已取消和失敗的工作。 結果會以表格式格式呈現。
 
 ![[作業] 刀鋒視窗](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
@@ -41,7 +41,7 @@ ms.locfileid: "85513932"
 * **狀態** – 執行中、完成、已取消、失敗、取消中，或是完成但發生錯誤。
 * **實體** – 工作可以與磁碟區、備份原則或裝置相關聯。 例如，複製工作與磁碟區相關聯，而排程的備份工作則與備份原則相關聯。 裝置工作是透過災害復原 (DR) 或還原作業而建立。
 * **裝置** – 用來啟動工作之裝置的名稱。
-* **開始**時間–作業的啟動時間。
+* **開始** 時間–開始作業的時間。
 * **期間** – 完成作業所需要的時間。
 
 工作清單每隔 30 秒會重新整理。
@@ -85,7 +85,7 @@ ms.locfileid: "85513932"
 
 3. 當提示確認時，請按一下 [是]****。 即會取消此工作。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何 [管理您的 StorSimple 備份原則](storsimple-8000-manage-backup-policies-u2.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

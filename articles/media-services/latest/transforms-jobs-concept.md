@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
 ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297972"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒體服務中的轉換和作業
@@ -119,7 +119,7 @@ ms.locfileid: "89297972"
 * [錯誤碼](/rest/api/media/jobs/get#joberrorcode)
 * [媒體服務實體的篩選、排序、分頁](entities-overview.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 開始開發之前，請參閱 [使用媒體服務 V3 api 進行開發](media-services-apis-overview.md) (包含存取 api、命名慣例等的資訊 ) 
 - 請參閱下列教學課程：

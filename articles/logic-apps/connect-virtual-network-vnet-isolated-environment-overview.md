@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500380"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源
@@ -144,7 +144,7 @@ ms.locfileid: "89500380"
 
 您可以使用整合帳戶搭配整合服務環境 (ISE) 內的邏輯應用程式。 不過，這些整合帳戶必須使用「相同的 ISE」** 作為連結的邏輯應用程式。 ISE 中的 Logic Apps 只能參考位於相同 ISE 中的整合帳戶。 當您建立整合帳戶時，您可以選取您的 ISE，作為您整合帳戶的位置。 若要瞭解如何使用 ISE 整合帳戶的定價和帳單，請參閱 [Logic Apps 計價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。 如需限制資訊，請參閱 [整合帳戶限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * 深入了解 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)

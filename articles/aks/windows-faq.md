@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927546"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 節點集區的常見問題
@@ -58,7 +58,7 @@ AKS 叢集中 (控制平面) 的主要節點是由 AKS 服務所裝載，您將�
 
 在此期間，Windows 節點不支援 [用戶端來源 IP 保留][client-source-ip] 。
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>我可以變更最大值每個節點的 pod 數目為何？
+## <a name="can-i-change-the-max--of-pods-per-node"></a>我可以變更每個節點的最大 pod 數嗎？
 
 是。 如需可用的含意和選項，請參閱 pod [數目上限][maximum-number-of-pods]。
 

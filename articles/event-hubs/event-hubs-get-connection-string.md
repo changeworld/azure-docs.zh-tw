@@ -4,10 +4,10 @@ description: 本文提供指示，說明如何取得可供用戶端連線至「A
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537168"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>取得事件中樞連接字串
@@ -48,7 +48,7 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以使用[AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey)來取得特定原則/規則名稱的連接字串，如下所示：
+您可以使用 [AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) 來取得特定原則/規則名稱的連接字串，如下所示：
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
@@ -61,7 +61,7 @@ Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummyname
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-或者，您可以使用下列專案來取得 EventHub 實體的連接字串：
+或者，您可以使用下列程式取得 EventHub 實體的連接字串：
 
 ```azurecli-interactive
 az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey

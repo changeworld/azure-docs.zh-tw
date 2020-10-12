@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319838"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中規劃使用者主體名稱變更並進行疑難排解
@@ -58,7 +58,7 @@ Bsimon@contoso.com至Britta.Simon@contoso.com
     例如，如果某人變更了部門，您可能會變更其網域： 
 
    * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
-     Or<br>
+     或者<br>
     * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
 
 建議您每次更新其主要電子郵件地址時，變更使用者的 UPN。
@@ -140,7 +140,7 @@ username@labs.contoso.com.
 ![已驗證網域的螢幕擷取畫面](./media/howto-troubleshoot-upn-changes/other-user.png)
 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 加入裝置
+### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
 
 [混合式 Azure AD 聯結](../devices/concept-azure-ad-join-hybrid.md) 的裝置會聯結至 Active Directory 和 Azure AD。 如果您的環境具有內部部署 Active Directory 使用量，而且您也想要從 Azure AD 所提供的功能中獲益，您可以執行混合式 Azure AD 聯結。
 

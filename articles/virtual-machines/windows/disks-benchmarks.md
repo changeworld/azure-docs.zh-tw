@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: d8bf90f4ecea992b3212200905cd9204e4079b1b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88683958"
 ---
 # <a name="benchmarking-a-disk"></a>對磁碟進行效能評定
@@ -24,7 +24,7 @@ ms.locfileid: "88683958"
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 繼續閱讀我們 [針對高效能設計的](../premium-storage-performance.md)文章。
 

@@ -94,7 +94,7 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 法規遵循
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
+        - name: 堆疊溢位
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自訂翻譯工具
   items:
@@ -158,5 +158,5 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 加密
           href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
+        - name: 堆疊溢位
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

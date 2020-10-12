@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 表格儲存體中設計可擴充且高效能的資料表。 | Microsoft Docs
-description: 瞭解如何在 Azure 資料表儲存體中設計可擴充且高效能的資料表。 回顧資料表資料分割、實體群組交易，以及容量和成本考慮。
+description: 瞭解如何在 Azure 資料表儲存體中設計可擴充且高效能的資料表。 複習資料表資料分割、實體群組交易，以及容量和成本考慮。
 services: storage
 ms.service: storage
 author: tamram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236500"
 ---
 # <a name="design-scalable-and-performant-tables"></a>設計可擴充且具效能的資料表

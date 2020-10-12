@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171851"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
@@ -27,7 +27,7 @@ ms.locfileid: "86171851"
 
 [![1]][1]
 
-下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您想要讓中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [**允許閘道傳輸**]。
+下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您希望中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [ **允許閘道傳輸**]。
 
 [![2]][2]
 
@@ -36,7 +36,7 @@ ms.locfileid: "86171851"
 透過使用 Azure VPN 閘道中的 VPN 閘道，設定中樞和分支 VNet 間的站對站 VPN 連線。 根據預設，VPN 閘道和 Azure ExpressRoute 閘道使用私用的自發系統編號 (ASN) 值 **65515**。 您可以變更 VPN 閘道的 ASN 值。 在測試設定中，分支 VNet VPN 閘道的 ASN 值變更為 **65516**，以支援中樞和分支 VNet 之間的 eBGP 路由。
 
 
-[![第]][3]
+[![3]][3]
 
 
 ## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>使用 ExpressRoute 和站對站 VPN 的內部部署位置 1 連線
@@ -49,9 +49,9 @@ ms.locfileid: "86171851"
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
-[![第]][5]
+[![.5]][5]
 
-下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。  (Cisco ASR1000 路由器在測試設定中是用來做為 CE 路由器。 ) 當站對站 VPN 和 ExpressRoute 線路以平行方式設定，以將內部部署網路連線到 Azure 時，Azure 預設會優先使用 ExpressRoute 線路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
+下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。  (Cisco ASR1000 路由器在測試設定中是用來做為 CE 路由器。 ) 當站對站 VPN 和 ExpressRoute 線路平行設定為將內部部署網路連線到 Azure 時，Azure 預設會排定 ExpressRoute 電路的優先順序。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
 ```config
 interface TenGigabitEthernet0/0/0.300
@@ -160,11 +160,11 @@ ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
 下圖顯示第二個 ExpressRoute 線路和中樞 VNet 之間的連線設定：
 
-[![utf-7]][7]
+[![7]][7]
 
 ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 1 連線至遠端 Vnet：
 
-[![8]][8]
+[![八角]][8]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute 和站對站 VPN 連線串聯
 

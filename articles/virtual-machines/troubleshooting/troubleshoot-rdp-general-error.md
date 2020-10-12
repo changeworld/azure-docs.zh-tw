@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439245"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>在 Azure VM 中對 RDP 一般錯誤進行疑難排解
@@ -60,7 +60,7 @@ RDP 接聽程式的設定不正確。
 
 ## <a name="solution"></a>解決方法
 
-在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 若要解決此問題，請使用序列控制或離線修復 VM。
+在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 若要解決此問題，請使用序列控制或修復離線的 VM。
 
 ### <a name="serial-console"></a>序列主控台
 
@@ -84,14 +84,14 @@ RDP 接聽程式的設定不正確。
     REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
-    如果群組原則指出 RDP 已停用（fDenyTSConnections 值為0x1），請執行下列命令以啟用 TermService 服務。 如果找不到登錄機碼，則沒有設定為停用 RDP 的群組原則。 您可以移至下一個步驟。
+    如果群組原則指出 RDP 已停用 (fDenyTSConnections 值為 0x1) ，請執行下列命令以啟用 TermService 服務。 如果找不到登錄機碼，則沒有設定為停用 RDP 的群組原則。 您可以移至下一個步驟。
 
     ```
     REM update the fDenyTSConnections value to enable TermService service
     reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
     ```
     > [!NOTE]
-    > 此步驟會暫時啟用 TermService 服務。 重新整理群組原則設定時，將會重設變更。 若要解決此問題，您必須檢查本機群組原則或網域群組原則是否已停用 TermService 服務，然後相對地更新原則設定。
+    > 此步驟會暫時啟用 TermService 服務。 更新群組原則設定時，將會重設變更。 若要解決此問題，您必須檢查本機群組原則或網域群組原則是否已停用 TermService 服務，然後再更新原則設定。
     
 2. 檢查目前的遠端連線設定。
     ```
@@ -185,9 +185,9 @@ RDP 接聽程式的設定不正確。
 
 1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 啟動復原 VM 的遠端桌面連線。
-3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3. 確定磁片在磁片管理主控台中標示為 [ **線上** ]。 記下指派給已連結 OS 磁碟的磁碟機代號。
 4. 啟動復原 VM 的遠端桌面連線。
-5. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
+5. 開啟提升許可權的命令提示字元會話 **， (以系統管理員身分執行**) 。 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
