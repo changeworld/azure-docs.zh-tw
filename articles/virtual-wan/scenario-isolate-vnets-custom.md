@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267715"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>案例： Vnet 的自訂隔離
@@ -23,7 +23,7 @@ ms.locfileid: "91267715"
 
 為了找出需要多少個路由表，您可以建立連接矩陣。 在此案例中，它看起來會如下所示，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) ：
 
-| 從 | 變更為：| *藍色 Vnet* | *Red Vnet* | *分支*|
+| 來自 | 變更為：| *藍色 Vnet* | *Red Vnet* | *分支*|
 |---|---|---|---|---|
 | **藍色 Vnet** |   &#8594;|      X        |               |       X      |
 | **Red Vnet**  |   &#8594;|              |       X       |       X      |

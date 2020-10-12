@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Data Manager 概觀 | Microsoft Docs
-description: 瞭解 StorSimple 資料管理員解決方案，以及您可以如何使用此服務來撰寫使用 StorSimple 資料和其他 Azure 服務的應用程式。
+description: 瞭解 StorSimple 資料管理員解決方案，以及如何使用這種服務撰寫使用 StorSimple 資料和其他 Azure 服務的應用程式。
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
 ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183491"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 資料管理員解決方案概觀
@@ -68,9 +68,9 @@ StorSimple 資料管理員適用於下列 7 個區域：
  - 讓來源儲存體帳戶 (與 StorSimple 裝置相關聯的帳戶) 和目標儲存體帳戶 (要讓資料採用原生格式的帳戶) 位於相同的 Azure 區域。
  - 在包含 StorSimple 儲存體帳戶的區域中啟動您的資料管理員與作業定義。 如果無法這麼做，則在最接近的 Azure 區域中啟動資料管理員，然後在與 StorSimple 儲存體帳戶相同的區域中建立作業定義。 
 
-    如果您的 StorSimple 儲存體帳戶不在支援建立作業定義的26個區域中，我們建議您不要執行 StorSimple 資料管理員，因為您會看到長時間延遲和可能的輸出費用。
+    如果您的 StorSimple 儲存體帳戶不在支援作業定義建立的26個區域中，建議您不要執行 StorSimple 資料管理員，因為您會發現延遲時間和潛在的輸出費用。
     
-Microsoft 致力於確保所有區域中的 Azure 服務一律可供使用。 不過，在特定區域中的短時間內，可能會發生未計畫的服務中斷。 在這種情況下，您可以在不受中斷影響的區域中顯示資料管理員和工作定義，並執行轉換作業。 在這種情況下，您可能會遇到一些額外的延遲，但在發生區域性中斷的罕見情況下，這可能是您的復原策略。
+Microsoft 致力於確保 Azure 服務隨時都可在所有區域中使用。 不過，在特定區域中的短暫期間可能會發生未計畫的服務中斷。 在這種情況下，您可以在不受中斷影響的區域中顯示資料管理員和工作定義，並執行轉換作業。 在這種情況下，您可能會遇到一些額外的延遲，但在發生區域性中斷的罕見情況下，這可能是您的修復策略。
 
 ## <a name="security-considerations"></a>安全性考量
 
@@ -98,4 +98,4 @@ StorSimple 資料管理員不會收集或顯示任何個人資訊。 如需詳�
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 StorSimple 資料管理員的 UI 來轉換您的資料](storsimple-data-manager-ui.md)。
+[使用 STORSIMPLE 資料管理員 UI 來轉換您的資料](storsimple-data-manager-ui.md)。

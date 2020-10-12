@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358662"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>使用 SQL 委派的管理員權限安裝 Azure AD Connect
@@ -54,14 +54,14 @@ Azure AD Connect 系統管理員|安裝 Azure AD Connect，並在自訂安裝期
    ![權限](./media/how-to-connect-install-sql-delegation/sql3a.png)
 
    >[!NOTE]
-   >Azure AD Connect 不支援具有嵌套成員資格的登入。  這表示您的 Azure AD Connect 系統管理員帳戶和網域服務帳戶必須連結到已授與 dbo 許可權的登入。  它不能只是指派給具有 dbo 許可權之登入的群組成員。
+   >Azure AD Connect 不支援具有嵌套成員資格的登入。  這表示您的 Azure AD Connect 系統管理員帳戶和網域服務帳戶必須連結到授與 dbo 許可權的登入。  它不能只是指派給具有 dbo 許可權的登入之群組的成員。
 
 3. 傳送電子郵件給 Azure AD Connect 系統管理員，內容中要指出在安裝 Azure AD Connect 時需使用 SQL 伺服器和執行個體名稱。
 
 ## <a name="additional-information"></a>其他資訊
 資料庫佈建好之後，Azure AD Connect 系統管理員就可以在他們方便的時候安裝及設定內部部署同步處理。
 
-如果 SQL 系統管理員已從先前的 Azure AD Connect 備份還原 ADSync 資料庫，您就必須使用現有的資料庫來安裝新的 Azure AD Connect 伺服器。 如需有關使用現有的資料庫安裝 Azure AD Connect 的詳細資訊，請參閱[使用現有的 ADSync 資料庫安裝 Azure AD Connect](how-to-connect-install-existing-database.md)。
+如果 SQL 系統管理員已從先前的 Azure AD Connect 備份還原 ADSync 資料庫，您就必須使用現有的資料庫來安裝新的 Azure AD Connect 伺服器。 如需有關使用現有資料庫安裝 Azure AD Connect 的詳細資訊，請參閱 [使用現有的 ADSync 資料庫安裝 Azure AD Connect](how-to-connect-install-existing-database.md)。
 
 ## <a name="next-steps"></a>後續步驟
 - [使用快速設定開始使用 Azure AD Connect](how-to-connect-install-express.md)

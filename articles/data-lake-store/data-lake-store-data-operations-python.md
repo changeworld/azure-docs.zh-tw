@@ -9,10 +9,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
 ms.openlocfilehash: 5cbf75ef2d9f0c1a65179e6a423b59f9763ce72b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872237"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 在 Azure Data Lake Storage Gen1 上進行檔案系統作業
@@ -52,7 +52,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
-1. 在您選擇的 IDE 中，建立新的 Python 應用程式，例如**mysample.py**。
+1. 在您選擇的 IDE 中，建立新的 Python 應用程式，例如 **mysample.py**。
 
 2. 加入以下文字行以匯入必要模組
 
@@ -133,7 +133,7 @@ adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* [使用 Python 對 Data Lake Storage Gen1 進行帳戶管理作業](data-lake-store-get-started-python.md)。
+* [使用 Python 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-python.md)。
 
 ## <a name="see-also"></a>另請參閱
 

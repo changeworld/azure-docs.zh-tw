@@ -14,14 +14,14 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87850146"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何在 Python 中透過 Twilio 使用語音和簡訊功能
-本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。
+本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱 [後續步驟](#NextSteps) 一節。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什麼是 Twilio？
 Twilio 正在形塑商業環境的未來，可讓開發人員將語音、VoIP 和訊息傳送內嵌到應用程式中。 它們將雲端、全球化環境中所需的整個基礎結構虛擬化，透過 Twilio 通訊 API 平台來揭露基礎結構。 輕鬆就可建立和擴充應用程式。 享受隨收隨付定價的彈性和雲端可靠性的好處。
@@ -41,20 +41,20 @@ Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。
 Twilio API 的兩大重點是 Twilio 動詞和 Twilio 標記語言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 動詞
-API 會使用 Twilio 動詞;例如，「 ** &lt; 假設 &gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。
+API 會使用 Twilio 動詞;例如， ** &lt; 說 &gt; **動詞命令會指示 Twilio 語音在呼叫上傳遞訊息。
 
 以下是 Twilio 動詞清單。 如需了解其他動詞和功能，請參閱 [Twilio 標記語言文件][twiml]。
 
-* ** &lt; 撥號 &gt; **：將呼叫者連接到其他電話。
+* ** &lt; 撥號 &gt; **：將呼叫端連接到另一個電話。
 * ** &lt; 收集 &gt; **：收集電話鍵盤上輸入的數位。
-* ** &lt; 掛斷 &gt; **：結束呼叫。
-* ** &lt; Pause &gt; **：以無訊息模式等候指定的秒數。
+* ** &lt; 掛斷 &gt; **：結束通話。
+* ** &lt; 暫停 &gt; **：以無訊息模式等候指定的秒數。
 * ** &lt; Play &gt; **：播放音訊檔案。
 * ** &lt; Queue &gt; **：將加入至呼叫端的佇列。
-* ** &lt; 記錄 &gt; **：記錄呼叫者的語音，並傳回包含錄製之檔案的 URL。
-* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權轉移至不同 URL 的 TwiML。
-* ** &lt; 拒絕 &gt; **：拒絕傳入電話給您的 Twilio 號碼，而不計費。
-* ** &lt; 假設 &gt; **：將在呼叫上進行的文字轉換成語音。
+* ** &lt; 記錄 &gt; **：記錄呼叫端的語音，並傳回包含錄製之檔案的 URL。
+* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權傳送至 TwiML 的不同 URL。
+* ** &lt; 拒絕 &gt; **：拒絕 Twilio 號碼的來電而不計費。
+* ** &lt; 例如 &gt; **：將在呼叫上進行的文字轉換為語音。
 * ** &lt; Sms &gt; **：傳送 sms 訊息。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
@@ -106,7 +106,7 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 
     -或-
 
-* 從 GitHub 下載適用于 Python 的 Twilio 程式庫 ([https://github.com/twilio/twilio-python][twilio_python]) 並安裝它，如下所示：
+* 從 GitHub () 下載適用于 Python 的 Twilio 程式庫 [https://github.com/twilio/twilio-python][twilio_python] ，並將其安裝如下：
 
   `$ python setup.py install`
 
@@ -179,7 +179,7 @@ message = client.messages.create(to=to_number,
 ```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>作法：從您自己的網站提供 TwiML 回應
-當您的應用程式開始呼叫 Twilio API 時，Twilio 會將要求傳送至 URL，然後應該會傳回 TwiML 回應。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是設計給 Twilio 使用的，但您也可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 以查看空的專案 `<Response>` ; 另一個範例是按一下 [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] 以查看 `<Response>` 包含元素的元素 `<Say>` 。 ) 
+當您的應用程式開始呼叫 Twilio API 時，Twilio 會將要求傳送至 URL，然後應該會傳回 TwiML 回應。 上述範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 。 (雖然 TwiML 是設計給 Twilio 使用的，但您也可以在瀏覽器中檢視 TwiML。 例如，按一下 [https://twimlets.com/message][twimlet_message_url] 以查看空的 `<Response>` 元素，另一個範例 [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] 是按一下以查看 `<Response>` 包含元素的元素 `<Say>` 。 ) 
 
 除了使用 Twilio 提供的 URL 以外，您也可以建立自己的網站來傳回 HTTP 回應。 您可以使用任何語言建立會傳回 XML 回應的網站；本主題假設您將使用 Python 建立 TwiML。
 

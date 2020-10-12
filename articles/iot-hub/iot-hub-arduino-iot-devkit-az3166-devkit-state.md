@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337937"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -77,7 +77,7 @@ ms.locfileid: "87337937"
 
 將 MXChip IoT DevKit 連接到您的電腦後：
 
-1. 按一下 Visual Studio Code**中的 [** 工作] 下拉式功能表，然後選取 [**執行組建工作 ...** ]。Arduino 草圖會經過編譯並上傳至 DevKit。
+1. 按一下 Visual Studio Code 中 **的 [工作] 下拉式功能表，然後** 選取 [ **執行組建工作 ...** ]。Arduino 草圖會進行編譯並上傳至 DevKit。
 
 2. 當草圖上傳成功後，「建立和上傳草圖：成功」** 訊息隨即顯示。
 
@@ -106,12 +106,12 @@ ms.locfileid: "87337937"
 ![範例測試程序](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 您可以在 Azure 入口網站中查看裝置對應項的原始資料： [IoT 中樞]-[ \> IoT 裝置]-[裝置對應項] \> *\<your device\>*  - \> 。
+> 您可以在 Azure 入口網站中看到裝置對應項的原始資料： iot 中樞- \> iot 裝置-裝置對應項 \> *\<your device\>*  - \> 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您已了解如何︰
 - 將 MXChip IoT DevKit 裝置連線到 Azure IoT 遠端監視解決方案加速器。
 - 使用 Azure IoT 裝置對應項函式來感測和控制 DevKit RGB LED 的色彩。
 
-以下是建議的後續步驟： [Azure IoT 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)
+以下是建議的下一個步驟： [Azure IoT 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)

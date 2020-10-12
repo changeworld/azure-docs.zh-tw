@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851217"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何在 Azure API 管理中建立和使用群組來管理開發人員帳戶
@@ -53,7 +53,7 @@ API 管理具有下列不可變的系統群組：
 3. 輸入群組的唯一名稱和選用的描述。
 4. 按下 [建立] ****。
 
-    ![新增群組](./media/api-management-howto-create-groups/groups001.png)
+    ![新增新的群組](./media/api-management-howto-create-groups/groups001.png)
 
 一旦建立群組，它就會新增至 [群組]**** 清單。 <br/>若要編輯群組的 [名稱]**** 或 [說明]****，請按一下群組名稱和 [設定]****。<br/>若要刪除群組，按一下群組名稱，然後按下 [刪除]****。
 

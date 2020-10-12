@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130275"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>在容錯移轉之後設定公用 IP 位址
@@ -44,16 +44,16 @@ ms.locfileid: "86130275"
 Azure 流量管理員允許在端點之間切換 DNS 層級路由，並可針對 DR 案例，協助[降低您的 RTO](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations)。 
 
 深入了解流量管理員的容錯移轉案例：
-1. 使用流量管理員的[內部部署至 Azure 容錯移轉](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
+1. 使用流量管理員[進行內部部署至 Azure 容錯移轉](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
 2. 使用流量管理員[在 Azure 之間容錯移轉](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) 
 
 設定方式如下︰
-- 建立[流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
+- 建立 [流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 - 利用**優先順序**路由方法建立兩個端點 – **主要**用於來源，**容錯移轉**用於 Azure。 **主要**會被指派優先順序 1，**容錯移轉**會被指派優先順序 2。
 - **主要**端點可以是 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 或[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)，端視您的來源環境是在 Azure 內部還是外部而定。
 - **容錯移轉**端點會建立為 **Azure** 端點。 使用**靜態公用 IP 位址**，因為這是災害事件中流量管理員的外部端點。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入了解[流量管理員搭配 Azure Site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
 - 深入了解流量管理員的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 - 深入了解自動執行應用程式容錯移轉的[復原計劃](site-recovery-create-recovery-plans.md)。

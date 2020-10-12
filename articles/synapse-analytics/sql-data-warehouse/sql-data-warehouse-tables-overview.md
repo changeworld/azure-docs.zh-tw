@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460542"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中設計資料表
@@ -46,7 +46,7 @@ CREATE SCHEMA wwi;
 
 | WideWorldImportersDW 資料表  | 資料表類型 | SQL 集區 |
 |:-----|:-----|:------|:-----|
-| 城市 | 尺寸 | wwi.DimCity |
+| City | 尺寸 | wwi.DimCity |
 | 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
@@ -373,6 +373,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 為您的 SQL 集區建立資料表之後，下一個步驟是將資料載入資料表中。  如需載入教學課程，請參閱 [將資料載入至 SQL 集](load-data-wideworldimportersdw.md)區。

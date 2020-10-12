@@ -1,6 +1,6 @@
 ---
 title: 在 Azure API 管理中建立訂用帳戶 | Microsoft Docs
-description: 了解如何在 Azure API 管理中建立訂用帳戶。 需要有訂用帳戶，才能取得允許存取 Api 的訂用帳戶金鑰。
+description: 了解如何在 Azure API 管理中建立訂用帳戶。 需要訂用帳戶，才能取得允許存取 Api 的訂用帳戶金鑰。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: 191323a4c150c00c93245be35c9c8af381e26b42
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904849"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>在 Azure API 管理中建立訂用帳戶
 
-透過 Azure API 管理發佈 API 時，安全地存取這些 API 的簡單常用方式是使用訂用帳戶金鑰。 必須使用已發佈 API 的用戶端應用程式在呼叫這些 API 時，必須在 HTTP 要求中包含有效的訂用帳戶金鑰。 若要取得用於存取 API 的訂用帳戶金鑰，則需要訂用帳戶。 如需訂用帳戶的詳細資訊，請參閱[AZURE API 管理中](api-management-subscriptions.md)的訂用帳戶。
+透過 Azure API 管理發佈 API 時，安全地存取這些 API 的簡單常用方式是使用訂用帳戶金鑰。 必須使用已發佈 API 的用戶端應用程式在呼叫這些 API 時，必須在 HTTP 要求中包含有效的訂用帳戶金鑰。 若要取得用於存取 API 的訂用帳戶金鑰，則需要訂用帳戶。 如需訂閱的詳細資訊，請參閱 [AZURE API 管理中的訂用](api-management-subscriptions.md)帳戶。
 
 本文將逐步引導您在 Azure 入口網站中建立訂用帳戶。
 
@@ -37,8 +37,8 @@ ms.locfileid: "87904849"
 1. 選取左邊功能表的 [訂用帳戶]****。
 2. 選取 [訂用帳戶]****。
 3. 提供訂用帳戶的名稱並選取範圍。
-4. （選擇性）選擇訂用帳戶是否應與使用者相關聯。
-5. 選取 [儲存]。
+4. （選擇性）選擇是否應將訂用帳戶與使用者相關聯。
+5. 選取 [儲存]****。
 
 ![彈性的訂用帳戶](./media/api-management-subscriptions/flexible-subscription.png)
 

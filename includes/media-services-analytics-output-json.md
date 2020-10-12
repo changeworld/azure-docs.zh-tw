@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174393"
 ---
 此作業會產生 JSON 輸出檔案，其中包含有關偵測到並進行追蹤之臉部的中繼資料。 中繼資料包括指出臉部位置的座標，以及指出正在追蹤該個人的臉部識別碼。 臉部識別碼很容易在正面臉部長時間於畫面中遺失或重疊的情況下重設，導致某些人員被指派多個識別碼。
@@ -24,7 +24,7 @@ ms.locfileid: "67174393"
 | Offset |這是時間戳記的時間位移。 在版本 1.0 的影片 API 中，這永遠會是 0。 在我們於未來將支援的案例中，此值可能會變更。 |
 | width、hight |輸出視訊畫面的高度和高度 (以像素為單位)。|
 | framerate |影片的每秒畫面格數。 |
-| [分段](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 |
+| [碎片](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 |
 
 ### <a name="fragments-json-elements"></a>Fragments JSON 元素
 

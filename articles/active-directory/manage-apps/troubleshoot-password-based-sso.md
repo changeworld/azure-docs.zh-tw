@@ -11,10 +11,10 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460349"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>針對 Azure AD 中的密碼型單一登入進行疑難排解
@@ -98,7 +98,7 @@ ms.locfileid: "89460349"
 7. 應用程式載入之後，請在左側流覽窗格中選取 [ **單一登入** ]。
 8. 選取 [ **密碼型登入** ] 模式。
 9. 輸入 [登入 **url**]，這是使用者輸入其使用者名稱和密碼來登入之頁面的 url。 *確定您提供的 URL 頁面上有顯示登入欄位*。
-10. 選取 [儲存]。
+10. 選取 [儲存]****。
     系統會自動剪輯使用者名稱和密碼輸入方塊的頁面。 您現在可以使用 Azure AD 我的應用程式瀏覽器延伸模組，將密碼安全地傳輸到該應用程式。
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>手動捕獲應用程式的登入欄位

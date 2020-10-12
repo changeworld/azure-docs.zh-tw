@@ -16,13 +16,13 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88565837"
 ---
-# <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的許可權
+# <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的權限 (機器翻譯)
 
 Azure Sentinel 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)來提供 [內建角色](../role-based-access-control/built-in-roles.md)   ，這些角色可指派給 azure 中的使用者、群組和服務。
 
@@ -80,7 +80,7 @@ Azure Sentinel 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based
 
 下表摘要說明 Azure Sentinel 中的角色和允許的動作。 
 
-| 角色 | 建立和執行手冊| 建立和編輯活頁簿、分析規則和其他 Azure Sentinel 資源 | 管理事件 (關閉、指派等 )  | 查看資料、事件、活頁簿和其他 Azure Sentinel 資源 |
+| 角色 | 建立和執行劇本| 建立和編輯活頁簿、分析規則及其他 Azure Sentinel 資源 | 管理事件 (關閉、指派等 )  | 查看資料、事件、活頁簿和其他 Azure Sentinel 資源 |
 |---|---|---|---|---|
 | Azure Sentinel 讀者 | -- | -- | -- | &#10003; |
 | Azure Sentinel 回應者 | -- | -- | &#10003; | &#10003; |

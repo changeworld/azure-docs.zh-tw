@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706297"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 應用程式庫中列出您的應用程式
@@ -35,7 +35,7 @@ ms.locfileid: "90706297"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 針對同盟應用程式 (開啟識別碼和 SAML/WS-饋送) ，應用程式必須支援軟體即服務 (SaaS) 模型，才能列在 Azure AD 應用程式庫中。 企業資源庫應用程式必須支援多個客戶設定，而不是任何特定客戶。
 - 針對 Open ID Connect，必須 multitenanted 應用程式，而且必須為應用程式正確地執行 [Azure AD 同意架構](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 。 使用者可以將登入要求傳送至一般端點，讓任何客戶都能為應用程式提供同意。 您可以根據租用戶識別碼和在權杖中收到的使用者 UPN 來控制使用者存取權。
@@ -101,7 +101,7 @@ ms.locfileid: "90706297"
 
 - **Saml 2.0** 或 **ws-addressing**：如果您的應用程式支援 saml 2.0，您可以遵循 [新增自訂應用程式的指示](../manage-apps/view-applications-portal.md)，將它直接與 Azure AD 租使用者整合。
 
-  ![在資源庫中列出 SAML 2.0 或 WS 送出的應用程式](./media/howto-app-gallery-listing/saml.png)
+  ![在資源庫中列出 SAML 2.0 或 WS-Fed 應用程式](./media/howto-app-gallery-listing/saml.png)
 
   * 如果您想要使用 **saml 2.0** 或 **ws-addressing**將應用程式新增至資源庫中的清單，請選取 [ **Saml 2.0/ws-送** 出]，如下所示。
 
@@ -146,7 +146,7 @@ ms.locfileid: "90706297"
 
 ## <a name="timelines"></a>時間表
 
-在資源庫中列出 SAML 2.0 或 WS 送出應用程式的程式時程表是7到10個工作天。
+在資源庫中列出 SAML 2.0 或 WS-Fed 應用程式的程式時程表是7到10個工作天。
 
   ![在資源庫中列出 SAML 應用程式的時程表](./media/howto-app-gallery-listing/timeline.png)
 

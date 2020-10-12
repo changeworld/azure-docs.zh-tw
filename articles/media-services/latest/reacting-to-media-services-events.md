@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289147"
 ---
 # <a name="handling-event-grid-events"></a>處理事件方格事件
@@ -44,7 +44,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 > [!NOTE]
 > 事件會受限於事件方格 [服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)。 如果您想要使用 Api 取得事件通知，請參閱如何使用 [.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet) 或 [JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java)來取用事件的範例。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [監視事件-入口網站](monitor-events-portal-how-to.md)
 * [監視事件 - CLI](job-state-events-cli-how-to.md)

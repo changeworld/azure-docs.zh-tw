@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556242"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX 應用程式附加詞彙
@@ -106,7 +106,7 @@ Destaging 會通知作業系統，MSIX 封裝或應用程式目前未執行，�
 
 .CIM 是與複合圖像檔案系統 (CimFS) 相關聯的新副檔名。 掛接和卸載 CIM 檔案的速度較快。 CIM 也會耗用比 VHD 更少的 CPU 和記憶體。
 
-下表是 VHD 與 CimFS 之間的效能比較。 這些數位是測試回合的結果，其中每個格式的 800 MB 檔案都在 DSv4 電腦上執行。
+下表是 VHD 與 CimFS 之間的效能比較。 這些數位是測試回合的結果，其中每個格式的 500 300 MB 檔案都在 DSv4 電腦上執行。
 
 |  規格                          | VHD                     | CimFS   |
 |---------------------------------|--------------------------|-----------|
@@ -115,7 +115,7 @@ Destaging 會通知作業系統，MSIX 封裝或應用程式目前未執行，�
 | 記憶體使用量 | 6% (8 GB)                       | 8 GB) 的 2% (       |
 | CPU (計數尖峰)           | 超量多次 | 沒有影響 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要深入瞭解 MSIX app 附加，請參閱我們的 [總覽](what-is-app-attach.md) 和 [常見問題](app-attach-faq.md)。 否則，請開始 [設定應用程式連接](app-attach.md)。
 

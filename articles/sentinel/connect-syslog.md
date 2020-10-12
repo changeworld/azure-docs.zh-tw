@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88566143"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 從以 Linux 為基礎的來源收集資料
@@ -77,7 +77,7 @@ ms.locfileid: "88566143"
 
 1. 當您已新增要監視的所有設備，並為每個設備調整任何嚴重性選項之後，請選取 [ **將下列設定套用到我的電腦**] 核取方塊。
 
-1. 選取 [儲存]。 
+1. 選取 [儲存]****。 
 
 1. 在您的 VM 或設備上，請確定您正在傳送指定的設備。
 

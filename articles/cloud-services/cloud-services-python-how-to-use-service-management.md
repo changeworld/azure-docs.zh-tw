@@ -16,10 +16,10 @@ ms.date: 05/30/2017
 ms.author: tagore
 ms.custom: devx-track-python
 ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851506"
 ---
 # <a name="use-service-management-from-python"></a>從 Python 使用服務管理
@@ -31,7 +31,7 @@ ms.locfileid: "87851506"
 若要使用服務管理 API，您必須 [建立 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="concepts"></a><a name="Concepts"> </a>概念
-「適用於 Python 的 Azure SDK」含有[服務管理 API][svc-mgmt-rest-api]，這是一個 REST API。 所有 API 作業都是透過 TLS 執行，並使用 x.509 v3 憑證進行相互驗證。 您可以從在 Azure 中執行的服務內存取此管理服務。 此外，也可以透過網際網路，從任何可傳送 HTTPS 要求和接收 HTTPS 回應的應用程式，直接存取此管理服務。
+「適用於 Python 的 Azure SDK」含有[服務管理 API][svc-mgmt-rest-api]，這是一個 REST API。 所有 API 作業都是透過 TLS 執行，並使用 x.509 v3 憑證相互驗證。 您可以從在 Azure 中執行的服務內存取此管理服務。 此外，也可以透過網際網路，從任何可傳送 HTTPS 要求和接收 HTTPS 回應的應用程式，直接存取此管理服務。
 
 ## <a name="installation"></a><a name="Installation"> </a>安裝
 本文中所述的所有功能都可在 `azure-servicemanagement-legacy` 套件中找到，您可以使用 pip 來安裝此套件。 如需有關安裝的詳細資訊 (例如，若您不熟悉 Python)，請參閱[安裝 Python 和 Azure SDK](/azure/developer/python/azure-sdk-install)。
@@ -57,7 +57,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out myce
 openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 ```
 
-如需有關 Azure 憑證的詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。 如需 OpenSSL 參數的完整描述，請參閱中的檔 [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) 。
+如需有關 Azure 憑證的詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。 如需 OpenSSL 參數的完整說明，請參閱中的檔 [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) 。
 
 建立這些檔案之後，請將 `.cer` 檔案上傳到 Azure。 在 [Azure 入口網站][management-portal]中的 [設定]**** 索引標籤上，選取 [上傳]****。 請記下您儲存 `.pem` 檔案的位置。
 
@@ -132,7 +132,7 @@ for location in result:
 * 澳大利亞東南部
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>建立雲端服務
-當您建立應用程式並在 Azure 中執行它時，其程式碼和設定合稱為 Azure [雲端服務][cloud service]。  (在舊版的 Azure 中稱為「*託管服務*」。 ) 您可以使用「**建立 \_ 託管 \_ 服務**」方法來建立新的託管服務。 請提供託管服務名稱 (在 Azure 中必須是唯一的)、標籤 (自動編碼為 base64)、描述及位置來建立此服務。
+當您建立應用程式並在 Azure 中執行它時，其程式碼和設定合稱為 Azure [雲端服務][cloud service]。  (在先前的 Azure 版本中稱為 *託管服務* 。 ) 您可以使用 **create \_ hosted \_ service** 方法來建立新的託管服務。 請提供託管服務名稱 (在 Azure 中必須是唯一的)、標籤 (自動編碼為 base64)、描述及位置來建立此服務。
 
 ```python
 from azure import *
@@ -148,7 +148,7 @@ location = 'West US'
 sms.create_hosted_service(name, label, desc, location)
 ```
 
-您可以使用**list \_ hosted \_ services**方法，列出訂用帳戶的所有託管服務。
+您可以使用「 **列出 \_ 託管 \_ 服務** 」方法來列出訂用帳戶的所有託管服務。
 
 ```python
 result = sms.list_hosted_services()
@@ -173,7 +173,7 @@ print('Location: ' + hosted_service.hosted_service_properties.location)
 在建立雲端服務之後，請使用 **create\_deployment** 方法將程式碼部署至服務。
 
 ## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>刪除雲端服務
-您可以將服務名稱傳遞給**delete \_ hosted \_ service**方法，以刪除雲端服務。
+您可以藉由將服務名稱傳遞給 **刪除 \_ 託管 \_ 服務** 方法，來刪除雲端服務。
 
 ```python
 sms.delete_hosted_service('myhostedservice')
@@ -215,7 +215,7 @@ print('Operation status: ' + operation_result.status)
 
 在上一個範例中，可將 **create\_storage\_account** 所傳回的結果傳遞給 **get\_operation\_status** 方法，以擷取 **create\_storage\_account** 作業的狀態。 
 
-您可以使用**list \_ storage \_ accounts**方法列出您的儲存體帳戶及其屬性。
+您可以使用 **列出 \_ 儲存體 \_ 帳戶** 方法來列出儲存體帳戶及其屬性。
 
 ```python
 from azure import *
@@ -243,7 +243,7 @@ sms.delete_storage_account('mystorageaccount')
 ```
 
 ## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>列出可用的作業系統
-若要列出可用來裝載服務的作業系統，請使用 [**列出 \_ 作業系統 \_ ** ] 方法。
+若要列出可用來裝載服務的作業系統，請使用 **清單 \_ 作業系統 \_ ** 方法。
 
 ```python
 from azure import *
@@ -259,7 +259,7 @@ for os in result:
     print('Active: ' + str(os.is_active))
 ```
 
-或者，您可以使用 [**列出 \_ 作業系統 \_ \_ 系列**] 方法，依系列將作業系統分組。
+或者，您可以使用 [ **列出 \_ 作業系統 \_ \_ 系列** ] 方法，依系列將作業系統分組。
 
 ```python
 result = sms.list_operating_system_families()
@@ -274,7 +274,7 @@ for family in result:
 ```
 
 ## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>建立作業系統映像
-若要將作業系統映射新增至映射儲存機制，請使用**add \_ os \_ image**方法。
+若要將作業系統映射新增至映射存放庫，請使用 **新增 \_ os \_ 映射** 方法。
 
 ```python
 from azure import *
@@ -310,7 +310,7 @@ for image in result:
 ```
 
 ## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>刪除作業系統映像
-若要刪除使用者映射，請使用**delete \_ os \_ image**方法。
+若要刪除使用者映射，請使用 [ **刪除 \_ 作業系統 \_ 映射** ] 方法。
 
 ```python
 from azure import *
@@ -384,7 +384,7 @@ sms.delete_hosted_service(service_name='myvm')
 ```
 
 ## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>從擷取的虛擬機器映像建立虛擬機器
-若要捕獲 VM 映射，請先呼叫**capture \_ VM \_ image**方法。
+若要捕獲 VM 映射，請先呼叫 **capture \_ VM \_ 映射** 方法。
 
 ```python
 from azure import *
@@ -451,7 +451,7 @@ sms.create_virtual_machine_deployment(service_name=name,
 若要深入了解如何在傳統部署模型中擷取 Windows 虛擬機器，請參閱[擷取 Windows 虛擬機器](../virtual-machines/windows/classic/capture-image-classic.md)。
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>後續步驟
-既然您已瞭解服務管理的基本概念，您可以存取[Azure PYTHON SDK 的完整 API 參考檔](https://azure-sdk-for-python.readthedocs.org/)並輕鬆執行複雜的工作，以管理您的 Python 應用程式。
+現在您已瞭解服務管理的基本概念，您可以存取 [Azure PYTHON SDK 的完整 API 參考檔](https://azure-sdk-for-python.readthedocs.org/) ，並輕鬆地執行複雜的工作來管理您的 Python 應用程式。
 
 如需詳細資訊，請參閱 [Python 開發人員中心](https://azure.microsoft.com/develop/python/)。
 

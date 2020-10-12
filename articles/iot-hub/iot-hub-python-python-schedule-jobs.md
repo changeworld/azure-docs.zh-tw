@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
 ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876677"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>排程及廣播作業 (Python)
@@ -32,7 +32,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 * 裝置對應項和屬性：[開始使用裝置對應項](iot-hub-python-twin-getstarted.md)和[教學課程：如何使用裝置對應項屬性](tutorial-device-twins.md)
 
-* 直接方法： [IoT 中樞開發人員指南-直接方法](iot-hub-devguide-direct-methods.md)和[教學課程：直接方法](quickstart-control-device-python.md)
+* 直接方法： [IoT 中樞開發人員指南-直接方法](iot-hub-devguide-direct-methods.md) 和 [教學課程：直接方法](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -114,7 +114,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
             print (patch)
     ```
 
-6. 新增下列程式碼以註冊**lockDoor**方法的處理常式。 另包含 `main` 常式：
+6. 加入下列程式碼，以註冊 **>lockdoor** 方法的處理常式。 另包含 `main` 常式：
 
     ```python
     def iothub_jobs_sample_run():
@@ -153,21 +153,21 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 ## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中，您會建立後端服務，以在裝置上叫用直接方法，並更新裝置對應項。 服務需要**服務 connect**許可權，才能在裝置上呼叫直接方法。 服務也需要登錄**讀取**和登錄**寫入**許可權，才能讀取和寫入身分識別登錄。 沒有僅包含這些許可權的預設共用存取原則，因此您需要建立一個。
+在本文中，您會建立可在裝置上叫用直接方法，並更新裝置對應項的後端服務。 服務需要 **服務 connect** 許可權，才能在裝置上呼叫直接方法。 服務也需要登錄 **讀取** 和登錄 **寫入** 許可權，才能讀取和寫入身分識別登錄。 沒有預設的共用存取原則，只包含這些許可權，因此您需要建立一個。
 
-若要建立共用存取原則，以授與**服務**連線、登錄**讀取**和登錄**寫入**許可權，以及取得此原則的連接字串，請遵循下列步驟：
+若要建立共用存取原則來授與 **服務連接**、登錄 **讀取**和登錄 **寫入** 許可權，以及取得此原則的連接字串，請遵循下列步驟：
 
-1. 在[Azure 入口網站](https://portal.azure.com)中開啟您的 IoT 中樞。 若要進入 IoT 中樞，最簡單的方法是選取 [**資源群組**]，選取您的 iot 中樞所在的資源群組，然後從資源清單中選取您的 iot 中樞。
+1. 在 [Azure 入口網站](https://portal.azure.com)中開啟您的 IoT 中樞。 取得 IoT 中樞最簡單的方式是選取 **資源群組**、選取 iot 中樞所在的資源群組，然後從資源清單中選取您的 iot 中樞。
 
 2. 在 IoT 中樞的左側窗格中，選取 [共用存取原則]。
 
 3. 從原則清單上方的頂端功能表中，選取 [新增]。
 
-4. 在 [**新增共用存取原則**] 窗格中，輸入原則的描述性名稱;例如： *serviceAndRegistryReadWrite*。 在 [**許可權**] 底下，選取 **[服務**連線及登錄 (**寫入**]，當您選取 [登錄] [**寫入**) ]**時，會**自動選取 [登錄 然後選取 [建立]。
+4. 在 [ **新增共用存取原則** ] 窗格中，輸入原則的描述性名稱;例如： *serviceAndRegistryReadWrite*。 在 [**許可權**] 底下，選取 **[服務**連線和登錄**寫入**] (當您選取 [登錄**寫入**]) 時，自動選取 [登錄**讀取**]。 然後選取 [建立]。
 
     ![示範如何新增共用存取原則](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
-5. 回到 [**共用存取原則**] 窗格，從原則清單中選取您的新原則。
+5. 回到 [ **共用存取原則** ] 窗格，從原則清單中選取您的新原則。
 
 6. 在 [共用存取金鑰] 下，選取**連接字串 -- 主要金鑰**的複製圖示，然後儲存值。
 
@@ -177,7 +177,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>排定用於呼叫直接方法及更新裝置對應項 (twin) 屬性的作業
 
-在本節中，您會建立 Python 主控台應用程式，以使用直接方法在裝置上起始遠端**lockDoor** ，也會更新裝置對應項所需的屬性。
+在本節中，您會建立 Python 主控台應用程式，該應用程式會使用直接方法在裝置上起始遠端 **>lockdoor** ，同時也會更新裝置對應項的所需屬性。
 
 1. 在命令提示字元中，執行下列命令以安裝 **azure-iot-hub** 套件：
 
@@ -187,7 +187,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 2. 使用文字編輯器，在工作目錄中建立新的 **scheduleJobService.py** 檔案。
 
-3. `import`在**scheduleJobService.py**檔案的開頭新增下列語句和變數。 將 `{IoTHubConnectionString}` 預留位置取代為您先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的 iot 中樞連接字串。 以 `{deviceId}` 您在在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中註冊的裝置識別碼取代預留位置：
+3. 在 scheduleJobService.py 檔案 `import` 的開頭加入下列語句和變數。 **scheduleJobService.py** 將 `{IoTHubConnectionString}` 預留位置取代為您先前在「 [取得 iot 中樞」連接字串](#get-the-iot-hub-connection-string)中所複製的 iot 中樞連接字串。 將 `{deviceId}` 預留位置取代為您在 [IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)時所註冊的裝置識別碼：
 
     ```python
     import sys

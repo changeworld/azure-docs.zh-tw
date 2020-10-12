@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 和 Azure HDInsight 執行 Apache Sqoop 作業
-description: 瞭解如何使用工作站中的 Azure PowerShell，在 Apache Hadoop 叢集與 Azure SQL Database 之間執行 Apache Sqoop 匯入和匯出。
+description: 瞭解如何使用來自工作站的 Azure PowerShell，在 Apache Hadoop 叢集和 Azure SQL Database 之間執行 Apache Sqoop 匯入和匯出。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086489"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 執行 Apache Sqoop 作業
@@ -33,7 +33,7 @@ ms.locfileid: "87086489"
 
 從 Hive 到 SQL。
 
-這個範例會將資料從 Hive `hivesampletable` 資料表匯出至 `mobiledata` SQL 中的資料表。 設定下列變數的值，然後執行命令。
+此範例會將資料從 Hive `hivesampletable` 資料表匯出至 `mobiledata` SQL 中的資料表。 設定下列變數的值，然後執行命令。
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +96,7 @@ New-AzHDInsightSqoopJobDefinition `
 
 ## <a name="sqoop-import"></a>Sqoop import
 
-從 SQL 到 Azure 儲存體。 這個範例會將資料從 `mobiledata` SQL 中的資料表匯入至 `wasb:///tutorials/usesqoop/importeddata` HDInsight 上的目錄。 資料中的欄位是以定位字元分隔，行是以換行字元終止。 此範例假設您已完成先前的範例。
+從 SQL 到 Azure 儲存體。 此範例會將資料從 `mobiledata` SQL 中的資料表匯入至 `wasb:///tutorials/usesqoop/importeddata` HDInsight 上的目錄。 資料中的欄位是以定位字元分隔，行是以換行字元終止。 此範例假設您已完成先前的範例。
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"

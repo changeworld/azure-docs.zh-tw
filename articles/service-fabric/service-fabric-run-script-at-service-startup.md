@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464282"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本機使用者或系統帳戶身分執行服務啟動指令碼
@@ -58,7 +58,7 @@ ms.locfileid: "75464282"
 </ServiceManifest>
 ```
 ## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>設定服務安裝程式進入點的原則
-根據預設，服務安裝程式進入點可執行檔會在與 Service Fabric 相同的認證下執行（通常是*NetworkService*帳戶）。  在應用程式資訊清單中，您可以變更安全性權限，在本機系統帳戶或系統管理員帳戶下執行啟動指令碼。
+根據預設，服務安裝程式進入點可執行檔會在與 Service Fabric 相同的認證下執行， (通常是 *NetworkService* 帳戶) 。  在應用程式資訊清單中，您可以變更安全性權限，在本機系統帳戶或系統管理員帳戶下執行啟動指令碼。
 
 ### <a name="configure-the-policy-by-using-a-local-system-account"></a>使用本機系統帳戶設定原則
 下列應用程式資訊清單範例示範如何將服務安裝程式進入點設定為在使用者系統管理員帳戶 (SetupAdminUser) 下執行。
@@ -136,9 +136,9 @@ ms.locfileid: "75464282"
 ## <a name="run-a-script-from-the-setup-entry-point"></a>從安裝程式進入點執行指令碼
 現在將啟動指令碼新增至專案，並以系統管理員權限執行。 
 
-在 Visual Studio 中，以滑鼠右鍵按一下服務專案，然後加入名為*MySetup.bat*的新檔案。
+在 Visual Studio 中，以滑鼠右鍵按一下服務專案，並新增名為 *MySetup.bat*的檔案。
 
-接下來，請確定*MySetup.bat*檔案包含在服務封裝中。 預設不會包含該檔案。 選取該檔案、以滑鼠右鍵按一下操作功能表，然後選擇 [屬性] ****。 在 [屬性] 對話方塊中，確定已將 [複製到輸出目錄]**** 設為 [有更新時才複製]****。 請參閱下列螢幕擷取畫面。
+接下來，請確定 *MySetup.bat* 檔案包含在服務封裝中。 預設不會包含該檔案。 選取該檔案、以滑鼠右鍵按一下操作功能表，然後選擇 [屬性] ****。 在 [屬性] 對話方塊中，確定已將 [複製到輸出目錄]**** 設為 [有更新時才複製]****。 請參閱下列螢幕擷取畫面。
 
 ![Visual Studio CopyToOutput for SetupEntryPoint 批次檔][image1]
 
@@ -154,7 +154,7 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-接下來，建置解決方案並部署至本機開發叢集。 在服務啟動之後（如[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)所示），您可以看到 MySetup.bat 檔案成功的方式有兩種。 開啟 PowerShell 命令提示字元並輸入：
+接下來，建置解決方案並部署至本機開發叢集。 啟動服務之後（如 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)所示），您可以透過兩種方式看到 MySetup.bat 檔案成功。 開啟 PowerShell 命令提示字元並輸入：
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
@@ -168,7 +168,7 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>從安裝程式進入點執行 PowerShell 命令
-若要從**SetupEntryPoint**點執行 PowerShell，您可以在指向 PowerShell 檔案的批次檔中執行**PowerShell.exe** 。 首先，將 PowerShell 檔案新增至服務專案，例如 **MySetup.ps1**。 請記得設定 [有更新時才複製] ** 屬性，讓這個檔案也會包含於服務封裝內。 下列範例顯示的範例批次檔可啟動名為 MySetup.ps1 的 PowerShell 檔案，以設定名為 **TestVariable** 的系統環境變數。
+若要從 **SetupEntryPoint** 點執行 PowerShell，您可以在指向 PowerShell 檔案的批次檔中執行 **PowerShell.exe** 。 首先，將 PowerShell 檔案新增至服務專案，例如 **MySetup.ps1**。 請記得設定 [有更新時才複製] ** 屬性，讓這個檔案也會包含於服務封裝內。 下列範例顯示的範例批次檔可啟動名為 MySetup.ps1 的 PowerShell 檔案，以設定名為 **TestVariable** 的系統環境變數。
 
 MySetup.bat 可啟動 PowerShell 檔案：
 

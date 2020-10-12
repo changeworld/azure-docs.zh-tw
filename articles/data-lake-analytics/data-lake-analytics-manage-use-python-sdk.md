@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/08/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: dd3511fefe39f51a521aa211454a49763224a6d9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876235"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>使用 Python 來管理 Azure Data Lake Analytics
@@ -31,9 +31,9 @@ ms.locfileid: "87876235"
 
 請安裝下列模組：
 
-* **Azure 管理資源**模組包含適用于 Active Directory 的其他 azure 模組等等。
+* **Azure 管理資源**模組包含適用于 Active Directory 等的其他 azure 模組。
 * **azure-datalake-store** 模組包含 Azure Data Lake Store 檔案系統作業。 
-* **Datalake 存放區**模組包含 Azure Data Lake 存放區帳戶管理作業。
+* **Azure 管理-datalake 儲存**模組包含 Azure Data Lake 儲存區帳戶管理作業。
 * **azure-mgmt-datalake-analytics** 模組包含 Azure Data Lake Analytics 作業。 
 
 請先執行下列命令，以確保您擁有最新的 `pip`：
@@ -100,7 +100,7 @@ import time
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>使用快顯視窗進行互動式使用者驗證
 
-不支援此方法。
+不支援這個方法。
 
 ### <a name="interactive-user-authentication-with-a-device-code"></a>使用裝置代碼進行互動式使用者驗證
 
@@ -120,7 +120,7 @@ credentials = ServicePrincipalCredentials(
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>使用 API 和憑證進行非互動式驗證
 
-不支援此方法。
+不支援這個方法。
 
 ## <a name="common-script-variables"></a>通用指令碼變數
 

@@ -1,6 +1,6 @@
 ---
 title: 如何設定或編輯 Azure API 管理原則 | Microsoft Docs
-description: 瞭解如何設定或編輯 Azure API 管理原則。 這些原則是描述輸入和輸出語句序列的 XML 檔。
+description: 瞭解如何設定或編輯 Azure API 管理原則。 這些原則是描述一連串輸入和輸出語句的 XML 檔。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848004"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何設定或編輯 Azure API 管理原則
@@ -38,7 +38,7 @@ ms.locfileid: "87848004"
 4. 選取其中一個您先前匯入的 API。
 5. 選取 [設計] 索引標籤。
 6. 選取您要套用原則的作業。 如果您想要將原則套用至所有作業，請選取 [所有作業]****。
-7. **</>** 在 [**輸入處理**] 或 [**輸出處理**] 區段中，選取 [ (程式碼編輯器]) 圖示。
+7. **</>** 在 [**輸入處理**或**輸出處理**] 區段中，選取 [ (程式碼編輯器]) 圖示。
 8. 將需要的原則程式碼貼入其中一個適當的區塊。
 
     ```xml
@@ -110,7 +110,7 @@ API 範圍已設定為所選 API 的**所有作業**。
 
     ![API 範圍](./media/api-management-howto-policies/api-scope.png)
 
-2. 選取**所有作業**
+2. 選取 [所有作業]
 3. 按一下三角形圖示。
 4. 選取 [程式碼編輯器]****。
 5. 新增或編輯原則。
@@ -120,7 +120,7 @@ API 範圍已設定為所選 API 的**所有作業**。
 
 作業範圍已設定為所選的作業。
 
-1. 選取**API**。
+1. 選取 **API**。
 2. 選取您要套用原則的作業。
 
     ![作業範圍](./media/api-management-howto-policies/operation-scope.png)

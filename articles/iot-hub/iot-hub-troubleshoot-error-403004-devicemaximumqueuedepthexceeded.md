@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: fc5029f26e5d615502925c4def4e2973c118f38d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90029982"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
@@ -32,7 +32,7 @@ ms.locfileid: "90029982"
 
 您遇到這項限制的最可能原因是因為您使用 HTTPS 來接收訊息（這會導致使用持續輪詢 `ReceiveAsync` ），而導致 IoT 中樞節流要求。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 使用 HTTPS 時，針對雲端到裝置訊息支援的模式是裝置以間歇方式連接而不常檢查訊息 (低於每 25 分鐘一次)。 若要降低進入佇列限制的可能性，請切換至 AMQP 或 MQTT，以取得雲端到裝置的訊息。
 

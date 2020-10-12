@@ -1,20 +1,20 @@
 ---
 title: 移動 Azure 傳統部署資源
-description: 使用 Azure Resource Manager 將傳統部署資源移到新的資源群組或訂用帳戶。
+description: 使用 Azure Resource Manager 將傳統部署資源移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 78b9769a31fa0c96c12e18d05cb9c484aa52a1d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75485282"
 ---
-# <a name="move-guidance-for-classic-deployment-model-resources"></a>傳統部署模型資源的移動指引
+# <a name="move-guidance-for-classic-deployment-model-resources"></a>傳統部署模型資源的移動指導方針
 
 移動透過傳統模型所部署之資源的步驟，會根據您是要移動訂用帳戶內的資源還是新的訂用帳戶而有所不同。
 
-## <a name="move-in-the-same-subscription"></a>在相同的訂用帳戶中移動
+## <a name="move-in-the-same-subscription"></a>移入相同的訂用帳戶
 
 將資源從一個資源群組移到相同訂用帳戶內的另一個資源群組時，適用下列限制︰
 
@@ -25,7 +25,7 @@ ms.locfileid: "75485282"
 * 一次只能移動一個儲存體帳戶 (傳統)。
 * 透過相同的作業，儲存體帳戶 (傳統) 不能與虛擬機器或雲端服務一起移動。
 
-若要將傳統資源移到相同訂用帳戶內的新資源群組，請透過入口網站、Azure PowerShell、Azure CLI 或 REST API，使用[標準移動作業](../move-resource-group-and-subscription.md)。 當您移動 Resource Manager 資源時，您會使用相同的作業。
+若要將傳統資源移到相同訂用帳戶內的新資源群組，請透過入口網站、Azure PowerShell、Azure CLI 或 REST API 使用 [標準移動作業](../move-resource-group-and-subscription.md) 。 當您移動 Resource Manager 資源時，您會使用相同的作業。
 
 ## <a name="move-across-subscriptions"></a>跨訂用帳戶移動
 
@@ -96,6 +96,6 @@ ms.locfileid: "75485282"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在移動傳統資源時遇到問題，請聯絡[支援](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)人員。
+如果您在移動傳統資源時發生問題，請聯絡 [支援](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)人員。
 
 如需用來移動資源的命令，請參閱[將資源移動到新的資源群組或訂用帳戶](../move-resource-group-and-subscription.md)。

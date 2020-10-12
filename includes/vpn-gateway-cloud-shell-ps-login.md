@@ -9,15 +9,15 @@ ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77133611"
 ---
 以較高的權限開啟 PowerShell 主控台。
 
-如果您是以本機執行 Azure PowerShell，請連線到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。 如果您改為使用 Azure Cloud Shell，就不需要執行*disconnect-azaccount*。 Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
+如果您是以本機執行 Azure PowerShell，請連線到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。 如果您改為使用 Azure Cloud Shell，就不需要執行 *disconnect-azaccount*。 Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
 
 ```azurepowershell
 Connect-AzAccount

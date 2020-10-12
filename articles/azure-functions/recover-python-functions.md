@@ -1,5 +1,5 @@
 ---
-title: 針對 Azure Functions 中的 Python 函式應用程式進行疑難排解
+title: 針對 Azure Functions 中的 Python 函數應用程式進行疑難排解
 description: 瞭解如何針對 Python 功能進行疑難排解。
 author: Hazhzeng
 ms.topic: article
@@ -7,22 +7,22 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846032"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>針對 Azure Functions 中的 Python 錯誤進行疑難排解
 
-以下是 Python 功能常見問題的疑難排解指南清單：
+以下是 Python 函數中常見問題的疑難排解指南清單：
 
 * [ModuleNotFoundError 和 ImportError](#troubleshoot-modulenotfounderror)
 * [無法匯入 ' cygrpc '](#troubleshoot-cannot-import-cygrpc)
 
 ## <a name="troubleshoot-modulenotfounderror"></a>針對 ModuleNotFoundError 進行疑難排解
 
-本節可協助您針對 Python 函式應用程式中的模組相關錯誤進行疑難排解。 這些錯誤通常會導致下列 Azure Functions 錯誤訊息：
+本節可協助您針對 Python 函數應用程式中的模組相關錯誤進行疑難排解。 這些錯誤通常會導致下列 Azure Functions 錯誤訊息：
 
 > `Exception: ModuleNotFoundError: No module named 'module_name'.`
 
@@ -144,7 +144,7 @@ you must uninstall azure-storage first.</pre>
 
 ---
 
-## <a name="troubleshoot-cannot-import-cygrpc"></a>無法匯入 ' cygrpc ' 的疑難排解
+## <a name="troubleshoot-cannot-import-cygrpc"></a>疑難排解無法匯入 ' cygrpc '
 
 本節可協助您針對 Python 函數應用程式中的「cygrpc」相關錯誤進行疑難排解。 這些錯誤通常會導致下列 Azure Functions 錯誤訊息：
 
@@ -152,35 +152,35 @@ you must uninstall azure-storage first.</pre>
 
 當 Python 函式應用程式無法以適當的 Python 解譯器啟動時，就會發生此錯誤問題。 此錯誤的根本原因是下列其中一個問題：
 
-- [Python 解譯器不相符的 OS 架構](#the-python-interpreter-mismatches-os-architecture)
-- [Azure Functions Python 背景工作角色不支援 Python 解譯器](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)
+- [Python 解譯器不符的作業系統架構](#the-python-interpreter-mismatches-os-architecture)
+- [Azure Functions Python 工作者不支援 Python 解譯器](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)
 
 ### <a name="diagnose-cygrpc-reference-error"></a>診斷 ' cygrpc ' 參考錯誤
 
-#### <a name="the-python-interpreter-mismatches-os-architecture"></a>Python 解譯器不相符的 OS 架構
+#### <a name="the-python-interpreter-mismatches-os-architecture"></a>Python 解譯器不符的作業系統架構
 
-這很可能是因為32位的 Python 解譯器安裝在您的64位作業系統上。
+這很可能是因為64位作業系統上安裝了32位的 Python 解譯器。
 
-如果您是在 x64 作業系統上執行，請確定您的 Python 3.6、3.7 或3.8 解譯器也是在64位版本上。
+如果您是在 x64 作業系統上執行，請確定您的 Python 3.6、3.7 或3.8 解譯器也是在64位版本上執行。
 
 您可以使用下列命令來檢查您的 Python 解譯器位：
 
-在 PowerShell 中的 Windows 上：`py -c 'import platform; print(platform.architecture()[0])'`
+在 PowerShell 的 Windows 中： `py -c 'import platform; print(platform.architecture()[0])'`
 
-在類似 Unix 的 shell 上：`python3 -c 'import platform; print(platform.architecture()[0])'`
+在類似 Unix 的 shell 上： `python3 -c 'import platform; print(platform.architecture()[0])'`
 
-如果 Python 解譯器位與作業系統架構不相符，請從[Python Software Foundation](https://python.org/downloads/release)下載適當的 python 解譯器。
+如果 Python 解譯器位與作業系統架構之間有不相符的情況，請從 [Python Software Foundation](https://python.org/downloads/release)下載適當的 python 解譯器。
 
-#### <a name="the-python-interpreter-is-not-supported-by-azure-functions-python-worker"></a>Azure Functions Python 背景工作角色不支援 Python 解譯器
+#### <a name="the-python-interpreter-is-not-supported-by-azure-functions-python-worker"></a>Azure Functions Python 工作者不支援 Python 解譯器
 
 Azure Functions Python 背景工作角色僅支援 Python 3.6、3.7 和3.8。
-請檢查您的 Python 解譯器是否符合我們 `py --version` 在 Windows 或 `python3 --version` Unix 之類的系統中的預期版本。 確定傳回結果為 Python 3.6. x、Python 3.7. x 或 Python 3.8. x。
+請檢查您的 Python 解譯器是否符合 `py --version` Windows 或 Unix 等系統中的預期版本 `python3 --version` 。 確定傳回結果為 Python 3.6. x、Python 3.7. x 或 Python 3.8. x。
 
-如果您的 Python 解譯器版本不符合預期，請從[Python Software Foundation](https://python.org/downloads/release)下載 python 3.6、3.7 或3.8 解譯器。
+如果您的 Python 解譯器版本不符合我們的預期，請從 [Python Software Foundation](https://python.org/downloads/release)下載 python 3.6、3.7 或3.8 解譯器。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您無法解決問題，請向函數小組回報：
+如果您無法解決問題，請向函數小組報告：
 
 > [!div class="nextstepaction"]
 > [回報未解決的問題](https://github.com/Azure/azure-functions-python-worker/issues)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845760"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 OData 來源複製資料
@@ -39,7 +39,7 @@ ms.locfileid: "87845760"
 具體而言，這個 OData 連接器支援：
 
 - OData 3.0 和 4.0 版。
-- 使用下列其中一種驗證來複製資料：**匿名**、**基本**、 **Windows**和**AAD 服務主體**。
+- 使用下列其中一種驗證來複製資料： **匿名**、 **基本**、 **Windows**和 **AAD 服務主體**。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -59,7 +59,7 @@ ms.locfileid: "87845760"
 |:--- |:--- |:--- |
 | type | **type** 屬性必須設為 **OData**。 |是 |
 | url | OData 服務的根 URL。 |是 |
-| authenticationType | 用來連線到 OData 來源的驗證類型。 允許的值為**Anonymous**、 **Basic**、 **Windows**和**AadServicePrincipal**。 不支援以使用者為基礎的 OAuth。 | 是 |
+| authenticationType | 用來連線到 OData 來源的驗證類型。 允許的值為 [ **匿名**]、[ **基本**]、[ **Windows**] 和 [ **>aadserviceprincipal**]。 不支援以使用者為基礎的 OAuth。 | 是 |
 | userName | 如果使用基本或 Windows 驗證，請指定 **userName**。 | 否 |
 | 密碼 | 針對您指定 **userName** 的使用者帳戶指定 **password**。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 應用程式的用戶端識別碼。 | 否 |
@@ -69,7 +69,7 @@ ms.locfileid: "87845760"
 | servicePrincipalEmbeddedCertPassword | 如果您的憑證受到密碼保護，則指定您憑證的密碼。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。  | 否|
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 否 |
 | aadResourceId | 指定您要求授權的 AAD 資源。| 否 |
-| azureCloudType | 針對 [服務主體驗證]，指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[必要條件](#prerequisites)一節深入了解。 如果未指定，則會使用預設的 Azure Integration Runtime。 |否 |
 
 **範例1：使用匿名驗證**
@@ -239,13 +239,13 @@ ms.locfileid: "87845760"
 
 ### <a name="odata-as-source"></a>OData 作為來源
 
-若要從 OData 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
+若要從 OData 複製資料，[複製活動 **來源** ] 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的**類型**屬性必須設定為**ODataSource**。 | 是 |
+| type | 複製活動來源的 **type** 屬性必須設為 **ODataSource**。 | 是 |
 | 查詢 | 用來篩選資料的 OData 查詢選項。 範例： `"$select=Name,Description&$top=5"`.<br/><br/>**注意**：OData 連接器會從以下的組合 URL 複製資料：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 如需詳細資訊，請參閱 [OData URL 元件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
-| httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為**00:30:00** (30 分鐘) 。 | 否 |
+| httpRequestTimeout | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為 **00:30:00** (30 分鐘) 。 | 否 |
 
 **範例**
 

@@ -1,5 +1,5 @@
 ---
-title: 將 .NET SDK 用於 Microsoft Azure StorSimple 資料管理員作業
+title: 使用 .NET SDK 進行 Microsoft Azure StorSimple 資料管理員作業
 description: 瞭解如何在 StorSimple 資料管理員服務內使用 .NET SDK 來轉換 StorSimple 裝置資料。
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183641"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 起始資料轉換
@@ -194,4 +194,4 @@ ms.locfileid: "88183641"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 StorSimple 資料管理員的 UI 來轉換您的資料](storsimple-data-manager-ui.md)。
+[使用 STORSIMPLE 資料管理員 UI 來轉換您的資料](storsimple-data-manager-ui.md)。

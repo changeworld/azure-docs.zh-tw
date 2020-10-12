@@ -1,5 +1,5 @@
 ---
-title: SLES 上 Azure Vm 上 NFS 的高可用性 |Microsoft Docs
+title: SLES 上的 Azure Vm 上 NFS 的高可用性 |Microsoft Docs
 description: 適用於 SUSE Linux Enterprise Server 之 Azure VM 上 NFS 的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085158"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>適用於 SUSE Linux Enterprise Server 之 Azure VM 上 NFS 的高可用性
@@ -78,7 +78,7 @@ ms.locfileid: "87085158"
 * [適用於 SAP Applications 12 SP3 的 SUSE Linux Enterprise Server 最佳做法指南][sles-for-sap-bp]
 * [SUSE 高可用性延伸模組 12 SP3 版本資訊][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 為了實現高可用性，SAP NetWeaver 需要使用 NFS 伺服器。 NFS 伺服器會設定於不同叢集中，並可供多個 SAP 系統使用。
 
@@ -94,7 +94,7 @@ NFS 伺服器會針對每個使用此 NFS 伺服器的 SAP 系統，使用專用
 * 探查連接埠
   * NW1 的連接埠為 61000
   * NW2 的連接埠為 61001
-* 負載平衡規則（如果使用基本負載平衡器）
+* 負載平衡規則 (是否使用基本負載平衡器) 
   * NW1 的 TCP 為 2049
   * NW1 的 UDP 為 2049
   * NW2 的 TCP 為 2049
@@ -107,20 +107,20 @@ NFS 伺服器會針對每個使用此 NFS 伺服器的 SAP 系統，使用專用
 ### <a name="deploy-linux-via-azure-template"></a>透過 Azure 範本部署 Linux
 
 Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，讓您可用來部署新的虛擬機器。
-您可以使用 GitHub 上的其中一個快速入門範本來部署所有必要資源。 此範本會部署虛擬機器、負載平衡器、可用性設定組等。請遵循下列步驟來部署範本：
+您可以使用 GitHub 上的其中一個快速入門範本來部署所有必要資源。 此範本會部署虛擬機器、負載平衡器、可用性設定組等。遵循下列步驟來部署範本：
 
 1. 在 Azure 入口網站中開啟 [SAP 檔案伺服器範本][template-file-server]   
 1. 輸入下列參數
    1. 資源前置詞  
       輸入您想要使用的前置詞。 該值會作為所部署之資源的前置詞。
    2. SAP 系統計數  
-      輸入將使用此檔案伺服器的 SAP 系統數目。 這會部署所需數量的前端設定、負載平衡規則、探查埠、磁片等。
+      輸入將使用此檔案伺服器的 SAP 系統數目。 這會部署所需的前端設定數量、負載平衡規則、探查埠、磁片等等。
    3. OS 類型  
       選取一個 Linux 發行版本。 在此範例中，請選取 SLES 12
    4. 管理員使用者名稱和管理員密碼  
       建立可用來登入電腦的新使用者。
    5. 子網路識別碼  
-      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是/subscriptions/訂用帳戶** &lt; &gt; 識別碼**/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
+      如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是/subscriptions/** &lt; 訂 &gt; **用帳戶識別碼/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
@@ -136,8 +136,8 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    SLES For SAP Applications 12 SP3 (BYOS)  
    選取稍早建立的「可用性設定組」  
 1. 在兩部虛擬機器上為每個 SAP 系統各新增一個資料磁碟。
-1. 建立 Load Balancer （內部）。 建議[標準負載平衡器](../../../load-balancer/load-balancer-overview.md)。  
-   1. 請依照下列指示來建立標準負載平衡器：
+1. 建立 Load Balancer (內部) 。 建議[標準負載平衡器](../../../load-balancer/load-balancer-overview.md)。  
+   1. 請遵循下列指示來建立標準負載平衡器：
       1. 建立前端 IP 位址
          1. NW1 的 IP 位址為 10.0.0.4
             1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
@@ -149,11 +149,11 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
       1. 建立後端集區
          1. 連線到應該屬於 NFS 叢集一部分之所有虛擬機器的主要網路介面
             1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
-            1. 輸入新後端集區的名稱（例如**nw-後**端）
+            1. 輸入新後端集區的名稱 (例如 **nw-後端**) 
             1. 選取虛擬網路
             1. 按一下 [新增虛擬機器]
             1. 選取 NFS 叢集的虛擬機器及其 IP 位址。
-            1. 按一下 [加入]。
+            1. 按一下 [新增]。
       1. 建立健康狀態探查
          1. NW1 的連接埠為 61000
             1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
@@ -164,8 +164,8 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             * 重複上述步驟來為 NW2 建立健康狀態探查
       1. 負載平衡規則
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
-         1. 輸入新負載平衡器規則的名稱（例如**nw1-lb**）
-         1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查（例如**nw1-前端**。 **nw-後端**和**nw1-hp**）
+         1. 輸入新負載平衡器規則的名稱 (例如 **nw1-lb**) 
+         1. 選取您稍早建立的前端 IP 位址、後端集區和健康情況探查 (例如 **nw1-前端**。 **nw-後端** 和 **nw1-hp**) 
          1. 選取 [HA 連接埠]。
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
@@ -183,7 +183,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
       1. 建立後端集區
          1. 連線到應該屬於 NFS 叢集一部分之所有虛擬機器的主要網路介面
             1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
-            1. 輸入新後端集區的名稱（例如**nw-後**端）
+            1. 輸入新後端集區的名稱 (例如 **nw-後端**) 
             1. 按一下 [新增虛擬機器]
             1. 選取您稍早建立的可用性設定組
             1. 選取 NFS 叢集的虛擬機器
@@ -462,7 +462,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[A]** 設定 drbd 核心分裂偵測
 
-   使用 drbd 將資料從一部主機同步處理至另一部主機時，可能發生所謂的核心分裂。 分割的大腦是一種案例，其中兩個叢集節點會將 drbd 裝置升級為主要複本，並進行同步處理。這可能是很罕見的情況，但您仍然想要盡可能快速地處理和解決分裂的大腦。 因此，在發生核心分裂時收到通知便相當重要。
+   使用 drbd 將資料從一部主機同步處理至另一部主機時，可能發生所謂的核心分裂。 分割的大腦是兩個叢集節點都會將 drbd 裝置升級為主要複本且已不同步的情況。這可能是很罕見的情況，但您仍然想要盡可能快速地處理和解決分割的大腦。 因此，在發生核心分裂時收到通知便相當重要。
 
    如需了解如何設定核心分裂通知，請參閱[官方 drbd 文件](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-split-brain-notification) \(英文\)。
 
@@ -571,14 +571,14 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
 
-   叢集 `crossmnt` 資源中的選項 `exportfs` 會出現在我們的檔中，以提供舊版 SLES 版本的回溯相容性。  
+   我們的檔中有叢集 `crossmnt` 資源的選項， `exportfs` 以提供與舊版 SLES 的回溯相容性。  
 
 1. **[1]** 停用維護模式
    
    <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [安裝 SAP ASCS 和資料庫](high-availability-guide-suse.md)
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
