@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243540"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理原則中的錯誤處理
@@ -59,30 +59,30 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 下列原則可用於 `on-error` 原則區段。
 
--   [決定](api-management-advanced-policies.md#choose)
--   [集合-變數](api-management-advanced-policies.md#set-variable)
+-   [選擇](api-management-advanced-policies.md#choose)
+-   [設定變數](api-management-advanced-policies.md#set-variable)
 -   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)
 -   [return-response](api-management-advanced-policies.md#ReturnResponse)
 -   [set-header](api-management-transformation-policies.md#SetHTTPheader)
 -   [set-method](api-management-advanced-policies.md#SetRequestMethod)
 -   [set-status](api-management-advanced-policies.md#SetStatus)
 -   [send-request](api-management-advanced-policies.md#SendRequest)
--   [傳送-單向要求](api-management-advanced-policies.md#SendOneWayRequest)
+-   [傳送單向要求](api-management-advanced-policies.md#SendOneWayRequest)
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
 -   [limit-concurrency](api-management-advanced-policies.md#LimitConcurrency)
 -   [mock-response](api-management-advanced-policies.md#mock-response)
--   [再](api-management-advanced-policies.md#Retry)
--   [追蹤](api-management-advanced-policies.md#Trace)
+-   [重試](api-management-advanced-policies.md#Retry)
+-   [跟蹤](api-management-advanced-policies.md#Trace)
 
 ## <a name="lasterror"></a>LastError
 
-當發生錯誤，且控制跳到 `on-error` 原則區段時，錯誤會儲存在[內容中。LastError](api-management-policy-expressions.md#ContextVariables)屬性，可由區段中的原則存取 `on-error` 。 LastError 具有下列屬性。
+發生錯誤並控制跳至 `on-error` 原則區段時，錯誤會儲存在 [內容中。LastError](api-management-policy-expressions.md#ContextVariables) 屬性，可由一節中的原則來存取 `on-error` 。 LastError 具有下列屬性。
 
-| 名稱       | 類型   | 描述                                                                                               | 必要 |
+| 名稱       | 類型   | 說明                                                                                               | 必要 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | 字串 | 發生錯誤之元素的名稱。 可以是原則或內建管線步驟名稱。      | 是      |
+| `Source`   | 字串 | 發生錯誤之元素的名稱。 可以是原則或內建的管線步驟名稱。      | 是      |
 | `Reason`   | 字串 | 方便電腦理解的錯誤碼，可用於處理錯誤。                                       | 否       |
 | `Message`  | 字串 | 人類可以看懂的錯誤描述。                                                                         | 是      |
 | `Scope`    | 字串 | 發生錯誤之範圍的名稱，此名稱可為「全域」、「產品」、「API」或「作業」其中之一 | 否       |
@@ -105,9 +105,9 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 | 組態 | Uri 不符合任何 API 或作業 | OperationNotFound       | 連入要求與作業無法匹配。                                                                      |
 | 授權 | 未提供訂用帳戶金鑰             | SubscriptionKeyNotFound | 拒絕存取，因為找不到訂用帳戶金鑰。 在對這個 API 提出要求時，請務必包含訂用帳戶金鑰。 |
 | 授權 | 訂用帳戶金鑰值無效         | SubscriptionKeyInvalid  | 拒絕存取，因為訂用帳戶金鑰無效。 請務必提供適用於作用中訂用帳戶的有效金鑰。            |
-| 多個 | 從用戶端到 API 管理閘道的下游連線 () 已由用戶端在要求擱置時中止 | ClientConnectionFailure | 多個 |
-| 多個 | 從 API 管理閘道到後端服務的上游連線 () 未建立或已由後端中止 | BackendConnectionFailure | 多個 |
-| 多個 | 評估特定運算式時發生執行時間例外狀況 | ExpressionValueEvaluationFailure | 多個 |
+| multiple | 用戶端與 API 管理閘道之間的下游連線 () 已在要求暫止時由用戶端中止 | ClientConnectionFailure | multiple |
+| multiple | 從 API 管理閘道連線至後端服務的上游連線 () 未建立或已由後端中止 | BackendConnectionFailure | multiple |
+| multiple | 評估特定運算式期間發生執行時間例外狀況 | ExpressionValueEvaluationFailure | multiple |
 
 ## <a name="predefined-errors-for-policies"></a>原則的預先定義錯誤
 
@@ -132,7 +132,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 | validate-jwt | 權杖中沒有必要的宣告                          | TokenClaimNotFound        | 下列宣告中沒有 JWT 權杖︰<c1\>, <c2\>, … 拒絕存取。                                                            |
 | validate-jwt | 宣告值不相符                                           | TokenClaimValueNotAllowed | 不允許宣告 {claim-name} 值 {claim-value}。 拒絕存取。                                                             |
 | validate-jwt | 其他驗證失敗                                       | JwtInvalid                | <來自 jwt 程式庫的訊息\>                                                                                                          |
-| 正向要求或傳送要求 | 在設定的超時時間內，未從後端接收 HTTP 回應狀態碼和標頭 | 逾時 | 多個 |
+| 轉寄要求或傳送要求 | HTTP 回應狀態碼和標頭未在設定的超時時間內從後端收到 | 逾時 | multiple |
 
 ## <a name="example"></a>範例
 
@@ -183,7 +183,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 ![未經授權的錯誤回應](media/api-management-error-handling-policies/error-response.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需使用原則的詳細資訊，請參閱︰
 

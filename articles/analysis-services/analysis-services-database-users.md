@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015267"
 ---
 # <a name="manage-database-roles-and-users"></a>管理資料庫角色和使用者
@@ -26,15 +26,15 @@ ms.locfileid: "87015267"
 *  **處理** - 使用者可以連線到資料庫並對其執行處理作業，以及分析模型資料庫的資料。
 *  **讀取** - 使用者可以使用用戶端應用程式來連接和分析模型資料庫的資料。
 
-建立表格式模型專案時，您可以使用 Visual Studio 中的角色管理員與 Analysis Services 專案，建立角色，並將使用者或群組新增至這些角色。 部署到伺服器時，請使用 SQL Server Management Studio （SSMS）、 [Analysis Services PowerShell Cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格式模型指令碼語言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)（TMSL）來新增或移除角色和使用者成員。
+建立表格式模型專案時，您可以使用 Visual Studio 中的 [角色管理員] 與 Analysis Services 專案來建立角色，並將使用者或群組新增至這些角色。 部署到伺服器時，請使用 SQL Server Management Studio (SSMS) 、 [Analysis Services PowerShell Cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或 [表格式模型指令碼語言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) ，以新增或移除角色和使用者成員。
 
-新增**安全性群組**時，請使用 `obj:groupid@tenantid` 。
+新增 **安全性群組**時，請使用 `obj:groupid@tenantid` 。
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>在 Visual Studio 中新增或管理角色和使用者  
   
-1.  在 [**表格式模型瀏覽器**] 中，以滑鼠右鍵按一下 [**角色**]。  
+1.  在 [ **表格式模型瀏覽器**] 中，以滑鼠右鍵按一下 [ **角色**]。  
   
-2.  在 [**角色管理員**] 中，按一下 [**新增**]。  
+2.  在 [ **角色管理員**] 中，按一下 [ **新增**]。  
   
 3.  輸入角色的名稱。  
   
@@ -42,17 +42,17 @@ ms.locfileid: "87015267"
   
 4.  選取下列其中一個權限：  
   
-    |權限|描述|  
+    |權限|說明|  
     |----------------|-----------------|  
     |**None**|成員無法讀取或修改模型架構，也無法查詢資料。|  
     |**讀取**|成員可以查詢資料 (根據資料列篩選條件)，但無法修改模型結構描述。|  
     |**讀取和處理**|成員可以查詢資料 (根據資料列層級的篩選條件)，並執行「處理」和「全部處理」作業，但無法修改模型結構描述。|  
-    |**處理程序**|成員可以執行「處理」和「全部處理」作業。 無法讀取或修改模型架構，也無法查詢資料。|  
+    |**處理**|成員可以執行「處理」和「全部處理」作業。 無法讀取或修改模型架構，也無法查詢資料。|  
     |**系統管理員**|成員可以修改模型結構描述及查詢所有資料。|   
   
 5.  如果您建立的角色具有「讀取」或「讀取和處理」權限，您可以使用 DAX 公式來新增資料列篩選條件。 按一下 [資料列篩選條件]**** 索引標籤，然後選取資料表，再按一下 [DAX 篩選條件]**** 欄位，然後輸入 DAX 公式。
   
-6.  按一下 [**成員**] [  >  **新增外部**]。  
+6.  按一下 [**成員**  >  **加入外部**]。  
   
 8.  在 [新增外部成員]**** 中，依照電子郵件地址輸入 Azure AD 租用戶中的使用者或群組。 按一下 [確定] 並關閉 [角色管理員] 後，角色和角色成員就會出現在 [表格式模型總管] 中。 
  
@@ -65,13 +65,13 @@ ms.locfileid: "87015267"
 
 若要將角色和使用者新增至已部署的模型資料庫，您必須以伺服器管理員身分連線到伺服器，或已經是具有系統管理員權限的資料庫角色。
 
-1. 在 [物件總管] 中，以滑鼠右鍵按一下 [**角色**] [  >  **新增角色**]。
+1. 在 [物件總管] 中，以滑鼠右鍵按一下 [**角色**  >  **新增角色**]。
 
 2. 在 [建立角色]**** 中，輸入角色名稱和描述。
 
 3. 選取權限。
 
-   |權限|描述|  
+   |權限|說明|  
    |----------------|-----------------|  
    |**完整控制權 (管理員)**|成員可以修改模型結構描述、程序，以及查詢所有資料。| 
    |**處理資料庫**|成員可以執行「處理」和「全部處理」作業。 無法修改模型結構描述，也無法查詢資料。|  
@@ -133,9 +133,9 @@ ms.locfileid: "87015267"
   
 只能針對具有「讀取」和「讀取和處理」權限的角色定義資料列篩選條件。 根據預設，如果未針對特定資料表定義資料列篩選條件，則成員可以查詢資料表中的所有資料列，除非從另一個資料表套用交叉篩選。
   
- 資料列篩選條件需要 DAX 公式，其必須評估為 TRUE/FALSE 值，以定義該特定角色的成員可以查詢的資料列。 無法查詢 DAX 公式中未包含的資料列。 例如，具有下列資料列篩選運算式的 Customers 資料表 *= customers [Country] = "USA"*，銷售角色的成員只能看到美國的客戶。  
+ 資料列篩選條件需要 DAX 公式，其必須評估為 TRUE/FALSE 值，以定義該特定角色的成員可以查詢的資料列。 無法查詢 DAX 公式中未包含的資料列。 例如，具有下列資料列篩選運算式的 Customers 資料表（ *= customers [Country] = "USA"*），Sales 角色成員只能看到美國的客戶。  
   
-資料列篩選條件會套用至指定的資料列和相關資料列。 當資料表具有多個關聯性時，篩選會對作用中關聯性套用安全性。 資料列篩選條件會與針對相關資料表定義的其他資料列篩選條件產生交集，例如：  
+資料列篩選條件會套用至指定的資料列和相關資料列。 當資料表具有多個關聯性時，篩選條件會針對使用中的關聯性來套用安全性。 資料列篩選條件會與針對相關資料表定義的其他資料列篩選條件產生交集，例如：  
   
 |Table|DAX 運算式|  
 |-----------|--------------------|  

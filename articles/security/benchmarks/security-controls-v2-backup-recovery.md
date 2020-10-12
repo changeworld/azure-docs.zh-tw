@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322116"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全性控制 V2：備份和復原
@@ -30,7 +30,7 @@ ms.locfileid: "91322116"
 
 針對較高的保護層級，您可以啟用地理區域冗余儲存選項，以將備份資料複寫到次要區域，並使用跨區域還原進行復原。
 
-- [企業規模的商務持續性和嚴重損壞修復](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
+- [企業級商務持續性和災害復原](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery) \(部分機器翻譯\)
 
 - [如何啟用 Azure 備份](/azure/backup/)
 

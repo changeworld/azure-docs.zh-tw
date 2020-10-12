@@ -1,6 +1,6 @@
 ---
 title: Azure 儲存體合規性供應項目 |Microsoft Docs
-description: 閱讀有關管理資料收集和使用方式的國家、地區和業界特定需求的 Azure 儲存體合規性供應專案摘要。
+description: 閱讀有關管理資料收集和使用之國家、地區和業界特定需求的 Azure 儲存體合規性供應專案摘要。
 services: storage
 author: fhryo-msft
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: ac37dc66c9861c974c2d5fea435a3ae6771e6c7d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035003"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 儲存體合規性供應項目

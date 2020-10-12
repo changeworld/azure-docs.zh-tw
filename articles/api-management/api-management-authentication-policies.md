@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
 ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243710"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理驗證原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a>驗證原則
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> 驗證原則
 
 -   [使用基本驗證進行驗證](api-management-authentication-policies.md#Basic) - 使用基本驗證來驗證後端服務。
 
 -   [使用用戶端憑證進行驗證](api-management-authentication-policies.md#ClientCertificate) - 使用用戶端憑證來驗證後端服務。
 
--   [使用受控識別進行驗證](api-management-authentication-policies.md#ManagedIdentity)-使用 API 管理服務的[受控識別](../active-directory/managed-identities-azure-resources/overview.md)進行驗證。
+-   [使用受控識別進行驗證](api-management-authentication-policies.md#ManagedIdentity) -使用 API 管理服務的 [受控識別](../active-directory/managed-identities-azure-resources/overview.md) 進行驗證。
 
 ##  <a name="authenticate-with-basic"></a><a name="Basic"></a> 使用基本驗證進行驗證
  使用 `authentication-basic` 原則以利用「基本」驗證向後端服務進行驗證。 此原則會將「HTTP 授權」標頭有效地設定為與此原則中所提供認證對應的值。
@@ -48,18 +48,18 @@ ms.locfileid: "86243710"
 
 ### <a name="elements"></a>項目
 
-|名稱|描述|必要|
+|名稱|說明|必要|
 |----------|-----------------|--------------|
 |authentication-basic|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|描述|必要|預設|
+|名稱|說明|必要|預設|
 |----------|-----------------|--------------|-------------|
-|使用者名稱|指定「基本驗證」認證的使用者名稱。|是|N/A|
+|username|指定「基本驗證」認證的使用者名稱。|是|N/A|
 |密碼|指定「基本驗證」認證的密碼。|是|N/A|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** inbound
@@ -89,7 +89,7 @@ ms.locfileid: "86243710"
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ``` 
 
-在此範例中，用戶端憑證是在原則中設定，而不是從內建憑證存放區中抓取：
+在此範例中，用戶端憑證是在原則中設定，而不是從內建的憑證存放區中取出：
 
 ```xml
 <authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
@@ -97,30 +97,30 @@ ms.locfileid: "86243710"
 
 ### <a name="elements"></a>項目  
   
-|名稱|描述|必要|  
+|名稱|說明|必要|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>屬性  
   
-|名稱|描述|必要|預設|  
+|名稱|說明|必要|預設|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|用戶端憑證的指紋。|`thumbprint` `certificate-id` 必須有或。|N/A|
-|憑證識別碼|憑證資源名稱。|`thumbprint` `certificate-id` 必須有或。|N/A|
-|body|做為位元組陣列的用戶端憑證。|否|N/A|
-|密碼|用戶端憑證的密碼。|在中指定的憑證 `body` 受密碼保護時使用。|N/A|
+|thumbprint|用戶端憑證的指紋。|`thumbprint`或都 `certificate-id` 必須存在。|N/A|
+|憑證識別碼|憑證資源名稱。|`thumbprint`或都 `certificate-id` 必須存在。|N/A|
+|body|以位元組陣列形式提供的用戶端憑證。|否|N/A|
+|密碼|用戶端憑證的密碼。|如果中指定的憑證受到 `body` 密碼保護，則使用。|N/A|
   
-### <a name="usage"></a>使用方式  
+### <a name="usage"></a>使用量  
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。  
   
 -   **原則區段︰** inbound  
   
 -   **原則範圍：** 所有範圍  
 
-##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>使用受控識別進行驗證  
- 使用 `authentication-managed-identity` 原則，向使用受控識別的後端服務進行驗證。 此原則基本上會使用受控識別從 Azure Active Directory 取得存取權杖，以存取指定的資源。 成功取得權杖之後，原則會使用配置，在標頭中設定權杖的值 `Authorization` `Bearer` 。
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> 使用受控識別進行驗證  
+ 使用 `authentication-managed-identity` 原則，利用受控識別來向後端服務進行驗證。 此原則基本上會使用受控識別從 Azure Active Directory 取得存取權杖，以存取指定的資源。 成功取得權杖之後，原則會使用配置來設定標頭中的權杖值 `Authorization` `Bearer` 。
 
-系統指派的身分識別和任何多個使用者指派的身分識別都可以用來要求權杖。 如果 `client-id` 未提供，則會假設為系統指派的身分識別。 如果 `client-id` 已提供變數，則會針對該使用者指派的身分識別，從 Azure Active Directory 要求此權杖
+系統指派的身分識別和任何多個使用者指派的身分識別都可以用來要求權杖。 如果未 `client-id` 提供，則會假設為系統指派的身分識別。 如果 `client-id` 從 Azure Active Directory 針對該使用者指派的身分識別，要求提供變數的權杖
   
 ### <a name="policy-statement"></a>原則陳述式  
   
@@ -129,7 +129,7 @@ ms.locfileid: "86243710"
 ```  
   
 ### <a name="example"></a>範例  
-#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>使用受控識別向後端服務進行驗證
+#### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>使用受控識別來向後端服務進行驗證
 ```xml  
 <authentication-managed-identity resource="https://graph.microsoft.com"/> 
 ```
@@ -174,27 +174,27 @@ ms.locfileid: "86243710"
 
 ### <a name="elements"></a>項目  
   
-|名稱|描述|必要|  
+|名稱|說明|必要|  
 |----------|-----------------|--------------|  
 |驗證-受控-身分識別 |根元素。|是|  
   
 ### <a name="attributes"></a>屬性  
   
-|名稱|描述|必要|預設|  
+|名稱|說明|必要|預設|  
 |----------|-----------------|--------------|-------------|  
-|resource|字串。 目標 Web API 的應用程式識別碼 (在 Azure Active Directory 中受保護的資源) 。|是|N/A|
+|resource|字串。 目標 web API 的應用程式識別碼 (Azure Active Directory 中的安全資源) 。|是|N/A|
 |client-id|字串。 Azure Active Directory 中使用者指派之身分識別的應用程式識別碼。|否|系統指派的身分識別|
-|輸出-token-變數-名稱|字串。 將接收 token 值做為物件類型之內容變數的名稱 `string` 。 |否|N/A|  
-|ignore-error|布林值。 如果設定為 `true` ，即使未取得存取權杖，原則管線仍會繼續執行。|否|false|  
+|輸出-token-variable 名稱|字串。 將接收權杖值做為物件類型之內容變數的名稱 `string` 。 |否|N/A|  
+|ignore-error|布林值。 如果設定為 `true` ，即使未取得存取權杖，原則管線仍將繼續執行。|否|false|  
   
-### <a name="usage"></a>使用方式  
+### <a name="usage"></a>使用量  
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。  
   
 -   **原則區段︰** inbound  
   
 -   **原則範圍：** 所有範圍
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需使用原則的詳細資訊，請參閱︰
 
 + [API 管理中的原則](api-management-howto-policies.md)

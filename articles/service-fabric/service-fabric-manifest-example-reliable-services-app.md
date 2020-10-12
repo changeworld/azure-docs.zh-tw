@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84701093"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 應用程式和服務資訊清單範例
@@ -17,7 +17,7 @@ ms.locfileid: "84701093"
 
 下面是會顯示的功能：
 
-|資訊清單|特性|
+|file:///|特性|
 |---|---|
 |[應用程式資訊清單](#application-manifest)| [資源管理](service-fabric-resource-governance.md)、[以本機系統管理員帳戶的身分執行服務](service-fabric-application-runas-security.md)、[對所有服務程式碼套件套用預設原則](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[建立使用者和群組主體](service-fabric-application-runas-security.md)、在服務執行個體之間共用資料套件、[覆寫服務端點](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService 服務資訊清單| [在服務啟動時執行指令碼](service-fabric-run-script-at-service-startup.md)、[定義 HTTPS 端點](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 

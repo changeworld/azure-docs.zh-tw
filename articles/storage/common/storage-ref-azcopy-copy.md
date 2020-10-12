@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645475"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
@@ -214,7 +214,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 **--備份** 啟用 Windows 的上傳 SeBackupPrivilege 或 SeRestorePrivilege for 下載，以允許 AzCopy 查看和讀取所有檔案，不論其檔案系統許可權為何，以及還原擁有權限。 要求執行 AzCopy 的帳戶必須具有這些許可權 (例如，具有系統管理員許可權或 `Backup Operators` 群組) 的成員。 此旗標會啟用帳戶已有的許可權。
 

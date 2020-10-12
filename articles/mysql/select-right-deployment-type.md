@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: a1b66528bee63fb123271e4277e122603ced2e75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906508"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中選擇正確的 MySQL 伺服器選項
@@ -40,7 +40,7 @@ ms.locfileid: "90906508"
 下表列出這些選項之間的主要差異：
 
 
-| 屬性          | 適用於 MySQL 的 Azure 資料庫<br/>單一伺服器 |適用於 MySQL 的 Azure 資料庫<br/>彈性伺服器  |Azure Vm 上的 MySQL                      |
+| 屬性          | 適用於 MySQL 的 Azure 資料庫<br/>單一伺服器 |適用於 MySQL 的 Azure 資料庫<br/>彈性的伺服器  |Azure Vm 上的 MySQL                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
 | MySQL 版本支援 | 5.6、5.7 & 8。0| 5.7 | 任何版本|
 | 計算調整 | 不支援從和到基本層的支援 (調整) | 支援 | 支援|
@@ -48,14 +48,14 @@ ms.locfileid: "90906508"
 | 線上儲存體調整 | 支援| 支援| 不支援|
 | 自動儲存體調整 | 支援| 預覽中不支援| 不支援|
 | 網路連線 | -具有伺服器防火牆的公用端點。<br/> -Private Link 支援的私用存取。|-具有伺服器防火牆的公用端點。<br/> -使用虛擬網路整合進行私用存取。| -具有伺服器防火牆的公用端點。<br/> -Private Link 支援的私用存取。|
-| 服務等級協定 (SLA)  | 99.99% 可用性 SLA |預覽中沒有 SLA| 使用可用性區域的99.99%|
+| 服務等級協定 (SLA) | 99.99% 可用性 SLA |預覽中沒有 SLA| 使用可用性區域的99.99%|
 | 作業系統修補| 自動  | 自動使用自訂維護視窗控制項 | 由終端使用者管理 |
 | MySQL 修補     | 自動  | 自動使用自訂維護視窗控制項 | 由終端使用者管理 |
 | 高可用性 | 單一可用性區域內的內建 HA| 可用性區域內和跨可用性區域的內建 HA | 使用群集、複寫等自訂管理|
 | 區域備援 | 不支援 | 支援 | 支援|
 | 混合式案例 | 支援 [資料輸入複寫](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)| 預覽版中並未提供 | 由終端使用者管理 |
 | 讀取複本 | 支援| 支援 | 由終端使用者管理 |
-| 備份 | 自動保留7-35 天 | 自動保留1-35 天 | 由終端使用者管理 |
+| Backup | 自動保留7-35 天 | 自動保留1-35 天 | 由終端使用者管理 |
 | 監視資料庫作業 | 支援 | 支援 | 由終端使用者管理 |
 | 災害復原 | 支援異地冗余備份儲存體和跨區域讀取複本 | 預覽中不支援| 使用複寫技術進行自訂管理 |
 | 查詢效能深入解析 | 支援 | 預覽版中並未提供| 由終端使用者管理 |
@@ -128,7 +128,7 @@ Microsoft 可以透過 PaaS：
 
 因為不需要變更簡報、應用程式和資料層，所以您可以節省重新架構現有解決方案的時間和預算。 相反地，您可以專注于將所有解決方案遷移至 Azure，並解決 Azure 平臺可能需要的一些效能優化。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [適用於 MySQL 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/MySQL/)。
-* [建立您的第一部伺服器](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)，開始使用。
+* 從[建立您的第一部伺服器](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)開始。

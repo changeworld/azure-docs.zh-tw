@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e43c343b27dfe2dc0c364e58ed7305bdcec37215
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026061"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Azure 上的 SQL Server 範例資料
@@ -30,14 +30,14 @@ Python 取樣使用 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 程式庫�
 > 
 
 **為何要對您的資料進行取樣？**
-如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 取樣有助於資料的瞭解、探索和特徵工程設計。 它在 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中扮演的角色是，能夠快速建立資料處理函式與機器學習服務模型的原型。
+如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 取樣有助於資料理解、探索和特徵工程。 它在 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中扮演的角色是，能夠快速建立資料處理函式與機器學習服務模型的原型。
 
 這個取樣工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
 
 ## <a name="using-sql"></a><a name="SQL"></a>使用 SQL
 本節將說明使用 SQL，對資料庫中的資料執行簡單隨機取樣的數個方法。 根據資料大小及其分佈來選擇方法。
 
-以下兩個項目示範如何在 SQL Server 中使用 `newid` 進行取樣。 您選擇的方法取決於您想要樣本的隨機程度（在下列範例程式碼中 pk_id 會假設為自動產生的主要金鑰）。
+以下兩個項目示範如何在 SQL Server 中使用 `newid` 進行取樣。 您選擇的方法取決於您要 (範例的隨機程度 pk_id 在下列範例程式碼中，假設為自動產生的主鍵) 。
 
 1. 較不嚴格的隨機取樣
 
@@ -53,7 +53,7 @@ Python 取樣使用 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 程式庫�
     WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
     ```
 
-Tablesample 也可用來對資料進行取樣。 如果您的資料大小很大（假設不同頁面上的資料不會相互關聯），而且查詢在合理的時間內完成，則此選項可能是較好的方法。
+Tablesample 也可用來對資料進行取樣。 如果您的資料大小很大 (假設不同頁面上的資料沒有相互關聯) ，而且查詢在合理的時間內完成，則此選項可能會是較好的方法。
 
 ```sql
 SELECT *
@@ -72,7 +72,7 @@ TABLESAMPLE (10 PERCENT)
 ![讀取器 SQL][1]
 
 ## <a name="using-the-python-programming-language"></a><a name="python"></a>使用 Python 程式設計語言
-本節示範如何使用 [pyodbc 程式庫](https://code.google.com/p/pyodbc/) 來建立連線至 Python 中 SQL Server 資料庫的 ODBC。 資料庫連接字串如下所示：（以您的設定取代 servername、dbname、username 和 password）：
+本節示範如何使用 [pyodbc 程式庫](https://code.google.com/p/pyodbc/) 來建立連線至 Python 中 SQL Server 資料庫的 ODBC。 資料庫連接字串如下所示： (將 servername、dbname、username 和 password 取代為您的設定) ：
 
 ```python
 #Set up the SQL Azure connection
@@ -80,7 +80,7 @@ import pyodbc
 conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 ```
 
-Python 中的 [Pandas](https://pandas.pydata.org/) 程式庫提供一組豐富的資料結構和資料分析工具，可用來對 Python 程式設計進行資料操作。 下列程式碼會將 Azure SQL Database 中資料表的資料0.1% 樣本讀取至 Pandas 資料：
+Python 中的 [Pandas](https://pandas.pydata.org/) 程式庫提供一組豐富的資料結構和資料分析工具，可用來對 Python 程式設計進行資料操作。 下列程式碼會從 Azure SQL Database 的資料表中，將資料的0.1% 樣本讀取至 Pandas 資料中：
 
 ```python
 import pandas as pd
@@ -129,7 +129,7 @@ data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesa
 ![讀取器 Blob][2]
 
 ## <a name="the-team-data-science-process-in-action-example"></a>Team Data Science Process 實務範例
-如需使用公用資料集進行小組資料科學程式的範例，請參閱[Team 資料科學程式實務：使用 SQL Server](sql-walkthrough.md)。
+若要使用公用資料集來逐步解說 Team Data 科學程式的範例，請參閱 [Team Data 科學程式的運作方式：使用 SQL Server](sql-walkthrough.md)。
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

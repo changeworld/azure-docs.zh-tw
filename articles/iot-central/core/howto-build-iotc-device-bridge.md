@@ -9,20 +9,20 @@ ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
 ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80158413"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>建置用來將其他 IoT 雲端連線至 IoT Central 的 IoT Central 裝置橋接器
 
 *此主題適用於系統管理員。*
 
-IoT Central 裝置橋接器是一項開放原始碼解決方案，可將您的 Sigfox、粒子、物聯網和其他雲端連線至 IoT Central 應用程式。 無論您使用的資產追蹤裝置是連線到 Sigfox 的低電源區域網路，或是在「物件」裝置雲端上使用「空氣品質監控」裝置，或使用 TTN 上的「土濕度監控」裝置，您都可以使用 IoT Central 裝置橋接器直接利用 IoT Central 的功能。 裝置橋接器可藉由將您的裝置傳送到其他雲端的資料轉送至 IoT Central 應用程式，來連線其他 IoT 雲端與 IoT Central。 在您的 IoT Central 應用程式中，您可以建置規則並對該資料執行分析、在 Microsoft Flow 和 Azure 邏輯應用程式中建立工作流程、匯出該資料，以及其他工作。 從 GitHub 取得[IoT Central 裝置橋接器](https://aka.ms/iotcentralgithubdevicebridge)
+IoT Central 裝置橋接器是一項開放原始碼解決方案，可將您的 Sigfox、粒子、物聯網和其他雲端連線至 IoT Central 應用程式。 無論您使用的資產追蹤裝置是連線到 Sigfox 的低功率廣域網路，或是在裝置雲端上使用空氣品質監視裝置，或使用 TTN 上的上料濕度監視裝置，您都可以使用 IoT Central 裝置橋接器直接利用 IoT Central 的功能。 裝置橋接器可藉由將您的裝置傳送到其他雲端的資料轉送至 IoT Central 應用程式，來連線其他 IoT 雲端與 IoT Central。 在您的 IoT Central 應用程式中，您可以建置規則並對該資料執行分析、在 Microsoft Flow 和 Azure 邏輯應用程式中建立工作流程、匯出該資料，以及其他工作。 從 GitHub 取得[IoT Central 裝置橋接器](https://aka.ms/iotcentralgithubdevicebridge)
 
 ## <a name="what-is-it-and-how-does-it-work"></a>這是什麼？如何運作？
-IoT Central 裝置橋接器是 GitHub 中的開放原始碼解決方案。 它已準備好使用 [部署至 Azure] 按鈕，將包含數個 Azure 資源的自訂 Azure Resource Manager 範本部署到您的 Azure 訂用帳戶。 這些資源包括：
+IoT Central 裝置橋接器是 GitHub 中的開放原始碼解決方案。 您可以使用 [部署至 Azure] 按鈕，將包含數個 Azure 資源的自訂 Azure Resource Manager 範本部署到您的 Azure 訂用帳戶。 這些資源包括：
 -    Azure 函式應用程式
 -    Azure 儲存體帳戶
 -    取用方案
@@ -33,7 +33,7 @@ IoT Central 裝置橋接器是 GitHub 中的開放原始碼解決方案。 它�
 
 ![Azure 函式螢幕擷取畫面](media/howto-build-iotc-device-bridge/azfunctions.png)
 
-如果您的 IoT Central 應用程式可透過轉送訊息中的裝置識別碼來辨識裝置，即會出現該裝置的新量測。 如果您的 IoT Central 應用程式從未看到裝置識別碼，您的函式應用程式將會嘗試使用該裝置識別碼來註冊新的裝置，並在您的 IoT Central 應用程式中顯示為「未關聯的裝置」。 
+如果您的 IoT Central 應用程式可透過轉送訊息中的裝置識別碼來辨識裝置，即會出現該裝置的新量測。 如果您的 IoT Central 應用程式從未看到裝置識別碼，您的函式應用程式將會嘗試使用該裝置識別碼來註冊新裝置，而且在您的 IoT Central 應用程式中會顯示為「未關聯的裝置」。 
 
 ## <a name="how-do-i-set-it-up"></a>如何加以設定？
 相關指示詳列在 GitHub 存放庫內的 README 檔案中。 

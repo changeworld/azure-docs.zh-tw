@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005644"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用度量管理資源耗用量和負載
@@ -19,7 +19,7 @@ ms.locfileid: "89005644"
 像記憶體、磁碟 及 CPU 使用率等項目都是計量的範例。 這些計量是實體計量，也就是對應至節點上需要管理之實體資源的資源。 計量也可以是 (且通常是) 邏輯計量。 邏輯計量的範例是 “MyWorkQueueDepth”、"MessagesToProcess" 或 "TotalRecords" 之類的項目。 邏輯計量是由應用程式定義，並且間接對應到某些實體資源耗用量。 邏輯計量是常見的，因為很難以每個服務為基礎測量及報告實體資源耗用量。 測量及報告您自己的實體計量有點複雜，這也是為什麼 Service Fabric 會提供一些預設計量。
 
 ## <a name="default-metrics"></a>預設度量
-假設您想要開始撰寫和部署您的服務。 此時，您不知道它會取用哪些實體或邏輯資源。 沒關係！ 未指定其他計量時，Service Fabric 叢集資源管理員會使用某些預設計量。 分別是：
+假設您想要開始撰寫和部署您的服務。 此時，您不知道它會取用哪些實體或邏輯資源。 沒關係！ 未指定其他計量時，Service Fabric 叢集資源管理員會使用某些預設計量。 其中包括：
 
   - PrimaryCount - 節點上主要複本的計數 
   - ReplicaCount - 節點上具狀態複本的總數

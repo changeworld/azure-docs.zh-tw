@@ -1,6 +1,6 @@
 ---
-title: 使用 IntelliJ 進行 Spark 作業的 Azure 工具組（預覽）-HDInsight
-description: 在 Azure Toolkit for IntelliJ 中使用 HDInsight 工具來進行偵錯工具的指導方針
+title: 使用 IntelliJ 的 Azure 工具組來 Debug Spark 作業 (預覽版) -HDInsight
+description: 在 Azure Toolkit for IntelliJ 中使用 HDInsight 工具來對應用程式進行偵錯工具的指引
 keywords: 遠端偵錯 intellij, 進行 intellij 遠端偵錯, ssh, intellij, hdinsight, 偵錯 intellij, 偵錯
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,37 +10,37 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82857426"
 ---
-# <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ （預覽）進行 spark 作業調試失敗
+# <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ (preview) 的 spark 作業無法進行調試
 
-本文提供如何在[Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij)中使用 HDInsight 工具來執行**Spark 失敗的調試**程式的逐步指引。
+本文提供逐步指引，說明如何使用 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) 中的 HDInsight 工具來執行 **Spark 失敗的調試** 程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 本教學課程使用 Java 8.0.202 版。
   
-* IntelliJ IDEA。 本文使用[INTELLIJ 觀念 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
+* IntelliJ IDEA。 本文使用 [INTELLIJ 構想 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
   
 * Azure Toolkit for IntelliJ。 請參閱[安裝 Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)。
 
-* 連接到您的 HDInsight 叢集。 請參閱[連接到您的 HDInsight](apache-spark-intellij-tool-plugin.md)叢集。
+* 連接到您的 HDInsight 叢集。 請參閱 [連接到您的 HDInsight](apache-spark-intellij-tool-plugin.md)叢集。
 
-* Microsoft Azure 儲存體總管。 請參閱[下載 Microsoft Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
+* Microsoft Azure 儲存體總管。 請參閱 [下載 Microsoft Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 
 ## <a name="create-a-project-with-debugging-template"></a>使用調試範本建立專案
 
-建立 spark 2.3.2 專案以繼續進行失敗的 debug，並在本檔中執行失敗工作的調試範例檔案。
+建立 spark 2.3.2 專案以繼續失敗的偵測，請在本檔中進行失敗的工作調試範例。
 
-1. 開啟 IntelliJ IDEA。 開啟 [**新增專案**] 視窗。
+1. 開啟 IntelliJ IDEA。 開啟 [ **新增專案** ] 視窗。
 
    a. 選取左窗格中的 [Azure Spark/HDInsight]****。
 
-   b. 從主視窗中選取 [**具有失敗工作的調試範例（預覽）（Scala）的 Spark 專案**]。
+   b. 從主視窗中選取 [ **具有失敗工作調試的 Spark 專案] (預覽) # B2 Scala) ** 。
 
      ![Intellij 建立 debug 專案](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
@@ -52,55 +52,55 @@ ms.locfileid: "82857426"
 
    a. 輸入專案名稱和專案位置。
 
-   b. 在 [**專案 SDK** ] 下拉式清單中，選取 [ **JAVA 1.8** for **Spark 2.3.2** cluster]。
+   b. 在 [**專案 SDK** ] 下拉式清單中，選取 [適用于**Spark 2.3.2**叢集的**JAVA 1.8** ]。
 
-   c. 在 [ **Spark 版本**] 下拉式清單中，選取 [ **Spark 2.3.2 （Scala 2.11.8）**]。
+   c. 在 [ **Spark 版本** ] 下拉式清單中，選取 [ **Spark 2.3.2 (Scala 2.11.8) **。
 
    d. 選取 [完成]。
 
-3. 選取**src**  >  **main**  >  **scala**以在專案中開啟您的程式碼。 這個範例會使用**AgeMean_Div （）** 腳本。
+3. 選取**src**  >  **main**  >  **scala**以開啟專案中的程式碼。 此範例使用 **AgeMean_Div ( # B1 ** 腳本。
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>在 HDInsight 叢集上執行 Spark Scala/JAVA 應用程式
 
 建立 spark Scala/JAVA 應用程式，然後執行下列步驟，在 Spark 叢集上執行應用程式：
 
-1. 按一下 [**新增**設定] 以開啟 [**執行/Debug**設定] 視窗。
+1. 按一下 [ **新增** 設定] 以開啟 [ **執行/調試** 設定] 視窗。
 
    ![HDI Intellij 新增設定](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. 在 [Run/Debug Configurations] \(執行/偵錯設定)**** 對話方塊中，選取加號 (**+**)。 然後選取 [**在 HDInsight 上 Apache Spark** ] 選項。
+2. 在 [Run/Debug Configurations] \(執行/偵錯設定)**** 對話方塊中，選取加號 (**+**)。 然後選取 [ **HDInsight 上的 Apache Spark** ] 選項。
 
    ![Intellij 新增設定](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. 切換至 [在叢集中**遠端執行**] 索引標籤。輸入 [**名稱**]、[ **Spark**叢集] 和 [**主要類別名稱**] 的資訊。 我們的工具支援使用**執行程式**進行偵錯。 **NumExectors**，預設值為5，而您最好不要設定高於3。 若要縮短執行時間，您可以將**maxAppAttempts**新增至**作業**設定，並將值設定為1。 按一下 **[確定]** 按鈕以儲存設定。
+3. 在 [叢集] 索引標籤中切換至 [ **遠端執行** ]。輸入 **名稱**、 **Spark**叢集和 **主要類別名稱**的資訊。 我們的工具支援使用**執行程式**進行偵錯。 **NumExectors**，預設值為5，而您最好不要設定高於3。 若要減少執行時間，您可以將 **yarn** 新增至 **工作** 設定，並將值設定為1。 按一下 **[確定]** 按鈕以儲存設定。
 
-   ![Intellij 執行的調試設定新](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   ![Intellij 執行調試的設定新](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
 4. 設定現在會使用您提供的名稱儲存。 若要檢視設定詳細資訊，請選取設定名稱。 若要進行變更，請選取 [Edit Configurations] \(編輯設定\)****。
 
 5. 完成設定之後，您可以對遠端叢集執行專案。
 
-   ![Intellij Debug Remote Spark 作業遠端執行按鈕](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   ![Intellij Debug Remote Spark Job Remote run 按鈕](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
 
-6. 您可以從 [輸出] 視窗中檢查 [應用程式識別碼]。
+6. 您可以從 [輸出] 視窗中檢查應用程式識別碼。
 
-   ![Intellij Debug Remote Spark 作業遠端執行結果](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   ![Intellij Debug Remote Spark Job Remote run result](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
 
 ## <a name="download-failed-job-profile"></a>下載失敗的作業設定檔
 
 如果作業提交失敗，您可以將失敗的作業設定檔下載到本機電腦，以進行進一步的偵錯工具。
 
-1. 開啟**Microsoft Azure 儲存體總管**，找出失敗作業之叢集的 HDInsight 帳戶，從對應的位置下載失敗的工作資源： **\hdp\spark2-events \\ \\ \<application ID> 至**本機資料夾。 [**活動**] 視窗會顯示下載進度。
+1. 開啟**Microsoft Azure 儲存體總管**、找出失敗作業之叢集的 HDInsight 帳戶、將失敗的工作資源從對應的位置下載： **\hdp\spark2-events \\ \\ \<application ID> 至**本機資料夾。 [ **活動** ] 視窗會顯示下載進度。
 
    ![Azure 儲存體總管下載失敗](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
    ![Azure 儲存體總管下載成功](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
 
-## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>在失敗時設定本機的調試環境和調試
+## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>設定本機調試的環境，並在失敗時進行調試
 
-1. 開啟原始專案，或建立新的專案，並將它與原始原始程式碼產生關聯。 目前僅支援 spark 2.3.2 版本來進行失敗的偵錯工具。
+1. 開啟原始專案或建立新專案，並將其與原始原始程式碼建立關聯。 目前只有 spark 2.3.2 版本支援失敗的偵錯工具。
 
-1. 在 IntelliJ 概念中，建立**Spark 失敗的 Debug** config 檔案，從先前下載的 [ **Spark 作業失敗內容位置**] 欄位的失敗作業資源中選取 FTD 檔案。
+1. 在 IntelliJ 構想中，建立 **Spark 失敗的調試** 程式設定檔，從先前下載的 [ **Spark 作業失敗內容位置** ] 欄位的失敗作業資源中選取 FTD 檔案。
 
    ![建立失敗設定](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
@@ -110,9 +110,9 @@ ms.locfileid: "82857426"
 
    ![執行失敗-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
-1. 將 [中斷點] 設定為 [記錄檔]，然後按一下 [本機偵錯工具] 按鈕來執行本機的偵錯工具，就像 IntelliJ 中的一般 Scala/JAVA 專案一樣。
+1. 在記錄檔中設定中斷點，然後按一下 [本機偵錯工具] 按鈕來進行本機偵錯工具，就像您在 IntelliJ 中的一般 Scala/JAVA 專案一樣。
 
-1. 在偵測之後，如果專案成功完成，您可以將失敗的作業重新提交至 HDInsight 叢集上的 spark。
+1. 在偵錯工具之後，如果專案成功完成，您可以將失敗的作業重新提交至 HDInsight 叢集上的 spark。
 
 ## <a name="next-steps"></a><a name="seealso"></a>後續步驟
 
@@ -125,7 +125,7 @@ ms.locfileid: "82857426"
 
 ### <a name="scenarios"></a>案例
 
-* [使用 BI Apache Spark：在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](apache-spark-use-bi-tools.md)
+* [使用 BI 的 Apache Spark：在 HDInsight 中搭配 BI 工具使用 Spark 執行互動式資料分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和機器學習服務：在 HDInsight 中利用 HVAC 資料使用 Spark 分析建築物溫度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 和機器學習服務：在 HDInsight 中使用 Spark 預測食品檢查結果](apache-spark-machine-learning-mllib-ipython.md)
 * [在 HDInsight 中使用 Apache Spark 進行網站記錄分析](../hdinsight-apache-spark-custom-library-website-log-analysis.md)

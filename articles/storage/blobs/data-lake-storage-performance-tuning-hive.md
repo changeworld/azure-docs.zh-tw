@@ -1,6 +1,6 @@
 ---
 title: 微調效能： Hive、HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
-description: 瞭解使用 Hive、HDInsight 和 Azure Data Lake Storage Gen2 的 i/o 密集查詢的微調方針。
+description: 瞭解使用 Hive、HDInsight 和 Azure Data Lake Storage Gen2 之 i/o 密集查詢的微調指導方針。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034765"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： Hive、HDInsight & Azure Data Lake Storage Gen2
@@ -22,10 +22,10 @@ ms.locfileid: "88034765"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen2 帳戶**。 如需如何建立的指示，請參閱[快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)
-* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+* **Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)
+* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配使用 Azure Data Lake Storage Gen2 與 Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)叢集
 * **在 HDInsight 上執行 Hive**。  若要了解如何在 HDInsight 上執行 Hive 作業，請參閱[ HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Data Lake Storage Gen2 的效能微調方針**。  如需一般的效能概念，請參閱[Data Lake Storage Gen2 效能微調指導](data-lake-storage-performance-tuning-guidance.md)方針
+* **Data Lake Storage Gen2 的效能微調方針**。  如需一般效能概念，請參閱[Data Lake Storage Gen2 效能微調指導](data-lake-storage-performance-tuning-guidance.md)方針
 
 ## <a name="parameters"></a>參數
 
@@ -47,7 +47,7 @@ ms.locfileid: "88034765"
 
 **hive.exec.reducer.bytes.per.reducer** – 此參數會設定每個歸納器的大小。  根據預設，每個歸納器為 256 MB。  
 
-## <a name="guidance"></a>指導方針
+## <a name="guidance"></a>指引
 
 **Set hive.exec.reducer.bytes.per.reducer** – 資料若未壓縮，預設值就很適用。  資料若有壓縮，則應縮減歸納器的大小。  
 
@@ -55,10 +55,10 @@ ms.locfileid: "88034765"
 
 I/O 密集工作負載可以透過減少 Tez 容器大小，而從更符合平行處理原則受益。 這會讓使用者獲得更多容器，而增加並行能力。  不過，某些 Hive 查詢需要大量的記憶體 (例如 MapJoin)。  如果工作沒有足夠的記憶體，您會在執行階段期間遇到記憶體不足的例外狀況。  如果您遇到記憶體不足的例外狀況，則應增加記憶體。   
 
-並行執行的工作數或平行處理原則會受到 YARN 記憶體總數的限制。  YARN 容器數目會決定可以執行多少並行工作。  若要尋找每個節點的 YARN 記憶體，您可以前往 Ambari。  流覽至 YARN，並查看 [[]] 索引標籤。 YARN 記憶體會顯示在此視窗中。  
+並行執行的工作數或平行處理原則會受到 YARN 記憶體總數的限制。  YARN 容器數目會決定可以執行多少並行工作。  若要尋找每個節點的 YARN 記憶體，您可以前往 Ambari。  流覽至 YARN，並查看 [選項] 索引標籤。 YARN 記憶體會顯示在此視窗中。  
 
 - 總 YARN 記憶體 = 節點 * 每個節點的 YARN 記憶體
-- \#YARN 容器 = YARN 記憶體/Tez 容器大小總計
+- \# YARN 容器 = YARN memory/Tez 容器大小總計
 
 使用 Data Lake Storage Gen2 來改善效能的關鍵是盡可能地增加並行能力。  Tez 會自動計算應該建立的工作數目，因此您並不需要設定。   
 
@@ -67,8 +67,8 @@ I/O 密集工作負載可以透過減少 Tez 容器大小，而從更符合平�
 假設您有 8 節點的 D14 叢集。  
 
 - 總 YARN 記憶體 = 節點 * 每個節點的 YARN 記憶體
-- 總 YARN 記憶體 = 8 個節點 * 96GB = 768GB
-- \#YARN 容器 = 768GB/3072MB = 256
+- YARN memory 總計 = 8 個節點 * 96GB = 768GB
+- \# YARN 容器 = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>關於微調 Hive 的進一步資訊
 

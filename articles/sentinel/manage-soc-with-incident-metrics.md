@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761710"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>透過事件計量更好的管理 SOC
@@ -80,11 +80,11 @@ SecurityIncident
 - 最近的活動 
 - 最近的結尾分類  
 
-您可以從 Azure Sentinel 導覽功能表中選擇活頁 **簿** ，然後選取 [ **範本** ] 索引標籤，以找到這個新的活頁簿範本。請從資源庫選擇 **安全性作業效率** ，然後按一下其中一個 [ **已儲存** 的活頁簿] 和 [ **流覽範本** ] 按鈕
+您可以從 Azure Sentinel 導覽功能表中選擇活頁 **簿** ，然後選取 [ **範本** ] 索引標籤，以找到這個新的活頁簿範本。從資源庫選擇 **安全性作業效率** ，然後按一下其中一個 [ **已儲存** 的活頁簿] 和 [ **查看範本** ] 按鈕。
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全性事件活頁簿圖庫":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全性事件資料表":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="安全性事件活頁簿完成":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="安全性事件資料表":::
 
 您可以使用範本來建立您專屬的自訂活頁簿，以滿足您的特定需求。
 

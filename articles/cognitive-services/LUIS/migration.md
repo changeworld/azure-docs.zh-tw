@@ -6,17 +6,17 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.openlocfilehash: d6ecacf9aa1a7e650de74a412ed4f161ed0e0790
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253797"
 ---
 # <a name="migration-in-luis"></a>LUIS 中的遷移
 
 有幾個專案是在遷移路徑上。 使用下表來瞭解受影響的內容，以及何時需要完成的遷移。
 
-|區域|說明|遷移完成日期|
+|區域|描述|遷移完成日期|
 |--|--|--|
 |[預測 Api](luis-migration-api-v3.md)|遷移至 V3 API。|TBD|
 |[編寫 API](luis-migration-authoring-entities.md)|遷移至 V3 API。|TBD|

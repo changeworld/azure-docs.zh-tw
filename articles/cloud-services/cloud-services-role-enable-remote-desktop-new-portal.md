@@ -1,5 +1,5 @@
 ---
-title: 使用入口網站為角色啟用遠端桌面
+title: 使用入口網站來啟用角色的遠端桌面
 titleSuffix: Azure Cloud Services
 description: 如何設定的 Azure 雲端服務應用程式以允許遠端桌面連線
 services: cloud-services
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
 ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84696774"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>啟用 Azure 雲端服務中角色的遠端桌面連線

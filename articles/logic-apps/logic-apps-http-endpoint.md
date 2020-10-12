@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
 ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230801"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的 HTTPS 端點來呼叫、觸發或嵌套邏輯應用程式
@@ -161,7 +161,7 @@ ms.locfileid: "89230801"
 
    1. 在 [要求] 觸發程式底下，選取 [**新增步驟] 新增**  >  **動作**。
    
-   1. 在 [選擇動作]  底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中選取 **回應** 動作。
+   1. 在 [選擇動作] 底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中選取 **回應** 動作。
 
 1. 若要建立可抓取 `triggerOutputs()` 參數值的運算式，請遵循下列步驟：
 
@@ -228,7 +228,7 @@ ms.locfileid: "89230801"
 
    1. 在 [要求] 觸發程式底下，選取 [**新增步驟] 新增**  >  **動作**。
 
-   1. 在 [選擇動作]  底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中選取 **回應** 動作。
+   1. 在 [選擇動作] 底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中選取 **回應** 動作。
 
 1. 在回應動作的 **主體** 屬性中，包含代表您在觸發程式相對路徑中指定之參數的權杖。
 

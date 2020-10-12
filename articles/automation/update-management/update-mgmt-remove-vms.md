@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.custom: mvc
 ms.openlocfilehash: 66631adbb56a98431e70f956f3e860b16e8f7ea2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648636"
 ---
 # <a name="remove-vms-from-update-management"></a>從更新管理中移除 VM
@@ -43,6 +43,6 @@ ms.locfileid: "89648636"
 >[!NOTE]
 >取消註冊之後仍會顯示電腦，因為我們會報告過去24小時內評估的所有機器。 移除機器之後，您需要等候24小時，再也不會再列出。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要重新啟用虛擬機器的管理，請 [流覽 Azure 入口網站](update-mgmt-enable-portal.md) 或 [從 Azure VM 啟用更新管理](update-mgmt-enable-vm.md)，以啟用更新管理。

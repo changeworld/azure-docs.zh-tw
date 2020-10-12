@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: f0e5a153efe26640e54f386600f07c7b3d4711d0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89649055"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>應用程式閘道健全狀況監視概觀
@@ -68,7 +68,7 @@ Azure 應用程式閘道預設會監視其後端集區中所有資源的健康�
 | 通訊協定 |用來傳送探查的通訊協定。 這必須與與其相關聯的後端 HTTP 設定中定義的通訊協定相符|
 | 主機 |用來傳送探查的主機名稱。 在 v1 SKU 中，此值只會用於探查要求的主機標頭。 在 v2 SKU 中，它將作為主機標頭和 SNI 使用 |
 | Path |探查的相對路徑。 有效路徑的開頭為 '/' |
-| Port |如果已定義，則會用來做為目的地埠。 否則，它會使用與其相關聯的 HTTP 設定相同的埠。 這個屬性僅適用于 v2 SKU
+| 連接埠 |如果已定義，則會用來做為目的地埠。 否則，它會使用與其相關聯的 HTTP 設定相同的埠。 這個屬性僅適用于 v2 SKU
 | 間隔 |探查間隔 (秒)。 此值是兩個連續探查之間的時間間隔 |
 | 逾時 |探查逾時 (秒)。 如果在這段超時期間內未收到有效的回應，則會將探查標示為失敗  |
 | 狀況不良臨界值 |探查重試計數。 在連續探查失敗次數達到狀況不良閾值之後，會將後端伺服器標示為已關閉 |

@@ -1,6 +1,6 @@
 ---
 title: 針對 Azure HDInsight 中的 Apache Oozie 進行疑難排解
-description: 針對 Azure HDInsight 中的某些 Apache Oozie 錯誤進行疑難排解。
+description: 針對 Azure HDInsight 中的特定 Apache Oozie 錯誤進行疑難排解。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045853"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>針對 Azure HDInsight 中的 Apache Oozie 進行疑難排解
@@ -20,11 +20,11 @@ ms.locfileid: "86045853"
 
 1. 在 Oozie Web UI 中檢視作業。
 
-2. 如果發生錯誤或特定動作失敗，請選取動作，以查看**錯誤訊息**欄位是否提供失敗的詳細資訊。
+2. 如果特定動作發生錯誤或失敗，請選取動作以查看 **錯誤訊息** 欄位是否提供失敗的詳細資訊。
 
 3. 如果有提供，請使用動作的 URL 以檢視動作的更多詳細資料，例如 JobTracker 記錄。
 
-以下是您可能會遇到的特定錯誤，以及解決方法。
+以下是您可能會遇到的特定錯誤，以及如何解決這些錯誤。
 
 ## <a name="ja009-cant-initialize-cluster"></a>JA009：無法初始化叢集
 
@@ -91,9 +91,9 @@ Sqoop 無法載入存取資料庫時所需的資料庫驅動程式。
 
 當您從 Oozie 作業使用 Sqoop 時，您必須將資料庫驅動程式與作業所使用的其他資源 (例如 workflow.xml) 包含在一起。 此外，請從 workflow.xml 的 `<sqoop>...</sqoop>` 區段，參考含有資料庫驅動程式的封存。
 
-例如，針對[使用 Hadoop Oozie 工作流程](hdinsight-use-oozie-linux-mac.md)的作業範例，您會使用下列步驟：
+例如，如需 [使用 Hadoop Oozie 工作流程](hdinsight-use-oozie-linux-mac.md)的作業範例，您可以使用下列步驟：
 
-1. 將檔案複製 `mssql-jdbc-7.0.0.jre8.jar` 到 **/tutorials/useoozie**目錄：
+1. 將檔案複製 `mssql-jdbc-7.0.0.jre8.jar` 到 **到/tutorials/useoozie** 目錄：
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar

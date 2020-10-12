@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026180"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 與 Spark 的資料科學
@@ -39,7 +39,7 @@ ms.locfileid: "86026180"
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 您必須擁有 Azure 訂用帳戶。 如果還沒有， [請取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] **** 功能表上設定叢集類型和版本。
 
@@ -56,7 +56,7 @@ ms.locfileid: "86026180"
 
 ![叢集儀表板和 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-您也可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 存取 Jupyter Notebook。 將*clustername*取代為您的叢集名稱。 您需要有系統管理員帳戶的密碼才能存取 Jupyter Notebook。
+您也可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 存取 Jupyter Notebook。 將 *clustername* 取代為您叢集的名稱。 您需要有系統管理員帳戶的密碼才能存取 Jupyter Notebook。
 
 ![使用叢集名稱移至 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
@@ -262,13 +262,13 @@ sqlResultsDF.show(3)
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>資料探索和虛擬化
-將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果匯入資料框架，以使用自動視覺化 Jupyter 功能繪製目標變數和潛在功能以進行視覺檢查。
+將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果匯入資料框架，以使用自動視覺效果 Jupyter 功能來繪製目標變數和預期功能以進行視覺檢查。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本機和 SQL magic 來繪製資料
 根據預設，在背景工作節點上保存的工作階段內容中，可取得您從 Jupyter Notebook 執行之任何程式碼片段的輸出。 如果您想要將車程儲存至每個計算的背景工作節點，而且如果在 Jupyter 伺服器節點 (此為前端節點) 的本機上可取得計算所需的所有資料，您可以使用 `%%local` Magic 在 Jupyter 伺服器上執行程式碼片段。
 
-* **SQL 魔術**（ `%%sql` ）。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將會以原生模式提供。
-* `%%local`**神奇**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
+* **SQL 魔術** (`%%sql`) 。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將可在原生模式中使用。
+* `%%local`**魔術**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查詢資料
 此查詢會依照費用金額、乘客計數和小費金額擷取計程車車程。
@@ -300,10 +300,10 @@ sqlResults
 
  在您執行程式碼之後，Spark 核心會將 SQL (HiveQL) 查詢的輸出自動視覺化。 您可以選擇數種類型的視覺效果︰
 
-* 資料表
-* 圓形圖
-* 線
-* 區域
+* Table
+* Pie
+* 折線圖
+* 區域圖
 * 橫條圖
 
 以下是繪製資料的程式碼：
@@ -350,7 +350,7 @@ plt.show()
 ## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>建立特徵和轉換特徵，然後準備資料輸入模型化函式
 如需 Spark ML 和 MLlib 中以樹狀結構為基礎的模型化函式，您必須使用各種技術 (例如分類收納、索引編製、one-hot 編碼和向量化) 備妥目標和特徵。 以下是本節要遵循的程序︰
 
-1. 藉由**分類收納**小時到流量時間值區來建立新功能。
+1. 藉由 **分類收納** 小時進入交通時間值區來建立新功能。
 2. 對分類特徵套用 **索引編製和 one-hot 編碼** 。
 3. **取樣並將資料集分割** 成訓練和測試部分。
 4. **指定訓練變數和特徵**，然後建立已編製索引或已進行 one-hot 編碼的訓練和測試輸入標示點彈性分散式資料集 (RDD) 或資料框架。
@@ -884,7 +884,7 @@ plt.show(ax)
 ### <a name="create-a-gbt-regression-model"></a>建立 GBT 迴歸模型
 使用 SparkML `GBTRegressor()` 函式建立 GBT 迴歸模型，然後對測試資料評估模型。
 
-漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 會反復定型決策樹，將損失函數降至最低。 您可以使用 GBT 進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
+漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構 (gbt) 是決策樹的整體。 GBT 會反復地訓練決策樹，以將遺失函式降至最低。 您可以使用 GBT 來進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
 
 ```scala
 # RECORD THE START TIME
@@ -924,7 +924,7 @@ println("Test R-sqr is: " + Test_R2);
 
 **交叉驗證** 是一種技術，評估已對一組已知資料訓練過的模型將能多廣泛地預測尚未對其訓練過的資料集特徵。 這種技術背後的基本概念是模型已針對已知資料的資料集訓練，然後針對獨立的資料集測試其預測的精確度。 常見的實作是將資料集分割成 *k*個摺疊，然後以循環配置資源方式對除了一個摺疊的所有摺疊訓練模型。
 
-**超參數優化**是針對學習演算法選擇一組超參數的問題，其目標通常是要優化獨立資料集上演算法效能的測量。 超參數是您在模型訓練程序之外必須指定的值。 對於超參數值的假設可能會影響模型的彈性和精確度。 決策樹有超參數，例如想要的樹深度和葉數目等。 您必須為支援向量機器 (SVM) 設定分類誤判損失詞彙。
+**超參數優化** 是針對學習演算法選擇一組超參數的問題，通常是為了將演算法在獨立資料集上的效能量值優化。 超參數是您在模型訓練程序之外必須指定的值。 對於超參數值的假設可能會影響模型的彈性和精確度。 決策樹有超參數，例如想要的樹深度和葉數目等。 您必須為支援向量機器 (SVM) 設定分類誤判損失詞彙。
 
 執行超參數最佳化一個常見的方法是使用格線搜尋，也稱為 **參數掃掠**。 在格線搜尋中，會對某個學習演算法的超參數空間指定子集的所有值執行詳盡搜尋。 交叉驗證可以提供效能度量，挑出格線搜尋演算法所產生的最佳結果。 如果您使用交叉驗證超參數掃掠，可以協助限制例如將模型過度擬合到訓練資料的問題。 如此一來，模型會保留空間來套用到擷取訓練資料的一般資料集。
 

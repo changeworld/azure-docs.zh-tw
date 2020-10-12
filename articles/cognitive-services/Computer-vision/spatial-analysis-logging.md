@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
 ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254069"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遙測和疑難排解
 
-空間分析包含一組功能，可監視系統的健全狀況，並協助診斷問題。
+空間分析包含一組功能，可監視系統的健康情況，並協助診斷問題。
 
 ## <a name="enable-visualizations"></a>啟用視覺效果
 
@@ -103,7 +103,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ### <a name="system-health-events"></a>系統健康情況事件
 
-| 活動名稱 | 說明|
+| 活動名稱 | 描述|
 |------|---------|
 |archon_exit    |當 *使用者將空間* 分析模組狀態從「執行」變更為「 *已停止*」時傳送。  |
 |archon_error   |當容器內的任何進程損毀時傳送。 這是嚴重錯誤。  |
@@ -229,7 +229,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 >[!NOTE]
 > 使用空的承載叫 `getRTCVLogs` 用方法，將會傳回在裝置上部署的所有容器的清單。 方法名稱會區分大小寫。 如果指定了不正確的方法名稱，您將會收到501錯誤。
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="叫用 getRTCVLogs 方法 ":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure 監視器遙測報告":::
 ![getRTCVLogs 直接方法頁面](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -400,7 +400,7 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|命令  |說明  |
+|Command  |描述  |
 |---------|---------|
 |`Get-HcsKubernetesUserConfig -AseUser`     | 產生 Kubernetes 設定檔。 使用命令時，請將資訊複製到名為 *config*的檔案中。請勿使用副檔名儲存檔案。        |
 | `Get-HcsApplianceInfo` | 傳回您裝置的相關資訊。 |

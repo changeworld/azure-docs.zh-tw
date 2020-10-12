@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230614"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 入口網站中尋找活動報告
@@ -106,7 +106,7 @@ ms.locfileid: "89230614"
 
 您可以使用登入報告來檢視應用程式使用量的相關詳細資料，只要篩選使用者名稱或應用程式名稱即可。
 
-![篩選登入事件頁面](./media/howto-find-activity-reports/07.png "篩選登入事件頁面")
+![篩選 Sign-In 事件頁面](./media/howto-find-activity-reports/07.png "篩選 Sign-In 事件頁面")
 
 ## <a name="security-reports"></a>安全性報告
 
@@ -147,7 +147,7 @@ ms.locfileid: "89230614"
 
 #### <a name="symptoms"></a>徵兆 
 
-我已下載活動記錄 (稽核或登入)，卻沒看到我所選擇時間的所有記錄。 原因為何？ 
+我已下載活動記錄 (稽核或登入)，卻沒看到我所選擇時間的所有記錄。 為何會這樣？ 
 
  ![報告](./media/troubleshoot-missing-data-download/01.png)
  
@@ -155,7 +155,7 @@ ms.locfileid: "89230614"
 
 當您下載 Azure 入口網站中的活動記錄時，我們會將規模限制為250000筆記錄，並依最新的第一個排序。 
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 您可以利用 [Azure AD 報告 API](concept-reporting-api.md) 在任何指定時間點擷取最多一萬筆記錄。
 
@@ -176,7 +176,7 @@ ms.locfileid: "89230614"
 | 目錄稽核 | 2 分鐘 | 5 分鐘 |
 | 登入活動 | 2 分鐘 | 5 分鐘 |
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 等候 15 分鐘到兩小時的時間，確認動作是否出現在記錄中。 如果在兩小時後仍看不到記錄，請[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我們將加以探討。
 
@@ -197,7 +197,7 @@ ms.locfileid: "89230614"
 | 目錄稽核 | 2 分鐘 | 5 分鐘 |
 | 登入活動 | 2 分鐘 | 5 分鐘 |
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 等候 15 分鐘到兩小時的時間，確認動作是否出現在記錄中。 如果在兩小時後仍看不到記錄，請[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，我們將加以探討。
 
@@ -205,7 +205,7 @@ ms.locfileid: "89230614"
 
 #### <a name="symptoms"></a>徵兆
 
-我無法從 Azure 入口網站檢視超過 30 天的登入和稽核資料。 原因為何？ 
+我無法從 Azure 入口網站檢視超過 30 天的登入和稽核資料。 為何會這樣？ 
 
  ![報告](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -216,11 +216,11 @@ ms.locfileid: "89230614"
 | 報表           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ---           | ---                 | ---
 | 目錄稽核  | 7 天        | 30 天             | 30 天             |
-| 登入活動 | 無法使用。 您可以從個別使用者設定檔刀鋒視窗中存取您自己 7 天內的登入資料 | 30 天 | 30 天             |
+| 登入活動 | 不適用。 您可以從個別使用者設定檔刀鋒視窗中存取您自己 7 天內的登入資料 | 30 天 | 30 天             |
 
 如需詳細資訊，請參閱 [Azure Active Directory 報告保留原則](reference-reports-data-retention.md)。  
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 您有兩個選項可用來保留超過 30 天的資料。 您可以使用 [Azure AD 報告 API](concept-reporting-api.md) 以程式設計方式擷取資料，並將其儲存在資料庫中。 或者，您可以將稽核記錄整合到第三方 SIEM 系統中，例如 Splunk 或 SumoLogic。
 

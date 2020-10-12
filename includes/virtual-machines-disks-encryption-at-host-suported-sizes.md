@@ -9,13 +9,13 @@ ms.date: 07/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5a811620de8336abd3e0df6d72db761ce18b2b6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86230953"
 ---
-所有最新一代的 VM 大小都支援在主機上進行加密：
+所有最新一代的 VM 大小都支援在主機上加密：
 
 |類型  |不支援  |支援  |
 |---------|---------|---------|
@@ -27,4 +27,4 @@ ms.locfileid: "86230953"
 |高效能計算     | H        | HB、HC、HBv2        |
 |上一代     | F、A、D、L、G        | DS、GS、Fs、NVv2        |
 
-升級 VM 大小會導致驗證，以檢查新的 VM 大小是否支援 EncryptionAtHost 功能。
+升級 VM 大小將會導致驗證，以檢查新的 VM 大小是否支援 EncryptionAtHost 功能。

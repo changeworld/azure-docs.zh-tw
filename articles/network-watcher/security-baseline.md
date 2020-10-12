@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 28b3bc5adfc3c2e83de658947193b6046a455c32
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231498"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>適用于網路監看員的 Azure 安全性基準
@@ -743,7 +743,7 @@ ms.locfileid: "89231498"
 
 * [於虛擬網路建立時部署網路監看員](https://github.com/Azure/azure-policy/blob/master/samples/built-in-policy/deploy-network-watcher-in-vnet-regions/README.md)
 
-另請參閱：
+也請參閱：
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 

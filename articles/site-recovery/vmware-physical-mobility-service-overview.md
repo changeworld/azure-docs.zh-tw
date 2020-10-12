@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530058"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
@@ -85,15 +85,15 @@ ms.locfileid: "90530058"
 
 1. 在 [安裝進度]**** 中監視安裝。 安裝完成後，選取 [繼續進行設定]**** ，以向設定伺服器註冊服務。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="行動服務的註冊頁面。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="行動服務安裝選項] 頁面。":::
 
 1. 在 [設定 **伺服器詳細資料**] 中，指定您所設定的 IP 位址和複雜密碼。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="行動服務的註冊頁面。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="行動服務安裝選項] 頁面。":::
 
 1. 選取 [註冊]**** 完成註冊。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="行動服務註冊最終頁面。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="行動服務安裝選項] 頁面。":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>使用命令提示字元安裝行動服務
 

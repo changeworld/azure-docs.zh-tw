@@ -4,10 +4,10 @@ description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527338"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
@@ -355,7 +355,7 @@ Site Recovery 現在支援針對快取儲存體或目標儲存體使用一般用
 **功能** | **詳細資料**
 --- | ---
 **受控磁碟** | 內部部署 VMware Vm 和實體伺服器的複寫現在已直接到 Azure 中的受控磁片。 內部部署資料會傳送至 Azure 中的快取儲存體帳戶，並在目標位置中的受控磁片上建立復原點。 這可確保您不需要管理多個目標儲存體帳戶。
-**設定伺服器** | Site Recovery 現在支援具有多個 Nic 的設定伺服器。 在保存庫中註冊設定伺服器之前，請先將其他介面卡新增至設定伺服器 VM。 如果您之後新增，就必須在保存庫中重新註冊伺服器。
+**組態伺服器** | Site Recovery 現在支援具有多個 Nic 的設定伺服器。 在保存庫中註冊設定伺服器之前，請先將其他介面卡新增至設定伺服器 VM。 如果您之後新增，就必須在保存庫中重新註冊伺服器。
 
 
 ## <a name="updates-february-2019"></a>2019年2月 (更新) 

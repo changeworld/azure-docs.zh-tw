@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236621"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>針對 Azure AD (preview) 中 FIDO2 安全性金鑰的混合式部署進行疑難排解
@@ -46,7 +46,7 @@ ms.locfileid: "89236621"
 
 Windows Hello 臉部是註冊使用者的裝置所需的最佳體驗。 FIDO2 安全性金鑰適用于共用裝置，或 Windows Hello 企業版註冊是一道關卡。
 
-如果 Windows Hello 臉部防止使用者嘗試 FIDO2 安全性金鑰登入案例，則使用者可以在 [ **設定] > 登入選項**中移除臉部註冊，以關閉 Hello 臉部登入。
+如果 Windows Hello 臉部讓使用者無法嘗試 FIDO2 安全性金鑰登入案例，則使用者可以藉由在 [ **設定] > Sign-In 選項**中移除臉部註冊，來關閉 Hello 臉部登入。
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>使用者建立已加入混合式 Azure AD 的電腦之後，無法立即使用 FIDO2 安全性金鑰
 
@@ -86,9 +86,9 @@ Windows Hello 臉部是註冊使用者的裝置所需的最佳體驗。 FIDO2 �
 
 **登錄機碼**
 
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\PasswordForWork \* [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Policies\PasswordForWork \* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [ \* ]*
 
 **診斷資訊**
 
@@ -143,7 +143,7 @@ Azure AD Kerberos Server PowerShell Cmdlet 會使用與標準 Azure AD Connect W
 
 第一組屬性是來自內部部署 AD DS 環境中的物件。 第二個部分 (以 * Cloud * * 開頭的屬性是來自 Azure AD 中的 Kerberos 伺服器物件 ) ：
 
-| 屬性           | 說明  |
+| 屬性           | 描述  |
 |--------------------|--------------|
 | Id                 | AD DS 網域控制站物件的唯一 *識別碼* 。 |
 | DomainDnsName      | AD DS 網域的 DNS 功能變數名稱。 |

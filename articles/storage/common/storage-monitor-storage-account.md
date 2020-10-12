@@ -1,6 +1,6 @@
 ---
 title: 如何監視 Azure 入口網站中的 Azure 儲存體帳戶 | Microsoft Docs
-description: 瞭解如何使用 Azure 入口網站和 Azure 儲存體分析監視 Azure 中的儲存體帳戶。
+description: 瞭解如何使用 Azure 入口網站和 Azure 儲存體分析來監視 Azure 中的儲存體帳戶。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034663"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中監視儲存體帳戶
@@ -141,7 +141,7 @@ ms.locfileid: "88034663"
     ![在 Azure 入口網站中設定記錄。](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. 按一下 [檔案] 。
 
-診斷記錄會儲存在儲存體帳戶中名為 *$logs* 的 Blob 容器內。 您可以使用儲存體 explorer （如[Microsoft Azure 儲存體總管](https://storageexplorer.com)）或以程式設計方式使用儲存體用戶端程式庫或 PowerShell 來查看記錄資料。
+診斷記錄會儲存在儲存體帳戶中名為 *$logs* 的 Blob 容器內。 您可以使用儲存體 explorer （例如 [Microsoft Azure 儲存體總管](https://storageexplorer.com)）來查看記錄資料，或使用儲存體用戶端程式庫或 PowerShell 以程式設計方式查看記錄資料。
 
 如需存取 $logs 容器的詳細資訊，請參閱[儲存體分析記錄](storage-analytics-logging.md)。
 

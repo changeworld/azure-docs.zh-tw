@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90529387"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用對稱金鑰註冊群組布建裝置
@@ -129,7 +129,7 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 4. 一旦儲存您的註冊，將會產生 [主要金鑰]**** 與 [次要金鑰]**** 並新增到註冊項目。 您的對稱金鑰註冊群組會在 [註冊群組]** 索引標籤的 [群組名稱]** 資料行之下，顯示為 **mylegacydevices**。 
 
-    開啟註冊並複製您產生之 [主要金鑰]  的值。 此金鑰是您的主要群組金鑰。
+    開啟註冊並複製您產生之 [主要金鑰]**** 的值。 此金鑰是您的主要群組金鑰。
 
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>為裝置選擇唯一的註冊識別碼
@@ -251,7 +251,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     儲存檔案。
 
-7. 以滑鼠右鍵按一下 **prov\_dev\_client\_sample** 專案，然後選取 [設定為起始專案]  。 
+7. 以滑鼠右鍵按一下 **prov\_dev\_client\_sample** 專案，然後選取 [設定為起始專案]****。 
 
 8. 在 Visual Studio 功能表中，選取 [偵錯]   > [啟動但不偵錯]  以執行解決方案。 出現重新建置專案的提示時，按一下 [是]****，以在執行前重新建置專案。
 

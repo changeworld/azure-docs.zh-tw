@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84696826"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 DNS 記錄和記錄集
@@ -70,7 +70,7 @@ ms.locfileid: "84696826"
 您可以使用 Azure 入口網站來從記錄集移除記錄。 請注意，移除記錄集的最後一筆記錄不會刪除記錄集。
 
 1. 在記錄集的 [記錄集屬性] **** 刀鋒視窗中搜尋記錄。
-2. 按一下您想要移除的記錄。 然後選取 [**移除**]。
+2. 按一下您想要移除的記錄。 然後選取 [ **移除**]。
 
     ![移除記錄](./media/dns-operations-recordsets-portal/removerecord500.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "84696826"
 
 您無法在建立區域時所自動建立的區域頂點 (名稱 = "\@") 刪除 SOA 和 NS 記錄集。 當您刪除該區域時，就會自動刪除它們。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure DNS 的詳細資訊，請參閱 [Azure DNS 概觀](dns-overview.md)。
 * 如需自動化 DNS 的相關資訊，請參閱 [使用 .NET SDK 建立 DNS 區域和記錄集](dns-sdk.md)。

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229849"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視器中的 Azure AD 活動記錄 \(部分機器翻譯\)
@@ -48,14 +48,14 @@ ms.locfileid: "89229849"
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要使用此功能，您需要：
+若要使用此功能，您必須要有：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以[註冊免費試用](https://azure.microsoft.com/free/)。
 * Azure AD Free、Basic、Premium 1 或 Premium 2 [授權](https://azure.microsoft.com/pricing/details/active-directory/)，用以存取 Azure 入口網站中的 Azure AD 稽核記錄。 
 * Azure AD 租用戶。
-* 屬於 Azure AD 租使用者之 **全域管理員** 或 **安全性系統管理員** 的使用者。
+* 使用者，身分是該 Azure AD 租用戶的「全域管理員」  或「安全性管理員」  。
 * Azure AD Premium 1 或 Premium 2 [授權](https://azure.microsoft.com/pricing/details/active-directory/)，用以存取 Azure 入口網站中的 Azure AD 登入記錄。 
 
 根據您要路由稽核記錄資料的位置，您必須要有下列任何一項：

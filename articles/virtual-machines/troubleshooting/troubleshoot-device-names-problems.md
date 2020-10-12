@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88756821"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>針對 Linux VM 裝置名稱變更進行疑難排解
 
 本文章說明在您重新啟動 Linux VM 或重新連接資料磁碟之後，裝置名稱會變更的原因。 本文章也提供此問題的解決方案。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 在 Microsoft Azure 中執行 Linux VM 時，您可能會遇到下列問題：
 
 - VM 在重新啟動之後無法開機。
@@ -38,7 +38,7 @@ Linux 中的裝置路徑不保證會在重新啟動之間保持一致。 裝置�
 
 問題發生的原因是因為 Linux 中由 SCSI 子系統所排定的裝置掃描是以非同步方式執行。 因此，裝置路徑名稱可能會在重新啟動之間有所不同。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要解決這個問題，請使用永續性命名。 有四種方式可使用永續性命名：依檔案系統標籤、依 UUID、依識別碼，或依路徑。 我們建議針對 Azure Linux VM 使用檔案系統標籤或 UUID。
 

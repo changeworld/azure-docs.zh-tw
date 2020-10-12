@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044578"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>利用串流分析來建置 IoT 解決方案
@@ -28,7 +28,7 @@ ms.locfileid: "86044578"
 * 有自信地使用串流分析來為客戶開發串流解決方案。
 * 利用監視和記錄的經驗來排解問題。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本解決方案，您需要滿足下列必要條件：
 * [Azure 訂用帳戶](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -43,7 +43,7 @@ ms.locfileid: "86044578"
 ### <a name="entry-data-stream"></a>入口資料流
 入口資料流包含車輛進入收費站的相關資訊。 出口資料事件會從包含在範例應用程式中的 Web 應用程式即時串流到事件中樞佇列。
 
-| TollID | EntryTime | LicensePlate | State | 請確定 | 型號 | VehicleType | VehicleWeight | Toll | Tag |
+| TollID | EntryTime | LicensePlate | State | 請確定 | 模型 | VehicleType | VehicleWeight | Toll | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -61,7 +61,7 @@ ms.locfileid: "86044578"
 | LicensePlate |車輛的車牌號碼 |
 | State |美國的某個洲 |
 | 請確定 |車輛的製造商 |
-| 型號 |車輛的型號 |
+| 模型 |車輛的型號 |
 | VehicleType |1 代表載客車或 2 代表商用車 |
 | WeightType |車輛的重量，單位為噸；0 代表客車 |
 | Toll |通行費，單位為美元 |
@@ -113,7 +113,7 @@ ms.locfileid: "86044578"
 請務必依照這篇文章結尾處＜清理您的 Azure 帳戶＞一節中的步驟來進行，讓您能充分利用您的免費 Azure 點數。
 
 ## <a name="deploy-the-sample"></a>部署範例
-只要按幾下，就可以輕鬆將數個資源一起部署在資源群組中。 解決方案定義裝載于 GitHub 存放庫，網址為 [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) 。
+只要按幾下，就可以輕鬆將數個資源一起部署在資源群組中。 解決方案定義裝載于 GitHub 存放庫中 [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) 。
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>在 Azure 入口網站中部署 TollApp 範本
 1. 若要將 TollApp 環境部署至 Azure，請使用這個連結來[部署 TollApp Azure 範本](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)。
@@ -171,7 +171,7 @@ ms.locfileid: "86044578"
    - **註冊**輸入是 Azure Blob 儲存體連線，會指向可視需要用於查閱的靜態 registration.json 檔案。 此參考資料輸入會用於稍後的查詢語法變化。
 
 4. 檢查 TollApp 範例作業的輸出。
-   - **Cosmos DB**輸出是接收輸出接收事件的 Cosmos 資料庫容器。 請注意，此輸出用於串流查詢的 INTO 子句。
+   - **Cosmos DB** 輸出是接收輸出接收事件的 Cosmos 資料庫容器。 請注意，此輸出用於串流查詢的 INTO 子句。
 
 ## <a name="start-the-tollapp-streaming-job"></a>啟動 TollApp 串流作業
 請遵循下列步驟以啟動串流作業：
@@ -189,7 +189,7 @@ ms.locfileid: "86044578"
 
 3. 選取 [資料總管]**** 標題以開啟 [資料總管] 頁面。
 
-4. 展開**tollAppDatabase**  >  **]**  >  **檔**。
+4. 展開 [ **tollAppDatabase**  >  **tollAppCollection**  >  **檔**]。
 
 5. Azure 串流分析經悉心設計，能彈性調整以便於處理大量的資料。
 
@@ -283,7 +283,7 @@ WHERE Registration.Expired = '1'
 ```
 
 ## <a name="scale-out-the-job"></a>將作業相應放大
-Azure 串流分析是設計成能進行彈性調整，以便於處理大量的資料。 Azure 串流分析查詢可以使用**PARTITION by**子句來告訴系統此步驟要相應放大。**PartitionId**是系統新增的特殊資料行，以符合輸入（事件中樞）的分割區識別碼。
+Azure 串流分析是設計成能進行彈性調整，以便於處理大量的資料。 Azure 串流分析查詢可以使用 **PARTITION by** 子句來告訴系統此步驟相應放大。 **PartitionId** 是一種特殊的資料行，系統會將此資料行新增以符合輸入 (事件中樞) 的資料分割識別碼。
 
 若要將查詢相應放大至分割區，請將查詢語法編輯為下列程式碼：
 ```sql
@@ -303,7 +303,7 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 3. 在串流作業的 CONFIGURE 標題下，選取 [縮放]****。
 
-4. 將 [串流單位]**** 滑桿從 1 滑動到 6。 串流單位會定義作業所能接收的計算能力量。 選取 [儲存]。
+4. 將 [串流單位]**** 滑桿從 1 滑動到 6。 串流單位會定義作業所能接收的計算能力量。 選取 [儲存]****。
 
 5. **啟動**串流作業以示範額外的縮放。 Azure 串流分析可將工作分送給更多計算資源以改善輸送量，並使用 PARTITION BY 子句中指定的資料行，將工作分割給各個資源。
 
