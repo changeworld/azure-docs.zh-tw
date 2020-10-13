@@ -1,27 +1,27 @@
 ---
 title: 使用自動調整傳送電子郵件和 Webhook 警示通知
-description: 瞭解如何在 Azure 監視器中使用自動調整動作來呼叫 web Url 或傳送電子郵件通知。
+description: 瞭解如何在 Azure 監視器中使用自動調整動作呼叫 web Url 或傳送電子郵件通知。
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86505514"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自動調整動作在 Azure 監視器中傳送電子郵件和 Webhook 警示通知
 本文將告訴您如何設定觸發程序，讓您可以根據 Azure 中的自動調整動作呼叫特定的 Web URl 或傳送電子郵件。  
 
 ## <a name="webhooks"></a>Webhook
-Webhook 可讓您將 Azure 警示通知路由到其他系統進行後處理或自訂通知。 例如，將警示路由傳送至可處理傳入 web 要求以傳送 SMS、記錄錯誤、使用聊天或訊息服務通知小組等的服務。Webhook URI 必須是有效的 HTTP 或 HTTPS 端點。
+Webhook 可讓您將 Azure 警示通知路由到其他系統進行後處理或自訂通知。 例如，將警示路由傳送至可處理傳入 web 要求的服務，以傳送 SMS、記錄錯誤、使用聊天或訊息服務通知小組等。Webhook URI 必須是有效的 HTTP 或 HTTPS 端點。
 
 ## <a name="email"></a>電子郵件
 電子郵件可以傳送至任何有效的電子郵件地址。 也會通知執行該規則的訂用帳戶的系統管理員和共同管理員。
 
 ## <a name="cloud-services-and-app-services"></a>雲端服務和應用程式服務
-您可以從雲端服務和伺服器陣列（應用程式服務）的 Azure 入口網站中加入宣告。
+您可以從雲端服務和伺服器陣列的 Azure 入口網站中加入 (App Service) 。
 
 * 選擇做為 [調整依據] **** 的度量。
 
@@ -29,7 +29,7 @@ Webhook 可讓您將 Azure 警示通知路由到其他系統進行後處理或�
 
 ## <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
 對於使用 Resource Manager 建立的較新虛擬機器 (虛擬機器擴展集)，您可以使用 REST API、Resource Manager 範本、PowerShell 和 CLI 設定此項目。 目前尚無入口網站介面。
-使用 REST API 或 Resource Manager 範本時，請使用下列選項在[autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings)中包含通知元素。
+使用 REST API 或 Resource Manager 範本時，請在 [autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) 中包含 [通知] 元素，並提供下列選項。
 
 ```
 "notifications": [
@@ -56,9 +56,9 @@ Webhook 可讓您將 Azure 警示通知路由到其他系統進行後處理或�
     ]
 ```
 
-| 欄位 | 是否為強制？ | 描述 |
+| 欄位 | 是否為強制？ | 說明 |
 | --- | --- | --- |
-| operation (作業) |是 |值必須是 [調整] |
+| 作業 |是 |值必須是 [調整] |
 | sendToSubscriptionAdministrator |是 |值必須是 "true" 或 "false" |
 | sendToSubscriptionCoAdministrators |是 |值必須是 "true" 或 "false" |
 | customEmails |是 |值可以是 null 或電子郵件的字串陣列 |
@@ -102,7 +102,7 @@ Webhook 可以使用權杖型驗證來驗證，您會在其中儲存 Webhook URI
 | 欄位 | 是否為強制？ | 描述 |
 | --- | --- | --- |
 | status |是 |此狀態表示產生了自動調整動作 |
-| operation (作業) |是 |若執行個體增加，它會「相應放大」，若執行個體減少，它會「相應縮小」。 |
+| 作業 |是 |若執行個體增加，它會「相應放大」，若執行個體減少，它會「相應縮小」。 |
 | 內容 |是 |自動調整動作內容 |
 | timestamp |是 |自動調整動作觸發時的時間戳記 |
 | id |是 |自動調整設定的 Resource Manager 識別碼 |

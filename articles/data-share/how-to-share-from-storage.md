@@ -1,5 +1,5 @@
 ---
-title: 從 Azure Blob 儲存體和 Azure Data Lake Storage 共用及接收資料
+title: 從 Azure Blob 儲存體和 Azure Data Lake Storage 共用和接收資料
 description: 瞭解如何從 Azure Blob 儲存體和 Azure Data Lake Storage 共用及接收資料
 author: jifems
 ms.author: jife
@@ -7,13 +7,13 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89270048"
 ---
-# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>從 Azure Blob 儲存體和 Azure Data Lake Storage 共用及接收資料
+# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>從 Azure Blob 儲存體和 Azure Data Lake Storage 共用和接收資料
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
@@ -33,7 +33,7 @@ Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔�
 
 ### <a name="prerequisites-for-source-storage-account"></a>來源儲存體帳戶的必要條件
 
-* Azure 儲存體帳戶：如果您還沒有帳戶，可以建立一個 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 * 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。 
 
@@ -45,11 +45,11 @@ Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔�
 
 在 Azure 資源群組中建立 Azure Data Share 資源。
 
-1. 選取入口網站左上角的 [功能表] 按鈕，然後選取 [ **建立資源** ] (+) 。
+1. 選取入口網站左上角的功能表按鈕，再選取 [建立資源] (+)。
 
-1. 搜尋「Data Share」**。
+1. 搜尋「Data Share」  。
 
-1. 選取 Data Share 然後選取 [ **建立**]。
+1. 選取 [Data Share]，然後選取 [建立]  。
 
 1. 使用下列資訊填寫 Azure Data Share 資源的基本詳細資料。 
 
@@ -75,15 +75,15 @@ Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔�
 
 1. 選取 [建立]  。   
 
-1. 填寫您共用的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
+1. 填寫共用的詳細資料。 指定名稱、共用類型、共用內容的說明和使用規定 (選擇性)。 
 
     ![EnterShareDetails](./media/enter-share-details.png "輸入共用詳細資料") 
 
 1. 選取 [繼續]。
 
-1. 若要將資料集新增至您的共用，請選取 [ **新增資料集**]。 
+1. 若要將資料集新增至共用，請選取 [新增資料集]。 
 
-    ![將資料集新增至您的共用](./media/datasets.png "資料集")
+    ![將資料集新增至共用](./media/datasets.png "資料集")
 
 1. 選取您想要新增的資料集類型。 根據您在先前的步驟中選取的共用類型 (快照集或就地)，您將看到不同的資料集類型清單。 
 

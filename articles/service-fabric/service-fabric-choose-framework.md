@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260530"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 程式設計模型概觀
@@ -34,19 +34,19 @@ Reliable Services 是輕量級的服務撰寫架構，這些服務與 Service Fa
 
 Reliable Services 與大多數服務平台 (例如 Web 伺服器) 一樣，可以是無狀態的，其中每個服務執行個體都是以平等方式建立，並且狀態保存在外部解決方案中，例如 Azure DB 或「Azure 資料表儲存體」。
 
-Reliable Services 的專屬 Service Fabric，也可以是具狀態的，其狀態會使用可靠的集合直接保存在服務本身。 狀態透過複寫變得高度可用，並透過資料分割散發，全由 Service Fabric 自動管理。
+除了 Service Fabric 之外，Reliable Services 也可以是具狀態，其中狀態會使用可靠的集合直接保存在服務本身中。 狀態透過複寫變得高度可用，並透過資料分割散發，全由 Service Fabric 自動管理。
 
 [深入了解 Reliable Services](service-fabric-reliable-services-introduction.md)或從[撰寫第一個 Reliable Services](service-fabric-reliable-services-quick-start.md) 開始。
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-ASP.NET Core 是一種開放原始碼、跨平臺的架構，可用於建立新式雲端式網際網路連線的應用程式，例如 web apps、IoT 應用程式和行動後端。 Service Fabric 可與 ASP.NET Core 整合，因此您可以同時撰寫能夠利用可靠集合和 Service Fabric 的進階協調流程功能的無狀態與具狀態的 ASP.NET Core 應用程式。
+ASP.NET Core 是一個開放原始碼、跨平臺的架構，可用於建立現代化的雲端式網際網路連線應用程式，例如 web 應用程式、IoT 應用程式和行動後端。 Service Fabric 可與 ASP.NET Core 整合，因此您可以同時撰寫能夠利用可靠集合和 Service Fabric 的進階協調流程功能的無狀態與具狀態的 ASP.NET Core 應用程式。
 
 [深入了解 Service Fabric 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)，或從[撰寫第一個 ASP.NET Core Service Fabric 應用程式](service-fabric-tutorial-create-dotnet-app.md)開始使用。
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-以 Reliable Services 為基礎，可靠的動作專案架構是一種應用程式架構，可根據計算動作專案[模型](https://en.wikipedia.org/wiki/Actor_model)來執行[虛擬執行者](https://research.microsoft.com/en-us/projects/orleans/)模式。 可靠的動作專案架構會使用獨立的計算單位和狀態，*以及稱為動作*專案的單一執行緒執行。 Reliable Actor 架構提供動作項目的內建通訊和預先設定狀態持續性和相應放大組態。
+根據 Reliable Services，可靠的動作專案架構是一種應用程式架構，可根據計算動作專案[模型](https://en.wikipedia.org/wiki/Actor_model)來執行[虛擬](https://research.microsoft.com/en-us/projects/orleans/)動作專案模式。 可靠的動作專案架構會使用獨立的計算單位和狀態，以及單一執行緒的執行 *，稱為「* 動作專案」。 Reliable Actor 架構提供動作項目的內建通訊和預先設定狀態持續性和相應放大組態。
 
 由於 Reliable Actors 本身是建置在 Reliable Services 上的應用程式架構，因此與 Service Fabric 平台完全整合，並可得益於平台提供的完整功能集。
 
@@ -54,7 +54,7 @@ ASP.NET Core 是一種開放原始碼、跨平臺的架構，可用於建立新�
 
 [使用 ASP.NET Core 組建前端服務](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Service Fabric 和容器概觀](service-fabric-containers-overview.md)
 

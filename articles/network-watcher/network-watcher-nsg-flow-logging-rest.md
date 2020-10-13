@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 936501674fcf1d428de936174575440edad71de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738510"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 設定網路安全性群組流量記錄
@@ -31,14 +31,14 @@ ms.locfileid: "84738510"
 
 ## <a name="before-you-begin"></a>開始之前
 
-使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的[ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
+使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的 [ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
 > [!Important]
 > 針對網路監看員 REST API 呼叫，要求 URI 中的資源群組名稱是包含網路監看員的資源群組，而非您要執行診斷動作的資源。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文章涵蓋的案例會示範如何使用 REST API 啟用、停用以及查詢流程記錄。 若要深入了解網路安全性群組流程記錄，請造訪[網路安全性群組流程記錄 - 概觀](network-watcher-nsg-flow-logging-overview.md)。
 
@@ -215,7 +215,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何[使用 PowerBI 視覺化 NSG 流量記錄](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

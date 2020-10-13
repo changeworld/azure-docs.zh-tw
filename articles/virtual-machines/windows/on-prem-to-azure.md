@@ -11,10 +11,10 @@ ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835474"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>從 Amazon Web Services (AWS) 和其他平台移轉至 Azure 中的受控磁碟
@@ -26,12 +26,12 @@ ms.locfileid: "87835474"
 - **特製化 VHD**：會維護來自原始 VM 的使用者帳戶、應用程式和其他狀態資料。 
 
 > [!IMPORTANT]
-> 將任何 VHD 上傳至 Azure 之前，您應該遵循[準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> 將任何 VHD 上傳至 Azure 之前，您應該遵循 [準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 >
 >
 
 
-| 案例                                                                                                                         | 文件                                                                                                                       |
+| 狀況                                                                                                                         | 文件                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 您具有想要使用受控磁碟移轉至 Azure VM 的 AWS EC2 執行個體                              | [從 Amazon Web Services (AWS) 將 VM 移至 Azure](aws-to-azure.md)                           |
 | 您具有來自其他虛擬化平台的 VM，且想要將它作為映像使用，來建立多個 Azure VM。 | [將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM](upload-generalized-managed.md) |
@@ -60,7 +60,7 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 ### <a name="disk-sizes"></a>磁碟大小
 
-**進階受控磁碟**
+**Premium 受控磁碟**
 
 有七種型別的進階受控磁碟可以搭配 VM 使用，而且每種都有特定的 IOP 和輸送量限制。 為您的 VM 選擇進階磁碟類型時，請根據應用程式在容量、效能、延展性以及尖峰負載方面的需求，將這些限制納入考量。
 
@@ -82,9 +82,9 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 ### <a name="disk-caching-policy"></a>磁碟快取原則 
 
-**進階受控磁碟**
+**Premium 受控磁碟**
 
-根據預設，所有 Premium 資料磁片的磁碟快取原則都是*唯讀*，而連接至 VM 的 premium 作業系統磁片則是*讀寫*。 為使應用程式的 IO 達到最佳效能，建議使用此組態設定。 對於頻繁寫入或唯寫的資料磁碟 (例如 SQL Server 記錄檔)，停用磁碟快取可獲得更佳的應用程式效能。
+根據預設，所有 Premium 資料磁片的磁碟快取原則都是 *唯讀* 的，而連接至 VM 的高階作業系統磁片則是 *讀寫* 。 為使應用程式的 IO 達到最佳效能，建議使用此組態設定。 對於頻繁寫入或唯寫的資料磁碟 (例如 SQL Server 記錄檔)，停用磁碟快取可獲得更佳的應用程式效能。
 
 ### <a name="pricing"></a>定價
 
@@ -93,4 +93,4 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 將任何 VHD 上傳至 Azure 之前，您應該遵循[準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- 將任何 VHD 上傳至 Azure 之前，您應該遵循 [準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

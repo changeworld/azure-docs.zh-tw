@@ -9,10 +9,10 @@ ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399035"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 匯入/匯出服務：常見問題集
@@ -29,19 +29,19 @@ ms.locfileid: "91399035"
 
 ### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>我可以使用 Azure 匯入/匯出服務複製 Azure 檔案儲存體嗎？
 
-可以。 Azure 匯入/匯出服務支援匯入至 Azure 檔案儲存體。 目前不支援 Azure 檔案匯出。
+是。 Azure 匯入/匯出服務支援匯入至 Azure 檔案儲存體。 目前不支援 Azure 檔案匯出。
 
 ### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Azure 匯入/匯出服務可用於 CSP 訂用帳戶嗎？
 
-可以。 Azure 匯入/匯出服務支援雲端解決方案提供者 (CSP) 的訂用帳戶。
+是。 Azure 匯入/匯出服務支援雲端解決方案提供者 (CSP) 的訂用帳戶。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>我可以使用 Azure 匯入/匯出服務，將 PST 信箱及 SharePoint 資料複製到 Microsoft 365 嗎？
 
-可以。 如需詳細資訊，請參閱匯 [入組織的 PST 檔案的總覽](/microsoft-365/compliance/importing-pst-files-to-office-365)。
+是。 如需詳細資訊，請參閱匯 [入組織的 PST 檔案的總覽](/microsoft-365/compliance/importing-pst-files-to-office-365)。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>可以使用 Azure 匯入/匯出服務，將我的離線備份複製到 Azure 備份服務嗎？
 
-可以。 如需詳細資訊，請移至 [Azure 備份中的離線備份工作流程](../../backup/backup-azure-backup-import-export.md)。
+是。 如需詳細資訊，請移至 [Azure 備份中的離線備份工作流程](../../backup/backup-azure-backup-import-export.md)。
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>我可以為了匯入/匯出作業向 Microsoft 購買磁碟機嗎？
 
@@ -61,7 +61,7 @@ ms.locfileid: "91399035"
 
 ### <a name="can-i-cancel-my-job"></a>我可以取消作業嗎？
 
-可以。 您可以在作業狀態為 [建立中]**** 或 [運送中]**** 時取消作業。 如果在這些階段以外，即無法取消作業，而且作業會繼續進行到最後一個階段。
+是。 您可以在作業狀態為 [建立中]**** 或 [運送中]**** 時取消作業。 如果在這些階段以外，即無法取消作業，而且作業會繼續進行到最後一個階段。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>我可以在 Azure 入口網站中檢視已完成作業的狀態多久？
 
@@ -153,7 +153,7 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 匯入/匯出是否支援 AES-256 加密？
 
-可以。 Azure 匯入/匯出服務使用 AES-256 BitLocker 加密。
+是。 Azure 匯入/匯出服務使用 AES-256 BitLocker 加密。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
 ms.openlocfilehash: 09206b8189f03a37f8bd7d073238609a3f1bd3ad
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816094"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統 (NFS) 3.0 通訊協定 (預覽來掛接 Blob 儲存體) 
@@ -94,12 +94,12 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |----|---|
 |Location|下列其中一個區域：美國東部、美國中部、美國中西部、澳大利亞東南部、歐洲北部、英國西部、韓國中部、南韓南部和加拿大中部 |
 |效能|Premium|
-|帳戶類型|BlockBlobStorage|
+|帳戶種類|BlockBlobStorage|
 |複寫|本地備援儲存體 (LRS)|
 |連線方法| (選取的網路) 或私人端點的公用端點|
 |需要安全傳輸|已停用|
-|階層式命名空間|已啟用|
-|NFS V3|已啟用|
+|階層式命名空間|啟用|
+|NFS V3|啟用|
 
 您可以接受所有其他設定的預設值。 
 
@@ -167,7 +167,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="resolve-common-issues"></a>解決常見的問題
 
-|問題/錯誤 | 解決方法|
+|問題/錯誤 | 解決方案|
 |---|---|
 |`Access denied by server while mounting`|確定您的用戶端是在支援的子網路內執行。 請參閱 [支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 確認您要掛接的容器是在確認該功能已註冊之後所建立。 請參閱 [步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必直接在終端機中輸入 mount 命令和參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|

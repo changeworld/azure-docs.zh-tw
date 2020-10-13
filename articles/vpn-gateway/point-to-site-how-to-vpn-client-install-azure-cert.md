@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8c4d37f67d89ad1b7973a85fb6c2a9f7e818a028
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421657"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>安裝用於 P2S 憑證驗證連線的用戶端憑證
@@ -39,6 +39,6 @@ ms.locfileid: "89421657"
 
 Linux 用戶端憑證會安裝在用戶端，是用戶端組態的一部分。 如需相關指示，請參閱[用戶端組態 - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請繼續進行點對站設定步驟，以[建立和安裝 VPN 用戶端組態檔](point-to-site-vpn-client-configuration-azure-cert.md)。

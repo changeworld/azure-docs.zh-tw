@@ -6,10 +6,10 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
 ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827668"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>將在鄰近放置群組中執行的 Azure 虛擬機器複寫至另一個區域
@@ -29,12 +29,12 @@ ms.locfileid: "87827668"
 -  非受控磁碟不支援鄰近放置群組的 Site Recovery。
 
 > [!NOTE]
-> Azure Site Recovery 不支援從 Hyper-v 到 Azure 案例的受控磁片容錯回復。 因此，不支援從 Azure 的鄰近放置群組容錯回復至 Hyper-v。
+> Azure Site Recovery 不支援從 Hyper-v 到 Azure 案例的受控磁片容錯回復。 因此，不支援從 Azure 中的鄰近位置群組容錯回復至 Hyper-v。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 1. 確定您具有 Azure PowerShell Az 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
-2. Azure PowerShell Az 版本的最小值應為4.1.0。 若要檢查目前的版本，請使用下列命令-
+2. 最小 Azure PowerShell Az 版本應該是4.1.0。 若要檢查目前的版本，請使用下列命令：
     ```
     Get-InstalledModule -Name Az
     ```
@@ -42,7 +42,7 @@ ms.locfileid: "87827668"
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>為鄰近放置群組中的虛擬機器設定 Site Recovery
 
 > [!NOTE]
-> 請確定您有目標鄰近放置群組的唯一識別碼方便使用。 如果您要建立新的鄰近放置群組，請在[這裡](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)檢查命令，如果您使用的是現有的鄰近放置群組，請在[這裡](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)使用命令。
+> 請確定您有適合的目標鄰近放置群組唯一識別碼。 如果您要建立新的鄰近放置群組，請檢查 [此處](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) 的命令，如果您使用現有的鄰近放置群組，請使用 [此處](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)的命令。
 
 ### <a name="azure-to-azure"></a>Azure 至 Azure
 
@@ -55,7 +55,7 @@ ms.locfileid: "87827668"
 7. 使用[這些](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container)步驟和容錯回復的保護容器對應 (如[這裡](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)所述)，在主要和復原保護容器之間建立保護容器對應。
 8. 依照[這些](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account)步驟建立快取儲存體帳戶。
 9. 依照[這裡](./azure-to-azure-powershell.md#create-network-mappings)的說明建立必要的網路對應。
-10. 若要複寫具有受控磁片的 Azure 虛擬機器，請使用下列 PowerShell Cmdlet-
+10. 若要使用受控磁片複寫 Azure 虛擬機器，請使用下列 PowerShell Cmdlet：
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.

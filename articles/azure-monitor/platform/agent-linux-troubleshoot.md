@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531185"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
@@ -298,7 +298,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 * OMI 套件已手動升級為比 Log Analytics Linux 代理程式套件所安裝版本還新的版本
 * DSC 資源在 `omsconfig.log` 記錄中記錄了「找不到類別」** 錯誤
 * Log Analytics 的資料代理程式已備份
-* DSC 記錄 *目前的設定不存在。執行 Update-dscconfiguration 命令搭配-Path 參數來指定設定檔，並先建立目前的設定。* 在 `omsconfig.log` 記錄檔中，但沒有關於 `PerformRequiredConfigurationChecks` 作業的記錄訊息存在。
+* DSC 記錄 *目前的設定不存在。執行 Start-DscConfiguration 命令搭配-Path 參數來指定設定檔，並先建立目前的設定。* 在 `omsconfig.log` 記錄檔中，但沒有關於 `PerformRequiredConfigurationChecks` 作業的記錄訊息存在。
 
 ### <a name="resolution"></a>解決方案
 1. 安裝所有相依性，例如 auditd 套件。
@@ -405,7 +405,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
-Or
+或者
 
 ```
 sudo sh ./onboard_agent.sh --purge

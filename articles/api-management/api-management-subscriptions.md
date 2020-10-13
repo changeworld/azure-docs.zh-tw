@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的訂用帳戶 | Microsoft Docs
-description: 深入了解 Azure APIM 中的訂用帳戶概念。 取用者可以使用 Azure API 管理中的訂用帳戶來取得 Api 的存取權。
+description: 深入了解 Azure APIM 中的訂用帳戶概念。 取用者可以使用 Azure API 管理中的訂用帳戶來存取 Api。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87843771"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的訂用帳戶
@@ -41,7 +41,7 @@ ms.locfileid: "87843771"
 
 ### <a name="subscriptions-for-a-product"></a>產品的訂用帳戶
 
-傳統上，APIM 中的訂用帳戶始終與單一 [API 產品](api-management-terminology.md)範圍相關聯。 開發人員可在開發人員入口網站上找到產品清單。 然後他們會針對想要使用的產品提交訂用帳戶要求。 訂用帳戶要求核准之後 (自動或由 API 發行者)，開發人員可以使用其中的金鑰存取產品中的所有 API。 目前，開發人員入口網站只會在 [使用者設定檔] 區段下顯示產品範圍的訂閱。 
+傳統上，APIM 中的訂用帳戶始終與單一 [API 產品](api-management-terminology.md)範圍相關聯。 開發人員可在開發人員入口網站上找到產品清單。 然後他們會針對想要使用的產品提交訂用帳戶要求。 訂用帳戶要求核准之後 (自動或由 API 發行者)，開發人員可以使用其中的金鑰存取產品中的所有 API。 目前，開發人員入口網站只會顯示 [使用者設定檔] 區段下的產品範圍訂閱。 
 
 ![產品訂用帳戶](./media/api-management-subscriptions/product-subscription.png)
 

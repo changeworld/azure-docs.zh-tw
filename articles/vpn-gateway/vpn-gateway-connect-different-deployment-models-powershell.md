@@ -1,5 +1,5 @@
 ---
-title: 將傳統虛擬網路連線至 Azure Resource Manager Vnet： PowerShell
+title: 將傳統虛擬網路連接到 Azure Resource Manager Vnet： PowerShell
 description: 使用 VPN 閘道和 PowerShell 在傳統 VNet 和 Resource Manager VNet 之間建立 VPN 連線。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082047"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 從不同的部署模型連接虛擬網路
@@ -92,7 +92,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
    ```
 3. 開啟您下載的 .xml 檔案加以編輯。 如需網路組態檔的範例，請參閱 [網路組態結構描述](https://msdn.microsoft.com/library/jj157100.aspx)。
 
-### <a name="2-verify-the-gateway-subnet"></a>2. 驗證閘道子網
+### <a name="2-verify-the-gateway-subnet"></a>2. 確認閘道子網
 在 **VirtualNetworkSites** 元素中，將閘道子網路 (若已建立) 加入至您的 VNet。 使用網路組態檔時，閘道子網路必須命名為 "GatewaySubnet"，否則 Azure 無法辨識並將它當作閘道子網路。
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
@@ -131,7 +131,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
 </LocalNetworkSites>
 ```
 
-### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4. 建立 VNet 與區域網路網站的關聯
+### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4. 將 VNet 與區域網路網站建立關聯
 在此區段中，我們會指定您要 VNet 連接的區域網路站台。 在此例中，這是您稍早參考的 Resource Manager VNet。 確定名稱相符。 此步驟不會建立閘道。 它會指定閘道將要連接的區域網路。
 
 ```xml

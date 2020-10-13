@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
 ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87554773"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的備份和還原選項
@@ -41,7 +41,7 @@ ms.locfileid: "87554773"
 如需有關如何建立快照集的詳細資訊，請參閱：
 
 * [在 Windows 中建立 VHD 複本並儲存為受控磁碟](./windows/snapshot-copy-managed-disk.md)
-* [在 Linux 中使用快照集建立 VHD 的複本並儲存為受控磁片](./linux/snapshot-copy-managed-disk.md)
+* [使用 Linux 中的快照集建立 VHD 的複本並儲存為受控磁片](./linux/snapshot-copy-managed-disk.md)
 
 
 

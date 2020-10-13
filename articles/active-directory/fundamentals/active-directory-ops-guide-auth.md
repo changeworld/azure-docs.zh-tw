@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601359"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication 管理作業參考指南
@@ -105,7 +105,7 @@ ms.locfileid: "90601359"
 
 ### <a name="programmatic-usage-of-credentials"></a>以程式設計方式使用認證
 
-使用 PowerShell 或使用 Microsoft Graph API 的應用程式 Azure AD 腳本需要安全驗證。 執行這些腳本和工具的認證管理不良，會提高認證遭竊的風險。 如果您使用的腳本或應用程式依賴硬式編碼的密碼或密碼提示，您應該先查看設定檔或原始程式碼中的密碼，然後取代這些相依性，並盡可能使用 Azure 受控識別、整合式 Windows 驗證或 [憑證](../reports-monitoring/tutorial-access-api-with-certificates.md) 。 針對無法使用先前解決方案的應用程式，請考慮使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+使用 PowerShell 或使用 Microsoft Graph API 的應用程式 Azure AD 腳本需要安全驗證。 執行這些腳本和工具的認證管理不良，會提高認證遭竊的風險。 如果您使用的腳本或應用程式依賴硬式編碼的密碼或密碼提示，您應該先查看設定檔或原始程式碼中的密碼，然後取代這些相依性，並盡可能使用 Azure 受控識別、Integrated-Windows Authentication 或 [憑證](../reports-monitoring/tutorial-access-api-with-certificates.md) 。 針對無法使用先前解決方案的應用程式，請考慮使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 如果您判斷有包含密碼認證的服務主體，而且不確定腳本或應用程式如何保護這些密碼認證，請洽詢應用程式的擁有者，以進一步瞭解使用模式。
 
@@ -115,7 +115,7 @@ ms.locfileid: "90601359"
 
 ### <a name="on-premises-authentication"></a>內部部署驗證
 
-使用整合式 Windows 驗證 (IWA) 或無縫單一登入的同盟驗證 (SSO) 使用密碼雜湊同步處理的受控驗證或傳遞驗證，是在內部部署網域控制站可看見的公司網路內的最佳使用者體驗。 它會將認證提示疲勞降至最低，並降低使用者受害者網路釣魚攻擊的風險。 如果您已經使用雲端管理的驗證搭配 PHS 或 PTA，但使用者在內部部署驗證時仍需要輸入密碼，則您應該立即 [部署無縫 SSO](../hybrid/how-to-connect-sso.md)。 另一方面，如果您目前已與計畫進行同盟，最後遷移至雲端管理的驗證，則您應該在遷移專案中執行無縫 SSO。
+使用整合式 Windows 驗證 (IWA) 或無縫單一 Sign-On (SSO) 受控驗證（使用密碼雜湊同步處理或傳遞驗證）的同盟驗證，是在內部部署網域控制站可看見的公司網路內的最佳使用者體驗。 它會將認證提示疲勞降至最低，並降低使用者受害者網路釣魚攻擊的風險。 如果您已經使用雲端管理的驗證搭配 PHS 或 PTA，但使用者在內部部署驗證時仍需要輸入密碼，則您應該立即 [部署無縫 SSO](../hybrid/how-to-connect-sso.md)。 另一方面，如果您目前已與計畫進行同盟，最後遷移至雲端管理的驗證，則您應該在遷移專案中執行無縫 SSO。
 
 ### <a name="device-trust-access-policies"></a>裝置信任存取原則
 
@@ -372,7 +372,7 @@ Azure AD 的登入活動、審核和風險事件的存取權，對於疑難排�
 - [Office 365 管理活動 API 參考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 內容套件](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 安全的身分識別基礎結構有12個層面。 這份清單將協助您進一步保護和管理認證、定義驗證經驗、委派指派、測量使用量，以及根據企業安全性狀態定義存取原則。
 

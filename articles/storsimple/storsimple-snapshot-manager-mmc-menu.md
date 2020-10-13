@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055998"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>在 StorSimple Snapshot Manager 使用 MMC 功能表動作
@@ -87,7 +87,7 @@ ms.locfileid: "90055998"
    1. 在 [檔案名稱]**** 方塊中，輸入 CSV 檔案的名稱，或按一下箭頭，以從下拉式清單中選取。
    2. 在 [存檔類型]**** 方塊中，按一下箭頭，然後從下拉式清單中選取檔案類型。
    3. 若僅要儲存選取的項目，請選取數列，然後按一下 [只儲存選取的列]**** 核取方塊。 若要儲存所有匯出的清單，請清除 [ **只儲存選取的列** ] 核取方塊。
-   4. 按一下 [儲存]。
+   4. 按一下 **[儲存]** 。
       
       ![將清單匯出成逗號分隔值檔案](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
@@ -98,7 +98,7 @@ ms.locfileid: "90055998"
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。
 2. 在 [領域]**** 窗格中，於任何節點上按一下滑鼠右鍵，或展開節點，並在 [結果]**** 窗格中的項目上按一下滑鼠右鍵，然後按一下 [說明]****。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入了解 [StorSimple Snapshot Manager 使用者介面](storsimple-use-snapshot-manager.md)。
 * 深入了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 

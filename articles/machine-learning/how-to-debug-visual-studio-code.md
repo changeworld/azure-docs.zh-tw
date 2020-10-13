@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
 ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530669"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 的互動式調試
@@ -52,7 +52,7 @@ ms.locfileid: "91530669"
 1. 展開 [ **實驗** ] 節點，以滑鼠右鍵按一下您想要執行的實驗，然後選取 [ **執行實驗**]。
 1. 從執行實驗的選項清單中，選取 [ **本機**]。
 1. **第一次只能在 Windows 上使用**。 當系統提示您允許檔案共用時，請選取 **[是]**。 當您啟用檔案共用時，它會允許 Docker 將包含您腳本的目錄掛接至容器。 此外，它也可讓 Docker 將您執行的記錄和輸出儲存在系統上的臨時目錄中。
-1. 選取 **[是]** 以偵測您的實驗。 否則，請選取 [否]。 選取 [否] 會在本機執行您的實驗，而不會附加至偵錯工具。
+1. 選取 **[是]** 以偵測您的實驗。 否則，請選取 [否]  。 選取 [否] 會在本機執行您的實驗，而不會附加至偵錯工具。
 1. 選取 [ **建立新** 的回合設定]，以建立您的執行設定。 回合設定會定義您想要執行的腳本、相依性及所使用的資料集。 或者，如果您已經有一個，請從下拉式清單中選取它。
     1. 選擇您的環境。 您可以從任何 [Azure Machine Learning 策劃](resource-curated-environments.md) 中選擇，或建立您自己的。
     1. 提供您要執行之腳本的名稱。 路徑是相對於 VS Code 中開啟的目錄。

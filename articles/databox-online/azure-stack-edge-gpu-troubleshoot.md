@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 413847b7858549dc6130f219829b220b2857c7e2
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743194"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938885"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>針對 Azure Stack Edge Pro GPU 裝置上的問題進行疑難排解 
 
@@ -143,7 +143,7 @@ Advanced security 記錄可以是 Azure Stack Edge Pro 裝置的軟體或硬體�
 | **問題/錯誤** |  **解決方法** | 
 |------------|-----------------|
 |一般問題|<li>[確認已正確設定 Edge 裝置](#verify-the-device-is-configured-properly)。<li> [確認用戶端已正確設定](#verify-the-client-is-configured-properly)|
-|Add-azurermenvironment：傳送要求時發生錯誤。<br>At line： 1 char：1<br>+ 新增-Add-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此錯誤表示您的 Azure Stack Edge Pro 裝置無法連線或未正確設定。 確認已正確設定 Edge 裝置和用戶端。 如需指引，請參閱此表格中的 **一般問題** 資料列。|
+|Add-AzureRmEnvironment：傳送要求時發生錯誤。<br>At line： 1 char：1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此錯誤表示您的 Azure Stack Edge Pro 裝置無法連線或未正確設定。 確認已正確設定 Edge 裝置和用戶端。 如需指引，請參閱此表格中的 **一般問題** 資料列。|
 |服務傳回錯誤。 查看 InnerException 以取得更多詳細資料：基礎連接已關閉：無法為 SSL/TLS 安全通道建立信任關係。 |   此錯誤可能是因為一或多個「攜帶您自己的憑證」步驟未正確執行。 您可以在 [這裡](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)找到指引。 |
 |作業傳回不正確狀態碼 ' ServiceUnavailable ' <br> 回應狀態碼未指出成功： 503 (服務無法使用) 。 | 這項錯誤可能是任何一項條件的結果。<li>ArmStsPool 處於已停止狀態。</li><li>其中一個 Azure Resource Manager/安全性權杖服務網站已關閉。</li><li>Azure Resource Manager 叢集資源已關閉。</li><br><strong>注意：</strong> 重新開機設備可能會修正此問題，但您應該收集支援封裝，讓您可以進一步進行重新調試。|
 |AADSTS50126：不正確使用者名稱或密碼。<br>追蹤識別碼：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相互關聯識別碼： 1b9752c4-8cbf-4304-a714-8a16527410f4<br>時間戳記： 2019-11-15 09：21：57Z：遠端伺服器傳回錯誤： (400) 不正確的要求。<br>At line： 1 char：1 |這項錯誤可能是任何一項條件的結果。<li>如果使用者名稱和密碼無效，請遵循 [此處](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) 的步驟，然後使用正確的密碼，驗證客戶已變更 Azure 入口網站的密碼。<li>針對不正確租使用者識別碼，租使用者識別碼是固定的 GUID，應設定為 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -200,6 +200,7 @@ Advanced security 記錄可以是 Azure Stack Edge Pro 裝置的軟體或硬體�
 |連接逾時。|登入 Azure Stack Edge Pro，然後檢查它是否已解除鎖定。 裝置重新開機時，會一直鎖定，直到有人登入為止。|
 
 
+
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[此版本中的已知問題](azure-stack-edge-gpu-2008-release-notes.md)。
+- 深入瞭解如何針對 [裝置啟用問題進行疑難排解](azure-stack-edge-gpu-troubleshoot-activation.md)。

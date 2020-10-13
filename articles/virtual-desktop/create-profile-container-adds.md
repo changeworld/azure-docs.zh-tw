@@ -7,17 +7,17 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88825608"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 檔案儲存體和 Azure AD DS 建立設定檔容器
 
 本文將說明如何使用 Azure 檔案儲存體和 Azure Active Directory Domain Services (AD DS) 來建立 FSLogix 設定檔容器。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已設定 Azure AD DS 實例。 如果您還沒有帳戶，請先依照 [建立基本受控網域](../active-directory-domain-services/tutorial-create-instance.md) 中的指示操作，然後回到這裡。
 
@@ -71,7 +71,7 @@ ms.locfileid: "88825608"
 
 6. 選取目標 Azure Active Directory 身分識別的名稱或電子郵件地址。
 
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 
 ## <a name="get-the-storage-account-access-key"></a>取得儲存體帳戶存取金鑰
 
@@ -240,7 +240,7 @@ ms.locfileid: "88825608"
 
     如果一切都設定正確，您應該會看到名稱格式如下的 **目錄** ： `<user SID>-<username>` 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您要尋找建立 FSLogix 設定檔容器的替代方式，請參閱下列文章：
 

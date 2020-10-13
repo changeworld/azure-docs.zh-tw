@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320231"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960638"
 ---
 # <a name="linux-support"></a>Linux 支援
 
-您可以使用 Linux 瘦用戶端合作夥伴提供的下列支援用戶端，從 Linux 裝置存取 Windows 虛擬桌面資源。 我們正與數個合作夥伴合作，在更多以 Linux 為基礎的作業系統和裝置上啟用支援的 Windows 虛擬桌面用戶端。 如果您在此處未列出的 Linux 平臺上需要 Windows 虛擬桌面支援，請在我們的 [UserVoice 頁面](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)上讓我們知道。
+您可以從 Linux 裝置使用 [web 用戶端](connect-web.md) 或下列支援的用戶端（由我們的 linux 瘦用戶端合作夥伴提供）來存取 Windows 虛擬桌面資源。 我們正與數個合作夥伴合作，在更多以 Linux 為基礎的作業系統和裝置上啟用支援的 Windows 虛擬桌面用戶端。 如果您在此處未列出的 Linux 平臺上需要 Windows 虛擬桌面支援，請在我們的 [UserVoice 頁面](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)上讓我們知道。
 
 ## <a name="connect-with-your-linux-device"></a>連接到您的 Linux 裝置
 

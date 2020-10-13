@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
 ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018177"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
@@ -46,7 +46,7 @@ ms.locfileid: "90018177"
 | URL | 接受預設值，或選擇您自己唯一的 URL 前置詞 |
 | 目錄 | 您的 Azure Active Directory 租使用者 |
 | Azure 訂用帳戶 | 您的 Azure 訂用帳戶 |
-| Region | 您最近的區域 |
+| 區域 | 您最近的區域 |
 
 本文中的範例和螢幕擷取畫面會使用 **美國** 地區。 選擇接近您的位置，並確定您在相同區域中建立所有資源。
 
@@ -82,7 +82,7 @@ ms.locfileid: "90018177"
 | 裝載環境 | Cloud |
 | 串流單位 | 3 |
 
-### <a name="function-app"></a>函數應用程式
+### <a name="function-app"></a>函式應用程式
 
 使用 [Azure 入口網站來建立](https://portal.azure.com/#create/Microsoft.FunctionApp) 具有下列設定的函式應用程式：
 
@@ -256,7 +256,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | ------- | ----- |
     | 輸出別名 | emailnotification |
     | 訂用帳戶 | 您的訂用帳戶 |
-    | 函數應用程式 | 您的函數應用程式 |
+    | 函式應用程式 | 您的函數應用程式 |
     | 函式  | >HTTPtrigger1 |
 
 1. 在 [ **作業拓撲**] 下，選取 [ **查詢** ]，並將現有的查詢取代為下列 SQL：
@@ -300,7 +300,7 @@ test-device-3    2019-05-02T14:24:28.919Z
         RightSide.deviceid2 is NULL
     ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 1. 若要啟動串流分析作業，請選擇 [總覽]，然後依序選擇 **[****開始**]、[開始 **]，然後****開始**：
 
     ![串流分析](media/howto-create-custom-rules/stream-analytics.png)
@@ -347,7 +347,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 您可以從應用程式內的 **管理** 頁面刪除 IoT Central 應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在此操作指南中，您已了解如何：
 

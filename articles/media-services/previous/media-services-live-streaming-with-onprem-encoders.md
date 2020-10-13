@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269619"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用從內部部署編碼器接收多位元率即時串流的通道
@@ -39,7 +39,7 @@ ms.locfileid: "89269619"
 
 * 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 媒體服務會將串流傳遞給要求的客戶。
 
-從媒體服務 2.10 版起，當您建立通道時，可以指定您的通道接收輸入串流的方式。 您也可以指定是否要讓通道執行您串流的即時編碼。 您有兩個選擇：
+從媒體服務 2.10 版起，當您建立通道時，可以指定您的通道接收輸入串流的方式。 您也可以指定是否要讓通道執行您串流的即時編碼。 您有兩個選項：
 
 * **傳遞**：如果您想要使用以多位元速率串流 (傳遞串流) 作為輸出的內部部署即時編碼器，請指定這個值。 在此情況下，連入的串流會傳遞至輸出，無須任何編碼。 這是在 2.10 版以前的通道行為。 本文提供有關使用此類型通道的詳細資訊。
 * **即時編碼**：如果您打算使用媒體服務將單一位元速率即時串流編碼成多位元速率串流，請選擇這個值。 在**執行**狀態中離開即時編碼通道會產生費用。 建議您在即時串流事件完成之後立即停止執行的通道，以避免額外的每小時費用。 媒體服務會將串流傳遞給要求的客戶。

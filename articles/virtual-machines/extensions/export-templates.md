@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
 ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86494746"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>匯出包含 VM 擴充功能的資源群組
@@ -33,7 +33,7 @@ Azure 資源群組可以匯出到之後會重新部署的新 Resource Manager �
 
 下列擴充功能可以使用自動化指令碼功能匯出。
 
-> Acronis 備份，Acronis 備份 Linux，Bg 資訊，BMC CMT Agent Linux，BMC CMT 代理程式 Windows，Chef 用戶端，自訂腳本，自訂腳本擴充功能，適用于 Linux 的自訂腳本，Datadog Linux 代理程式，Datadog Windows 代理程式，Docker 擴充功能，DSC 擴充功能，Dynatrace Linux，Dynatrace Windows，HPE 安全性應用程式 Defender，IaaS 反惡意程式碼，IaaS 診斷，Linux Chef 用戶端，Linux 診斷，Site 24x7 Linux 伺服器，網站全天候 Windows Server，趨勢微 DSA，趨勢微 DSA Linux，適用于 Linux 的 VM 存取，Linux 的 VM 存取，vm 快照集，VM 快照集 Linux
+> Acronis 備份，Acronis 備份 Linux，Bg 資訊，BMC CMT 代理程式 Linux，BMC CMT 代理程式 Windows，Chef 用戶端，自訂腳本，自訂腳本擴充功能，適用于 Linux 的自訂腳本，Datadog Linux 代理程式，Datadog Windows 代理程式，Docker 延伸模組，DSC 延伸模組，Dynatrace Linux，Dynatrace Windows，HPE 安全性應用程式 Defender，IaaS 反惡意程式碼，IaaS 診斷，Linux Chef 用戶端、Site 24x7 Linux Server、Site 全天候 Windows Server、Trend 微 DSA、Trend 微 DSA Linux、適用于 Linux 的 VM 存取、適用于 Linux 的 vm 存取、vm 快照集、VM 快照集 Linux
 
 ## <a name="export-the-resource-group"></a>匯出資源群組
 

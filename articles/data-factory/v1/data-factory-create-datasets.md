@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ddb99fd7a7ce8265a6e9c63555cd6a226caacc4c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440723"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (第1版) 中的資料集
@@ -109,7 +109,7 @@ Data Factory 中的資料集會以 JSON 格式定義如下：
 }
 ```
 
-請注意下列事項：
+請注意下列幾點：
 
 * **類型** 設為 AzureSqlTable。
 * AzureSqlTable 類型) 特定的**tableName**類型屬性 (設定為 MyTable。
@@ -441,6 +441,6 @@ Data Factory 會在將資料從來源資料存放區移到接收資料存放區�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 如需有關管線的詳細資訊，請參閱[建立管線](data-factory-create-pipelines.md)。
 - 如需有關管線的排程和執行方式的詳細資訊，請參閱 [Azure Data Factory 中的排程和執行](data-factory-scheduling-and-execution.md)。

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1414859d0735e75e2139dd79aab7dbba5b1e2f13
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710181"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939179"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics 商業智慧合作夥伴
 
@@ -27,7 +27,6 @@ ms.locfileid: "91710181"
 | ------- | ----------- | -------------------- |
 | ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale 為分散式資料提供了單一、安全且受控的工作區。 AtScale 的雲端 OLAP、自發資料工程™，以及通用語義層™供應商務智慧結果，以加速、更精確的商務決策。 |[產品頁面](https://www.atscale.com/partners/microsoft/) \(英文\)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst 會透過共用通用分析網狀架構上交互編排虛擬化 BI 執行個體的網路，連接整個組織|[產品頁面](https://www.birst.com/)<br> |
-| ![ClearStory Data](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory Data (持續商業深入解析)**<br>ClearStory Data 能夠快速分析 Synapse SQL 集區中儲存的不同資料。 ClearStory 的整合式 Spark 架構平台和分析應用程式可加速度資料存取並調和不同的資料集。 他們可讓商務使用者一起合作來快速探索，獨立地取得深入解析。 |[產品頁面](https://www.clearstorydata.com/product/continuous-insights/)<br> |
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> 分析師和資料科學家可以使用 Dremio 的直覺 UI 來探索、探索及策展資料，同時保有治理和安全性。 Dremio 可讓您輕鬆地將 ADLS 與 Blob 儲存體、Azure SQL Database、Azure Synapse SQL、HDInsight 等聯結。 有了 Dremio，Power BI 分析師可以搜尋儲存在 ADLS 上的新資料集、立即存取 Power BI 中的資料，而不進行任何準備、建立視覺效果，以及即時反復地精簡報表。 分析師可以建立新的報表，以合併 ADLS 與其他資料庫之間的資料。 |[產品頁面](https://www.dremio.com/azure/) \(英文\)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas Data Visualization 是商業智慧與資料視覺化軟體的全球性領先提供者。  Dundas 儀表板、報告和視覺化資料分析可以完美整合到商務應用程式，能夠制定更好的決策、更快地發現見解。|[產品頁面](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos Analytics**<br>無論您是有經驗的商務分析師正在檢查大量供應鏈，或是市場行銷人員將行銷活動優化，cognos 等 Analytics 都能提供簡單、清楚且容易使用的自助式功能。 Cognos 等 Analytics 使用 AI 和其他功能來引導資料探索。 讓使用者更容易取得所需的答案|[產品頁面](https://www.ibm.com/products/cognos-analytics)<br>|

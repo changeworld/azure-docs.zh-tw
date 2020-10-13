@@ -4,10 +4,10 @@ description: 示範如何將位於 Microsoft .Resources 命名空間中的資源
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88951050"
 ---
 # <a name="move-microsoftresources-resources-to-new-region"></a>將 Microsoft .Resources 資源移至新區域
@@ -90,7 +90,7 @@ ms.locfileid: "88951050"
 
 1. [部署匯出的範本](../templates/deploy-powershell.md) ，並指定部署腳本的新區域。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何將資源移至新的資源群組或訂用帳戶，請參閱 [將資源移至新的資源群組或訂用](move-resource-group-and-subscription.md)帳戶。
 * 若要瞭解如何將資源移至新的區域，請參閱 [跨區域移動 Azure 資源](move-region.md)。

@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
 ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88516617"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服務主體
@@ -69,7 +69,7 @@ SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物
 
     如需詳細資訊，請參閱 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) \(英文\) 命令。
 
-    - 若要檢查伺服器身分識別是否已指派給伺服器，請執行 >new-azsqlserver 命令。
+    - 若要檢查伺服器身分識別是否已指派給伺服器，請執行 Get-AzSqlServer 命令。
 
     > [!NOTE]
     > 您也可以使用 CLI 命令來指派伺服器身分識別。 如需詳細資訊，請參閱 [az sql server create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 和 [az sql server update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update)。
@@ -81,7 +81,7 @@ SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物
 > [!IMPORTANT]
 > 您必須以上述循序執行步驟1和2。 首先，建立或指派伺服器身分識別，然後再授與 [**目錄讀取**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者許可權。 省略上述其中一個步驟，或兩者都會在 Azure SQL 中代表 Azure AD 應用程式建立 Azure AD 物件時，造成執行錯誤。 如需代表 Azure AD 應用程式建立 Azure AD 使用者的逐步指示，請參閱 [教學課程：使用 Azure AD 應用程式建立 Azure AD 的使用者](authentication-aad-service-principal-tutorial.md)。
 >
-> 在 **公開預覽**中，您可以將 **目錄讀取** 者角色指派給 Azure AD 中的群組。 然後，群組擁有者可以將受控識別新增為此群組的成員，這會略過 **全域管理員** 或特殊 **許可權角色管理員** 授與 **目錄讀取** 者角色的需求。 如需這項功能的詳細資訊，請參閱 [AZURE SQL Azure Active Directory 中的目錄讀取者角色](authentication-aad-directory-readers-role.md)。
+> 在 **公開預覽**中，您可以將 **目錄讀取** 者角色指派給 Azure AD 中的群組。 然後，群組擁有者可以將受控識別新增為此群組的成員，這會略過 **全域管理員** 或特殊 **許可權角色管理員** 授與 **目錄讀取** 者角色的需求。 如需這項功能的詳細資訊，請參閱 [Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色](authentication-aad-directory-readers-role.md)。
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>公開預覽的疑難排解和限制
 
@@ -98,7 +98,7 @@ SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物
 - 存取在不同租使用者中建立的 SQL Database 或 SQL 受控執行個體時，從另一個 Azure AD 租使用者使用具有服務主體的 Azure AD 應用程式將會失敗。 指派給此應用程式的服務主體必須是與 SQL 邏輯伺服器或受控執行個體的相同租使用者。
 - 使用 PowerShell 以針對 Azure SQL 將個別 Azure AD 應用程式設定為 Azure AD 管理員時，需要 [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) \(英文\) 模組或更新版本。 確定您已升級到最新模組。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [教學課程：使用 Azure AD 應用程式建立 Azure AD 使用者](authentication-aad-service-principal-tutorial.md)

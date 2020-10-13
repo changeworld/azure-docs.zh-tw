@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89668782"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>傳輸中的 IPSec 加密 Azure HDInsight
@@ -42,7 +42,7 @@ Azure 儲存體帳戶上的伺服器端加密以及屬於您 HDInsight 叢集一
 
 1. 在 [ **安全性 + 網路** ] 索引標籤上，按一下 [ **啟用傳輸中加密** ] 核取方塊。
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="建立叢集-在傳輸中啟用加密。":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="[建立叢集-安全性和網路] 索引標籤。":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>使用透過 Azure CLI 啟用傳輸中加密來建立叢集
 
@@ -79,7 +79,7 @@ az group deployment create --name HDInsightEnterpriseSecDeployment \
     --parameters parameters.json
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 中的企業安全性概觀](hdinsight-security-overview.md)
 * [將 Azure Active Directory 的使用者同步處理至 HDInsight](../disk-encryption.md)叢集。

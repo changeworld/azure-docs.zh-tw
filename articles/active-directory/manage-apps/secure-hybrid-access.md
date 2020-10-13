@@ -12,10 +12,10 @@ ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087069"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全的混合式存取：使用 Azure Active Directory 保護繼承應用程式
@@ -26,7 +26,7 @@ ms.locfileid: "90087069"
 
 - [您現有的應用程式傳遞控制器和網路](#sha-through-networking-and-delivery-controllers)
 
-- [虛擬私人網路 (VPN) 和軟體定義的周邊 (SDP) 應用程式](#sha-through-vpn-and-sdp-applications)
+- [虛擬私人網路 (VPN) 和 Software-Defined 周邊 (SDP) 應用程式](#sha-through-vpn-and-sdp-applications)
 
 您可以使用 Azure AD [條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 和 Azure AD [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)等 Azure AD 功能，在所有應用程式中橋接間距並加強安全性狀態。
 

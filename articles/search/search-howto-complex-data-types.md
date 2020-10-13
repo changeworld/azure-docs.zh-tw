@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824476"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
@@ -162,7 +162,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 如同最上層的簡單欄位，如果複雜欄位的簡單子欄位在索引定義中的可 **篩選** 屬性設定為，則只能包含在篩選中 `true` 。 如需詳細資訊，請參閱 [建立索引 API 參考](/rest/api/searchservice/create-index)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在 [匯**入資料**] 嚮導中，嘗試[旅館資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 您將需要讀我檔案中提供的 Cosmos DB 連接資訊，才能存取資料。
 

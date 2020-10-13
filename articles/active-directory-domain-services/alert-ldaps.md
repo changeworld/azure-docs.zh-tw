@@ -2,7 +2,7 @@
 title: 解決 Azure AD Domain Services 中的安全 LDAP 警示 |Microsoft Docs
 description: 瞭解如何使用安全 LDAP 進行 Azure Active Directory Domain Services 的一般警示進行疑難排解和解決。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: b9bdcc7e338c0dffc97bd05a6ae9b64947542b2e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86220247"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962797"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>已知問題：安全 LDAP Azure Active Directory Domain Services 中的警示
 
@@ -30,7 +30,7 @@ ms.locfileid: "86220247"
 
 *受控網域已啟用透過網際網路的安全 LDAP。不過，使用網路安全性群組並不會鎖定埠636的存取。這可能會將受控網域上的使用者帳戶公開給密碼暴力密碼破解攻擊。*
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 當您啟用安全 LDAP 時，建議您建立其他規則，以限制對特定 IP 位址的輸入 LDAPS 存取。 這些規則會保護受控網域免于暴力密碼破解攻擊。 若要更新網路安全性群組以限制安全 LDAP 的 TCP 埠636存取，請完成下列步驟：
 
@@ -54,7 +54,7 @@ ms.locfileid: "86220247"
 
 *受控網域的安全 LDAP 憑證將於 [date] 到期。*
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 遵循 [建立安全 ldap 憑證](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)的步驟，建立取代的安全 ldap 憑證。 將替代憑證套用至 Azure AD DS，然後將憑證發佈至使用安全 LDAP 連接的任何用戶端。
 
