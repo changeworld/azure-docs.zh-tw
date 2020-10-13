@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259306"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric 搭配 Azure API 管理概觀
 
-雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 在 Service Fabric 中，閘道可以是任何無狀態服務（例如[ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md)），或是為流量輸入設計的另一個服務，例如[事件中樞](../event-hubs/index.yml)、 [IoT 中樞](../iot-hub/index.yml)或[Azure API 管理](../api-management/index.yml)。
+雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 在 Service Fabric 中，閘道可以是任何無狀態服務（例如 [ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md)），或是為流量輸入設計的另一項服務，例如 [事件中樞](../event-hubs/index.yml)、 [IoT 中樞](../iot-hub/index.yml)或 [Azure API 管理](../api-management/index.yml)。
 
 本文是使用「Azure API 管理」作為 Service Fabric 應用程式閘道的簡介。 「API 管理」直接與 Service Fabric 整合，可讓您將具有一組豐富路由規則的 API 發佈至後端 Service Fabric 服務。
 
@@ -69,7 +69,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 在較進階的案例中，您可以定義一個將要求對應至多個服務執行個體的「API 管理」作業。 在此情況下，每個作業都會包含一個原則，此原則會根據來自傳入 HTTP 要求的值 (例如 URL 路徑或查詢字串) 將要求對應至特定的服務執行個體，而在具狀態服務的案例中，則是會對應至服務執行個體內的分割區。
 
-為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會根據從傳入 HTTP 要求擷取到的值，對應至 Service Fabric 後端中的無狀態服務執行個體。 服務的要求會傳送至服務的隨機實例。
+為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會根據從傳入 HTTP 要求擷取到的值，對應至 Service Fabric 後端中的無狀態服務執行個體。 對服務的要求會傳送至服務的隨機實例。
 
 **範例**
 
@@ -77,7 +77,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 - `fabric:/app/users/<username>`
 
-  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如︰
+  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如：
 
   - 對 `/api/users/foo` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/foo`
   - 對 `/api/users/bar` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/bar`
@@ -96,7 +96,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 - `fabric:/app/users/<username>`
 
-  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如︰
+  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如：
 
   - 對 `/api/users/foo` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/foo`
   - 對 `/api/users/bar` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/bar`
@@ -105,7 +105,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 ![Service Fabric 搭配 Azure API 管理拓撲概觀][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 依照[教學課程](service-fabric-tutorial-deploy-api-management.md)來設定您第一個搭配「API 管理」的 Service Fabric 叢集，並透過「API 管理」將要求傳送到您的服務。
 

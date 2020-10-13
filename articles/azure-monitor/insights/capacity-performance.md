@@ -1,26 +1,26 @@
 ---
 title: Azure 監視器中的容量與效能解決方案 |Microsoft Docs
-description: 使用 [監視] 中的 [容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。
+description: 使用監視器中的容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317989"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量與效能解決方案規劃 Hyper-v 虛擬機器容量（已淘汰）
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用 (淘汰的容量與效能解決方案來規劃 Hyper-v 虛擬機器容量) 
 
 ![容量與效能符號](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
 > 容量與效能解決方案已取代。  已安裝此解決方案的客戶可以繼續使用，但無法將「容量與效能」加入任何新的工作區。
 
-您可以使用 [監視] 中的容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。 這個解決方案可顯示主機以及在這些 Hyper-V 主機上執行之 VM 的整體使用率 (CPU、記憶體和磁碟)，以讓您深入了解 Hyper-V 環境。 系統會跨所有主機和在其上執行的 VM 來收集 CPU、記憶體和磁碟的計量。
+您可以使用監視器中的容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。 這個解決方案可顯示主機以及在這些 Hyper-V 主機上執行之 VM 的整體使用率 (CPU、記憶體和磁碟)，以讓您深入了解 Hyper-V 環境。 系統會跨所有主機和在其上執行的 VM 來收集 CPU、記憶體和磁碟的計量。
 
 此解決方案：
 
@@ -46,12 +46,12 @@ ms.locfileid: "87317989"
 | [SCOM 管理群組](../platform/om-agents.md) | 是 |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
 | [Azure 儲存體帳戶](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 儲存體不包含容量和效能資料。|
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Windows 或 Operations Manager 代理程式必須安裝在 Windows Server 2012 或更新版本的 Hyper-V 主機上，而非安裝在虛擬機器上。
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 執行下列步驟以將容量和效能解決方案新增至您的工作區。
 
@@ -128,6 +128,6 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 | 所有 CSV 的延遲總數細目 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Read Latency" or CounterName == "CSV Write Latency") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 使用 [Log Analytics 中的記錄搜尋](../log-query/log-query-overview.md)，來檢視詳細的容量和效能資料。
 

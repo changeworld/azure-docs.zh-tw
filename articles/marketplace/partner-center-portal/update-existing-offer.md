@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
 ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650096"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商業 marketplace 中的現有供應專案
@@ -190,6 +190,6 @@ ms.locfileid: "89650096"
 
 **同步私用物件** 只會將變更發佈至您的私用物件，而不會發行您可能對草稿供應專案所做的任何其他更新。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [檢查您商用 marketplace 供應專案的發佈狀態](./publishing-status.md)

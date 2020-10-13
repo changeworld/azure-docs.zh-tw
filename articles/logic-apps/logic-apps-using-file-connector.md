@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659928"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>透過 Azure Logic Apps 連線到內部部署檔案系統
@@ -75,7 +75,7 @@ ms.locfileid: "89659928"
    | **驗證類型** | 否 | <*驗證類型*> | 檔案系統所使用的驗證類型： **Windows** |
    | **使用者名稱** | 是 | <*domain* > \\ 網域 <使用者*名稱*> <p>-或- <p><*本機* > \\ 電腦 <使用者*名稱*> | 您擁有檔系統資料夾之電腦的使用者名稱。 <p>如果您的檔系統資料夾位於與內部部署資料閘道相同的電腦上，您可以使用 <*本機電腦*使用者 > \\ < *名稱*>。 |
    | **密碼** | 是 | <*您的密碼*> | 您的檔案系統所在電腦的密碼 |
-   | **gateway** | 是 | <*已安裝-閘道名稱*> | 先前所安裝閘道的名稱 |
+   | **閘道** | 是 | <*已安裝-閘道名稱*> | 先前所安裝閘道的名稱 |
    |||||
 
 1. 完成之後，請選擇 [建立]。
@@ -101,7 +101,7 @@ ms.locfileid: "89659928"
 > [!NOTE]
 > 若為 [整合服務環境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式 (ISE) ，此連接器的 ISE 標記版本會改用 [ise 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 了解如何[連線至內部部署資料](../logic-apps/logic-apps-gateway-connection.md) 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)

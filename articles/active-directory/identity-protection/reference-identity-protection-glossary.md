@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949169"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 詞彙
@@ -89,7 +89,7 @@ Identity Protection 標示為異常的 Azure AD 事件，可能表示身分識�
 ### <a name="remediated-risk-detection"></a>補救 (風險偵測) 
 Identity Protection 自動設定的風險偵測狀態，表示已使用此類風險偵測的標準補救動作來補救風險偵測。 例如，重設使用者密碼時，會自動補救許多指出先前的密碼遭到入侵的風險偵測。
 
-### <a name="remediation"></a>補救
+### <a name="remediation"></a>修復
 用來保護先前疑似或已知遭到入侵的身分識別或裝置的動作。 補救動作會將身分識別或裝置還原至安全的狀態，並解決先前與身分識別或裝置相關聯的風險偵測。
 
 ### <a name="resolved-risk-detection"></a>已解決 (風險偵測) 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371247"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Resource Manager 資源群組
@@ -27,7 +27,7 @@ ms.locfileid: "91371247"
 
 資源群組是存放 Azure 方案相關資源的容器。 資源群組可以包含方案的所有資源，或只包含您要以群組方式管理的資源。 您可決定如何根據對組織最有利的方式，將資源配置到資源群組。 一般而言，會新增共用相同生命週期的資源到相同資源群組，因此您可以以群組為單位輕鬆地部署、更新、刪除它們。
 
-資源群組會儲存資源相關中繼資料。 因此，當您指定資源群組的位置時，您便是指定中繼資料的儲存位置。 基於合規性，您可能需要確保資料存放在特定區域中。
+資源群組會儲存資源相關中繼資料。 因此，當您指定資源群組的位置時，您便是指定中繼資料的儲存位置。 基於相容性理由，您可能需要確保您的資料存放在特定區域中。
 
 
 ## <a name="create-resource-groups"></a>建立資源群組
@@ -39,13 +39,13 @@ ms.locfileid: "91371247"
 3. 選取 [新增]。
 4. 輸入下列值：
 
-   - **訂**用帳戶：選取您的 Azure 訂用帳戶。 
+   - 訂用帳戶  ：選取 Azure 訂用帳戶。 
    - **資源群組**：輸入新的資源群組名稱。 
    - **區域**：選取 Azure 位置，例如 **美國中部**。
 
      ![建立資源群組](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. 選取 [檢閱+建立]
-6. 選取 [建立]。 建立資源群組需要幾秒鐘的時間。
+6. 選取 [建立]****。 建立資源群組需要幾秒鐘的時間。
 7. 從頂端功能表中選取 [重新整理] 以重新整理資源群組清單， **然後選取新** 建立的資源群組來開啟它。 或者，從頂端 (鐘圖示) 選取 [ **通知** ]，然後選取 [ **移至資源群組** ] 以開啟新建立的資源群組。
 
     ![移至資源群組](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)

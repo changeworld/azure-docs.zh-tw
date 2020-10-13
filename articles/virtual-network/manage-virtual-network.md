@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88706025"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>建立、變更或刪除虛擬網路
@@ -122,7 +122,7 @@ ms.locfileid: "88706025"
 4. 完成下列其中一個選項：
     - **新增位址範圍**︰輸入新的位址範圍。 此位址範圍不能與虛擬網路已定義的現有位址範圍重疊。
     - **移除位址範圍**：在您想要移除的位址範圍的右側，選取 [...]****，然後選取 [移除]****。 如果位址範圍有現存的子網路，您就無法移除該位址範圍。 若要移除位址範圍，您必須先刪除位址範圍中存在的任何子網路 (以及子網路中的任何資源)。
-5. 選取 [儲存]。
+5. 選取 [儲存]****。
 
 **命令**
 
@@ -143,7 +143,7 @@ ms.locfileid: "88706025"
    - **移除位址**︰在您想要移除的伺服器旁，選取 [...]****，然後選取 [移除]****。 刪除伺服器只會從此虛擬網路清單中移除伺服器。 DNS 伺服器會在 Azure 中保持登錄狀態，以便您其他的虛擬網路使用。
    - **將 DNS 伺服器位址重新排序**︰請務必要確認，您為環境所列出的 DNS 伺服器順序是正確的。 DNS 伺服器清單會依其指定的順序來使用。 它們不會當作循環配置資源設定運作。 如果清單上的第一部 DNS 伺服器是可以連線的，用戶端就會使用該 DNS 伺服器，而不管該 DNS 伺服器是否有正常運作。 請移除所有列出的 DNS 伺服器，再以您想要的順序重新新增。
    - **變更位址**：將清單中的 DNS 伺服器醒目提示，然後輸入新位址。
-5. 選取 [儲存]。
+5. 選取 [儲存]****。
 6. 將連線到虛擬網路的 VM 重新啟動，讓這些 VM 獲得新的 DNS 伺服器設定。 這些 VM 會繼續使用其目前的 DNS 設定，直到您將其重新啟動。
 
 **命令**
@@ -170,13 +170,13 @@ ms.locfileid: "88706025"
 
 若要針對虛擬網路執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表中所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                  |   Name                                |
+| 動作                                  |   名稱                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   讀取虛擬網路              |
 |Microsoft.Network/virtualNetworks/write  |   建立或更新虛擬網路  |
 |Microsoft.Network/virtualNetworks/delete |   刪除虛擬網路            |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 範例指令碼，或使用 Azure [Resource Manager 範本](template-samples.md)建立虛擬網路
 - 建立並指派虛擬網路的[Azure 原則定義](policy-samples.md)

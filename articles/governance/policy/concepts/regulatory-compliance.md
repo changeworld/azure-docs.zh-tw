@@ -4,10 +4,10 @@ description: 說明如何使用計畫定義，依規範網域（例如存取控�
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645530"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure 原則中的法規合規性
@@ -40,11 +40,11 @@ Microsoft 負責的控制項是 `type` [靜態](./definition-structure.md#type)�
 > [!NOTE]
 > **Microsoft managed**評估類型適用于[靜態](./definition-structure.md#type)原則定義 `type` 。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="適用于 NIST SP 800-53 R4 內建定義之界限保護控制的法規合規性詳細資料的螢幕擷取畫面。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="適用于 NIST SP 800-53 R4 內建定義（顯示符合規範和不符合規範的控制項）之法規合規性總覽的螢幕擷取畫面。":::
 
 在相同的 **控制** 頁面上，變更為 [ **資源合規性** ] 索引標籤會顯示此 **控制項**的原則定義所包含的所有資源。 篩選準則可用於名稱或識別碼、合規性狀態、資源類型和位置。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="針對 NIST SP 800-53 R4 內建定義之界限保護控制的資源合規性的螢幕擷取畫面。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="適用于 NIST SP 800-53 R4 內建定義（顯示符合規範和不符合規範的控制項）之法規合規性總覽的螢幕擷取畫面。":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>SDK 中的法規合規性
 
@@ -64,7 +64,7 @@ Microsoft 負責的控制項是 `type` [靜態](./definition-structure.md#type)�
 ]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [計畫定義結構](./initiative-definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。

@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure DevTest Labs 中為您的實驗室指定自�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270966"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>在 DevTest Labs 中將構件存放庫新增至您的實驗室
@@ -19,7 +19,7 @@ DevTest Labs 可讓您指定要在建立 VM 時或在建立 vm 之後新增至 V
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 若要將存放庫新增至實驗室，請取得存放庫中的重要資訊。 下列各節說明如何取得 **GitHub** 或 **Azure DevOps**上所裝載存放庫的必要資訊。
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>取得 GitHub 儲存機制複製 URL 和個人存取權杖
@@ -48,7 +48,7 @@ DevTest Labs 可讓您指定要在建立 VM 時或在建立 vm 之後新增至 V
    2. 在 [ **組織** ] 清單中，選取 [ **所有可存取的組織**]。
    3. 在 [ **到期 (UTC) ** ] 清單中，選取 **90 天**或自訂定義的到期期間。
    4. 選取範圍的 [ **完整存取** ] 選項。
-   5. 選取 [建立]。
+   5. 選取 [建立]****。
 9. 新的權杖會出現在 [個人存取權杖]**** 清單中。 選取 [複製權杖] ****，然後儲存權杖值供稍後使用。
 10. 繼續 將您的實驗室連接至存放庫 一節。
 
@@ -71,14 +71,14 @@ DevTest Labs 可讓您指定要在建立 VM 時或在建立 vm 之後新增至 V
    5. **資料夾路徑**。 輸入至少與複製 URL 相關的一個資料夾路徑，其中包含構件或 Resource Manager 範本。 指定子目錄時，請確定您有在資料夾路徑中包含斜線。
 
         ![存放庫區域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 Azure 資源管理 (Azure Resource Manager) 範本是 JSON 檔案，可描述您想要建立的 Azure 資源。 如需這些範本的詳細資訊，請參閱 [撰寫 Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)。
 
 本節提供使用 Azure Resource Manager 範本將構件存放庫新增至實驗室的步驟。  範本會建立實驗室（如果尚未存在）。
 
-### <a name="template"></a>[範本]
+### <a name="template"></a>範本
 本文中使用的範例範本會透過參數收集下列資訊。 大部分的參數都有智慧型預設值，但必須指定幾個值。 您必須指定實驗室名稱、構件存放庫的 URI，以及存放庫的安全性權杖。
 
 - 實驗室名稱。
@@ -180,7 +180,7 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-在 >new-azresourcegroupdeployment 執行成功後，命令會輸出重要資訊，例如布建狀態 (應成功) 和範本的任何輸出。
+New-AzResourceGroupDeployment 順利執行之後，命令會輸出重要資訊，例如布建狀態 (應該成功) 以及範本的任何輸出。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 本節提供 PowerShell 腳本範例，可用來將構件存放庫新增至實驗室。 如果您沒有 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ，以取得安裝的詳細指示。

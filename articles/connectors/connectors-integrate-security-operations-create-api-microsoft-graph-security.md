@@ -1,6 +1,6 @@
 ---
-title: '& Microsoft Graph 安全性來整合和管理安全性作業'
-description: 使用 Microsoft Graph 安全性 &，改善您的應用程式威脅防護、偵測和回應 Azure Logic Apps
+title: 整合及管理安全性作業 & Microsoft Graph 安全性
+description: 使用 Microsoft Graph 安全性 & 來改善應用程式的威脅防護、偵測和回應 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: preetikr
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986363"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>使用 Microsoft Graph 安全性和 Azure Logic Apps 整合安全性作業，改善威脅防護功能
 
-使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Microsoft Graph 安全性](/graph/security-concept-overview)連接器，您就可以建立整合 Microsoft 安全性產品、服務和合作夥伴的自動化工作流程，改善應用程式偵測、保護和回應威脅的方式。 例如，您可以建立 [Azure 資訊安全中心劇本](../security-center/workflow-automation.md)，用來監視和管理 Microsoft Graph 安全性實體 (例如警告)。 以下是 Microsoft Graph 安全性連接器所支援的一些案例：
+使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Microsoft Graph 安全性](/graph/security-concept-overview)連接器，您就可以建立整合 Microsoft 安全性產品、服務和合作夥伴的自動化工作流程，改善應用程式偵測、保護和回應威脅的方式。 例如，您可以建立 [Azure 資訊安全中心劇本](../security-center/workflow-automation.md)，用來監視和管理 Microsoft Graph 安全性實體 (例如警告)。 以下是 Microsoft Graph Security connector 支援的一些案例：
 
 * 依據查詢或警示識別碼取得警示。 例如，您可以取得包含高嚴重性警示的清單。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87986363"
 
 您的邏輯應用程式工作流程可使用從 Microsoft Graph 安全性連接器取得回應的動作，並讓該輸出提供給工作流程中的其他動作使用。 您也可以讓您工作流程中的其他動作使用來自 Microsoft Graph 安全性連接器動作的輸出。 例如，如果您透過 Microsoft Graph 安全性連接器取得高嚴重性警示，您可以使用 Outlook 連接器將那些警示以電子郵件訊息傳送。 
 
-若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](https://aka.ms/graphsecuritydocs)。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Microsoft Flow 或 PowerApps，請參閱[什麼是 Flow？](https://flow.microsoft.com/)或[什麼是 powerapps？](https://powerapps.microsoft.com/)
+若要深入了解 Microsoft Graph 安全性，請參閱 [Microsoft Graph 安全性 API 概觀](https://aka.ms/graphsecuritydocs)。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如果您要尋找 Microsoft Flow 或 PowerApps，請參閱 [何謂 Flow？](https://flow.microsoft.com/) 或 [什麼是 PowerApps？](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -44,7 +44,7 @@ ms.locfileid: "87986363"
   | **應用程式識別碼** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
-  若要授與連接器同意，您的 Azure AD 租使用者系統管理員可以遵循下列步驟：
+  若要授與連接器同意，您的 Azure AD 租使用者系統管理員可以遵循下列其中一項步驟：
 
   * [為 Azure AD 應用程式授與租用戶系統管理員同意](../active-directory/develop/v2-permissions-and-consent.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87986363"
    
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
-* 邏輯應用程式即為您想要存取 Microsoft Graph 安全性實體 (例如警示) 的位置。 若要使用 Microsoft Graph 安全性觸發程式，您需要空白邏輯應用程式。 若要使用 Microsoft Graph 的安全性動作，您需要一個邏輯應用程式，它會從適用于您案例的適當觸發程式開始。
+* 邏輯應用程式即為您想要存取 Microsoft Graph 安全性實體 (例如警示) 的位置。 若要使用 Microsoft Graph 安全性觸發程式，您需要空白的邏輯應用程式。 若要使用 Microsoft Graph 的安全性動作，您需要一個邏輯應用程式，該應用程式會以適用于您案例的適當觸發程式為開頭。
 
 ## <a name="connect-to-microsoft-graph-security"></a>連線至 Microsoft Graph 安全性 
 
@@ -60,15 +60,15 @@ ms.locfileid: "87986363"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)，如果邏輯應用程式尚未開啟，請在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 針對空白邏輯應用程式，請在新增 Microsoft Graph 安全性動作之前，先新增觸發程式和您想要的任何其他動作。
+1. 針對空白邏輯應用程式，新增觸發程式和您想要的任何其他動作，然後再新增 Microsoft Graph 的安全性動作。
 
    -或-
 
-   針對現有的邏輯應用程式，在您想要新增 Microsoft Graph 安全性動作的最後一個步驟底下，選取 [**新增步驟**]。
+   針對現有的邏輯應用程式，請在您要新增 Microsoft Graph 安全性動作的最後一個步驟底下，選取 [ **新增步驟**]。
 
    -或-
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號 (+) ，然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取出現的加號 (+) ，然後選取 [ **新增動作**]。
 
 1. 在搜尋方塊中，輸入「Microsoft Graph 安全性」作為篩選條件。 從 [動作] 清單中，選取您想要的動作。
 
@@ -78,25 +78,25 @@ ms.locfileid: "87986363"
 
 ## <a name="add-triggers"></a>新增觸發程式
 
-在 Azure Logic Apps 中，每個邏輯應用程式都必須使用[觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程式時，Logic Apps 引擎都會建立邏輯應用程式實例，並開始執行您的應用程式工作流程。
+在 Azure Logic Apps 中，每個邏輯應用程式都必須使用[觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程式時，Logic Apps 引擎都會建立邏輯應用程式實例，並開始執行您應用程式的工作流程。
 
 > [!NOTE] 
-> 觸發程式引發時，觸發程式會處理所有的新警示。 如果未收到任何警示，就會略過觸發程式執行。 下一次發生觸發程序輪詢的時間，會根據您在觸發程序屬性中指定的循環間隔而定。
+> 觸發程式引發時，觸發程式會處理所有新的警示。 如果未收到任何警示，則會略過觸發程式執行。 下一次發生觸發程序輪詢的時間，會根據您在觸發程序屬性中指定的循環間隔而定。
 
-這個範例會示範如何在新的警示傳送至您的應用程式時，啟動邏輯應用程式工作流程。
+此範例說明如何在新的警示傳送至您的應用程式時，啟動邏輯應用程式工作流程。
 
-1.  在 Azure 入口網站或 Visual Studio 中，建立空白邏輯應用程式，以開啟邏輯應用程式設計工具。 這個範例會使用 Azure 入口網站。
+1.  在 Azure 入口網站或 Visual Studio 中，建立空白的邏輯應用程式，以開啟邏輯應用程式設計工具。 這個範例會使用 Azure 入口網站。
 
-1.  在設計工具的 [搜尋] 方塊中，輸入「microsoft graph 安全性」作為篩選準則。 從觸發程式清單中，選取此觸發程式：**在所有新警示上**
+1.  在設計工具的搜尋方塊中，輸入「microsoft graph 安全性」作為篩選準則。 從觸發程式清單中選取此觸發程式： **在所有新的警示上**
 
-1.  在觸發程式中，提供您想要監視之警示的相關資訊。 如需更多屬性，請開啟 [**加入新的參數**] 清單，然後選取參數將該屬性加入至觸發程式。
+1.  在觸發程式中，提供您想要監視之警示的相關資訊。 如需其他屬性，請開啟 [ **加入新的參數** ] 清單，然後選取參數將該屬性加入至觸發程式。
 
    | 屬性 | 屬性 (JSON) | 必要 | 類型 | 說明 |
    |----------|-----------------|----------|------|-------------|
    | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p><p>- 月：1-16 個月 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
    | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
    | **時區** | `timeZone` | 否 | String | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
-   | **開始時間** | `startTime` | 否 | String | 提供此格式的開始日期和時間： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來最多有49年，而且必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **開始時間** | `startTime` | 否 | String | 以下列格式提供開始日期和時間： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要在2017年9月18日下午2:00，則請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來的時間最多為49年，且必須遵循 [ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) （ [utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)），但不含 [utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  完成時，請在設計工具的工具列上，選取 [儲存]。
@@ -117,7 +117,7 @@ ms.locfileid: "87986363"
 
 | 動作 | 描述 |
 |--------|-------------|
-| **取得警示** | 取得根據一或多個[警示屬性](/graph/api/resources/alert)篩選的警示，例如 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
+| **取得警示** | 取得根據一或多個 [警示屬性](/graph/api/resources/alert)篩選的警示，例如 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
 | **依識別碼取得警示** | 依據警示識別碼取得特定警示。 | 
 | **更新警示** | 依據警示識別碼更新特定警示。 為確保您在要求中傳遞必要和可編輯的屬性，請參閱[警示的可編輯屬性](/graph/api/alert-update) \(英文\)。 例如，若要指派警示給安全性分析師以讓他們可以進行調查，您可以更新警示的「指派給」**** 屬性。 |
 |||
@@ -136,25 +136,25 @@ Microsoft Graph 支援[*訂閱*](/graph/api/resources/subscription)或 [*Webhook
 | **刪除訂用帳戶** | 提供訂閱識別碼以[刪除訂閱](/graph/api/subscription-delete)。 | 
 ||| 
 
-### <a name="manage-threat-intelligence-indicators"></a>管理威脅情報指示器
+### <a name="manage-threat-intelligence-indicators"></a>管理威脅情報指標
 
-若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/beta/security/tiIndicators`，或是 `GET` 或 `PATCH` 作業。 以下是一個特定範例，當您想要具有威脅類型的清單時，會顯示**Get tiIndicators**動作的參數 `DDoS` ：
+若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/beta/security/tiIndicators`，或是 `GET` 或 `PATCH` 作業。 以下是當您想要具有威脅類型的清單時，會顯示 **Get tiIndicators** 動作之參數的特定範例 `DDoS` ：
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-如需可搭配此連接器使用之查詢的詳細資訊，請參閱[Microsoft Graph 安全性威脅情報指標參考檔中的「選擇性查詢參數](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)」。 若要使用此連接器建立增強的體驗，請深入瞭解連接器支援的[架構屬性威脅情報指示器](/graph/api/resources/tiindicator?view=graph-rest-beta)。
+如需有關可搭配此連接器使用之查詢的詳細資訊，請參閱 [Microsoft Graph 安全性威脅情報指標參考檔中的「選擇性查詢參數](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)」。 若要使用此連接器建立增強的體驗，請深入瞭解連接器所支援的 [架構屬性威脅情報指標](/graph/api/resources/tiindicator?view=graph-rest-beta) 。
 
 | 動作 | 描述 |
 |--------|-------------|
-| **取得威脅情報指示器** | 取得根據一或多個[tiIndicator 屬性](/graph/api/resources/tiindicator?view=graph-rest-beta)篩選的 tiIndicators，例如`threatType eq 'MaliciousUrl' or 'DDoS'` |
-| **依識別碼取得威脅情報指示器** | 根據 tiIndicator 識別碼取得特定的 tiIndicator。 | 
-| **建立威脅情報指標** | 張貼至 tiIndicators 集合，以建立新的 tiIndicator。 若要確保您在要求中傳遞必要的屬性，請參閱[建立 tiIndicator 所需的屬性](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)。 |
-| **提交多個威脅情報指示器** | 藉由張貼 tiIndicators 集合來建立多個新的 tiIndicators。 若要確保您在要求中傳遞必要的屬性，請參閱[提交多個 tiIndicators 的必要屬性](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)。 |
-| **更新威脅情報指標** | 根據 tiIndicator 識別碼更新特定 tiIndicator。 若要確保您在要求中傳遞必要和可編輯的屬性，請參閱[tiIndicator 的可編輯屬性](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)。 例如，若要更新在 targetProduct 安全性工具內符合指標時要套用的動作，您可以更新 tiIndicator 的**action**屬性。 |
-| **更新多個威脅情報指示器** | 更新多個 tiIndicators。 為確保您在要求中傳遞必要的屬性，請參閱[更新多個 tiIndicators 的必要屬性](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)。 |
-| **依識別碼刪除威脅情報指示器** | 根據 tiIndicator 識別碼刪除特定的 tiIndicator。 |
-| **依識別碼刪除多個威脅情報指示器** | 依識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞必要的屬性，請參閱[依識別碼刪除多個 tiIndicators 的必要屬性](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)。 |
-| **依外部識別碼刪除多個威脅情報指示器** | 依外部識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞所需的屬性，請參閱[必要的屬性，以依據外部識別碼刪除多個 tiIndicators](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)。 |
+| **取得威脅情報指標** | 取得根據一或多個 [tiIndicator 屬性](/graph/api/resources/tiindicator?view=graph-rest-beta)篩選的 tiIndicators，例如 `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **依識別碼取得威脅情報指標** | 取得以 tiIndicator 識別碼為基礎的特定 tiIndicator。 | 
+| **建立威脅情報指標** | 藉由張貼至 tiIndicators 集合來建立新的 tiIndicator。 若要確定您在要求中傳遞必要的屬性，請參閱 [建立 tiIndicator 所需的屬性](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)。 |
+| **提交多個威脅情報指標** | 藉由張貼 tiIndicators 集合來建立多個新的 tiIndicators。 若要確定您在要求中傳遞必要的屬性，請參閱 [提交多個 tiIndicators 的必要屬性](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)。 |
+| **更新威脅情報指標** | 根據 tiIndicator 識別碼更新特定 tiIndicator。 為了確保您在要求中傳遞必要和可編輯的屬性，請參閱 [tiIndicator 的可編輯屬性](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)。 例如，若要更新要套用的動作（如果指標在 targetProduct 安全性工具內相符），您可以更新 tiIndicator 的 **action** 屬性。 |
+| **更新多個威脅情報指標** | 更新多個 tiIndicators。 為了確保您在要求中傳遞必要的屬性，請參閱 [更新多個 tiIndicators 的必要屬性](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)。 |
+| **依識別碼刪除威脅情報指標** | 刪除以 tiIndicator 識別碼為基礎的特定 tiIndicator。 |
+| **依識別碼刪除多個威脅情報指標** | 依識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞所需的屬性，請參閱 [依識別碼刪除多個 tiIndicators 的必要屬性](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)。 |
+| **依外部識別碼刪除多個威脅情報指標** | 依外部識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞所需的屬性，請參閱使用 [外部識別碼刪除多個 tiIndicators 的必要屬性](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)。 |
 |||
 
 ## <a name="connector-reference"></a>連接器參考

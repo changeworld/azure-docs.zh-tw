@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761639"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 管理 IBM Informix 資料庫資源
@@ -25,7 +25,7 @@ ms.locfileid: "88761639"
 
 本主題說明如何在邏輯應用程式中使用連接器來處理資料庫作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -84,8 +84,8 @@ ms.locfileid: "88761639"
    | 伺服器 | `server` | 是 | 帶入 `informixdemo.cloudapp.net:9089` <br>-內部部署： `informixdemo:9089` | 以 IPv4 或 IPv6 格式，後面接著冒號和 TCP/IP 通訊埠編號的 TCP/IP 位址或別名 |
    | 資料庫 | `database` | 是 | `nwind` | DRDA 關係資料庫名稱 (RDBNAM) 或 Informix 資料庫名稱 (dbname) 。 Informix 接受128位元組的字串。 |
    | 驗證 | `authentication` | 僅限內部部署 | **基本** 或 **Windows** (kerberos)  | Informix 資料庫所需的驗證類型。 只有當您選取 **[透過內部部署資料閘道連接]** 時，才會顯示此屬性。 |
-   | 使用者名稱 | `username` | No | <*資料庫-使用者名稱*> | 資料庫的使用者名稱 |
-   | 密碼 | `password` | No | <*資料庫-密碼*> | 資料庫的密碼 |
+   | 使用者名稱 | `username` | 否 | <*資料庫-使用者名稱*> | 資料庫的使用者名稱 |
+   | 密碼 | `password` | 否 | <*資料庫-密碼*> | 資料庫的密碼 |
    | 閘道 | `gateway` | 僅限內部部署 | -<*Azure-訂*用帳戶> <br>-<*Azure-內部部署-資料-閘道-資源*> | 您在 Azure 入口網站中建立的內部部署資料閘道的 Azure 訂用帳戶和 Azure 資源名稱。 只有當您選取 [透過**內部部署資料閘道連接]** 時，才會顯示**閘道**屬性和子屬性。 |
    ||||||
 

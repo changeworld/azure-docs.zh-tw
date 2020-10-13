@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401634"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 位址
@@ -52,7 +52,7 @@ ms.locfileid: "89401634"
 > [!IMPORTANT]  
 > 如果未列出您使用的 Azure 區域，請使用網路安全性群組的 [服務標記](hdinsight-service-tags.md) 功能。
 
-| Country | Region | 允許的來源 IP 位址 | 允許的目的地 | 方向 |
+| Country | 區域 | 允許的來源 IP 位址 | 允許的目的地 | Direction |
 | ---- | ---- | ---- | ---- | ----- |
 | Asia | 東亞 | 23.102.235.122</br>52.175.38.134 | \*：443 | 輸入 |
 | &nbsp; | 東南亞 | 13.76.245.160</br>13.76.136.249 | \*：443 | 輸入 |
@@ -92,7 +92,7 @@ ms.locfileid: "89401634"
 
 如果您 (Udr) 使用使用者定義的路由，則應該指定路由，並允許從虛擬網路到上述 Ip 的輸出流量，並將下一個躍點設定為 [網際網路]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)
 * [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](hdinsight-service-tags.md)

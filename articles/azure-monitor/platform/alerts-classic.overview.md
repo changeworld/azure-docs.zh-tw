@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844107"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>什麼是 Microsoft Azure 中的傳統警示？
 
 > [!NOTE]
-> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](./alerts-overview.md)。 傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。
+> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援 [較新的近乎即時計量警示和新的警示體驗](./alerts-overview.md)。 傳統警示已 [淘汰](./monitoring-classic-retirement.md)，但仍對尚未支援新警示的資源使用限制。
 >
 
 警示可讓您對資料設定條件，並在最近的監視資料符合條件時收到通知。
@@ -29,9 +29,9 @@ ms.locfileid: "87844107"
 
 新的警示使用者體驗比傳統警示體驗多了下列優點：
 - **更好的通知系統**- 所有新版警示都使用動作群組，這些是可在多個警示中重複使用的具名通知及動作群組。 傳統計量警示及舊版 Log Analytics 警示並不使用動作群組。
-- **統一的撰寫體驗**-跨 Azure 監視器、log Analytics 和 Application Insights 的計量、記錄和活動記錄的所有警示建立都位於同一個位置。
+- **統一的撰寫體驗** -在 Azure 監視器、log Analytics 和 Application Insights 的計量、記錄和活動記錄的所有警示建立都在單一位置。
 - **在 Azure 入口網站中檢視引發的 Log Analytics 警示** - 您現在也能在訂用帳戶中查看引發的 Log Analytics 警示。 先前這些警示是在個別的入口網站中。
-- **分隔引發的警示和警示規則**-警示規則 (觸發警示) 之條件的定義，而引發的警示會 (因警示規則引發) 的實例而有所差異，因此可讓操作和設定視圖分開。
+- **分隔引發的警示和警示規則** -警示規則 (觸發警示) 的條件定義，而引發的警示 (警示規則引發) 的實例差異化，因此可分隔操作和設定的觀點。
 - **更好的工作流程** - 新的警示編寫體驗會引導使用者進行設定警示規則的程序，而能更容易找到要取得警示的正確項目。
 - **智慧型警示彙總**和**設定警示狀態** - 新版警示包含自動群組功能，可將類似的警示顯示在一起，以減少使用者介面中的多載。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "87844107"
 
 * **傳統活動記錄警示** - 因符合篩選準則，而由活動記錄項目觸發的串流記錄警示。 這些警示只有一個狀態：「已啟動」。 警示引擎會將篩選準則直接套用至任何新事件。 並不會搜尋以找出較舊的項目。 當新的服務健康狀態事件發生時，或當使用者或應用程式在您的訂用帳戶中執行諸如「刪除虛擬機器」作業時，這些警示可以通知您。
 
-對於可透過 Azure 監視器取得的資源記錄資料，請將資料路由傳送至 Log Analytics，並使用記錄查詢警示。 Log Analytics 現在使用[新的警示方法](./alerts-overview.md) 
+針對可透過 Azure 監視器取得的資源記錄檔資料，請將資料路由傳送至 Log Analytics，並使用記錄查詢警示。 Log Analytics 現在會使用 [新的警示方法](./alerts-overview.md) 
 
 下圖摘要說明 Azure 監視器中的資料來源，以及就概念而言如何發出該資料的警示。
 
@@ -85,15 +85,15 @@ Webhook 可啟用自動化和修復，例如使用：
 ## <a name="next-steps"></a>後續步驟
 使用下列項目取得有關警示規則和設定這些規則的資訊：
 
-* 深入瞭解[計量](data-platform.md)
+* 深入瞭解 [計量](data-platform.md)
 * [透過 Azure 入口網站設定傳統的計量警示](alerts-classic-portal.md)
 * 設定[傳統的計量警示 PowerShell](alerts-classic-portal.md)
 * 設定[傳統的計量警示命令列介面 (CLI)](alerts-classic-portal.md)
 * 設定[傳統的計量警示 Azure 監視器 REST API](/rest/api/monitor/alertrules)
-* 深入瞭解[活動記錄](platform-logs-overview.md)
+* 深入瞭解 [活動記錄](platform-logs-overview.md)
 * [透過 Azure 入口網站設定活動記錄警示](activity-log-alerts.md)
 * [透過 Resource Manager 設定活動記錄警示](alerts-activity-log.md)
 * 檢閱[活動記錄警示 webhook 結構描述](activity-log-alerts-webhook.md)
-* 深入瞭解[動作群組](action-groups.md)
-* 設定[較新的警示](alerts-metric.md)
+* 深入瞭解 [動作群組](action-groups.md)
+* 設定 [較新的警示](alerts-metric.md)
 

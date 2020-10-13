@@ -5,19 +5,19 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081690"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>在 Durable Functions (Azure Functions) 中處理錯誤
 
-長期函式協調流程會在程式碼中執行，而且可以使用程式設計語言的內建錯誤處理功能。 在協調流程中加入錯誤處理和補償，並不需要學習任何新的概念。 不過，有一些行為值得注意。
+持久函式協調流程會在程式碼中執行，而且可以使用程式設計語言的內建錯誤處理功能。 您需要學習的新概念，才能在協調流程中新增錯誤處理和補償。 不過，有一些行為值得注意。
 
 ## <a name="errors-in-activity-functions"></a>活動函式中的錯誤
 
-在活動函式中擲回的任何例外狀況會封送處理回到協調器函式，並以的形式擲回 `FunctionFailedException` 。 您可以在協調器函式中撰寫符合需求的錯誤處理和補償程式碼。
+在活動函式中擲回的任何例外狀況會封送處理回協調器函式，並擲回為 `FunctionFailedException` 。 您可以在協調器函式中撰寫符合需求的錯誤處理和補償程式碼。
 
 例如，假設有下列協調器函式會從一個帳戶轉帳到另一個帳戶：
 
@@ -60,7 +60,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -127,7 +127,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ---
 
-如果第一個**CreditAccount**函式呼叫失敗，協調器函式會藉由將資金貸回來源帳戶來補償。
+如果第一個 **CreditAccount** 函式呼叫失敗，協調器函式會將資金貸回來源帳戶以進行補償。
 
 ## <a name="automatic-retry-on-failure"></a>失敗時自動重試
 
@@ -150,7 +150,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -189,7 +189,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ---
 
-上一個範例中的活動函數呼叫會採用參數來設定自動重試原則。 有數個選項可自訂自動重試原則：
+上一個範例中的活動函式呼叫會使用參數來設定自動重試原則。 有幾個選項可供自訂自動重試原則：
 
 * **嘗試次數上限**：重試嘗試次數上限。
 * **第一次重試間隔**：第一次重試嘗試之前等候的時間量。
@@ -200,7 +200,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="function-timeouts"></a>函式逾時
 
-如果協調器函式中的函式呼叫花費太多時間來完成，您可能會想要放棄它。 今日執行此動作的正確方式是使用[durable timer](durable-functions-timers.md) `context.CreateTimer` （.net）、 `context.df.createTimer` （javascript）或 `context.create_timer` （python）搭配 `Task.WhenAny` （.net）、 `context.df.Task.any` （javascript）或（python）來建立持久計時器 `context.task_any` ，如下列範例所示：
+如果執行時間太長而無法完成，您可能會想要放棄協調器函式內的函式呼叫。 目前，您可以使用[durable timer](durable-functions-timers.md) `context.CreateTimer` ( .net) 、 `context.df.createTimer` (javascript) ，或 `context.create_timer` (python) 搭配 `Task.WhenAny` ( .net) 、 `context.df.Task.any` (javascript) 或 (python) 來建立持久計時器 `context.task_any` ，如下列範例所示：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -233,7 +233,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -290,7 +290,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 如果協調器函式失敗並傳回未處理的例外狀況，例外狀況的詳細資料會記錄下來，而在執行個體會以 `Failed` 狀態結束。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [瞭解永久性協調流程](durable-functions-eternal-orchestrations.md)

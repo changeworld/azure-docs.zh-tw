@@ -12,10 +12,10 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c0d36ec5020f595d8a61899ddc8f8b9c282bad19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328406"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署現有的模型
@@ -25,7 +25,7 @@ ms.locfileid: "91328406"
 
 如需本文中概念和詞彙的詳細資訊，請參閱 [管理、部署和監視機器學習模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
   + Python 範例假設 `ws` 變數已設定為您的 Azure Machine Learning 工作區。 如需有關如何連線至工作區的詳細資訊，請參閱 [適用于 Python 的 AZURE MACHINE LEARNING SDK 檔](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace)。

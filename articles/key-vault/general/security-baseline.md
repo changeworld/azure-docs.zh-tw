@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400461"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
@@ -1093,13 +1093,13 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **指導**方針：使用下列 PowerShell 命令，確保定期自動備份您的 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼：
 
-- 備份-AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- 備份-AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- 備份-AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- 備份-AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 （選擇性）您可以將 Key Vault 備份儲存在 Azure 備份內。
 
@@ -1123,13 +1123,13 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **指導**方針：使用下列 PowerShell 命令來執行 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼的備份：
 
-- 備份-AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- 備份-AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- 備份-AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- 備份-AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 （選擇性）您可以將 Key Vault 備份儲存在 Azure 備份內。
 
@@ -1153,13 +1153,13 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **指導**方針：使用下列 PowerShell 命令，定期執行 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼的資料還原：
 
-- 還原-AzKeyVaultCertificate
+- Restore-AzKeyVaultCertificate
 
-- 還原-AzKeyVaultKey
+- Restore-AzKeyVaultKey
 
-- 還原-AzKeyVaultManagedStorageAccount
+- Restore-AzKeyVaultManagedStorageAccount
 
-- 還原-AzKeyVaultSecret
+- Restore-AzKeyVaultSecret
 
 如何還原 Key Vault 憑證：  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 

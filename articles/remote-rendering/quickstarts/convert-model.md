@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557180"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91652443"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>快速入門：轉換模型以進行轉譯
 
@@ -189,7 +189,7 @@ Connect-AzAccount
 轉換指令碼所建立的 SAS URI 只會在 24 小時內有效。 但是，過期之後，您不需要再次轉換模型。 您反而可在入口網站中建立新的 SAS，如後續步驟所述：
 
 1. 移至 [Azure 入口網站](https://www.portal.azure.com)
-1. 按一下 [儲存體帳戶] 資源：![簽章存取](./media/portal-storage-accounts.png)
+1. 按一下 [儲存體帳戶] 資源：![反白顯示所選儲存體帳戶資源的螢幕擷取畫面。](./media/portal-storage-accounts.png)
 1. 在下列畫面中，按一下左面板中的 [儲存體總管]，然後在 *arroutput* Blob 儲存體容器中尋找您的輸出模型 (*arrAsset* 檔案)。 以滑鼠右鍵按一下檔案，然後從快顯功能表選取 [取得共用存取簽章]：![簽章存取](./media/portal-storage-explorer.png)
 1. 新畫面隨即開啟，您可在其中選取到期日。 按下 [建立]，然後複製下一個對話方塊中所顯示的 URI。 這個新的 URI 會取代指令碼所建立的暫存 URI。
 

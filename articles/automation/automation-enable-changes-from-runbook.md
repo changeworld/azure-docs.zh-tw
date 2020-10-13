@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186277"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook 的 [啟用變更追蹤和清查]

@@ -1,5 +1,5 @@
 ---
-title: 適用于 ESR 的群組原則和 MDM 設定-Azure Active Directory
+title: ESR Azure Active Directory 的群組原則和 MDM 設定
 description: 企業狀態漫遊的管理設定
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252928"
 ---
 # <a name="group-policy-and-mdm-settings"></a>群組原則和 MDM 設定
@@ -26,13 +26,13 @@ ms.locfileid: "85252928"
 下表描述可用的原則設定。
 
 > [!NOTE]
-> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
+> 本文適用于2015年7月以 Windows 10 啟動的舊版 Microsoft Edge HTML 瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 式瀏覽器。 如需新 Microsoft Edge 之同步處理行為的詳細資訊，請參閱 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理的文章。
 
 ## <a name="mdm-settings"></a>MDM 設定
 
-MDM 原則設定會套用至 Windows 10 及 Windows 10 行動裝置版。  Windows 10 行動裝置版支援僅適用於以 Microsoft 帳戶為基礎且透過使用者的 OneDrive 帳戶進行的漫遊。 如需哪些裝置支援以 Azure AD 為基礎的同步處理的詳細資訊，請參閱[裝置和端點](enterprise-state-roaming-windows-settings-reference.md)。
+MDM 原則設定會套用至 Windows 10 及 Windows 10 行動裝置版。  Windows 10 行動裝置版支援僅適用於以 Microsoft 帳戶為基礎且透過使用者的 OneDrive 帳戶進行的漫遊。 請參閱 [裝置和端點](enterprise-state-roaming-windows-settings-reference.md) ，以取得以 Azure AD 為基礎的同步支援哪些裝置的詳細資料。
 
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | 允許 Microsoft 帳戶連接 |允許使用者在裝置上使用 Microsoft 帳戶進行驗證 |
 | 允許同步處理我的設定 |讓使用者能夠漫遊 Windows 設定和應用程式資料。停用此原則，將停用行動裝置上的同步處理及備份 |
@@ -43,7 +43,7 @@ MDM 原則設定會套用至 Windows 10 及 Windows 10 行動裝置版。  Windo
 
 這些設定位於：`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | 帳戶：封鎖 Microsoft 帳戶 |此原則設定會防止使用者在這部電腦上新增新的 Microsoft 帳戶 |
 | 不要同步 |防止使用者漫遊 Windows 設定和應用程式資料 |
@@ -59,4 +59,4 @@ MDM 原則設定會套用至 Windows 10 及 Windows 10 行動裝置版。  Windo
 
 ## <a name="next-steps"></a>後續步驟
 
-如需總覽，請參閱[企業狀態漫遊總覽](enterprise-state-roaming-overview.md)。
+如需總覽，請參閱 [企業狀態漫遊總覽](enterprise-state-roaming-overview.md)。

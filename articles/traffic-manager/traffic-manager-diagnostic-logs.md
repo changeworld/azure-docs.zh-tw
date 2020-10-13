@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
 ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401311"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>在 Azure 流量管理員中啟用資源記錄
@@ -70,11 +70,11 @@ Azure 流量管理員資源記錄可讓您深入瞭解流量管理員設定檔�
 
 |欄位名稱|欄位類型|定義|範例|
 |----|----|---|---|
-|EndpointName|String|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
-|狀態|String|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
+|EndpointName|字串|正在記錄其健全狀況狀態的流量管理員端點的名稱。|*myPrimaryEndpoint*|
+|狀態|字串|所探查流量管理員端點的健全狀況狀態。 狀態可以是 **Up** 或 **down**。|**Up**|
 |||||
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解[流量管理員監視](traffic-manager-monitoring.md)
 

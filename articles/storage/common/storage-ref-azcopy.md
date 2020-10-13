@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87285181"
 ---
 # <a name="azcopy"></a>azcopy
@@ -25,7 +25,7 @@ AzCopy 是一種命令列工具，可將資料移入和移出 Azure 儲存體。
 
 若要報告問題或深入瞭解此工具，請參閱 [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) 。
 
-## <a name="related-conceptual-articles"></a>相關的概念性文章
+## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
@@ -34,13 +34,13 @@ AzCopy 是一種命令列工具，可將資料移入和移出 Azure 儲存體。
 
 ## <a name="options"></a>選項。
 
-**--cap-mbps** （Float） Caps 的傳輸速率（以每秒 mb 為單位）。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。
+**--cap-mbps** (浮點數) 以每秒 mb 數為單位的速率。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。
 
-**--help**Azcopy 的說明
+**--** 說明Azcopy 的說明
       
-**--** 命令輸出的輸出類型（字串）格式。 選項包括： text、json。 預設值是 `text`。 （預設值 `text` ）
+**--輸出類型**  (字串) 命令輸出的格式。 選項包括： text、json。 預設值為 `text`。  (預設 `text`) 
 
-**--trusted-microsoft-** 後置字元（string）會指定其他可在其中傳送 Azure Active Directory 登入權杖的網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。
+**--受信任-microsoft-尾碼** (字串) 指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
 
 ## <a name="see-also"></a>另請參閱
 

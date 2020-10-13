@@ -7,16 +7,16 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 464b13fe4aa727a4d3ca3ff074b8bb94544576a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86101217"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則
-伺服器層級防火牆規則可用來從指定的 IP 位址或 IP 位址範圍，管理適用於 MariaDB 的 Azure 資料庫伺服器的存取權。
+您可以使用伺服器層級防火牆規則，從指定的 IP 位址或 IP 位址範圍管理適用於 MariaDB 的 Azure 資料庫伺服器的存取權。
 
-虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-portal.md)。
+虛擬網路 (VNet) 規則也可以用來保護對伺服器的存取。 深入瞭解如何 [使用 Azure 入口網站來建立和管理虛擬網路服務端點和規則](howto-manage-vnet-portal.md)。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 入口網站中建立伺服器層級的防火牆規則
 
@@ -49,11 +49,11 @@ ms.locfileid: "86101217"
 
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>在 Azure 入口網站中管理現有的防火牆規則
 重複步驟來管理防火牆規則。
-* 若要新增目前的電腦，請按一下 [+新增我的 IP]****。 按一下 [儲存]  儲存變更。
-* 若要新增其他 IP 位址，請輸入 [規則名稱]****、[起始 IP 位址]**** 和 [結束 IP 位址]****。 按一下 [儲存]  儲存變更。
-* 若要修改現有的規則，按一下規則中的任何欄位，然後加以修改。 按一下 [儲存]  儲存變更。
+* 若要新增目前的電腦，請按一下 [+新增我的 IP]****。 按一下 [儲存] 儲存變更。
+* 若要新增其他 IP 位址，請輸入 [規則名稱]****、[起始 IP 位址]**** 和 [結束 IP 位址]****。 按一下 [儲存] 儲存變更。
+* 若要修改現有的規則，按一下規則中的任何欄位，然後加以修改。 按一下 [儲存] 儲存變更。
 * 若要刪除現有的規則，按一下省略符號 [...]，然後按一下 [刪除]****。 按一下 [儲存]  儲存變更。
 
 ## <a name="next-steps"></a>後續步驟
- - 同樣地，您可以使用 Azure CLI 編寫腳本，以[建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](howto-manage-firewall-cli.md)。
- - 藉由[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-portal.md)，進一步保護您的伺服器存取。
+ - 同樣地，您可以使用 Azure CLI 來撰寫腳本，以 [建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](howto-manage-firewall-cli.md)。
+ - [使用 Azure 入口網站來建立和管理虛擬網路服務端點和規則](howto-manage-vnet-portal.md)，以進一步保護對伺服器的存取。

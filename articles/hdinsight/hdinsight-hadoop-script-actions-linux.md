@@ -1,6 +1,6 @@
 ---
-title: 開發腳本動作以自訂 Azure HDInsight 叢集
-description: 瞭解如何使用 Bash 腳本來自訂 HDInsight 叢集。 腳本動作可讓您在叢集建立期間或之後執行腳本，以變更叢集配置設定或安裝其他軟體。
+title: 開發自訂 Azure HDInsight 叢集的腳本動作
+description: 瞭解如何使用 Bash 腳本來自訂 HDInsight 叢集。 腳本動作可讓您在叢集建立期間或之後執行腳本，以變更叢集設定或安裝其他軟體。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082245"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 開發指令碼動作
@@ -44,7 +44,7 @@ ms.locfileid: "86082245"
 * [使用預先編譯的資源](#bPS4)
 * [確保叢集自訂指令碼具有等冪性](#bPS3)
 * [確保叢集架構具有高可用性](#bPS5)
-* [設定自訂群組件以使用 Azure Blob 儲存體](#bPS6)
+* [設定自訂群組件來使用 Azure Blob 儲存體](#bPS6)
 * [將資訊寫入至 STDOUT 和 STDERR](#bPS7)
 * [將檔案儲存為具有 LF 行尾結束符號的 ASCII](#bps8)
 * [使用重試邏輯從暫時性錯誤復原](#bps9)
@@ -73,9 +73,9 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="target-the-operating-system-version"></a><a name="bps10"></a>以作業系統版本為目標
+### <a name="target-the-operating-system-version"></a><a name="bps10"></a> 以作業系統版本為目標
 
-HDInsight 是以 Ubuntu Linux 散發套件為基礎。 不同 HDInsight 版本仰賴不同的 Ubuntu 版本，這可能會改變指令碼的運作方式。 例如，HDInsight 3.4 及更早版本所根據的是使用 Upstart 的 Ubuntu 版本。 3.5 版和更高版本根據的是 Ubuntu 16.04，其使用的是 Systemd。 Systemd 和 Upstart 仰賴不同的命令，因此應將指令碼撰寫為適用兩者。
+HDInsight 是以 Ubuntu Linux 發行版本為基礎。 不同 HDInsight 版本仰賴不同的 Ubuntu 版本，這可能會改變指令碼的運作方式。 例如，HDInsight 3.4 及更早版本所根據的是使用 Upstart 的 Ubuntu 版本。 3.5 版和更高版本根據的是 Ubuntu 16.04，其使用的是 Systemd。 Systemd 和 Upstart 仰賴不同的命令，因此應將指令碼撰寫為適用兩者。
 
 HDInsight 3.4 和 3.5 之間的另一個重要差異在於，`JAVA_HOME` 現在指向 Java 8。 下列程式碼示範如何判斷指令碼是在 Ubuntu 14 或 16 上執行：
 
@@ -133,11 +133,11 @@ fi
 
 指令碼必須具有等冪性。 如果指令碼執行多次，則每次都應該讓叢集回到相同狀態。
 
-例如，如果執行多次，修改設定檔的腳本不應新增重複的專案。
+例如，如果執行多次，修改設定檔的腳本不應該新增重複的專案。
 
 ### <a name="ensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>確保叢集架構具有高可用性
 
-以 Linux 為基礎的 HDInsight 叢集提供在叢集裡作用中的兩個前端節點，且指令碼動作會針對兩個節點執行。 如果您安裝的元件只預期一個前端節點，請勿在這兩個前端節點上安裝元件。
+以 Linux 為基礎的 HDInsight 叢集提供在叢集裡作用中的兩個前端節點，且指令碼動作會針對兩個節點執行。 如果您安裝的元件只預期有一個前端節點，請勿在這兩個前端節點上安裝這些元件。
 
 > [!IMPORTANT]  
 > HDInsight 隨附的服務已設計為在兩個前端節點之間視需要容錯移轉。 這項功能不會延伸至透過指令碼動作所安裝的自訂元件。 如果自訂元件需要有高可用性時，您必須實作自己的容錯移轉機制。
@@ -146,7 +146,7 @@ fi
 
 您安裝在叢集上的元件可能預設設定是使用 Apache Hadoop 分散式檔案系統 (HDFS) 儲存體。 HDInsight 使用 Azure 儲存體或 Data Lake Storage 作為預設儲存體。 兩者都提供 HDFS 相容的檔案系統，即使刪除叢集，也能保存資料。 您可能需要將您所安裝的元件設定為使用 WASB 或 ADL，而非 HDFS。
 
-對於大部分的作業，您不需要指定檔案系統。 例如，下列程式會將 hadoop-common 檔案從本機檔案系統複製到叢集存放區：
+針對大部分的作業，您不需要指定檔案系統。 例如，下列程式會將 hadoop-common .jar 檔案從本機檔案系統複製到叢集存放裝置：
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
@@ -159,7 +159,7 @@ hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 HDInsight 會記錄指令碼輸出，並將輸出寫入 STDOUT 和 STDERR。 您可以使用 Ambari Web UI 檢視這項資訊。
 
 > [!NOTE]  
-> 只有在成功建立叢集之後，才能使用 Apache Ambari。 如果您在叢集建立期間使用腳本動作，而建立失敗，請參閱針對其他存取已記錄資訊的方法，[疑難排解腳本動作](./troubleshoot-script-action.md)。
+> 只有在成功建立叢集之後，才能使用 Apache Ambari。 如果您在叢集建立期間使用腳本動作，而建立失敗，請參閱針對其他存取已記錄資訊的方式 [進行腳本動作的疑難排解](./troubleshoot-script-action.md) 。
 
 大部分的公用程式和安裝套件已經將資訊寫入 STDOUT 和 STDERR，不過您可以新增其他記錄。 若要將文字傳送到 STDOUT，請使用 `echo`。 例如：
 
@@ -175,9 +175,9 @@ echo "Getting ready to install Foo"
 
 這會將寫入 STDOUT 的資訊改為重新導向至 STDERR (2)。 如需 IO 重新導向的詳細資訊，請參閱 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html) 。
 
-如需有關如何查看腳本動作所記錄之資訊的詳細資訊，請參閱針對[腳本動作進行疑難排解](./troubleshoot-script-action.md)。
+如需有關如何查看腳本動作所記錄之資訊的詳細資訊，請參閱 [疑難排解腳本動作](./troubleshoot-script-action.md)。
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>使用 LF 行尾結束符號將檔案儲存為 ASCII
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> 使用 LF 行尾結束符號將檔案儲存為 ASCII
 
 Bash 指令碼應該儲存為 ASCII 格式，該格式以 LF 做為行尾結束符號。 儲存為 UTF-8 或使用 CRLF 作為行尾結束符號的檔案，可能會發生下列錯誤而失敗︰
 
@@ -186,9 +186,9 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>使用重試邏輯從暫時性錯誤中復原
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> 使用重試邏輯從暫時性錯誤中復原
 
-下載檔案時，使用 apt 取得安裝封裝，或透過網際網路傳送資料的其他動作，動作可能會因為暫時性網路錯誤而失敗。 例如，您正在進行通訊的遠端資源可能正在容錯移轉至備份節點。
+在下載檔案、使用 apt 取得安裝套件，或透過網際網路傳輸資料的其他動作時，動作可能會因為暫時性的網路錯誤而失敗。 例如，您正在進行通訊的遠端資源可能正在容錯移轉至備份節點。
 
 若要讓您的指令碼從暫時性錯誤中復原，可以實作重試邏輯。 下列函式示範如何實作重試邏輯。 在失敗之前，它會重試作業三次。
 
@@ -226,7 +226,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自訂指令碼的協助程式方法
 
-指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 這些方法包含在腳本中 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 。 請使用下列命令下載這些方法，然後在您的指令碼中使用︰
+指令碼動作協助程式方法是您在撰寫字訂指令碼時可以使用的公用程式。 這些方法都包含在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 腳本中。 請使用下列命令下載這些方法，然後在您的指令碼中使用︰
 
 ```bash
 # Import the helper method module.
@@ -235,9 +235,9 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 下列協助程式可用於您的指令碼：
 
-| 協助程式使用方式 | 描述 |
+| 協助程式使用方式 | 說明 |
 | --- | --- |
-| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |從來源 URI 將檔案下載到指定的檔案路徑中。 根據預設，它不會覆寫現有的檔案。 |
+| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |從來源 URI 將檔案下載到指定的檔案路徑中。 依預設，它不會覆寫現有的檔案。 |
 | `untar_file TARFILE DESTDIR` |將 tar 檔案解壓縮 (使用 `-xf`) 至目的地目錄。 |
 | `test_is_headnode` |如果在叢集前端節點上執行，則會傳回 1，否則傳回 0。 |
 | `test_is_datanode` |如果目前節點是資料 (背景工作角色) 節點，則會傳回 1，否則傳回 0。 |
@@ -292,7 +292,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * __可公開讀取的 URI__。 例如，在 OneDrive、Dropbox 或其他檔案裝載服務上儲存之資料的 URL。
 
-* 與 HDInsight 叢集相關聯的 __Azure Data Lake Storage 帳戶__。 如需使用 Azure Data Lake Storage 搭配 HDInsight 的詳細資訊，請參閱[快速入門：在 hdinsight 中設定](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)叢集。
+* 與 HDInsight 叢集相關聯的 __Azure Data Lake Storage 帳戶__。 如需搭配 HDInsight 使用 Azure Data Lake Storage 的詳細資訊，請參閱 [快速入門：在 hdinsight 中設定](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)叢集。
 
     > [!NOTE]  
     > HDInsight 用來存取 Data Lake Storage 的服務主體必須具有指令碼的讀取存取權。
@@ -326,11 +326,11 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 ## <a name="custom-script-samples"></a><a name="sampleScripts"></a>自訂指令碼範例
 
-Microsoft 提供了在 HDInsight 叢集上安裝元件的範例指令碼。 如需範例腳本動作，請參閱[在 HDInsight 叢集上安裝及使用色調](hdinsight-hadoop-hue-linux.md)。
+Microsoft 提供了在 HDInsight 叢集上安裝元件的範例指令碼。 請參閱 [在 HDInsight 叢集上安裝及使用色調](hdinsight-hadoop-hue-linux.md) 作為範例腳本動作。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-以下是您在使用已開發的腳本時可能會遇到的錯誤：
+以下是使用您所開發的腳本時，可能會遇到的錯誤：
 
 **錯誤**： `$'\r': command not found` 。 有時候後面接續 `syntax error: unexpected end of file`。
 
@@ -338,7 +338,7 @@ Microsoft 提供了在 HDInsight 叢集上安裝元件的範例指令碼。 如�
 
 此問題最常發生在於 Windows 環境中撰寫指令碼時，因為 CRLF 是 Windows 上許多文字編輯器中常見的行尾結束符號。
 
-*解決*方式：如果它是文字編輯器中的選項，請選取 Unix 格式或 LF 做為行尾結束符號。 您也可以在 Unix 系統上使用下列命令，將 CRLF 變更為 LF：
+*解決方案*：如果它是文字編輯器中的選項，請選取 Unix 格式或 LF 作為行尾結束符號。 您也可以在 Unix 系統上使用下列命令，將 CRLF 變更為 LF：
 
 > [!NOTE]  
 > 下列命令大致相當於將 CRLF 行尾結束符號變更為 LF。 根據您的系統上可用的公用程式，選取其中一個。

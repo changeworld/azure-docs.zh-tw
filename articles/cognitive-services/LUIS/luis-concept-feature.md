@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371986"
 ---
 # <a name="machine-learning-features"></a>機器學習功能
@@ -226,7 +226,7 @@ City、state 和 country/region 通常是一組封閉的清單，這表示它們
 
 針對票證預約範例，請在意圖中標示範例語句，以及 `TicketBooking` 文字中的實體和任何子實體。
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="標籤範例語句":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking 實體架構":::
 
 ### <a name="example-pizza-ordering-app"></a>範例：比薩訂購應用程式
 
@@ -234,13 +234,13 @@ City、state 和 country/region 通常是一組封閉的清單，這表示它們
 
 此範例中的機器學習實體會更複雜，且具有嵌套子實體、片語清單、預先建立的實體和自訂實體。
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="比薩訂單實體架構":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking 實體架構":::
 
 此範例會使用列層級的功能和列層級的子系。 哪一種層級可讓片語清單或模型做為實體設計的重要部分。
 
 雖然子實體可以有許多片語清單，做為有助於偵測實體的功能，但每個列只有一個模型做為特徵。 在此 [比薩應用程式](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)中，這些模型主要是清單。
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="具有標示範例語句的比薩訂單意圖":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking 實體架構":::
 
 正確加上標籤的範例語句會以顯示實體如何嵌套的方式顯示。 
 

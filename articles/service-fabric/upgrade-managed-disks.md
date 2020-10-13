@@ -4,10 +4,10 @@ description: 以下說明如何將現有的 Service Fabric 叢集升級為使用
 ms.topic: how-to
 ms.date: 4/07/2020
 ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717518"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>將叢集節點升級為使用 Azure 受控磁片
@@ -359,7 +359,7 @@ foreach($name in $nodeNames){
 
 ![已移除錯誤狀態下節點的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本逐步解說中，您已瞭解如何將 Service Fabric 叢集的虛擬機器擴展集升級為使用受控磁片，同時避免在處理期間發生服務中斷。 如需相關主題的詳細資訊，請參閱下列資源。
 

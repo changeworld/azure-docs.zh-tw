@@ -1,21 +1,21 @@
 ---
 title: 如何從適用於 VM 的 Azure 監視器查詢記錄
-description: 適用於 VM 的 Azure 監視器解決方案會將計量和記錄資料收集到，而本文會描述記錄並包含範例查詢。
+description: 適用於 VM 的 Azure 監視器解決方案會收集的計量和記錄資料，本文將說明這些記錄並包含範例查詢。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325180"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何從適用於 VM 的 Azure 監視器查詢記錄
 
-適用於 VM 的 Azure 監視器會收集效能和連線計量、電腦和處理常式清查資料，以及健全狀況狀態資訊，並將其轉送至 Azure 監視器中的 Log Analytics 工作區。  這項資料可用於 Azure 監視器中的[查詢](../log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
+適用於 VM 的 Azure 監視器會收集效能和連線度量、電腦和進程清查資料，以及健康狀態資訊，並將其轉送至 Azure 監視器中的 Log Analytics 工作區。  這項資料可用於 Azure 監視器中的 [查詢](../log-query/log-query-overview.md) 。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
 
 ## <a name="map-records"></a>對應記錄
 
@@ -26,32 +26,32 @@ ms.locfileid: "87325180"
 - 電腦：使用 *ResourceId* 或 *ResourceName_s* 來唯一識別 Log Analytics 工作區中的電腦。
 - 處理序：使用 *ResourceId* 來唯一識別 Log Analytics 工作區中的處理序。 *ResourceName_s* 在執行處理序的機器 (MachineResourceName_s) 環境中是唯一的 
 
-因為在指定時間範圍內可以有多筆指定處理序和電腦的記錄，針對相同電腦或處理序的查詢可能會傳回多筆記錄。 若只要包含最新的記錄，請將加入 `| summarize arg_max(TimeGenerated, *) by ResourceId` 至查詢。
+因為在指定時間範圍內可以有多筆指定處理序和電腦的記錄，針對相同電腦或處理序的查詢可能會傳回多筆記錄。 若只要包含最新的記錄，請加入 `| summarize arg_max(TimeGenerated, *) by ResourceId` 至查詢。
 
 ### <a name="connections-and-ports"></a>連接和埠
 
-連接計量功能會在 Azure 監視器記錄檔中引進兩個新的資料表-VMConnection 和 VMBoundPort。 這些表格提供電腦連線的相關資訊（輸入和輸出），以及在其上開啟/作用中的伺服器埠。 ConnectionMetrics 也會透過 Api 公開，以提供在時間範圍內取得特定度量的方法。 在接聽通訊端上*接受*的 TCP 連線是輸入的，而透過連線*到指定*IP 和埠所建立的連接則是輸出。 連線的方向會透過 Direction 屬性來表示，此屬性可設為 **inbound** 或 **outbound**。 
+連接計量功能在 Azure 監視器記錄檔（VMConnection 和 VMBoundPort）中引進兩個新的資料表。 這些表格提供電腦 (輸入和輸出) 的連線，以及開啟/作用中的伺服器埠的相關資訊。 ConnectionMetrics 也會透過 Api 公開，以提供在時間範圍內取得特定度量的方法。 在接聽通訊端上 *接受* 所產生的 TCP 連線是輸入的，而透過連接到指定 IP 和埠的 *連接* 則是輸出。 連線的方向會透過 Direction 屬性來表示，此屬性可設為 **inbound** 或 **outbound**。 
 
-這些資料表中的記錄是從 Dependency Agent 所報告的資料產生。 每一筆記錄都代表1分鐘時間間隔內的觀察。 TimeGenerated 屬性表示時間間隔的開始時間。 每筆記錄均包含資訊來識別個別的實體 (也就是連線或連接埠)，以及與該實體相關聯的計量。 目前只會報告透過 IPv4 使用 TCP 而發生的網路活動。 
+這些資料表中的記錄是由 Dependency Agent 所報告的資料所產生。 每筆記錄都代表1分鐘時間間隔內的觀察。 TimeGenerated 屬性表示時間間隔的開始時間。 每筆記錄均包含資訊來識別個別的實體 (也就是連線或連接埠)，以及與該實體相關聯的計量。 目前只會報告透過 IPv4 使用 TCP 而發生的網路活動。 
 
-#### <a name="common-fields-and-conventions"></a>通用欄位和慣例 
+#### <a name="common-fields-and-conventions"></a>一般欄位和慣例 
 
 下欄欄位和慣例適用于 VMConnection 和 VMBoundPort： 
 
 - 電腦：報告電腦的完整功能變數名稱 
 - AgentId：具有 Log Analytics 代理程式之電腦的唯一識別碼  
-- 電腦： ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}*，其中*Guid*是與 AgentId 相同的 guid  
-- 進程： ServiceMap 所公開之進程的 Azure Resource Manager 資源名稱。 其格式為*p-{hex string}*。 進程在電腦範圍內是唯一的，而且會在電腦之間產生唯一的處理序識別碼，並結合機器和處理欄位。 
-- ProcessName：報告進程的可執行檔名稱。
-- 所有 IP 位址都是 IPv4 標準格式的字串，例如*13.107.3.160* 
+- 電腦： ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為 *m-{GUID}*，其中 *Guid* 是與 AgentId 相同的 guid  
+- 進程： ServiceMap 所公開之進程的 Azure Resource Manager 資源名稱。 格式為 *p-{hex string}*。 進程在電腦範圍內是唯一的，並且會跨電腦產生唯一的處理序識別碼，結合電腦和處理欄位。 
+- ProcessName：報表處理常式的可執行檔名稱。
+- 所有 IP 位址都是 IPv4 標準格式的字串，例如 *13.107.3.160* 
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
 | 屬性 | 說明 |
 |:--|:--|
-|方向 |連線的方向，值為 *inbound* 或 *outbound* |
+|Direction |連線的方向，值為 *inbound* 或 *outbound* |
 |電腦 |電腦 FQDN |
-|Process |處理序或處理序群組的身分識別，會起始/接受連線 |
+|處理序 |處理序或處理序群組的身分識別，會起始/接受連線 |
 |SourceIp |來源的 IP 位址 |
 |DestinationIp |目的地的 IP 位址 |
 |DestinationPort |目的地的連接埠號碼 |
@@ -88,7 +88,7 @@ ms.locfileid: "87325180"
 1. 如果處理序會在同一個 IP 位址但透過多個網路介面來接受連線，則將會報告每個介面的個別記錄。 
 2. 使用萬用字元 IP 的記錄將不會包含任何活動。 它們會包含在其中，以代表會針對輸入流量開啟電腦上的連接埠。
 3. 若要減少詳細資訊和資料量，如果有具特定 IP 位址的相符記錄 (適用於相同的處理序、連接埠和通訊協定)，將略過具有萬用字元 IP 的記錄。 略過萬用字元 IP 記錄時，具有特定 IP 位址的 IsWildcardBind 記錄屬性將設為 "True"，以代表連接埠會透過報告機器的每個介面來公開。
-4. 只有在特定介面上系結的埠會將 IsWildcardBind 設定為*False*。
+4. 只有在特定介面上系結的埠，IsWildcardBind 會設為 *False*。
 
 #### <a name="naming-and-classification"></a>命名和分類
 
@@ -100,7 +100,7 @@ ms.locfileid: "87325180"
 
 | 屬性 | 說明 |
 |:--|:--|
-|RemoteCountry |主控 RemoteIp 的國家/地區名稱。  例如，*美國* |
+|RemoteCountry |裝載 RemoteIp 的國家/地區名稱。  例如， *美國* |
 |RemoteLatitude |地理位置緯度。 例如，*47.68* |
 |RemoteLongitude |地理位置經度。 例如：*-122.12* |
 
@@ -115,7 +115,7 @@ ms.locfileid: "87325180"
 |說明 |觀察到的威脅的說明。 |
 |TLPLevel |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
 |信賴度 |值為 *0 – 100*。 |
-|嚴重性 |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為*3*。  |
+|Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
 |FirstReportedDateTime |提供者第一次回報指標。 |
 |LastReportedDateTime |Interflow 最後一次看到指標。 |
 |IsActive |使用 *True* 或 *False* 值表示指標停用。 |
@@ -124,22 +124,22 @@ ms.locfileid: "87325180"
 
 ### <a name="ports"></a>連接埠 
 
-電腦上的埠會主動接受連入流量，或可能接受流量，但是在報告時間範圍內閒置，則會寫入至 VMBoundPort 資料表。  
+電腦上主動接受連入流量或可能接受流量，但在報告時間範圍內閒置的埠，會寫入至 VMBoundPort 資料表。  
 
-VMBoundPort 中的每筆記錄都是由下欄欄位所識別： 
+VMBoundPort 中的每一筆記錄都是由下欄欄位所識別： 
 
 | 屬性 | 說明 |
 |:--|:--|
-|Process | 與埠相關聯的進程（或進程群組）的身分識別。|
-|Ip | 埠 IP 位址（可以是萬用字元 IP， *0.0.0.0*） |
+|處理序 | 處理常式 (或與埠相關聯) 進程群組的身分識別。|
+|Ip | 埠 IP 位址 (可以是萬用字元 IP、 *0.0.0.0*)  |
 |連接埠 |埠號碼 |
-|通訊協定 | 通訊協定。  範例： *tcp*或*udp* （目前僅支援*tcp* ）。|
+|通訊協定 | 通訊協定。  例如， *tcp* 或 *udp* (目前只有 *tcp*) 支援。|
  
-識別埠衍生自上述五個欄位，並儲存在 PortId 屬性中。 這個屬性可用來快速尋找特定埠在一段時間內的記錄。 
+身分識別會衍生自上述五個欄位，並儲存在 PortId 屬性中。 這個屬性可用來快速尋找特定埠在一段時間內的記錄。 
 
 #### <a name="metrics"></a>計量 
 
-埠記錄包含代表與它們相關聯之連線的計量。 目前會報告下列計量（每個度量的詳細資料會在上一節中說明）： 
+埠記錄包含代表與其相關聯之連接的度量。 目前會回報下列計量 () 上一節中描述每個度量的詳細資料： 
 
 - BytesSent 和 BytesReceived 
 - LinksEstablished, LinksTerminated, LinksLive 
@@ -149,51 +149,51 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 - 如果處理序會在同一個 IP 位址但透過多個網路介面來接受連線，則將會報告每個介面的個別記錄。  
 - 使用萬用字元 IP 的記錄將不會包含任何活動。 它們會包含在其中，以代表會針對輸入流量開啟電腦上的連接埠。 
-- 若要減少詳細資訊和資料量，如果有具特定 IP 位址的相符記錄 (適用於相同的處理序、連接埠和通訊協定)，將略過具有萬用字元 IP 的記錄。 省略萬用字元 IP 記錄時，具有特定 IP 位址之記錄的*IsWildcardBind*屬性將會設定為*True*。  這表示埠會透過報告機器的每個介面來公開。 
-- 只有在特定介面上系結的埠會將 IsWildcardBind 設定為*False*。 
+- 若要減少詳細資訊和資料量，如果有具特定 IP 位址的相符記錄 (適用於相同的處理序、連接埠和通訊協定)，將略過具有萬用字元 IP 的記錄。 當省略萬用字元 IP 記錄時，具有特定 IP 位址之記錄的 *IsWildcardBind* 屬性會設定為 *True*。  這表示會在報告機器的每個介面上公開端口。 
+- 只有在特定介面上系結的埠，IsWildcardBind 會設為 *False*。 
 
 ### <a name="vmcomputer-records"></a>VMComputer 記錄
 
-類型為*VMComputer*的記錄具有具有 Dependency 代理程式之伺服器的清查資料。 這些記錄具有下表中的屬性：
+具有 *VMComputer* 類型的記錄具有具有相依性代理程式之伺服器的清查資料。 這些記錄具有下表中的屬性：
 
 | 屬性 | 說明 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
 |SourceSystem | *深入解析* | 
-|TimeGenerated | 記錄的時間戳記（UTC） |
+|TimeGenerated | 記錄的時間戳記 (UTC)  |
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
-|電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}*，其中*guid*與 AgentId 的 guid 相同。 | 
+|電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為 *m-{GUID}*，其中 *guid* 與 AgentId 的 guid 相同。 | 
 |DisplayName | 顯示名稱 | 
 |FullDisplayName | 完整顯示名稱 | 
-|HostName | 不含功能變數名稱的電腦名稱稱 |
-|BootTime | 電腦開機時間（UTC） |
-|TimeZone | 標準化的時區 |
-|VirtualizationState | *虛擬*、程式*管理*、*實體* |
+|HostName | 沒有功能變數名稱的電腦名稱稱 |
+|BootTime | 電腦開機時間 (UTC)  |
+|TimeZone | 正規化的時區 |
+|VirtualizationState | *虛擬*、*虛擬程式、**實體* |
 |Ipv4Addresses | IPv4 位址的陣列 | 
-|Ipv4SubnetMasks | IPv4 子網路遮罩的陣列（順序與 Ipv4Addresses 相同）。 |
+|Ipv4SubnetMasks | IPv4 子網路遮罩的陣列 (與 Ipv4Addresses) 的順序相同。 |
 |Ipv4DefaultGateways | IPv4 閘道的陣列 | 
 |Ipv6Addresses | IPv6 位址的陣列 | 
 |MacAddresses | MAC 位址陣列 | 
-|DnsNames | 與機器相關聯的 DNS 名稱陣列。 |
+|DnsNames | 與電腦相關聯的 DNS 名稱陣列。 |
 |DependencyAgentVersion | 在電腦上執行的相依性代理程式版本。 | 
 |OperatingSystemFamily | *Linux*、 *Windows* |
 |OperatingSystemFullName | 作業系統的完整名稱 | 
 |PhysicalMemoryMB | 實體記憶體（以 mb 為單位） | 
-|數時 | 處理器數目 | 
+|Cpu | 處理器數目 | 
 |CpuSpeed | CPU 速度 (MHz) | 
 |VirtualMachineType | *hyperv*、 *vmware*、 *xen* |
 |VirtualMachineNativeId | VM 識別碼 (由其 Hypervisor 指派) | 
 |VirtualMachineNativeName | VM 的名稱 |
 |VirtualMachineHypervisorId | 裝載 VM 之虛擬機器的唯一識別碼 |
 |HypervisorType | *hyperv* |
-|HypervisorId | 虛擬程式的唯一識別碼 | 
-|HostingProvider | *azure* |
+|HypervisorId | 虛擬程式識別碼的唯一識別碼 | 
+|HostingProvider | *蔚藍* |
 |_ResourceId | Azure 資源的唯一識別碼 |
-|AzureSubscriptionId | 識別訂用帳戶的全域唯一識別碼 | 
-|New-azureresourcegroup | 電腦所屬的 Azure 資源組名。 |
+|AzureSubscriptionId | 識別您的訂用帳戶的全域唯一識別碼 | 
+|>new-azureresourcegroup | 電腦所屬的 Azure 資源組名。 |
 |AzureResourceName | Azure 資源的名稱 |
-|Get-azurelocation | Azure 資源的位置 |
+|AzureLocation | Azure 資源的位置 |
 |AzureUpdateDomain | Azure 更新網域的名稱 |
 |AzureFaultDomain | Azure 容錯網域的名稱 |
 |AzureVmId | Azure 虛擬機器的唯一識別碼 |
@@ -205,7 +205,7 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 |AzureCloudServiceName | Azure 雲端服務的名稱 |
 |AzureCloudServiceDeployment | 雲端服務的部署識別碼 |
 |AzureCloudServiceRoleName | 雲端服務角色名稱 |
-|AzureCloudServiceRoleType | 雲端服務角色類型：背景*工作*或*web* |
+|AzureCloudServiceRoleType | 雲端服務角色類型：背景 *工作* 或 *web* |
 |AzureCloudServiceInstanceId | 雲端服務角色實例識別碼 |
 |AzureVmScaleSetName | 虛擬機器擴展集的名稱 |
 |AzureVmScaleSetDeployment | 虛擬機器擴展集部署識別碼 |
@@ -216,25 +216,25 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 ### <a name="vmprocess-records"></a>VMProcess 記錄
 
-類型為*VMProcess*的記錄具有相依性代理程式之伺服器上 TCP 連線處理的清查資料。 這些記錄具有下表中的屬性：
+具有 *VMProcess* 類型的記錄，具有相依性代理程式的伺服器上 TCP 連接處理常式的清查資料。 這些記錄具有下表中的屬性：
 
 | 屬性 | 說明 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
 |SourceSystem | *深入解析* | 
-|TimeGenerated | 記錄的時間戳記（UTC） |
+|TimeGenerated | 記錄的時間戳記 (UTC)  |
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
-|電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}*，其中*guid*與 AgentId 的 guid 相同。 | 
-|Process | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}*。 
+|電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為 *m-{GUID}*，其中 *guid* 與 AgentId 的 guid 相同。 | 
+|處理序 | 服務對應進程的唯一識別碼。 它是 *p-{GUID}* 的形式。 
 |ExecutableName | 處理序可執行檔的名稱 | 
 |DisplayName | 進程顯示名稱 |
-|角色 | 進程角色： *web*伺服器、 *appServer*、 *databaseServer*、 *ldapServer*、 *smbServer* |
-|群組 | 進程組名。 相同群組中的進程會以邏輯方式相互關聯，例如，屬於相同產品或系統元件的一部分。 |
+|角色 | 進程角色： *web*伺服器、 *>appserver*、 *databaseServer*、 *ldapServer*、 *smbServer* |
+|群組 | 進程組名。 相同群組中的程式在邏輯上是相關的，例如，相同產品或系統元件的一部分。 |
 |StartTime | 處理序集區的開始時間 |
 |FirstPid | 處理序集區中的第一個 PID |
 |說明 | 處理序的描述 |
-|公司名稱 | 公司的名稱 |
+|CompanyName | 公司的名稱 |
 |InternalName | 內部名稱 |
 |ProductName | 產品的名稱 |
 |ProductVersion | 產品的版本 |
@@ -242,7 +242,7 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 |ExecutablePath |可執行檔的路徑 |
 |CommandLine | 命令列 |
 |WorkingDirectory | 工作目錄 |
-|服務 | 執行進程的服務陣列 |
+|服務 | 用來執行進程的服務陣列 |
 |UserName | 執行處理序的帳戶 |
 |UserDomain | 執行處理序的網域 |
 |_ResourceId | 工作區中處理序的唯一識別碼 |
@@ -355,7 +355,7 @@ VMBoundPort
 | distinct Port, ProcessName
 ```
 
-### <a name="number-of-open-ports-across-machines"></a>電腦之間的開啟埠數目
+### <a name="number-of-open-ports-across-machines"></a>跨電腦開啟的埠數目
 
 ```kusto
 VMBoundPort
@@ -365,7 +365,7 @@ VMBoundPort
 | order by OpenPorts desc
 ```
 
-### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>根據已開啟的埠數目，將工作區中的處理常式評分
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>依已開啟的埠數目將工作區中的處理常式評分
 
 ```kusto
 VMBoundPort
@@ -377,7 +377,7 @@ VMBoundPort
 
 ### <a name="aggregate-behavior-for-each-port"></a>每個埠的合計列為
 
-然後，您可以使用此查詢來根據活動對埠進行評分，例如，具有最多輸入/輸出流量的埠、具有最多連線的埠
+然後，您可以使用此查詢來依活動評分埠，例如，具有最多連入/連出流量的埠、具有最多連線的埠
 ```kusto
 // 
 VMBoundPort
@@ -431,49 +431,49 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="performance-records"></a>效能記錄
-類型為*InsightsMetrics*的記錄具有虛擬機器之客體作業系統的效能資料。 這些記錄具有下表中的屬性：
+*InsightsMetrics*類型的記錄具有來自虛擬機器之客體作業系統的效能資料。 這些記錄具有下表中的屬性：
 
 
 | 屬性 | 說明 |
 |:--|:--|
 |TenantId | 工作區的唯一識別碼 |
 |SourceSystem | *深入解析* | 
-|TimeGenerated | 收集值的時間（UTC） |
+|TimeGenerated | 收集值的時間 (UTC)  |
 |電腦 | 電腦 FQDN | 
 |來源 | *vm.azm.ms* |
 |命名空間 | 效能計數器的類別 | 
 |名稱 | 效能計數器的名稱 |
 |Val | 收集的值 | 
-|Tags | 記錄的相關詳細資料。 請參閱下表，以瞭解用於不同記錄類型的標記。  |
-|AgentId | 每部電腦代理程式的唯一識別碼 |
+|標籤 | 記錄的相關詳細資料。 請參閱下表，以瞭解搭配不同記錄類型使用的標記。  |
+|AgentId | 每部電腦的代理程式的唯一識別碼 |
 |類型 | *InsightsMetrics* |
 |_ResourceId_ | 虛擬機器的資源識別碼 |
 
-下表列出目前收集到*InsightsMetrics*資料表中的效能計數器：
+下表列出目前收集至 *InsightsMetrics* 資料表的效能計數器：
 
-| 命名空間 | 名稱 | 說明 | 單位 | Tags |
+| 命名空間 | 名稱 | 說明 | Unit | 標籤 |
 |:---|:---|:---|:---|:---|
-| 電腦    | 活動訊號             | 電腦的心跳                        | | |
-| Memory      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-總記憶體大小|
+| 電腦    | 活動訊號             | 電腦的信號                        | | |
+| Memory      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-記憶體大小總計|
 | 網路     | WriteBytesPerSecond   | 每秒的網路寫入位元組數            | 每秒位元組 | NetworkDeviceId-裝置的識別碼<br>位元組-傳送的位元組總數 |
-| 網路     | ReadBytesPerSecond    | 網路讀取位元組/秒             | 每秒位元組 | networkDeviceId-裝置的識別碼<br>位元組-接收的位元組總數 |
+| 網路     | ReadBytesPerSecond    | 每秒的網路讀取位元組數             | 每秒位元組 | networkDeviceId-裝置的識別碼<br>位元組-接收的位元組總數 |
 | 處理器   | UtilizationPercentage | 處理器使用率百分比          | 百分比        | totalCpus-Cpu 總計 |
-| LogicalDisk | WritesPerSecond       | 每秒邏輯磁片寫入數            | 每秒計數 | mountId-裝置的掛接識別碼 |
+| LogicalDisk | WritesPerSecond       | 每秒邏輯磁片寫入次數            | 每秒計數 | mountId-裝置的掛接識別碼 |
 | LogicalDisk | WriteLatencyMs        | 邏輯磁片寫入延遲毫秒    | 毫秒   | mountId-裝置的掛接識別碼 |
 | LogicalDisk | WriteBytesPerSecond   | 每秒邏輯磁片寫入位元組數       | 每秒位元組 | mountId-裝置的掛接識別碼 |
 | LogicalDisk | TransfersPerSecond    | 每秒邏輯磁片傳輸數         | 每秒計數 | mountId-裝置的掛接識別碼 |
-| LogicalDisk | TransferLatencyMs     | 邏輯磁片傳輸延遲毫秒數 | 毫秒   | mountId-裝置的掛接識別碼 |
+| LogicalDisk | TransferLatencyMs     | 邏輯磁片傳輸延遲毫秒 | 毫秒   | mountId-裝置的掛接識別碼 |
 | LogicalDisk | ReadsPerSecond        | 邏輯磁片每秒讀取次數             | 每秒計數 | mountId-裝置的掛接識別碼 |
 | LogicalDisk | ReadLatencyMs         | 邏輯磁片讀取延遲毫秒     | 毫秒   | mountId-裝置的掛接識別碼 |
-| LogicalDisk | ReadBytesPerSecond    | 每秒邏輯磁片讀取位元組數        | 每秒位元組 | mountId-裝置的掛接識別碼 |
+| LogicalDisk | ReadBytesPerSecond    | 邏輯磁片讀取位元組/秒        | 每秒位元組 | mountId-裝置的掛接識別碼 |
 | LogicalDisk | FreeSpacePercentage   | 邏輯磁片可用空間百分比        | 百分比        | mountId-裝置的掛接識別碼 |
-| LogicalDisk | FreeSpaceMB           | 邏輯磁片可用空間位元組             | MB      | mountId-裝置的掛接識別碼<br>diskSizeMB-磁片大小總計 |
-| LogicalDisk | 每秒位元組        | 邏輯磁片每秒位元組數             | 每秒位元組 | mountId-裝置的掛接識別碼 |
+| LogicalDisk | FreeSpaceMB           | 邏輯磁片可用空間位元組             | MB      | mountId-裝置的掛接識別碼<br>diskSizeMB-總磁片大小 |
+| LogicalDisk | 每秒位元組        | 每秒邏輯磁片位元組數             | 每秒位元組 | mountId-裝置的掛接識別碼 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如果您不熟悉在 Azure 監視器中撰寫記錄查詢，請參閱如何使用 Azure 入口網站中的[Log Analytics](../log-query/get-started-portal.md)來撰寫記錄查詢。
+* 如果您不熟悉如何在 Azure 監視器中撰寫記錄查詢，請參閱如何在 Azure 入口網站中 [使用 Log Analytics](../log-query/get-started-portal.md) 來寫入記錄查詢。
 
-* 瞭解如何[撰寫搜尋查詢](../log-query/search-queries.md)。
+* 瞭解如何 [撰寫搜尋查詢](../log-query/search-queries.md)。
 

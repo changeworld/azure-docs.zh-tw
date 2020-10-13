@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852322"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何透過 Python 使用通知中樞
@@ -33,7 +33,7 @@ ms.locfileid: "87852322"
 > [!NOTE]
 > 這是在 Python 實作通知傳送的範例參考實作，並非正式支援的通知中樞 Python SDK。 此範例是使用 Python 3.4 建立的。
 
-本文示範如何：
+本文將示範下列項目的作法：
 
 - 在 Python 中建置通知中樞功能的 REST 用戶端。
 - 使用 Python 介面傳送通知到通知中樞 REST API。
@@ -404,7 +404,7 @@ hub.send_baidu_notification(baidu_payload)
 hub.send_windows_notification(wns_payload)
 ```
 
-![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式和 X W N S 類型值（以紅色概述）。][2]
+![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式和 X W N S 類型值（以紅色標示）。][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>傳送指定標記 (或標記運算式) 的通知
 
@@ -414,7 +414,7 @@ hub.send_windows_notification(wns_payload)
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式、服務匯流排通知標籤，以及以紅色概述的 X W N S 輸入值。][3]
+![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式、服務匯流排通知標籤和 X W N S 類型值（以紅色概述）。][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>傳送指定多個標記的通知
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式、服務匯流排通知標籤，以及以紅色概述的 X W N S 輸入值。][4]
+![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式、服務匯流排通知標籤和 X W N S 類型值（以紅色概述）。][4]
 
 ### <a name="templated-notification"></a>樣板化通知
 
@@ -444,11 +444,11 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料和內容類型，以及以紅色概述的服務匯流排通知格式值。][5]
+![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及以紅色概述的內容類型和服務匯流排通知格式值。][5]
 
 ## <a name="next-steps"></a>後續步驟
 
-本主題會說明如何針對通知中樞建立 Python REST 用戶端。 從這裡您可以：
+本主題會說明如何針對通知中樞建立 Python REST 用戶端。 從這裡，您可以：
 
 - 下載完整的 [Python REST 包裝函式範例]，其中包含本文章的所有程式碼。
 - 繼續了解 [即時新聞教學課程]
@@ -456,7 +456,7 @@ hub.send_template_notification(template_payload)
 
 <!-- URLs -->
 [Python REST 包裝函式範例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[開始使用教學課程]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[入門教學課程]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [即時新聞教學課程]: ./notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [當地語系化新聞教學課程]: ./notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 

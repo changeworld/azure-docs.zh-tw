@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89177426"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>將使用 Microsoft Authenticator 的 iOS 應用程式從 ADAL.NET 遷移至 MSAL.NET
@@ -25,7 +25,7 @@ ms.locfileid: "89177426"
 
 您該從何處著手？ 本文可協助您將 Xamarin iOS 應用程式從 ADAL 遷移至 MSAL。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本文假設您已經有整合了 iOS broker 的 Xamarin iOS 應用程式。 如果您沒有這麼做，請直接移至 MSAL.NET，並在該處開始 broker 執行。 如需如何使用新的應用程式在 MSAL.NET 中叫用 iOS broker 的詳細資訊，請參閱 [此檔](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>背景
@@ -152,7 +152,7 @@ ADAL.NET 和 MSAL.NET 會使用 Url 叫用訊息代理程式，並將訊息代�
 <tr><td>
 URL 配置對您的應用程式而言是唯一的。
 </td><td>
-此
+必須提供
 
 `CFBundleURLSchemes` 名稱必須包含
 
@@ -160,7 +160,7 @@ URL 配置對您的應用程式而言是唯一的。
 
 作為前置詞，後面接著 `CFBundleURLName`
 
-例如：`$"msauth.(BundleId")`
+例如： `$"msauth.(BundleId")`
 
 ```csharp
  <key>CFBundleURLTypes</key>

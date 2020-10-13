@@ -8,10 +8,10 @@ ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401090"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
@@ -488,7 +488,7 @@ ms.locfileid: "89401090"
 
 **指導**方針：如果協力廠商需要存取客戶資料 (例如) 支援要求時，請使用 Azure 虛擬機器的客戶加密箱來檢查和核准或拒絕客戶資料存取要求。
 
-* [Microsoft Azure 的客戶加密箱](../../security/fundamentals/customer-lockbox-overview.md)
+* [適用於 Microsoft Azure 的客戶加密箱](../../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -584,7 +584,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針： LINUX 虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 在待用時加密。 Azure 磁碟加密利用 Linux 的 DM Crypt 功能，利用來賓 VM 內客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
+**指導**方針： LINUX 虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 在待用時加密。 Azure 磁碟加密利用 Linux 的 DM-Crypt 功能，利用來賓 VM 內客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
 * [Azure 受控磁片的伺服器端加密](../windows/disk-encryption.md)
 

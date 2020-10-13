@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231056"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 報告延遲
@@ -59,7 +59,7 @@ ms.locfileid: "89231056"
 
 下表列出安全性報告的延遲資訊。
 
-| 報表 | 最小值 | 平均 | 最大值 |
+| 報表 | 最低需求 | 平均 | 最大值 |
 | :-- | --- | --- | --- |
 | 有風險的使用者          | 5 分鐘   | 15 分鐘  | 2 小時  |
 | 有風險的登入         | 5 分鐘   | 15 分鐘  | 2 小時  |
@@ -70,7 +70,7 @@ Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來�
 
 下表列出風險偵測的延遲資訊。
 
-| 報表 | 最小值 | 平均 | 最大值 |
+| 報表 | 最低需求 | 平均 | 最大值 |
 | :-- | --- | --- | --- |
 | 從匿名 IP 位址登入 |5 分鐘 |15 分鐘 |2 小時 |
 | 從不熟悉的位置登入 |5 分鐘 |15 分鐘 |2 小時 |

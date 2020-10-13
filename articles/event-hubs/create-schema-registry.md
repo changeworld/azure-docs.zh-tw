@@ -5,20 +5,20 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: 90556e0843cda94dc79330321d027f8d28eb7d20
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652188"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>建立 Azure 事件中樞 schema registry (preview) 
 本文說明如何在 Azure 事件中樞所裝載的架構登錄中建立具有架構的架構群組。 如需 Azure 事件中樞架構登錄功能的總覽，請參閱 [事件中樞的 Azure 架構登錄](schema-registry-overview.md)。
 
 > [!NOTE]
-> - **Schema Registry**功能目前為**預覽**狀態，不建議用於生產工作負載。
-> - 這項功能僅適用于 **標準** 和 **專用** 層，而不是在 **基本** 層中。
+> - **結構描述登錄**功能目前處於**預覽**狀態，不建議用於生產工作負載。
+> - 此功能僅適用於**標準**和**專用**階層，而不適用於**基本**階層。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 [建立事件中樞命名空間](event-hubs-create.md#create-an-event-hubs-namespace)。 您也可以使用現有的命名空間。 
 
 ## <a name="create-a-schema-group"></a>建立架構群組
@@ -64,7 +64,7 @@ ms.locfileid: "91652188"
             ]
         }
         ```
-    1. 選取 [建立]。 
+    1. 選取 [建立]****。 
 1. 從架構清單中選取 **架構** 。 
 
     :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="架構登錄頁面":::

@@ -1,6 +1,6 @@
 ---
 title: 適用于 Linux 的 Azure 序列主控台 |Microsoft Docs
-description: 使用 Linux 範例的 Azure 虛擬機器和虛擬機器擴展集的雙向序列主控台。
+description: 使用 Linux 範例，為 Azure 虛擬機器和虛擬機器擴展集 Bi-Directional 序列主控台。
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306866"
 ---
 # <a name="azure-serial-console-for-linux"></a>適用於 Linux 的 Azure 序列主控台
@@ -71,7 +71,7 @@ SUSE        | Azure 上提供的較新 SLES 映像已預設啟用序列主控台
 Oracle Linux        | 預設啟用的序列主控台存取。
 
 ### <a name="custom-linux-images"></a>自訂 Linux 映像
-若要啟用自訂 Linux VM 映像的序列主控台，請在 */etc/inittab* 檔案中啟用主控台存取以在 `ttyS0` 上執行終端機。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 您也可能需要在 ttyS0 上產生 getty。 這可以透過來完成 `systemctl start serial-getty@ttyS0.service` 。
+若要啟用自訂 Linux VM 映像的序列主控台，請在 */etc/inittab* 檔案中啟用主控台存取以在 `ttyS0` 上執行終端機。 例如： `S0:12345:respawn:/sbin/agetty -L 115200 console vt102` 。 您也可能需要在 ttyS0 上產生 getty。 這可以透過來完成 `systemctl start serial-getty@ttyS0.service` 。
 
 您也會想要將 ttys0 新增為序列輸出的目的地。 如需有關設定自訂映射以使用序列主控台的詳細資訊，請參閱在 [Azure 中建立和上傳 LINUX VHD](https://aka.ms/createuploadvhd#general-linux-system-requirements)的一般系統需求。
 
@@ -111,7 +111,7 @@ SSH 設定問題 | 存取序列主控台，然後變更設定。 無論 VM 的 S
 > [!CAUTION]
 > 這表示已中斷連線的使用者將不會登出。在中斷連線 (使用 SIGHUP 或類似的機制來強制執行登出的能力，) 仍在藍圖中。 就 Windows 而言，在特殊系統管理主控台 (SAC) 中會啟用自動逾時，不過，針對 Linux，您則可以設定終端機逾時設定。 為此，請在您用以登入主控台之使用者的 *.bash_profile* 或 *.profile* 檔案中新增 `export TMOUT=600`。 此設定將在 10 分鐘後逾時。
 
-## <a name="accessibility"></a>協助工具選項
+## <a name="accessibility"></a>Accessibility
 協助工具是 Azure 序列主控台的主要焦點。 為此，我們已確認序列主控台完全可供存取。
 
 ### <a name="keyboard-navigation"></a>鍵盤導覽

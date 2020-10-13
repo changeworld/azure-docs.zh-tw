@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: duau
 ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395769"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute Direct 埠上設定 MACsec
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute Direct 連接埠上設定 MACsec
 
 本文可協助您設定 MACsec，以使用 PowerShell 保護邊緣路由器與 Microsoft 邊緣路由器之間的連接。
 
@@ -59,7 +59,7 @@ ms.locfileid: "89395769"
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    如果 >new-azuserassignedidentity 無法辨識為有效的 PowerShell Cmdlet，請在系統管理員模式中安裝下列模組 () 然後重新執行上述命令。
+    如果 New-AzUserAssignedIdentity 無法辨識為有效的 PowerShell Cmdlet，請在系統管理員模式中安裝下列模組 () 然後重新執行上述命令。
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity
@@ -134,7 +134,7 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ### <a name="test-connectivity"></a>測試連線能力
 在您設定 MACsec (包括 ExpressRoute Direct 埠上的 MACsec key update) 之後，請 [檢查](expressroute-troubleshooting-expressroute-overview.md) 線路的 BGP 會話是否已啟動且正在執行。 如果您還沒有任何埠線路，請先建立一個，並設定 Azure 私用對等互連或線路的 Microsoft 對等互連。 如果 MACsec 的設定不正確（包括 MACsec 金鑰不相符），您的網路裝置與 Microsoft 的網路裝置之間將不會在第2層和 BGP 建立（第3層）看到 ARP 解析度。 如果一切都設定正確，您應該會看到以雙向方式正確通告的 BGP 路由，以及透過 ExpressRoute 的應用程式資料流程。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 1. [在 ExpressRoute Direct 上建立 ExpressRoute 線路](expressroute-howto-erdirect.md)
 2. [將 ExpressRoute 線路連結到 Azure 虛擬網路](expressroute-howto-linkvnet-arm.md)
 3. [確認 ExpressRoute 連線能力](expressroute-troubleshooting-expressroute-overview.md)

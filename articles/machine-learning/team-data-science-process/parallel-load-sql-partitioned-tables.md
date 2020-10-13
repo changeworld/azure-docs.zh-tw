@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86042130"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>建置和最佳化資料表，以便快速地將資料平行匯入至 Azure VM 上的 SQL Server
 
-本文說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。 若要將大量資料載入/傳送至 SQL 資料庫，您可以使用資料*分割資料表和 Views*來改善匯入 sql 資料庫和後續查詢的資料。 
+本文說明如何建置資料分割資料表，以快速的平行處理方式將大量資料匯入 SQL Server 資料庫。 若要將大量資料載入/傳輸到 SQL database，請使用資料 *分割資料表和視圖*來改善將資料匯入 sql database 和後續查詢的功能。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>建立新的資料庫和一組檔案群組
 * [建立新的資料庫](https://technet.microsoft.com/library/ms176061.aspx) (如果尚不存在)。
@@ -111,7 +111,7 @@ ms.locfileid: "86042130"
    ```sql
       ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
    ```
-* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將大型資料大量匯入 SQL Server 資料庫的秘訣，請參閱[在1小時內載入 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
+* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將海量資料大量匯入 SQL Server 資料庫的秘訣，請參閱 [在1小時以內載入 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
 
 下列 PowerShell 指令碼是使用 BCP 平行載入資料的範例。
 

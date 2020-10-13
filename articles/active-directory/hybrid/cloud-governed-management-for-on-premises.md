@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662520"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何為內部部署工作負載提供雲端控管管理
@@ -115,6 +115,6 @@ Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../extern
 
 ![Azure AD 架構](media/cloud-governed-management-for-on-premises/image6.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關如何開始使用此旅程的詳細資訊，請參閱 Azure AD 部署計畫，位於 <https://aka.ms/deploymentplans> 。 它們提供有關如何部署 Azure Active Directory (Azure AD) 功能的端對端指引。 每個方案都會說明成功推出常見 Azure AD 功能所需的商業價值、規劃考慮、設計和操作程式。 當我們新增可透過 Azure AD 從雲端管理的新功能時，Microsoft 會持續以客戶部署的最佳作法和其他意見反應來更新部署計畫。

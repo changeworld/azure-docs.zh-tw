@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
 ms.openlocfilehash: 4d5b858e2384ffc7dd531444aaff17ca3739b408
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84337694"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支援的適用於 MySQL 的 Azure 資料庫伺服器版本
@@ -28,25 +28,25 @@ MySQL 會使用 X.Y.Z 命名配置。 X 是主要版本，Y 是次要版本，�
 
 Bug 修正版本：5.6.47
 
-請參閱 MySQL[版本](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)資訊，以深入瞭解此版本中的改進功能和修正。
+若要深入瞭解此版本中的增強功能和修正，請參閱 MySQL [版本](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) 資訊。
 
 ## <a name="mysql-version-57"></a>MySQL 5.7 版
 
 Bug 修正版本：5.7.29
 
-請參閱 MySQL[版本](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)資訊，以深入瞭解此版本中的改進功能和修正。
+若要深入瞭解此版本中的增強功能和修正，請參閱 MySQL [版本](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) 資訊。
 
 ## <a name="mysql-version-80"></a>MySQL 版本8。0
 
 Bug 修正版本：8.0.15
 
-請參閱 MySQL[版本](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)資訊，以深入瞭解此版本中的改進功能和修正。
+若要深入瞭解此版本中的增強功能和修正，請參閱 MySQL [版本](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) 資訊。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升級
 服務會自動管理對於錯誤 (bug) 修正版本更新的修補。 例如 5.7.20 至 5.7.21。  
 
 目前不支援主要和次要版本升級。 例如，不支援從 MySQL 5.6 升級至 MySQL 5.7。 如果您想要從 5.6 升級至 5.7，請將資料庫[備份和還原](./concepts-migrate-dump-restore.md)至使用新引擎版本所建立的伺服器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需以您**服務層級**為依據之特定資源配額和限制的相關資訊，請參閱[服務層級](./concepts-pricing-tiers.md)

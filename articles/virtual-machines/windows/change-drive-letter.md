@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: cae29954211e62601debb35d76f938fb6a92779e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284603"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 磁碟機作為 Windows VM 上的資料磁碟機
@@ -28,7 +28,7 @@ ms.locfileid: "87284603"
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>暫時將 pagefile.sys 移到 C 磁碟機
 1. 連接至虛擬機器。 
-2. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]。
+2. 以滑鼠右鍵按一下 [ **開始** ] 功能表，然後選取 [ **系統**]。
 3. 在左側功能表中，選取 [進階系統設定] ****。
 4. 在 [效能]**** 區段中，選取 [設定]****。
 5. 選取 [進階] **** 索引標籤。
@@ -47,7 +47,7 @@ ms.locfileid: "87284603"
 6. 在 [磁碟機代號] 下方，選取磁碟機 **D**，然後按一下 [確定]****。 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>將 pagefile.sys 移回暫存磁碟機
-1. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]
+1. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]。
 2. 在左側功能表中，選取 [進階系統設定] ****。
 3. 在 [效能]**** 區段中，選取 [設定]****。
 4. 選取 [進階] **** 索引標籤。
@@ -57,5 +57,5 @@ ms.locfileid: "87284603"
 8. 按一下 [套用]。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
 9. 重新啟動虛擬機器。
 
-## <a name="next-steps"></a>後續步驟
-* 您可以藉由[附加額外的資料磁片](attach-managed-disk-portal.md)來增加虛擬機器可用的存放裝置。
+## <a name="next-steps"></a>接下來的步驟
+* 您可以藉由 [連接額外的資料磁片](attach-managed-disk-portal.md)，來增加虛擬機器可用的儲存體。

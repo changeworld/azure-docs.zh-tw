@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 91c42e391d1a23e9ac494af9271c92e3e9b5d6c4
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88722648"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的帳戶登入問題進行疑難排解
@@ -70,7 +70,7 @@ net start 'Microsoft Azure AD Sync'
 
 如需有關如何解決帳戶鎖定問題的詳細資訊，請參閱針對 [AZURE AD DS 中的帳戶鎖定問題進行疑難排解][troubleshoot-account-lockout]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在將 VM 加入受控網域時仍有問題，請尋找 [說明] [並開啟 Azure Active Directory 的支援票證][azure-ad-support]。
 

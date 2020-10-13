@@ -4,10 +4,10 @@ description: 本文說明如何使用事件網域，來管理自訂事件到您�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86114358"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用於管理事件方格主題的事件網域
@@ -27,7 +27,7 @@ ms.locfileid: "86114358"
 
 ### <a name="example-use-case"></a>範例使用案例
 
-說明事件網域最容易的方式是使用範例。 假設您執行的是 Contoso 結構機械，您可以在其中製造 tractors、深入探討設備和其他繁重的機械。 在業務營運的過程中，您會為客戶推送有關設備維護、系統健康情況、合約更新等即時資訊。 此資訊全都會傳送到各種端點，包括您的應用程式、客戶端點，以及客戶已設定的其他基礎結構。
+說明事件網域最容易的方式是使用範例。 假設您執行 Contoso 建築機械，以製造 tractors、深入探討設備和其他繁重的機械。 在業務營運的過程中，您會為客戶推送有關設備維護、系統健康情況、合約更新等即時資訊。 此資訊全都會傳送到各種端點，包括您的應用程式、客戶端點，以及客戶已設定的其他基礎結構。
 
 事件網域可讓您為 Contoso Construction Machinery 建立模型以作為單一事件實體。 您的每位客戶都會表示為網域內的一個主題。 驗證和授權都會使用 Azure Active Directory 來處理。 每位客戶都可訂閱他們的主題，並將他們的事件傳遞給他們。 透過事件網域的受控存取，確保他們只能存取自己的主題。
 
@@ -43,7 +43,7 @@ ms.locfileid: "86114358"
 
 ### <a name="built-in-roles"></a>內建角色
 
-事件方格具有兩個內建角色定義，可使 RBAC 更容易與事件網域搭配運作。 這些角色為 **EventGrid EventSubscription 參與者 (預覽)** 和 **EventGrid EventSubscription 讀者 (預覽)**。 您可以將這些角色指派給需要訂閱您事件網域中之主題的使用者。 您可以將角色指派的範圍限定為使用者必須訂閱的主題。
+事件方格具有兩個內建角色定義，可使 RBAC 更容易與事件網域搭配運作。 這些角色為 **EventGrid EventSubscription 參與者 (預覽)** 和 **EventGrid EventSubscription 讀者 (預覽)**。 您可以將這些角色指派給需要訂閱您事件網域中之主題的使用者。 您將角色指派的範圍限定在使用者需要訂閱的主題。
 
 如需這些角色的詳細資訊，請參閱[適用於事件方格的內建角色](security-authorization.md#built-in-roles)。
 
@@ -95,19 +95,19 @@ ms.locfileid: "86114358"
 ## <a name="limits-and-quotas"></a>限制和配額
 以下是與事件網域相關的限制和配額：
 
-- 100000每個事件網域的主題 
+- 每個事件網域100000主題 
 - 每個 Azure 訂用帳戶100個事件網域 
 - 事件網域中每個主題的500事件訂閱
 - 50網域範圍訂閱 
-- 5000每秒事件的內嵌速率（在網域中）
+- 每秒5000個事件 (入網域中的提取速率) 
 
-如果這些限制不符合您的需要，請開啟支援票證或傳送電子郵件給，以與產品小組聯繫 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 。 
+如果這些限制不符合您的限制，請開啟支援票證或寄送電子郵件給產品小組 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 。 
 
 ## <a name="pricing"></a>定價
-事件網域會使用事件方格中所有其他功能所使用的相同[作業定價](https://azure.microsoft.com/pricing/details/event-grid/)。
+事件網域使用事件方格中所有其他功能所使用的相同 [作業定價](https://azure.microsoft.com/pricing/details/event-grid/) 。
 
 作業在事件網域中的運作方式，與它們在自訂主題中所做的一樣。 每個對事件網域的事件輸入都是一項作業，而每次對於事件的傳遞嘗試都是一項作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要了解如何設定事件網域、建立主題、建立事件訂閱，以及發行事件，請參閱[管理事件網域](./how-to-event-domains.md)。

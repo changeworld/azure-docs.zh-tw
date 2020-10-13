@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661087"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
@@ -213,7 +213,7 @@ SU 是服務*所用**複本*和資料分割的乘積： ** (R x P = SU) **。
 
 + 請記住，在布建下的唯一缺點是，如果實際需求大於您的預測，您可能必須卸載服務。 為了避免服務中斷，您會在較高的層級建立新的服務，並並存執行，直到所有應用程式和要求都以新端點為目標為止。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 從免費層開始，然後使用您的資料子集來建立初始索引，以瞭解其特性。 Azure 認知搜尋中的資料結構是反向索引結構。 反向索引的大小和複雜性取決於內容。 請記住，重複性高的內容所產生的索引，往往會比差異性高的內容所產生的索引小。 因此，內容特性（而不是資料集大小）會決定索引儲存體需求。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207723"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 搭配 HDInsight 上的 Apache Hadoop 執行 MapReduce 作業
@@ -24,11 +24,11 @@ ms.locfileid: "86207723"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
+* HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-下列任一方法︰
-  * Windows PowerShell 或、
-  * [Jq](https://stedolan.github.io/jq/)的[捲曲](https://curl.haxx.se/)
+任一：
+  * Windows PowerShell 或
+  * 使用[Jq](https://stedolan.github.io/jq/) [捲曲](https://curl.haxx.se/)
 
 ## <a name="run-a-mapreduce-job"></a>執行 MapReduce 作業
 
@@ -39,7 +39,7 @@ ms.locfileid: "86207723"
 
 ### <a name="curl"></a>Curl
 
-1. 為了方便使用，請設定下列變數。 這個範例是以 Windows 環境為基礎，視您的環境需要進行修訂。
+1. 為了方便使用，請設定下列變數。 這個範例是以 Windows 環境為基礎，視您的環境需要修訂。
 
     ```cmd
     set CLUSTERNAME=
@@ -65,7 +65,7 @@ ms.locfileid: "86207723"
     {"version":"v1","status":"ok"}
     ```
 
-1. 若要提交 MapReduce 工作，請使用下列命令。 視需要修改**jq**的路徑。
+1. 若要提交 MapReduce 工作，請使用下列命令。 視需要修改 **jq** 的路徑。
 
     ```cmd
     curl -u admin:%PASSWORD% -d user.name=admin ^
@@ -77,15 +77,15 @@ ms.locfileid: "86207723"
 
     URI 結尾 (/mapreduce/jar) 會告訴 WebHCat，此要求會從 jar 檔案中的類別啟動 MapReduce 作業。 此命令中使用的參數如下：
 
-   * **-d**： `-G` 未使用，因此要求會預設為 POST 方法。 `-d` 可指定與要求一起傳送的資料值。
+   * **-d**： `-G` 不使用，因此要求會預設為 POST 方法。 `-d` 可指定與要求一起傳送的資料值。
      * **user.name**：執行命令的使用者
      * **jar**：包含要執行之類別的 jar 檔案位置
      * **class**：包含 MapReduce 邏輯的類別
      * **arg**︰要傳遞到 MapReduce 作業的引數。 在此案例中，是用於輸出的輸入文字檔和目錄
 
-    此命令應該會傳回可用來檢查作業狀態的作業識別碼： `job_1415651640909_0026` 。
+    此命令應該會傳回可用來檢查工作狀態的工作識別碼： `job_1415651640909_0026` 。
 
-1. 若要檢查工作的狀態，請使用下列命令。 將的值取代為 `JOBID` 上一個步驟中所傳回的**實際**值。 視需要修改**jq**的位置。
+1. 若要檢查工作的狀態，請使用下列命令。 將的值取代為 `JOBID` 上一個步驟中所傳回的 **實際** 值。 視需要修改 **jq** 的位置。
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -144,7 +144,7 @@ ms.locfileid: "86207723"
     * **class**：包含 MapReduce 邏輯的類別
     * **arg**︰要傳遞到 MapReduce 作業的引數。 在此案例中，是用於輸出的輸入文字檔和目錄
 
-   此命令應該會傳回可用來檢查作業狀態的作業識別碼： `job_1415651640909_0026` 。
+   此命令應該會傳回可用來檢查工作狀態的工作識別碼： `job_1415651640909_0026` 。
 
 1. 若要檢查作業的狀態，請使用下列命令：
 
@@ -167,9 +167,9 @@ ms.locfileid: "86207723"
 
 1. 當作業狀態變更為 `SUCCEEDED` 之後，您就可以從 Azure Blob 儲存體擷取作業結果。 隨查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置。 在此範例中，位置是 `/example/curl`。 此位址會將作業的輸出儲存在叢集預設儲存體的 `/example/curl` 中。
 
-您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需有關使用 Azure CLI 來處理 Azure Blob 儲存體的詳細資訊，請參閱[快速入門：使用 Azure CLI 建立、下載及列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
+您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需使用 Azure CLI 來使用 Azure Blob 儲存體的詳細資訊，請參閱 [快速入門：使用 Azure CLI 建立、下載及列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

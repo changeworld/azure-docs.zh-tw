@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004331"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Cache for Redis 中匯入與匯出資料
@@ -24,7 +24,7 @@ ms.locfileid: "88004331"
 本文提供使用 Azure Cache for Redis 匯入和匯出資料的指南，並提供常見問題的解答。
 
 > [!IMPORTANT]
-> 匯入/匯出僅[適用于進](cache-overview.md#service-tiers)階層快取。
+> 匯入/匯出僅 [適用于進](cache-overview.md#service-tiers) 階層快取。
 >
 >
 

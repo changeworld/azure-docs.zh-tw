@@ -12,10 +12,10 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181709"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助應用程式存取
@@ -37,7 +37,7 @@ ms.locfileid: "89181709"
 
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>啟用自助應用程式存取以允許使用者尋找自己的應用程式
 
-自助應用程式存取是讓使用者自行探索應用程式的絕佳方式，還可讓商務群組核准對那些應用程式的存取。 您可以直接從他們的我的應用程式頁面，允許商務群組管理指派給這些使用者的密碼單一登入應用程式的認證。
+自助應用程式存取是讓使用者自行探索應用程式的絕佳方式，還可讓商務群組核准對那些應用程式的存取。 您可以讓商務群組在應用程式上，直接從他們的我的應用程式頁面管理指派給這些使用者的認證 Single-Sign。
 
 若要啟用對應用程式的自助存取，請依照下列步驟執行：
 1. 開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。

@@ -4,10 +4,10 @@ description: 瞭解 Azure VMware 解決方案的角色型存取控制的主要�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579686"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>以角色為基礎的存取控制 (適用于 Azure VMware 解決方案的 RBAC) 
@@ -44,7 +44,7 @@ Azure VMware 解決方案中的 CloudAdmin 角色在 vCenter 上具有下列許�
 | **主控件** | vSphere 複寫<br />&#160;&#160;&#160;&#160;管理複寫 |
 | **vSphere 標記** | 指派和取消指派 vSphere 標記<br />建立 vSphere 標記<br />建立 vSphere 標記類別<br />刪除 vSphere 標記<br />刪除 vSphere 標記類別<br />編輯 vSphere 標記<br />編輯 vSphere 標記類別目錄<br />修改類別的 UsedBy 欄位<br />修改標記的 UsedBy 欄位 |
 | **Network** | 指派網路 |
-| **資源** | 套用建議<br />將 vApp 指派給資源集區<br />將虛擬機器指派給資源集區<br />建立資源集區<br />遷移電源關閉的虛擬機器<br />在虛擬機器上遷移電源<br />修改資源集區<br />移動資源集區<br />查詢 vMotion<br />移除資源集區<br />重新命名資源集區 |
+| **Resource** | 套用建議<br />將 vApp 指派給資源集區<br />將虛擬機器指派給資源集區<br />建立資源集區<br />遷移電源關閉的虛擬機器<br />在虛擬機器上遷移電源<br />修改資源集區<br />移動資源集區<br />查詢 vMotion<br />移除資源集區<br />重新命名資源集區 |
 | **排定的工作** | 建立工作<br />修改工作<br />移除工作<br />執行工作 |
 | **工作階段** | 訊息<br />驗證會話 |
 | **設定檔** | 設定檔驅動的儲存體視圖 |

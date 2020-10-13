@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397996"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 私用對等互連設計災難復原
@@ -118,7 +118,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 您可以使用連線權數來設計案例，以對內部部署網路系結流量的本機對等互連位置 ExpressRoute 進行 Vnet 影響。 若要完成此解決方案，您必須確保對稱的反向流量。 您可以在 BGP 路由器之間的 iBGP 會話使用本機喜好設定 (在內部部署端) 的 ExpressRoute 線路，以優先使用 ExpressRoute 線路。 下圖說明此解決方案。 
 
-[![8]][8]
+[![八角]][8]
 
 ### <a name="scenario-2"></a>案例 2
 
@@ -131,7 +131,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 [![10]][10]
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，我們討論了如何設計 ExpressRoute 線路私人對等互連連線的災難復原。 下列文章說明從應用程式和前端存取角度進行的嚴重損壞修復：
 

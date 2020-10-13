@@ -12,10 +12,10 @@ ms.date: 07/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88918463"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>語音服務容器的常見問題 (常見問題) 
@@ -367,7 +367,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 檔說要公開不同的埠，我這麼做，但 LUIS 容器仍在接聽埠5000？
 
-**答：** 請試試看 `-p <outside_unique_port>:5000` 。 例如 `-p 5001:5000`。
+**答：** 請試試看 `-p <outside_unique_port>:5000` 。 例如： `-p 5001:5000` 。
 
 
 <br>
@@ -395,7 +395,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 **答：** 使用我們的最新版本時，即時8， `en-US` 因此建議使用超過6個並行要求的多個 docker 容器。 它會 crazier 超過16個核心，並變成 (NUMA) 節點敏感性的非統一記憶體存取。 下表說明每個語音容器的資源配置下限和建議。
 
-# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉換文字](#tab/stt)
 
 | 容器      | 最小值             | 建議         |
 |----------------|---------------------|---------------------|
@@ -561,7 +561,7 @@ Python [範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 在 c # 中，若要啟用聽寫，請叫用 `SpeechConfig.EnableDictation()` 函數。
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint` Api
-| 語言 | API 詳細資料 |
+| Language | API 詳細資料 |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-dotnet" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -582,7 +582,7 @@ Python [範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/b
 
 ### <a name="fromhost-apis"></a>`FromHost` Api
 
-| 語言 | API 詳細資料 |
+| Language | API 詳細資料 |
 |--|:-|
 | C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |

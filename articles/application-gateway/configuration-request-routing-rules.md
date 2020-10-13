@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652860"
 ---
 # <a name="application-gateway-request-routing-rules"></a>應用程式閘道要求路由規則
@@ -93,6 +93,6 @@ ms.locfileid: "89652860"
  - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
  - [設定 URL 重寫](rewrite-url-portal.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 HTTP 設定](configuration-http-settings.md)
