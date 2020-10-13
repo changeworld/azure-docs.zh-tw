@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 164ba4767e0154154e5b3dc864265ba1505859d0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826922"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault 的新功能
 
@@ -31,7 +31,71 @@ ms.locfileid: "91653140"
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS 憑證變更  
 
-Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權單位 (CA) 的 TLS 憑證。 由於目前的 CA 憑證不符合其中一個 CA/瀏覽器論壇基準需求，因此需要進行此項變更。  如需完整的詳細資料，請參閱 [Azure TLS 憑證變更](../../security/fundamentals/tls-certificate-changes.md)。
+Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權單位 (CA) 的 TLS 憑證。 由於目前的 CA 憑證[不符合其中一個 CA/瀏覽器論壇基準需求](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)，因此需要進行此項變更。
+
+### <a name="when-will-this-change-happen"></a>此變更何時會發生？
+
+- [Azure Active Directory](/azure/active-directory) (Azure AD) 服務會在 2020 年 7 月 7 日開始轉換。
+- 所有新建立的 Azure TLS/SSL 端點都會包含已更新的憑證，並鏈結至新的根 CA。
+- 現有的 Azure 端點會從 2020 年 8 月 13 日起分階段轉換，並於 2020 年 10 月 26 日完成。
+- [Azure IoT 中樞](https://azure.microsoft.com/services/iot-hub)和 [DPS](/azure/iot-dps/) 將會保留在 Baltimore CyberTrust Root CA 上，但其中繼 CA 將會變更。 如需完整詳細資料，請參閱部落格文章 [Azure IoT TLS：即將推出變更！(...以及您關心的原因)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
+- [Azure 儲存體](/azure/storage) 將會保留在 Baltimore CyberTrust Root CA 上，但其中繼 CA 將會變更。 如需完整詳細資料，請參閱部落格文章 [Azure 儲存體 TLS：即將推出變更！(...以及您關心的原因)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
+
+> [!IMPORTANT]
+> 客戶可能需要在這次變更之後更新其應用程式，以避免在嘗試連線到 Azure 服務時發生連線失敗。
+
+### <a name="what-is-changing"></a>變更內容為何？
+
+目前 Azure 服務所使用的大部分 TLS 憑證會鏈結到下列根 CA：
+
+| CA 的一般名稱 | 指紋 (SHA1) |
+|--|--|
+| [Baltimore CyberTrust Root](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
+
+Azure 服務所使用的 TLS 憑證會鏈結到下列其中一個根 CA：
+
+| CA 的一般名稱 | 指紋 (SHA1) |
+|--|--|
+| [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) | df3c24f9bfd666761b268073fe06d1cc8d4f82a4 |
+| [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) | a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436 |
+| [Baltimore CyberTrust Root](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
+| [D-TRUST Root Class 3 CA 2 2009](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt) | 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0 |
+| [Microsoft RSA Root Certificate Authority 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt) | 73a5e64a3bff8316ff0edccc618a906e4eae4d74 | 
+| [Microsoft EV ECC Root Certificate Authority 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20EV%20ECC%20Root%20Certificate%20Authority%202017.crt) | 6b1937abfd64e1e40daf2262a27857c015d6228d |
+
+### <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>何時可以淘汰舊的中繼指紋？
+
+在 2021 年 2 月 15 日前，「不會」撤銷目前的 CA 憑證。 在該日期之後，您就可以從程式碼中移除舊的指紋。
+
+如果此日期有所變動，您會收到新撤銷日期的通知。
+
+### <a name="will-this-change-affect-me"></a>這項變更是否會對我造成影響？ 
+
+我們預期**大部分的 Azure 客戶都不會**受到影響。  不過，如果您的應用程式有明確指定可接受的 CA 清單，可能會受到影響。 這種做法稱為憑證關聯。
+
+以下有一些方法，可偵測您的應用程式是否會受到影響：
+
+- 在原始程式碼中，搜尋您在[此處](https://www.microsoft.com/pki/mscorp/cps/default.htm)找到的任何 Microsoft IT TLS CA 指紋、一般名稱和其他憑證屬性。 如果相符，則您的應用程式會受到影響。 若要解決此問題，請更新原始程式碼並納入新的 CA。 最佳做法是確保在臨時通知時可以新增或編輯 CA。 業界法規規定要在 7 天內更換 CA 憑證，因此依賴關聯的客戶必須迅速回應。
+
+- 如果您的應用程式與 Azure API 或其他 Azure 服務整合，而您不確定該應用程式是否使用憑證關聯，請洽詢應用程式廠商。
+
+- 與 Azure 服務通訊的其他作業系統和語言執行階段可能需要額外的步驟，才能使用這些新的根正確建立憑證鏈結：
+    - **Linux**：許多散發套件都需要您將 CA 新增至 /etc/ssl/certs。 如需特定指示，請參閱散發套件文件。
+    - **Java**︰請確定 Java 金鑰存放區包含上列的 CA。
+    - **在中斷連線的環境中執行 Windows**：在中斷連線的環境中執行的系統，必須將新的根新增至 [信任的根憑證授權單位] 存放區，並將中繼新增至 [中繼憑證授權單位] 存放區。
+    - **Android**：檢查您的裝置和 Android 版本文件。
+    - **其他硬體裝置，特別是 IoT**：請連絡裝置製造商。
+
+- 如果您的環境中已將防火牆規則設定為僅允許對特定憑證撤銷清單 (CRL) 下載和/或線上憑證狀態通訊協定 (OCSP) 驗證位置的輸出呼叫。 您需要允許下列 CRL 和 OCSP URL：
+
+    - http://crl3&#46;digicert&#46;com
+    - http://crl4&#46;digicert&#46;com
+    - http://ocsp&#46;digicert&#46;com
+    - http://www&#46;d-trust&#46;net
+    - http://root-c3-ca2-2009&#46;ocsp&#46;d-trust&#46;net
+    - http://crl&#46;microsoft&#46;com
+    - http://oneocsp&#46;microsoft&#46;com
+    - http://ocsp&#46;msocsp&#46;com
 
 ## <a name="june-2020"></a>2020 年 6 月
 

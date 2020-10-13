@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f9f56967c03556def3aa221f84ccd290c6090fd1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff6ba71f4606b3caf51007a9d75f3ca36bc99cda
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 EZOfficeInventory 整合
 
@@ -151,7 +151,7 @@ ms.locfileid: "88551140"
 
 1. 在頁面右上角，按一下 [設定檔]  ，然後瀏覽至 [設定]   > [附加元件]  。
 
-    ![EZOfficeInventory 設定](./media/ezofficeinventory-tutorial/configure01.png)
+    ![顯示 [設定] 頁面的螢幕擷取畫面，其中已選取 [附加元件] 動作。](./media/ezofficeinventory-tutorial/configure01.png)
 
 1. 向下捲動到 [SAML 整合]  區段，並執行下列步驟：
 

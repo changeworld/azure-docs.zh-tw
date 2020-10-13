@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574223"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627936"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教學課程：將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
 本指南示範如何透過傳統網頁瀏覽器型應用程式和 OpenID Connect 使用 ASP.NET MVC 方案實作「登入到 Microsoft」。
 
@@ -69,7 +69,7 @@ ms.locfileid: "91574223"
 
 ## <a name="add-authentication-components"></a>新增驗證元件
 
-1. 在 Visual Studio 中：移至 [工具]   > [NuGet 套件管理員]   > [套件管理員主控台]  。
+1. 在 Visual Studio 中：移至 [工具]  >  [NuGet 套件管理員]  >  [套件管理員主控台]。
 2. 在 [套件管理器主控台] 視窗中輸入下列內容以新增「OWIN 中介軟體 NuGet 套件」  ：
 
     ```powershell
@@ -295,7 +295,7 @@ ms.locfileid: "91574223"
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -313,7 +313,7 @@ ms.locfileid: "91574223"
     ```
 
 ### <a name="more-information"></a>詳細資訊
-因為使用了 `[Authorize]` 屬性，所以此控制器的所有方法都只能在使用者已通過驗證的情況下才能執行。 如果使用者未通過驗證而嘗試存取控制器，OWIN 就會起始驗證挑戰並強制使用者進行驗證。 前述程式碼會查看宣告清單，尋找使用者識別碼權杖中所包含的特定使用者屬性。 這些屬性包括使用者的完整名稱和使用者名稱，以及全域使用者識別元主體。 它也包含「租用戶識別碼」  ，這代表使用者所屬組織的識別碼。
+因為使用了 `[Authorize]` 屬性，所以此控制器的所有方法都只能在使用者已通過驗證的情況下才能執行。 如果使用者未通過驗證而嘗試存取控制器，OWIN 就會起始驗證挑戰並強制使用者進行驗證。 前述程式碼會查看宣告清單，尋找使用者識別碼權杖中所包含的特定使用者屬性。 這些屬性包括使用者的完整名稱和使用者名稱，以及全域使用者識別元主體。 也包含「租用戶識別碼」，這代表使用者所屬組織的識別碼。
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>建立檢視來顯示使用者的宣告
 

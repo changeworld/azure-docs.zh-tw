@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: abeb52155b933c223ee0621e8ab203ac035e5f36
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0ce6e4dc44a19f4aaee35cc4477761010d76a96b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519664"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Comm100 Live Chat 整合
 
@@ -144,7 +144,7 @@ ms.locfileid: "88519664"
 
 1. 從功能表左側，按一下 [安全性]  ，然後按一下 [代理程式單一登入]  。
 
-   ![Comm100 Live Chat 安全性](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![顯示左側帳戶功能表的螢幕擷取畫面，其中醒目提示 [安全性] 和 [代理程式單一登入]。](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
 1. 在 [代理程式單一登入]  頁面上，執行下列步驟：
 

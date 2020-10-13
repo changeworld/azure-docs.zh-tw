@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520306"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759742"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Claromentis 整合
 
@@ -138,19 +138,19 @@ ms.locfileid: "88520306"
 
 1. 按一下**應用程式圖示**，然後選取 [管理員]  。
 
-    ![Claromentis 設定](./media/claromentis-tutorial/config1.png)
+    ![顯示 Claromentis 網站的螢幕擷取畫面，其中已選取 [管理員]。](./media/claromentis-tutorial/config1.png)
 
 1. 選取 [自訂登入處理常式]  索引標籤。
 
-    ![Claromentis 設定](./media/claromentis-tutorial/config2.png)
+    ![顯示 [管理] 頁面的螢幕擷取畫面，已選取 [自訂登入處理常式]。](./media/claromentis-tutorial/config2.png)
 
 1. 選取 [SAML 設定]  。
 
-    ![Claromentis 設定](./media/claromentis-tutorial/config3.png)
+    ![顯示 SAML 設定頁面的螢幕擷取畫面。](./media/claromentis-tutorial/config3.png)
 
 1. 在 [SAML 設定]  索引標籤上，向下捲動至 [設定]  區段，然後執行下列步驟：
 
-    ![Claromentis 設定](./media/claromentis-tutorial/config4.png)
+    ![顯示頁面 [設定] 區段的螢幕擷取畫面，您可以在其中輸入此步驟中所述的資訊。](./media/claromentis-tutorial/config4.png)
 
     a. 在 [技術連絡人名稱]  文字方塊中，輸入技術連絡人的名稱。
 
@@ -160,7 +160,7 @@ ms.locfileid: "88520306"
 
 1. 向下捲動至 [驗證來源]  ，然後執行下列步驟：
 
-    ![Claromentis 設定](./media/claromentis-tutorial/config5.png)
+    ![顯示 [驗證來源] 區段的螢幕擷取畫面，您可以在其中輸入此步驟中所述的資訊。](./media/claromentis-tutorial/config5.png)
 
     a. 在 [IDP]  文字方塊中，輸入您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
@@ -172,7 +172,7 @@ ms.locfileid: "88520306"
 
 1. 此時您會看到，所有 URL 均已填入 [SAML 設定]  區段的 [識別提供者]  區段內。
 
-    ![Claromentis 設定](./media/claromentis-tutorial/config6.png)
+    ![顯示以 URL 填入的 [識別提供者] 頁面螢幕擷取畫面。](./media/claromentis-tutorial/config6.png)
 
     a. 複製 [識別碼 (實體識別碼)]  值，並將此值貼到 Azure 入口網站的 [基本 SAML 組態]  區段上的 [識別碼]  文字方塊中。
 

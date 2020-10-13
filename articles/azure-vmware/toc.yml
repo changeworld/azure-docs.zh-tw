@@ -61,7 +61,7 @@
     - name: 部署 VM 的災害復原
       href: disaster-recovery-for-virtual-machines.md
     - name: 透過內容庫部署 VM
-      href: tutorial-deploy-vm-content-library.md
+      href: ./deploy-vm-content-library.md
     - name: 設定 GitHub Enterprise 伺服器
       href: github-enterprise-server.md
     - name: 建立 IPSec 通道

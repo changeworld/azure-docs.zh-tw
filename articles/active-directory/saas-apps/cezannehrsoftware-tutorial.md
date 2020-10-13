@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529999"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教學課程：Azure Active Directory 與 Cezanne HR Software 整合
 
@@ -130,19 +130,19 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
 2. 在左側的導覽窗格上，按一下 [系統設定]  。 移至 [安全性設定]  。 然後瀏覽至 [單一登入設定]  。
 
-    ![在應用程式端設定單一登入](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![顯示 Cezanne HR Software 租用戶的螢幕擷取畫面，其中已選取 [安全性設定] 和 [單一登入設定]。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. 在 [允許使用者使用下列的單一登入 (SSO) 服務來登入]  面板中檢查 [SAML 2.0]  方塊，然後選取 [進階組態]  選項。
 
-    ![在應用程式端設定單一登入](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![顯示 [允許使用者] 窗格的螢幕擷取畫面，其中已選取 [SAML 2.0] 和 [進階設定]。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. 按一下 [新增]  按鈕。
 
-    ![在應用程式端設定單一登入](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![顯示 [新增] 按鈕的螢幕擷取畫面。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. 在 [SAML 2.0 身分識別提供者]  區段中執行下列步驟。
 
-    ![在應用程式端設定單一登入](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![顯示窗格的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. 輸入識別提供者名稱做為**顯示名稱**。
 
@@ -160,7 +160,7 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
 6. 按一下 [儲存]  按鈕。
 
-    ![在應用程式端設定單一登入](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![螢幕擷取畫面，顯示 [單一登入設定] 的 [儲存] 按鈕。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -223,11 +223,11 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
 2. 在左側的導覽窗格上，按一下 [系統設定]  。 移至 [管理使用者]  。 然後瀏覽至 [新增使用者]  。
 
-    ![新增使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新增使用者")
+    ![顯示 Cezanne HR Software 租用戶的螢幕擷取畫面，其中已選取 [管理使用者] 和 [新增使用者]。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新增使用者")
 
 3. 在 [人員詳細資料]  區段中，執行下列步驟︰
 
-    ![新增使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新增使用者")
+    ![顯示 [人員詳細資料] 區段的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新增使用者")
 
     a. 將 [內部使用者]  設定為 OFF。
 
@@ -239,7 +239,7 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
 4. 在 [帳戶資訊]  區段中，執行下列步驟︰
 
-    ![新增使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新增使用者")
+    ![顯示 [帳戶資訊] 區段的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新增使用者")
 
     a. 在 [使用者名稱]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件。
 
@@ -251,15 +251,15 @@ Cezanne HR Software 與 Azure AD 整合提供下列優點：
 
 5. 瀏覽至 [單一登入] 索引標籤並選取 [SAML 2.0 識別碼] 區域中的 [新增]。
 
-    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
+    ![顯示 [單一登入] 索引標籤的螢幕擷取畫面，您可以在其中選取 [新增]。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
 
 6. 為 [識別提供者]  選擇識別提供者，並在 [使用者識別碼]  文字方塊中輸入 Britta Simon 帳戶的電子郵件地址。
 
-    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
+    ![顯示 SAML 2.0 識別碼的螢幕擷取畫面，您可以在其中選取您的識別提供者和使用者識別碼。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
 
 7. 按一下 [儲存]  按鈕。
 
-    ![使用者](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
+    ![螢幕擷取畫面，顯示 [使用者設定] 的 [儲存] 按鈕。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 

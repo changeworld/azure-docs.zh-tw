@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551280"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760932"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cisco Webex Meetings 整合
 
@@ -144,7 +144,7 @@ ms.locfileid: "88551280"
 
 在本節中，您會將 Cisco Webex Meetings 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Cisco Webex Meetings]****。
 1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
@@ -164,11 +164,11 @@ ms.locfileid: "88551280"
 
 2. 移至 [一般網站設定]****，然後瀏覽至 [SSO 設定]****。
  
-    ![設定單一登入](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![顯示 Cisco Webex 管理的螢幕擷取畫面，其中已選取 [一般網站設定] 和 [SSO 設定]。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. 在 [Webex 系統管理]**** 頁面上，執行下列步驟：
 
-    ![設定單一登入](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![顯示 Webex 管理頁面的螢幕擷取畫面，您會在其中輸入此步驟中所述的資訊。](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. 選取 [SAML 2.0]**** 作為 [同盟通訊協定]****。
 

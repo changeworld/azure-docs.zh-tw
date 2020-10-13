@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569650"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821879"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯
 
@@ -105,7 +105,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>將您的線路連線至中樞閘道
 
-建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute 進階/標準線路若位於 ExpressRoute Global Reach 支援的位置，則可以連線至虛擬 WAN ExpressRoute 閘道，並享用所有虛擬 WAN 傳輸功能 (VPN 至 VPN、VPN 與 ExpressRoute transit)。 ExpressRoute 進階/標準線路若位於非 Global Reach 位置，則可以連線至 Azure 資源，但將無法使用虛擬 WAN 傳輸功能。
+建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute 標準或進階線路若位於 ExpressRoute Global Reach 支援的位置，則可以連線至虛擬 WAN ExpressRoute 閘道，並享用所有虛擬 WAN 傳輸功能 (VPN 至 VPN、VPN 與 ExpressRoute transit)。 ExpressRoute 標準或進階線路若位於非 Global Reach 位置，則可以連線至 Azure 資源，但將無法使用虛擬 WAN 傳輸功能。 Azure 虛擬 WAN 不支援 ExpressRoute 本機。
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>將線路連線到中樞閘道
 

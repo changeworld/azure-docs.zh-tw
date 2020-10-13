@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520357"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760626"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>教學課程：整合 Civic Platform 與 Azure Active Directory
 
@@ -91,7 +91,7 @@ ms.locfileid: "88520357"
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
-    ![憑證下載連結](common/copy-metadataurl.png)
+    ![顯示 [SAML 簽署憑證] 頁面的螢幕擷取畫面，您可以在其中複製應用程式同盟中繼資料 URL。](common/copy-metadataurl.png)
 
 1. 在 Azure AD 中瀏覽至 [Azure Active Directory]   > [應用程式註冊]  ，選取您的應用程式。
 
@@ -120,21 +120,21 @@ ms.locfileid: "88520357"
 
 1. 按一下 [標準選擇]  。
 
-    ![憑證下載連結](media/civic-platform-tutorial/standard-choices.png)
+    ![顯示 Atlassian Cloud 網站的螢幕擷取畫面，其中具有在 [系統管理員工具] 底下呼叫的標準選項。](media/civic-platform-tutorial/standard-choices.png)
 
 1. 建立標準選擇 **ssoconfig**。
 
 1. 搜尋 **ssoconfig** 並提交。
 
-    ![憑證下載連結](media/civic-platform-tutorial/sso-config.png)
+    ![顯示標準選項搜尋的螢幕擷取畫面，其中具有已輸入的名稱 SSO 設定。](media/civic-platform-tutorial/sso-config.png)
 
 1. 按一下紅點以展開 SSOCONFIG。
 
-    ![憑證下載連結](media/civic-platform-tutorial/sso-config01.png)
+    ![顯示標準選項瀏覽的螢幕擷取畫面，其中具有可用的 SSO CONFIG。](media/civic-platform-tutorial/sso-config01.png)
 
 1. 在下列步驟中提供 SSO 相關的組態資訊：
 
-    ![憑證下載連結](media/civic-platform-tutorial/sso-config02.png)
+    ![顯示適用於 SSO CONFIG 的標準選項項目編輯螢幕擷取畫面。](media/civic-platform-tutorial/sso-config02.png)
 
     1. 在 [applicationid]  欄位中，輸入您從 Azure 入口網站複製的 [應用程式識別碼]  值。
 

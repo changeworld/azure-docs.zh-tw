@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
-ms.openlocfilehash: bd3ac8d512c1b9d151c0dc549ffeee6a05c7f94b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 944b96e7726f2b2becd5960a17a89c00d00c878a
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542762"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841935"
 ---
-用來裝載模型的計算目標會影響已部署端點的成本和可用性。 使用下表選擇適當的計算目標。
+用來裝載模型的計算目標會影響已部署端點的成本和可用性。 使用此資料表選擇適當的計算目標。
 
 | 計算目標 | 用於 | GPU 支援 | FPGA 支援 | 描述 |
 | ----- | ----- | ----- | ----- | ----- |
@@ -26,14 +26,14 @@ ms.locfileid: "87542762"
 | [Azure 容器執行個體](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | 測試或開發 | &nbsp;  | &nbsp; | 用於需要少於 48 GB RAM 的低規模 CPU 型工作負載。 |
 | [Azure Machine Learning 計算叢集](../articles/machine-learning/how-to-use-parallel-run-step.md) | 批次&nbsp;推斷 | [是](../articles/machine-learning/how-to-use-parallel-run-step.md) (機器學習管線) | &nbsp;  | 在無伺服器計算上執行批次評分。 支援一般和低優先順序的 VM。 |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | (預覽) 即時推斷 | &nbsp; | &nbsp; | &nbsp; |
-| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (預覽) IoT&nbsp;模組 |  &nbsp; | &nbsp; | 在 IoT 裝置上部署和提供 ML 模型。 |
-| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | 透過 IoT Edge |  &nbsp; | 是 | 在 IoT 裝置上部署和提供 ML 模型。 |
+| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | (預覽) IoT&nbsp;模組 |  &nbsp; | &nbsp; | 在 IoT 裝置上部署和提供機器學習模型。 |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | 透過 IoT Edge |  &nbsp; | 是 | 在 IoT 裝置上部署和提供機器學習模型。 |
 
 > [!NOTE]
-> 雖然計算目標 (例如本機、Azure Machine Learning 計算執行個體和 Azure Machine Learning 計算叢集) 支援用於訓練和實驗的 GPU，但僅在 Azure Kubernetes Service 上支援使用 GPU 進行推斷__當部署為 Web 服務時__。
+> 雖然計算目標 (例如本機、Azure Machine Learning 計算和 Azure Machine Learning 計算叢集) 支援用於訓練和實驗的 GPU，但僅在 AKS 上支援使用 GPU 進行推斷_當部署為 Web 服務時_。
 >
-> 僅在 Azure Machine Learning Compute 中支援使用 GPU 進行推斷__當使用機器學習管線進行評分時__。
+> 僅在 Azure Machine Learning Compute 中支援使用 GPU 進行推斷_當使用機器學習管線進行評分時_。
 
 > [!NOTE]
-> * Azure 容器執行個體 (ACI) 僅適用於小於 1GB 的小型模型。 
-> * 我們建議使用單一節點 Azure Kubernetes Service (AKS) 叢集，以進行較大型模型的開發測試。
+> * 容器執行個體僅適用於小於 1GB 的小型模型。
+> * 針對大型模型的開發/測試使用單一節點 AKS 叢集。

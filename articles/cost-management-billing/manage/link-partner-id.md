@@ -4,16 +4,16 @@ description: 將合作夥伴識別碼連結到您用來管理客戶資源的使�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371825"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772714"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
@@ -43,7 +43,7 @@ PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴�
 
 2. 登入 Azure 入口網站。
 
-3. 輸入 Microsoft 合作夥伴識別碼。 合作夥伴識別碼是您組織的 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)識別碼。
+3. 輸入 Microsoft 合作夥伴識別碼。 合作夥伴識別碼是您組織的 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)識別碼。 請務必使用您的合作夥伴設定檔上顯示的**相關聯 MPN 識別碼**。
 
    ![顯示 [連結到合作夥伴識別碼] 的螢幕擷取畫面](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴�
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. 連結到新的合作夥伴識別碼。 合作夥伴識別碼是您組織的 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)識別碼。
+3. 連結到新的合作夥伴識別碼。 合作夥伴識別碼是您組織的 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)識別碼。 請務必使用您的合作夥伴設定檔上顯示的**相關聯 MPN 識別碼**。
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **如果我的公司有多個 MPN 識別碼，我該使用哪一個？**
 
-合作夥伴位置帳戶和相關聯的 MPN 識別碼應用於連結合作夥伴識別碼。  深入了解[合作夥伴帳戶](https://docs.microsoft.com/partner-center/account-structure)
+請務必使用您的合作夥伴設定檔中顯示的**相關聯 MPN 識別碼**。
 
 **我可以在哪裡找到已連結合作夥伴識別碼的影響收益報告？**
 

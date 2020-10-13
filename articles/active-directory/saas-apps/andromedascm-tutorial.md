@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 31fc1877dd0edd2fd670f0f9466692ac7bc8ad15
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d1e2b91b46bee761c7feb1000920d5ae1e65ba4c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531056"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教學課程：Azure Active Directory 與 Andromeda
 
@@ -100,7 +100,7 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Andromeda 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<tenantURL>.ngcxpress.com/`
 
@@ -108,7 +108,7 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Andromeda 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
@@ -117,7 +117,7 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
 6. Andromeda 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，例如名字 user.givenname 和電子郵件地址 user.mail。](common/edit-attribute.png)
 
     > [!Important]
     > 在設定這些項目時清除 NameSpace 定義。
@@ -135,9 +135,9 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示使用者宣告選項以新增新宣告並且儲存的螢幕擷取畫面。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![顯示管理使用者宣告的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 

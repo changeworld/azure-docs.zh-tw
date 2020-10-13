@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006460"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653667"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教學課程：檢視遠端轉譯模型
 
@@ -76,10 +76,10 @@ ms.locfileid: "89006460"
 
 在您修改並儲存資訊清單之後，Unity 會自動重新整理。 確認已在 [專案] 視窗中載入此套件：
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="確認套件匯入":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="新增 Unity 專案":::
 
 如果您的套件未載入，請檢查您的 Unity 主控台是否有錯誤。 如果您沒有任何錯誤，但仍未在 [套件] 資料夾底下看到任何套件，請核取 [套件可見度] 切換按鈕。\
-![Unity 相機屬性](./media/unity-package-visibility.png)
+![具有箭頭指向套件可見度切換按鈕的螢幕擷取畫面。](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>確定您有最新版的套件。
 
@@ -120,7 +120,7 @@ ms.locfileid: "89006460"
 
 1. 從左側清單功能表中選取 [圖形]
 1. 將 [可編寫指令碼的轉譯管線] 設定變更為 [HybridRenderingPipeline]。\
-    ![變更專案圖形設定](./media/settings-graphics-render-pipeline.png)\
+    ![指出您在其中將可編寫指令碼的轉譯管線設定變更為 HybridRenderingPipeline 所在位置的螢幕擷取畫面。](./media/settings-graphics-render-pipeline.png)\
     有時候 UI 並不會從套件填入可用管線類型的清單。 如果發生這種情況，就必須手動將 HybridRenderingPipeline 資產拖曳到欄位：\
     ![變更專案圖形設定](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ public async void InitializeSessionService()
 1. 將元件拖曳至其本身的事件，以參考其本身。\
 ![略過驗證](./media/bypass-authorization-add-event.png)\
 1. 在下拉式清單中選取 **RemoteRenderingCoordinator -> BypassAuthorization**。\
-![略過驗證](./media/bypass-authorization-event.png)
+![顯示已選取 RemoteRenderingCoordinator.BypassAuthorization 選項的螢幕擷取畫面。](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>建立或加入遠端工作階段
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 有了所需的基礎之後，您就可以開始將模型載入遠端工作階段，並開始接收框架。
 
-![ARR 堆疊 4](./media/remote-render-stack-4.png)
+![此圖顯示準備載入和檢視模型的程序流程。](./media/remote-render-stack-4.png)
 
 **LoadModel** 方法是設計用來接受模型路徑、進度處理常式和父系轉換。 這些引數會用來將模型載入遠端工作階段、更新載入進度上的使用者，以及根據父系轉換來調整遠端轉譯模型的方向。
 

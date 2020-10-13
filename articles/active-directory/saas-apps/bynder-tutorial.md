@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: f47fe7f18c4054f65e7a6882d4003006b1a896ad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9a0318b8deedf8f4725efee2f3c2723f1a4fe6d3
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547569"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740236"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>教學課程：整合 Bynder 與 Azure Active Directory
 
@@ -104,7 +104,7 @@ ms.locfileid: "88547569"
 
 1. Bynder 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，使用 [編輯]  圖示來編輯宣告或使用 [新增宣告]  來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
 
@@ -116,7 +116,7 @@ ms.locfileid: "88547569"
 
     1. 按一下 [檔案]  。
 
-        ![image](./media/bynder-tutorial/config08.png)
+        ![顯示 [群組宣告] 區段的螢幕擷取畫面，其中已選取安全性群組和群組識別碼。](./media/bynder-tutorial/config08.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 

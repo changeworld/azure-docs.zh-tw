@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897953"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776114"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -156,6 +156,9 @@ ms.locfileid: "90897953"
 
 由於最終標籤仍仰賴標籤者的輸入，因此此項技術有時也稱為*人為迴圈*標記。
 
+> [!NOTE]
+> ML 輔助資料標示不支援在[虛擬網路](how-to-network-security-overview.md)後方受到保護的預設儲存體帳戶。 您必須使用非預設儲存體帳戶來標示 ML 輔助資料。 非預設儲存體帳戶可以在虛擬網路後方受到保護。 
+
 ### <a name="clustering"></a>叢集
 
 提交特定數目的標籤之後，影像分類的機器學習模型就會開始將類似的影像分為同一組。  這些類似的影像會顯示在標籤者的相同畫面上，以加速手動標記。 當標籤者正在觀看 4、6 或 9 個影像方格時，叢集功能特別有用。 
@@ -186,7 +189,7 @@ ms.locfileid: "90897953"
 
 [儀表板] 索引標籤會顯示標籤工作的進度。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="資料標記儀表板":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="加上標籤專案建立精靈":::
 
 進度圖表會顯示已加上標籤的項目數，以及尚未完成的項目數。  擱置中的項目可能是：
 

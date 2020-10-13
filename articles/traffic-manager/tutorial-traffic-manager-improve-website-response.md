@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: duau
-ms.openlocfilehash: e79dde0178c74965bde14956203e31e82e80d93e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398404"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651236"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教學課程：使用流量管理員來改善網站回應
 
@@ -203,7 +203,7 @@ ms.locfileid: "89398404"
 5. 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]  或 [繼續]  以繼續進行連線。
 1. 在 VM *myVMEastUS* 的網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱，以檢視您的網站。 VM 位於**美國東部**，所以您會路由至在最接近 IIS 伺服器 *myIISVMEastUS* (位於**美國東部**) 上裝載的最接近網站。
 
-   ![測試流量管理員設定檔](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![顯示網頁瀏覽器中「流量管理員」設定檔的螢幕擷取畫面。](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
 2. 接下來，使用步驟 1-5 來連線到位於**西歐**的 VM *myVMWestEurope*，並從這個 VM 瀏覽到流量管理員設定檔網域名稱。 VM 位於**西歐**，所以您現在會路由至在最接近 IIS 伺服器 *myIISVMWestEurope* (位於**西歐**) 上裝載的網站。
 

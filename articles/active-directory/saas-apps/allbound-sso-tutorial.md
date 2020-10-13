@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fd4c059b7f37960f0a76de8df3d99d2aefae94ef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c9ca3b98d01e44c0c899e165e5f892ab5d9a5954
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548390"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>教學課程：Azure Active Directory 與 Allbound SSO 整合
 
@@ -100,7 +100,7 @@ Allbound SSO 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Allbound SSO 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼和回覆 URL，然後選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.allbound.com/`
 
@@ -108,7 +108,7 @@ Allbound SSO 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Allbound SSO 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.allbound.com/`
 

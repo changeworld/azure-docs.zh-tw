@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f3fa61e7c00dca8cb133ec21ba395d943ebdc956
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538360"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教學課程：Azure Active Directory 與 Acadia 整合
 
@@ -100,7 +100,7 @@ Acadia 與 Azure AD 整合可提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Acadia 網域和 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示在 IDP 起始模式中設定應用程式所需畫面元素的螢幕擷取畫面。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 

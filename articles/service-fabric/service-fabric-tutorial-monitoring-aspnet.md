@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020103"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653123"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教學課程：使用 Application Insights 監視和診斷 Service Fabric 上的 ASP.NET Core 應用程式
 
@@ -191,7 +191,7 @@ ConfigureServices(services => services
 
 此外，您可以在 [概觀] 頁面的左側功能表上按一下 [應用程式對應]，或按一下 [應用程式對應] 圖示，以導向至會顯示兩個連線服務的 [應用程式對應]。
 
-![AI 追蹤詳細資料](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![醒目提示左側功能表中應用程式對應的螢幕擷取畫面。](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 「應用程式對應」可協助您更充分了解應用程式拓撲，特別是當您開始新增多個一起運作的不同服務時。 另外也提供要求成功率的基本資料，還可協助您診斷失敗的要求，以查明可能出錯的地方。 若要深入了解使用應用程式對應，請參閱 [Application Insights 中的應用程式對應](../azure-monitor/app/app-map.md)。
 

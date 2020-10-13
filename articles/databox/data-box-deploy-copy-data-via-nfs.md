@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/02/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: d49a1120ddda98430f4f9b3c488819829a9fd7b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eee5119336be02621a27b315cb26ca8dd1fd9cb4
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320688"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766265"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 
@@ -58,7 +58,7 @@ ms.locfileid: "91320688"
 
 1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
 
-    ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
+    ![設定 NFS 用戶端存取](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
 
@@ -85,7 +85,7 @@ ms.locfileid: "91320688"
 連線至資料箱共用後，下一個步驟是複製資料。 開始複製資料之前，請檢閱下列注意事項：
 
 * 確實將資料複製到與適當資料格式相對應的共用。 例如，將區塊 Blob 資料複製到區塊 Blob 的共用。 將 VHD 複製到分頁 Blob。 如果資料格式不符合適當的共用類型，則在稍後步驟中，資料上傳至 Azure 的作業將會失敗。
-*  複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。
+*  複製資料時，請確定資料大小符合 [Azure 儲存體帳戶大小限制](data-box-limits.md#azure-storage-account-size-limits)中所述的大小限制。
 * 如果資料 (由資料箱上傳) 同時由資料箱以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
 * 建議您不要同時使用 SMB 與 NFS，或將相同的資料複製到 Azure 上的相同最終目的地。 在這種情況下，無法判斷最後的結果。
 * **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
@@ -145,11 +145,11 @@ ms.locfileid: "91320688"
 
 選取 [下載問題清單]。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-2.png)
+![下載複製錯誤的問題清單](media/data-box-deploy-copy-data/view-errors-2.png)
 
 開啟清單以檢視錯誤的詳細資料，並選取 [解析 URL] 以檢視建議的解決方法。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-3.png)
+![複製錯誤問題清單中的問題](media/data-box-deploy-copy-data/view-errors-3.png)
 
 如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
 

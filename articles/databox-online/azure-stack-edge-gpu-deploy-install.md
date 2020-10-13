@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900008"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743398"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教學課程：安裝搭配 GPU 的 Azure Stack Edge Pro
 
@@ -124,7 +124,7 @@ ms.locfileid: "90900008"
 3. 使用兩組螺絲，將左右兩側的安裝滑軌固定到前端垂直機架凸緣。
 4. 靠著尾端垂直機架凸緣，將左右兩邊的背面托架向前滑動，並使用兩組螺絲加以固定。
 
-    ![安裝及移除工具式滑軌](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![安裝及移除工具式滑軌 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>在機架中安裝系統
 
@@ -207,11 +207,11 @@ ms.locfileid: "90900008"
 
     - 具有 3 個 PCI 插槽和一個 GPU 的裝置
 
-        ![已連接纜線的裝置背面](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![已連接纜線的裝置背面 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - 具有 3 個 PCI 插槽和二個 GPU 的裝置
 
-        ![已連接纜線的裝置背面](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![已連接纜線的裝置背面 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. 在裝置的前面找出磁碟插槽和電源按鈕。
 

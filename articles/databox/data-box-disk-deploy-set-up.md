@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925646"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759899"
 ---
 ::: zone target="docs"
 
@@ -268,7 +268,7 @@ ms.locfileid: "87925646"
     
 8. 將磁碟解除鎖定之後，您可以移至掛接點並檢視磁碟的內容。 您現在已準備好將資料複製到 *BlockBlob* 或 *PageBlob* 資料夾。 
 
-    ![資料箱磁碟內容](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+    ![資料箱磁碟內容 2](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
 如果您在解除鎖定磁碟時遇到任何問題，請參閱如何[針對解除鎖定問題進行疑難排解](data-box-disk-troubleshoot-unlock.md)。 

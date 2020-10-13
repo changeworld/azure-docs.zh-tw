@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551807"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教學課程：Azure Active Directory 與 ClickUp Productivity Platform 整合
 
@@ -118,17 +118,17 @@ ms.locfileid: "88551807"
 
 2. 按一下 [使用者設定檔]  ，然後選取 [設定]  。
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![顯示 ClickUp Productivity 租用戶的螢幕擷取畫面，其中已選取 [設定] 圖示。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![顯示設定的螢幕擷取畫面。](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. 在 [單一登入 (SSO) 提供者] 下方選取 [Microsoft]  。
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![顯示 [驗證] 窗格的螢幕擷取畫面，其中已選取 Microsoft。](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. 在 [設定 Microsoft 單一登入]  頁面上，執行下列步驟：
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![顯示 [設定 Microsoft 單一登入] 頁面的螢幕擷取畫面，您可以在其中複製實體識別碼，並儲存 Azure 同盟中繼資料 URL。](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. 按一下 [複製]  以複製實體識別碼值，並將其貼至 Azure 入口網站中 [基本 SAML 組態]  區段上的 [識別碼 (實體識別碼)]  文字方塊中。
     
@@ -136,7 +136,7 @@ ms.locfileid: "88551807"
 
 5. 若要完成設定，請按一下 [向 Microsoft 驗證以完成設定]  ，然後使用 Microsoft 帳戶進行驗證。
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![顯示向 Microsoft 進行驗證以完成設定按鈕的螢幕擷取畫面。](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -195,13 +195,13 @@ ms.locfileid: "88551807"
 
 2. 按一下 [使用者設定檔]  ，然後選取 [人員]  。
    
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![顯示 ClickUp Productivity 租用戶的螢幕擷取畫面。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![顯示已選取 [人員] 連結的螢幕擷取畫面。](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. 在文字方塊中輸入使用者的電子郵件地址，然後按一下 [邀請]  。
 
-    ![ClickUp Productivity 設定](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![顯示小組使用者設定的螢幕擷取畫面，您可以在其中以電子郵件邀請人員。](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > 使用者會收到通知，且必須接受邀請才能啟用帳戶。

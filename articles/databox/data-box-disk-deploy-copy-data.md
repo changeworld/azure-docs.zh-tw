@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927108"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766844"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,7 @@ ms.locfileid: "87927108"
 
 執行下列步驟以從電腦連線到資料箱磁碟，並且複製資料。
 
-1. 檢視已解除鎖定磁碟機的內容。 根據建立資料箱磁碟訂單時所選取的選項而定，磁碟中預先建立的資料夾和子資料夾清單會有所不同。
+1. 檢視已解除鎖定磁碟機的內容。 根據建立資料箱磁碟訂單時所選取的選項而定，磁碟中預先建立的資料夾和子資料夾清單會有所不同。 如果預先建立資料夾不存在，請勿建立，因為複製到使用者建立的資料夾將無法在 Azure 上傳。
 
     |選取的儲存體目的地  |儲存體帳戶類型|暫存的儲存體帳戶類型 |資料夾和子資料夾  |
     |---------|---------|---------|------------------|
@@ -212,15 +212,15 @@ ms.locfileid: "87927108"
 3. 識別要複製的來源資料。 例如，在此案例中是：
     - 已識別到下列區塊 Blob 資料。
 
-         ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![分割複製資料 2](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - 已識別到下列分頁 Blob 資料。
 
-         ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![分割複製資料 3](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. 請移至軟體解壓縮後所在的資料夾。 在該資料夾中找出 `SampleConfig.json` 檔案。 這是您可以修改並儲存的唯讀檔案。
 
-   ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![分割複製資料 4](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. 修改 `SampleConfig.json` 檔案。
  
@@ -229,11 +229,11 @@ ms.locfileid: "87927108"
    - 輸入對應到目標磁碟的磁碟機代號。 資料會取自來源路徑，並複製到多個磁碟。
    - 提供記錄檔的路徑。 根據預設，這會傳送到 `.exe` 目前所在的目錄。
 
-     ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![分割複製資料 5](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. 若要驗證檔案格式，請移至 `JSONlint`。 將檔案儲存為 `ConfigFile.json`。 
 
-     ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![分割複製資料 6](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. 開啟命令提示字元視窗。 
 
@@ -241,24 +241,24 @@ ms.locfileid: "87927108"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![分割複製資料 7](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. 按 Entert 後繼續執行指令碼。
 
-    ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![分割複製資料 8](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. 分割和複製資料集後，複製工作階段的分割複製工具摘要會隨即顯示。 下方顯示一項範例輸出。
 
-    ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![分割複製資料 9](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. 請確認資料分散在目標磁碟上。 
  
-    ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![分割複製資料 10](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![分割複製資料 11](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
     如果您進一步檢查 `n:` 磁碟機的內容，您會看到對應至區塊 Blob 和分頁 Blob 格式資料的兩個子資料夾已建立。
     
-     ![分割複製資料](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![分割複製資料 12](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. 如果複製工作階段動作失敗，則使用下列命令來復原並繼續：
 

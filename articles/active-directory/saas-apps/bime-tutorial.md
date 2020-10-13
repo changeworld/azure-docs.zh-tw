@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547336"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教學課程：Azure Active Directory 與 Bime 整合
 
@@ -132,7 +132,7 @@ Bime 與 Azure AD 整合提供下列優點：
 
 2. 在工具列中，按一下 [管理]  ，然後按一下 [帳戶]  。
   
-    ![管理員](./media/bime-tutorial/ic775558.png "管理")
+    ![顯示已選取 [管理] 項目和 [帳戶] 的螢幕擷取畫面。](./media/bime-tutorial/ic775558.png "管理")
 
 3. 在 [帳戶組態] 頁面上，執行下列步驟：
   
@@ -207,7 +207,7 @@ Bime 與 Azure AD 整合提供下列優點：
 
 2. 在工具列中，按一下 [管理]  ，然後按一下 [使用者]  。
 
-    ![管理員](./media/bime-tutorial/ic775561.png "管理")
+    ![顯示已選取 [管理] 項目和 [使用者] 的螢幕擷取畫面。](./media/bime-tutorial/ic775561.png "管理")
 
 3. 在 [使用者清單]  中，按一下 新增使用者  \("+")。
 

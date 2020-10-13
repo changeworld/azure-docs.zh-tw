@@ -3,12 +3,12 @@ title: 播放多日錄製 - Azure
 description: 在本教學課程中，您將了解如何使用 Azure 媒體服務 API 來播放多日的持續影片錄製。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530568"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803427"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教學課程：播放多日錄製  
 
@@ -70,13 +70,21 @@ ms.locfileid: "90530568"
 } 
 ```
 
-在 Visual Studio Code 中，您可以按一下左側的 [執行] 圖示 (或 Ctrl+Shift+D)，以顯示可用的應用程式來執行：
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
-![螢幕擷取畫面會在 Visual Studio Code 中顯示已選取執行項目的功能表。](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-從下拉式方塊中選取 [AMS 資產播放器] 應用程式 (如下所示)，然後按 F5 開始偵錯。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
 
-![螢幕擷取畫面會在 Visual Studio Code 中顯示已選取 AMS 資產播放器的功能表。](./media/playback-multi-day-recordings-tutorial/debug.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="延伸模組設定":::
+1. <!--In Visual Studio Code, you can click-->按一下左側的 [執行] 圖示 (或 Ctrl+Shift+D)，以顯示可用的應用程式來執行：
+
+    ![螢幕擷取畫面會在 Visual Studio Code 中顯示已選取執行項目的功能表。](./media/playback-multi-day-recordings-tutorial/run.png)
+1. 從下拉式方塊中選取 [AMS 資產播放器] 應用程式 (如下所示)，然後按 F5 開始偵錯。
+
+    ![螢幕擷取畫面會在 Visual Studio Code 中顯示已選取 AMS 資產播放器的功能表。](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 範例應用程式會建置並啟動您的預設瀏覽器應用程式，並開啟 [AMS 資產播放器] 頁面。
 

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88586710"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841028"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer 的新功能
 
@@ -29,6 +29,7 @@ Azure Load Balancer 會定期更新。 請隨時掌握最新公告。 本文提�
 
 | 類型 |名稱 |描述  |新增日期  |
 | ------ |---------|---------|---------|
+| 功能 | 支援跨資源群組的移動 | [資源群組移動](https://azure.microsoft.com/updates/standard-resource-group-move/)的 Standard Load Balancer 和標準公用 IP 支援。 | 2020 年 10 月 |
 | 功能 | 支援 IP 型後端集區管理 (預覽) | Azure Load Balancer 支援透過 IPv4 或 IPv6 位址在後端集區中新增和移除資源。 這可讓您輕鬆管理與 Load Balancer 相關聯的容器、虛擬機器和虛擬機器擴展集。 其也允許在建立相關聯的資源之前，將 IP 位址保留為後端集區的一部分。 在[這裡](backend-pool-management.md)深入了解|2020 年 7 月 |
 | 功能| 使用 Azure 監視器的 Azure Load Balancer 深入解析 | 此功能已建置為 Azure 網路監視器的一部分，客戶現在在 Azure 入口網站中，會擁有其所有 Load Balancer 設定的拓撲對應，以及其 Standard Load Balancer (已預先設定了計量) 的健康情況儀表板。 [開始使用並深入了解](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
 | 驗證 | 增加 HA 連接埠的驗證 | 已新增驗證，確保只有在啟用浮動 IP 時，才可設定 HA 連接埠規則和非 HA 連接埠規則。 先前已進行這項設定，但未如預期般執行。 未進行任何功能變更。 您可以在[這裡](load-balancer-ha-ports-overview.md#limitations)深入了解| 2020 年 6 月 |

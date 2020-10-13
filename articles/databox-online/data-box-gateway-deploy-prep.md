@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a8b53af6e23b2dd0ff011a6bfbf99a1da427063
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 1b49ce9f3b04a31e3f062c81f63d3e639a09c6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611631"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741936"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教學課程：準備部署 Azure Data Box Gateway
 
@@ -120,7 +120,7 @@ ms.locfileid: "88611631"
 
 建立資源需要幾分鐘的時間。 順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]  。
 
-![檢閱 Data Box Gateway 資源詳細資料](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
+![檢閱 Data Box Gateway 資源詳細資料 2](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
 ## <a name="download-the-virtual-device-image"></a>下載虛擬裝置映像
 

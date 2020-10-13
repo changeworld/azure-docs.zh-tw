@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921935"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742497"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教學課程：建置自訂搜尋網頁
 
@@ -118,7 +118,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
 5. 從下拉式清單選取您的訂用帳戶金鑰。 或者，您可以手動輸入訂用帳戶金鑰。
   
-   ![[託管的 UI] 其他設定步驟的螢幕擷取畫面](./media/custom-search-hosted-ui-subscription-key.png)
+   ![[託管的 UI] 訂用帳戶金鑰的螢幕擷取畫面](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
 4. 在 [新增 ASP.NET Core Web 應用程式] 視窗中，選取 [Web 應用程式]，然後按一下 [確定]。  
   
-   ![[新增專案] 視窗的螢幕擷取畫面](./media/custom-search-new-webapp.png)  
+   ![新 webapp 視窗的螢幕擷取畫面](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>編輯 Index.cshtml
 

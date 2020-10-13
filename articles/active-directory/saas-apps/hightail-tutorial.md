@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297241"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Hightail 整合
 
@@ -155,15 +155,15 @@ ms.locfileid: "89297241"
 
 1. 按一下頁面右上角的**使用者圖示**。 
 
-    ![設定單一登入](./media/hightail-tutorial/configure1.png)
+    ![顯示 [使用者] 圖示的螢幕擷取畫面。](./media/hightail-tutorial/configure1.png)
 
 1. 按一下 [View Admin Console] \(檢視管理主控台\)  索引標籤。
 
-    ![設定單一登入](./media/hightail-tutorial/configure2.png)
+    ![顯示使用者 [檢視系統管理員主控台] 按鈕的螢幕擷取畫面。](./media/hightail-tutorial/configure2.png)
 
 1. 在頂端功能表中，按一下 [SAML]  索引標籤，然後執行下列步驟：
 
-    ![設定單一登入](./media/hightail-tutorial/configure3.png)
+    ![顯示 [SAML] 索引標籤的螢幕擷取畫面，您可以在其中輸入 [登入 URL] 和 [SAML 憑證]。](./media/hightail-tutorial/configure3.png)
 
     a. 在 [Login URL] \(登入 URL\)  文字方塊中，貼上從 Azure 入口網站複製的 [登入 URL]  值。
 

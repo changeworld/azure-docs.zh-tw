@@ -1,7 +1,7 @@
 ---
-title: 教學課程：適用於 iOS 和 macOS 的 Microsoft Authentication Library (MSAL) | Azure
+title: 教學課程：建立 iOS 或 macOS 應用程式，使用 Microsoft 身分識別平台進行驗證 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 iOS 和 macOS (Swift) 應用程式如何使用 Microsoft 身分識別平台呼叫需要存取權杖的 API
+description: 在本教學課程中，您會建置 iOS 或 macOS 應用程式，使用 Microsoft 身分識別平台來登入使用者，並取得存取權杖來代表他們呼叫 Microsoft Graph API。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256903"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611107"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
 在本教學課程中，您會了解如何整合 iOS 或 macOS 應用程式與 Microsoft 身分識別平台。 應用程式會讓使用者登入、取得存取權杖來呼叫 Microsoft Graph API，以及對 Microsoft Graph API 提出要求。
 
-完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。
+完成本指南後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。 本教學課程適用於 iOS 和 macOS 應用程式。 這兩個平台間有一些的不同步驟。
 
-## <a name="how-this-tutorial-works"></a>本教學課程的運作方式
+本教學課程內容：
+
+> [!div class="checklist"]
+> * 在「Xcode」中建立 iOS 或 macOS 應用程式保護
+> * 在 Azure 入口網站中註冊應用程式
+> * 新增程式碼以支援使用者登入和登出
+> * 新增程式碼以呼叫 Microsoft Graph API
+> * 測試應用程式
+
+## <a name="prerequisites"></a>必要條件
+
+- [Xcode 11.x+](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>教學課程應用程式的運作方式
 
 ![示範本教學課程所產生的應用程式範例如何運作](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -42,16 +55,10 @@ ms.locfileid: "91256903"
 
 此範例會使用 Microsoft 驗證程式庫 (MSAL) 來實作驗證。 MSAL 會自動更新權杖、提供裝置上其他應用程式之間的 SSO，以及管理帳戶。
 
-本教學課程適用於 iOS 和 macOS 應用程式。 這兩個平台間有一些的不同步驟。
+如果您想要下載您在本教學課程中所建置應用程式的完整版本，您可以在 GitHub 上找到以下兩個版本：
 
-## <a name="prerequisites"></a>必要條件
-
-- 您需要 XCode 11.x 版或更高版本，才能在本指南中建置應用程式。 您可以從 [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下載 URL") 下載 XCode。
-- Microsoft 驗證程式庫 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 您可以使用相依性管理員或以手動方式新增程式庫。 以下指示會示範作法。
-
-此教學課程會建立新的專案。 如果您想改為下載完整的教學課程，請下載程式碼：
-- [iOS 範例程式碼](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [macOS 範例程式碼](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [iOS 程式碼範例](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
+- [macOS 程式碼範例](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>建立新專案
 
@@ -159,7 +166,7 @@ var currentAccount: MSALAccount?
 
 您將在此步驟中註冊 `CFBundleURLSchemes`，讓使用者可以在登入之後重新導回應用程式。 順便一提，`LSApplicationQueriesSchemes` 也可讓您的應用程式使用 Microsoft Authenticator。
 
-在 Xcode 中，以原始檔的形式開啟 `Info.plist`，並在 `<dict>` 區段內新增下列程式碼。 將 `[BUNDLE_ID]` 取代為您在 Azure 入口網站中使用的值，如果您已下載程式代碼，該值就會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般] 索引標籤。[身分識別] 區段中會出現組合識別碼。
+在 Xcode 中，以原始檔的形式開啟 `Info.plist`，並在 `<dict>` 區段內新增下列程式碼。 將 `[BUNDLE_ID]` 取代為在 Azure 入口網站中使用的值。 如果您已下載程式碼，則套件組合識別碼為 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般] 索引標籤。[身分識別] 區段中會出現組合識別碼。
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ MSAL 會公開兩個主要方法來取得權杖：`acquireTokenSilently()` 和 `
 
 #### <a name="get-a-token-interactively"></a>以互動方式取得權杖
 
-以下程式碼第一次取得權杖的方式是建立 `MSALInteractiveTokenParameters` 物件並呼叫 `acquireToken`。 接下來，您將新增程式碼來執行下列作業：
+以下程式碼片段第一次取得權杖的方式是建立 `MSALInteractiveTokenParameters` 物件並呼叫 `acquireToken`。 接下來，您將新增程式碼來執行下列作業：
 
 1. 以範圍建立 `MSALInteractiveTokenParameters`。
 2. 使用已建立的參數呼叫 `acquireToken()`。
@@ -847,4 +854,7 @@ func acquireTokenInteractively() {
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您需要在排班之間支援共用裝置的第一線工作者，請參閱 [iOS 裝置的共用裝置模式](msal-ios-shared-devices.md)。
+深入了解如何建置行動應用程式，以在我們的多部分案例系列中呼叫受保護的 Web API。
+
+> [!div class="nextstepaction"]
+> [案例：呼叫 Web API 的行動應用程式](scenario-mobile-overview.md)

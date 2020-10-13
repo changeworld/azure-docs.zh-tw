@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f6c815bf6b8be6d280dcdc60401f7a91e171e66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542733"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744282"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Boomi 整合
 
@@ -89,14 +89,16 @@ ms.locfileid: "88542733"
 
     c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態] 區段中自動填入 [識別碼]  和 [回覆 URL]  值。
 
-    ![image](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中顯示識別碼和回覆 URL 值。](common/idp-intiated.png)
+
+    d. 輸入**登入 URL**，例如 `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}`。
 
     > [!Note]
-    > 您將從 [設定 Boomi SSO]  區段取得 [服務提供者中繼資料檔案]  ，本教學課程稍後會加以說明。 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
+    > 您將從 [設定 Boomi SSO]**** 區段取得 [服務提供者中繼資料檔案]****，本教學課程稍後會加以說明。 如果 [識別碼]**** 和 [回覆 URL]**** 值未自動填入，則請根據您的需求手動填入這些值。
 
 1. Boomi 應用程式需要特定格式的 SAML 判斷提示，需要您將自訂屬性對應新增到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
-    ![image](common/default-attributes.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有預設值，例如名字 user.givenname 和電子郵件地址 User.mail。](common/default-attributes.png)
 
 1. 除了上述屬性外，Boomi 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
@@ -108,7 +110,7 @@ ms.locfileid: "88542733"
 
     ![憑證下載連結](common/certificatebase64.png)
 
-1. 在 [設定 Boomi]  區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Boomi]**** 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -117,52 +119,52 @@ ms.locfileid: "88542733"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Boomi 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Boomi]  。
+1. 在應用程式清單中，選取 [Boomi]****。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-boomi-sso"></a>設定 Boomi SSO
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Boomi 公司網站。
 
-1. 瀏覽至 [公司名稱]  ，並移至 [設定]  。
+1. 瀏覽至 [公司名稱]****，並移至 [設定]****。
 
-1. 按一下 [SSO 選項]  索引標籤並執行下列步驟。
+1. 按一下 [SSO 選項] 索引標籤並執行下列步驟。
 
     ![在應用程式端設定單一登入](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a. 選取 [啟用 SAML 單一登入]  核取方塊。
+    a. 選取 [啟用 SAML 單一登入]**** 核取方塊。
 
-    b. 按一下 [匯入]  ，將已從 Azure AD 下載的憑證上傳至**識別提供者憑證**。
+    b. 按一下 [匯入]****，將已從 Azure AD 下載的憑證上傳至**識別提供者憑證**。
 
-    c. 在 [識別提供者登入 URL]  文字方塊中，輸入取自 Azure AD 應用程式組態視窗中的 [登入 URL]  值。
+    c. 在 [識別提供者登入 URL]**** 文字方塊中，輸入取自 Azure AD 應用程式組態視窗中的 [登入 URL]**** 值。
 
-    d. 針對 [同盟識別碼位置]  ，選取 [同盟識別碼位於 FEDERATION_ID 屬性元素]  選項按鈕。
+    d. 針對 [同盟識別碼位置]****，選取 [同盟識別碼位於 FEDERATION_ID 屬性元素]**** 選項按鈕。
 
-    e. 複製 [AtomSphere 中繼資料 URL]  ，透過您所選的瀏覽器移至 [中繼資料 URL]  ，並將輸出儲存至檔案。 在 Azure 入口網站的 [基本 SAML 設定]  區段中上傳 [中繼資料 URL]  。
+    e. 複製 [AtomSphere 中繼資料 URL]****，透過您所選的瀏覽器移至 [中繼資料 URL]****，並將輸出儲存至檔案。 在 Azure 入口網站的 [基本 SAML 設定]**** 區段中上傳 [中繼資料 URL]****。
 
-    f. 按一下 [儲存]  按鈕。
+    f. 按一下 [儲存] **** 按鈕。
 
 ### <a name="create-boomi-test-user"></a>建立 Boomi 測試使用者
 
@@ -172,25 +174,25 @@ ms.locfileid: "88542733"
 
 1. 以系統管理員身分登入您的 Boomi 公司網站。
 
-1. 登入之後，瀏覽至 [使用者管理]  ，然後移至 [使用者]  。
+1. 登入之後，瀏覽至 [使用者管理]****，然後移至 [使用者]****。
 
-    ![使用者](./media/boomi-tutorial/tutorial_boomi_001.png "使用者")
+    ![顯示 [使用者管理] 頁面的螢幕擷取畫面，其中已選取 [使用者]。](./media/boomi-tutorial/tutorial_boomi_001.png "使用者")
 
-1. 按一下 **+** 圖示，[新增/維護使用者角色]  對話方塊隨即開啟。
+1. 按一下 **+** 圖示，[新增/維護使用者角色] 對話方塊隨即開啟。
 
-    ![使用者](./media/boomi-tutorial/tutorial_boomi_002.png "使用者")
+    ![顯示已選取 + 圖示的螢幕擷取畫面。](./media/boomi-tutorial/tutorial_boomi_002.png "使用者")
 
-    ![使用者](./media/boomi-tutorial/tutorial_boomi_003.png "使用者")
+    ![顯示新增/維護使用者角色的螢幕擷取畫面，您會在其中設定使用者。](./media/boomi-tutorial/tutorial_boomi_003.png "使用者")
 
-    a. 在 [使用者電子郵件地址]  文字方塊中，輸入像是 B.Simon@contoso.com 的使用者電子郵件。
+    a. 在 [使用者電子郵件地址]**** 文字方塊中，輸入像是 B.Simon@contoso.com 的使用者電子郵件。
 
-    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 B。
+    b. 在 [名字]**** 文字方塊中，輸入使用者的名字，例如 B。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 Simon。
+    c. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 Simon。
 
-    d. 輸入使用者的 [同盟識別碼]  。 每位使用者必須有同盟識別碼，以唯一地識別帳戶內的使用者。
+    d. 輸入使用者的 [同盟識別碼]****。 每位使用者必須有同盟識別碼，以唯一地識別帳戶內的使用者。
 
-    e. 指派 [標準使用者]  角色給使用者。 請勿指派系統管理員角色，因為這樣他們會取得一般的 Atmosphere 存取權和單一登入存取權。
+    e. 指派 [標準使用者]**** 角色給使用者。 請勿指派系統管理員角色，因為這樣他們會取得一般的 Atmosphere 存取權和單一登入存取權。
 
     f. 按一下 [確定]  。
 

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120631"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716086"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教學課程：使用 AzCopy 將內部部署資料遷移至雲端儲存體
 
@@ -62,7 +62,7 @@ AzCopy 是命令列工具，可使用簡單的命令從 Azure Blob 儲存體、A
 
 ## <a name="authenticate-with-azure-ad"></a>使用 Azure AD 進行驗證
 
-首先，將[儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)角色指派到您的身分識別。 請參閱[在 Azure 入口網站中使用 RBAC 授與 Azure Blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)。
+首先，將[儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)角色指派到您的身分識別。 請參閱[使用 Azure 入口網站來指派用於存取 Blob 和佇列資料的 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)。
 
 然後，開啟命令提示字元，輸入下列命令並按下 ENTER 鍵。
 

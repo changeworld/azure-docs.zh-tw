@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536167"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Discovery Benefits SSO 整合
 
@@ -86,7 +86,7 @@ ms.locfileid: "88536167"
 
     a. 按一下 [編輯]  圖示，以開啟 [唯一使用者識別碼 (名稱識別碼)]  對話方塊。
 
-    ![Discovery Benefits SSO 設定](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![顯示 [使用者屬性和宣告] 區段的螢幕擷取畫面，其中已選取右側的 [必要宣告] 橢圓形。](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Discovery Benefits SSO 設定](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "88536167"
 
     f. 我們已自動填入 SSO 設定所需的其他宣告 (`SSOInstance` 和 `SSOID`)。 請使用 [編輯]  圖示來根據您的組織對應這些值。
 
-    ![Discovery Benefits SSO 設定](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![顯示 [使用者屬性和宣告] 的螢幕擷取畫面，其中醒目提示 [SSO 執行個體] 和 [SSO 識別碼] 值。](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

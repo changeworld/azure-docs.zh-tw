@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549410"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713805"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AskYourTeam 整合
 
@@ -131,19 +131,19 @@ ms.locfileid: "88549410"
 
 1. 按一下 [我的組織]  。
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/user1.png)
+    ![顯示我的組織連結的螢幕擷取畫面。](./media/askyourteam-tutorial/user1.png)
 
 1. 按一下 [整合]  。
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/configure1.png)
+    ![顯示整合連結的螢幕擷取畫面。](./media/askyourteam-tutorial/configure1.png)
 
 1. 按一下 [編輯設定]  。
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/configure2.png)
+    ![顯示單一登入訊息的螢幕擷取畫面，其中具有 [編輯設定] 按鈕。](./media/askyourteam-tutorial/configure2.png)
 
 1. 在 [編輯單一登入整合]  頁面執行下列步驟： 
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/configure3.png)
+    ![顯示編輯單一登入整合的螢幕擷取畫面，您可以在其中針對此步驟輸入值。](./media/askyourteam-tutorial/configure3.png)
 
     a. 在 [SAML 單一登入服務 URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
@@ -168,15 +168,15 @@ ms.locfileid: "88549410"
 
 1. 按一下 [我的組織]  。
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/user1.png)
+    ![顯示我的組織連結的螢幕擷取畫面，您會在其中開始此工作。](./media/askyourteam-tutorial/user1.png)
 
 1. 按一下 [使用者]  ，然後選取 [新增使用者]  。
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/user2.png)
+    ![顯示具有新增使用者的使用者連結螢幕擷取畫面。](./media/askyourteam-tutorial/user2.png)
 
 1. 在 [新增使用者]  區段中，執行下列步驟：
 
-    ![AskYourTeam 組態](./media/askyourteam-tutorial/user3.png)
+    ![顯示 [新增使用者] 區段的螢幕擷取畫面，您會在其中輸入使用者資訊。](./media/askyourteam-tutorial/user3.png)
 
     1. 在 [名字]  文字方塊中，輸入使用者的名字。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a9004577fa8d946281df88284139e2e507e485b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536422"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Deskradar 整合
 
@@ -162,7 +162,7 @@ ms.locfileid: "88536422"
 
 1. 在 [SAML 2.0]  索引標籤上，執行下列步驟：
 
-    ![Deskradar 組態](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![顯示 [SAML 2.0] 索引標籤的螢幕擷取畫面，其中具有指向 [SAML SSD URL] 和 [識別提供者簽發者] 欄位的箭頭。](./media/deskradar-tutorial/14-paste-urls.jpg)
 
     a. 啟用 **SAML** 驗證方法。
 

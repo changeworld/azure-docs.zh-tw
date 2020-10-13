@@ -1,23 +1,23 @@
 ---
 title: 什麼是 Azure 保留項目？
-description: 了解 Azure Reservations 和定價，以節省虛擬機器、SQL 資料庫、Azure Cosmos DB 及其他資源的成本。
+description: 了解 Azure Reservations 和定價，以節省虛擬機器、SQL 資料庫、Azure Cosmos DB 及其他資源的保留執行個體。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682581"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652358"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
-Azure 保留可協助您藉由承諾多項產品一年或三年期的方案來節省成本。 承諾可讓您在所用的資源上取得折扣。 對於隨用隨付，Reservations 可以大幅減少 72% 的資源成本。 保留會提供計費折扣，且不會影響資源的執行階段狀態。 購買保留之後，折扣就會自動套用至相符的資源。
+Azure 保留可協助您藉由承諾多項產品一年或三年期的方案來節省成本。 承諾可讓您在所用的資源上取得折扣。 對於隨用隨付，保留可以大幅減少 72% 的資源成本。 保留會提供計費折扣，且不會影響資源的執行階段狀態。 購買保留之後，折扣就會自動套用至相符的資源。
 
 您可以預先或每月支付保留費用。 預付和每月付款的保留總費用是相同的，當您選擇按月支付時，您不需要支付任何額外費用。 每月付款僅適用於 Azure 保留，而不是第三方產品。
 
@@ -50,9 +50,9 @@ Azure 保留可協助您藉由承諾多項產品一年或三年期的方案來�
 
 您可以從 Azure 入口網站、API、PowerShell 和 CLI 來購買保留。 
 
-移至 Azure 入口網站進行購買 (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+前往 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs)購買。
 
-如需詳細資訊，請參閱 [購買保留](prepare-buy-reservation.md) 
+如需詳細資訊，請參閱 [購買保留](prepare-buy-reservation.md)。
 
 ## <a name="how-is-a-reservation-billed"></a>保留的計費方式為何？ 
 

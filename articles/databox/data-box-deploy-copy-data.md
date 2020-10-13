@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053536"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766315"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ ms.locfileid: "88053536"
 
 1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 選取 [SMB]，以取得您儲存體帳戶相關共用的存取認證。 
 
-    ![取得共用認證 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![取得 SMB 共用的共用認證](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 選取 [確定]。
     
-    ![取得共用認證 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![取得共用的使用者名稱和密碼](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 utsac1)，請開啟命令視窗。 在命令提示字元中，輸入：
 
@@ -97,11 +97,11 @@ ms.locfileid: "88053536"
 
 4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 選取 [確定] 以開啟檔案總管。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![透過檔案總管連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     您現在應可看到以資料夾形式呈現的共用。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![檔案總管中顯示的共用](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 連線至資料箱共用後，下一個步驟是複製資料。 開始複製資料之前，請檢閱下列注意事項：
 
 * 確實將資料複製到與適當資料格式相對應的共用。 例如，將區塊 Blob 資料複製到區塊 Blob 的共用。 將 VHD 複製到分頁 Blob。 如果資料格式不符合適當的共用類型，則在稍後步驟中，資料上傳至 Azure 的作業將會失敗。
-* 複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。
+* 複製資料時，請確定資料大小符合 [Azure 儲存體帳戶大小限制](data-box-limits.md#azure-storage-account-size-limits)中所述的大小限制。
 * 如果資料 (由資料箱上傳) 同時由資料箱以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
 * 我們的建議如下：
   * 您不要同時使用 SMB 與 NFS。
@@ -225,15 +225,15 @@ C:\Users>
 
 在複製程序期間如果發生任何錯誤，您會看到通知。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-1.png)
+![連線並複製中的複製錯誤通知](media/data-box-deploy-copy-data/view-errors-1.png)
 
 選取 [下載問題清單]。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-2.png)
+![下載及檢視 [連線並複製] 頁面上的錯誤 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 開啟清單以檢視錯誤的詳細資料，並選取 [解析 URL] 以檢視建議的解決方法。
 
-![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-3.png)
+![下載及檢視 [連線並複製] 頁面上的錯誤 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
 

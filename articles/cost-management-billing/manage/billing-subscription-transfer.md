@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ef497439d77fef63f4b0c902aee06428a30c5ff5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276725"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666104"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -56,7 +56,7 @@ ms.locfileid: "91276725"
 
 當您建立新的訂用帳戶時，該帳戶會裝載於您帳戶的 Azure AD 租用戶中。 如果您想要將訂用帳戶或其資源的存取權提供給其他人，則必須邀請他們加入您的租用戶。 這麼做可協助您控制訂用帳戶和資源的存取權。
 
-當您將訂用帳戶的帳單擁有權轉移給另一個 Azure AD 租用戶中的帳戶時，您可以將訂用帳戶移至新帳戶的租用戶。 如果您這麼做，所有以 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)來管理訂用帳戶及其資源的使用者、群組或服務主體都會失去其存取權。 只有新帳戶中接受轉移要求的使用者，才有權利管理資源。 新的擁有者必須以手動方式將這些使用者新增至訂用帳戶，以將存取權提供給失去存取權的人員。 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽)](../../role-based-access-control/transfer-subscription.md)。
+當您將訂用帳戶的帳單擁有權轉移給另一個 Azure AD 租用戶中的帳戶時，您可以將訂用帳戶移至新帳戶的租用戶。 如果您這麼做，所有以 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)來管理訂用帳戶及其資源的使用者、群組或服務主體都會失去其存取權。 只有新帳戶中接受轉移要求的使用者，才有權利管理資源。 新的擁有者必須以手動方式將這些使用者新增至訂用帳戶，以將存取權提供給失去存取權的人員。 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>轉移 Visual Studio 和合作夥伴網路訂用帳戶
 

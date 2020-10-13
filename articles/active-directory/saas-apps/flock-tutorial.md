@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554954"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826443"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>教學課程：Azure Active Directory 與 Flock 整合
 
@@ -128,7 +128,7 @@ Flock 與 Azure AD 整合提供下列優點：
 
 2. 從左方導覽面板選取 [Authentication]  \(驗證\) 索引標籤，然後選取 [SAML Authentication]  \(SAML 驗證\)。
 
-    ![Flock 設定](./media/flock-tutorial/configure1.png)
+    ![顯示 [驗證] 索引標籤的螢幕擷取畫面，其中已選取 [SAML 驗證]。](./media/flock-tutorial/configure1.png)
 
 3. 在 [SAML 驗證]  區段中，執行下列步驟：
 
@@ -203,11 +203,11 @@ Flock 與 Azure AD 整合提供下列優點：
 
 2. 從左方導覽面板按一下 [Manage Team]  \(管理小組\)。
 
-    ![新增員工](./media/flock-tutorial/user1.png)
+    ![顯示 [管理小組] 的螢幕擷取畫面。](./media/flock-tutorial/user1.png)
 
 3. 按一下 [Add Member]  \(新增成員\) 索引標籤，然後選取 [Team Members]  \(小組成員\)。
 
-    ![新增員工](./media/flock-tutorial/user2.png)
+    ![顯示 [新增成員] 索引標籤的螢幕擷取畫面，其中已選取 [小組成員]。](./media/flock-tutorial/user2.png)
 
 4. 輸入使用者的電子郵件地址 (例如 **Brittasimon\@contoso.com**)，然後選取 [Add Users] \(新增使用者\)  。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259128"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742378"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>教學課程：透過 SMB 從 Azure 資料箱複製資料 (預覽)
 
@@ -50,7 +50,7 @@ ms.locfileid: "86259128"
 
 1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 選取 [取得認證]，以取得您儲存體帳戶相關共用的存取認證。 
 
-    ![取得共用認證 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![取得共用認證](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 選取 [確定]。
     
@@ -75,7 +75,7 @@ ms.locfileid: "86259128"
 
 4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 選取 [確定] 以開啟檔案總管。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![透過檔案總管連線至共用](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     您現在應可看到以資料夾形式呈現的共用。
     

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7079ffd5cb2fe643d93dea0f5c9384a7931dc8a6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1754929629bd05dc48419e521fa8e07f7c873217
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550653"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823403"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>教學課程：整合 EY GlobalOne 與 Azure Active Directory
 
@@ -80,7 +80,7 @@ ms.locfileid: "88550653"
 
 1. EY GlobalOne 應用程式需要特定格式的 SAML 判斷提示，您需要將自訂屬性對應新增到您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 除了以上屬性之外，EY GlobalOne 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -93,7 +93,7 @@ ms.locfileid: "88550653"
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 區段的螢幕擷取畫面，其中醒目提示 [新增宣告] 和 [儲存] 動作。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

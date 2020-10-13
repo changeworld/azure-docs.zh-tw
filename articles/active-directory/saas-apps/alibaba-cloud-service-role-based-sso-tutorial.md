@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521972"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Alibaba Cloud Service (角色型 SSO) 整合
 
@@ -132,11 +132,11 @@ ms.locfileid: "88521972"
 
 1. 在 [使用者和群組]  索引標籤上，選取使用者清單中的 u2，然後按一下 [選取]  。 然後，按一下 [指派]  。
 
-    ![測試設定](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![顯示 Alibaba [新增指派] 窗格的螢幕擷取畫面，其中未選取使用者和群組。](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. 檢視指派的角色並測試 Alibaba Cloud Service (角色型 SSO)。
 
-    ![測試設定](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![顯示為使用者 u2 所指派角色的螢幕擷取畫面。](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >在指派使用者 (u2) 後，所建立的角色會自動連結至使用者。 如果您已建立多個角色，則必須視需要將適當的角色連結至使用者。 如果您想要將角色型 SSO 從 Azure AD 實作到多個 Alibaba 雲端帳戶，請重複上述步驟。
@@ -164,25 +164,25 @@ ms.locfileid: "88521972"
 
     b. 按一下 [修改權限]  以取得用於建立角色的必要權限。
 
-    ![圖表設定](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![顯示 Graph 總管驗證的螢幕擷取畫面，其中具有修改權限連結。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. 從清單中選取下列權限，然後按一下 [修改權限]  ，如下圖所示。
 
-    ![圖表設定](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![顯示要選取的權限螢幕擷取畫面：Directory.AccessAsUser.All、Directory.Read.All 和 Directory.ReadWrite.All。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >授與權限之後，再次登入 Graph 總管。
 
     d. 在 [Graph 總管] 頁面上，選取第一個下拉式清單中的 [GET]  和第二個下拉式清單中的 [beta]  。 然後在下拉式清單旁邊的欄位中輸入 `https://graph.microsoft.com/beta/servicePrincipals`，並按一下 [執行查詢]  。
 
-    ![圖表設定](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![顯示 Graph 總管的螢幕擷取畫面，其中已選取 GET 和搶鮮版 (Beta)，並且已呼叫 [執行查詢] 按鈕。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >如果您要使用多個目錄，則可以在查詢的欄位中輸入 `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`。
 
     e. 在 [回應預覽]  區段中，從 [服務主體] 擷取 appRoles 屬性以供後續使用。
 
-    ![圖表設定](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![顯示 [回應預覽] 區段中純文字的螢幕擷取畫面，您可以在其中取得 appRoles 屬性。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >您可以在查詢的欄位中輸入 `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` 來找到 appRoles 屬性。 請注意，`objectID` 是您從 Azure AD 的 [屬性]  頁面所複製的物件識別碼。
@@ -234,19 +234,19 @@ ms.locfileid: "88521972"
 
 1. 在 Azure 入口網站中，移至 [Alibaba Cloud Service (角色型 SSO)]  頁面、選取 [單一登入]  ，然後按一下 [測試]  。
 
-    ![測試設定](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![顯示使用 Alibaba Cloud Service 測試單一登入的螢幕擷取畫面，其中具有 [測試] 按鈕。](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. 按一下 [以目前使用者身分登入]  。
 
-    ![測試設定](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![顯示以目前使用者身分登入連結的螢幕擷取畫面。](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. 在 [帳戶選取] 頁面中，選取 [u2]。
 
-    ![測試設定](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![顯示已選取使用者 u2 的 SSO 登入選項螢幕擷取畫面。](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. 隨即會顯示下列頁面，指出角色型 SSO 已成功。
 
-    ![測試設定](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![顯示 [產品和服務] 頁面的螢幕擷取畫面，其中表示測試成功。 ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>其他資源
 

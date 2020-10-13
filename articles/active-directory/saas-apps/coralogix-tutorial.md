@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555895"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Coralogix 整合
 
@@ -95,25 +95,26 @@ ms.locfileid: "88555895"
 
  1. Coralogix 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上選取 [編輯]  按鈕，以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 對話方塊的螢幕擷取畫面，其中醒目提示 [編輯] 按鈕。](common/edit-attribute.png)
 
 1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，使用 [編輯]  圖示來編輯宣告。 您也可使用 [新增宣告]  來新增宣告，以設定 SAML 權杖屬性，如上圖所示。 然後採取下列步驟：
     
     a. 選取 [編輯]  圖示以開啟 [管理使用者宣告]  對話方塊。
 
-    ![影像](./media/coralogix-tutorial/tutorial_usermail.png) ![影像](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![顯示 [使用者屬性和宣告] 對話方塊的螢幕擷取畫面，其中醒目提示 [編輯] 按鈕。](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
-    b. 從 [選擇名稱識別碼格式]  清單中選取 [電子郵件地址]  。
+    b. 從 [選擇名稱識別碼格式]**** 清單中選取 [電子郵件地址]****。
 
-    c. 從 [來源屬性]  清單中，選取 [user.mail]  。
+    c. 從 [來源屬性]**** 清單中，選取 [user.mail]****。
 
-    d. 選取 [儲存]  。
+    d. 選取 [儲存]。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Coralogix]  區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Coralogix]**** 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -122,34 +123,34 @@ ms.locfileid: "88555895"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Coralogix 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Coralogix]  。
+1. 在應用程式清單中，選取 [Coralogix]****。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-coralogix-sso"></a>設定 Coralogix SSO
 
-若要在 **Coralogix** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Coralogix 支援小組](mailto:info@coralogix.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Coralogix** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]**** 和複製的適當 URL 傳送給 [Coralogix 支援小組](mailto:info@coralogix.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-coralogix-test-user"></a>建立 Coralogix 測試使用者
 

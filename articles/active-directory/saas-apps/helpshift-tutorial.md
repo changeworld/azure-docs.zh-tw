@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb9c776061407669f27f61ac4bc536b859d04b66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 41dd61182674d63e7c8b83232c53b9e7054de04d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550609"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816848"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Helpshift 整合
 
@@ -134,11 +134,11 @@ ms.locfileid: "88550609"
 
 1. 開啟 Helpshift **儀表板**，然後按一下 [設定]  圖示。
 
-    ![Helpshift 設定](./media/helpshift-tutorial/configuration01.png)
+    ![顯示 Helpshift 設定圖示的螢幕擷取畫面。](./media/helpshift-tutorial/configuration01.png)
 
 1. 按一下 [整合]  索引標籤，然後執行下列步驟：
 
-    ![Helpshift 設定](./media/helpshift-tutorial/configuration02.png)
+    ![顯示 [整合] 索引標籤的螢幕擷取畫面，您可以在其中執行所述的步驟。](./media/helpshift-tutorial/configuration02.png)
 
     a. 開啟 **單一登入 (SAML-SSO)** 。
 

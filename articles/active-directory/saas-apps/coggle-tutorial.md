@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555962"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Coggle 整合
 
@@ -146,19 +146,19 @@ ms.locfileid: "88555962"
 
 2. 按一下 **Coggle** 帳戶，然後選取 [My Settings] \(我的設定\)。
 
-    ![Coggle 設定](./media/Coggle-tutorial/configure1.png)
+    ![顯示 Coggle 公司網站的螢幕擷取畫面，其中已選取 [我的設定]。](./media/Coggle-tutorial/configure1.png)
 
 3. 按一下下列**標誌**，然後選取 [Authentication] \(驗證\)。
 
-    ![Coggle 設定](./media/Coggle-tutorial/configure2.png)
+    ![顯示鯨魚圖示並且已選取 [驗證] 的螢幕擷取畫面。](./media/Coggle-tutorial/configure2.png)
 
 4. 按一下 [Edit SAML Config] \(編輯 SAML 設定\)。
 
-    ![Coggle 設定](./media/Coggle-tutorial/configure3.png)
+    ![顯示具有 [編輯 SAML 設定] 選項的 [SAML 整合] 頁面螢幕擷取畫面。](./media/Coggle-tutorial/configure3.png)
 
 5. 在 [SAML Integration] \(SAML 整合\) 對話方塊頁面上，執行下列步驟：
 
-    ![Coggle 設定](./media/Coggle-tutorial/configure4.png)
+    ![顯示 [SAML 整合] 頁面的螢幕擷取畫面，您可以在其中輸入此步驟中的資訊。](./media/Coggle-tutorial/configure4.png)
 
     a. 在 [Entrypoint (ID Provider SSO URL)] \(進入點 (識別碼提供者 SSO URL)\) 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548347"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
@@ -304,7 +304,7 @@ ms.locfileid: "88548347"
 
 18. 為此使用者建立新的原則。
 
-    ![[新增使用者] 的螢幕擷取畫面](./media/amazon-web-service-tutorial/adduser2.png)
+    ![顯示新增使用者頁面的螢幕擷取畫面，您可以在其中建立使用者的原則。](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. 選取 [直接附加現有的原則]。
 
@@ -322,7 +322,7 @@ ms.locfileid: "88548347"
 
 20. 下載使用者的使用者認證。
 
-    ![[新增使用者] 的螢幕擷取畫面](./media/amazon-web-service-tutorial/adduser4.png)
+    ![顯示新增使用者頁面的螢幕擷取畫面，其中具有用來取得使用者認證的下載 CSV 按鈕。](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. 複製使用者**存取金鑰識別碼**和**祕密存取金鑰**。
 

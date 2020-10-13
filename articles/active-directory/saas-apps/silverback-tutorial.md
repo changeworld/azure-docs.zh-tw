@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517067"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教學課程：Azure Active Directory 與 Silverback 整合
 
@@ -160,7 +160,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
+    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
     c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
@@ -213,7 +213,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    d. 在 [電子郵件地址]  文字方塊中，輸入使用者的電子郵件，例如 **Brittasimon@contoso.com** 。
+    d. 在 [電子郵件地址] 文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com**。
 
     e. 在 [密碼]  文字方塊中，輸入您的密碼。
 

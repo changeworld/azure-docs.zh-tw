@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: abd6382a9bf07f198e0344b8730c585cff0f96ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 987a8676fa9f738b788b183a1f3d964c0d0b88ad
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544276"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>教學課程：Azure Active Directory 與 eKincare 整合
 
@@ -112,7 +112,7 @@ eKincare 與 Azure AD 整合提供下列優點：
 
 5. eKincare 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 對話方塊的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](common/edit-attribute.png)
 
 6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，使用 [編輯] 圖示來編輯宣告或使用 [新增宣告] 來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟： 
 
@@ -124,7 +124,7 @@ eKincare 與 Azure AD 整合提供下列優點：
     
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 對話方塊的螢幕擷取畫面，其中已選取 [新增宣告] 和 [儲存] 按鈕。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

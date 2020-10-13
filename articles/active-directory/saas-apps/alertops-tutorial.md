@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522331"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715866"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>教學課程：整合 AlertOps 與 Azure Active Directory
 
@@ -108,11 +108,11 @@ ms.locfileid: "88522331"
 
 4. 從左側瀏覽面板中，按一下 [帳戶設定]  。
 
-    ![AlertOps 組態](./media/alertops-tutorial/configure1.png)
+    ![顯示 AlertOps 功能表的螢幕擷取畫面，其中已呼叫 [帳戶設定]。](./media/alertops-tutorial/configure1.png)
 
 5. 在 [訂用帳戶設定]  頁面上，選取 [SSO]  並執行下列步驟：
 
-    ![AlertOps 組態](./media/alertops-tutorial/configure2.png)
+    ![顯示適用於 SSO 的 [訂用帳戶設定] 視窗螢幕擷取畫面，其中輸入此步驟中所述的值。](./media/alertops-tutorial/configure2.png)
 
     a. 選取 [使用單一登入 (SSO)\]  核取方塊。
 
@@ -164,15 +164,15 @@ ms.locfileid: "88522331"
 
 2. 從左邊的導覽面板按一下 [使用者]  。
 
-    ![AlertOps 組態](./media/alertops-tutorial/user1.png)
+    ![顯示 AlertOps 功能表的螢幕擷取畫面，其中已呼叫 [使用者]。](./media/alertops-tutorial/user1.png)
 
 3. 選取 [新增使用者]  。
 
-    ![AlertOps 組態](./media/alertops-tutorial/user2.png)
+    ![顯示 [使用者] 視窗的螢幕擷取畫面，其中具有 [新增使用者] 按鈕。](./media/alertops-tutorial/user2.png)
 
 4. 在 [加入使用者]  對話方塊中，執行下列步驟：
 
-    ![AlertOps 組態](./media/alertops-tutorial/user3.png)
+    ![顯示 [新增使用者] 窗格的螢幕擷取畫面，其中輸入此步驟中所述的值。](./media/alertops-tutorial/user3.png)
 
     a. 在 [登入使用者名稱]  文字方塊中，輸入使用者的使用者名稱，例如 **Brittasimon**。
 

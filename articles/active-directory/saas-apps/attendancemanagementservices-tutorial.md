@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550238"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教學課程：Azure Active Directory 與 Attendance Management Services 整合
 
@@ -128,11 +128,11 @@ Attendance Management Services 與 Azure AD 整合提供下列優點：
 
 1. 在 [安全性管理]  區段下，按一下 [SAML 驗證]  。
 
-    ![Attendance Management Services 設定](./media/attendancemanagementservices-tutorial/user1.png)
+    ![螢幕擷取畫面，顯示在使用非拉丁字元的頁面中已選取 SAML 驗證。](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. 執行下列步驟：
 
-    ![Attendance Management Services 設定](./media/attendancemanagementservices-tutorial/user2.png)
+    ![顯示您可以在其中執行此步驟中所述工作的視窗螢幕擷取畫面。](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. 選取 [使用 SAML 驗證]  。
 
@@ -206,15 +206,15 @@ Attendance Management Services 與 Azure AD 整合提供下列優點：
 
 1. 在 [安全性管理]  區段下，按一下 [使用者管理]  。
 
-    ![新增員工](./media/attendancemanagementservices-tutorial/user5.png)
+    ![螢幕擷取畫面，顯示在使用非拉丁字元的頁面中已選取使用者管理。](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. 按一下 [新增規則登入]  。
 
-    ![新增員工](./media/attendancemanagementservices-tutorial/user3.png)
+    ![顯示選取加號選項的螢幕擷取畫面。](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. 在 [OBCiD 資訊]  區段中，執行下列步驟：
 
-    ![新增員工](./media/attendancemanagementservices-tutorial/user4.png)
+    ![顯示您可以在其中執行工作的視窗螢幕擷取畫面。](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. 在 [OBCiD]  文字方塊中，輸入使用者的電子郵件，例如 `BrittaSimon\@contoso.com`。
 

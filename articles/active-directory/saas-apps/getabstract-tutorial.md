@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6881681eef553dd2e21ba68a2bf722c7af1fc4a7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550838"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>教學課程：Azure Active Directory 與 Getabstract 整合
 
@@ -105,7 +105,7 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態] 區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Getabstract 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 區段的螢幕擷取畫面，其中醒目提示 [識別碼] 和 [回覆 URL]，並且已選取 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼] 文字方塊中，鍵入 URL：
 

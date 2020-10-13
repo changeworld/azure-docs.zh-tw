@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542797"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教學課程：Azure Active Directory 與 Brightidea 整合
 
@@ -112,14 +112,14 @@ ms.locfileid: "88542797"
 
     c. 在成功上傳中繼資料檔案之後，會自動在 [Brightidea] 區段文字方塊中填入 [識別碼]  和 [回覆 URL]  值：
 
-    ![image](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ ms.locfileid: "88542797"
 
 2. 若要移至您 Brightidea 系統的 SSO 功能，請瀏覽至 [Enterprise Setup] \(企業設定\)   -> [Authentication] \(驗證\)  索引標籤。您會在該處看到兩個子索引標籤：[Auth Selection]\(驗證選取項目\) 和 [SAML Profiles] \(SAML 設定檔\)。
 
-    ![Brightidea 設定](./media/brightidea-tutorial/configure1.png)
+    ![顯示 Brightidea 網站的螢幕擷取畫面，其中已選取 [驗證] 索引標籤。](./media/brightidea-tutorial/configure1.png)
 
 3. 選取 [Auth Selection]\(驗證選取項目\)  。 預設只會顯示兩個標準方法：Brightidea [Login] \(登入\) 和 [Registration] \(註冊\)。 新增 SSO 方法之後，它就會顯示在清單中。
 
-    ![Brightidea 設定](./media/brightidea-tutorial/configure2.png)
+    ![顯示 Brightidea 驗證索引標籤的螢幕擷取畫面，其中已選取驗證選項。](./media/brightidea-tutorial/configure2.png)
 
 4. 選取 [SAML Profiles] \(SAML 設定檔\)  ，然後執行下列步驟：
 
-    ![Brightidea 設定](./media/brightidea-tutorial/configure3.png)
+    ![顯示已選取 [SAML 設定檔] 的 Brightidea 驗證索引標籤螢幕擷取畫面，其中提供下載中繼資料和新增的選項。](./media/brightidea-tutorial/configure3.png)
 
     a. 按一下 [Download Metadata] \(下載中繼資料\)  ，然後在 Azure 入口網站中的 [基本 SAML 設定]  區段上傳該中繼資料。
 
     b. 按一下 [Identity Provider Setting] \(身分識別提供者設定\)  底下的 [Add New] \(新增\)  按鈕，然後執行下列步驟：
     
-    ![Brightidea 設定](./media/brightidea-tutorial/configure4.png)
+    ![顯示 Brightidea 識別提供者設定的螢幕擷取畫面，您可以在其中輸入資訊。](./media/brightidea-tutorial/configure4.png)
     
    * 輸入 [SAML Profile Name] \(SAML 設定檔名稱\)  ，例如 `Azure Ad SSO`
     

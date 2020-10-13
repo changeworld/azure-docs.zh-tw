@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108030"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741664"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>從 Bing 地圖服務遷移 Web 服務
 
@@ -249,7 +249,7 @@ Azure 地圖服務路線規劃 API 會有許多 Bing 地圖服務並未提供的
 
 有數種方式可在 Azure 地圖服務中將座標貼齊道路。
 
--   使用路線指示 API 來貼齊座標，並從道路網路上的邏輯路線貼齊座標。
+-   使用路線指示 API 將座標貼齊道路網路上的邏輯路線。
 -   使用 Azure 地圖服務 Web SDK，將個別座標貼齊向量地圖底圖中的最接近道路。
 -   直接使用 Azure 地圖服務向量地圖底圖來貼齊個別座標。
 

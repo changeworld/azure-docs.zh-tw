@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 8152244d2e05d6e05843a2b84151d6b6a8df7f26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c209d59e3e0552db5d7e7dd64af2ce5d233881a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555549"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826291"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>教學課程：Azure Active Directory 與 EasyTerritory 整合
 
@@ -99,7 +99,7 @@ ms.locfileid: "88555549"
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![EasyTerritory 網域和 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中醒目提示 [識別碼]、[回覆 URL] 和 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://apps.easyterritory.com/<tenant id>/dev/`
 

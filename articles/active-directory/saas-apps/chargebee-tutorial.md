@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529470"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760643"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>教學課程：整合 Chargebee 與 Azure Active Directory
 
@@ -132,11 +132,11 @@ ms.locfileid: "88529470"
 
 4. 從功能表左側，按一下 [設定]   > [安全性]   > [管理]  。
 
-    ![Chargebee 組態](./media/chargebee-tutorial/config01.png)
+    ![顯示 Chargebee 公司網站的螢幕擷取畫面，其中已選取 [設定]、[安全性] 和 [管理]。](./media/chargebee-tutorial/config01.png)
 
 5. 在 [單一登入]  快顯視窗上，執行下列步驟：
 
-    ![Chargebee 組態](./media/chargebee-tutorial/config02.png)
+    ![顯示 [單一登入] 對話方塊的螢幕擷取畫面，其中已選取 SAML 以及具有要確認的選項。](./media/chargebee-tutorial/config02.png)
 
     a. 選取 [SAML]  。
 
@@ -156,11 +156,11 @@ ms.locfileid: "88529470"
 
 2. 在功能表左側按一下 [客戶]  ，然後瀏覽至 [建立新的客戶]  。
 
-    ![Freedcamp 組態](./media/chargebee-tutorial/config03.png)
+    ![顯示 Chargebee 網站的螢幕擷取畫面，其中已選取 [客戶] 和 [建立新客戶]。](./media/chargebee-tutorial/config03.png)
 
 3. 在 [新增客戶]  頁面上填入顯示如下的各個欄位，然後按一下 [建立客戶]  以建立使用者。
 
-    ![Freedcamp 組態](./media/chargebee-tutorial/config04.png)
+    ![顯示 [新增客戶] 頁面的螢幕擷取畫面，您可以在其中輸入客戶資訊。](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>測試 SSO 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547489"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教學課程：Azure Active Directory 與 IdeaScale 整合
 
@@ -137,7 +137,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
 3. 移至 [安全性] \> [單一登入設定]。
 
-    ![單一登入設定](./media/ideascale-tutorial/ic790848.png "單一登入設定")
+    ![顯示從 [安全性] 功能表選取 [單一登入設定] 的螢幕擷取畫面。](./media/ideascale-tutorial/ic790848.png "單一登入設定")
 
 4. 在 [單一登入類型]  ，選取 [SAML 2.0]  。
 
@@ -145,7 +145,7 @@ IdeaScale 與 Azure AD 整合提供下列優點：
 
 5. 在 [單一登入設定]  對話方塊上執行下列步驟：
 
-    ![單一登入設定](./media/ideascale-tutorial/ic790850.png "單一登入設定")
+    ![顯示 [單一登入設定] 對話方塊的螢幕擷取畫面。](./media/ideascale-tutorial/ic790850.png "單一登入設定")
 
     a. 在 [SAML IdP 實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 

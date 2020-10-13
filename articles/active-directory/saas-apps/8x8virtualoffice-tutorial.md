@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538649"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708793"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 8x8 整合
 
@@ -147,11 +147,11 @@ ms.locfileid: "88538649"
 
 1. 從首頁按一下 [身分識別管理]。
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+    ![醒目提示 [身分識別管理] 圖格的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/configure1.png)
 
 1. 核取 [單一登入 (SSO)]，然後選取 [Microsoft Azure AD]。
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+    ![醒目提示單一登入 (SSO) 和 Microsoft Azure AD 選項的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/configure2.png)
 
 1. 將 Azure AD 中 [設定使用 SAML 的單一登入] 頁面內的三個 URL 和簽署憑證，複製到 8x8 Configuration Manager 中的 [Microsoft Azure AD SAML 設定] 區段。
 
@@ -173,23 +173,23 @@ ms.locfileid: "88538649"
 
 1. 在 [應用程式面板] 上選取 [Virtual Office 帳戶管理員]  。
 
-    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+    ![醒目提示 [Virtual Office 帳戶管理員] 圖格的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
 1. 選取 [商務] 帳戶以進行管理，並按一下 [登入] 按鈕。
 
-    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
+    ![醒目提示 [商務] 選項和 [登入] 按鈕的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. 按一下功能表清單中的 [帳戶] 索引標籤。
 
-    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+    ![醒目提示功能表清單中 [帳戶] 索引標籤的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
 1. 按一下 [帳戶] 清單中的 [單一登入]  。
 
-    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+    ![醒目提示 [單一登入] 選項的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. 選取 [驗證方法] 底下的 [單一登入]，然後按一下 [SAML]。
 
-    ![在應用程式端設定](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+    ![醒目提示 [單一登入] 底下 SAML 的螢幕擷取畫面。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
 1. 在 [SAML 單一登入] 區段中，執行下列步驟：
 

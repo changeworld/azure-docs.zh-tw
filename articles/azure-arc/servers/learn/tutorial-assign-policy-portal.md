@@ -2,18 +2,17 @@
 title: 教學課程 - 使用 Azure 入口網站指派新原則
 description: 在本教學課程中，您會使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321861"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826597"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>教學課程：建立原則指派以識別不相容資源
 
-了解 Azure 中合規性的第一個步驟是識別您資源的狀態。
-本教學課程會引導您完成建立原則指派的流程，以識別已啟用 Azure Arc 的伺服器電腦，並識別未在已啟用 Azure Arc 的機器上安裝 Log Analytics 代理程式的機器。
+了解 Azure 中合規性的第一個步驟是識別您資源的狀態。 Azure 原則支援使用「來賓設定」原則來稽核已啟用 Arc 的伺服器狀態。 「來賓設定」原則不會套用設定，這些原則只會稽核機器內的設定。 本教學課程會引導您完成建立和指派原則的程序，以識別已啟用 Arc 的伺服器中哪一個已安裝 Log Analytics 代理程式。
 
 在此流程結束時，您會成功識別未安裝適用於 Windows 或 Linux 之 Log Analytics 代理程式的電腦。 它們「不符合」原則指派的規範。
 
@@ -23,7 +22,7 @@ ms.locfileid: "91321861"
 
 ## <a name="create-a-policy-assignment"></a>建立原則指派
 
-在本教學課程中，您會建立一個原則指派，並且指派 [稽核未使用受控磁碟的虛擬機器] 原則定義。
+在本教學課程中，您會建立原則指派，並且指派 _\[預覽]：_ 「Linux Azure Arc 電腦上應已安裝 Log Analytics 代理程式」原則定義。
 
 1. 藉由按一下 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208784"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660833"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>教學課程：透過 NFS 從 Azure 資料箱複製資料 (預覽)
 
@@ -45,15 +45,17 @@ ms.locfileid: "86208784"
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-如果您使用 Linux 主機電腦，請執行下列步驟設定資料箱，以允許 NFS 用戶端的存取。
+如果您使用 Linux 主機電腦，請執行下列步驟設定資料箱，以允許 NFS 用戶端的存取。 資料箱一次最多可以連線五個 NFS 用戶端。
 
-1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
+1. 針對允許存取共用的用戶端提供其 IP 位址：
 
-    ![設定 NFS 用戶端存取 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
 
-2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
+        ![開啟 NFS 用戶端存取](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![設定 NFS 用戶端存取 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. 若要新增 NFS 用戶端，請提供用戶端的 IP 位址，然後按一下 [新增]。 資料箱一次最多可以連線五個 NFS 用戶端。 完成時，請按一下 [確定]。
+
+         ![新增 NFS 用戶端](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. 確定 Linux 主機電腦已安裝NFS 用戶端的[支援版本](data-box-system-requirements.md)。 針對您的 Linux 發行版本，請使用特定版本。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555867"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775131"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Check Point CloudGuard Dome9 Arc 整合
 
@@ -156,11 +156,11 @@ ms.locfileid: "88555867"
 
 2. 按一下右上角的 [設定檔設定]  ，然後按一下 [帳戶設定]  。 
 
-    ![Check Point CloudGuard Dome9 Arc 組態](./media/dome9arc-tutorial/configure1.png)
+    ![顯示 [設定檔設定] 功能表的螢幕擷取畫面，其中已選取 [帳戶設定]。](./media/dome9arc-tutorial/configure1.png)
 
 3. 瀏覽至 [SSO]  ，然後按一下 [啟用]  。
 
-    ![Check Point CloudGuard Dome9 Arc 組態](./media/dome9arc-tutorial/configure2.png)
+    ![顯示已選取 [SSO] 索引標籤和 [啟用] 的螢幕擷取畫面。](./media/dome9arc-tutorial/configure2.png)
 
 4. 在 [SSO 設定] 區段中，執行下列步驟：
 
@@ -189,11 +189,11 @@ ms.locfileid: "88555867"
 
 2. 按一下 [使用者和角色]  ，然後按一下 [使用者]  。
 
-    ![新增員工](./media/dome9arc-tutorial/user1.png)
+    ![顯示 [使用者和角色] 的螢幕擷取畫面，其中已選取 [使用者] 動作。](./media/dome9arc-tutorial/user1.png)
 
 3. 按一下 [新增使用者]  。
 
-    ![新增員工](./media/dome9arc-tutorial/user2.png)
+    ![顯示 [使用者和角色] 的螢幕擷取畫面，其中已選取 [新增使用者] 按鈕。](./media/dome9arc-tutorial/user2.png)
 
 4. 在 [建立使用者]  區段中，執行下列步驟：
 

@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531639"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758977"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
 在本教學課程中，您會使用 Linux 基礎映像，建立您的程式碼並將其部署至 Azure Functions 作為自訂 Docker 容器。 當您的函式需要特定的語言版本，或有內建映像所未提供的特定相依性或組態時，您通常會想使用自訂映像。
+
+在自訂 Linux 容器中部署您的函式程式碼需要[進階方案](functions-premium-plan.md#features)或[專用 (App Service) 方案](functions-scale.md#app-service-plan)裝載。 完成本教學課程會在您的 Azure 帳戶中產生費用 (以美元計價)，您可以在完成時[清除資源](#clean-up-resources)，將這些成本降到最低。
 
 您也可以如[建立您在 Linux 上託管的第一個函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)所述，使用預設 Azure App Service 容器。 在 [Azure Functions 基底映像存放庫](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的基底映像。
 
@@ -31,7 +33,7 @@ ms.locfileid: "90531639"
 > * 啟用容器的 SSH 連線。
 > * 新增佇列儲存體輸出繫結。 
 
-您可以在任何執行 Windows、macOS 或 Linux 的電腦上遵循此教學課程。 完成本教學課程將會在您的 Azure 帳戶中產生數美元的成本。
+您可以在任何執行 Windows、macOS 或 Linux 的電腦上遵循此教學課程。 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ Docker Hub 是一個容器登錄，其裝載映像並提供映像和容器服務
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    [專用 (App Service) 方案](functions-scale.md#app-service-plan)和[進階方案](functions-premium-plan.md#features)支援自訂函式容器的 Linux 裝載。 我們在此使用進階方案，其可視需要進行調整。 若要深入了解裝載，請參閱 [Azure Functions 裝載方案比較](functions-scale.md)。 若要計算成本，請參閱 [Functions 定價頁面](https://azure.microsoft.com/pricing/details/functions/)。
+    我們在此使用進階方案，其可視需要進行調整。 若要深入了解裝載，請參閱 [Azure Functions 裝載方案比較](functions-scale.md)。 若要計算成本，請參閱 [Functions 定價頁面](https://azure.microsoft.com/pricing/details/functions/)。
 
     此命令也會在相同的資源群組中佈建相關聯的 Azure Application Insights 執行個體，您可將其用於監視函式應用程式和檢視記錄。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md)。 在您啟用此執行個體之前，並不會產生任何成本。
 

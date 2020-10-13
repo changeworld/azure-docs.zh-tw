@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: d743785ad5525f582e5cb25df715d8211121e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 898f579446008bd696b4c120a56a960458e5640f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547251"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>教學課程：Azure Active Directory 與 Communifire 整合
 
@@ -101,7 +101,7 @@ Communifire 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Communifire 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 頁面的螢幕擷取畫面，其中醒目提示 [儲存] 動作、[識別碼] 欄位和 [回覆 URL] 欄位。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.communifire.com`
 

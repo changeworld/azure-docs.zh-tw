@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 60c699e35cb182c6a90ae60efe93303569a35014
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540766"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817372"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教學課程：設定 Azure Active Directory 與 F5 之間的單一登入 (SSO)
 
@@ -73,15 +73,15 @@ ms.locfileid: "88540766"
 
 1. 在 [引導式設定]  頁面上，按一下左上角的 [升級引導式設定]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure14.png) 
+    ![顯示 [引導式設定] 頁面的螢幕擷取畫面，其中具有「更新引導式設定」連結。](./media/headerf5-tutorial/configure14.png) 
 
 1. 在 [升級引導式設定] 快顯畫面中，選取 [選擇檔案]  以上傳已下載的使用案例套件，然後按一下 [上傳並安裝]  按鈕。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure15.png) 
+    ![顯示 [升級引導式設定] 對話方塊的螢幕擷取畫面，其中已選取 [選擇檔案]。](./media/headerf5-tutorial/configure15.png) 
 
 1. 在升級完成後，按一下 [繼續]  按鈕。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure16.png)
+    ![顯示 [升級引導式設定] 對話方塊的螢幕擷取畫面，其中具有完成訊息。](./media/headerf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -211,39 +211,39 @@ ms.locfileid: "88540766"
 
 1. 瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]  。 從右下角選取 [匯入]  。 指定 [憑證名稱]  (稍後將在設定中參考)。 在 [憑證來源]  中，選取 [上傳檔案]，指定在設定 SAML 單一登入時從 Azure 下載的憑證。 按一下 [匯入]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure12.png)
+    ![顯示 [SSL 憑證清單] 的螢幕擷取畫面，您可以在其中選取 [憑證名稱] 和 [憑證來源]。](./media/headerf5-tutorial/configure12.png)
  
 1. 此外，您將需要**應用程式主機名稱的 SSL 憑證。瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]** 。 從右下角選取 [匯入]  。 [匯入類型]  將是 [PKCS 12(IIS)]  。 指定 [金鑰名稱]  (稍後將在設定中參考)，並指定 PFX 檔案。 指定 PFX 的 [密碼]  。 按一下 [匯入]  。
 
     >[!NOTE]
     >在此範例中，我們的應用程式名稱為 `Headerapp.superdemo.live`，並使用萬用字元憑證，金鑰名稱則為 `WildCard-SuperDemo.live`。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure13.png)
+    ![顯示 SSL 憑證/金鑰來源頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure13.png)
 
 1. 我們將使用引導式體驗來設定 Azure AD 同盟和應用程式存取。 移至 – F5 BIG-IP [主要]  ，然後選取 [存取] > [引導式設定] > [同盟] > [SAML 服務提供者]  。 按 [下一步]  ，然後按 [下一步]  開始設定。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure01.png)
+    ![顯示 [引導式設定] 頁面的螢幕擷取畫面，其中已選取 [同盟]。](./media/headerf5-tutorial/configure01.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure02.png)
+    ![顯示 [SAML 服務提供者] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure02.png)
  
 1. 提供 [設定名稱]  。 指定 [實體識別碼]  (與您在 Azure AD 應用程式設定中設定的識別碼相同)。 指定 [主機名稱]  。 新增參考的 [描述]  。 接受其餘的預設項目，然後選取並按一下 [儲存並繼續下一步]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure03.png) 
+    ![顯示 [服務提供者屬性] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure03.png) 
 
 1. 在此範例中，我們會建立新的虛擬伺服器 192.168.30.20，並使用連接埠 443。 在 [目的地位址]  中，指定虛擬伺服器 IP 位址。 選取 [用戶端 SSL 設定檔]  ，然後選取 [新建]。 指定先前上傳的應用程式憑證 (在此範例中為萬用字元憑證) 和相關聯的金鑰，然後按一下 [儲存並繼續下一步]  。
 
     >[!NOTE]
     >在此範例中，我們的內部 Web 伺服器會在連接埠 888 上執行，而我們想要使用 443 加以發佈。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure04.png) 
+    ![顯示 [虛擬伺服器屬性] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure04.png) 
 
 1. 在 [選取設定 IdP 連接器的方法]  底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的**名稱**。 選擇先前上傳的 [中繼資料簽署憑證]  。 按一下 [儲存並繼續下一步]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure05.png)
+    ![顯示 [外部識別提供者連接器設定] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure05.png)
  
 1. 在 [選取集區]  中，指定 [新建]  (或選取已存在的集區)。 讓其他值保留為預設值。 在 [集區伺服器] 下的 [IP 位址/節點名稱]  底下，輸入 IP 位址。 指定 [連接埠]  。 按一下 [儲存並繼續下一步]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure06.png)
+    ![顯示 [集區屬性] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure06.png)
 
 1. 在 [單一登入設定] 畫面上，選取 [啟用單一登入]  。 在 [選取的單一登入類型] 底下，選擇 [HTTP 標頭式]  。 在 [使用者名稱來源] 底下，將 **session.saml.last.Identity** 取代為 **session.saml.last.attr.name.Identity** (此變數會使用 Azure AD 中的宣告對應來設定)。 在 [SSO 標頭] 底下：
 
@@ -258,21 +258,21 @@ ms.locfileid: "88540766"
     >[!NOTE]
     >帳戶名稱是已建立的 F5 委派帳戶 (請查看 F5 文件)。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure07.png) 
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure07.png) 
 
 1. 基於本指引的目的，我們將略過端點檢查。  請參閱 F5 文件以取得詳細資訊。 選取 [儲存並繼續下一步]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure08.png)
+    ![顯示 [端點檢查屬性] 頁面的。](./media/headerf5-tutorial/configure08.png)
 
 1. 接受預設值，然後按一下 [儲存並繼續下一步]  。 如需關於 SAML 工作階段管理設定的詳細資訊，請參閱 F5 文件。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure09.png)
+    ![顯示 [逾時設定] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure09.png)
 
 1. 檢閱摘要畫面，然後選取 [部署]  以設定 BIG-IP。 按一下 [完成]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure10.png)
+    ![顯示您的應用程式已準備就緒進入部署頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure10.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure11.png)
+    ![顯示您的應用程式已部署頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure11.png)
 
 ## <a name="advanced-configuration"></a>進階設定
 
@@ -283,7 +283,7 @@ ms.locfileid: "88540766"
     >[!NOTE]
     >在此範例中，我們的應用程式名稱為 `Headerapp.superdemo.live`，並使用萬用字元憑證，金鑰名稱則為 `WildCard-SuperDemo.live`。
   
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure17.png)
+    ![顯示 SSL 憑證/金鑰來源頁面進階設定的螢幕擷取畫面。](./media/headerf5-tutorial/configure17.png)
 
 ### <a name="adding-a-new-web-server-to-bigip-f5"></a>將新的 Web 伺服器新增至 BigIP-F5
 
@@ -291,7 +291,7 @@ ms.locfileid: "88540766"
 
 1. 提供 [名稱]  ，並在 [範本]  底下選擇 [f5.http]  。
  
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure18.png)
+    ![顯示具有範本選擇的 [應用程式服務] 頁面螢幕擷取畫面。](./media/headerf5-tutorial/configure18.png)
 
 1. 在此案例中，我們會在外部將 HeaderApp2 發佈為 HTTPS，而在 [BIG-IP 系統如何處理 SSL 流量？]  中，我們指定 [從用戶端終止 SSL，以純文字傳送到伺服器 (SSL 卸載)]  。 在**您要使用哪個 SSL 憑證？** 和**您要使用哪個 SSL 私密金鑰？** 下，指定您的憑證和金鑰。 在 [您要將哪個 IP 位址用於虛擬伺服器？]  底下，指定虛擬伺服器 IP。 
 
@@ -303,15 +303,15 @@ ms.locfileid: "88540766"
 
         * 如果建立新的應用程式伺服器，請指定**內部 IP 位址**和**連接埠號碼**。
 
-        ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure19.png) 
+        ![顯示窗格的螢幕擷取畫面，您可以在其中指定這些詳細資料。](./media/headerf5-tutorial/configure19.png) 
 
 1. 按一下 [完成]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure20.png) 
+    ![顯示頁面完成之後的螢幕擷取畫面。](./media/headerf5-tutorial/configure20.png) 
 
 1. 確定應用程式屬性可以修改。 按一下 **[主要] > [IApps] > [應用程式服務：應用程式] >> [HeaderApp2]** 。 取消核取 [嚴格更新]  (我們將修改 GUI 以外的部分設定)。 按一下 [更新]  按鈕。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure21.png) 
+    ![顯示 [應用程式服務] 頁面的螢幕擷取畫面，其中已選取 [屬性] 索引標籤。](./media/headerf5-tutorial/configure21.png) 
 
 1. 此時，您應該能夠瀏覽虛擬伺服器。
 
@@ -319,27 +319,27 @@ ms.locfileid: "88540766"
 
 1.  按一下 [存取] > [同盟] > [SAML 服務提供者] > [本機 SP 服務]  ，然後按一下 [建立] 或 + 號。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure22.png)
+    ![顯示 [關於此 BIG IP] 頁面的螢幕擷取畫面。 ](./media/headerf5-tutorial/configure22.png)
 
 1. 指定服務提供者服務的詳細資料。 指定代表 F5 SP 設定的 [名稱]  。 指定 [實體識別碼]  (通常與應用程式 URL 相同)。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure23.png)
+    ![顯示 [SAML 服務提供者] 頁面的螢幕擷取畫面，其中具有 [建立新的 SAML SP 服務] 對話方塊。](./media/headerf5-tutorial/configure23.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure24.png)
+    ![顯示 [建立新的 SAML SP 服務] 對話方塊的螢幕擷取畫面，其中已選取 [端點設定]。](./media/headerf5-tutorial/configure24.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure25.png)
+    ![顯示 [建立新的 SAML SP 服務] 對話方塊的螢幕擷取畫面，其中已選取 [安全性設定]。](./media/headerf5-tutorial/configure25.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure26.png)
+    ![顯示 [建立新的 SAML SP 服務] 對話方塊的螢幕擷取畫面，其中已選取 [驗證內容]。](./media/headerf5-tutorial/configure26.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure27.png)
+    ![顯示 [建立新的 SAML SP 服務] 對話方塊的螢幕擷取畫面，其中已選取 [要求的屬性]。](./media/headerf5-tutorial/configure27.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure28.png)
+    ![顯示 [編輯 SAML SP 服務] 對話方塊的螢幕擷取畫面，其中已選取 [進階設定]。](./media/headerf5-tutorial/configure28.png)
 
 ### <a name="create-idp-connector"></a>建立 IdP 連接器
 
 1. 按一下 [繫結/解除繫結 IdP 連接器]  按鈕，選取 [建立新的 IdP 連接器]  ，並選擇 [從中繼資料]  選項，然後執行下列步驟：
  
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure29.png)
+    ![顯示使用此 SP 對話方塊的 [編輯 SAML IdP] 螢幕擷取畫面，其中已選取 [建立新的 IdP 連接器]。](./media/headerf5-tutorial/configure29.png)
 
     a. 瀏覽至從 Azure AD 下載的中繼資料 metadata.xml 檔案，並指定 [識別提供者名稱]  。
 
@@ -347,7 +347,7 @@ ms.locfileid: "88540766"
 
     c. 系統會建立連接器，並自動從中繼資料 xml 檔案備妥憑證。
     
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure30.png)
+    ![顯示 [建立新的 SAML IdP 連接器] 對話方塊的螢幕擷取畫面。](./media/headerf5-tutorial/configure30.png)
 
     d. 設定 F5BIG-IP，以將所有要求傳送至 Azure AD。
 
@@ -363,7 +363,7 @@ ms.locfileid: "88540766"
 
     j. **SAML IDP 設定完成**
     
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure31.png)
+    ![顯示使用此 SP 對話方塊的 [編輯 SAML IdP] 螢幕擷取畫面。](./media/headerf5-tutorial/configure31.png)
 
 ### <a name="configure-f5-policy-to-redirect-users-to-azure-saml-idp"></a>設定 F5 原則以將使用者重新導向至 Azure SAML IDP
 
@@ -373,39 +373,39 @@ ms.locfileid: "88540766"
 
     b. 按一下 [建立]  按鈕。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure32.png)
+    ![顯示 [存取設定檔] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure32.png)
  
     c. 指定 [名稱]  (在此範例中為 HeaderAppAzureSAMLPolicy)。
 
     d. 您可以自訂其他設定，請參閱 F5 文件。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure33.png)
+    ![顯示 [一般屬性] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure33.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure34.png) 
+    ![顯示 [一般屬性] 頁面的螢幕擷取畫面 (續)。](./media/headerf5-tutorial/configure34.png) 
 
     e. 按一下 [完成]  。
 
     f. 在原則建立完成後，按一下 [原則] 並移至 [存取原則]  索引標籤。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure35.png)
+    ![顯示具有 [一般屬性] 的 [存取原則] 索引標籤螢幕擷取畫面。](./media/headerf5-tutorial/configure35.png)
  
     g. 按一下 [視覺化原則編輯器]  ，編輯 [設定檔的存取原則]  連結。
 
     h. 按一下 [視覺化原則編輯器] 中的 + 號，然後選擇 [SAML 驗證]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure36.png)
+    ![顯示 [存取原則] 的螢幕擷取畫面。](./media/headerf5-tutorial/configure36.png)
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure37.png)
+    ![顯示搜尋對話方塊的螢幕擷取畫面，其中已選取 [SAML 驗證]。](./media/headerf5-tutorial/configure37.png)
  
     i. 按一下 [新增項目]  。
 
     j. 在 [屬性]  底下指定 [名稱]  ，並在 [AAA 伺服器]  底下選取先前設定的 SP，然後按一下 [儲存]  。
  
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure38.png)
+    ![顯示項目屬性的螢幕擷取畫面，包括其 AAA 伺服器。](./media/headerf5-tutorial/configure38.png)
 
     k. 基本原則已準備就緒，您可以自訂原則，以併入其他來源/屬性存放區。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure39.png)
+    ![顯示自訂原則的螢幕擷取畫面。](./media/headerf5-tutorial/configure39.png)
  
     l. 確實按一下頂端的 [套用存取原則]  連結。
 
@@ -415,21 +415,21 @@ ms.locfileid: "88540766"
 
     a. 按一下 [主要]   > [本機流量]   > [虛擬伺服器]  。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure40.png)
+    ![顯示 [虛擬伺服器清單] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure40.png)
  
     b. 按一下虛擬伺服器，捲動至 [存取原則]  區段，然後在 [存取設定檔]  下拉式清單中，選取已建立的 SAML 原則 (在此範例中為 HeaderAppAzureSAMLPolicy)
 
     c. 按一下 [更新]
  
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure41.png)
+    ![顯示 [存取原則] 窗格的螢幕擷取畫面。](./media/headerf5-tutorial/configure41.png)
 
     d. 建立 F5 BIG-IP iRule®，以從傳入的判斷提示中擷取自訂 SAML 屬性，並將其作為 HTTP 標頭傳至後端測試應用程式。 按一下 [主要] > [本機流量] > [iRules] > [iRule 清單]，然後按一下 [建立]
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure42.png)
+    ![顯示 [本機流量 iRule 清單] 的螢幕擷取畫面。](./media/headerf5-tutorial/configure42.png)
  
     e. 將以下 F5 BIG-IP iRule 文字貼到 [定義] 視窗中。
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure43.png)
+    ![顯示 [新增 iRule] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure43.png)
  
     when RULE_INIT {  set static::debug 0  }  when ACCESS_ACL_ALLOWED {
 
@@ -441,7 +441,7 @@ ms.locfileid: "88540766"
 
     **範例輸出如下**
 
-    ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure44.png)
+    ![顯示範例輸出的螢幕擷取畫面。](./media/headerf5-tutorial/configure44.png)
  
 ### <a name="create-f5-test-user"></a>建立 F5 測試使用者
 

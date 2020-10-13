@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551025"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817041"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>教學課程：整合 Freedcamp 與 Azure Active Directory
 
@@ -108,11 +108,11 @@ ms.locfileid: "88551025"
 
 4. 在頁面右上角按一下**設定檔**，然後瀏覽至 [我的帳戶]  。
 
-    ![Freedcamp 組態](./media/freedcamp-tutorial/config01.png)
+    ![顯示已選取 [設定檔] 和 [我的帳戶] 的螢幕擷取畫面。](./media/freedcamp-tutorial/config01.png)
 
 5. 在左側功能表列中按一下 **SSO**，然後在 [您的 SSO 連線]  頁面上執行下列步驟：
 
-    ![Freedcamp 組態](./media/freedcamp-tutorial/config02.png)
+    ![顯示在左側功能表列中選取 [SSO]、在 [您的 SSO 連線] 頁面中輸入值，以及已選取 [提交] 按鈕的螢幕擷取畫面。](./media/freedcamp-tutorial/config02.png)
 
     a. 在 [標題]  文字方塊中輸入標題。
 
@@ -162,13 +162,13 @@ ms.locfileid: "88551025"
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Freedcamp。
 
-2. 在頁面右上角按一下**設定檔**，然後瀏覽至 [管理系統]  。
+2. 在頁面右上角按一下**設定檔**，然後瀏覽至 [管理系統]。
 
     ![Freedcamp 組態](./media/freedcamp-tutorial/config03.png)
 
 3. 在 [管理系統] 頁面右側，執行下列步驟：
 
-    ![Freedcamp 組態](./media/freedcamp-tutorial/config04.png)
+    ![顯示已選取 [新增或邀請使用者] 按鈕、醒目提示 [電子郵件] 欄位，以及已選取 [新增使用者] 按鈕的螢幕擷取畫面。](./media/freedcamp-tutorial/config04.png)
 
     a. 按一下 [新增或邀請使用者]  。
 

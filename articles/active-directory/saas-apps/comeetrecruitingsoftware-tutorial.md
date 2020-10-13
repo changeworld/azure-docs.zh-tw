@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ed68e02be500ebd863eb7d6d54ddffe63873fe61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520091"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>教學課程：Azure Active Directory 與 Comeet Recruiting Software 整合
 
@@ -99,7 +99,7 @@ Comeet Recruiting Software 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Comeet Recruiting Software 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 頁面的螢幕擷取畫面，其中醒目提示 [儲存] 動作、[識別碼] 欄位和 [回覆 URL] 欄位。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
@@ -116,7 +116,7 @@ Comeet Recruiting Software 與 Azure AD 整合提供下列優點：
 
 5. Comeet Recruiting Software 應用程式預期要有特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](common/edit-attribute.png)
 
 6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，使用 [編輯] 圖示來編輯宣告或使用 [新增宣告] 來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟： 
 
@@ -127,7 +127,7 @@ Comeet Recruiting Software 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 區段的螢幕擷取畫面，其中醒目提示 [新增宣告] 和 [儲存] 動作。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

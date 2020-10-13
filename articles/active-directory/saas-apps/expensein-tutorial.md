@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555292"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817064"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教學課程：整合 ExpenseIn 與 Azure Active Directory
 
@@ -135,11 +135,11 @@ ms.locfileid: "88555292"
 
 1. 按一下頁面頂端的 [系統管理員]，然後瀏覽至 [單一登入] 並按一下 [新增提供者]。
 
-     ![ExpenseIn 設定](./media/expenseIn-tutorial/config01.png)
+     ![顯示已選取 [管理員] 索引標籤、[單一登入 - 提供者] 頁面，以及已選取 [新增提供者] 的螢幕擷取畫面。](./media/expenseIn-tutorial/config01.png)
 
 1. 在 [新增識別提供者] 快顯上，執行下列步驟：
 
-    ![ExpenseIn 設定](./media/expenseIn-tutorial/config02.png)
+    ![顯示已在 [編輯識別提供者] 快顯視窗中輸入值的螢幕擷取畫面。](./media/expenseIn-tutorial/config02.png)
 
     a. 在 [提供者名稱] 文字方塊中輸入名稱，例如：Azure。
 
@@ -163,7 +163,7 @@ ms.locfileid: "88555292"
 
 2. 按一下頁面頂端的 [系統管理員]，然後瀏覽至 [使用者] 並按一下 [新增使用者]。
 
-     ![ExpenseIn 設定](./media/expenseIn-tutorial/config03.png)
+     ![顯示已選取 [管理員] 索引標籤和 [管理使用者] 頁面，並且已選取 [新增使用者] 的螢幕擷取畫面。](./media/expenseIn-tutorial/config03.png)
 
 3. 在 [詳細資料] 快顯上，執行下列步驟：
 

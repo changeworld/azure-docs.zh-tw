@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549282"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743075"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BeyondTrust 遠端支援整合
 
@@ -155,7 +155,7 @@ ms.locfileid: "88549282"
 
 1. 按一下 [狀態]  功能表，然後複製 [識別碼]  、[回覆 URL]  和 [登入 URL]  ，並在 Azure 入口網站的 [基本 SAML 設定]  區段上使用這些值。
 
-    ![設定 BeyondTrust 遠端支援](./media/bomgarremotesupport-tutorial/config-url-values.png)
+    ![顯示 BeyondTrust 遠端支援中 [狀態] 功能表的螢幕擷取畫面，您可以在其中收集此資訊。](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
 1. 瀏覽至 `https://support.example.com/login` 上的 BeyondTrust 遠端支援/登入介面 (其中 **support.example.com** 是設備的主要主機名稱)，並使用您的系統管理認證進行驗證。
 
@@ -165,20 +165,20 @@ ms.locfileid: "88549282"
 
 1. 在 [識別提供者設定] 區段下，有一個可用來上傳身分識別提供者中繼資料的選項。 找到您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [上傳]  按鈕。 **實體識別碼**、**單一登入服務 URL**和憑證會自動上傳，而 [通訊協定繫結]  必須變更為 **HTTP POST**。 請看下方的螢幕擷取畫面：
 
-    ![設定 BeyondTrust 遠端支援](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+    ![顯示 [識別提供者設定] 區段的螢幕擷取畫面，您會在其中執行這些動作。](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>建立 BeyondTrust 遠端支援測試使用者
 
 我們將在這裡設定使用者佈建設定。 此區段中使用的值將會從 Azure 入口網站中的**使用者屬性與宣告**區段中進行參照。 我們已將此值設定為建立時匯入的預設值，不過，您可以視需要自訂此值。
 
-![建立使用者](./media/bomgarremotesupport-tutorial/config-user1.png)
+![顯示 [使用者佈建設定] 的螢幕擷取畫面，您可以在其中設定使用者值。](./media/bomgarremotesupport-tutorial/config-user1.png)
 
 > [!NOTE]
 > 此實作不需要群組和電子郵件屬性。 如果使用 Azure AD 群組，並將其指派給 BeyondTrust 遠端支援群組原則來取得權限，則群組的物件識別碼必須在 Azure 入口網站中透過其屬性來進行參照，並且要放在 [可用群組] 區段中。 完成此作業之後，物件識別碼/AD 群組即可指派給群組原則來取得權限。
 
-![建立使用者](./media/bomgarremotesupport-tutorial/config-user2.png)
+![顯示 IT 區段的螢幕擷取畫面，其中具有成員資格類型、來源、類型和物件識別碼。](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![建立使用者](./media/bomgarremotesupport-tutorial/config-user3.png)
+![顯示群組原則 [基本設定] 頁面的螢幕擷取畫面。](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
 > 或者，您也可以在 SAML2 安全性提供者上設定預設的群組原則。 藉由定義此選項，這會將群組原則中指定的權限指派給所有透過 SAML 進行驗證的使用者。 BeyondTrust 遠端支援/特殊權限的遠端存取中包含權限有限的「一般成員」原則，可用來測試驗證並將使用者指派給正確的原則。 在第一次驗證嘗試成功之前，使用者不會透過 /login > [使用者與安全性] 來填入SAML2 使用者清單。 您可以在下列連結中可以找到有關群組原則的其他資訊︰`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538819"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708804"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>教學課程：整合 23 Video 與 Azure Active Directory
 
@@ -138,11 +138,11 @@ ms.locfileid: "88538819"
 
 3. 在 [使用者]  區段中，按一下 [設定]  。
 
-    ![指派使用者](./media/23video-tutorial/tutorial-23video-10.png)
+    ![醒目提示 [使用者] 區段的螢幕擷取畫面。](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. 按一下 [新增使用者]  。
 
-    ![指派使用者](./media/23video-tutorial/tutorial-23video-11.png)
+    ![醒目提示 [新增使用者] 按鈕的螢幕擷取畫面。](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. 在 [邀請人員加入此網站]  區段中，執行下列步驟：
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892944"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775658"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Confluence SAML SSO by Microsoft 整合
 
@@ -159,11 +159,11 @@ ms.locfileid: "88892944"
 
 1. 將滑鼠停留在 cog 上，然後按一下 [附加元件]。
 
-    ![設定單一登入](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![顯示已選取「Cog」圖示，並且在下拉式功能表中醒目提示 [附加元件] 的螢幕擷取畫面。](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. 從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=56503)下載外掛程式。 使用 [上傳附加元件] 功能表來手動上傳 Microsoft 所提供的外掛程式。 外掛程式下載受到 [Microsoft 服務合約](https://www.microsoft.com/servicesagreement/)的規範。
 
-    ![設定單一登入](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![顯示 [管理附加元件] 頁面的螢幕擷取畫面，其中已選取 [更新附加元件] 動作。](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. 若要執行 Confluence 反向 Proxy 情節或是負載平衡器情節，請執行以下步驟：
 
@@ -174,19 +174,19 @@ ms.locfileid: "88892944"
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![設定單一登入](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![顯示 "server.xml" 檔案的螢幕擷取畫面，其中將屬性新增至 "connector" 連接埠。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. 根據 Proxy/負載平衡器，變更**系統設定**中的**基底 URL**。
 
-    ![設定單一登入](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![顯示 [系統管理 - 設定] 頁面的螢幕擷取畫面，其中醒目提示 [基底 URL]。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. 安裝外掛程式之後，它會出現在 [管理附加元件] 區段的 [使用者安裝的附加元件] 區段中。 按一下 [設定] 來設定新的外掛程式。
 
-    ![設定單一登入](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![顯示 [使用者已安裝] 區段的螢幕擷取畫面，其中醒目提示 [設定] 按鈕。](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. 在設定頁面上執行下列步驟：
 
-    ![設定單一登入](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![顯示單一登入設定頁面的螢幕擷取畫面。](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > 請確定只有一個對應至應用程式的憑證，解析中繼資料時就不會發生錯誤。 如果有多個憑證，則在解析中繼資料時，管理員會收到錯誤。
@@ -237,7 +237,7 @@ ms.locfileid: "88892944"
 
 1. 在 [使用者] 區段底下，按一下 [新增使用者] 索引標籤。在 [新增使用者] 對話頁面上，執行下列步驟：
 
-    ![新增員工](./media/confluencemicrosoft-tutorial/user2.png)
+    ![顯示 [Confluence 系統管理] 的螢幕擷取畫面，其中已選取 [新增使用者] 索引標籤，並且已輸入 [新增使用者] 資訊。](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. 在 [使用者名稱] 文字方塊中，輸入像是 B.Simon 的使用者電子郵件。
 

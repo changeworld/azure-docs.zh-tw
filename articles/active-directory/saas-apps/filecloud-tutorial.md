@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555141"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>教學課程：Azure Active Directory 與 FileCloud 整合
 
@@ -130,19 +130,19 @@ FileCloud 與 Azure AD 整合提供下列優點：
 
 2. 在左側的導覽窗格上，按一下 [設定]  。 
    
-    ![在應用程式端設定單一登入](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![顯示左側瀏覽窗格中醒目提示 [設定] 的螢幕擷取畫面。](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. 按一下 [設定] 區段上的 [SSO]  索引標籤。 
    
-    ![在應用程式端設定單一登入](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![顯示 [設定] 區段的螢幕擷取畫面，其中已選取 [SSO] 索引標籤。](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. 在 **Single Sign On (SSO) Settings** (單一登入 (SSO) 設定) 面板上，選取 **SAML** 作為 **Default SSO Type** (預設 SSO 類型)。
    
-    ![在應用程式端設定單一登入](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![顯示 [單一登入 (SSO) 設定] 面板的螢幕擷取畫面，其中已選取 [SAML]。](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. 在 [IdP 端點 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
-    ![在應用程式端設定單一登入](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![顯示 [SAML 設定] 區段的螢幕擷取畫面，其中醒目提示 [IdP 端點 URL]。](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. 在記事本中開啟您下載的中繼資料，將其內容複製到剪貼簿上，然後貼到 **SAML Settings** (SAML 設定) 面板的 **IdP Meta Data** (IdP 中繼資料) 文字方塊中。
 

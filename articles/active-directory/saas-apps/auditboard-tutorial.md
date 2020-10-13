@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 1020dec2069d609cf5f919c5802da906ae172ed2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2b4d3e75f6e2f3e6313541b0b146ff64cc403ce5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550222"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>教學課程：Azure Active Directory 與 AuditBoard 整合
 
@@ -99,7 +99,7 @@ AuditBoard 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![AuditBoard 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
@@ -109,7 +109,7 @@ AuditBoard 與 Azure AD 整合提供下列優點：
 
     d. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.auditboardapp.com/`
 
-    ![AuditBoard 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [AuditBoard 用戶端支援小組](mailto:support@auditboard.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

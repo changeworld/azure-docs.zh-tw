@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf7719487d4f03b8d9524234e1a58cf792a4843b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899779"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743249"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教學課程：準備部署 Azure Stack Edge Pro 搭配 GPU 
 
@@ -66,14 +66,16 @@ ms.locfileid: "90899779"
 
 在您開始前，請確定：
 
-- 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。
+- 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支援隨用隨付訂用帳戶。 若要識別您擁有的 Azure 訂用帳戶類型，請參閱[什麼是 Azure 供應項目？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
 - 您在 Azure Stack Edge Pro/資料箱閘道、IoT 中樞及 Azure 儲存體資源的資源群組層級上，具有擁有者或參與者存取權限。
 
-    - 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 您也需要確定已註冊 `Microsoft.DataBoxEdge` 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
-    - 若要建立任何 IoT 中樞資源，請確定已註冊該 Microsoft.Devices 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+    - 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 
+    - 您也需要確定已註冊 `Microsoft.DataBoxEdge` 和 `MicrosoftKeyVault` 資源提供者。 若要建立任何 IoT 中樞資源，應註冊 `Microsoft.Devices` 提供者。 
+        - 若要註冊資源提供者，請在 Azure 入口網站中移至 [首頁] > [訂用帳戶] > [您的訂用帳戶] > [資源提供者]。 
+        - 搜尋特定的資源提供者，例如 `Microsoft.DataBoxEdge`，然後註冊資源提供者。 
     - 同樣的，若要建立儲存體帳戶資源，您需要以資源群組層級作為範圍的參與者存取權限 (或更高權限)。 根據預設，Azure 儲存體是已註冊的資源提供者。
-- 您有 Azure Active Directory 圖形 API 的管理員或使用者存取權。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
-- 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
+- 您具有 Azure Active Directory 圖形 API 的管理員或使用者存取權，可產生啟用金鑰或認證作業，例如使用儲存體帳戶的共用建立作業。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>針對 Azure Stack Edge Pro 裝置
 
@@ -150,11 +152,15 @@ ms.locfileid: "90899779"
 
 10. 在 [檢閱 + 建立] 索引標籤上，檢閱 [定價詳細資料]、[使用規定]，以及您的資源詳細資料。 選取 [我已檢閱隱私權條款] 的下拉式方塊。
 
-    ![建立資源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+    ![建立資源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+
+    您也會在建立資源期間收到通知，已啟用受控服務識別 (MSI)，可讓您向雲端服務進行驗證。 只要資源存在，就會存在此身分識別。
 
 11. 選取 [建立]。
 
-建立資源需要幾分鐘的時間。 順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]  。
+建立資源需要幾分鐘的時間。 也會建立一個 MSI，讓 Azure Stack Edge 裝置與 Azure 中的資源提供者進行通訊。
+
+順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]  。
 
 ![移至 Azure Stack Edge Pro 資源](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
@@ -172,9 +178,16 @@ ms.locfileid: "90899779"
 
     ![選取 [裝置設定]](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. 在 [啟用] 圖格上，選取 [產生金鑰] 以建立啟用金鑰。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
+2. 在 [啟動] 圖格上，提供 Azure Key Vault 的名稱或接受預設名稱。 金鑰保存庫名稱可介於 3 到 24 個字元之間。 
+
+    系統會為使用您的裝置啟動的每個 Azure Stack Edge 資源建立金鑰保存庫。 金鑰保存庫可讓您儲存及存取祕密，例如，服務的通道完整性金鑰 (CIK) 會儲存在金鑰保存庫中。 
+
+    指定金鑰保存庫名稱之後，請選取 [產生金鑰] 以建立啟用金鑰。 
 
     ![取得啟用金鑰](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+
+    請等候幾分鐘讓金鑰保存庫和啟用金鑰建立。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
+
 
 > [!IMPORTANT]
 > - 啟用金鑰在產生之後 3 天就會到期。

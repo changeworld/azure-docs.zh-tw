@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545398"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740440"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BlueJeans for Azure AD 整合
 
@@ -150,7 +150,7 @@ ms.locfileid: "88545398"
 
 2. 移至 [管理] \> [群組設定] \> [安全性]。
 
-    ![管理員](./media/bluejeans-tutorial/ic785868.png "管理")
+    ![顯示部分瀏覽器視窗的螢幕擷取畫面，其中已選取 [管理] 索引標籤以及 [群組設定] 和 [安全性]。](./media/bluejeans-tutorial/ic785868.png "管理")
 
 3. 在 [安全性] 區段中，執行下列步驟：
 
@@ -192,14 +192,14 @@ ms.locfileid: "88545398"
 
 2. 移至 [管理] \> [管理使用者] \> [新增使用者]。
 
-    ![管理員](./media/bluejeans-tutorial/ic785877.png "管理")
+    ![顯示部分瀏覽器視窗的螢幕擷取畫面，其中已選取 [管理] 索引標籤以及 [管理使用者] 和 [新增使用者]。](./media/bluejeans-tutorial/ic785877.png "管理")
 
     > [!IMPORTANT]
     > 只有在未核取 [安全性] 索引標籤中的 [啟用自動佈建] 時，才能使用 [新增使用者] 索引標籤。
 
 3. 在 [新增使用者] 區段中，執行下列步驟：
 
-    ![加入使用者](./media/bluejeans-tutorial/ic785886.png "新增使用者")
+    ![顯示 [新增使用者] 區段的螢幕擷取畫面，您會在其中輸入此步驟中所述的資訊。](./media/bluejeans-tutorial/ic785886.png "新增使用者")
 
     a. 在 [名字] 文字方塊中，輸入使用者的名字，例如 **B**。
 
@@ -219,7 +219,7 @@ ms.locfileid: "88545398"
 
     i. 按一下 [繼續]。
 
-    ![加入使用者](./media/bluejeans-tutorial/ic785887.png "新增使用者")
+    ![顯示 [新增使用者] 區段的螢幕擷取畫面，您可以在其中檢視設定和功能，其中已選取 [新增使用者] 按鈕。](./media/bluejeans-tutorial/ic785887.png "新增使用者")
 
     J. 按一下 [新增使用者]。
 

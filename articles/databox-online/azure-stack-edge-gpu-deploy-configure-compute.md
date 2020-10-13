@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 95c59cff1f47fe720e2dbc65c5b0a69a09be2f2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743415"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>教學課程：在 Azure Stack Edge Pro GPU 裝置上設定計算
 
@@ -61,15 +61,15 @@ ms.locfileid: "90903176"
     |IoT 中樞     | 選擇 [新增] 或 [現有]。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。 <br> 在每個案例中，IoT 中樞資源會使用 Azure Stack Edge 資源所用的相同訂用帳戶和資源群組。     |
     |名稱     |輸入 IoT 中樞資源的名稱。         |
 
-    ![開始使用計算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+    ![開始使用計算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
 4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]**** 圖格會更新以顯示計算組態。 
 
-    ![開始使用計算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+    ![開始使用計算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
 5. 若要確認已設定 Edge 計算角色，請選取 [設定計算]**** 圖格上的 [檢視計算]****。
     
-    ![開始使用計算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+    ![開始使用計算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
     > 如果在 [設定計算] 對話方塊關閉後，IoT 中樞才與 Azure Stack Edge Pro 裝置相關聯，則會建立 IoT 中樞，但不會顯示在計算設定中。 

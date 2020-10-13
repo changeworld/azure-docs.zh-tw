@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542950"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>教學課程：Azure Active Directory 與 Agiloft 整合
 
@@ -100,7 +100,7 @@ Agiloft 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Agiloft 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![醒目提示 [識別碼] 和 [回覆 URL] 文字方塊的螢幕擷取畫面。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
@@ -150,11 +150,11 @@ Agiloft 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [設定]  \(在左窗格中\)，然後選取 [存取]  。
 
-    ![Agiloft 設定](./media/agiloft-tutorial/setup1.png)
+    ![醒目提示 [存取] 區段的螢幕擷取畫面。](./media/agiloft-tutorial/setup1.png)
 
 3. 按一下 [設定 SAML 2.0 單一登入]  按鈕。
 
-    ![Agiloft 設定](./media/agiloft-tutorial/setup2.png)
+    ![醒目提示 [設定 SAML 2.0 單一登入] 按鈕的螢幕擷取畫面。](./media/agiloft-tutorial/setup2.png)
 
 4. 精靈對話方塊隨即出現。 在對話方塊中，按一下 [識別提供者詳細資料]  ，並填寫下列欄位：  
 

@@ -8,33 +8,36 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.date: 10/07/2020
+ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707521"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812313"
 ---
-# <a name="create-a-synapse-workspace"></a>建立 Synapse 工作區
+# <a name="creating-a-synapse-workspace"></a>建立 Synapse 工作區
 
 在本教學課程中，您將了解如何建立 Synapse 工作區、SQL 集區和 Apache Spark 集區。 
 
-## <a name="create-a-synapse-workspace"></a>建立 Synapse 工作區
+## <a name="prerequisites"></a>必要條件
+
+若要完成本教學課程的所有步驟，您必須能夠存取您已被指派其**擁有者**角色的資源群組。 在此資源群組中建立 Synapse 工作區。
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>在 Azure 入口網站中建立 Synapse 工作區
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，並在頂端搜尋 **Synapse**。
 1. 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics (工作區預覽)]。
 1. 選取 [新增] 以建立工作區。
-1. 在 [基本] 中，選擇工作區名稱。 在本教學課程中，我們將使用 **myworkspace**。
+1. 在 [基本] 中，輸入必要的欄位，然後選擇工作區名稱。 在本教學課程中，我們將使用 **myworkspace**。
 1. 您需要 ADLSGEN2 帳戶來建立工作區。 最簡單的選擇是建立新的帳戶。 如果想要重複使用現有的帳戶，則必須執行一些額外的設定。 
 1. 選項 1 建立新的 ADLSGEN2 帳戶 
     1. 瀏覽至 [選取 Data Lake Storage Gen 2]。 
     1. 按一下 [新建]，並將其命名為 **contosolake**。
-    1. 按一下 [檔案系統]，並將其命名為 **users**。
+    1. 按一下 [檔案系統]，並將其命名為 **users**。 這會建立名為 **users** 的容器
 1. 選項 2 使用現有的 ADLSGEN2 帳戶。 請參閱本文件末尾的**準備 ADLSGEN2 儲存體帳戶**指示。
 1. 您的 Azure Synapse 工作區會使用此儲存體帳戶作為「主要」儲存體帳戶，以及用來儲存工作區資料的容器。 工作區會將資料儲存在 Apache Spark 資料表中。 其會將 Spark 應用程式記錄儲存在名為 **/synapse/workspacename** 的資料夾底下。
 1. 選取 [檢閱+建立] > [建立]。 您的工作區將會在幾分鐘內就緒。
-
 
 ## <a name="open-synapse-studio"></a>開啟 Synapse Studio
 
@@ -113,8 +116,8 @@ SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫
 1. 指派下列角色，或確定其已指派。 我們使用相同名稱作為工作區身分識別和工作區名稱。
     * 針對儲存體帳戶上的 [儲存體 Blob 資料參與者] 角色，請指派 **myworkspace** 作為工作區身分識別。
     * 指派 **myworkspace** 作為工作區名稱。
-
 1. 選取 [儲存]。
+
 
 ## <a name="next-steps"></a>後續步驟
 

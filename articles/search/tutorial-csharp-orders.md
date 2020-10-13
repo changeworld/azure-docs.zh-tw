@@ -7,20 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a6114791a1909a0cd02b96a4cdcc4c133b8e662e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280839"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667243"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 排序搜尋結果
 
-在我們的教學課程中到目前為止，結果是以預設順序傳回和顯示。 這可能是資料配置的順序，也可能已定義預設「評分設定檔」  ，當未指定排序參數時會使用此設定檔。 在此教學課程中，我們將會探討如何根據主要屬性排序結果、如何排序主要屬性相同的結果，以及如何根據次要屬性排序選擇。 作為依數值排序的替代方案，最後一個範例示範如何依自訂評分設定檔排序。 我們也會進一步探討如何顯示「複雜類型」  。
-
-為了輕鬆地比較傳回的結果，此專案是建置在 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)教學課程。
+在本教學課程系列中，已傳回結果並且以[預設順序](index-add-scoring-profiles.md#what-is-default-scoring)顯示。 在本教學課程中，您將會新增主要和次要排序準則。 作為依數值排序的替代方案，最後一個範例示範如何依自訂評分設定檔對結果進行排名。 我們也會進一步探討如何顯示「複雜類型」  。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -29,34 +27,42 @@ ms.locfileid: "91280839"
 > * 根據與地理點的距離篩選結果
 > * 根據評分設定檔排序結果
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="overview"></a>總覽
 
-若要完成本教學課程，您需要：
+本教學課程會擴充在[將分頁新增至搜尋結果](tutorial-csharp-paging.md)教學課程中所建立的無止盡捲動專案。
 
-啟動並執行 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)專案。 此專案可以是您自己的版本，或從 GitHub 安裝：[建立第一個應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
+您可以在下列專案中找到本教學課程中的最終版本程式碼：
+
+* [5-order-results (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
+
+## <a name="prerequisites"></a>必要條件
+
+* [2b-add-infinite-scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll) 解決方案。 此專案可以是您自己在上一個教學課程中建置的版本，或從 GitHub 複製的版本。
+
+本教學課程已更新為使用 [Azure.Search.Documents (第 11 版)](https://www.nuget.org/packages/Azure.Search.Documents/) 套件。 如需舊版的 .NET SDK，請參閱 [Microsoft.Azure.Search (第 10 版) 程式碼範例](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)。
 
 ## <a name="order-results-based-on-one-property"></a>根據一個屬性排序結果
 
-當我們根據一個屬性 (假設是旅館評等) 排序結果時，我們不只想排序結果，我們也想要確認順序正確無誤。 換句話說，如果我們依評等排序，我們應該在檢視顯示評等。
+根據一個屬性 (假設是旅館評等) 排序結果時，我們不只想排序結果，我們也想要確認順序正確無誤。 將評等欄位新增至結果，可讓我們確認結果已正確排序。
 
-在此教學課程中，我們也會在結果的顯示新增更多項目、每家旅館最便宜和最貴的房間價格。 隨著我們探索排序，我們也會新增值，以確認我們的排序依據也顯示在檢視中。
+在此練習中，我們也會在結果的顯示新增更多項目：每家旅館最便宜和最貴的房間價格。
 
-若要啟用排序，不需要修改任何模型。 檢視和控制器需要更新。 首先，開啟首頁控制器。
+若要啟用排序，不需要修改任何模型。 只有檢視和控制器需要更新。 首先，開啟首頁控制器。
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>將 OrderBy 屬性新增至搜尋參數
 
-1. 只要將 **OrderBy** 參數設定為屬性名稱，就能根據單一數值屬性排序結果。 在 **Index(SearchData model)** 方法中，將下列行新增至搜尋參數。
+1. 將 **OrderBy** 選項新增至屬性的名稱。 在 **Index(SearchData model)** 方法中，將下列行新增至搜尋參數。
 
     ```cs
-        OrderBy = new[] { "Rating desc" },
+    OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
     > 預設順序為遞增，您還是可以將 **asc** 加入屬性讓此意圖更清楚。 新增 **desc** 可指定遞減順序。
 
-2. 現在，執行應用程式，並輸入任何一般搜尋字詞。 結果的順序可能不正確，因為您 (開發人員) 和使用者都沒有容易的方法可以驗證結果！
+1. 現在，執行應用程式，並輸入任何一般搜尋字詞。 結果的順序可能不正確，因為您 (開發人員) 和使用者都沒有容易的方法可以驗證結果！
 
-3. 讓我們清楚顯示結果是依評等排序的。 首先，將 hotels.css 檔案中的 **box1** 和 **box2** 類別取代為下列類別 (這些是此教學課程中所需的所有新類別)。
+1. 讓我們清楚顯示結果是依評等排序的。 首先，將 hotels.css 檔案中的 **box1** 和 **box2** 類別取代為下列類別 (這些是此教學課程中所需的所有新類別)。
 
     ```html
     textarea.box1A {
@@ -114,22 +120,22 @@ ms.locfileid: "91280839"
     }
     ```
 
-    >[!Tip]
-    >瀏覽器通常會快取 CSS 檔案，這可能導致使用舊的 CSS 檔案，而忽略您的編輯。 解決此問題的好方法是在連結新增包含版本參數的查詢字串。 例如：
+    > [!Tip]
+    > 瀏覽器通常會快取 CSS 檔案，這可能導致使用舊的 CSS 檔案，而忽略您的編輯。 解決此問題的好方法是在連結新增包含版本參數的查詢字串。 例如：
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >如果您認為瀏覽器在使用舊版 CSS 檔案，請更新版本號碼。
+    > 如果您認為瀏覽器在使用舊版 CSS 檔案，請更新版本號碼。
 
-4. 在 **Index(SearchData model)** 方法中，將 **Rating** 屬性新增至 **Select** 參數。
+1. 在 **Index(SearchData model)** 方法中，將 **Rating** 屬性新增至 **Select** 參數。
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. 開啟檢視 (index.cshtml)，並將轉譯迴圈 ( **&lt;!-- Show the hotel data. --&gt;** ) 取代為下列程式碼。
+1. 開啟檢視 (index.cshtml)，並將轉譯迴圈 ( **&lt;!-- Show the hotel data. --&gt;** ) 取代為下列程式碼。
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -144,7 +150,7 @@ ms.locfileid: "91280839"
                 }
     ```
 
-6. 在第一次顯示的頁面中，以及透過無限捲動呼叫的後續頁面中都必須能取得評等。 在這兩個情況的後者中，我們必須更新控制器中的 **Next** 動作和檢視中的 **scrolled** 函式。 從控制器開始，將 **Next** 方法變更為下列程式碼。 此程式碼會建立評等文字，並進行通訊。
+1. 在第一次顯示的頁面中，以及透過無限捲動呼叫的後續頁面中都必須能取得評等。 在這兩個情況的後者中，我們必須更新控制器中的 **Next** 動作和檢視中的 **scrolled** 函式。 從控制器開始，將 **Next** 方法變更為下列程式碼。 此程式碼會建立評等文字，並進行通訊。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -172,7 +178,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-7. 現在，更新檢視中的 **scrolled** 函式，以顯示評等文字。
+1. 現在，更新檢視中的 **scrolled** 函式，以顯示評等文字。
 
     ```javascript
             <script>
@@ -194,7 +200,7 @@ ms.locfileid: "91280839"
 
     ```
 
-8. 現在，再次執行應用程式。 搜尋任何一般字詞 (例如，"wifi")，並確認結果會依旅館評等遞減順序排序。
+1. 現在，再次執行應用程式。 搜尋任何一般字詞 (例如，"wifi")，並確認結果會依旅館評等遞減順序排序。
 
     ![根據評等排序](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
@@ -212,7 +218,7 @@ ms.locfileid: "91280839"
         public double expensive { get; set; }
     ```
 
-2. 在首頁控制器中 **Index(SearchData model)** 動作的結尾計算房間價格。 在儲存暫存資料之後加入計算。
+1. 在首頁控制器中 **Index(SearchData model)** 動作的結尾計算房間價格。 在儲存暫存資料之後加入計算。
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -243,13 +249,13 @@ ms.locfileid: "91280839"
                 }
     ```
 
-3. 在控制器的 **Index(SearchData model)** 動作方法中，將 **Rooms** 屬性新增至 **Select** 參數。
+1. 在控制器的 **Index(SearchData model)** 動作方法中，將 **Rooms** 屬性新增至 **Select** 參數。
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. 變更檢視中的轉譯迴圈，以在結果的第一頁顯示價格範圍。
+1. 變更檢視中的轉譯迴圈，以在結果的第一頁顯示價格範圍。
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -266,7 +272,7 @@ ms.locfileid: "91280839"
                 }
     ```
 
-5. 變更首頁控制器中的 **Next** 方法，為後續結果頁面通訊價格範圍。
+1. 變更首頁控制器中的 **Next** 方法，為後續結果頁面通訊價格範圍。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -296,7 +302,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-6. 更新檢視中的 **scrolled** 函式，以處理房間價格文字。
+1. 更新檢視中的 **scrolled** 函式，以處理房間價格文字。
 
     ```javascript
             <script>
@@ -318,7 +324,7 @@ ms.locfileid: "91280839"
             </script>
     ```
 
-7. 執行應用程式，並確認房間價格範圍會顯示。
+1. 執行應用程式，並確認房間價格範圍會顯示。
 
     ![顯示房間價格範圍](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
@@ -338,7 +344,7 @@ ms.locfileid: "91280839"
     >[!Tip]
     >可在 **OrderBy** 清單中輸入任意數目的屬性。 如果旅館有相同的評等和整修日期，可以輸入第三個屬性來區分它們。
 
-2. 同樣地，我們需要在檢視中查看整修日期，以確認排序是正確的。 使用年份作為整修日期應該就可以。 將檢視中的轉譯迴圈變更為下列程式碼。
+1. 同樣地，我們需要在檢視中查看整修日期，以確認排序是正確的。 使用年份作為整修日期應該就可以。 將檢視中的轉譯迴圈變更為下列程式碼。
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -357,7 +363,7 @@ ms.locfileid: "91280839"
                 }
     ```
 
-3. 變更首頁控制器中的 **Next** 方法，以轉送最近整修日期的年份元件。
+1. 變更首頁控制器中的 **Next** 方法，以轉送最近整修日期的年份元件。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -389,7 +395,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-4. 變更檢視中的 **scrolled** 函式，以顯示整修文字。
+1. 變更檢視中的 **scrolled** 函式，以顯示整修文字。
 
     ```javascript
             <script>
@@ -412,7 +418,7 @@ ms.locfileid: "91280839"
             </script>
     ```
 
-5. 執行應用程式。 搜尋一般字詞，例如，"pool" (游泳池) 或 "view" (景觀)，並確認相同評等的旅館現在會依整修日期遞減順序顯示。
+1. 執行應用程式。 搜尋一般字詞，例如，"pool" (游泳池) 或 "view" (景觀)，並確認相同評等的旅館現在會依整修日期遞減順序顯示。
 
     ![依整修日期排序](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
@@ -431,13 +437,13 @@ ms.locfileid: "91280839"
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. 上述篩選條件「不會」  根據距離排序結果，它只會移除極端值。 若要排序結果，請輸入指定 geoDistance 方法的 **OrderBy** 設定。
+1. 上述篩選條件「不會」  根據距離排序結果，它只會移除極端值。 若要排序結果，請輸入指定 geoDistance 方法的 **OrderBy** 設定。
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. 雖然結果是由 Azure 認知搜尋使用距離篩選條件傳回，但「不會」  傳回所計算資料和指定點之間的距離。 如果您想要在結果中顯示距離，請在檢視或控制器中重新計算此值。
+1. 雖然結果是由 Azure 認知搜尋使用距離篩選條件傳回，但「不會」  傳回所計算資料和指定點之間的距離。 如果您想要在結果中顯示距離，請在檢視或控制器中重新計算此值。
 
     下列程式碼會計算兩個 lat/lon 點之間的距離。
 
@@ -460,7 +466,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-4. 現在，您必須將這些概念繫結在一起。 不過，這些程式碼片段僅止於我們的教學課程內容，建置地圖型應用程式留給讀者當作練習。 若要進一步修改此範例，請考慮輸入包含半徑的城市名稱，或在地圖上定位某個點並選取半徑。 若要進一步調查這些選項，請參閱下列資源：
+1. 現在，您必須將這些概念繫結在一起。 不過，這些程式碼片段僅止於我們的教學課程內容，建置地圖型應用程式留給讀者當作練習。 若要進一步修改此範例，請考慮輸入包含半徑的城市名稱，或在地圖上定位某個點並選取半徑。 若要進一步調查這些選項，請參閱下列資源：
 
 * [Azure 的地圖文件](../azure-maps/index.yml)
 * [使用 Azure 地圖服務搜尋服務來尋找地址](../azure-maps/how-to-search-for-address.md) \(部分機器翻譯\)
@@ -492,7 +498,7 @@ ms.locfileid: "91280839"
 
     ```
 
-2. 如果提供的參數包括一或多個標籤清單 (稱為 "amenities")，則下列評分設定檔會大幅提升分數。 此設定檔的重點是，「必須」  提供包含文字的參數。 如果參數是空的或未提供，系統會擲回錯誤。
+1. 如果提供的參數包括一或多個標籤清單 (稱為 "amenities")，則下列評分設定檔會大幅提升分數。 此設定檔的重點是，「必須」  提供包含文字的參數。 如果參數是空的或未提供，系統會擲回錯誤。
  
     ```cs
             {
@@ -510,7 +516,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-3. 在此第三個範例中，評等可讓分數大幅提升。 上次整修日期也會提升分數，但只有當該資料是在目前日期的 730 天 (2 年) 內時才有效。
+1. 在此第三個範例中，評等可讓分數大幅提升。 上次整修日期也會提升分數，但只有當該資料是在目前日期的 730 天 (2 年) 內時才有效。
 
     ```cs
             {
@@ -547,7 +553,7 @@ ms.locfileid: "91280839"
 
 1. 開啟 index.cshtml 檔案，並將 &lt;body&gt; 區段取代為下列程式碼。
 
-    ```cs
+    ```html
     <body>
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
@@ -653,7 +659,7 @@ ms.locfileid: "91280839"
     </body>
     ```
 
-2. 開啟 SearchData.cs 檔案，並將 **SearchData** 類別取代為下列程式碼。
+1. 開啟 SearchData.cs 檔案，並將 **SearchData** 類別取代為下列程式碼。
 
     ```cs
     public class SearchData
@@ -692,7 +698,7 @@ ms.locfileid: "91280839"
     }
     ```
 
-3. 開啟 hotels.css 檔案，並新增下列 HTML 類別。
+1. 開啟 hotels.css 檔案，並新增下列 HTML 類別。
 
     ```html
     .facetlist {
@@ -722,7 +728,7 @@ ms.locfileid: "91280839"
     using System.Linq;
     ```
 
-2.  針對此範例，我們需要 **Index** 的初始呼叫多做一些事，而不只是傳回初始檢視。 該方法現在會搜尋最多 20 個便利設施以在檢視中顯示。
+1. 針對此範例，我們需要 **Index** 的初始呼叫多做一些事，而不只是傳回初始檢視。 該方法現在會搜尋最多 20 個便利設施以在檢視中顯示。
 
     ```cs
         public async Task<ActionResult> Index()
@@ -752,7 +758,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-3. 我們需要兩個私用方法來儲存暫存位置的 Facet，以及從暫存位置復原它們並填入模型。
+1. 我們需要兩個私用方法來儲存暫存位置的 Facet，以及從暫存位置復原它們並填入模型。
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -790,7 +796,7 @@ ms.locfileid: "91280839"
         }
     ```
 
-4. 我們必須視需要設定  **OrderBy** 和 **ScoringProfile** 參數。 以下列程式碼取代現有 **Index(SearchData model)** 方法。
+1. 我們必須視需要設定  **OrderBy** 和 **ScoringProfile** 參數。 以下列程式碼取代現有 **Index(SearchData model)** 方法。
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -947,15 +953,15 @@ ms.locfileid: "91280839"
 
 1. 執行應用程式。 您應該會在檢視中看到便利設施的完整集合。
 
-2. 針對排序，選取 [By numerical Rating] \(依數值評分\) 會提供您已在此教學課程中實作的數值排序，當評等相同時則依整修日期排序。
+1. 針對排序，選取 [By numerical Rating] \(依數值評分\) 會提供您已在此教學課程中實作的數值排序，當評等相同時則依整修日期排序。
 
-![根據評分排序 "beach" (海灘)](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+   ![根據評分排序 "beach" (海灘)](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. 現在，請嘗試 [By Amenities] \(依便利設施\) 設定檔。 選取不同便利設施，然後驗證有這些便利設施的旅館在結果清單中獲得提升。
+1. 現在，請嘗試 [By Amenities] \(依便利設施\) 設定檔。 選取不同便利設施，然後驗證有這些便利設施的旅館在結果清單中獲得提升。
 
-![根據設定檔排序 "beach"](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+   ![根據設定檔排序 "beach"](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. 請嘗試 [By Renovated date/Rating profile] \(依整修日期/評分設定檔\)，以查看是否取得如預期的結果。 只有最近已整修的旅館會獲得 _freshness_ 提升。
+1. 請嘗試 [By Renovated date/Rating profile] \(依整修日期/評分設定檔\)，以查看是否取得如預期的結果。 只有最近已整修的旅館會獲得 _freshness_ 提升。
 
 ### <a name="resources"></a>資源
 

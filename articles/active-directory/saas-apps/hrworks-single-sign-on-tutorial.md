@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549138"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820489"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 HRworks Single Sign-On 整合
 
@@ -156,15 +156,15 @@ ms.locfileid: "88549138"
 
 1. 從功能表列左側按一下 [系統管理員]   > [人員]   > [人員]   > [新增人員]  。
 
-     ![設定單一登入](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![顯示 HR works 頁面的螢幕擷取畫面，其中已選取 [人員] 和 [新增人員]。](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. 在快顯視窗中，按 [下一步]  。
 
-    ![設定單一登入](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![顯示國家/地區清單供您為人員選擇的螢幕擷取畫面。](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. 在 [建立法律條款的新人員與國家/地區]  快顯上，填入個別的詳細資料 (例如，[名字]  、[姓氏]  )，然後按一下 [建立]  。
 
-    ![設定單一登入](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![顯示文字方塊的螢幕擷取畫面，您可以在其中輸入人員的名字和姓氏。](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>測試 SSO
 

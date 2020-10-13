@@ -3,12 +3,12 @@ title: 將連續影片錄製到雲端並從雲端播放的教學課程 - Azure
 description: 在本教學課程中，您將了解如何在Azure IoT Edge 上使用 Azure Live Video Analytics，以持續將影片錄製到雲端，並使用 Azure 媒體服務串流該影片的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566786"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774023"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將連續影片錄製移到雲端並從雲端播放
 
@@ -160,58 +160,15 @@ ms.locfileid: "89566786"
 
 ## <a name="run-the-program"></a>執行程式 
 
-1. 在 Visual Studio Code 中，移至 src/cloud-to-device-console-app/operations.json。
-1. 在 **GraphTopologySet** 節點底下，編輯下列內容：
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. 接下來，在 **GraphInstanceSet** 和 **GraphTopologyDelete** 節點下，確定 **topologyName** 的值符合上述圖表拓撲中的 **name** 屬性值：
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="媒體圖表":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
 
-    `"topologyName" : "CVRToAMSAsset"`  
-1. 在瀏覽器中開啟[拓撲](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)，並查看 assetNamePattern。 若要確定您有一個具有唯一名稱的資產，您可能需要變更 operations.json 檔案中的圖表執行個體名稱 (從預設值 Sample-Graph-1 變更)。
-
-    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
-1. 選取 F5 來啟動偵錯工作階段。 您會在 [終端機] 視窗中看到一些列印的訊息。
-1. operations.json 檔案首先會呼叫 GraphTopologyList 和 GraphInstanceList。 如果您已在先前的快速入門或教學課程之後清除資源，此動作會傳回空白清單並暫停以讓您選取 **Enter**，如下所示：
-
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-
-1. 當您在 [終端機] 視窗中選取 **Enter** 後，將會進行下一組直接方法的呼叫：
-   * 使用先前的 topologyUrl 呼叫 GraphTopologySet
-   * 使用下列主體呼叫 GraphInstanceSet
-     
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph-1",
-       "properties": {
-         "topologyName": "CVRToAMSAsset",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="媒體圖表"
            }
          ]
        }

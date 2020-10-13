@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 83631c6c6503f32ba81195ecfe5df0b1a6c14092
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8d79deb55a5693978569f5e3a940a03897efb80
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545271"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>教學課程：Azure Active Directory 與 IDrive 整合
 
@@ -99,11 +99,11 @@ IDrive 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段中，使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合。
 
-    ![[Application Name] 網域與 URL 單一登入資訊](common/preintegrated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面。](common/preintegrated.png)
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![[Application Name] 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://www.idrive.com/idrive/login/loginForm`
 

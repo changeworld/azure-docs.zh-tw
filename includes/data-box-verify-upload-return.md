@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.author: alkohli
-ms.openlocfilehash: a23b0b2c71207bf84a4938d54a78a62efb6cbcbd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71172687"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631526"
 ---
 當 Microsoft 收到並掃描裝置之後，訂單狀態會更新為 [已收到]  。 然後，裝置會進行實體驗證，以檢查是否有損毀或遭到竄改的跡象。
 
@@ -20,7 +20,7 @@ ms.locfileid: "71172687"
 
 請先確認您的資料已上傳至 Azure，然後再從來源予以刪除。 您的資料可以位於：
 
-- 您的 Azure 儲存體帳戶。 當您將資料複製到資料箱時，資料會上傳到 Azure 儲存體帳戶中的下列其中一個路徑，視類型而定。
+- 您的 Azure 儲存體帳戶。 當您將資料複製到資料箱時，資料會上傳到 Azure 儲存體帳戶中的下列其中一個路徑：
 
   - 區塊 Blob 與分頁 Blob：`https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure 檔案：`https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
@@ -37,7 +37,7 @@ ms.locfileid: "71172687"
 
         ![連結至資源群組的受控磁碟](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - 如果您複製了 VHDX 或動態/差異 VHD，則會將 VHDX/VHD 上傳至暫存的儲存體帳戶以作為分頁 Blob，但將 VHD 轉換為受控磁碟會失敗。 移至您暫存的 [儲存體帳戶] > [Blob]  ，然後選取適當的容器：標準 SSD、標準 HDD 或進階 SSD。 VHD 會以分頁 Blob 形式上傳到暫存的儲存體帳戶。
+    - 如果您複製了 VHDX 或動態或差異 VHD，則會將 VHDX 或 VHD 上傳至暫存的儲存體帳戶以作為分頁 Blob，但是將 VHD 轉換為受控磁碟會失敗。 移至您暫存的 [儲存體帳戶] > [Blob]，然後選取適當的容器：標準 SSD、標準 HDD 或進階 SSD。 VHD 會以分頁 Blob 形式上傳到暫存的儲存體帳戶，並且產生費用。
 
 
 ## <a name="erasure-of-data-from-data-box"></a>清除資料箱的資料

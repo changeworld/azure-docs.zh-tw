@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547778"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714480"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>教學課程：整合 Appraisd 與 Azure Active Directory
 
@@ -86,7 +86,7 @@ ms.locfileid: "88547778"
 
 1. Appraisd 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML 權杖屬性設定中。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Appraisd 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯]  圖示以編輯屬性對應，並變更屬性對應。
 
-    ![image](common/edit-attribute.png)
+    ![顯示已醒目提示編輯圖示的 [使用者屬性] 窗格螢幕擷取畫面。](common/edit-attribute.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -110,15 +110,15 @@ ms.locfileid: "88547778"
 
 4. 按一下頁面右上方的 [設定]  圖示，然後導覽至 [組態]  。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![顯示已呼叫設定連結的螢幕擷取畫面。](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. 從功能表左側，按一下 [SAML 單一登入]  。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![顯示 [設定] 選項的螢幕擷取畫面，其中醒目提示 SAML 單一登入選項。](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. 在 [SAML 2.0 單一登入組態]  頁面上，執行下列步驟：
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![顯示 SAML 2.0 單一登入設定頁面的螢幕擷取畫面，您可以在其中編輯預設轉送狀態和服務起始登入 URL。](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. 複製 [預設轉送狀態]  值，並將它貼到 Azure 入口網站上 [基本 SAML 組態]  的 [轉送狀態]  文字方塊中。
 
@@ -126,7 +126,7 @@ ms.locfileid: "88547778"
 
 7. 在相同頁面向下捲動到 [識別使用者]  之下，執行下列步驟：
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![顯示識別使用者的螢幕擷取畫面，您可以在其中輸入此步驟的值。](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. 在 [識別提供者單一登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值，然後按一下 [儲存]  。
 
@@ -174,15 +174,15 @@ ms.locfileid: "88547778"
 
 2. 按一下頁面右上方的 [設定]  圖示，然後導覽至 [管理中心]  。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![顯示 [設定] 選項的螢幕擷取畫面，您可以在其中選取管理中心。](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. 在頁面頂端的工具列中，按一下 [人員]  ，然後巡覽至 [新增使用者]  。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![顯示 Appraisd 頁面的螢幕擷取畫面，其中已呼叫 [人員] 和 [新增使用者]。](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. 在 [新增使用者]  頁面上，執行下列步驟：
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![顯示新增使用者頁面的螢幕擷取畫面。](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554855"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826380"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Fluxx Labs 整合
 
@@ -139,15 +139,15 @@ ms.locfileid: "88554855"
 
 2. 選取 [設定] 區段下方的 [管理員]。
 
-    ![Fluxx Labs 組態](./media/fluxxlabs-tutorial/config1.png)
+    ![顯示 [設定] 區段的螢幕擷取畫面，其中已選取 [管理員]。](./media/fluxxlabs-tutorial/config1.png)
 
 3. 在管理面板中選取 [外掛程式] > [整合]，然後選取 [SAML SSO - (已停用)]
 
-    ![Fluxx Labs 組態](./media/fluxxlabs-tutorial/config2.png)
+    ![顯示 [整合] 索引標籤的螢幕擷取畫面，其中已選取 [SAML SSO - (已停用)]。](./media/fluxxlabs-tutorial/config2.png)
 
 4. 在 [屬性] 區段中，執行下列步驟：
 
-    ![Fluxx Labs 組態](./media/fluxxlabs-tutorial/config3.png)
+    ![顯示 [屬性] 區段的螢幕擷取畫面，其中已核取 [SAML SSO]、在欄位中輸入值，並且已選取 [儲存] 按鈕。](./media/fluxxlabs-tutorial/config3.png)
 
     a. 選取 [SAML SSO] 核取方塊。
 
@@ -180,11 +180,11 @@ ms.locfileid: "88554855"
 
 2. 按一下下方顯示的**圖示**。
 
-    ![Fluxx Labs 組態](./media/fluxxlabs-tutorial/config6.png)
+    ![顯示系統管理員選項的螢幕擷取畫面，其中已在 [您的儀表板] 底下選取「加號」圖示。](./media/fluxxlabs-tutorial/config6.png)
 
 3. 在儀表板上，按一下下方顯示的圖示，以開啟 [新增人員] 卡片。
 
-    ![Fluxx Labs 組態](./media/fluxxlabs-tutorial/config4.png)
+    ![顯示 [連絡人管理] 功能表的螢幕擷取畫面，其中已選取 [人員] 旁邊的「加號」圖示。](./media/fluxxlabs-tutorial/config4.png)
 
 4. 在 [新增人員] 區段上，執行下列步驟：
 

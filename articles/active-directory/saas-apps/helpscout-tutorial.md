@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548135"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教學課程：Azure Active Directory 與 Help Scout 整合
 
@@ -89,7 +89,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
 1. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Help Scout 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. **識別碼**是 Help Scout 的**對象 URI (服務提供者實體識別碼)** ，以 `urn:` 開頭
 
@@ -100,7 +100,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Help Scout 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，將 URL 輸入為：`https://secure.helpscout.net/members/login/`
 
@@ -183,15 +183,15 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
 1. 在頂端功能表中按一下 [管理]  ，然後從下拉式功能表中選取 [公司]  。
 
-    ![設定單一登入](./media/helpscout-tutorial/settings1.png)
+    ![顯示 [管理] 功能表的螢幕擷取畫面，其中已選取 [公司]。](./media/helpscout-tutorial/settings1.png)
 
 1. 在左側導覽窗格中，選取 [驗證]  。
 
-    ![設定單一登入](./media/helpscout-tutorial/settings2.png)
+    ![顯示已選取 [驗證] 的螢幕擷取畫面。](./media/helpscout-tutorial/settings2.png)
 
 1. 這會帶您前往 [SAML 設定] 區段，請執行下列步驟：
 
-    ![設定單一登入](./media/helpscout-tutorial/settings3.png)
+    ![顯示 [單一登入] 索引標籤的螢幕擷取畫面，您可以在其中輸入指定的資訊。](./media/helpscout-tutorial/settings3.png)
 
     a. 複製**回傳 URL (判斷提示取用者服務 URL)** 值，並在 Azure 入口網站的 [基本 SAML 組態] 區段中的 [回覆 URL] 文字方塊內貼上該值。
 
@@ -199,7 +199,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
 1. 將 [啟用 SAML]  切換為開啟，並執行下列步驟：
 
-    ![設定單一登入](./media/helpscout-tutorial/settings4.png)
+    ![顯示 [單一登入] 索引標籤的螢幕擷取畫面，您可以在其中啟用 SAML 以及新增其他資訊。](./media/helpscout-tutorial/settings4.png)
 
     a. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 

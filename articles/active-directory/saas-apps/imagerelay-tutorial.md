@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545245"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教學課程：Azure Active Directory 與 Image Relay 整合
 
@@ -128,27 +128,27 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
 2. 在頂端的工具列中按一下 [使用者和權限]  工作負載。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![顯示從工具列選取 [使用者和權限] 的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. 按一下 [建立新的權限]  。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![螢幕擷取畫面，顯示用來輸入權限標題的文字方塊，以及從中選擇權限類型的選項。](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. 在 [單一登入設定]  工作負載中，選取 [這個群組只能透過單一登入來登入]  核取方塊，然後按一下 [儲存]  。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![顯示 [單一登入設定] 的螢幕擷取畫面，您可以在其中選取選項。](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. 移至 [帳戶設定]  。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![顯示 [帳戶設定] 工具列選項的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. 移至 [單一登入設定]  工作負載。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![顯示 [單一登入設定] 功能表選項的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. 在 [SAML設定]  頁面上，執行下列步驟：
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![顯示 [SAML 設定] 對話方塊的螢幕擷取畫面，您可在其中輸入資訊。](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -160,19 +160,19 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
     e. 在 [x.509 憑證]  下方，按一下 [更新憑證]  。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![顯示 [更新憑證] 選項的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. 在記事本中開啟下載的憑證，複製其內容，然後貼到 [x.509 憑證]  文字方塊中。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![顯示 x dot 509 憑證的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. 在 [Just-In-Time 使用者佈建]  區段中，選取 [啟用 Just-In-Time 使用者佈建]  。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![顯示 [Just-In-Time 使用者佈建] 區段的螢幕擷取畫面，其中已選取啟用控制項。](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. 選取只允許透過單一登入來登入的權限群組 (例如 [SSO 基本]  )。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![顯示 [Just-In-Time 使用者佈建] 區段的螢幕擷取畫面，其中已選取 [SSO 基本]。](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. 按一下 [檔案]  。
 
@@ -237,11 +237,11 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
 2. 移至 [使用者和權限]  ，選取 [建立 SSO 使用者]  。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![顯示已從功能表中選取 [建立 SSO 使用者] 的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. 輸入您要佈建的使用者的**電子郵件**、**名字**、**姓氏**和**公司**，選取只能透過單一登入來登入的權限群組 (例如 [SSO 基本])。
 
-    ![設定單一登入](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![顯示 [建立 SSO 使用者] 頁面的螢幕擷取畫面，您可以在其中輸入必要的資訊。](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. 按一下頁面底部的 [新增]  。
 

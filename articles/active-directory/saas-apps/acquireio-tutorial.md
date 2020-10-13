@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd07370c75ac64fa8e3806fed50a64db90122c76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537866"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AcquireIO 整合
 
@@ -134,15 +134,15 @@ ms.locfileid: "88537866"
 
 1. 從功能表左側，按一下 [App Store]  。
 
-     ![AcquireIO 設定](./media/acquireio-tutorial/config01.png)
+     ![醒目提示 App Store 的螢幕擷取畫面。](./media/acquireio-tutorial/config01.png)
 
 1. 向下捲動至 [Active Directory]  ，然後按一下 [安裝]  。
 
-    ![AcquireIO 設定](./media/acquireio-tutorial/config02.png)
+    ![醒目提示 Active Directory 區段和 [安裝] 按鈕的螢幕擷取畫面。](./media/acquireio-tutorial/config02.png)
 
 1. 在 [Active Directory] 快顯上，執行下列步驟：
 
-    ![AcquireIO 設定](./media/acquireio-tutorial/config03.png)
+    ![顯示 Active Directory 畫面的螢幕擷取畫面。](./media/acquireio-tutorial/config03.png)
 
     a. 按一下 [複製]  以複製執行個體的回覆 URL，然後將其貼在 Azure 入口網站上 [基本 SAML 設定]  區段的 [回覆 URL]  文字方塊中。
 
@@ -162,7 +162,7 @@ ms.locfileid: "88537866"
 
 1. 從功能表左側按一下 [設定檔]  並瀏覽至 [新增設定檔]  。
 
-     ![AcquireIO 設定](./media/acquireio-tutorial/config04.png)
+     ![醒目提示畫面左側功能表中 [設定檔] 以及 [新增設定檔] 選項的螢幕擷取畫面。](./media/acquireio-tutorial/config04.png)
 
 1. 在 [新增客戶]  快顯上，執行下列步驟：
 

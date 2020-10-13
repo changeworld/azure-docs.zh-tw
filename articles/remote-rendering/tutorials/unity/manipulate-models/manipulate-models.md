@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018853"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653157"
 ---
 # <a name="tutorial-manipulating-models"></a>教學課程：操作模型
 
@@ -161,7 +161,7 @@ ms.locfileid: "89018853"
 
 1. 再次執行應用程式。 在模型載入之後，您很快會看到遠端物件的界限。 您會看到類似下列的值：
 
-     ![界限已更新](./media/updated-bounds.png)
+     ![顯示遠端物件繫結範例的螢幕擷取畫面。](./media/updated-bounds.png)
 
 現在，我們已在 Unity 物件上使用正確的界限設定本機 **BoxCollider**。 界限允許視覺效果和互動使用我們在本機轉譯物件中使用的相同策略。 例如，改變轉換、物理等等之後的指令碼。
 

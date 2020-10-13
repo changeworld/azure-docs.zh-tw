@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550967"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>教學課程：Azure Active Directory 與 Front 整合
 
@@ -128,23 +128,23 @@ ms.locfileid: "88550967"
 
 2. 移至 [設定] \(左側資訊看板底部的齒輪圖示) > [喜好設定]  。
    
-    ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_000.png)
+    ![顯示已選取 [設定 (cog 圖示)] 和醒目提示 [喜好設定] 的螢幕擷取畫面。](./media/front-tutorial/tutorial_front_000.png)
 
 3. 按一下 [單一登入]  連結。
    
-    ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_001.png)
+    ![顯示 [公司喜好設定] 區段的螢幕擷取畫面，其中已選取 [單一登入] 連結。](./media/front-tutorial/tutorial_front_001.png)
 
 4. 從 [單一登入] 下拉式清單中選取 [SAML]。
    
-    ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_002.png)
+    ![顯示 [單一登入] 下拉式清單的螢幕擷取畫面，其中已選取 [SAML]。](./media/front-tutorial/tutorial_front_002.png)
 
 5. 在 [進入點]  文字方塊中，放入來自 Azure AD 應用程式組態精靈的 [登入 URL]  值。
     
-    ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_003.png)
+    ![顯示 [進入點] 文字方塊的螢幕擷取畫面。](./media/front-tutorial/tutorial_front_003.png)
 
 6. 在記事本中開啟您下載的**憑證 (Base64)** 檔案，將其內容複製到剪貼簿，然後貼到 [簽署憑證]  文字方塊中。
     
-    ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_004.png)
+    ![顯示醒目提示 [簽署憑證]，且文字方塊呈現灰色的螢幕擷取畫面。](./media/front-tutorial/tutorial_front_004.png)
 
 7. 在 [服務提供者設定]  區段中，執行下列步驟：
 

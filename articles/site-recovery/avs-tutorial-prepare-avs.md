@@ -1,0 +1,120 @@
+---
+title: 使用 Azure Site Recovery 進行 Azure VMware 解決方案 VM 災害復原的準備
+description: 了解如何準備 Azure VMware 解決方案伺服器，以使用 Azure Site Recovery 服務來進行 Azure 的災害復原。
+author: Harsha-CS
+manager: rochakm
+ms.service: site-recovery
+ms.topic: tutorial
+ms.date: 09/29/2020
+ms.author: harshacs
+ms.custom: MVC
+ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.translationtype: HT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91814216"
+---
+# <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>準備 Azure VMware 解決方案伺服器以進行 Azure 的災害復原
+
+本文說明如何準備 Azure VMware 解決方案伺服器，以使用 [Azure Site Recovery](site-recovery-overview.md) 服務進行 Azure 的災害復原。 
+
+這是一系列中的第二個教學課程，說明如何為 Azure VMware 解決方案 VM 設定 Azure 的災害復原。 在[第一個教學課程](avs-tutorial-prepare-azure.md)中，我們針對 Azure VMware 解決方案災害復原需求設定 Azure 元件。
+
+
+在本文中，您將學會如何：
+
+> [!div class="checklist"]
+> * 在 vCenter Server 或 vSphere ESXi 主機上，準備一個用來將 VM 探索自動化的帳戶。
+> * 準備一個用來在 VMware VM 上自動安裝行動服務的帳戶。
+> * 檢閱 VMware 伺服器與 VM 需求和支援。
+> * 準備在容錯移轉後連接到 Azure VM。
+
+> [!NOTE]
+> 這些教學課程示範案例的最簡單部署路徑。 可能的話，會使用預設選項，而不會顯示所有可能的設定與路徑。 如需詳細指示，請檢閱 Site Recovery 目錄的「操作說明」區段中的文章。
+
+## <a name="before-you-start"></a>開始之前
+
+確定您已依照[這一系列中的第一個教學課程](avs-tutorial-prepare-azure.md)所述備妥 Azure。
+
+## <a name="prepare-an-account-for-automatic-discovery"></a>準備帳戶以進行自動探索
+
+Site Recovery 需要存取 Azure VMware 解決方案伺服器，才能：
+
+- 自動探索 VM。 需要至少一個唯讀帳戶。
+- 協調複寫、容錯移轉和容錯回復。 您需要可執行建立和移除磁碟以及開啟 VM 電源等作業的帳戶。
+
+遵循下列方式建立此帳戶：
+
+1. 若要使用專用帳戶，請在 vCenter 層級建立一個角色。 指定角色的名稱，例如 **Azure_Site_Recovery**。
+2. 將下表摘要說明的權限指派給角色。
+3. 在 vCenter 伺服器或 vSphere 主機上建立使用者。 將角色指派給使用者。
+
+### <a name="vmware-account-permissions"></a>VMware 帳戶權限
+
+**Task** | **角色/權限** | **詳細資料**
+--- | --- | ---
+**VM 探索** | 至少是唯讀使用者<br/><br/> 資料中心物件 –> 傳播至子物件、role=Read-only | 在資料中心層級指派的使用者，且能夠存取資料中心內的所有物件。<br/><br/> 如果要限制存取權，請將具備 [傳播至子物件] 權限的 [沒有存取權] 角色指派給子物件 (vSphere 主機、資料存放區、VM 及網路)。
+**完整複寫、容錯移轉、容錯回復** |  建立具有必要權限的角色 (Azure_Site_Recovery)，然後將角色指派給 VMware 使用者或群組<br/><br/> 資料中心物件 –> 傳播至子物件、role=Azure_Site_Recovery<br/><br/> 資料存放區 -> 配置空間、瀏覽資料存放區、底層檔案作業、移除檔案、更新虛擬機器檔案<br/><br/> 網路 -> 網路指派<br/><br/> 資源 -> 指派 VM 至資源集區、移轉已關閉電源的 VM、移轉已開啟電源的 VM<br/><br/> 工作 -> 建立工作、更新工作<br/><br/> 虛擬機器 -> 組態<br/><br/> 虛擬機器 -> 互動 -> 回答問題、裝置連線、設定 CD 媒體、設定磁碟片媒體、電源關閉、電源開啟、VMware 工具安裝<br/><br/> 虛擬機器 -> 清查 -> 建立、註冊、取消註冊<br/><br/> 虛擬機器 -> 佈建 -> 允許虛擬機器下載、允許虛擬機器檔案上傳<br/><br/> 虛擬機器 -> 快照 -> 移除快照 | 在資料中心層級指派的使用者，且能夠存取資料中心內的所有物件。<br/><br/> 如果要限制存取權，請將具備 [傳播至子物件] 權限的 [沒有存取權] 角色指派給子物件 (vSphere 主機、資料存放區、VM 及網路)。
+
+## <a name="prepare-an-account-for-mobility-service-installation"></a>準備一個用來安裝行動服務的帳戶
+
+行動服務必須安裝在您要複寫的電腦上。 Site Recovery 可以在您為電腦啟用複寫時，進行此服務的推送安裝，您也可以手動進行安裝，或使用安裝工具。
+
+- 在本教學課程中，我們即將使用推送安裝來安裝行動服務。
+- 針對此推送安裝，就必須準備一個可供 Site Recovery 用來存取 VM 的帳戶。 當您在 Azure 主控台中設定災害復原時，您會指定此帳戶。
+
+遵循下列方式準備此帳戶：
+
+準備有權限可以在 VM 上安裝的網域或本機帳戶。
+
+- **Windows VMs**：若要在 Windows VM 上安裝，如果您不使用網域帳戶，請停用本機電腦上的遠端使用者存取控制。 若要執行此動作，請在登錄的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下，新增 DWORD 登錄 **LocalAccountTokenFilterPolicy**，其值為 1。
+- **Linux VMs**：若要在 Linux VM 上安裝，請在來源 Linux 伺服器上準備根帳戶。
+
+
+## <a name="check-vmware-requirements"></a>檢查 VMware 需求
+
+確定 VMware 伺服器和 VM 符合下列需求。
+
+1. 確認 Azure VMware 解決方案[軟體版本](../azure-vmware/concepts-private-clouds-clusters.md#vmware-software-versions)。
+2. 確認 [VMware 伺服器需求](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)。
+3. 針對 Linux VM，[檢查](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)檔案系統和儲存體需求。 
+4. 檢查[網路](vmware-physical-azure-support-matrix.md#network)和[儲存體](vmware-physical-azure-support-matrix.md#storage)支援。 
+5. 檢查在容錯移轉之後，[Azure 網路](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[儲存體](vmware-physical-azure-support-matrix.md#azure-storage)和[計算](vmware-physical-azure-support-matrix.md#azure-compute)支援的項目。
+6. 您複寫到 Azure 的 Azure VMware 解決方案 VM 必須符合 [Azure VM 需求](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
+7. 在 Linux 虛擬機器中，裝置名稱或掛接點名稱應該要是唯一名稱。 請確定沒有任何兩個裝置/掛接點的名稱相同。 請注意名稱不區分大小寫。 例如，不允許將相同 VM 的兩個裝置命名為 _device1_ 和 _Device1_。
+
+
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>準備在容錯移轉後連接到 Azure VM
+
+在容錯移轉後，您可以從 Azure VMware 解決方案網路連線至 Azure VM。
+
+若要在容錯移轉後使用 RDP 連線到 Windows VM，請執行下列作業：
+
+- **網際網路存取**。 在容錯移轉之前，先在 Azure VMware 解決方案 VM 上啟用 RDP，再進行容錯移轉。 確定已針對 [公用]**** 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]**** > [允許的應用程式]**** 中已針對所有設定檔允許 RDP。
+- **站對站 VPN 存取**：
+    - 在容錯移轉之前，請在 Azure VMware 解決方案 VM 上啟用 RDP。
+    - 您應該在 [Windows 防火牆] -> [允許的應用程式與功能] 中，針對 [網域] 和 [私人] 網路允許 RDP。
+    - 確認作業系統的 SAN 原則已設為 [OnlineAll]****。 [深入了解](https://support.microsoft.com/kb/3031135)。
+- 觸發容錯移轉時，VM 上不應該有任何擱置的 Windows 更新。 如果有，在更新完成之前，您將無法登入虛擬機器。
+- 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+
+若要在容錯移轉後使用 SSH 連線到 Linux VM，請執行下列作業：
+
+- 在容錯移轉之前，於 Azure VMware 解決方案 VM 上，確認安全殼層服務已設定為在系統開機時自動啟動。
+- 確認防火牆規則允許 SSH 連線。
+- 在容錯移轉之後，於 Azure VM 上，針對已容錯移轉之 VM 上的網路安全性群組規則及其所連線的 Azure 子網路，允許 SSH 連接埠的連入連線。
+- [新增 VM 的公用 IP 位址](./site-recovery-monitor-and-troubleshoot.md)。
+- 您可以勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。
+
+
+## <a name="failback-requirements"></a>容錯回復需求
+如果您打算容錯回復到 Azure VMware 解決方案雲端，則有一些[容錯回復必要條件](avs-tutorial-reprotect.md#before-you-begin)。 您現在可以準備這些項目，但不需要這麼做。 您可以在容錯移轉至 Azure 之後準備。
+
+
+
+
+## <a name="next-steps"></a>下一步
+> [!div class="nextstepaction"]
+> [設定災害復原](avs-tutorial-replication.md)
+- 如果您要複寫多個 VM，請[執行容量規劃](site-recovery-deployment-planner.md)。

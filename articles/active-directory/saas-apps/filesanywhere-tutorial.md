@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c62967950d9f6d9ba9e3578357f65cc4988412c2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555103"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教學課程：Azure Active Directory 與 FilesAnywhere 整合
 
@@ -101,7 +101,7 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![FilesAnywhere 網域與 URL 單一登入資訊](common/both-replyurl.png)
+    ![顯示 [基本 SAML 設定] 區段的螢幕擷取畫面，其中醒目提示 [回覆 URL] 欄位，並且已選取 [儲存] 按鈕。](common/both-replyurl.png)
 
     在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -116,9 +116,9 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
 6. FilesAnywhere 應用程式需要特定格式的 SAML 判斷提示，要求您加入自訂屬性對應到您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯] 圖示以新增屬性。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](common/edit-attribute.png)
 
-    當使用者註冊 FilesAnywhere 時，他們會取得來自 [FilesAnywhere 小組](mailto:support@FilesAnywhere.com)的 **clientid** 屬性值。 您必須使用 FilesAnywhere 提供的唯一值，新增 [用戶端 ID] 屬性。
+    當使用者註冊 FilesAnywhere 時，他們會取得來自 [FilesAnywhere 小組](mailto:support@FilesAnywhere.com)的 **clientid** 屬性值。 您必須使用 FilesAnywhere 提供的唯一值，新增 [用戶端識別碼] 屬性。
 
 7. 除了以上屬性外，FilesAnywhere 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -128,7 +128,7 @@ FilesAnywhere 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 對話方塊的螢幕擷取畫面，其中已選取 [新增宣告] 和 [儲存]。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

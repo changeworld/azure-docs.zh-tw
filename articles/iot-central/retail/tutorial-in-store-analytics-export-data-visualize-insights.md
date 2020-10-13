@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999568"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651440"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教學課程：從 Azure IoT Central 匯出資料並以視覺化方式呈現 Power BI 中的見解
 
@@ -409,7 +409,7 @@ ms.locfileid: "80999568"
     * 選取 [時間戳記]  欄位，然後從 [動態內容]  清單中選取 [x-opt-enqueuedtime]  。
     * 選取 [停留時間 1]  欄位，然後選取 [剖析遙測]  旁的 [查看更多]  。 然後選取 [DwellTime1]  。
     * 選取 [停留時間 2]  欄位，然後選取 [剖析遙測]  旁的 [查看更多]  。 然後選取 [DwellTime2]  。
-    * 選取 [儲存]  來儲存變更。 **停留時間介面**動作如下列螢幕擷取畫面所示：![佔用量動作](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * 選取 [儲存]  來儲存變更。 **停留時間介面**動作如下列螢幕擷取畫面所示：![顯示「停留時間介面」動作的螢幕擷取畫面。](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. 選取 [人員計數介面]  動作，然後選取 [新增動作]  。
 1. 在 [搜尋連接器和動作]  中，輸入 **Power BI**，然後按 **Enter**。
 1. 選取 [將資料列新增至資料集 (預覽)]  動作。
@@ -484,7 +484,7 @@ ms.locfileid: "80999568"
 
 調整儀表板上的圖格大小並重新排列圖格，如下列螢幕擷取畫面所示：
 
-![Power BI 儀表板](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![顯示 Power BI 儀表板 (具有已調整大小和重新排列磚) 的螢幕擷取畫面。](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 您可以新增一些其他圖形資源以進一步自訂儀表板：
 

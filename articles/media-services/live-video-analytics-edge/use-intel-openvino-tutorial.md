@@ -4,12 +4,12 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906609"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776335"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -141,33 +141,15 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
 ### <a name="run-the-sample-program-to-detect-vehicles"></a>執行範例程式來偵測車輛
 如果您在瀏覽器中開啟本教學課程的[圖形拓撲](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json)，會看到 `inferencingUrl` 的值已設定為 `http://openvino:4000/vehicleDetection`，這表示在即時影片中偵測車輛 (如果有) 後，推斷伺服器會傳回結果。
 
-1. 若要啟動偵錯工作階段，請選取 F5 鍵。 您會在 [終端機] 視窗中看到一些列印的訊息。
-1. *operations.json* 程式碼首先會呼叫直接方法 `GraphTopologyList` 和 `GraphInstanceList`。 如果您在完成先前的快速入門之後清除了資源，則此程序會傳回空的清單，然後暫停。 若要繼續，請選取 Enter 鍵。
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
-    [終端機] 視窗會顯示下一組直接方法呼叫：
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="概觀":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
 
-     * 會使用上述 `topologyUrl` 的對 `GraphTopologySet` 呼叫
-     * 會使用下列主體的對 `GraphInstanceSet` 呼叫：
-
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph-1",
-           "properties": {
-             "topologyName": "InferencingWithOpenVINO",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="概觀"
                }
              ]
            }

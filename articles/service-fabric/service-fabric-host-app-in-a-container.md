@@ -3,12 +3,12 @@ title: 將容器中的 .NET 應用程式部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 將現有 .NET 應用程式容器化，並在 Service Fabric 本機為容器偵錯。 需將容器化的應用程式推送至 Azure 容器登錄，並部署到 Service Fabric 叢集。 部署到 Azure 時，應用程式會使用 Azure SQL 資料庫保存資料。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ef696156b6386c7aa1a027dcc61c988ba4692a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314295"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817632"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教學課程：將 Windows 容器中的 .NET 應用程式部署到 Azure Service Fabric
 
@@ -45,7 +45,7 @@ ms.locfileid: "91314295"
 
 1. 在 [FabrikamFiber.Web] 專案上按一下滑鼠右鍵 > [新增] >  [容器協調器支援]。  選取 [Service Fabric] 作為容器協調器，然後按一下 [確定]。
 
-2. 按一下 [是]，可立即將 Docker 切換到 Windows 容器。
+2. 若出現提示，請按一下 [是]，立即將 Docker 切換到 Windows 容器。
 
    現在在方案中已建立新的 Service Fabric 應用程式專案 **FabrikamFiber.CallCenterApplication**。  並已在現有 **FabrikamFiber.Web** 專案中新增 Dockerfile。  **PackageRoot** 目錄也已新增至 **FabrikamFiber.Web** 專案，其中包含新 FabrikamFiber.Web 服務的服務資訊清單和設定。
 
@@ -109,7 +109,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="update-the-web-config"></a>更新 Web 設定
 
-回到 **FabrikamFiber.Web** 專案，更新 **web.config** 檔案中的連接字串以指向容器中的 SQL Server。  更新連接字串的 Server 這個部分，改為之前指令碼所建立的伺服器名稱。 它應該會類似 "fab-fiber-751718376.database.windows.net"。
+回到 **FabrikamFiber.Web** 專案，更新 **web.config** 檔案中的連接字串以指向容器中的 SQL Server。  更新連接字串的 Server 這個部分，改為之前指令碼所建立的伺服器名稱。 它應該會類似 "fab-fiber-751718376.database.windows.net"。 在下列 XML 中，您只需要更新 `connectionString` 屬性；`providerName` 和 `name` 屬性不需要變更。
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />

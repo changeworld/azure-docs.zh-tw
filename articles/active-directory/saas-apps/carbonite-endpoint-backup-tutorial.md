@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530585"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761731"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>教學課程：整合 Carbonite Endpoint Backup 與 Azure Active Directory
 
@@ -129,19 +129,19 @@ ms.locfileid: "88530585"
 
 4. 按一下左窗格上的 [公司]  。
 
-    ![Carbonite Endpoint Backup 設定 ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![顯示 Carbonite 端點的螢幕擷取畫面，其中已選取 [公司]。](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. 按一下 [單一登入]  。
 
-    ![Carbonite Endpoint Backup 設定 ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![顯示已選取 [單一登入] 的公司螢幕擷取畫面。](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. 按一下 [啟用]  ，然後按一下 [編輯設定]  以進行設定。
 
-    ![Carbonite Endpoint Backup 設定 ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![顯示 [單一登入] 索引標籤的螢幕擷取畫面，其中已呼叫 [啟用] 和 [編輯] 設定。](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. 在 [單一登入設定]  頁面執行下列步驟：
 
-    ![Carbonite Endpoint Backup 設定 ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![顯示 [單一登入] 索引標籤的螢幕擷取畫面，您會在其中輸入此步驟中所述的資訊。](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. 在 [識別提供者名稱]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
@@ -187,11 +187,11 @@ ms.locfileid: "88530585"
 
 1. 從左窗格中按一下 [使用者]  ，然後按一下 [新增使用者]  。
 
-    ![在 Carbonite Endpoint Backup 中新增使用者](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![顯示 [Carbonite 端點] 頁面的螢幕擷取畫面，其中已選取 [使用者] 和 [新增使用者]。](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. 在 [新增使用者]  頁面上，執行下列步驟：
 
-    ![在 Carbonite Endpoint Backup 中新增使用者](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![顯示 [新增使用者] 頁面的螢幕擷取畫面，您可以在其中執行這裡所述的步驟。](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. 輸入使用者的 [電子郵件]  、[名字]  、[姓氏]  ，並根據組織需求提供必要的權限給使用者。
 

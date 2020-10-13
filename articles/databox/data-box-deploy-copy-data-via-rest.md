@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926190"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742514"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>教學課程：使用 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 
@@ -115,11 +115,11 @@ ms.locfileid: "87926190"
 
 3. 選取 [將所有憑證放入以下的存放區]，然後按一下 [瀏覽]。 導覽至遠端主機的根存放區，然後按一下 [ **下一步**]。
 
-    ![使用 PowerShell 匯入憑證](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![使用 PowerShell 匯入憑證 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. 按一下 [完成] 。 會出現訊息告訴您匯入成功。
 
-    ![使用 PowerShell 匯入憑證](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![使用 PowerShell 匯入憑證 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>使用 Linux 系統
 

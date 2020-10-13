@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554956"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>教學課程：Azure Active Directory 與 Flatter Files 整合
 
@@ -121,11 +121,11 @@ Flatter Files 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [儀表板]  。 
    
-    ![設定單一登入](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![顯示在「Flatter Files」應用程式中選取 [儀表板] 的螢幕擷取畫面。](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. 按一下 [設定]  ，然後在 [公司]  索引標籤上執行下列步驟： 
    
-    ![設定單一登入](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![顯示 [公司] 索引標籤的螢幕擷取畫面，其中已核取 [使用 SAML 2.0 進行驗證]，並且已選取 [設定 SAML] 按鈕。](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. 選取 [使用 SAML 2.0 進行驗證]  。
     
@@ -207,7 +207,7 @@ Flatter Files 與 Azure AD 整合提供下列優點：
 
 2. 在左側導覽窗格中，按一下 [設定]  ，然後按一下 [使用者]  索引標籤。
    
-    ![建立 Flatter Files 使用者](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    ![顯示 [設定] 頁面的螢幕擷取畫面，其中已選取 [使用者] 索引標籤。](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
 3. 按一下 [新增使用者]  。 
 

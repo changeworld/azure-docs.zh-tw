@@ -1,5 +1,6 @@
 ---
-title: 建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
+title: 教學課程：建置可存取 Microsoft Graph 商務資料的多租用戶精靈 | Azure
+titleSuffix: Microsoft identity platform
 description: 在本教學課程中，了解如何從 Windows 桌面 (WPF) 應用程式，呼叫受 Azure Active Directory 保護的 ASP.NET Web API。 WPF 用戶端會驗證使用者、要求存取權杖，以及呼叫 Web API。
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982844"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611090"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈
 
 在本教學課程中，您將了解如何使用 Microsoft 身分識別平台，在長時間執行的非互動式程序中存取 Microsoft 企業客戶的資料。 精靈範例會使用 [OAuth2 用戶端認證授與](v2-oauth2-client-creds-grant-flow.md)來取得存取權杖。 然後，此精靈會使用權杖來呼叫 [Microsoft Graph](https://graph.microsoft.io) 並存取組織資料。
 
@@ -30,28 +31,23 @@ ms.locfileid: "90982844"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
+## <a name="prerequisites"></a>必要條件
+
+- [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)。
+- Azure AD 租用戶。 如需詳細資訊，請參閱[如何取得 Azure AD 租用戶](quickstart-create-new-tenant.md)。
+- Azure AD 租用戶中的一或多個使用者帳戶。 此範例不適用於 Microsoft 帳戶。 如果您使用 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)，且您從未在目錄中建立使用者帳戶，請於此時建立。
+
+## <a name="scenario"></a>狀況
+
 此應用程式會建置為 ASP.NET MVC 應用程式。 其使用 OWIN OpenID Connect 中介軟體來讓使用者登入。
 
 此範例中的「精靈」元件是一個 API 控制器 (`SyncController.cs`)。 控制器收到呼叫時會從 Microsoft Graph 提取客戶的 Azure Active Directory (Azure AD) 租用戶使用者清單。 `SyncController.cs` 會由 Web 應用程式中的 AJAX 呼叫加以觸發。 其會使用[適用於 .NET 的 Microsoft 驗證程式庫 (MSAL)](msal-overview.md) 來取得 Microsoft Graph 的存取權杖。
-
->[!NOTE]
-> 如果您不熟悉 Microsoft 身分識別平台，建議您從 [.NET Core 精靈快速入門](quickstart-v2-netcore-daemon.md)開始了解。
-
-## <a name="scenario"></a>狀況
 
 由於此應用程式是供 Microsoft 企業客戶使用的多租用戶應用程式，因此必須提供方法讓客戶可以「註冊」應用程式或將應用程式「連線」至其公司資料。 在連線過程中，公司管理員會先將「應用程式權限」直接授與應用程式，讓它能夠在沒有登入使用者的情況下，以非互動方式存取公司資料。 此範例中的邏輯主要將說明如何使用身分識別平台的[管理員同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)端點來完成此連線流程。
 
 ![圖表顯示 UserSync 應用程式與三個連線至 Azure 的本機項目，開始點驗證是以互動方式取得權杖以連線至 Azure AD，AccountController 取得管理員同意以連線至 Azure AD，SyncController 讀取使用者以連線至 Microsoft Graph。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 若要進一步了解此範例中使用的概念，請閱讀[適用於身分識別平台端點的用戶端認證通訊協定文件](v2-oauth2-client-creds-grant-flow.md)。
-
-## <a name="prerequisites"></a>Prerequisites
-
-若要執行本快速入門中的範例，您將需要：
-
-- [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)。
-- Azure AD 租用戶。 如需詳細資訊，請參閱[如何取得 Azure AD 租用戶](quickstart-create-new-tenant.md)。
-- Azure AD 租用戶中的一或多個使用者帳戶。 此範例不適用於 Microsoft 帳戶 (前身為 Windows Live 帳戶)。 如果您使用 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)，且您從未在目錄中建立使用者帳戶，您就必須於此時建立。
 
 ## <a name="clone-or-download-this-repository"></a>複製或下載此存放庫
 
@@ -256,17 +252,8 @@ Visual Studio 會發佈專案，並自動開啟瀏覽器並導向至專案的 UR
 若要提供建議，請移至 [User Voice 頁面](https://feedback.azure.com/forums/169401-azure-active-directory)。
 
 ## <a name="next-steps"></a>後續步驟
-深入了解 Microsoft 身分識別平台所支援的不同[驗證流程和應用程式案例](authentication-flows-app-scenarios.md)。
 
-如需詳細資訊，請參閱下列概念文件：
+深入了解如何建置可使用 Microsoft 身分識別平台來存取受保護 Web API 的精靈應用程式：
 
-- [Azure Active Directory 中的租用](single-and-multi-tenant-apps.md)
-- [了解 Azure AD 應用程式同意體驗](application-consent-experience.md)
-- [讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入](howto-convert-app-to-be-multi-tenant.md)
-- [了解使用者和管理員同意](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Azure Active Directory 中的應用程式和服務主體物件](app-objects-and-service-principals.md)
-- [快速入門：使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
-- [快速入門：設定用戶端應用程式以存取 Web API](quickstart-configure-app-access-web-apis.md)
-- [取得具有用戶端認證流程的應用程式適用的權杖](msal-client-applications.md)
-
-對於較簡單的多租用戶主控台精靈應用程式，請參閱 [.NET Core 精靈快速入門](quickstart-v2-netcore-daemon.md)。
+> [!div class="nextstepaction"]
+> [案例：呼叫 Web API 的精靈應用程式](scenario-daemon-overview.md)

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021318"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650471"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教學課程：保護 Azure 遠端轉譯和模型儲存體
 
@@ -163,7 +163,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     ```
 
     這段程式碼會將三個額外的字串變數新增至您的 **RemoteRenderingCoordinator** 元件。
-    ![連結模型](./media/storage-account-linked-model.png)
+    ![醒目提示 RemoteRenderingCoordinator 元件儲存體帳戶名稱、Blob 容器名稱和模型路徑的螢幕擷取畫面。](./media/storage-account-linked-model.png)
 
 1. 將您的值新增至 **RemoteRenderingCoordinator** 元件。 遵循[模型轉換快速入門](../../../quickstarts/convert-model.md)後，您的值應該是：
 
@@ -392,12 +392,13 @@ return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRe
     * **Azure 租用戶識別碼**是在 AAD 應用程式註冊中找到的「目錄 (租用戶) 識別碼 (請參閱下圖)。
     * **Azure 遠端轉譯帳戶識別碼**與您針對 **RemoteRenderingCoordinator** 使用的**帳戶識別碼**相同。
 
-    ![AAD 驗證元件](./media/app-overview-data.png)
+    ![醒目提示應用程式 (用戶端) 識別碼和目錄 (租用戶) 識別碼的螢幕擷取畫面。](./media/app-overview-data.png)
 
 1. 在 Unity 編輯器中按下 [播放]，並同意執行工作階段。
     由於 **AADAuthentication** 元件具有檢視控制器，因此會自動連結，以在工作階段授權強制回應面板之後顯示提示。
 1. 依照 **AppMenu** 右側面板中找到的指示進行。
-    您應該會看到類似如下的內容：![ADD 驗證元件](./media/device-flow-instructions.png) 在您的次要裝置 (或相同裝置上的瀏覽器) 上輸入所提供的程式碼，並使用您的認證登入之後，存取權杖將會傳回給要求的應用程式，在此案例中是 Unity 編輯器。
+    您應該會看到類似如下的內容：![顯示出現在 AppMenu 右側的指示面板螢幕擷取畫面。](./media/device-flow-instructions.png)
+    在您的次要裝置 (或相同裝置上的瀏覽器) 上輸入所提供的程式碼，並使用您的認證登入之後，存取權杖將會傳回給要求的應用程式，在此案例中是 Unity 編輯器。
 1. 在這之後，應用程式中的所有項目都應該正常進行。 如果您各階段的進度並未如預期，請檢查 Unity 主控台是否有任何錯誤。
 
 ## <a name="build-to-device"></a>建置至裝置

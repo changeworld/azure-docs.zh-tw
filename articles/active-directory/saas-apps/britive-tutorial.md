@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542678"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740353"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Britive 整合
 
@@ -129,11 +129,11 @@ ms.locfileid: "88542678"
 
 1. 按一下 [管理員設定圖示]  ，然後選取 [安全性]  。
 
-    ![Britive 組態](./media/britive-tutorial/configure1.png)
+    ![顯示 Britive 網站的螢幕擷取畫面，其中已選取 [設定] 和 [安全性]。](./media/britive-tutorial/configure1.png)
 
 1. 選取 [SSO 組態]  並執行下列步驟：
 
-    ![Britive 組態](./media/britive-tutorial/configure2.png)
+    ![顯示 [SSO 組態] 的螢幕擷取畫面，您會在其中輸入此步驟中的資訊。](./media/britive-tutorial/configure2.png)
 
     a. 複製 [對象/實體識別碼]  值，並將其貼至 Azure 入口網站中 [基本 SAML 組態]  區段中的 [識別碼 (實體識別碼)]  文字方塊中。
 
@@ -147,15 +147,15 @@ ms.locfileid: "88542678"
 
 1. 按一下 [管理員設定圖示]  ，然後選取 [使用者管理]  。
 
-    ![Britive 組態](./media/britive-tutorial/user1.png)
+    ![顯示 Britive 網站的螢幕擷取畫面，其中已選取 [設定] 和 [使用者管理]。](./media/britive-tutorial/user1.png)
 
 1. 按一下 [新增使用者]  。
 
-    ![Britive 組態](./media/britive-tutorial/user2.png)
+    ![顯示 [新增使用者] 按鈕的螢幕擷取畫面。](./media/britive-tutorial/user2.png)
 
 1. 根據您的組織需求填入使用者的所有必要詳細資料，然後按一下 [新增使用者]  。
 
-    ![Britive 組態](./media/britive-tutorial/user3.png)
+    ![顯示 [新增使用者] 頁面的螢幕擷取畫面，您會在其中輸入使用者資訊。](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>測試 SSO
 

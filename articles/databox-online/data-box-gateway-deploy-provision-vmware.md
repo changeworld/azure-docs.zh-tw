@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371281"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743942"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教學課程：在 VMware 中佈建 Azure 資料箱閘道
 
@@ -145,11 +145,11 @@ ms.locfileid: "91371281"
 
     在相同頁面上，按一下 [新增硬碟]，然後選取 [現有硬碟]。 選取資料存放區中的 VMDK 檔案。 這樣會新增 OS 磁碟。 
 
-     ![自訂設定頁面](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![自訂設定頁面 2](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     向下捲動直到您看到 [新增硬碟]，展開它以檢視設定。 將 [虛擬裝置節點] 設為 [IDE 控制器 0]。
 
-     ![自訂設定頁面](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![自訂設定頁面 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. (選擇性) 只有在執行 VMware ESXi Server 6.7 時，才可執行此步驟。 在 [自訂設定] 頁面上，按一下 [VM 選項]。 移至 [開機選項] > [韌體]，並將其變更為 [BIOS]。 根據預設，此值會設定為 EFI。 按 [下一步] 。
 
@@ -158,7 +158,7 @@ ms.locfileid: "91371281"
 18. 在 [準備完成]  頁面上，檢閱與新的虛擬機器相關的所有設定。 確認 CPU 是 4、記憶體是 8192 MB、網路介面是 1，以及硬碟 2 具有 IDE 控制器 0。 按一下 [完成] 。
    
     ![準備好完成頁面](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![準備好完成頁面](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![準備好完成頁面 2](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 您的虛擬機器已成功佈建。 您會看到效果通知，表示新的虛擬機器已新增至 VM 清單。
 

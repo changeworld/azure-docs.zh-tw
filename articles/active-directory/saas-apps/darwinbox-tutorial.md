@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550094"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Darwinbox 整合
 
@@ -143,19 +143,19 @@ ms.locfileid: "88550094"
 
 1. 開啟 Darwinbox 行動應用程式。 按一下 [輸入組織 URL]，現在請在文字方塊中輸入您的組織 URL，然後按一下箭號按鈕。
 
-    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![顯示「Darwinbox」行動應用程式的螢幕擷取畫面，其中已選取 [輸入組織 URL]，並且醒目提示範例組織和「箭頭」按鈕。](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. 如果您有多個網域，請按一下您的網域。
 
-    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![顯示 [選擇您的網域] 畫面的螢幕擷取畫面，其中已選取範例網域。](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. 在 Darwinbox 應用程式中輸入您的 Azure AD 電子郵件，然後按 [下一步]。
 
-    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![顯示 [登入] 畫面的螢幕擷取畫面，其中醒目提示 [下一步] 按鈕。](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. 在 Darwinbox 應用程式中輸入您的 Azure AD 密碼，然後按一下 [登入]。
 
-    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![顯示 [輸入密碼] 畫面的螢幕擷取畫面，其中醒目提示 [下一步] 按鈕。](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. 最後，成功登入之後，應用程式首頁會隨即顯示。
 

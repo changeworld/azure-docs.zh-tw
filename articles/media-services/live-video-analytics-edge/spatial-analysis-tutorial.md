@@ -3,12 +3,12 @@ title: 使用適用於空間分析的電腦視覺來分析即時影片 - Azure
 description: 本教學課程說明如何使用即時影片分析搭配 Azure 認知服務的電腦視覺空間分析 AI 功能，分析來自 (模擬) IP 攝影機的即時影片摘要。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 98ee57d4916ac0a8da8b48a9cdd881468b2d75d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929407"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824138"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>使用適用於空間分析 (預覽) 的電腦視覺來分析即時影片
 
@@ -21,7 +21,7 @@ ms.locfileid: "90929407"
 > * 檢查程式碼。
 > * 執行範例程式碼。
 > * 監視事件。
-
+ 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>建議的閱讀準備事項
@@ -64,21 +64,14 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 
 ### <a name="gathering-required-parameters"></a>收集必要參數
 
-包括空間分析容器在內，所有必要的認知服務容器都有三個主要參數。 使用者授權合約 (EULA) 必須存在，且其值為 [接受]。 此外，也需要端點 URL 和 API 金鑰。
+包括空間分析容器在內，所有必要的認知服務容器都有三個主要參數。 使用者授權合約 (EULA) 必須存在，且其值為 [接受]。 此外，也需要端點 URI 和 API 金鑰。
 
-### <a name="endpoint-uri-endpoint_uri"></a>端點 URI {ENDPOINT_URI}
+### <a name="keys-and-endpoint-uri"></a>金鑰和端點 URI
 
-[端點 URI] 值可在認知服務資源的 Azure 入口網站 [概觀] 頁面上取得。 瀏覽至 [概觀] 頁面，並尋找端點 URI。 
-
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="金鑰和端點":::
-
-### <a name="keys-api_key"></a>金鑰 {API_KEY}
-
-此金鑰可用來啟動空間分析容器，並可在相對應認知服務資源的 Azure 入口網站 [金鑰] 頁面上取得。 瀏覽至 [金鑰] 頁面，並尋找金鑰。
+此金鑰可用來啟動空間分析容器，並可在相對應認知服務資源的 Azure 入口網站 [`Keys and Endpoint`] 頁面上取得。 瀏覽至該頁面，然後尋找金鑰和端點 URI。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/endpoint-uri.png" alt-text="端點 URI":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="空間分析概觀":::
 
 ## <a name="set-up-azure-stack-edge"></a>設定 Azure Stack Edge
 
@@ -100,7 +93,7 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
     
     ```json
     {
-        "IoThubConnectionString" : " HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<SharedAccessKey>”,
+        "IoThubConnectionString" : "HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<SharedAccessKey>",
         "deviceId" : "<your Azure Stack Edge name>",
         "moduleId" : "lvaEdge"
     } 
@@ -125,271 +118,9 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
     
 ## <a name="set-up-deployment-template"></a>設定部署範本  
 
-將空間分析模組新增至 /src/edge/deployment.template.json。 範本中有 lvaEdge 模組、rtspsim 模組和我們的空間分析模組。
+在 /src/edge/deployment.spatialAnalysis.template.json 中尋找部署檔案。 範本中有 lvaEdge 模組、rtspsim 模組和我們的空間分析模組。
 
-<p>
-<details>
-<summary>展開此項目，並檢視我們的範例部署範本。  
-從這裡複製內容並貼到您的 /src/edge/deployment.template.json。
-</summary>
-<pre><code>
-{
-  "$schema-template": "2.0.0",
-  "modulesContent": {
-    "$edgeAgent": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "runtime": {
-          "type": "docker",
-          "settings": {
-            "minDockerVersion": "v1.25",
-            "loggingOptions": "",
-            "registryCredentials": {
-            }
-          }
-        },
-        "systemModules": {
-          "edgeAgent": {
-            "type": "docker",
-            "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-              "createOptions": {}
-            }
-          },
-          "edgeHub": {
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-              "createOptions": {
-                "HostConfig": {
-                  "PortBindings": {
-                    "5671/tcp": [
-                      {
-                        "HostPort": "5671"
-                      }
-                    ],
-                    "8883/tcp": [
-                      {
-                        "HostPort": "8883"
-                      }
-                    ],
-                    "443/tcp": [
-                      {
-                        "HostPort": "443"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "modules": {
-          "lvaEdge": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/media/live-video-analytics:1",
-              "createOptions": {
-                "HostConfig": {
-                  "LogConfig": {
-                    "Type": "",
-                    "Config": {
-                      "max-size": "10m",
-                      "max-file": "10"
-                    }
-                  },
-                  "Binds": [
-                    "$OUTPUT_VIDEO_FOLDER_ON_DEVICE:/var/media/",
-                    "$APPDATA_FOLDER_ON_DEVICE:/var/lib/azuremediaservices"
-                  ],
-                  "IpcMode": "host",
-                  "ShmSize": 1536870912
-                }
-              }
-            },
-            "env": {
-              "IS_DEVELOPER_ENVIRONMENT": {
-                "value": "true"
-              }
-            }
-          },
-          "rtspsim": {
-              "version": "1.0",
-              "type": "docker",
-              "status": "running",
-              "restartPolicy": "always",
-              "settings": {
-                "image": "mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2",
-                "createOptions": {
-                  "HostConfig": {
-                    "Mounts": [
-                      {
-                        "Target": "/live/mediaServer/media",
-                        "Source": "lvaspatialanalysislocal",
-                        "Type": "volume"
-                      }
-                    ],
-                    "PortBindings": {
-                      "554/tcp": [
-                        {
-                          "HostPort": "554"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            },
-          "spatialAnalysis": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azure-cognitive-services/spatial-analysis:1.0",
-              "createOptions": {
-                "HostConfig": {
-                  "PortBindings": {
-                    "50051/tcp": [
-                      {
-                        "HostPort": "50051"
-                      }
-                    ]
-                  },
-                  "IpcMode": "host",
-                  "Binds": [
-                      "/tmp/.X11-unix:/tmp/.X11-unix"
-                  ],
-                  "Runtime": "nvidia",
-                  "ShmSize": 536870911,
-                  "LogConfig": {
-                      "Type": "json-file",
-                      "Config": {
-                          "max-size": "10m",
-                          "max-file": "200"
-                      }
-                  }
-                }
-              }
-            },
-            "env": {
-              "DISPLAY": {
-                "value": ":0"
-              },
-              "ARCHON_SHARED_BUFFER_LIMIT": {
-                "value": "377487360"
-              },
-              "ARCHON_PERF_MARKER": {
-                "value": "false"
-              },
-              "QT_X11_NO_MITSHM": {
-                "value": "1"
-              },
-              "OMP_WAIT_POLICY": {
-                "value": "PASSIVE"
-              },
-              "EULA": {
-                "value": "accept"
-              },
-              "BILLING_ENDPOINT": {
-                "value": "<Use one key from Archon azure resource (keys page)>"
-              },
-              "API_KEY": {
-                "value": "<Use endpoint from Archon azure resource (overview page)>"
-              }
-            }
-          }
-        }
-      }
-    },
-    "$edgeHub": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "routes": {
-          "LVAToHub": "FROM /messages/modules/lvaEdge/outputs/* INTO $upstream"
-        },
-        "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 7200
-        }
-      }
-    },
-    "lvaEdge": {
-      "properties.desired": {
-        "applicationDataDirectory": "/var/lib/azuremediaservices",
-        "azureMediaServicesArmId": "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/microsoft.media/mediaservices/$AMS_ACCOUNT",
-        "aadTenantId": "$AAD_TENANT_ID",
-        "aadServicePrincipalAppId": "$AAD_SERVICE_PRINCIPAL_ID",
-        "aadServicePrincipalSecret": "$AAD_SERVICE_PRINCIPAL_SECRET",
-        "aadEndpoint": "https://login.microsoftonline.com",
-        "aadResourceId": "https://management.core.windows.net/",
-        "armEndpoint": "https://management.azure.com/",
-        "diagnosticsEventsOutputName": "AmsDiagnostics",
-        "operationalEventsOutputName": "AmsOperational",        
-        "logLevel": "Info",
-        "logCategories": "Application,Events,MediaPipeline",
-        "allowUnsecuredEndpoints": true,
-        "telemetryOptOut": false
-      }
-    },
-    "spatialAnalysis": {
-      "properties.desired": {
-        "globalSettings": {
-          "PlatformTelemetryEnabled": true,
-          "CustomerTelemetryEnabled": true
-        },
-        "graphs": {
-            "polygonCross": {
-              "version": 2,
-              "enabled": true,
-              "platformloglevel": "info",
-              "operationId": "cognitiveservices.vision.spatialanalysis-personcrossingpolygon.livevideoanalytics",
-              "parameters": {
-                  "BINDING_ADDRESS": "0.0.0.0:50051",
-                  "DETECTOR_NODE_CONFIG": "{ \"show_debug_video\": false, \"gpu_index\": 0 }",
-                  "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"polygon0\",\"polygon\":[[0,0],[0.6,0],[0.6,0.9],[0,0.9],[0,0]],\"threshold\":50,\"events\":[{\"type\":\"enter/exit\",\"config\":{\"trigger\":\"event\"}}]}]}"
-              },
-              "nodesloglevel": "info"
-            },
-            "personCount": {
-              "version": 2,
-              "enabled": false,
-              "platformloglevel": "info",
-              "operationId": "cognitiveservices.vision.spatialanalysis-personcount.livevideoanalytics",
-              "parameters": {
-                  "BINDING_ADDRESS": "0.0.0.0:50051",
-                  "DETECTOR_NODE_CONFIG": "{ \"show_debug_video\": false, \"gpu_index\": 0 }",
-                  "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"polygon0\",\"polygon\":[[0.8,0],[1,0],[1,1],[0.8,1],[0.8,0]],\"threshold\":50,\"events\":[{\"type\":\"count\",\"config\":{\"trigger\":\"event\"}}]}]}"
-              },
-              "nodesloglevel": "info"
-            },
-            "personDistance": {
-              "version": 2,
-              "enabled": false,
-              "platformloglevel": "info",
-              "operationId": "cognitiveservices.vision.spatialanalysis-persondistance.livevideoanalytics",
-              "parameters": {
-                  "BINDING_ADDRESS": "0.0.0.0:50051",
-                  "DETECTOR_NODE_CONFIG": "{ \"show_debug_video\": false, \"gpu_index\": 0,\"gpu_index\": 0,\"do_calibration\": true}",
-                  "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\": \"distance_zone\", \"polygon\": [[0,0],[0,1],[1,1],[1,0],[0,0]],\"threshold\": 35.00,\"events\":[{\"type\": \"people_distance\",\"config\":{\"trigger\": \"event\",\"output_frequency\":1,\"minimum_distance_threshold\":6.0,\"maximum_distance_threshold\":35.0}}]}]}"
-              },
-              "nodesloglevel": "info"
-            }
-        }
-      }
-    }
-  }
-}
-</code>
-</pre>
-</details>
-</p>
-
-您需要注意幾件事：
+在部署範本檔案中，您需要注意幾件事：
 
 1. 設定連接埠繫結。
     
@@ -402,12 +133,11 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
         ]
     },
     ```
-1. LvaEdge 中的 IpcMode 和空間分析模組 createOptions 應該相同，而且設定為 [主機]。
-1. 您的部署範本檔案必須在檔案名稱中包含「deployment」一字，否則無法加以辨識並產生用於部署的資訊清單。
+1. LvaEdge 中的 `IpcMode` 和空間分析模組 createOptions 應該相同，而且設定為 [主機]。
 1. 若要讓 RTSP 模擬器正常運作，請確定您已設定磁碟區界限。 如需詳細資訊，請參閱[設定 Docker 磁碟區掛接](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)。
 
-    1. [連線至 SMB 共用](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)，並將[影片檔案](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)複製到本機共用。
-    1. 您會看到 rtspsim 模組具有下列項目：
+    1. [連線至 SMB 共用](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)，並將[範例 bulldozer 影片檔案](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)複製到本機共用。
+    1. 您會看到 rtspsim 模組具有下列設定：
         
         ```json
         "createOptions": {
@@ -439,17 +169,17 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 1. 在 [Azure IoT 中樞] 窗格旁，選取 [其他動作] 圖示，以設定 IoT 中樞的連接字串。 您可以從 src/cloud-to-device-console-app/appsettings.json 檔案複製字串。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析：連接字串":::
-1. 以滑鼠右鍵按一下 src/edge/deployment.template.json，然後選取 [產生 IoT Edge 部署資訊清單]。
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析概觀":::
+1. 以滑鼠右鍵按一下 `src/edge/deployment.spatialAnalysis.template.json`，然後選取 [產生 IoT Edge 部署資訊清單]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空間分析：部署 amd64 json":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空間分析概觀":::
     
     此動作應該會在 src/edge/config 資料夾中，建立名為 deployment.amd64.json 的資訊清單檔。
-1. 以滑鼠右鍵按一下 src/edge/config/deployment.amd64.json、選取 [建立單一裝置的部署]，然後選取您的邊緣裝置名稱。
+1. 以滑鼠右鍵按一下 `src/edge/config/deployment.spatialAnalysis.amd64.json`，選取 [建立單一裝置的部署]，然後選取邊緣裝置的名稱。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空間分析：部署範本 json":::   
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空間分析概觀":::   
 1. 當系統提示您選取 IoT 中樞裝置時，請從下拉式功能表中選擇 [Azure Stack Edge]。
 1. 大約 30 秒之後，請在視窗左下角重新整理 Azure IoT 中樞。 邊緣裝置現在會顯示下列已部署的模組：
     
@@ -470,30 +200,40 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 
 若要查看這些事件，請遵循下列步驟：
 
-1. 在 Visual Studio Code 中開啟 [檔案總管] 窗格，然後在左下角尋找 Azure IoT 中樞。
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="空間分析概觀":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="空間分析概觀":::
+1. 開啟 [檔案總管] 窗格，然後在左下角尋找 Azure IoT 中樞。
 1. 展開 [裝置] 節點。
 1. 以滑鼠右鍵按一下您的 Azure Stack Edge，然後選取 [開始監視內建事件端點]。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空間分析：開始監視":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空間分析概觀":::
      
 ## <a name="run-the-program"></a>執行程式
 
-會有 program.cs 在 src/cloud-to-device-console-app/operations.json 中叫用直接方法。 我們需要設定 operations.json，並提供用於媒體圖表的拓撲。
+會有 program.cs 在 src/cloud-to-device-console-app/operations.json 中叫用直接方法。 我們需要設定 operations.json，並提供用於媒體圖表的拓撲。  
+
 在 operations.json 中：
 
-設定如下的拓撲 (topologyFile 用於本機拓撲，topologyUrl 用於線上拓撲)：
+* 設定如下的拓撲 (topologyFile 用於本機拓撲，topologyUrl 用於線上拓撲)：
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysistopology.json"
+        "topologyFile": "../edge/spatialAnalysisTopology.json"
     }
 },
 ```
 
-建立如下的圖表執行個體，在這裡設定拓撲中的參數：
+* 建立如下的圖表執行個體，在這裡設定拓撲中的參數：
 
 ```json
 {
@@ -521,167 +261,20 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
     }
 },
 ```
+* 變更圖表拓撲的連結：
 
-<p>
-<details>
-<summary>展開以查看我們的 spatialAnalysis 模組範例拓撲檔案：
-</summary>
-<pre><code>
-{
-    "@apiVersion": "1.0",
-    "name": "InferencingWithCVExtension",
-    "properties": {
-      "description": "Analyzing live video using spatialAnalysis Extension to send images to an external inference engine",
-      "parameters": [
-        {
-          "name": "rtspUserName",
-          "type": "String",
-          "description": "rtsp source user name.",
-          "default": "dummyUserName"
-        },
-        {
-          "name": "rtspPassword",
-          "type": "String",
-          "description": "rtsp source password.",
-          "default": "dummyPassword"
-        },
-        {
-          "name": "rtspUrl",
-          "type": "String",
-          "description": "rtsp Url"
-        },
-        {
-          "name": "grpcUrl",
-          "type": "String",
-          "description": "inferencing Url",
-          "default": "tcp://spatialAnalysis:50051"
-        },
-        {
-          "name": "frameRate",
-          "type": "String",
-          "description": "Rate of the frames per second to be received from LVA.",
-          "default": "2"
-        },
-        {
-          "name": "spatialanalysisusername",
-          "type": "String",
-          "description": "spatialanalysis endpoint username",
-          "default": "not-in-use"
-        },
-        {
-          "name": "spatialanalysispassword",
-          "type": "String",
-          "description": "spatialanalysis endpoint password",
-          "default": "not-in-use"  
-        }
-      ],
-      "sources": [
-        {
-          "@type": "#Microsoft.Media.MediaGraphRtspSource",
-          "name": "rtspSource",
-          "transport": "tcp",
-          "endpoint": {
-            "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-            "url": "${rtspUrl}",
-            "credentials": {
-              "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-              "username": "${rtspUserName}",
-              "password": "${rtspPassword}"
-            }
-          }
-        }
-      ],
-      "processors": [
-        {
-          "@type": "#Microsoft.Media.MediaGraphFrameRateFilterProcessor",
-          "name": "frameRateFilter",
-          "inputs": [
-            {
-              "nodeName": "rtspSource"
-            }
-          ],
-          "maximumFps": "${frameRate}"
-        },
-        {
-          "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
-          "name": "computerVisionExtension",
-          "endpoint": {
-            "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-            "url": "${grpcUrl}",
-            "credentials": {
-              "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-              "username": "${spatialanalysisusername}",
-              "password": "${spatialanalysispassword}"
-            }
-          },
-          "image": {
-            "scale": {
-              "mode": "pad",
-              "width": "1408",
-              "height": "786"
-            },
-            "format": {
-              "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-              "pixelFormat": "bgr24"
-            }
-          },
-          "inputs": [
-            {
-              "nodeName": "frameRateFilter"
-            }
-          ]
-        },
-        {
-            "@type": "#Microsoft.Media.MediaGraphSignalGateProcessor",
-            "name": "signalGateProcessor",
-            "inputs": [
-              {
-                "nodeName": "computerVisionExtension"
-              },
-              {
-                "nodeName": "rtspSource"
-              }
-            ],
-            "activationEvaluationWindow": "PT1S",
-            "activationSignalOffset": "PT0S",
-            "minimumActivationTime": "PT30S",
-            "maximumActivationTime": "PT30S"
-          }
-      ],
-      "sinks": [
-        {
-            "@type": "#Microsoft.Media.MediaGraphAssetSink",
-            "name": "assetSink",
-            "assetNamePattern": "sampleAssetFromEVR-CV-LVAEdge-${System.DateTime}",
-            "segmentLength": "PT30S",
-            "LocalMediaCacheMaximumSizeMiB": "200",
-            "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
-            "inputs": [
-                {
-                    "nodeName": "signalGateProcessor"
-                }
-            ]
-        },
-        {
-          "@type": "#Microsoft.Media.MediaGraphIoTHubMessageSink",
-          "name": "hubSink",
-          "hubOutputName": "inferenceOutput",
-          "inputs": [
-            {
-              "nodeName": "computerVisionExtension"
-            }
-          ]
-        }
-      ]
-    }
-  }
-</code>
-</pre>
-</details>
-</p>
+`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
 
+在 **GraphInstanceSet** 底下，編輯圖表拓撲的名稱，使其符合上述連結中的值：
 
-使用 MediaGraphRealTimeComputerVisionExtension 來與空間分析模組連接。 在 tcp://spatialAnalysis:<PORT_NUMBER> 中設定 ${grpcUrl}，亦即 tcp://spatialAnalysis:50051
+`topologyName`：InferencingWithCVExtension
+
+在 **GraphTopologyDelete** 底下，編輯名稱：
+
+`name`：InferencingWithCVExtension
+
+>[!Note]
+查看如何使用 MediaGraphRealTimeComputerVisionExtension 來與空間分析模組連接。 將 ${grpcUrl} 設定為 **tcp://spatialAnalysis:<PORT_NUMBER>** ，例如 tcp://spatialAnalysis:50051
 
 ```json
 {
@@ -786,7 +379,7 @@ personZoneEvent 的範例輸出 (來自 cognitiveservices.vision.spatialanalysis
 
 在部署資訊清單檔案的 [圖表] 節點中切換 [已啟用] 旗標，以嘗試 `spatialAnalysis` 模組所提供的不同作業，例如 **personCount** 和 **personDistance**。
 >[!Tip]
-> 使用在畫面中有多人的[影片檔案](https://lvamedia.blob.core.windows.net/public/2018-03-07.16-50-00.16-55-00.school.G421.mkv)。
+> 使用在畫面中有多人的[範例影片檔案](https://lvamedia.blob.core.windows.net/public/2018-03-07.16-50-00.16-55-00.school.G421.mkv)。
 
 > [!NOTE]
 > 您一次只能執行一項作業。 因此，請確定只有一個旗標設定為 **true**，其他旗標則設定為 **false**。

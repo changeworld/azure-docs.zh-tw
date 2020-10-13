@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549597"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教學課程：Azure Active Directory 與 ArcGIS Enterprise 整合
 
@@ -104,7 +104,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態] 區段執行下列步驟：
 
-    ![ArcGIS Enterprise 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`<EXTERNAL_DNS_NAME>.portal`
 
@@ -112,7 +112,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![ArcGIS Enterprise 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -138,19 +138,19 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 1. 選取 [組織] > [編輯設定]****。
 
-    ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure1.png)
+    ![顯示已呼叫 [編輯] 設定的 ArcGIS 企業組織索引標籤螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. 選取 [安全性]**** 索引標籤。
 
-    ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure2.png)
+    ![顯示已選取 [安全性] 索引標籤的螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. 向下捲動至 [透過 SAML 進行企業登入]**** 區段，然後選取 [設定企業登入]****。
 
-    ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure3.png)
+    ![顯示透過 SAML 進行企業登入的螢幕擷取畫面，您可以在其中選取 [設定企業登入]。](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. 在 [設定識別提供者]**** 區段中，執行下列步驟：
 
-    ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure4.png)
+    ![顯示設定識別提供者的螢幕擷取畫面，您會在其中執行這裡所述的步驟。](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. 在 [名稱]**** 文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
 
@@ -158,7 +158,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     c. 按一下 [顯示進階設定]**** 並複製 [實體識別碼]**** 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL]**** 區段的 [識別碼]**** 文字方塊。
     
-    ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure5.png)
+    ![顯示取得實體識別碼和更新識別提供者所在位置的螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. 按一下 [更新識別提供者]****。
 

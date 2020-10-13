@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522050"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>教學課程：Azure Active Directory 與 Convercent 整合
 
@@ -98,7 +98,7 @@ ms.locfileid: "88522050"
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Convercent 網域與 URL 單一登入資訊](common/both-identifier.png)
+    ![顯示 [基本 SAML 設定] 區段的螢幕擷取畫面，其中醒目提示 [識別碼 (實體識別碼)] 欄位和 [儲存] 按鈕。](common/both-identifier.png)
 
     在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<instancename>.convercent.com/`
 

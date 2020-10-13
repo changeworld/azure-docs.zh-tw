@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561658"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741953"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教學課程：連線、設定、啟動 Azure 資料箱閘道
 
@@ -126,7 +126,7 @@ ms.locfileid: "82561658"
     
     3. 裝置會隨之啟動並自動套用重大更新 (如果有的話)。 您會看到該效果的通知。 您可以透過 Azure 入口網站監視更新進度。
 
-        ![本機 Web UI 的 [雲端設定] 頁面](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![本機 Web UI 的 [雲端設定] 頁面 2](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **對話方塊中也有復原金鑰，您應複製該金鑰並儲存在安全的位置。萬一裝置無法開機時，此金鑰可用來復原資料。**
 

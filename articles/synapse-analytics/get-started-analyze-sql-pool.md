@@ -1,5 +1,5 @@
 ---
-title: 教學課程：開始使用 SQL 集區分析資料
+title: 教學課程：開始使用專用 SQL 集區來分析資料
 description: 在此教學課程中，您將使用 NYC 計程車範例資料來探索 SQL 集區的分析功能。
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015495"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620030"
 ---
-# <a name="analyze-data-with-sql-pools"></a>使用 SQL 集區分析資料
+# <a name="analyze-data-with-dedicated-sql-pools"></a>使用專用 SQL 集區來分析資料
 
-Azure Synapse Analytics 可為您提供使用 SQL 集區分析資料的功能。 在此教學課程中，您將使用 NYC 計程車範例資料來探索 SQL 集區的分析功能。
+Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功能。 在此教學課程中，您將使用紐約市計程車資料來探索專用 SQL 集區的功能。
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>將 NYC 計程車資料載入 SQLDB1
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics 可為您提供使用 SQL 集區分析資料的功能。
     ```
 1. 此指令碼需要大約 1 分鐘的時間來執行。 其會將 200 萬列的 NYC 計程車資料載入名為 **dbo.Trip** 的表格
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>探索 SQL 集區中的 NYC 計程車資料
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>探索專用 SQL 集區中的紐約市計程車資料
 
 1. 在 Synapse Studio 中，移至 [資料] 中樞。
 1. 前往 [SQLDB1] > [資料表]。 您會看到數個已載入的資料表。

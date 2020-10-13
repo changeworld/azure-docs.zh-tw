@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894246"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743330"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>教學課程：連線、設定及啟動 Azure Stack Edge Pro 
 
@@ -146,7 +146,7 @@ ms.locfileid: "90894246"
 
     4. 成功完成更新後，您可能需要稍等幾分鐘。 此頁面會更新並指出裝置已成功啟動。
 
-        ![本機 Web UI 的 [雲端設定] 頁面更新](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![本機 Web UI 的 [雲端設定] 頁面更新 2](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
 裝置設定完成。 您現在可以在裝置上新增共用。
 

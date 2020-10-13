@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536252"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775157"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教學課程：整合 Displayr 與 Azure Active Directory
 
@@ -88,15 +88,15 @@ ms.locfileid: "88536252"
 
 1. Displayr 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML token 屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中醒目提示 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 除了以上屬性外，Displayr 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
     a. 按一下 [宣告中傳回的群組]  旁的**筆**。
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![顯示 [使用者屬性和宣告] 區段的螢幕擷取畫面，其中已選取 [宣告中傳回的群組] 旁邊的「筆」圖示。](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![螢幕擷取畫面，顯示已選取設定的 [群組宣告 (預覽)] 視窗。](./media/displayr-tutorial/config05.png)
 
     b. 選取選項按鈕清單中的 [所有群組]  。
 
@@ -126,11 +126,11 @@ ms.locfileid: "88536252"
 
 4. 按一下 [設定]  ，然後瀏覽至 [帳戶]  。
 
-    ![組態](./media/displayr-tutorial/config01.png)
+    ![顯示已選取 [設定] 圖示和 [帳戶] 的螢幕擷取畫面。](./media/displayr-tutorial/config01.png)
 
 5. 從頂端功能表切換至 [設定]  ，然後向下捲動頁面，再按一下 [設定單一登入 (SAML)]  。
 
-    ![組態](./media/displayr-tutorial/config02.png)
+    ![顯示已選取 [設定] 索引標籤和已選取 [設定單一登入 (SAML)] 動作的螢幕擷取畫面。](./media/displayr-tutorial/config02.png)
 
 6. 在 [單一登入 (SAML)]  頁面上，執行下列步驟：
 
@@ -190,11 +190,11 @@ ms.locfileid: "88536252"
 
 2. 按一下 [設定]  ，然後瀏覽至 [帳戶]  。
 
-    ![Displayr 設定](./media/displayr-tutorial/config01.png)
+    ![顯示已選取 [設定 (cog)] 圖示和 [帳戶] 的螢幕擷取畫面。](./media/displayr-tutorial/config01.png)
 
 3. 從頂端功能表切換至 [設定]  ，然後向下捲動頁面至 [使用者]  區段，再按一下 [新增使用者]  。
 
-    ![Displayr 設定](./media/displayr-tutorial/config07.png)
+    ![顯示 [設定] 索引標籤的螢幕擷取畫面，其中醒目提示 [使用者] 並且已選取 [新增使用者] 按鈕。](./media/displayr-tutorial/config07.png)
 
 4. 在 [新增使用者]  頁面上，執行下列步驟：
 

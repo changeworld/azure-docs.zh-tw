@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 27437ae1db0ff3a205108638670b058eaaea04bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280720"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739658"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教學課程：使用 .NET SDK 新增自動完成和建議
 
-了解如何在使用者開始在搜尋方塊中輸入時實作自動完成 (預先輸入查詢及建議的文件)。 在本教學課程中，我們會分別示範自動完成的查詢和建議結果，然後將這兩者合併在一起。 使用者只需要輸入兩或三個字元，就可以找到可用的所有結果。
+了解如何在使用者開始在搜尋方塊中輸入時實作自動完成 (預先輸入查詢及建議的結果)。 在本教學課程中，我們會分別示範自動完成的查詢和建議結果，然後將這兩者合併在一起。 使用者只需要輸入兩或三個字元，就可以找到可用的所有結果。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -27,15 +27,23 @@ ms.locfileid: "91280720"
 > * 新增自動完成
 > * 結合自動完成和建議
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="overview"></a>總覽
 
-此教學課程是系列中的一部分，建置於 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)中建立的分頁專案。
+本教學課程會將自動完成和建議的結果新增至先前的[將分頁新增至搜尋結果](tutorial-csharp-paging.md)教學課程。
 
-或者，您可以下載並執行此特定教學課程的解決方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)。
+您可以在下列專案中找到本教學課程中的最終版本程式碼：
+
+* [3-add-typeahead (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/3-add-typeahead)
+
+## <a name="prerequisites"></a>必要條件
+
+* [2a-add-paging (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) 解決方案。 此專案可以是您自己在上一個教學課程中建置的版本，或從 GitHub 複製的版本。
+
+本教學課程已更新為使用 [Azure.Search.Documents (第 11 版)](https://www.nuget.org/packages/Azure.Search.Documents/) 套件。 如需舊版的 .NET SDK，請參閱 [Microsoft.Azure.Search (第 10 版) 程式碼範例](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)。
 
 ## <a name="add-suggestions"></a>新增建議
 
-讓我們從為使用者提供替代方案的最簡單案例開始：建議的下拉式清單。
+讓我們從為使用者提供替代方案的最簡單案例開始：建議結果的下拉式清單。
 
 1. 在 index.cshtml 檔案中，將 **TextBoxFor** 陳述式的 `@id` 變更為 **azureautosuggest**。
 
@@ -43,12 +51,12 @@ ms.locfileid: "91280720"
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. 在此陳述式結尾的 **&lt;/div&gt;** 之後，輸入這個指令碼。 此指令碼會利用來自開放原始碼 jQuery UI 程式庫的[自動完成 widget](https://api.jqueryui.com/autocomplete/)，來呈現建議結果的下拉式清單。 
+1. 在此陳述式結尾的 **&lt;/div&gt;** 之後，輸入這個指令碼。 此指令碼會利用來自開放原始碼 jQuery UI 程式庫的[自動完成 widget](https://api.jqueryui.com/autocomplete/)，來呈現建議結果的下拉式清單。
 
     ```javascript
     <script>
         $("#azureautosuggest").autocomplete({
-            source: "/Home/Suggest?highlights=false&fuzzy=false",
+            source: "/Home/SuggestAsync?highlights=false&fuzzy=false",
             minLength: 2,
             position: {
                 my: "left top",
@@ -58,13 +66,13 @@ ms.locfileid: "91280720"
     </script>
     ```
 
-    識別碼 "azureautosuggest" 會將上述指令碼連線到搜尋方塊。 widget 來源選項會設定為使用這兩個查詢參數來呼叫建議 API 的建議方法：**highlights** 和 **fuzzy**，兩者都在此實例中設定為 false。 此外，若要觸發搜尋，至少需要兩個字元。
+    識別碼 `"azureautosuggest"` 會將上述指令碼連線到搜尋方塊。 widget 來源選項會設定為使用這兩個查詢參數來呼叫建議 API 的建議方法：**highlights** 和 **fuzzy**，兩者都在此實例中設定為 false。 此外，若要觸發搜尋，至少需要兩個字元。
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>將 jQuery 指令碼的參考新增至檢視
 
 1. 若要存取 jQuery 程式庫，請將檢視檔案的 &lt;head&gt; 區段變更為下列程式碼：
 
-    ```cs
+    ```html
     <head>
         <meta charset="utf-8">
         <title>Typeahead</title>
@@ -91,40 +99,40 @@ ms.locfileid: "91280720"
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>將建議動作新增至控制器
 
-1. 在主控制器中，新增 **Suggest** 動作 (例如，在 **Page** 動作之後)。
+1. 在主控制器中，新增 **SuggestAsync** 動作 (在 **PageAsync** 動作之後)。
 
     ```cs
-        public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)
+    public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
+    {
+        InitSearch();
+
+        // Setup the suggest parameters.
+        var options = new SuggestOptions()
         {
-            InitSearch();
+            UseFuzzyMatching = fuzzy,
+            Size = 8,
+        };
 
-            // Setup the suggest parameters.
-            var parameters = new SuggestParameters()
-            {
-                UseFuzzyMatching = fuzzy,
-                Top = 8,
-            };
-
-            if (highlights)
-            {
-                parameters.HighlightPreTag = "<b>";
-                parameters.HighlightPostTag = "</b>";
-            }
-
-            // Only one suggester can be specified per index. It is defined in the index schema.
-            // The name of the suggester is set when the suggester is specified by other API calls.
-            // The suggester for the hotel database is called "sg", and simply searches the hotel name.
-            DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
-
-            // Convert the suggest query results to a list that can be displayed in the client.
-            List<string> suggestions = suggestResult.Results.Select(x => x.Text).ToList();
-
-            // Return the list of suggestions.
-            return new JsonResult(suggestions);
+        if (highlights)
+        {
+            options.HighlightPreTag = "<b>";
+            options.HighlightPostTag = "</b>";
         }
+
+        // Only one suggester can be specified per index. It is defined in the index schema.
+        // The name of the suggester is set when the suggester is specified by other API calls.
+        // The suggester for the hotel database is called "sg", and simply searches the hotel name.
+        var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
+
+        // Convert the suggested query results to a list that can be displayed in the client.
+        List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+        // Return the list of suggestions.
+        return new JsonResult(suggestions);
+    }
     ```
 
-    **Top** 參數會指定要傳回多少結果 (如果未指定，預設值為 5)。 _建議工具_是在 Azure 索引上指定的，這會在資料設定時完成，而且不是由用戶端應用程式完成，例如此教學課程。 在此案例中，建議工具稱為 "sg"，而且它會搜尋 **HotelName** 欄位 - 沒有其他項目。 
+    **Size** 參數會指定要傳回多少結果 (如果未指定，預設值為 5)。 建立索引時，會在搜尋索引上指定_建議工具_。 在 Microsoft 所裝載的範例旅館索引中，建議工具名稱是 "sg"，建議工具會搜尋 **HotelName** 欄位中以獨佔方式建議的相符項目。
 
     模糊比對可在輸出中包含「接近未命中」(最多一個編輯距離)。 如果 **highlights** 參數設為 true，則粗體顯示的 HTML 標記就會加入至輸出。 在下一節中，我們會將這兩個參數設定為 true。
 
@@ -137,13 +145,13 @@ ms.locfileid: "91280720"
 
 3. 執行應用程式。 例如，當您輸入 "po" 時，您是否會獲得一系列的選項？ 現在，請嘗試輸入 "pa"。
 
-    ![輸入 "po" 可顯示兩個建議](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-po.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
 
     請注意，您輸入的字母_必須_是一個單字的開始，而不只是這個字中的一個字母。
 
-4. 在檢視指令碼中，將 **&fuzzy** 設為 true，然後再次執行應用程式。 現在，請輸入 "po"。 請注意，搜尋服務會假設您有一個字母錯誤！
+4. 在檢視指令碼中，將 **&fuzzy** 設為 true，然後再次執行應用程式。 現在，請輸入 "po"。 請注意，搜尋服務會假設您有一個字母錯誤。
  
-    ![將 fuzzy 設定為 true 時，輸入 "pa"](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
 
     如果您感興趣，[Azure 認知搜尋服務中的 Lucene 查詢語法](./query-lucene-syntax.md)詳細描述模糊搜尋中使用的邏輯。
 
@@ -151,7 +159,7 @@ ms.locfileid: "91280720"
 
 我們可以將 **highlights** 參數設為 true，藉此改善向使用者提供的建議外觀。 不過，首先我們需要將一些程式碼加入至檢視，以顯示粗體文字。
 
-1. 在檢視 (index.cshtml) 中，於您上面輸入的 **azureautosuggest** 指令碼後面加入下列指令碼。
+1. 在檢視 (index.cshtml) 中，於前面所述的 `"azureautosuggest"` 指令碼後面新增下列指令碼。
 
     ```javascript
     <script>
@@ -180,19 +188,19 @@ ms.locfileid: "91280720"
     </script>
     ```
 
-2. 現在，變更文字方塊的識別碼，因此它會讀取如下。
+1. 現在，變更文字方塊的識別碼，因此它會讀取如下。
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azuresuggesthighlights" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. 再次執行應用程式，您應該會看到您輸入的文字在建議中呈現粗體。 例如，嘗試輸入 "pa"。
+1. 再次執行應用程式，您應該會看到您輸入的文字在建議中呈現粗體。 嘗試輸入 "pa"。
  
-    ![輸入醒目提示的 "pa"](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
 
-4. 上述反白顯示指令碼中使用的邏輯非常簡單。 如果您輸入的詞彙在相同的名稱中出現兩次，則粗體的結果不是您想要的結果。 嘗試輸入 "mo"。
+   上述反白顯示指令碼中使用的邏輯非常簡單。 如果您輸入的詞彙在相同的名稱中出現兩次，則粗體的結果不是您想要的結果。 嘗試輸入 "mo"。
 
-    開發人員必須回答的其中一個問題是指令碼什麼時候運作得「夠好」，以及什麼時候應該處理其花體時。 此外，我們將不會在此教學課程中採取任何進一步地醒目提示，但如果醒目提示未對您的資料產生作用，則必須考慮尋找一個精確的演算法。 如需詳細資訊，請參閱[命中結果醒目提示](search-pagination-page-layout.md#hit-highlighting)。
+   開發人員必須回答的其中一個問題是指令碼什麼時候運作得「夠好」，以及什麼時候應該處理其花體時。 此外，我們將不會在此教學課程中採取任何進一步地醒目提示，但如果醒目提示未對您的資料產生作用，則必須考慮尋找一個精確的演算法。 如需詳細資訊，請參閱[命中結果醒目提示](search-pagination-page-layout.md#hit-highlighting)。
 
 ## <a name="add-autocomplete"></a>新增自動完成
 
@@ -213,103 +221,103 @@ ms.locfileid: "91280720"
     </script>
     ```
 
-2. 現在，變更文字方塊的識別碼，因此它會讀取如下。
+1. 現在，變更文字方塊的識別碼，因此它會讀取如下。
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautocompletebasic" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. 在主控制器中，我們需要輸入 **Autocomplete** 動作，例如，在 **Suggest** 動作下面。
+1. 在主控制器中，在 **SuggestAsync** 動作之後新增 **AutocompleteAsync** 動作。
 
     ```cs
-        public async Task<ActionResult> AutoComplete(string term)
+    public async Task<ActionResult> AutoCompleteAsync(string term)
+    {
+        InitSearch();
+
+        // Setup the autocomplete parameters.
+        var ap = new AutocompleteOptions()
         {
-            InitSearch();
+            Mode = AutocompleteMode.OneTermWithContext,
+            Size = 6
+        };
+        var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
 
-            // Setup the autocomplete parameters.
-            var ap = new AutocompleteParameters()
-            {
-                AutocompleteMode = AutocompleteMode.OneTermWithContext,
-                Top = 6
-            };
-            AutocompleteResult autocompleteResult = await _indexClient.Documents.AutocompleteAsync(term, "sg", ap);
+        // Convert the autocompleteResult results to a list that can be displayed in the client.
+        List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
 
-            // Convert the results to a list that can be displayed in the client.
-            List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-
-            // Return the list.
-            return new JsonResult(autocomplete);
-        }
+        return new JsonResult(autocomplete);
+    }
     ```
 
     請注意，我們在自動完成搜尋中使用的*建議工具*功能 (稱為 "sg") 與我們用於建議的相同 (因此我們只要嘗試自動完成旅館名稱)。
 
     有多種 **AutocompleteMode** 設定，而我們會使用 **OneTermWithContext**。 如需其他選項的說明，請參閱[自動完成 API](/rest/api/searchservice/autocomplete)。
 
-4. 執行應用程式。 請注意，下拉式清單中所顯示的選項範圍是單一文字。 請嘗試輸入開頭為 "re" 的文字。 請注意，輸入的字母越多，選項的數量越少。
+1. 執行應用程式。 請注意，下拉式清單中所顯示的選項範圍是單一文字。 請嘗試輸入開頭為 "re" 的文字。 請注意，輸入的字母越多，選項的數量越少。
 
-    ![使用基本的自動完成輸入](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
 
-    就目前而言，您之前執行的建議指令碼可能比這個自動完成指令碼更有用。 若要讓使用者更容易使用自動完成，最好將其加入至建議搜尋。
+    就目前而言，您之前執行的建議指令碼可能比這個自動完成指令碼更有用。 若要讓自動完成更方便使用者使用，請考慮將其與建議的結果搭配使用。
 
 ## <a name="combine-autocompletion-and-suggestions"></a>結合自動完成和建議
 
 結合自動完成和建議是選項中最複雜的，而且可能會提供最佳的使用者體驗。 我們想要顯示的是內嵌正在輸入的文字，也就是 Azure 認知搜尋服務對於自動完成文字的第一個選擇。 此外，我們想要一系列的建議作為下拉式清單。
 
-有提供這項功能 (通常稱為「內嵌自動完成」或類似的名稱) 的程式庫。 不過，我們要以原生方式實作這項功能，讓您可以看到發生的情況。 在此範例中，我們將先開始處理控制器。
+有提供這項功能 (通常稱為「內嵌自動完成」或類似的名稱) 的程式庫。 不過，我們要以原生方式實作這項功能，讓您可以探索 API。 在此範例中，我們將先開始處理控制器。
 
-1. 我們需要將動作新增至只傳回一個自動完成結果，以及指定之建議數目的控制器。 我們將此動作稱為 **AutocompleteAndSuggest**。 在主控制器中，加入下列動作，後面接著其他新的動作。
+1. 將動作新增至只傳回一個自動完成結果，以及指定建議數目的控制器。 我們將此動作稱為 **AutoCompleteAndSuggestAsync**。 在主控制器中，加入下列動作，後面接著其他新的動作。
 
     ```cs
-        public async Task<ActionResult> AutocompleteAndSuggest(string term)
+    public async Task<ActionResult> AutoCompleteAndSuggestAsync(string term)
+    {
+        InitSearch();
+
+        // Setup the type-ahead search parameters.
+        var ap = new AutocompleteOptions()
         {
-            InitSearch();
+            Mode = AutocompleteMode.OneTermWithContext,
+            Size = 1,
+        };
+        var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap);
 
-            // Setup the type-ahead search parameters.
-            var ap = new AutocompleteParameters()
-            {
-                AutocompleteMode = AutocompleteMode.OneTermWithContext,
-                Top = 1,
-            };
-            AutocompleteResult autocompleteResult = await _indexClient.Documents.AutocompleteAsync(term, "sg", ap);
+        // Setup the suggest search parameters.
+        var sp = new SuggestOptions()
+        {
+            Size = 8,
+        };
 
-            // Setup the suggest search parameters.
-            var sp = new SuggestParameters()
-            {
-                Top = 8,
-            };
+        // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+        // The suggester for the hotel database is called "sg" and simply searches the hotel name.
+        var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", sp).ConfigureAwait(false);
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
-            // The suggester for the hotel database is called "sg", and it searches only the hotel name.
-            DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", sp);
+        // Create an empty list.
+        var results = new List<string>();
 
-            // Create an empty list.
-            var results = new List<string>();
-
-            if (autocompleteResult.Results.Count > 0)
-            {
-                // Add the top result for type-ahead.
-                results.Add(autocompleteResult.Results[0].Text);
-            }
-            else
-            {
-                // There were no type-ahead suggestions, so add an empty string.
-                results.Add("");
-            }
-            for (int n = 0; n < suggestResult.Results.Count; n++)
-            {
-                // Now add the suggestions.
-                results.Add(suggestResult.Results[n].Text);
-            }
-
-            // Return the list.
-            return new JsonResult(results);
+        if (autocompleteResult.Value.Results.Count > 0)
+        {
+            // Add the top result for type-ahead.
+            results.Add(autocompleteResult.Value.Results[0].Text);
         }
+        else
+        {
+            // There were no type-ahead suggestions, so add an empty string.
+            results.Add("");
+        }
+
+        for (int n = 0; n < suggestResult.Value.Results.Count; n++)
+        {
+            // Now add the suggestions.
+            results.Add(suggestResult.Value.Results[n].Text);
+        }
+
+        // Return the list.
+        return new JsonResult(results);
+    }
     ```
 
     系統會在**結果**清單的最上方傳回一個自動完成選項，後面接著所有建議。
 
-2. 在檢視中，首先我們會實作一個技巧，讓淺灰色的自動完成文字呈現在使用者所輸入的粗體文字正下方。 HTML 會包含用於此目的的相對位置。 將 **TextBoxFor** 陳述式 (及其周圍的 &lt;div&gt; 陳述式) 變更如下，並注意，將被視為 **underneath** 的另一個搜尋方塊拉開其預設位置 39 個像素，該搜尋方塊就會位於我們一般搜尋方塊的正下方！
+1. 在檢視中，首先我們會實作一個技巧，讓淺灰色的自動完成文字呈現在使用者所輸入的粗體文字正下方。 HTML 會包含用於此目的的相對位置。 將 **TextBoxFor** 陳述式 (及其周圍的 &lt;div&gt; 陳述式) 變更如下，並注意，將被視為 **underneath** 的另一個搜尋方塊拉開其預設位置 39 個像素，該搜尋方塊就會位於我們一般搜尋方塊的正下方！
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -322,7 +330,7 @@ ms.locfileid: "91280720"
 
     請注意，在此案例中，我們將識別碼再次變更為 **azureautocomplete**。
 
-3. 此外，在檢視中，將下列指令碼輸入到您到目前為止所輸入之所有指令碼的後面。 這個檢視中有很多指令碼。
+1. 此外，在檢視中，將下列指令碼輸入到您到目前為止所輸入之所有指令碼的後面。 由於指令碼所處理的各種輸入行為，所以指令碼很冗長且複雜。
 
     ```javascript
     <script>
@@ -336,7 +344,7 @@ ms.locfileid: "91280720"
 
             // Use Ajax to set up a "success" function.
             source: function (request, response) {
-                var controllerUrl = "/Home/AutoCompleteAndSuggest?term=" + $("#azureautocomplete").val();
+                var controllerUrl = "/Home/AutoCompleteAndSuggestAsync?term=" + $("#azureautocomplete").val();
                 $.ajax({
                     url: controllerUrl,
                     dataType: "json",
@@ -431,23 +439,23 @@ ms.locfileid: "91280720"
     </script>
     ```
 
-    請留意 **interval** 函式的巧妙用法可在加底線的文字不再符合使用者輸入的內容時加以清除，也可以在使用者輸入時設定相同的大小寫 (大寫或小寫) (因為在搜尋時，"pa" 會比對 "PA"、"pA"、"Pa")，讓重疊的文字很整齊。
+    請留意 **interval** 函式的用法可在加底線的文字不再符合使用者輸入的內容時加以清除，也可以在使用者輸入時設定相同的大小寫 (大寫或小寫) (因為在搜尋時，"pa" 會比對 "PA"、"pA"、"Pa")，讓重疊的文字很整齊。
 
     完整閱讀指令碼中的註解以獲得更全面的了解。
 
-4. 最後，我們需要微調兩個 HTML 類別，讓它們變成透明的。 將下列這一行加入至 hotels.css 檔案中的 **searchBoxForm** 和 **searchBox** 類別。
+1. 最後，我們需要微調兩個 HTML 類別，讓它們變成透明的。 將下列這一行加入至 hotels.css 檔案中的 **searchBoxForm** 和 **searchBox** 類別。
 
     ```html
-        background: rgba(0,0,0,0);
+    background: rgba(0,0,0,0);
     ```
 
-5. 現在，執行應用程式。 在搜尋方塊中輸入"pa"。 您是否獲得 "palace" 這個自動完成建議，以及包含 "pa" 的兩間旅館？
+1. 現在，執行應用程式。 在搜尋方塊中輸入"pa"。 您是否獲得 "palace" 這個自動完成建議，以及包含 "pa" 的兩間旅館？
 
-    ![以內嵌的自動完成及建議輸入](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="輸入 *po* 可顯示兩個建議" border="false":::
 
-6. 請嘗試使用 Tab 鍵接受自動完成建議，然後嘗試使用方向鍵和 Tab 鍵選擇建議，最後再次嘗試使用滑鼠按一下。 請確認指令碼會靈巧地處理所有這些情況。
+1. 請嘗試使用 Tab 鍵接受自動完成建議，然後嘗試使用方向鍵和 Tab 鍵選擇建議，最後再次嘗試使用滑鼠按一下。 請確認指令碼會靈巧地處理所有這些情況。
 
-    您可能認為在為您提供此功能的程式庫中載入比較簡單，但現在您至少知道一種讓內嵌的自動完成運作的方法！
+    您可能認為在為您提供此功能的程式庫中載入比較簡單，但現在您至少知道一種讓內嵌的自動完成運作的方法。
 
 ## <a name="takeaways"></a>重要心得
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542814"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758127"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教學課程：整合 AirWatch 與 Azure Active Directory
 
@@ -125,7 +125,7 @@ ms.locfileid: "88542814"
 
 1. 按一下 [使用者]  索引標籤，在 [基準 DN]  文字方塊中輸入您的網域名稱，然後按一下 [儲存]  。
 
-   ![使用者](./media/airwatch-tutorial/ic791922.png "User")
+   ![醒目提示基底 DN 文字方塊的螢幕擷取畫面。](./media/airwatch-tutorial/ic791922.png "User")
 
 1. 按一下 [伺服器]  索引標籤。
 
@@ -133,7 +133,7 @@ ms.locfileid: "88542814"
 
 1. 在 [LDAP]  區段上執行下列步驟：
 
-    ![上傳](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![顯示您需要對 LDAP 區段所做變更的螢幕擷取畫面。](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. 針對 [目錄類型]  ，選取 [無]  。
 
@@ -223,7 +223,7 @@ ms.locfileid: "88542814"
 
 3. 在 [使用者]  功能表中，按一下 [清單檢視]  ，然後按一下 [新增] > [新增使用者]  。
   
-   ![加入使用者](./media/airwatch-tutorial/ic791930.png "新增使用者")
+   ![醒目提示 [新增] 和 [新增使用者] 按鈕的螢幕擷取畫面。](./media/airwatch-tutorial/ic791930.png "新增使用者")
 
 4. 在 [新增/編輯使用者]  對話方塊中，執行下列步驟：
 

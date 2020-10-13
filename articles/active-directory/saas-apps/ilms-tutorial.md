@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545198"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826365"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>教學課程：整合 iLMS 與 Azure Active Directory
 
@@ -130,29 +130,29 @@ ms.locfileid: "88545198"
 
 2. 按一下 [設定]  索引標籤下的 [SSO:SAML]  ，開啟 SAML 設定並執行下列步驟︰
 
-    ![設定單一登入](./media/ilms-tutorial/1.png)
+    ![顯示 ILMS 設定索引標籤的螢幕擷取畫面，您可以在其中選取 [SSO：SAML]。](./media/ilms-tutorial/1.png)
 
 3. 展開 [服務提供者]  區段，然後複製**識別碼**和**端點 (URL)** 值。
 
-    ![設定單一登入](./media/ilms-tutorial/2.png) 
+    ![顯示 [SAML 設定] 的螢幕擷取畫面，您可以在其中取得值。](./media/ilms-tutorial/2.png) 
 
 4. 在 [識別提供者]  區段中，按一下 [匯入中繼資料]  。
 
 5. 在 [SAML 簽章憑證]  區段中，選取從 Azure 入口網站下載的 [同盟中繼資料]  檔案。
 
-    ![設定單一登入](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![顯示 [SAML 設定] 的螢幕擷取畫面，您可以在其中選取中繼資料檔案。](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. 如果您想要啟用 JIT 佈建來建立無法辨識之使用者的 iLMS 帳戶，請遵循以下步驟︰
 
     a. 請勾選 [建立無法辨識的使用者帳戶]  。
 
-    ![設定單一登入](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![顯示 [建立無法辨識使用者帳戶] 選項的螢幕擷取畫面。](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. 將 Azure AD 中的屬性與 iLMS 中的屬性進行對應。 在屬性資料行中，指定屬性名稱或預設值。
 
     c. 移至 [商務規則]  索引標籤，然後執行下列步驟︰
 
-    ![設定單一登入](./media/ilms-tutorial/5.png)
+    ![顯示 [商務規則] 設定的螢幕擷取畫面，您可以在其中輸入此步驟中的資訊。](./media/ilms-tutorial/5.png)
 
     d. 請勾選 [建立無法辨識的區域、事業處和部門]  ，來建立單一登入時尚未存在的區域、事業處和部門。
 
@@ -164,7 +164,7 @@ ms.locfileid: "88545198"
 
 7. 按一下 [儲存]  按鈕以儲存設定。
 
-    ![設定單一登入](./media/ilms-tutorial/save.png)
+    ![顯示 [儲存] 按鈕的螢幕擷取畫面。](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -206,11 +206,11 @@ ms.locfileid: "88545198"
 
 2. 按一下[使用者]  索引標籤下的 [註冊使用者]  開啟 [註冊使用者]  頁面。
 
-   ![新增員工](./media/ilms-tutorial/3.png)
+   ![顯示 ILMS 設定索引標籤的螢幕擷取畫面，您可以在其中選取 [註冊使用者]。](./media/ilms-tutorial/3.png)
 
 3. 在 [註冊使用者]  頁面上，執行下列步驟。
 
-    ![新增員工](./media/ilms-tutorial/create_testuser_add.png)
+    ![顯示 [註冊使用者] 頁面的螢幕擷取畫面，您可以在其中輸入指定的資訊。](./media/ilms-tutorial/create_testuser_add.png)
 
     a. 在 [名字]  文字方塊中輸入名字，例如 Britta。
 

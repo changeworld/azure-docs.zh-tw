@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555327"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Evernote 整合
 
@@ -92,7 +92,7 @@ ms.locfileid: "88555327"
 
 7. 若要修改**簽署**選項，請按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
-    ![image](common/edit-certificate.png) 
+    ![顯示 [SAML 簽署憑證] 對話方塊的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -181,7 +181,7 @@ Evernote 需以手動的方式佈建。
 
 3. 從 [管理主控台]  ，移至 [新增使用者]  。
 
-    ![新增測試使用者](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![顯示 [使用者] 功能表的螢幕擷取畫面，其中已選取 [新增使用者]。](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. 在 [新增小組成員]  的 [電子郵件]  文字方塊中，輸入使用者帳戶的電子郵件地址，然後按一下 [邀請]  。
 

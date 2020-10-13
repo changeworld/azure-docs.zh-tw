@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4607d4dfba68ca8f78ec4e3aaa4da36966ea843a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543018"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教學課程：Azure Active Directory 與 Adobe Experience Manager 整合
 
@@ -101,7 +101,7 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Adobe Experience Manager 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 區段以及醒目提示 [識別碼] 和 [回覆 URL] 文字方塊的螢幕擷取畫面。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，輸入您也會在 AEM 伺服器上定義的唯一值。
 
@@ -136,35 +136,35 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
 
 2. 選取 [Settings]  \(設定\) > [Security]  \(安全性\) > [Users]  \(使用者\)。
 
-    ![設定單一登入 [儲存] 按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![顯示 Adobe Experience Manager 中 [使用者] 圖格的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. 選取 [Administrator]  \(系統管理員\) 或任何其他相關的使用者。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![醒目提示系統管理員使用者的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. 選取 [Account Settings] \(帳戶設定\)   > [Manage TrustStore] \(管理 TrustStore\)  。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![顯示 [帳戶] 設定底下 [管理 TrustStore] 的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. 在 [Add Certificate from CER file] \(從 CER 檔案新增憑證\)  底下，按一下 [Select Certificate File] \(選取憑證檔案\)  。 瀏覽並選取您已經從 Azure 入口網站下載的憑證檔案。
 
-    ![設定單一登入 [儲存] 按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![醒目提示 [選取憑證檔案] 按鈕的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. 憑證即會新增至 TrustStore。 請記下憑證的別名。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![顯示憑證新增至 TrustStore 的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. 在 [Users] \(使用者\)  頁面上，選取 [authentication-service]  。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![醒目提示畫面上驗證服務的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. 選取 [Account settings]  \(帳戶設定\) > [Create/Manage KeyStore]  \(建立/管理 KeyStore\)。 提供密碼以建立 KeyStore。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![醒目提示管理金鑰儲存區的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. 返回管理畫面。 然後選取 [Settings] \(設定\)   > [Operations] \(作業\)   > [Web Console] \(Web 主控台\)  。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![醒目提示 [設定] 區段內 [作業] 底下 Web 主控台的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     這會開啟設定頁面。
 
@@ -172,7 +172,7 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
 
 10. 找出 **Adobe Granite SAML 2.0 Authentication Handler**。 然後選取 [Add] \(新增\)  圖示。
 
-    ![設定單一登入儲存按鈕](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![醒目提示 Adobe Granite SAML 2.0 Authentication Handler 的螢幕擷取畫面。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. 在此頁面上執行下列動作。
 

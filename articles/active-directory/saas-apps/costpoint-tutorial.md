@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549240"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775656"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>教學課程：整合 Costpoint 與 Azure Active Directory
 
@@ -43,7 +43,7 @@ ms.locfileid: "88549240"
 
 **DeltekCostpoint711Security.pdf** 指南提供了 Costpoint SAML SSO 組態的說明。 從 Deltek Costpoint 支援網站下載本指南，並參閱 **SAML 單一登入設定** > **在 Costpoint 與 Microsoft Azure 之間設定 SAML 單一登入**一節。 依照指示執行，並產生 **Costpoint SP 同盟中繼資料 XML** 檔案。 
 
-![Costpoint 組態公用程式](./media/costpoint-tutorial/config-utility.png)
+![顯示 [產品設定公用程式] 的螢幕擷取畫面，其中已選取 [Weblogic - 安全性] 索引標籤。](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>從資源庫新增 Costpoint
 

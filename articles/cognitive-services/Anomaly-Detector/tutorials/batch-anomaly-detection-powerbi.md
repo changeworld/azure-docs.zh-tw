@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905780"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660950"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教學課程：使用批次偵測與 Power BI 將異常狀況視覺化
 
@@ -56,7 +56,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 
 按一下 Power Query 編輯器中的 [轉換]**** 功能區。 在 [任何資料行]**** 群組中，開啟 [資料類型:]**** 下拉式功能表，然後選取 [文字]****。
 
-![Power BI 中資料來源 [導覽] 畫面的影像](../media/tutorials/data-type-drop-down.png)
+![資料類型下拉式清單的影像](../media/tutorials/data-type-drop-down.png)
 
 當您取得有關變更資料行類型的通知時，請按一下 [取代目前]****。 接著，按一下 [首頁]**** 功能區中的 [關閉並套用]**** 或 [套用]****。
 
@@ -66,7 +66,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 
 確定已選取您的新查詢，然後按一下 [進階編輯器]****。
 
-![Power BI 中 [進階編輯器] 按鈕的影像](../media/tutorials/advanced-editor-screen.png)
+![[進階編輯器] 畫面的影像](../media/tutorials/advanced-editor-screen.png)
 
 在 [進階編輯器] 內，使用下列 Power Query M 程式碼片段，從資料表擷取資料行並將它傳送至 API。 接著，查詢會從 JSON 回應建立資料表並將它傳回。 以有效的 Anomaly Detector API 金鑰取代 `apiKey` 變數，並以您的端點取代 `endpoint`。 在 [進階編輯器] 中輸入查詢之後，按一下 [完成]****。
 
@@ -80,7 +80,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
     jsonbody    = "{ ""Granularity"": ""daily"", ""Sensitivity"": 95, ""Series"": "& jsontext &" }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Content-Type" = "application/json", #"Ocp-Apim-Subscription-Key" = apikey],
-    bytesresp   = bytesresp  = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
+    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
@@ -114,7 +114,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 
 選取 [輸入參數]**** 下方的 `Sheet1`，然後按一下 [叫用]****，以在您的資料工作表上叫用查詢。
 
-![[進階編輯器] 按鈕的影像](../media/tutorials/invoke-function-screenshot.png)
+![叫用函式的影像](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>資料來源隱私權和驗證
 
@@ -148,11 +148,11 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 * LowerMargins
 * ExpectedValues
 
-![新快速量值畫面的影像](../media/tutorials/chart-settings.png)
+![圖表設定的影像](../media/tutorials/chart-settings.png)
 
 新增欄位之後，按一下圖表並調整其大小，以顯示所有的資料點。 您的圖表看起來類似以下螢幕擷取畫面：
 
-![新快速量值畫面的影像](../media/tutorials/chart-visualization.png)
+![圖表視覺效果的影像](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>顯示異常資料點
 
@@ -162,15 +162,15 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 
 在出現的畫面上，選取 [篩選的值]**** 作為計算。 將 [基底值]**** 設定為 `Sum of Value`。 然後將 `IsAnomaly` 從 [叫用的函式]**** 欄位拖曳到 [篩選條件]****。 從 [篩選條件]**** 下拉式功能表中選取 `True`。
 
-![新快速量值畫面的影像](../media/tutorials/new-quick-measure-2.png)
+![新快速量值畫面的第二個影像](../media/tutorials/new-quick-measure-2.png)
 
 按一下 [確定]**** 之後，您的欄位清單底部會出現 `Value for True` 欄位。 以滑鼠右鍵按一下它並重新命名為 [異常]****。 將它新增至圖表的 [值]****。 然後選取 [格式]**** 工具，並將 X 軸類型設定為 [類別]****。
 
-![新快速量值畫面的影像](../media/tutorials/format-x-axis.png)
+![X 軸格式的影像](../media/tutorials/format-x-axis.png)
 
 按一下 [格式]**** 工具和 [資料色彩]****，將色彩套用至圖表。 您的圖表應該如下所示：
 
-![新快速量值畫面的影像](../media/tutorials/final-chart.png)
+![最終圖表的影像](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>後續步驟
 

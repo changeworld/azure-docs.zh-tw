@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: bca696cc633a1d2a4fd64180135bb4b1e25f801c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 953b1d766788092564ae32f6c0ab1fb3e57c492f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540573"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ARC Facilities 整合
 
@@ -84,15 +84,15 @@ ms.locfileid: "88540573"
 
 1. ARC Facilities 應用程式需要特定格式的 SAML 判斷提示，要求您加入自訂屬性對應到您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示已呼叫 [編輯] 圖示的 [使用者屬性] 對話方塊螢幕擷取畫面。](common/edit-attribute.png)
 
 1. 除了以上屬性外，ARC Facilities 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
     a. 按一下 [宣告中傳回的群組]  旁的**筆**。
 
-    ![image](./media/arc-facilities-tutorial/config01.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，在已呼叫宣告中所傳回的群組旁邊有筆形圖示。](./media/arc-facilities-tutorial/config01.png)
 
-    ![image](./media/arc-facilities-tutorial/config02.png)
+    ![顯示群組宣告的螢幕擷取畫面，其中已選取所有群組和群組識別碼並且已呼叫 [儲存] 按鈕。](./media/arc-facilities-tutorial/config02.png)
 
     b. 選取選項按鈕清單中的 [所有群組]  。
 

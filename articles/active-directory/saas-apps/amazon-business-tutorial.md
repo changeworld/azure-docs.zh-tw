@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548265"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713765"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教學課程：整合 Amazon Business 與 Azure Active Directory
 
@@ -101,19 +101,19 @@ ms.locfileid: "88548265"
 
 1. 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [使用者屬性與宣告] 區段中的 [編輯] 圖示來編輯屬性。
 
-    ![屬性](media/amazon-business-tutorial/map-attribute3.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有預設值，例如名字 user.givenname 和電子郵件地址 user.mail。](media/amazon-business-tutorial/map-attribute3.png)
 
 1. 編輯屬性並將這些屬性的 [命名空間] 值複製到 [記事本] 中。
 
-    ![屬性](media/amazon-business-tutorial/map-attribute4.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有適用於宣告名稱和值的資料行。](media/amazon-business-tutorial/map-attribute4.png)
 
 1. 除了以上屬性外，Amazon Business 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告] 對話方塊的 [使用者屬性與宣告] 區段中，執行下列步驟：
 
     a. 按一下 [宣告中傳回的群組] 旁的**筆**。
 
-    ![image](./media/amazon-business-tutorial/config04.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有所選取宣告中傳回的群組圖示。](./media/amazon-business-tutorial/config04.png)
 
-    ![image](./media/amazon-business-tutorial/config05.png)
+    ![顯示群組宣告的螢幕擷取畫面，其中具有此程序中所述的值。](./media/amazon-business-tutorial/config05.png)
 
     b. 選取選項按鈕清單中的 [所有群組]。
 
@@ -145,54 +145,54 @@ ms.locfileid: "88548265"
 
 1. 在 [設定 SSO] 精靈上，根據貴組織的需求選取提供者，然後按 [下一步]。
 
-    ![預設群組](media/amazon-business-tutorial/default-group1.png)
+    ![顯示設定 SSO 的螢幕擷取畫面，其中具有 Microsoft Azure AD 和已選取下一步。](media/amazon-business-tutorial/default-group1.png)
     
     > [!NOTE]
     > 雖然已列出 Microsoft ADFS 選項，但其無法與 Azure AD SSO 搭配使用。
 
 1. 在 [新增使用者帳戶預設值] 精靈上，選取 [預設群組]並根據貴組織中的使用者角色選取 [預設購買角色]，然後按 [下一步]。
 
-    ![預設群組](media/amazon-business-tutorial/dafault-group2.png)
+    ![顯示新增使用者預設值的螢幕擷取畫面，其中具有 Microsoft SSO、申購者，以及已選取下一步。](media/amazon-business-tutorial/dafault-group2.png)
 
 1. 在 [上傳您的中繼資料檔案] 精靈上，按一下 [瀏覽] 以上傳您從 Azure 入口網站下載的 [中繼資料 XML] 檔案，然後按一下 [上傳]。
 
-    ![連線資料](media/amazon-business-tutorial/connection-data1.png)
+    ![顯示上傳您的中繼資料檔的螢幕擷取畫面，可讓您瀏覽至 xml 檔案並且上傳。](media/amazon-business-tutorial/connection-data1.png)
 
 1. 上傳所下載的中繼資料檔案之後，就會自動填入 [連線資料] 區段中的欄位。 然後按 [下一步]。
 
-    ![連線資料](media/amazon-business-tutorial/connection-data2.png)
+    ![顯示連線資料的螢幕擷取畫面，您可以在其中指定 Azure AD 識別碼、登入 URL 和 SAML 簽署憑證。](media/amazon-business-tutorial/connection-data2.png)
 
 1. 在 [上傳您的屬性陳述式] 精靈上，按一下 [跳過]。
 
-    ![屬性](media/amazon-business-tutorial/map-attribute1.png)
+    ![顯示上傳您的屬性陳述式的螢幕擷取畫面，可讓您瀏覽至屬性陳述式，但是在此案例中，選取 [跳過]。](media/amazon-business-tutorial/map-attribute1.png)
 
 1. 在 [屬性對應] 精靈上，按一下 [+ 新增欄位] 選項來新增需求欄位。 新增屬性值，包括您從 Azure 入口網站的 [使用者屬性與宣告] 區段複製到 [SAML 屬性名稱] 欄位中的命名空間，然後按 [下一步]。
 
-    ![屬性](media/amazon-business-tutorial/map-attribute2.png)
+    ![顯示屬性對應的螢幕擷取畫面，您可以在其中編輯您的 Amazon 資料 SAML 屬性名稱。](media/amazon-business-tutorial/map-attribute2.png)
 
 1. 在 [ Amazon 連線資料] 精靈上，按 [下一步]。
 
-    ![Connection](media/amazon-business-tutorial/amazon-connect.png)
+    ![顯示 Amazon 連線資料的螢幕擷取畫面，您可以在其中按下一步以繼續作業。](media/amazon-business-tutorial/amazon-connect.png)
 
 1. 請檢查已設定步驟的 [狀態]，然後按一下 [開始測試]。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection1.png)
+    ![顯示 SSO 連線詳細資料的螢幕擷取畫面，其中具有用來啟動測試的選項。](media/amazon-business-tutorial/sso-connection1.png)
 
 1. 在 [測試 SSO 連線] 精靈上，按一下 [測試]。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection2.png)
+    ![顯示測試 SSO 連線的螢幕擷取畫面，其中具有 [測試] 按鈕。](media/amazon-business-tutorial/sso-connection2.png)
 
 1. 在 [IDP 起始的 URL] 精靈上，按一下 [啟動] 之前，請複製指派給 **idpid** 的值，並貼到 Azure 入口網站的 [基本 SAML 組態] 區段中 [回覆 URL] 的 **idpid** 參數中。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection3.png)
+    ![顯示 IDP 起始 URL 的螢幕擷取畫面，您可以在其中取得測試所需的 URL 然後選取 [啟動]。](media/amazon-business-tutorial/sso-connection3.png)
 
 1. 在 [您準備好切換到使用中的 SSO 嗎?] 精靈上，勾選 [我已完整測試過 SSO 並準備好上線] 核取方塊，然後按一下 [切換到使用中]。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection4.png)
+    ![顯示您是否準備好切換至使用中 SSO 確認的螢幕擷取畫面，您可以在其中選取 [切換] 為使用中。](media/amazon-business-tutorial/sso-connection4.png)
 
 1. 最後在 [SSO 連線詳細資料] 區段中，[狀態] 會顯示為 [使用中]。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection5.png)
+    ![顯示 SSO 連線詳細資料的螢幕擷取畫面，具有 [使用中] 狀態。](media/amazon-business-tutorial/sso-connection5.png)
     
     > [!NOTE]
     > 如果您要以 **SP** 起始模式設定應用程式，請完成下列步驟，並將上述螢幕擷取畫面中的登入 URL 貼入 Azure 入口網站中 [設定其他 URL] 區段的 [登入 URL] 文字方塊中。 請使用下列格式：
@@ -218,15 +218,15 @@ ms.locfileid: "88548265"
 
 1. 按一下 [Azure Active Directory] > [所有群組]。
 
-    ![建立 Azure AD 安全性群組](./media/amazon-business-tutorial/all-groups-tab.png)
+    ![顯示 Azure 入口網站功能表的螢幕擷取畫面，其中已選取 Azure Active Directory 並且已選取 [群組] 窗格中的所有群組。](./media/amazon-business-tutorial/all-groups-tab.png)
 
 1. 按一下 [新增群組]：
 
-    ![建立 Azure AD 安全性群組](./media/amazon-business-tutorial/new-group-tab.png)
+    ![顯示新增群組按鈕的螢幕擷取畫面。](./media/amazon-business-tutorial/new-group-tab.png)
 
 1. 填寫 [群組類型]、[群組名稱]、[群組描述]、[成員資格類型]。 按一下箭頭來選取成員，然後搜尋或按一下您要新增至群組的成員。 按一下 [選取] 來新增選取的成員，然後按一下 [建立]。
 
-    ![建立 Azure AD 安全性群組](./media/amazon-business-tutorial/group-information.png)
+    ![顯示 [群組] 窗格的螢幕擷取畫面，具有包括選取成員和邀請外部使用者的選項。](./media/amazon-business-tutorial/group-information.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -240,7 +240,7 @@ ms.locfileid: "88548265"
 
 1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
-    ![[新增使用者] 連結](common/add-assign-user.png)
+    ![顯示新增使用者按鈕的螢幕擷取畫面。](common/add-assign-user.png)
 
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
@@ -249,7 +249,7 @@ ms.locfileid: "88548265"
     >[!NOTE]
     > 如果您未在 Azure AD 中指派使用者，則會收到下列錯誤。
 
-    ![[新增使用者] 連結](media/amazon-business-tutorial/assign-user.png)
+    ![顯示您無法登入的錯誤訊息螢幕擷取畫面。](media/amazon-business-tutorial/assign-user.png)
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 入口網站中指派 Azure AD 安全性群組
 

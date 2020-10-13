@@ -1,24 +1,24 @@
 ---
-title: 檢閱個別 Azure 帳單
-description: 了解如何看懂您的帳單和資源使用量，以及確認個別 Azure 訂用帳戶的費用。
+title: 檢閱您的個別 Azure 訂用帳戶帳單
+description: 了解如何看懂您的帳單和資源使用量，以及確認個別 Azure 訂用帳戶的費用，包括隨用隨付。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270520"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653276"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>教學課程：檢閱個別 Azure 帳單
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>教學課程：檢閱您的個別 Azure 訂用帳戶帳單
 
-本文可協助您了解及檢閱您的 Azure 帳單。 通常，您會在電子郵件中收到每個計費週期的發票。 發票即代表您的 Azure 帳單。 Azure 入口網站中可以取得發票上的相同費用資訊。 在本教學課程中，您將比較包含詳細每日使用量檔案的發票與 Azure 入口網站中的成本分析。
+本文可協助您了解及檢閱隨用隨付或 Visual Studio Azure 訂用帳戶的帳單，包括隨用隨付和 Visual Studio。 通常，您會在電子郵件中收到每個計費週期的發票。 發票即代表您的 Azure 帳單。 Azure 入口網站中可以取得發票上的相同費用資訊。 在本教學課程中，您將比較包含詳細每日使用量檔案的發票與 Azure 入口網站中的成本分析。
 
 本教學課程僅適用於具有個別訂用帳戶的 Azure 客戶。 一般個別訂用帳戶是指直接向 Azure 網站購買且採用隨用隨付費率的帳戶。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91270520"
 
 - 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>比較發票費用與使用量檔案
+## <a name="compare-billed-charges-with-your-usage-file"></a>比較計費費用與使用量檔案
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ ms.locfileid: "91270520"
 
 如需詳細資訊，請參閱[了解您的 Azure 發票](understand-invoice.md)及[了解您的 Azure 詳細使用量](understand-usage.md)。
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>比較成本分析中的費用和使用量
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>比較成本分析中的計費費用和使用量
 
 Azure 入口網站中的成本分析也可協助您確認費用。 若要快速瀏覽已開立發票的使用量和費用，請從 Azure 入口網站的[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)頁面中選取您的訂用帳戶。 接下來，按一下 [成本分析]****，然後在檢視清單中按一下 [發票詳細資料]****。
 
@@ -123,13 +123,15 @@ Azure 入口網站中的成本分析也可協助您確認費用。 若要快速�
 
 ![發票使用量費用](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>外部服務會分開計費
+## <a name="external-marketplace-services-are-billed-separately"></a>外部市集服務會分開計費
+
+<a name="external"></a>
 
 外部服務 (或 Marketplace) 費用為協力廠商軟體廠商建立的資源費用。 您可以從 Azure Marketplace 取得並使用這些資源。 例如，Barracuda Firewall 是由協力廠商提供的 Azure Marketplace 資源。 適用於該防火牆和其相對應計量的所有費用都會顯示為外部服務費用。
 
 外部服務費用會分開計費。 費用不會顯示在 Azure 發票上。 若要深入了解，請參閱[了解您的 Azure 外部服務費用](understand-azure-marketplace-charges.md)。
 
-### <a name="resources-billed-by-usage-meters"></a>依使用量計量計費的資源
+### <a name="resources-are-billed-by-usage-meters"></a>資源是依使用量計量計費
 
 Azure 不會直接根據資源成本計費。 資源費用會使用一或多個計量來計算。 計量用於追蹤資源於存留期間內的使用量。 接著，這些計量會用來計算帳單金額。
 
@@ -152,7 +154,9 @@ Azure 不會直接根據資源成本計費。 資源費用會使用一或多個�
 
 您可以在使用量 CSV 檔案中查看用來計算費用的計量，如先前範例所示。
 
-## <a name="pay-your-bill"></a><a name="payment"></a>支付您的帳單
+## <a name="pay-your-bill"></a>支付您的帳單
+
+<a name="payment"></a>
 
 如果您設定信用卡作為付款方式，我們會在計費期間結束後的 10 天內自動扣款。 在您的信用卡對帳單上，明細項目的名稱會是 **MSFT Azure**。
 

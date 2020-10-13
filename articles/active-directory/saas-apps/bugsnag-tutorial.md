@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f5a8abf4272cf90691e60f97416023a76252e41
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547710"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>教學課程：Azure Active Directory 與 Bugsnag 整合
 
@@ -100,7 +100,7 @@ Bugsnag 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Bugsnag 網域與 URL 單一登入資訊](common/both-replyurl.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入回覆 URL 以及選取 [儲存]。](common/both-replyurl.png)
 
     在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs`
 
@@ -109,7 +109,7 @@ Bugsnag 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![Bugsnag 網域與 URL 單一登入資訊](common/both-signonurl.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/both-signonurl.png)
 
     在 [登入 URL]  文字方塊中，輸入如下：`https://app.bugsnag.com/user/identity_provider`
 

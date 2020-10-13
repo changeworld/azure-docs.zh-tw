@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548255"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教學課程：Azure Active Directory 與 Bonusly 整合
 
@@ -222,11 +222,11 @@ ms.locfileid: "88548255"
 
 1. 按一下 [新增使用者]  。
 
-    ![加入使用者](./media/bonus-tutorial/ic781044.png "新增使用者")
+    ![顯示 [管理使用者] 的螢幕擷取畫面，您可以在其中選取 [新增使用者]。](./media/bonus-tutorial/ic781044.png "新增使用者")
 
 1. 在 [加入使用者]  對話方塊中，執行下列步驟：
 
-    ![加入使用者](./media/bonus-tutorial/ic781045.png "新增使用者")  
+    ![顯示 [新增使用者] 對話方塊的螢幕擷取畫面，您可在其中輸入此資訊。](./media/bonus-tutorial/ic781045.png "新增使用者")  
 
     a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
 

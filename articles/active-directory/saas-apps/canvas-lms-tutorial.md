@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547625"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教學課程：Azure Active Directory 與 Canvas 整合
 
@@ -223,11 +223,11 @@ ms.locfileid: "88547625"
 
 3. 按一下 [使用者]  。
 
-   ![使用者](./media/canvas-lms-tutorial/ic775995.png "使用者")
+   ![顯示 Canvas 功能表的螢幕擷取畫面，其中已選取 [使用者]。](./media/canvas-lms-tutorial/ic775995.png "使用者")
 
 4. 按一下 [新增使用者]  。
 
-   ![使用者](./media/canvas-lms-tutorial/ic775996.png "使用者")
+   ![顯示 [新增使用者] 按鈕的螢幕擷取畫面。](./media/canvas-lms-tutorial/ic775996.png "使用者")
 
 5. 在 [新增使用者] 對話頁面上，執行下列步驟：
 

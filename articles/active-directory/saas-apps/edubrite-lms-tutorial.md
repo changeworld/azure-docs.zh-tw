@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b206d5e8721ee87b699765c0fc2a7df6177fc8cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d753aef3c7cd855b1ab137e85a233a1bca27c25a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544391"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>教學課程：Azure Active Directory 與 EduBrite LMS 整合
 
@@ -101,7 +101,7 @@ ms.locfileid: "88544391"
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![EduBrite LMS 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中醒目提示 [識別碼]、[回覆 URL] 和 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<customer-specific>.edubrite.com`
 

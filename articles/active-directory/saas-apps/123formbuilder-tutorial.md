@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539261"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 123FormBuilder SSO 整合
 
@@ -133,7 +133,7 @@ ms.locfileid: "88539261"
 
 1. 若要在 **123FormBuilder SSO** 端設定單一登入，請移至 [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/)，然後執行下列步驟：
 
-    ![設定單一登入](./media/123formbuilder-tutorial/submit.png) 
+    ![顯示 SSO SAML - 識別提供者設定畫面的螢幕擷取畫面。](./media/123formbuilder-tutorial/submit.png) 
 
     a. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件，例如 `B.Simon@Contoso.com`。
 

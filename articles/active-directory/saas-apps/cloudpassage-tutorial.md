@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551654"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758297"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 CloudPassage 整合
 
@@ -85,7 +85,7 @@ ms.locfileid: "88551654"
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://portal.cloudpassage.com/saml/consume/accountid`。 您也可以在 CloudPassage 入口網站的 [單一登入設定]  區段中按一下 [SSO 安裝文件]  ，為這個屬性設定值。
 
-    ![設定單一登入](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![顯示 CloudPassage 入口網站，其中已呼叫 SSO 設定文件連結。](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「回覆 URL」來更新這些值。 請連絡 [CloudPassage 用戶端支援小組](https://www.cloudpassage.com/company/contact/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -146,15 +146,15 @@ ms.locfileid: "88551654"
 
 1. 在頂端功能表中，按一下 [設定]  ，然後按一下 [網站管理]  。 
    
-    ![設定單一登入][12]
+    ![顯示 CloudPassage 網站的螢幕擷取畫面，其中已選取 [網站管理]。][12]
 
 1. 按一下 [驗證設定]  索引標籤。 
    
-    ![設定單一登入][13]
+    ![顯示 CloudPassage 網站的螢幕擷取畫面，其中已選取 [驗證設定] 索引標籤。][13]
 
 1. 在 [單一登入設定]  區段中，執行下列步驟： 
    
-    ![設定單一登入][14]
+    ![顯示 [單一登入設定] 區段的螢幕擷取畫面，您可以在其中輸入此步驟中的資訊。][14]
 
     a. 選取 [啟用單一登入 (SSO) (SSO 安裝程式文件)/]  核取方塊。
     
@@ -178,15 +178,15 @@ ms.locfileid: "88551654"
 
 1. 在頂端工具列中，按一下 [設定]  ，然後按一下 [網站管理]  。 
    
-    ![建立 CloudPassage 測試使用者][22] 
+    ![顯示 CloudPassage 的螢幕擷取畫面，其中已選取 [網站管理]。][22] 
 
 1. 按一下 [使用者]  索引標籤，然後按一下 [新增使用者]  。 
    
-    ![建立 CloudPassage 測試使用者][23]
+    ![顯示 CloudPassage 網站管理的螢幕擷取畫面，其中已選取 [使用者] 索引標籤以及具有 [新增使用者] 選項。][23]
 
 1. 在 [新增使用者]  區段中，執行下列步驟： 
    
-    ![建立 CloudPassage 測試使用者][24]
+    ![顯示 [新增使用者] 區段的螢幕擷取畫面，您可以在其中指定使用者資訊。][24]
     
     a. 在 [名字]  文字方塊中，輸入 Britta。 
   

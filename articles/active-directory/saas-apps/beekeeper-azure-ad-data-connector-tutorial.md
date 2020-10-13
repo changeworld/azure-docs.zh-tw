@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ac881d19ee4ba7efc2dcbab93775f59cfec5effa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 82fced2d504af1823b3e6e1561ee875067a962c5
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549274"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Beekeeper Azure AD SSO 整合
 
@@ -89,7 +89,7 @@ ms.locfileid: "88549274"
 
     c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態] 區段中自動填入 [識別碼]  和 [回覆 URL]  值。
 
-    ![image](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
@@ -103,7 +103,7 @@ ms.locfileid: "88549274"
 
 1. Beekeeper Azure AD SSO 應用程式會預期要有特定格式的 SAML 判斷提示，這會要求您在 SAML 權杖屬性設定中新增自訂的屬性對應。 以下螢幕擷取畫面顯示預設屬性清單。
 
-    ![image](common/default-attributes.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/default-attributes.png)
 
 1. 除了上述屬性外，Beekeeper Azure AD SSO 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 

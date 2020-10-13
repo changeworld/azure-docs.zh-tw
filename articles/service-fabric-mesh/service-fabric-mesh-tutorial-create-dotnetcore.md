@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011204"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653106"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教學課程：建立、偵錯、部署及升級多服務的 Service Fabric Mesh 應用程式
 
@@ -59,7 +59,7 @@ ms.locfileid: "89011204"
 
 確定已勾選 [為方案建立目錄]  ，然後按一下 [確定]  以建立 Service Fabric Mesh 專案。
 
-![Visual Studio 的新增 Service Fabric Mesh 專案對話方塊](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![顯示如何建立 Service Fabric Mesh 專案的螢幕擷取畫面。](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 接著，您會看到 [新增 Service Fabric 服務]  對話方塊。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89011204"
 
 接著您會看到 [ASP.NET Core Web 應用程式] 對話方塊。 選取 [Web 應用程式]  ，然後按一下 [確定]  。
 
-![Visual Studio 的新增 ASP.NET Core 應用程式](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![醒目提示 Web 應用程式範本的螢幕擷取畫面。](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 現在您已有 Service Fabric Mesh 應用程式。 接下來，請建立待辦事項資訊的模型。
 

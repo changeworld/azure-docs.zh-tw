@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 0fe0dd43a59b0fb23a3a74509841402880b6fd69
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a6150093bd6735fe3ba6b2ff20aea89a3802bf21
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548148"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743466"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-creatio"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Creatio 整合
 
@@ -93,11 +93,11 @@ ms.locfileid: "88548148"
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
-    ![憑證下載連結](common/certificatebase64.png)
+    ![顯示 [SAML 簽署憑證] 頁面的螢幕擷取畫面，其中具有 base64 憑證的下載連結。](common/certificatebase64.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
-    ![憑證下載連結](common/copy-metadataurl.png)
+    ![顯示 [SAML 簽署憑證] 頁面的螢幕擷取畫面，您可以在其中複製應用程式同盟中繼資料 URL。](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

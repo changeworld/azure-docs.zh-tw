@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b05a85dd61cdf4edc366edc3fbf20e4097308d09
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545467"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amplitude 整合
 
@@ -141,15 +141,15 @@ ms.locfileid: "88545467"
 
 1. 從左側導覽列中選取 [Plan Admin] \(方案管理\)  。
 
-    ![設定單一登入](./media/amplitude-tutorial/configure1.png)
+    ![顯示已選取 [方案管理] 的 [Amplitude] 功能表螢幕擷取畫面。](./media/amplitude-tutorial/configure1.png)
 
 1. 從 [SSO Integration] \(單一登入整合\)  中選取 [Microsoft Azure Active Directory Metadata] \(Microsoft Azure Active Directory 中繼資料\)  。
 
-    ![設定單一登入](./media/amplitude-tutorial/configure2.png)
+    ![顯示 [方案管理] 窗格的螢幕擷取畫面，其中已呼叫 Microsoft Azure Active Directory 中繼資料連結。](./media/amplitude-tutorial/configure2.png)
 
 1. 在 [Set Up Single Sign-On] \(設定單一登入\)  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/amplitude-tutorial/configure3.png)
+    ![顯示 [設定單一登入] 區段的螢幕擷取畫面，其中具有此步驟中所述的值。](./media/amplitude-tutorial/configure3.png)
 
     a. 在記事本中開啟從 Azure 入口網站下載的**中繼資料 Xml**，將內容貼到 [Microsoft Azure Active Directory Metadata] \(Microsoft Azure Active Directory 中繼資料\)  文字方塊中。
 

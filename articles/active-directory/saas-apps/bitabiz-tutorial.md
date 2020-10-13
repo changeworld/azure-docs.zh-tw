@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531050"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741443"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>教學課程：Azure Active Directory 與 BitaBIZ 整合
 
@@ -132,15 +132,15 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [安裝管理員]  。
 
-    ![BitaBIZ 設定](./media/bitabiz-tutorial/settings1.png)
+    ![顯示部分瀏覽器視窗的螢幕擷取畫面，其中已選取 [安裝管理員]。](./media/bitabiz-tutorial/settings1.png)
 
 3. 按一下 [新增值]下的 [Microsoft 整合]。
 
-    ![BitaBIZ 設定](./media/bitabiz-tutorial/settings2.png)
+    ![顯示 [新增] 值的螢幕擷取畫面，其中已選取 [Microsoft 整合]。](./media/bitabiz-tutorial/settings2.png)
 
 4. 向下捲動至 [Microsoft Azure AD (啟用單一登入)]  並執行下列步驟：
 
-    ![BitaBIZ 設定](./media/bitabiz-tutorial/settings3.png)
+    ![顯示 Microsoft Azure AD 區段的螢幕擷取畫面，您會在其中輸入此步驟中所述的資訊。](./media/bitabiz-tutorial/settings3.png)
 
     a. 複製 [實體識別碼] (Azure AD 中的「識別碼」) 文字方塊中的值，然後貼到 Azure 入口網站中的 [基本 SAML 組態] 區段上的 [識別碼] 文字方塊中。 
 
@@ -218,19 +218,19 @@ BitaBIZ 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [安裝管理員]  。
 
-    ![BitaBIZ 新增使用者](./media/bitabiz-tutorial/settings1.png)
+    ![顯示部分瀏覽器視窗的螢幕擷取畫面，其中已選取 [安裝管理員]。](./media/bitabiz-tutorial/settings1.png)
 
 3. 按一下 [組織] 區段下的 [新增使用者]。
 
-    ![BitaBIZ 新增使用者](./media/bitabiz-tutorial/user1.png)
+    ![顯示 [組織] 區段的螢幕擷取畫面，其中已選取 [新增使用者]。](./media/bitabiz-tutorial/user1.png)
 
 4. 按一下 [新增員工]  。
 
-    ![BitaBIZ 新增使用者](./media/bitabiz-tutorial/user2.png)
+    ![顯示 [新增使用者] 的螢幕擷取畫面，其中已選取 [新增員工]。](./media/bitabiz-tutorial/user2.png)
 
 5. 在 [新增員工]  對話方塊頁面上，執行下列步驟：
 
-    ![BitaBIZ 新增使用者](./media/bitabiz-tutorial/user3.png)
+    ![顯示頁面的螢幕擷取畫面，您會在其中輸入此步驟中所述的資訊。](./media/bitabiz-tutorial/user3.png)
 
     a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 Britta。
 

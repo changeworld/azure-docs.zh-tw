@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6ed981ab0b67aacaca5300dc3f77894805e3d1b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318325"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816370"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 C IoT Edge 模組
 
@@ -344,11 +344,12 @@ ms.locfileid: "91318325"
 
 ## <a name="deploy-modules-to-device"></a>將模組部署到裝置
 
-使用 Visual Studio 雲端總管和 Azure IoT Edge Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.windows-amd64.json** 檔案。 現在您只需選取要接收部署的裝置即可。
+使用 Visual Studio Cloud Explorer 和 Azure IoT Edge Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.windows-amd64.json** 檔案。 現在您只需選取要接收部署的裝置即可。
+
 
 請確定您的 IoT Edge 裝置已啟動並執行。
 
-1. 在 Visual Studio 雲端總管中，展開資源以查看您的 IoT 裝置清單。
+1. 在 Visual Studio Cloud Explorer 中，展開資源以查看您的 IoT 裝置清單。
 
 2. 以滑鼠右鍵按一下您要接收部署的 IoT Edge 裝置名稱。
 
@@ -356,7 +357,7 @@ ms.locfileid: "91318325"
 
 4. 在檔案總管中，選取您解決方案的 config 資料夾中的 **deployment.windows-amd64** 檔案。
 
-5. 重新整理雲端總管，以查看列在您裝置之下的已部署模組。
+5. 重新整理 Cloud Explorer，以查看列在您裝置之下的已部署模組。
 
 ## <a name="view-generated-data"></a>檢視產生的資料
 
@@ -364,7 +365,7 @@ ms.locfileid: "91318325"
 
 您可以在訊息送達 IoT 中樞時，使用 IoT Edge Tools 擴充功能檢視訊息。
 
-1. 在 Visual Studio 雲端總管中，選取您的 IoT Edge 裝置名稱。
+1. 在 Visual Studio Cloud Explorer 中，選取您的 IoT Edge 裝置名稱。
 
 2. 在 [動作] 清單中，選取 [開始監視內建事件端點]。
 

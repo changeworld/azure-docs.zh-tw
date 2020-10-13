@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551739"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826268"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>教學課程：Azure Active Directory 與 Envi MMIS 整合
 
@@ -99,7 +99,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Envi MMIS 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中醒目提示 [識別碼]、[回覆 URL] 和 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [我的網域]  索引標籤。
 
-    ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure1.png)
+    ![顯示 [使用者] 功能表的螢幕擷取畫面，其中已選取 [我的網域]。](./media/envimmis-tutorial/configure1.png)
 
 3. 按一下 **[編輯]** 。
 
-    ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure2.png)
+    ![顯示已選取 [編輯] 按鈕的螢幕擷取畫面。](./media/envimmis-tutorial/configure2.png)
 
 4. 選取 [使用遠端驗證] 核取方塊，然後從 [驗證類型] 下拉式清單中選取 [HTTP 重新導向]。
 
-    ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure3.png)
+    ![顯示 [詳細資料] 索引標籤的螢幕擷取畫面，其中已核取 [使用遠端驗證] 並且已選取 [HTTP 重新導向]。](./media/envimmis-tutorial/configure3.png)
 
 5. 選取 [資源]  索引標籤，然後按一下 [上傳中繼資料]  。
 
-    ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure4.png)
+    ![顯示 [資源] 索引標籤的螢幕擷取畫面，其中已選取 [上傳中繼資料] 動作。](./media/envimmis-tutorial/configure4.png)
 
 6. 在 [上傳中繼資料]  快顯中，執行下列步驟：
 
-    ![設定單一登入儲存按鈕](./media/envimmis-tutorial/configure5.png)
+    ![顯示 [上傳中繼資料] 快顯的螢幕擷取畫面，其中已選取 [檔案] 選項，並且醒目提示 [選擇檔案] 圖示和 [確定] 按鈕。](./media/envimmis-tutorial/configure5.png)
 
     a. 從 [上傳來源] 下拉式清單中選取 [檔案] 選項。
 
@@ -223,11 +223,11 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [使用者清單]  索引標籤。
 
-    ![新增員工](./media/envimmis-tutorial/user1.png)
+    ![顯示 [使用者] 功能表的螢幕擷取畫面，其中已選取 [使用者清單]。](./media/envimmis-tutorial/user1.png)
 
 3. 按一下 [新增使用者]  按鈕。
 
-    ![新增員工](./media/envimmis-tutorial/user2.png)
+    ![顯示 [使用者] 區段的螢幕擷取畫面，其中已選取 [新增使用者] 按鈕。](./media/envimmis-tutorial/user2.png)
 
 4. 在 [加入使用者]  區段中，執行下列步驟：
 

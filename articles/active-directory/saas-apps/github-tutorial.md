@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985890"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
@@ -91,7 +91,7 @@ ms.locfileid: "90985890"
 
 5. GitHub 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML Token 屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的**唯一的使用者識別碼 (名稱識別碼)** 與 **user.userprincipalname** 相對應。 GitHub 應用程式要求**唯一的使用者識別碼 (名稱識別碼)** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
@@ -149,11 +149,11 @@ ms.locfileid: "90985890"
 
 2. 瀏覽至 [設定]，然後按一下 [安全性]
 
-    ![設定](./media/github-tutorial/security.png)
+    ![顯示 GitHub [組織設定] 功能表的螢幕擷取畫面，其中已選取 [安全性]。](./media/github-tutorial/security.png)
 
 3. 勾選 [啟用 SAML 驗證]方塊，以顯示單一登入設定欄位。 執行下列步驟：
 
-    ![設定](./media/github-tutorial/saml-sso.png)
+    ![顯示 [SAML 單一登入] 區段的螢幕擷取畫面，其中醒目提示 [啟用 SAML 驗證] 和 URL 文字方塊。](./media/github-tutorial/saml-sso.png)
 
     a. 複製 [單一登入 URL] 值，並將此值貼到 Azure 入口網站的 [基本 SAML 組態] 中的 [登入 URL] 文字方塊內。
     
@@ -161,7 +161,7 @@ ms.locfileid: "90985890"
 
 4. 設定下列欄位：
 
-    ![設定](./media/github-tutorial/configure.png)
+    ![顯示 [登入 URL]、[簽發者] 和 [公開憑證] 文字方塊的螢幕擷取畫面。](./media/github-tutorial/configure.png)
 
     a. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
@@ -208,7 +208,7 @@ ms.locfileid: "90985890"
 
     b. 按一下 [傳送邀請]。
 
-    ![邀請人員](./media/github-tutorial/send-invitation.png "邀請人員")
+    ![顯示 [邀請成員] 對話方塊頁面的螢幕擷取畫面，其中已選取 [成員] 和 [傳送邀請] 按鈕。](./media/github-tutorial/send-invitation.png "邀請人員")
 
     > [!NOTE]
     > Azure Active Directory 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。

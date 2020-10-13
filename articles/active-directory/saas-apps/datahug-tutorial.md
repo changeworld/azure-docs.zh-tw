@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555949"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>教學課程：Azure Active Directory 與 Datahug 整合
 
@@ -99,7 +99,7 @@ Datahug 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Datahug 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 區段的螢幕擷取畫面，其中醒目提示 [識別碼]、[回覆 URL] 和 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://apps.datahug.com/identity/<uniqueID>`
 
@@ -206,11 +206,11 @@ Datahug 與 Azure AD 整合提供下列優點：
 
 2. 將滑鼠停留在右上角「齒輪」  中，然後按一下 [設定] 
    
-    ![新增員工](./media/datahug-tutorial/1.png)
+    ![顯示「Datahug」首頁的螢幕擷取畫面，其中已選取「Cog」圖示，並且已選取下拉式功能表中的 [設定]。](./media/datahug-tutorial/1.png)
 
 3. 選擇 [人員]  ，然後按一下 [新增使用者]  索引標籤
 
-    ![新增員工](./media/datahug-tutorial/2.png)
+    ![顯示 [設定] 頁面的螢幕擷取畫面，其中已選取 [人員] 索引標籤和 [新增使用者]。](./media/datahug-tutorial/2.png)
 
 4. 輸入您想要為其建立帳戶的該人員電子郵件，然後按一下 [新增]  。
 

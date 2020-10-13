@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903508"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743381"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>教學課程：啟動搭配 GPU 的 Azure Stack Edge Pro
 
@@ -52,12 +52,12 @@ ms.locfileid: "90903508"
 
 4. 選取 [套用]。
 
-    ![本機 Web UI 的「雲端詳細資料」頁面](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
+    ![本機 Web UI 的「雲端詳細資料」頁面 2](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
 
 5. 首先，該裝置會啟動。 系統接著會提示您下載金鑰檔案。
     
-    ![本機 Web UI 的「雲端詳細資料」頁面](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
+    ![本機 Web UI 的「雲端詳細資料」頁面 3](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
     選取 [下載並繼續]，並將 device-serial-no.json 檔案儲存在裝置以外的安全位置。 **此金鑰檔案包含您裝置上的 OS 磁碟和資料磁碟的修復金鑰**。 日後您可能需要這些金鑰才能更快速地修復系統。
 
@@ -88,7 +88,7 @@ ms.locfileid: "90903508"
 
 6. 移至**概觀**頁面。 裝置狀態應該會顯示為**已啟用**。
 
-    ![本機 Web UI 的「雲端詳細資料」頁面](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
+    ![本機 Web UI 的「雲端詳細資料」頁面 4](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
 裝置啟用已完成。 您現在可以在裝置上新增共用。
 

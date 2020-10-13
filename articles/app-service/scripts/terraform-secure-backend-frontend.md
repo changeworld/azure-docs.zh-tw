@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962225"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739828"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>建立兩個以私人端點和 VNet 整合安全連線的 Web 應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "88962225"
 - 部署 VNet
 - 建立用於整合的第一個子網路
 - 建立用於私人端點的第二個子網路，您必須設定特定參數來停用網路原則
-- 部署一個 PremiumV2 類型的 App Service 方案 (私人端點功能需要最低 SKU)
+- 部署一個 PremiumV2 或 PremiumV3 類型的 App Service 方案，私人端點功能需要這樣的類型
 - 建立具有特定應用程式設定的前端 Web 應用程式，以取用私人 DNS 區域，[更多詳細資料](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - 將前端 Web 應用程式連線到整合子網路
 - 建立後端 Web 應用程式

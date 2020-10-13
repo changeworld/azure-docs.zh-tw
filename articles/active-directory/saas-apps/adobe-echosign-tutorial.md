@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7d1ea6c1ee21970a598855471284130160e1d65
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18a034c6af9659e113a821e072098aee873c2ee2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537855"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教學課程：Azure Active Directory 與 Adobe Sign 整合
 
@@ -151,7 +151,7 @@ ms.locfileid: "88537855"
 
 1. 在 [SAML 設定]  區段中，執行下列步驟：
   
-   ![[SAML Settings] \(SAML 設定\) 的螢幕擷取畫面](./media/adobe-echosign-tutorial/ic789521.png "SAML 設定")
+   ![醒目提示 SAML 設定 (包括 [SAML 強制]) 的螢幕擷取畫面。](./media/adobe-echosign-tutorial/ic789521.png "SAML 設定")
    
    ![[SAML Settings] \(SAML 設定\) 的螢幕擷取畫面](./media/adobe-echosign-tutorial/ic789522.png "SAML 設定")
 

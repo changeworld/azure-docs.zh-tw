@@ -4,15 +4,15 @@ description: 設定適用於整個 Azure App Service 環境的設定。 了解�
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 10/03/2020
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85833497"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713280"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service 環境的自訂組態設定
 ## <a name="overview"></a>概觀
@@ -67,12 +67,12 @@ App Service 環境會以黑箱系統的方式運作，您看不到內部元件�
 "clusterSettings": [
     {
         "name": "InternalEncryption",
-        "value": "1"
+        "value": "true"
     }
 ],
 ```
+這會加密前端和背景工作角色之間 ASE 中的內部網路流量，加密分頁檔，同時加密背景工作角色磁碟。 啟用 InternalEncryption clusterSetting 之後，可能會對系統效能造成影響。 當您進行變更以啟用 InternalEncryption 時，您的 ASE 將會處於不穩定的狀態，直到變更完全傳播為止。 視您的 ASE 中有多少執行個體而定，變更的完整傳播可能需要幾小時才能完成。 強烈建議您不要在使用中的 ASE 上啟用此功能。 如果您需要在主動使用的 ASE 上啟用此功能，強烈建議您將流量轉向備份環境，直到作業完成為止。 
 
-啟用 InternalEncryption clusterSetting 之後，可能會對系統效能造成影響。 當您進行變更以啟用 InternalEncryption 時，您的 ASE 將會處於不穩定的狀態，直到變更完全傳播為止。 視您的 ASE 中有多少執行個體而定，變更的完整傳播可能需要幾小時才能完成。 強烈建議您不要在使用中的 ASE 上啟用此功能。 如果您需要在主動使用的 ASE 上啟用此功能，強烈建議您將流量轉向備份環境，直到作業完成為止。 
 
 ## <a name="disable-tls-10-and-tls-11"></a>停用 TLS 1.0 和 TLS 1.1
 
@@ -104,7 +104,7 @@ App Service 環境會以黑箱系統的方式運作，您看不到內部元件�
 ```
 
 > [!WARNING]
-> 如果對安全通道無法了解的加密套件設定了不正確的值，對您的伺服器的所有 TLS 通訊可能會停止運作。 在這種情況下，您必須從 **clusterSettings** 移除 FrontEndSSLCipherSuiteOrder 項目，並提交更新的 Resource Manager 範本以還原回預設的加密套件設定。  請謹慎使用這項功能。
+> 如果對安全通道無法了解的加密套件設定了不正確的值，對您的伺服器的所有 TLS 通訊可能會停止運作。 在這種情況下，您必須從 **clusterSettings** 移除 FrontEndSSLCipherSuiteOrder** 項目，並提交更新的 Resource Manager 範本以還原回預設的加密套件設定。  請謹慎使用這項功能。
 
 ## <a name="get-started"></a>開始使用
 Azure 快速入門 Resource Manager 範本網站包含具有 [建立 App Service 環境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定義的範本。

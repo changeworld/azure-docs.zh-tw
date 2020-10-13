@@ -1,7 +1,7 @@
 ---
-title: JavaScript 單頁應用程式教學課程 | Azure
+title: 教學課程：建立使用 Microsoft 身分識別平台進行驗證的 JavaScript 單頁應用程式 | Azure
 titleSuffix: Microsoft identity platform
-description: 在本教學課程中，您會了解 JavaScript 單頁應用程式 (SPA) 如何呼叫需要 Microsoft 身分識別平台所簽發存取權杖的 API。
+description: 在本教學課程中，您會建置 JavaScript 單頁應用程式 (SPA)，使用 Microsoft 身分識別平台來登入使用者，並取得存取權杖來代表他們呼叫 Microsoft Graph API。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,52 +12,48 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256819"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825920"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教學課程：登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
-本指南將示範 JavaScript 單頁應用程式 (SPA) 如何執行下列動作：
-- 登入個人帳戶及公司和學校帳戶
-- 取得存取權杖
-- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點中存取權杖的 API
+在本教學課程中，您會在 JavaScript 中建立單頁應用程式 (SPA)，以便使用個人 Microsoft 帳戶或公司和學校帳戶登入使用者，然後取得存取權杖來呼叫 Microsoft Graph API。
+
+本教學課程內容：
+
+> [!div class="checklist"]
+> * 使用 `npm` 建立 JavaScript 專案
+> * 在 Azure 入口網站中註冊應用程式
+> * 新增程式碼以支援使用者登入和登出
+> * 新增程式碼以呼叫 Microsoft Graph API
+> * 測試應用程式
 
 >[!TIP]
 > 本教學課程使用 MSAL.js v1.x，其僅限於使用單頁應用程式的隱含授與流程。 建議所有新應用程式改用[具有 PKCE 和 CORS 支援的 MSAL.js 2.x 和授權碼流程](tutorial-v2-javascript-auth-code.md)。
+
+## <a name="prerequisites"></a>必要條件
+
+* 用於執行本機網頁伺服器的 [Node.js](https://nodejs.org/en/download/)。
+* 用於修改專案檔的 [Visual Studio Code](https://code.visualstudio.com/download) 或其他編輯器。
+* 新式網頁瀏覽器。 由於應用程式使用 [ES6](http://www.ecma-international.org/ecma-262/6.0/) 慣例，所以您在本教學課程中建置的應用程式 **Internet Explorer** **不受支援**。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 
 ![示範本教學課程所產生的應用程式範例如何運作](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>詳細資訊
+此指南建立的範例應用程式可讓 JavaScript SPA 查詢 Microsoft Graph API，或查詢可接受來自 Microsoft 身分識別平台端點之權杖的 Web API。 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 系統會使用此權杖以透過 **MS 圖形 API** 來取得使用者的設定檔和郵件。
 
-此指南建立的範例應用程式可讓 JavaScript SPA 查詢 Microsoft Graph API，或查詢可接受來自 Microsoft 身分識別平台端點之權杖的 Web API。 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 系統會使用此權杖以透過 **MS 圖形 API** 來取得使用者的設定檔和郵件。 權杖取得和更新作業是由**適用於 JavaScript 的 Microsoft Authentication Library (MSAL)** 負責處理的。
-
-### <a name="libraries"></a>程式庫
-
-本指南使用下列程式庫：
-
-|程式庫|描述|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|適用於 JavaScript 的 Microsoft Authentication Library|
+權杖取得和更新作業是由[適用於 JavaScript 的 Microsoft Authentication Library (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js) 負責處理的。
 
 ## <a name="set-up-your-web-server-or-project"></a>設定您的網頁伺服器或專案
 
 > 想要改為下載此範例的專案嗎？ [下載專案檔](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 >
 > 若要在您執行之前設定程式碼範例，請跳至[設定步驟](#register-your-application)。
-
-## <a name="prerequisites"></a>必要條件
-
-* 若要執行本教學課程，您需要本機網頁伺服器，例如 [Node.js](https://nodejs.org/en/download/)、[.NET Core](https://www.microsoft.com/net/core) 或與 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 的 IIS Express 整合。
-
-* 本指南中的指示是以內建於 Node.js 的 Web 伺服器作為基礎。 建議您使用 [Visual Studio Code](https://code.visualstudio.com/download) 作為整合式開發環境 (IDE)。
-
-* 新式網頁瀏覽器。 這個 JavaScript 範例會使用 [ES6](http://www.ecma-international.org/ecma-262/6.0/) 慣例，因此**不**支援 **Internet Explorer**。
 
 ## <a name="create-your-project"></a>建立專案
 
@@ -76,7 +72,7 @@ ms.locfileid: "91256819"
    npm install morgan --save
    ```
 
-1. 現在，建立名為 `index.js` 的 .js 檔案，然後新增下列程式碼：
+1. 現在，建立名為 `server.js` 的 .js 檔案，然後新增下列程式碼：
 
    ```JavaScript
    const express = require('express');
@@ -283,7 +279,7 @@ ms.locfileid: "91256819"
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>設定 Node.js 的重新導向 URL
 >
-> 若是 Node.js，您可以在 *index.js* 檔案中設定網頁伺服器連接埠。 此教學課程會使用連接埠 3000，但您可以使用任何其他可用的連接埠。
+> 對於 Node.js，您可以在 server.js  檔案中設定網頁伺服器連接埠。 此教學課程會使用連接埠 3000，但您可以使用任何其他可用的連接埠。
 >
 > 若要在應用程式註冊資訊中設定重新導向 URL，請切換回 [應用程式註冊] 窗格，並且執行下列其中一項作業：
 >
@@ -449,7 +445,7 @@ ms.locfileid: "91256819"
    其中：
    - *\<Enter_the_Graph_Endpoint_Here>* 是 MS 圖形 API 的執行個體。 若為全域 MS 圖形 API 端點，只要將此字串取代為 `https://graph.microsoft.com` 即可。 若為國家雲端部署，請參閱[圖形 API 文件](/graph/deployments)。
 
-1. 接下來，建立名為 `graph.js` 的 .js 檔案以針對 Microsoft 圖形 API 發出 REST 呼叫，然後新增下列程式碼：
+1. 接下來，建立名為 `graph.js` 的 .js 檔案以針對 Microsoft Graph API 發出 REST 呼叫，然後新增下列程式碼：
 
    ```javascript
    function callMSGraph(endpoint, token, callback) {
@@ -486,8 +482,6 @@ ms.locfileid: "91256819"
    ```
 1. 在瀏覽器中輸入 **http://localhost:3000** 或 **http://localhost:{port}** ，其中 *port* 是 Web 伺服器將會接聽的連接埠。 您應該會看到 index.html 檔案和 [登入] 按鈕。
 
-## <a name="test-your-application"></a>測試您的應用程式
-
 在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
 
 ![JavaScript SPA 帳戶登入視窗](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
@@ -512,3 +506,11 @@ Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 
 > 系統可能會在您增加範圍數目時，提示使用者同意其他事項。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>下一步
+
+在我們的多個部分情節系列中，深入了解如何在 Microsoft 身分識別平台上開發單頁應用程式 (SPA)。
+
+> [!div class="nextstepaction"]
+> [案例：單頁應用程式](scenario-spa-overview.md)
+

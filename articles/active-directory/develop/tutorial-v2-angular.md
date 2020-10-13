@@ -1,7 +1,7 @@
 ---
-title: Angular 單頁應用程式教學課程 - Azure
+title: 教學課程：建立 Angular 應用程式，使用 Microsoft 身分識別平台進行驗證 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 Angular SPA 應用程式如何呼叫需要 Microsoft 身分識別平台端點所提供存取權杖的 API。
+description: 在本教學課程中，您會建置 Angular 單頁應用程式 (SPA)，使用 Microsoft 身分識別平台來登入使用者，並取得存取權杖來代表他們呼叫 Microsoft Graph API。
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256920"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611243"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
-本教學課程將示範 Angular 單頁應用程式 (SPA) 如何執行下列動作：
-- 登入個人帳戶、公司帳戶或學校帳戶。
-- 取得存取權杖。
-- 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點中存取權杖的 API。
+本教學課程將逐步引導您建置一個 Angular 單頁應用程式 (SPA)，使用者可以使用個人 Microsoft 帳戶、公司或學校帳戶登入該應用程式，並且讓該應用程式代表他們呼叫 Microsoft Graph API。
 
->[!NOTE]
->本教學課程將逐步引導您了解如何使用 Microsoft 驗證程式庫 (MSAL) 來建立新的 Angular SPA。 如果想下載範例應用程式，請參閱[快速入門](quickstart-v2-angular.md)。
+本教學課程內容：
+
+> [!div class="checklist"]
+> * 使用 `npm` 建立 Angular 專案
+> * 在 Azure 入口網站中註冊應用程式
+> * 新增程式碼以支援使用者登入和登出
+> * 新增程式碼以呼叫 Microsoft Graph API
+> * 測試應用程式
+
+## <a name="prerequisites"></a>必要條件
+
+* 用於執行本機網頁伺服器的 [Node.js](https://nodejs.org/en/download/)。
+* 用於修改專案檔的 [Visual Studio Code](https://code.visualstudio.com/download) 或其他編輯器。
 
 ## <a name="how-the-sample-app-works"></a>此範例應用程式的運作方式
 
 ![此圖顯示本教學課程中的範例應用程式如何產生](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>詳細資訊
-
-此教學課程中建立的範例應用程式可讓 Angular SPA 查詢 Microsoft Graph API，或查詢可接受來自 Microsoft 身分識別平台端點之權杖的 Web API。 Angular 程式庫的 MSAL 是核心 MSAL.js 程式庫的包裝函式。 其可讓 Angular (6+) 應用程式使用 Microsoft Azure Active Directory (AAD)、Microsoft 帳戶使用者和社交身分識別使用者 (例如 Facebook、Google、LinkedIn 等等) 來驗證企業使用者， 程式庫也可啟用應用程式，並取得 Microsoft 雲端服務或 Microsoft Graph 的存取權。
+此教學課程中建立的範例應用程式可讓 Angular SPA 查詢 Microsoft Graph API，或查詢可接受由 Microsoft 身分識別平台所簽發權杖的 Web API。 使用適用於 Angular 的 Microsoft 驗證程式庫 (MSAL)，這是核心 MSAL.js 程式庫的包裝函式。 MSAL Angular 啟用 Angular 6+ 應用程式，藉由使用 Azure Active Directory (Azure AD) 來驗證企業使用者，同時驗證具有 Microsoft 帳戶和社交身分識別 (例如 Facebook、Google 和 LinkedIn) 的使用者。 程式庫也可啟用應用程式，並取得 Microsoft 雲端服務或 Microsoft Graph 的存取權。
 
 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 MSAL 會處理權杖取得和續約事項。
 
@@ -48,13 +54,6 @@ ms.locfileid: "91256920"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|適用於 Angular 包裝函式的 Microsoft Authentication Library|
 
 您可以在 GitHub 上的 [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) 存放庫中找到適用於 MSAL.js 程式庫的原始程式碼。
-
-## <a name="prerequisites"></a>Prerequisites
-
-若要執行此教學課程，您需要：
-
-* 本機 Web 伺服器，例如 [Node.js](https://nodejs.org/en/download/)。 本教學課程中的指示是以 Node.js 作為基礎。
-* 整合式開發環境 (IDE)，例如 [Visual Studio Code](https://code.visualstudio.com/download)，以編輯專案檔。
 
 ## <a name="create-your-project"></a>建立專案
 
@@ -343,6 +342,7 @@ Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您不熟悉身分識別和存取管理，我們有數篇文章可協助您了解新式驗證概念，就從[驗證與授權](authentication-vs-authorization.md)開始。
+在我們的多個部分文章系列中，深入了解如何在 Microsoft 身分識別平台上開發單頁應用程式 (SPA)。
 
-如果您想要深入了解如何在 Microsoft 身分識別平台上開發單頁應用程式，有多個部分的[案例：單頁應用程式](scenario-spa-overview.md)系列文章可協助您開始著手。
+> [!div class="nextstepaction"]
+> [案例：單頁應用程式](scenario-spa-overview.md)

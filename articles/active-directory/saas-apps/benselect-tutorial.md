@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537102"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741205"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BenSelect 整合
 
@@ -89,15 +89,15 @@ ms.locfileid: "88537102"
 
 1. BenSelect 應用程式需要特定格式的 SAML 判斷提示，需要您將自訂屬性對應新增至您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中具有預設值，例如名字 user.givenname 和電子郵件地址 user.mail。](common/edit-attribute.png)
 
 1. 按一下 [編輯]  圖示以編輯 [名稱識別碼值]  。
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![顯示已呼叫 [編輯] 圖示的 [使用者屬性和宣告] 窗格螢幕擷取畫面。](media/benselect-tutorial/mail-prefix1.png)
 
 1. 在 [管理使用者宣告]  區段上，執行下列步驟：
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![顯示管理使用者宣告的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](media/benselect-tutorial/mail-prefix2.png)
 
     a. 選取 [轉換]  作為 [來源]  。
 

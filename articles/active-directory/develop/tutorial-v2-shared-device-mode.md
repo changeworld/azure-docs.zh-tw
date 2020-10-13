@@ -1,6 +1,7 @@
 ---
-title: 搭配 MSAL Android 使用共用裝置模式 | Azure
-description: 了解如何準備可在共用模式中執行的 Android 裝置，並執行第一線工作角色應用程式。
+title: 教學課程：搭配適用於 Android 的 Microsoft 驗證程式庫 (MSAL) 使用共用裝置模式 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本教學課程中，您會了解如何準備可在共用模式中執行的 Android 裝置，並執行第一線背景工作角色應用程式。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +13,35 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355052"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611226"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教學課程：在 Android 應用程式中使用共用裝置模式
 
-> [!NOTE]
-> 這項功能處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本教學課程為開發人員和租用戶系統管理員提供設定和支援 Android 應用程式共用裝置模式的指導方針。
+
+本教學課程內容：
+
+> [!div class="checklist"]
+> * 下載程式碼範例
+> * 啟用和偵測共用裝置模式
+> * 偵測單一或多個帳戶模式
+> * 偵測使用者切換，並啟用全域登入和登出
+> * 在 Azure 入口網站中設定租用戶和註冊應用程式
+> * 在共用裝置模式中設定 Android 裝置
+> * 執行範例應用程式
+
+## <a name="prerequisites"></a>必要條件
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="developer-guide"></a>開發人員指南
 
-本指南提供開發人員指導方針，說明如何使用 Microsoft 驗證程式庫 (MSAL) 在 Android 應用程式中執行共用裝置模式。 請參閱 [MSAL Android 教學課程](./tutorial-v2-android.md)，以了解如何整合 MSAL 與 Android 應用程式、登入使用者、呼叫 Microsoft Graph 及登出使用者。
+教學課程的這一節提供開發人員指導方針，說明如何使用 Microsoft 驗證程式庫 (MSAL) 在 Android 應用程式中實作共用裝置模式。 請參閱 [MSAL Android 教學課程](./tutorial-v2-android.md)，以了解如何整合 MSAL 與 Android 應用程式、登入使用者、呼叫 Microsoft Graph 及登出使用者。
 
 ### <a name="download-the-sample"></a>下載範例
 
@@ -111,7 +124,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>偵測單一與多個帳戶模式
 
-如果您撰寫的應用程式只會用於共用裝置上的第一線工作角色，建議您將應用程式撰寫為只支援單一帳戶模式。 這包括大部分以工作為主的應用程式，例如醫療記錄應用程式、發票應用程式，以及大多數的企業營運應用程式。 這可簡化您的開發，因為不需要容納 SDK 的許多功能。
+如果您撰寫的應用程式只會用於共用裝置上的第一線背景工作角色，建議您將應用程式撰寫為只支援單一帳戶模式。 這包括大部分以工作為主的應用程式，例如醫療記錄應用程式、發票應用程式，以及大多數的企業營運應用程式。 這可簡化您的開發，因為不需要容納 SDK 的許多功能。
 
 如果您的應用程式支援多個帳戶及共用裝置模式，您必須執行類型檢查並轉換成適當的介面，如下所示。
 
@@ -209,9 +222,11 @@ private void onSignOutClicked()
 > [!NOTE]
 > 當您註冊應用程式時，請使用左側的快速入門指南，然後選取 [Android]  。 這會引導您到一個頁面，然後要求您提供應用程式的**套件名稱**及**簽章雜湊**。 這些是確保您應用程式組態能夠正常執行的重要項目。 接著，您會收到用於應用程式的組態物件，您可以將其剪下並貼到 auth_config.json 檔案中。
 
-![應用程式註冊畫面](media/tutorial-v2-shared-device-mode/register-app.png) 您應選取 [為我進行這項變更]  ，然後提供快速入門在 Azure 入口網站中要求的值。 完成後，我們將會產生您所需的所有組態檔。
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-app.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
-![應用程式組態資訊畫面](media/tutorial-v2-shared-device-mode/config-info.png)
+您應該選取 [為我進行這項變更]，然後提供快速入門在 Azure 入口網站中要求的值。 完成後，我們將會產生您所需的所有組態檔。
+
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
 ## <a name="set-up-a-tenant"></a>設定租用戶
 
@@ -227,25 +242,25 @@ private void onSignOutClicked()
 
 啟動 Authenticator 應用程式，並瀏覽至主要帳戶頁面。 一旦您看到 [新增帳戶]  頁面，表示您可以準備讓裝置進行共用。
 
-![Authenticator 的新增帳戶畫面](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
- 使用右側功能表列移至 [設定]  窗格。 選取 [公司與學校帳戶]  底下的 [裝置註冊]  。
+使用右側功能表列移至 [設定]  窗格。 選取 [公司與學校帳戶]  底下的 [裝置註冊]  。
 
- ![Authenticator 的新增帳戶畫面](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
- 當您按一下此按鈕時，系統會要求您授與裝置連絡人的存取權。 這是因為要整合裝置上的 Android 帳戶。 請選擇 [允許]  。
+當您按一下此按鈕時，系統會要求您授與裝置連絡人的存取權。 這是因為要整合裝置上的 Android 帳戶。 請選擇 [允許]  。
 
- ![Authenticator 的新增帳戶畫面](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
 雲端裝置管理員應該在 [或註冊為共用裝置]  中輸入其組織電子郵件。 接著按一下 [註冊為共用裝置]  按鈕，然後輸入其認證。
 
-![註冊裝置畫面](media/tutorial-v2-shared-device-mode/register-device.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
-![此螢幕擷取畫面顯示登入頁面。](media/tutorial-v2-shared-device-mode/sign-in.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
 裝置現在已處於共用模式。
 
-![註冊裝置畫面](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
  裝置上的任何登入和登出都是全域性的，這表示這些動作會套用到裝置上與 MSAL 和 Microsoft Authenticator 整合的所有應用程式。 您現在可以將應用程式部署到使用共用裝置模式功能的裝置。
 
@@ -253,14 +268,17 @@ private void onSignOutClicked()
 
 一旦將裝置置於共用模式後，您的組織就會認識該裝置，並在您的組織租用戶中進行追蹤。 若要檢視您的共用裝置，您可以在Azure 入口網站的 [Azure Active Directory] 分頁中查看 [聯結類型]  。
 
-![Azure 入口網站中的所有裝置刀鋒視窗](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
 ## <a name="running-the-sample-app"></a>執行範例應用程式
 
 範例應用程式是簡單的應用程式，可用來呼叫您組織的圖形 API。 第一次執行時，系統會顯示要求同意的提示，因為對您的員工帳戶而言，這是新的應用程式。
 
-![應用程式組態資訊畫面](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="在 Azure 入口網站中設定 Android 應用程式頁面快速入門":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-在[適用於 Android 裝置的共用裝置模式](msal-android-shared-devices.md)中深入了解共用模式
+深入了解如何在 Android 裝置上使用 Microsoft 驗證程式庫和共用裝置模式：
+
+> [!div class="nextstepaction"]
+> [適用於 Android 裝置的共用裝置模式](msal-android-shared-devices.md)

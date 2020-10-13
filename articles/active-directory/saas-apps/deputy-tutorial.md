@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536864"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教學課程：Azure Active Directory 與 Deputy 整合
 
@@ -99,7 +99,7 @@ Deputy 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Deputy 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 區段的螢幕擷取畫面，其中醒目提示 [識別碼]、[回覆 URL] 和 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
@@ -171,7 +171,7 @@ Deputy 與 Azure AD 整合提供下列優點：
 
 1. 瀏覽到下列 URL：`https://(your-subdomain).deputy.com/exec/config/system_config`。 移至 [安全性設定]  ，然後按一下 [編輯]  。
    
-    ![設定單一登入](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![顯示 [系統設定] 頁面的螢幕擷取畫面，其中已選取 [安全性設定 - 編輯] 按鈕。](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. 在此 [安全性設定]  頁面上，執行下列步驟。
 

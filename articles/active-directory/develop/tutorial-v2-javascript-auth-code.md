@@ -1,7 +1,7 @@
 ---
-title: JavaScript 單頁應用程式教學課程 - 授權碼流程 | Azure
+title: 教學課程：建立使用驗證程式碼流程的 JavaScript 單頁應用程式 | Azure
 titleSuffix: Microsoft identity platform
-description: JavaScript SPA 應用程式如何使用授權碼流程來呼叫需要來自 Azure Active Directory v2.0 端點存取權杖的 API
+description: 在本教學課程中，您會建立可登入使用者的 JavaScript SPA，並使用驗證程式碼流程從 Microsoft 身分識別平台取得存取權杖，並且呼叫 Microsoft Graph API。
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256801"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665866"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -32,6 +32,11 @@ ms.locfileid: "91256801"
 MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，而非隱含的授與流程。 MSAL.js 2.0 **不**支援隱含流程。
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>必要條件
+
+* 用於執行本機網頁伺服器的 [Node.js](https://nodejs.org/en/download/)
+* [Visual Studio Code](https://code.visualstudio.com/download) 或其他程式碼編輯器
 
 ## <a name="how-the-tutorial-app-works"></a>教學課程應用程式的運作方式
 
@@ -52,11 +57,6 @@ MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，�
 然後，若要在您執行之前設定程式碼範例，請跳至[設定步驟](#register-your-application)。
 
 若要繼續進行本教學課程並自行建置應用程式，請移至下一節[必要條件](#prerequisites)。
-
-## <a name="prerequisites"></a>必要條件
-
-* 用於執行本機網頁伺服器的 [Node.js](https://nodejs.org/en/download/)
-* [Visual Studio Code](https://code.visualstudio.com/download) 或其他程式碼編輯器
 
 ## <a name="create-your-project"></a>建立專案
 
@@ -551,7 +551,9 @@ function readMail() {
 
 此時，系統會將受 PKCE 保護的授權碼傳送至受 CORS 保護的權杖端點，並交換權杖。 您的應用程式會接收識別碼權杖、存取權杖和重新整理權杖，並由 *msal.js* 進行處理，然後快取權杖中包含的資訊。
 
-識別碼權杖包含使用者的基本資訊，例如其顯示名稱。 如果您打算使用識別碼權杖所提供的任何資料，則後端伺服器*必須*驗證資料，以保證所簽發權杖的適用對象是您應用程式的有效使用者。 重新整理權杖的存留期有限，24 小時後便會到期。 您可以使用重新整理權杖來以無訊息方式取得新的存取權杖。
+識別碼權杖包含使用者的基本資訊，例如其顯示名稱。 如果您打算使用識別碼權杖所提供的任何資料，則後端伺服器*必須*驗證資料，以保證所簽發權杖的適用對象是您應用程式的有效使用者。
+
+存取權杖的存留期有限，24 小時後便會到期。 您可以使用重新整理權杖來以無訊息方式取得新的存取權杖。
 
 您在本教學課程所建立的 SPA 會呼叫 `acquireTokenSilent` 和/或 `acquireTokenPopup`，以取得用來查詢 Microsoft Graph API 中使用者設定檔資訊的「存取權杖」。 如果您需要會驗證識別碼權杖的範例，請參閱 GitHub 上的 [active-directory-javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) 範例應用程式。 此範例使用 ASP.NET Web API 進行權杖驗證。
 
@@ -649,14 +651,7 @@ Microsoft Graph API 需要 user.read 範圍才能讀取使用者的設定檔。 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立 JavaScript 單頁應用程式 (SPA)，以使用適用於 JavaScript v2.0 的 Microsoft 驗證程式庫 (MSAL) 來執行下列動作：
+如果您想要深入了解如何在 Microsoft 身分識別平台上開發 JavaScript 單頁應用程式，請參閱我們的多個部分案例系列：
 
-> [!div class="checklist"]
-> * 使用 PKCE 執行 OAuth 2.0 授權碼流程
-> * 登入個人的 Microsoft 帳戶以及公司和學校帳戶
-> * 取得存取權杖
-> * 呼叫需要從 Microsoft 身分識別平台端點取得存取權杖的 Microsoft Graph API 或自有 API
-
-若要深入了解授權碼流程，包括隱含流程和授權碼流程之間的差異，請參閱 [Microsoft 身分識別平台和 OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
-
-如果您想要深入了解如何在 Microsoft 身分識別平台上開發 JavaScript 單頁應用程式，有多個部分的[案例：單頁應用程式](scenario-spa-overview.md)系列文章可協助您開始著手。
+> [!div class="nextstepaction"]
+> [案例：單頁應用程式](scenario-spa-overview.md)
