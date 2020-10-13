@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
 ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819714"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
@@ -377,7 +377,7 @@ ms.locfileid: "91819714"
 
 1. 若為使用憑證的資源，請更新憑證。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

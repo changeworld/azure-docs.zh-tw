@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006291"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977573"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple Virtual Array - 透過 Azure 入口網站設定為檔案伺服器
 ![顯示部署 virtual array 所需步驟的圖表。 第三個步驟的第一個部分會標示為 [設定為檔案伺服器]，並反白顯示。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -118,7 +118,7 @@ ms.locfileid: "87006291"
     ![Azure 入口網站的 [所有資源] 頁面的螢幕擷取畫面。 裝置管理員服務會反白顯示。](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. 在已篩選的清單中，選取您的 StorSimple 裝置管理員服務，然後瀏覽至 [管理] > [裝置]****。 在 [裝置]**** 刀鋒視窗上，確認裝置已成功連接至服務，且狀態為 [準備好進行設定]****。
     
-    ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![部署](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>步驟 2︰將裝置設定為檔案伺服器
 在 [Azure 入口網站](https://portal.azure.com/)中執行下列步驟，完成必要的裝置設定。
@@ -129,7 +129,7 @@ ms.locfileid: "87006291"
    ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. 按一下裝置，您會看到橫幅訊息，指出裝置已準備好進行設定。
    
-    ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![設定檔案伺服器2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. 按一下命令列上的 [設定]****。 這會開啟 [設定]**** 刀鋒視窗。 在 [設定]**** 刀鋒視窗中，執行下列動作：
    
    1. 檔案伺服器名稱會自動填入。
@@ -140,7 +140,7 @@ ms.locfileid: "87006291"
     
    4. 按一下 [進行必要的設定]****，以指定要用於裝置的儲存體帳戶認證。 如果未設定儲存體帳戶認證，請按一下 [新增]****。 **確定您使用的儲存體帳戶支援區塊 blob。不支援分頁 blob。** 關於 [區塊 Blob 和分頁 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的其他資訊。
    
-      ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![設定檔案伺服器3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. 在 [新增儲存體帳戶認證]**** 刀鋒視窗中，執行下列動作︰ 
 
     1. 如果儲存體帳戶與服務位於相同的訂用帳戶中，請選擇目前的訂用帳戶。 如果儲存體帳戶在服務訂用帳戶外，請選擇其他。 
@@ -153,19 +153,19 @@ ms.locfileid: "87006291"
     
     5. 按一下 [新增]****，新增此儲存體帳戶認證。 
    
-        ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![設定檔案伺服器4](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
 5. 成功建立儲存體帳戶認證之後，[設定]**** 刀鋒視窗將會更新，以顯示指定的儲存體帳戶認證。 按一下 [設定]  。
    
-   ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![設定檔案伺服器5](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    您會看到正在建立檔案伺服器。 成功建立檔案伺服器之後會通知您。
    
-   ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![設定檔案伺服器5b](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    裝置狀態也會變更為 [線上]****。
    
-   ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![設定檔案伺服器5c](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    您可以繼續新增共用。
 
@@ -189,21 +189,21 @@ ms.locfileid: "87006291"
    
    5. 按一下 [新增]**** 以建立共用。 
     
-       ![新增共用](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![新增共用1](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        正在建立共用時會通知您。
    
-       ![新增共用](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![新增共用2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       使用指定的設定來建立共用之後，[共用]**** 刀鋒視窗將會更新以反映新的共用。 根據預設，共用會啟用監視及備份。
    
-      ![新增共用](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![新增共用3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>步驟 4：連線至共用
 您現在必須連接至您在上一個步驟所建立的一或多個共用。 請在連接至 StorSimple Virtual Array 的 Windows Server 主機上執行這些步驟。
 
 #### <a name="to-connect-to-the-share"></a>如何連線至共用
-1. 按下 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R 鍵，然後在 [執行] 視窗中，指定 &#92;&#92;&lt;檔案伺服器名稱&gt;** 做為路徑，「檔案伺服器名稱」** 要換成您指派給檔案伺服器的裝置名稱。 按一下 [確定]  。
+1. 按下 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R 鍵，然後在 [執行] 視窗中，指定 &#92;&#92;&lt;檔案伺服器名稱&gt;** 做為路徑，「檔案伺服器名稱」** 要換成您指派給檔案伺服器的裝置名稱。 按一下 [確定]。
    
    ![[執行] 對話方塊的螢幕擷取畫面。 [開啟] 方塊會填入指向檔案伺服器的路徑。](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. 這會開啟 [檔案總管]。 您應該會看到所建立的共用以資料夾形式呈現。 選取並按兩下某個共用 (資料夾)，就能檢視該共用的內容。
@@ -211,6 +211,6 @@ ms.locfileid: "87006291"
    ![檔案總管的螢幕擷取畫面。 可以看到數個資料夾，代表新建立的共用。](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. 現在您可以把檔案新增到這些共用，然後進行備份。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 瞭解如何使用本機 web UI 來 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

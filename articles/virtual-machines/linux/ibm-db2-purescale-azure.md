@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831408"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978317"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
@@ -86,7 +86,7 @@ Linux 上的 IBM DB2 pureScale 雖然與原始環境不同，但針對在大型�
 
 ### <a name="storage-considerations"></a>儲存體考量
 
-就像 Oracle RAC 一樣，DB2 pureScale 是高效能區塊 I/O、相應放大資料庫。 我們建議您使用符合您需求的最大 [Azure 進階 SSD](disks-types.md) 選項。 較小的儲存體選項可能適用於開發及測試環境，而生產環境通常需要較大的儲存體容量。 範例架構因為 [P30](https://azure.microsoft.com/pricing/details/managed-disks/) 的 IOPS 速率與大小和價格的原因而使用它。 不論大小為何，使用進階儲存體都能獲得最佳效能。
+就像 Oracle RAC 一樣，DB2 pureScale 是高效能區塊 I/O、相應放大資料庫。 我們建議您使用符合您需求的最大 [Azure 進階 SSD](../disks-types.md) 選項。 較小的儲存體選項可能適用於開發及測試環境，而生產環境通常需要較大的儲存體容量。 範例架構因為 [P30](https://azure.microsoft.com/pricing/details/managed-disks/) 的 IOPS 速率與大小和價格的原因而使用它。 不論大小為何，使用進階儲存體都能獲得最佳效能。
 
 DB2 pureScale 使用共用所有項目架構，其中資料可供所有叢集節點存取。 高階儲存體必須在多個實例之間共用，不論是視需要或在專用實例上。
 

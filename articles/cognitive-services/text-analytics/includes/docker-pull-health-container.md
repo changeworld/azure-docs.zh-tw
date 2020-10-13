@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 519625f6468372ec7ace523dae7648212f4f3203
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779644"
 ---
 填寫並提交 [認知服務容器要求表單](https://aka.ms/csgate) ，以要求存取容器。

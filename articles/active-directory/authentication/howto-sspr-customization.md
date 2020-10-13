@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8690b1a4b8527a397fcf4c04892e167b5332358d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: abca66dbe80cecec2320256d8a736408de20b64f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87035395"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968288"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>自訂 Azure Active Directory 自助式密碼重設的使用者體驗
 
@@ -87,7 +87,7 @@ ms.locfileid: "87035395"
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwordreset.microsoftonline.com' target='_blank'>Can't access your account?</a></p>"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解您環境中的 SSPR 使用方式，請參閱 [Azure AD 密碼管理的報告選項](howto-sspr-reporting.md)。
 

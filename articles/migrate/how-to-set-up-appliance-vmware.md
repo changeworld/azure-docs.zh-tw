@@ -4,10 +4,10 @@ description: 瞭解如何設定 Azure Migrate 設備來評定和遷移 VMware Vm
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448646"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>為 VMware Vm 設定設備
@@ -27,10 +27,10 @@ ms.locfileid: "91448646"
 ## <a name="appliance-deployment-ova"></a>設備部署 (OVA) 
 
 若要使用 OVA 範本來設定設備，您可以：
-- 在入口網站中提供設備名稱並產生 Azure Migrate 專案金鑰
+- 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰
 - 下載 OVA 範本檔案，並將其匯入 vCenter Server。
 - 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
-- 第一次設定設備，並使用 Azure Migrate 專案金鑰向 Azure Migrate 專案註冊。
+- 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
 
@@ -66,7 +66,7 @@ ms.locfileid: "91448646"
 
 匯入所下載的檔案，並建立 VM。
 
-1. 在 vSphere 用戶端主控台中，**按一下 [** 檔案  >  **部署 OVF 範本**]。
+1. 在 vSphere 用戶端主控台中，按一下 [檔案] > [部署 OVF 範本]。
 ![用於部署 OVF 範本的功能表命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
@@ -74,7 +74,7 @@ ms.locfileid: "91448646"
 5. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。
 6. 在**儲存體**中，指定 VM 的儲存目的地。
 7. 在 [磁碟格式] 中，指定磁碟類型和大小。
-8. 在 [ **網路對應**] 中，指定 VM 將連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評量。
+8. 在 [網路對應] 中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評量。
 9. 檢閱並確認設定，然後按一下 [完成]****。
 
 

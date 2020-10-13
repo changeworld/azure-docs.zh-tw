@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515032"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978708"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 裝置管理員服務來管理儲存體帳戶認證
 
@@ -33,7 +33,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 本教學課程說明如何新增、編輯或刪除儲存體帳戶認證，或替換儲存體帳戶的安全性金鑰。
 
- ![儲存體帳戶認證的清單](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![儲存體帳號憑證1的清單](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 儲存體帳戶包含的認證可供 StorSimple 裝置用來存取雲端服務提供者的儲存體帳戶。 對於 Microsoft Azure 儲存體帳戶，像是帳戶名稱與主要存取金鑰就屬於這些認證。 
 
@@ -102,7 +102,7 @@ StorSimple 裝置管理員服務的刀鋒視窗中，[設定]**** 區段會顯�
 
 1. 移至您的 StorSimple 裝置管理員服務。 在 [設定]**** 區段中，按一下 [儲存體帳戶認證]****。
 
-    ![儲存體帳戶認證](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![儲存體帳號憑證2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. 在 [儲存體帳戶認證]**** 刀鋒視窗中，從儲存體帳戶認證清單中，選取並按一下您要編輯的項目。 
 
@@ -159,11 +159,11 @@ Microsoft Azure 系統管理員可以直接存取儲存體帳戶 (透過 Microso
 
 3. 按一下 [更多]****，然後選取 [同步存取金鑰]**** 以進行替換。   
 
-    ![同步處理金鑰](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![同步處理金鑰2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. 在 StorSimple 裝置管理員服務中，您需要更新先前在 Microsoft Azure 儲存體服務中變更的金鑰。 如果主要存取金鑰有所變更 (已重新產生)，請選取 [主要]**** 金鑰。 如果次要金鑰有所變更，請選取 [次要]**** 金鑰。 按一下 [同步處理金鑰]****。
       
-      ![同步處理金鑰](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![同步處理金鑰3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 在成功同步金鑰之後，系統將會通知您。
 
@@ -176,7 +176,7 @@ Microsoft Azure 系統管理員可以直接存取儲存體帳戶 (透過 Microso
    2. 您必須更新 StorSimple 裝置管理員服務中的儲存體存取金鑰。 在此情況下，您可以看到儲存體存取金鑰。 在 [儲存體帳戶存取金鑰]**** 方塊中輸入新的金鑰。 
    3. 儲存您的變更。 現在應已更新您的儲存體帳戶存取金鑰。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入了解 [StorSimple 安全性](storsimple-8000-security.md)。
 * 深入了解[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

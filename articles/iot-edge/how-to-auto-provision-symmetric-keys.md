@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44ad91b4fb8581a67ea67e09faca4a9d96df91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 791aadf349654e1e62c3ac2b98a955de7b46c0b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447765"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966112"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用對稱金鑰證明來建立和布建 IoT Edge 裝置
 
@@ -96,7 +96,7 @@ Azure IoT Edge 裝置可以使用裝置布建 [服務](../iot-dps/index.yml) 來
 
    1. 確定 [ **啟用專案** ] 設定為 [ **啟用**]。
 
-   1. 選取 [儲存]****。
+   1. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 請務必複製您註冊的 **主要金鑰** 值，以在安裝 IoT Edge 執行時間時使用，或者，如果您要建立與群組註冊搭配使用的裝置金鑰。
 
@@ -156,7 +156,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
 
-布建您的裝置時，您將需要下列資訊：
+遵循 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟，然後回到本文以布建裝置。
+
+## <a name="configure-the-device-with-provisioning-information"></a>使用布建資訊設定裝置
+
+當執行時間安裝在您的裝置上之後，請使用它用來連線至裝置布建服務和 IoT 中樞的資訊來設定裝置。
+
+準備好下列資訊：
 
 * DPS **識別碼範圍** 值
 * 您建立的裝置**註冊識別碼**
@@ -167,50 +173,49 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容
 
 ### <a name="linux-device"></a>Linux 裝置
 
-遵循您裝置架構的指示。 請務必將 IoT Edge 執行階段設定為自動佈建，而不是手動佈建。
+1. 開啟 IoT Edge 裝置上的設定檔。
 
-[在 Linux 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-對稱金鑰布建的設定檔中的區段如下所示：
+1. 尋找檔案的 [布建設定] 區段。 將 DPS 對稱金鑰布建的行取消批註，並確定任何其他布建行都已加上批註。
 
-```yaml
-# DPS symmetric key provisioning configuration
-provisioning:
-   source: "dps"
-   global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "<SCOPE_ID>"
-   attestation:
-      method: "symmetric_key"
-      registration_id: "<REGISTRATION_ID>"
-      symmetric_key: "<SYMMETRIC_KEY>"
-```
+   `provisioning:`該行不應該有空格，而且嵌套的專案應該以兩個空格縮排。
 
-將、和的預留位置值取代為 `<SCOPE_ID>` `<REGISTRATION_ID>` 您稍 `<SYMMETRIC_KEY>` 早收集到的資料。 請確定布建 **：** 行沒有先前的空格，而且嵌套的專案是以兩個空格縮排。
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "symmetric_key"
+       registration_id: "<REGISTRATION_ID>"
+       symmetric_key: "<SYMMETRIC_KEY>"
+   ```
+
+1. `scope_id` `registration_id` `symmetric_key` 使用 DPS 和裝置資訊來更新、和的值。
+
+1. 重新啟動 IoT Edge 執行階段，使其可取得您對裝置所做的所有組態變更。
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows 裝置
 
-在您產生衍生裝置金鑰的裝置上安裝 IoT Edge 執行時間。 您將設定 IoT Edge 執行時間進行自動、非手動、布建。
-
-如需有關在 Windows 上安裝 IoT Edge 的詳細資訊，包括管理容器和更新 IoT Edge 等工作的必要條件和指示，請參閱 [在 windows 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-windows.md)。
-
 1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝 IoT Edge 時，請務必使用 PowerShell 的 AMD64 會話，而不是 PowerShell (x86) 。
 
-1. **IoTEdge**命令會檢查您的 Windows 電腦是否位於支援的版本、開啟容器功能，然後下載 moby 執行時間和 IoT Edge 執行時間。 命令預設為使用 Windows 容器。
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. 此時，IoT 核心裝置可能會自動重新開機。 其他 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 當您的裝置準備就緒之後，請再次以系統管理員身分執行 PowerShell。
-
-1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 除非您使用 `-Dps` 旗標來使用自動布建，否則命令會預設為使用 Windows 容器進行手動布建。
+1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令會預設為使用 Windows 容器進行手動布建，因此請使用旗標搭配 `-DpsSymmetricKey` 對稱金鑰驗證來使用自動布建。
 
    將、和的預留位置值取代為 `{scope_id}` `{registration_id}` 您稍 `{symmetric_key}` 早收集到的資料。
 
+   `-ContainerOs Linux`如果您是在 Windows 上使用 Linux 容器，請新增參數。
+
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
 
 ## <a name="verify-successful-installation"></a>確認安裝成功

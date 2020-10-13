@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650182"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 將機器學習模型部署到 Azure Functions 
@@ -23,7 +23,7 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
 > 雖然 Azure Machine Learning 和 Azure Functions 都已正式推出，但從適用于函式的 Machine Learning 服務封裝模型的功能目前為預覽狀態。  
 >
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * Azure 訂用帳戶- [免費建立一個](https://azure.microsoft.com/free/)訂用帳戶。
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) 文章。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
@@ -57,25 +57,25 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
    | **位置** | 下拉並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
    | **定價層** | 下拉並選取 [定價層](https://azure.microsoft.com/pricing/details/cache/)。 |  快取的可用大小、效能和功能取決於定價層。 如需詳細資訊，請參閱 [Azure Cache for Redis 概觀](cache-overview.md)。 |
 
-1. 選取 [ **網路** ] 索引標籤，或按一下頁面底部的 [ **網路** 功能] 按鈕。
+1. 選取 [網路] 索引標籤，或按一下頁面底部的 [網路] 按鈕。
 
-1. 在 [ **網路** 功能] 索引標籤中，選取您的連線方法。
+1. 在 [網路功能] 索引標籤中，選取您的連線方法。
 
-1. 選取 [ **下一步： advanced** ] 索引標籤，或按一下頁面底部的 [ **下一步： advanced** ] 按鈕。
+1. 選取頁面底部的 [下一步:進階] 索引標籤，或按一下頁面底部的 [下一步:進階] 按鈕。
 
-1. 在基本或標準快取實例的 [ **Advanced** ] 索引標籤中，如果您想要啟用非 TLS 埠，請選取 [啟用] 切換。
+1. 在基本或標準快取執行個體的 [進階] 索引標籤中，如果您想要啟用非 TLS 連接埠，請選取啟用切換。
 
-1. 在 premium 快取實例的 [ **Advanced** ] 索引標籤中，設定非 TLS 埠、叢集和資料持續性的設定。
+1. 在高階快取執行個體的 [進階] 索引標籤中，設定非 TLS 連接埠、叢集和資料持續性的設定。
 
-1. 選取 [ **下一步：標記** ] 索引標籤，或按一下頁面底部的 [ **下一步：標記** ] 按鈕。
+1. 選取頁面底部的 [下一步:標記] 索引標籤，或按一下頁面底部的 [下一步:標記] 按鈕。
 
-1. （選擇性）在 [ **標記** ] 索引標籤中，如果您想要分類資源，請輸入名稱和值。 
+1. 在 [標記] 索引標籤中，如果您想要分類資源，可以選擇性地輸入名稱和值。 
 
-1. 選取 [檢閱 + 建立] ****。 您會進入 [審核] + [建立] 索引標籤，其中 Azure 會驗證您的設定。
+1. 選取 [檢閱 + 建立] ****。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
 
-1. 出現綠色驗證通過訊息之後，請選取 [ **建立**]。
+1. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
 
-建立快取需要一些時間。 您可以在 [Azure Cache for Redis **總覽**] 頁面上監視進度   。 當 **狀態**   顯示為 **Running**[執行中] 時，表示快取已可供使用。 
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] ****   頁面上監視進度。 當 [狀態] **** 顯示為 [執行中]  **** 時，表示快取已可供使用。 
 
 ## <a name="prepare-for-deployment"></a>準備開始部署
 

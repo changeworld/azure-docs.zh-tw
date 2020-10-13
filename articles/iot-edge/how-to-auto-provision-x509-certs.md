@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447752"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966129"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證來建立和布建 IoT Edge 裝置
 
@@ -116,7 +116,7 @@ Windows：
       }
       ```
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 繼續進行 [IoT Edge 執行時間安裝](#install-the-iot-edge-runtime) 一節，以設定您的 IoT Edge 裝置。
 
@@ -142,7 +142,7 @@ Windows：
 
    如果您使用的是示範憑證，請上傳 `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` 憑證。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 1. 現在您的憑證應該會列在 [ **憑證** ] 頁面上。 選取它來開啟憑證詳細資料。
 
@@ -201,7 +201,7 @@ Windows：
       }
       ```
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 繼續進行下一節，以設定您的 IoT Edge 裝置。
 
@@ -209,73 +209,76 @@ Windows：
 
 IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
 
+遵循 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟，然後回到本文以布建裝置。
+
 只有 IoT Edge 版本1.0.9 或更新版本才支援使用 DPS 布建 x.509。
 
-布建您的裝置時，您將需要下列資訊：
+## <a name="configure-the-device-with-provisioning-information"></a>使用布建資訊設定裝置
+
+當執行時間安裝在您的裝置上之後，請使用它用來連線至裝置布建服務和 IoT 中樞的資訊來設定裝置。
+
+準備好下列資訊：
 
 * DPS **識別碼範圍** 值。 您可以從 Azure 入口網站中 DPS 實例的 [總覽] 頁面取得此值。
 * 裝置上的裝置身分識別憑證鏈檔案。
 * 裝置上的裝置身分識別金鑰檔。
-* 如果未提供) ，選擇性的註冊識別碼 (從裝置身分識別憑證中的一般名稱提取。
+* 選擇性的註冊識別碼。 如果未提供，則會從裝置身分識別憑證中的一般名稱提取識別碼。
 
 ### <a name="linux-device"></a>Linux 裝置
 
-使用下列連結，在您的裝置上使用適用于您裝置架構的命令來安裝 Azure IoT Edge 執行時間。 當您前往設定安全性背景程式的區段時，請設定 x.509 自動的 IoT Edge 執行時間，而不是手動布建。 完成本文先前各節之後，您應該會擁有所需的所有資訊和憑證檔案。
+1. 開啟 IoT Edge 裝置上的設定檔。
 
-[在 Linux 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-當您將 x.509 憑證和金鑰資訊新增至 yaml 檔案時，應以檔案 Uri 的形式提供路徑。 例如：
+1. 尋找檔案的 [布建設定] 區段。 將 DPS 對稱金鑰布建的行取消批註，並確定任何其他布建行都已加上批註。
 
-* `file:///<path>/identity_certificate_chain.pem`
-* `file:///<path>/identity_key.pem`
+   `provisioning:`該行不應該有空格，而且嵌套的專案應該以兩個空格縮排。
 
-X.509 自動布建的設定檔中的區段如下所示：
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "x509"
+   #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
 
-```yaml
-# DPS X.509 provisioning configuration
-provisioning:
-  source: "dps"
-  global_endpoint: "https://global.azure-devices-provisioning.net"
-  scope_id: "<SCOPE_ID>"
-  attestation:
-    method: "x509"
-#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
-    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-```
+1. `scope_id` `identity_cert` `identity_pk` 使用 DPS 和裝置資訊來更新、和的值。
 
-將、的預留位置值取代為 `scope_id` `identity_cert` `identity_pk` DPS 實例的範圍識別碼，並將 uri 取代為裝置上的憑證鏈和金鑰檔案位置。 `registration_id`如果您想要的話，請為裝置提供，或將這一行標記為批註，以將裝置註冊為身分識別憑證的 CN 名稱。
+   當您將 x.509 憑證和金鑰資訊新增至 yaml 檔案時，應以檔案 Uri 的形式提供路徑。 例如：
 
-更新 yaml 檔案之後，請一律重新開機安全性 daemon。
+   `file:///<path>/identity_certificate_chain.pem`
+   `file:///<path>/identity_key.pem`
 
-```bash
-sudo systemctl restart iotedge
-```
+1. `registration_id`如果您想要的話，請為裝置提供，或將這一行標記為批註，以將裝置註冊為身分識別憑證的 CN 名稱。
+
+1. 重新啟動 IoT Edge 執行階段，使其可取得您對裝置所做的所有組態變更。
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows 裝置
 
-在您產生身分識別憑證鏈和身分識別金鑰的裝置上，安裝 IoT Edge 執行時間。 您將設定 IoT Edge 執行時間進行自動、非手動、布建。
-
-如需有關在 Windows 上安裝 IoT Edge 的詳細資訊，包括管理容器和更新 IoT Edge 等工作的必要條件和指示，請參閱 [在 windows 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-windows.md)。
-
 1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝 IoT Edge 時，請務必使用 PowerShell 的 AMD64 會話，而不是 PowerShell (x86) 。
 
-1. **IoTEdge**命令會檢查您的 Windows 電腦是否位於支援的版本、開啟容器功能，然後下載 moby 執行時間和 IoT Edge 執行時間。 命令預設為使用 Windows 容器。
+1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令會預設為使用 Windows 容器進行手動布建，因此請使用旗標搭配 `-DpsX509` x.509 憑證驗證來使用自動布建。
+
+   將、和的預留位置值取代為 `{scope_id}` `{identity cert chain path}` `{identity key path}` 您的 DPS 實例中的適當值，以及裝置上的檔案路徑。
+
+   `-RegistrationId {registration_id}`如果您想要將裝置識別碼設定為身分識別憑證的 CN 名稱以外的名稱，請新增。
+
+   `-ContainerOs Linux`如果您是在 Windows 上使用 Linux 容器，請新增參數。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. 此時，IoT 核心裝置可能會自動重新開機。 其他 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 當您的裝置準備就緒之後，請再次以系統管理員身分執行 PowerShell。
-
-1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 除非您使用 `-Dps` 旗標來使用自動布建，否則此命令會預設為手動布建。
-
-   將、和的預留位置值取代為 `{scope_id}` `{identity cert chain path}` `{identity key path}` 您的 DPS 實例中的適當值，以及裝置上的檔案路徑。 如果您想要指定註冊識別碼，請在 `-RegistrationId {registration_id}` 適當的情況下，適當地取代預留位置。
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

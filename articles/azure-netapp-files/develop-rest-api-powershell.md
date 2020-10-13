@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72c574779d63a3629ea3c99529686b7d3247fe25
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961059"
+ms.locfileid: "91931201"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>使用 PowerShell 開發 REST API 的 Azure NetApp Files
 
@@ -34,9 +34,9 @@ Azure NetApp Files 的 REST API 規格會透過 [GitHub](https://github.com/Azur
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>存取 Azure NetApp Files REST API  
 
-1. [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (如果您尚未安裝)。
+1. [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (如果您尚未安裝)。
 2. 在 Azure Active Directory (Azure AD) 中建立服務主體：
-   1. 確認您擁有[足夠的權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+   1. 確認您擁有[足夠的權限](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
    2. 在 Azure CLI 中輸入下列命令：  
 
@@ -435,6 +435,6 @@ Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.co
        }  
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-[請參閱 Azure NetApp Files REST API 參考](https://docs.microsoft.com/rest/api/netapp/)
+[請參閱 Azure NetApp Files REST API 參考](/rest/api/netapp/)

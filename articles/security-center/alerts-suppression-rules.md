@@ -9,13 +9,13 @@ ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448476"
 ---
-# <a name="suppress-alerts-from-azure-defender"></a>隱藏 Azure Defender 的警示
+# <a name="suppress-alerts-from-azure-defender"></a>隱藏來自 Azure Defender 的警示
 
 此頁面說明如何使用警示隱藏規則，從 Azure Defender 抑制誤報或其他不想要的安全性警示。
 
@@ -23,10 +23,10 @@ ms.locfileid: "91448476"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|預覽|
+|版本狀態：|預覽|
 |定價：|免費<br> (大部分的安全性警示僅適用于 Azure Defender) |
-|必要的角色和許可權：|**安全性系統管理員** 和 **擁有** 者可以建立/刪除規則。<br>**安全性讀取者**和**讀者**可以檢視規則。|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|必要的角色和權限：|**安全性系統管理員** 和 **擁有** 者可以建立/刪除規則。<br>**安全性讀取者**和**讀者**可以檢視規則。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 

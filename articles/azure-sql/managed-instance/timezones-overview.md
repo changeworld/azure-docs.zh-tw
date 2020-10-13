@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617904"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978351"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 受控執行個體中的時區
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 
 ## <a name="limitations"></a>限制
 
-- 無法變更現有受控實例的時區。
+- 無法變更現有受控實例的時區。 因應措施是，使用適當的時區建立新的受控實例，然後執行手動備份和還原，或建議您執行 [跨實例的時間點還原](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)。
 - 從 SQL Server Agent 作業啟動的外部進程不會觀察實例的時區。
 
 ## <a name="list-of-supported-time-zones"></a>支援的時區清單

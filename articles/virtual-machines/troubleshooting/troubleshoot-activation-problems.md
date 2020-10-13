@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441046"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966282"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>針對 Azure Windows 虛擬機器啟用問題進行疑難排解
 
@@ -43,7 +43,7 @@ ms.locfileid: "91441046"
 
 一般而言，如果不是使用正確的 KMS 用戶端安裝識別碼來設定 Windows VM，或 Windows VM 無法連線到 Azure KMS 服務 (kms.core.windows.net，連接埠 1688)，就會發生 Azure VM 啟用問題。 
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 >[!NOTE]
 >如果您使用站對站 VPN 和強制通道，請參閱 [使用 Azure 自訂路由以強制通道啟用 KMS 啟用](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 
@@ -61,7 +61,7 @@ ms.locfileid: "91441046"
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. 如果 **slmgr.vbs /dlv** 顯示 RETAIL 通路，請執行下列命令來設定所使用之 Windows Server 版本的 [KMS 用戶端安裝識別碼](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)，然後強制它重試啟用： 
+2. 如果 **slmgr.vbs /dlv** 顯示 RETAIL 通路，請執行下列命令來設定所使用之 Windows Server 版本的 [KMS 用戶端安裝識別碼](/windows-server/get-started/kmsclientkeys)，然後強制它重試啟用： 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -119,12 +119,12 @@ ms.locfileid: "91441046"
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我從 Azure Marketplace 建立了 Windows Server 2016。 我是否需要設定 KMS 金鑰來啟用 Windows Server 2016？ 
 
  
-否。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
+不可以。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>是否不論 VM 是否使用 Azure Hybrid Use Benefit (HUB)，Windows 啟用的運作方式都相同？ 
 
  
-是。 
+可以。 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 啟用期間已到期，會發生什麼情況？ 

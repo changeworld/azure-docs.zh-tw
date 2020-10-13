@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb442a913ac8bde869144de1a75869a39b12398
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919517"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966894"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升級為最新的 Azure Multi-Factor Authentication Server
 
@@ -114,7 +114,7 @@ ms.locfileid: "88919517"
 9. 重複執行步驟 2 來更新現在已從 AD FS 伺服器陣列中移除的伺服器，然後在這些伺服器上重新啟動 AD FS 服務。
 10. 將這些伺服器加回 AD FS 伺服器陣列。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 取得[使用 Azure Multi-Factor Authentication 與協力廠商 VPN 的進階案例](howto-mfaserver-nps-vpn.md)的範例
 

@@ -3,17 +3,17 @@ title: 使用 Python 從 Azure 事件中樞傳送或接收事件 (最新版)
 description: 本文將逐步解說如何建立 Python 應用程式，以使用最新的 azure-eventhub 第 5 版套件對 Azure 事件中樞傳送事件或從中接收事件。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: b6a30ba0cef8c460a2a3035b3ab40fd8173d7b2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bdcd85786afdf307fdc7043db7ed7651d41820a4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933897"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729078"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python (azure-eventhub 第 5 版) 將事件傳送至事件中樞或從中接收事件
 本快速入門說明如何使用 **azure-eventhub 第 5 版** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
@@ -76,8 +76,11 @@ ms.locfileid: "88933897"
 ## <a name="receive-events"></a>接收事件
 本快速入門會使用 Azure Blob 儲存體作為檢查點存放區。 檢查點存放區的功用是保存檢查點 (也就是最後一個讀取位置)。  
 
-> [!NOTE]
-> 如果您在 Azure Stack Hub 上執行，該平台可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 例如，如果您在 [Azure Stack Hub 2002 版](/azure-stack/user/event-hubs-overview)上執行 ，儲存體服務的最高可用版本為 2017-11-09。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2017-11-09 為目標。 如需如何設定特定儲存體 API 版本目標的範例，請參閱 GitHub 上的 [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)和[非同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)範例。 如需 Azure Stack Hub 支援的 Azure 儲存體服務版本詳細資訊，請參閱 [Azure Stack Hub 儲存體：差異與注意事項](/azure-stack/user/azure-stack-acs-differences)。
+
+> [!WARNING]
+> 如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建所支援的 Azure 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，並在您的程式碼中以該版本作為目標。 
+>
+> 例如，如果您在 Azure Stack Hub 2005 版上執行，儲存體服務的最高可用版本為 2019-02-02。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2019-02-02 為目標。 如需如何設定特定儲存體 API 版本目標的範例，請參閱 GitHub 上的 [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)和[非同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)範例。 
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>建立 Azure 儲存體帳戶和 Blob 容器

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450408"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什麼是主要重新整理權杖？
@@ -87,7 +87,7 @@ PRT 會以兩種不同的方法進行更新：
    * 應用程式以無訊息方式向 WAM 要求存取權杖，但該應用程式沒有可用的重新整理權杖。 在此情況下，WAM 會使用 PRT 來要求應用程式的權杖，並在回應中取得新的 PRT。
    * 應用程式向 WAM要求存取權杖，但 PRT 無效或 Azure AD 需要額外的授權 (例如，Azure Multi-Factor Authentication)。 在此情況下，WAM 會起始需要使用者進行重新驗證或提供額外驗證的互動式登入，而新的 PRT 會在成功驗證時發出。
 
-在 ADFS 環境中，不需要對網域控制站進行直接連線，就能更新 PRT。 PRT 更新只需要使用 WS-TRUST 通訊協定在 proxy 上啟用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 端點。
+在 ADFS 環境中，不需要對網域控制站進行直接連線，就能更新 PRT。 PRT 更新只需要使用 WS-Trust 通訊協定在 proxy 上啟用/adfs/services/trust/2005/usernamemixed 和/adfs/services/trust/13/usernamemixed 端點。
 
 只有在密碼有所變更，而不是 PRT 更新時，才需要 Windows 傳輸端點進行密碼驗證。
 

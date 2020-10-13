@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812551"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
     - 布建**記錄**：提供 Azure AD 布建服務所布建之使用者、群組和角色的相關系統活動。 
 
-- **Security** 
+- **安全性** 
     - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指登入嘗試的指標，該嘗試可能是使用者帳戶的合法擁有者所執行。
     - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 您可以在[Azure 入口網站](https://portal.azure.com)的**Azure Active Directory**分頁的 [**監視**] 區段中選取 [布建**記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
 
-![佈建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
+![布建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
 
 
 布建記錄有一個預設的清單視圖，顯示：
@@ -95,7 +95,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- 日期
+- Date
 - 狀態
 - 動作
 
@@ -173,7 +173,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改的屬性
 
-- [摘要]
+- 摘要
 
 
 ![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
@@ -205,7 +205,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 **修改過的屬性**會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
 
-### <a name="summary"></a>[摘要]
+### <a name="summary"></a>摘要
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
 
@@ -247,7 +247,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 |EntrySynchronizationSkipped | 布建服務已成功查詢來源系統並識別使用者。 使用者沒有採取任何進一步的動作，而且已略過。 略過的原因可能是使用者超出範圍，或使用者已存在於目標系統中，因此不需要進一步變更。|
 |SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| 當執行 GET 要求以取得使用者或群組時，我們在回應中收到多個使用者或群組。 我們預期只會在回應中收到一個使用者或群組。 [例如](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)，如果我們進行 GET 要求以抓取群組並提供篩選器來排除成員，而您的 SCIM 端點會傳回成員，我們會擲回此錯誤。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [檢查使用者布建的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](../app-provisioning/application-provisioning-config-problem.md)

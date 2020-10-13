@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 1db1ef3a8fa7de557444c25650410b4e84422be4
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91849277"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>教學課程︰設定 Bonusly 來自動佈建使用者
@@ -123,7 +123,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="[Bonusly-布建] 索引標籤的螢幕擷取畫面。在 [管理] 下，會反白顯示布建。" border="false":::
 
-10. 按一下 [儲存]。
+10. 按一下 **[儲存]** 。
 
 11. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 Bonusly]****。
 

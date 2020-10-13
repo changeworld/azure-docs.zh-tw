@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
 ms.openlocfilehash: ec80791f9a43dc45d670442ee7b2d0c67d54f582
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803393"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>使用 Azure Cosmos DB 容量規劃來預估 RU/秒
@@ -21,7 +21,7 @@ ms.locfileid: "91803393"
 
 容量規劃工具可在兩種模式中使用。
 
-|**Mode**  |**描述**  |
+|**Mode**  |**說明**  |
 |---------|---------|
 |基本|提供快速、高層級的 RU/秒和成本預估。 此模式會假設索引編制原則、一致性和其他參數的預設 Azure Cosmos DB 設定。 <br/><br/>當您評估可能要在 Azure Cosmos DB 上執行的工作負載時，請使用基本模式來進行快速、高階的估計。|
 |進階|提供更詳細的 RU/秒和成本估計值，並可調整其他設定，包括編制索引原則、一致性層級，以及影響成本和輸送量的其他參數。 <br/><br/>當您為新專案預估 RU/秒，或想要更詳細的評估時，請使用 advanced 模式。 |
@@ -30,7 +30,7 @@ ms.locfileid: "91803393"
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>使用基本模式來預估布建的輸送量和成本
 若要使用基本模式來快速預估您的工作負載，請流覽至 [容量規劃](https://cosmos.azure.com/capacitycalculator/)工具。 根據您的工作負載輸入下列參數： 
 
-|**輸入**  |**描述**  |
+|**輸入**  |**說明**  |
 |---------|---------|
 |區域數目|所有 Azure 區域皆可使用 Azure Cosmos DB。 選取您的工作負載所需的區域數目。 您可以將任意數目的區域與您的 Cosmos 帳戶建立關聯。 如需詳細資訊，請參閱 Azure Cosmos DB 中的 [全域散發](distribute-data-globally.md) 。|
 |多重區域寫入|如果您啟用 [多區域寫入](distribute-data-globally.md#key-benefits-of-global-distribution)，則您的應用程式可以讀取和寫入任何 Azure 區域。 如果您停用多重區域寫入，則您的應用程式可以將資料寫入到單一區域。 <br/><br/> 如果您預期在不同區域中需要低延遲寫入的主動-主動工作負載，請啟用多重區域寫入。 例如，將資料寫入不同區域中大量資料庫的 IOT 工作負載。 <br/><br/> 多重區域寫入可保證99.999% 的讀取和寫入可用性。 相較于單一寫入區域，多重區域寫入需要更多輸送量。 若要深入瞭解，請參閱 [單一和多個寫入區域的 ru 有何不同的](optimize-cost-regions.md) 文章。|
@@ -49,7 +49,7 @@ ms.locfileid: "91803393"
 
 登入之後，您可以看到與 [基本] 模式中的欄位相較之下的其他欄位。 輸入以您的工作負載為基礎的其他參數。 
 
-|**輸入**  |**描述**  |
+|**輸入**  |**說明**  |
 |---------|---------|
 |API|Azure Cosmos DB 是多模型和多 API 服務。 針對新的工作負載，選取 [SQL (Core) API]。 |
 |區域數目|所有 Azure 區域皆可使用 Azure Cosmos DB。 選取您的工作負載所需的區域數目。 您可以將任意數目的區域與您的 Cosmos 帳戶建立關聯。 如需詳細資訊，請參閱 Azure Cosmos DB 中的 [全域散發](distribute-data-globally.md) 。|

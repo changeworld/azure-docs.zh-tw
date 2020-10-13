@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
 ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448918"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>設定 Azure SQL Database 和 SQL 受控執行個體診斷遙測的串流匯出
@@ -127,7 +127,7 @@ ms.locfileid: "91448918"
 7. 選取 [彈性集區診斷遙測： **基本** 計量] 的核取方塊。
    ![設定彈性集區的診斷功能](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. 選取 [儲存]。
+8. 選取 [儲存]****。
 9. 此外，請依照下一節所述的步驟，為您想要監視的彈性集區中的每個資料庫設定診斷遙測的串流。
 
 > [!IMPORTANT]
@@ -156,7 +156,7 @@ ms.locfileid: "91448918"
 8. 如需以一分鐘為基礎的先進監視體驗，請選取 [ **基本** 計量] 的核取方塊。
 
    ![針對 Azure SQL Database 設定診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. 選取 [儲存]。
+9. 選取 [儲存]****。
 10. 針對您要監視的每個資料庫重複執行這些步驟。
 
 > [!TIP]
@@ -192,7 +192,7 @@ ms.locfileid: "91448918"
 
    ![設定受控執行個體的診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. 選取 [儲存]。
+8. 選取 [儲存]****。
 9. 此外，請依照下一節所述的步驟，為您要監視的受控實例中的每個實例資料庫設定診斷遙測的串流。
 
 > [!IMPORTANT]
@@ -220,7 +220,7 @@ ms.locfileid: "91448918"
 5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶**、 **串流至事件中樞**，或 **傳送至 Log Analytics**。
 6. 選取資料庫診斷遙測的核取方塊： [ **SQLInsights**]、[ **QueryStoreRuntimeStatistics**]、[ **QueryStoreWaitStatistics**] 和 [ **錯誤**]。
    ![設定執行個體資料庫的診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 8. 針對您要監視的每個實例資料庫重複執行這些步驟。
 
 > [!TIP]
@@ -231,7 +231,7 @@ ms.locfileid: "91448918"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 AzureRm 模組中命令的引數本質上相同。
+> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 您可以使用 PowerShell 啟用計量和診斷記錄功能。
 
@@ -439,13 +439,13 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="basic-metrics-for-elastic-pools"></a>彈性集區的基本計量
 
-|**資源**|**計量**|
+|**Resource**|**計量**|
 |---|---|
 |彈性集區|eDTU 百分比、使用的 eDTU、eDTU 限制、CPU 百分比、實體資料讀取百分比、記錄寫入百分比、工作階段百分比、背景工作百分比、儲存體、儲存體百分比、儲存體限制、XTP 儲存體百分比 |
 
 #### <a name="basic-metrics-for-single-and-pooled-databases"></a>單一和集區資料庫的基本計量
 
-|**資源**|**計量**|
+|**Resource**|**計量**|
 |---|---|
 |單一和集區資料庫|DTU 百分比、使用的 DTU、DTU 限制、CPU 百分比、實體資料讀取百分比、記錄寫入百分比、成功/失敗/防火牆封鎖的連線、工作階段百分比、背景工作百分比、儲存體、儲存體百分比、XTP 儲存體百分比和死結 |
 
@@ -605,7 +605,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |訊息|純文字的錯誤訊息 |
 |user_defined_b|錯誤是否為使用者定義的位元 |
 |error_number_d|錯誤碼 |
-|嚴重性|錯誤的嚴重性 |
+|Severity|錯誤的嚴重性 |
 |state_d|錯誤的狀態 |
 |query_hash_s|失敗查詢的查詢雜湊 (如果有) |
 |query_plan_hash_s|失敗查詢的查詢計劃雜湊 (如果有) |

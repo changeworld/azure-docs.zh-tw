@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266382"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977420"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色
 
@@ -45,7 +45,7 @@ ms.locfileid: "89266382"
     - **區域**：選擇要部署使用者指派的受控識別的區域，例如「 **美國西部**」。
     - **名稱**：這是使用者指派的受控識別名稱，例如 UAI1。
     ![建立使用者指派的受控識別](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. 按一下 [ **審核 +** ]，以查看變更。
+4. 按一下 [ **審核 + 建立** ] 以檢查變更。
 5. 按一下 [建立]。
 
 ## <a name="list-user-assigned-managed-identities"></a>列出使用者指派的受控識別

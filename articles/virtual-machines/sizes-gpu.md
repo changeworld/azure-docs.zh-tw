@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb534ae4a59c9a5c87a7eb7ab268a40b9771fdb2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653174"
+ms.locfileid: "91876221"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最佳化的虛擬機器大小
 
 GPU 優化的 VM 大小是可搭配單一、多重或小數 Gpu 使用的特製化虛擬機器。 這些大小是專門針對計算密集型、圖形密集型及視覺效果的工作負載所設計。 本文章提供有關 GPU、vCPU、資料磁碟及 NIC 之數量和類型的資訊。 另說明此群組中每個大小的輸送量和網路頻寬。
 
-- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md) 和 [NCT4_v3 系列](nct4-v3-series.md) 大小都已針對計算密集型和網路密集型應用程式和演算法進行優化。 一些範例包括 CUDA 和 OpenCL 型應用程式，以及模擬、AI 和深度學習。 NCT4v3 系列著重于具有 NVIDIA Tesla T4 GPU 和 AMD EPYC2 羅馬處理器的推斷工作負載。 NCv3 系列著重於高效能運算工作負載，採用 NVIDIA 的 Tesla V100 GPU。 NC 系列使用 Intel 2690 v3 2.60 GHz v3 (Haswell) 處理器，而 NCv2 系列和 NCv3 系列的 Vm 則使用 Intel 的最強 E5-2690 v4 (Broadwell) 處理器。
+- [NCv3 系列](ncv3-series.md)和[NC T4_v3 系列](nct4-v3-series.md)大小已針對計算密集型 GPU 加速應用程式進行優化。 一些範例包括 CUDA 和 OpenCL 型應用程式，以及模擬、AI 和深度學習。 NC T4 v3 系列著重于具有 NVIDIA Tesla T4 GPU 和 AMD EPYC2 羅馬處理器的推斷工作負載。 NCv3 系列著重于高效能運算和 AI 工作負載，並配備 NVIDIA 的 Tesla V100 GPU。
 
-- [ND 系列](nd-series.md)和 [NDv2 系列](ndv2-series.md) 大小的重點在於深度學習的訓練和推斷案例。 ND 系列使用 NVIDIA Tesla P40 GPU 和 Intel 2690 E5-v4 (Broadwell) 處理器。 NDv2 系列使用 Nvidia Volta V100 和 Intel 白金級 8168 (Skylake) 處理器。
+- [NDv2 系列](ndv2-series.md)大小著重于向上擴充和向外延展深度學習訓練應用程式。 NDv2 系列使用 Nvidia Volta V100 和 Intel 白金級 8168 (Skylake) 處理器。
 
 - [NV 系列](nv-series.md) 和 [NVv3 系列](nvv3-series.md) 的大小已針對遠端視覺效果、串流、遊戲、編碼和 VDI 案例進行優化和設計，使用 OpenGL 和 DirectX 等架構。 這些 VM 是由 NVIDIA Tesla M60 GPU 提供支援。
 
@@ -31,7 +31,7 @@ GPU 優化的 VM 大小是可搭配單一、多重或小數 Gpu 使用的特製�
 
 若要利用 Azure N 系列 Vm 的 GPU 功能，必須安裝 NVIDIA 或 AMD GPU 驅動程式。
 
-- 針對 NVIDIA Gpu 所支援的 Vm， [NVIDIA Gpu 驅動程式擴充](./extensions/hpccompute-gpu-windows.md) 功能會安裝適當的 NVIDIA CUDA 或方格驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](./extensions/hpccompute-gpu-windows.md)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](./extensions/overview.md)。
+- 針對 NVIDIA Gpu 所支援的 Vm， [NVIDIA Gpu 驅動程式擴充](./extensions/hpccompute-gpu-windows.md) 功能會安裝適當的 NVIDIA CUDA 或方格驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](./extensions/hpccompute-gpu-windows.md)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](./extensions/overview.md)。   
 
    或者，您也可以手動安裝 NVIDIA GPU 驅動程式。 請參閱 [在執行 Windows 的 n 系列 vm 上安裝 NVIDIA gpu 驅動程式](./windows/n-series-driver-setup.md) ，或 [在執行 Linux 的 n 系列 VM 上安裝 nvidia gpu 驅動](./linux/n-series-driver-setup.md) 程式，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
 

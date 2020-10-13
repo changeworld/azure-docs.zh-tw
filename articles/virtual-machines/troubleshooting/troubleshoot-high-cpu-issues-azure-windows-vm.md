@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596840"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977250"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>針對 Azure Windows 虛擬機器的高 CPU 問題進行疑難排解
 
@@ -90,11 +90,11 @@ PerfInsights 是 Azure 支援 VM 效能問題的建議工具。 其設計目的�
 
 #### <a name="run-perfinsights"></a>執行 PerfInsights
 
-PerfInsights 適用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) 和 [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) 作業系統。 Windows 的選項如下。
+PerfInsights 適用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how-to-use-perfinsights-linux.md) 作業系統。 Windows 的選項如下。
 
 #### <a name="run-and-analyze-reports-through-azure-portal"></a>透過 Azure 入口網站執行及分析報表
 
-[透過 Azure 入口網站安裝](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics)時，實際上會在 VM 上安裝擴充功能。 使用者也可以直接前往 [VM blade 中](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics-vm-extension)的延伸模組，然後選擇效能診斷選項，將 PerfInsights 安裝為擴充功能。
+[透過 Azure 入口網站安裝](./performance-diagnostics.md)時，實際上會在 VM 上安裝擴充功能。 使用者也可以直接前往 [VM blade 中](./performance-diagnostics-vm-extension.md)的延伸模組，然後選擇效能診斷選項，將 PerfInsights 安裝為擴充功能。
 
 #### <a name="azure-portal-option-1"></a>Azure 入口網站選項1
 
@@ -132,7 +132,7 @@ PerfInsights 適用于 [Windows](https://docs.microsoft.com/azure/virtual-machin
 
 #### <a name="run-perfinsights-from-within-the-vm"></a>從 VM 內執行 PerfInsights
 
-如果您想要針對較長的持續時間執行 PerfInsights，則可以使用這個方法。 [PerfInsights 文章](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights#how-do-i-run-perfinsights)提供執行 PerfInsights 做為可執行檔時所需之不同命令和旗標的詳細逐步解說。 基於高 CPU 使用率的目的，您需要下列其中一種模式：
+如果您想要針對較長的持續時間執行 PerfInsights，則可以使用這個方法。 [PerfInsights 文章](./how-to-use-perfinsights.md#how-do-i-run-perfinsights)提供執行 PerfInsights 做為可執行檔時所需之不同命令和旗標的詳細逐步解說。 基於高 CPU 使用率的目的，您需要下列其中一種模式：
 
 - Advanced 案例
 
@@ -289,7 +289,7 @@ Azure Vm 有可靠的計量，包括 CPU、網路 i/o 和 i/o 位元組等基本
 
   ![計量命名空間](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-如需有關如何使用 Azure 監視器來管理 Azure Vm 的詳細資訊，請參閱 [使用 Azure 監視器監視 azure 虛擬機器](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-vm-azure)。
+如需有關如何使用 Azure 監視器來管理 Azure Vm 的詳細資訊，請參閱 [使用 Azure 監視器監視 azure 虛擬機器](../../azure-monitor/insights/monitor-vm-azure.md)。
 
 ### <a name="reactive-troubleshooting"></a>被動疑難排解
 
@@ -311,7 +311,7 @@ PerfInsights 還沒有 **排程的執行** 功能。 不過，您可以透過命
 
 您也可以從相同 VNET 中的對等 Azure VM 電腦啟動 Logman.exe。
 
-若要深入瞭解這些參數，請參閱 [logman create counter](https://docs.microsoft.com/windows-server/administration/windows-commands/logman-create-counter)。
+若要深入瞭解這些參數，請參閱 [logman create counter](/windows-server/administration/windows-commands/logman-create-counter)。
 
 在問題發生時收集 Perfmon 資料之後，分析資料的其餘步驟會與稍早所述的步驟相同。
 

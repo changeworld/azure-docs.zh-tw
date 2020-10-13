@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569526"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
@@ -334,7 +334,7 @@ Azure Cosmos DB 針對 Azure Cosmos DB 中的常見管理案例提供內建的 R
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指導**方針： Azure Cosmos DB 會使用兩種類型的金鑰來授權使用者，且不支援在資料平面層級 (SSO) 的單一登入。 Cosmos DB 的控制平面存取權可透過 REST API 取得，並支援 SSO。 若要驗證，請將要求的授權標頭設定為從 Azure Active Directory 取得的 JSON Web 權杖。
+**指導**方針： Azure Cosmos DB 會使用兩種類型的金鑰來授權使用者，而且不支援在資料平面層級 (SSO) 單一 Sign-On。 Cosmos DB 的控制平面存取權可透過 REST API 取得，並支援 SSO。 若要驗證，請將要求的授權標頭設定為從 Azure Active Directory 取得的 JSON Web 權杖。
 
 瞭解適用于 Cosmos DB REST API 的 Azure 資料庫： https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -991,7 +991,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **指導**方針：如果刪除資料庫或容器，您可以提出支援票證或呼叫 Azure 支援，以從自動線上備份還原資料。 Azure 支援僅適用于所選的方案，例如標準、開發人員和方案高於這些方案。 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。
 
-使用 PowerShell 來測試儲存在 Azure Key Vault 中的秘密還原。 Restore-azurekeyvaultkey 指令 Cmdlet 會在指定的金鑰保存庫中建立金鑰。 此索引鍵是輸入檔中備份金鑰的複本，且名稱與原始金鑰相同。
+使用 PowerShell 來測試儲存在 Azure Key Vault 中的秘密還原。 Restore-AzureKeyVaultKey Cmdlet 會在指定的金鑰保存庫中建立金鑰。 此索引鍵是輸入檔中備份金鑰的複本，且名稱與原始金鑰相同。
 
 瞭解 Azure Cosmos DB 自動備份：
 
@@ -1017,7 +1017,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 瞭解 Azure Cosmos DB 中的資料加密： https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-如何在 Key Vault 中啟用虛刪除： https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+如何在 Key Vault 中啟用 Soft-Delete： https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure 資訊安全中心監視**：是
 

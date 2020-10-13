@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819755"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory authentication：為 P2S OpenVPN 通訊協定連線設定 VPN 用戶端
@@ -239,6 +239,6 @@ azurevpn -i azurevpnconfig.xml
 若要強制匯入，也請使用 **-f** 參數
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [為使用 Azure AD 驗證的 P2S 開放式 VPN 連線建立 Azure Active Directory 的租](openvpn-azure-ad-tenant.md)使用者。

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514697"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977403"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 裝置管理員服務監視 StorSimple 裝置
 
@@ -77,7 +77,7 @@ Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 
 您可以進一步按一下清單中的每個磁碟區，查看對應的使用量。
 
-![所有固定在本機之磁碟區的主要容量使用率](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![所有固定在本機的磁片區2的主要容量使用率](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>雲端儲存體使用量
 這些圖表顯示雲端儲存體使用量。 這項資料會進行重複資料刪除和壓縮。 此數量包含雲端快照集，其可能包含未反映在任何主要磁碟區且針對舊版或必要保留用途而保留的資料。 您可以比較主要儲存體和雲端儲存體的耗用圖表來了解資料減少速率，雖然數字並不精確。
@@ -138,7 +138,7 @@ Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何[使用 StorSimple 裝置管理員服務裝置儀表板](storsimple-device-dashboard.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
 

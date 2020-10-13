@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089967"
+ms.locfileid: "91928974"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>重新開機 HDInsight 叢集的 Vm
 
@@ -31,8 +31,8 @@ Azure HDInsight 叢集包含一組虛擬機器， (Vm) 為叢集節點。 針對
 - 節點上的暫存磁片已滿。
 - VM 上的進程資料表有許多已完成進程的專案，但它是以「終止狀態」列出。
 
-> [!WARNING]
-> 當您重新開機 **HBase** 和 **Kafka** 叢集的 vm 時請小心，因為重新開機可能會導致資料遺失。
+> [!NOTE]
+> **HBase**和**Kafka**叢集不支援重新開機 vm，因為重新開機可能會導致資料遺失。
 
 ## <a name="use-powershell-to-reboot-vms"></a>使用 PowerShell 重新開機 Vm
 

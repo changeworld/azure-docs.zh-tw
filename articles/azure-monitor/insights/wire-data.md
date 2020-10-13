@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
 ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445776"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure 監視器中 Wire Data 2.0 (Preview) 解決方案
@@ -163,7 +163,7 @@ Wire Data 會從 Microsoft 相依性代理程式取得其資料。 Dependency Ag
 
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 執行下列步驟來設定您工作區的 Wire Data 解決方案。
 
@@ -193,7 +193,7 @@ Wire Data 會從 Microsoft 相依性代理程式取得其資料。 Dependency Ag
 
 InstallDependencyAgent-Windows.exe /?
 
-| **國旗** | **說明** |
+| **旗標** | **說明** |
 | --- | --- |
 | <code>/?</code> | 取得命令列選項的清單。 |
 | <code>/S</code> | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -218,7 +218,7 @@ Windows 相依性代理程式的檔案預設位於 C:\Program Files\Microsoft De
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **國旗** | **說明** |
+| **旗標** | **說明** |
 | --- | --- |
 | <code>-help</code> | 取得命令列選項的清單。 |
 | <code>-s</code> | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -393,9 +393,9 @@ rpm -e dependency-agent dependency-agent-connector
 | ReceivedBytes | 接收的位元組數目 |
 | ProtocolName | 使用的網路通訊協定名稱 |
 | IPVersion | IP 版本 |
-| 方向 | 輸入或輸出 |
+| Direction | 輸入或輸出 |
 | MaliciousIP | 已知惡意來源的 IP 位址 |
-| 嚴重性 | 可疑惡意程式碼嚴重性 |
+| Severity | 可疑惡意程式碼嚴重性 |
 | RemoteIPCountry | 遠端 IP 位址的國家/地區 |
 | ManagementGroupName | Operations Manager 管理群組的名稱 |
 | SourceSystem | 收集資料所在的來源 |

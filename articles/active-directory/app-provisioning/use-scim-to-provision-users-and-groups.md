@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd534443c56612d0c0d67c228cba154fb1db18c3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266644"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967047"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -747,7 +747,7 @@ TLS 1.2 加密套件的最低標準：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範圍
-Azure AD 布建服務目前在 AzureActiveDirectory 的 IP 範圍下[運作，如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 您可以新增列在 AzureActiveDirectory 標籤底下的 IP 範圍，以允許來自 Azure AD 布建服務的流量進入您的應用程式。 
+Azure AD 布建服務目前在 AzureActiveDirectory 的 IP 範圍下[運作，如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 您可以新增列在 AzureActiveDirectory 標籤底下的 IP 範圍，以允許來自 Azure AD 布建服務的流量進入您的應用程式。 請注意，您將需要仔細檢查計算位址的 IP 範圍清單。 例如 ' 40.126.25.32 ' 的位址可在 IP 範圍清單中表示為 ' 40.126.0.0/18 '。 您也可以使用下列 [API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)，以程式設計方式取得 IP 範圍清單。
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟 3：建置 SCIM 端點
 

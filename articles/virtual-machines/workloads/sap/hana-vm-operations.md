@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649681"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978776"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA 在 Azure 上的基礎結構設定和作業
 此文件提供設定 Azure 基礎結構和已部署在 Azure 原生虛擬機器 (VM) 上之 SAP Hana 系統的作業指導方針。 此文件也包含 M128s VM SKU 的 SAP HANA 相應放大設定資訊。 這份文件並非用以取代標準 SAP 文件，包含下列內容：
@@ -79,7 +79,7 @@ ms.locfileid: "88649681"
 當您有透過 VPN 或 ExpressRoute 對 Azure 的站對站連線時，必須至少有一個 Azure 虛擬網路，可透過虛擬閘道連線到 VPN 或 ExpressRoute 線路。 在簡單部署中，也可以將虛擬閘道部署在裝載 SAP HANA 執行個體的 Azure 虛擬網路 (VNet) 子網路中。 若要安裝 SAP HANA，您可以在 Azure 虛擬網路內建立兩個額外子網路。 一個子網路會裝載執行 SAP HANA 執行個體的 VM。 另一個子網路會執行裝載 SAP HANA Studio、其他管理軟體或應用程式軟體的 Jumpbox 或管理 VM。
 
 > [!IMPORTANT]
-> 除了功能以外，更重要的是基於效能理由，在 SAP NetWeaver、Hybris 或 S/4HANA 型 SAP 系統的 SAP 應用程式與 DBMS 層之間的通訊路徑中，不支援設定 [Azure 網路虛擬設備](https://azure.microsoft.com/solutions/network-appliances/)。 SAP 應用程式層和 DBMS 層之間的通訊必須是直接的。 這項限制不包含 [Azure ASG 和 NSG 規則](../../../virtual-network/security-overview.md)，只要這些 ASG 和 NSG 規則允許直接通訊即可。 如 [SAP NetWeaver 在 SUSE Linux Enterprise Server for SAP Applications 的 Azure VM 上的高可用性](./high-availability-guide-suse.md)所述，不支援 NVA 的進一步案例位於代表 Linux Pacemaker 叢集節點與 SBD 裝置的 Azure VV 之間的通訊路徑中。 或是在如[在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-file-share.md)所述設定的 Azure VM 與 Windows Server SOFS 之間的通訊路徑中。 通訊路徑中的 NVA 可以輕易地使兩個通訊合作夥伴之間的網路延遲加倍，可以限制在 SAP 應用程式層與 DBMS 層之間重要路徑中的輸送量。 在客戶觀察到的某些情況下，如果 Pacemaker Linux 叢集節點之間的通訊需要透過 NVA 來對其 SBD 裝置通訊，NVA 可能會導致 Linux Pacemaker 叢集失敗。  
+> 除了功能以外，更重要的是基於效能理由，在 SAP NetWeaver、Hybris 或 S/4HANA 型 SAP 系統的 SAP 應用程式與 DBMS 層之間的通訊路徑中，不支援設定 [Azure 網路虛擬設備](https://azure.microsoft.com/solutions/network-appliances/)。 SAP 應用程式層和 DBMS 層之間的通訊必須是直接的。 這項限制不包含 [Azure ASG 和 NSG 規則](../../../virtual-network/network-security-groups-overview.md)，只要這些 ASG 和 NSG 規則允許直接通訊即可。 如 [SAP NetWeaver 在 SUSE Linux Enterprise Server for SAP Applications 的 Azure VM 上的高可用性](./high-availability-guide-suse.md)所述，不支援 NVA 的進一步案例位於代表 Linux Pacemaker 叢集節點與 SBD 裝置的 Azure VV 之間的通訊路徑中。 或是在如[在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-file-share.md)所述設定的 Azure VM 與 Windows Server SOFS 之間的通訊路徑中。 通訊路徑中的 NVA 可以輕易地使兩個通訊合作夥伴之間的網路延遲加倍，可以限制在 SAP 應用程式層與 DBMS 層之間重要路徑中的輸送量。 在客戶觀察到的某些情況下，如果 Pacemaker Linux 叢集節點之間的通訊需要透過 NVA 來對其 SBD 裝置通訊，NVA 可能會導致 Linux Pacemaker 叢集失敗。  
 > 
 
 > [!IMPORTANT]
@@ -108,7 +108,7 @@ ms.locfileid: "88649681"
 
 針對執行 SAP HANA 的虛擬機器，您應該使用指派的靜態 IP 位址。 原因是 HANA 的某些組態屬性會參考 IP 位址。
 
-[Azure 網路安全性群組 (NSG)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) 是用來將路由傳送至 SAP HANA 執行個體或 Jumpbox 的流量進行導向。 NSG 和[應用程式安全性群組](../../../virtual-network/security-overview.md#application-security-groups)最終都會與 SAP HANA 子網路和管理子網路相關聯。
+[Azure 網路安全性群組 (NSG)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) 是用來將路由傳送至 SAP HANA 執行個體或 Jumpbox 的流量進行導向。 NSG 和[應用程式安全性群組](../../../virtual-network/network-security-groups-overview.md#application-security-groups)最終都會與 SAP HANA 子網路和管理子網路相關聯。
 
 下圖顯示遵循中樞與輪輻 VNet 架構的 SAP HANA 粗略部署結構描述概觀：
 
@@ -324,4 +324,3 @@ Azure 公用雲端的重要功能是您僅需支付運算的分鐘數。 例如�
 - [SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性](./sap-hana-high-availability.md) \(部分機器翻譯\)
 - [Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性](./sap-hana-high-availability-rhel.md) \(部分機器翻譯\)
 
- 

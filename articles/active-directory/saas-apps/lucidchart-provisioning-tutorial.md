@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850654"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>教學課程：設定 Lucidchart 來自動布建使用者
@@ -121,7 +121,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
-   |urn： ietf： params： scim：架構： extension： lucidchart：1.0： User： canEdit|Boolean|
+   |urn： ietf： params： scim：架構： extension： lucidchart：1.0： User： canEdit|布林值|
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Lucidchart**]。
 

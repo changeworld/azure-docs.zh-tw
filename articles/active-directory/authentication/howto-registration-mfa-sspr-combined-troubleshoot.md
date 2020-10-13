@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 04/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ae5995340640e9cda16634cf76b9953d7d663c2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81450933"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966656"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>疑難排解結合的安全性資訊註冊
 
@@ -68,7 +68,7 @@ ms.locfileid: "81450933"
 
 接下來的步驟可協助您復原使用者或使用者群組。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>必要條件
 
 1. 安裝適當的 Azure AD PowerShell 模組。 在 PowerShell 視窗中，執行下列命令來安裝模組：
 
@@ -155,6 +155,6 @@ ms.locfileid: "81450933"
 
 系統不會再提示使用者使用更新的體驗進行註冊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解自助式密碼重設和 Azure Multi-Factor Authentication 的合併註冊](concept-registration-mfa-sspr-combined.md)

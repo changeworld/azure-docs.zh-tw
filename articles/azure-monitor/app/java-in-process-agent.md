@@ -4,10 +4,10 @@ description: 針對在任何環境中執行的 JAVA 應用程式進行應用程�
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370029"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
@@ -136,7 +136,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 |---------------------|------------|---------------------|---------|
 | **自訂事件**   |            |                     |  是    |
 | **自訂計量**  |  是       |                     |  是    |
-| **Dependencies** (相依性)    |            |                     |  是    |
+| **相依性**    |            |                     |  是    |
 | **例外狀況**      |            |  是                |  是    |
 | **頁面檢視**      |            |                     |  是    |
 | **要求**        |            |                     |  是    |
