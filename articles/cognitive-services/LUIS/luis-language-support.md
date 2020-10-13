@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541385"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
@@ -28,7 +28,7 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 LUIS 可理解下列語言的語句：
 
-| 語言 |地區設定  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| Language |地區設定  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英文 (美國) |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯文 (preview-新式標準阿拉伯文)  |`ar-AR`|-|-|-|-|
@@ -82,7 +82,7 @@ LUIS 可理解下列語言的語句：
 ## <a name="tokenization"></a>Token 化
 為了執行機器學習，LUIS 根據文化特性將語句分成數個[語彙基元](luis-glossary.md#token)。
 
-|語言|  每個空格或特殊字元 | 字元層級|複合字組
+|Language|  每個空格或特殊字元 | 字元層級|複合字組
 |--|:--:|:--:|:--:|
 |阿拉伯文|✔|||
 |中文||✔||

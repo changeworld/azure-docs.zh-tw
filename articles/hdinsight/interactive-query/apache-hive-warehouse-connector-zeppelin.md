@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083112"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Zeppelin 與 Hive Warehouse Connector 整合起來
@@ -93,11 +93,11 @@ HDInsight Spark 叢集包含具有不同解譯器的 Apache Zeppelin 筆記本�
     |---|---|
     | livy.spark.sql.hive.hiveserver2.jdbc.url.principal | `hive/<llap-headnode>@<AAD-Domain>` |
 
-    * 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的互動式查詢叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 在其上執行之前端節點的完整功能變數名稱（FQDN），如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
+    * 從網頁瀏覽器中，流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` CLUSTERNAME 是 Interactive Query 叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 執行所在前端節點的完整功能變數名稱 (FQDN) ，如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
 
         ![hive 倉儲連接器前端節點](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
-    * 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的互動式查詢叢集。 尋找檔案 `default_realm` 中的參數 `/etc/krb5.conf` 。 `<AAD-DOMAIN>`以這個值取代為大寫字串，否則找不到認證。
+    * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md) 連線到您的 Interactive Query 叢集。 在檔案 `default_realm` 中尋找參數 `/etc/krb5.conf` 。 以 `<AAD-DOMAIN>` 這個值取代為大寫字串，否則找不到認證。
 
         ![hive 倉儲連接器 AAD 網域](./media/apache-hive-warehouse-connector/aad-domain.png)
 

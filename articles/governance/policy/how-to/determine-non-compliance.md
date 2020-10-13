@@ -4,10 +4,10 @@ description: 如果資源不符合規範，有許多可能的原因。 了解如
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541266"
 ---
 # <a name="determine-causes-of-non-compliance"></a>判斷不符合規範的原因
@@ -30,7 +30,7 @@ ms.locfileid: "91541266"
 
 若要檢視合規性詳細資料，請遵循下列步驟：
 
-1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
+1. 藉由選取 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
 
 1. 在 [概觀] 或 [合規性] 頁面上，選取**合規性狀態**「不符合規範」的原則。
 
@@ -197,7 +197,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 在新的**公開預覽**版中，過去 14 天的變更歷程記錄適用於所有支援[完整模式刪除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 資源。 變更歷程記錄會提供關於何時偵測到變更的詳細資料，以及每項變更的_視覺化差異_。 新增、移除或改變 Azure Resource Manager 屬性時，會觸發變更偵測。
 
-1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
+1. 藉由選取 [所有服務] 然後搜尋並選取 [原則]，在 Azure 入口網站中啟動 Azure 原則服務。
 
 1. 在 [概觀] 或 [合規性] 頁面上，選取處於任何**合規性狀態**的原則。
 

@@ -4,13 +4,13 @@ description: 說明如何將自訂映射上傳至共用映射庫。 大學 IT �
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: cd701215eb375b7f9b867ba05082afc7ed348ff7
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712389"
 ---
-# <a name="upload-a-custom-image-to-shared-image-gallery"></a>將自訂映射上傳至共用映射庫
+# <a name="upload-a-custom-image-to-shared-image-gallery"></a>將自訂映像上傳至共用映像庫
 
 您可以使用共用映射庫來匯入自己的自訂映射，以在 Azure 實驗室服務中建立實驗室。 大學 IT 部門會發現匯入映射特別有説明，原因如下： 
 

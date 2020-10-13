@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: apimpm
 ms.custom: contperfq1
 ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618772"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>使用 OAuth 2.0 授權搭配 Azure AD 保護 Azure API 管理中的 web API 後端 
@@ -153,7 +153,7 @@ ms.locfileid: "91618772"
 
 1. 緊接在用戶端密碼後面的是授權碼授與類型的 [redirect_url]****。 記下此 URL。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 1. 返回 Azure Active Directory 中的用戶端應用程式註冊，然後選取 [ **驗證**]。
 
@@ -171,7 +171,7 @@ ms.locfileid: "91618772"
 
 1. 在 [安全性]**** 之下，選擇 [OAuth 2.0]****，然後選取您先前設定的 OAuth 2.0 伺服器。 
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>從開發人員入口網站成功呼叫 API
 

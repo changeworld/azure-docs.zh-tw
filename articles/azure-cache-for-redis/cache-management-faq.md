@@ -1,6 +1,6 @@
 ---
 title: Azure Cache for Redis 管理常見問題
-description: 瞭解可協助您管理 Azure Cache for Redis 的常見問題解答
+description: 瞭解可協助您管理 Azure Cache for Redis 常見問題的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205388"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Azure Cache for Redis 管理常見問題
-本文提供有關如何管理 Azure Cache for Redis 常見問題的解答。
+本文提供有關如何管理 Azure Cache for Redis 的常見問題解答。
 
 ## <a name="common-questions-and-answers"></a>常見問題和解答
 本節涵蓋下列常見問題：
@@ -165,4 +165,4 @@ WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解其他 [Azure Cache For Redis 常見問題](cache-faq.md)。
+瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

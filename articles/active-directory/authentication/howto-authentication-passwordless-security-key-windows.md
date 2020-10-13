@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526981"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入 Windows 10 裝置) 
@@ -91,12 +91,12 @@ ms.locfileid: "90526981"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 流覽至**Microsoft Intune**  >  **裝置配置**  >  **檔**  >  **建立設定檔**。
 1. 使用下列設定來設定新的設定檔：
-   - 名稱： Windows 登入的安全性金鑰
+   - 名稱： Windows Sign-In 的安全性金鑰
    - 描述：啟用在 Windows 登入期間使用的 FIDO 安全性金鑰
    - 平台：Windows 10 及更新版本
    - 配置檔案類型：自訂
    - 自訂 OMA URI 設定：
-      - 名稱：開啟 Windows 登入的 FIDO 安全性金鑰
+      - 名稱：開啟 Windows Sign-In 的 FIDO 安全性金鑰
       - OMA-URI：./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - 資料類型：整數
       - 值：1

@@ -4,10 +4,10 @@ description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS)
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332690"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
@@ -102,7 +102,7 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 **MABS 上的 .NET Framework** | MABS VM 需要安裝 .NET Framework 3.3 SP1 或更新版本。
 **MABS 網域** | MABS VM 必須加入網域。 具有管理員權限的網域使用者必須在 VM 上安裝 MABS。
 **Azure Stack VM 資料備份** | 您可以備份檔案、資料夾和應用程式。
-**支援的備份** | 您要備份的 Vm 支援下列作業系統：<br/><br/> Windows Server 半年通道 (Datacenter、Enterprise、Standard) <br/><br/> Windows Server 2016、Windows Server 2012 R2、Windows Server 2008 R2
+**支援的備份** | 您要備份的 Vm 支援下列作業系統：<br/><br/> Windows Server Semi-Annual Channel (Datacenter、Enterprise、Standard) <br/><br/> Windows Server 2016、Windows Server 2012 R2、Windows Server 2008 R2
 **Azure Stack Vm 的 SQL Server 支援** | 備份 SQL Server 2016、SQL Server 2014、SQL Server 2012 SP1。<br/><br/> 備份和復原資料庫。
 **Azure Stack VM 的 SharePoint 支援** | SharePoint 2016、SharePoint 2013、SharePoint 2010。<br/><br/> 備份和復原伺服器陣列、資料庫、前端和網頁伺服器。
 **已備份 VM 的網路需求** | Azure Stack 工作負載中的所有 Vm 都必須屬於相同的虛擬網路，而且屬於相同的訂用帳戶。
@@ -149,7 +149,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 **MABS 對 Azure** | **訂用帳戶** | **備份/還原**
 --- | --- | ---
 連線 | Active | 備份至 DPM/MABS 磁片。<br/><br/> 備份至 Azure。<br/><br/> 從磁片還原。<br/><br/> 從 Azure 還原。
-連線 | 已過期/取消佈建 | 不會備份至磁碟或 Azure。<br/><br/> 如果訂用帳戶已過期，您可以從磁片或 Azure 還原。<br/><br/> 如果訂用帳戶已解除委任，您就無法從磁片或 Azure 還原。 Azure 復原點已刪除。
+已連線 | 已過期/取消佈建 | 不會備份至磁碟或 Azure。<br/><br/> 如果訂用帳戶已過期，您可以從磁片或 Azure 還原。<br/><br/> 如果訂用帳戶已解除委任，您就無法從磁片或 Azure 還原。 Azure 復原點已刪除。
 未連線超過 15 天 | 使用中 | 不會備份至磁碟或 Azure。<br/><br/> 您可以從磁碟或 Azure 還原。
 未連線超過 15 天 | 已過期/取消佈建 | 不會備份至磁碟或 Azure。<br/><br/> 如果訂用帳戶已過期，您可以從磁片或 Azure 還原。<br/><br/> 如果訂用帳戶已解除委任，您就無法從磁片或 Azure 還原。 Azure 復原點已刪除。
 

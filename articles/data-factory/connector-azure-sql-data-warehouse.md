@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
 ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332146"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory，在 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中複製和轉換資料
@@ -61,7 +61,7 @@ ms.locfileid: "91332146"
 
 以下是 Azure Synapse Analytics 連結服務支援的屬性：
 
-| 屬性            | 說明                                                  | 必要                                                     |
+| 屬性            | 描述                                                  | 必要                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | 類型屬性必須設為 **AzureSqlDW**。             | 是                                                          |
 | connectionString    | 針對 **connectionString** 屬性指定連線到 Azure Synapse Analytics 執行個體所需的資訊。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您也可以將密碼/服務主體金鑰放在 Azure Key Vault 中，而且，如果這是 SQL 驗證，則會從連接字串中提取 `password` 組態。 請參閱表格下方的 JSON 範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文深入了解詳細資料。 | 是                                                          |
@@ -222,7 +222,7 @@ ms.locfileid: "91332146"
 
 以下是 Azure Synapse Analytics 資料集支援的屬性：
 
-| 屬性  | 說明                                                  | 必要                    |
+| 屬性  | 描述                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的**類型**屬性必須設定為 **AzureSqlDWTable**。 | 是                         |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -261,7 +261,7 @@ ms.locfileid: "91332146"
 
 若要從 Azure Synapse Analytics 複製資料，請將複製活動來源中的**類型**屬性設定為 **SqlDWSource**。 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性                     | 說明                                                  | 必要 |
+| 屬性                     | 描述                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 複製活動來源的**類型**屬性必須設定為 **SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自訂 SQL 查詢來讀取資料。 範例： `select * from MyTable`. | 否       |
@@ -376,7 +376,7 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 
 若要將資料複製到 Azure Synapse Analytics，請將複製活動中的接收類型設定為 **>sqldwsink**。 複製活動的 [接收] 區段支援下列屬性：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收端的**類型**屬性必須設定為 **SqlDWSink**。 | 是                                           |
 | allowPolyBase     | 指出是否要使用 PolyBase 將資料載入 Azure Synapse Analytics 中。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>如需條件約束和詳細資料，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>使用 PolyBase 時套用。     |
@@ -482,7 +482,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 在複製活動的 `polyBaseSettings` 下支援下列 PolyBase 設定：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)的＜引數＞一節中，深入瞭解 PolyBase 的拒絕選項。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 選項為常值或百分比。<br/><br/>允許的值為**值** (預設值) 和**百分比**。 | 否                                            |
@@ -704,7 +704,7 @@ Azure Synapse Analytics [COPY 語句](https://docs.microsoft.com/sql/t-sql/state
 
 在複製活動的 `allowCopyCommand` 下支援下列 COPY 陳述式設定：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | 針對 Azure Synapse Analytics 中的每個目標資料行指定預設值。  屬性中的預設值會覆寫資料倉儲中設定的預設條件約束，而且識別欄位不可有預設值。 | 否 |
 | additionalOptions | 將直接在 [copy 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql)的 "With" 子句中傳遞給 Azure Synapse Analytics COPY 語句的其他選項。 視需要將值加上引號，以配合 COPY 陳述式需求。 | 否 |

@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258620"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 條件式存取常見問題
@@ -31,7 +31,7 @@ ms.locfileid: "91258620"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 原則也適用於商務用 OneDrive 嗎？
 
-可以。 SharePoint Online 原則也會套用至商務用 OneDrive。 如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365) 。
+是。 SharePoint Online 原則也會套用至商務用 OneDrive。 如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365) 。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>為什麼我無法直接在用戶端應用程式（例如 Word 或 Outlook）上設定原則？
 

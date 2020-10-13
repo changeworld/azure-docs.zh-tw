@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 87179950c33a6facb59ce499aa0ae393e53fb37f
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777219"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>使用個人化工具的位置和方式
@@ -34,7 +34,7 @@ ms.locfileid: "91777219"
 |指導方針|說明|
 |--|--|
 |商務目標|您期望應用程式能達成商務或可用性目標。|
-|內容|應用程式中有某個地方若能根據內容來決定要對使用者顯示的項目，將可改善該目標。|
+|Content|應用程式中有某個地方若能根據內容來決定要對使用者顯示的項目，將可改善該目標。|
 |內容數量|每次呼叫的排名都少於50個動作。|
 |匯總資料|從使用者的整體行為和總報酬分數，將能學習到最佳選擇，且應該這麼做。|
 |道德用途|在為了個人化而使用機器學習時，有遵循[負責任的使用指導方針](ethics-responsible-use.md)和您選擇的選項。

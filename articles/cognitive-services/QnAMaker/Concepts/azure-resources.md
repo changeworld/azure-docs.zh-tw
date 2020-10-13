@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 62f627fb9765f2a86a373f74c33437680c9305af
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777049"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
@@ -46,7 +46,7 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 
 下表為您提供某些高階指導方針。
 
-|                            | QnA Maker 管理 | App Service | Azue 認知搜尋 | 限制                      |
+|                            | QnA Maker 管理 | App Service 方案 | Azue 認知搜尋 | 限制                      |
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **測試**        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
 | **開發/測試環境**   | 標準 SKU         | 共用      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
@@ -54,7 +54,7 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 
 ## <a name="recommended-settings"></a>建議的設定
 
-|目標 QPS | App Service | Azue 認知搜尋 |
+|目標 QPS | App Service 方案 | Azue 認知搜尋 |
 | -------------------- | ----------- | ------------ |
 | 3             | S1、1個實例   | S1、1個實例    |
 | 50         | S3、10個實例       | S1、12個實例         |
@@ -98,7 +98,7 @@ Azure 入口網站的 [建立] 視窗可讓您建立 QnA Maker 資源，然後�
 
 * QnA Maker 資源
 * 認知搜尋資源
-* App Service
+* App Service 方案
 * App 方案服務
 * Application Insights 服務
 

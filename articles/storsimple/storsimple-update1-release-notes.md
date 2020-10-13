@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89459958"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的 Update 1.2 版本資訊
@@ -64,7 +64,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修正的問題
 下表提供 Update 1.2、1.1 及 1 中已修正問題的摘要。    
 
-| 不會。 | 功能 | 問題 | 在 Update 中修正的問題 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 否。 | 功能 | 問題 | 在 Update 中修正的問題 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell for StorSimple |當使用者從遠端使用 Windows PowerShell for StorSimple 存取 StorSimple 裝置，然後再啟動安裝精靈時，只要輸入 Data 0 IP，就會當機。 這個 Bug 現在已在 Update 1 中修正。 |Update 1 |是 |是 |
 | 2 |原廠重設 |在某些情況下，當您要恢復出廠預設值時，StorSimple 裝置會卡住，並顯示此訊息：「正在重設為原廠預設值 (階段 8)」 ****。 如果正在進行 Cmdlet 時，按 CTRL+C，就會發生這種情況。 這個 Bug 現在已修正。 |Update 1 |是 |否 |
@@ -82,7 +82,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 ## <a name="known-issues-in-update-12"></a>Update 1.2 中的已知問題
 下表提供此版本的已知問題摘要。
 
-| 不會。 | 功能 | 問題 | 註解/因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 否。 | 功能 | 問題 | 註解/因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁碟仲裁 |在罕見情況下，如果 8600 裝置的 EBOD 機箱中大部分的磁碟都已中斷連線，而導致沒有磁碟仲裁，那麼將會使存放集區離線。 即使已重新連接磁碟時，它依然會保持離線。 |您必須重新啟動裝置。 如果問題持續發生， 請連絡 Microsoft 支援以進行後續步驟。 |是 |否 |
 | 2 |不正確的控制器識別碼 |進行控制器更換時，控制器 0 可能顯示為控制器 1。 在控制器更換期間從對等節點載入影像時，控制器識別碼一開始可能會顯示為對等控制器的識別碼。 在罕見情況下，可能會在系統重新開機後出現這種行為。 |使用者不必採取任何動作。 控制器更換完成之後，會自行解決這種情況。 |是 |否 |
@@ -111,6 +111,6 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 ## <a name="virtual-device-updates-in-update-12"></a>Update 1.2 中的虛擬裝置更新
 這項更新無法套用至虛擬裝置。 將需要建立新的虛擬裝置。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [在您的裝置上安裝 Update 1.2](storsimple-install-update-1.md)。
 

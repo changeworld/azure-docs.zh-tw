@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 251b15f72c3216ad3ff4b2983c8cbbd2d9ec6579
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618245"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置的部署檢查清單  
@@ -37,7 +37,7 @@ ms.locfileid: "91618245"
 |  (建議的) 時間設定       | 設定時區、主要 NTP 伺服器、次要 NTP 伺服器。 | 在區域網路上設定主要和次要 NTP 伺服器。<br>如果本機伺服器無法使用，可以設定公用 NTP 伺服器。                                                    |
 |  (選擇性的) 補救伺服器設定 | <li>需要在區域網路上補救伺服器 IP 位址，也就是 WSUS 伺服器的路徑。 </li> | 預設會使用公用 windows update server。|
 | 裝置設定 | <li>裝置的完整功能變數名稱 (FQDN)  </li><li>DNS 網域</li> | |
-|  (選用) 憑證  | 若要測試非生產工作負載，請使用 [ [產生憑證] 選項](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates) <br><br> 如果您攜帶自己的憑證（包括簽署鏈 (s) ，請以適當的格式 [新增憑證](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) 。| 只有當您變更裝置名稱和（或） DNS 網域時，才需要設定憑證。 |
+|  (選用) 憑證  | 若要測試非生產工作負載，請使用 [ [產生憑證] 選項](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates) <br><br> 如果您自備憑證 (包括簽署鏈結)，請以適當的格式[新增憑證](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。| 只有當您變更裝置名稱和（或） DNS 網域時，才需要設定憑證。 |
 | 啟用  | 需要 Azure Stack Edge Pro/Data Box Gateway 資源的啟用金鑰。    | 一旦產生，金鑰會在3天內到期。 |
 
 <!--

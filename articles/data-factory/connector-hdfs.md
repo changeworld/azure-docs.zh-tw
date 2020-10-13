@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405078"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 HDFS 伺服器複製資料
@@ -42,7 +42,7 @@ ms.locfileid: "91405078"
 - 使用 *webhdfs* 通訊協定或 *內建 DistCp* 支援來複製檔案。
 - 依原樣複製檔案，或使用 [支援的檔案格式和壓縮編解碼器](supported-file-formats-and-compression-codecs.md)來剖析或產生檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -253,7 +253,7 @@ ms.locfileid: "91405078"
 
 複製活動支援使用 DistCp 將檔案複製到 Azure Blob 儲存體 (包括 [分段複製](copy-activity-performance.md)) 或 azure data lake store。 在此情況下，DistCp 可以利用叢集的電源，而不是在自我裝載整合執行時間上執行。 使用 DistCp 可提供較佳的複製輸送量，特別是當您的叢集非常強大時。 複製活動會根據 data factory 中的設定，自動建立 DistCp 命令、將它提交至您的 Hadoop 叢集，以及監視複製狀態。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 若要使用 DistCp 將檔案從 HDFS 複製到 Azure Blob 儲存體 (包括分段複製) 或 Azure data lake store），請確定您的 Hadoop 叢集符合下列需求：
 

@@ -4,10 +4,10 @@ description: 了解如何設定獨立或內部部署 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843153"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>獨立 Windows 叢集的組態設定
@@ -60,7 +60,7 @@ ms.locfileid: "91843153"
 
 Service Fabric 叢集至少必須包含 3 個節點。 您可以根據您的設定，在此區段中新增更多節點。 下表說明每個節點的組態設定：
 
-| **節點設定** | **描述** |
+| **節點設定** | **說明** |
 | --- | --- |
 | nodeName |您可以為節點提供易記名稱。 |
 | iPAddress |開啟命令視窗並輸入 `ipconfig`，以找出節點的 IP 位址。 記下 IPV4 位址，並將它指派給 iPAddress 變數。 |

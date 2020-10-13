@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210356"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>使用來自 Azure API 管理服務的外部服務
@@ -103,9 +103,9 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 從回應物件中，您可以擷取主體，而 RFC 7622 向 API 管理指出回應必須是 JSON 物件，而且必須包含至少一個稱為 `active` 的屬性 (此為布林值)。 當 `active` 為 true，則權杖會被視為有效。
 
-或者，如果授權伺服器未包含 [作用中] 欄位來指示權杖是否有效，請使用 Postman 之類的工具來判斷哪些屬性是在有效的權杖中設定。 例如，如果有效的權杖回應包含名為 "expires_in" 的屬性，請以這種方式檢查授權伺服器回應中是否有此屬性名稱：
+或者，如果授權伺服器未包含「作用中」欄位來指出權杖是否有效，請使用類似 Postman 的工具來判斷哪些屬性是在有效的權杖中設定。 例如，如果有效的權杖回應中包含名為 "expires_in" 的屬性，請依照下列方式檢查此屬性名稱是否存在於授權伺服器回應中：
 
-當 condition = "@ ( # A2 # B3 IResponse) 內容時 <。變數 ["tokenstate"] ) 。Body.As <JObject> ( # A7。屬性 ( "expires_in" ) = = null) ">
+<when condition = "@ ( # A2 # B3 IResponse) 內容。變數 ["tokenstate"] ) 。Body.As <JObject> ( # A7。屬性 ( "expires_in" ) = = null) ">
 
 ### <a name="reporting-failure"></a>報告失敗
 您可以使用 `<choose>` 原則來偵測權杖是否無效，如果無效，則會傳回 401 回應。

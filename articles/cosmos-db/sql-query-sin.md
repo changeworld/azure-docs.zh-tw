@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303098"
 ---
-# <a name="sin-azure-cosmos-db"></a>SIN （Azure Cosmos DB）
+# <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB) 
  在指定運算式中傳回指定角度的三角正弦函數 (以弧度為單位)。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT SIN(45.175643) AS sin
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

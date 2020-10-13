@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
 ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906386"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>使用強制/拒絕建議防止錯誤配置
 
-安全性錯誤配置是安全性事件的主要原因。 資訊安全中心現在可以協助 *防止* 新資源在特定建議中的錯誤配置。 
+錯誤的安全性設定是安全性事件的主要原因。 資訊安全中心現在可以協助「避免」因特定建議而造成的新資源設定錯誤。 
 
-這項功能可協助保護您的工作負載，並穩定您的安全分數。
+這項功能可協助保護您工作負載的安全，並穩定您的安全分數。
 
-根據特定的建議來強制執行安全設定，會以兩種模式提供：
+根據特定建議來強制執行安全設定的模式有兩種：
 
-- 使用 Azure 原則的 **拒絕** 效果，您可以停止建立狀況不良的資源
-- 使用 [ **強制** ] 選項，您可以利用 Azure 原則的 **DeployIfNotExist** 效果，並在建立時自動補救不符合規範的資源
+- 使用 Azure 原則的 **Deny** 效果，以防止建立狀況不良的資源
+- 使用 [強制執行] 選項，以利用 Azure 原則的 **DeployIfNotExist** 效果，以及在建立資源時自動補救不符合規範的資源
 
 這可以在 [資源詳細資料] 頁面頂端找到所選的安全性建議 (查看 [ [拒絕/強制執行選項](#recommendations-with-denyenforce-options) ]) 的建議。
 
@@ -41,22 +41,22 @@ ms.locfileid: "90906386"
     > [!TIP]
     > 您可以使用資料列結尾的三個點來變更單一訂用帳戶，或使用核取方塊來選取多個訂閱或群組，然後選取 [ **變更為拒絕**]。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="設定 Azure 原則拒絕的範圍":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="已反白顯示 [拒絕] 按鈕的建議頁面":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>強制執行安全設定
 
 1. 開啟您將部署範本部署的建議，如果新資源無法滿足此部署，請選取頁面頂端的 [ **強制執行** ] 按鈕。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="反白顯示 [強制執行] 按鈕的建議頁面":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="已反白顯示 [拒絕] 按鈕的建議頁面":::
 
     [設定] 窗格隨即開啟，其中包含所有原則設定選項。 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="強制執行設定選項":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="已反白顯示 [拒絕] 按鈕的建議頁面":::
 
 1. 設定範圍、指派名稱和其他相關選項。
 
-1. 選取 [檢閱 + 建立]。
+1. 選取 [檢閱 + 建立]****。
 
 ## <a name="recommendations-with-denyenforce-options"></a>具有拒絕/強制執行選項的建議
 

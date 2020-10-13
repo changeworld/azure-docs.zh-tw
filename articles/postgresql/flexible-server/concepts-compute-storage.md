@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710068"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的計算和儲存體選項
@@ -157,7 +157,7 @@ ms.locfileid: "91710068"
 
 儲存體自動成長尚未提供彈性的伺服器。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 服務會自動採用伺服器的備份。 您可以從7到35天的範圍內選取保留期限。 深入瞭解 [概念文章](concepts-backup-restore.md)中的備份。
 

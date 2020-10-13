@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566683"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777168"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模擬器 - 版本資訊和下載資訊
 
@@ -25,6 +25,10 @@ ms.locfileid: "91566683"
 |**開始使用**|[使用 Azure Cosmos 模擬器在本機開發](local-emulator.md)|
 
 ## <a name="release-notes"></a>版本資訊
+
+### <a name="2116-6-october-2020"></a>2.11.6 (2020 年 10 月 6 日)
+
+ - 在可能同時建立多個容器時，此版本可解決並行相關問題。 在這類情況下，模擬器的資料會繼續處於損毀狀態，而模擬器端點的下列 API 要求可能會失敗，並出現「服務無法使用」的錯誤，而需要重新啟動並重設模擬器的本機資料。
 
 ### <a name="2115-23-august-2020"></a>2.11.5 (2020 年 8 月 23 日)
 

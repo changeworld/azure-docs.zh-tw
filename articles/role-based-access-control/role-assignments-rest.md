@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 新增或移除 Azure 角色指派-Azure RBAC
-description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制 (Azure RBAC) ，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -16,17 +16,17 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790841"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>使用 REST API 新增或移除 Azure 角色指派
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 REST API 指派角色。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文說明如何使用 REST API 指派角色。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -34,7 +34,7 @@ ms.locfileid: "84790841"
 
 ## <a name="add-a-role-assignment"></a>新增角色指派
 
-在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。 若要新增角色指派，請使用[角色指派-建立](/rest/api/authorization/roleassignments/create)REST API 並指定安全性主體、角色定義和範圍。 若要呼叫這個 API，您必須具有 `Microsoft.Authorization/roleAssignments/write` 作業的存取權。 在內建角色中，只有[擁有者](built-in-roles.md#owner)和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)會獲得這項作業的存取權。
+在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。 若要新增角色指派，請使用 [角色指派-建立](/rest/api/authorization/roleassignments/create) REST API 並指定安全性主體、角色定義和範圍。 若要呼叫這個 API，您必須具有 `Microsoft.Authorization/roleAssignments/write` 作業的存取權。 在內建角色中，只有[擁有者](built-in-roles.md#owner)和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)會獲得這項作業的存取權。
 
 1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list) REST API 或參閱[內建角色](built-in-roles.md)，以取得您要指派角色定義的識別碼。
 
@@ -65,9 +65,9 @@ ms.locfileid: "84790841"
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 資源 |
 
-    在上述範例中，microsoft web 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者並指定範圍。 如需詳細資訊，請參閱[Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)和支援的[Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。  
+    在先前的範例中，microsoft 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者，並指定範圍。 如需詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以及支援的 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。  
 
-1. 將 *{roleAssignmentId}* 取代為角色指派的 GUID 識別碼。
+1. 以角色指派的 GUID 識別碼取代 *{roleAssignmentId}* 。
 
 1. 在要求主體中，將 *{scope}* 取代為角色指派的範圍。
 
@@ -83,7 +83,7 @@ ms.locfileid: "84790841"
 
 1. 將 *{principalId}* 取代為使用者、群組或服務主體 (將獲得角色指派) 的物件識別碼。
 
-下列要求和主體會將[備份讀取](built-in-roles.md#backup-reader)者角色指派給訂用帳戶範圍中的使用者：
+下列要求和主體會將「 [備份讀者](built-in-roles.md#backup-reader) 」角色指派給訂用帳戶範圍中的使用者：
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
@@ -139,7 +139,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 資源 |
 
-1. 將 *{roleAssignmentId}* 取代為角色指派的 GUID 識別碼。
+1. 以角色指派的 GUID 識別碼取代 *{roleAssignmentId}* 。
 
 下列要求會在訂用帳戶範圍中移除指定的角色指派：
 
@@ -166,7 +166,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/mi
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [使用 REST API 列出 Azure 角色指派](role-assignments-list-rest.md)
 - [使用 Resource Manager 範本和 Resource Manager 部署資源 REST API](../azure-resource-manager/templates/deploy-rest.md)

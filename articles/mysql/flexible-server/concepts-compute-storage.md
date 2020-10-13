@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708674"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 中的計算和儲存體選項
@@ -136,7 +136,7 @@ ms.locfileid: "91708674"
 
 您可以使用 [IO 百分比](./concepts-monitoring.md) 計量，以 Azure 監視器) 監視 Azure 入口網站 (中的 i/o 耗用量。 如果您需要更多 IOPS，您將需要瞭解您是否受限於計算大小或布建的儲存體。 相應調整您伺服器的計算或儲存體的布建。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 服務會自動採用伺服器的備份。 您可以從1到35天的範圍選取保留週期。 深入瞭解 [備份和還原概念文章](concepts-backup-restore.md)中的備份。
 

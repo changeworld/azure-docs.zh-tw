@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言的右方
-description: 請直接在 Azure Cosmos DB 中瞭解 SQL 系統函數。
+title: Azure Cosmos DB 查詢語言的右邊
+description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78302146"
 ---
-# <a name="right-azure-cosmos-db"></a>RIGHT （Azure Cosmos DB）
+# <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB) 
  傳回具有指定字元數目的字串右側部分。  
   
 ## <a name="syntax"></a>語法
@@ -51,7 +51,7 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437933"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
@@ -30,7 +30,7 @@ ms.locfileid: "89437933"
 
 **指導**方針：建立 AZURE-SSIS INTEGRATION RUNTIME (IR) 時，您可以選擇將它與虛擬網路聯結。 這可讓 Azure Data Factory 建立特定的網路資源，例如 (NSG) 的網路安全性群組和負載平衡器。 您也可以提供自己的靜態公用 IP 位址，或 Azure Data Factory 為您建立一個位址。 在 Azure Data Factory 自動建立的 NSG 上，預設會針對所有流量開啟埠3389。 請將此鎖定，以確保只有您的系統管理員具有存取權。
 
-自我裝載的 IRs 可以部署在內部部署機器或虛擬網路內的 Azure 虛擬機器上。 確定您的虛擬網路子網部署具有設定為僅允許系統管理存取權的 NSG。 根據預設，Azure-SSIS IR 在每個 IR 節點上的 windows 防火牆規則預設不允許埠3389輸出以進行保護。 您可以藉由將 NSG 與子網建立關聯，並設定嚴格的規則，來保護虛擬網路設定的資源。
+您可以在內部部署機器或虛擬網路內的 Azure 虛擬機器上部署 Self-Hosted ir。 確定您的虛擬網路子網部署具有設定為僅允許系統管理存取權的 NSG。 根據預設，Azure-SSIS IR 在每個 IR 節點上的 windows 防火牆規則預設不允許埠3389輸出以進行保護。 您可以藉由將 NSG 與子網建立關聯，並設定嚴格的規則，來保護虛擬網路設定的資源。
 
 如果有可用的 Private Link，請使用私人端點來保護任何連結至 Azure Data Factory 管線的資源，例如 Azure SQL Server。 使用 Private Link 時，您的虛擬網路與服務之間的流量會流經 Microsoft 骨幹網路，以消除公用網際網路的暴露。
 
@@ -325,7 +325,7 @@ ms.locfileid: "89437933"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指導**方針： Azure Data Factory 中，請務必定期追蹤和協調使用者存取權。 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。
+**指導**方針： Azure Data Factory 中，請務必定期追蹤和協調使用者存取權。 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」  或「擁有者」  角色，或是 Azure 訂用帳戶的「管理員」  。
 
 此外，在租使用者層級，Azure Active Directory (AD) 具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶，而這些帳戶具有您 Azure Data Factory 實例控制平面的系統管理存取權。
 
@@ -602,7 +602,7 @@ Azure SQL Database 與 Azure Synapse Analytics (先前的 SQL 資料倉儲的所
 
 **指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 Azure 入口網站)  (Azure Data Factory 控制平面的存取權。
 
-若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。
+若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」  或「擁有者」  角色，或是 Azure 訂用帳戶的「管理員」  。
 
 針對您的 Data Factory 資料來源（例如 Azure SQL Database），請參閱該服務的安全性基準，以取得有關 Azure RBAC 的詳細資訊。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245847"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虛擬機器上的解決方案
@@ -47,7 +47,7 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>專用主機需求
-在 DCSv2 系列的 VM 系列中部署 **Standard_DC8_v2** 虛擬機器大小將會佔用完整的主機，且不會與其他租使用者或訂用帳戶共用。 此 VM SKU 系列會提供您所需的隔離，以符合通常藉由擁有專用主機服務的合規性和安全性法規需求。 當您選擇 **Standard_DC8_v2** SKU 時，實體主機伺服器會將所有可用的硬體資源（包括僅限 EPC 記憶體）配置給您的虛擬機器。 請注意，這項功能是由基礎結構設計所存在，而且會支援 **Standard_DC8_v2** 的所有功能。 此部署與其他 Azure VM 系列所提供的 [Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) 服務不同。
+在 DCSv2-Series VM 系列中部署 **Standard_DC8_v2** 的虛擬機器大小將會佔用完整的主機，而且不會與其他租使用者或訂用帳戶共用。 此 VM SKU 系列提供您可能需要的隔離，以符合一般藉由具有專用主機服務的合規性和安全性法規需求。 當您選擇 **Standard_DC8_v2** SKU 時，實體主機伺服器會將所有可用的硬體資源（包括 EPC 記憶體）配置給您的虛擬機器。 請注意，基礎結構設計有這項功能，而且會支援 **Standard_DC8_v2** 的所有功能。 此部署與其他 Azure VM 系列提供的 [Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) 服務不同。
 
 
 ## <a name="deployment-considerations"></a>部署考量因素
@@ -84,11 +84,11 @@ Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層�
 
 若要深入瞭解 ARM 範本，請參閱 [範本部署總覽](../azure-resource-manager/templates/overview.md)。
 
-若要在 ARM 範本中部署 DCsv2 系列 VM，您將使用 [虛擬機器資源](../virtual-machines/windows/template-description.md)。 請務必為 **vmSize** 和您的 **imageReference** 指定正確屬性。
+若要在 ARM 範本中部署 DCsv2-Series VM，您將會使用 [虛擬機器資源](../virtual-machines/windows/template-description.md)。 請務必為 **vmSize** 和您的 **imageReference** 指定正確屬性。
 
 ### <a name="vm-size"></a>VM 大小
 
-在虛擬機器資源的 ARM 範本中指定下列其中一種大小。 這個字串會以 **vmSize** 形式放在 **properties** 中。
+在虛擬機器資源的 ARM 範本中，指定下列其中一種大小。 這個字串會以 **vmSize** 形式放在 **properties** 中。
 
 ```json
   [

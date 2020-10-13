@@ -13,10 +13,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
 ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332095"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Dynamics 365 (Common Data Service) 複製資料以及複製資料至 Dynamics 365
@@ -61,7 +61,7 @@ ms.locfileid: "91332095"
 >[!TIP]
 >若要從 Dynamics 365 財務和營運複製資料，您可以使用 [DYNAMICS AX 連接器](connector-dynamics-ax.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要搭配 Azure AD 服務主體驗證使用此連接器，您必須在 Common Data Service 或 Dynamics 中設定伺服器對伺服器 (S2S) 驗證。 如需詳細步驟，請參閱 [這篇文章](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) 。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91332095"
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 與 Dynamics CRM online
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為 "Dynamics"、"DynamicsCrm" 或 "CommonDataServiceForApps"。 | 是 |
 | deploymentType | Dynamics 執行個體的部署類型。 Dynamics Online 的值必須為 "Online"。 | 是 |
@@ -174,16 +174,16 @@ ms.locfileid: "91332095"
 
 與 Dynamics online 比較的其他屬性是 **主機名稱** 和 **埠**。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設定為 "Dynamics"、"DynamicsCrm" 或 "CommonDataServiceForApps"。 | 可以。 |
-| deploymentType | Dynamics 執行個體的部署類型。 在具有 IFD 的 Dynamics 內部部署中，此值必須是 "OnPremisesWithIfd"。| 可以。 |
-| hostName | 內部部署 Dynamics 伺服器的主機名稱。 | 可以。 |
+| type | Type 屬性必須設定為 "Dynamics"、"DynamicsCrm" 或 "CommonDataServiceForApps"。 | 是。 |
+| deploymentType | Dynamics 執行個體的部署類型。 在具有 IFD 的 Dynamics 內部部署中，此值必須是 "OnPremisesWithIfd"。| 是。 |
+| hostName | 內部部署 Dynamics 伺服器的主機名稱。 | 是。 |
 | 連接埠 | 內部部署 Dynamics 伺服器的連接埠。 | 否。 預設值為443。 |
-| organizationName | Dynamics 執行個體的組織名稱。 | 可以。 |
-| authenticationType | 連線到 Dynamics 伺服器時所使用的驗證類型。 如果是搭配 IFD 的 Dynamics 內部部署版，請指定 "Ifd"。 | 可以。 |
-| username | 要連接到 Dynamics 的使用者名稱。 | 可以。 |
-| 密碼 | 您為使用者名稱指定之使用者帳戶的密碼。 您可以使用 "SecureString" 將此欄位標示為安全地儲存在 Data Factory 中。 或者，您可以將密碼儲存在 Key Vault 中，並讓複製活動在資料複製時從該處提取。 請參閱[在金鑰保存庫中儲存認證](store-credentials-in-key-vault.md)深入了解。 | 可以。 |
+| organizationName | Dynamics 執行個體的組織名稱。 | 是。 |
+| authenticationType | 連線到 Dynamics 伺服器時所使用的驗證類型。 如果是搭配 IFD 的 Dynamics 內部部署版，請指定 "Ifd"。 | 是。 |
+| username | 要連接到 Dynamics 的使用者名稱。 | 是。 |
+| 密碼 | 您為使用者名稱指定之使用者帳戶的密碼。 您可以使用 "SecureString" 將此欄位標示為安全地儲存在 Data Factory 中。 或者，您可以將密碼儲存在 Key Vault 中，並讓複製活動在資料複製時從該處提取。 請參閱[在金鑰保存庫中儲存認證](store-credentials-in-key-vault.md)深入了解。 | 是。 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果未指定任何值，則屬性會使用預設的 Azure integration runtime。 | 來源為否，接收則為 yes。 |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>範例：使用 IFD 驗證之搭配 IFD 的 Dynamics 內部部署版
@@ -220,7 +220,7 @@ ms.locfileid: "91332095"
 
 若要從 Dynamics 複製資料，以及將資料複製到 Dynamics，支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 type 屬性必須設定為 ">dynamicsentity"、"DynamicsCrmEntity" 或 "CommonDataServiceForAppsEntity"。 |是 |
 | entityName | 要擷取之實體的邏輯名稱。 | 如果活動來源指定為 "query"，則為 No 來源，如果是接收，則為 yes |
@@ -252,7 +252,7 @@ ms.locfileid: "91332095"
 
 若要從 Dynamics 複製資料，複製活動 **來源** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為 ">dynamicssource"、"DynamicsCrmSource" 或 "CommonDataServiceForAppsSource"。 | 是 |
 | 查詢 | FetchXML 是在 Dynamics online 和內部部署中使用的專屬查詢語言。 請參閱下列範例。 若要深入瞭解，請參閱 [使用 FetchXML 建立查詢](https://msdn.microsoft.com/library/gg328332.aspx)。 | 如果 `entityName` 在資料集中指定，則為 No |
@@ -320,9 +320,9 @@ ms.locfileid: "91332095"
 
 若要將資料複製到 Dynamics，複製活動 **接收** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的 type 屬性必須設定為 ">dynamicssink"、"DynamicsCrmSink" 或 "CommonDataServiceForAppsSink"。 | 可以。 |
+| type | 複製活動接收的 type 屬性必須設定為 ">dynamicssink"、"DynamicsCrmSink" 或 "CommonDataServiceForAppsSink"。 | 是。 |
 | writeBehavior | 作業的寫入行為。 值必須是 "Upsert"。 | 是 |
 | alternateKeyName | 在您的實體上定義的替代索引鍵名稱，可進行 upsert。 | 否。 |
 | writeBatchSize | 每個批次中寫入 Dynamics 的資料列計數。 | 否。 預設值是 10。 |
@@ -378,21 +378,21 @@ ms.locfileid: "91332095"
 | Dynamics 資料類型 | Data Factory 過渡期資料類型 | 支援作為來源 | 支援作為接收 |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | long | ✓ | ✓ |
-| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
+| AttributeTypeCode.Boolean | 布林值 | ✓ | ✓ |
 | AttributeType.Customer | GUID | ✓ | ✓ (參閱 [指引](#writing-data-to-a-lookup-field))  |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | String | ✓ | ✓ |
+| AttributeType.EntityName | 字串 | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | GUID | ✓ | ✓ (參閱 [指引](#writing-data-to-a-lookup-field))  |
-| AttributeType.ManagedProperty | Boolean | ✓ | |
-| AttributeType.Memo | String | ✓ | ✓ |
+| AttributeType.ManagedProperty | 布林值 | ✓ | |
+| AttributeType.Memo | 字串 | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | GUID | ✓ | ✓ (參閱 [指引](#writing-data-to-a-lookup-field))  |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | GUID | ✓ | ✓ |
-| AttributeType.String | String | ✓ | ✓ |
+| AttributeType.String | 字串 | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

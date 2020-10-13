@@ -7,10 +7,10 @@ ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90084289"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>自訂 Windows 虛擬桌面使用者的摘要
@@ -113,7 +113,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 6. 選取您要更新的應用程式，然後輸入新的 **顯示名稱**。
 
-7. 選取 [儲存]。 您所編輯的應用程式現在應該會顯示已更新的名稱。
+7. 選取 [儲存]****。 您所編輯的應用程式現在應該會顯示已更新的名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

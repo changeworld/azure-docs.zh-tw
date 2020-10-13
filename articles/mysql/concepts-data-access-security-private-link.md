@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905907"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的 Private Link
@@ -72,21 +72,21 @@ Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務
 
 * 從清單中選取個別的 PEC。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="選取要等待核准的私人端點":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="選取私人端點入口網站":::
 
 * MySQL 伺服器管理員可以選擇核准或拒絕 PEC，並選擇性地新增簡短的文字回應。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="選取私人端點訊息":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="選取私人端點入口網站":::
 
 * 核准或拒絕之後，清單會反映適當的狀態以及回應文字
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="選取私人端點的最終狀態":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="選取私人端點入口網站":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫 Private Link 的使用案例
 
 用戶端可以從相同的 VNet 連線到私人端點、在相同區域中對等互連 VNet，或透過跨區域的 VNet 對 VNet 連線來連接。 此外，用戶端可以使用 ExpressRoute、私人對等互連或 VPN 通道從內部部署環境進行連線。 以下是一個簡化的圖表，其中顯示常見的使用案例。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="選取私人端點總覽":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="選取私人端點入口網站":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>從對等互連虛擬網路 (VNet) 中的 Azure VM 進行連線
 設定 [vnet 對等互連](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) ，以從對等互連 VNet 中的 Azure VM 建立對適用於 MySQL 的 Azure 資料庫的連線能力。
@@ -124,7 +124,7 @@ Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務
 
 若要瞭解如何從 Azure 入口網站設定您適用於 MySQL 的 Azure 資料庫的 **拒絕公用網路存取** ，請參閱 [如何設定拒絕公用網路存取](howto-deny-public-network-access.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解適用於 MySQL 的 Azure 資料庫安全性功能，請參閱下列文章：
 

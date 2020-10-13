@@ -11,10 +11,10 @@ ms.date: 07/18/2017
 ms.author: tagore
 ms.custom: devx-track-python
 ms.openlocfilehash: 503e37d0e339cacc9c21a2b2f3ad739e1385c955
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443189"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>採用 Python Tools for Visual Studio 的 Python Web 和背景工作角色
@@ -326,7 +326,7 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 ### <a name="investigate-logs"></a>調查記錄
 雲端服務虛擬機器啟動並安裝 Python 之後，您可以查看記錄，以找出任何失敗訊息。 這些記錄位於 **C:\Resources\Directory\\{role}\LogFiles** 資料夾中。 當指令碼嘗試偵測是否已安裝 Python 時，**PrepPython.err.txt** 中至少會有一個錯誤，而 **PipInstaller.err.txt** 可能會抱怨 pip 的版本過時。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需在 Python Tools for Visual Studio 中使用 Web 和背景工作角色的相關詳細資訊，請參閱 PTVS 文件：
 
 * [雲端服務專案][Cloud Service Projects]

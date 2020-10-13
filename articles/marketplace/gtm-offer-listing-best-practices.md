@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
 ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708640"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
@@ -93,7 +93,7 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同方案類型的線上�
 | **架構 & 結構** | |
 | **汽車** | |
 | **Distribution** | 批發 <br> 包裹 & 套件寄送 |  
-| **教育訓練** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
+| **Education** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
 | **金融服務** | 銀行 & 資本市場 <br> Insurance | 
 | **政府** |  防禦 & 情報 <br> 文職政府 <br> 公共安全 & 司法 |
 | **醫療保健** | 健全狀況醫療給付 <br> 健康狀態提供者 <br> Pharmaceuticals | 

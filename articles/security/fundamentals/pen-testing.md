@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
 ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816128"
 ---
 # <a name="penetration-testing"></a>滲透測試
@@ -48,6 +48,6 @@ ms.locfileid: "88816128"
 >[!Note]
 >Microsoft 已與 BreakingPoint Cloud 合作建立一個介面，您可以針對啟用 DDoS 保護的公用 IP 位址產生流量，以進行模擬。 若要深入瞭解雲端模擬的中斷點，請參閱 [驗證 DDoS 偵測](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入瞭解 Engagement 的 [滲透測試規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2)。

@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fbfc347e1b514f9f59e2f238d2b1bfbaf59f2172
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710697"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
@@ -67,7 +67,7 @@ API | 使用時機 | 注意
 - [適用于 .net 的 Azure 儲存體 Files 用戶端程式庫](https://www.nuget.org/packages/Azure.Storage.Files.Shares/)：此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
 - [適用于 .net 的系統 Configuration Manager 程式庫](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/)：此套件提供可在設定檔中儲存和取出值的類別。
 
-您可以使用 NuGet 來取得套件。 遵循這些步驟：
+您可以使用 NuGet 來取得套件。 請遵循下列步驟：
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
 1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 **Azure Core**，然後選取 [ **安裝**]。
@@ -87,7 +87,7 @@ API | 使用時機 | 注意
 - [適用于 .net 的 Microsoft Azure 儲存體檔案庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)：此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
 - [適用于 .net 的 Microsoft Azure Configuration Manager 程式庫](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此套件提供一個類別，可讓您在應用程式執行所在的位置剖析設定檔中的連接字串。
 
-您可以使用 NuGet 來取得套件。 遵循這些步驟：
+您可以使用 NuGet 來取得套件。 請遵循下列步驟：
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [ **管理 NuGet 套件**]。
 1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後搜尋並選擇 [ **Azure**]，然後選取 [ **安裝**]。

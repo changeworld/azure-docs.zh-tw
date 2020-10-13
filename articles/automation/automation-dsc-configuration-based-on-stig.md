@@ -1,6 +1,6 @@
 ---
 title: 根據 STIG 設定用於 Azure 自動化狀態設定的資料
-description: 本文說明如何根據適用于 Azure 自動化狀態設定的 DoD STIG 來設定資料。
+description: 本文說明如何根據 Azure 自動化狀態設定的 DoD STIG 來設定資料。
 keywords: dsc,powershell,設定,安裝
 services: automation
 ms.service: automation
@@ -11,13 +11,13 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dab0cd7f7d660808b4ed7a91318baad55f80928c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015131"
 ---
-# <a name="configure-data-based-on-security-technical-information-guide-stig"></a>根據安全性技術資訊指南設定資料（STIG）
+# <a name="configure-data-based-on-security-technical-information-guide-stig"></a>根據安全性技術資訊指南設定資料 (STIG) 
 
 > 適用於：Windows PowerShell 5.1
 

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
 ms.openlocfilehash: a9850af3ea2365aa73d8b9f08b2e706c79062860
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400514"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>使用資料視覺效果解決方案將儲存在 Azure Cosmos DB Gremlin API 中的圖形資料視覺化
@@ -26,11 +26,11 @@ ms.locfileid: "91400514"
 
 Linkurious Enterprise 的互動式介面提供簡單的方式來調查複雜資料。 您可以搜尋特定實體、展開連線以找出隱藏的關聯性，以及將您選擇的版面配置套用至全集複雜的網路。 Linkurious Enterprise 現在與 Azure Cosmos DB Gremlin API 相容。 它適用于端對端圖形視覺效果案例，並支援使用者介面的讀取和寫入功能。 您可以 [使用 Azure Cosmos DB 要求 Linkurious 的示範](https://linkurio.us/contact/)
 
-:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious 示範" border="false":::
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious 標誌" border="false":::
 
 ## <a name="cambridge-intelligence"></a>康橋情報
 
-:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="康橋情報標誌" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Linkurious 標誌" border="false":::
 
 [康橋情報的](https://cambridge-intelligence.com/products/) 圖形視覺效果工具組現在支援 Azure Cosmos DB。 Azure Cosmos DB 支援下列兩個視覺效果工具組：
 
@@ -38,11 +38,11 @@ Linkurious Enterprise 的互動式介面提供簡單的方式來調查複雜資�
 
 - [重新設計回應開發人員的圖表](https://cambridge-intelligence.com/regraph/)
 
-:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="康橋情報示範" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Linkurious 標誌" border="false":::
 
 這些工具組可讓您針對您的使用案例設計高效能圖形視覺效果和分析應用程式。 他們運用強大的 Web 圖形程式庫 (WebGL) 轉譯和精心設計的程式碼，為使用者提供快速且深入的視覺效果體驗。 這些工具與任何瀏覽器、裝置、伺服器或資料庫相容，並隨附逐步教學課程、完整記載的 Api 和互動式示範。
 
-:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="康橋情報示範" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Linkurious 標誌" border="false":::
 
 
 ## <a name="next-steps"></a>後續步驟

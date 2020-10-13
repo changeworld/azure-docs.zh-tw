@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816230"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常見問題
@@ -41,7 +41,7 @@ Azure Red Hat OpenShift 3.11 具有50個 pod 節點的限制和20個計算節點
 
 ### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>叢集是否可以跨多個 Azure 區域具有計算節點？
 
-不知道。 Azure Red Hat OpenShift 叢集中的所有節點都必須來自相同的 Azure 區域。
+否。 Azure Red Hat OpenShift 叢集中的所有節點都必須來自相同的 Azure 區域。
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>叢集是否可以部署到多個可用性區域？
 
@@ -49,7 +49,7 @@ Azure Red Hat OpenShift 3.11 具有50個 pod 節點的限制和20個計算節點
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>控制平面節點是否會隨著 Azure Kubernetes Service (AKS) 而抽象化？
 
-不知道。 所有資源（包括叢集主要節點）都是在您的客戶訂用帳戶中執行。 這些類型的資源會放在唯讀的資源群組中。
+否。 所有資源（包括叢集主要節點）都是在您的客戶訂用帳戶中執行。 這些類型的資源會放在唯讀的資源群組中。
 
 ### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>叢集是否位於客戶訂用帳戶中？ 
 
@@ -127,7 +127,7 @@ Prometheus 適用于 Azure Red Hat OpenShift 4.x 叢集的預先安裝和設定�
 
 針對3.11 叢集，可以使用 Docker 映射登錄。 Docker 登錄可從取得 `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` 。 您也可以使用 Azure Container Registry。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 ### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>我可以將叢集部署到現有的虛擬網路嗎？
 
@@ -222,4 +222,4 @@ oc adm policy \
 
 ## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO 是否將任何客戶資料儲存在叢集區域以外？
 
-不知道。 在 ARO 叢集中建立的所有資料都會保留在叢集的區域內。
+否。 在 ARO 叢集中建立的所有資料都會保留在叢集的區域內。

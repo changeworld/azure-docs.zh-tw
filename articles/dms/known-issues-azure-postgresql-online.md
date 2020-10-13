@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14722f46f06351504583da7231179d206f7a3c26
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330310"
+ms.locfileid: "91893725"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>從于 postgresql 到 Azure DB for 于 postgresql 的線上遷移的已知問題/遷移限制
 
@@ -81,6 +81,8 @@ ms.locfileid: "91330310"
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
+## <a name="size-limitations"></a>大小限制
+- 您可以使用單一 DMS 服務，將最多 2 TB 的資料從于 postgresql 遷移至 Azure DB for 于 postgresql。
 ## <a name="datatype-limitations"></a>資料類型限制
 
   **限制**：如果資料表上沒有主鍵，變更可能不會同步處理至目標資料庫。

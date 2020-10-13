@@ -295,7 +295,7 @@
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'
                 - name: NuGet - 執行階段
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
-                - name: 參考
+                - name: 參考資料
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
                 - name: 範例
                   href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
@@ -422,6 +422,9 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密
       href: luis-encryption-of-data-at-rest.md
+    - name: 設定虛擬網路
+      maintainContext: true
+      href: ../cognitive-services-virtual-networks.md
     - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

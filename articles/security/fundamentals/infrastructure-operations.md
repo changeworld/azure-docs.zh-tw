@@ -1,6 +1,6 @@
 ---
 title: 管理 Azure 生產網路-Microsoft Azure
-description: 本文說明 Microsoft 如何管理和操作 Azure 生產網路，以保護 Azure 資料中心。
+description: 本文說明 Microsoft 如何管理及操作 Azure 生產網路，以保護 Azure 資料中心。
 services: security
 documentationcenter: n
 author: TerryLanfear
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727119"
 ---
 # <a name="management-and-operation-of-the-azure-production-network"></a>Azure 生產網路的管理和操作    
-本文說明 Microsoft 如何管理和操作 Azure 生產網路，以保護 Azure 資料中心。
+本文說明 Microsoft 如何管理及操作 Azure 生產網路，以保護 Azure 資料中心。
 
 ## <a name="monitor-log-and-report"></a>監視、記錄和報告
 

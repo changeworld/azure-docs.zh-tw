@@ -1,14 +1,14 @@
 ---
-title: 智慧合約整合模式-Azure Blockchain Workbench
-description: Azure Blockchain Workbench Preview 中的智慧合約整合模式總覽。
+title: 智慧型合約整合模式-Azure Blockchain Workbench
+description: Azure Blockchain Workbench 預覽版中的智慧型合約整合模式總覽。
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
 ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538309"
 ---
 # <a name="smart-contract-integration-patterns"></a>智慧合約整合模式
@@ -31,7 +31,7 @@ Azure Blockchain Workbench 產生的 Web 應用程式所包含的功能，可透
 
 REST API 主要用於互動式用戶端，例如 Web、行動和 Bot 應用程式。
 
-本節探討的模式著重于將交易傳送至分散式總帳的 REST API 層面，以及從 Azure Blockchain Workbench 的「*關閉鏈*」資料庫查詢交易相關資料的模式。
+本節探討的模式著重于將交易傳送至分散式總帳的 REST API 層面，以及從 Azure Blockchain Workbench 的 *關閉鏈* 資料庫查詢交易相關資料的模式。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>從外部系統將交易傳送至分散式總帳
 
@@ -134,7 +134,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 -   狀態的變更以事件的形式對下游取用者呈現。
 -   下游取用者接收事件，並觸發外部程式碼執行。
 
-![此圖顯示合約內的狀態變更，而導致事件進入分散式總帳。 Blockchain Workbench 接著會挑選事件併發布它。](./media/integration-patterns/transition-external-process.png)
+![此圖表顯示合約內的狀態變更，導致事件移至分散式總帳。 Blockchain Workbench 接著挑選併發布事件。](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>從智慧合約交回控制權
 
@@ -142,7 +142,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench 以預期的格式進行直接傳遞
 
-![此圖顯示透過服務匯流排 Blockchain Workbench 所挑選之外部系統的 P I 訊息。 Blockchain Workbench 接著代表代理程式，將訊息當做交易傳送至分散式總帳。 它會傳遞給合約，而這會導致狀態變更。](./media/integration-patterns/direct-delivery.png)
+![下圖顯示由 Blockchain Workbench 透過服務匯流排挑選的外部系統的 P I 訊息。 Blockchain Workbench 接著代表代理程式，將訊息當作交易傳送至分散式總帳。 它會傳遞給合約，使狀態變更。](./media/integration-patterns/direct-delivery.png)
 
 在此模型中，與合約的通訊和後續的狀態變更將會在先前程序之後發生，其間：
 
@@ -174,7 +174,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 常見的整合案例是在智慧合約納入擷取自感應器的遙測資料。 根據感應器所傳遞的資料，智慧合約可以採取正確的動作，並改變合約的狀態。
 
-例如，如果運送藥品的貨車溫度飆升至 110 度，則可能會影響到藥品的藥效，且若未偵測到此問題而從供應鏈中移除，可能會造成公共安全問題。 如果驅動程式以每小時的速度加速到100英里，則產生的感應器資訊可能會觸發其保險提供者的取消保險。 對於租用的車輛，GPS 資料可以在駕駛的行車路徑超出其租用合約所涵蓋的地理位置時加以指出，而收取罰金。
+例如，如果運送藥品的貨車溫度飆升至 110 度，則可能會影響到藥品的藥效，且若未偵測到此問題而從供應鏈中移除，可能會造成公共安全問題。 如果驅動程式將汽車的車輛加速為每小時100英里，則產生的感應器資訊可能會由其保險提供者觸發取消保險。 對於租用的車輛，GPS 資料可以在駕駛的行車路徑超出其租用合約所涵蓋的地理位置時加以指出，而收取罰金。
 
 其困難之處在於感應器是否能穩定持續地傳遞資料，且將所有資料傳送至智慧合約，也並不妥當。 常見的方法是，限定傳送至區塊鏈的訊息數量，而將所有訊息傳遞至次要存放區。 例如，傳遞僅依固定間隔接收的訊息，例如每小時一次，以及在限定值超出智慧合約的協議範圍時傳遞。 檢查超出容許範圍的值，可確保能夠接收及執行合約商務邏輯的相關資料。 定期檢查值，可確認感應器仍在進行報告。 所有資料都會傳送至次要報告存放區，以便進行更廣泛的報告、分析和機器學習。 例如，雖然智慧合約不一定需要每分鐘都取得 GPS 感應器的數據，但對於報告或製圖路徑，這或許可提供有價值的資料。
 
@@ -204,7 +204,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 -   Azure Blockchain Workbench 會儲存關於應用程式、工作流程、合約和交易的中繼資料，這是其正常作業行為的一部分。
 -   外部系統或工具會提供一或多個對話方塊，以利收集資料庫的相關資訊，例如資料庫伺服器名稱、資料庫名稱、驗證類型、登入認證，以及所要使用的資料庫檢視。
--   查詢是針對資料庫檢視而撰寫，以協助外部系統、服務、報告、開發人員工具和企業生產力工具的下游耗用量。
+-   查詢是針對資料庫檢視撰寫，以促進外部系統、服務、報告、開發人員工具和企業生產力工具的下游耗用量。
 
 ## <a name="storage-integration"></a>儲存體整合
 

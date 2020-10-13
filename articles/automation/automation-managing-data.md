@@ -1,36 +1,36 @@
 ---
 title: Azure 自動化資料安全性
-description: 本文可協助您瞭解 Azure 自動化如何保護您的隱私權及保護您的資料。
+description: 本文可協助您瞭解 Azure 自動化如何保護您的隱私權和保護您的資料。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004642"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自動化資料
 
-本文包含幾個主題，說明如何在 Azure 自動化環境中保護和保護資料。
+本文包含數個主題，說明如何在 Azure 自動化環境中保護及保護資料。
 
 ## <a name="tls-12-enforcement-for-azure-automation"></a>Azure 自動化的 TLS 1.2 強制
 
-若要確保傳輸中的資料安全性以 Azure 自動化，我們強烈建議您設定傳輸層安全性（TLS）1.2 的使用。 以下是透過 HTTPS 與 Automation 服務通訊的方法或用戶端清單：
+為了確保傳輸中資料 Azure 自動化的安全性，我們強烈建議您設定 (TLS) 1.2 使用傳輸層安全性。 以下是透過 HTTPS 與自動化服務通訊的方法或用戶端清單：
 
 * Webhook 呼叫
 
-* 混合式 Runbook 背景工作角色，包括由更新管理管理的電腦，以及變更追蹤和清查。
+* 混合式 Runbook 背景工作角色，其中包括由更新管理管理的電腦，以及變更追蹤和清查。
 
 * DSC 節點
 
-我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 從2020年9月開始，我們會開始強制執行 TLS 1.2 和更新版本的加密通訊協定。
+我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 從2020年9月開始，我們開始強制執行 TLS 1.2 和更新版本的加密通訊協定。
 
 除非有絕對必要，否則我們不建議將代理程式明確地設定為只使用 TLS 1.2，因為這樣可能會中斷平台層級的安全性功能，此功能可在更安全的較新通訊協定 (例如 TLS 1.3) 推出時，自動偵測並加以運用。
 
-如需使用適用于 Windows 和 Linux 的 Log Analytics 代理程式的 TLS 1.2 支援相關資訊，這是混合式 Runbook 背景工作角色的相依性，請參閱[Log analytics 代理程式總覽-TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。 
+如需使用適用于 Windows 和 Linux 的 Log Analytics 代理程式（這是混合式 Runbook 背景工作角色的相依性）的 TLS 1.2 支援相關資訊，請參閱 [Log analytics 代理程式總覽-TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。 
 
 ### <a name="platform-specific-guidance"></a>平台專屬的指引
 
@@ -38,7 +38,7 @@ ms.locfileid: "87004642"
 | --- | --- | --- |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。  | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
 | Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings) |
+| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用 [預設設定](/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
 
 ## <a name="data-retention"></a>資料保留
@@ -50,7 +50,7 @@ ms.locfileid: "87004642"
 | 資料 | 原則 |
 |:--- |:--- |
 | 帳戶 |帳戶會在使用者刪除的 30 天後永久移除。 |
-| Assets |資產會在使用者刪除該資產，或刪除持有該資產的帳戶 30 天後永久移除。 資產包括變數、排程、認證、憑證、Python 2 套件和連線。 |
+| Assets |資產會在使用者刪除該資產，或刪除持有該資產的帳戶 30 天後永久移除。 資產包括變數、排程、認證、憑證、Python 2 套件和連接。 |
 | DSC 節點 |當使用 Azure 入口網站或在 Windows PowerShell 中使用 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) Cmdlet 從自動化帳戶取消註冊 DSC 節點後，該節點會在此動作的 30 天後永久移除。 節點也會在使用者刪除持有該節點的帳戶 30 天後永久移除。 |
 | 工作 |工作會在經過修改 (例如工作完成、停止或暫停) 的 30 天後刪除並永久移除。 |
 | 模組 |模組會在使用者刪除該模組，或刪除持有該模組的帳戶 30 天後永久移除。 |

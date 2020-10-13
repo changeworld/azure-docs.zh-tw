@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069827"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
@@ -34,7 +34,7 @@ MABS 會在備份 VMware 虛擬機器時提供下列功能：
 - MABS 可保護遷移的 Vm 以進行負載平衡：當 Vm 遷移以進行負載平衡時，MABS 會自動偵測並繼續進行 VM 保護。
 - MABS 可以從 Windows VM 復原檔案/資料夾，而不需要復原整個 VM，這有助於更快速地復原所需的檔案。
 
-## <a name="prerequisites-and-limitations"></a>先決條件和限制
+## <a name="prerequisites-and-limitations"></a>必要條件和限制
 
 開始備份 VMware 虛擬機器之前，請先檢閱下列的限制和必要條件清單。
 
@@ -306,7 +306,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![指定認證](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 選取 [ **新增** ]，將 VMware 伺服器新增至 [伺服器] 清單。 然後，選取 [下一步]。
+6. 選取 [ **新增** ]，將 VMware 伺服器新增至 [伺服器] 清單。 然後選取 [下一步]。
 
     ![新增 VMWare 伺服器和認證](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -334,14 +334,14 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 1. 在 [ **選擇保護群組類型** ] 頁面上，選取 [ **伺服器** ]，然後選取 **[下一步]**。 [選取群組成員]**** 頁面隨即出現。
 
-1. 在 [ **選擇群組成員**] 中，選取您要備份的 vm (或 vm 資料夾) 。 然後，選取 [下一步]。
+1. 在 [ **選擇群組成員**] 中，選取您要備份的 vm (或 vm 資料夾) 。 然後選取 [下一步]。
 
     - 當您選取資料夾時，也會選取該資料夾內的 VM 或資料夾以進行備份。 您可以將不想備份的資料夾或 VM 取消選取。
 1. 如果 VM 或資料夾已經過備份，您就無法加以選取。 這可確保不會為 VM 建立重複的復原點。
 
     ![選擇群組成員](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後，選取 [下一步]。
+1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後選取 [下一步]。
 
     ![選擇資料保護方式](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -372,17 +372,17 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![選擇複本的建立方式](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後，選取 [下一步]。
+1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後選取 [下一步]。
       - 當複本資料變得不一致時，或依據設定的排程，您可以執行一致性檢查。
       - 如果您不想設定自動一致性檢查，可以執行手動檢查。 若要這樣做，以滑鼠右鍵按一下保護群組 > [執行一致性檢查]****。
 
-1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別選取成員，或選取 [全 **選** ] 來選擇所有成員。 然後，選取 [下一步]。
+1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別選取成員，或選取 [全 **選** ] 來選擇所有成員。 然後選取 [下一步]。
 
     ![指定線上保護資料](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在 [指定線上備份排程]**** 頁面上，指定要從本機儲存體將資料備份至 Azure 的頻率。
 
-    - 資料的雲端復原點將會根據排程來產生。 然後，選取 [下一步]。
+    - 資料的雲端復原點將會根據排程來產生。 然後選取 [下一步]。
     - 產生復原點之後，它會傳輸到 Azure 中的復原服務保存庫。
 
     ![指定線上備份排程](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
