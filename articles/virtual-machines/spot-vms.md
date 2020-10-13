@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827820"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963358"
 ---
 # <a name="use-spot-vms-in-azure"></a>在 Azure 中使用點 Vm
 
@@ -99,17 +99,17 @@ ms.locfileid: "91827820"
 
 **問：** 如何針對找出的 Vm 管理配額？
 
-**答：** 現成的 Vm 將會有個別的配額集區。 將在 Vm 和擴展集實例之間共用點配額。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+**答：** 現成的 Vm 將會有個別的配額集區。 將在 Vm 和擴展集實例之間共用點配額。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 
 **問：** 我可以要求找出額外的配額嗎？
 
-**答：** 是，您可以提交要求，以透過 [標準配額要求](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)程式來增加您的現成 vm 配額。
+**答：** 是，您可以提交要求，以透過 [標準配額要求](../azure-portal/supportability/per-vm-quota-requests.md)程式來增加您的現成 vm 配額。
 
 
 **問：** 我可以在哪裡張貼問題？
 
-**答：** 您可以 `azure-spot` 在 [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)張貼並標記問題。 
+**答：** 您可以 `azure-spot` 在 [Q&A](/answers/topics/azure-spot.html)張貼並標記問題。 
 
 ## <a name="next-steps"></a>後續步驟
 使用 [CLI](./linux/spot-cli.md)、 [入口網站](spot-portal.md)、 [ARM 範本](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 來部署現成的 vm。

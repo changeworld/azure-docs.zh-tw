@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70777c80cdee99f13050d7cd342f22d59da13d73
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485491"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964104"
 ---
 # <a name="configure-mfa-server-settings"></a>設定 MFA Server 設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "84485491"
 
 可用的 MFA Server 設定如下：
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | ------- | ----------- |
 | 伺服器設定 | 下載 MFA 伺服器並產生啟用認證，以初始化您的環境 |
 | [一次性略過](#one-time-bypass) | 允許使用者在一段有限時間未執行多重要素驗證的情況下進行驗證。 |
@@ -66,6 +66,6 @@ ms.locfileid: "84485491"
 1. 如有必要，選取驗證類型並指定應用程式。
 1. 選取 [新增]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您可以從 MFA Server 本身的 web 主控台取得其他 MFA Server 設定選項。 您也可以 [設定 Azure MFA 伺服器以獲得高可用性](howto-mfaserver-deploy-ha.md)。

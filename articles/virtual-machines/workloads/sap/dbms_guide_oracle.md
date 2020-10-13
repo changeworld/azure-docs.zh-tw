@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540705"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963528"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>適用于 SAP 工作負載的 Azure 虛擬機器 Oracle DBMS 部署
 
@@ -444,7 +444,7 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 
 ### <a name="storage-configuration"></a>儲存體組態
 
-針對 Azure 上的 Oracle Database 檔案，支援 ext4、xfs 或 Oracle ASM 檔案系統。 所有的資料庫檔案都必須儲存於以 VHD 或受控磁碟為基礎的這些檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) \(英文\) 或 [Azure 受控磁碟](../../managed-disks-overview.md)為基礎。
+針對 Azure 上的 Oracle Database 檔案，支援 ext4、xfs 或 Oracle ASM 檔案系統。 所有的資料庫檔案都必須儲存於以 VHD 或受控磁碟為基礎的這些檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) \(英文\) 或 [Azure 受控磁碟](../../managed-disks-overview.md)為基礎。
 
 針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../premium-storage-performance.md#disk-caching)。
 
@@ -508,7 +508,7 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 ### <a name="backuprestore"></a>備份/還原
 針對備份/還原功能，適用於 Oracle 的 SAP BR*Tools 的支援方式，與其在裸機和 Hyper-V 上的支援方式相同。 Oracle Recovery Manager (RMAN) 也支援備份至磁碟，以及從磁碟還原。
 
-如需如何使用 Azure 備份及復原服務來備份和復原 Oracle Database 的詳細資料，請參閱[在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫](../oracle/oracle-backup-recovery.md)。
+如需如何使用 Azure 備份及復原服務來備份和復原 Oracle Database 的詳細資料，請參閱[在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫](../oracle/oracle-overview.md)。
 
 ### <a name="high-availability"></a>高可用性
 基於高可用性和災害復原目的支援 Oracle Data Guard。 若要在 Data Guard 中達成自動容錯移轉，便必須使用 Fast-Start Failover (FSFA)。 觀察者功能 (FSFA) 會觸發容錯移轉。 如果您不使用 FSFA，則只能使用手動容錯移轉設定。 如需詳細資訊，請參閱[在 Azure Linux 虛擬機器上實作 Oracle Data Guard](../oracle/configure-oracle-dataguard.md)。
@@ -531,5 +531,3 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 閱讀文章 
 
 - [適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)
- 
-
