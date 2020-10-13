@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 96a085e3183289d9f2add054128c0faa6b0cdb29
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374868"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654460"
 ---
 若要建立 C++ 桌面開發的 Visual Studio 專案，您必須設定 Visual Studio 的開發選項、建立專案、選取目標架構，然後安裝語音 SDK。
 
@@ -19,13 +19,13 @@ ms.locfileid: "87374868"
 
 1. 開啟 Visual Studio 2019 以顯示 [開始]  視窗。
 
-   ![[開始] 視窗 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![顯示 Visual Studio 2019 [開始] 視窗的螢幕擷取畫面。](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. 選取 [不使用程式碼繼續]  ，以移至 Visual Studio IDE。
 
 1. 從 [Visual Studio] 功能表列中，選取 [工具]   > [取得工具和功能]  以開啟 Visual Studio 安裝程式並檢視 [修改]  對話方塊。
 
-   ![[工作負載] 索引標籤、[修改] 對話方塊、Visual Studio 安裝程式](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![「Visual Studio 安裝程式」的螢幕擷取畫面，其中顯示 [修改] 對話方塊的 [工作負載] 索引標籤。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. 在 [工作負載]  索引標籤的 [Windows]  底下，尋找 [使用 C++ 的桌面開發]  工作負載。 如果尚未選取該工作負載旁的核取方塊，請加以選取。
 

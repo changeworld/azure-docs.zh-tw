@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 8de7ad2808e5319819410b3125472e28496647b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267137"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>建立 NVA 的虛擬 WAN 中樞路由表：Azure 入口網站
@@ -98,7 +98,7 @@ ms.locfileid: "91267137"
 
 1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]。
 2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]。
-3. 在 [新增連線] 頁面上，填寫下列欄位︰
+3. 在 [新增連線]  頁面上，填寫下列欄位︰
 
     * **名稱** - 為您的連線命名。
     * **中樞** - 選取要與此連線產生關聯的中樞。

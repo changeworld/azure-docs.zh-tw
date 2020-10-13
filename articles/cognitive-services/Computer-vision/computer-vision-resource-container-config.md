@@ -12,10 +12,10 @@ ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536234"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>設定讀取 OCR Docker 容器
@@ -90,9 +90,9 @@ ms.locfileid: "91536234"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](computer-vision-how-to-install-containers.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。 
 
-|選擇性| 名稱 | 資料類型 | 描述 |
+|選用| 名稱 | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
-|不允許| `Input` | String | 電腦視覺容器不會使用此項目。|
+|不允許| `Input` | 字串 | 電腦視覺容器不會使用此項目。|
 |選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令
@@ -120,7 +120,7 @@ ms.locfileid: "91536234"
 下列 Docker 範例適用于讀取容器。
 
 
-# <a name="version-31-preview"></a>[版本 3.1-預覽](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-preview 版](#tab/version-3-1)
 
 ### <a name="basic-example"></a>基本範例
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919653"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $select 語法
@@ -32,7 +32,7 @@ ms.locfileid: "88919653"
 
 ## <a name="syntax"></a>語法
 
-**$Select**參數會決定要在查詢結果集中傳回每份檔的哪些欄位。 下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義 **$select** 參數的文法：
+**$Select**參數會決定要在查詢結果集中傳回每份檔的哪些欄位。 下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義 **$select** 參數的文法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -112,7 +112,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [如何在 Azure 認知搜尋中使用搜尋結果](search-pagination-page-layout.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)

@@ -1,13 +1,13 @@
 ---
-title: Web 應用程式效能監視-Azure 應用程式深入資訊
+title: Web 應用程式效能監視-Azure 應用程式見解
 description: Application Insights 如何融入 DevOps 循環
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324483"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 深入診斷 Web 應用程式
@@ -157,7 +157,7 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 ## <a name="next-steps"></a>後續步驟
 開始使用 Application Insights 很簡單。 主要選項包括：
 
-* [IIS 伺服器](./monitor-performance-live-website-now.md)，也適用于[Azure App Service](./app-insights-overview.md)。
+* [IIS 伺服器](./monitor-performance-live-website-now.md)，也適用于 [Azure App Service](./app-insights-overview.md)。
 * 在開發期間檢測您的專案。 您可以針對 [ASP.NET](./asp-net.md) 或 [Java](./java-get-started.md) 應用程式，以及 [Node.js](./nodejs.md) 和許多[其他類型](./platforms.md)執行此動作。 
 * 藉由新增簡短的程式碼片段來檢測 [任何網頁](./javascript.md) 。
 

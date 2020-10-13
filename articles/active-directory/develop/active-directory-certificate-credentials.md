@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612115"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 身分識別平台的應用程式驗證憑證認證
@@ -40,7 +40,7 @@ Microsoft 身分識別平臺可讓應用程式在可使用用戶端密碼的任�
 
 ### <a name="claims-payload"></a>宣告 (承載)
 
-宣告類型 | 值 | 說明
+宣告類型 | 值 | 描述
 ---------- | ---------- | ----------
 aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | 「Aud」 (物件) 宣告會識別 JWT 適用于此處 (的收件者 Azure AD) 請參閱 [RFC 7519，4.1.3 一節](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在此情況下，該收件者是 (login.microsoftonline.com) 的登入伺服器。
 exp | 1601519414 | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。 請參閱 [RFC 7519，4.1.4 一節](https://tools.ietf.org/html/rfc7519#section-4.1.4)。  如此一來，就可以使用判斷提示，直到那次為止，因此最短為5-10 分鐘 `nbf` 。  Azure AD 不會限制 `exp` 目前的時間。 
@@ -131,7 +131,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 用戶端判斷提示可以在使用用戶端密碼的任何地方使用。  例如，在 [授權碼流程](v2-oauth2-auth-code-flow.md)中，您可以傳入， `client_secret` 以證明要求是來自您的應用程式。 您可以使用和參數來取代此 `client_assertion` `client_assertion_type` 參數。 
 
-| 參數 | 值 | 說明|
+| 參數 | 值 | 描述|
 |-----------|-------|------------|
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| 這是固定值，表示您使用的是憑證認證。 |
 |`client_assertion`| JWT |這是上面建立的 JWT。 |

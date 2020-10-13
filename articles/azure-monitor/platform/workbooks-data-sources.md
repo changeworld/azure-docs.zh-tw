@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
 ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825753"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
@@ -109,7 +109,7 @@ JSON 提供者可讓您從靜態 JSON 內容建立查詢結果。 它最常用�
 > [!NOTE]
 > 請勿將任何欄位中的任何秘密寫入 (`headers` 、 `parameters` 、 `body` `url`) ，因為所有活頁簿使用者都可以看到這些秘密。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

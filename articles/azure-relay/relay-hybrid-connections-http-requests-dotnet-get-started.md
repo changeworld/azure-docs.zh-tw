@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 7a11abb984da3601a4d6aa921224e01f94d0871c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88922577"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>在 .NET 中開始使用轉送混合式連線 HTTP 要求
@@ -24,7 +24,7 @@ ms.locfileid: "88922577"
 4. 撰寫用戶端 (傳送端) 主控台應用程式來傳送訊息。
 5. 執行應用程式。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -59,7 +59,7 @@ ms.locfileid: "88922577"
 
 恭喜，您已建立完整的混合式連線應用程式！
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本快速入門中，您已建立 .NET 用戶端和使用 HTTP 來傳送和接收訊息的伺服器應用程式。 Azure 轉送的混合式連線功能也支援使用 WebSocket 來傳送和接收訊息。 若要了解如何搭配使用 WebSocket 和 Azure 轉送混合式連線，請參閱 [WebSocket 快速入門](relay-hybrid-connections-dotnet-get-started.md)。
 

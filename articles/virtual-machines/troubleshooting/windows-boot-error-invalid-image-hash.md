@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89447767"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969597"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows 開機管理程式錯誤-0xC0000428 狀態不正確映射雜湊
 
@@ -28,7 +28,7 @@ ms.locfileid: "89447767"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 開機管理程式，並顯示下列訊息：
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 開機管理程式，並顯示下列訊息：
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ ms.locfileid: "89447767"
 
 ## <a name="solution"></a>解決方法
 
-如果您的映射是預覽影像，則無法延長所用映射的到期日，您將需要使用非預覽映射來 [部署新的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 。 下列步驟可協助您識別您是否已使用預覽映射，以及提供資源來協助您將資料從此 VM 傳送至新的 VM。 如果您已將影像識別為預覽影像，則映射無法復原，因為它現在已過期。
+如果您的映射是預覽影像，則無法延長所用映射的到期日，您將需要使用非預覽映射來 [部署新的 VM](../windows/quick-create-portal.md) 。 下列步驟可協助您識別您是否已使用預覽映射，以及提供資源來協助您將資料從此 VM 傳送至新的 VM。 如果您已將影像識別為預覽影像，則映射無法復原，因為它現在已過期。
 
 根據您的喜好設定，您可以使用 Azure PowerShell 或 Azure CLI 來查詢您的影像，以判斷它是否為預覽影像。 您可以使用這些命令來確認映射是預覽映射。
 
@@ -103,7 +103,7 @@ ms.locfileid: "89447767"
 
 ### <a name="query-using-the-azure-cli"></a>使用 Azure CLI 進行查詢
 
-1. 如果您還沒有這麼做，就必須 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+1. 如果您還沒有這麼做，就必須 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 1. 下載之後，請使用命令提示字元或 PowerShell 來輸入 `az login` 命令，然後使用您的帳號憑證登入。
 1. 登入後，請輸入下列命令：
 

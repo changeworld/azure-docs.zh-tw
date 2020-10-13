@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313411"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect︰從 DirSync 升級
@@ -160,9 +160,9 @@ DirSync 用於服務帳戶的密碼無法擷取且不會移轉。 這些密碼�
    * 用來連接到 SQL Server 的服務帳戶 (如果您的 SQL Server 資料庫位於遠端，則這個帳戶必須是網域服務帳戶)。
      您可以在這個畫面上看到下列選項：  
      ![顯示從 DirSync 升級之預先設定選項的螢幕擷取畫面。](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
-7. 按 [下一步]  。
+7. 按一下 [下一步]。
 8. 在 [準備好設定]**** 頁面上，保持核取 [設定一完成，即開始同步處理程序]****。 伺服器現在處於[預備模式](how-to-connect-sync-staging-server.md)，讓變更不會匯出至 Azure AD。
-9. 按一下 [Install] 。
+9. 按一下 [Install]  。
 10. 安裝完成之後，請先登出 Windows 再重新登入，才能使用 Synchronization Service Manager、同步化規則編輯器，或嘗試任何其他組態變更。
 
 > [!NOTE]

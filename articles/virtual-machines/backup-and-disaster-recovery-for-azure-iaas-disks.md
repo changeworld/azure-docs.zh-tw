@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754968"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969699"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁碟的備份和災害復原
 
@@ -48,7 +48,7 @@ Azure 平台的設計可從這些失敗中復原。 重大災害可能會導致�
 
 計算主機或儲存體平台的當地語系化硬體故障有時會導致 VM 暫時無法使用，如 VM 可用性的 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 中所述。 Azure 也提供領先業界的 SLA，適用於使用 Azure 進階 SSD 的單一 VM 執行個體。
 
-若要防止應用程式工作負載由於磁碟或 VM 暫時無法使用而停機，客戶可以使用[可用性設定組](windows/manage-availability.md)。 可用性設定組中的兩個或多個虛擬機器提供應用程式的備援。 Azure 會接著在具有不同電源、網路和伺服器元件的個別容錯網域中，建立這些 VM 和磁碟。
+若要防止應用程式工作負載由於磁碟或 VM 暫時無法使用而停機，客戶可以使用[可用性設定組](./manage-availability.md)。 可用性設定組中的兩個或多個虛擬機器提供應用程式的備援。 Azure 會接著在具有不同電源、網路和伺服器元件的個別容錯網域中，建立這些 VM 和磁碟。
 
 因為有個別的容錯網域，當地語系化的硬體失敗通常不會同時影響組合中的多個 VM。 擁有個別的容錯網域可提高應用程式的可用性。 使用可用性設定組是在需要高可用性時的最佳做法。 下一節說明災害復原方面。
 
@@ -77,7 +77,7 @@ Azure 平台對當地語系化失敗的內建保護，在發生導致大規模�
 - 資料必須是受保護且可復原的。
 - 伺服器必須可供使用。
 
-災害復原方案可能需要在與備份不同的區域中維護資料庫複本。 根據伺服器可用性和資料復原的需求，此解決方案的涵蓋範圍從「主動對主動」或「主動對被動」複本網站，到定期離線備份資料。 SQL Server 和 Oracle 等關聯式資料庫提供各種複寫選項。 若是 SQL Server，請使用 [SQL Server Always On 可用性群組](https://msdn.microsoft.com/library/hh510230.aspx)來取得高可用性。
+災害復原方案可能需要在與備份不同的區域中維護資料庫複本。 根據伺服器可用性和資料復原的需求，此解決方案的涵蓋範圍從「主動對主動」或「主動對被動」複本網站，到定期離線備份資料。 SQL Server 和 Oracle 等關聯式資料庫提供各種複寫選項。 若是 SQL Server，請使用 [SQL Server Always On 可用性群組](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)來取得高可用性。
 
 MongoDB 之類的 NoSQL 資料庫也支援以[複本](https://docs.mongodb.com/manual/replication/)進行備援。 使用高可用性複本。
 
@@ -201,7 +201,7 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 
 1. 建立每個虛擬硬碟 Blob 的快照集，只需幾秒鐘的時間。
 
-    若要建立快照集，您可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.storage)、[Azure 儲存體 REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx)、[Azure CLI](/cli/azure/)，或其中一個 Azure 儲存體用戶端程式庫，例如[適用於 .NET 的儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/hh488361.aspx)。
+    若要建立快照集，您可以使用 [PowerShell](/powershell/module/az.storage)、[Azure 儲存體 REST API](/rest/api/storageservices/Snapshot-Blob)、[Azure CLI](/cli/azure/)，或其中一個 Azure 儲存體用戶端程式庫，例如[適用於 .NET 的儲存體用戶端程式庫](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)。
 
 1. 啟動 VM，這會結束停機時間。 整個程序通常會在幾分鐘內完成。
 
@@ -224,7 +224,7 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 
 ### <a name="recovery-from-snapshots"></a>從快照集復原
 
-若要擷取快照集，請加以複製以建立新的 Blob。 如果您要從主要帳戶複製快照集，您可以將快照集複製到快照集的基底 Blob。 此程序會將磁碟還原至快照集。 這個程序稱為升級快照集。 如果您要從次要帳戶 (在本例中為存取權限異地備援儲存體) 複製快照集備份，則必須將它複製到主要帳戶。 您可以[使用 PowerShell](https://docs.microsoft.com/powershell/module/az.storage) 或使用 AzCopy 公用程式來複製快照集。 如需詳細資訊，請參閱[使用 AzCopy 命令列公用程式傳輸資料](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)。
+若要擷取快照集，請加以複製以建立新的 Blob。 如果您要從主要帳戶複製快照集，您可以將快照集複製到快照集的基底 Blob。 此程序會將磁碟還原至快照集。 這個程序稱為升級快照集。 如果您要從次要帳戶 (在本例中為存取權限異地備援儲存體) 複製快照集備份，則必須將它複製到主要帳戶。 您可以[使用 PowerShell](/powershell/module/az.storage) 或使用 AzCopy 公用程式來複製快照集。 如需詳細資訊，請參閱[使用 AzCopy 命令列公用程式傳輸資料](../storage/common/storage-use-azcopy-v10.md)。
 
 如果 VM 有多個磁碟，您必須複製屬於同一個一致還原點的所有快照集。 將快照集複製到可寫入的 VHD Blob 後，您就可以使用 Blob 透過 VM 的範本重新建立 VM。
 
@@ -259,10 +259,9 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 
 如需詳細資訊，請參閱[如果 Azure 儲存體發生中斷怎麼辦](../storage/common/storage-disaster-recovery-guidance.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱 [使用增量快照備份 Azure 非受控虛擬機器磁片](linux/incremental-snapshots.md)。
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-

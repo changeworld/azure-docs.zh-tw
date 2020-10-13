@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610053"
 ---
 # <a name="initiate-a-storage-account-failover"></a>起始儲存體帳戶容錯移轉
@@ -29,7 +29,7 @@ ms.locfileid: "91610053"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您的儲存體帳戶已設定為進行異地複寫。 您的儲存體帳戶可以使用下列任何一種冗余選項：
 

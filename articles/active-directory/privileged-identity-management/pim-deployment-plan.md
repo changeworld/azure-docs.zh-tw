@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050194"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
@@ -351,7 +351,7 @@ ms.locfileid: "89050194"
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。
 1. 選取 [ **Azure 資源** ]，然後選取您想要復原的訂用帳戶或資源。
-1. 選取 [角色]****。
+1. 選取 [角色]。
 1. 針對您已設定的每個角色，為具有合格指派的所有使用者選取省略號 (**...**) 。
 1. 選取 [ **設為永久** ] 選項，讓角色指派永久。
 

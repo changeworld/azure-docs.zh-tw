@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
 ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826169"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>使用 Azure 資訊安全中心 Microsoft Defender 進階威脅防護
@@ -126,7 +126,7 @@ Office 365 GCC 客戶已停用使用此整合的伺服器端點監視。
 
 1. 從 [調查] 視窗中，選取要移至 Microsoft Defender ATP 入口網站的連結。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 資訊安全中心所支援的功能和平台](security-center-os-coverage.md)
 - [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)：了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。

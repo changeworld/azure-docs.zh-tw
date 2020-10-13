@@ -15,10 +15,10 @@ ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89067819"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用預存程序活動執行 SSIS 套件
@@ -98,7 +98,7 @@ ms.locfileid: "89067819"
         ![Azure SQL Database 的連結服務](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. 在 [屬性] 視窗中，從 [ **SQL 帳戶**] 索引標籤切換至 [**預存**程式] 索引標籤，然後執行下列步驟： 
 
-    1. 選取 [編輯]  。 
+    1. 選取 [編輯]。 
     2. 對於 [預存程序名稱]****，輸入 `sp_executesql`。 
     3. 按一下 [預存程序參數]**** 區段中的 [+ 新增]****。 
     4. 對於參數的 [名稱]****，輸入 **stmt**。 
@@ -117,7 +117,7 @@ ms.locfileid: "89067819"
     ![驗證管線](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. 按一下 [全部發行]**** 按鈕，將管線發行至資料處理站。 
 
-    ![發行](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![發佈](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>執行並監視管線
 在本節中，您會觸發管線執行，然後監視執行的情況。 
@@ -127,7 +127,7 @@ ms.locfileid: "89067819"
     ![立即觸發](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
 
 2. 在 [管線執行] 視窗中，選取 [完成]。 
-3. 切換至左側的 [監視]  索引標籤。 您會看到管線執行、其狀態，以及其他資訊 (例如執行開始時間)。 若要重新整理檢視，按一下 [重新整理]****。
+3. 切換至左側的 [監視] 索引標籤。 您會看到管線執行、其狀態，以及其他資訊 (例如執行開始時間)。 若要重新整理檢視，按一下 [重新整理]****。
 
     ![管線執行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
@@ -194,7 +194,7 @@ ms.locfileid: "89067819"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為**參與者**或**擁有者**角色，或是 Azure 訂用帳戶的**管理員**。
-* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+* 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>建立 Azure SQL Database 連結服務
 建立連結服務，將裝載 SSIS 目錄的資料庫連結至您的 data factory。 資料處理站使用此連結服務中的資訊連線到 SSISDB 資料庫，並執行預存程序來執行 SSIS 套件。 

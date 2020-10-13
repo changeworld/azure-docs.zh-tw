@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e62da791e8c60f884855fba16315a03fe22cecb5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450696"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940322"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>適用于 Azure Load Balancer 的 Azure 安全性基準
 
@@ -98,7 +98,7 @@ Standard Load Balancer 的設計預設為安全的，並且是私人和隔離虛
 使用資訊安全中心的彈性網路強化功能來建議網路安全性群組設定，以根據實際流量和威脅情報來限制埠和來源 Ip。
  
 
-- [使用 Azure 入口網站管理 Azure DDoS 保護標準](https://docs.microsoft.com/azure/virtual-network/manage-ddos`protection)
+- [使用 Azure 入口網站管理 Azure DDoS 保護標準](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [以 Azure 防火牆威脅情報為主的篩選](https://docs.microsoft.com/azure/firewall/threat-intel)
 

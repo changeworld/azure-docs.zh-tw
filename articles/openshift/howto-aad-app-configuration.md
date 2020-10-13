@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470080"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>適用于 Azure Red Hat OpenShift 的 Azure Active Directory 整合
@@ -117,7 +117,7 @@ Microsoft Azure Red Hat OpenShift 需要代表您的叢集中執行工作的許�
 * [Azure Active Directory 中的應用程式和服務主體物件](../active-directory/develop/app-objects-and-service-principals.md)
 * [快速入門：向 Azure Active Directory v1.0 端點註冊應用程式](../active-directory/develop/quickstart-register-app.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您已符合所有 [Azure Red Hat OpenShift 必要條件](howto-setup-environment.md)，您就可以開始建立您的第一個叢集！
 

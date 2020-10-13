@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950cc16cd8661ee4e509cf14d12f561cb29c4ea
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236568"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940700"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 ---
 
-## <a name="sql-managed-instance-new-features-and-known-issues"></a>SQL 受控執行個體的新功能和已知問題
+## <a name="new-features"></a>新功能
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL 受控執行個體 H2 2019 更新
 
@@ -93,10 +93,11 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
   - 新的內建 [實例參與者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) 可將責任 (SoD) 合規性與安全性原則和符合企業標準的合規性分開。
   - 您可以在下列 Azure Government 區域中取得 SQL 受控執行個體，以 GA (US Gov 德克薩斯州、US Gov 亞利桑那州) 以及中國北部2和中國東部2。 也可在下列公用區域中使用：澳大利亞中部、澳大利亞中部2、巴西南部、法國南部、阿拉伯聯合大公國中部、阿拉伯聯合大公國北部、南非北部、南非西部。
 
-### <a name="known-issues"></a>已知問題
+## <a name="known-issues"></a>已知問題
 
 |問題  |探索日期  |狀態  |解決日期  |
 |---------|---------|---------|---------|
+|[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)在 azure SQL 中， `BACKUP` / `RESTORE` 受控執行個體中的語句無法使用 Azure AD 管理身分識別來向 Azure 儲存體進行驗證|Sep 2020|有因應措施||
 |[服務主體無法存取 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020年8月|有因應措施||
 |[還原沒有總和檢查碼的手動備份可能會失敗](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解決|2020 年 6 月|
 |[在修改、停用或啟用現有的作業時，代理程式變成沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解決|2020 年 6 月|
@@ -124,6 +125,21 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |如果源資料庫包含記憶體內部 OLTP 物件，則從商務關鍵層還原至一般用途層的時間點資料庫還原將不會成功。||已解決|10月2019|
 |具有外部 (非 Azure) mail 伺服器使用安全連線的 Database mail 功能||已解決|10月2019|
 |SQL 受控執行個體不支援包含的資料庫||已解決|2019年8月|
+
+### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT 和備份/還原語句無法使用受控識別來存取 Azure 儲存體
+
+Bulk insert 語句無法使用 `DATABASE SCOPED CREDENTIAL` With 受控識別來向 Azure 儲存體進行驗證。 若要解決此問題，請切換到共用存取簽章驗證。 下列範例將無法在 Azure SQL (資料庫和受控執行個體) 上運作：
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
+GO
+CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
+  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/curriculum', CREDENTIAL= msi_cred );
+GO
+BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
+```
+
+因應**措施：使用**[共用存取簽章來對儲存體進行驗證](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>服務主體無法存取 Azure AD 和 AKV
 

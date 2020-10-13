@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/12/2018
 ms.author: erhopf
-ms.openlocfilehash: 777b2608cf5f326556dfaea307f4f3e9346213f8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d5b95c8d71cf3d4830a2fe5eb6442ef479c9fab6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66482391"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654437"
 ---
 1. 啟動 Visual Studio 2019。
 
@@ -29,7 +29,7 @@ ms.locfileid: "66482391"
 
 1. 在右上角的 [套件來源]  欄位中，選取 [nuget.org]  。搜尋 `Microsoft.CognitiveServices.Speech` 套件，然後將它安裝到 **helloworld** 專案。
 
-   ![管理解決方案套件對話方塊的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "安裝 NuGet 套件")
+   ![顯示 [管理解決方案套件] 對話方塊的螢幕擷取畫面。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "安裝 NuGet 套件")
 
 1. 接受顯示的授權，才會開始安裝 NuGet 套件。
 

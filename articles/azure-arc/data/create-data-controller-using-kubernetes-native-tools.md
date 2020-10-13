@@ -10,17 +10,17 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91661052"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具建立 Azure Arc 資料控制器
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 請參閱 [建立 Azure Arc 資料控制器](create-data-controller.md) 的主題，以取得總覽資訊。
 
@@ -169,7 +169,7 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 視需要編輯下列內容：
 
-**必填**
+**REQUIRED**
 - **位置**：將此變更為將儲存資料控制器 _中繼資料_ 的 Azure 位置。  您可以在 [建立資料控制器總覽](create-data-controller.md) 文章中查看可用的 Azure 位置清單。
 - **resourceGroup**：您要在 Azure Resource Manager 中建立資料控制器 azure 資源的 azure 資源群組。  此資源群組通常應該已經存在，但在您將資料上傳至 Azure 之前，並不需要此資源群組。
 - **訂**用帳戶：您要在其中建立 azure 資源之訂用帳戶的 azure 訂用帳戶 GUID。
