@@ -4,12 +4,12 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841436"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876204"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -150,7 +150,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 大部分的設定欄位都命名為，因此可以預設為 false。 除了以外，所有欄位都是選擇性的 `instrumentationKey` 。
 
 | 名稱 | 預設 | 描述 |
@@ -200,6 +200,41 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ajaxPerfLookupDelay | 25 | 預設為25毫秒。 重新嘗試尋找 windows 之前要等候的時間量。要求的效能 `ajax` 時間，以毫秒為單位，並直接傳遞給 setTimeout ( # A1。
 | enableUnhandledPromiseRejectionTracking | false | 若為 true，將會實驗自動收集未處理的承諾遭到拒絕，並將其報告為 JavaScript 錯誤。 當 disableExceptionTracking 為 true 時 (不會追蹤) 的例外狀況，將會忽略設定值，而且不會報告未處理的承諾拒絕。
 
+## <a name="enable-time-on-page-tracking"></a>啟用頁面追蹤時間
+
+藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者花在每個頁面上的時間。 在每個新的 PageView 上，使用者花費在 *上一頁* 的持續時間會以名為的 [自訂](../platform/metrics-custom-overview.md) 計量來傳送 `PageVisitTime` 。 此自訂計量可在 [計量瀏覽器](../platform/metrics-getting-started.md) 中查看為「記錄式度量」。
+
+## <a name="enable-correlation"></a>啟用相互關聯
+
+相互關聯會產生和傳送資料，以啟用分散式追蹤並提供 [應用程式對應](../app/app-map.md)、 [端對端交易視圖](../app/app-map.md#go-to-details)及其他診斷工具。
+
+下列範例會顯示啟用相互關聯所需的所有可能設定，以及下列案例特定附注：
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+如果與用戶端通訊的任何協力廠商伺服器無法接受 `Request-Id` 和 `Request-Context` 標頭，而且您無法更新其設定，則您必須透過 configuration 屬性將它們放入排除清單中 `correlationHeaderExcludeDomains` 。 這個屬性支援萬用字元。
+
+伺服器端必須能夠接受與這些標頭存在的連接。 視伺服器端的設定而 `Access-Control-Allow-Headers` 定，通常必須以手動方式加入和來延伸伺服器端清單 `Request-Id` `Request-Context` 。
+
+存取控制-允許-標頭： `Request-Id` 、 `Request-Context` 、 `<your header>`
+
+> [!NOTE]
+> 如果您使用的是 OpenTelemtry Application Insights 或2020或更新版本中發行的 Sdk，我們建議使用 [WC3 TraceCoNtext](https://www.w3.org/TR/trace-context/)。 請參閱 [這裡](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的設定指引。
+
 ## <a name="single-page-applications"></a>單一頁面應用程式
 
 根據預設，此 SDK **不** 會處理在單一頁面應用程式中發生的以狀態為基礎的路由變更。 若要為您的單一頁面應用程式啟用自動路由變更追蹤，您可以新增 `enableAutoRouteTracking: true` 至您的安裝程式設定。
@@ -208,10 +243,6 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 > [!NOTE]
 > `enableAutoRouteTracking: true`只有當您**未**使用回應外掛程式時，才使用。 兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都啟用，可能會傳送重複的 PageViews。
 
-## <a name="configuration-autotrackpagevisittime"></a>設定： autoTrackPageVisitTime
-
-藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者花在每個頁面上的時間。 在每個新的 PageView 上，使用者花費在 *上一頁* 的持續時間會以名為的 [自訂](../platform/metrics-custom-overview.md) 計量來傳送 `PageVisitTime` 。 此自訂計量可在 [計量瀏覽器](../platform/metrics-getting-started.md) 中查看為「記錄式度量」。
-
 ## <a name="extensions"></a>延伸模組
 
 | 延伸模組 |
@@ -219,38 +250,6 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md) \(英文\)|
 | [Angular](javascript-angular-plugin.md) |
-
-## <a name="correlation"></a>Correlation
-
-用戶端與伺服器端的相互關聯支援：
-
-- XHR/AJAX 要求 
-- 提取要求 
-
-和要求 **不支援** 用戶端與伺服器端的相互關聯 `GET` `POST` 。
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>啟用用戶端 AJAX 與伺服器要求之間的跨元件相互關聯
-
-若要啟用 `CORS` 相互關聯，用戶端必須傳送兩個額外的要求標頭 `Request-Id` ，而且伺服器端必須能夠 `Request-Context` 接受具有這些標頭的連接。 傳送這些標頭是透過 JavaScript SDK 設定內的設定來啟用 `enableCorsCorrelation: true` 。 
-
-視伺服器端的設定而 `Access-Control-Allow-Headers` 定，通常必須以手動方式加入和來延伸伺服器端清單 `Request-Id` `Request-Context` 。
-
-存取控制-允許-標頭： `Request-Id` 、 `Request-Context` 、 `<your header>`
-
-如果與用戶端通訊的任何協力廠商伺服器無法接受 `Request-Id` 和 `Request-Context` 標頭，而且您無法更新其設定，則您必須透過 configuration 屬性將它們放入排除清單中 `correlationHeaderExcludeDomains` 。 這個屬性支援萬用字元。
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
 
 ## <a name="explore-browserclient-side-data"></a>探索瀏覽器/用戶端資料
 

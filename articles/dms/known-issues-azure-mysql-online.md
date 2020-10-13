@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330327"
+ms.locfileid: "91893742"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務，對適用于 MySQL 的 Azure DB 進行線上遷移問題 & 限制
 
@@ -82,12 +82,12 @@ ms.locfileid: "91330327"
 
     **因應措施**：使用不是 LOB 的其他資料類型或資料行，取代主索引鍵。
 
-- **限制**：如果大型物件 (LOB) 資料行的長度大於 32 KB，目標的資料可能會遭到截斷。 您可以使用以下查詢，檢查 LOB 資料行的長度：
+- **限制**：如果大型物件 (LOB) 資料行的長度大於「限制 LOB 大小」參數 (不應大於 64 KB) ，則可能會在目標上截斷資料。 您可以使用以下查詢，檢查 LOB 資料行的長度：
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    因應**措施：如果**您的 LOB 物件大於 32 KB，請聯絡[Microsoft Azure 資料庫移轉](mailto:AskAzureDatabaseMigrations@service.microsoft.com)的工程小組。
+    因應**措施：如果**您的 LOB 物件大於 64 KB，請使用「允許無限制的 lob 大小」參數。 請注意，使用「允許無限制的 LOB 大小」參數的遷移將會比使用「限制 LOB 大小」參數進行遷移慢。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>從 AWS RDS MySQL 線上遷移時的限制
 

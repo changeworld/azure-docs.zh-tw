@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
 ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448806"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
@@ -205,7 +205,7 @@ ms.locfileid: "91448806"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> SQL Database 和 SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 Azure Resource Manager 模組中之命令的引數，是相當大的範圍。
+> SQL Database 和 SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 Azure Resource Manager 模組中之命令的引數，是相當大的範圍。
 
 #### <a name="sql-database"></a>SQL Database
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
 ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448589"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
@@ -71,7 +71,7 @@ ms.locfileid: "91448589"
 
     ![Import Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. 建立 Runbook 後，它會自動進入編輯模式。  選取 [發佈] 。
+5. 建立 Runbook 後，它會自動進入編輯模式。  選取 [發佈]  。
 
     ![發佈 Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "91448589"
 
 這些參數是在 runbook PowerShell 腳本中定義。  執行 web 活動時，會 WEBHOOKDATA 傳遞的 JSON 承載。
 
-這會還原序列化並儲存為 PowerShell 參數，然後由 ProcesASDatabase PowerShell 命令使用。
+這會還原序列化並儲存為 PowerShell 參數，然後 Invoke-ProcesASDatabase PowerShell 命令會使用這些參數。
 
 ![已還原序列化的 Webhook](./media/analysis-services-refresh-azure-automation/20.png)
 

@@ -16,10 +16,10 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449372"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
@@ -75,7 +75,7 @@ Linux 有數個不同的 I/O 排程模式。 Linux 廠商和 SAP 的一般建議
 Azure 寫入加速器是專用於 Azure M 系列 VM 的功能。 如同名稱所示，功能的目的是要改善對 Azure premium 儲存體進行寫入的 i/o 延遲。 針對 SAP HANA，Write Accelerator 只支援用於 **/hana/log** 磁碟區。 因此， **/hana/data** 和 **/hana/log** 是不同的磁碟區，而 Azure 寫入加速器僅支援 **/hana/log** 磁碟區。 
 
 > [!IMPORTANT]
-> 使用 Azure premium 儲存體時， **/hana/log**磁片區的 azure[寫入加速器](../../how-to-enable-write-accelerator.md)使用方式是必要的。 寫入加速器僅適用于 premium 儲存體和 M 系列和 Mv2 系列 Vm。 寫入加速器無法與其他 Azure VM 系列（例如 Esv3 或 Edsv4）搭配使用。
+> 使用 Azure premium 儲存體時， **/hana/log**磁片區的 azure[寫入加速器](../../how-to-enable-write-accelerator.md)使用方式是必要的。 寫入加速器僅適用于 premium 儲存體和 M 系列和 Mv2-Series Vm。 寫入加速器無法與其他 Azure VM 系列（例如 Esv3 或 Edsv4）搭配使用。
 
 下列 Azure premium 磁片的快取建議假設 SAP Hana 的 i/o 特性，如下所示：
 
@@ -88,7 +88,7 @@ Azure 寫入加速器是專用於 Azure M 系列 VM 的功能。 如同名稱所
 **建議：由於 SAP Hana 觀察到的 i/o 模式，因此使用 Azure premium 儲存體的不同磁片區快取應設定如下：**
 
 - **/hana/data** -無快取或讀取快取
-- **/hana/log** -無快取-必須啟用 Azure 寫入加速器之 M 和 Mv2 系列 vm 的例外狀況 
+- **/hana/log** -無快取-M 的例外狀況，以及應啟用 Azure 寫入加速器 Mv2-Series vm 
 - **/hana/shared**：讀取快取
 - **OS 磁片** -請勿變更 AZURE 在 VM 建立時所設定的預設快取
 

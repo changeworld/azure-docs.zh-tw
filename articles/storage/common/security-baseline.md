@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715152"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
@@ -316,7 +316,7 @@ ms.locfileid: "91715152"
 
 **責任**：客戶
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一 Sign-On (SSO) 
 
 **指導**方針：可能的話，請使用 Azure Active Directory SSO，而不是針對個別服務設定個別的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。 
 
@@ -960,7 +960,7 @@ ms.locfileid: "91715152"
 
 您也可以啟用 Azure 自動化，以取得 blob 的一般快照集。
 
-- [瞭解 Azure 儲存體的冗余和服務等級協定](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [瞭解 Azure 儲存體的冗余和 Service-Level 協定](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 - [建立 blob 的快照集](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 

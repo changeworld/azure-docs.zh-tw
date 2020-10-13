@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
 ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449328"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
@@ -81,9 +81,9 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
    - 針對 [活動記錄檔]，按一下 [ **Azure 監視器**] 功能表中的 [**活動記錄**]，然後按一下 [**診斷設定**]。 請務必停用活動記錄的任何舊版設定。 如需詳細資料，請參閱 [停用現有的設定](./activity-log.md#legacy-collection-methods) 。
 
-        ![在 [監視-活動記錄] 功能表列中，已選取 [活動記錄] 和 [診斷設定] 的 [Azure 監視器] 功能表的螢幕擷取畫面。](media/diagnostic-settings/menu-activity-log.png)
+        ![[Azure 監視器] 功能表的螢幕擷取畫面，其中已選取 [活動記錄] 和 [Monitor-Activity 記錄] 功能表列中醒目提示的診斷設定。](media/diagnostic-settings/menu-activity-log.png)
 
-2. 如果您選取的資源上沒有任何設定，系統會提示您建立設定。 按一下「新增診斷設定」****。
+2. 如果您選取的資源上沒有任何設定，系統會提示您建立設定。 按一下「新增診斷設定」  。
 
    ![新增診斷設定 - 無現有的設定](media/diagnostic-settings/add-setting.png)
 
@@ -128,7 +128,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將 *WorkflowRuntime* 的保留原則設定為180天，然後將其設定為365天，則在這前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄將會在365天后自動刪除。 稍後變更保留原則時，不會讓前24小時的記錄保留大約365天。
 
-6. 按一下 [儲存]。
+6. 按一下 **[儲存]** 。
 
 經過幾分鐘之後，新的設定就會出現在此資源的設定清單中，並在產生新的事件資料時，將記錄串流處理至指定的目的地。 當事件發出和 [記錄在 Log Analytics 工作區中出現](data-ingestion-time.md)時，最多可能需要15分鐘的時間。
 

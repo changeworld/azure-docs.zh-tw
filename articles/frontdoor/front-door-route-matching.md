@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449201"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>如何將要求與路由規則進行比對
@@ -48,7 +48,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明此程序，讓我們看看 Front Door 路由 (僅左邊) 的範例設定：
 
-| 路由規則 | 前端主機 | 路徑 |
+| 路由規則 | 前端主機 | Path |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
@@ -78,7 +78,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明，讓我們看看另一組範例：
 
-| 路由規則 | 前端主機    | 路徑     |
+| 路由規則 | 前端主機    | Path     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -112,7 +112,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 >
 > 範例設定：
 >
-> | 路由 | 主機             | 路徑    |
+> | 路由 | 主機             | Path    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >

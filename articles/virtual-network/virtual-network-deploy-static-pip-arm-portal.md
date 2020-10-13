@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
 ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448638"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站建立具有靜態公用 IP 位址的虛擬機器
@@ -41,9 +41,9 @@ ms.locfileid: "91448638"
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [使用現有項目]，然後選取 [myResourceGroup]。|
-    |Location| 選取 [美國東部]****|
+    |Location| 選取 [美國東部]|
 
-4. 選取 VM 的大小，然後選取 [選取]****。
+4. 選取 VM 的大小，然後選取 [選取]。
 5. 在 [設定]**** 之下，選取 [公用 IP 位址]****。
 6. 輸入 *myPublicIpAddress*，選取 [靜態]****，然後選取 [確定]****，如下圖所示：
 

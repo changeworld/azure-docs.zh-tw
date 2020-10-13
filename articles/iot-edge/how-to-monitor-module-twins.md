@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876153"
 ---
 # <a name="monitor-module-twins"></a>監視模組對應項
 
@@ -168,15 +168,15 @@ Azure IoT 中樞中的模組 twins，可監視 IoT Edge 部署的連線能力和
 
 您自訂模組連接的相關資訊會保留在 IoT Edge agent 模組對應項中。 您自訂模組的模組對應項主要用於維護解決方案的資料。 您在 deployment.js檔案中定義的所需屬性會反映在模組對應項中，而您的模組可以視需要更新報告的屬性值。
 
-您可以使用慣用的程式設計語言搭配 [Azure IoT 中樞裝置 sdk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) ，根據模組的應用程式程式碼，更新模組對應項中報告的屬性值。 下列程式使用 Azure SDK for .NET 來執行這項作業，方法是使用 [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) 模組中的程式碼：
+您可以使用慣用的程式設計語言搭配 [Azure IoT 中樞裝置 sdk](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) ，根據模組的應用程式程式碼，更新模組對應項中報告的屬性值。 下列程式使用 Azure SDK for .NET 來執行這項作業，方法是使用 [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) 模組中的程式碼：
 
-1. 使用[CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync)方法建立[ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient)的實例。
+1. 使用[CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync)方法建立[ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient)的實例。
 
-1. 使用 [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) 方法取得模組對應項的屬性集合。
+1. 使用 [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) 方法取得模組對應項的屬性集合。
 
-1. 使用 [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet) 方法，建立接聽程式 (傳遞回呼) 來攔截所需屬性的變更。
+1. 使用 [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) 方法，建立接聽程式 (傳遞回呼) 來攔截所需屬性的變更。
 
-1. 在您的回呼方法中，使用 [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) 方法來更新模組對應項中報告的屬性，並傳遞您要設定的屬性值 [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) 。
+1. 在您的回呼方法中，使用 [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) 方法來更新模組對應項中報告的屬性，並傳遞您要設定的屬性值 [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) 。
 
 ## <a name="access-the-module-twins"></a>存取模組 twins
 

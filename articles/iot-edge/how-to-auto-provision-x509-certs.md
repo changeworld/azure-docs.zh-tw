@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447752"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證來建立和布建 IoT Edge 裝置
 
-使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../iot-dps/index.yml)，您可以使用 x.509 憑證自動布建 IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱布建 [總覽，](../iot-dps/about-iot-dps.md#provisioning-process) 再繼續進行。
+使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../iot-dps/index.yml)，您可以使用 x.509 憑證自動布建 IoT Edge 裝置。 如果您不熟悉自動佈建程序，請先檢閱[佈建](../iot-dps/about-iot-dps.md#provisioning-process)概觀，再繼續作業。
 
 本文說明如何使用下列步驟，在 IoT Edge 裝置上使用 x.509 憑證來建立裝置布建服務註冊：
 
@@ -116,7 +116,7 @@ Windows：
       }
       ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 繼續進行 [IoT Edge 執行時間安裝](#install-the-iot-edge-runtime) 一節，以設定您的 IoT Edge 裝置。
 
@@ -142,7 +142,7 @@ Windows：
 
    如果您使用的是示範憑證，請上傳 `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` 憑證。
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. 現在您的憑證應該會列在 [ **憑證** ] 頁面上。 選取它來開啟憑證詳細資料。
 
@@ -201,13 +201,13 @@ Windows：
       }
       ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。 繼續進行下一節，以設定您的 IoT Edge 裝置。
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 
-IoT Edge 執行階段會部署在所有 IoT Edge 裝置上。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
+IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
 
 只有 IoT Edge 版本1.0.9 或更新版本才支援使用 DPS 布建 x.509。
 
@@ -279,7 +279,7 @@ sudo systemctl restart iotedge
    ```
 
    >[!TIP]
-   >Yaml 檔案會將您的憑證和金鑰資訊儲存為檔案 Uri。 不過，IoTEdge 命令會為您處理此格式化步驟，因此您可以在裝置上提供憑證和金鑰檔案的絕對路徑。
+   >Yaml 檔案會將您的憑證和金鑰資訊儲存為檔案 Uri。 不過，Initialize-IoTEdge 命令會為您處理此格式化步驟，因此您可以在裝置上提供憑證和金鑰檔案的絕對路徑。
 
 ## <a name="verify-successful-installation"></a>確認安裝成功
 
