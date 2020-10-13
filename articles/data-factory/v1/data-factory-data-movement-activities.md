@@ -13,10 +13,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195974"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用複製活動來移動資料
@@ -27,7 +27,7 @@ ms.locfileid: "84195974"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的複製活動](../copy-activity-overview.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在 Azure Data Factory 中，您可以使用「複製活動」在內部部署與雲端資料存放區之間複製資料。 複製資料之後，可以將它進一步轉換及進行分析。 您也可以使用「複製活動」來發佈商業智慧 (BI) 及應用程式使用情況的轉換和分析結果。
 
 ![複製活動的角色](media/data-factory-data-movement-activities/copy-activity.png)
@@ -137,7 +137,7 @@ Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用�
 「Data Factory 複製精靈」可協助您建立具有「複製活動」的管線。 此管線可讓您在「不需要」為連結服務、資料集及管線「撰寫 JSON」 ** 定義的情況下，將資料從支援的來源複製到目的地。 如需有關此精靈的詳細資料，請參閱 [Data Factory 複製精靈](data-factory-copy-wizard.md) 。  
 
 ### <a name="by-using-json-scripts"></a>透過使用 JSON 指令碼
-您可以使用 Visual Studio 中的 Data Factory 編輯器，或 Azure PowerShell 來建立管線的 JSON 定義（藉由使用複製活動）。 然後，您可以部署它以在 Data Factory 中建立管線。 如需含有逐步指示的教學課程，請參閱 [教學課程：在 Azure Data Factory 管線中使用複製活動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。    
+您可以使用 Visual Studio 中的 Data Factory 編輯器，或 Azure PowerShell 使用複製活動) 建立管線 (的 JSON 定義。 然後，您可以部署它以在 Data Factory 中建立管線。 如需含有逐步指示的教學課程，請參閱 [教學課程：在 Azure Data Factory 管線中使用複製活動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。    
 
 JSON 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。 活動的 `typeProperties` 區段中可用的屬性會因每個活動類型的不同而有所不同。
 
@@ -210,6 +210,6 @@ JSON 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) �
 
 資料存放區從原生類型系統到 .NET 類型的對應，位於個別的資料存放區文章中。 (按一下「支援的資料存放區」表格中的特定連結)。 您可以在建立資料表時，使用這些對應來判斷適當的類型，以便讓「複製活動」能夠執行正確的轉換。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 若要深入了解複製活動，請參閱 [將資料從 Azure Blob 儲存體複製到 Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 * 若要了解如何將資料從內部部署資料存放區移到雲端資料存放區，請參閱 [將資料從內部部署資料存放區移到雲端資料存放區](data-factory-move-data-between-onprem-and-cloud.md)。

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578235"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 從事件中樞擷取資料
@@ -48,7 +48,7 @@ ms.locfileid: "91578235"
 
     ![[存取] 頁面的螢幕擷取畫面，其中包含 [加入] 選項、[選取使用者或群組] 選項，以及已呼叫的 Microsoft Eventhubs 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "指派 Data Lake Storage Gen1 根目錄的許可權")
     
-    按一下 [選取]。 
+    按一下 [選取]。
 
     c. 在 [指派權限]**** 下，按一下 [選取權限]****。 將 [權限]**** 設定為 [執行]****。 將 [新增至]**** 設定為 [此資料夾及所有子系]****。 將 [新增為]**** 設定為 [存取權限項目及預設權限項目]****。
 
@@ -57,7 +57,7 @@ ms.locfileid: "91578235"
 
     ![[指派許可權] 區段的螢幕擷取畫面，其中已呼叫 [選取許可權] 選項。[選取許可權] 區段旁邊有 [執行選項]、[加入至] 選項，以及 [新增為] 選項（稱為 out）。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "指派 Data Lake Storage Gen1 根目錄的許可權")
 
-    按一下 [確定]  。
+    按一下 [確定]。
 
 1. 為 Data Lake Storage Gen1 帳戶下要擷取資料的目的地資料夾指派權限。
 
@@ -69,13 +69,13 @@ ms.locfileid: "91578235"
 
     ![[資料瀏覽器] 存取頁面的螢幕擷取畫面，其中包含 [加入] 選項、[選取使用者或群組] 選項，以及已呼叫的 Microsoft Eventhubs 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "指派 Data Lake Storage Gen1 資料夾的許可權")
     
-    按一下 [選取]。 
+    按一下 [選取]。
 
     c. 在 [指派權限]**** 下，按一下 [選取權限]****。 將 [權限]**** 設定為 [讀取]、[寫入]**** 和 [執行]****。 將 [新增至]**** 設定為 [此資料夾及所有子系]****。 最後，將 [新增為]**** 設定為 [存取權限項目及預設權限項目]****。
 
     ![[指派許可權] 區段的螢幕擷取畫面，其中已呼叫 [選取許可權] 選項。[選取許可權] 區段旁邊有 [讀取]、[寫入] 和 [執行] 選項、[加入至] 選項，以及已呼叫的 [新增為] 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "指派 Data Lake Storage Gen1 資料夾的許可權")
     
-    按一下 [確定]  。 
+    按一下 [確定]。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>設定事件中樞，以將資料擷取到 Data Lake Storage Gen1
 

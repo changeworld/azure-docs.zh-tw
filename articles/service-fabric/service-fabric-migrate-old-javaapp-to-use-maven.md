@@ -7,18 +7,18 @@ ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327305"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新先前的 Java Service Fabric 應用程式，以從 Maven 擷取 Java 程式庫
-Service Fabric JAVA 二進位檔已從 Service Fabric JAVA SDK 移至 Maven 裝載。 您可以使用**mavencentral**來提取最新的 Service Fabric JAVA 相依性。 本指南將協助您更新使用 Yeoman 範本或 Eclipse 為 Service Fabric JAVA SDK 所建立的現有 JAVA 應用程式，以與 Maven 為基礎的組建相容。
+Service Fabric JAVA 二進位檔已從 Service Fabric JAVA SDK 移至 Maven 裝載。 您可以使用 **>mavencentral** 來提取最新的 Service Fabric JAVA 相依性。 本指南將協助您使用 Yeoman 範本或 Eclipse 來更新針對 Service Fabric JAVA SDK 建立的現有 JAVA 應用程式，使其與 Maven 架構的組建相容。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-1. 首先，卸載現有的 JAVA SDK。
+1. 首先，將現有的 JAVA SDK 卸載。
 
    ```bash
    sudo dpkg -r servicefabricsdkjava
@@ -483,7 +483,7 @@ task copyDeps<< {
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
 * [在 Linux 上使用適用於 Eclipse 的 Service Fabric 外掛程式建立和部署第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)

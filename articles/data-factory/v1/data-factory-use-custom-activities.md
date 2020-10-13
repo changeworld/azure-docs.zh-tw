@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997450"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure Data Factory 第1版管線中使用自訂活動
@@ -43,14 +43,14 @@ ms.locfileid: "88997450"
 > - 您不能使用自訂活動中的資料管理閘道來存取內部部署資料來源。 目前在 Data Factory 中，[資料管理閘道](data-factory-data-management-gateway.md)只支援複製活動和預存程序活動。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>逐步解說：建立自訂活動
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 * Visual Studio 2012/2013/2015/2017
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 的必要條件
 在逐步解說中，您會將 Azure Batch 當作計算資源使用來執行自訂 .NET 活動。 **Azure Batch** 是一項平台服務，可用於在雲端有效地執行大規模的平行和高效能運算 (HPC) 應用程式。 Azure Batch 會排定要在受管理 **的虛擬機器集合**上執行的計算密集型工作，並可自動調整計算資源以符合您的作業需求。 請參閱 [Azure Batch 基本知識][batch-technical-overview]文章，以取得 Azure Batch 服務的詳細概觀。
 
-在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 以下是步驟：
+在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 步驟如下：
 
 1. 使用[Azure 入口網站](https://portal.azure.com)建立**Azure Batch 帳戶**。 請參閱[建立和管理 Azure Batch 帳戶][batch-create-account]一文以取得指示。
 2. 記下 Azure Batch 帳戶名稱、帳戶金鑰、URI，以及集區名稱。 您需要它們來建立 Azure Batch 連結服務。
@@ -608,7 +608,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    請注意下列事項：
+    請注意下列幾點：
 
    * **Concurrency** 設定為 **2**，因此 Azure Batch 集區中會有 2 部 VM 以平行方式處理 2 個配量。
    * activities 區段中有一個活動，它的類型是： **DotNetActivity**。

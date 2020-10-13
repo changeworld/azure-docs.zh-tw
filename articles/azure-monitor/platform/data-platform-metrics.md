@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325605"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure 監視器中的計量
@@ -56,7 +56,7 @@ Azure 監視器計量所收集的資料會儲存在時間序列資料庫中，�
 
 ### <a name="network-throughput"></a>網路輸送量
 
-| Timestamp     | 計量值 |
+| 時間戳記     | 計量值 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |

@@ -1,6 +1,6 @@
 ---
-title: 設計用於資料修改的 Azure 資料表儲存體 |Microsoft Docs
-description: 在 Azure 資料表儲存體中設計資料修改的資料表。 優化插入、更新和刪除作業。 確保儲存實體中的一致性。
+title: 設計用來修改資料的 Azure 資料表儲存體 |Microsoft Docs
+description: 針對 Azure 資料表儲存體中的資料修改設計資料表。 優化插入、更新和刪除作業。 確定您儲存的實體中有一致性。
 services: storage
 ms.service: storage
 author: tamram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 25785bc4b945f469e67f2a71eb6676940e091d56
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236755"
 ---
 # <a name="design-for-data-modification"></a>資料修改的設計
@@ -33,10 +33,10 @@ ms.locfileid: "88236755"
 
 [資料表設計模式](table-storage-design-patterns.md) 一文中的下列模式說明管理一致性：  
 
-* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值來儲存每個實體的多個複本 (在相同的資料分割) 中，以使用不同的 **RowKey** 值來啟用快速且有效率的查閱和替代排序次序。  
+* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值在相同的資料分割中，儲存每個實體的多個複本 (在相同的資料分割) ，以使用不同的 **RowKey** 值來啟用快速且有效率的查閱和替代排序次序  
 * [間資料分割次要索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在個別資料分割或個別資料表中為每個實體儲存多個複本且使用不同 RowKey 值，透過使用不同的 **RowKey** 值，就能快速有效率地查閱和替代排序次序。  
 * [最終一致的交易模式](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) - 使用 Azure 佇列，跨資料分割界限或儲存體系統界限啟用最終一致的行為。
-* [索引實體模式](table-storage-design-patterns.md#index-entities-pattern) -維護索引實體，以啟用有效率的搜尋，以傳回實體清單。  
+* [索引實體模式](table-storage-design-patterns.md#index-entities-pattern) -維護索引實體以啟用有效率的搜尋，以傳回實體清單。  
 * [反正規化模式](table-storage-design-patterns.md#denormalization-pattern) - 將相關資料結合在單一實體中，讓您透過單點查詢擷取所有您所需的資料。  
 * [資料序列模式](table-storage-design-patterns.md#data-series-pattern) - 將完整資料序列儲存在單一實體中，以盡可能減少您提出的要求數。  
 

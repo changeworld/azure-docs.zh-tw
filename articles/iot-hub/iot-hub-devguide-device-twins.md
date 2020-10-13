@@ -12,15 +12,15 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327764"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解和使用 Azure IoT 中樞的裝置對應項
 
-*裝置 twins*是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 Azure IoT 中樞會維持連線到 IoT 中樞的每部裝置其裝置對應項。 
+*裝置 twins* 是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 Azure IoT 中樞會維持連線到 IoT 中樞的每部裝置其裝置對應項。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "87327764"
 
 * **報告屬性**。 搭配所需屬性使用，以便同步處理裝置的組態或狀況。 裝置應用程式可以設定報告的屬性，以及解決方案後端可以讀取並查詢它們。
 
-* **裝置身分識別屬性**。 裝置對應項 JSON 文件的根目錄包含來自對應之裝置身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。 `connectionStateUpdatedTime` `generationId` 將不會包含屬性和。
+* **裝置身分識別屬性**。 裝置對應項 JSON 文件的根目錄包含來自對應之裝置身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。 `connectionStateUpdatedTime` `generationId` 將不會包含屬性。
 
 ![裝置對應項屬性的螢幕擷取畫面](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "87327764"
 
 解決方案後端會使用下列不可部分完成的作業 (透過 HTTPS 公開) 來對裝置對應項進行操作︰
 
-* **依識別碼擷取裝置**對應項。 此作業會傳回裝置對應項文件，包括標籤以及所需屬性、報告屬性和系統屬性。
+* **依識別碼取得裝置**對應項。 此作業會傳回裝置對應項文件，包括標籤以及所需屬性、報告屬性和系統屬性。
 
 * **部份更新裝置對應項**。 此作業可讓解決方案後端局部地更新裝置對應項中的標籤或所需屬性。 部分更新會以 JSON 文件的形式來表示，以新增或更新任何屬性。 設定為 `null` 的屬性會遭到移除。 下列範例會以 `{"newProperty": "newValue"}` 值建立新的所需屬性、以 `"otherNewValue"` 覆寫 `existingProperty` 的現有值，並移除 `otherOldProperty`。 不會對現有的所需屬性或標籤進行任何變更︰
 
@@ -201,7 +201,7 @@ ms.locfileid: "87327764"
 
   - 主體
         
-    本節包含所有對應項變更 (JSON 格式)。 它使用與修補程式相同的格式，其差異在於它可以包含所有對應項區段：標籤、屬性（property）、所需的屬性（property）和包含 "$metadata" 元素。 例如
+    本節包含所有對應項變更 (JSON 格式)。 它會使用與修補程式相同的格式，差別在於它可以包含所有對應項區段：標記、屬性、所需的屬性，以及它包含 "$metadata" 元素。 例如，
 
     ```json
     {
@@ -234,7 +234,7 @@ ms.locfileid: "87327764"
 
 裝置應用程式會使用下列不可部分完成的作業來操作裝置對應項︰
 
-* **擷取裝置對應項**。 這項作業會針對目前連線的裝置傳回裝置對應項檔（包括所需和報告的系統屬性）。 （裝置應用程式看不到標記）。
+* **擷取裝置對應項**。 這項作業會傳回裝置對應項檔 (包括所需的報告系統屬性，以及目前連線裝置) 的系統屬性。 裝置應用程式看不到 (標記。 ) 
 
 * **部分更新的報告屬性**。 此作業可針對目前連線裝置的報告屬性進行部分更新。 此作業使用的 JSON 更新格式，與解決方案後端用於局部更新所需屬性的格式相同。
 
@@ -248,15 +248,15 @@ ms.locfileid: "87327764"
 
 標籤、所需屬性和報告屬性是具有下列限制的 JSON 物件：
 
-* **金鑰**： JSON 物件中的所有金鑰都是以 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
+* **金鑰**： JSON 物件中的所有索引鍵都是 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
 
-* **值**： json 物件中的所有值都可以是下列 JSON 類型：布林值、數位、字串、物件。 不允許使用陣列。
+* **值**： json 物件中的所有值都可以是下列 json 類型：布林值、數位、字串、物件。 不允許使用陣列。
 
-    * 整數的最小值可以是-4503599627370496，而最大值為4503599627370495。
+    * 整數最小值為-4503599627370496，最大值為4503599627370495。
 
-    * 字串值是以 UTF-8 編碼，且最大長度可以是 4 KB。
+    * 字串值為 UTF-8 編碼，最大長度可以是 4 KB。
 
-* **深度**：標記、所需屬性和報告屬性中的 JSON 物件深度上限為10。 例如，下列物件是有效的：
+* **深度**：標記、所需屬性和報告屬性中 JSON 物件的最大深度為10。 例如，下列物件有效：
 
    ```json
    {
@@ -290,21 +290,21 @@ ms.locfileid: "87327764"
 
 ## <a name="device-twin-size"></a>裝置對應項大小
 
-IoT 中樞在的值上強制執行 8 KB 的大小限制 `tags` ，以及每個和的值都有 32 kb 的大小限制 `properties/desired` `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
+IoT 中樞會在的值上強制執行 8 KB 大小的限制 `tags` ，且每個值的大小上限為 32 `properties/desired` kb `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
 
 對應項大小的計算方式如下：
 
-* 針對 JSON 檔中的每個屬性，IoT 中樞累積的計算，並加入屬性的索引鍵和值的長度。
+* 針對 JSON 檔中的每個屬性，IoT 中樞會累積計算並新增屬性的索引鍵和值的長度。
 
-* 屬性索引鍵會被視為以 UTF8 編碼的字串。
+* 屬性索引鍵會被視為 UTF8 編碼的字串。
 
-* 簡單的屬性值會視為 UTF8 編碼的字串、數值（8個位元組）或布林值（4個位元組）。
+* 簡單的屬性值會被視為 UTF8 編碼的字串、數值 (8 個位元組) ，或 (4 個位元組) 的布林值。
 
-* 以 UTF8 編碼的字串大小是藉由計算所有字元來計算，但不包括 UNICODE 控制字元（區段 C0 和 C1）。
+* UTF8 編碼字串的大小是藉由計算所有字元來計算，不包括 UNICODE 控制字元 (區段 C0 和 C1) 。
 
-* 複雜的屬性值（嵌套物件）是根據屬性索引鍵的匯總大小和其所包含的屬性值計算而得。
+*  (的嵌套物件) 的複雜屬性值會根據屬性索引鍵的匯總大小以及它們所包含的屬性值來計算。
 
-IoT 中樞會拒絕所有會增加 `tags` 、 `properties/desired` 或檔案大小高於限制的作業錯誤 `properties/reported` 。
+IoT 中樞會拒絕任何會增加 `tags` 、 `properties/desired` 或檔案大小超過限制的作業錯誤 `properties/reported` 。
 
 ## <a name="device-twin-metadata"></a>裝置對應項中繼資料
 
@@ -362,7 +362,7 @@ IoT 中樞會為裝置對應項所需屬性和報告屬性的每個 JSON 物件�
 ## <a name="optimistic-concurrency"></a>開放式並行存取
 
 標籤、所需屬性和報告屬性全都支援開放式並行存取。
-標記具有每個[依據 rfc7232](https://tools.ietf.org/html/rfc7232)的 ETag，代表標記的 JSON 標記法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
+標記具有 ETag （依 [>rfc7232](https://tools.ietf.org/html/rfc7232)），代表標記的 JSON 標記法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
 
 裝置對應項所需屬性和報告屬性沒有 ETag，但是有一定會遞增的 `$version` 值。 類似於 ETag，更新端可以使用版本強制達到更新的一致性。 例如，報告屬性的裝置應用程式或所需屬性的解決方案後端。
 
@@ -396,7 +396,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)一文針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已了解裝置對應項，接下來您可能會對下列 IoT 中樞開發人員指南主題感興趣︰
 

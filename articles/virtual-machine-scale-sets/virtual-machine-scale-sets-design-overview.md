@@ -11,10 +11,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648559"
 ---
 # <a name="design-considerations-for-scale-sets"></a>擴展集的設計考量
@@ -39,7 +39,7 @@ ms.locfileid: "88648559"
 - 您可以將個別 VM 從原生磁碟移轉至受控磁碟，但無法移轉擴展集中的 VM 執行個體。
 - 您可以將 IPv6 公用 IP 位址指派給個別 VM 虛擬網路介面卡 (NIC)，但無法針對擴展集中的 VM 執行個體執行此操作。 您可以將 IPv6 公用 IP 位址指派給個別 VM或擴展集 VM 之前的負載平衡器。
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>包含 Azure 受控磁碟的擴展集
 擴展集可以使用 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md)來建立，而不是傳統的 Azure 儲存體帳戶。 受控磁碟可提供下列優點：

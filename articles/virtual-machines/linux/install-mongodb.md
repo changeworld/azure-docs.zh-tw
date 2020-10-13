@@ -1,5 +1,5 @@
 ---
-title: 在具有 Azure CLI 的 Linux VM 上安裝 MongoDB
+title: 使用 Azure CLI 在 Linux VM 上安裝 MongoDB
 description: 了解如何使用 Azure CLI 在 Linux 虛擬機器上安裝及設定 MongoDB
 author: cynthn
 manager: gwallace
@@ -13,10 +13,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504614"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>如何在 Linux VM 上安裝及設定 MongoDB
@@ -208,7 +208,7 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 在這些範例中，您會從 VM 本機連線到 MongoDB 執行個體。 如果您想要從另一個 VM 或網路連線到 MongoDB 執行個體，請確定建立適當的[網路安全性群組規則](nsg-quickstart.md)。
 
 這些範例會部署核心 MongoDB 環境以用於開發用途。 請為您的環境套用必要的安全性設定選項。 如需詳細資訊，請參閱 [MongoDB 安全性文件](https://docs.mongodb.com/manual/security/) \(英文\)。

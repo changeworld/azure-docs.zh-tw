@@ -6,10 +6,10 @@ ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333115"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM 範本的常見問題
@@ -100,7 +100,7 @@ ms.locfileid: "91333115"
 
 * **您是否提供將 JSON 範本轉換成新範本語言的工具？**
 
-  可以。
+  是。
 
 ## <a name="template-specs"></a>範本規格
 
@@ -182,7 +182,7 @@ ms.locfileid: "91333115"
 
 * **我可以將 ARM 範本整合到 Azure Pipelines 嗎？**
 
-  可以。 如需如何使用範本和管線的說明，請參閱 [教學課程：搭配使用 Azure Pipelines 的 Azure Resource Manager 範本的持續整合](deployment-tutorial-pipeline.md) ，以及 [整合 ARM 範本與 Azure Pipelines](add-template-to-azure-pipelines.md)。
+  是。 如需如何使用範本和管線的說明，請參閱 [教學課程：搭配使用 Azure Pipelines 的 Azure Resource Manager 範本的持續整合](deployment-tutorial-pipeline.md) ，以及 [整合 ARM 範本與 Azure Pipelines](add-template-to-azure-pipelines.md)。
 
 * **是否可以使用 GitHub 動作來部署範本？**
 

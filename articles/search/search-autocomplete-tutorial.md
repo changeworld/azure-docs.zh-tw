@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531610"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
@@ -67,7 +67,7 @@ Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。
 
 針對建議，您應該進一步精簡回應以避免重複，或看似不相關的結果。 若要控制結果，請在要求中包含更多參數。 下列參數適用于自動完成和建議，但可能更是建議的必要項，特別是在建議工具組含多個欄位時。
 
-| 參數 | 使用方式 |
+| 參數 | 使用量 |
 |-----------|-------|
 | **$select** | 如果您在建議工具中有多個 **sourceFields** ，請使用 **$select** 選擇 () 中提供值的欄位 `$select=GameTitle` 。 |
 | **searchFields** | 將查詢限制為特定欄位。 |

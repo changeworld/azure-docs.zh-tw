@@ -1,6 +1,6 @@
 ---
-title: 設計適用于查詢的 Azure 資料表儲存體 |Microsoft Docs
-description: 針對 Azure 資料表儲存體中的查詢設計資料表。 選擇適當的分割區索引鍵、優化查詢，以及排序表格服務的資料。
+title: 設計查詢的 Azure 資料表儲存體 |Microsoft Docs
+description: 在 Azure 資料表儲存體中設計查詢的資料表。 選擇適當的資料分割索引鍵、將查詢優化，以及排序資料表服務的資料。
 services: storage
 author: tamram
 ms.author: tamram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236330"
 ---
 # <a name="design-for-querying"></a>查詢的設計
@@ -37,12 +37,12 @@ ms.locfileid: "88236330"
 
 | *資料行名稱* | *Data type* |
 | --- | --- |
-| **PartitionKey** (部門名稱) |String |
-| **RowKey** (員工識別碼)  |String |
-| **名字** |String |
-| **姓氏** |String |
-| **年齡** |整數 |
-| **EmailAddress** |String |
+| **PartitionKey** (部門名稱) |字串 |
+| **RowKey** (員工識別碼)  |字串 |
+| **名字** |字串 |
+| **姓氏** |字串 |
+| **Age** |整數 |
+| **EmailAddress** |字串 |
 
 ＜[Azure 表格儲存體概觀](table-storage-overview.md) ＞一文將說明某些對查詢設計有直接影響的重要 Azure 表格服務功能。 這些功能產生了設計資料表服務查詢的一般指導方針。 請注意，下列範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱 [查詢實體](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)。  
 
@@ -83,12 +83,12 @@ ms.locfileid: "88236330"
 
 許多設計必須符合需求，才能讓您根據多個準則查閱實體。 例如，根據電子郵件、員工識別碼或姓氏來尋找員工實體。 [資料表設計模式](table-storage-design-patterns.md) 中所述的模式可因應這些類型的需求，並說明處理表格服務不提供次要索引的方式：  
 
-* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值來儲存每個實體的多個複本 (在相同的資料分割) 中，以使用不同的 **RowKey** 值來啟用快速且有效率的查閱和替代排序次序。  
+* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值在相同的資料分割中，儲存每個實體的多個複本 (在相同的資料分割) ，以使用不同的 **RowKey** 值來啟用快速且有效率的查閱和替代排序次序  
 * [間資料分割次要索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在個別資料分割或個別資料表中為每個實體儲存多個複本且使用不同 **RowKey** 值，透過使用不同的 **RowKey** 值，就能快速有效率地查閱和替代排序次序。  
 * [索引實體模式](table-storage-design-patterns.md#index-entities-pattern) - 維護索引實體，啟用有效的搜尋以傳回實體清單。  
 
 ## <a name="sorting-data-in-the-table-service"></a>在表格服務中排序資料
-資料表服務會先根據 **PartitionKey**、再根據 **RowKey** 傳回以遞增方式排序的實體。 這些索引鍵是字串值，若要確保能正確排序數字值，您應該將它們轉換成固定長度，並以零填補它們。 例如，如果您用來做為 **RowKey** 的員工識別碼值是整數值，您應將員工識別碼 **123** 轉換為 **00000123**。  
+資料表服務會先根據 **PartitionKey**、再根據 **RowKey** 傳回以遞增方式排序的實體。 這些索引鍵是字串值，若要確保能正確排序數字值，您應該將它們轉換成固定長度，並以零填補它們。 例如，如果您用來作為 **RowKey** 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123**。  
 
 許多應用程式都需要使用以不同順序排序的資料：例如，依名稱或加入日期為員工排序。 下列模式可因應如何為您的實體取代排序次序：  
 

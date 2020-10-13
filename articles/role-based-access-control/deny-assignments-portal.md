@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站列出 Azure 拒絕指派-Azure RBAC
-description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制（Azure RBAC），列出已被拒絕存取特定範圍的特定 Azure 資源動作的使用者、群組、服務主體和受控識別。
+description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制 (Azure RBAC) ，來列出已拒絕存取特定範圍內特定 Azure 資源動作的使用者、群組、服務主體和受控識別。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,28 +15,28 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790241"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 拒絕指派
 
-[Azure 拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 Azure 入口網站列出拒絕指派。
+[Azure 拒絕指派](deny-assignments.md) 會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 Azure 入口網站列出拒絕指派。
 
 > [!NOTE]
-> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[Azure 拒絕指派](deny-assignments.md)。
+> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱 [Azure 拒絕指派](deny-assignments.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要取得拒絕指派的相關資訊，您必須具有：
+若要取得拒絕指派的相關資訊，您必須具備：
 
-- `Microsoft.Authorization/denyAssignments/read`許可權，包含在大多數的[Azure 內建角色](built-in-roles.md)中。
+- `Microsoft.Authorization/denyAssignments/read` 許可權，包含在大部分的 [Azure 內建角色](built-in-roles.md)中。
 
 ## <a name="list-deny-assignments"></a>列出拒絕指派
 
-請遵循下列步驟來列出訂用帳戶或管理群組範圍的拒絕指派。
+遵循下列步驟來列出在訂用帳戶或管理群組範圍的拒絕指派。
 
 1. 在 Azure 入口網站中，按一下 [所有服務]****，然後按 [管理群組]**** 或 [訂用帳戶]****。
 
@@ -58,7 +58,7 @@ ms.locfileid: "84790241"
     | --- | --- |
     | **名稱** | 拒絕指派的名稱。 |
     | **主體類型** | 使用者、群組、系統定義的群組或服務主體。 |
-    | **拒絕**  | 拒絕指派中涵蓋的安全性主體名稱。 |
+    | **否認**  | 拒絕指派中涵蓋的安全性主體名稱。 |
     | **識別碼** | 拒絕指派的唯一識別碼。 |
     | **已排除主體** | 是否有拒絕指派排除在外的安全性主體。 |
     | **不會套用至子系** | 拒絕指派是否已繼承到子範圍內。 |
@@ -69,7 +69,7 @@ ms.locfileid: "84790241"
 
 ## <a name="list-details-about-a-deny-assignment"></a>列出拒絕指派的詳細資料
 
-請遵循下列步驟來列出拒絕指派的其他詳細資料。
+遵循下列步驟來列出拒絕指派的其他詳細資料。
 
 1. 如上一節所述，開啟 [拒絕指派]**** 窗格。
 
@@ -90,7 +90,7 @@ ms.locfileid: "84790241"
 
     ![拒絕指派：拒絕的權限](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | 動作類型 | Description |
+    | 動作類型 | 說明 |
     | --- | --- |
     | **動作**  | 拒絕的管理作業。 |
     | **NotActions** | 從拒絕的管理作業中排除的管理作業。 |
@@ -107,7 +107,7 @@ ms.locfileid: "84790241"
 
     在 [屬性]**** 刀鋒視窗中，您可以看到拒絕指派名稱、ID、說明及範圍。 **不會套用至子系**參數會指示拒絕指派是否已繼承到子範圍內。 **受保護的系統**參數會指示此拒絕指派是否由 Azure 管理。 目前在所有情況下都**是**。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [瞭解 Azure 拒絕指派](deny-assignments.md)
 * [使用 Azure PowerShell 列出 Azure 拒絕指派](deny-assignments-powershell.md)

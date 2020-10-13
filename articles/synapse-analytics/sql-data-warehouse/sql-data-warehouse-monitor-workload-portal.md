@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211556"
 ---
 # <a name="monitor-workload---azure-portal"></a>監視工作負載-Azure 入口網站
 
-本文說明如何使用 Azure 入口網站來監視您的工作負載。 這包括使用適用于[SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的 log analytics，設定 Azure 監視器記錄來調查查詢執行和工作負載趨勢。
+本文說明如何使用 Azure 入口網站來監視您的工作負載。 這包括使用 log analytics for [SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)來設定 Azure 監視器記錄，以調查查詢執行和工作負載趨勢。
 
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-- SQL 集區：我們將會收集 SQL 集區的記錄檔。 如果您尚未布建 SQL 集區，請參閱[建立 sql 集](load-data-from-azure-blob-storage-using-polybase.md)區中的指示。
+- SQL 集區：我們將會收集 SQL 集區的記錄檔。 如果您尚未布建 SQL 集區，請參閱 [建立 sql 集](load-data-from-azure-blob-storage-using-polybase.md)區中的指示。
 
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 
@@ -36,11 +36,11 @@ ms.locfileid: "85211556"
 
 ![新增分析工作區](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-如需工作區的詳細資訊，請流覽下列[檔](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
+如需工作區的詳細資訊，請參閱下列 [檔](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
 
 ## <a name="turn-on-resource-logs"></a>開啟資源記錄
 
-設定診斷設定，以從您的 SQL 集區發出記錄。 記錄包含的遙測資料檢視相當於最常使用的效能疑難排解 Dmv。 目前支援下列視圖：
+設定診斷設定，以從您的 SQL 集區發出記錄。 記錄包含相當於最常使用的效能疑難排解 Dmv 的遙測資料檢視。 目前支援下列視圖：
 
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -50,20 +50,20 @@ ms.locfileid: "85211556"
 
 ![啟用資源記錄](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
-記錄可以發出至 Azure 儲存體、串流分析或 Log Analytics。 在本教學課程中，請選取 [Log Analytics]。
+您可以將記錄發出至 Azure 儲存體、串流分析或 Log Analytics。 在本教學課程中，請選取 Log Analytics。
 
 ![指定記錄檔](./media/sql-data-warehouse-monitor-workload-portal/specify_logs.png)
 
 ## <a name="run-queries-against-log-analytics"></a>對 Log Analytics 執行查詢
 
-流覽至您的 Log Analytics 工作區，您可以在其中執行下列動作：
+流覽至您的 Log Analytics 工作區，您可以在其中執行下列作業：
 
-- 使用記錄查詢分析記錄並儲存查詢以重複使用
+- 使用記錄查詢來分析記錄，並儲存查詢以重複使用
 - 儲存查詢以重複使用
 - 建立記錄警示
 - 將查詢結果釘選到儀表板
 
-如需記錄查詢功能的詳細資訊，請流覽下列[檔](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+如需記錄查詢功能的詳細資訊，請參閱下列 [檔](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ![Log Analytics 工作區編輯器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 
@@ -97,4 +97,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已設定並設定 Azure 監視器記錄，請[自訂 azure 儀表板](../../azure-portal/azure-portal-dashboards.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，以便在您的小組之間共用。
+現在您已設定並設定 Azure 監視器記錄，請 [自訂 azure 儀表板](../../azure-portal/azure-portal-dashboards.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ，以在您的小組間共用。

@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371519"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教學課程：載入紐約計程車資料集
@@ -56,7 +56,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 3. 在表單中填寫以下資訊：
 
-   | 設定            | 建議的值       | 說明                                                  |
+   | 設定            | 建議的值       | 描述                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
    | *名稱**            | mySampleDataWarehouse | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
    | **訂用帳戶**   | 您的訂用帳戶     | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
@@ -116,7 +116,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 5. 選取工具列上的 [新增用戶端 IP]，以將目前的 IP 位址新增至新的防火牆規則。 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
 
-6. 選取 [儲存]。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，在伺服器上開啟連接埠 1433。
+6. 選取 [儲存]****。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，在伺服器上開啟連接埠 1433。
 
 7. 選取 **[確定]** ，然後關閉 [ **防火牆設定** ] 頁面。
 
@@ -198,7 +198,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 載入資料的首要步驟是以 LoaderRC20 身分登入。  
 
-1. 在物件總管中，選取 [連線] 下拉式功能表，然後選取 [**資料庫引擎** **]** 。 [連線到伺服器]  對話方塊隨即出現。
+1. 在物件總管中，選取 [連線] 下拉式功能表，然後選取 [**資料庫引擎** **]** 。 [連線到伺服器] 對話方塊隨即出現。
 
     ![與新登入連線](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 

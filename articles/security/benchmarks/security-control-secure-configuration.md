@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400087"
 ---
 # <a name="security-control-secure-configuration"></a>安全性控制：安全設定
@@ -74,7 +74,7 @@ ms.locfileid: "89400087"
 
 | Azure 識別碼 | CIS 識別碼 | 責任 |
 |--|--|--|
-| 7.4 | 5.2 | Shared |
+| 7.4 | 5.2 | 共用 |
 
 遵循 Azure 資訊安全中心在您的 Azure 計算資源上執行弱點評定的建議。  此外，您也可以使用 Azure Resource Manager 範本、自訂作業系統映射或 Azure 自動化狀態設定來維護組織所需作業系統的安全性設定。   與 Azure 自動化 Desired State Configuration 結合的 Microsoft 虛擬機器範本，可能有助於符合和維護安全性需求。 
 
@@ -199,6 +199,6 @@ Azure 自動化狀態設定是在任何雲端或內部部署資料中心內 Desi
 - [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱下一個安全性控制：  [惡意程式碼防禦](security-control-malware-defense.md)

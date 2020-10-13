@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401039"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理員中設定多值路由方法
@@ -57,7 +57,7 @@ ms.locfileid: "89401039"
 
 1. 在入口網站的搜尋列中，搜尋您在上一節建立的流量管理員設定檔名稱，然後在顯示的結果中選取設定檔。
 2. 在 [流量管理員設定檔]**** 的 [設定]**** 區段中，按一下 [端點]****，然後按一下 [新增]****。
-3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]****：
+3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]：
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
@@ -71,7 +71,7 @@ ms.locfileid: "89401039"
 
    ![新增流量管理員端點](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解[加權流量路由方法](traffic-manager-configure-weighted-routing-method.md)。
 - 深入了解[優先順序路由方法](traffic-manager-configure-priority-routing-method.md)。

@@ -11,13 +11,13 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ff50f61fe159c518d488da9f9911e40f1ddb8ca3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501452"
 ---
-# <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 建立共用映射資源庫
+# <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 建立共用映射庫
 
 [共用映像資源庫](./linux/shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動程序設定，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
 
@@ -26,8 +26,8 @@ ms.locfileid: "87501452"
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-使用 Azure CLI，從[VM](image-version-vm-cli.md)建立映射版本或[受控映射](image-version-managed-image-cli.md)。
+使用 Azure CLI 從 [VM](image-version-vm-cli.md)或 [受控映射](image-version-managed-image-cli.md) 建立映射版本。
 
 如需共用映像資源庫的詳細資訊，請參閱[概觀](./linux/shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](troubleshooting-shared-images.md)。

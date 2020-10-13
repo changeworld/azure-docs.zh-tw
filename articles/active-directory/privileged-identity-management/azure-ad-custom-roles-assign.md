@@ -1,5 +1,5 @@
 ---
-title: 指派 Azure AD 自訂角色 Privileged Identity Management （PIM）
+title: '將 Azure AD 自訂角色 Privileged Identity Management (PIM) '
 description: 如何指派 Privileged Identity Management (PIM) 的 Azure AD 自訂角色指派
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87413148"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中指派 Azure AD 自訂角色
@@ -29,10 +29,10 @@ ms.locfileid: "87413148"
 
 - 如需關於在 Azure AD 中建立自訂角色以委派應用程式管理的詳細資訊，請參閱 [Azure Active Directory 中的自訂系統管理員角色 (預覽)](../users-groups-roles/roles-custom-overview.md)。
 - 如果您尚未使用 Privileged Identity Management，請在[開始使用 Privileged Identity Management](pim-getting-started.md) 中取得詳細資訊。
-- 如需如何授與其他系統管理員存取權來管理 Privileged Identity Management 的相關資訊，請參閱將[存取權授與其他管理員以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
+- 如需如何授與其他系統管理員存取權以管理 Privileged Identity Management 的詳細資訊，請參閱 [授與其他系統管理員存取權以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
 > [!NOTE]
-> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該[以內建角色的體驗](pim-how-to-activate-role.md)進行管理，本文並不適用：
+> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該 [在內建角色體驗中](pim-how-to-activate-role.md) 進行管理，而本文並不適用：
 >
 > [![選取 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -74,11 +74,11 @@ Privileged Identity Management 可管理您可在 Azure Active Directory (Azure 
 1. 如果 [永久]**** 核取方塊顯示且可用 (視角色設定而定)，您可以指定指派是否為永久的。 選取此核取方塊，可讓指派永久符合資格或永久指派。 清除此核取方塊可指定指派持續時間。
 1. 若要建立新的角色指派，請按一下 [儲存]****，然後按 [新增]****。 指派程序狀態的通知會隨即顯示。
 
-若要確認角色指派，請在開啟的角色中**選取 [指派]**  >  **，** 並確認您的角色指派已正確識別為 [合格] 或 [作用中]。
+若要驗證角色指派，請在 open 角色**中選取 [**  >  **指派指派**]，並確認您的角色指派已正確識別為合格或作用中。
 
  ![查看角色指派是否顯示為 [合格] 或 [有效]](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [啟用 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)
 - [移除或更新 Azure AD 自訂角色指派](azure-ad-custom-roles-update-remove.md)

@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: 197decbb263391a32b8bf01cdbb6c2f34b750111
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003570"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis 常見問題集
 了解 Azure Redis 快取常見問題、模式及最佳做法的解答。
 
-* [規劃常見問題集](cache-planning-faq.md)
-* [開發常見問題集](cache-development-faq.md)
+* [規劃常見問題](cache-planning-faq.md)
+* [開發常見問題](cache-development-faq.md)
 * [管理常見問題](cache-management-faq.md)
 * [監視與疑難排解常見問題集](cache-monitor-troubleshoot-faq.md)
 
@@ -40,5 +40,5 @@ ms.locfileid: "88003570"
 
 * 若要觸及更多讀者，您可以將問題張貼在 [Microsoft 問與答的 Azure 快取問題頁面](https://docs.microsoft.com/answers/topics/azure-cache-redis.html)，與 Azure 快取小組和社群的其他成員交流。
 * 如果您想要提出功能要求，您可以向 [Azure Redis 快取 User Voice](https://feedback.azure.com/forums/169382-cache) 提交您的要求和想法。
-* 您也可以將您的問題傳送給我們，網址為 [azurecache@microsoft.com](mailto:azurecache@microsoft.com) 。
+* 您也可以將您的問題傳送給我們 [azurecache@microsoft.com](mailto:azurecache@microsoft.com) 。
 

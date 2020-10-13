@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936868"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 裝置上選取並部署安全性代理程式
@@ -97,7 +97,7 @@ IoT 安全性代理程式的每個 Defender 類別都提供相同的功能集，
 |C#|Windows 10 IoT 核心版，組建 17763    |x64|
 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解設定選項，請繼續進行代理程式設定的操作指南。
 > [!div class="nextstepaction"]

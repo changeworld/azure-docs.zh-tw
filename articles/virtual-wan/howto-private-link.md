@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
 ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306628"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>在虛擬 WAN 中使用 Private Link
@@ -38,11 +38,11 @@ ms.locfileid: "91306628"
 
 建立 Azure SQL Database 之後，您可以驗證私人端點 IP 位址流覽您的私人端點：
 
-:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="私人端點" lightbox="./media/howto-private-link/endpoints.png":::
+:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="建立私人連結" lightbox="./media/howto-private-link/endpoints.png":::
 
 按一下我們建立的私人端點，您應該會看到其私人 IP 位址，以及其完整功能變數名稱 (FQDN) 。 請注意，私人端點的 IP 位址在已部署 (10.1.3.0/24) 的 VNet 範圍內：
 
-:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="SQL 端點" lightbox="./media/howto-private-link/sql-endpoint.png":::
+:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="建立私人連結" lightbox="./media/howto-private-link/sql-endpoint.png":::
 
 ## <a name="verify-connectivity-from-the-same-vnet"></a><a name="connectivity"></a>確認相同 VNet 的連線能力
 
@@ -61,7 +61,7 @@ Address: 10.1.3.228
 
 如您在先前的輸出中所見，FQDN `wantest.database.windows.net` 是對應至 `wantest.privatelink.database.windows.net` ，在私人端點上建立的私人 DNS 區域會解析為私人 IP 位址 `10.1.3.228` 。 查看私人 DNS 區域將會確認私人端點的 A 記錄已對應到私人 IP 位址：
 
-:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="DNS 區域" lightbox="./media/howto-private-link/dns-zone.png":::
+:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="建立私人連結" lightbox="./media/howto-private-link/dns-zone.png":::
 
 確認正確的 DNS 解析之後，我們可以嘗試連接到資料庫：
 
@@ -87,7 +87,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 
 在此範例中，我們將從不同的 VNet 連線，因此，我們會先將私人 DNS 區域連結至新的 VNet，讓其工作負載能夠將 Azure SQL Database 的完整功能變數名稱解析為私人 IP 位址。 這是透過將私人 DNS 區域連結至新的 VNet 來完成的：
 
-:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="DNS 連結" lightbox="./media/howto-private-link/dns-link.png":::
+:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="建立私人連結" lightbox="./media/howto-private-link/dns-link.png":::
 
 現在，連結的 VNet 中的任何虛擬機器都應該正確地將 Azure SQL Database FQDN 解析為私人連結的私人 IP 位址：
 
@@ -104,7 +104,7 @@ Address: 10.1.3.228
 
 若要再次檢查此 VNet (10.1.1.0/24) 有連線到已設定私人端點 (10.1.3.0/24) 的原始 VNet，您可以在 VNet 中的任何虛擬機器中驗證有效的路由表：
 
-:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="有效路由" lightbox="./media/howto-private-link/effective-routes.png":::
+:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="建立私人連結" lightbox="./media/howto-private-link/effective-routes.png":::
 
 如您所見，有一個路由指向 Azure 虛擬 WAN 中的虛擬網路閘道所插入的 VNet 10.1.3.0/24。 現在我們可以測試資料庫的連線能力：
 

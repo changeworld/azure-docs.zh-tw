@@ -1,6 +1,6 @@
 ---
 title: 使用 DistCp 將資料複製到 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: 使用 Apache Hadoop 分散式複製工具 (DistCp) ，從 Azure Data Lake Storage Gen2 複製資料
+description: 使用 Apache Hadoop distributed copy tool (DistCp) ，將資料複製到 Azure Data Lake Storage Gen2 或從中複製資料。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035666"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料
@@ -85,7 +85,7 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 * **步驟 2：計算對應程式數目** - **m** 的值等於 YARN 記憶體總計除以 YARN 容器大小的商數。 Ambari 入口網站中也提供 YARN 容器大小的資訊。 瀏覽至 YARN，然後檢視 [設定] 索引標籤。YARN 容器大小會顯示在此視窗中。 計算對應程式數目 (**m**) 的方程式是
 
-    m = (節點數目 * 每個節點的 YARN 記憶體) /YARN 容器大小
+    m = (節點數 * 每個節點的 YARN 記憶體) /YARN 容器大小
 
 **範例**
 
@@ -97,7 +97,7 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 * **對應程式數目**︰您可以從 Ambari 入口網站判斷 D14 叢集節點的 YARN 容器大小是 3,072 MB。 因此，對應程式數目為︰
 
-    m = (4 個節點 * 96GB) /3072MB = 128 對應程式
+    m = (4 個節點 * 96GB) /3072MB = 128 對應程式數目
 
 如果有其他應用程式在使用記憶體，您可以選擇讓 DistCp 只使用叢集的一部分 YARN 記憶體。
 

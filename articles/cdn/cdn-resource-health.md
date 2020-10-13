@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887067"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>監視 Azure CDN 資源的健康狀態
@@ -60,7 +60,7 @@ Azure CDN 資源健康狀態是 [Azure 資源健康狀態](../resource-health/re
 |很抱歉，我們遇到了載入補充入口網站的問題 | 請返回這裡以查看狀態更新。如果您的問題在預期解決時間之後持續發生，請連絡支援人員。|
 很抱歉，我們的部分 CDN 提供者發生了問題 | 請返回這裡以查看狀態更新。如果您的問題在預期解決時間之後持續發生，請連絡支援人員。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [閱讀 Azure 資源健康狀態的概觀](../resource-health/resource-health-overview.md)
 - [針對 CDN 壓縮的問題進行疑難排解](./cdn-troubleshoot-compression.md)

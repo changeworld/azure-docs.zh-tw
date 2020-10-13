@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962531"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment 的網路考量 #
@@ -53,9 +53,9 @@ ASE 部署之後，就無法變更用來裝載 ASE 的子網路大小。  每個
 
 ASE 需要開啟下列埠，才能運作 ASE：
 
-| 用途 | 寄件者 | 收件者 |
+| 使用 | 寄件者 | 收件者 |
 |-----|------|----|
-| 管理 | App Service 管理位址 | ASE 子網路：454、455 |
+| 管理性 | App Service 管理位址 | ASE 子網路：454、455 |
 |  ASE 內部通訊 | ASE 子網路：所有連接埠 | ASE 子網路：所有連接埠
 |  允許 Azure Load Balancer 輸入 | Azure Load Balancer | ASE 子網：16001
 
@@ -69,7 +69,7 @@ ASE 需要開啟下列埠，才能運作 ASE：
 
 您需要關注的其他埠是應用程式埠：
 
-| 用途 | 連接埠 |
+| 使用 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21、990、10001-10020 |
@@ -122,7 +122,7 @@ ASE 會在下列埠上與網際網路可存取的位址通訊：
 
 ## <a name="ase-ip-addresses"></a>ASE IP 位址 ##
 
-ASE 有一些 IP 位址需要注意。 分別是：
+ASE 有一些 IP 位址需要注意。 其中包括：
 
 - **公用輸入 IP 位址**：用於外部 ASE 中的應用程式流量，以及外部 ASE 和 ILB ASE 中的管理流量。
 - **輸出公用 IP**：用來作為 ASE 輸出連線離開 VNet 時的「來源」IP (不會透過 VPN 進行路由)。
@@ -169,7 +169,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
 一般的應用程式存取連接埠為：
 
-| 用途 | 連接埠 |
+| 使用 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21、990、10001-10020 |
@@ -203,7 +203,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
 3. 從您的路由表 UI 內，選取 [**路由**  >  **新增**]。
 
-4. 將 [下一個躍點類型]**** 設為 [網際網路]****，將 [位址首碼]**** 設為 **0.0.0.0/0**。 選取 [儲存]  。
+4. 將 [下一個躍點類型]**** 設為 [網際網路]****，將 [位址首碼]**** 設為 **0.0.0.0/0**。 選取 [儲存]****。
 
     您就會看到類似以下的畫面：
 

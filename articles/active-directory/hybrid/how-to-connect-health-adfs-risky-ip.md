@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306390"
 ---
 # <a name="risky-ip-report-public-preview"></a>具風險的 IP 報告 (公開預覽) 
@@ -41,7 +41,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 ## <a name="what-is-in-the-report"></a>報表中有哪些內容？
 失敗的登入活動用戶端 IP 位址是透過 Web 應用程式 Proxy 伺服器進行匯總。 「具風險的 IP 報告」中的每個項目會顯示有關已超過指定閾值之失敗 AD FS 登入活動的彙總資訊。 它會提供下列資訊： ![ 顯示具有醒目提示資料行標頭之具風險 IP 報告的螢幕擷取畫面。](./media/how-to-connect-health-adfs/report4a.png)
 
-| 報告項目 | 說明 |
+| 報告項目 | 描述 |
 | ------- | ----------- |
 | 時間戳記 | 根據 Azure 入口網站的本機時間，顯示偵測時間範圍開始時的時間戳記。<br /> 所有每日事件都會在午夜 UTC 時間產生。 <br />每小時事件的時間戳記會四捨五入到該小時的開始。 您可以在所匯出檔案的 “firstAuditTimestamp” 中找到第一個活動的開始時間。 |
 | 觸發程序類型 | 顯示偵測時間範圍的類型。 彙總觸發程序類型是每小時或每日。 這有助於偵測嘗試次數會分散在整天的高頻率暴力密碼破解攻擊與緩慢攻擊。 |
@@ -68,7 +68,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 ## <a name="download-risky-ip-report"></a>下載具風險的 IP 報告 
 使用**下載**功能，即可從 Connect Health 入口網站匯出過去 30 天內的整個「具風險的 IP 位址」清單。匯出結果會包含每個偵測時間範圍中的所有失敗 AD FS 登入活動，以供您在匯出後自訂篩選。 除了入口網站中醒目提示的彙總外，匯出結果還會顯示有關每一 IP 位址之失敗登入活動的更多詳細資料：
 
-|  報告項目  |  說明  | 
+|  報告項目  |  描述  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 顯示屬於偵測時間範圍內失敗活動開始時間的第一個時間戳記。  | 
 | lastAuditTimestamp | 顯示屬於偵測時間範圍內失敗活動結束時間的最後一個時間戳記。  | 
@@ -83,7 +83,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 
 ![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report4d.png)
 
-| 閾值項目 | 說明 |
+| 閾值項目 | 描述 |
 | --- | --- |
 | (錯誤 U/P + 外部網路鎖定) / 天  | 當每**天**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
 | (錯誤 U/P + 外部網路鎖定) / 小時 | 當每**小時**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |

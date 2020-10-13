@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: mahender
 ms.openlocfilehash: 3b282a99bb7f6f107717d9c265a46d285d03b849
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83649102"
 ---
 Azure Active Directory (Azure AD) 的受控識別可讓應用程式輕易存取其他受到 Azure AD 保護的資源，例如 Azure Key Vault。 身分識別由 Azure 平台負責管理，因此您不需要佈建或輪替任何密碼。 若要進一步了解 ADD 中的受控識別，請參閱 [Azure 資源的受控識別](../articles/active-directory/managed-identities-azure-resources/overview.md)。

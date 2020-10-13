@@ -1,6 +1,6 @@
 ---
-title: 共同找出 Azure 虛擬機器擴展集
-description: 瞭解如何將 Azure 虛擬機器擴展集資源共置，以改善效能。
+title: 共置 Azure 虛擬機器擴展集
+description: 瞭解如何將 Azure 虛擬機器擴展集資源共同定位，以改善效能。
 author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
@@ -10,21 +10,21 @@ ms.date: 05/14/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: a5c3418ce30e41d5d6a664086a5ec0c0ba62f7a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83195769"
 ---
 # <a name="co-location"></a>位於相同位置
 
-Vm 之間延遲的最大參與者之一就是距離。
+在 Vm 之間延遲的其中一個最大參與者，只是距離。
 
-## <a name="preview-proximity-placement-groups"></a>預覽：鄰近放置群組 
+## <a name="preview-proximity-placement-groups"></a>預覽：鄰近位置群組 
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../includes/virtual-machines-common-ppg-overview.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-為您的擴展集建立[鄰近放置群組](proximity-placement-groups.md)。
+為您的擴展集建立 [鄰近放置群組](proximity-placement-groups.md) 。
 

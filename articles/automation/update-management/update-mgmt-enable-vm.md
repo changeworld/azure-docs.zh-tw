@@ -6,10 +6,10 @@ ms.date: 09/16/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: dead4649635bebd9f73f79937dea1d24565f273e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327781"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>從 Azure VM 啟用更新管理
@@ -19,7 +19,7 @@ ms.locfileid: "91327781"
 > [!NOTE]
 > 啟用更新管理時，只有特定區域支援連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](../how-to/region-mappings.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自動化帳戶](../index.yml)，以管理電腦。

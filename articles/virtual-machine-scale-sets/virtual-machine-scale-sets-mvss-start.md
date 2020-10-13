@@ -1,6 +1,6 @@
 ---
 title: 了解虛擬機器擴展集範本
-description: 瞭解如何透過幾個簡單的步驟，建立 Azure 虛擬機器擴展集的基本擴展集範本。
+description: 瞭解如何透過幾個簡單的步驟，為 Azure 虛擬機器擴展集建立基本的擴展集範本。
 author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831493"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虛擬機器擴展集範本
@@ -125,7 +125,7 @@ Resource Manager 範本也可讓您定義以後要在範本中使用的變數。
 ```
 
 ### <a name="choose-type-of-updates"></a>選擇更新類型
-擴展集也需要知道如何處理擴展集上的更新。 目前有三個選項： `Manual` `Rolling` 和 `Automatic` 。 如需有關兩者之間差異的詳細資訊，請參閱有關[如何升級擴展集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)的文件。
+擴展集也需要知道如何處理擴展集上的更新。 目前有三個選項：、 `Manual` `Rolling` 和 `Automatic` 。 如需有關兩者之間差異的詳細資訊，請參閱有關[如何升級擴展集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)的文件。
 
 ```json
        "properties": {

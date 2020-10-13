@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306934"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用維護控制和 Azure PowerShell 來控制更新
@@ -75,7 +75,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-當 Azure 會在您的資源上套用更新時，請使用 AzMaintenanceConfiguration 來建立具有已排程時段的維護設定。 此範例會建立一個名為 Myconfig.xml 的維護設定，並在每個月的第四個星期一排程時段為5小時。 一旦建立排程的視窗，您就不再需要手動套用更新。
+使用 New-AzMaintenanceConfiguration 可在 Azure 將更新套用至您的資源時，使用已排程的時間範圍來建立維護設定。 此範例會建立一個名為 Myconfig.xml 的維護設定，並在每個月的第四個星期一排程時段為5小時。 一旦建立排程的視窗，您就不再需要手動套用更新。
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `

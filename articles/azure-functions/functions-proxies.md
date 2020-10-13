@@ -1,13 +1,13 @@
 ---
-title: 在 Azure Functions 中使用 proxy
+title: 使用 Azure Functions 中的 proxy
 description: 如何使用 Azure Functions Proxy 的概觀
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385869"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions Proxy
@@ -59,7 +59,7 @@ Proxy 的設定不需要是靜態。 您可以將它設定為使用來自原始�
 
  
 >[!Note]  
->如果您的函式使用*函式、系統管理員或 sys* 授權層級，您必須針對每個原始的函式 URL 提供程式碼和 clientId。 在此情況下，參考看起來會像這樣： `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` 我們建議您在[應用程式設定]中儲存這些金鑰，並在您的 proxy 中參考它們。 這可避免在您的原始程式碼中儲存秘密。 
+>如果您的函式使用*函式、系統管理員或 sys* 授權層級，您必須針對每個原始的函式 URL 提供程式碼和 clientId。 在此情況下，參考看起來會像這樣： `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` 建議您將這些金鑰儲存在 [應用程式設定] 中，並在您的 proxy 中參考它們。 這可避免將秘密儲存在您的原始程式碼中。 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>參考要求參數
 
@@ -74,8 +74,8 @@ Proxy 的設定不需要是靜態。 您可以將它設定為使用來自原始�
 除了路由範本參數之外，設定值中也可以使用下列值：
 
 * **{request.method}**：用於原始要求的 HTTP 方法。
-* **{request. 標頭. \<HeaderName\> }**：可以從原始要求讀取的標頭。 取代 *\<HeaderName\>* 為您要讀取的標頭名稱。 如果標頭沒有包含在要求之上，值將會是空字串。
-* **{request. querystring. \<ParameterName\> }**：可以從原始要求讀取的查詢字串參數。 取代 *\<ParameterName\>* 為您要讀取之參數的名稱。 如果參數沒有包含在要求之上，值將會是空字串。
+* **{要求. 標頭 \<HeaderName\> **：可以從原始要求讀取的標頭。 取代 *\<HeaderName\>* 為您想要讀取之標頭的名稱。 如果標頭沒有包含在要求之上，值將會是空字串。
+* **{request. querystring. \<ParameterName\> }**：可以從原始要求讀取的查詢字串參數。 取代 *\<ParameterName\>* 為您想要讀取之參數的名稱。 如果參數沒有包含在要求之上，值將會是空字串。
 
 ### <a name="reference-back-end-response-parameters"></a><a name="response-parameters"></a>參考後端回應參數
 
@@ -83,13 +83,13 @@ Proxy 的設定不需要是靜態。 您可以將它設定為使用來自原始�
 
 * **{backend.response.statusCode}**：後端回應上所傳回的 HTTP 狀態碼。
 * **{backend.response.statusReason}**：後端回應上所傳回的 HTTP 原因說明。
-* **{後端. 回應. 標頭. \<HeaderName\> }**：可以從後端回應讀取的標頭。 將取代為 *\<HeaderName\>* 您想要讀取的標頭名稱。 如果標頭未包含在回應中，值將會是空字串。
+* **{後端. 回應. \<HeaderName\> }**：可以從後端回應中讀取的標頭。 取代 *\<HeaderName\>* 為您想要讀取之標頭的名稱。 如果標頭未包含在回應中，值將會是空字串。
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>參考應用程式設定
 
 您也可以參考[針對函式應用程式定義的應用程式設定](./functions-how-to-use-azure-function-app-settings.md)，只要以百分比符號 (%) 括住設定名稱即可。
 
-例如，的後端 URL *https://%ORDER_PROCESSING_HOST%/api/orders* 會以 ORDER_PROCESSING_HOST 設定的值取代 "% ORDER_PROCESSING_HOST%"。
+例如，的後端 URL *https://%ORDER_PROCESSING_HOST%/api/orders* 會將 "% ORDER_PROCESSING_HOST%" 取代為 ORDER_PROCESSING_HOST 設定的值。
 
 > [!TIP] 
 > 當您有多個部署或測試環境時，請使用後端主機的應用程式設定。 這樣一來，您就可以確保一律與該環境保持正確的後端通訊。
@@ -160,7 +160,7 @@ Proxies.json** 是由 Proxy 物件定義，該物件包含具名 Proxy 及其定
 }
 ```
 
-### <a name="application-settings"></a><a name="applicationSettings"></a>應用程式設定
+### <a name="application-settings"></a><a name="applicationSettings"></a> 應用程式設定
 
 數個應用程式設定可以控制 Proxy 行為。 這些都會列在[函數應用程式設定參考](./functions-app-settings.md)中
 
@@ -182,8 +182,8 @@ Proxy 會使用 \ 作為逸出符號，讀出 JSON 檔案中的所有字串。 P
 requestOverrides 物件定義呼叫後端資源時針對要求所做的變更。 該物件是由下列屬性所定義：
 
 * **backend.request.method**：用來呼叫後端的 HTTP 方法。
-* **後端. request. querystring \<ParameterName\> .**：可針對後端呼叫所設定的查詢字串參數。 取代 *\<ParameterName\>* 為您要設定之參數的名稱。 請注意，如果提供空字串，參數仍會包含在後端要求中。
-* **後端. 要求標頭 \<HeaderName\> .**：可針對後端呼叫設定的標頭。 取代 *\<HeaderName\>* 為您要設定的標頭名稱。 請注意，如果提供空字串，參數仍會包含在後端要求中。
+* **後端.. A i \<ParameterName\> .**...........：可針對後端呼叫設定的查詢字串參數。 取代 *\<ParameterName\>* 為您要設定的參數名稱。 請注意，如果提供空字串，則參數仍然會包含在後端要求中。
+* **後端. \<HeaderName\> **... 標頭.：可針對後端呼叫設定的標頭。 取代 *\<HeaderName\>* 為您要設定之標頭的名稱。 請注意，如果提供空字串，則參數仍然會包含在後端要求中。
 
 值可以參考應用程式設定和來自原始用戶端要求的參數。
 
@@ -215,7 +215,7 @@ requestOverrides 物件定義針對傳回給用戶端之回應所做的變更。
 * **response.statusCode**：要傳回給用戶端的 HTTP 狀態碼。
 * **response.statusReason**：要傳回給用戶端的 HTTP 原因說明。
 * **response.body**：要傳回給用戶端之本文的字串表示。
-* **response. 標頭 \<HeaderName\> .**：可針對回應用戶端設定的標頭。 取代 *\<HeaderName\>* 為您要設定的標頭名稱。 如果您提供空字串，則回應不會包含該標頭。
+* **response. 標頭 \<HeaderName\> .**：可針對用戶端的回應設定的標頭。 取代 *\<HeaderName\>* 為您要設定之標頭的名稱。 如果您提供空字串，則回應不會包含該標頭。
 
 值可以參考應用程式設定、來自原始用戶端要求的參數，以及來自後端回應的參數。
 

@@ -1,6 +1,6 @@
 ---
 title: 將應用程式從 BizTalk 服務遷移至 Azure Logic Apps
-description: 如何將您的應用程式和解決方案從 Microsoft Azure BizTalk 服務 (MABS) 移至 Azure Logic Apps
+description: 如何將應用程式和解決方案從 Microsoft Azure BizTalk 服務 (MABS) 移至 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837375"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
@@ -125,7 +125,7 @@ BizTalk 服務和 Logic Apps 包含 EDI 和 B2B 處理，並支援 AS2 (Applicab
 
 ## <a name="manage-and-monitor"></a>管理和監視
 
-在 BizTalk 服務中，專用入口網站提供了追蹤功能供您監視問題並進行疑難排解。 Logic Apps 提供更豐富的追蹤和監視功能來[監視 Azure 入口網站中的邏輯應用程式](../logic-apps/monitor-logic-apps.md)，並包含行動應用程式，可讓您在移動時留意事物。
+在 BizTalk 服務中，專用入口網站提供了追蹤功能供您監視問題並進行疑難排解。 Logic Apps 提供更豐富的追蹤和監視功能，以 [監視 Azure 入口網站中的邏輯應用程式](../logic-apps/monitor-logic-apps.md)，並包含行動裝置應用程式，可在移動時隨時留意事物。
 
 ## <a name="high-availability"></a>高可用性
 
