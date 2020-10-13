@@ -2,7 +2,7 @@
 title: 檢查 Azure Active Directory Domain Services 的健全狀況 |Microsoft Docs
 description: 瞭解如何檢查 Azure Active Directory Domain Services (Azure AD DS) 受控網域的健康情況，並使用 Azure 入口網站瞭解狀態訊息。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 34f4ecfd4cc3432babbd26d65bd37ea4d1fb882c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040413"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962729"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>檢查 Azure Active Directory Domain Services 受控網域的健康情況
 
@@ -80,7 +80,7 @@ Azure Active Directory Domain Services (Azure AD DS) 會執行一些背景工作
  * **警告警示** 會通知您如果問題持續發生，可能會影響受控網域作業的問題。 這些警示也提供保護受控網域的建議。
  * **資訊警示** 是不會對受控網域造成負面影響的通知。 資訊警示可讓您深入瞭解受控網域中發生的情況。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 [健康狀態] 頁面中顯示之警示的詳細資訊，請參閱 [解決受控網域上的警示][troubleshoot-alerts]
 

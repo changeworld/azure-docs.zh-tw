@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049412"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>條件式存取見解和報告
@@ -108,7 +108,7 @@ ms.locfileid: "89049412"
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取現有的原則，或建立新的原則。
 1. 在 [ **啟用原則** ] 下，將切換切換為 **僅限報表** 模式。
-1. 選取 [儲存]
+1. 選取 [儲存]。
 
 > [!TIP]
 > 將現有原則的 [ **啟用原則** 狀態] 從 [ **開啟** ] 編輯為 [ **僅限報表** ] 會停用現有的原則強制執行。 

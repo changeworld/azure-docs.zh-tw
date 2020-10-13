@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5bdcf197b4e8a619e55895faf7637ebac0ac12ae
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361121"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Webroot 安全性意識訓練
@@ -34,7 +34,7 @@ ms.locfileid: "91361121"
 > * 讓使用者屬性在 Azure AD 和 Webroot 安全性認知訓練之間保持同步
 > * 在 Webroot 安全性意識訓練中布建群組和群組成員資格
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -65,7 +65,7 @@ ms.locfileid: "91361121"
 
 4. 複製並儲存 **秘密權杖**。 在 Azure 入口網站中，您 Webroot 安全性認知訓練應用程式之 [布建] 索引標籤的 [秘密權杖] 欄位中將會輸入此值。
 
-5. 按一下 [完成] 。
+5. 按一下 [完成]。
 
     ![複製秘密權杖](./media/webroot-security-awareness-training-provisioning-tutorial/copy-secret-token.png)
 

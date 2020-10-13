@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307563"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 搭配 ServiceNow 傳送 Azure 服務健康狀態警示
@@ -29,7 +29,7 @@ ms.locfileid: "91307563"
 
 1.  為 REST API 新增**名稱**，並將 **API 識別碼**設定為 `azureservicehealth`。
 
-1.  選取 [提交]。
+1.  選取 [提交]  。
 
     ![ServiceNow 中的「REST API 設定」](./media/webhook-alerts/servicenow-restapi-settings.png)
 

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ab94af9ec172a3e88d523024c1e00d3a0d944798
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893404"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873076"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -141,7 +141,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 發佈管線端點 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | 在 AKS/ACI 資源上部署已註冊的模型 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | 針對已部署的 AKS 端點評分 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` 當您在使用權杖驗證時，不使用 Azure Active Directory auth) 或 `"/workspaces/read"` (時 ()  |
-| 使用互動式筆記本存取儲存體 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| 使用互動式筆記本存取儲存體 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
 | 建立新的自訂角色 | 擁有者、參與者或自訂角色允許 `Microsoft.Authorization/roleDefinitions/write` | 不需要 | 擁有者、參與者或自訂角色允許： `/workspaces/computes/write` |
 
 > [!TIP]
@@ -419,7 +419,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 您需要訂用帳戶層級許可權，才能在工作區中執行任何與配額相關的作業。 這表示只有在訂用帳戶範圍有寫入權限時，才會針對您的受控計算資源設定訂用帳戶層級配額或工作區層級配額。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [企業安全性概觀](concept-enterprise-security.md)
 - [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)

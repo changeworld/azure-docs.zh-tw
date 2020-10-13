@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/13/2019
-ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659928"
+ms.locfileid: "91873229"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>透過 Azure Logic Apps 連線到內部部署檔案系統
 
@@ -22,6 +22,9 @@ ms.locfileid: "89659928"
 - 建立、取得、附加更新及刪除檔案。
 - 列出資料夾或根資料夾中的檔案。
 - 取得檔案內容與中繼資料。
+
+  > [!IMPORTANT]
+  > 檔案系統連接器目前只支援 Windows 作業系統上的 Windows 檔案系統。  
 
 本文說明如何如此範例案例所述來連線到內部部署檔案系統：將已上傳至 Dropbox 的檔案複製到檔案共用，然後傳送電子郵件。 若要安全地連線並存取內部部署系統，邏輯應用程式可使用[內部部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)。 如果您不熟悉邏輯應用程式，請參閱 [什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。 如需連接器特定的技術資訊，請參閱 [檔案系統連接器參考](/connectors/filesystem/)。
 

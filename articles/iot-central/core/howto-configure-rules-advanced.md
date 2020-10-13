@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398573"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流程將您的 Azure IoT Central 應用程式與其他雲端服務整合
@@ -75,7 +75,7 @@ ms.locfileid: "91398573"
 1. 在動作清單中，選取您想要使用的 IoT Central 動作。
 1. 在 [動作] 步驟中，針對您所選擇的動作完成設定。 然後選取 [儲存]。
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="尋找 Azure IoT Central V3 連接器，並選擇動作":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="尋找 Azure IoT Central - 預覽連接器，然後選擇觸發程序":::
 
 ## <a name="list-of-actions"></a>動作清單
 

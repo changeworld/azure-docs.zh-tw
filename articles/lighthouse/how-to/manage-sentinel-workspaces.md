@@ -4,10 +4,10 @@ description: 瞭解如何有效管理委派客戶資源上的 Azure Sentinel。
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596934"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大規模管理 Azure Sentinel 工作區

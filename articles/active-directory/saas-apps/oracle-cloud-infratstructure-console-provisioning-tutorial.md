@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 665e4870619751bbda062473d0c2549b26352d94
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361597"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教學課程：設定 Oracle 雲端基礎結構主控台來自動布建使用者
@@ -31,7 +31,7 @@ ms.locfileid: "91361597"
 > * 在 Oracle 雲端基礎結構主控台中布建群組和群組成員資格
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial) Oracle 雲端基礎結構主控台 (建議的) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -142,8 +142,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
-      |urn： ietf： params： scim：架構： oracle： idcs： extension： user： User： bypassNotification|Boolean|
-      |urn： ietf： params： scim：架構： oracle： idcs： extension： user： User： isFederatedUser|Boolean|
+      |urn： ietf： params： scim：架構： oracle： idcs： extension： user： User： bypassNotification|布林值|
+      |urn： ietf： params： scim：架構： oracle： idcs： extension： user： User： isFederatedUser|布林值|
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Oracle 雲端基礎結構主控台**]。
 

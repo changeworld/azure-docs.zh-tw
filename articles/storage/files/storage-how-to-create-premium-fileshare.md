@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564180"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何建立 Azure premium 檔案共用
@@ -21,7 +21,7 @@ Premium 檔案共用是在固態硬碟 (SSD) 儲存體媒體上提供，適用�
 
 本文說明如何使用 [Azure 入口網站](https://portal.azure.com/)、Azure PowerShell 模組和 Azure CLI 來建立這個新的帳戶類型。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -43,7 +43,7 @@ Premium 檔案共用是在固態硬碟 (SSD) 儲存體媒體上提供，適用�
 
     ![Azure 入口網站主頁面選取儲存體帳戶](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-1. 在出現的 [儲存體帳戶]**** 視窗上，選擇 [新增]****。
+1. 在出現的 [儲存體帳戶]  視窗上，選擇 [新增]  。
 1. 選取要在其中建立儲存體帳戶的訂用帳戶。
 1. 在 [資源群組]**** 欄位下方，選取 [新建]****。 輸入新資源群組的名稱，如下圖所示。
 

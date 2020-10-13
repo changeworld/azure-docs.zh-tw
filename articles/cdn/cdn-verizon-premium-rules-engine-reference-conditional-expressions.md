@@ -5,32 +5,18 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c498a3d69b24fd104d24a3627a8e9d88b495c053
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "81253504"
+ms.locfileid: "91873960"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>來自 Verizon Premium 規則引擎條件運算式的 Azure CDN
 
-本文列出 Azure 內容傳遞網路 (CDN) [規則引擎](cdn-verizon-premium-rules-engine.md)的條件運算式的詳細說明。
-
-規則的第一個部分是條件運算式。
-
-條件運算式 | 描述
------------------------|-------------
-IF | IF 運算式永遠是規則中第一個陳述式的一部分。 像所有其他條件運算式一樣，此 IF 陳述式必須與符合項目相關聯。 如果未定義任何其他條件運算式，則此相符項會決定在一組功能套用至要求之前必須符合的準則。
-AND IF | AND IF 運算式只能在下列類型的條件運算式之後新增︰IF、AND IF。 它表示針對初始 IF 陳述式有必須符合的另一個條件。
-ELSE IF| ELSE IF 運算式會指定其他條件，必須在此 ELSE IF 陳述式特定的一組功能發生之前符合。 有 ELSE IF 陳述式表示前一個陳述式的結尾。 可以放在 ELSE IF 陳述式之後的條件運算式是另一個 ELSE IF 陳述式。 這表示 ELSE IF 陳述式只能用來指定必須符合的單一其他條件。
-
-**範例**： ![ CDN 比對條件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
-
- > [!TIP]
-   > 後一項規則可能會覆寫前一項規則所指定的動作。
-   > 範例︰全面涵蓋規則會保護所有透過以權杖為基礎的驗證要求。 可以直接在它底下建立另一個規則，對特定類型的要求產生例外狀況。
+如需有關 Verizon Premium 規則引擎運算式的詳細資訊，請參閱 [獨立條件運算式](https://docs.vdms.com/cdn/index.html#Whats_New/Whats-New-RE.htm#RuleSetup)。
 
 ## <a name="next-steps"></a>後續步驟
 

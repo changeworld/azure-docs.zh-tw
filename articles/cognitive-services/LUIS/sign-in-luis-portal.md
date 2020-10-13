@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.author: a-sakand
 author: skandil
 ms.openlocfilehash: 22f5ab332c52a3b567b37089def6e4a494a15d29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309467"
 ---
 # <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
@@ -36,7 +36,7 @@ ms.locfileid: "91309467"
 
 與 Azure 訂用帳戶相關聯的帳戶，可讓您選取要使用的訂用帳戶和資源。
 
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="LUIS 入口網站的部分螢幕擷取畫面，其中包含資源選取範圍下拉式方塊。":::
+:::image type="content" source="media/sign-in/resource-selection.png" alt-text="使用 Azure 圖示 LUIS 巡覽列的部分螢幕擷取畫面。":::
 
 ## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>使用與 Azure 訂用帳戶相關聯的帳戶登入
 
@@ -50,11 +50,11 @@ ms.locfileid: "91309467"
 
     [深入瞭解撰寫和入門金鑰](luis-how-to-azure-subscription.md#luis-resources)。 這兩個資源提供您1000000的免費撰寫交易和1000個免費的預測端點交易。
 
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="部分螢幕擷取畫面，可選擇 Language Understanding 撰寫資源的類型。":::
+    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="使用 Azure 圖示 LUIS 巡覽列的部分螢幕擷取畫面。":::
 
 1. 使用現有的撰寫資源
 
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="選擇撰寫資源":::
+    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="使用 Azure 圖示 LUIS 巡覽列的部分螢幕擷取畫面。":::
 
     如果您在訂用帳戶中已經有 LUIS 撰寫資源，並且在登入期間將一個資源與您的 LUIS 帳戶建立關聯，請選擇 [ **使用現有的撰寫資源** ] 選項，並提供下列資訊：
 
@@ -67,7 +67,7 @@ ms.locfileid: "91309467"
 
 1. 建立新的撰寫資源
 
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="建立撰寫資源":::
+    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="使用 Azure 圖示 LUIS 巡覽列的部分螢幕擷取畫面。":::
 
     在**建立新的撰寫資源**時，請提供下列資訊：
 
@@ -78,7 +78,7 @@ ms.locfileid: "91309467"
 
 1. 選擇您的路徑之後，可能需要幾秒鐘的時間，才會出現表示「您的帳戶已成功遷移」的符號。 選取 [ **繼續**] 以完成。
 
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="確認撰寫資源":::
+    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="使用 Azure 圖示 LUIS 巡覽列的部分螢幕擷取畫面。":::
 
     > [!Note]
     > 如果您的訂用帳戶和至少一個在入口網站中註冊所在區域的撰寫資源，您可能會自動登入 LUIS，並與資源建立關聯，而不需要選擇要進入哪一個路徑。
@@ -90,7 +90,7 @@ ms.locfileid: "91309467"
 
 1. 選取 [ **繼續**] 以完成。 您將會使用試用/入門金鑰自動登入。 這表示，最終您將需要 [遷移您的帳戶](luis-migration-authoring.md#migration-steps) ，並將您的應用程式連結至撰寫資源。 若要進行遷移程式，您將需要登入 [Azure 免費試用版](https://azure.microsoft.com/free/)。
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="無訂用帳戶案例":::
+    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="使用 Azure 圖示 LUIS 巡覽列的部分螢幕擷取畫面。":::
 
 ## <a name="troubleshooting"></a>疑難排解
 

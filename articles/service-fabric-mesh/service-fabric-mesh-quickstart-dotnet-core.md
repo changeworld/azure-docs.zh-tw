@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0828ad1acd23afdb7ebe7b89b20d8674e5876319
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75459060"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91653293"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入門：建立 Web 應用程式並部署至 Azure Service Fabric Mesh
 
@@ -33,7 +33,7 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 確定已勾選 [為方案建立目錄]  ，然後按一下 [確定]  以建立 Service Fabric Mesh 專案。
 
-![Visual Studio 的新增 Service Fabric Mesh 專案對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![顯示如何建立 Service Fabric Mesh 專案的螢幕擷取畫面。](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>建立服務
 
@@ -67,11 +67,11 @@ Visual Studio 會建立 Service Fabric Mesh 應用程式專案和 ASP.NET Core �
 
 選取您的 Azure 帳戶和訂用帳戶。 選擇 [位置]  。 本文使用**美國東部**。
 
-在 [資源群組] 下方，選取 [\<建立新的資源群組...>]。 [建立資源群組]  對話方塊隨即出現。 設定**資源群組名稱**和**位置**。  本快速入門使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的資源群組名稱)。  按一下 [建立]  以建立資源群組並返回發行對話方塊。
+在 [資源群組] 底下選取 **\<Create New Resource Group...>** 。 [建立資源群組]  對話方塊隨即出現。 設定**資源群組名稱**和**位置**。  本快速入門使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的資源群組名稱)。  按一下 [建立]  以建立資源群組並返回發行對話方塊。
 
-![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![顯示如何建立新資源群組的螢幕擷取畫面。](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-返回 [發佈 Service Fabric 應用程式] 對話方塊，在 [Azure Container Registry] 下方，選取 [\<建立新的容器登錄...>]。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本快速入門使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為 [基本]  ，然後按一下 [建立]  以返回發行對話方塊。
+返回 [發佈 Service Fabric 應用程式] 對話方塊，在 [Azure Container Registry] 下方，選取 **\<Create New Container Registry...>** 。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本快速入門使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為 [基本]  ，然後按一下 [建立]  以返回發行對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

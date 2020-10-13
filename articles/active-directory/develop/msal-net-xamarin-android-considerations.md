@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89459839"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android with MSAL.NET 的設定需求和疑難排解秘訣
@@ -156,7 +156,7 @@ var authResult = AcquireTokenInteractive(scopes)
 </Reference>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [使用 Microsoft 身分識別平臺的 Xamarin 行動應用程式](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)範例。 下表摘要說明讀我檔案中的相關資訊。
 

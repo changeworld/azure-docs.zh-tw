@@ -4,10 +4,10 @@ description: 瞭解 Azure Lighthouse 和 Azure 受控應用程式如何協助啟
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89483842"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 受控應用程式
@@ -47,7 +47,7 @@ Azure 受控應用程式通常用於特定客戶的需求，可透過完全由�
 
 客戶也可能對來自多個服務提供者的受控應用程式感興趣，無論他們是否也透過 Azure Lighthouse 從任何服務提供者使用受控服務。 此外，雲端解決方案提供者 (CSP) 計畫中的合作夥伴，可以將其他 Isv 發佈的特定受控應用程式，轉銷給透過 Azure Lighthouse 所支援的客戶。 使用廣泛的選項時，服務提供者可以選擇適當的平衡以符合客戶的需求，並在適當時限制資源的存取權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure 受控應用程式](../../azure-resource-manager/managed-applications/overview.md)。
 - 瞭解如何將 [訂用帳戶上架至 Azure Lighthouse](../how-to/onboard-customer.md)。

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532596"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點
@@ -26,15 +26,15 @@ ms.locfileid: "91532596"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
+|版本狀態：|正式上市 (GA)|
 |定價：|**適用于 container registry 的 Azure Defender**會依[定價頁面上的](security-center-pricing.md)顯示方式計費|
 |支援的登錄和映射：|![是 ](./media/icons/yes-icon.png) 可從公用網際網路存取並提供 shell 存取的 Linux 託管 ACR 登錄。<br>![沒有任何 ](./media/icons/no-icon.png) Windows 主控的 ACR 登錄。<br>![無「私人」登錄 ](./media/icons/no-icon.png) -「安全性中心」需要您的登錄才能從公用網際網路存取。 「安全性中心」目前無法連接或掃描登錄，其存取權受限於防火牆、服務端點或私人端點（例如 Azure Private Link）。<br>![沒有任何 ](./media/icons/no-icon.png) 超級極簡映射（例如 [Docker 臨時](https://hub.docker.com/_/scratch/) 影像）或 "Distroless" 映射（只包含應用程式和其執行時間相依性，沒有套件管理員、shell 或 OS）。|
-|必要的角色和許可權：|**安全性讀取者** 和 [Azure Container Registry 讀者角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|必要的角色和權限：|**安全性讀取者** 和 [Azure Container Registry 讀者角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 
-## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>識別 Azure container registry 映射中的弱點 
+## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>識別 Azure 容器登錄中的映像有何弱點 
 
 1. 若要啟用以 Azure Resource Manager 為基礎 Azure Container Registry 中所儲存映射的弱點掃描：
 
@@ -43,7 +43,7 @@ ms.locfileid: "91532596"
         安全性中心現在已準備好在您的登錄中掃描映射。
 
         >[!NOTE]
-        > 這項功能是依每個映射收費。
+        > 這項功能會按映像收費。
 
 1. 映射掃描會在每次推送或匯入時觸發，以及在過去30天內提取映射。 
 
@@ -115,9 +115,9 @@ ms.locfileid: "91532596"
 
 ## <a name="disable-specific-findings-preview"></a>停用特定的結果 (預覽) 
 
-如果您的組織需要忽略尋找，而不是補救它，您可以選擇性地停用它。 停用的結果不會影響您的安全分數或產生不必要的雜訊。
+如果您的組織需要忽略某個結果，而不是將其修復，您可以選擇性地停用該結果。 停用的結果不會影響您的安全分數或產生不想要的雜訊。
 
-當尋找符合您在停用規則中定義的準則時，不會出現在結果清單中。 一般案例包括：
+當某個結果符合停用規則中定義的準則時，其就不會出現在結果清單中。 一般案例包括：
 
 - 停用低於中等嚴重性的結果
 - 停用非可修補的結果
@@ -135,7 +135,7 @@ ms.locfileid: "91532596"
 - 類別
 - 安全性檢查 
 - CVSS v3 分數
-- 嚴重性 
+- Severity 
 - 可修補狀態 
 
 若要建立規則：
@@ -157,4 +157,4 @@ ms.locfileid: "91532596"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入瞭解 Azure Defender](azure-defender.md)
+> [深入了解 Azure Defender](azure-defender.md)

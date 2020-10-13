@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310164"
 ---
 # <a name="supported-data-format-details"></a>支援的資料格式詳細資料
 
-本文提供對所有 XML 標記和已知文字幾何類型的讀取和寫入支援的詳細資訊。 它也會詳細說明如何在空間 IO 模組中剖析分隔空間資料。
+本文提供有關所有 XML 標記和 Well-Known 文字幾何類型的讀取和寫入支援的詳細資訊。 它也會詳細說明如何在空間 IO 模組中剖析分隔空間資料。
 
 ## <a name="supported-xml-namespaces"></a>支援的 XML 命名空間
 
@@ -304,7 +304,7 @@ ms.locfileid: "91310164"
 - MultiPoints 將會細分為個別的導航點。
 - 多邊形和 MultiPolygons 會以軌跡的形式寫入。 
   
-## <a name="supported-well-known-text-geometry-types"></a>支援的知名文字幾何類型
+## <a name="supported-well-known-text-geometry-types"></a>支援的 Well-Known 文字幾何類型
 
 | Geometry 類型 | 讀取 | 寫入 |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ ms.locfileid: "91310164"
 
 ## <a name="delimited-spatial-data-support"></a>分隔的空間資料支援
 
-分隔的空間資料，例如 (CSV) 的逗點分隔值檔案，通常會有包含空間資料的資料行。 例如，可能會有包含緯度和經度資訊的資料行。 在知名的文字格式中，可能會有包含空間幾何資料的資料行。
+分隔的空間資料，例如 (CSV) 的逗點分隔值檔案，通常會有包含空間資料的資料行。 例如，可能會有包含緯度和經度資訊的資料行。 在 Well-Known 文字格式中，可能會有包含空間幾何資料的資料行。
 
 ### <a name="spatial-data-column-detection"></a>空間資料行偵測
 
@@ -385,7 +385,7 @@ ms.locfileid: "91310164"
 
 #### <a name="geography"></a>[地理位置]
 
-系統會掃描資料的第一個資料列是否有已知文字格式的字串。 
+系統會掃描資料的第一個資料列，找出 Well-Known 文字格式的字串。 
 
 ### <a name="delimited-data-column-types"></a>分隔資料行類型
 
@@ -399,7 +399,7 @@ ms.locfileid: "91310164"
 - edm. double
 - FLOAT
 - double
-- number
+- 數字
 
 #### <a name="booleans"></a>布林值
 

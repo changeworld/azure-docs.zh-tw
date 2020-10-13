@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397822"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight 中設定 Apache Hive 原則
@@ -55,8 +55,8 @@ ms.locfileid: "91397822"
     |屬性 |值 |
     |---|---|
     |原則名稱|read-hivesampletable-all|
-    |Hive 資料庫|預設|
-    |table|hivesampletable|
+    |Hive 資料庫|default|
+    |資料表|hivesampletable|
     |Hive 資料行|*|
     |選取使用者|hiveuser1|
     |權限|select|
@@ -73,8 +73,8 @@ ms.locfileid: "91397822"
     |屬性 |值 |
     |---|---|
     |原則名稱|read-hivesampletable-devicemake|
-    |Hive 資料庫|預設|
-    |table|hivesampletable|
+    |Hive 資料庫|default|
+    |資料表|hivesampletable|
     |Hive 資料行|clientid、devicemake|
     |選取使用者|hiveuser2|
     |權限|select|
@@ -87,7 +87,7 @@ ms.locfileid: "91397822"
  | --- | --- |
  | 資料來源名稱 | 為資料來源指定名稱 |
  | 主機 | 輸入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | Port | 使用 **443** (此連接埠已從 563 變更為 443)。 |
+ | 連接埠 | 使用 **443** (此連接埠已從 563 變更為 443)。 |
  | 資料庫 | 使用 **預設值**。 |
  | Hive 伺服器類型 | 選取 [Hive Server 2]**** |
  | 機制 | 選取 [Azure HDInsight 服務]**** |
@@ -115,7 +115,7 @@ ms.locfileid: "91397822"
 
 1. 選取 [ **Hivesampletable**]，然後選取 **[下一步]**。
 
-1. 選取 [完成]  。
+1. 選取 [完成]。
 
 1. 在 [匯入資料] **** 對話方塊中，您可以變更或指定查詢。 若要這樣做，請選取 [ **屬性**]。 這可能需要幾秒鐘的時間。
 

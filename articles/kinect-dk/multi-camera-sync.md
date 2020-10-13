@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 keywords: azure、kinect、規格、硬體、深色、功能、深度、色彩、RGB、IMU、陣列、深度、多重、同步處理
 ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361155"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步處理多個 Azure Kinect DK 裝置
@@ -166,12 +166,12 @@ ms.locfileid: "91361155"
    > 若要取得所有裝置之間的精確影像捕捉對齊，您必須先啟動主要裝置。  
 1. 在 [ **外部同步**] 底下，選取 [ **Sub**]。  
    ![附屬相機開始](./media/sub-device-start.png)
-1.  選取 [開始]。  
+1.  選取 [開始]  。  
     > [!NOTE]  
     > 因為這是從屬裝置，所以在裝置啟動後，Azure Kinect 檢視器不會顯示影像。 在從屬裝置收到來自主要裝置的同步信號之前，不會顯示任何影像。
 1. 在次級裝置啟動之後，請使用 Azure Kinect 檢視器的另一個實例來開啟主要裝置。
 1. 在 [ **外部同步**] 底下，選取 [ **Master**]。
-1. 選取 [開始]。
+1. 選取 [開始]  。
 
 當主要 Azure Kinect 裝置啟動時，Azure Kinect 檢視器的兩個實例都應該會顯示影像。
 

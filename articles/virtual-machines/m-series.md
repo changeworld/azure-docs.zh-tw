@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
 ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653650"
 ---
 # <a name="m-series"></a>M 系列
 
 M 系列提供高 vCPU 計數 (最多 128 個 vCPU) 與大量記憶體 (最多 3.8 TiB)。 其也很適合用於受益於高 vCPU 計數與大量記憶體的極大型資料庫或其他應用程式。 Intel 最 &reg; 強的 &reg; CPU E7-8890 v3 @ 2.50 g h z 和 intel &reg; &reg; 8280M 白金級 (串聯 Lake) 都支援 M 系列大小。
 
-M 系列 VM 的功能 Intel &reg; 超執行緒技術。
+M 系列 VM 的功能 Intel &reg; Hyper-Threading 技術。
 
 [ACU](acu.md)：160-180<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>

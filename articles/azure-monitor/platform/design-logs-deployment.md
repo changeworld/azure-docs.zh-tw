@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
 ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534194"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
@@ -64,7 +64,7 @@ Log Analytics 工作區提供：
 
 使用者可存取的資料是由下表所列的因素組合所決定。 以下各節將說明每個步驟。
 
-| 因素 | 說明 |
+| 因素 | 描述 |
 |:---|:---|
 | [存取模式](#access-mode) | 使用者用來存取工作區的方法。  定義可用資料的範圍以及套用的存取控制模式。 |
 | [存取控制模式](#access-control-mode) | 在工作區上設定，定義是否要在工作區或資源層級套用許可權。 |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b945b984210dc3fc3338da8a5670a7813198e40
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919466"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 驗證與 Azure Multi-Factor Authentication Server
@@ -42,16 +42,16 @@ ms.locfileid: "88919466"
    ![MFA Server 中的 Windows 驗證](./media/howto-mfaserver-windows/windowsauth.png)
 2. 核取 [啟用 Windows 驗證]**** 核取方塊。 預設不核取此方塊。
 3. [應用程式] 索引標籤可讓系統管理員設定一或多個應用程式要經過 Windows 驗證。
-4. 選取伺服器或應用程式 – 指定是否啟用伺服器/應用程式。 按一下 [確定]。
+4. 選取伺服器或應用程式 – 指定是否啟用伺服器/應用程式。 按一下 [確定]  。
 5. 按一下 [**新增 ...** ]
 6. [信任的 IP] 索引標籤可讓您針對來自特定 IP 的 Windows 工作階段，略過 Azure Multi-Factor Authentication。 例如，如果員工從辦公室和家裡使用應用程式，您可能決定當他們在辦公室時不要響起 Azure Multi-Factor Authentication 的電話。 為此，您可以將辦公室子網路指定為信任的 IP 項目。
 7. 按一下 [**新增 ...** ]
 8. 如果您想要略過單一 IP 位址，請選取 [ **單一 ip** ]。
 9. 如果您想要跳過整個 IP 範圍，請選取 [ **Ip 範圍** ]。 範例：10.63.193.1-10.63.193.100。
 10. 如果您想要使用子網標記法指定 Ip 範圍，請選取 [ **子網** ]。 輸入子網路的起始 IP，並從下拉式清單中挑選適當的網路遮罩。
-11. 按一下 [確定]。
+11. 按一下 [確定]  。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [設定 Azure MFA Server 的協力廠商 VPN 應用裝置](howto-mfaserver-nps-vpn.md)
 

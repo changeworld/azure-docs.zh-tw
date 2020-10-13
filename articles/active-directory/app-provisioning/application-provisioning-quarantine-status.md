@@ -12,10 +12,10 @@ ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 6a716aef65cc81c5558a214c1ee5f93180810977
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266678"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>隔離狀態中的應用程式布建
@@ -49,7 +49,7 @@ Azure AD 布建服務會監視設定的健康情況，並將狀況不良的應�
 
 ## <a name="why-is-my-application-in-quarantine"></a>為什麼我的應用程式是隔離的？
 
-|說明|建議的動作|
+|描述|建議的動作|
 |---|---|
 |**SCIM 合規性問題：** 傳回 HTTP/404 找不到回應，而非預期的 HTTP/200 確定回應。 在此情況下，Azure AD 布建服務已向目標應用程式提出要求，並收到未預期的回應。|檢查 [系統管理員認證] 區段，查看應用程式是否需要指定租使用者 URL，並確定 URL 是否正確。 如果您沒有看到問題，請洽詢應用程式開發人員，以確保其服務符合 SCIM 規範。 https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**不正確認證：** 當您嘗試授權存取目標應用程式時，我們收到來自目標應用程式的回應，指出提供的認證無效。|請流覽至布建設定 UI 的 [管理員認證] 區段，然後使用有效的認證再次授權存取權。 如果應用程式在資源庫中，請參閱應用程式設定教學課程，以瞭解所需的任何其他步驟。|

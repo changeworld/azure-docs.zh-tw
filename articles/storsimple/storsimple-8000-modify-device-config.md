@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514681"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962882"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 裝置管理員服務來修改 StorSimple 裝置組態
 
@@ -61,7 +61,7 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 您的裝置必須同步時間才能驗證雲端儲存空間服務提供者。 使用裝置上的 [一般設定]**** 刀鋒視窗，可修改裝置的時間設定。
 
-![[一般設定] 中的裝置描述](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![一般設定2中的裝置描述](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  從下拉式清單中選取時區。 您最多可以指定兩個網路時間通訊協定 (NTP) 伺服器：
 
@@ -165,7 +165,7 @@ DATA 0 依預設已啟用雲端功能。 設定 DATA 0 時，您也需要設定�
 1. 清除兩個介面的 IP 位址。
 2. 清除 IP 位址之後，指派新的 IP 位址給個別的介面。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 了解如何 [為 StorSimple 裝置設定 MPIO](storsimple-8000-configure-mpio-windows-server.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。

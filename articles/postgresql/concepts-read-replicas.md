@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710510"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939829"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -126,7 +126,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ## <a name="failover"></a>容錯移轉
 主要和複本伺服器之間沒有自動容錯移轉。 
 
-由於複寫是非同步，因此主要和複本之間會有延遲。 延遲數量可能會受到一些因素所影響，例如，在主伺服器上執行工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
+由於複寫是非同步，因此主要和複本之間會有延遲。 延遲數量可能會受到一些因素所影響，例如，在主伺服器上執行工作負載的繁重程度，以及資料中心之間的延遲。 在一般情況下，複本延遲範圍介於幾秒鐘到幾分鐘。 但是，如果主要複本執行的工作負載非常繁重，而且複本的速度不夠快，則延遲可能較高。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
 > 如果您容錯移轉至複本，從主要複本取消複本時的延遲將會指出遺失的資料量。
@@ -149,7 +149,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 本節將摘要說明有關讀取複本功能的考量。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 讀取複本和 [邏輯解碼](concepts-logical.md) 都取決於 Postgres 的預先寫入記錄 (WAL) 取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高層級的記錄。
 
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：

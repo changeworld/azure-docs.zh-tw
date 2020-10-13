@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
 ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757039"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a> (Azure Private Link 常見問題的常見問題) 
 
-## <a name="private-link"></a>Private Link
+## <a name="private-link"></a>私人連結
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>什麼是 Azure 私人端點和 Azure Private Link 服務？
 
@@ -41,7 +41,7 @@ Private Link 服務會接收來自多個私人端點的連接。 私人端點會
 是。 您可以在相同的 VNet 或子網中有多個私人端點。 他們可以連接至不同的服務。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>私人端點是否需要專用子網？ 
-不正確。 私人端點不需要專用子網。 您可以從部署服務的 VNet 中，選擇來自任何子網的私人端點 IP。  
+否。 私人端點不需要專用子網。 您可以從部署服務的 VNet 中，選擇來自任何子網的私人端點 IP。  
  
 ### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>私人端點是否可以連接到跨 Azure Active Directory 租使用者的 Private Link 服務？ 
 是。 私人端點可以跨 AD 租使用者連接到 Private Link 服務或 Azure PaaS。  
@@ -71,13 +71,13 @@ Private Link 服務會接收來自多個私人端點的連接。 私人端點會
 - **所有** 人都可以找到該服務。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>我可以使用基本負載平衡器建立 Private Link 服務嗎？ 
-不正確。 不支援基本負載平衡器上的 Private Link 服務。
+否。 不支援基本負載平衡器上的 Private Link 服務。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Private Link 服務需要專用的子網嗎？ 
-不正確。 Private Link 服務不需要專用子網。 您可以在 VNet 中選擇您的服務部署所在的任何子網。   
+否。 Private Link 服務不需要專用子網。 您可以在 VNet 中選擇您的服務部署所在的任何子網。   
 
 ### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>我是使用 Azure Private Link 的服務提供者。 我是否需要確定所有的客戶都有唯一的 IP 空間，而不會與 IP 空間重迭？ 
-不正確。 Azure Private Link 為您提供這種功能。 您不一定要有與客戶位址空間不重迭的位址空間。 
+否。 Azure Private Link 為您提供這種功能。 您不一定要有與客戶位址空間不重迭的位址空間。 
 
 ##  <a name="next-steps"></a>後續步驟
 

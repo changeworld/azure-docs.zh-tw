@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: 在 Azure Dev Spaces 中使用自訂 NuGet 摘要以存取及使用 NuGet 套件。
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
 manager: gwallace
-ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229272"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960213"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>搭配 Azure Dev Spaces 使用自訂 NuGet 摘要
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 NuGet 摘要會提供在專案中包含套件來源的便利方式。 Azure Dev Spaces 需要存取此摘要，才能將相依性正確地安裝在 Docker 容器中。
 
@@ -69,6 +71,6 @@ ignore:
 
 下次您在 `azds up` `F5` Visual Studio Code 或 Visual Studio 中執行或時，Azure Dev Spaces 將會同步處理檔案， `NuGet.Config` 以用來安裝套件相依性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [NuGet 及其運作方式](/nuget/what-is-nuget)。

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: b45c7fcbc4e3c0eda4f2e8d3eb21a81428dee39d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361223"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>教學課程：設定 Zapier 來自動布建使用者
@@ -31,7 +31,7 @@ ms.locfileid: "91361223"
 > * 在 Zapier 中布建群組和群組成員資格
 > * Zapier (建議的單一登入) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

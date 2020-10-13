@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268480"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 的常見問題
@@ -121,7 +121,7 @@ PlayReady、Widevine 和 FairPlay 等 DRM 系統都會在用來解密內容的�
 
 使用 Azure 媒體服務 Api 來設定授權/金鑰傳遞和加密您的資產 (如 [這個範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)) 所示。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [內容保護概觀](content-protection-overview.md)
 - [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)

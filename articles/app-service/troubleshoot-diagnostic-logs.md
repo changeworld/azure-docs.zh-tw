@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264366"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
@@ -62,7 +62,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 | 層級 | 包含的類別 |
 |-|-|
-|**Disabled** | 無 |
+|**停用** | 無 |
 |**錯誤** | 錯誤、嚴重 |
 |**警告** | 警告、錯誤、嚴重|
 |**資訊** | 資訊、警告、錯誤、嚴重|
@@ -185,7 +185,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表顯示支援的記錄類型和描述： 
 
-| 記錄類型 | Windows | Windows 容器 | Linux | Linux 容器 | 說明 |
+| 記錄類型 | Windows | Windows 容器 | Linux | Linux 容器 | 描述 |
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | TBA | TBA | 是 | 是 | 標準輸出和標準錯誤 |
 | AppServiceHTTPLogs | 是 | TBA | 是 | 是 | Web 伺服器記錄 |

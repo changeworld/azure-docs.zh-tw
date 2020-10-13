@@ -4,19 +4,22 @@ description: 使用 Azure 私人端點私下連線至 Web 應用程式
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 10/09/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857260"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873093"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>使用 Azure Web 應用程式的私人端點
+
+> [!IMPORTANT]
+> 私人端點適用于 Windows 和 Linux Web 應用程式（容器化或不裝載于這些 App Service 方案）： **隔離**、 **>premiumv2**、 **PremiumV3**、函式 **premium** (有時也稱為彈性 Premium 方案) 。 
 
 您可以使用 Azure Web 應用程式的私人端點來允許位於私人網路中的用戶端透過 Private Link 安全地存取應用程式。 私人端點會使用 Azure VNet 位址空間中的 IP 位址。 私人網路上的用戶端與 Web 應用程式之間的網路流量會流經 VNet 和 Microsoft 骨幹網路上的 Private Link，以排除公開網際網路的風險。
 
@@ -91,7 +94,7 @@ ms.locfileid: "91857260"
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<--您會在 DNS 系統中管理此專案，以指向您的私人端點 IP 位址|
 
-在此 DNS 設定之後，您就可以使用預設名稱 mywebappname.azurewebsites.net，私下連線至您的 Web 應用程式。
+在此 DNS 設定之後，您就可以使用預設名稱 mywebappname.azurewebsites.net，私下連線至您的 Web 應用程式。 您必須使用這個名稱，因為預設憑證是針對 *. azurewebsites.net 發出。
 
 
 如果您需要使用自訂 DNS 名稱，則必須在 Web 應用程式中新增自訂名稱。 自訂名稱必須像任何自訂名稱一樣，使用公用 DNS 解析來進行驗證。 如需詳細資訊，請參閱[自訂 DNS 驗證][dnsvalidation]。
@@ -115,9 +118,9 @@ ms.locfileid: "91857260"
 
 您最多可以將100私人端點連線到特定的 Web 應用程式。
 
-啟用 Web 應用程式的私人端點時，無法使用遠端偵錯程式功能。 建議您將程式碼部署到位置，並在該處進行遠端偵錯程式。
+插槽無法使用私人端點。
 
-私人端點適用于 >premiumv2、PremiumV3、Windows 和 Linux Web 應用程式（容器化），而 Azure Functions Premium 方案 (有時也稱為彈性 Premium 方案) 。 
+啟用 Web 應用程式的私人端點時，無法使用遠端偵錯程式功能。 建議您將程式碼部署到位置，並在該處進行遠端偵錯程式。
 
 我們會定期改善 Private Link 功能和私人端點，請查看[這篇文章][pllimitations]，以取得有關限制的最新資訊。
 

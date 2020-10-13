@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710901"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939863"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫-單一伺服器的商務持續性總覽
 
@@ -29,10 +29,9 @@ ms.locfileid: "91710901"
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
 | 從異地複寫備份進行異地還原 | 不支援 | RTO-變化 <br/>RPO < 1 小時 | RTO-變化 <br/>RPO < 1 小時 |
-| 讀取複本 | RTO-分鐘 <br/>RPO < 5 分鐘 | RTO-分鐘 <br/>RPO < 5 分鐘| RTO-分鐘 <br/>RPO < 5 分鐘|
+| 讀取複本 | RTO-分鐘 <br/>RPO < 5 分鐘 * | RTO-分鐘 <br/>RPO < 5 分鐘 *| RTO-分鐘 <br/>RPO < 5 分鐘 *|
 
-> [!IMPORTANT]
-> 此處所提及的預期 RTO 和 RPO 僅供參考之用。 這些計量不提供任何 Sla。
+\* 在某些情況下，RPO 可能較高，視各種因素而定，包括主資料庫工作負載和區域之間的延遲。 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 

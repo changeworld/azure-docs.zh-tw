@@ -6,13 +6,13 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309501"
 ---
-# <a name="devops-practices-for-luis"></a>適用于 LUIS 的 DevOps 做法
+# <a name="devops-practices-for-luis"></a>適用於 LUIS 的 DevOps 實務
 
 開發 Language Understanding (LUIS) 應用程式的軟體工程師，可以遵循下列指導方針，來套用 [原始檔控制](luis-concept-devops-sourcecontrol.md)、 [自動化組建](luis-concept-devops-automation.md)、 [測試](luis-concept-devops-testing.md)和 [發行管理](luis-concept-devops-automation.md#release-management) 的 DevOps 實務。
 

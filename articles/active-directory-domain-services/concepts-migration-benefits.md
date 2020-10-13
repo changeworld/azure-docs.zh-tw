@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 中傳統部署遷移的優點 |Microsoft Docs
 description: 深入瞭解將傳統部署 Azure Active Directory Domain Services 遷移至 Resource Manager 部署模型的優點
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: iainfou
-ms.openlocfilehash: 93dcc1202c08be905cf08513f38e79a8a7674e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 35224e6c9a28b1555303c1ae11b6700c1bf419bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650122"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962491"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>從傳統遷移至 Resource Manager 部署模型的優點 Azure Active Directory Domain Services
 
@@ -48,7 +48,7 @@ Azure Active Directory Domain Services (Azure AD DS) 可讓您將使用傳統部
 
 使用 Resource Manager 部署模型的受控網域可協助您隨時掌握最新的新功能。 使用傳統部署模型的受控網域無法使用新功能。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用，請參閱將 [Azure AD Domain Services 從傳統虛擬網路模型遷移到 Resource Manager][howto-migrate]。
 

@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267630"
 ---
 # <a name="scenario-isolating-vnets"></a>案例：隔離 Vnet
@@ -24,7 +24,7 @@ ms.locfileid: "91267630"
 
 在此案例中，特定 VNet 內的工作負載會保持隔離，而且無法與其他 Vnet 通訊。 不過， (VPN、ER 和使用者 VPN) 的所有分支都需要 Vnet。 為了找出需要多少個路由表，您可以建立連接矩陣。 在此案例中，它看起來會像下表，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) ：
 
-| 從 |   收件者 |  *Vnet* | *分支* |
+| 寄件者 |   收件者 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
 | VNets     | &#8594;|           |     X    |
 | 分支   | &#8594;|    X     |     X    |
