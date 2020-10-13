@@ -1,6 +1,6 @@
 ---
-title: 追蹤和記錄 Azure 資料箱，Azure Data Box Heavy 匯出訂單的事件 |Microsoft Docs
-description: 描述如何追蹤和記錄 Azure 資料箱各個階段的事件，並 Azure Data Box Heavy 匯出順序。
+title: 追蹤和記錄 Azure 資料箱，Azure Data Box Heavy 匯出順序的事件 |Microsoft Docs
+description: 描述如何在 Azure 資料箱的各個階段追蹤和記錄事件，並 Azure Data Box Heavy 匯出順序。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,85 +9,85 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494480"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>追蹤和記錄 Azure 資料箱和 Azure Data Box Heavy 匯出訂單的事件
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure 資料箱和 Azure Data Box Heavy 匯出訂單的追蹤和事件記錄
 
-資料箱或 Data Box Heavy 匯出順序會經歷下列步驟：訂單、設定、資料複製、傳回和資料清除。 對應至順序中的每個步驟，您可以採取多個動作來控制訂單的存取、audit 事件、追蹤訂單，以及解讀所產生的各種記錄。
+資料箱或 Data Box Heavy 匯出順序會經歷下列步驟：訂購、設定、資料複製、傳回和資料清除。 對應至順序中的每個步驟，您可以採取多個動作來控制訂單的存取權、審核事件、追蹤順序，以及解讀產生的各種記錄。
 
-本文詳細說明可用來追蹤和審核資料箱或 Data Box Heavy 之匯出訂單的各種機制或工具。 本文中的資訊適用于、資料箱和 Data Box Heavy。 在後續章節中，資料箱的任何參考也適用于 Data Box Heavy。
+本文詳細說明可用來追蹤和審核資料箱或 Data Box Heavy 之匯出訂單的各種機制或工具。 本文中的資訊適用于、Data Box 及 Data Box Heavy。 在後續的章節中，任何對資料箱的參考也適用于 Data Box Heavy。
 
-下表顯示資料箱匯出順序步驟的摘要，以及在每個步驟期間可用於追蹤和審核訂單的工具。
+下表顯示資料箱匯出順序步驟的摘要，以及可在每個步驟期間追蹤和審核訂單的工具。
 
 | 資料箱匯出訂單階段       | 追蹤和審核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | 建立訂單               | [透過 RBAC 設定訂單上的存取控制](#set-up-access-control-on-the-order) <br> [依序啟用詳細資訊記錄](#enable-verbose-log-in-the-order)                                                    |
-| 已處理的訂單            | [追蹤訂單](#track-the-order) <ul><li> Azure 入口網站 </li><li> 貨運公司網站 </li><li>電子郵件通知</ul> |
-| 設定裝置              | 登入[活動記錄](#query-activity-logs-during-setup)的裝置認證存取              |
-| 從裝置複製資料        | [審查複製記錄](#copy-log) <br> 在複製資料之前，請先[查看詳細資訊記錄](#verbose-log)檔            |
-| 從裝置抹除資料   | [查看監管鏈](#get-chain-of-custody-logs-after-data-erasure)，包括審核記錄和訂單歷程記錄                |
+| 訂單處理            | [追蹤順序](#track-the-order) <ul><li> Azure 入口網站 </li><li> 貨運承運商網站 </li><li>電子郵件通知</ul> |
+| 設定裝置              | 記錄在[活動記錄](#query-activity-logs-during-setup)中的裝置認證存取              |
+| 從裝置複製資料        | [審核複製記錄](#copy-log) <br> 複製資料之前，請先[參閱詳細資訊記錄](#verbose-log)            |
+| 從裝置抹除資料   | [查看監管記錄的鏈](#get-chain-of-custody-logs-after-data-erasure) ，包括審核記錄和訂單記錄                |
 
 
-## <a name="set-up-access-control-on-the-order"></a>設定順序的存取控制
+## <a name="set-up-access-control-on-the-order"></a>設定訂單上的存取控制
 
-您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在各種範圍設定 Azure 角色，以控制資料箱順序的存取權。 Azure 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
+您可以在第一次建立訂單時，控制可存取訂單的人員。 在不同範圍設定 Azure 角色，以控制資料箱訂單的存取權。 Azure 角色可決定存取權的類型–讀寫、唯讀、讀寫作業的子集。
 
-可以為 Azure 資料箱服務定義的兩個角色如下：
+可以為 Azure 資料箱服務定義的兩個角色為：
 
-- **資料箱讀取器**-具有範圍所定義之訂單的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，或編輯訂單詳細資料（例如位址等等）。
-- **資料箱參與者**-只有在*已有儲存體帳戶的寫入存取權時*，才能建立訂單來將資料傳送至指定的儲存體帳戶。 如果他們沒有儲存體帳戶的存取權，他們甚至無法建立資料箱順序，將資料複製到帳戶。 此角色不會定義任何儲存體帳戶的相關許可權，也不會授與對儲存體帳戶的存取權。  
+- **資料箱讀取器** -依領域定義的順序 (s) 的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，也無法編輯訂單詳細資料，例如位址等等。
+- **資料箱參與者** -只有 *在已有儲存體帳戶的寫入存取權時*，才能建立將資料傳送到指定儲存體帳戶的訂單。 如果他們沒有儲存體帳戶的存取權，他們甚至無法建立資料箱訂單來將資料複製到帳戶。 此角色不會定義任何儲存體帳戶的相關許可權，也不會授與儲存體帳戶的存取權。  
 
 若要限制訂單的存取權，您可以：
 
-- 指派訂單層級的角色。 使用者只有角色所定義的許可權，才會與特定的資料箱順序互動，而不是其他任何內容。
-- 在資源群組層級指派角色，使用者可以存取資源群組內的所有資料箱訂單。
+- 指派訂單層級的角色。 使用者只具有角色所定義的許可權，才能與特定的資料箱訂單互動，而不是其他任何專案。
+- 在資源群組層級指派角色，使用者即可存取資源群組內的所有資料箱訂單。
 
-如需有關建議 RBAC 用途的詳細資訊，請參閱[AZURE RBAC 的最佳做法](../role-based-access-control/best-practices.md)。
+如需有關建議使用 RBAC 的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../role-based-access-control/best-practices.md)。
 
 ## <a name="enable-verbose-log-in-the-order"></a>依序啟用詳細資訊記錄
 
-在放置資料箱的匯出順序時，您可以選擇啟用 [詳細資訊記錄檔] 的收集。 以下是您可以啟用詳細資訊記錄檔的訂購畫面：
+當您放置資料箱的匯出順序時，您可以選擇啟用詳細資訊記錄檔的收集。 以下是您可以啟用詳細資訊記錄的順序畫面：
 
 ![選取匯出選項](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
 
-當您選取 [**包含詳細資訊記錄**檔] 選項時，會在從您的 Azure 儲存體帳戶複製資料時產生詳細記錄檔。 此記錄檔包含已成功匯出之所有檔案的清單。      
+當您選取 [ **包含詳細資訊記錄** 檔] 選項時，從您的 Azure 儲存體帳戶複製資料時，會產生詳細資訊記錄檔。 此記錄檔包含已成功匯出的所有檔案清單。      
 
-如需匯出順序的詳細資訊，請參閱[建立資料箱的匯出訂單。](data-box-deploy-export-ordered.md)
+如需匯出順序的詳細資訊，請參閱 [建立資料箱的匯出順序](data-box-deploy-export-ordered.md)
 
 ## <a name="track-the-order"></a>追蹤訂單狀態
 
-您可以透過 Azure 入口網站以及透過貨運公司網站來追蹤您的訂單。 以下是隨時追蹤資料箱順序的機制：
+您可以透過 Azure 入口網站和貨運公司網站來追蹤您的訂單。 以下是可隨時追蹤資料箱順序的機制：
 
-- 若要追蹤裝置在 Azure 資料中心或內部部署中的順序，請移至您的**資料箱訂單 >** 在 Azure 入口網站中的總覽。
+- 若要在裝置位於 Azure 資料中心或您的內部部署時追蹤訂單，請移至您的 **資料箱訂單，>** Azure 入口網站中的總覽。
 
-    ![查看訂單狀態和追蹤](media/data-box-logs/overview-view-status-1.png)
+    ![視圖順序狀態和追蹤](media/data-box-logs/overview-view-status-1.png)
 
-- 若要在裝置進行傳輸時追蹤訂單，請前往地區貨運網站，例如「美國的 UPS 網站」。 提供與您的訂單相關聯的追蹤號碼。
-- 資料箱也會根據訂單建立時所提供的電子郵件，在訂單狀態變更時傳送電子郵件通知。 如需所有資料箱訂單狀態的清單，請參閱[View order status](data-box-portal-admin.md#view-order-status)。 若要變更與訂單相關聯的通知設定，請參閱[編輯通知詳細資料](data-box-portal-admin.md#edit-notification-details)。
+- 若要在裝置傳輸時追蹤訂單，請移至區域貨運公司網站（例如，美國的 UPS 網站）。 提供與您訂單相關聯的追蹤號碼。
+- 資料箱也會根據建立訂單時所提供的電子郵件，在訂單狀態變更時傳送電子郵件通知。 如需所有資料箱訂單狀態的清單，請參閱 [視圖順序狀態](data-box-portal-admin.md#view-order-status)。 若要變更與訂單相關聯的通知設定，請參閱 [編輯通知詳細資料](data-box-portal-admin.md#edit-notification-details)。
 
 ## <a name="query-activity-logs-during-setup"></a>在安裝期間查詢活動記錄
 
-- 您的資料箱會以鎖定狀態抵達內部部署。 您可以使用 Azure 入口網站中提供的裝置認證來取得您的訂單。  
+- 您的資料箱會以鎖定狀態抵達您的內部部署。 您可以使用 Azure 入口網站中提供的裝置認證來取得訂單。  
 
-    設定資料箱時，您可能需要知道誰已存取裝置認證。 若要找出存取 [**裝置認證**] 分頁的人員，您可以查詢活動記錄。  涉及存取**裝置詳細資料 > 認證**] 分頁的任何動作都會以動作的形式登入 [活動記錄] 中 `ListCredentials` 。
+    當資料箱設定完成時，您可能需要知道誰已存取裝置認證。 若要找出存取 **裝置認證** 分頁的人員，您可以查詢活動記錄。  任何牽涉到存取 **裝置詳細資料 > 認證** 分頁的動作都會登入活動記錄中作為 `ListCredentials` 動作。
 
     ![查詢活動記錄](media/data-box-logs/query-activity-log-1.png)
 
-- 每次登入資料箱都會即時記錄。 不過，只有在成功完成訂單後，這項資訊才會在「[保管」審核記錄的鏈](#chain-of-custody-audit-logs)中提供。
+- 每次登入資料箱都會即時記錄。 不過，這項資訊僅適用于成功完成訂單後的 [保管審核記錄鏈](#chain-of-custody-audit-logs) 。
 
 ## <a name="view-logs-during-data-copy"></a>在資料複製期間查看記錄
 
-從資料箱複製資料之前，您可以下載並查看複製到資料箱之資料的*複製記錄*檔和*詳細資訊記錄*檔。 從 Azure 中的儲存體帳戶將資料複製到您的資料箱時，會產生這些記錄。 
+從資料箱複製資料之前，您可以下載並檢查複製到資料箱之資料的 *複製記錄* 檔和 *詳細資訊記錄* 檔。 從 Azure 中的儲存體帳戶將資料複製到您的資料箱時，會產生這些記錄。 
 
 ### <a name="copy-log"></a>複製記錄檔
 
-從您的資料箱複製資料之前，請先從 [連線**並複製]** 頁面下載複製記錄檔。
+從資料箱複製資料之前，請從 [連線 **和複製]** 頁面下載複製記錄檔。
 
-以下是當沒有任何錯誤時複製*記錄*檔的範例輸出，以及從 Azure 複製資料到資料箱裝置時，所有的檔案都會複製到該處。
+以下是在資料從 Azure 複製到資料箱裝置時， *複製記錄* 檔的範例輸出。
 
 ```output
 <CopyLog Summary="Summary">
@@ -97,7 +97,7 @@ ms.locfileid: "87494480"
 </CopyLog>
 ``` 
     
-當*複製記錄*檔發生錯誤，且部分檔案無法從 Azure 複製時，以下是範例輸出。
+以下是 *複製記錄* 檔有錯誤，且部分檔案無法從 Azure 複製的範例輸出。
 
 ```output
 <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -127,7 +127,7 @@ ms.locfileid: "87494480"
 - 您可以傳輸無法透過網路來複製的檔案。 
 - 如果您的資料大小大於可用的裝置容量，則會發生部分複製，且所有未複製的檔案都會列在此記錄中。 您可以使用此記錄作為輸入 XML 來建立新的資料箱順序，然後複製這些檔案。
 
-### <a name="verbose-log"></a>詳細資訊記錄檔
+### <a name="verbose-log"></a>詳細資訊記錄
 
 *詳細資訊記錄*包含已從 Azure 儲存體帳戶成功匯出的所有檔案清單。 記錄中也包含檔案大小和總和檢查碼計算。
 
@@ -171,28 +171,28 @@ ms.locfileid: "87494480"
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-複製記錄檔路徑也會顯示在入口網站的 [**總覽**] 分頁上。
+複製記錄檔路徑也會顯示在入口網站的 [ **總覽** ] 分頁中。
 
 <!-- add a screenshot-->
 
-您可以使用這些記錄來確認從 Azure 複製的檔案符合已複製到內部部署伺服器的資料。 
+您可以使用這些記錄來確認從 Azure 複製的檔案符合複製到內部部署伺服器的資料。 
 
-使用您的詳細資訊記錄檔：
+使用詳細資訊記錄檔：
 
-- 以驗證從資料箱複製的實際名稱和檔案數目。
+- 以確認實際的名稱和從資料箱複製的檔案數目。
 - 以確認檔案的實際大小。
-- 若要確認*crc64*是否對應至非零的字串。 迴圈冗余檢查（CRC）計算會在從 Azure 匯出期間完成。 從 [匯出] 和 [將資料從資料箱複製到內部部署伺服器] 的 CRCs，都可以進行比較。 CRC 不相符表示對應的檔案無法正確複製。
+- 確認 *crc64* 對應至非零字串。 迴圈冗余檢查 (CRC) 計算是在從 Azure 匯出期間完成。 從匯出開始，以及將資料從資料箱複製到內部部署伺服器之後的 CRCs 可以進行比較。 CRC 不符表示對應的檔案無法正確複製。
 
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>在資料抹除之後取得監管記錄鏈
 
-根據 NIST SP 800-88 修訂1指導方針，從資料箱磁片中清除資料之後，就可以使用監管記錄鏈。 這些記錄包含監管審查記錄和訂單歷程記錄的鏈。 BOM 或資訊清單檔案也會連同 audit 記錄一起複製。
+根據 NIST SP 800-88 修訂1指導方針，從資料箱磁片中清除資料之後，可取得監管記錄的鏈。 這些記錄包括監管審核記錄和訂單記錄的鏈。 BOM 或資訊清單檔也會連同 audit 記錄一起複製。
 
 ### <a name="chain-of-custody-audit-logs"></a>監管鏈審核記錄
 
-監管的審核記錄鏈包含在資料箱上開啟和存取共用的相關資訊，或在 Azure 資料中心以外的 Data Box Heavy。 這些記錄檔位於：`storage-account/azuredatabox-chainofcustodylogs`
+監管鏈審核記錄包含開啟和存取資料箱上的共用，或在 Azure 資料中心以外的 Data Box Heavy 時的相關資訊。 這些記錄位於： `storage-account/azuredatabox-chainofcustodylogs`
 
-以下是來自資料箱的 audit 記錄範例：
+以下是資料箱中的 audit 記錄範例：
 
 ```output
 9/10/2018 8:23:01 PM : The operating system started at system time ‎2018‎-‎09‎-‎10T20:23:01.497758400Z.
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下載訂單記錄
 
-Azure 入口網站提供訂單歷程記錄。 如果訂單已完成，且裝置清除（從磁片抹除資料）已完成，請移至您的裝置訂單，然後流覽至 [**訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱[下載訂單歷程記錄](data-box-portal-admin.md#download-order-history)。
+訂單記錄可在 Azure 入口網站中取得。 如果訂單已完成，且裝置清除 (磁片) 的資料清除完成，請移至您的裝置訂單，然後流覽至 [ **訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱 [下載訂單記錄](data-box-portal-admin.md#download-order-history)。
 
-如果您流覽訂單歷程記錄，您會看到：
+如果您有滾動訂單歷程記錄，您會看到：
 
 - 裝置的貨運公司追蹤資訊。
-- 具有*SecureErase*活動的事件。 這些事件會對應到磁片上的資料抹除。
-- 資料箱記錄檔連結。 會顯示*audit 記錄*、*複製記錄*檔和*BOM*檔案的路徑。
+- 具有 *SecureErase* 活動的事件。 這些事件會對應到磁片上的資料抹除。
+- 資料箱記錄連結。 系統會顯示 *audit 記錄*檔、 *複製記錄*檔和 *BOM* 檔案的路徑。
 
 以下是 Azure 入口網站的訂單歷程記錄範例：
 
@@ -303,6 +303,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 瞭解如何[針對資料箱和 Data Box Heavy 上的問題進行疑難排解](data-box-troubleshoot.md)。
+- 瞭解如何 [針對資料箱和 Data Box Heavy 的問題進行疑難排解](data-box-troubleshoot.md)。

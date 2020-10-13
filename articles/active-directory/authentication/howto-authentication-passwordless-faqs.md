@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236617"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (preview 中混合式 FIDO2 安全性金鑰的部署常見問題 (常見問題) ) 
@@ -69,7 +69,7 @@ FIDO2 安全性金鑰具有安全記憶體保護區，可保護儲存在這些�
 
 否，目前沒有。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [如果沒有網際網路連線能力，這項功能是否適用？](#does-this-feature-work-if-theres-no-internet-connectivity)
 * [有哪些特定端點需要開放給 Azure AD？](#what-are-the-specific-end-points-that-are-required-to-be-open-to-azure-ad)
@@ -160,7 +160,7 @@ nltest /dsgetdc:<domain> /keylist /kdc
 
 否，僅限內部部署裝置不支援此功能。 FIDO2 認證提供者將不會顯示。
 
-### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 安全性金鑰登入無法針對我的網域系統管理員或其他高許可權帳戶運作。 原因為何？
+### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 安全性金鑰登入無法針對我的網域系統管理員或其他高許可權帳戶運作。 為何會這樣？
 
 預設安全性原則不會授與在內部部署資源上簽署高許可權帳戶的 Azure AD 許可權。
 
@@ -185,7 +185,7 @@ Azure AD 的 Kerberos 伺服器會在內部部署 AD DS 環境中表示為網域
 
 * *CN = AzureADKerberos，OU = 網域控制站，\<domain-DN>*
     
-    *電腦*物件，代表 AD DS 中 (RODC) 的唯讀網域控制站。 沒有與這個物件相關聯的電腦。 相反地，它是 DC 的邏輯標記法。
+    *電腦*物件，代表 AD DS 中 (RODC) 的 Read-Only 網域控制站。 沒有與這個物件相關聯的電腦。 相反地，它是 DC 的邏輯標記法。
 
 * *CN = krbtgt_AzureAD，CN = Users，\<domain-DN>*
 
@@ -228,13 +228,13 @@ Azure AD Connect 不會將資訊從 Azure AD 寫回 AD DS。 此公用程式包�
 
 HTTP 要求是標準的主要重新整理權杖， (PRT) 要求。 此 PRT 要求包含一個宣告，指出需要 (TGT) 的 Kerberos 票證授權票證。
 
-| 宣告 | 值 | 說明                             |
+| 宣告 | 值 | 描述                             |
 |-------|-------|-----------------------------------------|
 | Tgt   | true  | 宣告指出用戶端需要 TGT。 |
 
 Azure AD 將加密的用戶端金鑰和訊息緩衝區合併為 PRT 回應中的其他屬性。 承載會使用 Azure AD 裝置工作階段金鑰進行加密。
 
-| 欄位              | 類型   | 說明  |
+| 欄位              | 類型   | 描述  |
 |--------------------|--------|--------------|
 | tgt_client_key     | 字串 | Base64 編碼的用戶端金鑰 (秘密) 。 此金鑰是用來保護 TGT 的用戶端密碼。 在此無密碼案例中，用戶端密碼會由伺服器在每個 TGT 要求中產生，然後在回應中傳回給用戶端。 |
 | tgt_key_type       | int    | 內部部署 AD DS 金鑰類型，用於 KERB_MESSAGE_BUFFER 中所包含的用戶端金鑰和 Kerberos 工作階段金鑰。 |

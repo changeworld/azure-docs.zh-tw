@@ -4,10 +4,10 @@ description: 描述 Azure 事件格線針對訂用帳戶事件所提供的屬性
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105892"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>作為事件方格來源的 Azure 訂用帳戶
@@ -234,17 +234,17 @@ Azure 訂用帳戶會從 Azure Resource Manager 發出管理事件，像是建�
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | 字串 | 發行者定義事件主體的路徑。 |
+| subject | 字串 | 發行者定義事件主旨的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
 | data | 物件 (object) | 訂用帳戶事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | 授權 | 物件 (object) | 作業的所要求授權。 |
 | claims | 物件 (object) | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
@@ -253,19 +253,19 @@ Azure 訂用帳戶會從 Azure Resource Manager 發出管理事件，像是建�
 | resourceProvider | 字串 | 作業的資源提供者。 |
 | resourceUri | 字串 | 作業中資源的 URI。 |
 | operationName | 字串 | 已採取的作業。 |
-| status | 字串 | 作業狀態。 |
+| status | 字串 | 作業的狀態。 |
 | subscriptionId | 字串 | 資源的訂用帳戶識別碼。 |
 | tenantId | 字串 | 資源的租用戶識別碼。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|Title |描述  |
+|標題 |描述  |
 |---------|---------|
 | [教學課程：Azure 自動化與事件方格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |建立會傳送事件的虛擬機器。 事件會觸發標記虛擬機器的自動化 Runbook，以及觸發傳送給 Microsoft Teams 通道的訊息。 |
 | [如何：透過入口網站訂閱事件](subscribe-through-portal.md) | 使用入口網站訂閱 Azure 訂用帳戶的事件。 |
 | [Azure CLI：訂閱 Azure 訂用帳戶的事件](./scripts/event-grid-cli-azure-subscription.md) |將事件方格訂用帳戶建立至 Azure 訂用帳戶，並將事件傳送至 WebHook 的範例指令碼。 |
 | [PowerShell：訂閱 Azure 訂用帳戶的事件](./scripts/event-grid-powershell-azure-subscription.md)| 將事件方格訂用帳戶建立至 Azure 訂用帳戶，並將事件傳送至 WebHook 的範例指令碼。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Event Grid 的簡介，請參閱[什麼是事件方格？](overview.md)。
+* 如需 Azure 事件方格的簡介，請參閱 [什麼是事件方格？](overview.md)。
 * 若要了解 Event Grid 訂用帳戶的建立，請參閱 [Event Grid 訂用帳戶結構描述](subscription-creation-schema.md)。

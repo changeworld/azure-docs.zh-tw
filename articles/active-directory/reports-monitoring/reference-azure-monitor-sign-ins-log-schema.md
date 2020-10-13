@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231107"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>在 Azure 監視器中解讀 Azure AD 登入記錄架構
@@ -169,5 +169,5 @@ ms.locfileid: "89231107"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [解讀 Azure 監視器中的 audit logs 架構](reference-azure-monitor-audit-log-schema.md)
+* [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)
 * [深入瞭解 Azure 平臺記錄](../../azure-monitor/platform/platform-logs-overview.md)

@@ -9,13 +9,13 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: d4715bd8b7a13a5ab53d254ac853ac324440b403
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502608"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>預覽：使用 Azure CLI 建立 Linux 映射並將其發佈至共用映射資源庫
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>預覽：使用 Azure CLI 建立 Linux 映射並將其發佈至共用映射庫
 
 此文章說明如何使用 Azure Image Builder 及 Azure CLI 在[共用映像庫](../windows/shared-image-galleries.md)中建立映像版本，然後以全域方式發佈該映像。 您也可以使用 [Azure PowerShell](../windows/image-builder-gallery.md) 來執行這項工作。
 

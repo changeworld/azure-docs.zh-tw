@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB 中的 LINQ to SQL 轉譯
-description: 瞭解支援的 LINQ 運算子，以及如何將 LINQ 查詢對應至 Azure Cosmos DB 中的 SQL 查詢。
+description: 瞭解支援的 LINQ 運算子，以及 LINQ 查詢如何對應至 Azure Cosmos DB 中的 SQL 查詢。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
 ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498849"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 至 SQL 轉譯
 
-Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳工作對應。 如果您想要取得從 LINQ 轉譯的 SQL 查詢，請 `ToString()` 在產生的物件上使用方法 `IQueryable` 。 下列描述假設對[LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)有基本的熟悉度。
+Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳對應。 如果您想要取得從 LINQ 轉譯的 SQL 查詢，請 `ToString()` 在產生的物件上使用方法 `IQueryable` 。 下列說明假設您已對 [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)有基本的熟悉度。
 
 查詢提供者類型系統僅支援 JSON 基本類型：數值、布林值、字串和 null。
 
 查詢提供者支援下列純量運算式：
 
-- 常數值，包括在查詢評估時間的基本資料類型常數值。
+- 常數值，包括查詢評估時間的基本資料類型的常數值。
   
-- 屬性/陣列索引運算式，參考物件或陣列元素的屬性。 例如：
+- 參考物件或陣列元素之屬性的屬性/陣列索引運算式。 例如：
   
   ```
     family.Id;
@@ -32,21 +32,21 @@ Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢�
     family.children[n].grade; //n is an int variable
   ```
   
-- 算術運算式，包括數值和布林值的一般算術運算式。 如需完整清單，請參閱[AZURE COSMOS DB SQL 規格](sql-query-system-functions.md)。
+- 算術運算式，包括數值和布林值上的一般算術運算式。 如需完整清單，請參閱 [AZURE COSMOS DB SQL 規格](sql-query-system-functions.md)。
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- 字串比較運算式，其中包括比較字串值與某個常數位串值。  
+- 字串比較運算式，包括將字串值與某個常數位串值進行比較。  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- 物件/陣列建立運算式，其會傳回復合實數值型別或匿名型別的物件，或這類物件的陣列。 您可以將這些值加以嵌套。
+- 物件/陣列建立運算式，會傳回復合實數值型別或匿名型別的物件，或這類物件的陣列。 您可以嵌套這些值。
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -56,7 +56,7 @@ Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢�
 
 ## <a name="using-linq"></a>使用 LINQ
 
-您可以使用建立 LINQ 查詢 `GetItemLinqQueryable` 。 這個範例會示範如何產生 LINQ 查詢和非同步執行 `FeedIterator` ：
+您可以使用建立 LINQ 查詢 `GetItemLinqQueryable` 。 此範例顯示 LINQ 查詢產生和非同步執行 `FeedIterator` ：
 
 ```csharp
 using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
@@ -77,31 +77,31 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 ## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>支援的 LINQ 運算子
 
-包含在 SQL .NET SDK 中的 LINQ 提供者支援下列運算子：
+SQL .NET SDK 隨附的 LINQ 提供者支援下列運算子：
 
-- **Select**：投影會轉譯為[Select](sql-query-select.md)，包括物件結構。
-- **Where**：篩選器會轉譯為[where](sql-query-where.md)，並支援將 `&&` 、和之間的轉譯 `||` `!` 為 SQL 運算子
-- **SelectMany**：允許將陣列回溯至[聯結](sql-query-join.md)子句。 使用來連鎖或嵌套運算式，以篩選陣列元素。
-- **OrderBy**和**OrderByDescending**：轉譯為[ORDER BY](sql-query-order-by.md)加上 ASC 或 DESC。
-- 用於[匯總](sql-query-aggregates.md)的**Count**、 **Sum**、 **Min**、 **Max**和**Average**運算子，以及其非同步對等**CountAsync**、 **SumAsync**、 **MinAsync**、 **MaxAsync**和**AverageAsync**。
-- **CompareTo**：轉譯為範圍比較。 通常用於字串，因為它們在 .NET 中無法比較。
-- **Skip**和**Take**：轉譯為[位移和限制](sql-query-offset-limit.md)，以限制查詢的結果並執行分頁。
-- **Math 函數**：支援從 .net、、、、、、、、、、、、、、、 `Abs` `Acos` 和轉換 `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` 為對 `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` `Truncate` 等的[內建數學函數](sql-query-mathematical-functions.md)。
-- **字串函數**：支援從 .net、、、、、、、、、、、 `Concat` `Contains` 和轉換 `Count` `EndsWith` 為對 `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 等的[內建字串函數](sql-query-string-functions.md)。
-- **陣列函數**：支援從 .net `Concat` 、 `Contains` 和轉換為對 `Count` 等的[內建陣列函數](sql-query-array-functions.md)。
-- **地理空間擴充功能**：支援從存根方法 `Distance` 、 `IsValid` 、 `IsValidDetailed` 和轉換 `Within` 為對等的[內建地理空間函數](sql-query-geospatial-query.md)。
-- **使用者定義函數擴充函數**：支援從 stub 方法 `UserDefinedFunctionProvider.Invoke` 到對應的[使用者定義函數](sql-query-udfs.md)的轉譯。
-- **其他**：支援 `Coalesce` 和條件[運算子](sql-query-operators.md)的轉譯。 視內容而定，可以轉譯 `Contains` 為字串 CONTAINS、ARRAY_CONTAINS 或中的。
+- **Select**：投射轉譯為 [Select](sql-query-select.md)，包括物件結構。
+- **Where**：篩選器會轉譯為 [where](sql-query-where.md)，並支援將、和轉換成 `&&` `||` `!` SQL 運算子
+- **SelectMany**：允許將陣列回溯至 [JOIN](sql-query-join.md) 子句。 用來鏈狀或嵌套運算式以篩選陣列元素。
+- **OrderBy** 和 **ORDERBYDESCENDING**：使用 ASC 或 DESC 轉譯為 [ORDER BY](sql-query-order-by.md) 。
+- **Count**、 **Sum**、 **Min**、 **Max**和 **Average** 運算子（用於 [匯總](sql-query-aggregates.md)）及其 async 對等 **CountAsync**、 **SumAsync**、 **MinAsync**、 **MaxAsync**和 **AverageAsync**。
+- **CompareTo**：轉譯為範圍比較。 常用於字串，因為它們在 .NET 中是無法比較的。
+- **Skip** 和 **Take**：轉譯為 [位移和限制](sql-query-offset-limit.md) ，以限制查詢的結果並執行分頁。
+- **數學**函式：支援從 .net、、、、、、、、、、、、、、、 `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` 和 `Truncate` 到相等 [內建數學函數](sql-query-mathematical-functions.md)的轉譯。
+- **字串函數**：支援從 .net、、、、、、、、、、、 `Concat` `Contains` `Count` 和轉換 `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 成相等的 [內建字串函數](sql-query-string-functions.md)。
+- **陣列**函式：支援從 .net `Concat` 、 `Contains` 和轉換 `Count` 為相等的 [內建陣列函數](sql-query-array-functions.md)。
+- **地理空間延伸**模組函式：支援從存根方法 `Distance` 、、 `IsValid` `IsValidDetailed` 和 `Within` 到相等 [內建地理空間函數](sql-query-geospatial-query.md)的轉譯。
+- **使用者定義函數延伸函式**：支援從 stub 方法轉譯 `UserDefinedFunctionProvider.Invoke` 為對應的 [使用者定義函數](sql-query-udfs.md)。
+- **其他**：支援 `Coalesce` 和條件 [運算子](sql-query-operators.md)的轉譯。 視內容而定，可以轉譯 `Contains` 為字串 CONTAINS、ARRAY_CONTAINS 或 IN。
 
 ## <a name="examples"></a>範例
 
-下列範例說明部分標準 LINQ 查詢運算子如何轉譯為 Azure Cosmos DB 中的查詢。
+下列範例說明一些標準 LINQ 查詢運算子如何轉譯成 Azure Cosmos DB 中的查詢。
 
-### <a name="select-operator"></a>選取運算子
+### <a name="select-operator"></a>Select 運算子
 
-語法為 `input.Select(x => f(x))`，其中 `f` 是純量運算式。 `input`在此情況下，會是 `IQueryable` 物件。
+語法為 `input.Select(x => f(x))`，其中 `f` 是純量運算式。 `input`在此案例中，會是 `IQueryable` 物件。
 
-**選取運算子，範例1：**
+**Select 運算子，範例1：**
 
 - **LINQ Lambda 運算式**
   
@@ -116,7 +116,7 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
       FROM Families f
     ```
   
-**選取運算子，範例2：**
+**Select 運算子，範例2：**
 
 - **LINQ Lambda 運算式**
   
@@ -131,7 +131,7 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
       FROM Families f
   ```
   
-**選取運算子，範例3：**
+**Select 運算子，範例3：**
 
 - **LINQ Lambda 運算式**
   
@@ -209,11 +209,11 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 ## <a name="composite-sql-queries"></a>複合 SQL 查詢
 
-您可以撰寫前面的運算子來形成更強大的查詢。 由於 Cosmos DB 支援嵌套的容器，因此您可以串連或嵌套組合。
+您可以撰寫上述運算子來形成更強大的查詢。 由於 Cosmos DB 支援嵌套的容器，因此您可以串連或嵌套組合。
 
 ### <a name="concatenation"></a>串連
 
-語法為 `input(.|.SelectMany())(.Select()|.Where())*`。 串連查詢的開頭可以是選擇性 `SelectMany` 查詢，後面接著多個 `Select` or `Where` 運算子。
+語法是 `input(.|.SelectMany())(.Select()|.Where())*`。 串連查詢可以從選擇性 `SelectMany` 查詢開始，後面接著多個 `Select` or `Where` 運算子。
 
 **串連，範例1：**
 
@@ -285,9 +285,9 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 ### <a name="nesting"></a>巢狀
 
-語法為 `input.SelectMany(x=>x.Q())` ，其中 `Q` 是 `Select` 、 `SelectMany` 或 `Where` 運算子。
+語法為 `input.SelectMany(x=>x.Q())` `Q` `Select` 、或運算子的位置 `SelectMany` `Where` 。
 
-嵌套的查詢會將內部查詢套用至外部容器的每個元素。 其中一個重要的功能是，內部查詢可以參考外部容器中元素的欄位，例如自我聯結。
+巢狀查詢會將內部查詢套用至外部容器的每個元素。 其中一個重要功能是內部查詢可以參考外部容器中元素的欄位，例如自我聯結。
 
 **嵌套，範例1：**
 
@@ -342,7 +342,7 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文件資料](modeling-data.md)

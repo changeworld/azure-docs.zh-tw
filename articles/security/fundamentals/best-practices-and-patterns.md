@@ -1,6 +1,6 @@
 ---
-title: 安全性最佳做法和模式-Microsoft Azure |Microsoft Docs
-description: 本文會連結至不同 Azure 資源的安全性最佳作法和模式。
+title: 安全性最佳作法和模式-Microsoft Azure |Microsoft Docs
+description: 本文將連結至不同 Azure 資源的安全性最佳作法和模式。
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73889847"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全性最佳作法與模式
@@ -30,7 +30,7 @@ ms.locfileid: "73889847"
 
 * [Azure 界限安全性最佳作法](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure 資料庫安全性最佳做法](database-best-practices.md)
-* [Azure 資料安全性和加密最佳做法](data-encryption-best-practices.md)
+* [Azure 資料安全性和加密最佳做法](data-encryption-best-practices.md) \(部分機器翻譯\)
 * [Azure 身分識別管理和存取控制安全性最佳做法](identity-management-best-practices.md)
 * [Azure 網路安全性最佳做法](network-best-practices.md)
 * [Azure 作業安全性最佳做法](operational-best-practices.md)
@@ -38,7 +38,7 @@ ms.locfileid: "73889847"
 * [Azure Service Fabric 安全性最佳做法](service-fabric-best-practices.md)
 * [Azure VM 安全性的最佳作法](iaas.md)
 * [在 Azure 中實作安全的混合式網路架構](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [物聯網安全性最佳做法](iot-best-practices.md)
+* [物聯網安全性最佳作法](iot-best-practices.md)
 * [保護 Azure 中的 PaaS 資料庫](paas-applications-using-sql.md)
 * [使用 Azure App Service 來保護 PaaS Web 與行動應用程式](paas-applications-using-app-services.md)
 * [使用 Azure 儲存體來保護 PaaS Web 與行動應用程式](paas-applications-using-storage.md)

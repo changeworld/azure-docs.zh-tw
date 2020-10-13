@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086087"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>在 HDInsight 上使用 Apache Kafka 的 Apache Spark 串流 (DStream) 範例
 
-瞭解如何[Apache Spark](https://spark.apache.org/)使用 Kafka，透過[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)在 HDInsight 上將資料流程入或傳出[Apache](https://kafka.apache.org/) 。 這個範例會使用在 Spark 叢集上執行的 [Jupyter Notebook](https://jupyter.org/)。
+瞭解如何使用[Apache Spark](https://spark.apache.org/) ，使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)將資料傳入或傳出[Apache Kafka](https://kafka.apache.org/) on HDInsight。 這個範例會使用在 Spark 叢集上執行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
 > 本文件中的步驟建立 Azure 資源群組，其中包含 HDInsight 上的 Spark 和 HDInsight 叢集上的 Kafka。 這兩個叢集都位於 Azure 虛擬網路中，可讓 Spark 叢集直接與 Kafka 叢集通訊。
@@ -54,7 +54,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     |屬性 |值 |
     |---|---|
     |資源群組|建立群組或選取現有的群組。|
-    |位置|選取靠近您的地理位置。|
+    |Location|選取靠近您的地理位置。|
     |基底叢集名稱|此值會作為 Spark 和 Kafka 叢集的基底名稱。 例如，輸入 **hdistreaming** 可建立名為 __spark-hdistreaming__ 的 Spark 叢集，以及名為 **kafka-hdistreaming** 的 Kafka 叢集。|
     |叢集登入使用者名稱|Spark 和 Kafka 叢集的系統管理員使用者名稱。|
     |叢集登入密碼|Spark 和 Kafka 叢集的系統管理員使用者密碼。|
@@ -63,7 +63,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     ![HDInsight 自訂部署參數](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. 閱讀**條款及條件**，然後選取 **[我同意上方所述的條款及條件**]。
+1. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]。
 
 1. 最後，選取 [購買]****。 大約需要 20 分鐘的時間來建立叢集。
 
@@ -76,7 +76,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 ## <a name="use-the-notebooks"></a>使用 Notebook
 
-本檔中所述之範例的程式碼可于取得 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) 。
+本檔所述範例的程式碼可在中取得 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) 。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 
@@ -84,7 +84,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 因為本文件中的步驟會在相同的 Azure 資源群組中建立兩個叢集，您可以在 Azure 入口網站中刪除資源群組。 刪除群組，即可移除依循本文件建立的所有資源、Azure 虛擬網路，以及叢集所使用的儲存體帳戶。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 在此範例中，您已了解如何使用 Spark 來讀取和寫入至 Kafka。 使用下列連結來探索使用 Kafka 的其他方式︰
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 雲端服務 Def LoadBalancerProbe 架構 |Microsoft Docs
-description: 客戶定義的 LoadBalancerProbe 是角色實例中端點的健康情況探查。 它會與服務定義檔中的 web 或背景工作角色結合。
+title: Azure 雲端服務 .Def LoadBalancerProbe 架構 |Microsoft Docs
+description: 客戶定義的 LoadBalancerProbe 是角色實例中端點的健康情況探查。 它會結合服務定義檔中的 web 角色或背景工作角色。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,10 +10,10 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79537341"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 雲端服務定義 LoadBalancerProbe 結構描述
@@ -47,10 +47,10 @@ Azure Load Balancer 會負責將連入流量路由至角色執行個體。 負�
 - [LoadBalancerProbes 元素](#LoadBalancerProbes)
 - [LoadBalancerProbe 元素](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes 元素
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> LoadBalancerProbes 元素
 `LoadBalancerProbes` 元素會說明負載平衡器探查的集合。 此元素是 [LoadBalancerProbe 元素](#LoadBalancerProbe)的父代元素。 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe 元素
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> LoadBalancerProbe 元素
 `LoadBalancerProbe` 元素會定義模型的健康情況探查。 您可以定義多個負載平衡器探查。 
 
 下表說明 `LoadBalancerProbe` 元素的屬性：

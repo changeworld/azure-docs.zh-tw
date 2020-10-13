@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88892009"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 備份中的離線備份工作流程
@@ -42,7 +42,7 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
   > [!NOTE]
   > 下列必要條件和工作流程僅適用于使用 [最新的 Azure 復原服務代理程式](https://aka.ms/azurebackup_agent)進行檔案和資料夾的離線備份。 若要使用 System Center DPM 或 Azure 備份伺服器執行工作負載的離線備份，請參閱 [DPM 和 Azure 備份伺服器的離線備份工作流程](backup-azure-backup-server-import-export.md)。
@@ -216,6 +216,6 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
 
 初始備份完成後，您可以安全地刪除匯入至 Azure 儲存體容器的資料，以及預備位置中的備份資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如有任何關於 Azure 匯入/匯出服務工作流程的問題，請參閱 [使用 Microsoft Azure 匯入/匯出服務將資料傳輸至 Blob 儲存體](../storage/common/storage-import-export-service.md)。

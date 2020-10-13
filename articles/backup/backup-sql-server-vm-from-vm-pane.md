@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何從 VM 窗格備份 Azure 虛擬�
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88891652"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>從 VM 窗格備份 SQL Server
@@ -17,7 +17,7 @@ ms.locfileid: "88891652"
 - 單一 SQL Server Azure VM：本文中的指示說明如何直接從 VM view 備份 SQL Server VM。
 - 多 SQL Server Azure Vm：您可以設定復原服務保存庫，並設定多個 Vm 的備份。 請依照 [本文中的指示進行該案例](backup-sql-server-database-azure-vms.md) 。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 1. 使用 [支援矩陣](sql-support-matrix.md)驗證您的環境。
 2. 取得 SQL Server VM 的 Azure 備份 [總覽](backup-azure-sql-database.md) 。

@@ -1,6 +1,6 @@
 ---
 title: POWER in Azure Cosmos DB 查詢語言
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數電源。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數功能。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71349645"
 ---
-# <a name="power-azure-cosmos-db"></a>電源（Azure Cosmos DB）
+# <a name="power-azure-cosmos-db"></a>POWER (Azure Cosmos DB) 
  將指定之運算式的值傳回給指定的乘冪。  
   
 ## <a name="syntax"></a>語法
@@ -29,7 +29,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    為數值運算式。  
   
 *numeric_expr2*  
-   這是*numeric_expr1*引發的乘冪。  
+   這是 *numeric_expr1*引發的能力。  
   
 ## <a name="return-types"></a>傳回類型
   

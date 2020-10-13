@@ -1,7 +1,7 @@
 ---
-title: 自訂類神經語音管制總覽
+title: 自訂神經語音管制總覽
 titleSuffix: Azure Cognitive Services
-description: 自訂類神經語音的控制流程簡介。
+description: 自訂神經語音的管制流程簡介。
 services: cognitive-services
 author: shlo
 manager: nitinme
@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
 ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73836778"
 ---
-# <a name="custom-neural-voice-gating-overview"></a>自訂類神經語音管制總覽
+# <a name="custom-neural-voice-gating-overview"></a>自訂神經語音管制總覽
 
-深入瞭解開始使用自訂類神經語音的程式。
+深入瞭解開始使用自訂神經語音的流程。
 
-## <a name="commitment-to-responsible-innovation"></a>負責創新的承諾
+## <a name="commitment-to-responsible-innovation"></a>承諾對負責任的創新
 
-在 Microsoft 致力於設計負責 AI 的過程中，我們已組裝一組資料，以引導客戶使用自訂類神經語音。 這裡找到的指導方針和見解，是以 Microsoft 在[AI 中負責創新的原則為基礎。](https://www.microsoft.com/AI/our-approach-to-ai)
+在 Microsoft 承諾設計負責任 AI 的過程中，我們組合了一組資料，以引導客戶使用自訂神經語音。 此處所找到的指導方針和見解，是以 Microsoft 在 [AI 中負責任創新的原則為基礎。](https://www.microsoft.com/AI/our-approach-to-ai)
 
-### <a name="guidance-for-deploying-custom-neural-voice"></a>部署自訂類神經語音的指引
+### <a name="guidance-for-deploying-custom-neural-voice"></a>部署自訂神經語音的指引
 
-- [負責部署的指導方針](concepts-guidelines-responsible-deployment-synthetic.md)：根據我們的研究的最佳建議
-- [對配音](https://aka.ms/disclosure-voice-talent)人員的洩漏：您需要知道的知識，並向配音人員通知技術使用 it 責任
+- [負責任部署的指導方針：以](concepts-guidelines-responsible-deployment-synthetic.md)我們的研究為基礎的最佳建議
+- [配音](https://aka.ms/disclosure-voice-talent)員：您需要知道的內容，並向配音員告知技術以負責任的方式使用
 - [公開設計](concepts-disclosure-guidelines.md)：如何設計體驗，讓使用者知道何時使用綜合語音並信任您的服務
 
-### <a name="why-custom-neural-voice-is-a-gated-technology"></a>為何自訂類神經語音是閘道技術
+### <a name="why-custom-neural-voice-is-a-gated-technology"></a>為何自訂神經語音是閘道技術
 
-我們的目的是要保護個人和社會的權利、促進透明的人類電腦互動，以及對抗有害 deepfakes 和誤導內容的激增。 基於這個理由，我們已將自訂類神經語音的使用閘道。 只有在客戶的應用程式經過審查之後，才會獲得技術的存取權，而他們也已承諾使用它來配合我們的道德原則。
+我們的目的是要保護個人和社會的權利、促進透明的人類電腦互動，以及對抗有害 deepfakes 和誤導內容的激增。 基於這個理由，我們已使用了自訂神經語音。 客戶只會在其應用程式經過審核之後獲得技術的存取權，而且他們致力於與我們的道德原則一致。
 
 ### <a name="our-gating-process"></a>我們的管制流程
 
-若要取得自訂類神經語音的存取權，您必須先填寫我們的線上進氣窗體。 在[這裡](https://aka.ms/custom-neural-intake-form)開始您的應用程式。
+若要取得自訂神經語音的存取權，您必須先填寫我們的線上進氣窗體。 在 [這裡](https://aka.ms/custom-neural-intake-form)開始您的應用程式。
 
-自訂類神經語音服務的存取權會根據我們的資格準則、調查程式和可用性，自行決定是否要在此閘道預覽期間支援數量有限的客戶。
+自訂類神經語音服務的存取權受限於 Microsoft 的資格準則、調查流程和可用性，以在此閘道預覽期間支援有限數量的客戶。
 
-在應用程式過程中，您必須在建立語音字型之前，先承諾從配音員取得明確的書面許可權，這包括分享配音員的[洩漏](https://aka.ms/disclosure-voice-talent)。 您也必須同意，在部署語音字型時，您的實行會向使用者[公開服務的綜合本質](concepts-disclosure-guidelines.md)、在您的服務條款中提供 Microsoft 綜合語音服務的屬性，以及支援可讓服務的使用者報告問題並與 Microsoft 共用詳細資料的意見反應通道。 [在這裡](https://aka.ms/custom-neural-code-of-conduct)深入瞭解我們的使用規定。
+在應用程式的過程中，您必須先認可，才能在建立語音字型之前，從配音員取得明確的書面許可權，包括分享配音員的 [洩漏](https://aka.ms/disclosure-voice-talent)。 您也必須同意當您部署語音字型時，您的執行會將服務 [的綜合本質公開](concepts-disclosure-guidelines.md) 給使用者、在您的服務條款中提供 Microsoft 綜合語音服務的屬性，並支援意見反應管道，讓服務的使用者可以回報問題，並與 Microsoft 共用詳細資料。 請 [在這裡](https://aka.ms/custom-neural-code-of-conduct)深入瞭解我們的使用條款。
 
 ## <a name="reference-docs"></a>參考文件
 
 * [配音員揭露](https://aka.ms/disclosure-voice-talent)
-* [綜合語音技術的責任部署指導方針](concepts-guidelines-responsible-deployment-synthetic.md)
+* [綜合語音技術的負責任部署指導方針](concepts-guidelines-responsible-deployment-synthetic.md)
 * [如何公開](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [綜合語音技術的責任部署指導方針](concepts-guidelines-responsible-deployment-synthetic.md)
+* [綜合語音技術的負責任部署指導方針](concepts-guidelines-responsible-deployment-synthetic.md)

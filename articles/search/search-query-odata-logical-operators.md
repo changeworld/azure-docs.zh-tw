@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88917868"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure 認知搜尋中的 OData 邏輯運算子- `and` 、 `or` 、 `not`
@@ -38,7 +38,7 @@ Azure 認知搜尋中的[OData 篩選運算式](query-odata-filter-orderby-synta
 
 ## <a name="syntax"></a>語法
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義使用邏輯運算子之 OData 運算式的文法。
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義使用邏輯運算子之 OData 運算式的文法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -72,7 +72,7 @@ logical_expression ::=
 
 大部分的布林運算式（如函數和比較）無法產生 `null` 值，而且邏輯運算子無法直接套用至 `null` 常值 (例如， `x and null`) 不允許。 不過，布林值欄位可以是 `null` ，因此您必須留意 `and` 、 `or` 和 `not` 運算子在存在 null 時的行為。 下表將摘要說明，其中是下列 `b` 類型的欄位 `Edm.Boolean` ：
 
-| 運算是 | 當 `b` 為時的結果 `null` |
+| 運算式 | 當 `b` 為時的結果 `null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -115,7 +115,7 @@ logical_expression ::=
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
 ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)

@@ -13,17 +13,17 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 47902b29da1dfe20fb54d633a0559e6a337fd771
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89183586"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>將使用 broker 的 Android 應用程式從 ADAL.NET 遷移至 MSAL.NET
 
 如果您目前有 Xamarin Android 應用程式正在使用適用于 .NET 的 Azure Active Directory Authentication Library (ADAL.NET) 以及 [驗證訊息代理](brokered-auth.md)程式，現在可以遷移至 [適用于 .Net 的 Microsoft 驗證程式庫 ](msal-overview.md) (MSAL.NET) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Xamarin Android 應用程式已經與 broker ([Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) 或 [Intune 公司入口網站](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)) 和 ADAL.NET，您必須遷移至 MSAL.NET。
 

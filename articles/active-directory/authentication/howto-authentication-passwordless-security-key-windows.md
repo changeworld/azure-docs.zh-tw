@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 01/30/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964735"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90526981"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入 Windows 10 裝置) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "91964735"
 > [!NOTE]
 > FIDO2 安全性金鑰是 Azure Active Directory 的公開預覽功能。 如需預覽的詳細資訊，請參閱  [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 | 裝置類型 | 已聯結的 Azure AD | 已聯結的混合式 Azure AD |
 | --- | --- | --- |

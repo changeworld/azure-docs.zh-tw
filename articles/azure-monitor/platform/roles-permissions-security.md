@@ -8,17 +8,17 @@ ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533269"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure 監視器中的角色、權限與安全性
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-許多團隊需要嚴格規範對監視資料及設定的存取。 例如，如果您擁有專門從事監視 (技術支援工程師、DevOps 工程師) 的小組成員，或如果使用受控服務提供者，則可能只要授與其監視資料的存取權，並同時限制其建立、修改或刪除資源的能力。 本文說明如何在 Azure 中快速將內建的監視 Azure 角色套用至使用者，或針對需要有限監視許可權的使用者建立您自己的自訂角色。 接著會討論 Azure 監視器相關資源的安全性考量，以及如何限制對這些資源所包含的資料進行存取。
+許多團隊需要嚴格規範對監視資料及設定的存取。 例如，如果您擁有專門從事監視 (技術支援工程師、DevOps 工程師) 的小組成員，或如果使用受控服務提供者，則可能只要授與其監視資料的存取權，並同時限制其建立、修改或刪除資源的能力。 本文說明如何在 Azure 中快速將內建的監視 Azure 角色套用到使用者，或針對需要有限監視許可權的使用者建立您自己的自訂角色。 接著會討論 Azure 監視器相關資源的安全性考量，以及如何限制對這些資源所包含的資料進行存取。
 
 ## <a name="built-in-monitoring-roles"></a>內建的監視角色
 Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資源所設計，同時仍可讓負責監視基礎結構的人員取得及設定他們所需的資料。 Azure 監視器提供兩個的立即可用的角色：監視讀取器和監視參與者。
@@ -68,7 +68,7 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>監視許可權和 Azure 自訂角色
-如果上述的內建角色不符合小組的確切需求，您可以建立具有更細微許可權的[Azure 自訂角色](../../role-based-access-control/custom-roles.md)。 以下是一般 Azure 監視器 RBAC 作業及其說明。
+如果上述內建角色不符合您小組的確切需求，您可以建立具有更細微許可權的 [Azure 自訂角色](../../role-based-access-control/custom-roles.md) 。 以下是一般 Azure 監視器 RBAC 作業及其說明。
 
 | 作業 | 描述 |
 | --- | --- |
@@ -97,7 +97,7 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 > 
 > 
 
-例如，您可以使用上表來建立「活動記錄讀取器」的 Azure 自訂角色，如下所示：
+例如，使用上表，您可以為「活動記錄讀取器」建立 Azure 自訂角色，如下所示：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
