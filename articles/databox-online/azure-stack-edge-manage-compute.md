@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904433"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952143"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 上的計算
 
@@ -107,7 +107,7 @@ ms.locfileid: "90904433"
 
 2. 如果您移除計算設定，將必須重新設定裝置，以免您需要再次使用計算。 系統提示您確認時，請選取 [是]****。
 
-    ![選取 [移除計算]](media/azure-stack-edge-manage-compute/remove-compute-2.png)
+    ![選取 [移除計算 2]](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 裝置和 IoT Edge 裝置的存取金鑰
 

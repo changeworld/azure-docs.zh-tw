@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039014"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963120"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>應用預設網域控制站原則時，VM 沒有回應
 
@@ -28,7 +28,7 @@ ms.locfileid: "90039014"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 OS 在使用 [訊息 **預設網域控制站] 原則**開機時，會變成沒有回應。
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 OS 在使用 [訊息 **預設網域控制站] 原則**開機時，會變成沒有回應。
 
   ![[圖 1] 顯示作業系統卡在訊息「預設網域控制站原則」](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "90039014"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>將 OS 磁片連結至新的修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
 
 1. 使用遠端桌面連線連線至修復 VM。
 
@@ -56,4 +56,4 @@ ms.locfileid: "90039014"
 
 1. 找出記憶體 dmp 檔案，然後使用記憶體傾印檔案來 [提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。
 
-1. 如果您找不到找出記憶體 dmp 檔案的問題，您可能會想要改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) 。 遵循指南， [使用 NMI 呼叫來產生損毀](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)傾印檔案。
+1. 如果您找不到找出記憶體 dmp 檔案的問題，您可能會想要改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 遵循指南， [使用 NMI 呼叫來產生損毀](/windows/client-management/generate-kernel-or-complete-crash-dump)傾印檔案。

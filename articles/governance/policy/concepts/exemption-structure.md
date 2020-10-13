@@ -3,16 +3,16 @@ title: 原則豁免結構的詳細資料
 description: 描述 Azure 原則用來免除評估計畫或定義之資源的原則豁免定義。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968038"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950171"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure 原則豁免結構
 
-Azure 原則豁免 (preview) 功能是用來 _豁免_ 資源階層或個別資源，使其無法評估計畫或定義。 _豁免_于整體合規性但無法評估或暫時棄權的資源。 如需詳細資訊，請參閱 [瞭解 Azure 原則中的範圍](./scope.md)。 Azure 原則豁免僅適用于 [Resource Manager 模式](./definition-structure.md#resource-manager-modes) ，且不適用於 **資源提供者模式**。
+Azure 原則豁免 (preview) 功能是用來 _豁免_ 資源階層或個別資源，使其無法評估計畫或定義。 _豁免_于整體合規性但無法評估或暫時棄權的資源。 如需詳細資訊，請參閱 [瞭解 Azure 原則中的範圍](./scope.md)。 Azure 原則豁免僅適用于 [Resource Manager 模式](./definition-structure.md#resource-manager-modes) ，且不適用於 [資源提供者模式](./definition-structure.md#resource-provider-modes)。
 
 > [!IMPORTANT]
 > 這項功能在 **預覽**期間免費。 如需定價詳細資料，請參閱 [Azure 原則定價](https://azure.microsoft.com/pricing/details/azure-policy/)。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。

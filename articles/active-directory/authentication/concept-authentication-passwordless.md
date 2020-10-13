@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 352956c1f55de5cfff3ee114394e86a75d55765d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773921"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965534"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -174,7 +174,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 
 使用下表來選擇可支援您的需求和使用者的方法。
 
-|角色|狀況|環境|無密碼技術|
+|角色|案例|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|安全存取裝置以進行管理工作|指派 Windows 10 裝置|Windows Hello 企業版及/或 FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|

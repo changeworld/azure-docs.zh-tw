@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967506"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951548"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -58,62 +59,106 @@ Azure 虛擬網路具有 NSG 流量記錄，可為您了解透過與個別網路
 ## <a name="supported-regions-nsg"></a>支援的區域：NSG 
 
 您可以在下列任何支援的區域中使用 NSG 的流量分析：
-
-* 加拿大中部
-* 美國中西部
-* 美國東部
-* 美國東部 2
-* 美國中北部
-* 美國中南部
-* 美國中部
-* 美國西部
-* 美國西部 2
-* 法國中部
-* 西歐
-* 北歐
-* 巴西南部
-* 英國西部
-* 英國南部
-* 澳大利亞東部
-* 澳大利亞東南部
-* 東亞
-* 東南亞
-* 南韓中部
-* 印度中部
-* 印度南部
-* 日本東部 
-* 日本西部
-* US Gov 維吉尼亞州
-* 中國東部 2
+:::row:::
+   :::column span="":::
+      澳大利亞中部  
+      澳大利亞東部  
+      澳大利亞東南部  
+      巴西南部  
+      加拿大中部  
+      加拿大東部  
+      印度中部  
+      美國中部  
+      中國東部 2  
+      中國北部 2  
+   :::column-end:::
+   :::column span="":::
+      東亞  
+      美國東部  
+      美國東部 2  
+      美國東部 2 EUAP  
+      法國中部  
+      日本東部  
+      日本西部  
+      南韓中部  
+      南韓南部  
+      美國中北部  
+   :::column-end:::
+   :::column span="":::
+      北歐  
+      南非北部  
+      美國中南部  
+      印度南部  
+      東南亞  
+      瑞士北部  
+      瑞士西部  
+      英國南部  
+      英國西部  
+      USGov 亞歷桑那  
+   :::column-end:::
+   :::column span="":::
+      USGov 德州  
+      USGov 維吉尼亞  
+      USNat 東部  
+      USNat 西部  
+      USSec 東部  
+      USSec 西部  
+      美國中西部  
+      西歐  
+      美國西部  
+      美國西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支援的區域：Log Analytics 工作區
 
 Log Analytics 工作區必須存在於下列區域：
-* 加拿大中部
-* 美國中西部
-* 美國東部
-* 美國東部 2
-* 美國中北部
-* 美國中南部
-* 美國中部
-* 美國西部
-* 美國西部 2
-* 美國中部
-* 法國中部
-* 西歐
-* 北歐
-* 巴西南部
-* 英國西部
-* 英國南部
-* 澳大利亞東部
-* 澳大利亞東南部
-* 東亞
-* 東南亞
-* 南韓中部
-* 印度中部
-* 日本東部
-* US Gov 維吉尼亞州
-* 中國東部 2
+:::row:::
+   :::column span="":::
+      澳大利亞中部  
+      澳大利亞東部  
+      澳大利亞東南部  
+      巴西南部  
+      加拿大中部  
+      印度中部  
+      美國中部  
+      中國東部 2  
+      東亞  
+      美國東部  
+   :::column-end:::
+   :::column span="":::
+      美國東部 2  
+      美國東部 2 EUAP  
+      法國中部  
+      德國中西部  
+      日本東部  
+      南韓中部  
+      美國中北部  
+      北歐  
+      南非北部  
+      美國中南部  
+   :::column-end:::
+   :::column span="":::
+      東南亞  
+      瑞士北部  
+      瑞士西部  
+      阿拉伯聯合大公國中部  
+      英國南部  
+      英國西部  
+      USGov 亞歷桑那  
+      USGov 維吉尼亞  
+      USNat 東部  
+      USNat 西部  
+   :::column-end:::
+   :::column span="":::
+      USSec 東部  
+      USSec 西部  
+      美國中西部  
+      西歐  
+      美國西部  
+      美國西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>Prerequisites
 

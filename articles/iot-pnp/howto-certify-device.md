@@ -9,17 +9,17 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577640"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
-IoT 隨插即用裝置認證方案包含可檢查裝置是否符合 IoT 隨插即用認證需求的工具。 這些工具也可協助組織為其 IoT 隨插即用裝置的可用性帶來認知。 這些認證裝置專為 IoT 解決方案量身打造，可協助縮短上市時間。
+IoT 隨插即用裝置認證方案所包含的工具，可檢查裝置是否符合 IoT 隨插即用認證需求。 這些工具也可協助組織為其 IoT 隨插即用裝置的可用性帶來認知。 這些認證裝置專為 IoT 解決方案量身打造，可協助縮短上市時間。
 
-本文示範如何：
+本文將示範下列項目的作法：
 
 - 安裝適用于 Azure CLI 的 Azure IoT 命令列工具擴充功能
 - 在開發階段執行 IoT 隨插即用測試以驗證您的裝置應用程式  

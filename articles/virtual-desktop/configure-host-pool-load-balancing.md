@@ -3,15 +3,15 @@ title: 設定 Windows 虛擬桌面負載平衡-Azure
 description: 如何設定 Windows 虛擬桌面環境的負載平衡方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010101"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951650"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>設定 Windows 虛擬桌面負載平衡方法
 
@@ -51,13 +51,19 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>設定深度優先的負載平衡
 
-深度優先的負載平衡會將新的使用者會話發佈到具有最大連線數目，但尚未達到會話限制閾值上限的可用工作階段主機。 設定深度優先的負載平衡時，您必須設定主機集區中每個工作階段主機的最大會話限制。
+深度優先的負載平衡會將新的使用者會話發佈到具有最大連線數目，但尚未達到會話限制閾值上限的可用工作階段主機。
+
+>[!IMPORTANT]
+>設定深度優先的負載平衡時，您必須設定主機集區中每個工作階段主機的最大會話限制。
 
 若要設定主機集區以執行深度優先的負載平衡，請執行下列 PowerShell Cmdlet：
 
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> 深度優先的負載平衡演算法會根據最大工作階段主機限制 () ，將會話分配至工作階段主機 `-MaxSessionLimit` 。 這個參數的預設值是 `999999` ，這也是您可以將此變數設定為的最高可能數目。 當您使用深度優先的負載平衡演算法時，此為必要參數。 為了獲得最佳的使用者體驗，請務必將最大工作階段主機限制參數變更為最適合您環境的數位。
 
 若要確認設定是否已更新，請執行此 Cmdlet：
 
@@ -81,4 +87,4 @@ MaxSessionLimit  : 6
 4. 選取您要編輯之主機集區的名稱。
 5. 選取 [屬性] 。
 6. 在欄位中輸入 [ **最大會話限制** ]，然後在下拉式功能表中選取您要用於此主機集區的 **負載平衡演算法** 。
-7. 選取 [儲存]****。 這會套用新的負載平衡設定。
+7. 選取 [儲存]。 這會套用新的負載平衡設定。

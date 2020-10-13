@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e3f29a90ae2c6c66858e14ee91fb447a4a0045
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435604"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968645"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>從 App Service 中的容器存取 Azure 儲存體為網路共用
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>以網路共用的形式從 App Service 中的容器存取 Azure 儲存體
 
 ::: zone pivot="container-windows"
 
@@ -65,7 +65,6 @@ ms.locfileid: "89435604"
 
 - App Service 中的 Azure 儲存體為 Linux 上的 App Service 和用於容器的 Web App 的 **預覽** 狀態。 但**不支援****生產案例**。
 - App Service 中的 Azure 儲存體支援裝載 **Azure 檔案儲存體容器** (讀取/寫入) 和 **Azure Blob 容器** (唯讀) 
-- App Service 中的 Azure 儲存體 **不支援** 使用 **儲存體防火牆** 設定，因為基礎結構的限制。
 - App Service 中的 Azure 儲存體可讓您針對每個應用程式指定 **最多五個** 掛接點。
 - 無法透過 App Service FTP/FTPs 端點來存取掛接至應用程式 Azure 儲存體。 使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445121"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938826"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure 監視器中的 Azure Key Vault 分析解決方案
 
@@ -75,7 +75,7 @@ Azure Key Vault 解決方案會直接從 Key Vault 收集診斷記錄。
 | Azure |  |  |&#8226; |  |  | 與抵達同時 |
 
 ## <a name="use-azure-key-vault"></a>使用 Azure 金鑰保存庫
-[安裝解決方案](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)之後，請從 Azure 監視器**總覽**頁面按一下**金鑰保存庫分析**磚，以查看 Key Vault 的資料。 按一下 [深入解析]**** 區段下方的 [更多]****，即可在 [Azure 監視器]**** 功能表開啟此頁面。 
+[安裝解決方案](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)之後，請從 Azure 監視器**總覽**頁面按一下**金鑰保存庫分析**磚，以查看 Key Vault 的資料。 按一下 [深入解析]**** 區段下方的 [更多]****，即可在 [Azure 監視器]**** 功能表開啟此頁面。 
 
 ![Azure 監視器總覽頁面上金鑰保存庫分析圖格的螢幕擷取畫面，其中顯示一段時間的金鑰保存庫作業磁片區圖形。](media/azure-key-vault/log-analytics-keyvault-tile.png)
 

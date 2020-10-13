@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a992e432a6111b5da02187bcf6592587c4d31bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300594"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977505"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 0.5
 
@@ -92,26 +92,26 @@ ms.locfileid: "91300594"
 
 1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![更新裝置1](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![更新裝置2](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. 此時會顯示警告。 如果這是單一節點裝置，在套用更新後，裝置就會重新啟動而會有停機時間。 按一下核取圖示。
    
-   ![更新裝置](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![更新裝置3](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![更新裝置4](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 顯示的軟體版本應該是 10.0.0.0.0.10290.0**** (適用於 Update 0.5)。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 10.0.0.0.0.10290****，而相同版本在 Azure 入口網站則會回報為 10.0.10290.0****。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update-05/update6m.png)
+    ![更新裝置5](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
 6. 下一個步驟是更新 MDS 代理程式。 在 [軟體更新]**** 頁面上，移至 [更新檔案路徑]****，然後瀏覽至 `GenevaMonitoringAgentPackageInstaller.msi` 檔案。 重複步驟 2 至 4。 虛擬陣列重新啟動之後，登入本機 Web UI。
 

@@ -1,17 +1,16 @@
 ---
 title: 使用適用於 Cosmos DB 的 Azure 監視器監視 Azure Cosmos DB | Microsoft Docs
 description: 此文章描述適用於 Cosmos DB 的 Azure 監視器功能，可讓 Cosmos DB 擁有者快速了解其 CosmosDB 帳戶的效能和使用問題。
-ms.subservice: ''
-ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
+ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498911"
+ms.locfileid: "91932051"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索適用於 Azure Cosmos DB 的 Azure 監視器
 

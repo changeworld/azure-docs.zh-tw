@@ -2,19 +2,16 @@
 title: Azure 監視器活頁簿存取控制
 description: 使用以角色為基礎的存取控制，以預建和自訂參數化活頁簿簡化複雜報表
 services: azure-monitor
-author: mrbullwinkle
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: dc6e1d738bf255fe7baa244556bad4519979b1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c0b5dd72cf82649e7f659d23606d23aea62ac82
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539290"
+ms.locfileid: "91932544"
 ---
 # <a name="access-control"></a>存取控制
 
@@ -39,6 +36,6 @@ ms.locfileid: "86539290"
 
 加入 `microsoft.insights/workbooks/write` 以儲存共用的活頁簿。 如需詳細資訊，請參閱活頁 [簿參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 角色。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。

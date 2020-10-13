@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82db48690f8cfa48ebf3a6fdc81cb4e467c159d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331364"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977675"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -132,7 +132,7 @@ Oracle Real Application Clusters (Oracle RAC) 是用來在內部部署的多節�
 
 [在 Azure 上實作 Oracle GoldenGate](configure-oracle-golden-gate.md) 教學課程會引導您在 Azure 上完成基本設定程序。
 
-除了已在 Azure 中建構 HA 和 DR 解決方案架構，您還應該擁有可用於還原資料庫的備份策略。 [備份及復原 Oracle 資料庫](oracle-backup-recovery.md)教學課程會引導您完成建立一致性備份的基本程序。
+除了已在 Azure 中建構 HA 和 DR 解決方案架構，您還應該擁有可用於還原資料庫的備份策略。 [備份及復原 Oracle 資料庫](./oracle-overview.md)教學課程會引導您完成建立一致性備份的基本程序。
 
 ## <a name="support-for-jd-edwards"></a>JD Edwards 的支援
 

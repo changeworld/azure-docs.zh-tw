@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac4813e26d847f99f6a3bb7e3eb91bf06797d3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261a7033737e0d7be9974ca80ca6844b50a19973
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949332"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968611"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的遠端桌面閘道和 Azure Multi-Factor Authentication Server
 
@@ -35,7 +35,7 @@ ms.locfileid: "88949332"
 >
 > 在2019年7月1日前啟用 MFA Server 的現有客戶，可以下載最新版本、未來的更新，並照常產生啟用認證。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 已加入網域的 Azure MFA Server。 如果尚未進行安裝，請遵循[開始使用 Azure Multi-Factor Authentication Server](howto-mfaserver-deploy.md)中的步驟。
 - 已設定的現有 NPS 伺服器。
@@ -90,7 +90,7 @@ Azure Multi-Factor Authentication Server 設定為 RD 閘道器和 NPS 之間的
 
 ![MFA Server 中的 Radius 驗證](./media/howto-mfaserver-nps-rdg/radius.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 整合 Azure MFA 與 [IIS Web Apps](howto-mfaserver-iis.md)
 

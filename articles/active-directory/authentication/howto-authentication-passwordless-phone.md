@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4792e73f6326bb9ac67ce3aabe10b8314bb826
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 053a489993c31344b96e83253c88eed93b27b145
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568196"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964820"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 應用程式 (預覽版來啟用無密碼登入) 
 
@@ -61,7 +61,7 @@ Azure AD 可讓您選擇在登入程式期間可以使用的驗證方法。 然�
 
 使用可在 Azure AD 中使用的無密碼驗證方法，使用者現在必須使用下列步驟，自行註冊無密碼 authentication 方法：
 
-1. 瀏覽至 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。
+1. 瀏覽至 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。
 1. 登入，然後選取 [ **新增方法 > 驗證器應用程式**]，然後 **新增**，以新增驗證器應用程式。
 1. 遵循指示，在裝置上安裝和設定 Microsoft Authenticator 應用程式。
 1. 選取 [ **完成** ] 以完成驗證器設定。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326536"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949610"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖形
 
@@ -74,7 +74,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 
 ## <a name="list-relationships"></a>列出關聯性
 
-若要存取圖形中指定對應項的關聯性清單，您可以使用：
+若要存取來自圖形中指定對應項的 **傳出** 關聯性清單，您可以使用：
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 您可以使用已抓取的關聯性來流覽至您圖形中的其他 twins。 若要這樣做，請 `target` 從傳回的關聯性中讀取欄位，然後使用它做為下一個呼叫的識別碼 `GetDigitalTwin` 。 
 
-### <a name="find-relationships-to-a-digital-twin"></a>尋找數位對應項的關聯性
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>尋找數位對應項的連入關聯性
 
-Azure 數位 Twins 也有 API 可尋找指定對應項的所有連入關聯性。 這通常適用于反向導覽或刪除對應項。
+Azure 數位 Twins 也有 API 可尋找指定對應項的所有連 **入** 關聯性。 這通常適用于反向導覽或刪除對應項。
 
-先前的程式碼範例著重于尋找外寄關聯性。 下列範例類似，但會改為尋找連入關聯性。 它也會在找到它們之後將其刪除。
+先前的程式碼範例著重于尋找對應項的傳出關聯性。 下列範例的結構類似，但會改為尋找對應項的連 *入* 關聯性。
 
 請注意， `IncomingRelationship` 呼叫不會傳回關聯性的完整主體。
 
@@ -237,7 +237,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 
 請考慮下列資料表，其中描述一組要建立的數位 twins 和關聯性。
 
-| 型號    | 識別碼 | 父系 | 關聯性名稱 | 其他資料 |
+| 模型    | 識別碼 | 父系 | 關聯性名稱 | 其他資料 |
 | --- | --- | --- | --- | --- |
 | floor    | Floor01 | | | … |
 | 房間    | Room10 | Floor01 | contains | … |

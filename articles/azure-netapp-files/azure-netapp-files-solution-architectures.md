@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e4bd6371cb0264830ed84a8e80c373c1963cd798
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0818d113b5475e847c009f979345e103d6e089bb
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932476"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938860"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳作法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -73,6 +73,9 @@ ms.locfileid: "91932476"
 * [在 SUSE Linux Enterprise Server 上搭配 Azure NetApp Files 使用 Azure Vm 上的待命節點進行相應放大 SAP Hana](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [在 Red Hat Enterprise Linux 上搭配 Azure NetApp Files 使用 Azure Vm 上的待命節點進行相應放大 SAP Hana](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 
+### <a name="sap-iq-nls"></a>SAP IQ-NLS
+*   [在 SUSE Linux Enterprise Server 上使用 Azure NetApp Files 部署 SAP IQ-NLS HA 解決方案](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
+
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP tech 社區和 blog 文章 
 
 * [Azure NetApp Files-SAP Hana 備份（以秒為單位）](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
@@ -91,6 +94,7 @@ ms.locfileid: "91932476"
 * [在 Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
 * [使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器](../virtual-desktop/create-fslogix-profile-container.md)
 * [企業規模的 Windows 虛擬桌面](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [適用于企業的 Microsoft FSLogix-Azure NetApp Files 最佳作法](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
 
 ## <a name="hpc-solutions"></a>HPC 解決方案
 
@@ -111,6 +115,7 @@ ms.locfileid: "91932476"
 
 * [使用 Azure NetApp Files 進行電子設計自動化的優點](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud：使用 Azure NetApp Files 的 EDA HPC Lab](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
+* [適用于半導體產業的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
 ### <a name="analytics"></a>分析
 

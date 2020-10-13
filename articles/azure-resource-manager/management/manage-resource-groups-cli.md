@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: abab1a6a65f3cc45bcd88dc7aed89e18e4e28d5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b5addd9d275e9367988dc10689c27fa035e97dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371230"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951769"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure Resource Manager 資源群組
 
@@ -133,9 +133,9 @@ az group export --name $resourceGroupName
 
 腳本會在主控台上顯示範本。  複製 JSON，並儲存為檔案。
 
-匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](https://aka.ms/exportTemplateViaAdf)。
+匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](../../data-factory/copy-clone-data-factory.md)。
 
-若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 如需詳細資訊，請參閱 [Azure 入口網站中的單一和多重資源匯出至範本](../templates/export-template-portal.md)。
 

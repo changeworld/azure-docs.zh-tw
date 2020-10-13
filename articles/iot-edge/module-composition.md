@@ -4,16 +4,16 @@ description: 了解部署資訊清單如何宣告要部署哪些模組、如何�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/26/2020
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611532"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963392"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模組及建立路由
 
@@ -46,32 +46,31 @@ ms.locfileid: "91611532"
 
 ```json
 {
-    "modulesContent": {
-        "$edgeAgent": { // required
-            "properties.desired": {
-                // desired properties of the Edge agent
-                // includes the image URIs of all modules
-                // includes container registry credentials
-            }
-        },
-        "$edgeHub": { //required
-            "properties.desired": {
-                // desired properties of the Edge hub
-                // includes the routing information between modules, and to IoT Hub
-            }
-        },
-        "module1": {  // optional
-            "properties.desired": {
-                // desired properties of module1
-            }
-        },
-        "module2": {  // optional
-            "properties.desired": {
-                // desired properties of module2
-            }
-        },
-        ...
+  "modulesContent": {
+    "$edgeAgent": { // required
+      "properties.desired": {
+        // desired properties of the IoT Edge agent
+        // includes the image URIs of all deployed modules
+        // includes container registry credentials
+      }
+    },
+    "$edgeHub": { //required
+      "properties.desired": {
+        // desired properties of the IoT Edge hub
+        // includes the routing information between modules, and to IoT Hub
+      }
+    },
+    "module1": {  // optional
+      "properties.desired": {
+        // desired properties of module1
+      }
+    },
+    "module2": {  // optional
+      "properties.desired": {
+        // desired properties of module2
+      }
     }
+  }
 }
 ```
 
@@ -79,40 +78,101 @@ ms.locfileid: "91611532"
 
 定義 IoT Edge 執行階段在您部署中安裝模組的方式。 IoT Edge 代理程式是一項執行階段元件，負責管理 IoT Edge 裝置的安裝、更新及狀態回報。 因此，$edgeAgent 模組對應項包含所有模組的設定及管理資訊。 這項資訊也包括 IoT Edge 代理程式本身的設定參數。
 
-如需可包含或必須包含的屬性完整清單，請參閱 [IoT Edge 代理程式和 IoT Edge 中樞的屬性](module-edgeagent-edgehub.md)。
-
 $EdgeAgent 屬性遵循此結構：
 
 ```json
-"$edgeAgent": {
-    "properties.desired": {
-        "schemaVersion": "1.0",
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "runtime": {
-            "settings":{
-                "registryCredentials":{ // give the edge agent access to container images that aren't public
-                    }
-                }
+          "settings":{
+            "registryCredentials":{
+              // give the IoT Edge agent access to container images that aren't public
             }
+          }
         },
         "systemModules": {
-            "edgeAgent": {
-                // configuration and management details
-            },
-            "edgeHub": {
-                // configuration and management details
-            }
+          "edgeAgent": {
+            // configuration and management details
+          },
+          "edgeHub": {
+            // configuration and management details
+          }
         },
         "modules": {
-            "module1": { // optional
-                // configuration and management details
-            },
-            "module2": { // optional
-                // configuration and management details
-            }
+          "module1": {
+            // configuration and management details
+          },
+          "module2": {
+            // configuration and management details
+          }
         }
-    }
-},
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
 ```
+
+IoT Edge 代理程式架構1.1 版與 IoT Edge 1.0.10 版本一起發行，並啟用模組啟動順序。 針對執行1.0.10 版或更新版本的任何 IoT Edge 部署，建議使用架構版本1.1。
+
+### <a name="module-configuration-and-management"></a>模組設定和管理
+
+您可以使用 [IoT Edge 代理程式所需屬性] 清單，定義哪些模組要部署到 IoT Edge 裝置，以及如何設定和管理它們。
+
+如需可以或必須包含之所需屬性的完整清單，請參閱 [IoT Edge 代理程式和 IoT Edge 中樞的屬性](module-edgeagent-edgehub.md)。
+
+例如：
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
+        "runtime": { ... },
+        "systemModules": {
+          "edgeAgent": { ... },
+          "edgeHub": { ... }
+        },
+        "modules": {
+          "module1": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "startupOrder": 2,
+            "settings": {
+              "image": "myacr.azurecr.io/module1:latest",
+              "createOptions": "{}"
+            }
+          },
+          "module2": { ... }
+        }
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
+```
+
+每個模組都有一個 **設定** 屬性，其中包含模組 **映射**、容器登錄中容器映射的位址，以及在啟動時設定映射的任何 **createOptions** 。 如需詳細資訊，請參閱 [如何設定 IoT Edge 模組的容器建立選項](how-to-use-create-options.md)。
+
+EdgeHub 模組和自訂模組也有三個屬性，可告訴 IoT Edge 代理程式如何管理它們：
+
+* **狀態**：第一次部署時，模組是否應執行或停止。 必要。
+* **RestartPolicy**：當 IoT Edge 代理程式停止時，應重新開機該模組。 必要。
+* **StartupOrder**： *在 IoT Edge 版本1.0.10 中引進。* IoT Edge 代理程式在第一次部署時應該啟動模組的順序。 順序是以整數宣告，其中會先啟動具有0啟動值的模組，然後再遵循較高的數位。 EdgeAgent 模組沒有啟動值，因為它一律會先啟動。 選擇性。
+
+  IoT Edge 代理程式會依啟動值的順序起始模組，但不會等待每個模組完成啟動，再進入下一個模組。
+
+  如果某些模組相依于其他模組，啟動順序會很有説明。 例如，您可能會想要先啟動 edgeHub 模組，讓它準備好在其他模組啟動時路由傳送訊息。 或者，您可能想要在將資料傳送至其中的模組之前啟動儲存體模組。 不過，您應該一律設計模組來處理其他模組的失敗。 這是容器的本質，它們可能會在任何時間停止並重新啟動，以及任意次數。
 
 ## <a name="declare-routes"></a>宣告路由
 
@@ -121,17 +181,36 @@ IoT Edge 中樞會管理模組、IoT 中樞和任何分葉裝置間的通訊。 
 路由會以下列語法在 **$edgeHub** 所需屬性中宣告：
 
 ```json
-"$edgeHub": {
-    "properties.desired": {
+{
+  "modulesContent": {
+    "$edgeAgent": { ... },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "routes": {
-            "route1": "FROM <source> WHERE <condition> INTO <sink>",
-            "route2": "FROM <source> WHERE <condition> INTO <sink>"
+          "route1": "FROM <source> WHERE <condition> INTO <sink>",
+          "route2": {
+            "route": "FROM <source> WHERE <condition> INTO <sink>",
+            "priority": 0,
+            "timeToLiveSecs": 86400
+          }
         },
-    }
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
+        }
+      }
+    },
+    "module1": { ... },
+    "module2": { ... }
+  }
 }
 ```
 
-每個路由必須有來源和接收，但條件是可用來篩選訊息的選擇性項目。
+IoT Edge 中樞架構1.1 版與 IoT Edge 1.0.10 版本一起發行，並啟用路由排定優先順序和存留時間。 針對執行1.0.10 版或更新版本的任何 IoT Edge 部署，建議使用架構版本1.1。
+
+每個路由都需要 *訊息來源，* 以及訊息到達的 *接收* 。 *條件*是選擇性的部分，您可以用來篩選訊息。
+
+您可以將 *優先順序* 指派給您想要確保先處理其訊息的路由。 這項功能在上游連線很弱或受限的情況下很有用，而且您有重要的資料應優先于標準遙測訊息。
 
 ### <a name="source"></a>來源
 
@@ -186,6 +265,32 @@ IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本�
 
 [IoT Edge 中樞所需屬性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 屬性會指定訊息能在 IoT Edge 中樞內儲存多久。
 
+### <a name="priority-and-time-to-live"></a>優先順序和存留時間
+
+您可以使用定義路由的字串，或使用路由字串、優先順序整數和存留時間整數的物件來宣告路由。
+
+選項 1：
+
+   ```json
+   "route1": "FROM <source> WHERE <condition> INTO <sink>",
+   ```
+
+選項2：使用 IoT Edge 中樞架構1.1 版的 IoT Edge 版本1.0.10 引進：
+
+   ```json
+   "route2": {
+     "route": "FROM <source> WHERE <condition> INTO <sink>",
+     "priority": 0,
+     "timeToLiveSecs": 86400
+   }
+   ```
+
+**優先權** 值可以是0-9 （含），其中0是最高優先順序。 訊息會根據其端點排入佇列。 系統會先處理以特定端點為目標的所有優先順序0訊息，然後再處理任何優先順序1的訊息（以相同的端點為目標），並向下行。 如果相同端點的多個路由具有相同的優先順序，則會以先出先服務的方式來處理它們的訊息。 如果未指定任何優先權，則會將路由指派給最低優先順序。
+
+除非明確設定，否則 **timeToLiveSecs** 屬性會從 IoT Edge 中樞的 **storeAndForwardConfiguration** 繼承值。 值可以是任何正整數。
+
+如需如何管理優先順序佇列的詳細資訊，請參閱 [路由優先順序和存留時間](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md)的參考頁面。
+
 ## <a name="define-or-update-desired-properties"></a>定義或更新所需屬性
 
 部署資訊清單可為部署到 IoT Edge 裝置的每個模組指定所需屬性。 部署資訊清單中所需屬性會覆寫目前在模組對應項中的任何所需屬性。
@@ -203,7 +308,7 @@ IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本�
   "modulesContent": {
     "$edgeAgent": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "runtime": {
           "type": "docker",
           "settings": {
@@ -230,6 +335,7 @@ IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 0,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
@@ -242,6 +348,7 @@ IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 2,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
               "createOptions": "{}"
@@ -252,6 +359,7 @@ IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本�
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 1,
             "env": {
               "tempLimit": {"value": "100"}
             },
@@ -265,13 +373,21 @@ IoT Edge 提供至少一次的保證。 IoT Edge 中樞會將訊息儲存在本�
     },
     "$edgeHub": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "routes": {
-          "sensorToFilter": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+          "sensorToFilter": {
+            "route": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+            "priority": 0,
+            "timeToLiveSecs": 1800
+          },
+          "filterToIoTHub": {
+            "route": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream",
+            "priority": 1,
+            "timeToLiveSecs": 1800
+          }
         },
         "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 10
+          "timeToLiveSecs": 100
         }
       }
     }

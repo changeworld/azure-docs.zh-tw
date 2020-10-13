@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6e15ef1b9bf488ac18e41dc09eb71e6ea3da39
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977233"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>適用于 SAP 應用程式之最佳網路延遲的 Azure 鄰近放置群組
 以 SAP NetWeaver 或 SAP S/4HANA 架構為基礎的 SAP 應用程式，對 SAP 應用層與 SAP 資料庫層之間的網路延遲很敏感。 此敏感度是大部分在應用層中執行之商務邏輯的結果。 由於 SAP 應用層會執行商務邏輯，因此會以極高的頻率（每秒數以千計或數萬千）向資料庫層發出查詢。 在大部分的情況下，這些查詢的本質很簡單。 它們通常可以在資料庫層上以500微秒或更短的時間執行。
@@ -33,7 +33,7 @@ ms.locfileid: "91569794"
 
 - 您無法假設所有 Azure VM 類型都可在每個 Azure 資料中心內使用。 如此一來，就可以限制一個鄰近放置群組中不同 VM 類型的組合。 發生這些限制的原因是執行特定 VM 類型所需的主機硬體，可能不會出現在部署放置群組的資料中心內。
 - 當您調整某個鄰近放置群組內 Vm 的部分大小時，您無法自動假設在所有情況下，新的 VM 類型都可在與鄰近放置群組一部分的其他 Vm 相同的資料中心內使用
-- 由於 Azure 解除硬體，它可能會將鄰近位置群組的特定 Vm 強制至另一個 Azure 資料中心。 如需涵蓋此案例的詳細資訊，請閱讀檔 [共置資源以改善延遲](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#planned-maintenance-and-proximity-placement-groups)  
+- 由於 Azure 解除硬體，它可能會將鄰近位置群組的特定 Vm 強制至另一個 Azure 資料中心。 如需涵蓋此案例的詳細資訊，請閱讀檔 [共置資源以改善延遲](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
 
 > [!IMPORTANT]
 > 由於可能會有限制，因此應該使用鄰近放置群組：

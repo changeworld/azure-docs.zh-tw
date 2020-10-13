@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080007"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978606"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>使用維護控制來管理平臺更新 
 
@@ -28,7 +28,7 @@ ms.locfileid: "87080007"
 
 ## <a name="limitations"></a>限制
 
-- Vm 必須位於 [專用主機](./linux/dedicated-hosts.md)上，或使用 [隔離的 VM 大小](isolation.md)來建立。
+- Vm 必須位於 [專用主機](./dedicated-hosts.md)上，或使用 [隔離的 VM 大小](isolation.md)來建立。
 - 在35天后，將會自動套用更新。
 - 使用者必須擁有 **資源參與者** 存取權。
 
@@ -42,6 +42,6 @@ ms.locfileid: "87080007"
 
 如需 Azure Functions 範例，請參閱 [使用維護控制排程維護更新和 Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解，請參閱 [維護和更新](maintenance-and-updates.md)。

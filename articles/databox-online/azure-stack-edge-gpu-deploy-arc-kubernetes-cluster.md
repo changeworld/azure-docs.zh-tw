@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903201"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952211"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上啟用 Kubernetes 叢集上的 Azure Arc
 
@@ -68,11 +68,11 @@ ms.locfileid: "90903201"
 
 1. 選取資源提供者，然後從命令列頂端選取 [ **註冊**]。 註冊需要幾分鐘的時間。 
 
-    ![註冊 Kubernetes 資源提供者](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![註冊 Kubernetes 資源提供者2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. 重新整理 UI 直到您看到資源提供者已註冊為止。 針對這兩個資源提供者重複此程式。
     
-    ![註冊 Kubernetes 資源提供者](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![註冊 Kubernetes 資源提供者3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 您也可以透過註冊資源提供者 `az cli` 。 如需詳細資訊，請參閱為 [Azure Arc 啟用註冊兩個提供者 Kubernetes](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 

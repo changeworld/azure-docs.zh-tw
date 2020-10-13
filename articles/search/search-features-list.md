@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604184"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951378"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure 認知搜尋的功能
 
@@ -64,11 +64,11 @@ Azure 認知搜尋提供全文搜尋引擎、持續性儲存體的搜尋索引�
 
 | 類別&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 特性 |
 |-------------------|----------|
-| REST | [**服務 REST API**](https://docs.microsoft.com/rest/api/searchservice/) 適用于資料平面作業，包括與編制索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**管理 REST API**](https://docs.microsoft.com/rest/api/searchmanagement/) 適用于服務建立和透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。|
-| 適用於 .NET 的 Azure SDK | [**Azure.Search.Documents**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) 適用于資料平面作業，包括與索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**管理。搜尋**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) 是為了建立服務，並透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。|
-| Azure SDK for Java | [**com.azure.search.documents**](https://docs.microsoft.com/java/api/com.azure.search.documents) 適用于資料平面作業，包括與索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**azure. 管理。搜尋**](https://docs.microsoft.com/java/api/overview/azure/search/management) 是為了建立服務，並透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。|
-| 適用於 Python 的 Azure SDK | [**azure-搜尋-檔**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) 適用于資料平面作業，包括與編制索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**azure 管理-搜尋**](https://docs.microsoft.com/python/api/overview/azure/search/management) 適用于服務建立和清除 Azure Resource Manager。 您也可以使用此 API 來管理金鑰和布建服務。 |
-| 適用于 JavaScript/TypeScript 的 Azure SDK | [**azure/搜尋-檔**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) 適用于資料平面作業，包括與編制索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**azure/arm-搜尋**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) 是為了建立服務，並透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。 |
+| REST | [**服務 REST API**](/rest/api/searchservice/) 適用于資料平面作業，包括與編制索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**管理 REST API**](/rest/api/searchmanagement/) 適用于服務建立和透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。|
+| 適用於 .NET 的 Azure SDK | [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) 適用于資料平面作業，包括與索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**管理。搜尋**](/dotnet/api/microsoft.azure.management.search) 是為了建立服務，並透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。|
+| Azure SDK for Java | [**com.azure.search.documents**](/java/api/com.azure.search.documents) 適用于資料平面作業，包括與索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**azure. 管理。搜尋**](/java/api/overview/azure/search/management) 是為了建立服務，並透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。|
+| 適用於 Python 的 Azure SDK | [**azure-搜尋-檔**](/python/api/overview/azure/search-documents-readme) 適用于資料平面作業，包括與編制索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**azure 管理-搜尋**](/python/api/overview/azure/search/management) 適用于服務建立和清除 Azure Resource Manager。 您也可以使用此 API 來管理金鑰和布建服務。 |
+| 適用于 JavaScript/TypeScript 的 Azure SDK | [**azure/搜尋-檔**](/javascript/api/@azure/search-documents/) 適用于資料平面作業，包括與編制索引、查詢和 AI 擴充相關的所有作業。 您也可以使用此用戶端程式庫來取出系統資訊和統計資料。 <br/><br/>[**azure/arm-搜尋**](/javascript/api/@azure/arm-search/) 是為了建立服務，並透過 Azure Resource Manager 進行清除。 您也可以使用此 API 來管理金鑰和布建服務。 |
 
 ## <a name="see-also"></a>另請參閱
 

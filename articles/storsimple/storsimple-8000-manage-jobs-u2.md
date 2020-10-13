@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513932"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949423"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 裝置管理員服務來檢視和管理作業 (Update 3 和更新版本)
 
@@ -59,11 +59,11 @@ ms.locfileid: "85513932"
 
 2. 在 [作業]**** 刀鋒視窗中，利用適當的篩選條件執行查詢，以顯示您感興趣的作業。 您可以搜尋完成、執行中或已取消工作。
 
-    ![[作業] 刀鋒視窗](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![作業 blade 2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. 選取並按一下 [作業]。
 
-    ![[作業] 刀鋒視窗](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![作業分頁3](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. 在 [作業詳細資料] 刀鋒視窗中，您可以檢視狀態、詳細資料、時間統計資料和資料統計資料。
    
@@ -81,11 +81,11 @@ ms.locfileid: "85513932"
 
 2. 用滑鼠右鍵按一下選取的作業以叫用操作功能表，然後按一下 [取消]****。
 
-    ![工作詳細資料](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![作業詳細資料2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. 當提示確認時，請按一下 [是]****。 即會取消此工作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何 [管理您的 StorSimple 備份原則](storsimple-8000-manage-backup-policies-u2.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

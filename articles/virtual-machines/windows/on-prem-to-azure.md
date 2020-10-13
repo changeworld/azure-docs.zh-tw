@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835474"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973898"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>從 Amazon Web Services (AWS) 和其他平台移轉至 Azure 中的受控磁碟
 
@@ -31,7 +31,7 @@ ms.locfileid: "87835474"
 >
 
 
-| 狀況                                                                                                                         | 文件                                                                                                                       |
+| 案例                                                                                                                         | 文件                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 您具有想要使用受控磁碟移轉至 Azure VM 的 AWS EC2 執行個體                              | [從 Amazon Web Services (AWS) 將 VM 移至 Azure](aws-to-azure.md)                           |
 | 您具有來自其他虛擬化平台的 VM，且想要將它作為映像使用，來建立多個 Azure VM。 | [將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM](upload-generalized-managed.md) |
@@ -41,7 +41,7 @@ ms.locfileid: "87835474"
 ## <a name="overview-of-managed-disks"></a>受控磁碟概觀
 
 Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管理。 受控磁碟也受惠於可用性設定組中更佳的 VM 可靠性。 它可確保可用性設定組中不同 VM 的磁碟會確實地和彼此隔離，以避免發生單一失敗點。 它會自動以不同的儲存體縮放單位 (戳記) 將不同 VM 的磁碟放在一個可用性設定組中，以限制硬體和軟體失敗所引起之單一儲存體縮放單位失敗的影響。
-根據您的需求，您可從四種類型的儲存體選項中選擇。 若要了解可用的磁碟類型，請參閱[選取磁碟類型](disks-types.md)一文。
+根據您的需求，您可從四種類型的儲存體選項中選擇。 若要了解可用的磁碟類型，請參閱[選取磁碟類型](../disks-types.md)一文。
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>規劃移轉至受控磁碟
 

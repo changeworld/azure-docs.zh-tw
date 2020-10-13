@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/19/2020
+ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141783"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951480"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>設定 Azure Sentinel 客戶管理的金鑰
-
 
 本文提供 Azure Sentinel 的背景資訊和設定客戶管理的金鑰 (CMK) 步驟。 CMK 可讓所有儲存或傳送至 Azure Sentinel 的資料加密，這些資料放在所有相關的儲存體資源中，並使用您所建立或擁有的 Azure Key Vault 金鑰加密。
 
 > [!NOTE]
-> -   Azure Sentinel CMK 功能僅提供給**新**客戶，而此功能的存取權是由 Azure 功能註冊所控制。 您可以聯繫 azuresentinelCMK@microsoft.com 要求存取權，當容量允許時，將會核准擱置中的要求。
-> -   Azure Sentinel CMK 功能僅在美國東部、美國西部2、美國中南部三個區域提供。
-> -   CMK 功能僅適用於每天傳送 1TB 或以上的客戶。 當您向 Microsoft 申請在您的 Azure 訂用帳戶佈建 CMK 時，您會收到額外價格的相關資訊。 深入了解 [Log Analytics 價格](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)。
+> - Azure Sentinel 的 CMK 功能僅提供給 **新客戶**。
+>
+> - 這項功能的存取權是由 Azure 功能註冊所控制。您可以藉由聯絡來要求存取權 azuresentinelCMK@microsoft.com 。 擱置的要求將會根據可用容量核准。
+>
+> - CMK 功能僅適用於每天傳送 1TB 或以上的客戶。 當您向 Microsoft 申請在您的 Azure 訂用帳戶佈建 CMK 時，您會收到額外價格的相關資訊。 深入了解 [Log Analytics 價格](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)。
 
 ## <a name="how-cmk-works"></a>CMK 的運作方式 
 
@@ -58,7 +59,7 @@ Azure Sentinel 解決方案會針對記錄收集和功能使用數個儲存體�
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>步驟 1：建立 Azure Key Vault 並儲存金鑰
 
-1.  [建立 Azure Key Vault 資源](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910)，然後產生或匯入將用於資料加密的金鑰。
+1.  [建立 Azure Key Vault 資源](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal)，然後產生或匯入將用於資料加密的金鑰。
     > [!NOTE]
     >  必須將 Azure Key Vault 設定為可復原，才能保護您的金鑰和存取權。
 

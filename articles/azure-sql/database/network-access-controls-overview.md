@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435366"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951990"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database 和 Azure Synapse Analytics 網路存取控制
 
@@ -42,7 +42,7 @@ ms.locfileid: "89435366"
 
 ## <a name="allow-azure-services"></a>允許 Azure 服務
 
-[從 Azure 入口網站](single-database-create-quickstart.md)建立新的邏輯 SQL server 時，不會將此設定保留為未選取狀態。
+根據預設， [從 Azure 入口網站](single-database-create-quickstart.md)建立新的邏輯 SQL server 時，此設定會設定為 [ **關閉**]。 使用公用服務端點允許連線時，就會顯示此設定。
 
 您也可以在建立邏輯 SQL server 之後，透過防火牆窗格變更此設定，如下所示。
   
@@ -80,9 +80,9 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> Get-aznetworkservicetag 會傳回 SQL 服務標記的全域範圍（儘管指定 Location 參數）。 請務必將其篩選為裝載同步處理群組所用中樞資料庫的區域
+> Get-AzNetworkServiceTag 會傳回 SQL 服務標記的全域範圍（儘管指定 Location 參數）。 請務必將其篩選為裝載同步處理群組所用中樞資料庫的區域
 
-請注意，PowerShell 腳本的輸出是在無類別網域間路由 (CIDR) 標記法。 這需要使用如下的 [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) 轉換成開始和結束 IP 位址的格式：
+請注意，PowerShell 腳本的輸出是在無類別 Inter-Domain 路由 (CIDR) 標記法。 這需要使用如下的 [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) 轉換成開始和結束 IP 位址的格式：
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -138,11 +138,11 @@ Azure SQL Database 防火牆可讓您指定 IP 位址範圍，以從中接受通
 > [!NOTE]
 > 子網路上還不能有 SQL Database。 如果您的伺服器是虛擬網路中子網上的節點，則虛擬網路中的所有節點都可以與您的 SQL Database 進行通訊。 在此情況下，VM 可以與 SQL Database 通訊，而不需要任何虛擬網路規則或 IP 規則。
 
-## <a name="private-link"></a>Private Link
+## <a name="private-link"></a>私人連結
 
 Private Link 可讓您透過 **私人端點**連接到伺服器。 私人端點是特定 [虛擬網路](../../virtual-network/virtual-networks-overview.md) 和子網內的私人 IP 位址。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需有關建立伺服器層級 IP 防火牆規則的快速入門，請參閱 [在 SQL Database 中建立資料庫](single-database-create-quickstart.md)。
 

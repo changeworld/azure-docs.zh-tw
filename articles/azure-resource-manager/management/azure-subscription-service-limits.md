@@ -3,18 +3,18 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3b4185fb90aec68eda600b67c95529e6b80b09e4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665586"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950239"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
 本文件列出一些最常見的 Microsoft Azure 限制，有時也稱為配額。
 
-若要深入瞭解 Azure 定價，請參閱 [azure 定價總覽](https://azure.microsoft.com/pricing/)。 您可以在這裡使用 [定價計算機](https://azure.microsoft.com/pricing/calculator/)來預估成本。 您也可以移至特定服務的定價詳細資料頁面，例如 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 如需協助您管理成本的祕訣，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../cost-management-billing/manage/getting-started.md)。
+若要深入瞭解 Azure 定價，請參閱 [azure 定價總覽](https://azure.microsoft.com/pricing/)。 您可以在這裡使用 [定價計算機](https://azure.microsoft.com/pricing/calculator/)來預估成本。 您也可以移至特定服務的定價詳細資料頁面，例如 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 如需協助您管理成本的祕訣，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../cost-management-billing/cost-management-billing-overview.md)。
 
 ## <a name="managing-limits"></a>管理限制
 
