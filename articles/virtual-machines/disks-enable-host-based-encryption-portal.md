@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88817484"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure 入口網站來啟用在主機使用加密的端對端加密
@@ -35,7 +35,7 @@ ms.locfileid: "88817484"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 將電子郵件傳送至 encryptionAtHost@microsoft。 具有您訂用帳戶識別碼的 com，可讓您的訂用帳戶啟用此功能。
 
@@ -63,12 +63,12 @@ ms.locfileid: "88817484"
 1. 在 [ **磁片** ] 分頁上，選取 **[是]** ， **在主機**上進行加密。
 1. 依您的需要進行其餘的選取專案。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虛擬機器建立磁片分頁的螢幕擷取畫面，已反白顯示 [在主機加密]。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="已反白顯示虛擬機器建立基本功能分頁、區域和 V M 大小的螢幕擷取畫面。":::
 
 1. 完成 VM 部署程式，並選取符合您環境的選項。
 
 您現在已在啟用主機加密的情況下部署 VM，其所有相關聯的磁片將會使用「在主機加密」進行加密。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Azure Resource Manager 範本範例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/EncryptionAtHost)

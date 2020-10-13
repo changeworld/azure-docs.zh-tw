@@ -16,10 +16,10 @@ ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395969"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租用戶應用程式
@@ -55,7 +55,7 @@ Azure 有多項功能可讓您處理在設計多租用戶系統時遇到的重�
   * 通常會在應用程式後端處理資料的背景工作角色。
   * 通常作為應用程式前端的 Web 角色。
 
-**儲存體**
+**Storage**
 
 資料管理（例如 Azure SQL Database 或 Azure 儲存體服務）（例如資料表服務）可提供儲存大量非結構化資料和 Blob 服務的服務，以提供服務來儲存大量非結構化文字或二進位資料，例如影片、音訊和影像。
 

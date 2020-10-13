@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
 ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935597"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公用基礎負載平衡器的 Azure 監視器記錄
@@ -173,6 +173,6 @@ JSON 輸出在屬性欄位中顯示了探查健全狀況狀態的基本資訊。
 ## <a name="send-to-log-analytics"></a>傳送至 Log Analytics
 Azure 中的資源可以將其診斷資訊直接傳送至 Log Analytics 工作區，其中可針對疑難排解和分析資訊來執行複雜的查詢。  如需詳細資訊，請參閱 Azure 監視器中的 [收集 Log Analytics 工作區中的 Azure 資源記錄](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [了解負載平衡器偵查](load-balancer-custom-probe-overview.md)

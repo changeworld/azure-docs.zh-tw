@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88924706"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 認知搜尋擴充管線中的 AML 技能
@@ -168,7 +168,7 @@ AmlSkill。
 
 在 AML 服務無法使用或傳回 HTTP 錯誤的情況下，將會在索引子執行歷程記錄中加入易記的錯誤，其中包含 HTTP 錯誤的任何可用詳細資料。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [AML 服務疑難排解](../machine-learning/how-to-troubleshoot-deployment.md)

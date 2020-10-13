@@ -11,10 +11,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602161"
 ---
 # <a name="userjourneys"></a>UserJourneys
@@ -29,7 +29,7 @@ ms.locfileid: "90602161"
 
 **UserJourneys** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | UserJourney | 1:n | 使用者旅程圖，可定義完整使用者流程所需的所有建構。 |
 
@@ -41,7 +41,7 @@ ms.locfileid: "90602161"
 
 **UserJourney** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1:n | 必須遵循才能獲得成功交易的協調流程序列。 每個使用者旅程圖都由依序執行的已排序協調流程步驟清單所組成。 如果有任何步驟失敗，交易就會失敗。 |
 
@@ -55,7 +55,7 @@ ms.locfileid: "90602161"
 
 **OrchestrationSteps** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1:n | 已排序的協調流程步驟。 |
 
@@ -70,7 +70,7 @@ ms.locfileid: "90602161"
 
 **OrchestrationStep** 元素可以包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 先決條件 | 0:n | 必須基於要執行的協調流程步驟滿足的先決條件清單。 |
 | ClaimsProviderSelections | 0:n | 適用於協調流程步驟的宣告提供者選取項目清單。 |
@@ -81,7 +81,7 @@ ms.locfileid: "90602161"
 
 **Preconditions** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 先決條件 | 1:n | 根據所使用的技術設定檔，系統會依據宣告提供者選取項目來將用戶端重新導向，或進行伺服器呼叫來交換宣告。 |
 
@@ -97,7 +97,7 @@ ms.locfileid: "90602161"
 
 **Precondition** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 值 | 1:n | 要查詢的 ClaimTypeReferenceId。 另一個值元素包含要檢查的值。</li></ul>|
 | 動作 | 1:1 | 當協調流程步驟內的先決條件檢查為 True 時應執行的動作。 如果將 `Action` 的值設定為 `SkipThisOrchestrationStep`，就不應執行相關聯的 `OrchestrationStep`。 |
@@ -164,7 +164,7 @@ ms.locfileid: "90602161"
 
 **>claimsproviderselections >claimsproviderselection**元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1:n | 提供可選取的宣告提供者清單。|
 
@@ -222,7 +222,7 @@ ms.locfileid: "90602161"
 
 **ClaimsExchanges** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1:n | 根據所使用的技術設定檔，系統會依據所選取的 ClaimsProviderSelection 來將用戶端重新導向，或進行伺服器呼叫來交換宣告。 |
 
@@ -237,7 +237,7 @@ ms.locfileid: "90602161"
 
 **JourneyList**元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 候選項目 | 1:1 | 要呼叫之 sub 旅程的參考。 |
 

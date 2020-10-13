@@ -11,10 +11,10 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: f37550d914cf7efb0c75ed3dfa8854e1ec7be7e0
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88875615"
 ---
 # <a name="move-an-azure-workbook-template-to-another-region"></a>將 Azure 活頁簿範本移至另一個區域
@@ -23,7 +23,7 @@ ms.locfileid: "88875615"
 
 目前沒有可建立活頁簿範本資源的入口網站 UI，唯一建立它們的方式是透過 [Azure Resource Manager 範本 (ARM 範本) 部署](./workbooks-automate.md)。 因此，移動範本最簡單的方式是重複使用先前的 ARM 範本，並將其更新為部署到新的區域。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 確定目的地區域中支援活頁簿範本。
 
@@ -44,7 +44,7 @@ ms.locfileid: "88875615"
 
 使用 Azure 活頁簿流覽 UI 來尋找新部署的活頁簿範本。 確定位置是目標位置。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在新區域中建立活頁簿範本之後，請刪除先前區域中原始的活頁簿範本。
 1. 在 Azure 活頁簿流覽 UI 中尋找活頁簿範本。

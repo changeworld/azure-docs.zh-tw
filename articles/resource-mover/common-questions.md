@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600648"
 ---
 # <a name="common-questions"></a>常見問題
@@ -34,14 +34,14 @@ ms.locfileid: "90600648"
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>使用資源移動器可以跨區域移動哪些資源？
 
-使用資源移動器，您目前可以跨區域移動下列資源：
+您目前可以使用 Resource Mover 跨區域移動下列資源：
 
-- Azure Vm 和相關聯的磁片
+- Azure VM 和相關聯的磁碟
 - NIC
 - 可用性設定組 
 - Azure 虛擬網路 
 - 公用 IP 位址
-- 網路安全性群組 (NSG)
+- 網路安全性群組 (NSG)。
 - 內部和公用負載平衡器 
 - Azure SQL 資料庫和彈性集區
 
@@ -71,12 +71,12 @@ ms.locfileid: "90600648"
 
 ### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>資源移動器需要哪些受控識別許可權？
 
-Azure 資源移動器受控識別至少需要下列許可權： 
+Azure Resource Mover 受控識別至少需要下列權限： 
 
 - 在使用者訂用帳戶中寫入/建立資源的許可權，可透過「 *參與者* 」角色使用。 
-- 建立角色指派的許可權。 通常適用 *于擁有者* 或 *使用者存取系統管理員* 角色，或具有已獲指派 *Microsoft 授權/角色指派/寫入權限* 的自訂角色。 如果資料共用資源的受控識別已獲得 Azure 資料存放區的存取權，則不需要此許可權。 
+- 建立角色指派的權限。 通常適用 *于擁有者* 或 *使用者存取系統管理員* 角色，或具有已獲指派 *Microsoft 授權/角色指派/寫入權限* 的自訂角色。 如果資料共用資源的受控識別已獲得 Azure 資料存放區的存取權，則不需要此許可權。 
  
-當您在入口網站的資源移動器中樞內新增資源時，只要使用者具有上述許可權，就會自動處理許可權。 如果您使用 PowerShell 新增資源，您可以手動指派許可權。
+當您在入口網站中的 Resource Mover 中樞內新增資源時，只要使用者擁有上述權限，系統就會自動處理權限指派。 如果您使用 PowerShell 新增資源，您可以手動指派許可權。
 
 > [!IMPORTANT]
 > 強烈建議您不要修改或移除身分識別角色指派。 
@@ -96,4 +96,4 @@ Azure 資源移動器受控識別至少需要下列許可權：
 
 ## <a name="next-steps"></a>後續步驟
 
-[深入瞭解](about-move-process.md) 資源移動器元件和移動流程。
+[深入了解](about-move-process.md) Resource Mover 元件和移動程序。
