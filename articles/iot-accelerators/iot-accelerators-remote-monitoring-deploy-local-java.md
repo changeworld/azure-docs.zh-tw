@@ -1,20 +1,19 @@
 ---
 title: 在本機部署遠端監視解決方案-IntelliJ IDE-Azure |Microsoft Docs
 description: 本操作指南說明如何使用 IntelliJ 進行測試和開發，將遠端監視解決方案加速器部署到本機電腦。
-author: v-krghan
-manager: dominicbetts
+author: dominicbetts
 ms.custom: devx-track-java
-ms.author: v-krghan
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998609"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>在本機部署遠端監視解決方案加速器 - IntelliJ
 
@@ -24,7 +23,7 @@ ms.locfileid: "87319162"
 
 如果您想要在本機電腦上執行 Docker 中的遠端監視解決方案加速器，請參閱[本機部署遠端監視解決方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
@@ -229,12 +228,12 @@ npm start
 
 若要存取遠端監視解決方案儀表板，請移至 `http://localhost:9000` 瀏覽器中的。
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要避免不必要的費用，請在完成測試之後，從您的 Azure 訂用帳戶中移除雲端服務。 若要移除服務，請移至 [Azure 入口網站](https://ms.portal.azure.com)，並刪除 **啟動 .cmd** 腳本所建立的資源群組。
 
 您也可以刪除當您從 GitHub 複製原始程式碼時，所建立的遠端監視存放庫本機副本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已部署遠端監視解決方案，下一步便是[探索解決方案儀表板的功能](quickstart-remote-monitoring-deploy.md)。

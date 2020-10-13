@@ -10,13 +10,13 @@ author: saachigopal
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ea8b100e8a690cf4f400dda02f2a58b6500d5f31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: eb3acc9b30b9016ae33f223911cc01cbf8daea47
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328440"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999119"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自訂的 Docker 基底映射部署模型
 
@@ -204,7 +204,7 @@ CPU 映射是從 ubuntu 16.04 所建立。 Cuda9 的 GPU 映射是從 nvidia/cud
 
 * 如果映射位於 __私人存放庫__中，您需要下列資訊：
 
-    * 登錄 __位址__。 例如： `myregistry.azureecr.io` 。
+    * 登錄 __位址__。 例如，`myregistry.azureecr.io`。
     * 具有登錄讀取存取權的服務主體使用者 __名稱__ 和 __密碼__ 。
 
     如果您沒有這種資訊，請向系統管理員說出包含您映射的 Azure Container Registry。

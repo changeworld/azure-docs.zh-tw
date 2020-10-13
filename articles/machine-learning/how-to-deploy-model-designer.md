@@ -10,13 +10,13 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 00b689e4546d1f639f76ccbdf45348c43a678066
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: how-to, deploy, studio
+ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996270"
+ms.locfileid: "91999000"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用 studio 部署在設計工具中定型的模型
 
@@ -296,7 +296,7 @@ score_params = dict(
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [在設計工具中將模型定型](tutorial-designer-automobile-price-train-score.md)
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)

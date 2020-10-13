@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744214"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998404"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>診斷 Azure Key Vault 上的私人連結設定問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "91744214"
 ### <a name="problems-not-covered-by-this-article"></a>本文未涵蓋的問題
 
 - 有間歇性的連線問題。 在指定的用戶端中，您會看到某些要求正在運作，而且有些無法運作。 *間歇性問題通常不是私用連結設定中的問題所造成;它們是網路或用戶端超載的符號。*
-- 您使用的 Azure 產品支援 BYOK (攜帶您自己的金鑰) 或 CMK (客戶管理的金鑰) ，且該產品無法存取您的金鑰保存庫。 *查看其他產品檔。請確定它明確指出支援啟用防火牆的金鑰保存庫。如有需要，請與該特定產品的產品支援人員聯絡。*
+- 您所使用的 Azure 產品支援 BYOK (攜帶您自己的金鑰) 、CMK (客戶管理的金鑰) ，或存取儲存在金鑰保存庫中的秘密。 當您在金鑰保存庫設定中啟用防火牆時，該產品無法存取您的金鑰保存庫。 *查看特定產品的檔。請確定它明確指出支援啟用防火牆的金鑰保存庫。如有需要，請聯絡該特定產品的支援。*
 
 ### <a name="how-to-read-this-article"></a>如何閱讀這篇文章
 
@@ -46,9 +46,11 @@ ms.locfileid: "91744214"
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>確認您的用戶端是在虛擬網路上執行
 
-本指南旨在協助您修正從應用程式程式碼產生的金鑰保存庫連接。 範例包括在 Azure 虛擬機器中執行的應用程式和腳本、Azure Service Fabric 叢集、Azure App Service Azure Kubernetes Service (AKS) ，以及類似其他專案。
+本指南旨在協助您修正從應用程式程式碼產生的金鑰保存庫連接。 範例包括在 Azure 虛擬機器中執行的應用程式和腳本、Azure Service Fabric 叢集、Azure App Service Azure Kubernetes Service (AKS) ，以及類似其他專案。 本指南也適用于在 Azure 入口網站 web 基底使用者介面中執行的存取，而瀏覽器會直接存取您的金鑰保存庫。
 
-根據私用連結的定義，應用程式或腳本必須在連接到 [私人端點資源](../../private-link/private-endpoint-overview.md) 部署所在之虛擬網路的電腦、叢集或環境上執行。 如果應用程式是在任意連接網際網路的網路上執行，本指南並不適用，而且可能無法使用私人連結。
+根據私用連結的定義，應用程式、腳本或入口網站必須在連接到 [私人端點資源](../../private-link/private-endpoint-overview.md) 部署所在之虛擬網路的電腦、叢集或環境上執行。
+
+如果應用程式、腳本或入口網站在任意網際網路連線的網路上執行，本指南並不適用，而且可能無法使用私人連結。 這項限制也適用于在 Azure Cloud Shell 中執行的命令，因為它們會在隨選提供的遠端 Azure 電腦中執行，而不是在使用者瀏覽器上執行。
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>如果您使用受控解決方案，請參閱特定檔
 
@@ -74,7 +76,7 @@ ms.locfileid: "91744214"
 >[!IMPORTANT]
 > 變更防火牆設定可能會移除仍未使用私人連結之合法用戶端的存取權。 請確定您知道防火牆設定中每項變更的含意。
 
-重要的概念是私用連結只會 *提供* 金鑰保存庫的存取權。 它不會 *移除* 任何現有的存取權。 若要有效地封鎖來自公用網際網路的存取，您必須明確啟用金鑰保存庫防火牆：
+重要的概念是，私用連結 *功能只會* 在已關閉的虛擬網路中存取您的金鑰保存庫，以防止資料遭到外泄。 它不會 *移除* 任何現有的存取權。 若要有效地封鎖來自公用網際網路的存取，您必須明確啟用金鑰保存庫防火牆：
 
 1. 開啟 Azure 入口網站，然後開啟您的金鑰保存庫資源。
 2. 在左側功能表中，選取 [ **網路**]。
@@ -229,11 +231,11 @@ Linux：
 
 您可以前往入口網站中的 [訂用帳戶] 頁面，然後選取左側功能表上的 [資源]，來檢查此資源是否存在。 資源名稱必須是 `privatelink.vaultcore.azure.net` ，而且資源類型必須是 **私人 DNS 區域**。
 
-當您使用一般方法建立私人端點時，通常會自動建立此資源。 但在某些情況下，不會自動建立此資源，您必須手動進行。 此資源也可能已被意外刪除。
+當您使用一般程式建立私人端點時，通常會自動建立此資源。 但在某些情況下，不會自動建立此資源，您必須手動進行。 此資源也可能已被意外刪除。
 
 如果您沒有此資源，請在您的訂用帳戶中建立新的私人 DNS 區域資源。 請記住，此名稱必須完全 `privatelink.vaultcore.azure.net` 不包含空格或其他點。 如果您指定錯誤的名稱，本文中所述的名稱解析將無法運作。 如需有關如何建立此資源的詳細資訊，請參閱 [使用 Azure 入口網站建立 Azure 私人 DNS 區域](../../dns/private-dns-getstarted-portal.md)。 如果您遵循該頁面，您可以略過建立虛擬網路，因為此時您應該已經有虛擬網路。 您也可以略過虛擬機器的驗證程式。
 
-### <a name="confirm-that-the-private-dns-zone-must-be-linked-to-the-virtual-network"></a>確認私人 DNS 區域必須連結至虛擬網路
+### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>確認私人 DNS 區域已連結至虛擬網路
 
 有私人 DNS 區域並沒有足夠的空間。 它也必須連結至包含私人端點的虛擬網路。 如果私人 DNS 區域未連結到正確的虛擬網路，則該虛擬網路中的任何 DNS 解析將會忽略私人 DNS 區域。
 
@@ -259,9 +261,9 @@ Linux：
 
 如果有多個虛擬網路，且每個虛擬網路都有自己的私人端點資源參考相同的金鑰保存庫，則金鑰保存庫主機名稱需要解析為不同的私人 IP 位址，視網路而定。 這表示也需要多個私人 DNS 區域，每個都連結至不同的虛擬網路，並在記錄中使用不同的 IP 位址 `A` 。
 
-在更先進的案例中，有多個已啟用對等互連的虛擬網路。 在此情況下，只有一個虛擬網路需要私人端點資源，但兩者都需要連結至私人 DNS 區域資源。 這是本檔未直接涵蓋的案例。
+在更先進的案例中，虛擬網路可能已啟用對等互連。 在此情況下，只有一個虛擬網路需要私人端點資源，但兩者都需要連結至私人 DNS 區域資源。 這是本檔未直接涵蓋的案例。
 
-### <a name="fact-you-have-control-over-dns-resolution"></a>事實：您可以控制 DNS 解析
+### <a name="understand-that-you-have-control-over-dns-resolution"></a>瞭解您可以掌控 DNS 解析
 
 如上一 [節](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有私用連結的金鑰保存庫 `{vaultname}.privatelink.vaultcore.azure.net` 在其 *公開* 註冊中具有別名。 虛擬網路所使用的 DNS 伺服器會使用公開註冊，但它會檢查每個別名是否有 *私人* 註冊，如果找到的話，則會停止在公開註冊時定義的下列別名。
 
@@ -324,7 +326,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 ### <a name="query-the-key-vault-ip-address-directly"></a>直接查詢金鑰保存庫 IP 位址
 
 >[!IMPORTANT]
-> 存取未使用 HTTPS 憑證驗證的金鑰保存庫很危險，而且只能用於學慣用途。 實際執行程式碼絕不能存取金鑰保存庫，而不需要進行此用戶端驗證。 即使您只是要診斷問題，如果您在金鑰保存庫的要求中一律停用 HTTPS 憑證驗證，則可能會受到進行中的篡改嘗試的制約。
+> 存取未使用 HTTPS 憑證驗證的金鑰保存庫很危險，而且只能用於學慣用途。 實際執行程式碼絕不能存取金鑰保存庫，而不需要進行此用戶端驗證。 即使您只是要診斷問題，如果您經常在金鑰保存庫的要求中停用 HTTPS 憑證驗證，則可能會受到篡改嘗試，而不會顯示。
 
 如果您已安裝最新版的 PowerShell，您可以使用 `-SkipCertificateCheck` 略過 HTTPS 憑證檢查，然後您可以直接將 [金鑰保存庫 IP 位址](#find-the-key-vault-private-ip-address-in-the-virtual-network) 設為目標：
 
@@ -334,7 +336,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
     joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
 
-回應應該與上一節中的相同，這表示它必須包含 `x-ms-keyvault-network-info` 具有相同值的標頭。 `/healthstatus`如果您使用金鑰保存庫主機名稱或 IP 位址，端點就不會在意。
+回應必須與上一節中的相同，這表示它必須包含 `x-ms-keyvault-network-info` 具有相同值的標頭。 `/healthstatus`如果您使用金鑰保存庫主機名稱或 IP 位址，端點就不會在意。
 
 如果您看到 `x-ms-keyvault-network-info` 使用金鑰保存庫主機名稱傳回要求的一個值，並使用 IP 位址針對要求傳回另一個值，則每個要求的目標是不同的端點。 請參閱 `addr` 上一節中的欄位說明 `x-ms-keyvault-network-info` ，以決定哪一種情況是錯誤的，而且需要修正。
 
@@ -354,7 +356,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
 ### <a name="promiscuous-proxies-fiddler-etc"></a>混合 proxy (Fiddler 等 ) 
 
-除非有明確注明，否則本文中的診斷選項只適用于環境中沒有混合的 proxy。 雖然這些 proxy 通常是以獨佔方式安裝在正在診斷的電腦上 (Fiddler 是最常見的範例) ，但是 advanced administrator 可能會覆寫 (Ca 的根憑證授權單位) ，並在提供網路中多部電腦的閘道裝置上安裝混合 proxy。 這些 proxy 會大幅影響安全性和可靠性。 Microsoft 不支援使用這類產品的設定。
+除非有明確注明，否則本文中的診斷選項只適用于環境中沒有任何混合的 proxy。 雖然這些 proxy 通常是以獨佔方式安裝在正在診斷的電腦上 (Fiddler 是最常見的範例) ，但是 advanced administrator 可能會覆寫 (Ca 的根憑證授權單位) ，並在提供網路中多部電腦的閘道裝置上安裝混合 proxy。 這些 proxy 會大幅影響安全性和可靠性。 Microsoft 不支援使用這類產品的設定。
 
 ### <a name="other-things-that-may-affect-connectivity"></a>可能會影響連線能力的其他專案
 

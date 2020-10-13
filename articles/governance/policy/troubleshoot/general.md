@@ -3,12 +3,12 @@ title: 常見問題疑難排解
 description: 瞭解如何針對建立原則定義、各種 SDK 和 Kubernetes 的附加元件的問題進行疑難排解。
 ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999903"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>使用 Azure 原則針對錯誤進行疑難排解
 
@@ -34,7 +34,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 原則定義中使用了不正確或不存在的別名。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 首先，請驗證 Resource Manager 屬性具有別名。 使用 Visual Studio Code、 [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)或 SDK [Azure 原則擴充](../how-to/extension-for-vscode.md)功能來查閱可用的別名。 如果 Resource Manager 屬性的別名不存在，請建立支援票證。
 
@@ -48,7 +48,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 套用新的原則或計畫指派大約需要30分鐘。 現有指派範圍內新的或更新的資源將于稍後15分鐘內變成可用。 標準合規性掃描每24小時會進行一次。 如需詳細資訊，請參閱 [評估觸發](../how-to/get-compliance-data.md#evaluation-triggers)程式。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 
@@ -62,13 +62,13 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 資源不在原則指派的正確範圍內，或原則定義未如預期運作。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 遵循下列步驟來針對您的原則定義進行疑難排解：
 
 1. 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 請檢查指派參數和指派範圍是否已正確設定。
-1. 檢查 [原則定義模式](../concepts/definition-structure.md#mode)：
+1. 檢查[原則定義模式](../concepts/definition-structure.md#mode)：
    - 所有資源類型的「全部」模式。
    - 如果原則定義檢查標記或位置，則為「已編制索引」模式。
 1. 檢查資源範圍是否未被 [排除](../concepts/assignment-structure.md#excluded-scopes) 或 [豁免](../concepts/exemption-structure.md)。
@@ -90,13 +90,13 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 原則指派已設定為_停用_ [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) 。 強制模式停用時，不會強制執行原則效果，而且活動記錄中不會有任何專案。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 遵循下列步驟來針對您的原則指派強制進行疑難排解：
 
 1. 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 請檢查指派參數和指派範圍是否已正確設定，而且已_啟用_ **enforcementMode** 。 
-1. 檢查 [原則定義模式](../concepts/definition-structure.md#mode)：
+1. 檢查[原則定義模式](../concepts/definition-structure.md#mode)：
    - 所有資源類型的「全部」模式。
    - 如果原則定義檢查標記或位置，則為「已編制索引」模式。
 1. 檢查資源範圍是否未被 [排除](../concepts/assignment-structure.md#excluded-scopes) 或 [豁免](../concepts/exemption-structure.md)。
@@ -115,7 +115,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 新資源或已更新資源所在範圍的原則指派，符合具有 [拒絕](../concepts/effects.md#deny) 效果的原則定義準則。 資源會議無法建立或更新這些定義。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 拒絕原則指派中的錯誤訊息包含原則定義和原則指派識別碼。 如果訊息中的錯誤資訊遺失，也可以在 [活動記錄](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)中取得。 您可以使用這項資訊來取得更多詳細資料，以瞭解資源限制並調整要求中的資源屬性，以符合允許的值。
 
@@ -131,7 +131,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 使用支援的函式（例如 `parameter()` 或 `resourceGroup()` ），會在部署期間產生函數的已處理結果，而不是離開原則定義和 Azure 原則引擎的函式來處理。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 若要將函式傳遞至作為原則定義的一部分，請將整個字串與屬性類似的屬性（property）進行換用 `[` `[[resourceGroup().tags.myTag]` 。 在處理範本時，escape 字元會使 Resource Manager 將值視為字串。 Azure 原則接著將函式放入原則定義中，讓它能夠如預期般動態。 如需詳細資訊，請參閱 [Azure Resource Manager 範本中的語法和運算式](../../../azure-resource-manager/templates/template-expressions.md)。
 
@@ -150,7 +150,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 產生的密碼包含 `,` Helm 圖表正在進行分割的逗號 () 。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 在以 `,` `helm install azure-policy-addon` 反斜線 () 執行時， () 密碼值中的逗號 `\` 。
 
@@ -166,9 +166,27 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 已 `azure-policy-addon` 安裝或部分安裝名稱的 Helm 圖表。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 遵循指示來 [移除 Kubernetes 附加元件的 Azure 原則](../concepts/policy-for-kubernetes.md#remove-the-add-on)，然後重新執行 `helm install azure-policy-addon` 命令。
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>案例： Azure 虛擬機器使用者指派的身分識別會取代為系統指派的受控識別
+
+#### <a name="issue"></a>問題
+
+將來賓設定原則方案指派給機器內的設定之後，就不會再指派指派給電腦的使用者指派受控識別。 只會指派系統指派的受控識別。
+
+#### <a name="cause"></a>原因
+
+先前用於來賓設定 DeployIfNotExists 定義中的原則定義可確保系統指派的身分識別會指派給電腦，但也會移除使用者指派的身分識別指派。
+
+#### <a name="resolution"></a>解決方法
+
+先前造成此問題的定義會顯示為 \[ \] 已淘汰，並由管理必要條件的原則定義所取代，而不會移除使用者指派的受控識別。 需要手動步驟。 刪除標示為已淘汰的任何現有原則指派， \[ \] 並將其取代為與原始的相同名稱的更新必要條件原則計畫和原則定義。
+
+如需詳細敘述，請參閱下列 blog 文章：
+
+[針對來賓設定稽核原則發行的重要變更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>後續步驟
 

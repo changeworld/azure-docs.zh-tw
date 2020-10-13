@@ -3,12 +3,12 @@ title: 設定 Azure 轉送命名空間的 IP 防火牆
 description: 本文說明如何使用防火牆規則，允許從特定 IP 位址連線至 Azure 轉送命名空間。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 250158aff2ceb89e2823b711717f1d3a1cad438c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976010"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999509"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>為 Azure 轉送命名空間設定 IP 防火牆
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取轉送命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -76,7 +76,7 @@ IP 防火牆規則會在命名空間層級套用。 因此，規則會套用至�
       }
     },
     "variables": {
-      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]",
+      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]"
     },
     "resources": [
       {
@@ -93,7 +93,7 @@ IP 防火牆規則會在命名空間層級套用。 因此，規則會套用至�
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.Relay/namespaces/networkruleset",
+        "type": "Microsoft.Relay/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.Relay/namespaces/', parameters('relayNamespaceName'))]"
         ],
@@ -109,6 +109,7 @@ IP 防火牆規則會在命名空間層級套用。 因此，規則會套用至�
                 "action":"Allow"
             }
           ],
+          "virtualNetworkRules": [],
           "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }

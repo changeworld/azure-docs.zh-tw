@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205560"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999975"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的虛擬網路支援
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。 本文說明如何設定進階 Azure Cache for Redis 執行個體的虛擬網路支援。
@@ -28,22 +28,38 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 ## <a name="virtual-network-support"></a>虛擬網路支援
 虛擬網路 (VNet) 支援是在快取建立期間於 [新的 Azure Cache for Redis]**** 刀鋒視窗中設定的。 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. 若要建立 premium 快取，請登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **建立資源**]。 請注意，除了在 Azure 入口網站中建立快取，您也可以使用 Resource Manager 範本、PowerShell 或 Azure CLI 來建立它們。 如需如何建立 Azure Cache for Redis 的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
-一旦選取進階定價層之後，您就可以藉由選取與您的快取相同的訂用帳戶和位置中的 VNet，來設定 Redis VNet。 若要使用新的 VNet，請先依照[使用 Azure 入口網站建立虛擬網路](../virtual-network/manage-virtual-network.md#create-a-virtual-network)或[使用 Azure 入口網站建立虛擬網路 (傳統)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) 中的步驟建立 VNet，然後返回 [新的 Azure Cache for Redis]**** 刀鋒視窗來建立和設定進階快取。
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="建立資源。":::
+   
+2. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
 
-若要為新的快取設定 VNet，按一下 [新的 Azure Cache for Redis]**** 刀鋒視窗上的 [虛擬網路]****，然後從下拉式清單中選取想要的 VNet。
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="建立資源。":::
 
-![虛擬網路][redis-cache-vnet]
+3. 在 [ **新的 Redis** 快取] 頁面上，設定新 premium 快取的設定。
+   
+   | 設定      | 建議的值  | 描述 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體*主機名稱*將是 *\<DNS name>.redis.cache.windows.net*。 | 
+   | **訂用帳戶** | 下拉式清單，然後選取您的訂用帳戶。 | 這個新的 Azure Cache for Redis 執行個體建立所在的訂用帳戶。 | 
+   | **資源群組** | 下拉式清單並選取資源群組，或選取 [ **建立新** 的]，然後輸入新的資源組名。 | 用來建立快取和其他資源的資源群組名稱。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
+   | **位置** | 下拉式清單並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
+   | **快取類型** | 下拉式清單，並選取高階快取來設定 premium 功能。 如需詳細資訊，請參閱 [Azure Cache for Redis 定價](https://azure.microsoft.com/pricing/details/cache/)。 |  快取的可用大小、效能和功能取決於定價層。 如需詳細資訊，請參閱 [Azure Cache for Redis 概觀](cache-overview.md)。 |
 
-從 **子網** 下拉式清單中選取所需的子網。  如有需要，請指定 **靜態 IP 位址**。 [ **靜態 IP 位址** ] 欄位是選擇性的，如果沒有指定，則會從選取的子網中選擇一個。
+4. 選取 [網路] 索引標籤，或按一下頁面底部的 [網路] 按鈕。
+
+5. 在 [ **網路** ] 索引標籤中，選取 [ **虛擬網路** ] 作為您的連線方法。 若要使用新的虛擬網路，請先遵循 [使用 Azure 入口網站建立虛擬](../virtual-network/manage-virtual-network.md#create-a-virtual-network) 網路中的步驟，或 [使用 Azure 入口網站建立虛擬網路 (傳統) ](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ，然後返回 **新的 Azure Cache for Redis** blade 來建立和設定您的 premium 快取，以先建立虛擬網路。
 
 > [!IMPORTANT]
 > 將 Azure Cache for Redis 部署到 Resource Manager VNet 時，快取必須位於專用子網路中，其中只能包含 Azure Cache for Redis 執行個體，不含其他任何資源。 如果嘗試將 Azure Cache for Redis 部署到含有其他資源的 Resource Manager VNet 子網路，部署將會失敗。
 > 
 > 
 
-![虛擬網路][redis-cache-vnet-ip]
+   | 設定      | 建議的值  | 描述 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **虛擬網路** | 下拉式清單，然後選取您的虛擬網路。 | 選取與您的快取位於相同訂用帳戶和位置的虛擬網路。 | 
+   | **子網路** | 下拉式清單，然後選取您的子網。 | 子網的位址範圍應為 CIDR 標記法 (例如 192.168.1.0/24) 。 其必須包含在虛擬網路的位址空間中。 | 
+   | **靜態 IP 位址** |  (選擇性) 輸入靜態 IP 位址。 | 如果您未指定靜態 IP，則會自動選擇 IP 位址。 | 
 
 > [!IMPORTANT]
 > Azure 會在每個子網路中保留一些 IP 位址，但這些位址無法使用。 子網路的第一個和最後一個 IP 位址會保留給相容的通訊協定，以及用於 Azure 服務的額外 3 個位址。 如需詳細資訊，請參閱 [在這些子網路內使用 IP 位址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
@@ -52,7 +68,19 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 > 
 > 
 
-建立快取之後，您可以從 [資源]**** 功能表中按一下 [虛擬網路]****，以檢視 VNet 的設定。
+6. 選取頁面底部的 [下一步:進階] 索引標籤，或按一下頁面底部的 [下一步:進階] 按鈕。
+
+7. 在高階快取實例的 [ **Advanced** （高階）] 索引標籤中，設定非 TLS 埠、叢集和資料持續性的設定。 
+
+8. 選取頁面底部的 [下一步:標記] 索引標籤，或按一下頁面底部的 [下一步:標記] 按鈕。
+
+9. 在 [標記] 索引標籤中，如果您想要分類資源，可以選擇性地輸入名稱和值。 
+
+10. 選取 [檢閱 + 建立] ****。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
+
+11. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
+
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] ****   頁面上監視進度。 當 [狀態] **** 顯示為 [執行中]  **** 時，表示快取已可供使用。 建立快取之後，您可以從 [資源]**** 功能表中按一下 [虛擬網路]****，以檢視 VNet 的設定。
 
 ![虛擬網路][redis-cache-vnet-info]
 

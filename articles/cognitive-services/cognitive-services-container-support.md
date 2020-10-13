@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、Kubernetes
-ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665407"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999695"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 認知服務容器
 
@@ -72,7 +72,7 @@ Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包
 | [文字分析][ta-containers-language] | F0、S | **語言偵測** ([影像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 偵測輸入文字是以何種語言撰寫的，並針對要求所提交的每份文件回報單一語言代碼，最多可達 120 種語言。 語言代碼各配有一個分數，表示分數的強度。 |
 | [文字分析][ta-containers-sentiment] | F0、S | **情感分析 v3** ([映射](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409))  | 分析原始文字以尋找正面或負面情感的線索。 此版本的情感分析會傳回情感標籤 (例如，在其中每個檔和句子的 *正面* 或 *負面*) 。 |
 | [文字分析][ta-containers-health] | F0、S | **健全狀況的文字分析** | 從非結構化臨床文字中將醫療資訊解壓縮並加上標籤。 |
-| [空間分析][spa-containers] | S0 | **空間分析** | 從非結構化臨床文字中將醫療資訊解壓縮並加上標籤。 |
+| [空間分析][spa-containers] | S0 | **空間分析** | 分析即時串流影片，以瞭解人員之間的空間關聯性、其移動和實體環境中物件的互動。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|

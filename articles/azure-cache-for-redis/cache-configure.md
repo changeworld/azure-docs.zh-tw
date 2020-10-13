@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840246"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000209"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。
@@ -37,7 +37,7 @@ ms.locfileid: "91840246"
 * [診斷和解決問題](#diagnose-and-solve-problems)
 * [設定](#settings)
     * [便捷鍵](#access-keys)
-    * [Advanced 設定](#advanced-settings)
+    * [進階設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
     * [縮放比例](#scale)
     * [叢集大小](#cluster-size)
@@ -62,7 +62,7 @@ ms.locfileid: "91840246"
     * [新增支援要求](#new-support-request)
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **概觀**提供您快取的基本資訊，例如名稱、連接埠、定價層，以及選取的快取度量。
 
@@ -74,7 +74,7 @@ ms.locfileid: "91840246"
 
 **存取控制 (IAM)** 區段提供 Azure 入口網站中對於角色型存取控制 (RBAC) 的支援。 此設定可協助組織簡單而精準地符合其存取管理需求。 如需詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="tags"></a>標籤
+### <a name="tags"></a>Tags
 
 [標記] **** 區段有助於您組織資源。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "91840246"
 [設定]**** 區段中的設定可讓您存取和設定下列快取設定。
 
 * [便捷鍵](#access-keys)
-* [Advanced 設定](#advanced-settings)
+* [進階設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
 * [縮放比例](#scale)
 * [叢集大小](#cluster-size)
@@ -214,7 +214,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 
 ### <a name="redis-data-persistence"></a>Redis 資料永續性
-按一下 [ **資料持續** 性] 以啟用、停用或設定 premium 快取的資料持續性。 「Azure Redis 快取」使用 [RDB 持續性](cache-how-to-premium-persistence.md#configure-rdb-persistence)或 [AOF 持續性](cache-how-to-premium-persistence.md#configure-aof-persistence)來提供 Redis 持續性。
+按一下 [ **資料持續** 性] 以啟用、停用或設定 premium 快取的資料持續性。 「Azure Redis 快取」使用 RDB 持續性或 AOF 持續性來提供 Redis 持續性。
 
 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
 

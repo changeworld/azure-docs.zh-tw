@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961318"
+ms.locfileid: "91998107"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -442,7 +442,7 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic
 
 SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 它包含使用者的相關資訊、權杖所適用的服務提供者、簽章和有效時間。 下表列出 Azure AD B2C 所簽發的 SAML 權杖中，您可以預期的宣告和屬性。
 
-|元素  |屬性  |注意  |
+|元素  |屬性  |附註  |
 |---------|---------|---------|
 |`<Response>`| `ID` | 自動產生之回應的唯一識別碼。 | 
 |`<Response>`| `InResponseTo` | 此訊息所回應的 SAML 要求識別碼。 | 
@@ -454,7 +454,7 @@ SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |權杖變成有效的時間。 時間值會以 UTC 編碼。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 若要變更權杖存留期的設定，請設定 `TokenNotBeforeSkewInSeconds` SAML 權杖問題技術設定檔的 [中繼資料](saml-issuer-technical-profile.md#metadata) 。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 權杖變成不正確時間。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 值為15分鐘之後 `NotBefore` ，無法變更。|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |識別目標物件的 URI 參考。 它會識別權杖的預定收件者。 此值與 SAML 要求相同 `AssertionConsumerServiceURL` 。|
-|`<Response>``<Assertion>` `<saml:AttributeStatement>` 的集合`<Attribute>` | | 判斷提示集合 (宣告) ，如信賴憑證者 [技術設定檔](relyingparty.md#technicalprofile) 輸出宣告中所設定。 您可以藉由設定輸出宣告的來設定判斷提示的名稱 `PartnerClaimType` 。 |
+|`<Response>``<Assertion>` `<AttributeStatement>` 的集合`<Attribute>` | | 判斷提示集合 (宣告) ，如信賴憑證者 [技術設定檔](relyingparty.md#technicalprofile) 輸出宣告中所設定。 您可以藉由設定輸出宣告的來設定判斷提示的名稱 `PartnerClaimType` 。 |
 
 ## <a name="next-steps"></a>後續步驟
 

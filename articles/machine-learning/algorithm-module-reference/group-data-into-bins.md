@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907029"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998505"
 ---
 # <a name="group-data-into-bins-module"></a>將資料群組至 Bin 模組
 
@@ -44,7 +44,8 @@ ms.locfileid: "90907029"
 
 下圖顯示使用*分位數*方法進行量化前後，數值的分佈。 請注意，相較於左側的未經處理資料，資料已經過量化並轉換成一般單位的規模。  
 
-您可以 [從這個管線執行的結果中找到範例](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net)。
+> [!div class="mx-imgBorder"]
+> ![結果視覺效果](media/module/group-data-into-bins-result-example.png)
 
 因為有這麼多的方式可將資料分組，而且全部都可以自訂，所以我們建議您試驗不同的方法和值。 
 
@@ -65,6 +66,9 @@ ms.locfileid: "90907029"
     - **自訂邊緣**：您可以指定每個 Bin 開頭的值。 邊緣值一律是 Bin 的下限。 
     
       例如，假設您想要將值分組為兩個 bin。其中一個值會有大於0的值，其中一個值的值小於或等於0。 在此情況下，如果是 bin 邊緣，請在以**逗號分隔的 bin 邊緣清單**中輸入**0** 。 模組的輸出將會是1和2，表示每個資料列值的 bin 索引。 請注意，逗號分隔值清單必須是遞增順序，例如1、3、5、7。
+    
+    > [!Note]
+    > *熵的 MDL* 模式是在 Studio (傳統) 中定義，而且沒有對應的開放原始碼套件可在設計工具中用來支援。        
 
 4. 如果您使用的是 [ **分量** ] 和 [ **相等寬度** 分類收納] 模式，請使用 [ **bin 數目** ] 選項來指定您要建立多少個 bin 或 *分量*。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851113"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999248"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -32,6 +32,18 @@ ms.locfileid: "91851113"
 > [!NOTE]
 > 如果您決定使用發行設定檔進行驗證，則不需要建立服務主體。
 
+## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>下載並使用發佈設定檔作為部署認證 (建議的) 
+
+若要下載函數應用程式的發行設定檔：
+
+1. 選取函數應用程式的 **[總覽** ] 頁面，然後選取 [ **取得發行設定檔**]。
+
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Download publish profile":::
+
+1. 儲存並複製發佈設定檔案的內容。
+
+## <a name="create-a-service-principal-deprecated"></a>建立服務主體 (已淘汰) 
+=======
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -44,7 +56,8 @@ ms.locfileid: "91851113"
 
 向 Azure Functions 驗證 GitHub Actions 的建議方式是使用發行設定檔。 您也可以使用服務主體進行驗證，但此程式需要更多步驟。 
 
-將您的發佈設定檔認證或服務主體儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以向 Azure 進行驗證。 您將會在工作流程記憶體取秘密。 
+## <a name="configure-the-github-secret"></a>設定 GitHub 密碼
+= = = = = = = 將您的發佈設定檔認證或服務主體儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以向 Azure 進行驗證。 您將會在工作流程記憶體取秘密。 
 
 # <a name="publish-profile"></a>[發行設定檔](#tab/publish-profile)
 

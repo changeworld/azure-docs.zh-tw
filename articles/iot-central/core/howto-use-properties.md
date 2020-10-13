@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure IoT Central 解決方案中的屬性
 description: 瞭解如何在 Azure IoT Central 的解決方案中使用唯讀和可寫入屬性。
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: eb949f6f0895743250ead0276692497432bfeed5
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940560"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999751"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解決方案中的屬性
 

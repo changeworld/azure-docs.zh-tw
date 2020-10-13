@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961284"
+ms.locfileid: "91998434"
 ---
 # <a name="json-claims-transformations"></a>JSON 宣告轉換
 
@@ -112,7 +112,7 @@ ms.locfileid: "91961284"
 </ClaimsTransformation>
 ```
 
-下列宣告轉換會輸出 JSON 字串宣告，此宣告會成為傳送給 REST API 的要求主體。 JSON 物件的結構是以輸入參數的點標記法，以及 InputClaims 的 TransformationClaimTypes 來定義。 點標記法中的數位暗示陣列。 這些值來自于 InputClaims 的值和輸入參數 ' "Value" 屬性。
+下列宣告轉換會輸出 JSON 字串宣告，此宣告會成為傳送給 REST API 的要求主體。 JSON 物件的結構是以輸入參數的點標記法，以及 InputClaims 的 TransformationClaimTypes 來定義。 這些值來自于 InputClaims 的值和輸入參數 ' "Value" 屬性。
 
 - 輸入宣告：
   - **電子郵件**，轉換宣告類型  **>customerentity。電子郵件**： " john.s@contoso.com "

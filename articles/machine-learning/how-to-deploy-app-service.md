@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fd7ba2eeddb3eddd98f97bda1a26c69c2cfa77c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 2f1eddf33dc02b1afaffdc200ed8b79b18f77aa4
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315298"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999198"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署至 Azure App Service (preview) 
 
@@ -115,7 +115,7 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。 例如： `myml08024f78fd10.azurecr.io/package@sha256:20190827151241` 。
+若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。 例如，`myml08024f78fd10.azurecr.io/package@sha256:20190827151241`。
 
 > [!IMPORTANT]
 > 儲存位置資訊，因為它會在部署映射時使用。
@@ -247,7 +247,7 @@ az webapp show --name <app-name> --resource-group myresourcegroup
 
 ## <a name="use-the-web-app"></a>使用 Web 應用程式
 
-將要求傳遞給模型的 web 服務位於 `{baseurl}/score` 。 例如： `https://<app-name>.azurewebsites.net/score` 。 下列 Python 程式碼示範如何將資料提交至 URL，並顯示回應：
+將要求傳遞給模型的 web 服務位於 `{baseurl}/score` 。 例如，`https://<app-name>.azurewebsites.net/score`。 下列 Python 程式碼示範如何將資料提交至 URL，並顯示回應：
 
 ```python
 import requests

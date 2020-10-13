@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8f0a40e30cc58a01a66ba808076fe1d42c31c326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978878"
+ms.locfileid: "91999673"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -23,7 +23,7 @@ ms.locfileid: "91978878"
 
 ## <a name="october-2020"></a>2020 年 10 月
 
-* 情感分析的印度文支援（從模型版本開始） `2020-04-01` 。 
+* 情感分析 v3. x 的印度文支援（從 `2020-04-01` 模型版本開始）。 
 
 ## <a name="september-2020"></a>2020 年 9 月
 

@@ -1,29 +1,29 @@
 ---
 title: 在 Azure IoT Central 應用程式中管理您的帳單，並從免費定價方案進行轉換 |Microsoft Docs
 description: 以系統管理員身分，瞭解如何管理您的帳單，並從免費定價方案移至 Azure IoT Central 應用程式中的標準定價方案
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/09/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 515f5f665e947ff9594cce6dbbaea9b5e0c50ebf
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157487"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999707"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>在 IoT Central 應用程式中管理您的帳單
 
-本文描述如何以系統管理員身分，在 [管理] 區段中，以 Azure IoT Central 應用程式管理您的帳單。 您將瞭解如何將您的應用程式從免費定價方案移至標準定價方案，以及如何升級或降級您的定價方案。
+本文說明如何以系統管理員身分管理您的 Azure IoT Central 帳單。 您可以將應用程式從免費定價方案移至標準定價方案，也可以升級或降級您的定價方案。
 
-若要存取及使用 **管理** 區段，您必須是 *系統管理員* 角色，或具有可讓您查看 Azure IoT Central 應用程式帳單的 *自訂使用者角色* 。 如果您建立 Azure IoT Central 應用程式，就會自動將您指派給該應用程式的**管理員**角色。
+若要存取 **管理** 區段，您必須是 *系統管理員* 角色，或具有可讓您查看帳單的 *自訂使用者角色* 。 如果您建立 Azure IoT Central 應用程式，系統就會自動將您指派給 **系統管理員** 角色。
 
 ## <a name="move-from-free-to-standard-pricing-plan"></a>從免費移至標準定價方案
 
-- 使用免費定價方案的應用程式在到期前七天免費。 為了避免遺失資料，您可以在到期前隨時將其移至標準定價方案。
+- 使用免費定價方案的應用程式在到期前七天免費。 若要避免資料遺失，您可以在到期前隨時將它們移至標準定價方案。
 - 使用標準定價方案的應用程式會依據裝置收費，每個應用程式的前兩個裝置免費。
 
 在 [Azure IoT Central 定價頁面](https://azure.microsoft.com/pricing/details/iot-central/)上深入了解定價。
@@ -55,9 +55,9 @@ ms.locfileid: "80157487"
 
 1. 移至 [系統**管理**] 區段中的 [**定價**] 頁面。
 
-    ![試用狀態](media/howto-view-bill/pricing.png)
+    ![升級 prcing 方案](media/howto-view-bill/pricing.png)
 
-1. 選取 **方案** ，然後按一下 [ **儲存** ] 以升級或降級。
+1. 選取 **方案** ，然後選取 [ **儲存** ] 以升級或降級。
 
 ## <a name="view-your-bill"></a>檢視您的帳單
 

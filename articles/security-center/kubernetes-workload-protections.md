@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 8a387adde6c74b8eb1ff950c5e6b5183e43d1f4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448667"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999309"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保護 Kubernetes 工作負載
 
@@ -38,7 +38,7 @@ ms.locfileid: "91448667"
 |版本狀態：|預覽|
 |定價：|免費|
 |必要的角色和權限：|用來編輯指派的**擁有**者或**安全性系統管理員**<br>查看建議的**讀者**|
-|支援的叢集|需要 Kubernetes v 1.14 (或更高的) <br>叢集上沒有任何 PodSecurityPolicy 資源 (舊的 PSP 模型) <br>不支援 Windows 節點|
+|支援的叢集：|需要 Kubernetes v 1.14 (或更高的) <br>叢集上沒有任何 PodSecurityPolicy 資源 (舊的 PSP 模型) <br>不支援 Windows 節點|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
@@ -92,7 +92,7 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
     1. 選取 [ASC 預設值]。
     1. 開啟 [ **參數** ] 索引標籤，並視需要修改值。
     1. 選取 [檢閱 + 儲存]。
-    1. 選取 [儲存]****。
+    1. 選取 [儲存]。
 
 
 1. 若要強制執行任何建議， 

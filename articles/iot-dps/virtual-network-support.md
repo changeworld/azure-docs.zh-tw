@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612773"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998586"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT 中樞裝置布建服務 (DPS) 虛擬網路支援
 
@@ -36,7 +36,7 @@ ms.locfileid: "91612773"
 
 * 遵循使用[私人端點](../private-link/private-endpoint-overview.md)建立的全 Azure 連線模式。
 
-限制連線的常見方法包括 [DPS IP 篩選規則](./iot-dps-ip-filtering.md) 和虛擬網路 (VNET) 搭配 [私人端點](../private-link/private-endpoint-overview.md)。 本文的目的是要說明使用私人端點之 DPS 的 VNET 方法。 
+限制連線的常見方法包括 [DPS IP 篩選規則](./iot-dps-ip-filtering.md) 和虛擬網路 (VNET) 搭配 [私人端點](../private-link/private-endpoint-overview.md)。 本文的目標是要說明使用私人端點之 DPS 的 VNET 方法。 
 
 在內部部署網路中操作的裝置可以使用 [虛擬私人網路 (VPN) ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 私用對等互連來連線到 Azure 中的 VNET，並透過私人端點存取 DPS 資源。 
 

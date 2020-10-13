@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999649"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -117,7 +117,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 > 此設定需要單一私人 DNS 區域。 針對不同的虛擬網路建立多個具有相同名稱的區域，需要手動操作來合併 DNS 記錄。
 
 > [!IMPORTANT]
-> 如果您是使用不同訂用帳戶的中樞和輪輻模型中的私人端點，請在中樞上重複使用相同的私人 DNS 區域。
+> 如果您是在不同訂用帳戶的中樞和輪輻模型中使用私人端點，請在中樞上重複使用相同的私人 DNS 區域。
 
 在此案例中，有一個 [中樞和輪輻](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 網路拓撲，內含可共用共同私人端點的輪輻網路，而且所有輪輻虛擬網路都會連結到相同的私人 DNS 區域。 
 

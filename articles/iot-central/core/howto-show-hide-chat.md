@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central 顯示/隱藏聊天 |Microsoft Docs
 description: 本文說明如何在 IoT Central 應用程式中顯示及隱藏聊天。 您可以使用即時聊天來存取技術支援。
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157699"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999727"
 ---
 # <a name="toggle-live-chat"></a>切換即時聊天
 
