@@ -1,24 +1,24 @@
 ---
-title: Service Fabric 的 Azure 檔案儲存體磁片區驅動程式
+title: 適用于 Service Fabric 的 Azure 檔案儲存體磁片區驅動程式
 description: Service Fabric 支援使用 Azure 檔案服務以備份來自您容器的磁碟區。
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247688"
 ---
-# <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric 的 Azure 檔案儲存體磁片區驅動程式
+# <a name="azure-files-volume-driver-for-service-fabric"></a>適用于 Service Fabric 的 Azure 檔案儲存體磁片區驅動程式
 
-Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](https://docs.docker.com/engine/extend/plugins_volume/)，可針對 Docker 容器提供以[Azure 檔案儲存體](../storage/files/storage-files-introduction.md)為基礎的磁片區。 它封裝為 Service Fabric 應用程式，可部署至 Service Fabric 叢集，以提供叢集內其他 Service Fabric 容器應用程式的磁片區。
+Azure 檔案儲存體磁片區驅動程式是 [docker 磁片區外掛程式](https://docs.docker.com/engine/extend/plugins_volume/) ，可為 docker 容器提供以 [Azure 檔案儲存體](../storage/files/storage-files-introduction.md) 為基礎的磁片區。 它會封裝為 Service Fabric 應用程式，可以部署至 Service Fabric 叢集，以提供叢集中其他 Service Fabric 容器應用程式的磁片區。
 
 > [!NOTE]
-> 已發行 Azure 檔案儲存體磁片區外掛程式的版本6.5.661.9590，以供正式運作。
+> Azure 檔案儲存體磁片區外掛程式的版本6.5.661.9590 已正式運作。
 >
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * Azure 檔案服務磁碟區外掛程式的 Windows 版本只能在 [Windows Server 1709 版](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](/windows/whats-new/whats-new-windows-10-version-1709)或更新版本的作業系統上運作。
 
 * Azure 檔案服務磁碟區外掛程式的 Linux 版本可在 Service Fabric 所支援的所有作業系統版本上運作。
@@ -29,9 +29,9 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 
 * 您將會需要安裝[包含 Service Fabric 模組的 Powershell](./service-fabric-get-started.md) 或 [SFCTL](./service-fabric-cli.md)。
 
-* 如果您使用 Hyper-v 容器，則必須在 Azure Resource Manager 範本中的 ClusterManifest (本機叢集) 或 fabricSettings 區段中新增下列程式碼片段， (Azure 叢集) 或 ClusterConfig.js獨立叢集 (上的) 。
+* 如果您使用 Hyper-v 容器，則必須將下列程式碼片段新增至 Azure Resource Manager 範本中的 ClusterManifest (local cluster) 或 fabricSettings 區段， (Azure 叢集) 或 ClusterConfig.js獨立叢集 (上的) 。
 
-在 ClusterManifest 中，必須在 Hosting 區段中新增下列內容。 在此範例中，磁片區名稱是**sfazurefile** ，而它在叢集上接聽的埠是**19100**。 請以您叢集的正確值來取代它們。
+在 ClusterManifest 中，必須在 Hosting 區段中新增下列內容。 在此範例中，磁片區名稱是 **sfazurefile** ，而它在叢集上接聽的埠是 **19100**。 將其取代為您叢集的正確值。
 
 ``` xml 
 <Section Name="Hosting">
@@ -39,7 +39,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 </Section>
 ```
 
-在 Azure Resource Manager 範本的 [fabricSettings] 區段中 (適用于 Azure 部署) 或 (上的 [獨立部署的 ClusterConfig.js]) ，必須新增下列程式碼片段。 同樣地，使用您自己的名稱和埠值來取代。
+在 Azure Resource Manager 範本的 [fabricSettings] 區段中 (適用于 Azure 部署) 或 ClusterConfig.js在 (上進行獨立部署) ，必須新增下列程式碼片段。 同樣地，將磁片區名稱和埠值取代為您自己的值。
 
 ```json
 "fabricSettings": [
@@ -55,11 +55,11 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 ]
 ```
 
-## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>使用 Service Fabric Azure 檔案儲存體磁片區驅動程式部署範例應用程式
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>使用 Service Fabric Azure 檔案儲存體磁片區驅動程式來部署範例應用程式
 
-### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>使用 Azure Resource Manager 透過提供的 Powershell 腳本 (建議) 
+### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>透過提供的 Powershell 腳本使用 Azure Resource Manager (建議的) 
 
-如果您的叢集是以 Azure 為基礎，建議您使用 Azure Resource Manager 應用程式資源模型將應用程式部署至該叢集以方便使用，並協助移至維護基礎結構即程式碼的模型。 這種方法不需要追蹤 Azure 檔案儲存體磁片區驅動程式的應用程式版本。 它也可讓您為每個支援的 OS 維護個別的 Azure Resource Manager 範本。 腳本會假設您要部署最新版本的 Azure 檔案儲存體應用程式，並採用 OS 類型、叢集訂用帳戶識別碼和資源群組的參數。 您可以從[Service Fabric 下載網站](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip)下載腳本。 請注意，這會自動設定 ListenPort，這是 Azure 檔案儲存體磁片區外掛程式接聽來自 Docker daemon 的要求到19100的埠。 您可以新增名為 "listenPort" 的參數來變更它。 請確定埠不會與叢集或應用程式所使用的任何其他埠衝突。
+如果您的叢集是以 Azure 為基礎，建議您使用 Azure Resource Manager 的應用程式資源模型將應用程式部署至該叢集，以方便使用，並協助移往維護基礎結構即程式碼的模型。 這種方法不需要追蹤 Azure 檔案儲存體磁片區驅動程式的應用程式版本。 它也可讓您為每個支援的 OS 維護個別的 Azure Resource Manager 範本。 此腳本假設您要部署最新版的 Azure 檔案儲存體應用程式，並接受 OS 類型、叢集訂用帳戶識別碼和資源群組的參數。 您可以從 [Service Fabric 下載網站](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip)下載腳本。 請注意，這會自動設定 ListenPort，也就是 Azure 檔案儲存體磁片區外掛程式接聽 Docker daemon 要求的埠，到19100。 您可以藉由新增名為 "listenPort" 的參數來變更它。 確定埠不會與叢集或應用程式所使用的任何其他埠衝突。
  
 
 適用于 Windows 的 Azure Resource Manager 部署命令：
@@ -72,14 +72,14 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-成功執行腳本後，您可以跳到設定[您的應用程式一節。](#configure-your-applications-to-use-the-volume)
+成功執行腳本後，您可以跳至設定 [您的應用程式一節。](#configure-your-applications-to-use-the-volume)
 
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>獨立叢集的手動部署
 
-提供容器磁片區的 Service Fabric 應用程式可以從[Service Fabric 下載網站](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip)下載。 您可以透過 [PowerShell](./service-fabric-deploy-remove-applications.md)、[CLI](./service-fabric-application-lifecycle-sfctl.md) 或 [FabricClient API](./service-fabric-deploy-remove-applications-fabricclient.md) 將應用程式部署到叢集。
+為您的容器提供磁片區的 Service Fabric 應用程式，可以從 [Service Fabric 下載網站](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip)下載。 您可以透過 [PowerShell](./service-fabric-deploy-remove-applications.md)、[CLI](./service-fabric-application-lifecycle-sfctl.md) 或 [FabricClient API](./service-fabric-deploy-remove-applications-fabricclient.md) 將應用程式部署到叢集。
 
-1. 使用命令列，將目錄變更為所下載應用程式套件的根目錄。
+1. 使用命令列，將目錄變更為所下載應用程式封裝的根目錄。
 
     ```powershell
     cd .\AzureFilesVolume\
@@ -89,7 +89,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
     cd ~/AzureFilesVolume
     ```
 
-2. 接下來，使用 [ApplicationPackagePath] 和 [ImageStoreConnectionString] 的適當值，將應用程式套件複製到映射存放區：
+2. 接下來，使用 [ApplicationPackagePath] 和 [ImageStoreConnectionString] 的適當值，將應用程式封裝複製到映射存放區：
 
     ```powershell
     Copy-ServiceFabricApplicationPackage -ApplicationPackagePath [ApplicationPackagePath] -ImageStoreConnectionString [ImageStoreConnectionString] -ApplicationPackagePathInImageStore AzureFilesVolumePlugin
@@ -110,7 +110,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. 建立應用程式，並特別注意**ListenPort**應用程式參數值。 此值是 Azure 檔案儲存體磁片區外掛程式接聽來自 Docker daemon 之要求的埠。 請確定提供給應用程式的埠符合 ClusterManifest 中的 VolumePluginPorts，而且不會與叢集或應用程式所使用的任何其他埠衝突。
+4. 建立應用程式，特別留意 **ListenPort** 應用程式參數值。 此值是 Azure 檔案儲存體磁片區外掛程式用來接聽 Docker daemon 要求的埠。 確定提供給應用程式的埠符合 ClusterManifest 中的 VolumePluginPorts，而且不會與叢集或應用程式所使用的任何其他埠發生衝突。
 
     ```powershell
     New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
@@ -127,7 +127,7 @@ Azure 檔案儲存體磁片區驅動程式是[docker 磁片區外掛程式](http
 #### <a name="deploy-the-application-on-a-local-development-cluster"></a>在本機開發叢集上部署應用程式
 遵循上述的步驟 1-3 [。](#manual-deployment-for-standalone-clusters)
 
- Azure 檔案服務磁碟區外掛程式應用程式的預設服務執行個體計數為 -1，這表示針對叢集中的每個節點都有部署一個服務的執行個體。 但是，將 Azure 檔案服務磁碟區外掛程式應用程式部署到本機開發叢集上時，服務執行個體計數應指定為 1。 這可以透過 **InstanceCount** 應用程式參數來完成。 因此，在本機開發叢集上建立 Azure 檔案儲存體磁片區外掛程式應用程式的命令為：
+ Azure 檔案服務磁碟區外掛程式應用程式的預設服務執行個體計數為 -1，這表示針對叢集中的每個節點都有部署一個服務的執行個體。 但是，將 Azure 檔案服務磁碟區外掛程式應用程式部署到本機開發叢集上時，服務執行個體計數應指定為 1。 這可以透過 **InstanceCount** 應用程式參數來完成。 因此，在本機開發叢集中建立 Azure 檔案儲存體磁片區外掛程式應用程式的命令是：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
@@ -138,7 +138,7 @@ sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>設定您的應用程式以使用磁碟區
-下列程式碼片段顯示如何在應用程式的應用程式資訊清單檔中指定以 Azure 檔案儲存體為基礎的磁片區。 需要關注的特定元素為 **Volume** 標記：
+下列程式碼片段說明如何在應用程式的應用程式資訊清單檔中指定以 Azure 檔案儲存體為基礎的磁片區。 需要關注的特定元素為 **Volume** 標記：
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -172,11 +172,11 @@ sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type
 </ApplicationManifest>
 ```
 
-Azure 檔案儲存體磁片區外掛程式的驅動程式名稱是**sfazurefile**。 此值是針對應用程式資訊清單中的**Volume** tag 元素的**Driver**屬性所設定。
+Azure 檔案儲存體磁片區外掛程式的驅動程式名稱是 **sfazurefile**。 此值是針對應用程式資訊清單中的**磁片區標籤**元素的**驅動程式**屬性所設定。
 
-在上述程式碼片段中的**磁片**區標記中，Azure 檔案儲存體磁片區外掛程式需要下列屬性：
+在上述程式碼片段的 **磁片** 區標記中，Azure 檔案儲存體磁片區外掛程式需要下列屬性：
 - **Source**：這是磁碟區的名稱。 使用者可以為他們的磁碟區選擇任何名稱。
-- **目的地**-此屬性是磁片區在執行中容器內所對應的位置。 因此，您的目的地不能是容器內的現有位置
+- **目的地** -此屬性是磁片區在執行中容器內所對應的位置。 因此，您的目的地不能是容器內的現有位置
 
 如上述程式碼片段的 **DriverOption** 元素中所示，Azure 檔案服務磁碟區外掛程式支援下列驅動程式選項：
 - **shareName**：為容器提供磁碟區之 Azure 檔案服務檔案共用的名稱。
@@ -239,6 +239,6 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 
 如果指定了 Docker 記錄驅動程式，您就必須在叢集中部署代理程式 (或容器) 來處理記錄。 [DriverOption]**** 標記可以用來指定記錄驅動程式的選項。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 若要查看容器範例 (包括磁碟區驅動程式)，請瀏覽 [Service Fabric 容器範例](https://github.com/Azure-Samples/service-fabric-containers) \(英文\)
 * 若要將容器部署到 Service Fabric 叢集，請參閱[在 Service Fabric 上部署容器](./service-fabric-get-started-containers.md)一文

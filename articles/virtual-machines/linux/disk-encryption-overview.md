@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830439"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
@@ -94,7 +94,7 @@ Azure 磁碟加密也適用於具有進階儲存體的 VM。
 
 ## <a name="additional-vm-requirements"></a>其他 VM 需求
 
-Azure 磁碟加密需要系統中存在 dm-crypt 和 vfat 模組。 從預設映像中移除或停用 vfat，會讓系統無法讀取金鑰磁碟區，也無法在後續重新啟動時，取得解除鎖定磁碟所需的金鑰。 將 vfat 模組從系統中移除，或強制擴充資料磁片磁碟機上的 OS 掛接點/資料夾的系統強化步驟，與 Azure 磁碟加密不相容。 
+Azure 磁碟加密需要系統中存在 dm-crypt 和 vfat 模組。 從預設映像中移除或停用 vfat，會讓系統無法讀取金鑰磁碟區，也無法在後續重新啟動時，取得解除鎖定磁碟所需的金鑰。 從系統中移除 vfat 模組或強制擴充資料磁片磁碟機上作業系統掛接點/資料夾的系統強化步驟，與 Azure 磁碟加密不相容。 
 
 在啟用加密之前，要加密的資料磁碟必須在 /etc/fstab 中正確列出。 建立項目時，請使用「nofail」選項，並選擇持續性封鎖裝置名稱 (因為「/dev/sdX」格式的裝置名稱在重新啟動時，不會與相同磁碟相關聯，尤其是加密後；如需關於此行為的詳細資料，請參閱：[針對 Linux VM 裝置名稱變更進行疑難排解](../troubleshooting/troubleshoot-device-names-problems.md))。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610070"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>在受限制的裝置上執行 IoT 隨插即用
@@ -24,7 +24,7 @@ ms.locfileid: "91610070"
 
 ### <a name="use-a-real-device"></a>使用真實裝置
 
-如需使用適用于 Embedded C 的 SDK、裝置布建服務，以及在真實裝置上 IoT 隨插即用的完整端對端教學課程，請參閱將 [PIC-Iot Wx 開發板重新規劃，以透過 IoT 中樞裝置布建服務連線至 Azure](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)。
+如需使用適用于 Embedded C 的 SDK、裝置布建服務，以及在真實裝置上 IoT 隨插即用的完整端對端教學課程，請參閱 [透過 IoT 中樞裝置布建服務，將 PIC-IoT Wx 開發板的重新規劃，以連線到 Azure](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)。
 
 ### <a name="introductory-samples"></a>入門範例
 

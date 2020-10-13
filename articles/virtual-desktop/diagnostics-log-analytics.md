@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006800"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用 Log Analytics 進行診斷功能
@@ -18,7 +18,7 @@ ms.locfileid: "89006800"
 >[!IMPORTANT]
 >此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 
-Windows 虛擬桌面使用 [Azure 監視器](../azure-monitor/overview.md) 來監視和警示，就像許多其他 Azure 服務一樣。 這可讓系統管理員透過單一介面來識別問題。 此服務會建立使用者和系統管理動作的活動記錄。 每個活動記錄都屬於下列類別：
+Windows 虛擬桌面使用 [Azure 監視器](../azure-monitor/overview.md) 來監視和警示，就像許多其他 Azure 服務一樣。 系統管理員能藉此透過單一介面來辨識問題。 此服務會建立使用者和系統管理動作的活動記錄。 每個活動記錄都屬於下列類別：
 
 - 管理活動：
     - 追蹤使用 Api 或 PowerShell 來變更 Windows 虛擬桌面物件的嘗試是否成功。 例如，某人是否可以使用 PowerShell 成功建立主機集區？
@@ -80,7 +80,7 @@ Azure 監視器可讓您分析 Windows 虛擬桌面資料，並在相同的工�
 
 5. 輸入設定設定的名稱，然後選取 [ **傳送至 Log Analytics**]。 您使用的名稱不應包含空格，而且應該符合 [Azure 命名慣例](../azure-resource-manager/management/resource-name-rules.md)。 在記錄中，您可以選取您要新增至 Log Analytics 的所有選項，例如檢查點、錯誤、管理等等。
 
-6. 選取 [儲存]  。
+6. 選取 [儲存]****。
 
 >[!NOTE]
 >Log Analytics 可讓您選擇將資料串流至 [事件中樞](../event-hubs/event-hubs-about.md) ，或將它保存在儲存體帳戶中。 若要深入瞭解這項功能，請參閱將 [azure 監視資料串流至事件中樞](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ，並 [將 azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)。

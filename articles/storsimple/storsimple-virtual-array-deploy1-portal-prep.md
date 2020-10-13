@@ -9,15 +9,15 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070313"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple Virtual Array - 準備 Azure 入口網站
 
-![此圖顯示部署虛擬陣列所需的步驟。 第一個步驟標示為 [開始使用]，並反白顯示。](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+![此圖顯示部署 virtual array 所需的步驟。 第一個步驟會標示為「開始使用」並反白顯示。](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
 ## <a name="overview"></a>概觀
@@ -52,7 +52,7 @@ ms.locfileid: "87070313"
 * 下載 [StorSimple Virtual Array 檔案伺服器的設定檢查清單](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
 * 下載 [StorSimple Virtual Array iSCSI 伺服器的設定檢查清單](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 我們在此提供 StorSimple 裝置管理員服務、StorSimple Virtual Array 及資料中心網路的設定必要條件。
 
@@ -105,7 +105,7 @@ ms.locfileid: "87070313"
 
 當 StorSimple 裝置管理員服務已啟動並執行之後，您就必須取得服務註冊金鑰。 這個金鑰是用來註冊和將 StorSimple 裝置與服務連接。
 
-請在[Azure 入口網站](https://portal.azure.com/)中執行下列步驟。
+在 [Azure 入口網站](https://portal.azure.com/)中執行下列步驟。
 
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
@@ -123,11 +123,11 @@ ms.locfileid: "87070313"
 > 
 > 
 
-請在[Azure 入口網站](https://portal.azure.com/)中執行下列步驟。
+在 [Azure 入口網站](https://portal.azure.com/)中執行下列步驟。
 
 #### <a name="to-get-the-virtual-array-image"></a>若要取得虛擬陣列映像
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。 
+1. 登入[Azure 入口網站](https://portal.azure.com/)。 
 2. 在 Azure 入口網站中，按一下 [瀏覽] > [StorSimple 裝置管理員]****。
 3. 選取現有的 StorSimple 裝置管理員服務。 在 [StorSimple 裝置管理員]**** 刀鋒視窗中，按一下 [快速啟動]****。 
 4. 按一下與您想要從「Microsoft 下載中心」下載的映像對應的連結。 映像檔大約是 4.8 GB。

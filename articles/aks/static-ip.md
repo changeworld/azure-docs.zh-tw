@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243931"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>使用靜態公用 IP 位址和 DNS 標籤搭配 Azure Kubernetes Service (AKS) 負載平衡器
@@ -24,11 +24,11 @@ ms.locfileid: "86243931"
 
 您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-本文說明如何搭配使用*標準*sku IP 與*標準*sku 負載平衡器。 如需詳細資訊，請參閱 [Azure 中的 IP 位址類型及配置方法][ip-sku]。
+本文涵蓋使用 *標準* sku IP 與 *標準* sku 負載平衡器。 如需詳細資訊，請參閱 [Azure 中的 IP 位址類型及配置方法][ip-sku]。
 
 ## <a name="create-a-static-ip-address"></a>建立靜態 IP 位址
 
-使用[az network public ip create][az-network-public-ip-create]命令來建立靜態公用 ip 位址。 以下會在*myResourceGroup*資源群組中建立名為*MYAKSPUBLICIP*的靜態 IP 資源：
+使用 [az network public ip create][az-network-public-ip-create] 命令來建立靜態公用 ip 位址。 以下會在*myResourceGroup*資源群組中建立名為*MYAKSPUBLICIP*的靜態 IP 資源：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -39,9 +39,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> 如果您在 AKS 叢集中使用*基本*SKU 負載平衡器，請在定義公用 IP 時，針對*SKU*參數使用*基本*。 只有*基本*sku ip 可與*基本*sku 負載平衡器搭配使用，而只有*標準*sku ip 適用于*標準*sku 負載平衡器。 
+> 如果您在 AKS 叢集中使用 *基本* SKU 負載平衡器，則在定義公用 IP 時，請使用 *基本* 的 *sku* 參數。 只有 *基本* sku ip 適用于 *基本* sku 負載平衡器，而且只有 *標準* sku ip 適用于 *標準* sku 負載平衡器。 
 
-會顯示 IP 位址，如下列精簡的範例輸出所示：
+會顯示 IP 位址，如下列壓縮範例輸出所示：
 
 ```json
 {
@@ -63,7 +63,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>使用靜態 IP 位址建立服務
 
-建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如︰
+建立服務之前，請確定 AKS 叢集所使用的服務主體已將許可權委派給其他資源群組。 例如：
 
 ```azurecli-interactive
 az role assignment create \
@@ -72,9 +72,9 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-或者，您可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
+或者，您可以將系統指派的受控識別用於許可權，而非服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
-若要建立具有靜態公用 IP 位址的*LoadBalancer*服務，請將 `loadBalancerIP` 靜態公用 ip 位址的屬性和值新增至 YAML 資訊清單。 建立名為 `load-balancer-service.yaml` 的檔案，然後將下列 YAML 複製進來。 提供您在上一個步驟中所建立的自有公用 IP 位址。 下列範例也會將批註設定為名為*myResourceGroup*的資源群組。 提供您自己的資源組名。
+若要建立具有靜態公用 IP 位址的 *LoadBalancer* 服務，請將 `loadBalancerIP` 靜態公用 ip 位址的屬性和值新增至 YAML 資訊清單。 建立名為 `load-balancer-service.yaml` 的檔案，然後將下列 YAML 複製進來。 提供您在上一個步驟中所建立的自有公用 IP 位址。 下列範例也會將批註設定為名為 *myResourceGroup*的資源群組。 提供您自己的資源組名。
 
 ```yaml
 apiVersion: v1
@@ -100,9 +100,9 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>將 DNS 標籤套用至服務
 
-如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋 `service.beta.kubernetes.io/azure-dns-label-name` 來設定對外公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發行服務的完整功能變數名稱。 批註值在 Azure 位置中必須是唯一的，因此建議使用完整的標籤。   
+如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋 `service.beta.kubernetes.io/azure-dns-label-name` 來設定公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發佈服務的完整功能變數名稱。 注釋值在 Azure 位置中必須是唯一的，因此建議使用足夠的完整標籤。   
 
-接著，Azure 會自動將預設子網（例如 `<location>.cloudapp.azure.com` (位置是您) 所選的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如︰
+接著，Azure 會自動將預設子網（例如 `<location>.cloudapp.azure.com` (位置是您) 所選的區域）附加到您所提供的名稱，以建立完整的 DNS 名稱。 例如：
 
 ```yaml
 apiVersion: v1
@@ -120,11 +120,11 @@ spec:
 ```
 
 > [!NOTE] 
-> 若要在您自己的網域上發佈服務，請參閱[Azure DNS][azure-dns-zone]和[外部 DNS][external-dns]專案。
+> 若要在您自己的網域上發佈服務，請參閱 [Azure DNS][azure-dns-zone] 和 [外部 DNS][external-dns] 專案。
 
 ## <a name="troubleshoot"></a>疑難排解
 
-如果 Kubernetes 服務資訊清單的*loadBalancerIP*屬性中所定義的靜態 IP 位址不存在，或尚未在節點資源群組中建立，且未設定其他委派，則負載平衡器服務建立會失敗。 若要進行疑難排解，請使用 [kubectl describe][kubectl-describe] 命令來檢閱服務建立事件。 提供 YAML 資訊清單中所指定的服務名稱，如下列範例所示：
+如果 Kubernetes 服務資訊清單的 *loadBalancerIP* 屬性中定義的靜態 IP 位址不存在，或尚未在節點資源群組中建立，且未設定其他委派，則負載平衡器服務建立會失敗。 若要進行疑難排解，請使用 [kubectl describe][kubectl-describe] 命令來檢閱服務建立事件。 提供 YAML 資訊清單中所指定的服務名稱，如下列範例所示：
 
 ```console
 kubectl describe service azure-load-balancer
@@ -154,7 +154,7 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要進一步控制應用程式的網路流量，您可能想要改為[建立輸入控制器][aks-ingress-basic]。 您也可以[使用靜態公用 IP 位址建立輸入控制器][aks-static-ingress]。
 

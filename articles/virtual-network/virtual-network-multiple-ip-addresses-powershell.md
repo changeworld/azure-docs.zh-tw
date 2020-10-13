@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
 ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073924"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 對虛擬機器指派多個 IP 位址
@@ -92,9 +92,9 @@ ms.locfileid: "87073924"
     -SecurityRules $NSGRule
     ```
 
-6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回*False*和可用位址的清單。 
+6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回 *False* 和可用位址的清單。 
 
-    在下列命令中，將**取代 \<replace-with-your-unique-name> 為要使用的唯一 DNS 名稱。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
+    在下列命令中，將 **取代為 \<replace-with-your-unique-name> 要使用的唯一 DNS 名稱。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
 
     ```powershell
     
@@ -273,7 +273,7 @@ ms.locfileid: "87073924"
    -AllocationMethod Static
    ```
 
-   若要建立具有靜態私人 IP 位址和相關聯*myPublicIp3*公用 ip 位址資源的新 IP 設定，請輸入下列命令：
+   若要建立具有靜態私人 IP 位址和相關聯 *>mypublicip3* 公用 ip 位址資源的新 IP 設定，請輸入下列命令：
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -311,7 +311,7 @@ ms.locfileid: "87073924"
    -Location $Location -AllocationMethod Static
    ```
 
-   輸入下列命令，將公用 IP 位址資源與名為*IpConfig-3*的現有 IP 設定產生關聯：
+   輸入下列命令，將公用 IP 位址資源與名為 *IpConfig-3*的現有 IP 設定產生關聯：
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `

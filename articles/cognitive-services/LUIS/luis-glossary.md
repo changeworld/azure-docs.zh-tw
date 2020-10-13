@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309484"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
@@ -127,7 +127,7 @@ LUIS 預測端點 URL 是您在撰寫併發布 [LUIS 應用程式](#application-
 
 您對預測端點的存取權會獲得 LUIS 預測金鑰的授權。
 
-## <a name="entity"></a>單位
+## <a name="entity"></a>實體
 
 [實體](luis-concept-entity-types.md) 是語句中的單字，可描述用來滿足或識別意圖的資訊。 如果您的實體很複雜，而且您想要模型識別特定部分，您可以將模型分成子實體。 例如，您可能會想要讓模型預測位址，以及子實體街道、city、state 和 zipcode。 實體也可以當做模型的功能使用。 您從 LUIS 應用程式的回應將會包含預測的意圖和所有實體。
 
@@ -194,7 +194,7 @@ LUIS 預測端點 URL 是您在撰寫併發布 [LUIS 應用程式](#application-
 
 請參閱 [應用程式 (應用程式) ](#application-app)的定義。
 
-## <a name="model"></a>型號
+## <a name="model"></a>模型
 
 學習) 模型的 (機器是對輸入資料進行預測的函式。 在 LUIS 中，我們會將意圖分類器和實體擷取器統稱為「模型」，而我們會將一組以「應用程式」方式一起定型、發佈及查詢的模型。
 
@@ -286,8 +286,8 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 |Nomalized 值| 同義字|
 |--|--|
 |小型| 小一，8盎司|
-|中型| 標準、12盎司|
-|大| 大型、16盎司|
+|中| 標準、12盎司|
+|大型| 大型、16盎司|
 |Xtra 大型| 最大一，24盎司|
 
 當輸入中出現任何同義字時，此模型會傳回實體的標準化值。

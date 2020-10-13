@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86200517"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>搜尋 Bing 當地商家搜尋 API 的類別
@@ -38,7 +38,7 @@ Bing 當地商家搜尋 API 可讓您搜尋各種類別的當地商家實體，�
 
 ### <a name="eat-drink"></a>Eat Drink
 
-> BreweriesAndBrewPubs、CocktailLounges、AfricanRestaurants、AmericanRestaurants、Bagels、BarbecueRestaurants、Taverns、SportsBars、橫條、BarsGrillsAndPubs、BuffetRestaurants |BelgianRestaurants、BritishRestaurants、CafeRestaurants、CaribbeanRestaurants、ChineseRestaurants、CoffeeAndTea、Delicatessens、DeliveryService、大來、DiscountStores、圈、FastFood、FrenchRestaurants、FrozenYogurt、GermanRestaurants、超市、GreekRestaurants、Grocers、HawaiianRestaurants、HungarianRestaurants、IceCreamAndFrozenDesserts、IndianRestaurants、ItalianRestaurants、JapaneseRestaurants、動力、KoreanRestaurants、LiquorStores、MexicanRestaurants、MiddleEasternRestaurants、比薩、PolishRestaurants、PortugueseRestaurants、Pretzels、飯店、RussianAndUkrainianRestaurants、三明治、SeafoodRestaurants、SpanishRestaurants、SteakHouseRestaurants、SushiRestaurants
+> BreweriesAndBrewPubs、CocktailLounges、AfricanRestaurants、AmericanRestaurants、Bagels、BarbecueRestaurants、Taverns、SportsBars、橫條、BarsGrillsAndPubs、BuffetRestaurants |BelgianRestaurants、BritishRestaurants、CafeRestaurants、CaribbeanRestaurants、ChineseRestaurants、CoffeeAndTea、Delicatessens、DeliveryService、Diners、DiscountStores、甜甜圈、FastFood、FrenchRestaurants、FrozenYogurt、GermanRestaurants、超市、GreekRestaurants、Grocers、HawaiianRestaurants、HungarianRestaurants、IceCreamAndFrozenDesserts、IndianRestaurants、ItalianRestaurants、JapaneseRestaurants、動力、KoreanRestaurants、LiquorStores、MexicanRestaurants、MiddleEasternRestaurants、比薩、PolishRestaurants、PortugueseRestaurants、Pretzels、RussianAndUkrainianRestaurants、三明治、SeafoodRestaurants、SpanishRestaurants、SteakHouseRestaurants、SushiRestaurants、重點、ThaiRestaurants、TurkishRestaurants、VegetarianAndVeganRestaurants、VietnameseRestaurants、
 
 ### <a name="see-do"></a>See Do
 

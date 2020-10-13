@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310181"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支援的瀏覽器
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>桌面
+## <a name="desktop"></a>桌上型
 
 Azure 地圖服務 Web SDK 支援下列桌面瀏覽器：
 
@@ -63,7 +63,7 @@ Node.js 中也支援下列 Web SDK 模組：
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>以舊版瀏覽器為目標
 
-您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，我們建議您搭配使用 Azure 地圖服務服務與開放原始碼的地圖控制項（例如 [Leaflet](https://leafletjs.com/)）。 以下是範例：
+您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，我們建議您搭配使用 Azure 地圖服務服務與開放原始碼的地圖控制項（例如 [Leaflet](https://leafletjs.com/)）。 以下為範例：
 
 <br/>
 

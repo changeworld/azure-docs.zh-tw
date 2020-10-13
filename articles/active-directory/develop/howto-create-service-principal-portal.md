@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265896"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
@@ -101,7 +101,7 @@ ms.locfileid: "91265896"
 
    如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]****。 確定您想要的訂用帳戶已針對入口網站選取。
 
-1. 選取 [存取控制 (IAM)]。
+1. 選取 [存取控制 (IAM)]  。
 1. 選取 [新增角色指派]。
 1. 選取您想要將應用程式指派給哪個角色。 例如，若要允許應用程式執行 **重新開機**、 **啟動** 和 **停止** 實例等動作，請選取 [ **參與者** ] 角色。  依預設，請閱讀 [可用角色](../../role-based-access-control/built-in-roles.md) 的詳細資訊，Azure AD 的應用程式不會顯示在可用的選項中。 若要尋找您的應用程式，請搜尋名稱並加以選取。
 

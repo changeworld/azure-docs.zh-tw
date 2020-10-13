@@ -11,15 +11,15 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534942"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>使用 Azure 入口網站註冊對等互連服務
 
-Azure 對等互連服務是一種網路服務，可加強客戶與 Microsoft 雲端服務的連線能力，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) services、Azure，或任何可透過公用網際網路存取的 Microsoft 服務。
+Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲端服務，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) 服務、Azure，或可透過公用網際網路存取的任何 Microsoft 服務的連線能力。
 
 在本文中，您將瞭解如何使用 Azure 入口網站來註冊對等互連服務連接。
 
@@ -72,14 +72,14 @@ Azure 對等互連服務是一種網路服務，可加強客戶與 Microsoft 雲
 1. 選取 [字首] 區段底部的 [建立新的字首]，文字方塊就會出現。 現在，輸入字首資源的名稱，以及與服務提供者相關聯的字首。
 
 1. 選取 [字首索引鍵]，然後新增由提供者 (ISP 或 IXP) 提供給您的字首索引鍵。 此索引鍵會允許 MS 驗證已配置您的 IP 字首的字首和提供者。
-   > ![螢幕擷取畫面顯示 [建立對等互連服務連接] 頁面的 [設定] 索引標籤，您可以在其中輸入首碼金鑰。](./media/peering-service-portal/peering-serviceconfiguration.png)
+   > ![此螢幕擷取畫面顯示 [建立對等互連服務連線] 頁面的 [設定] 索引標籤，您可以在其中輸入前置詞索引鍵。](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. 選取頁面左下方的 [檢閱 + 建立] 按鈕。 在 [檢閱 + 建立] 頁面隨即出現，並且 Azure 會驗證設定。
     
 
 1. 當您看到顯示的 [驗證成功] 訊息時，請選取 [建立]。
 
-   > ![螢幕擷取畫面顯示 [建立對等互連服務連接] 頁面的 [審核 + 建立] 索引標籤。](./media/peering-service-portal/peering-service-prefix.png)
+   > ![此螢幕擷取畫面顯示 [建立對等服務連線] 頁面的 [檢閱 + 建立] 索引標籤。](./media/peering-service-portal/peering-service-prefix.png)
 
 
 1. 註冊對等互連服務連線之後，會對包含的字首執行額外的驗證。 您可以在資源名稱的 [字首] 區段下檢查驗證狀態。 如果驗證失敗，則會顯示下列其中一個錯誤訊息：

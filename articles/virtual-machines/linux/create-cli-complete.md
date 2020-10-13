@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829011"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 來建立完整的 Linux 虛擬機器
@@ -21,7 +21,7 @@ ms.locfileid: "87829011"
 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 您必須在建立虛擬機器和支援虛擬網路支援之前，先建立資源群組。 使用[az group create](/cli/azure/group)建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 您必須在建立虛擬機器和支援虛擬網路支援之前，先建立資源群組。 使用 [az group create](/cli/azure/group)建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -473,7 +473,7 @@ az vm availability-set create \
 
 指定要用於驗證的 SSH 金鑰。 如果您沒有 SSH 公開金鑰組，則可以[建立 SSH 公開金鑰組](mac-create-ssh-keys.md)，或使用 `--generate-ssh-keys` 參數來為您建立這些金鑰組。 如果您已經有金鑰組，此參數就會使用 `~/.ssh` 中的現有金鑰。
 
-請使用 [az vm create](/cli/azure/vm) 命令將我們的所有資源和資訊結合在一起來建立 VM。 下列範例會建立名為*myVM*的 VM：
+請使用 [az vm create](/cli/azure/vm) 命令將我們的所有資源和資訊結合在一起來建立 VM。 下列範例會建立名為 myVM  的 VM。
 
 ```azurecli
 az vm create \
@@ -550,13 +550,13 @@ sudo apt-get install -y nginx
 ![您 VM 上的預設 NGINX 站台](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>以範本形式匯出
-如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，該怎麼辦？ Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以[手動建立 json 範本](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json)，或匯出現有的環境來為您建立 json 範本。 使用 [az group export](/cli/azure/group) 來匯出您的資源群組，如下所示︰
+如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，該怎麼辦？ Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以 [手動建立 json 範本](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) ，或匯出現有的環境來為您建立 json 範本。 使用 [az group export](/cli/azure/group) 來匯出您的資源群組，如下所示︰
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-此命令會在您目前的工作目錄中建立 `myResourceGroup.json` 檔案。 當您從這個範本建立環境時，系統會提示您輸入所有資源名稱。 您可以藉由將 `--include-parameter-default-value` 參數新增到 `az group export` 命令中，在您的範本檔案中填入這些名稱。 編輯您的 JSON 範本以指定資源名稱，或在指定資源名稱的檔案[上建立 parameters.js](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) 。
+此命令會在您目前的工作目錄中建立 `myResourceGroup.json` 檔案。 當您從這個範本建立環境時，系統會提示您輸入所有資源名稱。 您可以藉由將 `--include-parameter-default-value` 參數新增到 `az group export` 命令中，在您的範本檔案中填入這些名稱。 編輯您的 JSON 範本以指定資源名稱，或在指定資源名稱的檔案 [上建立 parameters.js](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) 。
 
 若要從您的範本建立環境，請使用 [az group deployment create](/cli/azure/group/deployment)，如下所示︰
 

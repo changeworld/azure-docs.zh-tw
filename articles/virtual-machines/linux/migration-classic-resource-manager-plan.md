@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: 496d58ee76e678e2529914ff2c586ce46bb01a92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967672"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>規劃將 IaaS 資源從傳統遷移至 Linux 中的 Azure Resource Manager
@@ -153,7 +153,7 @@ ms.locfileid: "90967672"
 - 請勿採取捷徑而略過驗證/準備/中止試執行移轉。
 - 在驗證/準備/中止步驟期間，您可能發生的問題，幾乎全都會浮現。
 
-## <a name="migration"></a>移轉
+## <a name="migration"></a>遷移
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技術考量和取捨
 
@@ -201,7 +201,7 @@ ms.locfileid: "90967672"
 請記住您開始從傳統移轉至 Azure Resource Manager 的原因。  原始的商業理由為何？ 您是否達成商業理由？
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

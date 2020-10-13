@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3f2f62fe158b946e00c7f81d0cb7eeb0d8f09437
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331122"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
@@ -40,7 +40,7 @@ ms.locfileid: "91331122"
 > * 在 G Suite 中布建群組和群組成員資格
 > *  (建議) [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)G Suite
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -163,79 +163,79 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
    |屬性|類型|
    |---|---|
-   |primaryEmail|String|
+   |primaryEmail|字串|
    |關係。[type eq "manager"]。值|String|
    |name.familyName|String|
    |name.givenName|String|
-   |暫止|String|
-   |externalid.[type eq "custom"]. 值|String|
-   |externalid.[type eq "organization"]。值|String|
-   |位址。[type eq "work"]。國家/地區|String|
-   |位址。[type eq "work"]. streetAddress|String|
-   |位址。[type eq "work"]. region|String|
-   |位址。[type eq "work"]。位置|String|
-   |位址。[type eq "work"]. 郵遞區號|String|
-   |電子郵件。[type eq "work"]。位址|String|
-   |組織。[type eq "work"]. 部門|String|
-   |組織。[type eq "work"]. 標題|String|
-   |phoneNumbers.[type eq "work"]。值|String|
-   |phoneNumbers.[type eq "mobile"]。值|String|
-   |phoneNumbers.[type eq "work_fax"]. 值|String|
-   |電子郵件。[type eq "work"]。位址|String|
-   |組織。[type eq "work"]. 部門|String|
-   |組織。[type eq "work"]. 標題|String|
-   |phoneNumbers.[type eq "work"]。值|String|
-   |phoneNumbers.[type eq "mobile"]。值|String|
-   |phoneNumbers.[type eq "work_fax"]. 值|String|
-   |位址。[type eq "home"]. country|String|
-   |位址。[type eq "home"]。格式化|String|
-   |位址。[type eq "home"]。位置|String|
-   |位址。[type eq "home"]. 郵遞區號|String|
-   |位址。[type eq "home"]. region|String|
-   |位址。[type eq "home"]. streetAddress|String|
-   |位址。[type eq "other"]。國家/地區|String|
-   |位址。[type eq "other"]。格式化|String|
-   |位址。[type eq "other"]。位置|String|
-   |位址。[type eq "other"]. 郵遞區號|String|
-   |位址。[type eq "other"]. region|String|
-   |位址。[type eq "other"]. streetAddress|String|
-   |位址。[type eq "work"]。已格式化|String|
-   |changePasswordAtNextLogin|String|
-   |電子郵件。[type eq "home"]. 位址|String|
-   |電子郵件。[type eq "other"]. 位址|String|
-   |externalid.[type eq "account"]。值|String|
-   |externalid.[type eq "custom"]. customType|String|
-   |externalid.[type eq "customer"]。值|String|
-   |externalid.[type eq "login_id"]. 值|String|
-   |externalid.[type eq "network"]。值|String|
-   |性別. 類型|String|
-   |GeneratedImmutableId|String|
-   |識別碼|String|
-   |Ims。[type eq "home"]. protocol|String|
-   |Ims。[type eq "other"]. protocol|String|
-   |Ims。[type eq "work"]. protocol|String|
-   |includeInGlobalAddressList|String|
-   |ipWhitelisted|String|
-   |組織。[type eq "school"]. costCenter|String|
-   |組織。[type eq "school"]. 部門|String|
-   |組織。[type eq "school"]. 網域|String|
-   |組織。[type eq "school"]. fullTimeEquivalent|String|
-   |組織。[type eq "school"]。位置|String|
-   |組織。[type eq "school"]。名稱|String|
-   |組織。[type eq "school"]. 符號|String|
-   |組織。[type eq "school"]. 標題|String|
-   |組織。[type eq "work"]. costCenter|String|
-   |組織。[type eq "work"]。網域|String|
-   |組織。[type eq "work"]. fullTimeEquivalent|String|
-   |組織。[type eq "work"]。位置|String|
-   |組織。[type eq "work"]。名稱|String|
-   |組織。[type eq "work"]. 符號|String|
-   |OrgUnitPath|String|
-   |phoneNumbers.[type eq "home"]. 值|String|
-   |phoneNumbers.[type eq "other"]. 值|String|
-   |網站。[type eq "home"]. 值|String|
-   |網站。[type eq "other"]. 值|String|
-   |網站。[type eq "work"]。值|String|
+   |暫止|字串|
+   |externalid.[type eq "custom"]. 值|字串|
+   |externalid.[type eq "organization"]。值|字串|
+   |位址。[type eq "work"]。國家/地區|字串|
+   |位址。[type eq "work"]. streetAddress|字串|
+   |位址。[type eq "work"]. region|字串|
+   |位址。[type eq "work"]。位置|字串|
+   |位址。[type eq "work"]. 郵遞區號|字串|
+   |電子郵件。[type eq "work"]。位址|字串|
+   |組織。[type eq "work"]. 部門|字串|
+   |組織。[type eq "work"]. 標題|字串|
+   |phoneNumbers.[type eq "work"]。值|字串|
+   |phoneNumbers.[type eq "mobile"]。值|字串|
+   |phoneNumbers.[type eq "work_fax"]. 值|字串|
+   |電子郵件。[type eq "work"]。位址|字串|
+   |組織。[type eq "work"]. 部門|字串|
+   |組織。[type eq "work"]. 標題|字串|
+   |phoneNumbers.[type eq "work"]。值|字串|
+   |phoneNumbers.[type eq "mobile"]。值|字串|
+   |phoneNumbers.[type eq "work_fax"]. 值|字串|
+   |位址。[type eq "home"]. country|字串|
+   |位址。[type eq "home"]。格式化|字串|
+   |位址。[type eq "home"]。位置|字串|
+   |位址。[type eq "home"]. 郵遞區號|字串|
+   |位址。[type eq "home"]. region|字串|
+   |位址。[type eq "home"]. streetAddress|字串|
+   |位址。[type eq "other"]。國家/地區|字串|
+   |位址。[type eq "other"]。格式化|字串|
+   |位址。[type eq "other"]。位置|字串|
+   |位址。[type eq "other"]. 郵遞區號|字串|
+   |位址。[type eq "other"]. region|字串|
+   |位址。[type eq "other"]. streetAddress|字串|
+   |位址。[type eq "work"]。已格式化|字串|
+   |changePasswordAtNextLogin|字串|
+   |電子郵件。[type eq "home"]. 位址|字串|
+   |電子郵件。[type eq "other"]. 位址|字串|
+   |externalid.[type eq "account"]。值|字串|
+   |externalid.[type eq "custom"]. customType|字串|
+   |externalid.[type eq "customer"]。值|字串|
+   |externalid.[type eq "login_id"]. 值|字串|
+   |externalid.[type eq "network"]。值|字串|
+   |性別. 類型|字串|
+   |GeneratedImmutableId|字串|
+   |識別碼|字串|
+   |Ims。[type eq "home"]. protocol|字串|
+   |Ims。[type eq "other"]. protocol|字串|
+   |Ims。[type eq "work"]. protocol|字串|
+   |includeInGlobalAddressList|字串|
+   |ipWhitelisted|字串|
+   |組織。[type eq "school"]. costCenter|字串|
+   |組織。[type eq "school"]. 部門|字串|
+   |組織。[type eq "school"]. 網域|字串|
+   |組織。[type eq "school"]. fullTimeEquivalent|字串|
+   |組織。[type eq "school"]。位置|字串|
+   |組織。[type eq "school"]。名稱|字串|
+   |組織。[type eq "school"]. 符號|字串|
+   |組織。[type eq "school"]. 標題|字串|
+   |組織。[type eq "work"]. costCenter|字串|
+   |組織。[type eq "work"]。網域|字串|
+   |組織。[type eq "work"]. fullTimeEquivalent|字串|
+   |組織。[type eq "work"]。位置|字串|
+   |組織。[type eq "work"]。名稱|字串|
+   |組織。[type eq "work"]. 符號|字串|
+   |OrgUnitPath|字串|
+   |phoneNumbers.[type eq "home"]. 值|字串|
+   |phoneNumbers.[type eq "other"]. 值|字串|
+   |網站。[type eq "home"]. 值|字串|
+   |網站。[type eq "other"]. 值|字串|
+   |網站。[type eq "work"]。值|字串|
    
 
 10. **在 [對應**] 區段下，選取 [布建**Azure Active Directory 群組**]。
@@ -244,8 +244,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
       |屬性|類型|
       |---|---|
-      |電子郵件|String|
-      |成員|String|
+      |電子郵件|字串|
+      |成員|字串|
       |NAME|String|
       |description|String|
 

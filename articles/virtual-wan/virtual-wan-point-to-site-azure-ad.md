@@ -1,6 +1,6 @@
 ---
-title: 設定使用者 VPN 連線的 Azure AD 驗證：虛擬 WAN
-description: 瞭解如何設定使用者 VPN 的 Azure Active Directory 驗證。
+title: 設定使用者 VPN 連接的 Azure AD authentication：虛擬 WAN
+description: 瞭解如何為使用者 VPN 設定 Azure Active Directory authentication。
 services: virtual-wan
 author: kumudD
 ms.service: virtual-wan
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
 ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87832513"
 ---
-# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory 驗證
+# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory authentication
 
-本文說明如何在虛擬 WAN 中設定使用者 VPN 的 Azure AD 驗證，以透過 OpenVPN VPN 連線連接到您在 Azure 中的資源。 Azure Active Directory 驗證僅適用於使用 OpenVPN 通訊協定的閘道以及執行 Windows 的用戶端。
+本文說明如何針對虛擬 WAN 中的使用者 VPN 設定 Azure AD authentication，以透過 OpenVPN VPN 連線來連線至 Azure 中的資源。 Azure Active Directory 驗證僅適用於使用 OpenVPN 通訊協定的閘道以及執行 Windows 的用戶端。
 
 此類型的連線需要在用戶端電腦上設定用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87832513"
 > * 建立使用者 VPN 設定
 > * 下載虛擬 WAN 使用者 VPN 設定檔
 > * 將使用者 VPN 設定套用至虛擬中樞
-> * 將 VNet 連線至虛擬中樞
+> * 將 VNet 連線到虛擬中樞
 > * 下載並套用使用者 VPN 用戶端設定
 > * 查看您的虛擬 WAN
 
@@ -50,9 +50,9 @@ ms.locfileid: "87832513"
 
 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
-1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
-2. 從結果中選取 [虛擬 WAN]。 在 [虛擬 WAN] 頁面中，按一下 [建立]，以開啟 [建立 WAN] 頁面。
-3. 在 [建立 WAN] 頁面的 [基本] 索引標籤中，填寫下列欄位：
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+2. 從結果中選取 [虛擬 WAN]  。 在 [虛擬 WAN] 頁面中，按一下 [建立]  ，以開啟 [建立 WAN] 頁面。
+3. 在 [建立 WAN]  頁面的 [基本]  索引標籤中，填寫下列欄位：
 
    ![虛擬 WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "87832513"
    * **資源群組位置** - 從下拉式清單中選擇資源位置。 WAN 是全域資源，並不會在特定區域存留。 不過，您必須選取一個區域以方便管理，以及放置所建立的 WAN 資源。
    * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
    * **類型：** 標準。 如果您建立基本 WAN，則只能建立基本中樞。 基本中樞只能進行 VPN 站對站連線。
-4. 填寫完欄位之後，選取 [檢閱 + 建立]。
+4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
 5. 驗證通過後，選取 [建立]****，以建立虛擬 WAN。
 
 ## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>建立空的虛擬中樞
@@ -79,7 +79,7 @@ ms.locfileid: "87832513"
 
    ![新網站](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
 3. 按一下 [檢閱 + 建立]。
-4. 在 [**通過驗證**] 頁面上，按一下 [**建立**]。
+4. 在 [ **驗證** 成功] 頁面上，按一下 [ **建立**]。
 
 ## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>建立新的使用者 VPN 設定
 
@@ -93,13 +93,13 @@ ms.locfileid: "87832513"
 
    ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 輸入資訊，然後按一下 [**建立**]。
+3. 輸入資訊，然後按一下 [ **建立**]。
 
    * 設定**名稱**-輸入您想要用來呼叫使用者 VPN 設定的名稱。
    * 通道**類型**-選取 [OpenVPN]。
-   * **驗證方法**-選取 [Azure Active Directory]。
-   * **物件**-輸入在您的 Azure AD 租使用者中註冊之[Azure VPN](openvpn-azure-ad-tenant.md)企業應用程式的 [應用程式識別碼]。 
-   * **簽發** - `https://sts.windows.net/<your Directory ID>/`
+   * **驗證方法** -選取 Azure Active Directory。
+   * **物件** -輸入在您 Azure AD 租使用者中註冊之 [Azure VPN](openvpn-azure-ad-tenant.md) 企業應用程式的應用程式識別碼。 
+   * **發行** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD 租使用者** - `https://login.microsoftonline.com/<your Directory ID>`
   
 
@@ -108,7 +108,7 @@ ms.locfileid: "87832513"
 
 ## <a name="edit-hub-assignment"></a><a name="hub"></a>編輯中樞指派
 
-1. 流覽至虛擬 WAN 底下的 [**中樞**] 分頁。
+1. 流覽至虛擬 WAN 底下的 [ **中樞** ] 分頁。
 2. 選取要與 VPN 伺服器設定產生關聯的中樞，然後按一下省略符號 (...)。
 
    ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
@@ -124,7 +124,7 @@ ms.locfileid: "87832513"
 
 使用 VPN 設定檔來設定用戶端。
 
-1. 在您的虛擬 WAN 頁面上，按一下 [**使用者 VPN**設定]。
+1. 在虛擬 WAN 的頁面上，按一下 [ **使用者 VPN**設定]。
 2. 在頁面頂端，按一下 [下載使用者 VPN 設定]  。
 3. 檔案建立完成之後，您可以按一下連結來下載。
 4. 使用設定檔檔案來設定 VPN 用戶端。
@@ -134,7 +134,7 @@ ms.locfileid: "87832513"
 若要連線，您必須下載 Azure VPN Client，並匯入在先前的步驟中在要連線至 VNet 的每一部電腦上下載的 VPN 用戶端設定檔。
 
 > [!NOTE]
-> 只有 OpenVPN 通訊協定連線支援 Azure AD 驗證 &reg; 。
+> 只有 OpenVPN &reg; 通訊協定連接支援 Azure AD authentication。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>下載 Azure VPN Client
@@ -167,11 +167,11 @@ ms.locfileid: "87832513"
 
 1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]****。
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![[刪除]](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. 選取 [移除]**** 以刪除。
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![[刪除]](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 
