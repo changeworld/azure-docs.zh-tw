@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 04528d28e9f54710cd0a63372e32b099c2e07fb5
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026163"
 ---
 # <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure blob 儲存體中的範例資料
@@ -23,12 +23,12 @@ ms.locfileid: "86026163"
 本文說明為儲存於 Azure blob 儲存體中的資料進行取樣的方法，您可以利用程式設計方式加以下載，然後使用以 Python 撰寫的程序進行取樣。
 
 **為何要對您的資料進行取樣？**
-如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 取樣有助於資料的瞭解、探索和特徵工程設計。 它在 Cortana 分析程序中扮演的角色是能夠快速建立資料處理函式與機器學習服務模型的原型。
+如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 取樣有助於資料理解、探索和特徵工程。 它在 Cortana 分析程序中扮演的角色是能夠快速建立資料處理函式與機器學習服務模型的原型。
 
 這個取樣工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
 
 ## <a name="download-and-down-sample-data"></a>下載和降低取樣資料
-1. 使用下列範例 Python 程式碼中的 Blob 服務，從 Azure blob 儲存體下載資料： 
+1. 使用下列 Python 程式碼範例中的 Blob 服務，從 Azure blob 儲存體下載資料： 
 
     ```python
     from azure.storage.blob import BlobService
@@ -67,7 +67,7 @@ ms.locfileid: "86026163"
     dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
     ```
 
-現在您可以使用上述資料框架，其中包含一個百分比範例，以供進一步探索和產生功能。
+現在您可以使用其中一個 Percent 範例來處理上述的資料框架，以進行進一步的探索和功能產生。
 
 ## <a name="upload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>將資料上傳並將其讀入 Azure Machine Learning
 您可以使用下列程式碼範例，對資料進行向下取樣，並直接在 Azure Machine Learning 中使用它：

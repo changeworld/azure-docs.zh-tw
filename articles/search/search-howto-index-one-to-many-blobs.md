@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533956"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>編制 blob 的索引以產生多個搜尋檔
@@ -66,7 +66,7 @@ _Blob2.js開啟_
 
 此安裝程式會產生包含下列資訊的 Azure 認知搜尋索引， (以 base64 編碼的識別碼縮寫以求簡潔) 
 
-| 識別碼 | 溫度 | 壓力 | timestamp |
+| 識別碼 | 溫度 | pressure | timestamp |
 |----|-------------|----------|-----------|
 | aHR0 ...YjEuanNvbjsx | 100 | 100 | 2019-02-13T00：00：00Z |
 | aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00：00：00Z |

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/21/2020
 ms.openlocfilehash: bec9c7b4be5c3c3e334a8e3cb3a8b2e0a7130de3
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669306"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service (AKS) 中使用 pod 安全性原則來保護叢集
@@ -16,7 +16,7 @@ ms.locfileid: "89669306"
 > [!WARNING]
 > **這份檔中所述的功能（pod 安全性原則 (preview) ）已設定為取代，並將在2021年2月1日之後不再提供使用** ，以利 [AKS 的 Azure 原則](use-pod-security-on-azure-policy.md)。 淘汰日期已從2020年10月15日的先前日期延長。
 >
-> Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功能在任何現有的叢集上停用此功能，以執行未來的叢集升級並保持在 Azure 支援內。
+> 淘汰 Pod 安全性原則 (預覽) 之後，您必須在任何使用已淘汰功能的現有叢集上停用此功能，以執行未來的叢集升級並保留在 Azure 支援的範圍中。
 >
 > 強烈建議您使用 Azure 原則 for AKS 來開始測試案例，其提供內建原則來保護 pod 和內建的應用程式，以對應至 pod 安全性原則。 按一下這裡以瞭解如何 [從 pod 安全性原則 (preview) 遷移至 Azure 原則 ](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
 
@@ -58,7 +58,7 @@ az feature register --name PodSecurityPolicyPreview --namespace Microsoft.Contai
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-準備就緒時，使用 [az provider register][az-provider-register] 命令重新整理 *Microsoft.ContainerService* 資源提供者的註冊：
+當您準備好時，請使用[az provider register][az-provider-register]命令重新整理 *>microsoft.containerservice*資源提供者的註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -422,7 +422,7 @@ kubectl delete -f psp-deny-privileged.yaml
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文說明如何建立 pod 安全性原則，以防止使用特殊許可權存取。 原則可強制執行的功能有很多，例如磁片區類型或 RunAs 使用者。 如需可用選項的詳細資訊，請參閱 [Kubernetes pod 安全性原則參考][kubernetes-policy-reference]檔。
 

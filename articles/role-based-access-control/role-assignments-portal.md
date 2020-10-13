@@ -11,10 +11,10 @@ ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597620"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站新增或移除 Azure 角色指派
@@ -41,7 +41,7 @@ ms.locfileid: "91597620"
 
 1. 尋找適當的角色。 許可權會群組在一起成為角色。 您可以從數個 [Azure 內建角色](built-in-roles.md) 的清單中選取，也可以使用自己的自訂角色。
 
-1. 識別所需的範圍。 Azure 提供四個範圍層級： [管理群組](../governance/management-groups/overview.md)、訂用帳戶、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)和資源。 如需範圍的詳細資訊，請參閱 [瞭解範圍](scope-overview.md)。
+1. 識別所需的範圍。 Azure 提供四個範圍層級： [管理群組](../governance/management-groups/overview.md)、訂用帳戶、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)和資源。 如需範圍的詳細資訊，請參閱[了解範圍](scope-overview.md)。
 
 1. 執行下列其中一節中的步驟來指派角色。
 

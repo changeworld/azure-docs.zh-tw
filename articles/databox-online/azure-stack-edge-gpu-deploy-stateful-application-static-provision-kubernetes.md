@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330395"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 搭配 Azure Stack Edge Pro 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
@@ -24,7 +24,7 @@ ms.locfileid: "91330395"
 Azure Stack Edge Pro 也支援執行 Azure SQL Edge 容器，而這些容器的部署方式類似于 MySQL 的詳細說明。 如需詳細資訊，請參閱 [AZURE SQL Edge](../azure-sql-edge/overview.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
 

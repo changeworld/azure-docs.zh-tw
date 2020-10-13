@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564354"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
@@ -25,7 +25,7 @@ ms.locfileid: "90564354"
 2. 建立 Azure 函數來更新 Azure 地圖服務室內地圖功能 stateset。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 * 遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
     * 您將會使用額外的端點和路由來擴充此對應項。 您也會從該教學課程將另一個函式新增至函數應用程式。 
@@ -152,7 +152,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 這兩個範例都會以相容的範圍傳送溫度，因此您應該會在地圖上看到大約每隔30秒的房間121更新色彩。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="顯示房間121彩色橙色的辦公室地圖":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="在端對端案例中的 Azure 服務視圖，並反白顯示室內地圖整合片段":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>將您的地圖服務資訊儲存在 Azure 數位 Twins 中
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
 ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598333"
 ---
 # <a name="understand-password-based-single-sign-on"></a>瞭解以密碼為基礎的單一登入
@@ -80,11 +80,11 @@ ms.locfileid: "91598333"
 5. 在具有所輸入 URL 的索引標籤中，進行登入程式。 填入 [使用者名稱] 和 [密碼] 欄位，然後嘗試登入。  (您不需要提供正確的密碼。 ) 
 
    提示會要求您儲存已捕捉的登入欄位。
-6. 選取 [確定]。 瀏覽器擴充功能會使用已 **更新的應用程式訊息中繼資料來**更新 [capture status] 頁面。 [瀏覽器] 索引標籤會關閉。
+6. 選取 [確定]  。 瀏覽器擴充功能會使用已 **更新的應用程式訊息中繼資料來**更新 [capture status] 頁面。 [瀏覽器] 索引標籤會關閉。
 
 7. 在 Azure AD **設定** 登入] 頁面中，選取 **[確定]，我可以成功登入應用程式**。
 
-8. 選取 [確定]。
+8. 選取 [確定]  。
 
 ## <a name="next-steps"></a>後續步驟
 

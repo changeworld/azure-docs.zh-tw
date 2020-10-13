@@ -1,15 +1,15 @@
 ---
 title: TextBlock UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.TextBlock UI 元素。 用來將文字加入至介面。
+description: 描述 Azure 入口網站的 Microsoft.Common.TextBlock UI 元素。 用來將文字新增至介面。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: ba2c4d410891910c29ee1fda1065f8230ab171bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063856"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI 元素

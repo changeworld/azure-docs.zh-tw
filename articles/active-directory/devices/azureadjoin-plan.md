@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653208"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
@@ -24,7 +24,7 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 本文將為您提供規劃 Azure AD Join 實作所需的資訊。
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](./overview.md)。
 
@@ -197,7 +197,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
  
 以下是這三種方法的比較 
  
-| 項目 | 自助式設定 | Windows Autopilot | 大量註冊 |
+| 元素 | 自助式設定 | Windows Autopilot | 大量註冊 |
 | --- | --- | --- | --- |
 | 需要使用者手動設定 | 是 | 是 | 否 |
 | 需要 IT 工作 | 否 | 是 | 是 |

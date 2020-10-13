@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
 ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597646"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 新增或移除 Azure 角色指派
@@ -95,7 +95,7 @@ az role definition list --name "{roleName}"
  
 ### <a name="step-3-identify-the-needed-scope"></a>步驟3：識別所需的範圍
 
-Azure 提供四個範圍層級：資源、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)、訂用帳戶和 [管理群組](../governance/management-groups/overview.md)。 最佳做法是以所需的最低許可權授與存取權，因此請避免在更廣泛的範圍指派角色。 如需範圍的詳細資訊，請參閱 [瞭解範圍](scope-overview.md)。
+Azure 提供四個範圍層級：資源、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)、訂用帳戶和 [管理群組](../governance/management-groups/overview.md)。 最佳做法是以所需的最低許可權授與存取權，因此請避免在更廣泛的範圍指派角色。 如需範圍的詳細資訊，請參閱[了解範圍](scope-overview.md)。
 
 **資源範圍**
 

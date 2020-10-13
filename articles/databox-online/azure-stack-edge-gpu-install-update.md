@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a534f794f7ab5323ad46ebc555e42b2514e94e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542337"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969172"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新您的 Azure Stack Edge Pro GPU 
 
@@ -34,13 +34,13 @@ ms.locfileid: "91542337"
 
 1. 在本機 web UI 中，**移至設定**  >  **補救伺服器**。 
    
-    ![設定更新](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
+    ![設定更新1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
 2. 在 [ **選取補救伺服器類型**] 中，從下拉式清單中選擇 [Microsoft Update server (預設) 或 Windows Server Update Services。  
    
     如果是從 Windows Server Update Services 更新，請指定伺服器 URI。 該 URI 的伺服器將會在所有連線到此伺服器的裝置上部署更新。
 
-    ![設定更新](./media/azure-stack-edge-gpu-install-update/configure-update-server-2.png)
+    ![設定更新2](./media/azure-stack-edge-gpu-install-update/configure-update-server-2.png)
     
     WSUS 伺服器是用來透過管理主控台來管理和發佈更新。 WSUS 伺服器也可以是組織內其他 WSUS 伺服器的更新來源。 做為更新來源的 WSUS 伺服器稱為「上游伺服器」。 在 WSUS 實作中，網路中至少要有一部 WSUS 伺服器必須能夠連線到 Microsoft Update，以取得可用的更新資訊。 身為系統管理員，您可以根據網路安全性和設定，決定有多少其他 WSUS 伺服器可以與 Microsoft Update 直接連線。
     
@@ -61,48 +61,48 @@ ms.locfileid: "91542337"
 
     您可以選擇 **下載並安裝更新，** 或只 **下載** 更新。 然後可以選擇稍後再安裝這些更新。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
+    ![Update 2 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
 
     如果您想要下載並安裝更新，請在下載完成之後，選取 [自動安裝更新] 選項。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
+    ![Update 3 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
 
 3. 更新的下載隨即開始。 您會看到下載正在進行中的通知。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
+    ![Update 4 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
 
     Azure 入口網站中也會顯示通知橫幅。 這表示下載進度。 
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
+    ![Update 5 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
 
     您可以選取此通知或選取 [ **更新裝置** ]，以查看更新的詳細狀態。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
+    ![Update 6 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
 
 
 4. 下載完成後，通知橫幅會更新以指出完成。 如果您選擇下載並安裝更新，則會自動開始安裝。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
+    ![更新7之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]。
+    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]  。
   
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
+    ![Update 8 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
 5. 您會看到安裝正在進行中的通知。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
+    ![Update 9 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
 
     入口網站也會顯示資訊警示，指出正在進行安裝。 裝置已離線且處於維護模式。
     
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
+    ![更新10之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
 6. 由於這是1個節點的裝置，因此裝置會在安裝更新之後重新開機。 重新開機期間的重大警示會指出裝置的信號遺失。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-10.png)
+    ![Update 11 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-10.png)
 
     選取警示以查看對應的裝置事件。
     
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
+    ![更新12之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
 
 7. 重新開機之後，裝置會再次進入維護模式，並顯示資訊警示以指出。
@@ -111,33 +111,33 @@ ms.locfileid: "91542337"
 
 8. 安裝更新之後，裝置狀態會更新為 [ **線上** ]。 
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
+    ![Update 13 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
 
     從頂端命令列選取 [ **裝置更新**]。 確認更新已成功安裝，且裝置軟體版本反映該更新。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+    ![Update 14 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
 9. 您會再次看到有可用更新的通知。 這些是 Kubernetes 更新。 選取通知，或從頂端命令列中選取 [ **更新裝置** ]。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
+    ![Update 15 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 10. 下載 Kubernetes 更新。 相較于先前的更新套件，您可以看到套件大小不同。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
+    ![Update 16 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
 
     安裝程式與裝置更新的程式相同。 首先會下載更新。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
+    ![Update 17 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
     
 11. 下載更新之後，您就可以安裝更新。 
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
+    ![Update 18 之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
 
     安裝更新時，裝置會進入維護模式。 裝置不會重新開機以進行 Kubernetes 更新。 
 
     成功安裝 Kubernetes 更新之後，橫幅通知就會消失，因為不需要進一步的更新。 您的裝置現在已有最新版本的裝置軟體和 Kubernetes。
 
-    ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-20.png)
+    ![更新19之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-20.png)
 
 
 ## <a name="use-the-local-web-ui"></a>使用本機 Web UI
@@ -165,7 +165,7 @@ ms.locfileid: "91542337"
    
     更新清單會顯示為 **Azure Stack Edge Pro 2006**。
    
-    ![搜尋目錄](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    ![搜尋目錄2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
 4. 選取 [下載]。 有兩個檔案可供下載 *SoftwareUpdatePackage.exe* 和分別對應到裝置軟體更新和 Kubernetes 更新 *Kubernetes_Package.exe* 尾碼。 將檔案下載到本機系統上的資料夾。 您也可以將資料夾複製到裝置可連線的網路共用位置。
 
@@ -182,25 +182,25 @@ ms.locfileid: "91542337"
 
 1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 記下您在執行的軟體版本。 
    
-   ![更新裝置](./media/azure-stack-edge-gpu-install-update/local-ui-update-2.png)
+   ![更新裝置2](./media/azure-stack-edge-gpu-install-update/local-ui-update-2.png)
 
 2. 提供更新檔案的路徑。 如果放置在網路共用上，您也可以流覽至更新安裝檔案。 選取具有 *SoftwareUpdatePackage.exe* 尾碼的軟體更新檔案。
 
-   ![更新裝置](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
+   ![更新裝置3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
 
 3. 選取 [套用]。 
 
-   ![更新裝置](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
+   ![更新裝置4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
 4. 當系統提示您確認時，請選取 **[是]** 以繼續。 如果裝置是單一節點裝置，在套用更新後，裝置就會重新開機，而且會有停機時間。 
    
-   ![更新裝置](./media/azure-stack-edge-gpu-install-update/local-ui-update-5.png)
+   ![更新裝置5](./media/azure-stack-edge-gpu-install-update/local-ui-update-5.png)
 
 5. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
 6. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 此範例中顯示的軟體版本是 **2.0.1257.1591**。
 
-   ![更新裝置](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   ![更新裝置6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
 
 7. 您現在將更新 Kubernetes 軟體版本。 重複上述步驟。 使用 *Kubernetes_Package.exe* 尾碼提供 Kubernetes 更新檔案的路徑。  
 
@@ -208,7 +208,7 @@ ms.locfileid: "91542337"
 
 8. 選取 [套用]。 
 
-   ![更新裝置](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
+   ![更新裝置7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 
 9. 當系統提示您確認時，請選取 **[是]** 以繼續。 
 

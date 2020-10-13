@@ -4,10 +4,10 @@ description: 本文說明如何使用工作階段來聯結和依序處理未繫�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511291"
 ---
 # <a name="message-sessions"></a>訊息工作階段
@@ -31,7 +31,7 @@ Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結�
 
 在入口網站中，使用下列核取方塊來設定旗標：
 
-![[建立佇列] 對話方塊的螢幕擷取畫面，其中已選取 [啟用會話] 選項，並以紅色概述。][2]
+![[建立佇列] 對話方塊的螢幕擷取畫面，其中已選取 [啟用會話] 選項，並以紅色框住。][2]
 
 > [!NOTE]
 > 在佇列或訂用帳戶上啟用工作階段後，用戶端應用程式「無法再」傳送/接收一般訊息。 所有訊息都必須作為工作階段的一部分傳送 (藉由設定工作階段識別碼)，並透過接收工作階段來接收。
@@ -42,7 +42,7 @@ Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結�
 
 工作階段會提供交錯式訊息資料流的並行分離信號，同時保留並保證會依序傳遞。
 
-![顯示會話功能如何保留排序傳遞的圖表。][1]
+![此圖顯示會話功能如何保留排序的傳遞。][1]
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 接收者會由接受工作階段的用戶端所建立。 用戶端會在 C# 中呼叫 [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) 或 [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)。 在回應式回呼模型中，它會註冊工作階段處理常式。
 
