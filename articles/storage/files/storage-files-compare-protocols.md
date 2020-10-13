@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568466"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 檔案共用通訊協定
@@ -21,7 +21,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 
 ## <a name="differences-at-a-glance"></a>差異一覽
 
-|特徵  |NFS (預覽)   |SMB  |
+|功能  |NFS (預覽)   |SMB  |
 |---------|---------|---------|
 |存取通訊協定     |NFS 4。1         |SMB 2.1、SMB 3。0         |
 |支援的 OS     |Linux 核心4.3 版 +         |Windows 2008 R2 +、Linux 核心版本 4.11 +         |
@@ -74,7 +74,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 
 使用 SMB 掛接的 Azure 檔案共用提供更 Azure 檔案儲存體的功能，且沒有 Azure 檔案儲存體功能限制，因為它已正式推出。
 
-### <a name="features"></a>功能
+### <a name="features"></a>特性
 
 - Azure 檔案同步
 - 以身分識別為基礎的驗證

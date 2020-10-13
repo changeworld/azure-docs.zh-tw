@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 06836673f1a567f64217d49cf8e0ca82e132111f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934075"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在您的 IoT Edge 裝置上部署安全性模組
@@ -139,7 +139,7 @@ ms.locfileid: "90934075"
     }
     ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. 選取 [下一步]  。
 
@@ -175,7 +175,7 @@ ms.locfileid: "90934075"
 
 1. 確認下列容器正在執行：
 
-   | Name | 影像 |
+   | 名稱 | 影像 |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -191,7 +191,7 @@ ms.locfileid: "90934075"
 
 1. 如需更詳細的記錄，請將下列環境變數新增至 **azureiotsecurity** 模組部署： `logLevel=Debug` 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解設定選項，請繼續進行模組設定的操作指南。
 > [!div class="nextstepaction"]

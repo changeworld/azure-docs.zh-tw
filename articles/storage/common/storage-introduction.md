@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714976"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存體服務簡介
@@ -171,7 +171,7 @@ Azure 儲存體的用戶端程式庫會提供方法，以便在透過網路傳�
 
 - [儲存體的 Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.storage)
 - [儲存體的 Azure CLI Cmdlet](https://docs.microsoft.com/cli/azure/storage)
-- [AzCopy 命令列公用程式](https://aka.ms/downloadazcopy)
+- [AzCopy Command-Line 公用程式](https://aka.ms/downloadazcopy)
 - [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
 - [Azure 儲存體用戶端工具](../storage-explorers.md)
 - [Azure 開發人員工具](https://azure.microsoft.com/tools/)

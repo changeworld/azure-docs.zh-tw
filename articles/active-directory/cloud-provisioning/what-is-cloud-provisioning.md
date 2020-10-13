@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a5a69bedb45f8037f3a97f5ebf4e2128930330a
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050589"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728347"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>什麼是 Azure AD Connect 雲端佈建？
 Azure AD Connect 雲端佈建是新的 Microsoft 代理程式，其設計目的是為了符合並實現您的混合式身分識別目標，讓使用者、群組和連絡人可同步至 Azure AD。  其可搭配 Azure AD Connect 同步使用，並提供下列優點：
@@ -31,9 +31,17 @@ Azure AD Connect 雲端佈建是新的 Microsoft 代理程式，其設計目的�
 ## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Azure AD Connect 雲端佈建與 Azure AD Connect 同步有何不同？
 若使用 Azure AD Connect 雲端佈建，從 AD 佈建至 Azure AD 的作業會在 Microsoft Online Services 中進行協調。 組織只需要在其內部部署和 IaaS 主控的環境中部署輕量代理程式，以作為 Azure AD 和 AD 之間的橋梁。 佈建設定會儲存在 Azure AD 中，並作為服務的一部分進行管理。
 
+## <a name="azure-ad-connect-cloud-provisioning-video"></a>Azure AD Connect 雲端佈建影片
+下列簡短影片提供 Azure AD Connect 雲端佈建的絕佳概觀：
+
+> [!VIDEO https://youtube/embed/mOT3ID02_YQ]
+
+
+## <a name="comparison-between-azure-ad-connect-and-cloud-provisioning"></a>Azure AD Connect 與雲端佈建之間的比較
+
 下表提供 Azure AD Connect 和 Azure AD Connect 雲端佈建之間的比較：
 
-| 功能 | Azure Active Directory Connect 同步| Azure Active Directory Connect 雲端佈建 |
+| 特徵 | Azure Active Directory Connect 同步| Azure Active Directory Connect 雲端佈建 |
 |:--- |:---:|:---:|
 |連接到單一內部部署 AD 樹系|● |● |
 | 連接到多個內部部署 AD 樹系 |● |● |

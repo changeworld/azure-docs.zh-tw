@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: 6b76b5bc6158786c7f60e762590d41b7cb243c40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933835"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器
@@ -86,7 +86,7 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [重新啟動伺服器](howto-restart-server-cli.md)
 - [還原處于不良狀態的伺服器](howto-restore-server-cli.md)
 - [監視和微調伺服器](concepts-monitoring.md)

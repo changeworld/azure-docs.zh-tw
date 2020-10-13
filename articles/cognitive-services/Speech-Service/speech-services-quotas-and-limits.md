@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: alexeyo
 ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567157"
 ---
 # <a name="speech-services-quotas-and-limits"></a>語音服務配額和限制
@@ -86,7 +86,7 @@ ms.locfileid: "91567157"
 
 **基底**和**自訂**模型的並行要求限制需要**另外**調整。
 
-透過 Azure 入口網站、命令列工具或 API 要求， **不** 會顯示並行要求限制參數的現有值。 若要確認現有的值，請建立 Azure 支援要求。
+Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行要求限制參數的現有值。 若要確認現有的值，請建立 Azure 支援要求。
 
 >[!NOTE]
 >[語音容器](speech-container-howto.md) 不需要增加並行要求的限制，因為容器只受限於裝載的硬體 cpu。
@@ -152,7 +152,7 @@ ms.locfileid: "91567157"
 
 增加並行要求 **限制不會直接影響** 您的成本。 語音服務會使用「使用時付費」模型。 此限制會定義服務在開始節流您的要求之前，可以調整的程度。
 
-透過 Azure 入口網站、命令列工具或 API 要求， **不** 會顯示並行要求限制參數的現有值。 若要確認現有的值，請建立 Azure 支援要求。
+Azure 入口網站、Command-Line 工具或 API 要求都看 **不** 到並行要求限制參數的現有值。 若要確認現有的值，請建立 Azure 支援要求。
 
 >[!NOTE]
 >[語音容器](speech-container-howto.md) 不需要增加並行要求的限制，因為容器只受限於裝載的硬體 cpu。

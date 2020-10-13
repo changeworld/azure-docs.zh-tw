@@ -6,19 +6,19 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75451719"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
 
 Service Fabric 平台會撰寫好幾種結構化事件，呈現叢集內發生的重要作業活動。 不論是叢集升級或複本放置決策等，都包括在內。 Service Fabric 公開的每個事件，都與叢集中的以下其中一個實體相對應：
 * 叢集
-* Application
+* 應用程式
 * 服務
-* 分割區
+* 資料分割
 * 複本 
 * 容器
 
@@ -36,7 +36,7 @@ Service Fabric 平台會撰寫好幾種結構化事件，呈現叢集內發生�
 ## <a name="how-to-access-events"></a>如何存取事件
 
 存取 Service Fabric 事件的方法有好幾個：
-* 事件會透過標準通道（例如 ETW/Windows 事件記錄檔）來記錄，並可由任何支援這些專案的監視工具（例如 Azure 監視器記錄）進行視覺化。 根據預設，在入口網站中建立的叢集已開啟診斷功能，並讓 Windows Azure 診斷代理程式將事件傳送至 Azure 資料表儲存體，但您仍需要將其與您的 log analytics 資源整合。 深入瞭解設定[Azure 診斷代理程式](service-fabric-diagnostics-event-aggregation-wad.md)以修改叢集的診斷設定，以收取更多記錄或效能計數器，以及[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)
+* 事件會透過標準通道（例如 ETW/Windows 事件記錄檔）記錄，並且可由任何支援這些記錄的監視工具進行視覺化，例如 Azure 監視器記錄。 根據預設，在入口網站中建立的叢集會開啟診斷，並讓 Windows Azure 診斷代理程式將事件傳送至 Azure 資料表儲存體，但您仍需要將其與您的 log analytics 資源整合。 深入瞭解如何設定 [Azure 診斷代理程式](service-fabric-diagnostics-event-aggregation-wad.md) 來修改叢集的診斷設定，以挑選更多記錄檔或效能計數器和 [Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)
 * EventStore 服務 Rest API，或透過 Service Fabric 用戶端程式庫可讓您直接查詢叢集。 請參閱[查詢 EventStore API 以查詢叢集事件](service-fabric-diagnostics-eventstore-query.md)。
 
 ## <a name="next-steps"></a>後續步驟

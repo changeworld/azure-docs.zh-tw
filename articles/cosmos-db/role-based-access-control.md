@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
 ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569187"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的角色型存取控制
@@ -21,7 +21,7 @@ Azure Cosmos DB 針對 Azure Cosmos DB 中常見的管理案例，提供內建�
 
 以下是 Azure Cosmos DB 支援的內建角色：
 
-|**內建角色**  |**描述**  |
+|**內建角色**  |**說明**  |
 |---------|---------|
 |[DocumentDB 帳戶參與者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|可以管理 Azure Cosmos DB 帳戶。|
 |[Cosmos DB 帳戶讀取者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以讀取 Azure Cosmos DB 帳戶資料。|

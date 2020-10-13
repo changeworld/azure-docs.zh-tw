@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
 ms.openlocfilehash: b328da01cd3b2ecb3eb5f183296eab808de27399
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933896"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>針對適用於 MySQL 的 Azure 資料庫-彈性伺服器的連接問題進行疑難排解
@@ -45,7 +45,7 @@ ms.locfileid: "90933896"
 * 在用戶端與網際網路之間的所有防火牆上，確定開放連接埠 3306 供輸出連線使用。
 * 請確認您的連接字串和其他連線設定。 請參閱 Azure 入口網站中適用于您的伺服器的 [ **連接字串** ] 頁面中的預先定義連接字串（適用于通用語言的）。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [使用 MySQL 工作臺在適用於 MySQL 的 Azure 資料庫彈性的伺服器中連接及查詢資料](./connect-workbench.md)。
 - [使用 PHP 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中連接和查詢資料](./connect-php.md)。
 - [使用 Python 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中連接和查詢資料](./connect-python.md)。

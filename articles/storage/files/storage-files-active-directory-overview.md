@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716069"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取 Azure 檔案儲存體身分識別型驗證選項
@@ -147,7 +147,7 @@ Azure 檔案儲存體支援在將資料複製到 Azure 檔案共用時保留目�
 ## <a name="next-steps"></a>後續步驟
 如需有關透過 SMB Azure 檔案儲存體和以身分識別為基礎之驗證的詳細資訊，請參閱下列資源：
 
-- [規劃 Azure 檔案服務部署](storage-files-planning.md) (機器翻譯)
+- [規劃 Azure 檔案部署](storage-files-planning.md)
 - [針對 Azure 檔案共用啟用透過 SMB 進行內部部署 Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-enable.md)
 - [在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services authentication](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常見問題集](storage-files-faq.md)

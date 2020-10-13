@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 0f3f9e7f4566800bdea6871cae1c5bafb3b37b95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934350"
 ---
-# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>支援的 Postgres 版本，並已啟用 Azure Arc 于 postgresql 超大規模
+# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>支援的 Postgres 版本與已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫
 
 本文說明 Azure Arc enabled 于 postgresql 超大規模有哪些版本的 Postgres 可供使用。
 支援的版本清單會隨著時間而演進。 目前支援的主要版本如下：

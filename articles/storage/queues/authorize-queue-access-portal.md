@@ -12,10 +12,10 @@ ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
 ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715509"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的佇列資料
@@ -37,7 +37,7 @@ ms.locfileid: "91715509"
 當您嘗試存取 Azure 入口網站中的佇列資料時，入口網站會先檢查您是否已使用 **Microsoft. Storage/storageAccounts/listkeys/action**指派角色。 如果您已獲指派具有此動作的角色，則入口網站會使用帳戶金鑰來存取佇列資料。 如果您未獲指派具有此動作的角色，則入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
 
 > [!NOTE]
-> 傳統訂用帳戶管理員角色服務系統管理員和共同管理員，包含對等的 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色。 **擁有**者角色包含所有動作（包括**Microsoft. Storage/storageAccounts/listkeys/action**），因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 傳統訂用帳戶管理員角色服務系統管理員和 Co-Administrator 包含 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色的對等專案。 **擁有**者角色包含所有動作（包括**Microsoft. Storage/storageAccounts/listkeys/action**），因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ### <a name="use-your-azure-ad-account"></a>使用您的 Azure AD 帳戶
 

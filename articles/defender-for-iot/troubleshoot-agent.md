@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: e9904e9157a560e2a4853a1a9cd37977defe73ea
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933915"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>安全性代理程式疑難排解指南 (Linux)
@@ -106,7 +106,7 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 | 驗證 | 無法剖析設定 | 無法剖析設定值。 錯誤訊息應該指出無法剖析的金鑰。 無法剖析設定值，因為值不是預期的類型，或值超出範圍。 |修正檔案 **LocalConfiguration.js** 中的機碼值。 |修正 **Authentication.config** 檔案中的機碼值以符合架構，如需詳細資料，請參閱 [cs localconfig 參考](azure-iot-security-local-configuration-c.md) 。|
 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀適用于 IoT 的 Defender 服務 [總覽](overview.md)
 - 深入瞭解適用于 IoT 的 Defender [架構](architecture.md)

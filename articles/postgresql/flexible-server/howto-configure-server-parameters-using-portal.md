@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 4f945c2c7fffb143bdb8324a330775fb072b25c1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934206"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---flexible-server-via-the-azure-portal"></a>透過 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中設定伺服器參數 
@@ -46,7 +46,7 @@ ms.locfileid: "90934206"
 8. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 了解：
 

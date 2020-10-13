@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75466586"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
@@ -16,8 +16,8 @@ ms.locfileid: "75466586"
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type |Type 屬性必須設定為： **AzureStorage** |Yes |
-| connectionString |針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 |Yes |
+| type |類型屬性必須設定為：**AzureStorage** |是 |
+| connectionString |針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 |是 |
 
 如需有關如何擷取儲存體帳戶存取金鑰的資訊，請參閱[管理儲存體帳戶存取金鑰](../articles/storage/common/storage-account-keys-manage.md)。
 
@@ -50,7 +50,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type |類型屬性必須設為： **AzureStorageSas** |是 |
-| sasUri |指定 Azure 儲存體資源 (例如 Blob、容器或資料表) 的共用存取簽章 URI。  |Yes |
+| sasUri |指定 Azure 儲存體資源 (例如 Blob、容器或資料表) 的共用存取簽章 URI。  |是 |
 
 **範例︰**
 
@@ -68,7 +68,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 建立 **SAS URI**時，請考慮下列事項：  
 
-* 根據連結的服務（讀取、寫入、讀取/寫入）在資料處理站中的使用方式，在物件上設定適當的讀取/寫入**許可權**。
+* 根據連結的服務 (讀取、寫入、讀取/寫入) 在資料處理站中的使用方式，在物件上設定適當的讀取/寫入**權限**。
 * 設定適當的 [過期時間]。 請確定 Azure 儲存體物件的存取權不會在管線的作用中期間內過期。
 * URI 應根據需要在正確的容器/Blob 或資料表層級建立。 Azure Blob 的 SAS URI 可允許 Data Factory 服務存取該特定的 Blob。 Azure Blob 容器的 SAS URI 可允許 Data Factory 服務逐一查看該容器中的 Blob。 如果您稍後需要提供更多/較少物件的存取權，或需要更新 SAS URI，請記得使用新的 URI 更新連結的服務。   
 

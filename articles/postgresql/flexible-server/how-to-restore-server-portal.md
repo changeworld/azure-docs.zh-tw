@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934222"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>彈性伺服器的時間點還原
@@ -40,9 +40,9 @@ ms.locfileid: "90934222"
 
 4.  選取 **最早的還原點** ，並在 [ **還原到新伺服器** ] 欄位中提供新的伺服器名稱。 您可以還原至的最早時間戳記隨即顯示。 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="最早的還原時間":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="還原總覽":::
 
-5.  按一下 [確定]  。
+5.  按一下 [確定]。
 
 6.  系統會顯示已起始還原作業的通知。
 
@@ -61,13 +61,13 @@ ms.locfileid: "90934222"
 
 5.  選取 [日期和時間]，然後在 [ **還原到新伺服器** ] 欄位中提供新的伺服器名稱。 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="自訂還原時間":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="還原總覽":::
  
-6.  按一下 [確定]  。
+6.  按一下 [確定]。
 
 7.  系統會顯示已起始還原作業的通知。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
 -   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)

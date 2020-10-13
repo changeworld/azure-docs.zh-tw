@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934373"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用 Collaborative Translation Framework (CTF) 報告
@@ -34,7 +34,7 @@ ms.locfileid: "88934373"
 CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfreporting.svc 。
 
 ## <a name="methods"></a>方法
-| 名稱 | 描述|
+| 名稱 | 說明|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 取得使用者所建立的翻譯計數。 |
 | GetUserTranslations 方法 | 擷取使用者所建立的翻譯。 |
@@ -72,12 +72,12 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 
 **參數**
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:---|:---|
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
 | uriPrefix | **選擇性** 一個包含翻譯 URI 前置詞的字串。|
 | 從 | **選擇性** 一個代表翻譯文字之語言代碼的字串。 |
-| 至 | **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
+| to | **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | user | **選擇性** 一個可根據提交項目建立者來篩選結果的字串。 |
@@ -94,10 +94,10 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 
 結果集會包含 **UserTranslationCount** 的陣列。 每個 UserTranslationCount 都有下列元素：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 |:---|:---|
 | Count| 所擷取的結果數目|
-| 寄件者 | 來源語言|
+| 來自 | 來源語言|
 | 分級| 提交者在 AddTranslation() 方法呼叫中套用的評分|
 | 收件者| 目標語言|
 | Uri| AddTranslation() 方法呼叫中套用的 URI|
@@ -143,12 +143,12 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 
 **參數**
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:---|:---|
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
 | uriPrefix| **選擇性** 一個包含翻譯 URI 前置詞的字串。|
 | 從| **選擇性** 一個代表翻譯文字之語言代碼的字串。|
-| 至| **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
+| to| **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | user| **選。用來根據提交的建立者來篩選結果的字串。**|
@@ -165,10 +165,10 @@ CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfrepor
 
 結果集會包含 **UserTranslation** 的陣列。 每個 UserTranslation 都有下列元素：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 |:---|:---|
 | CreatedDateUtc| 使用 AddTranslation() 之項目的建立日期|
-| 寄件者| 來源語言|
+| 來自| 來源語言|
 | OriginalText| 提交要求時所使用的來源語言文字|
 |分級 |提交者在 AddTranslation() 方法呼叫中套用的評分|
 |收件者|    目標語言|

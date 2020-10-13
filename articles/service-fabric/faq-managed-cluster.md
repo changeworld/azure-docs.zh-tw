@@ -7,13 +7,13 @@ author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91728993"
 ---
-# <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric 受控叢集的常見問題
+# <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric 受控叢集常見問題集
 
 有許多關於 Service Fabric 受控叢集 (preview) 可以做什麼，以及應該如何使用的常見問題。 本文件涵蓋許多這類問題和解答。
 

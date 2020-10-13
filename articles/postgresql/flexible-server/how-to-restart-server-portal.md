@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933839"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>重新開機適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器
@@ -43,11 +43,11 @@ ms.locfileid: "90933839"
 
 4.  如果您想要繼續，請按一下 **[是]** 。
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="重新開機確認":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="重新開機選取專案":::
  
 6.  將會顯示已起始重新開機作業的通知。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
 -   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)

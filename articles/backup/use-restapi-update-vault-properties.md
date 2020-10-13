@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567820"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
@@ -85,10 +85,10 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   String      |  選擇性 eTag       |
-|location     |  true       |String         |   資源位置      |
+|etag     |         |   字串      |  選擇性 eTag       |
+|location     |  true       |字串         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
-|tags     |         | 物件        |     資源標籤    |
+|tags     |         | Object        |     資源標籤    |
 
 #### <a name="example-request-body"></a>要求本文範例
 

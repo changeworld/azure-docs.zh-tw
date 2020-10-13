@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779713"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>將存取權限指派給身分識別
@@ -120,7 +120,7 @@ else
 3. 選取 [ **編輯]。** 變更許可權。
 4. 您可以變更現有使用者的許可權， **或選取 [新增]** ，將許可權授與新的使用者。
 5. 在 [新增使用者的提示] 視窗中，在 [ **輸入物件名稱來選取** ] 方塊中輸入您想要授與許可權的目標使用者名稱，然後選取 [ **檢查名稱** ] 以尋找目標使用者的完整 UPN 名稱。
-7.    選取 [確定]。
+7.    選取 [確定]  。
 8.    在 [ **安全性** ] 索引標籤中，選取您要授與新使用者的擁有權限。
 9.    選取 [套用]。
 

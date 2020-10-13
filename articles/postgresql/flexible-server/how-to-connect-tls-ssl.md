@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 0ba04ff14e62cd411515a765dc95ef7a3e72b709
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934243"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-in-azure-database-for-postgresql---flexible-server"></a>在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中使用傳輸層安全性加密的連線能力
@@ -43,7 +43,7 @@ ms.locfileid: "90934243"
 
 某些針對其資料庫服務使用於 postgresql 的應用程式架構，在安裝期間預設不會啟用 TLS。 您的于 postgresql 伺服器會強制執行 TLS 連線，但如果未針對 TLS 設定應用程式，則應用程式可能無法連線到您的資料庫伺服器。 請參閱您應用程式的檔，以瞭解如何啟用 TLS 連接。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [使用 Azure CLI 建立及管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器虛擬網路](./how-to-manage-virtual-network-cli.md)。
 - 深入瞭解 [適用於 PostgreSQL 的 Azure 資料庫彈性伺服器中的網路功能](./concepts-networking.md)
 - 深入瞭解 [適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器防火牆規則](./concepts-networking.md#public-access-allowed-ip-addresses)

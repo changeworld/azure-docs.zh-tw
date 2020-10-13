@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715992"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
@@ -145,7 +145,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 當您達到 Azure 檔案共用上的檔案或目錄允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 檔案服務擴展目標](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能和擴充性檢查清單](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -154,7 +154,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 若要關閉檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet。
 
 > [!Note]  
-> >get-azstoragefilehandle 和 >get-azstoragefilehandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>當您嘗試存取或刪除 Azure 檔案共用時發生「無存取」錯誤  
@@ -184,7 +184,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 ### <a name="cause"></a>原因
 如果檔案或目錄具有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -193,7 +193,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 - 使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet 來關閉開啟的控制碼。 
 
 > [!Note]  
-> >get-azstoragefilehandle 和 >get-azstoragefilehandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>從 Windows 中的 Azure 檔案服務複製檔案或將檔案複製到其中的速度變慢
@@ -230,7 +230,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 根據預設，Windows 檔案總管不會以系統管理員身分執行。 如果您從系統管理命令提示字元執行 net use，就是以系統管理員身分對應網路磁碟機。 因為對應的磁碟機是以使用者為中心，如果磁碟機掛接在不同的使用者帳戶下，登入的使用者帳戶不會顯示此磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 從非系統管理員命令掛接共用。 或者，您也可以遵循 [本 TechNet 主題](https://technet.microsoft.com/library/ee844140.aspx) 來設定 **EnableLinkedConnections** 登錄值。
 
 <a id="netuse"></a>
@@ -240,7 +240,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者帳戶名稱開頭為斜線，磁碟機對應將會失敗。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 您可以使用下列其中一種方式來解決這個問題：
 
@@ -261,7 +261,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 磁碟機是按每個使用者掛接。 如果您的應用程式或服務正在與掛接磁碟機之帳戶不同的使用者帳戶下執行，應用程式將不會看到該磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 使用下列其中一個解決方案：
 
@@ -302,7 +302,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 如果用戶端機器上沒有足夠的快取可供大型目錄使用時，就會發生此問題。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請調整 **DirectoryCacheEntrySizeMax** 登錄值，以允許在用戶端機器快取較大型的目錄清單：
 
@@ -319,7 +319,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 當您嘗試在未于相關聯訂用帳戶的 Azure 檔案儲存體租使用者上建立[Azure AD 網域服務 (AZURE AD ds) ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)的儲存體帳戶上，于[Azure AD 上啟用 AZURE ACTIVE DIRECTORY DOMAIN SERVICES (Azure AD ds) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，就會發生錯誤 AadDsTenantNotFound。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 在您的儲存體帳戶部署所在訂用帳戶的 Azure AD 租使用者上，啟用 Azure AD DS。 您需要 Azure AD 租使用者的系統管理員許可權，才能建立受控網域。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) 的逐步指導。
 
@@ -332,7 +332,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 其次，請嘗試 [使用儲存體帳戶金鑰來裝載 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)。 如果您無法掛接，請下載 [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) 以協助您驗證用戶端執行環境、偵測不相容的用戶端設定，這會造成 Azure 檔案儲存體的存取失敗、提供自行修正的規範指引，以及收集診斷追蹤。
 
-第三，您可以執行 AzStorageAccountAuth 指令程式，以登入 AD 使用者進行 AD 設定的一組基本檢查。 [AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)支援此 Cmdlet。 您必須以對目標儲存體帳戶具有擁有者權限的 AD 使用者身分執行此 Cmdlet。  
+第三，您可以執行 Debug-AzStorageAccountAuth Cmdlet，以登入的 AD 使用者進行 AD 設定的一組基本檢查。 [AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)支援此 Cmdlet。 您必須以對目標儲存體帳戶具有擁有者權限的 AD 使用者身分執行此 Cmdlet。  
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -356,7 +356,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 - 按一下 [安全性] 索引標籤下的 [編輯] 許可權之後，就不會載入許可權嚮導。 
 - 當您嘗試選取新的使用者或群組時，網域位置不會顯示正確的 AD DS 網域。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 建議您使用 [icacls 工具](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) 來設定目錄/檔案層級許可權，以作為因應措施。 
 

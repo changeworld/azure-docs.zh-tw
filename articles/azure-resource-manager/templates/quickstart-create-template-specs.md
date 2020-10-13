@@ -2,15 +2,15 @@
 title: 建立和部署範本規格
 description: 了解如何從 ARM 範本建立範本規格。 然後，將範本規格部署至您訂用帳戶中的資源群組。
 author: tfitzmac
-ms.date: 09/25/2020
+ms.date: 10/02/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369210"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728772"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入門：建立和部署範本規格 (預覽)
 
@@ -27,7 +27,7 @@ ms.locfileid: "91369210"
 
 ## <a name="create-template-spec"></a>建立範本規格
 
-範本規格是名為 **Microsoft.Resources/templateSpecs** 的新資源類型。 若要建立您的範本規格，您可以使用 Azure PowerShell、Azure CLI 或 ARM 範本。 在所有選項中，您都需要封裝在範本規格內的 ARM 範本。
+範本規格是名為 **Microsoft.Resources/templateSpecs** 的資源類型。 若要建立您的範本規格，您可以使用 Azure PowerShell、Azure CLI 或 ARM 範本。 在所有選項中，您都需要封裝在範本規格內的 ARM 範本。
 
 使用 PowerShell 和 CLI 時，ARM 範本會當做參數傳入命令。 使用 ARM 範本時，要封裝至範本規格內的 ARM 範本會內嵌在範本規格定義中。
 

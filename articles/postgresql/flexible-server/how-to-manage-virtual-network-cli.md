@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 727eb4cd7e7c3de090e1573cb5358ef23118385e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933844"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 為適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器建立及管理虛擬網路
@@ -78,7 +78,7 @@ az account set --subscription <subscription id>
     ```-->
 請參閱 Azure CLI 參考檔 <!--FIXME --> 以取得可設定的 CLI 參數完整清單。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [適用於 PostgreSQL 的 Azure 資料庫具彈性的伺服器中的網路功能](./concepts-networking.md)。
 - [使用 Azure 入口網站建立及管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器虛擬網路](./how-to-manage-virtual-network-portal.md)。
 - 深入瞭解 [適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器虛擬網路](./concepts-networking.md#private-access-vnet-integration)。

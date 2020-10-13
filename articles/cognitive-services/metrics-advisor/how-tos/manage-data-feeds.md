@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: aahi
 ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933984"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>如何：管理您的資料摘要
@@ -97,7 +97,7 @@ ms.locfileid: "90933984"
 > 此設定不會影響您的資料來源，且不會影響入口網站上顯示的資料圖表。 自動填入只會在異常偵測期間發生。
 
 某些時間序列不是連續的。 遺漏資料點時，計量審查程式會使用指定的值來填滿異常偵測，以獲得更好的精確度。
-可用選項包括： 
+其選項包括： 
 
 * 使用先前實際資料點的值。 預設會使用這個。
 * 使用特定值。
@@ -106,11 +106,11 @@ ms.locfileid: "90933984"
 
 動作連結範本可用來預先定義可採取動作的 HTTP url，其中包含預留位置 `%datafeed` 、 `%metric` 、、 `%timestamp` `%detect_config` 和 `%tagset` 。 您可以使用此範本，從異常或事件重新導向至特定的 URL，以向下切入。
 
-:::image type="content" source="../media/action-link-template.png" alt-text="動作連結範本" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="回填資料摘要" lightbox="../media/action-link-template.png":::
 
 當您填入 [動作] 連結之後，請按一下事件清單的 [動作] 選項以及事件樹狀目錄的滑鼠右鍵功能表上的 [ **移至動作] 連結** 。 以異常或事件的對應值取代動作連結範本中的預留位置。
 
-| 預留位置 | 範例 | 註解 |
+| 預留位置 | 範例 | 留言 |
 | ---------- | -------- | ------- |
 | `%datafeed` | - | 資料摘要識別碼 |
 | `%metric` | - | 度量識別碼 |
@@ -141,7 +141,7 @@ ms.locfileid: "90933984"
 
 * **自動**延遲：當此選項設定為零時，每個 *無法使用* 的時間戳記都會觸發警示。 指定零以外的設定時，不會根據指定的設定來觸發第一個 *無法* 使用的時間戳記之後的連續時間戳記。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [設定計量和微調偵測組態](configure-metrics.md)
 - [使用意見反應來調整異常偵測](anomaly-feedback.md)
 - [診斷事件](diagnose-incident.md)。

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 25e5cb6e34624f3272e83e1e7c1cd847b865ae8e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934194"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>標準詞彙和概念的計量顧問詞彙
@@ -181,7 +181,7 @@ ms.locfileid: "90934194"
 
 **所有數列的前 n 個異常**：只會針對前 n 個系列中的異常觸發警示。 您可以設定參數來指定要納入考慮的時間戳記數目，以及其中必須有多少異常才能傳送警示。
 
-### <a name="severity"></a>嚴重性
+### <a name="severity"></a>Severity
 
 嚴重性是計量審查程式用來描述事件嚴重性的等級，包括 *高*、 *中*和 *低*。
 
@@ -244,7 +244,7 @@ ms.locfileid: "90934194"
 
 * *檢視器*可以查看資料摘要或計量，但無法進行變更。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [Metrics Advisor 概觀](overview.md)
 - [試用示範網站](quickstarts/explore-demo.md)
 - [使用入口網站](quickstarts/web-portal.md)

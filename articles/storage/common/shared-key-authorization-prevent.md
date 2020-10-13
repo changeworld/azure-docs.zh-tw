@@ -10,10 +10,10 @@ ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715117"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>防止 Azure 儲存體帳戶的共用金鑰授權 (預覽) 

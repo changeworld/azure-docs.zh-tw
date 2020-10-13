@@ -4,10 +4,10 @@ description: 說明當提供的資源名稱包含保留字時應如何解決錯�
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75477625"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>解決保留資源名稱的錯誤
@@ -66,6 +66,6 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 * WINDOWS
 * XBOX
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 提供名稱時，不要使用任何一個保留字。

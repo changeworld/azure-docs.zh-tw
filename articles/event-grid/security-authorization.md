@@ -4,10 +4,10 @@ description: 說明 Azure Event Grid 與其概念。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119084"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授權存取事件方格資源
@@ -29,7 +29,7 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 
 ## <a name="built-in-roles"></a>內建角色
 
-事件格線能提供兩個內建角色以用來管理事件訂閱。 它們在執行[事件網域](event-domains.md)時很重要，因為它們會授與使用者所需的許可權，以訂閱您事件網域中的主題。 這些角色會將焦點放在事件訂閱上，而且不會針對建立主題之類的動作授與存取權。
+事件格線能提供兩個內建角色以用來管理事件訂閱。 它們在執行 [事件網域](event-domains.md) 時很重要，因為它們提供使用者訂閱事件網域中的主題所需的許可權。 這些角色會將焦點放在事件訂閱上，而且不會針對建立主題之類的動作授與存取權。
 
 您可以[將這些角色指派給使用者或群組](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
