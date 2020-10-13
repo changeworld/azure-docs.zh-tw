@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372199"
+ms.locfileid: "91874283"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>影片分析-物件和動作偵測應用程式架構
 
@@ -41,4 +41,4 @@ Media graph 可讓您定義要從哪裡捕獲媒體、如何處理它，以及�
 
 ## <a name="next-steps"></a>後續步驟
 
-建議的下一個步驟是瞭解如何 [在 Azure IoT Central 中建立影片分析應用程式](tutorial-video-analytics-create-app.md)。
+建議的下一個步驟是瞭解如何 [使用影片分析-物件和動作偵測應用程式範本來部署 IoT Central 應用程式](tutorial-video-analytics-deploy.md)。

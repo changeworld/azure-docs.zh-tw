@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536098"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 應用程式中的意圖
@@ -51,7 +51,7 @@ ms.locfileid: "91536098"
 
  當使用者的「意圖」__ 會觸發用戶端應用程式中的動作 (例如對 checkweather() 函式的呼叫) 時，請建立意圖。 然後，建立實體以代表執行此動作所需的參數。
 
-|Intent   | 單位 | 範例語句   |
+|Intent   | 實體 | 範例語句   |
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | 天氣是什麼 `Seattle` `tomorrow` ？ |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend` |
@@ -63,7 +63,7 @@ ms.locfileid: "91536098"
 
 ## <a name="none-intent"></a>None 意圖
 
-系統會建立 **None** 但刻意保留空白。 **None** 意圖是必要意圖，您無法將其刪除或重新命名。 請以您定義域外的語句填入它。
+系統會建立 **None** 但刻意保留空白。 **None**意圖是必要的意圖，無法刪除或重新命名。 請以您定義域外的語句填入它。
 
 **None**意圖是回溯意圖，每個應用程式都很重要，而且應該有10% 的總語句。 它可用來教導 LUIS 在應用程式定義域 (主題區域) 中不重要的語句。 如果您沒有為 **None** 意圖新增任何語句，LUIS 就會強制讓定義域外的某個語句變成其中一個定義域意圖。 這會教導 LUIS 錯誤的語句意圖而扭曲預測分數。
 

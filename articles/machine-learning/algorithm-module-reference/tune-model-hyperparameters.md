@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/17/2020
-ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 2ec1726056c7ab223f7d3de70a715a8254e95db4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907763"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940204"
 ---
 # <a name="tune-model-hyperparameters"></a>調整模型超參數
 
@@ -77,9 +77,9 @@ ms.locfileid: "90907763"
 
 定型完成時：
 
-+ 若要查看清理結果，請以滑鼠右鍵按一下模組，然後選取 [ **視覺化**]。
++ 若要查看清除的結果，您可以在模組上按一下滑鼠右鍵，然後選取 [ **視覺化**]，或以滑鼠右鍵按一下模組的 [左方輸出埠] 以視覺化方式呈現。
 
-    輸出包含適用于模型類型的所有參數清除和精確度度量，但您為排名選取的計量會決定哪一個模型被視為「最佳」。
+    清除 **結果** 包含適用于模型類型的所有參數清除和精確度度量，而您為排名選取的計量會決定哪一個模型被視為「最佳」。
 
 + 若要儲存定型模型的快照集，請在 [**定型模型**] 模組的右面板中，選取 [**輸出 + 記錄**] 索引標籤。 選取 [ **註冊資料集** ] 圖示，將模型儲存為可重複使用的模組。
 

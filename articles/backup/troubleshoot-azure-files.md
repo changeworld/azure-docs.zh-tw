@@ -4,10 +4,10 @@ description: 本文說明如何排解您在保護 Azure 檔案共用時所發生
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89376973"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時發生的問題進行疑難排解
@@ -318,7 +318,7 @@ ms.locfileid: "89376973"
 
 檢查備份的檔案共用是否永久刪除。 如果是，請停止檔案共用的備份，以避免重複的備份失敗。 若要瞭解如何停止保護，請參閱 [停止保護 Azure 檔案共用](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需備份 Azure 檔案共用的更多資訊，請參閱︰
 

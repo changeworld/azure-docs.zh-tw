@@ -10,10 +10,10 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355035"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解

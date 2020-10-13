@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535826"
 ---
 # <a name="caching-with-azure-front-door"></a>使用 Azure Front Door 快取
@@ -113,7 +113,7 @@ Front Door 上的快取清除是不區分大小寫的。 此外，它們不受�
 2. 快取-控制：最大壽命 =\<seconds>
 3. 到期： \<http-date>
 
-快取控制回應標頭，表示不快取回應，例如快取控制：私用、快取控制：無快取和快取控制：不接受存放區。  如果沒有快取控制項，則預設行為是 Front Door 將會快取 X 個時間長度的資源，其中 X 會隨機挑選介於1到3天之間。
+Cache-Control 回應標頭，表示不會快取回應，例如快取控制：私用、快取控制：無快取和快取控制：不接受存放區。  如果沒有 Cache-Control 存在，則預設行為是 Front Door 會快取 X 個時間長度的資源，其中 X 會隨機挑選介於1到3天之間。
 
 ## <a name="request-headers"></a>要求標頭
 

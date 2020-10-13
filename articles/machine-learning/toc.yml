@@ -15,7 +15,7 @@
 - name: 教學課程
   expanded: true
   items:
-    - name: Python 第 1 天開始使用
+    - name: Python 入門 (第 1 天)
       expanded: true
       items:
         - name: 1. 設定本機電腦
@@ -188,6 +188,8 @@
             - name: 使用 Private Link
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: 使用自訂 DNS
+              href: how-to-custom-dns.md
             - name: 設定安全的 Web 服務
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

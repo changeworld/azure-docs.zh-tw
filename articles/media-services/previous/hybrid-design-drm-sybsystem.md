@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266896"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系統的混合式設計
@@ -133,7 +133,7 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 總而言之，Azure 媒體服務 DRM 元件富有彈性，只要如本主題所述正確設定內容金鑰與資產傳遞原則，就可以在混合式案例中使用它們。
 

@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 263bf1cd2a7e2a37a1c4fae172ce4f66b1e59b5f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265974"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 設定 Azure 媒體服務遙測
@@ -35,7 +35,7 @@ ms.locfileid: "89265974"
 
 - 直接從 Azure 表格儲存體 (例如使用儲存體 SDK) 中讀取資料。 如需遙測儲存體資料表的說明，請參閱[這個](/previous-versions/azure/mt742089(v=azure.100))文章中的**取用遙測資訊**。
 
-Or
+或者
 
 - 使用媒體服務 .NET SDK 中的支援讀取儲存體資料。 本文章示範如何為指定的 AMS 帳戶啟用遙測，以及如何使用 Azure 媒體服務 .NET SDK 查詢度量。  
 

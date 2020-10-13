@@ -2,14 +2,14 @@
 title: 使用 Azure Cosmos DB 和 Functions 儲存非結構化資料
 description: 使用 Azure Functions 和 Cosmos DB 儲存非結構化資料
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987984"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91661154"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 儲存非結構化資料
 
@@ -132,7 +132,7 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-function-and-database"></a>測試函式和資料庫
 
-1. 選取 [測試]。 在 [查詢] 底下選取 [+ 新增參數]，並將下列參數新增至查詢字串：
+1. 選取 [測試/執行]。 在 [查詢] 底下選取 [+ 新增參數]，並將下列參數新增至查詢字串：
 
     + `name`
     + `task`

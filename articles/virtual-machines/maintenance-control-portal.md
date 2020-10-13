@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
 ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397278"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>使用維護控制和 Azure 入口網站來控制更新
@@ -30,15 +30,15 @@ ms.locfileid: "91397278"
 
    ![顯示如何新增維護設定的螢幕擷取畫面](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
 
-1. 選擇訂用帳戶和資源群組，提供設定的名稱，然後選擇區域。 按 [下一步]  。
+1. 選擇訂用帳戶和資源群組，提供設定的名稱，然後選擇區域。 按一下 [下一步]。
 
    ![顯示維護設定基本概念的螢幕擷取畫面](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
 
-1. 新增標記和值。 按 [下一步]  。
+1. 新增標記和值。 按一下 [下一步]。
 
    ![顯示如何將標記新增至維護設定的螢幕擷取畫面](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
 
-1. 檢閱摘要。 按一下頁面底部的 [新增] 。
+1. 檢閱摘要。 按一下 [建立]。
 
    ![顯示如何建立維護設定的螢幕擷取畫面](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
 

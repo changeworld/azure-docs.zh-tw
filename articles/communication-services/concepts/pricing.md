@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460929"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761221"
 ---
 # <a name="pricing-scenarios"></a>定價案例
 
@@ -59,7 +59,7 @@ Alice 與同事 Bob 和 Charlie 進行群組通話。 Alice 和 Bob 使用 JS �
 
 ### <a name="price"></a>價格
 
-- 每個傳送的聊天訊息都會向您收取 $0.0008。
+每則傳送的聊天訊息都會向您收取 $0.0008。
 
 ### <a name="pricing-example-chat-between-two-users"></a>價格範例：兩個使用者之間的聊天 
 
@@ -77,3 +77,46 @@ Rose 看到訊息並且開始聊天。 此時 Casey 有來電，因此決定稍�
 **成本計算** 
 
 - 已傳送的訊息數目 (20 + 30 + 18 + 30 + 25 + 35) x $0.0008 = $0.1264
+
+
+## <a name="telephony-and-sms"></a>電話語音和 SMS
+
+## <a name="price"></a>價格 
+
+電話語音服務的定價是以每分鐘為基礎，而 SMS 的定價則是以每個訊息為基礎。 定價取決於您所使用號碼的類型和位置，以及通話和 SMS 訊息的目的地。
+
+### <a name="telephone-calling"></a>電話通話
+
+傳統電話通話 (透過公開交換電話網路進行的通話) 可與美國地區電話號碼的隨用隨付定價搭配使用。 價格是根據所使用的號碼類型和通話目的地，每分鐘計費。 下表包含最熱門通話目的地的定價詳細資料。 如需目的地的完整清單，請參閱[詳細定價清單](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)。
+
+
+#### <a name="united-states-calling-prices"></a>美國通話價格
+
+下列價格包含 2021 年 6 月 30 日之前所需的通訊稅金和費用：
+
+|數字類型   |進行通話   |接收通話|
+|--------------|-----------|------------|
+|本機     |起始價格為 $0.013/分鐘       |$0.0085/分鐘        |
+|免付費電話 |$0.013/分鐘   |$0.0220/分鐘 |
+
+#### <a name="other-calling-destinations"></a>其他通話目的地
+
+下列價格包含 2021 年 6 月 30 日之前所需的通訊稅金和費用：
+
+|進行通話   |每分鐘價格|
+|-----------|------------|
+|加拿大     |起始價格為 $0.013/分鐘   |
+|英國     |起始價格為 $0.015/分鐘   |
+|德國     |起始價格為 $0.015/分鐘   |
+|法國     |起始價格為 $0.016/分鐘   |
+
+
+### <a name="sms"></a>SMS
+
+SMS 提供隨用隨付定價。 價格是根據訊息目的地，每則訊息計費。 訊息可由免付費電話號碼傳送至位於美國境內的電話號碼。 請注意，當地 (地理) 電話號碼無法用來傳送 SMS 訊息。
+
+下列價格包含 2021 年 6 月 30 日之前所需的通訊稅金和費用：
+
+|國家/地區   |傳送訊息|接收訊息|
+|-----------|------------|------------|
+|美國 (免付費電話)    |$0.0075/訊息   | $0.0075/訊息 |

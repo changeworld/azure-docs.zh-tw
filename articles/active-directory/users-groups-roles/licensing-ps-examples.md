@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3db95c7ad7998817f4818203632310fe4aacb57a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827754"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中以群組為基礎之授權的 PowerShell 和圖形範例
@@ -657,7 +657,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 > [!NOTE]
 > 執行上述腳本之前，請先根據您的測試環境，更新變數的值並將其設為 `$skuId` `$groupId`   目標，以移除直接授權。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解透過群組管理授權的功能集，請參閱下列文章：
 

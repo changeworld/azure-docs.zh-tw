@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07dc11877b38e830d90f544f1d7524b378bf5902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053747"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立可指派角色的群組
@@ -124,7 +124,7 @@ POST https://graph.microsoft.com/beta/groups
 
 若為這種類型的群組，則 `isPublic` 一律為 false，而且 `isSecurityEnabled` 一律會是 true。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [將角色指派給雲端群組](roles-groups-assign-role.md)
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)

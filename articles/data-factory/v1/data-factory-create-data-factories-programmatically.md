@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019890"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure Data Factory .NET SDK 來建立、監視及管理 Azure Data Factory
@@ -29,7 +29,7 @@ ms.locfileid: "89019890"
 > [!NOTE]
 > 這篇文章並未涵蓋所有的 Data Factory .NET API。 如需適用於 Data Factory 之 .NET API 的完整文件，請參閱 [Data Factory .NET API 參考](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

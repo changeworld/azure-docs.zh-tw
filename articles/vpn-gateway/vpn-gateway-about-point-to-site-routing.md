@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827198"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>關於點對站 VPN 路由
@@ -44,7 +44,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端可以存取 VNet1
 
@@ -74,7 +74,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、10.2.0.0/16、10.4.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端可以存取 VNet1、VNet2 及 VNet4，但必須重新下載 VPN 用戶端，才能讓所有拓撲變更生效。
 
@@ -102,7 +102,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、10.2.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端只能存取 VNet1
 
@@ -130,7 +130,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端可以存取 VNet1、VNet2 及 VNet3，但必須手動新增 VNet2 和 VNet3 的路由。
 
@@ -156,7 +156,7 @@ Windows 和非 Windows 用戶端只能存取 VNet1。
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端只能存取 VNet1
 
@@ -182,7 +182,7 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、10.101.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端可以存取 VNet1 和 Site1，但必須手動新增 Site1 的路由。
 
@@ -213,7 +213,7 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端只能存取 VNet1
 
@@ -243,12 +243,12 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 新增至非 Windows 用戶端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>存取
 
 * Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1，但必須手動將 VNet2、VNet3 及 Site1 的路由新增至用戶端。
 
 * 非 Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱[使用 Azure 入口網站來建立 P2S VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) 以開始建立 P2S VPN。

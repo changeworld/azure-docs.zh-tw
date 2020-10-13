@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
 ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074727"
 ---
 # <a name="use-ip-filters"></a>使用 IP 篩選器
@@ -47,11 +47,11 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 
 若要新增 IP 篩選器規則，請選取 [+ 新增 IP 篩選器規則]。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="新增 IP 篩選器規則到 IoT 中樞":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT 中樞預設 IP 篩選器設定":::
 
 選取 [新增 IP 篩選器規則] 之後，請填寫欄位。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="選取 [新增 IP 篩選器規則] 之後":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT 中樞預設 IP 篩選器設定":::
 
 * 提供 IP 篩選器規則的**名稱**。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 所能接受的字元只有 ASCII 7 位元英數字元以及 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
@@ -61,7 +61,7 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 
 填寫欄位之後，請選取 [儲存] 以儲存規則。 您會看到通知您正在進行更新的警示。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="有關儲存 IP 篩選器規則的通知":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IoT 中樞預設 IP 篩選器設定":::
 
 當您達到 10 個 IP 篩選器規則的上限後，[新增] 選項便會停用。
 
@@ -71,7 +71,7 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 
 若要刪除 IP 篩選器規則，請選取該資料列上的垃圾桶圖示，然後選取 [儲存]。 此規則會被移除，並儲存變更。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="刪除 IoT 中樞 IP 篩選器規則":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT 中樞預設 IP 篩選器設定":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 擷取和更新 IP 篩選條件
 
@@ -161,7 +161,7 @@ IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定�
 
 若要儲存新的 IP 篩選器規則順序，請按一下 [儲存]。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="變更 IoT 中樞 IP 篩選器規則的順序":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT 中樞預設 IP 篩選器設定":::
 
 ## <a name="next-steps"></a>後續步驟
 

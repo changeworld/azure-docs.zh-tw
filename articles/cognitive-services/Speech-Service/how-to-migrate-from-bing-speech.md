@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
 ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825585"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>從 Bing 語音遷移至語音服務
@@ -37,7 +37,7 @@ ms.locfileid: "91825585"
 
 語音服務主要類似于 Bing 語音，但有下列差異。
 
-| 特徵 | Bing 語音 | 語音服務 | 詳細資料 |
+| 功能 | Bing 語音 | 語音服務 | 詳細資料 |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | 語音服務支援 Windows 10、通用 Windows 平臺 (UWP) 和 .NET Standard 2.0。 |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | 語音服務支援 Windows 和 Linux。 |
@@ -51,7 +51,7 @@ ms.locfileid: "91825585"
 | 簡單意圖辨識 | :heavy_minus_sign: | :heavy_check_mark: |
 | 長音訊檔案的批次轉譯 | :heavy_minus_sign: | :heavy_check_mark: |
 | 辨識模式 | 手動 (透過端點 URI) | 自動 | 語音服務中無法使用辨識模式。 |
-| 端點位置 | 全球 | 地區 | 區域端點能改善延遲。 |
+| 端點位置 | 全域 | 地區 | 區域端點能改善延遲。 |
 | REST API | :heavy_check_mark: | :heavy_check_mark: | 語音服務 REST Api 與 Bing 語音 (不同的端點) 相容。 REST API 能支援文字轉換語音和有限的語音轉換文字功能。 |
 | WebSocket 通訊協定 | :heavy_check_mark: | :heavy_minus_sign: | 語音 SDK 會針對需要持續連線到服務的功能來抽象化 web 通訊端連線，因此不再支援手動訂閱這些連接。 |
 | 服務對服務 API 呼叫 | :heavy_check_mark: | :heavy_minus_sign: | 透過 C# 服務程式庫在 Bing 語音中提供。 |
@@ -81,13 +81,13 @@ Bing 語音客戶應該透過開啟[支援票證](https://ms.portal.azure.com/#b
 
 如需語音服務、SDK 和 API 支援，請造訪語音服務 [支援頁面](support.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [免費試用語音服務](overview.md#try-the-speech-service-for-free)
 * [開始使用語音轉換文字](get-started-speech-to-text.md)
 * [開始使用文字轉換語音](get-started-text-to-speech.md)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [語音服務版本資訊](releasenotes.md)
 * [什麼是語音服務](overview.md)

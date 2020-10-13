@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076129"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Windows Azure 診斷的事件彙總和收集
@@ -21,12 +21,12 @@ ms.locfileid: "87076129"
 
 當您執行 Azure Service Fabric 叢集時，最好從中央位置的所有節點收集記錄。 將記錄集中在中央位置，可協助您分析並針對叢集或該叢集中執行之應用程式與服務的問題進行疑難排解。
 
-上傳和收集記錄的其中一種方式就是使用「Windows Azure 診斷 (WAD)」延伸模組，此延伸模組可將記錄上傳到「Azure 儲存體」，也可以選擇將記錄傳送至 Azure Application Insights 或「事件中樞」。 您也可以使用外部進程來讀取儲存體中的事件，並將它們放在分析平台產品中，例如[Azure 監視器記錄](./service-fabric-diagnostics-oms-setup.md)或其他記錄剖析解決方案。
+上傳和收集記錄的其中一種方式就是使用「Windows Azure 診斷 (WAD)」延伸模組，此延伸模組可將記錄上傳到「Azure 儲存體」，也可以選擇將記錄傳送至 Azure Application Insights 或「事件中樞」。 您也可以使用外部程式來讀取儲存體中的事件，並將它們放在分析平台產品中，例如 [Azure 監視器記錄](./service-fabric-diagnostics-oms-setup.md) 或其他記錄剖析解決方案。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 本文中使用下列工具：
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
@@ -51,7 +51,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 
 ![叢集範本](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-既然您正在匯總 Azure 儲存體中的事件，請[設定 Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)以取得見解，並在 Azure 監視器記錄入口網站中進行查詢
+現在您正在匯總 Azure 儲存體中的事件，請 [設定 Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md) ，以深入瞭解並在 Azure 監視器 logs 入口網站中查詢它們
 
 >[!NOTE]
 >目前沒有任何方法可以篩選或清理已傳送至資料表的事件。 如果不實作從資料表移除事件的處理序，資料表將會繼續成長 (預設上限為 50 GB)。 如何變更此項目的指示會在[本文下方詳述](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota)。 此外，我們可以提供具有 [Watchdog 範例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中所執行資料清理服務的範例，除非您必須儲存超過 30 或 90 天時間範圍的記錄，否則建議您自行撰寫資料清理服務。
@@ -89,7 +89,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 },
 ```
 
- 接下來，新增至參數區段中儲存體帳戶定義之後的位置，位於 `supportLogStorageAccountName` 之間。 以您想要的儲存體帳戶名稱取代預留位置文字 [*儲存體帳戶名稱*]。
+ 接下來，新增至參數區段中儲存體帳戶定義之後的位置，位於 `supportLogStorageAccountName` 之間。 以您想要的儲存體帳戶名稱取代預留位置文字 *儲存體帳戶名稱* 。
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -202,7 +202,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 ## <a name="log-collection-configurations"></a>記錄收集設定
 來自其他通道的記錄也可供收集，以下是一些您可以在適用於 Azure 中執行之叢集的範本中進行的最常見設定。
 
-* 操作通道-基底：預設為啟用，Service Fabric 和叢集執行的高階作業，包括即將發生的節點、正在部署的新應用程式，或升級復原等的事件。如需事件清單，請參閱[操作通道事件](./service-fabric-diagnostics-event-generation-operational.md)。
+* 操作通道-基底：預設為啟用，Service Fabric 和叢集執行的高階作業，包括即將進行的節點事件、正在部署的新應用程式，或升級復原等。如需事件清單，請參閱 [操作通道事件](./service-fabric-diagnostics-event-generation-operational.md)。
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
@@ -312,7 +312,7 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 >[!NOTE]
 >目前這僅適用於 Windows 叢集。
 
-有兩種主要方式可將資料從 WAD 傳送至 Azure 應用程式深入解析，這是透過 Azure 入口網站或透過 Azure Resource Manager 範本，將 Application Insights 接收新增至 WAD 設定來達成。
+有兩種主要方式可將資料從 WAD 傳送至 Azure 應用程式見解，其可透過 Azure 入口網站或透過 Azure Resource Manager 範本將 Application Insights 接收新增至 WAD 設定來達成。
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 入口網站中建立叢集時新增 Application Insights 檢測金鑰
 
@@ -351,15 +351,15 @@ Service Fabric 會設定一些[現成的記錄通道](service-fabric-diagnostics
 >[!NOTE]
 >如果您在入口網站或 Resource Manager 範本中使用不正確的 Application Insights 金鑰，您就必須手動變更金鑰，並更新/重新部署叢集。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-正確設定 Azure 診斷之後，您會從 ETW 和 EventSource 記錄中看到「儲存體」資料表中的資料。 如果您選擇使用 Azure 監視器記錄、Kibana，或未直接在 Resource Manager 範本中設定的任何其他資料分析和視覺效果平臺，請務必設定您選擇的平臺，以讀取這些儲存體資料表中的資料。 針對 Azure 監視器記錄進行這項操作相當簡單，而且會在[事件和記錄分析](service-fabric-diagnostics-event-analysis-oms.md)中說明。 也就是說，Application Insights 是特殊案例，因為它可以在設定診斷延伸模組時設定；因此，如果您選擇使用 AI，則請參閱[適當的文章](service-fabric-diagnostics-event-analysis-appinsights.md)。
+正確設定 Azure 診斷之後，您會從 ETW 和 EventSource 記錄中看到「儲存體」資料表中的資料。 如果您選擇使用 Azure 監視器記錄、Kibana 或任何其他未直接在 Resource Manager 範本中設定的資料分析和視覺效果平臺，請務必設定您選擇的平臺，以讀取這些儲存體資料表中的資料。 針對 Azure 監視器記錄進行這項操作相當簡單，而且會在 [事件和記錄分析](service-fabric-diagnostics-event-analysis-oms.md)中加以說明。 也就是說，Application Insights 是特殊案例，因為它可以在設定診斷延伸模組時設定；因此，如果您選擇使用 AI，則請參閱[適當的文章](service-fabric-diagnostics-event-analysis-appinsights.md)。
 
 >[!NOTE]
 >目前沒有任何方法可以篩選或清理已傳送至資料表的事件。 如果不實作從資料表移除事件的處理序，資料表將會繼續成長。 目前，我們可以提供具有 [Watchdog 範例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中所執行資料清理服務的範例，除非您必須儲存超過 30 或 90 天時間範圍的記錄，否則建議您自行撰寫資料清理服務。
 
 * [了解如何使用診斷擴充功能收集效能計數器或記錄](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
-* [Application Insights 的事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
-* [Application Insights 的事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Application Insights 的事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [使用 Azure 監視器記錄的事件分析和視覺化](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Application Insights 的事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [使用 Azure 監視器記錄的事件分析和視覺化](service-fabric-diagnostics-event-analysis-oms.md)

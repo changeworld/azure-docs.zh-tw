@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
 ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612773"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT 中樞裝置布建服務 (DPS) 虛擬網路支援
@@ -43,7 +43,7 @@ ms.locfileid: "91612773"
 私人端點是在客戶擁有的 VNET 內配置的私人 IP 位址，可供存取 Azure 資源。 藉由為 DPS 資源擁有私用端點，您將能夠允許在 VNET 內操作的裝置要求您的 DPS 資源布建，而不允許公用端點的流量。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 請確定符合下列先決條件，再繼續進行：
 
@@ -94,7 +94,7 @@ ms.locfileid: "91612773"
     | :---- | :-----|
     | **訂用帳戶**        | 選擇包含您私人端點將指向之 DPS 資源的 Azure 訂用帳戶。  |
     | **資源類型**       | 選擇 [ **Microsoft. 裝置/ProvisioningServices**]。 |
-    | **資源**            | 選取私人端點將對應的 DPS 資源。 |
+    | **Resource**            | 選取私人端點將對應的 DPS 資源。 |
     | **目標子資源** | 選取 [ **iotDps**]。 |
 
     > [!TIP]
@@ -129,7 +129,7 @@ ms.locfileid: "91612773"
     | :---- | :-----|
     | **資源識別碼或別名** | 輸入 DPS 資源的資源識別碼。 |
     | **目標子資源** | 輸入 **iotDps** |
-    | **要求訊息** | 輸入 DPS 資源擁有者的要求訊息。<br>例如，套用至物件的 <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
+    | **要求訊息** | 輸入 DPS 資源擁有者的要求訊息。<br>例如， <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     按一下 **[下一步：設定]** 以設定私人端點的 VNET。
 

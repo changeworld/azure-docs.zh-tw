@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: 9fe50388e2fc21c28ca1f04035cc7c725e4f87ec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275042"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>適用於 Azure 備份的 VM Snapshot Linux 擴充功能
@@ -25,7 +25,7 @@ Azure 備份支援將工作負載從內部部署備份至雲端，以及將雲�
 
 VMSnapshot 延伸模組只會出現在非受控 Vm 的 Azure 入口網站中。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 如需支援的作業系統清單，請參閱 [Azure 備份支援的作業系統](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)

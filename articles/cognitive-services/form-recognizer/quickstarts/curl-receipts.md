@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 4fa31a5be41e89c8fdc821ae77ff151b184316df
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 282b8e1292bf1fe24655691fbbeb876d871bc31e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518011"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761340"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>快速入門：搭配使用表單辨識器 REST API 和 cURL 來擷取收據資料
 
@@ -34,43 +34,43 @@ ms.locfileid: "88518011"
 
 ## <a name="analyze-a-receipt"></a>分析收據
 
-若要開始分析收據，請使用下列 cURL 命令呼叫 **[分析收據](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** API。 執行命令之前，請進行下列變更：
+若要開始分析收據，請使用下列 cURL 命令呼叫 **[分析收據](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)** API。 執行命令之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶取得的端點。
 1. 將 `<your receipt URL>` 取代為收據影像的 URL 位址。
 1. 將 `<subscription key>` 取代為您在先前的步驟中複製的訂用帳戶金鑰。
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
 ```
 
 您會收到 `202 (Success)` 回應，其中包含 **Operation-Location** 標頭。 此標頭的值會包含可用來查詢非同步作業狀態並取得結果的作業識別碼。 在下列範例中，`operations/` 之後的字串就是作業識別碼。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>取得收據結果
 
-呼叫**分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 執行命令之前，請進行下列變更：
+呼叫**分析收據** API 之後，您可以呼叫 **[取得分析收據結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult)** API 來取得作業狀態並擷取資料。 執行命令之前，請進行下列變更：
 
 1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰取得的端點。 您可以在表單辨識器的資源 [概觀] 索引標籤上找到此項目。
 1. 將 `<operationId>` 取代為先前步驟中的作業識別碼。
 1. 將 `<subscription key>` 取代為訂用帳戶金鑰。
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>檢查回應
 
-您會收到 `200 (Success)` 回應及 JSON 輸出。 第一個 `"status"` 欄位會指出作業的狀態。 如果作業已完成，`"recognitionResults"` 欄位會包含擷取自收據的每一行文字，而 `"understandingResults"` 欄位會包含收據中最相關部分的索引鍵/值資訊。 如果作業未完成，`"status"` 的值將會是 `"running"` 或 `"notStarted"`，此時您應該以手動方式或透過指令碼再次呼叫 API。 我們建議您在每個呼叫之前間隔一秒以上的時間。
+您會收到 `200 (Success)` 回應及 JSON 輸出。 第一個 `"status"` 欄位會指出作業的狀態。 如果作業已完成，`"readResults"` 欄位會包含擷取自收據的每一行文字，而 `"documentResults"` 欄位會包含收據中最相關部分的索引鍵/值資訊。 如果作業未完成，`"status"` 的值將會是 `"running"` 或 `"notStarted"`，此時您應該以手動方式或透過指令碼再次呼叫 API。 我們建議您在每個呼叫之前間隔一秒以上的時間。
 
 請參閱下列收據影像和其對應的 JSON 輸出。 為了方便閱讀，我們已將輸出縮短。
 
 ![來自 Contoso 商店的收據](../media/contoso-allinone.jpg)
 
-`"recognitionResults"` 節點包含所有已辨識的文字。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 `"understandingResults"` 節點包含此模型所探索到的收據專屬值。 您可在這裡找到有用的索引鍵/值組，例如稅額、總計、商家位址等等。
+`"readResults"` 節點包含所有已辨識的文字 (如果您將選用的 *includeTextDetails* 參數設定為 `true`)。 文字會依頁面彙整，然後依文字行，再依個別字組彙整。 `"documentResults"` 節點包含此模型所探索到的收據專屬值。 您可在這裡找到有用的索引鍵/值組，例如稅額、總計、商家位址等等。
 
 ```json
 {
@@ -78,7 +78,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyzeResu
   "createdDateTime":"2019-12-17T04:11:24Z",
   "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
   "analyzeResult":{
-    "version":"2.0.0",
+    "version":"2.1.0",
     "readResults":[
       {
         "page":1,
@@ -402,4 +402,4 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyzeResu
 在此快速入門中，您已搭配使用表單辨識器 REST API 與 cURL，擷取銷售收據上的內容。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API 參考文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)

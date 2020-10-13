@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837171"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的計劃性維護通知
@@ -23,13 +23,13 @@ ms.locfileid: "87837171"
 
 - 如果維護不需要重新開機，Azure 會在主機更新時，使用就地移轉來暫停 VM。 套用不需要重新開機的維護作業時，會依容錯網域逐一套用。 如果收到任何警告健康情況訊號，就會停止進度。
 
-- 如果維護需要重新開機，您會在規劃維護時收到通知。 在這些情況下，您會獲得一個時間範圍，通常是35天，您可以自行開始進行維護。
+- 如果維護需要重新開機，您會在規劃維護時收到通知。 在這些情況下，您會得到一個時間範圍，通常是35天，您可以在這段時間內自行開始維護。
 
 
 預定進行的維護作業若需要重新開機，會排定在不同波段。 每一個波段都有不同的範圍 (區域)：
 
 - 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給訂用帳戶擁有者和共同擁有者。 您可以使用 Azure [活動記錄警示](../azure-monitor/platform/platform-logs-overview.md)，對通知新增收件者和傳訊選項，例如電子郵件、SMS 和 Webhook。  
-- 隨著通知會提供一個「自助時段」**。 在通常是35天的此視窗中，您可以找到哪些 Vm 包含在 wave 中。 您可以根據自己的排程需求，主動啟動維護。
+- 隨著通知會提供一個「自助時段」**。 在此視窗中，通常是35天，您可以找到哪些 Vm 包含在 wave 中。 您可以根據自己的排程需求，主動啟動維護。
 - 在自助期間之後，「排定維護期間」** 隨即開始。 在此時段的某個時間點，Azure 會為您的 VM 排定並套用必要的維護。 
 
 之所以要有兩個時段，目的是要讓您在知道 Azure 何時會自動啟動維護的同時，有足夠的時間啟動維護並重新啟動 VM。
@@ -120,7 +120,7 @@ Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組�
 Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
-下列屬性會在**以下是 maintenanceredeploystatus**下傳回： 
+下列屬性會在 **>maintenanceredeploystatus**下傳回： 
 
 | 值 | 描述   |
 |-------|---------------|
@@ -187,7 +187,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **答：** 規劃的維護是從對一或多個 Azure 區域設定排程開始。 之後，電子郵件通知會傳送至訂用帳戶擁有者 (每個訂用帳戶一封電子郵件)。 您可以藉由使用活動記錄警示，為此通知新增管道和收件者。 如果您將 VM 部署至已排定計劃性維護的區域，則不會收到通知。 請改為檢查 VM 的維護狀態。
 
-**問：我在入口網站、PowerShell 或 CLI 中都看不到任何已規劃維護的指示。怎麼了？**
+**問：我在入口網站、PowerShell 或 CLI 中都看不到任何預定維護的指示。怎麼了？**
 
 **答：** 在計劃性維護波段期間，只會針對受計劃性維護影響的 VM 提供計劃性維護相關資訊。 如果您沒有看到資料，則該維護波段可能已經結束 (或未開始)，或您的 VM 可能已經裝載在已更新的伺服器上。
 
@@ -206,7 +206,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
    - 您的 VM 未排定進行維護。 可能是維護波段已結束、取消或修改，所以您的 VM 不再受到它的影響。
    - 您尚未將 [維護]**** 資料行新增至您的虛擬機器清單檢視。 雖然我們已將此資料行新增至預設檢視，但如果您將檢視設定為顯示非預設資料行，則必須手動將 [維護]**** 資料行新增至您的 VM 清單檢視。
 
-**問：我的 VM 已排程在第二次進行維護。因此?**
+**問：我的 VM 第二次排程進行維護。為什麼？**
 
 **答：** 在數個使用案例中，是將您的 VM 排定成在您已經完成維護並重新部署之後進行維護：
    - 我們已取消維護，並且使用不同的裝載重新啟動它。 可能是我們已偵測到發生錯誤的承載，而只是需要部署額外承載。

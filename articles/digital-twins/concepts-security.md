@@ -8,10 +8,10 @@ ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331874"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
@@ -26,7 +26,7 @@ RBAC 會透過與 [Azure Active Directory](../active-directory/fundamentals/acti
 
 您可以使用 RBAC 將許可權授與 *安全性主體，該安全性主體*可能是使用者、群組或應用程式服務主體。 安全性主體是由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可以用來授權對 Azure 數位 Twins 實例的存取要求。
 
-### <a name="authentication-and-authorization"></a>驗證和授權
+### <a name="authentication-and-authorization"></a>驗證與授權
 
 使用 Azure AD，存取會有兩個步驟的程式。 當安全性主體 (使用者、群組或應用程式) 嘗試存取 Azure 數位 Twins 時，要求必須 *經過驗證* 和 *授權*。 
 

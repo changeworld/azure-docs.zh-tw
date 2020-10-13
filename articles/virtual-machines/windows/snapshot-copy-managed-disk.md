@@ -10,10 +10,10 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322308"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用入口網站或 PowerShell 建立快照集
@@ -33,7 +33,7 @@ ms.locfileid: "89322308"
 6. 選取 Azure 資料中心的 [位置]****。  
 7. 在 [來源磁碟]**** 中，選取要建立快照集的受控磁碟。
 8. 選取用來儲存快照集的 [帳戶類型]****。 除非需要將快照集存放在高效能磁碟上，否則選取 [Standard_HDD]****。
-9. 選取 [建立]。
+9. 選取 [建立]****。
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
@@ -80,6 +80,6 @@ ms.locfileid: "89322308"
    ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 從快照集建立受控磁碟，然後連結新的受控磁碟作為 OS 磁碟，以從快照集建立虛擬機器。 如需詳細資訊，請參閱[使用 PowerShell 從快照集建立 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)。

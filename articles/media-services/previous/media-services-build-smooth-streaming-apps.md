@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264635"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何建置 Smooth Streaming Windows 市集應用程式
@@ -35,7 +35,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 3. 選取 Smooth Streaming 資料流
 4. 選取 Smooth Streaming 曲目
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 > [!NOTE]
 > Windows 市集 8.1 版和更早版本的專案在 Visual Studio 2017 不受支援。  如需詳細資訊，請參閱 [Visual Studio 2017 平台目標及相容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
 
@@ -69,28 +69,28 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 1. **在 [檔案**] 功能表中，按一下 [**新增**]，然後按一下 [**專案**]。
 1. 從 [新增專案] 對話方塊中，輸入或選取下列值：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     | --- | --- |
     | 範本群組 |已安裝/範本/Visual C#/Windows 市集 |
     | 範本 |空白應用程式 (XAML) |
-    | Name |SSPlayer |
-    | 位置 |C:\SSTutorials |
+    | 名稱 |SSPlayer |
+    | Location |C:\SSTutorials |
     | 方案名稱 |SSPlayer |
     | 為方案建立目錄 |(已選取) |
 
-1. 按一下 [確定]  。
+1. 按一下 [確定]。
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>新增 Smooth Streaming Client SDK 的參考
 
 1. 從 [方案總管] 中，在 [SSPlayer]**** 上按一下滑鼠右鍵，然後按一下 [加入參考]****。
 1. 輸入或選取下列值：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     | --- | --- |
     | 參考群組 |Windows/延伸 |
     | 參考 |選取 Microsoft Smooth Streaming Client SDK for Windows 8 和 Microsoft Visual C++ Runtime Package |
 
-1. 按一下 [確定]  。 
+1. 按一下 [確定]。 
 
 加入參考之後，您必須選取目標平台 (x64 或 x86)，而加入參考在「任何 CPU 平台」組態中將沒有作用。  在方案總管中，您會看到這些加入的參考具有黃色警告標記。
 

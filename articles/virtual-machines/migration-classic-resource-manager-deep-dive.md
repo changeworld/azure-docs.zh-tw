@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855909"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970005"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討
 
@@ -135,7 +135,7 @@ ms.locfileid: "88855909"
 完成驗證之後，您便可以認可移轉。 資源不會再出現於傳統部署模型中，而只有在 Resource Manager 部署模型中才能使用這些資源。 只能在新入口網站中管理已移轉的資源。
 
 > [!NOTE]
-> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續失敗，請建立支援票證，或在 [Microsoft 問與答](https://docs.microsoft.com/answers/index.html)上建立論壇
+> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續失敗，請建立支援票證，或在 [Microsoft 問與答](/answers/index.html)上建立論壇
 >
 >
 
@@ -181,7 +181,7 @@ ms.locfileid: "88855909"
 在將資源從「傳統」部署模型移轉至 Resource Manager 部署模型的過程中，您必須更新現有的自動化或工具，以確保它在移轉之後仍可繼續運作。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若為 Linux：
 

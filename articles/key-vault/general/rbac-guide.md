@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b5c9464c614c32f178e35e72cee98450007a62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772782"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940526"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 角色型存取控制 (預覽，提供 Key Vault 金鑰、憑證和秘密的存取權) 
 
@@ -70,7 +70,7 @@ Key vault 的新 Azure RBAC 許可權模型提供了保存庫存取原則許可�
 若要新增角色指派，您必須具有：
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator)或[擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)或[擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>在 Key Vault 上啟用 Azure RBAC 許可權
 

@@ -4,10 +4,10 @@ description: 說明當您使用 Azure 備份建立 Azure VM 時，如何啟用�
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377330"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>建立 Azure VM 時啟用備份
@@ -85,7 +85,7 @@ ms.locfileid: "89377330"
 
 先前的步驟說明如何使用 Azure 入口網站來建立虛擬機器，並在復原服務保存庫中加以保護。 若要快速部署一或多部 Vm，並在復原服務保存庫中保護它們，請參閱範本 [部署 WINDOWS VM 並啟用備份](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已保護您的 VM，請瞭解如何管理和還原 VM。
 

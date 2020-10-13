@@ -4,10 +4,10 @@ description: 在 Azure Migrate 伺服器評量中設定無代理程式相依性�
 ms.topic: how-to
 ms.date: 6/08/2020
 ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667464"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析機器相依性 (無代理程式)
@@ -50,7 +50,7 @@ ms.locfileid: "91667464"
 2. 流覽至 [ **提供 vCenter 詳細資料** ] 面板。
 3. 在 [**探索 vm 上的應用程式和**相依性] 中，按一下 [**新增認證**]
 3. 選擇**作業系統**、提供帳戶的易記名稱和**使用者名稱** / **密碼**
-6. 按一下 [檔案] 。
+6. 按一下 **[儲存]** 。
 7. 按一下 [ **儲存並開始探索**]。
 
     ![新增 VM 使用者帳戶](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -144,7 +144,7 @@ Timeslot | 觀察到相依性期間的 timeslot。 <br/> 相依性資料目前�
 
 ### <a name="log-in-to-azure"></a>登入 Azure
 
-1. 使用 Disconnect-azaccount Cmdlet 登入您的 Azure 訂用帳戶。
+1. 使用 Connect-AzAccount Cmdlet 登入您的 Azure 訂用帳戶。
 
     ```PowerShell
     Connect-AzAccount
@@ -197,7 +197,7 @@ Azure Migrate 提供 Power BI 範本，可讓您一次用來視覺化許多伺�
 1. 從 GitHub 上的 [Azure PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) 存放庫下載 PowerShell 模組和 Power BI 範本。
 
 2. 使用下列指示登入 Azure： 
-- 使用 Disconnect-azaccount Cmdlet 登入您的 Azure 訂用帳戶。
+- 使用 Connect-AzAccount Cmdlet 登入您的 Azure 訂用帳戶。
 
     ```PowerShell
     Connect-AzAccount

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268259"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
@@ -57,7 +57,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>從 REST API 取得您的安全分數
 
-您可以透過 [安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) 來存取您的分數， (目前為預覽) 。 API 方法可讓您彈性地查詢資料，並在一段時間內建立您自己的安全分數報告機制。 例如，您可以使用 **安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用 **安全分數控制項** API 來列出安全性控制項和您的訂用帳戶的目前分數。
+您可以透過 [安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) 來存取您的分數， (目前為預覽) 。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用**安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用**安全分數控制項** API 來列出您訂用帳戶的安全性控制項和目前分數。
 
 ![透過 API 來抓取單一安全分數](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -95,7 +95,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 只有內建建議會影響安全分數。
 
-標示為 **預覽** 的建議不包含在您的安全分數的計算中。 您應該盡可能補救它們，如此一來，當預覽期間結束時，他們就會參與您的分數。
+標示為 **預覽** 的建議不包含在您的安全分數的計算中。 這些建議仍會盡可能進行補救，以在預覽期間結束時計入您的分數。
 
 預覽建議的範例：
 
@@ -105,7 +105,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 若要改善您的安全分數，請補救建議清單中的安全性建議。 您可以針對每個資源手動補救每個建議，或使用 [快速修正!] 選項 (如果有的話)，快速將建議的補救套用至資源群組。 如需詳細資訊，請參閱[補救建議](security-center-remediate-recommendations.md)。
 
-另一種改善分數，並確保您的使用者不會產生對分數造成負面影響的資源，就是設定相關建議的 [強制] 和 [拒絕] 選項。 深入瞭解如何 [使用強制/拒絕建議進行錯誤處理](prevent-misconfigurations.md)。
+另一種改善分數，並確保您的使用者不會產生對分數造成負面影響的資源，就是設定相關建議的 [強制] 和 [拒絕] 選項。 請在＜[防止強制/拒絕建議的設定錯誤](prevent-misconfigurations.md)＞中深入了解。
 
 ## <a name="security-controls-and-their-recommendations"></a>安全性控制項及其建議
 

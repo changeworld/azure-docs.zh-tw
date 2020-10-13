@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/11/2020
 ms.author: Zhchia
 ms.openlocfilehash: d5de8b8089f97696af8d05fd88989cbd1858193e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611345"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Cofense 收件者同步
@@ -33,7 +33,7 @@ ms.locfileid: "91611345"
 > * 當使用者不再需要存取權時，請移除 Cofense 收件者同步處理的使用者
 > * 在 Azure AD 與 Cofense 收件者同步之間保持使用者屬性同步
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

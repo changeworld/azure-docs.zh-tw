@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757753"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>使用 Azure DevOps 建立串流分析作業的 CI/CD 管線
@@ -168,9 +168,9 @@ ms.locfileid: "91757753"
    |Azure 訂用帳戶| 選擇您的訂用帳戶。|
    |動作| *建立或更新資源群組*|
    |資源群組| 選擇將包含您的串流分析作業的測試資源組名。|
-   |位置|選擇您的測試資源群組的位置。|
+   |Location|選擇您的測試資源群組的位置。|
    |範本位置| 連結的成品|
-   |[範本]| $ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.js開啟 |
+   |範本| $ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.js開啟 |
    |範本參數|$ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.parameters.js開啟 |
    |覆寫範本參數|-<arm_template_parameter> 「您的值」。 您可以使用 **變數**來定義參數。|
    |部署模式|累加|
@@ -185,9 +185,9 @@ ms.locfileid: "91757753"
    |Azure 訂用帳戶| 選擇您的訂用帳戶。|
    |動作| *建立或更新資源群組*|
    |資源群組| 選擇將包含您的串流分析作業的生產資源群組的名稱。|
-   |位置|選擇生產資源群組的位置。|
+   |Location|選擇生產資源群組的位置。|
    |範本位置| *連結的成品*|
-   |[範本]| $ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.js開啟 |
+   |範本| $ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.js開啟 |
    |範本參數|$ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.parameters.js開啟 |
    |覆寫範本參數|-<arm_template_parameter> 「您的值」|
    |部署模式|累加|

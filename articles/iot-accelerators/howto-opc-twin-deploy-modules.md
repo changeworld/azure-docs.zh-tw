@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657373bdc899cb53c8dd934d18d144fe37eb370b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282063"
+ms.locfileid: "91874324"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>從頭開始部署 OPC 對應項模組和相依性
 
@@ -86,7 +86,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
-                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--to\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
+                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--tm\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
               }
             }
           }
@@ -156,7 +156,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
    作為 *容器建立選項*，請使用下列 JSON：
 
    ```json
-   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
+   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--tm","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
 9. 選取 [ **儲存** ]，然後按 **[下一步]** 繼續前往 [路由] 區段。

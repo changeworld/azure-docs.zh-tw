@@ -9,10 +9,10 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316149"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>針對 Azure Data Factory 中的對應資料流程進行疑難排解

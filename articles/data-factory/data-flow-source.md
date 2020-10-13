@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
 ms.openlocfilehash: 22f524ed4f01ad5b3be110008a82cd31c5c476c5
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827848"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>對應資料流程中的來源轉換 
@@ -118,6 +118,6 @@ Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview
 
 如需有關在對應資料流程內優化的詳細資訊，請參閱 [ [優化]](concepts-data-flow-overview.md#optimize)索引標籤。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 [衍生的資料行轉換](data-flow-derived-column.md) 和 [select 轉換](data-flow-select.md)開始建立您的資料流程。

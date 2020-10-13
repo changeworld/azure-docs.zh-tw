@@ -1,5 +1,5 @@
 ---
-title: 將受控資料磁片連結至 Windows VM-Azure
+title: 將受控資料磁片連結到 Windows VM-Azure
 description: 如何使用 Azure 入口網站將受控資料磁碟連結到 Windows VM。
 author: roygara
 ms.service: virtual-machines-windows
@@ -8,27 +8,27 @@ ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: b100676cd8cfbffd273ea6ad50b63545f2d6037a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836219"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 入口網站將受控資料磁碟連結到 Windows VM
 
-本文示範如何使用 Azure 入口網站，將新的受控資料磁碟連結到 Windows 虛擬機器 (VM)。 VM 的大小會決定您可以連結的資料磁碟數目。 如需詳細資訊，請參閱[虛擬機器的大小](../sizes.md)。
+本文示範如何使用 Azure 入口網站，將新的受控資料磁碟連結到 Windows 虛擬機器 (VM)。 VM 的大小會決定您可以連結的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md)。
 
 
 ## <a name="add-a-data-disk"></a>新增資料磁碟
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以新增資料磁片。 搜尋並選取 [虛擬機器]。
+1. 移至 [Azure 入口網站](https://portal.azure.com) 以新增資料磁片。 搜尋並選取 [虛擬機器]。
 2. 從清單中選取虛擬機器。
 3. 在 [虛擬機器]**** 窗格中，選取 [磁碟]****。
 4. 在 [磁碟]**** 頁面上，選取 [新增資料磁碟]****。
 5. 在新磁碟的下拉式清單中，選取 [建立磁碟]****。
-6. 在 [建立受控磁碟]**** 頁面中，輸入磁碟名稱並視需要調整其他設定。 當您完成時，選取 [建立]  。
+6. 在 [建立受控磁碟]**** 頁面中，輸入磁碟名稱並視需要調整其他設定。 當您完成時，選取 [建立]。
 7. 在 [磁碟]**** 頁面中，選取 [儲存]**** 以儲存 VM 的新磁碟設定。
-8. 在 Azure 建立磁片並將它連接至虛擬機器之後，新的磁片會列在虛擬機器的磁片設定中的 [**資料磁片**] 底下。
+8. 在 Azure 建立磁片並將它連結至虛擬機器之後，新的磁片會列在虛擬機器的磁片設定的 [ **資料磁片**] 下。
 
 
 ## <a name="initialize-a-new-data-disk"></a>初始化新的資料磁碟
@@ -39,7 +39,7 @@ ms.locfileid: "87836219"
 3. 確認已選取新磁碟，然後選取 [確定]**** 將磁碟初始化。
 4. 新的磁碟會顯示為 [未配置]****。 以滑鼠右鍵按一下磁碟上的任何位置，並選取 [新增簡單磁碟區]****。 [新增簡單磁碟區精靈]**** 視窗隨即開啟。
 5. 繼續執行精靈，保留所有預設值，並且在完成時選取 [完成]****。
-6. 關閉 [**磁片管理**]。
+6. 關閉 [ **磁片管理**]。
 7. 隨即出現一個快顯視窗，通知您必須先將新的磁碟格式化之後才能使用。 選取 [格式化磁碟]****。
 8. 在 [格式化新磁碟]**** 視窗中，檢查設定，然後選取 [開始]****。
 9. 隨即出現警告，通知您格式化磁碟會清除所有資料。 選取 [確定]  。
@@ -48,4 +48,4 @@ ms.locfileid: "87836219"
 ## <a name="next-steps"></a>後續步驟
 
 - 您也可以[使用 PowerShell 來連結資料磁碟](attach-disk-ps.md)。
-- 如果您的應用程式需要使用*D：* 磁片磁碟機來儲存資料，您可以[變更 Windows 暫存磁片的磁碟機號](change-drive-letter.md)。
+- 如果您的應用程式需要使用 *D：* 磁片磁碟機來儲存資料，您可以 [變更 Windows 暫存磁片的磁碟機號](change-drive-letter.md)。
