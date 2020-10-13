@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049565"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
@@ -215,13 +215,13 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 在此情況下，您可以停用 NPS 擴充功能，如此一來，NPS 伺服器將只會驗證主要驗證，而且不會對使用者強制執行 MFA。
 
 停用 NPS 擴充功能： 
--   匯出 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 登錄機碼作為備份。 
+-   匯出 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 登錄機碼作為備份。 
 -   刪除 "AuthorizationDLLs" 和 "ExtensionDLLs" 的登錄值，而不是參數索引鍵。 
 -    (IAS) 服務重新開機網路原則服務，變更才會生效 
 -   判斷 VPN 的主要驗證是否成功。
 
 一旦服務復原，而且您已準備好在使用者上再次強制執行 MFA，請啟用 NPS 擴充功能： 
--   從備份匯入登錄機碼 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   從備份匯入登錄機碼 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -    (IAS) 服務重新開機網路原則服務，變更才會生效 
 -   判斷主要驗證以及 VPN 的次要驗證是否成功。
 -   請參閱 NPS 伺服器和 VPN 記錄檔，以判斷哪些使用者已在緊急時段內登入。

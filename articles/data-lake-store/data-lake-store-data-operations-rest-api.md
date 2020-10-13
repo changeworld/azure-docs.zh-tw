@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: ce1c7df70bf10280ba642e8ce2cec4864dfbbaec
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85985031"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 在 Azure Data Lake Storage Gen1 上進行檔案系統作業
@@ -29,7 +29,7 @@ ms.locfileid: "85985031"
 
 在本文中，您將了解如何使用 WebHDFS REST API 和 Data Lake Storage Gen1 REST API 執行 Azure Data Lake Storage Gen1 上的檔案系統作業。 如需有關如何使用 REST API 在 Data Lake Storage Gen1 上執行帳戶管理作業的指示，請參閱[使用 REST API 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-rest-api.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure Data Lake Storage Gen1 帳戶**。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。
@@ -46,7 +46,7 @@ ms.locfileid: "85985031"
 ## <a name="create-folders"></a>建立資料夾
 這項作業以 [這裡](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory)定義的 WebHDFS REST API 呼叫為基礎。
 
-使用下列 cURL 命令。 **\<yourstorename>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+使用下列 cURL 命令。 **\<yourstorename>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
@@ -63,7 +63,7 @@ curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorena
 ## <a name="list-folders"></a>列出資料夾
 這項作業以 [這裡](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory)定義的 WebHDFS REST API 呼叫為基礎。
 
-使用下列 cURL 命令。 **\<yourstorename>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+使用下列 cURL 命令。 **\<yourstorename>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
@@ -95,7 +95,7 @@ curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.az
 ## <a name="upload-data"></a>上傳資料
 這項作業以 [這裡](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)定義的 WebHDFS REST API 呼叫為基礎。
 
-使用下列 cURL 命令。 **\<yourstorename>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+使用下列 cURL 命令。 **\<yourstorename>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
@@ -126,7 +126,7 @@ HTTP/1.1 201 Created
 * 您要先針對端點 `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`提交 GET 要求。 這個呼叫會傳回要提交下一個 GET 要求的目標位置。
 * 接下來您要針對端點 `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`提交 GET 要求。 這個呼叫會顯示檔案的內容。
 
-不過，由於第一和第二個步驟之間的輸入參數沒有任何差異，您可以使用 `-L` 參數來提交第一個要求。 `-L` 選項基本上會將兩個要求結合為一個，並且讓 cURL 在新的位置重做要求。 最後會顯示所有要求呼叫的輸出，如下列程式碼片段所示。 **\<yourstorename>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+不過，由於第一和第二個步驟之間的輸入參數沒有任何差異，您可以使用 `-L` 參數來提交第一個要求。 `-L` 選項基本上會將兩個要求結合為一個，並且讓 cURL 在新的位置重做要求。 最後會顯示所有要求呼叫的輸出，如下列程式碼片段所示。 **\<yourstorename>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
@@ -149,7 +149,7 @@ Hello, Data Lake Store user!
 ## <a name="rename-a-file"></a>重新命名檔案
 這項作業以 [這裡](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory)定義的 WebHDFS REST API 呼叫為基礎。
 
-請使用下列 cURL 命令重新命名檔案。 **\<yourstorename>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+請使用下列 cURL 命令重新命名檔案。 **\<yourstorename>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
@@ -167,7 +167,7 @@ HTTP/1.1 200 OK
 ## <a name="delete-a-file"></a>刪除檔案
 這項作業以 [這裡](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory)定義的 WebHDFS REST API 呼叫為基礎。
 
-請使用下列 cURL 命令刪除檔案。 **\<yourstorename>** 將取代為您的 Data Lake Storage Gen1 帳戶名稱。
+請使用下列 cURL 命令刪除檔案。 **\<yourstorename>** 以您的 Data Lake Storage Gen1 帳戶名稱取代。
 
 ```console
 curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
@@ -182,7 +182,7 @@ HTTP/1.1 200 OK
 {"boolean":true}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [使用 REST API 對 Data Lake Storage Gen1 進行帳戶管理作業](data-lake-store-get-started-rest-api.md)。
 
 ## <a name="see-also"></a>另請參閱

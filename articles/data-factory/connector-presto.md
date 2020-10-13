@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372496"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Presto 複製資料 (預覽)
@@ -50,17 +50,17 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為：**Presto** | 是 |
-| 主機 | Presto 伺服器的 IP 位址或主機名稱。 （例如192.168.222.160）  | 是 |
-| serverVersion | Presto 伺服器的版本。 （例如 0.148-t）  | 是 |
+| 主機 | Presto 伺服器的 IP 位址或主機名稱。  (例如 192.168.222.160)   | 是 |
+| serverVersion | Presto 伺服器的版本。  (例如 0.148-t)   | 是 |
 | catalog | 對伺服器之所有要求的目錄內容。  | 是 |
 | 連接埠 | Presto 伺服器用來接聽用戶端連線的 TCP 連接埠。 預設值為 8080。  | 否 |
 | authenticationType | 用來連線到 Presto 伺服器的驗證機制。 <br/>允許的值為：**Anonymous**、**LDAP** | 是 |
 | username | 用來連線到 Presto 伺服器的使用者名稱。  | 否 |
 | 密碼 | 對應到使用者名稱的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
-| enableSsl | 指定是否使用 TLS 來加密與伺服器的連接。 預設值為 false。  | 否 |
-| trustedCertPath | 包含信任的 CA 憑證的 pem 檔案完整路徑，可在透過 TLS 連線時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才可以設定這個屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
+| enableSsl | 指定是否使用 TLS 加密與伺服器的連接。 預設值為 false。  | 否 |
+| trustedCertPath | Pem 檔案的完整路徑，包含信任的 CA 憑證，以便在透過 TLS 連接時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才能設定此屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
 | useSystemTrustStore | 指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 預設值為 false。  | 否 |
-| allowHostNameCNMismatch | 指定在透過 TLS 連線時，是否要求 CA 發行的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 false。  | 否 |
+| allowHostNameCNMismatch | 指定在透過 TLS 連線時，是否要求 CA 發出的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | 否 |
 | timeZoneID | 連線所使用的本機時區。 這個選項的有效值均指定於 IANA 時區資料庫中。 預設值為系統時區。  | 否 |
 

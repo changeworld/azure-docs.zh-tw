@@ -1,5 +1,5 @@
 ---
-title: 驗證要 Azure Data Lake Storage Gen1 的 Azure 串流分析
+title: 向 Azure Data Lake Storage Gen1 驗證 Azure 串流分析
 description: 本文說明如何使用受控識別向 Azure Data Lake Storage Gen1 輸出驗證 Azure 串流分析作業。
 author: mamccrea
 ms.author: mamccrea
@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044391"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用受控識別來驗證 Azure Data Lake Storage Gen1 的串流分析
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用受控識別向 Azure Data Lake Storage Gen1 驗證串流分析
 
 Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受控識別驗證。 身分識別是在 Azure Active Directory 中註冊的受控應用程式，代表了指定的串流分析作業，並可用來向指定的資源驗證。 受控識別消除了以使用者為基礎的驗證方法限制，比如因為密碼改變或使用者權杖每 90 天到期一次而需要重新驗證。 此外，受控識別有助於進行輸出至 Azure Data Lake Storage Gen1 的串流分析作業部署自動化。
 
@@ -24,11 +24,11 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-1. 一開始先建立新的串流分析作業，或在 Azure 入口網站中開啟現有作業。 從位於畫面左側的功能表列中，選取位於 [**設定**] 底下的 [**受控識別**]。
+1. 一開始先建立新的串流分析作業，或在 Azure 入口網站中開啟現有作業。 從位於畫面左側的功能表列中，選取位於 [**設定**] 下的 [**受控識別**]。
 
    ![設定串流分析受控識別](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 從右側顯示的視窗中，選取 [**使用系統指派的受控識別**]。 按一下 [**儲存**至服務主體]，以取得 Azure Active Directory 中串流分析作業的身分識別。 Azure 會負責管理新建立的身分識別生命週期。 當串流分析作業刪除時，Azure 會自動刪除已與其建立關聯的身分識別 (亦即服務主體)。
+2. 從右側顯示的視窗中，選取 [ **使用系統指派的受控識別** ]。 針對 Azure Active Directory 中的串流分析工作，按一下 [ **儲存** 至服務主體]。 Azure 會負責管理新建立的身分識別生命週期。 當串流分析作業刪除時，Azure 會自動刪除已與其建立關聯的身分識別 (亦即服務主體)。
 
    當組態儲存時，服務主體的物件識別碼 (OID) 會列為主體識別碼，如下所示：
 
@@ -36,7 +36,7 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
  
    服務主體與串流分析作業的名稱相同。 例如，如果您作業的名稱是 **MyASAJob**，建立的服務主體名稱也會是 **MyASAJob**。
 
-3. 在 ADLS Gen1 輸出接收的 [輸出屬性] 視窗中，按一下 [驗證模式] 下拉式選單，然後選取 [受控識別]。
+3. 在 ADLS Gen1 輸出接收的 [輸出屬性] 視窗中，按一下 [驗證模式] 下拉式清單，然後選取 [受控識別]。
 
 4. 填寫其餘屬性。 若要深入了解如何建立 ADLS 輸出，請參閱[使用串流分析建立 Data Lake Store 輸出](../data-lake-store/data-lake-store-stream-analytics.md)。 當您完成後，請按一下 [儲存]****。
 
@@ -70,7 +70,7 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
 
    ![串流分析作業組態受控識別](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. 在 ADLS Gen1 輸出接收的 [輸出屬性] 視窗中，按一下 [驗證模式] 下拉式選單，然後選取 [受控識別]。
+2. 在 ADLS Gen1 輸出接收的 [輸出屬性] 視窗中，按一下 [驗證模式] 下拉式清單，然後選取 [受控識別]。
 
    ![ADLS 輸出受控識別](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
@@ -173,16 +173,16 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   若要深入瞭解上述 PowerShell 命令，請參閱[AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry)檔。
+   若要深入瞭解上述的 PowerShell 命令，請參閱 [AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) 檔。
 
 ## <a name="limitations"></a>限制
-此功能不支援下列各項：
+這項功能不支援下列各項：
 
-1. **多租使用者存取**：針對指定的串流分析作業所建立的服務主體將位於建立作業的 Azure Active Directory 租使用者上，且不能用於位於不同 Azure Active Directory 租使用者上的資源。 因此，您只能在與您的 Azure 串流分析作業相同 Azure Active Directory 租使用者內的 ADLS Gen 1 資源上使用 MSI。 
+1. **多租使用者存取**：為給定的串流分析工作所建立的服務主體，將位於建立作業的 Azure Active Directory 租使用者，且不能用於位於不同 Azure Active Directory 租使用者的資源。 因此，您只能在與 Azure 串流分析作業相同 Azure Active Directory 租使用者內的 ADLS Gen 1 資源上使用 MSI。 
 
-2. **[使用者指派](../active-directory/managed-identities-azure-resources/overview.md)** 的身分識別：不受支援。 這表示使用者不能輸入自己的服務主體，以供其串流分析作業使用。 服務主體是由 Azure 串流分析所產生。
+2. **[使用者指派](../active-directory/managed-identities-azure-resources/overview.md)** 的身分識別：不受支援。 這表示使用者無法輸入其本身的服務主體，以供其串流分析作業使用。 服務主體是由 Azure 串流分析所產生。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用串流分析建立 Data Lake Store 輸出](../data-lake-store/data-lake-store-stream-analytics.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)

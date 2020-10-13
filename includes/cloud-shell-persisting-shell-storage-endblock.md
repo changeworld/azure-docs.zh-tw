@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174316"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>將本機檔案傳輸至 Cloud Shell
@@ -19,13 +19,13 @@ ms.locfileid: "67174316"
 ![本機檔案清單](../articles/cloud-shell/media/persisting-shell-storage/download.png)
 1. 在 Azure 入口網站中，移至掛接的檔案共用。
 2. 選取目標檔案。
-3. 選取 [**下載**] 按鈕。
+3. 選取 [ **下載** ] 按鈕。
 
 ### <a name="upload-files"></a>上傳檔案
 
 ![要上傳的本機檔案](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. 移至掛接的檔案共用。
-2. 選取 [上傳]**** 按鈕。
+2. 選取 [上傳]  按鈕。
 3. 選取您要上傳的一或多個檔案。
 4. 確認上傳。
 

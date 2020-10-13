@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89399951"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服務標記
@@ -56,7 +56,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 如果您的叢集位於下表所列的區域中，您只需要將單一區域服務標籤新增至您的 NSG。
 
-| Country | Region | 服務標籤 |
+| Country | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
 | 澳大利亞 | 澳大利亞東部 | AustraliaEast |
 | &nbsp; | 澳大利亞東南部 | AustraliaSoutheast |
@@ -96,7 +96,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | Region | 服務標籤 |
+| Country | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
 | 美國 | 美國東部 2 | EastUS2 |
 | &nbsp; | 美國中部 | CentralUS |
@@ -123,7 +123,7 @@ HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標
 
 *德國中部*和*德國東北部*區域中的叢集必須允許兩個服務標記： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNortheast` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [網路安全性群組：服務標記](../virtual-network/security-overview.md#security-rules)
 - [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)

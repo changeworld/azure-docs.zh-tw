@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078549"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機
@@ -324,6 +324,6 @@ ms.locfileid: "89078549"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
 
-## <a name="report-issues"></a>報告問題
+## <a name="report-issues"></a>回報問題
 
 調整工具的問題報告目前正由 Microsoft 支援服務處理。 當您提出問題報告時，請務必遵循回報 [問題](#reporting-issues)中的指示。 如果您有關于此工具的意見反應，或想要要求新功能，請在 [RDS github 頁面](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)上開啟標示為「4-WVD-調整工具」的 GitHub 問題。

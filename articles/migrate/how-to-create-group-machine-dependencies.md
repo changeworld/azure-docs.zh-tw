@@ -4,17 +4,17 @@ description: 本文說明如何在 Azure Migrate 伺服器評量中設定代理�
 ms.topic: how-to
 ms.date: 6/09/2020
 ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022372"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
 本文說明如何在 Azure Migrate：伺服器評量中設定無代理程式相依性分析。 相依性[分析](concepts-dependency-visualization.md)可協助您識別並瞭解您想要評估及遷移至 Azure 的機器之間的相依性。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 請參閱下列各項的代理程式相依性分析支援和部署需求：
     - [VMware VM](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)

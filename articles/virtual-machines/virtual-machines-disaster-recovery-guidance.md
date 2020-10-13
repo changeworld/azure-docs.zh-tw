@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831136"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976618"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服務中斷影響 Azure Vm，該怎麼辦
 Microsoft 的同仁一向努力確保提供您需要的服務。 有時候因為不可抗力之影響，造成服務意外中斷。
@@ -25,7 +25,7 @@ Azure 已經有許多支援高可用性應用程式的內建平台功能。 如�
 為協助您處理這些罕見事件，我們提供以下 Azure 虛擬機器指引，以因應 Azure 虛擬機器應用程式部署所在的整個區域發生服務中斷的情況。
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>選項 1︰使用 Azure Site Recovery 起始容錯移轉
-您可以為 VM 設定 Azure Site Recovery，如此一來，只要按一下花幾分鐘就能復原應用程式。 您可以複寫至所選擇的 Azure 區域，而不限於配對的區域。 您可以[複寫虛擬機器](https://aka.ms/a2a-getting-started)來開始進行。 您可以[建立復原方案](../site-recovery/site-recovery-create-recovery-plans.md)，來將應用程式的整個容錯移轉程序自動化。 您可以事先[測試容錯移轉](../site-recovery/site-recovery-test-failover-to-azure.md)，而不影響實際執行應用程式或進行中的複寫。 如果主要區域發生中斷，只要[起始容錯移轉](../site-recovery/site-recovery-failover.md)並將您的應用程式帶到目標區域即可。
+您可以為 VM 設定 Azure Site Recovery，如此一來，只要按一下花幾分鐘就能復原應用程式。 您可以複寫至所選擇的 Azure 區域，而不限於配對的區域。 您可以[複寫虛擬機器](../site-recovery/azure-to-azure-quickstart.md)來開始進行。 您可以[建立復原方案](../site-recovery/site-recovery-create-recovery-plans.md)，來將應用程式的整個容錯移轉程序自動化。 您可以事先[測試容錯移轉](../site-recovery/site-recovery-test-failover-to-azure.md)，而不影響實際執行應用程式或進行中的複寫。 如果主要區域發生中斷，只要[起始容錯移轉](../site-recovery/site-recovery-failover.md)並將您的應用程式帶到目標區域即可。
 
 
 ## <a name="option-2-wait-for-recovery"></a>選項 2︰等待復原
@@ -41,7 +41,7 @@ Azure 已經有許多支援高可用性應用程式的內建平台功能。 如�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用 Azure Site Recovery 開始[保護在 Azure 虛擬機器上執行的應用程式](https://aka.ms/a2a-getting-started)
+- 使用 Azure Site Recovery 開始[保護在 Azure 虛擬機器上執行的應用程式](../site-recovery/azure-to-azure-quickstart.md)
 
 - 若要深入了解如何實作災害復原和高可用性策略，請參閱 [Azure 應用程式的災害復原和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)。
 

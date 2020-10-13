@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300423"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>在 Azure 串流分析中進行使用者自訂函式的調試 
@@ -49,7 +49,7 @@ JavaScript 是在串流分析中建立函式的另一個選項。 JavaScript 程
 
 下列範例示範如何在 [Visual Studio Code](quick-create-visual-studio-code.md)中的整合執行時間環境中，以一些限制來偵測 JavaScript udf。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您的 Azure 串流分析專案具有下列專案：
 

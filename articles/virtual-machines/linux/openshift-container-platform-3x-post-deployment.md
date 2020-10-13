@@ -11,10 +11,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373567"
 ---
 # <a name="post-deployment-tasks"></a>部署後工作
@@ -22,7 +22,7 @@ ms.locfileid: "87373567"
 部署 OpenShift 叢集之後，您可以設定其他項目。 本文將說明：
 
 - 如何使用 Azure Active Directory (Azure AD) 設定單一登入
-- 如何設定 Azure 監視器記錄來監視 OpenShift
+- 如何設定 Azure 監視器記錄以監視 OpenShift
 - 如何設定計量與記錄
 - 如何安裝 Open Service Broker for Azure (OSBA)
 
@@ -35,9 +35,9 @@ ms.locfileid: "87373567"
 這些步驟使用 Azure CLI 建立應用程式註冊，以及使用 GUI (入口網站) 設定權限。 若要建立應用程式註冊，您需要下列五項資訊：
 
 - 顯示名稱：應用程式註冊名稱 (例如 OCPAzureAD)
-- 首頁： OpenShift 主控台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console` ）
-- 識別碼 URI： OpenShift 主控台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console` ）
-- 回復 URL：主要公用 URL 和應用程式註冊名稱（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` ）
+- 首頁： OpenShift 主控台 URL (例如 `https://masterdns343khhde.westus.cloudapp.azure.com/console`) 
+- 識別碼 URI： OpenShift 主控台 URL (例如 `https://masterdns343khhde.westus.cloudapp.azure.com/console`) 
+- 回復 URL：主要公用 URL 和應用程式註冊名稱 (例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`) 
 - 密碼：安全密碼 (使用強式密碼)
 
 下列範例將會使用上述資訊建立應用程式註冊：
@@ -158,9 +158,9 @@ sudo /usr/local/bin/master-restart controllers
 有三種方式可將 Log Analytics 代理程式新增至 OpenShift。
 - 直接在每個 OpenShift 節點上安裝適用於 Linux 的 Log Analytics 代理程式
 - 在每個 OpenShift 節點上啟用 Azure 監視器 VM 擴充功能
-- 將 Log Analytics 代理程式安裝為 OpenShift daemon-set
+- 將 Log Analytics 代理程式安裝為 OpenShift daemon 集
 
-如需詳細資訊，請參閱完整[指示](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift)。
+如需詳細資訊，請參閱完整的 [指示](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) 。
 
 ## <a name="configure-metrics-and-logging"></a>設定計量與記錄
 
@@ -200,8 +200,8 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 若要在 OpenShift 上安裝 OSBA，請遵循此處的指示：https://github.com/Azure/open-service-broker-azure#openshift-project-template。 
 > [!NOTE]
-> 僅完成 OpenShift 專案範本一節中的步驟，而不是整個安裝區段。
+> 只完成 OpenShift 專案範本區段中的步驟，而不是整個安裝區段。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [開始使用 OpenShift 容器平臺](https://docs.openshift.com)

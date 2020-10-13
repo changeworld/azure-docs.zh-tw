@@ -1,16 +1,16 @@
 ---
 title: 如何保護對 Azure 資料目錄的存取
-description: 本文說明如何在 Azure 資料目錄中保護資料目錄及其資料資產。
+description: 本文說明如何保護 Azure 資料目錄中的資料目錄和資料資產。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523378"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保護對資料目錄及資料資產的存取
@@ -30,7 +30,7 @@ ms.locfileid: "86523378"
 
 2. 在 [設定] 頁面中，展開 [目錄使用者]**** 區段。
 
-   ![Azure 資料目錄使用者新增] 按鈕](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
+   ![Azure 資料目錄使用者新增按鈕](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
 3. 按一下 [新增] 。
 
@@ -62,6 +62,6 @@ ms.locfileid: "86523378"
 - 指派給安全性群組的權限是附加的。 假設使用者位於兩個群組中。 一個群組具有標註權限，而另一個群組沒有標註權限。 那麼，使用者會具有標註權限。 
 - 明確指派給使用者的權限會覆寫指派給使用者所屬群組的權限。 在上述範例中，假設您已將使用者明確新增到目錄使用者中，而未指派標註權限。 那麼，儘管該使用者所屬群組具有標註權限，他也無法標註資料資產。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [開始使用 Azure 資料目錄](data-catalog-get-started.md)

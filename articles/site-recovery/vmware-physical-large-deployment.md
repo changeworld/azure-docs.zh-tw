@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047070"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>為 VMware Vm/實體伺服器設定大規模的嚴重損壞修復
@@ -127,7 +127,7 @@ ms.locfileid: "89047070"
  
 設定伺服器容量會受到複寫的電腦數目所影響，而不會受到資料變換率的影響。 若要找出您是否需要額外的設定伺服器，請使用這些定義的 VM 限制。
 
-**CPU** | **記憶體** | **快取磁片** | **已複寫的電腦限制**
+**CPU** | **記憶體** | **快取磁碟** | **已複寫的電腦限制**
  --- | --- | --- | ---
 8 個 vCPU<br> 2個通訊端 * 4 核心 @ 2.5 Ghz | 16 GB | 600 GB | 最多550電腦<br> 假設每部電腦各有三個 100 GB 的磁片。
 
@@ -153,7 +153,7 @@ ms.locfileid: "89047070"
 - 建議您新增具有最高規格的伺服器。 
 
 
-**CPU** | **記憶體** | **快取磁片** | **流失率**
+**CPU** | **記憶體** | **快取磁碟** | **流失率**
  --- | --- | --- | --- 
 12 個 vCPU<br> 2個通訊端 * 6 核心 @ 2.5 Ghz | 24 GB | 1 GB | 一天最多 2 TB
 

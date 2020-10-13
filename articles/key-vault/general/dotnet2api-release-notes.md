@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189843"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 金鑰保存庫 .NET 2.0 - 版本資訊和移轉指南
@@ -90,8 +90,8 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 ## <a name="class-changes"></a>類別變更
 
-* 已移除**UnixEpoch**類別。
-* **Base64UrlConverter** 類別已重新命名為 **Base64UrlJsonConverter**。
+* 已移除 **>unixepoch**類別。
+* **Base64UrlConverter** 類別已重新命名為 **>base64urljsonconverter**。
 
 ## <a name="other-changes"></a>其他變更
 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401515"
 ---
 # <a name="verify-traffic-manager-settings"></a>驗證流量管理員設定
@@ -68,7 +68,7 @@ ms.locfileid: "89401515"
 
 或者，您可以找到免費的 Web 型 DNS 查閱和挖掘服務。 其中一些工具提供您從全球不同位置檢查 DNS 名稱解析的能力。 例如，搜尋 "DNS lookup" 相關資料。 協力廠商服務 (如 Gomez、Keynote) 可用於確認您的設定檔正如預期般分配流量。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [關於流量管理員流量路由方法](traffic-manager-routing-methods.md)
 * [流量管理員的效能考量](traffic-manager-performance-considerations.md)

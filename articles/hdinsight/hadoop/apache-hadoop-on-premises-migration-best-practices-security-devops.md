@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88751290"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 安全性和 DevOps 最佳做法
@@ -42,7 +42,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 - 藉由設定下列參數來部署 HDInsight ESP 叢集：
 
-    |參數 |描述 |
+    |參數 |說明 |
     |---|---|
     |網域名稱|與 Azure AD DS 相關聯的網域名稱。|
     |網域使用者名稱|上一節在受 Azure AD DS DC 管理的網域中建立的服務帳戶，例如：`hdiadmin@contoso.onmicrosoft.com`。 此網域使用者將是這個 HDInsight 叢集的系統管理員。|
@@ -79,7 +79,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 **加密**
     - 「透明的伺服器端」加密使用受 Microsoft 管理的金鑰或受客戶管理的金鑰。
-    - 在使用用戶端加密、HTTPs 和 TLS 的傳輸加密中。
+    - 在使用 Client-Side 加密、HTTPs 和 TLS 的傳輸加密中。
 
 如需詳細資訊，請參閱下列文章：
 
@@ -120,6 +120,6 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 2. **執行測試** - 反覆地執行功能和效能測試。
 3. **最佳化** - 根據上述的測試結果，解決任何效能問題，然後重新測試以確認效能改進。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解 [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)。

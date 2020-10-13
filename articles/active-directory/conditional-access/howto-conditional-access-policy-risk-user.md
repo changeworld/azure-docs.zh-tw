@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049072"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>條件式存取：以使用者風險為基礎的條件式存取
@@ -30,7 +30,7 @@ Microsoft 與研究人員、執法機關、Microsoft 的各種安全性小組和
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。 如需詳細資訊，請 [設定原則的命名標準](./plan-conditional-access.md#set-naming-standards-for-your-policies)。
-1. 在 [指派] 底下選取 [使用者和群組]。
+1. 在 [指派]  底下，選取 [使用者和群組]  。
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。

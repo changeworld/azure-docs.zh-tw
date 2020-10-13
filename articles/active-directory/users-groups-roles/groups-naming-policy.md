@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054461"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 的 Microsoft 365 群組上強制執行命名原則
@@ -85,24 +85,24 @@ ms.locfileid: "90054461"
 ## <a name="configure-naming-policy-in-azure-portal"></a>在 Azure 入口網站中設定命名原則
 
 1. 使用群組系統管理員帳戶登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 [群組]  ，然後選取 [命名原則]  以開啟 [命名原則] 頁面。
+1. 選取 [群組]****，然後選取 [命名原則]**** 以開啟 [命名原則] 頁面。
 
     ![在管理中心開啟 [命名原則] 頁面](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或編輯前置詞尾碼命名原則
 
-1. 在 [命名原則]  頁面上，選取 [群組命名原則]  。
+1. 在 [命名原則]**** 頁面上，選取 [群組命名原則]****。
 1. 您可以選取您想要在命名原則時強制執行的屬性或字串，以個別檢視或編輯目前的前置詞或後置詞命名原則。
-1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]  。 您同時可以刪除多個項目。
+1. 若要從清單中移除前置詞或後置詞，請選取該前置詞或後置詞，然後選取 [刪除]****。 您同時可以刪除多個項目。
 1. 藉由選取 [ **儲存**]，儲存新原則的變更以開始生效。
 
 ### <a name="edit-custom-blocked-words"></a>編輯自訂封鎖字組
 
-1. 在 [命名原則]  頁面上，選取 [封鎖的字組]  。
+1. 在 [命名原則]**** 頁面上，選取 [封鎖的字組]****。
 
     ![編輯和上傳命名原則的封鎖字組清單](./media/groups-naming-policy/blockedwords.png)
 
-1. 選取 [下載]  可檢視或編輯目前的自訂封鎖字組清單。
+1. 選取 [下載]**** 可檢視或編輯目前的自訂封鎖字組清單。
 1. 選取 [檔案] 圖示可上傳新的自訂封鎖字組清單。
 1. 藉由選取 [ **儲存**]，儲存新原則的變更以開始生效。
 
@@ -206,7 +206,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>使用 Azure 入口網站移除命名原則
 
-1. 在 [命名原則]  頁面上，選取 [刪除原則]  。
+1. 在 [命名原則]**** 頁面上，選取 [刪除原則]****。
 1. 確認刪除之後，命名原則就會遭到移除，包括所有前置詞後置詞命名原則以及任何自訂封鎖字組。
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 移除命名原則
@@ -259,7 +259,7 @@ Azure Active Directory PowerShell Cmdlet | Azure Active Directory PowerShell Cmd
 Exchange 系統管理中心 | Exchange 系統管理中心會遵守命名原則。 使用者若未在群組名稱和群組別名中遵守命名慣例，將會收到適當的錯誤訊息以及針對自訂封鎖字組所建議的前置詞和後置詞。
 Microsoft 365 系統管理中心 | Microsoft 365 系統管理中心符合命名原則的規範。 當使用者建立或編輯群組名稱時，系統會自動套用命名原則，而且使用者會在輸入自訂封鎖字組時收到適當的錯誤。 Microsoft 365 系統管理中心還不會顯示命名原則的預覽，也不會在使用者輸入組名時傳回自訂封鎖字組錯誤。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 這些文章提供有關 Azure AD 群組的其他資訊。
 

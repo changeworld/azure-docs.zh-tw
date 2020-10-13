@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: aahi
 ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903537"
 ---
 # <a name="configure-anomaly-detector-containers"></a>設定異常偵測器容器
@@ -25,16 +25,16 @@ ms.locfileid: "90903537"
 
 此容器具有下列組態設定：
 
-|必要|設定|用途|
+|必要|設定|目的|
 |--|--|--|
-|Yes|[ApiKey](#apikey-configuration-setting)|用來追蹤帳單資訊。|
-|No|[ApplicationInsights](#applicationinsights-setting)|可讓您將 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遙測支援新增至容器。|
-|Yes|[Billing](#billing-configuration-setting)|指定 Azure 上服務資源的端點 URI。|
-|Yes|[Eula](#eula-setting)| 表示您已接受容器的授權。|
-|No|[Fluentd](#fluentd-settings)|將記錄 (和選擇性的計量資料) 寫入至 Fluentd 伺服器。|
-|No|[Http Proxy](#http-proxy-credentials-settings)|設定 HTTP Proxy 以進行輸出要求。|
-|No|[Logging](#logging-settings)|提供適用於容器的 ASP.NET Core 記錄支援。 |
-|No|[Mounts](#mount-settings)|從主機電腦將資料讀取和寫入至容器，以及從容器將資料讀取和寫回主機電腦。|
+|是|[ApiKey](#apikey-configuration-setting)|用來追蹤帳單資訊。|
+|否|[ApplicationInsights](#applicationinsights-setting)|可讓您將 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遙測支援新增至容器。|
+|是|[Billing](#billing-configuration-setting)|指定 Azure 上服務資源的端點 URI。|
+|是|[Eula](#eula-setting)| 表示您已接受容器的授權。|
+|否|[Fluentd](#fluentd-settings)|將記錄 (和選擇性的計量資料) 寫入至 Fluentd 伺服器。|
+|否|[Http Proxy](#http-proxy-credentials-settings)|設定 HTTP Proxy 以進行輸出要求。|
+|否|[Logging](#logging-settings)|提供適用於容器的 ASP.NET Core 記錄支援。 |
+|否|[Mounts](#mount-settings)|從主機電腦將資料讀取和寫入至容器，以及從容器將資料讀取和寫回主機電腦。|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、 [`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-setting) 設定會一起使用，您必須為所有三個值提供有效的值，否則您的容器將不會啟動。 如需使用這些組態設定來將容器具現化的詳細資訊，請參閱[帳單](anomaly-detector-container-howto.md#billing)。
@@ -59,7 +59,7 @@ ms.locfileid: "90903537"
 
 * Azure 入口網站： **異常** 偵測器的總覽，加上標籤 `Endpoint`
 
-|必要| Name | 資料類型 | 描述 |
+|必要| 名稱 | 資料類型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 計費端點 URI。 如需取得帳單 URI 的詳細資訊，請參閱 [收集必要參數](anomaly-detector-container-howto.md#gathering-required-parameters)。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../cognitive-services-custom-subdomains.md)。 |
 
@@ -88,9 +88,9 @@ ms.locfileid: "90903537"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](anomaly-detector-container-howto.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。 
 
-|選擇性| Name | 資料類型 | 描述 |
+|選用| 名稱 | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
-|不允許| `Input` | String | 異常偵測器容器不會使用這個。|
+|不允許| `Input` | 字串 | 異常偵測器容器不會使用這個。|
 |選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令 
@@ -137,7 +137,7 @@ ms.locfileid: "90903537"
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [將異常偵測器容器部署至 Azure 容器實例](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [深入瞭解異常偵測器 API 服務](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

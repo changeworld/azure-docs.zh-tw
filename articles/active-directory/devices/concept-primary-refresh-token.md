@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450408"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965908"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什麼是主要重新整理權杖？
 
-主要重新整理權杖 (PRT) 是在 Windows 10、iOS 和 Android 裝置上進行 Azure AD 驗證的主要成品。 這是特別向 Microsoft 第一方權杖代理程式 (token broker) 發出的 JSON Web 權杖 (JWT)，用來在這些裝置上使用的應用程式之間啟用單一登入 (SSO)。 在本文中，我們將提供有關如何在 Windows 10 裝置上發出、使用和保護 PRT 的詳細資料。
+主要重新整理權杖 (PRT) 是 Windows 10、Windows Server 2016 和更新版本、iOS 和 Android 裝置上 Azure AD 驗證的主要成品。 這是特別向 Microsoft 第一方權杖代理程式 (token broker) 發出的 JSON Web 權杖 (JWT)，用來在這些裝置上使用的應用程式之間啟用單一登入 (SSO)。 在本文中，我們將提供有關如何在 Windows 10 裝置上發出、使用和保護 PRT 的詳細資料。
 
 本文假設您已了解 Azure AD 中可用的不同裝置狀態，以及單一登入在 Windows 10 中的運作方式。 如需有關 Azure AD 中裝置的詳細資訊，請參閱[什麼是 Azure Active Directory 中的裝置管理？](overview.md)一文
 

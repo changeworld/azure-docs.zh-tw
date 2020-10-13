@@ -4,10 +4,10 @@ description: 了解如何將實驗室帳戶設定為使用共用映像庫，讓�
 ms.topic: article
 ms.date: 09/11/2020
 ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052829"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure Lab Services 中使用共用映像庫

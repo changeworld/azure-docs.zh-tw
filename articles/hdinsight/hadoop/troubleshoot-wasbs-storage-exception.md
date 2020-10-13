@@ -1,6 +1,6 @@
 ---
-title: 正在存取的帳戶不支援 Azure HDInsight 中的 HTTP 錯誤
-description: 本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+title: 所存取的帳戶不支援 Azure HDInsight 中的 HTTP 錯誤
+description: 本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: 14c43e4557275d6a425127acfee7495f68d1d354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77165549"
 ---
-# <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>正在存取的帳戶不支援 Azure HDInsight 中的 HTTP 錯誤
+# <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>所存取的帳戶不支援 Azure HDInsight 中的 HTTP 錯誤
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
@@ -30,13 +30,13 @@ com.microsoft.azure.storage.StorageException: The account being accessed does no
 
 收到錯誤訊息的原因有很多：
 
-* 儲存體帳戶已啟用[安全傳輸](../../storage/common/storage-require-secure-transfer.md)，且使用了不正確的[URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。
+* 儲存體帳戶已啟用 [安全傳輸](../../storage/common/storage-require-secure-transfer.md) ，並使用了不正確的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme) 。
 
-* 叢集是使用*已停*用安全傳輸的儲存體帳戶所建立。 之後，就會在儲存體帳戶上啟用安全傳輸。
+* 叢集是使用 *已停*用安全傳輸的儲存體帳戶所建立。 之後，會在儲存體帳戶上啟用安全傳輸。
 
 ## <a name="resolution"></a>解決方案
 
-如果已啟用 Azure 儲存體或 Data Lake Storage Gen2 的安全傳輸，則 URI 會 `wasbs://` 分別是或 `abfss://` 。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+如果已針對 Azure 儲存體或 Data Lake Storage Gen2 啟用安全傳輸，則 URI 會 `wasbs://` 分別為或 `abfss://` 。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 針對新的叢集，請使用已具有所需安全傳輸設定的儲存體帳戶。 請勿變更現有叢集所使用之儲存體帳戶的安全傳輸設定。
 

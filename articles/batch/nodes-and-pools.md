@@ -4,10 +4,10 @@ description: 從開發觀點了解計算節點和集區，以及如何在 Azure 
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385750"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
@@ -28,7 +28,7 @@ Batch 中的所有計算節點也包括︰
 - **防火牆** 設定。
 - [遠端存取](error-handling.md#connect-to-compute-nodes) Windows (遠端桌面通訊協定 (RDP)) 和 Linux (安全殼層 (SSH)) 節點。
 
-根據預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要允許節點與其他虛擬機器或內部部署網路安全地進行通訊，您可以[在 Azure 虛擬網路（VNet）的子網中](batch-virtual-network.md)布建集區。 當您這麼做時，可以透過公用 IP 位址存取您的節點。 這些公用 IP 位址是由 Batch 所建立，而且可能會在集區的存留期間變更。 您也可以使用您控制的[靜態公用 IP 位址來建立集](create-pool-public-ip.md)區，以確保它們不會意外變更。
+依預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要讓節點能安全地與其他虛擬機器或內部部署網路通訊，您可以 [在 Azure 虛擬網路的子網中 ](batch-virtual-network.md)布建集區 (VNet) 。 當您這樣做時，您的節點可以透過公用 IP 位址來存取。 這些公用 IP 位址是由 Batch 建立，而且可能會在集區的存留期內變更。 您也可以建立具有您所控制之 [靜態公用 IP 位址的集](create-pool-public-ip.md) 區，以確保它們不會意外變更。
 
 ## <a name="pools"></a>集區
 
@@ -173,7 +173,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 如需在 VNet 中設定 Batch 集區的詳細資訊，請參閱[使用虛擬網路建立虛擬機器的集區](batch-virtual-network.md)。
 
 > [!TIP]
-> 若要確保用來存取節點的公用 IP 位址不會變更，您可以[使用您所控制的指定公用 ip 位址來建立集](create-pool-public-ip.md)區。
+> 若要確保用來存取節點的公用 IP 位址不會變更，您可以 [建立具有您所控制之指定公用 ip 位址的集](create-pool-public-ip.md)區。
 
 ## <a name="pool-and-compute-node-lifetime"></a>集區和計算節點存留期
 

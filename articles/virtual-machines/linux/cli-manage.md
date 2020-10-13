@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
 ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372241"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>用來管理 Azure 資源的常用 Azure CLI 命令
@@ -58,5 +58,5 @@ Azure CLI 可讓您建立及管理 macOS、Linux 與 Windows 上的 Azure 資源
 | 從映像建立 VM | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需 CLI 命令的其他範例，請參閱[使用 Azure CLI 建立和管理 Linux VM](tutorial-manage-vm.md) 教學課程。

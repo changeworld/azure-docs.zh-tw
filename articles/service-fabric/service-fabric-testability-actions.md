@@ -7,10 +7,10 @@ ms.date: 06/07/2017
 ms.author: motanv
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022168"
 ---
 # <a name="testability-actions"></a>Testability 動作
@@ -80,7 +80,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 下列螢幕擷取畫面顯示 **Restart-ServiceFabricNode** Testability 命令的實際操作。
 
-![在 PowerShell 中執行 >disable-servicefabricnode 命令的螢幕擷取畫面。](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![在 PowerShell 中執行 Restart-ServiceFabricNode 命令的螢幕擷取畫面。](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
 第一個 **Get-ServiceFabricNode** (Service Fabric PowerShell 模組中的 Cmdlet) 的輸出顯示，本機叢集有五個節點：Node.1 至 Node.5。 在名為 Node.4 的節點上執行 **Restart-ServiceFabricNode** Testability 動作 (Cmdlet) 之後，我們可以看到節點的運作時間已重設。
 

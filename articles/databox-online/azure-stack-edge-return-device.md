@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
 ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903675"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>退回您的 Azure Stack Edge Pro 裝置
@@ -142,6 +142,6 @@ Azure 資料中心收到裝置後，就會檢查裝置是否受損或有任何�
 您會在裝置和相關聯的資源成功刪除後收到通知。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [取得更換 Azure Stack Edge Pro 裝置](azure-stack-edge-replace-device.md)。

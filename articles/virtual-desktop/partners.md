@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056378"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
@@ -236,7 +236,7 @@ Liquit 應用程式匯總和傳遞軟體可讓企業和服務提供者連線到�
 
 Nasuni Corp 是雲端檔案服務的領導提供者，以及最上層的 Azure 全球 ISV 合作夥伴，提供 Nasuni 的軟體即服務平臺，作為新式虛擬桌面的新式檔案儲存體解決方案。 Nasuni 結合 Azure Blob 儲存體時，會將主要檔案儲存 (NAS) 、檔案備份、嚴重損壞修復和跨區域檔案同步處理合併到一個整合的解決方案中。 透過 Nasuni，企業可以在更多的使用案例和更多 Azure 區域中部署 Windows 虛擬桌面，以簡化系統管理，並確保商務持續性。 
 
-Windows 虛擬桌面是新式雲端 VDI 解決方案，需要新式雲端檔案儲存體。 傳統上，VDI 檔案儲存體是以連接網路的存放裝置為基礎， (NAS) 和位於內部部署的檔案伺服器硬體，以及隨附的必要技術來提供檔案備份、還原和嚴重損壞修復。 這些傳統方法很昂貴、更複雜，無法維護和管理，而且不容易調整。 如果與 Windows 虛擬桌面等新式雲端 VDI 解決方案搭配使用，它們也會造成延遲，因為桌上型電腦與以 Azure 為基礎的桌上型電腦與以內部部署為基礎的檔案儲存體之間的實體距離和速度較慢的 WAN 連線。 Nasuni 是專為 Azure 建立的檔案服務平臺，提供無限制的檔案儲存容量和高效能檔案存取。 Nasuni 可與 Windows 虛擬桌面共置於相同的 Azure 區域，以提供經濟實惠的高效能檔案存取單一全域命名空間。 Nasuni 以傳統的 NAS 和 Windows 檔案伺服器的成本來提供 Windows 虛擬桌面檔案儲存體，並包含內建的備份和嚴重損壞修復，以進一步降低成本並釋出 IT 資源。
+Windows 虛擬桌面是新式雲端 VDI 解決方案，需要新式雲端檔案儲存體。 傳統上，VDI 檔案儲存體是以 Network-Attached 儲存體為基礎， (NAS) 和位於內部部署的檔案伺服器硬體，以及隨附的必要技術來提供檔案備份、還原和嚴重損壞修復。 這些傳統方法很昂貴、更複雜，無法維護和管理，而且不容易調整。 如果與 Windows 虛擬桌面等新式雲端 VDI 解決方案搭配使用，它們也會造成延遲，因為桌上型電腦與以 Azure 為基礎的桌上型電腦與以內部部署為基礎的檔案儲存體之間的實體距離和速度較慢的 WAN 連線。 Nasuni 是專為 Azure 建立的檔案服務平臺，提供無限制的檔案儲存容量和高效能檔案存取。 Nasuni 可與 Windows 虛擬桌面共置於相同的 Azure 區域，以提供經濟實惠的高效能檔案存取單一全域命名空間。 Nasuni 以傳統的 NAS 和 Windows 檔案伺服器的成本來提供 Windows 虛擬桌面檔案儲存體，並包含內建的備份和嚴重損壞修復，以進一步降低成本並釋出 IT 資源。
 
 - [前往合作夥伴網站](https://www.nasuni.com/partner/microsoft/#wvd)。
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS)。
@@ -406,7 +406,7 @@ Workspot control 藉由簡化雲端桌面基礎結構的布建程式，擴充了
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)。
 - [前往合作夥伴網站](https://www.workspot.com/wvd)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 Windows 虛擬桌面](overview.md)。
 - [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。

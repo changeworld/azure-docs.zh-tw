@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078124"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>靜態資料的 Language Understanding 服務加密
@@ -32,11 +32,11 @@ ms.locfileid: "89078124"
 
 您也可以選擇使用自己的金鑰來管理您的訂用帳戶。 客戶管理的金鑰 (CMK) ，也稱為自備金鑰 (BYOK) ，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。
 
-您必須使用 Azure Key Vault 儲存客戶管理的金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+您必須使用 Azure Key Vault 來儲存客戶自控金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Language Understanding 客戶管理的金鑰
 
-若要要求能夠使用客戶管理的金鑰，請填寫並提交 [LUIS Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配 LUIS 之後，您必須從 Azure 入口網站建立新的 Language Understanding 資源，並選取 [E0] 作為定價層。 新的 SKU 運作方式與 F0 SKU 相同，除了 CMK 以外，已可供使用。 使用者將無法從 F0 升級至新的 E0 SKU。
+若要要求使用客戶管理金鑰的能力，請填寫並提交 [LUIS 服務 Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配 LUIS 之後，您必須從 Azure 入口網站建立新的 Language Understanding 資源，並選取 [E0] 作為定價層。 新的 SKU 運作方式與 F0 SKU 相同，除了 CMK 以外，已可供使用。 使用者將無法從 F0 升級至新的 E0 SKU。
 
 ![LUIS 訂用帳戶影像](../media/cognitive-services-encryption/luis-subscription.png)
 
@@ -85,5 +85,5 @@ ms.locfileid: "89078124"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [LUIS Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)
+* [LUIS Service Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)
 * [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

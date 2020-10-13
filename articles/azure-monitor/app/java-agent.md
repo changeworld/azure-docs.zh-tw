@@ -1,40 +1,40 @@
 ---
-title: JAVA web 應用程式效能監視-Azure 應用程式深入資訊
+title: JAVA web apps 效能監視-Azure 應用程式見解
 description: 使用 Application Insights 延伸 Java 網站的效能和使用量監視。
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371357"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>監視 JAVA web 應用程式中的相依性、攔截到的例外狀況和方法執行時間
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 JAVA web 應用程式中監視相依性、攔截到例外狀況和方法執行時間
 
 
 如果您已[使用 Application Insights 檢測您的 Java Web 應用程式][java]，您可以使用 Java 代理程式獲得更深入的見解，而不需變更任何程式碼：
 
 * **相依性** ：您的應用程式對其他元件呼叫的相關資料，包括：
-  * 系統會攔截透過 Apache HttpClient、OkHttp 和所發出的**傳出 HTTP 呼叫** `java.net.HttpURLConnection` 。
-  * 系統會攔截透過 Jedis 用戶端所提出的**Redis 呼叫**。
-  * **JDBC 查詢**-針對 MySQL 和于 postgresql，如果呼叫所花費的時間超過10秒，代理程式就會報告查詢計劃。
+  * 透過 Apache HttpClient、OkHttp 和發出的連**出 HTTP 呼叫** `java.net.HttpURLConnection` 會被捕捉。
+  * 系統會捕捉透過 Jedis 用戶端所提出的**Redis 呼叫**。
+  * **JDBC 查詢** -針對 MySQL 和于 postgresql，如果呼叫花費的時間超過10秒，則代理程式會報告查詢計劃。
 
-* **應用程式記錄：** 使用 HTTP 要求和其他遙測來捕獲應用程式記錄並使其相互關聯
+* **應用程式記錄：** 使用 HTTP 要求和其他遙測來捕捉您的應用程式記錄並使其相互關聯
   * **Log4j 1。2**
   * **Log4j2**
   * **Logback**
 
-* **更好的作業命名：** （用於入口網站中的要求匯總）
+* **更好的作業命名：** (用於入口網站中的要求匯總) 
   * 以**春季**為基礎 `@RequestMapping` 。
-  * **JAX-RS** -以為基礎 `@Path` 。 
+  * **JAX-RS** 為基礎 `@Path` 。 
 
 若要使用 Java 代理程式，您要在伺服器上安裝它。 您必須使用 [Application Insights Java SDK][java] 檢測您的 Web 應用程式。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安裝 Java 的 Application Insights 代理程式
 1. 在執行 Java 伺服器的電腦上[下載代理程式](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 請確定下載的 Java 代理程式版本與 Application Insights Java SDK 核心和網頁套件相同。
-2. 編輯應用程式伺服器啟動腳本，並新增下列 JVM 引數：
+2. 編輯應用程式伺服器啟動腳本，並加入下列 JVM 引數：
    
     `-javaagent:<full path to the agent JAR file>`
    
@@ -76,7 +76,7 @@ ms.locfileid: "87371357"
 </ApplicationInsightsAgent>
 ```
 
-## <a name="additional-config-spring-boot"></a>其他設定（彈簧開機）
+## <a name="additional-config-spring-boot"></a>其他設定 (彈簧開機) 
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
@@ -85,14 +85,14 @@ ms.locfileid: "87371357"
 * 選取 [設定] > [應用程式設定]
 * 在 [應用程式設定] 之下，新增索引鍵值組︰
 
-機碼： `JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+機碼： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-如需最新版本的 JAVA 代理程式，請在[這裡](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)查看版本。 
+如需最新版本的 JAVA 代理程式，請參閱 [這裡](https://github.com/Microsoft/ApplicationInsights-Java/releases
+)的版本。 
 
-代理程式必須封裝為專案中的資源，因此它最後會在 D：/home/site/wwwroot/目錄中。 您可以前往 [**開發工具**] [  >  **高級工具**] [  >  **偵錯主控台**]，然後檢查網站目錄的內容，以確認您的代理程式是否在正確的 App Service 目錄中。    
+代理程式必須封裝為專案中的資源，使其最後位於 D：/home/site/wwwroot/目錄中。 您可以前往 [**開發工具**] 的 [  >  **Advanced tools**]  >  **偵錯主控台**和檢查網站目錄的內容，確認您的代理程式位於正確的 App Service 目錄。    
 
-* 儲存設定並重新啟動您的應用程式。 （這些步驟僅適用于在 Windows 上執行的應用程式服務）。
+* 儲存設定並重新啟動您的應用程式。  (這些步驟僅適用于在 Windows 上執行的應用程式服務。 ) 
 
 > [!NOTE]
 > AI-Agent.xml 與代理程式 jar 檔案應在同一個資料夾中。 它們通常一起放在專案的 `/resources` 資料夾中。  
@@ -117,13 +117,13 @@ ms.locfileid: "87371357"
 確定**[傳入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)與傳出 (代理程式) 設定兩者**完全相同。
 
 ## <a name="view-the-data"></a>檢視資料
-在 Application Insights 資源中，匯總的遠端相依性和方法執行時間會出現[在 [效能] 磚之下][metrics]。
+在 Application Insights 資源中，匯總的遠端相依性和方法執行時間會出現 [在 [效能] 圖][metrics]格底下。
 
 若要搜尋相依性、例外狀況及方法報告的個別執行個體，請開啟[搜尋][diagnostic]。
 
 [診斷相依性問題 - 深入了解](./asp-net-dependencies.md#diagnosis)。
 
-## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
+## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
 * 沒有資料？ [設定防火牆例外狀況](./ip-addresses.md)
 * [疑難排解 Java](java-troubleshoot.md)
 

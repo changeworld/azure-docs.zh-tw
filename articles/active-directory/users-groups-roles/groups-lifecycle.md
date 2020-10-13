@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054546"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>設定 Microsoft 365 群組的到期原則
@@ -134,7 +134,7 @@ User | 可以更新他們擁有的 Microsoft 365 群組<br>可以還原他們所
    Connect-AzureAD
    ```
 
-1. 設定到期設定使用 Get-azureadmsgrouplifecyclepolicy Cmdlet，將 Azure AD 組織中所有 Microsoft 365 群組的存留期設定為365天。 沒有擁有者之 Microsoft 365 群組的更新通知將會傳送至 ' emailaddress@contoso.com '
+1. 設定到期設定使用 New-AzureADMSGroupLifecyclePolicy Cmdlet，將 Azure AD 組織中所有 Microsoft 365 群組的存留期設定為365天。 沒有擁有者之 Microsoft 365 群組的更新通知將會傳送至 ' emailaddress@contoso.com '
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -183,7 +183,7 @@ User | 可以更新他們擁有的 Microsoft 365 群組<br>可以還原他們所
 - Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 這些文章提供有關 Azure AD 群組的其他資訊。
 

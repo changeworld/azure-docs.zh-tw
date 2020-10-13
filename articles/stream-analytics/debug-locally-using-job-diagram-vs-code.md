@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903822"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>使用 Visual Studio Code 中的工作圖表在本機進行 Azure 串流分析查詢的調試
@@ -106,7 +106,7 @@ Azure 串流分析腳本可用來將輸入資料轉換成輸出資料。 工作�
 
 * 只有雲端輸入選項可支援 [時間原則](stream-analytics-out-of-order-and-late-events.md) ，而本機輸入選項則否。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：使用 Visual Studio Code 建立串流分析作業](quick-create-visual-studio-code.md)
 * [使用 Visual Studio Code 探索 Azure 串流分析](visual-studio-code-explore-jobs.md)

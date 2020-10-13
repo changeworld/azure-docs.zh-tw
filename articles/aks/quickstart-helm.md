@@ -1,39 +1,39 @@
 ---
-title: 使用 Helm 在 Azure Kubernetes Service （AKS）上進行開發
-description: 使用 Helm 搭配 AKS 和 Azure Container Registry 來封裝和執行叢集中的應用程式容器。
+title: 使用 Helm 在 Azure Kubernetes Service (AKS) 上進行開發
+description: 使用 Helm 搭配 AKS 和 Azure Container Registry，在叢集中封裝和執行應用程式容器。
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87407110"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入門：使用 Helm 在 Azure Kubernetes Service （AKS）上進行開發
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入門：使用 Helm 在 Azure Kubernetes Service (AKS) 上進行開發
 
-[Helm][helm]是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 類似于 Linux 套件管理員（例如*APT*和*Yum*），Helm 是用來管理 Kubernetes 圖表，這是預先設定之 Kubernetes 資源的套件。
+[Helm][helm] 是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 如同 Linux 套件管理員（例如 *APT* 和 *Yum*），Helm 可用來管理 Kubernetes 圖表，也就是預先設定的 Kubernetes 資源套件。
 
-本文說明如何使用 Helm 來封裝和執行 AKS 上的應用程式。 如需使用 Helm 安裝現有應用程式的詳細資訊，請參閱[在 AKS 中使用 Helm 安裝現有的應用程式][helm-existing]。
+本文說明如何使用 Helm 在 AKS 上封裝和執行應用程式。 如需使用 Helm 安裝現有應用程式的詳細資訊，請參閱 [在 AKS 中使用 Helm 安裝現有的應用][helm-existing]程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [已安裝 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>建立 Azure Container Registry
-若要使用 Helm 在您的 AKS 叢集中執行您的應用程式，您需要 Azure Container Registry 來儲存您的容器映射。 下列範例使用[az acr create][az-acr-create] ，在*MyResourceGroup*資源群組中使用*基本*SKU 建立名為*MyHelmACR*的 acr。 您應該提供自己唯一的登錄名稱。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 *基本* SKU 對開發用途而言是最符合成本效益的進入點，可在儲存體和輸送量之間取得平衡。
+若要使用 Helm 在 AKS 叢集中執行您的應用程式，您需要 Azure Container Registry 來儲存您的容器映射。 下列範例會使用[az acr create][az-acr-create] ，以*基本*SKU 在*MyResourceGroup*資源群組中建立名為*MyHelmACR*的 acr。 您應該提供自己的唯一登錄名稱。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 *基本* SKU 對開發用途而言是最符合成本效益的進入點，可在儲存體和輸送量之間取得平衡。
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-輸出類似於下列範例： 記下 ACR 的*loginServer*值，因為它會在稍後的步驟中使用。 在下列範例中， *myhelmacr.azurecr.io*是*myhelmacr*的*loginServer* 。
+輸出類似於下列範例： 記下您 ACR 的 *loginServer* 值，因為它將在稍後的步驟中使用。 在下列範例中， *myhelmacr.azurecr.io*是*myhelmacr*的*loginServer* 。
 
 ```console
 {
@@ -65,7 +65,7 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-您的 AKS 叢集必須能夠存取您的 ACR，才能提取容器映射並加以執行。 上述命令也會授與*MyAKS*叢集對您*MyHelmACR* ACR 的存取權。
+您的 AKS 叢集需要存取您的 ACR，才能提取容器映射並加以執行。 上述命令也會將 *MyAKS* 叢集存取權授與您的 *MyHelmACR* ACR。
 
 ## <a name="connect-to-your-aks-cluster"></a>連接到您的 AKS 叢集
 
@@ -85,7 +85,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>下載範例應用程式
 
-本快速入門會使用[Azure Dev Spaces 範例存放庫中的範例 Node.js 應用程式][example-nodejs]。 從 GitHub 複製應用程式，並流覽至該 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目錄。
+本快速入門會使用 [Azure Dev Spaces 範例存放庫中 Node.js 應用程式範例][example-nodejs]。 從 GitHub 複製應用程式，並流覽至該 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目錄。
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -94,7 +94,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>建立 Dockerfile
 
-使用下列內容建立新的*Dockerfile*檔案：
+使用下列內容建立新的 *Dockerfile* 檔案：
 
 ```dockerfile
 FROM node:latest
@@ -113,7 +113,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>建立範例應用程式並將其推送至 ACR
 
-使用[az acr build][az-acr-build]命令來建立映射，並使用先前的 Dockerfile 將其推送到登錄。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
+使用 [az acr build][az-acr-build] 命令來建立映射，並使用上述 Dockerfile 將其推送至登錄。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -121,15 +121,15 @@ az acr build --image webfrontend:v1 \
   --file Dockerfile .
 ```
 
-## <a name="create-your-helm-chart"></a>建立 Helm 圖
+## <a name="create-your-helm-chart"></a>建立您的 Helm 圖
 
-使用命令產生您的 Helm 圖表 `helm create` 。
+使用命令產生您的 Helm 圖 `helm create` 。
 
 ```console
 helm create webfrontend
 ```
 
-對*webfrontend/values. yaml*進行下列更新。 取代您在先前步驟中記下的登錄 loginServer，例如*myhelmacr.azurecr.io*：
+對 *webfrontend/values. yaml*進行下列更新。 以您在先前步驟中記下的登錄 loginServer 取代，例如 *myhelmacr.azurecr.io*：
 
 * 將 `image.repository` 變更為 `<loginServer>/webfrontend`
 * 將 `service.type` 變更為 `LoadBalancer`
@@ -153,7 +153,7 @@ service:
 ...
 ```
 
-`appVersion` `v1` 在*webfrontend/Chart. yaml*中更新至。 例如：
+`appVersion` `v1` 在*webfrontend/Chart. yaml*中更新至。 例如
 
 ```yml
 apiVersion: v2
@@ -164,9 +164,9 @@ name: webfrontend
 appVersion: v1
 ```
 
-## <a name="run-your-helm-chart"></a>執行 Helm 圖表
+## <a name="run-your-helm-chart"></a>執行您的 Helm 圖表
 
-使用 `helm install` 命令，使用您的 Helm 圖表來安裝應用程式。
+使用 `helm install` 命令來安裝您的應用程式，並使用您的 Helm 圖。
 
 ```console
 helm install webfrontend webfrontend/
@@ -183,11 +183,11 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-在瀏覽器中使用流覽至應用程式的負載平衡器， `<EXTERNAL-IP>` 以查看範例應用程式。
+使用瀏覽器流覽至應用程式的負載平衡器， `<EXTERNAL-IP>` 以查看範例應用程式。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 
-當不再需要叢集時，請使用[az group delete][az-group-delete]命令來移除資源群組、AKS 叢集、容器登錄、儲存在該處的容器映射，以及所有相關資源。
+當不再需要叢集時，請使用 [az group delete][az-group-delete] 命令來移除資源群組、AKS 叢集、容器登錄、儲存在該處的容器映射，以及所有相關資源。
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait

@@ -8,10 +8,10 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075421"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和設定 Azure 防火牆
@@ -105,7 +105,7 @@ az network vnet subnet create \
 現在建立跳板和工作負載虛擬機器，並將它們放在適當的子網路中。
 出現提示時，輸入虛擬機器的密碼。
 
-建立 Srv 跳躍虛擬機器。
+建立 Srv-Jump 的虛擬機器。
 
 ```azurecli-interactive
 az vm create \
@@ -121,7 +121,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-建立適用于 Srv 的 NIC-使用特定的 DNS 伺服器 IP 位址，而不使用公用 IP 位址來進行測試。
+使用特定的 DNS 伺服器 IP 位址建立 Srv-Work 的 NIC，而不使用公用 IP 位址來進行測試。
 
 ```azurecli-interactive
 az network nic create \

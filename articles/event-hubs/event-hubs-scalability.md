@@ -1,13 +1,13 @@
 ---
 title: 擴充性-Azure 事件中樞 |Microsoft Docs
-description: 本文提供如何使用資料分割和輸送量單位來調整 Azure 事件中樞的相關資訊。
+description: 本文提供有關如何使用資料分割和輸送量單位來調整 Azure 事件中樞的資訊。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86521950"
 ---
 # <a name="scaling-with-event-hubs"></a>使用事件中樞進行調整
@@ -18,7 +18,7 @@ ms.locfileid: "86521950"
 
 ## <a name="throughput-units"></a>輸送量單位
 
-事件中樞的輸送量容量是由*輸送量單位*所控制。 輸送量單位是預先購買的容量單位。 單一輸送量可讓您：
+事件中樞的輸送量容量是由 *輸送量單位*所控制。 輸送量單位是預先購買的容量單位。 單一輸送量可讓您：
 
 * 輸入：每秒最多 1 MB 或 1000 個事件 (以先達到者為準)。
 * 輸出：最高每秒 2 MB 或每秒 4096 個事件。
@@ -34,12 +34,12 @@ ms.locfileid: "86521950"
 
 「事件中樞」服務可在負載超過最低閾值時增加輸送量，不會有任何要求因為發生 ServerBusy 錯誤而失敗。 
 
-如需自動擴充功能的詳細資訊，請參閱[自動調整輸送量單位](event-hubs-auto-inflate.md)。
+如需自動擴充功能的詳細資訊，請參閱 [自動調整輸送量單位](event-hubs-auto-inflate.md)。
 
 ## <a name="partitions"></a>資料分割
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>分割區索引鍵
+### <a name="partition-key"></a>資料分割索引鍵
 
 您可以使用[資料分割索引鍵](event-hubs-programming-guide.md#partition-key)，將連入事件資料對應至特定的資料分割來組織資料。 資料分割索引鍵是由傳送者提供的值。系統會將它傳遞到事件中樞， 然後透過靜態雜湊函式加以處理，而建立資料分割指派。 如果您在發佈事件時未指定資料分割索引鍵，系統會使用循環配置資源指派。
 
