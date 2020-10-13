@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 195fc6100229fca2a05198ffa80108057ad8ad65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897586"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996363"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
@@ -87,7 +87,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3", "feat4", "feat5", "feat6"])
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
@@ -210,6 +210,6 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 遵循範本上的步驟來查看和分析您的資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 偵測您所收集資料的[資料漂移](how-to-monitor-datasets.md)。

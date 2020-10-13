@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033161"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995206"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
 記錄查詢可協助您充分利用 [Azure 監視器記錄](../platform/data-platform-logs.md)檔中收集的資料值。 強大的查詢語言可讓您聯結來自多個資料表的資料、匯總大型資料集，並以基本程式碼執行複雜作業。 幾乎任何問題只要已收集到支援資料，就可以回答和分析，而且您瞭解如何建立正確的查詢。
@@ -38,7 +38,7 @@ Azure 監視器記錄是以 [Azure 資料總管](/azure/data-explorer)為基礎�
 如 Azure 監視器 Azure 監視器所使用的 KQL 版本，請參閱 [記錄查詢語言差異](data-explorer-difference.md) 。
 
 ## <a name="what-data-is-available-to-log-queries"></a>記錄查詢可使用哪些資料？
-Azure 監視器記錄檔中收集的所有資料都可在記錄查詢中取得和分析。 不同的資料來源會將其資料寫入至不同的資料表，但您可以在單一查詢中包含多個資料表，以便跨多個來源分析資料。 當您建置查詢時，從判斷哪些資料表具有您要尋找的資料開始。 如需資料結構的說明，請參閱 [Azure 監視器記錄的結構](logs-structure.md) 。
+Azure 監視器記錄檔中收集的所有資料都可在記錄查詢中取得和分析。 不同的資料來源會將其資料寫入至不同的資料表，但您可以在單一查詢中包含多個資料表，以便跨多個來源分析資料。 當您建置查詢時，從判斷哪些資料表具有您要尋找的資料開始。 如需資料結構的說明，請參閱 [Azure 監視器記錄的結構](../platform/data-platform-logs.md) 。
 
 ## <a name="what-does-a-log-query-look-like"></a>記錄查詢看起來是什麼樣子？
 查詢可以像單一資料表名稱一樣簡單，以便從該資料表中取出所有記錄：
@@ -96,6 +96,6 @@ Log Analytics 是 Azure 入口網站中的主要工具，可用於撰寫記錄�
 - **Azure 監視器記錄 API。**  [Azure 監視器記錄 API](https://dev.loganalytics.io) 可讓任何 REST API 用戶端從工作區擷取記錄資料。  API 要求包含針對 Azure 監視器執行的查詢，來判斷要擷取的資料。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 逐步解說在 [Azure 入口網站中使用 Log Analytics 的教學](get-started-portal.md)課程。
 - 逐步解說 [撰寫查詢的教學](get-started-queries.md)課程。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 99c8ee79c51205c33d14328530f527ad8e3ff7b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085450"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997884"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支援的散發套件和驅動程式
 
@@ -33,7 +33,7 @@ Azure 所轉散發的方格驅動程式無法在非 NV 系列 Vm （例如 NC、
 
 | 散發 | 驅動程式 |
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 至7.8、8.0、8。1<br/><br/>以 CentOS 為基礎的7.6、7.7、8.0、8 (1911) <br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11，驅動程式分支 Bk-r450|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.6 至7.8、8.0、8。1<br/><br/>以 CentOS 為基礎的7.6、7.7、8.0、8 (1911) <br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11.1，驅動程式分支 [bk-r450](https://go.microsoft.com/fwlink/?linkid=874272) ( .exe) |
 
 > [!WARNING] 
 > 在 Red Hat 產品上安裝第三方軟體可能會影響 Red Hat 支援條款。 請參閱 [Red Hat 知識庫文件 (英文)](https://access.redhat.com/articles/1067)。

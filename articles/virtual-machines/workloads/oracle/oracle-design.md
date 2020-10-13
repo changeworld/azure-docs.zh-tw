@@ -1,25 +1,18 @@
 ---
 title: 在 Azure 上設計和實作 Oracle 資料庫 | Microsoft Docs
 description: 在 Azure 環境中設計和實作 Oracle 資料庫。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977335"
+ms.locfileid: "91996630"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
@@ -56,7 +49,7 @@ ms.locfileid: "91977335"
 | **縮放比例** |垂直調整 |水平調整|
 
 
-### <a name="requirements"></a>規格需求
+### <a name="requirements"></a>需求
 
 - 決定資料庫大小和成長率。
 - 決定 IOPS 需求，您可以根據 Oracle AWR 報表或其他網路監視工具進行評估。
@@ -232,7 +225,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 - [設定 Oracle Golden Gate](configure-oracle-golden-gate.md)
 - [Oracle 備份和復原](./oracle-overview.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
 - [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77671081"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995759"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 世代
 
@@ -49,7 +49,7 @@ ms.locfileid: "77671081"
 
     現在，此世代代表在過去 28 天的五個不同日期中，透過任何自訂事件或網頁檢視傳送的所有使用者識別碼。
 
-5. 選取 [儲存]****。
+5. 選取 [儲存]。
 
    > [!TIP]
    > 指定您的世代名稱，例如「參與的使用者 (5 天以上)」。 根據您是否要讓有權存取此 Appication Insights 資源的其他人看見此世代，將它儲存到「我的報告」或「共用報告」。
@@ -131,7 +131,7 @@ _我已從特定國家/地區定義使用者的世代。當我比較 [使用者]
 
 ## <a name="learn-more"></a>深入了解
 
-* [分析查詢語言](https://go.microsoft.com/fwlink/?linkid=856587)
+* [分析查詢語言](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 * [使用者、會話、事件](usage-segmentation.md)
 * [使用者流程](usage-flows.md)
 * [使用量概觀](usage-overview.md)

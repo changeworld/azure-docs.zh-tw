@@ -1,23 +1,18 @@
 ---
 title: Azure 中的 Red Hat Enterprise Linux 映射總覽
 description: 深入瞭解 Microsoft Azure 中的 Red Hat Enterprise Linux 映射。
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 46504f7d6d3a989119a3c851fc029bdf4494e01f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977624"
+ms.locfileid: "91994302"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射總覽
 
@@ -180,7 +175,7 @@ Microsoft 和 Red Hat 會在發行新的次要版本時，視需要解決特定�
 
 目前的原則是保留所有先前發佈的映射。 我們保留移除已知會造成任何類型問題之映像的權利。 例如，可能會移除由於後續平臺或元件更新而設定不正確的映射。 可能移除的映射會遵循目前的 Azure Marketplace 原則，提供最多30天的通知，然後再移除映射。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要在 Azure 中查看 RHEL 映射的完整清單，請參閱 [Red Hat Enterprise Linux (azure 中提供的 rhel) 映射](./redhat-imagelist.md)。
 * 若要深入瞭解 Azure Red Hat 更新基礎結構，請參閱 [適用于 azure 中隨選 RHEL vm 的 Red Hat 更新基礎結構](./redhat-rhui.md)。

@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602460"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996151"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：開始使用 JAVA Web 專案中的 Application Insights
 
 
 > [!IMPORTANT]
-> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)的指導方針。
+> 監視 JAVA 應用程式的建議方法是使用自動檢測，而不需要變更程式碼。 請遵循 [Application Insights JAVA 3.0 代理程式](./java-in-process-agent.md)的指導方針。
 
 在本快速入門中，您會使用 Application Insights SDK 來檢測要求、追蹤相依性，以及收集效能計數器、診斷效能問題和例外狀況，以及撰寫程式碼來追蹤使用者對應用程式執行的動作。
 
@@ -199,7 +199,7 @@ Application Insights SDK 會依此順序尋找此金鑰︰
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service，AKS，Vm 設定
 
-若要監視 Azure 資源提供者上執行的應用程式，最簡單且最簡單的方法是透過 [JAVA 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)程式使用 Application Insights 自動檢測。
+若要監視 Azure 資源提供者上執行的應用程式，最簡單且最簡單的方法是透過 [JAVA 3.0 代理](./java-in-process-agent.md)程式使用 Application Insights 自動檢測。
 
 
 ## <a name="exceptions-and-request-failures"></a>例外狀況與要求失敗
@@ -296,7 +296,7 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 ## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [監視相依性呼叫](java-agent.md)
 * [監視 Unix 效能計數器](java-collectd.md)
 * 新增[對網頁的監視](javascript.md)，以監視頁面載入時間、AJAX 呼叫、瀏覽器例外狀況。
@@ -313,4 +313,3 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

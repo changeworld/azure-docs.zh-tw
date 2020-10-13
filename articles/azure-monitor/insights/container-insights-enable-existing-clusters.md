@@ -4,12 +4,12 @@ description: 瞭解如何使用已在訂用帳戶中部署之容器的 Azure 監
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: e3b4bd007ec2f4315ccd7d8581113e116db693ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068422"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994510"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用監視已部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -160,7 +160,7 @@ provisioningState       : Succeeded
 >範本必須部署在叢集所在的資源群組。
 >
 
-您必須先建立 Log Analytics 工作區，才能使用 Azure PowerShell 或 CLI 來啟用監視。 若要建立工作區，您可以透過 [Azure Resource Manager](../platform/template-workspace-configuration.md)、透過 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)，或是在 [Azure 入口網站](../learn/quick-create-workspace.md)中設定它。
+您必須先建立 Log Analytics 工作區，才能使用 Azure PowerShell 或 CLI 來啟用監視。 若要建立工作區，您可以透過 [Azure Resource Manager](../samples/resource-manager-workspace.md)、透過 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)，或是在 [Azure 入口網站](../learn/quick-create-workspace.md)中設定它。
 
 若您不熟悉使用範本來部署資源的概念，請參閱：
 
@@ -378,9 +378,8 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
   }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如果您在試著將解決方案上線時遇到問題，請檢閱[疑難排解指南](container-insights-troubleshoot.md)
 
 * 啟用監視以收集 AKS 叢集和其上執行之工作負載的健康情況和資源使用量，瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
-

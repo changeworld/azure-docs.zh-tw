@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 95b41723d3cb398caad3a0cf388b7810deda78dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b689e4546d1f639f76ccbdf45348c43a678066
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934121"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996270"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用 studio 部署在設計工具中定型的模型
 
@@ -26,6 +26,7 @@ Studio 中的部署是由下列步驟所組成：
 
 1. 註冊已定型的模型。
 1. 下載模型的 [輸入腳本] 和 [conda 相依性] 檔案。
+1.  (選擇性) 設定輸入腳本。
 1. 將模型部署至計算目標。
 
 您也可以直接在設計工具中部署模型，以略過模型註冊和檔案下載步驟。 這有助於快速部署。 如需詳細資訊，請參閱 [使用設計工具部署模型](tutorial-designer-automobile-price-deploy.md)。
@@ -36,7 +37,14 @@ Studio 中的部署是由下列步驟所組成：
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
 
-* 包含[定型模型模組](./algorithm-module-reference/train-model.md)的已完成定型管線
+* 完成的定型管線，其中包含下列其中一個模組：
+    - [訓練模組](./algorithm-module-reference/train-model.md)
+    - [定型異常偵測模型模組](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [定型群集模型模組](./algorithm-module-reference/train-clustering-model.md)
+    - [定型 Pytorch 模型模組](./algorithm-module-reference/train-pytorch-model.md)
+    - [訓練 SVD 推薦課程模組](./algorithm-module-reference/train-svd-recommender.md)
+    - [定型 Vowpal Wabbit 模型模組](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [訓練 Wide & 深度模型模組](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>註冊模型
 
@@ -136,9 +144,67 @@ score_result = service.run(json.dumps(sample_data))
 print(f'Inference result = {score_result}')
 ```
 
+### <a name="consume-computer-vision-related-real-time-endpoints"></a>使用電腦視覺相關的即時端點
+
+當取用電腦視覺相關的即時端點時，您需要將影像轉換成位元組，因為 web 服務只接受字串做為輸入。 以下是範例程式碼：
+
+```python
+import base64
+import json
+from copy import deepcopy
+from pathlib import Path
+from azureml.studio.core.io.image_directory import (IMG_EXTS, image_from_file, image_to_bytes)
+from azureml.studio.core.io.transformation_directory import ImageTransformationDirectory
+
+# image path
+image_path = Path('YOUR_IMAGE_FILE_PATH')
+
+# provide the same parameter setting as in the training pipeline. Just an example here.
+image_transform = [
+    # format: (op, args). {} means using default parameter values of torchvision.transforms.
+    # See https://pytorch.org/docs/stable/torchvision/transforms.html
+    ('Resize', 256),
+    ('CenterCrop', 224),
+    # ('Pad', 0),
+    # ('ColorJitter', {}),
+    # ('Grayscale', {}),
+    # ('RandomResizedCrop', 256),
+    # ('RandomCrop', 224),
+    # ('RandomHorizontalFlip', {}),
+    # ('RandomVerticalFlip', {}),
+    # ('RandomRotation', 0),
+    # ('RandomAffine', 0),
+    # ('RandomGrayscale', {}),
+    # ('RandomPerspective', {}),
+]
+transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
+
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+sample_file_path = '_samples.json'
+with open(sample_file_path, 'r') as f:
+    sample_data = json.load(f)
+
+# use first sample item as the default value
+default_data = sample_data[0]
+data_list = []
+for p in image_path.iterdir():
+    if p.suffix.lower() in IMG_EXTS:
+        data = deepcopy(default_data)
+        # convert image to bytes
+        data['image'] = base64.b64encode(image_to_bytes(transform(image_from_file(p)))).decode()
+        data_list.append(data)
+
+# use data.json as input of consuming the endpoint
+data_file_path = 'data.json'
+with open(data_file_path, 'w') as f:
+    json.dump(data_list, f)
+```
+
 ## <a name="configure-the-entry-script"></a>設定輸入腳本
 
-設計工具中的某些模組（例如 [計分 SVD 推薦](./algorithm-module-reference/score-svd-recommender.md)、 [分數廣泛和深度推薦](./algorithm-module-reference/score-wide-and-deep-recommender.md)）和 [分數 Vowpal Wabbit 模型](./algorithm-module-reference/score-vowpal-wabbit-model.md) 具有不同評分模式的參數。 在本節中，您將瞭解如何在輸入腳本檔中更新這些參數。
+設計工具中的某些模組（例如 [計分 SVD 推薦](./algorithm-module-reference/score-svd-recommender.md)、 [分數廣泛和深度推薦](./algorithm-module-reference/score-wide-and-deep-recommender.md)）和 [分數 Vowpal Wabbit 模型](./algorithm-module-reference/score-vowpal-wabbit-model.md) 具有不同評分模式的參數。 
+
+在本節中，您將瞭解如何在輸入腳本檔中更新這些參數。
 
 下列範例會更新定型的 **寬 & 深層推薦** 模型的預設行為。 根據預設，檔案會 `score.py` 告知 web 服務預測使用者與專案之間的評等。 
 
@@ -230,7 +296,7 @@ score_params = dict(
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [在設計工具中將模型定型](tutorial-designer-automobile-price-train-score.md)
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)

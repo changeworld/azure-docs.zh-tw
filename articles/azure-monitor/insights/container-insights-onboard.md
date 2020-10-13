@@ -3,12 +3,12 @@ title: 啟用容器的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何啟用及設定容器的 Azure 監視器，讓您可以瞭解容器的執行方式，以及已識別出哪些效能相關的問題。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320301"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994070"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>啟用容器的 Azure 監視器
 
@@ -32,7 +32,7 @@ ms.locfileid: "87320301"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您已符合下列需求：
 
@@ -43,7 +43,7 @@ ms.locfileid: "87320301"
    當您啟用新 AKS 叢集的監視功能時，您可以建立工作區，也可以讓上線體驗在 AKS 叢集訂用帳戶的預設資源群組中建立預設工作區。 
    
    如果您選擇自行建立工作區，您可以透過下列方式建立工作區： 
-   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure 入口網站](../learn/quick-create-workspace.md) 
    
@@ -131,4 +131,3 @@ ms.locfileid: "87320301"
 ## <a name="next-steps"></a>接下來的步驟
 
 現在您已啟用監視，您可以開始分析裝載于 Azure Kubernetes Service (AKS) 、Azure Stack 或其他環境上的 Kubernetes 叢集效能。 若要瞭解如何使用容器 Azure 監視器，請參閱 [View Kubernetes cluster performance](container-insights-analyze.md)。
-

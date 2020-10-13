@@ -1,21 +1,21 @@
 ---
 title: 了解 Azure IoT 中樞模組對應項 | Microsoft Docs
 description: 開發人員指南 - 使用模組對應項來同步處理 IoT 中樞與裝置之間的狀態和設定資料
-author: ash2017
+author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.author: asrastog
+ms.date: 09/29/2020
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996465"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
 
@@ -241,7 +241,7 @@ ms.locfileid: "87323004"
 
 * **金鑰**： JSON 物件中的所有索引鍵都是 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
 
-* **值**： json 物件中的所有值都可以是下列 json 類型：布林值、數位、字串、物件。 不允許使用陣列。
+* **值**： json 物件中的所有值都可以是下列 json 類型：布林值、數位、字串、物件。 也支援陣列。
 
     * 整數最小值為-4503599627370496，最大值為4503599627370495。
 

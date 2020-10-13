@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fcd0315afcbf38af2b8175deda748522cb335ec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649791"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996862"
 ---
 # <a name="outbound-connections"></a>輸出連線
 
@@ -37,7 +37,7 @@ Azure Load Balancer 透過不同的機制提供輸出連線能力。 本文說�
 | ---------- | ------ | ------------ |
 | 公用負載平衡器或獨立 | [SNAT (來源網路位址轉譯) ](#snat) </br> [PAT (未使用埠偽裝) ](#pat) 。 | TCP (傳輸控制通訊協定)  </br> UDP (使用者資料包協定)  </br> ICMP (網際網路控制訊息通訊協定)  </br> ESP (封裝安全性承載)  |
 
-#### <a name="description"></a>描述
+#### <a name="description"></a>說明
 
 Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸出流程。 執行個體有所有可用的暫時連接埠。 VM 是否負載平衡並不重要。 此案例的優先順序高於其他案例。 
 
@@ -49,7 +49,7 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 | ------------ | ------ | ------------ |
 | 公用 Load Balancer | 使用適用于 [SNAT](#snat) 的負載平衡器前端搭配 [PAT (埠偽裝) ](#pat)。| TCP </br> UDP |
 
-#### <a name="description"></a>描述
+#### <a name="description"></a>說明
 
 負載平衡器資源會設定負載平衡器規則。 此規則可用來建立公用 IP 前端與後端集區之間的連結。 
 
@@ -69,7 +69,7 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 | ------------ | ------ | ------------ |
 |無 </br> 基本負載平衡器 | [SNAT](#snat) 與 [埠偽裝 (PAT) ](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>描述
+#### <a name="description"></a>說明
 
 當 VM 建立輸出流程時，Azure 會將來源 IP 位址轉譯為公用來源 IP 位址。 此公用 **IP 位址無法** 設定且無法保留。 此位址不會計入訂用帳戶的公用 IP 資源限制。 
 
@@ -136,7 +136,7 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 - 哪些虛擬機器應轉譯為哪些公用 IP 位址。
 - 應如何指定輸出 [SNAT](#snat) 埠。
 - 提供輸出轉譯的通訊協定。
-- 用於輸出連線閒置超時的持續時間 (4-120 分鐘) 。
+- 用於輸出連線閒置超時的持續時間 (4-100 分鐘) 。
 - 是否要在閒置超時時傳送 TCP 重設
 - 使用單一規則的 TCP 和 UDP 傳輸通訊協定
 
@@ -423,7 +423,7 @@ UDP SNAT 埠的速度通常會比 TCP SNAT 埠快，因為使用的演算法有�
 - 輸出規則只能套用至 NIC 的主要 IP 設定。  您無法為 VM 或 NVA 的次要 IP 建立輸出規則。 支援多個 Nic。
 - 使用內部標準負載平衡器時，可以存取沒有虛擬網路和其他 Microsoft 平臺服務的 Web 背景工作角色。 此協助工具是因為預先 VNet 服務和其他平臺服務運作方式的副作用。 請勿依賴此副作用作為個別服務本身，否則基礎平臺可能會變更，恕不另行通知。 如果只在使用內部標準負載平衡器時需要，請一律假設您需要明確建立輸出連線能力。 本文所述的案例3無法使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您遇到透過 Azure Load Balancer 的輸出連線問題，請參閱輸出連線的 [疑難排解指南](../load-balancer/troubleshoot-outbound-connection.md)。
 

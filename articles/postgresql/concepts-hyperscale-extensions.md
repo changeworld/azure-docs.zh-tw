@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314873"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996450"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的于 postgresql 延伸模組-超大規模 (Citus) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "91314873"
 ### <a name="data-types-extensions"></a>資料類型擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不區分大小寫的字元字串類型。 |
 > | [立方體](https://www.postgresql.org/docs/current/static/cube.html) | 提供多維度 Cube 的資料類型。 |
@@ -41,12 +41,13 @@ ms.locfileid: "91314873"
 > | [高低](https://www.postgresql.org/docs/current/lo.html) | 大型物件維護。 |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 提供階層式樹狀結構的資料類型。 |
 > | [Seg](https://www.postgresql.org/docs/current/seg.html) | 表示線段或浮點數間隔的資料類型。 |
+> | [tdigest](https://github.com/tvondra/tdigest) | 以次序為基礎之統計資料的線上累積資料類型，例如分量和修剪的方法。 |
 > | [topn](https://github.com/citusdata/postgresql-topn/) | 適用于前 n 個 JSONB 的類型。 |
 
 ### <a name="full-text-search-extensions"></a>全文檢索搜尋擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供整數的文字搜尋字典範本。 |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用於擴充同義文書處理的文字搜尋字典範本。 |
@@ -55,7 +56,7 @@ ms.locfileid: "91314873"
 ### <a name="functions-extensions"></a>函數擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 自動遞增欄位的功能。 |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | 提供方法來計算地球表面上的大圓距離。 |
@@ -77,7 +78,7 @@ ms.locfileid: "91314873"
 ### <a name="hyperscale-citus-extensions"></a>超大規模 (Citus) 擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分散式資料庫。 |
 > | 分區 \_ rebalancer | 在新增或移除節點時，安全地重新平衡伺服器群組中的資料。 |
@@ -85,7 +86,7 @@ ms.locfileid: "91314873"
 ### <a name="index-types-extensions"></a>索引類型延伸模組
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [綻放](https://www.postgresql.org/docs/current/bloom.html) | Bloom 存取方法-以檔案為基礎的特徵標記索引。 |
 > | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供範例 GIN 運算子類別，這些類別會針對某些資料類型執行 B 型樹狀結構的行為。 |
@@ -94,14 +95,14 @@ ms.locfileid: "91314873"
 ### <a name="language-extensions"></a>語言延伸模組
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL 可載入的程序性語言。 |
 
 ### <a name="miscellaneous-extensions"></a>其他擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | 于 postgresql 的系統管理功能。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用於驗證關聯性完整性的函數。 |
@@ -127,7 +128,7 @@ ms.locfileid: "91314873"
 ### <a name="postgis-extensions"></a>PostGIS 擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **分機** | **說明** |
+> | **副檔名** | **說明** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/)、postgis\_topology、postgis\_tiger\_geocoder、postgis\_sfcgal | 適用於 PostgreSQL 的空間與地理物件。 |
 > | address\_standardizer、address\_standardizer\_data\_us | 用來將位址剖析為組成項目。 用來支援對位址進行地理編碼的正規化步驟。 |

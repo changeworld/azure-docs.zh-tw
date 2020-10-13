@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 32a8214a5bd6844c9177c7af159a453bc3673efc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3a8909bc0d5ac135023b55178cec606344353b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87449988"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996768"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前指令碼和後指令碼
 
@@ -137,7 +137,7 @@ foreach($summary in $finalStatus)
 
 ## <a name="interact-with-machines"></a>與機器互動
 
-前置指令碼和後置工作會在您的自動化帳戶中以 Runbook 的形式執行，而不是直接在部署中的機器上執行。 前置工作和後置工作也會在 Azure 環境中執行，且無法存取非 Azure 機器。 以下幾節說明如何直接與機器互動，無論是 Azure VM 還是非 Azure 機器。
+前置腳本和後置腳本會在您的自動化帳戶中執行為 runbook，而不是直接在您的部署中的電腦上執行。 前置工作和後置工作也會在 Azure 環境中執行，且無法存取非 Azure 機器。 以下幾節說明如何直接與機器互動，無論是 Azure VM 還是非 Azure 機器。
 
 ### <a name="interact-with-azure-machines"></a>與 Azure 機器互動
 

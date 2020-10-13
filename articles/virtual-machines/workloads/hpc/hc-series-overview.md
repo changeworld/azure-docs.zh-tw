@@ -1,24 +1,18 @@
 ---
 title: HC 系列 VM 總覽-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中 HC 系列 VM 大小的預覽支援。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97e0ae9ea4914cda5d92f5180199a740c02ecdf4
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994369"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
 
@@ -45,7 +39,7 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 | 核心                            | 44 (HT 已停用)                  |
 | CPU                              | Intel 的頂級白金8168         |
 | CPU 頻率 (非 AVX)           | 3.7 GHz (單一核心) ，2.7-3.4 GHz (所有核心)  |
-| Memory                           | 8 GB/核心 (352 總計)             |
+| 記憶體                           | 8 GB/核心 (352 總計)             |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
 | 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC    |
