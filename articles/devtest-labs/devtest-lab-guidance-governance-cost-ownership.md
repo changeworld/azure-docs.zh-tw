@@ -1,14 +1,14 @@
 ---
-title: 管理 Azure DevTest Labs 中的成本與擁有權
-description: 本文提供的資訊可協助您針對成本進行優化，並在您的環境中調整擁有權。
+title: 在 Azure DevTest Labs 中管理成本與擁有權
+description: 本文提供的資訊可協助您將成本優化，並在您的環境中與擁有權保持一致。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476252"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>治理 Azure DevTest Labs 基礎結構 - 管理成本和擁有權
@@ -49,8 +49,8 @@ DevTest Labs 資源應該由接近專案/應用程式小組的擁有者所擁有
 
 您應該將專案/應用程式小組成員新增至 DevTest Labs 使用者角色。 這些使用者可以建立虛擬機器 (使用實驗室和訂用帳戶層級原則來內建)。 他們也可以管理自己的虛擬機器。 他們無法管理屬於其他使用者的虛擬機器。
 
-如需詳細資訊，請參閱[Azure 企業 scaffold-規定的訂](/azure/architecture/cloud-adoption/appendix/azure-scaffold)用帳戶治理檔。
+如需詳細資訊，請參閱 [Azure enterprise scaffold-規定的訂](/azure/architecture/cloud-adoption/appendix/azure-scaffold) 用帳戶治理檔。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱[公司原則與合規性](devtest-lab-guidance-governance-policy-compliance.md)。

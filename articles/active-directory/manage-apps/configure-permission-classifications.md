@@ -12,13 +12,13 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0add5001e2e62e26d448b06927210c14f17729f1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804295"
 ---
-# <a name="configure-permission-classifications"></a>設定許可權分類
+# <a name="configure-permission-classifications"></a>設定權限分類
 
 權限分類可讓您根據組織的原則和風險評估，識別不同權限的影響。 例如，您可以在同意原則中使用權限分類，以識別允許使用者同意的權限集。
 

@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76710343"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的了解商務階段
 
 本文將概要說明與 Team Data Science Process (TDSP) 了解商務階段相關聯的目標、工作和交付項目。 此流程會提供建議的生命週期，供您建構資料科學專案。 生命週期可描繪出專案一般執行時 (通常會反覆進行) 的主要階段：
 
-   1. **了解商務**
-   2. **資料取得與認知**
-   3. **模型**
+   1. **商務理解**
+   2. **資料取得和瞭解**
+   3. **模型化**
    4. **部署**
    5. **客戶接受度**
 
@@ -86,9 +86,9 @@ ms.locfileid: "76710343"
 以下是 TDSP 生命週期中每個步驟的連結：
 
    1. [了解商務](lifecycle-business-understanding.md)
-   2. [資料取得與認知](lifecycle-data.md)
-   3. [模型](lifecycle-modeling.md)
+   2. [資料取得和瞭解](lifecycle-data.md)
+   3. [模型化](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 
-我們會提供完整的逐步解說，以示範特定案例之程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
+我們會提供完整的逐步解說，示範適用于特定案例的程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504298"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>使用低速至中速網路頻寬進行小型資料集資料轉送
@@ -51,17 +51,17 @@ ms.locfileid: "85504298"
 
 | 功能 | Azure 儲存體總管 | Azure 入口網站 | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure 儲存體 REST API 或 SDK |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
-| 可用性 | 下載並安裝 <br>獨立工具 | 在 Azure 入口網站中的 Web 型瀏覽工具 | 命令列工具 |.NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 的可程式化介面 |
-| 圖形化介面 | Yes | 是 | 否 | 否 |
+| 可用性 | 下載和安裝 <br>獨立工具 | 在 Azure 入口網站中的 Web 型瀏覽工具 | 命令列工具 |.NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 的可程式化介面 |
+| 圖形化介面 | 是 | 是 | 否 | 否 |
 | 支援的平台 | Windows、Mac、Linux | Web 型 |Windows、Mac、Linux |所有平台 |
 | 允許的 Blob 儲存體作業<br>(適用於 Blob 和資料夾) | 上傳<br>下載<br>管理 | 上傳<br>下載<br>管理 |上傳<br>下載<br>管理 | 是，可自訂 |
-| 允許的 Data Lake Gen1 儲存體<br>作業 (適用於檔案和資料夾) | 上傳<br>下載<br>管理 | No |上傳<br>下載<br>管理                   | No |
+| 允許的 Data Lake Gen1 儲存體<br>作業 (適用於檔案和資料夾) | 上傳<br>下載<br>管理 | 否 |上傳<br>下載<br>管理                   | 否 |
 | 允許的檔案儲存體作業<br>(適用於檔案和目錄) | 上傳<br>下載<br>管理 | 上傳<br>下載<br>管理   |上傳<br>下載<br>管理 | 是，可自訂 |
-| 允許的資料表儲存體作業<br>(適用於資料表) |管理 | No |AzCopy v7 中的資料表支援 |是，可自訂|
+| 允許的資料表儲存體作業<br>(適用於資料表) |管理 | 否 |AzCopy v7 中的資料表支援 |是，可自訂|
 | 允許的佇列儲存體 | 管理 | 否  |否 | 是，可自訂|
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何[使用 Azure 儲存體總管轉送資料](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)。
 - [使用 AzCopy 轉送資料](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)

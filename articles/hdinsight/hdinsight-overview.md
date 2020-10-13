@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526624"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804056"
 ---
 # <a name="what-is-azure-hdinsight"></a>什麼是 Azure HDInsight？
 
@@ -35,13 +35,13 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 |功能  |描述  |
 |---------|---------|
-|雲端原生     |     Azure HDInsight 可讓您在 Azure 上建立 [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md)、 [Spark](./spark/apache-spark-jupyter-spark-sql.md)、 [互動式查詢 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、 [Kafka](./kafka/apache-kafka-get-started.md)、 [Storm](./storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) 和  [ML 服務](./r-server/r-server-overview.md)的最佳化叢集。 HDInsight 也提供所有生產工作負載的端對端 SLA。  |
-|低成本且可調整     | HDInsight 可讓您[相應](./hdinsight-administer-use-portal-linux.md#scale-clusters) 增加或減少工作負載。您可以 [依照需求建立叢集](./hdinsight-hadoop-create-linux-clusters-adf.md) 來降低成本，且只支付您所使用的部分。 您也可以建置資料管線來施行您的作業。 低耦合的計算和儲存體可提供更好的效能和彈性。 |
-|安全且符合規範    | HDInsight 可讓您使用 [Azure 虛擬網路](./hdinsight-plan-virtual-network-deployment.md)、[加密](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)，以及與 [Azure Active Directory](./domain-joined/hdinsight-security-overview.md) 整合來保護企業資料資產。 HDInsight 也符合最受歡迎的產業和政府[合規性標準](https://azure.microsoft.com/overview/trusted-cloud)。        |
-|監視    | Azure HDInsight 與 [Azure 監視器記錄](./hdinsight-hadoop-oms-log-analytics-tutorial.md)整合後會提供單一介面，以便監視所有的叢集。        |
-|正式上市 | HDInsight 的適用 [區域](https://azure.microsoft.com/regions/services/) 超過任何其他巨量資料分析供應項目。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。 |  
-|生產力     |  Azure HDInsight 可讓您在慣用的開發環境中，使用多種 Hadoop 與 Spark 的生產工具。 這些開發環境包括適用於 Scala、Python、R、Java 和 .NET 支援的 [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)、[VSCode](./hdinsight-for-vscode.md)、[Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) 和 [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)。 資料科學家也可以使用熱門 Notebook (例如 [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) 和 [Zeppelin](./spark/apache-spark-zeppelin-notebook.md)) 共同作業。    |
-|擴充性     |  您可以透過使用[指令碼動作](./hdinsight-hadoop-customize-cluster-linux.md)安裝的元件 (Hue、Presto 等)、[新增邊緣節點](./hdinsight-apps-use-edge-node.md)，或[與其他巨量資料認證的應用程式整合](./hdinsight-apps-install-applications.md)，來擴充 HDInsight 叢集。 透過[單鍵](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)部署，HDInsight 即可與最受歡迎的巨量資料解決方案緊密整合。|
+|雲端原生     |     Azure HDInsight 可讓您在 Azure 上建立 Hadoop、Spark、 [互動式查詢 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase 和 ML 服務的最佳化叢集。 HDInsight 也提供所有生產工作負載的端對端 SLA。  |
+|低成本且可調整     | HDInsight 可讓您相應增加或減少工作負載。 您可以依照需求建立叢集，且只支付您所使用的部分來降低成本。 您也可以建置資料管線來施行您的作業。 低耦合的計算和儲存體可提供更好的效能和彈性。 |
+|安全且符合規範    | HDInsight 可讓您使用 Azure 虛擬網路、加密，以及與 Azure Active Directory 整合來保護企業資料資產。 HDInsight 也符合最受歡迎的產業和政府合規性標準。        |
+|監視    | Azure HDInsight 與 Azure 監視器記錄整合後會提供單一介面，以便監視所有的叢集。        |
+|正式上市 | HDInsight 的適用區域超過任何其他巨量資料分析供應項目。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。 |  
+|生產力     |  Azure HDInsight 可讓您在慣用的開發環境中，使用多種 Hadoop 與 Spark 的生產工具。 這些開發環境包括適用於 Scala、Python、R、Java 和 .NET 支援的 Visual Studio、VSCode、Eclipse 和 IntelliJ。 資料科學家也可以使用熱門 Notebook (例如 Jupyter 和 Zeppelin) 共同作業。    |
+|擴充性     |  您可以透過使用指令碼動作安裝的元件 (Hue、Presto 等)、新增邊緣節點，或與其他巨量資料認證的應用程式整合，來擴充 HDInsight 叢集。 透過單鍵部署，HDInsight 即可與最受歡迎的巨量資料解決方案緊密整合。|
 
 ## <a name="scenarios-for-using-hdinsight"></a>使用 HDInsight 的案例
 
@@ -91,11 +91,11 @@ HDInsight 包含特定叢集類型和叢集自訂功能，例如新增元件、�
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight 中的開放原始碼元件
 
-Azure HDInsight 可讓您透過開放原始碼架構 (例如 Hadoop、Spark、Hive、LLAP、Kafka、Storm、HBase 和 R) 建立叢集。根據預設，這些叢集隨附叢集上包含的其他開放原始碼元件，例如 [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)、[Avro](https://avro.apache.org/docs/current/spec.html)、[Apache Hive](https://hive.apache.org)、[HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/)、[Apache Mahout](https://mahout.apache.org/)、[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、[Apache Phoenix](https://phoenix.apache.org/)、[Apache Pig](https://pig.apache.org/)、[Apache Sqoop](https://sqoop.apache.org/)、[Apache Tez](https://tez.apache.org/)、[Apache Oozie](https://oozie.apache.org/)、[Apache ZooKeeper](https://zookeeper.apache.org/)。  
+Azure HDInsight 可讓您透過開放原始碼架構 (例如 Hadoop、Spark、Hive、LLAP、Kafka、Storm、HBase 和 R) 建立叢集。根據預設，這些叢集隨附叢集上包含的其他開放原始碼元件，例如 Apache Ambari5、Avro5、Apache Hive3、HCatalog2、Apache Mahout2、Apache Hadoop MapReduce3、Apache Hadoop YARN2、Apache Phoenix3、Apache Pig3、Apache Sqoop3、Apache Tez3、Apache Oozie2 和 Apache ZooKeeper5。  
 
 ## <a name="programming-languages-in-hdinsight"></a>HDInsight 中的程式設計語言
 
-HDInsight 叢集 (包括 Spark、HBase、Kafka、Hadoop 等) 支援許多種程式設計語言。 某些程式設計語言並未預設安裝。 針對未預設安裝的程式庫、模組或套件，請[使用指令碼動作來安裝元件](./hdinsight-hadoop-script-actions-linux.md)。
+HDInsight 叢集 (包括 Spark、HBase、Kafka、Hadoop 等) 支援許多種程式設計語言。 某些程式設計語言並未預設安裝。 針對未預設安裝的程式庫、模組或套件，請使用指令碼動作來安裝元件。
 
 |程式設計語言  |資訊  |
 |---------|---------|
@@ -107,13 +107,10 @@ HDInsight 叢集 (包括 Spark、HBase、Kafka、Hadoop 等) 支援許多種程�
 
 您可以使用 HDInsight 開發工具 (包括 IntelliJ、Eclipse、Visual Studio Code 和 Visual Studio)，透過與 Azure 的完美整合，以撰寫並提交 HDInsight 資料查詢和作業。
 
-* [適用於 IntelliJ 的 Azure 工具組](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [適用於 Eclipse 的 Azure 工具組](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [適用於 VS Code 的 Azure HDInsight 工具](./hdinsight-for-vscode.md)
-
-* [適用於 Visual Studio 的 Azure Data Lake 工具](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* 適用於 IntelliJ10 的 Azure 工具組
+* 適用於 Eclipse6 的 Azure 工具組
+* 適用於 VS Code13 的 Azure HDInsight 工具
+* 適用於 Visual Studio9 的 Azure Data Lake 工具
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight 上的商業智慧
 
@@ -143,5 +140,4 @@ Kafka 和 HBase 會儲存客戶資料。 Kafka 和 HBase 會自動將此資料�
 
 * [在 HDInsight 中建立 Apache Hadoop 叢集](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * 建立 Apache Spark 叢集 - 入口網站
-* [為 Azure HDInsight 規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)
 * [Azure HDInsight 中的企業安全性](./domain-joined/hdinsight-security-overview.md)

@@ -10,10 +10,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651162"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>使用 Azure Machine Learning 的分散式訓練
@@ -48,7 +48,7 @@ ms.locfileid: "89651162"
 
 在模型平行處理原則中，背景工作節點只需要同步處理共用參數，通常是針對每個順向或回溯傳播步驟進行一次。 此外，較大的模型不會有問題，因為每個節點都是在相同定型資料的模型子區段上運作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何搭配 Python SDK [使用計算目標進行模型定型](how-to-set-up-training-targets.md) 。
 * 如需技術範例，請參閱 [參考架構案例](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)。

@@ -1,6 +1,6 @@
 ---
-title: 地理柵欄的 GeoJSON 資料格式 |Microsoft Azure 對應
-description: 深入瞭解 Azure 地圖服務地理柵欄資料。 瞭解如何在抓取相對於地理柵欄的座標位置時，使用 GET 地理柵欄和 POST 地理柵欄 Api。
+title: 適用于地理柵欄的 GeoJSON 資料格式 |Microsoft Azure 對應
+description: 瞭解 Azure 地圖服務地理柵欄資料。 瞭解如何在抓取相對於地理柵欄的座標位置時，使用 GET 地理柵欄和 POST 地理柵欄 Api。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037400"
 ---
 # <a name="geofencing-geojson-data"></a>地理柵欄 GeoJSON 資料
@@ -35,11 +35,11 @@ Azure 地圖服務 [GET Geofence](/rest/api/maps/spatial/getgeofence) 和 [POST 
 | startTime | Datetime  | true | 有效時間期間的開始日期時間。 |
 | EndTime   | Datetime  | true |  有效時間期間的結束日期時間。 |
 | recurrenceType | 字串 | false |   期間的週期類型。 值可為 `Daily`、`Weekly`、`Monthly`，或 `Yearly`。 預設值為 `Daily`。|
-| businessDayOnly | Boolean | false |  指出資料是否僅在工作日有效。 預設值為 `false`。|
+| businessDayOnly | 布林值 | false |  指出資料是否僅在工作日有效。 預設值為 `false`。|
 
 
-* 所有座標值都會表示為中定義的 [經度，緯度] `WGS84` 。
-* 針對每個 Feature (其包含 `MultiPoint`、`MultiLineString`、`MultiPolygon`，或 `GeometryCollection`)，那些屬性會套用到所有元素上。 例如：中的所有點 `MultiPoint` 都會使用相同的半徑形成多個 circle 地理柵欄。
+* 所有座標值都會以中定義的 [經度，緯度] 表示 `WGS84` 。
+* 針對每個 Feature (其包含 `MultiPoint`、`MultiLineString`、`MultiPolygon`，或 `GeometryCollection`)，那些屬性會套用到所有元素上。 例如：中的所有點 `MultiPoint` 都會使用相同的半徑來形成多個圓形地理柵欄。
 * 在點-圓形的案例中，圓形幾何可以使用 `Point` 幾何物件來代表，搭配在[擴充 GeoJSON 幾何](https://docs.microsoft.com/azure/azure-maps/extend-geojson)中所述的屬性。      
 
 下面是以使用中心點和半徑的 `GeoJSON` 格式，顯示為圓形地理柵欄幾何之地理柵欄的範例要求本文。 地理柵欄的有效期間從 2018 年 10 月 22 日開始，從上午 9 點到下午 5 點，並於週末之外的每日重複。 `expiredTime` 指出此地理柵欄資料會在要求中的 `userTime` 晚於 `2019-01-01`的情況下被視為失效。  

@@ -1,6 +1,6 @@
 ---
 title: 如何部署 Azure 檔案服務 | Microsoft Docs
-description: 了解如何從頭到尾部署 Azure 檔案服務。 將資料傳輸到 Azure 檔案儲存體。 自動掛接在所需的電腦或伺服器上。
+description: 了解如何從頭到尾部署 Azure 檔案服務。 將資料傳輸至 Azure 檔案儲存體。 自動掛接在所需的電腦或伺服器上。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034493"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 檔案服務
@@ -26,7 +26,7 @@ ms.locfileid: "88034493"
 - 已在儲存體帳戶中建立 Azure 檔案共用，並設定所需的配額。 如需如何建立檔案共用的逐步指示，請參閱[建立檔案共用](storage-how-to-create-file-share.md)。
 
 ## <a name="transfer-data-into-azure-files"></a>將資料傳送到 Azure 檔案服務
-您可能想要將現有的檔案共用 (例如儲存在內部部署的檔案共用) 移轉至新的 Azure 檔案共用。 本節將說明如何透過[規劃指南](storage-files-planning.md#migration)詳述的幾個常用方法，將資料移至 Azure 檔案共用
+您可能想要將現有的檔案共用 (例如儲存在內部部署的檔案共用) 移轉至新的 Azure 檔案共用。 本節將說明如何透過[規劃指南](storage-files-planning.md#migration)中詳述的數個常用方法，將資料移至 Azure 檔案共用
 
 ### <a name="azure-file-sync"></a>Azure 檔案同步
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
@@ -90,7 +90,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 ### <a name="robocopy"></a>Robocopy
 Robocopy 是隨附於 Windows 和 Windows Server 的常用複製工具。 Robocopy 可在本機掛接檔案共用，然後將掛接位置作為 Robocopy 命令中的目的地使用，以將資料傳輸到 Azure 檔案服務中。 使用 Robocopy 相當簡單：
 
-1. [掛接 Azure 檔案共用](storage-how-to-use-files-windows.md)。 為了達到最佳效能，建議您在含有資料的伺服器上本機裝載 Azure 檔案共用。 某些情況可能無法這麼做，例如提供資料的檔案伺服器是 NAS 裝置時。 這時候，您完全可以將 Azure 檔案共用裝載到電腦上。 此範例會在命令列中使用 `net use` 以掛接檔案共用：
+1. [掛接您的 Azure 檔案共用](storage-how-to-use-files-windows.md)。 為了達到最佳效能，建議您在含有資料的伺服器上本機裝載 Azure 檔案共用。 某些情況可能無法這麼做，例如提供資料的檔案伺服器是 NAS 裝置時。 這時候，您完全可以將 Azure 檔案共用裝載到電腦上。 此範例會在命令列中使用 `net use` 以掛接檔案共用：
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>

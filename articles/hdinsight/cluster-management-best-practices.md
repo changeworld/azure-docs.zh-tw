@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648694"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight 叢集管理最佳作法
@@ -76,7 +76,7 @@ AzureActivity
 | where ResourceProvider == "Microsoft.HDInsight" and (OperationName == "Create or Update Cluster" or OperationName == "Delete Cluster") and ActivityStatus == "Succeeded"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [HDInsight 叢集的容量規劃](./hdinsight-capacity-planning.md)
 * [Azure HDInsight 的預設和建議節點設定為何？](./hdinsight-supported-node-configuration.md)

@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117731"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>使用代理者流程中委派使用者身分識別的服務對服務呼叫
@@ -62,7 +62,7 @@ OBO 流程會在使用者已在使用 [OAuth 2.0 授權碼授與流程](v1-proto
 1. 在 Azure 入口網站中，選擇您的應用程式，選取 [憑證及祕密]。
 1. 選取 [新增用戶端密碼]，並新增為期一或兩年的秘密。
 1. 當您儲存此頁面時，Azure 入口網站會顯示祕密值。 請複製祕密值，並將其儲存到安全的位置。
-1. 在 [公開應用程式的**API** ] 頁面中，于應用程式上建立領域，然後按一下 [新增範圍]。  入口網站可能也會要求您建立應用程式識別碼 URI。 
+1. 在您應用程式的 [ **公開 API** ] 頁面中，于應用程式上建立範圍，然後按一下 [新增範圍]。  入口網站也可能會要求您建立應用程式識別碼 URI。 
 
 > [!IMPORTANT]
 > 您需要祕密來設定實作中的應用程式設定。 系統不會再次顯示此祕密值，且您無法透過任何其他方式加以取得。 在它顯示於 Azure 入口網站中時，請儘快將它記錄下來。
@@ -79,7 +79,7 @@ OBO 流程會在使用者已在使用 [OAuth 2.0 授權碼授與流程](v1-proto
 1. 選取 [註冊] 以建立應用程式。
 1. 設定應用程式的權限。 在 [API 權限] 中選取 [新增權限]，然後選取 [我的 API]。
 1. 在文字欄位中輸入中介層服務的名稱。
-1. 選擇 [**選取許可權**]，然後選取您在註冊仲介層的最後一個步驟中建立的範圍。
+1. 選擇 [ **選取許可權** ]，然後選取您在註冊中介層的最後一個步驟中建立的範圍。
 
 ### <a name="configure-known-client-applications"></a>設定已知的用戶端應用程式
 
@@ -283,9 +283,9 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 - ext_expires_in：0
 - expires_on：1529627844
 - resource：`https://api.contoso.com`
-- access_token：\<SAML assertion\>
+- access_token： \<SAML assertion\>
 - issued_token_type：urn:ietf:params:oauth:token-type:saml2
-- refresh_token：\<Refresh token\>
+- refresh_token： \<Refresh token\>
 
 ## <a name="client-limitations"></a>用戶端限制
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319872"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>使用連接器搭配 Auzre AD Connect Sync Service Manager
@@ -38,7 +38,7 @@ ms.locfileid: "91319872"
 | [刪除](#delete) |用來刪除連接器空間中的資料或刪除與樹系的連接。 |
 | [更新執行設定檔](#configure-run-profiles) |除了網域篩選以外，不會在此處進行任何設定。 您可以使用此動作來查看已設定的執行設定檔。 |
 | 執行 |用來啟動設定檔的一次性執行。 |
-| Stop |停止目前執行設定檔的連接器。 |
+| 停止 |停止目前執行設定檔的連接器。 |
 | 匯出連接器 |請勿使用。 |
 | 匯入連接器 |請勿使用。 |
 | 更新連接器 |請勿使用。 |

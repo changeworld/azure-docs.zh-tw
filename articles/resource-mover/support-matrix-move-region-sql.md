@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
 ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652804"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure SQL 資源
@@ -34,11 +34,11 @@ ms.locfileid: "89652804"
 **進階資料安全性** | 不支援。 | 因應措施：在目的地區域的 SQL Server 層級進行設定。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
 **防火牆規則** | 不支援。 | 因應措施：設定目的地區域中 SQL Server 的防火牆規則。 資料庫層級防火牆規則會從源伺服器複製到目標伺服器。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-server-level-firewall-rule)。
 **稽核原則** | 不支援。 | 移動之後，原則將重設為預設值。 [瞭解](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) 如何重設。
-**備份保留** | 支援。 | 源資料庫的備份保留原則會傳送到目標資料庫。 [瞭解](/azure/sql-database/sql-database-long-term-backup-retention-configure) 如何在移動之後修改設定。
+**備份保留** | 支援。 | 來源資料庫的備份保留原則會一併傳送到目標資料庫。 [瞭解](/azure/sql-database/sql-database-long-term-backup-retention-configure) 如何在移動之後修改設定。
 **自動調整** | 不支援。 | 因應措施：在移動之後設定自動調整設定。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable)。
 **資料庫警示** | 不支援。 | 因應措施：在移動之後設定警示。 [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal)。
 **Azure SQL Server stretch database** | 不支援 | 無法移動具有資源移動器的 SQL server stretch database。
 **Azure Synapse Analytics** | 不支援 | 無法使用資源移動器將 Synapse Analytics (先前的 Azure SQL 資料倉儲) 。
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用資源移動器嘗試使用 [AZURE SQL 資源](tutorial-move-region-sql.md) 至另一個區域。

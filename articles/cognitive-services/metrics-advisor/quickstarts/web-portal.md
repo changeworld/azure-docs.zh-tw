@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944086"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631356"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入門：使用入口網站監視您的第一個計量
 
@@ -38,6 +38,13 @@ ms.locfileid: "90944086"
 > * 如果要使用 REST API 與服務互動，您需要所建立資源的金鑰和端點。 您可以在所建立資源的**金鑰和端點**索引標籤中找到相關資訊。
 
 本文件使用 SQL Database 作為建立第一個監視器的範例。
+
+## <a name="sign-in-to-your-workspace"></a>登入您的工作區
+
+部署和建立您的資源之後，請登入 [Metrics Advisor 入口網站](https://go.microsoft.com/fwlink/?linkid=2143774)。 選取您的工作區以開始監視您的計量。 
+ 
+目前，您可以在每個可用的區域建立一個 Metrics Advisor 資源。 您可以隨時在 Metrics Advisor 入口網站中切換工作區。
+
 
 ## <a name="onboard-time-series-data"></a>將時間序列資料上線
 
@@ -90,7 +97,7 @@ Metrics Advisor 會針對不同的資料來源 (例如 SQL Database、Azure 資�
 |**忽略**     | 略過選取的資料行。        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="結構描述組態" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="連線設定" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>自動積存設定
 
@@ -110,7 +117,7 @@ Metrics Advisor 可以在內嵌期間，自動在每個維度上執行彙總 (SU
 - 更新偵測組態以符合預期的結果
 - 為偵測到的異常設定通知
 
-:::image type="content" source="../media/metric-details.png" alt-text="計量詳細資料" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="連線設定" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>檢視診斷見解
 
@@ -118,13 +125,13 @@ Metrics Advisor 可以在內嵌期間，自動在每個維度上執行彙總 (SU
 
 若要檢視診斷深入解析，請按一下時間序列視覺效果上的紅色點，這代表偵測到的異常。 隨即會出現一個視窗，其中包含事件分析頁面的連結。 
 
-:::image type="content" source="../media/incident-link.png" alt-text="事件連結" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="連線設定" lightbox="../media/incident-link.png":::
 
 按一下連結後，您將會切換到事件分析頁面，系統會使用一些診斷深入解析來分析對應的異常。 頁面頂端會顯示事件的相關統計資料，例如**嚴重性**、**相關的異常**，以及受影響的**開始時間**和**結束時間**。 
 
 接下來，您會看到事件的上階異常，以及自動化的根本原因建議。 這項自動化的根本原因建議是藉由分析所有相關異常的事件樹狀結構所產生，包括對父系異常的偏差、散佈和比重。 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="事件診斷" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="連線設定" lightbox="../media/incident-diagnostic.png":::
 
 根據這些功能，您已經可以直接看到發生的狀況以及事件帶來的影響，還有最可能的根本原因。 因此您可以採取立即動作儘快解決事件。 
 

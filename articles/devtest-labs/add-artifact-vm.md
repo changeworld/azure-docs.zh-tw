@@ -4,18 +4,18 @@ description: 瞭解如何在 Azure DevTest Labs 中將成品新增至實驗室�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483885"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>新增 VM 構件
-建立 VM 時，您可以在其中加入現有的成品。 這些構件可以來自[公用 DevTest Labs Git 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，或來自您自己的 Git 存放庫。 本文說明如何使用 Azure PowerShell 在 Azure 入口網站中新增成品。 
+建立 VM 時，您可以將現有的成品新增至其中。 這些成品可以來自 [公用 DevTest Labs Git 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) ，或來自您自己的 Git 存放庫。 本文說明如何在 Azure 入口網站中新增成品，以及如何使用 Azure PowerShell。 
 
 Azure DevTest Labs「構件」** 可讓您指定會在 VM 佈建時執行的「動作」**，例如執行 Windows PowerShell 指令碼、執行 Bash 命令，以及安裝軟體。 構件「參數」 ** 可讓您自訂適用於特定案例的構件。
 
-若要瞭解如何建立自訂構件，請參閱[建立自訂構件](devtest-lab-artifact-author.md)一文。
+若要瞭解如何建立自訂成品，請參閱文章： [建立自訂構件](devtest-lab-artifact-author.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -152,10 +152,10 @@ if ($virtualMachine -ne $null) {
 
 ```
 
-## <a name="next-steps"></a>後續步驟
-請參閱下列文章：
+## <a name="next-steps"></a>接下來的步驟
+請參閱下列有關構件的文章：
 
-- [為實驗室指定強制構件](devtest-lab-mandatory-artifacts.md)
+- [指定實驗室的強制構件](devtest-lab-mandatory-artifacts.md)
 - [建立自訂構件](devtest-lab-artifact-author.md)
 - [將成品存放庫新增至實驗室](devtest-lab-artifact-author.md)
 - [診斷構件失敗](devtest-lab-troubleshoot-artifact-failure.md)

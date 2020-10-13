@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: c56ee4b9e541aa4b374acbb59cf64da34046a06c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509064"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>針對 Azure 虛擬機器開機錯誤進行疑難排解
@@ -29,11 +29,11 @@ ms.locfileid: "86509064"
 * [在 Windows update 之後，VM 未啟動](troubleshoot-stuck-updating-boot-error.md)
 * [在開機期間，Windows 顯示「正在檢查檔案系統」](troubleshoot-check-disk-boot-error.md)
 * [藍色畫面錯誤](troubleshoot-common-blue-screen-error.md)
-* [VM 啟動會停滯在「正在準備 Windows](troubleshoot-vm-boot-configure-update.md)
+* [VM 啟動停滯在「正在準備 Windows](troubleshoot-vm-boot-configure-update.md)
 * [藍色畫面上顯示「重要服務已失敗」錯誤](troubleshoot-critical-service-failed-boot-error.md)
 * [重新開機迴圈問題](troubleshoot-reboot-loop.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [開機診斷](boot-diagnostics.md)
 - [VM 序列主控台](./serial-console-windows.md)

@@ -4,10 +4,10 @@ description: Batch 工作排程失敗事件的參考。 當工作無法排程時
 ms.topic: reference
 ms.date: 09/20/2020
 ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91852110"
 ---
 # <a name="task-schedule-fail-event"></a>工作排程失敗事件
@@ -78,5 +78,5 @@ ms.locfileid: "91852110"
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
 |`category`|String|錯誤的類別。|
-|`code`|String|工作排程錯誤的識別碼。 程式碼是不變的，旨在以程式設計的方式取用。|
-|`message`|String|描述工作排程錯誤的訊息，其適用于在使用者介面中顯示。|
+|`code`|字串|工作排程錯誤的識別碼。 程式碼是不變的，旨在以程式設計的方式取用。|
+|`message`|字串|描述工作排程錯誤的訊息，其適用于在使用者介面中顯示。|

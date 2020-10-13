@@ -4,10 +4,10 @@ description: 瞭解靜態和動態參數，以及如何使用它們來建立安�
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651958"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>透過參數建立動態藍圖
@@ -51,9 +51,9 @@ ms.locfileid: "89651958"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在入口網站中設定靜態參數
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
 
-1. 在頁面左側選取 [藍圖定義]。
+1. 在頁面左側選取 [藍圖定義]****。
 
 1. 選取現有的藍圖，然後選取 [ **編輯藍圖** ] 或選取 [ **+ 建立藍圖** ]，然後在 [ **基本** ] 索引標籤上填寫資訊。
 
@@ -65,7 +65,7 @@ ms.locfileid: "89651958"
 
 1. [ **編輯** 成品] 頁面會顯示適用于所選取成品的值選項。 成品中的每個參數都有標題、值方塊與核取方塊。 將此方塊設定為未選取狀態，以使其成為**靜態參數**。 在下列範例中，只有「位置」__ 是**靜態參數**，因為它已取消選取且 [資源群組名稱]__ 已選取。
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="藍圖成品上靜態參數的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="醒目提示藍圖定義和 [X of Y 參數] 的螢幕擷取畫面。" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>從 REST API 設定靜態參數
 
@@ -168,15 +168,15 @@ ms.locfileid: "89651958"
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在入口網站中設定動態參數
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
 
-1. 在頁面左側選取 [藍圖定義]。
+1. 在頁面左側選取 [藍圖定義]****。
 
 1. 以滑鼠右鍵按一下您想要指派的藍圖。 選取 [ **指派藍圖** ] 或選取您想要指派的藍圖，然後使用 [ **指派藍圖** ] 按鈕。
 
 1. 在 [ **指派藍圖** ] 頁面上，尋找 [成品 **參數** ] 區段。 至少具有一個**動態參數**的每個成品都會顯示成品與設定選項。 指派藍圖之前，請先為參數提供所需的值。 在下列範例中，「名稱」__ 是必須先定義才能完成藍圖指派的**動態參數**。
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="在藍圖指派期間設定動態參數的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="醒目提示藍圖定義和 [X of Y 參數] 的螢幕擷取畫面。" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>從 REST API 設定動態參數
 
@@ -231,7 +231,7 @@ ms.locfileid: "89651958"
   }
   ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [藍圖](../reference/blueprint-functions.md)函式清單。
 - 了解[藍圖生命週期](./lifecycle.md)。

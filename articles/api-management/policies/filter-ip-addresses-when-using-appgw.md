@@ -1,7 +1,7 @@
 ---
-title: 範例 API 管理原則-使用應用程式閘道時的 IP 位址篩選
+title: API 管理原則範例-使用應用程式閘道時的 IP 位址篩選
 titleSuffix: Azure API Management
-description: Azure API 管理原則範例-示範如何在使用應用程式閘道時，篩選要求的 IP 位址。
+description: Azure API 管理原則範例-示範如何在使用應用程式閘道時篩選要求 IP 位址。
 services: api-management
 documentationcenter: ''
 author: jftl6y
@@ -13,10 +13,10 @@ ms.date: 01/13/2020
 ms.author: joscot
 ms.custom: fasttrack-new
 ms.openlocfilehash: 45e16c9aa9e4b04e7225320951e9f839fae75ba3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75942473"
 ---
 # <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>使用應用程式閘道時篩選要求 IP 位址
