@@ -10,10 +10,10 @@ ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362311"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新定型並部署傳統的 Studio (傳統) web 服務
@@ -23,7 +23,7 @@ ms.locfileid: "91362311"
 
 若想要確保機器模型保持精準，並確定模型所根據的是相關性最高的可用資料，其中一種方式就是重新定型機器模型。 本文將說明如何重新定型傳統 Studio (傳統) web 服務。 如需有關如何重新訓練新 Studio (傳統) web 服務的指南，請 [參閱這篇操作說明文章。](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您進行過了重新定型實驗和預測性實驗。 [重新定型和部署機器學習模型](/azure/machine-learning/studio/retrain-machine-learning-model)一文有講解這些步驟。 不過，無需將您的機器學習模型部署為新 Web 服務，而是要將預測性實驗部署為傳統 Web 服務。
      

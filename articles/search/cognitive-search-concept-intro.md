@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828093"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充
@@ -115,7 +115,7 @@ Azure 認知搜尋內建的技能是以認知服務 API 中預先定型的機器
 
 1. 在[重設索引子](search-howto-reindex.md)後重建管線。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 + [AI 擴充的文件連結](cognitive-search-resources-documentation.md)
 + [範例：建立 AI 擴充的自訂技能 (c # ) ](cognitive-search-create-custom-skill-example.md)

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3751560125ea8ac6cc00ed63521bff30b751e688
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009591"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631371"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis 會根據開放原始碼軟體 [Redis](https://redis.io/) 提供記憶體中的資料存放區。 針對在後端資料存放區上重度使用的應用程式，Redis 可改善其效能和可擴縮性。 其可以處理大量的應用程式要求，方法是將經常存取的資料保留在伺服器記憶體中，以供快速地寫入和讀取。 Redis 將重要的低延遲和高輸送量資料儲存解決方案帶入到現代化的應用程式。
@@ -31,12 +31,20 @@ Azure Cache for Redis 藉由支援常見的應用程式架構模式來改善應�
 | 作業與訊息佇列 | 當與要求關聯的工作需要時間執行時，應用程式通常會將工作新增到佇列。 較長的執行作業會排入佇列，而且通常是由另一部伺服器依序處理。  此延後工作的方法稱為工作佇列。 Azure Cache for Redis 提供分散式佇列，以在您的應用程式中啟用此模式。|
 | 分散式交易 | 應用程式有時需要一系列針對後端資料存放區的命令，以執行單一不可部分完成的作業。 所有命令都必須都成功，或所有命令必須回復為初始狀態。 Azure Cache for Redis 支援以單次[交易](https://redis.io/topics/transactions)執行命令批次。 |
 
+## <a name="redis-versions"></a>Redis 版本
+
+Azure Cache for Redis 支援 Redis 4.x 版和 6.0 版 (作為預覽)。 我們已決定跳過 Redis 5.0，將您帶到最新版本。 先前，Azure Cache for Redis 只會保持單一 Redis 版本。 其會提供更新的主要版本升級，以及至少一個更舊的穩定版本繼續進行。 您可以[選擇哪一個版本](cache-how-to-version.md)最適合您的應用程式。
+
+> [!NOTE]
+> Redis 6.0 目前為預覽狀態 - 如果您有興趣，請[與我們聯絡](mailto:azurecache@microsoft.com)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>
+
 ## <a name="service-tiers"></a>服務層
 Azure Cache for Redis 可在以下層級使用：
 
 | 層 | 描述 |
 |---|---|
-基本 | 單一節點快取。 這一層支援多個記憶體大小 (250 MB - 53 GB)，非常適用於開發/測試和非關鍵工作負載。 基本層沒有服務等級協定 (SLA)。 |
+| 基本 | 單一節點快取。 這一層支援多個記憶體大小 (250 MB - 53 GB)，非常適用於開發/測試和非關鍵工作負載。 基本層沒有服務等級協定 (SLA)。 |
 | 標準 | 複寫的快取是雙節點 (主要/複本) 組態，由 Azure 管理且具高可用性 [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 |
 | Premium | 進階層是可供企業使用的層級。 進階層快取支援更多功能，而且具有較高的輸送量和較低的延遲。 進階層中的快取是部署在更強大的硬體上，因此效能優於基本或標準層。 這項優勢表示，針對大小相同的快取，其輸送量在進階層中會比在標準層中高。 |
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
 ms.openlocfilehash: 32010263829f57dc00781811eaa2535cff57b10e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91304848"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>教學課程：設定 IDEO 來自動布建使用者
@@ -34,7 +34,7 @@ ms.locfileid: "91304848"
 > * 在 IDEO 中布建群組和群組成員資格
 > * IDEO (建議的單一登入) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -98,7 +98,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 AZURE ACTIVE DIRECTORY 使用者至 IDEO**]。
 

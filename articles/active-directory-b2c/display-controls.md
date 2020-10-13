@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202291"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961352"
 ---
 # <a name="display-controls"></a>顯示控制項
 
@@ -30,7 +30,7 @@ ms.locfileid: "85202291"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
  在[自我判斷技術設定檔](self-asserted-technical-profile.md)的[中繼資料](self-asserted-technical-profile.md#metadata)區段中，參考的[ContentDefinition](contentdefinitions.md)必須 `DataUri` 設定為頁面合約版本2.0.0 或更高版本。 例如：
 
@@ -55,9 +55,9 @@ ms.locfileid: "85202291"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** 用來預先填入要從使用者收集的宣告值。 |
-| DisplayClaims | 0:1 | **DisplayClaims** 可用來代表要從使用者收集的宣告。 |
-| OutputClaims | 0:1 | **OutputClaims** 可用來代表要暫時 **儲存此顯示的宣告**。 |
+| InputClaims | 0:1 | **InputClaims** 用來預先填入要從使用者收集的宣告值。 如需詳細資訊，請參閱 [InputClaims](technicalprofiles.md#inputclaims) 元素。 |
+| DisplayClaims | 0:1 | **DisplayClaims** 可用來代表要從使用者收集的宣告。 如需詳細資訊，請參閱 [DisplayClaim](technicalprofiles.md#displayclaim) 元素。|
+| OutputClaims | 0:1 | **OutputClaims** 可用來代表要暫時 **儲存此顯示的宣告**。 如需詳細資訊，請參閱 [OutputClaims](technicalprofiles.md#outputclaims) 元素。|
 | 動作 | 0:1 | **動作** 可用來列出驗證技術設定檔，以針對前端發生的使用者動作叫用。 |
 
 ### <a name="input-claims"></a>輸入宣告
@@ -98,7 +98,90 @@ ms.locfileid: "85202291"
 
 動作會定義 **驗證技術設定檔**的清單。 它們是用來驗證顯示控制項的部分或全部顯示宣告。 驗證技術設定檔會驗證使用者輸入，並可能會將錯誤傳回給使用者。 您可以在顯示控制項動作中使用 **ContinueOnError**、 **ContinueOnSuccess**和 **前置條件** ，類似于在自我判斷技術設定檔中的 [驗證技術配置](validation-technical-profile.md) 檔中使用它們的方式。
 
-下列範例會根據使用者選取的 **mfaType** 宣告，在電子郵件或 SMS 中傳送程式碼。
+#### <a name="actions"></a>動作
+
+**Actions**元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| 動作 | 1:n | 要執行的動作清單。 |
+
+#### <a name="action"></a>動作
+
+**Action**元素包含下列屬性：
+
+| 屬性 | 必要 | 描述 |
+| --------- | -------- | ----------- |
+| Id | 是 | 作業的類型。 可能的值：`SendCode` 或 `VerifyCode`。 此 `SendCode` 值會將程式碼傳送給使用者。 此動作可能包含兩個驗證技術設定檔：一個用來產生程式碼，另一個用於傳送程式碼。 `VerifyCode`值會驗證使用者在 [輸入] 文字方塊中輸入的程式碼。 |
+
+**Action**元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| ValidationClaimsExchange | 1:1 | 技術設定檔的識別碼，可用來驗證參考技術設定檔的部分或所有顯示宣告。 參考技術設定檔的所有輸入宣告必須出現在參考技術設定檔的顯示宣告中。 |
+
+#### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
+
+**ValidationClaimsExchange**元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| ValidationTechnicalProfile | 1:n | 一種技術設定檔，用來驗證參考技術設定檔的部分或所有顯示宣告。 |
+
+**ValidationTechnicalProfile**元素包含下列屬性：
+
+| 屬性 | 必要 | 描述 |
+| --------- | -------- | ----------- |
+| ReferenceId | 是 | 已在原則或父原則中定義之技術設定檔的識別碼。 |
+|ContinueOnError|否| 指出當此驗證技術設定檔引發錯誤時，是否應該繼續進行任何後續驗證技術設定檔的驗證。 可能的值： `true` 或 `false` (預設值，進一步驗證設定檔的處理將會停止，且) 會傳回錯誤。 |
+|ContinueOnSuccess | 否 | 指出當此驗證技術設定檔成功時，是否要繼續驗證任何後續的驗證設定檔。 可能的值：`true` 或 `false`。 預設值是 `true`，表示進一步驗證設定檔的處理會繼續。 |
+
+**ValidationTechnicalProfile** 元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| 先決條件 | 0:1 | 必須滿足才能使驗證技術設定檔執行的先決條件清單。 |
+
+**先決條件**元素包含下列屬性：
+
+| 屬性 | 必要 | 描述 |
+| --------- | -------- | ----------- |
+| `Type` | 是 | 要針對此先決條件執行的檢查或查詢類型。 可能的值：`ClaimsExist` 或 `ClaimEquals`。 `ClaimsExist` 指定如果指定的宣告存在於使用者目前的宣告集中，則應該執行動作。 `ClaimEquals` 指定如果指定的宣告存在且其值等於指定的值時，應執行動作。 |
+| `ExecuteActionsIf` | 是 | 指出如果測試為 True 或 False，是否應執行先決條件中的動作。 |
+
+**Precondition** 元素包含下列元素：
+
+| 元素 | 發生次數 | 描述 |
+| ------- | ----------- | ----------- |
+| 值 | 1:n | 檢查所用的資料。 如果這項檢查的型別是 `ClaimsExist`，此欄位會指定要查詢的 ClaimTypeReferenceId。 如果檢查的型別是 `ClaimEquals`，此欄位會指定要查詢的 ClaimTypeReferenceId。 指定要在另一個值元素中檢查的值。|
+| 動作 | 1:1 | 當協調流程步驟內的先決條件檢查為 True 時應採取的動作。 **動作**的值設定為 `SkipThisValidationTechnicalProfile` ，指定不應該執行相關聯的驗證技術設定檔。 |
+
+下列範例會使用 [AZURE AD SSPR 技術設定檔](aad-sspr-technical-profile.md)來傳送和驗證電子郵件地址。
+
+```xml
+<DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
+  <InputClaims></InputClaims>
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="email" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="verificationCode" ControlClaimType="VerificationCode" Required="true" />
+  </DisplayClaims>
+  <OutputClaims></OutputClaims>
+  <Actions>
+    <Action Id="SendCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-SendCode" />
+      </ValidationClaimsExchange>
+    </Action>
+    <Action Id="VerifyCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-VerifyCode" />
+      </ValidationClaimsExchange>
+    </Action>
+  </Actions>
+</DisplayControl>
+```
+
+下列範例會根據使用者在 **mfaType** 宣告中選取的前置條件，在電子郵件或 SMS 中傳送程式碼。
 
 ```xml
 <Action Id="SendCode">
@@ -141,3 +224,10 @@ ms.locfileid: "85202291"
     <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
+
+## <a name="next-steps"></a>後續步驟
+
+如需使用顯示控制項的範例，請參閱： 
+
+- [使用 Mailjet 進行自訂電子郵件驗證](custom-email-mailjet.md)
+- [使用 SendGrid 進行自訂電子郵件驗證](custom-email-sendgrid.md)

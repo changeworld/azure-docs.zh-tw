@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362379"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統) 中執行 Python 機器學習服務腳本
 
-**適用于：** ![適用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) 不 ![ 適用。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Python 是許多資料科學家的工具胸中的重要工具。 它是用於一般機器學習工作流程的每個階段，包括資料探索、功能解壓縮、模型定型和驗證，以及部署。
@@ -149,7 +149,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 安裝在 Studio (傳統) 中的 Anaconda 環境包含常見的套件，例如 NumPy、SciPy 和 Scikits-learn-學習。 這些封裝可有效用於機器學習管線中的資料處理。
 
-例如，下列實驗和腳本說明如何在 Scikits-learn 中使用集團學習工具-學習計算資料集的功能重要性分數。 分數可以用來執行受監督的功能選取，然後再送到另一個模型。
+例如，下列實驗和腳本說明如何使用 Scikits-Learn 中的集團學習工具，計算資料集的功能重要性分數。 分數可以用來執行受監督的功能選取，然後再送到另一個模型。
 
 以下 Python 函式是用於根據分數計算重要性分數及將功能排序：
 

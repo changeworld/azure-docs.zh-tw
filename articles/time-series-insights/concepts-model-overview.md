@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630656"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
@@ -63,7 +63,7 @@ ms.locfileid: "91630656"
 * 定義父子式關聯性，以啟用導覽、搜尋和參考。
 * 定義與實例相關聯的屬性（定義為 *實例欄位*），並使用它們來建立階層。
 
-### <a name="components"></a>組件
+### <a name="components"></a>元件
 
 時間序列模型有三個核心元件：
 
@@ -101,7 +101,7 @@ ms.locfileid: "91630656"
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的唯一識別碼。 在大部分情況下，實例是由 deviceId 或 assetId 之類的屬性來唯一識別。 在某些情況下，可以使用更明確的複合識別碼，最多可結合3個屬性。 |
 | typeId | 與實例相關聯的時間序列模型類型之區分大小寫的唯一字串識別碼。 依預設，所有探索到的新實例都會與預設型別建立關聯。
-| name | **Name**屬性是選擇性的，且區分大小寫。 如果 **名稱** 無法使用，則預設為 **timeSeriesId**。 如果有提供名稱， **timeSeriesId**仍可供[使用。](time-series-insights-update-explorer.md#4-time-series-well) |
+| NAME | **Name**屬性是選擇性的，且區分大小寫。 如果 **名稱** 無法使用，則預設為 **timeSeriesId**。 如果有提供名稱， **timeSeriesId**仍可供[使用。](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | 實例的文字描述。 |
 | hierarchyIds | 定義實例所屬的階層。 |
 | instanceFields | 實例的屬性，以及定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
@@ -148,7 +148,7 @@ ms.locfileid: "91630656"
 | 屬性 | 描述 |
 | ---| ---|
 | id | 階層的唯一識別碼，如您定義實例時所使用的識別碼。 |
-| name | 用來提供階層名稱的字串。 |
+| NAME | 用來提供階層名稱的字串。 |
 | source | 指定組織階層或路徑，這是使用者想要建立之階層的由上而下父子式訂單。 父子式屬性會對應「執行個體欄位」。 |
 
 階層會以 JSON 表示為：
@@ -240,7 +240,7 @@ ms.locfileid: "91630656"
 | 屬性 | 描述 |
 | ---| ---|
 | id | 類型的區分大小寫唯一字串識別碼。 |
-| name | 用來提供類型名稱的字串。 |
+| NAME | 用來提供類型名稱的字串。 |
 | description | 類型的字串描述。 |
 | variables | 指定與類型相關聯的變數。 |
 

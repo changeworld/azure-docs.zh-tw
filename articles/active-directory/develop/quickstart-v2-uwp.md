@@ -1,6 +1,7 @@
 ---
-title: Microsoft 身分識別平台 Windows UWP 快速入門 | Azure
-description: 了解通用 Windows 平台 (UWP) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台端點保護的 API。
+title: 快速入門：在通用 Windows 平台應用程式中登入使用者並呼叫 Microsoft Graph | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，了解通用 Windows 平台 (UWP) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台保護的 API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +12,23 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 5b954c5eae9c203efa65dc9dc1883d8e00f3937a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553859"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630520"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入門：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
 此快速入門包含程式碼範例，用以示範通用 Windows 平台 (UWP) 應用程式如何登入個人帳戶或公司與學校帳戶的使用者、取得存取權杖，以及呼叫 Microsoft Graph API。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>必要條件
+>
+> * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
 > [!div renderon="docs" class="sxs-lookup"]
 > 有兩個選項可用來啟動快速入門應用程式：
@@ -49,7 +55,7 @@ ms.locfileid: "85553859"
 >      - 選取 [註冊] 以建立應用程式。
 > 1. 在應用程式頁面清單中，選取 [驗證]。
 > 1. 在 [重新導向 URI] | [公用用戶端 (行動、傳統型) 的建議重新導向 URI] 區段，然後核取 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
-> 1. 選取 [儲存]。
+> 1. 選取 [儲存]  。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步驟 1:設定您的應用程式

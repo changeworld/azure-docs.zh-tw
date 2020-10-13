@@ -4,17 +4,17 @@ description: 瞭解 IoT Edge 執行時間如何管理裝置上的模組、安全
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016949"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971688"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 執行階段和架構
 
@@ -71,7 +71,7 @@ IoT Edge 中樞可促進模組對模組的通訊。 使用 IoT Edge 中樞作為
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-如需 ModuleClient 類別及其通訊方法的詳細資訊，請參閱您慣用 SDK 語言的 API 參考： [c #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、 [c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、 [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python)、 [JAVA](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)或 [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)。
+如需 ModuleClient 類別及其通訊方法的詳細資訊，請參閱您慣用 SDK 語言的 API 參考： [c #](/dotnet/api/microsoft.azure.devices.client.moduleclient)、 [c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、 [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、 [JAVA](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)或 [Node.js](/javascript/api/azure-iot-device/moduleclient)。
 
 解決方案開發人員會負責指定規則，以判斷 IoT Edge 中樞在模組之間傳遞訊息的方式。 路由規則會定義于雲端中，並在其模組對應項中向下推送至 IoT Edge 中樞。 適用於 IoT 中樞路由的相同語法，可用來定義 Azure IoT Edge 中模組之間的路由。 如需詳細資訊，請參閱[了解如何在 IoT Edge 中部署模組及建立路由](module-composition.md)。
 
@@ -124,6 +124,22 @@ IoT Edge 代理程式在 IoT Edge 裝置的安全性中扮演了關鍵角色。 
 
 如需有關 Azure IoT Edge 安全性架構的詳細資訊，請參閱 [IoT Edge 安全性管理員](iot-edge-security-manager.md)。
 
+## <a name="runtime-quality-telemetry"></a>執行時間品質遙測
+
+IoT Edge 會從主機執行時間和系統模組收集匿名遙測，以改善產品品質。 這項資訊稱為執行時間品質遙測 (RQT) 。 RQT 會定期從 IoT Edge 代理程式以裝置到雲端訊息傳送至 IoT 中樞。 RQT 訊息不會出現在客戶的一般遙測中，也不會使用任何訊息配額。
+
+EdgeAgent 和 edgeHub 所收集之計量的完整清單可在「 [存取 IoT Edge 執行時間計量」一文](how-to-access-built-in-metrics.md#available-metrics)的 [可用的計量] 區段中取得。 IoT Edge 代理程式會收集這些計量的子集作為 RQT 的一部分。 作為 RQT 一部分收集的計量包括標記 `ms_telemetry` 。
+
+在匿名化過程中，會在上傳之前移除任何個人或組織識別資訊，例如裝置和模組名稱。
+
+預設的 RQT 頻率是每隔24小時傳送一則訊息到 IoT 中樞的訊息，以及每小時 edgeAgent 的本機集合。
+
+如果您想要退出宣告 RQT，有兩種方式可以執行這項操作：
+
+* 設定 `SendRuntimeQualityTelemetry` edgeAgent 的環境變數 `false` ， **edgeAgent**或
+* 在部署期間取消選取 [Azure 入口網站中的選項。
+
 ## <a name="next-steps"></a>後續步驟
 
-[了解 Azure IoT Edge 模組](iot-edge-modules.md)
+* [了解 Azure IoT Edge 模組](iot-edge-modules.md)
+* [瞭解 IoT Edge 執行時間計量](how-to-access-built-in-metrics.md)

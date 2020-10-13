@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779396"
 ---
 ## <a name="prerequisites"></a>必要條件
@@ -136,7 +136,7 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notifications"></a>推播通知
+## <a name="push-notifications"></a>推送通知
 
 ### <a name="overview"></a>概觀
 行動推播通知是您在行動裝置上看到的快顯通知。 為了進行呼叫，我們將著重于 VoIP (語音 over 網際網路通訊協定) 推播通知。 我們會註冊推播通知、處理推播通知，然後取消註冊推播通知。

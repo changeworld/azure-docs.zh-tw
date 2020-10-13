@@ -4,16 +4,16 @@ description: 了解哪些作業系統可以執行 Azure IoT Edge 精靈和執行
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/10/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 27d078bc1dc61079d44110999b70c5195c9c8a2a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8bd0d0d6fccedf2bd9c4fe94f3ef13dbd82dc8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874215"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971076"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支援的系統
 
@@ -65,12 +65,11 @@ Azure IoT Edge 可以在能夠執行容器的大部分作業系統上執行，�
 | Raspbian Stretch |  | ![Raspbian Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
 | [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公開預覽  |
 | [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公開預覽 |
-| [Windows 10 IoT 核心版](https://docs.microsoft.com/windows/iot-core/windows-iot-core)，組建 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows 10 IoT 企業版](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise)，組建 17763 | ![Windows 10 IoT 企業版 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19)，組建 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server)，組建 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-以上所列的 Windows 作業系統是在 Windows 上執行 Windows 容器的裝置需求，這是唯一支援的生產環境設定。 適用於 Windows 的 Azure IoT Edge 安裝套件可讓您在 Windows 上使用 Linux 容器，但此設定僅適用於開發及測試。 如需詳細資訊，請參閱[在 Windows 上使用 IoT Edge 執行 Linux 容器](how-to-install-iot-edge-windows-with-linux.md)。
+以上所列的 Windows 作業系統是在 Windows 上執行 Windows 容器的裝置需求，這是唯一支援的生產環境設定。 適用於 Windows 的 Azure IoT Edge 安裝套件可讓您在 Windows 上使用 Linux 容器，但此設定僅適用於開發及測試。 
 
 ### <a name="tier-2"></a>第 2 層
 
@@ -108,14 +107,16 @@ IoT Edge 元件可以個別安裝或更新，並與舊版元件回溯相容。 �
 
 | 版本 | 安全性精靈 | Edge 中樞<br>Edge 代理程式 | Libiothsm | Moby |
 |--|--|--|--|--|
+| **1.0.10** | 1.0.10 | 1.0.10 | 1.0.10 |  |
 | **1.0.9** | 1.0.9.5 版<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 | 1.0.9.5 版<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 | 1.0.9.5 版<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl、CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-IoT Edge 使用 Microsoft.Azure.Device.Client SDK。 如需詳細資訊，請參閱 [Azure IoT C# SDK GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-csharp) \(英文\) 或 [Azure SDK for .NET 參考內容](/dotnet/api/overview/azure/iot/client) \(英文\)。 下列清單顯示測試每個版本所對照的用戶端 SDK 版本：
+IoT Edge 會使用 Microsoft Azure. 用戶端 SDK。 如需詳細資訊，請參閱 [Azure IoT C# SDK GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-csharp) \(英文\) 或 [Azure SDK for .NET 參考內容](/dotnet/api/overview/azure/iot/client) \(英文\)。 下列清單顯示測試每個版本所對照的用戶端 SDK 版本：
 
+* **IoT Edge 1.0.10**：用戶端 SDK 1.28。0
 * **IoT Edge 1.0.9**：用戶端 SDK 1.21.1
 * **IoT Edge 1.0.8**：用戶端 SDK 1.20.3
 * **IoT Edge 1.0.7**：用戶端 SDK 1.20.1

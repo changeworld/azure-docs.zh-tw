@@ -12,10 +12,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828125"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>設定 Azure Machine Learning 工作區的 Azure Private Link
@@ -62,7 +62,7 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 * `--pe-auto-approval`：是否應自動核准工作區的私人端點連接。
 * `--pe-resource-group`：要在其中建立私人端點的資源群組。 必須是包含虛擬網路的相同群組。
 * `--pe-vnet-name`：要在其中建立私人端點的現有虛擬網路。
-* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值為 `default`。
+* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值是 `default`。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -80,7 +80,7 @@ Azure Machine Learning studio 中的 [ __網路__ 功能] 索引標籤可讓您�
 如需 Azure 虛擬機器的詳細資訊，請參閱 [虛擬機器檔](/azure/virtual-machines/)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需保護 Azure Machine Learning 工作區安全的詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md) 文章。
 

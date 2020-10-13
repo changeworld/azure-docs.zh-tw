@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 實驗室服務設定實驗室，以教授
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631676"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>設定實驗室來教授道德入侵類別 
@@ -76,11 +76,11 @@ Rapid7 Metasploitable 映射是刻意設定有安全性弱點的影像。 您將
     3. 下載 zip 檔案時，請將 zip 檔案解壓縮，並記住 Metasploitable .vmdk 檔案的位置。
 1. 將解壓縮的 vmdk 檔案轉換成 vhdx 檔案，讓您可以將 vhdx 檔案與 Hyper-v 搭配使用。 有數個工具可用來將 VMware 映射轉換成 Hyper-v 映射，反之亦然。  我們將使用 [STARWIND V2V 轉換器](https://www.starwindsoftware.com/starwind-v2v-converter)。  若要下載，請參閱 [STARWIND V2V 轉換器下載頁面](https://www.starwindsoftware.com/starwind-v2v-converter#download)。
     1. 開始 **STARWIND V2V 轉換器**。
-    1. 在 [ **選取要轉換之影像的位置** ] 頁面上，選擇 [ **本機**檔案]。  選取 [下一步] 。
-    1. 在 [ **來源映射** ] 頁面上，流覽至並選取在上一個步驟中解壓縮的 Metasploitable，以取得 [ **檔案名** ] 設定。  選取 [下一步] 。
-    1. 在 [ **選取目的地映射的位置**] 上，選擇 [ **本機**檔案]。  選取 [下一步] 。
-    1. 在 [ **選取目的地映射格式** ] 頁面上，選擇 [ **VHD/VHDX**]。  選取 [下一步] 。
-    1. 在 [ **選取 VHD/VHDX 映射格式的選項** ] 頁面上，選擇 [ **VHDX 可成長映射**]。  選取 [下一步] 。
+    1. 在 [ **選取要轉換之影像的位置** ] 頁面上，選擇 [ **本機**檔案]。  選取 [下一步]  。
+    1. 在 [ **來源映射** ] 頁面上，流覽至並選取在上一個步驟中解壓縮的 Metasploitable，以取得 [ **檔案名** ] 設定。  選取 [下一步]  。
+    1. 在 [ **選取目的地映射的位置**] 上，選擇 [ **本機**檔案]。  選取 [下一步]  。
+    1. 在 [ **選取目的地映射格式** ] 頁面上，選擇 [ **VHD/VHDX**]。  選取 [下一步]  。
+    1. 在 [ **選取 VHD/VHDX 映射格式的選項** ] 頁面上，選擇 [ **VHDX 可成長映射**]。  選取 [下一步]  。
     1. 在 [ **選取目的地檔案名** ] 頁面上，接受預設的檔案名。  選取 [轉換]****。
     1. 在 [ **轉換** ] 頁面上，等候影像轉換。  這可能需要幾分鐘的時間。  當轉換完成時，請選取 **[完成]** 。
 1. 建立新的 Hyper-v 虛擬機器。

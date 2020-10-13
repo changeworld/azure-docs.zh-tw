@@ -12,10 +12,10 @@ ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 1d215c9564d89e5bd410e68839807f5c2c752356
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828423"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配使用您的工作區與自訂 DNS 伺服器
@@ -96,6 +96,6 @@ $workspaceDns.CustomDnsConfigs | format-table
 >
 > 針對所有這些 IP 位址，請使用與 `*.api.azureml.ms` 上一個步驟所傳回專案相同的位址。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需搭配虛擬網路使用 Azure Machine Learning 的詳細資訊，請參閱 [虛擬網路總覽](how-to-network-security-overview.md)。

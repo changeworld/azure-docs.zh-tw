@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
 ms.openlocfilehash: b23fb22a99705e1bf37de7a7982513ff692d8f6a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91771027"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>防止刪除或變更 Azure Cosmos DB 資源
@@ -71,7 +71,7 @@ az lock create --name $lockName \
     --resource $accountName
 ```
 
-### <a name="template"></a>[範本]
+### <a name="template"></a>範本
 
 將鎖定套用至 Azure Cosmos DB 資源時，請使用下列格式：
 

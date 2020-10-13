@@ -14,10 +14,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
 ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620353"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>開始使用 Azure SQL 受控執行個體審核
@@ -32,7 +32,7 @@ ms.locfileid: "91620353"
 
 下節描述在您受控執行個體上進行稽核的設定。
 
-1. 前往 [Azure 入口網站](https://portal.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 建立用來儲存稽核記錄的 Azure 儲存體**容器**。
 
    1. 流覽至您要儲存審核記錄的 Azure 儲存體帳戶。
@@ -177,7 +177,7 @@ ms.locfileid: "91620353"
 
 5. 選取 audit 事件的目的地：事件中樞、Azure 監視器記錄或兩者。 為每個目標設定必要的參數 (例如 Log Analytics 工作區)。
 
-6. 按一下 [檔案] 。
+6. 按一下 **[儲存]** 。
 
     ![設定診斷設定](./media/auditing-configure/9_mi_configure_diagnostics.png)
 

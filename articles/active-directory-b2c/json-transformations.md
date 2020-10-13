@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204334"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961284"
 ---
 # <a name="json-claims-transformations"></a>JSON 宣告轉換
 
@@ -33,6 +33,8 @@ ms.locfileid: "85204334"
 | InputClaim | 點標記法之後的任何字串 | 字串 | 將在其中插入宣告值的 JSON JsonPath。 |
 | InputParameter | 點標記法之後的任何字串 | 字串 | JSON 的 JsonPath，其中會將常數位串值插入其中。 |
 | OutputClaim | outputClaim | 字串 | 產生的 JSON 字串。 |
+
+### <a name="example-1"></a>範例 1
 
 下列範例會根據「電子郵件」和「otp」以及常數位符串的宣告值產生 JSON 字串。
 
@@ -52,8 +54,6 @@ ms.locfileid: "85204334"
   </OutputClaims>
 </ClaimsTransformation>
 ```
-
-### <a name="example"></a>範例
 
 下列宣告轉換會輸出 JSON 字串宣告，此宣告將成為協力廠商電子郵件提供者)  (傳送至 SendGrid 的要求主體。 JSON 物件的結構是以輸入參數的點標記法，以及 InputClaims 的 TransformationClaimTypes 來定義。 點標記法中的數位暗示陣列。 這些值來自于 InputClaims 的值和輸入參數 ' "Value" 屬性。
 
@@ -87,6 +87,56 @@ ms.locfileid: "85204334"
   "from": {
     "email": "service@contoso.com"
   }
+}
+```
+
+### <a name="example-2"></a>範例 2
+
+下列範例會根據宣告值和常數位符串產生 JSON 字串。
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+下列宣告轉換會輸出 JSON 字串宣告，此宣告會成為傳送給 REST API 的要求主體。 JSON 物件的結構是以輸入參數的點標記法，以及 InputClaims 的 TransformationClaimTypes 來定義。 點標記法中的數位暗示陣列。 這些值來自于 InputClaims 的值和輸入參數 ' "Value" 屬性。
+
+- 輸入宣告：
+  - **電子郵件**，轉換宣告類型  **>customerentity。電子郵件**： " john.s@contoso.com "
+  - **objectId**，轉換宣告類型 **>customerentity. userobjectid 為** "01234567-89ab-cdef-0123-456789abcdef"
+  - **objectId**，轉換宣告類型 **>customerentity. firstName** "John"
+  - **objectId**，轉換宣告類型 **>customerentity lastName** "Smith"
+- 輸入參數：
+  - **customerEntity.role.name**： "Administrator"
+  - **customerEntity.role.id** 1
+- 輸出宣告：
+  - **requestBody**： JSON 值
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
 }
 ```
 

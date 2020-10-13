@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
 ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649638"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
@@ -26,7 +26,7 @@ Dv3 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171
 
 資料磁碟儲存體與虛擬機器分開計費。 若要使用進階儲存體磁碟，請使用 Dsv3 大小。 Dsv3 大小的定價和計費方式與 Dv3 系列相同。
 
-Dv3 系列 Vm 具備 Intel®超執行緒技術的功能。
+Dv3 系列 Vm 具備 Intel® Hyper-Threading 技術的功能。
 
 [ACU](acu.md)：160-190<br>
 [進階儲存體](premium-storage-performance.md)：不支援<br>
@@ -50,7 +50,7 @@ Dv3 系列 Vm 具備 Intel®超執行緒技術的功能。
 
 Dsv3 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 、Intel®® E5-2673 v4 2.3 GHz (Broadwell) ，或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器搭配 Intel Turbo 加速技術2.0 和使用 premium 儲存體。 Dsv3 系列大小提供 CPU、記憶體與暫存儲存憶體組合，適用於大多數生產環境工作負載。
 
-Dsv3 系列 Vm 具備 Intel®超執行緒技術的功能。
+Dsv3 系列 Vm 具備 Intel® Hyper-Threading 技術的功能。
 
 [ACU](acu.md)：160-190<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>

@@ -4,10 +4,10 @@ description: 此資料模型參考將診斷事件傳送至 Log Analytics (LA) �
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569591"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 備份診斷事件的資料模型
@@ -16,7 +16,7 @@ ms.locfileid: "91569591"
 
 下表提供核心備份實體的相關資訊，例如保存庫和備份專案。
 
-| **欄位**                         | **資料類型** | **描述**                                              |
+| **欄位**                         | **資料類型** | **說明**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                        | Text          | 正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼。 |
 | OperationName                     | Text          | 此欄位代表目前作業的名稱-BackupItem、BackupItemAssociation 或 ProtectedContainer。 |
@@ -55,7 +55,7 @@ ms.locfileid: "91569591"
 | resourceGroupName                 | Text          | 資源的資源群組 (例如，復原服務保存庫) 收集的資料 |
 | schemaVersion                     | Text          | 此欄位代表目前的架構版本。 它是 **V2** |
 | SecondaryBackupProtectionState    | Text          | 是否要為備份項目啟用次要保護  |
-| 州                             | Text          | 備份專案物件的狀態。 例如，作用中、已刪除 |
+| State                             | Text          | 備份專案物件的狀態。 例如，作用中、已刪除 |
 | StorageReplicationType            | Text          | 保存庫的儲存體複寫類型。 例如，異地備援 |
 | SubscriptionId                    | Text          | 資源的訂用帳戶識別碼 (例如，收集資料的復原服務保存庫)  |
 | VaultName                         | Text          | 保存庫名稱                                            |
@@ -67,7 +67,7 @@ ms.locfileid: "91569591"
 
 下表提供警示相關欄位的詳細資料。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | :----------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 要收集其相關資料的資源所具備的唯一識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 目前作業的名稱。 例如，警示            |
@@ -88,7 +88,7 @@ ms.locfileid: "91569591"
 | ProtectedContainerUniqueId     | Text          | 與警示相關聯之受保護伺服器的唯一識別碼 |
 | RecommendedAction              | Text          | 建議用來解決警示的動作                      |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
-| 州                          | Text          | 警示物件的目前狀態 (例如，作用中、已刪除) |
+| State                          | Text          | 警示物件的目前狀態 (例如，作用中、已刪除) |
 | StorageUniqueId                | Text          | 用來識別儲存體實體的唯一識別碼                |
 | VaultUniqueId                  | Text          | 用來識別與警示相關之保存庫的唯一識別碼    |
 | SourceSystem                   | Text          | 目前資料的來源系統 - Azure                    |
@@ -97,7 +97,7 @@ ms.locfileid: "91569591"
 
 此表格提供基本的受保護執行個體相關欄位。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 要收集資料的資源的唯一識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 作業的名稱，例如 ProtectedInstance         |
@@ -108,7 +108,7 @@ ms.locfileid: "91569591"
 | ProtectedContainerUniqueId     | Text          | 用來識別工作執行所在之受保護容器的唯一識別碼 |
 | ProtectedInstanceCount         | Text          | 相關聯的備份專案或該日期時間受保護容器的受保護實例計數 |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
-| 州                          | Text          | 備份專案物件的狀態，例如 [作用中]、[已刪除] |
+| State                          | Text          | 備份專案物件的狀態，例如 [作用中]、[已刪除] |
 | VaultUniqueId                  | Text          | 與受保護的實例相關聯之受保護保存庫的唯一識別碼 |
 | SourceSystem                   | Text          | 目前資料的來源系統 - Azure                    |
 
@@ -116,7 +116,7 @@ ms.locfileid: "91569591"
 
 下表提供作業相關欄位的詳細資料。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 此欄位代表目前作業的名稱 - Job    |
@@ -139,7 +139,7 @@ ms.locfileid: "91569591"
 | RecoveryJobLocation            | Text          | 要復原之復原點的儲存位置 |
 | RecoveryLocationType           | Text          | 復原位置的類型                                |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
-| 州                          | Text          | 工作物件的目前狀態（例如，作用中、已刪除） |
+| State                          | Text          | 工作物件的目前狀態（例如，作用中、已刪除） |
 | VaultUniqueId                  | Text          | 與作業相關聯之受保護保存庫的唯一識別碼 |
 | SourceSystem                   | Text          | 目前資料的來源系統 - Azure                    |
 
@@ -147,7 +147,7 @@ ms.locfileid: "91569591"
 
 下表提供原則相關欄位的詳細資料。
 
-| **欄位**                       | **資料類型**  | **描述**                                              |
+| **欄位**                       | **資料類型**  | **說明**                                              |
 | ------------------------------- | -------------- | ------------------------------------------------------------ |
 | ResourceId                      | Text           | 要收集資料的資源的唯一識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                   | Text           | 作業的名稱，例如原則或 PolicyAssociation |
@@ -162,7 +162,7 @@ ms.locfileid: "91569591"
 | DiffBackupDaysOfTheWeek         | Text           | Azure VM 備份中的 SQL 差異備份在一周中的哪幾天 |
 | DiffBackupFormat                | Text           | Azure VM 備份中用於 SQL 差異備份的格式   |
 | DiffBackupRetentionDuration     | 十進位數字 | Azure VM 備份中的 SQL 差異備份保留期間 |
-| DiffBackupTime                  | Time           | Azure VM 備份中用於 SQL 差異備份的時間     |
+| DiffBackupTime                  | 時間           | Azure VM 備份中用於 SQL 差異備份的時間     |
 | LogBackupFrequency              | 十進位數字 | SQL 記錄備份的頻率                            |
 | LogBackupRetentionDuration      | 十進位數字 | Azure VM 備份中的 SQL 記錄備份保留期間 |
 | MonthlyRetentionDaysOfTheMonth  | Text           | 每月保留期設定時的周數。  例如，First、Last |
@@ -177,7 +177,7 @@ ms.locfileid: "91569591"
 | RetentionDuration               | Text           | 所設定備份的保留期間                    |
 | RetentionType                   | Text           | 保留類型                                            |
 | schemaVersion                   | Text           | 此欄位代表目前的架構版本，其為 **V2** |
-| 州                           | Text           | 原則物件的目前狀態。 例如，使用中、已刪除 |
+| State                           | Text           | 原則物件的目前狀態。 例如，使用中、已刪除 |
 | SynchronisationFrequencyPerDay  | 整數   | 在一天內，SC DPM 和 MABS 的檔案備份同步處理的次數 |
 | VaultUniqueId                   | Text           | 此原則所屬之保存庫的唯一識別碼          |
 | WeeklyRetentionDaysOfTheWeek    | Text           | 一週中所選用於每週保留期的日期               |
@@ -196,7 +196,7 @@ ms.locfileid: "91569591"
 
 下表提供儲存體相關欄位的詳細資料。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 此欄位代表目前作業的名稱-儲存體或 StorageAssociation |
@@ -207,7 +207,7 @@ ms.locfileid: "91569591"
 | PreferredWorkloadOnVolume      | Text          | 此磁片區是慣用儲存體的工作負載      |
 | ProtectedContainerUniqueId     | Text          | 與備份專案相關聯之受保護容器的唯一識別碼 |
 | schemaVersion                  | Text          | 架構的版本。 例如， **V2**                   |
-| 州                          | Text          | 備份專案物件的狀態。 例如，使用中、已刪除 |
+| State                          | Text          | 備份專案物件的狀態。 例如，使用中、已刪除 |
 | StorageAllocatedInMBs          | 數字        | 對應的備份專案在類型磁片的對應儲存體中所配置的儲存體大小 |
 | StorageConsumedInMBs           | 數字        | 對應儲存體中對應的備份專案所耗用的儲存體大小 |
 | StorageName                    | Text          | 儲存體實體的名稱。 例如，E:\                      |
@@ -222,7 +222,7 @@ ms.locfileid: "91569591"
 
 上述資料表中的每筆記錄都有相關聯的作業 **名稱**。 作業名稱會描述記錄 (的類型，也會指出資料表中的哪些欄位會針對該記錄) 填入。 每個資料表 (類別目錄) 支援一或多個相異的作業名稱。 以下是每個上述資料表所支援之作業名稱的摘要。
 
-| **資料表名稱/類別目錄**                   | **支援的作業名稱** | **描述**              |
+| **資料表名稱/類別目錄**                   | **支援的作業名稱** | **說明**              |
 | ------------------------------------------- | ------------------------------|----------------------------- |
 | CoreAzureBackup | BackupItem | 表示記錄，其中包含給定備份專案的所有詳細資料，例如識別碼、名稱、類型等等。 |
 | CoreAzureBackup | BackupItemAssociation | 代表備份專案與其相關聯的受保護容器之間的對應 (如適用) 。 |

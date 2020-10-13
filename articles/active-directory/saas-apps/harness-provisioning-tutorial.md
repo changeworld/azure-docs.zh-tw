@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91305625"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的控管
@@ -27,7 +27,7 @@ ms.locfileid: "91305625"
 >
 > 此連接器目前為預覽版。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文所述的案例假設您已經具備下列必要條件：
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
    a. 在 [ **名稱** ] 方塊中，提供金鑰的名稱。  
    b. 在 [ **繼承自的許可權** ] 下拉式清單中，選取一個選項。 
    
-1. 選取 [提交]。
+1. 選取 [提交]  。
 
 1. 複製 **金鑰** ，以供稍後在本教學課程中使用。
 
@@ -78,7 +78,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 使用 Azure AD 來設定自動使用者布建的控管之前，您必須從 Azure AD 應用程式資源庫將控管新增至受控 SaaS 應用程式清單。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的左窗格中，選取 [ **Azure Active Directory**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  。
 
     ![[Azure Active Directory] 按鈕](common/select-azuread.png)
 
@@ -134,13 +134,13 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[通知電子郵件] 方塊](common/provisioning-notification-email.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. 在 **[** 對應] 底下，選取 [ **同步處理 Azure Active Directory 使用者] 進行**控管。
 
     ![將「同步處理 Azure Active Directory 的使用者」連結](media/harness-provisioning-tutorial/usermappings.png)
 
-1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理的使用者屬性。 選取為 [比對 *] 的屬性會用* 來比對控管中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。
+1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理的使用者屬性。 選取為 [比對 *] 的屬性會用* 來比對控管中的使用者帳戶，以進行更新作業。 選取 [儲存]  認可任何變更。
 
     ![控制使用者的 [屬性對應] 窗格](media/harness-provisioning-tutorial/userattributes.png)
 
@@ -148,7 +148,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![將「同步處理 Azure Active Directory 群組以進行控管」連結](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理的群組屬性。 選取為 [比對] 屬性 *的屬性會* 用來比對控制項中的群組，以進行更新作業。 選取 [儲存] 認可任何變更。
+1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理的群組屬性。 選取為 [比對] 屬性 *的屬性會* 用來比對控制項中的群組，以進行更新作業。 選取 [儲存]  認可任何變更。
 
     ![工具組 [屬性對應] 窗格](media/harness-provisioning-tutorial/groupattributes.png)
 

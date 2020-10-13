@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
 ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649570"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
@@ -24,7 +24,7 @@ Ev3 系列實例是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171
 
 資料磁碟儲存體與虛擬機器分開計費。 若要使用進階儲存體磁碟，請使用 ESv3 大小。 ESv3 大小的定價及計費方式與 Ev3 系列相同。
 
-Ev3 系列 VM 的功能 Intel®超執行緒技術。
+Ev3 系列 VM 的功能 Intel® Hyper-Threading 技術。
 
 [ACU](acu.md)： 160-190<br>
 [進階儲存體](premium-storage-performance.md)：不支援<br>
@@ -54,7 +54,7 @@ Ev3 系列 VM 的功能 Intel®超執行緒技術。
 
 Esv3 系列實例是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 處理器，搭載 Intel Turbo 加速技術2.0 並使用 premium 儲存體。 Esv3 系列實例很適合記憶體密集型企業應用程式。
 
-Esv3 系列 VM 的功能 Intel®超執行緒技術。
+Esv3 系列 VM 的功能 Intel® Hyper-Threading 技術。
 
 [ACU](acu.md)：160-190<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>

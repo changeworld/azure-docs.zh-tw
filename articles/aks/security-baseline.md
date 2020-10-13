@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637133"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
@@ -1237,7 +1237,7 @@ security-hardened-vm-host-image.md
 
 例如：
 
-備份-AzKeyVaultCertificate 備份-AzKeyVaultKey 備份-AzKeyVaultManagedStorageAccount 備份-AzKeyVaultSecret
+Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [如何備份 Key Vault 憑證](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1281,7 +1281,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **指導**方針：使用適用于儲存體類型的適當工具來備份您的資料，例如 Velero，它可以備份永久性磁片區以及額外的叢集資源和設定。 
 
-在 Key Vault 中啟用虛刪除，以防止在 Azure Key Vault 搭配用於 Azure Kubernetes Service (AKS) 部署時遭到意外或惡意刪除。
+如果 Azure Key Vault 用於 Azure Kubernetes Service (AKS) 部署，請在 Key Vault 中啟用 Soft-Delete，以防止意外或惡意刪除的金鑰。
 
 - [瞭解 Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)
 

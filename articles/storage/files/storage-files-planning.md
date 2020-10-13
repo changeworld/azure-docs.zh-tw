@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649944"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
@@ -75,7 +75,7 @@ Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，�
 ### <a name="encryption-in-transit"></a>傳輸中加密
 
 > [!IMPORTANT]
-> 本節涵蓋 SMB 共用的傳輸詳細資料中的加密。 如需有關 NFS 共用傳輸中加密的詳細資訊，請參閱 [安全性](storage-files-compare-protocols.md#security)。
+> 本節會詳細說明 SMB 共用的傳輸中加密。 如需有關 NFS 共用的傳輸中加密詳細資訊，請參閱[安全性](storage-files-compare-protocols.md#security)。
 
 根據預設，所有 Azure 儲存體帳戶都會啟用傳輸中加密。 這表示當您透過 SMB 掛接檔案共用或透過 FileREST 通訊協定 (例如，透過 Azure 入口網站、PowerShell/CLI 或 Azure SDK) 來存取檔案共用時，Azure 檔案儲存體只會在使用了 SMB 3.0 以上 (有加密功能) 或 HTTPS 來進行連線時，才會允許您建立連線。 不支援 SMB 3.0 的用戶端，或雖支援 SMB 3.0 但不支援 SMB 加密的用戶端，將無法在啟用了傳輸中加密的情況下掛接 Azure 檔案共用。 如需哪些作業系統支援 SMB 3.0 (有加密功能) 的詳細資訊，請參閱適用於 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的詳細文件。 所有目前版本的 PowerShell、CLI 和 SDK 都支援 HTTPS。  
 
@@ -98,7 +98,7 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
 
 如需虛刪除的詳細資訊，請參閱 [防止意外刪除資料](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
 
-### <a name="backup"></a>備份
+### <a name="backup"></a>Backup
 您可以透過 [共用快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)集來備份 Azure 檔案共用，這是共用的唯讀、時間點複本。 快照集是累加的，這表示它們只包含自從上一個快照集以來已變更的資料量。 每個檔案共用最多可以有200個快照集，並保留最多10年的快照。 您可以透過 PowerShell 或命令列介面（ (CLI) ）手動取得這些 Azure 入口網站快照集，也可以使用 [Azure 備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照集會儲存在您的檔案共用中，這表示如果您刪除檔案共用，您的快照集也會一併刪除。 若要保護您的快照集備份不會遭到意外刪除，請確定已為您的共用啟用虛刪除。
 
 [適用于 Azure 檔案共用的 Azure 備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) 會處理快照集的排程和保留期。 它的祖父-父親 (GFS) 功能意味著您可以每日、每週、每月和每年快照集，每個快照集都有自己的相異保留期限。 Azure 備份也會協調啟用虛刪除，並在其內的任何檔案共用設定為備份時，立即在儲存體帳戶上進行刪除鎖定。 最後，Azure 備份提供某些重要的監視和警示功能，可讓客戶取得其備份資產的匯總。

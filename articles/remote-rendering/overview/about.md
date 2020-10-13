@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021429"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91650454"
 ---
 # <a name="about-azure-remote-rendering"></a>關於 Azure 遠端轉譯
 
@@ -20,7 +20,7 @@ ms.locfileid: "84021429"
 
 *Azure 遠端轉譯* (ARR) 是一項服務，可讓您在雲端轉譯高品質、互動式3D 內容，並將其即時串流至裝置，例如 HoloLens 2。
 
-![範例模型](../media/arr-engine.png)
+![此圖顯示轉譯的高品質互動式 3D 汽車引擎範例。](../media/arr-engine.png)
 
 不受控裝置的計算能力有限，無法轉譯複雜的模型。 不過，對於許多應用程式而言，無法接受以任何方式降低視覺精確度。 下列螢幕擷取畫面會將模型的完整詳細資料，與已使用一般內容建立工具去除的模型進行比較：
 
