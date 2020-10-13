@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803988"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
@@ -130,7 +130,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 |---------|---------|
 |Azure Synapse Spark 集區 | 讀取、寫入 (透過交易存放區)、資料表、暫存檢視 |
 |Azure Synapse SQL 無伺服器集區    | 讀取、觀看 |
-|已布建 Azure Synapse SQL   |  尚未提供 |
+|已布建 Azure Synapse SQL   |  無法使用 |
 
 ### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Azure Synapse Spark 資料表與我的 Azure Synapse SQL 無伺服器資料表進行同步處理時，與 Azure Data Lake 的方式相同？
 

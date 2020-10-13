@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 5075c4858f9584cb19442e19d9009d46d0e00ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85446847e8ad77bc83eea657ab17268839e0b231
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463461"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949814"
 ---
 # <a name="indexer-access-to-data-sources-using-azure-network-security-features"></a>使用 Azure 網路安全性功能來存取資料來源的索引子
 
@@ -46,11 +46,11 @@ Azure 認知搜尋索引子可在執行期間對各種 Azure 資源進行輸出�
 | Azure Functions | 支援 | 支援，僅適用于 Azure 函式的特定 Sku |
 
 > [!NOTE]
-> 除了上面所列的選項之外，針對受網路保護的 Azure 儲存體帳戶，客戶可以利用 Azure 認知搜尋是 [受信任的 Microsoft 服務](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)的事實。 這表示，如果在儲存體帳戶上啟用適當的角色型存取控制，則特定的搜尋服務可以略過儲存體帳戶的虛擬網路或 IP 限制，並且可以存取儲存體帳戶中的資料。 詳細資料可在「操作 [指南](search-indexer-howto-access-trusted-service-exception.md)」中取得。 如果儲存體帳戶或搜尋服務無法移至不同的區域，則可以使用此選項來取代 IP 限制路由。
+> 除了上面所列的選項之外，針對受網路保護的 Azure 儲存體帳戶，客戶可以利用 Azure 認知搜尋是 [受信任的 Microsoft 服務](../storage/common/storage-network-security.md#trusted-microsoft-services)的事實。 這表示，如果在儲存體帳戶上啟用適當的角色型存取控制，則特定的搜尋服務可以略過儲存體帳戶的虛擬網路或 IP 限制，並且可以存取儲存體帳戶中的資料。 詳細資料可在「操作 [指南](search-indexer-howto-access-trusted-service-exception.md)」中取得。 如果儲存體帳戶或搜尋服務無法移至不同的區域，則可以使用此選項來取代 IP 限制路由。
 
 選擇索引子應該使用的安全存取機制時，請考慮下列限制：
 
-- 所有 Azure 資源都不支援[服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)。
+- 所有 Azure 資源都不支援[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。
 - 搜尋服務無法布建到特定的虛擬網路中-Azure 認知搜尋不會提供這項功能。
 - 當索引子利用 (輸出) 私人端點來存取資源時，可能會收取額外的 [私人連結費用](https://azure.microsoft.com/pricing/details/search/) 。
 
@@ -68,31 +68,31 @@ Azure 認知搜尋索引子可以有效地從資料來源提取內容、將擴�
 如果您的索引子嘗試存取的資源僅限於一組特定的 IP 範圍，您就必須展開此集合，以包含可從中產生索引子要求的可能 IP 範圍。 如上所述，有兩種可能的環境可讓索引子執行，以及從中產生存取要求。 您將需要新增 __兩個__ 環境的 IP 位址，才能讓索引子存取工作。
 
 - 若要取得搜尋服務特定私人環境的 IP 位址，請 `nslookup` (或 `ping`) 搜尋服務 (FQDN) 的完整功能變數名稱。 例如，公用雲端中的搜尋服務 FQDN 就是 `<service-name>.search.windows.net` 。 這項資訊可在 Azure 入口網站上取得。
-- 多租使用者環境的 IP 位址可透過 `AzureCognitiveSearch` 服務標記取得。 [Azure 服務](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) 標籤具有每個服務的已發佈 IP 位址範圍，這可透過 [探索 API (預覽版) ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) 或可下載的 [JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)檔案中取得。 無論是哪一種情況，IP 範圍都會依區域細分-您只能挑選針對您的搜尋服務布建所在區域指派的 IP 範圍。
+- 多租使用者環境的 IP 位址可透過 `AzureCognitiveSearch` 服務標記取得。 [Azure 服務](../virtual-network/service-tags-overview.md) 標籤具有每個服務的已發佈 IP 位址範圍，這可透過 [探索 API (預覽版) ](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 或可下載的 [JSON](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案中取得。 無論是哪一種情況，IP 範圍都會依區域細分-您只能挑選針對您的搜尋服務布建所在區域指派的 IP 範圍。
 
-針對某些資料來源，您可以直接使用服務標籤，而不是列舉 IP 範圍清單 (搜尋服務的 IP 位址仍然必須明確地使用) 。 這些資料來源會藉由設定 [網路安全性群組規則](https://docs.microsoft.com/azure/virtual-network/security-overview)來限制存取，而這種規則原本就支援新增服務標籤，而不像 IP 規則（例如 Azure 儲存體、CosmosDB、Azure SQL 等）。 `AzureCognitiveSearch` 除了搜尋服務 IP 位址，也支援直接利用服務標記的功能：
+針對某些資料來源，您可以直接使用服務標籤，而不是列舉 IP 範圍清單 (搜尋服務的 IP 位址仍然必須明確地使用) 。 這些資料來源會藉由設定 [網路安全性群組規則](../virtual-network/network-security-groups-overview.md)來限制存取，而這種規則原本就支援新增服務標籤，而不像 IP 規則（例如 Azure 儲存體、CosmosDB、Azure SQL 等）。 `AzureCognitiveSearch` 除了搜尋服務 IP 位址，也支援直接利用服務標記的功能：
 
-- [IaaS Vm 上的 SQL server](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers#restrict-access-to-the-azure-cognitive-search)
+- [IaaS Vm 上的 SQL server](./search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md#restrict-access-to-the-azure-cognitive-search)
 
-- [SQL 受控實例](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers#verify-nsg-rules)
+- [SQL 受控實例](./search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md#verify-nsg-rules)
 
 詳細資料將在作法 [指南](search-indexer-howto-access-ip-restricted.md)中說明。
 
 ## <a name="granting-access-via-private-endpoints"></a>透過私人端點授與存取權
 
-索引子可以利用 [私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) 來存取資源，也就是已鎖定的存取權，可選取虛擬網路或未啟用任何公用存取。
+索引子可以利用 [私人端點](../private-link/private-endpoint-overview.md) 來存取資源，也就是已鎖定的存取權，可選取虛擬網路或未啟用任何公用存取。
 這項功能僅適用于付費服務，其所建立的私人端點數目有限制。 有關限制的詳細資料記載于 [Azure 搜尋服務限制頁面](search-limits-quotas-capacity.md)中。
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>步驟1：建立安全資源的私人端點
 
-客戶應該呼叫搜尋管理作業、 [建立或更新 *共用的私人連結資源* API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) ，才能建立其安全資源的私人端點連線 (例如儲存體帳戶) 。 超過此 (輸出) 私人端點連線的流量，只會源自搜尋服務特定「私用」索引子執行環境中的虛擬網路。
+客戶應該呼叫搜尋管理作業、 [建立或更新 *共用的私人連結資源* API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) ，才能建立其安全資源的私人端點連線 (例如儲存體帳戶) 。 超過此 (輸出) 私人端點連線的流量，只會源自搜尋服務特定「私用」索引子執行環境中的虛擬網路。
 
 Azure 認知搜尋會驗證此 API 的呼叫端是否有權核准對安全資源的私人端點連接要求。 例如，如果您要求私人端點連線到您沒有存取權的儲存體帳戶，此呼叫將會遭到拒絕。
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>步驟2：核准私人端點連接
 
 當建立共用私人連結資源的 (非同步) 作業完成時，將會以「暫止」狀態建立私人端點連接。 尚未透過連接流動流量。
-接著，客戶應該會在其安全資源上找到此要求並「核准」。 一般而言，這可以透過入口網站或透過 [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection)完成。
+接著，客戶應該會在其安全資源上找到此要求並「核准」。 一般而言，這可以透過入口網站或透過 [REST API](/rest/api/virtualnetwork/privatelinkservices/updateprivateendpointconnection)完成。
 
 ### <a name="step-3-force-indexers-to-run-in-the-private-environment"></a>步驟3：在「私用」環境中強制執行索引子
 
