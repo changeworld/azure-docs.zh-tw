@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: juliako
 ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050857"
 ---
 # <a name="examine-the-video-indexer-output"></a>檢查影片索引子輸出
@@ -58,11 +58,11 @@ ms.locfileid: "89050857"
 |accountId|播放清單的 VI 帳戶識別碼。|
 |id|播放清單的識別碼。|
 |NAME|播放清單的名稱。|
-|描述|播放清單的描述。|
+|description|播放清單的描述。|
 |userName|建立播放清單的使用者名稱。|
 |created|播放清單的建立時間。|
 |privacyMode|播放清單的隱私模式 (私人/公用)。|
-|state|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
+|狀態|播放清單 (已上傳、處理中、已處理、失敗、已隔離)。|
 |isOwned|指出播放清單是否由目前的使用者所建立。|
 |isEditable|指出目前的使用者是否有權編輯播放清單。|
 |isBase|指出播放清單是基礎播放清單 (影片) 還是以其他影片組成的播放清單 (衍生)。|
@@ -118,7 +118,7 @@ ms.locfileid: "89050857"
 |accountId|影片的 VI 帳戶識別碼。|
 |id|影片的識別碼。|
 |NAME|影片的名稱。
-|state|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
+|狀態|影片的狀態 (已上傳、處理中、已處理、失敗、已隔離)。|
 |processingProgress|處理期間的處理進度 (例如 20%)。|
 |failureCode|無法處理時顯示的失敗碼 (例如 'UnsupportedFileType')。|
 |failureMessage|無法處理時顯示的失敗訊息。|
@@ -331,7 +331,7 @@ id|區塊的識別碼。|
 |id|臉部識別碼。|
 |NAME|臉部的名稱。 這可以是 'Unknown #0、已識別的名人或客戶培訓人員。|
 |信賴度|臉部識別信賴。|
-|描述|名人的描述。 |
+|description|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
 |knownPersonId|如果是已知人物，則為其內部識別碼。|
 |referenceId|若為 Bing 名人，則為其 Bing 識別碼。|
@@ -519,7 +519,7 @@ id|區塊的識別碼。|
 |NAME|品牌名稱。|
 |referenceId | 品牌 Wikipedia URL 的尾碼。 例如，"Target_Corporation" 是的尾碼 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
 |referenceUrl | 品牌的 Wikipedia URL (如果存在)。 例如： [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 。
-|描述|品牌描述。|
+|description|品牌描述。|
 |tags|與此品牌相關聯的預先定義標記清單。|
 |信賴度|影片索引子品牌偵測器的信賴值 (0-1)。|
 |執行個體|此品牌的時間範圍清單。 每個執行個體都有 brandType，用以指出此品牌會出現在文字記錄還是 OCR 中。|
@@ -585,7 +585,7 @@ id|區塊的識別碼。|
 |名稱|描述|
 |---|---|
 |id|音訊效果識別碼。|
-|類型|音訊效果類型 (例如，拍手聲、說話、無聲)。|
+|type|音訊效果類型 (例如，拍手聲、說話、無聲)。|
 |執行個體|此音訊效果曾出現的時間範圍清單。|
 
 ```json
@@ -699,7 +699,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 |名稱|描述|
 |---|---|
 |id|表情識別碼。|
-|類型|根據語音和音訊提示所識別的表情時間。表情可能是：歡樂、悲傷、生氣或恐懼。|
+|type|根據語音和音訊提示所識別的表情時間。表情可能是：歡樂、悲傷、生氣或恐懼。|
 |執行個體|這一個表情出現的時間範圍清單。|
 
 ```json

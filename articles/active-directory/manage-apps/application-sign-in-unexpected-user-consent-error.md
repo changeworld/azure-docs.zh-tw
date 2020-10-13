@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321941"
+ms.locfileid: "91874538"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
@@ -79,10 +79,12 @@ ms.locfileid: "91321941"
     -   從 Azure AD 應用程式資源庫新增應用程式
 
 ## <a name="risky-app-error-and-warning"></a>有風險的應用程式錯誤和警告
+* **AADSTS900941：** 需要系統管理員同意。 應用程式會被視為有風險。  (AdminConsentRequiredDueToRiskyApp) 
 * 此應用程式可能會有風險。 如果您信任此應用程式，請要求您的系統管理員授與您存取權。
+* **AADSTS900981：** 已收到具風險應用程式的系統管理員同意要求。  (AdminConsentRequestRiskyAppWarning) 
 * 此應用程式可能會有風險。 只有在您信任此應用程式時才繼續。
 
-當 Microsoft 判斷同意要求可能有風險時，就會顯示這兩個訊息。 在許多其他因素中，如果已 [驗證的發行者](../develop/publisher-verification-overview.md) 尚未新增至應用程式註冊，就可能發生這種情況。 當系統 [管理員同意工作流程](configure-admin-consent-workflow.md) 停用時，系統會向使用者顯示第一則訊息。 當系統管理員同意工作流程已啟用和系統管理員時，系統會向使用者顯示第二個訊息。 
+當 Microsoft 判斷同意要求可能有風險時，就會顯示這兩個訊息。 在許多其他因素中，如果已 [驗證的發行者](../develop/publisher-verification-overview.md) 尚未新增至應用程式註冊，就可能發生這種情況。 當系統 [管理員同意工作流程](configure-admin-consent-workflow.md) 停用時，終端使用者會看到第一個錯誤碼和訊息。 當系統管理員同意工作流程已啟用和系統管理員時，使用者會看到第二段程式碼和訊息。 
 
 終端使用者將無法授與同意給已偵測為有風險的應用程式。 系統管理員可以，但應該評估應用程式的 carefuly，然後謹慎進行。 如果在進一步評論時應用程式看似可疑，可從同意畫面向 Microsoft 回報。 
 

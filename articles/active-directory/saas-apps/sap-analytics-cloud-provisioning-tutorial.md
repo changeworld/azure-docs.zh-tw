@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: 73f560ccf7ba910ce9077f2eff2d2bdb90736cc2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361257"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教學課程：設定 SAP Analytics Cloud 來自動布建使用者
@@ -34,7 +34,7 @@ ms.locfileid: "91361257"
 > * 讓使用者屬性在 Azure AD 與 SAP Analytics 雲端之間保持同步
 > * [單一登入](sapboc-tutorial.md) SAP Analytics Cloud (建議的) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

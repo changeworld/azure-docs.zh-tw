@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
 ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760054"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>從 Azure Stack Edge Pro GPU 裝置上的 Azure Marketplace 部署已啟用 GPU 的 IoT 模組
@@ -35,7 +35,7 @@ ms.locfileid: "91760054"
 - 您可以存取已啟用 GPU 的1個節點 Azure Stack Edge 裝置。 此裝置會使用 Azure 中的資源來啟用。 
 - 您已在此裝置上設定計算。 遵循 [教學課程：設定 Azure Stack Edge 裝置上的計算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步驟。
 - Windows 用戶端上的下列開發資源：
-    - [Visual Studio Code](https://code.visualstudio.com/)  
+    - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)  
     - [Visual Studio Code 的 Azure IoT Edge 延伸](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)模組。   
 
 

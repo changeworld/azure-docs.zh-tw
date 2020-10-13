@@ -7,10 +7,10 @@ ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: how-to
 ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891968"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>使用 Visual Studio Code (預覽版探索 Azure 串流分析) 
@@ -42,6 +42,6 @@ ms.locfileid: "90891968"
 
    ![在入口網站中開啟工作檢視](./media/vscode-explore-jobs/open-job-view.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 Visual Studio Code 中建立 Azure 串流分析雲端作業 (預覽)](quick-create-visual-studio-code.md)

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
 ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612977"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache 的必要條件
@@ -128,7 +128,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 
   * 如果您無法使用 `rpcinfo` 命令，請確定這些常用的埠允許連入和連出流量：
 
-    | 通訊協定 | Port  | 服務  |
+    | 通訊協定 | 連接埠  | 服務  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |

@@ -8,15 +8,15 @@ ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 9d769cb6e2cc33df259da46a82ad27a8bfd9e74b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888532"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中使用持續性儲存體
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 Azure 春季雲端為您的應用程式提供兩種類型的儲存體：持續性和暫存。
 
@@ -84,7 +84,7 @@ az extension add --name spring-cloud
     > [!WARNING]
     > 如果您停用應用程式的持續性儲存體，則會解除配置所有該儲存體，並永久遺失所有儲存的資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [應用程式和服務配額](spring-cloud-quotas.md)。
 * 瞭解如何 [手動調整您的應用程式](spring-cloud-tutorial-scale-manual.md)。

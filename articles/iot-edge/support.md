@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 679fa4002f687f715ab1fe9701997d46e4b6f2cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27d078bc1dc61079d44110999b70c5195c9c8a2a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018453"
+ms.locfileid: "91874215"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支援的系統
 
@@ -114,7 +114,7 @@ IoT Edge 元件可以個別安裝或更新，並與舊版元件回溯相容。 �
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-IoT Edge 使用 Microsoft.Azure.Device.Client SDK。 如需詳細資訊，請參閱 [Azure IoT C# SDK GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-csharp) \(英文\) 或 [Azure SDK for .NET 參考內容](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet) \(英文\)。 下列清單顯示測試每個版本所對照的用戶端 SDK 版本：
+IoT Edge 使用 Microsoft.Azure.Device.Client SDK。 如需詳細資訊，請參閱 [Azure IoT C# SDK GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-csharp) \(英文\) 或 [Azure SDK for .NET 參考內容](/dotnet/api/overview/azure/iot/client) \(英文\)。 下列清單顯示測試每個版本所對照的用戶端 SDK 版本：
 
 * **IoT Edge 1.0.9**：用戶端 SDK 1.21.1
 * **IoT Edge 1.0.8**：用戶端 SDK 1.20.3

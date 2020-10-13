@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761544"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沈浸式閱讀程式 (v1.1) 的 JavaScript SDK 參考
@@ -190,9 +190,9 @@ Required: false
 
 <br>
 
-## <a name="types"></a>類型
+## <a name="types"></a>型別
 
-### <a name="content"></a>內容
+### <a name="content"></a>Content
 
 包含要在沈浸式閱讀程式中顯示的內容。
 
@@ -526,7 +526,7 @@ enum CookiePolicy { Disable, Enable }
 | --------- | ----------- |
 | 字型樣式 | 粗體、斜體、底線、程式碼、刪除線、上標、下標 |
 | 未排序清單 | 光碟、圓形、正方形 |
-| 排序的清單 | 十進位、大寫字母、小寫字母、右上角、下羅馬字 |
+| 排序的清單 | 十進位、大寫字母、小寫字母、上羅馬 Lower-Roman |
 
 不支援的標記會以同等的呈現。 目前不支援影像和資料表。
 

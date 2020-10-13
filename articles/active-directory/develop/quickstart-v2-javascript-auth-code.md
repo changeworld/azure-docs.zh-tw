@@ -1,7 +1,7 @@
 ---
-title: 使用授權碼在 JavaScript 單頁應用程式 (SPA) 中讓使用者登入 | Azure
+title: 快速入門：使用授權碼在 JavaScript 單頁應用程式 (SPA) 中讓使用者登入 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 JavaScript 應用程式如何使用 Microsoft 身分識別平台來呼叫需要存取權杖的 API。
+description: 在本快速入門中，了解 JavaScript 單頁應用程式 (SPA) 如何使用授權碼流程登入個人帳戶、公司帳戶和學校帳戶的使用者。
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: 35362733849305ad2ad7e008840d53ba085fa987
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115181"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613436"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 JavaScript SPA 中的存取權杖
 

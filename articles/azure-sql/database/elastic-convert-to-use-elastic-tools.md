@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443465"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到相應放大的資料庫
@@ -156,7 +156,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="next-steps"></a>後續步驟
 
-從 [Azure SQL Database 彈性資料庫工具腳本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)取得 PowerShell 腳本。
+從 [AZURE SQL Database-Elastic Database tools 腳本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)取得 PowerShell 腳本。
 
 這些工具也會在 GitHub 上︰ [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools)。
 

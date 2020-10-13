@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88922815"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Azure 認知搜尋中的 OData 函數
@@ -48,7 +48,7 @@ ms.locfileid: "88922815"
 
 ## <a name="syntax"></a>語法
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義函數的文法 `search.in` ：
+下列 EBNF ([擴充 Backus-Naur 形式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義函數的文法 `search.in` ：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -74,7 +74,7 @@ search_in_call ::=
 
 這些參數定義于下表中：
 
-| 參數名稱 | 類型 | 描述 |
+| 參數名稱 | 類型 | 說明 |
 | --- | --- | --- |
 | `variable` | `Edm.String` | 字串欄位參考 (或字串集合欄位的範圍變數，如果 `search.in` 用於 `any` 或運算式) 內，則為 `all` 。 |
 | `valueList` | `Edm.String` | 字串，包含要與參數比對的值分隔清單 `variable` 。 如果 `delimiters` 未指定參數，則預設分隔符號為空格和逗號。 |
@@ -118,7 +118,7 @@ search_in_call ::=
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
 ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 - [Azure 認知搜尋中的篩選](search-filters.md)
 - [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)

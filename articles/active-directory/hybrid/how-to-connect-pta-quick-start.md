@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280174"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 傳遞驗證：快速入門
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government 雲端先決條件
 在步驟2的 Azure AD Connect 啟用傳遞驗證之前，請從 Azure 入口網站下載最新版本的 PTA 代理程式。  您必須確定您的代理程式是 **1.5.1742.0 版。** 或更新版本。  若要確認您的代理程式，請參閱[升級驗證代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)程式
 
-下載最新版本的代理程式之後，請繼續進行下列指示，以透過 Azure AD Connect 設定傳遞驗證。
+下載最新版本的代理程式之後，請繼續進行下列指示，以透過 Azure AD Connect 設定 Pass-Through Authentication。
 
 ## <a name="step-2-enable-the-feature"></a>步驟 2︰啟用功能
 
@@ -172,7 +172,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 
 智慧型鎖定可協助鎖定不良的動作專案，而這些動作專案試圖猜測使用者的密碼或使用暴力密碼破解方法來進入。 藉由在內部部署 Active Directory 的 Azure AD 和/或適當的鎖定設定中設定智慧鎖定設定，就可以在使用者到達 Active Directory 之前，先篩選出攻擊。 請 [閱讀本文](../authentication/howto-password-smart-lockout.md) ，以深入瞭解如何在您的租使用者上設定智慧鎖定設定，以保護您的使用者帳戶。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadp) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：了解如何在租用戶中設定智慧鎖定功能以保護使用者帳戶。
 - [目前的限制](how-to-connect-pta-current-limitations.md)：了解傳遞驗證支援的情節和不支援的情節。

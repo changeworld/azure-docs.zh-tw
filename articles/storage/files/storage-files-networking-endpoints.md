@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612824"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
@@ -39,7 +39,7 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 您可以設定端點，以限制對儲存體帳戶的網路存取。 有兩種方法可以將對於儲存體帳戶的存取限制在虛擬網路內：
 
 - [為儲存體帳戶建立一個或多個私人端點](#create-a-private-endpoint)，並限制所有對公用端點的存取。 這可確保只有來自所要虛擬網路內的流量，才能存取儲存體帳戶內的 Azure 檔案共用。
-- 將[公用端點限制為一或多個虛擬網路](#restrict-public-endpoint-access)。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 當您透過服務端點來限制對儲存體帳戶的流量時，仍會透過公用 IP 位址存取儲存體帳戶，但只能從您在設定中指定的位置存取。
+- 將[公用端點限制為一或多個虛擬網路](#restrict-public-endpoint-access)。 其運作方式是使用稱為「服務端點」** 的虛擬網路功能。 當您透過服務端點來限制對儲存體帳戶的流量時，仍會透過公用 IP 位址存取儲存體帳戶，但只能從您在設定中指定的位置存取。
 
 ### <a name="create-a-private-endpoint"></a>建立私人端點
 

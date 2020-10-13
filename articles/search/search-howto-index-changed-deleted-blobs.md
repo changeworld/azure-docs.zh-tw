@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: 2e73039418233c97fc20242ed7af7df14c5b47ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534772"
 ---
 # <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>如何在 Azure 認知搜尋索引中設定 blob 的變更和刪除偵測
@@ -33,7 +33,7 @@ ms.locfileid: "91534772"
 
 在此方法中，您將使用 Azure Blob 儲存體所提供的 [原生 blob 虛刪除](../storage/blobs/soft-delete-blob-overview.md) 功能。 如果您的儲存體帳戶已啟用原生 blob 虛刪除，則您的資料來源會設定原生虛刪除原則，而索引子會尋找已轉換為虛刪除狀態的 blob，索引子會從索引中移除該檔。 從 Azure Data Lake Storage Gen2 為 blob 編制索引時，不支援原生 blob 虛刪除原則。
 
-請使用下列步驟：
+使用下列步驟：
 
 1. [針對 Azure Blob 儲存體啟用原生虛刪除](../storage/blobs/soft-delete-blob-overview.md)。 建議您將保留原則設定為比索引子間隔排程更高的值。 如此一來，如果執行索引子時發生問題，或如果您有大量的檔要編制索引，則索引子會有很多時間最後處理虛刪除的 blob。 如果 blob 處於虛刪除狀態，Azure 認知搜尋索引子只會刪除索引中的檔。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91534772"
 
 在此方法中，您將使用 blob 的中繼資料，來指出何時應從搜尋索引中移除檔。 此方法需要兩個不同的動作，從索引中刪除搜尋檔，然後在 Azure 儲存體中刪除 blob。
 
-請使用下列步驟：
+使用下列步驟：
 
 1. 將自訂中繼資料索引鍵/值組新增至 blob，以指出 Azure 認知搜尋它會以邏輯方式刪除。
 

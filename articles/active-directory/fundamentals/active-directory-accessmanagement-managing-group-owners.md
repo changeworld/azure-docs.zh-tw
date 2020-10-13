@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318585"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969909"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中新增或移除群組擁有者
 Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理。 群組擁有者可以是使用者或服務主體，而且能夠管理包含成員資格的群組。 只有現有的群組擁有者或群組管理系統管理員可以指派群組擁有者。 群組擁有者不需要是該群組的成員。
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理�
 
 3. 在 [MDM 原則- 西部概觀]**** 頁面上，選取 [擁有者]****。
 
-    ![已反白顯示 [擁有者] 選項的 [MDM 原則 - 西部概觀] 頁面](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![已反白顯示 [移除擁有者] 選項的 [MDM 原則-西部] 頁面](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
 4. 在 [MDM 原則 - 西部 - 擁有者]**** 頁面上，選取您要移除其群組擁有者身分的使用者，從使用者的資訊頁面選取 [移除]****，然後選取 [是]**** 以確認您的決定。
 

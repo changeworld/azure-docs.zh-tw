@@ -1,7 +1,7 @@
 ---
-title: 將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式 | Azure
+title: 快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式 | Azure
 titleSuffix: Microsoft identity platform
-description: 深入了解如何使用 OpenID Connect 在 ASP.NET Core Web 應用程式上實作 Microsoft 登入
+description: 在本快速入門中，您會了解應用程式如何使用 OpenID Connect 在 ASP.NET Core Web 應用程式上實作 Microsoft 登入
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,23 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902369"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613487"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>必要條件
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
 > 有兩個選項可用來啟動快速入門應用程式：
 > * [快速] [選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -92,7 +97,7 @@ ms.locfileid: "90902369"
 >
 >    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的**應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀] 頁面中找到**應用程式 (用戶端) 識別碼**。
 >    - 將 `common` 取代為下列其中一項：
->       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為**目錄 (租用戶) 識別碼** (即 GUID) 或**租用戶名稱** (例如，`contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到**目錄 (租用戶) 識別碼**。
+>       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為**目錄 (租用戶) 識別碼** (即 GUID) 或**租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到**目錄 (租用戶) 識別碼**。
 >       - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
 >       - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]，請讓此值保持為 `common`
 >
@@ -108,7 +113,7 @@ ms.locfileid: "90902369"
 >
 > 同意所要求的權限之後，應用程式會顯示您已使用 Azure Active Directory 認證成功登入。
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="顯示執行中 Web 應用程式和使用者已登入的網頁瀏覽器":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="[同意] 對話方塊，其中顯示應用程式從 > 使用者要求的權限":::
 
 ## <a name="more-information"></a>詳細資訊
 

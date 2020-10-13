@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892974"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning 主權雲端同位
@@ -34,7 +34,7 @@ ms.locfileid: "90892974"
 
 ## <a name="azure-government"></a>Azure Government 
 
-| 功能 | 公用雲端狀態  | 美國-弗吉尼亞州 | 美國-亞利桑那州| 
+| 功能 | 公用雲端狀態  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **自動化機器學習** | | | |
 | 在筆記本中建立及執行實驗                                    | GA                   | YES                | YES         |
@@ -112,7 +112,7 @@ ms.locfileid: "90892974"
 
 ### <a name="azure-government-scenarios"></a>Azure Government 案例
 
-| 狀況                                                    | 美國-弗吉尼亞州 | 美國-亞利桑那州| 限制  |
+| 狀況                                                    | US-Virginia | US-Arizona| 限制  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **一般安全性設定** |   | | |
 | 服務之間的私人網路通訊                                     | 否 | 否 | 目前沒有 Private Link | 
@@ -122,7 +122,7 @@ ms.locfileid: "90892974"
 | 計算資源的根和 SSH 存取權。                                          | YES | YES |  |
 | 維護已部署系統的安全性 (實例、端點等 ) ，包括 endpoint protection、修補和記錄 |  PARTIAL|  PARTIAL |VNet 和私人端點背後的 ACI 目前無法使用 |                                  
 | 控制 (停用/限制/限制) 使用 ACI/AKS 整合                    | PARTIAL| PARTIAL |VNet 和私人端點背後的 ACI 目前無法使用|
-| 角色型存取控制 (RBAC) -自訂角色建立                           | YES | YES |  |
+| Role-Based 存取控制 (RBAC) -自訂角色建立                           | YES | YES |  |
 | 控制 ML 服務所使用的 ACR 映射存取， (Azure 提供/維護和自訂)   |PARTIAL|  PARTIAL | Azure Government 中不支援私人端點和 VNet 背後的 ACR |
 | **一般 Machine Learning 服務使用量** |  | | |
 | 能夠讓開發環境建立模型、將該模型定型、將其裝載為端點，並透過 webapp 使用     | YES | YES |  |
@@ -134,7 +134,7 @@ ms.locfileid: "90892974"
 ### <a name="additional-azure-government-limitations"></a>其他 Azure Government 限制
 
 * 針對 Azure Machine Learning 計算實例，Azure Government 不提供重新整理權杖的能力。
-* 在美國亞利桑那州區域中，模型分析不支援4個 Cpu。   
+* 模型分析不支援 US-Arizona 區域中的4個 Cpu。   
 * 如果範例筆記本需要存取公用資料，Azure Government 可能無法在中運作。
 * IP 位址： [VNet 和強制通道](how-to-secure-training-vnet.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) 。
 * 針對已排程的管線，我們也會提供以 blob 為基礎的觸發程式機制。 CMK 工作區不支援此機制。 若要為 CMK 工作區啟用以 blob 為基礎的觸發程式，您必須進行額外的設定。 如需詳細資訊，請參閱 [觸發從邏輯應用程式執行機器學習管線](how-to-trigger-published-pipeline.md)。
@@ -229,7 +229,7 @@ ms.locfileid: "90892974"
 * Azure 中國具有有限的 VM SKU，尤其是針對 GPU SKU。 它只有 NCv3 系列 (V100) 。
 * REST API 端點與全域 Azure 不同。 使用下表來尋找 Azure 中國區域的 REST API 端點：
 
-    | REST 端點                 | 全域 Azure                                 | 中國-政府                           |
+    | REST 端點                 | 全域 Azure                                 | China-Government                           |
     |------------------|--------------------------------------------|--------------------------------------------|
     | 管理平面 | `https://management.azure.com/`              | `https://management.chinacloudapi.cn/`       |
     | 資料平面       | `https://{location}.experiments.azureml.net` | `https://{location}.experiments.ml.azure.cn` |
@@ -239,6 +239,6 @@ ms.locfileid: "90892974"
 * IP 位址範圍： [VNet 強制通道](how-to-secure-training-vnet.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure 中國](https://www.microsoft.com//download/details.aspx?id=57062) 。
 * 目前已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算實例預覽，但在下一次部署中，將會支援 CI，以便將服務擴充至所有 AML 區域。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解 Azure Machine learning 的可用區域，請參閱 [依區域](https://azure.microsoft.com/global-infrastructure/services/)提供的產品。

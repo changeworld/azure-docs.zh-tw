@@ -2,7 +2,7 @@
 title: 部署 Azure AD Domain Services 的 Azure AD 應用程式 Proxy |Microsoft Docs
 description: 瞭解如何在 Azure Active Directory Domain Services 受控網域中部署和設定 Azure Active Directory 應用程式 Proxy，以提供遠端背景工作的內部應用程式安全存取
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: bc16f75a4ed2f9fe3be8a8bdc2d981a339780cc3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723073"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960774"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 應用程式 Proxy，以安全地存取 Azure Active Directory Domain Services 受控網域中的內部應用程式
 

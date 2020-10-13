@@ -2,7 +2,7 @@
 title: 使用範本將 Windows VM 加入 Azure AD DS |Microsoft Docs
 description: 瞭解如何使用 Azure Resource Manager 範本將新的或現有的 Windows Server VM 加入 Azure Active Directory Domain Services 受控網域。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86221352"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960689"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用 Resource Manager 範本將 Windows Server 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -24,7 +24,7 @@ ms.locfileid: "86221352"
 
 本文說明如何使用 Resource Manager 範本，建立 Windows Server VM 並將其加入 Azure AD DS 受控網域。 您也會瞭解如何將現有的 Windows Server VM 加入 Azure AD DS 網域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -135,7 +135,7 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 必�
 
 部署需要幾分鐘的時間才能順利完成。 完成時，指定的 Windows Vm 會加入受控網域，並且可使用網域帳戶進行管理或登入。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已使用 Azure 入口網站來設定和部署使用範本的資源。 您也可以使用 [Azure PowerShell][deploy-powershell] 或 [Azure CLI][deploy-cli]來部署具有 Resource Manager 範本的資源。
 

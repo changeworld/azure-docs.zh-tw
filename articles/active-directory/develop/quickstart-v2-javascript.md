@@ -1,7 +1,7 @@
 ---
-title: 在 JavaScript 單頁應用程式中讓使用者登入 | Azure
+title: 快速入門：在 JavaScript 單頁應用程式中讓使用者登入 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 JavaScript 應用程式如何使用 Microsoft 身分識別平台來呼叫需要存取權杖的 API。
+description: 在本快速入門中，您會了解 JavaScript 應用程式如何呼叫一個 API，此 API 需要 Microsoft 身分識別平台所發出的存取權杖。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,23 +12,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b6e3e0c1ecf9ce3a9d86f6b03c3ad3efc5676b5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257923"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613317"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
-在本快速入門中，您會使用程式碼範例了解 JavaScript 單頁應用程式 (SPA) 如何讓使用者登入個人帳戶、公司帳戶和學校帳戶。 JavaScript SPA 也可以取得呼叫 Microsoft Graph API 或任何 Web API 的存取權杖。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
+在本快速入門中，您會使用程式碼範例了解 JavaScript 單頁應用程式 (SPA) 如何讓使用者登入個人帳戶、公司帳戶和學校帳戶。 JavaScript SPA 也可以取得呼叫 Microsoft Graph API 或任何 Web API 的存取權杖。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [免費建立 Azure 訂用帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (用以編輯專案檔)
-
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>註冊並下載快速入門應用程式
@@ -300,9 +299,4 @@ myMSALObj.acquireTokenPopup(requestObj)
 如需建置本快速入門應用程式的詳細逐步指南，請參閱：
 
 > [!div class="nextstepaction"]
-> [登入和呼叫 MS Graph 的教學課程](./tutorial-v2-javascript-spa.md)
-
-若要瀏覽 MSAL 存放庫的文件、常見問題集、問題等等，請參閱：
-
-> [!div class="nextstepaction"]
-> [MSAL.js GitHub 存放庫](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [教學課程：登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API](tutorial-v2-javascript-spa.md)

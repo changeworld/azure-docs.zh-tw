@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.openlocfilehash: 0d63d9770dacf6a200e8b81e8d47d9f807a8a448
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603417"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虛擬機器大小
@@ -26,7 +26,7 @@ HC 系列的大小已執行數項效能測試。 以下是此效能測試的一�
 | 工作負載                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | 資料流程三角理論                                    | 190 GB/秒 (Intel LIP.MLC AVX-512)   |
-| 高效能 Linpack (HPL)                   | 3520 GigaFLOPS (Rpeak) ，2970 GigaFLOPS (Rmax)  |
+| High-Performance Linpack (HPL)                   | 3520 GigaFLOPS (Rpeak) ，2970 GigaFLOPS (Rmax)  |
 | RDMA 延遲 & 頻寬                        | 1.05 微秒、96.8 Gb/秒   |
 | 在本機 NVMe SSD 上的 FIO                           | 1.3 GB/s 讀取、900 MB/s 寫入 |  
 | IOR on 4 Azure 進階 SSD (P30 受控磁碟，RAID0) * *  | 780 MB/s 讀取、780 MB/寫入 |
@@ -49,7 +49,7 @@ HC 系列的大小已執行數項效能測試。 以下是此效能測試的一�
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hc.png" alt-text="Azure HC 上的 MPI 頻寬。":::
+:::image type="content" source="./media/bandwidth-hc.png" alt-text="Azure HC 上的 MPI 延遲。":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888780"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub Actions 中使用 Key Vault 驗證 Azure Spring Cloud
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 Key vault 是儲存金鑰的安全位置。 企業使用者需要在其控制的範圍中儲存 CI/CD 環境的認證。 在金鑰保存庫中取得認證的金鑰應該受限於資源範圍。  它只能存取金鑰保存庫範圍，而不是整個 Azure 範圍。 它就像是只能開啟強式方塊的索引鍵，而不是可以開啟建築物中所有大門的主要金鑰。 它是使用另一個金鑰取得金鑰的方法，在 CICD 工作流程中很有用。 
 
@@ -52,7 +52,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 
 複製認證名稱，例如 `azure-cli-2020-01-19-04-39-02` 。 開啟 [ **存取原則** ] 功能表，然後按一下 [ **+ 新增存取原則** ] 連結。  選取 `Secret Management` [ **範本**]，然後選取 [ **主體**]。 在 [**主體** / **選取**輸入] 方塊中貼上認證名稱：
 
- ![選取](./media/github-actions/key-vault2.png)
+ ![Select](./media/github-actions/key-vault2.png)
 
  按一下 [**新增存取原則**] 對話方塊中的 [**新增**] 按鈕，然後按一下 [**儲存**]。
 
@@ -112,5 +112,5 @@ jobs:
 
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [春季雲端 GitHub Actions](./spring-cloud-howto-github-actions.md)

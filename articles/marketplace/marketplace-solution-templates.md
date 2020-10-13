@@ -8,10 +8,10 @@ author: msjogarrig
 ms.author: jogarrig
 ms.date: 04/22/2020
 ms.openlocfilehash: c4be1c7eec9572d284d70823d270dafe5569ab14
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484216"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Azure 應用程式解決方案範本供應專案發佈指南
@@ -27,7 +27,7 @@ ms.locfileid: "89484216"
 
 ## <a name="requirements-for-solution-template-offers"></a>解決方案範本供應專案的需求
 
-| **需求** | **詳細資料**  |
+| **Requirements** | **詳細資料**  |
 | ---------------  | -----------  |
 |計費和計量    |  解決方案範本供應專案並非交易供應專案，但是可以用來部署透過 Microsoft 商業 marketplace 計費的付費 VM 供應專案。 解決方案的 ARM 範本部署的資源會在客戶的 Azure 訂用帳戶中設定。 隨用隨付的虛擬機器會透過 Microsoft 與客戶交易，並透過客戶的 Azure 訂用帳戶計費。<br/> 針對自備授權 (BYOL) 帳單，雖然 Microsoft 會收取客戶訂用帳戶所產生的基礎結構成本，但您會直接向客戶收取軟體授權費用。   |
 |Azure 相容的虛擬硬碟 (VHD)  |   VM 必須建置在 Windows 或 Linux 上。 如需詳細資訊，請參閱 <ul> <li>建立適用于 Windows Vhd) 的[Azure 應用程式供應](./partner-center-portal/create-new-azure-apps-offer.md)專案 (。</li><li>Linux[發行版本背書于 Azure](../virtual-machines/linux/endorsed-distros.md) (linux vhd) 。</li></ul> |

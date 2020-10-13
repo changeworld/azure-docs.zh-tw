@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982043"
 ---
 # <a name="linux-performance-troubleshooting"></a>Linux 效能疑難排解
@@ -121,7 +121,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 
 `vmstat` 提供類似的資訊 `mpstat` 以及 `top` 列舉等候 cpu 的進程數目 (r 資料行) 、記憶體統計資料，以及每個工作狀態所花費的 cpu 時間百分比。
 
-## <a name="memory"></a>記憶體
+## <a name="memory"></a>Memory
 
 記憶體是很重要的幸好，可讓您輕鬆追蹤資源。某些工具可以報告 CPU 和記憶體（例如） `vmstat` 。 但是像這樣 `free` 的工具可能仍適用于快速的偵錯工具。
 

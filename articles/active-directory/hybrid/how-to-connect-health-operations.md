@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276264"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
@@ -136,9 +136,9 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 2. 選取 [新增]。
 3. 在 [選取角色]**** 窗格中，選取角色 (例如，**擁有者**)。<br>
    ![Azure AD Connect Health 和 Azure RBAC [設定] 功能表的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]  。
+4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]。 
    ![Azure AD Connect Health 和 Azure RBAC 角色清單的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 選取 [確定]。<br>
+5. 選取 [確定]  。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>
    ![醒目提示 Azure AD Connect Health 和 Azure RBAC 和新使用者的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
@@ -166,7 +166,7 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 
 [//]: # (End of RBAC section)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)

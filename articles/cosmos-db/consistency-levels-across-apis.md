@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
 ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613555"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性層級與 Azure Cosmos DB API
@@ -57,7 +57,7 @@ Azure Cosmos DB 提供適用于熱門資料庫的有線通訊協定相容 Api �
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 Azure Cosmos DB API 與開放原始碼 API 之間的一致性層級與相容性。 查看下列文章：
+深入了解 Azure Cosmos DB API 與開放原始碼 API 之間的一致性層級與相容性。 請參閱下列文章：
 
 * [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
 * [適用於 MongoDB 的 Azure Cosmos DB API 所支援的 MongoDB 功能](mongodb-feature-support.md)

@@ -8,10 +8,10 @@ ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761153"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>適用于服務匯流排的 Azure 安全性基準
@@ -715,7 +715,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 **指導**方針： Azure 服務匯流排使用 Azure SSE)  (的 Azure 儲存體服務加密，提供待用資料加密。 服務匯流排依賴 Azure 儲存體儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 如果您使用 Azure Key Vault 儲存客戶管理的金鑰，請確定金鑰的定期自動備份。
 
-使用下列 PowerShell 命令，確保 Key Vault 秘密定期自動備份：備份-AzKeyVaultSecret
+使用下列 PowerShell 命令，確保 Key Vault 秘密的定期自動備份： Backup-AzKeyVaultSecret
 
 - [如何設定客戶管理的金鑰來加密待用 Azure 服務匯流排資料](configure-customer-managed-key.md)
 
