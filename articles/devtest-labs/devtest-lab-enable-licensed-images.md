@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 入口網站在 Azure DevTest Labs 中啟�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276351"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中啟用授權映像
@@ -66,7 +66,7 @@ ms.locfileid: "91276351"
    >
 
 
-1. 選取 [儲存]。 
+1. 選取 [儲存]****。 
 
     在 Marketplace 映像的清單中，該映像現在會顯示 [接受條款]****，並且可供使用者建立虛擬機器。
 

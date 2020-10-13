@@ -7,10 +7,10 @@ ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
 ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871170"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
@@ -58,7 +58,7 @@ ms.locfileid: "88871170"
 
 $userPrincipalId = $ (>get-azurermaduser-UserPrincipalName "user2_email_address" ) 。Id
 
->set-azurermkeyvaultaccesspolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage get、list、delete、set、update、regeneratekey、getsas、listsas、deletesas、setsas、recover、backup、restore、清除
+Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage get、list、delete、set、update、regeneratekey、getsas、listsas、deletesas、setsas、recover、backup、restore、清除
 
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut

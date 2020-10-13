@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327560"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>使用 Web 應用程式，將來自 Azure IoT 中樞的即時感應器資料視覺化
@@ -201,7 +201,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. 將遠端新增至複本，以在 App Service 中參考 Web 應用程式的 Git 存放庫。 針對 \<Git clone URL\> ，請使用上一個步驟中所傳回的 URL。 在命令視窗中執行下列命令。
+7. 將遠端新增至複本，以在 App Service 中參考 Web 應用程式的 Git 存放庫。 若是 \<Git clone URL\> ，請使用上一個步驟中所傳回的 URL。 在命令視窗中執行下列命令。
 
    ```cmd
    git remote add webapp <Git clone URL>

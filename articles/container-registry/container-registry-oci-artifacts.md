@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/12/2020
 ms.author: stevelas
 ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484998"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>使用 Azure container registry 推送和提取 OCI 成品
@@ -180,7 +180,7 @@ az acr build --registry myregistry --file hello-world.dockerfile \
   oci://myregistry.azurecr.io/hello-world:1.0
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [ORAS 程式庫](https://github.com/deislabs/oras/tree/master/docs)，包括如何設定構件的資訊清單
 * 造訪 [OCI 構件](https://github.com/opencontainers/artifacts) 存放庫以取得新成品類型的參考資訊

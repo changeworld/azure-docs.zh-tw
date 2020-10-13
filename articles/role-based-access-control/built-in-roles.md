@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275263"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
@@ -113,8 +113,8 @@ ms.locfileid: "91275263"
 > | [HDInsight 網域服務參與者](#hdinsight-domain-services-contributor) | 可讀取、建立、修改和刪除 HDInsight 企業安全性套件所需的網域服務相關作業 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 參與者](#log-analytics-contributor) | 「Log Analytics 參與者」角色可以讀取所有監視資料和編輯監視設定。 編輯監視設定包括將 VM 延伸模組新增至 VM、讀取儲存體帳戶金鑰以便能夠設定從「Azure 儲存體」收集記錄、建立及設定「自動化」帳戶、新增解決方案，以及設定所有 Azure 資源上的 Azure 診斷。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 讀者](#log-analytics-reader) | 「Log Analytics 讀者」可以檢視和搜尋所有監視資料，以及檢視監視設定，包括檢視所有 Azure 資源上的 Azure 診斷設定。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [架構登錄參與者 (預覽) ](#schema-registry-contributor-preview) | 讀取、寫入和刪除架構登錄群組和架構。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
-> | [Schema Registry Reader (Preview) ](#schema-registry-reader-preview) | 讀取及列出架構登錄群組和架構。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
+> | [結構描述登錄參與者 (預覽)](#schema-registry-contributor-preview) | 讀取、寫入及刪除結構描述登錄群組和結構描述。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [結構描述登錄讀取器 (預覽)](#schema-registry-reader-preview) | 讀取並列出結構描述登錄群組和結構描述。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **區塊鏈** |  |  |
 > | [區塊鏈成員節點存取 (預覽)](#blockchain-member-node-access-preview) | 允許存取區塊鏈成員節點 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + 機器學習** |  |  |
@@ -4520,9 +4520,9 @@ ACR 隔離資料寫入者
 }
 ```
 
-### <a name="schema-registry-contributor-preview"></a>架構登錄參與者 (預覽) 
+### <a name="schema-registry-contributor-preview"></a>結構描述登錄參與者 (預覽)
 
-讀取、寫入和刪除架構登錄群組和架構。
+讀取、寫入及刪除結構描述登錄群組和結構描述。
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4561,9 +4561,9 @@ ACR 隔離資料寫入者
 }
 ```
 
-### <a name="schema-registry-reader-preview"></a>Schema Registry Reader (Preview) 
+### <a name="schema-registry-reader-preview"></a>結構描述登錄讀取器 (預覽)
 
-讀取及列出架構登錄群組和架構。
+讀取並列出結構描述登錄群組和結構描述。
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |

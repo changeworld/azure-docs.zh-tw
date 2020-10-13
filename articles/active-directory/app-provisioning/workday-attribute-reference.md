@@ -12,10 +12,10 @@ ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266559"
 ---
 # <a name="workday-attribute-reference"></a>Workday 索引屬性参考
@@ -117,7 +117,7 @@ ms.locfileid: "91266559"
 
 如果您在連線 URL 中使用 WWS API v30.0 或更高版本，如下所示：
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday 版本資訊":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday 沒有版本資訊":::
 
 ...接著，在開啟佈建作業之前，請先更新 Workday 的 [屬性對應] -> [進階選項] -> [編輯] 屬性清單下的 [XPATH API 運算式]，以使用資料表中所列的值。 
 
@@ -243,7 +243,7 @@ ms.locfileid: "91266559"
 * true
 * not
 * false
-* number
+* 數字
 * ceiling
 * Sum
 * round

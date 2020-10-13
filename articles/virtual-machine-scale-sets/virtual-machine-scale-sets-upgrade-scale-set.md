@@ -10,10 +10,10 @@ ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87029292"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
@@ -87,7 +87,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     ```
 
-- 您也可以使用[resources.azure.com](https://resources.azure.com)或語言特定的[azure sdk](https://azure.microsoft.com/downloads/)
+- 您也可以使用 [resources.azure.com](https://resources.azure.com) 或特定語言的 [azure sdk](https://azure.microsoft.com/downloads/)
 
 確切的輸出呈現內容取決於您提供給命令的選項。 下列範例會示範 Azure CLI 的扼要範例輸出：
 
@@ -175,13 +175,13 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
     Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- 使用[az vmss 的 Azure CLI-view](/cli/azure/vmss)
+- 使用 [az vmss 的 Azure CLI get 實例-view](/cli/azure/vmss)
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- 您也可以使用[resources.azure.com](https://resources.azure.com)或[azure sdk](https://azure.microsoft.com/downloads/)
+- 您也可以使用 [resources.azure.com](https://resources.azure.com) 或 [azure sdk](https://azure.microsoft.com/downloads/)
 
 確切的輸出呈現內容取決於您提供給命令的選項。 下列範例會示範 Azure CLI 的扼要範例輸出：
 
@@ -310,9 +310,9 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 您也可以使用語言特定 [Azure SDK](https://azure.microsoft.com/downloads/)。
 
 >[!NOTE]
-> Service Fabric 叢集只能使用「*自動*」模式，但更新的處理方式不同。 如需詳細資訊，請參閱[Service Fabric 應用程式升級](../service-fabric/service-fabric-application-upgrade.md)。
+> Service Fabric 叢集只能使用「 *自動* 」模式，但更新的處理方式不同。 如需詳細資訊，請參閱 [Service Fabric 應用程式升級](../service-fabric/service-fabric-application-upgrade.md)。
 
-有一種全域擴展集屬性修改並不遵守升級原則。 擴展集 OS 和資料磁片設定檔的變更（例如系統管理員使用者名稱和密碼）只能在 API *2017-12-01*版或更新版本中變更。 這些變更只會套用至變更擴展集模型之後建立的 VM。 若要將現有的 VM 更新至最新狀態，您必須為每個現有的 VM 執行「重新安裝映像」作業。 您可以透過下列方式執行這個重新安裝映像作業：
+有一種全域擴展集屬性修改並不遵守升級原則。 變更擴展集 OS 和資料磁片設定檔 (例如系統管理員使用者名稱和密碼) 只能在 API 版本 *2017-12-01* 或更新版本中變更。 這些變更只會套用至變更擴展集模型之後建立的 VM。 若要將現有的 VM 更新至最新狀態，您必須為每個現有的 VM 執行「重新安裝映像」作業。 您可以透過下列方式執行這個重新安裝映像作業：
 
 - REST API 執行 [compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage)，如下所示：
 
@@ -364,7 +364,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="scenarios"></a>案例
 
 ### <a name="application-updates"></a>應用程式更新
-如果透過擴充功能將應用程式部署至擴展集，則更新擴充組態時，會造成應用程式根據升級原則進行更新。 比方說，如果您有新版本的腳本要在自訂腳本擴充功能中執行，您可以更新*fileUris*屬性以指向新的腳本。 在某些情況下，即使擴充組態未變更 (例如，您已更新指令碼，但未變更指令碼的 URI)，您也可能會想要強制更新。 在這些情況下，您可以修改*forceUpdateTag*來強制更新。 Azure 平台不會解譯這個屬性。 如果您變更此值，並不會影響擴充功能的執行方式。 變更只會強制擴充功能重新執行。 如需有關*forceUpdateTag*的詳細資訊，請參閱擴充功能的[REST API 檔](/rest/api/compute/virtualmachineextensions/createorupdate)。 請注意，forceUpdateTag** 可以搭配所有擴充功能使用，而不只是搭配自訂指令碼擴充功能。
+如果透過擴充功能將應用程式部署至擴展集，則更新擴充組態時，會造成應用程式根據升級原則進行更新。 比方說，如果您有要在自訂腳本擴充功能中執行的新版腳本，可以將 *fileUris* 屬性更新為指向新的腳本。 在某些情況下，即使擴充組態未變更 (例如，您已更新指令碼，但未變更指令碼的 URI)，您也可能會想要強制更新。 在這些情況下，您可以修改 *forceUpdateTag* 來強制更新。 Azure 平台不會解譯這個屬性。 如果您變更此值，並不會影響擴充功能的執行方式。 變更只會強制擴充功能重新執行。 如需 *forceUpdateTag*的詳細資訊，請參閱 [擴充功能的 REST API 檔](/rest/api/compute/virtualmachineextensions/createorupdate)。 請注意，forceUpdateTag** 可以搭配所有擴充功能使用，而不只是搭配自訂指令碼擴充功能。
 
 透過自訂映像來部署應用程式也是常見的做法。 在下一節中將會探討此案例。
 
@@ -447,7 +447,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     ```
 
 >[!NOTE]
-> 這些命令會假設擴展集上只有一個 IP 設定和負載平衡器。 如果有多個，您可能需要使用*0*以外的清單索引。
+> 這些命令會假設擴展集上只有一個 IP 設定和負載平衡器。 如果有多個，您可能需要使用 *0*以外的清單索引。
 
 
 ## <a name="next-steps"></a>接下來的步驟

@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985197"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>搭配更新管理使用動態群組
@@ -47,6 +47,6 @@ ms.locfileid: "90985197"
 
 ![螢幕擷取畫面顯示非 Azure (預覽) 的 [選取群組] 頁面，以及右邊的預覽窗格。](./media/update-mgmt-groups/select-groups-2.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您可以 [查詢 Azure 監視器記錄](update-mgmt-query-logs.md) ，以分析更新評估、部署和其他相關的管理工作。 其中包含預先定義的查詢，可協助您開始使用。

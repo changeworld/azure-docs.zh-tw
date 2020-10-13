@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264159"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>以儲存體加密來加密您的內容
@@ -47,7 +47,7 @@ ms.locfileid: "89264159"
 
 ### <a name="storage-side-encryption"></a>儲存端加密
 
-|加密選項|說明|媒體服務 v2|媒體服務 v3|
+|加密選項|描述|媒體服務 v2|媒體服務 v3|
 |---|---|---|---|
 |媒體服務的儲存體加密|AES-256 加密，由媒體服務管理金鑰|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
 |[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|Azure 儲存體提供的伺服器端加密，由 Azure 或客戶管理金鑰|支援|支援|
@@ -114,7 +114,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
 
     對於儲存體加密，要求本文中應該包含下列屬性。
 
-    要求本文屬性    | 說明
+    要求本文屬性    | 描述
     ---|---
     Id | 使用下列格式產生 ContentKey 識別碼："nb:kid:UUID:\<NEW GUID>"。
     ContentKeyType | 內容金鑰類型是可定義索引鍵的整數。 若為儲存體加密格式，此值為 1。

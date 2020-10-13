@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056280"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>您無法在 Privileged Identity Management 中管理的角色
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可讓您
 > [!NOTE]
 > 適用于 SharePoint 系統管理員角色、裝置系統管理員角色，以及嘗試存取 Microsoft 安全性與合規性中心之任何角色的合格使用者，在啟用其角色之後，可能會遇到最多幾個小時的延遲。 我們與這些團隊合作來修正問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中指派 Azure AD 角色](pim-how-to-add-role-to-user.md)
 - [在 Privileged Identity Management 中指派 Azure 資源角色](pim-resource-roles-assign-roles.md)

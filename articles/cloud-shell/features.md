@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470148"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
@@ -27,7 +27,7 @@ ms.locfileid: "89470148"
 
 Azure Cloud Shell 會在 `Ubuntu 16.04 LTS` 上執行。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 ### <a name="secure-automatic-authentication"></a>安全的自動驗證
 
@@ -55,13 +55,13 @@ Azure 磁碟機可讓您輕鬆探索和導覽與檔案系統導覽類似的 Azur
 
 Cloud Shell 中的 PowerShell 包含 Exchange Online 模組的私用組建。  執行 `Connect-EXOPSSession` 以取得您的 Exchange Cmdlet。
 
-![執行命令 EXOPSSession 和取得使用者的 Azure Cloud Shell 螢幕擷取畫面。](media/features-powershell/exchangeonline.png)
+![Azure Cloud Shell 執行命令 Connect-EXOPSSession 和取得使用者的螢幕擷取畫面。](media/features-powershell/exchangeonline.png)
 
- `Get-Command -Module tmp_*`執行 {2}
+ 執行 `Get-Command -Module tmp_*`
 > [!NOTE]
 > 模組名稱的開頭應該是 `tmp_` ，如果您已安裝具有相同前置詞的模組，也會顯示它們的 Cmdlet。 
 
-![執行命令 Get-Command-Module tmp_ * Azure Cloud Shell 的螢幕擷取畫面。](media/features-powershell/exchangeonlinecmdlets.png)
+![執行命令 Get-Command 模組 tmp_ * Azure Cloud Shell 的螢幕擷取畫面。](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>與開放原始碼工具深度整合
 
@@ -69,7 +69,7 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 
 ## <a name="tools"></a>工具
 
-|類別   |Name   |
+|類別   |名稱   |
 |---|---|
 |Linux 工具            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 傳統 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](../storage/common/storage-use-azcopy-v10.md)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](../service-fabric/service-fabric-cli.md)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
@@ -82,7 +82,7 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 
 ## <a name="language-support"></a>語言支援
 
-|語言   |版本   |
+|Language   |版本   |
 |---|---|
 |.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
 |Go         |1.9        |
@@ -91,7 +91,7 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5 (預設)|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [Cloud Shell 快速入門中的 Bash](quickstart.md) <br>
 [Cloud Shell 快速入門中的 PowerShell](quickstart-powershell.md) <br>
 [了解 Azure CLI](/cli/azure/) <br>

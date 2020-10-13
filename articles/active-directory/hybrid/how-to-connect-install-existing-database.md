@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265386"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用現有的 ADSync 資料庫安裝 Azure AD Connect
@@ -79,7 +79,7 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存資料。 您可以使用 A
 1. 在快顯對話方塊中，您可以 (i) 提供企業管理員認證，並且讓 Azure AD Connect 為您建立 AD DS 帳戶，或 (ii) 自行建立 AD DS 帳戶，並且為 Azure AD Connect 提供其認證。 一旦您選取選項並提供必要的認證後，請按一下 [確定]**** 以關閉快顯對話方塊。
    ![螢幕擷取畫面，顯示已選取 [建立新的 D 帳戶] 的快顯對話方塊「A D 樹系帳戶」。](./media/how-to-connect-install-existing-database/db7.png)
  
-1. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]  。
+1. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按一下 [下一步]。
    ![顯示 [連線您的目錄] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-existing-database/db8.png)
  
 1. 在 [ **準備設定** ] 畫面上，按一下 [ **安裝**]。

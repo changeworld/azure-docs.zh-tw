@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: e730201812005a9b469a964e4acd081ebe86b100
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063954"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>TagsByResource UI 元素
 
-控制項，用於將[標記](../management/tag-resources.md)與部署中的資源產生關聯。
+用來將 [標記](../management/tag-resources.md) 與部署中的資源產生關聯的控制項。
 
 ## <a name="ui-sample"></a>UI 範例
 
@@ -49,9 +49,9 @@ ms.locfileid: "87063954"
 
 ## <a name="remarks"></a>備註
 
-- 必須至少指定陣列中的一個專案 `resources` 。
-- 中的每個元素都 `resources` 必須是完整的資源類型。 這些元素會出現在 [**資源**] 下拉式清單中，並由使用者 taggable。
-- 控制項的輸出會格式化以方便指派 Azure Resource Manager 範本中的標記值。 若要在範本中接收控制項的輸出，請在您的範本中包含參數，如下列範例所示：
+- 陣列中至少 `resources` 必須指定一個專案。
+- 中的每個元素都 `resources` 必須是完整的資源類型。 這些專案會出現在 [ **資源** ] 下拉式清單中，由使用者可標記。
+- 控制項的輸出會格式化，以便在 Azure Resource Manager 範本中輕鬆指派標記值。 若要在範本中接收控制項的輸出，請在您的範本中包含參數，如下列範例所示：
 
   ```json
   "parameters": {
@@ -59,7 +59,7 @@ ms.locfileid: "87063954"
   }
   ```
 
-  針對每個可以加上標籤的資源，將 tags 屬性指派給該資源類型的參數值：
+  針對每個可標記的資源，將 [標記] 屬性指派給該資源類型的參數值：
 
   ```json
   {
@@ -69,7 +69,7 @@ ms.locfileid: "87063954"
     ...
   ```
 
-- 存取 tagsByResource 參數時，請使用[if](../templates/template-functions-logical.md#if)函數。 它可讓您在未將標記指派給指定的資源類型時，指派空的物件。
+- 存取 tagsByResource 參數時，請使用 [if](../templates/template-functions-logical.md#if) 函數。 它可讓您在沒有任何標記指派給指定的資源類型時，指派空的物件。
 
 ## <a name="next-steps"></a>接下來的步驟
 

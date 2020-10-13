@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398318"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure Data Factory 複製新的和變更的檔案（依 LastModifiedDate）
@@ -67,7 +67,7 @@ ms.locfileid: "91398318"
     
     此範例表示上次在時間範圍內修改的檔案（在 timespan (2019- **02-01T00：00： 00Z** 到 **2019-03-01T00：00： 00Z**) 將會從來源路徑 **sourcefolder/子資料夾** 複製到目的地路徑 **destinationfolder/子資料夾**。  您可以使用自己的參數來取代這些參數。
 
-    ![執行管線](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+    ![執行管道](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
 6. 檢閱結果。 您將只會看到在設定的 timespan 內上次修改的檔案已複製到目的地存放區。
 

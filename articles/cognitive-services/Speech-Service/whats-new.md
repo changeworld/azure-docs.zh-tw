@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
 ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89055306"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>語音服務：檔的新功能

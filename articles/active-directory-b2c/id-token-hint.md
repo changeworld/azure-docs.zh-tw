@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564807"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義識別碼權杖提示技術設定檔
@@ -137,7 +137,7 @@ $newClientSecret
    可能會自動加入前置詞 `B2C_1A_`。
 1. 在 [ **密碼** ] 方塊中，輸入您稍早產生的登入金鑰。
 1. 針對 [金鑰使用方法]**** 使用 [加密]****。
-1. 選取 [建立]。
+1. 選取 [建立]****。
 1. 確認您已建立金鑰 `B2C_1A_IdTokenHintKey`。
 
 

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
 ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598203"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>設定適用於 MariaDB 的 Azure 資料庫中的資料輸入複寫
@@ -119,7 +119,7 @@ ms.locfileid: "91598203"
    
    若要深入瞭解適用于 mariadb 檔，請參閱 [指定帳戶名稱](https://mariadb.com/kb/en/library/create-user/#account-names)。
 
-   **SQL (命令)**
+   **SQL 命令**
 
    - 使用 SSL 的複寫
 

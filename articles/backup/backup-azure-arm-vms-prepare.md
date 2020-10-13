@@ -4,10 +4,10 @@ description: 說明如何使用 Azure 備份將 Azure VM 備份到備份復原�
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986499"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
@@ -45,7 +45,7 @@ ms.locfileid: "90986499"
 
 * 如果保存庫是您的主要備份機制，則建議使用 GRS。
 * 您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage) 提供更便宜的選項。
-* [區域冗余儲存體 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage) 會將您的資料複寫至 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)，以保證相同區域中的資料存放區和復原。
+* [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。
 
 修改儲存體複寫類型，如下所示：
 

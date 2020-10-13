@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
 ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988115"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
@@ -220,13 +220,13 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 
 | 問題 | 描述 |
 | :---- | :--------- |
-| 伺服器的 [管理備份] 窗格不會顯示超大規模資料庫。 這些將會從視圖進行篩選。  | 超大規模有個別的方法可管理備份，因此長期保留和時間點備份保留設定不適用。 因此，超大規模資料庫不會出現在 [管理備份] 窗格中。<br><br>針對從其他 Azure SQL Database 服務層級遷移至超大規模的資料庫，系統會在源資料庫的 [備份保留](automated-backups-overview.md#backup-retention) 期間內保留預先遷移備份。 這些備份可以用來將源資料庫 [還原](recovery-using-backups.md#programmatic-recovery-using-automated-backups) 到遷移之前的時間點。|
+| 伺服器的 [管理備份] 窗格不會顯示超大規模資料庫。 這些將會從視圖進行篩選。  | 超大規模有個別的方法可管理備份，因此不適用 Long-Term 保留和時間點備份保留設定。 因此，超大規模資料庫不會出現在 [管理備份] 窗格中。<br><br>針對從其他 Azure SQL Database 服務層級遷移至超大規模的資料庫，系統會在源資料庫的 [備份保留](automated-backups-overview.md#backup-retention) 期間內保留預先遷移備份。 這些備份可以用來將源資料庫 [還原](recovery-using-backups.md#programmatic-recovery-using-automated-backups) 到遷移之前的時間點。|
 | 時間點還原 | 非超大規模資料庫無法還原為超大規模資料庫，且超大規模資料庫無法還原為非超大規模資料庫。 針對已藉由變更其服務層級遷移至超大規模的非超大規模資料庫，請在遷移之前，還原至資料庫的備份保留期限內的時間[點。](recovery-using-backups.md#programmatic-recovery-using-automated-backups) 還原的資料庫將不會超大規模。 |
 | 如果資料庫有一或多個資料檔案大於 1 TB，則遷移會失敗 | 在某些情況下，可能可以藉由將大型檔案壓縮為小於 1 TB 來解決此問題。 如果遷移過程中正在使用的資料庫，請確定沒有任何檔案超過 1 TB。 您可以使用下列查詢來判斷資料庫檔案的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 受控執行個體 | 超大規模資料庫目前不支援 Azure SQL 受控執行個體。 |
 | 彈性集區 |  超大規模目前不支援彈性集區。|
 | 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製、Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入、從 Azure 入口網站使用 [AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)、從 Azure CLI 使用 [az sql db 匯出](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) 和 [az sql db 匯入](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)，以及從 [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) 不受支援。 使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
-| 使用記憶體中 OLTP 物件遷移資料庫 | 超大規模支援記憶體內部 OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何類型的記憶體內部 OLTP 物件時，不支援從 Premium 和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有記憶體內部 OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須重新建立為磁片資料表。|
+| 使用 In-Memory OLTP 物件遷移資料庫 | 超大規模支援 In-Memory OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何種類的 In-Memory OLTP 物件時，不支援從高階和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有 In-Memory OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須重新建立為磁片資料表。|
 | 異地複寫  | 您還無法設定 Azure SQL Database 超大規模的異地複寫。 |
 | 資料庫複製 | 超大規模上的資料庫複製現在處於公開預覽狀態。 |
 | TDE/AKV 整合 | 使用 Azure Key Vault (的透明資料庫加密通常稱為「自備金鑰」或 BYOK) ，目前為預覽狀態。 |
@@ -235,7 +235,7 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 | 壓縮資料庫 | 超大規模資料庫目前不支援 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
 | 資料庫完整性檢查 | 超大規模資料庫目前不支援 DBCC CHECKDB。 DBCC CHECKFILEGROUP 和 DBCC CHECKTABLE 可以用來做為因應措施。 如需 Azure SQL Database 中資料完整性管理的詳細資訊，請參閱 [Azure SQL Database 中的資料完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) 。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需超大規模資料庫的常見問題集，請參閱[關於超大規模資料庫的常見問題集](service-tier-hyperscale-frequently-asked-questions-faq.md)。
 - 如需服務層的詳細資訊，請參閱 [服務層級](purchasing-models.md)

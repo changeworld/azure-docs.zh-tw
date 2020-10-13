@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825296"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
@@ -935,7 +935,7 @@ module AzureMaps {
 > Azure 地圖服務 SDK 中的互動式地圖控制項具有協助程式函式，可在地理空間位置和視口圖元之間進行轉換。 
 > - [Web SDK：地圖圖元和位置計算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 直接從 Azure 地圖服務 REST 服務存取地圖底圖：
 
