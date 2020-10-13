@@ -13,17 +13,17 @@ ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704543"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告
 
 藉由使用 Azure Active Directory (Azure AD)，您可以針對在授權應用程式之後所收到回應權杖中的角色宣告，自訂其宣告類型。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有目錄設定的 Azure AD 訂用帳戶。
 - 已啟用單一登入 (SSO) 的訂用帳戶。 您必須設定與您應用程式搭配運作的 SSO。

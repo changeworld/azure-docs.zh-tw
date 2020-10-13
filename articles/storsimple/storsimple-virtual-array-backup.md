@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742242"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>備份 StorSimple Virtual Array 上的共用或磁碟區
@@ -58,7 +58,7 @@ StorSimple Virtual Array 有預設的備份原則會在每日特定時間 (22:30
    
     ![瀏覽至備份原則](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 按一下 [檔案] 。
+4. 按一下 **[儲存]** 。
 
 ### <a name="take-a-manual-backup"></a>進行手動備份
 

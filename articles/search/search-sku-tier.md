@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661087"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948080"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -25,7 +25,7 @@ ms.locfileid: "89661087"
 
 下表說明階層相關的功能條件約束。
 
-| 功能 | 限制 |
+| 特徵 | 限制 |
 |---------|-------------|
 | [索引](search-indexer-overview.md) | S3 HD 上無法使用索引子。 |
 | [AI 擴充](search-security-manage-encryption-keys.md) | 在免費層上執行，但不建議使用。 |
@@ -130,7 +130,7 @@ SU 是服務*所用**複本*和資料分割的乘積： ** (R x P = SU) **。
 
 + 擴大大量資源的作業（例如編制索引），然後針對一般查詢工作負載重新調整。 從 Azure 認知搜尋的最小設定開始， (由一個磁碟分割和一個複本) 組成的 SU，然後監視使用者活動，以找出表示需要更多容量的使用模式。 如果有可預測的模式，您可以將調整與活動同步處理 (您必須撰寫程式碼，才能將此) 自動化。
 
-此外，請造訪 [帳單和成本管理](../cost-management-billing/manage/getting-started.md) ，以取得與消費相關的內建工具和功能。
+此外，請造訪 [帳單和成本管理](../cost-management-billing/cost-management-billing-overview.md) ，以取得與消費相關的內建工具和功能。
 
 不可能暫時關閉搜尋服務。 專用資源一律可運作，並配置給您的服務存留期專屬使用。 刪除服務是永久性的，也會刪除其相關聯的資料。
 
