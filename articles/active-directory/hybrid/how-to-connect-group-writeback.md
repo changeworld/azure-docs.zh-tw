@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2e24246c749978cd2bbb5b3d0821eea6d7dfb4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660876"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect 群組回寫
@@ -34,7 +34,7 @@ ms.locfileid: "89660876"
 
 1. 開啟 Azure AD Connect wizard、選取 [ **設定** ]，然後按 **[下一步**]。
 2. 選取 [ **自訂同步處理選項** ]，然後按 **[下一步]**。
-3. 在 [ **連接到 Azure AD]** 頁面上，輸入您的認證。 按 [下一步] 。
+3. 在 [ **連接到 Azure AD]** 頁面上，輸入您的認證。 按一下 [下一步]。
 4. 在 [ **選用功能** ] 頁面上，確認仍然選取您先前設定的選項。
 5. 選取 [ **群組回寫** ]，然後按一下 **[下一步]**。
 6. 在 [ **回寫] 頁面**上，選取 (OU) 的 Active Directory 組織單位，以將從 Microsoft 365 同步處理的物件儲存到您的內部部署組織，然後按 **[下一步]**。
@@ -61,8 +61,8 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnect
 
    ![取消核取方塊](media/how-to-connect-group-writeback/group2.png)
   
-3. 按 [下一步] 。
-4. 按一下 [設定]****。
+3. 按一下 [下一步]。
+4. 按一下 [設定]  。
 
  >[!NOTE]
  > 停用群組回寫會將 Azure Active Directory 連接器上的「完整匯入」和「完整同步處理」旗標設為「true」，使規則變更在下一個同步處理迴圈中傳播，並刪除先前已回寫至 Active Directory 的群組。

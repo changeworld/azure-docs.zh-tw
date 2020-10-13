@@ -7,10 +7,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
 ms.openlocfilehash: c35e42aaf5e4bd31a54f807969c3671ecc5668ab
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814411"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>尋找租使用者識別碼、物件識別碼和合作夥伴關聯詳細資料
@@ -98,6 +98,6 @@ ms.locfileid: "91814411"
 >[!NOTE]
 >如果多個訂用帳戶需要螢幕擷取畫面，請使用此命令在訂用帳戶之間切換：<br>`az account set --subscription "My Demos"`
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [支援的國家/區域](sell-from-countries.md)

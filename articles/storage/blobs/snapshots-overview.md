@@ -10,10 +10,10 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: ab4c152f30ab96fe5e221a605a2339c773e32547
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295390"
 ---
 # <a name="blob-snapshots"></a>Blob 快照集
@@ -153,7 +153,7 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 | 如果同時啟用 blob 虛刪除和版本控制 | 所有具有完整內容長度的現有版本（不論層級為何）。 |
 | 如果已啟用 blob 虛刪除，但停用版本設定 | 所有現有的虛刪除快照集，不論層級為何，都有完整的內容長度。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Blob 版本設定](versioning-overview.md)
 - [在 .NET 中建立和管理 Blob 快照集](snapshots-manage-dotnet.md)

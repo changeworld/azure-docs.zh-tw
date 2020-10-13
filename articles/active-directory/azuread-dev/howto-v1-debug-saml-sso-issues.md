@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
 ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819314"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>針對 Azure Active Directory 中應用程式的 SAML 型單一登入進行偵錯
@@ -77,7 +77,7 @@ ms.locfileid: "91819314"
 1. 返回 Azure AD，並尋找 [測試單一登入]**** 刀鋒視窗。
 1. 在 [取得解決指導方針]**** 上方的文字方塊中，貼上錯誤訊息。
 1. 按一下 [取得解決指導方針]**** 以顯示問題的解決步驟。 此指導方針可能需要來自 SAML 要求或 SAML 回應的資訊。 如果您不是使用我的應用程式安全登入延伸模組，您可能需要 [Fiddler](https://www.telerik.com/fiddler) 之類的工具來取得 SAML 要求和回應。
-1. 確認 SAML 要求中的目的地對應于從 Azure AD 取得的 SAML 單一登入服務 URL。
+1. 確認 SAML 要求中的目的地對應到從 Azure AD 取得的 SAML 單一 Sign-On 服務 URL。
 1. 確認 SAML 要求中的簽發者，與您在 Azure AD 中為應用程式設定的識別碼相同。 Azure AD 會使用簽發者尋找您目錄中的應用程式。
 1. 確認 AssertionConsumerServiceURL 是應用程式預期要從 Azure AD 接收 SAML 權杖的位置。 您可以在 Azure AD 中設定這個值，但如果它是 SAML 要求的一部分，則不是強制的。
 
@@ -102,6 +102,6 @@ ms.locfileid: "91819314"
 1. 現在您已複習過 SAML 回應，請在登 [入後的應用程式頁面上查看錯誤](../manage-apps/application-sign-in-problem-application-error.md) ，以取得如何解決問題的指引。 
 1. 如果您仍無法成功登入，您可以向應用程式廠商要求 SAML 回應中缺少什麼內容。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在單一登入正在使用您的應用程式，您可以將 [使用者布建和解除布建到 SaaS 應用程式](../app-provisioning/user-provisioning.md) ，或 [開始使用條件式存取](../conditional-access/app-based-conditional-access.md)。

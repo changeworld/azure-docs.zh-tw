@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821206"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一個部分：啟用 Azure 檔案共用的 AD DS authentication 
@@ -32,7 +32,7 @@ AzFilesHybrid PowerShell 模組中的 Cmdlet 會進行必要的修改，並為�
 - 使用具有在目標 AD 中建立服務登入帳戶或電腦帳戶的許可權 AD DS 認證，在已加入內部部署 AD DS 網域的裝置中安裝並執行模組。
 -  使用同步處理至您 Azure AD 的內部部署 AD DS 認證來執行腳本。 內部部署 AD DS 認證必須有儲存體帳戶擁有者或參與者 Azure 角色許可權。
 
-### <a name="run-join-azstorageaccountforauth"></a>執行聯結-AzStorageAccountForAuth
+### <a name="run-join-azstorageaccountforauth"></a>執行 Join-AzStorageAccountForAuth
 
 此 `Join-AzStorageAccountForAuth` Cmdlet 會代表指定的儲存體帳戶執行對等的離線網域聯結。 腳本會使用 Cmdlet 在您的 AD 網域中建立 [電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) 。 如果基於任何原因而無法使用電腦帳戶，您可以改為變更腳本來建立 [服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) 。 如果您選擇手動執行命令，則應該選取最適合您環境的帳戶。
 
@@ -132,7 +132,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>偵錯
 
-您可以執行 AzStorageAccountAuth 指令程式，以登入 AD 使用者進行 AD 設定的一組基本檢查。 AzFilesHybrid v0.1.2+ 版本支援此 Cmdlet。 如需此 Cmdlet 中所執行檢查的詳細資訊，請參閱 Windows 疑難排解指南中的 [無法使用 AD 認證掛接 Azure 檔案儲存體](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 。
+您可以執行 Debug-AzStorageAccountAuth Cmdlet，以登入 AD 使用者進行 AD 設定的一組基本檢查。 AzFilesHybrid v0.1.2+ 版本支援此 Cmdlet。 如需此 Cmdlet 中所執行檢查的詳細資訊，請參閱 Windows 疑難排解指南中的 [無法使用 AD 認證掛接 Azure 檔案儲存體](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 。
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
@@ -155,7 +155,7 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您現在已成功在您的儲存體帳戶上啟用此功能。 若要使用此功能，您必須指派共用層級許可權。 繼續進行下一節。
 

@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91816787"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>設定和自訂群組建工作
@@ -195,7 +195,7 @@ Windows Defender 使用 Windows Update 用戶端來下載和安裝簽章。 如�
 
 如需這項工作 YAML 設定的相關資訊，請查看我們的 [文章分析 YAML 選項](yaml-configuration.md#post-analysis-task)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 YAML 為基礎的設定相關資訊，請參閱我們的 [YAML 設定指南](yaml-configuration.md)。
 

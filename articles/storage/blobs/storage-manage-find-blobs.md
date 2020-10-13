@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
 ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817533"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>使用 Blob 索引 (預覽版來管理和尋找 Azure Blob 資料) 
@@ -132,7 +132,7 @@ FindBlobsByTags 作業可讓您取得已篩選的一組 blob，其索引標記�
 |     <      |  小於   | "Age" < ' 32 ' |
 |     <=     |  小於或等於  | "Company" <= ' Contoso ' |
 |    AND     |  邏輯 and  | "Rank" >= ' 010 ' 和 "Rank" < ' 100 ' |
-|     或者     | 邏輯 or   | "Status" = ' Done ' 或 "Priority" >= ' 05 ' |
+|     OR     | 邏輯 or   | "Status" = ' Done ' 或 "Priority" >= ' 05 ' |
 
 > [!NOTE]
 > 有兩個額外的運算子，不等於和邏輯 or，在 blob 作業的條件式 x--if-tag 標頭中，但不存在於 FindBlobsByTags 作業中。
@@ -311,7 +311,7 @@ Blob 索引標記只支援字串資料類型，而且查詢會以字典順序來
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Blob 索引標記和 Azure Resource Manager 標記是否相關？
 否，Resource Manager 標記可協助組織控制平面資源，例如訂用帳戶、資源群組和儲存體帳戶。 Blob 索引標記可提供資料平面資源的物件管理和探索，例如儲存體帳戶內的 blob。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何利用 blob 索引的範例，請參閱 [利用 blob 索引來管理和尋找資料](storage-blob-index-how-to.md)。
 

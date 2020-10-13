@@ -14,10 +14,10 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819901"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全域網路
@@ -36,7 +36,7 @@ Microsoft 擁有並操作全球最大骨幹網路的其中一種。 橫跨165000
  
 無論是從倫敦連接至東京，還是從華盛頓特區連接到洛杉磯，網路效能都是量化的，並受到延遲、抖動、封包遺失和輸送量等事物的影響。  在 Microsoft，我們偏好並使用直接互連，而不是傳輸連結，這會讓回應流量保持對稱，並協助盡可能縮短躍點、對等合作物件和路徑。 
 
-比方說，如果倫敦的使用者嘗試存取東京中的服務，則網際網路流量會進入倫敦的其中一個邊緣，透過法國、歐洲和印度之間的交易式路徑，然後再到日本託管服務的地方，進行 Microsoft WAN。 回應流量是對稱的。 這有時稱為 [冷硬式路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ，這表示在我們將流量交付之前，流量會保持在 Microsoft 網路的最長時間。  
+例如，如果倫敦的使用者嘗試存取東京中的服務，則網際網路流量進入倫敦的其中一個邊緣、透過法國進行 Microsoft WAN、歐洲和印度之間的 Trans-Arabia 路徑，然後再到日本託管服務的位置。 回應流量是對稱的。 這有時稱為 [冷硬式路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ，這表示在我們將流量交付之前，流量會保持在 Microsoft 網路的最長時間。  
   
 因此，在使用 Microsoft 服務時，這是否表示所有流量？ 是，資料中心之間的任何流量（在 Microsoft Azure 或 Microsoft 服務（例如虛擬機器、Microsoft 365、XBox、SQL Db、儲存體和虛擬網路）之間，會在全球網路內路由傳送，而且絕不會在公用網際網路上進行路由，以確保最佳效能和完整性。  
  
@@ -70,5 +70,5 @@ Microsoft Azure 提供服務和功能的最豐富組合，可讓客戶快速且�
  
 Azure 和其網路的指數成長已達到最後的時間點，而無法再依賴人類直覺來管理全球網路作業。 為了滿足在網路上進行長期、中和短期變更的需求，我們開發了一個平臺來鏡像和模擬我們的生產網路合成方式。 建立鏡像環境並執行數百萬個模擬的能力，可讓我們測試軟體和硬體變更及其影響，然後再將它們認可到生產平臺和網路。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [深入瞭解 Azure 中提供的網路服務](https://azure.microsoft.com/product-categories/networking/)

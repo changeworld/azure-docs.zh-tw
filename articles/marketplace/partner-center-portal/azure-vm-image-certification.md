@@ -8,10 +8,10 @@ author: github-2407
 ms.author: krsh
 ms.date: 08/14/2020
 ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821329"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>測試 Azure Marketplace 的虛擬機器映射
@@ -986,7 +986,7 @@ Azure 認證的認證測試工具是在本機 Windows 電腦上執行，但可�
                     ],
                     &quot;commandToExecute&quot;: &quot;[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',variables('hostDNSNameScriptArgument'))]":::
 
-6. 選取 [下一步] 。
+6. 選取 [下一步]  。
 
 #### <a name="run-a-certification-test"></a>執行認證測試
 
@@ -1000,13 +1000,13 @@ Azure 認證的認證測試工具是在本機 Windows 電腦上執行，但可�
 > [!Note]
 > 少數的發行者有一些案例，因為 vm 上已安裝防火牆之類的軟體，所以需要鎖定 Vm。 在此情況下，發行者可以在此下載已[認證的測試控管](https://aka.ms/AzureCertificationTestTool)，並提供[Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport)的報表
 
-## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>如何使用 PowerShell 來使用自我測試 API
+## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>如何使用 PowerShell 來使用 Self-Test API
 
 ### <a name="on-linux-os"></a>在 Linux OS 上
 
 在 PowerShell 中呼叫 API：
 
-1. 使用 WebRequest 命令呼叫 API。
+1. 使用 Invoke-WebRequest 命令來呼叫 API。
 2. 方法為 Post，內容類型為 JSON，如下列程式碼範例和螢幕擷取畫面所示。
 3. 指定 JSON 格式的主體參數。
 
@@ -1077,7 +1077,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 在 PowerShell 中呼叫 API：
 
-1. 使用 WebRequest 命令呼叫 API。
+1. 使用 Invoke-WebRequest 命令來呼叫 API。
 2. 方法為 Post，內容類型為 JSON，如下列程式碼範例和範例畫面所示。
 3. 以 JSON 格式建立主體參數。
 
@@ -1735,7 +1735,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ![在線上 JSON 檢視器中測試結果。](media/vm/test-results-json-viewer-2.png)
 
-## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>如何使用捲曲在 Linux OS 上使用自我測試 API
+## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>如何使用捲曲在 Linux OS 上使用 Self-Test API
 
 以捲曲的方式呼叫 API：
 

@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819387"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
@@ -85,7 +85,7 @@ ms.locfileid: "91819387"
 
 請確定您已為存取內部部署應用程式的外部來賓使用者準備正確的用戶端存取授權 (CAL)。 如需詳細資訊，請參閱[用戶端存取授權和管理授權](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)的＜外部連接器＞一節。 請就您的特定授權需求向您的 Microsoft 業務代表或地區轉售商洽詢。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [混合式組織的 Azure Active Directory B2B 共同作業](hybrid-organizations.md)
 

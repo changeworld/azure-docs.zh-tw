@@ -9,10 +9,10 @@ ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657643"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage 查詢加速
@@ -72,7 +72,7 @@ ms.locfileid: "89657643"
 
 儘管計費模型的變更，查詢加速的定價模式的設計是為了降低工作負載的擁有權總成本，並減少成本較高的 VM 成本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Data Lake Storage 查詢加速來篩選資料](data-lake-storage-query-acceleration-how-to.md)
 - [查詢加速 SQL 語言參考](query-acceleration-sql-reference.md)

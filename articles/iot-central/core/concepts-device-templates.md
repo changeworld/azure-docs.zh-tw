@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91813163"
 ---
 # <a name="what-are-device-templates"></a>什麼是裝置範本？
@@ -221,7 +221,7 @@ IoT Central 可讓您在儀表板和圖表上查看遙測，並在達到閾值�
 
 您可以新增至視圖的遙測、屬性和命令是由裝置範本中的 DCM、雲端屬性和自訂所決定。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 作為裝置開發人員，您現在已瞭解裝置範本，建議的後續步驟是閱讀 [遙測、屬性和命令](./concepts-telemetry-properties-commands.md) 承載，以深入瞭解裝置與 IoT Central 交換的資料。
 

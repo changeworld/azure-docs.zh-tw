@@ -12,10 +12,10 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: c8ec151c813bfb0b9777e583a4ea5144e3b2079a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297054"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>單一頁面應用程式：登入和登出
@@ -304,7 +304,7 @@ this.authService.logout();
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [取得應用程式的權杖](scenario-spa-acquire-token.md)

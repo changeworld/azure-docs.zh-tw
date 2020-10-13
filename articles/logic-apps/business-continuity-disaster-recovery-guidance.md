@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658199"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps 的商務持續性和嚴重損壞修復
@@ -341,12 +341,12 @@ Azure Logic Apps 提供 [內建的觸發程式和動作，以及](../connectors/
 
 * 如果您想要將此資料與 Azure Log Analytics 搭配使用，您可以設定邏輯應用程式的 **診斷設定** ，並將資料傳送至多個 Log Analytics 工作區，以將資料提供給主要和次要位置使用。 如需詳細資訊，請參閱 [設定 Azure 監視器記錄和收集診斷資料以進行 Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
-* 如果您想要將資料傳送至 Azure 儲存體或 Azure 事件中樞，您可以藉由設定地理位置冗余，讓資料可供主要和次要位置使用。 如需詳細資訊，請參閱下列文章：<p>
+* 如果您想要將資料傳送至 Azure 儲存體或 Azure 事件中樞，您可以藉由設定地理位置冗余，讓資料可供主要和次要位置使用。 如需詳細資訊，請參閱這些文章：<p>
 
   * [Azure Blob 儲存體嚴重損壞修復和帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure 事件中樞異地災難復原](../event-hubs/event-hubs-geo-dr.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 的復原功能總覽](/azure/architecture/framework/resiliency/overview)
 * [特定 Azure 服務的復原檢查清單](/azure/architecture/checklist/resiliency-per-service)

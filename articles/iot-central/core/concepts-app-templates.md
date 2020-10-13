@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91813061"
 ---
 # <a name="what-are-application-templates"></a>什麼是應用程式範本？
@@ -57,6 +57,6 @@ Azure IoT Central 是業界中立的應用程式平臺。 應用程式範本是�
 
 範本會與特定的 IoT Central 應用程式版本相關聯。 您可以從 [說明 **] 連結，** 在 [[關於您的應用](./howto-get-app-info.md)程式] 頁面上找到應用程式的版本。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 既然您已經知道 IoT Central 的應用程式範本，請 [建立 IoT Central 應用程式](quick-deploy-iot-central.md)來開始著手。

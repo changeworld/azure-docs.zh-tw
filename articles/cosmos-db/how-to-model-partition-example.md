@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 7274627ccf0aaab29f3ca569568e0085d53f1dea
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818087"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
@@ -582,7 +582,7 @@ function truncateFeed() {
 
 我們用來將更新散佈到其他容器的變更摘要，會持續完整地儲存這些更新。 如此，即使您的系統已有許多資料，您仍可要求容器建立後的所有更新，和以一次性追趕作業的形式啟動反正規化檢視。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在看完這些關於實際資料模型化和分割的簡介之後，您可以查看下列文章，以檢閱我們所說明的概念：
 

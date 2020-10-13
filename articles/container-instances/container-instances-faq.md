@@ -6,10 +6,10 @@ ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818490"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>關於 Azure 容器實例的常見問題
@@ -43,7 +43,7 @@ Azure 容器實例上可部署容器映射的大小上限為 15 GB。 您可以�
 * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016`  `10.0.14393.3506` 或更新版本
 
 > [!NOTE]
-> 不支援以半年通道版本1709或1803為基礎的 Windows 映像。
+> 不支援以 Semi-Annual 通道版本1709或1803為基礎的 Windows 映像。
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和用戶端基礎映射 (預覽) 
 
@@ -102,7 +102,7 @@ Azure 容器實例的目標是無伺服器的容器隨選服務，因此我們�
 
 當整個容器群組停止後，計量會停止執行。 只要容器群組中的容器正在執行，我們就會保留資源，以防您想要重新開機容器。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解](container-instances-overview.md) Azure 容器實例。
 * 針對 Azure 容器實例中的[常見問題進行疑難排解](container-instances-troubleshooting.md)。

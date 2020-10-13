@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976255"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>案例：透過 NVA 路由傳送流量
@@ -99,7 +99,7 @@ ms.locfileid: "90976255"
 
 **圖2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="圖2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="圖1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>案例工作流程
 
@@ -117,7 +117,7 @@ ms.locfileid: "90976255"
 
 2. 將 Vnet 2、5、6的匯總靜態路由專案新增至中樞1的預設路由表。
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="範例":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="圖1":::
 
 3. 在 VNet 2 的虛擬網路連線中設定 Vnet 5、6的靜態路由。 若要設定虛擬網路連線的路由設定，請參閱 [虛擬中樞路由](how-to-virtual-hub-routing.md#routing-configuration)。
 
@@ -129,7 +129,7 @@ ms.locfileid: "90976255"
 
 **圖3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="圖3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="圖1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

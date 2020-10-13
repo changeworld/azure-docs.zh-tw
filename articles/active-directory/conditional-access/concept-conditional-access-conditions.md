@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818355"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
@@ -132,14 +132,14 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 若要自動將此擴充功能部署到 Chrome 瀏覽器，請建立下列登錄機碼：
 
-- 路徑 HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 路徑 HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
 - 名稱1
 - 輸入 REG_SZ (字串) 
 - 資料 ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPs \: //clients2.google.com/service/update2/crx
 
 如需 **Windows 8.1 和 7** 中的 Chrome 支援，請建立下列登錄機碼：
 
-- 路徑 HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 路徑 HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
 - 名稱1
 - 輸入 REG_SZ (字串) 
 - Data {"pattern"： " https://device.login.microsoftonline.com "，"filter"： {"ISSUER"： {"CN"： "MS-組織存取"}}}
@@ -196,7 +196,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 例如，所有存取*Microsoft Azure 管理*雲端應用程式的*使用者*，包括裝置的**所有裝置狀態**（包括**裝置混合式 Azure AD 未加入裝置**），以及已**標示為符合規範**的裝置，以及*存取控制*，**封鎖**。 
    - 此範例會建立一個原則，只允許從混合式 Azure AD 已加入及/或已標示為符合規範的裝置存取 Microsoft Azure 管理。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [條件式存取：授與](concept-conditional-access-grant.md)
 
