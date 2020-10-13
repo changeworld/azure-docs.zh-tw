@@ -13,12 +13,12 @@ ms.date: 09/6/2019
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084048"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965993"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>適用于 Android 的 ADAL 至 MSAL 遷移指南
 
@@ -238,19 +238,16 @@ public interface SilentAuthenticationCallback {
 在 ADAL 中，有一種例外狀況， `AuthenticationException` 其中包含用來取得 `ADALError` 列舉值的方法。
 在 MSAL 中，有例外狀況的階層，每個都有一組相關的特定錯誤碼。
 
-MSAL 例外狀況的清單
-
-|例外狀況  | 描述  |
-|---------|---------|
-| `MsalException`     | MSAL 擲回的預設核取例外狀況。  |
-| `MsalClientException`     | 如果錯誤為用戶端，則擲回。 |
-| `MsalArgumentException`     | 如果有一或多個輸入引數無效，則擲回。 |
-| `MsalClientException`     | 如果錯誤為用戶端，則擲回。 |
-| `MsalServiceException`     | 如果錯誤為伺服器端，則擲回。 |
-| `MsalUserCancelException`     | 如果使用者取消驗證流程，則擲回。  |
-| `MsalUiRequiredException`     | 如果無法以無訊息方式重新整理權杖，則會擲回。  |
-| `MsalDeclinedScopeException`     | 如果伺服器拒絕一或多個要求的範圍，則會擲回。  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | 如果資源已啟用 MAMCA 保護原則則擲回。 |
+| 例外狀況                                        | 描述                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalException`                                  | MSAL 擲回的預設核取例外狀況。                           |
+| `MsalClientException`                            | 如果錯誤為用戶端，則擲回。                                 |
+| `MsalArgumentException`                          | 如果有一或多個輸入引數無效，則擲回。                 |
+| `MsalServiceException`                           | 如果錯誤為伺服器端，則擲回。                                 |
+| `MsalUserCancelException`                        | 如果使用者取消驗證流程，則擲回。                |
+| `MsalUiRequiredException`                        | 如果無法以無訊息方式重新整理權杖，則會擲回。                    |
+| `MsalDeclinedScopeException`                     | 如果伺服器拒絕一或多個要求的範圍，則會擲回。 |
+| `MsalIntuneAppProtectionPolicyRequiredException` | 如果資源已啟用 MAMCA 保護原則則擲回。         |
 
 ### <a name="adalerror-to-msalexception-errorcode"></a>ADALError 至 MsalException ErrorCode
 

@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c010fa4ea0289ed91f439a250f0b63703517f5bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1c679ca5a7ff08a4d2490f94548b34e4db49f4d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447781"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966180"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>使用虛擬 TPM 在 Windows 上建立及布建模擬的 IoT Edge 裝置
 
@@ -75,19 +75,18 @@ DPS 支援個別註冊和群組註冊中 IoT Edge 裝置的對稱金鑰證明。
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 
-IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
+IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。 在正在執行模擬 TPM 的裝置上安裝 IoT Edge 執行時間。
 
-布建您的裝置時，您將需要下列資訊：
-
-* DPS **識別碼範圍** 值
-* 您建立的裝置**註冊識別碼**
-
-在正在執行模擬 TPM 的裝置上安裝 IoT Edge 執行時間。 您將設定 IoT Edge 執行時間進行自動、非手動、布建。
+遵循 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟，然後回到本文以布建裝置。
 
 > [!TIP]
 > 在安裝和測試期間，請將執行 TPM 模擬器的視窗保持開啟。
 
-如需有關在 Windows 上安裝 IoT Edge 的詳細資訊，包括管理容器和更新 IoT Edge 等工作的必要條件和指示，請參閱 [在 windows 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-windows.md)。
+## <a name="configure-the-device-with-provisioning-information"></a>使用布建資訊設定裝置
+
+當執行時間安裝在您的裝置上之後，請使用它用來連線至裝置布建服務和 IoT 中樞的資訊來設定裝置。
+
+1. 瞭解您在上一節中收集到的 DPS **識別碼範圍** 和裝置 **註冊識別碼** 。
 
 1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝 IoT Edge 時，請務必使用 PowerShell 的 AMD64 會話，而不是 PowerShell (x86) 。
 
@@ -98,7 +97,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容
    Deploy-IoTEdge
    ```
 
-1. 此時，IoT 核心裝置可能會自動重新開機。 其他 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 當您的裝置準備就緒之後，請再次以系統管理員身分執行 PowerShell。
+1. 此時，輸出可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。 當您的裝置準備就緒之後，請再次以系統管理員身分執行 PowerShell。
 
 1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。 使用 `-Dps` 旗標來使用裝置布建服務，而不是手動布建。
 

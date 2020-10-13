@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
 ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568655"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 診斷擴充功能 (WAD) 設定架構版本和歷程記錄
@@ -19,7 +19,7 @@ ms.locfileid: "89568655"
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK 和診斷版本推出方式圖表  
 
-|Azure SDK 版本 | 診斷擴充功能版本 | 型號|  
+|Azure SDK 版本 | 診斷擴充功能版本 | 模型|  
 |------------------|-------------------------------|------|  
 |1.x               |1.0                            |外掛程式|  
 |2.0 - 2.4         |1.0                            |外掛程式|  

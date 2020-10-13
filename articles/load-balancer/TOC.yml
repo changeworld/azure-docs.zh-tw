@@ -45,7 +45,7 @@
       href: whats-new.md
     - name: 元件
       href: components.md
-    - name: 概念
+    - name: 負載平衡演算法
       href: concepts.md
     - name: SKU
       href: skus.md

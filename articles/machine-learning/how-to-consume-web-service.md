@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756665"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966095"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 
@@ -46,7 +46,9 @@ ms.locfileid: "91756665"
 * `scoring_uri` - REST API 的位址。
 * `swagger_uri` -OpenAPI 規格的位址。 如果您已啟用自動產生架構，則可使用此 URI。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-有三種方法可以針對已部署的 Web 服務擷取這項資訊：
+有幾種方式可針對已部署的 web 服務取得這項資訊：
+
+# <a name="python"></a>[Python](#tab/python)
 
 * 部署模型時，將會傳回 `Webservice` 物件，其中包含服務的相關資訊：
 
@@ -72,6 +74,30 @@ ms.locfileid: "91756665"
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+如果您知道已部署服務的名稱，請使用 [az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) 命令：
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+從 Azure Machine Learning studio 中，選取 [ __端點__]、[ __即時端點__] 和 [端點名稱]。 在端點的詳細資料中， __REST 端點__ 欄位包含評分 URI。 __SWAGGER uri__包含 swagger uri。
+
+---
+
+下表顯示這些 Uri 的樣子：
+
+| URI 類型 | 範例 |
+| ----- | ----- |
+| 評分 URI | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Swagger URI | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> 您的部署中的 IP 位址將會不同。 每個 AKS 叢集都會有它自己的 IP 位址，此 IP 位址是由該叢集的部署所共用。
 
 ### <a name="secured-web-service"></a>安全的 web 服務
 
@@ -268,7 +294,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>呼叫服務 (Go)
 
-此範例示範如何使用 Go 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 Go 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)範例建立的 Web 服務：
 
 ```go
 package main
@@ -360,7 +386,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>呼叫服務 (Java)
 
-此範例示範如何使用 Java 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 Java 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)範例建立的 Web 服務：
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>呼叫服務 (Python)
 
-此範例示範如何使用 Python 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)範例建立的 Web 服務：
+此範例示範如何使用 Python 來呼叫從[在筆記本內訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)範例建立的 Web 服務：
 
 ```python
 import requests

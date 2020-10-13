@@ -4,10 +4,10 @@ description: 本文說明使用容器 Azure 監視器收集) 計量的 & HPA (�
 ms.topic: conceptual
 ms.date: 08/09/2020
 ms.openlocfilehash: ee1f0d4849a8382a898aaca84956ff78166e138f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89570441"
 ---
 # <a name="deployment--hpa-metrics-with-azure-monitor-for-containers"></a>部署 & 使用容器的 Azure 監視器 HPA 計量
@@ -34,6 +34,6 @@ ms.locfileid: "89570441"
 
 容器的 Azure 監視器包括先前在資料表中為每個叢集的活頁簿所列的計量預先設定的圖表。 您可以從左側窗格中選取活頁**簿**，以及從深入解析的 [**查看活頁簿**] 下拉式清單中，找到部署 & HPA 活頁簿**部署 &** 直接從 AKS 叢集 HPA。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [Kubernetes 中的 Kube 狀態計量](https://github.com/kubernetes/kube-state-metrics/tree/master/docs) ，以深入瞭解 Kube 狀態度量。

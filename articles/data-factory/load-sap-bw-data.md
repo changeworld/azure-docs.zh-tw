@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360798"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business 倉儲複製資料
@@ -26,7 +26,7 @@ ms.locfileid: "91360798"
 > [!TIP]
 > 如需從 SAP BW （包括 SAP BW 開放式中樞整合和差異解壓縮流程）複製資料的一般資訊，請參閱 [使用 Azure Data Factory，透過 Open hub 從 SAP Business 倉儲複製資料](connector-sap-business-warehouse-open-hub.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - **Azure Data Factory**：如果您沒有帳戶，請遵循步驟來 [建立 Data Factory](quickstart-create-data-factory-portal.md#create-a-data-factory)。
 
@@ -192,7 +192,7 @@ ms.locfileid: "91360798"
 
       3. 新增 [ **建立 blob** ] 動作。 針對 **資料夾路徑** 和 **Blob 名稱**，請使用您先前在 *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* 和 *HighWatermarkBlobName*中設定的相同值。
 
-      4. 選取 [儲存]。 然後，將 **HTTP POST URL** 的值複製到 Data Factory 管線中使用。
+      4. 選取 [儲存]****。 然後，將 **HTTP POST URL** 的值複製到 Data Factory 管線中使用。
 
 4. 提供 Data Factory 管線參數之後，請選取 [ **Debug**  >  **完成]** 來叫用執行以驗證設定。 或者，選取 [ **發行** ] 以發行所有變更，然後選取 [ **新增觸發** 程式] 以執行執行。
 

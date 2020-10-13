@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708587"
 ---
 # <a name="create-replication-peering-for-azure-netapp-files"></a>建立 Azure NetApp Files 的複寫對等互連
@@ -106,11 +106,11 @@ Azure NetApp Files 複寫目前不支援多個訂用帳戶;所有的複寫都必
 
 6. 在 [授權] 欄位中，貼上您在步驟3取得的目的地複寫磁片區資源識別碼，然後按一下 **[確定]**。
 
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
 
 * [跨區域複寫](cross-region-replication-introduction.md)
 * [使用跨區域複寫的需求和考慮](cross-region-replication-requirements-considerations.md)
-* [顯示覆寫關聯性的健全狀況狀態](cross-region-replication-display-health-status.md)
+* [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)

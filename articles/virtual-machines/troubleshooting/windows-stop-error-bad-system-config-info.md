@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447314"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977026"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止錯誤-0x00000074 錯誤的系統組態資訊
 
@@ -27,7 +27,7 @@ ms.locfileid: "91447314"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 停止程式碼 **#0x00000074** 或 **BAD_SYSTEM_CONFIG_INFO**。
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 停止程式碼 **#0x00000074** 或 **BAD_SYSTEM_CONFIG_INFO**。
 
 *您的電腦遇到問題，需要重新開機。您可以重新開機。* 
 *如需此問題和可能修正的詳細資訊， http://windows.com/stopcode 請造訪* 
@@ -58,7 +58,7 @@ ms.locfileid: "91447314"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立及存取修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
 1. 檢查 hive 是否損毀。
 1. 使用遠端桌面連線連接到修復 VM。
 1. 複製 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 資料夾，並將它儲存在您狀況良好的磁碟分割或另一個安全的位置。 因為您將編輯重要的登錄檔，所以請將此資料夾備份為預防措施。 
@@ -133,4 +133,4 @@ ms.locfileid: "91447314"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)\(部分機器翻譯\)重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。

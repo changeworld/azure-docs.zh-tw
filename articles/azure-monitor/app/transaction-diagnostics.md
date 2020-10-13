@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318907"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>整合跨元件交易診斷
@@ -66,9 +66,9 @@ ms.locfileid: "87318907"
 
 [Application Insights 分析工具](./profiler.md)或[快照集偵錯工具](snapshot-debugger.md)能協助您從程式碼層級診斷效能和失敗問題。 透過這項體驗，只要按一下按鈕，您就可以查看任何元件的分析工具追蹤或快照集。
 
-如果您無法讓 Profiler 運作，請洽詢**serviceprofilerhelp \@ microsoft.com**
+如果您無法讓 Profiler 運作，請聯絡 **serviceprofilerhelp \@ microsoft.com**
 
-如果您無法讓快照偵錯工具運作，請洽詢**snapshothelp \@ microsoft.com**
+如果您無法取得快照偵錯工具的運作，請聯絡 **snapshothelp \@ microsoft.com**
 
 ![分析工具整合](media/transaction-diagnostics/profilerTraces.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "87318907"
 
 如果您擁有存取權限，而且元件是由最新的 Application Insights SDK 進行檢測，請透過右上角的意見反應管道告訴我們。
 
-*我看到相依性有重複的資料列。這是預期的嗎？*
+*我看到相依性的重復資料列。這是預期的嗎？*
 
 現階段我們會分別顯示輸出相依性呼叫和輸入要求。 這兩項呼叫看起來通常會一樣，唯一的差異在於持續時間值會因網路來回時間而有所不同。 主要圖示和樣式分明的持續時間橫條有助於區分兩者。 用這樣的方法呈現資料是否會混淆？ 請提供意見給我們！
 

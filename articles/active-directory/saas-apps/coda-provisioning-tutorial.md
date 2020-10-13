@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
 ms.openlocfilehash: ce70a4df50be9004182e80711de449bab146a800
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360900"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教學課程：設定 Coda 來自動布建使用者
@@ -34,7 +34,7 @@ ms.locfileid: "91360900"
 > * 在 Azure AD 和 Coda 之間保持使用者屬性同步
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial) Coda (建議的) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

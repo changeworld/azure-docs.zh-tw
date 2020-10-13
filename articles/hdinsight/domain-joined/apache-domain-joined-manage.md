@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595779"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企業安全性套件管理 HDInsight 叢集
@@ -49,7 +49,7 @@ ms.locfileid: "89595779"
 
 安全性和使用者隔離對於使用企業安全性套件的 HDInsight 叢集很重要。 為了符合這些需求，您可以在叢集建立期間選取的本機使用者，以及 AAD (（也就是 Kerberos) ）中所提供的使用者，支援使用企業安全性套件的叢集的 SSH 存取。 下表顯示每個叢集類型的建議存取方法：
 
-|工作負載|案例|存取方法|
+|工作負載|狀況|存取方法|
 |--------|--------|-------------|
 |Apache Hadoop|Hive – 互動式作業/查詢  |<ul><li>[直線](#beeline)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|互動式作業/查詢，PySpark 互動式|<ul><li>[直線](#beeline)</li><li>[Zeppelin with Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
@@ -171,7 +171,7 @@ HDInsight 企業安全性套件有下列角色：
 2. 從左側功能表中選取 [ **角色**]。
 3. 選取 [ **新增使用者** ] 或 [ **新增群組** ]，將使用者和群組指派給不同的角色。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需設定具有企業安全性套件的 HDInsight 叢集，請參閱[設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure.md)。
 - 如需設定 Hive 原則和執行 Hive 查詢，請參閱[使用 ESP 針對 HDInsight 叢集設定 Apache Hive 原則](apache-domain-joined-run-hive.md)。
