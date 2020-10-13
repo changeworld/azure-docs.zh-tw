@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535724"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure 認知搜尋中的排名演算法
@@ -61,7 +61,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 當兩個演算法都可供使用時，[ **相似性** ] 屬性在這段過渡期間很有用。 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
 | 相似度 | 選擇性。 有效的值包括 *"#Microsoft. ClassicSimilarity"* 或 *#Microsoft "BM25Similarity"*。 <br/> 于 `api-version=2019-05-06-Preview` 2020 年7月15日前建立的搜尋服務需要或更新版本。 |
 

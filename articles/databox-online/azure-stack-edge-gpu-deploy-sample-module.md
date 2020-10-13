@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
 ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899725"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上部署已啟用 GPU 的 IoT 模組
@@ -41,7 +41,7 @@ ms.locfileid: "90899725"
 - Windows 用戶端上的下列開發資源：
     - [Azure CLI 2.0 或更新版本](https://aka.ms/installazurecliwindows)
     - [DOCKER CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 您可能必須建立帳戶，才能下載並安裝軟體。
-    - [Visual Studio Code](https://code.visualstudio.com/)  
+    - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)  
     - [Visual Studio Code 的 Azure IoT Edge 延伸](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)模組。    
     - [適用於 Visual Studio Code 的 Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python) \(英文\)    
     - [Python 3](https://www.python.org/) \(英文\)    

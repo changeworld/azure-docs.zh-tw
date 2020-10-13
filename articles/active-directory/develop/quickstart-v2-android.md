@@ -1,6 +1,7 @@
 ---
-title: Microsoft 身分識別平台 Android 快速入門 | Azure
-description: 了解 Android 應用程式如何呼叫需要來自 Microsoft 身分識別平台端點存取權杖的 API。
+title: 快速入門：將「使用 Microsoft 登入」新增至 Android 應用程式 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，了解 Android 應用程式如何呼叫一個 API，此 API 需要 Microsoft 身分識別平台所發出的存取權杖。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115266"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91612892"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入門：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -24,17 +25,14 @@ ms.locfileid: "88115266"
 
 應用程式必須以 Azure Active Directory 中的應用程式物件表示，讓 Microsoft 身分識別平台能夠為您的應用程式提供權杖。
 
-> [!div renderon="docs"]
-> 為了方便起見，`AndroidManifest.xml` 檔案中的程式碼範例會隨附預先設定的預設 `redirect_uri`，因此您不需要先註冊自己的應用程式物件。 `redirect_uri` 中有某些部分是以您應用程式的簽署金鑰為基礎。 範例專案會使用簽署金鑰預先設定，讓提供的 `redirect_uri` 可以使用。 若要深入了解如何註冊應用程式物件，並將其與您的應用程式整合，請參閱[從 Android 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-android.md) 教學課程。
+## <a name="prerequisites"></a>必要條件
 
-
-> [!NOTE]
-> **先決條件**
-> * Android Studio 
-> * Android 16+
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Android Studio
+* Android 16+
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式 
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
 >  若要讓此快速入門中的程式碼範例正確運作，您必須新增與 Auth 訊息代理程式相容的重導 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這些變更]()
@@ -42,15 +40,15 @@ ms.locfileid: "88115266"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已設定](media/quickstart-v2-android/green-check.png) 您的應用程式已設定了這些屬性
 >
-> ### <a name="step-2-download-the-project"></a>步驟 2:下載專案 
+> ### <a name="step-2-download-the-project"></a>步驟 2:下載專案
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Android Studio 執行專案。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
-> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。 
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。
 > 範例應用程式會在 [單一帳戶模式]  畫面上啟動。 依預設會提供預設範圍 **user.read**，這是在 Microsoft Graph API 呼叫期間讀取您自己的設定檔資料時所使用的範圍。 依預設會提供 Microsoft Graph API 呼叫的 URL。 您可以視需要變更這兩項設定。
 >
 > ![顯示單一和多個帳戶使用量的 MSAL 範例應用程式](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -112,7 +110,7 @@ ms.locfileid: "88115266"
 
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 這個程式庫是用來登入使用者並要求權杖，該權杖會用來存取受 Microsoft 身分識別平台保護的 API。 當您在 [Gradle Scripts]   > [build.gradle (Module: app)]  中的 [相依性]  底下新增以下內容時，Gradle 3.0+ 就會安裝該程式庫：
 
-```gradle  
+```gradle
 implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
@@ -384,9 +382,9 @@ private void loadAccounts() {
 在某些情況下，可能會提示使用者選取其帳戶、輸入認證，或同意應用程式要求的權限，這些情況包括：
 
 * 使用者首次登入應用程式
-* 如果使用者重設自己的密碼，就必須輸入自己的認證 
-* 如果已撤銷同意 
-* 如果您的應用程式明確要求同意 
+* 如果使用者重設自己的密碼，就必須輸入自己的認證
+* 如果已撤銷同意
+* 如果您的應用程式明確要求同意
 * 您的應用程式第一次要求存取資源時
 * 需要 MFA 或其他條件式存取原則時
 
@@ -476,20 +474,11 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 }
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>了解建立本快速入門中所使用之應用程式的步驟
-
-試著遵循＜[從 Android 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-android.md)＞教學課程，此教學課程會逐步引導您建立 Android 應用程式來取得存取權杖，並使用該權杖呼叫 Microsoft Graph API。
+繼續進行 Android 教學課程，您可以在其中建置 Android 應用程式，從 Microsoft 身分識別平台取得存取權杖，並將其用來呼叫 Microsoft Graph API。
 
 > [!div class="nextstepaction"]
-> [呼叫 Graph API Android 教學課程](./tutorial-v2-android.md)
-
-### <a name="msal-for-android-library-wiki"></a>適用於 Android 的 MSAL 程式庫的 Wiki
-
-閱讀適用於 Android 的 MSAL 程式庫的詳細資訊：
-
-> [!div class="nextstepaction"]
-> [適用於 Android 的 MSAL 程式庫的 Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-android.md)

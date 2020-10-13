@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258603"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取中的服務相依性為何？ 
@@ -60,7 +60,7 @@ ms.locfileid: "91258603"
 |                     | SharePoint                                  | 早期繫結 |
 | PowerApps           | Microsoft Azure 管理 (入口網站和 API)  | 早期繫結 |
 |                     | Windows Azure Active Directory              | 早期繫結 |
-| 隨附此逐步解說的專案             | Dynamics CRM                                | 早期繫結 |
+| 專案             | Dynamics CRM                                | 早期繫結 |
 | 商務用 Skype  | Exchange                                    | 早期繫結 |
 | Visual Studio       | Microsoft Azure 管理 (入口網站和 API)  | 早期繫結 |
 | Microsoft Forms     | Exchange                                    | 早期繫結 |

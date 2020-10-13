@@ -9,10 +9,10 @@ author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
 ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704390"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>從 Azure 開放資料集建立 Azure Machine Learning 資料集
@@ -37,7 +37,7 @@ Azure 開放資料集是策劃的公用資料集，可讓您用來新增案例�
 開放資料集位於雲端上的 Microsoft Azure，同時包含在 [Azure Machine Learning PYTHON SDK](#create-datasets-with-the-sdk) 和 [Azure Machine Learning studio](#create-datasets-with-the-studio)中。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在本文中，您需要：
 
@@ -110,7 +110,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
     ![選擇資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. 選擇用來註冊資料集的名稱，並選擇性地使用可用的篩選準則來篩選資料。 在此情況下，針對「 **公用假日** 」資料集，您可以將時間週期篩選為一年，並將國家/地區代碼篩選為只有美國。 如需詳細資料，請參閱 [Azure 開放資料集目錄](https://azure.microsoft.com/services/open-datasets/catalog) ，例如欄位描述和日期範圍。 選取 [建立]。
+1. 選擇用來註冊資料集的名稱，並選擇性地使用可用的篩選準則來篩選資料。 在此情況下，針對「 **公用假日** 」資料集，您可以將時間週期篩選為一年，並將國家/地區代碼篩選為只有美國。 如需詳細資料，請參閱 [Azure 開放資料集目錄](https://azure.microsoft.com/services/open-datasets/catalog) ，例如欄位描述和日期範圍。 選取 [建立]****。
 
     ![設定資料集參數和建立資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258054"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>搭配使用 Xamarin iOS 與 MSAL.NET 的考慮
@@ -32,7 +32,7 @@ ms.locfileid: "91258054"
 
 ## <a name="implement-openurl"></a>執行 OpenUrl
 
-覆寫 `OpenUrl` `FormsApplicationDelegate` 衍生類別的方法，並呼叫 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` 。 以下是範例：
+覆寫 `OpenUrl` `FormsApplicationDelegate` 衍生類別的方法，並呼叫 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` 。 以下為範例：
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -151,7 +151,7 @@ Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.ap
 
 如需 Xamarin iOS 屬性的相關資訊，請參閱下列範例 README.md 檔的 [iOS 特定考慮](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) 段落：
 
-範例 | 平台 | 說明
+範例 | 平台 | 描述
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平臺 (UWP)  | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 透過 Azure AD 2.0 端點驗證 Microsoft 個人帳戶和 Azure AD。 應用程式也會顯示如何使用產生的權杖來存取 Microsoft Graph。
 

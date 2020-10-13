@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 描述在 Azure Kubernetes Service 上使用 Azure Dev Spaces 執行程式碼的程式
 keywords: azds. yaml、Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
 ms.openlocfilehash: a189b26264f3e22a69acb3e3c0410203f9822c31
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981288"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 執行您的程式碼的運作方式
@@ -195,7 +195,7 @@ ingress:
   enabled: true
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解網路功能以及如何在 Azure Dev Spaces 中路由要求，請參閱 [路由如何搭配 Azure Dev Spaces 運作][how-it-works-routing]。
 

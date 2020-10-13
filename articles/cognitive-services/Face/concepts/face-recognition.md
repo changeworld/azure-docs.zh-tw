@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323017"
 ---
 # <a name="face-recognition-concepts"></a>臉部辨識概念
@@ -25,7 +25,7 @@ ms.locfileid: "91323017"
 
 辨識作業主要使用下列資料結構。 這些物件會儲存在雲端中，並可由其識別碼字串參考。 識別碼字串在訂用帳戶中一律是唯一的。 名稱欄位可以重複。
 
-|名稱|說明|
+|名稱|描述|
 |:--|:--|
 |DetectedFace| [臉部偵測](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)作業會取出這個單一臉部標記法。 它的識別碼會在建立後24小時到期。|
 |PersistedFace| 將 >detectedface 物件新增至群組（例如 FaceList 或 Person）時，它們會變成 >persistedface 物件。 您可以隨時抓取它們，而 [不會過期](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) 。|
@@ -37,7 +37,7 @@ ms.locfileid: "91323017"
 
 本節將詳細說明四項辨識作業如何使用先前所述的資料結構。 如需每個辨識作業的廣泛描述，請參閱 [總覽](../Overview.md)。
 
-### <a name="verify"></a>確認
+### <a name="verify"></a>Verify
 
 [驗證](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)作業會接受來自 >detectedface 或 >persistedface 的臉部識別碼，以及另一個臉部識別碼或 Person 物件，並判斷它們是否屬於同一個人。 如果您傳入 Person 物件，您可以選擇性地傳入該人員所屬的 PersonGroup 來改善效能。
 
@@ -45,7 +45,7 @@ ms.locfileid: "91323017"
 
 「 [尋找相似](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 」作業會接受來自 >detectedface 或 >persistedface 的臉部識別碼，以及 FaceList 或其他臉部識別碼的陣列。 使用 FaceList 時，它會傳回較小的臉部 FaceList，類似于指定的臉部。 使用臉部識別碼陣列時，類似的會傳回較小的陣列。
 
-### <a name="group"></a>Group
+### <a name="group"></a>群組
 
 [群組](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)作業會接受來自 >detectedface 或 >persistedface 的各種臉部識別碼陣列，並傳回群組為數個較小陣列的相同識別碼。 每個「群組」陣列都包含看似類似的臉部識別碼。 單一 "messyGroup" 陣列包含找不到相似性的臉部識別碼。
 

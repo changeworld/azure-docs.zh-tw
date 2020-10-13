@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291189"
 ---
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
@@ -61,7 +61,7 @@ ms.locfileid: "89291189"
 
 以下是可能會導致媒體服務帳戶無法存取附加儲存體帳戶的主要情況。
 
-|問題|解決方案|
+|問題|解決方法|
 |---|---|
 |媒體服務帳戶或附加儲存體帳戶已移轉至個別的訂用帳戶中。 |將儲存體帳戶 () 或媒體服務帳戶遷移，使其全都位於相同的訂用帳戶中。 |
 |媒體服務帳戶使用的是不同訂用帳戶中的附加儲存體帳戶，因為其是受到支援的早期媒體服務帳戶。 所有的早期媒體服務帳戶都會轉換成新式的 Azure 資源管理員型帳戶，且會有中斷連線的狀態。 |遷移儲存體帳戶或媒體服務帳戶，使其全都位於相同的訂用帳戶中。|
@@ -70,6 +70,6 @@ ms.locfileid: "89291189"
 
 Azure 媒體服務不支援已啟用 Azure 儲存體防火牆或 [私人端點](../../storage/common/storage-network-security.md) 的儲存體帳戶。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解如何將儲存體帳戶附加到媒體服務帳戶，請參閱[建立帳戶](./create-account-howto.md)。

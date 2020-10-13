@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904300"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>如何在 Azure 春季雲端中自行診斷和解決問題
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 Azure 春天雲端診斷是可協助您針對應用程式進行疑難排解的互動式體驗。 不需要組態。 當您發現問題時，Azure 春季雲端診斷會指出問題，並引導您取得有助於疑難排解及解決問題的資訊。
 
@@ -55,6 +55,6 @@ Azure 春天雲端診斷是可協助您針對應用程式進行疑難排解的�
 
  ![相關詳細資料](media/spring-cloud-diagnose/related-details.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [使用警示和動作群組監視 Spring 雲端資源](spring-cloud-tutorial-alerts-action-groups.md)
 * [Azure Spring Cloud 服務的安全性控制](spring-cloud-concept-security-controls.md)

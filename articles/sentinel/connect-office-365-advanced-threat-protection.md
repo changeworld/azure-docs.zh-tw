@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5ac72c9861e06773ffab87dcbf4e730562b798fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342445"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>從適用于 Office 365 的 Microsoft Defender 連接警示 
@@ -49,7 +49,7 @@ ms.locfileid: "91342445"
 
 Office **安全性與合規性中心**的 office 客戶可以看到這些警示。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 當您啟用連接器時，您必須擁有 Azure Sentinel 工作區的 [讀取] 和 [寫入] 許可權。
 

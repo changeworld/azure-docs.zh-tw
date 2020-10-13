@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6564804b7003b5e1c166868dae1bfaac7bd28fa5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812398"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940459"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -52,17 +52,27 @@ Key Vault 管理（類似于其他 Azure 服務）是透過 Azure Resource Manag
 Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取權。 Azure AD 的安全性主體可能是使用者、應用程式服務主體、 [適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，或任何類型之安全性主體的群組。
 
 ### <a name="authentication-best-practices"></a>驗證最佳作法
+
 建議您針對部署至 Azure 的應用程式使用受控識別。 如果您使用的 Azure 服務不支援受控識別，或應用程式是部署在內部部署環境，則有可能的替代方案是 [具有憑證的服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 。 在該案例中，憑證應儲存在 Key Vault 中，並經常輪替。 具有秘密的服務主體可用於開發和測試環境，建議您在本機或 Cloud Shell 使用使用者主體。
 
-Azure 身分識別用戶端程式庫支援上述驗證案例，並與 Key Vault Sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
+建議的每個環境安全性主體：
+- **生產環境**：
+  - 具有憑證的受控識別或服務主體
+- **測試和開發環境**：
+  - 受控識別、具有憑證的服務主體，以及具有秘密的服務主體
+- **本機開發**：
+  - 具有秘密的使用者主體或服務主體
 
-如需詳細資訊，請參閱 
+**Azure 身分識別用戶端程式庫**支援上述驗證案例，並與 Key Vault sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
 
+如需 Azure 身分識別用戶端程式庫的詳細資訊，請參閱：
+
+### <a name="azure-identity-client-libraries"></a>Azure 身分識別用戶端程式庫
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure 身分識別 SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure 身分識別 SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-驗證應用程式中的 Key Vault：
+如需如何在應用程式中驗證 Key Vault 的教學課程，請參閱：
 - [在 .NET 中的 VM 所裝載的應用程式中驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [在以 Python 進行的 VM 中裝載的應用程式中驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
 - [使用 App Service 驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)

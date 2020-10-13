@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
 ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342209"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用 Machine Learning Studio (傳統) web 服務
@@ -36,7 +36,7 @@ ms.locfileid: "91342209"
 
 Azure Machine Learning Studio (傳統) 有兩種類型的服務：
 
-* 要求-回應服務 (RR) –低延遲、高擴充性的服務，可為從 Machine Learning Studio (傳統) 建立和部署的無狀態模型提供介面。
+* Request-Response Service (RR) –低延遲、高擴充性的服務，可為從 Machine Learning Studio (傳統) 建立和部署的無狀態模型提供介面。
 * 批次執行服務 (BES) – 這是一種非同步的服務，為一批資料記錄進行計分。
 
 如需 Machine Learning Web 服務的詳細資訊，請參閱 [部署 Machine Learning web 服務](deploy-a-machine-learning-web-service.md)。

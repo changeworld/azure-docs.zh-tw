@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336200"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>針對 VMware VM 和實體伺服器的複寫問題進行疑難排解
@@ -146,7 +146,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知問題
 **修正方式**：請參閱知識庫[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
-#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4： Linux 伺服器上未啟用應用程式一致性
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4： Linux 伺服器上未啟用 App-Consistency
 **如何修正** ：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式自訂腳本以進行應用程式一致性。 使用前置和後置選項的自訂腳本，將會由 Azure Site Recovery 行動代理程式用來進行應用程式一致性。 [以下](./site-recovery-faq.md#replication) 是啟用它的步驟。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>造成 VSS 相關問題的其他原因：

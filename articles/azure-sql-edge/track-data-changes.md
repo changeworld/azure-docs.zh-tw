@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f7d5d5f74a816bf745faf5decf761cd453f40123
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900074"
 ---
 # <a name="track-data-changes-in-azure-sql-edge"></a>在 Azure SQL Edge 中追蹤資料變更
@@ -36,7 +36,7 @@ Azure SQL Edge 支援兩項 SQL Server 功能，可追蹤資料庫中資料的�
 
 若要瞭解如何查詢和使用已變更的資料，請參閱使用 [變更資料](https://docs.microsoft.com/sql/relational-databases/track-changes/work-with-change-data-sql-server)。
 
-## <a name="change-tracking"></a>Change tracking
+## <a name="change-tracking"></a>變更追蹤
 
 若要瞭解這項功能如何運作的詳細資訊，請參閱 [關於變更追蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。
 
@@ -58,7 +58,7 @@ Azure SQL Edge 也支援 SQL Server 的時態表功能。 這項功能 (也稱�
 
 如需詳細資訊，請參閱 [時態表](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure SQL Edge 中的資料串流 ](stream-data.md)
 - [Azure SQL Edge 中使用 ONNX 的機器學習和 AI ](onnx-overview.md)

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923087"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 認知搜尋-常見問題 (常見問題) 
@@ -97,12 +97,12 @@ Azure 入口網站中目前沒有內建的索引解壓縮、快照集或備份�
 
 若要在相同索引中支援不同的地區設定 (語言)，大多數客戶都會選擇專用欄位，而不是集合。 地區設定特定的欄位可讓您指派適當的分析器。 例如，將 Microsoft 法文分析器指派給含有法文字串的欄位。 它也可以簡化篩選。 如果您知道查詢是在 fr-fr 頁面上起始，您可以將搜尋結果限制在此欄位。 或者，建立[評分設定檔](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)以提高欄位的相對權重。 Azure 認知搜尋支援50以上的 [語言分析器](./search-language-support.md) 來選擇。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您的問題是否與缺少特性或功能相關？ 請在 [User Voice 網站](https://feedback.azure.com/forums/263029-azure-search)上要求此功能。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
  [StackOverflow： Azure 認知搜尋](https://stackoverflow.com/questions/tagged/azure-search)   
  [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)  
- [什麼是 Azue 認知搜尋？](search-what-is-azure-search.md)
+ [什麼是 Azure 認知搜尋？](search-what-is-azure-search.md)

@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.openlocfilehash: 74509b161c4c20a4d7681b9803332434e47f3242
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536032"
 ---
 如果您的應用程式需要由其他人撰寫，您需要在 Azure 入口網站的撰寫資源中新增相關聯的電子郵件地址。

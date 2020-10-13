@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: c8fa2efe708823ff4154edfd58f1b18e0176a990
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380795"
 ---
 # <a name="how-to-market-your-saas-offer"></a>如何行銷 SaaS 供應專案
@@ -29,7 +29,7 @@ ms.locfileid: "89380795"
 
 如果您選擇將供應專案提供給雲端解決方案提供者 (CSP) 方案中，Csp 可以將您的產品作為配套解決方案的一部分銷售給客戶。 如需透過 CSP 方案轉售您的供應專案的詳細資訊，以及設定 [ **轉售給 csp** ] 索引標籤的逐步指示，請參閱 [雲端解決方案提供者程式](cloud-solution-providers.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [測試及發佈 SaaS 供應項目](test-publish-saas-offer.md)
 - [主動式 marketplace 獎勵](partner-center-portal/marketplace-rewards.md)

@@ -4,10 +4,10 @@ description: 瞭解藍圖定義所經歷的生命週期，以及每個階段的�
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049701"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 藍圖生命週期
@@ -60,7 +60,7 @@ ms.locfileid: "89049701"
 > [!NOTE]
 > 您無法刪除擁有作用中指派的藍圖。 先刪除指派，然後再刪除您要移除的版本。
 
-1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
+1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
 
 1. 從左邊的頁面選取 **藍圖定義** ，然後使用篩選選項來找出您想要刪除其版本的藍圖。 選取它來開啟 [編輯] 頁面。
 
@@ -77,7 +77,7 @@ ms.locfileid: "89049701"
 
 使用 [Azure 入口網站](../create-blueprint-portal.md#delete-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#delete-a-blueprint) 來刪除藍圖。
 
-## <a name="assignments"></a>指派
+## <a name="assignments"></a>作業
 
 在生命週期中，有數個時間點可將藍圖指派給訂用帳戶。 當藍圖版本的模式為**已發佈**時，即將將該版本指派給訂用帳戶。 此生命週期在新版本尚在開發時，就可使用並主動指派藍圖版本。
 

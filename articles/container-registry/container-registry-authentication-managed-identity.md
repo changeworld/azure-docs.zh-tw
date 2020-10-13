@@ -4,10 +4,10 @@ description: 在您的私人˙容器登錄中，使用使用者指派或系統�
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253457"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 受控識別向 Azure 容器登錄進行驗證 
@@ -45,7 +45,7 @@ ms.locfileid: "91253457"
 
 * 使用身分識別[登入 Azure CLI 或 PowerShell](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)。 
 
-## <a name="create-a-container-registry"></a>建立容器登錄
+## <a name="create-a-container-registry"></a>建立容器登錄庫
 
 如果您還沒有 Azure 容器登錄，請建立登錄並將範例容器映像推送至該登錄。 如需相關步驟，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。
 

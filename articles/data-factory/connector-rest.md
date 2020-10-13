@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360764"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料
@@ -43,7 +43,7 @@ ms.locfileid: "91360764"
 > [!TIP]
 > 若要在 Data Factory 中設定 REST 連接器之前，測試擷取資料的要求，請先了解 API 規格中的標頭和本文需求。 您可以使用 Postman 或網頁瀏覽器之類的工具進行驗證。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -57,7 +57,7 @@ ms.locfileid: "91360764"
 
 以下是針對 REST 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**RestService**。 | 是 |
 | url | REST 服務的基底 URL。 | 是 |
@@ -69,7 +69,7 @@ ms.locfileid: "91360764"
 
 將 **authenticationType** 屬性設定為 [Basic]****。 除了上一節所述的一般屬性以外，請指定下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | userName | 用來存取 REST 端點的使用者名稱。 | 是 |
 | 密碼 | 使用者 (**userName** 值) 的密碼。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
@@ -102,7 +102,7 @@ ms.locfileid: "91360764"
 
 將 **authenticationType** 屬性設定為 [AadServicePrincipal]****。 除了上一節所述的一般屬性以外，請指定下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 應用程式的金鑰。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
@@ -140,7 +140,7 @@ ms.locfileid: "91360764"
 
 將 **authenticationType** 屬性設定為 [ManagedServiceIdentity]****。 除了上一節所述的一般屬性以外，請指定下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | aadResourceId | 指定您要求授權的 AAD 資源，例如 `https://management.core.windows.net` 。| 是 |
 
@@ -172,14 +172,14 @@ ms.locfileid: "91360764"
 
 若要從 REST 複製資料，以下是支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設定為 [RestResource]****。 | 是 |
 | relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器會從結合的 URL 複製資料： `[URL specified in linked service]/[relative URL specified in dataset]` 。 | 否 |
 
 如果您 `requestMethod` `additionalHeaders` `requestBody` 在資料集中設定、和， `paginationRules` 仍會依原樣受到支援，但建議您繼續使用活動來源中的新模型。
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -208,7 +208,7 @@ ms.locfileid: "91360764"
 
 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設定為 [RestSource]****。 | 是 |
 | requestMethod | HTTP 方法。 允許的值為 **Get** (預設值) 和 **Post**。 | 否 |
@@ -318,12 +318,12 @@ ms.locfileid: "91360764"
 
 分頁規則中的**支援值**：
 
-| 值 | 說明 |
+| 值 | 描述 |
 |:--- |:--- |
 | Headers.*response_header* 或 Headers['response_header'] | "response_header" 是使用者定義的，它會參考目前 HTTP 回應中的一個標頭名稱，其值將用來發出下一個要求。 |
 | JSONPath 運算式會以 "$" 開頭 (代表回應本文的根) | 回應本文應只包含一個 JSON 物件。 JSONPath 運算式應會傳回單一基本值，而這會用來發出下一個要求。 |
 
-**範例：**
+**範例︰**
 
 Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下個頁面的 URL 會在 ***paging.next*** 中指出：
 
@@ -412,14 +412,14 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
     |:--- |:--- |:--- |
     | URL |指定要從中取出 OAuth 持有人權杖的 url。 例如，在此範例中，它是 https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | 方法 | HTTP 方法。 允許的值為 **Post** 和 **Get**。 | 
-    | 標題 | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
+    | headers | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
     | 主體 | HTTP 要求的主體。 | 
 
     ![管線](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
 6. 在 [ **複製資料** 活動] 的 [選取 *來源* ] 索引標籤中，您可以看到從上一個步驟中取出的持有人權杖 (Access_token) 會在其他標頭下傳遞，以將資料複製為 **授權** 。 開始執行管線之前，請先確認下列屬性的設定。
 
-    | 屬性 | 說明 |
+    | 屬性 | 描述 |
     |:--- |:--- |:--- | 
     | 要求方法 | HTTP 方法。 允許的值為 **Get** (預設值) 和 **Post**。 | 
     | 其他標頭 | 其他 HTTP 要求標頭。| 

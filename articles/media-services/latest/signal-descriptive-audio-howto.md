@@ -13,10 +13,10 @@ ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291257"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音訊曲目
@@ -239,10 +239,10 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 2. 在 [ **URL：** ] 方塊中，貼上您從應用程式取得的其中一個串流 URL 值。 
  
      您可以貼上 HLS、Dash 或 Smooth 格式的 URL，Azure 媒體播放器將會切換至適當的串流通訊協定，以便在您的裝置上自動播放。
-3. 按一下 [更新播放程式]****。
+3. 按一下 [更新播放程式]  。
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [分析影片](analyze-videos-tutorial-with-api.md)

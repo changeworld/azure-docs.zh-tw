@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979791"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中核准或拒絕存取要求
@@ -89,7 +89,7 @@ ms.locfileid: "90979791"
 
     如果未設定的核准者都無法核准或拒絕存取要求，則要求會在設定的要求持續時間之後過期。 使用者會收到其存取要求已過期，且需要重新提交存取要求的通知。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [要求存取存取套件](entitlement-management-request-access.md)
 - [要求進程和電子郵件通知](entitlement-management-process.md)

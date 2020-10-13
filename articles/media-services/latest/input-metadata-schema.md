@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295541"
 ---
 # <a name="input-metadata"></a>輸入中繼資料
@@ -43,7 +43,7 @@ ms.locfileid: "89295541"
 > 
 > 
 
-| Name  | 描述 |
+| 名稱  | 描述 |
 | --- | --- | 
 | **VideoTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的視訊播放軌。 如需詳細資訊，請參閱 [VideoTracks](#videotracks)。 |
 | **AudioTracks**|每個實體資產檔案可以包含零個或多個交錯形成適當容器格式的音訊播放軌。 如需詳細資訊，請參閱 [AudioTracks](#audiotracks) |
@@ -51,7 +51,7 @@ ms.locfileid: "89295541"
 
 ### <a name="other-child-elements"></a>其他子項目
 
-| Name | 描述 |
+| 名稱 | 描述 |
 | --- | --- |
 | **名稱**<br />必要 |資產檔案名稱。 <br /><br />範例： `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />必要 |輸入資產所在的 URL。 若要識別輸出資產所屬的輸入資產，請使用 `Uri` 欄位而非識別碼。|
@@ -65,7 +65,7 @@ ms.locfileid: "89295541"
 
 ## <a name="videotracks"></a>VideoTracks
 
-| Name |  | 描述 |
+| 名稱 |  | 描述 |
 | --- | --- |
 | **FourCC**<br />必要 |Ffmpeg 所報告的影片編解碼器 FourCC 程式碼。<br /><br />範例： `"FourCC": "avc1"` |
 | **設定檔** |視訊播放軌的設定檔。 <br /><br />範例： `"Profile": "Main"`|
@@ -92,7 +92,7 @@ ms.locfileid: "89295541"
 
 ## <a name="audiotracks"></a>AudioTracks
 
-| Name  | 描述 |
+| 名稱  | 描述 |
 | --- | --- | 
 | **SampleFormat** |樣本格式。 <br /><br />範例： `"SampleFormat": "fltp"`|
 | **ChannelLayout** |聲道配置。 <br /><br />範例： `"ChannelLayout": "stereo"`|
@@ -240,6 +240,6 @@ ms.locfileid: "89295541"
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [輸出中繼資料](output-metadata-schema.md)

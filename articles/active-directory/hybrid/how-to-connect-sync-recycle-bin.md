@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12073a75cd248c9226c7ce5ecc21b64617823b32
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279630"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同步處理︰啟用 AD 資源回收筒
@@ -41,7 +41,7 @@ ms.locfileid: "89279630"
 > [!NOTE]
 > 根據預設，Azure AD 會讓已刪除的 Azure AD 使用者物件保持 30 天的虛刪除狀態，再將其永久刪除。 不過，系統管理員也可以提早刪除這類物件。 物件在永久刪除後就無法再復原，即使您已啟用內部部署 AD 資源回收筒功能也是一樣。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 **概觀主題**
 
 * [Azure AD Connect 同步：了解並自訂同步處理](how-to-connect-sync-whatis.md)

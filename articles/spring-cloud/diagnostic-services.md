@@ -8,15 +8,15 @@ ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892565"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用診斷設定來分析記錄和計量
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 使用 Azure 春季雲端的診斷功能，您可以使用下列任何一項服務來分析記錄和計量：
 
@@ -31,7 +31,7 @@ ms.locfileid: "90892565"
 
 ## <a name="logs"></a>記錄
 
-|記錄檔 | 描述 |
+|Log | 描述 |
 |----|----|
 | **ApplicationConsole** | 所有客戶應用程式的主控台記錄。 |
 | **SystemLogs** | 目前，只有這個類別中的 [春季 Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) 記錄。 |
@@ -52,7 +52,7 @@ ms.locfileid: "90892565"
     * **傳送至 Log Analytics**
 
 1. 選擇您想要監視的記錄類別和計量類別，然後將保留時間指定 (天數) 。 保留時間僅適用于儲存體帳戶。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 > [!NOTE]
 > 1. 當記錄或計量發出時，以及它們出現在您的儲存體帳戶、事件中樞或 Log Analytics 時，可能會有最多15分鐘的間隔時間。
@@ -206,6 +206,6 @@ AppPlatformLogsforSpring
 ```
 您可以針對其他 JAVA 記錄程式庫使用相同的策略。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：部署您的第一個 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)

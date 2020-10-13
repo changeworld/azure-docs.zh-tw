@@ -16,10 +16,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322529"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>尋求 Azure Active Directory 方面的協助及開立支援票證
@@ -96,7 +96,7 @@ Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售�
 
 請參閱[連絡 Microsoft 尋求支援](https://portal.office.com/Support/ContactUs.aspx)頁面以取得支援電話號碼。
 
-##  <a name="next-steps"></a>接下來的步驟
+##  <a name="next-steps"></a>後續步驟
 
 * [Microsoft 技術社群](https://techcommunity.microsoft.com/)
 

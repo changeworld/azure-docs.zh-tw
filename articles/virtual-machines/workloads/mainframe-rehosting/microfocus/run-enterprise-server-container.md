@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319991"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中執行微焦點企業伺服器5。0
@@ -27,7 +27,7 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
 本教學課程會從 Azure Marketplace 安裝 **具有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含 **Docker 18.09.0**。 接下來的步驟會示範如何部署容器、加以執行，然後使用3270模擬器連接到該容器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始使用之前，請先參閱下列必要條件：
 
@@ -167,7 +167,7 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
     ![企業伺服器管理主控台](media/run-image-9.png)
 
-就這麼簡單！ 現在您正在執行和管理 Docker 容器中的 CICS 應用程式。
+這樣就完成了！ 現在您正在執行和管理 Docker 容器中的 CICS 應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

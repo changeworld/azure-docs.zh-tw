@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
 ms.openlocfilehash: b4d2b277eea85fb8a5c9eb733e5bfd64d66f392c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91407821"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Oracle 複製資料及將資料複製到該處
@@ -53,7 +53,7 @@ ms.locfileid: "91407821"
 > [!Note]
 > 不支援 Oracle Proxy 伺服器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
@@ -360,24 +360,24 @@ Data Factory Oracle 連接器提供內建的資料分割，以平行方式從 Or
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(僅 Oracle 10g 及更高版本可支援) |
 | CHAR |String |
-| CLOB |String |
-| 日期 |Datetime |
+| CLOB |字串 |
+| DATE |Datetime |
 | FLOAT |Decimal，字串 (如果精確度 > 28) |
 | INTEGER |Decimal，字串 (如果精確度 > 28) |
-| LONG |String |
+| LONG |字串 |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |字串 |
+| NCLOB |字串 |
 | NUMBER |Decimal，字串 (如果精確度 > 28) |
-| NVARCHAR2 |String |
+| NVARCHAR2 |字串 |
 | RAW |Byte[] |
-| ROWID |String |
+| ROWID |字串 |
 | timestamp |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |String |
-| TIMESTAMP WITH TIME ZONE |String |
+| TIMESTAMP WITH LOCAL TIME ZONE |字串 |
+| TIMESTAMP WITH TIME ZONE |字串 |
 | 不帶正負號的整數 |數字 |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |字串 |
+| XML |字串 |
 
 > [!NOTE]
 > 不支援 INTERVAL YEAR TO MONTH 和 INTERVAL DAY TO SECOND 資料類型。
