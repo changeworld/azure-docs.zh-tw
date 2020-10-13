@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614084"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970430"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
@@ -232,18 +232,18 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="assign-access-roles-using-azure-portal"></a>使用 Azure 入口網站指派存取角色
 
-選取 [ _azure 角色指派_ ] 按鈕，以開啟 [azure 角色指派] 頁面。 然後，選取 [ _+ 新增角色指派] (預覽) _。
+選取 [ _azure 角色指派_ ] 按鈕，這會開啟 [ *azure 角色指派* ] 頁面。 然後，選取 [ _+ 新增角色指派] (預覽) _。
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-在開啟的 [ _新增角色指派 (預覽]) _ 視窗中，選取
+在開啟的 [ _新增角色指派 (預覽]) _ 頁面上，選取：
 
 * _範圍_：資源群組
 * _訂_用帳戶：選取您的 Azure 訂用帳戶
 * _資源群組_：從下拉式清單中選取您的資源群組
 * _角色_：從下拉式清單中選取_Azure 數位 Twins 擁有者 (預覽) _
 
-選取 [ _儲存_ ] 按鈕以儲存您的詳細資料。
+然後，按下 [ _儲存_ ] 按鈕來儲存您的詳細資料。
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio：新增專案對話方塊":::
 

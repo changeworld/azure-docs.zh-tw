@@ -4,12 +4,12 @@ description: 設定存放庫認證以從 container registry 下載映射
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a3fb39693bf6143d4033eed437f65b7e63eabb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421419"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978674"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>設定應用程式的存放庫認證以下載容器映射
 
@@ -96,6 +96,9 @@ Service Fabric 支援使用權杖作為認證，以下載容器的映射。  這
 1. 請確定已為 VM 啟用 *系統指派的受控識別* 。
 
     ![Azure 入口網站：建立虛擬機器擴展集識別選項](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> 若為使用者指派的受控識別，請略過此步驟。 只要擴展集只與單一使用者指派的受控識別相關聯，其餘步驟的運作方式就會相同。
 
 2. 授與虛擬機器擴展集的許可權，以從登錄提取/讀取映射。 從 Azure 入口網站之 Azure Container Registry 的 [存取控制] (IAM) 分頁]，為您的虛擬機器新增 *角色指派* ：
 

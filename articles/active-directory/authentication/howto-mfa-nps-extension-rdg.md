@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7399c378053859f96746840942c8c549b7b89a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717841"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964701"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用網路原則伺服器 (NPS) 擴充功能和 Azure AD 整合遠端桌面閘道基礎結構
 
@@ -59,7 +59,7 @@ ms.locfileid: "88717841"
 1. 安裝擴充功能的 NPS 伺服器會將 RD CAP 原則的 RADIUS Access-Accept 訊息傳送至遠端桌面閘道伺服器。
 1. 使用者便取得透過 RD 閘道存取要求之網路資源的權限。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本節會詳述在整合 Azure MFA 與遠端桌面閘道之前所需具備的必要條件。 開始之前，您必須先具備下列必要條件。  
 
@@ -306,7 +306,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
    ![選擇性地指定連接條件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 按一下 [確定]  。 當系統提示您檢視對應的說明主題時，請按一下 [否]****。
+1. 按一下 [確定]。 當系統提示您檢視對應的說明主題時，請按一下 [否]****。
 1. 請確定新原則位於清單的頂端，已啟用原則，而且它會授與存取權。
 
    ![將您的原則移至清單頂端](./media/howto-mfa-nps-extension-rdg/image24.png)
@@ -390,7 +390,7 @@ NPS 角色服務可提供 RADIUS 伺服器和用戶端功能，以及網路存�
 
 ![Microsoft Message Analyzer 顯示篩選的流量](./media/howto-mfa-nps-extension-rdg/image36.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [如何取得 Azure Multi-Factor Authentication](concept-mfa-licensing.md)
 

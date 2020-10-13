@@ -2,7 +2,7 @@
 title: 啟用 Azure AD Domain Services 的安全性審核 |Microsoft Docs
 description: 瞭解如何在 Azure AD Domain Services 中啟用安全性審核，以集中分析事件的記錄和警示
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 98e64f1ea1196b6fd773514d4dad5b6e178a6898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722529"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967727"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>啟用 Azure Active Directory Domain Services 的安全性審核
 
@@ -217,7 +217,7 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審查一致�
 
 以下是可用的 audit 事件類別：
 
-| 審核分類名稱 | 說明 |
+| 審核分類名稱 | 描述 |
 |:---|:---|
 | 帳戶登入|審核會嘗試驗證網域控制站或本機安全性帳戶管理員 (SAM) 上的帳戶資料。</p>登入和登出原則設定和事件會追蹤存取特定電腦的嘗試。 此類別中的設定和事件會著重于所使用的帳戶資料庫。 此類別包括下列子類別：<ul><li>[稽核認證驗證](/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerbero 驗證的新功能](/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[稽核 Kerberos 服務票證作業](/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[稽核其他登入/登出事件](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | 帳戶管理|審核使用者和電腦帳戶和群組的變更。 此類別包括下列子類別：<ul><li>[稽核應用程式群組管理](/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[稽核電腦帳戶管理](/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[稽核通訊群組管理](/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[審核其他帳戶管理](/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[稽核安全性群組管理](/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[稽核使用者帳戶管理](/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -245,7 +245,7 @@ Azure AD DS 安全性審核與傳統 AD DS 網域控制站的傳統審查一致�
 |許可權使用安全性|4985|
 |系統安全性|4612、4621|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Kusto 的特定資訊，請參閱下列文章：
 

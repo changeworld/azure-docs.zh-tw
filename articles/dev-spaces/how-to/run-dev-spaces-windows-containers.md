@@ -5,14 +5,16 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: 瞭解如何使用 Windows 容器在現有的叢集上執行 Azure Dev Spaces
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、Windows 容器
-ms.openlocfilehash: 131f69d42795b857a53fc21b760a7275a6826bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51a91c9ff74c4d0d1c5bccff2f1033eb14cd9198
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212471"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972929"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 與 Windows 容器互動
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 您可以在新的和現有的 Kubernetes 命名空間上啟用 Azure Dev Spaces。 Azure Dev Spaces 將會執行並檢測在 Linux 容器上執行的服務。 這些服務也可以與在相同命名空間中的 Windows 容器上執行的應用程式互動。 本文說明如何使用 Dev Spaces，在具有現有 Windows 容器的命名空間中執行服務。 目前，您無法使用 Azure Dev Spaces 來進行調試或附加至 Windows 容器。
 

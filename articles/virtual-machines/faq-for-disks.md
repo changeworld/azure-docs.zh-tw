@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575855"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973695"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>關於 Azure IaaS VM 磁碟及受控和非受控進階磁碟的常見問題集
 
@@ -136,7 +136,7 @@ Azure 受控磁碟目前只支援本地備援儲存體受控磁碟。
 
 第 1 代映像只能在資料磁碟 (而不是 OS 磁碟) 上使用 GPT 磁碟分割。 OS 磁碟必須使用 MBR 分割區樣式。
 
-[第 2 代映像](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)則可在 OS 磁碟和資料磁碟上使用 GPT 磁碟分割。
+[第 2 代映像](./generation-2.md)則可在 OS 磁碟和資料磁碟上使用 GPT 磁碟分割。
 
 **哪些磁碟類型支援快照集？**
 
@@ -241,7 +241,7 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 
 **如何上傳至受控磁碟？**
 
-透過將 [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) 屬性設定為 "Upload" 來建立受控磁碟，然後即可將資料上傳至其中。
+透過將 [creationData](/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption) 屬性設定為 "Upload" 來建立受控磁碟，然後即可將資料上傳至其中。
 
 **是否可在 VM 處於上傳狀態時，將磁碟連結至 VM？**
 
@@ -427,7 +427,7 @@ Azure 支援的分頁 Blob 大小上限是 8 TiB (8,191 GiB)。 連結至 VM 作
 
 **針對非受控磁碟或分頁 Blob，是否支援 P4 和 P6 磁碟大小？**
 
-非受控磁碟和分頁 Blob 的預設磁碟層不支援 P4 (32 GiB) 和 P6 (64 GiB) 磁碟大小。 您需要明確地[將 Blob 層設為](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) P4 和 P6，才能讓磁碟對應至這些層。 若您以小於 32 GitB 或介於 32 GiB 到 64 GiB 之間的磁碟大小或內容長度來部署非受控磁碟或分頁 Blob，但並未先設定 Blob 層，則您會持續使用 P10 搭配 500 IOPS 和每秒 100 MiB，以及對應的定價層。
+非受控磁碟和分頁 Blob 的預設磁碟層不支援 P4 (32 GiB) 和 P6 (64 GiB) 磁碟大小。 您需要明確地[將 Blob 層設為](/rest/api/storageservices/set-blob-tier) P4 和 P6，才能讓磁碟對應至這些層。 若您以小於 32 GitB 或介於 32 GiB 到 64 GiB 之間的磁碟大小或內容長度來部署非受控磁碟或分頁 Blob，但並未先設定 Blob 層，則您會持續使用 P10 搭配 500 IOPS 和每秒 100 MiB，以及對應的定價層。
 
 **如果小於 64 GiB 的現有進階受控磁碟，是在啟用小型磁碟 (2017 年 6 月 15 日前後) 之前建立，該如何計費？**
 
@@ -473,15 +473,15 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **我可以將多個虛擬網路連結到相同的磁片存取物件嗎？**
 
-否。 目前，您只能將磁片存取物件連結至一個虛擬網路。
+不可以。 目前，您只能將磁片存取物件連結至一個虛擬網路。
 
 **我可以將虛擬網路連結至另一個訂用帳戶中的磁片存取物件嗎？**
 
-否。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
+不可以。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
 
 **我可以將虛擬網路連結至另一個訂用帳戶中的磁片存取物件嗎？**
 
-否。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
+不可以。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
 
 **使用相同磁片存取物件的匯出或匯入次數可能會同時發生？**
 
@@ -489,14 +489,14 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **我可以使用磁片/快照集的 SAS URI，將 VM 的基礎 VHD 下載為與該磁片相關聯之私人端點的子網嗎？**
 
-是。
+可以。
 
 **我可以使用磁片/快照集的 SAS URI，將不在相同子網中的 VM 基礎 VHD 下載為與該磁片沒有關聯之私人端點的子網嗎？**
 
-否。
+不可以。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果這裡沒有解答我的問題該怎麼辦？
 
-如果這裡未列出您的問題，請告訴我們，我們將協助您找到答案。 您可以在此文章結尾處將問題張貼在註解中。 若要與本文章的 Azure 儲存體團隊和其他社區成員聯繫，請使用 [Microsoft Q&問題頁面進行 Azure 儲存體](https://docs.microsoft.com/answers/products/azure?product=storage)。
+如果這裡未列出您的問題，請告訴我們，我們將協助您找到答案。 您可以在此文章結尾處將問題張貼在註解中。 若要與本文章的 Azure 儲存體團隊和其他社區成員聯繫，請使用 [Microsoft Q&問題頁面進行 Azure 儲存體](/answers/products/azure?product=storage)。
 
 若要提出功能要求，請將要求和想法提交到 [Azure 儲存體意見反應論壇](https://feedback.azure.com/forums/217298-storage)。

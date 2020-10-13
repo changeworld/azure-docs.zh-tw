@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962531"
+ms.locfileid: "91875728"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment 的網路考量 #
 
@@ -161,7 +161,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 * UDP 到埠53上的所有 Ip
 * UDP 到埠123上的所有 Ip
 * TCP 至埠80、443上的所有 Ip
-* 埠1433上的 TCP 至 IP 服務標記 AzureSQL
+* TCP 至 `Sql` 埠1433上的 IP 服務標記
 * TCP 至埠12000上的所有 Ip
 * 所有埠上的 ASE 子網
 

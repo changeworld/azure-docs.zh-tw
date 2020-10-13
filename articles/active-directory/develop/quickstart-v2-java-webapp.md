@@ -1,6 +1,7 @@
 ---
-title: Microsoft 身分識別平台 Java Web 應用程式快速入門 | Azure
-description: 了解如何使用 OpenID Connect 在 Java Web 應用程式上實作 Microsoft 登入
+title: 快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，了解如何使用 OpenID Connect 在 Java Web 應用程式中實作 Microsoft 登入。
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258093"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743483"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
@@ -257,4 +258,4 @@ import com.microsoft.aad.msal4j.*;
 如需深度討論如何建置 Web 應用程式，在 Microsoft 身分識別平台上登入使用者，請移至我們的多部分案例系列：
 
 > [!div class="nextstepaction"]
-[案例：登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md?tabs=java)
+> [案例：登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md?tabs=java)

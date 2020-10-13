@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961828"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 裝置管理員服務來檢視和管理 StorSimple 警示
 
@@ -75,7 +75,7 @@ StorSimple 裝置會產生警示以回應各種不同的狀況。 以下是最�
 
 5. 完成設定後，按一下 [儲存]****。 當提示確認時，請按一下 [是]****。
 
-     ![已傳送警示測試通知電子郵件](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![警示測試通知電子郵件已傳送2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>檢視和追蹤警示
 
@@ -226,6 +226,6 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 |:--- |:--- |:--- |
 | 硬體元件的環境溫度感應器報告狀態為失敗。  | 主機殼類型：主要主機殼 | 當 StorSimple 周圍溫度的環境超出可接受的範圍時，就會觸發此警示。 檢查資料中心內的周邊溫度或 AC 通風的空氣。 當溫度恢復正常時，會在經過一段時間後自動清除警示。 如果問題持續發生， 請連絡 Microsoft 支援服務。   |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解 [StorSimple 錯誤和裝置部署問題的疑難排解](storsimple-8000-troubleshoot-deployment.md)。

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514255"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960315"
 ---
 # <a name="contact-microsoft-support"></a>連絡 Microsoft 支援服務
 
@@ -39,7 +39,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
    3. 如果您的訂用帳戶有多個相關聯的方案，請從下拉式清單選取**支援方案**。 您必須已付費購買支援方案，才能啟用技術支援。
    4. 按一下 [下一步]。
 
-       ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![透過新的入口網站2聯絡 MS 支援](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. 在 [新增支援要求]**** 刀鋒視窗中，選取 [步驟 2 問題]****。 在 [問題]**** 刀鋒視窗中，執行下列步驟：
     
@@ -51,7 +51,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
     6. 勾選 [共用診斷資訊]。
     7. 按 [下一步] 。
 
-       ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![透過新的入口網站3聯絡 MS 支援](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. 在 [新增支援要求]**** 刀鋒視窗中，按一下 [步驟 3 連絡人資訊]****。 在 [連絡人資訊]**** 刀鋒視窗中，執行下列步驟：
 
@@ -59,7 +59,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
    2. 在 [連絡人資訊] 中，提供姓名、電子郵件、選用連絡方法、國家/地區。 選取 [儲存連絡人變更以供未來的支援要求使用] **** 核取方塊。
    3. 按一下 [建立]。
    
-       ![透過新的入口網站連絡 MS 支援服務](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![透過新的入口網站4聯絡 MS 支援](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
       Microsoft 支援服務會利用此資訊來連絡您，以取得進一步資訊、進行診斷及解決。
       提交您的要求之後，支援工程師會儘速連絡您來處理您的要求。
@@ -76,11 +76,11 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 2. [說明 + 支援]**** 刀鋒視窗中會以表格式清單列出全部的支援要求。
 
-    ![管理支援要求](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![管理支援要求2](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
 3. 選取並按一下支援要求。 您可以檢視此要求的狀態與詳細資料。 如果您想要追蹤此要求，請按一下 [+ New message]\(+ 新訊息\)。
 
-    ![管理支援要求](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![管理支援要求3](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中啟動支援工作階段
 
@@ -106,6 +106,6 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 > 您可以執行 `Disable-HcsSupportAccess` 來停用支援存取。 在起始工作階段之後 8 小時，StorSimple 裝置也會嘗試停用支援存取。 最好在起始支援工作階段之後變更 StorSimple 裝置認證。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何[診斷並解決 StorSimple 8000 系列裝置的相關問題](storsimple-8000-troubleshoot-deployment.md)

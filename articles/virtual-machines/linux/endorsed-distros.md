@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893402"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978929"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 上經背書的 Linux 發行版本
 
@@ -39,7 +39,7 @@ Azure Linux 代理程式已預先安裝在 Azure Marketplace 映射上，而且�
 | Credativ 的 Debian |8.x、9.x |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 |依 Kinvolk Flatcar 容器 Linux| Pro、穩定、搶鮮版（Beta）| 在核心中 | wa-linux-代理程式已安裝在/usr/share/oem/bin/waagent 中 |
 | 由 Oracle Oracle Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Suse Linux Enterprise by SUSE |SLES/SLES for SAP 11. x、12. x、6。x <br/> [SUSE Public Cloud 映射生命週期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在核心中 |套件：<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | 由 SUSE openSUSE |openSUSE Leap 15.x |在核心中 |封裝：在 "python-azure-agent" 下的[雲端：工具](https://build.opensuse.org/project/show/Cloud:Tools)儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 依標準的 Ubuntu |Ubuntu Server 和 Pro。 16. x、18. x、20. x<p>您可以在這裡找到 Ubuntu 12.04 和14.04 延伸支援的相關資訊： [Ubuntu 擴充安全性維護](https://www.ubuntu.com/esm)。 |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |

@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2db91bd1968f816eb2a9320ee81019aeec5d2449
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb5eb3de1723ab75b2585c2fe62c395231455f37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873994"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949372"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -114,7 +114,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 - `Microsoft.KeyVault.Data`，用來管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保存庫和憑證。
 
 > [!NOTE]
-> 資源提供者模式僅支援內建原則定義。
+> 資源提供者模式僅支援內建原則定義，不支援 [豁免](./exemption-structure.md)。
 
 ## <a name="metadata"></a>中繼資料
 

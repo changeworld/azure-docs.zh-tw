@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797610"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977760"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -408,7 +408,7 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 建立已加密 VM 的映射或快照，並使用它來部署額外的 Vm。
 - 核心損毀傾印 (kdump)。
 - Oracle ACFS (ASM 叢集檔案系統)。
-- Gen2 VM (請參閱：[Azure 上第 2 代 VM 的支援](generation-2.md#generation-1-vs-generation-2-capabilities)。
+- Gen2 VM (請參閱：[Azure 上第 2 代 VM 的支援](../generation-2.md#generation-1-vs-generation-2-capabilities)。
 - Lsv2 系列 Vm 的 NVMe 磁片 (請參閱： [Lsv2 系列](../lsv2-series.md)) 。
 - 具有「巢狀掛接點」的 VM；也就是在單一路徑中有多個掛接點 (例如 "/1stmountpoint/data/2stmountpoint")。
 - 將資料磁片磁碟機掛接在 OS 資料夾上方的 VM。

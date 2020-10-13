@@ -2,20 +2,20 @@
 title: 適用于雲端解決方案提供者的 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何啟用及管理 Azure 雲端解決方案提供者的 Azure Active Directory Domain Services 受控網域
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: fae04d929be7ae6f266ff136b4fbd90f7d8a4e02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749657"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960961"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>適用于 Azure 雲端解決方案提供者的 Azure Active Directory Domain Services 部署和管理
 
@@ -93,6 +93,6 @@ Azure AD DS 支援 Azure CSP 訂閱。 您可以將應用程式部署在與客�
     
     若要讓 CSP 合作夥伴在受控網域上執行這些工作，您必須在客戶的 Azure AD 租使用者內建立使用者帳戶。 您必須將此帳戶的認證與 CSP 合作夥伴的管理專員分享。 此外，您必須將此使用者帳戶新增至 *AAD DC 系統管理員* 群組，才能使用此使用者帳戶來執行受控網域上的設定工作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用，請 [註冊 Azure CSP 計畫](/partner-center/enrolling-in-the-csp-program)。 然後，您可以使用 [Azure 入口網站](tutorial-create-instance.md) 或 [Azure PowerShell](powershell-create-instance.md)來啟用 Azure AD Domain Services。

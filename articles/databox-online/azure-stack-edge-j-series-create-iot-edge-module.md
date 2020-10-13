@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891195"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952194"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>開發 c # IoT Edge 模組，以將檔案移至 Azure Stack Edge Pro
 
@@ -77,7 +77,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
       ![建立容器登錄](./media/azure-stack-edge-j-series-create-iot-edge-module/create-container-registry-1.png)
  
-4. 選取 [建立]****。
+4. 選取 [建立]  。
 5. 建立容器登錄之後，請加以瀏覽，並選取 [存取金鑰]****。
 
     ![取得存取金鑰](./media/azure-stack-edge-j-series-create-iot-edge-module/get-access-keys-1.png)
@@ -259,7 +259,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
  
 3. 提供認證之後，您就能將模組映像推送到您的 Azure 容器登錄。 在 VS Code 總管中，以滑鼠右鍵按一下 **module.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]****。
 
-    ![建置並推送 IoT Edge 解決方案](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![組建和推送 IoT Edge 解決方案2](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     當您告知 Visual Studio Code 建置您的解決方案時，它會在整合式終端機中執行兩個命令：docker build 和 docker push。 這兩個命令會建置程式碼、將 CSharpModule.dll 容器化，再將程式碼推送至您在初始化解決方案時所指定的容器登錄中。
 

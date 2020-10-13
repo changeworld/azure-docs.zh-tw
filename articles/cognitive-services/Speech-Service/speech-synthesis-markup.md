@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8dfae58b9910504a11bf3986380398499e3357
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666342"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949593"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -196,6 +196,8 @@ speechConfig!.setPropertyTo(
 
 目前，下列類神經語音支援說話樣式調整：
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -228,6 +230,10 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | 表示隨意且寬鬆的色調                         |
 |                         | `style="cheerful"`        | 表達正面且快樂的語氣                         |
 |                         | `style="empathetic"`      | 表達關懷和理解的意義               |
+| `en-US-JennyNeural`     | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  |
+|                         | `style="chat"`            | 表示隨意且寬鬆的色調                         |
+|                         | `style="assistant"`       | 表達數位助理的暖和寬鬆語氣    |
+| `en-US-GuyNeural`       | `style="newscast"`        | 表示 narrating 新聞的正式和專業語氣 |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 表示 narrating 新聞的正式和專業語氣 |
 |                         | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  |
 |                         | `style="assistant"`       | 表達數位助理的暖和寬鬆語氣    |

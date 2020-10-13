@@ -4,16 +4,16 @@ description: 檢閱 edgeAgent 和 edgeHub 模組對應項的特定屬性及其�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546197"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978691"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理程式和 IoT Edge 中樞模組對應項的屬性
 
@@ -33,7 +33,7 @@ IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝�
 
 | 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
-| schemaVersion | 必須為「1.0」 | 是 |
+| schemaVersion | 可能是 "1.0" 或 "1.1"。 版本1.1 是 IoT Edge 版本1.0.10 引進的，建議使用。 | 是 |
 | runtime.type | 必須為「docker」 | 是 |
 | runtime.settings.minDockerVersion | 此部署資訊清單需要設定為最小 Docker 版本 | 是 |
 | runtime.settings.loggingOptions | stringified JSON，包含 IoT Edge 代理程式容器的記錄選項。 [Docker 記錄選項](https://docs.docker.com/engine/admin/logging/overview/) | 否 |
@@ -47,6 +47,7 @@ IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝�
 | systemModules.edgeHub.type | 必須為「docker」 | 是 |
 | systemModules.edgeHub.status | 必須為「執行中」 | 是 |
 | systemModules.edgeHub.restartPolicy | 必須為「永遠」 | 是 |
+| systemModules. edgeHub. startupOrder | 一個整數值，模組的位置是以啟動順序表示。 0是第一個，最大整數 (4294967295) 是最後一個。 如果未提供值，則預設為最大整數。  | 否 |
 | systemModules.edgeHub.settings.image | IoT Edge 中樞映像的 URI。 | 是 |
 | systemModules.edgeHub.settings<br>.createOptions | stringified JSON，包含 IoT Edge 中樞容器的建立選項。 [Docker 建立選項](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | systemModules.edgeHub.configuration.id | 部署此模組之部署的識別碼。 | 使用部署來套用資訊清單時，IoT 中樞會設定這個屬性。 非部署資訊清單的一部分。 |
@@ -54,6 +55,7 @@ IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝�
 | modules.{moduleId}.type | 必須為「docker」 | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
 | modules.{moduleId}.restartPolicy | {"永不" \| 「失敗」「 \| 狀況不良」的「 \| 永遠」} | 是 |
+| 模組。{moduleId}. startupOrder | 一個整數值，模組的位置是以啟動順序表示。 0是第一個，最大整數 (4294967295) 是最後一個。 如果未提供值，則預設為最大整數。  | 否 |
 | 模組。{moduleId}. imagePullPolicy | {「建立 \| 中」「永不」} | 否 |
 | 模組。{moduleId}. env | 要傳遞至模組的環境變數清單。 採用格式 `"<name>": {"value": "<value>"}` | 否 |
 | modules.{moduleId}.settings.image | 模組映像的 URI。 | 是 |
@@ -107,7 +109,7 @@ IoT Edge 中樞的模組對應項稱為 `$edgeHub`，並且會協調裝置與 Io
 
 | 屬性 | 描述 | 部署資訊清單中的必要項目 |
 | -------- | ----------- | -------- |
-| schemaVersion | 必須為「1.0」 | 是 |
+| schemaVersion | 可能是 "1.0" 或 "1.1"。 版本1.1 是 IoT Edge 版本1.0.10 引進的，建議使用。 | 是 |
 | routes.{routeName} | 字串，表示 IoT Edge 中樞路由。 如需詳細資訊，請參閱宣告 [路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但為空白。 |
 | storeAndForwardConfiguration.timeToLiveSecs | 如果從路由端點中斷連線（不論是 IoT 中樞或本機模組），IoT Edge 中樞會保留訊息的時間（以秒為單位）。 值可以是任何正整數。 | 是 |
 

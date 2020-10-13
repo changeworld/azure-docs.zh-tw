@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/07/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b333c02c3db3e07ad10dc4e4365eb50aced694d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b3ad9c5d19d5d24154a8a63bfc412d6bbfdc1d8b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945187"
+ms.locfileid: "91949219"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 JWT 權杖簽發者的技術設定檔
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 
 ## <a name="protocol"></a>通訊協定
 
-**Protocol** 元素的 **Name** 屬性必須設定為 `None`。 請將 **OutputTokenFormat** 元素設定為 `JWT`。
+**Protocol** 元素的 **Name** 屬性必須設定為 `OpenIdConnect`。 請將 **OutputTokenFormat** 元素設定為 `JWT`。
 
 下列範例顯示 `JwtIssuer` 的技術設定檔：
 

@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851096"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976177"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
 將 Windows 虛擬機器 (VM) 從內部部署上傳至 Azure 之前，您必須準備虛擬硬碟 (VHD 或 VHDX) 。 Azure 支援採用 VHD 檔案格式且具有固定大小磁片的第1代和第2代 Vm。 第1代 VM 上的 OS VHD 所允許的大小上限為 2 TB。
 
-您可以將 VHDX 檔案轉換成 VHD、將動態擴充的磁片轉換成固定大小的磁片，但無法變更 VM 的世代。 如需詳細資訊，請參閱 [我應該在 hyper-v 中建立第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，並 [支援 Azure 上的第2代](generation-2.md)vm。
+您可以將 VHDX 檔案轉換成 VHD、將動態擴充的磁片轉換成固定大小的磁片，但無法變更 VM 的世代。 如需詳細資訊，請參閱 [我應該在 hyper-v 中建立第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，並 [支援 Azure 上的第2代](../generation-2.md)vm。
 
 如需 Azure Vm 的支援原則的相關資訊，請參閱 [Azure vm 的 Microsoft 伺服器軟體支援](https://support.microsoft.com/help/2721672/)。
 
@@ -71,7 +71,7 @@ Windows Resource Protection did not find any integrity violations.
    netsh.exe winhttp reset proxy
    ```
 
-    如果 VM 需要使用特定的 proxy，請新增 Azure IP 位址 ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) 的 proxy 例外狀況，讓 VM 可以連線到 azure：
+    如果 VM 需要使用特定的 proxy，請新增 Azure IP 位址 ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) 的 proxy 例外狀況，讓 VM 可以連線到 azure：
 
     ```
     $proxyAddress='<your proxy server>'
@@ -405,7 +405,7 @@ Sysprep 藉由移除所有個人資料和重設數個元件來提供「現成」
 若只要從一個磁片建立一個 VM，就不需要使用 Sysprep。 相反地，您可以從 *特製化映射*建立 VM。 如需有關如何從特製化磁片建立 VM 的詳細資訊，請參閱：
 
 - [從特殊化磁碟建立 VM](create-vm-specialized.md)
-- [從特殊化 VHD 磁碟建立 VM](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [從特殊化 VHD 磁碟建立 VM](./create-vm-specialized-portal.md)
 
 若要建立一般化映射，您需要執行 Sysprep。 如需詳細資訊，請參閱 [如何使用 Sysprep：簡介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))。
 
@@ -430,7 +430,7 @@ Sysprep 藉由移除所有個人資料和重設數個元件來提供「現成」
 1. 選取 [確定]  。
 1. Sysprep 完成時，關閉 VM。 請勿使用 [ **重新開機** ] 來關閉 VM。
 
-現在已準備好上傳 VHD。 如需如何從一般化磁片建立 VM 的詳細資訊，請參閱 [上傳一般化 VHD 並使用它在 Azure 中建立新的 vm](sa-upload-generalized.md)。
+現在已準備好上傳 VHD。 如需如何從一般化磁片建立 VM 的詳細資訊，請參閱 [上傳一般化 VHD 並使用它在 Azure 中建立新的 vm](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)。
 
 >[!NOTE]
 > 不支援自訂的 *unattend.xml* 檔案。 雖然我們支援 **additionalUnattendContent** 屬性，但僅提供有限的支援，可將 [microsoft windows shell 安裝](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 選項新增至 Azure 布建代理程式所使用的 *unattend.xml* 檔案中。 例如，您可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) 來新增 FirstLogonCommands 和 LogonCommands。 如需詳細資訊，請參閱 [AdditionalUnattendContent FirstLogonCommands 範例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
@@ -468,7 +468,7 @@ Sysprep 藉由移除所有個人資料和重設數個元件來提供「現成」
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 轉換磁片
 
-您可以使用 PowerShell 中的 [轉換-VHD](/powershell/module/hyper-v/convert-vhd) Cmdlet 來轉換虛擬磁片。 如果您需要安裝此 Cmdlet 的相關資訊，請參閱 [安裝 hyper-v 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+您可以使用 PowerShell 中的 [轉換-VHD](/powershell/module/hyper-v/convert-vhd) Cmdlet 來轉換虛擬磁片。 如果您需要安裝此 Cmdlet 的相關資訊，請參閱 [安裝 hyper-v 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 下列範例會將磁片從 VHDX 轉換為 VHD。 它也會將磁片從動態擴充的磁片轉換成固定大小的磁片。
 
@@ -488,7 +488,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 ### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 調整磁片大小
 
-您可以在 PowerShell 中使用重 [設大小 VHD](/powershell/module/hyper-v/resize-vhd) Cmdlet 來調整虛擬磁片大小。 如果您需要安裝此 Cmdlet 的相關資訊，請參閱 [安裝 hyper-v 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+您可以在 PowerShell 中使用重 [設大小 VHD](/powershell/module/hyper-v/resize-vhd) Cmdlet 來調整虛擬磁片大小。 如果您需要安裝此 Cmdlet 的相關資訊，請參閱 [安裝 hyper-v 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 下列範例會將磁片從 100.5 MiB 調整為 101 MiB，以符合 Azure 對齊需求。
 
@@ -500,7 +500,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>從 VMware VMDK 磁碟格式進行轉換
 
-如果您有採用 [vmdk 檔案格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映射，則可以使用 [AZURE MIGRATE](https://docs.microsoft.com/azure/migrate/server-migrate-overview) 來轉換 vmdk 並將其上傳至 Azure。
+如果您有採用 [vmdk 檔案格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映射，則可以使用 [AZURE MIGRATE](../../migrate/server-migrate-overview.md) 來轉換 vmdk 並將其上傳至 Azure。
 
 ## <a name="complete-the-recommended-configurations"></a>完成建議的設定
 
@@ -520,4 +520,4 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 ## <a name="next-steps"></a>後續步驟
 
 - [將 Windows VM 映像上傳至 Azure 供 Resource Manager 部署使用](upload-generalized-managed.md)
-- [針對 Azure Windows VM 啟用問題進行疑難排解](troubleshoot-activation-problems.md)
+- [針對 Azure Windows VM 啟用問題進行疑難排解](../troubleshooting/troubleshoot-activation-problems.md)

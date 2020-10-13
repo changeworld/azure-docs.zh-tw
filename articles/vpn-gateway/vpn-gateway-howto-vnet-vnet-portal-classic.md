@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84985473"
+ms.locfileid: "91875532"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>設定 VNet 對 VNet 連線 (傳統)
 
@@ -80,16 +80,7 @@ ms.locfileid: "84985473"
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>步驟 2 - 建立虛擬網路
 
-在 [Azure 入口網站](https://portal.azure.com)中建立兩個虛擬網路。 如需建立傳統虛擬網路的步驟，請參閱[建立傳統虛擬網路](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 
-
-使用入口網站建立傳統虛擬網路時，您必須使用下列步驟瀏覽至 [虛擬網路] 頁面，否則建立傳統虛擬網路的選項就不會出現：
-
-1. 按一下 [+] 以開啟 [新增] 頁面。
-2. 在 [搜尋 Marketplace] 欄位中，輸入「虛擬網路」。 如果您改為選取 [網路功能]-> [虛擬網路]，將無法取得建立傳統 VNet 的選項。
-3. 在傳回的清單中找出 [虛擬網路]，然後按一下以開啟 [虛擬網路] 頁面。 
-4. 在 [虛擬網路] 頁面上，選取 [傳統] 以建立傳統的 VNet。 
-
-如果您使用這篇文章作為練習，您可以使用下列範例值：
+在此步驟中，您會建立兩個傳統虛擬網路。 如果您使用這篇文章作為練習，您可以使用下列範例值：
 
 **TestVNet1 的值**
 
@@ -125,7 +116,11 @@ GatewaySubnet：10.41.1.0/27
 
 * **DNS 伺服器** – 輸入 DNS 伺服器名稱和 IP 位址。 此設定不會建立 DNS 伺服器。 它可讓您指定要用於此虛擬網路之名稱解析的 DNS 服務。
 
-在本節中，您會設定連線類型、本機網站，並建立閘道。
+### <a name="to-create-a-classic-virtual-network"></a>若要建立傳統虛擬網路
+
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>步驟 3 - 設定本機網站
 
@@ -160,7 +155,7 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 3. 閘道子網路名稱會自動填入必要名稱 'GatewaySubnet'。 [位址範圍]**** 包含配置給 VPN 閘道服務的 IP 位址。 某些組態允許閘道子網路 /29，但是最好是使用 /28 或 /27 以容納未來可能需要更多閘道服務 IP 位址的組態。 在我們的範例設定中，我們會使用 10.11.1.0/27。 調整位址空間，然後按一下 [確定]****。
 4. 設定**閘道大小**。 此設定表示[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 設定**路由類型**。 此組態的路由類型必須是**動態**。 除非您卸除閘道並且建立一個新閘道，否則您無法在稍後變更路由類型。
-6. 按一下 [確定]  。
+6. 按一下 [確定]。
 7. 在 [新增 VPN 連線]**** 頁面上，按一下 [確定]**** 以開始建立虛擬網路閘道。 建立閘道通常可能需要 45 分鐘或更久，視選取的閘道 SKU 而定。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>步驟 5 - 進行 TestVNet4 設定
@@ -205,38 +200,7 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 
 ## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>步驟 7 - 從網路組態檔擷取值
 
-當您在 Azure 入口網站中建立傳統 VNet 時，您所檢視的名稱不是在 PowerShell 中使用的完整名稱。 例如，在入口網站中名稱顯示為 **TestVNet1** 的 VNet，在網路組態檔中的名稱可能更長。 名稱可能如下︰**Group ClassicRG TestVNet1**。 當您建立連線時，務必使用您在網路組態檔中看到的值。
-
-在下列步驟中，您將會連線到您的 Azure 帳戶，並且下載及檢視網路組態檔，以取得連線的必要值。
-
-1. 下載並安裝最新版的 Azure 服務管理 (SM) PowerShell Cmdlet。 如需詳細資訊，請參閱 [使用 Azure PowerShell](#powershell)。
-
-2. 以較高的許可權開啟 PowerShell 主控台。 您可以使用下列範例來協助您連接。 您必須使用 PowerShell 服務管理模組在本機執行這些命令。 若要切換到服務管理，請使用此命令：
-
-   ```powershell
-   azure config mode asm
-   ```
-3. 連線至您的帳戶。 使用下列範例來協助您連接：
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. 檢查帳戶的訂用帳戶。
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. 如果您有多個訂用帳戶，請選取您要使用的訂用帳戶。
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. 匯出並檢視網路組態檔。 在您的電腦上建立目錄，然後將網路組態檔匯出到該目錄。 在此範例中，會將網路組態檔匯出到 **C:\AzureNet**。
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. 使用文字編輯器開啟檔案，並且檢視 VNet 和網站的名稱。 這些名稱會是您在建立連線時所使用的名稱。<br>VNet 名稱會列為 **VirtualNetworkSite name =**<br>網站名稱會列為 **LocalNetworkSiteRef name =**
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
 ## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>步驟 8 - 建立 VPN 閘道連線
 
@@ -280,5 +244,5 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 * VNet 的所有 VPN 通道 (包括 P2S VPN) 在 Azure 中皆共用 VPN 閘道的可用頻寬及相同的 VPN 閘道執行時間 SLA。
 * VNet 對 VNet 流量會經過 Azure 的骨幹。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 確認您的連線。 [確認 VPN 閘道連線](vpn-gateway-verify-connection-resource-manager.md)。

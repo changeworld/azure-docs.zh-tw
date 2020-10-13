@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.date: 08/4/2020
 ms.custom: avverma
-ms.openlocfilehash: c57025346a9f623e3fe5536b36820ea62f355cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6ee4179dce905d637e933743ade7452a2484077
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342685"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978555"
 ---
 # <a name="put-calls-for-creation-or-updates-on-compute-resources"></a>在計算資源上放置呼叫以進行建立或更新
 
@@ -66,5 +66,4 @@ ms.locfileid: "91342685"
 `
 
 ## <a name="next-steps"></a>後續步驟
-深入瞭解如何建立或更新[虛擬機器](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)和[虛擬機器擴展集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)的呼叫
-
+深入瞭解如何建立或更新[虛擬機器](/rest/api/compute/virtualmachines/createorupdate)和[虛擬機器擴展集](/rest/api/compute/virtualmachinescalesets/createorupdate)的呼叫

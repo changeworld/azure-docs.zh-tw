@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 90f91c56b2448e8455f3c22cf7ccae7b06b5be70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 983322800198246bcfaecec92fe0b2b74e587756
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539906"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952092"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
@@ -23,8 +23,8 @@ ms.locfileid: "91539906"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**Azure Machine Learning (AML) 技能**](cognitive-search-aml-skill.md) | AI 擴充| 新的技能類型，可將推斷端點與 Azure Machine Learning 整合。 開始使用[本教學課程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用 [搜尋 REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/) 或 2019-05-06-preview。 也可在入口網站中的技能集設計中使用，假設認知搜尋和 Azure ML 服務都部署在相同的訂用帳戶中。 |
-| [**featuresMode 參數**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 相關性 (評分)  | 相關性分數擴充以包含詳細資料：每個欄位的相似性分數、每個欄位詞彙頻率，以及符合之唯一權杖的每個欄位數目。 您可以在 [自訂評分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中使用這些資料點。 | 使用 [ (REST) ](https://docs.microsoft.com/rest/api/searchservice/search-documents) （api 版本 = 2020-06-30-Preview-preview 或 2019-05-06-preview）的搜尋檔，來新增此查詢參數。 |
+| [**Azure Machine Learning (AML) 技能**](cognitive-search-aml-skill.md) | AI 擴充| 新的技能類型，可將推斷端點與 Azure Machine Learning 整合。 開始使用[本教學課程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用 [搜尋 REST API 2020-06-30-preview](/rest/api/searchservice/) 或 2019-05-06-preview。 也可在入口網站中的技能集設計中使用，假設認知搜尋和 Azure ML 服務都部署在相同的訂用帳戶中。 |
+| [**featuresMode 參數**](/rest/api/searchservice/search-documents#featuresmode) | 相關性 (評分)  | 相關性分數擴充以包含詳細資料：每個欄位的相似性分數、每個欄位詞彙頻率，以及符合之唯一權杖的每個欄位數目。 您可以在 [自訂評分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中使用這些資料點。 | 使用 [ (REST) ](/rest/api/searchservice/search-documents) （api 版本 = 2020-06-30-Preview-preview 或 2019-05-06-preview）的搜尋檔，來新增此查詢參數。 |
 | [**Debug 會話**](cognitive-search-debug-session.md) | 入口網站、AI 擴充 (技能集)  | 會話內的技能集編輯器，用來調查和解決技能集的問題。 在 debug 會話期間套用的修正可以儲存至服務中的技能集。 | 僅限入口網站，在 [總覽] 頁面上使用中頁面連結來開啟 debug 會話。 |
 | [**原生 blob 虛刪除**](search-howto-index-changed-deleted-blobs.md) | 索引子，Azure blob| Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 blob，並在編制索引期間移除對應的搜尋檔。 | 使用 [建立索引子 (REST) ](/rest/api/searchservice/create-indexer) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來新增此設定設定。 |
 | [**自訂實體查閱技能**](cognitive-search-skill-custom-entity-lookup.md ) | AI 擴充 (技能集)  | 一種認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。 | 在入口網站中使用技能集編輯器來參考此預覽技能，或使用 api 版本 = 2020-06-30-preview-Preview 或 api 版本 = 2019-05-06-preview-Preview [建立技能集 (REST) ](/rest/api/searchservice/create-skillset) 。 |

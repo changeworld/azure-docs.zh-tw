@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370482"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974170"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 將 Vm 部署到專用主機
 
-本文會引導您瞭解如何建立 Azure [專用主機](dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
+本文會引導您瞭解如何建立 Azure [專用主機](../dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
 
 請確定您已安裝 Azure PowerShell 2.8.0 版或更新版本，且您已使用中的 Azure 帳戶登入 `Connect-AzAccount` 。 
 
@@ -278,4 +278,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，範例中使用區域和容錯網域來獲得區域中的最大復原。
 
-- 您也可以使用 [Azure 入口網站](dedicated-hosts-portal.md)部署專用主機。
+- 您也可以使用 [Azure 入口網站](../dedicated-hosts-portal.md)部署專用主機。

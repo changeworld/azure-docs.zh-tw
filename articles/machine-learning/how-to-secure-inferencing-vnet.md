@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2020
+ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630843"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972504"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -81,11 +81,17 @@ ms.locfileid: "91630843"
 
    ![Azure Machine Learning：Machine Learning Compute 虛擬網路設定](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. 請確定控制虛擬網路的 NSG 群組已針對評分端點啟用輸入安全性規則，以便可從虛擬網路外部加以呼叫。
+1. 當您將模型部署為 web 服務以進行 AKS 時，會建立計分端點來處理推斷要求。 如果您想要從虛擬網路外部呼叫該虛擬網路的 IP 位址，請確定控制該虛擬網路的 NSG 群組具有啟用的輸入安全性規則。
+
+    若要尋找評分端點的 IP 位址，請查看已部署服務的評分 URI。 如需有關如何查看評分 URI 的詳細資訊，請參閱 [使用部署為 web 服務的模型](how-to-consume-web-service.md#connection-information)。
+
    > [!IMPORTANT]
    > 為 NSG 保留預設輸出規則。 如需詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的預設安全性規則一節。
 
    [![輸入安全性規則](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+
+    > [!IMPORTANT]
+    > 針對評分端點的映射中所顯示的 IP 位址，會與您的部署不同。 雖然相同的 IP 會由所有部署共用到一個 AKS 叢集，但每個 AKS 叢集都會有不同的 IP 位址。
 
 您在虛擬網路中也可以使用 Azure Machine Learning SDK 新增 Azure Kubernetes 服務。 如果您在虛擬網路中已經有 AKS 叢集，請將其連結至工作區，如[如何部署至 AKS](how-to-deploy-and-where.md) 所述。 下列程式碼會在名為 `mynetwork` 的虛擬網路其 `default` 子網路中建立新的 AKS 執行個體：
 

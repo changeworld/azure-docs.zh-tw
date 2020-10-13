@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 408f58b44bbe1ff8be7498b33a1209f4488c2ccc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332146"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951973"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory，在 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中複製和轉換資料
 
@@ -564,7 +564,7 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Stora
 
 當您的來源資料與 PolyBase 原生不相容時，請啟用透過過渡暫存 Azure Blob 或 Azure Data Lake Storage Gen2 的資料複製， (它不能是 Azure 進階儲存體) 。 在此情況下，Azure Data Factory 會自動轉換資料，以符合 PolyBase 的資料格式需求。 然後，它會叫用 PolyBase 將資料載入 Azure Synapse Analytics 中。 最後，它會清除儲存體中的暫存資料。 如需透過暫存複製資料的詳細資訊，請參閱 [分段複製](copy-activity-performance-features.md#staged-copy) 。
 
-若要使用這項功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2 連結服務](connector-azure-data-lake-storage.md#linked-service-properties) ，以參考具有暫時儲存體的 Azure 儲存體帳戶。 然後指定複製活動的 `enableStaging` 和 `stagingSettings` 屬性，如下列程式碼所示。
+若要使用這項功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2 連結服務](connector-azure-data-lake-storage.md#linked-service-properties) ，其中包含以 **帳戶金鑰或受控識別身分驗證** 來參考 Azure 儲存體帳戶作為暫時儲存體。
 
 >[!IMPORTANT]
 >如果您的暫存 Azure 儲存體設定了 VNet 服務端點，您必須使用受控識別驗證 - 請參閱[使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 從 [Azure Blob 受控身分識別驗證](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2 受控身分識別驗證](connector-azure-data-lake-storage.md#managed-identity)Data Factory 瞭解所需的設定。

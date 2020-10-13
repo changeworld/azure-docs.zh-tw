@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804303"
+ms.locfileid: "91893453"
 ---
 # <a name="manage-app-consent-policies"></a>管理應用程式同意原則
 
@@ -117,10 +117,7 @@ ms.locfileid: "91804303"
 1. 以下顯示如何刪除自訂應用程式同意原則。 **此動作無法復原。**
 
    ```powershell
-   New-AzureADMSPermissionGrantPolicy `
-       -Id "my-custom-policy" `
-       -DisplayName "My first custom consent policy" `
-       -Description "This is a sample custom app consent policy."
+   Remove-AzureADMSPermissionGrantPolicy -Id "my-custom-policy"
    ```
 
 > [!WARNING]

@@ -2,7 +2,7 @@
 title: 將 CoreOS VM 加入 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何設定 CoreOS 虛擬機器，並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: c3a88f96f7391fedd973b7965a7c469ce1805d76
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005101"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962406"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 CoreOS 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -24,7 +24,7 @@ ms.locfileid: "87005101"
 
 本文說明如何將 CoreOS VM 加入受控網域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -168,7 +168,7 @@ krb5_realm = AADDSCONTOSO.COM
 
     您應該會看到來自受控網域的群組成員資格。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您在將 VM 連接到受控網域或以網域帳戶登入時發生問題，請參閱 [疑難排解網域加入問題](join-windows-vm.md#troubleshoot-domain-join-issues)。
 

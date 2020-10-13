@@ -3,12 +3,12 @@ title: 如何保護您的資源階層 - Azure 治理
 description: 了解如何使用包含設定預設管理群組的階層設定來保護您的資源階層。
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533974"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951888"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保護您的資源階層
 
@@ -115,5 +115,5 @@ ms.locfileid: "91533974"
 
 若要深入了解管理群組，請參閱：
 
-- [建立管理群組以組織 Azure 資源](../create.md)
+- [建立管理群組以組織 Azure 資源](../create-management-group-portal.md)
 - [如何變更、刪除或管理您的管理群組](../manage.md)

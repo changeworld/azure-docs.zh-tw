@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 的 Kerberos 限制委派 |Microsoft Docs
 description: 瞭解如何在 Azure Active Directory Domain Services 受控網域中 (KCD) 啟用以資源為基礎的 Kerberos 限制委派。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 7f1640f74c3fca27e1d992f3e2cc538f6e2c7fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 949dbfd4cc2e4ac05cddf035e22119bfb16e306f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722988"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960706"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中設定 Kerberos 限制委派 (KCD) 
 
@@ -26,7 +26,7 @@ Azure Active Directory Domain Services (Azure AD DS) 受控網域會比傳統內
 
 本文說明如何在 Azure AD DS 受控網域中設定以資源為基礎的 Kerberos 限制委派。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要下列資源：
 
@@ -99,7 +99,7 @@ Web 應用程式必須存取在網域使用者內容中名為 *contoso-api.aadds
     Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解委派在 Active Directory Domain Services 中的運作方式，請參閱 [Kerberos 限制委派總覽][kcd-technet]。
 

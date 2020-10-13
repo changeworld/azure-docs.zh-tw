@@ -2,7 +2,7 @@
 title: 安全 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何停用 Azure Active Directory Domain Services 受控網域的弱式密碼、舊通訊協定和 NTLM 密碼雜湊同步處理。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 50cf58f83115cfb8c84fe7b2a37b6664c2d9c567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: c5a3a7b6cd43bebccdbfb22bb4c81f376abc15d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116677"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967744"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>停用弱式密碼和密碼雜湊同步處理以保護 Azure Active Directory Domain Services 受控網域
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759065"
+ms.locfileid: "91932578"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程
 
@@ -52,8 +52,11 @@ OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (機密用戶端) 在�
 
 對於需要存取具有個人 Microsoft 帳戶之取用者使用者所擁有資料的精靈和服務帳戶來說，這種授權相當常見。 對於組織所擁有的資料，建議您透過應用程式權限取得必要的授權。
 
-> [!NOTE]
-> 為了啟用此以 ACL 為基礎的授權模式，Azure AD 不會要求應用程式取得其他應用程式的權杖，因此，不需要宣告即可發出僅限應用程式的權杖 `roles` 。 公開 Api 的應用程式必須執行許可權檢查，才能接受權杖。
+#### <a name="controlling-tokens-without-the-roles-claim"></a>控制沒有 `roles` 宣告的權杖
+
+為了啟用此以 ACL 為基礎的授權模式，Azure AD 不需要授權應用程式取得其他應用程式的權杖。 因此，您可以在沒有宣告的情況下發出僅限應用程式的權杖 `roles` 。 公開 Api 的應用程式必須執行許可權檢查，才能接受權杖。
+
+如果您想要防止應用程式為您的應用程式取得無角色應用程式的存取權杖，請 [確定已為您的應用程式啟用使用者指派需求](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 這將會封鎖沒有指派角色的使用者和應用程式，使其無法取得此應用程式的權杖。 
 
 ### <a name="application-permissions"></a>應用程式權限
 

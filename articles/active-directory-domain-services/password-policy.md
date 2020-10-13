@@ -2,7 +2,7 @@
 title: 在 Azure AD Domain Services 中建立及使用密碼原則 |Microsoft Docs
 description: 瞭解如何及為何使用更細緻的密碼原則來保護及控制 Azure AD DS 受控網域中的帳戶密碼。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040039"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967962"
 ---
 # <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Active Directory Domain Services 受控網域上的密碼和帳戶鎖定原則
 
@@ -127,7 +127,7 @@ ms.locfileid: "86040039"
 
 1. 使用您所選取的組名立即顯示在 [ **直接套用至** ] 區段中，選取 **[確定]** 以儲存您的自訂密碼原則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關密碼原則和使用 Active Directory 系統管理中心的詳細資訊，請參閱下列文章：
 

@@ -1,6 +1,6 @@
 ---
-title: 警示驗證 (EICAR 測試檔案) Azure 資訊安全中心 |Microsoft Docs
-description: 本文件可協助您在 Azure 資訊安全中心驗證安全性警示。
+title: Azure 資訊安全中心中的警示驗證 |Microsoft Docs
+description: 瞭解如何驗證已正確設定您的安全性警示 Azure 資訊安全中心
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438801"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971603"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 資訊安全中心中的警示驗證
 這份文件可協助您了解如何驗證您的系統是否已針對 Azure 資訊安全中心警示正確設定。
@@ -26,12 +26,6 @@ ms.locfileid: "91438801"
 ## <a name="what-are-security-alerts"></a>什麼是安全性警示：
 警示是當資訊安全中心偵測到您資源受到威脅時，所產生的通知。 它會排定優先順序並列出警示，以及快速調查問題所需的資訊。 資訊安全中心也提供如何修復攻擊的建議。
 如需詳細資訊，請參閱資訊 [安全中心的安全性警示](security-center-alerts-overview.md) ，以及 [管理和回應安全性警示](security-center-managing-and-responding-alerts.md)
-
-## <a name="alert-validation"></a>警示驗證
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>在 Windows Vm 上驗證警示 <a name="validate-windows"></a>
 

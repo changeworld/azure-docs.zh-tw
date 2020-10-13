@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1809194ce551fc828389cc31f5c7d6f28a2cddd6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972368"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -36,7 +36,7 @@ DCv2 系列可協助在公用雲端處理資料與程式碼時，保護其機密
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64                                                                                               | 2  | 112                                          |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
-- DCsv2 系列 VM 是[第 2 代 VM](./linux/generation-2.md#creating-a-generation-2-vm)且僅支援 `Gen2` 映像。
+- DCsv2 系列 VM 是[第 2 代 VM](./generation-2.md#creating-a-generation-2-vm)且僅支援 `Gen2` 映像。
 - 目前適用于 [此處](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)所列的區域。
 - 先前產生的機密計算 VM：[DC 系列](sizes-previous-gen.md#preview-dc-series)
 - 使用 [Azure 入口網站](./linux/quick-create-portal.md)或 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) 建立 DCsv2 VM

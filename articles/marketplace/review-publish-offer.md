@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375870"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976426"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>如何審查供應專案並將其發佈至商用 marketplace
 
@@ -52,7 +52,7 @@ ms.locfileid: "89375870"
 | [認證](#certification-phase) | 我們會進行手動驗證。 |
 | [建立預覽](#preview-creation-phase) | 提供預覽連結的任何人都可以使用供應專案預覽的 [清單] 頁面。 如果您的供應專案將透過 Microsoft (可交易) 銷售，則只有您在供應專案的 [ **預覽物件** ] 頁面上指定的物件可以購買及存取供應專案以進行測試。 |
 | [發佈者登出](#publisher-sign-off-phase) | 我們會傳送一封電子郵件給您，要求您預覽並核准您的供應專案。 |
-| [Publish](#publish-phase) | 我們會執行一系列的步驟，以確認預覽供應專案已即時發佈到商用 marketplace。 |
+| [發佈](#publish-phase) | 我們會執行一系列的步驟，以確認預覽供應專案已即時發佈到商用 marketplace。 |
 |||
 
 ## <a name="automated-validation-phase"></a>自動化驗證階段
@@ -170,6 +170,84 @@ ms.locfileid: "89375870"
     我們會確保您的供應專案在 marketplace 中可公開使用。
 
 完成這些驗證檢查之後，您的供應專案將會存留在 marketplace 中。
+
+## <a name="publishing-history"></a>發佈記錄
+
+合作夥伴中心中的 [歷程 **記錄** ] 頁面會顯示您商業 marketplace 供應專案的發佈事件。 針對每個事件，頁面會顯示起始動作的使用者、事件種類，以及事件日期和時間。 [驗證和發佈步驟](#validation-and-publishing-steps)會列出完成的日期和時間。
+
+若要查看供應專案的歷程記錄：
+
+1.    登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+2.    在左側導覽功能表中，選取 [**商業 Marketplace**  >  **總覽**]。
+3.    選取您的供應專案。
+4.    選取左側導覽功能表中的 [歷程 **記錄** ] 索引標籤。 此頁面會提供下列事件的詳細資料，適用于您的供應專案：
+
+|事件    |描述    |
+|---------|---------------|
+|已建立供應專案    |已在合作夥伴中心中建立供應專案。 使用者已在**商業 Marketplace**中選取供應專案類型、供應專案識別碼和供應專案別名  >  ** **。    |
+|已建立方案： *方案名稱*    |使用者藉由在 [ **計畫總覽** ] 索引標籤中輸入方案識別碼和方案名稱，來建立新的方案。</br>*此事件只適用于支援方案的供應專案類型*。    |
+|已刪除方案    |使用者已從 [**計畫總覽**] 頁面中選取 [**刪除草稿**]，以刪除尚未發行的草稿方案。</br>*此事件只適用于支援方案的供應專案類型*。    |
+|起始的計畫停止銷售： *方案名稱*    |使用者藉由選取 [從**計畫總覽**] 頁面的 [**停止銷售**]，來啟動計畫停止銷售。</br>*此事件只適用于支援方案的供應專案類型*。    |
+|復原計畫停止銷售： *方案名稱*    |使用者藉由在 [**計畫總覽**] 頁面中選取 [**復原停止銷售**]，取消了方案停止銷售。</br>*此事件只適用于支援方案的供應專案類型*。    |
+|提交給預覽的供應專案    |使用者從 [**審核及發佈**] 頁面選取 [**發佈**]，將供應專案提交至預覽。    |
+|已起始提交至預覽取消    |使用者在認可預覽版之後，從**供應專案總覽**頁面選取 [**取消發佈**]，要求取消供應專案發行集的預覽。</br>*此事件會在處理取消要求時顯示*。    |
+|已取消提交至預覽    |使用者已在認可預覽之後，從**供應專案總覽**頁面選取 [**取消發佈**]，以將供應專案發行集取消預覽。</br>*此事件會在成功處理取消要求之後顯示*。    |
+|登出以上線    |使用者透過從**供應專案總覽**頁面選取 [**上線**]，將供應專案發佈至商用 marketplace。    |
+|已起始發佈至 marketplace 取消    |使用者在登出上線之後，從**供應專案總覽**頁面選取 [**取消發佈**]，要求取消供應專案發佈。</br>*此事件會在處理取消要求時顯示*。    |
+|已取消發行至商用 marketplace    |使用者已在登出以上線之後，從**供應專案總覽**頁面選取 [**取消發佈**]，以取消供應專案發佈。</br>*此事件會在成功處理取消要求之後顯示*。    |
+|同步私用物件    |使用者藉由選取 [**計畫總覽**] 頁面中的 [**同步私用物件**] 或 [**方案定價 & 可用性**] 頁面，更新並同步處理私用物件。</br>*此事件只適用于支援私用方案的供應專案類型*。    |
+|停止銷售供應專案    |使用者藉由從**供應專案總覽**頁面選取 [**停止銷售**]，來停止銷售供應專案。    |
+
+> [!NOTE]
+> [歷程記錄] 頁面不會指出是否已儲存供應專案草稿。
+
+### <a name="filter-options"></a>篩選選項
+
+您可以使用篩選器，將供應專案的完整歷程記錄縮小為特定發佈事件：
+
+1.    選取頁面右上角的 [篩選] 按鈕。
+2.    選擇篩選準則，然後選取 [套用 **] 以查看** 哪些記錄事件對應至您選取的準則。
+3.    選取 [ **清除篩選** ] 以返回您的供應專案完整歷程記錄。
+
+有四個篩選準則：
+* 事件
+* 使用者
+* 日期
+* 頁面
+
+當您選擇 [ **頁面** ] 篩選準則時，可以選取任何適用于供應專案類型的合作夥伴中心頁面。 套用時， **頁面** 篩選會顯示所有已 **提交的供應** 專案，以在您選取的頁面變更時預覽事件。
+
+* 針對所有供應專案，預設會針對每個提交事件包含 **供應專案設定** 頁面。
+* 針對支援方案的供應專案，每個提交事件都會包含 [ **計畫總覽** ] 頁面。
+* 針對支援試用產品的供應專案，每個提交事件都會包含 [ **試用** 產品] 頁面。
+
+### <a name="users"></a>使用者
+
+如果事件是由使用者所起始，則 [歷程記錄] 頁面會根據下列案例顯示使用者：
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>此事件是由發行者起始
+
+具有供應專案發佈許可權的使用者將會顯示其所起始發佈事件的名稱。
+
+[![[歷程記錄] 頁面會顯示具有發行許可權之使用者的名稱。](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>此事件由 Microsoft 起始
+
+您可以將許可權授與 Microsoft 系統管理員，以代表您起始動作，或在發生未預期的系統錯誤後採取矯正措施。 系統會顯示 Microsoft 名稱和標誌，以代表您的帳戶發行由 Microsoft 起始的事件。
+
+[![歷程記錄頁面如何顯示 Microsoft 所起始事件的範例。](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>事件是由無法識別的使用者所起始
+
+不再與帳戶相關聯的使用者，將會在撤銷發佈許可權之後，從 **起始的** 資料行中移除其名稱。
+
+[![歷程記錄頁面如何顯示無法識別的使用者所起始之事件的範例。](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>驗證和發行步驟
+
+系統進程不會顯示對應至 [驗證和發行步驟](#validation-and-publishing-steps)的使用者。 這些事件會根據事件的完成狀態以色彩標示。
+
+[![歷程記錄頁面如何顯示驗證和發行步驟的範例。](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>後續步驟
 

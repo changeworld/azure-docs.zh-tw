@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526998"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964871"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>規劃 Azure Active Directory 中的無密碼 authentication 部署
 
@@ -51,10 +51,10 @@ Microsoft 提供三個無密碼驗證選項來涵蓋許多案例。 您可以使
 
 Microsoft 的無密碼 authentication 方法可實現不同的案例。 請考慮您的組織需求、必要條件，以及每種驗證方法的功能，以選取您的無密碼 authentication 策略。 建議使用 Windows 10 裝置的每個組織都使用 Windows Hello 企業版。 然後，在其他案例中，使用 Microsoft Authenticator 應用程式) 或安全性金鑰來新增手機登入 (。
 
-| 狀況 | 電話驗證 | 安全性金鑰 | Windows Hello 企業版 |
+| 案例 | 電話驗證 | 安全性金鑰 | Windows Hello 企業版 |
 | --- | --- | --- | --- |
 | **電腦登入**： <br> 從指派的 Windows 10 裝置 | **否** | **是** <br> 使用生物特徵辨識，PIN | **是**<br>使用生物識別辨識和或 PIN |
-| **電腦登入**： <br> 從共用 Windows 10 裝置 | **否** | **是** <br> 使用生物特徵辨識，PIN  | **否** |
+| **電腦登入**： <br> 從共用 Windows 10 裝置 | **否** | **是** <br> 使用生物特徵辨識，PIN  | 否 |
 | **Web 應用程式登入**： <br>從使用者專用的電腦 | **是** | **是** <br> 電腦登入會啟用對應用程式提供的單一登入 | **是**<br> 電腦登入會啟用對應用程式提供的單一登入 |
 | **Web 應用程式登入**： <br> 從行動裝置或非 windows 裝置 | **是** | **否** | **否** |
 | **電腦登入**： <br> 非 Windows 電腦 | **否** | **否** | **否** |
@@ -243,7 +243,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 以下是使用 Microsoft Authenticator 應用程式進行無密碼驗證的範例測試案例：
 
-| 狀況 | 預期的結果 |
+| 案例 | 預期的結果 |
 | --- | --- |
 | 使用者可以註冊 Microsoft Authenticator 應用程式 | 使用者可以從 aka.ms/mysecurityinfo 註冊應用程式 |
 | 使用者可以啟用手機登入 | 為工作帳戶設定的手機登入 |
@@ -257,7 +257,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 **無密碼 FIDO 登入已加入 Azure Active Directory 的 Windows 10 裝置**
 
-| 狀況 | 預期的結果 |
+| 案例 | 預期的結果 |
 | --- | --- |
 | 使用者可以註冊 FIDO2 裝置 (1809)  | 使用者可以在設定 > 帳戶 > 登入選項 > 安全性金鑰）註冊 FIDO2 裝置 |
 | 使用者可以重設 FIDO2 裝置 (1809)  | 使用者可以使用製造商軟體重設 FIDO2 裝置 |
@@ -268,7 +268,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 **無密碼 FIDO 登入 Azure AD web 應用程式**
 
-| 狀況 | 預期的結果 |
+| 案例 | 預期的結果 |
 | --- | --- |
 | 使用者可以使用 Microsoft Edge 在 aka.ms/mysecurityinfo 註冊 FIDO2 裝置 | 註冊應該會成功 |
 | 使用者可以使用 Firefox 在 aka.ms/mysecurityinfo 註冊 FIDO2 裝置 | 註冊應該會成功 |
@@ -308,7 +308,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 ### <a name="troubleshoot-phone-sign-in"></a>針對手機登入進行疑難排解
 
-| 狀況 | 解決方法 |
+| 案例 | 解決方法 |
 | --- | --- |
 | 使用者無法執行合併的註冊。 | 確定已啟用 [合併註冊](concept-registration-mfa-sspr-combined.md) 。 |
 | 使用者無法啟用手機登入驗證器應用程式。 | 確定使用者已在部署範圍內。 |
@@ -316,7 +316,7 @@ Azure AD 會在下列情況將專案新增至 audit 記錄：
 
 ### <a name="troubleshoot-security-key-sign-in"></a>對安全性金鑰登入進行疑難排解
 
-| 狀況 | 解決方法 |
+| 案例 | 解決方法 |
 | --- | --- |
 | 使用者無法執行合併的註冊。 | 確定已啟用 [合併註冊](concept-registration-mfa-sspr-combined.md) 。 |
 | 使用者無法在其 [安全性設定](https://aka.ms/mysecurityinfo)中新增安全性金鑰。 | 確定已啟用 [安全性金鑰](howto-authentication-passwordless-security-key.md) 。 |

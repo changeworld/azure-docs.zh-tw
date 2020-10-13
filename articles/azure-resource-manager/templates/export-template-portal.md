@@ -3,12 +3,12 @@ title: Azure 入口網站中的匯出範本
 description: 使用 Azure 入口網站從您訂用帳戶中的資源匯出 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423230"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951752"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure 入口網站中的單一和多重資源匯出至範本
 
@@ -49,11 +49,13 @@ Resource Manager 可讓您挑選一或多個要匯出至範本的資源。 您�
 
 從資源群組或資源匯出時，會從每個資源類型的 [已發佈架構](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) 產生匯出的範本。 有時候，架構沒有資源類型的最新版本。 檢查匯出的範本，以確定它包含您需要的屬性。 如有必要，請編輯匯出的範本以使用您需要的 API 版本。
 
-匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](https://aka.ms/exportTemplateViaAdf)。
+匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](../../data-factory/copy-clone-data-factory.md)。
 
-若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要匯出透過傳統部署模型建立的資源，您必須將 [它們遷移至 Resource Manager 部署模型](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 如果您在匯出指出未匯出資源類型的範本時收到警告，您仍然可以探索該資源的屬性。 若要瞭解用來查看資源屬性的不同選項，請參閱 [探索資源屬性](view-resources.md)。 您也可以查看 [Azure REST API](/rest/api/azure/) 中的資源類型。
+
+在您為其建立匯出範本的資源群組中，有200個資源的限制。 如果您嘗試匯出的資源群組具有200以上的資源，則會顯示錯誤訊息 `Export template is not supported for resource groups more than 200 resources` 。
 
 ## <a name="export-template-from-a-resource-group"></a>從資源群組匯出範本
 
@@ -119,7 +121,7 @@ Resource Manager 可讓您挑選一或多個要匯出至範本的資源。 您�
 
    ![選取範本](./media/export-template-portal/show-template-from-history.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何使用 [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、 [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)或 [REST API](/rest/api/resources/resourcegroups/exporttemplate)來匯出範本。
 - 若要瞭解 Resource Manager 範本語法，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。

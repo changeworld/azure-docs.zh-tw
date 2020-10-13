@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: aae05c89cd56ffa16994cb5696054457f1d32bc3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876136"
+ms.locfileid: "91892816"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 入口網站建立站對站連線 (傳統)
 
@@ -109,11 +109,11 @@ ms.locfileid: "91876136"
 
 ## <a name="create-the-connection"></a><a name="CreateConnection"></a>建立連線
 
-在這個步驟中，使用先前步驟中的值，您可以設定共用金鑰並建立連線。 您設定的金鑰必須是 VPN 裝置組態中使用的相同金鑰。
-
 > [!NOTE]
 > 針對傳統部署模型，此步驟不適用於 Azure 入口網站或透過 Azure Cloud Shell。 您必須在本機從桌面使用服務管理 (SM) 版本的 Azure PowerShell Cmdlet。
 >
+
+在這個步驟中，使用先前步驟中的值，您可以設定共用金鑰並建立連線。 您設定的金鑰必須是 VPN 裝置組態中使用的相同金鑰。
 
 1. 設定共用金鑰及建立連線。
 

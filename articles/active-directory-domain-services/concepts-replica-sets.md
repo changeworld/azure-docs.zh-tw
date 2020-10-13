@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 的複本集概念 |Microsoft Docs
 description: 瞭解 Azure Active Directory Domain Services 中的複本集，以及它們如何為需要身分識別服務的應用程式提供冗余。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 698009ee8a57ed5d30e01376b4f2c63b0a27ead8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505727"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961063"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>複本會設定 Azure Active Directory Domain Services (預覽) 的概念和功能
 
@@ -68,7 +68,7 @@ ms.locfileid: "87505727"
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>我可以在與受控網域不同的訂用帳戶中建立複本集嗎？
 
-否。 複本集必須位於與受控網域相同的訂用帳戶中。
+不可以。 複本集必須位於與受控網域相同的訂用帳戶中。
 
 ### <a name="how-many-replica-sets-can-i-create"></a>我可以建立多少個複本集？
 
@@ -84,7 +84,7 @@ ms.locfileid: "87505727"
 
 受控網域中的變更的運作方式就像之前的變更一樣。 您可以使用 [已加入受控網域的 RSAT 工具來建立及使用管理 VM](tutorial-create-management-vm.md)。 您可以視需要將任意數量的管理 Vm 加入受控網域。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用複本集，請 [建立並設定 AZURE AD DS 受控網域][tutorial-create-advanced]。 部署時，請 [建立並使用其他複本集][create-replica-set]。
 

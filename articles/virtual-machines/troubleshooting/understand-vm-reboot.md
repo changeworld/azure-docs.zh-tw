@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508860"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965755"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系統重新啟動
 
@@ -30,7 +30,7 @@ Azure 虛擬機器 (VM) 可能會因不明原因而重新開機，且無法證�
 
 若要為應用程式提供此層級的備援，建議您在可用性設定組中，將兩部以上的 VM 組成群組。 這項組態可以確保在規劃或未規劃的維護事件發生期間，至少有一部 VM 可以使用，且符合 99.95% 的 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)。
 
-如需可用性設定組的詳細資訊，請參閱 [管理 vm 的可用性](../windows/manage-availability.md)
+如需可用性設定組的詳細資訊，請參閱 [管理 vm 的可用性](../manage-availability.md)
 
 ## <a name="resource-health-information"></a>資源健全狀況資訊
 
@@ -72,7 +72,7 @@ Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康�
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure 資訊安全中心與 Windows Update
 
-Azure 資訊安全中心每日監視 Windows 和 Linux VM 是否有遺漏的作業系統更新。 資訊安全中心會根據 Windows VM 上設定的服務，從 Windows Update 或 Windows Server Update Services (WSUS) 擷取可用的安全性和重大更新清單。 資訊安全中心也會檢查 Linux 系統的最新更新。 如果您的 VM 遺漏系統更新，資訊安全中心建議您套用系統更新。 這些系統更新的應用程式是透過 Azure 入口網站中的資訊安全中心控制。 套用某些更新後，可能需要 VM 重新開機。 如需詳細資訊，請參閱[在 Azure 資訊安全中心套用系統更新](../../security-center/security-center-virtual-machine-protection.md)。
+Azure 資訊安全中心每日監視 Windows 和 Linux VM 是否有遺漏的作業系統更新。 資訊安全中心會根據 Windows VM 上設定的服務，從 Windows Update 或 Windows Server Update Services (WSUS) 擷取可用的安全性和重大更新清單。 資訊安全中心也會檢查 Linux 系統的最新更新。 如果您的 VM 遺漏系統更新，資訊安全中心建議您套用系統更新。 這些系統更新的應用程式是透過 Azure 入口網站中的資訊安全中心控制。 套用某些更新後，可能需要 VM 重新開機。 如需詳細資訊，請參閱[在 Azure 資訊安全中心套用系統更新](../../security-center/asset-inventory.md)。
 
 如同內部部署伺服器，Azure 不會將 Windows Update 的更新推送至 Windows VM，因為這些機器預計是由使用者管理。 不過，建議您讓自動安裝 Windows Update 設定保持啟用狀態。 自動安裝 Windows Update 的更新也可能導致在套用更新後發生重新開機。 如需詳細資訊，請參閱 [ Windows 更新常見問題集](https://support.microsoft.com/help/12373/windows-update-faq)。
 

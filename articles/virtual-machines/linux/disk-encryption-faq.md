@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06a84621c4d6abbf361eba232c776c167dc46265
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374028"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970604"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>適用於 Linux 虛擬機器的 Azure 磁碟加密常見問題集
 
@@ -164,5 +164,5 @@ Azure 備份提供一種機制，可以在相同的訂用帳戶和區域內備�
 在本文件中，您已了解有關 Azure 磁碟加密的常見問題。 如需此服務的詳細資訊，請參閱下列文章：
 
 - [Azure 磁碟加密概觀](disk-encryption-overview.md)
-- [在 Azure 資訊安全中心套用磁碟加密](../../security-center/security-center-virtual-machine-protection.md)
+- [在 Azure 資訊安全中心套用磁碟加密](../../security-center/asset-inventory.md)
 - [待用 Azure 資料加密](../../security/fundamentals/encryption-atrest.md)
