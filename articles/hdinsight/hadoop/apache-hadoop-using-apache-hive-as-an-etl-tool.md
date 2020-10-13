@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: 9b9dcd683915c17ae6909ebb88927d275e9a5896
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505279"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>使用 Apache Hive 作為擷取、 轉換和載入 (ETL) 工具
@@ -87,7 +87,7 @@ Hadoop 通常用於將大量文字檔匯入 (例如 Csv) 的 ETL 流程。 或�
 
 如果您需要在 ETL 程序中對資料執行數個作業，請考量要如何管理它們。 使用外部程式所控制的作業（而非方案內的工作流程），決定是否可以平行執行某些作業。 以及偵測每項作業完成的時間。 與使用外部指令碼或自訂程式來嘗試協調一系列作業相比，使用工作流程機制 (例如 Hadoop 內的 Oozie) 可能較簡單。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [大規模 ETL](apache-hadoop-etl-at-scale.md)
 * [`Operationalize a data pipeline`](../hdinsight-operationalize-data-pipeline.md)

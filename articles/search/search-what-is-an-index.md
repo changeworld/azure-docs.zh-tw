@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932877"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立基本搜尋索引
@@ -190,7 +190,7 @@ ms.locfileid: "88932877"
 
 字串欄位通常會標示為「可搜尋」和「可供取出」。 用來縮小搜尋結果的欄位包括「可排序」、「可篩選」和「可 facet」。
 
-|屬性|描述|  
+|屬性|說明|  
 |---------------|-----------------|  
 |供 |可進行全文檢索搜尋，受限於語彙分析，例如，在編製索引期間執行斷字功能。 如果您為可搜尋的欄位設定像是「sunny day」的值，則系統會在內部將它分割為「sunny」和「day」這兩個個別的語彙基元。 如需詳細資訊，請參閱[全文檢索搜尋如何運作](search-lucene-query-architecture.md)。|  
 |篩選 |在 $filter 查詢中加以參考。 類型 `Edm.String` 或 `Collection(Edm.String)` 的可篩選欄位不會執行斷字功能，因此，只會針對完全相符的項目進行比較。 例如，如果您將欄位 f 之類的欄位設為「sunny day」，`$filter=f eq 'sunny'` 就會找不到相符項目，但 `$filter=f eq 'sunny day'` 可以。 |  
@@ -242,14 +242,14 @@ ms.locfileid: "88932877"
 
 ![以屬性選取專案為基礎的索引大小](./media/search-what-is-an-index/realestate-index-size.png "以屬性選取專案為基礎的索引大小")
 
-雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定「已抓取」是否增加索引大小？ 不會。 將欄位新增至 **建議工具** 會增加索引大小嗎？ 是。
+雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定「已抓取」是否增加索引大小？ 否。 將欄位新增至 **建議工具** 會增加索引大小嗎？ 是。
 
 支援篩選和排序的索引會依比例大於僅支援全文檢索搜尋的索引。 這是因為篩選和排序作業會掃描是否有完全相符的專案，而需要存在逐字文字字串。 相較之下，支援全文檢索查詢的可搜尋欄位會使用反向索引，這些索引會以不含整份檔空間的 token 化詞彙來填入。 
 
 > [!Note]
 > 儲存體架構被視為 Azure 認知搜尋的執行詳細資料，而且可能會變更，恕不另行通知。 不保證未來會保存目前的行為。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在了解索引的結構之後，您接著便可以在入口網站中建立第一個索引。 建議您從 [匯 **入資料** ] 嚮導開始，選擇 [ *realestate-範例* ] 或 [ *旅館-範例* 託管資料來源]。
 

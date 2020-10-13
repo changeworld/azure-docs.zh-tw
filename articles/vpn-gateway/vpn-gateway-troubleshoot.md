@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 01/31/2018
 ms.author: cherylmc
 ms.openlocfilehash: 0718a1b211fe6365af30a330fe6a3742cff2ff63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984423"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>針對 VPN 閘道進行疑難排解
@@ -28,6 +28,6 @@ VPN 閘道連線可能會因為各種原因而失敗。 本文包含可協助您
 
 * [站對站連接](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>當您在內部部署網路與 Azure 虛擬網路之間設定站對站 VPN 連線之後，該 VPN 連線突然停止運作且無法重新連線。 本文提供可協助您解決此問題的疑難排解步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您也可以使用這些步驟來[驗證 VNet 和 VPN 連線](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections) \(英文\)。

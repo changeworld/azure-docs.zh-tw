@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313683"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>如何設定虛擬中樞路由
@@ -30,9 +30,9 @@ ms.locfileid: "91313683"
 3. 選取 [ **+ 建立路由表** ] 以開啟 [ **建立路由表** ] 頁面。
 4. 在 [建立路由表] 頁面的 [ **基本** ] 索引標籤上，完成下欄欄位。
 
-   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="[基本] 索引標籤":::
+   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="路由頁面":::
 
-   * **Name**
+   * **名稱**
    * **路由**
    * **路由名稱**
    * **目的地類型**
@@ -41,20 +41,20 @@ ms.locfileid: "91313683"
 
      如果您選取虛擬網路連線，您會看到 **設定靜態路由**。 這是選擇性的設定。 如需詳細資訊，請參閱設定 [靜態路由](about-virtual-hub-routing.md#static)。
 
-      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="下一個躍點":::
+      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="路由頁面":::
 
 5. 選取 [ **標籤** ] 索引標籤以設定標籤名稱。 標籤提供以邏輯方式分組路由表的機制。
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="設定標籤名稱":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="路由頁面":::
 
 6. 選取 [ **關聯** ] 索引標籤，將連接關聯至路由表。
 您會看到 **分支**、 **虛擬網路**和連線的 **目前設定** 。
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="路由表的關聯連接":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="路由頁面":::
 
 7. 選取 [ **傳播** ] 索引標籤，將路由從連接傳播至路由表。
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="傳播路由":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="路由頁面":::
 
 8. 選取 [ **建立** ] 以建立路由表。
 
@@ -70,7 +70,7 @@ ms.locfileid: "91313683"
 
 在 Azure 入口網站中，找出您虛擬中樞的路由表。 按一下 **[...]** 並選取 [ **有效路由** ]，以查看所選路由表所學習到的路由。 從連接到路由表的傳播路由，會自動填入路由表的 **有效路由** 中。 如需詳細資訊，請參閱 [關於有效路由](effective-routes-virtual-hub.md)。
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="查看有效路由" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="路由頁面" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
 
 ## <a name="to-set-up-routing-configuration-for-a-virtual-network-connection"></a><a name="routing-configuration"></a>設定虛擬網路連接的路由設定
 
@@ -82,7 +82,7 @@ ms.locfileid: "91313683"
 1. 針對 **靜態路由**，請設定網路虛擬裝置 (的靜態路由（如果適用) ）。 虛擬 WAN 針對虛擬網路連線中的靜態路由支援單一下一個躍點 IP。 例如，如果您有不同的虛擬裝置用於輸入和輸出流量，則最好讓虛擬裝置在不同的 Vnet 中，並將 Vnet 附加至虛擬中樞。
 
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="設定路由設定" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="路由頁面" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

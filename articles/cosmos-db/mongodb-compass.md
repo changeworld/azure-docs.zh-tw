@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 author: jasonwhowell
 ms.author: jasonh
 ms.openlocfilehash: 15b4e6515f98a4d5a65bb5a56bdd5a5f40f90fe8
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91408606"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 連線至 Azure Cosmos DB 的 MongoDB 版 API
@@ -40,17 +40,17 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
 2. 在 Cosmos DB 中的 [主要/次要連接字串]**** 旁，按一下顯示為 [複製到剪貼簿]**** 的按鈕。 按一下此按鈕，會將您的整個連接字串複製到剪貼簿。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[複製到剪貼簿] 按鈕的螢幕擷取畫面":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
 3. 在您的桌面/電腦上開啟 Compass，並按一下 [連線]****，然後按一下 [連線至...]****。
 
 4. Compass 會自動偵測剪貼簿中的連接字串，並出現提示詢問您是否要使用該連接字串來連線。 按一下 [是]****，如下列螢幕擷取畫面所示。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Compass 連線提示的螢幕擷取畫面":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
 5. 在上述步驟中按一下 [是]**** 後，將會自動填入連接字串中的詳細資料。 請移除在 [複本集名稱]**** 欄位中自動填入的值，以確定該欄位保留為空白。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Compass 連線提示的螢幕擷取畫面":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
 6. 按一下頁面底部的 [連線]****。 您的 Cosmos DB 帳戶和資料庫現在應該會顯示在 MongoDB Compass 內。
 

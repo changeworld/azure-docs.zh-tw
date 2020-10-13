@@ -4,10 +4,10 @@ description: 開始使用 Advisor。
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117857"
 ---
 # <a name="get-started-with-azure-advisor"></a>開始使用 Advisor
@@ -27,7 +27,7 @@ ms.locfileid: "85117857"
 
 1. Advisor 儀表板會顯示所有選取之訂用帳戶的建議摘要。  您可以使用訂用帳戶篩選下拉式清單，選擇您想要顯示建議的訂用帳戶。
 
-1. 若要取得特定類別的建議，請按一下其中一個索引標籤： [**可靠性**]、[**安全性**]、[**效能**] 或 [**成本**]。 
+1. 若要取得特定類別的建議，請按一下其中一個索引標籤： [ **可靠性**]、[ **安全性**]、[ **效能**] 或 [ **成本**]。 
 
    ![Azure 建議程式儀表板](./media/advisor-overview/advisor-dashboard.png)
 
@@ -82,15 +82,15 @@ ms.locfileid: "85117857"
 
     ![Advisor 設定資源範例](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. 按一下 [套用]**** 按鈕。
+1. 按一下 [套用] 按鈕。
 
 ## <a name="configure-low-usage-vm-recommendation"></a>設定低使用量 VM 建議
 
 此程序針對低使用量虛擬機器建議設定平均 CPU 使用率規則。
 
-Advisor 會監視您的虛擬機器使用量7天，然後找出低使用率的虛擬機器。 如果虛擬機器的 CPU 使用率為5% 或更低，而其網路使用率低於2%，或目前的工作負載可由較小的虛擬機器大小容納，則會視為低使用率。
+Advisor 會監視您的虛擬機器使用量7天，然後識別低使用率的虛擬機器。 如果虛擬機器的 CPU 使用率為5% 或更低，而其網路使用率小於2%，或目前的工作負載可由較小的虛擬機器大小容納，則會被視為低使用率。
 
-如果您想要更積極地識別低使用量虛擬機器，您可以依據個別訂用帳戶調整平均 CPU 使用率規則。  CPU 使用率規則可以設定為5%、10%、15% 或20%。
+如果您想要更積極地識別低使用量虛擬機器，您可以依據個別訂用帳戶調整平均 CPU 使用率規則。  CPU 使用率規則可設定為5%、10%、15% 或20%。
 
 > [!NOTE]
 > 若要調整平均 CPU 使用率規則以識別低使用量虛擬機器，您必須是訂用帳戶「擁有者」**。  如果您沒有訂用帳戶或資源群組的必要權限，將其包含或排除的選項在使用者介面中就會停用。 
@@ -123,7 +123,7 @@ Advisor 可讓您下載建議摘要。  您可以將建議下載為 PDF 檔案�
 
 若要深入了解 Advisor，請參閱︰
 
-- [Azure 建議程式簡介](advisor-overview.md)
+- [Azure Advisor 簡介](advisor-overview.md) (機器翻譯)
 - [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 - [Advisor 安全性建議](advisor-security-recommendations.md)
 - [建議程式效能建議](advisor-performance-recommendations.md)

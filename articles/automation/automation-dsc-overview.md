@@ -11,10 +11,10 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079735"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概觀
@@ -53,7 +53,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 所管理的節點會將詳細報告狀態資料傳送至內建提取伺服器。 您可以設定 Azure Automation State Configuration，將此資料傳送至 Log Analytics 工作區。 請參閱[將 Azure Automation State Configuration 報告資料轉送至 Azure 監視器記錄](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用 Azure Automation State Configuration 時，請考慮本節中的需求。
 
@@ -73,7 +73,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 >[!NOTE]
 >[Microsoft Hyper-v Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) 獨立產品 SKU 並未包含 DSC 的實作。 因此，其無法由 PowerShell DSC 或 Azure Automation State Configuration 管理。
 
-針對執行 Linux 的節點，DSC Linux 擴充功能支援[POWERSHELL DSC 檔](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 發行版本。
+針對執行 Linux 的節點，DSC Linux 擴充功能支援 [POWERSHELL DSC 檔](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中所列的所有 Linux 發行版本。
 
 ### <a name="dsc-requirements"></a>DSC 需求
 
@@ -92,7 +92,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 
 如果您使用在節點之間進行通訊的 DSC 資源 (例如 [WaitFor* 資源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource))，則也必須允許節點之間的流量。 請參閱每個 DSC 資源的文件，以了解這些網路需求。
 
-若要瞭解 TLS 1.2 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+若要瞭解 TLS 1.2 的用戶端需求，請參閱 [Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="proxy-support"></a>Proxy 支援
 
@@ -105,7 +105,7 @@ DSC 代理程式的 Proxy 支援適用於 Windows 版本 1809 和更新版本。
 
 #### <a name="dns-records-per-region"></a>每個區域的 DNS 記錄
 
-在定義例外狀況時，建議使用 [[每個區域的 DNS 記錄](how-to/automation-region-dns-records.md)] 資料表中所列的位址。
+建議您在定義例外狀況時，使用 [ [每個區域的 DNS 記錄](how-to/automation-region-dns-records.md) ] 資料表中所列的位址。
 
 ## <a name="next-steps"></a>後續步驟
 

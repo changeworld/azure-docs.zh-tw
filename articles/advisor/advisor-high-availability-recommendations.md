@@ -4,10 +4,10 @@ description: 使用 Azure Advisor 來確保和改善業務關鍵 Azure 部署的
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405185"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 來改善應用程式的可靠性
@@ -113,7 +113,7 @@ Azure Advisor 識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cosmos
 [Azure Connected Machine 的代理程式](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent)會定期更新，並提供錯誤修正、穩定性增強功能和新功能。 我們已識別出無法在最新版電腦代理程式上執行的資源，而此 Advisor 建議建議您將代理程式升級至最新版本，以獲得最佳的 Azure Arc 體驗。
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>請勿覆寫主機名稱以確保網站完整性
-建議程式在設定應用程式閘道時，建議您不要嘗試覆寫主機名稱。 除了用來存取後端的應用程式閘道前端之外，可能會導致 cookie 或重新導向 url 中斷。 請注意，這在所有情況下可能不會發生這種情況，而且某些後端 (例如 REST API 的) 通常會較不敏感。 請確定後端能夠處理此情況，或更新應用程式閘道設定，讓主機名稱不需要針對後端覆寫。 搭配 App Service 使用時，請將自訂功能變數名稱附加至 Web 應用程式，並避免對 *後端使用 azurewebsites.net 主機名稱。* [深入瞭解自訂網域](https://aka.ms/appgw-advisor-usecustomdomain)。
+建議程式在設定應用程式閘道時，建議您不要嘗試覆寫主機名稱。 在應用程式閘道前端上擁有的網域，不是用來存取後端的網域時，可能會導致 Cookie 或重新導向 URL 中斷。 請注意，可能並非所有情況都會如此，而且某些類別的後端 (例如 REST API 的) 一般對此較不敏感。 請確定後端能夠處理這種情況，或更新應用程式閘道設定，讓主機名稱不需要覆寫到後端。 搭配 App Service 使用時，請將自訂功能變數名稱附加至 Web 應用程式，並避免對 *後端使用 azurewebsites.net 主機名稱。* [深入瞭解自訂網域](https://aka.ms/appgw-advisor-usecustomdomain)。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何存取 Advisor 中的高可用性建議
 

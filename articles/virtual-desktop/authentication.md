@@ -9,10 +9,10 @@ ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500295"
 ---
 # <a name="supported-authentication-methods"></a>支援的驗證方法
@@ -27,7 +27,7 @@ Windows 虛擬桌面同時支援 NT LAN Manager (NTLM) ，以及用於工作階�
 
 - Windows 桌面用戶端
     - 使用者名稱和密碼
-    - 智慧卡
+    - Smartcard
     - Windows Hello
 - Windows Store 用戶端
     - 使用者名稱和密碼
@@ -47,12 +47,12 @@ Windows 虛擬桌面同時支援 NT LAN Manager (NTLM) ，以及用於工作階�
 
 Windows 虛擬桌面透過 Azure Active Directory (AD) 支援 [混合](../active-directory/hybrid/whatis-hybrid-identity.md) 式身分識別，包括使用 ACTIVE DIRECTORY 同盟服務 (ADFS) 的同盟身分識別。 由於使用者必須可透過 Azure AD 探索，因此 Windows 虛擬桌面不支援使用 ADFS 進行獨立 Active Directory 部署。
 
-## <a name="single-sign-on-sso"></a>單一登入 (SSO) 
+## <a name="single-sign-on-sso"></a>單一登入 (SSO)
 
 Windows 虛擬桌面目前不支援 SSO) 的 Active Directory 同盟服務 (ADFS。
 
 避免系統提示您輸入工作階段主機認證的唯一方法，就是將它們儲存在用戶端中。 我們建議您只使用安全裝置來進行此操作，以防止其他使用者存取您的資源。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 想知道有哪些其他方法可以保護您的部署安全嗎？ 查看 [安全性最佳作法](security-guide.md)。
