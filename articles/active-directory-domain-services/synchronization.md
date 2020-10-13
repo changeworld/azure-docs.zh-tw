@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 中的同步處理運作方式 |Microsoft Docs
 description: 瞭解從 Azure AD 租使用者或內部部署 Active Directory Domain Services 環境到 Azure Active Directory Domain Services 受控網域的物件和認證，同步處理常式的運作方式。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 683a6c9f31947355a5415a5b8b57b621f717af91
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039835"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967659"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory Domain Services 受控網域中同步處理物件和認證
 
@@ -144,7 +144,7 @@ Azure AD 有更簡單且一般的命名空間。 若要讓使用者可靠地存�
 
 針對使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的混合式使用者帳戶，您必須 [設定 Azure AD Connect，以同步處理 NTLM 和 Kerberos 相容格式的密碼雜湊](tutorial-configure-password-hash-sync.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關密碼同步化細節的詳細資訊，請參閱 Azure AD Connect 中的 [密碼雜湊同步處理的運作方式](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context)。
 

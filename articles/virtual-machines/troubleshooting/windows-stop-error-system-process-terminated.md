@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342774"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976992"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows 停止錯誤-0xC000021A 狀態系統進程已終止
 
@@ -27,7 +27,7 @@ ms.locfileid: "91342774"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，螢幕擷取畫面會顯示作業系統在開機期間發生錯誤的訊息，並顯示下列訊息：
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，螢幕擷取畫面會顯示作業系統在開機期間發生錯誤的訊息，並顯示下列訊息：
 
 **您的電腦遇到問題，需要重新開機。我們只是收集一些錯誤資訊，然後您可以重新開機。 ( # #% 完成) 如果您想要深入瞭解，您可以稍後在線上搜尋此錯誤： 0xC000021a**。
 
@@ -52,17 +52,17 @@ ms.locfileid: "91342774"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>將 OS 磁片連結至新的修復 VM
 
-1.  使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
+1.  使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
 2.  使用 **遠端桌面連線**連接到修復 VM。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找出傾印檔案並提交支援票證
 
 1.  在修復 VM 上，移至連接的 OS 磁片中的 [windows] 資料夾。 如果指派給已連結 OS 磁片的磁碟機號是 F，請移至 F:\Windows。
 2.  找出記憶體 dmp 檔案，然後使用記憶體傾印檔案來 [提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。
-3.  如果您找不到找出記憶體 dmp 檔案的問題，您可能會想要改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) 。 您可以遵循本指南，[在這裡使用 NMI 呼叫來產生損毀傾印檔案](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
+3.  如果您找不到找出記憶體 dmp 檔案的問題，您可能會想要改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 您可以遵循本指南，[在這裡使用 NMI 呼叫來產生損毀傾印檔案](/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需進一步的疑難排解資訊，請參閱針對 [常見的開機錯誤進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-error-troubleshoot) ，或 [將 OS 磁片連結至復原 VM，以針對 Windows VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-windows)。 您也應該熟悉 [如何使用開機診斷來針對虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。
-- 如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。
-- 如果您無法連線至您的 VM，請參閱針對 [AZURE VM 的 RDP 連線進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
+- 如需進一步的疑難排解資訊，請參閱針對 [常見的開機錯誤進行疑難排解](./boot-error-troubleshoot.md) ，或 [將 OS 磁片連結至復原 VM，以針對 Windows VM 進行疑難排解](./troubleshoot-recovery-disks-windows.md)。 您也應該熟悉 [如何使用開機診斷來針對虛擬機器進行疑難排解](./boot-diagnostics.md)。
+- 如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
+- 如果您無法連線至您的 VM，請參閱針對 [AZURE VM 的 RDP 連線進行疑難排解](./troubleshoot-rdp-connection.md)。

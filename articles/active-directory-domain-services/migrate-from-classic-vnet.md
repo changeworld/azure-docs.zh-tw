@@ -1,20 +1,20 @@
 ---
 title: 從傳統虛擬網路遷移 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何將現有的 Azure AD Domain Services 受控網域從傳統虛擬網路模型遷移至以 Resource Manager 為基礎的虛擬網路。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.author: iainfou
-ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: joflore
+ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266899"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968169"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>將 Azure Active Directory Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
 
@@ -174,7 +174,7 @@ Azure AD DS 通常會使用位址範圍中的前兩個可用 IP 位址，但不�
 
     請確定網路設定不會封鎖 Azure AD DS 所需的必要端口。 傳統虛擬網路和 Resource Manager 的虛擬網路都必須開啟埠。 這些設定包括路由表 (但不建議使用路由表) 和網路安全性群組。
 
-    Azure AD DS 需要網路安全性群組來保護受控網域所需的埠，並封鎖所有其他連入流量。 此網路安全性群組可作為鎖定受控網域存取權的額外一層保護。 若要查看所需的埠，請參閱 [網路安全性群組和必要的埠][network-ports]。
+    Azure AD DS 需要一個網路安全性群組來保護受控網域所需的連接埠，並封鎖所有其他的傳入流量。 此網路安全性群組可作為鎖定受控網域存取權的額外一層保護。 若要檢視所需的連接埠，請參閱[網路安全性群組與必要連接埠][network-ports]。
 
     如果您使用安全 LDAP，請在網路安全性群組中新增規則，以允許 *TCP* 埠 *636*的連入流量。 如需詳細資訊，請參閱 [鎖定透過網際網路的安全 LDAP 存取](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 

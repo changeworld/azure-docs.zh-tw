@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336117"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978334"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>適用於 Linux 的虛擬機器擴充功能和功能
 
@@ -37,7 +37,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Linux 的自訂指令碼擴充可讓任何 Bash 指令碼在虛擬機器上執行。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Linux VM 自訂指令碼延伸模組](custom-script-linux.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要處理虛擬機器上的擴充，您需要安裝 Azure Linux 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -65,7 +65,7 @@ Linux 代理程式可在多種作業系統上執行，但擴充功能作業系�
 > [!IMPORTANT]
 > 如果您已使用客體防火牆封鎖對 168.63.129.16** 的存取，則無論前述條件為何，擴充功能都會故障。
 
-代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要存取 Azure 儲存體的擴充功能，您可以使用[儲存體](../../virtual-network/security-overview.md#service-tags)適用的 Azure NSG 服務標記來允許存取。
+代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要存取 Azure 儲存體的擴充功能，您可以使用[儲存體](../../virtual-network/network-security-groups-overview.md#service-tags)適用的 Azure NSG 服務標記來允許存取。
 
 Linux 代理程式必須有 Proxy 伺服器支援，才能重新導向代理程式流量要求。 不過，此 Proxy 伺服器支援不會套用擴充功能。 您必須個別設定每個擴充功能，才能與 Proxy 搭配使用。
 
@@ -403,7 +403,7 @@ az vm extension delete \
 
 ## <a name="common-vm-extension-reference"></a>常見的 VM 擴充功能參考
 
-| 擴充功能名稱 | 說明 | 詳細資訊 |
+| 擴充功能名稱 | 描述 | 詳細資訊 |
 | --- | --- | --- |
 | Linux 的自訂指令碼擴充功能 |對「Azure 虛擬機器」執行指令碼 |[適用于 Linux 的自訂腳本擴充功能](custom-script-linux.md) |
 | VM 存取擴充功能 |重新取得對「Azure 虛擬機器」的存取權 |[VM 存取擴充功能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

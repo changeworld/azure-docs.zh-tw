@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370194"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975276"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署至專用主機
  
 
-本文會引導您瞭解如何建立 Azure [專用主機](dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
+本文會引導您瞭解如何建立 Azure [專用主機](../dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
 
 請確定您已安裝 Azure CLI 2.0.70 或更新版本，並已使用 `az login`登入 Azure 帳戶。 
 
@@ -319,8 +319,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需詳細資訊，請參閱[專用主機](dedicated-hosts.md)概觀。
+- 如需詳細資訊，請參閱[專用主機](../dedicated-hosts.md)概觀。
 
-- 您也可以使用 [Azure 入口網站](dedicated-hosts-portal.md)來建立專用主機。
+- 您也可以使用 [Azure 入口網站](../dedicated-hosts-portal.md)來建立專用主機。
 
 - [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，範例中使用區域和容錯網域來獲得區域中的最大復原。

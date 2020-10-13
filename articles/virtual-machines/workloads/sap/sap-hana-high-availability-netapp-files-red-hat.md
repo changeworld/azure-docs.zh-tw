@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598079"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978164"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>SAP Hana Red Hat Enterprise Linux 上的 Azure NetApp Files 向上擴充的高可用性
 
@@ -93,9 +93,9 @@ ms.locfileid: "91598079"
 
 ## <a name="overview"></a>概觀
 
-傳統上，在擴大環境中，SAP Hana 的所有檔案系統都會從本機儲存體掛接。 在 Red Hat Enterprise Linux 上設定 SAP Hana 系統複寫的高可用性時，已發佈于在[RHEL 上設定 SAP Hana 系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)複寫的指南
+傳統上，在擴大環境中，SAP Hana 的所有檔案系統都會從本機儲存體掛接。 在 Red Hat Enterprise Linux 上設定 SAP Hana 系統複寫的高可用性時，已發佈于在[RHEL 上設定 SAP Hana 系統](./sap-hana-high-availability-rhel.md)複寫的指南
 
-為了在 [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) NFS 共用上達成高可用性系統的 SAP Hana 高可用性，我們需要叢集中的一些額外資源設定，以在一個節點失去 ANF 上 NFS 共用的存取權時，將 HANA 資源復原。  叢集會管理 NFS 裝載，讓它能夠監視資源的健康情況。 系統會強制執行檔案系統裝載和 SAP Hana 資源之間的相依性。  
+為了在 [Azure NetApp Files](../../../azure-netapp-files/index.yml) NFS 共用上達成高可用性系統的 SAP Hana 高可用性，我們需要叢集中的一些額外資源設定，以在一個節點失去 ANF 上 NFS 共用的存取權時，將 HANA 資源復原。  叢集會管理 NFS 裝載，讓它能夠監視資源的健康情況。 系統會強制執行檔案系統裝載和 SAP Hana 資源之間的相依性。  
 
 ![ANF 上的 HA 擴大 SAP Hana](./media/sap-hana-high-availability-rhel/sap-hana-scale-up-netapp-files-red-hat.png)
 
@@ -125,29 +125,29 @@ SAP Hana 系統複寫設定會使用專用的虛擬主機名稱和虛擬 IP 位�
 
 ## <a name="set-up-the-azure-netapp-file-infrastructure"></a>設定 Azure NetApp File 基礎結構
 
-繼續進行 Azure NetApp Files 基礎結構的設定之前，請先熟悉 Azure [Netapp Files 檔](https://docs.microsoft.com/azure/azure-netapp-files/)。
+繼續進行 Azure NetApp Files 基礎結構的設定之前，請先熟悉 Azure [Netapp Files 檔](../../../azure-netapp-files/index.yml)。
 
 Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)中使用。 查看您選取的 Azure 區域是否提供 Azure NetApp Files。
 
 如需 azure 區域之 Azure NetApp Files 可用性的詳細資訊，請參閱 azure [區域的 Azure Netapp Files 可用性](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)。
 
-在您部署 Azure NetApp Files 之前，請先向 Azure netapp files 註冊以 [註冊](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)azure netapp files 指示，以要求登入 Azure netapp files。
+在您部署 Azure NetApp Files 之前，請先向 Azure netapp files 註冊以 [註冊](../../../azure-netapp-files/azure-netapp-files-register.md)azure netapp files 指示，以要求登入 Azure netapp files。
 
 ### <a name="deploy-azure-netapp-files-resources"></a>部署 Azure NetApp Files 資源
 
-下列指示假設您已部署 [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。 將裝載 Azure NetApp Files 資源的 Azure NetApp Files 資源和 Vm，必須部署在相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。
+下列指示假設您已部署 [Azure 虛擬網路](../../../virtual-network/virtual-networks-overview.md)。 將裝載 Azure NetApp Files 資源的 Azure NetApp Files 資源和 Vm，必須部署在相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。
 
-1. 如果您尚未部署資源，請要求在 [Azure NetApp Files 上架](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)。
+1. 如果您尚未部署資源，請要求在 [Azure NetApp Files 上架](../../../azure-netapp-files/azure-netapp-files-register.md)。
 
-2. 遵循 [建立 netapp 帳戶](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)中的指示，在您選取的 Azure 區域中建立 NetApp 帳戶。
+2. 遵循 [建立 netapp 帳戶](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)中的指示，在您選取的 Azure 區域中建立 NetApp 帳戶。
 
-3.  遵循 [設定 Azure Netapp files 容量](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)集區中的指示，設定 Azure netapp files 容量集區。
+3.  遵循 [設定 Azure Netapp files 容量](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)集區中的指示，設定 Azure netapp files 容量集區。
 
-    本文所提供的 HANA 架構在 *Ultra* 服務層級使用單一 Azure NetApp Files 容量集區。 針對 Azure 上的 HANA 工作負載，我們建議使用 Azure NetApp Files *Ultra* 或 *Premium* [服務層級](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)。
+    本文所提供的 HANA 架構在 *Ultra* 服務層級使用單一 Azure NetApp Files 容量集區。 針對 Azure 上的 HANA 工作負載，我們建議使用 Azure NetApp Files *Ultra* 或 *Premium* [服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)。
 
-4.  將子網委派給 Azure NetApp Files，如將 [子網委派至 Azure Netapp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的指示所述。
+4.  將子網委派給 Azure NetApp Files，如將 [子網委派至 Azure Netapp files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的指示所述。
 
-5.  遵循 [建立適用于 Azure Netapp files 的 NFS 磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區中的指示，部署 Azure netapp files 磁片區。
+5.  遵循 [建立適用于 Azure Netapp files 的 NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區中的指示，部署 Azure netapp files 磁片區。
 
     當您部署磁片區時，請務必選取 Nfsv4.1 4.1 版。 在指定的 Azure NetApp Files 子網路中部署磁碟區。 Azure NetApp 磁碟區的 IP 位址會自動指派。
 
@@ -171,10 +171,10 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
 - 容量集區的最小值是 4 tib (TiB) 。
 - 磁片區大小下限為 100 32,767 gib (GiB) 。
-- Azure NetApp Files 和將掛接 Azure NetApp Files 磁片區的所有虛擬機器，都必須位於相同的 Azure 虛擬網路或相同區域中的 [對等互連虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 中。
+- Azure NetApp Files 和將掛接 Azure NetApp Files 磁片區的所有虛擬機器，都必須位於相同的 Azure 虛擬網路或相同區域中的 [對等互連虛擬網路](../../../virtual-network/virtual-network-peering-overview.md) 中。
 - 選取的虛擬網路必須有委派給 Azure NetApp Files 的子網。
-- Azure NetApp Files 磁片區的輸送量是磁片區配額和服務層級的功能，如 [Azure NetApp Files 的服務層級](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 當您調整 HANA Azure NetApp 磁片區的大小時，請確定產生的輸送量符合 HANA 系統需求。
-- 使用 Azure NetApp Files [匯出原則](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)，您可以控制允許的用戶端、存取類型 (讀寫、唯讀等) 。
+- Azure NetApp Files 磁片區的輸送量是磁片區配額和服務層級的功能，如 [Azure NetApp Files 的服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 當您調整 HANA Azure NetApp 磁片區的大小時，請確定產生的輸送量符合 HANA 系統需求。
+- 使用 Azure NetApp Files [匯出原則](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)，您可以控制允許的用戶端、存取類型 (讀寫、唯讀等) 。
 - Azure NetApp Files 功能尚未感知區域。 目前，此功能不會部署在 Azure 區域中的所有可用性區域。 請留意某些 Azure 區域中可能出現的延遲情形。
 
 > [!IMPORTANT]
@@ -182,7 +182,7 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
 ### <a name="sizing-of-hana-database-on-azure-netapp-files"></a>Azure NetApp Files 上 HANA 資料庫的大小調整
 
-Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功能，如 [Azure NetApp Files 的服務層級](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。
+Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功能，如 [Azure NetApp Files 的服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。
 
 當您在 Azure 中設計 SAP 的基礎結構時，請留意 SAP 的一些最低儲存體需求，這些需求會轉譯為最小輸送量特性：
 
@@ -190,7 +190,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 - 至少 400 MB/s 的讀取活動，以/hana/data 16 MB 和 64 MB 的 i/o 大小。
 - 至少 250 MB/s 的寫入活動，適用于/hana/data 16 MB 和 64 MB 的 i/o 大小。
 
-每 1 TiB 磁碟區配額的 [Azure NetApp Files 輸送量限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)如下：
+每 1 TiB 磁碟區配額的 [Azure NetApp Files 輸送量限制](../../../azure-netapp-files/azure-netapp-files-service-levels.md)如下：
 
 - 進階儲存體層-64 MiB/s。
 - Ultra 儲存層-128 MiB/s。
@@ -256,7 +256,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
         1.  選取 [確定]。
 
 > [!NOTE] 
-> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) 標準 Azure 負載平衡器的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性情節中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。
+> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) 標準 Azure 負載平衡器的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性情節中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。
 
 9. 或者，如果您的情節要求使用基本負載平衡器，請遵循下列設定步驟：
     1.  設定負載平衡器。 首先，建立前端 IP 集區：
@@ -308,7 +308,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 如需 SAP Hana 所需埠的詳細資訊，請參閱[SAP Hana 租使用者資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或 SAP 附注[2388694](https://launchpad.support.sap.com/#/notes/2388694)中的[租使用者資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)連線一章。
 
 > [!IMPORTANT]
-> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。 另請參閱 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421)。
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](../../../load-balancer/load-balancer-custom-probe-overview.md)。 另請參閱 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421)。
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>掛接 Azure NetApp Files 磁片區
 
@@ -457,7 +457,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 
 ## <a name="configure-sap-hana-system-replication"></a>設定 SAP Hana 系統複寫
 
-依照設定 [SAP Hana 系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) 複寫中的步驟來設定 SAP Hana 系統複寫。 
+依照設定 [SAP Hana 系統](./sap-hana-high-availability-rhel.md#configure-sap-hana-20-system-replication) 複寫中的步驟來設定 SAP Hana 系統複寫。 
 
 ## <a name="cluster-configuration"></a>叢集組態
 
@@ -465,7 +465,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 
 ### <a name="create-a-pacemaker-cluster"></a>建立 Pacemaker 叢集
 
-遵循在 Azure [Red Hat Enterprise Linux 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) 中的步驟，建立此 HANA 伺服器的基本 Pacemaker 叢集。
+遵循在 Azure [Red Hat Enterprise Linux 上設定 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 中的步驟，建立此 HANA 伺服器的基本 Pacemaker 叢集。
 
 ### <a name="configure-filesystem-resources"></a>設定 filesystem 資源
 
@@ -540,7 +540,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 
 ### <a name="configure-sap-hana-cluster-resources"></a>設定 SAP Hana 叢集資源
 
-1. 遵循 [建立 SAP Hana 叢集資源](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#create-sap-hana-cluster-resources) 中的步驟，在叢集中建立 SAP Hana 資源。 建立 SAP Hana 資源之後，我們必須在 SAP Hana 資源和 (NFS 裝載的檔案系統之間建立位置規則條件約束) 
+1. 遵循 [建立 SAP Hana 叢集資源](./sap-hana-high-availability-rhel.md#create-sap-hana-cluster-resources) 中的步驟，在叢集中建立 SAP Hana 資源。 建立 SAP Hana 資源之後，我們必須在 SAP Hana 資源和 (NFS 裝載的檔案系統之間建立位置規則條件約束) 
 
 2. **[1]** 設定 SAP Hana 資源與 NFS 裝載之間的條件約束
 
@@ -687,4 +687,4 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
          vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hanadb2
     ```
 
-   我們建議您也在 [RHEL 上執行安裝 SAP Hana 系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)複寫中所述的測試，以徹底測試 SAP Hana 叢集設定。   
+   我們建議您也在 [RHEL 上執行安裝 SAP Hana 系統](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)複寫中所述的測試，以徹底測試 SAP Hana 叢集設定。

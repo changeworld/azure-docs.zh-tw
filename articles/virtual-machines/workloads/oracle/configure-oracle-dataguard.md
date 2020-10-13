@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: f8a40f87b8fdaa2adf445392bd598dd8133aae4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4182b983b976949103d4eae7dbbf6b08bc164c53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335896"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978997"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>建立可用性設定組
 
-建立可用性設定組是選擇性的，但我們仍建議您這麼做。 如需詳細資訊，請參閱 [Azure 可用性設定組指導方針](../../windows/infrastructure-example.md)。
+建立可用性設定組是選擇性的，但我們仍建議您這麼做。 如需詳細資訊，請參閱 [Azure 可用性設定組指導方針](/previous-versions/azure/virtual-machines/windows/infrastructure-example)。
 
 ```azurecli
 az vm availability-set create \

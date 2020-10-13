@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757464"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952245"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>將使用方式資料、計量和記錄上傳至 Azure 監視器
 
 您可以定期匯出使用量資訊，以便進行計費、監視計量和記錄，然後將其上傳至 Azure。  這三種資料類型的匯出和上傳也會在 Azure 中建立及更新資料控制器、SQL 受控實例和于 postgresql 超大規模伺服器群組資源。
 
 > [!NOTE] 
-在預覽期間，使用 Azure Arc 啟用的資料服務不會產生任何費用。
+> 在預覽期間，使用 Azure Arc 啟用的資料服務不會產生任何費用。
 
 ## <a name="prerequisites"></a>必要條件
 

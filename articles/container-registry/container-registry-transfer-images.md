@@ -2,14 +2,14 @@
 title: 傳送構件
 description: 使用 Azure 儲存體帳戶建立傳送管線，將映射或其他成品的集合從一個容器登錄傳送至另一個登錄
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253406"
+ms.locfileid: "91932595"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將構件傳送至另一個登錄
 
@@ -21,7 +21,7 @@ ms.locfileid: "91253406"
 * Blob 會從來源儲存體帳戶複製到目標儲存體帳戶
 * 目標儲存體帳戶中的 blob 會匯入為目標登錄中的構件。 您可以設定匯入管線，在目標儲存體中的成品 blob 更新時觸發。
 
-傳輸非常適合用來在實體中斷連線的雲端中的兩個 Azure container registry 之間複製內容，每個雲端中的儲存體帳戶 mediated。 若要從連線雲端中的容器登錄（包括 Docker Hub 和其他雲端廠商）複製映射，建議您改為匯 [入映射](container-registry-import-images.md) 。
+傳輸非常適合用來在實體中斷連線的雲端中的兩個 Azure container registry 之間複製內容，每個雲端中的儲存體帳戶 mediated。 如果您想要從連線雲端中的容器登錄（包括 Docker Hub 和其他雲端廠商）複製映射，建議您匯 [入映射](container-registry-import-images.md) 。
 
 在本文中，您會使用 Azure Resource Manager 範本部署來建立和執行傳送管線。 Azure CLI 用來布建相關聯的資源，例如儲存體秘密。 建議使用 Azure CLI 2.2.0 版或更新版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
@@ -32,11 +32,18 @@ ms.locfileid: "91253406"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **容器** 登錄-您需要具有要傳送之成品的現有來源登錄，以及目標登錄。 ACR 傳輸旨在跨實體中斷連線的雲端進行移動。 進行測試時，來源和目標登錄可以位於相同或不同的 Azure 訂用帳戶、Active Directory 租使用者或雲端。 如果您需要建立登錄，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。 
-* **儲存體帳戶** -在訂用帳戶和您選擇的位置中建立來源和目標儲存體帳戶。 基於測試目的，您可以使用與來源和目標登錄相同的訂用帳戶或訂用帳戶。 在跨雲端案例中，您通常會在每個雲端中建立個別的儲存體帳戶。 如有需要，請使用 [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) 或其他工具建立儲存體帳戶。 
+* **容器** 登錄-您需要具有要傳送之成品的現有來源登錄，以及目標登錄。 ACR 傳輸旨在跨實體中斷連線的雲端進行移動。 進行測試時，來源和目標登錄可以位於相同或不同的 Azure 訂用帳戶、Active Directory 租使用者或雲端。 
+
+   如果您需要建立登錄，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。 
+* **儲存體帳戶** -在訂用帳戶和您選擇的位置中建立來源和目標儲存體帳戶。 基於測試目的，您可以使用與來源和目標登錄相同的訂用帳戶或訂用帳戶。 在跨雲端案例中，您通常會在每個雲端中建立個別的儲存體帳戶。 
+
+  如有需要，請使用 [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) 或其他工具建立儲存體帳戶。 
 
   針對每個帳戶中的成品傳輸建立 blob 容器。 例如，建立名為 *transfer*的容器。 有兩個以上的傳送管線可以共用相同的儲存體帳戶，但應該使用不同的儲存體容器範圍。
-* **金鑰保存庫** -需要有金鑰保存庫，才能儲存用來存取來源和目標儲存體帳戶的 SAS 權杖秘密。 在與您的來源和目標登錄相同的 Azure 訂用帳戶或訂用帳戶中建立來源和目標金鑰保存庫。 如有需要，請使用 [Azure CLI](../key-vault/secrets/quick-create-cli.md) 或其他工具來建立金鑰保存庫。
+* **金鑰保存庫** -需要有金鑰保存庫，才能儲存用來存取來源和目標儲存體帳戶的 SAS 權杖秘密。 在與您的來源和目標登錄相同的 Azure 訂用帳戶或訂用帳戶中建立來源和目標金鑰保存庫。 基於示範目的，本文中使用的範本和命令也會假設來源和目標金鑰保存庫分別位於與來源和目標登錄相同的資源群組中。 這種情況不需要使用一般資源群組，但可簡化本文中使用的範本和命令。
+
+   如有需要，請使用 [Azure CLI](../key-vault/secrets/quick-create-cli.md) 或其他工具來建立金鑰保存庫。
+
 * **環境變數** -如本文中所示的命令，請為來源和目標環境設定下列環境變數。 所有範例都是針對 Bash shell 進行格式化。
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -62,7 +69,7 @@ ms.locfileid: "91253406"
 
 ### <a name="things-to-know"></a>須知事項
 * ExportPipeline 和 ImportPipeline 通常會在與來源和目的地雲端相關聯 Active Directory 租使用者不同的租使用者中。 這種情況下，匯出和匯入資源需要個別的受控識別和金鑰保存庫。 基於測試目的，這些資源可以放在相同的雲端中，共用身分識別。
-* 管線範例會建立系統指派的受控識別，以存取金鑰保存庫秘密。 ExportPipelines 和 ImportPipelines 也支援使用者指派的身分識別。 在此情況下，您必須使用身分識別的存取原則來設定金鑰保存庫。 
+* 依預設，ExportPipeline 和 ImportPipeline 範本都會啟用系統指派的受控識別，以存取金鑰保存庫秘密。 ExportPipeline 和 ImportPipeline 範本也支援您提供的使用者指派身分識別。 
 
 ## <a name="create-and-store-sas-keys"></a>建立和儲存 SAS 金鑰
 
@@ -152,7 +159,13 @@ az keyvault secret set \
 
 ### <a name="create-the-resource"></a>建立資源
 
-執行 [az deployment group create][az-deployment-group-create] 來建立資源。 下列範例會命名部署 *exportPipeline*。
+執行 [az deployment group create][az-deployment-group-create] 來建立名為 *exportPipeline* 的資源，如下列範例所示。 根據預設，使用第一個選項時，範例範本會在 ExportPipeline 資源中啟用系統指派的身分識別。 
+
+使用第二個選項時，您可以使用使用者指派的身分識別來提供資源。 未顯示 (建立使用者指派的身分識別。 ) 
+
+無論使用哪一個選項，範本都會設定身分識別，以存取匯出金鑰保存庫中的 SAS 權杖。 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>選項1：建立資源並啟用系統指派的身分識別
 
 ```azurecli
 az deployment group create \
@@ -162,10 +175,23 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>選項2：建立資源並提供使用者指派的身分識別
+
+在此命令中，請提供使用者指派之身分識別的資源識別碼做為額外的參數。
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
 在命令輸出中，記下 `id` 管線 () 的資源識別碼。 您可以在環境變數中儲存此值，以便稍後藉由執行 [az deployment group show][az-deployment-group-show]來使用。 例如：
 
 ```azurecli
-EXPORT_RES_ID=$(az group deployment show \
+EXPORT_RES_ID=$(az deployment group show \
   --resource-group $SOURCE_RG \
   --name exportPipeline \
   --query 'properties.outputResources[1].id' \
@@ -198,20 +224,39 @@ EXPORT_RES_ID=$(az group deployment show \
 
 ### <a name="create-the-resource"></a>建立資源
 
-執行 [az deployment group create][az-deployment-group-create] 來建立資源。
+執行 [az deployment group create][az-deployment-group-create] 來建立名為 *importPipeline* 的資源，如下列範例所示。 根據預設，使用第一個選項時，範例範本會在 ImportPipeline 資源中啟用系統指派的身分識別。 
+
+使用第二個選項時，您可以使用使用者指派的身分識別來提供資源。 未顯示 (建立使用者指派的身分識別。 ) 
+
+無論使用哪一個選項，範本都會設定身分識別，以存取匯入金鑰保存庫中的 SAS 權杖。 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>選項1：建立資源並啟用系統指派的身分識別
 
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
   --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json \
-  --name importPipeline
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json 
 ```
 
-如果您打算手動執行匯入，請記下管線 () 的資源識別碼 `id` 。 您可以在環境變數中儲存此值，以便稍後藉由執行 [az deployment group show][az-deployment-group-show]來使用。 例如：
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>選項2：建立資源並提供使用者指派的身分識別
+
+在此命令中，請提供使用者指派之身分識別的資源識別碼做為額外的參數。
 
 ```azurecli
-IMPORT_RES_ID=$(az group deployment show \
+az deployment group create \
+  --resource-group $TARGET_RG \
+  --template-file azuredeploy.json \
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
+如果您打算手動執行匯入，請記下管線 () 的資源識別碼 `id` 。 您可以執行 [az deployment group show][az-deployment-group-show] 命令，將此值儲存在環境變數中，以供稍後使用。 例如：
+
+```azurecli
+IMPORT_RES_ID=$(az deployment group show \
   --resource-group $TARGET_RG \
   --name importPipeline \
   --query 'properties.outputResources[1].id' \
@@ -246,12 +291,22 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+若要稍後使用，請將管線執行的資源識別碼儲存在環境變數中：
+
+```azurecli
+EXPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $SOURCE_RG \
+  --name exportPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+```
+
 可能需要幾分鐘的時間才能匯出成品。 當部署順利完成時，請在來源儲存體帳戶的 *傳輸* 容器中列出匯出的 blob，以確認成品匯出。 例如，執行 [az storage blob list][az-storage-blob-list] 命令：
 
 ```azurecli
 az storage blob list \
-  --account-name $SOURCE_SA
-  --container transfer
+  --account-name $SOURCE_SA \
+  --container transfer \
   --output table
 ```
 
@@ -300,11 +355,21 @@ az acr repository list --name <target-registry-name>
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
+  --name importPipelineRun \
   --template-file azuredeploy.json \
   --parameters azuredeploy.parameters.json
 ```
 
-當部署順利完成時，請列出目標容器登錄中的存放庫，以確認構件匯入。 例如，執行 [az acr repository list][az-acr-repository-list]：
+若要稍後使用，請將管線執行的資源識別碼儲存在環境變數中：
+
+```azurecli
+IMPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $TARGET_RG \
+  --name importPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+
+When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -329,20 +394,20 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>刪除管線資源
 
-若要刪除管線資源，請使用 [az deployment group delete][az-deployment-group-delete] 命令刪除其 Resource Manager 部署。 下列範例會刪除在本文中建立的管線資源：
+下列範例命令會使用 [az resource delete][az-resource-delete] 來刪除在本文中建立的管線資源。 資源識別碼先前儲存在環境變數中。
 
-```azurecli
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipeline
+```
+# Delete export resources
+az resource delete \
+--resource-group $SOURCE_RG \
+--ids $EXPORT_RES_ID $EXPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipelineRun
-
-az deployment group delete \
-  --resource-group $TARGET_RG \
-  --name importPipeline  
+# Delete import resources
+az resource delete \
+--resource-group $TARGET_RG \
+--ids $IMPORT_RES_ID $IMPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 ```
 
 ## <a name="troubleshooting"></a>疑難排解
@@ -374,8 +439,6 @@ az deployment group delete \
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
 [az-login]: /cli/azure/reference-index#az-login
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
 [az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
@@ -387,3 +450,4 @@ az deployment group delete \
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
+[az-resource-delete]: /cli/azure/resource#az-resource-delete

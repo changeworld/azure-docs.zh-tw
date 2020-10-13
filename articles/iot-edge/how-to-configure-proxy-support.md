@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500363"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966163"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊
 
@@ -25,7 +25,7 @@ IoT Edge 裝置會傳送 HTTPS 要求以和 IoT 中樞通訊。 如果您的裝�
 
 1. [**在裝置上安裝 IoT Edge 執行時間**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge 安裝腳本會從網際網路提取套件和檔案，因此您的裝置必須透過 proxy 伺服器進行通訊，以提出這些要求。 針對 Windows 裝置，安裝腳本也會提供 [離線安裝](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) 選項。
+   IoT Edge 安裝腳本會從網際網路提取套件和檔案，因此您的裝置必須透過 proxy 伺服器進行通訊，以提出這些要求。 針對 Windows 裝置，安裝腳本也會提供離線安裝選項。
 
    當您第一次設定 IoT Edge 裝置時，此步驟是一次性的處理常式。 當您更新 IoT Edge 執行時間時，也需要相同的連接。
 
@@ -65,7 +65,7 @@ Proxy URL 採用下列格式：**protocol**://**proxy_host**:**proxy_port**。
 
 ### <a name="linux-devices"></a>Linux 裝置
 
-若您正於 Linux 裝置上安裝 IoT Edge 執行階段，請設定套件管理員以 Proxy 伺服器存取安裝套件。 例如，[設定 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy) \(英文\)。 設定套件管理員之後，請依照往常在 [Linux 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-linux.md) 中的指示進行。
+若您正於 Linux 裝置上安裝 IoT Edge 執行階段，請設定套件管理員以 Proxy 伺服器存取安裝套件。 例如，[設定 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy) \(英文\)。 設定套件管理員之後，請依照往常的 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md) 時間中的指示進行。
 
 ### <a name="windows-devices"></a>Windows 裝置
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-如需 Proxy 參數的詳細資訊，請參閱 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 如需 Windows 安裝選項（包括離線安裝）的詳細資訊，請參閱 [在 windows 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-windows.md)。
+如需 Proxy 參數的詳細資訊，請參閱 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 如需 Windows 安裝參數的詳細資訊，請參閱 [windows 上適用于 IoT Edge 的 PowerShell 腳本](reference-windows-scripts.md)。
 
 ## <a name="configure-the-daemons"></a>設定精靈
 

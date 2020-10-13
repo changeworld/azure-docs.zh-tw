@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: b1a154e562db9f8fdd74300bb8eb3d6839cb2ef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d20f02b846c7ae47aef395694aef2bc5732957e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321917"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978640"
 ---
 # <a name="azure-vm-powershell-samples-for-creating-and-managing-linux-vms"></a>用來建立和管理 Linux Vm 的 Azure VM PowerShell 範例
 
@@ -36,6 +36,6 @@ ms.locfileid: "89321917"
 | [將快照集複製到相同或不同的訂用帳戶](../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 將快照集複製到與父快照集相同區域中相同或不同的訂用帳戶。 |
 |**監視虛擬機器**||
 | [透過 Azure 監視器記錄來監視 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 建立虛擬機器、安裝 Azure Log Analytics 代理程式，並在 Log Analytics 工作區中註冊 VM。  |
-| [將受控磁碟複製到相同或不同的訂用帳戶](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 將受控磁碟複製到與父受控磁碟相同區域中相同或不同的訂用帳戶。
+| [將受控磁碟複製到相同或不同的訂用帳戶](../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | 將受控磁碟複製到與父受控磁碟相同區域中相同或不同的訂用帳戶。
 | [使用 PowerShell 收集訂用帳戶中所有 VM 的詳細資料](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 建立 CSV，其中會包含所提供訂用帳戶中所有 VM 的 VM 名稱、資源群組名稱、區域、虛擬網路、子網路、私人 IP 位址、OS 類型，以及公用 IP 位址。
 | | |

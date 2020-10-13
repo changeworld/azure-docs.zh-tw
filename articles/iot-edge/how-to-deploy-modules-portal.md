@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82133928"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978793"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>從 Azure 入口網站部署 Azure IoT Edge 模組
 
@@ -25,7 +25,9 @@ ms.locfileid: "82133928"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
-* 已安裝 IoT Edge 執行階段的 [IoT Edge 裝置](how-to-register-device.md#register-in-the-azure-portal)。
+* IoT Edge 裝置。
+
+  如果您沒有設定 IoT Edge 裝置，可以在 Azure 虛擬機器中建立一個。 遵循其中一個快速入門文章中的步驟， [建立虛擬 Linux 裝置](quickstart-linux.md) 或 [建立虛擬 Windows 裝置](quickstart.md)。
 
 ## <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
 

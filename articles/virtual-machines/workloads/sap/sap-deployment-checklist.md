@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650695"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978215"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -60,8 +60,8 @@ ms.locfileid: "89650695"
     - Azure 上的 Windows、SLES 和 RHEL guest 作業系統都支援使用 SAP Central Services 的多重 SID 叢集設定。 請記住，群發半徑可以增加您在這類多重 SID 叢集上放置的 ASCS/SCS。 您可以在下列文章中找到個別的虛擬作業系統案例的檔：
         - [在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 SUSE Linux Enterprise Server](./high-availability-guide-suse-multi-sid.md)
+        - [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 Red Hat Enterprise Linux](./high-availability-guide-rhel-multi-sid.md)
     - 高可用性和嚴重損壞修復架構。
         - 根據 RTO 和 RPO，定義高可用性和嚴重損壞修復架構所需的外觀。
         - 若要瞭解區域內的高可用性，請檢查所需的 DBMS 在 Azure 中提供的功能。 大部分 DBMS 封裝都提供同步熱待命的同步方法，我們建議用於生產系統。 此外，請檢查適用于不同資料庫的 SAP 相關檔，從適用于 [sap 工作負載的 Azure 虛擬機器 DBMS 部署](./dbms_guide_general.md) 和相關檔的考慮開始。
@@ -109,7 +109,7 @@ ms.locfileid: "89650695"
            -  [Azure 中 Windows 虛擬機器的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取 *磁片輸送量* 。
            -  [Azure 中 Linux 虛擬機器的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取 *磁片輸送量* 。
    2. [儲存空間]。
-        - 檢查 [SAP 工作負載的檔 Azure 儲存體類型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
+        - 檢查 [SAP 工作負載的檔 Azure 儲存體類型](./planning-guide-storage.md)
         - 您至少要針對代表 SAP 應用層的 Vm 使用 [Azure 標準 SSD 儲存體](../../disks-types.md#standard-ssd) ，並針對不具效能敏感性的 dbms 進行部署。
         - 一般而言，我們不建議使用 [Azure 標準 HDD 磁片](../../disks-types.md#standard-hdd)。
         - 針對任何遠端效能敏感的 DBMS Vm，使用 [Azure 進階儲存體](../../disks-types.md#premium-ssd) 。
@@ -127,7 +127,7 @@ ms.locfileid: "89650695"
         - 評估並測試 SAP 應用層和 SAP DBMS 層之間的資料路徑。
             -  不支援將 [Azure 網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/) 放置於 sap 應用程式和 sap 系統的 DBMS 層（以 sap NetWeaver、Hybris 或 S/4HANA 為基礎）之間的通訊路徑。
             -  不支援將 SAP 應用層和 SAP DBMS 放置在不同的 Azure 虛擬網路中，但不對等互連。
-            -  您可以使用 [應用程式安全性群組和網路安全性群組規則](../../../virtual-network/security-overview.md) ，來定義 sap 應用層和 sap DBMS 層之間的路由。
+            -  您可以使用 [應用程式安全性群組和網路安全性群組規則](../../../virtual-network/network-security-groups-overview.md) ，來定義 sap 應用層和 sap DBMS 層之間的路由。
         - 請確定在 SAP 應用層和 SAP DBMS 層使用的 Vm 上已啟用 [Azure 加速網路](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 。 請記住，若要支援 Azure 中的「加速網路」，需要有各種不同的 OS 層級：
             - Windows Server 2012 R2 或更新版本。
             - SUSE Linux 12 SP3 或更新版本。
@@ -138,7 +138,7 @@ ms.locfileid: "89650695"
         - 如果您搭配使用 Azure Load Balancer 與 Linux 客體作業系統，請確認 Linux 網路參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 這項建議與舊版 [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建議相衝突。 SAP note 現在已更新，以指出此參數必須設定為 **0** ，才能與 Azure 負載平衡器搭配運作。
         - 請考慮使用 [Azure 鄰近放置群組](../../linux/co-location.md) 來取得最佳的網路延遲。 如需詳細資訊，請參閱 [Azure 鄰近放置群組，以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
    4. 高可用性和嚴重損壞修復部署。
-        - 如果您部署 SAP 應用層，但未定義特定的 Azure 可用性區域，請確定執行 SAP 對話實例的所有 Vm 或單一 SAP 系統的中介軟體實例都部署在 [可用性設定組](../../windows/manage-availability.md)中。
+        - 如果您部署 SAP 應用層，但未定義特定的 Azure 可用性區域，請確定執行 SAP 對話實例的所有 Vm 或單一 SAP 系統的中介軟體實例都部署在 [可用性設定組](../../manage-availability.md)中。
         - 如果您不需要 SAP Central Services 和 DBMS 的高可用性，您可以將這些 Vm 部署到與 SAP 應用層相同的可用性設定組中。
         - 如果您使用被動複寫來保護 SAP Central Services 和 DBMS 層以達到高可用性，請將 SAP Central Services 的兩個節點放在一個不同的可用性設定組中，並將兩個 DBMS 節點放在另一個可用性設定組中。
         - 如果您部署到 Azure 可用性區域，就無法使用可用性設定組。 但是，您必須確定將主動和被動中央服務節點部署至兩個不同的可用性區域。 使用具有最低延遲的可用性區域。
@@ -179,7 +179,7 @@ ms.locfileid: "89650695"
    4. 測試跨區域 DR 功能和架構。
 1. 安全性檢查。
    1.  (Azure RBAC) 架構，測試 Azure 角色型存取控制的有效性。 其目標是要區分和限制不同小組的存取權和許可權。 例如，SAP 基礎團隊成員應該能夠部署 Vm，並將磁片從 Azure 儲存體指派至指定的 Azure 虛擬網路。 但是 SAP 基礎團隊應該無法建立自己的虛擬網路，也不能變更現有虛擬網路的設定。 網路小組的成員應該無法將 Vm 部署到執行 SAP 應用程式和 DBMS Vm 的虛擬網路中。 此小組的成員也不能變更 Vm 的屬性，或甚至是刪除 Vm 或磁片。  
-   1.  確認 [網路安全性群組和 ASC](../../../virtual-network/security-overview.md) 規則如預期般運作，並防護受保護的資源。
+   1.  確認 [網路安全性群組和 ASC](../../../virtual-network/network-security-groups-overview.md) 規則如預期般運作，並防護受保護的資源。
    1.  確定所有需要加密的資源都已加密。 定義和執行程式來備份憑證、儲存和存取這些憑證，以及還原加密的實體。
    1.  從 OS 支援的觀點來看，盡可能使用 OS 磁片的 [Azure 磁碟加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) 。
    1.  請確定您不是使用太多層的加密。 在某些情況下，搭配使用 Azure 磁碟加密與其中一個 DBMS 透明資料加密方法，以保護相同伺服器上的不同磁片或元件，是合理的。  例如，在 SAP DBMS 伺服器上，如果作業系統支援 ADE) ，以及 DBMS 資料持續性檔案未使用的資料磁片 () ，就可以在作業系統開機 (磁片上啟用 Azure 磁碟加密 (ADE) 。  例如，在保存 DBMS TDE 加密金鑰的磁片上使用 ADE。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449372"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978249"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -229,7 +229,7 @@ Ultra 磁碟可讓您定義滿足大小、IOPS 和磁碟輸送量範圍的單一
 相較于 premium 儲存體，Ultra 磁片的其他優點可能是更好的讀取延遲。 較快的讀取延遲在減少 HANA 啟動時間和後續的記憶體資料載入上都會帶來好處。 您也可以在 HANA 寫入儲存點時，感受到 Ultra 磁碟儲存體的優點。 
 
 > [!NOTE]
-> Ultra 磁碟尚未出現在所有 Azure 區域中，也尚未支援下列所有 VM 類型。 如需 Ultra 磁碟可用於何處和支援哪些 VM 系列的詳細資訊，請參閱下列文章：[在 Azure 中可使用哪些磁碟類型？](../../windows/disks-types.md#ultra-disk)
+> Ultra 磁碟尚未出現在所有 Azure 區域中，也尚未支援下列所有 VM 類型。 如需 Ultra 磁碟可用於何處和支援哪些 VM 系列的詳細資訊，請參閱下列文章：[在 Azure 中可使用哪些磁碟類型？](../../disks-types.md#ultra-disk)
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>生產環境建議的儲存體解決方案和純 Ultra 磁碟設定
 在此設定中，您會將 **/hana/data** 和 **/hana/log** 磁片區分開。 建議的值衍生自此 KPI，而 SAP 必須依照 [SAP TDI 儲存體白皮書](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中的建議，為 SAP Hana 和儲存體設定認證 VM 類型。
@@ -272,7 +272,7 @@ Ultra 磁碟可讓您定義滿足大小、IOPS 和磁碟輸送量範圍的單一
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>使用 Azure premium 儲存體的成本意識解決方案
-到目前為止，本檔中所述的 Azure premium 儲存體解決方案適用于 [Azure M 系列虛擬機器的高階儲存體和 azure 寫入加速器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 的各節解決方案，是為了 SAP Hana 生產環境的支援案例。 生產環境支援設定的其中一個特性是將 SAP Hana 資料的磁片區區隔，並將重新執行登入兩個不同的磁片區。 這類分隔的原因是磁片區上的工作負載特性不同。 而且，在建議的生產環境設定中，可能需要不同類型的快取或甚至不同類型的 Azure 區塊儲存體。 使用 Azure 區塊儲存體目標的生產環境支援設定，也會符合 [Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  針對非生產案例，針對生產系統所採取的一些考慮可能不適用於較低的非生產系統。 如此一來，就可以合併 HANA 資料和記錄磁片區。 但最終有一些原因，例如最後不符合生產系統所需的特定輸送量或延遲 Kpi。 減少這類環境成本的另一個層面就是使用 [Azure 標準 SSD 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)。 但可 [讓 Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效的選項。 
+到目前為止，本檔中所述的 Azure premium 儲存體解決方案適用于 [Azure M 系列虛擬機器的高階儲存體和 azure 寫入加速器](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 的各節解決方案，是為了 SAP Hana 生產環境的支援案例。 生產環境支援設定的其中一個特性是將 SAP Hana 資料的磁片區區隔，並將重新執行登入兩個不同的磁片區。 這類分隔的原因是磁片區上的工作負載特性不同。 而且，在建議的生產環境設定中，可能需要不同類型的快取或甚至不同類型的 Azure 區塊儲存體。 使用 Azure 區塊儲存體目標的生產環境支援設定，也會符合 [Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  針對非生產案例，針對生產系統所採取的一些考慮可能不適用於較低的非生產系統。 如此一來，就可以合併 HANA 資料和記錄磁片區。 但最終有一些原因，例如最後不符合生產系統所需的特定輸送量或延遲 Kpi。 減少這類環境成本的另一個層面就是使用 [Azure 標準 SSD 儲存體](./planning-guide-storage.md#azure-standard-ssd-storage)。 但可 [讓 Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效的選項。 
 
 成本較低的替代方案可能如下所示：
 

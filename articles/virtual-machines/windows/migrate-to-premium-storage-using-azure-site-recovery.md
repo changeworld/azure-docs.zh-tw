@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320093"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975547"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 移轉到進階儲存體
 
-針對執行時需要大量 I/O 之工作負載的虛擬機器 (VM)，[Azure 進階 SSD](disks-types.md) 可提供高效能、低延遲的磁碟支援。 本指南會協助您使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 將 VM 磁碟從標準儲存體帳戶移轉到進階儲存體帳戶。
+針對執行時需要大量 I/O 之工作負載的虛擬機器 (VM)，[Azure 進階 SSD](../disks-types.md) 可提供高效能、低延遲的磁碟支援。 本指南會協助您使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 將 VM 磁碟從標準儲存體帳戶移轉到進階儲存體帳戶。
 
 Site Recovery 是一項 Azure 服務，可藉由將內部部署實體伺服器和 VM 的複寫協調至雲端 (Azure) 或次要資料中心，協助您建立商務持續性和災害復原的策略。 當您的主要位置發生故障時，您容錯移轉至次要位置，讓應用程式和工作負載保持可用。 當它恢復正常作業時，容錯回復至您的主要位置。 
 
@@ -167,7 +167,7 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 
    ![啟用已選取來源的複寫窗格][13]
 
-在設計 Azure 儲存體環境時，建議您為可用性設定組中的每個 VM 使用不同的儲存體帳戶。 我們建議您遵循儲存體層中的最佳做法，[針對每個可用性設定組使用多個儲存體帳戶](../linux/manage-availability.md)。 將 VM 磁碟分散到多個儲存體帳戶有助於增進儲存體可用性，並將 I/O 分散到整 Azure 儲存體基礎結構。
+在設計 Azure 儲存體環境時，建議您為可用性設定組中的每個 VM 使用不同的儲存體帳戶。 我們建議您遵循儲存體層中的最佳做法，[針對每個可用性設定組使用多個儲存體帳戶](../manage-availability.md)。 將 VM 磁碟分散到多個儲存體帳戶有助於增進儲存體可用性，並將 I/O 分散到整 Azure 儲存體基礎結構。
 
 如果您的 VM 位於可用性設定組，而非將所有 VM 的磁碟複寫到單一儲存體帳戶，強烈建議您將多個 VM 分數次移轉。 如此一來，相同可用性設定組中的 VM 便不會共用單一儲存體帳戶。 使用 [啟用複寫] 窗格，設定每個 VM 的目的地儲存體帳戶，一次一個。
  

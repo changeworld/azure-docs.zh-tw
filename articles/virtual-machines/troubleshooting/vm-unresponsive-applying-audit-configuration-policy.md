@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299519"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977947"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>套用稽核原則設定原則時，虛擬機器沒有回應
 
@@ -27,7 +27,7 @@ ms.locfileid: "89299519"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示作業系統 (OS) 在開機期間沒有回應，並顯示套用 **稽核原則設定原則**的訊息。
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示作業系統 (OS) 在開機期間沒有回應，並顯示套用 **稽核原則設定原則**的訊息。
 
   ![OS 開機時，會顯示下列訊息：「套用稽核原則設定原則」](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "89299519"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立及存取修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
 1. 使用遠端桌面連線，連線至修復 VM。
 
 ### <a name="disable-the-policy"></a>停用原則
@@ -153,7 +153,7 @@ ms.locfileid: "89299519"
    
 ### <a name="rebuild-the-virtual-machine"></a>重建虛擬機器
 
-1. 使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)\(部分機器翻譯\)重建 VM。
+1. 使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。
 
 1. 測試您的 VM 是否正常開機，以查看問題是否已修正。
 
@@ -175,11 +175,11 @@ ms.locfileid: "89299519"
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>將 OS 磁片連結至新的修復 VM
 
-1. 使用 [VM Repair 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 的步驟1-3 來準備新的修復 VM。
+1. 使用 [VM Repair 命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步驟1-3 來準備新的修復 VM。
 1. 使用遠端桌面連線連線至修復 VM。
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找出傾印檔案並提交支援票證
 
 1. 在修復 VM 上，移至連接的 OS 磁片中的 [windows] 資料夾。 如果指派給已連結 OS 磁片的磁碟機號標示為 *F*，則您必須移至 `F:\Windows` 。
 1. 找出檔案 `memory.dmp` ，然後使用記憶體傾印檔案 [提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。
-1. 如果您在尋找檔案時遇到問題 `memory.dmp` ，請改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) 。 遵循本指南，在 [這裡使用 NMI 呼叫來產生損毀](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)傾印檔案。
+1. 如果您在尋找檔案時遇到問題 `memory.dmp` ，請改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 遵循本指南，在 [這裡使用 NMI 呼叫來產生損毀](/windows/client-management/generate-kernel-or-complete-crash-dump)傾印檔案。

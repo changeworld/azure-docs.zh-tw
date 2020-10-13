@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25d8c36cc42c3f1d1cc2a8477a7361ba45bec706
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689604"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977913"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 下載 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)的最新版本。
 - [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
@@ -77,7 +77,7 @@ $disk = Get-AzDisk -ResourceGroupName '<yourresourcegroupname>' -DiskName '<your
 
 使用 AzCopy v10，藉由指定您產生的 SAS URI，將本機 VHD 檔案上傳至受控磁片。
 
-此上傳與對等的 [標準 HDD](disks-types.md#standard-hdd)具有相同的輸送量。 例如，如果您的大小等於 S4，則最多會有 60 MiB/秒的輸送量。 但是，如果您有相當於 S70 的大小，則最多會有 500 MiB/秒的輸送量。
+此上傳與對等的 [標準 HDD](../disks-types.md#standard-hdd)具有相同的輸送量。 例如，如果您的大小等於 S4，則最多會有 60 MiB/秒的輸送量。 但是，如果您有相當於 S70 的大小，則最多會有 500 MiB/秒的輸送量。
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
@@ -133,7 +133,7 @@ Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
 Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已成功將 VHD 上傳至受控磁片，您可以將磁片連結至 VM 並開始使用。
 

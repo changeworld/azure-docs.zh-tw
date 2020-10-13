@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe8b4176e33ff04ff8033af3b50cbdd0d882ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea9117d3cce2eec4c143e9fb3df76710a93a664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919568"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966962"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>開始使用 Azure Multi-Factor Authentication Server
 
@@ -55,7 +55,7 @@ ms.locfileid: "88919568"
 
 請確定您用於 Azure Multi-Factor Authentication Server 的伺服器符合下列需求：
 
-| Azure Multi-Factor Authentication Server 需求 | 說明 |
+| Azure Multi-Factor Authentication Server 需求 | 描述 |
 |:--- |:--- |
 | 硬體 |<li>200 MB 的硬碟空間</li><li>具有 x32 或 x64 功能的處理器</li><li>1 GB 或更高的 RAM</li> |
 | 軟體 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>僅限 [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) 的 Windows Server 2008/R2 () </li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本 (僅限 [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates)) </li><li>Microsoft .NET 4.0 Framework</li><li>如果安裝使用者入口網站或 Web 服務 SDK，則為 IIS 7.0 或更高版本</li> |
@@ -222,7 +222,7 @@ ms.locfileid: "88919568"
 
 在您已安裝或升級至 MFA Server 8.x 版 或更高版本後，除非您的組織需要較舊的和較弱的加密套件，否則建議您加以停用或移除。 如需如何完成這項工作的相關資訊，請參閱[管理 AD FS 的 SSL/TLS 通訊協定和加密套件](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 針對使用者自助安裝及設定[使用者入口網站](howto-mfaserver-deploy-userportal.md)。
 - 搭配 [Active Directory Federation Service](multi-factor-authentication-get-started-adfs.md)、[RADIUS 驗證](howto-mfaserver-dir-radius.md)或 [LDAP 驗證](howto-mfaserver-dir-ldap.md)來安裝和設定 Azure MFA Server。

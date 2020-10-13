@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776148"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978657"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 進階儲存體：專為高效能而設計
 
@@ -130,7 +130,7 @@ IOPS，亦即 Input/output Operations Per Second (每秒鐘輸入/輸出作業�
 | **最大記憶體** |順暢執行應用程式所需的記憶體數量 |% Committed Bytes in Use |Use vmstat |
 | **最大CPU** |順暢執行應用程式所需的 CPU 數量 |% Processor time |%util |
 
-深入了解 [iostat](https://linux.die.net/man/1/iostat) 和 [PerfMon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)。
+深入了解 [iostat](https://linux.die.net/man/1/iostat) 和 [PerfMon](/windows/win32/perfctrs/performance-counters-portal)。
 
 
 
@@ -343,7 +343,7 @@ Azure 已將進階儲存體平台設計為大規模平行。 因此，多執行�
 
 例如，假設使用 SQL Server 的應用程式正在同時執行大型查詢和索引作業。 假設您希望索引作業的效能高於大型查詢。 在這種情況下，您可以將索引作業的 MAXDOP 值設為高於查詢的 MAXDOP 值。 如此一來，可供 SQL Server 利用來執行索引作業的處理器數目，就比專用於大型查詢的處理器數目更多。 請記住，您不能控制 SQL Server 用於每個作業的執行緒數目。 您可以控制專用於多執行緒處理的處理器數目上限。
 
-深入了解 SQL Server 中的 [平行處理原則的程度](https://technet.microsoft.com/library/ms188611.aspx) 。 在應用程式及其組態中找出會影響多執行緒處理的設定，以最佳化效能。
+深入了解 SQL Server 中的 [平行處理原則的程度](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) 。 在應用程式及其組態中找出會影響多執行緒處理的設定，以最佳化效能。
 
 ## <a name="queue-depth"></a>佇列深度
 

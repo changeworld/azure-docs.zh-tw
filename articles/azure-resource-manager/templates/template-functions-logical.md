@@ -2,13 +2,13 @@
 title: 範本函式-邏輯
 description: 描述 Azure Resource Manager 範本中用來決定邏輯值的函式。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677384"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978504"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函數
 
@@ -16,9 +16,11 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 
 * [and](#and)
 * [bool](#bool)
+* [false](#false)
 * [if](#if)
 * [not](#not)
 * [or](#or)
+* [true](#true)
 
 ## <a name="and"></a>及
 
@@ -28,7 +30,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要檢查是否為 true 的第一個值。 |
 | arg2 |是 |boolean |要檢查是否為 true 的第二個值。 |
@@ -80,12 +82,17 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或整數 |要轉換為布林值的值。 |
 
 ### <a name="return-value"></a>傳回值
+
 轉換值的布林值。
+
+### <a name="remarks"></a>備註
+
+您也可以使用 [true ( # B1 ](#true) 和 [False ( # B3 ](#false) 來取得布林值。
 
 ### <a name="examples"></a>範例
 
@@ -126,6 +133,44 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 | trueInt | Bool | True |
 | falseInt | Bool | False |
 
+## <a name="false"></a>false
+
+`false()`
+
+傳回 false。
+
+### <a name="parameters"></a>參數
+
+False 函數不接受任何參數。
+
+### <a name="return-value"></a>傳回值
+
+一律為 false 的布林值。
+
+### <a name="example"></a>範例
+
+下列範例會傳回 false 的輸出值。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+前述範例的輸出為：
+
+| 名稱 | 類型 | 值 |
+| ---- | ---- | ----- |
+| falseOutput | Bool | False |
+
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
@@ -134,7 +179,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | condition (條件) |是 |boolean |要檢查其是否為 true 或 false 的值。 |
 | trueValue |是 | 字串、int、物件或陣列 |條件為 true 時，傳回的值。 |
@@ -239,7 +284,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要進行轉換的值。 |
 
@@ -312,7 +357,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要檢查是否為 true 的第一個值。 |
 | arg2 |是 |boolean |要檢查是否為 true 的第二個值。 |
@@ -356,7 +401,45 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="true"></a>true
+
+`true()`
+
+傳回 true。
+
+### <a name="parameters"></a>參數
+
+True 函數不接受任何參數。
+
+### <a name="return-value"></a>傳回值
+
+一律為 true 的布林值。
+
+### <a name="example"></a>範例
+
+下列範例會傳回真正的輸出值。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+前述範例的輸出為：
+
+| 名稱 | 類型 | 值 |
+| ---- | ---- | ----- |
+| trueOutput | Bool | True |
+
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 

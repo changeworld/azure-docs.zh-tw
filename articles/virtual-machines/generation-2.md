@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322917"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977590"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第 2 代 VM 的支援
 
@@ -89,7 +89,7 @@ Azure 目前不支援內部部署 Hyper-V 針對第 2 代 VM 所支援的部分�
 |---------|--------------|--------------|
 | Boot             | PCAT                      | UEFI                               |
 | 磁碟控制器 | IDE                       | SCSI                               |
-| VM 大小         | 所有 VM 大小 | [查看可用的大小](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
+| VM 大小         | 所有 VM 大小 | [查看可用的大小](#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 代與第 2 代功能的比較
 
@@ -222,4 +222,3 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="next-steps"></a>後續步驟
 
 了解 [Hyper-V 中的第 2 代虛擬機器](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
-

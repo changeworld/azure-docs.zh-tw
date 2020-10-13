@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871511"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978487"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>使用 SAP ASCS/SCS 的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構
 
@@ -165,16 +165,16 @@ ms.locfileid: "88871511"
 本文說明在 Windows 容錯移轉叢集上使用叢集 *共用磁片* 作為叢集 SAP ASCS 實例的選項，準備 Azure 基礎結構以在 Windows 容錯移轉叢集上安裝和設定高可用性 SAP ASCS/SCS 實例時，所採取的步驟。
 叢集 *共用磁片* 的兩個替代方案會顯示在檔中：
 
-- [Azure 共用磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure 共用磁碟](../../windows/disks-shared.md)
 - 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 建立鏡像儲存體，以模擬叢集共用磁片 
 
-呈現的設定會依賴 [Azure 鄰近放置群組 (PPG) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) ，以達到 SAP 工作負載的最佳網路延遲。 檔未涵蓋資料庫層。  
+呈現的設定會依賴 [Azure 鄰近放置群組 (PPG) ](./sap-proximity-placement-scenarios.md) ，以達到 SAP 工作負載的最佳網路延遲。 檔未涵蓋資料庫層。  
 
 > [!NOTE]
 > Azure 鄰近放置群組是使用 Azure 共用磁片的先決條件。
  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在開始安裝之前，請檢閱這篇文章：
 
@@ -199,7 +199,7 @@ ms.locfileid: "88871511"
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> 建立 Azure 內部負載平衡器
 
-SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要 [負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) 才能使用虛擬 IP 位址。 我們強烈建議使用 [標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 
+SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要 [負載平衡器](../../../load-balancer/load-balancer-overview.md) 才能使用虛擬 IP 位址。 我們強烈建議使用 [標準負載平衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
 
 
 下列清單顯示) SCS/ERS 負載平衡器 (的設定。 在相同的 Azure 負載平衡器中執行的 SAP ASCS 和 ERS2 設定。  
@@ -263,8 +263,8 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 
 | Path| 變數名稱 | 變數類型  | 值 | 文件 |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (十進位) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (十進位) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (十進位) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (十進位) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 若要套用變更，請重新啟動這兩個叢集節點。
@@ -325,7 +325,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>設定叢集雲端仲裁
-當您使用 Windows Server 2016 或2019時，建議您將 [Azure 雲端見證](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)設定為叢集仲裁。
+當您使用 Windows Server 2016 或2019時，建議您將 [Azure 雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)設定為叢集仲裁。
 
 在其中一個叢集節點上執行此命令：
 
@@ -555,6 +555,6 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
    _「容錯移轉叢集管理員」顯示 DataKeeper 複寫的磁碟_
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Windows 容錯移轉叢集和共用磁碟為 SAP ASCS/SCS 執行個體安裝 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]

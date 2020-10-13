@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069173"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975666"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>連線到 Azure 中 Linux VM 之問題的詳細 SSH 疑難排解步驟
 SSH 用戶端無法連線至 VM 上的 SSH 服務，可能涉及許多原因。 如果您已經完成較為 [一般的 SSH 疑難排解步驟](troubleshoot-ssh-connection.md)，您必須進一步針對連線問題進行疑難排解。 這篇文章會引導您完成詳細的疑難排解步驟，以判斷 SSH 連線失敗的位置和解決方法。
@@ -39,7 +39,7 @@ SSH 用戶端無法連線至 VM 上的 SSH 服務，可能涉及許多原因。 
 
 2. 選取 [設定] **** 以檢查端點、IP 位址、網路安全性群組及其他設定。
 
-   VM 應該有一個為 SSH 流量定義的端點，您可以在 [端點]**** 或**[網路安全性群組](../../virtual-network/security-overview.md)** 中檢視該端點。 使用 Resource Manager 來建立之 VM 中的端點會儲存在網路安全性群組中。 請確認是否已將規則套用至網路安全性群組，以及子網路中是否有參考這些規則。
+   VM 應該有一個為 SSH 流量定義的端點，您可以在 [端點]**** 或**[網路安全性群組](../../virtual-network/network-security-groups-overview.md)** 中檢視該端點。 使用 Resource Manager 來建立之 VM 中的端點會儲存在網路安全性群組中。 請確認是否已將規則套用至網路安全性群組，以及子網路中是否有參考這些規則。
 
 若要確認網路連線，請檢查設定的端點，並判斷您是否可以透過另一個通訊協定 (例如 HTTP 或另一個服務) 連線到 VM。
 
@@ -114,7 +114,7 @@ SSH 用戶端無法連線至 VM 上的 SSH 服務，可能涉及許多原因。 
 
 ## <a name="source-4-network-security-groups"></a>來源 4：網路安全性群組
 網路安全性群組可讓您更精確地控制受允許的輸入和輸出流量。 您可以在 Azure 虛擬網路中建立跨越子網路和雲端服務的規則。 請檢查您的網路安全性群組規則，以確保允許往來網際網路的 SSH 流量。
-如需詳細資訊，請參閱 [關於網路安全性群組](../../virtual-network/security-overview.md)。
+如需詳細資訊，請參閱 [關於網路安全性群組](../../virtual-network/network-security-groups-overview.md)。
 
 您也可以使用「IP 確認」來驗證 NSG 組態。 如需詳細資訊，請參閱 [Azure 網路監視概觀](../../network-watcher/network-watcher-monitoring-overview.md)。 
 

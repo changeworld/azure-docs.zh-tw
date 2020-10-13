@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274294"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977301"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署
 
@@ -384,13 +384,13 @@ SQL Server 2014 及更新版本可以直接在 Azure Blob Store上儲存資料�
 * 將 SQL Server 資料檔案直接放置在 Azure Blob 上時，適用於 Azure 進階儲存體磁碟的主機型快取將無法使用。
 * 在 M 系列 VM 上，無法使用 Azure Write Accelerator 來支援 SQL Server 交易記錄檔的子毫秒寫入。 
 
-如需這項功能的詳細資料，請參閱[Microsoft Azure 中的 SQL Server 資料檔案](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) \(機器翻譯\)
+如需這項功能的詳細資料，請參閱[Microsoft Azure 中的 SQL Server 資料檔案](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) \(機器翻譯\)
 
 針對生產環境系統提出的建議是：避免這種設定，寧願選擇將 SQL Server 資料檔和記錄檔放在 Azure 進階儲存體 VHD，也不要直接放在 Azure blob 上。
 
 
 ## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 緩衝集區延伸
-SQL Server 2014 引進的新功能，稱為 [緩衝集區擴充](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) \(機器翻譯\)。 此功能會擴充 SQL Server 的緩衝集區，使用第二層快取將其保留於記憶體中，此快取是透過伺服器或 VM 的本機 SSD 來支援。 緩衝集區擴充模組可以將較大的資料工作集放入「記憶體內」。 相較於存取 Azure 標準儲存體，基於許多因素，存取儲存於 Azure VM 之本機 SSD 上的緩衝集區延伸的速度更快。 比較「緩衝集區擴充」和「Azure 進階儲存體讀取快取」後，和給出的 SQL Server 資料檔建議一樣，「緩衝集區擴充」沒有顯著的優勢。 原因在於這兩個快取 (SQL Server 緩衝集區延伸和進階儲存體讀取快取) 都是使用 Azure 計算節點的本機磁碟。
+SQL Server 2014 引進的新功能，稱為 [緩衝集區擴充](/sql/database-engine/configure-windows/buffer-pool-extension) \(機器翻譯\)。 此功能會擴充 SQL Server 的緩衝集區，使用第二層快取將其保留於記憶體中，此快取是透過伺服器或 VM 的本機 SSD 來支援。 緩衝集區擴充模組可以將較大的資料工作集放入「記憶體內」。 相較於存取 Azure 標準儲存體，基於許多因素，存取儲存於 Azure VM 之本機 SSD 上的緩衝集區延伸的速度更快。 比較「緩衝集區擴充」和「Azure 進階儲存體讀取快取」後，和給出的 SQL Server 資料檔建議一樣，「緩衝集區擴充」沒有顯著的優勢。 原因在於這兩個快取 (SQL Server 緩衝集區延伸和進階儲存體讀取快取) 都是使用 Azure 計算節點的本機磁碟。
 
 SQL Server 緩衝集區擴充搭配 SAP 工作負載時所得到的體驗有好有壞，而且仍然無法明確建議是否所有的情況下皆適用。 理想的情況是：SAP 應用程式所需的工作集，剛好能放入主記憶體中。 利用 Azure 再加上提供的 VM 又有高達 4 TB 的記憶體，這樣應該能將工作集放入記憶體中了。 因此緩衝集區擴充只能在某些罕見的情況下使用，而且不是主流案例。  
 
@@ -408,7 +408,7 @@ SQL Server 緩衝集區擴充搭配 SAP 工作負載時所得到的體驗有好�
 
 第一種方法廣為人知，而且在內部部署環境的很案例中都曾用過。 不過，您要自己解決長期的備份位置。 因為您希望備份保留在本機外接 Azure 儲存體上的時間不要超過 30 天，因此您必須使用 Azure 備份服務或其他協力廠商備份/復原工具 (能管理備份的存取和保留)。 或者您可以使用 Windows 儲存體空間，在 Azure 中建立一個大型的檔案伺服器。
 
-[SQL Server 備份至 URL](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/backup-restore) \(機器翻譯\) 文章會詳細描述第二種方法。 這個功能在不同的 SQL Server 版本中會出現變異。 因此，您應該參閱這個文件，檢查您的 SQL Server 究竟是哪一個版本。 請注意，這篇文章會列出很多限制。 您可能會針對以下各項來執行備份：
+[SQL Server 備份至 URL](../../../azure-sql/virtual-machines/windows/backup-restore.md) \(機器翻譯\) 文章會詳細描述第二種方法。 這個功能在不同的 SQL Server 版本中會出現變異。 因此，您應該參閱這個文件，檢查您的 SQL Server 究竟是哪一個版本。 請注意，這篇文章會列出很多限制。 您可能會針對以下各項來執行備份：
 
 - 一個 Azure 頁面 blob，然後將備份大小限制為 1000 GB。 這種限制也會限制您可以達成的輸送量。
 - 多個 (最多 64 個) Azure 區塊 blob，可以達到理論上的 12 TB 備份大小。 不過，測試客戶資料庫之後發現備份大小上限可能會小於理論上的限制。 在這種情況下，您要負責管理備份的保留和存取。
@@ -422,7 +422,7 @@ SQL Server 緩衝集區擴充搭配 SAP 工作負載時所得到的體驗有好�
 - SQL Server 2014：[SQL Server 2014 虛擬機器的自動備份 (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
 - SQL Server 2016/2017：[Azure 虛擬機器的自動備份 v2 (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup.md)
 
-仔細看這份文件，您會發現 SQL Server 最新版本的功能已得到改善。 如需進一步了解 SQL Server 的自動備份功能，請參閱 [SQL Server Managed Backup to Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) \(機器翻譯\) 這篇文章。 理論上的備份大小限制為 12 TB。  自動備份可以讓大小達到 12 TB，是一種好方法。 由於多個 blob 會以平行方式寫入，因此輸送量每秒會超過 100 MB。 
+仔細看這份文件，您會發現 SQL Server 最新版本的功能已得到改善。 如需進一步了解 SQL Server 的自動備份功能，請參閱 [SQL Server Managed Backup to Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) \(機器翻譯\) 這篇文章。 理論上的備份大小限制為 12 TB。  自動備份可以讓大小達到 12 TB，是一種好方法。 由於多個 blob 會以平行方式寫入，因此輸送量每秒會超過 100 MB。 
  
 
 ### <a name="azure-backup-for-sql-server-vms"></a>適用於 SQL Server VM 的 Azure 備份
@@ -468,10 +468,10 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 您在適用於 SAP 的 Azure IaaS 部署中使用 SQL Server 時，是有幾種不同的可能性來部署高可用性的 DBMS 層。 如同適用于 [SAP 工作負載的 Azure 虛擬機器 DBMS 部署考慮](dbms_guide_general.md) 所述，azure 針對單一 VM 和一組部署在 Azure 可用性設定組中的 vm，提供不同的時間 sla。 我們假設您傾向為您的生產部署取得運作時間 SLA，以便在 Azure 可用性集中進行部署。 在這種情況下，您需要在這種可用性集中至少部署兩個 VM。 其中一個 VM 會執行運作中的 SQL Server 執行個體。 另一個 VM 會執行被動的執行個體
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>使用 Windows 擴充檔案伺服器或 Azure 共用磁片的 SQL Server 叢集
-在 Windows Server 2016 中，Microsoft 引進了[儲存空間直接存取](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。 根據儲存空間直接存取部署，通常支援 SQL Server FCI 叢集。 Azure 也提供可用於 Windows 叢集的 [azure 共用磁片](https://docs.microsoft.com/azure/virtual-machines/disks-shared-enable?tabs=azure-cli) 。 針對 SAP 工作負載，我們不支援這些 HA 選項。 
+在 Windows Server 2016 中，Microsoft 引進了[儲存空間直接存取](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。 根據儲存空間直接存取部署，通常支援 SQL Server FCI 叢集。 Azure 也提供可用於 Windows 叢集的 [azure 共用磁片](../../disks-shared-enable.md?tabs=azure-cli) 。 針對 SAP 工作負載，我們不支援這些 HA 選項。 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server 記錄傳送
-高可用性 (HA) 的方法之一是 SQL Server 記錄傳送。 如果參與 HA 組態的 VM 具有運作中的名稱解析，就不會發生問題，而 Azure 中的設定與內部部署中完成的任何設定並無任何差別。 如需設定記錄傳送和記錄傳送原則的相關事宜。 請參閱[關於記錄傳送 (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) \(機器翻譯\) 文章。
+高可用性 (HA) 的方法之一是 SQL Server 記錄傳送。 如果參與 HA 組態的 VM 具有運作中的名稱解析，就不會發生問題，而 Azure 中的設定與內部部署中完成的任何設定並無任何差別。 如需設定記錄傳送和記錄傳送原則的相關事宜。 請參閱[關於記錄傳送 (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server) \(機器翻譯\) 文章。
 
 SQL Server 記錄傳送功能根本很難用於 Azure 中來實現單一 Azure 區域中的高可用性。 不過在下列情況中，SAP 客戶已成功將記錄傳送與 Azure 搭配使用：
 
@@ -519,7 +519,7 @@ SQL Server Always On 是 Azure for SAP 工作負載部署中，最常使用的�
 很多客戶會將 SQL Server Always On 功能當作是 Azure 區域之間額外的嚴重損壞修復功能。 很多客戶也會利用這種功能，從次要複本執行備份。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server 透明資料加密
-目前有一些客戶在 Azure 中部署 SAP SQL Server 資料庫時，使用 SQL Server [透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)。 SAP 完全支援 SQL Server TDE 功能 (請參閱 SAP 附註[編號 1380493](https://launchpad.support.sap.com/#/notes/1380493))。 
+目前有一些客戶在 Azure 中部署 SAP SQL Server 資料庫時，使用 SQL Server [透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)。 SAP 完全支援 SQL Server TDE 功能 (請參閱 SAP 附註[編號 1380493](https://launchpad.support.sap.com/#/notes/1380493))。 
 
 ### <a name="applying-sql-server-tde"></a>套用 SQL Server TDE
 將另一個在內部部署上執行的 DBMS，往 Azure 中執行的 Windows/SQL Server，進行異質移轉時，您應該事先在 SQL Server 建立空白的目標資料庫。 下一個步驟中，您可以套用 SQL Server TDE 功能。 雖然您仍然是在執行內部部署的生產系統。 您之所以會按照這種順序來執行，原因是空資料庫的加密程序會消耗相當長的時間。 然後在停機階段，SAP 匯入程序會將資料匯入加密的資料庫。 一個是產生額外負荷來匯入至加密的資料庫，另一個是在停機階段的匯出階段之後進行資料庫的加密，前者的影響時間沒有後者來得長。 嘗試將 TDE 與在資料庫上執行的 SAP 工作負載套用時，會產生負面的體驗。 因此，建議完成 TDE 的部署時，不需要特殊資料庫上的 SAP 工作負載。
@@ -537,9 +537,9 @@ Azure 提供的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服
 
 以下是 SQL Server TDE 詳細的 Azure Key Vault 用途：
 
-- [使用 Azure Key Vault 進行可延伸金鑰管理 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) \(機器翻譯\)。
-- [使用 Azure Key Vault 進行 SQL Server TDE 可延伸金鑰管理 - 設定步驟](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault) \(機器翻譯\)。
-- [SQL Server 連接器維護和疑難排解](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?) \(機器翻譯\)。
+- [使用 Azure Key Vault 進行可延伸金鑰管理 (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) \(機器翻譯\)。
+- [使用 Azure Key Vault 進行 SQL Server TDE 可延伸金鑰管理 - 設定步驟](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault) \(機器翻譯\)。
+- [SQL Server 連接器維護和疑難排解](/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting) \(機器翻譯\)。
 - [更多關於 SQL Server 透明資料加密的問題 – TDE + Azure Key Vault](/archive/blogs/saponsqlserver/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault) \(英文\)。
 
 

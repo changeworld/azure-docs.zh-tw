@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325703"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932340"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -62,9 +62,9 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
     部署 Azure NetApp Files 的虛擬網路位址空間必須新增至新的或現有的 Active Directory 站台 (Azure NetApp Files 可從中連線的網域控制站)。 
 
-* 指定的 DNS 伺服器必須可從 Azure NetApp Files 的[委派子網路](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)連線。  
+* 指定的 DNS 伺服器必須可從 Azure NetApp Files 的[委派子網路](./azure-netapp-files-delegate-subnet.md)連線。  
 
-    如需了解支援的網路拓撲，請參閱[適用於 Azure NetApp Files 網路方案的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。
+    如需了解支援的網路拓撲，請參閱[適用於 Azure NetApp Files 網路方案的指導方針](./azure-netapp-files-network-topologies.md)。
 
     網路安全性群組 (NSG) 和防火牆必須已適當設定規則，以允許 Active Directory 和 DNS 流量要求。 
 
@@ -72,7 +72,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
     如果您有 Azure NetApp Files 委派子網路無法連線的網域控制站，您可以在建立 Active Directory 連線期間，指定 Active Directory 站台。  Azure NetApp Files 只需要與 Azure NetApp Files 委派子網路位址空間所在網站的網域控制站進行通訊。
 
-    如需 AD 站台和服務的相關資訊，請參閱[設計站台拓撲](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
+    如需 AD 站台和服務的相關資訊，請參閱[設計站台拓撲](/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
 * 您可以勾選 [[聯結 Active Directory](#create-an-active-directory-connection) ] 視窗中的 [ **aes 加密**] 方塊，為 SMB 磁片區啟用 aes 加密。 Azure NetApp Files 支援 DES、Kerberos AES 128 和 Kerberos AES 256 加密類型， (從最安全到最安全的) 。 如果您啟用 AES 加密，用來聯結 Active Directory 的使用者認證必須啟用最高對應的帳戶選項，以符合您的 Active Directory 啟用的功能。    
 
@@ -82,21 +82,21 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
     ![Active Directory 消費者和電腦 MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 
-* Azure NetApp Files 支援 [ldap 簽署](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)，可在 Azure NetApp files 服務與目標 [Active Directory 網域控制站](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)之間，安全地傳輸 ldap 流量。 如果您遵循 Microsoft 諮詢[ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)進行 ldap 簽署的指導方針，則應勾選 [[聯結 Active Directory](#create-an-active-directory-connection) ] 視窗中的 [ **ldap 簽署**] 方塊，以啟用 Azure NetApp Files 中的 ldap 簽署功能。 
+* Azure NetApp Files 支援 [ldap 簽署](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)，可在 Azure NetApp files 服務與目標 [Active Directory 網域控制站](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)之間，安全地傳輸 ldap 流量。 如果您遵循 Microsoft 諮詢[ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)進行 ldap 簽署的指導方針，則應勾選 [[聯結 Active Directory](#create-an-active-directory-connection) ] 視窗中的 [ **ldap 簽署**] 方塊，以啟用 Azure NetApp Files 中的 ldap 簽署功能。 
 
     [LDAP 通道](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) 系結設定不會影響 Azure NetApp Files 服務。 
 
-如需其他 AD 資訊，請參閱 Azure NetApp Files [SMB 常見問題](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
+如需其他 AD 資訊，請參閱 Azure NetApp Files [SMB 常見問題](./azure-netapp-files-faqs.md#smb-faqs)。 
 
 ## <a name="decide-which-domain-services-to-use"></a>決定要使用的網域服務 
 
-對於 AD 連線，Azure NetApp Files 支援 [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) 和 Azure Active Directory Domain Services (AADDS)。  建立 AD 連線之前，您必須決定要使用 ADDS 或 AADDS。  
+對於 AD 連線，Azure NetApp Files 支援 [Active Directory Domain Services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) 和 Azure Active Directory Domain Services (AADDS)。  建立 AD 連線之前，您必須決定要使用 ADDS 或 AADDS。  
 
-如需詳細資訊，請參閱[比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions)。 
+如需詳細資訊，請參閱[比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services](../active-directory-domain-services/compare-identity-solutions.md)。 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-您可以針對 Azure NetApp Files 使用慣用的 [Active Directory 站台及服務](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology)範圍。 此選項可讓您讀取和寫入 [Azure NetApp Files 可存取](azure-netapp-files-network-topologies.md)的  Active Directory Domain Services (ADDS) 網域控制站。 它也可以防止服務與不在指定的 Active Directory 站台及服務網站中的網域控制站進行通訊。 
+您可以針對 Azure NetApp Files 使用慣用的 [Active Directory 站台及服務](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology)範圍。 此選項可讓您讀取和寫入 [Azure NetApp Files 可存取](azure-netapp-files-network-topologies.md)的  Active Directory Domain Services (ADDS) 網域控制站。 它也可以防止服務與不在指定的 Active Directory 站台及服務網站中的網域控制站進行通訊。 
 
 若要尋找您的網站名稱，您可以與組織中負責 Active Directory Domain Services 的管理群組聯繫。 下列範例顯示網站名稱顯示所在的 Active Directory 站台及服務外掛程式： 
 
@@ -106,7 +106,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
 
-如需 Azure Active Directory Domain Services (AADDS) 設定和指導方針，請參閱 [Azure AD Domain Services 文件](https://docs.microsoft.com/azure/active-directory-domain-services/)。
+如需 Azure Active Directory Domain Services (AADDS) 設定和指導方針，請參閱 [Azure AD Domain Services 文件](../active-directory-domain-services/index.yml)。
 
 適用於 Azure NetApp Files 的其他 AADDS 考量： 
 
@@ -184,10 +184,10 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
+        您也可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
     * **LDAP 簽署**   
-        選取此核取方塊以啟用 LDAP 簽署。 這種功能可在 Azure NetApp Files 服務和使用者指定的 [Active Directory Domain Services 網域控制站](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services)之間啟用安全的 LDAP 查閱。 如需詳細資訊，請參閱 [ADV190023 |啟用 LDAP 通道系結和 LDAP 簽署的 Microsoft 指導](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)方針。  
+        選取此核取方塊以啟用 LDAP 簽署。 這種功能可在 Azure NetApp Files 服務和使用者指定的 [Active Directory Domain Services 網域控制站](/windows/win32/ad/active-directory-domain-services)之間啟用安全的 LDAP 查閱。 如需詳細資訊，請參閱 [ADV190023 |啟用 LDAP 通道系結和 LDAP 簽署的 Microsoft 指導](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)方針。  
 
         ![Active Directory LDAP 簽署](../media/azure-netapp-files/active-directory-ldap-signing.png) 
 
@@ -206,7 +206,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
+        您也可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
      * **備份原則使用者**  
         您可以將需要更高權限的其他帳戶，納入為了使用 Azure NetApp Files 而建立的電腦帳戶。 指定的帳號可允許在檔案或資料夾層級變更 NTFS 權限。 例如，您可以指定非特殊權限服務帳戶，用來將資料移轉至 Azure NetApp Files 中的 SMB 檔案共用。  
@@ -228,7 +228,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
+        您也可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
     * 認證，包括您的**使用者名稱**和**密碼**
 
@@ -325,6 +325,6 @@ SMB 磁碟區的存取是透過權限來管理。
 
 * [對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)
-* [SMB 常見問題集](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* [了解 Azure 服務的虛擬網路整合](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [使用 Azure CLI 安裝新的 Active Directory 樹系](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [SMB 常見問題集](./azure-netapp-files-faqs.md#smb-faqs)
+* [了解 Azure 服務的虛擬網路整合](../virtual-network/virtual-network-for-azure-services.md)
+* [使用 Azure CLI 安裝新的 Active Directory 樹系](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

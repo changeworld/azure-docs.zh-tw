@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: ab94af9ec172a3e88d523024c1e00d3a0d944798
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873076"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966401"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning 作業
 
 Azure Machine Learning 許多作業和工作的內建動作。 如需完整清單，請參閱 [Azure 資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>Azure Machine learning 中的 MLflow 作業
+
+下表說明應新增至為了執行 MLflow 作業所建立之自訂角色中動作的許可權範圍。
+
+| MLflow 操作 | 影響範圍 |
+| --- | --- |
+| 列出工作區追蹤存放區中的所有實驗、依識別碼取得實驗、依名稱取得實驗 | MachineLearningServices/工作區/實驗/讀取 |
+| 使用名稱建立實驗、在實驗上設定標記、還原標記為刪除的實驗| MachineLearningServices/工作區/實驗/寫入 | 
+| 刪除實驗 | MachineLearningServices/workspace/實驗/刪除 |
+| 取得執行和相關的資料和中繼資料、取得指定執行之指定度量的所有值清單、執行的清單構件 | MachineLearningServices/工作區/實驗/執行/讀取 |
+| 在實驗中建立新的回合、刪除執行、還原已刪除的回合、在目前的執行下設定標籤、在執行時設定標籤、在執行時刪除標記、在執行時刪除標記、記錄參數 (索引鍵/值組) 用於執行、記錄一批的計量、參數和標記以執行、更新執行狀態 | MachineLearningServices/工作區/實驗/執行/寫入 |
+| 依名稱取得註冊的模型、提取登錄中所有已註冊模型的清單、搜尋已註冊的模型、每個要求階段的最新版本模型、取得已註冊模型的版本、搜尋模型版本、取得模型版本成品儲存所在的 URI、搜尋由實驗識別碼執行的專案 | MachineLearningServices/工作區/模型/讀取 |
+| 建立新的已註冊模型、更新已註冊模型的名稱/描述、重新命名現有的已註冊模型、建立模型的新版本、更新模型版本的描述、將已註冊的模型轉換成其中一個階段 | MachineLearningServices/工作區/模型/寫入 |
+| 刪除已註冊的模型及其所有版本，並刪除已註冊模型的特定版本 | MachineLearningServices/工作區/模型/刪除 |
+
 
 ## <a name="create-custom-role"></a>建立自訂角色
 
@@ -253,6 +269,46 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
         ]
     }
     ```
+     
+* __MLflow 資料科學家自訂__：允許資料科學家執行所有 MLflow AzureML 支援的作業，但下列情況 **除外**：
+
+   * 建立計算
+   * 將模型部署到生產 AKS 叢集
+   * 在生產環境中部署管線端點
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __MLOps Custom__：可讓您將角色指派給服務主體，並使用它來自動化您的 MLOps 管線。 例如，若要針對已發佈的管線提交執行：
 

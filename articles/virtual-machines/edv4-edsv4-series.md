@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 4c69f78ababedde30e9cb41613b8e9537c738b5f
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: eb809b2dabe2d8b28f05b328877e1a20dbeacbc3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945629"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977607"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 和 Edsv4 系列
 
-Edv4 與 Edsv4 系列可在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處理器上在超執行緒設定下執行，而且適用於各種記憶體密集型企業應用程式，且具備最高可達 504 GiB 的 RAM、[Intel&reg; 渦輪增壓技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 先進向量延伸模組 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它們也支援 [Intel &reg; 深度學習提升](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 這些新的 VM 大小會有50% 的本機儲存體，以及與[Gen2 vm](./linux/generation-2.md)的[Ev3/Esv3](./ev3-esv3-series.md)大小相比，可進行讀取和寫入的較佳本機磁片 IOPS。 它具備 3.4 GHz 的所有核心 Turbo 頻率速度。 
+Edv4 與 Edsv4 系列可在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處理器上在超執行緒設定下執行，而且適用於各種記憶體密集型企業應用程式，且具備最高可達 504 GiB 的 RAM、[Intel&reg; 渦輪增壓技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 先進向量延伸模組 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它們也支援 [Intel &reg; 深度學習提升](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 這些新的 VM 大小會有50% 的本機儲存體，以及與[Gen2 vm](./generation-2.md)的[Ev3/Esv3](./ev3-esv3-series.md)大小相比，可進行讀取和寫入的較佳本機磁片 IOPS。 它具備 3.4 GHz 的所有核心 Turbo 頻率速度。 
 
 ## <a name="edv4-series"></a>Edv4 系列
 

@@ -2,20 +2,20 @@
 title: 使用 PowerShell 進行 Azure AD Domain Services 的限域同步處理 |Microsoft Docs
 description: 瞭解如何使用 Azure AD PowerShell 來設定從 Azure AD 到 Azure Active Directory Domain Services 受控網域的限域同步處理
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
-ms.openlocfilehash: 197ae37b0c63b19ebe4dcdf2732169be0f357a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: dc6ebb88440ecdccc3ea78d85f0b6186100da01a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294078"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967878"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 設定從 Azure AD 到 Azure Active Directory Domain Services 的限域同步處理
 
@@ -210,7 +210,7 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScoped
 
 變更同步處理的範圍會導致受控網域重新同步處理所有資料。 受控網域中不再需要的物件會被刪除，而重新同步處理可能需要很長的時間才能完成。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解同步處理常式，請參閱 [瞭解 Azure AD Domain Services 中的同步](synchronization.md)處理。
 

@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9d8970387982e293d3c8495079e7529fac2ccaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949536"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966928"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server 與 Active Directory 之間的目錄整合
 
@@ -39,7 +39,7 @@ ms.locfileid: "88949536"
 > [!NOTE]
 > 目錄整合不保證會使用 Active Directory Domain Services 以外的目錄。
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | --- | --- |
 | 使用 Active Directory |選取 [使用 Active Directory] 選項，以使用 Active Directory 來匯入和同步處理。  這是預設值。 <br>注意：為了使 Active Directory 整合能正常運作，請將電腦加入網域並以網域帳戶進行登入。 |
 | 包含受信任的網域 |核取 [包含受信任的網域]****，讓代理程式嘗試連線至目前網域所信任的網域、樹系中的另一個網域，或涉及樹系信任的網域。  當不從任何受信任的網域匯入或同步處理使用者時，請取消選取此核取方塊，以改善效能。  預設為核取。 |
@@ -49,7 +49,7 @@ ms.locfileid: "88949536"
 
 下表描述 LDAP 組態設定。
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | --- | --- |
 | 伺服器 |輸入執行 LDAP 目錄之伺服器的主機名稱或 IP 位址。  也可以指定備份伺服器 (以分號隔開)。 <br>注意：當系結類型為 SSL (TLS) 時，需要完整的主機名稱。 |
 | 基準 DN |輸入作為所有目錄查詢起點之基準目錄物件的辨別名稱。  例如，dc=abc,dc=com。 |
@@ -80,7 +80,7 @@ Azure Multi-Factor Authentication 具有下列三個篩選選項：
 
 ![自訂 MFA Server 中的目錄整合屬性](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | --- | --- |
 | 唯一識別碼 |輸入屬性的屬性名稱，做為容器、安全性群組和使用者記錄的唯一識別碼。  在 Active Directory 中，這通常是 objectGUID。 其他 LDAP 實作可能使用 entryUUID 或類似的項目。  預設值是 objectGUID。 |
 | 唯一識別碼類型 |選取唯一識別碼屬性的類型。  在 Active Directory 中，objectGUID 屬性為 GUID 類型。 其他 LDAP 實作可能使用 ASCII 位元組陣列或字串類型。  預設值是 GUID。 <br><br>務必正確設定此類型，因為同步處理項目是依照其唯一識別碼來參考。 唯一識別碼類型是用來直接在目錄中尋找物件。  當目錄實際上將值儲存為 ASCII 字元的位元組陣列時，將此類型設定為 [字串] 會導致同步處理無法正確運作。 |
@@ -104,7 +104,7 @@ Azure Multi-Factor Authentication 具有下列三個篩選選項：
 | 傳真 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的傳真號碼。  預設值是 facsimileTelephoneNumber。 |
 | IP 電話 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的 IP 電話號碼。  預設值是 ipPhone。 |
 | 自訂 |輸入屬性的屬性名稱，其中包含使用者記錄中的自訂電話號碼。  預設值為空白。 |
-| 分機 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的分機電話號碼。  分機欄位的值只會做為主要電話號碼的分機。  預設值為空白。 <br><br>如果不指定分機屬性，則可以在電話屬性中包含分機。 在此情況下，在分機前面加上 'x'，便可得到正確剖析。  例如，555-123-4567 x890 會形成電話號碼 555-123-4567 和分機 890。 |
+| 副檔名 |輸入屬性的屬性名稱，此屬性包含使用者記錄中的分機電話號碼。  分機欄位的值只會做為主要電話號碼的分機。  預設值為空白。 <br><br>如果不指定分機屬性，則可以在電話屬性中包含分機。 在此情況下，在分機前面加上 'x'，便可得到正確剖析。  例如，555-123-4567 x890 會形成電話號碼 555-123-4567 和分機 890。 |
 | [還原預設值] 按鈕 |按一下 [還原預設值]****，可將所有屬性還原為預設值。  在一般 Active Directory 或 ADAM 結構描述中，預設值應該可以正確運作。 |
 
 若要編輯屬性，請按一下 [屬性] 索引標籤上的 [ **編輯** ]。 這會顯示一個視窗，您可以在其中編輯屬性。 選取任何屬性旁邊的 [...]**** 可開啟視窗供您選擇要顯示的屬性。
@@ -125,7 +125,7 @@ Multi-Factor Auth ADSync 服務使用 Microsoft 所提供的 DirSync LDAP 伺服
 
 下表包含各項 [同步處理] 索引標籤設定的其他資訊。
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | --- | --- |
 | 啟用與 Active Directory 同步處理 |核取時，Multi-Factor Auth Server 服務會定期輪詢 Active Directory 的變更。 <br><br>注意：必須加入至少一個同步處理項目，且必須執行「立即同步處理」，Multi-Factor Auth Server 服務才會開始處理變更。 |
 | 同步處理頻率 |指定 Multi-Factor Auth Server 服務在輪詢和處理變更之間等候的時間間隔。 <br><br> 注意：指定的間隔是每個週期開始之間的時間。  如果處理變更的時間超過間隔，服務將立即再次輪詢。 |

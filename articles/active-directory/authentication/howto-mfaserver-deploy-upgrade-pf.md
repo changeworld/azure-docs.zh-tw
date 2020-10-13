@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e485c55ab591bcccdc32818839a8d484a6c3af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e7c0399cce45b36a96bedb14d225490d48ee049
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919534"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966877"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>將 PhoneFactor Agent 升級為 Azure Multi-Factor Authentication Server
 
@@ -77,7 +77,7 @@ ms.locfileid: "88919534"
 > [!NOTE]
 > 從 Azure MFA Server 8.0 至 8.0+ 以前的版本升級時，可以在升級之後解除安裝行動裝置應用程式 Web 服務
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 針對 Azure Multi-Factor Authentication Server [安裝使用者入口網站](howto-mfaserver-deploy-userportal.md)。
 

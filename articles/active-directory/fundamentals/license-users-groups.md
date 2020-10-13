@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319520"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977009"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 入口網站中指派或移除授權
 
@@ -84,7 +84,7 @@ Azure AD 服務有數個可用的授權方案，包括：
     > [!NOTE]
     > 某些位置無法使用部分 Microsoft 服務。 必須先指定 [使用位置]，才可以將授權指派給使用者。**** 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。**** 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
 
-1. 選取 [指派]。
+1. 選取 [指派]****。
 
     系統會將使用者新增至授權使用者清單中，且該使用者擁有隨附 Azure AD 服務的存取權。
     > [!NOTE]
@@ -102,15 +102,15 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 1. 在 [指派] 頁面上，選取 [使用者和群組]，然後搜尋並選取您想指派授權的群組。********
 
-    ![指派授權頁面顯示反白的搜尋和 [選取] 選項](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![指派授權頁面，反白顯示搜尋和選取選項2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. 選取 [指派] 選項，確認已開啟適當的授權選項，然後選取 [確定]。********
 
-    ![授權選項頁面，其中包含授權方案中可用的所有選項](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![授權選項頁面，其中包含授權方案2中的所有可用選項](media/license-users-groups/license-option-blade-group-assignments.png)
 
     [指派授權] 頁面隨即更新，顯示已選取一名使用者且已設定指派。****
 
-1. 選取 [指派]。
+1. 選取 [指派]****。
 
     系統會將群組新增至授權群組清單中，且所有成員均擁有隨附 Azure AD 服務的存取權。
 
@@ -135,12 +135,12 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 1. 選取 [移除授權]****。
 
-    ![[授權群組] 頁面顯示反白的 [移除] 授權選項](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![已反白顯示 [移除授權] 選項的 [授權群組] 頁面2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > 當同步處理至 Azure AD 的內部部署使用者帳戶落在同步處理的範圍之外，或移除同步時，就會在 Azure AD 中虛刪除使用者。 發生這種情況時，直接指派給使用者或透過以群組為基礎的授權指派給使用者的授權，將會標示為已 **暫停** 而不是 **刪除**。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 指派授權後，您可以執行下列程序：
 

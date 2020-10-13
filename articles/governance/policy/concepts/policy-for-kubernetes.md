@@ -3,12 +3,12 @@ title: 瞭解 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540246"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951531"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
@@ -57,6 +57,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 - 不支援在 Azure 原則附加元件之外安裝閘道管理員。 先卸載先前的閘道管理員安裝所安裝的任何元件，再啟用 Azure 原則附加元件。
 - [不符合規範的原因](../how-to/determine-non-compliance.md#compliance-reasons)不適用於 `Microsoft.Kubernetes.Data` 
    [資源提供者模式](./definition-structure.md#resource-provider-modes)。 使用 [元件詳細資料](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
+- [資源提供者模式](./definition-structure.md#resource-provider-modes)不支援[豁免](./exemption-structure.md)。
 
 下列限制僅適用于 AKS 的 Azure 原則附加元件：
 

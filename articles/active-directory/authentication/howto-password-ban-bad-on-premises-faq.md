@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a39871fd6e2aef2e5120030d17192bb32ba2613b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2f24eb64a5418a9963fd58611314ccbc6b72ec4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003468"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968458"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD 內部部署的密碼保護常見問題
 
@@ -66,7 +66,7 @@ Active Directory 支援測試密碼的能力，以查看它是否符合網域目
 
 **問：是否支援與其他密碼篩選器型產品並存安裝 Azure AD 密碼保護？**
 
-是。 核心 Windows 功能之一就是支援多個已註冊的密碼篩選 dll，因此並不限於 Azure AD 密碼保護。 所有註冊的密碼篩選 dll 必須先同意才能接受密碼。
+可以。 核心 Windows 功能之一就是支援多個已註冊的密碼篩選 dll，因此並不限於 Azure AD 密碼保護。 所有註冊的密碼篩選 dll 必須先同意才能接受密碼。
 
 **問：如何在不使用 Azure 的情況下，于 Active Directory 環境中部署和設定 Azure AD 密碼保護？**
 
@@ -103,11 +103,11 @@ FRS (DFSR 之前的技術) 有許多已知問題，而且在更新版本的 Wind
 
 **問：是否有任何方法可將 DC 代理程式設定為使用特定 Proxy 伺服器？**
 
-否。 由於 Proxy 伺服器是無狀態的，因此使用哪一個特定 Proxy 伺服器並不重要。
+不可以。 由於 Proxy 伺服器是無狀態的，因此使用哪一個特定 Proxy 伺服器並不重要。
 
 **問：是否可以與其他服務（如 Azure AD Connect）並存部署 Azure AD 的密碼保護 Proxy 服務？**
 
-是。 Azure AD 密碼保護 Proxy 服務與 Azure AD Connect 之間永遠不會產生直接衝突。
+可以。 Azure AD 密碼保護 Proxy 服務與 Azure AD Connect 之間永遠不會產生直接衝突。
 
 可惜的是，在 Azure AD 密碼保護 Proxy 軟體所安裝的 Microsoft Azure AD Connect 代理程式更新程式服務版本與 [Azure Active Directory 應用程式 Proxy](../manage-apps/application-proxy.md) software 所安裝的服務版本之間，發現不相容。 這項不相容可能會導致代理程式更新程式服務無法與 Azure 連線，以進行軟體更新。 不建議您在同一部電腦上安裝 Azure AD 的密碼保護 Proxy 和 Azure Active Directory 應用程式 Proxy。
 
@@ -125,13 +125,13 @@ FRS (DFSR 之前的技術) 有許多已知問題，而且在更新版本的 Wind
 
 **問：我想要在網域中的少數 Dc 上測試 Azure AD 密碼保護。是否可以強制使用者密碼變更使用這些特定的 Dc？**
 
-否。 使用者變更其密碼時，Windows 用戶端 OS 會控制要使用哪一個網域控制站。 網域控制站會根據各種因素而選取，例如 Active Directory 網站和子網指派、環境特定網路設定等。Azure AD 密碼保護無法控制這些因素，也無法影響選取哪些網域控制站來變更使用者的密碼。
+不可以。 使用者變更其密碼時，Windows 用戶端 OS 會控制要使用哪一個網域控制站。 網域控制站會根據各種因素而選取，例如 Active Directory 網站和子網指派、環境特定網路設定等。Azure AD 密碼保護無法控制這些因素，也無法影響選取哪些網域控制站來變更使用者的密碼。
 
 可部分達成此目標的方法之一是，在指定 Active Directory 站台中的所有網域控制站上部署 Azure AD 密碼保護。 此方法合理地將指派至該站台的 Windows 用戶端涵蓋在一個範圍內，因此也涵蓋登入這些用戶端並變更其密碼的使用者。
 
 **問：如果我只在網域主控站 (PDC) 上安裝 Azure AD 的密碼保護 DC 代理程式服務，網域中的所有其他網域控制站也會受到保護嗎？**
 
-否。 當非 PDC 網域控制站上的使用者密碼變更時，純文字密碼永遠不會傳送到 PDC (這是常見的錯誤觀念)。 當指定 DC 接受新密碼後，此 DC 會使用該密碼來建立該密碼的各種驗證通訊協定特有雜湊，然後在目錄中保存這些雜湊。 純文字密碼不會保存。 已更新的雜湊接著會複寫到 PDC。 在某些情況下，使用者密碼可能會直接在 PDC 上變更，這也是取決於各種因素，例如網路拓樸和 Active Directory 站台的設計。 (請參閱上一個問題。)
+不可以。 當非 PDC 網域控制站上的使用者密碼變更時，純文字密碼永遠不會傳送到 PDC (這是常見的錯誤觀念)。 當指定 DC 接受新密碼後，此 DC 會使用該密碼來建立該密碼的各種驗證通訊協定特有雜湊，然後在目錄中保存這些雜湊。 純文字密碼不會保存。 已更新的雜湊接著會複寫到 PDC。 在某些情況下，使用者密碼可能會直接在 PDC 上變更，這也是取決於各種因素，例如網路拓樸和 Active Directory 站台的設計。 (請參閱上一個問題。)
 
 總之，在 PDC 上部署 Azure AD 密碼保護 DC 代理程式服務時，就必須達到此功能在網域間的 100% 安全性涵蓋範圍。 只在 PDC 上部署此功能並不會使網域中其他 DC 享有 Azure AD 密碼保護安全性的優勢。
 
@@ -141,7 +141,7 @@ FRS (DFSR 之前的技術) 有許多已知問題，而且在更新版本的 Wind
 
 **問：是否有 System Center Operations Manager 管理元件可用來 Azure AD 密碼保護？**
 
-否。
+不可以。
 
 **問：即使我已將原則設定為處於 Audit 模式，為什麼 Azure AD 仍會拒絕弱式密碼？**
 
@@ -149,7 +149,7 @@ FRS (DFSR 之前的技術) 有許多已知問題，而且在更新版本的 Wind
 
 **問：當 Azure AD 密碼保護拒絕密碼時，我的使用者會看到傳統的 Windows 錯誤訊息。是否可以自訂這個錯誤訊息，讓使用者知道究竟發生什麼事？**
 
-否。 網域控制站拒絕密碼時，使用者所看到的錯誤訊息是由用戶端電腦所控制，而不是由網域控制站控制。 這種行為會在預設的 Active Directory 密碼原則或以密碼篩選器為基礎的解決方案（例如 Azure AD 密碼保護）拒絕密碼時發生。
+不可以。 網域控制站拒絕密碼時，使用者所看到的錯誤訊息是由用戶端電腦所控制，而不是由網域控制站控制。 這種行為會在預設的 Active Directory 密碼原則或以密碼篩選器為基礎的解決方案（例如 Azure AD 密碼保護）拒絕密碼時發生。
 
 ## <a name="additional-content"></a>其他內容
 

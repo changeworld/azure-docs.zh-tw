@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c24698736d611604c39b6fa91aef97f73576c6c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd17e446766514fa90f8beaaab104bbbd2f389f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716194"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965024"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory 自助式密碼重設的授權需求
 
@@ -30,7 +30,7 @@ SSPR 是依使用者授權。 為了維持合規性，組織必須將適當的�
 
 下表概述密碼變更、重設或內部部署回寫的不同 SSPR 案例，以及哪些 Sku 提供此功能。
 
-| 功能 | Azure AD Free | Microsoft 365 商務標準版 | Microsoft 365 商務進階版 | Azure AD Premium P1 或 P2 |
+| 特徵 | Azure AD Free | Microsoft 365 商務標準版 | Microsoft 365 商務進階版 | Azure AD Premium P1 或 P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **僅限雲端使用者密碼變更**<br />當 Azure AD 中的使用者知道其密碼，並想要將其變更為新的密碼時。 | ● | ● | ● | ● |
 | **僅限雲端使用者密碼重設**<br />當 Azure AD 中的使用者忘記其密碼，且需要重設密碼時。 | | ● | ● | ● |
@@ -53,7 +53,7 @@ Azure AD 支援以群組為基礎的授權。 系統管理員可以將大量授�
 
 某些 Microsoft 服務無法在所有位置使用。 系統管理員必須先指定使用者的 [ **使用位置** ] 屬性，才可以將授權指派給使用者。 指派授權可以在 Azure 入口網站的 [**使用者**  >  **設定檔**  >  **設定**] 區段下完成。 使用群組授權指派時，未指定使用位置的任何使用者在指派期間會繼承目錄的位置。**
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用 SSPR，請完成下列教學課程：
 

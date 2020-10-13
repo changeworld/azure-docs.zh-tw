@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bd6371cb0264830ed84a8e80c373c1963cd798
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595905"
+ms.locfileid: "91932476"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳作法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -36,7 +36,7 @@ ms.locfileid: "91595905"
 
 * [Azure NetApp Files 單一磁碟區上的 Oracle 資料庫效能](performance-oracle-single-volumes.md)
 * [使用 Azure NetApp Files 的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Oracle VM 映射及其在 Microsoft Azure 上的部署：共用存放裝置設定選項](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Oracle VM 映射及其在 Microsoft Azure 上的部署：共用存放裝置設定選項](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [使用 Azure NetApp Files 搭配 Oracle Database 的優點](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows 應用程式和 SQL Server 解決方案
@@ -61,17 +61,17 @@ ms.locfileid: "91595905"
 ### <a name="generic-sap-and-sap-netweaver"></a>一般 SAP 和 SAP Netweaver 
 
 * [使用 Azure NetApp Files Microsoft Azure 上的 SAP 應用程式](https://www.netapp.com/us/media/tr-4746.pdf)
-* [針對 SAP 應用程式使用 Azure NetApp Files 在 SUSE Linux Enterprise Server 上的 Azure VM 達到 SAP NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-* [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的 Azure NetApp Files Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* [Sap NetWeaver 在 Windows 上的 Azure Vm 上的高可用性，適用于 SAP 應用程式的 Azure NetApp Files (SMB) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-* [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [針對 SAP 應用程式使用 Azure NetApp Files 在 SUSE Linux Enterprise Server 上的 Azure VM 達到 SAP NetWeaver 高可用性](../virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files.md)
+* [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的 Azure NetApp Files Red Hat Enterprise Linux](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
+* [Sap NetWeaver 在 Windows 上的 Azure Vm 上的高可用性，適用于 SAP 應用程式的 Azure NetApp Files (SMB) ](../virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb.md)
+* [Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 Red Hat Enterprise Linux](../virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="sap-hana"></a>SAP HANA 
 
-* [SAP HANA Azure 虛擬機器儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-* [SAP Hana Red Hat Enterprise Linux 上的 Azure NetApp Files 向上擴充的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat)
-* [在 SUSE Linux Enterprise Server 上搭配 Azure NetApp Files 使用 Azure Vm 上的待命節點進行相應放大 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-* [在 Red Hat Enterprise Linux 上搭配 Azure NetApp Files 使用 Azure Vm 上的待命節點進行相應放大 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+* [SAP HANA Azure 虛擬機器儲存體設定](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [SAP Hana Red Hat Enterprise Linux 上的 Azure NetApp Files 向上擴充的高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
+* [在 SUSE Linux Enterprise Server 上搭配 Azure NetApp Files 使用 Azure Vm 上的待命節點進行相應放大 SAP Hana](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
+* [在 Red Hat Enterprise Linux 上搭配 Azure NetApp Files 使用 Azure Vm 上的待命節點進行相應放大 SAP Hana](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP tech 社區和 blog 文章 
 
@@ -88,9 +88,9 @@ ms.locfileid: "91595905"
 ### <a name="windows-virtual-desktop"></a>Windows 虛擬桌面
 
 * [搭配使用 Azure NetApp Files 和 Windows 虛擬桌面的優點](solutions-windows-virtual-desktop.md)
-* [在 Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
-* [使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
-* [企業規模的 Windows 虛擬桌面](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [在 Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
+* [使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器](../virtual-desktop/create-fslogix-profile-container.md)
+* [企業規模的 Windows 虛擬桌面](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>HPC 解決方案
 
@@ -100,12 +100,12 @@ ms.locfileid: "91595905"
 
 * [Azure NetApp Files：充分利用您的雲端儲存體](https://cloud.netapp.com/hubfs/Resources/ANF%20PERFORMANCE%20TESTING%20IN%20TEMPLATE.pdf)
 * [使用 Azure Batch 和 Azure NetApp Files 執行 MPI 工作負載](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
-* [Azure 週期雲端： Azure NetApp Files 上的 CycleCloud HPC 環境](https://docs.microsoft.com/azure/cyclecloud/overview)
+* [Azure 週期雲端： Azure NetApp Files 上的 CycleCloud HPC 環境](/azure/cyclecloud/overview)
 
 ### <a name="oil-and-gas"></a>石油與天然氣
 
 * [高效能計算 (HPC) ： Azure 中的石油和天然氣](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
-* [在 Azure 上執行容器模擬軟體](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [在 Azure 上執行容器模擬軟體](/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
 
 ### <a name="electronic-design-automation-eda"></a>電子設計自動化 (EDA) 
 
@@ -123,11 +123,10 @@ ms.locfileid: "91595905"
 
 ### <a name="azure-kubernetes-services-and-kubernetes"></a>Azure Kubernetes Services 和 Kubernetes
 
-* [整合 Azure NetApp Files 與 Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/azure-netapp-files)
+* [整合 Azure NetApp Files 與 Azure Kubernetes Service](../aks/azure-netapp-files.md)
 * [在 Azure 上使用 Azure NetApp Files 的全球 Kubernetes 效能](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Trident-適用于容器的儲存體協調器](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 
 ### <a name="azure-batch"></a>Azure Batch
 
 * [使用 Azure Batch 和 Azure NetApp Files 執行 MPI 工作負載](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
- 

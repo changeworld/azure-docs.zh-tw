@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274702"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977335"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
@@ -49,14 +49,14 @@ ms.locfileid: "91274702"
 | **網路功能** |LAN/WAN  |SDN (軟體定義網路)|
 | **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組 ](https://azure.microsoft.com/blog/network-security-groups) |
 | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
-| **預定進行的維修** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
+| **預定進行的維修** |修補/升級|[可用性設定組](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (Azure 所管理的修補/升級) |
 | **Resource** |專用  |與其他用戶端共用|
 | **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
 | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 | **縮放比例** |垂直調整 |水平調整|
 
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 
 - 決定資料庫大小和成長率。
 - 決定 IOPS 需求，您可以根據 Oracle AWR 報表或其他網路監視工具進行評估。
@@ -230,7 +230,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 - [設定 Oracle ASM](configure-oracle-asm.md)
 - [設定 Oracle Data Guard](configure-oracle-dataguard.md)
 - [設定 Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Oracle 備份和復原](oracle-backup-recovery.md)
+- [Oracle 備份和復原](./oracle-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 

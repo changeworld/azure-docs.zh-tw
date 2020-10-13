@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652843"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977267"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>將大型主機儲存體移至 Azure
 
@@ -51,13 +51,13 @@ Azure 儲存體以 [Azure 磁片](../../../managed-disks-overview.md)、 [Azure 
 
 <table>
 <thead>
-    <tr><th>類型</th><th>說明</th><th>當您想要：</th></tr>
+    <tr><th>類型</th><th>描述</th><th>當您想要：</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure 檔案
 </td>
 <td>
-提供 SMB 介面、用戶端程式庫和 <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> 介面，允許從任何位置存取儲存的檔案。
+提供 SMB 介面、用戶端程式庫和 <a href="/rest/api/storageservices/file-service-rest-api">REST</a> 介面，允許從任何位置存取儲存的檔案。
 </td>
 <td><ul>
 <li>當應用程式使用原生檔案系統 Api 在 Azure 中執行的應用程式與其他應用程式之間共用資料時，隨即將應用程式隨即轉移至雲端。</li>
@@ -67,7 +67,7 @@ Azure 儲存體以 [Azure 磁片](../../../managed-disks-overview.md)、 [Azure 
 </tr>
 <tr><td>Azure Blob
 </td>
-<td>提供用戶端程式庫和 <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> 介面，可讓您在區塊 blob 中大規模地儲存和存取非結構化資料。 也支援將 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> 用於企業巨量資料分析解決方案。
+<td>提供用戶端程式庫和 <a href="/rest/api/storageservices/blob-service-rest-api">REST</a> 介面，可讓您在區塊 blob 中大規模地儲存和存取非結構化資料。 也支援將 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> 用於企業巨量資料分析解決方案。
 </td>
 <td><ul>
 <li>支援應用程式中的串流和隨機存取案例。</li>
@@ -77,7 +77,7 @@ Azure 儲存體以 [Azure 磁片](../../../managed-disks-overview.md)、 [Azure 
 </tr>
 <tr><td>Azure 磁碟
 </td>
-<td>提供用戶端程式庫和 <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> 介面，允許從連接的虛擬硬碟持續儲存及存取資料。
+<td>提供用戶端程式庫和 <a href="/rest/api/compute/disks">REST</a> 介面，允許從連接的虛擬硬碟持續儲存及存取資料。
 </td>
 <td><ul>
 <li>使用原生檔案系統 Api 來讀取和寫入資料至持續性磁片的應用程式隨即轉移。</li>
@@ -102,7 +102,7 @@ Ssd 可在 Azure 上提供最高的儲存體效能。 以下是本檔撰寫)  (�
 
 Blob 儲存體會在 Azure 上提供最大量的儲存體。 除了儲存體大小，Azure 還提供受控和非受控儲存體。 使用受控儲存體時，Azure 會負責管理基礎儲存體帳戶。 使用非受控儲存體時，使用者需負責設定適當大小的 Azure 儲存體帳戶，以符合儲存體需求。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [大型主機遷移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Azure 虛擬機器上的大型主機重新裝載](../overview.md)

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068164"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968662"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder 服務 DevOps 工作
 
@@ -31,8 +31,8 @@ ms.locfileid: "88068164"
 * [從 Visual Studio Marketplace 安裝穩定的 DevOps](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)工作。
 * 您必須擁有 VSTS DevOps 帳戶，並已建立組建管線
 * 在管線所使用的訂用帳戶中註冊並啟用映射產生器功能需求：
-    * [Az PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [Az CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [Az PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [Az CLI](../windows/image-builder.md#register-the-features)
     
 * 在來源映射資源群組中建立標準 Azure 儲存體帳戶，您可以使用其他資源群組/儲存體帳戶。 儲存體帳戶會用來將組建成品從 DevOps 工作轉移至映射。
 
@@ -71,14 +71,14 @@ ms.locfileid: "88068164"
  
 ### <a name="location"></a>Location
 
-位置是映射產生器將執行的區域。 只支援設定的 [區域](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) 數量。 來源映射必須存在於此位置。 例如，如果您使用共用映射庫，則複本必須存在於該區域中。
+位置是映射產生器將執行的區域。 只支援設定的 [區域](../windows/image-builder-overview.md#regions) 數量。 來源映射必須存在於此位置。 例如，如果您使用共用映射庫，則複本必須存在於該區域中。
 
 ### <a name="managed-identity-required"></a>需要 (受控識別) 
-影像產生器需要受控識別，它是用來讀取來源自訂映射、連接 Azure 儲存體，以及建立自訂映射。 詳細資訊請看[這裡](https://aka.ms/azvmimagebuilder#permissions)。
+影像產生器需要受控識別，它是用來讀取來源自訂映射、連接 Azure 儲存體，以及建立自訂映射。 詳細資訊請看[這裡](./image-builder-overview.md#permissions)。
 
 ### <a name="vnet-support"></a>VNET 支援
 
-DevOps 工作目前不支援指定現有的子網，但如果您想要利用現有的 VNET，您可以使用 ARM 範本，並將影像產生器範本內嵌在內部，請參閱 Windows 映像產生器範本範例以瞭解如何達成此目的，或使用 [AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell)。
+DevOps 工作目前不支援指定現有的子網，但如果您想要利用現有的 VNET，您可以使用 ARM 範本，並將影像產生器範本內嵌在內部，請參閱 Windows 映像產生器範本範例以瞭解如何達成此目的，或使用 [AZ AIB PowerShell](../windows/image-builder-powershell.md)。
 
 ### <a name="source"></a>來源
 
@@ -194,7 +194,7 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
     
 #### <a name="total-length-of-image-build"></a>映射組建的總長度
 
-目前無法變更 DevOps 管線工作中的總長度。 它使用預設值240分鐘。 如果您想要增加 [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)，則可以在發行管線中使用 AZ CLI 工作。 設定工作以複製範本並提交範本。 如需範例，請參閱此 [解決方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
+目前無法變更 DevOps 管線工作中的總長度。 它使用預設值240分鐘。 如果您想要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)，則可以在發行管線中使用 AZ CLI 工作。 設定工作以複製範本並提交範本。 如需範例，請參閱此 [解決方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
 
 
 #### <a name="storage-account"></a>儲存體帳戶
@@ -306,7 +306,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>我可以指定映射範本名稱嗎？
 
-否。 使用唯一的範本名稱，然後刪除。
+不可以。 使用唯一的範本名稱，然後刪除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>影像產生器失敗。 我該如何進行疑難排解？
 

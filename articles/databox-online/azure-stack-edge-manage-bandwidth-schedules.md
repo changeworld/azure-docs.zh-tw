@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 9247ae6e6cfc276c871689df826935c519620573
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e73a02c93807072e30c8ce2a1a7feb30e9d3c8c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908148"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978963"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的頻寬排程  
 
@@ -44,7 +44,7 @@ ms.locfileid: "90908148"
    2. 如果此排程應全天執行，請勾選 [ **全天** ] 選項。
    3. **頻寬速率** 是您的裝置在牽涉到雲端 (上傳和下載) 時，每秒 Mb (Mbps) 的頻寬。 提供一個介於 20 到 1,000,000,007 之間的數目給此欄位。
    4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
-   5. 選取 [新增]  。
+   5. 選取 [新增]。
 
       ![新增排程](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "90908148"
 
 4. 修改排程之後，排程清單就會更新，以反映出修改過的排程。
 
-    ![修改使用者](media/azure-stack-edge-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![修改使用者2](media/azure-stack-edge-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>刪除排程
@@ -82,6 +82,6 @@ ms.locfileid: "90908148"
 3. 刪除排程之後，排程清單就會更新。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[管理共用](azure-stack-edge-manage-shares.md)。

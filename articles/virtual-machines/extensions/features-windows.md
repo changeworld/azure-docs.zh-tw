@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829079"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977369"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>適用於 Windows 的虛擬機器擴充功能和功能
 
@@ -70,7 +70,7 @@ Windows 客體代理程式可在多種 OS 上執行，但具有擴充功能的 O
 > [!IMPORTANT]
 > 如果您已使用來賓防火牆或 proxy 來封鎖對 *168.63.129.16* 的存取，則無論上述方式，擴充功能都會失敗。 需要端口80、443和32526。
 
-代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 針對需要存取 Azure 儲存體或 Azure Active Directory 的擴充功能，您可以使用 [AZURE NSG 服務](../../virtual-network/security-overview.md#service-tags) 標籤來允許存取儲存體或 AzureActiveDirectory。
+代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 針對需要存取 Azure 儲存體或 Azure Active Directory 的擴充功能，您可以使用 [AZURE NSG 服務](../../virtual-network/network-security-groups-overview.md#service-tags) 標籤來允許存取儲存體或 AzureActiveDirectory。
 
 Windows 來賓代理程式沒有 proxy 伺服器支援，無法讓您重新導向代理程式流量要求，這表示如果您有一個) 可存取網際網路上的資源或透過 IP 168.63.129.16 的主機上的資源，則 Windows 來賓代理程式將會依賴您的自訂 proxy (。
 

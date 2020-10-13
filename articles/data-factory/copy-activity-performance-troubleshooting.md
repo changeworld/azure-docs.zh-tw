@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440519"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951073"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>針對複製活動效能進行疑難排解
 
@@ -40,7 +40,7 @@ ms.locfileid: "89440519"
 | 特定的資料存放區   | 將資料載入 **Azure Synpase Analytics (先前為 SQL DW) **：建議使用 POLYBASE 或 COPY 語句（如果未使用）。 |
 | &nbsp;                | 從 **Azure SQL Database**複製資料/將資料複製到該處：當 DTU 使用率過高時，建議升級至更高的層級。 |
 | &nbsp;                | 從 **Azure Cosmos DB**複製資料/將資料複製到該處：當 RU 使用率過高時，建議升級為較大的 ru。 |
-|                       | 從 **SAP 資料表**複製資料：複製大量資料時，建議使用 SAP 連接器的分割區選項，以啟用平行載入並增加最大分割區數目。 |
+|                       | 從 **SAP 資料表**複製資料：複製大量資料時，建議利用 SAP 連接器的分割區選項，以啟用平行載入並增加最大分割區數目。 |
 | &nbsp;                | 從 **Amazon Redshift**擷取資料：如果未使用，建議使用 UNLOAD。 |
 | 資料存放區節流 | 在複製期間，如果資料存放區已節流許多讀取/寫入作業，建議檢查並增加資料存放區允許的要求率，或減少並行工作負載。 |
 | 整合執行時間  | 如果您使用自我裝載的 **Integration Runtime (ir) ** 和複製活動等待時間長度超過佇列，直到 ir 具有可用資源才能執行為止，建議您相應放大/相應放大 ir。 |
@@ -74,7 +74,7 @@ ms.locfileid: "89440519"
 
     - 檢查您是否可以 [根據日期時間分割的檔案路徑或名稱來複製](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)檔案。 這種方式不會在清單來源端帶來負擔。
 
-    - 檢查您是否可以改用資料存放區的原生篩選，特別是 Amazon S3 和 Azure Blob 的「**前置**詞」。 前置詞篩選是資料存放區的伺服器端篩選，而且效能較佳。
+    - 檢查您是否可以改為使用資料存放區的原生篩選，特別是 Amazon S3/Azure Blob/Azure 檔案儲存體的「**前置**詞」和 ADLS Gen1 的 "**listAfter/listBefore**"。 這些篩選器是資料存放區的伺服器端篩選，而且效能較佳。
 
     - 請考慮將單一大型資料集分割成數個較小的資料集，並讓這些複製作業同時執行每個 esposito 著手處理的資料部分。 您可以使用 Lookup/GetMetadata + ForEach + 複製來完成這項作業。 如一般範例，請參閱 [從多個容器複製](solution-template-copy-files-multiple-containers.md) 檔案，或將 [資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md) 解決方案範本。
 
@@ -128,7 +128,7 @@ ms.locfileid: "89440519"
 
     - 檢查您是否可以 [根據日期時間分割的檔案路徑或名稱來複製](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)檔案。 這種方式不會在清單來源端帶來負擔。
 
-    - 檢查您是否可以改用資料存放區的原生篩選，特別是 Amazon S3 和 Azure Blob 的「**前置**詞」。 前置詞篩選是資料存放區的伺服器端篩選，而且效能較佳。
+    - 檢查您是否可以改為使用資料存放區的原生篩選，特別是 Amazon S3/Azure Blob/Azure 檔案儲存體的「**前置**詞」和 ADLS Gen1 的 "**listAfter/listBefore**"。 這些篩選器是資料存放區的伺服器端篩選，而且效能較佳。
 
     - 請考慮將單一大型資料集分割成數個較小的資料集，並讓這些複製作業同時執行每個 esposito 著手處理的資料部分。 您可以使用 Lookup/GetMetadata + ForEach + 複製來完成這項作業。 如一般範例，請參閱 [從多個容器複製](solution-template-copy-files-multiple-containers.md) 檔案，或將 [資料從 Amazon S3 遷移至 ADLS Gen2](solution-template-migration-s3-azure.md) 解決方案範本。
 

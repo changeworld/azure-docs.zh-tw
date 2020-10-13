@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904687"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952262"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站來管理 Azure Stack Edge Pro 上的共用
+# <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的共用
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -59,13 +59,13 @@ ms.locfileid: "90904687"
 
 7. 若要從 Edge 計算模組輕鬆存取共用，請使用本機掛接點。 選取 [搭配 Edge 計算來使用共用]****，以在建立共用之後自動掛接共用。 若選取此選項，Edge 模組也可以搭配本機掛接點來使用計算。
 
-8. 按一下 [建立]**** 來建立共用。 正在建立共用時會通知您。 使用指定的設定來建立共用之後，[共用]**** 刀鋒視窗將會更新，以反映新的共用。
+8. 按一下 [ **建立** ] 以建立共用。 正在建立共用時會通知您。 使用指定的設定建立共用之後， **共用** 分頁會更新以反映新的共用。
 
 ## <a name="add-a-local-share"></a>新增本機共用
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]****。
 
-    ![選取 [新增共用]](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
+    ![選取 [新增共用 2]](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
 2. 在 [新增共用]**** 中，指定共用設定。 為共用提供唯一的名稱。
     
@@ -82,11 +82,11 @@ ms.locfileid: "90904687"
 
 6. 在 [完整權限本機使用者]**** 欄位中，從 [新建]**** 或 [使用現有的]**** 中擇一。
 
-7. 選取 [建立]****。 
+7. 選取 [建立]  。 
 
     ![建立本機共用](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
-    共用正在建立時，您會看見通知。 使用指定的設定來建立共用之後，[共用]**** 刀鋒視窗將會更新，以反映新的共用。
+    共用正在建立時，您會看見通知。 使用指定的設定建立共用之後， **共用** 分頁會更新以反映新的共用。
 
     ![檢視更新共用刀鋒視窗](media/azure-stack-edge-j-series-manage-shares/add-local-share-3.png)
     
@@ -125,7 +125,7 @@ ms.locfileid: "90904687"
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。
 
-    ![選取共用](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
+    ![選取共用2](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
 2. 從共用清單中，選取您想要取消掛接的共用。 請確定沒有任何模組使用您取消掛接的共用。 如果有模組使用該共用，則您會看到對應模組發生問題。 選取 [ **卸載**]。
 
@@ -145,7 +145,7 @@ ms.locfileid: "90904687"
 
 1. 從共用清單中，選取並按一下您想要刪除的共用。
 
-    ![選取共用](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
+    ![選取共用3](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
 
 2. 按一下 **[刪除]** 。
 
@@ -169,7 +169,7 @@ ms.locfileid: "90904687"
 
 1.  在 Azure 入口網站中，移至 [共用]****。 選取並按一下您想要重新整理的共用。
 
-    ![選取共用](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
+    ![選取共用4](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
 
 2.  按一下 [重新整理]****。 
 

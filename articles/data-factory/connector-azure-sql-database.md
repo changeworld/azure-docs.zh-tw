@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332129"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952041"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure SQL Database 中複製和轉換資料
 
@@ -43,6 +43,8 @@ ms.locfileid: "91332129"
 - 使用 SQL 驗證和 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配服務主體或適用于 Azure 資源的受控識別來複製資料。
 - 作為來源，使用 SQL 查詢或預存程式來抓取資料。 您也可以選擇從 Azure SQL Database 來源進行平行複製，如需詳細資料，請參閱 [SQL Database 的並行複製](#parallel-copy-from-sql-database) 一節。
 - 作為接收，如果不存在，則會根據來源架構自動建立目的地資料表;在複製期間將資料附加至資料表，或使用自訂邏輯叫用預存程式。
+
+如果您使用 Azure SQL Database [無伺服器層](../azure-sql/database/serverless-tier-overview.md)，請注意當伺服器暫停時，活動執行會失敗，而不會等候自動繼續就緒。 您可以新增活動重試或連鎖額外的活動，以確定伺服器會在實際執行時上線。
 
 >[!NOTE]
 > 此連接器目前不支援 Azure SQL Database [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 。 若要解決這個問題，您可以透過自我裝載的整合執行時間，使用 [一般 odbc 連接器](connector-odbc.md) 和 SQL Server ODBC 驅動程式。 若要深入瞭解，請 [使用 Always Encrypted](#using-always-encrypted) 一節。 

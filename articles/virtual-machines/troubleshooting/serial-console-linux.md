@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25e3a9cb363ae4e64b953aeb7a6da4e2e66c9fc7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306866"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977094"
 ---
 # <a name="azure-serial-console-for-linux"></a>適用於 Linux 的 Azure 序列主控台
 
@@ -73,13 +73,13 @@ Oracle Linux        | 預設啟用的序列主控台存取。
 ### <a name="custom-linux-images"></a>自訂 Linux 映像
 若要啟用自訂 Linux VM 映像的序列主控台，請在 */etc/inittab* 檔案中啟用主控台存取以在 `ttyS0` 上執行終端機。 例如： `S0:12345:respawn:/sbin/agetty -L 115200 console vt102` 。 您也可能需要在 ttyS0 上產生 getty。 這可以透過來完成 `systemctl start serial-getty@ttyS0.service` 。
 
-您也會想要將 ttys0 新增為序列輸出的目的地。 如需有關設定自訂映射以使用序列主控台的詳細資訊，請參閱在 [Azure 中建立和上傳 LINUX VHD](https://aka.ms/createuploadvhd#general-linux-system-requirements)的一般系統需求。
+您也會想要將 ttys0 新增為序列輸出的目的地。 如需有關設定自訂映射以使用序列主控台的詳細資訊，請參閱在 [Azure 中建立和上傳 LINUX VHD](../linux/create-upload-generic.md#general-linux-system-requirements)的一般系統需求。
 
 如果您正在建置自訂核心，則可以考慮啟用這些核心旗標：`CONFIG_SERIAL_8250=y` 與 `CONFIG_MAGIC_SYSRQ_SERIAL=y`。 組態檔通常位於 */boot/* 路徑中。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>存取序列主控台的常見案例
 
-狀況          | 序列主控台中的動作
+案例          | 序列主控台中的動作
 :------------------|:-----------------------------------------
 中斷的 *FSTAB* 檔案 | 按下 **Enter** 鍵以繼續，並使用文字編輯器來修正 *FSTAB* 檔案。 您可能必須在單一使用者模式下，才能進行此操作。 如需詳細資訊，請參閱序列主控台一節， [以瞭解如何修正 fstab 問題](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) ，並 [使用序列主控台來存取 GRUB 和單一使用者模式](serial-console-grub-single-user-mode.md)。
 不正確的防火牆規則 |  如果您已將 iptables 設定為封鎖 SSH 連線能力，您可以使用序列主控台來與您的 VM 進行互動，而不需要 SSH。 您可以在 [iptables man 頁面](https://linux.die.net/man/8/iptables)找到更多詳細資料。<br>同樣地，如果您的 firewalld 會封鎖 SSH 存取，您可以透過序列主控台存取 VM，並重新設定 firewalld。 您可以在 [firewalld 檔](https://firewalld.org/documentation/)中找到更多詳細資料。
@@ -128,7 +128,7 @@ SSH 設定問題 | 存取序列主控台，然後變更設定。 無論 VM 的 S
 在連線橫幅之後按下 **Enter** 鍵並不會顯示登入提示。 | GRUB 可能未正確設定。 執行下列命令： `grub2-mkconfig -o /etc/grub2-efi.cfg` 和/或 `grub2-mkconfig -o /etc/grub2.cfg` 。 如需詳細資訊，請參閱[按 Enter 鍵沒有任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) \(英文\)。 如果您執行的是自訂 VM、強化設備，或是導致 Linux 無法連線到序列埠的 GRUB 設定，就會發生此問題。
 序列主控台文字只會佔用部分的螢幕大小 (通常在使用文字編輯器之後)。 | 序列主控台不支援對視窗大小進行交涉 ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt))，這表示系統將不會傳送 SIGWINCH 訊號以更新螢幕大小，而且 VM 將無法得知您終端機的大小。 安裝 xterm 或類似的公用程式，以向您提供 `resize` 命令，然後再執行 `resize`。
 貼上長字串沒有作用。 | 序列主控台會將貼上至終端機的字串長度限制為 2048 個字元，以防止多載序列連接埠頻寬。
-SLES BYOS 映射中的鍵盤輸入不穩定。 鍵盤輸入只會偶爾被辨識。 | 這是 Plymouth 套件的問題。 Plymouth 不應該在 Azure 中執行，因為您不需要啟動顯示畫面，而 Plymouth 會干擾平臺使用序列主控台的能力。 移除 Plymouth `sudo zypper remove plymouth` ，然後重新開機。 或者，將 GRUB 設定的核心行附加至該行的結尾，以修改 GRUB 設定的核心行 `plymouth.enable=0` 。 若要這麼做，您可以 [在開機時編輯開機專案](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)，或在中編輯 GRUB_CMDLINE_LINUX 行，然後以 `/etc/default/grub` 重建 GRUB，然後 `grub2-mkconfig -o /boot/grub2/grub.cfg` 重新開機。
+SLES BYOS 映射中的鍵盤輸入不穩定。 鍵盤輸入只會偶爾被辨識。 | 這是 Plymouth 套件的問題。 Plymouth 不應該在 Azure 中執行，因為您不需要啟動顯示畫面，而 Plymouth 會干擾平臺使用序列主控台的能力。 移除 Plymouth `sudo zypper remove plymouth` ，然後重新開機。 或者，將 GRUB 設定的核心行附加至該行的結尾，以修改 GRUB 設定的核心行 `plymouth.enable=0` 。 若要這麼做，您可以 [在開機時編輯開機專案](./serial-console-grub-single-user-mode.md#single-user-mode-in-suse-sles)，或在中編輯 GRUB_CMDLINE_LINUX 行，然後以 `/etc/default/grub` 重建 GRUB，然後 `grub2-mkconfig -o /boot/grub2/grub.cfg` 重新開機。
 
 
 ## <a name="frequently-asked-questions"></a>常見問題集

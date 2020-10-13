@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878e2c233f2171c3c9a6fbd2a8d629d3f3987c3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77918167"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976720"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因 NSG 中未啟用 RDP 連接埠而無法從遠端連線到 VM
 
@@ -48,7 +48,7 @@ ms.locfileid: "77918167"
 
 如果您指定來源 IP 位址，此設定會只允許來自特定 IP 位址或 IP 位址範圍的流量連線至 VM。 請確定您用來啟動 RDP 工作階段的電腦在該範圍內。
 
-如需有關 NSG 的詳細資訊，請參閱[網路安全性群組](../../virtual-network/security-overview.md)。
+如需有關 NSG 的詳細資訊，請參閱[網路安全性群組](../../virtual-network/network-security-groups-overview.md)。
 
 > [!NOTE]
 > RDP 連接埠 3389 已公開至網際網路。 因此，我們建議您只將此連接埠用於測試。 針對生產環境，我們建議您使用 VPN 或私人連線。
@@ -56,6 +56,3 @@ ms.locfileid: "77918167"
 ## <a name="next-steps"></a>後續步驟
 
 如果 NSG 中已啟用 RDP 連接埠，請參閱[對 Azure VM 中的一般 RDP 錯誤進行疑難排解](./troubleshoot-rdp-general-error.md)。
-
-
-
