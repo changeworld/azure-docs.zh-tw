@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 07/20/2019
 ms.author: mimckitt
-ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855770"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974901"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虛擬機器代理程式概觀
 Microsoft Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全的輕量型處理程序，可管理虛擬機器 (VM) 與 Azure 網狀架構控制器的互動。 VM 代理程式已啟用主要角色並執行 Azure 虛擬機器擴充功能。 VM 擴充功能可啟用 VM 的部署後組態，例如安裝和設定軟體。 VM 擴充功能也會啟用復原功能，例如重設 VM 的系統管理密碼。 若沒有 Azure VM 代理程式，便無法執行 VM 擴充功能。
@@ -68,7 +68,7 @@ $vm | Update-AzVM
 
 - 確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
-- 確定已在來賓 VM 內啟用 DHCP。 若要從 DHCP 取得主機或網狀架構位址，讓 IaaS VM 代理程式和擴充功能運作，必須這樣做。 如果您需要靜態私人 IP，您應該透過 Azure 入口網站或 PowerShell 進行設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) 如何使用 PowerShell 設定靜態 IP 位址。
+- 確定已在來賓 VM 內啟用 DHCP。 若要從 DHCP 取得主機或網狀架構位址，讓 IaaS VM 代理程式和擴充功能運作，必須這樣做。 如果您需要靜態私人 IP，您應該透過 Azure 入口網站或 PowerShell 進行設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) 如何使用 PowerShell 設定靜態 IP 位址。
 
 
 ## <a name="detect-the-vm-agent"></a>偵測 VM 代理程式
@@ -120,7 +120,7 @@ Azure VM 代理程式負責安裝 `OSProfile` VM 或虛擬機器擴展集內所�
 
 若為虛擬機器，請使用 [AzVMSecret]() 移除中的憑證 `OSProfile` 。
 
-如需虛擬機器擴展集憑證的詳細資訊，請參閱 [虛擬機器擴展集-如何? 移除已淘汰的憑證？](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates)
+如需虛擬機器擴展集憑證的詳細資訊，請參閱 [虛擬機器擴展集-如何? 移除已淘汰的憑證？](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)
 
 
 ## <a name="next-steps"></a>後續步驟

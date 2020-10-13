@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983315"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
@@ -148,7 +148,7 @@ ms.locfileid: "90983315"
    ![連接頁面](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "連接頁面")
 2. 選取 [ **+ 新增** ] 以開啟 [ **新增連接** ] 頁面。
 
-   ![新增連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "新增連線")
+   ![加入連接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "新增連線")
 3. 在 [新增連線]**** 頁面上，填入您的連線值：
 
    - **名稱**：輸入連接的名稱。 例如， *VNet1toVNet4*。
@@ -165,7 +165,7 @@ ms.locfileid: "90983315"
 
      - **共用金鑰 (PSK) **：在此欄位中，輸入連線的共用金鑰。 您可以產生此金鑰，或自行建立此金鑰。 在站對站連線中，您用於內部部署裝置與虛擬網路閘道連線的金鑰完全相同。 此處的概念類似，差別在於是連線到另一個虛擬網路閘道，而不是連線到 VPN 裝置。
     
-4. 按一下 [確定] 以儲存您的變更。
+4. 按一下 [確定]  以儲存您的變更。
 
 ## <a name="configure-the-vnet4-gateway-connection"></a>設定 VNet4 閘道連線
 接下來，建立從 VNet4 到 VNet1 的連接。 在入口網站中，找出與 VNet4 相關聯的虛擬網路閘道。 遵循上一節中的步驟，取代值以建立從 VNet4 到 VNet1 的連接。 請確定您使用相同的共用金鑰。
@@ -189,7 +189,7 @@ ms.locfileid: "90983315"
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何在虛擬網路中限制資源網路流量的資訊，請參閱[網路安全性](../virtual-network/security-overview.md)。
 

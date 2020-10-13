@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 09/24/2020
 ms.author: derekol
-ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6318fc4fc0dc9ded093bdf9d19b9079208556de
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355247"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939931"
 ---
 # <a name="peering-service-partners"></a>對等互連服務合作夥伴
 
@@ -38,7 +38,7 @@ Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路交換服
 | [IIJ](https://www.iij.ad.jp/en/) | 日本 |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|歐洲  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |大洋洲  |
-| [Liquid Telecom](https://liquidcloud.africa/365-direct) | 非洲  |
+| [Liquid Telecom](https://liquidcloud.africa/) | 非洲  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | 日本 |
 | [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |亞洲 |
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |亞洲 |

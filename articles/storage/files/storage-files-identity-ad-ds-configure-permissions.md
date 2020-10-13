@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761136"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：透過 SMB 設定目錄和檔案層級許可權 
@@ -102,7 +102,7 @@ else
 1. 選取 [ **編輯]。** 變更許可權。
 1. 您可以變更現有使用者的許可權， **或選取 [新增]** ，將許可權授與新的使用者。
 1. 在 [新增使用者的提示] 視窗中，在 [ **輸入物件名稱來選取** ] 方塊中輸入您想要授與許可權的目標使用者名稱，然後選取 [ **檢查名稱** ] 以尋找目標使用者的完整 UPN 名稱。
-1.    選取 [確定]。
+1.    選取 [確定]  。
 1.    在 [ **安全性** ] 索引標籤中，選取您要授與新使用者的擁有權限。
 1.    選取 [套用]。
 

@@ -4,10 +4,10 @@ description: 本文摘要說明備份中心針對每個工作負載類型所支�
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.openlocfilehash: 8effc2514abf1cac55abc28b625b869810536baf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994573"
 ---
 # <a name="support-matrix-for-backup-center"></a>備份中心的支援矩陣
@@ -40,7 +40,7 @@ ms.locfileid: "90994573"
 | 動作 | 大規模設定保存庫設定 |
 | 動作 | 從備份中心執行跨區域還原作業 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [複習 Azure 備份的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix)
 * [查看 Azure VM 備份的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898213"
 ---
 # <a name="summarize-data"></a>資料總結
@@ -57,10 +57,10 @@ ms.locfileid: "90898213"
 |**平均數**|所有資料行值的平均值|
 |**平均偏差**|資料行值的平均偏差|
 |**第 1 四分位數**|第一次四個數值|
-|**Median**|中位數資料行值|
+|**平均**|中位數資料行值|
 |**第 3 四分位數**|第三個四個點的值|
 |**Mode**|資料行值的模式|
-|**Range**|整數，代表最大值與最小值之間的值數目|
+|**範圍**|整數，代表最大值與最小值之間的值數目|
 |**樣本差異**|資料行的變異數;請參閱附注|
 |**範例標準差**|資料行的標準差;請參閱附注|
 |**範例偏斜**|資料行的不對稱;請參閱附注|

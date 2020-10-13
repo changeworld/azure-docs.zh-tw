@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612807"
 ---
 # <a name="confidential-client-assertions"></a>機密用戶端判斷提示
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 [Azure AD 所預期的宣告](active-directory-certificate-credentials.md)如下：
 
-宣告類型 | 值 | 說明
+宣告類型 | 值 | 描述
 ---------- | ---------- | ----------
 aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | 「Aud」 (物件) 宣告會識別 JWT 適用于此處 (的收件者 Azure AD) 請參閱 [RFC 7519，4.1.3 一節](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在此情況下，該收件者是 (login.microsoftonline.com) 的登入伺服器。
 exp | 1601519414 | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。 請參閱 [RFC 7519，4.1.4 一節](https://tools.ietf.org/html/rfc7519#section-4.1.4)。  如此一來，就可以使用判斷提示，直到那次為止，因此最短為5-10 分鐘 `nbf` 。  Azure AD 不會限制 `exp` 目前的時間。 

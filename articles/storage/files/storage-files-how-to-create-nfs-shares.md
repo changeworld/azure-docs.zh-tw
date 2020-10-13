@@ -9,13 +9,13 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705226"
 ---
-# <a name="how-to-create-an-nfs-share"></a>如何建立 NFS 共用
+# <a name="how-to-create-an-nfs-share"></a>如何建立 NFS 磁碟區
 
 Azure 檔案共用是在雲端中完全受控的檔案共用。 您可以使用伺服器訊息區通訊協定或網路檔案系統 (NFS) 通訊協定來存取它們。 本文說明如何建立使用 NFS 通訊協定的檔案共用。 如需這兩種通訊協定的詳細資訊，請參閱 [Azure 檔案共用通訊協定](storage-files-compare-protocols.md)。
 
@@ -80,7 +80,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
-## <a name="create-an-nfs-share"></a>建立 NFS 共用
+## <a name="create-an-nfs-share"></a>建立 NFS 磁碟區
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -96,7 +96,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
     - 沒有根 squash-遠端超級使用者 (根) 以 root 身分接收存取權。
     - 所有 squash-所有使用者存取都對應至 UID (65534) 和 GID (65534) 。
     
-1. 選取 [建立]  。
+1. 選取 [建立]****。
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="檔案共用建立分頁的螢幕擷取畫面":::
 

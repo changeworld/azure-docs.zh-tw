@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 4f7db88da646c9787c70d04ff7e3478a27a09275
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9e52d931f8873cebf42534fd6bf03b144e61e23
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401634"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974663"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 位址
 
@@ -85,6 +85,7 @@ ms.locfileid: "89401634"
 | &nbsp; | 美國西部 | 13.64.254.98</br>23.101.196.19 | \*：443 | 輸入 |
 | &nbsp; | 美國西部 2 | 52.175.211.210</br>52.175.222.222 | \*：443 | 輸入 |
 | &nbsp; | 阿拉伯聯合大公國北部 | 65.52.252.96</br>65.52.252.97 | \*：443 | 輸入 |
+| &nbsp; | 阿拉伯聯合大公國中部 | 20.37.76.96</br>20.37.76.99 | \*：443 | 輸入 |
 
 如需用於 Azure Government 之 IP 位址的資訊，請參閱 [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) 文件。
 

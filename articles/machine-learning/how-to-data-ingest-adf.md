@@ -13,10 +13,10 @@ ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986409"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure Data Factory 進行資料擷取
@@ -95,7 +95,7 @@ ADF 管線中的已轉換資料會儲存至資料儲存體 (，例如 Azure Blob
 
 由於資料集支援版本設定，而且每次從管線執行都會建立新版本，因此很容易就能瞭解用來定型模型的資料版本。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 Azure Data Factory 中執行 Databricks 筆記本](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
 * [存取 Azure 儲存體服務中的資料](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)

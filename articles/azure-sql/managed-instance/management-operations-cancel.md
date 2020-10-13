@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994653"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>取消 Azure SQL 受控執行個體管理作業
@@ -38,14 +38,14 @@ Azure SQL 受控執行個體可以取消某些 [管理作業](management-operati
 
 類別  |作業  |可  |預估的取消持續時間  |
 |---------|---------|---------|---------|
-|部署 |建立實例 |Yes |90% 的作業會在5分鐘內完成。 |
-|更新 |實例儲存體擴大/縮小 (一般用途)  |No |  |
-|更新 |實例儲存體擴大/縮小 (商務關鍵性)  |Yes |90% 的作業會在5分鐘內完成。 |
-|更新 |實例計算 (虛擬核心) 向上和向下調整 (一般用途)  |Yes |90% 的作業會在5分鐘內完成。 |
-|更新 |實例計算 (虛擬核心) 向上和向下調整 (業務關鍵)  |Yes |90% 的作業會在5分鐘內完成。 |
-|更新 |實例服務層級 (一般用途變更為業務關鍵，反之亦然)  |Yes |90% 的作業會在5分鐘內完成。 |
-|刪除 |執行個體刪除 |No |  |
-|刪除 |虛擬叢集刪除 (為使用者起始的作業)  |No |  |
+|部署 |建立實例 |是 |90% 的作業在 5 分鐘內完成。 |
+|更新 |實例儲存體擴大/縮小 (一般用途)  |否 |  |
+|更新 |實例儲存體擴大/縮小 (商務關鍵性)  |是 |90% 的作業在 5 分鐘內完成。 |
+|更新 |執行個體計算 (虛擬核心) 相應增加和減少 (一般用途) |是 |90% 的作業在 5 分鐘內完成。 |
+|更新 |執行個體計算 (虛擬核心) 相應增加和減少 (商務關鍵性) |是 |90% 的作業在 5 分鐘內完成。 |
+|更新 |執行個體服務層級變更 (一般用途到商務關鍵性，反之亦然) |是 |90% 的作業在 5 分鐘內完成。 |
+|刪除 |執行個體刪除 |否 |  |
+|刪除 |虛擬叢集刪除 (作為使用者起始的作業) |否 |  |
 
 ## <a name="cancel-management-operation"></a>取消管理操作
 
@@ -61,7 +61,7 @@ Azure SQL 受控執行個體可以取消某些 [管理作業](management-operati
 
 1. 選取頁面底部的 **[取消操作** ]。 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="選取 [取消] 以取消作業。":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="選取 [進行中的作業] 方塊，以開啟進行中的動作頁面。":::
 
 1. 確認您要取消操作。 
 
@@ -129,10 +129,10 @@ done
 > 若要將資源或受控實例清單中的雜訊降至最低，請刪除無法部署的實例，或已取消部署的實例。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解如何建立您的第一個受控實例，請參閱 [快速入門手冊](instance-create-quickstart.md)。
-- 如需功能和比較清單，請參閱 [一般 SQL 功能](../database/features-comparison.md)。
-- 如需 VNet 設定的詳細資訊，請參閱 [SQL 受控執行個體 vnet](connectivity-architecture-overview.md)設定。
-- 如需建立受控實例，並從備份檔案還原資料庫的快速入門，請參閱 [建立受控實例](instance-create-quickstart.md)。
-- 如需使用 Azure 資料庫移轉服務進行遷移的教學課程，請參閱 [SQL 受控執行個體使用資料庫移轉服務進行遷移](../../dms/tutorial-sql-server-to-managed-instance.md)。
+- 若要了解如何建立您的第一個受控執行個體，請參閱[快速入門指南](instance-create-quickstart.md)。
+- 如需功能與比較清單，請參閱[常見的 SQL 功能](../database/features-comparison.md)。
+- 如需 VNet 組態的詳細資訊，請參閱 [SQL 受控執行個體 VNet 組態](connectivity-architecture-overview.md)。
+- 如需建立受控執行個體，並從備份檔案還原資料庫的快速入門，請參閱[建立受控執行個體](instance-create-quickstart.md)。
+- 如需使用 Azure 資料庫移轉服務進行移轉的教學課程，請參閱[使用資料庫移轉服務的 SQL 受控執行個體移轉](../../dms/tutorial-sql-server-to-managed-instance.md)。

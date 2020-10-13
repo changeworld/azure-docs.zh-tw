@@ -313,7 +313,7 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料集合
+    - name: 資料收集
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -658,6 +658,8 @@
                       href: app/javascript-react-plugin.md
                     - name: React Native 外掛程式
                       href: app/javascript-react-native-plugin.md
+                    - name: Angular 外掛程式
+                      href: app/javascript-angular-plugin.md
                 - name: 疑難排解
                   items:
                     - name: SDK 載入失敗
@@ -984,7 +986,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 概觀
+        - name: 總覽
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers
@@ -1263,7 +1265,7 @@
               href: app/web-app-extension-release-notes.md
         - name: 資料模型
           items:
-            - name: 概觀
+            - name: 總覽
               href: app/data-model.md
             - name: 要求
               href: app/data-model-request-telemetry.md

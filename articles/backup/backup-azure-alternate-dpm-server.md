@@ -4,10 +4,10 @@ description: 從登錄至復原服務保存庫的任何 Azure 備份伺服器，
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378061"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>從 Azure 備份伺服器復原資料
@@ -78,14 +78,14 @@ ms.locfileid: "89378061"
 
 ## <a name="troubleshooting-error-messages"></a>疑難排解錯誤訊息
 
-| 不會。 | 錯誤訊息 | 疑難排解步驟 |
+| 否。 | 錯誤訊息 | 疑難排解步驟 |
 |:---:|:--- |:--- |
 | 1. |保存庫認證所指定的保存庫中未登錄此伺服器。 |**原因：** 如果選取的保存庫認證檔案不屬於與所嘗試復原之 Azure 備份伺服器關聯的復原服務保存庫，就會出現此錯誤。 <br> **解決方法：** 從已登錄 Azure 備份伺服器的復原服務保存庫下載保存庫認證檔。 |
 | 2. |可復原資料無法使用，或選取的伺服器不是 DPM 伺服器。 |**原因：** 沒有其他 Azure 備份伺服器向復原服務保存庫登錄，或伺服器尚未上傳中繼資料，或選取的伺服器不是使用 Windows Server 或 Windows 用戶端) 的 Azure 備份伺服器 (。 <br> **解決方法：** 如果有其他已向復原服務保存庫登錄的 Azure 備份伺服器，請確定已安裝最新的 Azure 備份代理程式。 <br>如果有其他 Azure 備份伺服器已向復原服務保存庫登錄，請在安裝後等候一天，再開始復原程序。 夜間作業會針對所有受保護的備份，將中繼資料上傳至雲端。 資料將可供復原。 |
 | 3. |此保存庫未登錄其他 DPM 伺服器。 |**原因︰** 沒有任何其他 Azure 備份伺服器已向嘗試復原的保存庫登錄。<br>**解決方法：** 如果有其他已向復原服務保存庫登錄的 Azure 備份伺服器，請確定已安裝最新的 Azure 備份代理程式。<br>如果有其他 Azure 備份伺服器已向復原服務保存庫登錄，請在安裝後等候一天，再開始復原程序。 夜間作業會針對所有受保護的備份，將中繼資料上傳至雲端。 資料將可供復原。 |
 | 4. |提供的加密複雜密碼與下列伺服器關聯的複雜密碼不相符： **\<server name>** |**原因：** 從正在復原之 Azure 備份伺服器資料中加密資料的程式中所使用的加密複雜密碼，與所提供的加密複雜密碼不符。 代理程式無法解密資料，因此復原會失敗。<br>**解決方式：** 提供與正在復原其資料的 Azure 備份伺服器相關聯的相同加密複雜密碼。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 閱讀其他常見問題集：
 

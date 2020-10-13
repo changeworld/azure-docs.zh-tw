@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內部部署、Docker、容器、串流、演算法
 ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459995"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>安裝並執行異常偵測器 API 的 Docker 容器 
@@ -59,7 +59,7 @@ ms.locfileid: "91459995"
 
 下表說明針對異常偵測器容器配置的最小和建議的 CPU 核心和記憶體。
 
-| QPS (每秒查詢數)  | 最小值 | 建議 |
+| QPS (每秒查詢數)  | 最低需求 | 建議 |
 |-----------|---------|-------------|
 | 10 QPS | 4核心，1 GB 記憶體 | 8核心 2 GB 記憶體 |
 | 20 QPS | 8核心，2 GB 記憶體 | 16核心 4 GB 記憶體 |

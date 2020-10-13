@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: d1de9270534a3550d8db043fdd6bcfe56ec31bda
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895598"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>將 microsoft Defender for Endpoint (的警示連線到先前的 Microsoft Defender ATP) 
@@ -51,11 +51,11 @@ ms.locfileid: "90895598"
 
 1. 在 Azure Sentinel 中，選取 [ **資料連線器**]，從資源庫中選取 [ **Endpoint (的 Microsoft Defender** ] *Microsoft Defender 進階威脅防護*) ，然後選取 [ **開啟連接器] 頁面**。
 
-1. 按一下 [連線]。 
+1. 按一下 [ **連接**]。 
 
 1. 若要在 **記錄**中查詢 Microsoft Defender 的端點警示，請在查詢視窗中輸入 **SecurityAlert** ，然後新增篩選器，其中 **提供者名稱** 為 **MDATP**。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Microsoft Defender for Endpoint 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。

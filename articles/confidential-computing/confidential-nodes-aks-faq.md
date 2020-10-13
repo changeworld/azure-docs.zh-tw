@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
 ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994873"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS 上有關機密運算節點的常見問題) 
@@ -35,11 +35,11 @@ ms.locfileid: "90994873"
 
 ## <a name="can-i-open-an-azure-support-ticket-if-i-run-into-issues"></a>如果我遇到問題，是否可以開啟 Azure 支援票證？ 
 
-可以。 預覽期間會提供 Azure 支援。 因為產品處於預覽階段，所以未附加 SLA。
+是。 預覽期間會提供 Azure 支援。 因為產品處於預覽階段，所以未附加 SLA。
 
 ## <a name="can-i-inject-post-install-scriptscustomize-drivers-to-the-nodes-provisioned-by-aks"></a>我可以將後置安裝腳本/自訂驅動程式插入 AKS 布建的節點嗎？ 
 
-不可以。 以[AKS 為基礎的機密運算節點](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md)支援允許自訂安裝的機密運算節點。
+否。 以[AKS 為基礎的機密運算節點](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md)支援允許自訂安裝的機密運算節點。
 
 ## <a name="should-i-be-using-a-docker-base-image-to-get-started-on-enclave-applications"></a>我應該使用 Docker 基礎映射來開始記憶體保護區應用程式嗎？ 
 
@@ -92,7 +92,7 @@ spec:
 
 ## <a name="do-you-automatically-install-any-additional-daemonsets-to-expose-the-sgx-drivers"></a>您是否會自動安裝任何額外的 daemonset 來公開 SGX 驅動程式？ 
 
-可以。 Daemonset 的名稱為 sgx-裝置外掛程式和 sgx-報價協助程式。 請參閱 [這裡](confidential-nodes-aks-overview.md)的個別用途。  
+是。 Daemonset 的名稱為 sgx-裝置外掛程式和 sgx-報價協助程式。 請參閱 [這裡](confidential-nodes-aks-overview.md)的個別用途。  
 
 ## <a name="what-is-the-vm-sku-i-should-be-choosing-for-confidential-computing-nodes"></a>我應該為機密運算節點選擇的 VM SKU 為何？ 
 
@@ -100,11 +100,11 @@ DCSv2 Sku。 [DCSv2 sku](../virtual-machines/dcv2-series.md)可在[支援的區�
 
 ## <a name="can-i-still-schedule-and-run-non-enclave-containers-on-confidential-computing-nodes"></a>我是否仍然可以在機密運算節點上排程和執行非記憶體保護區的容器？ 
 
-可以。 Vm 也有可執行標準容器工作負載的一般記憶體。 在您決定部署模型之前，請先考慮應用程式的安全性與威脅模型。
+是。 Vm 也有可執行標準容器工作負載的一般記憶體。 在您決定部署模型之前，請先考慮應用程式的安全性與威脅模型。
 
 ## <a name="can-i-provision-aks-with-dcsv2-node-pools-through-azure-portal"></a>我可以透過 Azure 入口網站透過 DCSv2 節點集區布建 AKS 嗎？ 
 
-可以。 Azure CLI 也可以用來做為 [此處](confidential-nodes-aks-get-started.md)所述的替代方案。
+是。 Azure CLI 也可以用來做為 [此處](confidential-nodes-aks-get-started.md)所述的替代方案。
 
 ## <a name="what-ubuntu-version-and-vm-generation-is-supported"></a>支援哪些 Ubuntu 版本和 VM 產生？ 
 
@@ -112,7 +112,7 @@ DCSv2 Sku。 [DCSv2 sku](../virtual-machines/dcv2-series.md)可在[支援的區�
 
 ## <a name="can-we-change-the-current-intel-sgx-dcap-diver-version-on-aks"></a>我們可以在 AKS 上變更目前的 Intel SGX DCAP 驅動程式版本嗎？ 
 
-不可以。 若要執行任何自訂安裝，建議您選擇 [AKS 引擎的機密計算背景工作角色節點](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) 部署。 
+否。 若要執行任何自訂安裝，建議您選擇 [AKS 引擎的機密計算背景工作角色節點](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) 部署。 
 
 ## <a name="what-version-of-kubernetes-do-you-support-and-recommend"></a>您支援和建議的 Kubernetes 版本為何？ 
 

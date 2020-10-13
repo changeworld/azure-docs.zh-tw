@@ -16,10 +16,10 @@ ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91841147"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒體服務設計具有存取控制的內容保護系統
@@ -473,7 +473,7 @@ Widevine 不會防止您對受保護的視訊進行螢幕擷取。
 
 在上述兩個案例中，使用者驗證會保持相同。 它會透過 Azure AD 進行。 唯一的差別在於，JWT 是由自訂 STS 發出，而不是 Azure AD。 設定動態 CENC 保護時，授權傳遞服務限制會指定 JWT 的類型 (對稱或非對稱金鑰)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 本文件討論了透過權杖驗證的 CENC 與多重原生 DRM 和存取控制，它的設計，以及使用 Azure、媒體服務和 Azure 媒體播放器進行實作。
 

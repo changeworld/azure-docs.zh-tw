@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530556"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜尋索引子連接至 Azure SQL 內容並為其編制索引
@@ -187,7 +187,7 @@ Azure 認知搜尋使用累加 **式索引編制** ，以避免每次索引子�
 + 在資料庫上，針對資料表[啟用變更追蹤](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 資料表上沒有複合主索引鍵 (主索引鍵包含一個以上的資料行)。  
 
-#### <a name="usage"></a>使用方式
+#### <a name="usage"></a>使用量
 
 若要使用此原則，請以下列方式建立或更新您的資料來源：
 
@@ -224,7 +224,7 @@ Azure 認知搜尋使用累加 **式索引編制** ，以避免每次索引子�
 > [!IMPORTANT] 
 > 我們強烈建議針對上限標記資料行使用 [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) 資料類型。 如果使用其他任何資料類型，就無法保證變更追蹤會擷取與索引子查詢同時執行之交易中發生的所有變更。 在具備唯讀複本的設定中使用 **rowversion** 時，您必須指向主要複本上的索引子。 只有主要複本可用於資料同步處理案例。
 
-#### <a name="usage"></a>使用方式
+#### <a name="usage"></a>使用量
 
 若要使用高標原則，請以下列方式建立或更新您的資料來源：
 
@@ -316,7 +316,7 @@ Azure 認知搜尋使用累加 **式索引編制** ，以避免每次索引子�
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 和 Azure 認知搜尋資料類型之間的對應
-| SQL 資料類型 | 允許的目標索引欄位類型 | 備註 |
+| SQL 資料類型 | 允許的目標索引欄位類型 | 注意 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |

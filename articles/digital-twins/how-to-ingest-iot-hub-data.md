@@ -8,10 +8,10 @@ ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983348"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
@@ -209,14 +209,14 @@ namespace IotHubtoTwins
 ```
 您也可以在 [Azure 入口網站](https://portal.azure.com/)中確認發佈程式的狀態。 搜尋您的 _資源群組_ ，並流覽至 [ _活動記錄_ ]，然後在清單中尋找 [ _取得 web 應用程式發佈設定檔_ ]，並確認狀態為 [成功]。
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="顯示發佈程式狀態之 Azure 入口網站的螢幕擷取畫面。":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>將您的函式連線到 IoT 中樞
 
 設定中樞資料的事件目的地。
 在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您在 [*必要條件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) 一節中建立的 IoT 中樞實例。 在 [ **事件**] 下，為您的 Azure function 建立訂用帳戶。
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="顯示新增事件訂閱之 Azure 入口網站的螢幕擷取畫面。":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 在 [ **建立事件訂** 用帳戶] 頁面中，填寫欄位，如下所示：
   1. 在 [ **名稱**] 底下，將訂用帳戶命名為您要的名稱。
@@ -225,7 +225,7 @@ namespace IotHubtoTwins
   4. 在 [ **端點類型**] 下，選取 [ _Azure function_]。
   5. 在 [ **端點**] 底下，選擇 [ _選取端點_ 連結] 以建立端點。
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="建立事件訂用帳戶詳細資料 Azure 入口網站的螢幕擷取畫面":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 在開啟的 [ _選取 Azure Function_ ] 頁面中，確認下列詳細資料。
  1. **訂**用帳戶：您的 Azure 訂用帳戶
@@ -236,7 +236,7 @@ namespace IotHubtoTwins
 
 選取 [ _確認選取專案_ ] 按鈕以儲存您的詳細資料。            
       
-:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="選取 Azure function Azure 入口網站的螢幕擷取畫面":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 選取 [ _建立_ ] 按鈕以建立事件訂用帳戶。
 
@@ -284,7 +284,7 @@ az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name
 
 若要查看值變更，請重複執行上述查詢命令。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀 Azure 數位 Twins 的資料輸入和輸出：
 * [*概念：與其他服務整合*](concepts-integration.md)

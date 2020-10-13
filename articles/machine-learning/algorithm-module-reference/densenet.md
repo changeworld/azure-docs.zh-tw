@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536625"
 ---
 # <a name="densenet"></a>DenseNet
@@ -62,7 +62,7 @@ ms.locfileid: "91536625"
 
 ###  <a name="output"></a>輸出  
 
-| 名稱            | 類型                    | 說明                              |
+| 名稱            | 類型                    | 描述                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | 未定型的模型 | UntrainedModelDirectory | 可以連接到定型 Pytorch 模型的未定型 Densenet-121 模型。 |
 

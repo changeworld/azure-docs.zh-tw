@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900295"
 ---
 # <a name="configure-speech-service-containers"></a>設定語音服務容器
@@ -50,7 +50,7 @@ ms.locfileid: "90900295"
 
 - Azure 入口網站： **語音的** 總覽，加上標籤 `Endpoint`
 
-| 必要 | Name | 資料類型 | 描述 |
+| 必要 | 名稱 | 資料類型 | 描述 |
 | -------- | ---- | --------- | ----------- |
 | 是 | `Billing` | String | 計費端點 URI。 如需取得帳單 URI 的詳細資訊，請參閱 [收集必要參數](speech-container-howto.md#gathering-required-parameters)。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../cognitive-services-custom-subdomains.md)。 |
 
@@ -78,9 +78,9 @@ ms.locfileid: "90900295"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外， [主機電腦](speech-container-howto.md#the-host-computer)的裝載位置可能無法存取，因為 docker 服務帳戶所使用的許可權與主機裝載位置的許可權之間發生衝突。
 
-| 選擇性 | Name | 資料類型 | 描述 |
+| 選用 | 名稱 | 資料類型 | 描述 |
 | -------- | ---- | --------- | ----------- |
-| 不允許 | `Input` | String | 標準語音容器不會使用此功能。 自訂語音容器會使用 [磁片區裝載](#volume-mount-settings)。                                                                                    |
+| 不允許 | `Input` | 字串 | 標準語音容器不會使用此功能。 自訂語音容器會使用 [磁片區裝載](#volume-mount-settings)。                                                                                    |
 | 選用 | `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>磁片區掛接設定
@@ -278,6 +278,6 @@ Logging:Console:LogLevel:Default=Information
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 檢閱[如何安裝及執行容器](speech-container-howto.md)

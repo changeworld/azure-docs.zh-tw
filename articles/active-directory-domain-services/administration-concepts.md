@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 的管理概念 |Microsoft Docs
 description: 瞭解如何管理 Azure Active Directory Domain Services 受控網域以及使用者帳戶和密碼的行為
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.author: iainfou
-ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 95c6a1f24335849fb2d2c4de56b4ed60e8e5f73f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489668"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962814"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中的使用者帳戶、密碼和管理的管理概念
 
@@ -81,7 +81,7 @@ Azure AD DS 包含預設的密碼原則，可定義帳戶鎖定、密碼最長�
 | SKU 名稱   | 最大物件計數 | 備份頻率 | 輸出樹系信任的最大數目 |
 |------------|----------------------|------------------|----|
 | 標準   | 無限制            | 每7天     | 0  |
-| 企業 | 無限制            | 每3天     | 5  |
+| Enterprise | 無限制            | 每3天     | 5  |
 | 進階    | 無限制            | 每日            | 10 |
 
 在這些 Azure AD DS Sku 之前，會使用根據受控網域中) 的物件數目 (的計費模型。 根據受控網域中的物件數目，不再有變化的定價。
@@ -104,7 +104,7 @@ Azure AD DS 包含預設的密碼原則，可定義帳戶鎖定、密碼最長�
 
 上一節詳細說明的單向輸出樹系信任從受控網域到內部部署 AD DS 環境。 SKU 會決定您可以為受控網域建立的樹系信任數目上限。 檢查您的商務和應用程式需求，以判斷您真正需要多少信任，並挑選適當的 Azure AD DS SKU。 同樣地，如果您的業務需求變更，而您需要建立額外的樹系信任，則可以切換至不同的 SKU。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用，請 [建立 AZURE AD DS 受控網域][create-instance]。
 

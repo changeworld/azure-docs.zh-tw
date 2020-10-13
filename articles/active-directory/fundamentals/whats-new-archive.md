@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449998"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
@@ -143,7 +143,7 @@ Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲�
 ### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (自助式密碼重設) 現在需要兩個由世紀 Microsoft Azure 營運的系統管理員的閘道 (Azure 中國世紀)  
 
 **類型：** 已變更的功能  
-**服務類別：** 自助式密碼重設  
+**服務類別：** Self-Service 密碼重設  
 **產品功能：** 身分識別安全性 & 保護
  
 先前在 Microsoft Azure 由世紀 (Azure 中國的世紀) ，使用自助式密碼重設的系統管理員 (SSPR) 重設自己的密碼，只需要一個「閘道」 (挑戰) 證明其身分識別。 在公用和其他國家雲端中，系統管理員通常必須在使用 SSPR 時使用兩個閘道來證明其身分識別。 但由於我們不支援 Azure 中國世紀的 SMS 或通話，因此我們允許系統管理員進行一次閘道密碼重設。
@@ -532,7 +532,7 @@ Azure 入口網站上新的 **Azure AD App 註冊權杖** 設定分頁現在會�
 **服務類別：** 條件式存取  
 **產品功能：** 身分識別安全性 & 保護
 
-IOS 和 Android 上的 Microsoft Edge Azure AD 現在支援 Azure AD 單一登入和條件式存取：
+IOS 和 Android 上 Microsoft Edge 的 Azure AD 現在支援 Azure AD 單一 Sign-On 和條件式存取：
 
 - **Microsoft Edge 單一登入 (SSO) ：** 單一登入現在可跨原生用戶端使用 (例如 Microsoft Outlook，以及所有 Azure AD 連線應用程式的 Microsoft Edge) 。
 

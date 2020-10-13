@@ -10,10 +10,10 @@ author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: b0217766c92ddcd1907eca2c6702d91b02e06c03
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893648"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
@@ -150,7 +150,7 @@ pipeline_run.wait_for_completion()
 | **模組 化** | 區隔考慮和隔離變更可讓軟體以較高的品質以較快的速度演進。 | 
 |**共同作業**|管線可讓資料科學家跨機器學習設計程式的所有區域共同作業，同時能夠同時處理管線步驟。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 Azure ML 管線是一項功能強大的工具，可在早期開發階段開始提供價值。 當小組和專案成長時，此值會增加。 本文說明如何使用 Azure Machine Learning Python SDK 來指定管線，並在 Azure 上進行協調。 您已看過一些簡單的原始程式碼，並引進一些 `PipelineStep` 可用的類別。 您應瞭解何時使用 Azure ML 管線，以及 Azure 如何執行它們。 
 

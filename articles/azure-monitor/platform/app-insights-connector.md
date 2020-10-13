@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449416"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理解決方案 (取代)
@@ -55,12 +55,12 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 - 您必須至少有一個已設定的 Application Insights 資源。
 - 您必須是 Application Insights 資源的擁有者或參與者。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 或使用[從方案庫新增 Log Analytics 方案](../insights/solutions.md)中所述的程序，啟用 Azure Web Apps 分析解決方案。
 2. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。 選取 [所有服務]**** 來開啟 Application Insights。 然後，搜尋 Application Insights。 
 3. 在 [訂用帳戶]**** 之下，選取擁有 Application Insights 資源的訂用帳戶，然後在 [名稱]**** 之下，選取一或多個應用程式。
-4. 按一下 [儲存]。
+4. 按一下 **[儲存]** 。
 
 大約 30 分鐘內，資料就會變成可用，而且 Application Insights 圖格資料會更新，如下圖所示：
 
@@ -247,7 +247,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | 類型 | ApplicationInsights |
 | TelemetryType | 要求 |
 | ResponseCode | 傳送至用戶端的 HTTP 回應 |
-| RequestSuccess | 指出成功或失敗。 True 或 False。 |
+| RequestSuccess | 指出成功或失敗。 true 或 false。 |
 | RequestID | 用以唯一識別要求的識別碼 |
 | RequestName | GET/POST + URL 基底 |
 | RequestDuration | 要求的持續時間 (秒) |

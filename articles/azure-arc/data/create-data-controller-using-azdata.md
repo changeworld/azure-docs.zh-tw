@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761680"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用 Azure Data CLI 建立 Azure Arc 資料控制器 (azdata) 
@@ -30,7 +30,7 @@ ms.locfileid: "91761680"
 
 無論您選擇哪一個目標平臺，您都必須先設定下列環境變數，然後再建立資料控制器系統管理員使用者。 您可以視需要將這些認證提供給需要系統管理員存取資料控制器的其他人員。
 
-**AZDATA_USERNAME** -您選擇的使用者名稱做為資料控制器系統管理員使用者。 範例：`arcadmin`
+**AZDATA_USERNAME** -您選擇的使用者名稱做為資料控制器系統管理員使用者。 範例： `arcadmin`
 
 **AZDATA_PASSWORD** -您為數據控制器系統管理員使用者選擇的密碼。 密碼長度必須至少為8個字元，且包含下列四個集合中的三個字元：大寫字母、小寫字母、數位和符號。
 

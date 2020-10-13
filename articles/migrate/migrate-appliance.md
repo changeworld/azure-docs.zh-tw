@@ -4,10 +4,10 @@ description: 提供 Azure Migrate 設備支援的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450047"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
@@ -85,7 +85,7 @@ ms.locfileid: "91450047"
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備最多可探索1000部實體伺服器。
 **PowerShell 指令碼** | 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140334)下載腳本 ( # A0) 壓縮資料夾中。 [深入了解](tutorial-discover-physical.md)。<br/><br/> 下載大小為 85.8 MB。
-**軟體/硬體** |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu 的電腦上執行，大約是 80 GB 的磁片儲存體。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/>_ (目前只有 Windows Server 2016 支援設備的部署。 ) _
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu 的電腦上執行，大約是 80 GB 的磁片儲存體。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/>_(目前只有 Windows Server 2016 支援設備的部署。)_
 **雜湊值** | [驗證](tutorial-discover-physical.md#verify-security) PowerShell 指令碼雜湊值。
 
 ## <a name="url-access"></a>URL 存取
@@ -215,11 +215,11 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 以下是設備從每個啟用應用程式探索的 VM 收集到的已安裝應用程式資料。 此資料會傳送至 Azure。
 
-**Data** | **登錄位置** | **索引鍵**
+**Data** | **登錄位置** | **Key**
 --- | --- | ---
 應用程式名稱  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+提供者  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 發行者
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能資料
 
@@ -227,15 +227,15 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 **Data**  | **PowerShell Cmdlet** | **屬性**
 --- | --- | ---
-名稱  | Get-help  | 名稱
-特徵類型 | Get-help  | FeatureType
-父系  | Get-help  | 父系
+名稱  | Get-WindowsFeature  | 名稱
+特徵類型 | Get-WindowsFeature  | FeatureType
+父系  | Get-WindowsFeature  | 父系
 
 #### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server 中繼資料
 
 以下是設備從執行 Microsoft SQL server 以進行應用程式探索的 Vm 收集的 SQL server 中繼資料。 此資料會傳送至 Azure。
 
-**Data**  | **登錄位置**  | **索引鍵**
+**Data**  | **登錄位置**  | **Key**
 --- | --- | ---
 名稱  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 伺服器 \ 實例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
@@ -248,7 +248,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 資料  | WMI 類別  | WMI 類別屬性
 --- | --- | ---
-名稱  | Win32_operatingsystem  | Caption
+名稱  | Win32_operatingsystem  | 標題
 版本  | Win32_operatingsystem  | 版本
 架構  | Win32_operatingsystem  | OSArchitecture
 
@@ -256,7 +256,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 以下是設備從每個啟用應用程式探索的 VM 收集到的已安裝應用程式資料。 根據 VM 的作業系統，會執行一或多個命令。 此資料會傳送至 Azure。
 
-資料  | 命令
+資料  | Command
 --- | --- 
 名稱 | rpm、dpkg-查詢、貼齊
 版本 | rpm、dpkg-查詢、貼齊

@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330548"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
@@ -281,11 +281,11 @@ item = client.ReadItem(doc_link, options)
 
 最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [ **計量** ] 窗格，然後選取 [ **一致性** ] 索引標籤。查看以 **您的工作負載為基礎的強式一致讀取的圖表， (查看 PBS) **。
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure 入口網站中的 PBS 圖形":::
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure 入口網站中的一致性功能表":::
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解如何管理資料衝突，或繼續 Azure Cosmos DB 中的下一個重要概念。 查看下列文章：
+深入了解如何管理資料衝突，或繼續 Azure Cosmos DB 中的下一個重要概念。 請參閱下列文章：
 
 * [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
 * [管理區域之間的衝突](how-to-manage-conflicts.md)

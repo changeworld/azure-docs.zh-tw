@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756685"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974714"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -116,9 +116,7 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 **AuditIfNotExists**原則在電腦上符合所有需求之前，不會傳回合規性結果。 [Azure 虛擬機器的部署需求](#deploy-requirements-for-azure-virtual-machines)一節中會說明這些需求
 
 > [!IMPORTANT]
-> 在先前的來賓設定版本中，需要有一個方案來結合 **DeployIfNoteExists** 和 **AuditIfNotExists** 定義。 不再需要**DeployIfNotExists**定義。 定義和 intiaitives 會加上標籤， `[Deprecated]` 但現有的指派仍將繼續運作。
->
-> 需要手動步驟。 如果您先前已在類別中指派原則方案 `Guest Configuration` ，請刪除原則指派並指派新的定義。 來賓設定原則具有名稱模式，如下所示： `Audit <Windows/Linux> machines that <non-compliant condition>`
+> 在先前的來賓設定版本中，需要有一個方案來結合 **DeployIfNoteExists** 和 **AuditIfNotExists** 定義。 不再需要**DeployIfNotExists**定義。 定義和 intiaitives 會加上標籤， `[Deprecated]` 但現有的指派仍將繼續運作。 如需詳細資訊，請參閱 blog 文章： [針對來賓設定稽核原則所發行的重要變更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure 原則使用 [來賓設定資源提供者 **>compliancestatus** ] 屬性來報告 **合規** 性節點中的合規性。 如需詳細資訊，請參閱[取得合規性資料](../how-to/get-compliance-data.md)。
 

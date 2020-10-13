@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449975"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的要求設定
@@ -196,7 +196,7 @@ ms.locfileid: "91449975"
 
     ![存取套件-原則-啟用原則設定](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
-1. 按 [下一步]  。
+1. 按一下 [下一步]。
 
 1. 如果您想要要求要求者在要求存取套件的存取權時提供其他資訊，請使用中的步驟 []() 來設定要求者資訊 (預覽) 。
 

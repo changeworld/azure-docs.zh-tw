@@ -168,7 +168,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 提供產品意見反應
       href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'

@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020196"
 ---
 # <a name="report-and-check-service-health"></a>回報和檢查服務健康情況
@@ -26,7 +26,7 @@ ms.locfileid: "89020196"
 
 這篇文章會引導您完成從服務程式碼回報健全狀況的範例。 此範例也會示範如何使用 Service Fabric 提供的工具來檢查健康情況。 本文旨在快速介紹 Service Fabric 的健全狀況監視功能。 如需更詳細的資訊，您可以閱讀一系列有關健全狀況的深入文章，從本文結尾的連結開始。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 您必須安裝下列項目：
 
 * Visual Studio 2015 或 Visual Studio 2019

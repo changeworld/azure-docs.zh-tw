@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449013"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>瞭解 (JIT) VM 存取的即時
@@ -24,7 +24,7 @@ ms.locfileid: "91449013"
 
 ## <a name="the-risk-of-open-management-ports-on-a-virtual-machine"></a>在虛擬機器上開啟管理埠的風險
 
-威脅執行者主動利用開啟的管理埠（例如 RDP 或 SSH）來搜尋可存取的機器。 您的所有虛擬機器都是攻擊的潛在目標。 當 VM 成功遭到入侵時，它會作為進入點，以在您的環境中攻擊進一步的資源。
+威脅執行者主動利用開啟的管理埠（例如 RDP 或 SSH）來搜尋可存取的機器。 您所有的虛擬機器都是攻擊的潛在目標。 VM 一旦遭到入侵，即會成為進入點，據以進一步攻擊您的環境中其他的資源。
 
 
 

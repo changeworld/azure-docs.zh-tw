@@ -11,15 +11,15 @@ ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
 ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398984"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>使用 Azure CLI 註冊對等互連服務連線
 
-Azure 對等互連服務是一種網路服務，可加強客戶與 Microsoft 雲端服務的連線能力，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) services、Azure，或任何可透過公用網際網路存取的 Microsoft 服務。 在本文中，您將瞭解如何使用 Azure CLI 來註冊對等互連服務連接。
+Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲端服務，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) 服務、Azure，或可透過公用網際網路存取的任何 Microsoft 服務的連線能力。 在本文中，您將瞭解如何使用 Azure CLI 來註冊對等互連服務連接。
 
 如果您沒有 Azure 訂用帳戶，請立即建立[帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
