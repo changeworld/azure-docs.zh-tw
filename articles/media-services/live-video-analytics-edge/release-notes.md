@@ -4,10 +4,10 @@ description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正�
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250465"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析

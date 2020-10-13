@@ -13,10 +13,10 @@ ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 05/27/2020
 ms.openlocfilehash: 9ff2de18042c466bdd8fa6c71194fff4286c820d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325091"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL 受控執行個體和 SQL Server 中機器學習服務的主要差異
@@ -50,7 +50,7 @@ SQL 受控執行個體中的 Machine Learning 服務和 SQL Server 同時支援 
 
 - 不需要透過 `sp_configure` 設定 `external scripts enabled`。 一旦您 [註冊](machine-learning-services-overview.md#signup) 預覽，就會啟用 Azure SQL 受控執行個體的機器學習。
 
-## <a name="packages"></a>套件
+## <a name="packages"></a>Packages
 
 Python 和 R 套件管理在 SQL 受控執行個體和 SQL Server 之間的運作方式不同。 這些差異包括：
 

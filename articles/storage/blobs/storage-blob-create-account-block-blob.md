@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613793"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
@@ -25,7 +25,7 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 如需 BlockBlobStorage 帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -128,7 +128,7 @@ az login
 
 8. 選取 [ **審核 + 建立** ] 以檢查儲存體帳戶設定。
 
-9. 選取 [建立]。
+9. 選取 [建立]****。
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297353"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>針對常見的 Azure 資料庫移轉服務問題和錯誤進行疑難排解
@@ -64,7 +64,7 @@ ms.locfileid: "91297353"
 
 | 原因         | 解決方案 |
 | ------------- | ------------- |
-| 當您嘗試停止的服務實例包含仍在執行中或存在於遷移專案中的活動時，就會顯示此錯誤。 <br><br><br><br><br><br> | 確定您嘗試停止的 Azure 資料庫移轉服務實例中沒有任何正在執行的活動。 您也可以先刪除活動或專案，再嘗試停止服務。 下列步驟說明如何藉由刪除所有執行中的工作來移除專案，以清除遷移服務實例：<br>1. Install-Module-Name AzureRM. Microsoft.datamigration <br>2. 登入-Disconnect-azurermaccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. 移除-AzureRmDataMigrationProject-Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| 當您嘗試停止的服務實例包含仍在執行中或存在於遷移專案中的活動時，就會顯示此錯誤。 <br><br><br><br><br><br> | 確定您嘗試停止的 Azure 資料庫移轉服務實例中沒有任何正在執行的活動。 您也可以先刪除活動或專案，再嘗試停止服務。 下列步驟說明如何藉由刪除所有執行中的工作來移除專案，以清除遷移服務實例：<br>1. Install-Module-Name AzureRM. Microsoft.datamigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>嘗試啟動 Azure 資料庫移轉服務時發生錯誤
 

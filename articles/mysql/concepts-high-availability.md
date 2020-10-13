@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882549"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的高可用性
@@ -46,7 +46,7 @@ ms.locfileid: "90882549"
 非預期的停機時間可能會因為未預期的失敗而發生，包括基礎硬體錯誤、網路問題和軟體錯誤。 如果資料庫伺服器意外關閉，則會自動布建新的資料庫伺服器（以秒為單位）。 遠端存放會自動附加至新的資料庫伺服器。 MySQL 引擎會使用 WAL 和資料庫檔案來執行復原作業，並開啟資料庫伺服器以允許用戶端連接。 未認可的交易會遺失，而且必須由應用程式重試。 雖然無法避免非計畫的停機時間，適用於 MySQL 的 Azure 資料庫可在資料庫伺服器和儲存層自動執行復原作業，而不需要人為介入，藉此減少停機時間。 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的高可用性查看":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="在 Azure MySQL 中查看彈性調整":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>未計畫的停機時間：失敗案例和服務復原
 以下是一些失敗案例，以及適用於 MySQL 的 Azure 資料庫如何自動復原：
@@ -69,7 +69,7 @@ ms.locfileid: "90882549"
 
 適用於 MySQL 的 Azure 資料庫可提供資料庫伺服器的快速重新開機功能、重複的儲存空間，以及從閘道有效率的路由。 針對額外的資料保護，您可以將備份設定為異地複寫，也可以在其他區域中部署一或多個讀取複本。 利用固有的高可用性功能，適用於 MySQL 的 Azure 資料庫保護您的資料庫不受最常見的中斷影響，並提供領先業界的財務支援 [99.99% 的執行時間 SLA](https://azure.microsoft.com/support/legal/sla/mysql)。 所有的可用性和可靠性功能都能讓 Azure 成為執行任務關鍵性應用程式的理想平臺。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [Azure 區域](../availability-zones/az-overview.md)
 - 了解如何[處理暫時性連線錯誤](concepts-connectivity.md)
 - 了解如何[使用讀取複本來複寫資料](howto-read-replicas-portal.md)

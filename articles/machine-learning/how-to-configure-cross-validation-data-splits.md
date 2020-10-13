@@ -12,10 +12,10 @@ author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
 ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886187"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
@@ -156,7 +156,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 > [!NOTE]
 > 若要搭配使用 `cv_split_column_names` 與 `training_data` `label_column_name` ，請升級您的 Azure Machine Learning Python SDK 1.6.0 版或更新版本。 針對先前的 SDK 版本，請參閱使用 `cv_splits_indices` ，但請注意，它只會搭配 `X` 和 `y` 資料集輸入使用。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [防止不平衡資料和過度學習](concept-manage-ml-pitfalls.md)。
 * [教學課程：使用自動化機器學習來預測出租車車資分割資料區段](tutorial-auto-train-models.md#split-the-data-into-train-and-test-sets)。

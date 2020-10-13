@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773241"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>如何在 Azure 虛擬 WAN hub 中建立網路虛擬裝置 (預覽版) 
@@ -90,7 +90,7 @@ ms.locfileid: "91773241"
    * **NVA 基礎結構單位** -指出您要用來部署此 NVA 的 NVA 基礎結構單位數目。 選擇您想要在所有將透過此 NVA 連線至此中樞的分支網站上提供的匯總頻寬容量量。
    * **權杖** Barracuda 需要您在這裡提供驗證權杖，才能將您自己識別為此產品的已註冊使用者。 您必須從 Barracuda 取得。
 1. 選取 [ **審核] 和 [建立** ] 按鈕以繼續。
-1. 在此頁面上，系統會要求您接受共同管理員存取合約的條款。 這是受控應用程式的標準，發行者會在此部署中存取某些資源。 勾選 [ **我同意上述的條款及條件** ] 方塊，然後選取 [ **建立**]。
+1. 在此頁面上，系統會要求您接受 Co-Admin 存取合約的條款。 這是受控應用程式的標準，發行者會在此部署中存取某些資源。 勾選 [ **我同意上述的條款及條件** ] 方塊，然後選取 [ **建立**]。
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>將 VNet 連線到中樞
 

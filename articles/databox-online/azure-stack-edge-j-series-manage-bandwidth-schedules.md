@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890659"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro GPU 上的頻寬排程 
@@ -46,7 +46,7 @@ ms.locfileid: "90890659"
    2. 如果此排程應全天執行，請勾選 [ **全天** ] 選項。
    3. **頻寬速率** 是您的裝置在牽涉到雲端 (上傳和下載) 時，每秒 Mb (Mbps) 的頻寬。 請為此欄位提供20到2147483647之間的數位。
    4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
-   5. 選取 [新增]  。
+   5. 選取 [新增]。
 
       ![新增排程](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -84,6 +84,6 @@ ms.locfileid: "90890659"
 3. 刪除排程之後，排程清單就會更新。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[管理共用](azure-stack-edge-j-series-manage-shares.md)。

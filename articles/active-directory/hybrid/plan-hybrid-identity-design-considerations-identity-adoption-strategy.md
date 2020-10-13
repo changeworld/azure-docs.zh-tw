@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294857"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定義混合式身分識別採用策略
@@ -68,7 +68,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | 網頁瀏覽器 |表單架構驗證 |單一登入，有時需要提供組織識別碼 |
 | Outlook |提示輸入認證 |提示輸入認證 |
 | 商務用 Skype (Lync) |提示輸入認證 |在 Lync 中需要單一登入，在 Exchange 中會提示輸入認證 |
-| OneDrive for Business |提示輸入認證 |單一登入 |
+| 商務用 OneDrive |提示輸入認證 |單一登入 |
 | Office Pro Plus 訂用帳戶 |提示輸入認證 |單一登入 |
 
 **外部或不受信任的來源**：

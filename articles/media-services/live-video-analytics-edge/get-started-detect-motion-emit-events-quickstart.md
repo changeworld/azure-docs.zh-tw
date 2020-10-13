@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884945"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773381"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -43,12 +43,8 @@ ms.locfileid: "90884945"
 1. 如果您第一次使用 Cloud Shell，系統會提示您選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。 選取 [建立儲存體]，以建立可供儲存 Cloud Shell 工作階段資訊的儲存體帳戶。 此儲存體帳戶與指令碼將建立來搭配您 Azure 媒體服務帳戶使用的帳戶不同。
 1. 在 Cloud Shell 視窗左側的下拉式功能表中，選取 [Bash] 作為您的環境。
 
-    ![環境選取器](./media/quickstarts/env-selector.png)
-
-1. 執行下列命令。
-
-    ```
-    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="以動作偵測為基礎的 Live Video Analytics"
     ```
     
 如果指令碼成功完成，您應該會在訂用帳戶中看到所有所需資源。 在指令碼輸出中，資源資料表會列出 IoT 中樞名稱。 請尋找 `Microsoft.Devices/IotHubs` 資源類型，並記下該名稱。 在下一個步驟中，您將需要此名稱。 
@@ -76,7 +72,16 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 
 請遵循下列指示，使用 Azure IoT Tools 延伸模組來連線到您的 IoT 中樞。
 
-1. 在 Visual Studio Code 中，選取 [檢視] > [總管]。 或選取 Ctrl+Shift+E。
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="以動作偵測為基礎的 Live Video Analytics":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="以動作偵測為基礎的 Live Video Analytics":::
+1. <!--In Visual Studio Code-->選取 [檢視] > [Explorer]。 或選取 Ctrl+Shift+E。
 1. 在 [總管] 索引標籤的左下角，選取 [Azure IoT 中樞]。
 1. 選取 [其他選項] 圖示，以查看捷徑功能表。 然後選取 [設定 IoT 中樞連接字串]。
 1. 輸入方塊出現時，請輸入您的 IoT 中樞連接字串。 在 Cloud Shell 中，您可以從 *~/clouddrive/lva-sample/appsettings.json* 取得連接字串。

@@ -1,7 +1,7 @@
 ---
 title: 管理 Azure AD Domain Services 的 DNS |Microsoft Docs
 description: 瞭解如何安裝 DNS 伺服器工具來管理 DNS，以及建立 Azure Active Directory Domain Services 受控網域的條件轉寄站。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: af321f4e9ef9e340026852a759bb70b9f03c77f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: b347f8043216d4347099d68ff1c62156410582a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722937"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963171"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 DNS 並在 Azure Active Directory Domain Services 受控網域中建立條件轉寄站
 
@@ -105,7 +105,7 @@ Azure AD DS DNS 區域應只包含受控網域本身的區域和記錄。 請勿
 
 從連線到受控網域的 Vm，其他命名空間中資源的名稱解析現在應該會正確地解析。 條件轉寄站中設定之 DNS 網域的查詢會傳遞至相關的 DNS 伺服器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需管理 DNS 的詳細資訊，請參閱 [Technet 上的 DNS 工具文章](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753579(v=ws.11))。
 

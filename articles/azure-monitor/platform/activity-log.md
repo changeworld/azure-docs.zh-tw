@@ -8,10 +8,10 @@ ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772799"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
@@ -201,7 +201,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
     | 屬性 | 必要 | 描述 |
     | --- | --- | --- |
-    | Name |是 |記錄檔設定檔的名稱。 |
+    | 名稱 |是 |記錄檔設定檔的名稱。 |
     | StorageAccountId |否 |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
     | serviceBusRuleId |否 |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是具有下列格式的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
     | 位置 |是 |以逗號分隔的區域清單，其中列出您要收集的活動記錄檔事件的區域。 |

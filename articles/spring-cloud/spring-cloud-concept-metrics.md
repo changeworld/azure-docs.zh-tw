@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892649"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>瞭解 Azure 春季雲端的計量
@@ -90,13 +90,13 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 ### <a name="error"></a>錯誤
 >[!div class="mx-tdCol2BreakAll"]
->| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat。錯誤 | tomcat。錯誤 | Count | 已處理的要求中發生的錯誤數目 |
 
 ### <a name="performance"></a>效能
 >[!div class="mx-tdCol2BreakAll"]
->| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|----|----|----|------------|
 >| 系統。使用量 | 系統。使用量 | 百分比 | 整個系統的最近 CPU 使用率。 此值是 [0.0，1.0] 間隔中的雙精度浮點數。 值為0.0 時，表示所有 Cpu 在觀察到的最近一段時間都處於閒置狀態，而1.0 的值表示所有 Cpu 在觀察到最近一段期間內，會主動執行100% 的時間。|
 >| 處理常式。 cpu。使用量 | 應用程式 CPU 使用率百分比 | 百分比 | JAVA 虛擬機器進程的最近 CPU 使用率。 此值是 [0.0，1.0] 間隔中的雙精度浮點數。 值為0.0 時，表示在觀察到最近一段期間內，沒有任何 Cpu 正在執行來自 JVM 進程的執行緒，而1.0 的值表示所有 Cpu 都在觀察到最近一段時間內，在 JVM 的 JVM 100% 內主動執行執行緒。 JVM 中的執行緒包括應用程式執行緒和 JVM 內部執行緒。|
@@ -114,7 +114,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 ### <a name="performance-net"></a>效能 ( .NET) 
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|------|-----------------------------|------|---------|
 >| CPU 使用量       | cpu-使用量      | 毫秒 | 進程使用 CPU 的時間量。 |
 >| 工作集     | 工作集    | MB    | 進程使用的工作集量。 |
@@ -140,7 +140,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 ### <a name="request"></a>要求
 >[!div class="mx-tdCol2BreakAll"]
->| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat. global. 已傳送 | tomcat. global. 已傳送 | 位元組 | 已傳送的資料 Tomcat web 伺服器數量 |
 >| tomcat. global. received | tomcat. global. received | 位元組 | 已接收的資料 Tomcat web 伺服器數量 |
@@ -151,7 +151,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 ### <a name="request-net"></a>要求 ( .NET) 
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|------|-----------------------------|------|---------|
 >| 每秒要求 | 每秒要求數 | Count | 要求速率。 |
 >| 要求總數 | 要求總數 | Count | 要求數總計。 |
@@ -163,7 +163,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 ### <a name="session"></a>工作階段
 >[!div class="mx-tdCol2BreakAll"]
->| Name | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
+>| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|----|----|----|------------|
 >| tomcat。作用中。最大值 | tomcat。作用中。最大值 | Count | 同時處於作用中狀態的會話數上限 |
 >| tomcat。最大值 | tomcat。最大值 | 毫秒 | 過期的會話處於作用中的最長時間 (秒)  |
@@ -180,7 +180,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 * [使用診斷設定來分析記錄和計量](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [教學課程：使用警示和動作群組監視春季雲端資源](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 

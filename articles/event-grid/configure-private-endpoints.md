@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324139"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的私人端點
@@ -44,7 +44,7 @@ ms.locfileid: "91324139"
 
             ![顯示 [建立私人端點-資源] 頁面的螢幕擷取畫面。](./media/configure-private-endpoints/resource-page.png)
     2. 如果您選取 **[使用資源識別碼或別名連線至資源]**，請遵循下列步驟：
-        1. 輸入資源的識別碼。 例如：`/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
+        1. 輸入資源的識別碼。 例如： `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>` 。  
         2. 針對 [ **資源**]，輸入 **主題** 或 **網域**。 
         3.  (選擇性) 新增要求訊息。 
         4. 完成時，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。 
@@ -151,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 執行下列命令，以更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive

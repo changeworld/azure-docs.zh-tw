@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ea638124ed81a494231c814962345c028fc12c9
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818009"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940849"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>將限域角色指派給管理單位
 
@@ -60,7 +60,7 @@ ms.locfileid: "91818009"
 
 > [!Note]
 >
-> 若要使用 PIM 在管理單位上指派角色，請遵循 [此處](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)的步驟。
+> 若要使用 PIM 在管理單位上指派角色，請遵循 [此處](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user?tabs=new#assign-a-role-with-restricted-scope)的步驟。
 
 ### <a name="powershell"></a>PowerShell
 

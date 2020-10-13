@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324547"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>將 Node.js Mongoose 應用程式連線至 Azure Cosmos DB
@@ -22,7 +22,7 @@ ms.locfileid: "91324547"
 
 Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Cosmos DB 核心的全域散發和水平調整功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -197,7 +197,7 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
 1. 現在，移至 Azure 入口網站，您會發現 Cosmos DB 中建立了兩個集合。
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，其中顯示已醒目提示多個集合名稱的 Azure Cosmos DB 帳戶-Node 資料庫":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，顯示如何在 Azure Cosmos DB 帳戶的資料總管中建立資料庫，以與 Mongoose Node 模組搭配使用":::
 
 1. 最後，讓我們從 Cosmos DB 讀取資料。 由於我們使用的是預設的 Mongoose 作業模型，讀取作業會和 Mongoose 的其他讀取作業相同。
 
@@ -302,7 +302,7 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
 1. 現在，如果您返回 Azure 入口網站，您會發現您只有一個稱為 ```alldata``` 的集合，其中含有 'Family' 和 'VacationDestinations' 資料。
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，其中顯示 Azure Cosmos DB 帳戶，並反白顯示集合名稱-Node database":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，顯示如何在 Azure Cosmos DB 帳戶的資料總管中建立資料庫，以與 Mongoose Node 模組搭配使用":::
 
 1. 此外，請注意，每個物件有另一個稱為 ```__type``` 的屬性，可協助您區分兩個不同的物件模型。
 

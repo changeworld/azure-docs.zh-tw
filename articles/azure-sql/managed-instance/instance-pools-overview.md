@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325159"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什麼是 Azure SQL 受控執行個體集區 (preview) ？
@@ -152,10 +152,10 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 ## <a name="next-steps"></a>後續步驟
 
 - 若要開始使用實例集區，請參閱 [SQL 受控執行個體](instance-pools-configure.md)集區操作指南。
-- 若要瞭解如何建立您的第一個受控實例，請參閱 [快速入門手冊](instance-create-quickstart.md)。
+- 若要了解如何建立您的第一個受控執行個體，請參閱[快速入門指南](instance-create-quickstart.md)。
 - 如需功能和比較清單，請參閱 [AZURE SQL 通用功能](../database/features-comparison.md)。
-- 如需 VNet 設定的詳細資訊，請參閱 [SQL 受控執行個體 vnet](connectivity-architecture-overview.md)設定。
-- 如需建立受控實例，並從備份檔案還原資料庫的快速入門，請參閱 [建立受控實例](instance-create-quickstart.md)。
-- 如需使用 Azure 資料庫移轉服務進行遷移的教學課程，請參閱 [SQL 受控執行個體使用資料庫移轉服務進行遷移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 若要使用內建的疑難排解智慧來進行 SQL 受控執行個體資料庫效能的 advanced monitoring，請參閱 [使用 Azure SQL 分析監視 AZURE SQL 受控執行個體](../../azure-monitor/insights/azure-sql.md)。
+- 如需 VNet 組態的詳細資訊，請參閱 [SQL 受控執行個體 VNet 組態](connectivity-architecture-overview.md)。
+- 如需建立受控執行個體，並從備份檔案還原資料庫的快速入門，請參閱[建立受控執行個體](instance-create-quickstart.md)。
+- 如需使用 Azure 資料庫移轉服務進行移轉的教學課程，請參閱[使用資料庫移轉服務的 SQL 受控執行個體移轉](../../dms/tutorial-sql-server-to-managed-instance.md)。
+- 若要使用內建的疑難排解智慧對 SQL 受控執行個體的資料庫效能進行進階監視，請參閱[使用 Azure SQL 分析監視 Azure SQL 受控執行個體](../../azure-monitor/insights/azure-sql.md)。
 - 如需定價資訊，請參閱 [SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

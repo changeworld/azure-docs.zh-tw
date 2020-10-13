@@ -6,13 +6,13 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324802"
 ---
-# <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>適用于 LUIS DevOps 的持續整合與持續傳遞工作流程
+# <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>適用於 LUIS DevOps 的持續整合與持續傳遞工作流程
 
 開發 Language Understanding (LUIS) 應用程式的軟體工程師，可以針對 [原始檔控制](luis-concept-devops-sourcecontrol.md)、 [自動化組建](luis-concept-devops-automation.md)、 [測試](luis-concept-devops-testing.md)和 [發行管理](luis-concept-devops-automation.md#release-management)套用 DevOps 實務。 本文說明針對 LUIS 執行自動化組建的概念。
 

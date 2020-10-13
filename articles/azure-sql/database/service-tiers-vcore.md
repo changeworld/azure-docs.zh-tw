@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
 ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614422"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型總覽-Azure SQL Database 和 Azure SQL 受控執行個體 
@@ -104,7 +104,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 ### <a name="compute-and-memory-specifications"></a>計算和記憶體規格
 
 
-|硬體世代  |計算  |記憶體  |
+|硬體世代  |計算  |Memory  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel® E5-2673 v3 (Haswell) 2.4 GHz 處理器<br>-最多可布建至24個虛擬核心 (1 vCore = 1 個實體核心)   |-每個 vCore 7 GB<br>-布建高達 168 GB|
 |Gen5     |**佈建計算**<br>-Intel® E5-2673 v4 (Broadwell) 2.3-GHz、Intel® SP-8160 (Skylake) \* 和 intel® 8272CL (Cascade Lake) 2.5 GHz \* 處理器<br>-布建高達80虛擬核心 (1 vCore = 1 超執行緒) <br><br>**無伺服器計算**<br>-Intel® E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel® SP-8160 (Skylake) * 處理器<br>-自動擴大至40虛擬核心 (1 vCore = 1 超執行緒) |**佈建計算**<br>-每個 vCore 5.1 GB<br>-布建高達 408 GB<br><br>**無伺服器計算**<br>-自動調整為每個 vCore 24 GB<br>-自動調整高達 120 GB 上限|

@@ -1,6 +1,7 @@
 ---
-title: 將使用 Microsoft 的登入新增至 Microsoft 身分識別平台 Python Web 應用程式 | Azure
-description: 了解如何使用 OAuth2 在 Python Web 應用程式上實作 Microsoft 登入
+title: 快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，了解 Python 應用程式如何登入使用者、從 Microsoft 身分識別平台取得存取權杖，以及呼叫 Microsoft Graph API。
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120315"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613334"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
@@ -26,8 +27,7 @@ ms.locfileid: "88120315"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要執行此範例，您將需要：
-
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) 或 [Python 3+](https://www.python.org/downloads/release/python-364/)
 - [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pypi.org/project/Flask-Session/)、[requests](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
@@ -53,11 +53,11 @@ ms.locfileid: "88120315"
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 > 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]  。
-> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
+> 1. 選取 [新增註冊]。
+> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
 >      - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `python-webapp`。
 >      - 在 [支援的帳戶類型]  底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  。
->      - 選取 [註冊]  。
+>      - 選取 [註冊]。
 >      - 在應用程式 [概觀]  頁面上，記下 [應用程式 (用戶端) 識別碼]  值以供稍後使用。
 > 1. 從功能表中選取 [驗證]  ，然後新增下列資訊：
 >    - 新增 **Web** 平台組態。 將 `http://localhost:5000/getAToken` 新增為**重新導向 URI**。
@@ -97,7 +97,7 @@ ms.locfileid: "88120315"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 下載專案，並將 zip 檔案解壓縮至根資料夾附近的本機資料夾 - 例如 **C:\Azure-Samples**
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下載程式碼範例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -162,11 +162,11 @@ pip install msal
 import msal
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
-深入了解可登入使用者而後呼叫 Web API 的 Web 應用程式：
+深入了解在多部分案例系列中登入使用者的 Web 應用程式。
 
 > [!div class="nextstepaction"]
-> [案例：可登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [案例：登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)

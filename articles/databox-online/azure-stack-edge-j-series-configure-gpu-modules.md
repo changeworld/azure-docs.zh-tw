@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891467"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 裝置上的 GPU 上設定和執行模組
@@ -112,6 +112,6 @@ ms.locfileid: "90891467"
     ![將模組設定為使用 GPU 16](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-12.png)
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [您可以搭配 NVIDIA GPU 使用的環境變數](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)。

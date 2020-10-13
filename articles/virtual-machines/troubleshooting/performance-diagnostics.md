@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090630"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963239"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虛擬機器的效能診斷
 
@@ -61,7 +61,7 @@ ms.locfileid: "90090630"
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在您的 VM 上安裝並執行效能診斷
 
-效能診斷會安裝 VM 延伸模組，以執行名為 PerfInsights 的診斷工具。 PerfInsights 適用于 [Windows](https://aka.ms/perfinsights) 和 [Linux](https://aka.ms/perfinsightslinux)。 若要安裝並執行效能診斷，請遵循下列步驟進行：
+效能診斷會安裝 VM 延伸模組，以執行名為 PerfInsights 的診斷工具。 PerfInsights 適用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how-to-use-perfinsights-linux.md)。 若要安裝並執行效能診斷，請遵循下列步驟進行：
 
 1. 在命令的左欄中，選取 [虛擬機器]****。
 1. 從 VM 名稱清單，選取您想要對其執行診斷的 VM。
@@ -91,16 +91,16 @@ ms.locfileid: "90090630"
 Azure 入口網站提供下列分析案例。 請根據您的效能問題，選取一個分析。 視分析需要，選取持續時間和追蹤選項。
 
 * **快速效能分析**  
-    檢查是否有已知問題、分析最佳做法，並收集診斷資料。 此分析需要幾分鐘的時間來執行。 深入瞭解 [Windows](https://aka.ms/perfinsights/quick) 或 [Linux](https://aka.ms/perfinsightslinux/quick)
+    檢查是否有已知問題、分析最佳做法，並收集診斷資料。 此分析需要幾分鐘的時間來執行。 深入瞭解 [Windows](./how-to-use-perfinsights.md) 或 [Linux](./how-to-use-perfinsights-linux.md)
 
 * **效能分析**  
-    包括快速效能分析中的所有檢查，並監視高資源耗用量。 使用此版本可針對一般效能問題 (例如高 CPU、記憶體和磁碟使用量) 進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間，視選取的持續時間而定。 深入瞭解 [Windows](https://aka.ms/perfinsights/vmslow) 或 [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    包括快速效能分析中的所有檢查，並監視高資源耗用量。 使用此版本可針對一般效能問題 (例如高 CPU、記憶體和磁碟使用量) 進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間，視選取的持續時間而定。 深入瞭解 [Windows](./how-to-use-perfinsights.md) 或 [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Advanced 效能分析**`*`  
-    包括效能分析中的所有檢查，並收集一或多個追蹤，如下列各節所列示。 使用此案例可針對需要額外追蹤的複雜問題進行疑難排解。 根據所選取的 VM 大小和追蹤選項，執行此案例的時間越長，診斷輸出的整體大小會越大。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](https://aka.ms/perfinsights/advanced)
+    包括效能分析中的所有檢查，並收集一或多個追蹤，如下列各節所列示。 使用此案例可針對需要額外追蹤的複雜問題進行疑難排解。 根據所選取的 VM 大小和追蹤選項，執行此案例的時間越長，診斷輸出的整體大小會越大。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](./how-to-use-perfinsights.md)
 
 * **Azure 檔案儲存體分析**`*`  
-    包括效能分析中的所有檢查，並擷取網路追蹤和 SMB 計數器。 使用此案例可針對 Azure 檔案服務效能進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](https://aka.ms/perfinsights/azurefiles)
+    包括效能分析中的所有檢查，並擷取網路追蹤和 SMB 計數器。 使用此案例可針對 Azure 檔案服務效能進行疑難排解。 此分析需要 30 秒到 15 分鐘的時間來執行，視選取的持續時間而定。 [深入了解](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] 只有在 Windows 上才支援這些分析案例。
