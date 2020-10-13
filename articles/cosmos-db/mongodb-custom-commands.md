@@ -8,10 +8,10 @@ ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409674"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 擴充功能命令來管理 Azure Cosmos DB 的 MongoDB API 中儲存的資料 
@@ -215,7 +215,7 @@ db.runCommand({customAction: "GetDatabase"});
 |---------|---------|---------|---------|
 | `customAction` | `string` | 必要 | 自訂命令的名稱。 必須是 "CreateCollection"。|
 | `collection` | `string` | 必要 | 集合的名稱。 不允許任何特殊字元或空格。|
-| `offerThroughput` | `int` | 選擇性 | 要在資料庫上設定的布建輸送量。 如果未提供此參數，則會預設為最小 400 RU/秒。 * 若要指定超過 10000 RU/秒的輸送量，則 `shardKey` 需要參數。|
+| `offerThroughput` | `int` | 選用 | 要在資料庫上設定的布建輸送量。 如果未提供此參數，則會預設為最小 400 RU/秒。 * 若要指定超過 10000 RU/秒的輸送量，則 `shardKey` 需要參數。|
 | `shardKey` | `string` | 具有大型輸送量的集合所需 | 分區化集合之分區索引鍵的路徑。 如果您在中設定超過 10000 RU/秒，則需要此參數 `offerThroughput` 。  如果已指定，則所有插入的檔都需要此索引鍵和值。 |
 | `autoScaleSettings` | `Object` | 自動調整[模式](provision-throughput-autoscale.md)的必要參數 | 此物件包含與自動調整容量模式相關聯的設定。 您可以設定 `maxThroughput` 值，以描述集合將會以動態方式增加的最高要求單位數量。 |
 

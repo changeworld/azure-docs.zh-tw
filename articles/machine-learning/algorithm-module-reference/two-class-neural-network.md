@@ -1,7 +1,7 @@
 ---
-title: 二級類神經網路：模組參考
+title: Two-Class 類神經網路：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的二級類神經網路模組建立類神經網路模型，以用來預測只有兩個值的目標。
+description: 瞭解如何使用 Azure Machine Learning 中的 Two-Class 類神經網路模組建立類神經網路模型，以用來預測只有兩個值的目標。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907682"
 ---
-# <a name="two-class-neural-network-module"></a>二級類神經網路模組
+# <a name="two-class-neural-network-module"></a>Two-Class 類神經網路模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 

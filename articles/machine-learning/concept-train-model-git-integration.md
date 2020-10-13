@@ -10,10 +10,10 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275960"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning 的 Git 整合
@@ -123,7 +123,7 @@ SSH 會在連線至未知的主機時顯示此指紋，以防止 [攔截式攻�
 
 當您從 Python SDK 或 Machine Learning CLI 提交定型回合時，定型模型所需的檔案會上傳至您的工作區。 如果 `git` 您的開發環境中有可用的命令，上傳程式會使用它來檢查檔案是否儲存在 git 存放庫中。 如果是，則您的 git 存放庫的資訊也會隨著定型回合的一部分上傳。 這項資訊會儲存在定型執行的下列屬性中：
 
-| 屬性 | 用來取得值的 Git 命令 | 說明 |
+| 屬性 | 用來取得值的 Git 命令 | 描述 |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | 您的存放庫複製來源的 URI。 |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | 您的存放庫複製來源的 URI。 |

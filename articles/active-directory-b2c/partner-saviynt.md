@@ -12,10 +12,10 @@ ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259131"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Saviynt 的教學課程
@@ -30,7 +30,7 @@ ms.locfileid: "91259131"
 
 - 資料層級安全性，以判斷使用者是否可以對特定使用者執行特定作業。 例如，UK 地區的服務台系統管理員只能管理 UK 使用者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -54,7 +54,7 @@ Saviynt 整合包含下列元件：
 
 ![顯示 saviynt 架構圖表的影像](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|步驟 | 說明 |
+|步驟 | 描述 |
 |:-----| :-----------|
 | 1. | 委派的系統管理員會透過 Saviynt 啟動管理 Azure AD B2C 使用者操作。
 | 2. | 如果委派的系統管理員可以進行特定作業，Saviynt 會以其授權引擎進行驗證。

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273665"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教學課程︰設定 BlueJeans 來自動佈建使用者
@@ -25,7 +25,7 @@ ms.locfileid: "91273665"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -111,7 +111,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![通知電子郵件文字方塊的螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. 按一下 [檔案]  。
+8. 按一下 **[儲存]** 。
 
 9. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 BlueJeans]****。
 
@@ -119,7 +119,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 10. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 BlueJeans 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 BlueJeans 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![顯示有七個對應的 [屬性對應] 區段螢幕擷取畫面。](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
 11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

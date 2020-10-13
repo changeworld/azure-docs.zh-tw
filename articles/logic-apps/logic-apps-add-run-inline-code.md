@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269330"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用內嵌程式碼來新增和執行程式碼片段
@@ -33,7 +33,7 @@ ms.locfileid: "91269330"
 
 ![範例總覽](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -129,11 +129,11 @@ ms.locfileid: "91269330"
 
 下表包含這些子屬性的詳細資訊：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |----------|------|-------|
 | `actions` | 物件集合 | 在您的程式碼片段執行之前執行的動作結果物件。 每個物件都有索引 *鍵/值* 組，其中索引鍵是動作的名稱，而值相當於呼叫 [ ( # A1 函數的動作](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 動作的名稱會使用基礎工作流程定義中使用的相同動作名稱，此名稱會取代動作名稱中的空格 ( "" )  (_) 的底線。 這個物件可讓您從目前的工作流程實例執行存取動作屬性值。 |
-| `trigger` | 物件 | 來自觸發程式的結果物件，相當於呼叫 [觸發程式 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件會從目前的工作流程實例執行中提供觸發程式屬性值的存取權。 |
-| `workflow` | 物件 | 工作流程物件和等同于呼叫 [工作流程 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 這個物件可讓您從目前的工作流程實例執行，存取工作流程屬性值，例如工作流程名稱、執行識別碼等等。 |
+| `trigger` | Object | 來自觸發程式的結果物件，相當於呼叫 [觸發程式 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件會從目前的工作流程實例執行中提供觸發程式屬性值的存取權。 |
+| `workflow` | Object | 工作流程物件和等同于呼叫 [工作流程 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 這個物件可讓您從目前的工作流程實例執行，存取工作流程屬性值，例如工作流程名稱、執行識別碼等等。 |
 |||
 
 在本主題的範例中， `workflowContext` 物件具有您的程式碼可以存取的這些屬性：
@@ -219,7 +219,7 @@ ms.locfileid: "91269330"
 
    ![新增參數](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
-   | 參數 | 說明 |
+   | 參數 | 描述 |
    |-----------|-------------|
    | **動作** | 包含先前動作的結果。 請參閱 [包含動作結果](#action-results)。 |
    | **觸發程序** | 包含來自觸發程式的結果。 請參閱 [包含觸發程式結果](#trigger-results)。 |

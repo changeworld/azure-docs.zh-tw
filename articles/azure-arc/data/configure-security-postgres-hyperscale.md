@@ -1,6 +1,6 @@
 ---
-title: 為 Azure Arc 啟用的于 postgresql 超大規模伺服器群組設定安全性
-description: 為 Azure Arc 啟用的于 postgresql 超大規模伺服器群組設定安全性
+title: 為已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組設定安全性
+description: 為已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組設定安全性
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273195"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>為 Azure Arc 啟用的于 postgresql 超大規模伺服器群組設定安全性
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>為已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組設定安全性
 
 本檔說明與伺服器群組安全性相關的各方面：
 - 待用加密
@@ -150,7 +150,7 @@ select * from mysecrets;
 
 ## <a name="user-management"></a>使用者管理
 ### <a name="general-perspectives"></a>一般觀點
-您可以使用標準 Postgres 方式來建立使用者或角色。 但是，如果您這麼做，這些成品將只能在協調器角色上使用。 在預覽期間，這些使用者/角色還無法存取分散于協調器節點和您伺服器群組之背景工作節點的資料。 原因是，在預覽中，使用者定義不會複寫到背景工作節點。
+您可以使用標準 Postgres 方式來建立使用者或角色。 不過，如果您這樣做，這些成品將僅適用於協調器角色。 在預覽期間，這些使用者/角色尚無法存取協調器節點外部散發的資料，以及伺服器群組背景工作角色節點上的資料。 這是因為在預覽版中，使用者定義不會複寫到背景工作角色節點。
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>變更 _postgres_ 系統管理使用者的密碼
 Azure Arc 啟用的于 postgresql 超大規模隨附于您在建立伺服器群組時設定密碼的標準 Postgres 系統管理使用者 _Postgres_ 。

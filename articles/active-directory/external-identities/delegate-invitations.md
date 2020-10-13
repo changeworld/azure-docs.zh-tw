@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278782"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部共同作業和管理誰可以邀請來賓
@@ -61,7 +61,7 @@ Azure AD 可讓您限制外部來賓使用者可在 Azure AD 目錄中看到的�
 
    - **來賓可邀請**：若要允許來賓邀請其他來賓，請將此原則設定為 [是]。
 
-   - 為**來賓啟用電子郵件單次密碼 (Preview) **：如需單次密碼功能的詳細資訊，請參閱[電子郵件單次密碼驗證 (預覽) ](one-time-passcode.md)。
+   - **啟用來賓 (預覽) 的電子郵件 One-Time 密碼 **：如需單次密碼功能的詳細資訊，請參閱 [電子郵件單次密碼驗證 (Preview) ](one-time-passcode.md)。
 
    - 透過**使用者流程啟用來賓自助式註冊 (預覽) **：如需此設定的詳細資訊，請參閱[將自助註冊使用者流程新增至應用程式 (預覽) ](self-service-sign-up-user-flow.md)。
 

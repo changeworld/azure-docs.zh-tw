@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269551"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>從 Power Automate 匯出流程，並部署至 Azure Logic Apps
@@ -24,7 +24,7 @@ ms.locfileid: "91269551"
 >
 > * 若要找出哪些 Logic Apps 連接器沒有 Power Automate 對等專案，請參閱 [Logic Apps 連接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91269551"
 
    1. 選取或指定範本的輸入參數值。
 
-      | 屬性 | 說明 |
+      | 屬性 | 描述 |
       |----------|-------------|
       | **訂用帳戶** | 要用於計費的 Azure 訂用帳戶 |
       | **資源群組** | 要用於邏輯應用程式的 Azure 資源群組。 您可以使用現有的群組或建立新的群組。 |

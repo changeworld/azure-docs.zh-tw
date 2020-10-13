@@ -1,7 +1,7 @@
 ---
-title: 雙類別決策樹系：模組參考
+title: Two-Class 決策樹系：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [二級決策樹系] 模組，根據決策樹系演算法建立機器學習模型。
+description: 瞭解如何使用 Azure Machine Learning 中的 Two-Class 決策樹系模組，根據決策樹系演算法建立機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/03/2020
 ms.openlocfilehash: 9870b5366ac629fe1b10cfde15a58b85c7c6fbc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907713"
 ---
-# <a name="two-class-decision-forest-module"></a>雙類別決策樹系模組
+# <a name="two-class-decision-forest-module"></a>Two-Class 決策樹系模組
 
 本文描述 Azure Machine Learning 設計工具中的模組。
 
