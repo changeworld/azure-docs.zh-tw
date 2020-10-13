@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653591"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978232"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性區域的 SAP 工作負載設定
 [Azure 可用性區域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性區域可改善 Azure 上的 SAP 工作負載整體的可用性。 已功能已在部分 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)推出。 未來將可在更多區域提供此功能。
@@ -30,7 +30,7 @@ ms.locfileid: "88653591"
 
 ![標準高可用性組態](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP 應用層會部署在單一 Azure [可用性設定組](../../windows/manage-availability.md)中。 為了讓 SAP 中央服務具有高可用性，您在個別可用性設定組中部署兩部 VM。 使用 Windows Server 容錯移轉叢集或 Pacemaker (Linux)，在發生基礎結構或軟體問題時作為具有自動容錯移轉的高可用性架構。 若要深入了解這些部署，請參閱︰
+SAP 應用層會部署在單一 Azure [可用性設定組](../../manage-availability.md)中。 為了讓 SAP 中央服務具有高可用性，您在個別可用性設定組中部署兩部 VM。 使用 Windows Server 容錯移轉叢集或 Pacemaker (Linux)，在發生基礎結構或軟體問題時作為具有自動容錯移轉的高可用性架構。 若要深入了解這些部署，請參閱︰
 
 - [使用叢集共用磁片在 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 實例叢集](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-file-share.md)
@@ -179,7 +179,7 @@ SAP 應用層會部署在單一 Azure [可用性設定組](../../windows/manage-
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 以下提供跨 Azure 可用性區域進行部署的後續步驟：
 
 - [在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-shared-disk.md)

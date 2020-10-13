@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d8838747c4f7ff195a5451a3c68f5cf891c91f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274498"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978453"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>用於整合 Microsoft Azure 與 Oracle Cloud Infrastructure 的 Oracle 應用程式解決方案
 
@@ -68,7 +68,7 @@ Microsoft 與 Oracle 合作提供高輸送量的低延遲跨雲端連線，以�
 
 網路安全性是任何企業應用程式的重要元件，且是這個多重雲端解決方案的核心。 通過 ExpressRoute 和 FastConnect 的任何流量都會透過私人網路傳遞。 此設定可供在 Azure 虛擬網路與 Oracle 虛擬雲端網路之間進行安全通訊。 您不需要為 Azure 中的任何虛擬機器提供公用 IP 位址。 同樣地，OCI 中不需要網際網路閘道。 所有通訊都會透過電腦的私人 IP 位址進行。
 
-此外，您可設定有關 OCI 虛擬雲端網路的[安全性清單](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)以及安全性規則 (已附加至 Azure [網路安全性群組](../../../virtual-network/security-overview.md))。 使用這些規則可控制虛擬網路中電腦之間流動的流量。 您可在電腦層級、子網路層級及虛擬網路層級新增網路安全性規則。
+此外，您可設定有關 OCI 虛擬雲端網路的[安全性清單](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)以及安全性規則 (已附加至 Azure [網路安全性群組](../../../virtual-network/network-security-groups-overview.md))。 使用這些規則可控制虛擬網路中電腦之間流動的流量。 您可在電腦層級、子網路層級及虛擬網路層級新增網路安全性規則。
 
 [WebLogic Server Azure 應用程式](oracle-weblogic.md)會各建立一個網路安全性群組，已預先設定為使用 WebLogic Server 的連接埠設定。
  

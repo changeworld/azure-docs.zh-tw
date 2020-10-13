@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823409"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978066"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
@@ -81,7 +81,7 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
 
     - 或者使用 PyPi 存放庫，相應地變更 `seaborn` 和 `py35new`：
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     如果您想要安裝具有特定版本的程式庫，請使用下列命令：
@@ -98,7 +98,7 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
     - 或者使用 PyPi 存放庫，相應地變更 `numpy==1.16.1` 和 `py35new`：
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     如果您不知道虛擬環境名稱，您可以透過 SSH 連線到叢集的前端節點，然後執行 `/usr/bin/anaconda/bin/conda info -e` 以顯示所有虛擬環境。

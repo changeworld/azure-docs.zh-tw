@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869264"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978623"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中適用於虛擬機器的 cloud-init 支援
 此文章說明針對 [cloud-init](https://cloudinit.readthedocs.io) \(英文\) 存在的支援，以便在 Azure 中於佈建階段設定虛擬機器 (VM) 或虛擬機器擴展集。 一旦 Azure 佈建資源，這些 cloud-init 設定就會在初次開機時執行。  
@@ -152,7 +152,7 @@ az vm create \
 
 建立 VM 後，Azure CLI 會顯示您部署專屬的資訊。 記下 `publicIpAddress`。 此位址用來存取 VM。  系統需要花一些時間建立 VM、安裝套件以及啟動應用程式。 在 Azure CLI 將您返回提示字元之後，背景工作會繼續執行。 您可以透過 SSH 連線到 VM，並使用「疑難排解」一節中所述的步驟來檢視 cloud-init 記錄。 
 
-您也可以 [在 ARM 範本中傳遞參數](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)，以部署已啟用雲端初始化的 VM。
+您也可以 [在 ARM 範本中傳遞參數](../../azure-resource-manager/templates/deploy-cli.md#inline-parameters)，以部署已啟用雲端初始化的 VM。
 
 ## <a name="troubleshooting-cloud-init"></a>針對 cloud-init 進行疑難排解
 一旦佈建 VM，Cloud-init 將會執行 `--custom-data` 中定義的所有模組和指令碼，以設定 VM。  如果您需要針對設定中的任何錯誤或遺漏進行疑難排解，則需要在 cloud-init 記錄 (位於 **/var/log/cloud-init.log**) 中搜尋模組名稱 (例如 `disk_setup` 或 `runcmd`)。
@@ -173,4 +173,3 @@ az vm create \
 - [執行套件管理員以便在初次開機時更新現有的套件](cloudinit-update-vm.md)
 - [變更虛擬機器本機的主機名稱](cloudinit-update-vm-hostname.md) 
 - [安裝應用程式套件、更新組態檔案，以及插入金鑰](tutorial-automate-vm-deployment.md)
- 

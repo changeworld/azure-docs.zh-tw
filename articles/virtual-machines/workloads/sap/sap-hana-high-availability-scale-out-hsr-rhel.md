@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
-ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744753"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978100"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 SAP Hana 相應放大系統的高可用性 
 
@@ -100,7 +100,7 @@ ms.locfileid: "91744753"
 顯示架構中的 HANA 共用檔案系統 `/hana/shared` 是由 [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md)所提供。 它是透過 Nfsv4.1 4.1 在相同 HANA 系統複寫網站中的每個 HANA 節點上掛接。 檔案系統 `/hana/data` 和 `/hana/log` 本機檔案系統，並不會在 HANA DB 節點之間共用。 SAP Hana 將會以非共用模式安裝。 
 
 > [!TIP]
-> 如需建議的 SAP Hana 儲存體設定，請參閱 [SAP Hana Azure vm 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定。   
+> 如需建議的 SAP Hana 儲存體設定，請參閱 [SAP Hana Azure vm 儲存體](./hana-vm-operations-storage.md)設定。   
 
 [![使用 HSR 和 Pacemaker 叢集 SAP Hana 相應放大](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel.png)](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel-detail.png#lightbox)
 
@@ -128,7 +128,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
   
    針對大部分的 maker 節點，您可以部署小型 VM，因為此 VM 不會執行任何 SAP Hana 資源。 在叢集設定中，大部分的 maker VM 會用來在分裂的情況下達到奇數的叢集節點數目。 在此範例中，多數 maker VM 只需要子網中的一個虛擬網路介面 `client` 。        
 
-   部署和的本機受控 `/hana/data` 磁片 `/hana/log` 。 的最小建議儲存體設定 `/hana/data` ， `/hana/log` 在 [SAP Hana Azure vm 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定中有相關說明。
+   部署和的本機受控 `/hana/data` 磁片 `/hana/log` 。 的最小建議儲存體設定 `/hana/data` ， `/hana/log` 在 [SAP Hana Azure vm 儲存體](./hana-vm-operations-storage.md)設定中有相關說明。
 
    為虛擬網路子網中的每個 VM 部署主要網路介面 `client` 。  
    當 VM 透過 Azure 入口網站部署時，會自動產生網路介面名稱。 為了簡單起見，我們將參考自動產生的主要網路介面，這些介面會附加至 `client` Azure 虛擬網路子網，以作為 **hana-s1-db1-client**、hana-s1- **db2-client**、 **hana-s1-db3-client**等等。  
@@ -152,7 +152,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
     d. 選取 [ **網路**]，然後連接網路介面。 在 [ **附加網路介面** ] 下拉式清單中，選取已建立 `inter` 和子網的網路介面 `hsr` 。  
     
-    e. 選取 [儲存]****。 
+    e. 選取 [儲存]。 
  
     f. 針對其餘的虛擬機器重複步驟 b 至 e (在我們的範例中為  **hana-s1-db2**、 **hana-s1-db3**、 **hana-s2-db1**、 **hana-s2-db2** 和 **hana-s2-db3**) 。
  
@@ -229,7 +229,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>部署 Azure NetApp Files 基礎結構 
 
-部署檔案系統的 ANF 磁片區 `/hana/shared` 。 `/hana/shared`每個 HANA 系統複寫網站都需要個別的磁片區。 如需詳細資訊，請參閱 [設定 Azure NetApp Files 基礎結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel#set-up-the-azure-netapp-files-infrastructure)。
+部署檔案系統的 ANF 磁片區 `/hana/shared` 。 `/hana/shared`每個 HANA 系統複寫網站都需要個別的磁片區。 如需詳細資訊，請參閱 [設定 Azure NetApp Files 基礎結構](./sap-hana-scale-out-standby-netapp-files-rhel.md#set-up-the-azure-netapp-files-infrastructure)。
 
 在此範例中，使用下列 Azure NetApp Files 磁片區： 
 
@@ -1160,7 +1160,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       ```
 
 
-建議您在 [Azure vm 上的 Azure vm 上，針對 SAP Hana 的 HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)執行測試，以徹底測試 SAP Hana 叢集設定。
+建議您在 [Azure vm 上的 Azure vm 上，針對 SAP Hana 的 HA](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)執行測試，以徹底測試 SAP Hana 叢集設定。
 
 
 ## <a name="next-steps"></a>後續步驟

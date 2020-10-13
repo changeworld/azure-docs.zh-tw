@@ -8,16 +8,16 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320467"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950019"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>透過信任的服務例外狀況安全地存取儲存體帳戶中的資料
 
-存取儲存體帳戶中資料的索引子可以利用 [受信任的服務例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) 狀況功能來安全地存取資料。 這項機制提供的客戶無法透過 [IP 防火牆規則來授與索引子存取](search-indexer-howto-access-ip-restricted.md) 存取儲存體帳戶中資料的簡單、安全且免費的替代方案。
+存取儲存體帳戶中資料的索引子可以利用 [受信任的服務例外](../storage/common/storage-network-security.md#exceptions) 狀況功能來安全地存取資料。 這項機制提供的客戶無法透過 [IP 防火牆規則來授與索引子存取](search-indexer-howto-access-ip-restricted.md) 存取儲存體帳戶中資料的簡單、安全且免費的替代方案。
 
 > [!NOTE]
 > 支援透過受信任的服務例外狀況存取儲存體帳戶中的資料，僅限於 Azure Blob 儲存體和 Azure Data Lake Gen2 儲存體。 不支援 Azure 表格儲存體。

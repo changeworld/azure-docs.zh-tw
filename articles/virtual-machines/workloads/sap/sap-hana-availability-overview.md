@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 691b7c2890d29d390abbe8151fe66dbd99c5bc60
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653540"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978181"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虛擬機器的 SAP Hana 高可用性
 
 您可以使用許多 Azure 功能，在 Azure 虛擬機器上部署像是 SAP Hana 的任務關鍵性資料庫。 本文提供的指引會引導您達成 Azure 虛擬機器中裝載之 SAP Hana 執行個體的可用性。 本文說明可以使用 Azure 基礎結構實作以提高 Azure 中 SAP Hana 可用性的幾個案例。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉 Azure 上的基礎結構即服務 (IaaS) 基本知識，包括： 
 
@@ -52,7 +52,7 @@ ms.locfileid: "88653540"
 - [SAP Hana 服務自動重新開機](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [設定 SAP Hana 系統複寫](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-除了熟悉在 Azure 中部署虛擬機器之外，在您於 Azure 中定義可用性架構之前，我們建議您閱讀[在 Azure 中管理 Windows 虛擬機器的可用性](../../windows/manage-availability.md)。
+除了熟悉在 Azure 中部署虛擬機器之外，在您於 Azure 中定義可用性架構之前，我們建議您閱讀[在 Azure 中管理 Windows 虛擬機器的可用性](../../manage-availability.md)。
 
 ## <a name="service-level-agreements-for-azure-components"></a>適用於 Azure 元件的服務等級協定
 
@@ -66,7 +66,7 @@ Azure 對不同的元件 (例如網路、儲存體和虛擬機器) 有不同的�
 
 針對 Azure 元件可以提供的 SLA 測量您的可用性需求。 然後，針對 SAP Hana 選擇您的案例，以達到所需的可用性層級。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解[單一 Azure 區域中的 SAP Hana 可用性](./sap-hana-availability-one-region.md)。
 - 深入了解[跨 Azure 區域的 SAP Hana 可用性](./sap-hana-availability-across-regions.md)。 
@@ -85,4 +85,3 @@ Azure 對不同的元件 (例如網路、儲存體和虛擬機器) 有不同的�
 
 
 
-  

@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450700"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950307"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>使用 Azure 資料箱保留檔案 Acl、屬性和時間戳記
 
-Azure 資料箱可讓您在將資料傳送至 Azure 時，保留 (Acl) 、時間戳記和檔案屬性的存取控制清單。 本文說明當您透過伺服器訊息區 (SMB) 將資料複製到資料箱，以將其上傳到 Azure 檔案儲存體時，可傳送的中繼資料。 提供使用 Windows 和 Linux data copy 工具複製中繼資料的特定步驟。
+Azure 資料箱可讓您在將資料傳送至 Azure 時，保留 (Acl) 、時間戳記和檔案屬性的存取控制清單。 本文說明當您透過伺服器訊息區 (SMB) 將資料複製到資料箱，以將其上傳到 Azure 檔案儲存體時，可傳送的中繼資料。 
+
+提供使用 Windows 和 Linux data copy 工具複製中繼資料的特定步驟。 將資料傳輸至 blob 儲存體時，不會保留中繼資料。
 
 在本文中，傳輸的 Acl、時間戳記和檔案屬性統稱為 *中繼資料*。
 

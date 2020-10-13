@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd4c95c3c02f4b4a807b5238aa61e76ecb56e3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bbc17bc3dfff4a9cc3d90386b4cae62611e4b15
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716413"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965840"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上的 Azure Active Directory 憑證式驗證
 
@@ -33,7 +33,7 @@ ms.locfileid: "88716413"
 
 ## <a name="microsoft-mobile-applications-support"></a>Microsoft 行動應用程式支援
 
-| [App] | 支援 |
+| 應用程式 | 支援 |
 | --- | --- |
 | Azure 資訊保護應用程式 |![核取記號表示此應用程式的支援][1] |
 | Intune 公司入口網站 |![核取記號表示此應用程式的支援][1] |
@@ -75,7 +75,7 @@ ADFS 權杖必須要有下列宣告，Azure Active Directory 才能撤銷用戶�
 
 支援 Android 5.0 (Lollipop) 或更新版本上的某些 Exchange ActiveSync 應用程式。 若要判斷電子郵件應用程式是否支援這項功能，請連絡您的應用程式開發人員。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要在環境中設定憑證式驗證，相關指示請參閱[在 Android 上開始使用憑證式驗證](active-directory-certificate-based-authentication-get-started.md)。
 

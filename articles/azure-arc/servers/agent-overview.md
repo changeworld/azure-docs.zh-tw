@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822190"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979150"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -85,6 +85,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureResourceManager
 * AzureArcInfrastructure
 
 URL：
@@ -94,10 +95,15 @@ URL：
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
-|`agentserviceapi.azure-automation.net`|來賓組態|
-|`*-agentservice-prod-1.azure-automation.net`|來賓組態|
 |`*.guestconfiguration.azure.com` |來賓組態|
 |`*.his.arc.azure.com`|混合式識別服務|
+
+ (0.11 版和更) 低版本的預覽代理程式也需要存取下列 Url：
+
+| 代理程式資源 | 描述 |
+|---------|---------|
+|`agentserviceapi.azure-automation.net`|來賓組態|
+|`*-agentservice-prod-1.azure-automation.net`|來賓組態|
 
 如需每個服務標籤/區域的 IP 位址清單，請參閱 JSON 檔案 - [Azure IP 範圍和服務標籤 – 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 會發佈每週更新，其中包含每個 Azure 服務和其使用的 IP 範圍。 如需詳細資訊，請參閱[服務標籤](../../virtual-network/security-overview.md#service-tags)。
 

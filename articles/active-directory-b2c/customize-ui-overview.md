@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259538"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949287"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -178,7 +178,6 @@ Azure AD B2C 在客戶的瀏覽器中執行程式碼時，會使用稱為「 [�
 
 * Azure AD B2C 中的公司商標目前僅限 **背景影像**、 **橫幅標誌**和 **背景色彩** 自訂。 公司商標窗格中的其他屬性（例如，在 [ **Advanced settings**] 中）則 *不受支援*。
 * 在您的使用者流程頁面中，背景色彩會在載入背景影像之前顯示。 我們建議您選擇與背景影像中的色彩緊密相符的背景色彩，以提供更流暢的載入體驗。
-* 橫幅標誌會顯示在使用者起始註冊使用者流程時傳送給使用者的驗證電子郵件中。
 
 ### <a name="enable-branding-in-user-flow-pages"></a>在使用者流程頁面中啟用商標
 
@@ -189,7 +188,7 @@ Azure AD B2C 在客戶的瀏覽器中執行程式碼時，會使用稱為「 [�
 1. 選取您要啟用公司商標的使用者流程。 標準登*入*和標準*設定檔編輯*使用者流程類型**不支援**公司商標。
 1. 在 [ **自訂**] 底下，選取 [ **頁面配置**]，然後選取您想要品牌的版面配置。 例如，選取 [ **統一註冊或登入] 頁面**。
 1. 針對 ** (Preview) 的頁面配置版本 **，請選擇 [版本 **1.2.0** ] 或更新版本。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 如果您想要在使用者流程中設定所有頁面的品牌，請在使用者流程中設定每個頁面配置的頁面配置版本。
 
