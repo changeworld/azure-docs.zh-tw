@@ -9,10 +9,10 @@ ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
 ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532319"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 裝置佈建服務 SDK 管理裝置註冊

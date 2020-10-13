@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267729"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 監視 .NET 的媒體服務作業通知
@@ -45,7 +45,7 @@ ms.locfileid: "89267729"
 
 您可以在[這裡](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) \(英文\) 找到各種媒體服務 .NET Azure Functions 的定義 (包括本文所示的定義)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需要有下列項目，才能完成教學課程：
 
@@ -64,7 +64,7 @@ ms.locfileid: "89267729"
 
 [應用程式設定](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)區段會定義用於本文所定義之 Webhook 的參數。 另外，請將下列參數新增至應用程式設定。 
 
-|Name|定義|範例| 
+|名稱|定義|範例| 
 |---|---|---|
 |SigningKey |簽署金鑰。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | 一個 webhook 端點位址。 建立您的 Webhook 函式之後，您就可以從 [取得函式 URL]**** 連結複製 URL。 | HTTPs： \/ /juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =。|

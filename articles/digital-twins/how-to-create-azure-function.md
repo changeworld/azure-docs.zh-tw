@@ -8,10 +8,10 @@ ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89614084"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
@@ -38,15 +38,15 @@ ms.locfileid: "89614084"
 
 指定函數應用程式的名稱，然後選取 [ _建立_]。
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio：設定新的專案":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 選取函數應用程式 *事件方格觸發* 程式的類型，然後選取 [ _建立_]。
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio： Azure 函數專案觸發程式對話方塊":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 建立函數應用程式之後，您的 visual studio 將會在您的專案資料夾中，于 **function.cs** 檔案中填入自動填入的程式碼範例。 這個簡短的 Azure 函數用來記錄事件。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：含有範例程式碼的專案視窗":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>使用事件方格觸發程式撰寫 Azure 函數
 
@@ -160,19 +160,19 @@ namespace adtIngestFunctionSample
 > [!IMPORTANT] 
 > 發佈 Azure 函式將會在您的訂用帳戶上產生額外費用，與 Azure 數位 Twins 無關。
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio：發佈 Azure function ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 選取 **Azure** 作為發佈目標，然後選取 **[下一步]**。
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio：發佈 Azure 函式對話方塊，選取 Azure ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio： [發佈函式] 對話方塊中，選取 (Windows) 的 Azure 函數應用程式，或根據您的電腦 (Linux) ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：發佈函式對話方塊，建立新的 Azure 函數":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： [發行函數] 對話方塊、填寫欄位，然後選取 [建立]":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio：發佈函式對話方塊，從清單中選取您的函數應用程式，然後完成":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 在下列頁面上，輸入新函數應用程式的所需名稱、資源群組和其他詳細資料。
 為了讓您的函式應用程式能夠存取 Azure 數位 Twins，它必須有系統管理的身分識別，而且有權存取您的 Azure 數位 Twins 實例。
@@ -214,27 +214,27 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 在 [Azure 入口網站](https://portal.azure.com/)中，使用您稍早建立的函式應用程式名稱，在搜尋列中搜尋 _函數應用程式_ 。 從清單中選取 *函數應用程式* 。 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure 入口網站：搜尋函數應用程式":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 在 [函式應用程式] 視窗中，選取左側導覽列中的 [ _識別_ ]，以啟用受控識別。
 在 [ _系統指派_ ] 索引標籤下，將 _狀態_ 切換至開啟並 _儲存_ 。 您將會看到快顯視窗，以 _啟用系統指派的受控識別_。
 選取 _[是]_ 按鈕。 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure 入口網站：啟用系統管理的身分識別":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 您可以在通知中確認已成功向 Azure Active Directory 註冊您的函式。
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure 入口網站：通知":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 另外也請注意 [身分_識別_] 頁面上顯示的**物件識別碼**，因為它將會在下一節中使用。
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="複製要在未來使用的物件識別碼":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>使用 Azure 入口網站指派存取角色
 
 選取 [ _azure 角色指派_ ] 按鈕，以開啟 [azure 角色指派] 頁面。 然後，選取 [ _+ 新增角色指派] (預覽) _。
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure 入口網站：新增角色指派":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 在開啟的 [ _新增角色指派 (預覽]) _ 視窗中，選取
 
@@ -245,7 +245,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 選取 [ _儲存_ ] 按鈕以儲存您的詳細資料。
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure 入口網站：新增角色指派 (預覽) ":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>使用 Azure 入口網站來設定應用程式設定
 
@@ -255,7 +255,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 您可以藉由將 **_HTTPs://_** 附加至實例主機名稱來取得 ADT_INSTANCE_URL。 在 Azure 入口網站中，您可以在搜尋列中搜尋您的實例，以找到您的數位 twins 實例主機名稱。 然後，選取左側導覽列上的 _[總覽_ ] 以查看 _主機名稱_。 複製此值以建立應用程式設定。
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure 入口網站：總覽-> 複製要在 _Value_ 欄位中使用的主機名稱。":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 您現在可以依照下列步驟來建立應用程式設定：
 
@@ -263,9 +263,9 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 * 選取 _左側導覽列上的_ [設定]，以建立新的應用程式設定
 * 在 [_應用程式設定_] 索引標籤中，選取 [ _+ 新增應用程式設定_]
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 入口網站：搜尋現有的 Azure 函數":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure 入口網站：設定應用程式設定":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 在開啟的視窗中，使用從上面複製的值來建立應用程式設定。 \
 _名稱_  ： ADT_SERVICE_URL \
@@ -273,21 +273,21 @@ _值_ ： HTTPs：//{您的 azure-twins-hostname}
 
 選取 _[確定]_ 以建立應用程式設定。
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure 入口網站：加入應用程式設定。":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 您可以使用 [ _名稱_ ] 欄位下的應用程式名稱來查看您的應用程式設定。 然後，選取 [ _儲存_ ] 按鈕來儲存您的應用程式設定。
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure 入口網站：查看已建立的應用程式，並重新啟動應用程式":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 應用程式設定的任何變更都需要重新開機應用程式。 選取 [ _繼續_ ] 以重新開機您的應用程式。
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure 入口網站：儲存應用程式設定":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Visual Studio：新增專案對話方塊":::
 
 您可以藉由選取 [ _通知_ ] 圖示來查看應用程式設定是否已更新。 如果未建立您的應用程式設定，您可以遵循上述程式來重試新增應用程式設定。
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure 入口網站：更新應用程式設定的通知":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio：新增專案對話方塊":::
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已遵循設定 Azure 函式以搭配 Azure 數位 Twins 使用的步驟。 接下來，您可以將 Azure 函式訂閱至事件方格，以在端點上接聽。 此端點可能是：
 * 附加至 Azure 數位 Twins 的事件方格端點，可處理來自 Azure 數位 Twins 本身的訊息 (例如屬性變更訊息、對應項圖形中 [數位 Twins](concepts-twins-graph.md) 所產生的遙測訊息，或是生命週期訊息) 

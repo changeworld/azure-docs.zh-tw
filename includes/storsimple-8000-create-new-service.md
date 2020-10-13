@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507270"
 ---
 #### <a name="to-create-a-new-service"></a>建立新服務
@@ -19,7 +19,7 @@ ms.locfileid: "87507270"
 
     ![建立 StorSimple 裝置管理員](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    搜尋 [StorSimple 實體]__。 選取並按一下 [StorSimple 實體裝置系列]****，然後按一下 [建立]****。 或者，在 Azure 入口網站按一下 []，然後在 [ **+** **儲存體**] 下，按一下 [ **StorSimple 實體裝置系列**]。
+    搜尋 [StorSimple 實體]__。 選取並按一下 [StorSimple 實體裝置系列]****，然後按一下 [建立]****。 或者，在 Azure 入口網站按一下， **+** 然後在 [ **存儲**設備] 下，按一下 [ **StorSimple 實體裝置系列**]。
 
     ![建立 StorSimple 裝置管理員](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

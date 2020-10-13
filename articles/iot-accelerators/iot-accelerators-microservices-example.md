@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9ff3e12721628e244f247e174af101e71ea91191
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998317"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自訂和重新部署微服務
@@ -30,7 +30,7 @@ ms.locfileid: "88998317"
 > * 提取新的 Docker 映像
 > * 將變更視覺化 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 為了依循本教學課程進行操作，您需要：
 

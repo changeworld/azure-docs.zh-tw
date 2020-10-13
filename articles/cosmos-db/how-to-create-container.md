@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019992"
 ---
 # <a name="create-an-azure-cosmos-container"></a>建立 Azure Cosmos 容器
@@ -53,7 +53,7 @@ ms.locfileid: "89019992"
    * 輸入要佈建的輸送量 (例如 1000 RU)。
    * 選取 [確定]  。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="適用于 MongoDB 的 Azure Cosmos DB API [新增容器] 對話方塊的螢幕擷取畫面":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="資料總管窗格的螢幕擷取畫面，其中已醒目提示新的容器":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
@@ -69,7 +69,7 @@ ms.locfileid: "89019992"
    * 輸入要佈建的輸送量 (例如 1000 RU)。
    * 選取 [確定]  。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API 中 [新增資料表] 對話方塊的螢幕擷取畫面":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="資料總管窗格的螢幕擷取畫面，其中已醒目提示新的容器":::
 
 > [!NOTE]
 > Cassandra API 的主索引鍵會作為分割區索引鍵。
@@ -89,7 +89,7 @@ ms.locfileid: "89019992"
    * 輸入要佈建的輸送量 (例如 1000 RU)。
    * 選取 [確定]  。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Gremlin API 中 [新增圖形] 對話方塊的螢幕擷取畫面":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="資料總管窗格的螢幕擷取畫面，其中已醒目提示新的容器":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>資料表 API
 
@@ -103,7 +103,7 @@ ms.locfileid: "89019992"
    * 輸入要佈建的輸送量 (例如 1000 RU)。
    * 選取 [確定]  。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="資料表 API 中 [新增資料表] 對話方塊的螢幕擷取畫面":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="資料總管窗格的螢幕擷取畫面，其中已醒目提示新的容器":::
 
 > [!Note]
 > 對於資料表 API，在您每次新增資料列時都會指定分割區索引鍵。

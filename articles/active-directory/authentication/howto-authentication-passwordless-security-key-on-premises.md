@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88cdad5b2b92d9b7449d93e1abeb09c08df89e7b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706331"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964752"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入內部部署資源) 
 
@@ -40,7 +40,7 @@ Azure AD 的 Kerberos 伺服器物件會建立在您的內部部署 Active Direc
 1. 用戶端電腦會連線到內部部署 AD 網域控制站，並為完整格式的 TGT 交易部分 TGT。
 1. 用戶端電腦現在有 Azure AD PRT 和完整 Active Directory TGT，而且可以存取雲端和內部部署資源。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 組織必須完成這些步驟，才能在完成本文中的步驟之前，先將 [無密碼安全性金鑰登入 Windows 10 裝置 (preview) ](howto-authentication-passwordless-security-key.md) 。
 

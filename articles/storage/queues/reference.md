@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
 ms.openlocfilehash: 5544a6985ca357688b2585fa29c6dc63546c3e8c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90014951"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure 佇列儲存體參考
@@ -23,7 +23,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 佇列儲存體 .NET Api 的參考與範例檔。
 
-|  版本  | 參考文件 | 套件 | 快速入門 |
+|  版本  | 參考文件 | Package | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure。佇列命名空間](/dotnet/api/azure.storage.queues) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12](/azure/storage/queues/storage-quickstart-queues-dotnet) |
 | 11. x | [Node.js 命名空間](/dotnet/api/microsoft.azure.storage.queue) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列](/azure/storage/queues/storage-quickstart-queues-dotnet-legacy) |
@@ -32,7 +32,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 儲存體管理 .NET Api 的參考檔。
 
-|  版本  | 參考文件 | 套件 |
+|  版本  | 參考文件 | Package |
 | :-------: | ----------------------- | ------- |
 | 16. x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
 
@@ -40,7 +40,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 儲存體資料移動 .NET Api 的參考檔。
 
-|  版本  | 參考文件 | 套件 |
+|  版本  | 參考文件 | Package |
 | :-------: | ----------------------- | ------- |
 | 1.x | [資料移動](/dotnet/api/microsoft.azure.storage.datamovement) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) |
 
@@ -48,7 +48,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 佇列儲存體 JAVA Api 的參考與範例檔。
 
-|  版本  | 參考文件 | 套件 | 快速入門 |
+|  版本  | 參考文件 | Package | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [適用于 JAVA 的 Azure 儲存體佇列用戶端程式庫](/java/api/overview/azure/storage-queue-readme) | [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) \(英文\) | [快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12](/azure/storage/queues/storage-quickstart-queues-java) |
 | 8.x | [.com. azure。](/java/api/com.microsoft.azure.storage.queue) | [套件 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) \(英文\) | [快速入門：使用 JAVA v8 SDK 來管理 blob](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
@@ -57,7 +57,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 儲存體管理 JAVA Api 的參考檔。
 
-|  版本  | 參考文件 | 套件 |
+|  版本  | 參考文件 | Package |
 | :-------: | ----------------------- | ------- |
 | 0.9. x | [.com. azure. 管理儲存體](/java/api/overview/azure/storage/management) | [套件 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-svc-mgmt-storage) \(英文\) |
 
@@ -65,7 +65,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 佇列儲存體 Python Api 的參考與範例檔。
 
-|  版本  | 參考文件 | 套件 | 快速入門 |
+|  版本  | 參考文件 | Package | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Azure 儲存體適用于 Python 的用戶端程式庫 v12](/azure/developer/python/sdk/storage/overview) | [封裝 (PyPI) ](https://pypi.org/project/azure-storage-queue/) | [快速入門：適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12](/azure/storage/queues/storage-quickstart-queues-python) |
 | 2.x | [適用于 Python 的 Azure 儲存體用戶端程式庫 v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [封裝 (PyPI) ](https://pypi.org/project/azure-storage-queue/2.1.0/) | [如何從 Python 使用 Azure 佇列儲存體 v2.1](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
@@ -74,7 +74,7 @@ ms.locfileid: "90014951"
 
 下表列出 Azure 佇列儲存體 JavaScript Api 的參考與範例檔。
 
-|  版本  | 參考文件 | 套件 | 快速入門 |
+|  版本  | 參考文件 | Package | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [適用于 JavaScript 的 Azure 儲存體佇列用戶端程式庫](/javascript/api/overview/azure/storage-queue-readme) | [套件 (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [快速入門：適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12](/azure/storage/queues/storage-quickstart-queues-nodejs) |
 | 10.x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [套件 (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [使用 Azure 佇列服務來建立和刪除 Node.js的佇列 ](/azure/storage/queues/storage-nodejs-how-to-use-queues) |

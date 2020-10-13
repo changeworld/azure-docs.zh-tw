@@ -14,10 +14,10 @@ ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b02b8f3b94d191c7439aadf5a56ec0e2a1c38e28
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88782493"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>針對 Privileged Identity Management 的問題進行疑難排解
@@ -34,7 +34,7 @@ ms.locfileid: "88782493"
 
 當 PIM 服務主體的使用者存取系統管理員角色意外從訂用帳戶中移除時，就會發生此問題。 若要讓 Privileged Identity Management 服務能夠存取 Azure 資源，應一律透過 Azure 訂用帳戶將「 [使用者存取系統管理員」角色](../../role-based-access-control/built-in-roles.md#user-access-administrator) 指派給「MS PIM 服務主體」。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 將使用者存取系統管理員角色指派給訂用帳戶層級 (MS – PIM) 的特殊許可權身分識別管理服務主體名稱。 此指派應允許特殊許可權身分識別管理服務存取 Azure 資源。 您可以根據您的需求，在管理群組層級或訂用帳戶層級上指派角色。 如需服務主體的詳細資訊，請參閱 [將應用程式指派給角色](../develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)。
 

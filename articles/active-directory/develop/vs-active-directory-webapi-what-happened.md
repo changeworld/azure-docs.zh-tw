@@ -1,6 +1,6 @@
 ---
 title: 連接到 Azure AD 時對 WebAPI 專案所做的變更
-description: 說明當您使用 Visual Studio 連接到 Azure AD 時，WebAPI 專案會發生什麼事
+description: 描述當您使用 Visual Studio 連接到 Azure AD 時，WebAPI 專案會發生什麼事
 author: ghogen
 manager: jillfra
 ms.workload: azure-vs
@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: a070bee7a9fa836eeac7c739cf2757295533ad7f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165357"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 專案 (Visual Studio Azure Active Directory 連線服務) 發生什麼狀況

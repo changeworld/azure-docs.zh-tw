@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053543"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 服務的系統管理員角色
@@ -29,23 +29,23 @@ ms.locfileid: "90053543"
 
 Microsoft 365 服務 | 角色內容 | API 內容
 ---------------------- | ------------------ | -----------------
-Office 365 與 Microsoft 365 商務計劃中的管理員角色 | [Microsoft 365 系統管理員角色](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 尚未提供
+Office 365 與 Microsoft 365 商務計劃中的管理員角色 | [Microsoft 365 系統管理員角色](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 無法使用
 Azure Active Directory (Azure AD) 與 Azure AD Identity Protection| [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [交換角色型存取控制](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[擷取角色指派](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 SharePoint Online | [Azure AD 管理員角色](directory-assign-admin-roles.md)<br>以及 [Microsoft 365 中的 SharePoint 管理員角色](/sharepoint/sharepoint-admin-role) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
 小組/商務用 Skype | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
 安全性與合規性中心 (Office 365 進階威脅防護、Exchange Online Protection、Information Protection) | [Office 365 系統管理角色](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[擷取角色指派](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 安全分數 | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
-合規性管理員 | [合規性管理員角色](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 尚未提供
+合規性管理員 | [合規性管理員角色](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 無法使用
 Azure 資訊保護 | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Microsoft Cloud App Security | [角色型存取控制](/cloud-app-security/manage-admins) | [API 參考](/cloud-app-security/api-tokens) 
-Azure 進階威脅防護 | [Azure ATP 角色群組](/azure-advanced-threat-protection/atp-role-groups) | 尚未提供
-Windows Defender 進階威脅防護 | [Windows Defender ATP 角色型存取控制](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 尚未提供
+Azure 進階威脅防護 | [Azure ATP 角色群組](/azure-advanced-threat-protection/atp-role-groups) | 無法使用
+Windows Defender 進階威脅防護 | [Windows Defender ATP 角色型存取控制](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 無法使用
 Privileged Identity Management | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Intune | [Intune 角色型存取控制](/intune/role-based-access-control) | [圖形 API](/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[擷取角色指派](/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
 受控桌面 | [Azure AD 管理員角色](directory-assign-admin-roles.md) | [圖形 API](/graph/api/overview?view=graph-rest-1.0)<br>[擷取角色指派](/graph/api/directoryrole-list?view=graph-rest-1.0)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [如何指派或移除 Azure AD 系統管理員角色](directory-manage-roles-portal.md)
 * [Azure AD 系統管理員角色參考](directory-assign-admin-roles.md)

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053271"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安裝和設定 StorSimple Adapter for SharePoint
@@ -238,7 +238,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 2. 按兩下 StorSimple Adapter for SharePoint。 安裝精靈隨即啟動。
    
     ![安裝精靈](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 按 [下一步] 。 下列頁面隨即出現。
+3. 按一下 [下一步]。 下列頁面隨即出現。
    
     ![安裝精靈移除頁面](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. 按一下 [移除]**** 選取移除程序。 下列頁面隨即出現。
@@ -253,7 +253,7 @@ StorSimple 裝置是一種區塊裝置，因此需要可裝載資料的檔案伺
 1. 開啟 [控制台]，然後按一下 [程式和功能]****。
 2. 選取 [StorSimple Adapter for SharePoint]****，然後按一下 [解除安裝]****。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [深入了解 StorSimple](storsimple-overview.md)。
 
 <!--Reference links-->

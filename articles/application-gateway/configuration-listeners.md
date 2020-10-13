@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: ef2ff8924cd8a92c5d2d2e5dd9da6bb74fad1a14
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652864"
 ---
 # <a name="application-gateway-listener-configuration"></a>應用程式閘道接聽程式設定
@@ -93,6 +93,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 建立接聽程式之後，您可以將它與要求路由規則產生關聯。 該規則會決定如何將接聽程式接收到的要求路由至後端。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解要求路由規則](configuration-request-routing-rules.md)。

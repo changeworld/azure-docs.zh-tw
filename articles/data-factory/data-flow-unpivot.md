@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
 ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823587"
 ---
 # <a name="unpivot-transformation-in-mapping-data-flow"></a>對應資料流程中的 Unpivot 轉換
@@ -54,6 +54,6 @@ ms.locfileid: "91823587"
 
 最終之取消樞紐的資料結果集所顯示的資料行總計，現已取消樞紐為個別的資料列值。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 [pivot 轉換](data-flow-pivot.md) 將資料列樞紐分析表資料行。

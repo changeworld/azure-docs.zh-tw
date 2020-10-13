@@ -1,13 +1,13 @@
 ---
 title: Azure 服務匯流排重複訊息偵測 | Microsoft 文件
-description: 本文說明如何偵測 Azure 服務匯流排訊息中的重複專案。 可以忽略和捨棄重複的訊息。
+description: 本文說明如何偵測 Azure 服務匯流排訊息中的重複專案。 您可以忽略和捨棄重複的訊息。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083883"
 ---
 # <a name="duplicate-detection"></a>重複偵測
@@ -27,13 +27,13 @@ ms.locfileid: "87083883"
 *MessageId* 永遠都可以是某個 GUID，不過將識別碼錨定在商務程序中會產生可預測的重複性，這是有效運用重複偵測功能不可或缺的一環。
 
 > [!NOTE]
-> 如果已啟用重複偵測，而且未設定會話識別碼或分割區索引鍵，則會使用訊息識別碼做為分割區索引鍵。 如果訊息識別碼也未設定，則 .NET 和 AMQP 程式庫會自動產生訊息的訊息識別碼。 如需詳細資訊，請參閱[使用資料分割索引鍵](service-bus-partitioning.md#use-of-partition-keys)。
+> 如果重複偵測已啟用，且未設定會話識別碼或分割區索引鍵，則會使用訊息識別碼作為分割區索引鍵。 如果訊息識別碼也未設定，則 .NET 和 AMQP 程式庫會自動產生訊息的訊息識別碼。 如需詳細資訊，請參閱 [使用分割](service-bus-partitioning.md#use-of-partition-keys)區索引鍵。
 
 ## <a name="enable-duplicate-detection"></a>啟用重複偵測
 
 在入口網站中，於建立實體時勾選 [啟用重複偵測]**** 核取方塊可開啟該功能 (預設為關閉)。 建立新主題的設定也是如此。
 
-![[建立佇列] 對話方塊的螢幕擷取畫面，其中已選取 [啟用重複偵測] 選項，並以紅色概述。][1]
+![[建立佇列] 對話方塊的螢幕擷取畫面，其中已選取 [啟用重複偵測] 選項，並以紅色框住。][1]
 
 > [!IMPORTANT]
 > 您無法在已建立佇列之後啟用/停用重複偵測。 您只能在佇列建立期間這麼做。 
@@ -42,7 +42,7 @@ ms.locfileid: "87083883"
 
 佇列和主題的重複偵測時間記錄預設為 30 秒，最大值為七天。 您可以在 Azure 入口網站的佇列和主題屬性視窗中變更這項設定。
 
-![已反白顯示 [屬性] 設定的 [服務匯流排] 功能的螢幕擷取畫面，而 [重複偵測記錄] 選項則以紅色概述。][2]
+![服務匯流排功能的螢幕擷取畫面，其中已醒目提示 [屬性] 設定，且 [重複偵測歷程記錄] 選項以紅色標示。][2]
 
 從程式設計方面來說，您可以使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 屬性搭配完整的 .NET Framework API，設定保留訊息識別碼之重複偵測時間範圍的大小。 透過 Azure Resource Manager API，您可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 屬性設定值。
 
@@ -50,7 +50,7 @@ ms.locfileid: "87083883"
 
 維持較短的時間範圍，意味著要保留及比對的訊息識別碼比較少，對輸送量的影響也比較小。 對於需要重複偵測的高輸送量實體，您應盡可能縮短時間範圍。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解服務匯流排傳訊，請參閱下列主題：
 
@@ -58,7 +58,7 @@ ms.locfileid: "87083883"
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服務匯流排主題和訂用帳戶](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-在用戶端程式代碼無法使用與之前相同的*MessageId*重新提交訊息的案例中，請務必設計可安全重新處理的訊息。 這[篇關於等冪的文章](https://particular.net/blog/what-does-idempotent-mean)會說明如何執行這方面的各種技術。
+在用戶端程式代碼無法以與之前相同的 *MessageId* 重新提交訊息的情況下，請務必設計可以安全地重新處理的訊息。 這篇 [有關等冪的 blog 文章](https://particular.net/blog/what-does-idempotent-mean) 會說明如何進行的各種技術。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

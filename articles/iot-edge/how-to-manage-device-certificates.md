@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669037"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 裝置上的憑證
 
-所有 IoT Edge 裝置都會使用憑證，在執行時間與裝置上執行的任何模組之間建立安全的連線。 作為閘道運作的 IoT Edge 裝置也會使用這些相同的憑證來連線至其下游裝置。
+所有 IoT Edge 裝置都會使用憑證在執行階段和執行於裝置的任何模組之間，建立安全的連線。 作為閘道運作的 IoT Edge 裝置也會使用這些相同的憑證來連線至其下游裝置。
 
 ## <a name="install-production-certificates"></a>安裝生產憑證
 
@@ -57,7 +57,7 @@ ms.locfileid: "89669037"
 
 在 IoT Edge 裝置上安裝您的憑證鏈，並將 IoT Edge 執行時間設定為參考新的憑證。
 
-例如，如果您使用範例腳本來 [建立示範憑證](how-to-create-test-certificates.md)，請將下列檔案複製到您的 IoT Edge 裝置：
+例如，如果您使用範例腳本來 [建立示範憑證](how-to-create-test-certificates.md)，請將下列檔案複製到您的 IoT-Edge 裝置：
 
 * 裝置 CA 憑證： `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * 裝置 CA 私密金鑰： `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -165,6 +165,6 @@ certificates:
 
    檢查「 **生產環境就緒：憑證** 」檢查的輸出，其中會列出自動產生的裝置 CA 憑證到期之前的天數。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在生產環境中部署解決方案之前，將憑證安裝在 IoT Edge 裝置上是必要的步驟。 深入瞭解如何 [準備在生產環境中部署您的 IoT Edge 解決方案](production-checklist.md)。

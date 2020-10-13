@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
 ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307869"
 ---
 # <a name="delete-an-azure-migrate-project"></a>刪除 Azure Migrate 專案
@@ -18,7 +18,7 @@ ms.locfileid: "91307869"
 本文說明如何刪除 [Azure Migrate](./migrate-services-overview.md) 專案。
 
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 刪除專案之前：
 
@@ -51,7 +51,7 @@ ms.locfileid: "91307869"
 
 ### <a name="vmwarephysical-server"></a>VMware/實體伺服器
 
-**資源** | **型別**
+**Resource** | **型別**
 --- | ---
 "Appliancename" kv | 金鑰保存庫
 "Appliancename" 網站 | Microsoft.offazure/VMwareSites
@@ -67,7 +67,7 @@ migrateapplisbns16041 | 服務匯流排 命名空間
 
 ### <a name="hyper-v-vm"></a>Hyper-V VM 
 
-**資源** | **型別**
+**Resource** | **型別**
 --- | ---
 ProjectName | Microsoft. 遷移/migrateprojects
 "專案名稱" 專案 | Microsoft. 遷移/assessmentProjects

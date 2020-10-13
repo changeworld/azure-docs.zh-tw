@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511886"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector 整合起來
@@ -39,7 +39,7 @@ Hive Warehouse Connector 所支援的部分作業如下：
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector 設定
 
 > [!IMPORTANT]
-> 在 Spark 2.4 企業安全性套件叢集上安裝的 HiveServer2 互動式實例，不支援與 Hive 倉儲連接器搭配使用。 相反地，您必須設定個別的 HiveServer2 互動式叢集，以裝載 HiveServer2 的互動式工作負載。 不支援利用單一 Spark 2.4 叢集的 Hive 倉儲連接器設定。
+> 在 Spark 2.4 企業安全性套件叢集上安裝的 HiveServer2 互動式實例不支援與 Hive Warehouse Connector 搭配使用。 相反地，您必須設定個別的 HiveServer2 互動式叢集，以裝載 HiveServer2 的互動式工作負載。 不支援利用單一 Spark 2.4 叢集的 Hive Warehouse Connector 設定。
 
 Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準備不同叢集。 請遵循下列步驟，在 Azure HDInsight 中設定這些叢集。
 
@@ -98,11 +98,11 @@ Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準�
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    * 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的互動式查詢叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 在其上執行之前端節點的完整功能變數名稱（FQDN），如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
+    * 從網頁瀏覽器中，流覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` CLUSTERNAME 是 Interactive Query 叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 執行所在前端節點的完整功能變數名稱 (FQDN) ，如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
 
         ![hive 倉儲連接器前端節點](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
-    * 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的互動式查詢叢集。 尋找檔案 `default_realm` 中的參數 `/etc/krb5.conf` 。 `<AAD-DOMAIN>`以這個值取代為大寫字串，否則找不到認證。
+    * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md) 連線到您的 Interactive Query 叢集。 在檔案 `default_realm` 中尋找參數 `/etc/krb5.conf` 。 以 `<AAD-DOMAIN>` 這個值取代為大寫字串，否則找不到認證。
 
         ![hive 倉儲連接器 AAD 網域](./media/apache-hive-warehouse-connector/aad-domain.png)
 

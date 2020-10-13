@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: duau
 ms.openlocfilehash: f13e3c03c0cfd747c7819d95a5fb98560db861c4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398064"
 ---
 # <a name="cross-network-connectivity"></a>跨網路連線能力
@@ -112,7 +112,7 @@ ExpressRoute Global 觸及提供連線到不同 ExpressRoute 線路的內部部�
 
 ![全球接觸之後的 Fabrikam ExpressRoute 路由表]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 VNet 和 VNet 對等互連的任何進一步問題，請參閱 [虛擬網路常見問題][VNet-FAQ]。 如需 ExpressRoute 和虛擬網路連線能力的任何進一步問題，請參閱 [EXPRESSROUTE 常見問題][ER-FAQ] 。
 

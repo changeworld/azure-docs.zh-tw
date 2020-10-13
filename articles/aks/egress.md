@@ -1,33 +1,33 @@
 ---
-title: 將靜態 IP 用於輸出流量
+title: 使用靜態 IP 進行輸出流量
 titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，建立和使用適用於輸出流量的靜態公用 IP 位址
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563240"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中，針對具有*基本*SKU 負載平衡器的輸出流量使用靜態公用 IP 位址) 
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用靜態公用 IP 位址，透過 Azure Kubernetes Service (AKS 中的 *基本* SKU 負載平衡器輸出流量) 
 
-根據預設，來自 Azure Kubernetes Service (AKS) 叢集的輸出 IP 位址會隨機指派。 例如，當您需要識別 IP 位址以存取外部服務時，這個設定並不理想。 相反地，您可能需要指派靜態 IP 位址，以新增至允許清單以進行服務存取。
+根據預設，來自 Azure Kubernetes Service (AKS) 叢集的輸出 IP 位址會隨機指派。 例如，當您需要識別 IP 位址以存取外部服務時，這個設定並不理想。 相反地，您可能需要指派靜態 IP 位址，以便加入服務存取的允許清單中。
 
 此文章示範如何在 AKS 叢集中，建立和使用靜態公用 IP 位址來與輸出流量搭配使用。
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文假設您使用的是 Azure 基本 Load Balancer。  我們建議使用[Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md)，而且您可以使用更多的先進功能來[控制 AKS 輸出流量](./limit-egress-traffic.md)。
+本文假設您使用的是 Azure 基本 Load Balancer。  我們建議使用 [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md)，而且您可以使用更高階的功能來 [控制 AKS 輸出流量](./limit-egress-traffic.md)。
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 > [!IMPORTANT]
-> 本文使用*基本*SKU 負載平衡器搭配單一節點集區。 此設定不適用於多個節點集區，因為有多個節點集區不支援*基本*SKU 負載平衡器。 如需使用*標準*SKU 負載平衡器的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS 中使用公用 Standard Load Balancer) ][slb] 。
+> 本文使用 *基本* SKU 負載平衡器搭配單一節點集區。 因為多個節點集區不支援 *基本* SKU 負載平衡器，所以無法在多個節點集區中使用此設定。 如需使用*標準*SKU 負載平衡器的詳細資訊，請參閱[AZURE KUBERNETES SERVICE () AKS 中的使用公用 Standard Load Balancer][slb] 。
 
 ## <a name="egress-traffic-overview"></a>輸出流量概觀
 
@@ -98,7 +98,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-此服務會在 Azure Load Balancer 上設定新的前端 IP。 如果您未設定任何其他 IP，則**所有**輸出流量現在都應該會使用此位址。 在 Azure Load Balancer 上設定多個位址時，這些公用 IP 位址中的任何一個都是輸出流程的候選項，而且會隨機選取一個。
+此服務會在 Azure Load Balancer 上設定新的前端 IP。 如果您未設定任何其他 IP，則**所有**輸出流量現在都應該會使用此位址。 當 Azure Load Balancer 上設定多個位址時，這些公用 IP 位址中的任何一個都是輸出流程的候選項，而且會隨機選取其中一個位址。
 
 ## <a name="verify-egress-address"></a>確認輸出位址
 

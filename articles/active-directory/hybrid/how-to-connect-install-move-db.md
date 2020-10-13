@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94710e99fa7d04d757f2ad5fd7b2d3f6e01371d1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306336"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>將 Azure AD Connect 資料庫從 SQL Server Express 移至 SQL Server 
@@ -60,7 +60,7 @@ ms.locfileid: "91306336"
     ![已選取 [建立新的 D 帳戶] 的 [A D 樹系帳戶] 快顯對話方塊螢幕擷取畫面。](./media/how-to-connect-install-move-db/db7.png)
  
 
-16. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]  。
+16. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按一下 [下一步]。
     ![在輸入帳號憑證之後顯示 [連線您的目錄] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-move-db/db8.png)
  
 

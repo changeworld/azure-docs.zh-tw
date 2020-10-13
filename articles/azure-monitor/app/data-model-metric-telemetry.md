@@ -1,14 +1,14 @@
 ---
-title: 度量遙測資料模型-Azure 應用程式深入解析
+title: 度量遙測資料模型-Azure 應用程式見解
 description: 計量遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320573"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>計量遙測：Application Insights 資料模型
@@ -21,7 +21,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 代表系統和程序計數器的計量︰
 
-| **.NET 名稱**             | **平台無從驗證的名稱** | **REST API 名稱** | **說明**
+| **.NET 名稱**             | **平台無從驗證的名稱** | **REST API 名稱** | **描述**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 進行中... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | 電腦 CPU 總數
 | `\Memory\Available Bytes`                 | 進行中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 顯示在電腦上執行的程序可用的實體記憶體數量 (以位元組為單位)。 其計算方式為加總填零、可用和待命記憶體清單上的空間數量。 可用記憶體可供立即使用；填零記憶體由填滿零的記憶體分頁所組成，以免後續程序看見前一個程序所用的資料；待命記憶體是已從程序的工作集 (其實體記憶體) 移除並傳送到磁碟，但仍可供使用回收的記憶體。 請參閱[記憶體物件](/previous-versions/ms804008(v=msdn.10))
@@ -41,7 +41,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 度量的單一值。 個別彙總度量的總和。
 
-## <a name="count"></a>計數
+## <a name="count"></a>Count
 
 彙總計量的計量權數。 不應該為度量設定。
 
@@ -53,7 +53,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 彙總計量的最大值。 不應該為度量設定。
 
-## <a name="standard-deviation"></a>標準差
+## <a name="standard-deviation"></a>Standard deviation
 
 彙總計量的標準差。 不應該為度量設定。
 
@@ -63,7 +63,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何使用[自訂事件和計量的 Application Insights API](./api-custom-events-metrics.md#trackmetric)。
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。

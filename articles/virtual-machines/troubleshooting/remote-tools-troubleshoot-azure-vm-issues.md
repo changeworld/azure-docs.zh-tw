@@ -1,6 +1,6 @@
 ---
 title: 使用遠端工具對 Azure VM 問題進行疑難排解 | Microsoft Docs
-description: 瞭解您可以用來針對遠端 Azure VM 問題進行疑難排解，而不使用 RDP 的 PsExec、PowerShell 腳本和其他遠端工具。
+description: 瞭解您可以用來對遠端 Azure VM 問題進行疑難排解的 PsExec、PowerShell 腳本和其他遠端工具，而不需要使用 RDP。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509081"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用遠端工具對 Azure VM 問題進行疑難排解
 
-當您針對 Azure 虛擬機器（VM）上的問題進行疑難排解時，您可以使用本文中討論的遠端工具來連線到 VM，而不是使用遠端桌面通訊協定（RDP）。
+當您針對 Azure 虛擬機器 (VM) 的問題進行疑難排解時，您可以使用本文討論的遠端工具來連線至 VM，而不是使用遠端桌面通訊協定 (RDP) 。
 
 ## <a name="serial-console"></a>序列主控台
 
-使用[適用于 Azure 虛擬機器的序列主控台](serial-console-windows.md)，在遠端 Azure VM 上執行命令。
+使用 [適用于 Azure 虛擬機器的序列主控台](serial-console-windows.md) ，在遠端 Azure VM 上執行命令。
 
 ## <a name="remote-cmd"></a>遠端 CMD
 
@@ -38,28 +38,28 @@ psexec \\<computer>-u user -s cmd
 ```
 
 >[!NOTE]
->* 此命令必須在相同虛擬網路中的電腦上執行。
+>* 命令必須在相同虛擬網路中的電腦上執行。
 >* 可以使用 DIP 或主機名稱取代 \<computer>。
 >* -s 參數可確保使用系統帳戶 (系統管理員權限) 來叫用命令。
 >* PsExec 會使用 TCP 連接埠 135 和 445。 因此，您必須在防火牆上開啟這兩個埠。
 
 ## <a name="run-command"></a>執行命令
 
-如需有關如何使用 [執行命令] 功能在 VM 上執行腳本的詳細資訊，請參閱[使用執行命令在 WINDOWS VM 中執行 PowerShell 腳本](../windows/run-command.md)。
+如需有關如何使用「執行命令」功能在 VM 上執行腳本的詳細資訊，請參閱 [使用 run 命令在您的 WINDOWS VM 中執行 PowerShell 腳本](../windows/run-command.md)。
 
 ## <a name="custom-script-extension"></a>自訂指令碼延伸模組
 
 您可以使用自訂指令碼擴充功能，在目標 VM 上執行自訂指令碼。 若要使用此功能，必須符合下列條件：
 
 * VM 具有連線能力。
-* Azure 虛擬機器代理程式已安裝，並在 VM 上如預期般運作。
-* 先前未在 VM 上安裝此延伸模組。
+* Azure 虛擬機器代理程式已安裝，且在 VM 上如預期般運作。
+* 此延伸模組先前未安裝在 VM 上。
  
-  延伸模組只會在第一次使用時插入腳本。 如果您稍後使用此功能，延伸模組會辨識其已使用，且不會上傳新的腳本。
+  擴充功能只會在第一次使用時插入腳本。 如果您稍後使用這項功能，擴充功能會辨識出它已在使用中，而且不會上傳新的腳本。
 
 將您的腳本上傳至儲存體帳戶，並產生它自己的容器。 然後，在能與 VM 連線的電腦上，從 Azure PowerShell 中執行下列指令碼。
 
-### <a name="for-classic-deployment-model-vms"></a>傳統部署模型 Vm
+### <a name="for-classic-deployment-model-vms"></a>針對傳統部署模型 Vm
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -125,15 +125,15 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 >[!NOTE]
 >TCP 連接埠 5986 (HTTPS) 必須開啟，您才能使用此選項。
 >
->針對 Azure Resource Manager Vm，您必須在網路安全性群組（NSG）上開啟埠5986。 如需詳細資訊，請參閱安全性群組。 
+>針對 Azure Resource Manager Vm，您必須在網路安全性群組 (NSG) 上開啟埠5986。 如需詳細資訊，請參閱安全性群組。 
 >
->針對 RDFE VM，您必須具備有私用連接埠 (5986) 和公用連接埠的端點。 然後，您也必須在 NSG 上開啟該公用埠。
+>針對 RDFE VM，您必須具備有私用連接埠 (5986) 和公用連接埠的端點。 然後，您也必須在 NSG 上開啟該公開端口。
 
 ### <a name="set-up-the-client-computer"></a>設定用戶端電腦
 
 若要使用 PowerShell 從遠端連線至 VM，首先必須設定用戶端電腦來允許連線。 若要這樣做，請執行下列命令，將 VM 新增至 PowerShell 信任的主機清單 (若適用)。
 
-若要將一個 VM 新增至信任的主機清單：
+若要將一部 VM 新增至信任的主機清單：
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
@@ -163,7 +163,7 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-針對 Azure Resource Manager Vm，請使用入口網站中的 [執行] 命令來執行 EnableRemotePS 腳本：
+針對 Azure Resource Manager Vm，請使用入口網站中的 [執行命令] 來執行 EnableRemotePS 腳本：
 
 ![執行命令](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
@@ -171,7 +171,7 @@ cmd.exe /C $command
 
 根據用戶端電腦位置執行下列命令：
 
-* 外部虛擬網路或部署
+* 在虛擬網路或部署之外
 
   * 針對使用傳統部署模型建立的 VM，請執行下列命令：
 
@@ -187,7 +187,7 @@ cmd.exe /C $command
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* 在虛擬網路或部署內部，執行下列命令：
+* 在虛擬網路或部署內，執行下列命令：
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -197,7 +197,7 @@ cmd.exe /C $command
 >[!NOTE] 
 >若設定 SkipCaCheck 旗標，您就可以在啟動工作階段時，略過將憑證匯入 VM 的要求。
 
-您也可以使用 Invoke 命令 Cmdlet，從遠端在 VM 上執行腳本。
+您也可以使用 Invoke-Command Cmdlet 從遠端在 VM 上執行腳本。
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -210,15 +210,15 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >針對 Azure Resource Manager Vm，您必須在 NSG 上開啟埠5986。 如需詳細資訊，請參閱安全性群組。 
 >
->針對 RDFE VM，您必須具備有私用連接埠 5986 和公用連接埠的端點。 您也必須在 NSG 上開啟該公用埠。
+>針對 RDFE VM，您必須具備有私用連接埠 5986 和公用連接埠的端點。 您也必須在 NSG 上開啟該公眾面向的埠。
 
-1. 從相同虛擬網路上的另一個 VM，開啟 [登錄編輯程式] （regedit.exe）。
+1. 從相同虛擬網路上的另一個 VM，開啟登錄編輯程式 ( # A0) 。
 
-2. 選取**File**  >  **[檔案] [連線網路登入]**。
+2. 選取**File**  >  **[File Connect Network Registry]**。
 
    ![登錄編輯程式](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. 在 [**輸入要選取的物件名稱**] 方塊中輸入，以依**主機名稱**或**動態 IP**尋找目標 VM （較理想）。
+3. 在 [**輸入要選取的物件名稱**] 方塊中輸入目標 VM （依**主機名稱**或**動態 IP** (慣用的) ）。
 
    ![輸入要選取的物件名稱方塊](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
@@ -233,9 +233,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >針對 Azure Resource Manager Vm，您必須在 NSG 上開啟埠5986。 如需詳細資訊，請參閱安全性群組。 
 >
->針對 RDFE VM，您必須具備有私用連接埠 5986 和公用連接埠的端點。 您也必須在 NSG 上開啟該公用埠。
+>針對 RDFE VM，您必須具備有私用連接埠 5986 和公用連接埠的端點。 您也必須在 NSG 上開啟該公眾面向的埠。
 
-1. 從相同虛擬網路上的另一個 VM，開啟**services.msc**的實例。
+1. 從相同虛擬網路上的另一個 VM，開啟 **services.msc**的實例。
 
 2. 以滑鼠右鍵按一下 [服務 (本機)\]****。
 
@@ -249,9 +249,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 5. 對服務執行任何必要的變更。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 如需有關輸入 PSSession Cmdlet 的詳細資訊，請參閱[enter-pssession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)。
-- 如需有關使用傳統部署模型的 Windows 自訂腳本擴充功能的詳細資訊，請參閱[適用于 windows 的自訂腳本擴充](../extensions/custom-script-windows.md)功能。
+- 如需 Enter-PSSession Cmdlet 的詳細資訊，請參閱 [輸入-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)。
+- 如需使用傳統部署模型的 Windows 自訂腳本擴充功能的詳細資訊，請參閱 [適用于 windows 的自訂腳本擴充](../extensions/custom-script-windows.md)功能。
 - PsExec 屬於 [PSTools 套件](https://download.sysinternals.com/files/PSTools.zip)。
-- 如需 PSTools 套件的詳細資訊，請參閱[PSTools](/sysinternals/downloads/pstools)。
+- 如需 PSTools Suite 的詳細資訊，請參閱 [PSTools](/sysinternals/downloads/pstools)。

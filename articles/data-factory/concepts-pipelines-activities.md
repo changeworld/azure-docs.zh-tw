@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562004"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管道及活動
@@ -53,7 +53,7 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 [Azure 函式](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
-[Mapreduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
+[MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop 串流](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Machine Learning 活動︰批次執行和更新資源](transform-data-using-machine-learning.md) | Azure VM
@@ -109,10 +109,10 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 Tag | 描述 | 類型 | 必要
 --- | ----------- | ---- | --------
 NAME | 管線的名稱。 指定代表管線所執行之動作的名稱。 <br/><ul><li>字元數目上限︰140</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" </li></ul> | String | 是
-description | 指定說明管線用途的文字。 | String | 否
+description | 指定說明管線用途的文字。 | 字串 | 否
 活動 | [ **活動** ] 區段內可以有一或多個已定義的活動。 如需活動 JSON 元素的詳細資料，請參閱[活動 JSON](#activity-json) 一節。 | Array | 是
 參數 | **parameters** 區段可以在管道內定義一或多個參數，讓管道變得更有彈性而可重複使用。 | 清單 | 否
-並行 | 管線可擁有的並存執行數目上限。 依預設，沒有最大值。 如果達到平行存取限制，則會將額外的管線執行排入佇列，直到之前的管線執行完成為止 | Number | 否 
+並行 | 管線可擁有的並存執行數目上限。 依預設，沒有最大值。 如果達到平行存取限制，則會將額外的管線執行排入佇列，直到之前的管線執行完成為止 | 數字 | 否 
 註解 | 與管線相關聯的標記清單 | Array | 否
 
 ## <a name="activity-json"></a>活動 JSON
@@ -187,7 +187,7 @@ JSON 名稱 | 描述 | 允許的值 | 必要
 timeout | 指定活動執行的逾時。 | Timespan | 否。 預設逾時為 7 天。
 retry | 重試次數上限 | 整數 | 否。 預設值為 0
 retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數 | 否。 預設值為30秒
-secureOutput | 當設為 true 時，活動的輸出會被視為安全的，且不會記錄以進行監視。 | Boolean | 否。 預設為 false。
+secureOutput | 當設為 true 時，活動的輸出會被視為安全的，且不會記錄以進行監視。 | Boolean | 否。 預設值為 false。
 
 ### <a name="control-activity"></a>控制活動
 控制活動具有下列最上層結構：

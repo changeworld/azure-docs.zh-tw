@@ -4,10 +4,10 @@ description: 本文說明如何使用適用于容器的 Azure 監視器來停止
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815431"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止監視您的 Azure Red Hat OpenShift v3 叢集 
@@ -126,6 +126,6 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 ProvisioningState       : Succeeded
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱 [刪除 Azure Log Analytics 工作區](../platform/delete-workspace.md)。

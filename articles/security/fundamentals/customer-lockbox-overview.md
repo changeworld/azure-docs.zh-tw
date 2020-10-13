@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure 的客戶加密箱
+title: 適用於 Microsoft Azure 的客戶加密箱
 description: Microsoft Azure 客戶加密箱的技術總覽，可在 Microsoft 可能需要存取客戶資料時，提供雲端提供者存取的控制權。
 author: TerryLanfear
 ms.service: security
@@ -9,26 +9,26 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
 ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331653"
 ---
-# <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客戶加密箱
+# <a name="customer-lockbox-for-microsoft-azure"></a>適用於 Microsoft Azure 的客戶加密箱
 
 > [!NOTE]
 > 若要使用這項功能，您的組織必須擁有具有基本**開發人員**層級的[Azure 支援方案](https://azure.microsoft.com/support/plans/)。
 
-適用于 Microsoft Azure 的客戶加密箱會提供一個介面，讓客戶可以檢查及核准或拒絕客戶資料存取要求。 當 Microsoft 工程師需要在支援要求期間存取客戶資料時，就會使用此功能。
+適用於 Microsoft Azure 的客戶加密箱會提供介面讓客戶檢閱以及核准或拒絕客戶資料的存取要求。 在 Microsoft 工程師必須於支援要求期間存取客戶資料的情況下，便會使用此功能。
 
 本文涵蓋如何起始、追蹤和儲存客戶加密箱要求，以供稍後的評論和審核之用。
 
-客戶加密箱現已正式推出，且目前已啟用對虛擬機器的遠端桌面存取。
+客戶加密箱現在已正式推出，且目前已針對虛擬機器的遠端桌面存取加以啟用。
 
 ## <a name="supported-services-and-scenarios-in-preview"></a>預覽中支援的服務和案例
 
-下列服務目前為客戶加密箱的預覽狀態：
+客戶加密箱的下列服務目前處於預覽狀態：
 
 - API 管理
 - Azure App Service
@@ -48,7 +48,7 @@ ms.locfileid: "91331653"
 - Azure SQL DB
 - Azure 訂用帳戶轉移
 - Azure Synapse Analytics
-- 虛擬機器 (現在也涵蓋記憶體傾印和受控磁片的存取權) 
+- 虛擬機器 (現在也涵蓋記憶體傾印和受控磁碟的存取)
 
 若要為您的組織啟用這些預覽供應專案的客戶加密箱，請註冊 [Azure 公開預覽客戶加密箱](https://aka.ms/customerlockbox/insiderprogram)。
 
@@ -58,17 +58,17 @@ ms.locfileid: "91331653"
 
 ### <a name="remote-desktop-access-to-virtual-machines"></a>虛擬機器的遠端桌面存取
 
-客戶加密箱目前已啟用對虛擬機器的遠端桌面存取要求。 支援下列工作負載：
-- 平臺即服務 (PaaS) -Azure 雲端服務 (web 角色和背景工作角色) 
-- 基礎結構即服務 (IaaS) -Windows 和 Linux (僅 Azure Resource Manager) 
-- 虛擬機器擴展集-Windows 和 Linux
+目前已針對虛擬機器的遠端桌面存取要求啟用客戶加密箱。 支援下列工作負載：
+- 平台即服務 (PaaS) - Azure 雲端服務 (Web 角色和背景工作角色)
+- 基礎結構即服務 (IaaS) - Windows 和 Linux (僅限 Azure Resource Manager)
+- 虛擬機器擴展集 - Windows 和 Linux
 
 > [!NOTE]
-> 客戶加密箱不支援 IaaS 傳統實例。 如果您的工作負載是在 IaaS 傳統實例上執行，建議您將它們從傳統遷移至 Resource Manager 部署模型。 如需指示，請參閱 [平臺支援將 IaaS 資源從傳統遷移至 Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+> 客戶加密箱不支援 IaaS 傳統實例。 如果您的工作負載是在 IaaS 傳統實例上執行，建議您將它們從傳統遷移至 Resource Manager 部署模型。 如需指示，請參閱[平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager)](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 
-#### <a name="detailed-audit-logs"></a>詳細的 audit 記錄
+#### <a name="detailed-audit-logs"></a>詳細的稽核記錄
 
-針對牽涉到遠端桌面存取的案例，您可以使用 Windows 事件記錄檔來檢查 Microsoft 工程師所採取的動作。 請考慮使用 Azure 資訊安全中心收集您的事件記錄檔，並將資料複製到您的工作區以進行分析。 如需詳細資訊，請參閱 [Azure 資訊安全中心中的資料收集](../../security-center/security-center-enable-data-collection.md)。
+對於涉及遠端桌面存取的案例，您可以使用 Windows 事件記錄來檢閱 Microsoft 工程師所採取的動作。 請考慮使用 Azure 資訊安全中心來收集事件記錄，並將資料複製到您的工作區以便進行分析。 如需詳細資訊，請參閱 [Azure 資訊安全中心的資料收集](../../security-center/security-center-enable-data-collection.md)。
 
 ## <a name="workflow"></a>工作流程
 
@@ -135,17 +135,17 @@ ms.locfileid: "91331653"
 
 ![Azure 客戶加密箱-活動記錄](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>客戶加密箱與 Azure 安全性基準測試整合
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>客戶加密箱與 Azure 安全性效能評定的整合
 
 我們在 Azure 安全性基準測試中引進了新的主控項 ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) ，其中涵蓋客戶加密箱適用性。 客戶現在可以利用基準測試客戶加密箱服務的適用性。
 
 ## <a name="exclusions"></a>排除
 
-在下列工程支援案例中，不會觸發客戶加密箱要求：
+下列工程支援案例不會觸發客戶加密箱要求：
 
-- Microsoft 工程師需要進行超出標準作業程式的活動。 例如，在非預期或無法預期的案例中復原或還原服務。
+- Microsoft 工程師必須執行超出標準作業程序的活動。 例如，在非預期或無法預期的案例中復原或還原服務。
 
-- Microsoft 工程師會在進行疑難排解時存取 Azure 平臺，並不慎存取客戶資料。 例如，Azure 網路小組會執行在網路裝置上產生封包捕獲的疑難排解。 但是，如果客戶在傳輸時將資料加密，則工程師無法讀取資料。
+- Microsoft 工程師在進行疑難排解時存取 Azure 平台，且不小心可以存取客戶資料。 例如，Azure 網路小組執行疑難排解而導致在網路裝置上擷取到封包。 不過，如果客戶在傳輸資料時有將資料加密，工程師就無法讀取資料。
 
 ## <a name="next-steps"></a>後續步驟
 
