@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869434"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
@@ -129,7 +129,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 > [!NOTE]
 > 如果同時使用 include/exclude 旗標，則只會查看符合 include 模式的檔案，但會一律忽略符合排除模式的檔案。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 **--區塊大小-mb** 浮點數使用 () 上傳至 Azure 儲存體或從 Azure 儲存體下載時所指定的區塊大小。 預設值會根據檔案大小自動計算。 允許使用小數小數 (例如： `0.25`) 。
 
@@ -137,17 +137,17 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--delete-destination** 字串定義是否要刪除來源不存在之目的地的額外檔案。 可以設定為 `true` 、 `false` 或 `prompt` 。 如果設定為 `prompt` ，就會在排程要刪除的檔案和 blob 之前，先詢問使用者問題。  (預設 `false`) 。  (預設 `false`) 
 
-**--排除-** 僅限 Windows 的屬性字串 () 排除屬性符合屬性清單的檔案。 例如：`A;S;R`
+**--排除-** 僅限 Windows 的屬性字串 () 排除屬性符合屬性清單的檔案。 例如： `A;S;R`
 
 **--** 在比較來源與目的地時，排除路徑字串會排除這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑首碼 (例如： `myFolder;myFolder/subDirName/file.pdf`) 。
 
-**--排除-模式** 字串排除名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
+**--排除-模式** 字串排除名稱符合模式清單的檔案。 例如： `*.jpg;*.pdf;exactName`
 
 **--**    說明如何進行同步處理。
 
-**--include-** attribute 字串 (僅限 Windows) 只包含其屬性符合屬性清單的檔案。 例如：`A;S;R`
+**--include-** attribute 字串 (僅限 Windows) 只包含其屬性符合屬性清單的檔案。 例如： `A;S;R`
 
-**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
+**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如： `*.jpg;*.pdf;exactName`
 
 **--記錄層級** 字串會定義記錄檔的記錄詳細資訊，可用層級： `INFO` (所有要求和回應) 、 `WARNING` (回應緩慢的) 回應、 `ERROR` (僅) 失敗的要求，以及 (不) 的 `NONE` 輸出記錄。  (預設 `INFO`) 。 
 
@@ -169,6 +169,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
 |--受信任-microsoft-尾碼字串   |指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [azcopy](storage-ref-azcopy.md)

@@ -17,10 +17,10 @@ ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279409"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health︰版本發行歷程記錄
@@ -259,5 +259,5 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 * 依應用程式、錯誤類型等分組，顯示 AD FS 伺服器上失敗要求的趨勢。
 * 使用 Azure AD 全域管理員認證更輕鬆部署代理程式。  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解 [在雲端中監視內部部署身分識別基礎結構和同步處理服務](./whatis-azure-ad-connect.md)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3c3dac8c8798b9c56b746a2e4e232f43ef967ebe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818806"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960298"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -45,7 +45,7 @@ Linux 自訂指令碼擴充功能有兩個：
 您可以利用擴充功能來使用 Azure Blob 儲存體認證，以存取 Azure Blob 儲存體。 或者，指令碼可以位於任何位置，前提是 VM 可以路由傳送至該端點，例如 GitHub、內部檔案伺服器等。
 
 ### <a name="internet-connectivity"></a>網際網路連線
-如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，則您可以使用 Azure NSG 服務標籤來允許存取 [儲存體](../../virtual-network/security-overview.md#service-tags)。
+如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，則您可以使用 Azure NSG 服務標籤來允許存取 [儲存體](../../virtual-network/network-security-groups-overview.md#service-tags)。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆/網路安全性群組連接埠。
 
@@ -499,5 +499,5 @@ az vm extension list -g myResourceGroup --vm-name myVM
 ]
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 若要查看程式碼、目前問題和版本，請參閱 [custom-script-extension-linux 存放庫](https://github.com/Azure/custom-script-extension-linux)。

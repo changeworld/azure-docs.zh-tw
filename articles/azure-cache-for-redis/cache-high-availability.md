@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: yegu
 ms.openlocfilehash: 145be11436eb4d0c4f6b892e5239ccacd838d780
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91654107"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis 的高可用性
@@ -23,7 +23,7 @@ Azure Cache for Redis 使用多個 Vm （稱為 *節點*）來執行快取，以
 | ------------------- | ------- | ------- | :------: | :---: |
 | [標準複寫](#standard-replication)| 單一資料中心或可用性區域中的雙重節點複寫設定 (AZ) ，具有自動容錯移轉 | 99.9% |✔|✔|
 | [多個複本](#multiple-replicas) | 一或多個 Az 中具有自動容錯移轉的多重節點複寫設定 | 具有區域冗余) 的 99.95% ( |-|✔|
-| [區域冗余](#zone-redundancy) | 跨 Az 的多重節點複寫設定，具有自動容錯移轉 | 具有多個複本的 99.95% ()  |-|✔|
+| [區域備援](#zone-redundancy) | 跨 Az 的多重節點複寫設定，具有自動容錯移轉 | 具有多個複本的 99.95% ()  |-|✔|
 | [異地複寫](#geo-replication) | 兩個區域中的連結快取實例，具有使用者控制的容錯移轉 | 適用于單一區域的 99.9% ()  |-|✔|
 
 ## <a name="standard-replication"></a>標準複寫

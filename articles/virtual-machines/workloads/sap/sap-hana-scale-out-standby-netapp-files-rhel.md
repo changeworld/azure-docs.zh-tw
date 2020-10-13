@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
 ms.openlocfilehash: 9978137edb7874a8b93e0c9a5f1f9979ce449277
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893165"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>在 Red Hat Enterprise Linux 上使用 Azure NetApp Files 於 Azure VM 上部署 SAP HANA 擴增系統與待命節點 \(部分機器翻譯\) 
@@ -251,7 +251,7 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 
     d. 選取 [ **網路**]，然後連接網路介面。 在 [ **附加網路介面** ] 下拉式清單中，選取已建立 `storage` 和子網的網路介面 `hana` 。  
     
-    e. 選取 \[儲存\]。 
+    e. 選取 [儲存]****。 
  
     f. 針對其餘的虛擬機器重複步驟 b 至 e (在我們的範例中為  **hanadb2** 和 **hanadb3**) 。
  
@@ -708,8 +708,8 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 6. 若要優化基礎 Azure NetApp Files 儲存體的 SAP Hana，請設定下列 SAP Hana 參數：
 
    - `max_parallel_io_requests`**128**
-   - `async_read_submit`**開啟**
-   - `async_write_submit_active`**開啟**
+   - `async_read_submit` **on**
+   - `async_write_submit_active` **on**
    - `async_write_submit_blocks`**全部**
 
    如需詳細資訊，請參閱 [使用 Azure Netapp Files Microsoft Azure 上的 NETAPP SAP 應用程式][anf-sap-applications-azure]。 

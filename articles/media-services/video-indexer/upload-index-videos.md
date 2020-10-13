@@ -12,10 +12,10 @@ ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268820"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
@@ -99,12 +99,12 @@ ms.locfileid: "89268820"
 用來通知客戶下列事件的 URL (使用 POST 要求)：
 
 - 索引狀態變更： 
-    - 屬性：    
+    - 內容：    
     
-        |Name|描述|
+        |名稱|描述|
         |---|---|
         |id|影片識別碼|
-        |state|影片狀態|  
+        |狀態|影片狀態|  
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
 - 在影片中識別到的人員：
   - 屬性
@@ -118,7 +118,7 @@ ms.locfileid: "89268820"
         
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>備註
+##### <a name="notes"></a>注意
 
 - 影片索引器會傳回原始 URL 中提供的任何現有參數。
 - 提供的 URL 必須進行編碼。
@@ -359,7 +359,7 @@ public class AccountContractSlim
 
 下表列出上傳作業可能會傳回的狀態碼。
 
-|狀態碼|ErrorType (在回應本文中)|說明|
+|狀態碼|ErrorType (在回應本文中)|描述|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|

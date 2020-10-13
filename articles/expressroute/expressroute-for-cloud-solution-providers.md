@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653633"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
@@ -112,7 +112,7 @@ ExpressRoute 會透過 Azure 虛擬網路閘道連接到 Azure 網路。 網路�
 ![顯示預設路由選項的圖表。](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>使用者定義的路由 (UDR)
-使用者定義的路由能夠控制從虛擬網路中指派的子網路輸出至其他子網路的流量，或透過其中一個其他預先定義的閘道 (ExpressRoute、網際網路或 VPN) 輸出的流量。 使用者定義的路由表可以取代預設的系統路由表，其以自訂路由取代預設的路由表。 利用使用者定義的路由，客戶可以建立對應用裝置 (例如防火牆或入侵偵測應用裝置) 的特定路由，或封鎖從裝載使用者定義之路由的子網路對特定子網路的存取。 如需使用者定義路由的總覽，請參閱 [這裡](../virtual-network/virtual-networks-udr-overview.md)。 
+使用者定義的路由能夠控制從虛擬網路中指派的子網路輸出至其他子網路的流量，或透過其中一個其他預先定義的閘道 (ExpressRoute、網際網路或 VPN) 輸出的流量。 使用者定義的路由表可以取代預設的系統路由表，其以自訂路由取代預設的路由表。 利用使用者定義的路由，客戶可以建立對應用裝置 (例如防火牆或入侵偵測應用裝置) 的特定路由，或封鎖從裝載使用者定義之路由的子網路對特定子網路的存取。 如需 User-Defined 路由的總覽，請參閱 [這裡](../virtual-network/virtual-networks-udr-overview.md)。 
 
 ## <a name="security"></a>安全性
 視正在使用中的模型 (Connect-To 或 Connect-Through) 而定，您的客戶會在其 vNet 中定義安全性原則，或提供安全性原則需求給 CSP 來定義其 vNet。 可以定義下列安全性準則︰

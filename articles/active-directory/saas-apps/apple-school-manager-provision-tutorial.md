@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757433"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple School Manager 來自動布建使用者
@@ -103,7 +103,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Apple School Manager**]。
 

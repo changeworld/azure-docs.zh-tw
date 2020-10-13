@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：無縫單一登入-快速入門 |Microsoft Docs
+title: Azure AD Connect：無縫單一 Sign-On-快速入門 |Microsoft Docs
 description: 本文描述如何開始使用 Azure Active Directory 無縫單一登入
 services: active-directory
 keywords: 何謂 Azure AD Connect、安裝 Active Directory、Azure AD、SSO、單一登入的必要元件
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295017"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 無縫單一登入：快速入門

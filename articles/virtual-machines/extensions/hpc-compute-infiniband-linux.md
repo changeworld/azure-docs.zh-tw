@@ -1,6 +1,6 @@
 ---
-title: 不駕駛驅動程式延伸模組-Azure Linux Vm
-description: Microsoft Azure 延伸模組，用於在執行 Linux 的 H 和 N 系列計算 Vm 上安裝可駕駛的驅動程式。
+title: 全像驅動程式擴充功能-Azure Linux Vm
+description: 在執行 Linux 的 H 和 N 系列計算 Vm 上安裝可感知驅動程式的 Microsoft Azure 延伸模組。
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
 ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829045"
 ---
-# <a name="infiniband-driver-extension-for-linux"></a>適用于 Linux 的不駕駛驅動程式擴充功能
+# <a name="infiniband-driver-extension-for-linux"></a>適用于 Linux 的可駕駛驅動程式擴充功能
 
-此延伸模組會在執行 Linux) [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm 上，安裝不支援的 OFED 驅動程式，並將其設定為已啟用 sr-iov 的 ( ' r ' 大小。 視 VM 系列而定，延伸模組會安裝適用于 Connect X NIC 的適當驅動程式。
+此延伸模組會在執行 Linux 的 H 系列和 N 系列 vm) [H 系列](../sizes-hpc.md) 和 [N 系列](../sizes-gpu.md) vm ( ' r ' 大小上安裝 OFED 驅動程式。 根據 VM 系列，此延伸模組會安裝適用于 Connect X NIC 的驅動程式。
 
-如需手動安裝 OFED 驅動程式的指示，請參閱[這裡](../workloads/hpc/enable-infiniband.md#manual-installation)。
+您可以在 [這裡](../workloads/hpc/enable-infiniband.md#manual-installation)找到手動安裝 OFED 驅動程式的指示。
 
-延伸模組也可用來安裝適用于[Windows vm](hpc-compute-infiniband-windows.md)的無動機驅動程式。
+此外，也可以使用擴充功能來安裝適用于 [Windows vm](hpc-compute-infiniband-windows.md)的無系統驅動程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -41,7 +41,7 @@ ms.locfileid: "87829045"
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
-不適用之驅動程式的 Microsoft Azure 延伸模組會要求目標 VM 必須連線到並可存取網際網路。
+您必須將目標 VM 連接到網際網路，並可存取網際網路，才能使用的「使用」的 Microsoft Azure 擴充功能驅動程式。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -137,7 +137,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>將擴充功能新增至虛擬機器擴展集
 
-下列範例會在名為*myResourceGroup*的資源群組中部署且名為*myVMSS*的現有虛擬機器擴展集內的所有支援 RDMA 的 vm 上，安裝最新版本 1.1 InfiniBandDriverLinux 延伸模組：
+下列範例會在名為 *>myvmss* 的資源群組中部署的現有虛擬機器擴展集（名為 *myResourceGroup*的資源群組）中，將最新版本 1.1 InfiniBandDriverLinux 擴充功能安裝在所有支援 RDMA 的 vm 上：
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -161,7 +161,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-延伸模組執行輸出會記錄至下列檔案。 請參閱此檔案來追蹤安裝的狀態，以及針對任何失敗進行疑難排解。
+擴充功能執行輸出會記錄至下列檔案。 請參閱此檔案來追蹤安裝的狀態，以及針對任何失敗進行疑難排解。
 
 ```bash
 /var/log/azure/ib-vmext-status
@@ -169,25 +169,25 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="exit-codes"></a>結束代碼
 
-下表根據延伸模組安裝程式的結束代碼，說明其意義和建議的動作。
+下表根據延伸模組安裝程式的結束代碼，描述其意義和建議的動作。
 
 | 結束碼 | 意義 | 可能的動作 |
 | :---: | --- | --- |
 | 0 | 作業已順利完成 |
 | 1 | 擴充功能的使用方式不正確 | 檢查執行輸出記錄 |
 | 10 | 適用於 Hyper-V 和 Azure 的 Linux Integration Services 無法使用或未安裝 | 檢查 lspci 輸出 |
-| 11 | 在此 VM 大小上找不到 Mellanox | 使用[支援的 VM 大小和 OS](../sizes-hpc.md) |
+| 11 | 在此 VM 大小上找不到 Mellanox 無法操作 | 使用[支援的 VM 大小和 OS](../sizes-hpc.md) |
 | 12 | 不支援的映像供應項目 |
-| 13 | 不支援的 VM 大小 | 使用已啟用的 ( ' r ' 大小) [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)n 系列 VM 進行部署 |
+| 13 | 不支援的 VM 大小 | 使用已啟用的 ( ' r ' 大小) [H 系列](../sizes-hpc.md) 和 [n 系列](../sizes-gpu.md)n 系列 VM 進行部署 |
 | 14 | 作業失敗 | 檢查執行輸出記錄 |
 
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 或者，您可以透過[Azure 支援網站](https://azure.microsoft.com/support/options/)提出支援事件。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 或者，您也可以透過 [Azure 支援網站](https://azure.microsoft.com/support/options/)提出支援事件。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
-如需已啟用無功能之 ( ' r ' 大小) 的詳細資訊，請參閱[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
+如需 ( 的「r」大小) 的詳細資訊，請參閱 [H 系列](../sizes-hpc.md) 和 [N 系列](../sizes-gpu.md) vm。
 
 > [!div class="nextstepaction"]
-> [深入瞭解 Linux Vm 延伸模組和功能](features-linux.md)
+> [深入瞭解 Linux Vm 擴充功能和功能](features-linux.md)

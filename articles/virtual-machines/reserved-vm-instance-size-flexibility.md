@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
 ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855513"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>利用保留 VM 執行個體獲得虛擬機器大小彈性
@@ -50,6 +50,6 @@ ms.locfileid: "88855513"
 
 我們會保留檔案 URL 和架構的修正，讓您可以用程式設計的方式取用此檔案。 資料也會很快透過 API 提供。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需詳細資訊，請參閱 [什麼是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)專案。

@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
 ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313768"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>關於 Azure 虛擬 WAN hub 中的網路虛擬裝置 (預覽) 
@@ -50,7 +50,7 @@ NVA 合作夥伴可能會根據其設備部署、設定授權和管理需求來�
 * **客戶資源群組** -這將包含受控應用程式的應用程式預留位置。 合作夥伴可以使用此屬性，公開他們在此處選擇的任何客戶內容。
 * **受控資源群組** -客戶無法直接設定或變更此資源群組中的資源，因為這是由受管理應用程式的發行者所控制。 此資源群組會包含 **NetworkVirtualAppliances** 資源。
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="受控應用程式資源群組":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="程序概觀":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA 基礎結構單位
 
@@ -105,7 +105,7 @@ NVA 合作夥伴可能會根據其設備部署、設定授權和管理需求來�
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>我可以將 NVA 部署到安全的中樞嗎？
 
-可以。 您可以使用 Azure 防火牆將 Barracuda CloudGen WAN 部署到中樞。
+是。 您可以使用 Azure 防火牆將 Barracuda CloudGen WAN 部署到中樞。
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>我可以將我的分公司中的任何 CPE 裝置連線到中樞內的 Barracuda CloudGen WAN NVA 嗎？
 

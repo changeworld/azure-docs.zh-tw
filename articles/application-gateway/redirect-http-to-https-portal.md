@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 07689f7d16cd1df451fdab28f188e5c4a324486e
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89594810"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 入口網站來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
@@ -145,7 +145,7 @@ Export-PfxCertificate `
 12. 在 [網路]**** 下方，確定 [選擇負載平衡選項]**** 設定為 [應用程式閘道]****。
 13. 確定 [應用程式閘道]**** 設定為 **myAppGateway**。
 14. 確定 [子網路]**** 設定為 **myBackendSubnet**。
-15. 選取 [建立]。
+15. 選取 [建立]****。
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>建立擴展集與適當後端集區的關聯
 
@@ -156,13 +156,13 @@ Export-PfxCertificate `
 3. 選取 [後端集區]****。
 4. 選取 **myAppGatewaymyvmss**。
 5. 選取 [移除後端集區中的所有目標]****。
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 7. 此流程完成後，選取 **myAppGatewaymyvmss** 後端集區，選取 [刪除]****，然後選取 [確定]**** 加以確認。
 8. 選取 [ **appGatewayBackendPool**]。
 9. 在 [目標]**** 下方，選取 **VMSS**。
 10. 在 **VMSS** 下方，選取 **myvmss**。
 11. 在 [網路介面組態]**** 下方，選取 **myvmssNic**。
-12. 選取 [儲存]。
+12. 選取 [儲存]****。
 
 ### <a name="upgrade-the-scale-set"></a>升級擴展集
 

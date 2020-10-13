@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 53deb7dc853de969ad6b6679ee728a3f132b6309
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541538"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759062"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>快速入門：使用 Azure.Search.Documents 用戶端程式庫建立搜尋索引
 
@@ -36,23 +36,25 @@ ms.locfileid: "91541538"
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) 的任何版本。 範例程式碼已在 Visual Studio 2019 的免費社群版本上測試過。
 
++ [Azure.Search.Documents NuGet 套件](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+## <a name="set-up-your-project"></a>設定專案
+
+組合服務連線資訊，然後啟動 Visual Studio 來建立可在 .NET Core 上執行的新主控台應用程式專案。
+
 <a name="get-service-info"></a>
 
-## <a name="get-a-key-and-endpoint"></a>取得金鑰和端點
+### <a name="copy-a-key-and-endpoint"></a>複製金鑰和端點
 
-在每個對服務發出呼叫的要求上，都需要 URL 端點和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
+在每個對服務發出呼叫的要求上，都需要 URL 端點和存取金鑰。 第一個步驟是尋找要新增至專案的 API 金鑰和 URL。 您在稍後的步驟中建立用戶端時，將會指定這兩個值。
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]  頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
 2. 在 [設定] > [金鑰] 中，取得管理員金鑰以獲得服務的完整權限 (必須有完整權限才能建立或刪除物件)。 共有兩個可交換的主要和次要金鑰。 您可以使用任一個。
 
    ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
-
-## <a name="set-up-your-project"></a>設定專案
-
-啟動 Visual Studio，並建立可在 .NET Core 上執行的新主控台應用程式專案。 
 
 ### <a name="install-the-nuget-package"></a>安裝 NuGet 封裝
 
@@ -62,7 +64,7 @@ ms.locfileid: "91541538"
 
 1. 按一下 **[瀏覽]** 。
 
-1. 搜尋 `Azure.Search.Documents` 並選取 11.0.0 版。
+1. 搜尋 `Azure.Search.Documents` 並選取 11.0 版或更新版本。
 
 1. 按一下右邊的 [安裝] 以將組件新增到您的r專案與解決方案。
 
@@ -78,7 +80,7 @@ ms.locfileid: "91541538"
    using Azure.Search.Documents.Models;
    ```
 
-1. 建立兩個用戶端：[SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) 負責建立索引，而 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 則用來處理現有索引。 兩者都需要服務端點和管理員 API 金鑰，以使用 create/delete 權限進行驗證。
+1. 建立兩個用戶端：[SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) 會建立索引，而 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 會載入並查詢現有索引。 兩者都需要服務端點和管理員 API 金鑰，以使用 create/delete 權限進行驗證。
 
    ```csharp
    static void Main(string[] args)
@@ -93,7 +95,7 @@ ms.locfileid: "91541538"
        SearchIndexClient idxclient = new SearchIndexClient(serviceEndpoint, credential);
 
        // Create a SearchClient to load and query documents
-       SearchClient qryclient = new SearchClient(serviceEndpoint, indexName, credential);
+       SearchClient srchclient = new SearchClient(serviceEndpoint, indexName, credential);
     ```
 
 ## <a name="1---create-an-index"></a>1 - 建立索引
@@ -132,7 +134,7 @@ ms.locfileid: "91541538"
     }
     ```
 
-1. 在 **Program.cs** 中，指定欄位和屬性。 使用 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 和 [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) 來建立索引。
+1. 在 **Program.cs** 中，建立 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 物件，然後呼叫 [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) 方法來表示搜尋服務中的索引。
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -155,9 +157,13 @@ ms.locfileid: "91541538"
 
 欄位上的屬性決定它如何在應用程式中使用。 例如，必須將 `IsFilterable` 屬性指派給支援篩選條件運算式的每個欄位。
 
-相較於可搜尋字串欄位上需要 [IsSearchable](/dotnet/api/microsoft.azure.search.models.field.issearchable) 的舊版 .NET SDK，您可以使用 [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) 和 [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) 來簡化欄位定義。
+在 Azure.Search.Documents 用戶端程式庫中，您可以使用 [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) 和 [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) 來簡化欄位定義。 兩者都是 [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) 的衍生項目，而且可能會簡化您的程式碼：
 
-與之前的版本類似，定義本身仍需要其他屬性。 例如，[IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) 和 [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) 必須明確屬性化，如上述範例所示。 
++ `SimpleField` 可以是任何資料類型、一律不可搜尋 (全文檢索搜尋查詢會將其忽略)，以及可擷取 (不會隱藏)。 其他屬性預設為關閉，但可以啟用。 您可以針對僅用於篩選、Facet 或評分設定檔的文件識別碼或欄位使用 `SimpleField`。 若是如此，請務必套用案例所需的任何屬性，例如文件識別碼的 `IsKey = true`。 如需詳細資訊，請參閱原始程式碼中的 [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs)。
+
++ `SearchableField` 必須是字串，而且一律可搜尋並可擷取。 其他屬性預設為關閉，但可以啟用。 因為此欄位類型是可搜尋，所以其支援同義字和分析器屬性的完整補語。 如需詳細資訊，請參閱原始程式碼中的 [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs)。
+
+無論您使用的是基本 `SearchField` API 或其中一個 協助程式模型，都必須明確啟用篩選、Facet 和排序屬性。 例如，[IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) 和 [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) 必須明確屬性化，如上述範例所示。 
 
 <a name="load-documents"></a>
 
@@ -165,11 +171,11 @@ ms.locfileid: "91541538"
 
 Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會載入與剛建立的飯店索引相符的 JSON 文件。
 
-在 Azure 認知搜尋中，文件是同時屬於索引輸入與查詢輸出的資料結構。 如同從外部資料來源所取得的一樣，文件輸入可能是資料庫中的資料列，Blob 儲存體中的 Blob 或磁碟上的 JSON 文件。 在此範例中，我們採用捷徑，並針對程式碼本身中的五家飯店內嵌 JSON 文件。 
+在 Azure 認知搜尋中，搜尋文件是同時屬於索引輸入與查詢輸出的資料結構。 如同從外部資料來源所取得的一樣，文件輸入可能是資料庫中的資料列，Blob 儲存體中的 Blob 或磁碟上的 JSON 文件。 在此範例中，我們採用捷徑，並針對程式碼本身中的五家飯店內嵌 JSON 文件。 
 
-上傳文件時，您必須使用 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件。 IndexDocumentsBatch 包含[動作](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)的集合，每個動作都包含文件與屬性，以告知 Azure 認知搜尋所應執行的動作 ([上傳、合併、刪除及 mergeOrUpload](search-what-is-data-import.md#indexing-actions))。
+上傳文件時，您必須使用 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件。 `IndexDocumentsBatch` 物件包含[動作](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)集合，每個物件都包含文件與屬性，後者會告知 Azure 認知搜尋所應執行的動作 ([上傳、合併、刪除及 mergeOrUpload](search-what-is-data-import.md#indexing-actions))。
 
-1. 在 **Program.cs** 中，建立文件和索引動作的陣列，然後將陣列傳遞到 `ndexDocumentsBatch`。下列文件符合飯店類別所定義的 hotels-quickstart-v11 索引。
+1. 在 **Program.cs** 中，建立文件與索引動作的索引，然後將該陣列傳遞到 `IndexDocumentsBatch`。 下面的文件符合 hotels-quickstart-v11 索引，如旅館類別所定義。
 
     ```csharp
     // Load documents (using a subset of fields for brevity)
@@ -183,7 +189,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
     IndexDocumentsOptions idxoptions = new IndexDocumentsOptions { ThrowOnAnyError = true };
 
     Console.WriteLine("{0}", "Loading index...\n");
-    qryclient.IndexDocuments(batch, idxoptions);
+    srchclient.IndexDocuments(batch, idxoptions);
     ```
 
     一旦將 [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) 物件初始化之後，您就可以將其傳送至索引，方法是在 [SearchClient](/dotnet/api/azure.search.documents.searchclient) 物件上呼叫 [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments)。
@@ -225,7 +231,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 1. 建立 RunQueries 方法以執行查詢並傳回結果。 結果是 Hotel 物件。
 
     ```csharp
-    private static void RunQueries(SearchClient qryclient)
+    private static void RunQueries(SearchClient srchclient)
     {
         SearchOptions options;
         SearchResults<Hotel> response;
@@ -238,7 +244,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
             OrderBy = { "" }
         };
 
-        response = qryclient.Search<Hotel>("motel", options);
+        response = srchclient.Search<Hotel>("motel", options);
         WriteDocuments(response);
 
         Console.WriteLine("Query #2: Find hotels where 'type' equals hotel...\n");
@@ -248,7 +254,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
             Filter = "hotelCategory eq 'hotel'",
         };
 
-        response = qryclient.Search<Hotel>("*", options);
+        response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
 
         Console.WriteLine("Query #3: Filter on rates less than $200 and sort by when the hotel was last updated...\n");
@@ -259,9 +265,16 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
             OrderBy = { "lastRenovationDate desc" }
         };
 
-        response = qryclient.Search<Hotel>("*", options);
+        response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
     }
+    ```
+
+1. 將 RunQueries 新增至 `Main()`。
+
+    ```csharp
+    Console.WriteLine("Starting queries...\n");
+    RunQueries(srchclient);
     ```
 
 此範例會顯示兩種[在查詢中比對字詞的方式](search-query-overview.md#types-of-queries)：全文檢索搜尋，以及篩選：
@@ -278,7 +291,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 
 按下 F5 以重建應用程式並完整執行程式。 
 
-輸出中包含來自 [Console.WriteLIne](/dotnet/api/system.console.writeline) 的訊息，並且會加上查詢資訊和結果。
+輸出中包含來自 [Console.WriteLine](/dotnet/api/system.console.writeline) 的訊息，並且會加上查詢資訊和結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -290,7 +303,7 @@ Azure 認知搜尋會搜尋服務中儲存的內容。 在此步驟中，您會�
 
 ## <a name="next-steps"></a>後續步驟
 
-在此 C# 快速入門中，您已執行一系列的工作來建立索引、使用文件來載入索引，以及執行查詢。 在不同的階段中，我們採用捷徑，以簡化程式碼，讓程式碼更容易閱讀及傳達概念。 若您熟悉已基本概念，我們建議參閱下一篇文章以探索可讓您深入了解的替代方法與概念。 
+在此 C# 快速入門中，您已執行一組工作來建立索引、使用文件來載入索引，以及執行查詢。 在不同的階段中，我們採用捷徑，以簡化程式碼，讓程式碼更容易閱讀及傳達概念。 若您熟悉已基本概念，我們建議參閱下一篇文章以探索可讓您深入了解的替代方法與概念。 
 
 > [!div class="nextstepaction"]
 > [如何以 .NET 開發](search-howto-dotnet-sdk.md) \(部分機器翻譯\)

@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4a0d5af8faafac8b733bd2daa9655e663da6fe71
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982920"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873518"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的權杖快取序列化
 在[取得權杖](msal-acquire-cache-tokens.md)後，該權杖會由 Microsoft 驗證程式庫 (MSAL) 快取。  應用程式程式碼應該先試著從快取中取得權杖，再用另一種方法取得權杖。  本文討論 MSAL.NET 中權杖快取的預設和自訂序列化。
@@ -86,7 +86,7 @@ static class TokenCacheHelper
   /// <summary>
   /// Path to the token cache. Note that this could be something different for instance for MSIX applications:
   /// private static readonly string CacheFilePath =
-$"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
+  /// $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
   /// </summary>
   public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
 
@@ -327,7 +327,7 @@ services.AddDistributedSqlServerCache(options =>
 
 在階段[2-2 權杖](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)快取的[ASP.NET Core web 應用程式教學](/aspnet/core/tutorials/first-mvc-app/)課程中，其使用方式是精選的。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 下列範例會說明權杖快取序列化。
 

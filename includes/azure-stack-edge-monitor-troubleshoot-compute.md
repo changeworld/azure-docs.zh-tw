@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89272176"
 ---
 在已設定計算角色的 Azure Stack Edge 裝置上，您可以使用兩組不同的命令對裝置進行疑難排解或監視。
@@ -36,7 +36,7 @@ Commands:
 
 下表提供下列命令的簡短描述 `iotedge` ：
 
-|命令  |說明 |
+|命令  |描述 |
 |---------|---------|
 |`check`     | 針對常見的設定和連線能力問題執行自動檢查       |
 |`list`     | 列出模組         |
@@ -72,7 +72,7 @@ Commands:
 ```
 下表提供下列命令的簡短描述 `dkrdbe` ：
 
-|命令  |說明 |
+|命令  |描述 |
 |---------|---------|
 |`image`     | 管理映射。 若要移除未使用的映射，請使用： `dkrdbe image prune -a -f`       |
 |`images`     | 列出映像         |

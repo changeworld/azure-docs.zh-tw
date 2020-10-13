@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331891"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process 實務：使用 SQL Server
@@ -696,7 +696,7 @@ Azure Machine Learning 將根據訓練實驗的元件來建立計分實驗。 �
 ### <a name="license-information"></a>授權資訊
 此逐步解說範例及其隨附的指令碼和 IPython Notebook 是在 MIT 授權下由 Microsoft 所共用。 請查看 GitHub 上範例程式碼目錄中的 LICENSE.txt 檔案，以取得詳細資料。
 
-### <a name="references"></a>參考資料
+### <a name="references"></a>參考
 •    [Andrés Monroy NYC 計程車車程下載頁面](https://www.andresmh.com/nyctaxitrips/) \(英文\)  
 •    [Chris Whong 識破強奪 NYC 的計程車行程資料](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [NYC 計程車和禮車委員會研究和統計資料](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653786"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 時間序列深入解析總管
 
 本文說明 Azure 時間序列深入解析 Gen2 [示範環境](https://insights.timeseries.azure.com/preview/demo)內可用的各種功能和選項。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 時間序列深入解析 Explorer，您必須：
 

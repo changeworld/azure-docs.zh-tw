@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869876"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Microsoft 認知服務的自然語言支援
@@ -23,7 +23,7 @@ Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及�
 
 這些認知服務與語言無關，而且沒有以人類語言為基礎的限制。
 
-* [異常偵測器 (預覽)](./anomaly-detector/index.yml)
+* [異常偵測器 (預覽) ](./anomaly-detector/index.yml)
 * [自訂視覺](./Custom-Vision-Service/index.yml)
 * [臉部](./face/index.yml)
 * [個人化工具](./personalizer/index.yml)
@@ -31,11 +31,11 @@ Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及�
 ## <a name="vision"></a>視覺
 
 * [電腦視覺](./computer-vision/language-support.md)
-* [表單辨識器 (預覽)](./form-recognizer/language-support.md)
+* [ (預覽版的表單辨識器) ](./form-recognizer/language-support.md)
 * [筆跡辨識器 (預覽)](./ink-recognizer/language-support.md)
 * [影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
 
-## <a name="language"></a>語言
+## <a name="language"></a>Language
 
 * [沈浸式閱讀程式](./immersive-reader/language-support.md)
 * [語言理解 (LUIS)](./luis/luis-supported-languages.md)
@@ -63,7 +63,7 @@ Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及�
 
 * [內容仲裁](./content-moderator/text-moderation-api-languages.md)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [什麼是認知服務？](welcome.md)
 * [建立帳戶](cognitive-services-apis-create-account.md)

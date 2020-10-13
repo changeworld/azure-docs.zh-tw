@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278848"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
@@ -290,7 +290,7 @@ West US
 ...
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何建立 Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](../templates/template-syntax.md)。 
 * 若要檢視資源提供者範本結構描述，請參閱[範本參考](/azure/templates/)。

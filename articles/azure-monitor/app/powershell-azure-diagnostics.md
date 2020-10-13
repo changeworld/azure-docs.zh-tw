@@ -1,13 +1,13 @@
 ---
 title: 使用 PowerShell 在 Azure 中設定 Application Insights | Microsoft Docs
-description: 自動設定 Azure 診斷管線資料至 Application Insights。
+description: 自動設定 Azure 診斷，以將資料傳送至 Application Insights。
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320352"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 設定 Azure 雲端服務的 Application Insights

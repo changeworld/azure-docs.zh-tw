@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268752"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>針對 Azure AD 註冊服務強制執行 TLS 1。2
@@ -37,13 +37,13 @@ TLS 通訊協定1.2 版是一種密碼編譯通訊協定，其設計目的是要
 
 確定已設定下列登錄字串，如下所示：
 
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 用戶端
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 用戶端
   - "DisabledByDefault" = dword：00000000
   - "Enabled" = dword：00000001
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器
   - "DisabledByDefault" = dword：00000000
   - "Enabled" = dword：00000001
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\. NETFramework\v4.0.30319
   - "SchUseStrongCrypto"=dword:00000001
 
 ## <a name="update-non-windows-proxies"></a>更新非 Windows proxy

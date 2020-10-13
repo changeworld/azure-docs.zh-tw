@@ -13,17 +13,17 @@ author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
 ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372148"
 ---
 # <a name="azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
-適用于 SQL 的 Azure Defender 是 advanced SQL 安全性功能的整合套件。 Azure Defender 適用于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 其中包含的功能可用於探索和分類敏感性資料、找出潛在資料庫弱點並減低其風險，及偵測可能指出資料庫遇到威脅的異常活動。 此套件可讓您從單一的進入點位置啟用及管理前述功能。
+適用於 SQL 的 Azure Defender 是進階 SQL 安全性功能的整合套件。 Azure Defender 適用于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 其中包含的功能可用於探索和分類敏感性資料、找出潛在資料庫弱點並減低其風險，及偵測可能指出資料庫遇到威脅的異常活動。 此套件可讓您從單一的進入點位置啟用及管理前述功能。
 
 ## <a name="overview"></a>概觀
 

@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855375"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>使用 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用，為 SAP 高可用性準備 Azure 基礎結構
@@ -312,7 +312,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 ![圖 1：含受控磁碟之向外延展檔案伺服器 Resource Manager 範本的 UI 畫面][sap-ha-guide-figure-8010]
 
-_**圖 1**：具有受控磁片的向外延展檔案伺服器 Resource Manager 範本的 UI 畫面_
+_**圖 1**：使用受控磁片 Scale-Out 檔案伺服器 Resource Manager 範本的 UI 畫面_
 
 在此範本中，執行下列作業︰
 1. 在 [VM 計數]**** 方塊中，輸入最小計數 **2**。
@@ -326,13 +326,13 @@ _**圖 1**：具有受控磁片的向外延展檔案伺服器 Resource Manager �
 
 ![圖 2：不含受控磁碟之向外延展檔案伺服器 Azure Resource Manager 範本的 UI 畫面][sap-ha-guide-figure-8011]
 
-_**圖 2**：不含受控磁片的向外延展檔案伺服器 Azure Resource Manager 範本的 UI 畫面_
+_**圖 2**：不含受控磁片的 Scale-Out 檔案伺服器 Azure Resource Manager 範本的 UI 畫面_
 
 在 [儲存體帳戶類型]**** 方塊中，選取 [進階儲存體]****。 所有其他設定與受控磁碟的設定相同。
 
 ## <a name="adjust-cluster-timeout-settings"></a>調整叢集 timeout 設定
 
-成功安裝 Windows 向外延展檔案伺服器叢集之後，請將容錯移轉偵測的超時閾值調整為 Azure 中的條件。 需要變更的參數記載於[調整容錯移轉叢集網路閥值][tuning-failover-cluster-network-thresholds]中。 假設您的叢集 Vm 位於相同的子網中，請將下列參數變更為這些值：
+成功安裝 Windows Scale-Out 檔案伺服器叢集之後，請將容錯移轉偵測的超時閾值調整為 Azure 中的條件。 需要變更的參數記載於[調整容錯移轉叢集網路閥值][tuning-failover-cluster-network-thresholds]中。 假設您的叢集 Vm 位於相同的子網中，請將下列參數變更為這些值：
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
@@ -340,6 +340,6 @@ _**圖 2**：不含受控磁片的向外延展檔案伺服器 Azure Resource Man
 
 這些設定已與客戶進行測試，並提供很好的折衷方案。 它們具有足夠的彈性，但它們也會在實際錯誤狀況或 VM 失敗中提供快速的容錯移轉。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [在 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用上安裝 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-file-share]

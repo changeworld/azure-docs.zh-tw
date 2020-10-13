@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279511"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>使用者隱私權與 Azure Active Directory 傳遞驗證
@@ -105,6 +105,6 @@ Foreach ($file in $files) {
 
 如果已啟用稽核記錄，這項產品可能會針對您的網域控制站產生安全性記錄。 若要深入了解設定稽核原則，請閱讀[這篇文章](/previous-versions/tn-archive/dd277403(v=technet.10))。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [在信任中心檢閱 Microsoft 隱私權原則](https://www.microsoft.com/trustcenter)
 * [**疑難排解**](tshoot-connect-pass-through-authentication.md) - 了解如何解決此功能的常見問題。

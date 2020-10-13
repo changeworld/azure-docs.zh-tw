@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: 2357c51f47bcb9bd8bbc6c408cb6d8edbab4d10e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267001"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>設定 Web 應用程式防火牆的 bot 保護 (預覽) 
@@ -20,7 +20,7 @@ ms.locfileid: "91267001"
 > [!IMPORTANT]
 > Bot 保護規則集目前處於公開預覽狀態，並且提供預覽服務等級的協定。 可能不支援特定功能，或可能已經限制功能。  如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 遵循 [使用 Azure 入口網站建立 Azure Front Door 的 WAF 原則](waf-front-door-create-portal.md)中所述的指示，建立 Front Door 的基本 WAF 原則。
 

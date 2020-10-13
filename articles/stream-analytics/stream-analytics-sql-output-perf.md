@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869417"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure 串流分析輸出至 Azure SQL Database
@@ -48,7 +48,7 @@ Azure 串流分析中的 SQL 輸出支援平行寫入作為選項。 此選項�
 
 如果連入事件速率很低，則可以輕鬆地建立低於100個數據列的批次大小，這樣可讓大量插入效率不佳，而且會使用太多磁碟空間。 若要解決這項限制，您可以執行下列其中一項動作：
 * 建立 INSTEAD of [觸發](/sql/t-sql/statements/create-trigger-transact-sql) 程式，以針對每個資料列使用簡單的插入。
-* 使用記憶體中的臨時表，如上一節中所述。
+* 使用上一節所述的 In-Memory 臨時表。
 
 另一種情況是，寫入非叢集資料行存放區索引時， (NCCI) ，其中較小的大量插入可能會建立太多區段，而可能會損毀索引。 在此情況下，建議您改為使用叢集資料行存放區索引。
 

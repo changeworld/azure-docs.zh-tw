@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068109"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969632"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure 映射產生器服務網路功能選項
 
@@ -33,7 +33,7 @@ ms.locfileid: "88068109"
 
 ### <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？
 
-Azure Private Link 提供從虛擬網路到 Azure 平臺即服務 (PaaS) 、客戶擁有或 Microsoft 合作夥伴服務的私人連線。 它可簡化網路架構，並藉由消除公用網際網路的資料暴露，來保護 Azure 中端點之間的連線。 如需詳細資訊，請參閱 [Private Link 檔](https://docs.microsoft.com/azure/private-link)。
+Azure Private Link 提供從虛擬網路到 Azure 平臺即服務 (PaaS) 、客戶擁有或 Microsoft 合作夥伴服務的私人連線。 它可簡化網路架構，並藉由消除公用網際網路的資料暴露，來保護 Azure 中端點之間的連線。 如需詳細資訊，請參閱 [Private Link 檔](../../private-link/index.yml)。
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>現有 VNET 的必要許可權
 
@@ -68,7 +68,7 @@ Azure 映射產生器需要特定的許可權，才能使用現有的 VNET。 �
 | subnetName | 指定之虛擬網路內的子網名稱。 只有在指定 *name* 時，才必須指定。 |
 | resourceGroupName | 包含指定虛擬網路的資源組名。 只有在指定 *name* 時，才必須指定。 |
 
-Private Link 服務需要指定的 VNET 和子網中的 IP。 Azure 目前不支援這些 Ip 上的網路原則。 因此，子網必須停用網路原則。 如需詳細資訊，請參閱 [Private Link 檔](https://docs.microsoft.com/azure/private-link)。
+Private Link 服務需要指定的 VNET 和子網中的 IP。 Azure 目前不支援這些 Ip 上的網路原則。 因此，子網必須停用網路原則。 如需詳細資訊，請參閱 [Private Link 檔](../../private-link/index.yml)。
 
 ### <a name="checklist-for-using-your-vnet"></a>使用 VNET 的檢查清單
 
