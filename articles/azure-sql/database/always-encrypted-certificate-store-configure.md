@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444773"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>使用 Windows 憑證存放區設定 Always Encrypted
@@ -107,7 +107,7 @@ SSMS 提供一個精靈，可為您設定 CMK、CEK 及加密的資料行，來�
 
 請加密每個病患的 **SSN** 和 **BirthDate** 資訊。 **SSN** 資料行將使用決定性加密，這可支援等式查閱、聯結及群組依據。 **BirthDate** 資料行將使用不支援操作的隨機加密。
 
-將 **SSN** 資料行的 [加密類型]**** 設定為 [決定性]****，並將 **BirthDate** 資料行設定為 [隨機化]****。 按 [下一步]  。
+將 **SSN** 資料行的 [加密類型]**** 設定為 [決定性]****，並將 **BirthDate** 資料行設定為 [隨機化]****。 按一下 [下一步]。
 
 ![加密資料行](./media/always-encrypted-certificate-store-configure/column-selection.png)
 

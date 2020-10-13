@@ -3,19 +3,19 @@ title: 如何啟用您的 Azure VMware 解決方案資源
 description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多節點。
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 72a7aca97067ce4e9ed0e901e4016c82b3549eb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc90a322b5592ca7f400a82deca65ea753711c27
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90817891"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948726"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多節點。
 
 ## <a name="eligibility-criteria"></a>適用性準則
 
-* 您將需要 [Azure Enterprise 合約 (EA) ](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) 的 Microsoft。
+* 您將需要 [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md) 的 Microsoft。
 * Azure 訂閱需要 Azure 帳戶。
 
 

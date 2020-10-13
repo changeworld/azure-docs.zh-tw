@@ -6,10 +6,10 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715407"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
@@ -23,7 +23,7 @@ ms.locfileid: "91715407"
 
 ### <a name="in-the-cloud-shell"></a>在 Cloud Shell 中
 
-若要在 [Cloud Shell](https://shell.azure.com) 中設定部署使用者，請執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 \<username> \<password> 以部署使用者使用者名稱和密碼取代和。 
+若要在 [Cloud Shell](https://shell.azure.com) 中設定部署使用者，請執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和密碼取代 \<username> 和 \<password>。 
 
 - 使用者名稱在 Azure 服務及本機 Git 推送中都必須是唯一的，且不能包含 ‘@’ 符號。 
 - 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。 

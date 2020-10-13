@@ -14,10 +14,10 @@ ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 3a715538afba181a067e4cecd8c1941a76ae36d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298822"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>設定一或多個 Always On 可用性群組接聽程式 - Resource Manager
@@ -197,7 +197,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 瀏覽至 [AlwaysOn 高可用性] > [可用性群組] > [可用性群組接聽程式]。 
 
-1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後選取 [ **屬性**]。
+1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後選取 [屬性] 。
 
 1. 在 [ **埠** ] 方塊中，使用您先前使用的 $EndpointPort 來指定可用性群組接聽程式的通訊埠編號 (1433 是預設) ，然後選取 **[確定]**。
 

@@ -8,10 +8,10 @@ ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
 ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91301078"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>如何整合 RabbitMQ 與 Azure 服務匯流排
@@ -38,27 +38,27 @@ ms.locfileid: "91301078"
 
 然後選取 [整合]，然後按一下 [Azure 服務匯流排以建立訊息命名空間：
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="選取 Azure 服務匯流排":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="建立資源":::
 
 系統會提示您輸入命名空間資訊。 選取您要使用的 Azure 訂用帳戶。 如果您沒有資源群組，您可以建立一個新的 [資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="建立命名空間":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="建立資源":::
 
 使用 `rabbitmq` for `Namespace name` ，但它可能是您想要的任何一個。 然後 `East US` 為位置設定。 選擇 `Basic` 定價層。
 
 如果一切順利，您應該會看到下列確認畫面：
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="建立命名空間確認":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="建立資源":::
 
 然後回到 Azure 入口網站您會看到新的 `rabbitmq` 命名空間列在那裡。 按一下該資源以存取資源，以便您可以在其中新增佇列。
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="具有新命名空間的資源清單":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="建立資源":::
 
 ## <a name="creating-our-azure-service-bus-queue"></a>建立我們的 Azure 服務匯流排佇列
 
 現在您已有 Azure 服務匯流排命名空間，請按一下左邊的按鈕，然後 `Queues` `Entities` 您可以加入新的佇列：
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="建立佇列":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="建立資源":::
 
 佇列的名稱只會提醒您 `from-rabbitmq` 訊息的來源。 您可以將所有其他選項保留為預設值，但您可以變更它們以符合您的應用程式需求。
 
@@ -78,21 +78,21 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 您將需要為您的佇列建立 (SAS) 的 [共用存取原則](../storage/common/storage-sas-overview.md) ，讓 RabbitMQ 可以將訊息發佈到其中。 SAS 原則可讓您指定允許的外部合作物件使用您的資源。 其構想是 RabbitMQ 可以傳送訊息，但無法接聽或管理佇列。
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="新增 SAS 原則":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="建立資源":::
 
 勾選方塊 `Send` ，然後按一下以備妥 `Create` SAS 原則。
 
 建立原則之後，請按一下該原則，以查看 **主要連接字串**。 我們將使用它來讓 RabbitMQ 與 Azure 服務匯流排交談：
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="取得 SAS 原則":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="建立資源":::
 
 在您可以使用該連接字串之前，您必須先將其轉換為 RabbitMQ 的 AMQP 連接格式。 因此，請移至 [連接字串轉換器工具](https://red-mushroom-0f7446a0f.azurestaticapps.net/) ，並將您的連接字串貼到表單中，然後按一下 [轉換]。 您將會取得 RabbitMQ 就緒的連接字串。  (該網站會在您的瀏覽器中執行所有專案，如此您的資料就不會透過網路) 傳送。 您可以在 [GitHub](https://github.com/videlalvaro/connstring_to_amqp)上存取其原始程式碼。
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="轉換連接字串":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="建立資源":::
 
 現在，在瀏覽器中開啟 RabbitMQ 管理外掛程式 `http://localhost:15672/#/dynamic-shovels` ，然後移至 `Admin -> Shovel Management` ，您可以在其中新增新的鏟，以負責將訊息從 RabbitMQ 佇列傳送到 Azure 服務匯流排佇列。
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="新增 RabbitMQ 鏟":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="建立資源":::
 
 在此呼叫您 `azure` 的鏟，然後選擇 `AMQP 0.9.1` 作為來源通訊協定。 在螢幕擷取畫面中，我們有 `amqp://` ，也就是將我們連接到本機 RabbitMQ 伺服器的預設 URI。 請務必將其調整為您目前的部署。
 
@@ -110,15 +110,15 @@ amqps://rabbitmq-shovel:StringOfRandomChars@rabbitmq.servicebus.windows.net:5671
 
 在 RabbitMQ 管理介面中，我們可以移至 `Queues` 並選取 `azure` 佇列，然後搜尋 `Publish message` 面板。 將會出現一個表單，可讓您將訊息直接發佈至您的佇列。 在我們的範例中，我們要新增 `fist message` 為 `Payload` ，然後點擊 `Publish Message` ：
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="發佈第一則訊息":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="建立資源":::
 
 返回至 Azure 並檢查您的佇列。 `Service Bus Explorer`在左面板中按一下，然後按一下 [_查看_] 按鈕。 如果一切順利，您將會看到您的佇列現在有一則訊息。 好耶，恭喜！
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Azure 服務匯流排佇列":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="建立資源":::
 
 但是，讓我們確定訊息是您從 RabbitMQ 傳送的訊息。 選取索引標籤 `Peek` ，然後按一下 `Peek` 按鈕以取出佇列中的最後一則訊息。 按一下訊息以檢查其內容。 您應該會看到如下圖所示的內容 `first message` 。
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="佇列查看":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="建立資源":::
 
 ## <a name="lets-recap"></a>讓我們回顧
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934490"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>適用于 IoT 的 Azure Defender 基準和自訂檢查
@@ -62,7 +62,7 @@ ms.locfileid: "90934490"
 
 ## <a name="baseline-custom-check-properties"></a>基準自訂檢查屬性
 
-| Name| 狀態 | 有效值| 預設值| 描述 |
+| 名稱| 狀態 | 有效值| 預設值| 描述 |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|必要： true |有效值：**布林**值 |預設值： **false** |傳送高優先順序訊息之前的最大時間間隔。|
 |baselineCustomChecksFilePath |必要： true|有效的值： **字串**、 **null** |預設值： **null** |基準 xml 設定的完整路徑|
@@ -70,7 +70,7 @@ ms.locfileid: "90934490"
 
 若要查看其他基準範例，請參閱 [自訂基準範例-1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) 和 [自訂基準範例-2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 存取您的 [原始安全性資料](how-to-security-data-access.md)
 - [調查裝置](how-to-investigate-device.md)

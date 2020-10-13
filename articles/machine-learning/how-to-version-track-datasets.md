@@ -12,10 +12,10 @@ ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302089"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
@@ -28,7 +28,7 @@ ms.locfileid: "91302089"
 * 當新資料可供重新訓練時
 * 當您要套用不同的資料準備或特徵工程方法時
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在本教學課程中，您需要：
 

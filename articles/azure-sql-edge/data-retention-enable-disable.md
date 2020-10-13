@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902498"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>啟用及停用資料保留原則
@@ -116,6 +116,6 @@ Set (DATA_DELETION = OFF)
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [資料保留和自動資料清除](data-retention-overview.md)
 - [使用保留原則管理歷程記錄資料](data-retention-cleanup.md)

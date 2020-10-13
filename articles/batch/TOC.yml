@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: 集區調整大小完成事件
           href: batch-pool-resize-complete-event.md
+        - name: 集區自動調整事件
+          href: batch-pool-autoscale-event.md
         - name: 工作開始事件
           href: batch-task-start-event.md
         - name: 工作完成事件
           href: batch-task-complete-event.md
         - name: 工作失敗事件
           href: batch-task-fail-event.md
+        - name: 工作排程失敗事件
+          href: batch-task-schedule-fail-event.md
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -290,7 +294,7 @@
       href: /azure/templates/microsoft.batch/batchaccounts
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-batch'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

@@ -12,13 +12,13 @@ ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629007"
 ---
-# <a name="on-demand-provisioning"></a>隨選布建
+# <a name="on-demand-provisioning"></a>隨選佈建
 使用隨選布建將使用者布建到應用程式中（以秒為單位）。 此外，您可以使用這項功能來：
 
 * 快速針對設定問題進行疑難排解。

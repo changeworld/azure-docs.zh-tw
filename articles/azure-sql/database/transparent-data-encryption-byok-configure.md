@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
 ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619112"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用來自 Azure Key Vault 的客戶管理金鑰來啟用透明資料加密
@@ -45,7 +45,7 @@ ms.locfileid: "91619112"
 如需 Key Vault 的詳細資訊，請參閱 [Key Vault 的 PowerShell 指示](../../key-vault/secrets/quick-create-powershell.md) ，以及 [如何使用 powershell Key Vault 虛刪除](../../key-vault/general/soft-delete-powershell.md)。
 
 > [!IMPORTANT]
-> 仍支援 PowerShell Azure Resource Manager (RM) 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組將持續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+> PowerShell Azure Resource Manager (RM) 模組仍受支援，但所有未來的開發都是針對 Az.Sql 模組進行的。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 ## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>將 Azure Active Directory (Azure AD) 身分識別指派給您的伺服器
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要安裝所需版本的 Azure CLI (2.0 版或更新版本) 並連接到您的 Azure 訂用帳戶，請參閱 [安裝和設定 Azure 跨平臺命令列介面 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要安裝所需版本的 Azure CLI (2.0 版或更新版本) 並連接到您的 Azure 訂用帳戶，請參閱 [安裝和設定 Azure 跨平臺 Command-Line 介面 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 如需 Key Vault 的詳細資訊，請參閱 [使用 cli 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 以及 [如何搭配 cli 使用 Key Vault 虛刪除](../../key-vault/general/soft-delete-cli.md)。
 

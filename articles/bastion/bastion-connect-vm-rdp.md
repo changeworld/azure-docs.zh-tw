@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/24/2020
+ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 79eb09a005f62846fc2f7e3e7b493d5e366edabc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b9653daf945b6a189bc528cd00de832ae97c03b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744318"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978117"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦連接到 Windows 虛擬機器
 
@@ -21,6 +21,8 @@ ms.locfileid: "84744318"
 Azure 防禦可為布建所在的虛擬網路中的所有 Vm 提供安全的連線能力。 使用 Azure Bastion 來保護您的虛擬機器免於向外公開 RDP/SSH 連接埠，同時提供使用 RDP/SSH 的安全存取。 如需詳細資訊，請參閱[概觀](bastion-overview.md)。
 
 ## <a name="before-you-begin"></a>開始之前
+
+### <a name="install-the-bastion-host"></a>安裝堡壘主機
 
 請確定您已為 VM 所在的虛擬網路設定 Azure 堡壘主機。 在您的虛擬網路中布建並部署防禦服務之後，您就可以使用它來連線到虛擬網路中的任何 VM。 若要設定 Azure 防禦主機，請參閱 [建立 Azure 堡壘主機](bastion-create-host-portal.md)。
 
@@ -40,16 +42,8 @@ Azure 防禦可為布建所在的虛擬網路中的所有 Vm 提供安全的連�
 
 ## <a name="connect"></a><a name="rdp"></a>連線
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)。 流覽至您要連接的虛擬機器，然後按一下 [連線] **，然後從** 下拉式清單 **中選取 [** 防禦]。
-
-   ![VM 連接](./media/bastion-connect-vm-rdp/connect.png)
-1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，您可以按一下連結來設定防禦。 如需設定指示，請參閱 [設定](bastion-create-host-portal.md)防禦。
-
-   ![防禦索引標籤](./media/bastion-connect-vm-rdp/bastion.png)
-1. 在 [防禦] 索引標籤上，輸入虛擬機器的使用者名稱和密碼，然後按一下 **[連線]**。 透過 Bastion 的這個虛擬機器 RDP 連線，會使用連接埠 443 和 Bastion 服務直接在 Azure 入口網站中開啟 (透過 HTML5)。
-
-   ![RDP 連線](./media/bastion-connect-vm-rdp/443rdp.png)
+[!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-閱讀防禦 [常見問題](bastion-faq.md)
+閱讀 [Bastion 常見問題集](bastion-faq.md)。

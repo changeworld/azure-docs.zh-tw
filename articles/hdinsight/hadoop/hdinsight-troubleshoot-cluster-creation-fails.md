@@ -12,7 +12,7 @@ ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856291"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>使用 Azure HDInsight 針對叢集建立失敗進行疑難排解

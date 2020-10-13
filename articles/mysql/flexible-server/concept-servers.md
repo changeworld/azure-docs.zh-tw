@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 7217817e9add6214c2da8362a2769cad0c2cf330
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934402"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的伺服器概念
@@ -57,7 +57,7 @@ ms.locfileid: "90934402"
 
 您可以使用 [Azure 入口網站](./quickstart-create-server-portal.md) 或 [Azure CLI](./quickstart-create-server-cli.md)來管理適用於 MySQL 的 Azure 資料庫彈性的伺服器。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [Create Server](./quickstart-create-server-portal.md)
 -   深入瞭解 [監視和警示](./how-to-alert-on-metric.md)

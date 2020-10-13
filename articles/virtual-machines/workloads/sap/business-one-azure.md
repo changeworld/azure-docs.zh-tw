@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea10ee5b6fb14558e6bb93b83da0d5c46cff330
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977641"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SAP Business One
 本文提供在 Azure 虛擬機器上部署 SAP Business One 的指引。 本文無法取代 SAP Business One 的安裝文件。 本文應涵蓋在 Azure 基礎結構上執行 Business One 應用程式的基本規劃與部署指引。
@@ -95,7 +95,7 @@ Business One 是兩層式的應用程式：
 此處顯示的簡易設定引進了數個安全性執行個體，以便控制和限制路由傳送。 一開始的配置如下： 
 
 - 客戶內部部署端上的路由器/防火牆。
-- 下一個執行個體是 [Azure 網路安全性群組](../../../virtual-network/security-overview.md)，可用來引進在其中執行 SAP Business One 設定的 Azure VNet 路由與安全性規則。
+- 下一個執行個體是 [Azure 網路安全性群組](../../../virtual-network/network-security-groups-overview.md)，可用來引進在其中執行 SAP Business One 設定的 Azure VNet 路由與安全性規則。
 - 為了避免 Business One 用戶端使用者也能看到執行 Business One 伺服器的資料庫執行伺服器，您應該將裝載 Business One 用戶端和 Business One 伺服器的 VM 分別放在 VNet 內的兩個不同子網路中。
 - 您可再次使用指派給兩個不同子網路的 Azure NSG，以限制 Business One 伺服器的存取權。
 
@@ -111,7 +111,7 @@ SQL Server 與 SAP HANA 均為可用的資料庫類型。 與 DBMS 無關，您�
 
 雖然已在特定和一般資料庫文件中強調，但您應熟悉下列主題：
 
-- [管理 Azure 中 Windows 虛擬機器的可用性](../../windows/manage-availability.md)和[管理 Linux 虛擬機器的可用性](../../linux/manage-availability.md)
+- [管理 Azure 中 Windows 虛擬機器的可用性](../../manage-availability.md)和[管理 Linux 虛擬機器的可用性](../../manage-availability.md)
 - [虛擬機器的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 這些文件應可協助您選擇儲存體類型與高可用性設定。

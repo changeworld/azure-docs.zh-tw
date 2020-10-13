@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c010fa4ea0289ed91f439a250f0b63703517f5bc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447781"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>使用虛擬 TPM 在 Windows 上建立及布建模擬的 IoT Edge 裝置
 
-Azure IoT Edge 裝置可以使用裝置布建 [服務](../iot-dps/index.yml) 來自動布建，就像未啟用 Edge 的裝置一樣。 如果您不熟悉自動布建程式，請先參閱布建 [總覽，](../iot-dps/about-iot-dps.md#provisioning-process) 再繼續進行。
+Azure IoT Edge 裝置可以使用裝置布建 [服務](../iot-dps/index.yml) 來自動布建，就像未啟用 Edge 的裝置一樣。 如果您不熟悉自動佈建程序，請先檢閱[佈建](../iot-dps/about-iot-dps.md#provisioning-process)概觀，再繼續作業。
 
 DPS 支援個別註冊和群組註冊中 IoT Edge 裝置的對稱金鑰證明。 針對群組註冊，如果您在對稱金鑰證明中核取 [在 IoT Edge 裝置] 選項為 true，則在該註冊群組下註冊的所有裝置都會標示為 IoT Edge 裝置。
 
@@ -75,7 +75,7 @@ DPS 支援個別註冊和群組註冊中 IoT Edge 裝置的對稱金鑰證明。
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 
-IoT Edge 執行階段會部署在所有 IoT Edge 裝置上。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
+IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
 
 布建您的裝置時，您將需要下列資訊：
 

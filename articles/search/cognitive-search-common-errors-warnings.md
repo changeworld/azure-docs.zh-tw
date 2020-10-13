@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362809"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中常見的索引子錯誤和警告進行疑難排解
@@ -32,7 +32,7 @@ ms.locfileid: "91362809"
 
 從 API 版本開始 `2019-05-06` ，專案層級的索引子錯誤和警告會結構化，以提供更清楚的原因和後續步驟。 它們包含下列屬性：
 
-| 屬性 | 說明 | 範例 |
+| 屬性 | 描述 | 範例 |
 | --- | --- | --- |
 | 索引鍵 | 受錯誤或警告影響之檔的檔識別碼。 | HTTPs： \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | NAME | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構產生： [category]。[子類別]。[resourceType]。CoNtext.resourcename | DocumentExtraction. azureblob. myBlobContainerName 擴充. WebApiSkill. mySkillName 投射. SearchIndex. OutputFieldMapping. myOutputFieldName SearchIndex. MergeOrUpload. myIndexName |

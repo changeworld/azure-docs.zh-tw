@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443381"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>遷移至新的彈性資料庫工作 (preview) 
@@ -89,7 +89,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 
 
-## <a name="migration"></a>移轉
+## <a name="migration"></a>遷移
 
 既然已初始化舊的和新的彈性作業 Cmdlet，請將認證、目標及作業移轉至新的「作業資料庫」**。
 

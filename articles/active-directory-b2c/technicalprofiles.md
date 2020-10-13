@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203141"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948267"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,8 +84,8 @@ ms.locfileid: "85203141"
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 網域 | 0:1 | 技術設定檔的網域名稱。 例如，如果您的技術設定檔指定 Facebook 識別提供者，則網域名稱為 Facebook.com。 |
-| DisplayName | 1:1 | 可向使用者顯示的技術設定檔名稱。 |
-| 描述 | 0:1 | 可向使用者顯示的技術設定檔描述。 |
+| DisplayName | 1:1 | 技術設定檔的顯示名稱。 |
+| 描述 | 0:1 | 技術設定檔的描述。 |
 | 通訊協定 | 0:1 | 用於與其他合作對象進行通訊的通訊協定。 |
 | 中繼資料 | 0:1 | 通訊協定使用的機碼值組，用於在交易過程中與端點通訊。 |
 | InputTokenFormat | 0:1 | 輸入權杖的格式。 可能的值：`JSON`、`JWT`、`SAML11` 或 `SAML2`。 `JWT` 值代表以 IETF 規格為基礎的 JSON Web 權杖。 `SAML11` 值代表以 OASIS 規格為基礎的 SAML 1.1 安全性權杖。  `SAML2` 值代表以 OASIS 規格為基礎的 SAML 2.0 安全性權杖。 |
@@ -111,7 +111,7 @@ ms.locfileid: "85203141"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值： `OAuth1` 、 `OAuth2` 、 `SAML2` 、 `OpenIdConnect` 、 `Proprietary` 或 `None` 。 |
+| Name | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值： `OAuth1` 、 `OAuth2` 、 `SAML2` 、 `OpenIdConnect` 、 `Proprietary` 或 `None` 。 |
 | 處理常式 | 否 | 當通訊協定名稱設為 `Proprietary` 時，請指定 Azure AD B2C 用於判斷通訊協定處理常式之組件的完整名稱。 |
 
 ## <a name="metadata"></a>中繼資料
@@ -138,7 +138,7 @@ ms.locfileid: "85203141"
 | ------- | ----------- | ----------- |
 | Key | 1:n | 此技術設定檔中使用的密碼編譯金鑰。 |
 
-### <a name="key"></a>機碼
+### <a name="key"></a>Key
 
 **Key** 元素包含下列屬性：
 
