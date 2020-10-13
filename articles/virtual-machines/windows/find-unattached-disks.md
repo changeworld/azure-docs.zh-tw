@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f217a53c23df4f161207aaceb528680ddcddbe7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88705691"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972793"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>尋找及刪除未連結的 Azure 受控和非受控磁碟
 
@@ -20,7 +20,7 @@ ms.locfileid: "88705691"
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>受控磁碟：尋找及刪除未連結的磁碟
 
-下列指令碼會藉由檢查 **ManagedBy** 屬性的值，以尋找未連結的[受控磁碟](managed-disks-overview.md)。 如果受控磁碟已連結至 VM，**ManagedBy** 屬性包含 VM 的資源 ID。 如果未連結受控磁碟，則 **ManagedBy** 屬性為 null。 指令碼會檢查 Azure 訂用帳戶中的所有受控磁碟。 當指令碼找到 **ManagedBy** 屬性設為 null 的受控磁碟時，指令碼會判定該磁碟並未連結。
+下列指令碼會藉由檢查 **ManagedBy** 屬性的值，以尋找未連結的[受控磁碟](../managed-disks-overview.md)。 如果受控磁碟已連結至 VM，**ManagedBy** 屬性包含 VM 的資源 ID。 如果未連結受控磁碟，則 **ManagedBy** 屬性為 null。 指令碼會檢查 Azure 訂用帳戶中的所有受控磁碟。 當指令碼找到 **ManagedBy** 屬性設為 null 的受控磁碟時，指令碼會判定該磁碟並未連結。
 
 >[!IMPORTANT]
 >首先，將 **deleteUnattachedDisks** 變數設為 0 來執行指令碼。 這個動作可讓您尋找和檢視所有未連結的受控磁碟。

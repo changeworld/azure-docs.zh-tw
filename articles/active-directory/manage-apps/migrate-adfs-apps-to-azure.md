@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802696"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory
@@ -94,7 +94,7 @@ ms.locfileid: "91802696"
 
 LOB 應用程式是由您的組織在內部開發，或作為安裝在您資料中心內的標準封裝產品來提供。 範例包括建立在 Windows Identity Foundation 和 SharePoint 應用程式上的應用程式， (不是 SharePoint Online) 。
 
-使用 OAuth 2.0、OpenID Connect 或 WS-同盟的 LOB 應用程式，可以與 [應用程式註冊](../develop/quickstart-register-app.md)Azure AD 整合。 在[Azure 入口網站](https://portal.azure.com/)的 [企業應用程式] 頁面上，將使用 SAML 2.0 或 WS-同盟的自訂應用程式整合為[非資源庫應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)。
+使用 OAuth 2.0、OpenID Connect 或 WS-Federation 的 LOB 應用程式，可以與 Azure AD 作為 [應用程式註冊](../develop/quickstart-register-app.md)來整合。 在[Azure 入口網站](https://portal.azure.com/)的 [企業應用程式] 頁面上，將使用 SAML 2.0 或 WS-Federation 的自訂應用程式整合為[非資源庫應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)。
 
 ## <a name="saml-based-single-sign-on"></a>以 SAML 為基礎的單一登入
 
@@ -171,7 +171,7 @@ LOB 應用程式是由您的組織在內部開發，或作為安裝在您資料�
 
 **通訊協定功能**
 
-* 支援 WS-TRUST ActAs 模式
+* 支援 WS-Trust ActAs 模式
 
 * SAML 成品解析
 
@@ -236,11 +236,11 @@ SaaS 應用程式必須知道傳送驗證要求的位置，以及如何驗證所
 
 | 組態設定| AD FS| 如何在 Azure AD 中設定 |
 | - | - | - |
-| **IdP 登入 URL** <p>從應用程式的觀點 (來看，IdP 的登入 URL，使用者會被重新導向以進行登入) 。| AD FS 登入 URL 是 AD FS federation service 名稱後面接著 "/adfs/ls/." <p>例如：`https://fs.contoso.com/adfs/ls/`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。 <p> 針對使用 SAML-P 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>針對使用 WS-同盟通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP 登出 URL**<p>從應用程式的觀點來看，IdP 的登出 URL (當使用者選擇登出應用程式) 時重新導向。| 登出 URL 與登入 URL 相同，或附加 "wa = wsignout1.0 1.0" 的相同 URL。 例如：`https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>針對使用 SAML-P 通訊協定的應用程式：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 針對使用 WS-同盟通訊協定的應用程式： [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **IdP 登入 URL** <p>從應用程式的觀點 (來看，IdP 的登入 URL，使用者會被重新導向以進行登入) 。| AD FS 登入 URL 是 AD FS federation service 名稱後面接著 "/adfs/ls/." <p>例如： `https://fs.contoso.com/adfs/ls/`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。 <p> 針對使用 SAML-P 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>針對使用 WS-Federation 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP 登出 URL**<p>從應用程式的觀點來看，IdP 的登出 URL (當使用者選擇登出應用程式) 時重新導向。| 登出 URL 與登入 URL 相同，或附加 "wa = wsignout1.0 1.0" 的相同 URL。 例如： `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>針對使用 SAML-P 通訊協定的應用程式：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 針對使用 WS-Federation 通訊協定的應用程式： [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **權杖簽署憑證**<p>IdP 會使用憑證的私密金鑰來簽署已發行的權杖。 它會驗證權杖是否來自應用程式設定要信任的相同 IdP。| 在 AD FS 管理的 [憑證]**** 之下可找到 AD FS 權杖簽署憑證。| 在應用程式的 [ **單一登入] 屬性** 的 [標頭 **SAML 簽署憑證**] 底下的 Azure 入口網站中找到它。 您可以在該處下載憑證以便上傳至應用程式。  <p>如果應用程式有一個以上的憑證，您可以在同盟中繼資料 XML 檔案中找到所有憑證。 |
-| **識別碼/「簽發者」**<p>從應用程式觀點來看，IdP 的識別碼 (有時稱為「簽發者識別碼」 ) 。<p>在 SAML 權杖中，此值會顯示為簽發者元素。| AD FS 的識別碼通常是 [服務] 下的 [AD FS 管理] 中的同盟服務識別碼， **> 編輯同盟服務屬性**。 例如：`http://fs.contoso.com/adfs/services/trust`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>HTTPs： \/ /sts.windows.net/{tenant-id}/ |
-| **IdP 同盟中繼資料**<p>IdP 公開可用同盟中繼資料的位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。| 在 [服務 > 端點] 下的 [AD FS 管理] 中，尋找 AD FS 同盟中繼資料 URL **> 中繼資料 > 類型：同盟中繼資料**。 例如：`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的對應值會遵循此模式 [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) 。 將 {TenantDomainName} 取代為您租使用者的名稱，格式為 "contoso.onmicrosoft.com"。   <p>如需詳細資訊，請參閱[同盟中繼資料](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
+| **識別碼/「簽發者」**<p>從應用程式觀點來看，IdP 的識別碼 (有時稱為「簽發者識別碼」 ) 。<p>在 SAML 權杖中，此值會顯示為簽發者元素。| AD FS 的識別碼通常是 [服務] 下的 [AD FS 管理] 中的同盟服務識別碼， **> 編輯同盟服務屬性**。 例如： `http://fs.contoso.com/adfs/services/trust`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>HTTPs： \/ /sts.windows.net/{tenant-id}/ |
+| **IdP 同盟中繼資料**<p>IdP 公開可用同盟中繼資料的位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。| 在 [服務 > 端點] 下的 [AD FS 管理] 中，尋找 AD FS 同盟中繼資料 URL **> 中繼資料 > 類型：同盟中繼資料**。 例如： `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的對應值會遵循此模式 [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) 。 將 {TenantDomainName} 取代為您租使用者的名稱，格式為 "contoso.onmicrosoft.com"。   <p>如需詳細資訊，請參閱[同盟中繼資料](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>代表 Azure AD 中 AD FS 安全性原則
@@ -458,7 +458,7 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 ‎ |
 | 以 SAML 為基礎的 SSO| 使用 [**單一登入**] 下的 [[測試 SAML 設定](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues)] 按鈕。
 ‎ |
-| 以密碼為基礎的 SSO| 下載並安裝[MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in 擴充](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)功能。 此延伸模組可協助您啟動任何組織的雲端應用程式，而這些應用程式需要您使用 SSO 進程。
+| Password-Based SSO| 下載並安裝[MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in 擴充](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)功能。 此延伸模組可協助您啟動任何組織的雲端應用程式，而這些應用程式需要您使用 SSO 進程。
 ‎ |
 | 應用程式 Proxy| 確定您的連接器正在執行，並已指派給您的應用程式。 請造訪 [應用程式 Proxy 疑難排解指南](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) ，以取得進一步的協助。
 ‎ |
@@ -484,7 +484,7 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 
 * 提醒使用者可能需要更新其 MFA 設定。
 
-* 如果已部署自助式密碼重設，使用者可能需要更新或驗證其驗證方法。 請參閱 [MFA](https://aka.ms/mfatemplates) 和 [SSPR](https://aka.ms/ssprtemplates) 終端使用者通訊範本。
+* 如果已部署 Self-Service 密碼重設，使用者可能需要更新或驗證其驗證方法。 請參閱 [MFA](https://aka.ms/mfatemplates) 和 [SSPR](https://aka.ms/ssprtemplates) 終端使用者通訊範本。
 
 與外部使用者的通訊：此使用者群組通常會在問題發生時受到最嚴重的影響。 如果您的安全性狀態為外部夥伴指定一組不同的條件式存取規則或風險設定檔，則更是如此。 請確定外部夥伴知道雲端遷移排程，並有時間範圍，建議他們參與試驗部署，以測試外部共同作業的獨特流程。 最後，請確定他們有辦法在發生中斷問題時存取您的技術服務人員。
 
