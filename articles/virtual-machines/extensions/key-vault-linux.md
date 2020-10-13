@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 720c5190bfc1b4b6a6c3e86052cfc329233c5ed2
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: bdab132d4d22dced97273e9d1d051f155f9d69b6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802475"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970719"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -32,6 +32,11 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>必要條件
+  - 具有憑證的 Key Vault 實例。 請參閱 [建立 Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+  - VM/VMSS 必須已指派 [受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  - Key Vault 存取原則必須設定為 `get` `list` VM/VMSS 受控識別的秘密和許可權，才能抓取秘密的憑證部分。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-cli)。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -202,12 +207,10 @@ Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬
         --vm-name "<vmName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
-
 請留意下列限制/需求：
 - 金鑰保存庫限制：
   - 部署時必須存在 
-  - 您必須使用受控識別來設定 VM/VMSS 身分識別的 Key Vault 存取原則。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-cli)。
-
+  - 您必須使用受控識別來設定 VM/VMSS 身分識別的 Key Vault 存取原則。 瞭解 [如何驗證 Key Vault](../../key-vault/general/authentication.md) 並 [指派 Key Vault 存取原則](../../key-vault/general/assign-access-policy-cli.md)。
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 

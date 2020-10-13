@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5037975bcfbf9b19de5cc203d26e1caf0f85893f
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710136"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>使用 PowerShell 重新開機適用於 PostgreSQL 的 Azure 資料庫伺服器
@@ -22,7 +22,7 @@ ms.locfileid: "91710136"
 
 完成重新開機所需的時間量取決於于 postgresql 復原程式。 若要減少重新開機的時間，建議您在重新開機之前，將伺服器上發生的活動量降至最低。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 

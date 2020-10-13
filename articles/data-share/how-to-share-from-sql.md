@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 10/02/2020
 ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761918"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
@@ -54,7 +54,7 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
     1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
     1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
-    1. 按一下 [檔案] 。 
+    1. 按一下 **[儲存]** 。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -169,7 +169,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
     1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
     1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
-    1. 按一下 [檔案] 。 
+    1. 按一下 **[儲存]** 。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -263,7 +263,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 | smalldatetime |Datetime |
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
-| sql_variant |物件 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |

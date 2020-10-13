@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: c8934e1344ff2d7df97c3854f4e025f19fb37f1e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361614"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>教學課程：為組織設定新的 Relic 以自動布建使用者
@@ -31,7 +31,7 @@ ms.locfileid: "91361614"
 > * 依組織在新的 Relic 中布建群組和群組成員資格
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial) 依組織的新 Relic (建議的) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

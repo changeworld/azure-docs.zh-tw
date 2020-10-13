@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b18629a776dd98950f49b1f607cbc876abcd9c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628876"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>建立 Azure AD Connect 雲端式布建的新設定
@@ -62,7 +62,7 @@ ms.locfileid: "91628876"
 ## <a name="attribute-mapping"></a>屬性對應
 Azure AD Connect 雲端布建可讓您輕鬆地對應內部部署使用者/群組物件與 Azure AD 中物件之間的屬性。  您可以根據您的業務需求自訂預設的屬性對應。 因此，您可以變更或刪除現有的屬性對應，或建立新的屬性對應。  如需詳細資訊，請參閱 [屬性對應](how-to-attribute-mapping.md)。
 
-## <a name="on-demand-provisioning"></a>隨選布建
+## <a name="on-demand-provisioning"></a>隨選佈建
 Azure AD Connect 雲端布建可讓您藉由將這些變更套用至單一使用者或群組，來測試設定變更。  您可以使用此驗證並確認對設定所做的變更已正確套用，並已正確地同步處理至 Azure AD。  如需詳細資訊，請參閱 [隨選布建](how-to-on-demand-provision.md)。
 
 ## <a name="restart-provisioning"></a>重新開機布建 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
 ms.openlocfilehash: df691f5b9e74432f683e52fbb896dd4d44efe2aa
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91622059"
 ---
 # <a name="media-reserved-units"></a>媒體保留單元
@@ -32,7 +32,7 @@ Azure 媒體服務可讓您透過管理媒體保留單元 (Mru) 來調整媒體�
 
 下表可協助您在不同編碼速度之間進行選擇時做出決定。  它會根據所用的 MRU，顯示7分鐘、1080p 影片的編碼持續時間。
 
-|RU 類型|案例|7 分鐘 1080p 視訊的結果範例 |
+|RU 類型|狀況|7 分鐘 1080p 視訊的結果範例 |
 |---|---|---|
 | **S1**|單一位元速率編碼。 <br/>在 SD或如下解決方法的檔案、對時間不敏感、低成本。|使用「H264 單一位元速率 SD 16x9」進行編碼為單一位元速率 SD 解析度的檔，大約需要7分鐘。|
 | **S2**|單一位元速率和多重位元速率編碼。<br/>SD 和 HD 編碼的一般使用方式。|具有「H264 單一位元速率720p」預設值的編碼需要大約6分鐘的時間。<br/><br/>具有「H264 多重位元速率720p」預設值的編碼需要大約12分鐘。|

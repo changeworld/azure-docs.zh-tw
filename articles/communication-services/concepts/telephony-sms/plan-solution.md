@@ -2,105 +2,79 @@
 title: 規劃您的 Azure 通訊服務電話語音和 SMS 解決方案
 titleSuffix: An Azure Communication Services concept document
 description: 了解如何有效規劃使用電話號碼和電話語音。
-author: stkozak
-manager: rampras
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: stkozak
-ms.date: 06/23/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: overview
+ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943683"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767145"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>規劃您的電話語音和 SMS 解決方案
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-本文件說明 Azure 通訊服務必須提供的各種電話語音方案和號碼類型。 我們將逐步解說決策流程，協助您選取語音服務提供者、電話號碼類型、方案，以及透過通訊服務提供的功能。
 
-## <a name="about-phone-numbers-in-azure-communications-services"></a>關於 Azure 通訊服務中的電話號碼
+Azure 通訊服務可讓您使用電話號碼撥打語音電話，並透過公用交換電話網路 (PSTN) 傳送 SMS 訊息。 在本文件中，我們將檢閱使用通訊服務規劃電話語音和 SMS 解決方案時所適用的電話號碼類型、方案和區域可用性。
 
-Azure 通訊服務可讓您使用電話號碼來撥打及接收電話語音通話和 SMS 訊息。 這些電話號碼可用來在您服務所撥打的外撥通話上設定呼叫者識別碼。
-  
-如果您沒有要匯入通訊服務解決方案的現有電話號碼，最簡單的開始方式，就是在幾分鐘內從 Azure 通訊服務取得新的電話號碼。
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-如果您有想要在解決方案中繼續使用的現有電話號碼 (例如，1-800–COMPANY)，您可以將來自現有提供者的電話號碼移植到通訊服務。
-
-下圖可協助您瀏覽可用的選項：
-
-:::image type="content" source="../media/plan-solution/decision-tree-basic.png" alt-text="此圖顯示如何針對您的電話號碼制定決策。":::
-
-現在，讓我們來回顧透過通訊服務提供的電話號碼類型和功能。 
-
-## <a name="microsoft-direct-offer-of-phone-numbers-and-capabilities"></a>電話號碼和功能的 Microsoft 直接供應項目
-
-Azure 通訊服務為開發人員提供絕佳的彈性。 在大部分的電話號碼上，我們都可讓您設定一組「單點」的方案。 有些開發人員只需要輸入通話方案；有些可能會選擇進線通話和外撥 SMS 方案。 當您在通訊服務內租用及/或移植電話號碼時，可以選取這些方案。
-
-可用的方案取決於您在其中操作的國家/地區和電話號碼類型。下圖代表決策流程：  可用的方案取決於您在其中操作的國家/地區和電話號碼類型。
-
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Example for the decision flow"::: -->
-
-在您選取電話號碼類型之前，讓我們先複習國際電話編號計劃。
-
-### <a name="optional-reading-international-public-telecommunication-numbering-plan-e164"></a>選擇性閱讀。 國際公用電信編號計劃 (E.164)
-
-> [!NOTE]
-> 即使您已熟悉 E.164 電話編號計劃，也建議您查看這項資訊，以進一步了解 Azure 通訊服務直接供應項目所提供的類型和功能。
-
-國際公用電信編號計劃是在國際電信聯盟 (ITU) 建議 E.164 中定義。 符合的數位限制為最多 15 個數字。
-
-電話號碼包含
-
--   前置詞 “+”
--   國際撥號首碼或國家/地區代碼 (一、二或三個數字) 
--   (選擇性) 國家 (地區) 目的地代碼或編號計劃，通常稱為「區碼」。 此代碼的長度取決於國家/地區。 在美國，這是三個數字。 在澳洲和紐西蘭，這是一個數字。 德國、日本、墨西哥和某些其他國家/地區代碼的長度可能不同。 例如，在德國，區碼可為二到五個數字，而在日本，可為一到五個數字。
--   訂閱者號碼
-
-> [!NOTE]
-> 上述分類並不完全符合 ITU E.164 標準，並旨在提供簡化的描述。 例如，訂閱者號碼會在標準中細分。 如果您想要更深入了解國際編號計劃，[ITU E. 164 標準](https://www.itu.int/rec/T-REC-E.164)是很好的起點。  
-
-以下一些範例可協助您更了解編號計劃：
-
-美國區域電話號碼：
-
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="美國區域電話號碼的範例":::
-
-加拿大區域電話號碼：
-
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="加拿大區域電話號碼的範例":::
-
-北美洲區域免付費電話號碼：
-
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="北美洲免費電話號碼的範例":::
-
-英國的行動電話號碼：
-
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="英國行動電話號碼的範例":::
-
-接下來，讓我們來回顧 Azure 通訊服務中可用的特定電話號碼類型。
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Azure 通訊服務中的電話號碼類型
+ 
+通訊服務提供兩種類型的電話號碼：**當地**和**免付費**。 
 
-Microsoft 在適用的國家/地區中提供簡短代碼和行動電話號碼的區域和免付費方案。
+### <a name="local-numbers"></a>當地電話號碼
+當地 (地理) 電話號碼是由美國當地區碼組成的 10 位數電話號碼。 例如，`+1 (206) XXX-XXXX` 是區碼為 `206` 的當地電話號碼。 此區碼指派給西雅圖的城市。 這些電話號碼通常由個人和當地企業使用。 Azure 通訊服務提供美國地區的當地電話號碼。 這些號碼可以用來撥打電話，但不能用來傳送 SMS 訊息。 
+
+### <a name="toll-free-numbers"></a>免付費電話號碼
+免付費電話號碼是具有不同區碼的 10 位數電話號碼，您可以免費從任何電話號碼進行通話。 例如，`+1 (800) XXX-XXXX` 是北美洲區域的免付費電話號碼。 這些電話號碼通常用於服務客戶。 Azure 通訊服務提供美國地區的免付費電話號碼。 這些號碼可以用來撥打電話，以及傳送 SMS 訊息。 免付費電話號碼無法供人員使用，而且只能指派給應用程式。
+
+#### <a name="choosing-a-phone-number-type"></a>選擇電話號碼類型
+
+如果應用程式將使用您的電話號碼 (例如，代表您的服務進行通話或傳送訊息)，則您可以選取免付費或當地 (地理) 電話號碼。 如果您的應用程式將傳送 SMS 訊息及/或進行通話，則您可以選取免付費電話號碼。
+
+如果您的電話號碼是由人員使用 (例如，通話應用程式的使用者)，則必須使用當地 (地理) 電話號碼。 
 
 下表摘要說明這些電話號碼類型： 
 
-| 電話號碼類型 | 範例                              | 國家/地區可用性    | 常見使用案例                                                                                                     |
-| ----------------- | ------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| 地區          | +1 (地理區碼) XXX XX XX  | 美國、加拿大、波多黎各 | 將電話號碼指派給應用程式中的使用者，或指派給互動式語音回應 (IVR) 系統/Bot |
-| 免付費電話         | +1 (免付費區域「代碼」) XXX XX XX | 美國、加拿大、波多黎各 | 指派給互動式語音回應 (IVR) 系統/Bot、SMS 應用程式                                        |
+| 電話號碼類型 | 範例                              | 國家/地區可用性    | 電話號碼功能 |常見使用案例                                                                                                     |
+| ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
+| 當地 (地理)        | +1 (當地區碼) XXX XX XX  | 美國                      | 通話 (撥出) | 將電話號碼指派給應用程式中的使用者  |
+| 免付費電話         | +1 (免付費區域「代碼」) XXX XX XX | 美國                      | 通話 (撥出)、SMS (撥入/撥出)| 將電話號碼指派給互動式語音回應 (IVR) 系統/Bot、SMS 應用程式                                        |
 
-## <a name="plans"></a>規劃 
 
-讓我們看看您可以為您的電話號碼啟用的功能。 由於法規需求，這些功能會因國家/地區而異。 Azure 通訊服務提供下列功能：
+## <a name="phone-number-plans-in-azure-communication-services"></a>Azure 通訊服務中的電話號碼類型 
 
-- **單向外撥 SMS**，適用於通知和雙因素驗證案例。
-- **雙向進線和外撥 SMS**，這是一項預先定義的套件，可讓 SMS 做為方案一部分進行傳送和接收。
-- **PSTN 通話**，您可以選取進線通話，並使用呼叫者識別碼來撥打外撥通話。
+針對大部分的電話號碼，我們都可讓您設定一組「單點」的方案。 有些開發人員只需要撥出通話方案；有些可能會選擇撥出通話和撥出 SMS 方案。 當您在 Azure 通訊服務內租用電話號碼時，可以選取這些方案。
+
+可供您使用的方案取決於您營運所在的國家/地區、您的使用案例，以及您所選取的電話號碼類型。 由於法規需求，這些方案會因國家/地區而異。 Azure 通訊服務提供下列方案：
+
+- **單向撥出 SMS** 此方案可讓您將 SMS 訊息傳送給您的使用者。 此方案適用於通知和雙因素驗證警示等案例。 
+- **雙向撥入和撥出 SMS** 此方案可讓您使用電話號碼將訊息傳送給使用者，以及從使用者接收訊息。 此方案在客戶服務案例中很有用。
+- **單向撥出電話通話** 此方案可讓您對使用者進行通話，並為您服務所進行的撥出通話設定來電者識別碼。 此方案在客戶服務和語音通知案例中很有用。
+
+## <a name="countryregion-availability"></a>國家/地區可用性
+
+下表顯示您可以在何處取得不同類型的電話號碼，以及與這些電話號碼類型相關聯的撥入及撥出通話和 SMS 功能。
+
+|號碼類型| 取得號碼 | 進行通話                                        | 接收通話                                    |傳送訊息       | 接收訊息 |
+|-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
+| 當地 (地理)  | 美國                 | 美國、加拿大、英國、德國、法國、 +其他*| 美國、加拿大、英國、德國、法國、 +其他* |無法使用| 無法使用 |
+| 免付費電話 | 美國                 | 美國                                                   | 美國                                                    |美國                | 美國 |
+
+\* 如需通話目的地和定價的詳細資訊，請參閱[定價頁面](../pricing.md)。
+
+## <a name="azure-subscriptions-eligibility"></a>Azure 訂用帳戶資格
+
+若要取得電話號碼，您必須是付費的 Azure 訂用帳戶。 試用帳戶無法取得電話號碼。 
 
 ## <a name="next-steps"></a>下一步
 
@@ -113,5 +87,5 @@ Microsoft 在適用的國家/地區中提供簡短代碼和行動電話號碼的
 ### <a name="conceptual-documentation"></a>概念文件
 
 - [語音和視訊概念](../voice-video-calling/about-call-types.md)
-- [呼叫流程和 SMS 流程](../call-flows.md)
+- [通話流程](../call-flows.md)
 - [定價](../pricing.md)

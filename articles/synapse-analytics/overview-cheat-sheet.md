@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807021"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91620268"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics 功能提要
 
@@ -22,23 +22,30 @@ ms.locfileid: "85807021"
 
 Azure Synapse Analytics 功能提要會引導您了解服務及重要命令的基本概念。 本文適用於新的學習人員，以及想要了解 Azure Synapse 重要主題的使用者。
 
-## <a name="architecture"></a>架構
+## <a name="basics"></a>基本
 
-> [!div class="mx-imgBorder"]
->![Synapse 架構](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+**Synapse 工作區**是在 Azure 中進行雲端式企業分析的安全共同作業界限。 工作區會部署在特定區域中，並且具有相關聯的 ADLS Gen2 帳戶和檔案系統 (用於儲存暫存資料)。 工作區位在資源群組底下。
 
-## <a name="terminology"></a>詞彙
+工作區可讓您使用 SQL 和 Apache Spark 執行分析。 可供 SQL 和 Spark 分析使用的資源會組織成 SQL 和 Spark **集區**。 
+
+## <a name="synapse-sql"></a>Synapse SQL
+**Synapse SQL** 可在 Synapse 工作區中執行 T-SQL 型分析。 Synapse SQL 有兩種耗用模型：專用和無伺服器。  若為專用模型，請使用專用的 **SQL 集區**。 一個工作區可以具有任意數目的集區。 若要使用無伺服器模型，請使用名為「隨選 SQL」的無伺服器 SQL 集區。 每個工作區都有其中一個集區。
+
+## <a name="apache-spark-for-synapse"></a>適用於 Synapse 的 Apache Spark
+若要使用 Spark 分析，請在 Synapse 工作區中建立及使用 **Spark 集區**。
+
+## <a name="sql-terminology"></a>SQL 術語
 | 詞彙                         | 定義      |
 |:---                                 |:---                 |
-| **Synapse 工作區** | 在 Azure 中進行雲端式企業分析的安全共同作業界限。 工作區會部署在特定區域中，並且具有相關聯的 ADLS Gen2 帳戶和檔案系統 (用於儲存暫存資料)。 工作區位在資源群組底下。 |
-| **Synapse SQL**   | 使用集區或隨選功能執行分析。  |
-| **SQL 集區**   | 您可以在工作區中部署 0 對 N 的 SQL 佈建資源及其對應資料庫。 每個 SQL 集區都有相關聯的資料庫。 SQL 集區可以透過手動或自動方式進行調整、暫停及繼續。 SQL 集區可以從 100 DWU 擴充到 30,000 DWU。       |
-| **SQL 隨選**   | 針對大規模資料所建立的分散式資料處理系統，可讓您對資料湖中的資料執行 T-SQL 查詢。 這是無伺服器服務，因此您不需要管理基礎結構。       |
+| **SQL 要求**  |   查詢之類的作業會透過 SQL 集區或 SQL 隨選執行。 |
+
+## <a name="spark-terminology"></a>Spark 術語
+| 詞彙                         | 定義      |
+|:---                                 |:---                 |
 |**適用於 Synapse 的 Apache Spark** | Spark 集區中使用的 Spark 執行階段。 目前支援的版本為 Spark 2.4，其搭配 Python 3.6.1、Scala 2.11.12、適用於 Apache Spark 0.5 的 .NET 支援和 Delta Lake 0.3 。  | 
 | **Apache Spark 集區**  | 您可以在工作區中部署 0 對 N 的 Spark 佈建資源及其對應資料庫。 Spark 集區可以自動暫停、繼續及調整。  |
 | **Spark 應用程式**  |   其中包含驅動程式程序和一組執行程式程序。 Spark 應用程式會在 Spark 集區上執行。            |
 | **Spark 工作階段**  |   Spark 應用程式的統一進入點。 其提供一種方式來與 Spark 的各種功能互動，並使用較少的結構。 若要執行筆記本，您必須建立工作階段。 工作階段可以設定為在特定數量及特定大小的執行程式上執行。 筆記本工作階段的預設組態是在 2 個中型執行程式上執行。 |
-| **SQL 要求**  |   查詢之類的作業會透過 SQL 集區或 SQL 隨選執行。 |
 |**資料整合**| 其功能可用來在各種來源之間內嵌資料，以及協調在工作區中或工作區外部執行的活動。| 
 |**成品**| 為使用者封裝管理資料來源、進行開發、協調和視覺化所需物件的概念。|
 |**Notebook**| 互動式和回應式資料科學和工程介面，支援 Scala、PySpark、C# 和 SparkSQL。 |
