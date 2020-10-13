@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: 與 Microsoft Store 用戶端連線
           href: connect-microsoft-store.md
+    - name: 設定裝置重新導向
+      href: configure-device-redirections.md
     - name: 設定 PowerShell 模組
       href: powershell-module.md
     - name: 建立主機集區和工作階段主機
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: 解析建議
       href: azure-advisor-recommendations.md
+    - name: 設定災害復原方案
+      href: disaster-recovery.md
 - name: 概念
   items:
     - name: 驗證

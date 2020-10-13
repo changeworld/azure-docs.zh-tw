@@ -202,6 +202,48 @@ groups:
     title: JavaScript
   - id: programming-language-curl
     title: REST
+- id: programming-languages-set-eighteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言或 CLI
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: CLI
+- id: programming-languages-set-nineteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言或 CLI
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: CLI
 - id: cogsvcs-text-analytics-features
   title: 文字分析 API
   prompt: 選擇文字分析的功能供應項目
@@ -784,10 +826,18 @@ groups:
     title: Go
   - id: platform-powershell
     title: PowerShell
+- id: non-azure-machines
+  title: 非 Azure 機器
+  prompt: 要如何連接非 Azure 機器？
+  pivots:
+  - id: azure-arc
+    title: Azure Arc
+  - id: azure-portal
+    title: 資訊安全中心的入口網站頁面
 metadata:
-  ms.openlocfilehash: a931ef1b1a4a4c5f107c66187d44a74f2eb5bcde
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ed855c35d70e77233bfb06fd5f40281942589129
+  ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91825109"
+  ms.lasthandoff: 10/11/2020
+  ms.locfileid: "91938775"

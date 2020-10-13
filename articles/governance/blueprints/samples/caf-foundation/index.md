@@ -3,12 +3,12 @@ title: CAF 基礎藍圖範例概觀
 description: 適用於 Azure Foundation藍圖範本之雲端採用架構 (CAF) 的概觀和結構
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531690"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950273"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構基礎藍圖範例的概觀
 
@@ -26,18 +26,19 @@ CAF 基礎藍圖範例會在 Azure 中部署建議的基礎結構資源，供組
 
 - [Azure Key Vault](../../../../key-vault/general/overview.md) 執行個體，用來裝載共用服務環境中已部署 VM 所使用的祕密
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以確保當您開始對[儲存體帳戶](../../../../storage/common/storage-introduction.md)進行安全部署以取得診斷記錄時，所有動作和服務皆會記錄到中央位置
-- 部署 [Azure資訊安全中心](../../../../security-center/security-center-intro.md) (標準版)，為您遷移的工作負載提供威脅防護
-- 藍圖也會定義和部署 [Azure 原則](../../../policy/overview.md)，以用於 
-  - 套用至資源群組的標記 (CostCenter)
-  - 在資源群組中附加具有 CostCenter 標籤的資源
-  - 資源和資源群組的允許 Azure 區域
-  - 允許的儲存體帳戶 SKU (部署時選擇)
-  - 允許的 Azure VM SKU (部署時選擇)
-  - 需要部署網路監看員 
-  - 需要 Azure 儲存體帳戶的安全傳輸加密
-  - 拒絕資源類型 (在部署時選擇)  
-- 計畫
-  - 啟用 Azure 資訊安全中心的監視功能 (100 個以上原則定義)
+- 部署 [Azure資訊安全中心](../../../../security-center/security-center-introduction.md) (標準版)，為您遷移的工作負載提供威脅防護
+- 藍圖也會定義和部署 [Azure 原則](../../../policy/overview.md)定義：
+  - 原則定義：
+    - 套用至資源群組的標記 (CostCenter)
+    - 在資源群組中附加具有 CostCenter 標籤的資源
+    - 資源和資源群組的允許 Azure 區域
+    - 允許的儲存體帳戶 SKU (部署時選擇)
+    - 允許的 Azure VM SKU (部署時選擇)
+    - 需要部署網路監看員 
+    - 需要 Azure 儲存體帳戶的安全傳輸加密
+    - 拒絕資源類型 (在部署時選擇)  
+  - 原則計劃：
+    - 啟用 Azure 資訊安全中心的監視功能 (100 個以上原則定義)
 
 所有這些項目皆遵循 [Azure 架構中心 - 參考架構](/azure/architecture/reference-architectures/)中所發佈且經過實證的做法。
 

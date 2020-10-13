@@ -241,9 +241,9 @@
 - name: 針對共用映像資源庫進行疑難排解
   items:
     - name: 針對共用映像資源庫進行疑難排解 - Windows
-      href: ../windows/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
     - name: 針對共用映像資源庫進行疑難排解 - Linux
-      href: ../linux/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
 - name: VM 擴充功能問題
   items:
     - name: Azure 擴充功能概觀

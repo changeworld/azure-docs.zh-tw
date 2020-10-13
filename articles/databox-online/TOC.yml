@@ -165,6 +165,8 @@
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: 排序問題
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: 啟用問題
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: 連絡 Microsoft 支援服務
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 版本資訊
@@ -271,7 +273,7 @@
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
 - name: Azure Stack Edge Pro R
   items:
-    - name: 總覽
+    - name: 概觀
       items:
         - name: Azure Stack Edge Pro R 是什麼？
           href: azure-stack-edge-j-series-overview.md

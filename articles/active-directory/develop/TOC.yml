@@ -4,6 +4,8 @@
   items:
     - name: 什麼是 Microsoft 身分識別平台？
       href: v2-overview.md
+    - name: Docs 有哪些新功能？
+      href: whats-new-docs.md
 - name: 快速入門
   expanded: true
   items:

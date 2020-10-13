@@ -35,7 +35,11 @@
         - name: 0 - 部署物件和動作偵測應用程式
           href: tutorial-video-analytics-deploy.md
         - name: 1 - 建立影片分析應用程式
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: 物件與動態偵測 (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: 物件與動態偵測 (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2- 設定 IoT Edge 裝置
           items:
             - name: 在 Edge 上建立影片分析裝置 (Linux VM)

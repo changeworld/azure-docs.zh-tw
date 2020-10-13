@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/29/2020
-  ms.openlocfilehash: 40c268ed31cf7360d74c5eb8bebf75756fd76563
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/09/2020
+  ms.openlocfilehash: 2b2f1a9dbf8c5621ff83dee9e600575c54e9de28
+  ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
   ms.translationtype: HT
   ms.contentlocale: zh-TW
   ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91570476"
+  ms.locfileid: "91931728"
 landingContent:
 - title: 關於 Azure Batch
   linkLists:
@@ -40,8 +40,12 @@ landingContent:
       url: quick-run-python.md
   - linkListType: concept
     links:
-    - text: 適用於開發人員的工作流程和功能概觀
+    - text: 工作流程和功能概觀
       url: batch-service-workflow-features.md
+    - text: 工作 (Job) 和工作 (Task)
+      url: jobs-and-tasks.md
+    - text: 節點和集區
+      url: nodes-and-pools.md
 - title: 逐步指南
   linkLists:
   - linkListType: tutorial
@@ -50,6 +54,8 @@ landingContent:
       url: tutorial-parallel-dotnet.md
     - text: 檔案平行處理 - Python
       url: tutorial-parallel-python.md
+    - text: Python 指令碼搭配 Data Factory
+      url: tutorial-run-python-batch-azure-data-factory.md
     - text: OCR with Batch 和 Functions
       url: tutorial-batch-functions.md
     - text: 使用 Arnold 進行場景轉譯
@@ -65,11 +71,13 @@ landingContent:
     - text: 建立批次帳戶：
       url: batch-account-create-portal.md
     - text: 建立和管理集區
-      url: batch-custom-images.md
+      url: batch-sig-images.md
     - text: 同時執行工作
       url: batch-parallel-node-tasks.md
-    - text: 使用應用程式封裝
+    - text: 使用應用程式套件
       url: batch-application-packages.md
+    - text: 執行容器應用程式
+      url: batch-docker-container-workloads.md
   - linkListType: concept
     links:
     - text: 支援的 VM 大小
