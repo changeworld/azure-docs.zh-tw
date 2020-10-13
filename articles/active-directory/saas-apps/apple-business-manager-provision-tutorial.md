@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757481"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941087"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple Business Manager 以自動布建使用者
 
@@ -103,7 +103,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Apple Business Manager**]。
 
@@ -160,7 +160,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 * [在 Apple Business Manager 中管理現有的 SCIM token 和連接](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
 * [中斷 Apple Business Manager 中的 SCIM 連接](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
 * [在 Apple Business Manager 中管理現有的 SCIM token 和連接](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [在 Apple Business Manager 中針對 SCIM 連接進行疑難排解](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [在 Apple Business Manager 中針對 SCIM 連接進行疑難排解](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>後續步驟
 

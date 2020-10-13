@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441632"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
@@ -25,7 +25,7 @@ ms.locfileid: "91441632"
 
 下列 Azure Multi-Factor Authentication 設定可在 Azure 入口網站中取得：
 
-| 特徵 | 描述 |
+| 功能 | 描述 |
 | ------- | ----------- |
 | [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，則暫時鎖定帳戶以使用 Azure Multi-Factor Authentication。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |

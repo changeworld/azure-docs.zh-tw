@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
 ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620081"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集
@@ -231,7 +231,7 @@ Azure 入口網站中列出的叢集狀態可協助您監視自動調整活動�
 | 更新  | 正在更新叢集自動調整設定。  |
 | HDInsight 設定  | 叢集擴大或縮小作業正在進行中。  |
 | 更新錯誤  | HDInsight 在自動調整設定更新期間發生問題。 客戶可以選擇重試更新或停用自動調整。  |
-| Error  | 叢集發生問題，因此無法使用。 刪除此叢集，並建立一個新叢集。  |
+| 錯誤  | 叢集發生問題，因此無法使用。 刪除此叢集，並建立一個新叢集。  |
 
 若要查看叢集中目前的節點數目，請移至叢集的 [**總覽**] 頁面上的 [叢集**大小**] 圖表。 或選取 [**設定**] 下的 [叢集**大小**]。
 

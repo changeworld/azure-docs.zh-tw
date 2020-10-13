@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440727"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用即時存取保護您的管理埠
@@ -33,11 +33,11 @@ ms.locfileid: "91440727"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
-|定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
+|版本狀態：|正式上市 (GA)|
+|定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |支援的 Vm：|![是 ](./media/icons/yes-icon.png) 透過 Azure Resource Manager 部署的 vm。<br>![沒有 ](./media/icons/no-icon.png) 使用傳統部署模型部署的 vm。 [深入瞭解這些部署模型](../azure-resource-manager/management/deployment-models.md)。<br>![未 ](./media/icons/no-icon.png) 受[Azure 防火牆管理員](https://docs.microsoft.com/azure/firewall-manager/overview)控制的 Azure 防火牆保護 vm|
-|必要的角色和許可權：|**讀取器** 和 **SecurityReader** 角色可以同時查看 JIT 狀態和參數。<br>若要建立可以使用 JIT 的自訂角色，請參閱 [設定和使用 jit 需要哪些許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要為需要要求對 VM 進行 JIT 存取的使用者建立最低許可權的角色，並不執行任何其他 JIT 作業，請使用來自「安全性中心」 GitHub 頁面的 [設定 JitLeastPrivilegedRole 腳本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) 。|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|必要的角色和權限：|**讀取器** 和 **SecurityReader** 角色可以同時查看 JIT 狀態和參數。<br>若要建立可以使用 JIT 的自訂角色，請參閱 [設定和使用 jit 需要哪些許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要為需要要求對 VM 進行 JIT 存取的使用者建立最低許可權的角色，並不執行任何其他 JIT 作業，請使用來自「安全性中心」 GitHub 頁面的 [設定 JitLeastPrivilegedRole 腳本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) 。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 
@@ -95,7 +95,7 @@ ms.locfileid: "91440727"
 
      1. 設定埠安全性以滿足您的需求。
 
-     1. 選取 [確定]。
+     1. 選取 [確定]  。
 
 1. 選取 [儲存]。
 

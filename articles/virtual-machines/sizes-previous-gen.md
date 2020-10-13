@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05da5a21fb558b7d936b7569a69578eda06e11cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666614"
+ms.locfileid: "91875269"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -61,30 +61,9 @@ MBps = 每秒 10^6 位元組，而 GiB = 1024^3 位元組。
 
 <sup>1</sup> Fs 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱 [高效能的設計](premium-storage-performance.md)。
 
-
-## <a name="nvv2-series"></a>NVv2 系列
-
-**較新的大小建議**： [NVv3 系列](nvv3-series.md)
-
-NVv2 系列的虛擬機器採用 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 以及具備 Intel Broadwell CPU 的 NVIDIA GRID 技術。 這些虛擬機器專用於 GPU 高速圖形應用程式以及虛擬桌面，客戶可用於將其資料視覺化、將結果模擬到檢視中、運用於 CAD 之上，或是轉譯內容及串流內容。 除此之外，這些虛擬機器可以執行單一的精密工作負載，像是編碼及轉譯。 NVv2 虛擬機器支援進階儲存體，同時相較於之前的 NV 系列，配備兩倍的系統記憶體 (RAM)。  
-
-NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
-
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
-| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
-| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
-## <a name="older-generations-of-virtual-machine-sizes"></a>較舊的虛擬機器大小層代
-
-本節提供舊版虛擬機器大小的相關資訊。 這些大小仍受支援，但不會收到額外的容量。 已正式推出較新或替代的大小。 請參閱 [Azure 中 Linux 虛擬機器的大小](./sizes.md) ，以選擇最符合您需求的 VM 大小。  
-
-如需調整 Linux VM 大小的詳細資訊，請參閱 [調整 LINUX vm 的大小](linux/change-vm-size.md)。  
-
 <br>
+
+
 
 ### <a name="basic-a"></a>基本 A  
 
@@ -366,6 +345,106 @@ NV 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈�
 | Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
 
 1 GPU = 1/2 M60 卡。
+<br>
+
+
+## <a name="nvv2-series"></a>NVv2 系列
+
+**較新的大小建議**： [NVv3 系列](nvv3-series.md)
+
+NVv2 系列的虛擬機器採用 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 以及具備 Intel Broadwell CPU 的 NVIDIA GRID 技術。 這些虛擬機器專用於 GPU 高速圖形應用程式以及虛擬桌面，客戶可用於將其資料視覺化、將結果模擬到檢視中、運用於 CAD 之上，或是轉譯內容及串流內容。 除此之外，這些虛擬機器可以執行單一的精密工作負載，像是編碼及轉譯。 NVv2 虛擬機器支援進階儲存體，同時相較於之前的 NV 系列，配備兩倍的系統記憶體 (RAM)。  
+
+NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
+
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC | 虛擬工作站 | 虛擬應用程式 |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
+| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
+| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+<br>
+
+## <a name="nc-series"></a>NC 系列
+**較新的大小建議**： [NC T4 v3 系列](nct4-v3-series.md)
+
+NC 系列 Vm 是由 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) 卡和 Intel 2690 E5-v3 所支援， (Haswell) 處理器。 使用者可以藉由將 CUDA 用於能源探勘應用程式、當機模擬、光線追蹤轉譯、深度學習等等，更快速地處理資料。 NC24r 設定提供低延遲且高輸送量網路介面，最適合用於緊密結合的平行計算工作負載。
+
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
+
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC |
+|---|---|---|---|---|---|---|---|
+| Standard_NC6    | 6  | 56  | 340  | 1 | 12 | 24 | 1 |
+| Standard_NC12   | 12 | 112 | 680  | 2 | 24 | 48 | 2 |
+| Standard_NC24   | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+| Standard_NC24r* | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+
+1 GPU = 1/2 K80 卡。
+
+*支援 RDMA
+
+
+<br>
+
+
+## <a name="ncv2-series"></a>NCv2 系列
+**較新的大小建議**： [NC T4 V3 系列](nct4-v3-series.md) 和 [NC V100 v3 系列](ncv3-series.md)
+
+NCv2 系列 VM 是由 NVIDIA Tesla P100 GPU 提供技術支援。 這些 GPU 可提供 NC 系列 2 倍以上的計算效能。 客戶可針對儲槽模型、DNA 定序、蛋白質分析、蒙地卡羅模擬等傳統 HPC 工作負載，善用這些更新過的 GPU。 除了 Gpu 之外，NCv2 系列的 Vm 也會由 Intel Broadwell E5-2690 v4 () Cpu 提供技術支援。
+
+NC24rs v2 組態提供低延遲且高輸送量網路介面，最適合用於緊密結合的平行計算工作負載。
+
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+
+> 針對此 VM 系列，訂用帳戶中的 vCPU (core) 配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+>
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
+|---|---|---|---|---|---|---|---|---|
+| Standard_NC6s_v2    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
+| Standard_NC12s_v2   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v2   | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+| Standard_NC24rs_v2* | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+
+1 GPU = 一張 P100 卡。
+
+*支援 RDMA
+
+<br>
+
+## <a name="nd-series"></a>ND 系列
+**較新的大小建議**： [NDv2 系列](ndv2-series.md) 和 [NC V100 v3 系列](ncv3-series.md)
+
+ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習工作負載所設計。 它們能為訓練和推斷提供絕佳效能。 ND 實例是由 [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) Gpu 和 Intel 2690 E5-v4 所支援， (Broadwell) cpu。 這些執行個體為單精確度浮點數作業、使用 Microsoft Cognitive Toolkit 的 AI 工作負載、TensorFlow、Caffe 及其他架構，提供絕佳的效能。 ND 系列還能提供更大的 GPU 記憶體大小 (24 GB)，能夠用於更大的類神經網路模型。 如同 NC 系列，ND 系列透過 RDMA 提供具有次要低延遲且高輸送量網路的設定，以及 InfiniBand 連線能力，讓您能夠執行使用橫跨數個 GPU 的大規模訓練作業。
+
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+
+> 針對此 VM 系列，訂用帳戶中每個區域的 vCPU (core) 配額一開始會設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+>
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
+|---|---|---|---|---|---|---|---|---|
+| Standard_ND6s    | 6  | 112 | 736  | 1 | 24 | 12 | 20000/200 | 4 |
+| Standard_ND12s   | 12 | 224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 |
+| Standard_ND24s   | 24 | 448 | 2948 | 4 | 24 | 32 | 80000/800 | 8 |
+| Standard_ND24rs* | 24 | 448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+
+1 GPU = 一張 P40 卡。
+
+*支援 RDMA
+
 <br>
 
 ## <a name="other-sizes"></a>其他大小

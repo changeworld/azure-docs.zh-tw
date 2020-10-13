@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 49285727e1c2e845ea63905d20b3343576b01612
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4d4afd87a16ecb28687d901614e3bbc5d9673fa9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816751"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874640"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -398,7 +398,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure Machine Learning 服務 | Microsoft.MachineLearningServices      | 已授權的 Azure Machine Learning 工作區會將實驗輸出、模型和記錄寫入至 Blob 儲存體，並讀取資料。 [深入了解](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure Synapse Analytics (先前稱為 SQL 資料倉儲)       | Microsoft.Sql                          | 允許使用 COPY 語句或 PolyBase 從特定 SQL 資料庫匯入和匯出資料。 [深入了解](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure SQL Database       | Microsoft.Sql                          | 允許從儲存體帳戶匯 [入](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage) 資料，並將審核資料 [寫入](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) 防火牆後方的儲存體帳戶。 |
-| Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入至 Blob 儲存體。 此功能目前為預覽狀態。 [深入了解](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入至 Blob 儲存體。 [深入了解](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 可讓您從 Synapse Analytics 存取 Azure 儲存體中的資料。 |
 
 

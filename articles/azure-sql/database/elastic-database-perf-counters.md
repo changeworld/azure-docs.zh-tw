@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443419"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>建立效能計數器來追蹤分區對應管理員的效能
@@ -51,7 +51,7 @@ ms.locfileid: "91443419"
 
 效能計數器會在每個程序針對每個快取的分區對應建立。  
 
-## <a name="notes"></a>備註
+## <a name="notes"></a>注意
 
 下列事件會觸發效能計數器的建立︰  
 

@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 09/30/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739726"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970634"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -35,10 +35,12 @@ Azure Lighthouse 可讓您更有彈性地管理多個客戶的資源，而不需
 
 Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Accounts/Get-AzSubscription) `HomeTenantId` 會顯示 `ManagedByTenantIds` 每個訂用帳戶的和屬性，可讓您識別所傳回的訂用帳戶屬於受管理的租使用者或您的管理租使用者。
 
-同樣地，Azure CLI 的命令（例如 [az account list](/cli/azure/account#az-account-list) ）也會顯示 `homeTenantId` 和 `managedByTenants` 屬性。
+同樣地，Azure CLI 的命令（例如 [az account list](/cli/azure/account#az-account-list) ）也會顯示 `homeTenantId` 和 `managedByTenants` 屬性。 在使用 Azure CLI 時，如果並未看到這些值，請嘗試執行 `az account clear` 並接著執行 `az login --identity` 清除快取。
 
-> [!TIP]
-> 在使用 Azure CLI 時，如果並未看到這些值，請嘗試執行 `az account clear` 並接著執行 `az login --identity` 清除快取。
+在 Azure REST API 中，訂用帳戶 [-取得](/rest/api/resources/subscriptions/get) 和訂用帳戶 [-清單](/rest/api/resources/subscriptions/list) 命令也包括在內 `ManagedByTenant` 。
+
+> [!NOTE]
+> 除了與 Azure Lighthouse 相關的租使用者資訊外，這些 Api 所顯示的租使用者也可能會反映 Azure Databricks 或 Azure 受控應用程式的合作夥伴租使用者。
 
 我們也提供執行 Azure Lighthouse 工作專屬的 Api。 如需詳細資訊，請參閱**參考**一節。
 

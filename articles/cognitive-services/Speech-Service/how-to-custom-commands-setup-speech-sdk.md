@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360118"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用語音 SDK 與用戶端應用程式整合
@@ -25,7 +25,7 @@ ms.locfileid: "91360118"
 - 發佈自訂命令應用程式，並取得應用程式識別碼 (應用程式識別碼) 
 - 使用語音 SDK 建立通用 Windows 平臺 (UWP) 用戶端應用程式，以讓您與您的自訂命令應用程式交談
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 需要自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，可以遵循快速入門：
 > [!div class = "checklist"]
@@ -404,7 +404,7 @@ ms.locfileid: "91360118"
 
 1. 從功能表列中 **，選擇 [**  >  **全部儲存**] 以儲存您的變更
 
-## <a name="try-it-out"></a>試試看
+## <a name="try-it-out"></a>試做
 
 1. 從功能表列中，選擇 [建置]   > [建置方案]  來建置應用程式。 這應該會編譯程式碼，而且不會出現任何錯誤。
 

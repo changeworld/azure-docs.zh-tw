@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836117"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961471"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>適用於 SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公用端點連線能力
 
@@ -67,12 +67,12 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
   * [Azure 防火牆概觀](../../../firewall/overview.md) - Azure 防火牆的概觀
   * [教學課程：部署和設定 Azure 防火牆](../../../firewall/tutorial-firewall-deploy-portal.md) - 如何透過 Azure 入口網站設定 Azure 防火牆的指示
 * [虛擬網路 - 使用者定義規則](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) \(部分機器翻譯\) - Azure 路由概念和規則  
-* [安全性群組服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) - 如何使用服務標籤來簡化網路安全性群組和防火牆設定
+* [安全性群組服務標籤](../../../virtual-network/network-security-groups-overview.md#service-tags) \(部分機器翻譯\) - 如何使用服務標籤來簡化網路安全性群組和防火牆設定
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>透過額外的外部 Azure Standard Load Balancer 來對網際網路進行輸出連線
 
 在不允許公用端點對 VM 之輸入連線能力的情況下，達成對公用端點之輸出連線能力的其中一個選項，便是建立具有公用 IP 位址的第二個 Load Balancer，將 VM 新增到第二個 Load Balancer 的後端集區，然後僅定義[連出規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) \(部分機器翻譯\)。  
-使用[網路安全性群組](../../../virtual-network/security-overview.md) \(部分機器翻譯\) 以控制來自 VM 的輸出呼叫可存取的公用端點。  
+使用[網路安全性群組](../../../virtual-network/network-security-groups-overview.md) \(部分機器翻譯\) 以控制來自 VM 的輸出呼叫可存取的公用端點。  
 如需詳細資訊，請參閱[輸出連線](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) \(部分機器翻譯\) 文件中的案例 2。  
 該設定看起來會像這樣：  
 
@@ -81,11 +81,11 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 ### <a name="important-considerations"></a>重要考量︰
 
 - 您可以針對位於相同子網路中的多部 VM，使用一個額外的公用 Load Balancer 來達成對公用端點的輸出連線能力，並將成本最佳化  
-- 使用[網路安全性群組](../../../virtual-network/security-overview.md) \(部分機器翻譯\) 以控制可以從 VM 存取的公用端點。 您可以將網路安全性群組指派到子網路，或是指派到每部 VM。 可能的話，請使用[服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) 來減少安全性規則的複雜度。  
+- 使用[網路安全性群組](../../../virtual-network/network-security-groups-overview.md) \(部分機器翻譯\) 以控制可以從 VM 存取的公用端點。 您可以將網路安全性群組指派到子網路，或是指派到每部 VM。 可能的話，請使用[服務標籤](../../../virtual-network/network-security-groups-overview.md#service-tags) \(部分機器翻譯\) 來減少安全性規則的複雜度。  
 - 具有公用 IP 位址及連出規則的 Azure Standard Load Balancer，允許對公用端點進行直接存取。 如果您有公司安全性需求，必須讓所有連出流量通過集中式的公司解決方案以進行稽核和記錄，您可能無法使用此案例來滿足該需求。  
 
 >[!TIP]
->可能的話，請使用[服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) 來減少網路安全性群組的複雜度。 
+>可能的話，請使用[服務標籤](../../../virtual-network/network-security-groups-overview.md#service-tags) \(部分機器翻譯\) 來減少網路安全性群組的複雜度。 
 
 ### <a name="deployment-steps"></a>部署步驟
 
@@ -117,7 +117,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
    ![使用具有公用 IP 的第二個 Load Balancer 進行輸出連線](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   如需 Azure 網路安全性群組的詳細資訊，請參閱[安全性群組](../../../virtual-network/security-overview.md) \(部分機器翻譯\)。 
+   如需 Azure 網路安全性群組的詳細資訊，請參閱[安全性群組](../../../virtual-network/network-security-groups-overview.md) \(部分機器翻譯\)。 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>透過 Azure 防火牆來對網際網路進行輸出連線
 
@@ -137,7 +137,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 - 如果公司防火牆解決方案不是 Azure 防火牆，且您具有需要讓所有連出流量通過集中式公司解決方案的安全性需求，則此解決方案可能不實際。  
 
 >[!TIP]
->可能的話，請使用[服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) 來減少 Azure 防火牆規則的複雜度。  
+>可能的話，請使用[服務標籤](../../../virtual-network/network-security-groups-overview.md#service-tags) \(部分機器翻譯\) 來減少 Azure 防火牆規則的複雜度。  
 
 ### <a name="deployment-steps"></a>部署步驟
 

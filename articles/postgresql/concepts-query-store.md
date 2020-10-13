@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710527"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查詢存放區監視效能
@@ -116,7 +116,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 此檢視會傳回查詢存放區中的所有資料。 不同的資料庫識別碼、使用者識別碼及查詢識別碼都會自成一資料列。 
 
-|**名稱**   |**型別** | **參考**  | **描述**|
+|**名稱**   |**型別** | **參考**  | **說明**|
 |---|---|---|---|
 |runtime_stats_entry_id |BIGINT | | 來自 runtime_stats_entries 資料表的識別碼|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
@@ -157,13 +157,13 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此檢視會傳回查詢存放區中的等候事件資料。 不同的資料庫識別碼、使用者識別碼、查詢識別碼及事件都會自成一資料列。
 
-|**名稱**|  **型別**|   **參考**| **描述**|
+|**名稱**|  **型別**|   **參考**| **說明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
 |db_id  |oid    |pg_database.oid    |在其中執行陳述式的資料庫物件識別 (OID)|
 |query_id   |BIGINT     ||從陳述式的剖析樹狀結構計算的內部雜湊碼|
-|event_type |文字       ||後端等候中事件的類型|
-|event  |文字       ||如果後端目前正在等候，為該等候事件的名稱|
+|event_type |text       ||後端等候中事件的類型|
+|event  |text       ||如果後端目前正在等候，為該等候事件的名稱|
 |calls  |整數        ||擷取到相同事件的次數|
 
 
@@ -201,7 +201,7 @@ Query_store.staging_data_reset() 傳回 void
 下表描述兩個記錄類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。
 
 #### <a name="querystoreruntimestatistics"></a>QueryStoreRuntimeStatistics
-|**欄位** | **描述** |
+|**欄位** | **說明** |
 |---|---|
 | TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
 | ResourceId | Postgres 伺服器的 Azure 資源 URI |
@@ -226,7 +226,7 @@ Query_store.staging_data_reset() 傳回 void
 
 
 #### <a name="querystorewaitstatistics"></a>QueryStoreWaitStatistics
-|**欄位** | **描述** |
+|**欄位** | **說明** |
 |---|---|
 | TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
 | ResourceId | Postgres 伺服器的 Azure 資源 URI |

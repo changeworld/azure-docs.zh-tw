@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
 ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893310"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
@@ -228,7 +228,7 @@ remote_run.get_portal_url()
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 了解[如何設定自動訓練的設定](how-to-configure-auto-train.md)。
 * 請參閱自動化 ML 實驗中啟用模型可解譯性功能的操作 [說明](how-to-machine-learning-interpretability-automl.md) 。

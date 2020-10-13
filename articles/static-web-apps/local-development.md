@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
 ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326162"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>設定 Azure 靜態 Web Apps 預覽版的本機開發
@@ -75,7 +75,7 @@ Azure 靜態 Web Apps 執行個體由兩種不同類型的應用程式所組成�
 
 1. 在搜尋方塊中輸入**複製**，然後選取 [Git：複製]。
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="Visual Studio Code 中的 Git 複製選項":::
+    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="GitHub 新增存放庫視窗":::
 
 1. 針對 [存放庫 URL] 輸入下列值。
 
@@ -87,7 +87,7 @@ Azure 靜態 Web Apps 執行個體由兩種不同類型的應用程式所組成�
 
 1. 當系統提示您開啟複製的存放庫時，請選取 [開啟]。
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="在新視窗中開啟":::
+    :::image type="content" source="media/local-development/open-new-window.png" alt-text="GitHub 新增存放庫視窗":::
 
 Visual Studio Code 會在編輯器中開啟複製的專案。
 
@@ -99,7 +99,7 @@ Visual Studio Code 會在編輯器中開啟複製的專案。
 
     [瀏覽器] 索引標籤隨即開啟，以顯示應用程式。
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="在瀏覽器中執行的簡易靜態網站":::
+    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="GitHub 新增存放庫視窗":::
 
     此應用程式會對 `api/message` 端點提出 HTTP 要求。 目前該要求失敗，因為必須啟動此應用程式的 API 部分。
 
@@ -113,13 +113,13 @@ Azure 靜態 Web Apps API 由 Azure Functions 提供技術支援。 如需關於
 
 1. 新的終端機執行個體隨即開啟，並顯示 API 建置程序的輸出。
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="在 Visual Studio Code 終端機中執行的 API":::
+    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="GitHub 新增存放庫視窗":::
 
    Visual Studio Code 中的狀態列現在為橙色。 這個顏色表示 API 正在執行中，且已附加偵錯工具。
 
 1. 接著，按 **Ctrl/Cmd**，然後按一下終端機中的 URL，以開啟呼叫 API 的瀏覽器視窗。
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="瀏覽器顯示 API 呼叫的結果":::
+    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="GitHub 新增存放庫視窗":::
 
 ### <a name="debugging-the-api"></a>對 API 進行偵錯
 
@@ -127,19 +127,19 @@ Azure 靜態 Web Apps API 由 Azure Functions 提供技術支援。 如需關於
 
 1. 按一下第 2 行的左邊界以設定中斷點。 出現紅點時，表示中斷點已設定。
 
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Visual Studio Code 中的中斷點":::
+    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="GitHub 新增存放庫視窗":::
 
 1. 在瀏覽器中，重新整理在 <http://127.0.0.1:7071/api/message> 執行的頁面。
 
 1. 在 Visual Studio Code 中達到中斷點時，程式會暫停執行。
 
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="在 Visual Studio Code 中達到中斷點":::
+   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="GitHub 新增存放庫視窗":::
 
    [Visual Studio Code 中針對您的 API 提供了完整的偵錯體驗](https://code.visualstudio.com/Docs/editor/debugging)。
 
 1. 按偵錯列中的 [繼續] 按鈕以繼續執行。
 
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Visual Studio Code 中的 [繼續] 按鈕":::
+    :::image type="content" source="media/local-development/continue-button.png" alt-text="GitHub 新增存放庫視窗":::
 
 ### <a name="calling-the-api-from-the-application"></a>從應用程式呼叫 API
 
@@ -192,7 +192,7 @@ let response = await fetch(`${process.env.API}/message`);
 
 1. 輸入**即時伺服器**，然後選取 [即時伺服器：停止即時伺服器]。
 
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Visual Studio 命令選擇區中的停止即時伺服器命令":::
+    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="GitHub 新增存放庫視窗":::
 
 1. 按 **F1** 以開啟命令選擇區。
 
@@ -200,7 +200,7 @@ let response = await fetch(`${process.env.API}/message`);
 
 1. 重新整理在 `http://locahost:3000` 執行的應用程式。 瀏覽器現在會顯示從 API 傳回的訊息。
 
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="瀏覽器中顯示的 Hello from API":::
+    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="GitHub 新增存放庫視窗":::
 
 ## <a name="next-steps"></a>後續步驟
 

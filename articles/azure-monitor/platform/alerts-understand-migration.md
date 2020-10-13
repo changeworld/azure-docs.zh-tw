@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852390"
+ms.locfileid: "91875915"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>瞭解新警示的遷移選項
 
@@ -254,10 +254,12 @@ Mongo 失敗要求度量的警示必須分割成多個警示，因為沒有任�
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>具有「拒絕」效果的原則，讓我們無法遷移您的規則
 
-在遷移過程中，將會建立新的計量警示和新的動作群組，然後將會刪除傳統警示規則。 不過，原則可能會讓我們無法建立資源。 根據原則而定，部分或所有規則無法遷移。 封鎖進程的原則會列在 [遷移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中。 解決此問題的方法是：
+在遷移過程中，將會建立新的計量警示和新的動作群組，然後將會刪除傳統警示規則。 不過， [Azure 原則](../../governance/policy/index.yml) 指派可能會讓我們無法建立資源。 根據原則指派，無法遷移部分或所有規則。 封鎖進程的原則指派會列在 [遷移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中。 解決此問題的方法是：
 
-- 將訂用帳戶或資源群組從原則指派中排除在遷移程式的持續時間內。 [深入瞭解如何管理原則排除範圍](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 例如，移除或變更 [audit] 或 [append] (的效果，可解決與遺漏標記) 相關的問題。 [深入瞭解如何管理原則效果](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 從原則指派中，將訂用帳戶、資源群組或個別資源，從原則指派中排除在遷移程式的期間內。 [深入瞭解如何管理原則排除範圍](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)。
+- 將原則指派上的 [強制模式] 設定為 **停用** 。 [深入瞭解原則指派的 enforcementMode 屬性](../../governance/policy/concepts/assignment-structure.md#enforcement-mode)。
+- 將訂用帳戶、資源群組或個別資源上的 Azure 原則豁免 (preview) 設定為原則指派。 [深入瞭解 Azure 原則豁免結構](../../governance/policy/concepts/exemption-structure.md)。
+- 例如，將效果移除或變更為「已停用」、「audit」、「append」或「修改」 (可解決與遺漏標記相關的問題) 。 [深入瞭解如何管理原則效果](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619809"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL Database 中的擴充事件 
@@ -37,7 +37,7 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 本主題假設您已經有一些下列項目的知識：
 
 - [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
-- [擴充事件](/sql/relational-databases/extended-events/extended-events)
+- [擴充的事件](/sql/relational-databases/extended-events/extended-events)
 
 - 關於擴充事件的大部分檔都適用于 SQL Server、Azure SQL Database 和 Azure SQL 受控執行個體。
 
@@ -51,12 +51,12 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 
 相關的主題提供兩個程式碼範例：
 
-- [Azure SQL Database 中擴充事件的信號緩衝區目的程式代碼](xevent-code-ring-buffer.md)
+- [Azure SQL Database 中擴充事件的信號緩衝區目標程式碼](xevent-code-ring-buffer.md)
 
   - 簡短的簡單 Transact-SQL 指令碼。
   - 我們在程式碼範例主題中強調，當您完成「信號緩衝區」目標的相關作業時，應該執行 alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` 陳述式來釋出其資源。 稍後您可以藉由 `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`，加入信號緩衝區的另一個執行個體。
 
-- [Azure SQL Database 中擴充事件的事件檔案目的程式代碼](xevent-code-event-file.md)
+- [Azure SQL Database 中擴充事件的事件檔案目標程式碼](xevent-code-event-file.md)
 
   - 階段 1 是 PowerShell，建立 Azure 儲存體容器。
   - 階段 2 是 Transact-SQL，使用 Azure 儲存體容器。

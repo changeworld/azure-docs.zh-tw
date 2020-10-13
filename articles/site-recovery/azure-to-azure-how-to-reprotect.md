@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360866"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保護已容錯移轉到主要區域的 Azure VM
@@ -22,7 +22,7 @@ ms.locfileid: "91360866"
 1. 重新保護次要區域中的 VM，好讓它們開始複寫到主要區域。
 1. 重新保護完成且 Vm 正在複寫之後，您可以從次要區域容錯移轉至主要區域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 必須認可從主要到次要區域的 VM 容錯移轉。
 - 主要目標網站應該可供使用，而且您應該能夠存取或建立該區域中的資源。

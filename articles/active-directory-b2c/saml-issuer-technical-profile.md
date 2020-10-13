@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88521207"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961233"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 權杖簽發者的技術設定檔
 
@@ -37,6 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
+    <Item Key="TokenNotBeforeSkewInSeconds">600</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -58,6 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 | --------- | -------- | ----------- |
 | IssuerUri | 否 | 出現在 SAML 回應中的簽發者名稱。 此值應該與信賴憑證者應用程式中所設定的名稱相同。 |
 | XmlSignatureAlgorithm | 否 | Azure AD B2C 用來簽署 SAML 判斷提示的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 回應，請參閱信賴憑證者 [SAML 中繼資料](relyingparty.md#metadata)|
+|TokenNotBeforeSkewInSeconds| 否| 指定標示有效期間開始時間戳的扭曲（以整數表示）。 此數位愈高，有效期間的最長時間會從針對信賴憑證者發出宣告的時間開始。 例如，當 TokenNotBeforeSkewInSeconds 設定為60秒時，如果權杖是在 13:05:10 UTC 發出，則權杖有效期限為 13:04:10 UTC。 預設值為 0。 最大值為 3600 (一小時) 。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 

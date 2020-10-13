@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839005"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875116"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -134,7 +134,7 @@ ms.locfileid: "91839005"
 
 ### <a name="ilogger-logs"></a>ILogger 記錄
 
-`ILogger`系統會自動捕獲透過嚴重性和更新版本發出的記錄 `Warning` 。 遵循 [ILogger](ilogger.md#control-logging-level) 檔來自訂 Application Insights 所要捕捉的記錄層級。
+預設設定會收集 `ILogger` 嚴重性和更新版本的記錄 `Warning` 。 您可以 [自訂](#how-do-i-customize-ilogger-logs-collection)此設定。
 
 ### <a name="dependencies"></a>相依性
 
@@ -478,7 +478,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-不可以。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 

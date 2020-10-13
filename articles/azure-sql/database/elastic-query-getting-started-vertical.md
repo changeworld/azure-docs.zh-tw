@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 089cc8f22248a2b7152afaf951f6028a05682648
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443320"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>開始使用跨資料庫查詢 (垂直資料分割) (預覽)
@@ -121,7 +121,7 @@ ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
 目前，彈性資料庫查詢功能算在 Azure SQL Database 的成本內。  
 
-如需價格資訊，請參閱 [SQL Database 價格](https://azure.microsoft.com/pricing/details/sql-database)。
+如需定價資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database)。
 
 ## <a name="next-steps"></a>後續步驟
 

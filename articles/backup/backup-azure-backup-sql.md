@@ -4,10 +4,10 @@ description: 使用 Azure 備份服務備份 SQL Server 資料庫的簡介
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254579"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>將 SQL Server 備份至 Azure 做為 DPM 工作負載
@@ -53,7 +53,7 @@ ms.locfileid: "91254579"
   * SQL Server 2014 加入了新功能，可為 [Windows Azure Blob 儲存空間的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 DPM 無法用來保護此設定。
   * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 DPM 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請確定您已符合使用 Azure 備份保護工作負載的 [必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 。 以下是一些必要的工作：
 
@@ -80,7 +80,7 @@ ms.locfileid: "91254579"
 1. 將保護群組命名為，然後選取 [ **我想要線上保護**]。
 
     ![選擇資料保護方法-短期磁片保護或線上 Azure 保護](./media/backup-azure-backup-sql/pg-name.png)
-1. 在 [ **指定短期目標** ] 頁面上，包含建立備份點至磁片所需的輸入。
+1. 在 [ **指定 Short-Term 目標** ] 頁面上，包含建立備份點至磁片所需的輸入。
 
     在此範例中， **保留範圍** 設定為 *5 天*。 備份 **同步處理頻率** 會設定為每隔 *15 分鐘*一次。 **快速完整備份** 已設定為 *下午 8:00*。
 

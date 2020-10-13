@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444475"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
@@ -181,7 +181,7 @@ else {
 若要執行 PowerShell Cmdlet，Azure PowerShell 必須已安裝且正在執行中。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 > [!IMPORTANT]
-> Azure SQL 受控執行個體仍支援 PowerShell Azure Resource Manager (RM) 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組將持續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+> Azure SQL 受控執行個體仍支援 PowerShell Azure Resource Manager (RM) 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 若要佈建 Azure AD 系統管理員，請執行下列 Azure PowerShell 命令：
 
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以藉由呼叫下列 CLI 命令，為 SQL 受控執行個體布建 Azure AD 管理員：
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 布建 SQL 受控執行個體 (的 Azure Active Directory 系統管理員必須來自目前的訂用帳戶) 。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控執行個體的 Azure Active Directory 系統管理員。 |
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。 |

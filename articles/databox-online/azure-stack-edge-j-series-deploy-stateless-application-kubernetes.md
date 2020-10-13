@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890727"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上透過 kubectl 部署 Kubernetes 無狀態應用程式
@@ -361,6 +361,6 @@ PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
 deployment.extensions "nginx-deployment" deleted
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [Kubernetes 總覽](azure-stack-edge-gpu-kubernetes-overview.md)

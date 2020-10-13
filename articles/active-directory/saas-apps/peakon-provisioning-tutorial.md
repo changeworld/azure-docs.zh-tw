@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91304635"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>教學課程：設定 Peakon 來自動布建使用者
@@ -26,7 +26,7 @@ ms.locfileid: "91304635"
 >  本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中所述的案例假設您已具備下列必要條件
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案]  。
+8. 按一下 **[儲存]** 。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Peakon**]。
 

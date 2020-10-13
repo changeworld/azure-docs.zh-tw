@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 2b98b11d85bde8dd49b6bbde5d048493493b73f5
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620234"
 ---
-# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>適用于 Azure SQL 受控執行個體的受控 API 參考
+# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL 受控執行個體的受控 API 參考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 您可以使用 Azure 入口網站、PowerShell、Azure CLI、REST API 和 Transact-sql，來建立及設定 Azure SQL 受控執行個體的受控實例。 在本文中，您可以找到可用於建立及設定受控實例的函式和 API 的總覽。
@@ -31,7 +31,7 @@ ms.locfileid: "91620234"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 AzureRM 模組中命令的引數本質上相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRM 模組中命令的引數本質上相同。
 
 若要使用 Azure PowerShell 建立和管理受控執行個體，請使用下列 PowerShell 指令程式。 如果您需要安裝或升級 PowerShell，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 

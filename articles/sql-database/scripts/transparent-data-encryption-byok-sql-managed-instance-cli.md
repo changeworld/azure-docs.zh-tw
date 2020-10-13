@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: vanto
 ms.date: 11/05/2019
 ms.openlocfilehash: 2b948161633569d629dfb048a7d7dee6a9946f43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323650"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>從 Azure Key Vault 使用自己的金鑰管理受控執行個體中的透明資料加密
@@ -56,7 +56,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| Command | 說明 |
+| Command | 描述 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | 資料庫命令。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | 容錯移轉群組命令。 |

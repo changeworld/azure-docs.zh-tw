@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537594"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
@@ -134,7 +134,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>屬性參考
 
-|屬性      |說明      |
+|屬性      |描述      |
 |--------------|-----------------|
 |`name`        |建議工具的名稱。|
 |`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，目前與詞彙的開頭相符。|

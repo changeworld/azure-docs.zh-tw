@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
 ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710102"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>針對 Azure 監視器中的 Log Analytics VM 延伸模組進行疑難排解
@@ -18,7 +18,7 @@ ms.locfileid: "91710102"
 
 若要確認擴充功能的狀態，請從 Azure 入口網站執行下列步驟。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中，輸入**虛擬機器**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [虛擬機器]。
 3. 在虛擬機器清單中，尋找目標虛擬機器並加以選取。
 3. 在虛擬機器上，按一下 [擴充功能]****。

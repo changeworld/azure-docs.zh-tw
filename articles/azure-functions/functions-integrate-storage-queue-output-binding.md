@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982023"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 在 Azure 儲存體佇列中新增訊息
@@ -38,7 +38,7 @@ ms.locfileid: "90982023"
 
 1. 選取 [Azure 佇列儲存體輸出] 繫結類型，然後新增此螢幕擷取畫面後續表格中所指定的設定： 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="在 Azure 入口網站中對函式新增佇列儲存體輸出繫結。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="建立函式的輸出繫結。" border="true":::
     
     | 設定      |  建議的值   | 描述                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,7 +94,7 @@ ms.locfileid: "90982023"
 1. 儲存程式碼的變更後，選取 [測試]。
 1. 確認測試符合下列影像，然後選取 [執行]。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="在 Azure 入口網站中測試佇列儲存體繫結。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="建立函式的輸出繫結。" border="true":::
 
     請注意，**要求本文**包含 `name` 值：Azure。 這個值會出現在叫用函式時建立的佇列訊息中。
     
@@ -111,11 +111,11 @@ ms.locfileid: "90982023"
 
 1. 在 [應用程式設定] 下選取 [AzureWebJobsStorage]。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="螢幕擷取畫面顯示已選取 AzureWebJobsStorage 的設定頁面。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="建立函式的輸出繫結。" border="true":::
 
 1. 找出並記下帳戶名稱。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="找出連線至 AzureWebJobsStorage 的儲存體帳戶。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="建立函式的輸出繫結。" border="true":::
 
 ### <a name="examine-the-output-queue"></a>檢查輸出佇列
 

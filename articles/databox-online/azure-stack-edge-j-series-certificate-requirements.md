@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891387"
 ---
 # <a name="certificate-requirements"></a>憑證需求
@@ -70,7 +70,7 @@ Azure Stack Edge Pro 裝置上安裝的 PFX 憑證應符合下列需求：
 
 * 當您匯出 PFX 憑證時，請確定您已選取 [ **包含鏈中的所有憑證（如果可能）** ] 選項。
 
-* 使用適用于端點、本機 UI、節點、VPN 和 Wi-fi 的 PFX 憑證，因為 Azure Stack Edge Pro 都需要公開金鑰和私密金鑰。 私密金鑰必須有本機電腦金鑰屬性集。
+* 將 PFX 憑證用於端點、本機 UI、節點、VPN 和 Wi-Fi，因為 Azure Stack Edge Pro 都需要公開金鑰和私密金鑰。 私密金鑰必須有本機電腦金鑰屬性集。
 
 * 憑證的 PFX 加密應該是 3DES。 這是從 Windows 10 用戶端或 Windows Server 2016 憑證存放區匯出時使用的預設加密。 如需與3DES 相關的詳細資訊，請參閱 [三重 DES](https://en.wikipedia.org/wiki/Triple_DES)。
 
@@ -84,7 +84,7 @@ Azure Stack Edge Pro 裝置上安裝的 PFX 憑證應符合下列需求：
 
 如需詳細資訊，請參閱 [匯出具有私密金鑰的 PFX 憑證](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [使用 Azure Stack Edge Pro 的憑證](azure-stack-edge-j-series-manage-certificates.md)
 

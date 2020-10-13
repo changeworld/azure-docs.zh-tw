@@ -12,10 +12,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
 ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708232"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定並提交定型回合
@@ -26,7 +26,7 @@ ms.locfileid: "91708232"
 
 您只需要在 **腳本執行**設定內定義每個計算目標的環境。  然後，當您想要在不同的計算目標上執行定型實驗時，為該計算指定回合組態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.13.0) 
