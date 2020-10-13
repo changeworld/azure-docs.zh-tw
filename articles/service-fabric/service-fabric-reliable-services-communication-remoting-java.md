@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87316119"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>使用 Reliable Services 在 Java 中進行服務遠端處理
@@ -98,5 +98,5 @@ ServiceProxy 會處理服務分割區 (ServiceProxy 即是為其建立) 的所�
 預設的重試參數是由 [OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) \(英文\) 提供。
 您可以將 OperationRetrySettings 物件傳遞至 ServiceProxyFactory 建構函式，來設定這些值。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [Reliable Services 的安全通訊](service-fabric-reliable-services-secure-communication-java.md)

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 應用程式 Insights 在 Visual Studio 中進行 Debug
+title: 使用 Azure 應用程式 Insights 在 Visual Studio 中進行 Debug 錯
 description: 偵錯期間和生產環境中的 Web 應用程式效能分析與診斷。
 ms.topic: conceptual
 author: NumberByColors
@@ -8,10 +8,10 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323463"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 進行應用程式偵錯
@@ -87,13 +87,13 @@ ms.locfileid: "87323463"
 
 如果您在將遙測傳送至入口網站之前有一些 [自訂遙測](./api-custom-events-metrics.md) 想要偵錯，它也很有用。
 
-* *一開始，我已完全設定 Application Insights 以將遙測傳送至入口網站。但是現在我只想要在 Visual Studio 中看到遙測。*
+* *一開始，我已完整設定 Application Insights，以將遙測傳送至入口網站。但現在我只想查看 Visual Studio 中的遙測。*
   
   * 在 [搜尋] 視窗的 [設定] 中，即使您的應用程式將遙測傳送至入口網站，也有選項可搜尋本機診斷。
-  * 若要停止將遙測傳送至入口網站，請將 ApplicationInsights.config 的程式程式碼標記為批註 `<instrumentationkey>...` 。當您準備好要再次將遙測資料傳送至入口網站時，請將它取消批註。
+  * 若要停止將遙測傳送至入口網站，請將 ApplicationInsights.config 的行批註 `<instrumentationkey>...` 。當您準備好要再次將遙測傳送至入口網站時，請將它取消批註。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 |  |  |
 | --- | --- |
 | **[新增更多測試](./asp-net-more.md)**<br/>監視使用狀況、可用性、相依性、例外狀況。 整合來自記錄架構的追蹤。 撰寫自訂遙測。 |![Visual Studio](./media/visual-studio/64.png) |

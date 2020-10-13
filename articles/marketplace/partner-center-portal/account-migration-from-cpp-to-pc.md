@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
 ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289333"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何將您的帳戶從 Cloud Partner 入口網站遷移至合作夥伴中心
@@ -27,7 +27,7 @@ ms.locfileid: "87289333"
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>您的帳戶已遷移至合作夥伴中心
 
-您現在可以在合作夥伴中心管理您的帳戶。 使用者新增/刪除之類的變更將會同步回 CPP。
+您現在可以在合作夥伴中心中管理您的帳戶。 使用者新增/刪除之類的變更將會同步回 CPP。
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>您尚未將帳戶遷移至合作夥伴中心
 
@@ -45,7 +45,7 @@ ms.locfileid: "87289333"
 
 ## <a name="publishers-moving-from-cpp"></a>從 CPP 移動發行者
 
-如果您的帳戶已從 CPP 遷移，則不需要建立新的合作夥伴中心帳戶。 在登入現有的 CPP 帳戶之後，您應該已收到電子郵件中新合作夥伴中心帳戶的自訂連結，並在橫幅通知中。
+如果您的帳戶已從 CPP 遷移，您就不需要建立新的合作夥伴中心帳戶。 在登入現有的 CPP 帳戶之後，您應該會在電子郵件中收到新的合作夥伴中心帳戶的自訂連結，並在登入現有的 CPP 帳戶後於橫幅通知中收到
 
 造訪此自訂連結來啟用新的合作夥伴中心帳戶後，您就可以藉由造訪合作夥伴中心的[商業市集儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)來返回您的帳戶。
 

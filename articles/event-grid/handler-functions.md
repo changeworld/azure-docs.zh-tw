@@ -3,20 +3,29 @@ title: 以 Azure 函式作為 Azure 事件方格事件的事件處理常式
 description: 說明如何使用 Azure 函式作為「事件方格」事件的事件處理常式。
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: cd500eed180096388eede96f768f08b896ca6456
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629683"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873722"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>以 Azure 函式作為事件方格事件的事件處理常式
 
 事件處理常式是傳送事件的位置。 處理常式會採取相關動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure Functions** 是其中之一。 
 
-請在無伺服器架構中使用 **Azure Functions**，以回應事件方格中的事件。 使用 Azure Functions 作為處理常式時，請使用事件方格觸發程序，而不是一般 HTTP 觸發程序。 事件方格會自動驗證事件方格觸發程序。 若要使用 HTTP 觸發程序，您必須自行實作[驗證回應](webhook-event-delivery.md)。
 
-如需詳細資訊，請參閱 [Azure Functions 的事件方格觸發程序](../azure-functions/functions-bindings-event-grid.md)，以取得在函式中使用事件方格觸發程序的概觀。
+若要使用 Azure 函數作為事件的處理常式，請遵循下列其中一種方法： 
+
+-   使用 [事件方格觸發](../azure-functions/functions-bindings-event-grid-trigger.md)程式。  將 **Azure 函數** 指定為 **端點類型**。 然後，指定要處理事件的 Azure 函數應用程式和函數。 
+-   使用 [HTTP 觸發](../azure-functions/functions-bindings-http-webhook.md)程式。  將**webhook 指定為****端點類型**。 然後，指定將處理事件的 Azure 函數的 URL。 
+
+建議您使用第一種方法 (事件方格觸發程式) ，因為它在第二個方法中具有下列優點：
+-   事件方格會自動驗證事件方格觸發程序。 若要使用 HTTP 觸發程序，您必須自行實作[驗證回應](webhook-event-delivery.md)。
+-   事件方格會根據函數可處理事件的觀察速率，自動調整事件傳送到事件方格事件所觸發之函式的速率。 此速率相符功能 averts 傳遞錯誤，這些錯誤源自于函式無法處理事件，因為函式的事件處理速度會隨著時間而改變。 若要以高輸送量提高效率，請在事件訂用帳戶上啟用批次處理。 如需詳細資訊，請參閱 [啟用批次處理](#enable-batching)。
+
+    > [!NOTE]
+    > 目前，當事件在 **CloudEvents** 架構中傳遞時，您無法使用 Azure Functions 應用程式的事件方格觸發程式。 相反地，請使用 HTTP 觸發程序。
 
 ## <a name="tutorials"></a>教學課程
 
@@ -48,7 +57,7 @@ ms.locfileid: "91629683"
 }
 ```
 
-## <a name="enable-batching"></a>啟用批次處理
+## <a name="enable-batching"></a>啟用批次
 針對較高的輸送量，請在訂用帳戶上啟用批次處理。 如果您使用 Azure 入口網站，可以設定每個批次的最大事件數目，以及在建立訂閱時或建立之後的慣用批次大小（以 kb 為單位）。 
 
 您可以使用 Azure 入口網站、PowerShell、CLI 或 Resource Manager 範本來設定批次設定。 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265930"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證工作階段管理
@@ -80,8 +80,8 @@ Azure Active Directory 的 (Azure AD) 使用者登入頻率的預設設定是90�
 
 持續性瀏覽器會話可讓使用者在關閉並重新開啟其瀏覽器視窗之後，保持登入狀態。
 
-瀏覽器會話持續性的 Azure AD 預設值，可讓個人裝置上的使用者選擇是否要顯示「保持登入」來保存會話。 在驗證成功之後提示。 如果使用 [AD FS 單一登入設定一](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)文中的指導方針在 AD FS 中設定瀏覽器持續性，我們將符合該原則，並同時保存 Azure AD 會話。 您也可以設定租使用者中的使用者是否看到「保持登入」。 在 Azure 入口網站中，使用 [ [自訂您的 Azure AD 登入] 頁面](../fundamentals/customize-branding.md)中的指引，變更 [公司商標] 窗格中的適當設定，以提示您。
+瀏覽器會話持續性的 Azure AD 預設值，可讓個人裝置上的使用者選擇是否要顯示「保持登入」來保存會話。 在驗證成功之後提示。 如果瀏覽器持續性是在 AD FS 中使用 [AD FS 單一 Sign-On 設定一](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)文中的指導方針來設定，我們將符合該原則，並同時保存 Azure AD 會話。 您也可以設定租使用者中的使用者是否看到「保持登入」。 在 Azure 入口網站中，使用 [ [自訂您的 Azure AD 登入] 頁面](../fundamentals/customize-branding.md)中的指引，變更 [公司商標] 窗格中的適當設定，以提示您。
 
 ## <a name="configuring-authentication-session-controls"></a>設定驗證會話控制項
 
@@ -128,7 +128,7 @@ Azure Active Directory 的 (Azure AD) 使用者登入頻率的預設設定是90�
 
 ## <a name="validation"></a>驗證
 
-使用「假設」工具可根據您設定原則的方式，模擬使用者對目標應用程式的登入，以及其他條件。 驗證會話管理控制項會顯示在工具的結果中。
+使用 What-If 工具，根據您設定原則的方式，模擬使用者對目標應用程式的登入，以及其他條件。 驗證會話管理控制項會顯示在工具的結果中。
 
 ![條件式存取 What If 工具結果](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 

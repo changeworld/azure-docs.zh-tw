@@ -1,6 +1,6 @@
 ---
 title: JAVA SDK-Data Lake Storage Gen1 上的檔案系統作業-Azure
-description: 使用適用于 Azure Data Lake Storage Gen1 的 JAVA SDK，在 Data Lake Storage Gen1 上執行檔案系統作業，例如建立資料夾，以及上傳和下載資料檔案。
+description: 使用 JAVA SDK 進行 Azure Data Lake Storage Gen1，在 Data Lake Storage Gen1 上執行檔案系統作業，例如建立資料夾、上傳和下載資料檔案。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318839"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 在 Azure Data Lake Storage Gen1 上進行檔案系統作業
@@ -23,11 +23,11 @@ ms.locfileid: "87318839"
 >
 > 
 
-瞭解如何使用 Azure Data Lake Storage Gen1 JAVA SDK 來執行基本作業，例如建立資料夾、上傳和下載資料檔案等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱[Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
+瞭解如何使用 Azure Data Lake Storage Gen1 JAVA SDK 來執行基本作業，例如建立資料夾、上傳和下載資料檔案等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱 [Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
 
 您可以在 [Azure Data Lake Storage Gen1 Java API 文件](https://azure.github.io/azure-data-lake-store-java/javadoc/)取用適用於 Data Lake Storage Gen1 的 Java SDK API 文件。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 * Java Development Kit (JDK 7 或更新版本，使用 Java 1.7 版或更新版本)
 * Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。
 * [Maven](https://maven.apache.org/install.html). 本教學課程使用 Maven 來處理組建和專案相依性。 雖有可能不使用 Maven 或 Gradle 等組建系統進行建置，但這些系統讓相依性管理變得輕鬆許多。
@@ -38,7 +38,7 @@ ms.locfileid: "87318839"
 
 1. 從命令列或透過 IDE，使用 [mvn 原型](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)建立 Maven 專案。 如需有關如何使用 IntelliJ 建立 Java 專案的指示，請參閱[這裡](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 如需有關如何使用 Eclipse 建立專案的指示，請參閱[這裡](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 將下列相依性新增至 Maven **pom.xml** 檔案。 在標記前面加入下列程式碼片段 **\</project>** ：
+2. 將下列相依性新增至 Maven **pom.xml** 檔案。 在標記之前新增下列程式碼片段 **\</project>** ：
    
     ```xml
     <dependencies>
@@ -55,7 +55,7 @@ ms.locfileid: "87318839"
     </dependencies>
     ```
    
-    第一個相依性是使用來自 maven 存放庫的 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二個相依性是指定要用於此應用程式的記錄架構 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 會使用[SLF4J](https://www.slf4j.org/)記錄外觀，可讓您從數個熱門的記錄架構中進行選擇，例如 Log4j、JAVA 記錄、Logback 等，或不記錄。 在此範例中，我們停用記錄，因此會使用 **slf4j-nop** 繫結。 若要在應用程式中使用其他記錄選項，請參閱[這裡](https://www.slf4j.org/manual.html#projectDep)。
+    第一個相依性是使用來自 maven 存放庫的 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二個相依性是指定要用於此應用程式的記錄架構 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 會使用 [SLF4J](https://www.slf4j.org/) 記錄外觀，讓您從數個熱門的記錄架構中進行選擇，例如 Log4j、JAVA 記錄、Logback 等，或不記錄。 在此範例中，我們停用記錄，因此會使用 **slf4j-nop** 繫結。 若要在應用程式中使用其他記錄選項，請參閱[這裡](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 在應用程式中新增下列 import 陳述式。
 
@@ -231,7 +231,7 @@ promptEnterKey();
 1. 若要從 IDE 執行，請找到並按下 [執行]**** 按鈕。 若要從 Maven 執行，請使用 [exec: exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
 2. 若要產生您可以從命令列執行的獨立 jar，請使用 [Maven 組件外掛程式](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)建置內含所有相依性的 jar。 [GitHub 上的範例原始程式碼](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 有範例。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [瀏覽 Java SDK 的 JavaDoc](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 

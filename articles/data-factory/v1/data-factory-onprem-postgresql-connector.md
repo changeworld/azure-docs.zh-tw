@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082829"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure Data Factory 從 PostgreSQL 移動資料
@@ -28,11 +28,11 @@ ms.locfileid: "87082829"
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 PostgreSQL 連接器](../connector-postgresql.md)。
 
 
-本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 PostgreSQL 資料庫移動資料。 它是以[資料移動活動](data-factory-data-movement-activities.md)一文為基礎，其中呈現使用複製活動移動資料的一般總覽。
+本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 PostgreSQL 資料庫移動資料。 它是以「 [資料移動活動](data-factory-data-movement-activities.md) 」一文為基礎，提供使用複製活動來移動資料的一般總覽。
 
 您可以將資料從內部部署的 PostgreSQL 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 Data Factory 目前支援將資料從 PostgreSQL 資料庫移到其他資料存放區，而不支援將資料從其他資料存放區移到 PostgreSQL 資料庫。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 PostgreSQL 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文來了解資料管理閘道和設定閘道的逐步指示。
 
@@ -47,7 +47,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從內部部署的 PostgreSQL 資料存放區移動資料。
 
-- 建立管線的最簡單方式是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+- 若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 - 您也可以使用下列工具來建立管線：
   - Visual Studio
   - Azure PowerShell
@@ -55,13 +55,13 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
   - .NET API
   - REST API
 
-    如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
+    請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**來代表複製作業的輸入和輸出資料。
-3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。
+2. 建立 **資料集** 以代表複製作業的輸入和輸出資料。
+3. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來從內部部署 PostgreSQL 資料存放區複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 PostgreSQL 複製到 Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) 一節。
 
@@ -95,11 +95,11 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 而活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同。 就「複製活動」而言，這些屬性會根據來源和接收器的類型而有所不同。
 
-當 source 的類型為**RelationalSource** （包含于 postgresql）時，typeProperties 區段中會提供下列屬性：
+當來源的類型為 **>relationalsource** (其中包含于 postgresql) 時，>typeproperties 區段中會提供下列屬性：
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from \"MySchema\".\"MyTable\""` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢中以 `""` (雙引號) 括住它們。
@@ -109,7 +109,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON 範例：將資料從 PostgreSQL 複製到 Azure Blob
-這個範例提供範例 JSON 定義，您可以使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來建立管線。 這些範例示範如何將資料從 PostgreSQL 資料庫複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
+此範例提供範例 JSON 定義，可讓您用來建立使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)的管線。 這些範例示範如何將資料從 PostgreSQL 資料庫複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
 
 > [!IMPORTANT]
 > 此範例提供 JSON 程式碼片段。 其中並不包含建立 Data Factory 的逐步指示。 如需逐步指示，請參閱 [在內部部署位置和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文。
@@ -295,7 +295,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 }
 ```
 ## <a name="type-mapping-for-postgresql"></a>PostgreSQL 的類型對應
-如[資料移動活動](data-factory-data-movement-activities.md)一文所述，複製活動會使用下列2個步驟的方法，執行從來源類型到接收類型的自動類型轉換：
+如 [資料移動活動](data-factory-data-movement-activities.md) 文章中所述，複製活動會使用下列2個步驟的方法，執行從來源類型轉換成接收類型的自動類型轉換：
 
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
@@ -312,28 +312,28 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 | boolean |bool |布林值 |
 | 方塊 | |Byte[]、String |
 | bytea | |Byte[]、String |
-| character [(n)] |char [(n)] |字串 |
-| character varying [(n)] |varchar [(n)] |字串 |
-| cid | |字串 |
-| cidr | |字串 |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
+| cid | |String |
+| cidr | |String |
 | 圓形 | |Byte[]、String |
 | date | |Datetime |
-| daterange | |字串 |
+| daterange | |String |
 | 雙精度 |float8 |Double |
 | inet | |Byte[]、String |
-| intarry | |字串 |
-| int4range | |字串 |
-| int8range | |字串 |
-| integer |int, int4 |Int32 |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
+| 整數 |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |字串 |
+| json | |String |
 | jsonb | |Byte[] |
 | line | |Byte[]、String |
 | lseg | |Byte[]、String |
 | macaddr | |Byte[]、String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |字串 |
+| numrange | |String |
 | oid | |Int32 |
 | path | |Byte[]、String |
 | pg_lsn | |Int64 |
@@ -343,13 +343,13 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 | SMALLINT |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |字串 |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>從關聯式來源進行可重複的讀取
-從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱[從關聯式來源重複讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱 [關聯式來源的可重複讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)一文，以了解在 Azure Data Factory 中會影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法。

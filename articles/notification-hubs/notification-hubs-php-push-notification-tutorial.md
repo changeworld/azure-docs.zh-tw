@@ -1,5 +1,5 @@
 ---
-title: 如何搭配使用 Azure 通知中樞與 PHP
+title: 如何使用 PHP 的 Azure 通知中樞
 description: 了解如何從 PHP 後端使用 Azure 通知中樞。
 services: notification-hubs
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076638"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何從 PHP 使用通知中樞
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-您可以使用通知中樞 REST 介面，從 JAVA/PHP/Ruby 後端存取所有通知中樞的功能，如 MSDN 主題[通知中樞 Rest api](/previous-versions/azure/reference/dn223264(v=azure.100))中所述。
+您可以使用通知中樞 REST 介面，存取 JAVA/PHP/Ruby 後端的所有通知中樞功能，如 MSDN 主題 [通知中樞 Rest api](/previous-versions/azure/reference/dn223264(v=azure.100))中所述。
 
 在本主題中，我們將說明如何：
 
 * 在 PHP 中建置通知中心功能的 REST 用戶端；
-* 遵循[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)，以供您選擇的行動平臺，在 PHP 中執行後端部分。
+* 遵循 [使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md) ，以使用您所選的行動平臺，在 PHP 中執行後端部分。
 
 ## <a name="client-interface"></a>用戶端介面
 
@@ -53,7 +53,7 @@ $hub->sendNotification($notification, null);
 
 ## <a name="implementation"></a>實作
 
-如果您還沒有這麼做，請遵循 [快速入門教學課程]，直到您必須執行後端的最後一節。
+如果您還沒有這麼做，請遵循 [開始使用教學課程]，直到您必須執行後端的最後一節。
 另外，若有需要，您可以使用 [PHP REST 包裝函式範例]的程式碼，並直接移至[完成教學課程](#complete-tutorial)一節。
 
 您可以在 [MSDN](/previous-versions/azure/reference/dn530746(v=azure.100))上找到所有實作完整 REST 包裝函式的詳細資料。 在本節中，我們將針對存取通知中心 REST 端點所需主要步驟的 PHP 實作進行說明：
@@ -220,7 +220,7 @@ public function sendNotification($notification, $tagsOrTagExpression="") {
 
 現在您可以透過從 PHP 後端傳送通知，來完成開始使用教學課程。
 
-初始化您的通知中樞用戶端（以 [快速入門教學課程] 中指示的方式取代連接字串和中樞名稱）：
+將您的通知中樞用戶端初始化 (以 [開始使用教學課程] ) 中的指示來替代連接字串和中樞名稱：
 
 ```php
 $hub = new NotificationHub("connection string", "hubname");
@@ -280,7 +280,7 @@ $hub->sendNotification($notification, null);
 
 ## <a name="next-steps"></a>後續步驟
 
-在本主題中，我們會說明如何為通知中心建立簡單的 Java REST 用戶端。 從這裡您可以：
+在本主題中，我們會說明如何為通知中心建立簡單的 Java REST 用戶端。 從這裡，您可以：
 
 * 下載完整的 [PHP REST 包裝函式範例]，其中包含上述所有程式碼。
 * 繼續了解 [即時新聞教學課程] 中的通知中心標記功能

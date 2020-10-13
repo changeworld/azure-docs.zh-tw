@@ -8,22 +8,22 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 2f02c16d73ca07c1909bf84bfb7e158b429d3096
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125967"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用適用於 Visual Studio 的 Data Lake 工具來開發 U-SQL 指令碼
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake Analytics 和 Azure 串流分析相關的功能。 如需 Azure 串流分析案例的詳細資訊，請參閱[適用于 Visual Studio 的 azure 串流分析工具](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md)。
+Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake Analytics 和 Azure 串流分析相關的功能。 如需 Azure 串流分析案例的詳細資訊，請參閱 [適用于 Visual Studio 的 Azure 串流分析工具](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md)。
 
-本文說明如何使用 Visual Studio 來建立 Azure Data Lake Analytics 帳戶。 您可以在 [ [U-SQL](data-lake-analytics-u-sql-get-started.md)] 中定義作業，並將作業提交至 Data Lake Analytics 服務。 如需 Data Lake Analytics 的詳細資訊，請參閱[Azure Data Lake Analytics 總覽](data-lake-analytics-overview.md)。
+本文說明如何使用 Visual Studio 建立 Azure Data Lake Analytics 帳戶。 您可以在 [sql-dmo](data-lake-analytics-u-sql-get-started.md)中定義作業，並將作業提交至 Data Lake Analytics 服務。 如需 Data Lake Analytics 的詳細資訊，請參閱 [Azure Data Lake Analytics 總覽](data-lake-analytics-overview.md)。
 
 > [!IMPORTANT]
-> 我們建議您升級至 Azure Data Lake Tools for Visual Studio 版本2.3.3000.4 版或更新版本。 舊版目前已淘汰，不再提供下載。
+> 建議您升級至 Azure Data Lake Tools for Visual Studio 2.3.3000.4 版版或更新版本。 舊版目前已淘汰，不再提供下載。
 >
 > 1. 請檢查您是否使用比 2.3.3000.4 版 Azure Data Lake Tools for Visual Studio 還要舊的版本。
 >
@@ -33,7 +33,7 @@ Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake
 >    - [適用于 Visual Studio 2017 和2019](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [針對 Visual Studio 2013 和 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Visual Studio**：支援 Express 以外的所有版本。
 
@@ -47,7 +47,7 @@ Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>安裝 Azure Data Lake Tools for Visual Studio
 
-要進行本教學課程，就必須安裝 Data Lake Tools for Visual Studio。 如需詳細資訊，請參閱[安裝適用于 Visual Studio 的 Data Lake 工具](data-lake-analytics-data-lake-tools-install.md)。
+要進行本教學課程，就必須安裝 Data Lake Tools for Visual Studio。 如需詳細資訊，請參閱 [安裝 Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-install.md)。
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>連線至 Azure Data Lake Analytics 帳戶
 
@@ -55,9 +55,9 @@ Azure Data Lake 和串流分析工具包含兩項 Azure 服務、Azure Data Lake
 
 1. 選取 [ **View**伺服器總管] 來開啟**伺服器總管**  >  ** **。
 
-1. 以滑鼠右鍵按一下 [ **Azure**]，然後選取 **[連線至 Microsoft Azure 訂**用帳戶]。 在 [登**入您的帳戶**] 中，遵循指示。
+1. 以滑鼠右鍵按一下 [ **Azure**]，然後選取 **[連接到 Microsoft Azure 訂**用帳戶]。 在 [登 **入您的帳戶**] 中，依照指示進行。
 
-1. 在 [**伺服器總管**中，選取 [ **Azure**  >  **Data Lake Analytics**]。 您會看到 Data Lake Analytics 帳戶的清單。
+1. 在**伺服器總管**中，選取**Azure**  >  **Data Lake Analytics**。 您會看到 Data Lake Analytics 帳戶的清單。
 
 ## <a name="write-your-first-u-sql-script"></a>撰寫第一個 U-SQL 指令碼
 
@@ -82,15 +82,15 @@ OUTPUT @a
 
 1. 在 Visual Studio 中，選取 [檔案] >  [新增] >  [專案]。
 
-1. 選取 [ **U-SQL] 專案**類型，然後選取 **[下一步]**。 在 [**設定您的新專案**] 中，選取 [**建立**]。
+1. 選取 [ **U-SQL] 專案** 類型，然後選取 **[下一步]**。 在 [ **設定新專案**] 中，選取 [ **建立**]。
 
-   Visual Studio 會建立包含**script.usql**檔案的方案。
+   Visual Studio 建立包含 **.usql** 檔案的方案。
 
-1. 將腳本從 [[撰寫您的第一個 U-SQL 腳本](#write-your-first-u-sql-script)] 貼入 [ **script.usql** ] 視窗。
+1. 貼上腳本，使其無法將 [您的第一個 U SQL 腳本寫入](#write-your-first-u-sql-script) **.usql** 視窗中。
 
-1. 在**方案總管**中，以滑鼠右鍵按一下 [ **script.usql**]，然後選取 [**提交腳本**]。
+1. 在 **方案總管**中，以滑鼠右鍵按一下 **.usql**，然後選取 [ **提交腳本**]。
 
-1. 在 [**提交作業**] 中，選擇您的 Data Lake Analytics 帳戶，然後選取 [**提交**]。
+1. 在 [ **提交作業**] 中，選擇您的 Data Lake Analytics 帳戶，然後選取 [ **提交**]。
 
    ![提交 U-SQL Visual Studio 專案](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-submit-job-vs2019.png)
 
@@ -101,16 +101,16 @@ OUTPUT @a
 * **中繼資料作業**會顯示 U-SQL 目錄上所執行的所有動作。
 * **資料**會顯示所有的輸入和輸出。
 * [狀態歷程記錄]**** 會顯示時間軸和狀態的詳細資料。
-* **AU 分析**顯示作業中使用了多少 AU，並探索不同 AU 配置策略的模擬。
+* **AU 分析** 會顯示作業中使用了多少 au，以及探索不同 AU 配置策略的模擬。
 * **診斷**會提供作業執行和效能最佳化的進階分析。
 
 ![U SQL Visual Studio Data Lake Analytics 工作效能圖表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-若要查看最新的作業狀態並重新整理畫面，**請選取 [** 重新整理]。
+若要查看最新的作業狀態並重新整理畫面， **請選取 [** 重新整理]。
 
 ## <a name="check-job-status"></a>檢查作業狀態
 
-1. 在 [**伺服器總管**中，選取 [ **Azure**  >  **Data Lake Analytics**]。
+1. 在**伺服器總管**中，選取**Azure**  >  **Data Lake Analytics**。
 
 1. 展開 Data Lake Analytics 帳戶名稱。
 
@@ -120,13 +120,13 @@ OUTPUT @a
 
 ## <a name="see-the-job-output"></a>查看作業輸出
 
-1. 在**伺服器總管**中，流覽至您所提交的作業。
+1. 在 **伺服器總管**中，流覽至您提交的作業。
 
 1. 按一下 **[資料]** 索引標籤。
 
 1. 在 [作業輸出]**** 索引標籤中，選取 `"/data.csv"` 檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [在您自己的工作站上執行 U-SQL 指令碼進行測試和偵錯](data-lake-analytics-data-lake-tools-local-run.md)
 * [使用 Azure Data Lake Tools for Visual Studio Code 執行 U-SQL 作業的 C# 程式碼偵錯](data-lake-tools-for-vscode-local-run-and-debug.md)

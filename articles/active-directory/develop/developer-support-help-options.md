@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117204"
 ---
 # <a name="support-and-help-options-for-developers"></a>開發人員的支援和協助選項
@@ -61,11 +61,11 @@ Stack Overflow 是適用於開發相關問題的慣用管道。 開發人員社�
 |---------|---------|
 | ADAL 程式庫 | [adal](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 程式庫     | [msal](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN 中介軟體  | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| OWIN 中介軟體  | [[azure active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 | [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| 與驗證或授權主題相關的其他任何區域 | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| 與驗證或授權主題相關的其他任何區域 | [[azure active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始程式碼的提示。 遵循這些指導方針以增加社群成員快速評估並回應您問題的機會：
 
@@ -78,8 +78,8 @@ Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始�
 
 如需程式庫及其 GitHub 存放庫的清單，請參閱下列各項：
 
-* [Azure Active Directory Authentication Library (ADAL) ](../azuread-dev/active-directory-authentication-libraries.md)程式庫和 GitHub 存放庫
-* [Microsoft Authentication Library (MSAL) ](reference-v2-libraries.md)程式庫和 GitHub 存放庫
+* [Azure Active Directory Authentication Library (ADAL) ](../azuread-dev/active-directory-authentication-libraries.md) 程式庫和 GitHub 儲存機制
+* [Microsoft 驗證程式庫 (MSAL) ](reference-v2-libraries.md) 程式庫和 GitHub 儲存機制
 
 ## <a name="open-a-support-request"></a>開啟支援要求
 

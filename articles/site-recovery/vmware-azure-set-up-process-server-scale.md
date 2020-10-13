@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Site Recovery 在 VMware Vm 和實體伺服器的嚴重損壞修復期間，設定相應放大進程伺服器 |Microsoft Docs '
-description: 本文說明如何在 VMware Vm 和實體伺服器的嚴重損壞修復期間，設定相應放大進程伺服器。
+title: 使用 Azure Site Recovery 在 VMware Vm 和實體伺服器的災難復原期間設定相應放大進程伺服器 |Microsoft Docs '
+description: 本文說明如何在 VMware Vm 和實體伺服器的嚴重損壞修復期間設定相應放大進程伺服器。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292811"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用額外的進程伺服器進行調整
 
 依預設，使用 [Site Recovery](site-recovery-overview.md) 複製 VMware VM 或實體伺服器至 Azure 時，處理序伺服器會安裝在設定伺服器電腦上，並且用於協調 Site Recovery 與內部部署基礎結構之間的資料轉送。 若要增加容量和相應放大您的複寫部署，您可以加入其他獨立處理序伺服器。 本文說明如何設定相應放大進程伺服器。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 ### <a name="capacity-planning"></a>容量規劃
 
 請確定您已執行 VMware 複寫的[容量規劃](site-recovery-plan-capacity-vmware.md)。 這有助於您識別如何及何時應該部署額外的處理序伺服器。
 
-從9.24 版開始，在選取進程伺服器以進行新的複寫時，會新增指導方針。 進程伺服器會根據特定準則，標示為狀況良好、警告和重大。 若要瞭解可能會影響進程伺服器狀態的不同案例，請參閱[處理伺服器警示](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。
+從9.24 版開始，在為新的複寫選擇進程伺服器時，會加入指引。 進程伺服器會根據特定準則標示為「狀況良好」、「警告」和「重大」。 若要瞭解可能影響處理伺服器狀態的不同案例，請參閱 [進程伺服器警示](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。
 
 > [!NOTE]
 > 不支援使用複製的處理序伺服器元件。 請遵循本文中的步驟進行每個 PS 相應放大作業。
@@ -41,7 +41,7 @@ ms.locfileid: "87292811"
 
 每個受保護的來源機器都會設定各 100 GB 的 3 個磁碟。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 下表為額外處理序伺服器的必要條件摘要。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87292811"
 依照下列指示下載處理序伺服器的安裝檔案：
 
 1. 登入 Azure 入口網站，然後流覽至您的復原服務保存庫。
-2. 開啟**Site Recovery 基礎結構**  >  **vmware 和實體機器**設定  >  **伺服器**（適用于 vmware & 實體機器）。
+2. 針對 vmware & 實體機器) ，開啟**Site Recovery 基礎結構**  >  **VMware 和實體機器**設定  >  **伺服器** (。
 3. 選取設定伺服器以切入伺服器的詳細資料。 接著按一下** [+ 處理序伺服器]**。
 4. 在 [**新增進程伺服器**] 中  >   ，**選擇您要部署進程伺服器的位置**，然後選取 [**在內部部署部署相應放大進程伺服器**]。
 
@@ -101,5 +101,5 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 * ProxyPassword="Password"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解[管理處理序伺服器設定](vmware-azure-manage-process-server.md)

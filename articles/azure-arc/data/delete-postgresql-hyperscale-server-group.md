@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936807"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>刪除已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組
@@ -49,7 +49,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>將 Kubernetes 的永久性磁片區宣告回收 (Pvc) 
 
-刪除伺服器群組並不會移除其相關聯的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 這是原廠設定。 其目的是要協助使用者存取資料庫檔案，以防意外刪除實例。 不強制刪除 Pvc。 不過，建議您這樣做。 如果您未回收這些 Pvc，最後最後會遇到錯誤，因為您的 Kubernetes 叢集會將它視為磁碟空間不足。 若要回收 Pvc，請執行下列步驟：
+刪除伺服器群組並不會移除其相關聯的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 這是原廠設定。 其目的是要在意外刪除執行個體時，協助使用者存取資料庫檔案。 刪除 PVC 並不是必要的。 但是建議您這麼做。 如果您不回收這些 PVC，最後將會發生錯誤，因為您的 Kubernetes 叢集會認為磁碟空間已用盡。 若要回收 PVC，請採取下列步驟：
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. 列出您所刪除之伺服器群組的 Pvc
 若要列出 Pvc，請執行下列命令：

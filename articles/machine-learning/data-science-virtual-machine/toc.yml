@@ -56,6 +56,8 @@
           href: dsvm-common-identity.md
         - name: 保護資源存取認證
           href: dsvm-secure-access-keys.md
+    - name: 將您的資料科學虛擬機器升級至 Ubuntu 18.04
+      href: ubuntu-upgrade.md
 - name: 資源
   items:
     - name: Microsoft 問與答頁面

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016549"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759232"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>快速入門：使用 ARM 範本建立具有私人對等互連的 ExpressRoute 線路
 
@@ -92,11 +92,11 @@ Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也�
 
 1. 資源群組應包含下列資源：
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute 部署資源群組":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager 範本 PowerShell 部署輸出":::
 
 1. 選取 ExpressRoute 線路 **er-ck01**，以確認線路狀態為 [已啟用]、提供者狀態為 [未佈建]，且私人對等互連的狀態為 [已佈建]。
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute 部署線路":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager 範本 PowerShell 部署輸出":::
 
 > [!NOTE]
 > 您必須先呼叫提供者才能完成佈建程序，才能將虛擬網路連結至線路。
@@ -120,11 +120,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 * 公用 IP
 * 網路安全性群組
 
-若要深入了解如何將虛擬網路連結至線路，請繼續進行 ExpressRoute 教學課程。
+若要了解如何將虛擬網路連結至線路，請繼續進行 ExpressRoute 教學課程。
 
 > [!div class="nextstepaction"]
 > [ExpressRoute 教學課程](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* 如需 ExpressRoute 工作流程的詳細資訊，請參閱 [ExpressRoute 工作流程](expressroute-workflows.md)。
-* 如需線路對等的詳細資訊，請參閱 [ExpressRoute 線路和路由網域](expressroute-circuit-peerings.md)。
-* 如需使用虛擬網路的詳細資訊，請參閱 [虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。

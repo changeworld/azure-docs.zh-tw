@@ -4,10 +4,10 @@ description: 本文說明如何使用 Azure 監視器來監視服務匯流排實
 ms.topic: article
 ms.date: 09/30/2020
 ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598129"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 服務匯流排計量

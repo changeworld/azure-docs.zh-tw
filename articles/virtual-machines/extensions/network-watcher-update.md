@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: c386685d63894472623ffc4392a529541a91391c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd3fff2d438bbf804e35f04db0cfae15eea5e782
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410314"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973334"
 ---
 # <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>如何將網路監看員延伸模組更新為最新版本 
 
@@ -114,4 +114,4 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 ## <a name="support"></a>支援
 
-如果您在本文的任何時間點需要更多說明，您可以參閱網路監看員延伸模組檔 ([Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux)、 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)) 或與 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文的任何時間點需要更多說明，您可以參閱網路監看員延伸模組檔 ([Linux](./network-watcher-linux.md)、 [Windows](./network-watcher-windows.md)) 或與 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

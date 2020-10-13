@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 4d0934dd30f9738e2a67d4aff23c96a48aaaa61b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d868a2d9bc88be7faea161779c35110f13e2b2ac
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89302001"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939038"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>快速入門：使用 Azure CLI 建立公用 IP 位址
 
@@ -95,7 +95,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
   az network public-ip create \
     --resource-group myResourceGroup \
     --name myBasicPublicIP \
-    --sku Standard
+    --sku Basic \
     --allocation-method Static
 ```
 如果 IP 位址在一段時間內可接受變更，則可以藉由將配置方法變更為「動態」來選取 **動態** IP 指派。

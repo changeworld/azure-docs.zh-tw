@@ -15,10 +15,10 @@ ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263227"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的 SQL Server 上建立 Always On 可用性群組的必要條件
@@ -54,7 +54,7 @@ ms.locfileid: "91263227"
    ![資源群組](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. 選取 **資源群組**。
-5. 選取 [建立]。
+5. 選取 [建立]****。
 6. 在 [資源群組名稱] 下方，輸入資源群組的名稱。 例如，輸入 **sql-ha-rg**。
 7. 如果您有多個 Azure 訂用帳戶，請確認此訂用帳戶是您要在其中建立可用性群組的 Azure 訂用帳戶。
 8. 選取位置。 此位置是您要建立可用性群組的 Azure 區域。 本文會在一個 Azure 位置建置所有資源。
@@ -99,7 +99,7 @@ Azure 會建立資源群組，並在入口網站中釘選資源群組的捷徑�
 
    此範例會使用子網路名稱 **Admin**。此子網路用於網域控制站。
 
-5. 選取 [建立]。
+5. 選取 [建立]****。
 
    ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -232,7 +232,7 @@ Azure 會建立虛擬機器。
     ![[新增角色] 對話方塊](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. 選取 **[下一步]** ，直到您到達 [ **確認** ] 區段為止。 選取 [必要時自動重新啟動目的地伺服器] 核取方塊。
-8. 選取 [安裝]  。
+8. 選取 [安裝]。
 9. 功能安裝完畢後，請回到 [伺服器管理員]  儀表板。
 10. 在左側窗格中選取新的 [AD DS]  選項。
 11. 選取黃色警告列上的 [ **更多** ] 連結。
@@ -248,7 +248,7 @@ Azure 會建立虛擬機器。
     | **網域控制站選項** |**DSRM 密碼** = Contoso!0000<br/>**確認密碼** = Contoso!0000 |
 
 14. 選取 **[下一步** ] 以流覽嚮導中的其他頁面。 在 [先決條件檢查] 頁面上，確認是否出現下列訊息：**已順利通過所有先決條件檢查**。 您可以檢閱任何適用的警告訊息，但是仍可以繼續進行安裝。
-15. 選取 [安裝]  。 **ad-primary-dc** 虛擬機器會自動重新開機。
+15. 選取 [安裝]。 **ad-primary-dc** 虛擬機器會自動重新開機。
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>請注意主要網域控制站的 IP 位址
 
@@ -276,7 +276,7 @@ Azure 會建立虛擬機器。
 
 3. 選取 [ **自訂**]，然後輸入網域主控站的私人 IP 位址。
 
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
 ### <a name="configure-the-second-domain-controller"></a>設定第二個網域控制站
 
@@ -412,7 +412,7 @@ Azure 會建立虛擬機器。
 您現在可以將 VM 加入 **corp.contoso.com**。 為 SQL Server VM 和檔案共用見證伺服器執行下列步驟：
 
 1. 遠端連線虛擬機器與 **BUILTIN\DomainAdmin**。
-2. 在 [伺服器管理員]**** 中，選取 [本機伺服器]****。
+2. 在 [伺服器管理員]  中，選取 [本機伺服器]  。
 3. 選取 [ **工作組** ] 連結。
 4. 在 [ **電腦名稱稱** ] 區段中，選取 [ **變更**]。
 5. 選取 [網域] 核取方塊，然後在文字方塊中輸入 **corp.contoso.com**。 選取 [確定]  。

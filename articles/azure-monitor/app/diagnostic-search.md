@@ -4,10 +4,10 @@ description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324449"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
@@ -20,13 +20,13 @@ ms.locfileid: "87324449"
 
 ### <a name="in-the-azure-portal"></a>在 Azure 入口網站中
 
-您可以從應用程式的 [Application Insights 總覽] 索引標籤（位於頂端列）或左側的 [調查] 底下開啟診斷搜尋。
+您可以從應用程式的 [Application Insights 總覽] 索引標籤開啟診斷搜尋， (位於頂端列) 或左邊的 [調查] 下。
 
 ![[搜尋] 索引標籤](./media/diagnostic-search/view-custom-events.png)
 
-請移至 [事件種類] 下拉式功能表，以查看遙測專案的清單-伺服器要求、頁面流覽、您已撰寫程式碼的自訂事件等等。 在 [結果] 清單的頂端，是顯示一段時間內事件計數的摘要圖表。
+移至 [事件種類] 下拉式功能表，以查看遙測專案的清單-伺服器要求、頁面流覽、您已撰寫程式碼的自訂事件等等。 在 [結果] 清單的頂端，是顯示一段時間內事件計數的摘要圖表。
 
-按一下下拉式功能表或 [重新整理]，以取得新的事件。
+按一下下拉式功能表或 [重新整理] 以取得新的事件。
 
 ### <a name="in-visual-studio"></a>在 Visual Studio 中
 
@@ -52,16 +52,16 @@ ms.locfileid: "87324449"
 
 ## <a name="filter-event-types"></a>篩選事件類型
 
-開啟 [事件種類] 下拉式功能表，然後選擇您想要查看的事件種類。 （如果您稍後想要還原篩選，請按一下 [重設]）。
+開啟 [事件種類] 下拉式功能表，然後選擇您想要查看的事件種類。  (如果您稍後想要還原篩選，請按一下 [重設]。 ) 
 
 事件類型包括：
 
-* **追蹤**  - [診斷記錄](./asp-net-trace-logs.md)，包括 TrackTrace、Log4Net、NLog 和呼叫。
+* **追蹤**  - [診斷記錄](./asp-net-trace-logs.md)，包括 TrackTrace、Log4Net、NLog 和。 Trace 呼叫。
 * **要求** - 伺服器應用程式收到的 HTTP 要求，包括頁面、指令碼、影像、樣式檔案和資料。 這些事件是用來建立要求和回應概觀圖表。
-* **網頁檢視**  - [由 web 用戶端傳送的遙測](./javascript.md)資料，用來建立頁面流覽報表。
+* **網頁檢視**  - [Web 用戶端傳送的遙測](./javascript.md)資料，用來建立網頁檢視報表。
 * **自訂事件** - 如果您插入 TrackEvent() 呼叫來[監視使用量](./api-custom-events-metrics.md)，則可以在這裡搜尋它們。
-* **例外**狀況-伺服器中未攔截到[的例外](./asp-net-exceptions.md)狀況，以及您使用 TrackException （）來記錄的例外狀況。
-* 相依性**Dependency**  - [從您的伺服器應用程式呼叫](./asp-net-dependencies.md)其他服務（例如 REST api 或資料庫），以及來自[用戶端程式代碼](./javascript.md)的 AJAX 呼叫。
+* **例外** 狀況- [在伺服器中無法攔截的例外](./asp-net-exceptions.md)狀況，以及您使用 TrackException 記錄的例外狀況 ( # A1。
+* 相依性**Dependency**  - [從您的伺服器應用程式](./asp-net-dependencies.md)到其他服務（例如 REST api 或資料庫），以及從您的[用戶端程式代碼](./javascript.md)呼叫 AJAX 的呼叫。
 * **可用性** - [可用性測試](./monitor-web-app-availability.md)的結果。
 
 ## <a name="filter-on-property-values"></a>依據屬性值篩選
@@ -74,17 +74,17 @@ ms.locfileid: "87324449"
 
 ## <a name="find-events-with-the-same-property"></a>尋找具有相同屬性的事件
 
-若要尋找具有相同屬性值的所有專案，請在搜尋列中輸入，或在流覽 [篩選] 索引標籤中的屬性時按一下核取方塊。
+若要尋找具有相同屬性值的所有專案，請將它輸入到搜尋列中，或在 [篩選] 索引標籤中查看屬性時按一下核取方塊。
 
-![按一下 [篩選] 索引標籤中屬性的核取方塊](./media/diagnostic-search/filter-property.png)
+![在 [篩選] 索引標籤中，按一下屬性的核取方塊](./media/diagnostic-search/filter-property.png)
 
 ## <a name="search-the-data"></a>搜尋資料
 
 > [!NOTE]
-> 若要撰寫更複雜的查詢，請從 [搜尋] 分頁頂端開啟 [[**記錄（分析）**](../log-query/get-started-portal.md) ]。
+> 若要撰寫更複雜的查詢，請從搜尋分頁的頂端開啟 [**記錄 (分析) **](../log-query/get-started-portal.md) 。
 >
 
-您可以搜尋任何屬性值中的字詞。 如果您已撰寫具有屬性值的[自訂事件](./api-custom-events-metrics.md)，這就很有用。
+您可以搜尋任何屬性值中的字詞。 如果您已撰寫具有屬性值的 [自訂事件](./api-custom-events-metrics.md) ，這就很有用。
 
 您可能想要設定時間範圍，因為對一小段時間範圍進行的搜尋較快速。
 
@@ -108,7 +108,7 @@ ms.locfileid: "87324449"
 
 ## <a name="sampling"></a>取樣
 
-如果您的應用程式會產生大量的遙測（而且您使用 ASP.NET SDK 版本 2.0.0-Beta3 或更新版本），調適型取樣模組會自動只傳送代表性的事件數，以減少傳送至入口網站的磁片區。 不過，同一個要求相關的事件是以整組方式來選取或取消選取，方便您切換瀏覽相關事件。
+如果您的應用程式 (產生大量遙測，且您使用的是 ASP.NET SDK 2.0.0-Beta3 或更新版本) ，調適型取樣模組只會傳送一小部分的事件，藉此減少傳送至入口網站的磁片區。 不過，同一個要求相關的事件是以整組方式來選取或取消選取，方便您切換瀏覽相關事件。
 
 [了解取樣](./sampling.md)。
 
@@ -116,13 +116,13 @@ ms.locfileid: "87324449"
 
 您可以利用來自任何遙測項目的詳細資料，在 GitHub 或 Azure DevOps 中建立 Bug。
 
-按一下任何遙測專案，然後選取 [**建立工作專案**]，移至端對端交易詳細資料檢視。
+按一下任何遙測專案，然後選取 [ **建立工作專案**]，以移至端對端交易詳細資料檢視。
 
 ![按一下 [新增工作項目]、編輯欄位，然後按一下 [確定]。](./media/diagnostic-search/work-item.png)
 
 當您第一次執行此動作時，系統會要求您設定與 Azure DevOps 組織和專案的連結。
 
-（您也可以在 [工作專案] 索引標籤上設定連結）。
+ (您也可以在 [工作專案] 索引標籤上設定連結。 ) 
 
 ## <a name="send-more-telemetry-to-application-insights"></a>傳送更多遙測到 Application Insights
 
@@ -133,7 +133,7 @@ ms.locfileid: "87324449"
 
 [了解如何將記錄和自訂遙測傳送至 Application Insights](./asp-net-trace-logs.md)。
 
-## <a name="q--a"></a><a name="questions"></a>問與答
+## <a name="q--a"></a><a name="questions"></a>問 & A
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少資料？
 

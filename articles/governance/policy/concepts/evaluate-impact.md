@@ -1,18 +1,18 @@
 ---
 title: 評估新 Azure 原則定義的影響
 description: 了解在 Azure 環境中導入新的原則定義時所須依循的程序。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544697"
+ms.locfileid: "91873862"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>評估新 Azure 原則定義的影響
 
-Azure 原則是一項功能強大的工具，可讓您依據商務標準管理 Azure 資源，並符合合規需求。 當人員、程序或管線建立或更新資源時，Azure 原則會檢閱要求。 當原則定義效果為 [Append](./effects.md#deny) 或 [DeployIfNotExists](./effects.md#deployifnotexists) 時，原則會改變要求或對其進行新增。 當原則定義效果為 [Audit](./effects.md#audit) 或 [AuditIfNotExists](./effects.md#auditifnotexists) 時，原則會促使系統建立活動記錄項目。 當原則定義效果為 [Deny](./effects.md#deny) 時，原則會停止建立或改變要求。
+Azure 原則是一項功能強大的工具，可讓您依據商務標準管理 Azure 資源，並符合合規需求。 當人員、程序或管線建立或更新資源時，Azure 原則會檢閱要求。 當原則定義效果為 [Modify](./effects.md#modify)、 [Append](./effects.md#deny) 或 [DeployIfNotExists](./effects.md#deployifnotexists)時，原則會改變要求或新增至該要求。 當原則定義效果為 [Audit](./effects.md#audit) 或 [AuditIfNotExists](./effects.md#auditifnotexists)時，原則會為新的和更新的資源建立活動記錄專案。 當原則定義效果為 [Deny](./effects.md#deny) 時，原則會停止建立或改變要求。
 
 若您確知原則已正確定義，這些結果就會完全符合預期。 不過，請務必先驗證新的原則可如預期運作，再允許該原則變更或封鎖工作。 此驗證必須確定只有預期的資源會被認定為不符合規範，而不會誤將符合規範的資源包含在結果中 (也稱為_誤判為真_)。
 

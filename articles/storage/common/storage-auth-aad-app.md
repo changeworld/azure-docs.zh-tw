@@ -10,18 +10,18 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714770"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939336"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以授權用戶端應用程式的要求
 
 使用 Azure Active Directory (Azure AD) 搭配 Azure Blob 儲存體或佇列儲存體的主要優點是，您的認證不再需要儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權對 Azure Blob 儲存體或佇列儲存體的要求。
 
-本文說明如何使用可供下載的範例應用程式，設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 範例應用程式有 .NET，但其他語言則是使用類似的方法。 如需 Microsoft 身分識別平臺2.0 的詳細資訊，請參閱 [microsoft 身分識別平臺 (v2.0) 總覽](../../active-directory/develop/v2-overview.md)。
+本文說明如何使用可供下載的範例應用程式，設定原生應用程式或 web 應用程式以使用 Microsoft 身分識別平臺進行驗證。 範例應用程式有 .NET，但其他語言則是使用類似的方法。 如需 Microsoft 身分識別平臺的詳細資訊，請參閱 [microsoft 身分識別平臺總覽](../../active-directory/develop/v2-overview.md)。
 
 如需 OAuth 2.0 程式碼授與流程的概觀，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
@@ -81,7 +81,7 @@ ms.locfileid: "91714770"
 
 ### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
 
-接下來，為您的應用程式設定隱含授與流程。 遵循這些步驟：
+接下來，為您的應用程式設定隱含授與流程。 請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
 1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。
@@ -247,7 +247,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體最初可以要求一組最低許可權，並視需要新增一段時間的許可權。 當您的程式碼要求存取權杖時，請指定應用程式所需的許可權範圍。 如需累加式同意的詳細資訊，請參閱 [增量和動態同意](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
+同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺支援累加式同意，這表示安全性主體最初可以要求一組最低許可權，並視需要新增一段時間的許可權。 當您的程式碼要求存取權杖時，請指定應用程式所需的許可權範圍。 如需累加式同意的詳細資訊，請參閱 [增量和動態同意](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
 
 ## <a name="view-and-run-the-completed-sample"></a>查看並執行完成的範例
 

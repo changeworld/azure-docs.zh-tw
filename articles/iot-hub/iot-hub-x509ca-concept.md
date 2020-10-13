@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308107"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性了解 IoT 產業中的 X.509 CA 憑證
@@ -71,7 +71,7 @@ Company-X 可選擇向公開的根憑證授權單位購買 X.509 CA 憑證，也
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>建立自我簽署的 X.509 CA 憑證
 
-建立自我簽署的 x.509 CA 憑證的程式類似于購買，但與根憑證授權單位類似的協力廠商封緘者除外。 在我們的範例中，Company-X 會簽署其授權單位憑證，而非根憑證授權單位。 Company-X 可選擇此選項來進行測試，直到他們準備好購買授權單位憑證。 如果智慧型 X 小工具不是用來連線到 IoT 中樞以外的任何協力廠商服務，則 Company X 也可以在生產環境中使用自我簽署的 x.509 CA 憑證。
+建立 Self-Signed x.509 CA 憑證的程式類似于購買，但牽涉到協力廠商封緘者，例如根憑證授權單位。 在我們的範例中，Company-X 會簽署其授權單位憑證，而非根憑證授權單位。 Company-X 可選擇此選項來進行測試，直到他們準備好購買授權單位憑證。 如果智慧型 X 小工具不是用來連線到 IoT 中樞以外的任何協力廠商服務，則 Company X 也可以在生產環境中使用自我簽署的 x.509 CA 憑證。
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>向 IoT 中樞註冊 X.509 憑證
 
