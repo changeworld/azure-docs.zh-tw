@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3adc3dd0e0b7e9f964326f5e637b0fefb2cd173
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637133"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938454"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -20,7 +20,7 @@ ms.locfileid: "91637133"
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](/azure/security/benchmarks/security-baselines-overview-v1) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 

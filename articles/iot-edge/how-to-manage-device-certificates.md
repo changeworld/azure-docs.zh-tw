@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669037"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971790"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 裝置上的憑證
 
@@ -33,10 +33,13 @@ ms.locfileid: "89669037"
 
 ### <a name="prerequisites"></a>必要條件
 
-* 在 [Windows](how-to-install-iot-edge-windows.md) 或 [Linux](how-to-install-iot-edge-linux.md)上執行的 IoT Edge 裝置。
+* IoT Edge 裝置。
+
+  如果您沒有設定 IoT Edge 裝置，可以在 Azure 虛擬機器中建立一個。 遵循其中一個快速入門文章中的步驟， [建立虛擬 Linux 裝置](quickstart-linux.md) 或 [建立虛擬 Windows 裝置](quickstart.md)。
+
 * 擁有根憑證授權單位 (CA) 憑證，自我簽署或購買自信任的商業憑證授權單位單位，例如巴爾的摩、Verisign、DigiCert 或 GlobalSign。
 
-如果您還沒有根憑證授權單位，但想要嘗試 IoT Edge 需要生產憑證的功能 (例如閘道案例) 您可以 [建立示範憑證來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md)。
+  如果您還沒有根憑證授權單位，但想要嘗試 IoT Edge 需要生產憑證的功能 (例如閘道案例) 您可以 [建立示範憑證來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md)。
 
 ### <a name="create-production-certificates"></a>建立生產憑證
 

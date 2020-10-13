@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335495"
+ms.locfileid: "91932629"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 匯入的限制和已知問題
 
@@ -42,6 +42,7 @@ ms.locfileid: "91335495"
 -   系統會忽略安全性定義。
 -   不支援 API 作業的內嵌架構定義。 架構定義是在 API 範圍中定義，而且可以在 API 作業要求或回應範圍中參考。
 -   定義的 URL 參數必須是 URL 範本的一部分。
+-   `server` API 作業層級不支持對象。
 -   `Produces` 不支援描述 API 所傳回之 MIME 類型的關鍵字。 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI 第 2 版

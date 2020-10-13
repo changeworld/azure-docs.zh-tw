@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87418214"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968628"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>管理 Azure Multi-Factor Authentication 的使用者設定
 
@@ -52,7 +52,7 @@ ms.locfileid: "87418214"
 1. 選取 [ **管理使用者設定**]，然後核取 [ **刪除所選使用者產生的所有現有應用程式密碼**] 核取方塊，如下列範例所示： ![ 刪除所有現有的應用程式密碼](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. 選取 [ **儲存**]，然後 **關閉**。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文說明如何設定個別的使用者設定。 若要設定整體 Azure Multi-Factor Authentication 服務設定，請參閱 [設定 azure Multi-Factor Authentication 設定](howto-mfa-mfasettings.md)。
 

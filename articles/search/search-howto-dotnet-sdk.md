@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020791"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950783"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>如何在 .NET 應用程式中使用 Azure 搜尋 (v10) 
 
@@ -44,7 +44,7 @@ SDK 中還有其他 NuGet 套件：
 
 .NET SDK 的目標版本是 `2019-05-06` [Azure 認知搜尋 REST API](/rest/api/searchservice/)。 此版本包含對 Azure Blob 編制索引時的 [複雜類型](search-howto-complex-data-types.md)、 [AI 擴充](cognitive-search-concept-intro.md)、 [自動完成](/rest/api/searchservice/autocomplete)和 [JsonLines 剖析模式](search-howto-index-json-blobs.md) 的支援。 
 
-此 SDK 不支援[管理作業](/rest/api/searchmanagement/)，例如建立及調整搜尋服務和管理 API 金鑰。 如果您需要從 .NET 應用程式管理搜尋資源，您可以使用 [Azure 認知搜尋 .Net 管理 SDK](https://aka.ms/search-mgmt-sdk)。
+此 SDK 不支援[管理作業](/rest/api/searchmanagement/)，例如建立及調整搜尋服務和管理 API 金鑰。 如果您需要從 .NET 應用程式管理搜尋資源，您可以使用 [Azure 認知搜尋 .Net 管理 SDK](/dotnet/api/overview/azure/search)。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>升級到最新版本的 SDK
 如果您已經使用舊版的 Azure 認知搜尋 .NET SDK，而且想要升級至最新的正式推出版本， [本文](search-dotnet-sdk-migration-version-9.md) 將說明如何進行。

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06f682bc697f93d436e2cd71b161c01e1360944a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84170019"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973983"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 入口網站開啟虛擬機器的連接埠
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -78,4 +78,4 @@ ms.locfileid: "84170019"
 
 您可以從下列文章中，找到有關建立更詳細環境的資訊︰
 - [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)
-- [安全性群組](../../virtual-network/security-overview.md)
+- [安全性群組](../../virtual-network/network-security-groups-overview.md)

@@ -3,12 +3,12 @@ title: 如何使用您的管理群組 - Azure 治理
 description: 了解如何檢視、維護、更新及刪除您的管理群組階層。
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531015"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951939"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源
 
@@ -349,7 +349,7 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 若要深入了解管理群組，請參閱：
 
-- [建立管理群組以組織 Azure 資源](./create.md)
+- [建立管理群組以組織 Azure 資源](./create-management-group-portal.md)
 - [如何變更、刪除或管理您的管理群組](./manage.md)
 - [檢閱 Azure PowerShell 資源模組中的管理群組](/powershell/module/az.resources#resources)
 - [檢閱 REST API 中的管理群組](/rest/api/resources/managementgroups)

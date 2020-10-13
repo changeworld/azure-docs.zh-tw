@@ -2,7 +2,7 @@
 title: Azure Active Directory Domain Services 疑難排解 |Microsoft Docs '
 description: 瞭解如何對建立或管理 Azure Active Directory Domain Services 時常見的錯誤進行疑難排解
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 7642a32ce69dbbbb5ddebbe56b74f3202b2e6422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 9593fe71fc4a29678d58d7c67699210a4a39f95e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039563"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967370"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的常見錯誤和疑難排解步驟
 
@@ -167,7 +167,7 @@ Azure AD 防止意外刪除使用者物件。 當您從 Azure AD 的租使用者
 
 若要從受控網域完全移除使用者帳戶，請使用 [Set-msoluser][Remove-MsolUser] PowerShell Cmdlet 搭配參數，從您的 Azure AD 租使用者中永久刪除使用者 `-RemoveFromRecycleBin` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您持續遇到問題，請 [開啟 Azure 支援要求][azure-support] 以取得其他疑難排解協助。
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426260"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973813"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows 的自訂指令碼延伸模組
 
@@ -48,7 +48,7 @@ ms.locfileid: "89426260"
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
-如果您需要在外部下載指令碼 (例如從 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆和網路安全性群組連接埠。 例如，如果您的指令碼位於 Azure 儲存體，則可以允許使用[儲存體](../../virtual-network/security-overview.md#service-tags)適用的 Azure NSG 服務標記進行存取。
+如果您需要在外部下載指令碼 (例如從 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆和網路安全性群組連接埠。 例如，如果您的指令碼位於 Azure 儲存體，則可以允許使用[儲存體](../../virtual-network/network-security-groups-overview.md#service-tags)適用的 Azure NSG 服務標記進行存取。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆和網路安全性群組連接埠。
 

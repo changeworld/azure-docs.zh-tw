@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 5eade0ad48dcdd1f0c18ef6e65e498a7b9c79c15
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946159"
+ms.locfileid: "91951670"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -186,10 +186,11 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 除了將資料從來源資料存放區複製到接收，您也可以將設定為加入其他資料行，以複製到接收。 例如：
 
 - 從以檔案為基礎的來源進行複製時，請將相對檔案路徑儲存為額外的資料行，以追蹤資料的來源檔案。
+- 將指定的來源資料行複製為另一個資料行。 
 - 新增具有 ADF 運算式的資料行，以附加 ADF 系統變數（例如管線名稱/管線識別碼），或從上游活動的輸出儲存其他動態值。
 - 新增具有靜態值的資料行，以符合您的下游耗用量需求。
 
-您可以在 [複製活動來源] 索引標籤上找到下列設定： 
+您可以在 [複製活動來源] 索引標籤上找到下列設定。您也可以使用您定義的資料行名稱，以平常的方式對應複製活動 [架構對應](copy-activity-schema-and-type-mapping.md#schema-mapping) 中的其他資料行。 
 
 ![在複製活動中新增其他資料行](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，並 `value` 指出該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`** -保留變數表示要將來源檔案的相對路徑儲存至資料集內所指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **表達**<br>- **靜態值** | 否 |
+| additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，並 `value` 指出該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`** -保留變數表示要將來源檔案的相對路徑儲存至資料集內所指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **$ $COLUMN： <source_column_name>** -保留變數模式指出要將指定的來源資料行複製為另一個資料行<br>- **表達**<br>- **靜態值** | 否 |
 
 **範例︰**
 
@@ -218,6 +219,10 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",

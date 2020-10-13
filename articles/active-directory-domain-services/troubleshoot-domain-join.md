@@ -2,20 +2,20 @@
 title: 使用 Azure AD Domain Services 對加入網域進行疑難排解 |Microsoft Docs
 description: 瞭解如何在嘗試將 VM 加入網域，或將應用程式連線到 Azure Active Directory Domain Services，且無法連線或驗證受控網域時，針對常見問題進行疑難排解。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 4a472f0d1e31faea6b62eec004543b42e6add4fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: ee60b684d64ef49fbb669de8c98203e2df5268bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039682"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967506"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>針對 Azure Active Directory Domain Services 受控網域的網域聯結問題進行疑難排解
 
@@ -58,7 +58,7 @@ ms.locfileid: "86039682"
 1. 請嘗試使用屬於受控網域的使用者帳號憑證，將 Vm 加入受控網域。
 1. 請確定您已 [啟用密碼同步化][enable-password-sync] ，並等待足夠的時間來完成初始密碼同步處理。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解 Active Directory 的程式做為網域加入作業的一部分，請參閱 [加入和驗證問題][join-authentication-issues]。
 

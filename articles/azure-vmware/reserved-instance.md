@@ -3,12 +3,12 @@ title: 使用 Azure VMware 解決方案保留實例節省成本
 description: 瞭解如何購買 Azure VMware 解決方案的保留實例。
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91492393"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951412"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>使用 Azure VMware 解決方案節省成本
 
@@ -22,7 +22,7 @@ ms.locfileid: "91492393"
 
 -   **配額不足**  -範圍為單一/共用訂用帳戶的保留，在新的保留實例的訂用帳戶中必須具有主機配額。 您可以 [建立配額增加要求](enable-azure-vmware-solution.md) 以解決此問題。
 
--   **供應專案資格**-您將需要 [AZURE Enterprise 合約 (EA) ](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)   的 Microsoft。
+-   **供應專案資格**-您將需要 [AZURE Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md)   的 Microsoft。
 
 -   **容量限制**  -在罕見的情況下，Azure 會限制購買 Azure VMware 解決方案主機 Sku 的新保留，因為區域中的低容量。
 
@@ -83,7 +83,7 @@ ms.locfileid: "91492393"
 > - 現有的保留區域
 > - SKU
 > - 數量
-> - 持續時間
+> - Duration
 >
 >但是，如果您想要進行變更，您可以 *交換*   保留。
 

@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 的限域同步處理 |Microsoft Docs
 description: 瞭解如何使用 Azure 入口網站設定從 Azure AD 到 Azure Active Directory Domain Services 受控網域的限域同步處理
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
+ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe373b9aa08d6999a9c57dd0008a207071e1dddd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 514932726d9283af0c3fb404f787a10057ce8842
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068893"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967846"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 入口網站設定從 Azure AD 到 Azure Active Directory Domain Services 的限域同步處理
 

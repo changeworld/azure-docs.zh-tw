@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022175"
+ms.locfileid: "91893198"
 ---
 # <a name="late-stage-reprojection"></a>延遲階段重新投影
 
@@ -34,7 +34,9 @@ ms.locfileid: "84022175"
 
 若要讓深度 LSR 正常運作，用戶端應用程式必須提供有效的深度緩衝區，其中包含 LSR 期間要考慮的所有相關幾何。
 
-深度 LSR 會根據提供的深度緩衝區內容，嘗試將影片框架穩定。 因此，LSR 無法調整尚未轉譯的內容（例如透明物件），而且可能會顯示不穩定和 reprojection 的構件。
+深度 LSR 會根據提供的深度緩衝區內容，嘗試將影片框架穩定。 因此，LSR 無法調整尚未轉譯的內容（例如透明物件），而且可能會顯示不穩定和 reprojection 的構件。 
+
+若要減少透明物件的 reprojection 不穩定問題，您可以強制寫入深度緩衝區。 請參閱色彩和[.pbr](pbr-materials.md)材質的材質旗[標](color-materials.md) *TransparencyWritesDepth* 。 不過請注意，啟用此旗標時，透明/透明物件互動的視覺效果品質可能會受到影響。
 
 ## <a name="planar-lsr"></a>平面 LSR
 
@@ -52,6 +54,6 @@ ms.locfileid: "84022175"
 
 在兩個連續的框架中計算的焦點點可能相當不同。 單純地使用它們，可能會導致出現可四處移動的全息影像。 若要避免此行為，建議您在前一個和目前的焦點點之間進行插值。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [伺服器端效能查詢](performance-queries.md)
