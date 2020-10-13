@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
 ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575158"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱磁碟的自我管理寄送
@@ -43,7 +43,7 @@ ms.locfileid: "91575158"
 
 3. 在您提供交貨地址之後，必須驗證該地址並完成您的訂單。
 
-   ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中包含 [使用隨附選項] 和 [新增交貨位址] 選項。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中已呼叫 [交貨方式] 選項和 [新增交貨位址] 選項。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. 一旦裝置已備妥且您收到電子郵件通知，您就可以安排取貨。 在您的 Azure 資料箱磁碟訂單中，移至 [概觀]，然後選取 [排程取貨]。
 

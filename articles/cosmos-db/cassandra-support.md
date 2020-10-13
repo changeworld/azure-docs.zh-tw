@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 693a1ae8a8c84479448c2475db12d5bf1b25dbd5
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602807"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803495"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -71,6 +71,8 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 資料類型：
 | Tuple | 是 | 
 | udts  | 是 |
 | map | 是 |
+
+資料類型宣告支援靜態。
 
 ## <a name="cql-functions"></a>CQL 功能
 
@@ -273,7 +275,8 @@ CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_p
 ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ```
-
+## <a name="secondary-index"></a>次要索引
+Cassandra API 支援所有資料類型上的次要索引，但凍結的集合類型、decimal 和 variant 類型除外。 
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>使用 Cassandra 重試連線原則
 

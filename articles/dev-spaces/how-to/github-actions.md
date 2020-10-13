@@ -7,14 +7,16 @@ description: 使用 GitHub Actions 和 Azure Dev Spaces，直接在 Azure Kubern
 keywords: Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、GitHub Actions、Helm、服務網格、服務網格路由、kubectl、k8s
 manager: gwallace
 ms.custom: devx-track-js
-ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316098"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973099"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (preview) 
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 提供使用 GitHub Actions 的工作流程，可讓您直接在 AKS 中測試提取要求的變更，再將提取要求合併到存放庫的主要分支。 擁有執行中的應用程式來審核提取要求的變更，可以提高開發人員和小組成員的信賴度。 這個執行中的應用程式也可以協助小組成員（像是產品經理和設計人員）在開發初期的階段，成為審核流程的一部分。
 

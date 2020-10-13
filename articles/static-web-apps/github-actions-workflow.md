@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d4a455458812bef1d79aba583a6317c08b65863
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85340939"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948369"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>適用於 Azure 靜態 Web Apps 預覽版的 GitHub Actions 工作流程
 
@@ -152,7 +152,7 @@ Azure 靜態 Web Apps 為您設定的 `repo_token`、`action` 和 `azure_static_
 
 | Command            | 描述 |
 |---------------------|-------------|
-| `app_build_command` | 定義要在部署靜態內容應用程式期間執行的自訂命令。<br><br>例如，若要設定 Angular 應用程式的生產建置，請輸入 `ng build --prod`。 如果保留空白，則工作流程會嘗試執行 `npm run build` 或 `npm run build:Azure` 命令。  |
+| `app_build_command` | 定義要在部署靜態內容應用程式期間執行的自訂命令。<br><br>例如，若要設定一個角應用程式的生產組建，請建立名為的 npm 腳本 `build-prod` 來執行 `ng build --prod` ，並輸入 `npm run build-prod` 做為自訂命令。 如果保留空白，則工作流程會嘗試執行 `npm run build` 或 `npm run build:Azure` 命令。  |
 | `api_build_command` | 定義要在 Azure Functions API 應用程式部署期間執行的自訂命令。 |
 
 ## <a name="route-file-location"></a>路由檔案位置

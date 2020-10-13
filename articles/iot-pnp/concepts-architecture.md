@@ -10,15 +10,15 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574311"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT 隨插即用架構
 
-IoT 隨插即用可讓解決方案產生器將智慧型裝置與解決方案整合，而不需要任何手動設定。 IoT 隨插即用的核心是一種裝置 _模型_ ，可描述裝置的功能是否已啟用 IoT 隨插即用的應用程式。 此模型會結構化為定義下列各項的一組介面：
+IoT 隨插即用可讓解決方案建立器將智慧型裝置整合到解決方案中，而不需手動設定。 IoT 隨插即用的核心是一種裝置 _模型_ ，可描述裝置的功能是否已啟用 IoT 隨插即用的應用程式。 此模型會結構化為定義下列各項的一組介面：
 
 - 代表裝置或其他實體的唯讀或可寫入狀態的_屬性_。 例如，裝置序號可能是唯讀屬性，而控溫器上的目標溫度可能是可寫入屬性。
 - 屬於裝置所發出之資料的_遙測_，無論這項資料是感應器讀數的一般串流、偶爾發生的錯誤，還是資訊訊息。

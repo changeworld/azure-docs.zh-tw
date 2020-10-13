@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/10/2020
-ms.openlocfilehash: dff5e73f9bb02357a6a6f74f5d0db08eee13e76e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 38f3aaeddbdedb073d83a64a508eb9f4578f1c97
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332265"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948420"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -242,6 +242,9 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
 >[!NOTE]
+>如果您的 blob 帳戶啟用虛 [刪除](../storage/blobs/soft-delete-blob-overview.md)，則不支援在資料流程中進行服務主體驗證。
+
+>[!NOTE]
 >只有 "AzureBlobStorage" 類型連結服務支援服務主體驗證，而不是先前的 "AzureStorage" 類型連結服務。
 
 **範例︰**
@@ -293,6 +296,9 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
 | accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage**或 **BlockBlobStorage**。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
+
+> [!NOTE]
+> 如果您的 blob 帳戶啟用虛 [刪除](../storage/blobs/soft-delete-blob-overview.md)，則資料流程中不支援受控識別驗證。
 
 > [!NOTE]
 > 只有 "AzureBlobStorage" 類型連結服務支援 Azure 資源驗證的受控識別，而不支援先前的 "AzureStorage" 類型連結服務。

@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715133"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 指派 Azure 角色以存取 blob 和佇列資料
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
 當 Azure 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可能是使用者、群組、應用程式服務主體，或 [適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文說明如何使用 Azure CLI 來列出 Azure 內建角色，並將其指派給使用者。 如需使用 Azure CLI 的詳細資訊，請參閱 [Azure 命令列介面 (CLI) ](/cli/azure)。
+本文說明如何使用 Azure CLI 來列出 Azure 內建角色，並將其指派給使用者。 如需使用 Azure CLI 的詳細資訊，請參閱 [Azure Command-Line 介面 (CLI) ](/cli/azure)。
 
 ## <a name="azure-roles-for-blobs-and-queues"></a>適用于 blob 和佇列的 Azure 角色
 

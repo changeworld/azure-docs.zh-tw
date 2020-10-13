@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715452"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
@@ -115,11 +115,11 @@ ms.locfileid: "91715452"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站支援 Azure Resource Manager 範本和/或相容于 API 管理 DevOps 資源套件嗎？
 
-不可以。
+否。
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>入口網站的內容是否以「API 管理」中的備份/還原功能儲存？
 
-不可以。
+否。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>我是否需要為受控入口網站相依性啟用額外的 VNet 連線？
 

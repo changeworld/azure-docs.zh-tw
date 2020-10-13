@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576093"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
@@ -63,7 +63,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 5. 按一下 [新增]**** 圖示，以開啟 [新增自訂存取]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，尋找您稍早建立的 Azure Active Directory 應用程式。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
     ![新增群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "新增群組")
-6. 按一下 [選取權限]****，選取權限及權限的指派方式 (例如預設 ACL、存取 ACL 或兩者並用)。 按一下 [確定]  。
+6. 按一下 [選取權限]****，選取權限及權限的指派方式 (例如預設 ACL、存取 ACL 或兩者並用)。 按一下 [確定]。
    
     ![[新增自訂存取] 分頁的螢幕擷取畫面，其中已叫用 [選取許可權] 選項，以及已呼叫 [確定] 選項的 [選取許可權] 分頁。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "將權限指派至群組")
    

@@ -8,10 +8,10 @@ ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
 ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570377"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
@@ -184,7 +184,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | Omsagent 會使用此端點來驗證 log analytics 服務。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | 此端點是用來將計量資料傳送至 Azure 監視器。 |
 
-### <a name="azure-dev-spaces"></a>Azure 開發人員空間
+### <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
 更新您的防火牆或安全性設定，以允許下列所有 Fqdn 和 [Azure Dev Spaces 基礎結構服務][dev-spaces-service-tags]之間的網路流量。
 
@@ -779,7 +779,7 @@ az group delete -g $RG
 
 如有需要，您可以將上述步驟一般化，以將流量轉送到您偏好的輸出解決方案，請遵循 [輸出類型 `userDefinedRoute` 檔](egress-outboundtype.md)。
 
-如果您想要限制 pod 之間的通訊方式，以及叢集中的東部-西部流量限制，請參閱 [使用 AKS 中的網路原則來保護 pod 之間的流量][network-policy]。
+如果您想要限制 pod 之間的通訊方式，以及叢集中的 East-West 流量限制，請參閱 [使用 AKS 中的網路原則來保護 pod 之間的流量][network-policy]。
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

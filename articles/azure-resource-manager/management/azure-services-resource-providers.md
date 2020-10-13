@@ -3,12 +3,12 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330820"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949117"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
@@ -42,7 +42,7 @@ ms.locfileid: "91330820"
 | Microsoft.Blockchain | [Azure 區塊鏈服務](../../blockchain/workbench/index.yml) |
 | Microsoft.BlockchainTokens | [Azure 區塊鏈服務權杖](https://azure.microsoft.com/services/blockchain-tokens/) |
 | Microsoft.Blueprint | [Azure 藍圖](../../governance/blueprints/index.yml) |
-| Microsoft.BotService | [Azure Bot Service](/azure/bot-service/) |
+| Microsoft.BotService | [Azure Bot 服務](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) |
 | Microsoft.Capacity | core |
 | Microsoft.Cdn | [內容傳遞網路](../../cdn/index.yml) |
@@ -110,7 +110,7 @@ ms.locfileid: "91330820"
 | Microsoft.Kusto | [Azure 資料總管](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure 實驗室服務](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
-| Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
+| Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/classic/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
 | Microsoft.Maintenance | [Azure 維護](../../virtual-machines/maintenance-control-cli.md) |
 | Microsoft.ManagedIdentity | [適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/index.yml) |

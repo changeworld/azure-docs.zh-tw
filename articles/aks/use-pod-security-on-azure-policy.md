@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/22/2020
 author: jluk
 ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368850"
 ---
-# <a name="secure-pods-with-azure-policy"></a>使用 Azure 原則保護 pod
+# <a name="secure-pods-with-azure-policy"></a>使用 Azure 原則保護 Pod
 
 若要改善 AKS 叢集的安全性，您可以控制要授與哪些函式，以及是否有任何針對公司原則執行的功能。 這項存取是透過 [適用于 AKS 的 Azure 原則附加][kubernetes-policy-reference]元件所提供的內建原則來定義。 藉由對 pod 規格的安全性層面提供額外的控制（例如根許可權），可讓您更嚴格地遵循安全性，並瞭解叢集中部署的內容。 如果 pod 不符合原則中指定的條件，Azure 原則可以不允許 pod 啟動或旗標違規。 本文說明如何使用 Azure 原則來限制 AKS 中的 pod 部署。
 

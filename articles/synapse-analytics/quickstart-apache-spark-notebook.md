@@ -4,17 +4,17 @@ description: 本快速入門將說明如何使用 Web 工具在 Azure Synapse An
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049803"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91651712"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區
 
@@ -49,7 +49,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 4. 在 [屬性] 視窗中，提供 Notebook 的名稱。
 5. 在工具列上，按一下 [發佈]。
 6. 如果您的工作區中只有一個 Apache Spark 集區，則預設會選取該集區。 如果未選取任何項目，請使用下拉式選單來選取正確的 Apache Spark 集區。
-7. 按一下 [新增程式碼]。 預設語言為 `Pyspark`。 您將混合使用 Pyspark 和 Spark SQL，因此預設選項是可行的。
+7. 按一下 [新增程式碼]。 預設語言為 `Pyspark`。 您將混合使用 Pyspark 和 Spark SQL，因此預設選項是可行的。 其他支援的語言為適用於 Spark 的 Scala 和 .NET。
 8. 接下來，您要建立簡單的 Spark DataFrame 來操作。 在此案例中，您可以透過程式碼來建立。 其中有三個資料列和三個資料行：
 
    ```python
@@ -85,7 +85,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 
     ![輸出的儲存體總管檢視](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "輸出的儲存體總管檢視")
 
-    ![輸出的儲存體總管檢視](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "輸出的儲存體總管檢視")
+    ![反白顯示預設 > 示範資料 > demo_df 路徑的螢幕擷取畫面。](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "輸出的儲存體總管檢視")
 
 ## <a name="run-spark-sql-statements"></a>執行 Spark SQL 陳述式
 

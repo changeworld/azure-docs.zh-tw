@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715036"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>在適用于 Vm 的 Azure Automanage 中建立自訂喜好設定
@@ -79,7 +79,7 @@ ms.locfileid: "91715036"
     > 變更設定檔設定時，只允許在我們的最佳作法上限和下限內仍適用的調整。
 
 8. 檢查您的設定設定檔。
-9. 按一下 [建立] 按鈕。
+9. 按一下 [ **建立** ] 按鈕。
 
 10. 按一下 [啟用]**** 按鈕。
 

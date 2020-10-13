@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575515"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
@@ -30,7 +30,7 @@ Azure 監視器記錄專用叢集是一個可讓大量客戶更妥善服務的�
 > [!IMPORTANT]
 > 專用叢集已獲得核准，而且可在生產環境部署中完全支援。 不過，由於暫時的容量限制，我們需要預先註冊才能使用此功能。 請透過 Microsoft 連絡人提供訂用帳戶識別碼。
 
-## <a name="management"></a>管理 
+## <a name="management"></a>管理性 
 
 專用叢集是透過代表 Azure 監視器記錄叢集的 Azure 資源來管理。 所有作業都是使用 PowerShell 或 REST API 在此資源上完成。
 
@@ -87,7 +87,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 **REST**
 
-*叫* 
+*呼叫* 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
@@ -116,7 +116,7 @@ Content-type: application/json
 
 布建 Log Analytics 叢集需要一些時間才能完成。 您可以透過數種方式來檢查布建狀態：
 
-- 使用資源組名執行 AzOperationalInsightsCluster PowerShell 命令，並檢查 ProvisioningState 屬性。 此值在布建時 *ProvisioningAccount* ，而且會在完成時 *成功* 。
+- 使用資源組名執行 Get-AzOperationalInsightsCluster PowerShell 命令，並檢查 ProvisioningState 屬性。 此值在布建時 *ProvisioningAccount* ，而且會在完成時 *成功* 。
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
@@ -184,7 +184,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 
 例如： 
 
-*叫*
+*呼叫*
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -220,7 +220,7 @@ Content-type: application/json
 
 - 從回應複製 Azure-AsyncOperation URL 值，並遵循非同步作業狀態檢查。 
 
-   或者
+   OR
 
 - 傳送「叢集」資源的 GET 要求，並查看 *KeyVaultProperties* 屬性。 您最近更新的金鑰識別碼詳細資料應該會在回應中傳回。
 

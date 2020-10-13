@@ -1,14 +1,14 @@
 ---
 title: 計畫定義結構的詳細資料
 description: 說明如何使用原則計畫定義來群組原則定義，以部署至組織中的 Azure 資源。
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048494"
+ms.locfileid: "91876170"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure 原則計畫定義結構
 
@@ -248,19 +248,18 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>原則定義群組 (預覽) 
+## <a name="policy-definition-groups"></a>原則定義群組
 
-Azure 原則的 [法規合規性](./regulatory-compliance.md) (預覽) 功能的一部分，可以將方案定義中的原則定義分組。 這項資訊是在 `policyDefinitionGroups` _陣列_ 屬性中定義。 這些群組會有額外的詳細資料，例如原則定義提供涵蓋範圍的 **控制項** 和 **合規性網域** 。
-您可以在 Microsoft 建立的 **policyMetadata** 物件中找到其他群組詳細資料。 如需詳細資訊，請參閱 [中繼資料物件](#metadata-objects)。
+方案定義中的原則定義可以分組和分類。 Azure 原則的 [法規合規性](./regulatory-compliance.md) (preview) 功能會使用這個屬性，將定義分組至 **控制項** 和 **合規性網域**。 這項資訊是在 `policyDefinitionGroups` _陣列_ 屬性中定義。 您可以在 Microsoft 建立的 **policyMetadata** 物件中找到其他群組詳細資料。 如需詳細資訊，請參閱 [中繼資料物件](#metadata-objects)。
 
 ### <a name="policy-definition-groups-parameters"></a>原則定義群組參數
 
 中的每個 _陣列_ 元素都 `policyDefinitionGroups` 必須具有下列兩個屬性：
 
-- `name` 需要 (字串 \[) \] ： **控制項**的簡短名稱。 在中，會使用這個屬性的 `groupNames` 值 `policyDefinitions` 。
-- `category` (字串) ：控制項的 **合規性網域** 。
-- `displayName` (字串) ： **控制項**的易記名稱。 供入口網站使用。
-- `description` (字串) ： **控制項** 用途的描述。
+- `name` 需要 (字串 \[) \] ： **群組**的簡短名稱。 符合法規規範的 **控制項**。 在中，會使用這個屬性的 `groupNames` 值 `policyDefinitions` 。
+- `category` (字串) ：群組所屬的階層。 在法規遵循方面，也就是控制項的 **合規性領域** 。
+- `displayName` (字串) ： **群組** 或 **控制項**的易記名稱。 供入口網站使用。
+- `description` (字串) ： **群組** 或 **控制項** 所涵蓋內容的描述。
 - `additionalMetadataId` (字串) ： [policyMetadata](#metadata-objects) 物件的位置，其中包含有關 **控制項** 和 **合規性網域**的其他詳細資料。
 
   > [!NOTE]

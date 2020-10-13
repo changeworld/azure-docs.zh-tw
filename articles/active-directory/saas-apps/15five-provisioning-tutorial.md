@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850127"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>教學課程：設定15Five 來自動布建使用者
@@ -110,7 +110,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 15Five**]。
 
@@ -128,8 +128,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |externalId|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
-   |urn： ietf： params： scim：架構： extension：15Five：2.0： User： location|String|
-   |urn： ietf： params： scim：架構： extension：15Five：2.0： User：開始日期|String|
+   |urn： ietf： params： scim：架構： extension：15Five：2.0： User： location|字串|
+   |urn： ietf： params： scim：架構： extension：15Five：2.0： User：開始日期|字串|
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 15Five**]。
 

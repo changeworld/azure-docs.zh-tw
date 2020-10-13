@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450700"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>使用 Azure 資料箱保留檔案 Acl、屬性和時間戳記
@@ -82,7 +82,7 @@ Acl 預設會啟用傳輸。 您可能會想要在資料箱的本機 web UI 中�
 robocopy <Source> <Target> * /copyall /e /dcopy:DAT /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /log+:<LogFile>
 ```
 
-其中
+where
 
 |選項 |描述 |
 |------------------- | ----- |

@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575532"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>存取 Azure Data Lake Storage Gen1 的診斷記錄
@@ -50,7 +50,7 @@ ms.locfileid: "91575532"
      
    * 指定要取得稽核記錄、要求記錄或兩者。
    * 指定的資料的保留天數。 只有在您使用 Azure 儲存體帳戶來封存記錄資料時，才適用保留期。
-   * 按一下 [檔案] 。
+   * 按一下 **[儲存]** 。
 
 一旦您啟用了診斷設定，即可在 [診斷記錄] **** 索引標籤中查看記錄。
 
@@ -124,14 +124,14 @@ ms.locfileid: "91575532"
 | resultType |字串 |作業的狀態。例如，200。 |
 | callerIpAddress |字串 |提出要求之用戶端的 IP 位址 |
 | correlationId |字串 |用來將一組相關記錄項目分組在一起的記錄識別碼 |
-| 身分識別 |物件 |產生記錄的身分識別 |
+| 身分識別 |Object |產生記錄的身分識別 |
 | properties |JSON |如需詳細資料，請參閱下文 |
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
 | 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | HttpMethod |字串 |作業使用的 HTTP 方法。 例如，GET。 |
-| 路徑 |字串 |執行作業的所在路徑 |
+| Path |字串 |執行作業的所在路徑 |
 | RequestContentLength |int |HTTP 要求的內容長度 |
 | ClientRequestId |字串 |可唯一識別此要求的識別碼 |
 | StartTime |字串 |伺服器接收到要求的時間 |
@@ -173,7 +173,7 @@ ms.locfileid: "91575532"
 | resultType |字串 |作業的狀態。例如，200。 |
 | resultSignature |字串 |作業的其他詳細資料。 |
 | correlationId |字串 |用來將一組相關記錄項目分組在一起的記錄識別碼 |
-| 身分識別 |物件 |產生記錄的身分識別 |
+| 身分識別 |Object |產生記錄的身分識別 |
 | properties |JSON |如需詳細資料，請參閱下文 |
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述

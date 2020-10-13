@@ -8,10 +8,10 @@ ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450212"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 入口網站中新增使用者
@@ -19,7 +19,7 @@ ms.locfileid: "91450212"
 ## <a name="start-the-add-user-wizard"></a>啟動新增使用者精靈
 1. 透過 https://portal.azure.com 開啟您的 Azure Data Lake Analytics。
 2. 按一下 [新增使用者精靈]****。
-3. 在 [選取使用者]**** 步驟中，尋找您想要新增的使用者。 按一下 [選取]。
+3. 在 [選取使用者]**** 步驟中，尋找您想要新增的使用者。 按一下 [選取]。 
 4. 在 [選取角色]**** 步驟中，選取 [Data Lake Analytics 開發人員]****。 此角色具備提交/監視/管理 U-SQL 作業時所需的一組最基本權限。 如果不打算讓群組管理 Azure 服務，請將其指派給此角色。
 5. 在 [選取目錄權限]**** 步驟中，選取使用者將需要存取權的任何額外資料庫。 需要預設靜態資料庫（稱為 "master"）的讀取和寫入存取權，才能提交作業。 完成之後，請按一下 [確定]  。
 6. 在名為 [指派選取的權限]**** 的最後一個步驟中，檢閱精靈將進行的變更。 按一下 [確定]。

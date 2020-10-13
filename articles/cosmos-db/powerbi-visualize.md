@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570827"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 連接器將 Azure Cosmos DB 資料視覺化
@@ -25,7 +25,7 @@ ms.locfileid: "91570827"
 > [!NOTE]
 > 目前僅支援 Azure Cosmos DB SQL API 和 Gremlin API 帳戶的 Azure Cosmos DB 與 Power BI 連接器連線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在依照本 Power BI 教學課程中的指示進行之前，請先確定您可以存取下列資源：
 
 * [下載最新版的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
@@ -133,7 +133,7 @@ ms.locfileid: "91570827"
 
 1. 提供新資料行的名稱，例如 LatLong。
 
-1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]  。
+1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]。
    
    如需有關資料分析運算式 (DAX) 包括 DAX 函數的詳細資訊，請造訪 [Power BI Desktop 中的 Dax 基本概念](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
    

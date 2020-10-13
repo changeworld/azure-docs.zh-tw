@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850416"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教學課程：設定 Foodee 來自動布建使用者
@@ -126,7 +126,7 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
     ![通知電子郵件文字方塊](common/provisioning-notification-email.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. 在 **[** 對應] 底下，選取 [ **同步處理 Azure Active Directory 使用者至 Foodee**]。
 

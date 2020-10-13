@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653684"
+ms.locfileid: "91929451"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files 的 SMB 效能常見問題
 
@@ -39,7 +39,7 @@ ms.locfileid: "91653684"
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>哪些 Windows 版本支援 SMB 多重通道？
 
-Windows 自 Windows 2012 起支援 SMB 多重通道，以達到最佳效能。  如需詳細資料，請參閱 [部署 smb](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) 多重通道和 [smb 多重通道的基本概念](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) 。 
+Windows 自 Windows 2012 起支援 SMB 多重通道，以達到最佳效能。  如需詳細資料，請參閱 [部署 smb](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) 多重通道和 [smb 多重通道的基本概念](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0) 。 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>我的 Azure 虛擬機器是否支援 RSS？
@@ -132,7 +132,7 @@ Azure 會在每個虛擬機器類型/大小上放置網路速率限制。 速率
 
 ## <a name="is-accelerated-networking-recommended"></a>是否建議使用加速網路？
 
-為了達到最大效能，建議您盡可能設定 [加速網路](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) 。 請記住下列考慮：  
+為了達到最大效能，建議您盡可能設定 [加速網路](../virtual-network/create-vm-accelerated-networking-powershell.md) 。 請記住下列考慮：  
 
 * Azure 入口網站預設會針對支援這項功能的虛擬機器啟用加速網路。  不過，其他部署方法（例如 Ansible 和類似的設定工具）可能不會。  無法啟用加速網路可能會妨礙機器的效能。  
 * 如果虛擬機器的網路介面上未啟用加速網路，因為其不支援實例類型或大小，它會維持在較大的實例類型中停用。 在這些情況下，您將需要手動介入。

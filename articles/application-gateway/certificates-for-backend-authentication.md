@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362707"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>建立憑證以允許具有 Azure 應用程式閘道的後端
@@ -25,7 +25,7 @@ ms.locfileid: "91362707"
 - 從適用于 v1 SKU 的後端憑證匯出驗證憑證 () 
 - 從適用于 v2 SKU 的後端憑證 (匯出受信任的根憑證) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 需要有現有的後端憑證，才能產生驗證憑證或允許後端實例使用應用程式閘道所需的受信任根憑證。 後端憑證可以與 TLS/SSL 憑證相同或不同，以提供額外的安全性。 應用程式閘道不會提供任何機制來建立或購買 TLS/SSL 憑證。 基於測試目的，您可以建立自我簽署的憑證，但不應將它用於生產工作負載。 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442090"
+ms.locfileid: "91929212"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手動 QoS 容量集區
 
@@ -44,7 +44,7 @@ ms.locfileid: "91442090"
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
+您也可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>設定新的手動 QoS 容量集區 
 
@@ -97,5 +97,3 @@ ms.locfileid: "91442090"
 * [建立 NFS 磁碟區](azure-netapp-files-create-volumes.md)
 * [建立 SMB 磁碟區](azure-netapp-files-create-volumes-smb.md)
 * [建立雙重通訊協定磁碟區](create-volumes-dual-protocol.md)
-
-

@@ -1,5 +1,6 @@
 ---
-title: 呼叫受 Azure 身分識別平台保護的 ASP.NET Web API
+title: 快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API | Azure
+titleSuffix: Microsoft identity platform
 description: 在本快速入門中，了解如何從 Windows 桌面 (WPF) 應用程式，呼叫受 Azure 身分識別平台保護的 ASP.NET Web API。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bf9c92d631d1d48527cd3a2734879d400d3e0bf0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354933"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631608"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API
 
@@ -26,31 +27,28 @@ ms.locfileid: "91354933"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要執行本文中的範例程式碼，您需要：
-
-* Visual Studio 2017 或 2019。  下載 [Visual Studio (免費版)](https://www.visualstudio.com/downloads/)。
-* [Microsoft 帳戶](https://www.outlook.com)或 [Microsoft 365 開發人員計劃](/office/developer-program/office-365-developer-program)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Visual Studio 2017 或 2019。 下載 [Visual Studio (免費版)](https://www.visualstudio.com/downloads/)。
 
 ## <a name="clone-or-download-the-sample"></a>複製或下載範例
 
-您可以透過下列兩種方式的其中一種來取得範例：  
+您可以透過下列兩種方式的其中一種來取得範例：
 
 * 從殼層或命令列複製範例：
    ```console
    git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
-   ```  
+   ```
 * [將其下載為 ZIP 檔案](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)。
 
 ## <a name="register-your-web-api"></a>註冊您的 Web API
 
-在本節中，您會在**應用程式註冊**入口網站中註冊您的 Web API。
+在本節中，您會在 Azure 入口網站的 [應用程式註冊] 註冊您的 Web API。
 
 ### <a name="choose-your-azure-ad-tenant"></a>選擇 Azure AD 租用戶
 
 若要手動註冊您的應用程式，請選擇您要在其中建立應用程式的 Azure Active Directory (Azure AD) 租用戶。
 
 1. 使用公司、學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-
 1. 如果您的帳戶存在於多個 Azure AD 租用戶中，請在右上方選取您的設定檔，然後選取 [切換目錄]。
 1. 將您的入口網站工作階段變更為您想要的 Azure AD 租用戶。
 
@@ -60,21 +58,22 @@ ms.locfileid: "91354933"
 1. 選取 [新增註冊]。
 1. 當 [註冊應用程式] 頁面開啟時，輸入您應用程式的註冊資訊：
 
-   a. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入 **AppModelv2-NativeClient-DotNet-TodoListService**。  
-   b. 針對 [支援的帳戶類型]，選取 [任何組織目錄中的帳戶]。  
-   c. 選取 [註冊] 以建立應用程式。
+    1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入 **AppModelv2-NativeClient-DotNet-TodoListService**。
+    1. 針對 [支援的帳戶類型]，選取 [任何組織目錄中的帳戶]。
+    1. 選取 [註冊] 以建立應用程式。
 
 1. 在應用程式 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值，然後將其記下以供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio組態檔 (亦即，*TodoListService\Web.config* 檔案中的 `ClientId`)。
-1. 在 [公開 API] 區段中，選取 [新增範圍]、選取 [儲存並繼續] 來接受建議的應用程式識別碼 URI (api://{clientId})，然後輸入下列資訊：
- 
-   a. 針對 [範圍名稱]，請輸入 **access_as_user**。  
-   b. 針對 [誰可以同意]，確保已選取 [管理員與使用者] 選項。  
-   c. 在 [管理員同意顯示名稱] 方塊中，輸入 **Access TodoListService as a user**。  
-   d. 在 [管理員同意描述] 方塊中，輸入 **Accesses the TodoListService web API as a user**。  
-   e. 在 [使用者同意顯示名稱] 方塊中，輸入 **Access TodoListService as a user**。  
-   f. 在 [使用者同意描述] 方塊中，輸入 **Accesses the TodoListService Web API as a user**。  
-   g. 針對 [狀態]，保持 [已啟用]。  
-   h. 選取 [新增範圍]。
+
+1. 在 [公開 API] 區段中，選取 [新增範圍]、選取 [儲存並繼續] 來接受建議的應用程式識別碼 URI (`api://{clientId}`)，然後輸入下列資訊：
+
+    1. 針對 [範圍名稱]，請輸入 **access_as_user**。
+    1. 針對 [誰可以同意]，確保已選取 [管理員與使用者] 選項。
+    1. 在 [管理員同意顯示名稱] 方塊中，輸入 **Access TodoListService as a user**。
+    1. 在 [管理員同意描述] 方塊中，輸入 **Accesses the TodoListService web API as a user**。
+    1. 在 [使用者同意顯示名稱] 方塊中，輸入 **Access TodoListService as a user**。
+    1. 在 [使用者同意描述] 方塊中，輸入 **Accesses the TodoListService Web API as a user**。
+    1. 針對 [狀態]，保持 [已啟用]。
+    1. 選取 [新增範圍]。
 
 ### <a name="configure-the-service-project"></a>設定服務專案
 
@@ -107,30 +106,30 @@ ms.locfileid: "91354933"
 1. 選取 [新增註冊]。
 1. 當 [註冊應用程式] 頁面開啟時，輸入您應用程式的註冊資訊：
 
-   a. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，**NativeClient-DotNet-TodoListClient**)。  
-   b. 針對 [支援的帳戶類型]，選取 [任何組織目錄中的帳戶]。  
-   c. 選取 [註冊] 以建立應用程式。
-   
+    1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，**NativeClient-DotNet-TodoListClient**)。
+    1. 針對 [支援的帳戶類型]，選取 [任何組織目錄中的帳戶]。
+    1. 選取 [註冊] 以建立應用程式。
+
    > [!NOTE]
    > 在 TodoListClient 專案 *app.config* 檔案中，`ida:Tenant` 的預設值會設定為 `common`。 可能的值包括：
    > - `common`：您可以使用公司或學校帳戶或 Microsoft 個人帳戶登入 (因為您在步驟 3b　選取了 [任何組織目錄中的帳戶])。
    > - `organizations`：您可以使用公司或學校帳戶登入。
    > - `consumers`：您可以使用 Microsoft 個人帳戶登入。
-   >
-   
+
 1. 在應用程式 [概觀] 頁面上選取 [驗證]，然後執行下列動作：
 
-   a. 在 [平台設定] 下，選取 [新增平台] 按鈕。  
-   b. 若是**行動應用程式與傳統型應用程式**，請選取 [行動應用程式與傳統型應用程式]。  
-   c. 若是**重新導向 URI**，請選取 **https://login.microsoftonline.com/common/oauth2/nativeclient** 核取方塊。  
-   d. 選取 [設定] 。   
+    1. 在 [平台設定] 下，選取 [新增平台] 按鈕。
+    1. 若是**行動應用程式與傳統型應用程式**，請選取 [行動應用程式與傳統型應用程式]。
+    1. 若是**重新導向 URI**，請選取 **https://login.microsoftonline.com/common/oauth2/nativeclient** 核取方塊。
+    1. 選取 [設定] 。
+
 1. 選取 [API 權限]，然後執行下列動作：
 
-   a. 選取 [新增權限] 按鈕。  
-   b. 選取 [我的 API] 索引標籤。  
-   c. 在 API 清單中，選取 **AppModelv2-NativeClient-DotNet-TodoListService API** 或您已針對 Web API 輸入的名稱。  
-   d. 選取 **access_as_user** 權限核取方塊 (如果尚未選取)。 如有需要請使用搜尋方塊。  
-   e. 選取 [新增權限] 按鈕。
+    1. 選取 [新增權限] 按鈕。
+    1. 選取 [我的 API] 索引標籤。
+    1. 在 API 清單中，選取 **AppModelv2-NativeClient-DotNet-TodoListService API** 或您已針對 Web API 輸入的名稱。
+    1. 選取 **access_as_user** 權限核取方塊 (如果尚未選取)。 如有需要請使用搜尋方塊。
+    1. 選取 [新增權限] 按鈕。
 
 ### <a name="configure-your-project"></a>設定您的專案
 

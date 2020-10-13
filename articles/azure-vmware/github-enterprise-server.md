@@ -3,12 +3,12 @@ title: 在您的 Azure VMware 解決方案私人雲端上設定 GitHub Enterpris
 description: 瞭解如何在 Azure VMware 解決方案私人雲端上設定 GitHub Enterprise Server。
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 53e5264eed761909217c2e3a902c9fee9faaffaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341897"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949304"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>在您的 Azure VMware 解決方案私人雲端上設定 GitHub Enterprise Server
 
@@ -80,7 +80,7 @@ GitHub Enterprise Server 需要有效的授權金鑰。 您可以註冊 [試用�
 > [!NOTE]
 > GitHub Actions [目前以 GitHub Enterprise Server 2.22 版的有限 Beta 版提供](https://docs.github.com/en/enterprise/admin/github-actions)。
 
-您必須要有外部 blob 儲存體，才能在 GitHub Enterprise Server (上啟用 GitHub Actions，目前提供為「搶鮮版（Beta）」功能) 。 此外部 blob 儲存體是由動作用來儲存成品和記錄。 GitHub Enterprise Server 上 [的動作支援將 Azure Blob 儲存體作為存放裝置提供者](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (以及其他) 。 因此，我們將布建具有 [儲存體帳戶類型](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#types-of-storage-accounts) BlobStorage 的新 Azure 儲存體帳戶：
+您必須要有外部 blob 儲存體，才能在 GitHub Enterprise Server (上啟用 GitHub Actions，目前提供為「搶鮮版（Beta）」功能) 。 此外部 blob 儲存體是由動作用來儲存成品和記錄。 GitHub Enterprise Server 上 [的動作支援將 Azure Blob 儲存體作為存放裝置提供者](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (以及其他) 。 因此，我們將布建具有 [儲存體帳戶類型](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) BlobStorage 的新 Azure 儲存體帳戶：
 
 :::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="選擇在內部部署或雲端中執行 GitHub。":::
 

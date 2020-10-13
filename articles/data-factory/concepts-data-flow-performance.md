@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
 ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370873"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
@@ -80,7 +80,7 @@ Azure Data Factory 會產生資料行的雜湊以產生統一的資料分割，�
 
 針對分割資料行內的值，建立可提供固定範圍的運算式。 若要避免資料分割扭曲，在使用此選項之前，您應該先對資料有充分的瞭解。 您為運算式輸入的值會當做資料分割函數的一部分使用。 您可以設定實體分割區的數目。
 
-### <a name="key"></a>答案
+### <a name="key"></a>機碼
 
 如果您對資料的基數有充分的瞭解，索引鍵分割可能是不錯的策略。 索引鍵分割會為數據行中的每個唯一值建立資料分割。 您無法設定分割區數目，因為此數目是根據資料中的唯一值。
 

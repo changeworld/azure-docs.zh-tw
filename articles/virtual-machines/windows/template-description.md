@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827447"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972878"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
 
@@ -282,7 +282,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 ## <a name="disks-and-images"></a>磁碟和映像
    
-在 Azure 中，VHD 檔案可以代表[磁碟或映像](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 當 VHD 檔案中的作業系統特製化為特定 VM 時，它就是磁碟。 當 VHD 檔案中的作業系統一般化為用來建立許多 VM 時，它就是映像。   
+在 Azure 中，VHD 檔案可以代表[磁碟或映像](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)。 當 VHD 檔案中的作業系統特製化為特定 VM 時，它就是磁碟。 當 VHD 檔案中的作業系統一般化為用來建立許多 VM 時，它就是映像。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>從平台映像建立新的虛擬機器和新的磁碟
 

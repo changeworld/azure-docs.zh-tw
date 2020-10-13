@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575566"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
@@ -60,7 +60,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![建立資源](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
-3. 選取 [建立]  。
+3. 選取 [建立]****。
 
    ![建立 Azure 資料箱](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
 
@@ -168,7 +168,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![[新增容器] 索引標籤的螢幕擷取畫面，其中顯示 [私人 (沒有選取 [匿名存取]) 選項。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
-4. 選取 [建立]  。
+4. 選取 [建立]****。
 
    ![新 [容器] 索引標籤的螢幕擷取畫面，其中包含已呼叫的建立選項。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
@@ -180,7 +180,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![稱為「我的私人測試容器」容器的 [容器] 區段螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
-6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案的清單。 選取 [上傳]  。
+6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案的清單。 選取 [上傳] 。
 
    ![已呼叫 [上傳] 選項之 [上傳 blob] 對話方塊的螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 

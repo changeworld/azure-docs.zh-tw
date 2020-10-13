@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure Government 中設定 Azure Migrate 設備
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450029"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure Government 中設定設備 
@@ -45,13 +45,13 @@ ms.locfileid: "91450029"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. 確認最新的設備版本和雜湊值：
 
     **演算法** | **下載** | **SHA256**
     --- | --- | ---
-    VMware (85.8 MB)  | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
+    VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 ### <a name="run-the-script"></a>執行指令碼
@@ -99,13 +99,13 @@ ms.locfileid: "91450029"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. 確認最新的設備版本和雜湊值：
 
     **案例** | **下載** | **SHA256**
     --- | --- | ---
-    Hyper-v (85.8 MB)  | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
+    Hyper-V (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
 
           
 
@@ -154,7 +154,7 @@ ms.locfileid: "91450029"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. 確認最新的設備版本和雜湊值：
 

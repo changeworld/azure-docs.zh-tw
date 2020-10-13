@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 說明如何設定適用於 Azure Dev Spaces 的 Azure Kubernetes Service 叢集
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207957"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972674"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何設定 Azure Dev Spaces 叢集的運作方式
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應用程式並偵錯，以及在 Azure Kubernetes Service (AKS) 叢集上與您的小組共同作業。 其中一種方式是在您的 AKS 叢集上啟用 Azure Dev Spaces，如此可以[直接在叢集上執行服務][how-it-works-up]並使用[其他網路和路由功能][how-it-works-routing]。 本文說明當您準備叢集並啟用 Azure Dev Spaces 時會發生的情況。
 
