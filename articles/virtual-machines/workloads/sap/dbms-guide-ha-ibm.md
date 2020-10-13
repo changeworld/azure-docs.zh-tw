@@ -1,25 +1,18 @@
 ---
 title: 在 Azure 虛擬機器上設定 IBM Db2 HADR (Vm) |Microsoft Docs
 description: 在 (Vm) 的 Azure 虛擬機器上，建立 IBM Db2 LUW 的高可用性。
-services: virtual-machines-linux
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: SAP
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 17df60cd039601d3f8036125c5c0098a8000667c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051988"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993301"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>使用 Pacemaker SUSE Linux Enterprise Server 的 Azure Vm 上的 IBM Db2 LUW 高可用性
 
@@ -483,7 +476,7 @@ j2ee/dbhost = db-virt-hostname
 1. 在右邊的框架中，選擇關鍵 jdbc/pool/ \<SAPSID> /url。
 1. 將 JDBC URL 中的主機名稱變更為虛擬主機名稱。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 選取 [新增]。
+1. 選取 [新增]  。
 1. 若要儲存變更，請選取左上方的磁片圖示。
 1. 關閉設定工具。
 1. 重新開機 JAVA 實例。

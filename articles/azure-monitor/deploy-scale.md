@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ec7cd2b0f573a9a74f82546da2367edcf721539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441454"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993251"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure 原則大規模部署 Azure 監視器
 雖然某些 Azure 監視器功能設定為一次或有限的次數，但有些則必須針對您要監視的每個資源重複。 本文說明使用 Azure 原則來大規模執行 Azure 監視器的方法，以確保針對您的所有 Azure 資源一致且正確地設定監視。
@@ -26,14 +26,14 @@ ms.locfileid: "91441454"
 
 Azure 原則包含下表中的物件。 如需每個物件的詳細說明，請參閱 [Azure 原則物件](../governance/policy/overview.md#azure-policy-objects) 。
 
-| 項目 | 描述 |
+| 項目 | 說明 |
 |:---|:---|
 | 原則定義 | 描述資源合規性條件以及符合條件時所要採取的效果。 這可能是特定類型的所有資源，或僅符合特定屬性的資源。 效果可能只是將資源標示為符合規範，或部署相關的資源。 原則定義是使用 JSON 所撰寫，如 [Azure 原則定義結構](../governance/policy/concepts/definition-structure.md)中所述。 [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)中會說明效果。
 | 原則方案 | 應一起套用的一組原則定義。 例如，您可能會有一個原則定義，可將資源記錄傳送至 Log Analytics 工作區，另一個則會將資源記錄傳送至事件中樞。 建立包含這兩種原則定義的計畫，並將該計畫套用至資源，而不是個別的原則定義。 方案是使用 JSON 撰寫，如 [Azure 原則計畫結構](../governance/policy/concepts/initiative-definition-structure.md)中所述。 |
 | 指派 | 原則定義或方案在指派給某個範圍之前都不會生效。 例如，將原則指派給資源群組，以將其套用至在該資源中建立的所有資源，或將其套用至訂用帳戶，以將其套用至該訂用帳戶中的所有資源。  如需詳細資訊，請參閱 [Azure 原則指派結構](../governance/policy/concepts/assignment-structure.md)。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>適用於 Azure 監視器的內建原則定義
-Azure 原則包含數個與 Azure 監視器相關的預建定義。 您可以將這些原則定義指派給現有的訂用帳戶，或使用它們作為基礎來建立您自己的自訂定義。 如需 **監視** 類別內內建政治的完整清單，請參閱 Azure 監視器的 [Azure 原則內建原則定義](samples/policy-samples.md)。
+Azure 原則包含數個與 Azure 監視器相關的預建定義。 您可以將這些原則定義指派給現有的訂用帳戶，或使用它們作為基礎來建立您自己的自訂定義。 如需 **監視** 類別內內建政治的完整清單，請參閱 Azure 監視器的 [Azure 原則內建原則定義](./samples/policy-reference.md)。
 
 若要查看與監視相關的內建原則定義，請執行下列動作：
 
@@ -130,7 +130,7 @@ Azure 原則包含數個與 Azure 監視器相關的預建定義。 您可以將
 
 適用於 VM 的 Azure 監視器包含下列內建的計畫，可安裝兩個代理程式來啟用完整的監視。 
 
-|名稱 |描述 |
+|名稱 |說明 |
 |:---|:---|
 |啟用適用於 VM 的 Azure 監視器 | 在與 Azure Arc 連線的 Azure Vm 和混合式 Vm 上安裝 Log Analytics 代理程式和 Dependency agent。 |
 |啟用虛擬機器擴展集的 Azure 監視器 | 在 Azure 虛擬機器擴展集上安裝 Log Analytics 代理程式和 Dependency agent。 |
@@ -163,7 +163,7 @@ Azure 原則包含數個與 Azure 監視器相關的預建定義。 您可以將
 > 不需要自行部署相依性代理程式，因為它需要 Log Analytics 代理程式將其資料傳遞至 Azure 監視器。
 
 
-|名稱 |描述 |
+|名稱 |說明 |
 |-----|------------|
 |Audit Log Analytics 代理程式部署-未列出 VM 映射 (OS)  |如果 VM 映射 (OS) 未在清單中定義且未安裝代理程式，請將 Vm 報告為不相容。 |
 |部署適用于 Linux Vm 的 Log Analytics 代理程式 |如果 VM 映射 (OS) 定義于清單中，而且未安裝代理程式，請部署適用于 Linux Vm 的 Log Analytics 代理程式。 |
@@ -178,7 +178,7 @@ Azure 原則包含數個與 Azure 監視器相關的預建定義。 您可以將
 |為 Windows 虛擬機器擴展集部署 Log Analytics 代理程式 |如果 VM 映射 (OS) 定義于清單中，而且未安裝代理程式，請部署適用于 Windows 虛擬機器擴展集的 Log Analytics 代理程式。 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 閱讀 [Azure 原則](../governance/policy/overview.md)的詳細資訊。
 - 深入瞭解 [診斷設定](platform/diagnostic-settings.md)。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585703"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993185"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure 監視器記錄查詢語言差異
 
@@ -29,11 +29,11 @@ ms.locfileid: "80585703"
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的函式
 
-* [cluster()](/azure/kusto/query/clusterfunction)
+* [叢集 ( # B1 ](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current()、current_cursor()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [資料庫 ( # B1 ](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -54,7 +54,7 @@ ms.locfileid: "80585703"
 * [應用程式 ( # B1 ](app-expression.md)
 * [工作區 ( # B1 ](workspace-expression.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 取得[撰寫 Azure 監視器記錄查詢的不同資源](query-language.md)參考。
+- 取得[撰寫 Azure 監視器記錄查詢的不同資源](/azure/data-explorer/kusto/query/)參考。
 - 存取完整的 [Kusto 查詢語言的參考文件](/azure/kusto/query/)。

@@ -4,12 +4,12 @@ description: 使用 Application Insights 有效地監視您的 Web 和背景工�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759368"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992844"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](../platform/diagnostics-extension-overview.md) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
@@ -67,7 +67,7 @@ ms.locfileid: "91759368"
 
 若要將遙測傳送給適當的資源，您可以安裝 Application Insights SDK，讓它根據組建組態挑選不同的檢測金鑰。 
 
-瞭解如何針對不同階段 [動態設定檢測金鑰](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) 。 
+瞭解如何針對不同階段 [動態設定檢測金鑰](./separate-resources.md#dynamic-ikey) 。 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>為每個角色建立 Application Insights 資源
 
@@ -290,4 +290,3 @@ ms.locfileid: "91759368"
 [qna]: ../faq.md
 [redfield]: ./monitor-performance-live-website-now.md
 [start]: ./app-insights-overview.md
-

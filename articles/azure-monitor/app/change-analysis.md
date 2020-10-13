@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c78132ca85b87486e2fa8f41da6ae430c6eabba0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767653"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992877"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析 (preview) 
 
@@ -124,12 +124,12 @@ IP 設定規則、TLS 設定和延伸模組版本等設定尚未在 Azure Resour
 ![疑難排解工具中的變更分析器](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>活動記錄變更歷程記錄
-活動記錄中的 [View change history](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) 功能會呼叫應用程式變更分析 service 後端，以取得與作業相關聯的變更。 **變更** 用來直接呼叫 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 的歷程記錄，但會將後端交換以呼叫應用程式變更分析因此，傳回的變更將包含來自 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)的資源層級變更、來自 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)的資源屬性，以及來自 PaaS 服務（例如應用程式服務 web 應用程式）的來賓變更。 為了讓應用程式變更分析服務能夠掃描使用者訂用帳戶中的變更，必須註冊資源提供者。 當您第一次進入 [ **變更歷程記錄** ] 索引標籤時，此工具會自動開始註冊 **ChangeAnalysis** 資源提供者。 註冊之後， **Azure Resource Graph** 的變更將會立即可用，並涵蓋過去14天。 當訂用帳戶上架之後，其他來源的變更將會在 ~ 4 小時後提供使用。
+活動記錄中的 [View change history](../platform/activity-log.md#view-change-history) 功能會呼叫應用程式變更分析 service 後端，以取得與作業相關聯的變更。 **變更** 用來直接呼叫 [Azure Resource Graph](../../governance/resource-graph/overview.md) 的歷程記錄，但會將後端交換以呼叫應用程式變更分析因此，傳回的變更將包含來自 [Azure Resource Graph](../../governance/resource-graph/overview.md)的資源層級變更、來自 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)的資源屬性，以及來自 PaaS 服務（例如應用程式服務 web 應用程式）的來賓變更。 為了讓應用程式變更分析服務能夠掃描使用者訂用帳戶中的變更，必須註冊資源提供者。 當您第一次進入 [ **變更歷程記錄** ] 索引標籤時，此工具會自動開始註冊 **ChangeAnalysis** 資源提供者。 註冊之後， **Azure Resource Graph** 的變更將會立即可用，並涵蓋過去14天。 當訂用帳戶上架之後，其他來源的變更將會在 ~ 4 小時後提供使用。
 
 ![活動記錄變更歷程記錄整合](./media/change-analysis/activity-log-change-history.png)
 
 ### <a name="vm-insights-integration"></a>VM Insights 整合
-啟用 [VM 深入](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) 解析的使用者可以查看其虛擬機器中的變更，這些變更可能會造成計量圖表（例如 CPU 或記憶體）中的任何尖峰，並想知道造成它的原因。 變更資料已整合至 VM Insights 側導覽列。 使用者可以查看 VM 中是否發生任何變更，並按一下 [ **調查變更** ] 以查看應用程式變更分析獨立 UI 中的變更詳細資料。
+啟用 [VM 深入](../insights/vminsights-overview.md) 解析的使用者可以查看其虛擬機器中的變更，這些變更可能會造成計量圖表（例如 CPU 或記憶體）中的任何尖峰，並想知道造成它的原因。 變更資料已整合至 VM Insights 側導覽列。 使用者可以查看 VM 中是否發生任何變更，並按一下 [ **調查變更** ] 以查看應用程式變更分析獨立 UI 中的變更詳細資料。
 
 [![VM insights 整合](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 
@@ -189,7 +189,7 @@ foreach ($webapp in $webapp_list)
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 啟用 [Azure App 服務應用程式](azure-web-apps.md)的 Application Insights。
 - 針對 [AZURE VM 和 azure 虛擬機器擴展集 IIS 裝載的應用程式](azure-vm-vmss-apps.md)啟用 Application Insights。

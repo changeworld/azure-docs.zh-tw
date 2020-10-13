@@ -1,26 +1,18 @@
 ---
 title: 在 Azure 上部署適用於 SAP ERP 6.0 的 SAP IDES EHP7 SP3 | Microsoft Docs
 description: 在 Azure 上部署適用於 SAP ERP 6.0 的 SAP IDES EHP7 SP3
-services: virtual-machines-windows
-documentationcenter: ''
 author: hermanndms
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 56f5072c90a699270a92af317976c8f56bd3e2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536523"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993436"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上部署適用於 SAP ERP 6.0 的 SAP IDES EHP7 SP3
 本文說明如何透過 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署與 SQL Server 和 Windows 作業系統搭配執行的 SAP IDES 系統。 螢幕擷取畫面會顯示逐步程序。 若要部署不同的解決方案，請遵循相同的步驟。
@@ -105,7 +97,7 @@ ms.locfileid: "91536523"
 
     ![SAP CAL 基本模式：建立執行個體](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. 按一下 [建立]。 在一段時間之後，視解決方案的大小和複雜性 (SAP CAL 會提供預估) 而定，狀態將會顯示為作用中並可供使用： 
+1. 按一下頁面底部的 [新增]  。 在一段時間之後，視解決方案的大小和複雜性 (SAP CAL 會提供預估) 而定，狀態將會顯示為作用中並可供使用： 
 
     ![SAP CAL 執行個體](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

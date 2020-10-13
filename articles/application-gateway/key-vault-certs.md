@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: c1f6cc21c7a45dbc5c7be7e3f3cc46b4ec4e8c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282342"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993650"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 憑證的 TLS 終止
 
@@ -32,7 +32,7 @@ Key Vault 整合提供兩種模型來進行 TLS 終止：
 - 支援將現有的憑證匯入到您的金鑰保存庫。 或使用 Key Vault Api 來建立和管理任何信任 Key Vault 夥伴的新憑證。
 - 支援自動更新儲存在金鑰保存庫中的憑證。
 
-應用程式閘道目前僅支援軟體驗證的憑證。 硬體安全性模組 (HSM) 驗證的憑證不受支援。 應用程式閘道設定為使用 Key Vault 憑證之後，其實例會從 Key Vault 取出憑證，並將其安裝在本機以進行 TLS 終止。 實例也會以24小時的間隔輪詢 Key Vault，以取得憑證的更新版本（如果有的話）。 如果找到更新的憑證，則會自動輪替目前與 HTTPS 接聽程式相關聯的 TLS/SSL 憑證。
+應用程式閘道目前僅支援軟體驗證的憑證。 硬體安全性模組 (HSM) 驗證的憑證不受支援。 應用程式閘道設定為使用 Key Vault 憑證之後，其實例會從 Key Vault 取出憑證，並將其安裝在本機以進行 TLS 終止。 實例也會以4小時的間隔輪詢 Key Vault，以取得憑證的更新版本（如果有的話）。 如果找到更新的憑證，則會自動輪替目前與 HTTPS 接聽程式相關聯的 TLS/SSL 憑證。
 
 > [!NOTE]
 > Azure 入口網站只支援 KeyVault 憑證，而不支援秘密。 應用程式閘道仍然支援從 KeyVault 參考秘密，但只能透過非入口網站資源，例如 PowerShell、CLI、API、ARM 範本等等。 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258671"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992863"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -89,7 +89,7 @@ Microsoft 提供名為[安全性預設值](../fundamentals/concept-fundamentals-
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，通常是因為對影響、結果與責任的預期不符所造成。 若要避免這些錯誤，請[確保您吸引合適的專案關係人](https://aka.ms/deploymentplans) \(英文\)，且專案角色是明確的。
+當技術專案失敗時，通常是因為對影響、結果與責任的預期不符所造成。 若要避免這些錯誤，請[確保您吸引合適的專案關係人](../fundamentals/active-directory-deployment-plans.md) \(英文\)，且專案角色是明確的。
 
 ### <a name="plan-communications"></a>規劃通訊
 

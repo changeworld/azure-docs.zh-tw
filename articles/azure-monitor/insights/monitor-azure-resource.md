@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030339"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993703"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 資源
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 資源所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料並發出警示。
@@ -80,7 +80,7 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
 - [事件中樞](../platform/resource-logs.md#send-to-azure-event-hubs)，可將資料串流至外部系統 (例如第三方 SIEM 和其他記錄分析解決方案)。 
 - [Azure 儲存體帳戶](../platform/resource-logs.md#send-to-azure-storage)，適合用於稽核、靜態分析或備份。
 
-請遵循[建立診斷設定以在 Azure中收集平台記錄和計量](../platform/diagnostic-settings.md)，以透過 Azure 入口網站建立和管理診斷設定。 請參閱[使用 Resource Manager 範本在 Azure 中建立診斷設定](../platform/diagnostic-settings-template.md)以在範本中定義診斷設定，並針對已建立的資源啟用完整的監視功能。
+請遵循[建立診斷設定以在 Azure中收集平台記錄和計量](../platform/diagnostic-settings.md)，以透過 Azure 入口網站建立和管理診斷設定。 請參閱[使用 Resource Manager 範本在 Azure 中建立診斷設定](../samples/resource-manager-diagnostic-settings.md)以在範本中定義診斷設定，並針對已建立的資源啟用完整的監視功能。
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure 入口網站中的監視
@@ -160,5 +160,4 @@ Azure 監視器記錄會合併來自多個服務和其他資料來源的記錄�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需不同 Azure 服務的資源記錄詳細資訊，請參閱[Azure 資源記錄的支援服務、結構描述和類別](../platform/resource-logs-schema.md)。  
-
+* 如需不同 Azure 服務的資源記錄詳細資訊，請參閱[Azure 資源記錄的支援服務、結構描述和類別](../platform/resource-logs-schema.md)。

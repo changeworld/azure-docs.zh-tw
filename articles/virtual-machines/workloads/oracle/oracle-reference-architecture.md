@@ -1,23 +1,18 @@
 ---
 title: Azure 上 Oracle 資料庫的參考架構 |Microsoft Docs
 description: 參考在 Microsoft Azure 虛擬機器上執行 Oracle Database Enterprise Edition 資料庫的架構。
-services: virtual-machines-linux
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 6e13add778ae372ea90361c094238668752fe2af
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977692"
+ms.locfileid: "91993569"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
 
@@ -226,7 +221,7 @@ Oracle Data Guard 可以用來分區化具有系統管理、使用者定義和�
 - 使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 來管理資料庫的修補和更新，而不需要停機。
 - 調整您的應用程式程式碼，以新增雲端原生模式，例如 [重試模式](/azure/architecture/patterns/retry)、斷路器 [模式](/azure/architecture/patterns/circuit-breaker)，以及 [雲端設計模式指南](/azure/architecture/patterns/) 中所定義的其他模式，可能有助於您的應用程式更具復原性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱下列適用于您案例的 Oracle 參考文章。
 

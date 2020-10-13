@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904445"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992758"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro 限制
 
@@ -27,12 +27,16 @@ ms.locfileid: "90904445"
 
 下表說明 Azure Stack Edge Pro 裝置的限制。 
 
+下表說明 Azure Stack Edge 裝置的限制。
+
 | 描述 | 值 |
 |---|---|
-|否。 (每個裝置的檔案) |1 億 |
-|否。 (每個裝置的共用) |24 |
-|否。 共用數 |1 |
+|不可以。 (每個裝置的檔案) |1 億 |
+|不可以。 共用數 |1 |
+|最大值。 每個裝置的共用端點和 REST 端點| 24 |
+|最大值。 每一裝置的分層式儲存體帳戶| 24|
 |寫入至共用的檔案大小上限| 5 TB |
+|每一裝置的資源群組數目上限| 800 |
 
 ## <a name="azure-storage-limits"></a>Azure 儲存體限制
 
@@ -51,6 +55,6 @@ ms.locfileid: "90904445"
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [準備部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)

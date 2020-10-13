@@ -1,24 +1,18 @@
 ---
 title: 什麼是在 Azure 虛擬機器上執行 Oracle WebLogic Server 的解決方案
 description: 瞭解如何在 Microsoft Azure 虛擬機器上執行 Oracle WebLogic Server。
-services: virtual-machines-linux
-documentationcenter: ''
 author: rezar
-manager: gwallace
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
-ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: c19d6d2513d1bf266d10e90dfb1d6fe79c9410d1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274362"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993464"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>什麼是在 Azure 虛擬機器上執行 Oracle WebLogic Server 的解決方案？
 
@@ -60,7 +54,7 @@ _如果您想要與開發這些供應專案的工程小組密切合作來處理�
 
 除了解決方案自動布建的功能之外，客戶還可以完整彈性地自訂其部署。 可能是在部署應用程式的最上層，客戶會將進一步的 Azure 資源與其部署整合。 建議客戶提供進一步改進解決方案的意見反應。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 探索 Azure 上的優惠。
 

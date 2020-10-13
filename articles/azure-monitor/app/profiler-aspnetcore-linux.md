@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930378"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992778"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "88930378"
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 下列指示適用於所有 Windows、Linux 和 Mac 開發環境：
 
 * 安裝 [.NET Core SDK 2.1.2 或更新版本](https://dotnet.microsoft.com/download/archives)。
@@ -107,7 +107,7 @@ ms.locfileid: "88930378"
 
     ![設定 Git 存放庫](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-如需部署選項的詳細資訊，請參閱 [App Service 檔](https://docs.microsoft.com/azure/app-service)。
+如需部署選項的詳細資訊，請參閱 [App Service 檔](../../app-service/index.yml)。
 
 ## <a name="deploy-your-project"></a>部署您的專案
 
@@ -172,4 +172,3 @@ ms.locfileid: "88930378"
 如果您使用 Azure App Service 所裝載的自訂容器，請依照＜[為容器化的 ASP.NET Core 應用程式啟用服務分析工具](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)＞中的指示啟用 Application Insights Profiler。
 
 如果您有任何問題或建議，請在 Application Insights 的 Github 存放庫中提出：[ApplicationInsights-Profiler-AspNetCore：問題](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。
-

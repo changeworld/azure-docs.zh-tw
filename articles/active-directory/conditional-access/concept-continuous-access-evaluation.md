@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266054"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992807"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -103,7 +103,7 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 1. 具有 CAE 功能的用戶端會出示認證或重新整理權杖，以 Azure AD 要求某些資源的存取權杖。
 1. 存取權杖連同其他成品一起傳回至用戶端。
-1. 系統管理員明確地 [撤銷使用者的所有](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)重新整理權杖。 撤銷事件將會從 Azure AD 傳送到資源提供者。
+1. 系統管理員明確地 [撤銷使用者的所有](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)重新整理權杖。 撤銷事件將會從 Azure AD 傳送到資源提供者。
 1. 存取權杖會呈現給資源提供者。 資源提供者會評估權杖的有效性，並檢查是否有使用者的任何撤銷事件。 資源提供者會使用此資訊來決定是否授與資源的存取權。
 1. 在此情況下，資源提供者會拒絕存取，並將 401 + 宣告挑戰傳送回用戶端。
 1. 支援 CAE 的用戶端瞭解 401 + 索取挑戰。 它會略過快取並回到步驟1，將其重新整理權杖連同宣告挑戰傳送回 Azure AD。 Azure AD 接著會重新評估所有的條件，並提示使用者在此情況下重新驗證。
@@ -159,7 +159,7 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 | 半年企業通道 | 如果設定為 [已啟用] 或1，則不支援 CAE。 | 如果設定為 [已啟用] 或1，則不支援 CAE。 |
 | 目前通道 <br> 或 <br> 每月企業通道 | 無論設定為何，都支援 CAE | 無論設定為何，都支援 CAE |
 
-如需 office update 通道的說明，請參閱 [Microsoft 365 應用程式的更新通道總覽](https://docs.microsoft.com/deployoffice/overview-update-channels)。 建議組織不要停用 Web 帳戶管理員 (WAM) 。
+如需 office update 通道的說明，請參閱 [Microsoft 365 應用程式的更新通道總覽](/deployoffice/overview-update-channels)。 建議組織不要停用 Web 帳戶管理員 (WAM) 。
 
 ### <a name="policy-change-timing"></a>原則變更時間
 
@@ -183,6 +183,6 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 登入頻率將會接受或不使用 CAE。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [宣佈持續存取評估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

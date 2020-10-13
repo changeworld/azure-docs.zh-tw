@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 10/12/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993164"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 記錄
 
@@ -89,7 +89,7 @@ ms.locfileid: "87116077"
 在 Application Insights 中看到新記錄之前，會有短暫的延遲（通常不到五分鐘）。
 
 1. 開啟您在 [Azure 入口網站](https://portal.azure.com)中建立的 Application Insights 資源。
-1. 在 [ **總覽** ] 功能表中，選取 [ **分析**]。
+1. 在 [ **總覽** ] 頁面上，選取 [ **記錄**]。
 1. 在 Application Insights 入口網站中開啟新的索引標籤。
 
 以下是您可以用來查看記錄的查詢清單：

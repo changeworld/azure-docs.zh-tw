@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d681eba53aa85fe5df05f8404bcddb7c6877477
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007979"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992785"
 ---
 # <a name="conditional-access-programmatic-access"></a>條件式存取：以程式設計方式存取
 
@@ -78,7 +78,7 @@ Microsoft Graph 提供統一的可程式性模型，可讓組織用來與 Micros
 
 ### <a name="emergency-access-accounts"></a>緊急存取帳戶
 
-多個系統管理員可以建立條件式存取原則，而且可能會忘記將 [緊急存取帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) 新增為這些原則的排除。 此範例會確保所有原則都會更新，以包含您指定的緊急存取帳戶。
+多個系統管理員可以建立條件式存取原則，而且可能會忘記將 [緊急存取帳戶](../users-groups-roles/directory-emergency-access.md) 新增為這些原則的排除。 此範例會確保所有原則都會更新，以包含您指定的緊急存取帳戶。
 
 - [使用 Microsoft Graph API 呼叫，管理將緊急存取帳戶指派給條件式存取原則](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/05-manage/02-emergency-access)
 
@@ -92,7 +92,7 @@ Microsoft Graph 提供統一的可程式性模型，可讓組織用來與 Micros
 
 這些範例可在我們的 [GitHub 存放庫](https://github.com/Azure-Samples/azure-ad-conditional-access-apis)中取得。 我們很樂意支援 GitHub 問題和提取要求的社區貢獻。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Microsoft Graph 概觀](/graph/overview)
 

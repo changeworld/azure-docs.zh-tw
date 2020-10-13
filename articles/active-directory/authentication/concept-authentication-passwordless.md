@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352956c1f55de5cfff3ee114394e86a75d55765d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965534"
+ms.locfileid: "91992825"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -128,7 +128,7 @@ FIDO2 安全性金鑰是以 unphishable 標準為基礎的無密碼驗證方法�
 | 提供者 | Contact |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| 飛天 | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
+| 飛天 | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | TrustKey 解決方案 | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
@@ -174,7 +174,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 
 使用下表來選擇可支援您的需求和使用者的方法。
 
-|角色|案例|環境|無密碼技術|
+|角色|狀況|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|安全存取裝置以進行管理工作|指派 Windows 10 裝置|Windows Hello 企業版及/或 FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|
@@ -182,7 +182,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 |**資訊工作者**|生產力工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|
 |**Frontline 背景工作**|工廠、工廠、零售或資料輸入的 kiosk|共用的 Windows 10 裝置|FIDO2 安全性金鑰|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要開始使用 Azure AD 中的無密碼，請完成下列其中一個作法：
 

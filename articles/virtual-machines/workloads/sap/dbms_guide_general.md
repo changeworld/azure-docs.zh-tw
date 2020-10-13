@@ -1,26 +1,18 @@
 ---
 title: 適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量 | Microsoft Docs
 description: 適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: bburns
-editor: ''
-tags: azure-resource-manager
-keywords: SAP，DBMS，儲存體，Ultra 磁片，Premium 儲存體
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974816"
+ms.locfileid: "91993283"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
