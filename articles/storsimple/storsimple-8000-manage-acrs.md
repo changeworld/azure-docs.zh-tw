@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513459"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949899"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服務管理存取控制記錄
 
@@ -63,11 +63,11 @@ ms.locfileid: "85513459"
 
     3. 按一下 [新增]**** 以建立 ACR。
 
-        ![按一下 [新增 ACR]](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![按一下 [新增 ACR 2]](./media/storsimple-8000-manage-acrs/createacr2.png)
 
 4.  新增的 ACR 會顯示在 ACR 的表格式清單中。
 
-    ![按一下 [新增 ACR]](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![按一下 [新增 ACR 3]](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>編輯存取控制記錄
@@ -89,11 +89,11 @@ ms.locfileid: "85513459"
 
 3. 在 [編輯存取控制記錄]**** 刀鋒視窗中，提供對應至其他主機的不同 IQN。
 
-    ![編輯存取控制記錄](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![編輯存取控制記錄2](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. 按一下 **[儲存]** 。 當提示確認時，請按一下 [是]****。 
 
-    ![編輯存取控制記錄](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![編輯存取控制記錄3](./media/storsimple-8000-manage-acrs/editacr3.png)
 
 5. ACR 更新時，您會收到通知。 表格式清單也會一併更新以反映變更。
 
@@ -109,25 +109,25 @@ ms.locfileid: "85513459"
 #### <a name="to-delete-an-access-control-record"></a>刪除存取控制記錄
 1.  移至 StorSimple 裝置管理員服務，按兩下服務名稱，然後在 [設定]**** 區段內按一下 [存取控制記錄]****。
 
-    ![移至存取控制記錄](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![移至存取控制記錄1b](./media/storsimple-8000-manage-acrs/createacr1.png)
 
 2. 在存取控制記錄的表格式清單中，按一下並選取您想要刪除的 ACR。
 
-    ![移至存取控制記錄](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![移至存取控制記錄2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
 3. 以滑鼠右鍵按一下可叫用操作功能表，然後選取 [刪除]****。
 
-    ![移至存取控制記錄](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![移至存取控制記錄3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
 4. 當出現提示確認時，請檢閱資訊，然後按一下 [刪除]****。
 
-    ![移至存取控制記錄](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![移至存取控制記錄4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
 5. 當刪除作業完成時，您會收到通知。 表格式清單會更新以反映此刪除動作。
 
-    ![移至存取控制記錄](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![移至存取控制記錄5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入了解 [管理 StorSimple 磁碟區](storsimple-8000-manage-volumes-u2.md)。
 * 深入了解 [使用 StorSimple Manager 服務來管理您的 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

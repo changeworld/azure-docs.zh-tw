@@ -16,10 +16,10 @@ ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
 ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651746"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒體服務 v2 與 v3
@@ -129,7 +129,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 下表顯示 v2 和 v3 常見案例的程式碼差異。
 
-|案例|v2 API|v3 API|
+|狀況|v2 API|v3 API|
 |---|---|---|
 |建立資產並上傳檔案 |[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |提交作業|[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>示範如何先建立 Transform，然後再提交 Job。|

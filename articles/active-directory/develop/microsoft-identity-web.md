@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930147"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web 驗證程式庫
 
@@ -44,6 +44,7 @@ Microsoft 身分識別 Web 在 NuGet 上提供為一組套件，可根據您的�
 - [Web.config](https://www.nuget.org/packages/Microsoft.Identity.Web) -主要套件。 所有使用 Microsoft 身分識別 Web 的應用程式都需要。
 - 。 [UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) -選用。 新增使用者登入和登出的 UI，以及 web 應用程式的相關聯控制器。
 - [>microsoft.azure.webjobs.extensions.microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) -選擇性。 提供與 Microsoft Graph API 的簡化互動。
+- [MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) -選擇性。 提供與 Microsoft Graph API [Beta 端點](/graph/api/overview?view=graph-rest-beta&preserve-view=true)的簡化互動。
 
 #### <a name="project-templates"></a>專案範本
 
@@ -69,11 +70,11 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHub
 
-Microsoft Identity Web 是裝載在 GitHub 上的開放原始碼專案： [AzureAD/microsoft-Identity-Web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true)
+Microsoft Identity Web 是裝載在 GitHub 上的開放原始碼專案： <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft-Identity- <span class="docon docon-navigate-external x-hidden-focus"></span> Web</a>
 
 存放 [庫 wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) 包含其他檔，如果您需要協助或發現錯誤，您可以提出 [問題](https://github.com/AzureAD/microsoft-identity-web/issues)。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 如果您使用預設的 ASP.NET 3.1 專案範本，Microsoft Identity Web 包含數個未提供的功能。
 
@@ -98,8 +99,8 @@ Microsoft Identity Web 是裝載在 GitHub 上的開放原始碼專案： [Azure
 
 GitHub 上的 Microsoft 身分識別 Web wiki 包含程式庫各個層面的廣泛參考檔集。 例如，您可以在這裡找到憑證使用方式、累加式同意和條件式存取參考：
 
-- [使用憑證搭配 web.config](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true) (GitHub) 
--  (GitHub) [的累加式同意和條件式存取](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">使用憑證搭配 web.config <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (GitHub) 
+- 累加<a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">式同意和條件 <span class="docon docon-navigate-external x-hidden-focus"></span> 式存取</a> (GitHub) 
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

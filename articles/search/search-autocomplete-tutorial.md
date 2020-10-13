@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531610"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951395"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函式是以 [DocumentsOperationsExtensions. 建議方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)為基礎。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](./search-howto-dotnet-sdk.md)。
 
-`InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters)類別上的屬性會決定要在結果中搜尋和傳回哪些欄位、相符的數目，以及是否使用模糊比對。 
+`InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters)類別上的屬性會決定要在結果中搜尋和傳回哪些欄位、相符的數目，以及是否使用模糊比對。 
 
 針對自動完成，模糊比對會限制為一個編輯距離， (一個省略或錯置的字元) 。 請注意，自動完成查詢中的模糊比對有時可能會產生非預期的結果，視索引大小及其分區化方式而定。 如需詳細資訊，請參閱 [分割區和分區化概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 

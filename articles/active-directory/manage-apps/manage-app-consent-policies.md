@@ -12,10 +12,10 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804303"
 ---
 # <a name="manage-app-consent-policies"></a>管理應用程式同意原則
@@ -141,7 +141,7 @@ ms.locfileid: "91804303"
 | ClientApplicationIds | 要比對之用戶端應用程式的 **AppId** 值清單，或具有單一值「全部」以符合任何用戶端應用程式的清單。 預設值為單一值 "all"。 |
 | ClientApplicationTenantIds | 註冊用戶端應用程式的 Azure Active Directory 租使用者識別碼清單，或單一值為「全部」的清單，以符合在任何租使用者中註冊的用戶端應用程式。 預設值為單一值 "all"。 |
 | ClientApplicationPublisherIds | Microsoft 合作夥伴網路的清單 (MPN 用戶端應用程式之 [已驗證發行者](../develop/publisher-verification-overview.md) 的) 識別碼，或單一值為「全部」的清單，以符合任何發行者的用戶端應用程式。 預設值為單一值 "all"。 |
-| ClientApplicationsFromVerifiedPublisherOnly | 設定為 `$true` 只在用戶端應用程式與 [已驗證的發行者](../develop/publisher-verification-overview.md)相符。 將設定為 `$false` ，以在任何用戶端應用程式上相符，即使它沒有已驗證的發行者。 預設為 `$false`。 |
+| ClientApplicationsFromVerifiedPublisherOnly | 設定為 `$true` 只在用戶端應用程式與 [已驗證的發行者](../develop/publisher-verification-overview.md)相符。 將設定為 `$false` ，以在任何用戶端應用程式上相符，即使它沒有已驗證的發行者。 預設值為 `$false`。 |
 
 ## <a name="next-steps"></a>後續步驟
 

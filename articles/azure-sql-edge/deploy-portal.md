@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445719"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973575"
 ---
 # <a name="deploy-azure-sql-edge"></a>部署 Azure SQL Edge 
 
@@ -25,8 +25,7 @@ Azure SQL Edge 是專為 IoT 和 Azure IoT Edge 部署而最佳化的關聯式�
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
 * 登入 [Azure 入口網站](https://portal.azure.com/)。
 * 建立 [Azure IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
-* [從 Azure 入口網站註冊 IoT Edge 裝置](../iot-edge/how-to-register-device-portal.md)。
-* 準備 IoT Edge 裝置，以[從 Azure 入口網站部署 IoT Edge 模組](../iot-edge/how-to-deploy-modules-portal.md)。
+* 建立 [Azure IoT Edge 裝置](../iot-edge/how-to-install-iot-edge.md)。
 
 > [!NOTE]   
 > 若要將 Azure Linux VM 部署為 IoT Edge 裝置，請參閱此[快速入門手冊](../iot-edge/quickstart-linux.md)。

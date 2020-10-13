@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819574"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
@@ -55,7 +55,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 請勿建立超過4個躍點的鏈。 超過4個躍點的訊息是不正確字母。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需自動轉寄的詳細資訊，請參閱下列參考主題：
 

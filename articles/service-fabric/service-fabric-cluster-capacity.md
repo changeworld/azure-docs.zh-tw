@@ -6,10 +6,10 @@ ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817741"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
@@ -91,7 +91,7 @@ ms.locfileid: "91817741"
 
 #### <a name="advantages"></a>優點
 
-* 減少相應縮小作業的必要步驟數 (節點停用和 >remove-servicefabricnodestate 會自動) 呼叫。
+* 減少相應縮小作業的必要步驟數 (節點停用，且 Remove-ServiceFabricNodeState 會自動呼叫) 。
 * 降低因就地 VM 大小變更作業和 Azure 基礎結構作業而造成資料遺失的風險。
 
 #### <a name="disadvantages"></a>缺點
@@ -182,7 +182,7 @@ Azure 中的**測試工作負載**最少可執行一或三個主要節點。 若
 
 針對無狀態的生產工作負載，支援的最小非主要節點類型大小為三個維護仲裁，但建議使用節點類型大小5。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在設定叢集之前，請先檢查叢集 `Not Allowed` [升級原則](service-fabric-cluster-fabric-settings.md) ，以便在稍後因為無法變更系統組態設定而重新建立叢集。
 

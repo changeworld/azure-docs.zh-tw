@@ -3,12 +3,12 @@ title: Azure VMware 解決方案 Vm 的生命週期管理
 description: 瞭解如何使用 Microsoft Azure 原生工具來管理 Azure VMware 解決方案 Vm 生命週期的所有層面。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575466"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950358"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解決方案 Vm 的生命週期管理
 
@@ -23,8 +23,8 @@ Microsoft Azure 原生工具可讓您監視和管理 Azure 環境中 (Vm) 的虛
     - 檔案完整性監視
     - 無檔案安全性警示
     - 作業系統修補程式評估
-    - 安全性錯誤配置評估
-    - Endpoint protection 評定 
+    - 安全性設定錯誤的評量
+    - 端點保護評量 
 - 使用適用于新 Vm 的 Azure ARC，輕鬆地部署 Microsoft Monitoring Agent (MMA) 。 
 - Azure 監視器中的 Log Analytics 工作區，可使用 MMA 或擴充功能收集記錄收集和效能計數器。 將資料和記錄收集到單一點，並將該資料呈現給不同的 Azure 原生服務。 
 - Azure 監視器的額外優點包括： 
@@ -58,7 +58,7 @@ Azure 自動化中的**Azure 更新管理**會在混合式環境中管理 Window
 
 **Azure 資訊安全中心** 在雲端和內部部署的混合式工作負載之間提供先進的威脅防護。 它會評估 Azure VMware 解決方案 Vm 的弱點，並視需要提出警示。 這些安全性警示可以轉送到 Azure 監視器以進行解析。
 - Azure 資訊安全中心不需要部署。 如需詳細資訊，請參閱 [虛擬機器支援的功能](../security-center/security-center-services.md)清單。
-- 若要將 Azure VMware 解決方案 Vm 和非 Azure Vm 新增至 Azure 資訊安全中心，請參閱將 [Windows 電腦上架至 Azure 資訊安全中心](../security-center/quick-onboard-windows-computer.md) ，並讓 [Linux 電腦上線至 Azure 資訊安全中心](../security-center/quick-onboard-linux-computer.md)。
+- 若要將 Azure VMware 解決方案 Vm 和非 Azure Vm 新增至 Azure 資訊安全中心，請參閱將 [Windows 電腦上架至 Azure 資訊安全中心](../security-center/quickstart-onboard-machines.md) ，並讓 [Linux 電腦上線至 Azure 資訊安全中心](../security-center/quickstart-onboard-machines.md)。
 - 新增 Vm 之後，Azure 資訊安全中心會分析資源的安全性狀態，以找出潛在的弱點。 它也會在 [總覽] 索引標籤中提供建議。如需詳細資訊，請參閱 [Azure 資訊安全中心中的安全性建議](../security-center/security-center-recommendations.md)。
 - 您可以在 Azure 資訊安全中心中定義安全性原則。 如需有關設定安全性原則的詳細資訊，請參閱 [使用安全性原則](../security-center/tutorial-security-policy.md)。
 

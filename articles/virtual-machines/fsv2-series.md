@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: 039045b613e57ee396201ee93c3962c5970cf02b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651916"
 ---
 # <a name="fsv2-series"></a>Fsv2 系列
 
 Fsv2 系列是在 Intel®) ®白金級 8272CL (串聯 Lake 處理器和 Intel®®白金級 8168 (Skylake) 處理器上執行。 它有一個持續的核心 Turbo 頻率速度 3.4 GHz，以及最大的單核心 turbo 頻率 3.7 GHz。 Intel® AVX-512 指示是 Intel 可擴充處理器的新指示。 這些指示提供最多2倍的效能，可在單精確度和雙精度浮點數運算上進行向量處理工作負載。 換句話說，對於任何運算工作負載而言，它們都是非常快速的。
 
-Fsv2 系列 Vm 具備 Intel®超執行緒技術的功能。
+Fsv2 系列 Vm 具備 Intel® Hyper-Threading 技術的功能。
 
 [ACU](acu.md)： 195-210<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>

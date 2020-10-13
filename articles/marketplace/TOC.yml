@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: 建立 Azure VM 技術資產
               items:
-                - name: 虛擬機器認證 - 問題與解決方案
+                - name: 虛擬機器認證問題
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: 建立 Azure VM 技術資產
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -324,17 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: Cloud Partner 入口網站移轉常見問題集
       href: cloud-partner-portal-migration-faq.md
+    - name: 商務機會辦公時間
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: 技術與發行辦公時間
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: 合作夥伴中心支援選項
       href: partner-center-portal/support.md
+    - name: 合作夥伴中心公告
+      href: /partner-center/announcements
+    - name: Microsoft 合作夥伴社群
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: 合作夥伴社群論壇
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: 各地區上市情況和貨幣
       href: marketplace-geo-availability-currencies.md
+    - name: 尋找租用戶和物件識別碼
+      href: find-tenant-object-id.md
     - name: 支援的國家/區域
       href: sell-from-countries.md
-    - name: 支援的 HTML 標籤
-      href: supported-html-tags.md
     - name: 共同銷售國家及區域代碼
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: 共同銷售狀態碼
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 論壇、部落格和快速連結
-      href: marketplace-roadmap.md
+    - name: 支援的 HTML 標籤
+      href: supported-html-tags.md

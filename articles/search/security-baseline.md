@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b2dea32163fbb2827daed616087c893631429aea
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0709152631037e7561094082c8ce02b860fd4edc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400840"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951554"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>適用于 Azure 認知搜尋的 Azure 安全性基準
 
-此安全性基準會將 [Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) 的指引套用至 Azure 認知搜尋。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure 認知搜尋的相關指引來分組。 不適用 Azure 認知搜尋的**控制項**，或已排除的客戶。
+此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md) 的指引套用至 Azure 認知搜尋。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure 認知搜尋的相關指引來分組。 不適用 Azure 認知搜尋的**控制項**，或已排除的客戶。
 
 若要查看 Azure 認知搜尋如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure 認知搜尋安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -30,9 +30,9 @@ ms.locfileid: "91400840"
 
 認知搜尋也支援額外的網路安全性功能，以管理網路存取控制清單。 將您的搜尋服務設定為只允許與信任的來源進行通訊，方法是使用防火牆功能來限制特定公用 IP 位址範圍的存取。
 
-- [如何設定 Azure 認知搜尋的私人端點](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [如何設定 Azure 認知搜尋的私人端點](./service-create-private-endpoint.md)
 
-- [如何設定 Azure 認知搜尋防火牆](https://docs.microsoft.com/azure/search/service-configure-firewall)
+- [如何設定 Azure 認知搜尋防火牆](./service-configure-firewall.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -42,11 +42,11 @@ ms.locfileid: "91400840"
 
 **指導**方針：認知搜尋無法直接部署到虛擬網路中。 但是，如果您的用戶端應用程式或資料來源位於虛擬網路中，您可以監視並記錄這些網路內元件的流量，包括傳送至雲端中搜尋服務的要求。 標準建議包括啟用網路安全性群組流量記錄，以及將記錄傳送至 Azure 儲存體或 Log Analytics 工作區。 您可以選擇性地使用流量分析取得流量模式的見解。
 
-- [如何啟用網路安全性群組流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [如何啟用網路安全性群組流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [如何啟用和使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何啟用和使用流量分析](../network-watcher/traffic-analytics.md)
 
-- [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -64,7 +64,7 @@ ms.locfileid: "91400840"
 
 **指導**方針：認知搜尋不提供特定功能來對抗分散式阻絕服務攻擊，但您可以在與認知搜尋服務相關聯的虛擬網路上啟用 DDoS 保護標準，以進行一般保護。
 
-- [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -76,9 +76,9 @@ ms.locfileid: "91400840"
 
 如果需要調查異常活動，請啟用網路監看員封包捕獲。
 
-- [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [如何啟用網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [如何啟用網路監看員](../network-watcher/network-watcher-create.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -88,9 +88,9 @@ ms.locfileid: "91400840"
 
 **指導**方針：認知搜尋不支援網路入侵偵測，但作為入侵緩和措施，您可以設定防火牆規則，以指定認知搜尋服務所接受的 IP 位址。 設定私人端點，讓搜尋流量遠離公用網際網路。
 
-- [如何設定客戶管理的金鑰進行資料加密](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [如何設定客戶管理的金鑰進行資料加密](./search-security-manage-encryption-keys.md)
 
-- [如何從索引和同義字地圖取得客戶管理的金鑰資訊](https://docs.microsoft.com/azure/search/search-security-get-encryption-keys)
+- [如何從索引和同義字地圖取得客戶管理的金鑰資訊](./search-security-get-encryption-keys.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -110,7 +110,7 @@ ms.locfileid: "91400840"
 
 藉由指定服務標籤名稱 (來允許或拒絕資源的流量，例如，在規則的適當來源或目的地欄位中 AzureCognitiveSearch) 。 
 
-- [虛擬網路服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [虛擬網路服務標籤](../virtual-network/service-tags-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -132,13 +132,13 @@ ms.locfileid: "91400840"
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。 
 
-- [如何建立認知搜尋的私人端點](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [如何建立認知搜尋的私人端點](./service-create-private-endpoint.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-- [如何建立 Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [如何建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)
 
-- [如何使用網路安全性群組規則來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何使用網路安全性群組規則來篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -154,7 +154,7 @@ ms.locfileid: "91400840"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -171,9 +171,9 @@ ms.locfileid: "91400840"
 
 - [如何開始使用 Azure 監視器和第三方 SIEM 整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -183,9 +183,9 @@ ms.locfileid: "91400840"
 
 **指導**方針：診斷和作業記錄可讓您深入瞭解認知搜尋的詳細作業，而且適用于監視服務和存取服務的工作負載。  若要捕獲診斷資料，請指定儲存記錄資訊的位置來啟用記錄。
 
-- [如何收集和分析 Azure 認知搜尋的記錄資料](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [如何收集和分析 Azure 認知搜尋的記錄資料](./search-monitor-logs.md)
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 
 
 **Azure 資訊安全中心監視**：是
 
@@ -205,9 +205,9 @@ ms.locfileid: "91400840"
 
 在 Azure 監視器中，根據您組織的合規性法規來設定 Log Analytics 工作區保留期限。 使用 Azure 儲存體帳戶來取得長期和封存儲存體。 
 
-- [變更 Log Analytics 中的資料保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [變更 Log Analytics 中的資料保留期限](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何設定 Azure 儲存體客戶紀錄的保留原則](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [如何設定 Azure 儲存體客戶紀錄的保留原則](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure 資訊安全中心監視**：是
 
@@ -217,15 +217,15 @@ ms.locfileid: "91400840"
 
 **指導**方針：分析和監視認知搜尋服務的記錄，以瞭解異常行為。 使用 Azure 監視器的 Log Analytics 檢閱記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
-- [如何收集和分析認知搜尋的記錄資料](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [如何收集和分析認知搜尋的記錄資料](./search-monitor-logs.md)
 
-- [如何在 Power BI 中將搜尋記錄資料視覺化](https://docs.microsoft.com/azure/search/search-monitor-logs-powerbi)
+- [如何在 Power BI 中將搜尋記錄資料視覺化](./search-monitor-logs-powerbi.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [了解 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [了解 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 
-- [如何在 Azure 監視器中執行自訂查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -235,11 +235,11 @@ ms.locfileid: "91400840"
 
 **指導**方針：搭配使用資訊安全中心與 Log Analytics 工作區來監視和警示在安全性記錄和事件中找到的異常活動。 或者，您可以啟用和內部資料以 Azure Sentinel。
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [如何在 Azure 資訊安全中心中管理警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [如何在 Azure 資訊安全中心中管理警示](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -271,7 +271,7 @@ ms.locfileid: "91400840"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -279,12 +279,12 @@ ms.locfileid: "91400840"
 
 認知搜尋角色會與支援服務等級管理工作的許可權相關聯。  這些角色不會授與服務端點的存取權。 存取端點的作業， (例如索引管理、索引擴展和搜尋資料) 的查詢，請使用 API 金鑰來驗證要求。
 
-- [設定 Azure 認知搜尋系統管理存取權的角色](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [設定 Azure 認知搜尋系統管理存取權的角色](./search-security-rbac.md)
 
-- [建立及管理 Azure 認知搜尋服務的 api 金鑰](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [建立及管理 Azure 認知搜尋服務的 api 金鑰](./search-security-api-keys.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -304,9 +304,9 @@ ms.locfileid: "91400840"
 
 使用必須明確指派以進行管理作業的 Azure AD 內建角色。 叫用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [如何在認知搜尋中使用角色進行系統管理存取](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [如何在認知搜尋中使用角色進行系統管理存取](./search-security-rbac.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -318,7 +318,7 @@ ms.locfileid: "91400840"
 
 使用您組織的預先存在身分識別，為服務啟用 SSO，以建立可減少身分識別和認證數目的程式。
 
-- [瞭解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -328,9 +328,9 @@ ms.locfileid: "91400840"
 
 **指導**方針：啟用 Azure Active Directory 的 (Azure AD) MULTI-FACTOR AUTHENTICATION (MFA) 功能，並遵循資訊安全中心的身分識別和存取建議。
 
-- [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) 
+- [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -340,10 +340,10 @@ ms.locfileid: "91400840"
 
 **指導**方針：使用特殊許可權存取工作站 (PAW) ，MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和存取 Azure 資源。
 
-- [瞭解安全、受 Azure 管理的工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
  
 
-- [如何啟用 Azure AD MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
  
 
 **Azure 資訊安全中心監視**：不適用
@@ -354,9 +354,9 @@ ms.locfileid: "91400840"
 
 **指導**方針：使用 Azure Active Directory (Azure AD) 安全性報告和監視，來偵測環境中發生可疑或不安全的活動。 使用資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -374,9 +374,9 @@ ms.locfileid: "91400840"
 
 **指導**方針：使用 Azure Active Directory (Azure AD) 做為 Azure 認知搜尋中服務層級管理工作的中央驗證和授權系統。 Azure AD 身分識別不會授與搜尋服務端點的存取權。  您可以透過 API 金鑰存取索引管理、索引填入和搜尋資料查詢等作業。
 
-- [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [建立及管理 Azure 認知搜尋服務的 api 金鑰](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [建立及管理 Azure 認知搜尋服務的 api 金鑰](./search-security-api-keys.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -388,11 +388,11 @@ ms.locfileid: "91400840"
 
 查看搜尋服務端點中活動的認知搜尋診斷記錄，例如索引管理、索引填入和查詢。
 
-- [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure AD 身分識別和存取權評論](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
 
-- [監視 Azure 認知搜尋的作業和活動](https://docs.microsoft.com/azure/search/search-monitor-usage)
+- [監視 Azure 認知搜尋的作業和活動](./search-monitor-usage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -404,7 +404,7 @@ ms.locfileid: "91400840"
 
 建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 在 Log Analytics 工作區中設定所需的警示。
 
-- [如何整合 Azure 活動記錄與 Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) 
+- [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -414,11 +414,11 @@ ms.locfileid: "91400840"
 
 **指導**方針：使用 Azure Active Directory (Azure AD) Identity Protection 功能，以對偵測到與使用者身分識別相關的可疑動作設定自動回應。 視需要將資料內嵌到 Azure Sentinel 以進行進一步的調查。
 
-- [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies) 
+- [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md) 
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -434,7 +434,7 @@ ms.locfileid: "91400840"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
@@ -448,11 +448,11 @@ ms.locfileid: "91400840"
 
 **指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應以虛擬網路/子網分隔、正確標記，並在網路安全性群組或 Azure 防火牆內受到保護。 儲存或處理敏感性資料的資源應該是隔離的。 使用 Private Link 將私人端點設定為認知搜尋。
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-- [如何建立認知搜尋的私人端點](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [如何建立認知搜尋的私人端點](./service-create-private-endpoint.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -464,7 +464,7 @@ ms.locfileid: "91400840"
 
 Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data) 
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -474,7 +474,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 **指導**方針：認知搜尋會使用傳輸層安全性1.2 來加密傳輸中的資料，並在所有連線的任何時間都強制加密 (SSL/TLS) 。 這可確保在用戶端與服務之間「傳輸中」會加密所有資料。
 
-- [瞭解 Azure 中的傳輸加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) 
+- [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -486,7 +486,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，並防止客戶資料遺失和公開。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -495,10 +495,10 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
 **指導**方針：若要進行服務管理，請使用 azure 角色型存取控制 (azure RBAC) 來管理金鑰和設定的存取權。 針對內容作業（例如編制索引和查詢），認知搜尋會使用金鑰，而不是以身分識別為基礎的存取控制模型。 使用 Azure RBAC 來控制金鑰的存取權。
-- [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 
+- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md) 
 
  
-- [如何使用角色進行認知搜尋的系統管理存取](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [如何使用角色進行認知搜尋的系統管理存取](./search-security-rbac.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -510,7 +510,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，以防止遺失或洩漏客戶資料。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -520,9 +520,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 **指導**方針：認知搜尋會使用 Microsoft 管理的金鑰自動加密待用的索引內容。 如果需要更多保護，您可以使用您在 Azure Key Vault 中建立和管理的金鑰，以第二個加密層補充預設加密。
 
-- [在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密](./search-security-manage-encryption-keys.md)
 
-- [瞭解 Azure 中的待用加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -532,9 +532,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 **指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以建立在認知搜尋的生產實例和其他重要或相關資源發生變更時的警示。
 
-- [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
-- [如何建立認知搜尋活動的警示](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [如何建立認知搜尋活動的警示](./search-monitor-logs.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -542,7 +542,7 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -586,7 +586,7 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -594,11 +594,11 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 確定您的租使用者中有適當的 (讀取) 許可權，並列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。  
 
-- [如何使用 Azure Resource Graph Explorer 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md) 
 
-- [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [如何查看您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -608,7 +608,7 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 **指導**方針：使用中繼資料將標記套用至 Azure 資源，以邏輯方式將它們組織成分類法。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -617,11 +617,11 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
 **指導**方針：在適當的情況下使用標記、管理群組和個別訂用帳戶來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) 
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -639,9 +639,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 **指導**方針：建議您根據組織的原則和標準來定義經核准使用的 Azure 資源清查，然後使用 Azure 原則或 Azure Resource Graph 監視未核准的 azure 資源。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md) 
 
-- [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md) 
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -682,9 +682,9 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 使用 Azure Resource Graph 來查詢或探索您的訂用帳戶 () 中的資源。 確保已核准環境中的所有 Azure 資源。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md) 
 
-- [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types) 
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md) 
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -726,7 +726,7 @@ Microsoft 會管理認知搜尋的基礎結構，並已實行嚴格的控制，�
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](../security/benchmarks/security-control-secure-configuration.md)設定。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -738,9 +738,9 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 您也可以使用 Azure 資訊安全中心中的建議作為 Azure 資源的安全設定基準。 
 
-- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](./security-controls-policy.md)
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -760,13 +760,13 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源安全性設定。 
 
-- [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
-- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](./security-controls-policy.md)
 
-- [建立和管理原則以強制執行合規性](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [建立和管理原則以強制執行合規性](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Resource Manager 範本總覽](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Azure Resource Manager 範本總覽](../azure-resource-manager/templates/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -784,9 +784,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指導**方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index)
+- [Azure Repos 文件](/azure/devops/repos/index)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -808,9 +808,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 此外，您可以使用 Azure 自動化部署設定變更和管理原則例外狀況。 
 
-- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](./security-controls-policy.md)
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -828,9 +828,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指導**方針：使用 [安全性中心] 來執行認知搜尋服務資源的基準掃描。  此外，請使用 Azure 原則來警示和審核您的資源設定。 
 
-- [如何修復 Azure 資訊安全中心中的建議](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [如何修復 Azure 資訊安全中心中的建議](../security-center/security-center-remediate-recommendations.md)
 
-- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [適用於 Azure 認知搜尋的 Azure 原則法規合規性控制項](./security-controls-policy.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -847,10 +847,10 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
 **指導**方針：使用 Azure 受控識別搭配 Azure Key Vault，以簡化雲端應用程式的秘密管理。
-- [如何使用適用于 Azure 資源的受控識別](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity) 
-- [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal) 
+- [如何使用適用于 Azure 資源的受控識別](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md) 
 
-- [如何使用受控識別來提供 Key Vault authentication](https://docs.microsoft.com/azure/key-vault/managed-identity) 
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md) 
 
 **Azure 資訊安全中心監視**：是
 
@@ -860,9 +860,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指導**方針：使用 Azure 受控識別，以 Azure Active Directory (Azure AD) 中使用自動管理的身分識別，為其他 Azure 服務（例如 Key Vault 和索引子資料來源）提供認知搜尋存取權。 受控識別可讓您向支援 Azure AD authentication 的任何服務進行驗證，包括 Azure Key Vault，而不需要在您的程式碼中提供任何認證。 
 
-- [使用受控識別設定與資料來源的索引子連接](https://docs.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
+- [使用受控識別設定與資料來源的索引子連接](./search-howto-managed-identities-data-sources.md)
 
-- [使用受控識別設定客戶管理的金鑰進行資料加密](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#3---create-a-service-identity)
+- [使用受控識別設定客戶管理的金鑰進行資料加密](./search-security-manage-encryption-keys.md#3---create-a-service-identity)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -878,7 +878,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -912,7 +912,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)復原。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](../security/benchmarks/security-control-data-recovery.md)復原。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -928,9 +928,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指導**方針：認知搜尋目前不支援自動備份搜尋服務中的資料，而且必須透過手動程式進行備份。  您也可以在 Azure Key Vault 中備份客戶管理的金鑰。 
 
-- [備份和還原 Azure 認知搜尋索引](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [備份和還原 Azure 認知搜尋索引](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [如何在 Azure 中備份 Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中備份 Key Vault 金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -940,9 +940,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指導**方針：認知搜尋目前不支援自動備份搜尋服務中的資料，而且必須透過手動程式來備份和還原。  定期對您手動備份的內容執行資料還原，以確保備份程式的端對端完整性。
 
-- [備份和還原 Azure 認知搜尋索引](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [備份和還原 Azure 認知搜尋索引](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [如何在 Azure 中還原 Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原 Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -954,11 +954,11 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 啟用 Key Vault 中的虛刪除和清除保護，以防止金鑰遭到意外或惡意刪除。 如果使用 Azure 儲存體來儲存手動備份，請在刪除 blob 或 blob 快照集時，啟用虛刪除來儲存及復原您的資料。 
 
-- [備份和還原 Azure 認知搜尋索引](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [備份和還原 Azure 認知搜尋索引](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [如何啟用 Key Vault 中的虛刪除和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何啟用 Key Vault 中的虛刪除和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Azure Blob 儲存體的虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -966,7 +966,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -988,9 +988,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 此外，使用標記標記訂用帳戶，並建立命名系統來識別和分類 Azure 資源，尤其是處理敏感性資料。 您必須負責根據發生事件的 Azure 資源和環境的重要性來排定補救警示的優先順序。
 
-- [使用標籤來組織資源](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources) \(部分機器翻譯\)
+- [使用標籤來組織資源](../azure-resource-manager/management/tag-resources.md) \(部分機器翻譯\)
 
-- [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1010,7 +1010,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1020,9 +1020,9 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指導**方針：使用連續匯出功能來匯出您的安全性中心警示和建議。 「連續匯出」可讓您手動或連續匯出警示和建議。 您可以使用「安全性中心」資料連線器，將警示串流至 Azure Sentinel。
 
-- [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [如何設定連續匯出](../security-center/continuous-export.md)
 
-- [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1032,7 +1032,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 **指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
-- [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1040,7 +1040,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
@@ -1054,5 +1054,5 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

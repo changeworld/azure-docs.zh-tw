@@ -8,10 +8,10 @@ ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822171"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
@@ -239,7 +239,7 @@ namespace SampleFunctionsApp
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 預設會在時間序列深入解析中將數位 twins 儲存為一般階層，但是可以使用模型資訊和組織的多層級階層進行擴充。 若要深入瞭解此程式，請參閱： 
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812398"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
@@ -56,7 +56,7 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 Azure 身分識別用戶端程式庫支援上述驗證案例，並與 Key Vault Sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|

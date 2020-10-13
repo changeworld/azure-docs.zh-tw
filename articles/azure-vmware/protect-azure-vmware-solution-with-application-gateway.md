@@ -3,12 +3,12 @@ title: 使用 Azure 應用程式閘道來保護 Azure VMware 解決方案上的 
 description: 設定 Azure 應用程式閘道，以安全地公開在 Azure VMware 解決方案上執行的 web 應用程式。
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579654"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951446"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 應用程式閘道來保護 Azure VMware 解決方案上的 web 應用程式
 
@@ -146,4 +146,4 @@ ms.locfileid: "91579654"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需更多設定範例，請參閱 [Azure 應用程式閘道檔](https://docs.microsoft.com/azure/application-gateway/) 。
+如需更多設定範例，請參閱 [Azure 應用程式閘道檔](../application-gateway/index.yml) 。

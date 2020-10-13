@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692275"
+ms.locfileid: "91931831"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>適用於Azure NetApp Files 的效能基準測試建議
 
@@ -24,7 +24,7 @@ ms.locfileid: "82692275"
 
 ### <a name="vm-instance-sizing"></a>VM 實例大小調整
 
-為了獲得最佳結果，請確定您使用的虛擬機器 (VM) 實例已適當調整大小，以執行測試。 下列範例會使用 Standard_D32s_v3 實例。 如需 VM 實例大小的詳細資訊，請參閱適用于 Windows Vm 的 [azure 中的 windows 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 [azure 中 linux 虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) （適用于 linux 型 vm）。
+為了獲得最佳結果，請確定您使用的虛擬機器 (VM) 實例已適當調整大小，以執行測試。 下列範例會使用 Standard_D32s_v3 實例。 如需 VM 實例大小的詳細資訊，請參閱適用于 Windows Vm 的 [azure 中的 windows 虛擬機器大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) ，以及 [azure 中 linux 虛擬機器的大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) （適用于 linux 型 vm）。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files 磁片區大小調整
 
@@ -113,7 +113,7 @@ Azure NetApp Files 效能資料可透過 Azure 監視器的計數器取得。 �
 
 ### <a name="azure-monitor-api-access"></a>Azure 監視器 API 存取
 
-您可以使用 REST API 呼叫來存取 Azure NetApp Files 計數器。 請參閱 [Azure 監視器： Microsoft. NetApp/netAppAccounts/capacityPools/磁片區的支援計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) （適用于容量集區和磁片區的計數器）。
+您可以使用 REST API 呼叫來存取 Azure NetApp Files 計數器。 請參閱 [Azure 監視器： Microsoft. NetApp/netAppAccounts/capacityPools/磁片區的支援計量](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) （適用于容量集區和磁片區的計數器）。
 
 下列範例顯示用來查看邏輯磁片區大小的 GET URL：
 
@@ -121,7 +121,7 @@ Azure NetApp Files 效能資料可透過 Azure 監視器的計數器取得。 �
 `curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/ANFACCOUNTGOESHERE/capacityPools/ANFPOOLGOESHERE/Volumes/ANFVOLUMEGOESHERE/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=VolumeLogicalSize`
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)
 - [Linux 的效能評定](performance-benchmarks-linux.md)

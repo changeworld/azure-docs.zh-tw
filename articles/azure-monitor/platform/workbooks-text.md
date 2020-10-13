@@ -2,19 +2,17 @@
 title: Azure 監視器活頁簿文字參數
 description: 使用預建和自訂參數化活頁簿簡化複雜的報告。 深入瞭解活頁簿文字參數。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7241777c0b94ce7ccadbd273c5c305c679bfe30a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "81687332"
+ms.locfileid: "91932306"
 ---
 # <a name="workbook-text-parameters"></a>活頁簿文字參數
 
@@ -85,7 +83,7 @@ Textbox 參數提供簡單的方式來收集活頁簿使用者的文字輸入。
 > [!NOTE]
 > 雖然此範例會查詢 Application Insights 資料，但此方法可用於任何以記錄為基礎的資料來源-Log Analytics、Azure Resource Graph 等等。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

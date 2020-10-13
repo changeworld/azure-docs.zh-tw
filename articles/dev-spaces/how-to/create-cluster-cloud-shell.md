@@ -5,14 +5,16 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: 了解如何在不安裝任何項目的情況下，直接從瀏覽器快速建立針對 Azure Dev Spaces 所啟用的 Kubernetes 叢集。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: f6da9055e11b5c514d71122c3650bbc326fb8de8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce73f46a2451dfa87751d90f9cd6b31d5c80683f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232282"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963545"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>使用 Azure Cloud Shell 啟用 Azure Dev Spaces 建立 Kubernetes 叢集
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 您可以使用 [Azure Cloud Shell](/azure/cloud-shell) 建立 Azure Kubernetes Service 叢集，方法是使用此頁面中的 [ **試試看** ] 按鈕。 如果您未登入，請遵循提示使用 Azure 帳戶來登入，然後在 Azure Cloud Shell 提示字元出現時，於其中輸入命令。
 
@@ -32,7 +34,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 建立叢集需要幾分鐘的時間。  完成時，輸出會以 JSON 格式顯示。 尋找 `provisioningState` 並確認它 `Succeeded`。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需完整教學課程的連結，請參閱 [Azure Dev Spaces](../index.yml)。
 

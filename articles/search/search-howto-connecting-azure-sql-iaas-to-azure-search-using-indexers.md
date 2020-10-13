@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922968"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951310"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>在 Azure VM 上設定從 Azure 認知搜尋索引子到 SQL Server 的連接
 
@@ -63,7 +63,7 @@ Azure 認知搜尋需要透過公用網際網路連線進行所有索引子要�
 下列連結提供 VM 部署的 NSG 組態相關指示。 使用這些指示根據其 IP 位址 Azure 認知搜尋端點的 ACL。
 
 > [!NOTE]
-> 若為背景，請參閱 [什麼是網路安全性群組？](../virtual-network/security-overview.md)
+> 若為背景，請參閱 [什麼是網路安全性群組？](../virtual-network/network-security-groups-overview.md)
 > 
 > 
 
