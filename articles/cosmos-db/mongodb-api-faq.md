@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
 ms.openlocfilehash: 05b0ff7d4f56a61c5c91848044a30cb9bf1d0f46
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565304"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的 MongoDB API 相關常見問題
@@ -29,10 +29,10 @@ Azure Cosmos DB 會強制執行嚴格的安全性需求和標準。 Azure Cosmos
 
 除了常見的 MongoDB 錯誤碼，適用於 MongoDB 的 Azure Cosmos DB API 有專用錯誤碼：
 
-| Error               | 程式碼  | 描述  | 解決方法  |
+| 錯誤               | 程式碼  | 描述  | 解決方法  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 取用的要求單位總數超過容器已布建的要求單位速率，且已進行節流。 | 請考慮從 Azure 入口網站調整指派給容器或容器集的輸送量，或重試一次。 |
-| ExceededMemoryLimit | 16501 | 做為多租用戶服務，作業已超出用戶端的記憶體配額。 | 透過更嚴格的查詢準則來縮小作業的範圍，或經由 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)連絡支援人員。 <br><br> 範例：`db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| ExceededMemoryLimit | 16501 | 做為多租用戶服務，作業已超出用戶端的記憶體配額。 | 透過更嚴格的查詢準則來縮小作業的範圍，或經由 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)連絡支援人員。 <br><br> 範例： `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 
 ## <a name="supported-drivers"></a>支援的驅動程式
 

@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542201"
 ---
 # <a name="patternany-entity"></a>Pattern.any 實體
@@ -25,7 +25,7 @@ Pattern.any 實體需要在[模式](luis-how-to-model-intent-pattern.md)範本�
 
 * 實體的結尾可能會與語句的其餘文字混淆。
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 如果用戶端應用程式要根據書名來搜尋書籍，pattern.any 會擷取完整的書名。 為搜尋此書而使用 pattern.any 的範本語句是 `Was {BookTitle} written by an American this year[?]`。
 

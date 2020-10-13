@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
 ms.openlocfilehash: e8e44f69965af1987bd5f023644d966b3caf1c77
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505820"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>從 Azure DDoS 保護連接資料
@@ -59,7 +59,7 @@ ms.locfileid: "89505820"
 >
 > 使用這個特定的資料連線器，線上狀態指標 (資料連線器資源庫中的色彩等量，以及資料類型名稱旁邊的連接圖示) 只會在過去兩周內的某個時間點內嵌資料時，才會顯示為 *已連線* (綠色) 。 一旦經過兩周後未內嵌資料，連接器將會顯示為已中斷連線。 資料越多， *線上狀態就* 會傳回。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本檔中，您已瞭解如何將 Azure DDoS 保護記錄連接至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。

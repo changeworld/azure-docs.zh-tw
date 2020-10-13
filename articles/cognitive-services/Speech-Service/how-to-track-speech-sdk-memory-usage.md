@@ -13,10 +13,10 @@ ms.author: rhurey
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: c7e74ce8f4d0b7889d2e5bcd117eaa43e2b6991b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934135"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>如何追蹤語音 SDK 記憶體使用量
@@ -148,6 +148,6 @@ speech_config.set_property_by_name("SPEECH-ObjectCountErrorThreshold", "10000")?
 > [!TIP]
 > 這個屬性的預設值是特定平臺的資料類型最大值 `size_t` 。 一般的辨識將會耗用7到10個內建物件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [深入瞭解語音 SDK](speech-sdk.md)

@@ -11,10 +11,10 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
 ms.openlocfilehash: 20fa52febaa42850609f3f793d6f4aa4ae2704a6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626321"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
@@ -554,7 +554,7 @@ New-AzResourceGroupDeployment `
    * 區域：選取將在其中建立資源的 Azure 區域。
    * 工作區名稱：要用於將建立之Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
    * 位置：選取將建立資源的位置。
-1. 選取 [檢閱 + 建立]。
+1. 選取 [檢閱 + 建立]____。
 1. 在 [ __審核 + 建立__ ] 畫面中，同意列出的條款及條件，然後選取 [ __建立__]。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。

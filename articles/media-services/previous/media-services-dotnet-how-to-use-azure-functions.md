@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262097"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>開發具有媒體服務的 Azure Functions
@@ -30,7 +30,7 @@ ms.locfileid: "89262097"
 
 如果您想要瀏覽及部署使用 Azure 媒體服務的現有 Azure Functions，請參閱[媒體服務 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存放庫包含的範例會使用媒體服務來顯示與直接從 Blob 儲存體擷取內容、進行編碼，再將內容寫回 Blob 儲存體相關的工作流程。 此存放庫也包含如何透過 Webhook 和 Azure 佇列監視作業通知的範例。 您也可以根據[媒體服務 Azure Functions (英文)](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 儲存機制中的範例來開發您的函式。 若要部署函式，請按 [部署至 Azure]**** 按鈕。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須先具備有效的 Azure 帳戶，才可以建立第一個函式。 如果您還沒有 Azure 帳戶， [可以使用免費帳戶](https://azure.microsoft.com/free/)。
 - 如果您要建立會對 Azure 媒體服務 (AMS) 帳戶執行動作或是會接聽媒體服務所傳送之事件的 Azure Functions，您應該建立 AMS 帳戶，如[這裡](media-services-portal-create-account.md)所述。
@@ -73,7 +73,7 @@ ms.locfileid: "89262097"
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. 按一下 [建立]  。 
+4. 按一下 [建立]。 
 
 ## <a name="files"></a>檔案儲存體
 

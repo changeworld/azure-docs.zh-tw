@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543447"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
@@ -31,8 +31,8 @@ ms.locfileid: "87543447"
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中執行 AzureAD Cmdlet 時發生錯誤
 
-- **詳細資料**：當您執行如 Cloud Shell 中的 AzureAD Cmdlet 時 `Get-AzureADUser` ，您可能會看到錯誤： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` 。 
-- **解決**方式：執行 `Connect-AzureAD` Cmdlet。 之前，Cloud Shell 會在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以 `Connect-AzureAD` 在 PowerShell 中新增至 $PROFILE 檔案，以選擇還原先前的行為。
+- **詳細資料**：當您執行 Cloud Shell 中的 AzureAD Cmdlet 時 `Get-AzureADUser` ，您可能會看到錯誤： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` 。 
+- **解決方法**：執行 `Connect-AzureAD` Cmdlet。 先前，Cloud Shell 在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以 `Connect-AzureAD` 在 PowerShell 中新增至 $PROFILE 檔案，以選擇還原先前的行為。
 
 ### <a name="early-timeouts-in-firefox"></a>在 FireFox 中提前逾時
 
@@ -41,13 +41,13 @@ ms.locfileid: "87543447"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在鎖定的網路環境中停用 Cloud Shell
 
-- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用網域的存取權， `ux.console.azure.com` 這可能會遭到拒絕，並停止對 Cloud Shell 的 e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帳戶延伸模組，以及 docs.microsoft.com。 在美國政府雲端中，entrypoint 是 `ux.console.azure.us` ; 沒有對應的 shell.azure.us。
-- **解決**方式：透過 `ux.console.azure.com` 網路設定限制對您環境的存取權 `ux.console.azure.us` 。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連線到服務。
+- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用網域的存取權， `ux.console.azure.com` 這可能會遭到拒絕，並停止任何 Cloud Shell 的 e 存取權，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帳戶延伸模組和 docs.microsoft.com。 在美國政府雲端中，進入點是 `ux.console.azure.us` ; 沒有對應的 shell.azure.us。
+- **解決**方式：限制對 `ux.console.azure.com` 您的環境進行或透過 `ux.console.azure.us` 網路設定的存取。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連接到服務。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>儲存體對話方塊 - 錯誤：403 RequestDisallowedByPolicy
 
-- **詳細資料**：透過 Cloud Shell 建立儲存體帳戶時，會因為系統管理員所放置的 Azure 原則指派而不成功。錯誤訊息將包含：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **解決**方式：請洽詢您的 Azure 系統管理員，以移除或更新拒絕儲存體建立的 Azure 原則指派。
+- **詳細資料**：透過 Cloud Shell 建立儲存體帳戶時，因為系統管理員所放置的 Azure 原則指派，所以會失敗。錯誤訊息將包含： `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **解決方案**：請洽詢您的 Azure 系統管理員，以移除或更新拒絕儲存體建立的 Azure 原則指派。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>儲存體對話方塊 - 錯誤：400 DisallowedOperation
 
@@ -59,7 +59,7 @@ ms.locfileid: "87543447"
 - **解決辦法**：確認您已將您的網路設定設定為啟用傳送 https 要求和 websocket 要求至 *.console.azure.com 中的網域。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>設定您的 Cloud Shell 連線以支援使用 TLS 1.2
- - **詳細資料**：若要定義 Cloud Shell 連接的 TLS 版本，您必須設定瀏覽器特定的設定。
+ - **詳細資料**：若要定義連線到 CLOUD SHELL 的 TLS 版本，您必須設定瀏覽器特有的設定。
  - **解決方式**：瀏覽至瀏覽器的安全性設定，然後選取 [使用 TLS 1.2] 旁的核取方塊。
 
 ## <a name="bash-troubleshooting"></a>Bash 疑難排解
@@ -94,9 +94,9 @@ Azure Cloud Shell 具有下列已知限制：
 
 ### <a name="quota-limitations"></a>配額限制
 
-Azure Cloud Shell 的限制為每個區域每個租使用者20個並行使用者。 如果您嘗試開啟比限制更多的同時會話，將會看到「租使用者超過配額」錯誤。 如果您有合理的需要開啟更多會話，而不是這麼做（例如訓練課程），請在您預期的使用量之前，先聯絡支援人員以要求增加配額。
+Azure Cloud Shell 每個區域的每個租使用者限制為20個並行使用者。 如果您嘗試開啟的會話數目超過限制，您會看到「租使用者使用者超過配額」錯誤。 如果您有需要開啟的會話數目超過此 (（例如定型會話) ），請在預期的使用量之前，先與支援人員聯繫，要求增加配額。
 
-Cloud Shell 是以免費服務的方式提供，其設計目的是用來設定您的 Azure 環境，而不是一般用途的計算平臺。 過多的自動化使用可能會被視為違反 Azure 服務條款，可能會導致 Cloud Shell 存取遭到封鎖。
+Cloud Shell 是以免費服務的形式提供，其設計目的是用來設定您的 Azure 環境，而不是一般用途的計算平臺。 在 Azure 服務條款中，可能會考慮過度自動化的使用方式，而且可能會導致 Cloud Shell 存取遭到封鎖。
 
 ### <a name="system-state-and-persistence"></a>系統狀態和持續性
 
@@ -151,7 +151,7 @@ Azure Cloud Shell 會謹慎處理您的個人資料，Azure Cloud Shell 服務�
 ### <a name="export"></a>匯出
 若要匯出**** Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。
 
-1. [![顯示標示為 [啟動 Azure Cloud Shell] 之按鈕的影像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. [![顯示標示為啟動 Azure Cloud Shell 之按鈕的影像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
 
 2. 在 Bash 或 PowerShell 中執行下列命令：
 
@@ -175,7 +175,7 @@ PowerShell：
 >[!Note]
 > 如果您刪除您的使用者設定，實際的 Azure 檔案共用將不會刪除。 請移至 Azure 檔案以完成該動作。
 
-1. [![顯示標示為 [啟動 Azure Cloud Shell] 之按鈕的影像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. [![顯示標示為啟動 Azure Cloud Shell 之按鈕的影像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
 
 2. 在 Bash 或 PowerShell 中執行下列命令：
 
@@ -196,4 +196,4 @@ PowerShell：
 Azure Government 中的 Azure Cloud Shell 只能透過 Azure 入口網站存取。
 
 >[!Note]
-> 目前不支援連接到 GCC-適用于 Exchange Online 的高或政府 DoD 雲端。
+> 目前不支援連線至適用于 Exchange Online 的 GCC-High 或政府 DoD 雲端。

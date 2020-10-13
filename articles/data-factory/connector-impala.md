@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: b70db03e03ce914ea1d81d94cd2803a36eccfc88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418213"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Impala 複製資料
@@ -35,7 +35,7 @@ ms.locfileid: "81418213"
 
 Data Factory 會提供內建的驅動程式來啟用連線。 因此，您不需要為了使用此連接器而需手動安裝驅動程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -51,16 +51,16 @@ Data Factory 會提供內建的驅動程式來啟用連線。 因此，您不需
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設定為**Impala**。 | 是 |
+| type | Type 屬性必須設為 **Impala**。 | 是 |
 | 主機 | Impala 伺服器的 IP 位址或主機名稱 (也就是 192.168.222.160)。  | 是 |
 | 連接埠 | Impala 伺服器用來接聽用戶端連線的 TCP 連接埠。 預設值為 21050。  | 否 |
 | authenticationType | 要使用的驗證類型。 <br/>允許的值為 **Anonymous**、**SASLUsername** 和 **UsernameAndPassword**。 | 是 |
 | username | 用來存取 Impala 伺服器的使用者名稱。 使用 SASLUsername 時，預設值為 anonymous。  | 否 |
 | 密碼 | 使用 UsernameAndPassword 時，值為對應到使用者名稱的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
 | enableSsl | 指定是否使用 TLS 來加密與伺服器的連接。 預設值為 **false**。  | 否 |
-| trustedCertPath | 包含信任的 CA 憑證的 pem 檔案完整路徑，當您透過 TLS 連線時，會使用此檔案來驗證服務器。 只有當您在自我裝載的 Integration Runtime 上使用 TLS 時，才可以設定這個屬性。 預設值為隨整合執行階段安裝的 cacerts.pem 檔案。  | 否 |
+| trustedCertPath | Pem 檔案的完整路徑，其中包含當您透過 TLS 連接時，用來驗證服務器的受信任 CA 憑證。 只有當您在自我裝載的 Integration Runtime 上使用 TLS 時，才可以設定這個屬性。 預設值為隨整合執行階段安裝的 cacerts.pem 檔案。  | 否 |
 | useSystemTrustStore | 指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 預設值為 **false**。  | 否 |
-| allowHostNameCNMismatch | 指定當您透過 TLS 連線時，是否要求 CA 發行的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 **false**。  | 否 |
+| allowHostNameCNMismatch | 指定當您透過 TLS 連線時，是否要求 CA 發出的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 **false**。  | 否 |
 | allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 **false**。  | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 

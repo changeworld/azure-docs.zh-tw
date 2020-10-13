@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195123"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>HDInsight 中的 Azure Data Lake Storage Gen2 總覽
@@ -23,15 +23,15 @@ Azure Data Lake Storage Gen2 採用 Azure Data Lake Storage Gen1 的核心功能
 
 ## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的核心功能
 
-* **與 Hadoop 相容的存取權：** 在 Azure Data Lake Storage Gen2 中，您可以管理和存取資料，就像使用 Hadoop 分散式檔案系統（HDFS）一樣。 Azure Blob 檔案系統 (ABFS) 驅動程式可在所有 Apache Hadoop 環境中使用，包括 Azure HDInsight 和 Azure Databricks。 使用 ABFS 存取儲存在 Data Lake Storage Gen2 中的資料。
+* **與 Hadoop 相容的存取權：** 在 Azure Data Lake Storage Gen2 中，您可以管理和存取資料，就如同使用 Hadoop 分散式檔案系統 (HDFS) 一樣。 Azure Blob 檔案系統 (ABFS) 驅動程式可在所有 Apache Hadoop 環境中使用，包括 Azure HDInsight 和 Azure Databricks。 使用 ABFS 存取儲存在 Data Lake Storage Gen2 中的資料。
 
-* **POSIX 許可權的超集合：** Data Lake Gen2 的安全性模型可支援 ACL 和 POSIX 許可權，以及一些 Data Lake Storage Gen2 特有的額外細微性。 這些設定可透過系統管理工具或 Apache Hive 和 Apache Spark 這類架構來配置。
+* **POSIX 許可權的超集合：** Data Lake Gen2 的安全性模型支援 ACL 和 POSIX 許可權，以及 Data Lake Storage Gen2 特定的額外細微性。 這些設定可透過系統管理工具或 Apache Hive 和 Apache Spark 這類架構來配置。
 
-* **成本效益：** Data Lake Storage Gen2 提供低成本的儲存容量和交易。 Azure Blob 儲存體生命週期會在資料于其生命週期內移動時，藉由調整計費費率來協助降低成本。
+* **成本效益：** Data Lake Storage Gen2 提供低成本的儲存容量和交易。 Azure Blob 儲存體生命週期可在資料于其生命週期內移動時調整計費費率，以協助降低成本。
 
 * **與 Blob 儲存體工具、架構和應用程式的相容性：** Data Lake Storage Gen2 會繼續使用適用于 Blob 儲存體的各種工具、架構和應用程式。
 
-* **優化的驅動程式：** ABFS 驅動程式已特別針對海量資料分析進行優化。 對應的 REST API 會透過分散式檔案系統 (DFS) 端點 dfs.core.windows.net 呈現。
+* **優化的驅動程式：** ABFS 驅動程式專門針對大型資料分析進行優化。 對應的 REST API 會透過分散式檔案系統 (DFS) 端點 dfs.core.windows.net 呈現。
 
 ## <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 的新功能
 
@@ -43,11 +43,11 @@ Azure HDInsight 會使用受控識別來保護叢集對 Azure Data Lake Storage 
 
 ### <a name="azure-blob-file-system-driver"></a>Azure Blob 檔案系統驅動程式
 
-Apache Hadoop 應用程式原本就預期會從本機磁碟儲存體讀取和寫入資料。 Hadoop 檔案系統驅動程式（例如 ABFS）可讓 Hadoop 應用程式與雲端存放裝置搭配使用。 藉由模擬一般 Hadoop 檔案系統作業來運作。 驅動程式會將從應用程式接收的命令，轉換為實際雲端儲存空間平台理解的作業。
+Apache Hadoop 應用程式原本就預期會從本機磁碟儲存體讀取和寫入資料。 Hadoop 檔案系統驅動程式（例如 ABFS）可讓 Hadoop 應用程式使用雲端存放裝置。 藉由模擬一般 Hadoop 檔案系統作業來運作。 驅動程式會將從應用程式接收的命令，轉換為實際雲端儲存空間平台理解的作業。
 
-在過去，Hadoop 檔案系統驅動程式會將所有檔案系統作業轉換成 Azure 儲存體在用戶端上 REST API 呼叫。 然後叫用 REST API。 不過，此用戶端轉換會造成單一檔案系統作業 (例如檔案重新命名) 有多個 REST API 呼叫。 ABFS 已將 Hadoop 檔案系統邏輯從用戶端移至伺服器端。 Azure Data Lake Storage Gen2 API 現在會與 Blob API 平行執行。 此移轉可改善效能，因為現在的一般 Hadoop 檔案系統作業可透過一個 REST API 呼叫來執行。
+先前，Hadoop 檔案系統驅動程式會將所有檔案系統作業轉換成在用戶端 Azure 儲存體 REST API 呼叫。 然後叫用 REST API。 不過，此用戶端轉換會造成單一檔案系統作業 (例如檔案重新命名) 有多個 REST API 呼叫。 ABFS 已將 Hadoop 檔案系統邏輯從用戶端移至伺服器端。 Azure Data Lake Storage Gen2 API 現在會與 Blob API 平行執行。 此移轉可改善效能，因為現在的一般 Hadoop 檔案系統作業可透過一個 REST API 呼叫來執行。
 
-如需詳細資訊，請參閱[Azure Blob Filesystem 驅動程式（ABFS）：適用于 Hadoop 的專用 Azure 儲存體驅動程式](../storage/blobs/data-lake-storage-abfs-driver.md)。
+如需詳細資訊，請參閱 [Azure Blob 檔案系統驅動程式 (ABFS) ：適用于 Hadoop 的專用 Azure 儲存體驅動程式](../storage/blobs/data-lake-storage-abfs-driver.md)。
 
 ### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 的 URI 配置
 
@@ -55,7 +55,7 @@ Azure Data Lake Storage Gen2 會使用新的 URI 配置，從 HDInsight 存取 A
 
 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-URI 配置會提供 SSL 加密存取。
+URI 配置會提供 SSL 加密的存取。
 
 `<FILE_SYSTEM_NAME>` 可識別檔案系統 Data Lake Storage Gen2 的路徑。
 
@@ -75,7 +75,7 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 
 如需詳細資訊，請參閱[使用 Azure Data Lake Storage Gen2 URI](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure 儲存體簡介](../storage/common/storage-introduction.md)

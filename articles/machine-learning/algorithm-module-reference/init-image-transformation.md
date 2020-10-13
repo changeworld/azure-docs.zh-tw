@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907886"
 ---
 # <a name="init-image-transformation"></a>初始化映像轉換
@@ -67,7 +67,7 @@ ms.locfileid: "90907886"
 
 ###  <a name="module-parameters"></a>模組參數  
 
-| Name                    | 範圍   | 類型    | 預設 | 描述                              |
+| 名稱                    | 範圍   | 類型    | 預設 | 描述                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | 調整大小                  | 任意     | 布林值 | True    | 將輸入 PIL 影像的大小調整為指定的大小 |
 | 大小                    | >= 1     | 整數 | 256     | 指定所需的輸出大小          |

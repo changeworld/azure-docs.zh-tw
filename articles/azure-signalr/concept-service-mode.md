@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514809"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR Service 中的服務模式
@@ -21,7 +21,7 @@ ms.locfileid: "89514809"
 
 您也可以稍後在 [設定] 功能表中加以變更：
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="更新服務模式":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="選擇建立時的服務模式":::
 
 Azure SignalR Service 目前支援三種服務模式： **預設**、 **無伺服器** 和 **傳統**。 在不同的模式下，您的 SignalR 資源會有不同的行為。 在本文中，您將瞭解其差異，並說明如何根據您的案例選擇正確的服務模式。
 
@@ -29,7 +29,7 @@ Azure SignalR Service 目前支援三種服務模式： **預設**、 **無伺�
 
 當您建立新的 SignalR 資源時，預設模式是服務模式的預設值。 在此模式中，您的應用程式會作為一般 ASP.NET Core (或 ASP.NET) SignalR 應用程式，其中您的 web 伺服器會裝載稱為中樞伺服器以下的中樞 () 而且用戶端可以與中樞伺服器進行雙工即時通訊。 唯一的差別是，用戶端和伺服器都不會直接連接到 SignalR 服務，而是使用服務作為 proxy。 以下圖表說明預設模式中的一般應用程式結構：
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="預設模式下的應用程式結構":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="選擇建立時的服務模式":::
 
 因此，如果您有 SignalR 應用程式，而且想要與 SignalR 服務整合，則在大部分的情況下，預設模式應該是正確的選擇。
 
@@ -59,7 +59,7 @@ Azure SignalR Service 目前支援三種服務模式： **預設**、 **無伺�
 
 以下是說明無伺服器模式運作方式的圖表：
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="無伺服器模式中的應用程式結構":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="選擇建立時的服務模式":::
 
 > [!NOTE]
 > 請注意，在預設模式下，如果您不想要通過中樞伺服器，也可以使用 REST API/管理 SDK/函式系結來直接將訊息傳送至用戶端。 但在預設模式下，用戶端連線仍會由中樞伺服器處理，而上游將無法在該模式下運作。
@@ -85,7 +85,7 @@ Azure SignalR Service 目前支援三種服務模式： **預設**、 **無伺�
 
 * 例如，如果您真的有混合的案例，則在相同的 SignalR 資源上有兩個不同的中樞，一個用來作為傳統的 SignalR 中樞，另一個則用於 Azure Functions 且沒有中樞伺服器，您應該確實考慮將它們分隔成兩個 SignalR 資源，一個在預設模式下，另一個在無伺服器模式中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何使用預設和無伺服器模式，請閱讀下列文章：
 

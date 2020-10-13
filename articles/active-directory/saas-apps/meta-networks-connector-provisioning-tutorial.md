@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91849209"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Meta Networks Connector
@@ -143,7 +143,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Meta Networks] 連接器**。
 

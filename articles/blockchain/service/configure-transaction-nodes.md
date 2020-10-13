@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530381"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>設定 Azure 區塊鏈服務的交易節點
@@ -40,7 +40,7 @@ ms.locfileid: "90530381"
     | 名稱 | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如： `newnode-myblockchainmember.blockchain.azure.com` 。 節點名稱在建立後即無法變更。 |
     | 密碼 | 設定強式密碼。 使用密碼可透過基本驗證來存取交易節點端點。
 
-1. 選取 [建立]  。
+1. 選取 [建立]****。
 
     佈建一個新的交易節點大約需要 10 分鐘。 額外的交易節點會產生成本。 如需成本的詳細資訊，請參閱 [Azure 定價](https://aka.ms/ABSPricing)。
 
@@ -71,7 +71,7 @@ Azure 區塊鏈服務的交易節點端點支援 Azure Active Directory (Azure A
     |---------|-------------|
     | 角色 | 選取 [ **擁有**者]、[ **參與者**] 或 [ **讀者**]。
     | 存取權指派對象 | 選取 **Azure AD 使用者、群組或服務主體**。
-    | 選取 | 搜尋您想要新增的使用者、群組或服務主體。
+    | Select | 搜尋您想要新增的使用者、群組或服務主體。
 
 1. 選取 [ **儲存** ] 以新增角色指派。
 

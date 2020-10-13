@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544225"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教學課程：設定 Elium 來自動布建使用者
@@ -49,7 +49,7 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
 ## <a name="set-up-elium-for-provisioning"></a>設定布建的 Elium
 
-使用 Azure AD 設定 Elium 來自動布建使用者之前，您必須在 Elium 上啟用系統以進行跨網域身分識別管理 (SCIM) 布建。 遵循下列步驟：
+使用 Azure AD 設定 Elium 來自動布建使用者之前，您必須在 Elium 上啟用系統以進行跨網域身分識別管理 (SCIM) 布建。 請遵循下列步驟：
 
 1. 登入 Elium 並移至 [**我的設定檔**  >  **設定**]。
 
@@ -65,7 +65,7 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
 ## <a name="add-elium-from-the-gallery"></a>從資源庫新增 Elium
 
-若要使用 Azure AD 設定 Elium 來自動布建使用者，您也必須從 Azure AD 應用程式資源庫將 Elium 新增至受控軟體即服務 (SaaS) 應用程式的清單。 遵循下列步驟：
+若要使用 Azure AD 設定 Elium 來自動布建使用者，您也必須從 Azure AD 應用程式資源庫將 Elium 新增至受控軟體即服務 (SaaS) 應用程式的清單。 請遵循下列步驟：
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)的左側導覽面板中，選取 [ **Azure Active Directory**]。
 
@@ -116,13 +116,13 @@ Azure AD 會使用稱為「 *指派* 」的概念，來判斷哪些使用者可�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-1. 按一下 [檔案] 。
+1. 按一下 **[儲存]** 。
 
 1. **在 [對應**] 區段中，選取 [**同步處理 Azure Active Directory 使用者至 Elium**]。
 
     ![將 Azure AD 使用者對應的連結同步至 Elium](media/Elium-provisioning-tutorial/usermapping.png)
 
-1. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Elium 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Elium 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。
+1. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Elium 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Elium 中的使用者帳戶以進行更新作業。 選取 [儲存]  認可任何變更。
 
     ![Azure AD 與 Elium 之間的屬性對應](media/Elium-provisioning-tutorial/userattribute.png)
 

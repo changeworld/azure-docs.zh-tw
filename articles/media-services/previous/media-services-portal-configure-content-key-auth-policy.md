@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0218c24637b9b49972e93b8dd53e5970c9ab89d5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89260895"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>設定內容金鑰授權原則
@@ -36,7 +36,7 @@ ms.locfileid: "89260895"
 
 當播放器要求設定為動態加密的串流時，媒體服務會使用設定的金鑰，以 AES 或 DRM 加密將您的內容動態加密。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-如果您預計有多個內容金鑰，或需要指定金鑰/授權傳遞服務 URL，而非媒體服務金鑰傳遞服務，請使用媒體服務 .NET SDK 或 REST API。 如需詳細資訊，請參閱：
+如果您預計有多個內容金鑰，或需要指定金鑰/授權傳遞服務 URL，而非媒體服務金鑰傳遞服務，請使用媒體服務 .NET SDK 或 REST API。 如需詳細資訊，請參閱
 
 * [使用媒體服務 .NET SDK 設定內容金鑰授權原則](media-services-dotnet-configure-content-key-auth-policy.md)
 * [使用媒體服務 REST API 設定內容金鑰授權原則](media-services-rest-configure-content-key-auth-policy.md)

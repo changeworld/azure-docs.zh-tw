@@ -1,15 +1,15 @@
 ---
 title: 從備份還原應用程式
-description: 了解如何從備份還原您的應用程式。 某些連結的資料庫可以在單一作業中連同應用程式一起還原。
+description: 了解如何從備份還原您的應用程式。 某些連結的資料庫可在一項作業中連同應用程式一起還原。
 ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084852"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中還原應用程式
@@ -36,7 +36,7 @@ ms.locfileid: "87084852"
     如果您想要還原另一個應用程式的備份，請使用 [儲存體] **** 選項。
 3. 接著，在 [還原目的地] **** 中指定應用程式還原目的地。
    
-    ![螢幕擷取畫面：顯示指定應用程式還原目的地的位置。](./media/web-sites-restore/022ChooseDestination1.png)
+    ![顯示指定應用程式還原目的地之位置的螢幕擷取畫面。](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > 如果您選擇 [覆寫]****，則目前應用程式中的所有現有資料都將被清除並覆寫。 按一下 [確定] **** 之前，請確定這確實是您想要執行的動作。

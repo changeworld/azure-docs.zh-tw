@@ -1,29 +1,29 @@
 ---
-title: Azure HPC 快取資料內嵌-手動複製
-description: 如何在 Azure HPC 快取中使用 cp 命令將資料移至 Blob 儲存體目標
+title: Azure HPC Cache 資料內嵌-手動複製
+description: 如何使用 cp 命令將資料移至 Azure HPC Cache 中的 Blob 儲存體目標
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: f96a0fa264124f9d050e667b003d98579da63b77
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092332"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC 快取資料內嵌-手動複製方法
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache 資料內嵌-手動複製方法
 
-本文提供詳細的指示，說明如何手動將資料複製到 Blob 儲存體容器，以與 Azure HPC 快取搭配使用。 它會使用多執行緒平行作業來優化複製速度。
+本文提供詳細的指示，說明如何將資料手動複製到 Blob 儲存體容器，以搭配 Azure HPC Cache 使用。 它會使用多執行緒的平行作業來將複製速度優化。
 
-若要深入瞭解如何將資料移至 Azure HPC 快取的 Blob 儲存體，請參閱[將資料移至 Azure blob 儲存體](hpc-cache-ingest.md)。
+若要深入瞭解如何將資料移至 Azure HPC Cache 的 Blob 儲存體，請參閱 [將資料移至 Azure blob 儲存體](hpc-cache-ingest.md)。
 
-## <a name="simple-copy-example"></a>簡單複製範例
+## <a name="simple-copy-example"></a>簡易複製範例
 
 您可以藉由在背景中針對幾組預先定義的檔案或路徑，一次執行多個複製命令，在用戶端上手動建立多執行緒複製。
 
-Linux/UNIX ``cp`` 命令包含可保留擁有權和 mtime 中繼資料的 ``-p`` 引數。 您可以視需要將此引數新增至下方的命令。 （新增引數會增加從用戶端傳送至目的地檔案系統以進行中繼資料修改）的檔案系統呼叫數目。
+Linux/UNIX ``cp`` 命令包含可保留擁有權和 mtime 中繼資料的 ``-p`` 引數。 您可以視需要將此引數新增至下方的命令。 加入引數 (會增加從用戶端傳送至目的地檔案系統以進行中繼資料修改的檔案系統呼叫數目。 ) 
 
 此簡單範例會平行複製兩個檔案：
 
@@ -33,11 +33,11 @@ cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1
 
 在發出此命令之後，`jobs` 命令會顯示有兩個執行緒正在執行。
 
-## <a name="copy-data-with-predictable-file-names"></a>以可預測的檔案名複製資料
+## <a name="copy-data-with-predictable-file-names"></a>使用可預測的檔案名複製資料
 
 如果您的檔案名是可預測的，您可以使用運算式來建立平行複製執行緒。
 
-例如，如果您的目錄包含依序編號為的1000檔案 `0001` `1000` ，則您可以使用下列運算式來建立10個平行線程，其中每個都會複製100個檔案：
+例如，如果您的目錄包含依序從順序編號的 1000 `0001` 檔案 `1000` ，您可以使用下列運算式來建立每個複製100檔案的10個平行線程：
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -52,7 +52,7 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-## <a name="copy-data-with-unstructured-file-names"></a>以非結構化的檔案名複製資料
+## <a name="copy-data-with-unstructured-file-names"></a>使用非結構化的檔案名複製資料
 
 如果您的檔案命名結構不是可預測的，您可以依目錄名稱將檔案分組。
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>新增掛接點的時機
 
-當您有足夠的平行線程進入單一目的地檔案系統掛接點之後，將會有一個點，讓新增更多執行緒不會提供更多的輸送量。 （輸送量將根據您的資料類型，以每秒的檔案數或位元組/秒來測量）。或更糟的是，過度執行緒有時可能會導致輸送量降低。
+在您有足夠的平行線程進入單一目的地檔案系統掛接點之後，將會有一個點可讓您新增更多執行緒，而不會提供更多輸送量。 根據您的資料類型而定， (輸送量會以每秒或每秒位元組數來測量。 ) 或更糟的是，過度執行緒有時可能會導致輸送量降低。
 
-發生這種情況時，您可以使用相同的遠端檔案系統掛接路徑，將用戶端掛接點新增至其他 Azure HPC 快取裝載位址：
+發生這種情況時，您可以使用相同的遠端檔案系統掛接路徑，將用戶端掛接點新增至其他 Azure HPC Cache 掛接位址：
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>建立檔案資訊清單
 
-瞭解上述方法（每個目的地有多個複製執行緒、每個用戶端的多個目的地、每個網路可存取的來源檔案系統的多個用戶端）時，請考慮下列建議：組建檔案資訊清單，然後在多個用戶端上使用複製命令。
+瞭解上述方法之後 (多個每個目的地的複製執行緒、每個用戶端多個目的地、每個可存取網路的來源檔案系統的多個用戶端) ，請考慮這項建議：建立檔案資訊清單，然後在多個用戶端上使用複製命令。
 
 此案例會使用 UNIX ``find`` 命令來建立檔案或目錄的資訊清單：
 
@@ -208,7 +208,7 @@ for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-還有六個 ...。視需要推斷。
+以及六個 .。。視需要推斷。
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done

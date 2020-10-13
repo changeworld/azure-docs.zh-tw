@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194636"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>使用 PowerShell 來建立 data factory 管線，以將資料從 SQL Server 複製到 Azure
@@ -27,12 +27,12 @@ ms.locfileid: "84194636"
 
 ## <a name="prerequisites"></a>必要條件
 
-- **SQL Server**。 在此範例中，您會使用 SQL Server 資料庫做為**源**資料存放區。
-- **Azure 儲存體帳戶**。 在此範例中，您會使用 Azure Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)一文，以瞭解建立的步驟。
+- **SQL Server**。 在此範例中，您會使用 SQL Server 資料庫作為 **源** 資料存放區。
+- **Azure 儲存體帳戶**。 在此範例中，您會使用 Azure Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文，以取得建立帳戶的步驟。
 - **自我裝載整合運行**時間。 從[下載中心](https://www.microsoft.com/download/details.aspx?id=39717)下載 MSI 檔案，然後執行它以在您的電腦上安裝自我裝載整合執行階段。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中建立範例資料庫
-1. 在 SQL Server 資料庫中，使用下列 SQL 腳本，建立名為**emp**的資料表：
+1. 在 SQL Server 資料庫中，使用下列 SQL 腳本來建立名為 **emp** 的資料表：
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -80,12 +80,12 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 | Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
-| [設定-Set-azdatafactoryv2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 建立資料處理站。 |
-| [新增-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | 加密已連結服務中的認證，然後使用加密的認證來產生一個新的已連結服務定義。
-| [設定-Set-azdatafactoryv2linkedservice](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在資料處理站中建立已連結的服務。 已連結的服務會將資料存放區或計算連結到資料處理站。 |
-| [設定-Set-azdatafactoryv2dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在資料處理站中建立資料集。 資料集代表管線中活動的輸入/輸出。 |
-| [設定-Set-azdatafactoryv2pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在資料處理站中建立管線。 管線包含一或多個執行特定作業的活動。 在此管線中，複製活動會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 |
-| [叫用-Set-azdatafactoryv2pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 建立管線的執行。 也就是說，執行管線。 |
+| [設定->set-azdatafactoryv2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 建立資料處理站。 |
+| [新 AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | 加密已連結服務中的認證，然後使用加密的認證來產生一個新的已連結服務定義。
+| [設定->set-azdatafactoryv2linkedservice](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在資料處理站中建立已連結的服務。 已連結的服務會將資料存放區或計算連結到資料處理站。 |
+| [設定->set-azdatafactoryv2dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在資料處理站中建立資料集。 資料集代表管線中活動的輸入/輸出。 |
+| [設定->invoke-azdatafactoryv2pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在資料處理站中建立管線。 管線包含一或多個執行特定作業的活動。 在此管線中，複製活動會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 |
+| [Invoke->invoke-azdatafactoryv2pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 建立管線的執行。 也就是說，執行管線。 |
 | [AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 在管線中取得活動的執行 (活動執行) 的相關詳細資料。
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

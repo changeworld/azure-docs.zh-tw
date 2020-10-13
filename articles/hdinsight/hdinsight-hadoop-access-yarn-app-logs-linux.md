@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82192496"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在以 Linux 為基礎的 HDInsight 上存取 Apache Hadoop YARN 應用程式記錄
@@ -21,11 +21,11 @@ ms.locfileid: "82192496"
 
 ## <a name="what-is-apache-yarn"></a>什麼是 Apache YARN？
 
-YARN 藉由將資源管理從應用程式排程/監視分離，支援多種程式設計模型（Apache Hadoop MapReduce 為其中之一）。 YARN 使用全域 *`ResourceManager`* （RM）、每一背景工作節點*NodeManagers* （NMs）和每一應用程式*resourcemanager* （AMs）。 每一應用程式 AM 會與 RM 交涉用來執行您應用程式的資源 (CPU、記憶體、磁碟、網路)。 RM 會與 NM 合作來授與這些資源 (以「 *容器*」的形式授與)。 AM 則是負責追蹤 RM 指派給它之容器的進度。 視應用程式的本質而定，一個應用程式可能會需要許多容器。
+YARN 藉由將資源管理與應用程式排程/監視分離，支援多種程式設計模型 (Apache Hadoop MapReduce 是其中一個) 。 YARN 使用全域 *`ResourceManager`* (RM) 、每一背景工作節點 *[Nodemanagers* (NMs) ，以及每個應用程式 *>resourcemanager* (AMs) 。 每一應用程式 AM 會與 RM 交涉用來執行您應用程式的資源 (CPU、記憶體、磁碟、網路)。 RM 會與 NM 合作來授與這些資源 (以「 *容器*」的形式授與)。 AM 則是負責追蹤 RM 指派給它之容器的進度。 視應用程式的本質而定，一個應用程式可能會需要許多容器。
 
-每個應用程式都可能包含多個「應用程式嘗試」**。 如果應用程式失敗，系統可能會以新的嘗試來重試它。 每個嘗試都在容器中執行。 就意義而言，容器會針對 YARN 應用程式所完成的基本工作單位提供內容。 在容器內容中完成的所有工作，都是在指定容器的單一背景工作節點上完成。 如需進一步參考，請參閱[Hadoop：撰寫 YARN 應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 。
+每個應用程式都可能包含多個「應用程式嘗試」**。 如果應用程式失敗，系統可能會以新的嘗試來重試它。 每個嘗試都在容器中執行。 就某個方面來說，容器會提供 YARN 應用程式所完成之基本工作單位的內容。 在容器內容中完成的所有工作，都是在提供容器的單一背景工作節點上完成。 如需進一步參考，請參閱 [Hadoop：撰寫 YARN 應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 。
 
-若要調整您的叢集以支援更高的處理輸送量[Autoscale](hdinsight-autoscale-clusters.md) ，您可以使用[幾種不同的語言，手動自動調整或擴充您的](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)叢集。
+若要調整您的叢集以支援更高的處理輸送量，您可以使用[幾種不同的語言](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)，以手動方式使用[自動](hdinsight-autoscale-clusters.md)調整或調整叢集規模。
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
 
@@ -40,7 +40,7 @@ YARN Timeline Server 包含下列類型的資料：
 
 ## <a name="yarn-applications-and-logs"></a>YARN 應用程式和記錄
 
-應用程式記錄 (和關聯的容器記錄) 在對有問題的 Hadoop 應用程式進行偵錯上相當重要。 YARN 提供使用[記錄匯總](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)來收集、匯總及儲存應用程式記錄檔的絕佳架構。
+應用程式記錄 (和關聯的容器記錄) 在對有問題的 Hadoop 應用程式進行偵錯上相當重要。 YARN 提供了一個不錯的架構，可用於收集、匯總及儲存具有 [記錄匯總](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)的應用程式記錄。
 
 「記錄彙總」功能可使存取應用程式記錄更具確定性。 它能彙總背景工作節點上所有容器的記錄，並將它們依每個背景工作節點儲存成單一彙總記錄。 在應用程式完成之後，記錄檔會儲存在預設檔案系統上。 您的應用程式可能使用數百或數千個容器，但在單一背景工作節點上執行之所有容器的記錄一律彙總成單一檔案。 因此，您的應用程式所使用的每個背景工作節點只會有1個記錄。 根據預設，HDInsight 叢集 3.0 版和更新版本上會啟用記錄彙總。 彙總記錄位於叢集的預設儲存體。 下列路徑是記錄的 HDFS 路徑︰
 
@@ -50,26 +50,26 @@ YARN Timeline Server 包含下列類型的資料：
 
 在路徑中，`user` 是啟動應用程式的使用者名稱。 `applicationId` 是 YARN RM 指派給應用程式的唯一識別碼
 
-匯總記錄檔無法直接讀取，因為它們是以 TFile，以容器編制索引的二進位格式寫入。 使用 YARN `ResourceManager` 記錄或 CLI 工具，將這些記錄以純文字形式，針對您感關注的應用程式或容器來觀看。
+匯總記錄無法直接讀取，因為它們是以容器所編制索引的 >tfile、二進位格式寫入的。 使用 YARN `ResourceManager` 記錄或 CLI 工具，以純文字形式將這些記錄視為感興趣的應用程式或容器。
 
 ## <a name="yarn-logs-in-an-esp-cluster"></a>Yarn ESP 叢集中的記錄
 
-Ambari 中的自訂必須加入兩個設定 `mapred-site` 。
+您必須將兩個設定新增至 `mapred-site` Ambari 中的自訂。
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 從 Ambari UI 中，流覽至**MapReduce2**的 [自訂] [  >  **Configs**  >  **Advanced**  >  **Custom mapred.max.split.size-site**]。
+1. 從 Ambari UI 中，流覽至**MapReduce2**  >  **Configs**  >  **Advanced Advanced**  >  **Custom mapred-site**。
 
-1. 新增下列*其中一*組屬性：
+1. 新增下列 *其中一* 組屬性：
 
-    **集合1**
+    **設定1**
 
     ```
     mapred.acls.enabled=true
     mapreduce.job.acl-view-job=*
     ```
 
-    **Set 2**
+    **設定2**
 
     ```
     mapreduce.job.acl-view-job=<user1>,<user2>,<user3>
@@ -91,7 +91,7 @@ Ambari 中的自訂必須加入兩個設定 `mapred-site` 。
     yarn top
     ```
 
-    請記下 `APPLICATIONID` 要下載其記錄的資料行中的 [應用程式識別碼]。
+    請記下 `APPLICATIONID` 要下載其記錄的資料行中的應用程式識別碼。
 
     ```output
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -117,7 +117,7 @@ Ambari 中的自訂必須加入兩個設定 `mapred-site` 。
 
 ### <a name="other-sample-commands"></a>其他範例命令
 
-1. 使用下列命令，下載所有應用程式主機的 Yarn 容器記錄。 此步驟會建立以文字格式命名的記錄檔 `amlogs.txt` 。
+1. 使用下列命令下載所有應用程式主機的 Yarn 容器記錄。 此步驟會建立以文字格式命名的記錄檔 `amlogs.txt` 。
 
     ```bash
     yarn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -149,7 +149,7 @@ Ambari 中的自訂必須加入兩個設定 `mapred-site` 。
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN `ResourceManager` UI
 
-YARN UI 會在叢集前端 `ResourceManager` 節點上執行。 它是透過 Ambari web UI 來存取。 請使用下列步驟來檢視 YARN 記錄：
+YARN UI 是在叢集前端 `ResourceManager` 節點上執行。 它是透過 Ambari web UI 來存取。 請使用下列步驟來檢視 YARN 記錄：
 
 1. 在您的網頁瀏覽器中，瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`。 將 CLUSTERNAME 取代為 HDInsight 叢集的名稱。
 
@@ -157,13 +157,13 @@ YARN UI 會在叢集前端 `ResourceManager` 節點上執行。 它是透過 Amb
 
     ![已選取 Apache Ambari Yarn 服務](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. 從 [**快速連結**] 下拉式清單中，選取其中一個叢集前端節點，然後選取 [] **`ResourceManager Log`** 。
+3. 從 [ **快速連結** ] 下拉式清單中，選取其中一個叢集前端節點，然後選取 [] **`ResourceManager Log`** 。
 
     ![Apache Ambari Yarn 快速連結](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
-    您會看到一份 YARN 記錄的連結清單。
+    您會看到 YARN 記錄的連結清單。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [HDInsight 上的 Apache Hadoop 架構](hdinsight-hadoop-architecture.md)
 * [使用 Azure HDInsight 針對 Apache Hadoop YARN 問題進行疑難排解](hdinsight-troubleshoot-yarn.md)

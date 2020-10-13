@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: danlep
 ms.openlocfilehash: de070f14dbcda0808d52250e5b83caae14dd652b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583893"
 ---
 ### <a name="regions-and-resource-availability"></a>國家/地區與資源可用性
 
-| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| 區域 | OS | 最大 CPU | 最大記憶體 (GB)  | 儲存體 (GB) |
 | -------- | :---: | :---: | :-----------: | :---: |
 | 澳大利亞東部、加拿大中部、美國中部、美國東部、美國東部2、歐洲北部、美國中南部、東南亞、西歐、美國西部2 | Linux | 4 | 16 | 50 |
 | 日本東部 | Linux | 2 | 8 | 50 |

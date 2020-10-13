@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: cf4653ea7e49404af9e6d46796a7b00d9373c6da
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83996545"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Azure 監視器相依性虛擬機器擴充功能

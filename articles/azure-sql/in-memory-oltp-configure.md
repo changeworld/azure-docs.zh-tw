@@ -1,6 +1,6 @@
 ---
-title: 記憶體內部 OLTP 改進了 SQL txn 效能
-description: 採用記憶體內部 OLTP 來改善 Azure SQL Database 和 Azure SQL 受控執行個體中現有資料庫的交易效能。
+title: In-Memory OLTP 改進了 SQL txn 效能
+description: 採用 In-Memory OLTP 來改善 Azure SQL Database 和 Azure SQL 受控執行個體中現有資料庫的交易效能。
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
@@ -11,13 +11,13 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619741"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>使用記憶體內部 OLTP 來改善 Azure SQL Database 和 Azure SQL 受控執行個體中的應用程式效能
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>使用 In-Memory OLTP 來改善 Azure SQL Database 和 Azure SQL 受控執行個體中的應用程式效能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 在[進階和業務關鍵層](database/service-tiers-vcore.md)資料庫中，[記憶體內部 OLTP](in-memory-oltp-overview.md) 可用來改善交易處理、資料擷取和暫時性資料案例的效能，而無須增加定價層。
@@ -83,8 +83,8 @@ SSMS 包含您可以對具有作用中工作負載的資料庫執行的 [交易�
 3. 在此精靈中按一下 [移轉驗證]**** \(或 [下一步]**** 按鈕)，以查看資料表是否有任何在記憶體最佳化資料表中不受支援的功能。 如需詳細資訊，請參閱
 
    * *記憶體最佳化建議程式* 中的 [記憶體最佳化檢查清單](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor)。
-   * [記憶體內部 OLTP 不支援 Transact-sql 結構](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp)。
-   * [遷移至記憶體內部 OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server)。
+   * [In-Memory OLTP 不支援 Transact-sql 結構](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp)。
+   * [遷移至 In-Memory OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server)。
 4. 如果資料表沒有不受支援的功能，建議程式可以為您執行實際的結構描述和資料移轉。
 
 ### <a name="manual-t-sql"></a>手動 T-SQL
@@ -172,7 +172,7 @@ CREATE PROCEDURE schemaname.procedurename
 
 請考慮監視您在實際執行環境中實作 In-Memory 的效能影響：
 
-* [監視記憶體內部儲存體](in-memory-oltp-monitor-space.md)。
+* [監視 In-Memory 儲存體](in-memory-oltp-monitor-space.md)。
 * [使用動態管理檢視進行監視](database/monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>相關連結

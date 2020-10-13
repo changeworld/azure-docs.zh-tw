@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 22d86b96b7d9493ecc2f734be3f677a270a2739a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714290"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用適用于 IoT Central 應用程式 Node.js 裝置 SDK，將裝置與 x.509 憑證連線

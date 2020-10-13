@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628412"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 啟用的于 postgresql 超大規模伺服器群組放置
@@ -215,7 +215,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 使用與上述相同的命令;我們會看到每個實體節點的裝載：
 
-|其他 pod 名稱\* |使用方式|裝載 pod 的 Kubernetes 實體節點
+|其他 pod 名稱\* |使用量|裝載 pod 的 Kubernetes 實體節點
 |----|----|----
 |啟動載入器-jh48b|這項服務會處理連入要求以建立、編輯和刪除自訂資源，例如 SQL 受控實例、于 postgresql 超大規模伺服器群組和資料控制器|aks-agentpool-42715708-vmss000003
 |控制-gwmbs||aks-agentpool-42715708-vmss000002
@@ -357,7 +357,7 @@ kubectl describe pod postgres01-4 -n arc3
 
 Kubernetes 已在 Kubernetes 叢集最少載入的實體節點中排程新的于 postgresql pod。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 為了充分利用擴充性和調整 Azure Arc 啟用的伺服器群組的效能，您應該避免在 Kubernetes 叢集中的資源爭用：
 - 在 Azure Arc 啟用的于 postgresql 超大規模伺服器群組和裝載于相同 Kubernetes 叢集上的其他工作負載之間

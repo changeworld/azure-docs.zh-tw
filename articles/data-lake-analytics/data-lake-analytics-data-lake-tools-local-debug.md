@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 7176e2f64faa8e5b43574084a9cbd947dbd576d3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125631"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>在本機為 Azure Data Lake Analytics 程式碼偵錯
@@ -48,8 +48,8 @@ ms.locfileid: "87125631"
 4. 選取 **F5** 以透過於本機參考 C# **DLL** 檔案來對指令碼進行偵錯。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需更複雜查詢的範例，請參閱[使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。
-- 若要查看作業詳細資料，請參閱[使用作業瀏覽器和工作檢視進行 Azure Data Lake Analytics 作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
-- 若要使用頂點執行視圖，請參閱[在適用于 Visual Studio 的 Data Lake 工具中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+- 若要查看工作詳細資料，請參閱 [使用作業瀏覽器和工作檢視來 Azure Data Lake Analytics 工作](data-lake-analytics-data-lake-tools-view-jobs.md)。
+- 若要使用頂點執行視圖，請參閱 [Data Lake Tools for Visual Studio 中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。

@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
 ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627613"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題集 (FAQ)
@@ -192,7 +192,7 @@ ms.locfileid: "91627613"
 
 **我可以在 SQL 受控執行個體上建立計量警示嗎？**
 
-可以。 如需相關指示，請參閱 [建立 SQL 受控執行個體的警示](alerts-create.md)。
+是。 如需相關指示，請參閱 [建立 SQL 受控執行個體的警示](alerts-create.md)。
 
 **是否可以在受控實例中的資料庫上建立計量警示？**
 
@@ -254,11 +254,11 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以取得用於輸入管理流量的來源 IP 範圍嗎？**
 
-可以。 您可以藉由設定網路監看員 [流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析通過網路安全性群組的流量。
+是。 您可以藉由設定網路監看員 [流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析通過網路安全性群組的流量。
 
 **我可以設定 NSG 來控制對資料端點的存取 (埠 1433) 嗎？**
 
-可以。 布建受控執行個體之後，您可以設定 NSG 來控制埠1433的輸入存取。 建議您盡可能將 IP 範圍縮小。
+是。 布建受控執行個體之後，您可以設定 NSG 來控制埠1433的輸入存取。 建議您盡可能將 IP 範圍縮小。
 
 **是否可以設定 NVA 或內部部署防火牆，以根據 Fqdn 篩選輸出管理流量？**
 
@@ -316,7 +316,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **受控執行個體是否有公用端點？**
 
-可以。 受控執行個體具有僅用於服務管理的公用端點，但客戶也可將其啟用以進行資料存取。 如需詳細資訊，請參閱搭配 [使用 SQL 受控執行個體與公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至 [在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
+是。 受控執行個體具有僅用於服務管理的公用端點，但客戶也可將其啟用以進行資料存取。 如需詳細資訊，請參閱搭配 [使用 SQL 受控執行個體與公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至 [在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
 
 **受控執行個體如何控制對公用端點的存取？**
 
@@ -326,7 +326,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以使用公用端點來存取受控執行個體資料庫中的資料嗎？**
 
-可以。 客戶必須啟用[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM 的公用端點資料存取，並將 NSG 設定為鎖定資料埠的存取， (埠號碼 3342) 。 如需詳細資訊，請參閱 [在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md) ，並 [使用公用端點安全地使用 Azure sql 受控執行個體](public-endpoint-overview.md)。 
+是。 客戶必須啟用[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM 的公用端點資料存取，並將 NSG 設定為鎖定資料埠的存取， (埠號碼 3342) 。 如需詳細資訊，請參閱 [在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md) ，並 [使用公用端點安全地使用 Azure sql 受控執行個體](public-endpoint-overview.md)。 
 
 **我可以為 SQL 資料端點 () 指定自訂埠嗎？**
 
@@ -359,7 +359,7 @@ Express Route 線路對等互連是最好的做法。 支援全域虛擬網路�
 
 **我可以為 SQL 受控執行個體設定自訂 DNS 嗎？**
 
-可以。 請參閱 [如何設定 AZURE SQL 受控執行個體的自訂 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+是。 請參閱 [如何設定 AZURE SQL 受控執行個體的自訂 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 **我可以進行 DNS 重新整理嗎？**
 

@@ -4,10 +4,10 @@ description: Azure Resource Manager 所呈現的 Azure 事件中樞例外狀況�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: cec24696d0d49ba408860f6562c34dd14876c311
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334203"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中樞-Resource Manager 例外狀況
