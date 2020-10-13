@@ -4,10 +4,10 @@ description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630486"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見問題
@@ -109,7 +109,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate 設備/複寫設備是否可以連接到相同的 vCenter？
 
-可以。 您可以新增 Azure Migrate 設備 (用於評量和無代理程式 VMware 遷移) ，而複寫設備 (用於將 VMware Vm 以代理程式為基礎的遷移) 至相同的 vCenter server。 但請確定您未在相同的 VM 上設定這兩個設備，且目前不受支援。
+是。 您可以新增 Azure Migrate 設備 (用於評量和無代理程式 VMware 遷移) ，而複寫設備 (用於將 VMware Vm 以代理程式為基礎的遷移) 至相同的 vCenter server。 但請確定您未在相同的 VM 上設定這兩個設備，且目前不受支援。
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm 或伺服器？
 
@@ -145,7 +145,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-i-check-agent-health"></a>我可以檢查代理程式健康情況嗎？
 
-可以。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [ **代理程式健康** 情況] 頁面。 在那裡，您可以檢查 Azure 與設備上的探索和評量代理程式之間的線上狀態。
+是。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [ **代理程式健康** 情況] 頁面。 在那裡，您可以檢查 Azure 與設備上的探索和評量代理程式之間的線上狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

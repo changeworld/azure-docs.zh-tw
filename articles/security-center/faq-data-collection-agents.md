@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441468"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
@@ -51,9 +51,9 @@ ms.locfileid: "91441468"
 
 確定您的電腦正在執行代理程式支援的其中一個作業系統，如下列頁面所述：
 
-* [適用于 Windows 的 Log Analytics 代理程式支援的作業系統](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Windows 版 Log Analytics 代理程式支援的作業系統](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-* [適用于 Linux 的 Log Analytics 代理程式支援的作業系統](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Linux 版 Log Analytics 代理程式支援的作業系統](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 深入瞭解 [Log Analytics 代理程式所收集的資料](security-center-enable-data-collection.md)。
 

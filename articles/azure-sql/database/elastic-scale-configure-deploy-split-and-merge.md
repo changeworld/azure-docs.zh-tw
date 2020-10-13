@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443045"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署分割合併服務以在分區化資料庫之間移動資料
@@ -35,11 +35,11 @@ ms.locfileid: "91443045"
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在 **content\splitmerge\service** 子目錄中找出分割合併服務檔案，而分割合併 PowerShell 腳本 (和必要的用戶端 dll) 在 **content\splitmerge\powershell** 子目錄中。
+檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在 **content\splitmerge\service** 子目錄中找出分割合併服務檔案，以及在 **content\splitmerge\powershell** 子目錄中) Split-Merge PowerShell 腳本 (和必要的用戶端 dll。
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 建立將用作分割合併狀態資料庫的 Azure SQL Database 資料庫。 前往 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
+1. 建立將用作分割合併狀態資料庫的 Azure SQL Database 資料庫。 移至 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
 1. 確定您的伺服器允許 Azure 服務與其連線。 在入口網站的 [防火牆設定]**** 中，確定 [允許存取 Azure 服務]**** 設定設為 [開啟]****。 按一下儲存圖示。
 
@@ -108,7 +108,7 @@ ms.locfileid: "91443045"
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>將 PFX 檔案上傳至雲端服務
 
-1. 前往 [Azure 入口網站](https://portal.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [雲端服務]。
 3. 選取您先前為分割/合併服務建立的雲端服務。
 4. 按一下頂端功能表的 [憑證] **** 。

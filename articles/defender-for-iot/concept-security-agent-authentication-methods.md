@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934470"
 ---
 # <a name="security-agent-authentication-methods"></a>安全性代理程式驗證方法
@@ -48,7 +48,7 @@ AzureIoTSecurity 代理程式執行驗證的兩個方法：
 ## <a name="authentication-methods-known-limitations"></a>驗證方法的已知限制
 
 - **SecurityModule** authentication 模式僅支援對稱金鑰驗證。
-- **裝置**驗證模式不支援 CA 簽署的憑證。
+- **裝置**驗證模式不支援 CA-Signed 憑證。
 
 ## <a name="security-agent-installation-parameters"></a>安全性代理程式安裝參數
 

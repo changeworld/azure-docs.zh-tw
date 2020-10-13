@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
 ms.openlocfilehash: cf4924f8a9b97487e64e12ab80df92f2b2a81de2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934482"
 ---
 # <a name="security-module-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Azure RTO 安全性警示和建議的安全性模組 (預覽) 
@@ -95,7 +95,7 @@ ms.locfileid: "90934482"
 
 如需所有 Defender for IoT 服務相關警示和建議的完整清單，請參閱 IoT [安全性警示](concept-security-alerts.md)、iot 安全性 [建議](concept-recommendations.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [快速入門：適用于 Azure RTO 的安全性模組](quickstart-azure-rtos-security-module.md)
 - [設定和自訂 Azure RTO 的安全性模組](how-to-azure-rtos-security-module.md)

@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
 ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803461"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>認證 Azure Marketplace 的虛擬機器映射時常見的問題
@@ -46,7 +46,7 @@ ms.locfileid: "91803461"
 1. 選取您的 Linux VM。
 1. 移至 [ **診斷設定**]。
 1. 藉由更新 **儲存體帳戶**來啟用基底矩陣。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
    ![啟用來賓層級監視](./media/vm-certification-issues-solutions-1.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "91803461"
 
 布建問題可能包含下列失敗案例：
 
-|案例|錯誤|原因|解決方法|
+|狀況|錯誤|原因|解決方法|
 |---|---|---|---|
 |1| (VHD) 的虛擬硬碟無效|如果 VHD 頁尾中指定的 cookie 值不正確，VHD 將會視為無效。|重新建立映射並提交要求。|
 |2|不正確 blob 類型|VM 布建失敗，因為使用的區塊是 blob 類型，而不是頁面類型。|重新建立映射並提交要求。|
@@ -97,7 +97,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Linux 測試案例。 [描述] 中會陳述測試驗證。
 
-|案例|測試案例|描述|
+|狀況|測試案例|描述|
 |---|---|---|
 |1|Bash 歷程記錄|您應先清除 Bash 記錄檔，再建立 VM 映射。|
 |2|Linux 代理程式版本|應安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -114,7 +114,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出執行先前的測試案例時所發現的常見錯誤：
  
-|案例|測試案例|錯誤|解決方法|
+|狀況|測試案例|錯誤|解決方法|
 |---|---|---|---|
 |1|Linux 代理程式版本測試案例|Linux 代理程式的最低版本是2.2.41 或更新版本。 自2020年5月1日起，這項需求是強制的。|請更新 Linux 代理程式版本，其應為2.241 或更新版本。 如需詳細資訊，您可以造訪 [Linux 代理程式版本更新頁面](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。|
 |2|Bash 歷程記錄測試案例|如果您提交的映射中 bash 歷程記錄的大小超過 1 kb (KB) ，您將會看到錯誤。 大小限制為 1 KB，以確保不會在 bash 記錄檔中捕捉任何可能的機密資訊。|若要解決此問題，請將 VHD 掛接到任何其他工作中的 VM，並進行您想要的任何變更 (例如，刪除 *bash* 歷程記錄檔) ，將大小減少為小於或等於 1 KB。|
@@ -125,7 +125,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Windows 測試案例，以及測試驗證的描述：
 
-|案例 |測試案例|描述|
+|狀況 |測試案例|描述|
 |---|---|---|---|
 |1|OS 架構|Azure 僅支援64位作業系統。|
 |2|使用者帳戶相依性|應用程式執行不應依存于系統管理員帳戶。|
@@ -264,7 +264,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
     
 請參閱下表，以瞭解當您使用共用存取簽章 (SAS) URL 下載 VM 映射時所發生的任何問題。
 
-|案例|錯誤|原因|解決方法|
+|狀況|錯誤|原因|解決方法|
 |---|---|---|---|
 |1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。|| 
 |2|使用中的 Blob|VHD 會由另一個內部進程使用。|當您使用 SAS URL 下載 VHD 時，該 VHD 應該會處於使用中狀態。|
@@ -338,7 +338,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 步驟 4： 將 VM 一般化，取得映射 VHD 並停止 VM。
 
-步驟 5。     重新提交一般化映射。
+步驟 5。     Re-Submit 一般化映射。
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a> (自訂範本) 在選擇性測試的 VM 映射上要求例外狀況
 

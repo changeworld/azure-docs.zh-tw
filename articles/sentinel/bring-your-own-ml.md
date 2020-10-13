@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342689"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>將您自己的 Machine Learning (ML) 帶入 Azure Sentinel
@@ -159,13 +159,13 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 若要查看您的評分結果以及相關記錄的詳細資料，請返回您的 Azure Sentinel 入口網站。 在 **記錄** > 自訂記錄檔中，您會在 **AnomalousResourceAccessResult_CL** 資料表 (或您自己的自訂資料表名稱) 中看到結果。 您可以使用這些結果來增強您的調查和搜尋體驗。
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="異常資源存取記錄":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="機器學習架構":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>使用 ML 結果建立自訂分析規則
 
 一旦您確認 ML 結果是在自訂記錄資料表中，且您對分數的精確度感到滿意，就可以根據結果建立偵測。 從 Azure Sentinel 入口網站移至 [ **分析** ]，並 [建立新的偵測規則](tutorial-detect-threats-custom.md)。 以下範例顯示用來建立偵測的查詢。
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="建立 B Y O M L 偵測的自訂分析規則":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="機器學習架構":::
 
 ### <a name="view-and-respond-to-incidents"></a>查看和回應事件
 當您根據 ML 結果設定分析規則之後，如果您在查詢中設定的閾值超過閾值，系統就會產生事件，並在 Azure Sentinel 的 [ **事件** ] 頁面上呈現。 

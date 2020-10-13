@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565832"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智慧型偵測 - 失敗異常
@@ -73,11 +73,11 @@ ms.locfileid: "89565832"
 
 開啟 [警示] 頁面。 「失敗異常」警示規則已包含在任何您已手動設定的警示中，您可以查看它目前是否處於警示狀態。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="在 [Application Insights 資源] 頁面上，依序按一下 [警示] 磚和 [管理警示規則]。" lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="顯示失敗的叢集分析範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 按一下警示來進行設定。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="規則設定畫面。" lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="顯示失敗的叢集分析範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 請注意，您可以停用或刪除失敗異常警示規則，但無法在相同的 Application Insights 資源上建立另一個警示規則。
 
@@ -299,7 +299,7 @@ ms.locfileid: "89565832"
 
 按一下 [診斷失敗] 可協助您取得更多詳細資料並解決問題。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="診斷搜尋。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="顯示失敗的叢集分析範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 您可以根據要求的百分比及受影響的使用者數目來決定此問題的緊急程度。 在上述範例中，78.5% 的失敗率與正常比率 2.2% 相比，表示有問題。 從另一方面來看，只有 46 位使用者受到影響。 如果是您的應用程式，您可以評估嚴重程度。
 
@@ -307,13 +307,13 @@ ms.locfileid: "89565832"
 
 在此範例中，由於達到要求限制，SQL Database 發生例外狀況。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="失敗的要求詳細資料。" lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="顯示失敗的叢集分析範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>檢閱最近的警示
 
 按一下 [Application Insights 資源] 頁面中的 [警示]，以取得最新引發的警示：
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="警示摘要。" lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="顯示失敗的叢集分析範例智慧型偵測警示。" lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>不同之處在於...
 失敗異常的「智慧型偵測」可以與其他相似但不同的 Application Insights 功能互補。

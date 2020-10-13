@@ -5,22 +5,22 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448077"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>設定實體伺服器的設備
 
 本文說明如果您要使用 Azure Migrate：伺服器評估工具來評估實體伺服器，如何設定 Azure Migrate 設備。
 
-Azure Migrate 設備是輕量設備，可供 Azure Migrate 伺服器評估用來執行下列作業：
+Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用來執行下列動作：
 
 - 探索內部部署伺服器。
-- 將探索到的伺服器的中繼資料和效能資料傳送到 Azure Migrate 伺服器評量。
+- 將探索到的伺服器的中繼資料和效能資料傳送至 Azure Migrate 伺服器評量。
 
-[深入瞭解](migrate-appliance.md) Azure Migrate 設備。
+[深入了解](migrate-appliance.md) Azure Migrate 設備的相關資訊。
 
 
 ## <a name="appliance-deployment-steps"></a>設備部署步驟
@@ -30,7 +30,7 @@ Azure Migrate 設備是輕量設備，可供 Azure Migrate 伺服器評估用來
 - 從 Azure 入口網站下載含有 Azure Migrate 安裝程式指令碼的 ZIP 壓縮檔案。
 - 從 ZIP 壓縮檔案解壓縮內容。 以系統管理權限啟動 PowerShell 主控台。
 - 執行 PowerShell 指令碼以啟動設備 Web 應用程式。
-- 第一次設定設備，並使用 Azure Migrate 專案金鑰向 Azure Migrate 專案註冊。
+- 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
 
@@ -152,7 +152,7 @@ Azure Migrate 設備是輕量設備，可供 Azure Migrate 伺服器評估用來
 
 ## <a name="verify-servers-in-the-portal"></a>在入口網站中驗證伺服器
 
-探索完成之後，您可以確認伺服器出現在入口網站中。
+探索完成後，您可以確認伺服器是否出現在入口網站中。
 
 1. 開啟 Azure Migrate 儀表板。
 2. 在 Azure Migrate - 伺服器 >  **Azure Migrate：伺服器評量** 頁面中，按一下圖示以顯示 探索到的伺服器 計數。

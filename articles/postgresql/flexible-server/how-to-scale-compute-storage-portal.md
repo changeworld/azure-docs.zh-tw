@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934374"
 ---
 # <a name="scale-operations-in-flexible-server"></a>彈性伺服器的調整規模作業
@@ -43,20 +43,20 @@ ms.locfileid: "90934374"
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="計算 + 儲存體視圖":::
 
 4.  您可以選擇高載、一般用途和記憶體優化層之間的計算類別。
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="列出計算層":::
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="計算 + 儲存體視圖":::
 
 
 5.  如果您適合使用預設的虛擬核心和記憶體大小，可以略過下一個步驟。
 
 6.  如果您想要變更虛擬核心數目，您可以按一下 [ **計算大小** ] 下拉式清單，然後從清單中按一下所需的虛擬核心/記憶體數目。
     
-    - 高載計算層： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="高載計算":::
+    - 高載計算層： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="計算 + 儲存體視圖":::
 
-    - 一般目的計算層： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="一般目的計算":::
+    - 一般目的計算層： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="計算 + 儲存體視圖":::
 
-    - 記憶體優化計算層： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="記憶體優化計算":::
+    - 記憶體優化計算層： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="計算 + 儲存體視圖":::
 
-7.  按一下 [檔案]  。 
+7.  按一下 **[儲存]** 。 
 8.  您將會看見確認訊息。 如果您想要繼續，請按一下 **[確定]** 。 
 9.  正在進行調整作業的通知。
 
@@ -70,18 +70,18 @@ ms.locfileid: "90934374"
 
 3.  隨即顯示具有目前設定的頁面。
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="按一下 [計算 + 儲存體]":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="計算 + 儲存體視圖":::
 4.  具有滑動軸的 **GiB 欄位儲存大小** 會顯示為目前的大小。
 
 5.  將橫條滑到您想要的大小。 顯示對應的 IOPS 數目。 IOPS 取決於計算層和大小。 此外也會顯示成本資訊。 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="儲存體擴大":::
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="計算 + 儲存體視圖":::
 
 6.  如果您適合儲存體大小，請按一下 [ **儲存**]。 
 7.  您將會看見確認訊息。 如果您想要繼續，請按一下 **[確定]** 。 
 8.  正在進行調整作業的通知。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
 -   深入瞭解 [高可用性](./concepts-high-availability.md)

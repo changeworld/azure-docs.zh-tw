@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 700cc461563f145f58e02f7ed9a09b2899a4eb5b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342154"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>建立和共用 Machine Learning Studio (傳統) 工作區
@@ -44,7 +44,7 @@ ms.locfileid: "91342154"
 
      ![建立新的 Studio (傳統) 工作區](./media/create-workspace/create-new-workspace.png)
 
-5. 按一下頁面底部的 [新增] 。
+5. 按一下 [建立]。
 
    機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶未包含其中一個區域，您可能會看到錯誤訊息：「您在允許的區域中沒有任何訂用帳戶」。  為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費]**** 做為問題類型，並遵照提示來提交您的要求。
 

@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
 ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803512"
 ---
 # <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>為 Azure Marketplace 的虛擬機器供應專案建立技術資產
@@ -123,7 +123,7 @@ Azure 會開始佈建所指定的虛擬機器。 您可選取左側的 [虛擬�
 2. 選取 [建立資源]。
 3. 從左邊的 Azure Marketplace 選取 [ **查看全部** ]。
 4. 選取支援 Gen2 的映射。
-5. 選取 [建立]。
+5. 選取 [建立]****。
 6. 在 [進階] 索引標籤的 [VM 世代] 區段底下，選取 [Gen 2] 選項。
 7. 在 [基本] 索引標籤的 [執行個體詳細資料] 底下，移至 [大小] 並開啟 [選取 VM 大小] 刀鋒視窗。
 8. 選取 [支援的 Gen 2 VM](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) 和大小的建議大小。

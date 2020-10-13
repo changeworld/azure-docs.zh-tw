@@ -10,10 +10,10 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: 928737608ae3e3e44b352724713a284ff9a45da9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934514"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>向 Azure 通訊服務驗證
@@ -187,10 +187,10 @@ CommunicationUserCredential credential = new CommunicationUserCredential(tokenRe
 
 此 `refreshProactively` 選項可讓您決定要如何管理權杖生命週期。 根據預設，當令牌過時時，回呼會封鎖 API 要求，並嘗試重新整理它。 當 `refreshProactively` 設為時，會 `true` 排程回呼，並在權杖到期前以非同步方式執行。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [建立使用者存取權杖](../quickstarts/access-tokens.md)
 
 如需詳細資訊，請參閱下列文章：
-- [瞭解用戶端和伺服器架構](../concepts/client-and-server-architecture.md)
+- [了解用戶端與根伺服器架構](../concepts/client-and-server-architecture.md)

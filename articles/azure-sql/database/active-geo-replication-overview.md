@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
 ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445070"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
@@ -132,7 +132,7 @@ ms.locfileid: "91445070"
 > 主要複本上的交易記錄速率可能會因為與次要複本上較低計算大小無關的原因而受到節流。 即使次要資料庫具有與主資料庫相同或更高的計算大小，也可能會發生這種節流。 如需詳細資料，包括不同類型記錄速率節流的等候類型，請參閱 [交易記錄速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
 
 > [!NOTE]
-> Azure SQL Database 可設定的備份儲存體冗余目前僅適用于東南亞 Azure 區域中的公開預覽。 在預覽中，如果源資料庫是以本機冗余或區域冗余備份冗余建立，則不支援在不同的 Azure 區域中建立次要資料庫。 
+> Azure SQL Database 可設定的備份儲存體備援目前僅適用於東南亞 Azure 區域的公開預覽。 在預覽中，如果源資料庫是以本機冗余或區域冗余備份冗余建立，則不支援在不同的 Azure 區域中建立次要資料庫。 
 
 如需 SQL Database 計算大小的詳細資訊，請參閱 [SQL Database 服務層是什麼](purchasing-models.md)。
 
@@ -251,7 +251,7 @@ ms.locfileid: "91445070"
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此，它們也不會套用至 SQL 受控執行個體的實例，因為它們只支援容錯移轉群組。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
@@ -266,7 +266,7 @@ ms.locfileid: "91445070"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 AzureRm 模組中命令的引數本質上相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 | Cmdlet | 描述 |
 | --- | --- |
@@ -299,7 +299,7 @@ ms.locfileid: "91445070"
   - [使用作用中異地複寫設定單一資料庫並進行容錯移轉](scripts/setup-geodr-and-failover-database-powershell.md)
   - [使用作用中異地複寫設定集區資料庫並進行容錯移轉](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
 - SQL Database 也支援自動容錯移轉群組。 如需詳細資訊，請參閱使用[自動容錯移轉群組](auto-failover-group-overview.md)。
-- 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- 如需商務持續性的總覽和案例，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - 若要瞭解 Azure SQL Database 自動備份的相關資訊，請參閱 [SQL Database 自動備份](automated-backups-overview.md)。
 - 若要瞭解如何使用自動備份進行復原，請參閱 [從服務起始的備份還原資料庫](recovery-using-backups.md)。
 - 若要深入了解新的主要伺服器和資料庫的驗證需求，請參閱 [災害復原後的 SQL Database 安全性](active-geo-replication-security-configure.md)。

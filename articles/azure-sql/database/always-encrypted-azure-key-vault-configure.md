@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444832"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 設定 Always Encrypted 
@@ -62,7 +62,7 @@ Always Encrypted 是一種資料加密技術，可協助保護伺服器上的靜
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> Azure SQL Database 仍支援 PowerShell Azure Resource Manager (RM) 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組將持續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+> Azure SQL Database 仍支援 PowerShell Azure Resource Manager (RM) 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 ```powershell
 $subscriptionName = '<subscriptionName>'
@@ -159,7 +159,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 請加密每個病患的 **SSN** 和 **BirthDate** 資訊。 SSN 資料行將使用決定性加密，這可支援等式查閱、聯結及群組依據。 BirthDate 資料行將使用不支援操作的隨機加密。
 
-將 SSN 資料行的 [加密類型]**** 設定為 [決定性]****，並將 BirthDate 資料行設定為 [隨機化]****。 按 [下一步]  。
+將 SSN 資料行的 [加密類型]**** 設定為 [決定性]****，並將 BirthDate 資料行設定為 [隨機化]****。 按一下 [下一步]。
 
 ![加密資料行](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,7 +171,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 1. 選取 [Azure 金鑰保存庫] ****。
 2. 從下拉式清單中選取想要的金鑰保存庫。
-3. 按 [下一步]  。
+3. 按一下 [下一步]。
 
 ![主要金鑰組態](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 

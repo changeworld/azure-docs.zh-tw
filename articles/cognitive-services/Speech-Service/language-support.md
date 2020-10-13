@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
 ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629823"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
@@ -140,66 +140,66 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 |--|--|--|--|--|
 | `ar-EG` | 阿拉伯文 (埃及)  | Female | `ar-EG-SalmaNeural` | 一般 |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)  | Female | `ar-SA-ZariyahNeural` | 一般 |
-| `bg-BG`<sup>新增</sup> | 保加利亞文 (Bulgary)  | Female | `bg-BG-KalinaNeural` | 一般 |
+| `bg-BG` <sup>新增</sup> | 保加利亞文 (Bulgary)  | Female | `bg-BG-KalinaNeural` | 一般 |
 | `ca-ES` | 加泰羅尼亞文 (西班牙)  | Female | `ca-ES-AlbaNeural` | 一般 |
-| `cs-CZ`<sup>新增</sup> | 捷克文 (捷克文)   | Female | `cs-CZ-VlastaNeural` | 一般 |
+| `cs-CZ` <sup>新增</sup> | 捷克文 (捷克文)   | Female | `cs-CZ-VlastaNeural` | 一般 |
 | `da-DK` | 丹麥文 (丹麥)  | Female | `da-DK-ChristelNeural` | 一般 |
-| `de-AT`<sup>新增</sup> | 德文 (奧地利) | Female | `de-AT-IngridNeural` | 一般 |
-| `de-CH`<sup>新增</sup> | 德文 (瑞士) | Female | `de-CH-LeniNeural` | 一般 |
+| `de-AT` <sup>新增</sup> | 德文 (奧地利) | Female | `de-AT-IngridNeural` | 一般 |
+| `de-CH` <sup>新增</sup> | 德文 (瑞士) | Female | `de-CH-LeniNeural` | 一般 |
 | `de-DE` | 德文 (德國)  | Female | `de-DE-KatjaNeural` | 一般 |
-| `de-DE`<sup>新增</sup> | 德文 (德國) | Male | `de-DE-ConradNeural` | 一般 |
-| `el-GR`<sup>新增</sup> | 希臘文 (希臘) | Female | `el-GR-AthinaNeural` | 一般 |
+| `de-DE` <sup>新增</sup> | 德文 (德國) | Male | `de-DE-ConradNeural` | 一般 |
+| `el-GR` <sup>新增</sup> | 希臘文 (希臘) | Female | `el-GR-AthinaNeural` | 一般 |
 | `en-AU` | 英文 (澳大利亞)  | Female | `en-AU-NatashaNeural` | 一般 |
-| `en-AU`<sup>新增</sup> | 澳大利亞 (澳大利亞)  | Male | `en-AU-WilliamNeural` | 一般 |
+| `en-AU` <sup>新增</sup> | 澳大利亞 (澳大利亞)  | Male | `en-AU-WilliamNeural` | 一般 |
 | `en-CA` | 英文 (加拿大)  | Female | `en-CA-ClaraNeural` | 一般 |
 | `en-GB` | 英文 (英國)  | Female | `en-GB-LibbyNeural` | 一般 |
 | `en-GB` | 英文 (英國)  | Female | `en-GB-MiaNeural` | 一般 |
-| `en-GB`<sup>新增</sup> | 英文 (英國) | Male | `En-GB-RyanNeural` | 一般 |
-| `en-IE`<sup>新增</sup> | 愛爾蘭英文 (愛爾蘭)  | Female | `en-IE-EmilyNeural` | 一般 |
+| `en-GB` <sup>新增</sup> | 英文 (英國) | Male | `En-GB-RyanNeural` | 一般 |
+| `en-IE` <sup>新增</sup> | 愛爾蘭英文 (愛爾蘭)  | Female | `en-IE-EmilyNeural` | 一般 |
 | `en-IN` | 英文 (印度)  | Female | `en-IN-NeerjaNeural` | 一般 |
 | `en-US` | 美國英語 ()  | Female | `en-US-AriaNeural` | 一般，提供多種語音樣式 |
 | `en-US` | 美國英語 ()  | Male | `en-US-GuyNeural` | 一般 |
-| `en-US`<sup>新增</sup> | 美國英語 ()  | Female | `en-US-JennyNeural` | 一般，提供多種語音樣式 |
+| `en-US` <sup>新增</sup> | 美國英語 ()  | Female | `en-US-JennyNeural` | 一般，提供多種語音樣式 |
 | `es-ES` | 西班牙文 (西班牙)  | Female | `es-ES-ElviraNeural` | 一般 |
-| `es-ES`<sup>新增</sup> | 西班牙文 (西班牙)  | Male | `es-ES-AlvaroNeural` | 一般 |
+| `es-ES` <sup>新增</sup> | 西班牙文 (西班牙)  | Male | `es-ES-AlvaroNeural` | 一般 |
 | `es-MX` | 西班牙文 (墨西哥)  | Female | `es-MX-DaliaNeural` | 一般 |
-| `es-MX`<sup>新增</sup> | 西班牙文 (墨西哥) | Male | `es-MX-JorgeNeural` | 一般 |
+| `es-MX` <sup>新增</sup> | 西班牙文 (墨西哥) | Male | `es-MX-JorgeNeural` | 一般 |
 | `fi-FI` | 芬蘭文 (芬蘭)  | Female | `fi-FI-NooraNeural` | 一般 |
 | `fr-CA` | 法文 (加拿大)  | Female | `fr-CA-SylvieNeural` | 一般 |
-| `fr-CA`<sup>新增</sup> | 法文 (加拿大) | Male | `fr-CA-JeanNeural` | 一般 |
-| `fr-CH`<sup>新增</sup> | 法文 (瑞士) | Female | `fr-CH-ArianeNeural` | 一般 |
+| `fr-CA` <sup>新增</sup> | 法文 (加拿大) | Male | `fr-CA-JeanNeural` | 一般 |
+| `fr-CH` <sup>新增</sup> | 法文 (瑞士) | Female | `fr-CH-ArianeNeural` | 一般 |
 | `fr-FR` | 法文 (法國)  | Female | `fr-FR-DeniseNeural` | 一般 |
-| `fr-FR`<sup>新增</sup> | 法文 (法國) | Male | `fr-FR-HenriNeural` | 一般 |
-| `he-IL`<sup>新增</sup> | 希伯來文 (Isareal)  | Female | `he-IL-HilaNeural` | 一般 |
+| `fr-FR` <sup>新增</sup> | 法文 (法國) | Male | `fr-FR-HenriNeural` | 一般 |
+| `he-IL` <sup>新增</sup> | 希伯來文 (Isareal)  | Female | `he-IL-HilaNeural` | 一般 |
 | `hi-IN` | 印度文 (印度)  | Female | `hi-IN-SwaraNeural` | 一般 |
-| `hr-HR`<sup>新增</sup> | 克羅埃西亞文 (克羅埃西亞) | Female | `hr-HR-GabrijelaNeural` | 一般 |
-| `hu-HU`<sup>新增</sup> | 匈牙利文 (匈牙利) | Female | `hu-HU-NoemiNeural` | 一般 |
-| `id-ID`<sup>新增</sup> | Bahasa 印尼 (印尼)  | Male | `id-ID-ArdiNeural` | 一般 |
+| `hr-HR` <sup>新增</sup> | 克羅埃西亞文 (克羅埃西亞) | Female | `hr-HR-GabrijelaNeural` | 一般 |
+| `hu-HU` <sup>新增</sup> | 匈牙利文 (匈牙利) | Female | `hu-HU-NoemiNeural` | 一般 |
+| `id-ID` <sup>新增</sup> | Bahasa 印尼 (印尼)  | Male | `id-ID-ArdiNeural` | 一般 |
 | `it-IT` | 義大利文 (義大利)  | Female | `it-IT-ElsaNeural` | 一般 |
-| `it-IT`<sup>新增</sup> | 義大利文 (義大利) | Female | `it-IT-IsabellaNeural` | 一般 |
-| `it-IT`<sup>新增</sup> | 義大利文 (義大利) | Male | `it-IT-DiegoNeural` | 一般 |
+| `it-IT` <sup>新增</sup> | 義大利文 (義大利) | Female | `it-IT-IsabellaNeural` | 一般 |
+| `it-IT` <sup>新增</sup> | 義大利文 (義大利) | Male | `it-IT-DiegoNeural` | 一般 |
 | `ja-JP` | 日本 (日本)  | Female | `ja-JP-NanamiNeural` | 一般 |
-| `ja-JP`<sup>新增</sup> | 日文 (日本) | Male | `ja-JP-KeitaNeural` | 一般 |
+| `ja-JP` <sup>新增</sup> | 日文 (日本) | Male | `ja-JP-KeitaNeural` | 一般 |
 | `ko-KR` | 韓文 (韓國)  | Female | `ko-KR-SunHiNeural` | 一般 |
-| `ko-KR`<sup>新增</sup> | 韓文 (韓國) | Male | `ko-KR-InJoonNeural` | 一般 |
-| `ms-MY`<sup>新增</sup> | 馬來文 (馬來西亞) | Female | `ms-MY-YasminNeural` | 一般 |
+| `ko-KR` <sup>新增</sup> | 韓文 (韓國) | Male | `ko-KR-InJoonNeural` | 一般 |
+| `ms-MY` <sup>新增</sup> | 馬來文 (馬來西亞) | Female | `ms-MY-YasminNeural` | 一般 |
 | `nb-NO` | 挪威文、博克 (挪威)  | Female | `nb-NO-IselinNeural` | 一般 |
 | `nl-NL` | 荷蘭文 (荷蘭)  | Female | `nl-NL-ColetteNeural` | 一般 |
 | `pl-PL` | 波蘭文 (波蘭)  | Female | `pl-PL-ZofiaNeural` | 一般 |
 | `pt-BR` | 葡萄牙文 (巴西)  | Female | `pt-BR-FranciscaNeural` | 一般，提供多種語音樣式 |
-| `pt-BR`<sup>新增</sup> | 巴西葡萄牙文 (巴西)  | Male | `pt-BR-AntonioNeural` | 一般 |
+| `pt-BR` <sup>新增</sup> | 巴西葡萄牙文 (巴西)  | Male | `pt-BR-AntonioNeural` | 一般 |
 | `pt-PT` | 葡萄牙文 (葡萄牙)  | Female | `pt-PT-FernandaNeural` | 一般 |
-| `ro-RO`<sup>新增</sup> | 羅馬尼亞文 (羅馬尼亞) | Female | `ro-RO-AlinaNeural` | 一般 |
+| `ro-RO` <sup>新增</sup> | 羅馬尼亞文 (羅馬尼亞) | Female | `ro-RO-AlinaNeural` | 一般 |
 | `ru-RU` | 俄文 (俄羅斯)  | Female | `ru-RU-DariyaNeural` | 一般 |
-| `sk-SK`<sup>新增</sup> | 斯洛伐克文 (斯洛伐克) | Female | `sk-SK-ViktoriaNeural` | 一般 |
-| `sl-SI`<sup>新增</sup> | 斯洛維尼亞文 (斯洛維尼亞) | Female | `sl-SI-PetraNeural` | 一般 |
+| `sk-SK` <sup>新增</sup> | 斯洛伐克文 (斯洛伐克) | Female | `sk-SK-ViktoriaNeural` | 一般 |
+| `sl-SI` <sup>新增</sup> | 斯洛維尼亞文 (斯洛維尼亞) | Female | `sl-SI-PetraNeural` | 一般 |
 | `sv-SE` | 瑞典文 (瑞典)  | Female | `sv-SE-HilleviNeural` | 一般 |
-| `ta-IN`<sup>新增</sup> | 坦米爾文 (印度) | Female | `ta-IN-PallaviNeural` | 一般 |
-| `te-IN`<sup>新增</sup> | 特拉古文 (印度) | Female | `te-IN-ShrutiNeural` | 一般 |
+| `ta-IN` <sup>新增</sup> | 坦米爾文 (印度) | Female | `ta-IN-PallaviNeural` | 一般 |
+| `te-IN` <sup>新增</sup> | 特拉古文 (印度) | Female | `te-IN-ShrutiNeural` | 一般 |
 | `th-TH` | 泰國 (泰國)  | Female | `th-TH-AcharaNeural` | 一般 |
-| `th-TH`<sup>新增</sup> | 泰文 (泰國) | Female | `th-TH-PremwadeeNeural` | 一般 |
+| `th-TH` <sup>新增</sup> | 泰文 (泰國) | Female | `th-TH-PremwadeeNeural` | 一般 |
 | `tr-TR` | 土耳其文 (土耳其)  | Female | `tr-TR-EmelNeural` | 一般 |
-| `vi-VN`<sup>新增</sup> | 越南文 (越南) | Female | `vi-VN-HoaiMyNeural` | 一般 |
+| `vi-VN` <sup>新增</sup> | 越南文 (越南) | Female | `vi-VN-HoaiMyNeural` | 一般 |
 | `zh-CN` | 中文 (簡體中文、中國)  | Female | `zh-CN-XiaoxiaoNeural` | 一般，提供多種語音樣式 |
 | `zh-CN` | 中文 (簡體中文、中國)  | Female | `zh-CN-XiaoyouNeural` | 兒童語音，針對故事敘述進行最佳化 |
 | `zh-CN` | 中文 (簡體中文、中國)  | Male | `zh-CN-YunyangNeural` | 針對新聞閱讀優化，可使用多個聲音樣式 |

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 的差異
+title: 與 Azure Data Factory 的差異
 description: 瞭解 Azure Synapse Analytics 的資料整合功能與 Azure Data Factory 的不同之處
 services: synapse-analytics
 author: djpmsft
@@ -9,10 +9,10 @@ ms.date: 09/23/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341890"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 與 Azure Data Factory 中的資料整合

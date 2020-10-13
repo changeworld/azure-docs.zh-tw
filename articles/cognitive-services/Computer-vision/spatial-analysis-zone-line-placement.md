@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7e2a64c14d7d7a1d20b64b746969aca1e60ab218
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934439"
 ---
 # <a name="zone-and-line-placement-guide"></a>區域和行放置指南
@@ -79,7 +79,7 @@ ms.locfileid: "90934439"
 
 ![行太高，且未涵蓋整個大門](./media/spatial-analysis/zone-line-too-high.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [設定空間分析作業](./spatial-analysis-operations.md)

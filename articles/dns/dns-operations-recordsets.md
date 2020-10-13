@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
 ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84701727"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄和記錄集
@@ -44,7 +44,7 @@ ms.locfileid: "84701727"
 
 ## <a name="create-a-new-dns-record"></a>建立新的 DNS 區域
 
-如果新記錄的名稱和類型與現有記錄相同，您需要[將它加入至現有的記錄集](#add-a-record-to-an-existing-record-set)。 否則，如果新記錄的名稱和類型與現有記錄不同，則必須建立新的記錄集。 
+如果新記錄的名稱和類型與現有記錄相同，您需要 [將它加入至現有的記錄集](#add-a-record-to-an-existing-record-set)。 否則，如果新記錄的名稱和類型與現有記錄不同，則必須建立新的記錄集。 
 
 ### <a name="create-a-records-in-a-new-record-set"></a>在新的記錄集中建立 'A' 記錄
 
@@ -390,7 +390,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 如需 `-Confirm` 和 `$ConfirmPreference` 的詳細資訊，請參閱[有關喜好設定變數](/powershell/module/microsoft.powershell.core/about/about_preference_variables)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解[ Azure DNS 中的區域和記錄](dns-zones-records.md)。
 <br>

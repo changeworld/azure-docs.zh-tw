@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171045"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向 PostgreSQL 進行驗證
@@ -70,7 +70,7 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 
 針對 Active Directory 進行驗證後就可以擷取權杖。 此權杖是您用來登入的密碼。
 
-請注意，目前只有 Azure AD 的使用者角色才支援管理作業，例如新增使用者。
+請注意，目前只有 Azure AD 使用者角色才支援管理作業，例如新增新的使用者。
 
 > [!NOTE]
 > 如需如何使用 Active Directory 權杖來連線的詳細資訊，請參閱[使用「適用於 PostgreSQL 的 Azure 資料庫」的 Azure AD 來進行設定和登入](howto-configure-sign-in-aad-authentication.md)。

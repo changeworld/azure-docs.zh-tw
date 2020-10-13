@@ -12,27 +12,27 @@ ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
 ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87808502"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 屬性參考
 
-在本文中，您將會找到下列資訊：
+在本文中，您將找到下列資訊：
 
 - [SuccessFactors 實體和屬性](#supported-successfactors-entities-and-attributes)
 - [預設屬性對應](#default-attribute-mapping)
 
 ## <a name="supported-successfactors-entities-and-attributes"></a>支援的 SuccessFactors 實體和屬性
 
-下表會在下列兩個布建應用程式中，捕獲預設包含的 SuccessFactors 屬性清單：
+下表會根據預設，在下列兩個布建應用程式中，捕獲包含的 SuccessFactors 屬性清單：
 
-- [SuccessFactors 以 Active Directory 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-- [SuccessFactors 以 Azure AD 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+- [SuccessFactors 至 Active Directory 使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [SuccessFactors 至 Azure AD 使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
-請參閱[SAP SuccessFactors 整合參考](./sap-successfactors-integration-reference.md#retrieving-additional-attributes)以擴充架構以取得其他屬性。 
+請參閱 [SAP SuccessFactors 整合參考](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) ，以擴充其他屬性的架構。 
 
 | \# | SuccessFactors 實體                  | SuccessFactors 屬性     | 作業類型 |
 |----|----------------------------------------|------------------------------|----------------|
@@ -48,8 +48,8 @@ ms.locfileid: "87808502"
 | 10 | User                                   | addressLine1                 | 讀取           |
 | 11 | User                                   | addressLine2                 | 讀取           |
 | 12 | User                                   | addressLIne3                 | 讀取           |
-| 13 | User                                   | businessPhone                | 讀取           |
-| 14 | User                                   | 行動電話                    | 讀取           |
+| 13 | User                                   | >businessphone                | 讀取           |
+| 14 | User                                   | 手機                    | 讀取           |
 | 15 | User                                   | city                         | 讀取           |
 | 16 | User                                   | country                      | 讀取           |
 | 17 | User                                   | custom01                     | 讀取           |
@@ -73,7 +73,7 @@ ms.locfileid: "87808502"
 | 35 | User                                   | state                        | 讀取           |
 | 36 | User                                   | timeZone                     | 讀取           |
 | 37 | User                                   | username                     | 讀取           |
-| 38 | User                                   | zipCode                      | 讀取           |
+| 38 | User                                   | 郵遞區號                      | 讀取           |
 | 39 | PerPhone                               | areaCode                     | 讀取           |
 | 40 | PerPhone                               | countryCode                  | 讀取           |
 | 41 | PerPhone                               | 擴充功能                    | 讀取           |
@@ -103,8 +103,8 @@ ms.locfileid: "87808502"
 | 64 | EmpJob \. CostCenter                     | costCenterDescription        | 讀取           |
 | 65 | EmpJob \. 部門                     | department                   | 讀取           |
 | 66 | EmpJob \. 部門                     | departmentId                 | 讀取           |
-| 67 | EmpJob \. 部門                       | division                     | 讀取           |
-| 68 | EmpJob \. 部門                       | divisionId                   | 讀取           |
+| 67 | EmpJob \. 除法                       | division                     | 讀取           |
+| 68 | EmpJob \. 除法                       | divisionId                   | 讀取           |
 | 69 | EmpJob \. JobCode                        | jobCode                      | 讀取           |
 | 70 | EmpJob \. JobCode                        | jobCodeId                    | 讀取           |
 | 71 | EmpJob \. 位置                       | LocationName                 | 讀取           |
@@ -118,12 +118,12 @@ ms.locfileid: "87808502"
 
 ## <a name="default-attribute-mapping"></a>預設屬性對應
 
-下表提供上列 SuccessFactors 屬性與 AD/Azure AD 屬性之間的預設屬性對應。 在 Azure AD 布建應用程式的 [對應] 分頁中，您可以修改此預設對應，以包含上述清單中的屬性。 
+下表提供上面所列的 SuccessFactors 屬性與 AD/Azure AD 屬性之間的預設屬性對應。 在 [Azure AD 布建應用程式] 的 [對應] 分頁中，您可以修改此預設對應，以包含上述清單中的屬性。 
 
 | \# | SuccessFactors 實體                  | SuccessFactors 屬性 | 預設 AD/Azure AD 屬性對應   | 處理批註                                                                            |
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
-| 1  | PerPerson                              | personIdExternal         | employeeId                              | 當做比對屬性使用                                                                   |
-| 2  | PerPerson                              | perPersonUuid            | \[未 \- 使用對應做為來源錨點\] | 在初始同步處理期間，布建服務會將 personUuid 連結至現有的 objectGuid\。  |
+| 1  | PerPerson                              | personIdExternal         | employeeId                              | 用來作為相符屬性                                                                   |
+| 2  | PerPerson                              | perPersonUuid            | \[未 \- 作為來源錨點使用的對應\] | 在初始同步處理期間，布建服務會將 personUuid 連結至現有的 objectGuid\。  |
 | 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
 | 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
@@ -132,13 +132,13 @@ ms.locfileid: "87808502"
 | 8  | User                                   | country                  | co                                      | NA                                                                                           |
 | 9  | User                                   | state                    | st                                      | NA                                                                                           |
 | 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
-| 11 | User                                   | zipCode                  | postalCode                              | NA                                                                                           |
+| 11 | User                                   | 郵遞區號                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
 | 15 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
 | 16 | EmpJob \. 部門                     | department               | department                              | NA                                                                                           |
-| 17 | EmpJob \. 部門                       | division                 | company                                 | NA                                                                                           |
+| 17 | EmpJob \. 除法                       | division                 | company                                 | NA                                                                                           |
 | 18 | EmpJob \. 位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob \. 位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，請停用 account\。                                           |

@@ -12,10 +12,10 @@ author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629721"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
@@ -171,7 +171,7 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
         ```
 
         > [!TIP]
-        > 如果您使用美國弗吉尼亞州、美國亞利桑那州區域或中國東部2區域，這些命令將不會傳回任何 IP 位址。 相反地，請使用下列其中一個連結來下載 IP 位址清單：
+        > 如果您使用美國弗吉尼亞州、US-Arizona 地區或中國東部2區域，則這些命令不會傳回任何 IP 位址。 相反地，請使用下列其中一個連結來下載 IP 位址清單：
         >
         > * [適用于 Azure Government 的 Azure IP 範圍和服務標記](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [適用于 Azure 中國的 Azure IP 範圍和服務標記](https://www.microsoft.com//download/details.aspx?id=57062)

@@ -3,17 +3,17 @@ title: Windows 虛擬桌面的新增功能？ - Azure
 description: Windows 虛擬桌面的新功能和產品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319809"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630008"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -25,6 +25,29 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 - 錯誤修正
 
 本文每月更新。 務必經常回到這裡查看，以掌握新的更新。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+以下是 2020 年 9 月的變更：
+
+- 我們已藉由減少下列 Azure 地理位置中的連線延遲來最佳化效能：
+    - 德國
+    - 南非 (僅適用於驗證環境)
+
+您現在可以使用[體驗估算器](https://azure.microsoft.com/services/virtual-desktop/assessment/)，來估算這些區域中的使用者體驗品質。
+
+- 我們已發行 Windows 虛擬桌面的 Windows 桌面用戶端版本 1.2.1364。 在此更新中，我們進行了下列變更：
+    - 已修正單一登入 (SSO) 在 Windows 7 上無法使用的問題。
+    - 已修正下列問題：當已啟用小組媒體最佳化的使用者嘗試呼叫或加入小組會議，而另一個應用程式的音訊串流以獨佔模式開啟時，導致用戶端中斷連線。
+    - 已修正在啟用小組的媒體最佳化時，小組未列舉音訊或影片裝置的問題。
+    - 已新增「需要設定的協助？」 桌面設定頁面的連結。
+    - 已修正使用高對比深色佈景主題時，所發生的 [訂閱] 按鈕問題。
+    
+- 感謝使用者的大力協助，我們已修正 Microsoft Store 遠端桌面用戶端的兩個嚴重問題。 將用戶端的階段式發行版本擴大到全球更多使用者時，我們會繼續檢閱意見反應並修正問題。
+    
+- 我們新增了一項新功能，可讓您變更 VM 位置、映像、資源群組、首碼名稱、做為工作流程一部分的網路組態，用於在 Azure 入口網站中將 VM 新增至您的部署。
+
+- IT 專業人員現在可以使用 Microsoft Endpoint Manager 管理已加入混合式 Azure Active Directory 的 Windows 10 企業版 VM。 若要進一步了解，請參閱[我們的部落格文章](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -144,4 +167,3 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 ## <a name="next-steps"></a>後續步驟
 
 在 [Microsoft 365 Windows 虛擬桌面藍圖](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)深入了解未來的計劃。
-

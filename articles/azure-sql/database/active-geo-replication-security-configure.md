@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 92a0c7fd3733b5e27c34c6fd0fe157bfb466a0fd
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444883"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>建立和管理 Azure SQL Database 安全性以供異地還原或容錯移轉使用
@@ -108,5 +108,5 @@ SID = <desired login SID>
 * 如需管理資料庫存取和登入的詳細資訊，請參閱 [SQL Database 安全性︰管理資料庫存取與登入安全性](logins-create-manage.md)。
 * 如需自主資料庫使用者的詳細資訊，請參閱 [自主資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
 * 若要深入了解作用中異地複寫，請參閱[作用中異地複寫](active-geo-replication-overview.md)。
-* 若要深入了解自動容錯移轉群組，請參閱[自動容錯移轉群組](auto-failover-group-overview.md)。
+* 若要深入瞭解自動容錯移轉群組，請參閱 [自動容錯移轉群組](auto-failover-group-overview.md)。
 * 如需使用異地還原的相關資訊，請參閱[異地還原](recovery-using-backups.md#geo-restore)
