@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296646"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>透過 Azure 監視器監視媒體服務計量和診斷記錄
@@ -94,7 +94,7 @@ ms.locfileid: "89296646"
 
 ### <a name="key-delivery"></a>金鑰傳遞
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |金鑰傳遞服務要求|顯示金鑰傳遞服務要求資訊的記錄。 如需詳細資訊，請參閱 [架構](media-services-diagnostic-logs-schema.md)。|
 
@@ -111,7 +111,7 @@ ms.locfileid: "89296646"
 
 請參閱 [如何監視媒體服務診斷記錄](media-services-diagnostic-logs-howto.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [如何收集和取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)
 * [使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)

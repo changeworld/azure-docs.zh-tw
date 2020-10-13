@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852475"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977743"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中的虛擬機器上保護及使用原則
 
@@ -25,7 +25,7 @@ ms.locfileid: "88852475"
 
 ## <a name="azure-security-center"></a>Azure 資訊安全中心
 
-[Azure 資訊安全中心](../security-center/security-center-intro.md)可協助您保護 VM、偵測威脅並採取相應的措施。 資訊安全中心能提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助偵測原先可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
+[Azure 資訊安全中心](../security-center/security-center-introduction.md)可協助您保護 VM、偵測威脅並採取相應的措施。 資訊安全中心能提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助偵測原先可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
 
 您可以在 VM 部署上套用安全中心的即時存取，以鎖定 Azure Vm 的輸入流量、降低暴露于攻擊的風險，同時在需要時提供簡單的存取權來連線至 Vm。 已啟用 Just-In-Time 且使用者要求存取 VM 時，資訊安全中心會檢查使用者擁有此 VM 的哪些權限。 如果其擁有正確權限，則要求會通過核准，且資訊安全中心會將網路安全性群組 (NSG) 自動設定為在有限的時間內允許輸入流量進入選取的連接埠。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 
 
@@ -69,9 +69,8 @@ Azure Active Directory (Azure AD) 中適用於 Azure 資源的受控識別功能
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)，您可以將小組內的職責區隔，並只授與 VM 上執行其工作所需的使用者存取權。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)，在 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)中設定 VM 的存取控制。
+使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)，您可以將小組內的職責區隔，並只授與 VM 上執行其工作所需的使用者存取權。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](/cli/azure/role) 或 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)，在 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)中設定 VM 的存取控制。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 逐步執行步驟，以使用 Azure 資訊安全中心來監視 [Linux](../security/fundamentals/overview.md) 或 [Windows](windows/tutorial-azure-security.md) 虛擬機器安全性。
-

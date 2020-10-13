@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
 ms.openlocfilehash: eedfe4f24797a9b564479b2f8d3f4d04b0751272
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779450"
 ---
 > [!NOTE]
@@ -23,9 +23,9 @@ ms.locfileid: "91779450"
  
 當您將要求傳送至端點時，會傳回下列實體類別 `/v3.1-preview.2/entities/recognition/pii` 。
 
-| 類別   | 子類別 | 描述                          | 正在啟動模型版本 | 備註 |
+| 類別   | 子類別 | 描述                          | 正在啟動模型版本 | 注意 |
 |------------|-------------|--------------------------------------|------------------------|---|
-| 人     | N/A         | 人員的名稱。  | `2019-10-01`  | 也會隨一起傳回 `domain=phi` 。 |
+| 個人     | N/A         | 人員的名稱。  | `2019-10-01`  | 也會隨一起傳回 `domain=phi` 。 |
 | PersonType | N/A         | 人員所持有的工作類型或角色。 | `2020-02-01` | |
 | PhoneNumber | N/A | 只有) 的電話號碼 (美國和 EU 電話號碼。 | `2019-10-01` | 也會隨一起傳回 `domain=phi` 。 |
 |組織  | N/A | 公司、政治群組、音樂波段、運動俱樂部、政府機構和公共組織。  | `2019-10-01` | 國籍和 religions 不包含在此實體類型中。  |

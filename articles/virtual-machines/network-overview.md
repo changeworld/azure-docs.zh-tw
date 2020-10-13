@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fe1cdf738162fe5c4492ff0585f057256153a838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 723b556a2e5fd1fae32d50a382c99025ad726bff
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561409"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977352"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure 中的虛擬網路和虛擬機器 
 
@@ -136,7 +136,7 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 | 方法 | 描述 |
 | ------ | ----------- |
 | Azure 入口網站 |  您可以[使用 Azure 入口網站針對網際網路至 VM 的流量進行負載平衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)。 |
-| [Azure PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) | 若要提供您先前建立之公用 IP 位址的識別碼，請使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PublicIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
+| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | 若要提供您先前建立之公用 IP 位址的識別碼，請使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PublicIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | 使用 [az network lb create](/cli/azure/network/lb) 建立初始的負載平衡器組態。 使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) 新增您先前建立的公用 IP 位址。 使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool) 新增後端位址集區的組態。 使用 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) 新增 NAT 規則。 使用 [az network lb rule create](/cli/azure/network/lb/rule) 新增負載平衡器規則。 使用 [az network lb probe create](/cli/azure/network/lb/probe) 新增探查。 |
 | [範本](../load-balancer/quickstart-load-balancer-standard-public-template.md) | 以[負載平衡器中的 2 部 VM 並在 LB 上設定 NAT 規則](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create)做為使用範本部署負載平衡器的指南。 |
     
@@ -144,9 +144,9 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 
 | 方法 | 描述 |
 | ------ | ----------- |
-| Azure 入口網站 | 您可以[在 Azure 入口網站中使用負載平衡器來平衡內部流量負載](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)。 |
-| [Azure PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) | 若要在網路子網路中提供私人 IP 位址，請使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PrivateIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
-| [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md) | 使用 [az network lb create](/cli/azure/network/lb) 命令建立初始的負載平衡器組態。 若要定義私人 IP 位址，請使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) 搭配 **--private-ip-address** 參數。 使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool) 新增後端位址集區的組態。 使用 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) 新增 NAT 規則。 使用 [az network lb rule create](/cli/azure/network/lb/rule) 新增負載平衡器規則。 使用 [az network lb probe create](/cli/azure/network/lb/probe) 新增探查。|
+| Azure 入口網站 | 您可以[在 Azure 入口網站中使用負載平衡器來平衡內部流量負載](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)。 |
+| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | 若要在網路子網路中提供私人 IP 位址，請使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PrivateIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
+| [Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | 使用 [az network lb create](/cli/azure/network/lb) 命令建立初始的負載平衡器組態。 若要定義私人 IP 位址，請使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) 搭配 **--private-ip-address** 參數。 使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool) 新增後端位址集區的組態。 使用 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) 新增 NAT 規則。 使用 [az network lb rule create](/cli/azure/network/lb/rule) 新增負載平衡器規則。 使用 [az network lb probe create](/cli/azure/network/lb/probe) 新增探查。|
 | [範本](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | 以[負載平衡器中的 2 部 VM 並在 LB 上設定 NAT 規則](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)做為使用範本部署負載平衡器的指南。 |
 
 ### <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集

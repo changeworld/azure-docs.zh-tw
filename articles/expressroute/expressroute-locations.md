@@ -9,13 +9,13 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 706a16eaaab113aab879b828e851191b4d3954dc
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566154"
 ---
-# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線合作夥伴和對等互連位置
+# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線能力合作夥伴和對等互連位置
 
 > [!div class="op_single_selector"]
 > * [依提供者的位置](expressroute-locations.md)

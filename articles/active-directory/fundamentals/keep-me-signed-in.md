@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320251"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>設定 [保持登入嗎？] 提示要求 Azure AD 帳戶
@@ -40,20 +40,20 @@ ms.locfileid: "89320251"
    * 如果您選擇 [ **否**]，在使用者成功登入之後，就會隱藏 [ **保持登入？** ] 選項，而且使用者必須在每次關閉並重新開啟瀏覽器時登入。
    * 如果您選擇 [ **是]**，則會向使用者顯示 [ **保持登入？** ] 選項。
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="螢幕擷取畫面顯示 [顯示] 選項以保持登入設定":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="顯示受控與同盟租使用者的使用者登入流程圖表":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>對登入問題進行疑難排解
 
 如果使用者不會在 [ **保持登入嗎？** ] 提示中採取動作，如下圖所示，但放棄登入嘗試，您將會看到指出中斷的登入記錄專案。
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="顯示保持登入？提示":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="顯示受控與同盟租使用者的使用者登入流程圖表":::
 
 登入錯誤的詳細資料如下所示，並在範例中反白顯示。
 
 * 登**入錯誤碼**：50140
 * **失敗原因**：由於使用者登入時「讓我保持登入」的中斷，導致此錯誤發生。
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="使用 [讓我保持登入] 中斷的範例登入記錄專案":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="顯示受控與同盟租使用者的使用者登入流程圖表":::
 
 您可以在 [advanced 商標] 設定中，將 [ **顯示] 選項設定為** [ **否** ]，以防止使用者看到中斷。 這樣會停用 Azure AD 目錄中所有使用者的 KMSI 提示。
 
@@ -68,7 +68,7 @@ ms.locfileid: "89320251"
 * 在使用者或系統管理員同意流程期間進行登入
 * 在條件式存取原則中設定持續性瀏覽器會話控制項
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解影響登入會話超時的其他設定：
 

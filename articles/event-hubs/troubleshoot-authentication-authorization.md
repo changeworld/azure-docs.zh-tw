@@ -4,10 +4,10 @@ description: 本文提供 Azure 事件中樞的驗證和授權問題的疑難排
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566222"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>針對驗證和授權問題進行疑難排解-Azure 事件中樞

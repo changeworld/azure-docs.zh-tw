@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e661cb3c3bafa92a060b0fdfd899aa152b46a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507869"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977454"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>在 StorSimple Virtual Array 上安裝更新 - Azure 入口網站
 
@@ -77,26 +77,26 @@ ms.locfileid: "85507869"
 
 1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update/update1m.png)
+    ![更新裝置1](./media/storsimple-virtual-array-install-update/update1m.png)
 
 2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update/update2m.png)
+    ![更新裝置2](./media/storsimple-virtual-array-install-update/update2m.png)
 
 3. 此時會顯示警告。 如果這是單一節點裝置，在套用更新後，裝置就會重新啟動而會有停機時間。 按一下核取圖示。
    
-   ![更新裝置](./media/storsimple-virtual-array-install-update/update3m.png)
+   ![更新裝置3](./media/storsimple-virtual-array-install-update/update3m.png)
 
 4. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update/update5m.png)
+    ![更新裝置4](./media/storsimple-virtual-array-install-update/update5m.png)
 
 5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10288.0** (適用於 Update 0.3)。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10288**，而相同版本在 Azure 入口網站則會回報為 **10.0.10288.0**。
    
-    ![更新裝置](./media/storsimple-virtual-array-install-update/update6m.png)
+    ![更新裝置5](./media/storsimple-virtual-array-install-update/update6m.png)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
@@ -107,7 +107,7 @@ ms.locfileid: "85507869"
 安裝完成後 (以作業狀態 100% 表示)，請移至 StorSimple 裝置管理員服務。 選取 [裝置]****，然後從連接至此服務的裝置清單中，選取並按一下您想要更新的裝置。 在 [設定]**** 刀鋒視窗中，移至 [管理]**** 區段，然後選取 [裝置更新]****。 顯示的軟體版本應該是 **10.0.10288.0**。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解 [administering your StorSimple Virtual Array (管理 StorSimple Virtual Array)](storsimple-ova-web-ui-admin.md)。
 

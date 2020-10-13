@@ -5,10 +5,10 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370822"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
@@ -65,11 +65,11 @@ ms.locfileid: "91370822"
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 關閉了。 隨選或排程的備份工作會運作嗎？
 
-可以。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
+是。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>我是否可以取消進行中的備份作業？
 
-可以。 您可以在 **拍攝快照** 集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
+是。 您可以在 **拍攝快照** 集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我已啟用 Azure 備份 Service (所建立資源群組的鎖定，例如 `AzureBackupRG_<geo>_<number>`) 。 我的備份是否會繼續運作？
 
@@ -141,7 +141,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="can-i-restore-a-vm-thats-been-deleted"></a>我可以還原已刪除的 VM 嗎？
 
-可以。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，然後從復原點還原。
+是。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，然後從復原點還原。
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>如何? 將 VM 還原至相同的可用性設定組？
 

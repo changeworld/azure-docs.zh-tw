@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87439480"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977624"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射總覽
 
@@ -108,7 +108,7 @@ RHEL 8 映射類型的詳細資料如下。
 |發行者 | 供應項目 | SKU 值 | 版本 | 詳細資料
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL 次要版本的串連值和發佈的日期 (例如 8.0.20191023)  | 這些映射是連接到標準 Red Hat 存放庫的 RHEL 8 LVM 資料分割映射。
-|RedHat | RHEL | 8-gen2 | RHEL 次要版本的串連值和發佈的日期 (例如 8.0.20191024)  | 這些映射是連接到標準 Red Hat 存放庫的 Hyper-v 第2代 RHEL 8 LVM 資料分割映射。 如需 Azure 中第2代 Vm 的詳細資訊，請參閱 [azure 上的第2代 Vm 支援](../../linux/generation-2.md)。
+|RedHat | RHEL | 8-gen2 | RHEL 次要版本的串連值和發佈的日期 (例如 8.0.20191024)  | 這些映射是連接到標準 Red Hat 存放庫的 Hyper-v 第2代 RHEL 8 LVM 資料分割映射。 如需 Azure 中第2代 Vm 的詳細資訊，請參閱 [azure 上的第2代 Vm 支援](../../generation-2.md)。
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL 較長支援附加元件
 
@@ -116,7 +116,7 @@ RHEL 8 映射類型的詳細資料如下。
 
 從2019年4月起，預設會將 RHEL 映射附加至 EUS 存放庫。 有關 RHEL EUS 的詳細資訊，可在 [Red Hat 的檔](https://access.redhat.com/articles/rhel-eus)中取得。
 
-您可以切換至 EUS 存放庫，並支援此功能。 如需有關如何將您的 VM 切換至 EUS 的指示，以及 EUS 支援結束日期的詳細資訊，請參閱 [RHEL EUS 和版本鎖定 Rhel vm](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)。
+您可以切換至 EUS 存放庫，並支援此功能。 如需有關如何將您的 VM 切換至 EUS 的指示，以及 EUS 支援結束日期的詳細資訊，請參閱 [RHEL EUS 和版本鎖定 Rhel vm](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)。
 
 >[!NOTE]
 > RHEL 額外專案不支援 EUS。 這表示，如果您安裝的封裝通常可從 RHEL 額外的通道中取得，您將無法在 EUS 時這麼做。 如需 Red Hat 額外產品生命週期的詳細資訊，請參閱 [Red Hat Enterprise Linux 額外的生命週期](https://access.redhat.com/support/policy/updates/extras/)。
@@ -180,9 +180,9 @@ Microsoft 和 Red Hat 會在發行新的次要版本時，視需要解決特定�
 
 目前的原則是保留所有先前發佈的映射。 我們保留移除已知會造成任何類型問題之映像的權利。 例如，可能會移除由於後續平臺或元件更新而設定不正確的映射。 可能移除的映射會遵循目前的 Azure Marketplace 原則，提供最多30天的通知，然後再移除映射。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要在 Azure 中查看 RHEL 映射的完整清單，請參閱 [Red Hat Enterprise Linux (azure 中提供的 rhel) 映射](./redhat-imagelist.md)。
-* 若要深入瞭解 Azure Red Hat 更新基礎結構，請參閱 [適用于 azure 中隨選 RHEL vm 的 Red Hat 更新基礎結構](https://aka.ms/rhui-update)。
+* 若要深入瞭解 Azure Red Hat 更新基礎結構，請參閱 [適用于 azure 中隨選 RHEL vm 的 Red Hat 更新基礎結構](./redhat-rhui.md)。
 * 若要深入瞭解 RHEL BYOS 供應專案，請參閱 [在 Azure 中 Red Hat Enterprise Linux 自備訂用帳戶黃金映射](./byos.md)。
 * 如需所有 RHEL 版本的 Red Hat 支援原則的相關資訊，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata)。
