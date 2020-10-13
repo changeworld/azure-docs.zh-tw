@@ -4,10 +4,10 @@ description: 列出 Azure 資源類型可用來擴充其他資源類型的功能
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969737"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>擴充其他資源功能的資源類型
@@ -170,7 +170,7 @@ ms.locfileid: "90969737"
 - WorkloadMonitor/監視器
 - WorkloadMonitor/notificationSettings
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要取得 Azure Resource Manager 範本中擴充功能資源的資源識別碼，請使用 [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid)。
 - 如需在範本中建立延伸模組資源的範例，請參閱 [Event Grid 事件訂閱](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。

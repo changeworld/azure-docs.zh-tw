@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631302"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
@@ -190,7 +190,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何建置可讓使用者從任何 Azure AD 租用戶登入的應用程式。 啟用單一登入 (您的應用程式和 Azure AD 之間的 SSO) 之後，您也可以更新應用程式，以存取 Microsoft 資源（例如 Microsoft 365）所公開的 Api。 這樣一來，您即可在應用程式中提供個人化的體驗；例如，向使用者顯示其設定檔圖片或下一個行事曆約會等內容資訊。 若要深入瞭解如何對 Azure AD 和 Microsoft 365 服務（例如 Exchange、SharePoint、OneDrive、OneNote 等等）進行 API 呼叫，請造訪 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
+在本文中，您已了解如何建置可讓使用者從任何 Azure AD 租用戶登入的應用程式。 啟用單一 Sign-On (應用程式與 Azure AD 之間的 SSO) 之後，您也可以更新應用程式以存取 Microsoft 資源所公開的 Api，例如 Microsoft 365。 這樣一來，您即可在應用程式中提供個人化的體驗；例如，向使用者顯示其設定檔圖片或下一個行事曆約會等內容資訊。 若要深入瞭解如何對 Azure AD 和 Microsoft 365 服務（例如 Exchange、SharePoint、OneDrive、OneNote 等等）進行 API 呼叫，請造訪 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

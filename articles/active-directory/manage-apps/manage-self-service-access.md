@@ -16,10 +16,10 @@ ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88640747"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何設定自助應用程式指派
@@ -81,5 +81,5 @@ ms.locfileid: "88640747"
 
 完成自助應用程式設定之後，使用者可以流覽至其 [我的應用程式](https://myapps.microsoft.com/) ，然後按一下 [ **新增自助應用程式** ] 按鈕，以尋找可透過自助存取啟用的應用程式。 商務核准者也會在其 [我的應用程式](https://myapps.microsoft.com/)中看到通知。 您可以啟用電子郵件，通知他們有使用者已要求存取應用程式，需要他們核准。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [設定 Azure Active Directory 進行自助服務群組管理](../users-groups-roles/groups-self-service-management.md)

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574274"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>模型中的 IoT 隨插即用元件
 
-在 IoT 隨插即用慣例中，如果裝置在連線到 IoT 中樞時，會顯示其數位 twins 定義語言 (DTDL) 模型識別碼，則裝置會是 IoT 隨插即用裝置。
+在 IoT 隨插即用慣例中，如果裝置在連線到 IoT 中樞時出示其數位分身定義語言 (DTDL) 模型識別碼，則此裝置就是 IoT 隨插即用裝置。
 
 下列程式碼片段顯示一些範例模型識別碼：
 

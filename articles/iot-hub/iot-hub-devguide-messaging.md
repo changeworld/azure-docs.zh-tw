@@ -11,10 +11,10 @@ ms.date: 01/29/2018
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: e0466aa3497edf5f271c01944438c033bba152f4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327662"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>使用 IoT 中樞傳送裝置到雲端與雲端到裝置訊息
@@ -43,7 +43,7 @@ IoT 中樞傳訊功能的核心屬性是訊息的可靠性和持久性。 這些
 
 * 請參閱[雲端到裝置通訊指導方針](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)，以便在雲端到裝置訊息、預期屬性或直接方法之間進行選擇。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 了解 IoT 中樞[訊息路由](iot-hub-devguide-messages-d2c.md)。
 

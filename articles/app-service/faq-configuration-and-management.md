@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962344"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
@@ -63,7 +63,7 @@ ms.locfileid: "88962344"
 2. 在 [應用程式設定]**** 底下，新增以下設定：
     * 索引鍵 = WEBSITE_TIME_ZONE
     * 值 = 您想要的時區**
-3. 選取 [儲存]  。
+3. 選取 [儲存]****。
 
 針對在 Windows 上執行的應用程式服務，請參閱 [[預設時區](/windows-hardware/manufacture/desktop/default-time-zones)] 文章中的 [**時區**] 資料行，以取得已接受的值。 針對在 Linux 上執行的應用程式服務，將 [TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 設定為時區值。 以下是 TZ 資料庫名稱的範例：北美洲/Adak。
 
@@ -141,7 +141,7 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 例外狀況是「混合式連線管理員」問題所造成的，該問題在那之後已修正。 請務必[更新混合式連線管理員](https://go.microsoft.com/fwlink/?LinkID=841308)以解決此問題。
 

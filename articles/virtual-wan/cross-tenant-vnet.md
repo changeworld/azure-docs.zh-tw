@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
 ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571317"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>將跨租使用者 Vnet 連接到虛擬 Wan 中樞
@@ -30,7 +30,7 @@ ms.locfileid: "91571317"
 
 ## <a name="before-you-begin"></a>開始之前
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 若要使用本文中的步驟，您必須在環境中已設定下列設定：
 

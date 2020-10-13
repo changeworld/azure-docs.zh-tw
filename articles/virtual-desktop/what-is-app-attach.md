@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556238"
 ---
 # <a name="what-is-msix-app-attach"></a>什麼是 MSIX 應用程式附加？
@@ -47,13 +47,13 @@ MSIX 應用程式附加必須適用于 VDI 或 SBC 以外的範圍。
 
 | 功能 | 傳統的應用程式分層  | MSIX 應用程式附加  |
 |-----|-----------------------------|--------------------|
-| 格式               | 不同的應用程式分層技術需要不同的專屬格式。 | 適用于原生 MSIX 封裝格式。        |
+| [格式]               | 不同的應用程式分層技術需要不同的專屬格式。 | 適用于原生 MSIX 封裝格式。        |
 | 重新包裝額外負荷 | 專屬格式需要針對每個更新進行排序和重新封裝。         | 發佈為 MSIX 的應用程式不需要重新封裝。 但是，如果無法使用 MSIX 套件，則仍會套用重新封裝額外負荷。 |
 | 生態系統            | N/A (例如，廠商未隨附 App-v)   | MSIX 是 Microsoft 的主要技術，可供主要 ISV 合作夥伴和內部應用程式（例如 Office）採用。 您可以在虛擬桌面電腦和實體 Windows 電腦上使用 MSIX。 |
 | 基礎結構       | 需要額外的基礎結構 (伺服器、用戶端等等)  | 僅限儲存體   |
 | 系統管理       | 需要維護和更新   | 簡化應用程式更新 |
 | 使用者體驗      | 影響使用者登入時間。 界限存在於作業系統狀態、應用程式狀態和使用者資料之間。  | 提供的應用程式與本機安裝的應用程式不區分。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要深入瞭解 MSIX app 附加，請參閱我們的 [詞彙](app-attach-glossary.md) 和 [常見問題](app-attach-faq.md)。 否則，請開始 [設定應用程式連接](app-attach.md)。

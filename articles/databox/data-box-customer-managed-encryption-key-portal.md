@@ -9,10 +9,10 @@ ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
 ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91739930"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱
@@ -59,7 +59,7 @@ Azure 資料箱可保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，�
 
     ![建立新的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
 
-    您也可以選取 [ **建立新** 的] 來建立新的金鑰保存庫。 在 [ **建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 確定已啟用虛 **刪除** 和 **清除保護** 。 接受所有其他預設值。 選取 [檢閱 + 建立]。
+    您也可以選取 [ **建立新** 的] 來建立新的金鑰保存庫。 在 [ **建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 確定已啟用虛 **刪除** 和 **清除保護** 。 接受所有其他預設值。 選取 [檢閱 + 建立]  。
 
     ![建立新的 Azure Key Vault 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 

@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574138"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保護儲存在 Azure Data Lake Storage Gen1 中的資料
@@ -74,7 +74,7 @@ ms.locfileid: "91574138"
    
     ![新增安全性群組](./media/data-lake-store-secure-data/adl.add.user.2.png "新增安全性群組")
    
-5. 按一下 [檔案] 。 您會看見新增的安全性群組，如下所示。
+5. 按一下 **[儲存]** 。 您會看見新增的安全性群組，如下所示。
    
     ![已新增的安全性群組](./media/data-lake-store-secure-data/adl.add.user.3.png "已新增的安全性群組")
 
@@ -102,7 +102,7 @@ ms.locfileid: "91574138"
 4. 按一下 [新增]**** 圖示，以開啟 [指派權限]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，搜尋您稍早在 Azure Active Directory 中建立的安全性群組。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
     ![新增群組](./media/data-lake-store-secure-data/adl.acl.3.png "新增群組")
-5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]  。
+5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]。
    
     ![[指派許可權] 分頁的螢幕擷取畫面，其中已呼叫 [選取許可權] 選項，以及已呼叫 [確定] 選項的 [選取許可權] 分頁。](./media/data-lake-store-secure-data/adl.acl.4.png "將權限指派至群組")
    
@@ -153,5 +153,5 @@ Data Lake Storage Gen1 可讓您進一步在網路層級鎖定資料存放區的
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [使用 PowerShell 開始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)
-* [利用 .NET SDK 開始使用 Data Lake Storage Gen1](data-lake-store-get-started-net-sdk.md)
+* [使用 .NET SDK 搭配 Data Lake Storage Gen1 開始](data-lake-store-get-started-net-sdk.md)
 * [存取 Data Lake Storage Gen1 的診斷記錄](data-lake-store-diagnostic-logs.md)

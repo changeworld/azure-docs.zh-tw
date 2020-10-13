@@ -4,10 +4,10 @@ description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及�
 ms.topic: article
 ms.date: 09/16/2020
 ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729095"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
@@ -274,9 +274,9 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>使用 Azure Blob 儲存體做為檢查點存放區時，如何以特定版本的 Azure 儲存體 SDK 為目標？
-如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則您將會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，該 API 可能無法在您的 Azure Stack Hub 平臺上使用。 Azure Stack Hub 支援的儲存體 Blob SDK 版本可能與 Azure 上一般可用的版本不同。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建支援的 AZURE 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version) ，並以您程式碼中的版本為目標。 
+如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建所支援的 Azure 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，並在您的程式碼中以該版本作為目標。 
 
-例如，如果您在 Azure Stack Hub 2005 版上執行，則儲存體服務的最高可用版本是2019-02-02 版。 根據預設，事件中樞 SDK 用戶端程式庫會在 SDK) 發行時，使用 Azure 上的最高可用版本 (2019-07-07。 在此情況下，除了遵循本節中的步驟之外，您還需要新增程式碼以儲存體服務 API 2019-02-02 版為目標。 如需如何以特定儲存體 API 版本為目標的範例，請參閱下列 c #、JAVA、Python 和 JavaScript/TypeScript 範例。  
+例如，如果您在 Azure Stack Hub 2005 版上執行，儲存體服務的最高可用版本為 2019-02-02。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2019-02-02 為目標。 如需如何以特定儲存體 API 版本為目標的範例，請參閱下列 c #、JAVA、Python 和 JavaScript/TypeScript 範例。  
 
 如需如何從程式碼將特定儲存體 API 版本設為目標的範例，請參閱 GitHub 上的下列範例： 
 

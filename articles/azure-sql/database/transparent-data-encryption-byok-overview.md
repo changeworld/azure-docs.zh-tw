@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
 ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602664"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
@@ -187,11 +187,11 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 即使在沒有為伺服器設定異地複寫的情況下，強烈建議您將伺服器設定為在兩個不同區域中使用兩個不同的金鑰保存庫（具有相同的金鑰內容）。 您可以使用與伺服器位於相同區域中的主要 key vault 建立 TDE 保護裝置，然後將金鑰複製到不同 Azure 區域中的金鑰保存庫，讓伺服器可以存取第二個金鑰保存庫，因為主要金鑰保存庫在資料庫已啟動並執行時發生中斷。
 
-使用 AzKeyVaultKey Cmdlet，從主要金鑰保存庫取出加密格式的金鑰，然後使用 AzKeyVaultKey 指令 Cmdlet 並指定第二個區域中的金鑰保存庫來複製金鑰。 或者，您也可以使用 Azure 入口網站來備份和還原金鑰。 另一個區域的次要金鑰保存庫中的金鑰不應標示為 TDE 保護裝置，而且甚至不允許。
+使用 Backup-AzKeyVaultKey Cmdlet，從主要金鑰保存庫取出加密格式的金鑰，然後使用 Restore-AzKeyVaultKey Cmdlet 並指定第二個區域中的金鑰保存庫來複製金鑰。 或者，您也可以使用 Azure 入口網站來備份和還原金鑰。 另一個區域的次要金鑰保存庫中的金鑰不應標示為 TDE 保護裝置，而且甚至不允許。
 
 如果中斷影響到主要金鑰保存庫，則系統會自動切換至次要金鑰保存庫中具有相同指紋的其他連結金鑰（如果有的話）。 請注意，如果因為撤銷存取權限而無法存取 TDE 保護裝置，或因為金鑰或金鑰保存庫遭到刪除，則不會發生該交換器，因為這可能表示客戶刻意想要限制伺服器存取金鑰。
 
-![單一伺服器 HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
+![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>異地 DR 和客戶管理的 TDE
 

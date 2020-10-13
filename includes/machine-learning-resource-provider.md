@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: larryfr
 ms.openlocfilehash: 8fd774f8a3a73ceaffa7902b35e1b1dff12ef5af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75893980"
 ---
 建立 Azure Machine Learning 工作區或工作區所使用的資源時，您可能會收到類似下列訊息的錯誤：

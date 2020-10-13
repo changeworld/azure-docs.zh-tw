@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95dc5b70174cd738104260aac2e175c0657d9c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447819"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966197"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上建立和布建具有 TPM 的 IoT Edge 裝置
 
@@ -170,7 +170,7 @@ ms.locfileid: "91447819"
 
    6. 視需要將標記值新增至 [初始裝置對應項狀態]****。 您可以使用標記將裝置群組設定為模組部署的目標。 如需詳細資訊，請參閱 [大規模部署 IoT Edge 模組](how-to-deploy-at-scale.md)。
 
-   7. 選取 [儲存]****。
+   7. 選取 [儲存]。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。
 
@@ -178,11 +178,36 @@ ms.locfileid: "91447819"
 
 IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。 在虛擬機器上安裝 IoT Edge 執行階段。
 
-開始閱讀您的裝置類型適用的文章之前，請先了解您的 DPS [識別碼範圍]**** 和裝置的 [註冊識別碼]****。 如果您安裝了範例 Ubuntu Server，請使用 **x64** 指示。 請務必將 IoT Edge 執行階段設定為自動佈建，而不是手動佈建。
+遵循 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟，然後回到本文以布建裝置。
 
-當您進入設定安全 daemon 的步驟時，請務必選擇 [ [選項2自動](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning) 布建] 並設定 TPM 證明。
+## <a name="configure-the-device-with-provisioning-information"></a>使用布建資訊設定裝置
 
-[在 Linux 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-linux.md)
+當執行時間安裝在您的裝置上之後，請使用它用來連線至裝置布建服務和 IoT 中樞的資訊來設定裝置。
+
+1. 瞭解您在上一節中收集到的 DPS **識別碼範圍** 和裝置 **註冊識別碼** 。
+
+1. 開啟 IoT Edge 裝置上的設定檔。
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+1. 尋找檔案的 [布建設定] 區段。 將 TPM 布建的行取消批註，並確定任何其他布建行都已加上批註。
+
+   `provisioning:`該行不應該有空格，而且嵌套的專案應該以兩個空格縮排。
+
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "tpm"
+       registration_id: "<REGISTRATION_ID>"
+   ```
+
+1. `scope_id` `registration_id` 使用您的 DPS 和裝置資訊來更新和的值。
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>為 IoT Edge 指定對 TPM 的存取權
 

@@ -1,6 +1,6 @@
 ---
 title: 加強 Azure 中的遠端管理安全性 | Microsoft Docs
-description: 本文將討論在管理 Microsoft Azure 環境（包括雲端服務、虛擬機器及自訂應用程式）時，增強遠端系統管理安全性的步驟。
+description: 本文討論在管理 Microsoft Azure 環境（包括雲端服務、虛擬機器及自訂應用程式）時，增強遠端系統管理安全性的步驟。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,18 +16,18 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921923"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
-Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下，系統管理功能是透過 web 型主控台（例如[Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)）來執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
+Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下，系統管理功能是透過 web 式主控台（例如 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)）來執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
 
 雖然多項存取和管理功能可提供一組豐富的選項，但選項太多也可能會讓雲端部署承受巨大風險。 因而難以管理、追蹤和稽核管理動作。 選項太多也可能會因為用來管理雲端服務之用戶端端點所進行的存取不受管制而招致安全性威脅。 使用一般工作站或私人工作站來開發和管理基礎結構將會打開無法預期的威脅媒介，例如網頁瀏覽 (例如水坑攻擊) 或電子郵件 (例如社交工程和網路釣魚)。
 
-![此圖顯示威脅可能掛接攻擊的各種不同方式。](./media/management/typical-management-network-topology.png)
+![此圖顯示威脅可以掛接攻擊的不同方式。](./media/management/typical-management-network-topology.png)
 
 在這類環境中，發生攻擊的可能性會增加，因為其難以建構安全性原則和機制來適當管理各式各樣的端點對 Azure 介面 (例如 SMAPI) 的存取。
 
@@ -66,7 +66,7 @@ Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管�
 ### <a name="providing-security-for-azure-remote-management"></a>為 Azure 的遠端管理提供安全性
 Azure 提供了安全性機制來協助系統管理員管理 Azure 雲端服務和虛擬機器。 這些機制包括︰
 
-* [ (AZURE RBAC) 的驗證和 azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)。
+* [AZURE RBAC)  (的驗證和 azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)。
 * 監視、記錄和稽核。
 * 憑證和加密通訊。
 * Web 管理入口網站。
@@ -106,7 +106,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ### <a name="management-gateway"></a>管理閘道
 若要集中管理所有系統管理存取權並簡化監視與記錄，您可以在內部部署網路中部署連線到 Azure 環境的專用[遠端桌面閘道](https://technet.microsoft.com/library/dd560672) (RD 閘道) 伺服器。
 
-遠端桌面閘道是以原則為基礎 RDP Proxy 服務，會強制執行安全性需求。 同時實作 RD 閘道與 Windows Server 網路存取保護 (NAP)，可協助確保只有符合 Active Directory 網域服務 (AD DS) 群組原則物件 (GPO) 所建立之特定安全性健全狀況準則的用戶端可以連線。 此外：
+遠端桌面閘道是以原則為基礎 RDP Proxy 服務，會強制執行安全性需求。 同時實作 RD 閘道與 Windows Server 網路存取保護 (NAP)，可協助確保只有符合 Active Directory 網域服務 (AD DS) 群組原則物件 (GPO) 所建立之特定安全性健全狀況準則的用戶端可以連線。 其他情況：
 
 * 在 RD 閘道上佈建 [Azure 管理憑證](https://msdn.microsoft.com/library/azure/gg551722.aspx)，使它成為可以存取 Azure 入口網站的唯一主機。
 * 將 RD 閘道加入至相同的[管理網域](https://technet.microsoft.com/library/bb727085.aspx)以做為系統管理員的工作站。 當您在具有對 Azure AD 之單向信任的網域內使用網站間 IPsec VPN 或 ExpressRoute 時，或是如果您要同盟內部部署 AD DS 執行個體與 Azure AD 之間的認證，就必須這麼做。
@@ -119,7 +119,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 協助保護搭配雲端使用之系統管理員工作站的做法，通常會與用於任何內部部署工作站的做法類似 - 例如，最小化的組建和嚴格的權限。 雲端管理的幾項特點則更類似於遠端或頻外企業管理。 這些特點包括使用和稽核認證、增強安全性的遠端存取以及威脅偵測和回應。
 
 ### <a name="authentication"></a>驗證
-您可以使用 Azure 登入限制來限制用於存取系統管理工具的來源 IP 位址和稽核存取要求。 為了協助 Azure 識別 (工作站和/或應用程式) 的管理用戶端，您可以透過客戶開發的工具（例如 Windows PowerShell) Cmdlet）來設定 SMAPI (，而 Azure 入口網站除了 TLS/SSL 憑證以外，還需要安裝用戶端管理憑證。 我們也建議系統管理員存取需要 Multi-Factor Authentication。
+您可以使用 Azure 登入限制來限制用於存取系統管理工具的來源 IP 位址和稽核存取要求。 若要協助 Azure 識別管理用戶端 (工作站和/或應用程式) ，您可以透過客戶開發的工具（例如 Windows PowerShell Cmdlet) 和 Azure 入口網站）設定 SMAPI (，除了 TLS/SSL 憑證之外，還需要安裝用戶端管理憑證。 我們也建議系統管理員存取需要 Multi-Factor Authentication。
 
 您部署至 Azure 的某些應用程式或服務可能會針對使用者和系統管理員存取擁有自己的驗證機制，而其他應用程式或服務則會充分利用 Azure AD。 根據您是透過 Active Directory Federation Services (AD FS)、使用目錄同步作業或僅在雲端中維護使用者帳戶來同盟認證，使用 [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium 的一部分) 可協助您管理資源之間的身分識別生命週期。
 
@@ -157,12 +157,12 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 在獨立的強化後工作站案例中 (如下所示)，Windows 防火牆 (或非 Microsoft 用戶端防火牆) 的本機執行個體會設定為封鎖輸入連線，例如 RDP。 系統管理員可以登入強化後的工作站，並在與 Azure 虛擬網路建立 VPN 連線之後啟動連線至 Azure 的 RDP 工作階段，但無法登入公司電腦並使用 RDP 連線至強化後的工作站本身。
 
-![顯示獨立強化後工作站案例的圖表。](./media/management/stand-alone-hardened-workstation-topology.png)
+![顯示獨立強化工作站案例的圖表。](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>以公司電腦做為虛擬機器
 在部署個別的獨立強化後工作站需要高昂成本或無法撥出此預算的情況下，強化後的工作站可以裝載用來執行非系統管理工作的虛擬機器。
 
-![此圖顯示裝載虛擬機器以執行非系統管理工作的強化後工作站。](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![此圖顯示裝載虛擬機器以執行非系統管理工作的強化工作站。](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 若要避免使用單一工作站來進行系統管理和其他日常工作所可能引發的諸多安全性風險，您可以在強化後的工作站部署 Windows Hyper-V 虛擬機器。 此虛擬機器可以做為公司電腦來使用。 公司電腦環境可以與主機保持區隔，以減少其受攻擊面，並讓使用者的日常活動 (例如電子郵件) 不會與敏感的系統管理工作共存。
 
@@ -174,9 +174,9 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ### <a name="dos-and-donts"></a>可行與禁止事項
 請勿因為工作站已封鎖起來，就認為不需要滿足其他常見的安全性需求。 因為系統管理員帳戶通常擁有提高權限的存取層級，因此潛在風險會提高。 下表顯示風險和其替代安全作法的範例。
 
-| 禁止事項 | 要做的事 |
+| 禁止事項 | 可行事項 |
 | --- | --- |
-| 請勿以電子郵件將認證用於系統管理員存取或其他秘密 (例如，TLS/SSL 或管理憑證)  |用聲音提供帳戶名稱和密碼 (但不要將它們儲存在語音郵件中) 以維持機密性、遠端安裝用戶端/伺服器憑證 (透過加密工作階段)、從受保護的網路共用下載，或透過卸除式媒體手動發佈。 |
+| 請勿傳送電子郵件認證給系統管理員存取或其他秘密 (例如，TLS/SSL 或管理憑證)  |用聲音提供帳戶名稱和密碼 (但不要將它們儲存在語音郵件中) 以維持機密性、遠端安裝用戶端/伺服器憑證 (透過加密工作階段)、從受保護的網路共用下載，或透過卸除式媒體手動發佈。 |
 | - | 主動管理您的管理憑證生命週期。 |
 | 請勿在應用程式儲存體中儲存未加密或未雜湊的帳戶密碼 (例如在試算表、SharePoint 網站或檔案共用中)。 |建立安全性管理原則和系統強化原則，並將它們套用至您的開發環境。 |
 | - | 使用 [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) 憑證釘選規則，以確保能正確存取 Azure SSL/TLS 網站。 |
@@ -206,7 +206,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。
 * 控管。 使用 AD DS GPO 來控制所有系統管理員的 Windows 介面，例如檔案共用。 將管理工作站納入稽核、監視和記錄程序內。 追蹤所有系統管理員和開發人員的存取和使用活動。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 使用強化後的工作站組態來管理 Azure 雲端服務、虛擬機器和應用程式，可協助您避免遠端管理重要 IT 基礎結構所產生的眾多風險和威脅。 Azure 和 Windows 皆可提供相關機制供您保護和控制通訊、驗證和用戶端行為。
 
 ## <a name="next-steps"></a>後續步驟
@@ -214,4 +214,4 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 * [保護特殊權限存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – 取得設計和建置安全的系統管理工作站以管理 Azure 的技術詳細資料
 * [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure) - 了解可保護 Azure 網狀架構和在 Azure 上執行之工作負載的 Azure 平台功能
-* [Microsoft 安全性回應中心](https://www.microsoft.com/msrc)--可報告 microsoft 安全性弱點（包括 Azure 的問題）或透過電子郵件傳送給[secure@microsoft.com](mailto:secure@microsoft.com)
+* [Microsoft 安全性回應中心](https://www.microsoft.com/msrc) --可報告 microsoft 安全性弱點（包括 Azure 的問題）或透過電子郵件傳送給 [secure@microsoft.com](mailto:secure@microsoft.com)
