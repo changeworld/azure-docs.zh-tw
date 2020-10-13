@@ -8,10 +8,10 @@ ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334424"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
@@ -98,7 +98,7 @@ Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬�
 1. 搜尋稍早建立的私人端點。 在本案例中，這是 **cdbPrivateEndpoint3**。
 1. 選取 [概觀] 索引標籤，以查看 DNS 設定和 IP 位址。
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure 入口網站中的私人 IP 位址":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="在 Azure 入口網站中建立私人端點的選項":::
 
 為每個私人端點建立多個 IP 位址：
 
@@ -411,7 +411,7 @@ $deploymentOutput
 
 成功部署範本之後，您可看到類似下圖所示的輸出。 如果正確設定私人端點，則 `provisioningState` 值會是 `Succeeded`。
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Resource Manager 範本的部署輸出":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="在 Azure 入口網站中建立私人端點的選項":::
 
 部署範本之後，即會在子網路內保留私人 IP 位址。 Azure Cosmos 帳戶其防火牆規則已設定為只接受來自私人端點的連線。
 

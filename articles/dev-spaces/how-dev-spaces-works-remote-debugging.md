@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述在 Azure Kubernetes Service 上進行遠端偵錯處理的程式 Azure Dev Spaces
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213392"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975037"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>如何使用 Azure Dev Spaces 在遠端偵錯程式碼的運作方式
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應用程式並偵錯，以及在 Azure Kubernetes Service (AKS) 叢集上與您的小組共同作業。 當您的專案在開發人員空間中執行時，Azure Dev Spaces 可讓您在 AKS 中附加至正在執行的應用程式並進行偵錯工具。
 

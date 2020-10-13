@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7dab1d9e46aec64cc3c0fda9e8e6ba503f696b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a9156f84e5189b38a2c15f257bd6a47ac3db130
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716753"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964395"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication 之 NPS 延伸模組的進階設定選項
 
@@ -30,7 +30,7 @@ ms.locfileid: "88716753"
 
 若要設定替代登入識別碼，請移至 `HKLM\SOFTWARE\Microsoft\AzureMfa`，然後編輯下列登錄值：
 
-| 名稱 | 類型 | 預設值 | 說明 |
+| 名稱 | 類型 | 預設值 | 描述 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 字串 | 空白 | 指定您想要使用的 Active Directory 屬性名稱，而非 UPN。 此屬性用作 AlternateLoginId 屬性。 如果此登錄值設定為[有效的 Active Directory 屬性](/windows/win32/adschema/attributes-all) (例如，mail 或 displayName)，則會使用屬性的值來取代使用者的 UPN 以進行驗證。 如果此登錄值是空的或未設定，則會停用 AlternateLoginId，並以使用者的 UPN 進行驗證。 |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | False | 使用此旗標，可在查閱 AlternateLoginId 時強制使用通用類別目錄進行 LDAP 搜尋。 將網域控制站設定為通用類別目錄，並將 AlternateLoginId 屬性新增至通用類別目錄，然後啟用此旗標。 <br><br> 如果設定 LDAP_LOOKUP_FORESTS (不是空的)，則**此旗標會強制執行為 true**，不論登錄設定的值為何。 在此情況下，NPS 延伸模組需要使用每個樹系的 AlternateLoginId 屬性來設定通用類別目錄。 |
@@ -44,7 +44,7 @@ ms.locfileid: "88716753"
 
 若要設定 IP 允許清單，請移至 `HKLM\SOFTWARE\Microsoft\AzureMfa` 並設定下列登錄值：
 
-| 名稱 | 類型 | 預設值 | 說明 |
+| 名稱 | 類型 | 預設值 | 描述 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | 字串 | 空白 | 提供 IP 位址清單 (以分號分隔)。 包含產生服務要求之機器的 IP 位址，例如 NAS/VPN 伺服器。 不支援 IP 範圍和子網。 <br><br> 例如，*10.0.0.1;10.0.0.2;10.0.0.3*。
 
@@ -53,6 +53,6 @@ ms.locfileid: "88716753"
 
 從存在的 IP 位址傳入要求時 `IP_WHITELIST` ，會略過雙步驟驗證。 IP 清單會與 RADIUS 要求的 *傳入沒有 ratnasipaddress* 屬性中所提供的 ip 位址進行比較。 如果傳入沒有 ratNASIPAddress 屬性的 RADIUS 要求，則會記錄下列警告：「P_WHITE_LIST_WARNING::IP 允許清單將會予以忽略，因為 RADIUS 要求的 NasIpAddress 屬性中遺漏來源 IP」。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息](howto-mfa-nps-extension-errors.md)

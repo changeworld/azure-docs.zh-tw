@@ -2,17 +2,14 @@
 title: 在 Visual Studio 中分析趨勢 | Microsoft Docs
 description: 在 Visual Studio 中分析、 視覺化及探索您的 Application Insights 遙測的趨勢。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b78dceed3c2a25d6afedf5fca348726d7aafd3d
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318159"
+ms.locfileid: "91932238"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趨勢 | Microsoft Azure
 「Application Insights 趨勢」工具會以視覺化方式呈現 Web 應用程式的重要遙測事件如何隨著時間變更，協助您快速識別問題和異常。 將您連結至更詳細的診斷資訊，「趨勢」可協助您改善應用程式效能、追蹤例外狀況的原因，以及揭露您的自訂事件情資。
@@ -96,9 +93,6 @@ Application Insights 趨勢會從您的應用程式的遙測建立時間序列�
 > 
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
-|  |  |
-| --- | --- |
-| **[在 Visual Studio 中使用 Application Insights](./visual-studio.md)**<br/>搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 |![以滑鼠右鍵按一下專案，然後選擇 [Application Insights]、[搜尋]](./media/visual-studio-trends/34.png) |
-| **[新增更多測試](./asp-net-more.md)**<br/>監視使用狀況、可用性、相依性、例外狀況。 整合來自記錄架構的追蹤。 撰寫自訂遙測。 |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[使用 Application Insights 入口網站](./overview-dashboard.md)**<br/>儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及遙測匯出等功能。 |![Visual Studio](./media/visual-studio-trends/62.png) |
+* 使用**[Visual Studio 中的 Application Insights](./visual-studio.md)**。 搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 
+* 使用**[Application Insights 入口網站](./overview-dashboard.md)**。 儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及遙測匯出等功能。 
 

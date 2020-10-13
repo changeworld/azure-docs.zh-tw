@@ -8,18 +8,18 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691338"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978980"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure CLI
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 下載 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)的最新版本。
 - [安裝 Azure CLI](/cli/azure/install-azure-cli)。
@@ -79,7 +79,7 @@ az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level
 
 使用 AzCopy v10，藉由指定您產生的 SAS URI，將本機 VHD 檔案上傳至受控磁片。
 
-此上傳與對等的 [標準 HDD](disks-types.md#standard-hdd)具有相同的輸送量。 例如，如果您的大小等於 S4，則最多會有 60 MiB/秒的輸送量。 但是，如果您有相當於 S70 的大小，則最多會有 500 MiB/秒的輸送量。
+此上傳與對等的 [標準 HDD](../disks-types.md#standard-hdd)具有相同的輸送量。 例如，如果您的大小等於 S4，則最多會有 60 MiB/秒的輸送量。 但是，如果您有相當於 S70 的大小，則最多會有 500 MiB/秒的輸送量。
 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
@@ -108,17 +108,17 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 > 如果您要建立 OS 磁片，請將--hyper-v 世代新增 <yourGeneration> 至 `az disk create` 。
 
 ```azurecli
-sourceDiskName = <sourceDiskNameHere>
-sourceRG = <sourceResourceGroupHere>
-targetDiskName = <targetDiskNameHere>
-targetRG = <targetResourceGroupHere>
-targetLocale = <yourTargetLocationHere>
+sourceDiskName=<sourceDiskNameHere>
+sourceRG=<sourceResourceGroupHere>
+targetDiskName=<targetDiskNameHere>
+targetRG=<targetResourceGroupHere>
+targetLocation=<yourTargetLocationHere>
 
-sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
+sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
-targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
+targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
@@ -129,6 +129,6 @@ az disk revoke-access -n $sourceDiskName -g $sourceRG
 az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-既然您已成功將 VHD 上傳至受控磁片，您可以將磁片以資料磁片的形式連結 [至現有的 vm](add-disk.md) ，或 [將磁片連接至 vm 作為 OS 磁片](upload-vhd.md#create-the-vm)，以建立新的 vm。 
+既然您已成功將 VHD 上傳至受控磁片，您可以將磁片以資料磁片的形式連結 [至現有的 vm](add-disk.md) ，或 [將磁片連接至 vm 作為 OS 磁片](upload-vhd.md#create-the-vm)，以建立新的 vm。

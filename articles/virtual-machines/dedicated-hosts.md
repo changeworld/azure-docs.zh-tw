@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373072"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979014"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 專用主機
 
@@ -122,7 +122,7 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 **維護控制** 讓客戶可以選擇略過在其專用主機上排程的一般平臺更新，然後在35天的輪流時段內套用。
 
-如需詳細資訊，請參閱 [使用維護控制管理平臺更新](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)。
+如需詳細資訊，請參閱 [使用維護控制管理平臺更新](./maintenance-control.md)。
 
 ## <a name="capacity-considerations"></a>容量考量
 
@@ -142,7 +142,7 @@ Azure 專用主機是一個服務，可讓實體伺服器裝載一或多個虛�
 
 ![入口網站中 [使用量和配額] 頁面的螢幕擷取畫面](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-如需詳細資訊，請參閱 [虛擬機器 vCPU 配額](/azure/virtual-machines/windows/quotas)。
+如需詳細資訊，請參閱 [虛擬機器 vCPU 配額](./windows/quotas.md)。
 
 免費試用與 MSDN 訂用帳戶沒有 Azure 專用主機的配額。
 
@@ -182,7 +182,7 @@ Azure 會監視及管理主機的健全狀況狀態。 當您查詢主機時，�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 您可以使用 [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、 [入口網站](./windows/dedicated-hosts-portal.md)和 [Azure CLI](./linux/dedicated-hosts-cli.md)來部署專用主機。
+- 您可以使用 [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、 [入口網站](./dedicated-hosts-portal.md)和 [Azure CLI](./linux/dedicated-hosts-cli.md)來部署專用主機。
 
 - [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，範例中使用區域和容錯網域來獲得區域中的最大復原。
 

@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述在 Azure Kubernetes Service 上使用 Azure Dev Spaces 執行程式碼的程式
 keywords: azds. yaml、Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: a189b26264f3e22a69acb3e3c0410203f9822c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981288"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975462"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 執行您的程式碼的運作方式
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應用程式並偵錯，以及在 Azure Kubernetes Service (AKS) 叢集上與您的小組共同作業。 當您的 [專案準備好在開發人員空間中執行時][how-it-works-prep]，您可以使用 dev Spaces 在您的 AKS 叢集中建立並執行您的專案。
 

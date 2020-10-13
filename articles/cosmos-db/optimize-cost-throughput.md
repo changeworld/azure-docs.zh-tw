@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91801319"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
@@ -58,9 +58,9 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 |----|----|----|
 |SQL API|資料庫|容器|
 |適用於 MongoDB 的 Azure Cosmos DB API|資料庫|集合|
-|Cassandra API|keyspace|資料表|
+|Cassandra API|keyspace|Table|
 |Gremlin API|資料庫帳戶|圖形|
-|資料表 API|資料庫帳戶|資料表|
+|資料表 API|資料庫帳戶|Table|
 
 您可以在不同層級佈建輸送量，以根據工作負載特性獲得最佳成本。 如先前所述，您可以隨時以程式設計方式，對個別容器或集體形式的一組容器增加或減少所佈建的輸送量。 隨著工作負載的變化來彈性調整輸送量，您便只需支付您已設定的輸送量。 如果您的容器或一組容器分散在多個區域，則您對一個容器或一組容器所設定的輸送量，保證可供所有區域使用。
 

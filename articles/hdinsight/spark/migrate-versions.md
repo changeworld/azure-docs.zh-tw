@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 1ce9b0faa6636d1318871cc9ef66cfbe47908265
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504973"
 ---
 # <a name="migrate-apache-spark-21-and-22-workloads-to-23-and-24"></a>將 Apache Spark 2.1 和 2.2 工作負載遷移至 2.3 和 2.4

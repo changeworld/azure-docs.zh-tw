@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f23e2c58ae25fefb8508474921e476163b33e79
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830439"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978419"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -26,7 +26,7 @@ Azure 磁碟加密可協助保護資料安全，以符合貴組織安全性和�
 > [!WARNING]
 > - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。 如需詳細資料，請參閱 [Azure 磁碟加密與 Azure AD (舊版)](disk-encryption-overview-aad.md)。 
 > - 某些建議可能會增加資料、網路或計算資源的使用量，導致額外的授權或訂用帳戶成本。 您必須擁有有效的作用中 Azure 訂用帳戶，才能在 Azure 支援的區域中建立資源。
-> - 目前，第二代 VM 不支援 Azure 磁碟加密。 如需詳細資料，請參閱 [Azure 上第 2 代 VM 的支援](../windows/generation-2.md)。
+> - 目前，第二代 VM 不支援 Azure 磁碟加密。 如需詳細資料，請參閱 [Azure 上第 2 代 VM 的支援](../generation-2.md)。
 
 透過[使用 Azure CLI 快速入門來建立並加密 Linux VM](disk-encryption-cli-quickstart.md)，或[使用 Azure PowerShell 快速入門來建立並加密 Linux VM](disk-encryption-powershell-quickstart.md)，您可以在幾分鐘內了解適用於 Linux 的 Azure 磁碟加密的基本概念。
 
@@ -46,7 +46,7 @@ Linux 虛擬機器上的作業系統磁碟加密程序完成之後，就可以�
 
 Azure 磁碟加密也適用於具有進階儲存體的 VM。
 
-[第 2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities)) 和 [Lsv2 系列 VM](../lsv2-series.md)) 上無法使用 Azure 磁碟加密。 如需更多例外狀況，請參閱 [Azure 磁碟加密：不支援的案例](disk-encryption-linux.md#unsupported-scenarios)。
+Azure 磁碟加密無法在 [第2代 vm](../generation-2.md#generation-1-vs-generation-2-capabilities) 和 [Lsv2 系列 vm](../lsv2-series.md)上使用。 如需更多例外狀況，請參閱 [Azure 磁碟加密：不支援的案例](disk-encryption-linux.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支援的作業系統
 

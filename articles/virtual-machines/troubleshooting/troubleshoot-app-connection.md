@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966333"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>針對 Azure 中 虛擬機器上的應用程式連線問題進行疑難排解
 
@@ -122,7 +122,7 @@ ms.locfileid: "87036432"
   
   * 確認 VM 的輸入 NAT 規則組態允許連入流量，特別是通訊協定 (TCP 或 UDP) 和公用與私人連接埠號碼。
   * 確認網路安全性群組允許輸入要求與輸出回應的流量。
-  * 如需詳細資訊，請參閱[什麼是網路安全性群組？](../../virtual-network/security-overview.md)
+  * 如需詳細資訊，請參閱[什麼是網路安全性群組？](../../virtual-network/network-security-groups-overview.md)
 
 如果虛擬機器或端點是負載平衡集的成員：
 

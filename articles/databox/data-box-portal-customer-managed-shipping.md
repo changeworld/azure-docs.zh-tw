@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142531"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951905"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱的自我管理寄送
 
@@ -40,8 +40,8 @@ ms.locfileid: "88142531"
 
 2. 選擇出貨類型時，選取 [自我管理寄送] 選項。 只有您的所在區域支援時 (如必要條件中所述)，此選項才可供使用。
 
-3. 在您提供交貨地址之後，您必須驗證該地址並完成您的訂單。
-   ![自我管理寄送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+3. 在您提供交貨地址之後，必須驗證該地址並完成您的訂單。
+   ![自我管理的出貨2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. 一旦裝置已備妥且您收到電子郵件通知，您就可以排程取貨。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88142531"
 
 9. 如果您已收到送貨約會，則訂單在 Azure 入口網站中應該是 [Azure 資料中心準備好收貨] 狀態。 依照 [排程送貨] 下的指示交回裝置。
 
-   ![檢視您的授權碼](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![查看授權碼2](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. 在驗證您的識別碼和授權碼，並在資料中心卸下裝置後，訂單狀態應為 [已收到]。
 

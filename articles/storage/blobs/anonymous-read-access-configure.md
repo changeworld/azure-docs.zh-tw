@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087349"
+ms.locfileid: "91931065"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>設定容器和 blob 的匿名公用讀取權限
 
@@ -56,7 +56,7 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 > [!NOTE]
 > 預設不會設定 **AllowBlobPublicAccess** 屬性，而且在您明確設定之後，才會傳回值。 當屬性值為 **null** 或為 **true**時，儲存體帳戶允許公用存取。
 >
-> **AllowBlobPublicAccess**屬性目前僅適用于 Azure 公用雲端中的儲存體帳戶。
+> **AllowBlobPublicAccess**屬性適用于 Azure 公用雲端中的所有儲存體帳戶，以及 Azure Government 雲端中的所有儲存體帳戶。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 

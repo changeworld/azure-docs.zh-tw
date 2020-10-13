@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, sstein
 ms.date: 06/25/2019
 ms.openlocfilehash: 026c2b7b57929d31fbbf776d81ee41eb73b73d44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321508"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>在最短停機時間的情況下動態調整資料庫資源
@@ -43,7 +43,7 @@ Azure SQL Database 提供以 [DTU 為基礎的購買模型](service-tiers-dtu.md
 > [!NOTE]
 > 動態延展性與自動調整規模不同。 自動調整規模是指當服務根據準則自動調整時，動態調整可讓您以極短的停機時間進行手動調整。
 
-Azure SQL Database 中的單一資料庫支援手動動態調整，但不支援自動調整規模。 如需「自動」** 體驗，請考慮使用彈性集區，以根據個別資料庫的需求讓資料庫共用集區中的資源。
+Azure SQL Database 中的單一資料庫支援手動動態調整，但不支援自動調整規模。 若要獲得更多的 *自動化* 體驗，請考慮使用彈性集區，以根據個別的資料庫需求，讓資料庫共用集區中的資源。
 不過，有一些腳本可協助針對 Azure SQL Database 中的單一資料庫，自動調整規模。 如需範例，請參閱[使用 PowerShell 來監視和調整單一 SQL 資料庫的規模](scripts/monitor-and-scale-database-powershell.md)。
 
 您可以在應用程式停機時間最短 (通常平均少於四秒) 的情況下，隨時變更 [DTU 服務層級](service-tiers-dtu.md)或[虛擬核心特性](resource-limits-vcore-single-databases.md)。 對於許多企業和應用程式而言，只要能夠建立資料庫，並依需求調高或調低的效能即可，尤其是當使用模式相當容易預測時更是如此。 但如果您有無法預測的使用模式，則管理成本和商務模式就會變得相當困難。 針對此案例您可使用彈性集區，以在集區中的多個資料庫之間共用特定數量的 eDTU。

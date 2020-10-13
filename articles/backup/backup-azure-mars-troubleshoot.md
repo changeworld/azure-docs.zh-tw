@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何針對 Azure 備份代理程式的
 ms.topic: troubleshooting
 ms.date: 07/15/2019
 ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019618"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務 (MARS) 代理程式進行疑難排解
@@ -67,7 +67,7 @@ ms.locfileid: "89019618"
 
 | 錯誤   | 建議動作 |
 | ---     | ---    |
-|無法下載保存庫認證檔案。  (識別碼： 403)  | <ul><li> 請嘗試使用不同的瀏覽器下載保存庫認證，或執行下列步驟： <ul><li> 啟動 Internet Explorer。 選取 F12。 </li><li> 移至 [ **網路** ] 索引標籤，並清除快取和 cookie。 </li> <li> 重新整理頁面。<br></li></ul> <li> 檢查訂用帳戶是否已停用/過期。<br></li> <li> 檢查是否有任何防火牆規則封鎖下載。 <br></li> <li> 請確定您未在每個保存庫)  (50 部電腦上達到限制。<br></li>  <li> 請確定使用者具有下載保存庫認證所需的 Azure 備份許可權，並向保存庫註冊伺服器。 請參閱 [使用角色型存取控制來管理 Azure 備份復原點](backup-rbac-rs-vault.md)。</li></ul> |
+|無法下載保存庫認證檔案。  (識別碼： 403)  | <ul><li> 請嘗試使用不同的瀏覽器下載保存庫認證，或執行下列步驟： <ul><li> 啟動 Internet Explorer。 選取 F12。 </li><li> 移至 [ **網路** ] 索引標籤，並清除快取和 cookie。 </li> <li> 重新整理頁面。<br></li></ul> <li> 檢查訂用帳戶是否已停用/過期。<br></li> <li> 檢查是否有任何防火牆規則封鎖下載。 <br></li> <li> 請確定您未在每個保存庫)  (50 部電腦上達到限制。<br></li>  <li> 請確定使用者具有下載保存庫認證所需的 Azure 備份許可權，並向保存庫註冊伺服器。 請參閱 [使用 Role-Based 存取控制來管理 Azure 備份復原點](backup-rbac-rs-vault.md)。</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure 復原服務代理程式無法連線至 Microsoft Azure 備份
 
@@ -222,7 +222,7 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
 如果快取資料夾 (也稱為暫存檔案夾) 未正確設定、缺少必要條件或有限制存取，則備份作業可能會失敗。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 若要讓 MARS 代理程式作業成功，快取資料夾必須符合下列需求：
 

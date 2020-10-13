@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279477"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 傳遞驗證：將預覽驗證代理程式升級
@@ -88,5 +88,5 @@ ms.locfileid: "89279477"
 >[!NOTE]
 >完成前述步驟後，若到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)查看傳遞驗證刀鋒視窗，將會發現每個伺服器有兩個驗證代理程式項目：一個項目會顯示驗證代理程式為**使用中**，另一個則顯示為**非使用中**。 這是 _預期_的情況。 **非使用中**的項目會在幾天後自動卸除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [**疑難排解**](tshoot-connect-pass-through-authentication.md) - 了解如何解決此功能的常見問題。

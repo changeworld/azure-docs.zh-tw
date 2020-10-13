@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91840246"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
@@ -39,7 +39,7 @@ ms.locfileid: "91840246"
     * [便捷鍵](#access-keys)
     * [Advanced 設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-    * [調整](#scale)
+    * [縮放比例](#scale)
     * [叢集大小](#cluster-size)
     * [資料持續性](#redis-data-persistence)
     * [更新排程](#schedule-updates)
@@ -49,7 +49,7 @@ ms.locfileid: "91840246"
     * [屬性](#properties)
     * [鎖定](#locks)
     * [自動化指令碼](#automation-script)
-* 管理
+* 系統管理
     * [匯入資料](#importexport)
     * [匯出資料](#importexport)
     * [重新啟動](#reboot)
@@ -91,7 +91,7 @@ ms.locfileid: "91840246"
 * [便捷鍵](#access-keys)
 * [Advanced 設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-* [調整](#scale)
+* [縮放比例](#scale)
 * [叢集大小](#cluster-size)
 * [資料持續性](#redis-data-persistence)
 * [更新排程](#schedule-updates)
@@ -288,7 +288,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 ## <a name="administration-settings"></a>管理設定
 [管理]**** 區段中的設定可讓您針對快取執行下列管理工作。
 
-![管理](./media/cache-configure/redis-cache-administration.png)
+![系統管理](./media/cache-configure/redis-cache-administration.png)
 
 * [匯入資料](#importexport)
 * [匯出資料](#importexport)

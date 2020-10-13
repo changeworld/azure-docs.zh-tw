@@ -4,10 +4,10 @@ description: 本文說明如何針對已啟用 Azure Arc 的 Kubernetes 叢集�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620285"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>啟用 Azure Arc 啟用的 Kubernetes 叢集監視
@@ -262,7 +262,7 @@ Proxy 設定值具有下列語法： `[protocol://][user:password@]proxyhost[:po
 |proxyhost | Proxy 伺服器的位址或 FQDN |
 |連接埠 | Proxy 伺服器的選擇性埠號碼 |
 
-例如：`http://user01:password@proxy01.contoso.com:3128`
+例如： `http://user01:password@proxy01.contoso.com:3128`
 
 如果您將通訊協定指定為 **HTTP**，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
 

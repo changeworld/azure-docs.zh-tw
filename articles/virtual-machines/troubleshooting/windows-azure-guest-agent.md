@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561256"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977060"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>針對 Windows Azure 來賓代理程式進行疑難排解
 
-Windows Azure 來賓代理程式是虛擬機器) 代理程式 (VM。 它可讓 VM (IP 位址168.63.129.16 上裝載 VM) 基礎實體伺服器，與網狀架構控制器通訊。 這是有助於進行通訊的虛擬公用 IP 位址。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+Windows Azure 來賓代理程式是虛擬機器) 代理程式 (VM。 它可讓 VM (IP 位址168.63.129.16 上裝載 VM) 基礎實體伺服器，與網狀架構控制器通訊。 這是有助於進行通訊的虛擬公用 IP 位址。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
- 從內部部署遷移至 Azure，或使用自訂映射建立的 VM 未安裝 Windows Azure 來賓代理程式。 在這些情況下，您必須手動安裝 VM 代理程式。 如需有關如何安裝 VM 代理程式的詳細資訊，請參閱 [Azure 虛擬機器代理程式總覽](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+ 從內部部署遷移至 Azure，或使用自訂映射建立的 VM 未安裝 Windows Azure 來賓代理程式。 在這些情況下，您必須手動安裝 VM 代理程式。 如需有關如何安裝 VM 代理程式的詳細資訊，請參閱 [Azure 虛擬機器代理程式總覽](../extensions/agent-windows.md)。
 
 成功安裝 Windows Azure 來賓代理程式之後，您可以在 VM 上看到 services.msc 中列出下列服務：
  
@@ -74,7 +74,7 @@ Windows Azure 來賓代理程式是虛擬機器) 代理程式 (VM。 它可讓 V
 
     在主控台中，移至 [ **程式和功能** ]，以判斷是否已安裝 Windows Azure 來賓代理程式服務。
 
-如果您找不到任何套件、服務和進程，而且沒有看到安裝在 [程式和功能] 下的 Windows Azure 來賓代理程式，請嘗試 [安裝 Windows Azure 來賓代理程式服務](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。 如果來賓代理程式未正確安裝，您可以 [離線安裝 VM 代理程式](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)。
+如果您找不到任何套件、服務和進程，而且沒有看到安裝在 [程式和功能] 下的 Windows Azure 來賓代理程式，請嘗試 [安裝 Windows Azure 來賓代理程式服務](../extensions/agent-windows.md)。 如果來賓代理程式未正確安裝，您可以 [離線安裝 VM 代理程式](./install-vm-agent-offline.md)。
 
 如果您可以看到正在執行的服務，請重新開機服務，以查看問題是否已解決。 如果服務已停止，請將其啟動並等候幾分鐘。 然後檢查 **代理程式狀態** 是否已報告為 [ **就緒**]。 如果您發現這些服務損毀，某些協力廠商進程可能會導致這些服務損毀。 若要進一步疑難排解這些問題，請聯絡 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
@@ -111,7 +111,7 @@ Windows Azure 來賓代理程式具有自動更新功能。 它會自動檢查�
     ```
     然後檢查來賓代理程式服務是否正確啟動。
  
-    在不正確安裝來賓代理程式的罕見情況下，您可以 [離線安裝 VM 代理程式](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)。
+    在不正確安裝來賓代理程式的罕見情況下，您可以 [離線安裝 VM 代理程式](./install-vm-agent-offline.md)。
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>步驟3檢查 VM 是否可以連線到網狀架構控制器
@@ -139,7 +139,7 @@ Windows Azure 來賓代理程式具有自動更新功能。 它會自動檢查�
  
 VM 仍在執行較舊版本的 Windows Azure 來賓代理程式。 在 C:\WindowsAzure 資料夾中，您可能會注意到已安裝多個 Windows Azure 來賓代理程式實例，包括數個相同的版本。 因為已安裝多個代理程式實例，所以 VM 不會啟動最新版本的 Windows Azure 來賓代理程式。
 
-**解決方案**
+**方案**
 
 手動卸載 Windows Azure 來賓代理程式，然後依照下列步驟來重新安裝：
 
@@ -183,13 +183,13 @@ at Microsoft.WindowsAzure.GuestAgent.ContainerStateMachine.HostGAPluginUtility.U
 
 VM 無法連線到 wireserver 主機伺服器。
 
-**解決方案**
+**方案**
 
 1. 因為無法連線到 wireserver，請使用遠端桌面連線到 VM，然後嘗試從網際網路瀏覽器存取下列 URL： http://168.63.129.16/?comp=versions 
 1. 如果您無法連線到步驟1中的 URL，請檢查網路介面，以判斷它是否設定為啟用 DHCP 且有 DNS。 若要檢查網路介面的 DHCP 狀態，請執行下列命令：  `netsh interface ip show config` 。
 1. 如果已停用 DHCP，請執行下列動作，並確定您將黃色的值變更為您的介面名稱： `netsh interface ip set address name="Name of the interface" source=dhcp` 。
 1. 檢查可能由防火牆、proxy 或其他可能封鎖存取 IP 位址168.63.129.16 的來源所造成的任何問題。
-1. 檢查 Windows 防火牆或協力廠商防火牆是否封鎖埠80、443和32526的存取。 如需為何無法封鎖此位址的詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+1. 檢查 Windows 防火牆或協力廠商防火牆是否封鎖埠80、443和32526的存取。 如需為何無法封鎖此位址的詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ### <a name="guest-agent-is-stuck-stopping"></a>來賓代理程式停滯「正在停止」  
 
@@ -212,7 +212,7 @@ at Microsoft.WindowsAzure.GuestAgent.AgentCore.AgentService.<>c__DisplayClass2.<
 
 Windows Azure 來賓代理程式停滯于停止進程。
 
-**解決方案**
+**方案**
 
 1. 確定 WaAppAgent.exe 正在 VM 上執行。 如果未執行，請重新開機 rdgagent 服務，然後等候五分鐘。 當 WaAppAgent.exe 正在執行時，請結束 WindowsAzureGuest.exe 進程。
 2. 如果步驟1無法解決問題，請移除目前安裝的版本，並手動安裝最新版的代理程式。
@@ -230,7 +230,7 @@ Windows Azure 來賓代理程式停滯于停止進程。
 
 Wireshark 會在 VM 上安裝 Npcap 回送介面卡。 Wireshark 是一種開放原始碼工具，可用於分析網路流量及分析封包。 這類工具通常稱為「網路分析器」、「網路通訊協定分析器」或「探查」。
 
-**解決方案**
+**方案**
 
 WireShark 可能會安裝 Npcap 回送介面卡。 請嘗試停用它，然後檢查問題是否已解決。
 

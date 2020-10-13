@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528648"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中樞裝置佈建服務的自動佈建向 IoT 中樞註冊 MXChip IoT DevKit
@@ -30,7 +30,7 @@ ms.locfileid: "90528648"
 
 若要完成本教學課程中的步驟，請先執行下列工作：
 
-* 遵循將 [IoT DEVKIT AZ3166 連線到雲端中 Azure IoT 中樞](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)的「準備開發環境」一節，以設定 DevKit 的 wi-fi 並準備開發環境。
+* 遵循將 [IoT DEVKIT AZ3166 連線 Azure IoT 中樞到雲端中](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment)的「準備開發環境」一節中的「準備開發環境」一節，以設定您的 DevKit Wi-Fi 並準備您的開發環境。
 * 利用[更新 DevKit 韌體](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)教學課程，升級至最新的韌體 (1.3.0 或更新版本)。
 * 遵循 [使用 Azure 入口網站設定 Iot 中樞裝置](/azure/iot-dps/quick-setup-auto-provision)布建服務中的步驟，建立 iot 中樞，並將其連結至裝置布建服務實例。
 

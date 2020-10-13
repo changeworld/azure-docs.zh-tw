@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a21d0db383e8c563f0b187061a95ac818dd2a4f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994546"
 ---
 # <a name="managed-hsm-access-control"></a>受控 HSM 存取控制
@@ -21,7 +21,7 @@ ms.locfileid: "90994546"
 > [!NOTE]
 > Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm**。 本文所述的存取控制僅適用于 **受管理的 hsm**。 若要深入瞭解受控 HSM 的存取控制，請參閱 [使用 Azure 角色型存取控制來提供 Key Vault 金鑰、憑證和秘密的存取權](../general/rbac-guide.md)。
 
-Azure Key Vault 受控 HSM 是保護加密金鑰的雲端服務。 因為這項資料是敏感且商務關鍵性的，所以您必須只允許已獲授權的應用程式和使用者存取受管理的 Hsm，以保護對這些 Hsm 的存取。 本文提供受控 HSM 存取控制模型的總覽。 它會說明驗證和授權，並說明如何保護對受控 Hsm 的存取。
+Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這是敏感且具業務關鍵性的資料，因此您必須藉由僅允許獲得授權的應用程式和使用者存取受控 HSM，來保護其存取。 本文提供受控 HSM 控制存取模型的概觀。 文中會說明驗證和授權，並說明如何保護對受控 HSM 的存取權。
 
 ## <a name="access-control-model"></a>存取控制模型
 
@@ -87,6 +87,6 @@ Azure Key Vault 受控 HSM 是保護加密金鑰的雲端服務。 因為這項�
 
 ## <a name="next-steps"></a>下一步
 
-- 如需系統管理員的入門教學課程，請參閱 [什麼是受控 HSM？](overview.md)。
+- 如需適用於管理員的開始使用教學課程，請參閱[什麼是受控 HSM？](overview.md)。
 - 如需角色管理教學課程，請參閱 [受控 HSM 本機 RBAC](role-management.md)
-- 如需受管理的 HSM 記錄之使用記錄的詳細資訊，請參閱 [受控 hsm 記錄](logging.md)。
+- 若要進一步了解受控 HSM 記錄的使用記錄，請參閱[受控 HSM 記錄](logging.md)。

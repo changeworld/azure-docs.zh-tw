@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542507"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 入口網站將適用於 MySQL 的 Azure 資料庫伺服器移至另一個區域
@@ -33,7 +33,7 @@ ms.locfileid: "91542507"
 
 若要使用 Azure 入口網站在目的地區域中建立跨區域讀取複本伺服器，請使用下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入[Azure 入口網站](https://portal.azure.com/)。
 1. 選取您要用來作為來源伺服器的現有適用於 MySQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 1. 選取 [設定] 下方功能表中的 [複寫]。
 1. 選取 [新增複本]。

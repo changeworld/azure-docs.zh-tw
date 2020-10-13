@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
 ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627220"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
@@ -235,7 +235,7 @@ ms.locfileid: "91627220"
 
 ### <a name="using-geo-paired-regions"></a>使用地理配對區域
 
-基於效能考慮，將兩個受控實例部署到 [配對的區域](../../best-practices-availability-paired-regions.md) 。 相較于未配對的區域，位於地理配對區域中的受控實例會有更好的效能。 
+基於效能考慮，這兩個受控執行個體都會部署到[配對區域](../../best-practices-availability-paired-regions.md)。 相較於非配對區域，位於異地配對區域中的受控執行個體會有更好的效能。 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>在兩個實例之間啟用複寫流量
 
@@ -492,7 +492,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
   - [使用 PowerShell 設定 Azure SQL Database 的主動式異地複寫](scripts/setup-geodr-and-failover-database-powershell.md)
   - [使用 PowerShell 為 Azure SQL Database 中的集區資料庫設定作用中異地複寫](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
   - [使用 PowerShell 將 Azure SQL Database 新增至容錯移轉群組](scripts/add-database-to-failover-group-powershell.md)
-- 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- 如需商務持續性的總覽和案例，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - 若要瞭解 Azure SQL Database 自動備份的相關資訊，請參閱 [SQL Database 自動備份](automated-backups-overview.md)。
 - 若要瞭解如何使用自動備份進行復原，請參閱 [從服務起始的備份還原資料庫](recovery-using-backups.md)。
 - 若要深入了解新的主要伺服器和資料庫的驗證需求，請參閱 [災害復原後的 SQL Database 安全性](active-geo-replication-security-configure.md)。

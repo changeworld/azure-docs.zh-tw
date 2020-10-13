@@ -4,10 +4,10 @@ description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761408"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
@@ -76,7 +76,7 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 根據預設，金鑰會儲存在設定所提供之帳戶的 Blob 儲存體容器中 `AzureWebJobsStorage` 。 您可以使用特定的應用程式設定來覆寫此行為，並將金鑰儲存在不同的位置。
 
-|位置  |設定 | 值 | 描述  |
+|Location  |設定 | 值 | 描述  |
 |---------|---------|---------|---------|
 |不同的儲存體帳戶     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 會根據提供的 SAS URL，將金鑰儲存在第二個儲存體帳戶的 Blob 儲存體中。 金鑰會在使用您函式應用程式特有的秘密進行儲存之前進行加密。 |
 |檔案系統   | `AzureWebJobsSecretStorageType`   |  `files`       | 金鑰會保存在檔案系統上，並使用您函式應用程式特有的秘密在儲存體之前加密。 |

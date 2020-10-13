@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893628"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945581"
 ---
 # <a name="select-columns-transform"></a>選取資料行轉換
 
@@ -46,8 +46,14 @@ ms.locfileid: "90893628"
 
    *請勿連接輸入資料集。* 請改為加入「套用 [轉換](apply-transformation.md) 」模組，然後連接「特徵選取」轉換的輸出。
 
+   管線結構應如下所示：
+
+   > [!div class="mx-imgBorder"]
+   > ![範例管線](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > 您不應該預期會將以 [篩選器為基礎的特徵選取](filter-based-feature-selection.md) 套用至計分資料集，並取得相同的結果。 因為特徵選取是以值為基礎，所以它可能會選擇一組不同的資料行，這會導致計分作業失敗。
+    
 7. 提交管線。
 
 儲存然後套用資料行選取專案的這個程式，可確保相同的資料結構描述可供定型和評分之用。

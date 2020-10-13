@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266488"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 授權範本概觀
@@ -64,7 +64,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 ```
 
 ## <a name="json-message"></a>JSON 訊息
-| Name | 值 | 說明 |
+| 名稱 | 值 | 描述 |
 | --- | --- | --- |
 | payload |Base64 編碼字串 |用戶端傳送的授權要求。 |
 | content_id |Base64 編碼字串 |用來針對每個 content_key_specs.track_type 衍生金鑰識別碼與內容金鑰的識別碼。 |
@@ -82,7 +82,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 
 必須對所有追蹤指定每個 content_key_specs 值，不論 use_policy_overrides_exclusively 選項為何。 
 
-| Name | 值 | 說明 |
+| 名稱 | 值 | 描述 |
 | --- | --- | --- |
 | content_key_specs track_type |字串 |追蹤類型名稱。 如果授權要求中指定 content_key_specs，則請務必明確指定所有追蹤類型。 未這樣做會導致無法播放過去 10 秒。 |
 | content_key_specs  <br/> security_level |uint32 |定義用戶端對於播放的穩健性需求。 <br/> 以軟體為基礎白箱加密是必要的。 <br/> 軟體加密和模糊化的解碼器是必要的。 <br/> 金鑰資料和加密作業必須在支援硬體的受信任執行環境中執行。 <br/> 內容的加密和解密必須在支援硬體的受信任執行環境中執行。  <br/> 加密、解密和媒體 (壓縮和未壓縮) 的所有處理必須在支援硬體的受信任執行環境中處理。 |
@@ -91,11 +91,11 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | content_key_specs.key_id |Base64 編碼的二進位字串，16 位元組 |金鑰的唯一識別碼。 |
 
 ## <a name="policy-overrides"></a>原則覆寫
-| Name | 值 | 說明 |
+| 名稱 | 值 | 描述 |
 | --- | --- | --- |
-| policy_overrides can_play |布林值，true 或 false |表示允許播放內容。 預設為 false。 |
-| policy_overrides can_persist |布林值，true 或 false |表示可以將授權保存到非揮發性儲存體，供離線使用。 預設為 false。 |
-| policy_overrides can_renew |布林值，true 或 false |表示允許更新此授權。 如果為 true，則在授權期間可以透過活動訊號延長。 預設為 false。 |
+| policy_overrides can_play |布林值，true 或 false |表示允許播放內容。 預設值為 false。 |
+| policy_overrides can_persist |布林值，true 或 false |表示可以將授權保存到非揮發性儲存體，供離線使用。 預設值為 false。 |
+| policy_overrides can_renew |布林值，true 或 false |表示允許更新此授權。 如果為 true，則在授權期間可以透過活動訊號延長。 預設值為 false。 |
 | policy_overrides license_duration_seconds |int64 |指出此特定授權的期間。 值為 0 表示期間沒有限制。 預設值為 0。 |
 | policy_overrides rental_duration_seconds |int64 |指出允許播放的期間。 值為 0 表示期間沒有限制。 預設值為 0。 |
 | policy_overrides playback_duration_seconds |int64 |在授權期間內開始播放後的檢視時段。 值為 0 表示期間沒有限制。 預設值為 0。 |
@@ -106,7 +106,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | policy_overrides renew_with_usage |布林值，true 或 false |表示開始使用時會傳送授權以進行更新。 只有在 can_renew 為 true 時才會使用這個欄位。 |
 
 ## <a name="session-initialization"></a>工作階段初始化
-| Name | 值 | 說明 |
+| 名稱 | 值 | 描述 |
 | --- | --- | --- |
 | provider_session_token |Base64 編碼字串 |此工作階段權杖會傳回到授權，並且會在後續的更新作業中存在。 工作階段權杖不會在工作階段之外保存。 |
 | provider_client_token |Base64 編碼字串 |要在授權回應中傳回的用戶端權杖。 如果授權要求包含用戶端權杖，則會忽略此值。 用戶端權杖會在授權工作階段之外保存。 |

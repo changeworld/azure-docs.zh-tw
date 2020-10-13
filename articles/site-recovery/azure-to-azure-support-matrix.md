@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4cbf0228bc68fa253f9e7a06b4eaba5157d2bd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803087"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952075"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -273,7 +273,7 @@ Azure 共用磁碟 | 不支援
 **設定** | **支援** | **詳細資料**
 --- | --- | ---
 NIC | 針對特定 Azure VM 大小支援的數目上限 | 在容錯移轉期間建立 VM 時，系統會建立 NIC。<br/><br/> 容錯移轉 VM 的 NIC 數目取決於啟用複寫時來源 VM 具有的 NIC 數量。 如果您在啟用複寫後新增或移除 NIC，不會影響容錯移轉後複寫 VM 上的 NIC 數目。 <br/><br/> 在容錯移轉之後，Nic 的順序不保證會與原始順序相同。 <br/><br/> 您可以根據組織的命名慣例，重新命名目的地區域中的 Nic。 使用 PowerShell 可支援重新命名 NIC。
-網際網路負載平衡器 | 不支援 | Azure site recovery 不支援公用/網際網路負載平衡器。
+網際網路負載平衡器 | 不支援 | 您可以在主要區域中設定公用/網際網路負載平衡器。 不過，DR 區域中的 Azure Site Recovery 不支援公用/網際網路負載平衡器。
 內部負載平衡器 | 支援 | 使用復原方案中的 Azure 自動化指令碼，使預先設定的負載平衡器產生關聯。
 公用 IP 位址 | 支援 | 將現有公用 IP 位址與 NIC 產生關聯。 或者，建立公用 IP 位址，然後使用復原方案中的 Azure 自動化指令碼讓它與 NIC 產生關聯。
 NIC 上的 NSG | 支援 | 使用復原方案中的 Azure 自動化指令碼，使 NSG 與 NIC 產生關聯。

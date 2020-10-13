@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271591"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>使用 REST API 建立 Azure 復原服務保存庫
@@ -38,13 +38,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下是用來建立要求本文的常用定義：
 
-|名稱  |必要  |類型  |說明  |
+|名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   String      |  選擇性 eTag       |
-|location     |  true       |String         |   資源位置      |
+|etag     |         |   字串      |  選擇性 eTag       |
+|location     |  true       |字串         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |sku     |         |  [Sku](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    識別每個 Azure 資源的唯一系統識別碼     |
-|tags     |         | 物件        |     資源標籤    |
+|tags     |         | Object        |     資源標籤    |
 
 請注意，保存庫名稱和資源群組名稱會在 PUT URI 中提供。 要求本文會定義位置。
 
@@ -66,7 +66,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 建立或更新復原服務保存庫的作業會有兩個成功的回應：
 
-|名稱  |類型  |說明  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |200 確定     |   [保存庫](/rest/api/recoveryservices/vaults/createorupdate#vault)      | 確定        |
 |201 Created     | [保存庫](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   建立時間      |

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602280"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945908"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
@@ -155,7 +155,7 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/
 NIC | 支援 | 請在目的地區域中指定現有的資源，或在準備程式期間建立新的資源。 
 內部負載平衡器 | 支援 | 請在目的地區域中指定現有的資源，或在準備程式期間建立新的資源。  
 公用 Load Balancer | 目前不支援 | 請在目的地區域中指定現有的資源，或在準備程式期間建立新的資源。  
-公用 IP 位址 | 支援 | 請在目的地區域中指定現有的資源，或在準備程式期間建立新的資源。  
+公用 IP 位址 | 支援 | 請在目的地區域中指定現有的資源，或在準備程式期間建立新的資源。<br/><br/> 公用 IP 位址是特定區域，且不會在移動之後保留于目的地區域中。 當您修改網路設定時，請記住這點 (包括在目標位置) 的負載平衡規則。
 網路安全性群組 | 支援 | 請在目的地區域中指定現有的資源，或在準備程式期間建立新的資源。  
 保留 (靜態) IP 位址 | 支援 | 您目前無法設定此設定。 值預設為來源值。 <br/><br/> 如果來源 VM 上的 NIC 有靜態 IP 位址，且目標子網具有相同的可用 IP 位址，則會將它指派給目標 VM。<br/><br/> 如果目標子網沒有相同的可用 IP 位址，則 VM 的起始移動將會失敗。
 動態 IP 位址 | 支援 | 您目前無法設定此設定。 值預設為來源值。<br/><br/> 如果來源上的 NIC 有動態 IP 位址，則目標 VM 上的 NIC 預設也是動態的。

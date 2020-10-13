@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 28a1990155e1406bf9b79572b3e5307cadfb8076
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665917"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>將 IoT 中樞事件來源新增至您的 Azure 時間序列深入解析環境
@@ -25,7 +25,7 @@ ms.locfileid: "91665917"
 > [!NOTE]
 > 本文中的指示適用于 Azure 時間序列深入解析 Gen 1 和 Azure 時間序列深入解析 Gen 2 環境。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 建立 [Azure 時間序列深入解析環境](time-series-insights-update-create-environment.md)。
 * [使用 Azure 入口網站建立 IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "91665917"
 
 1. 在 [取用者群組]**** 下，輸入取用者群組的唯一名稱。 當您建立新的事件來源時，請在您的 Azure 時間序列深入解析環境中使用相同的名稱。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]****。
 
 ## <a name="add-a-new-event-source"></a>新增事件來源
 
@@ -101,7 +101,7 @@ ms.locfileid: "91665917"
 
 1. 新增您新增至 IoT 中樞的專用 Azure 時間序列深入解析取用者組名。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 1. 建立事件來源之後，Azure 時間序列深入解析會自動開始將資料串流至您的環境。
 

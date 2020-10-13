@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371451"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978946"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>針對 SSH 連線至 Azure Linux VM 失敗、發生錯誤或被拒進行疑難排解
 本文可協助您找出並更正當您嘗試連接到 Linux 虛擬機器 (VM) 時，因為安全殼層 (SSH) 錯誤、SSH 連線失敗或 SSH 被拒而發生的問題。 您可以使用 Azure 入口網站、Azure CLI 或適用於 Linux 的 VM 存取擴充功能，針對連線問題進行疑難排解並予以解決。
@@ -46,7 +46,7 @@ ms.locfileid: "91371451"
 您可以使用下列方法之一重設認證或 SSH 組態：
 
 * [Azure 入口網站](#use-the-azure-portal) - 適用於您需要快速重設 SSH 組態或 SSH 金鑰，而且未安裝 Azure 工具時。
-* [AZURE Vm 序列主控台](https://aka.ms/serialconsolelinux) -無論 SSH 設定為何，VM 序列主控台都可以運作，並會為您的 vm 提供互動式主控台。 事實上，「無法 SSH」的情況特別是序列主控台的設計目的是為了協助解決。 請參閱下列詳細資訊。
+* [AZURE Vm 序列主控台](./serial-console-linux.md) -無論 SSH 設定為何，VM 序列主控台都可以運作，並會為您的 vm 提供互動式主控台。 事實上，「無法 SSH」的情況特別是序列主控台的設計目的是為了協助解決。 請參閱下列詳細資訊。
 * [Azure CLI](#use-the-azure-cli) - 如果您已在命令列上，請快速重設 SSH 設定或認證。 如果您正在使用傳統 VM，可以使用 [Azure 傳統 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 擴充功能](#use-the-vmaccess-extension) - 建立並重複使用 json 定義檔案，以重設 SSH 組態或使用者認證。
 

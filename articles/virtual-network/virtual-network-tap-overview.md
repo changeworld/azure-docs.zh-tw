@@ -16,23 +16,23 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 7013c8ed338e727dd79a3845ff3b85749c0f5cee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836083"
 ---
 # <a name="virtual-network-tap"></a>虛擬網路 TAP
 > [!IMPORTANT]
-> 虛擬網路點預覽目前已在所有 Azure 區域中保留。 您可以使用您的訂用帳戶識別碼傳送電子郵件給我們 <azurevnettap@microsoft.com> ，我們會通知您未來關於預覽版的更新。 在過渡期間，您可以使用以代理程式為基礎的或 NVA 解決方案，透過我們[Azure Marketplace 供應](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)專案中提供的封[包代理人合作夥伴解決方案](#virtual-network-tap-partner-solutions)，提供點擊/網路可見度功能。
+> 虛擬網路點擊預覽目前已在所有 Azure 區域中保留。 您可以使用您的訂用帳戶識別碼寄送電子郵件給我們 <azurevnettap@microsoft.com> ，我們將會通知您未來有關預覽版的更新。 在過渡期間，您可以使用代理程式或 NVA 解決方案，透過[Azure Marketplace 供應](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)專案中提供的封[包訊息代理程式合作夥伴解決方案](#virtual-network-tap-partner-solutions)，提供點按/網路可見度功能。
 
-Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路流量串流到網路封包收集器或分析工具。 收集器或分析工具是由[網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/)合作夥伴所提供。 如需經驗證能與虛擬網路 TAP 相容的合作夥伴解決方案清單，請參閱[合作夥伴解決方案](#virtual-network-tap-partner-solutions)。
+Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路流量串流到網路封包收集器或分析工具。 收集器或分析工具是由 [網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/) 合作夥伴提供。 如需經驗證能與虛擬網路 TAP 相容的合作夥伴解決方案清單，請參閱[合作夥伴解決方案](#virtual-network-tap-partner-solutions)。
 下圖顯示虛擬網路 TAP 的運作方式。 您可以在部署於虛擬網路的虛擬機器上，對其所連結的[網路介面](virtual-network-network-interface.md)新增 TAP 設定。 目的地是和所監視網路介面相同的虛擬網路或[對等互連虛擬](virtual-network-peering-overview.md)網路中所含的虛擬網路 IP 位址。 虛擬網路 TAP 的收集器解決方案可以部署在 Azure 內部負載平衡器後方，以獲得高可用性。
 ![虛擬網路 TAP 的運作方式](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-建立虛擬網路之前，您必須先收到已在預覽中註冊的確認郵件，並具有一或多個使用[Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型建立的虛擬機器，以及可在相同 Azure 區域中匯總網路流量的合作夥伴解決方案。 如果虛擬網路中沒有合作夥伴解決方案，請參閱[合作夥伴解決方案](#virtual-network-tap-partner-solutions)來加以部署。 您可以使用相同的虛擬網路 TAP 資源，以從相同或不同訂用帳戶中的多個網路介面彙總流量。 如果所監視的網路介面位在不同訂用帳戶中，則這兩個訂用帳戶必須與相同的 Azure Active Directory 租用戶相關聯。 此外，所監視的網路介面和用於彙總 TAP 流量的目的地端點可以位於相同區域中的對等互連虛擬網路。 如果您要使用這種部署模型，請確保[虛擬網路對等互連](virtual-network-peering-overview.md)已啟用，再設定虛擬網路 TAP。
+建立虛擬網路點之前，您必須已收到您在預覽版中註冊的確認電子郵件，並有一或多個使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 部署模型建立的虛擬機器，以及可在相同 Azure 區域中匯總點出流量的合作夥伴解決方案。 如果虛擬網路中沒有合作夥伴解決方案，請參閱[合作夥伴解決方案](#virtual-network-tap-partner-solutions)來加以部署。 您可以使用相同的虛擬網路 TAP 資源，以從相同或不同訂用帳戶中的多個網路介面彙總流量。 如果所監視的網路介面位在不同訂用帳戶中，則這兩個訂用帳戶必須與相同的 Azure Active Directory 租用戶相關聯。 此外，所監視的網路介面和用於彙總 TAP 流量的目的地端點可以位於相同區域中的對等互連虛擬網路。 如果您要使用這種部署模型，請確保[虛擬網路對等互連](virtual-network-peering-overview.md)已啟用，再設定虛擬網路 TAP。
 
 ## <a name="permissions"></a>權限
 
@@ -56,7 +56,7 @@ Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>安全性分析、網路/應用程式效能管理
 
-- [喚醒的安全性](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [喚醒安全性](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch 雲端](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/partners/tech-partners/microsoft/)

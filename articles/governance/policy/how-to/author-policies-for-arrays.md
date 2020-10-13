@@ -4,10 +4,10 @@ description: 瞭解如何使用陣列參數和陣列語言運算式、評估 [*]
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576892"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>對於 Azure 資源編寫陣列屬性的原則
@@ -201,7 +201,7 @@ Azure Resource Manager 屬性通常會定義為字串和布林值。 存在一�
 > [!NOTE]
 > 使用 `modify` 具有別名的效果目前為 **預覽**狀態。
 
-|Alias |效果 | 結果 |
+|Alias |效果 | 成果 |
 |-|-|-|
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Azure 原則會將效果詳細資料中指定的整個陣列附加至遺失的情況。 |
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` 使用 `add` 作業 | Azure 原則會將效果詳細資料中指定的整個陣列附加至遺失的情況。 |

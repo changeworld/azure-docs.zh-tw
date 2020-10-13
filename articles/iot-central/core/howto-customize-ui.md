@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 660f6dfae23331455408ae7127274550a3a4cc3a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90019830"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自訂 Azure IoT Central UI
@@ -71,7 +71,7 @@ PNG 影像，不超過 32 x 32 圖元，且具有透明背景。 網頁瀏覽器
 > [!NOTE]
 > 您一律可以還原回 [ **自訂** 說明] 頁面上的預設 [說明] 連結。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何在 IoT Central 應用程式中自訂 UI，以下是一些建議的後續步驟：
 

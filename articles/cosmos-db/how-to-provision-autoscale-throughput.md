@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017136"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的資料庫或容器上佈建自動調整輸送量
@@ -47,7 +47,7 @@ ms.locfileid: "89017136"
 
 1. 在 [調整] 下，依序選取 [自動調整] 選項和 [儲存]。
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="在現有的容器上啟用自動調整":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="建立容器並設定自動調整佈建輸送量":::
 
 > [!NOTE]
 > 當在現有的資料庫或容器上啟用自動調整時，最大 RU/秒的起始值是由系統根據您目前手動佈建輸送量設定和儲存體來決定。 作業完成之後，即可視需要變更最大 RU/秒。 [深入了解。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

@@ -8,10 +8,10 @@ ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773734"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域 \(部分機器翻譯\)
@@ -92,17 +92,17 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | 基礎 | 主流 | 特製化 |
 > | --- | --- | --- |
 > | 帳戶儲存 | API 管理 | 適用於 FHIR 的 Azure API |
-> | 應用程式閘道 | 應用程式設定 | Azure Analysis Services |
-> | Azure 備份 | App Service | Azure 區塊鏈服務 |
+> | 應用程式閘道 | 應用程式組態 | Azure Analysis Services |
+> | Azure 備份 | App Service 方案 | Azure 區塊鏈服務 |
 > | Azure Cosmos DB | 自動化 | Azure 藍圖 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | 適用於 MariaDB 的 Azure 資料庫 |
 > | Azure ExpressRoute | Azure Bastion | Azure 專用 HSM |
 > | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
 > | 雲端服務 | Azue 認知搜尋 | Azure Digital Twins |
-> | 雲端服務： Av2 系列 | Azure 資料總管 | Azure 實驗室服務 |
-> | 雲端服務： Dv2 系列 | Azure Data Share | Azure NetApp Files |
-> | 雲端服務： Dv3 系列 | 適用於 MySQL 的 Azure 資料庫 | Azure Quantum |
-> | 雲端服務： Ev3 系列 | 適用於 PostgreSQL 的 Azure 資料庫 | Azure 春季雲端服務 |
+> | 雲端服務： Av2-Series | Azure 資料總管 | Azure 實驗室服務 |
+> | 雲端服務： Dv2-Series | Azure Data Share | Azure NetApp Files |
+> | 雲端服務： Dv3-Series | 適用於 MySQL 的 Azure 資料庫 | Azure Quantum |
+> | 雲端服務： Ev3-Series | 適用於 PostgreSQL 的 Azure 資料庫 | Azure 春季雲端服務 |
 > | 雲端服務：實例層級 Ip | Azure 資料庫移轉服務 | Azure Time Series Insights |
 > | 雲端服務：保留的 IP | Azure Databricks | 由 CloudSimple 提供的 Azure VMware 解決方案 |
 > | 磁碟儲存體 | Azure DDoS 保護 | 雲端服務： G 系列 |
@@ -112,48 +112,48 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | 服務匯流排 | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | 資料目錄 |
 > | 虛擬機器擴展集 | Azure IoT 中樞 | Data Factory： Data Factory V1 |
-> | 虛擬機器 | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | 虛擬機器： Av2 系列 | Azure Machine Learning | Azure Machine Learning Studio (傳統) |
-> | 虛擬機器： Bs 系列 | Azure Private Link | Microsoft Genomics |
-> | 虛擬機器： DSv2 系列 | Azure Red Hat OpenShift | 遠端轉譯 |
-> | 虛擬機器： DSv3 系列 | Azure SignalR 服務 | Spatial Anchors |
-> | 虛擬機器： Dv2 系列 | Azure Site Recovery | StorSimple |
-> | 虛擬機器： Dv3 系列 | Azure Stack Hub | 影片索引器 |
-> | 虛擬機器： ESv3 系列 | Azure 串流分析 | 虛擬機器： DASv4 系列 |
-> | 虛擬機器： Ev3 系列 | Azure Synapse Analytics | 虛擬機器： DAv4 系列 |
+> | 虛擬機器 | Azure Kubernetes Service (AKS) | 資料湖分析 |
+> | 虛擬機器： Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (傳統) |
+> | 虛擬機器： Bs-Series | Azure Private Link | Microsoft Genomics |
+> | 虛擬機器： DSv2-Series | Azure Red Hat OpenShift | 遠端轉譯 |
+> | 虛擬機器： DSv3-Series | Azure SignalR 服務 | Spatial Anchors |
+> | 虛擬機器： Dv2-Series | Azure Site Recovery | StorSimple |
+> | 虛擬機器： Dv3-Series | Azure Stack Hub | 影片索引子 |
+> | 虛擬機器： ESv3-Series | Azure 串流分析 | 虛擬機器： DASv4-Series |
+> | 虛擬機器： Ev3-Series | Azure Synapse Analytics | 虛擬機器： DAv4-Series |
 > | 虛擬機器： F 系列 | Batch | 虛擬機器： DCsv2 系列 |
-> | 虛擬機器： FS 系列 | 雲端服務： M 系列 | 虛擬機器： EASv4 系列 |
-> | 虛擬機器：實例層級 Ip | 認知服務 | 虛擬機器： EAv4 系列 |
+> | 虛擬機器： FS-Series | 雲端服務： M 系列 | 虛擬機器： EASv4-Series |
+> | 虛擬機器：實例層級 Ip | 認知服務 | 虛擬機器： EAv4-Series |
 > | 虛擬機器：保留的 IP | 認知服務：電腦視覺 | 虛擬機器： G 系列 |
-> | 虛擬網路 | 認知服務：內容仲裁 | 虛擬機器： GS 系列 |
-> | VPN 閘道 | 認知服務：臉部 | 虛擬機器： HBv1 系列 |
-> |  | 認知服務：表單辨識器 | 虛擬機器： HBv2 系列 |
-> |  | 認知服務： Language Understanding | 虛擬機器： HCv1 系列 |
+> | 虛擬網路 | 認知服務：內容仲裁 | 虛擬機器： GS-Series |
+> | VPN 閘道 | 認知服務：臉部 | 虛擬機器： HBv1-Series |
+> |  | 認知服務：表單辨識器 | 虛擬機器： HBv2-Series |
+> |  | 認知服務： Language Understanding | 虛擬機器： HCv1-Series |
 > |  | 認知服務：QnA Maker | 虛擬機器： H 系列 |
-> |  | 認知服務：語音服務 | 虛擬機器： LS 系列 |
-> |  | Container Instances | 虛擬機器： LSv2 系列 |
-> |  | Container Registry | 虛擬機器： Mv2 系列 |
-> |  | Data Factory | 虛擬機器： NC 系列 |
-> |  | 事件方格 | 虛擬機器： NCv2 系列 |
-> |  | HDInsight | 虛擬機器： NCv3 系列 |
-> |  | Logic Apps | 虛擬機器： NDs 系列 |
-> |  | 媒體服務 | 虛擬機器： NDv2 系列 |
-> |  | 網路監看員 | 虛擬機器： NV 系列 |
-> |  | 通知中樞 | 虛擬機器： NVv3 系列 |
-> |  | Power BI Embedded | 虛擬機器： NVv4 系列 |
+> |  | 認知服務：語音服務 | 虛擬機器： LS-Series |
+> |  | Container Instances | 虛擬機器： LSv2-Series |
+> |  | Container Registry | 虛擬機器： Mv2-Series |
+> |  | Data Factory | 虛擬機器： NC-Series |
+> |  | 事件方格 | 虛擬機器： NCv2-Series |
+> |  | HDInsight | 虛擬機器： NCv3-Series |
+> |  | Logic Apps | 虛擬機器： NDs-Series |
+> |  | 媒體服務 | 虛擬機器： NDv2-Series |
+> |  | 網路監看員 | 虛擬機器： NV-Series |
+> |  | 通知中樞 | 虛擬機器： NVv3-Series |
+> |  | Power BI Embedded | 虛擬機器： NVv4-Series |
 > |  | Premium Blob 儲存體 | 虛擬機器： Azure 上的 SAP HANA 大型執行個體 |
 > |  | Premium 檔案儲存體 | Visual Studio App Center |
 > |  | 儲存體：封存儲存體 |  |
 > |  | Ultra 磁碟儲存體 |  |
-> |  | 虛擬機器： Ddsv4 系列 |  |
-> |  | 虛擬機器： Ddv4 系列 |  |
-> |  | 虛擬機器： Dsv4 系列 |  |
-> |  | 虛擬機器： Dv4 系列 |  |
-> |  | 虛擬機器： Edsv4 系列 |  |
-> |  | 虛擬機器： Edv4 系列 |  |
-> |  | 虛擬機器： Esv4 系列 |  |
-> |  | 虛擬機器： Ev4 系列 |  |
-> |  | 虛擬機器： Fsv2 系列 |  |
+> |  | 虛擬機器： Ddsv4-Series |  |
+> |  | 虛擬機器： Ddv4-Series |  |
+> |  | 虛擬機器： Dsv4-Series |  |
+> |  | 虛擬機器： Dv4-Series |  |
+> |  | 虛擬機器： Edsv4-Series |  |
+> |  | 虛擬機器： Edv4-Series |  |
+> |  | 虛擬機器： Esv4-Series |  |
+> |  | 虛擬機器： Ev4-Series |  |
+> |  | 虛擬機器： Fsv2-Series |  |
 > |  | 虛擬機器： M 系列 |  |
 > |  | Virtual WAN |  |
 

@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 中的已暫止網域 |Microsoft Docs
 description: 瞭解 Azure AD DS 受控網域的不同健全狀況狀態，以及如何還原已暫止的網域。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86223392"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967693"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解 Azure Active Directory Domain Services 中的健全狀況狀態和解決擱置的網域
 
@@ -118,7 +118,7 @@ ms.locfileid: "86223392"
 * 您無法還原受控網域。 您必須建立取代受控網域，才能重複使用 Azure AD DS。
 * 將它刪除之後，您就不需繼續支付該受控網域的費用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要保持受控網域的健康狀態，並將其暫停的風險降至最低，請瞭解如何 [解決受控網域的警示][resolve-alerts]。
 

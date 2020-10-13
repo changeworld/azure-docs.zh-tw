@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
 ms.openlocfilehash: cd7802fa4a88c3b05140d30ab4d8b2bbd4adc8f4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934654"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>調查可疑的 IoT 裝置
@@ -39,7 +39,7 @@ ms.locfileid: "90934654"
 1. 開啟 IoT 中樞，
 1. 在 [ **安全性**] 底下，選取 [ **設定**]，然後選取 [ **資料收集**]。
 1. 變更 Log Analytics 工作區的組態詳細資料。
-1. 按一下 [檔案]  。
+1. 按一下 **[儲存]** 。
 
 下列組態，執行下列步驟來存取儲存在 Log Analytics 工作區中的資料：
 
@@ -184,6 +184,6 @@ ms.locfileid: "90934654"
 - 這些處理序是不是由適當的使用者來執行？
 - 是否有任何命令列執行包含正確且預期中的引數？
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在調查裝置並更加了解您的風險之後，請考慮[設定自訂警示](quickstart-create-custom-alerts.md)來改善您的 IoT 解決方案安全性態勢。 如果您還沒有裝置代理程式，請考慮[部署安全性代理程式](how-to-deploy-agent.md)或[變更現有裝置代理程式的組態](how-to-agent-configuration.md)，以改善您的結果。

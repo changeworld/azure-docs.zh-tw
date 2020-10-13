@@ -8,10 +8,10 @@ ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595762"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>如何調整 Azure SignalR Service 實例？
@@ -38,7 +38,7 @@ ms.locfileid: "89595762"
    
     ![在入口網站上調整規模](./media/signalr-howto-scale/signalr-howto-scale.png)
 
-4. 按一下 [儲存]。
+4. 按一下 **[儲存]** 。
 
 ## <a name="scale-using-azure-cli"></a>使用 Azure CLI 進行調整
 
@@ -84,7 +84,7 @@ az signalr update \
 
 如需每一層中的服務限制、配額和條件約束的表格，請參閱 [SignalR Service 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本指南中，您已瞭解如何調整單一 SignalR Service 實例。
 

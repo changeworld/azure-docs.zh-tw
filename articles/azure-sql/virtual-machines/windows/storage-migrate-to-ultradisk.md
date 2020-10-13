@@ -15,10 +15,10 @@ ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271897"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>將記錄磁片遷移至 Ultra 磁片
@@ -52,7 +52,7 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 
    :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="在 Azure 入口網站的 [設定] 底下，選取 [磁片] 的其他設定":::
 
-1. 選取 [儲存]。 
+1. 選取 [儲存]****。 
 
 
 

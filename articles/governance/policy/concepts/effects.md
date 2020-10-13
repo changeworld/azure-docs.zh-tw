@@ -1,14 +1,14 @@
 ---
 title: 了解效果的運作方式
 description: 「Azure 原則」定義有各種效果，可決定合規性的管理和回報方式。
-ms.date: 09/15/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251999"
+ms.locfileid: "91873943"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -98,7 +98,7 @@ Audit 效果可用來在評估到不符合規範的資源時，在活動記錄�
 
 ### <a name="audit-evaluation"></a>Audit 評估
 
-Audit 是建立或更新資源期間，「Azure 原則」所檢查的最後一個效果。 針對 Resource Manager 模式，Azure 原則接著將資源傳送給資源提供者。 Audit 對資源要求和評估週期的運作方式相同。 「Azure 原則」會將 `Microsoft.Authorization/policies/audit/action` 作業新增至活動記錄，然後將資源標示為不符合規範。
+Audit 是建立或更新資源期間，「Azure 原則」所檢查的最後一個效果。 針對 Resource Manager 模式，Azure 原則接著將資源傳送給資源提供者。 Audit 對資源要求和評估週期的運作方式相同。 針對新的和更新的資源，Azure 原則會將 `Microsoft.Authorization/policies/audit/action` 作業新增至活動記錄，並將資源標記為不符合規範。
 
 ### <a name="audit-properties"></a>Audit 屬性
 
@@ -145,7 +145,7 @@ AuditIfNotExists 可讓_您對符合_ **if**條件之資源的資源進行審核
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 評估
 
-AuditIfNotExists 的執行順序是在「資源提供者」已處理建立或更新資源要求，並且已傳回成功狀態碼之後。 如果沒有任何相關資源，或 **ExistenceCondition** 所定義的資源未評估為 true，就會進行稽核。 「Azure 原則」會以和 Audit 效果相同的方式，將 `Microsoft.Authorization/policies/audit/action` 作業新增至活動記錄。 當觸發時，滿足 **if** 條件的資源會是標示為不符合規範的資源。
+AuditIfNotExists 的執行順序是在「資源提供者」已處理建立或更新資源要求，並且已傳回成功狀態碼之後。 如果沒有任何相關資源，或 **ExistenceCondition** 所定義的資源未評估為 true，就會進行稽核。 針對新的和更新的資源，Azure 原則會將 `Microsoft.Authorization/policies/audit/action` 作業新增至活動記錄，並將資源標記為不符合規範。 當觸發時，滿足 **if** 條件的資源會是標示為不符合規範的資源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 屬性
 

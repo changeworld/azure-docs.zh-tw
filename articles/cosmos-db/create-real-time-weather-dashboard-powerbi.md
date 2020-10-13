@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804124"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 建立即時儀表板
@@ -23,7 +23,7 @@ ms.locfileid: "91804124"
 有多種方式可針對儲存在 Azure Cosmos DB 中的資料設定報告儀表板。 根據過期需求和資料大小，下表描述每個案例的報告設定：
 
 
-|案例 |安裝程式 |
+|狀況 |安裝程式 |
 |---------|---------|
 |1. 產生臨機操作報表 (沒有重新整理)     |  [使用匯入模式 Power BI Azure Cosmos DB 連接器](powerbi-visualize.md)       |
 |2. 使用定期重新整理來產生特定報表   |  [使用匯入模式 Power BI Azure Cosmos DB 連接器 (排程的定期更新) ](powerbi-visualize.md)       |
@@ -63,9 +63,9 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
    視源資料集中存在的資料行和資料類型而定，您可以據此變更 RangeStart 和到 rangeend 欄位
 
    
-   |屬性  |資料類型  |篩選  |
+   |屬性  |資料類型  |Filter  |
    |---------|---------|---------|
-   |_ts     |   數字      |  [_ts] > 持續時間。 TotalSeconds (RangeStart-#datetime (1970、1、1、0、0、0) # A3 和 [_ts] < 持續時間。 TotalSeconds (到 rangeend-#datetime (1970，1，1，0，0，0) # A7 # A8       |
+   |_ts     |   數值      |  [_ts] > 持續時間。 TotalSeconds (RangeStart-#datetime (1970、1、1、0、0、0) # A3 和 [_ts] < 持續時間。 TotalSeconds (到 rangeend-#datetime (1970，1，1，0，0，0) # A7 # A8       |
    |日期 (例如：-2019-08-19)      |   字串      | [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd" )         |
    |日期 (例如：-2019-08-11 12:00:00)    |  字串       |  [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd HH： mm： ss" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd HH： mm： ss" )        |
 

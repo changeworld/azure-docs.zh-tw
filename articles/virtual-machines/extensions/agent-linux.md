@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b9259b55332d9f31fdefd166f0509e5443628d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279698"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965806"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解與使用 Azure Linux 代理程式
 
@@ -61,7 +61,7 @@ Microsoft Azure Linux 代理程式 (waagent) 管理 Linux 與 FreeBSD 佈建，�
 * 在 IaaS 部署中，開機時連接的 DVD。 此 DVD 包含 OVF 相容組態檔，內含實際 SSH 金鑰組以外的所有佈建資訊。
 * TCP 端點，公開可用來取得部署和拓撲組態的 REST API。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 下列系統已經過測試，且已知可與 Azure Linux 代理程式一同運作：
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 * 網路工具：ip-route
 * 掛接 UDF 檔案系統的核心支援。
 
-確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 
 ## <a name="installation"></a>安裝

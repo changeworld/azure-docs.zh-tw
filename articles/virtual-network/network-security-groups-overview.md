@@ -15,10 +15,10 @@ ms.author: kumud
 ms.reviewer: kumud
 ms.custom: contperfq1
 ms.openlocfilehash: 76f3ba000a9bde4a306d19e8281ebeb41f1616e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335862"
 ---
 # <a name="network-security-groups"></a>網路安全性群組
@@ -56,19 +56,19 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|Allow|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|Allow|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|Access|
+|優先順序|來源|來源連接埠|Destination|目的地連接埠|通訊協定|存取|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒絕|
 
@@ -76,19 +76,19 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取 |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | Allow |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取 |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | Allow |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
+|優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | 存取 |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒絕 |
 

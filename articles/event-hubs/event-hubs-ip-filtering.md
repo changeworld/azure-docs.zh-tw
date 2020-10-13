@@ -4,10 +4,10 @@ description: 使用「防火牆規則」以允許從特定 IP 位址連線至「
 ms.topic: article
 ms.date: 07/16/2020
 ms.openlocfilehash: ab7f835187a33b5e4d95c160831337172a5ed74e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318529"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 事件中樞命名空間
@@ -23,7 +23,7 @@ ms.locfileid: "91318529"
 > - Azure 串流分析
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
-> - Azure 事件方格
+> - Azure Event Grid
 > - Azure 監視器 (診斷設定) 
 >
 > 例外狀況是，即使在啟用 IP 篩選時，您也可以允許從某些受信任的服務存取事件中樞資源。 如需信任的服務清單，請參閱 [信任的 Microsoft 服務](#trusted-microsoft-services)。

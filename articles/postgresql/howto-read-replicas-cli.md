@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707535"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>從 Azure CLI 建立及管理讀取複本，REST API
@@ -32,7 +32,7 @@ ms.locfileid: "91707535"
 ## <a name="azure-cli"></a>Azure CLI
 您可以使用 Azure CLI 來建立及管理讀取複本。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 - [安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-up-azure-cli.md)作為主伺服器。
@@ -65,7 +65,7 @@ ms.locfileid: "91707535"
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  將在其中建立複本伺服器的資源群組。  |
-| name | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
+| NAME | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有主伺服器的名稱或資源識別碼。 如果您希望複本和 master 的資源群組不同，請使用資源識別碼。 |
 
 在以下的 CLI 範例中，會在與主伺服器相同的區域中建立複本。

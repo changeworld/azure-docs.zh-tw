@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
 ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819925"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何規劃商用 marketplace 的 SaaS 供應專案
@@ -130,7 +130,7 @@ _現在就 (免費的) _、_免費試用_，以及_透過 Microsoft_清單選項
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
-8. [摘要]
+8. 摘要
 9. 描述
 10. 螢幕擷取畫面/影片
 11. 文件
@@ -183,7 +183,7 @@ _現在就 (免費的) _、_免費試用_，以及_透過 Microsoft_清單選項
   - .png 檔案
   - 必須包含標題
 - **媒體-** 影片 (選用) ：您最多可以新增四部具有下列需求的影片，以示範您的供應專案：
-  - Name
+  - 名稱
   - URL：必須僅裝載于 YouTube 或 Vimeo 上。
   - 縮圖： 1280 x 720 .png 檔案
 
@@ -241,7 +241,7 @@ SaaS 供應專案可以使用兩個定價模型的其中一個搭配每個方案
 
 - **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](./partner-center-portal/commercial-marketplace-co-sell.md) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [如何在商業市場中建立 SaaS 供應專案](create-new-saas-offer.md)
 - [陳列供應項目的最佳做法](gtm-offer-listing-best-practices.md)

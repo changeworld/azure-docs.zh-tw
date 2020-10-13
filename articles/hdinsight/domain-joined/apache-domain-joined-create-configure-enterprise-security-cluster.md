@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536064"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中建立及設定企業安全性套件叢集
@@ -70,7 +70,7 @@ ms.locfileid: "91536064"
     1. 選取 [ **下載 RDP**檔案]，然後開啟檔案。
     1. 使用 `HDIFabrikam\HDIFabrikamAdmin` 做為使用者名稱。
     1. 輸入您為系統管理員帳戶選擇的密碼。
-    1. 選取 [確定]。
+    1. 選取 [確定]  。
 
 1. 從網域控制站**伺服器管理員**儀表板，流覽至 [**工具**]  >  **Active Directory 消費者和電腦**。
 
@@ -98,7 +98,7 @@ ms.locfileid: "91536064"
 
     1. `HDIUserGroup`在 [**組名**] 文字方塊中輸入。
 
-    1. 選取 [確定]。
+    1. 選取 [確定]  。
 
     ![建立新的 Active Directory 群組](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "91536064"
 1. 選取 [ **建立資源** ] 和 [類型] `directory` 。 選取**Azure Active Directory**  >  **建立**]。
 1. 在 [ **組織名稱**] 下，輸入 `HDIFabrikam` 。
 1. 在 [ **初始功能變數名稱**] 下，輸入 `HDIFabrikamoutlook` 。
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
     ![建立 Azure AD 目錄](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "91536064"
 1. 從新的 **Azure Active Directory**的 [ **管理**] 底下，選取 [ **群組**]。
 1. 選取 [ **+ 新增群組**]。
 1. 在 [ **組名** ] 文字方塊中，輸入 `AAD DC Administrators` 。
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 ## <a name="configure-your-azure-ad-tenant"></a>設定您的 Azure AD 租使用者
 
@@ -156,9 +156,9 @@ ms.locfileid: "91536064"
 
     **身分識別**
 
-    |屬性 |說明 |
+    |屬性 |描述 |
     |---|---|
-    |使用者名稱|在文字方塊中輸入 `fabrikamazureadmin`。 從 [功能變數名稱] 下拉式清單中，選取 `hdifabrikam.com`|
+    |[使用者名稱]|在文字方塊中輸入 `fabrikamazureadmin`。 從 [功能變數名稱] 下拉式清單中，選取 `hdifabrikam.com`|
     |名稱| 輸入 `fabrikamazureadmin`。|
 
     **密碼**
@@ -176,7 +176,7 @@ ms.locfileid: "91536064"
 
     ![[Azure AD 角色] 對話方塊](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png)
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 1. 然後讓新的使用者登入 Azure 入口網站會提示您變更密碼。 您必須先完成此動作，才能設定 Microsoft Azure Active Directory Connect。
 
@@ -218,10 +218,10 @@ ms.locfileid: "91536064"
 1. 登入 Azure 入口網站。
 1. 選取 [ **建立資源** ] 和 [類型] `managed identity` 。 選取**使用者指派的受控識別**  >  **建立**。
 1. 在 [ **資源名稱**] 中，輸入 `HDIFabrikamManagedIdentity` 。
-1. 選取您的訂閱。
+1. 選取您的訂用帳戶。
 1. 在 [ **資源群組**] 底下，選取 [ **建立新** 的]，然後輸入 `HDIFabrikam-CentralUS` 。
 1. 在 [ **位置**] 底下，選取 [ **美國中部**]。
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 ![建立新的使用者指派受控識別](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
@@ -252,7 +252,7 @@ ms.locfileid: "91536064"
 1. 在 [ **基本** ] 頁面上：
     1. 在 [ **目錄名稱**] 底下，選取您建立的 Azure AD 目錄： **HDIFabrikam**。
     1. 針對 [ **DNS 功能變數名稱**]，輸入 *HDIFabrikam.com*。
-    1. 選取您的訂閱。
+    1. 選取您的訂用帳戶。
     1. 指定資源群組 **HDIFabrikam-CentralUS**。 針對 [ **位置**]，選取 [ **美國中部**]。
 
         ![Azure AD DS 基本詳細資料](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
@@ -261,7 +261,7 @@ ms.locfileid: "91536064"
 
     ![「建立虛擬網路」步驟](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
-1. 在 [ **系統管理員群組** ] 頁面上，您應該會看到已建立名為「 **AAD DC 系統管理員** 」的群組來管理此群組的通知。 您可以視需要修改此群組的成員資格，但在此情況下，您不需要加以變更。 選取 [確定]。
+1. 在 [ **系統管理員群組** ] 頁面上，您應該會看到已建立名為「 **AAD DC 系統管理員** 」的群組來管理此群組的通知。 您可以視需要修改此群組的成員資格，但在此情況下，您不需要加以變更。 選取 [確定]  。
 
     ![查看 Azure AD 系統管理員群組](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
@@ -291,7 +291,7 @@ ms.locfileid: "91536064"
     1. 在 [ **設定**] 底下，選取 [ **DNS 伺服器**]。
     1. 選取 [ **自訂**]。
     1. 在文字方塊中，輸入 (*10.0.0.4*) 的第一個 IP 位址。
-    1. 選取 [儲存]。
+    1. 選取 [儲存]****。
     1. 重複步驟，將其他 IP 位址新增 (*10.0.0.5*) 。
 
 在我們的案例中，我們將 Azure AD DS 設定為使用 IP 位址10.0.0.4 和10.0.0.5，並在 Azure AD DS 虛擬網路上設定相同的 IP 位址：
@@ -392,7 +392,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 1. 在 **HDIFabrikam-AADDSVNET** 虛擬網路上設定自訂 DNS。
     1. 移至 Azure 入口網站 >**資源群組**  >  **OnPremADVRG**  >  **HDIFabrikam-AADDSVNET**  >  **DNS 伺服器**。
     1. 選取 [ **自訂** ]，然後輸入 *10.0.0.4* 和 *10.0.0.5*。
-    1. 選取 [儲存]。
+    1. 選取 [儲存]****。
 
         ![儲存虛擬網路的自訂 DNS 設定](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
@@ -402,12 +402,12 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
     1. 針對 **安全性 + 網路** (第2節) ，請填入下列詳細資料：
         * 在 [ **企業安全性套件**] 下，選取 [ **已啟用**]。
-        * 選取 [叢集 **管理使用者** ]，然後選取以內部部署系統管理員使用者身分建立的 **HDIAdmin** 帳戶。 按一下 [選取]。
+        * 選取 [叢集 **管理使用者** ]，然後選取以內部部署系統管理員使用者身分建立的 **HDIAdmin** 帳戶。 按一下 [選取]。 
         * 選取 [叢集**存取群組**  >  **HDIUserGroup**]。 您未來新增至此群組的任何使用者都可以存取 HDInsight 叢集。
 
             ![選取叢集存取群組 HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. 完成叢集設定的其他步驟，並確認叢集 **摘要**的詳細資料。 選取 [建立]。
+    1. 完成叢集設定的其他步驟，並確認叢集 **摘要**的詳細資料。 選取 [建立]****。
 
 1. 登入新建立之叢集的 Ambari UI `https://CLUSTERNAME.azurehdinsight.net` 。 使用您的系統管理員使用者名稱 `hdiadmin@hdifabrikam.com` 和密碼。
 

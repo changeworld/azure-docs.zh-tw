@@ -15,10 +15,10 @@ ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293368"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>在 Azure VM 上就地變更 SQL Server 版本
@@ -27,7 +27,7 @@ ms.locfileid: "91293368"
 
 本文說明如何在 Microsoft Azure 中 (VM) 變更 Windows 虛擬機器上的 Microsoft SQL Server 版本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行 SQL Server 的就地升級，請遵循下列條件：
 
@@ -69,11 +69,11 @@ ms.locfileid: "91293368"
 1. 在 [ **產品金鑰** ] 頁面上，選取一個選項來指出您要升級為免費的 SQL Server 版本，還是您擁有產品之實際執行版本的 PID 金鑰。 如需詳細資訊，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) ，以及 [ (SQL Server 2016) 支援的版本與版本升級 ](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)。
 1. 選取 **[下一步]** ，直到到達 [ **準備升級** ] 頁面，然後選取 [ **升級**]。 當變更生效時，安裝程式視窗可能會停止回應數分鐘。 **完整**的頁面會確認您的升級已完成。 如需升級的逐步程式，請參閱 [完整的](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)程式。
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="完成頁面":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="升級 SQL Server 版本的選取專案":::
 
 如果您除了變更版本之外變更了 SQL Server 版，也請更新版本，並參閱 [ **在入口網站中驗證版本與版本** ] 區段，以變更 SQL VM 實例。
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="變更版本中繼資料":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="升級 SQL Server 版本的選取專案":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>降級 SQL Server 版本
 
@@ -91,7 +91,7 @@ ms.locfileid: "91293368"
 
    當您將這類專案的腳本做為目標版本、相依物件和 advanced 選項時，請務必選取正確的選項。
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="腳本選項":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="升級 SQL Server 版本的選取專案":::
 
 1. 完全解除安裝 SQL Server 和所有相關聯的服務。
 1. 重新啟動 VM。
@@ -104,7 +104,7 @@ ms.locfileid: "91293368"
 
 在您變更 SQL Server 的版本之後，請再次向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md) 註冊 SQL Server VM，以便您可以使用 Azure 入口網站來查看 SQL Server 的版本。 列出的版本號碼現在應該會反映 SQL Server 安裝的新升級版本與版本。
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="驗證版本":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="升級 SQL Server 版本的選取專案":::
 
 > [!NOTE]
 > 如果您已向 SQL VM 資源提供者註冊，請 [從 RP 取消](sql-vm-resource-provider-register.md#unregister-from-rp) 註冊，然後再註冊一次 [SQL VM 資源](sql-vm-resource-provider-register.md#register-with-rp) ，讓它偵測到 VM 上已安裝 SQL Server 的正確版本與版本。 這會更新與此 VM 相關聯的中繼資料和帳單資訊。

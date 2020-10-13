@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d843440adc61b315616a05f223c5a13ebe271ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086567"
+ms.locfileid: "91930827"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>防止對容器和 blob 進行匿名公用讀取存取
 
@@ -70,6 +70,9 @@ Azure 儲存體記錄取得對儲存體帳戶提出之要求的詳細資料，�
 若要將要求記錄到您的 Azure 儲存體帳戶以評估匿名要求，您可以使用 Azure 監視器 (preview) 中的 Azure 儲存體記錄。 如需詳細資訊，請參閱 [監視 Azure 儲存體](../common/monitor-storage.md)。
 
 Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記錄資料。 若要查詢記錄，您可以使用 Azure Log Analytics 工作區。 若要深入瞭解記錄查詢，請參閱 [教學課程：開始使用 Log Analytics 查詢](../../azure-monitor/log-query/get-started-portal.md)。
+
+> [!NOTE]
+> 只有在 Azure 公用雲端中才支援 Azure 監視器中 Azure 儲存體記錄的預覽。 政府雲端不支援記錄 Azure 監視器的 Azure 儲存體。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>在 Azure 入口網站中建立診斷設定
 

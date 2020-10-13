@@ -4,10 +4,10 @@ description: 說明如何使用 Azure 備份服務來備份和還原已加密的
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89014909"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
@@ -46,7 +46,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 - 加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整個 VM，才能還原檔案和資料夾。
 - 還原 VM 時，您無法使用已加密 Vm 的 [ [取代現有的 VM](backup-azure-arm-restore-vms.md#restore-options) ] 選項。 只有未加密的受控磁片才支援此選項。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請執行下列作業：
 
