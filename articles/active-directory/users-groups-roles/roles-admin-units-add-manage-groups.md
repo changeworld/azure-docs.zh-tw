@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827668"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中的管理單位新增和管理群組
@@ -53,7 +53,7 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
-在此範例中，會使用 AzureADMSAdministrativeUnitMember Cmdlet 將群組新增至管理單位。 管理單位的物件識別碼，以及要新增的群組物件識別碼會作為引數。 反白顯示的區段可能會視特定環境的需要而變更。
+在此範例中，會使用 Cmdlet Add-AzureADMSAdministrativeUnitMember 將群組新增至管理單位。 管理單位的物件識別碼，以及要新增的群組物件識別碼會作為引數。 反白顯示的區段可能會視特定環境的需要而變更。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

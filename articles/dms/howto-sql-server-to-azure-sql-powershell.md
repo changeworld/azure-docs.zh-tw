@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a2d0ff6810326f7f375595e8dcebbe81b55055ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330344"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 將 SQL Server 資料庫移轉至 Azure SQL Database
@@ -31,7 +31,7 @@ ms.locfileid: "91330344"
 > * 在 Azure 資料庫移轉服務執行個體中建立移轉專案。
 > * 執行移轉。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您需要：
 

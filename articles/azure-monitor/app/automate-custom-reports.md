@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827727"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
@@ -95,7 +95,7 @@ availabilityResults
 
     ![「Azure 函數應用程式」設定螢幕擷取畫面](./media/automate-custom-reports/config.png)
 
-7. 建立三個具有適當對應值 ``AI_APP_ID``、``AI_APP_KEY`` 及 ``SendGridAPI`` 的新應用程式設定。 選取 [儲存]。
+7. 建立三個具有適當對應值 ``AI_APP_ID``、``AI_APP_KEY`` 及 ``SendGridAPI`` 的新應用程式設定。 選取 [儲存]****。
 
      ![函式整合介面螢幕擷取畫面](./media/automate-custom-reports/app-settings.png)
     
@@ -148,7 +148,7 @@ availabilityResults
 
    ![複製 API 金鑰螢幕擷取畫面](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解建立 [Analytics 查詢](../log-query/get-started-queries.md)。
 * 深入了解[以程式設計方式查詢 Application Insights 資料](https://dev.applicationinsights.io/)

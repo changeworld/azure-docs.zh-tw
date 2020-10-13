@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829011"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975377"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 來建立完整的 Linux 虛擬機器
 若要在 Azure 中快速建立虛擬機器 (VM)，您可以使用單一的 Azure CLI 命令，此命令會使用預設值來建立任何必要的支援資源。 系統會自動建立虛擬網路、公用 IP 位址及網路安全性群組規則等資源。 若要在生產環境使用案例中對您的環境進行更多控制，您可以預先建立這些資源，然後再將 VM 新增到這些資源中。 本文將引導您了解如何建立 VM 及逐一建立每個支援資源。
@@ -434,7 +434,7 @@ az network nic create \
 
 更新網域表示虛擬機器群組和可同時重新啟動的基礎實體硬體。 在計劃性維護期間，可能不會循序重新啟動更新網域，而只會一次重新啟動一個更新網域。
 
-將多個 VM 放在一個可用性設定組中時，Azure 會自動將它們分散到容錯和更新網域。 如需詳細資訊，請參閱[管理 VM 的可用性](manage-availability.md)。
+將多個 VM 放在一個可用性設定組中時，Azure 會自動將它們分散到容錯和更新網域。 如需詳細資訊，請參閱[管理 VM 的可用性](../manage-availability.md)。
 
 請使用 [az vm availability-set create](/cli/azure/vm/availability-set) 來建立 VM 的可用性設定組。 下列範例會建立名為 myAvailabilitySet  的可用性設定組：
 

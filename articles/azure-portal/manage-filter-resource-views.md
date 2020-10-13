@@ -6,12 +6,12 @@ ms.service: azure-portal
 ms.topic: quickstart
 ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: 21dcadaa929b90e72c7d429229fc6ac4e0a66683
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605387"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91650388"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>檢視和篩選 Azure 資源資訊
 
@@ -45,7 +45,11 @@ Azure 入口網站可讓您瀏覽所有 Azure 訂用帳戶中關於資源的詳�
 
 ## <a name="summarize-resources-with-visuals"></a>使用視覺效果來摘要列出資源
 
-我們到目前為止所探討的檢視都是_清單檢視_，但另有包含視覺效果的_摘要檢視_。 您可以儲存和使用這些檢視，方法就和列出檢視時一樣。 篩選會在這兩種類型的檢視之間保存下來。 若要儲存和使用摘要檢視：
+我們到目前為止所探討的檢視都是_清單檢視_，但另有包含視覺效果的_摘要檢視_。 您可以儲存和使用這些檢視，方法就和列出檢視時一樣。 篩選會在這兩種類型的檢視之間保存下來。 有標準檢視，像是如下所示的 [位置] 檢視，以及與特定服務相關的檢視，例如虛擬機器的 [狀態] 檢視。
+
+:::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="所有資源的 Azure 入口網站檢視":::
+
+若要儲存和使用摘要檢視：
 
 1. 從 [檢視] 功能表中選取 [摘要檢視]。
 

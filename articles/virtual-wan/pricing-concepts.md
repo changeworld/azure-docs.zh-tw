@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: reyandap
 ms.custom: references_pricing
 ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327952"
 ---
 # <a name="about-virtual-wan-pricing"></a>關於虛擬 WAN 定價
@@ -56,7 +56,7 @@ Azure 虛擬 WAN 會將多個網路和安全性服務整合在一個統一的架
 
 **大陸內定價 ( * ) **
 
-| 大陸內部| 價格 ($/GB) |
+| Intra-Continent| 價格 ($/GB) |
 |---|---|
 | 關於|$0.02 |
 | EU 到 EU |$0.02 |
@@ -67,7 +67,7 @@ Azure 虛擬 WAN 會將多個網路和安全性服務整合在一個統一的架
 
 ** ( * ) 的內部大陸定價 **
 
-| 大陸間| 價格 ($/GB) |
+| Inter-Continental| 價格 ($/GB) |
 |---|---|
 | 從的，到 EU 或 EU |$0.07 |
 | 從 LATAM 到任何位置 |$0.17 |

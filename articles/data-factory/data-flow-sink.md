@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
 ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828137"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
@@ -84,5 +84,5 @@ Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview
 
 當您在偵錯工具叢集上提取資料預覽時，不會將任何資料寫入至您的接收。 將會傳回資料外觀的快照集，但不會將任何內容寫入目的地。 若要測試將資料寫入至您的接收，請從管線畫布執行管線偵錯工具。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 現在您已建立資料流程，請將 [資料流程活動新增至您的管線](concepts-data-flow-overview.md)。

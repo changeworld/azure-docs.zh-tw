@@ -4,10 +4,10 @@ description: 本文說明如何使用 Azure VMware 解決方案完成虛擬機�
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 2ccb6546b9b01255e4a28aed79fd0d3ccbc4516c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579671"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMware 解決方案完成虛擬機器的嚴重損壞修復
@@ -147,7 +147,7 @@ VMware HCX 目前沒有內建的機制，可建立和自動化嚴重損壞修復
 
 這些 Api 涵蓋了嚴重損壞修復的下列作業。
 
-- 保護
+- Protect
 
 - 復原
 

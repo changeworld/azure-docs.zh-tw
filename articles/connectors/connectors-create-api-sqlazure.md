@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326774"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將 SQL database 的工作流程自動化
@@ -71,10 +71,10 @@ ms.locfileid: "91326774"
 
 1. 在 [ **驗證類型**] 中，選取您的資料庫在 Azure SQL Database 或 Azure SQL 受控執行個體中所需和啟用的驗證：
 
-   | 驗證 | 說明 |
+   | 驗證 | 描述 |
    |----------------|-------------|
    | [**Azure AD 整合式**](../azure-sql/database/authentication-aad-overview.md) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要具有資料庫存取權的 Azure Active Directory (Azure AD) 中的有效身分識別。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-Azure AD 整合式驗證](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server Authentication**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    此範例會繼續 **Azure AD 整合**式：
@@ -115,10 +115,10 @@ ms.locfileid: "91326774"
 
 1. 針對 [ **驗證類型**]，選取您的 SQL Server 所需且已啟用的驗證：
 
-   | 驗證 | 說明 |
+   | 驗證 | 描述 |
    |----------------|-------------|
    | [**Windows 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -僅支援非 ISE SQL Server 連接器，此連接器需要先前在 Azure 中為您的連線建立的資料閘道資源，無論您是使用多租使用者 Azure 或 ISE。 <p><p>-需要有效的 Windows 使用者名稱和密碼，才能透過您的 Windows 帳戶確認您的身分識別。 <p>如需詳細資訊，請參閱 [Windows 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server Authentication**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的 SQL Server 中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱 [SQL Server Authentication](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
+   | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的 SQL Server 中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱 [SQL Server Authentication](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
    |||
 
    此範例會繼續進行 **Windows 驗證**：
@@ -127,7 +127,7 @@ ms.locfileid: "91326774"
 
 1. 為您的 SQL 資料庫選取或提供下列值：
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **SQL server 名稱** | 是 | SQL server 的位址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **SQL 資料庫名稱** | 是 | SQL Server 資料庫的名稱，例如 `Fabrikam-Azure-SQL-DB` |
@@ -173,7 +173,7 @@ ms.locfileid: "91326774"
    
    例如，若要檢視此資料列中的資料，您可以新增其他動作來建立檔案，使其包含傳回資料列中的欄位，然後傳送電子郵件警示。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](/connectors/sql/)。
 
-1. 在設計工具的工具列上，選取 [儲存]  。
+1. 在設計工具的工具列上，選取 [儲存]。
 
    雖然這個步驟會在 Azure 中自動啟用併發布您的邏輯應用程式，但您的邏輯應用程式目前所採用的唯一動作，就是根據指定的間隔和頻率來檢查您的資料庫。
 
@@ -244,7 +244,7 @@ ms.locfileid: "91326774"
    > [!NOTE]
    > 如果您收到 Logic Apps 無法產生結構描述的錯誤，請檢查您輸出範例的語法格式是否正確。 如果您仍然無法產生架構，請在 [ **架構** ] 方塊中，手動輸入架構。
 
-1. 在設計工具的工具列上，選取 [儲存]  。
+1. 在設計工具的工具列上，選取 [儲存]。
 
 1. 若要參考 JSON 內容屬性，請在您想要參考這些屬性的編輯方塊內按一下，以顯示動態內容清單。 在清單中的 [ [**剖析 json**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 標題下，選取您要的 JSON 內容屬性的資料標記。
 

@@ -9,17 +9,17 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577572"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安裝和使用 Azure IoT explorer
 
 Azure IoT explorer 是一種圖形化工具，可與您的 IoT 隨插即用裝置互動並進行測試。 在本機電腦上安裝此工具之後，您就可以使用它來連線到中樞。 您可以使用此工具來查看裝置正在傳送的遙測資料、使用裝置屬性，以及叫用命令。
 
-本文示範如何：
+本文將示範下列項目的作法：
 
 - 安裝和設定 Azure IoT explorer 工具。
 - 使用工具來與您的裝置互動並進行測試。

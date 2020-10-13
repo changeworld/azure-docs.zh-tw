@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577453"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>安裝並使用適用於 Azure CLI 的 Azure IoT 延伸模組
@@ -160,7 +160,7 @@ az iot pnp model list -q {search_keyword}
 az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
 ```
 
-若要發佈模型，必須符合下列需求：
+若要發佈模型，您必須符合下列需求：
 
 - 公司或組織租使用者必須是 Microsoft 合作夥伴。 
 - 使用者或服務主體必須是存放庫租使用者之 **發行者** 角色的成員。

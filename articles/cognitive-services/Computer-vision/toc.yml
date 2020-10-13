@@ -111,20 +111,24 @@
       href: concept-detecting-adult-content.md
 - name: 負責任的 AI
   items:
-    - name: 透明度注意事項
+    - name: 空間分析
       items:
-        - name: 空間分析簡介
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
-        - name: 特性和限制
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: 合規性、隱私權和安全性
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: 在 AI 部署中負責任地使用
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: 公開設計指引
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
-    - name: 研究深入解析
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
+        - name: 透明度注意事項
+          items:
+            - name: 空間分析簡介
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
+            - name: 特性和限制
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
+        - name: 部署指導方針
+          items:
+            - name: 在 AI 部署中負責任地使用
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
+            - name: 公開設計指引
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
+            - name: 研究深入解析
+              href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
+        - name: 合規性、隱私權和安全性
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
 - name: 容器
   items:
     - name: 讀取 API 容器

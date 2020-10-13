@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577827"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
@@ -30,10 +30,10 @@ ms.locfileid: "91577827"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|預覽|
+|版本狀態：|預覽|
 |定價：|**電腦上適用于 SQL server 的 Azure Defender**會依[定價頁面](security-center-pricing.md)上的顯示方式計費|
 |受保護的 SQL 版本：|Azure SQL Server (Microsoft 支援服務所涵蓋的所有版本) |
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>為電腦上的 SQL server 設定 Azure Defender

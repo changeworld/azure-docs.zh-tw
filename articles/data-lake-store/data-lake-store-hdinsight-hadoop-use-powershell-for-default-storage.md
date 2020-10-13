@@ -10,7 +10,7 @@ ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857005"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>使用 PowerShell 建立以 Azure Data Lake Storage Gen1 作為預設儲存體的 HDInsight 叢集
@@ -140,7 +140,7 @@ ms.locfileid: "91857005"
     ```
 
     系統會提示您輸入私密金鑰密碼。 命令成功執行之後，您應該會在您指定的憑證目錄中看到 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行下列命令：
+2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行以下命令：
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
@@ -281,7 +281,7 @@ hdfs dfs -ls adl:///
 
 您也可以使用 `hdfs dfs -put` 命令，將一些檔案上傳至 Data Lake Storage Gen1，然後使用 `hdfs dfs -ls` 來確認是否成功上傳檔案。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure 入口網站：建立 HDInsight 叢集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

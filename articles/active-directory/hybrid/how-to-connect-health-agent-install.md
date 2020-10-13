@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631642"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
@@ -60,7 +60,7 @@ ms.locfileid: "91631642"
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
 | 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
-| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
+| Azure 德國 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 
 
@@ -143,7 +143,7 @@ ms.locfileid: "91631642"
 7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
 8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
 9. 選取 [成功稽核]**** 和 [失敗稽核]**** 核取方塊。
-10. 按一下 [確定]  。
+10. 按一下 [確定]。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上啟用 AD FS 的稽核
 
@@ -322,8 +322,8 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 您有下列選項來設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
 > [!NOTE]
-> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行下列命令：<br />
-> 重新開機-服務 AzureADConnectHealth *
+> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行以下命令：<br />
+> Restart-Service AzureADConnectHealth *
 >
 >
 

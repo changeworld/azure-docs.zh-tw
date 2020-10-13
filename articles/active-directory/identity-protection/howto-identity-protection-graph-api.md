@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776131"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph
@@ -70,7 +70,7 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 1. 從您建立的 **應用程式** 中，選取 [ **憑證 & 秘密**]。
 1. 在 [用戶端密碼]**** 底下，選取 [新增用戶端密碼]****。
    1. 提供用戶端密碼的 **描述** ，並根據您的組織原則設定到期時間週期。
-   1. 選取 [新增]  。
+   1. 選取 [新增]。
 
    > [!NOTE]
    > 如果遺失此金鑰，則必須返回本區段並建立新的金鑰。 請勿將此金鑰告知他人︰任何人只要擁有此金鑰就可以存取您的資料。

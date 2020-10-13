@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776352"
 ---
 # <a name="composite-bar-renderer"></a>複合 bar 轉譯器
@@ -69,7 +69,7 @@ ms.locfileid: "91776352"
 
 選取 [資料行名稱] 和對應的色彩，將該色彩中的該資料行轉譯為複合橫條圖的一部分。 您可以上下插入、刪除和移動資料列。
 
-### <a name="label"></a>Label
+### <a name="label"></a>標籤
 
 複合橫條圖標籤會顯示在複合列的上方。 您可以混合使用靜態文字、資料行和參數。  如果標籤是空的，則目前資料行的值會顯示為標籤。 在先前的範例中，如果我們將標籤欄位保留為黑色，則會顯示總計資料行的值。
 

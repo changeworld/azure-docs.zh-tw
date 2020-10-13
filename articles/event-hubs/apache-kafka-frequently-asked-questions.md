@@ -4,10 +4,10 @@ description: 本文將針對未涵蓋于其他地方的 Apache Kafka 用戶端�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828113"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>常見問題-Apache Kafka 的事件中樞 
@@ -35,7 +35,7 @@ ms.locfileid: "91828113"
 - 它們與事件中樞取用者群組完全不同。 您 **不** 需要使用 ' $Default '，也不需要擔心 KAFKA 干擾 AMQP 工作負載的用戶端。
 - 它們無法在 Azure 入口網站中看到。 取用者群組資訊可透過 Kafka Api 來存取。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列文章：  
 
 - [適用于事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

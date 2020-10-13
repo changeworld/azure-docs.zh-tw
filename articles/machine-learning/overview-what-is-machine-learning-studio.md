@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902926"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667430"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什麼是 Azure Machine Learning Studio？
 
@@ -88,7 +88,7 @@ ms.locfileid: "90902926"
 | 定型計算目標 | 專屬計算目標，僅限 CPU 支援 | 各種可自訂的[訓練計算目標](concept-compute-target.md#train)。 包括 GPU 和 CPU 支援 | 
 | 部署計算目標 | 專屬 Web 服務格式 (不可自訂) | 各種可自訂的[部署計算目標](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支援 |
 | ML 管線 | 不支援 | 建立彈性的模組化[管線](concept-ml-pipelines.md)來自動化工作流程 |
-| MLOps | 基本模型管理和部署 | 實體版本控制 (模型、資料、工作流程)、工作流程自動化、與 CICD 工具整合，[以及其他更多功能](concept-model-management-and-deployment.md) |
+| MLOps | 基本模型管理和部署；僅限 CPU 部署 | 實體版本控制 (模型、資料、工作流程)、工作流程自動化、與 CICD 工具整合、CPU 與 GPU 部署，[以及其他更多功能](concept-model-management-and-deployment.md) |
 | 模型格式 | 專屬格式，僅限 Studio (傳統) | 視訓練作業類型而定的多種支援格式 |
 | 自動化模型定型和超參數調整 |  不支援 | [支援](concept-automated-ml.md)。 程式碼優先和無程式碼選項。 | 
 | 資料漂移偵測 | 不支援 | [支援](how-to-monitor-datasets.md) |

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
 ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823206"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP 重設和閒置超時
@@ -61,7 +61,7 @@ TCP Keep-Alive 適用於電池使用時間不受約束的情節。 不建議用�
 - 設定 HA 埠的內部負載平衡器不會傳送 TCP 重設。
 - TCP 閒置超時不會影響 UDP 通訊協定上的負載平衡規則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [Standard Load Balancer](load-balancer-standard-overview.md)。
 - 深入瞭解 [輸出規則](load-balancer-outbound-rules-overview.md)。

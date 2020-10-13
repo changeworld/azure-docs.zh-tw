@@ -15,7 +15,7 @@ ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856104"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
@@ -58,7 +58,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 在下列案例中，資料同步不是慣用的解決方案：
 
-| 案例 | 某些建議的解決方案 |
+| 狀況 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](automated-backups-overview.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](read-scale-out.md) |

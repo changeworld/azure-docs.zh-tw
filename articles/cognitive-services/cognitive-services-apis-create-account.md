@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827395"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立認知服務資源
@@ -120,7 +120,7 @@ Azure 認知服務是具有 REST Api 的雲端式服務，也提供用戶端程�
 2. 找出要刪除的資源位於哪一個資源群組
 3. 以滑鼠右鍵按一下資源群組清單。 選取 [刪除資源群組] 並且確認。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [驗證 Azure 認知服務要求](authentication.md)
 * [什麼是 Azure 認知服務？](Welcome.md)

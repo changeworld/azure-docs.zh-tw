@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51310b1569982e0b71f39dede0d4d7dbefd1a3c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086703"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975530"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
@@ -47,13 +47,15 @@ Azure 的 IMDS 是 REST 端點，可在已知的非可路由 IP 位址 (`169.254
 **要求**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01 | ConvertTo-Json
 ```
+> [!NOTE]
+> `-NoProxy`旗標只適用于 PowerShell 6 或更新版本。 如果您沒有 proxy 設定，您可以省略旗標。
 
 **回應**
 
 > [!NOTE]
-> 回應是 JSON 字串。 下列範例回應均列印清晰，很容易閱讀。
+> 回應是 JSON 字串。 我們會透過 Cmdlet 將 REST 查詢輸送到 `ConvertTo-Json` 美觀的列印。
 
 ```json
 {
@@ -250,8 +252,8 @@ NAME | VM 的名稱 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虛擬機器擴展集的[放置群組](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 計劃 | 如果[方案](/rest/api/compute/virtualmachines/createorupdate#plan)是 Azure Marketplace 映像，則其會包含 VM 的名稱、產品及發行者 | 2018-04-02
-platformUpdateDomain |  VM 執行所在的[更新網域](manage-availability.md) | 2017-04-02
-platformFaultDomain | VM 執行所在的[容錯網域](manage-availability.md) | 2017-04-02
+platformUpdateDomain |  VM 執行所在的[更新網域](../manage-availability.md) | 2017-04-02
+platformFaultDomain | VM 執行所在的[容錯網域](../manage-availability.md) | 2017-04-02
 provider | VM 的提供者 | 2018-10-01
 publicKeys | 指派給 VM 和路徑的[公開金鑰集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM 映像的發佈者 | 2017-04-02

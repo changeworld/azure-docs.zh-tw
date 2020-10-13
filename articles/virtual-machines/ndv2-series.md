@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653434"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975715"
 ---
 # <a name="updated-ndv2-series"></a>已更新 NDv2 系列
 
@@ -27,7 +27,7 @@ NDv2 實例可為使用 CUDA GPU 優化計算核心的 HPC 和 AI 工作負載�
 > [!IMPORTANT]
 > 在 ND40rs_v2 VM 上 [啟用](./workloads/hpc/enable-infiniband.md) [已執行] 時，請使用 4.7 1.0.0.1 的 Mellanox OFED 驅動程式。
 >
-> 由於 GPU 記憶體增加，新的 ND40rs_v2 VM 需要使用 [第2代 vm](./windows/generation-2.md) 和 marketplace 映射。 
+> 由於 GPU 記憶體增加，新的 ND40rs_v2 VM 需要使用 [第2代 vm](./generation-2.md) 和 marketplace 映射。 
 >
 > 請注意：每個 GPU 記憶體的 16 GB ND40s_v2 已不再供預覽，且已由更新的 ND40rs_v2 取代。
 

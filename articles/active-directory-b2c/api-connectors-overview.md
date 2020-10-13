@@ -11,10 +11,10 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.openlocfilehash: 195101a432d16c2236ea2d164416e75df33b12e4
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828353"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>使用 API 連接器來自訂和擴充註冊使用者流程
@@ -57,6 +57,6 @@ API 連接器提供呼叫 API 所需資訊的 Azure Active Directory，包括端
 - 查詢外部系統，以取得使用者的現有資料，以在應用程式權杖中傳回該資料，或將它儲存在 Azure AD 中。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 瞭解如何 [將 API 連接器新增至使用者流程](add-api-connector.md)
 <!-- - Learn how to [add a custom approval system to self-service sign-up](add-approvals.md) -->

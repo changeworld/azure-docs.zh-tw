@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849838"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975156"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -108,7 +108,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 * **自訂連接器**
     - API 端點： REST (保留預設值) 
     - 匯入模式： OpenAPI 檔案 (保留預設) 
-    - 檔案：這會是您稍早下載的自訂 Swagger 檔案。 點擊 [匯 *入*]，在您的電腦上找出 (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js) 上* 的檔案，然後按 [ *開啟*]。
+    - 檔案：這會是您稍早下載的自訂 Swagger 檔案。 點擊 [匯 *入*]，在您的電腦上找出 (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.js) 上* 的檔案，然後按 [ *開啟*]。
 * **一般資訊**
     - 圖示：上傳您喜歡的圖示
     - 圖示背景色彩：輸入格式為 ' #xxxxxx ' 的十六進位代碼，以供您的色彩。
@@ -201,7 +201,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 在 [新增 *DigitalTwinsAdd* ] 方塊中，填寫欄位，如下所示：
 * _識別碼_：在您想要邏輯應用程式更新的實例中，填入數位對應項的對應項 *識別碼* 。
 * 對應_項：此_欄位可讓您輸入所選 API 要求所需的主體。 針對 *DigitalTwinsUpdate*，此主體是 JSON 修補程式碼的形式。 如需有關結構化 JSON 修補程式以更新對應項的詳細資訊，請參閱 how *to：管理數位 twins*的[更新數位](how-to-manage-twin.md#update-a-digital-twin)對應項一節。
-* _api 版本_：在目前的公開預覽版中，此值為 *2020-05-31-preview*
+* _api 版本_：最新的 api 版本。 在目前的公開預覽中，此值為 *2020-05-31-preview*
 
 點擊 Logic Apps 設計工具中的 [ *儲存* ]。
 

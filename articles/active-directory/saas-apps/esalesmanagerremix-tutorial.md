@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826752"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
@@ -127,7 +127,7 @@ ms.locfileid: "91826752"
 
 1. 在 [快速參考]**** 區段中，複製登出 URL 和 SAML 單一登入服務 URL。
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
     ![[儲存] 按鈕](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 

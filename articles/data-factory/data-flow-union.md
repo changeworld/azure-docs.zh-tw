@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: e10418c18e6f8e0089a893e9d33ee1081f3131f1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823643"
 ---
 # <a name="union-transformation-in-mapping-data-flow"></a>對應資料流程中的聯集轉換
@@ -49,6 +49,6 @@ ms.locfileid: "91823643"
 
 ![聯集輸出](media/data-flow/unionoutput.png "聯集輸出")
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 探索類似的轉換，包括 [聯結](data-flow-join.md) 和 [存在](data-flow-exists.md)。

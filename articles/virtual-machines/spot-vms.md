@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827820"
 ---
 # <a name="use-spot-vms-in-azure"></a>在 Azure 中使用點 Vm
@@ -33,7 +33,7 @@ ms.locfileid: "91827820"
 您可以選擇透過 [Azure Scheduled Events](./linux/scheduled-events.md)接收 VM 內通知。 這會在您的 Vm 被收回時通知您，而且您將有30秒的時間來完成任何工作，並在收回之前執行關機工作。 
 
 
-| 選項 | 結果 |
+| 選項 | 成果 |
 |--------|---------|
 | 最大價格設定為 >= 目前的價格。 | 如果容量和配額可供使用，則會部署 VM。 |
 | 最大價格設定為 < 目前的價格。 | 未部署 VM。 您會收到一則錯誤訊息，指出最大價格需要 >= 目前價格。 |
@@ -111,7 +111,7 @@ ms.locfileid: "91827820"
 
 **答：** 您可以 `azure-spot` 在 [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)張貼並標記問題。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 使用 [CLI](./linux/spot-cli.md)、 [入口網站](spot-portal.md)、 [ARM 範本](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 來部署現成的 vm。
 
 您也可以 [使用點 VM 實例來部署擴展集](../virtual-machine-scale-sets/use-spot.md)。

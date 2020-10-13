@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578116"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>建立 Intune 設定檔以部署 VPN 用戶端設定檔
@@ -69,7 +69,7 @@ ms.locfileid: "91578116"
 1. 登入 Intune，然後流覽至 [ **裝置]->** 設定設定檔。 選取 [ **+ 建立設定檔**]。
 
    :::image type="content" source="./media/create-profile-intune/configuration-profile.png" alt-text="組態設定檔":::
-1. 針對 [平台]  ，選取 [Windows 10 及更新版本]  。 針對 [ **設定檔**]，選取 [ **自訂**]。 然後，選取 [Create]  \(建立\)。
+1. 針對 [平台]  ，選取 [Windows 10 及更新版本]  。 針對 [ **設定檔**]，選取 [ **自訂**]。 然後，選取 [Create] \(建立\)。
 1. 提供設定檔的名稱和描述，然後選取 **[下一步]**。
 1. 在 [ **設定設定** ] 索引標籤上，選取 [ **新增**]。
 
@@ -81,8 +81,8 @@ ms.locfileid: "91578116"
    選取資料夾圖示，然後選取您在步驟6中儲存的檔案（ [XML](#xml) 步驟）。 選取 [新增]。
 
    :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="組態設定檔" lightbox="./media/create-profile-intune/configuration-settings.png":::
-1. 選取 [下一步] 。
-1. 在 [指派] 底下，選取您要推送 **設定**的群組。 然後，選取 [下一步]。
+1. 選取 [下一步]  。
+1. 在 [指派] 底下，選取您要推送 **設定**的群組。 然後，選取 [下一步]****。
 1. 適用性規則是選擇性的。 視需要定義任何規則，然後選取 **[下一步]**。
 1. 在 [ **審核 + 建立** ] 頁面上，選取 [ **建立**]。
 
