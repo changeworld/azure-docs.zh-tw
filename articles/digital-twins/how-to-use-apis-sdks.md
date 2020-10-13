@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2af4f2e2148c96a6059836f861cf56d4a4ac005b
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 61c8468400898655b6501b7a8fada607b77b1466
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931490"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -29,7 +29,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 公開預覽的最新控制平面 API 版本是 _**2020-03-01-preview**_。
 
 若要使用控制平面 Api：
-* 您可以藉由參考最新的 [Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
+* 您可以參考 [控制平面 Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中最新的 Swagger，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
   - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true)) 
   - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview&preserve-view=true)) 
@@ -51,7 +51,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 
 若要使用資料平面 Api：
 * 您可以直接呼叫 Api，方法是 .。。
-   - 參考最新的 [Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)。 此存放庫也包含顯示使用方式的範例資料夾。 
+   - 參考 [資料平面 swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)中最新的 swagger。 此存放庫也包含顯示使用方式的範例資料夾。 
    - 查看 [API 參考檔](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
 * 您可以使用 **.net (c # ) ** SDK。 若要使用 .NET SDK .。。
    - 您可以從 NuGet： [DigitalTwins](https://www.nuget.org/packages/Azure.DigitalTwins.Core)來查看和新增套件。 

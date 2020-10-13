@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715996"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>針對 Linux (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
@@ -47,7 +47,7 @@ ms.locfileid: "91715996"
 - 您嘗試從 Azure VM 連線到 Azure 檔案共用，而該 VM 與儲存體帳戶位於不同的區域。
 - 如果儲存體帳戶上已啟用 [需要安全傳輸]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)設定，則 Azure 檔案服務僅允許使用 SMB 3.0 加密的連線。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請使用[適用於 Linux 上 Azure 檔案服務掛接錯誤的疑難排解工具](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux)。 這項工具可以：
 
@@ -91,7 +91,7 @@ ms.locfileid: "91715996"
 
 單一檔案或目錄的開啟控制碼配額為2000。 當您擁有 2,000 個開啟控制代碼時，會顯示一則錯誤訊息以指出已達到配額。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控點以減少同時開啟的控點數，然後再次嘗試操作。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91715996"
 若要關閉檔案共用、目錄或檔案的開啟控制碼，請使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet。
 
 > [!Note]  
-> >get-azstoragefilehandle 和 >get-azstoragefilehandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>從 Linux 中的 Azure 檔案服務複製檔案或將檔案複製到其中的速度變慢
@@ -127,7 +127,7 @@ ms.locfileid: "91715996"
 
 部分 Linux 散發套件尚未支援 SMB 3.0 中的加密功能。 如果使用者嘗試使用 SMB 3.0 來掛接 Azure 檔案，可能會因缺少功能而收到「115」錯誤訊息。 目前僅有使用 Ubuntu 16.04 或更新版本時才支援 SMB 3.0 與完整加密。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可從內部部署或不同 Azure 區域的 Azure 檔案共用進行掛接。 某些 Linux 散發套件可能會將4.11 核心的 backport 變更為它們所維護的舊版 Linux 核心。 若要協助判斷您的 Linux 版本是否支援使用加密的 SMB 3.0，請參閱 [使用 Azure 檔案儲存體與 Linux](storage-how-to-use-files-linux.md)。 
 
@@ -158,7 +158,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 ### <a name="cause"></a>原因
 如果檔案或目錄具有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -167,7 +167,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 - 使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet 來關閉開啟的控制碼。 
 
 > [!Note]  
-> >get-azstoragefilehandle 和 >get-azstoragefilehandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>掛接在 Linux VM 上的 Azure 檔案共用效能變慢
@@ -227,7 +227,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp-p-f** 。 此
 **ls：無法存取 '&lt;path&gt;'：輸入/輸出錯誤**
 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 將 Linux 核心升級為下列已修正此問題的版本：
 
 - 4.4.87+
@@ -243,7 +243,7 @@ COPYFILE 中的強制旗標 **f** 會導致在 Unix 上執行 **cp-p-f** 。 此
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 Linux CIFS 用戶端不支援透過 SMB 2 或 SMB 3 通訊協定，建立 Windows 樣式的符號連結。 Linux 用戶端目前支援另一種符號連結樣式，稱為 [Minshall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) (Mishall + 法文符號連結)，可用於建立和遵循作業。 需要符號連結的客戶可以使用 "mfsymlinks" 掛接選項。 我們建議您使用 "mfsymlinks"，因為它也是 Mac 使用的格式。
 
 若要使用符號連結，請將下列內容新增至 CIFS 掛接命令結尾：
@@ -274,7 +274,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 -   使用預設的「軟」掛接選項時，造成無法重新建立 TCP 連線以連線到伺服器的網路通訊失敗
 -   未出現在較舊核心中的最近重新連線修正
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 此 Linux 核心中的重新連線問題已隨下列變更修正：
 
@@ -296,7 +296,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 ### <a name="cause"></a>原因
 因為 Azure 檔案儲存體 [目前不支援 SMB 多重](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)通道，所以會記錄此錯誤。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 可以忽略這個錯誤。
 
 
@@ -308,7 +308,7 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 從將名稱結尾的字元編碼至不同字元的系統上傳資料夾或檔案時，從 Macintosh 電腦上傳的檔案可能會有 "0xF028" 或 "0xF029" 字元，而不是 0x20 (空間) 或 0X2E (點) 。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 在 Linux 上裝載共用時，請在共用上使用 mapchars 選項： 
 

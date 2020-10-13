@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743568"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>變更預設的 blob 路徑
@@ -25,7 +25,7 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
 
 若要建立 Azure 函式，請執行下列步驟：
 
-1. 前往 [Azure 入口網站](https://portal.azure.com/)。
+1. 移至 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 按一下 [+ 建立資源]。 在 [搜尋]**** 方塊中輸入**函式應用程式**，然後按 **Enter** 鍵。 在顯示的應用程式清單中選取並按一下 [函式應用程式]****。
 
@@ -209,7 +209,7 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
         ```
 
     
-    4. 按一下 [檔案] 。
+    4. 按一下 **[儲存]** 。
 
         ![新增函數專案 json](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 

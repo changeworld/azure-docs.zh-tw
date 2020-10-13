@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855303"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963630"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中的 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟上安裝 SAP NetWeaver HA
 
@@ -149,10 +149,10 @@ ms.locfileid: "88855303"
 
 本文說明針對為 SAP ASCS/SCS 執行個體進行叢集處理，如何使用 Windows Server 容錯移轉和叢集共用磁碟在 Azure 中安裝及設定高可用性 SAP 系統。 如 [架構指南所述：使用叢集共用磁片在 Windows 容錯移轉叢集上叢集 SAP ASCS/SCS 實例][sap-high-availability-guide-wsfc-shared-disk]，叢集 *共用磁片*有兩種替代方案：
 
-- [Azure 共用磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure 共用磁碟](../../windows/disks-shared.md)
 - 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 建立鏡像儲存體，以模擬叢集共用磁片 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在開始安裝之前，請檢閱這些文章：
 

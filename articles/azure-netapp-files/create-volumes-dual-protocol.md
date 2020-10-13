@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743925"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963511"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -28,7 +28,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
 ## <a name="before-you-begin"></a>開始之前 
 
-* 您必須已經設定容量集區。  
+* 您必須已建立容量集區。  
     請參閱 [設定容量集](azure-netapp-files-set-up-capacity-pool.md)區。   
 * 子網路必須委派至 Azure NetApp Files。  
     請參閱 [將子網委派給 Azure NetApp Files](azure-netapp-files-delegate-subnet.md)。
@@ -38,9 +38,19 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 * 確定您符合 [Active Directory 連接的需求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
 * 在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的指標 (PTR) 記錄。 否則，建立雙重通訊協定磁片區將會失敗。
 * 確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
-* 確定 ad) 的 Active Directory (AD LDAP 伺服器已啟動且正在執行。 這是藉由安裝和設定 AD 機器上的 [Active Directory 輕量型目錄服務 (AD LDS) ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色來完成。
-* 請確定使用 [Active Directory 憑證服務 (AD CS) ](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以在 AD 上建立 (CA) 的憑證授權單位單位。   
+* 確定 ad) 的 Active Directory (AD LDAP 伺服器已啟動且正在執行。 您可以在 AD 電腦上安裝並設定 [Active Directory 輕量型目錄服務 (AD LDS) ](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色來這麼做。
+* 請確定使用 [Active Directory 憑證服務 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以在 AD 上建立 (CA) 的憑證授權單位單位。   
 * 雙通訊協定磁片區目前不支援 Azure Active Directory Domain Services (AADDS) 。  
+* 雙通訊協定磁片區所使用的 NFS 版本是 NFSv3。 因此，適用下列考慮：
+    * 雙重通訊協定不支援 NFS 用戶端的 Windows ACL 延伸屬性 `set/get` 。
+    * NFS 用戶端無法變更 NTFS 安全性樣式的許可權，而且 Windows 用戶端無法變更 UNIX 樣式雙重通訊協定磁片區的許可權。   
+
+    下表說明安全性樣式及其效果：  
+    
+    | 安全性樣式    | 可以修改許可權的用戶端   | 用戶端可以使用的許可權  | 產生的有效安全性樣式    | 可以存取檔案的用戶端     |
+    |-  |-  |-  |-  |-  |
+    | UNIX  | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
+    | NTFS  | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
 
 ## <a name="create-a-dual-protocol-volume"></a>建立雙重通訊協定磁碟區
 
@@ -113,9 +123,9 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>上傳 Active Directory 憑證授權單位單位公開根憑證  
 
-1.  遵循 [[安裝憑證授權單位](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 單位] 來安裝和設定 [新增憑證授權單位單位]。 
+1.  遵循 [[安裝憑證授權單位](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 單位] 來安裝和設定 [新增憑證授權單位單位]。 
 
-2.  遵循使用 mmc 嵌入式管理單元的 [ [查看憑證](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ]，以使用 mmc 嵌入式管理單元和憑證管理員工具。  
+2.  遵循使用 mmc 嵌入式管理單元的 [ [查看憑證](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ]，以使用 mmc 嵌入式管理單元和憑證管理員工具。  
     使用 [憑證管理員] 嵌入式管理單元找出本機裝置的根目錄或頒發證書。 您應該從下列其中一個設定執行憑證管理嵌入式管理單元命令：  
     * 以 Windows 為基礎的用戶端，已加入網域並已安裝根憑證 
     * 網域中包含根憑證的另一部電腦  
@@ -152,4 +162,4 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 ## <a name="next-steps"></a>後續步驟  
 
 * [雙重通訊協定常見問題](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [設定 Azure NetApp Files 的 NFS 用戶端](configure-nfs-clients.md) 
+* [設定 Azure NetApp Files 的 NFS 用戶端](configure-nfs-clients.md)

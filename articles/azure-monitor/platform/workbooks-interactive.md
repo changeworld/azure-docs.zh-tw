@@ -2,19 +2,17 @@
 title: 使用自訂參數 Azure 監視器活頁簿
 description: 使用預先建立及使用自訂參數之活頁簿來簡化複雜的報告
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.author: mbullwin
-ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee71082b96d41f9bad7fb54a70d308c24dec5b57
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461408"
+ms.locfileid: "91932034"
 ---
 # <a name="interactive-workbooks"></a>互動式活頁簿
 
@@ -188,7 +186,7 @@ ms.locfileid: "87461408"
 
 雖然預設行為是以文字形式匯出參數，但如果您知道該欄位是訂用帳戶或資源識別碼，請使用該欄位作為匯出參數類型。 這可讓參數在需要這些參數類型的位置中使用下游。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

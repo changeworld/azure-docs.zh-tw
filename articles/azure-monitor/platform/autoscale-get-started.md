@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743517"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
@@ -57,7 +57,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [檔案] 。
+1. 按一下 **[儲存]** 。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 
@@ -115,7 +115,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>將流量路由傳送至狀況良好的實例 (App Service) 
 
-當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [檔案] 。
+當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 **[儲存]** 。
 
 若要啟用 ARM 範本的功能，請將 `healthcheckpath` 資源的屬性設定 `Microsoft.Web/sites` 為您網站上的健康情況檢查路徑，例如： `"/api/health/"` 。 若要停用此功能，請將屬性設定回空字串 `""` 。
 
@@ -127,7 +127,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 #### <a name="security"></a>安全性 
 
-大型企業的開發團隊通常需要遵守其公開 Api 的安全性需求。 若要保護 healthcheck 端點，您應該先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、 [用戶端憑證](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)或虛擬網路等功能來限制對應用程式的存取。 您可以要求傳入要求的必須符合，以保護 healthcheck 端點本身 `User-Agent` `ReadyForRequest/1.0` 。 使用者代理程式無法偽造，因為先前的安全性功能已保護要求。
+大型企業的開發團隊通常需要遵守其公開 Api 的安全性需求。 若要保護 healthcheck 端點，您應該先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、 [用戶端憑證](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)或虛擬網路等功能來限制對應用程式的存取。 您可以要求傳入要求的必須符合，以保護 healthcheck 端點本身 `User-Agent` `ReadyForRequest/1.0` 。 因為先前的安全性功能已保護要求，所以 User-Agent 無法詐騙。
 
 ### <a name="behavior"></a>行為
 

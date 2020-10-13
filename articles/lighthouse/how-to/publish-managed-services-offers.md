@@ -3,16 +3,16 @@ title: 將受控服務供應專案發佈至 Azure Marketplace
 description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure Lighthouse。
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589719"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974357"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
-在本文中，您將瞭解如何使用合作夥伴中心的[商業 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)方案，將公用或私人受控服務供應專案發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com) 。 購買供應專案的客戶會接著委派訂用帳戶或資源群組，讓您透過 [Azure Lighthouse](../overview.md)管理它們。
+在本文中，您將瞭解如何使用合作夥伴中心的[商業 Marketplace](../../marketplace/overview.md)方案，將公用或私人受控服務供應專案發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com) 。 購買供應專案的客戶會接著委派訂用帳戶或資源群組，讓您透過 [Azure Lighthouse](../overview.md)管理它們。
 
 ## <a name="publishing-requirements"></a>發佈需求
 
@@ -40,7 +40,7 @@ ms.locfileid: "88589719"
 
 如需有關如何建立供應專案的詳細指示，包括您需要提供的所有資訊和資產，請參閱 [建立受控服務供應](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)專案。
 
-若要瞭解一般發佈程式，請參閱 [Azure Marketplace 和 AppSource 發行指南](../../marketplace/marketplace-publishers-guide.md)。 您也應檢閱[商業市集認證原則](/legal/marketplace/certification-policies)，尤其是[受控服務](/legal/marketplace/certification-policies#700-managed-services)一節。
+若要瞭解一般發佈程式，請參閱 [Azure Marketplace 和 AppSource 發行指南](../../marketplace/overview.md)。 您也應檢閱[商業市集認證原則](/legal/marketplace/certification-policies)，尤其是[受控服務](/legal/marketplace/certification-policies#700-managed-services)一節。
 
 當客戶新增您的供應專案之後，他們將能夠委派一或多個訂用帳戶或資源群組，然後 [上線至 Azure Lighthouse](#the-customer-onboarding-process)。
 
@@ -62,8 +62,8 @@ ms.locfileid: "88589719"
 
 一旦客戶將訂用帳戶委派 (或訂用帳戶) 內的一或多個資源群組，就會為該訂用帳戶註冊 **>microsoft.managedservices** 資源提供者，而且您租使用者中的使用者將能夠根據您供應專案中的授權存取委派的資源。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- 瞭解 [商用 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)。
+- 瞭解 [商用 Marketplace](../../marketplace/overview.md)。
 - 了解[跨租用戶管理體驗](../concepts/cross-tenant-management-experience.md)。
 - 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](view-manage-customers.md)。

@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447843"
+ms.locfileid: "91932136"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>在 Azure IoT 中樞中驗證下游裝置
 
@@ -59,7 +59,7 @@ ms.locfileid: "91447843"
 
 * 選取 [對稱金鑰] 作為 [驗證類型]。
 
-* (選擇性) 選擇 [設定父裝置]，然後選取此下游裝置連線所要透過的 IoT Edge 閘道裝置。 此步驟對於對稱金鑰驗證是選擇性的，但建議使用，因為設定父裝置可啟用下游裝置的[離線功能](offline-capabilities.md)。 您隨時可在稍後更新裝置詳細資料來新增或變更父裝置。
+* 選取 [ **設定父裝置** ]，然後選取此下游裝置將連線的 IoT Edge 閘道裝置。 此步驟會啟用下游裝置的 [離線功能](offline-capabilities.md) 。 您稍後可以隨時變更父系。
 
    ![在入口網站中使用對稱金鑰驗證來建立裝置識別碼](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -201,7 +201,7 @@ HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-如果已為此下游裝置建立父子式關聯性，則可藉由直接呼叫閘道作為連線主機來簡化連接字串。 父子式關聯性對於 X.509 驗證是必要的，但對於對稱金鑰驗證則為選擇性。 例如：
+由於有父子式關聯性，您可以直接以連線主機的形式呼叫閘道，以簡化連接字串。 例如：
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

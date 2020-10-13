@@ -8,20 +8,20 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302038"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950732"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>使用資產清查和管理工具探索及管理您的資源
+# <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>使用資產清查和管理工具探索及管理資源
 
-Azure 資訊安全中心的 [資產清查] 頁面提供單一頁面，可供您用來查看您已連線至「安全性中心」之資源的安全性狀態。 
+Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢視已連線至資訊安全中心的資源有何安全性狀態。 
 
-安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，它會提供有關如何補救這些弱點的建議。
+資訊安全中心會定期分析 Azure 資源的安全性狀態，以識別潛在的安全性弱點。 然後為您提供如何補救這些弱點的建議。
 
-當任何資源有未處理的建議時，它們會出現在清查中。
+只要任何資源有未處理的建議，這些建議就會出現在清查中。
 
 您可以使用此視圖及其篩選來解決下列問題：
 
@@ -33,17 +33,17 @@ Azure 資訊安全中心的 [資產清查] 頁面提供單一頁面，可供您�
 此工具的資產管理可能性很大，而且會持續成長。 
 
 > [!TIP]
-> 安全性建議與 [ **建議** ] 頁面上的建議相同，但在這裡會篩選成您所選取的特定資源類型。 如需有關如何解決建議的詳細資訊，請參閱 [Azure 資訊安全中心中的執行安全性建議](security-center-recommendations.md)。
+> [資產清查] 頁面上的安全性建議與 [ **建議** ] 頁面上的建議相同，但在這裡會根據受影響的資源來顯示。 如需有關如何解決建議的詳細資訊，請參閱 [Azure 資訊安全中心中的執行安全性建議](security-center-recommendations.md)。
 
 
 ## <a name="availability"></a>可用性
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
+|版本狀態：|正式上市 (GA)|
 |定價：|免費|
-|必要的角色和許可權：|所有使用者|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|必要的角色和權限：|所有使用者|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 
@@ -94,7 +94,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 1. 在篩選中選取相關選項，以建立您想要執行的特定查詢。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="清查的篩選選項" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="篩選未受監視的生產資源" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     依預設，資源會依使用中的安全性建議數目來排序。
 
@@ -114,12 +114,12 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
     - **Off** -不受 Azure Defender 方案保護的資源。 您可以用滑鼠右鍵按一下這些專案，然後升級這些專案：
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="以滑鼠右鍵按一下 Azure Defender 以將資源升級為 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="篩選未受監視的生產資源" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - 受 Azure Defender 方案**保護的資源**
     - **部分** -這 **適用于已** 停用部分但並非所有 Azure Defender 方案的訂用帳戶。 例如，下列訂用帳戶已停用五個 Azure Defender 方案。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分在 Azure Defender 上的訂用帳戶":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="篩選未受監視的生產資源":::
 
 1. 若要進一步檢查查詢結果，請選取您感興趣的資源。
 
@@ -140,7 +140,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 例如，下列螢幕擷取畫面顯示具有38訂閱存取權的使用者，但目前只有10個建議。 因此，當使用者依 **資源類型 =** 訂用帳戶篩選時，清查中只會顯示具有作用中建議的10個訂用帳戶：
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="未在沒有作用中建議時傳回所有的子活動":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="篩選未受監視的生產資源":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>為什麼某些資源在 Azure Defender 或代理程式監視資料行中顯示空白值？
 
@@ -148,7 +148,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 當定價或代理程式監視與資源無關時，這些資料行中將不會顯示任何資料行。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些資源會在代理程式監視或 Azure Defender 資料行中顯示空白資訊":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="篩選未受監視的生產資源":::
 
 ## <a name="next-steps"></a>後續步驟
 

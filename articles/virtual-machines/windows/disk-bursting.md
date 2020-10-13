@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547834542b605b226ebffd68e05296ee847dc6de
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889103"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974323"
 ---
 # <a name="disk-bursting"></a>磁碟高載
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,7 +29,7 @@ VM 層級的高載也可在美國中西部中取得下列支援的大小：
 針對支援的虛擬機器，預設會啟用高載。
 
 ## <a name="disk-level-bursting"></a>磁碟層級高載
-高載也可在我們的 [Premium ssd](disks-types.md#premium-ssd) 上取得，適用于磁片大小 P20 且在所有區域中都較小。 在支援的新部署磁碟大小中，依預設會啟用磁碟高載。 現有的磁碟大小如果支援磁碟高載，可以透過下列其中一種方法來啟用高載： 
+高載也可在我們的 [Premium ssd](../disks-types.md#premium-ssd) 上取得，適用于磁片大小 P20 且在所有區域中都較小。 在支援的新部署磁碟大小中，依預設會啟用磁碟高載。 現有的磁碟大小如果支援磁碟高載，可以透過下列其中一種方法來啟用高載： 
 - **重新啟動 VM** 
 - **中斷連結並重新連結磁碟**
 

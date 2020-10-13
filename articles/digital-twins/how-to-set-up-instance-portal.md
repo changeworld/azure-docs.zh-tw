@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280021"
+ms.locfileid: "91932104"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -123,12 +123,13 @@ ms.locfileid: "89280021"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
 
-在接下來的 [ *要求 API 許可權* ] 頁面中，切換至 [ *我的組織使用的 api* ] 索引標籤，並搜尋 *azure 數位 twins*。 從搜尋結果中選取 *Azure 數位 Twins* ，以繼續指派 Azure 數位 Twins api 的許可權。
+在接下來的 [ *要求 API 許可權* ] 頁面中，切換至 [ *我的組織使用的 api* ] 索引標籤，並搜尋 *azure 數位 twins*。 從搜尋結果中選取 _**Azure 數位 Twins**_ ，以繼續指派 Azure 數位 Twins api 的許可權。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
 
 >[!NOTE]
-> 如果您的現有 Azure 數位 Twins 實例是從服務的先前公開預覽版 (在2020年7月之前) 仍在訂用帳戶中，則您必須改為尋找 *Azure 智慧空間服務* 。 這是一組相同 Api 的舊名稱，在此步驟之後，將不會變更您的體驗。
+> 如果您的訂用帳戶在2020年7月) 之前，仍有先前公開預覽版服務 (的 Azure 數位 Twins 實例，則您必須改為搜尋並選取 _**Azure 智慧空間服務**_ 。 這是同一組 Api 的舊名稱 (請注意， *應用程式 (用戶端) 識別碼* 與上述螢幕擷取畫面中的相同) ，而且您的體驗不會在此步驟之外變更。
+> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
 
 接下來，您將選取要為這些 Api 授與的許可權。 展開 [ **讀取 (1]) ** 許可權，然後核取顯示 [ *讀取* ] 的方塊，以授與此應用程式註冊讀取器和寫入器許可權。
 
@@ -163,7 +164,7 @@ ms.locfileid: "89280021"
 ## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
-* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
 或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：

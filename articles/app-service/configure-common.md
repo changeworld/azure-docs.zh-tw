@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91816445"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>設定 Azure 入口網站中的 App Service 應用程式
@@ -276,7 +276,7 @@ ms.locfileid: "91816445"
 
 請參閱 [為 Azure App Service 設定自訂 Linux 容器](configure-custom-container.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在 Azure App Service 中設定自訂網域名稱]
 - [在 Azure App Service 中設定預備環境] \(部分機器翻譯\)

@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818242"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理使用者
@@ -66,7 +66,7 @@ $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.o
 Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 ```
 
-在上述範例中，會使用 AzureADAdministrativeUnitMember Cmdlet 將使用者新增至管理單位。 要加入使用者之管理單位的物件識別碼，以及要加入之使用者的物件識別碼，將會被視為引數。 反白顯示的區段可能會視特定環境的需要而變更。
+在上述範例中，Cmdlet Add-AzureADAdministrativeUnitMember 是用來將使用者新增至管理單位。 要加入使用者之管理單位的物件識別碼，以及要加入之使用者的物件識別碼，將會被視為引數。 反白顯示的區段可能會視特定環境的需要而變更。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -106,7 +106,7 @@ Request body
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-注意：根據預設，AzureADAdministrativeUnitMember 只會傳回100成員，您可以新增 "-All $true" 以抓取更多成員。
+注意：根據預設，Get-AzureADAdministrativeUnitMember 只會傳回100的成員，您可以新增 "-All $true" 來取得更多成員。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

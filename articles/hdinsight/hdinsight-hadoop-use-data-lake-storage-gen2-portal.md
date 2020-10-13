@@ -12,7 +12,7 @@ ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858765"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>使用 Azure 入口網站建立具有 Data Lake Storage Gen2 的叢集
@@ -74,7 +74,7 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
     ![顯示如何指派 Azure 角色的螢幕擷取畫面](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. 選取 [儲存]。 您選取的使用者指派身分識別現在會列在選取的角色底下。
+1. 選取 [儲存]****。 您選取的使用者指派身分識別現在會列在選取的角色底下。
 1. 完成此初始設定後，您可以透過入口網站建立叢集。 此叢集必須與儲存體帳戶位在相同的 Azure 區域中。 在叢集建立功能表的 [ **儲存體** ] 索引標籤中，選取下列選項：
 
     * 針對 [ **主要儲存體類型**]，選取 [ **Azure Data Lake Storage Gen2**]。

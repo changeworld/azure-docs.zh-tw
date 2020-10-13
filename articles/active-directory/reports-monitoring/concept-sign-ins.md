@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 696b295a481d7b986f08f1d758edb8d5adca5717
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812823"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
     - 布建**記錄**  - 布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)可讓客戶透過布建服務監視活動，例如在 ServiceNow 中建立群組或從 Workday 匯入的使用者。 
-- **Security** 
+- **安全性** 
     - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指使用者帳戶不是合法擁有者的登入指示。
     - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
@@ -143,7 +143,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 ![用戶端應用程式篩選](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|新式驗證|描述|
+|名稱|新式驗證|描述|
 |---|:-:|---|
 |驗證的 SMTP| |由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。|
 |發現| |Outlook 和 EAS 用戶端用來尋找並連接到 Exchange Online 中的信箱。|
@@ -235,7 +235,7 @@ Azure AD 和 Azure 入口網站都提供您登入資料的額外進入點：
 - 用戶端
 - Location
 - IP 位址
-- 日期
+- Date
 - 需要 MFA
 - 登入狀態
 
@@ -276,7 +276,7 @@ Azure AD 和 Azure 入口網站都提供您登入資料的額外進入點：
 
 您也可以使用 [Office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview)，以程式設計方式存取 Microsoft 365 活動記錄。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [登入活動報告錯誤碼](reference-sign-ins-error-codes.md)
 * [Azure AD 資料保留原則](reference-reports-data-retention.md)

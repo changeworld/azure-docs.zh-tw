@@ -2,17 +2,14 @@
 title: 使用 Azure 應用程式 Insights 在 Visual Studio 中進行 Debug 錯
 description: 偵錯期間和生產環境中的 Web 應用程式效能分析與診斷。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323463"
+ms.locfileid: "91932204"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 進行應用程式偵錯
 在 Visual Studio (2015 和更新版本) 中，您可以使用 [Azure Application Insights](./app-insights-overview.md) 的遙測，在偵錯時和在生產環境中分析 ASP.NET Web 應用程式的效能並診斷問題。
@@ -93,9 +90,7 @@ ms.locfileid: "87323463"
   * 若要停止將遙測傳送至入口網站，請將 ApplicationInsights.config 的行批註 `<instrumentationkey>...` 。當您準備好要再次將遙測傳送至入口網站時，請將它取消批註。
 
 
-## <a name="next-steps"></a>接下來的步驟
-|  |  |
-| --- | --- |
-| **[新增更多測試](./asp-net-more.md)**<br/>監視使用狀況、可用性、相依性、例外狀況。 整合來自記錄架構的追蹤。 撰寫自訂遙測。 |![Visual Studio](./media/visual-studio/64.png) |
-| **[使用 Application Insights 入口網站](./overview-dashboard.md)**<br/>檢視儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及匯出的遙測資料。 |![Visual Studio](./media/visual-studio/62.png) |
+## <a name="next-steps"></a>後續步驟
+
+ * 使用**[Application Insights 入口網站](./overview-dashboard.md)**。 檢視儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及匯出的遙測資料。 
 

@@ -3,19 +3,17 @@ title: Azure 監視器活頁簿資料來源 |Microsoft 檔
 description: 使用從多個資料來源建立的預建和自訂參數化 Azure 監視器活頁簿，簡化複雜的報表
 services: azure-monitor
 documentationcenter: ''
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: mbullwin
-ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 049a7348b803d12b66974bb9a9b50c12059171a2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825753"
+ms.locfileid: "91931116"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 

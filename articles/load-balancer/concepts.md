@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 61620a8497765c4d8f90a3d616bd2f4b932f8dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629024"
+ms.locfileid: "91930912"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer 演算法
 
@@ -54,16 +54,6 @@ ms.locfileid: "91629024"
 - 每個端點只會由一個 VM 回應。 例如，TCP 交握是在用戶端和選取的後端 VM 之間發生。 前端要求的回應是由後端 VM 所產生的回應。 當您已順利驗證前端連線時，您至少要驗證一個後端虛擬機器的連線。
 - 對負載平衡器而言，應用程式承載是透明可見的。 任何 UDP 或 TCP 應用程式均受支援。
 - 由於負載平衡器不會與 TCP 裝載互動及提供 TLS 卸載，您可以建置全面加密的案例。 使用負載平衡器，可藉由終止 VM 本身的 TLS 連線，讓 TLS 應用程式進行大規模的向外延展。 舉例而言，您的 TLS 工作階段金鑰處理容量只會受限於您新增至後端集區的 VM 類型和數量。
-
-## <a name="limitations"></a><a name = "limitations"></a>限制
-
-- 負載平衡器規則無法跨越兩個虛擬網路。  前端和其後端執行個體必須位於相同的虛擬網路。  
-
-- 負載平衡器提供針對特定 TCP 或 UDP 通訊協定進行負載平衡和連接埠轉送的功能。 負載平衡規則和輸入 NAT 規則支援 TCP 和 UDP，但不支援其他 IP 通訊協定，包括 ICMP。
-
-- 從後端 VM 至內部負載平衡器前端的輸出流程將會失敗。
-
-- 負載平衡規則不支援轉送 IP 片段。 負載平衡規則不支援 UDP 和 TCP 封包的 IP 分散。 HA 連接埠負載平衡規則可用來轉送現有的 IP 片段。 如需詳細資訊，請參閱[高可用性連接埠概觀](load-balancer-ha-ports-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

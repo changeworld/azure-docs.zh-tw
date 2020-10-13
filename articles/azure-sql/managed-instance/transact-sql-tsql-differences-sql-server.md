@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617854"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973303"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ SQL 受控執行個體無法存取檔案共用及 Windows 資料夾，因此適�
 
 ### <a name="distributed-transactions"></a>分散式交易
 
-SQL 受控執行個體目前不支援 MSDTC 和 [彈性交易](../database/elastic-transactions-overview.md) 。
+[分散式交易](../database/elastic-transactions-overview.md)的部分支援目前處於公開預覽狀態。 支援的案例包括：
+* 參與者只是屬於 [伺服器信任群組](https://aka.ms/mitrusted-groups)一部分的 Azure SQL 受控實例的交易。
+* 從 .NET (TransactionScope 類別) 和 Transact-sql 起始的交易。
+
+Azure SQL 受控執行個體目前不支援在內部部署或 Azure 虛擬機器中受到 MSDTC 定期支援的其他案例。
 
 ### <a name="extended-events"></a>擴充事件
 

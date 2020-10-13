@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589702"
+ms.locfileid: "91930946"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
@@ -125,6 +125,13 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 深入瞭解 [輸出連線和規則](load-balancer-outbound-connections.md)。
 
 基本負載平衡器不支援輸出規則。
+
+## <a name="limitations"></a>限制
+
+- 負載平衡器提供針對特定 TCP 或 UDP 通訊協定進行負載平衡和連接埠轉送的功能。 負載平衡規則和輸入 NAT 規則支援 TCP 和 UDP，但不支援其他 IP 通訊協定，包括 ICMP。
+- 從後端 VM 至內部負載平衡器前端的輸出流程將會失敗。
+- 負載平衡器規則無法跨越兩個虛擬網路。  前端和其後端執行個體必須位於相同的虛擬網路。  
+- 負載平衡規則不支援轉送 IP 片段。 負載平衡規則不支援 UDP 和 TCP 封包的 IP 分散。 HA 連接埠負載平衡規則可用來轉送現有的 IP 片段。 如需詳細資訊，請參閱[高可用性連接埠概觀](load-balancer-ha-ports-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

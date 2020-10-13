@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 56e3c1e48df51cd24d70517ee23d47ef27d378d7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935325"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950800"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知技能
 
-**光學字元辨識 (OCR) **技能會辨識影像檔案中的列印和手寫文字。 這項技能會使用認知服務中 [電腦視覺](../cognitive-services/computer-vision/home.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 所提供的機器學習模型。 **OCR** 技能對應至下列功能：
+**光學字元辨識 (OCR) **技能會辨識影像檔案中的列印和手寫文字。 這項技能會使用認知服務中 [電腦視覺](../cognitive-services/computer-vision/overview.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 所提供的機器學習模型。 **OCR** 技能對應至下列功能：
 
 + 若為英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文，則會使用新的「 [讀取](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) 」 API。
 + 針對其他所有語言，則會使用「 [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) 」 API。

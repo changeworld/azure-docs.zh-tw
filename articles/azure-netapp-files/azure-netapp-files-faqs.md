@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653616"
+ms.locfileid: "91932255"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -31,13 +31,13 @@ ms.locfileid: "91653616"
 
 否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
 
-如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) 。  
+如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](./azure-netapp-files-network-topologies.md) 。  
 
 ### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>我可以將已建立的 VNet 連線到 Azure NetApp Files 服務嗎？
 
 是的，您可以將您建立的 Vnet 連接到服務。 
 
-如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) 。  
+如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](./azure-netapp-files-network-topologies.md) 。  
 
 ### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>我可以使用 DNS FQDN 名稱掛接 Azure NetApp Files 的 NFS 磁片區嗎？
 
@@ -146,7 +146,7 @@ Azure NetApp Files 支援 SMB 2.1 和 SMB 3.1 (，其中包含 SMB 3.0) 的支�
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB 存取需要 Active Directory 連接嗎？ 
 
-是的，您必須先建立 Active Directory 連接，然後再部署 SMB 磁片區。 指定的網域控制站必須可供 Azure NetApp Files 的委派子網存取，才能成功連線。  請參閱 [建立 SMB 磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) 區以取得詳細資料。 
+是的，您必須先建立 Active Directory 連接，然後再部署 SMB 磁片區。 指定的網域控制站必須可供 Azure NetApp Files 的委派子網存取，才能成功連線。  請參閱 [建立 SMB 磁片](./azure-netapp-files-create-volumes-smb.md) 區以取得詳細資料。 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支援的 Active Directory 連接數目有多少？
 
@@ -156,7 +156,7 @@ AD 連線是針對每個 NetApp 帳戶設定;只有透過建立 AD 連線的 Net
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files 是否支援 Azure Active Directory？ 
 
-[Azure Active Directory (AD) 網域服務](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory Domain Services (](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) AD DS) 都受到支援。 您可以使用現有的 Active Directory 網域控制站搭配 Azure NetApp Files。 網域控制站可以位於 Azure 中，作為虛擬機器，或透過 ExpressRoute 或 S2S VPN 在內部部署。 Azure NetApp Files 目前並不支援 [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) 的 AD join。
+[Azure Active Directory (AD) 網域服務](../active-directory-domain-services/overview.md)和[Active Directory Domain Services (](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) AD DS) 都受到支援。 您可以使用現有的 Active Directory 網域控制站搭配 Azure NetApp Files。 網域控制站可以位於 Azure 中，作為虛擬機器，或透過 ExpressRoute 或 S2S VPN 在內部部署。 Azure NetApp Files 目前並不支援 [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) 的 AD join。
 
 如果您將 Azure NetApp Files 與 Azure Active Directory Domain Services 搭配使用，當您為 NetApp 帳戶設定 Active Directory 時，組織單位路徑是 `OU=AADDC Computers`。
 
@@ -171,7 +171,7 @@ SMB 用戶端所報告的磁片區大小是 Azure NetApp Files 磁片區可成�
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 
-Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
 ## <a name="dual-protocol-faqs"></a>雙重通訊協定常見問題
@@ -224,7 +224,7 @@ Azure NetApp Files 提供 NFS 和 SMB 磁片區。  您可以使用任何以檔�
 
 NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](https://cloud.netapp.com/cloud-sync-service)。 此解決方案可讓您將 NFS 或 SMB 資料複寫至 Azure NetApp Files NFS 匯出或 SMB 共用。 
 
-您也可以使用一系列的免費工具來複製資料。 針對 NFS，您可以使用工作負載工具（例如 [rsync](https://rsync.samba.org/examples.html) ），將來源資料複製並同步處理到 Azure NetApp Files 磁片區中。 針對 SMB，您可以使用相同的方式來使用工作負載 [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 。  這些工具也可以複製檔案或資料夾的許可權。 
+您也可以使用一系列的免費工具來複製資料。 針對 NFS，您可以使用工作負載工具（例如 [rsync](https://rsync.samba.org/examples.html) ），將來源資料複製並同步處理到 Azure NetApp Files 磁片區中。 針對 SMB，您可以使用相同的方式來使用工作負載 [robocopy](/windows-server/administration/windows-commands/robocopy) 。  這些工具也可以複製檔案或資料夾的許可權。 
 
 從內部部署資料移轉至 Azure NetApp Files 的需求如下： 
 
@@ -239,7 +239,7 @@ Azure NetApp Files 提供 NFS 和 SMB 磁片區。  任何以檔案為基礎的�
 
 NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](https://cloud.netapp.com/cloud-sync-service)。 此解決方案可讓您將 NFS 或 SMB 資料複寫至 Azure NetApp Files NFS 匯出或 SMB 共用。 
 
-您也可以使用一系列的免費工具來複製資料。 針對 NFS，您可以使用工作負載工具（例如 [rsync](https://rsync.samba.org/examples.html) ），將來源資料複製並同步處理到 Azure NetApp Files 磁片區中。 針對 SMB，您可以使用相同的方式來使用工作負載 [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) 。  這些工具也可以複製檔案或資料夾的許可權。 
+您也可以使用一系列的免費工具來複製資料。 針對 NFS，您可以使用工作負載工具（例如 [rsync](https://rsync.samba.org/examples.html) ），將來源資料複製並同步處理到 Azure NetApp Files 磁片區中。 針對 SMB，您可以使用相同的方式來使用工作負載 [robocopy](/windows-server/administration/windows-commands/robocopy) 。  這些工具也可以複製檔案或資料夾的許可權。 
 
 將 Azure NetApp Files 磁片區複製到另一個 Azure 區域的需求如下： 
 - 確定 Azure NetApp Files 可在目標 Azure 區域中使用。
@@ -257,8 +257,8 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ## <a name="next-steps"></a>後續步驟  
 
-- [Microsoft Azure ExpressRoute 常見問題](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
-- [Microsoft Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
-- [如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure 資料箱](https://docs.microsoft.com/azure/databox)
+- [Microsoft Azure ExpressRoute 常見問題](../expressroute/expressroute-faqs.md)
+- [Microsoft Azure 虛擬網路常見問題](../virtual-network/virtual-networks-faq.md)
+- [如何建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)
+- [Azure 資料箱](../databox/index.yml)
 - [Azure NetApp Files 的 SMB 效能常見問題](azure-netapp-files-smb-performance.md)

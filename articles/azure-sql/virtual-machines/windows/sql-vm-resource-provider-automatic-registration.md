@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 45285f2f26f1f17408f97bfede2b97e4c4752a5c
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 75f68a4de2db0c4c9102a58da12d80cc273a6e80
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762452"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931133"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>使用 SQL VM 資源提供者自動註冊
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "91762452"
 
 若要在 Azure 入口網站中啟用 SQL Server Vm 的自動註冊，請遵循下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 1. 流覽至 [ [**SQL 虛擬機器**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) ] 資源頁面。 
 1. 選取 [ **自動 SQL SERVER VM 註冊** ] 以開啟 [ **自動註冊** ] 頁面。 
 

@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369088"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教學課程：將資料載入 Azure Synapse Analytics SQL 集區
@@ -83,7 +83,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 1. 選取 [ **審核 + 建立** ] 以檢查您的設定，然後選取 [ **建立** ] 以建立您的資料倉儲。 您可以從 [**通知**] 功能表開啟 [**正在進行部署**] 頁面，以監視您的進度。
 
-     ![螢幕擷取畫面顯示部署進行中的通知。](./media/load-data-wideworldimportersdw/notification.png)
+     ![此螢幕擷取畫面顯示部署進行中的通知。](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>建立伺服器層級防火牆規則
 
@@ -100,7 +100,7 @@ Azure Synapse Analytics 服務會在伺服器層級建立防火牆，防止外�
 1. 選取伺服器名稱。
     伺服器名稱![](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. 選取 [顯示防火牆設定]。 伺服器的 [防火牆設定] 頁面隨即開啟。
+1. 選取 [顯示防火牆設定]。 伺服器的 [防火牆設定] 頁面會隨即開啟。
 
     ![伺服器設定](./media/load-data-wideworldimportersdw/server-settings.png)
 
@@ -108,7 +108,7 @@ Azure Synapse Analytics 服務會在伺服器層級建立防火牆，防止外�
 
     ![伺服器防火牆規則](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
-1. 選取 [儲存]。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，在伺服器上開啟連接埠 1433。
+1. 選取 [儲存]****。 系統便會為目前的 IP 位址建立伺服器層級防火牆規則，在伺服器上開啟連接埠 1433。
 
 您現在可以使用您的用戶端 IP 位址連線到伺服器。 可從 SQL Server Management Studio 或您選擇的另一個工具來運作連線。 當您連線時，請使用先前建立的 serveradmin 帳戶。  
 
@@ -184,7 +184,7 @@ Azure Synapse Analytics 服務會在伺服器層級建立防火牆，防止外�
 
 載入資料的首要步驟是以 LoaderRC60 身分登入。  
 
-1. 在 [物件總管] 中，按一下 [連線]**** 下拉功能表並選取 [資料庫引擎]****。 [連線到伺服器]  對話方塊隨即出現。
+1. 在 [物件總管] 中，按一下 [連線]**** 下拉功能表並選取 [資料庫引擎]****。 [連線到伺服器] 對話方塊隨即出現。
 
     ![與新登入連線](./media/load-data-wideworldimportersdw/connect-as-loading-user.png)
 
@@ -1083,7 +1083,7 @@ SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
 
     ![清除資源](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 如果您需要將資料保留在儲存體中，可以在您不使用資料倉儲時暫停計算。 藉由暫停計算，您只需支付資料儲存體的費用，而且您可以在準備好使用資料時繼續計算。 若要暫停計算，請按一下 [暫停]**** 按鈕。 資料倉儲暫停時，您會看到 [啟動]**** 按鈕。  若要繼續計算，請按一下 [啟動]****。
+2. 如果您需要將資料保留在儲存體中，可以在您不使用資料倉儲時暫停計算。 藉由暫停計算，您只需支付資料儲存體的費用，而且您可以在準備好使用資料時繼續計算。 若要暫停計算，請按一下 [暫停]  按鈕。 資料倉儲暫停時，您會看到 [啟動]**** 按鈕。  若要繼續計算，請按一下 [啟動]  。
 
 3. 如果您需要移除未來的費用，可以將資料倉儲刪除。 若要移除資料倉儲而不再支付運算或儲存體的費用，請按一下 [刪除]****。
 

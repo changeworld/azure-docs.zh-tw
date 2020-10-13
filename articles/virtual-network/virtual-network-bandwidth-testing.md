@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
 ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812279"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>頻寬/輸送量測試 (NTTTCP)
@@ -165,7 +165,7 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 </Endpoints> 
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 視結果而定，可能有將您案例的[網路輸送量機器最佳化](virtual-network-optimize-network-bandwidth.md)的空間。
 * 了解如如何[將頻寬配置給虛擬機器](virtual-machine-network-throughput.md)
 * 深入了解 [Azure 虛擬網路常見問題集 (FAQ)](virtual-networks-faq.md)

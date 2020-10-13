@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: 9050982338c4a6096ef180b34c0d0a0dca931427
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3f5627f4bd0d62a70ef9d7809f0bf1441141f4c6
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278306"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931240"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
 
-您可以藉由將磁片區移至另一個使用磁片區所需 [服務層級](azure-netapp-files-service-levels.md) 的容量集區，來變更現有磁片區的服務層級。 此磁片區的就地服務層級變更不需要您遷移資料。 它也不會影響對磁片區的存取。  
+您可以藉由將磁片區移至另一個使用磁片區所需 [服務層級](azure-netapp-files-service-levels.md) 的容量集區，來變更現有磁片區的服務層級。 此磁碟區的就地服務層級變更不需要您遷移資料。 它也不會影響對磁片區的存取。  
 
-此功能可讓您依需求滿足您的工作負載需求。  您可以變更現有的磁片區，以使用較高的服務層級來提高效能，或使用較低的服務層級來進行成本優化。 例如，如果磁片區目前位於使用 *標準* 服務層級的容量集區，而您想要讓磁片區使用 *premium* 服務層級，您可以將磁片區動態移至使用 *premium* 服務層級的容量集區。  
+此功能可讓您依需求滿足您的工作負載需求。  您可以變更現有的磁碟區，以使用較高的服務層級來獲得更好的效能，或使用較低的服務等級來獲得成本最佳化。 例如，如果磁片區目前位於使用 *標準* 服務層級的容量集區，而您想要讓磁片區使用 *premium* 服務層級，您可以將磁片區動態移至使用 *premium* 服務層級的容量集區。  
 
 您要移動磁片區的容量集區必須已經存在。 容量集區可包含其他磁片區。  如果您想要將磁片區移至全新的容量集區，您必須先 [建立容量集](azure-netapp-files-set-up-capacity-pool.md) 區，然後再移動磁片區。  
 
@@ -53,7 +53,7 @@ ms.locfileid: "91278306"
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
+您也可以使用 [Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>將磁片區移至另一個容量集區
 

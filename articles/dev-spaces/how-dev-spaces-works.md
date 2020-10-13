@@ -5,14 +5,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的處理常式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981263"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963698"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 如何運作
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 開發 Kubernetes 應用程式可能是一項挑戰。 您需要 Docker 和 Kubernetes 設定檔。 您必須瞭解如何在本機測試您的應用程式，並與其他相依服務互動。 您可能需要一次處理多個服務的開發和測試，以及一小組開發人員。
 

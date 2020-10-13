@@ -12,12 +12,12 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內部部署、Docker、容器
-ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813265"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930436"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>安裝和執行適用于語音服務 Api 的 Docker 容器 
 
@@ -176,7 +176,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-
 下列標記是格式的範例：
 
 ```
-2.4.0-amd64-en-us-preview
+2.5.0-amd64-en-us-preview
 ```
 
 如需 **語音轉換文字** 容器的所有支援地區設定，請參閱 [語音轉換文字影像標記](../containers/container-image-tags.md#speech-to-text)。
@@ -673,7 +673,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解下載、安裝及執行語音容器的概念和工作流程。 摘要說明：
 
@@ -692,7 +692,7 @@ speech_config.set_service_property(
 > [!IMPORTANT]
 >  認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 審核設定 [容器](speech-container-configuration.md) 以進行設定
 * 瞭解如何 [使用 Kubernetes 和 Helm 的語音服務容器](speech-container-howto-on-premises.md)

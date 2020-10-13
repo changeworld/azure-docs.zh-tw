@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812857"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 串流分析中的資料保護 
@@ -33,7 +33,7 @@ Azure 串流分析會保存下列中繼資料和資料，以便執行：
 
 為了協助您符合任何管制產業或環境中的合規性義務，您可以閱讀更多有關 [Microsoft 合規性供應](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)專案的資訊。 
 
-## <a name="in-region-data-residency"></a>區域內資料存放區
+## <a name="in-region-data-residency"></a>In-Region 資料常駐
 Azure 串流分析會儲存客戶資料和以上所述的其他中繼資料。 依預設，Azure 串流分析會將客戶資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求（包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求）。
 此外，您可以選擇將所有資料資產儲存 (客戶資料，以及在單一區域中的串流分析作業) 相關的其他中繼資料，方法是在您選擇的儲存體帳戶中加密它們。
 
@@ -78,7 +78,7 @@ Azure 串流分析會儲存客戶資料和以上所述的其他中繼資料。 �
 ### <a name="known-issues"></a>已知問題
 目前有已知的限制，使用受控識別來驗證任何輸入或輸出時，使用客戶管理金鑰的作業會失敗。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)
 * [了解 Azure 串流分析的輸入](stream-analytics-add-inputs.md)
