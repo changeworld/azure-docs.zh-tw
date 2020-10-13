@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081197"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何探索 Azure 資料目錄中的資料資產
@@ -50,16 +50,16 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料來源�
 > [!NOTE]
 > 若要關閉結果醒目提示，請使用 [醒目提示]**** 在資料目錄入口網站中進行切換。
 
-當您查看搜尋結果時，即使啟用了反白顯示，也不一定會明顯地包含資料資產的原因。 因為預設會搜尋所有屬性，某個資料資產可能因為符合資料行層級的屬性而被傳回。 而且，因為多個使用者可以使用自己的標記和描述來標注已註冊的資料資產，所以並非所有的中繼資料都會顯示在搜尋結果清單中。
+當您查看搜尋結果時，即使已啟用點擊醒目提示，也不一定能明顯地包含資料資產。 因為預設會搜尋所有屬性，某個資料資產可能因為符合資料行層級的屬性而被傳回。 而且，因為多個使用者可以使用自己的標籤和描述來為已註冊的資料資產加上批註，所以並非所有的中繼資料都會顯示在搜尋結果清單中。
 
 在預設的並排顯示中，搜尋結果所顯示的每個磚，都含有**檢視搜尋字詞相符項目**圖示，讓您可以快速檢視相符項目的數目和位置，並在需要時移至該位置。
 
  ![在 Azure 資料目錄入口網站顯示結果醒目提示並搜尋相符項目](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 因為在資料目錄註冊資料來源，可讓您透過將結構化和描述性中繼資料從資料來源複製到目錄服務，所以更容易地探索及了解資料來源。 註冊資料來源之後，您可以使用篩選來探索資料來源，並且在資料目錄入口網站搜尋。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需如何探索資料來源的逐步詳細資料，請參閱[開始使用 Azure 資料目錄](data-catalog-get-started.md)。

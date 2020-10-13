@@ -9,10 +9,10 @@ ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470063"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式備份
@@ -120,7 +120,7 @@ oc get backups -n velero <name of backup> -o yaml
 
 成功的備份將會輸出 `phase:Completed` ，而物件將會存留在儲存體帳戶的容器中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，Azure Red Hat OpenShift 4 叢集應用程式已備份。 您已了解如何︰
 

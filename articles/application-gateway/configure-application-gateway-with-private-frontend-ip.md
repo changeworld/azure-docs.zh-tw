@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
 ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562480"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用內部負載平衡器 (ILB) 端點來設定應用程式閘道
@@ -59,7 +59,7 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 10. 選取 [ **新增後端集**區]。
 11. 針對 [ **名稱**]，輸入 *appGatewayBackendPool*。
 12. 針對 [ **新增沒有目標的後端集**區]，選取 **[是]**。 您稍後將會新增目標。
-13. 選取 [新增]  。
+13. 選取 [新增]。
 14. 選取 **[下一步：設定]**。
 15. 在 [ **路由規則**] 底下，選取 [ **新增規則**]。
 16. 在 [ **規則名稱**] 中，輸入 *Rrule-01*。
@@ -73,8 +73,8 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 24. 針對 [ **後端埠**]，輸入 *80*。
 25. 接受其餘的預設值，然後選取 [ **新增**]。
 26. 在 [ **新增路由規則** ] 頁面上，選取 [ **新增**]。
-27. 選取 **[下一步：標記]**。
-28. 完成時，選取 [下一步:檢閱 + 建立]。
+27. 完成時，選取 [下一步:標籤]。
+28. 選取 [下一步：檢閱 + 建立]。
 29. 查看 [摘要] 頁面上的設定，然後選取 [ **建立** ] 以建立網路資源和應用程式閘道。 可能需要幾分鐘的時間來建立應用程式閘道。 請等候部署成功完成後，再繼續進行至下一節。
 
 ## <a name="add-backend-pool"></a>新增後端集區

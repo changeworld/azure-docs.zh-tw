@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
 ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651858"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>匯入 Azure Key Vault 憑證常見問題
@@ -75,12 +75,12 @@ ms.locfileid: "89651858"
 是的，您可以從任何 CA 匯入憑證，但您的金鑰保存庫將無法自動更新憑證。 您可以設定提醒以收到憑證到期的通知。
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>如果我從夥伴 CA 匯入憑證，自動更新功能是否仍然有效？
-可以。 上傳憑證之後，請務必在憑證的發佈原則中指定 autorotation。 在下一個週期或憑證版本發行之前，您的設定仍會保持有效。
+是。 上傳憑證之後，請務必在憑證的發佈原則中指定 autorotation。 在下一個週期或憑證版本發行之前，您的設定仍會保持有效。
 
 ### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>為什麼我看不到匯入 Key Vault 的 App Service 憑證？ 
 如果您已成功匯入憑證，您應該可以前往 [ **秘密** ] 窗格來確認憑證。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Key Vault 憑證](/azure/key-vault/certificates/about-certificates)

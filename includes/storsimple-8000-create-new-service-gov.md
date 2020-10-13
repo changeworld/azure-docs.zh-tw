@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1311af54c2335f403f2db071ced1caee3b122abc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507275"
 ---
 #### <a name="to-create-a-new-service"></a>建立新服務
 1. 使用您的 Microsoft 帳戶認證來登入 [Microsoft Azure Government 入口網站](https://portal.azure.us/)。
-2. 在政府入口網站中，按一下 []， **+** 然後在 marketplace 中按一下 [**查看全部**]。 搜尋 [StorSimple 實體]__。 選取並按一下 [StorSimple 實體裝置系列]****，然後按一下 [建立]****。 或者，在政府入口網站中，按一下 [儲存體] 底下的 [ **+** **StorSimple 實體裝置系列**]。 **Storage**
+2. 在政府入口網站中，按一下， **+** 然後在 marketplace 中按一下 [ **查看全部**]。 搜尋 [StorSimple 實體]__。 選取並按一下 [StorSimple 實體裝置系列]****，然後按一下 [建立]****。 或者，在政府入口網站中，按一下 [ **+** **存儲**設備]，然後按一下 [ **StorSimple 實體裝置系列**]。
 3. 在 [StorSimple 裝置管理員]**** 刀鋒視窗中，執行下列步驟：
    
    1. 為服務提供唯一的**資源名稱** 。 這個名聲是可用來識別服務的易記名稱。 名稱長度可介於 2 到 50 個字元之間，且可以是字母、數字和連字號。 名稱必須以字母或數字為開頭或結尾。

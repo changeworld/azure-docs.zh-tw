@@ -13,10 +13,10 @@ ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440995"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>將您的 SQL 集區升級至 Gen2
@@ -124,7 +124,7 @@ Microsoft 有助於降低執行 SQL 集區的專案層級成本。  SQL 集區�
 
 - 答：否。 在區域升級之後，新 Gen1 執行個體的建立將會停用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [升級步驟](upgrade-to-latest-generation.md)
 - [維護時段](maintenance-scheduling.md)

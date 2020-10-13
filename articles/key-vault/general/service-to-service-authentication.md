@@ -9,17 +9,17 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: fccd838b47cbb565ffdbe5250a91cd293238bf9b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940441"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89483332"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
 > [!NOTE]
-> 您不再建議使用新的 Key Vault SDK 來使用**AppAuthentication** 。 它會取代為適用于 .NET、JAVA、TypeScript 和 Python 的新 **Azure 身分識別用戶端程式庫** ，而且應該用於所有新的開發。 您可以在此處找到詳細資訊： [在程式碼中 Key Vault 的驗證](https://docs.microsoft.com/azure/key-vault/general/developers-guide#azure-identity-client-libraries)。
+> 您不再建議使用新的 Key Vault SDK 來使用**AppAuthentication** 。 它會取代為適用于 .NET、JAVA、TypeScript 和 Python 的新 Azure 身分識別程式庫 **DefaultAzureCredentials** ，而且應該用於所有新的開發。 您可以在這裡找到詳細資訊： [驗證和 AZURE SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/)。
 
 若要驗證 Azure Key Vault，您需要 Azure Active Directory (Azure AD) 認證（共用密碼或憑證）。
 

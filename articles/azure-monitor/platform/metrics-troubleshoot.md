@@ -8,10 +8,10 @@ ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440672"
 ---
 # <a name="troubleshooting-metrics-charts"></a>對計量圖表進行疑難排解
@@ -112,7 +112,7 @@ Azure 計量圖表使用虛線樣式來表示有遺漏值 (也稱為「null 值�
 
 1. 使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 來驗證計量會流入儲存體帳戶。 如果未收集計量，請遵循 [Azure 診斷擴充功能疑難排解指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何開始使用計量瀏覽器](metrics-getting-started.md)
 * [瞭解計量瀏覽器的 advanced 功能](metrics-charts.md)

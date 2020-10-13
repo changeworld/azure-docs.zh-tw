@@ -5,15 +5,15 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009285"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 角色型存取控制來定義 Azure Kubernetes Service (AKS 中 Kubernetes 設定檔的存取權) 
 
-您可以使用 `kubectl` 工具與 Kubernetes 叢集互動。 Azure CLI 可讓您使用 `kubectl` 輕鬆地存取連線到 AKS 叢集所需的認證和組態資訊。 若要限制誰可以取得該 Kubernetes 設定 (*kubeconfig*) 資訊，並限制他們之後擁有的許可權，您可以使用 azure 角色型存取控制 (azure RBAC) 。
+您可以使用 `kubectl` 工具與 Kubernetes 叢集互動。 Azure CLI 可讓您使用 `kubectl` 輕鬆地存取連線到 AKS 叢集所需的認證和組態資訊。 若要限制誰可以取得該 Kubernetes 設定 (*kubeconfig*) 資訊，以及限制他們所擁有的許可權，您可以使用 azure 角色型存取控制 (azure RBAC) 。
 
 本文將說明如何指派 RBAC 角色，以限制誰可以取得 AKS 叢集的組態資訊。
 
@@ -21,13 +21,13 @@ ms.locfileid: "88009285"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-本文也會要求您執行 Azure CLI 版本2.0.65 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+本文也會要求您執行 Azure CLI 2.0.65 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 ## <a name="available-cluster-roles-permissions"></a>可用的叢集角色權限
 
-當您使用 `kubectl` 工具與 AKS 叢集互動時，組態檔會用來定義叢集連線資訊。 這個設定檔通常會儲存在 *~/.kube/config*中。可以在此*kubeconfig*檔中定義多個叢集。 您可以使用 [kubectl config use-context][kubectl-config-use-context] 命令在叢集間進行切換。
+當您使用 `kubectl` 工具與 AKS 叢集互動時，組態檔會用來定義叢集連線資訊。 此設定檔通常會儲存在 *~/.kube/config*中。您可以在此 *kubeconfig* 檔中定義多個叢集。 您可以使用 [kubectl config use-context][kubectl-config-use-context] 命令在叢集間進行切換。
 
-[az aks get-credentials][az-aks-get-credentials] 命令可讓您取得 AKS 叢集的存取認證，並將其合併至 kubeconfig** 檔案。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來控制這些認證的存取權。 這些 Azure 角色可讓您定義誰可以抓取*kubeconfig*檔，以及它們在叢集內的許可權。
+[az aks get-credentials][az-aks-get-credentials] 命令可讓您取得 AKS 叢集的存取認證，並將其合併至 kubeconfig** 檔案。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來控制這些認證的存取權。 這些 Azure 角色可讓您定義誰可以取得 *kubeconfig* 檔案，以及它們在叢集中的許可權。
 
 兩個內建角色如下：
 
@@ -41,19 +41,19 @@ ms.locfileid: "88009285"
 這些 RBAC 角色可以套用至 Azure Active Directory (AD) 使用者或群組。
 
 > [!NOTE]
-> 在使用 Azure AD 的叢集上，具有*clusterUser*角色的使用者會有空白的*kubeconfig*檔案，以提示登入。 登入之後，使用者可以根據其 Azure AD 使用者或群組設定來取得存取權。 具有*clusterAdmin*角色的使用者具有系統管理員存取權。
+> 在使用 Azure AD 的叢集上，具有 *clusterUser* 角色的使用者會有空白 *kubeconfig* 檔案，以提示登入。 登入之後，使用者會根據其 Azure AD 使用者或群組設定來存取。 具有 *clusterAdmin* 角色的使用者具有系統管理員存取權。
 >
-> 不使用 Azure AD 的叢集只會使用*clusterAdmin*角色。
+> 不使用 Azure AD 的叢集只會使用 *clusterAdmin* 角色。
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>將角色許可權指派給使用者或群組
 
-若要指派其中一個可用的角色，您必須取得 AKS 叢集的資源識別碼，以及 Azure AD 使用者帳戶或群組的識別碼。 下列範例命令：
+若要指派其中一個可用角色，您需要取得 AKS 叢集的資源識別碼，以及 Azure AD 使用者帳戶或群組的識別碼。 下列命令範例：
 
-* 針對*myResourceGroup*資源群組中名為*myAKSCluster*的叢集，使用[az aks show][az-aks-show]命令來取得叢集資源識別碼。 如有需要，請提供您自己的叢集和資源群組名稱。
-* 使用[az account show][az-account-show]和[az ad user show][az-ad-user-show]命令來取得您的使用者識別碼。
-* 最後，使用[az role 指派 create][az-role-assignment-create]命令來指派角色。
+* 針對*myResourceGroup*資源群組中名為*myAKSCluster*的叢集，使用[az aks SHOW][az-aks-show]命令取得叢集資源識別碼。 如有需要，請提供您自己的叢集和資源群組名稱。
+* 使用 [az account show][az-account-show] 和 [az ad user show][az-ad-user-show] 命令來取得您的使用者識別碼。
+* 最後，使用 [az role assign create][az-role-assignment-create] 命令指派角色。
 
-下列範例會將 Azure Kubernetes Service 叢集系統*管理員角色*指派給個別使用者帳戶：
+下列範例會將 *Azure Kubernetes Service Cluster 管理員角色* 指派給個別使用者帳戶：
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -71,7 +71,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 如果您想要將許可權指派給 Azure AD 群組，請以 `--assignee` *群組*的物件識別碼（而不是*使用者*）更新上述範例中顯示的參數。 若要取得群組的物件識別碼，請使用[az ad group show][az-ad-group-show]命令。 下列範例會取得名為*appdev*之 Azure AD 群組的物件識別碼：`az ad group show --group appdev --query objectId -o tsv`
+> 如果您想要將許可權指派給 Azure AD 群組，請 `--assignee` 使用 *群組* 的物件識別碼（而非 *使用者*）來更新上述範例中所示的參數。 若要取得群組的物件識別碼，請使用 [az ad group show][az-ad-group-show] 命令。 下列範例會取得名為 *appdev*之 Azure AD 群組的物件識別碼： `az ad group show --group appdev --query objectId -o tsv`
 
 如有需要，您可以將上述指派變更為「叢集使用者角色」**。
 
@@ -127,7 +127,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>移除角色權限
 
-若要移除角色指派，請使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定 [帳戶識別碼] 和 [叢集資源識別碼]，如先前的命令中所取得。 如果您將角色指派給群組而非使用者，請為參數指定適當的群組物件識別碼，而不是帳戶物件識別碼 `--assignee` ：
+若要移除角色指派，請使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定帳戶識別碼和叢集資源識別碼，如先前的命令所取得。 如果您將角色指派給群組而不是使用者，請指定適當的群組物件識別碼，而非參數的帳戶物件識別碼 `--assignee` ：
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER

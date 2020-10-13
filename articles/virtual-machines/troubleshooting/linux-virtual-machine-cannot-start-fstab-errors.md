@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441658"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>針對 Linux VM 因為 fstab 錯誤而啟動的問題進行疑難排解
@@ -238,7 +238,7 @@ Give root password for maintenance
     * 重新開機 VM 之前，請先測試任何 fstab 變更。 若要這樣做，請使用下列命令： ``$ sudo mount -a``
     * 建立已更正 fstab 檔案的額外複本，以用於未來的復原案例。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](./troubleshoot-recovery-disks-linux.md)
 * [使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](./troubleshoot-recovery-disks-portal-linux.md)

@@ -14,13 +14,13 @@ ms.date: 07/07/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a349f8160e8ab5b6459b2085e21e7368570c57db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503832"
 ---
-# <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>使用 Azure CLI 腳本，透過網路虛擬裝置來路由傳送流量
+# <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>使用 Azure CLI 腳本透過網路虛擬裝置路由傳送流量
 
 此指令碼範例會建立一個具有前端和後端子網路的虛擬網路。 它也會建立一個已啟用 IP 轉送功能的 VM，以在兩個子網路之間路由傳送流量。 執行此指令碼之後，您可以將網路軟體 (例如防火牆應用程式) 部署到 VM。
 
@@ -65,4 +65,4 @@ az group delete --name MyResourceGroup --yes
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-您可以在[Azure 網路功能總覽檔](../cli-samples.md)中找到其他的網路 CLI 腳本範例
+您可以在[Azure 網路總覽檔](../cli-samples.md)中找到其他網路 CLI 腳本範例

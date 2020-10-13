@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: e2451796cb99f57501ed74aba1dc7a3077b51881
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441607"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>從 VPN 閘道設定資源記錄事件的警示
@@ -39,39 +39,39 @@ Azure 提供下列資源記錄：
 
 2. 選取 [ **Log Analytics** ] 頁面上的 [**建立**]。
 
-   ![具有 [建立] 按鈕的 Log Analytics 頁面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "選取")
+   ![具有 [建立] 按鈕的 Log Analytics 頁面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Select")
 
 3. 選取 [ **建立新** 的] 並填入詳細資料。
 
-   ![建立 Log Analytics 工作區的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "選取")
+   ![建立 Log Analytics 工作區的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Select")
 
 4. 在 [**監視**  >  **診斷設定**] 分頁上尋找您的 VPN 閘道。
 
-   ![在診斷設定中尋找 VPN 閘道的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "選取")
+   ![在診斷設定中尋找 VPN 閘道的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Select")
 
 5. 若要開啟診斷，請按兩下閘道，然後選取 [ **開啟診斷**]。
 
-   ![開啟診斷的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "選取")
+   ![開啟診斷的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Select")
 
 6. 填入詳細資料，並確認已選取 [ **傳送至 Log Analytics** ] 和 [ **TunnelDiagnosticLog** ]。 選擇您在步驟3中建立的 Log Analytics 工作區。
 
-   ![選取的核取方塊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "選取")
+   ![選取的核取方塊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Select")
 
    > [!NOTE]
    > 一開始可能需要幾小時的時間才會顯示資料。
 
 7. 移至虛擬網路閘道資源的總覽，然後從 [**監視**] 索引標籤中選取 [**警示**]。然後建立新的警示規則，或編輯現有的警示規則。
 
-   ![建立新警示規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
+   ![建立新警示規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
 
-   ![點對站](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
+   ![點對站](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
 8. 選取 Log Analytics 工作區和資源。
 
-   ![工作區和資源的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "選取")
+   ![工作區和資源的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Select")
 
 9. 選取 [ **自訂記錄搜尋** ] 作為 [ **新增條件**] 下的 [信號] 邏輯。
 
-   ![自訂記錄搜尋的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "選取")
+   ![自訂記錄搜尋的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Select")
 
 10. 在 [ **搜尋查詢** ] 文字方塊中輸入下列查詢。 視需要取代 <> 和 TimeGenerated 中的值。
 
@@ -88,15 +88,15 @@ Azure 提供下列資源記錄：
 
     將 [臨界值] 設定為0，然後選取 [ **完成**]。
 
-    ![輸入查詢並選取臨界值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "選取")
+    ![輸入查詢並選取臨界值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Select")
 
 11. 在 [**建立規則**] 頁面上，選取 [**動作群組**] 區段底下的 [**建立新**的]。 填入詳細資料，然後選取 **[確定]**。
 
-    ![新動作群組的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "選取")
+    ![新動作群組的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Select")
 
 12. 在 [ **建立規則** ] 頁面上，填入 **自訂動作** 的詳細資料，並確定 [ **動作組名** ] 區段中出現正確的名稱。 選取 [ **建立警示規則** ] 以建立規則。
 
-    ![建立規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "選取")
+    ![建立規則的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Select")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>使用 PowerShell 設定警示
 
@@ -195,6 +195,6 @@ Azure 提供下列資源記錄：
        -Name 'The Azure to Redmond tunnel is disconnected'
    ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要設定通道計量的警示，請參閱 [設定 VPN 閘道計量的警示](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。

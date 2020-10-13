@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231379"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>適用于 ExpressRoute 的 Azure 安全性基準
@@ -242,7 +242,7 @@ ms.locfileid: "89231379"
 
 您可以使用訂用帳戶 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格，來設定 Azure 角色型存取控制 (Azure RBAC) 。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。
 
-此外，使用 ExpressRoute 合作夥伴 Resource Manager API 的合作夥伴可以將角色型存取控制套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源和新增/更新/刪除對等互連設定。
+此外，使用 ExpressRoute 合作夥伴 Resource Manager API 的合作夥伴可以將 Role-Based 存取控制套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源和新增/更新/刪除對等互連設定。
 
 * [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -459,7 +459,7 @@ ms.locfileid: "89231379"
 
 Azure ExpressRoute 也有線路擁有者和線路使用者角色。 線路使用者是虛擬網路閘道的擁有者，與 ExpressRoute 線路位於不同的訂用帳戶內。 電路擁有者能夠隨時修改及撤銷授權。 如果撤銷授權，則在存取權遭撤銷的訂用帳戶中，所有連結連線均會被刪除。 電路使用者可以兌換授權 (每個虛擬網路一個授權)。
 
-此外，使用 ExpressRoute 合作夥伴 Resource Manager API 的合作夥伴可以將角色型存取控制套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源和新增/更新/刪除對等互連設定。
+此外，使用 ExpressRoute 合作夥伴 Resource Manager API 的合作夥伴可以將 Role-Based 存取控制套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源和新增/更新/刪除對等互連設定。
 
 * [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -891,7 +891,7 @@ Azure ExpressRoute 也有線路擁有者和線路使用者角色。 線路使用
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：啟用 Key Vault 中的虛刪除，以防止金鑰遭到意外或惡意刪除。
+**指導**方針：啟用 Key Vault 中的 Soft-Delete，以防止遭到意外或惡意刪除的金鑰。
 
 * [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 

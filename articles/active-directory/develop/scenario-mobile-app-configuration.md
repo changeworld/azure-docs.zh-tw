@@ -13,10 +13,10 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89442746"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>設定可呼叫 web Api 的行動應用程式
@@ -218,7 +218,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 。 傳入您將使用之物件視窗的參考。 以下是範例：
+1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 。 傳入您將使用之物件視窗的參考。 以下為範例：
 
     在 `App.cs` 中：
     ```csharp
@@ -365,7 +365,7 @@ MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置�
 
 如需有關在 Android 上啟用 broker 的詳細資訊，請參閱 [Xamarin 上](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android)的代理驗證。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [取得權杖](scenario-mobile-acquire-token.md)

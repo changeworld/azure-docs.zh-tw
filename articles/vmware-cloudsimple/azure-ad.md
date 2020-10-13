@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532523"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作為 CloudSimple 私人雲端上的 vCenter 身分識別提供者
@@ -85,7 +85,7 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 
     | **選項** | **說明** |
     |------------|-----------------|
-    | **Name** | 身分識別來源的名稱。 |
+    | **名稱** | 身分識別來源的名稱。 |
     | **使用者的基底 DN** | 使用者的基底分辨名稱。  如 Azure AD，請使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  範例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` 。|
     | **網域名稱** | 網域的 FQDN，例如，example.com。 請勿在此文字方塊中提供 IP 位址。 |
     | **網域別名** | * (選擇性) * 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
@@ -98,7 +98,7 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 
 3. 在許可權提升之後，登入您的私用雲端 vCenter。
 4. 請依照上一個步驟中的值，使用上一個步驟中的值將 Azure Active Directory 設定為身分識別來源，依照在 [vCenter 上新增身分識別來源](set-vcenter-identity.md#add-an-identity-source-on-vcenter) 中的指示進行。
-5. 將使用者/群組從 Azure AD 新增至 vCenter 群組（如 VMware 主題 [將成員新增至 Vcenter 單一登入群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)中所述）。
+5. 將使用者/群組從 Azure AD 新增至 vCenter 群組（如 VMware 主題 [將成員新增至 Vcenter 單一 Sign-On 群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)中所述）。
 
 > [!CAUTION]
 > 新使用者只能新增至 *雲端擁有者群組*、 *雲端全域*叢集-系統管理群組、雲端-全域 *存放裝置-* 管理群組、 *雲端全域-網路-系統管理* 群組或 *雲端全域 VM-管理群組*。  新增至系統 *管理員* 群組的使用者將會自動移除。  只有服務帳戶必須加入至系統 *管理員* 群組。

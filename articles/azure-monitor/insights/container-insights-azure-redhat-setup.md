@@ -4,10 +4,10 @@ description: 本文說明如何使用 Azure Red Hat OpenShift 第3版和更高�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816638"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3 

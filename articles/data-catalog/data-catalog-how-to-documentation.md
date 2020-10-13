@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081214"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>如何記載 Azure 資料目錄中的資料來源
@@ -33,7 +33,7 @@ ms.locfileid: "87081214"
 > 說明文件不會包含在搜尋索引中。
 >
 
-![[檔] 索引標籤和 [web 連結的超連結]](media/data-catalog-documentation/data-catalog-documentation2.png)
+![檔索引標籤和網路連結的超連結](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 說明文件層級的範圍可從描述資料資產容器的特性和值，到詳細描述容器內的資料表結構描述。 所提供的說明文件層級應以商務需求為準。 但一般來說，記載資料資產的優缺點如下︰
 
@@ -41,5 +41,5 @@ ms.locfileid: "87081214"
 * 只記載資料表︰內容專用於該物件，但使用者會將文件放在多個地方。
 * 記載容器和資料表︰最全面的方法，但可能需要花更多時間維護文件。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在 **Azure 資料目錄** 中記載資料來源可依所需詳細程度建立資料資產的相關敘述。  藉由使用連結，您可以連結至現有內容儲存機制中儲存的內容，以結合您現有的文件和資料資產。 一旦使用者找到合適的資料資產，就能取得一組完整的說明文件。

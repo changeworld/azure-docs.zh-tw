@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: d6cfac7f0fb3939e57ce64f552556138ce9feacd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652855"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>應用程式閘道前端 IP 位址設定
@@ -38,6 +38,6 @@ ms.locfileid: "89652855"
 
 前端 IP 位址與接聽程式相關 *聯，它*會檢查前端 ip 上的傳入要求。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解接聽程式設定](configuration-listeners.md)

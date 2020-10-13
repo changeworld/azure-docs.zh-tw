@@ -4,10 +4,10 @@ description: 瞭解如何針對建立、指派和移除藍圖的問題進行疑�
 ms.date: 06/29/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651323"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>針對使用 Azure 藍圖發生的錯誤進行疑難排解
@@ -18,7 +18,7 @@ ms.locfileid: "89651323"
 
 許多錯誤都是將藍圖指派給某個範圍而產生的結果。 當指派失敗時，藍圖會提供有關失敗部署的詳細資料。 此資訊會指出問題，以便能夠進行修正，而使下一次部署能成功。
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
+1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
 
 1. 從左側頁面選取 [ **指派的藍圖** ]，然後使用 [搜尋] 方塊來篩選藍圖指派，以找出失敗的指派。 您也可以依 [佈建狀態]**** 欄排序指派表格，以查看所有已群組在一起的失敗指派。
 

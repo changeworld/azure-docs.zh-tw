@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470131"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中保存檔案
@@ -66,7 +66,7 @@ Cloud Shell 在指定的訂用帳戶內使用儲存體帳戶中的 Azure 檔案�
 
 Cloud Shell 電腦存在於下列區域：
 
-|區域|Region|
+|區域|區域|
 |---|---|
 |美洲|美國東部、美國中南部、美國西部|
 |歐洲|北歐、西歐|
@@ -167,7 +167,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 
 注意：如果您需要在檔案中定義函式，並從 PowerShell Cmdlet 呼叫它，則必須包含點運算子。 例如： .\MyFunctions.ps1
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [Cloud Shell 快速入門](quickstart.md) <br>
 [了解 Microsoft Azure 檔案儲存體](../storage/files/storage-files-introduction.md) <br>
 [深入瞭解儲存體標記](../azure-resource-manager/management/tag-resources.md) <br>

@@ -4,10 +4,10 @@ description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398317"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
@@ -515,7 +515,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 - 不允許的資源類型
 - 允許的資源類型
 
-查看下列文章： 
+請參閱下列文章： 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/not-allowed-resource-types.md)
 
@@ -886,7 +886,7 @@ Azure 資訊安全中心監視： * * * * 不適用
 
 **責任：** 共用
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱下列文章：
 
 - [Azure DevTest Labs 環境的安全性警示](environment-security-alerts.md)

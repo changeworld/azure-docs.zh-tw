@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441216"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 集區載入資料的最佳作法
@@ -173,7 +173,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 不需要對基礎外部資料來源進行其他變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要在設計 (ELT) 進程的解壓縮、載入和轉換時，深入瞭解 COPY 語句或 PolyBase，請參閱 [為 Azure Synapse Analytics 設計 ELT](design-elt-data-loading.md)。
 - 如需載入教學課程，請 [使用 COPY 語句將資料從 Azure blob 儲存體載入至 SYNAPSE SQL](load-data-from-azure-blob-storage-using-polybase.md)。

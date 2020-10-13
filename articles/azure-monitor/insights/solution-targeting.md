@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498673"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure 監視器中的目標監視解決方案 (預覽版)
@@ -38,7 +38,7 @@ ms.locfileid: "86498673"
  3. 按一下 [新增]**** 以建立新的範圍設定。
  4. 輸入範圍設定的 [名稱]****。
  5. 按一下 [選取電腦群組]****。
- 6. 選取您所建立的電腦群組 (並選擇性地選取其他群組) 以新增至設定。  按一下 [選取]。  
+ 6. 選取您所建立的電腦群組 (並選擇性地選取其他群組) 以新增至設定。  按一下 [選取]。   
  6. 按一下 [確定]**** 以建立範圍設定。 
 
 
@@ -67,6 +67,6 @@ ms.locfileid: "86498673"
 
 - 代理程式健康狀態評估
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 在[ Azure 監視器中的管理解決方案](solutions.md)中，深入了解監視解決方案，包含可在您的環境中安裝的可用解決方案。
 - 在 [Log Analytics 記錄檔搜尋中的電腦群組](../platform/computer-groups.md)中，深入了解如何建立電腦群組。

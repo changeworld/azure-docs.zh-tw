@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
 ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307274"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
@@ -120,7 +120,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="identity"></a>身分識別
 
-必要項：若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀入腳本，您必須建立具有個別資源許可權的 Azure 使用者指派的身分識別。 如需有關 Image Builder 許可權如何運作以及相關步驟的詳細資訊，請參閱 [檔](image-builder-user-assigned-identity.md)。
+必要：若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀入腳本，您必須建立具有個別資源許可權的 Azure User-Assigned 身分識別。 如需有關 Image Builder 許可權如何運作以及相關步驟的詳細資訊，請參閱 [檔](image-builder-user-assigned-identity.md)。
 
 
 ```json
@@ -133,7 +133,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 ```
 
 
-影像產生器支援使用者指派的身分識別：
+影像產生器支援 User-Assigned 身分識別：
 * 僅支援單一身分識別
 * 不支援自訂功能變數名稱
 

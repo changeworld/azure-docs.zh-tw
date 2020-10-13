@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532141"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>將 Azure 排程器作業移轉至 Azure Logic Apps

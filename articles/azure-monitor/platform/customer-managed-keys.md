@@ -7,10 +7,10 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
 ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657295"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
@@ -744,7 +744,7 @@ Content-type: application/json
 - 如果在 Key Vault 中更新金鑰版本，但未在「叢集」資源中更新新的金鑰識別碼詳細資料，則 Log Analytics 叢集會繼續使用先前的金鑰，且資料會變成無法存取。 請在「叢集」資源中更新新的金鑰識別碼詳細資料，以繼續進行資料擷取並能夠查詢資料。
 
 - 某些作業很長，可能需要一段時間才能*完成，這些*作業包括*叢集建立、* *叢集金鑰更新*和叢集刪除。 您可以透過兩種方式來檢查作業狀態：
-  1. 使用 REST 時，請從回應複製 Azure AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+  1. 使用 REST 時，請從回應中複製 Azure-AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
   2. 將 GET 要求傳送 *至叢集* 或工作區，並觀察回應。 例如，解除關聯的工作區不會有 [*功能*] 下的*clusterResourceId* 。
 
 - 如需客戶管理的金鑰相關支援和說明，請連絡 Microsoft 連絡人。

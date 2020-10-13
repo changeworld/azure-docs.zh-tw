@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: ceab9af7e6556b2d957fafce8cd89d4a0daf9508
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936790"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>顯示已啟用 Arc 的于 postgresql 超大規模伺服器群組設定
@@ -362,11 +362,11 @@ azdata arc postgres server show -n postgres02
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [瞭解 Azure Arc enabled 于 postgresql 的概念超大規模](concepts-distributed-postgres-hyperscale.md)
 - [瞭解如何向外延展 (在伺服器群組中新增背景工作節點) ](scale-out-postgresql-hyperscale-server-group.md)
 - [瞭解如何擴大/縮小 (增加或減少) 伺服器群組的記憶體和/或虛擬核心](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - [瞭解儲存體設定](storage-configuration.md)
 - [瞭解如何監視資料庫實例](monitor-grafana-kibana.md)
 - [在啟用 Azure Arc 的于 postgresql 超大規模伺服器群組中使用於 postgresql 延伸模組](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [為 Azure Arc 啟用的于 postgresql 超大規模伺服器群組設定安全性](configure-security-postgres-hyperscale.md)
+- [為已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組設定安全性](configure-security-postgres-hyperscale.md)

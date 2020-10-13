@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443172"
 ---
 # <a name="view-vpn-gateway-metrics"></a>檢視 VPN 閘道計量
@@ -23,14 +23,14 @@ ms.locfileid: "89443172"
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| 位元組/秒  | 5 分鐘| 閘道上所有站對站連線的平均合併頻寬使用率。     |
 |**P2SBandwidth**| 位元組/秒  | 1 分鐘  | 閘道上所有點對站連線的平均合併頻寬使用率。    |
-|**P2SConnectionCount**| 計數  | 1 分鐘  | 閘道上的點對站連線計數。   |
+|**P2SConnectionCount**| Count  | 1 分鐘  | 閘道上的點對站連線計數。   |
 |**TunnelAverageBandwidth** | 位元組/秒    | 5 分鐘  | 在閘道上建立之通道的平均頻寬使用率。 |
 |**TunnelEgressBytes** | 位元組 | 5 分鐘 | 在閘道上建立的通道上的連出流量。   |
-|**TunnelEgressPackets** | 計數 | 5 分鐘 | 在閘道上建立之通道上的傳出封包計數。   |
-|**TunnelEgressPacketDropTSMismatch** | 計數 | 5 分鐘 | 流量選取器不相符所造成的通道上丟棄的傳出封包計數。 |
+|**TunnelEgressPackets** | Count | 5 分鐘 | 在閘道上建立之通道上的傳出封包計數。   |
+|**TunnelEgressPacketDropTSMismatch** | Count | 5 分鐘 | 流量選取器不相符所造成的通道上丟棄的傳出封包計數。 |
 |**TunnelIngressBytes** | 位元組 | 5 分鐘 | 在閘道上建立的通道上的連入流量。   |
-|**TunnelIngressPackets** | 計數 | 5 分鐘 | 在閘道上建立之通道上的傳入封包計數。   |
-|**TunnelIngressPacketDropTSMismatch** | 計數 | 5 分鐘 | 流量選取器不相符所造成的通道上丟棄的傳入封包計數。 |
+|**TunnelIngressPackets** | Count | 5 分鐘 | 在閘道上建立之通道上的傳入封包計數。   |
+|**TunnelIngressPacketDropTSMismatch** | Count | 5 分鐘 | 流量選取器不相符所造成的通道上丟棄的傳入封包計數。 |
 
 ## <a name="the-following-steps-help-you-locate-and-view-metrics"></a>下列步驟可協助您找出並查看度量：
 
@@ -41,9 +41,9 @@ ms.locfileid: "89443172"
 
 3. 以查看上面所列的任何其他度量。 按一下虛擬網路閘道資源底下的 [ **計量** ] 區段，然後從下拉式清單中選取度量。
 
-   ![資源清單中的 [選取] 按鈕和 VPN 閘道](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/metrics.png "選取")
+   ![資源清單中的 [選取] 按鈕和 VPN 閘道](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/metrics.png "Select")
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要設定通道計量的警示，請參閱 [設定 VPN 閘道計量的警示](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。
 

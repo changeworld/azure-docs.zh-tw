@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080585"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>如何在 Azure 入口網站中自動調整虛擬機器擴展集
@@ -48,8 +48,8 @@ ms.locfileid: "87080585"
     | *時間粒紋統計資料* | 定義在每個時間粒紋中所收集的計量，應如何彙總以便進行分析。                             | Average        |
     | *運算子*             | 用以比較計量資料與閾值之間差異的運算子。                                                     | 大於   |
     | *閾值*            | 讓自動調整規則觸發動作的百分比。                                                 | 70             |
-    | *有效期間*             | 在比較計量與閾值之前監視的時間長短。 不包含酷炫的期間。                                   | 10 分鐘     |
-    | *運算*            | 定義擴展集在套用規則時應相應增加或相應減少，以及遞增的程度。                        | 增加多少百分比 |
+    | *有效期間*             | 在比較計量與閾值之前監視的時間長短。 不包括酷炫的期間。                                   | 10 分鐘     |
+    | *運算*            | 定義擴展集在套用規則時是否應該擴大或縮小，以及遞增的範圍。                        | 增加多少百分比 |
     | *執行個體計數*       | 觸發此規則時，應該變更多少 VM 執行個體百分比。                                            | 20             |
     | *冷卻時間 (分鐘)*  | 再次套用規則前需要等待多久時間，以便讓自動調整動作生效。 | 5 分鐘      |
 

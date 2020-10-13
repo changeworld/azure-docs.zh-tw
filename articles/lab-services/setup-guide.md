@@ -4,10 +4,10 @@ description: 本指南可協助實驗室建立者快速設定實驗室帳戶，�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652205"
 ---
 # <a name="classroom-lab-setup-guide"></a>教室實驗室設定指南

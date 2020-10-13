@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400750"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 儲存體的虛擬網路服務端點原則
@@ -58,7 +58,7 @@ ms.locfileid: "89400750"
 ]
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 -   您可以設定端點原則來限制特定 Azure 儲存體帳戶的虛擬網路流量。
 -   您可在虛擬網路的子網路上設定端點原則。 您應在子網上啟用 Azure 儲存體的服務端點，以套用原則。
@@ -110,7 +110,7 @@ ms.locfileid: "89400750"
 - 在子網上套用服務端點原則之後，受控 Azure 服務已停止運作
   - 目前服務端點原則不支援受控服務。 請*觀賞此空間以取得更新*。
 
-## <a name="provisioning"></a>正在佈建
+## <a name="provisioning"></a>佈建
 
 擁有虛擬網路寫入權的使用者可以在子網路上設定服務端點原則。 深入了解 Azure [內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以及如何將特定權限指派給[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 

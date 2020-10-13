@@ -8,10 +8,10 @@ ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 9956ca0ca9c0957557e7ee74883a75c074ff22f8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797967"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中從備份還原資料
@@ -50,7 +50,7 @@ ms.locfileid: "88797967"
 
 建議您在完成資料遷移後立即刪除容器或資料庫。 如果沒有刪除已還原的資料庫或容器，則會產生要求單位、儲存體和輸出的成本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 接下來，您可以使用下列文章來了解如何將資料遷移回原始帳戶：
 

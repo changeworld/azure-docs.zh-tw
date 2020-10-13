@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532545"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>豁免建議和安全分數的資源
@@ -20,7 +20,7 @@ ms.locfileid: "91532545"
 
 當您調查 Azure 資訊安全中心中的安全性建議時，您複習的第一項資訊是受影響的資源清單。
 
-有時候，系統會列出您認為不應該包含的資源。 它可能已由安全性中心未追蹤的進程補救。 或者，您的組織已決定接受該特定資源的風險。 
+有時候，系統會列出您認為不應該包含的資源。 其可能已由資訊安全中心未追蹤的程序進行補救。 或者您的組織可能已決定接受該特定資源的風險。 
 
 在這種情況下，您可以建立豁免規則，並確定未來不會列出資源和狀況不良的資源，且不會影響您的安全分數。 
 
@@ -30,10 +30,10 @@ ms.locfileid: "91532545"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|預覽|
+|版本狀態：|預覽|
 |定價：|這是免費提供給 Azure Defender 客戶的 Azure 原則功能，不需額外費用。 對於其他使用者，未來可能會收取費用。|
-|必要的角色和許可權：|建立豁免的訂用帳戶**擁有**者或**原則參與者**<br>若要建立規則，您需要在 Azure 原則中編輯原則的許可權。<br>在 Azure 原則中深入瞭解 [AZURE RBAC 許可權](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|必要的角色和權限：|建立豁免的訂用帳戶**擁有**者或**原則參與者**<br>若要建立規則，您需要在 Azure 原則中編輯原則的許可權。<br>在 Azure 原則中深入瞭解 [AZURE RBAC 許可權](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 
@@ -50,7 +50,7 @@ ms.locfileid: "91532545"
 1. 輸入您的準則，然後選取應豁免此資源的準則：
     - 緩和-此問題與**資源無關，** 因為它是由不同于所建議的工具或進程所處理。
     - **棄權** -接受此資源的風險
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 1. 在一段時間後 (可能需要24小時的時間) ：
     - 資源不會影響您的安全分數。
     - 資源會列在 [建議詳細資料] 頁面的 [ **不適用** ] 索引標籤中

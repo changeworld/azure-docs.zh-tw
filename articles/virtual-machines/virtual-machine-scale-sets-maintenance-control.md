@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532605"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>預覽： Azure 虛擬機器擴展集的維護控制 
@@ -22,7 +22,7 @@ ms.locfileid: "90532605"
 
 維護設定可以跨訂用帳戶和資源群組運作。
 
-整個工作流程會進入下列步驟： 
+整個工作流程可歸結為下列步驟： 
 - 建立維護設定。
 - 將虛擬機器擴展集與維護設定產生關聯。
 - 啟用自動 OS 升級。

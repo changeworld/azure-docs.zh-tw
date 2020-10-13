@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482791"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>為 Azure VM 上的 SQL Server 設定可用性群組 (Azure 入口網站-Preview) 
@@ -58,7 +58,7 @@ ms.locfileid: "89482791"
 
 如果您還沒有現有的叢集，請使用 Azure 入口網站中的下列步驟建立它：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
 1. 在 [**設定**] 下選取 [**高可用性**]。 
 1. 選取 [ **+ 新增 Windows Server 容錯移轉** 叢集] 以開啟 [ **設定 windows 容錯移轉** 叢集] 頁面。  
@@ -67,18 +67,11 @@ ms.locfileid: "89482791"
 
 1. 命名您的叢集，並提供用來作為雲端見證的儲存體帳戶。 使用現有的儲存體帳戶，或選取 [ **建立新** 的] 以建立新的儲存體帳戶。 儲存體帳戶名稱長度必須介於 3 到 24 個字元，而且只能使用數字和小寫字母。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="提供叢集的名稱、儲存體帳戶和認證":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 展開 [ **Windows Server 容錯移轉叢集認證** ]，以提供 SQL Server 服務帳戶的 [認證](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) ，以及叢集操作員和啟動程式帳戶（如果它們與用於 SQL Server 服務的帳戶不同）。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="提供 SQL 服務帳戶、叢集操作員帳戶和叢集啟動程式帳戶的認證":::
-
-1. 選取您要新增至叢集的 SQL Server Vm。 請注意，是否需要重新開機，並謹慎進行。 只有在完整管理性模式下向 SQL VM 資源提供者註冊的 Vm，以及位於與主要 SQL Server VM 相同的位置、網域和相同的虛擬網路上，才會顯示這些 Vm。 
-1. 選取 **[** 套用] 以建立叢集。 您可以在 **活動記錄** 中檢查部署的狀態，您可以從上方導覽列中的鐘圖示存取該記錄。 
-1. 若要讓 Microsoft 支援容錯移轉叢集，必須通過叢集驗證。 使用您慣用的方法 (（例如遠端桌面通訊協定 (RDP) # A3）連線至 VM，並驗證您的叢集通過驗證後再繼續進行。 若未這麼做，則會讓您的叢集處於不支援的狀態。 您可以使用容錯移轉叢集管理員 (FCM) 或下列 PowerShell 命令來驗證叢集：
-
-    ```powershell
-    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集"
     ```
     
 
@@ -89,12 +82,12 @@ ms.locfileid: "89482791"
 
 若要這樣做，請依照下列步驟執行：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
 1. 在 [**設定**] 下選取 [**高可用性**]。 
 1. 選取 [上 **架現有的 Windows Server 容錯移轉** 叢集]，以開啟 [上線 **Windows server 容錯移轉** 叢集] 頁面。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="從您的 SQL 虛擬機器資源上的高可用性頁面上架現有叢集":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 檢查叢集的設定。 
 1. 選取 **[** 套用] 以上線您的叢集，然後在出現提示時選取 **[是]** 。
@@ -106,26 +99,26 @@ ms.locfileid: "89482791"
 
 建立或上線您的叢集之後，請使用 Azure 入口網站建立可用性群組。 若要這樣做，請依照下列步驟執行：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
 1. 在 [**設定**] 下選取 [**高可用性**]。 
 1. 選取 [ **+ 新增 Always On 可用性群組** ] 以開啟 [ **建立可用性群組** ] 頁面。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="選取 [新的 always on 可用性群組] 以開啟 [建立可用性群組] 頁面。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 輸入可用性群組的名稱。 
 1. 選取 [設定接聽程式 **]** 以開啟 [ **設定可用性群組** 接聽程式] 頁面。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="提供可用性群組的名稱，並設定接聽程式":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 填妥值，並使用現有的負載平衡器，或選取 [ **建立新** 的] 以建立新的負載平衡器。  選取 **[** 套用] 以儲存您的設定，並建立接聽程式和負載平衡器。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="填寫表單中的值，以建立新的接聽程式和負載平衡器":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 選擇 [ **+ 選取複本** ] 以開啟 [ **設定可用性群組複本** ] 頁面。
 1. 選取您要新增至可用性群組的虛擬機器，然後選擇最符合您業務需求的可用性群組設定。 選取 [套用] 以儲存 **您的設定** 。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="選擇要新增至可用性群組的 Vm，並設定適用于您企業的設定":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 確認您的可用性群組設定，然後 **選取 [** 套用] 以建立您的可用性群組。 
 
@@ -147,7 +140,7 @@ ms.locfileid: "89482791"
 1. 在**物件總管**中展開**Always On 高可用性**。
 1. 展開 [ **可用性群組**]，以滑鼠右鍵按一下您的可用性群組，然後選擇 [ **新增資料庫 ...**]。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="在 [物件瀏覽器] 中，以滑鼠右鍵按一下可用性群組，然後選擇 [新增資料庫]。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 遵循提示來選取您要新增至可用性群組) 的資料庫 (。 
 1. 選取 **[確定]** 以儲存您的設定，並將您的資料庫新增至可用性群組。 
@@ -155,18 +148,18 @@ ms.locfileid: "89482791"
 
 新增資料庫之後，您可以在 Azure 入口網站中檢查可用性群組的狀態： 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="在同步處理資料庫之後，從 Azure 入口網站的高可用性頁面檢查可用性群組的狀態":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 ## <a name="add-more-vms"></a>新增更多 Vm
 
 若要將更多 SQL Server Vm 新增至叢集，請遵循下列步驟： 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
 1. 在 [**設定**] 下選取 [**高可用性**]。 
 1. 選取 [ **設定 Windows Server 容錯移轉** 叢集] 以開啟 [ **設定 Windows server 容錯移轉** 叢集] 頁面。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="選取 [設定 Windows Server 容錯移轉叢集]，將 Vm 新增至您的叢集中。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 展開 [ **Windows Server 容錯移轉叢集認證** ]，然後輸入用於 SQL Server 服務、叢集操作員和叢集啟動程式帳戶的帳戶。 
 1. 選取您要新增至叢集的 SQL Server Vm。 
@@ -180,7 +173,7 @@ ms.locfileid: "89482791"
 
 您可以在可用性群組旁邊選取省略號 ( ... ) ，**將更多複本加入**至可用性群組、**設定**接聽程式，或從 Azure 入口網站的 [**高可用性**] 頁面中**刪除**接聽程式： 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="選取可用性群組旁邊的省略號，然後選取 [加入複本]，將更多複本加入至可用性群組。":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 ## <a name="remove-cluster"></a>移除叢集
 
@@ -249,13 +242,13 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 若要查看部署的記錄，並檢查部署歷程記錄，請遵循下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 1. 流覽至您的資源群組。
 1. 選取 [設定]**** 底下的 [部署]****。
 1. 選取感興趣的部署，以深入瞭解部署。 
 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="選取您想要深入瞭解的部署。" :::
+   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集" :::
 
 ### <a name="common-errors"></a>常見錯誤
 
@@ -268,7 +261,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 - 驗證入口網站中提供的認證符合 SQL Server 服務的認證。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 
 如需可用性群組的詳細資訊，請參閱：

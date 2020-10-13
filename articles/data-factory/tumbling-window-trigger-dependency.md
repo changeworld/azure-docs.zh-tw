@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
 ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421765"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>建立輪轉視窗觸發程序相依性
@@ -83,7 +83,7 @@ ms.locfileid: "89421765"
 |---|---|---|---|
 | type  | 所有現有的輪轉視窗觸發程序都會顯示在此下拉式清單中。 選擇要採取相依性的觸發程序。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
 | Offset | 相依性觸發程序的偏移。 提供時間範圍格式的值，而且允許負和正位移。 如果觸發程式是根據本身，而且在其他所有情況下都是選擇性的，則此屬性是必要屬性。 自我相依性應一律為負值偏移。 如果未指定任何值，則視窗與觸發程式本身相同。 | Timespan<br/>(hh:mm:ss) | 自我相依性：是<br/>其他：否 |
-| 大小 | 相依性輪轉視窗的大小。 提供正面的 timespan 值。 這是選用屬性。 | Timespan<br/>(hh:mm:ss) | 否  |
+| size | 相依性輪轉視窗的大小。 提供正面的 timespan 值。 這是選用屬性。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
 > 輪轉視窗觸發程式最多可相依于五個其他觸發程式。
@@ -181,6 +181,6 @@ ms.locfileid: "89421765"
 
 若要在「甘特圖」視圖中重新執行視窗，請選取視窗的純色方塊，[動作] 面板會顯示詳細資料並重新執行選項
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解[如何建立輪轉視窗觸發](how-to-create-tumbling-window-trigger.md)程式

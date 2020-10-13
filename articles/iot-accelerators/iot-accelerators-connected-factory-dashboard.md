@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261867"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用連線處理站儀表板的功能
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 [部署雲端式解決方案來管理我的工業 IoT 裝置](quickstart-connected-factory-deploy.md)快速入門會示範如何瀏覽儀表板以及回應警示。 本使用方法指南會示範一些額外的儀表板功能，可用來監視及管理您的工業 IoT 裝置。
 

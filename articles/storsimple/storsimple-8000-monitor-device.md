@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514697"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 裝置管理員服務監視 StorSimple 裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以使用 StorSimple 裝置管理員服務來監視您 StorSimple 解決方案中的特定裝置。 您可以根據 I/O 效能、容量使用率、網路輸送量，以及裝置效能計量建立自訂圖表，並且將這些圖表釘選到儀表板。 如需詳細資訊，請移至[自訂入口網站儀表板](../azure-portal/azure-portal-dashboards.md)。
 
 若要檢視特定裝置的監視資訊，請在 Azure 入口網站中，選取 [StorSimple 裝置管理員服務]。 從裝置清單中選取您的裝置，然後移至 [監視]****。 然後您會看見所選裝置的 [容量]****、[使用量]**** 和 [效能]**** 圖表。
@@ -29,7 +29,7 @@ ms.locfileid: "85514697"
 
 
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 **使用量**追蹤由磁碟區、磁碟區容器，或裝置所使用之資料儲存體空間數量的相關計量。 您可以根據您的主要儲存體、雲端儲存體，或裝置儲存空間的容量使用率來建立報告。 容量使用率可以在特定磁碟區、特定磁碟區容器，或所有磁碟區容器上測量。
 預設會報告過去 24 小時的使用量。 您可以從下列項目選取來編輯圖表，以變更報告使用量的持續時間：
 * 過去 24 小時
@@ -138,7 +138,7 @@ Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何[使用 StorSimple 裝置管理員服務裝置儀表板](storsimple-device-dashboard.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-manager-service-administration.md)。
 

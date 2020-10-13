@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371604"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure 受控應用程式中的 View definition 成品
@@ -125,7 +125,7 @@ View definition 的範例 JSON：
 }
 ```
 
-|屬性|必要|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |header|否|總覽頁面的標頭。|
 |description|否|受控應用程式的描述。|
@@ -164,7 +164,7 @@ View definition 的範例 JSON：
 }
 ```
 
-|屬性|必要|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|否|顯示之視圖的標題。|
 |version|否|用來呈現視圖的平臺版本。|
@@ -172,7 +172,7 @@ View definition 的範例 JSON：
 
 ### <a name="chart"></a>圖表
 
-|屬性|必要|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|是|顯示的圖表標題。|
 |chartType|否|要用於此圖表的視覺效果。 依預設，它會使用折線圖。 支援的圖表類型： `Bar, Line, Area, Scatter` 。|
@@ -224,7 +224,7 @@ View definition 的範例 JSON：
 }
 ```
 
-|屬性|必要|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|是|顯示之視圖的標題。 您**viewDefinition.js**中的每個 CustomResources 視圖都必須有**唯一**的標題。|
 |version|否|用來呈現視圖的平臺版本。|
@@ -253,7 +253,7 @@ View definition 的範例 JSON：
 }
 ```
 
-|屬性|必要|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|是|命令按鈕的顯示名稱。|
 |path|是|自訂提供者動作名稱。 動作必須在 **mainTemplate.js**中定義。|
@@ -280,7 +280,7 @@ View definition 的範例 JSON：
 }
 ```
 
-|屬性|必要|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|是|顯示之視圖的標題。 您**viewDefinition.js**中的每個相關檢視都必須有**唯一**的標題。|
 |version|否|用來呈現視圖的平臺版本。|

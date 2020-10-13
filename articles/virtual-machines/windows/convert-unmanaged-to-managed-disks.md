@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.openlocfilehash: cf601c7f7429d4676ec480ddc016158150da8ce5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815194"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>將 Windows 虛擬機器從非受控磁碟轉換成受控磁碟
@@ -103,7 +103,7 @@ ms.locfileid: "88815194"
 
 VM 將會停止，並且在移轉完成後重新啟動。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [將標準受控磁碟轉換成進階受控磁碟](convert-disk-storage.md)
 

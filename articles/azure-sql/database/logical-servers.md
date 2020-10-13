@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441709"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>什麼是 Azure SQL Database 和 Azure Synapse 中的邏輯 SQL server？
@@ -83,7 +83,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 AzureRm 模組中命令的引數本質上相同。
+> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 若要使用 Azure PowerShell 建立和管理伺服器、資料庫和防火牆，請使用下列 PowerShell Cmdlet。 如果您需要安裝或升級 PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如需建立和管理彈性集區，請參閱[彈性集區](elastic-pool-overview.md)。
 
@@ -102,7 +102,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 |[>new-azsqlserverfirewallrule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|取得伺服器的防火牆規則|
 |[設定->new-azsqlserverfirewallrule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|修改伺服器中的防火牆規則|
 |[移除->new-azsqlserverfirewallrule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|刪除伺服器的防火牆規則|
-| 新 AzSqlServerVirtualNetworkRule | 根據同時是虛擬網路服務端點的子網路，建立[*虛擬網路規則*](vnet-service-endpoint-rule-overview.md)。 |
+| New-AzSqlServerVirtualNetworkRule | 根據同時是虛擬網路服務端點的子網路，建立[*虛擬網路規則*](vnet-service-endpoint-rule-overview.md)。 |
 
 > [!TIP]
 > 如需 PowerShell 快速入門，請參閱 [使用 powershell 在 Azure SQL Database 中建立資料庫](single-database-create-quickstart.md)。 如需 PowerShell 範例腳本，請參閱 [使用 powershell 在 Azure SQL Database 中建立資料庫和設定防火牆規則](scripts/create-and-configure-database-powershell.md) ，並 [在 Azure SQL Database 中使用 powershell 來監視和調整資料庫](scripts/monitor-and-scale-database-powershell.md)。
@@ -190,7 +190,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 |[防火牆規則-取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|取得防火牆規則。|
 |[防火牆規則-依伺服器列出](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|傳回防火牆規則的清單。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何將 SQL Server 資料庫移轉至 Azure SQL Database，請參閱 [遷移至 Azure SQL Database](migrate-to-database-from-sql-server.md)。
 - 如需支援功能的詳細資訊，請參閱 [功能](features-comparison.md)。

@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440502"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory 常見問題集
@@ -171,13 +171,13 @@ Dataset 是強型別參數，以及您可以重複使用或參考的實體。 �
 是，參數是 Data Factory 中的第一級最上層概念。 您可定義管線層級的參數並傳遞引數，同時依需求或使用觸發程序來執行管線執行。  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>可以定義管線參數的預設值嗎？ 
-可以。 您可以定義管線中參數的預設值。 
+是。 您可以定義管線中參數的預設值。 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>管線中的活動可否取用傳遞給管線執行的引數？ 
-可以。 管線內的每個活動皆可使用 `@parameter` 建構，來取用傳遞給管線執行的參數值。 
+是。 管線內的每個活動皆可使用 `@parameter` 建構，來取用傳遞給管線執行的參數值。 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>可以在另一個活動中取用活動輸出屬性？ 
-可以。 可以使用 `@activity` 建構在後續活動中取用活動輸出。
+是。 可以使用 `@activity` 建構在後續活動中取用活動輸出。
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何正常處理活動輸出中的 Null 值？ 
 您可以在運算式中使用 `@coalesce` 建構來正常處理 Null 值。 
@@ -265,7 +265,7 @@ Azure Data Factory (ADF) 是受控資料整合服務，可讓資料工程師和�
 * TINYINT
 * BIGINT
 * long
-* 文字
+* text
 * date
 * Datetime
 * datetime2
@@ -276,7 +276,7 @@ Azure Data Factory (ADF) 是受控資料整合服務，可讓資料工程師和�
 
 未來將會支援其他資料類型。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需建立資料處理站的逐步指示，請參閱下列教學課程：
 
 - [快速入門：建立 data factory](quickstart-create-data-factory-dot-net.md)

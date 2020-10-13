@@ -7,10 +7,10 @@ ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231311"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用 Logic Apps REST API 建立整合服務環境 (ISE)
@@ -22,7 +22,7 @@ ms.locfileid: "89231311"
 > [!IMPORTANT]
 > Logic Apps、內建動作，以及在您 ISE 中執行的連接器，其使用的定價方案不同於耗用量式定價方案。 若要了解適用於 ISE 的定價和計費方式，請參閱 [Logic Apps 定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](../logic-apps/logic-apps-pricing.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [啟用 ise 存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的相同[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，如同當您在 Azure 入口網站中建立 ise 時
 

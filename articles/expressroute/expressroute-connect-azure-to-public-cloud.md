@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: duau
 ms.openlocfilehash: f413b6100fb2a7d1c8bc06d787468cc3e79c0169
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397469"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>使用公用雲端連接 Azure
@@ -58,7 +58,7 @@ ExpressRoute 可讓客戶透過連線提供者所提供的私人連線，將內�
 
 站對站 VPN 不會被視為高輸送量和低延遲的解決方案。 不過，它可以用來做為實體連接的備份。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需 ExpressRoute 和虛擬網路連線能力的任何進一步問題，請參閱 [EXPRESSROUTE 常見問題][ER-FAQ] 。
 
 請參閱 [設定 azure 與 Oracle 雲端之間的直接][ER-OCI] 連線，以連線到 Azure 與 oracle 之間的連線能力

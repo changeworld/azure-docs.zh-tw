@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743721"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939012"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>受控磁片的效能層級 (預覽) 
 
@@ -58,7 +58,7 @@ Azure 磁碟儲存體目前提供內建的高載功能，以提供更高的效�
 
 ## <a name="regional-availability"></a>區域可用性
 
-調整受控磁片之效能層級的功能目前僅適用于美國中西部區域中的 premium Ssd。 
+您目前只能在美國東部2、美國中南部、美國中西部、澳大利亞東部區域的 premium Ssd 上，調整受控磁片的效能層級。
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>建立層級高於基準層的空白資料磁片
 

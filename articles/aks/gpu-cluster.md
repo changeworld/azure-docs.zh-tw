@@ -7,10 +7,10 @@ ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443053"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
@@ -32,13 +32,13 @@ ms.locfileid: "89443053"
 
 如果您需要符合最低需求的 AKS 叢集 (已啟用 GPU 的節點和使用 Kubernetes 1.10 或更新版本)，請完成下列步驟。 如果您已經有符合這些需求的 AKS 叢集，請 [跳到下一節](#confirm-that-gpus-are-schedulable)。
 
-首先，使用 [az group create][az-group-create] 命令來建立 叢集的資源群組。 下列範例會在 eastus** 地區建立名為 myResourceGroup** 的資源群組：
+首先，使用 [az group create][az-group-create] 命令來建立叢集的資源群組。 下列範例會在 eastus** 地區建立名為 myResourceGroup** 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，使用 [az aks create][az-aks-create] 命令來建立 AKS 叢集。 下列範例會建立具有單一節點大小的叢集 `Standard_NC6` ：
+現在使用 [az AKS create][az-aks-create] 命令建立 AKS 叢集。 下列範例會建立具有單一節點大小的叢集 `Standard_NC6` ：
 
 ```azurecli-interactive
 az aks create \
@@ -48,7 +48,7 @@ az aks create \
     --node-count 1
 ```
 
-使用 [az aks get-credentials][az-aks-get-credentials] 命令取得 AKS 叢集的認證：
+使用 [az AKS 取得認證][az-aks-get-credentials] 命令取得 AKS 叢集的認證：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -394,7 +394,7 @@ Adding run metadata for 499
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要執行 Apache Spark 作業，請參閱[在 AKS 上執行 Apache Spark 作業][aks-spark]。
 

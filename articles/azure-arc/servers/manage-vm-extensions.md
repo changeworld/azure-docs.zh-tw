@@ -4,10 +4,10 @@ description: Azure Arc 啟用的伺服器可以管理虛擬機器擴充功能的
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329069"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>已啟用 Azure Arc 的伺服器的虛擬機器擴充功能管理
@@ -51,7 +51,7 @@ VM 擴充功能可以使用 Azure Resource Manager 範本、從 Azure 入口網�
 
 若要瞭解 Azure Connected Machine 代理程式封裝和延伸模組代理程式元件的詳細資料，請參閱 [代理程式總覽](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 這項功能取決於您訂用帳戶中的下列 Azure 資源提供者：
 

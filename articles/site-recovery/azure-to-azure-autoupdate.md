@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
 ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426413"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>自動更新 Azure 至 Azure 複寫中的行動服務
@@ -61,9 +61,9 @@ Site Recovery 可以管理延伸模組更新的方式有好幾種：
 
    若要手動管理延伸模組，請選取 [ **關閉**]。
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="延伸模組更新設定":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="延伸模組設定":::
 
 > [!IMPORTANT]
 > 當您選擇 [ **允許 Site Recovery 管理**] 時，此設定會套用至保存庫中的所有 vm。
@@ -460,12 +460,12 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 1. 如果 Vm 上安裝的行動服務有新的更新，您將會看到下列通知： **有新的 Site Recovery 複寫代理程式更新可用。按一下以安裝。**
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="[複寫的項目] 視窗":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="延伸模組設定":::
 
 1. 選取通知以開啟 [VM 選取] 頁面。
 1. 選擇您想要升級的 Vm，然後選取 **[確定]**。 將會針對每個選取的 VM 啟動更新行動服務。
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="複寫的項目 VM 清單":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="延伸模組設定":::
 
 ## <a name="common-issues-and-troubleshooting"></a>常見問題和疑難排解
 
@@ -479,7 +479,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
   若要在啟用自動更新後修正大部分的問題，請選取 [ **修復**]。 如果 [修復] 按鈕無法使用，請參閱 [延伸模組更新設定] 窗格中顯示的錯誤訊息。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="延伸模組更新設定中的 Site Recovery 服務修復按鈕":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="延伸模組設定":::
 
 - **錯誤**：執行身分帳戶沒有存取復原服務資源的權限。
 
@@ -495,7 +495,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
   **建議動作**：若要解決此問題，請選取 [ **修復** ]，然後 **更新憑證**。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="更新憑證":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="延伸模組設定":::
 
   > [!NOTE]
   > 更新憑證之後，請重新整理頁面以顯示目前的狀態。

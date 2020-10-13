@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: sharrai
 ms.openlocfilehash: 5860928d71c0e7431190908d5df5d7496e8ffb17
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426311"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>淘汰 Site Recovery 資料加密功能
@@ -42,5 +42,5 @@ Site Recovery 的資料加密功能可供保護 Hyper-v vm 的客戶使用，以
 完成初始複寫至已啟用 SSE 的儲存體帳戶之後，您的 Vm 將會使用 Azure Site Recovery 的待用加密。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 規劃執行補救步驟，並在最早的時間執行。 如果您有任何關於此淘汰的查詢，請與 Microsoft 支援服務聯繫。 若要深入瞭解 Hyper-v 到 Azure 的案例，請參閱 [這裡](hyper-v-vmm-architecture.md)。

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662493"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步處理：目錄擴充
@@ -87,13 +87,13 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 
    ![UI 中顯示新屬性的螢幕擷取畫面](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   完成運算式以符合您的需求。 在我們的範例中，規則設定為 ** (使用者。 extension_9d98ed114c4840d298fad781915f27e4_division-eq "Sales and marketing" ) **。
+   完成運算式以符合您的需求。 在我們的範例中，規則設定為 ** (user.extension_9d98ed114c4840d298fad781915f27e4_division-eq "Sales and marketing" ) **。
 
 4. 建立群組之後，請 Azure AD 一些時間來填入成員，然後再檢查成員。
 
    ![動態群組中具有成員的螢幕擷取畫面](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

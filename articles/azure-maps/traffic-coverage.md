@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310028"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure 地圖服務交通涵蓋範圍
@@ -23,11 +23,11 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="americas"></a>美洲
 
-|國家/地區  |事故  |Flow  |
+|國家/地區  |事故  |流程  |
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|Canada     |✓         |✓         |
+|加拿大     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥倫比亞      |✓         |✓         |
 |墨西哥     |✓         |✓         |
@@ -39,7 +39,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="asia-pacific"></a>亞太地區
 
-|國家/地區   |事故  |Flow  |
+|國家/地區   |事故  |流程  |
 |---------|:---------:|:---------:|
 |澳洲     |✓         |✓        |
 |汶萊   |✓         |✓        |
@@ -59,7 +59,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="europe"></a>歐洲
 
-|國家/地區   |事故  |Flow  |
+|國家/地區   |事故  |流程  |
 |---------|:---------:|:---------:|
 |安道爾   |✓         |✓         |
 |奧地利     |✓         |✓         |
@@ -117,7 +117,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="middle-east-and-africa"></a>中東與非洲
 
-|國家/地區 |事故  |Flow  |
+|國家/地區 |事故  |流程  |
 |---------|:---------:|:---------:|
 |巴林     |✓         |✓         |
 |埃及     |✓         |✓         |

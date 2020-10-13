@@ -1,5 +1,5 @@
 ---
-title: 從 macOS 連接到 Windows 虛擬桌面 (傳統) -Azure
+title: 從 macOS 連線到 Windows 虛擬桌面 (傳統) -Azure
 description: 如何使用 macOS 用戶端連接到 Windows 虛擬桌面 (傳統) 。
 author: Heidilohr
 ms.topic: how-to
@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a0d2bd6a07cfc9e5ebe205322550c9e898022846
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008435"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>使用 macOS 用戶端連接到 Windows 虛擬桌面 (傳統) 
@@ -20,11 +20,11 @@ ms.locfileid: "88008435"
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-macos.md)。
 
-您可以使用可下載的用戶端，從 macOS 裝置存取 Windows 虛擬桌面資源。 本指南將告訴您如何設定用戶端。
+您可以透過可下載的用戶端，從 macOS 裝置存取 Windows 虛擬桌面資源。 本指南將告訴您如何設定用戶端。
 
 ## <a name="install-the-client"></a>安裝用戶端
 
-若要開始使用，請在您的 macOS 裝置上[下載](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)並安裝用戶端。
+若要開始使用，請在您的 macOS 裝置上 [下載](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 並安裝用戶端。
 
 ## <a name="subscribe-to-a-feed"></a>訂閱摘要
 
@@ -32,7 +32,7 @@ ms.locfileid: "88008435"
 
 若要訂閱摘要：
 
-1. 選取主頁面上的 [**新增工作區**]，以連線至服務並抓取您的資源。
+1. 在主頁面上選取 [ **新增工作區** ]，以連線到服務並取出您的資源。
 2. 輸入摘要 URL。 這可以是 URL 或電子郵件地址：
    - 如果您使用 URL，請使用系統管理員提供給您的帳戶。 此 URL 通常是 <https://rdweb.wvd.microsoft.com>。
    - 若要使用電子郵件，請輸入您的電子郵件地址。 這會告訴用戶端搜尋與您的電子郵件地址相關聯的 URL (如果系統管理員是這樣設定伺服器的話)。
@@ -45,4 +45,4 @@ ms.locfileid: "88008435"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 macOS 用戶端，請參閱[開始使用 macOS 用戶端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/)檔。
+若要深入瞭解 macOS 用戶端，請參閱 [macOS 用戶端入門](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) 檔。

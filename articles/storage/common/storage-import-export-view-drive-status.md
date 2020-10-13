@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8110b98c055a211203fb937990e860fc8dea74f4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88520457"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>檢視 Azure 匯入/匯出作業的狀態
@@ -28,7 +28,7 @@ ms.locfileid: "88520457"
 
 視您的磁碟機在流程中所處的位置，您會看到下列其中一個作業狀態。
 
-| 工作狀態 | Description |
+| 工作狀態 | 描述 |
 |:--- |:--- |
 | 建立中 | 作業建立之後，其狀態會設定為「**建立中**」。 當工作處於「 **建立** 中」狀態時，匯入/匯出服務會假設磁片磁碟機尚未運送到資料中心。 作業最多可維持此狀態達兩周，之後服務會自動將其刪除。 |
 | 運送中 | 在您運送包裹之後，您應該更新 Azure 入口網站中的追蹤資訊。  這麼做會讓作業變成出 **貨** 狀態。 作業的「**運送中**」狀態最多維持兩週。 
@@ -44,7 +44,7 @@ ms.locfileid: "88520457"
 
 下表說明工作中的每個磁碟機可能經歷的各個狀態。
 
-| 磁碟機狀態 | Description |
+| 磁碟機狀態 | 描述 |
 |:--- |:--- |
 | 已指定 | 針對匯入作業，從 Azure 入口網站建立作業時，磁碟機的初始狀態會是「**已指定**」。 針對匯出作業，因為建立作業時未指定任何磁碟機，初始磁碟機狀態會是「**已收到**」狀態。 |
 | 已收到 | 當匯入/匯出服務已處理從貨運公司收到要進行匯入作業的磁碟機後，磁碟機會轉換成「**已收到**」狀態。 針對匯出作業，初始磁碟機狀態會是「**已收到**」狀態。 |
@@ -76,7 +76,7 @@ ms.locfileid: "88520457"
 匯入/匯出服務沒有 SLA，但在收到磁片之後，服務會努力在7到10天內完成複製。 除了在 Azure 入口網站上張貼的狀態之外，您還可以使用 REST Api 來追蹤作業進度。 使用 [清單作業作業](/previous-versions/azure/dn529083(v=azure.100)) API 呼叫中的完成百分比參數來查看複製進度百分比。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy.md)
 * [Azure 匯入匯出 REST API 範例 (英文)](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
