@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601297"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般操作指南參考
@@ -156,7 +156,7 @@ Azure AD：會使用兩個「寄件者」位址 <o365mc@email2.microsoft.com> �
 
 組織會將應用程式設定為直接驗證 Azure AD 受益于 [Azure AD 智慧鎖定](../authentication/concept-sspr-howitworks.md)。 如果您在 Windows Server 2012 R2 中使用 AD FS，請執行 AD FS 的 [外部網路鎖定保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果您使用 Windows Server 2016 或更新版本上的 AD FS，請執行 [外部網路智慧鎖定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 建議您至少啟用外部網路鎖定，以包含對內部部署 Active Directory 進行暴力密碼破解攻擊的風險。 但是，如果您已在 Windows 2016 或更高版本中 AD FS，您也應該啟用外部網路智慧鎖定，以協助降低 [密碼噴灑](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) 攻擊。
 
-如果 AD FS 只用于 Azure AD 同盟，則有一些端點可關閉，以將受攻擊面區域降至最低。 例如，如果 AD FS 只用于 Azure AD，您應該停用已啟用 **usernamemixed** 和 **windowstransport**之端點以外的 ws-trust 端點。
+如果 AD FS 只用于 Azure AD 同盟，則有一些端點可關閉，以將受攻擊面區域降至最低。 例如，如果 AD FS 只用于 Azure AD，您應該停用 WS-Trust 的端點，而不是啟用 **usernamemixed** 和 **windowstransport**的端點。
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>使用內部部署身分識別元件存取機器
 
@@ -172,7 +172,7 @@ Active Directory 管理層模型的設計目的，是要使用一組緩衝區區
 
 鎖定對內部部署身分識別元件的存取，例如 Azure AD Connect、AD FS 和 SQL 服務，其方式與網域控制站相同。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 安全的身分識別基礎結構有七個層面。 這份清單將協助您找出 Azure Active Directory (Azure AD) 的作業優化所應採取的動作。
 

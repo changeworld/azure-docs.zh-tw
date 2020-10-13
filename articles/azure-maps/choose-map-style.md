@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285157"
 ---
 # <a name="change-the-style-of-the-map"></a>變更地圖樣式
@@ -101,7 +101,7 @@ map.setStyle({ style: 'satellite' });
 
 下圖顯示在版面配置中顯示的樣式選擇器控制項 `list` 。
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="樣式選擇器清單版面配置":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="樣式選擇器圖示版面配置":::
 
 > [!IMPORTANT]
 > 樣式選擇器控制項預設會列出 Azure 地圖服務的 S0 定價層下可用的所有樣式。 如果您想要減少這份清單中的樣式數目，請將您想要在清單中顯示的樣式陣列傳遞至 `mapStyle` 樣式選擇器的選項。 如果您使用 S1，而且想要顯示所有可用的樣式，請將 `mapStyles` 樣式選擇器的選項設定為 `"all"` 。

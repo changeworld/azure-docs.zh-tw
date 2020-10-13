@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715638"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939406"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>設定區塊 blob 的物件複寫
 
@@ -345,6 +345,40 @@ az storage account or-policy create \
     -resource-group <resource-group> \
     --source-account <source-account-name> \
     --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>檢查 blob 的複寫狀態
+
+您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 檢查來源帳戶中 blob 的複寫狀態。 在複寫完成或失敗之前，不會填入物件複寫屬性。
+
+# <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
+
+若要在 Azure 入口網站的來源帳戶中檢查 blob 的複寫狀態，請遵循下列步驟：
+
+1. 流覽至 Azure 入口網站中的來源帳戶。
+1. 找出包含來源 blob 的容器。
+1. 選取 blob 以顯示其屬性。 如果已成功複寫 blob，您會在 [ **物件** 複寫] 區段中看到狀態設定為 [ *完成*]。 此外，也會列出負責管理此容器之物件複寫的規則的複寫原則識別碼和識別碼。
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 檢查來源帳戶中 blob 的複寫狀態，請取得 [物件複寫 **狀態** ] 屬性的值，如下列範例所示：
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
 ```
 
 ---

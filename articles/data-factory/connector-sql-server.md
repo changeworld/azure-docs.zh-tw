@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/21/2020
 ms.openlocfilehash: 255c89a0944abb17ba18cbc5c651d3a3be67892d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331995"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 SQL Server 或從中複製資料
@@ -50,7 +50,7 @@ ms.locfileid: "91331995"
 >[!NOTE]
 >此連接器目前不支援 SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 。 若要解決這個問題，您可以使用 [一般 odbc 連接器](connector-odbc.md) 和 SQL Server ODBC 驅動程式。 使用 ODBC 驅動程式下載和連接字串設定來遵循 [此指引](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -64,7 +64,7 @@ ms.locfileid: "91331995"
 
 以下是針對 SQL Server 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為 **SqlServer**。 | 是 |
 | connectionString |請使用 SQL 驗證或 Windows 驗證，指定連接到 SQL Server 資料庫所需的 **connectionString** 資訊。 請參考下列範例。<br/>您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱下表中的 JSON 範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
@@ -148,7 +148,7 @@ ms.locfileid: "91331995"
 
 若要從 SQL Server 資料庫複製資料及將資料複製到其中，支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 type 屬性必須設為 **SqlServerTable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -187,7 +187,7 @@ ms.locfileid: "91331995"
 
 若要從 SQL Server 複製資料，請將複製活動中的來源類型設定為 **SqlSource**。 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設為 **>sqlsource**。 | 是 |
 | sqlReaderQuery |使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |否 |
@@ -300,7 +300,7 @@ GO
 
 若要將資料複製到 SQL Server，請將複製活動中的接收器類型設定為 **SqlSink**。 複製活動的 [接收] 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收的 type 屬性必須設為 **SqlSink**。 | 是 |
 | preCopyScript |這個屬性會指定在將資料寫入 SQL Server 之前，要執行之複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 您可以使用此屬性來清除預先載入的資料。 |否 |
@@ -586,7 +586,7 @@ END
 | smalldatetime |Datetime |
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
-| sql_variant |物件 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
@@ -594,7 +594,7 @@ END
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |String |
+| Xml |字串 |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您的資料需要大於 28 個有效位數，請考慮轉換成 SQL 查詢中的字串。

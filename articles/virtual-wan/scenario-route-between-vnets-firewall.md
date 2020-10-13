@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267511"
 ---
 # <a name="scenario-azure-firewall---custom"></a>案例： Azure 防火牆-自訂
@@ -26,7 +26,7 @@ ms.locfileid: "91267511"
 
 **連接矩陣**
 
-| 從           | 變更為：      | *Vnet*      | *分支*    | *網際網路*   |
+| 來自           | 變更為：      | *Vnet*      | *分支*    | *網際網路*   |
 |---             |---       |---           |---            |---           |
 | **Vnet**      |   &#8594;|     X        |     AzFW      |     AzFW     |
 | **分支**   |   &#8594;|    AzFW      |       X       |       X      |

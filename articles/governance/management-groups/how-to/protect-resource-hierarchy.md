@@ -4,10 +4,10 @@ description: 了解如何使用包含設定預設管理群組的階層設定來�
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533974"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保護您的資源階層

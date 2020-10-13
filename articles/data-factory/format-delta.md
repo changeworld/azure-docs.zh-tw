@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
 ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276495"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory 中的差異格式
@@ -33,11 +33,11 @@ ms.locfileid: "91276495"
 
 下表列出差異來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 格式 | 格式必須是 `delta` | 是 | `delta` | format |
-| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | String | fileSystem |
-| 資料夾路徑 | Delta lake 的直接 | 是 | String | folderPath |
+| [格式] | 格式必須是 `delta` | 是 | `delta` | format |
+| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | 字串 | fileSystem |
+| 資料夾路徑 | Delta lake 的直接 | 是 | 字串 | folderPath |
 | 壓縮類型 | Delta 資料表的壓縮類型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 壓縮等級 | 選擇壓縮是否儘快完成，或是否應以最佳方式壓縮所產生的檔案。 | 如果 `compressedType` 指定，則為必要項。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 時間移動 | 選擇是否要查詢較舊的 delta 資料表快照集 | 否 | 依時間戳記查詢： Timestamp <br> 依版本查詢：整數 | timestampAsOf <br> versionAsOf |
@@ -70,11 +70,11 @@ source(output(movieId as integer,
 
 下表列出 delta 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 格式 | 格式必須是 `delta` | 是 | `delta` | format |
-| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | String | fileSystem |
-| 資料夾路徑 | Delta lake 的直接 | 是 | String | folderPath |
+| [格式] | 格式必須是 `delta` | 是 | `delta` | format |
+| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | 字串 | fileSystem |
+| 資料夾路徑 | Delta lake 的直接 | 是 | 字串 | folderPath |
 | 壓縮類型 | Delta 資料表的壓縮類型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 壓縮等級 | 選擇壓縮是否儘快完成，或是否應以最佳方式壓縮所產生的檔案。 | 如果 `compressedType` 指定，則為必要項。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 真空 | 針對較舊版本的資料表指定保留閾值（以小時為單位）。 0或小於0的值預設為30天 | 是 | 整數 | 真空 |

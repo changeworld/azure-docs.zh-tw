@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033467"
 ---
 # <a name="deploy-azure-monitor"></a>部署 Azure 監視器
@@ -192,6 +192,6 @@ Azure 監視器中的警示會主動通知您監視資料中識別的重要資�
 - [應用程式警示](app/monitor-web-app-availability.md) 可讓您對 web 應用程式執行主動式效能和可用性測試。 您可以無須付費地執行簡單的 ping 測試，但更複雜的測試會產生成本。 請參閱 [監視任何網站的可用性](app/monitor-web-app-availability.md) 以取得不同測試的說明，以及有關建立這些測試的詳細資料。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [使用 Azure 原則大規模部署 Azure 監視器](deploy-scale.md)。

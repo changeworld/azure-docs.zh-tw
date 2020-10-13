@@ -4,10 +4,10 @@ description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總�
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822190"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
@@ -23,7 +23,7 @@ Azure Connected Machine 代理程式套件包含數個邏輯元件，這些元�
 
 * 混合式實例中繼資料服務 (HIMDS) 管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。
 
-* 來賓設定代理程式提供來賓原則和來賓設定功能，例如評定電腦是否符合必要的原則。
+* 來賓設定代理程式提供 In-Guest 的原則和來賓設定功能，例如評定電腦是否符合必要的原則。
 
     請注意下列與已中斷連線電腦的 Azure 原則 [來賓](../../governance/policy/concepts/guest-configuration.md) 設定的行為：
 
@@ -173,7 +173,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
     |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
-    |DscService |來賓設定服務 |dsc_service.exe |Desired State Configuration (DSC v2) 程式碼基底，可在 Azure 內部用來執行來賓原則。|
+    |DscService |來賓設定服務 |dsc_service.exe |Desired State Configuration (DSC v2) 程式碼基底，可在 Azure 中用來執行 In-Guest 原則。|
 
 * 下列環境變數是在代理程式安裝期間所建立。
 
@@ -249,7 +249,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要開始評估已啟用 Azure Arc 的伺服器，請遵循 [從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md)的文章。
 

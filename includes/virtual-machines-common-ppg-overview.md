@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376675"
 ---
 將 Vm 放入單一區域可減少實例之間的實體距離。 將它們放在單一可用性區域內，也會讓它們彼此緊密地結合在一起。 不過，當 Azure 使用量增加時，單一可用性區域可能橫跨多個實體資料中心，這可能會導致網路延遲影響您的應用程式。 
@@ -58,7 +58,7 @@ ms.locfileid: "91376675"
 
 - 您可以使用入口網站、CLI 和 PowerShell 來查看鄰近放置群組共置狀態。
 
-    -   使用 PowerShell 時，您可以使用 AzProximityPlacementGroup Cmdlet 來取得共置狀態，方法是包含選擇性參數 '-ColocationStatus '。
+    -   使用 PowerShell 時，您可以透過包含選擇性參數 '-ColocationStatus '，使用 Get-AzProximityPlacementGroup Cmdlet 取得共置狀態。
 
     -   使用 CLI 時，可透過 `az ppg show` 包含選擇性參數 '--include-共置-status ' 來取得共置狀態。
 

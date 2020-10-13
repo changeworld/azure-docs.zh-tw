@@ -15,15 +15,15 @@ ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
 ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596840"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>針對 Azure Windows 虛擬機器的高 CPU 問題進行疑難排解
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 效能問題發生在不同的作業系統或應用程式中，而且每個問題都需要一種獨特的方法來進行疑難排解。 這些問題大多都是圍繞 CPU、記憶體、網路和輸入/輸出 (i/o) 作為發生問題的關鍵位置。 每個區域都會產生不同的徵兆 (有時會同時) ，而且需要不同的診斷與解決方案。
 
@@ -35,7 +35,7 @@ ms.locfileid: "91596840"
 
 適用于內部部署伺服器的大部分現有效能疑難排解工具（例如 Perfmon 或 Procmon）都可在 Azure Windows Vm 上運作。 不過，PerfInsights 是針對 Azure Vm 明確設計，以提供更深入的見解，包括 Azure 最佳做法、SQL 最佳作法、高解析度的 i/o 延遲圖形、CPU 和記憶體索引標籤等等。
 
-無論是以使用者模式或核心模式執行，使用中進程的任何執行緒都需要 CPU 迴圈，才能執行其所建立的程式碼。 許多問題與工作負載直接相關。 存在於伺服器上的工作負載種類會驅動資源耗用量，包括 CPU。
+無論是否以 User-Mode 或核心模式執行，使用中進程的任何執行緒都需要 CPU 迴圈，才能執行其所建立的程式碼。 許多問題與工作負載直接相關。 存在於伺服器上的工作負載種類會驅動資源耗用量，包括 CPU。
 
 #### <a name="common-factors"></a>常見因素
 
@@ -184,7 +184,7 @@ PerfInsights 適用于 [Windows](https://docs.microsoft.com/azure/virtual-machin
 
 **CPU**底下有專用的子標籤，可用於詳細的模式分析、每個核心或每個進程。
 
-[ **最高 CPU 取用者** ] 索引標籤有兩個不同的區段，您可以在這裡查看每個處理器的統計資料。 應用程式設計通常會是單一執行緒或釘選到單處理器。 在此案例中，有一個或幾個核心在100% 的執行，而其他核心在預期的層級執行。 這些案例較複雜，因為伺服器上的平均 CPU 看起來像預期般執行，但在具有高使用量的核心上釘選的處理常式會比預期更慢。
+[ **最高 CPU 取用者** ] 索引標籤有兩個不同的區段，您可以在這裡查看每個處理器的統計資料。 應用程式設計通常會 Single-Threaded 或釘選到單處理器。 在此案例中，有一個或幾個核心在100% 的執行，而其他核心在預期的層級執行。 這些案例較複雜，因為伺服器上的平均 CPU 看起來像預期般執行，但在具有高使用量的核心上釘選的處理常式會比預期更慢。
 
   ![高 CPU 使用率](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 

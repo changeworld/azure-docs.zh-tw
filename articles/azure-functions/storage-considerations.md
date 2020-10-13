@@ -4,10 +4,10 @@ description: 了解 Azure Functions 的儲存體需求，以及加密儲存資�
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318176"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存考量事項
@@ -18,12 +18,12 @@ ms.locfileid: "87318176"
 |儲存體服務  | 函式使用方式  |
 |---------|---------|
 | [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)     | 維護繫結狀態和函式金鑰。  <br/>[Durable Functions 的工作中樞](durable/durable-functions-task-hubs.md)也會使用。 |
-| [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用來在取用[方案](functions-scale.md#consumption-plan)和[Premium 方案](functions-scale.md#premium-plan)中儲存和執行函式應用程式程式碼的檔案共用。 |
+| [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用來在取用 [方案](functions-scale.md#consumption-plan) 和 [Premium 方案](functions-scale.md#premium-plan)中儲存和執行函數應用程式程式碼的檔案共用。 |
 | [Azure 佇列儲存體](../storage/queues/storage-queues-introduction.md)     | 由 [Durable Functions 的工作中樞](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 資料表儲存體](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 的工作中樞](durable/durable-functions-task-hubs.md)使用。       |
 
 > [!IMPORTANT]
-> 使用取用/Premium 主控方案時，您的函式程式碼和系結設定檔會儲存在主要儲存體帳戶的 Azure 檔案儲存體中。 當您刪除主要儲存體帳戶時，會刪除此內容且無法復原。
+> 使用耗用量/高階主控方案時，您的函式程式碼和系結設定檔會儲存在主要儲存體帳戶的 Azure 檔案儲存體中。 當您刪除主要儲存體帳戶時，會刪除此內容且無法復原。
 
 ## <a name="storage-account-requirements"></a>儲存體帳戶的需求
 

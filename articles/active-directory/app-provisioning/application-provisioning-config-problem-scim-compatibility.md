@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052625"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 使用者佈建服務 SCIM 2.0 通訊協定相容性的已知問題和解決方法
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 ## <a name="flags-to-alter-the-scim-behavior"></a>改變 SCIM 行為的旗標
 在您應用程式的租使用者 URL 中使用下方的旗標，以變更預設的 SCIM 用戶端行為。
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM 旗標以供稍後的行為。":::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM 旗標以供稍後的行為。&quot;:::
 
 * 您可以使用下列 URL 來更新修補程式列為，並確保 SCIM 合規性 (例如 active as boolean，以及適當的群組成員資格移除) 。 目前只有在使用旗標時才能使用此行為，但會在接下來的幾個月內變成預設行為。 請注意，此預覽旗標目前不適用於隨選布建。 
   * **符合 SCIM 規範的 URL () ：** AzureAdScimPatch062020
@@ -58,29 +58,29 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
   ```json
    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "remove",
-            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+            &quot;op&quot;: &quot;remove&quot;,
+            &quot;path&quot;: &quot;members[value eq \&quot;16b083c0-f1e8-4544-b6ee-27a28dc98761\&quot;]&quot;
         }
     ]
    }
 
     PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "add",
-            "path": "members",
-            "value": [
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;members&quot;,
+            &quot;value&quot;: [
                 {
-                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
+                    &quot;value&quot;: &quot;10263a6910a84ef9a581dd9b8dcc0eae&quot;
                 }
             ]
         }
@@ -89,25 +89,25 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].value",
-            "value": "someone@contoso.com"
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].value&quot;,
+            &quot;value&quot;: &quot;someone@contoso.com&quot;
         },
         {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].primary",
-            "value": true
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].primary&quot;,
+            &quot;value&quot;: true
         },
         {
-            "op": "replace",
-            "value": {
-                "active": false,
-                "userName": "someone"
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;value&quot;: {
+                &quot;active&quot;: false,
+                &quot;userName&quot;: &quot;someone&quot;
             }
         }
     ]
@@ -115,28 +115,28 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "replace",
-            "path": "active",
-            "value": false
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;active&quot;,
+            &quot;value&quot;: false
         }
     ]
     }
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "add",
-            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
-            "value": "Tech Infrastructure"
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department&quot;,
+            &quot;value&quot;: &quot;Tech Infrastructure"
         }
     ]
     }
@@ -203,5 +203,5 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 7. 如往常般完成使用者佈建設定。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [深入了解對於 SaaS 應用程式的佈建和取消佈建](user-provisioning.md)

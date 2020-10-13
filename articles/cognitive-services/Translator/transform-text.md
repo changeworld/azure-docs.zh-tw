@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 16f639a2a263aee286cec8bb0827fa506b50e3df
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88921115"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
@@ -29,7 +29,7 @@ TransformText 方法是一個社交媒體的文字正規化函式，會傳回輸
 
 ## <a name="parameters"></a>參數
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:---|:---|
 | 驗證標頭 | **必要** 用來識別應用程式的 HTTP 標頭。 使用索引鍵：“Authorization” 和值："Bearer" + " " + 存取權杖。 如需詳細資料，請參閱這裡。|
 | 語言 | **必要** 一個代表語言代碼的字串。 此參數僅支援英文，以 **en** 作為語言名稱。|

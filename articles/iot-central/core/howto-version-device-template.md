@@ -10,10 +10,10 @@ services: iot-central
 manager: peterpr
 ms.custom: device-developer
 ms.openlocfilehash: 2025b127a428afa478cfe839c7619df2d7d688d3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015954"
 ---
 # <a name="create-a-new-device-template-version"></a>建立新的裝置範本版本
@@ -93,7 +93,7 @@ ms.locfileid: "90015954"
 1. 選取您要自訂的裝置範本。
 1. 選擇 [ **自訂** ] 索引標籤。
 1. 您在裝置功能模型中定義的所有功能都會列在這裡。 您可以編輯、儲存和使用所有欄位，而不需要為您的裝置範本版本。 如果有您想要編輯的欄位是唯讀的，您必須將裝置範本的版本設為已變更。 選取您要編輯的欄位，然後輸入任何新值。
-1. 按一下 [儲存]。 現在這些值會覆寫一開始儲存在您裝置範本中的任何資料，而且會在應用程式中使用。
+1. 按一下 **[儲存]** 。 現在這些值會覆寫一開始儲存在您裝置範本中的任何資料，而且會在應用程式中使用。
 
 ## <a name="version-a-device-template"></a>版本裝置範本
 
@@ -106,7 +106,7 @@ ms.locfileid: "90015954"
 1. 移至 [ **裝置範本** ] 頁面。
 1. 選取您要嘗試版本的裝置範本。
 1. 按一下頁面頂端的 [ **版本** ] 按鈕，並為範本提供新的名稱。 IoT Central 建議您可以編輯的新名稱。
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 1. 現在您的裝置範本處於草稿模式。 您可以看到您的介面仍處於鎖定狀態。 您要修改的任何介面版本。
 
 ## <a name="version-an-interface"></a>版本介面
@@ -119,7 +119,7 @@ ms.locfileid: "90015954"
 1. 選取您在草稿模式中擁有的裝置範本。
 1. 選取您要進行版本和編輯的已發行模式中的介面。
 1. 按一下 [介面] 頁面頂端的 [ **版本** ] 按鈕。
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 1. 現在您的介面處於草稿模式。 您可以新增或編輯介面的功能，而不會中斷現有的自訂和查看。
 
 ## <a name="migrate-a-device-across-versions"></a>跨版本遷移裝置
@@ -133,7 +133,7 @@ ms.locfileid: "90015954"
 
 ![如何移轉裝置](media/howto-version-device-template/pick-version.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您是操作員或解決方案產生器，建議的下一個步驟是瞭解 [如何管理您的裝置](./howto-manage-devices.md)。
 

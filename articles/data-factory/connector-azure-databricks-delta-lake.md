@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
 ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405612"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure Databricks Delta Lake 或從中複製資料
@@ -37,7 +37,7 @@ ms.locfileid: "91405612"
 - [對應資料流程](concepts-data-flow-overview.md) 支援 Azure 儲存體上的一般 [差異格式](format-delta.md) 作為來源和接收，以讀取和寫入無程式碼 ETL 的差異檔案，並在受控 Azure Integration Runtime 上執行。
 - [Databricks 活動](transform-data-databricks-notebook.md) 支援在 delta lake 之上協調以程式碼為中心的 ETL 或機器學習工作負載。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用此 Azure Databricks Delta Lake connector，您需要在 Azure Databricks 中設定叢集。
 
@@ -116,7 +116,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的 type 屬性必須設為 **AzureDatabricksDeltaLakeDataset**。 | 是                         |
 | [資料庫] | 資料庫的名稱。 |否，來源，是接收的  |
-| table | 差異資料表的名稱。 |否，來源，是接收的  |
+| 資料表 | 差異資料表的名稱。 |否，來源，是接收的  |
 
 **範例︰**
 
@@ -152,7 +152,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 | 查詢          | 指定要讀取資料的 SQL 查詢。 針對「時間移動」控制項，請遵循下列模式：<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | 否       |
 | exportSettings | 用來從 delta 資料表中取出資料的 Advanced 設定。 | 否       |
 | ***在 `exportSettings` 下列情況下：*** |  |  |
-| 類型 | 匯出命令的類型，設定為 **AzureDatabricksDeltaLakeExportCommand**。 | 是 |
+| type | 匯出命令的類型，設定為 **AzureDatabricksDeltaLakeExportCommand**。 | 是 |
 | dateFormat | 使用日期格式將日期類型格式化為字串。 自訂日期格式會遵循 [日期時間模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)的格式。 如果未指定，則會使用預設值 `yyyy-MM-dd` 。 | 否 |
 | timestampFormat | 將 timestamp 類型格式化為具有時間戳記格式的字串。 自訂日期格式會遵循 [日期時間模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)的格式。 如果未指定，則會使用預設值 `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` 。 | 否 |
 
@@ -266,7 +266,7 @@ Databricks 叢集必須能夠存取 Azure Blob 或 Azure Data Lake Storage Gen2 
 | preCopyScript | 針對要在每次執行中的 Databricks delta 資料表寫入資料之前執行的複製活動，指定 SQL 查詢。 您可以使用這個屬性來清除預先載入的資料，或加入截斷資料表或清除語句。 | 否       |
 | importSettings | 用來將資料寫入 delta 資料表的 Advanced 設定。 | 否 |
 | ***在 `importSettings` 下列情況下：*** |                                                              |  |
-| 類型 | 匯入命令的類型，設定為 **AzureDatabricksDeltaLakeImportCommand**。 | 是 |
+| type | 匯入命令的類型，設定為 **AzureDatabricksDeltaLakeImportCommand**。 | 是 |
 | dateFormat | 使用日期格式將字串格式化為日期類型。 自訂日期格式會遵循 [日期時間模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)的格式。 如果未指定，則會使用預設值 `yyyy-MM-dd` 。 | 否 |
 | timestampFormat | 使用時間戳格式將字串格式化為 timestamp 類型。 自訂日期格式會遵循 [日期時間模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)的格式。 如果未指定，則會使用預設值 `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` 。 | 否 |
 

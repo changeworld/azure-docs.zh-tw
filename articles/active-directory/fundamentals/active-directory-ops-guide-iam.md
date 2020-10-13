@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601296"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 身分識別與存取管理作業參考指南
@@ -191,7 +191,7 @@ Azure Active Directory 透過 Microsoft 雲端服務以 [群組為基礎的授�
 - [使用 IdFix 工具準備目錄屬性以便與 Microsoft 365 同步處理](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：針對同步處理期間的錯誤進行疑難排解](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 安全的身分識別基礎結構有五個層面。 這份清單可協助您快速找出並採取必要的動作，以保護及管理您組織中的身分識別和其權利的生命週期。
 

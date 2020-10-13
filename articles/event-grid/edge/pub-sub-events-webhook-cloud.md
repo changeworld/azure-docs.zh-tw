@@ -9,10 +9,10 @@ ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998980"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教學課程：發佈、訂閱雲端中的事件
@@ -21,7 +21,7 @@ ms.locfileid: "88998980"
 
 請參閱 [事件方格概念](concepts.md) ，以瞭解事件方格主題和訂用帳戶在繼續之前的內容。
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>必要條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂** 用帳戶-如果您還沒有帳戶，請建立一個 [免費帳戶](https://azure.microsoft.com/free) 。 

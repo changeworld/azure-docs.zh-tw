@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526403"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973269"
 ---
 # <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
@@ -24,7 +24,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 
 ## <a name="read-api"></a>讀取 API 
 
-電腦視覺 [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 是 Azure 最新的 OCR 技術 ([瞭解有哪些新](./whats-new.md) 的) 可將列印的文字解壓縮 (數種語言) 、手寫文字 (僅英文) 、數位和貨幣符號，以及影像和多頁 PDF 檔。 它已優化，可將文字從大量文字的影像和具有混合語言的多頁 PDF 檔解壓縮。 它支援在相同的影像或檔中偵測列印和手寫的文字。
+電腦視覺 [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 是 Azure 最新的 OCR 技術 ([瞭解有哪些新](./whats-new.md) 的) 可將列印的文字解壓縮 (數種語言) 、手寫文字 (僅英文) 、數位和貨幣符號，以及影像和多頁 PDF 檔。 它已優化，可將文字從大量文字的影像和具有混合語言的多頁 PDF 檔解壓縮。 它支援在相同的影像或檔中偵測列印和手寫的文字。
 
 ![OCR 如何使用已解壓縮的文字將影像和檔轉換成結構化的輸出](./Images/how-ocr-works.svg)
 
@@ -36,21 +36,21 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 * 檔案大小必須小於 50 MB (4 MB 適用于免費層) 和維度至少 50 x 50 圖元，以及最多 10000 x 10000 圖元。 
 * PDF 尺寸必須最多為 17 x 17 英寸，對應于合法或 A3 紙張大小，且較小。
 
-### <a name="read-31-preview-allows-selecting-pages"></a>讀取3.1 預覽可讓您選取頁面 (s) 
-使用 [讀取3.1 預覽 API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)時，對於大型的多頁檔，您可以提供特定頁碼或頁面範圍做為輸入參數，只將這些頁面中的文字解壓縮。 除了選用的語言參數之外，這還是新的輸入參數。
+### <a name="read-32-preview-allows-selecting-pages"></a>讀取3.2 預覽可讓您選取頁面 (s) 
+使用 [讀取3.2 預覽 API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)時，對於大型的多頁檔，您可以提供特定頁碼或頁面範圍做為輸入參數，只將這些頁面中的文字解壓縮。 除了選用的語言參數之外，這還是新的輸入參數。
 
 > [!NOTE]
 > **語言輸入** 
 >
-> [讀取呼叫](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)有語言的選擇性要求參數。 這是檔中文字的 BCP-47 語言代碼。 Read 支援自動語言識別和多語系檔，因此，如果您想要強制檔以該特定語言來處理，請只提供語言代碼。
+> [讀取呼叫](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)有語言的選擇性要求參數。 這是檔中文字的 BCP-47 語言代碼。 Read 支援自動語言識別和多語系檔，因此，如果您想要強制檔以該特定語言來處理，請只提供語言代碼。
 
 ## <a name="the-read-call"></a>讀取呼叫
 
-讀取 API 的 [讀取呼叫](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 會採用影像或 PDF 檔做為輸入，並以非同步方式解壓縮文字。 呼叫會傳迴響應標頭欄位，稱為 `Operation-Location` 。 此 `Operation-Location` 值為 URL，其中包含要在下一個步驟中使用的作業識別碼。
+讀取 API 的 [讀取呼叫](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 會採用影像或 PDF 檔做為輸入，並以非同步方式解壓縮文字。 呼叫會傳迴響應標頭欄位，稱為 `Operation-Location` 。 此 `Operation-Location` 值為 URL，其中包含要在下一個步驟中使用的作業識別碼。
 
 |回應標頭| 結果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Billing** 
@@ -59,7 +59,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 
 ## <a name="the-get-read-results-call"></a>取得讀取結果呼叫
 
-第二個步驟是呼叫「 [取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) 」作業。 這項作業會以讀取作業所建立的作業識別碼作為輸入。 它會傳回 JSON 回應，其中包含具有下列可能值的 **狀態** 欄位。 您會反復呼叫此操作，直到它傳回 **成功** 的值為止。 使用1至2秒的間隔，以避免每秒超過要求 (RPS) 速率。
+第二個步驟是呼叫「 [取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) 」作業。 這項作業會以讀取作業所建立的作業識別碼作為輸入。 它會傳回 JSON 回應，其中包含具有下列可能值的 **狀態** 欄位。 您會反復呼叫此操作，直到它傳回 **成功** 的值為止。 使用1至2秒的間隔，以避免每秒超過要求 (RPS) 速率。
 
 |欄位| 類型 | 可能值 |
 |:-----|:----:|:----|
@@ -83,7 +83,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,
@@ -128,8 +128,8 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
   }
 }
 ```
-### <a name="read-31-preview-adds-text-line-style-latin-languages-only"></a>閱讀 3.1 preview 只會將文字行樣式新增 (拉丁語言) 
-[Read 3.1 PREVIEW API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)會輸出**外觀**物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
+### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>閱讀 3.2 preview 只會將文字行樣式新增 (拉丁語言) 
+[Read 3.2 PREVIEW API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)會輸出**外觀**物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 
 ```json
   "appearance": {
@@ -140,12 +140,12 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 開始使用 [電腦視覺 OCR SDK 快速入門](./quickstarts-sdk/client-library.md) 和 [Read REST API 快速](./QuickStarts/CSharp-hand-text.md) 入門，開始將 OCR 功能整合到您的應用程式中。
 
 ## <a name="supported-languages-for-print-text"></a>列印文字支援的語言
-[Read 3.0 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。
+[Read 3.2 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。
 
 如需 OCR 支援語言的完整清單，請參閱 [支援的語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) 。
 
-### <a name="read-31-preview-adds-simplified-chinese-and-japanese"></a>閱讀 3.1 preview 新增簡體中文和日文
-[Read 3.1 API 公開預覽版](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)新增了簡體中文和日文的支援。 如果您的案例需要支援更多語言，請參閱 [OCR API](#ocr-api) 一節。 
+### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>閱讀 3.2 preview 新增簡體中文和日文
+[Read 3.2 API 公開預覽版](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)新增了簡體中文和日文的支援。 如果您的案例需要支援更多語言，請參閱 [OCR API](#ocr-api) 一節。 
 
 ## <a name="supported-languages-for-handwritten-text"></a>手寫文字支援的語言
 讀取作業目前支援專門以英文解壓縮手寫文字。
@@ -202,6 +202,6 @@ Read API 也可以將 PDF 檔做為輸入。
 ## <a name="next-steps"></a>後續步驟
 
 - 以 c #、JAVA、JavaScript 或 Python 開始使用 [電腦視覺閱讀 3.0 SDK 快速入門](./quickstarts-sdk/client-library.md) 。
-- 使用 c #、JAVA、JavaScript 或 Python 中的 [Read 3.0 REST API 快速入門](./QuickStarts/CSharp-hand-text.md) ，瞭解如何使用 REST api。
-- 瞭解 [Read 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)。
-- 深入瞭解 [Read 3.1 公開預覽版 REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) ，並新增對簡體中文和日文的支援。
+- 使用 c #、JAVA、JavaScript 或 Python 中的 [Read 3.1 REST API 快速入門](./QuickStarts/CSharp-hand-text.md) ，瞭解如何使用 REST api。
+- 瞭解 [Read 3.1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)。
+- 深入瞭解 [Read 3.2 公開預覽版 REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) ，並新增對簡體中文和日文的支援。

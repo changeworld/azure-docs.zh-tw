@@ -12,10 +12,10 @@ ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
 ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589005"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的監視和警示
@@ -204,7 +204,7 @@ ms.locfileid: "88589005"
 7. 建立警示 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 恭喜，您現在已成功建立監視儀表板，並已為您的金鑰保存庫設定警示！ 當您遵循上述所有步驟之後，您應該會在金鑰保存庫符合您設定的警示準則時收到電子郵件警示。 範例如下所示。 使用您在本文中設定的工具，主動監視金鑰保存庫的健康情況。 
 

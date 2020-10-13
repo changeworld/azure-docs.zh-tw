@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397890"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 認知搜尋中的索引子
@@ -88,7 +88,7 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 
 下圖顯示索引子階段的範例索引子 [調試](cognitive-search-debug-session.md) 程式標記法：檔破解、欄位對應、技能集執行和輸出欄位對應。
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="範例 debug 會話" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="索引子階段" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>基本組態步驟
 

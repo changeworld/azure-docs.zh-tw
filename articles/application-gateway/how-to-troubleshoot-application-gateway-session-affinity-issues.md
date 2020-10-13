@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 02d1d78dae4f02ac53d535f6c404b15f8d98f008
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563738"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>針對 Azure 應用程式閘道會話親和性問題進行疑難排解
@@ -195,7 +195,7 @@ Web 偵錯工具（如 Fiddler）可協助您藉由捕捉網際網路與測試�
    > [!NOTE]
    > 此 ARRAffinity 值是 cookie 識別碼，應用程式閘道會為用戶端設定，以傳送至特定的後端伺服器。
 
-   ![螢幕擷取畫面顯示已醒目提示 [設定 Cookie] 值之記錄專案的詳細資料範例。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![螢幕擷取畫面顯示已反白顯示 Set-Cookie 值之記錄專案的詳細資料範例。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **範例 B：** 接下來的會話記錄檔接著是前一個會話記錄，用戶端會回應已設定 ARRAAFFINITY 的應用程式閘道。 如果 ARRAffinity cookie 識別碼相符，封包應該傳送至先前使用的同一部後端伺服器。 請檢查接下來幾行的 HTTP 通訊，以查看用戶端的 ARRAffinity cookie 是否正在變更。
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
 ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84988033"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>從傳統 VPN 閘道到 Resource Manager 移轉
@@ -65,6 +65,6 @@ Resource Manager 中的模型不同於傳統模型，是由虛擬網路閘道、
 * 啟用 VPN 閘道上連接在一起及連接至內部部署的 BGP。 啟用 BGP 還原的連線能力而不需要任何其他組態變更，因為路由是在 VNet 閘道之間了解及通告。 請注意，BGP 選項僅在標準和更高的 SKU 才可使用。
 * 建立從受影響的 VNet 到代表內部部署位置之區域網路閘道的明確連接。 這也會需要變更內部部署路由器上的設定來建立及設定 IPsec 通道。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解 VPN 閘道移轉支援之後，請移至[平台支援的 IaaS 資源移轉 (從傳統移轉至 Resource Manager)](../virtual-machines/windows/migration-classic-resource-manager-ps.md) 以開始使用。
 

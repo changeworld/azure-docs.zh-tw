@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563891"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>規劃您的 Azure Active Directory 裝置部署
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 讓您的組織能以裝置身分識別管理�
 
 * 在內部部署 Active Directory 和 Azure AD 的裝置之間[建立混合式 Azure AD 聯結](concept-azure-ad-join-hybrid.md)。 
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>學習
 
 開始之前，請確定您已熟悉 [裝置身分識別管理的總覽](overview.md)。
 
@@ -179,7 +179,7 @@ Azure AD join 可讓您使用 Windows 轉換至雲端優先模型。 如果您�
 
 您可以判斷 Azure AD 聯結是裝置的最佳解決方案，且該裝置可能已處於不同的狀態。 以下是升級的考慮。
 
-| 目前的裝置狀態| 所需的裝置狀態| 使用方法 |
+| 目前的裝置狀態| 所需的裝置狀態| 操作方式 |
 | - | - | - |
 | 已加入內部部署網域| Azure AD Join| 將裝置從內部部署網域退出，再加入 Azure AD |
 | 混合式 Azure AD 加入| Azure AD Join| 將裝置從內部部署網域和 Azure AD 退出，再加入 Azure AD |
@@ -213,7 +213,7 @@ Azure AD join 可讓您使用 Windows 轉換至雲端優先模型。 如果您�
 
 您可以判斷混合式 Azure AD Join 是裝置的最佳解決方案，且該裝置可能已處於不同的狀態。 以下是升級的考慮。
 
-| 目前的裝置狀態| 所需的裝置狀態| 使用方法 |
+| 目前的裝置狀態| 所需的裝置狀態| 操作方式 |
 | - | - | - |
 | 內部部署網域加入| 混合式 Azure AD 加入| 使用 Azure AD connect 或 AD FS 加入 Azure |
 | 已加入或新增內部部署工作組| 混合式 Azure AD 加入| [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)支援。 否則，裝置必須先加入內部部署網域，才能混合式 Azure AD Join |

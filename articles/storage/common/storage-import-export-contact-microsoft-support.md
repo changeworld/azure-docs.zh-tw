@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548268"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>針對匯入/匯出作業開啟支援票證
@@ -40,7 +40,7 @@ ms.locfileid: "88548268"
         - 如果您選擇 [Blob]****，請選取 [資源]****、[容器名稱]**** (選擇性) 及 [支援方案]****。
             ![選擇 [Blob]](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - 如果您選擇 [檔案]****，請選取 [資源]****、[檔案共用名稱]**** (選擇性) 及[ 支援方案]**。** ![選擇 [檔案]](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 選取 [下一步] 。
+    4. 選取 [下一步]  。
 
 3. 在 [新增支援要求] 中，選取 [步驟 2 問題]。 在 [問題] 中，執行下列步驟：
     
@@ -51,7 +51,7 @@ ms.locfileid: "88548268"
     5. 提供問題開始日期與時間。
     6. 在 [檔案上傳] 中，選取資料夾圖示以瀏覽至任何其他您想要上傳的檔案。
     7. 勾選 [共用診斷資訊]。
-    8. 選取 [下一步] 。
+    8. 選取 [下一步]  。
 
        ![問題](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "88548268"
 
    1. 在 [連絡人選項] 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
    2. 在 [連絡人資訊] 中，提供姓名、電子郵件、選用連絡方法、國家/地區。 選取 [儲存連絡人變更，以供後續支援要求使用]**** 核取方塊。
-   3. 選取 [建立]。
+   3. 選取 [建立]****。
    
        ![連絡人資訊](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
@@ -85,6 +85,6 @@ ms.locfileid: "88548268"
     ![管理支援要求](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [使用 Azure 匯入/匯出，將資料傳入和傳出 Azure 儲存體](storage-import-export-service.md)。

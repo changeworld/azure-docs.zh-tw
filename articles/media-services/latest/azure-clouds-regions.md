@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597134"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒體服務 v3 的雲端和區域
@@ -27,7 +27,7 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 雲端中的功能可用性
 
-| 特徵|全域 Azure 區域 | Azure Government|Azure Germany|Azure China 21Vianet|
+| 功能|全域 Azure 區域 | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 無法使用 | 無法使用 | 無法使用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 無法使用 | 無法使用 | 無法使用 |
@@ -98,7 +98,7 @@ az account list-locations
 
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
-### <a name="azure-germany"></a>Azure Germany
+### <a name="azure-germany"></a>Azure 德國
 
 | 服務 | 端點 |
 | ------- | -------- |
@@ -106,7 +106,7 @@ az account list-locations
 | 驗證 | `https://login.microsoftonline.de/` |
 | 權杖對象 | `https://management.core.cloudapi.de/`|
 
-### <a name="azure-china-21vianet"></a>Azure China 21Vianet
+### <a name="azure-china-21vianet"></a>Azure 中國 21Vianet
 
 | 服務 | 端點 |
 | ------- | -------- |

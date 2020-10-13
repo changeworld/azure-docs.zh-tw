@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033025"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>如何解決 Azure Advisor 建議
@@ -77,6 +77,6 @@ ms.locfileid: "90033025"
 
 您可以藉由提交建議的建議來協助我們改善 Azure Advisor。 您的建議可協助其他使用者退出困難的地方。 若要提交建議，請前往 [我們的 UserVoice 論壇](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations) ，並填寫提交表單。 當您填寫表單時，請務必盡可能提供詳細的資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要深入瞭解如何解決常見問題的詳細資訊，請參閱 [Windows 虛擬桌面的疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。

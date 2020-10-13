@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267494"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>案例：透過 Nva 路由傳送流量-自訂 (預覽) 
@@ -33,7 +33,7 @@ ms.locfileid: "91267494"
 
 **連接矩陣**
 
-| 從          | 變更為：|*NVA 輪輻*|*服務 VNet*|*DMZ VNet*|*分支靜態*|
+| 來自          | 變更為：|*NVA 輪輻*|*服務 VNet*|*DMZ VNet*|*分支靜態*|
 |---|---|---|---|---|---|
 | **NVA 輪輻**| &#8594;|      X |            X |   對等互連 |    Static    |
 | **服務 VNet**| &#8594;|    X |            X |      X    |      X       |
@@ -65,14 +65,14 @@ ms.locfileid: "91267494"
 
 我們需要這些靜態路由，以確保 VNet 對分支和分支對 VNet 流量會通過服務 VNet (VNet 4) 中的 NVA：
 
-| 說明 | 路由表 | 靜態路由              |
+| 描述 | 路由表 | 靜態路由              |
 | ----------- | ----------- | ------------------------- |
 | 分支    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
 | NVA 輪輻  | 預設     | 10.1.0.0/16-> vnet4conn  |
 
 現在虛擬 WAN 知道要將封包傳送至哪個連線，但連線必須知道接收這些封包時該怎麼辦：這是使用連接路由表的位置。
 
-| 說明 | Connection | 靜態路由            |
+| 描述 | Connection | 靜態路由            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0。5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0。5 |
@@ -129,7 +129,7 @@ ms.locfileid: "91267494"
 
 **圖2**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="圖2" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="圖1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534976"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
@@ -70,7 +70,7 @@ ms.locfileid: "91534976"
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 標頭 | 說明 | 必要/選用 |
+| 標頭 | 描述 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 
@@ -170,7 +170,7 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 標頭 | 說明 | 必要/選用 |
+| 標頭 | 描述 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 | `Content-Type` | 指定所提供文字的內容類型。 接受的值為 `application/ssml+xml`。 | 必要 |

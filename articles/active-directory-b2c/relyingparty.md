@@ -11,10 +11,10 @@ ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90023783"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -74,7 +74,7 @@ ms.locfileid: "90023783"
 
 選擇性的 **RelyingParty** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | RP 應用程式的預設使用者旅程圖。 |
 | UserJourneyBehaviors | 0:1 | 使用者旅程圖行為的範圍。 |
@@ -110,7 +110,7 @@ ms.locfileid: "90023783"
 
 **UserJourneyBehaviors** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | 使用者旅程圖之單一登入 (SSO) 工作階段行為的範圍。 |
 | SessionExpiryType |0:1 | 工作階段的驗證行為。 可能的值：`Rolling` 或 `Absolute`。 `Rolling` 值 (預設) 表示，只要使用者在應用程式中持續為作用中狀態，該使用者就會保持登入。 `Absolute` 值表示在經過應用程式工作階段存留期所指定的期間之後，就會強制使用者進行重新驗證。 |
@@ -155,7 +155,7 @@ ms.locfileid: "90023783"
 
 **ContentDefinitionParameters** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | 字串，其中包含附加至內容定義負載 URI 查詢字串的金鑰值組。 |
 
@@ -163,7 +163,7 @@ ms.locfileid: "90023783"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Name | 是 | 金鑰值組的名稱。 |
+| 名稱 | 是 | 金鑰值組的名稱。 |
 
 如需詳細資訊，請參閱[使用自訂原則設定具有動態內容的 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -177,7 +177,7 @@ ms.locfileid: "90023783"
 
 **TechnicalProfile** 包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 包含技術設定檔名稱的字串。 |
 | 描述 | 0:1 | 包含技術設定檔描述的字串。 |
@@ -190,7 +190,7 @@ ms.locfileid: "90023783"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值代表以每個 OpenID 基礎規格為依據的 OpenID Connect 1.0 通訊協定標準。 `SAML2` 代表以每個 OASIS 規格為依據的 SAML 2.0 通訊協定標準。 |
+| 名稱 | 是 | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值代表以每個 OpenID 基礎規格為依據的 OpenID Connect 1.0 通訊協定標準。 `SAML2` 代表以每個 OASIS 規格為依據的 SAML 2.0 通訊協定標準。 |
 
 ### <a name="metadata"></a>中繼資料
 
@@ -209,7 +209,7 @@ ms.locfileid: "90023783"
 
 **OutputClaims** 元素包含下列元素：
 
-| 項目 | 發生次數 | 描述 |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 信賴憑證者所訂閱之原則支援清單中預期的宣告類型名稱。 此宣告會用來做為技術設定檔的輸出。 |
 
@@ -232,7 +232,7 @@ ms.locfileid: "90023783"
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 對輸出宣告之 **PartnerClaimType** 的參考。 輸出宣告必須定義於信賴憑證者原則 **OutputClaims** 集合中。 |
-| 格式 | 否 | 用於 SAML 信賴憑證者，以設定 SAML 判斷提示中傳回的 **NameId 格式** 。 |
+| [格式] | 否 | 用於 SAML 信賴憑證者，以設定 SAML 判斷提示中傳回的 **NameId 格式** 。 |
 
 下列範例顯示如何定義 OpenID Connect 的信賴憑證者。 主體名稱資訊會設定為 `objectId`：
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033178"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>使用私用連結保護連結的服務 
@@ -66,7 +66,7 @@ ms.locfileid: "90033178"
 
 您現在已建立 Synapse 與連結服務之間的安全和私人連線。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要進一步瞭解 Synapse Analytics 中的受控私人端點，請參閱 [Synapse 受控私用端點](data-integration-data-lake.md) 一文的概念。
 

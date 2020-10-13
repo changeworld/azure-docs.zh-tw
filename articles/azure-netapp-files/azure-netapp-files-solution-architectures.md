@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91595905"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
@@ -34,7 +34,7 @@ ms.locfileid: "91595905"
 
 ### <a name="oracle"></a>Oracle
 
-* [Azure NetApp Files 單一磁片區上的 Oracle 資料庫效能](performance-oracle-single-volumes.md)
+* [Azure NetApp Files 單一磁碟區上的 Oracle 資料庫效能](performance-oracle-single-volumes.md)
 * [使用 Azure NetApp Files 的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle VM 映射及其在 Microsoft Azure 上的部署：共用存放裝置設定選項](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 * [使用 Azure NetApp Files 搭配 Oracle Database 的優點](solutions-benefits-azure-netapp-files-oracle-database.md)

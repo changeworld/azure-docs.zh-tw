@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267052"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 將私人雲端設定為災難復原目標
@@ -111,7 +111,7 @@ CloudSimple 解決方案會要求您執行下列作業：
 
 2. 在您的內部部署環境中，使用 vmware.com 的 VR ISO 中的 OVF 來部署 vRA。 針對 vRA 6.5， [此 VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) 有相關的資訊。
 
-3. 在內部部署網站上，使用 vCenter 單一登入註冊您的內部部署 vRA。 如需 vSphere 複寫6.5 的詳細指示，請參閱 VMware 檔 [VMware vSphere replication 6.5 安裝和](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)設定。
+3. 在內部部署網站上，使用 vCenter 單一 Sign-On 註冊您的內部部署 vRA。 如需 vSphere 複寫6.5 的詳細指示，請參閱 VMware 檔 [VMware vSphere replication 6.5 安裝和](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)設定。
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>在您的私人雲端環境中安裝 vSphere 複寫設備
 
@@ -137,7 +137,7 @@ CloudSimple 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA
 3. 準備私人雲端環境以進行 vRA 安裝。
 4. 在您的私人雲端中使用 OVF，以 vmware.com 中的 VR ISO 部署 vRA。 針對 vRA 6.5， [此 VMware blog](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) 有相關的資訊。
 5. 設定 vRA 的防火牆規則。 以下說明 [CloudSimple 入口網站：設定 vRA 的防火牆規則](#cloudsimple-portal-configure-firewall-rules-for-vra)。
-6. 在私用雲端網站上使用 vCenter 單一登入註冊私用雲端 vRA。
+6. 在私用雲端網站上向 vCenter 單一 Sign-On 登錄私人雲端 vRA。
 7. 設定兩個設備之間的 vSphere 複寫連接。 確定已在防火牆中開啟所需的埠。 請參閱 [這份 VMware 知識庫文章](https://kb.vmware.com/s/article/2087769) ，以取得必須針對 vSphere Replication 6.5 開啟的埠號碼清單。
 
 如需 vSphere 複寫6.5 的詳細安裝指示，請參閱 VMware 檔 [VMware vSphere replication 6.5 安裝和](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)設定。
@@ -219,7 +219,7 @@ CloudSimple 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA
 
  以陣列為基礎的複寫[和 vSphere 複寫技術都可以同時與 SRM 一起使用](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)。 不過，它們必須套用至個別的 Vm 集合 (指定的 VM 可以透過以陣列為基礎的複寫或 vSphere 複寫來進行保護，但不能同時為這兩個) 。 此外，您可以將 CloudSimple 網站設定為多個受保護網站的復原網站。 如需多網站設定的詳細資訊，請參閱 [SRM 多網站選項](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) 。
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 
 * [VMware Site Recovery Manager 檔](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Site Recovery Manager 6.5 的操作限制](https://kb.vmware.com/s/article/2147110)
@@ -227,7 +227,7 @@ CloudSimple 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA
 * [部署 vSphere Replication 6.5 時的 OVF 選項](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere Replication 6.5 安裝和設定](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [SRM 6.5 的必要條件和最佳作法](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [在兩個網站拓撲中 Site Recovery 管理員，每個 Platform Services Controller 都有一個 vCenter Server 實例](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [Two-Site 拓撲中 Site Recovery 管理員，每個 Platform Services Controller 都有一個 vCenter Server 實例](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
 * [VMware Site Recovery Manager 6.5 安裝和設定指南](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
 * [使用以陣列為基礎的複寫與 vSphere 複寫之 SRM 上的 VMware Blog](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
 * [SRM 多網站選項的 VMware Blog](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)
