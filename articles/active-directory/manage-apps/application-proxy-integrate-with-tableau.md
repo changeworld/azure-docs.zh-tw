@@ -14,17 +14,17 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764497"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 應用程式 Proxy 與 Tableau 
 
 Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確保能夠輕鬆使用「應用程式 Proxy」為 Tableau 部署提供遠端存取能力。 本文會說明如何設定此情節。  
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 本文中的情節假設您已完成以下事項：
 
@@ -42,7 +42,7 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 
 若要發佈 Tableau，您必須在 Azure 入口網站中發佈應用程式。
 
-關於：
+對於：
 
 - 如需步驟 1-8 的詳細，請參閱[使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)。 
 - 如需尋找應用程式 Proxy 欄位 Tableau 值的相關資訊，請參閱 Tableau 文件。  
@@ -50,7 +50,7 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 **發佈應用程式**： 
 
 
-1. 以應用程式系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。 
+1. 以應用程式系統管理員身分登入 [Azure 入口網站](https://portal.azure.com) 。 
 
 2. 選取 [Azure Active Directory] > [企業應用程式]****。 
 
@@ -70,7 +70,7 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 
 8. 選取**指派**以儲存測試使用者指派。 
 
-9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]****。 在下拉式功能表中選擇 [整合式 Windows 驗證]****，然後根據您的 Tableau 設定填妥必要欄位。 選取 [儲存]。 
+9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]****。 在下拉式功能表中選擇 [整合式 Windows 驗證]****，然後根據您的 Tableau 設定填妥必要欄位。 選取 [儲存]****。 
 
  
 
@@ -80,7 +80,7 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需更多有關 Azure AD 應用程式 Proxy 的資訊，請參閱[如何為內部部署應用程式提供安全的遠端存取](application-proxy.md) (英文)。
 

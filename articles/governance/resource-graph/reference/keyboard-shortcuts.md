@@ -5,10 +5,10 @@ ms.date: 08/25/2020
 ms.topic: reference
 ms.custom: accessibility
 ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146431"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph Explorer 的鍵盤快速鍵
@@ -19,13 +19,13 @@ ms.locfileid: "89146431"
 
 | 動作 | Windows 快捷方式 | Mac 快捷方式 |
 |---|---|---|
-|註解/取消註解 |<kbd>Ctrl</kbd>+<kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
+|註解/取消註解 |<kbd>CTRL</kbd>+<kbd>/</kbd> | <kbd>Cmd</kbd>+<kbd>/</kbd> |
 |減少縮排 |<kbd>CTRL</kbd> +<kbd>[</kbd> |<kbd>Cmd</kbd> +<kbd>[</kbd> |
-|增加縮排 |<kbd>CTRL</kbd> +<kbd>]</kbd> |<kbd>Cmd</kbd> +<kbd>]</kbd> |
+|增加縮排 |<kbd>CTRL</kbd>+<kbd>]</kbd> |<kbd>Cmd</kbd> +<kbd>]</kbd> |
 |將行向下移動 |<kbd>ALT</kbd> +<kbd>↓</kbd> |<kbd>選項</kbd> +<kbd>↓</kbd> |
 |將行上移 |<kbd>ALT</kbd> +<kbd>↑</kbd> |<kbd>選項</kbd> +<kbd>↑</kbd> |
-|取代 |<kbd>CTRL</kbd> +<kbd>F</kbd> |<kbd>Cmd</kbd> +<kbd>ALT</kbd> +<kbd>F</kbd> |
-|全選 |<kbd>CTRL</kbd> +<kbd>A</kbd> |<kbd>Cmd</kbd> +<kbd>A</kbd> |
+|取代 |<kbd>CTRL</kbd>+<kbd>F</kbd> |<kbd>Cmd</kbd> +<kbd>ALT</kbd> +<kbd>F</kbd> |
+|全選 |<kbd>CTRL</kbd>+<kbd>A</kbd> |<kbd>Cmd</kbd> +<kbd>A</kbd> |
 |向下選取 |<kbd>SHIFT</kbd> +<kbd>↓</kbd> |<kbd>SHIFT</kbd> +<kbd>↓</kbd> |
 |選取右邊 |<kbd>SHIFT</kbd> +<kbd>→</kbd> |<kbd>SHIFT</kbd> +<kbd>→</kbd> |
 |選取左方 |<kbd>SHIFT</kbd> +<kbd>←</kbd> |<kbd>SHIFT</kbd> +<kbd>←</kbd> |
@@ -43,8 +43,8 @@ ms.locfileid: "89146431"
 |取消正在執行的查詢 |<kbd>Esc</kbd> | <kbd>Esc</kbd> |
 |開啟新的 [查詢] 索引標籤 |<kbd>CTRL</kbd> +<kbd>ALT</kbd> +<kbd>N</kbd> | <kbd>Cmd</kbd> +<kbd>選項</kbd> +<kbd>N</kbd> |
 |關閉活動查詢索引標籤 |<kbd>CTRL</kbd> +<kbd>ALT</kbd> +<kbd>W</kbd> | <kbd>Cmd</kbd> +<kbd>選項</kbd> +<kbd>W</kbd> |
-|儲存目前的查詢 |<kbd>CTRL</kbd> +<kbd>S</kbd> | <kbd>Cmd</kbd> +<kbd>S</kbd> |
-|開啟已儲存的查詢 |<kbd>CTRL</kbd> +<kbd>O</kbd> | <kbd>Cmd</kbd> +<kbd>O</kbd> |
+|儲存目前的查詢 |<kbd>CTRL</kbd>+<kbd>S</kbd> | <kbd>Cmd</kbd> +<kbd>S</kbd> |
+|開啟已儲存的查詢 |<kbd>CTRL</kbd>+<kbd>O</kbd> | <kbd>Cmd</kbd> +<kbd>O</kbd> |
 |切換至 [查詢] 索引標籤 (1-9)  |<kbd>CTRL</kbd> +<kbd> (1-9) </kbd> | <kbd>Cmd</kbd> +<kbd> (1-9) </kbd> |
 |跳至下一個查詢索引標籤 |<kbd>CTRL</kbd> +<kbd>↓</kbd> | <kbd>Cmd</kbd> +<kbd>↓</kbd> |
 |跳到上一個查詢索引標籤 |<kbd>CTRL</kbd> +<kbd>↑</kbd> | <kbd>Cmd</kbd> +<kbd>↑</kbd> |
@@ -62,7 +62,7 @@ ms.locfileid: "89146431"
 |切換至橫條圖  |<kbd>ALT</kbd> +<kbd>B</kbd> | <kbd>選項</kbd> +<kbd>B</kbd> |
 |切換至地圖圖表  |<kbd>ALT</kbd> +<kbd>N</kbd> | <kbd>選項</kbd> +<kbd>M</kbd> |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 入口網站的鍵盤快速鍵](../../../azure-portal/azure-portal-keyboard-shortcuts.md)
 - [Resource Graph 的查詢語言](../concepts/query-language.md)

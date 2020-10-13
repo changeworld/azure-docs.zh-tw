@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure PowerShell 建立或更新 Azure 自訂角色-Azure RBAC
-description: 瞭解如何使用 Azure PowerShell 和 Azure 角色型存取控制（Azure RBAC）來列出、建立、更新或刪除自訂角色。
+description: 瞭解如何使用 Azure PowerShell 和 Azure 角色型存取控制來列出、建立、更新或刪除自訂角色 (Azure RBAC) 。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,26 +15,26 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790206"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>使用 Azure PowerShell 建立或更新 Azure 自訂角色
 
 > [!IMPORTANT]
-> 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+> 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果 [Azure 內建的角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 本文說明如何使用 Azure PowerShell 列出、建立、更新或刪除自訂角色。
 
-如需如何建立自訂角色的逐步教學課程，請參閱[教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)。
+如需如何建立自訂角色的逐步教學課程，請參閱 [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立自訂角色，您需要：
 
@@ -76,7 +76,7 @@ Virtual Machine Operator     True
 
 ## <a name="list-a-custom-role-definition"></a>列出自訂角色定義
 
-若要列出自訂角色定義，請使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)。 這是您用於內建角色的相同命令。
+若要列出自訂角色定義，請使用 [>get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)。 這與您用於內建角色的命令相同。
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -302,7 +302,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
-下列範例會將管理群組新增至 `AssignableScopes` *虛擬機器操作員*自訂角色。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+下列範例會將管理群組新增至「 `AssignableScopes` *虛擬機器操作員* 」自訂角色。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 
 ```azurepowershell
 Get-AzManagementGroup
@@ -399,8 +399,8 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
-- [Azure 自訂角色](custom-roles.md)
-- [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)
+- [Azure 自訂角色](custom-roles.md) (機器翻譯)
+- [Azure Resource Manager 資源提供者作業](resource-provider-operations.md) (機器翻譯)

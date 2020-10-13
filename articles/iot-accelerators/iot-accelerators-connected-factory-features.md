@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261595"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>連線處理站 IoT 解決方案加速器是什麼？
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 連線處理站是 Microsoft 的 Azure 產業 IoT 參考架構實作，封裝為開放原始碼解決方案。 您可以用它來當作商業產品的起點。 您可以將連線處理站解決方案的預先建立版本，從 [Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/#solutions/types/CF)部署到 Azure 訂用帳戶。
 

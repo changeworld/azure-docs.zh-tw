@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
 ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080936"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 叢集分析 Data Lake Storage Gen1 中的資料
 
-在本文中，您會使用與 HDInsight Spark 叢集搭配使用的[Jupyter Notebook](https://jupyter.org/) ，來執行從 Data Lake Storage 帳戶讀取資料的作業。
+在本文中，您將使用 HDInsight Spark 叢集可用的 [Jupyter Notebook](https://jupyter.org/) 來執行從 Data Lake Storage 帳戶讀取資料的作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 的指示。
 
@@ -62,7 +62,7 @@ ms.locfileid: "86080936"
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>搭配 Data Lake Storage Gen1 使用 HDInsight Spark 叢集
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 的 [開始面板] 中，按一下 Apache Spark 叢集的磚（如果您已將它釘選到開始面板）。 您也可以在 **[流覽所有**HDInsight 叢集] 底下流覽至您的叢集  >  ** **。
+1. 從 [Azure 入口網站](https://portal.azure.com/)的開始面板中，按一下 Apache Spark 叢集 (的磚（如果您已將它釘選到開始面板) ）。 您也可以在 **[流覽所有**HDInsight 叢集] 下流覽至您的叢集  >  ** **。
 
 2. 在 Spark 叢集刀鋒視窗中按一下 [快速連結]****，然後在 [叢集儀表板]**** 刀鋒視窗中按一下 [Jupyter Notebook]****。 出現提示時，輸入叢集的系統管理員認證。
 
@@ -141,7 +141,7 @@ ms.locfileid: "86080936"
 8. 應用程式執行完畢之後，您應該要關閉 Notebook 來釋放資源。 若要這樣做，請從 Notebook 的 [檔案]**** 功能表中，按一下 [關閉並停止]****。 這樣就能夠結束並關閉 Notebook。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [建立獨立 Scala 應用程式以在 Apache Spark 叢集上執行](apache-spark-create-standalone-application.md)
 * [使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具建立 HDInsight Spark Linux 叢集的 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)

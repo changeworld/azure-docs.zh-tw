@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079837"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 啟動在 Azure 中停滯在「Windows 正在就緒。 請勿關閉電腦」的狀態
 
-本文說明當您在 Microsoft Azure 中啟動 Windows 虛擬機器（VM）時，您可能會遇到的「準備就緒」和「正在取得 Windows 就緒」畫面。 它提供步驟，以協助您收集支援票證的資料。
+本文說明當您在 Microsoft Azure 中將 Windows 虛擬機器 (VM) 開機時，您可能會遇到的「準備就緒」和「準備 Windows 就緒」畫面。 它提供步驟，以協助您收集支援票證的資料。
 
  
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-Windows VM 不會開機。 當您使用 [**開機診斷**] 取得 VM 的螢幕擷取畫面時，您可能會看到 vm 顯示「準備就緒」或「正在取得 Windows 就緒」訊息。
+Windows VM 無法開機。 當您使用 **開機診斷** 來取得 VM 的螢幕擷取畫面時，您可能會看到 vm 顯示「準備就緒」或「正在準備 Windows」訊息。
 
 ![Windows Server 2012 R2 的訊息範例](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -40,19 +40,19 @@ Windows VM 不會開機。 當您使用 [**開機診斷**] 取得 VM 的螢幕�
 
 ## <a name="collect-an-os-memory-dump"></a>收集 OS 記憶體傾印
 
-如果在等候變更之後無法解決問題，您就必須收集記憶體傾印檔案並聯絡支援。 若要收集傾印檔案，請遵循下列步驟：
+如果在等待變更之後問題未解決，您就必須收集記憶體傾印檔案並聯系支援人員。 若要收集傾印檔案，請遵循下列步驟：
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 2. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 3. 以遠端桌面連線到復原 VM。 
-4. 如果 OS 磁片已加密，您必須先關閉加密，再移至下一個步驟。 如需詳細資訊，請參閱在[無法開機的 VM 中解密加密的 OS 磁片](troubleshoot-bitlocker-boot-error.md#solution)。
+4. 如果 OS 磁片已加密，您必須先關閉加密，再移至下一個步驟。 如需詳細資訊，請參閱 [解密 VM 中無法開機的已加密作業系統磁片](troubleshoot-bitlocker-boot-error.md#solution)。
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>找出傾印檔案，並提交支援票證
 
 1. 在復原 VM 上，移至已連結 OS 磁碟的 Windows 資料夾。 如果指派給已連結 OS 磁碟的磁碟機代號是 F，您必須移至 F:\Windows。
-2. 找出記憶體 dmp 檔案，然後提交包含傾印檔案的[支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
+2. 找出記憶體 dmp 檔案，然後使用傾印檔案來 [提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。 
 
 如果找不到傾印檔案，請移到下一個步驟來啟用傾印記錄檔和序列主控台。
 
@@ -101,10 +101,10 @@ Windows VM 不會開機。 當您使用 [**開機診斷**] 取得 VM 的螢幕�
 
 3. [卸離 OS 磁碟，然後將 OS 磁碟重新連結至受影響的 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 4. 啟動 VM 並存取序列主控台。
-5. 選取 **[傳送非遮罩式插斷（NMI）** ] 以觸發記憶體傾印。
-    ![有關在何處傳送不可遮罩中斷的影像](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
-6. 再次將 OS 磁片連結至復原 VM，並收集傾印檔案。
+5. 選取 [ **傳送非遮罩式插斷 (NMI) ** 以觸發記憶體傾印。
+    ![有關要傳送不可遮罩中斷之位置的映射](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
+6. 請再次將 OS 磁片連結至復原 VM，並收集傾印檔案。
 
-## <a name="contact-microsoft-support"></a>連絡 Microsoft 支援
+## <a name="contact-microsoft-support"></a>連絡 Microsoft 支援服務
 
 收集傾印檔案之後，請連絡 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以分析根本原因。

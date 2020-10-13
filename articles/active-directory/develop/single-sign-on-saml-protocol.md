@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118445"
 ---
 # <a name="single-sign-on-saml-protocol"></a>單一登入 SAML 通訊協定
@@ -99,7 +99,7 @@ Azure AD 會忽略 `AllowCreate` 屬性。
 如果提供，請勿包含 `ProxyCount` 屬性、`IDPListOption` 或 `RequesterID` 元素，因為它們不受支援。
 
 ### <a name="signature"></a>簽章
-`Signature`元素中的專案 `AuthnRequest` 是選擇性的。 如果簽章存在，Azure AD 不會驗證已簽署的驗證要求。 提供要求者驗證只是為了回應已註冊的判斷提示取用者服務 URL。
+專案 `Signature` 中的元素 `AuthnRequest` 是選擇性的。 如果簽章存在，Azure AD 不會驗證已簽署的驗證要求。 提供要求者驗證只是為了回應已註冊的判斷提示取用者服務 URL。
 
 ### <a name="subject"></a>主體
 請勿包含 `Subject` 元素。 Azure AD 不支援指定要求的主旨並將傳回錯誤 (如果提供主旨的話)。

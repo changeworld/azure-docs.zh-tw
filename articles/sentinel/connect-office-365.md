@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89178921"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>將 Office 365 記錄連線至 Azure Sentinel
@@ -29,7 +29,7 @@ ms.locfileid: "89178921"
 > Office 365 記錄連接器的 **Microsoft 團隊記錄延伸** 模組目前處於公開預覽狀態。
 > 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 

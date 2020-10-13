@@ -1,18 +1,18 @@
 ---
-title: 設定 Windows 虛擬桌面 (傳統) 的 GPU-Azure
+title: 設定適用于 Windows 虛擬桌面 (傳統) 的 GPU-Azure
 description: 如何在 Windows 虛擬桌面 (傳統) 中啟用 GPU 加速轉譯和編碼。
 author: gundarev
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
 ms.openlocfilehash: 32d5c280e80b2f21b30bb34a182070da51e21026
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008486"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>為 Windows 虛擬桌面 (傳統) 設定圖形處理單元 (GPU) 加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>設定圖形處理單元 (GPU) 加速 Windows 虛擬桌面 (傳統) 
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../configure-vm-gpu.md)。
@@ -27,7 +27,7 @@ Azure 提供數個 [GPU 最佳化的虛擬機器大小](/azure/virtual-machines/
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>建立主機集區、佈建您的虛擬機器，以及設定應用程式群組
 
-使用您選取的 VM 大小建立新的主機集區。 如需指示，請參閱[教學課程：使用 Azure Marketplace 建立主機集](/azure/virtual-desktop/create-host-pools-azure-marketplace)區。
+使用您選取的 VM 大小建立新的主機集區。 如需相關指示，請參閱 [教學課程：使用 Azure Marketplace 建立主機集](/azure/virtual-desktop/create-host-pools-azure-marketplace)區。
 
 Windows 虛擬桌面支援在下列作業系統中使用 GPU 加速的轉譯和編碼功能：
 
@@ -40,7 +40,7 @@ Windows 虛擬桌面支援在下列作業系統中使用 GPU 加速的轉譯和�
 
 若要在 Windows 虛擬桌面中使用 Azure N 系列 VM 的 GPU 功能，您必須安裝適當的圖形驅動程式。 請遵循[支援的作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)中的指示，透過手動或使用 Azure VM 擴充功能的方式，從適當圖形廠商安裝驅動程式。
 
-Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 Additionaly，針對具有 NVIDIA Gpu 的 Azure Vm，只有[NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)支援 Windows 虛擬桌面。
+Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，對於具有 NVIDIA Gpu 的 Azure Vm，Windows 虛擬桌面只支援 [NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) 。
 
 安裝驅動程式之後，必須重新啟動 VM。 使用上述指示中的驗證步驟，確認已成功安裝圖形驅動程式。
 

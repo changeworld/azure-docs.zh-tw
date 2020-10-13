@@ -4,10 +4,10 @@ description: 瞭解如何使用 Visual Studio Code 的 Azure 原則擴充功能�
 ms.date: 06/16/2020
 ms.topic: how-to
 ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648335"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Visual Studio Code 的 Azure 原則擴充功能
@@ -40,7 +40,7 @@ Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Cod
 
 1. 從搜尋結果中選取 **Azure 原則** ，然後選取 [ **安裝**]。
 
-1. 視需要選取 [ **重載** ]。
+1. 視需要選取 [重新載入]。
 
 ## <a name="set-the-azure-environment"></a>設定 Azure 環境
 
@@ -64,13 +64,13 @@ Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Cod
 
      從 Azure 原則擴充功能中，選取 [登 **入 Azure**]。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code 的螢幕擷取畫面，以及 Azure 原則延伸模組的圖示。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="針對 Visual Studio Code 選取全國 Azure 雲端登入的螢幕擷取畫面。" border="false":::
 
    - 命令選擇區
 
      從功能表列，移至 [ **View**  >  **命令**選擇區]，然後輸入**Azure： Sign In**。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="從命令選擇區進行 Visual Studio Code 的 Azure 雲端登入選項螢幕擷取畫面。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="針對 Visual Studio Code 選取全國 Azure 雲端登入的螢幕擷取畫面。" border="false":::
 
 1. 遵循登入指示以登入 Azure。 連線之後，您的 Azure 帳戶名稱會顯示在 [Visual Studio Code] 視窗底部的狀態列上。
 
@@ -125,7 +125,7 @@ Azure 原則擴充功能會依資源提供者和 **資源窗格中的資源** �
 
 開啟資源之後，將滑鼠停留在 Resource Manager 的屬性名稱或值，就會顯示 Azure 原則別名（如果有的話）。 在此範例中，資源是一 `Microsoft.Compute/virtualMachines` 種資源類型，而且 **StorageProfile. imageReference 供應** 專案屬性會停留在上方。 停留會顯示相符的別名。
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure 原則擴充功能的螢幕擷取畫面，可讓您將屬性暫留在顯示別名名稱的上方。" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="針對 Visual Studio Code 選取全國 Azure 雲端登入的螢幕擷取畫面。" border="false":::
 
 > [!NOTE]
 > VS Code 擴充功能只會公開 Resource Manager 模式屬性，而不會顯示任何[資源提供者模式](../concepts/definition-structure.md#mode)屬性。

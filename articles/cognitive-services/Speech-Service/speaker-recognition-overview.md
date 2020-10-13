@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
-keywords: 說話者辨識，語音 biometry
+keywords: 說話者辨識，語音測量
 ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397254"
 ---
 # <a name="what-is-speaker-recognition"></a>什麼是說話者辨識？
@@ -72,7 +72,7 @@ ms.locfileid: "89397254"
 | 您可以多次註冊一個說話者嗎？ | 是，針對文字相依驗證，您可以註冊最多50次的喇叭。 針對文字獨立驗證或說話者辨識，您最多可以註冊300秒的音訊。 |
 | 哪些資料會儲存在 Azure 中？ | 註冊音訊會儲存在服務中，直到 [刪除](speaker-recognition-basics.md#deleting-voice-profile-enrollments)語音設定檔為止。 不會保留或儲存辨識音訊範例。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > * 完成說話者辨識 [基本文章](speaker-recognition-basics.md) ，以瞭解您可以在應用程式中使用的常見設計模式。

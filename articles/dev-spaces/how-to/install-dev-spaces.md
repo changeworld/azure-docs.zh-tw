@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 瞭解如何在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212444"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具
@@ -65,7 +65,7 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 azds remove -g MyResourceGroup -n MyAKS
 ```
 
-下列範例輸出顯示從 *MyAKS* 叢集移除 Azure Dev Spaces。
+下列範例輸出顯示如何從 *MyAKS* 叢集中移除 Azure Dev Spaces。
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -78,7 +78,7 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure Dev Spaces 的運作方式。
+深入了解 Azure Dev Spaces 的運作方式。
 
 > [!div class="nextstepaction"]
 > [Azure Dev Spaces 如何運作](../how-dev-spaces-works.md)

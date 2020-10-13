@@ -1,13 +1,13 @@
 ---
 title: Azure 服務匯流排和 .NET 與 AMQP 1.0 | Microsoft Docs
-description: 本文說明如何從使用 AMQP (Advanced 訊息佇列通訊協定) 的 .NET 應用程式中使用 Azure 服務匯流排。
+description: 本文說明如何使用 AMQP (Advanced 訊息佇列通訊協定) ，從 .NET 應用程式使用 Azure 服務匯流排。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067098"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>搭配使用 .NET 的服務匯流排與 AMQP 1.0
@@ -16,7 +16,7 @@ ms.locfileid: "88067098"
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>設定 .NET 應用程式以使用 AMQP 1.0
 
-根據預設，服務匯流排 .NET 用戶端程式庫會使用 AMQP 通訊協定與服務匯流排服務進行通訊。 您也可以將 AMQP 明確指定為傳輸類型，如下一節所示。 
+根據預設，服務匯流排 .NET 用戶端程式庫會使用 AMQP 通訊協定與服務匯流排服務通訊。 您也可以明確指定 AMQP 做為傳輸類型，如下一節所示。 
 
 目前的版本中有幾項在使用 AMQP 時不支援的 API 功能。 不支援的功能皆列在[行為差異](#behavioral-differences)一節中。 在使用 AMQP 時，某些進階組態設定亦有不同的意義。
 
@@ -75,10 +75,10 @@ ms.locfileid: "88067098"
 | Uri |描述的 string (請參閱下表) |AMQP 值 |
 | DateTimeOffset |描述的 long (請參閱下表) |AMQP 值 |
 | TimeSpan |描述的 long (請參閱下表) |AMQP 值 |
-| 資料流 |BINARY |AMQP 資料 (可能有多個)。 Data 區段包含從 Stream 物件讀取的原始位元組。 |
+| STREAM |BINARY |AMQP 資料 (可能有多個)。 Data 區段包含從 Stream 物件讀取的原始位元組。 |
 | 其他物件 |BINARY |AMQP 資料 (可能有多個)。 包含使用 DataContractSerializer 或應用程式所提供序列化程式之物件的序列化二進位資料。 |
 
-| .NET 類型 | 對應的 AMQP 描述類型 | 備註 |
+| .NET 類型 | 對應的 AMQP 描述類型 | 注意 |
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
@@ -96,10 +96,10 @@ ms.locfileid: "88067098"
 
 [.NET API](/dotnet/api/) 會公開數個可控制 AMQP 通訊協定行為的設定：
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**：控制套用至連結的初始信用額度。 預設值為 0。
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**：控制套用至連結的初始信用額度。 預設值是 0。
 * **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**︰控制在連線開啟時間進行交涉時所提供的 AMQP 框架大小上限。 預設值為 65,536 個位元組。
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**︰如果傳輸可分批進行，這個值會決定用於傳送配置的延遲上限。 預設由傳送者/接收者繼承。 個別的傳送者/接收者可以覆寫預設值 (20 毫秒)。
-* **[Messagingfactorysettings.operationtimeout. messagingfactorysettings.amqptransportsettings.batchflushinterval ... messagingfactorysettings.amqptransportsettings.usesslstreamsecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**：控制是否透過 TLS 連接建立 AMQP 連接。 預設值為**true**。
+* **[>messagingfactorysettings.operationtimeout. messagingfactorysettings.amqptransportsettings.batchflushinterval. messagingfactorysettings.amqptransportsettings.usesslstreamsecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**：控制是否透過 TLS 連接建立 AMQP 連接。 預設值為 **True**。
 
 ## <a name="next-steps"></a>後續步驟
 

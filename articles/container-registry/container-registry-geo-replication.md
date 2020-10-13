@@ -1,15 +1,15 @@
 ---
 title: 異地複寫登錄
-description: 開始建立和管理異地複寫的Azure container registry，讓登錄能夠使用多重主要區域複本服務多個區域。 異地複寫是高階服務層的一項功能。
+description: 開始建立和管理異地複寫的Azure container registry，讓登錄能夠使用多重主要區域複本服務多個區域。 異地複寫是 Premium 服務層的一項功能。
 author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
 ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116785"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器登錄中的異地複寫
@@ -95,7 +95,7 @@ ACR 會開始同步設定的複本之間的映像。 完成時，入口網站會
 * 當您對異地複寫的登錄推送或提取映像時，背景中的 Azure 流量管理員會考慮網路延遲而將要求傳送至離您最近的區域中的登錄。
 * 當您將映像或標記更新推送至最接近的區域之後，Azure Container registry 需要一些時間將資訊清單和層複寫至您選擇加入的其餘區域。 映像愈大，複寫就愈耗時。 各個複寫區域會透過最終的一致性模型同步處理映像和標記。
 * 若要管理必須將更新推送至異地複寫登錄的工作流程，建議您設定 [Webhook](container-registry-webhook.md) 來回應推送事件。 您可以在異地複寫的登錄中設定區域 Webhook，來追蹤異地複寫區域之間的推送事件何時完成。
-* 為了提供代表內容層的 blob，Azure Container Registry 使用資料端點。 您可以在每個登錄的異地複寫區域中，為您的登錄啟用[專用的資料端點](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 這些端點可讓您設定嚴格限定範圍的防火牆存取規則。 為了進行疑難排解，您可以在維護複寫的資料時，選擇性地[停用對複寫的路由](#temporarily-disable-routing-to-replication)。
+* 為了提供代表內容層的 blob，Azure Container Registry 會使用資料端點。 您可以在每個登錄的異地複寫區域中，為您的登錄啟用[專用的資料端點](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 這些端點可讓您設定嚴格限定範圍的防火牆存取規則。 基於疑難排解用途，您可以選擇性地 [停用路由傳送至](#temporarily-disable-routing-to-replication) 複寫，同時維護複寫的資料。
 * 如果您使用虛擬網路中的[私人連結](container-registry-private-link.md)設定登錄的私人連結，則預設會啟用每個異地複寫區域中的專用資料端點。 
 
 ## <a name="delete-a-replica"></a>刪除複本伺服器
@@ -127,11 +127,11 @@ az acr replication delete --name eastus --registry myregistry
 
 若要將推送映像時的最接近複本 DNS 解析最佳化，請在與推送作業來源相同的 Azure 區域中設定異地複寫登錄，如果是在 Azure 外部工作，則請在最接近的區域設定。
 
-### <a name="temporarily-disable-routing-to-replication"></a>暫時停用路由至複寫
+### <a name="temporarily-disable-routing-to-replication"></a>暫時停用路由傳送至複寫
 
-若要使用異地複寫的登錄進行作業疑難排解，您可能會想要暫時停用流量管理員路由傳送至一或多個複寫。 從 Azure CLI 版本2.8 開始，您可以在 `--region-endpoint-enabled` 建立或更新複寫的區域時設定選項（預覽）。 當您將複寫的 `--region-endpoint-enabled` 選項設定為時 `false` ，流量管理員不會再將 docker push 或 pull 要求路由傳送至該區域。 根據預設，路由至所有複寫已啟用，而所有複寫的資料同步處理會在路由已啟用或停用時進行。
+若要使用異地複寫登錄來疑難排解作業，您可能會想要暫時停用流量管理員路由傳送至一或多個複寫。 從 Azure CLI 版本2.8 開始，您可以在 `--region-endpoint-enabled` 建立或更新複寫的區域時，設定 (preview) 的選項。 當您將複寫的 `--region-endpoint-enabled` 選項設定為時 `false` ，流量管理員就不會再將 docker 推送或提取要求路由傳送至該區域。 依預設，會啟用 [路由至所有複寫]，而所有複寫的資料同步處理會在路由已啟用或停用時進行。
 
-若要停用現有複寫的路由，請先執行[az acr replication list][az-acr-replication-list]來列出登錄中的複寫。 然後，執行[az acr replication update][az-acr-replication-update] ，並 `--region-endpoint-enabled false` 針對特定複寫進行設定。 例如，若要在*myregistry*中設定*westus*複寫的設定：
+若要停用對現有複寫的路由，請先執行 [az acr replication list][az-acr-replication-list] 來列出登錄中的複寫。 然後，執行 [az acr replication update][az-acr-replication-update] ，並 `--region-endpoint-enabled false` 針對特定複寫進行設定。 例如，若要在*myregistry*中設定*westus*複寫的設定：
 
 ```azurecli
 # Show names of existing replications
@@ -143,7 +143,7 @@ az acr replication update update --name westus \
   --region-endpoint-enabled false
 ```
 
-若要還原至複寫的路由：
+若要將路由還原至複寫：
 
 ```azurecli
 az acr replication update update --name westus \

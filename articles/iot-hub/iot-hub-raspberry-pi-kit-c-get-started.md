@@ -11,10 +11,10 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327458"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>將 Raspberry Pi 連接至 Azure IoT Hub (C)
@@ -53,7 +53,7 @@ ms.locfileid: "87327458"
 
 * Raspberry Pi 2 或 Raspberry Pi 3 電路板。
 
-* 有效的 Azure 訂用帳戶。 如果您沒有 Azure 帳戶，請在短短幾分鐘內[建立免費的 azure 試用帳戶](https://azure.microsoft.com/free/)。
+* 有效的 Azure 訂用帳戶。 如果您沒有 Azure 帳戶，只需要幾分鐘的時間就能 [建立免費的 azure 試用帳戶](https://azure.microsoft.com/free/) 。
 
 * 連接至 Pi 的監視器、 USB 鍵盤和滑鼠。
 
@@ -99,7 +99,7 @@ ms.locfileid: "87327458"
 
 1. 下載 Raspbian。
 
-   1. [下載 Raspbian Stretch With Desktop](https://www.raspberrypi.org/downloads/raspbian/) （.zip 檔案）。
+   1. [下載 Raspbian Stretch With Desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip 檔案) 。
 
    2. 將 Raspbian 映像解壓縮到您電腦上的資料夾。
 
@@ -121,7 +121,7 @@ ms.locfileid: "87327458"
 
 1. 將 Pi 連接至監視器、鍵盤和滑鼠、啟動 Pi，然後使用 `pi` 做為使用者名稱和密碼來登入 Raspbian `raspberry` 。
  
-2. 按一下 [Raspberry] 圖示 >**偏好**設定] [  >  **Raspberry Pi**設定]。
+2. 按一下 [Raspberry] 圖示 >**喜好**設定  >  **Raspberry Pi**設定。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "87327458"
 
 ### <a name="connect-the-sensor-to-pi"></a>將感應器連接至 Pi
 
-使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果您沒有感應器，請[略過本節](#connect-pi-to-the-network)。
+使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果您沒有感應器，請 [略過](#connect-pi-to-the-network)本節。
 
 ![Raspberry Pi 和感應器連接](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
@@ -230,13 +230,13 @@ BME280 感應器可以收集溫度和溼度資料。 而如果裝置與雲端之
 
 ![輸出 - 從 Raspberry Pi 傳送至 IoT 中樞的感應器資料](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>讀取您的中樞所接收的訊息
+## <a name="read-the-messages-received-by-your-hub"></a>讀取中樞所接收的訊息
 
-若要監視您的 IoT 中樞從裝置接收的訊息，其中一種方式是使用 Visual Studio Code 的 Azure IoT Tools。 若要深入瞭解，請參閱[使用 Visual Studio Code 的 Azure IoT Tools，在您的裝置與 IoT 中樞之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要從您的裝置監視 IoT 中樞所收到的訊息，其中一種方式是使用 Visual Studio Code 的 Azure IoT Tools。 若要深入瞭解，請參閱 [使用 Azure IoT Tools Visual Studio Code，以在您的裝置與 IoT 中樞之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-如需更多方式來處理您的裝置所傳送的資料，請繼續進行下一節。
+如需更多處理裝置所傳送資料的方式，請繼續下一節。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您已執行範例應用程式收集感應器資料並傳送至 IoT 中樞。
 

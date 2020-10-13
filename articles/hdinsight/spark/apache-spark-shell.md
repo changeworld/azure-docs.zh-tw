@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: 84298c9073f00f0388a9bcb7405369d7c60bcce1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081174"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>從 Spark Shell 執行 Apache Spark
@@ -27,7 +27,7 @@ ms.locfileid: "86081174"
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark 提供 Scala （spark shell）和 Python （pyspark）的 shell。 在您的 SSH 會話中，輸入下列*其中一個*命令：
+1. Spark 提供 Scala (spark shell) 和 Python (pyspark) 的 shell。 在您的 SSH 會話中，輸入下列 *其中一個* 命令：
 
     ```bash
     spark-shell
@@ -43,9 +43,9 @@ ms.locfileid: "86081174"
     # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    如果您想要使用任何選用的設定，請務必先參閱[Apache Spark 的 OutOfMemoryError 例外](./apache-spark-troubleshoot-outofmemory.md)狀況。
+    如果您想要使用任何選擇性的設定，請務必先查看 [Apache Spark 的 OutOfMemoryError 例外](./apache-spark-troubleshoot-outofmemory.md)狀況。
 
-1. 幾個基本的範例命令。 選擇相關的語言：
+1. 一些基本的範例命令。 選擇相關的語言：
 
     ```spark-shell
     val textFile = spark.read.textFile("/example/data/fruits.txt")
@@ -65,7 +65,7 @@ ms.locfileid: "86081174"
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
     ```
 
-1. 查詢 CSV 檔案並將結果儲存在變數中：
+1. 查詢 CSV 檔案，並將結果儲存在變數中：
 
     ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
@@ -105,16 +105,16 @@ ms.locfileid: "86081174"
 
 ## <a name="important-shell-parameters"></a>重要的殼層參數
 
-Spark Shell 命令（ `spark-shell` 或 `pyspark` ）支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中某些參數可能只適用于 `spark-submit` Spark Shell 所包裝的。
+Spark Shell 命令 (`spark-shell` ，或 `pyspark`) 支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中某些參數只能套用至 `spark-submit` Spark Shell 所包裝的。
 
-| 參數 | description | 範例 |
+| switch | description | 範例 |
 | --- | --- | --- |
 | --master MASTER_URL | 指定主要 URL。 在 HDInsight 中，此值一律為 `yarn`。 | `--master yarn`|
 | --jars JAR_LIST | 本機 Jar 的逗號分隔清單，用來包含在驅動程式和執行程式 Classpath 中。 在 HDInsight 中，此清單是由 Azure 儲存體或 Data Lake Storage 中的預設檔案系統路徑組成。 | `--jars /path/to/examples.jar` |
 | --packages MAVEN_COORDS | Jar 的 Maven 座標逗號分隔清單，用來包含在驅動程式和執行程式 Classpath 中。 依序搜尋本機 Maven 存放庫、Maven 中心和所有以 `--repositories` 指定的遠端存放庫。 座標格式為 *groupId*:*artifactId*:*version*。 | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --py-files LIST | (僅適用於 Python) 要放在 PYTHONPATH 中的 .zip、.egg 或 .py 檔案的逗號分隔清單。 | `--pyfiles "samples.py"` |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需概觀，請參閱 [Azure HDInsight 上的 Apache Spark 簡介](apache-spark-overview.md)。
 - 請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)，搭配使用 Spark 叢集和 SparkSQL。

@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: 0e320557a7372af6a41038d9b3196db23d2496c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325044"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>使用 Java 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
@@ -26,13 +26,13 @@ ms.locfileid: "87325044"
 
 在本文中，您會了解如何使用 Java SDK 向 Azure Data Lake Store 進行服務對服務驗證。 不支援使用 Java SDK 向 Data Lake Storage Gen1 進行使用者驗證。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **建立 Azure Active Directory "Web" 應用程式**。 您必須已經完成[使用 Azure Active Directory 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步驟。
 
-* [Maven](https://maven.apache.org/install.html). 本教學課程使用 Maven 來處理組建和專案相依性。 雖然您不需要使用 Maven 或 Gradle 等組建系統就能建立，但這些系統可讓您更輕鬆地管理相依性。
+* [Maven](https://maven.apache.org/install.html). 本教學課程使用 Maven 來處理組建和專案相依性。 雖然您可以在不使用組建系統（例如 Maven 或 Gradle）的情況下建立，但是這些系統可讓您更輕鬆地管理相依性。
 
 * (選擇性) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 或 [Eclipse](https://www.eclipse.org/downloads/) 或類似的 IDE。
 
@@ -40,7 +40,7 @@ ms.locfileid: "87325044"
 
 1. 從命令列或透過 IDE，使用 [mvn 原型](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)建立 Maven 專案。 如需有關如何使用 IntelliJ 建立 Java 專案的指示，請參閱[這裡](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 如需有關如何使用 Eclipse 建立專案的指示，請參閱[這裡](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。
 
-2. 將下列相依性新增至 Maven **pom.xml** 檔案。 在標記前面加入下列程式碼片段 **\</project>** ：
+2. 將下列相依性新增至 Maven **pom.xml** 檔案。 在標記之前新增下列程式碼片段 **\</project>** ：
 
     ```xml
     <dependencies>
@@ -84,7 +84,7 @@ ms.locfileid: "87325044"
 
 Data Lake Storage Gen1 SDK 提供簡便的方法，讓您管理與 Data Lake Storage Gen1 帳戶互動所需的安全性權杖。 不過，SDK 不會要求只能使用這些方法。 您也可以使用任何其他方法來取得權杖，像是使用 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java)，或您自己的自訂程式碼。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已了解如何使用 Java SDK，使用使用者驗證向 Data Lake Storage Gen1 進行驗證。 您現在可以看看下列文章，了解如何配合使用 Java SDK 與 Data Lake Storage Gen1。
 

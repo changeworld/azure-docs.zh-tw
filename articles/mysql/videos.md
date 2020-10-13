@@ -7,15 +7,15 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 2c2fbb3352b159ce9f5231c56399638a1d393366
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513854"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 影片
 
-本頁面提供瞭解適用於 MySQL 的 Azure 資料庫的影片內容。
+本頁面提供影片內容以瞭解適用於 MySQL 的 Azure 資料庫。
 
 ## <a name="overview-azure-database-for-postgresql-and-mysql"></a>概觀：適用於 PostgreSQL 與 MySQL 的 Azure 資料庫
 
@@ -25,7 +25,7 @@ ms.locfileid: "87513854"
 適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 的 Azure 資料庫結合了社群版資料庫引擎和完全受控服務的功能，因此您可以專注於您的應用程式，而無須分心於管理資料庫。 觀看影片以快速瀏覽使用該服務的優點，並了解應用上的部分功能。
 
 ## <a name="create-a-postgresql-or-mysql-server"></a>建立于 postgresql 或 MySQL 伺服器
-適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 的 Azure 資料庫是受控服務，可讓您用來在雲端執行、管理及調整高可用性的「社區版本」資料庫引擎。 這些影片教學課程會示範如何使用 Azure 入口網站，在大約三分鐘內建立于 postgresql 或 MySQL 伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 的 Azure 資料庫是您用來在雲端執行、管理及調整高可用性的社區版本資料庫引擎的受控服務。 這些影片教學課程會示範如何使用 Azure 入口網站，在大約三分鐘內建立于 postgresql 或 MySQL 伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * [于 postgresql 影片教學課程](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal)
 

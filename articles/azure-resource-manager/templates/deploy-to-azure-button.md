@@ -4,19 +4,19 @@ description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager �
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079445"
 ---
-# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用 [部署] 按鈕來部署 GitHub 存放庫中的範本
+# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按鈕從 GitHub 存放庫部署範本
 
-本文說明如何使用 [**部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以將按鈕直接新增至 GitHub 存放庫中的 README.md 檔案，或加入至參考存放庫的網頁。 這個方法只支援資源群組層級部署。
+本文說明如何使用 [ **部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以直接將按鈕新增至 GitHub 儲存機制中的 README.md 檔案，或新增至參考存放庫的網頁。 這個方法只支援資源群組層級部署。
 
 ## <a name="use-common-image"></a>使用通用映射
 
-若要將按鈕新增至您的網頁或存放庫，請使用下列影像：
+若要將按鈕加入至您的網頁或存放庫，請使用下圖：
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -28,7 +28,7 @@ ms.locfileid: "87079445"
 
 ## <a name="create-url-for-deploying-template"></a>建立用來部署範本的 URL
 
-若要建立範本的 URL，請從存放庫中範本的原始 URL 開始。 若要查看原始 URL，請選取 [ **raw**]。
+若要建立範本的 URL，請從您存放庫中範本的原始 URL 開始。 若要查看原始 URL，請選取 [ **原始**]。
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="選取原始":::
 
@@ -38,7 +38,7 @@ URL 的格式為：
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-然後，URL 將它編碼。 您可以使用線上編碼器或執行命令。 下列 PowerShell 範例示範如何對值進行 URL 編碼。
+然後，對其進行 URL 編碼。 您可以使用線上編碼器或執行命令。 下列 PowerShell 範例示範如何對值進行 URL 編碼。
 
 ```powershell
 [uri]::EscapeDataString($url)
@@ -64,7 +64,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 您有連結的完整 URL。
 
-## <a name="create-deploy-to-azure-button"></a>建立 [部署至 Azure] 按鈕
+## <a name="create-deploy-to-azure-button"></a>[建立部署至 Azure] 按鈕
 
 最後，將連結和影像放在一起。
 
@@ -88,10 +88,10 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 [![部署至 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
-入口網站會顯示一個窗格，讓您輕鬆地提供參數值。 這些參數會預先填入範本中的預設值。
+入口網站會顯示一個窗格，可讓您輕鬆地提供參數值。 這些參數會預先填入範本中的預設值。
 
 ![使用入口網站進行部署](./media/deploy-to-azure-button/portal.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 若要深入瞭解範本，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+- 若要深入瞭解範本，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。

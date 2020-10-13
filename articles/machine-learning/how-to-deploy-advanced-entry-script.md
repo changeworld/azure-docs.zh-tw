@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: gopalv
 ms.openlocfilehash: 0146c6c003e3c22b63b5fde5c8979a9d7c112b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261385"
 ---
 # <a name="advanced-entry-script-authoring"></a>進階的輸入腳本製作
 
 本文說明如何撰寫特製化使用案例的進入腳本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已經有想要使用 Azure Machine Learning 部署的已定型機器學習模型。 若要深入瞭解模型部署，請參閱 [此教學](how-to-deploy-and-where.md)課程。
 

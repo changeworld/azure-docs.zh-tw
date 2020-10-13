@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: f609cfb0945d79cfa8ae21b786a5761b92b9dabb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84324618"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新設定 Azure-SSIS 整合執行階段
@@ -27,8 +27,8 @@ ms.locfileid: "84324618"
 ## <a name="data-factory-ui"></a>Data Factory UI 
 您可以使用 Data Factory UI 來停止、編輯/重新設定或刪除 Azure-SSIS IR。 
 
-1. 在 Data Factory 首頁上選取 [**作者 & 監視器**] 圖格，以開啟 DATA FACTORY 的 UI。
-2. 在 [**首頁** **]、** [**編輯**] 和 [**監視**] 中樞底下選取 [**管理**中樞]，以顯示 [連線] 窗格。
+1. 在 Data Factory 首頁上選取 [ **作者 & 監視器** ] 磚，以開啟 DATA FACTORY 的 UI。
+2. 在 [**首頁**]、[**編輯**] 和 [**監視**] 中樞選取 [**管理**中樞]，以顯示 [**連接**] 窗格。
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>重新設定 Azure-SSIS IR
 在 [管理] 中樞的 [連線] 窗格上，切換至 [整合執行階段] 頁面，然後選取 [重新整理]。 
@@ -45,17 +45,17 @@ ms.locfileid: "84324618"
 
 ### <a name="reconfigure-an-azure-ssis-ir"></a>重新設定 Azure-SSIS IR
 
-1. 首先，使用[AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) Cmdlet 來停止 Azure SSIS 整合執行時間。 此命令會釋出其所有節點並停止計費。
+1. 首先，使用 [AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) Cmdlet 來停止 Azure SSIS 整合執行時間。 此命令會釋出其所有節點並停止計費。
 
    ```powershell
    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
    ```
-2. 接下來，使用 AzDataFactoryV2IntegrationRuntime Cmdlet 來重新[設定](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime)AZURE SSIS IR。 下列範例命令可將 Azure-SSIS 整合執行階段相應放大為五個節點。
+2. 接下來，使用 AzDataFactoryV2IntegrationRuntime 指令程式重新 [設定](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) Azure-SSIS IR。 下列範例命令可將 Azure-SSIS 整合執行階段相應放大為五個節點。
 
    ```powershell
    Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
    ```  
-3. 然後，使用[AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) Cmdlet 來啟動 Azure SSIS 整合執行時間。 此命令會配置其所有節點以執行 SSIS 套件。   
+3. 然後，使用 [AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) Cmdlet 啟動 Azure SSIS 整合執行時間。 此命令會配置其所有節點以執行 SSIS 套件。   
 
    ```powershell
    Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
@@ -88,11 +88,11 @@ ms.locfileid: "84324618"
    Remove-AzResourceGroup -Name $ResourceGroupName -Force 
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需 Azure-SSIS 執行階段的詳細資訊，請參閱下列主題： 
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供整合執行階段的一般概念性資訊，包括 Azure-SSIS IR。 
-- [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供建立 Azure SSIS IR 的逐步指示，並使用 Azure SQL Database 來裝載 SSIS 目錄。 
-- [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 這篇文章會詳述教學課程，並提供使用 Azure SQL 受控執行個體以及將 IR 加入虛擬網路的指示。 
+- [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供逐步指示，說明如何建立 Azure-SSIS IR，並使用 Azure SQL Database 來裝載 SSIS 目錄。 
+- [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 本文將擴充教學課程，並提供使用 Azure SQL 受控執行個體以及將 IR 加入虛擬網路的指示。 
 - [將 Azure-SSIS IR 加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。 這篇文章提供將 Azure SSIS IR 加入至 Azure 虛擬網路的概念資訊。 它也提供使用 Azure 入口網站來設定虛擬網路，好讓 Azure SSIS IR 可加入虛擬網路的步驟。 
 - [監視 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). 本文示範如何在傳回的資訊中擷取 Azure-SSIS IR 的相關資訊和狀態描述。

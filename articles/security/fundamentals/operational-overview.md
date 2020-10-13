@@ -1,6 +1,6 @@
 ---
 title: Azure 作業安全性概觀 | Microsoft Docs
-description: 在此總覽中瞭解 Azure 作業安全性。 操作安全性是指資產保護服務、控制項和功能。
+description: 在此總覽中瞭解 Azure 操作安全性。 營運安全性是指資產保護服務、控制項和功能。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925306"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 作業安全性概觀
@@ -68,7 +68,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/secu
 - [自助密碼管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [自助式群組管理](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [具有特殊權限的帳戶管理](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)
+- [Azure 角色型存取控制 (Azure RBAC)](/azure/role-based-access-control/overview)
 - [應用程式使用情況監視](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [豐富的稽核功能](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [安全性監視和警示](/azure/operations-management-suite/oms-security-responding-alerts)
@@ -87,7 +87,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/secu
 - 磁碟加密驗證。
 - 網路型攻擊。
 
-資訊安全中心會使用[azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/role-assignments-portal)。 RBAC 會提供[內建角色](../../role-based-access-control/built-in-roles.md)，可指派給 Azure 中的使用者、群組與服務。
+「安全性中心」會使用 [azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/role-assignments-portal)。 RBAC 會提供[內建角色](../../role-based-access-control/built-in-roles.md)，可指派給 Azure 中的使用者、群組與服務。
 
 資訊安全中心會評估資源的組態，以識別安全性問題與弱點。 在資訊安全中心，只有當您獲指派為資源所屬訂用帳戶或資源群組的擁有者、參與者或讀取者角色時，才能看到與資源相關的資訊。
 

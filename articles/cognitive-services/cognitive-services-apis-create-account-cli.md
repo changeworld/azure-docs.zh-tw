@@ -6,18 +6,18 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-keywords: 認知服務，認知情報，認知解決方案，ai 服務
+keywords: 認知服務, 認知智慧, 認知解決方案, ai 服務
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262428"
 ---
-# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入門：使用 Azure 命令列介面 (CLI 建立認知服務資源) 
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入門：使用 Azure Command-Line 介面 (CLI 建立認知服務資源) 
 
 您可以使用本快速入門，透過 [Azure 命令列介面 (CLI) ](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)來開始使用 Azure 認知服務。
 
@@ -29,7 +29,7 @@ Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端式�
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 有效的 Azure 訂用帳戶- [建立一個](https://azure.microsoft.com/free/cognitive-services) 免費的訂用帳戶。
 * [Azure 命令列介面 (CLI) ](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -160,7 +160,7 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>取得資源的金鑰
 
-若要登入您的本機安裝命令列介面 (CLI) ，請使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
+若要登入 Command-Line 介面的本機安裝 (CLI) ，請使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
 
 ```azurecli-interactive
 az login

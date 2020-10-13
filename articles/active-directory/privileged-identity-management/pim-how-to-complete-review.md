@@ -1,6 +1,6 @@
 ---
 title: 在 PIM 中完成 Azure AD 角色的存取權檢查-Azure AD |Microsoft Docs
-description: 瞭解如何在 Azure AD Privileged Identity Management （PIM）中完成 Azure AD 角色的存取權檢查並查看結果
+description: 瞭解如何在 Azure AD Privileged Identity Management (PIM) 中完成 Azure AD 角色的存取權檢查，以及查看結果
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,33 +15,33 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa7e8089fbbf2ee653100a05383fdbdc877ffda4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84742211"
 ---
-# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中完成 Azure AD 角色的存取權檢查
+# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中完成 Azure AD 角色的存取權審核
 
-在[開始存取權檢閱](pim-how-to-start-security-review.md)之後，特殊權限角色管理員就可以檢閱特殊權限存取權。  Privileged Identity Management （PIM）會自動傳送電子郵件給您 Azure Active Directory （Azure AD）組織中的使用者，以提示他們檢查其存取權。 如果使用者未收到電子郵件，您可以將[如何執行存取權檢閱](pim-how-to-perform-security-review.md)中的指示傳送給他們。
+在[開始存取權檢閱](pim-how-to-start-security-review.md)之後，特殊權限角色管理員就可以檢閱特殊權限存取權。  Privileged Identity Management (PIM) 會自動傳送電子郵件給您 Azure Active Directory (Azure AD) 組織的使用者，以提示他們審核其存取權。 如果使用者未收到電子郵件，您可以將[如何執行存取權檢閱](pim-how-to-perform-security-review.md)中的指示傳送給他們。
 
 存取權檢閱期間結束後，或所有使用者都已完成其自我檢閱後，請遵循本文的步驟來管理檢閱並查看結果。
 
 ## <a name="manage-access-reviews"></a>管理存取權檢閱
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com/)，然後在儀表板上選取 [ **Azure AD Privileged Identity Management** ] 服務。
+1. 移至 [Azure 入口網站](https://portal.azure.com/) ，然後選取儀表板上的 **Azure AD Privileged Identity Management** 服務。
 1. 選取儀表板的 [存取權檢閱] **** 區段。
 1. 選取您想要管理的存取權檢閱。
 
-在 [存取審查] 的 [詳細資料] 分頁上，有數個選項可用於管理該審查。
+在存取審查的詳細資料分頁上，有許多選項可用於管理該審核。
 
-![Privileged Identity Management 存取權審查按鈕-螢幕擷取畫面](./media/pim-how-to-complete-review/review-buttons.png)
+![Privileged Identity Management 存取權檢查按鈕-螢幕擷取畫面](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>提醒
 
 如果將存取權檢閱設定成讓使用者自我檢閱，[提醒] **** 按鈕就會傳送通知。
 
-### <a name="stop"></a>Stop
+### <a name="stop"></a>停止
 
 所有的存取權檢閱都有結束日期，但是您可以使用 [停止] **** 按鈕來提早結束檢閱。 如果此時有任何使用者尚未受到檢閱，在您停止檢閱之後，他們將無法受到檢閱。 在停止檢閱之後，即無法重新開始該檢閱。
 
@@ -55,12 +55,12 @@ ms.locfileid: "84742211"
 
 ### <a name="delete"></a>刪除
 
-如果對檢閱不再有任何興趣，請刪除它。 [**刪除**] 按鈕會移除 Privileged Identity Management 服務的審查。
+如果對檢閱不再有任何興趣，請刪除它。 [ **刪除** ] 按鈕會從 Privileged Identity Management 服務移除評論。
 
 > [!IMPORTANT]
-> 您不需要確認此破壞性變更，因此請確認您想要刪除該評論。
+> 您將不需要確認這種破壞性變更，因此請確認您想要刪除該評論。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [在 Privileged Identity Management 中啟動 Azure AD 角色的存取權審查](pim-how-to-start-security-review.md)
-- [在 Privileged Identity Management 中執行我的 Azure AD 角色的存取權檢查](pim-how-to-perform-security-review.md)
+- [在 Privileged Identity Management 中開始 Azure AD 角色的存取權審核](pim-how-to-start-security-review.md)
+- [在 Privileged Identity Management 中執行我 Azure AD 角色的存取權審核](pim-how-to-perform-security-review.md)

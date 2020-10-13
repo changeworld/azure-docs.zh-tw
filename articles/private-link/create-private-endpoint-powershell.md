@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 建立 Azure 私用端點 |Microsoft Docs
-description: 瞭解 Azure 私人連結
+title: 使用 Azure PowerShell 建立 Azure 私人端點 |Microsoft Docs
+description: 瞭解 Azure Private Link
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737371"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 建立私人端點
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 
 
-在本快速入門中，您將瞭解如何使用 Azure PowerShell 在 Azure 虛擬網路（具有 Azure 私用端點的邏輯 SQL server）上建立 VM。 然後，您就可以從 VM 安全地存取 SQL Database。
+在本快速入門中，您將瞭解如何在 Azure 虛擬網路上建立 VM、使用 Azure PowerShell 的 Azure 私人端點建立邏輯 SQL 伺服器。 然後，您就可以從 VM 安全地存取 SQL Database。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-建立資源之前，您必須先建立資源群組，以使用[remove-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)來裝載虛擬網路和私人端點。 下列範例會在*WestUS*位置中建立名為*myResourceGroup*的資源群組：
+建立資源之前，您必須先建立資源群組，以使用 [>new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup)來裝載虛擬網路和私人端點。 下列範例會在*WestUS*位置建立名為*myResourceGroup*的資源群組：
 
 ```azurepowershell
 
@@ -33,11 +33,11 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
-在本節中，您會建立虛擬網路和子網。 接下來，將子閘道聯至您的虛擬網路。
+在本節中，您會建立虛擬網路和子網。 接下來，您要將子閘道聯至您的虛擬網路。
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用[new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)為您的私用端點建立虛擬網路。 下列範例會建立名為*MyVirtualNetwork*的虛擬網路：
+使用 [新的-new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)建立私人端點的虛擬網路。 下列範例會建立名為 *MyVirtualNetwork*的虛擬網路：
  
 ```azurepowershell
 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>新增子網
 
-Azure 會將資源部署到虛擬網路內的子網，因此您必須建立子網。 使用[new-azvirtualnetworksubnetconfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)建立名為*mySubnet*的子網設定。 下列範例會建立名為*mySubnet*的子網，並將 [私人端點網路原則] 旗標設定為 [**停用**]。
+Azure 會將資源部署到虛擬網路內的子網，因此您必須建立子網。 使用[Add->new-azvirtualnetworksubnetconfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)建立名為 *>mysubnet*的子網設定。 下列範例會建立名為 *>mysubnet* 的子網，並將私人端點網路原則旗標設為 **停用**。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -61,11 +61,11 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 ```
 
 > [!CAUTION]
-> 您可以輕鬆地將 `PrivateEndpointNetworkPoliciesFlag` 參數與另一個可用的旗標混淆， `PrivateLinkServiceNetworkPoliciesFlag` 因為它們既是長字，而且具有類似的外觀。  請確定您使用的是正確的一個 `PrivateEndpointNetworkPoliciesFlag` 。
+> 您可以輕鬆地將 `PrivateEndpointNetworkPoliciesFlag` 參數與另一個可用的旗標混淆， `PrivateLinkServiceNetworkPoliciesFlag` 因為它們都是很長的文字，而且外觀類似。  請確定您使用的是正確的 `PrivateEndpointNetworkPoliciesFlag` 。
 
-### <a name="associate-the-subnet-to-the-virtual-network"></a>將子閘道聯至虛擬網路
+### <a name="associate-the-subnet-to-the-virtual-network"></a>將子網與虛擬網路建立關聯
 
-您可以使用[New-azvirtualnetwork 將](/powershell/module/az.network/Set-azVirtualNetwork)子網設定寫入至虛擬網路。 此命令會建立子網路：
+您可以使用 [New-azvirtualnetwork 將](/powershell/module/az.network/Set-azVirtualNetwork)子網設定寫入至虛擬網路。 此命令會建立子網路：
 
 ```azurepowershell
 $virtualNetwork | Set-AzVirtualNetwork
@@ -73,7 +73,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-在虛擬網路中使用[update-azvm](/powershell/module/az.compute/new-azvm)建立 VM。 當您執行下一個命令時，系統會提示您輸入認證。 輸入 VM 的使用者名稱和密碼：
+使用 [新的-new-azvm](/powershell/module/az.compute/new-azvm)在虛擬網路中建立 VM。 當您執行下一個命令時，系統會提示您輸入認證。 輸入 VM 的使用者名稱和密碼：
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -100,7 +100,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ## <a name="create-a-logical-sql-server"></a>建立邏輯 SQL 伺服器 
 
-使用 AzSqlServer 命令建立邏輯 SQL server。 請記住，您的伺服器名稱在整個 Azure 中必須是唯一的，因此請以您自己的唯一值取代括弧中的預留位置值：
+使用 New-AzSqlServer 命令建立邏輯 SQL server。 請記住，您的伺服器名稱在整個 Azure 中必須是唯一的，因此請以您自己的唯一值取代括弧中的預留位置值：
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>建立私人端點
 
-虛擬網路中具有[AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)之伺服器的私用端點： 
+具有 [AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)的虛擬網路中伺服器的私人端點： 
 
 ```azurepowershell
 
@@ -162,7 +162,7 @@ $privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceG
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 
-請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 來傳回 VM 的公用 IP 位址。 這個範例會傳回*myVM* VM 的公用 IP 位址：
+請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 來傳回 VM 的公用 IP 位址。 此範例會傳回 *myVM* VM 的公用 IP 位址：
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -182,10 +182,10 @@ mstsc /v:<publicIpAddress>
 1. 如果出現提示，請選取 [連接]。 
 2. 輸入您在建立 VM 時指定的使用者名稱和密碼。
   > [!NOTE]
-  > 您可能需要選取 [更多選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。 
+  > 您可能需要選取更多選項 > 使用不同的帳戶，以指定您在建立 VM 時所輸入的認證。 
   
-3. 選取 [確定]。 
-4. 您可能會收到憑證警告。 如果如此，請選取 [是]**** 或 [繼續]****。 
+3. 選取 [確定]  。 
+4. 您可能會收到憑證警告。 如果如此，請選取 [是] 或 [繼續]。 
 
 ## <a name="access-sql-database-privately-from-the-vm"></a>從 VM 私人存取 SQL Database
 
@@ -210,17 +210,17 @@ mstsc /v:<publicIpAddress>
     | --- | --- |
     | 伺服器類型 | Database Engine |
     | 伺服器名稱 | myserver.database.windows.net |
-    | 使用者名稱 | 輸入建立期間提供的使用者名稱 |
+    | 使用者名稱 | 輸入在建立期間提供的使用者名稱 |
     | 密碼 | 輸入在建立期間提供的密碼 |
-    | 記住密碼 | Yes |
+    | 記住密碼 | 是 |
     
 5. 選取 [連接]。
-6. 流覽左側功能表中的 [**資料庫**]。 
+6. 從左側功能表流覽 **資料庫** 。 
 7. (選擇性) 從 mydatabase 建立或查詢資訊。
-8. 關閉對*myVM*的遠端桌面連線。 
+8. 關閉 *myVM*的遠端桌面連線。 
 
 ## <a name="clean-up-resources"></a>清除資源 
-當您使用私人端點、SQL Database 和 VM 完成時，請使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)移除資源群組及其擁有的所有資源：
+當您完成使用私人端點、SQL Database 和 VM 時，請使用 [>new-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup) 來移除資源群組及其所有資源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

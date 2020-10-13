@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530692"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式 (Preview) 
@@ -31,11 +31,11 @@ ms.locfileid: "91530692"
 
 在此公開預覽版本中，企業 SSO 外掛程式僅適用于 iOS 裝置，並在特定的 Microsoft 應用程式中散發。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式提供下列優點：
 
-- 在支援 Apple 企業單一登入功能的所有應用程式中，為 Azure AD 帳戶提供 SSO。
+- 在支援 Apple 企業單一 Sign-On 功能的所有應用程式中，為 Azure AD 帳戶提供 SSO。
 - 在 Microsoft Authenticator 中自動傳遞，並可由任何行動裝置管理 (MDM) 解決方案啟用。
 
 ## <a name="requirements"></a>需求
@@ -125,7 +125,7 @@ Microsoft 企業 SSO 外掛程式會將共用認證附加至來自允許應用�
 
 ## <a name="how-the-sso-plug-in-works"></a>SSO 外掛程式的運作方式
 
-Microsoft 企業 SSO 外掛程式依賴 [Apple 的企業單一登入架構](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)。 上架至架構的身分識別提供者可以攔截其網域的網路流量，並增強或變更這些要求的處理方式。 例如，SSO 外掛程式可以顯示額外的 UI，以安全地收集終端使用者認證、要求 MFA，或以無訊息方式提供權杖給應用程式。
+Microsoft 企業 SSO 外掛程式依賴 [Apple 的 Enterprise Single Sign-On framework](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)。 上架至架構的身分識別提供者可以攔截其網域的網路流量，並增強或變更這些要求的處理方式。 例如，SSO 外掛程式可以顯示額外的 UI，以安全地收集終端使用者認證、要求 MFA，或以無訊息方式提供權杖給應用程式。
 
 原生應用程式也可以執行自訂作業，並直接與 SSO 外掛程式進行交談。
 您可以[從 Apple 瞭解此 2019 WWDC 影片](https://developer.apple.com/videos/play/tech-talks/301/)中的單一登入架構

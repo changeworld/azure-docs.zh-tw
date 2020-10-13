@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326047"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 健康情況檢查 (預覽) 解決方案進行環境最佳化
@@ -33,7 +33,7 @@ ms.locfileid: "87326047"
 
 ## <a name="installing-and-configuring-the-solution"></a>安裝和設定方案
 
-此解決方案適用于 Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager 和 Microsoft System Center Operations Manager 1807。 每部管理伺服器上都必須安裝支援的 .NET Framework 4.6.2 版本。
+此解決方案適用于 Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager 和 Microsoft System Center Operations Manager 1807。 每部管理伺服器都必須安裝支援的 .NET Framework 4.6.2 版本。
 
 請使用下列資訊來安裝和設定方案。
 
@@ -82,7 +82,7 @@ Log Analytics 會建立工作負載的管理套件以提供加值服務。 每�
 4. 在 [一般屬性]**** 頁面上，於 [執行身分帳戶類型:]**** 清單中選取 [Windows]****。
 5. 在 [顯示名稱]**** 文字方塊中輸入顯示名稱，在 [說明]**** 方塊中選擇性地輸入說明，然後按 [下一步]****。
 6. 在 [散發安全性]**** 頁面上，選取 [較安全]****。
-7. 按一下 [建立]  。  
+7. 按一下 [建立]。  
 
 您現已建立執行身分帳戶，接下來您必須將其鎖定在管理群組中的管理伺服器，並與預先定義的執行身分設定檔相關聯，如此一來，工作流程才會使用認證來執行。  
 
@@ -90,7 +90,7 @@ Log Analytics 會建立工作負載的管理套件以提供加值服務。 每�
 2. 在 [散發]**** 索引標籤上，按一下 [選取的電腦]**** 方塊的 [新增]****，並新增要做為帳戶散發目標的管理伺服器。  按 [確定]**** 兩次以儲存變更。
 3. 在 [執行身分設定]**** 下，按一下 [設定檔]****。
 4. 搜尋「SCOM 評定設定檔」**。
-5. 設定檔名稱應該是： *Microsoft System Center Operations Manager 健全狀況檢查執行身分設定檔*。
+5. 設定檔名稱應該是： *Microsoft System Center Operations Manager 健全狀況檢查執行為設定檔*。
 6. 以滑鼠右鍵按一下其屬性並更新，然後新增您稍早建立的執行身分帳戶。
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>授與細微權限給執行身分帳戶的 SQL 指令碼
@@ -145,15 +145,15 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>設定健康情況檢查規則
 
-System Center Operations Manager 健全狀況檢查解決方案的管理元件包含名為*Microsoft System Center Operations Manager 執行健康情況檢查規則*的規則。 此規則負責執行健康情況檢查。 若要啟用規則和設定頻率，請使用下列程序。
+System Center Operations Manager 健全狀況檢查解決方案的管理元件包含名為「 *Microsoft System Center Operations Manager 執行健康情況檢查規則*」的規則。 此規則負責執行健康情況檢查。 若要啟用規則和設定頻率，請使用下列程序。
 
-根據預設，Microsoft System Center Operations Manager 執行健全狀況檢查規則已停用。 若要執行健康情況檢查，您必須在管理伺服器上啟用此規則。 使用下列步驟。
+預設會停用 Microsoft System Center Operations Manager 執行健康情況檢查規則。 若要執行健康情況檢查，您必須在管理伺服器上啟用此規則。 使用下列步驟。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>針對特定的管理伺服器啟用此規則
 
-1. 在 Operations Manager Operations 主控台的 [**撰寫**] 工作區中，搜尋 [**規則**] 窗格中的 [ *Microsoft System Center Operations Manager 執行健康情況檢查規則*] 規則。
+1. 在 Operations Manager Operations 主控台的 [**撰寫**] 工作區中，于 [**規則**] 窗格中搜尋*Microsoft System Center Operations Manager 執行健康情況檢查規則*的規則。
 2. 在搜尋結果中，選取包含文字「類型︰管理伺服器」** 的規則。
-3. 在規則上按一下滑鼠右鍵，然後按一下 [**覆寫**]，  >  **針對 [類別：管理伺服器] 的特定物件**。
+3. 以滑鼠右鍵按一下規則，然後按一下 [**覆寫**  >  **下列類別的特定物件：管理伺服器**]。
 4.  在可用的管理伺服器清單中，選取應該執行此規則的管理伺服器。  這應該是您先前所設定，要將執行身分帳戶與其產生關聯的同一個管理伺服器。
 5.  針對 [已啟用]**** 參數值，務必將覆寫值變更為 [True]****。<br><br> ![override parameter](./media/scom-assessment/rule.png)
 
@@ -163,9 +163,9 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 依預設，評定會設為每 10,080 分鐘 (或 7 天) 執行一次。 您可以將值覆寫為最小值 1440 分鐘 (或一天)。 此值代表連續執行評定之間所需的最短時間間隔。 若要覆寫間隔，請使用下列步驟。
 
-1. 在 Operations Manager 主控台的 [**撰寫**] 工作區中，搜尋 [**規則**] 區段中的 [ *Microsoft System Center Operations Manager 執行健康情況檢查規則*] 規則。
+1. 在 Operations Manager 主控台的 [**撰寫**] 工作區中，于 [**規則**] 區段中搜尋*Microsoft System Center Operations Manager 執行健康情況檢查規則*的規則。
 2. 在搜尋結果中，選取包含文字「類型︰管理伺服器」** 的規則。
-3. 在規則上按一下滑鼠右鍵，然後按一下 [覆**寫**  >  **類別的所有物件的規則：管理伺服器**]。
+3. 以滑鼠右鍵按一下規則，然後按一下 [覆**寫**  >  **以下類別的所有物件的規則：管理伺服器**]。
 4. 將 [間隔]**** 參數值變更為您想要的間隔值。 在下列範例中，此值設為 1440 分鐘 (一天)。<br><br> ![interval parameter](./media/scom-assessment/interval.png)<br>  
 
     如果此值設為 1440 分鐘內，則規則會每天執行一次。 在此範例中，此規則會忽略間隔值，且每天執行一次。
@@ -191,7 +191,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 **效能和延展性** - 這個重點區域會顯示建議來協助貴組織的 IT 基礎結構成長、確定您的 IT 環境是否符合目前的效能需求，而且能夠回應不斷變動的基礎結構需求。
 
-**升級、遷移和部署**-這個重點區域會顯示建議，協助您升級、遷移及部署現有基礎結構的 SQL Server。
+**升級、遷移和部署** -這個重點區域會顯示建議，以協助您將 SQL Server 升級、遷移及部署至現有的基礎結構。
 
 **作業和監視** - 這個重點區域會顯示建議來協助您的 IT 作業更加順暢、執行預防性維護並將效能最大化。
 
@@ -262,7 +262,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager 健康情況檢查解決方案常見問題集
 
-*我已將健康情況檢查解決方案新增至我的 Log Analytics 工作區。但是我沒有看到建議。為什麼不呢？* 新增解決方案之後，請使用下列步驟在 Log Analytics 儀表板上檢視建議。  
+*我已將健康情況檢查解決方案新增至我的 Log Analytics 工作區。但我看不到這些建議。為什麼不呢？* 新增解決方案之後，請使用下列步驟在 Log Analytics 儀表板上檢視建議。  
 
 - [設定 System Center Operations Manager 健康情況檢查的執行身分帳戶](#operations-manager-run-as-accounts-for-log-analytics)  
 - [設定 System Center Operations Manager 健康情況檢查規則](#configure-the-health-check-rule)
@@ -270,7 +270,7 @@ System Center Operations Manager 健全狀況檢查解決方案的管理元件�
 
 是否有設定檢查執行頻率的方法？** 是。 請參閱[設定執行頻率](#configure-the-run-frequency)。
 
-*如果我在新增 System Center Operations Manager 健全狀況檢查解決方案之後探索到另一部伺服器，它會被檢查嗎？* 是，在探索之後，便會從那一刻起對它進行檢查，預設是每隔 7 天一次。
+*如果在新增 System Center Operations Manager 健全狀況檢查解決方案之後探索到另一部伺服器，將會檢查它嗎？* 是，在探索之後，便會從那一刻起對它進行檢查，預設是每隔 7 天一次。
 
 *負責收集資料之處理序的名稱為何？* AdvisorAssessment.exe
 
@@ -282,7 +282,7 @@ AdvisorAssessment.exe 程序在哪裡執行？** AdvisorAssessment.exe 會在啟
 
 如何知道是否未通過必要條件？** 如果健康情況檢查已執行，但您沒有看到結果，很可能是健康情況檢查的某些必要條件未通過。 您可以在記錄檔搜尋中執行查詢︰`Operation Solution=SCOMAssessment` 和 `SCOMAssessmentRecommendation FocusArea=Prerequisites`，以查看未通過的必要條件。
 
-*`Failed to connect to the SQL Instance (….).`先決條件失敗中出現訊息。問題是什麼？* 用來收集資料的處理序 AdvisorAssessment.exe 會在管理伺服器的 HealthService 處理序下執行。 在健康情況檢查過程中，此處理序會嘗試連接至 Operations Manager 資料庫所在的 SQL Server。 當防火牆規則封鎖 SQL Server 執行個體的連接時，就會發生此錯誤。
+*有必要的 `Failed to connect to the SQL Instance (….).` 錯誤訊息。問題出在哪裡？* 用來收集資料的處理序 AdvisorAssessment.exe 會在管理伺服器的 HealthService 處理序下執行。 在健康情況檢查過程中，此處理序會嘗試連接至 Operations Manager 資料庫所在的 SQL Server。 當防火牆規則封鎖 SQL Server 執行個體的連接時，就會發生此錯誤。
 
 *收集的資料類型為何？* 透過 Windows PowerShell、SQL 查詢和檔案資訊收集器收集的資料類型如下︰WMI 資料 - 登錄資料 - 事件記錄檔資料 - Operations Manager 資料。
 
@@ -293,7 +293,7 @@ AdvisorAssessment.exe 程序在哪裡執行？** AdvisorAssessment.exe 會在啟
 *是否有忽略建議的方法？* 是，請參閱[忽略建議](#ignore-recommendations)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [搜尋記錄](../log-query/log-query-overview.md)可讓您了解如何分析詳細的 System Center Operations Manager 健康情況檢查資料和建議。
 

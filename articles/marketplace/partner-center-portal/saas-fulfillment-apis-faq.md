@@ -8,10 +8,10 @@ ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606797"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 履行 Api 的相關常見問題
@@ -83,6 +83,6 @@ Azure 使用者可以直接在 SaaS 體驗中或透過 Microsoft 平臺，取消
 
 ![Microsoft 線上商店中的客戶取消訂閱](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Marketplace 計量服務 API](./marketplace-metering-service-apis.md)

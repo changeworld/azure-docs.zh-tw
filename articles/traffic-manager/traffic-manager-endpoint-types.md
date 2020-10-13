@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: duau
 ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401277"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理員端點
@@ -102,7 +102,7 @@ PublicIPAddress 資源是 Azure Resource Manager 資源。 它們不存在於傳
 
 * [如何將流量管理員設定檔的 Azure 端點移至不同的資源群組？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [流量管理員的運作方式](traffic-manager-how-it-works.md)。
 * 了解「流量管理員」的 [端點監視和自動容錯移轉](traffic-manager-monitoring.md)。

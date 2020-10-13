@@ -1,6 +1,6 @@
 ---
 title: Azure 自訂角色-Azure RBAC
-description: 瞭解如何使用 Azure 角色型存取控制（Azure RBAC）來建立 Azure 自訂角色，以對 Azure 資源進行更細緻的存取管理。
+description: 瞭解如何使用 Azure 角色型存取控制來建立 Azure 自訂角色 (Azure RBAC) 以進行 Azure 資源的更細緻存取管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,26 +16,26 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87124148"
 ---
 # <a name="azure-custom-roles"></a>Azure 自訂角色 (機器翻譯)
 
 > [!IMPORTANT]
-> 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+> 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果 [Azure 內建的角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 就像內建角色一樣，您可以在管理群組、訂用帳戶和資源群組範圍中，將自訂角色指派給使用者、群組和服務主體。
 
-您可以在信任相同 Azure AD 目錄的訂用帳戶之間共用自訂角色。 每個目錄有**5000**個自訂角色的限制。 （針對 Azure 德國和 Azure 中國的世紀，限制為2000個自訂角色）。您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。
+自訂角色可以在信任相同 Azure AD 目錄的訂用帳戶之間共用。 每個目錄的自訂角色限制為 **5000** 。  (Azure 德國和 Azure 中國的世紀，限制為2000個自訂角色。您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立 ) 自訂角色。
 
 ## <a name="custom-role-example"></a>自訂角色範例
 
-下圖顯示使用 JSON 格式的 Azure PowerShell 時，自訂角色的顯示樣子。 此自訂角色可用於監視和重新啟動虛擬機器。
+以下顯示使用 JSON 格式 Azure PowerShell 的自訂角色看起來的樣子。 此自訂角色可用於監視和重新啟動虛擬機器。
 
 ```json
 {
@@ -67,7 +67,7 @@ ms.locfileid: "87124148"
 }
 ```
 
-下圖顯示使用 Azure CLI 所顯示的相同自訂角色。
+以下顯示使用 Azure CLI 所顯示的相同自訂角色。
 
 ```json
 [
@@ -113,23 +113,23 @@ ms.locfileid: "87124148"
 
 ## <a name="custom-role-properties"></a>自訂角色屬性
 
-下表描述自訂角色屬性的意義。
+下表說明自訂角色屬性的意義。
 
-| 屬性 | 必要 | 類型 | 說明 |
+| 屬性 | 必要 | 類型 | 描述 |
 | --- | --- | --- | --- |
-| `Name`</br>`roleName` | 是 | 字串 | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
-| `Id`</br>`name` | 是 | 字串 | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
-| `IsCustom`</br>`roleType` | 是 | 字串 | 表示這是否為自訂角色。 `true`針對自訂角色，將設為或 `CustomRole` 。 `false`針對內建角色，將設為或 `BuiltInRole` 。 |
-| `Description`</br>`description` | 是 | 字串 | 自訂角色的描述。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 1024。 |
+| `Name`</br>`roleName` | 是 | String | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
+| `Id`</br>`name` | 是 | String | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
+| `IsCustom`</br>`roleType` | 是 | String | 表示這是否為自訂角色。 `true` `CustomRole` 針對自訂角色設定為或。 `false` `BuiltInRole` 針對內建角色設定為或。 |
+| `Description`</br>`description` | 是 | String | 自訂角色的描述。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 1024。 |
 | `Actions`</br>`actions` | 是 | String[] | 字串陣列，指定角色允許執行的管理作業。 如需詳細資訊，請參閱 [Actions](role-definitions.md#actions)。 |
 | `NotActions`</br>`notActions` | 否 | String[] | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 如需詳細資訊，請參閱 [NotActions](role-definitions.md#notactions)。 |
-| `DataActions`</br>`dataActions` | 否 | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用建立自訂角色 `DataActions` ，該角色就無法在管理群組範圍中指派。 如需詳細資訊，請參閱[DataActions](role-definitions.md#dataactions)。 |
-| `NotDataActions`</br>`notDataActions` | 否 | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱[NotDataActions](role-definitions.md#notdataactions)。 |
-| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+| `DataActions`</br>`dataActions` | 否 | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用建立自訂角色 `DataActions` ，則無法在管理群組範圍指派該角色。 如需詳細資訊，請參閱 [DataActions](role-definitions.md#dataactions)。 |
+| `NotDataActions`</br>`notDataActions` | 否 | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱 [NotDataActions](role-definitions.md#notdataactions)。 |
+| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
 
 ## <a name="wildcard-permissions"></a>萬用字元許可權
 
-`Actions`、 `NotActions` 、 `DataActions` 和 `NotDataActions` 支援萬用字元（ `*` ）來定義許可權。 萬用字元（ `*` ）會將許可權延伸到符合您所提供之動作字串的所有專案。 例如，假設您想要加入與 Azure 成本管理和匯出相關的擁有權限。 您可以新增所有這些動作字串：
+`Actions`、 `NotActions` 、 `DataActions` 和 `NotDataActions` 支援萬用字元 (`*`) 來定義許可權。 萬用字元 () 會將 `*` 許可權延伸到符合您提供之動作字串的所有專案。 例如，假設您想要加入與 Azure 成本管理和匯出相關的擁有權限。 您可以加入所有這些動作字串：
 
 ```
 Microsoft.CostManagement/exports/action
@@ -139,13 +139,13 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-您可以直接加入萬用字元字串，而不是新增所有這些字串。 例如，下列萬用字元字串相當於前五個字串。 這也包括未來可能會新增的任何匯出許可權。
+您可以只新增萬用字元字串，而不是加入所有這些字串。 例如，下列萬用字元字串相當於前五個字串。 這也包含任何未來可能新增的匯出許可權。
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-您也可以在字串中有多個萬用字元。 例如，下列字串代表成本管理的所有查詢許可權。
+您也可以在字串中使用多個萬用字元。 例如，下列字串代表成本管理的所有查詢許可權。
 
 ```
 Microsoft.CostManagement/*/query/*
@@ -159,13 +159,13 @@ Microsoft.CostManagement/*/query/*
 
     您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。
 
-1. 決定您需要的許可權。
+1. 判斷您需要的許可權。
 
-    當您建立自訂角色時，您必須知道可用來定義許可權的作業。 若要查看作業清單，請參閱[Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。 您會將作業新增至 `Actions` `NotActions` [角色定義](role-definitions.md)的或屬性。 如果您有資料作業，則會將其加入至 `DataActions` 或 `NotDataActions` 屬性。
+    當您建立自訂角色時，您需要知道可用來定義許可權的作業。 若要查看作業的清單，請參閱 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。 您會將作業加入至 `Actions` `NotActions` [角色定義](role-definitions.md)的或屬性。 如果您有資料作業，您會將它們加入至 `DataActions` 或 `NotDataActions` 屬性。
 
 1. 建立自訂角色。
 
-    一般而言，您可以從使用現有的內建角色開始，然後針對您的需求進行修改。 最簡單的方式是使用 Azure 入口網站。 如需如何使用 Azure 入口網站建立自訂角色的步驟，請參閱[使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md)。
+    一般而言，您可以從使用現有的內建角色開始，然後針對您的需求進行修改。 最簡單的方式是使用 Azure 入口網站。 如需有關如何使用 Azure 入口網站建立自訂角色的步驟，請參閱 [使用 Azure 入口網站建立或更新 Azure 自訂角色](custom-roles-portal.md)。
 
 1. 測試自訂角色。
 
@@ -175,28 +175,28 @@ Microsoft.CostManagement/*/query/*
 
 就像內建角色一樣，`AssignableScopes` 屬性會指定角色可用於指派的範圍。 自訂角色的 `AssignableScopes` 屬性也會控制誰可以建立、刪除、更新或檢視自訂角色。
 
-| 工作 | 作業 | 描述 |
+| Task | 作業 | 描述 |
 | --- | --- | --- |
-| 建立/刪除自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以建立 (或刪除) 用於這些範圍的自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
-| 更新自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以在這些範圍中更新自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
+| 建立/刪除自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以建立 (或刪除) 用於這些範圍的自訂角色。 例如，管理群組、訂用帳戶和資源群組的 [擁有](built-in-roles.md#owner) 者和 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 。 |
+| 更新自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以在這些範圍中更新自訂角色。 例如，管理群組、訂用帳戶和資源群組的 [擁有](built-in-roles.md#owner) 者和 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 。 |
 | 檢視自訂角色 | `Microsoft.Authorization/ roleDefinitions/read` | 獲得授權可在範圍中執行此作業的使用者，可以檢視可指派給該範圍的自訂角色。 所有內建角色都允許自訂角色以供指派。 |
 
 ## <a name="custom-role-limits"></a>自訂角色限制
 
-下列清單描述自訂角色的限制。
+下列清單說明自訂角色的限制。
 
-- 每個目錄最多可以有**5000**個自訂角色。
-- Azure 德國和 Azure 中國世紀每個目錄最多可以有2000個自訂角色。
-- 您無法將設定 `AssignableScopes` 為根範圍（ `"/"` ）。
-- 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
+- 每個目錄最多可有 **5000** 個自訂角色。
+- Azure 德國和 Azure 中國世紀最多可為每個目錄擁有2000個自訂角色。
+- 您無法 `AssignableScopes` () 設定為根範圍 `"/"` 。
+- 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至的 `AssignableScopes` 功能目前為預覽狀態。
 - `DataActions`無法在管理群組範圍指派具有的自訂角色。
-- Azure Resource Manager 不會驗證管理群組是否存在於角色定義的可指派範圍中。
+- Azure Resource Manager 不會驗證管理群組是否存在角色定義的可指派範圍中。
 
-如需有關自訂角色和管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
+如需自訂角色和管理群組的詳細資訊，請參閱 [使用 Azure 管理群組來組織您的資源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="input-and-output-formats"></a>輸入和輸出格式
 
-若要使用命令列建立自訂角色，您通常會使用 JSON 來指定您想要用於自訂角色的屬性。 視您使用的工具而定，輸入和輸出格式看起來會稍有不同。 本節列出根據工具的輸入和輸出格式。
+若要使用命令列建立自訂角色，您通常會使用 JSON 來指定您要用於自訂角色的屬性。 視您使用的工具而定，輸入和輸出格式看起來會稍有不同。 此區段會根據工具列出輸入和輸出格式。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -214,7 +214,7 @@ Microsoft.CostManagement/*/query/*
 }
 ```
 
-若要使用 Azure PowerShell 更新自訂角色，您必須提供下列輸入。 請注意，已 `Id` 新增屬性。 
+若要使用 Azure PowerShell 更新自訂角色，您必須提供下列輸入。 請注意，已 `Id` 加入屬性。 
 
 ```json
 {
@@ -229,7 +229,7 @@ Microsoft.CostManagement/*/query/*
 }
 ```
 
-以下顯示當您使用 Azure PowerShell 和[convertto-html-Json](/powershell/module/microsoft.powershell.utility/convertto-json)命令列出自訂角色時的輸出範例。 
+以下顯示當您使用 Azure PowerShell 和 [ConvertTo-Json](/powershell/module/microsoft.powershell.utility/convertto-json) 命令列出自訂角色時的輸出範例。 
 
 ```json
 {
@@ -261,7 +261,7 @@ Microsoft.CostManagement/*/query/*
 }
 ```
 
-以下顯示使用 Azure CLI 列出自訂角色時的輸出範例。
+以下顯示當您使用 Azure CLI 列出自訂角色時的輸出範例。
 
 ```json
 [
@@ -307,7 +307,7 @@ Microsoft.CostManagement/*/query/*
 }
 ```
 
-以下顯示使用 REST API 列出自訂角色時的輸出範例。
+以下顯示當您使用 REST API 列出自訂角色時的輸出範例。
 
 ```json
 {
@@ -335,7 +335,7 @@ Microsoft.CostManagement/*/query/*
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
 - [教學課程：使用 Azure CLI 建立 Azure 自訂角色](tutorial-custom-role-cli.md)

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397299"
 ---
 # <a name="live-event-types-comparison"></a>實況活動類型比較
@@ -130,6 +130,6 @@ ms.locfileid: "89397299"
 
 即時編碼器設定為接受預設值中的位元速率設定，而不考慮貢獻摘要的位元速率。 因此，輸出層的位元速率可能會超過投稿摘要的位元速率。 例如，如果您以720p （1 Mbps）的解析度傳送投稿摘要，輸出層將維持與上 [表](live-event-types-comparison.md#output-video-streams-for-default720p) 相同。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [即時串流概觀](live-streaming-overview.md)

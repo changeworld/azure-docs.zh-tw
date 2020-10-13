@@ -12,22 +12,22 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84295417"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可以在 Active Directory B2C 中使用的應用程式類型
 
-Azure Active Directory B2C （Azure AD B2C）支援各種新式應用程式架構的驗證。 全部都以業界標準通訊協定 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 為基礎。 本文描述您可以建立的應用程式類型，與您慣用的語言或平臺無關。 在您開始建置應用程式之前，也可協助您先了解一些高階案例。
+Azure Active Directory B2C (Azure AD B2C) 支援各種新式應用程式架構的驗證。 全部都以業界標準通訊協定 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 為基礎。 本文說明您可以建立的應用程式類型，與您偏好的語言或平臺無關。 在您開始建置應用程式之前，也可協助您先了解一些高階案例。
 
 每個使用 Azure AD B2C 的應用程式都必須使用 [Azure 入口網站](https://portal.azure.com/)，在 [Azure AD B2C 租用戶](tutorial-create-tenant.md)中註冊。 應用程式註冊程序會收集和指派值，例如：
 
 * 可唯一識別應用程式的**應用程式識別碼**。
 * 可用來將回應導回應用程式的**回覆 URL**。
 
-傳送至 Azure AD B2C 的每個要求會指定**使用者流程**（內建原則），或控制 Azure AD B2C 行為的**自訂原則**。 這兩種原則類型可讓您建立一組高度可自訂的使用者體驗。
+每個傳送至 Azure AD B2C 的要求都會 (內建原則來指定 **使用者流程**) 或控制 Azure AD B2C 行為的 **自訂原則** 。 這兩種原則類型都可讓您建立可高度自訂的使用者體驗組合。
 
 每個應用程式的互動都遵循類似的高階模式：
 
@@ -99,7 +99,7 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 6. 系統會將 `access_token` 和 `refresh_token` 傳回給 Web 伺服器。
 7. 使用授權標頭中的 `access_token` 可呼叫 Web API。
 8. Web API 會驗證此權杖。
-9. 將資料安全地傳回給 web 應用程式。
+9. 安全的資料會傳回至 web 應用程式。
 
 若要深入了解授權碼、重新整理權杖和取得權杖的步驟，請參閱 [OAuth 2.0 通訊協定](authorization-code-flow.md)。
 
@@ -119,15 +119,15 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 如果應用程式含有長時間執行的處理序或不需要使用者操作，也仍然需要有存取受保護資源的方法，例如 Web API。 這些應用程式可以使用應用程式的身分識別 (而非使用者的委派身分識別)，以及使用 OAuth 2.0 用戶端認證流程，以驗證及取得權杖。 用戶端認證流程與代理流程不同，代理流程不應用於伺服器對伺服器的驗證。
 
-雖然 Azure AD B2C authentication 服務目前不直接支援 OAuth 2.0 用戶端認證授與流程，但您可以使用 Azure AD B2C 租使用者中應用程式的 Azure AD 和 Microsoft 身分識別平臺/token 端點來設定用戶端認證流程。 Azure AD B2C 租用戶會與 Azure AD 企業租用戶共用某些功能。
+雖然 Azure AD B2C authentication 服務目前不直接支援 OAuth 2.0 用戶端認證授與流程，但是您可以在 Azure AD B2C 租使用者中，使用 Azure AD 和應用程式的 Microsoft 身分識別平臺/token 端點來設定用戶端認證流程。 Azure AD B2C 租用戶會與 Azure AD 企業租用戶共用某些功能。
 
 若要設定用戶端認證流程，請參閱 [Azure Active Directory v2.0 和 OAuth 2.0 用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)。 成功驗證後會收到已格式化的權杖，如此就可供 Azure AD 使用，如 [Azure AD 權杖參考](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)中所述。
 
-如需註冊管理應用程式的指示，請參閱[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
+如需註冊管理應用程式的指示，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 鏈結 (代理者流程)
 
-許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。 這種情況在具有 Web API 後端的原生用戶端，以及呼叫 Microsoft 線上服務（例如 Microsoft Graph API）時很常見。
+許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。 此案例常見於具有 Web API 後端的原生用戶端，並會呼叫 Microsoft 線上服務，例如 Microsoft Graph API。
 
 使用 OAuth 2.0 JWT 持有人認證授與可支援此鏈結的 Web API 案例，亦稱為代理者流程。  不過，Azure AD B2C 目前未實作代理者流程。
 
@@ -142,6 +142,6 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 若要刪除應用程式，請移至[應用程式註冊入口網站](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)並在此刪除應用程式。 為了讓應用程式得以顯示，您必須是應用程式的擁有者 (而不只是租用戶的系統管理員)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-請[在 Azure Active Directory B2C 中深入瞭解使用者流程](user-flow-overview.md)所提供的內建原則。
+[深入瞭解使用者流程在 Azure Active Directory B2C 中](user-flow-overview.md)提供的內建原則。

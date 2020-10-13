@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645750"
 ---
 # <a name="data-encryption-models"></a>資料加密模型
@@ -60,7 +60,7 @@ Azure 中支援的加密模型會分割成兩個主要群組：如先前所述�
 
 用戶端加密模型是指由服務或呼叫應用程式在資源提供者或 Azure 外部執行的加密。 加密可由 Azure 中的服務應用程式或客戶資料中心內執行的應用程式執行。 在任一案例中，利用此加密模型時，Azure 資源提供者無需以任何方式解密的能力或具有加密金鑰的存取權，即可接收加密的 blob 資料。 在此模型中，金鑰管理是由呼叫服務/應用程式所完成，且對 Azure 服務不透明。
 
-![Client](./media/encryption-models/azure-security-encryption-atrest-fig2.png)
+![用戶端](./media/encryption-models/azure-security-encryption-atrest-fig2.png)
 
 ## <a name="server-side-encryption-using-service-managed-keys"></a>使用服務管理金鑰的伺服器端加密
 
@@ -143,14 +143,14 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 ## <a name="supporting-services"></a>支援服務
 支援每個加密模型的 Azure 服務：
 
-| 產品、功能或服務 | 使用服務管理金鑰的伺服器端   | 使用客戶管理金鑰的伺服器端 | 用戶端使用用戶端管理的金鑰  |
+| 產品、功能或服務 | 使用服務管理金鑰的伺服器端   | 使用 Customer-Managed 機碼 Server-Side | 使用 Client-Managed 機碼 Client-Side  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI 與機器學習**      |                    |                    |                    |
 | Azue 認知搜尋           | 是                | 是                | -                  |
 | Azure 認知服務         | 是                | 是                | -                  |
 | Azure Machine Learning           | 是                | 是                | -                  |
 | Azure Machine Learning Studio    | 是                | 預覽，RSA 2048 位元 | -               |
-| 內容仲裁者                | 是                | 是                | -                  |
+| 內容仲裁                | 是                | 是                | -                  |
 | 臉部                             | 是                | 是                | -                  |
 | Language Understanding           | 是                | 是                | -                  |
 | 個人化工具                     | 是                | 是                | -                  |
@@ -240,9 +240,9 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 
 \* 此服務不會保存資料。 暫時性快取（如果有的話）會以 Microsoft 金鑰加密。
 
-\*\* 這項服務支援將資料儲存在您自己的 Key Vault、儲存體帳戶，或其他已支援客戶管理金鑰的伺服器端加密的資料保存服務中。
+\*\* 這項服務支援將資料儲存在您自己的 Key Vault、儲存體帳戶，或其他已支援 Customer-Managed 金鑰 Server-Side 加密的資料保存服務中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [在 Azure 中使用加密](encryption-overview.md)。
 - 瞭解 Azure 如何使用 [雙重加密](double-encryption.md) 來減輕加密資料所帶來的威脅。

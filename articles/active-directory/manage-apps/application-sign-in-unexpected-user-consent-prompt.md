@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9559e22a8396de93bbe46f20b76855d9ff00f753
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763715"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>登入應用程式時看到非預期的同意提示
@@ -33,7 +33,7 @@ ms.locfileid: "84763715"
 
 還有其他提示預期會在各種案例中發生：
 
-* 應用程式所需的許可權集已變更。
+* 應用程式所需的許可權集合已變更。
 
 * 原本同意應用程式的使用者不是系統管理員，且現在有不同的使用者 (非系統管理員) 正首次使用應用程式。
 
@@ -45,7 +45,7 @@ ms.locfileid: "84763715"
 
 * 開發人員已設定應用程式在每次使用時都需要同意提示 (注意：這不是最佳做法)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 -   [Azure Active Directory 中的應用程式、權限及同意 (v1.0 端點)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 

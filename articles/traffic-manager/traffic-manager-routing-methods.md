@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401651"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理員路由傳送方法
@@ -177,7 +177,7 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 * [如果「子網路」路由類型設定檔中已停用端點，則會發生什麼事？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用[流量管理員端點監視](traffic-manager-monitoring.md)來開發高可用性應用程式
 

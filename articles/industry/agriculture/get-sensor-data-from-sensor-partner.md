@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88649154"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器夥伴取得感應器資料
@@ -191,6 +191,6 @@ FarmBeats 目前支援下列裝置：
 
     ![刪除按鈕](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您現在已將感應器資料流程入您的 Azure FarmBeats 實例。 現在，瞭解如何為您的伺服器陣列 [產生對應](generate-maps-in-azure-farmbeats.md#generate-maps) 。

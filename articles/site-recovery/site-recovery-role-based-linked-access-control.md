@@ -7,17 +7,17 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927159"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用角色型存取控制 (RBAC) 管理 Site Recovery 存取
 
-Azure 角色型存取控制 (Azure RBAC) 可為 Azure 提供更細緻的存取權管理。 您可以使用 RBAC 劃分小組責任，並只將特定存取權限授與需要執行特定工作的使用者。
+Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 您可以使用 RBAC 劃分小組責任，並只將特定存取權限授與需要執行特定工作的使用者。
 
-Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作業。 深入瞭解[Azure 內建角色](../role-based-access-control/built-in-roles.md)
+Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作業。 深入瞭解 [Azure 內建角色](../role-based-access-control/built-in-roles.md)
 
 * [Site Recovery 參與者](../role-based-access-control/built-in-roles.md#site-recovery-contributor)：此角色具有在復原服務保存庫中管理 Azure Site Recovery 作業所需的所有權限。 不過，具有此角色的使用者無法建立或刪除復原服務保存庫，也無法為其他使用者指派存取權限。 此角色最適合災害復原系統管理員，他們可以為應用程式或整個組織 (視情況而定) 啟用和管理災害復原。
 * [Site Recovery 操作員](../role-based-access-control/built-in-roles.md#site-recovery-operator) - 此角色具有執行和管理容錯移轉和容錯回復作業的權限。 具有此角色的使用者無法啟用或停用複寫、建立或刪除保存庫、註冊新的基礎結構，也無法為其他使用者指派存取權限。 此角色最適合災害復原操作員，當應用程式擁有者和 IT 系統管理員在實際或模擬災害情況 (例如災害復原演習) 中指示時，操作員可以對虛擬機器或應用程式進行容錯移轉。 災害解決後，災害復原操作員可以重新保護和容錯回復虛擬機器。
@@ -39,7 +39,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 >確定為每個用於部署資源的部署模型 (Resource Manager/傳統) 新增相關的權限。
 
 > [!NOTE]
-> 如果您要啟用 Azure VM 的複寫，而且想要允許 Site Recovery 來管理更新，則在啟用複寫時，您可能也會想要建立新的自動化帳戶，在此情況下，您也需要在與保存庫相同的訂用帳戶中建立自動化帳戶的許可權。
+> 如果您要啟用 Azure VM 的複寫，並且想要允許 Site Recovery 管理更新，則在啟用複寫時，您可能也會想要建立新的自動化帳戶，在此情況下，您也需要在與保存庫相同的訂用帳戶中建立自動化帳戶的許可權。
 
 | **資源類型** | **部署模型** | **權限** |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 請考慮分別為 Resource Manager 與傳統部署模型使用「虛擬機器參與者」與「傳統虛擬機器參與者」[內建角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
+* [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
 * 了解如何使用下列各項管理存取權：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

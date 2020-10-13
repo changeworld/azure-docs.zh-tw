@@ -1,22 +1,22 @@
 ---
 title: 本機快取
-description: 瞭解本機快取在 Azure App Service 中的運作方式，以及如何啟用、調整大小，以及查詢應用程式本機快取的狀態。
+description: 瞭解本機快取在 Azure App Service 中的運作方式，以及如何啟用、調整大小和查詢應用程式本機快取的狀態。
 tags: optional
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080706"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service 本機快取概觀
 
 > [!NOTE]
-> 函數應用程式或容器化 App Service 應用程式中不支援本機快取，例如在[Windows 容器](quickstart-custom-container.md?pivots=container-windows)或[Linux 上的 App Service](overview.md#app-service-on-linux)上。
+> 函數應用程式或容器化 App Service 應用程式不支援本機快取，例如在 [Windows 容器](quickstart-custom-container.md?pivots=container-windows) 或 [Linux 上的 App Service](overview.md#app-service-on-linux)上。
 
 
 Azure App Service 內容會儲存在 Azure 儲存體上，並以持久的方式呈現為內容共用。 這項設計的目的是為了要與各種應用程式搭配使用，而且其具有下列特性︰  
@@ -24,7 +24,7 @@ Azure App Service 內容會儲存在 Azure 儲存體上，並以持久的方式�
 * 內容會由應用程式的多個虛擬機器 (VM) 執行個體共用。
 * 內容具有持久性，且可透過執行應用程式來修改。
 * 記錄檔和診斷資料檔案會在相同的共用內容資料夾底下提供使用。
-* 發佈新內容時會直接更新內容資料夾。 您可以透過 SCM 網站和執行中的應用程式立即查看相同的內容 (通常某些技術（例如 ASP.NET）會在某些檔案變更時起始應用程式重新開機，以取得最新的內容) 。
+* 發佈新內容時會直接更新內容資料夾。 您可以透過 SCM 網站和執行中的應用程式來立即觀看相同的內容 (一般而言，ASP.NET 之類的某些技術會在某些檔案變更時起始應用程式重新開機，以取得最新內容) 。
 
 雖然許多應用程式會使用上述其中一項功能或所有功能，但某些應用程式只需要可從中執行的內容存放區，而且此存放區具備高效能、唯讀和高可用性。 這些應用程式可以受益於特定本機快取的 VM 執行個體。
 
@@ -35,8 +35,8 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 * 應用程式比較不會因為儲存體共用變更而重新啟動。
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本機快取對 App Service 的行為所造成的影響
-* _D:\home_ 會指向應用程式啟動時，在 VM 執行個體上建立的本機快取。 _D:\local_會繼續指向暫存 VM 特定的儲存體。
-* 本機快取中包含共用內容存放區上 _/site_ 和 _/siteextensions_ 資料夾的一次性副本，分別位在 _D:\home\site_ 和 _D:\home\siteextensions_。 當應用程式啟動時，檔案會複製到本機快取。 根據預設，每個應用程式的兩個資料夾大小限制為 1 GB，但可以增加至 2 GB。 請注意，隨著快取大小的增加，載入快取需要較長的時間。 如果您已將本機快取限制增加為 2 GB，且複製的檔案超過 2 GB 的大小上限，App Service 會以無訊息方式忽略本機快取，並從遠端檔案共用讀取。 如果未定義任何限制，或將限制設定為低於 2 GB 的任何值，且複製的檔案超過限制，則部署或交換可能會失敗併發生錯誤。
+* _D:\home_ 會指向應用程式啟動時，在 VM 執行個體上建立的本機快取。 _D:\local_ 會繼續指向暫存 VM 的特定儲存體。
+* 本機快取中包含共用內容存放區上 _/site_ 和 _/siteextensions_ 資料夾的一次性副本，分別位在 _D:\home\site_ 和 _D:\home\siteextensions_。 當應用程式啟動時，檔案會複製到本機快取。 根據預設，每個應用程式的兩個資料夾大小受限於 1 GB，但可以增加至 2 GB。 請注意，當快取大小增加時，載入快取需要較長的時間。 如果您已將本機快取限制增加為 2 GB，而且複製的檔案超過 2 GB 的大小上限，App Service 以無訊息方式忽略本機快取，並從遠端檔案共用讀取。 如果未定義任何限制，或將限制設定為小於 2 GB 的值，而且複製的檔案超過限制，則部署或交換可能會失敗並出現錯誤。
 * 本機快取具有讀寫屬性。 不過，當應用程式移動虛擬機器或重新啟動時，將會捨棄任何修改。 因此，請勿針對會在內容存放區中儲存關鍵任務資料的應用程式使用本機快取。
 * _D:\home\LogFiles_ 和 _D:\home\Data_ 中包含記錄檔和應用程式資料。 這兩個子資料夾會儲存在本機上的 VM 執行個體中，並定期複製到共用內容存放區。 應用程式可以藉由將記錄檔和資料寫入這些資料夾來加以保存。 不過，複製到共用內容存放區已是最佳方式，記錄檔和資料還是可能會因為 VM 執行個體突然當機而遺失。
 * [記錄串流](troubleshoot-diagnostic-logs.md#stream-logs)會受到此最佳複製方式的影響。 您可能會看到串流處理的記錄中有最多一分鐘的延遲。
@@ -83,7 +83,7 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>變更本機快取中的大小設定
-根據預設，本機快取大小為**1 GB**。 此大小包括複製自內容存放區的 /site 和 /siteextensions 資料夾，以及任何在本機建立之記錄和資料的資料夾。 若要增加此限制，請使用應用程式設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 每個應用程式的大小最多可以增加為 **2 GB** (2000 MB)。 請注意，當大小增加時，載入本機快取需要較長的時間。
+依預設，本機快取大小為 **1 GB**。 此大小包括複製自內容存放區的 /site 和 /siteextensions 資料夾，以及任何在本機建立之記錄和資料的資料夾。 若要增加此限制，請使用應用程式設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`。 每個應用程式的大小最多可以增加為 **2 GB** (2000 MB)。 請注意，載入本機快取需要較長的時間，因為大小會增加。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用 App Service 本機快取的最佳作法
 建議您搭配 [預備環境](../app-service/deploy-staging-slots.md) 功能使用本機快取。
@@ -106,7 +106,7 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 如果您的應用程式使用「本機快取」，則您需要重新啟動您的網站，以取得最新的變更。 不想對生產網站發佈變更嗎？ 請參閱前面的最佳作法一節中的位置選項。
 
 > [!NOTE]
-> [[從封裝執行](deploy-run-package.md)] 部署選項與本機快取不相容。
+> [ [從封裝執行](deploy-run-package.md) ] 部署選項與本機快取不相容。
 
 ### <a name="where-are-my-logs"></a>我的記錄在哪裡？
 使用本機快取，您的記錄和資料的資料夾看起來會有點不同。 不過，子資料夾的結構會保持相同，不同之處在於這些子資料夾會位在格式為「唯一 VM 識別碼」+ 時間戳記的子資料夾底下。

@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327356"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 開發 Java Service Fabric 應用程式
@@ -22,7 +22,7 @@ ms.locfileid: "87327356"
 > [!IMPORTANT]
 > Service Fabric Java 應用程式可以在 Windows 機器上開發，但是只能部署到 Azure Linux 叢集上。 不支援在 Windows 上針對 Java 應用程式進行偵錯。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已安裝 VS Code、適用於 VS Code 的 Service Fabric Reliable Services 擴充功能，和開發環境所需的任何相依性。 若要深入了解，請參閱[使用者入門](./service-fabric-get-started-vs-code.md#prerequisites)。
 
@@ -121,6 +121,6 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
        
 5. 當您完成偵錯時，您可以使用 **Service Fabric: Remove Application** 命令，從您的本機叢集內移除投票應用程式。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 了解如何[使用 VS Code 開發 C# Service Fabric 應用程式及進行偵錯](./service-fabric-develop-csharp-applications-with-vs-code.md)。

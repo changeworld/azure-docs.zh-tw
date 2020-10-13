@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605259"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 的計價模式
@@ -50,7 +50,7 @@ Azure Cosmos DB [保留容量](cosmos-db-reserved-capacity.md) 可協助您透�
 
 保留容量提供帳單折扣，而且不會影響 Azure Cosmos DB 資源的執行階段狀態。 保留容量持續適用於所有 API，包括 MongoDB、Cassandra、SQL、Gremlin 和 Azure 資料表與全世界所有區域。 您可以在[預付 Azure Cosmos DB 資源與保留容量](cosmos-db-reserved-capacity.md)一文中深入了解保留容量，並且從 [Azure 入口網站](https://portal.azure.com/)購買保留容量。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您可以在下列文章中深入了解最佳化 Azure Cosmos DB 資源的成本：
 
