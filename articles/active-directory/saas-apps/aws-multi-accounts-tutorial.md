@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教學課程： Azure Active Directory 與 Amazon Web Services (AWS)  (舊版教學課程) 
@@ -116,7 +116,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 4. 在 [ **基本 SAML** 設定] 區段上，使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合，然後按一下 [ **儲存**]。
 
-5. Amazon Web Services (AWS) 應用程式會預期要有特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性與宣告] 區段中管理這些屬性的值。 在 [ **以 SAML 設定單一登入** ] 頁面上，按一下 [ **編輯** ] 按鈕，以開啟 [ **使用者屬性 & 宣告** ] 對話方塊。
+5. Amazon Web Services (AWS) 應用程式會預期要有特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性與宣告] 區段中管理這些屬性的值。 在 [ **以 SAML 設定單一 Sign-On** ] 頁面上，按一下 [ **編輯** ] 按鈕，以開啟 [宣告] 對話方塊中的 [ **使用者 & 屬性** ]。
 
     ![螢幕擷取畫面顯示已呼叫編輯控制項的使用者屬性。](common/edit-attribute.png)
 

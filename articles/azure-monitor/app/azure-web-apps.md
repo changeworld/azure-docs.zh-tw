@@ -4,12 +4,12 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759453"
+ms.locfileid: "91875598"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -75,7 +75,7 @@ ms.locfileid: "91759453"
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-支援下列 .NET Core 版本： ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3。0
+支援下列 .NET Core 版本： ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0、ASP.NET Core 3。1
 
 以代理程式/延伸模組為基礎的監視目前 **不支援** 以 .net Core 的完整架構、獨立式部署和 Linux 應用程式為目標。 透過程式碼 ([手動檢測](./asp-net-core.md) 可在先前的所有案例中運作。 ) 
 
@@ -90,7 +90,7 @@ ms.locfileid: "91759453"
 
      ![檢測 Web 應用程式](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用的資源之後，您可以選擇要如何 Application Insights 為您的應用程式收集每個平臺的資料。 .NET Core 為 .NET Core 2.0、2.1、2.2 和3.0 提供 **建議的收集** 或 **停用** 。
+2. 指定要使用的資源之後，您可以選擇要如何 Application Insights 為您的應用程式收集每個平臺的資料。 針對 ASP.NET Core 2.1、2.2、3.0 和3.1，.NET Core 提供 **建議的收集** 或 **停用** 。
 
     ![選擇每個平台的選項](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -359,8 +359,8 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
     ![[結果] 頁面的螢幕擷取畫面 https://yoursitename.scm.azurewebsites/applicationinsights](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * 確認 `Application Insights Extension Status` 是 `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * 如果未執行，請遵循 [啟用 Application Insights 監視指示](#enable-application-insights)
+    * 確認 `Application Insights Extension Status` 是 `Pre-Installed Site Extension, version 2.8.12.1527, is running.` 
+    * 如果未執行，請遵循 [啟用 Application Insights 監視指示](#enable-application-insights)
 
     * 確認狀態來源存在，看起來像這樣： `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * 如果有類似的值，則表示應用程式目前不在執行中或不受支援。 若要確保應用程式正在執行，請嘗試手動造訪應用程式 url/應用程式端點，這會讓執行時間資訊變成可用。
@@ -406,6 +406,10 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 ### <a name="connection-string-and-instrumentation-key"></a>連接字串和檢測金鑰
 
 使用無程式碼監視時，只需要連接字串。 不過，我們仍然建議您在執行手動檢測時，設定檢測金鑰，以保持與舊版 SDK 的回溯相容性。
+
+## <a name="release-notes"></a>版本資訊
+
+如需最新的更新和錯誤修正， [請參閱版本](./web-app-extension-release-notes.md)資訊。
 
 ## <a name="next-steps"></a>後續步驟
 * [在即時應用程式上執行分析工具](./profiler.md)。

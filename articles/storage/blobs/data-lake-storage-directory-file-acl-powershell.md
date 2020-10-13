@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713402"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
@@ -400,16 +400,16 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 如何對應至 Data Lake Storage Gen2 的 Cmdlet。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 備註 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
 |--------|---------|-----|
-|AzDataLakeStoreChildItem|AzDataLakeGen2ChildItem|根據預設，AzDataLakeGen2ChildItem 指令程式只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
-|AzDataLakeStoreItem<br>AzDataLakeStoreItemAclEntry<br>AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission|AzDataLakeGen2Item|AzDataLakeGen2Item 指令程式的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|
-|AzDataLakeStoreItemContent|AzDataLakeGen2FileContent|AzDataLakeGen2FileContent 指令檔會將檔案內容下載至本機檔案。|
-|移動-AzDataLakeStoreItem|移動-AzDataLakeGen2Item||
-|新 AzDataLakeStoreItem|新 AzDataLakeGen2Item|此 Cmdlet 會從本機檔案上傳新的檔案內容。|
-|移除-AzDataLakeStoreItem|移除-AzDataLakeGen2Item||
-|設定-AzDataLakeStoreItemOwner<br>設定-AzDataLakeStoreItemPermission<br>設定-AzDataLakeStoreItemAcl|更新-AzDataLakeGen2Item|AzDataLakeGen2Item 指令程式只會更新單一專案，而不會以遞迴方式更新。 如果想要以遞迴方式更新，請使用 AzDataLakeStoreChildItem 指令程式來列出專案，然後再使用 AzDataLakeGen2Item 指令程式的管線。|
-|測試-AzDataLakeStoreItem|AzDataLakeGen2Item|如果專案不存在，AzDataLakeGen2Item 指令程式將會報告錯誤。|
+|Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|根據預設，Get-AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
+|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item Cmdlet 的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|
+|Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Get-AzDataLakeGen2FileContent Cmdlet 會將檔案內容下載至本機檔案。|
+|Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
+|New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|此 Cmdlet 會從本機檔案上傳新的檔案內容。|
+|Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
+|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Update-AzDataLakeGen2Item Cmdlet 只會更新單一專案，而不會以遞迴方式更新。 如果想要以遞迴方式更新，請使用 Get-AzDataLakeStoreChildItem Cmdlet 來列出專案，然後再將管線加入 Update-AzDataLakeGen2Item Cmdlet。|
+|Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|如果專案不存在，Get-AzDataLakeGen2Item Cmdlet 將會報告錯誤。|
 
 ## <a name="see-also"></a>另請參閱
 

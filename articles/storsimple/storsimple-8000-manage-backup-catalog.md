@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514768"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961590"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple 裝置管理員服務管理備份類別目錄
 ## <a name="overview"></a>概觀
@@ -75,11 +75,11 @@ StorSimple 裝置管理員服務的 [備份類別目錄] **** 刀鋒視窗會顯
       
       與選取的磁碟區或備份原則相關聯的備份應該會出現在備份組清單中。
 
-      ![移至備份類別目錄](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![移至備份目錄2](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. 選取並展開備份組。 您現在可以看到根據其包含之磁碟區細分的備份組。 [還原]**** 與 [刪除]**** 選項可透過備份組的操作功能表 (按一下滑鼠右鍵) 取得。 您可以在選取的備份組上執行以上任一動作。
 
-    ![移至備份類別目錄](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![移至備份目錄3](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>刪除備份組
 不再需要保留與備份相關的資料時，請將備份刪除。 執行下列步驟以刪除備份組。
@@ -95,21 +95,21 @@ StorSimple 裝置管理員服務的 [備份類別目錄] **** 刀鋒視窗會顯
       
       與選取的磁碟區或備份原則相關聯的備份應該會出現在備份組清單中。
 
-      ![移至備份類別目錄](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![移至備份目錄4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. 選取並展開備份組。 您現在可以看到根據其包含之磁碟區細分的備份組。 [還原]**** 與 [刪除]**** 選項可透過備份組的操作功能表 (按一下滑鼠右鍵) 取得。 以滑鼠右鍵按一下選取的備份組，然後從操作功能表中選取 [刪除]****。
 
-    ![移至備份類別目錄](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![移至備份目錄5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. 當系統提示確認時，請檢閱顯示的資訊，然後按一下 [刪除]****。 選取的備份會永久刪除。
 
-    ![移至備份類別目錄](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![移至備份目錄6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. 刪除進行中和順利完成時，您會收到通知。 刪除完成之後，重新整理此頁面上的查詢。 已刪除的備份組將不會再顯示於備份組清單中。
 
-    ![移至備份類別目錄](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![移至備份目錄7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何使用備份類別目錄以 [從備份組還原裝置](storsimple-8000-restore-from-backup-set-u2.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

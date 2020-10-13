@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404712"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946139"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory 中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -99,9 +99,9 @@ ms.locfileid: "91404712"
 
 下表列出 parquet 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| [格式] | 格式必須是 `parquet` | 是 | `parquet` | format |
+| 格式 | 格式必須是 `parquet` | 是 | `parquet` | format |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
 | 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | 字串 | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
@@ -129,9 +129,9 @@ source(allowSchemaDrift: true,
 
 下表列出 parquet 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| [格式] | 格式必須是 `parquet` | 是 | `parquet` | format |
+| 格式 | 格式必須是 `parquet` | 是 | `parquet` | format |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | [檔案名] 選項 | 寫入之資料的命名格式。 依預設，每個資料分割的一個檔案格式為 `part-#####-tid-<guid>` | 否 | 模式：字串 <br> 每個分割區：字串 [] <br> 做為資料行中的資料：字串 <br> 輸出至單一檔案： `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 
@@ -156,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>資料類型支援
 
-目前不支援 Parquet 複雜的資料類型 (例如 MAP、LIST、STRUCT) 。
+Parquet 複雜的資料類型 (例如，MAP、LIST、STRUCT) 目前僅支援資料流程，而非複製活動中。 若要在資料流程中使用複雜類型，請勿在資料集中匯入檔案架構，將架構留白。 然後，在來源轉換中匯入投射。
 
 ## <a name="using-self-hosted-integration-runtime"></a>使用自我裝載的 Integration Runtime
 

@@ -1,6 +1,6 @@
 ---
-title: 使用身分識別建立代理金鑰
-description: 在 Synapse SQL 集區的資料表上使用 IDENTITY 屬性建立代理鍵的建議和範例。
+title: 使用 IDENTITY 建立代理金鑰
+description: 使用 IDENTITY 屬性在 Synapse SQL 集區中的資料表上建立代理索引鍵的建議和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,27 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121318"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876000"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用身分識別在 Synapse SQL 集區中建立代理金鑰
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 建立 Synapse SQL 集區中的代理鍵
 
-在本文中，您會找到使用 IDENTITY 屬性在 Synapse SQL 集區中的資料表上建立代理金鑰的建議和範例。
+在本文中，您將找到使用 IDENTITY 屬性在 Synapse SQL 集區中的資料表上建立代理索引鍵的建議和範例。
 
-## <a name="what-is-a-surrogate-key"></a>什麼是代理鍵
+## <a name="what-is-a-surrogate-key"></a>什麼是代理金鑰
 
 資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。
 > [!NOTE]
-> 如果使用者明確地插入具有 "SET IDENTITY_INSERT ON" 或 reseeds 身分識別的重複值，則 Synapse SQL 中的識別值不保證是唯一的。 如需詳細資訊，請參閱[CREATE TABLE (transact-sql) IDENTITY (屬性) ](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 
+> 在 Azure Synapse Analytics 中，識別值會在每個散發中自行增加，且不會與其他散發套件中的識別值重迭。  如果使用者以 "SET IDENTITY_INSERT ON" 或 reseeds IDENTITY 明確插入重複的值，則 Synapse 中的識別值不保證是唯一的。 如需詳細資訊，請參閱 [CREATE TABLE (transact-sql) IDENTITY (屬性) ](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
-IDENTITY 屬性是設計用來在 Synapse SQL 集區中的所有散發中相應放大，而不會影響載入效能。 因此，IDENTITY 的實作便是為了達成這些目標。
+IDENTITY 屬性的設計目的是要向外延展 Synapse SQL 集區中的所有散發，而不會影響載入效能。 因此，IDENTITY 的實作便是為了達成這些目標。
 
 您在初次建立資料表時，可以使用類似下列陳述式的語法，將資料表定義為具有 IDENTITY 屬性：
 
@@ -52,7 +53,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的配置
 
-IDENTITY 屬性不保證由於資料倉儲的分散式架構而配置代理值的順序。 IDENTITY 屬性是設計用來在 Synapse SQL 集區中的所有散發中相應放大，而不會影響載入效能。 
+識別屬性不保證因為資料倉儲的分散式架構而配置代理值的順序。 IDENTITY 屬性的設計目的是要向外延展 Synapse SQL 集區中的所有散發，而不會影響載入效能。 
 
 下列範例將做出說明：
 
@@ -163,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 目前在使用 IDENTITY 資料行將資料載入資料表時，並無法使用 `CREATE TABLE AS SELECT`。
 >
 
-如需載入資料的詳細資訊，請參閱[SYNAPSE SQL 集區的 (ELT) 的設計解壓縮、載入和轉換](design-elt-data-loading.md)和[載入最佳做法](guidance-for-loading-data.md)。
+如需載入資料的詳細資訊，請參閱 [設計 SYNAPSE SQL 集區的解壓縮、載入和轉換 (ELT) ](design-elt-data-loading.md) ，以及  [載入最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系統檢視表
 
@@ -199,7 +200,7 @@ AND     tb.name = 'T1'
 
 Synapse SQL 集區中不支援下列相關功能：
 
-- [身分識別 ( # B1](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [身分識別 ( # B1 ](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

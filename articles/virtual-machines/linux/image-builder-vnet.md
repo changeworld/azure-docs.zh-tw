@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d75d73fcd64917257b850861142e7f4a67da834c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068105"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972300"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用適用于 Linux Vm 的 Azure 映射產生器，以允許存取現有的 Azure VNET
 
@@ -163,7 +163,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>設定資源群組的許可權
 
-Image Builder 會使用所提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，來將映像插入 Azure 共用映像庫 (SIG)。 在此範例中，您將建立 Azure 角色定義，其中包括將映像發佈到 SIG 的細微動作。 然後此將角色定義指派給使用者身分識別。
+Image Builder 會使用所提供的[使用者身分識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，來將映像插入 Azure 共用映像庫 (SIG)。 在此範例中，您將建立 Azure 角色定義，其中包括將映像發佈到 SIG 的細微動作。 然後此將角色定義指派給使用者身分識別。
 
 ```bash
 # create user assigned identity for image builder

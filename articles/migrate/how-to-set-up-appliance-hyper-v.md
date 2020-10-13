@@ -4,10 +4,10 @@ description: 瞭解如何設定 Azure Migrate 設備來評定和遷移 Hyper-v V
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448091"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>為 Hyper-v Vm 設定設備
@@ -30,7 +30,7 @@ ms.locfileid: "91448091"
 - 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰。
 - 從 Azure 入口網站下載壓縮的 Hyper-V VHD。
 - 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
-- 第一次設定設備，並使用 Azure Migrate 專案金鑰向 Azure Migrate 專案註冊。
+- 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
 
@@ -125,7 +125,7 @@ ms.locfileid: "91448091"
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>委派 SMB VHD 的認證
 
-如果您要在 SMB 上執行 VHD，就必須將認證從設備委派到 Hyper-V 主機。 若要從設備進行此操作：
+如果您要在 SMB 上執行 VHD，就必須將認證從設備委派到 Hyper-V 主機。 若要從設備執行此動作：
 
 1. 在設備 VM 上，執行此命令。 HyperVHost1/HyperVHost2 是主機名稱範例。
 
