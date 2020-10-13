@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893862"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure 資料箱閘道安全性和資料保護
@@ -98,6 +98,6 @@ ms.locfileid: "90893862"
 
 如需詳細資訊，請參閱 [信任中心](https://www.microsoft.com/trustcenter)上的 Microsoft 隱私權原則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [部署資料箱閘道裝置](data-box-gateway-deploy-prep.md)

@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444042"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>將 Excel 連接到 Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫，並建立報表
@@ -80,10 +80,10 @@ ms.locfileid: "91444042"
 
       ![新增連接對話方塊](./media/connect-excel/new-connection.png)
 
-2. 在 [資料連線精靈]**** 中，輸入您的伺服器名稱和 SQL Database 認證。 選取 [下一步] 。
+2. 在 [資料連線精靈]**** 中，輸入您的伺服器名稱和 SQL Database 認證。 選取 [下一步]  。
    1. 從下拉式清單中選取包含您資料的資料庫。
    2. 選取您感興趣的資料表或檢視。 我們選擇 vGetAllCategories。
-   3. 選取 [下一步] 。
+   3. 選取 [下一步]  。
 
       ![資料連線精靈](./media/connect-excel/data-connection-wizard.png)
 

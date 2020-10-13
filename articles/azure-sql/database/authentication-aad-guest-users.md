@@ -10,10 +10,10 @@ ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
 ms.openlocfilehash: aa74489a962708a1d3d5e6835f684e5cb8fc548b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444348"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>建立 Azure AD 來賓使用者，並將其設定為 Azure AD 管理員

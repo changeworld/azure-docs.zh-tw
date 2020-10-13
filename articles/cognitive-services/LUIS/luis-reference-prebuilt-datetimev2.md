@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
 ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534177"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 DatetimeV2 預先建置實體
@@ -113,8 +113,8 @@ DatetimeV2 是從辨識器 [文字](https://github.com/Microsoft/Recognizers-Tex
 
 |屬性名稱 |屬性類型和描述|
 |---|---|
-|單位|**string** - 以日期、時間、日期範圍或時間範圍的類型從語句中擷取的文字。|
-|類型|**string** - 其中一個 [datetimeV2 子類型](#subtypes-of-datetimev2)
+|實體|**string** - 以日期、時間、日期範圍或時間範圍的類型從語句中擷取的文字。|
+|type|**string** - 其中一個 [datetimeV2 子類型](#subtypes-of-datetimev2)
 |startIndex|**int** - 實體開始的語句中的索引。|
 |endIndex|**int** - 實體結束的語句中的索引。|
 |resolution|有一、二或四個[解析值](#values-of-resolution)的 `values` 陣列。|
@@ -145,8 +145,8 @@ DatetimeV2 是從辨識器 [文字](https://github.com/Microsoft/Recognizers-Tex
 |--|--|
 |timex|以遵循 [ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)的 TIMEX 格式表示的時間、日期或日期範圍，並對註解的 TIMEX3 屬性使用 TimeML 語言。|
 |mod|用來描述如何使用值（例如 `before` ，）的詞彙 `after` 。|
-|類型|子類型，可以是下列其中一個專案： `datetime` 、 `date` 、 `time` 、 `daterange` 、 `timerange` 、 `datetimerange` 、 `duration` 、 `set` 。|
-|value|**選。** Datetime 物件的格式為 yyyy-mm-dd (date) ，HH： MM： ss (time) yyyy-mm-dd HH： mm： ss (datetime) 。 如果 `type` 是 `duration`，則值會是秒數 (duration) <br/> 只有當 `type` 是 `datetime` 或 `date`、`time` 或 `duration 時才能使用。|
+|type|子類型，可以是下列其中一個專案： `datetime` 、 `date` 、 `time` 、 `daterange` 、 `timerange` 、 `datetimerange` 、 `duration` 、 `set` 。|
+|value|**選擇性。** Datetime 物件的格式為 yyyy-mm-dd (date) ，HH： MM： ss (time) yyyy-mm-dd HH： mm： ss (datetime) 。 如果 `type` 是 `duration`，則值會是秒數 (duration) <br/> 只有當 `type` 是 `datetime` 或 `date`、`time` 或 `duration 時才能使用。|
 
 ## <a name="valid-date-values"></a>有效的日期值
 

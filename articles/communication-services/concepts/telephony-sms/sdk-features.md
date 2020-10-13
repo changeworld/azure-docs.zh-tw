@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2d81749e7023bdbf5353e5c8da633674ea8e8ce9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d40637b05a5d398124ee52dbca49d55b3112ec95
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943678"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758399"
 ---
 # <a name="sms-client-library-overview"></a>SMS 用戶端程式庫概觀
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure 通訊服務 SMS 用戶端程式庫可用來將 SMS 訊息新增至您的應用程式。
 
@@ -37,7 +37,7 @@ Azure 通訊服務 SMS 用戶端程式庫可用來將 SMS 訊息新增至您的�
 | 電話號碼      | 免付費電話號碼                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | 法規        | 退出處理                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | 監視        | 監視已傳送和接收之訊息的使用量                                          | ✔️   | ✔️    | ✔️    | ✔️      |
-| PSTN 通話      | 將 PSTN 通話功能新增至已啟用 SMS 的電話號碼                    | ✔️   | ✔️    | ✔️    | ✔️      |
+| PSTN 通話      | 將 PSTN 通話功能新增至已啟用 SMS 的免付費電話號碼                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>下一步
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893786"
 ---
 # <a name="filter-based-feature-selection"></a>以篩選為基礎的特徵選取
@@ -36,7 +36,7 @@ ms.locfileid: "90893786"
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>如何選擇特徵選取度量
 
-以篩選器為基礎的特徵選取模組提供各種計量來評估每個資料行中的資訊值。 本節提供每個度量的一般描述，以及其套用方式。 您可以在 [技術](#technical-notes) 提示和設定每個模組的 [指示](#how-to-configure-filter-based-feature-selection) 中，找到使用每個度量的其他需求。
+Filter-Based 特徵選取模組可提供各種計量來評估每個資料行中的資訊值。 本節提供每個度量的一般描述，以及其套用方式。 您可以在 [技術](#technical-notes) 提示和設定每個模組的 [指示](#how-to-configure-filter-based-feature-selection) 中，找到使用每個度量的其他需求。
 
 -   **皮耳森相互關聯**  
 
@@ -52,11 +52,11 @@ ms.locfileid: "90893786"
 > [!TIP]
 > 如果您的自訂特徵選取方法需要不同的選項，請使用 [ [執行 R 腳本](execute-r-script.md) ] 模組。 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>如何設定以篩選器為基礎的特徵選取
+## <a name="how-to-configure-filter-based-feature-selection"></a>如何設定 Filter-Based 的特徵選取
 
 您可以選擇標準統計度量。 此模組會計算一對資料行之間的相互關聯：標籤資料行和特徵資料行。
 
-1.  將以篩選器為基礎的特徵選取模組新增至您的管線。 您可以在設計工具的 [ **特徵選取** ] 類別中找到它。
+1.  將 Filter-Based 的特徵選取模組新增至您的管線。 您可以在設計工具的 [ **特徵選取** ] 類別中找到它。
 
 2. 連接輸入資料集，其中至少包含兩個可能功能的資料行。  
 
@@ -68,7 +68,7 @@ ms.locfileid: "90893786"
     > 如果您知道某些資料行會造成不良的功能，您可以從資料行選取專案中移除它們。 您也可以使用 [ [編輯中繼資料](edit-metadata.md) ] 模組，將它們標示為 **類別**。 
 3.  針對 [ **功能評分] 方法**，選擇下列其中一個已建立的統計方法，以用於計算分數。  
 
-    | 方法              | 規格需求                             |
+    | 方法              | 需求                             |
     | ------------------- | ---------------------------------------- |
     | 皮耳森相互關聯 | 標籤可以是文字或數位。 功能必須是數值。 |
     卡方平方| 標籤和功能可以是文字或數位。 使用這個方法來計算兩個類別資料行的功能重要性。|
@@ -114,7 +114,7 @@ ms.locfileid: "90893786"
 
 2.  將條件式的資料行與數值資料行相互關聯。  
 
-### <a name="requirements"></a>規格需求  
+### <a name="requirements"></a>需求  
 
 -   針對指定為 **標籤** 或 **分數** 資料行的任何資料行，無法產生特徵選取分數。  
 

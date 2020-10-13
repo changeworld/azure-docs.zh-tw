@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: d07364e20cc11abc52ad9b308eb5daed8a65c146
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923376"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的簡單查詢語法
@@ -114,7 +114,7 @@ NOT 運算子是負號。 例如， `wifi –luxury` 會搜尋具有 `wifi` 和/
 
 詞彙搜尋是一項或多項詞彙的查詢，其中任何字詞都會被視為相符。 片語搜尋是以引號括住的確切片語 `" "` 。 例如，雖然 `Roach Motel` (沒有引號的) 會 `Roach` 以任何順序搜尋包含及/或任何位置的檔 `Motel` ，但 `"Roach Motel"` 以引號) 括住的 (只會比對包含該整個片語的檔，而且以該順序表示 (詞法分析仍適用) 。
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 + [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
 + [簡單搜尋的查詢範例](search-query-simple-examples.md)

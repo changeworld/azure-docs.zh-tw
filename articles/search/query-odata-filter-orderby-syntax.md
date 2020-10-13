@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923393"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>適用于 `$filter` 、和的 OData 語言總覽 `$orderby` `$select` Azure 認知搜尋
@@ -46,7 +46,7 @@ OData 運算式的範圍從簡單到高度複雜，但全都共用一般元素�
 
 ## <a name="field-paths"></a>欄位路徑
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義欄位路徑的文法。
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義欄位路徑的文法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -70,7 +70,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 下表顯示欄位路徑的範例：
 
-| 欄位路徑 | 描述 |
+| 欄位路徑 | 說明 |
 | --- | --- |
 | `HotelName` | 參考索引的最上層欄位 |
 | `Address/City` | 參考 `City` 索引中複雜欄位的子欄位， `Address` `Edm.ComplexType` 在此範例中為類型 |
@@ -135,7 +135,7 @@ OData 中的字串常數以單引號分隔。 如果您需要使用可能包含�
 
 ### <a name="constants-syntax"></a>常數語法
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義上表所示大部分常數的文法。 您可以在 [Azure 認知搜尋的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)中找到地理空間類型的文法。
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 針對上表所示的大部分常數定義文法。 您可以在 [Azure 認知搜尋的 OData 地理空間函式](search-query-odata-geo-spatial-functions.md)中找到地理空間類型的文法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ boolean_literal ::= 'true' | 'false'
 
 不過，大部分的情況下，您需要更複雜的運算式來參考一個以上的欄位和常數。 這些運算式會根據參數以不同的方式來建立。
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義 **$filter**、 **$orderby**和 **$select** 參數的文法。 這些是由簡單的運算式所建立，這些運算式會參考欄位路徑和常數：
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義 **$filter**、 **$orderby**和 **$select** 參數的文法。 這些是由簡單的運算式所建立，這些運算式會參考欄位路徑和常數：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -239,7 +239,7 @@ select_expression ::= '*' | field_path(',' field_path)*
 - [Azure 認知搜尋中的 OData $orderby 語法](search-query-odata-orderby.md)
 - [Azure 認知搜尋中的 OData $select 語法](search-query-odata-select.md)
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 - [Azure 認知搜尋中的多面向導覽](search-faceted-navigation.md)
 - [Azure 認知搜尋中的篩選](search-filters.md)

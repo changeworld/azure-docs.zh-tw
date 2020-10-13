@@ -9,10 +9,10 @@ ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 44d23710db169fa27aaba8928d421918bef93fec
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825139"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>使用 Azure PowerShell 部署現成的 Vm
@@ -88,7 +88,7 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您也可以使用 [Azure CLI](../linux/spot-cli.md)、 [入口網站](../spot-portal.md) 或 [範本](../linux/spot-template.md)來建立點 VM。
 

@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361325"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
@@ -32,7 +32,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在開始本文所述的工作之前，請檢閱此文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]

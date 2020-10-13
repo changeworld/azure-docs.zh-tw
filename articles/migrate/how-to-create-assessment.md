@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
 ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361087"
 ---
 # <a name="create-an-azure-vm-assessment"></a>建立 Azure VM 評量
@@ -19,7 +19,7 @@ ms.locfileid: "91361087"
 
 [Azure Migrate](migrate-services-overview.md) 可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。 
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 請確定您已 [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
 - 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。

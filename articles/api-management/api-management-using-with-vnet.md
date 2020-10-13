@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67b855beae4ea36bf4ef7e6bb396c6b7ae1d89e3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539176"
+ms.locfileid: "91874317"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -223,6 +223,7 @@ IP 位址是以 **Azure 環境**分割。 當允許輸入要求以 **Global** �
 | Azure 公用| 加拿大東部| 52.139.80.117|
 | Azure 公用| 阿拉伯聯合大公國北部| 20.46.144.85|
 | Azure 公用| 巴西南部| 191.233.24.179|
+| Azure 公用| 巴西東南部| 191.232.18.181|
 | Azure 公用| 東南亞| 40.90.185.46|
 | Azure 公用| 南非北部| 102.133.130.197|
 | Azure 公用| 加拿大中部| 52.139.20.34|

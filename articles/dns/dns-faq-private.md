@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308430"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 私人 DNS 常見問題集
@@ -20,13 +20,13 @@ ms.locfileid: "91308430"
 
 ## <a name="does-azure-dns-support-private-domains"></a>Azure DNS 是否支援私人網域？
 
-使用 Azure 私人 DNS 區域功能可支援私人網域。 私人 DNS 區域只能從指定的虛擬網路中解析。 如需詳細資訊，請參閱[概觀](private-dns-overview.md)。
+使用 Azure 私人 DNS 區域功能可支援私人網域。 私人 DNS 區域只能從指定的虛擬網路中解析。 如需詳細資訊，請參閱 [總覽](private-dns-overview.md)。
 
 如需 Azure 中其他內部 DNS 選項的詳細資訊，請參閱 [vm 和角色實例的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 ## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Azure 私人 DNS 區域是否會跨 Azure 區域運作？
 
-可以。 私人區域支援在跨 Azure 區域的虛擬網路之間進行 DNS 解析。 就算是沒有明確對虛擬網路進行對等，私人區域也能運作。 所有虛擬網路都必須連結到私人 DNS 區域。
+是。 私人區域支援在跨 Azure 區域的虛擬網路之間進行 DNS 解析。 就算是沒有明確對虛擬網路進行對等，私人區域也能運作。 所有虛擬網路都必須連結到私人 DNS 區域。
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>是否可從私人區域所需的虛擬網路連線到網際網路？
 
@@ -34,15 +34,15 @@ ms.locfileid: "91308430"
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>相同的私人區域是否可以用於數個虛擬網路以進行解析？
 
-可以。 您可以將私人 DNS 區域連結至上千個虛擬網路。 如需詳細資訊，請參閱 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+是。 您可以將私人 DNS 區域連結至上千個虛擬網路。 如需詳細資訊，請參閱 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>屬於不同訂用帳戶的虛擬網路可以連結到私人區域嗎？
 
-可以。 您必須在虛擬網路及私人 DNS 區域上皆擁有寫入作業權限。 寫入權限可授與給數個 Azure 角色。 例如，傳統網路參與者 Azure 角色具有虛擬網路的寫入權限，而私人 DNS 區域參與者角色具有私人 DNS 區域的寫入權限。 如需 Azure 角色的詳細資訊，請參閱 azure [角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。
+是。 您必須在虛擬網路及私人 DNS 區域上皆擁有寫入作業權限。 寫入權限可授與給數個 Azure 角色。 例如，傳統網路參與者 Azure 角色具有虛擬網路的寫入權限，而私人 DNS 區域參與者角色具有私人 DNS 區域的寫入權限。 如需 Azure 角色的詳細資訊，請參閱 azure [角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>當您刪除虛擬機器時，會自動刪除私人區域中自動註冊的虛擬機器 DNS 記錄嗎？
 
-可以。 如果您在已啟用自動註冊的已連結虛擬網路中刪除虛擬機器，則會自動刪除已註冊的記錄。
+是。 如果您在已啟用自動註冊的已連結虛擬網路中刪除虛擬機器，則會自動刪除已註冊的記錄。
 
 ## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>我已將虛擬機器中的 OS 重新設定為具有新的主機名稱或靜態 IP 位址。 為什麼看不到該變更會反映在私人區域中？
 
@@ -54,7 +54,7 @@ Azure DHCP 服務在註冊私人 DNS 區域時，會忽略任何 DNS 尾碼。 �
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>是否可以手動刪除私人區域中從連結的虛擬網路自動註冊的虛擬機器記錄？
 
-可以。 您可以將自動註冊的 DNS 記錄覆寫為於區域中手動建立的 DNS 記錄。 下列問題和解答會說明這個議題。
+是。 您可以將自動註冊的 DNS 記錄覆寫為於區域中手動建立的 DNS 記錄。 下列問題和解答會說明這個議題。
 
 ## <a name="what-happens-when-i-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-linked-virtual-network"></a>當我嘗試在私人區域中手動建立新的 DNS 記錄時，會發生什麼事，其主機名稱與連結的虛擬網路中自動註冊的現有虛擬機器相同？
 
@@ -62,7 +62,7 @@ Azure DHCP 服務在註冊私人 DNS 區域時，會忽略任何 DNS 尾碼。 �
 
 ## <a name="what-happens-when-we-unlink-a-linked-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>當我們從私人區域取消連結的虛擬網路時，會發生什麼事？ 來自虛擬網路的自動註冊虛擬機器記錄是否也會從區域中移除？
 
-可以。 若要取消連結的虛擬網路與私人區域的連結，請更新 DNS 區域以移除相關聯的虛擬網路連結。 此程序也會從區域中移除自動註冊的虛擬機器記錄。
+是。 若要取消連結的虛擬網路與私人區域的連結，請更新 DNS 區域以移除相關聯的虛擬網路連結。 此程序也會從區域中移除自動註冊的虛擬機器記錄。
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>當我們刪除連結至私人區域的連結虛擬網路時，會發生什麼事？ 是否需要手動更新私人區域，以將虛擬網路與區域中的連結虛擬網路取消連結？
 
@@ -70,7 +70,7 @@ Azure DHCP 服務在註冊私人 DNS 區域時，會忽略任何 DNS 尾碼。 �
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>即使在私人區域 (（例如，private.contoso.com) 連結至虛擬網路）的情況下，使用預設 FQDN (internal.cloudapp.net) 仍可運作的 DNS？
 
-可以。 私人區域不會取代預設 Azure 提供的 internal.cloudapp.net 區域。 無論是仰賴由 Azure 所提供的 internal.cloudapp.net 或您自己的私人區域，都請使用您想要解析之目標區域的 FQDN。
+是。 私人區域不會取代預設 Azure 提供的 internal.cloudapp.net 區域。 無論是仰賴由 Azure 所提供的 internal.cloudapp.net 或您自己的私人區域，都請使用您想要解析之目標區域的 FQDN。
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>已連結虛擬網路內之虛擬機器上的 DNS 尾碼，是否會變更成私人區域的尾碼？
 

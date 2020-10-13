@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597084"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>使用媒體服務 v3 進行 Android 的離線 Widevine 串流
@@ -166,6 +166,6 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 本文已討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。  文中也回答一些和離線串流受 Widevine 保護的內容相關的常見問題。

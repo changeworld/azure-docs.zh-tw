@@ -13,10 +13,10 @@ ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
 ms.openlocfilehash: ad80f68c1ab3b3583c5a22de49b77211571f345e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443992"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>使用 Azure SQL Database 和 Azure Synapse Analytics 的條件式存取
@@ -54,7 +54,7 @@ ms.locfileid: "91443992"
 5. 依序選取 [存取控制]****、[授與]****，然後核取您想要套用的原則。 例如，我們選取 [需要多重要素驗證]****。  
    ![選取授與存取權](./media/conditional-access-configure/grant-access.png)  
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 選取的應用程式 (Azure SQL Database) 使用 Azure AD Premium，現在會強制執行選取的條件式存取原則， **需要多重要素驗證。**
 

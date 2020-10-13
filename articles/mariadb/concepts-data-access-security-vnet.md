@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: 6fc0add55caccd7721f3ee2c72db68fbcf6bc0dc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458496"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫使用虛擬網路服務端點和規則
@@ -138,7 +138,7 @@ RBAC 替代方案：**
 - [Azure 虛擬網路][vm-virtual-network-overview]
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需建立 VNet 規則的文章，請參閱：
 - [使用 Azure 入口網站建立及管理適用於 MariaDB 的 Azure 資料庫 VNet 規則](howto-manage-vnet-portal.md)
  

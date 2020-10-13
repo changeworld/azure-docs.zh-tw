@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604261"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>新增角色指派的步驟

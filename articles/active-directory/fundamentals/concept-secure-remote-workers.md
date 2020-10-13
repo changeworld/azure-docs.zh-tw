@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705362"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速回應安全身分識別
@@ -34,7 +34,7 @@ ms.locfileid: "90705362"
 - 利用雲端智慧。
 - 啟用終端使用者自助服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本指南假設您已在 Azure AD 中建立您的僅限雲端或混合式身分識別。 如需選擇身分識別類型的說明，請參閱文章， [為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../hybrid/choose-ad-authn.md) 
 
