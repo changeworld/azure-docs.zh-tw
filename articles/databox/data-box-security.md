@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565746"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
@@ -88,7 +88,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
   - 電話號碼
   - 電子郵件
   - 街道地址
-  - 城市
+  - City
   - 郵遞區號
   - State
   - 國家/地區/州/省/區域
@@ -114,7 +114,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | 適用於資料保護         |
 |附錄 A：[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中的 ATA 硬碟      | 適用於資料清理         |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 檢閱[資料箱需求](data-box-system-requirements.md)。
 - 了解[資料箱限制](data-box-limits.md)。

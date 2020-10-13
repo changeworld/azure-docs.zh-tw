@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358894"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安裝與使用適用於 Azure Active Directory 的記錄分析檢視
@@ -31,7 +31,7 @@ Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD
 * Audit logs： [audit logs 活動報告](concept-audit-logs.md) 可讓您存取在您的租使用者中執行的每項工作的歷程記錄。
 * 登入記錄：使用登 [入活動報告](concept-sign-ins.md)時，您可以決定誰執行了 audit 記錄中所報告的工作。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用記錄分析檢視，您需要：
 

@@ -1,37 +1,40 @@
 ---
-title: Azure ExpressRoute：將閘道新增至 VNet：入口網站
-description: 本文將逐步引導您使用 Azure 入口網站，將虛擬網路閘道新增至已為 ExpressRoute 建立的 Resource Manager VNet。
+title: 教學課程：Azure ExpressRoute - 將閘道新增至 VNet (Azure 入口網站)
+description: 本教學課程將逐步引導您使用 Azure 入口網站，將虛擬網路閘道新增至 ExpressRoute 的 VNet。
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 12/06/2018
+ms.topic: tutorial
+ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 06f7e5d28017ee618adfeeec52c6f1226e1ae82c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
-ms.translationtype: MT
+ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396348"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91761771"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道
+# <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 入口網站](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [傳統 - PowerShell](expressroute-howto-add-gateway-classic.md)
 > * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
-> 
 
-本文將逐步引導您完成為既存的 VNet 新增虛擬網路閘道的步驟。 本文將逐步引導您完成為既存的 VNet 新增虛擬網路 (VNet) 閘道、調整該閘道大小及移除該閘道的步驟。 此組態的步驟是使用 Resource Manager 部署模型來建立的 VNet 所專用，而在 ExpressRoute 組態中也將使用該部署模型。 如需有關 ExpressRoute 之虛擬網路閘道和閘道組態設定的詳細資訊，請參閱[關於 ExpressRoute 的虛擬網路閘道](expressroute-about-virtual-network-gateways.md)。 
+本教學課程將逐步引導您完成為既存的 VNet 新增虛擬網路閘道的步驟。 本文將逐步引導您完成為既存的 VNet 新增虛擬網路 (VNet) 閘道、調整該閘道大小及移除該閘道的步驟。 此組態的步驟是使用 Resource Manager 部署模型來建立的 VNet 所專用，而在 ExpressRoute 組態中也將使用該部署模型。 如需有關 ExpressRoute 之虛擬網路閘道和閘道組態設定的詳細資訊，請參閱[關於 ExpressRoute 的虛擬網路閘道](expressroute-about-virtual-network-gateways.md)。 
 
+在本教學課程中，您會了解如何：
+> [!div class="checklist"]
+> - 建立閘道子網路。
+> - 建立虛擬網路閘道。
 
-## <a name="before-beginning"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 此工作的步驟會根據下列組態參考清單中的值來使用 VNet。 我們會在範例步驟中使用此清單。 您可以複製清單以供參考，並使用您自己的值來取代其中的值。
 
-**設定參考清單**
+**組態參考清單**
 
 * 虛擬網路名稱 = "TestVNet"
 * 虛擬網路位址空間 = 192.168.0.0/16
@@ -49,34 +52,45 @@ ms.locfileid: "89396348"
 
 ## <a name="create-the-gateway-subnet"></a>建立閘道子網路
 
-1. 在 [入口網站](https://portal.azure.com)中，流覽至您要為其建立虛擬網路閘道的 Resource Manager 虛擬網路。
-2. 在 VNet 刀鋒視窗的 [設定]**** 中，按一下 [子網路]**** 以展開 [子網路] 刀鋒視窗。
-3. 在 [子網路]**** 刀鋒視窗中，按一下 [+閘道子網路]**** 以開啟 [新增子網路]**** 刀鋒視窗。 
+1. 在[入口網站](https://portal.azure.com)中，瀏覽至要建立虛擬網路閘道的 Resource Manager 虛擬網路。
+1. 在 VNet 的 [設定] 區段中，選取 [子網路] 以展開 [子網路] 設定。
+1. 在 [子網路] 設定中，選取 [+ 閘道子網路] 以新增閘道子網路。 
    
-    ![新增閘道子網路](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "新增閘道子網路")
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="新增閘道子網路":::
 
+1. 子網路的 [名稱]**** 會自動填入 'GatewaySubnet' 這個值。 為了讓 Azure 將此子網路視為閘道子網路，需要有這個值。 調整自動填入的 [位址範圍] 值，以符合您的組態需求。 建議您以 /27 或更大的值 (/26、/25 等) 建立閘道子網路。 然後，選取 [確定] 來儲存值並建立閘道子網路。
 
-4. 子網路的 [名稱]**** 會自動填入 'GatewaySubnet' 這個值。 為了讓 Azure 將此子網路視為閘道子網路，需要有這個值。 調整自動填入的 [位址範圍]**** 值，以符合您的組態需求。 建議您以 /27 或更大的值 (/26、/25 等) 建立閘道子網路。 然後，按一下 [確定]**** 來儲存值並建立閘道子網路。
-
-    ![新增子網路](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "新增子網路")
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="新增閘道子網路":::
 
 ## <a name="create-the-virtual-network-gateway"></a>建立虛擬網路閘道
 
-1. 在入口網站中，按一下左側的 [搜尋] 中的 [ **+** 虛擬網路閘道] 並輸入。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [虛擬網路閘道]**** 刀鋒視窗上，按一下刀鋒視窗底部的 [建立]****。 這會開啟 [建立虛擬網路閘道]**** 刀鋒視窗。
-2. 在 [建立虛擬網路閘道]**** 刀鋒視窗上，填入您虛擬網路閘道的值。
+1. 在入口網站中的左側選取 [建立資源]，並在搜尋中輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後選取該項目。 在 [虛擬網路閘道] 頁面上，選取 [建立]。
+1. 在 [建立虛擬網路閘道] 頁面上，輸入或選取下列設定：
 
-    ![建立虛擬網路閘道刀鋒視窗欄位](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "建立虛擬網路閘道刀鋒視窗欄位")
-3. **名稱**：為您的閘道命名。 這與為閘道子網路命名不同。 這是您要建立之閘道物件的名稱。
-4. **閘道類型**︰選取 [ExpressRoute]****。
-5. **SKU**︰從下拉式清單中選取閘道 SKU。
-6. **位置**：調整 [位置]**** 欄位以指向您的虛擬網路所在的位置。 如果位置並未指向您的虛擬網路所在的區域，則此虛擬網路不會出現在 [選擇虛擬網路] 下拉式清單中。
-7. 選擇您要新增此閘道的虛擬網路。 按一下 [ **虛擬網路** ]，以開啟 [ **選擇虛擬網路** ] 分頁。 選取 VNet。 如果您沒有看到您的 VNet，請確定 [ **位置** ] 欄位指向虛擬網路所在的區域。
-9. 選擇公用 IP 位址。 按一下 [公用 IP 位址]**** 以開啟 [選擇公用 IP 位址]**** 刀鋒視窗。 按一下 [+新建]**** 以開啟 [建立公用 IP 位址]**** 刀鋒視窗。 輸入公用 IP 位址的名稱。 此刀鋒視窗會建立將動態獲派公用 IP 位址的公用 IP 位址物件。 按一下 [確定]**** 將變更儲存至此刀鋒視窗。
-10. **訂用帳戶**：請確認已選取正確的訂用帳戶。
-11. **資源群組**：此設定取決於您選取的虛擬網路。
-12. 指定上述設定之後，請勿調整 [位置]****。
-13. 確認設定。 如果您希望閘道顯示在儀表板上，可以選取刀鋒視窗底部的 [釘選到儀表板]****。
-14. 按一下 [建立] **** 即可開始建立閘道。 系統會驗證設定並部署閘道。 建立虛擬網路閘道最多可能需要花費 45 分鐘的時間來完成。
+    | 設定 | 值 |
+    | --------| ----- |
+    | 訂用帳戶 | 請確認已選取正確的訂用帳戶。 |
+    | 資源群組 | 一旦您選取虛擬網路，就會自動選擇資源群組。 | 
+    | 名稱 | 為您的閘道命名。 這與為閘道子網路命名不同。 這是您要建立之閘道物件的名稱。|
+    | 區域 | 變更 [區域] 欄位以指向您的虛擬網路所在的位置。 如果位置並未指向您的虛擬網路所在的區域，則此虛擬網路不會出現在 [選擇虛擬網路] 下拉式清單中。 |
+    | 閘道類型 | 選取 [ExpressRoute]|
+    | SKU | 從下拉式清單中選取閘道 SKU。 |
+    | 虛擬網路 | 選取 [TestVNet]。 |
+    | 公用 IP 位址 | 選取 [建立新的]****。|
+    | 公用 IP 位址名稱 | 提供公用 IP 位址的名稱。 |
 
-## <a name="next-steps"></a>接下來的步驟
-建立 VNet 閘道之後，您可以將 VNet 連結至 ExpressRoute 循環。 請參閱 [將虛擬網路連結到 ExpressRoute 循環](expressroute-howto-linkvnet-portal-resource-manager.md)。
+1. 選取 [檢閱+建立]，然後選取 [建立] 以開始建立閘道。 系統會驗證設定並部署閘道。 建立虛擬網路閘道最多可能需要花費 45 分鐘的時間來完成。
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="新增閘道子網路":::
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您不再需要 ExpressRoute 閘道，請在虛擬網路資源群組中找出閘道，然後選取 [刪除]。 請確定閘道沒有與任何線路連線。
+
+:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="新增閘道子網路":::
+
+## <a name="next-steps"></a>後續步驟
+建立 VNet 閘道之後，您可以將 VNet 連結至 ExpressRoute 循環。 
+
+> [!div class="nextstepaction"]
+> [將虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)

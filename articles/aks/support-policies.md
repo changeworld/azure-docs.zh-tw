@@ -4,12 +4,12 @@ description: 瞭解 Azure Kubernetes Service (AKS) 支援原則、共同責任�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888975"
+ms.locfileid: "91892705"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service 支援原則
 
@@ -130,8 +130,7 @@ AKS 管理代理程式節點的生命週期和作業，代表您修改與代理�
 
 ## <a name="stopped-or-de-allocated-clusters"></a>已停止或已解除配置的叢集
 
-根據上述，透過 IaaS Api/CLI/入口網站手動取消配置所有叢集節點，會導致叢集不支援。
-停止/取消配置所有節點的唯一支援方法是 [停止 aks 叢集，此叢集會保留最多12個月的叢集狀態。
+如先前所述，透過 IaaS Api/CLI/入口網站手動將所有叢集節點解除配置，會導致叢集不支援。 停止/解除配置所有節點的唯一支援方法是 [停止 AKS](start-stop-cluster.md#stop-an-aks-cluster)叢集，此叢集最多可保留12個月的叢集狀態。
 
 停止超過12個月的叢集將不再保留狀態。 
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761357"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>針對 IoT 隨插即用快速入門和教學課程設定您的環境
@@ -83,8 +83,8 @@ az iot dps enrollment create --attestation-type symmetrickey --dps-name my-pnp-d
 
 服務範例需要下列環境變數，以識別要連接的中樞和裝置：
 
-* **IOTHUB_CONNECTION_STRING**：您先前所記下的 IoT 中樞連接字串。
-* **IOTHUB_DEVICE_ID**： `my-pnp-device` 。
+* **IOTHUB_CONNECTION_STRING**：您先前記下的 IoT 中樞連接字串。
+* **IOTHUB_DEVICE_ID**：`my-pnp-device`。
 
 例如，在 Linux bash shell 中：
 

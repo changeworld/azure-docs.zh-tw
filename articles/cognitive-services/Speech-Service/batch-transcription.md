@@ -12,10 +12,10 @@ ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360747"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
@@ -41,7 +41,7 @@ ms.locfileid: "91360747"
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](overview.md#try-the-speech-service-for-free)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
@@ -54,7 +54,7 @@ ms.locfileid: "91360747"
 
 批次轉譯 API 支援下列格式：
 
-| 格式 | 轉碼器 | 每個樣本的位數 | 採樣速率             |
+| [格式] | 轉碼器 | 每個樣本的位數 | 採樣速率             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
 | MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
@@ -63,7 +63,7 @@ ms.locfileid: "91360747"
 針對身歷聲音訊串流，會在轉譯期間分割左邊和右邊的通道。 正在為每個通道建立 JSON 結果檔。
 若要建立已排序的最終文字記錄，請使用每個語句所產生的時間戳記。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 設定參數會以 JSON 形式提供 (一或多個個別檔案) ：
 

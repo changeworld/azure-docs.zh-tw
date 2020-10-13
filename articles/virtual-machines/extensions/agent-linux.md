@@ -9,10 +9,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279698"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解與使用 Azure Linux 代理程式
@@ -127,7 +127,7 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 * daemon：以精靈方式執行 waagent 來管理與平台之間的互動。 此引數是在 waagent init 指令碼中指定給 waagent。
 * 開始︰以背景處理序方式執行 waagent
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 以下顯示的是範例組態檔：
 
 ```config

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440063"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>建立和安裝 VPN 用戶端組態檔以便進行 P2S RADIUS 驗證
@@ -130,7 +130,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 6. 在設定檔安裝期間，您有選項可指定 VPN 驗證的使用者名稱和密碼。 不一定要輸入此資訊。 如果您這麼做，系統會儲存此資訊並在您初始連線時自動使用。選取 [安裝]**** 以繼續進行。
 
    ![VPN 的使用者名稱和密碼方塊](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-7. 輸入在您的電腦上安裝設定檔時所需之權限的使用者名稱和密碼。 選取 [確定]。
+7. 輸入在您的電腦上安裝設定檔時所需之權限的使用者名稱和密碼。 選取 [確定]  。
 
    ![設定檔安裝的使用者名稱和密碼方塊](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
 8. 安裝設定檔之後，它會顯示在 [設定檔]**** 對話方塊中。 您稍後也可以從 [系統喜好設定]**** 開啟此對話方塊。

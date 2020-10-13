@@ -3,18 +3,19 @@ title: 以 Webhook 作為「Azure 事件方格」事件的事件處理常式
 description: 說明如何使用 Webhook 作為「Azure 事件方格」事件的事件處理常式。 Azure 自動化 Runbook 和邏輯應用程式均可透過 Webhook 作為事件處理常式支援。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 3dc75b15c55c82b6164e77f0ac93a87bced94a64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa20c75789a18b93f787134dffe165e60ff1ab6f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105603"
+ms.locfileid: "91875796"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>以 Webhook、自動化 Runbook、Logic Apps 作為 Azure 事件方格事件的事件處理常式
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 許多 Azure 服務都已自動設定為可處理事件。 您也可以使用任何 WebHook 來處理事件。 WebHook 不需要裝載於 Azure 也能處理處理事件。 事件方格僅支援 HTTPS WebHook 端點。
 
 > [!NOTE]
-> Azure 自動化 Runbook 和邏輯應用程式均可透過 Webhook 作為事件處理常式支援。 
+> - Azure 自動化 Runbook 和邏輯應用程式均可透過 Webhook 作為事件處理常式支援。 
+> - 雖然您可以使用 **Webhook** 作為 **端點類型** 來將 azure 函式設定為事件處理常式，但請使用 **Azure function** 作為端點類型。 如需詳細資訊，請參閱 [Azure 函數作為事件處理常式](handler-functions.md)。
 
 ## <a name="webhooks"></a>Webhook
 如需使用 webhook 作為事件處理常式的概觀和範例，請參閱下列文章。 

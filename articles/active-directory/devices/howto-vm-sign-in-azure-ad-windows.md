@@ -13,10 +13,10 @@ ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826658"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
@@ -365,6 +365,6 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 請分享您對此預覽功能的意見反應，或在 [Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上使用它來報告問題。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](../fundamentals/active-directory-whatis.md)

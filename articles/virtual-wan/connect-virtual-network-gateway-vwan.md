@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441024"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>將 VPN 閘道 (虛擬網路閘道) 連線到虛擬 WAN
@@ -119,7 +119,7 @@ Azure 虛擬網路
 3. 按一下 [確定] **** 來建立連線。
 4. 您可以在虛擬網路閘道 **的 [連線** ] 頁面中查看連接。
 
-   ![[連接]](./media/connect-virtual-network-gateway-vwan/connect.png "連接")
+   ![[連接]](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
 5. 重複上述步驟來建立第二個連接。 針對第二個連接，請選取您所建立的其他局域網路閘道。
 6. 如果連線是透過 BGP，則在建立連線之後，請流覽至連線， **然後選取 [** 設定]。 **在 [設定**] 頁面上，針對 [ **BGP**] 選取 [**已啟用**]。 然後按一下 [ **儲存**]。 針對第二個連接重複執行。
 
@@ -129,7 +129,7 @@ Azure 虛擬網路
 
 1. 在虛擬網路中建立虛擬機器 (Test1-VNet) 適用于 Azure VPN 閘道 (Test1->VNG-AZURE-VNET-1) 。 請勿在 GatewaySubnet 中建立虛擬機器。
 2. 建立另一個虛擬網路以連線到虛擬 WAN。 在此虛擬網路的子網中建立虛擬機器。 此虛擬網路不能包含任何虛擬網路閘道。 您可以使用 [站對站連接](virtual-wan-site-to-site-portal.md#vnet) 文章中的 PowerShell 步驟，快速建立虛擬網路。 執行 Cmdlet 之前，請務必變更這些值。
-3. 將 VNet 連線到虛擬 WAN 中樞。 在虛擬 WAN 的頁面上，選取 [ **虛擬網路**連線]，然後選取 [ **+ 新增連接**]。 在 [新增連線] 頁面上，填寫下列欄位︰
+3. 將 VNet 連線到虛擬 WAN 中樞。 在虛擬 WAN 的頁面上，選取 [ **虛擬網路**連線]，然後選取 [ **+ 新增連接**]。 在 [新增連線]  頁面上，填寫下列欄位︰
 
     * **名稱** - 為您的連線命名。
     * **中樞** - 選取要與此連線產生關聯的中樞。

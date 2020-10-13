@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613164"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
@@ -192,11 +192,11 @@ az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 > [!CAUTION]
-> Az. HPCCache PowerShell 模組目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議用於生產工作負載。 某些功能可能不受支援，或可能具有受限的功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Az. HPCCache PowerShell 模組目前為公開預覽狀態。 所提供的這個預覽版本並沒有服務等級協定。 不建議用於生產工作負載。 某些功能可能不受支援，或可能具有受限的功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="requirements"></a>需求
 
-如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的總覽](https://docs.microsoft.com/azure/cloud-shell/overview) 以取得詳細資訊。
+如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的概觀](https://docs.microsoft.com/azure/cloud-shell/overview)以取得詳細資訊。
 
 > [!IMPORTANT]
 > **HPCCache** PowerShell 模組目前為預覽狀態，您必須使用指令程式個別進行安裝 `Install-Module` 。 在此 PowerShell 模組正式推出之後，它將會成為未來 Az PowerShell 模組版本的一部分，並以原生方式從 Azure Cloud Shell 內提供。

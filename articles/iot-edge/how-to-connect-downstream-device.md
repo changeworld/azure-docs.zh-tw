@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281451"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>將下游裝置連線到 Azure IoT Edge 閘道
@@ -37,7 +37,7 @@ ms.locfileid: "91281451"
 
 在本文中，*閘道*和 *IoT Edge 閘道*這兩個詞是指設定為透明閘道的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 在設定 IoT Edge 裝置時，擁有用來產生裝置 CA 憑證的根 CA 憑證檔案，作為下游裝置上可用 [的透明閘道](how-to-create-transparent-gateway.md) 。 下游裝置會使用此憑證來驗證閘道裝置的身分識別。 如果您使用了示範憑證，根 CA 憑證就稱為 **azure-iot-test-only.root.ca.cert.pem**。
 * 具有指向閘道裝置的已修改連接字串，如 [驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)所述。

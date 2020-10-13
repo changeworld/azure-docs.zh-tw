@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403521"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全性控制 V2：治理和策略
@@ -255,7 +255,7 @@ ms.locfileid: "91403521"
 如需詳細資訊，請參閱下列參考資料：
 - [Azure 安全性基準測試-備份和復原](security-controls-v2-backup-recovery.md)
 
-- [Azure 架構完善的架構-Azure 應用程式的備份和災難復原](/azure/architecture/framework/resiliency/backup-and-recovery)
+- [Azure Well-Architecture Framework-Azure 應用程式的備份和災難復原](/azure/architecture/framework/resiliency/backup-and-recovery)
 
 - [Azure 採用架構-商務持續性和嚴重損壞修復](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 

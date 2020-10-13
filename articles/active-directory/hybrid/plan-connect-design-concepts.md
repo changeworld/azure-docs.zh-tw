@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279647"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：設計概念
@@ -85,7 +85,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 >[!NOTE]
 > 在內部部署 AD 物件匯入到 Azure AD Connect (也就是，匯入到 AD 連接器空間並投影到 Metaverse) 之後，您就無法再變更其 sourceAnchor 值。 若要對給定的內部部署 AD 物件指定 sourceAnchor 值，請先設定其 ms-DS-ConsistencyGuid 屬性，再將其匯入到 Azure AD Connect。
 
-### <a name="permission-required"></a>所需權限
+### <a name="permission-required"></a>必要權限
 若要讓這項功能生效，用來與內部部署 Active Directory 同步的 AD DS 帳戶，必須獲得內部部署 Active Directory 中 ms-DS-ConsistencyGuid 屬性的寫入權限。
 
 ### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>如何啟用 ConsistencyGuid 功能 - 新安裝
@@ -140,7 +140,7 @@ Azure AD Connect (1.1.524.0 版和更新版本) 現在可協助您使用 ms-DS-C
 
 3. 輸入 Azure AD 系統管理員認證，然後按一下 [下一步]****。
 
-4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 按一下 [下一步]  以繼續。
+4. Azure AD Connect 精靈會分析內部部署 Active Directory 中的 ms-DS-ConsistencyGuid 屬性狀態。 如果未在目錄的任何物件上設定此屬性，則 Azure AD Connect 會結束，而且其他應用程式目前未使用此屬性，可安全地使用它作為「來源錨點」屬性。 選取 [下一步] 以繼續操作。
 
    ![啟用現有部署的 ConsistencyGuid - 步驟 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 

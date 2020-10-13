@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604405"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火牆後方的工作區進行 Azure Machine Learning
@@ -95,8 +95,8 @@ Azure Government 區域所需的 Url。
 
 | **主機名稱** | **目的** |
 | ---- | ---- |
-| **usgovarizona.api.ml.azure.us** | 美國亞利桑那州區域 |
-| **usgovvirginia.api.ml.azure.us** | 美國弗吉尼亞州區域 |
+| **usgovarizona.api.ml.azure.us** | US-Arizona 區域 |
+| **usgovvirginia.api.ml.azure.us** | US-Virginia 區域 |
 
 ## <a name="next-steps"></a>後續步驟
 

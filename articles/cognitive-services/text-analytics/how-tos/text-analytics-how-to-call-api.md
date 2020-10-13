@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710595"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
@@ -29,7 +29,7 @@ ms.locfileid: "91710595"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "91710595"
 
 您目前可以針對所有文字分析作業提交相同的文件：情感、關鍵片語、語言偵測，以及實體識別。 (未來結構描述很有可能會針對每個分析而有所不同)。
 
-| 項目 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../text-analytics-supported-languages.md)。 |

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
 ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439006"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
@@ -31,7 +31,7 @@ ms.locfileid: "91439006"
 
 通常，組織會有定期執行相同進程的電腦集合。 資訊安全中心會使用機器學習來分析電腦上執行的應用程式，並建立已知安全的軟體清單。 允許清單是以您特定的 Azure 工作負載為基礎，您可以使用下列指示進一步自訂建議。
 
-當您已啟用並設定彈性應用程式控制之後，如果任何應用程式執行的應用程式不是您定義為安全的應用程式，您將會收到安全性警示。
+已啟用並設定自適性應用程式控制時，如果有任何您未定義於安全清單中的應用程式執行，您就會收到安全性警示。
 
 
 ## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>適應性應用程式控制的優點為何？
@@ -50,11 +50,11 @@ ms.locfileid: "91439006"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
-|定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
+|版本狀態：|正式上市 (GA)|
+|定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |支援的電腦：|![是 ](./media/icons/yes-icon.png) azure 和不是執行 Windows 和 Linux 的非 azure 機器<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 電腦|
-|必要的角色和許可權：|**安全性讀取** 者和 **讀取** 者角色可以同時查看群組和已知安全的應用程式清單<br>**參與者** 和 **安全性系統管理員** 角色可以編輯群組和已知安全的應用程式清單|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|必要的角色和權限：|**安全性讀取** 者和 **讀取** 者角色可以同時查看群組和已知安全的應用程式清單<br>**參與者** 和 **安全性系統管理員** 角色可以編輯群組和已知安全的應用程式清單|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 

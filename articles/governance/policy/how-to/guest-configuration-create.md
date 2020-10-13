@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728925"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893113"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-建立設定套件之後，在將其發佈至 Azure 前，您可在工作站或 CI/CD 環境中測試套件。 GuestConfiguration Cmdlet `Test-GuestConfigurationPackage` 在開發環境中所包含的代理程式，會與 Azure 電腦所使用的代理程式相同。 使用此解決方案，即可先在本機進行整合式測試，再發行到需要計費的雲端環境。
+建立設定套件之後，但在將它發佈至 Azure 之前，您可以從您的工作站或持續整合和持續部署 (CI/CD) 環境中測試套件。 GuestConfiguration Cmdlet `Test-GuestConfigurationPackage` 在開發環境中所包含的代理程式，會與 Azure 電腦所使用的代理程式相同。 使用此解決方案，即可先在本機進行整合式測試，再發行到需要計費的雲端環境。
 
 由於代理程式實際上是評估本機環境，因此在大部分的情況下會需要在打算進行稽核的相同 OS 平台上執行 Test- Cmdlet。 該測試只會使用內容套件中包含的模組。
 
@@ -233,7 +233,7 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-下一個步驟是將檔案發佈至 blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
+下一步是要將檔案發佈至 Azure Blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
 
 ```azurepowershell-interactive
 function publish {

@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567413"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的資源角色
@@ -86,7 +86,7 @@ ms.locfileid: "89567413"
 
     ![存取套件-新增資源角色-選取群組](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. 按一下 [選取]  。
+1. 按一下 [選取]。 
 
     一旦您選取群組或小組，[ **子類型** ] 欄會列出下列其中一個子類型：
 
@@ -103,7 +103,7 @@ ms.locfileid: "89567413"
 
     ![存取套件-為群組或小組新增資源角色](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. 按一下 [新增]  。
+1. 按一下 [新增] 。
 
     具有存取套件之現有指派的任何使用者，在新增時都會自動成為此群組或小組的成員。
 
@@ -128,13 +128,13 @@ ms.locfileid: "89567413"
 
     ![存取套件-新增資源角色-選取應用程式](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. 按一下 [選取]  。
+1. 按一下 [選取]。 
 
 1. 在 [ **角色** ] 清單中，選取應用程式角色。
 
     ![存取套件-為應用程式新增資源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. 按一下 [新增]  。
+1. 按一下 [新增] 。
 
     在新增應用程式時，任何具有存取套件之現有指派的使用者都會自動獲得存取權。
 
@@ -148,13 +148,13 @@ ms.locfileid: "89567413"
 
     ![存取套件-新增資源角色-選取 SharePoint Online 網站](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. 按一下 [選取]  。
+1. 按一下 [選取]。 
 
 1. 在 [ **角色** ] 清單中，選取 SharePoint Online 網站角色。
 
     ![存取套件-SharePoint Online 網站的新增資源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. 按一下 [新增]  。
+1. 按一下 [新增] 。
 
     具有存取套件之現有指派的任何使用者，將會在新增時，自動獲得此 SharePoint Online 網站的存取權。
 
@@ -180,7 +180,7 @@ ms.locfileid: "89567413"
 
 當您移除小組成員時，也會從 Microsoft 365 群組移除這些成員。 移除小組的交談功能方面可能會延遲。 如需詳細資訊，請參閱 [群組成員資格](/microsoftteams/office-365-groups#group-membership)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Active Directory 建立基本群組並新增成員](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告](../develop/active-directory-enterprise-app-role-management.md)

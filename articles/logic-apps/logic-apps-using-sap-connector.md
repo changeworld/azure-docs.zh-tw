@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
 ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488842"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>從 Azure Logic Apps 連線至 SAP 系統
@@ -197,7 +197,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
 
    ![新增 HTTP 要求觸發程序](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
-1. 現在儲存邏輯應用程式，讓您可以產生邏輯應用程式的端點 URL。 在設計工具的工具列上，選取 [儲存]  。
+1. 現在儲存邏輯應用程式，讓您可以產生邏輯應用程式的端點 URL。 在設計工具的工具列上，選取 [儲存]。
 
    端點 URL 現在會出現在您的觸發程序中，例如：
 
@@ -274,7 +274,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
 
       ![完成 SAP 動作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 <a name="add-response"></a>
 
@@ -404,7 +404,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
 
    如需 SAP 動作的詳細資訊，請參閱 [IDoc 作業的訊息架構](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-1. 現在儲存邏輯應用程式，以便可以開始從 SAP 系統接收訊息。 在設計工具的工具列上，選取 [儲存]  。
+1. 現在儲存邏輯應用程式，以便可以開始從 SAP 系統接收訊息。 在設計工具的工具列上，選取 [儲存]。
 
 邏輯應用程式現在已準備好從 SAP 系統接收訊息。
 
@@ -606,11 +606,11 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
 
 1. 若要開啟 **IDoc 處理設定的測試控管** ，請在您的 SAP 介面中使用 **we19** Transaction 程式碼 (T 程式碼) 搭配 **/n** 前置詞。
 
-1. 在 [ **測試的範本**] 下，選取 [ **Via 訊息類型**]，然後輸入您的訊息類型，例如 **CREMAS**。 選取 [建立]。
+1. 在 [ **測試的範本**] 下，選取 [ **Via 訊息類型**]，然後輸入您的訊息類型，例如 **CREMAS**。 選取 [建立]****。
 
 1. 選取 [**繼續**]，確認**哪一種 IDoc 類型**的訊息。
 
-1. 選取 [ **EDIDC** ] 節點。 為您的接收者和寄件者埠輸入適當的值。 選取 [繼續]  。
+1. 選取 [ **EDIDC** ] 節點。 為您的接收者和寄件者埠輸入適當的值。 選取 [繼續]。
 
 1. 選取 **標準輸出處理**。
 
@@ -925,7 +925,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
    ![新增 HTTP 要求觸發程序](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. 現在請儲存邏輯應用程式，即可產生邏輯應用程式的端點 URL。
-在設計工具的工具列上，選取 [儲存]  。
+在設計工具的工具列上，選取 [儲存]。
 
    端點 URL 現在會出現在您的觸發程序中，例如：
 
@@ -987,7 +987,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
 
    如需有關 SAP 動作的詳細資訊，請參閱 [IDoc 作業的訊息架構](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 ### <a name="test-your-logic-app"></a>測試應用程式邏輯
 
@@ -1030,7 +1030,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
    > }
    > ```
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 ### <a name="test-your-logic-app"></a>測試應用程式邏輯
 
@@ -1190,7 +1190,7 @@ SAP 連接器使用 [sap .Net connector (NCo) 程式庫](https://support.sap.com
 > [!NOTE]
 > 若為 [整合服務環境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式 (ISE) ，此連接器的 ISE 標記版本會改用 [ise 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 從 Azure Logic Apps[連接至內部部署系統](../logic-apps/logic-apps-gateway-connection.md)。
 * 瞭解如何使用 [企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md)驗證、轉換和使用其他訊息作業。

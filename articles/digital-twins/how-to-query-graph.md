@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e3dce20f447b47ad78deea617b513c50f552733
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848802"
+ms.locfileid: "91893623"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -43,6 +43,38 @@ FROM DIGITALTWINS
 SELECT TOP (5)
 FROM DIGITALTWINS
 WHERE ...
+```
+
+### <a name="count-items"></a>計數專案
+
+您可以使用子句來計算結果集中的 twins 數目 `Select COUNT` ：
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS
+``` 
+
+加入 `WHERE` 子句來計算符合特定準則的 twins 數目。 以下範例會根據對應項模型的類型，使用套用的篩選來進行計數 (如需此語法的詳細資訊，請參閱下面的 [*依模型查詢*](#query-by-model)) ：
+
+```sql
+SELECT COUNT() 
+FROM DIGITALTWINS 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') 
+SELECT COUNT() 
+FROM DIGITALTWINS c 
+WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
+```
+
+您也可以 `COUNT` 搭配子句來使用 `JOIN` 。 以下查詢會計算房間1和2的淺色面板中包含的所有光源燈泡：
+
+```sql
+SELECT COUNT(LightBulb)  
+FROM DIGITALTWINS Room  
+JOIN LightPanel RELATED Room.contains  
+JOIN LightBulb RELATED LightPanel.contains  
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
+AND Room.$dtId IN ['room1', 'room2'] 
 ```
 
 ### <a name="query-by-property"></a>依屬性查詢

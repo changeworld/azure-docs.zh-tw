@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760248"
+ms.locfileid: "91893759"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -322,7 +322,6 @@ WireData
 * 伺服器遙測：Application Insights 模組會收集用戶端 IP 位址。 如果已設定 `X-Forwarded-For`，則不會收集該位址。
 * 若要深入瞭解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這 [篇文章](./app/ip-collection.md)。
 
-
 您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 您可以[使用 Power BI](app/export-power-bi.md ) 在地圖上顯示您的要求遙測資料。
@@ -398,6 +397,29 @@ WireData
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>如何? 將 Application Insights 資源移至新區域？
+
+**目前不支援**將現有的 Application Insights 資源從某個區域移至另一個區域。 您所收集的歷程記錄資料 **無法遷移** 至新的區域。 唯一的部分解決方法是：
+
+1. 在新區域中建立全新的 Application Insights 資源 ([傳統](app/create-new-resource.md) 或以 [工作區為基礎](/app/create-workspace-resource.md) 的) 。
+2. 重新建立新資源中原始資源專屬的所有唯一自訂。
+3. 修改您的應用程式，以使用新區域資源的 [檢測金鑰](app/create-new-resource.md#copy-the-instrumentation-key) 或 [連接字串](app/sdk-connection-string.md)。  
+4. 測試以使用新的 Application Insights 資源，確認一切都如預期般繼續運作。 
+5. 至此，您可以刪除會導致 **所有歷程記錄資料遺失**的原始資源。 或者，在資料保留設定的持續時間內，保留原始資源以供歷程記錄報表之用。
+
+在新區域中通常需要手動重新建立或更新資源的唯一自訂，包括但不限於：
+
+- 重新建立自訂儀表板和活頁簿。 
+- 重新建立或更新任何自訂記錄/計量警示的範圍。 
+- 重新建立可用性警示。
+- 重新建立任何自訂 Role-Based 存取控制， (您的使用者存取新資源所需的 RBAC) 設定。 
+- 複寫牽涉到內嵌取樣、資料保留、每日上限和自訂計量的設定。 這些設定可透過 [ **使用量和估計成本** ] 窗格來控制。
+- 依賴 API 金鑰的任何整合，例如 [發行注釋](/app/annotations.md)、 [即時計量安全控制通道](app/live-stream.md#secure-the-control-channel) 等等。您將需要產生新的 API 金鑰，並更新相關聯的整合。 
+- 需要再次設定傳統資源中的連續匯出。
+- 以工作區為基礎的資源中的診斷設定必須重新設定。
+
+> [!NOTE]
+> 如果您在新區域中建立的資源即將取代傳統資源，我們建議您探索 [建立新的工作區型資源](app/create-workspace-resource.md) ，或將現有的 [資源遷移至以工作區為基礎](app/convert-classic-resource.md)的優點。 
 
 ### <a name="automation"></a>自動化
 

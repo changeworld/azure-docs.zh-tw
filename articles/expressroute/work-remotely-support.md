@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/22/2020
 ms.author: duau
 ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567668"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>使用 Azure ExpressRoute 建立混合式連線能力，以支援遠端使用者
@@ -26,7 +26,7 @@ ms.locfileid: "89567668"
 
 [ExpressRoute](expressroute-introduction.md) 是一項 Azure 服務，可在 Microsoft 資料中心和內部部署或共置設備中的基礎結構之間啟用私人連線。 ExpressRoute 連線不會經過公用網際網路。 它們提供安全的連線能力、可靠性和速度，並具有比網際網路一般連線更低且一致的延遲。
 
-## <a name="useful-links"></a>實用的連結
+## <a name="useful-links"></a>實用連結
 
 * [如何增加現有 ExpressRoute 線路的頻寬](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [ExpressRoute 監視、計量和警示](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)

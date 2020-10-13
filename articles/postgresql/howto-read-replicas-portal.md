@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: 08d1d393b4ba52e6feeb36c0538f2664e1407d38
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708283"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>從 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中建立及管理讀取複本
@@ -18,7 +18,7 @@ ms.locfileid: "91708283"
 在本文中，您將了解如何透過 Azure 入口網站，在「適用於 PostgreSQL 的 Azure 資料庫」中建立與管理讀取複本。 若要深入了解讀取複本，請參閱[概觀](concepts-read-replicas.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)作為主伺服器。
 
 ## <a name="azure-replication-support"></a>Azure 複寫支援
@@ -39,7 +39,7 @@ ms.locfileid: "91708283"
 
 2. 從伺服器的功能表中 **，選取 [** 複寫]。 如果 Azure 複寫支援至少設定為 **複本**，則您可以建立讀取複本。 
 
-3. 如果 Azure 複寫支援未設定為至少 **複本**，請加以設定。 選取 [儲存]  。
+3. 如果 Azure 複寫支援未設定為至少 **複本**，請加以設定。 選取 [儲存]****。
 
    :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-設定複本並儲存":::
 

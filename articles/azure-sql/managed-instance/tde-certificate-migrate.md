@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
 ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618132"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>將受 TDE 保護之資料庫的憑證遷移至 Azure SQL 受控執行個體
@@ -51,7 +51,7 @@ ms.locfileid: "91618132"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需瞭解這些 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) Az 模組和 AzureRM 模組中命令的引數本質上相同。
+> Azure SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRM 模組中命令的引數本質上相同。
 
 在 PowerShell 中執行下列命令，以安裝/更新模組：
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535520"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>內建的認知技能，可在編制索引 (Azure 認知搜尋) 期間進行文字和影像處理
@@ -31,7 +31,7 @@ ms.locfileid: "91535520"
 
 有數種技能所取用或產生的內容都很具彈性。 一般而言，大部分的技能乃是依據預先定型的模型，這表示您無法使用自己的定型資料來定型模型。 下表列舉並說明 Microsoft 所提供的技能。 
 
-| 技能 | 說明 |
+| 技能 | 描述 |
 |-------|-------------|
 |[CustomEntityLookupSkill。](cognitive-search-skill-custom-entity-lookup.md)| 從自訂、使用者定義的單字和片語清單中尋找文字。|
 | [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | 這項技能使用預先定型的模型，根據字詞位置、語言規則、與其他字詞的鄰近程度，以及字詞在來源資料中是否尋常來偵測重要詞彙。 |

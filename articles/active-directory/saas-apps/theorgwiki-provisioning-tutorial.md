@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255772"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>教學課程：設定 TheOrgWiki 來自動布建使用者
@@ -27,7 +27,7 @@ ms.locfileid: "91255772"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -65,7 +65,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![組織 Wiki 管理主控台中 [服務帳戶] 頁面的螢幕擷取畫面。](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. 按一下 [ **+ 服務帳戶**]。 在 [ **服務帳戶類型**] 下，選取 [ **權杖依據**]。 按一下 [檔案]  。
+4. 按一下 [ **+ 服務帳戶**]。 在 [ **服務帳戶類型**] 下，選取 [ **權杖依據**]。 按一下 **[儲存]** 。
 
     ![[新增服務帳戶] 對話方塊的螢幕擷取畫面，其中包含服務帳戶類型、以權杖為基礎的儲存選項，以及已呼叫的儲存選項。](media/theorgwiki-provisioning-tutorial/auth.png)
 
@@ -147,7 +147,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案]  。
+8. 按一下 **[儲存]** 。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 TheOrgWiki**]。
 

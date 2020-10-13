@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c7e8f0fc3a90a0811d38840004f7ae12a9a225ce
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708504"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫單一伺服器中備份和還原伺服器
 
 為了能使用還原功能，適用於 PostgreSQL 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
 - [適用於 PostgreSQL 的 Azure 資料庫伺服器和資料庫](quickstart-create-server-database-azure-cli.md)
 
@@ -72,7 +72,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
-| name | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
+| NAME | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如 `2018-03-13T05:59:00-08:00`。 您也可以使用 UTC Zulu 格式，例如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要進行還原的來源伺服器之名稱或識別碼。 |
 
@@ -112,7 +112,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新伺服器將所屬的資源群組名稱。|
-|name | mydemoserver-georestored | 新伺服器的名稱。 |
+|NAME | mydemoserver-georestored | 新伺服器的名稱。 |
 |source-server | mydemoserver | 所使用之異地備援備份所屬的現有伺服器名稱。 |
 |location | eastus | 新伺服器的位置。 |
 |sku-name| GP_Gen4_8 | 此參數會設定新伺服器的定價層、計算世代及 vCore 數目。 GP_Gen4_8 所對應的是一般用途、具有 8 個 vCore 的第 4 代伺服器。|

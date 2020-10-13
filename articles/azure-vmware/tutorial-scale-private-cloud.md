@@ -4,10 +4,10 @@ description: 在本教學課程中，您會使用 Azure 入口網站來縮放 Az
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: e1226eb98607a34869bda1f998c7cecea2e50919
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254409"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>教學課程：縮放 Azure VMware 解決方案私人雲端

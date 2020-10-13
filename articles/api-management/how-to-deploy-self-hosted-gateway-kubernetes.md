@@ -10,10 +10,10 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500125"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>將自我裝載閘道部署至 Kubernetes
@@ -127,6 +127,6 @@ Azure 入口網站中提供的 YAML 檔會將 `externalTrafficPolicy` [服務](h
 當 [azure](self-hosted-gateway-overview.md#connectivity-to-azure) 的連線暫時遺失時，會中斷流向 azure 的遙測流量，且資料會在中斷期間遺失。
 請考慮 [設定本機監視](how-to-configure-local-metrics-logs.md) ，以確保能夠觀察 API 流量，並防止在 Azure 連線中斷期間遺失遙測資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解自我裝載的閘道，請參閱 [自我裝載閘道總覽](self-hosted-gateway-overview.md)。

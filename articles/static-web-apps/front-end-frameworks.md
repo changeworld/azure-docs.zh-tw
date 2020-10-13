@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
 ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905370"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>使用 Azure 靜態 Web Apps 預覽版設定前端架構和程式庫
 
 Azure 靜態 Web Apps 要求您在前端架構或程式庫的 [組建設定檔](github-actions-workflow.md) 中具有適當的設定值。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 下表列出一系列 framework 和程式庫<sup>1</sup>的設定。
 
@@ -62,6 +62,6 @@ Azure 靜態 Web Apps 要求您在前端架構或程式庫的 [組建設定檔](
 
 <sup>2</sup> 不適用
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [組建和工作流程設定](github-actions-workflow.md)

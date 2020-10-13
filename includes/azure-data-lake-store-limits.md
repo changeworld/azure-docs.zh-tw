@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665585"
 ---
 **Azure Data Lake Storage Gen2** 不是專用的服務或儲存體帳戶類型。 這是最新版本的功能，專門用於巨量資料分析。  這些功能適用於一般用途 v2 或 BlockBlobStorage 儲存體帳戶，您可藉由啟用帳戶的**階層命名空間**功能來加以取得。 如需調整目標，請參閱下列文章。 

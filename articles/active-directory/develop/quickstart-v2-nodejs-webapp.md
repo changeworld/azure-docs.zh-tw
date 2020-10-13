@@ -1,6 +1,7 @@
 ---
-title: 將 OIDC 登入新增至 Node.js Web 應用程式 - Microsoft 身分識別平台 | Azure
-description: 了解如何使用 OpenID Connect 在 Node.js Web 應用程式中實作驗證。
+title: 快速入門：將「使用者登入」新增至 Node.js Web 應用程式 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，您會了解如何使用 OpenID Connect 在 Node.js Web 應用程式中實作驗證。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257685"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613300"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
@@ -24,11 +25,8 @@ ms.locfileid: "91257685"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要執行此範例，您將需要：
-
-* 從 http://nodejs.org/ 安裝 Node.js
-
-* [Microsoft 帳戶](https://www.outlook.com)或 [Microsoft 365 開發人員計劃](/office/developer-program/office-365-developer-program)
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com/)。

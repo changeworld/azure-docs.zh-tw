@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11444fc599b46ceff90eda562d2fd557bcaf53b2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361784"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961335"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虛擬機器的可用性
 
@@ -22,7 +22,7 @@ ms.locfileid: "91361784"
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重新開機 - 維護與停機時間
 有三種情況可能會導致 Azure 中的虛擬機器受到影響：未規劃的硬體維護、未預期的停機時間以及規劃的維護。
 
-* **未規劃的硬體維護事件**發生在 Azure 平台預測與實體機器相關聯的硬體或任何平台元件即將失敗 (故障) 時。 平台會在預測到發生失敗時發出未規劃的硬體維護事件，以減少對該硬體上裝載之虛擬機器的影響。 Azure 會使用[即時移轉](./linux/maintenance-and-updates.md)技術，將虛擬機器從故障硬體移轉至狀況良好的實體機器。 即時移轉是只會短時間暫停虛擬機器的 VM 保留作業。 系統會維護記憶體、開啟的檔案和網路連線，但在事件之前及 (或) 之後的效能可能會降低。 如果無法使用即時移轉，VM 將會發生未預期的停機時間，如下所述。
+* **未規劃的硬體維護事件**發生在 Azure 平台預測與實體機器相關聯的硬體或任何平台元件即將失敗 (故障) 時。 平台會在預測到發生失敗時發出未規劃的硬體維護事件，以減少對該硬體上裝載之虛擬機器的影響。 Azure 會使用[即時移轉](./maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252flinux%252ftoc.json)技術，將虛擬機器從故障硬體移轉至狀況良好的實體機器。 即時移轉是只會短時間暫停虛擬機器的 VM 保留作業。 系統會維護記憶體、開啟的檔案和網路連線，但在事件之前及 (或) 之後的效能可能會降低。 如果無法使用即時移轉，VM 將會發生未預期的停機時間，如下所述。
 
 
 * **非預期的停機時間**是指虛擬機器的硬體或實體基礎結構發生意外失敗的時間。 這可能包含本機網路失敗、本機磁碟失敗，或其他機架層級的失敗。 在偵測到失敗時，Azure 平台會自動將虛擬機器移轉 (修復) 至相同資料中心內狀況良好的實體機器。 在修復程序期間，虛擬機器會停機 (重新開機)，而在某些情況下，還會遺失暫存磁碟機。 連結的 OS 和資料磁碟一律會予以保留。
@@ -94,7 +94,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 >
 > 在這些情況下，第二個 VM 的 OS 磁碟可能會建立在與第一個 VM 相同的容錯網域上，因此這兩個 VM 會位於相同的容錯網域。 若要避免此問題，我們建議您不要在部署之間停止/解除配置 VM。
 
-如果您打算使用 VM 搭配非受控磁碟，請針對 VM 的虛擬硬碟 (VHD) 在其中儲存為[分頁 Blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) 的儲存體帳戶，遵循以下的最佳做法。
+如果您打算使用 VM 搭配非受控磁碟，請針對 VM 的虛擬硬碟 (VHD) 在其中儲存為[分頁 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) 的儲存體帳戶，遵循以下的最佳做法。
 
 1. **將與 VM 相關聯的所有磁碟 (OS 和資料) 保留於相同的儲存體帳戶中**
 2. 將更多 VHD 新增至儲存體帳戶之前，**請檢閱 Azure 儲存體帳戶中非受控磁碟數目的[限制](../storage/blobs/scalability-targets-premium-page-blobs.md)**

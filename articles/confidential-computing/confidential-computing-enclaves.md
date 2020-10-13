@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
 ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994853"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure 機密計算虛擬機器 (Vm) 總覽
@@ -48,5 +48,5 @@ Azure 機密運算基礎結構目前由虛擬機器 (VM) 的專用 SKU 組成。
 
 ## <a name="next-steps"></a>後續步驟
 - 閱讀在 Azure 機密計算虛擬機器上部署解決方案的[最佳作法](virtual-machine-solutions.md)。
-- [部署 DCsv2 系列虛擬機器](quick-create-portal.md)
+- [部署 DCsv2-Series 的虛擬機器](quick-create-portal.md)
 - 使用 OE SDK[開發可感知記憶體保護區的應用程式](application-development.md)

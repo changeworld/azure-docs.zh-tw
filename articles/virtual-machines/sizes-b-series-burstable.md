@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
 ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666631"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
@@ -59,7 +59,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | 時間 | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
+| 狀況 | 時間 | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480 (初始點數)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |

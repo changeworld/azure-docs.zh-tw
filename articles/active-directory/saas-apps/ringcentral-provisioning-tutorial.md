@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: dc83ea424aca1166d2b9c45b45255fbca865a7d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278748"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教學課程：設定 RingCentral 來自動布建使用者
@@ -30,7 +30,7 @@ ms.locfileid: "91278748"
 > * Azure AD 與 RingCentral 之間保持使用者屬性同步
 > * RingCentral (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

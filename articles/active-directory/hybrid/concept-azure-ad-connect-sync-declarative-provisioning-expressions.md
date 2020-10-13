@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280208"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步處理：了解宣告式佈建運算式
@@ -41,7 +41,7 @@ Azure AD Connect 同步處理是以 Forefront Identity Manager 2010 中最先引
 * 布林值以兩個常數表示：True、False。
 * 內建常數和常值只以其名稱表示：NULL、CRLF、IgnoreThisFlow
 
-### <a name="functions"></a>函數
+### <a name="functions"></a>函式
 宣告式佈建會使用許多函式，來啟用轉換屬性值的可能性。 這些函式可以是巢狀的，因此，來自某一個函式的結果會傳遞到另一個函式。
 
 `Function1(Function2(Function3()))`

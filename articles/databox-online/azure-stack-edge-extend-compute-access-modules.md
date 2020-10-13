@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894123"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>在您的 Azure Stack Edge Pro 上啟用計算網路
@@ -83,7 +83,7 @@ ms.locfileid: "90894123"
 
         ![在 IoT Edge 自訂模組分頁中指定埠資訊](media/azure-stack-edge-extend-compute-access-modules/module-information.png)
 
-    4. 選取 [儲存]。
+    4. 選取 [儲存]****。
 
 ## <a name="verify-module-access"></a>確認模組存取
 
@@ -96,6 +96,6 @@ ms.locfileid: "90894123"
 
     ![確認透過指定的埠連接到模組](media/azure-stack-edge-extend-compute-access-modules/verify-connect-module-1.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-manage-users.md)。

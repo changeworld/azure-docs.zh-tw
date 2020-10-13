@@ -9,16 +9,16 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281910"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>管理 OPC 保存庫憑證服務
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 本文說明 Azure 中的 OPC 保存庫憑證管理服務的系統管理工作。 其中包含有關如何更新簽發者 CA 憑證、如何更新 (CRL) 的憑證撤銷清單，以及如何授與及撤銷使用者存取權的資訊。
 
@@ -35,7 +35,7 @@ ms.locfileid: "91281910"
 5. 輸入有效的主體 (例如 `CN=My CA Root, O=MyCompany, OU=MyDepartment`) 。<br>
    > [!IMPORTANT]
    > 如果您變更主旨，則必須更新簽發者憑證，否則服務將無法簽署應用程式憑證。 設定的主體會根據作用中簽發者憑證的主體進行檢查。 如果主體不符，則會拒絕憑證簽署。
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 7. 如果您在此時遇到「禁止」錯誤，則您的使用者認證沒有管理員許可權可修改或建立新的根憑證。 根據預設，部署服務的使用者會有服務的系統管理員和簽署角色。 其他使用者必須在 Azure Active Directory (Azure AD) 應用程式註冊中，適當地新增至核准者、寫入者或系統管理員角色。
 8. 選取 [詳細資料]。 這應該會顯示更新的資訊。
 9. 選取 [ **更新 CA 憑證** ] 以發出第一個簽發者 CA 憑證，或更新簽發者憑證。 然後選取 [確定]。
@@ -75,7 +75,7 @@ CRL 的更新是一項更新，應定期散發給應用程式。 支援 CRL 發�
 5. 選取 [ **新增使用者**]。
 6. 選取或邀請使用者指派給特定角色。
 7. 選取使用者的角色。
-8. 選取 [指派]。
+8. 選取 [指派]****。
 9. 對於系統管理員或核准者角色中的使用者，請繼續新增 Azure Key Vault 存取原則。
 
 ### <a name="remove-user"></a>移除使用者

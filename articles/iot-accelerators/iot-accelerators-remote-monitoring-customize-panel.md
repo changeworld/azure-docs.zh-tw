@@ -10,10 +10,10 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 1dcca8409022ba4cf1f988b7c777e3a1fa511060
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318359"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中的儀表板上新增自訂面板
@@ -25,14 +25,14 @@ ms.locfileid: "91318359"
 
 本文中的面板範例會顯示於現有儀表板頁面上。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 請先完成[在遠端監視解決方案加速器 Web UI 中新增自訂頁面](iot-accelerators-remote-monitoring-customize-page.md)文章中的步驟再繼續。
 

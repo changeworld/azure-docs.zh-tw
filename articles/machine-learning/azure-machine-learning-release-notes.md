@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 189d6a57a17172f181e7375265960fe4f25f8ed1
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631829"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940237"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -90,7 +90,7 @@ ms.locfileid: "91631829"
     + 已更新 AzureML MLflow 檔和筆記本範例 
     + 使用 AzureML 後端 MLflow 專案的新支援
     + MLflow 模型登錄支援
-    + 已新增 AzureML MLflow 作業的 RBAC 支援 
+    + 新增 AzureML-MLflow 作業的 RBAC 支援 
     
   + **azureml-pipeline-core**
     + 改良 PipelineOutputFileDataset.parse_ * 方法的檔。
@@ -311,7 +311,7 @@ ms.locfileid: "91631829"
     + 針對 Datastore.register_azure_blob_container 和 Datastore.register_azure_file_share (只有支援 SAS 權杖) 的選項，我們已更新欄位的 doc 字串， `sas_token` 以包含一般讀取和寫入案例的最低許可權需求。
     + Ws.get_mlflow_tracking_uri 中的淘汰 _with_auth param ( # A1
   + **azureml-mlflow**
-    + 新增使用 AzureML 部署本機 file://模型的支援-MLflow
+    + 新增使用 AzureML-MLflow 部署本機 file://模型的支援
     + Ws.get_mlflow_tracking_uri 中的淘汰 _with_auth param ( # A1
   + **azureml-opendatasets**
     + 最近發佈的 Covid-19-19 追蹤資料集現在可透過 SDK 使用
@@ -1075,7 +1075,7 @@ ms.locfileid: "91631829"
     + 新增對 pandas 的支援。 數列和 pandas。 用於偵測資料行資料類型的類別。 先前只支援 numpy. ndarray
       + 已新增相關的程式碼變更，以正確地處理類別 dtype。
     + 已改善預測函數介面： y_pred 參數設為選擇性。 -Docstrings 已改善。
-  + **azureml-contrib-dataset**
+  + **azureml-contrib-資料集**
     + 修正無法裝載標記資料集的 bug。
   + **azureml-core**
     + 修正的錯誤 `Environment.from_existing_conda_environment(name, conda_environment_name)` 。 使用者可以建立環境的實例，該實例是本機環境的精確複本
@@ -1785,7 +1785,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 + **新功能**
   + 自動 Machine Learning 現在支援在遠端計算目標上定型 ONNX 模型
   + Azure Machine Learning 現在可讓您從先前的執行、檢查點或模型檔案繼續定型。
-    + 瞭解如何 [使用估算器從先前的執行繼續定型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/training/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)
+    + 瞭解如何 [使用估算器從先前的執行繼續定型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)
 
 + **Bug 修正和改善**
   + **azure-cli-ml**
@@ -2046,7 +2046,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 
 + **新功能**
   + Azure Machine Learning 現在提供熱門 DNN framework Chainer 的一流支援。 使用 [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true) 類別使用者可以輕鬆地定型及部署 Chainer 模型。
-    + 瞭解如何 [使用 ChainerMN 執行分散式訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/training/distributed-chainer/distributed-chainer.ipynb)
+    + 瞭解如何 [使用 ChainerMN 執行分散式訓練](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/distributed-chainer/distributed-chainer.ipynb)
     + 瞭解如何 [使用 HyperDrive 以 Chainer 執行超參數微調](https://github.com/Azure/MachineLearningNotebooks/blob/b881f78e4658b4e102a72b78dbd2129c24506980/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure Machine Learning 管線已新增可根據資料存放區修改來觸發管線執行的功能。 管線 [排程筆記本](https://aka.ms/pl-schedule) 會更新以展示這項功能。
 
