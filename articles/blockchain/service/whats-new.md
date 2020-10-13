@@ -4,16 +4,16 @@ description: 瞭解 Azure 區塊鏈服務的新功能，例如最新的版本資
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921882"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948454"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Azure 區塊鏈服務的新功能
 
-> 藉由複製並貼上此 URL，取得有關何時重新流覽此頁面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` 輸入 rss 摘要讀取程式[ ![ rss 摘要讀取器圖示](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us)。
+> 藉由複製並貼上此 URL，取得有關何時重新流覽此頁面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` 輸入 rss 摘要讀取程式[ ![ rss 摘要讀取器圖示](./media/whats-new/feed-icon-16x16.png)](/api/search/rss?locale=en-us&search=%2522Release%2bnotes%2b-%2bAzure%2bBlockchain%2bService%2522)。
 
 Azure 區塊鏈服務持續不斷改進。 為了讓您隨時掌握最新的開發訊息，本文提供下列相關資訊：
 

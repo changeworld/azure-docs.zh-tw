@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 623ec6999add175e85f117e547fba61734d2b892
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285980"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>教學課程：設定 Smartsheet 來自動布建使用者
@@ -33,7 +33,7 @@ ms.locfileid: "91285980"
 > [!NOTE]
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -131,7 +131,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Smartsheet**]。
 
@@ -148,7 +148,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |phoneNumbers[type eq "mobile"].value|String|
    |phoneNumbers[type eq "fax"].value|String|
    |externalId|String|
-   |角色 [主要 eq "True"]。顯示|String|
+   |角色 [主要 eq "True"]。顯示|字串|
    |角色 [主要 eq "True"]。類型|String|
    |roles[primary eq "True"].value|String|
    |角色|String|

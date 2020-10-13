@@ -10,10 +10,10 @@ ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187212"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>針對 Azure 自動化狀態設定的問題進行疑難排解
@@ -66,7 +66,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ### <a name="resolution"></a>解決方案
 
-使用[AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) Cmdlet 來刪除設定。
+使用 [AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) 指令 Cmdlet 來刪除設定。
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>案例：無法註冊 DSC 應用程式
 

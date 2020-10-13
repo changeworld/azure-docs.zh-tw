@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 64d90b4d9dc3efbe877230bbc20780b1c4f2d213
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934562"
 ---
 # <a name="security-agent-reference-architecture"></a>安全性代理程式參考架構
@@ -51,7 +51,7 @@ Defender for IoT 針對32位和64位的 Windows 提供不同的安裝程式代�
 | 64 位元  | C # 或 C           | C#      | 針對具有更多限制或最少量裝置資源的裝置，我們建議使用 C 代理程式。|
 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解適用于 IoT 安全性代理程式架構的 Defender，以及可用的安裝程式。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186736"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用 Azure 資源管理員的 PowerShell 建立 Azure 應用程式閘道的自訂探查
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>建立前端組態的公用 IP 位址
 
-在「美國西部」區域的資源群組**為 appgw-rg-rg**中建立公用 IP 資源**群組 publicip01** 。 此範例使用公用 IP 位址做為應用程式閘道的前端 IP 位址。  應用程式閘道需要公用 IP 位址才能具有動態建立的 DNS 名稱，因此在公用 IP 位址建立期間無法指定 `-DomainNameLabel`。
+針對美國西部區域，在資源群組**appgw-rg**中建立公用 IP 資源 **>publicip01** 。 此範例使用公用 IP 位址做為應用程式閘道的前端 IP 位址。  應用程式閘道需要公用 IP 位址才能具有動態建立的 DNS 名稱，因此在公用 IP 位址建立期間無法指定 `-DomainNameLabel`。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -195,7 +195,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-若要瞭解如何設定 TLS 卸載，請造訪：[設定 tls](application-gateway-ssl-arm.md)卸載
+瞭解如何設定 TLS 卸載，請造訪：[設定 tls](application-gateway-ssl-arm.md)卸載
 

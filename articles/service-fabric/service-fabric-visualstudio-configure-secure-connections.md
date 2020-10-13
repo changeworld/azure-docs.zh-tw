@@ -1,22 +1,22 @@
 ---
-title: 設定安全的 Azure Service Fabric 叢集連線
+title: 設定安全的 Azure Service Fabric 叢集連接
 description: 了解如何使用 Visual Studio 設定 Azure Service Fabric 叢集支援的安全連線。
 author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256088"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>從 Visual Studio 設定對 Service Fabric 叢集的安全連線
 了解如何使用 Visual Studio 安全地存取已設定存取控制原則的 Azure Service Fabric 叢集。
 
 ## <a name="cluster-connection-types"></a>叢集連線類型
-Azure Service Fabric 叢集支援兩種連線：「非安全」**** 連線和「x509 憑證型」**** 安全連線。  (裝載于內部部署環境的 Service Fabric 叢集，也支援**Windows**和**dSTS**驗證。 ) 您必須在建立叢集時設定叢集連線類型。 建立之後，即無法變更連線類型。
+Azure Service Fabric 叢集支援兩種連線：「非安全」**** 連線和「x509 憑證型」**** 安全連線。 針對裝載于內部部署的 Service Fabric 叢集 (，也支援 **Windows** 和 **dSTS** 驗證。 ) 您必須在叢集建立時設定叢集連線類型。 建立之後，即無法變更連線類型。
 
 Visual Studio Service Fabric 工具支援所有用於連線到叢集來進行發佈的驗證類型。 如需有關如何設定安全 Service Fabric 叢集的說明，請參閱 [從 Azure 入口網站設定 Service Fabric 叢集](service-fabric-cluster-creation-via-portal.md) 。
 
@@ -57,7 +57,7 @@ Visual Studio Service Fabric 工具支援所有用於連線到叢集來進行發
    ```
 5. 編輯其他任何必要的設定 (例如升級參數和「應用程式參數」檔案位置)，然後從 Visual Studio 中的 [發佈 Service Fabric 應用程式] **** 對話方塊發佈您的應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需有關存取 Service Fabric 叢集的詳細資訊，請參閱 [使用 Service Fabric 總管視覺化叢集](service-fabric-visualizing-your-cluster.md)。
 
 <!--Image references-->

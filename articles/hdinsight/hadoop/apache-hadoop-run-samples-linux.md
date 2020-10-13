@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207834"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>執行包含在 HDInsight 中的 MapReduce 範例
@@ -35,38 +35,38 @@ ms.locfileid: "86207834"
 
 |範例 |描述 |
 |---|---|
-|aggregatewordcount|計算輸入檔中的字數。|
+|aggregatewordcount|計算輸入檔中的單字。|
 |aggregatewordhist|計算輸入檔中單字的長條圖。|
-|bbp|會使用貝利-Borwein-普 bailey-borwein-plouffe) 來計算 Pi 的確切位數。|
+|bbp|使用 Bailey-Borwein-普 bailey-borwein-plouffe) 來計算 Pi 的確切位數。|
 |dbcount|計算儲存在資料庫中的 pageview 記錄。|
-|distbbp|使用 BBP 類型的公式來計算 Pi 的確切位。|
+|distbbp|使用 BBP 類型的公式來計算 Pi 的確切位數。|
 |grep|計算輸入中 RegEx 的相符專案。|
-|join|執行已排序且平均分割之資料集的聯結。|
-|multifilewc 可|從數個檔案計算字數。|
-|pentomino|並排顯示計畫，以尋找 pentomino 問題的解決方案。|
-|pi|使用 Monte Carlo 方法來預估 Pi。|
-|randomtextwriter|針對每個節點寫入 10 GB 的隨機文字資料。|
-|randomwriter|為每個節點寫入 10 GB 的亂數據。|
-|secondarysort|定義 [縮減] 階段的次要排序。|
+|Join|執行已排序且平均分割之資料集的聯結。|
+|multifilewc|從數個檔案計算字數。|
+|pentomino|磚排放程式以尋找 pentomino 問題的解決方案。|
+|pi|使用准 Monte Carlo 方法來估計 Pi。|
+|randomtextwriter|為每個節點寫入 10 GB 的隨機文字資料。|
+|randomwriter|每個節點寫入 10 GB 的亂數據。|
+|secondarysort|針對縮減階段定義次要排序。|
 |sort|排序隨機寫入器所寫入的資料。|
-|sudoku|數獨解答程式。|
+|遊戲|數獨解答程式。|
 |teragen|產生用於 TeraSort 的資料。|
 |terasort|執行 TeraSort。|
 |teravalidate|檢查 TeraSort 的結果。|
-|wordcount|計算輸入檔中的字數。|
-|wordmean|計算輸入檔中字詞的平均長度。|
-|wordmedian|計算輸入檔中文字的中位數長度。|
+|wordcount|計算輸入檔中的單字。|
+|wordmean|計算輸入檔中字數的平均長度。|
+|wordmedian|計算輸入檔中字詞的中位數長度。|
 |wordstandarddeviation|計算輸入檔中字詞長度的標準差。|
 
 ## <a name="run-the-wordcount-example"></a>執行 wordcount 範例
 
-1. 使用 SSH 連線到 HDInsight。 將取代 `CLUSTER` 為您的叢集名稱，然後輸入下列命令：
+1. 使用 SSH 連線到 HDInsight。 `CLUSTER`以您的叢集名稱取代，然後輸入下列命令：
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 在 SSH 會話中，使用下列命令來列出範例：
+2. 從 SSH 會話中，使用下列命令來列出範例：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
@@ -88,7 +88,7 @@ ms.locfileid: "86207834"
 
     此訊息表示您可以為來源文件提供數個輸入路徑。 最後一個路徑是輸出 (來源文件中的字數計數) 的儲存處。
 
-4. 使用下列各項來計算達文西 da Vinci 的筆記本中的所有文字，並以您的叢集作為範例資料來提供：
+4. 使用下列各項來計算達文西 da 達文西筆記本中的所有文字，這些文字會以您的叢集作為範例資料來提供：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -174,7 +174,7 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 GraySort 是一種效能評定排序。 其計量為排序大量資料時 (通常至少為 100 TB) 所達成的排序速率 (TB/分鐘)。
 
-本範例使用不太大的 10 GB 資料，所以執行起來相對較快。 本範例使用由 Owen O'Malley 和 Arun Murthy 共同開發的 MapReduce 應用程式。 這些應用程式會在2009中贏得年度一般用途 ( "耐力賽" ) tb 的排序基準測試，速率為 0.578 TB/分鐘 (100 TB) 的173分鐘。 如需此和其他排序基準的詳細資訊，請參閱[排序基準](https://sortbenchmark.org/)網站。
+本範例使用不太大的 10 GB 資料，所以執行起來相對較快。 本範例使用由 Owen O'Malley 和 Arun Murthy 共同開發的 MapReduce 應用程式。 這些應用程式會在2009中贏得年度一般用途 ( "耐力賽" ) tb 排序基準測試，速率為 0.578 TB/分鐘 (100 173 TB) 。 如需此和其他排序基準測試的詳細資訊，請參閱 [排序基準測試](https://sortbenchmark.org/) 網站。
 
 本範例使用三組 MapReduce 程式：
 
@@ -212,7 +212,7 @@ GraySort 是一種效能評定排序。 其計量為排序大量資料時 (通�
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您已在本文中學到如何執行以 Linux 為基礎的 HDInsight 叢集所隨附的範例。 如需透過 HDInsight 使用 Pig、Hive 和 MapReduce 的教學課程，請參閱下列主題：
 

@@ -1,15 +1,15 @@
 ---
-title: 雲端服務和 Service Fabric 之間的差異
+title: 雲端服務與 Service Fabric 之間的差異
 description: 這是將應用程式從雲端服務移轉到 Service Fabric 的概念性概觀。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836729"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>移轉應用程式之前，先了解「雲端服務」與 Service Fabric 之間的差異。
@@ -81,21 +81,21 @@ Service Fabric 提供服務探索機制 (稱為「名稱服務」)，可用來�
 ![Service Fabric 直接通訊][8]
 
 ## <a name="parity"></a>Parity
-[雲端服務類似于 Service Fabric 的控制程度和易用性，但它現在是舊版服務，建議您在進行新的開發時使用 Service Fabric](/azure/architecture/guide/technology-choices/compute-decision-tree)。以下是 API 比較：
+[雲端服務與 Service Fabric 的控制程度和易用性很類似，但現在是舊版服務，建議您在新的開發環境中使用 Service Fabric](/azure/architecture/guide/technology-choices/compute-decision-tree)。以下是 API 比較：
 
 
-| **雲端服務 API** | **Service Fabric API** | **注意事項** |
+| **雲端服務 API** | **Service Fabric API** | **備註** |
 | --- | --- | --- |
-| RoleInstance. GetID | FabricRuntime. GetNodeCoNtext。NodeName | ID 是 NodeName 的屬性 |
-| RoleInstance. GetFaultDomain | FabricClient. Fabricclient.querymanager. GetNodeList | 在 NodeName 上篩選並使用 FD 屬性 |
-| RoleInstance. GetUpgradeDomain | FabricClient. Fabricclient.querymanager. GetNodeList | 在 NodeName 上篩選，並使用 Upgrade 屬性 |
-| RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationCoNtext 或命名 (ResolveService)  | CodePackageActivationCoNtext 是由 FabricRuntime 所提供，而且是透過在中提供的 ServiceInitializationParameters. CodePackageActivationCoNtext 在複本內。格式化 |
-| RoleEnvironment. GetRoles | FabricClient. Fabricclient.querymanager. GetNodeList | 如果您想要依類型執行相同的篩選，您可以透過 FabricClient. ClusterManager. GetClusterManifest 取得叢集資訊清單中的節點類型清單，並從該處抓取角色/節點類型。 |
-| RoleEnvironment. GetIsAvailable | 連接-WindowsFabricCluster 或建立指向特定節點的 FabricRuntime | * |
-| RoleEnvironment. Roleenvironment.getlocalresource | CodePackageActivationCoNtext .Log/Temp/Work | * |
-| RoleEnvironment. GetCurrentRoleInstance | CodePackageActivationCoNtext .Log/Temp/Work | * |
-| LocalResource. GetRootPath | CodePackageActivationCoNtext .Log/Temp/Work | * |
-| GetInstances | FabricClient. Fabricclient.querymanager. GetNodeList 或 ResolveService | * |
+| RoleInstance. GetID | FabricRuntime. GetNodeCoNtext 或。NodeName | ID 是 NodeName 的屬性 |
+| RoleInstance. GetFaultDomain | FabricClient. QueryManager. GetNodeList | 對 NodeName 進行篩選並使用 FD 屬性 |
+| RoleInstance. GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | 在 NodeName 上篩選，並使用升級屬性 |
+| RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationCoNtext 或命名 (ResolveService)  | >codepackageactivationcoNtext 由 FabricRuntime GetActivationCoNtext，並透過 ServiceInitializationParameters. >codepackageactivationcoNtext 在複本內提供。初始 化 |
+| RoleEnvironment. GetRoles | FabricClient. QueryManager. GetNodeList | 如果您想要依類型進行相同的篩選，您可以透過 FabricClient. ClusterManager 取得叢集資訊清單中的節點類型清單，並從該處抓取角色/節點類型。 |
+| RoleEnvironment. GetIsAvailable | Connect-WindowsFabricCluster 或建立指向特定節點的 FabricRuntime | * |
+| RoleEnvironment. Roleenvironment.getlocalresource | >codepackageactivationcoNtext .Log/Temp/Work | * |
+| RoleEnvironment. GetCurrentRoleInstance | >codepackageactivationcoNtext .Log/Temp/Work | * |
+| LocalResource. GetRootPath | >codepackageactivationcoNtext .Log/Temp/Work | * |
+| GetInstances | FabricClient. QueryManager. GetNodeList 或 ResolveService | * |
 | RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime. GetActivationCoNtext 或命名 (ResolveService)  | * |
 
 ## <a name="next-steps"></a>後續步驟

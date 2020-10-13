@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326115"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>網路效能監控解決方案：效能監控
@@ -26,7 +26,7 @@ ms.locfileid: "87326115"
 
 ![網路效能監視器](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 若要開啟網路效能監控的組態，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [設定]****。
 
 ![設定網路效能監控](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
@@ -43,7 +43,7 @@ ms.locfileid: "87326115"
 1. 選取 [網路]**** 索引標籤。
 1. 選取  **新增網路**，然後輸入網路名稱和描述。 
 2. 選取一或多個子網路，然後選取 [新增]****。 
-3. 選取 [**儲存**] 以儲存設定。 
+3. 選取 [ **儲存** ] 以儲存設定。 
 
 
 ### <a name="create-monitoring-rules"></a>建立監視規則 
@@ -63,7 +63,7 @@ ms.locfileid: "87326115"
 4. 選擇 ICMP 或 TCP 通訊協定，以執行綜合交易。 
 5. 如果您不想建立所選項目的健康情況事件，則清除 [在此規則所涵蓋的連結上啟用健康情況監視]****。 
 6. 選擇監視條件。 若要設定健康情況事件產生的自訂閾值，請輸入閾值。 只要條件的值超過針對所選網路或子網路配對選取的閾值時，就會產生健康情況事件。 
-7. 選取 [**儲存**] 以儲存設定。 
+7. 選取 [ **儲存** ] 以儲存設定。 
 
 儲存監視規則之後，您可以選取 [建立警示]****，使用警示管理來整合該規則。 警示規則會透過搜尋查詢自動建立。 系統會自動填入其他必要參數。 使用警示規則，除了網路效能監控內現有的警示，您還可以接收電子郵件型警示。 警示也可以使用 Runbook 觸發修復動作，或使用 Webhook 與現有的服務管理解決方案整合。 選取 [管理警示]**** 以編輯警示設定。 
 
@@ -94,7 +94,7 @@ ms.locfileid: "87326115"
 
 如果您在部署期間選擇使用 ICMP，您可以隨時編輯預設監視規則來切換為 TCP。
 
-1. 移至 [**網路效能**監控] [   >  **Monitor**   >  **設定**   >  **監視**]。 然後選取  **[預設規則]**。 
+1. 移至 [**網路效能**   >  **監控**   >  **設定**   >  **監視**]。 然後選取  **[預設規則]**。 
 2. 捲動至 [通訊協定]**** 區段，然後選取您要使用的通訊協定。 
 3. 選取 [儲存]**** 來套用設定。 
 
@@ -127,6 +127,6 @@ ms.locfileid: "87326115"
  
 ![已選取節點屬性的拓撲圖](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [搜尋記錄](../log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
 

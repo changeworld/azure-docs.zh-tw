@@ -5,17 +5,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317883"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>執行從內部部署容錯移轉至 Azure
 
 本文說明如何在[Azure Site Recovery](site-recovery-overview.md)中將內部部署機器容錯移轉至 Azure
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - [瞭解](failover-failback-overview.md) 嚴重損壞修復中的容錯移轉程式。
 - 如果您想要容錯移轉多部機器，請 [瞭解](recovery-plan-overview.md) 如何在復原方案中一起收集機器。

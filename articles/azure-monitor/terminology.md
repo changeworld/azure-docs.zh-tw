@@ -7,23 +7,23 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498605"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure 監視器命名和術語變更
 最近已對 Azure 監視器進行了重大變更，合併了不同服務以簡化對 Azure 客戶的監視。 本文說明 Azure 監視器文件中的最新名稱和術語變更。
 
-## <a name="october-2019---diagnostic-log-to-resource-log"></a>2019年10月-診斷記錄到資源記錄檔
-「診斷記錄」已變更為「資源記錄」，使其更符合實際收集的內容。 「診斷設定」一詞維持不變。  
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>2019年10月-診斷記錄至資源記錄檔
+「診斷記錄」已變更為「資源記錄」，以更符合實際收集的內容。 「診斷設定」一詞維持不變。  
 
 ## <a name="february-2019---log-analytics-terminology"></a>2019 年 2 月 - Log Analytics 術語
 在 Azure 監視器下彙總不同服務之後，我們將藉由修改文件中的術語來更明確地描述 Azure 監視器服務及其不同的元件，從而採取下一個步驟。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure 監視器記錄資料仍儲存在 Log Analytics 工作區中，且仍由相同的 Log Analytics 服務收集及分析，但我們正在將許多地方中的字詞 _Log Analytics_ 變更為 _Azure 監視器記錄_。 這個詞彙更能在 Azure 監視器中反映其角色，並可與[Azure 監視器中的計量](platform/data-platform-metrics.md)提供較佳的一致性。
+Azure 監視器記錄資料仍儲存在 Log Analytics 工作區中，且仍由相同的 Log Analytics 服務收集及分析，但我們正在將許多地方中的字詞 _Log Analytics_ 變更為 _Azure 監視器記錄_。 這一詞彙更能反映其在 Azure 監視器中的角色，並提供更佳的一致性，使其符合[Azure 監視器的計量](platform/data-platform-metrics.md)
 
 字詞_記錄分析_現在主要應用於在 Azure 入口網站中撰寫和執行查詢和分析記錄資料頁面。 它在功能上與[計量瀏覽器](platform/metrics-charts.md)相同，計量瀏覽器是 Azure 入口網站中用於分析計量資料的頁面。
 
@@ -56,7 +56,7 @@ Log Analytics 和 Application Insights 已合併到 Azure 監視器，以針對�
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請閱讀 [Azure 監視器的概觀](overview.md)，當中會描述其不同的元件與功能。
 - 了解 [OMS 入口網站的轉換](./platform/oms-portal-transition.md)。

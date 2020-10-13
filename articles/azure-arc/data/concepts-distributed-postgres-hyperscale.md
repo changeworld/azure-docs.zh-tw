@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934571"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>使用 Arc 啟用的于 postgresql 超大規模伺服器群組散發資料的概念
@@ -23,7 +23,7 @@ ms.locfileid: "90934571"
 以下連結的文章指向適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 所說明的概念。 這與 Azure Arc 啟用于 postgresql 超大規模的技術相同，因此適用相同的概念和觀點。
 
 **兩者之間有何差異？**
-- _適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) _
+- _適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus)_
 
 這是 Postgres 資料庫引擎的超大規模形式規格，可作為 Azure 中的「資料庫即服務」 (PaaS) 。 它是由啟用超大規模體驗的 Citus 延伸模組所驅動。 這種形式的因素是，服務會在 Microsoft 資料中心內執行，並由 Microsoft 操作。
 
@@ -46,7 +46,7 @@ ms.locfileid: "90934571"
 ## <a name="determine-the-application-type"></a>判斷應用程式類型
 清楚地識別您所建立的應用程式類型是很重要的。 為何會這樣？ 因為在啟用 Azure Arc 的于 postgresql 超大規模伺服器群組上執行有效率的查詢，所以必須在伺服器之間正確散發資料表。 建議的散發會依應用程式類型及其查詢模式而有所不同。 在啟用 Azure Arc 的 Postgres 超大規模上，有很廣泛的應用程式可正常運作：
 - 多租使用者應用程式
-- 即時應用程式
+- Real-Time 應用程式
 
 資料模型化的第一個步驟，是要識別哪些專案與您的應用程式更相近。
 
@@ -68,7 +68,7 @@ ms.locfileid: "90934571"
 請參閱 [資料表共置](../../postgresql/concepts-hyperscale-colocation.md)的詳細資料。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [瞭解如何建立 Azure Arc 啟用的于 postgresql 超大規模](create-postgresql-hyperscale-server-group.md)
 - [瞭解如何向外延展 Azure Arc 已在 Arc 資料控制器中建立的于 postgresql 超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
 - [瞭解 Azure Arc 啟用的資料服務](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)

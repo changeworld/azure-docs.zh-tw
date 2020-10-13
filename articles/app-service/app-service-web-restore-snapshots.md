@@ -7,10 +7,10 @@ ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169965"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中透過快照集還原應用程式
@@ -35,13 +35,13 @@ ms.locfileid: "86169965"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>從快照集還原應用程式
 
-1. 在[Azure 入口網站](https://portal.azure.com)中應用程式的 [**設定**] 頁面上，按一下 [**備份**] 以顯示 [**備份**] 頁面。 然後按一下 [快照集] \(預覽\)**** 區段底下的 [還原]****。
+1. 在[Azure 入口網站](https://portal.azure.com)中您應用程式的 [**設定**] 頁面上，按一下 [**備份**] 以顯示 [**備份**] 頁面。 然後按一下 [快照集] \(預覽\)**** 區段底下的 [還原]****。
    
     ![顯示如何從快照集備份還原應用程式的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/1.png)
 
 2. 在 [還原]**** 頁面中，選取要還原的快照集。
    
-    ![顯示如何選取要還原之快照集的螢幕擷取畫面。 ](./media/app-service-web-restore-snapshots/2.png)
+    ![顯示如何選取要還原的快照集的螢幕擷取畫面。 ](./media/app-service-web-restore-snapshots/2.png)
    
 3. 在 [還原目的地]**** 中指定應用程式還原目的地。
    
@@ -63,4 +63,4 @@ ms.locfileid: "86169965"
    
     ![顯示如何還原網站設定的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/4.png)
 
-5. 按一下 [確定] 。
+5. 按一下 [確定]  。

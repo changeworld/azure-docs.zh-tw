@@ -17,10 +17,10 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87304474"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何使用 SendGrid 透過 Java 傳送電子郵件
@@ -36,7 +36,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 * 轉寄客戶查詢
 * 透過電子郵件從您的應用程式傳送通知
 
-如需詳細資訊，請參閱 <https://sendgrid.com>。
+如需詳細資訊，請參閱<https://sendgrid.com>。
 
 ## <a name="create-a-sendgrid-account"></a>建立 SendGrid 帳戶
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -143,7 +143,7 @@ multipart.addBodyPart(attachmentPart);
 ```
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用篩選器來啟用頁尾、追蹤和分析
-SendGrid 透過使用*篩選器*提供額外的電子郵件功能。 這些設定可新增到電子郵件以啟用特定功能，例如啟用點擊追蹤、Google 分析、訂閱追蹤等。 如需完整的篩選器清單，請參閱[篩選器設定][Filter Settings]。
+SendGrid 透過使用 *篩選*來提供額外的電子郵件功能。 這些設定可新增到電子郵件以啟用特定功能，例如啟用點擊追蹤、Google 分析、訂閱追蹤等。 如需完整的篩選器清單，請參閱[篩選器設定][Filter Settings]。
 
 * 下列程式碼顯示如何插入頁尾篩選器，以使 HTML 文字出現在傳送之電子郵件的底部。
 
@@ -198,7 +198,7 @@ InternetAddress("john@contoso.com"));
 ## <a name="how-to-use-additional-sendgrid-services"></a>如何：使用其他 SendGrid 服務
 SendGrid 提供的網頁式 API 可供從 Azure 應用程式運用其他 SendGrid 功能。 如需完整詳細資料，請參閱 [SendGrid API 文件][SendGrid API documentation]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解 SendGrid 電子郵件服務的基本概念後，請參考下列連結以取得更多資訊。
 
 * 示範在 Azure 部署中使用 SendGrid 的範例：[如何在 Azure 部署中使用 SendGrid 透過 Java 傳送電子郵件](store-sendgrid-java-how-to-send-email-example.md)

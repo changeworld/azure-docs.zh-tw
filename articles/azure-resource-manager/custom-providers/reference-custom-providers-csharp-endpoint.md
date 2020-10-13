@@ -7,10 +7,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935631"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>自訂提供者 c # RESTful 端點參考
@@ -254,7 +254,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Azure 自訂資源提供者總覽](overview.md)
 - [教學課程：建立 Azure 自訂資源提供者和部署自訂資源](./create-custom-provider.md)

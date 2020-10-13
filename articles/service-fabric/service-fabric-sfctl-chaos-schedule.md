@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI-sfctl 混亂排程
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用於混亂排程的命令清單。
+description: 瞭解 Azure Service Fabric 命令列介面的 sfctl。 包含混亂排程的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260842"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -17,7 +17,7 @@ ms.locfileid: "86260842"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|說明|
 | --- | --- |
 | get | 取得定義 Chaos 執行時間及執行方式的 Chaos 排程。 |
 | set | 設定 Chaos 使用的排程。 |
@@ -31,7 +31,7 @@ ms.locfileid: "86260842"
 
 |引數|說明|
 | --- | --- |
-| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+| --timeout -t | 用來執行作業的伺服器超時（以秒為單位）。 此超時時間指定用戶端願意等候要求的作業完成的持續時間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -46,7 +46,7 @@ ms.locfileid: "86260842"
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 設定 Chaos 使用的排程。
 
-Chaos 會根據 Chaos 排程自動排定執行。 如果提供的版本與伺服器上的版本相符，就會更新混亂排程。 更新混亂排程時，伺服器上的版本會遞增1。 到達大量數位之後，伺服器上的版本將會換回0。 如果 Chaos 在進行此呼叫時正在執行，此呼叫將會失敗。
+Chaos 會根據 Chaos 排程自動排定執行。 如果提供的版本與伺服器上的版本相符，就會更新混亂排程。 更新混亂排程時，伺服器上的版本會遞增1。 在達到大量數位之後，伺服器上的版本將會換回0。 如果 Chaos 在進行此呼叫時正在執行，此呼叫將會失敗。
 
 ### <a name="arguments"></a>引數
 
@@ -139,6 +139,6 @@ sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z"
 
 
 
-## <a name="next-steps"></a>後續步驟
-- [設定](service-fabric-cli.md)Service Fabric CLI。
+## <a name="next-steps"></a>接下來的步驟
+- [設定](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

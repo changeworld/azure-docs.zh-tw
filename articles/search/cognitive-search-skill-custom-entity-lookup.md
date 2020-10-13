@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936107"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能 (預覽) 
@@ -45,7 +45,7 @@ CustomEntityLookupSkill。
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | 描述                   |
+| 輸入名稱      | 說明                   |
 |---------------|-------------------------------|
 | `text`          | 要分析的文字。          |
 | `languageCode`    | 選擇性。 預設值為 `"en"`。  |
@@ -54,7 +54,7 @@ CustomEntityLookupSkill。
 ## <a name="skill-outputs"></a>技能輸出
 
 
-| 輸出名稱      | 描述                   |
+| 輸出名稱      | 說明                   |
 |---------------|-------------------------------|
 | `entities` | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 每個識別的實體可能包含下欄欄位：  <ul> <li> *名稱*：已識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼*：實體的唯一識別碼，由使用者以「自訂實體定義格式」定義。</li> <li> *描述*：使用者以「自訂實體定義格式」定義的實體描述。 </li> <li> *輸入：* 由使用者以「自訂實體定義格式」定義的實體類型。</li> <li> *子類型：* 由使用者以「自訂實體定義格式」定義的實體子類型。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都會有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：這個相符的字元數與原始機構名稱或別名不同。  </li> </ul> </ul>
   |
@@ -69,7 +69,7 @@ CustomEntityLookupSkill。
 
 ### <a name="csv-format"></a>CSV 格式
 
-您可以提供檔案路徑，並在 *entitiesDefinitionUri*  技能參數中進行設定，以提供自訂實體的定義，以便在逗號分隔值 (CSV) 檔案中尋找。 路徑應位於 HTTPs 位置。 定義檔大小最多可達 10 MB。
+您可以提供檔案路徑，並在 *entitiesDefinitionUri*  技能參數中進行設定，以提供自訂實體的定義，以在 Comma-Separated 值 (CSV) 檔中尋找。 路徑應位於 HTTPs 位置。 定義檔大小最多可達 10 MB。
 
 CSV 格式很簡單。 每一行代表一個唯一的實體，如下所示：
 
@@ -156,7 +156,7 @@ Satya Nadella
 | `defaultFuzzyEditDistance` |  (選擇性) 變更此實體的預設模糊編輯距離值。 可以用來變更所有別名 fuzzyEditDistance 值的預設值。 |
 | `aliases` |  (選擇性) 可以用來指定根機構名稱之替代拼寫或同義字的複雜物件陣列。 |
 
-| 別名屬性 | 描述 |
+| 別名屬性 | 說明 |
 |------------------|-------------|
 | `text`  | 某些目標機構名稱的替代拼寫或標記法。  |
 | `caseSensitive` |  (選擇性的) 與上述的根實體 "caseSensitive" 參數相同，但只適用于此一個別名。 |

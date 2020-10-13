@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86170695"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何在 Ruby 中透過 Twilio 使用語音和簡訊功能
-本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。
+本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱 [後續步驟](#NextSteps) 一節。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什麼是 Twilio？
 Twilio 是一種電話語音 Web 服務 API，能夠讓您使用現有的 Web 語言和技術建立語音和 SMS 應用程式。 Twilio 算是協力廠商服務 (並非 Azure 功能，也並非 Microsoft 產品)。
@@ -48,19 +48,19 @@ TwiML 是一組以 XML 為基礎的指令，可指示 Twilio 如何處理來電�
 所有 TwiML 文件皆會以 `<Response>` 作為其根元素。 您可以由此處使用 Twilio 動詞定義應用程式的行為。
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML 動詞
-Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如，「 ** &lt; 假設 &gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。 
+Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如， ** &lt; 說 &gt; **動詞命令會指示 Twilio 語音在呼叫上傳遞訊息。 
 
 以下是 Twilio 動詞清單。
 
-* ** &lt; 撥號 &gt; **：將呼叫者連接到其他電話。
+* ** &lt; 撥號 &gt; **：將呼叫端連接到另一個電話。
 * ** &lt; 收集 &gt; **：收集電話鍵盤上輸入的數位。
-* ** &lt; 掛斷 &gt; **：結束呼叫。
+* ** &lt; 掛斷 &gt; **：結束通話。
 * ** &lt; Play &gt; **：播放音訊檔案。
-* ** &lt; Pause &gt; **：以無訊息模式等候指定的秒數。
-* ** &lt; 記錄 &gt; **：錄製來電者的語音，並傳回包含錄製之檔案的 URL。
-* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權轉移至不同 URL 的 TwiML。
-* ** &lt; 拒絕 &gt; **：拒絕 Twilio 號碼的來電而不計費
-* ** &lt; 假設 &gt; **：將在呼叫上進行的文字轉換成語音。
+* ** &lt; 暫停 &gt; **：以無訊息模式等候指定的秒數。
+* ** &lt; 記錄 &gt; **：記錄來電者的語音，並傳回包含錄製之檔案的 URL。
+* 重新** &lt; 導向 &gt; **：將呼叫或 SMS 的控制權傳送至 TwiML 的不同 URL。
+* ** &lt; 拒絕 &gt; **：拒絕傳入來電給您的 Twilio 號碼而不計費
+* ** &lt; 例如 &gt; **：將在呼叫上進行的文字轉換為語音。
 * ** &lt; Sms &gt; **：傳送 sms 訊息。
 
 如需 Twilio 動詞、屬性和 TwiML 的詳細資訊，請參閱 [TwiML][twiml]。 如需 Twilio API 的詳細資訊，請參閱 [Twilio API][twilio_api]。

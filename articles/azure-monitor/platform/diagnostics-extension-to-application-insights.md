@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305800"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>將雲端服務、虛擬機器或 Service Fabric 診斷資料傳送至 Application Insights
@@ -69,7 +69,7 @@ Application Insights 的接收器組態範例：
         - 資訊
         - 警告
         - 錯誤
-        - 重要
+        - 重大
 
 通道就像篩選條件，可讓您選取要傳送至目標接收器的特定記錄等級。 例如，您可以收集詳細記錄，將它們傳送至儲存體，但只將「錯誤」傳送至接收器。
 
@@ -210,7 +210,7 @@ Application Insights 的接收器組態範例：
 
 - **通道只記錄類型，不記錄效能計數器。** 如果您在通道中指定效能計數器元素，將會忽略。
 - **通道的記錄層級不能超過 Azure 診斷所要收集的記錄層級。** 例如，您不能在 Logs 元素中收集「應用程式記錄」錯誤，也無法嘗試將「詳細資訊」記錄傳送至 Application Insight 接收器。 *ScheduledTransferLogLevelFilter* 屬性一律必須收集與您正嘗試傳送到接收器的記錄相等或更多個記錄。
-- **您無法將 Azure 診斷擴充功能收集的 blob 資料傳送至 Application Insights。** 例如，在 [*目錄*] 節點下指定的任何專案。 針對損毀傾印，實際損毀傾印會傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。
+- **您無法將 Azure 診斷擴充功能收集的 blob 資料傳送至 Application Insights。** 例如，在 [ *目錄* ] 節點下指定的任何一個。 針對損毀傾印，實際損毀傾印會傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何在 Application Insights 中[檢視您的 Azure 診斷資訊](../app/cloudservices.md)。

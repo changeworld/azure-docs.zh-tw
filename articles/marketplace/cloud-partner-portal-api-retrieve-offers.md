@@ -1,6 +1,6 @@
 ---
-title: 取出供應專案 API-Azure Marketplace
-description: API，用來抓取發行者命名空間底下的供應專案摘要清單。
+title: 取出優惠 API-Azure Marketplace
+description: API 來取得發行者命名空間底下的摘要供應專案清單。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271955"
 ---
 # <a name="retrieve-offers"></a>擷取供應項目
 
 > [!NOTE]
-> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
+> Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱 [CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md) 中所列的變更，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
 在發行者命名空間下擷取摘述的供應項目清單。
 
@@ -25,13 +25,13 @@ ms.locfileid: "87271955"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-| **名稱**         |  **說明**                         |  **Data type** |
+| **名稱**         |  **描述**                         |  **Data type** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | 發行者識別碼，例如 `contoso` |   String    |
 |  api-version     | API 的最新版本                    |    Date        |
 |  |  |
 
-## <a name="header"></a>頁首
+## <a name="header"></a>標頭
 
 |  **名稱**        |         **ReplTest1**       |
 |  --------------- |       ----------------  |
@@ -62,7 +62,7 @@ ms.locfileid: "87271955"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**       |       **說明**                                                                                                  |
+|  **名稱**       |       **描述**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | 指出供應項目類型                                                                                           |
 |  publisherId    | 可唯一識別發行者的識別碼                                                                      |
@@ -75,7 +75,7 @@ ms.locfileid: "87271955"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code**  |  **說明**                                                                                                   |
+| **程式碼**  |  **描述**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功處理要求，且發行者下的所有供應項目已傳回給用戶端。  |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                                    |
@@ -85,7 +85,7 @@ ms.locfileid: "87271955"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    | **說明**                                  |
+|  **名稱**                    | **描述**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                  |
 |  NotStarted                  | 供應項目是新的，但未啟動。                 |
@@ -93,5 +93,5 @@ ms.locfileid: "87271955"
 |  執行中                     | 正在處理供應項目提交。             |
 |  成功                   | 已完成處理供應項目提交。       |
 |  已取消                    | 已取消供應項目提交。                   |
-|  失敗                      | 供應項目提交失敗。                         |
+|  Failed                      | 供應項目提交失敗。                         |
 |  |  |

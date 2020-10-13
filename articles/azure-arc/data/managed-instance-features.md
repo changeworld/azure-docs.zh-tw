@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936795"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 啟用的 SQL 受控執行個體的特性和功能
@@ -33,7 +33,7 @@ Azure Arc 啟用的 SQL 受控執行個體與 SQL Server 的最新穩定版本�
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS 高可用性  
   
-|功能|Azure Arc 啟用的 SQL 受控執行個體|
+|功能|已啟用 Azure Arc 的 SQL 受控執行個體|
 |-------------|----------------|
 |記錄傳送|是| 
 |備份壓縮|是|
@@ -59,7 +59,7 @@ Azure Arc 啟用的 SQL 受控執行個體與 SQL Server 的最新穩定版本�
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS 的擴充性和效能  
 
-|功能|Azure Arc 啟用的 SQL 受控執行個體|
+|功能|已啟用 Azure Arc 的 SQL 受控執行個體|
 |-------------|----------------|
 |columnstore|   是|
 |叢集資料行存放區索引中的大型物件二進位檔|    是|
@@ -80,11 +80,11 @@ Azure Arc 啟用的 SQL 受控執行個體與 SQL Server 的最新穩定版本�
 |大量插入增強功能   |是|
 
 ###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS 安全性  
-|功能|Azure Arc 啟用的 SQL 受控執行個體|
+|功能|已啟用 Azure Arc 的 SQL 受控執行個體|
 |-------------|----------------|
 |資料列層級安全性|    是|
 |Always Encrypted|  是|
-|具有安全記憶體保護區的 Always Encrypted| No|
+|具有安全記憶體保護區的 Always Encrypted| 否|
 |動態資料遮罩|  是|
 |基本稽核|    是|
 |細部稽核| 是|
@@ -95,7 +95,7 @@ Azure Arc 啟用的 SQL 受控執行個體與 SQL Server 的最新穩定版本�
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS 管理能力  
 
-|功能|Azure Arc 啟用的 SQL 受控執行個體|
+|功能|已啟用 Azure Arc 的 SQL 受控執行個體|
 |-------------|----------------|
 |專用管理員連接|    是|
 |PowerShell 指令碼支援|  是|
@@ -114,7 +114,7 @@ Azure Arc 啟用的 SQL 受控執行個體與 SQL Server 的最新穩定版本�
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmability  
 
-|功能|Azure Arc 啟用的 SQL 受控執行個體|
+|功能|已啟用 Azure Arc 的 SQL 受控執行個體|
 |-------------|----------------|
 |JSON|  是 |       |
 |查詢存放區    |是    |       
@@ -124,31 +124,31 @@ Azure Arc 啟用的 SQL 受控執行個體與 SQL Server 的最新穩定版本�
 |MERGE 與 UPSERT 功能|   是 |       
 |日期和時間資料類型    |是    |       
 |國際化支援|  是 |       
-|全文檢索和語意搜尋 |    No      |
+|全文檢索和語意搜尋 |    否      |
 |查詢中的語言規格 |是        |   
 |Service Broker (訊息)|    是     |   
 |Transact-SQL 端點|    是 |       
 |圖形| 是 |   
-|機器學習服務| No  |   
-|PolyBase| No   |
+|機器學習服務| 否  |   
+|PolyBase| 否   |
 
 
 ### <a name="tools"></a>工具
 
 Azure Arc 啟用的 SQL 受控執行個體支援各種可協助您管理資料的資料工具。
 
-| **工具** | Azure Arc 啟用的 SQL 受控執行個體|
+| **工具** | 已啟用 Azure Arc 的 SQL 受控執行個體|
 | --- | --- | --- |
-| Azure 入口網站 <sup>1</sup> | No |
-| Azure CLI | No |
+| Azure 入口網站 <sup>1</sup> | 否 |
+| Azure CLI | 否 |
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | 是 |
-| Azure PowerShell | Yes |
-| [BACPAC 檔案 (匯出)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |
-| [BACPAC 檔案 (匯入)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Yes |
-| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Yes |
+| Azure PowerShell | 是 |
+| [BACPAC 檔案 (匯出)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | 是 |
+| [BACPAC 檔案 (匯入)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | 是 |
+| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | 是 |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | 是 |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | 是 |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | 是 |
 
 <sup>1</sup> Azure 入口網站僅用來在預覽期間，以唯讀模式來查看已啟用 AZURE ARC 的 SQL 受控實例。
 

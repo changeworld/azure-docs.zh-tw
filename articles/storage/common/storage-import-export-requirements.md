@@ -9,10 +9,10 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87276392"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 匯入/匯出系統需求
@@ -41,7 +41,7 @@ ms.locfileid: "87276392"
 
 Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 
-- 標準一般用途 v2 儲存體帳戶（建議用於大部分的案例）
+- 適用于大部分案例的標準一般用途 v2 儲存體帳戶 (建議) 
 - Blob 儲存體帳戶
 - 一般用途 v1 儲存體帳戶 (傳統或 Azure Resource Manager 部署)、
 
@@ -50,7 +50,7 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 每項工作都只能從僅只一個儲存體帳戶收送資料。 換句話說，單一匯入/匯出作業不能跨越多個儲存體帳戶。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 
 > [!IMPORTANT]
-> 對於已啟用「[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)」功能的儲存體帳戶   ，請使用 [**允許受信任的 Microsoft 服務 ...** ] 設定來[啟用](/azure/storage/common/storage-network-security)匯入/匯出服務，以便在 Azure 中執行資料的匯入/匯出。
+> 針對已啟用[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)功能的儲存體帳戶   ，請使用 [**允許信任的 Microsoft 服務 ...** ] 設定，[讓匯入/匯出](/azure/storage/common/storage-network-security)服務在 Azure 中執行資料的匯入/匯出。
 
 ## <a name="supported-storage-types"></a>支援的儲存體類型
 
@@ -77,11 +77,11 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 |SSD    |   2.5 吋      |SATA III          |
 |HDD     |  2.5 吋<br>3.5 吋       |SATA II、SATA III         |
 
-不支援下列磁片類型：
+以下是不支援的磁片類型：
 
 - USBs.
 - 具有內建 USB 介面卡的外部 HDD。
-- 外部 HDD 的大小寫中的磁片。
+- 在外部 HDD 的大小寫中的磁片。
 
 單一匯入/匯出作業可以有：
 
@@ -92,6 +92,6 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 
 當使用 WAImportExport 工具來準備硬碟和複製資料時，您可以使用外接式 USB 轉接器。 大部分現成可用的 USB 3.0 或更新版配接器應都可使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy.md)

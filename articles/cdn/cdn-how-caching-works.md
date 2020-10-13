@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86201801"
 ---
 # <a name="how-caching-works"></a>快取的運作方式
@@ -69,14 +69,14 @@ ms.locfileid: "86201801"
 
 Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取持續時間和快取共用。
 
-**Cache-控制項：**
+**Cache-Control：**
 - 在 HTTP 1.1 中導入，讓 web 發行者能更充分掌控其內容，並處理 `Expires` 標頭的限制。
 - 如果已同時定義 `Expires` 標頭和 `Cache-Control`，則覆寫前者。
 - 使用於來自用戶端對 CDN POP 的 HTTP 要求時，依預設所有 Azure CDN 設定檔都會忽略 `Cache-Control`。
 - 使用於來自用戶端對 CDN POP 的 HTTP 回應時：
      - **來自 Verizon 的標準/進階 Azure CDN** 和**來自 Microsoft 的標準 Azure CDN** 支援所有 `Cache-Control` 指示詞。
      - **來自 Akamai 的標準 Azure CDN** 僅支援下列 `Cache-Control` 指示詞；會忽略所有其他指示詞：
-         - `max-age`：快取可以儲存所指定秒數的內容。 例如，`Cache-Control: max-age=5`。 這個指示詞會指定內容被視為是全新的最大時間量。
+         - `max-age`：快取可以儲存所指定秒數的內容。 例如： `Cache-Control: max-age=5` 。 這個指示詞會指定內容被視為是全新的最大時間量。
          - `no-cache`：快取內容，但每次從快取傳遞內容之前，都要加以驗證。 相當於 `Cache-Control: max-age=0`。
          - `no-store`：一律不會快取內容。 如果先前已儲存內容，請加以移除。
 
@@ -86,7 +86,7 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 - 類似於 `Cache-Control: max-age`。
 - 使用時機是當 `Cache-Control` 不存在時。
 
-**雜**
+**Pragma**
    - 根據預設，Azure CDN 不接受。
    - 在 HTTP 1.0 中導入舊版的標頭；支援回溯相容性。
    - 用來作為用戶端要求標頭，並具有下列指示詞：`no-cache`。 這個指示詞會指示伺服器傳送全新版本的資源。
@@ -96,16 +96,16 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 
 當快取過期時，HTTP 快取驗證程式可用來比較檔案的快取版本與原始伺服器上的版本。 **來自 Verizon 的標準/進階 Azure CDN** 預設支援 `ETag` 和 `Last-Modified` 驗證器，而**來自 Microsoft 的標準 Azure CDN** 和**來自 Akamai 的標準 Azure CDN** 預設僅支援 `Last-Modified`。
 
-**ETag**
+**Etag：**
 - **來自 Verizon 的標準/進階 Azure CDN** 預設支援`ETag` ，而**來自 Microsoft 的標準 Azure CDN** 和來自 **Akamai 的標準 Azure CDN** 則不提供支援。
-- `ETag` 會定義對每個檔案和檔案版本是唯一的字串。 例如，`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`。
+- `ETag` 會定義對每個檔案和檔案版本是唯一的字串。 例如： `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。
 - 在 HTTP 1.1 中導入，且較 `Last-Modified` 更新。 上次修改的日期難以判斷時會很有用。
 - 支援強式驗證和弱式驗證；不過，Azure CDN 僅支援強式驗證。 針對強式驗證，兩個資源表示法必須是位元組對位元組相同。 
-- 快取會驗證使用 `ETag` 的檔案，方法是傳送要求中具有一或多個 `ETag` 驗證程式的 `If-None-Match` 標頭。 例如，`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`。 如果伺服器的版本符合清單上的 `ETag` 驗證程式，它會在其回應中傳送狀態碼 304 (未修改)。 如果版本不同，伺服器會以狀態碼 200 (確定) 和更新的資源回應。
+- 快取會驗證使用 `ETag` 的檔案，方法是傳送要求中具有一或多個 `ETag` 驗證程式的 `If-None-Match` 標頭。 例如： `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。 如果伺服器的版本符合清單上的 `ETag` 驗證程式，它會在其回應中傳送狀態碼 304 (未修改)。 如果版本不同，伺服器會以狀態碼 200 (確定) 和更新的資源回應。
 
-**上次修改日期：**
+**上次修改時間：**
 - 僅針對**來自 Verizon 的標準/進階 Azure CDN** 而言，如果 HTTP 回應中未包含 `ETag`，就會使用 `Last-Modified`。 
-- 指定原始伺服器判斷上次修改資源的日期和時間。 例如，`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`。
+- 指定原始伺服器判斷上次修改資源的日期和時間。 例如： `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT` 。
 - 快取會使用 `Last-Modified` 來驗證檔案，方法是傳送要求中具有日期和時間 `If-Modified-Since` 的標頭。 原始伺服器會比較該日期與最新資源的 `Last-Modified` 標頭。 如果資源從指定時間起尚未修改，伺服器就會在其回應中傳回狀態碼 304 (未修改)。 如果資源已修改，伺服器會傳回狀態碼 200 (確定) 和更新的資源。
 
 ## <a name="determining-which-files-can-be-cached"></a>判斷哪些檔案可快取
@@ -133,7 +133,7 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 
 **CDN 快取持續時間**：指定資源會在 Azure CDN 快取的時間量。 不過，如果**接受來源**為 [是]，且來自原始伺服器的 HTTP 回應中包含快取指示詞標頭 `Expires` 或 `Cache-Control: max-age`，Azure CDN 就會改為使用標頭所指定的持續時間值。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要了解如何透過快取規則自訂及覆寫 CDN 上的預設快取行為，請參閱[使用快取規則控制 Azure CDN 快取行為](cdn-caching-rules.md)。 
 - 若要了解如何使用查詢字串來控制快取行為，請參閱[使用查詢字串控制 Azure CDN 快取行為](cdn-query-string.md)。

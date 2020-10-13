@@ -4,10 +4,10 @@ description: 自動化 Application Insights 的組態以取得有關度量變更
 ms.topic: conceptual
 ms.date: 07/23/2016
 ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322460"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
@@ -142,5 +142,5 @@ Add-AzMetricAlertRule -Name "poor sales" `
 * [用來設定 Application Insights 的指令碼](./create-new-resource.md#creating-a-resource-automatically)
 * [從範本建立 Application Insights 和 Web 測試資源](powershell.md)
 * [自動化 Microsoft Azure 診斷與 Application Insights 的耦合](powershell-azure-diagnostics.md)
-* [自動化您對警示的回應](../platform/alerts-webhooks.md)
+* [將您對警示的回應自動化](../platform/alerts-webhooks.md)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934655"
 ---
 # <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>為適用于 Windows 的 IoT c # 型安全性代理程式部署 Defender
@@ -77,9 +77,9 @@ ms.locfileid: "90934655"
 * 將代理程式安裝為**系統服務**。
 * 使用所提供的驗證參數來設定代理程式。
 
-如需其他協助，請在 PowerShell 中使用 Get-help 命令。
+如需其他協助，請在 PowerShell 中使用 Get-Help 命令。
 
-Get-help 範例：    ```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help 範例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>確認部署狀態
 
@@ -138,7 +138,7 @@ Get-help 範例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
    記錄檔位置：`.\IoTAgentLog.log`
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 閱讀適用于 IoT 的 Defender 服務 [總覽](overview.md)
 * 深入瞭解適用于 IoT 的 Defender [架構](architecture.md)
