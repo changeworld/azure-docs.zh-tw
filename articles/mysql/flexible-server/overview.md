@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944059"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759640"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫 - 彈性伺服器 (預覽)
 
@@ -20,7 +20,7 @@ ms.locfileid: "90944059"
 - 單一伺服器 
 - 彈性伺服器 (預覽)
 
-在本文中，我們將提供彈性伺服器部署模型之核心概念的概觀和簡介。 
+在本文中，我們將提供彈性伺服器部署模型之核心概念的概觀和簡介。 如需如何決定適合您工作負載部署選項的詳細資訊，請參閱[在 Azure 中選擇正確的 MySQL 伺服器選項](./../select-right-deployment-type.md)。
 
 ## <a name="overview"></a>概觀
 
@@ -50,11 +50,13 @@ ms.locfileid: "90944059"
 
 如需更多詳細資料，請參閱[高可用性概念](concepts-high-availability.md)。
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="區域備援高可用性概念圖表"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="單一區域高可用性概念圖表"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>使用受控維護視窗進行自動修補
 
-此服務會執行基礎硬體、OS 和資料庫引擎的自動修補。 修補包含安全性和軟體更新。 針對 MySQL 引擎，次要版本升級會包含在計劃性維護版本中。 使用者可以將修補排程設定為系統管理或定義自訂排程。 在維護排程期間，系統會套用修補檔，而伺服器可能需要重新開機，修補程序才能完成更新。 使用自訂排程，使用者可以預測修補週期，並選擇對企業影響最小的維護視窗。 一般而言，服務會遵循持續整合和發行內的每月發行排程。 
+此服務會執行基礎硬體、OS 和資料庫引擎的自動修補。 修補包含安全性和軟體更新。 針對 MySQL 引擎，次要版本升級會包含在計劃性維護版本中。 使用者可以將修補排程設定為系統管理或定義自訂排程。 在維護排程期間，系統會套用修補檔，而伺服器可能需要重新開機，修補程序才能完成更新。 使用自訂排程，使用者可以預測修補週期，並選擇對企業影響最小的維護視窗。 一般而言，服務會遵循持續整合和發行內的每月發行排程。
+
+如需其他詳細資料，請參閱[排程維護](concepts-maintenance.md)。 
 
 ## <a name="automatic-backups"></a>自動備份
 
@@ -87,13 +89,15 @@ ms.locfileid: "90944059"
 
 彈性伺服器服務可讓您視需要停止和啟動伺服器，以將成本最佳化。 當伺服器停止時，計算層計費會立即停止。 這可讓您在開發、測試和具有時間限制的可預測生產工作負載期間，節省大量的成本。 除非重新開機，否則伺服器會維持在停止狀態七天。 
 
+若要深入了解，請參閱[伺服器概念](concept-servers.md)。 
+
 ## <a name="enterprise-grade-security-and-privacy"></a>企業級安全性與隱私權
 
 彈性伺服器服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 系統會將資料 (包含備份) 和執行查詢時所建立的暫存檔案加密。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統管理 (預設)。 
 
 服務預設會以強制執行傳輸層安全性的方式來加密資料。 彈性伺服器僅支援使用傳輸層安全性 (TLS 1.2) 的加密連線，且會拒絕所有使用 TLS 1.0 和 TLS 1.1 的連入連線。 
 
-如需深入了解，請參閱[如何使用加密的連線與彈性伺服器連線](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md)。
+如需深入了解，請參閱[如何使用加密的連線與彈性伺服器連線](https://docs.mongodb.com/manual/tutorial/configure-ssl)。
 
 彈性伺服器允許使用 [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) 整合，對伺服器進行完整的私人存取。 Azure 虛擬網路中的伺服器只能透過私人 IP 位址連線。 使用 VNet 整合時，公用存取會遭到拒絕，且無法使用公用端點連線到伺服器。 
 
@@ -112,6 +116,15 @@ ms.locfileid: "90944059"
 
 - **傾印和還原** - 供離線移轉使用，使用者使用 mysqldump/mydumper 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱使用傾印和還原遷移以取得詳細資料。 
 - **Azure 資料庫移轉服務** - 可使用 [Azure 資料庫移轉服務](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 
+
+## <a name="contacts"></a>連絡人
+若您對適用於 MySQL 的 Azure 資料庫有任何疑問或需要建議，請傳送電子郵件給適用於 MySQL 的 Azure 資料庫小組 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此電子郵件地址不是技術支援的別名。
+
+此外，請根據您的情況考量下列連絡要點：
+
+- 若要連絡 Azure 支援，[請從 Azure 入口網站提出票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- 若要修正您的帳戶問題，請在 Azure 入口網站中提出[支援要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 若要提供意見反應或要求新功能，請透過 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 建立項目。
 
 ## <a name="next-steps"></a>後續步驟
 您已看過適用於 MySQL 的 Azure 資料庫單一伺服器部署模式的簡介，接下來您可以：

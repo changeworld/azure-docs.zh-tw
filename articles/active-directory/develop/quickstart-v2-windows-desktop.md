@@ -1,6 +1,6 @@
 ---
-title: Microsoft 身分識別平台 Windows 桌面快速入門
-description: 了解 Windows 桌面 .NET (XAML) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台端點保護的 API
+title: 快速入門：在通用 Windows 平台傳統型應用程式中登入使用者並呼叫 Microsoft Graph | Azure
+description: 在本快速入門中，了解 Windows 桌面 .NET (XAML) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台端點保護的 API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,22 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114552"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613266"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入門：取得權杖，並從 Windows 傳統型應用程式呼叫 Microsoft Graph API
 
 在此快速入門中，您將了解如何撰寫可登入個人、公司與學校帳戶、取得存取權杖以及呼叫 Microsoft Graph API 的 Windows Desktop .NET (WPF) 應用程式。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>必要條件
+>
+> * 已安裝包含[通用 Windows 平台開發](/windows/uwp/get-started/get-set-up)工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
 > 有兩個選項可用來啟動快速入門應用程式：
 > * [快速] [選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -48,7 +52,7 @@ ms.locfileid: "88114552"
 >      - 選取 [註冊] 以建立應用程式。
 > 1. 在應用程式頁面清單中，選取 [驗證]。
 > 1. 在 [重新導向 URI] | [公用用戶端 (行動、傳統型) 的建議重新導向 URI] 區段，然後使用 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
-> 1. 選取 [儲存]。
+> 1. 選取 [儲存]  。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式

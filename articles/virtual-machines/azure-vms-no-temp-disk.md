@@ -8,10 +8,10 @@ ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
 ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665305"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>沒有本機暫存磁片的 Azure VM 大小 
@@ -44,7 +44,7 @@ ms.locfileid: "91665305"
 > 如果映射相依于資源磁片，或本機暫存磁片上有分頁檔或 cloud-init，則無磁片映射將無法運作，而是使用「磁片替代」替代選項。 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>這些 VM 大小是否支援 Linux 和 Windows 作業系統 (OS) ？
-可以。
+是。
 
 ## <a name="will-this-break-my-custom-scripts-custom-images-or-os-images-that-have-scratch-files-or-page-files-on-a-local-temp-disk"></a>這會中斷我的自訂腳本、自訂映射或本機暫存磁片上有暫存檔案或分頁檔案的作業系統映射？
 如果自訂 OS 映射指向本機暫存磁片，則映射可能無法正確地使用此無磁片大小。

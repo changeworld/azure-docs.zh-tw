@@ -4,16 +4,16 @@ description: 本文提供逐步指示，說明如何啟用 Azure 事件方格主
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297516"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>啟用 Azure 事件方格主題或網域的診斷記錄
 診斷設定可讓事件方格使用者在儲存體帳戶、事件中樞或 Log Analytics 工作區中，捕獲和查看 **發佈和傳遞失敗** 記錄。 本文提供在事件方格主題上啟用這些設定的逐步指示。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 已布建的事件方格主題
 - 用於捕獲診斷記錄的已布建目的地。 它可以是與事件方格主題位於相同位置的下列其中一個目的地：
@@ -47,7 +47,7 @@ ms.locfileid: "91297516"
         ![螢幕擷取畫面，顯示已核取 [串流至事件中樞] 的 [診斷設定] 頁面。](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - 如果您選取 [ **傳送至 Log analytics**]，請選取 log analytics 工作區。
         ![螢幕擷取畫面，顯示已核取 [傳送至 Log Analytics] 的 [診斷設定] 頁面。](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-8. 選取 [儲存]。 然後，選取右上角的 [ **X** ] 關閉頁面。 
+8. 選取 [儲存]****。 然後，選取右上角的 [ **X** ] 關閉頁面。 
 9. 現在，回到 [ **診斷設定** ] 頁面，確認您在 [ **診斷設定** ] 資料表中看到新專案。 
     ![顯示 [診斷設定] 頁面的螢幕擷取畫面，其中包含在 [診斷設定] 資料表中反白顯示的新專案。](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "91297516"
         ![封存至 Azure 儲存體帳戶](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
     - 如果您選取 [ **串流至事件中樞**]，請選取 [ **事件中樞-設定**]，然後選取 [事件中樞命名空間]、[事件中樞] 和 [存取原則]。 
         ![串流至事件中樞](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
-8. 選取 [儲存]。 然後，選取右上角的 [ **X** ] 關閉頁面。 
+8. 選取 [儲存]****。 然後，選取右上角的 [ **X** ] 關閉頁面。 
 9. 現在，回到 [ **診斷設定** ] 頁面，確認您在 [ **診斷設定** ] 資料表中看到新專案。 
     ![清單中的診斷設定](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 

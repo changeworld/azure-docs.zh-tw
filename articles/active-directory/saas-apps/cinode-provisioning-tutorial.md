@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: dd052bf7a95cbadf2a107f7e49915a9899b084ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4b93bc8f44e7bec490466fc42be829f942ae07
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614082"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940917"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>教學課程：設定 Cinode 來自動布建使用者
 
@@ -55,7 +55,7 @@ ms.locfileid: "91614082"
 
 3. 流覽至 [ **權杖** ] 並建立新的權杖。
 
-4. 輸入唯一的名稱，選取 [ https://api.cinode.app/scim/v2 作為物件]，並適當地設定到期日。
+4. 輸入唯一的名稱 **，選取 [ https://api.cinode.app/scim/v2 ** 作為物件]，然後適當地設定到期日。
 
 5. 按一下 [ **建立權杖**]。
 

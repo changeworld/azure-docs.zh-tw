@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure PowerShell 建立 Azure AD Domain Services 資源樹系 |Microsoft Docs
 description: 在本文中，您將瞭解如何使用 Azure PowerShell 來建立 Azure Active Directory Domain Services 資源樹系和輸出樹系，並將其設定至內部部署 Active Directory Domain Services 環境。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.author: iainfou
-ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723158"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960944"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 建立對內部部署網域 Azure Active Directory Domain Services 資源樹系和輸出樹系信任
 
@@ -36,7 +36,7 @@ ms.locfileid: "88723158"
 > [!IMPORTANT]
 > 受控網域資源樹系目前不支援 Azure HDInsight 或 Azure 檔案儲存體。 預設的受控網域使用者樹系支援這兩個額外的服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文章，您需要下列資源和權限：
 
@@ -102,7 +102,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 請檢查腳本所需的下列參數 `New-AzureAaddsForest` 。 確定您也有必要的 **Azure PowerShell** 和 **Azure AD 的 PowerShell** 模組。 請確定您已規劃虛擬網路需求，以提供應用程式和內部部署連線能力。
 
-    | 名稱                         | 腳本參數          | 描述 |
+    | Name                         | 腳本參數          | 描述 |
     |:-----------------------------|---------------------------|:------------|
     | 訂用帳戶                 | *-azureSubscriptionId*    | 用於 Azure AD DS 帳單的訂用帳戶識別碼。 您可以使用 [AzureRMSubscription][Get-AzureRMSubscription] Cmdlet 取得訂用帳戶清單。 |
     | 資源群組               | *-aaddsResourceGroupName* | 受控網域和相關聯資源的資源組名。 |
@@ -112,7 +112,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
     `New-AzureAaddsForest`如果這些資源尚未存在，腳本就可以建立 Azure 虛擬網路和 AZURE AD DS 子網。 當指定時，腳本可以選擇性地建立工作負載子網：
 
-    | 名稱                              | 腳本參數                  | 說明 |
+    | Name                              | 腳本參數                  | 描述 |
     |:----------------------------------|:----------------------------------|:------------|
     | 虛擬網路名稱              | *-aaddsVnetName*                  | 受控網域的虛擬網路名稱。|
     | 位址空間                     | *-aaddsVnetCIDRAddressSpace*      | 以 CIDR 標記法表示的虛擬網路位址範圍 (如果建立虛擬網路) 。|
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 現在提供下列資訊給腳本：
 
-| 名稱                               | 腳本參數     | 說明 |
+| Name                               | 腳本參數     | 描述 |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS 功能變數名稱            | *-ManagedDomainFqdn* | 受控網域的 FQDN，例如 *aaddscontoso.com* |
 | 內部部署 AD DS 功能變數名稱      | *-TrustFqdn*         | 受信任樹系的 FQDN，例如 *onprem.contoso.com* |

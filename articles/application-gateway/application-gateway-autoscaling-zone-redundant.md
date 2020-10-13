@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826628"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
@@ -68,7 +68,7 @@ Azure 應用程式閘道一律會以高可用性的方式部署。 此服務是�
 
 下表將比較各個 SKU 的可用功能。
 
-| 特徵                                           | v1 SKU   | v2 SKU   |
+| 功能                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | 自動調整                                       |          | &#x2713; |
 | 區域備援                                   |          | &#x2713; |

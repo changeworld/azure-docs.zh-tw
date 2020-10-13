@@ -4,12 +4,12 @@ description: 深入瞭解 Azure container registry 的待用加密，以及如�
 ms.topic: article
 ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 7b4b3fd21421ba1e371bd27d8224c1f2aa34b7be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620336"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940662"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客戶管理的金鑰來加密登錄
 
@@ -114,7 +114,7 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-或者，您也可以使用 [AZURE RBAC Key Vault 的](../key-vault/general/rbac-guide.md) (預覽版) 將許可權指派給身分識別，以存取金鑰保存庫。 例如，使用 [az role assign create](/cli/azure/az/role/assigment#az-role-assignment-create) 命令將 Key Vault 加密服務加密角色指派給身分識別：
+或者，您也可以使用 [AZURE RBAC Key Vault 的](../key-vault/general/rbac-guide.md) (預覽版) 將許可權指派給身分識別，以存取金鑰保存庫。 例如，使用 [az role assign create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) 命令將 Key Vault 加密服務加密角色指派給身分識別：
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \

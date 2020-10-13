@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855846"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969835"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>傳統至 Azure Resource Manager 移轉的常見問題
 
@@ -26,7 +26,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 ## <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) 是 Azure 的最新控制平面，負責建立、管理、刪除 vm 和執行其他控制平面作業。 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) 是 Azure 的最新控制平面，負責建立、管理、刪除 vm 和執行其他控制平面作業。 
 
 ## <a name="what-is-the-time-required-for-migration"></a>移轉需要多久時間？
 
@@ -42,7 +42,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>為什麼我會收到 "NewClassicVMCreationNotAllowedForSubscription" 的錯誤？
 
-在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果您無法使用 ARM 來使用 Azure Vm，請聯絡支援人員以將您的訂用帳戶新增至允許清單。
+在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](./windows/quick-create-powershell.md)。 如果您無法使用 ARM 來使用 Azure Vm，請聯絡支援人員以將您的訂用帳戶新增至允許清單。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此移轉計劃是否會影響任何在 Azure 虛擬機器上執行的現有服務或應用程式？ 
 
@@ -105,7 +105,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 ## <a name="how-do-i-report-an-issue"></a>如何回報問題？ 
 
-請將移轉方面的疑問張貼到 [Microsoft 的 VM 問與答頁面](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)，並加註關鍵字 ClassicIaaSMigration。 建議您將所有問題都張貼在此論壇上。 如果您持有支援合約，也歡迎您登錄支援票證。
+請將移轉方面的疑問張貼到 [Microsoft 的 VM 問與答頁面](/answers/topics/azure-virtual-machines.html)，並加註關鍵字 ClassicIaaSMigration。 建議您將所有問題都張貼在此論壇上。 如果您持有支援合約，也歡迎您登錄支援票證。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>如果我不喜歡平台在移轉期間選擇的資源名稱，該怎麼辦？ 
 
@@ -120,7 +120,7 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 當 VM 無法連出到網際網路時，就會收到此訊息。 VM 代理程式會使用連出連線來連接到 Azure 儲存體帳戶，來每隔 5 分鐘更新一次代理程式狀態。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若為 Linux：
 

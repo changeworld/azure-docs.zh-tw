@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
 ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613708"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
@@ -37,7 +37,7 @@ ms.locfileid: "91613708"
 
 * Visual Studio Code：如果您使用 Visual Studio Code，則 [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) 模組包含 Python 的廣泛語言支援，以及可讓您更方便且更有效率地使用 Azure Machine Learning 的功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure Machine Learning 工作區。 如果您沒有帳戶，可以透過 [Azure 入口網站](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure Resource Manager 範本](how-to-create-workspace-template.md)建立 Azure Machine Learning 工作區。
 
@@ -131,7 +131,7 @@ ms.locfileid: "91613708"
 
 安裝 Visual Studio Code 擴充功能之後，您就可以管理 [Azure Machine Learning 資源](how-to-manage-resources-vscode.md)、 [執行和調試](how-to-debug-visual-studio-code.md)程式，以及 [部署定型的模型](tutorial-train-deploy-image-classification-model-vscode.md)。
 
-## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning 計算執行個體
+## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning 計算實例
 
 Azure Machine Learning [計算實例](concept-compute-instance.md) 是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter Notebook 伺服器、JupyterLab 和完全受控的機器學習環境。
 

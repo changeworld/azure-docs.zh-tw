@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300440"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 診斷工具針對 8000 系列裝置問題進行疑難排解
@@ -414,11 +414,11 @@ Controller0>
 
 下表描述系統資訊中各種 Windows PowerShell 參數對應的意義。 
 
-| PowerShell 參數    | 說明  |
+| PowerShell 參數    | 描述  |
 |-------------------------|------------------|
 | Instance ID             | 每個控制器都有相關聯的唯一識別碼或 GUID。|
 | 名稱                    | 在裝置部署期間，透過 Azure 入口網站設定的裝置易記名稱。 預設的易記名稱是裝置序號。 |
-| 型號                   | StorSimple 8000 系列裝置的機型。 機型可以是 8100 或 8600。|
+| 模型                   | StorSimple 8000 系列裝置的機型。 機型可以是 8100 或 8600。|
 | SerialNumber            | 裝置序號是在工廠裡指派，長度為 15 個字元。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 裝置機型。<br>SHX – 製造場所。<br> 0991003 – 特定產品。 <br> G44HT– 最後 5 位數會遞增以產生唯一序號。 這可能不是連續的組合。|
 | TimeZone                | 裝置時區是在裝置部署期間於 Azure 入口網站中設定。|
 | CurrentController       | 您透過 StorSimple 裝置的 Windows PowerShell 介面連接的控制器。|

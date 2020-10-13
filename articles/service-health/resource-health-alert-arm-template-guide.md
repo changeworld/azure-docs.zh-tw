@@ -4,10 +4,10 @@ description: 以程式設計方式建立警示，在您的 Azure 資源變成無
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537424"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用 Resource Manager 範本設定資源健康狀態警示
@@ -25,7 +25,7 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 1. 您必須安裝 [Azure PowerShell 模組](/powershell/azure/install-az-ps)
 2. 您需要[建立或重複使用動作群組](../azure-monitor/platform/action-groups.md)，該動作群組會設定來通知您
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>指示
 1. 使用 PowerShell、使用您的帳戶登入 Azure，然後選取您想要與之互動的訂用帳戶
 
     ```azurepowershell
@@ -168,7 +168,7 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 ],
 ```
 
-例如：`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+例如： `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > 您可以移至 Azure 入口網站，並在檢視您的 Azure 資源時查看 URL 以取得此字串。
 

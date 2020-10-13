@@ -8,10 +8,10 @@ ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612756"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活動記錄事件結構描述
@@ -29,7 +29,7 @@ ms.locfileid: "91612756"
 | 嚴重性 | 描述 |
 |:---|:---|
 | 重大 | 需要系統管理員立即注意的事件。 可能表示應用程式或系統已失敗或停止回應。
-| Error | 指出有問題，但不需要立即注意的事件。
+| 錯誤 | 指出有問題，但不需要立即注意的事件。
 | 警告 | 提供潛在問題 forewarning 的事件，但不是實際錯誤。 指出資源不是理想狀態，稍後可能會降級以顯示錯誤或重大事件。  
 | 資訊 | 將非關鍵資訊傳遞給系統管理員的事件。 類似于提示：「適用于您的資訊」的附注。 
 
@@ -141,7 +141,7 @@ ms.locfileid: "91612756"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 授權 |事件的 RBAC 屬性的 blob。 通常包括 action、role 和 scope 屬性。 |
 | 呼叫者 |已執行作業的使用者的電子郵件地址，根據可用性的 UPN 宣告或 SPN 宣告。 |
@@ -288,7 +288,7 @@ ms.locfileid: "91612756"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 通道 | 一律是 “Admin, Operation” |
 | correlationId | 字串格式的 GUID。 |
@@ -381,7 +381,7 @@ ms.locfileid: "91612756"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 呼叫者 | 一律是 Microsoft.Insights/alertRules |
 | 通道 | 一律是 “Admin, Operation” |
@@ -407,7 +407,7 @@ ms.locfileid: "91612756"
 屬性欄位將依據警示事件來源包含不同的值。 兩個常見的警示事件提供者為活動記錄警示和計量警示。
 
 #### <a name="properties-for-activity-log-alerts"></a>活動記錄警示的屬性
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | properties.subscriptionId | 導致啟用此活動記錄警示規則之活動記錄事件的訂用帳戶識別碼。 |
 | properties.eventDataId | 導致啟用此活動記錄警示規則之活動記錄事件的事件資料識別碼。 |
@@ -418,7 +418,7 @@ ms.locfileid: "91612756"
 | properties.status | 導致啟用此活動記錄警示規則之活動記錄事件的狀態。|
 
 #### <a name="properties-for-metric-alerts"></a>計量警示屬性
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | properties.RuleUri | 計量警示規則本身的資源識別碼。 |
 | properties.RuleName | 計量警示規則的名稱。 |
@@ -491,7 +491,7 @@ ms.locfileid: "91612756"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 呼叫者 | 一律是 Microsoft.Insights/autoscaleSettings |
 | 通道 | 一律是 “Admin, Operation” |
@@ -581,7 +581,7 @@ ms.locfileid: "91612756"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 通道 | 一律為 “Operation” |
 | correlationId | 字串格式的 GUID。 |
@@ -589,7 +589,7 @@ ms.locfileid: "91612756"
 | eventDataId |安全性事件的唯一識別碼。 |
 | eventName |安全性事件的易記名稱。 |
 | category | 一律為 "Security" |
-| ID |安全性事件的唯一資源識別碼。 |
+| 識別碼 |安全性事件的唯一資源識別碼。 |
 | 等級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | resourceGroupName |資源的資源群組名稱。 |
 | resourceProviderName |「Azure 資訊安全中心」的資源提供者名稱。 一律為 "Microsoft.Security"。 |
@@ -662,14 +662,14 @@ ms.locfileid: "91612756"
 
 ```
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 通道 | 一律為 “Operation” |
 | correlationId | 字串格式的 GUID。 |
 | description |建議事件的靜態文字描述 |
 | eventDataId | 建議事件的唯一識別碼。 |
 | category | 一律為 "Recommendation" |
-| ID |建議事件的唯一資源識別碼。 |
+| 識別碼 |建議事件的唯一資源識別碼。 |
 | 等級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | operationName |作業名稱。  一律為 "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |資源的資源群組名稱。 |
@@ -772,7 +772,7 @@ ms.locfileid: "91612756"
 
 ### <a name="policy-event-property-descriptions"></a>原則事件屬性描述
 
-| 元素名稱 | 說明 |
+| 元素名稱 | 描述 |
 | --- | --- |
 | 授權 | 事件的 RBAC 屬性陣列。 針對新資源，這是觸發評估的要求其動作和範圍。 針對現有的資源，此動作為「Microsoft.Resources/checkPolicyCompliance/read」。 |
 | 呼叫者 | 針對新資源，則為啟動部署的身分識別。 針對現有的資源，則為 Microsoft Azure Policy Insights RP 的 GUID。 |
@@ -784,7 +784,7 @@ ms.locfileid: "91612756"
 | eventName | 「BeginRequest」或「EndRequest」。 「BeginRequest」用於延遲的 auditIfNotExists 和 deployIfNotExists 評估，以及當 deployIfNotExists 效果開始範本部署時。 所有其他的作業都會傳回「EndRequest」。 |
 | category | 將活動記錄事件宣告為屬於「Policy」。 |
 | eventTimestamp | 處理與事件對應之要求的Azure 服務產生事件時的時間戳記。 |
-| ID | 特定資源上事件的唯一識別碼。 |
+| 識別碼 | 特定資源上事件的唯一識別碼。 |
 | 等級 | 事件的層級。 Audit 會使用「Warning」，Deny 會使用「Error」。 auditIfNotExists 或 deployIfNotExists 錯誤會根據嚴重性產生「Warning」或「Error」。 所有其他的原則事件會使用「Informational」。 |
 | operationId | 對應至單一作業的事件共用的 GUID。 |
 | operationName | 作業的名稱，且直接與「原則」效果相互關聯。 |
