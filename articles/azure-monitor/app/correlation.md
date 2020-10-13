@@ -8,10 +8,10 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827620"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
@@ -62,7 +62,7 @@ Application Insights 正在轉換成 [W3C 追蹤內容](https://w3c.github.io/tr
 - `traceparent`：攜帶全域唯一的作業識別碼和呼叫的唯一識別碼。
 - `tracestate`：攜帶系統特定的追蹤內容。
 
-最新版的 Application Insights SDK 支援追蹤內容通訊協定，但您可能需要加入宣告。  (與先前的相互關聯通訊協定（Application Insights SDK 所支援的回溯相容性）維持不變。 ) 
+Application Insights SDK 的最新版本支援 Trace-Context 的通訊協定，但您可能需要加入宣告。  (與先前的相互關聯通訊協定（Application Insights SDK 所支援的回溯相容性）維持不變。 ) 
 
 相互 [關聯 HTTP 通訊協定（也稱為要求識別碼](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)）即將被取代。 此通訊協定會定義兩個標頭：
 
@@ -84,7 +84,7 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](http
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>啟用 .NET 應用程式的 W3C 分散式追蹤支援
 
-根據預設，所有最近的 .NET Framework/.NET Core Sdk 都會啟用 W3C TraceCoNtext 型分散式追蹤，以及與舊版要求識別碼通訊協定的回溯相容性。
+根據預設，所有最近的 .NET Framework/.NET Core Sdk 都會啟用 W3C TraceCoNtext 型分散式追蹤，以及與舊版 Request-Id 通訊協定的回溯相容性。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>啟用 Java 應用程式的 W3C 分散式追蹤支援
 
@@ -170,7 +170,7 @@ OpenCensus Python 支援 [W3C 追蹤內容](https://w3c.github.io/trace-context/
 
 ### <a name="incoming-request-correlation"></a>傳入要求相互關聯
 
-OpenCensus Python 會將 W3C 追蹤內容標頭從要求本身產生的範圍，相互關聯至範圍。 OpenCensus 將會自動執行這些熱門 web 應用程式架構的整合： Flask、Django 和金字塔。 您只需要以 [正確的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) 填入 W3C 追蹤內容標頭，並使用要求傳送這些標頭。 以下是示範此範例的 Flask 應用程式範例：
+OpenCensus Python 會將 W3C Trace-Context 標頭從要求本身產生的範圍，相互關聯至範圍。 OpenCensus 將會自動執行這些熱門 web 應用程式架構的整合： Flask、Django 和金字塔。 您只需要以 [正確的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) 填入 W3C Trace-Context 標頭，並使用要求傳送這些標頭。 以下是示範此範例的 Flask 應用程式範例：
 
 ```python
 from flask import Flask
@@ -299,7 +299,7 @@ Application Insights .NET SDK 會使用 `DiagnosticSource` 和 `Activity` 來收
 
   彈簧開機 Starter 會自動指派 `cloudRoleName` 給您為屬性輸入的值 `spring.application.name` 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 撰寫 [自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md)。
 - 如需 ASP.NET Core 和 ASP.NET 中的先進相互關聯案例，請參閱 [追蹤自訂作業](custom-operations-tracking.md)。

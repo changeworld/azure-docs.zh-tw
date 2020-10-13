@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 95be6aa576d9d059ce419443f8c7e32af5ff397a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826209"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>停止/啟動適用於 MySQL 的 Azure 資料庫
@@ -79,5 +79,5 @@ ms.locfileid: "91826209"
     > [!NOTE]
     > 一旦啟動伺服器，所有的管理作業現在都可供單一伺服器使用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 瞭解 [如何建立計量警示](howto-alert-on-metric.md)。

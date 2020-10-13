@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
 ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766668"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>設定自訂警示以監視已公告路由
@@ -285,7 +285,7 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 每個邏輯應用程式都是由觸發程式啟動。 當特定事件發生或符合特定條件時，就會引發觸發程式。 每次引發觸發程序時，Azure Logic Apps 引擎都會建立一個可啟動並執行您工作流程的邏輯應用程式執行個體。
 
-若要定期執行以預先定義的時間排程為基礎的邏輯應用程式，請將內建的「 **週期：排程** 」新增至您的工作流程。 在 [搜尋] 方塊中，輸入 **schedule**。 選取 [觸發程序]  。 從觸發程式清單中選取 **[週期排程**]。
+若要定期執行以預先定義的時間排程為基礎的邏輯應用程式，請將內建的「 **週期：排程** 」新增至您的工作流程。 在 [搜尋] 方塊中，輸入 **schedule**。 選取 [觸發程序]。 從觸發程式清單中選取 **[週期排程**]。
 
 :::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="新增自動化帳戶":::
 
@@ -314,7 +314,7 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
    :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="新增自動化帳戶":::
 
-4. 輸入連線 **名稱**、將 **用戶端識別碼** 新增 (應用程式識別碼) 、 **用戶端密碼**和 **租使用者識別碼**。 然後，選取 [Create]  \(建立\)。
+4. 輸入連線 **名稱**、將 **用戶端識別碼** 新增 (應用程式識別碼) 、 **用戶端密碼**和 **租使用者識別碼**。 然後，選取 [Create] \(建立\)。
 
    :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="新增自動化帳戶":::
 
@@ -324,7 +324,7 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. 取得作業輸出
 
-1. 選取 [新增步驟]。 搜尋「Azure 自動化」。 從 [ **動作** ] 清單中選取 [ **取得工作輸出**]。
+1. 選取 [新增步驟]  。 搜尋「Azure 自動化」。 從 [ **動作** ] 清單中選取 [ **取得工作輸出**]。
 
    :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="新增自動化帳戶":::
 
@@ -393,7 +393,7 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
    :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="新增自動化帳戶":::
 
-5. 在 [ **動作** ] 清單中，選取 [ **條件-控制項**]。 條件控制是一個控制項結構，它會比較您工作流程中的資料與特定值或欄位。 然後，您可以根據資料是否符合條件，指定要執行的不同動作。
+5. 在 [ **動作** ] 清單中，選取 [ **條件-控制項**]。 Condition-Control 是一個控制項結構，會比較您工作流程中的資料與特定值或欄位。 然後，您可以根據資料是否符合條件，指定要執行的不同動作。
 
    :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="新增自動化帳戶":::
 

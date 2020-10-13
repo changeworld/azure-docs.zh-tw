@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361761"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>瞭解 NoSQL 與關係資料庫之間的差異
@@ -39,7 +39,7 @@ ms.locfileid: "91361761"
 
 面向 [物件設計](https://en.wikipedia.org/wiki/Object-oriented_design)的出現，以及將其與關聯式模型結合時所產生的 [阻抗不相符](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) ，也會在特定使用案例中強調關係資料庫中的反模式。 如此一來，就會發生隱藏但經常發生的維護成本。 雖然 [ORM 方法](https://en.wikipedia.org/wiki/Object-relational_mapping) 已發展成部分緩解這個情況，但檔導向的資料庫與物件導向的方法比較得更好。 使用這個方法時，開發人員不會被迫認可至 ORM 驅動程式，也不會定制語言特定的 [OO 資料庫引擎](https://en.wikipedia.org/wiki/Object_database)。 如果您的資料包含許多父子式關聯性和深層階層，您可能會想要考慮使用 NoSQL 檔資料庫，例如 [AZURE COSMOS DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)。
 
-:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="後端":::
 
 ## <a name="complex-networks-and-relationships"></a>複雜的網路和關聯性
 
@@ -49,7 +49,7 @@ ms.locfileid: "91361761"
 
 如果您要在資料庫中維護複雜的關聯性網路，您可能會想要考慮圖形資料庫（例如 [Azure Cosmos DB GREMLIN API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) ）來管理此資料。
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="資料庫關係圖會顯示數個彼此連線的員工和部門。":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="後端":::
 
 Azure Cosmos DB 是多模型資料庫服務，可為所有主要的 NoSQL 模型類型提供 API 投射;資料行系列、檔、圖形和索引鍵/值。 [Gremlin (graph) ](https://docs.microsoft.com/azure/cosmos-db/gremlin-support)和 SQL (Core) 檔 API 層可完全互通。 這在可程式性層級的不同模型之間切換有其優點。 您可以透過複雜的網路周遊，以及在相同存放區中模型化為檔記錄的交易來查詢圖形存放區。
 
@@ -76,7 +76,7 @@ Azure Cosmos DB 是多模型資料庫服務，可為所有主要的 NoSQL 模型
 
 查看第一項挑戰，NoSQL 資料庫中的經驗法則通常是正規化的，如先前所述，在分散式系統中產生更有效率的讀取。 不過，這種方法有一些設計上的挑戰。 讓我們來看一個與某個類別和多個標記相關的產品範例：
 
-:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="聯結":::
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="後端":::
 
 NoSQL 檔資料庫中的最佳作法是在「產品檔」中直接反正規化分類名稱和標記名稱。 不過，為了讓類別、標籤和產品保持同步，簡化這項作業的設計選項已增加維護的複雜度，因為資料會在產品的多筆記錄中重複，而不是「一對多」關聯性中的簡單更新，以及用來取得資料的聯結。 
 

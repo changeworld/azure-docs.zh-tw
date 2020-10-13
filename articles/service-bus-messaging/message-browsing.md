@@ -4,10 +4,10 @@ description: 流覽和查看服務匯流排訊息可讓 Azure 服務匯流排用
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827446"
 ---
 # <a name="message-browsing"></a>訊息瀏覽
@@ -32,7 +32,7 @@ ms.locfileid: "91827446"
 
 您也可以使用方法的多載搭配要啟動的 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) ，然後再呼叫無參數方法多載來進一步列舉。 **PeekBatch** 的功能相同，不過它會一次擷取一組訊息。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解服務匯流排傳訊，請參閱下列主題：
 

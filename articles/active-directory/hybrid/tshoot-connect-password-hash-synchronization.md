@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317560"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步執行的密碼雜湊同步處理進行疑難排解
@@ -356,7 +356,7 @@ ms.locfileid: "91317560"
 
 | 狀態 | 描述 |
 | --- | --- |
-| Success |已成功同步處理密碼。 |
+| 成功 |已成功同步處理密碼。 |
 | FilteredByTarget |密碼會設為 [使用者必須在下次登入時變更密碼] ****。 未同步處理密碼。 |
 | NoTargetConnection |Metaverse 或 Azure AD 連接器空間中沒有任何物件。 |
 | SourceConnectorNotPresent |在內部部署 Active Directory 連接器空間中找不到任何物件。 |

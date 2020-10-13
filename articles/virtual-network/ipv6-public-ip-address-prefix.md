@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666778"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>保留的公用 IPv6 位址首碼
@@ -38,7 +38,7 @@ ms.locfileid: "91666778"
 -  IPv6 首碼的最小值：/127 = 2 個位址
 -  IPv6 首碼大小上限：/124 = 16 個位址
 
-首碼大小會指定為無類別網域間路由 (CIDR) 遮罩大小。 例如，a/128 的遮罩代表個別的 IPv6 位址，因為 IPv6 位址是由128位組成。
+首碼大小會指定為無類別 Inter-Domain 路由 (CIDR) 遮罩大小。 例如，a/128 的遮罩代表個別的 IPv6 位址，因為 IPv6 位址是由128位組成。
 
 ## <a name="pricing"></a>定價
  

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5999ef8431ce1e128c3775450eedf13644505918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94a5459ade634f6a1de029808aa6bad4d16b9a5d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313530"
+ms.locfileid: "91874624"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用傳統部署模型設定強制通道
 
@@ -57,12 +57,7 @@ Azure 中的強制通道會透過虛擬網路使用者定義路由 (UDR) 進行�
 
 ### <a name="to-sign-in"></a>登入
 
-1. 以較高的許可權開啟 PowerShell 主控台。 若要切換到服務管理，請使用此命令：
-
-   ```powershell
-   azure config mode asm
-   ```
-2. 連線至您的帳戶。 使用下列範例來協助您連接：
+1. 以較高的許可權開啟 PowerShell 主控台。 使用下列範例連接到您的帳戶：
 
    ```powershell
    Add-AzureAccount

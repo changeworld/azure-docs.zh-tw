@@ -4,10 +4,10 @@ description: 本文提供一些常見問題的解答 (常見問題) Azure 服務
 ms.topic: article
 ms.date: 09/16/2020
 ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894521"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題 (常見問題) 
@@ -113,7 +113,7 @@ Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料�
 指定的 Azure 區域內的任何資料傳輸都是免費提供，以及任何輸入的資料傳輸。 區域外部的資料傳送需要出口流量費用，可以在[這裡](https://azure.microsoft.com/pricing/details/bandwidth/)找到。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服務匯流排是否會收取儲存體費用？
-不可以。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
+否。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有服務匯流排標準命名空間。 為什麼我會在資源群組 ' $system ' 下看見費用？
 Azure 服務匯流排最近升級計費元件。 由於這項變更，如果您有服務匯流排標準命名空間，您可能會在資源群組 ' $system ' 下看到資源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' 的明細專案。
@@ -163,7 +163,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 若要深入了解服務匯流排，請參閱下列文章：
 
 * [Azure 服務匯流排進階簡介 (部落格文章)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

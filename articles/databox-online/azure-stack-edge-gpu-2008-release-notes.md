@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/07/2020
 ms.author: alkohli
 ms.openlocfilehash: d166b0a4c4b69f03d7dba9d997d7d07fbd81ef41
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893976"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>使用 GPU Preview 版本資訊 Azure Stack Edge Pro
@@ -25,7 +25,7 @@ ms.locfileid: "90893976"
 
 <!--- **2.1.1328.1904**-->
 
-## <a name="whats-new"></a>最新消息
+## <a name="whats-new"></a>新功能
 
 Azure Stack Edge 2008 版本中新增了下列新功能。 根據您正在執行的特定預覽軟體版本，您可能會看到這些功能的子集。 
 
@@ -37,7 +37,7 @@ Azure Stack Edge 2008 版本中新增了下列新功能。 根據您正在執行
 
 下表提供 Azure Stack Edge Pro 裝置已知問題的摘要。
 
-| 不可以。 | 功能 | 問題 | 因應措施/註解 |
+| 否。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |
 | **2.** |重新整理| 不支援透過重新整理還原 **的 blob** 增量變更 |在重新整理之後，Blob 端點（blob 的部分更新）可能會導致更新未上傳至雲端。 例如，動作的順序如下：<ul><li>在雲端中建立 blob。 或從裝置刪除先前上傳的 blob。</li><li>使用重新整理功能將 blob 從雲端重新整理至設備。</li><li>使用 Azure SDK REST Api 只更新 blob 的一部分。</li></ul>這些動作可能會導致 blob 的更新區段無法在雲端中更新。 <br>因應**措施：透過**Explorer 或命令列使用 robocopy 之類的工具或一般檔案複製來取代整個 blob。|
@@ -55,7 +55,7 @@ Azure Stack Edge 2008 版本中新增了下列新功能。 根據您正在執行
 |**日.**|Kubernetes |如果您將自己的憑證帶入 IoT Edge，並將其新增至 Azure Stack Edge 裝置，則不會在 Helm 圖更新中挑選新的憑證。|若要解決這個問題，請 [連接到裝置的 PowerShell 介面](azure-stack-edge-gpu-connect-powershell-interface.md)。 重新開機 `iotedged` 和 pod `edgehub` 。|
 |**長.**|憑證 |在某些情況下，本機 UI 中的憑證狀態可能需要數秒鐘的時間來更新。 |本機 UI 中的下列案例可能會受到影響。<ul><li>[**憑證**] 頁面中的 [**狀態**] 資料行。</li><li>[**開始**使用] 頁面中的 [**安全性**] 磚。</li><li>**[總覽**] 頁面中的 [設定 **] 磚。**</li></ul>  |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [準備使用 GPU 部署 Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-deploy-prep.md)
 

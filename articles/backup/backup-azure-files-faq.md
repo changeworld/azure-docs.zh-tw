@@ -3,12 +3,12 @@ title: 備份 Azure 檔案服務常見問題集
 description: 在本文中，您可以針對如何使用 Azure 備份服務來保護 Azure 檔案共用的常見問題，找到相關解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729061"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940830"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有關備份 Azure 檔案服務的問題
 
@@ -78,20 +78,20 @@ ms.locfileid: "91729061"
 
 ### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>將備份的檔案共用移至不同的訂用帳戶之後會發生什麼事？
 
-一旦檔案共用移至不同的訂用帳戶之後，Azure 備份就會將它視為新的檔案共用。 以下是建議的步驟：
+一旦檔案共用移至不同的訂用帳戶之後，Azure 備份就會將它視為新的檔案共用。 這些是建議的步驟：
  
-案例：假設您在訂用帳戶 S1 中有檔案共用 FS1，並使用 V1 保存庫加以保護。 現在您想要將檔案共用移至訂用帳戶 S2。
+案例：假設您在訂用帳戶*S1*中有檔案共用*FS1* ，並使用*V1*保存庫加以保護。 現在您想要將檔案共用移至訂用帳戶 *S2*。
  
 1.  將所需的儲存體帳戶和檔案共用 (FS1) 移至不同的訂用帳戶 (S2) 。
-2.  在 V1 保存庫中，觸發程式會停止保護 FS1 的刪除資料作業。
+2.  在 V1 保存庫中，觸發 FS1 的「停止保護」和「刪除資料」作業。
 3.  從 V1 保存庫將裝載 FS1 的儲存體帳戶取消註冊。
 4.  使用 S2 訂用帳戶中的保存庫 (V2) 重新設定 FS1 的備份（現在已移至 S2）。 
  
-請注意，使用 V2 重新設定備份之後，將不會再由 Azure 備份管理使用 V1 取得的快照集，因此您必須依據需求手動刪除這些快照集。
+請注意，使用 V2 重新設定備份之後，將不會再由 Azure 備份管理以 V1 取得的快照。 因此，您必須根據您的需求手動刪除這些快照集。
 
 ### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>我可以將已備份的檔案共用移至不同的資源群組嗎？
  
-是，您可以將已備份的檔案共用移至不同的資源群組。 不過，您將需要重新設定檔案共用的備份，因為 Azure 備份會將它視為新的資源。 此外，在資源群組移動之前建立的快照集將不會再由 Azure 備份管理。因此，您必須根據您的需求手動刪除這些快照集。
+是，您可以將已備份的檔案共用移至不同的資源群組。 不過，您將需要重新設定檔案共用的備份，因為 Azure 備份會將它視為新的資源。 此外，在資源群組移動之前建立的快照集將不會再由 Azure 備份管理。 因此，您必須根據您的需求手動刪除這些快照集。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>我可以為備份設定的保留期上限為何？
 

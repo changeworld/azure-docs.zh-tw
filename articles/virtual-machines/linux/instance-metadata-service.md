@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffa9502a42af9e927f82d7a135473ff702b76577
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974147"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970702"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS) 
 
@@ -249,8 +249,8 @@ NAME | VM 的名稱 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虛擬機器擴展集的[放置群組](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 計劃 | 如果[方案](/rest/api/compute/virtualmachines/createorupdate#plan)是 Azure Marketplace 映像，則其會包含 VM 的名稱、產品及發行者 | 2018-04-02
-platformUpdateDomain |  VM 執行所在的[更新網域](manage-availability.md) | 2017-04-02
-platformFaultDomain | VM 執行所在的[容錯網域](manage-availability.md) | 2017-04-02
+platformUpdateDomain |  VM 執行所在的[更新網域](../manage-availability.md) | 2017-04-02
+platformFaultDomain | VM 執行所在的[容錯網域](../manage-availability.md) | 2017-04-02
 provider | VM 的提供者 | 2018-10-01
 publicKeys | 指派給 VM 和路徑的[公開金鑰集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM 映像的發佈者 | 2017-04-02

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf70d4381a7d128f7a2716540b1318b39cd729b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e300f2e18d7103cde374c5eba6877602ac3721
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602127"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961216"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中利用 OpenID Connect 的 Web 登入
 
@@ -274,13 +274,17 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | 租 | 是 | 您 Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 您想要用來將使用者登出應用程式的使用者流程。 |
-| id_token_hint| 否 | 先前發行的識別碼權杖，可傳遞給登出端點，作為與用戶端目前已驗證的會話相關的提示。 `id_token_hint`可確保在 `post_logout_redirect_uri` 您的 Azure AD B2C 應用程式設定中，是已註冊的回復 URL。 |
+| id_token_hint| 否 | 先前發行的識別碼權杖，可傳遞給登出端點，作為與用戶端目前已驗證的會話相關的提示。 `id_token_hint`可確保在 `post_logout_redirect_uri` 您的 Azure AD B2C 應用程式設定中，是已註冊的回復 URL。 如需詳細資訊，請參閱 [保護登出重新導向](#secure-your-logout-redirect)。 |
 | client_id | 否* | [Azure 入口網站](https://portal.azure.com/)指派給您應用程式的應用程式識別碼。<br><br>\**使用 `Application` 隔離 SSO 設定時需要此設定，且登出要求中的 _識別碼權杖_ 會設定為 `No` 。* |
 | post_logout_redirect_uri | 否 | 成功登出之後，使用者應該重新導向的 URL。如果未包含，Azure AD B2C 會顯示一般訊息給使用者。 除非您提供 `id_token_hint` ，否則您不應該在 Azure AD B2C 應用程式設定中將此 url 註冊為回復 url。 |
 | 狀態 | 否 | 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該確認 `state` 要求和回應中的值是否相同。 |
 
 ### <a name="secure-your-logout-redirect"></a>保護登出重新導向
 
-登出之後，會將使用者重新導向至參數中所指定的 URI `post_logout_redirect_uri` ，而不論已針對應用程式指定的回復 url。 但是，如果傳遞的 `id_token_hint` 是有效的，Azure AD B2C 會驗證的值 `post_logout_redirect_uri` 符合其中一個應用程式設定的重新導向 uri，然後再執行重新導向。 如果未針對應用程式設定相符的回復 URL，則會顯示錯誤訊息，且不會重新導向使用者。
+登出之後，會將使用者重新導向至參數中所指定的 URI `post_logout_redirect_uri` ，而不論已針對應用程式指定的回復 url。 但是，如果傳遞的 `id_token_hint` 是有效的，而且 **登出要求中的要求識別碼權杖** 已開啟，Azure AD B2C 會確認的值 `post_logout_redirect_uri` 符合其中一個應用程式設定的重新導向 uri，然後再執行重新導向。 如果未針對應用程式設定相符的回復 URL，則會顯示錯誤訊息，且不會重新導向使用者。
 
+若要在登出要求中設定所需的識別碼權杖，請參閱 Azure Active Directory B2C 中的設定 [會話行為](session-behavior-custom-policy.md#secure-your-logout-redirect)，並 [在 Azure Active Directory B2C 中使用自訂原則來設定會話行為](session-behavior-custom-policy.md#secure-your-logout-redirect)。
 
+## <a name="next-steps"></a>後續步驟
+
+- 深入瞭解 [Azure AD B2C 會話](session-overview.md)。

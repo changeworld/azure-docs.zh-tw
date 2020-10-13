@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298706"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 premium 檔案共用 (SQL Server 的 FCI) 
@@ -29,7 +29,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -96,17 +96,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 1. 選取 [下一步] 。
 1. 在 [測試選取] 下，選取除 [儲存體] 和 [儲存空間直接存取] 以外的所有測試，如下所示：
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="選取叢集驗證測試":::
-
-1. 選取 [下一步] 。
-1. 在 [確認] 下，選取 [下一步]。
-
-[ **驗證** 設定] 嚮導會執行驗證測試。
-
-若要使用 PowerShell 驗證叢集，請在其中一部虛擬機器上，從系統管理員 PowerShell 工作階段執行下列指令碼：
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="從檔案共用連線入口網站複製這兩個 PowerShell 命令"
    ```
 
 驗證叢集後，請建立容錯移轉叢集。
@@ -151,7 +141,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 測試叢集的容錯移轉。 在**容錯移轉叢集管理員**中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="從檔案共用連線入口網站複製這兩個 PowerShell 命令":::
 
 
 ## <a name="create-sql-server-fci"></a>建立 SDL Server FCI
@@ -172,7 +162,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
    FCI 資料目錄必須位於進階檔案共用中。 輸入共用的完整路徑，格式如下： `\\storageaccountname.file.core.windows.net\filesharename\foldername` 。 隨即會出現警告告知已指定檔案伺服器作為資料目錄。 這個警告是正常現象。 當您保存檔案共用時，請確定您用來透過 RDP 存取 VM 的使用者帳戶，與 SQL Server 服務用來避免可能發生失敗的帳戶相同。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="使用檔案共用作為 SQL 資料目錄":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="從檔案共用連線入口網站複製這兩個 PowerShell 命令":::
 
 1. 完成精靈中的步驟後，安裝程式會在第一個節點上安裝 SQL Server FCI。
 
@@ -222,4 +212,4 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 如需詳細資訊，請參閱 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88860943"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970396"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>使用 Windows server 容錯移轉叢集和 Azure 共用磁片的 SAP ASCS/SCS 實例多重 SID 高可用性
 
@@ -34,13 +34,13 @@ ms.locfileid: "88860943"
 
 目前，您可以使用 Azure 進階 SSD 磁片作為 SAP ASCS/SCS 實例的 Azure 共用磁片。 下列限制已就緒：
 
--  [Azure Ultra 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) 不支援作為 SAP 工作負載的 Azure 共用磁片。 目前無法在可用性設定組中使用 Azure Ultra 磁片來放置 Azure Vm
--  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)。 可用性區域部署中並不支援此功能。 
--  Azure 共用磁片值 [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) 決定可使用共用磁片的叢集節點數目。 通常針對 SAP ASCS/SCS 實例，您將在 Windows 容錯移轉叢集中設定兩個節點，因此的值 `maxShares` 必須設定為 [2]。
--  所有 SAP ASCS/SCS 叢集 Vm 都必須部署在相同的 [Azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)中。   
+-  [Azure Ultra 磁片](../../disks-types.md#ultra-disk) 不支援作為 SAP 工作負載的 Azure 共用磁片。 目前無法在可用性設定組中使用 Azure Ultra 磁片來放置 Azure Vm
+-  只有可用性設定組中的 Vm 支援具有進階 SSD 磁片的[Azure 共用磁片](../../windows/disks-shared.md)。 可用性區域部署中並不支援此功能。 
+-  Azure 共用磁片值 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) 決定可使用共用磁片的叢集節點數目。 通常針對 SAP ASCS/SCS 實例，您將在 Windows 容錯移轉叢集中設定兩個節點，因此的值 `maxShares` 必須設定為 [2]。
+-  所有 SAP ASCS/SCS 叢集 Vm 都必須部署在相同的 [Azure 鄰近放置群組](../../windows/proximity-placement-groups.md)中。   
    雖然您可以在沒有 PPG 的情況下，使用 Azure 共用磁片在可用性設定組中部署 Windows 叢集 Vm，PPG 將可確保 Azure 共用磁片和叢集 Vm 的實體接近度，進而達到 Vm 和儲存層之間的延遲。    
 
-如需 Azure 共用磁片限制的進一步詳細資料，請仔細參閱 Azure 共用磁片檔的 [限制](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) 一節。  
+如需 Azure 共用磁片限制的進一步詳細資料，請仔細參閱 Azure 共用磁片檔的 [限制](../../linux/disks-shared.md#limitations) 一節。  
 
 > [!IMPORTANT]
 > 使用 Azure 共用磁片部署 SAP ASCS/SCS Windows 容錯移轉叢集時，請注意，您的部署將會使用一個儲存體叢集中的單一共用磁片來運作。 您的 SAP ASCS/SCS 實例將會受到影響，以防儲存體叢集發生問題，也就是部署 Azure 共用磁片的位置。  
@@ -111,7 +111,7 @@ ms.locfileid: "88860943"
 
 ### <a name="create-azure-internal-load-balancer"></a>建立 Azure 內部負載平衡器
 
-SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要 [負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) 才能使用虛擬 IP 位址。 我們強烈建議使用 [標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 
+SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要 [負載平衡器](../../../load-balancer/load-balancer-overview.md) 才能使用虛擬 IP 位址。 我們強烈建議使用 [標準負載平衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
 
 您必須為第二個 SAP SID ASCS/SCS/ERS 實例 **PR2**將設定新增至現有的負載平衡器。 第一個 SAP SID **PR1** 的設定應該已準備就緒。  
 

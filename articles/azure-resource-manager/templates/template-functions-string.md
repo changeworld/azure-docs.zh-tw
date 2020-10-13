@@ -3,12 +3,12 @@ title: 範本函式-字串
 description: 描述 Azure Resource Manager 範本中用來使用字串的函式。
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0733ffc790854c60dca46da3f763738b7820215
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962062"
+ms.locfileid: "91874708"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 範本的字串函式
 
@@ -27,6 +27,7 @@ Resource Manager 提供下列函式，可在您的 Azure Resource Manager (ARM) 
 * [format](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
+* [json](#json)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length) (長度)
@@ -55,7 +56,7 @@ Resource Manager 提供下列函式，可在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字串 |要以 base64 表示法傳回的值。 |
 
@@ -108,8 +109,8 @@ Resource Manager 提供下列函式，可在您的 Azure Resource Manager (ARM) 
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -173,8 +174,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -238,8 +239,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -250,7 +251,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字串或陣列 |要串連的第一個字串或陣列。 |
 | 其他引數 |否 |字串或陣列 |串連的其他字串或陣列（依序排列）。 |
@@ -289,7 +290,7 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | 字串 | prefix-5yj4yjf5mbg72 |
 
 下一個[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)顯示如何結合兩個陣列。
 
@@ -340,7 +341,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
 | itemToFind |是 |字串或整數 |要尋找的值。 |
@@ -421,7 +422,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |字串 |要轉換為資料 URI 的值。 |
 
@@ -465,8 +466,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字串 | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -476,7 +477,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |字串 |要轉換的資料 URI 值。 |
 
@@ -520,8 +521,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字串 | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -531,7 +532,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |陣列、物件或字串 |要檢查它是否為空的值。 |
 
@@ -596,7 +597,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -662,7 +663,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或字串 |要擷取其第一個元素或字元的值。 |
 
@@ -703,8 +704,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | 字串 | one |
+| stringOutput | 字串 | O |
 
 ## <a name="format"></a>format
 
@@ -714,7 +715,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | formatString | 是 | 字串 | 複合格式字串。 |
 | arg1 | 是 | 字串、整數或布林值 | 要包含在格式化字串中的值。 |
@@ -761,7 +762,7 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| formatTest | String | Hello，User。 格式化數位：8175133 |
+| formatTest | 字串 | Hello，User。 格式化數位：8175133 |
 
 ## <a name="guid"></a>guid
 
@@ -771,7 +772,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字串 |雜湊函式中用來建立 GUID 的值。 |
 | 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
@@ -842,7 +843,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -895,6 +896,12 @@ JSON 物件。
 | lastString | Int | 0 |
 | notFound | Int | -1 |
 
+## <a name="json"></a>json
+
+`json(arg1)`
+
+將有效的 JSON 字串轉換成 JSON 資料類型。 如需詳細資訊，請參閱 [json 函數](template-functions-object.md#json)。
+
 ## <a name="last"></a>last
 
 `last (arg1)`
@@ -903,7 +910,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或字串 |要擷取其最後一個元素或字元的值。 |
 
@@ -944,8 +951,8 @@ JSON 物件。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | 字串 | three |
+| stringOutput | 字串 | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -955,7 +962,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -1016,7 +1023,7 @@ JSON 物件。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列、字串或物件 |用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
@@ -1191,7 +1198,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |是 |字串或整數 |要靠右對齊的值。 |
 | totalLength |是 |int |傳回字串中的字元總數。 |
@@ -1231,7 +1238,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | 字串 | 0000000123 |
 
 ## <a name="replace"></a>取代
 
@@ -1241,7 +1248,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalString |是 |字串 |具備由另一個字串取代的一個字串之所有執行個體的值。 |
 | oldString |是 |字串 |要從原始字串中移除的字串。 |
@@ -1283,8 +1290,8 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | 字串 | 1231231234 |
+| secondOutput | 字串 | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1294,7 +1301,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |陣列或字串 |要用於略過的陣列或字串。 |
 | numberToSkip |是 |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果大於陣列或字串的長度，則會傳回空的陣列或字串。 |
@@ -1352,7 +1359,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | 字串 | two three |
 
 ## <a name="split"></a>split
 
@@ -1362,7 +1369,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字串 |要分割的字串。 |
 | 分隔符號 |是 |字串或字串陣列 |用於分割字串的分隔符號。 |
@@ -1421,7 +1428,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字串 |其中包含要尋找之項目的值。 |
 | stringToFind |是 |字串 |要尋找的值。 |
@@ -1487,7 +1494,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要轉換成字串的值。 任何類型的值均可轉換，包括物件和陣列。 |
 
@@ -1546,9 +1553,9 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | 字串 | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | 字串 | ["a","b","c"] |
+| intOutput | 字串 | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1558,7 +1565,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |是 |字串 |要用來擷取子字串的原始字串。 |
 | startIndex |否 |int |起始字元位置為零的子字串。 |
@@ -1609,7 +1616,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | 字串 | two |
 
 ## <a name="take"></a>take
 
@@ -1619,7 +1626,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |陣列或字串 |要從其中擷取元素的陣列或字串。 |
 | numberToTake |是 |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
@@ -1677,7 +1684,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | 字串 | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1687,7 +1694,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字串 |要轉換成小寫字母的值。 |
 
@@ -1727,8 +1734,8 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字串 | one two three |
+| toUpperOutput | 字串 | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1738,7 +1745,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字串 |要轉換成大寫字母的值。 |
 
@@ -1778,8 +1785,8 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字串 | one two three |
+| toUpperOutput | 字串 | ONE TWO THREE |
 
 ## <a name="trim"></a>修剪
 
@@ -1789,7 +1796,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |字串 |要修剪的值。 |
 
@@ -1825,7 +1832,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| return | String | one two three |
+| return | 字串 | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1835,7 +1842,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字串 |雜湊函式中用來建立唯一字串的值。 |
 | 視需要，也會使用其他參數 |否 |字串 |您可以視需要新增多個字串，來建立指定唯一性層級的值。 |
@@ -1913,7 +1920,7 @@ NewGuid 函數會使用 .NET Framework 中的 [Guid 結構](/dotnet/api/system.g
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseUri |是 |字串 |基底 uri 的字串。 請小心觀察有關處理尾端斜線 ( '/' ) 的行為，如下表所述。  |
 | relativeUri |是 |字串 |要加入至基底 uri 字串的相對 uri 字串。 |
@@ -1981,9 +1988,9 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -1993,7 +2000,7 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |字串 |要編碼的值。 |
 
@@ -2036,9 +2043,9 @@ URI 編碼值的字串。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2048,7 +2055,7 @@ URI 編碼值的字串。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |字串 |要轉換為字串的 URI 編碼值。 |
 
@@ -2091,9 +2098,9 @@ URI 編碼值的解碼字串。
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。

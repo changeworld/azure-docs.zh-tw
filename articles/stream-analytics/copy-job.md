@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
 ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892304"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>複製或備份 Azure 串流分析作業
@@ -49,7 +49,7 @@ ms.locfileid: "90892304"
 
 2. 在 \* [查詢編輯器] 中開啟 >script.asaql 檔案，選取腳本編輯器中的 [ **提交至 Azure** ]，然後依照指示將作業發佈到另一個區域，或使用新的名稱來備份。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：使用 Visual Studio Code 建立串流分析作業](quick-create-visual-studio-code.md)
 * [快速入門：使用 Visual Studio 建立串流分析作業](stream-analytics-quick-create-vs.md)

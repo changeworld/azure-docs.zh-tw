@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277694"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 應用程式套件將應用程式部署至計算節點
@@ -103,7 +103,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 :::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="此圖顯示應用程式和應用程式封裝的高階觀點。":::
 
-輸入下列資訊：
+輸入以下資訊：
 
 - **應用程式識別碼**：新應用程式的識別碼。
 - **版本**"：您正在上傳之應用程式封裝的版本。

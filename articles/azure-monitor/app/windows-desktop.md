@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827873"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
@@ -174,7 +174,7 @@ namespace WindowsFormsApp2
 > [!NOTE]
 > 雖然在技術上，您可以使用如上面所述的遙測處理器，即使您是在 [每個節點的舊版 Enterprise () 定價層](./pricing.md#legacy-enterprise-per-node-pricing-tier)，這會導致過度計費，因為無法正確地區分節點的每個節點定價。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [建立儀表板](./overview-dashboard.md)
 * [診斷搜尋](./diagnostic-search.md)
 * [探索度量](../platform/metrics-charts.md)

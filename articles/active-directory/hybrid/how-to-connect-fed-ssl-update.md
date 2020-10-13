@@ -17,10 +17,10 @@ ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279902"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 同盟服務 (AD FS) 伺服器陣列的 TLS/SSL 憑證
@@ -99,13 +99,13 @@ Azure AD Connect 會透過下列方式，嘗試自動取得 AD FS 伺服器陣�
 
 * **我可以使用新的 TLS/SSL 憑證來更新我的伺服器陣列伺服器子集嗎？**
 
-    可以。 您永遠可以再次執行工作「更新 SSL 憑證」**** 來更新其餘的伺服器。 在 [選取要進行 SSL 憑證更新的伺服器]**** 頁面上，您可以依「SSL 到期日」**** 來排序伺服器清單，以便輕鬆地存取尚未更新的伺服器。
+    是。 您永遠可以再次執行工作「更新 SSL 憑證」**** 來更新其餘的伺服器。 在 [選取要進行 SSL 憑證更新的伺服器]**** 頁面上，您可以依「SSL 到期日」**** 來排序伺服器清單，以便輕鬆地存取尚未更新的伺服器。
 
 * **我在上一次執行中移除了伺服器，但它仍然顯示為離線，並且列在 [AD FS 伺服器] 頁面上。為何即使在移除後，離線服務器仍會存在？**
 
     從 Azure AD Connect 的清單中移除伺服器並不會在 AD FS 組態中將它移除。 Azure AD Connect 會參考 AD FS (Windows Server 2016 或更新版本) 以取得伺服器陣列的任何相關資訊。 如果伺服器仍然出現在 AD FS 組態中，它會列回到清單中。  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure AD Connect 和同盟](how-to-connect-fed-whatis.md)
 - [使用 Azure AD Connect 管理和自訂 Active Directory Federation Services](how-to-connect-fed-management.md)

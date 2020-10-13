@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
 ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826224"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中註冊機密用戶端應用程式
@@ -73,7 +73,7 @@ ms.locfileid: "91826224"
 
 3. 一旦產生，就只會在入口網站中顯示一次。 請記下它並安全地儲存。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何在 Azure Active Directory 中註冊機密用戶端應用程式。 接下來，您可以使用 Postman 存取 FHIR 伺服器
  

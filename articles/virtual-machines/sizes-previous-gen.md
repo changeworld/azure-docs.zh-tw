@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: jushiman
 ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666614"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
@@ -96,7 +96,7 @@ NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈
 
 基本層大小主要適用於開發工作負載，以及其他不需要負載平衡、自動調整或記憶體高用量虛擬機器的應用程式。
 
-| 大小 - 大小\名稱 | vCPU | 記憶體|NIC (最大)| 暫存磁碟大小上限 | 最大 資料磁碟 (每個 1023 GB)| 最大 IOPS (每個磁碟 300) |
+| 大小 - 大小\名稱 | vCPU | Memory|NIC (最大)| 暫存磁碟大小上限 | 最大 資料磁碟 (每個 1023 GB)| 最大 IOPS (每個磁碟 300) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Basic_A1 | 1 | 1.75 GB | 2 | 40 GB  | 2  | 2x300  |

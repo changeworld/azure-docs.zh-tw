@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 的群組受管理的服務帳戶 |Microsoft Docs
 description: 瞭解如何 (gMSA) 建立群組受管理的服務帳戶，以搭配 Azure Active Directory Domain Services 受控網域使用
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: af1df1dd95d570038c44ea9052db88ae80586c32
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281849"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960978"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中建立群組受管理的服務帳戶 (gMSA) 
 
@@ -95,7 +95,7 @@ New-ADServiceAccount -Name WebFarmSvc `
 
 應用程式和服務現在可以設定為視需要使用 gMSA。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Gmsa 的詳細資訊，請參閱 [開始使用群組受管理的服務帳戶][gmsa-start]。
 
