@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568896"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中監視整合執行階段
@@ -48,7 +48,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 屬性 | 描述 |
 -------- | ------------- | 
 | 名稱 | Azure 整合執行階段的名稱。 |  
-| 州 | Azure 整合執行階段的狀態。 | 
+| State | Azure 整合執行階段的狀態。 | 
 | Location | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 整合執行階段所屬的資料處理站名稱。 | 
 | resourceGroupName | 資料處理站所屬的資源群組名稱。  |
@@ -65,7 +65,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 
 ## <a name="self-hosted-integration-runtime"></a>自我裝載整合執行階段
 
-本節提供 AzDataFactoryV2IntegrationRuntime Cmdlet 所傳回之屬性的描述。 
+本節提供 Get-AzDataFactoryV2IntegrationRuntime Cmdlet 所傳回之屬性的描述。 
 
 > [!NOTE] 
 > 傳回的屬性和狀態包含整體的自我裝載整合執行階段，和執行階段中每個節點的相關資訊。  
@@ -181,7 +181,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | 節點                        | 您 Azure-SSIS IR 具有節點特定狀態的已配置/可用節點 (啟動/可用/回收/無法使用) 和可採取動作的錯誤。 |
 | OtherErrors                  | 您 Azure-SSIS IR 上的非節點特定可操作錯誤。 |
 | LastOperation                | 在您的 Azure-SSIS IR 上，最後一次啟動/停止作業的結果具有可採取動作的錯誤 (s) 如果失敗的話）。 |
-| 州                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
+| State                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
 | Location                     | Azure-SSIS IR 的位置。 |
 | NodeSize                     | 您 Azure-SSIS IR 中每個節點的大小。 |
 | NodeCount                    | 您 Azure-SSIS IR 中的節點數目。 |
@@ -192,7 +192,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | CatalogPricingTier           | Azure SQL Database 伺服器所裝載的 SSISDB 定價層。  不適用於 Azure SQL 受控執行個體裝載 SSISDB。 |
 | VNetId                       | 要聯結 Azure-SSIS IR 的虛擬網路資源識別碼。 |
 | 子網路                       | 要加入之 Azure-SSIS IR 的子網名稱。 |
-| ID                           | Azure-SSIS IR 的資源識別碼。 |
+| 識別碼                           | Azure-SSIS IR 的資源識別碼。 |
 | 類型                         | IR 類型 (Azure-SSIS IR 的受控/自我裝載) 。 |
 | resourceGroupName            | 您的 ADF 和 Azure-SSIS IR 建立所在的 Azure 資源組名。 |
 | DataFactoryName              | ADF 的名稱。 |
@@ -246,7 +246,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 #### <a name="proxy--staging-tile"></a>PROXY/預備磚
 
-如果您下載、安裝及設定自我裝載 IR (SHIR) 作為 proxy，讓您的 Azure-SSIS IR 存取內部部署資料，您會 Azure-SSIS IR 在 [監視] 頁面上看到 [ **proxy/預備** ] 磚 (請參閱將 [SHIR 設定為 Azure-SSIS IR) 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) 。 在此圖格中，您可以選取指定 SHIR 的連結，以開啟其 [監視] 頁面。 您也可以選取另一個連結來指定預備的 Azure Blob 儲存體，以重新設定其連結服務。
+如果您下載、安裝及設定 Self-Hosted IR (SHIR) 做為 Azure-SSIS IR 的 proxy 以存取內部部署資料，您將會在 [Azure-SSIS IR 監視] 頁面上看到 [ **proxy/預備** ] 磚 (請參閱將 [SHIR 設定為 Azure-SSIS IR) 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) 。 在此圖格中，您可以選取指定 SHIR 的連結，以開啟其 [監視] 頁面。 您也可以選取另一個連結來指定預備的 Azure Blob 儲存體，以重新設定其連結服務。
 
 #### <a name="validate-vnet--subnet-tile"></a>驗證 VNET/子網圖格
 
@@ -256,7 +256,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 #### <a name="diagnose-connectivity-tile"></a>診斷連線能力磚
 
-在 [監視 Azure-SSIS IR 監視] 頁面的 [ **診斷** 連線] 圖格上，您可以選取 [ **測試** 連線] 連結以快顯視窗，您可以在其中檢查 Azure-SSIS IR 和相關套件/設定/資料存放區之間的連線，以及管理服務，其方式是透過其完整功能變數名稱 (FQDN) /ip 位址和指定的埠 (請參閱 [從 Azure-SSIS IR) 測試連接](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq) 。
+在 [監視 Azure-SSIS IR 監視] 頁面的 [ **診斷** 連線] 圖格上，您可以選取 [ **測試** 連線] 連結以快顯視窗，您可以在其中檢查 Azure-SSIS IR 和相關套件/設定/資料存放區之間的連線，以及管理服務，其方式是透過其完整功能變數名稱 (FQDN) /IP 位址和指定的埠 (請參閱 [從 Azure-SSIS IR) 測試連接](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq) 。
 
 ![螢幕擷取畫面，顯示您可以在其中測試 Azure-SSIS IR 和相關套件/設定/資料存放區之間的連線。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 

@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302208"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>診斷虛擬機器網路路由問題 - Azure CLI
@@ -42,7 +42,7 @@ ms.locfileid: "91302208"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下列範例會建立名為 myVm  的 VM：
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下列範例會建立名為 myVM 的 VM：
 
 ```azurecli-interactive
 az vm create \

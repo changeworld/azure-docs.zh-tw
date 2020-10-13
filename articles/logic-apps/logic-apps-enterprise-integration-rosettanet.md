@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565100"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps 中的 B2B 企業整合的 Exchange RosettaNet 訊息
@@ -51,7 +51,7 @@ ms.locfileid: "91565100"
 
   針對單一動作 PIP，唯一的回應是認可信號訊息。 如果是雙向動作 PIP，啟動者會收到回應訊息，並且除了單一動作訊息流程之外，還會以通知回復。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -201,7 +201,7 @@ ms.locfileid: "91565100"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **訊息** | 是 | 要解碼的 RosettaNet 訊息  |
+   | **Message** | 是 | 要解碼的 RosettaNet 訊息  |
    | **標頭** | 是 | 提供版本值的 HTTP 標頭，也就是 RNIF 版本，而回應類型則表示夥伴之間的通訊類型，而且可以是同步或非同步。 |
    | **角色** | 是 | 主機夥伴在 PIP 中的角色 |
    ||||
@@ -230,7 +230,7 @@ ms.locfileid: "91565100"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **訊息** | 是 | 要編碼的 RosettaNet 訊息  |
+   | **Message** | 是 | 要編碼的 RosettaNet 訊息  |
    | **主機合作夥伴** | 是 | 主機夥伴名稱 |
    | **來賓合作夥伴** | 是 | 來賓夥伴名稱 |
    | **PIP 代碼** | 是 | PIP 代碼 |

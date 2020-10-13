@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291104"
+ms.locfileid: "91875099"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
@@ -19,17 +19,19 @@ ms.locfileid: "89291104"
 
 ## <a name="virtual-machines"></a>虛擬機器
 
-您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須具有下列 URL 的存取權：
+您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須能夠存取 Azure 商業雲端中的下列 Url：
 
 |位址|傳出 TCP 連接埠|目的|服務標記|
 |---|---|---|---|
 |*.wvd.microsoft.com|443|服務流量|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
-|*.core.windows.net|443|代理程式流量|AzureCloud|
-|*.servicebus.windows.net|443|代理程式流量|AzureCloud|
 |gcs.prod.monitoring.core.windows.net|443|代理程式流量|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|代理程式流量|AzureCloud|
+|* xt.blob.core.windows.net|443|代理程式流量|AzureCloud|
+|* eh.servicebus.windows.net|443|代理程式流量|AzureCloud|
+|* xt.table.core.windows.net|443|代理程式流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows 啟用|Internet|
+|mrsglobalsteus2prod.blob.core.windows.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
 | 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
 | 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/security-overview.md#azure-platform-considerations) | N/A |
@@ -39,16 +41,33 @@ ms.locfileid: "89291104"
 >
 >建議您使用 FQDN 標籤，而不要使用 URL，以避免產生服務問題。 列出的 URL 和標籤僅對應於 Windows 虛擬桌面網站和資源。 其中不包含其他服務 (例如 Azure Active Directory) 的 URL。
 
-下表列出您的 Azure 虛擬機器可存取的選用 URL：
+您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須能夠存取 Azure Government 雲端中的下列 Url：
 
 |位址|傳出 TCP 連接埠|目的|服務標記|
 |---|---|---|---|
-|*.microsoftonline.com|443|向 Microsoft Online Services 進行驗證|None|
+|*. wvd.microsoft.us|443|服務流量|WindowsVirtualDesktop|
+|gcs.monitoring.core.usgovcloudapi.net|443|代理程式流量|AzureCloud|
+|monitoring.core.usgovcloudapi.net|443|代理程式流量|AzureCloud|
+|fairfax.warmpath.usgovcloudapi.net|443|代理程式流量|AzureCloud|
+|* xt.blob.core.usgovcloudapi.net|443|代理程式流量|AzureCloud|
+|*.servicebus.usgovcloudapi.net|443|代理程式流量|AzureCloud|
+|* xt.table.core.usgovcloudapi.net|443|代理程式流量|AzureCloud|
+|Kms.core.usgovcloudapi.net|1688|Windows 啟用|Internet|
+|mrsglobalstugviffx.core.usgovcloudapi.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
+|wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 入口網站支援|AzureCloud|
+| 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
+| 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/security-overview.md#azure-platform-considerations) | N/A |
+
+下表列出您的 Azure 虛擬機器可存取的選用 URL：
+
+|位址|傳出 TCP 連接埠|目的|Azure Gov|
+|---|---|---|---|
+|*.microsoftonline.com|443|向 Microsoft Online Services 進行驗證|login.microsoftonline.us|
 |*.events.data.microsoft.com|443|遙測服務|None|
 |www.msftconnecttest.com|443|偵測 OS 是否已連線到網際網路|None|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
-|login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|None|
-|*.sfx.ms|443|OneDrive 用戶端軟體的更新|None|
+|login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|login.microsoftonline.us|
+|*.sfx.ms|443|OneDrive 用戶端軟體的更新|oneclient.sfx.ms|
 |*.digicert.com|443|憑證撤銷檢查|None|
 
 >[!NOTE]
@@ -66,15 +85,15 @@ ms.locfileid: "89291104"
 
 您使用的任何遠端桌面用戶端都必須具有下列 Url 的存取權：
 
-|位址|傳出 TCP 連接埠|目的|用戶端|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|服務流量|全部|
-|*.servicebus.windows.net|443|疑難排解資料|全部|
-|go.microsoft.com|443|Microsoft FWLinks|全部|
-|aka.ms|443|Microsoft URL 縮短器|全部|
-|docs.microsoft.com|443|文件|全部|
-|privacy.microsoft.com|443|隱私權聲明|全部|
-|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|
+|位址|傳出 TCP 連接埠|目的|用戶端|Azure Gov|
+|---|---|---|---|---|
+|*.wvd.microsoft.com|443|服務流量|全部|*. wvd.microsoft.us|
+|*.servicebus.windows.net|443|疑難排解資料|全部|*.servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft FWLinks|全部|無|
+|aka.ms|443|Microsoft URL 縮短器|全部|無|
+|docs.microsoft.com|443|文件|全部|無|
+|privacy.microsoft.com|443|隱私權聲明|全部|無|
+|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|無|
 
 >[!IMPORTANT]
 >開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。

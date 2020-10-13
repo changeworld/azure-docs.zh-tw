@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708895"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>如何在商業市場中建立 SaaS 供應專案
@@ -49,8 +49,8 @@ ms.locfileid: "91708895"
 1. 若要透過 Microsoft 銷售並讓我們為您加速交易，請選取 **[是]**。 繼續 [啟用測試磁片磁碟機](#enable-a-test-drive-optional)。
 
 1. 若要透過商業 marketplace 和個別處理交易來列出您的供應專案，請選取 [ **否**]，然後執行下列其中一項：
-   + 若要為您的供應專案提供免費訂用帳戶，請選取 [ **立即取得] (免費) **。 然後，在出現的 [ **供應專案 URL** ] 方塊中，輸入 url (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證來取得試用版。 例如 `https://contoso.com/saas-app`。
-   + 若要提供30天的免費試用版，請選取 [ **免費試用**]，然後在出現的 [ **試用 url** ] 方塊中輸入 URL (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證存取您的免費試用。 例如 `https://contoso.com/trial/saas-app`。
+   + 若要為您的供應專案提供免費訂用帳戶，請選取 [ **立即取得] (免費) **。 然後，在出現的 [ **供應專案 URL** ] 方塊中，輸入 url (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證來取得試用版。 例如： `https://contoso.com/saas-app` 。
+   + 若要提供30天的免費試用版，請選取 [ **免費試用**]，然後在出現的 [ **試用 url** ] 方塊中輸入 URL (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證存取您的免費試用。 例如： `https://contoso.com/trial/saas-app` 。
    + 若要讓潛在客戶聯繫您購買供應專案，請選取 [ **洽詢我**]。
 
 ### <a name="enable-a-test-drive-optional"></a>啟用 (選用) 的試用產品

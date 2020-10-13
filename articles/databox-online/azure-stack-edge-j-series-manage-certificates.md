@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cec5eda7cf398949865bf6d3d3e8be5b2d5e840
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767359"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>使用憑證搭配 Azure Stack Edge Pro GPU 裝置
@@ -52,7 +52,7 @@ ms.locfileid: "91767359"
 
 這些是簽署憑證或簽署憑證授權單位單位之授權單位的憑證。 
 
-### <a name="types"></a>類型
+### <a name="types"></a>型別
 
 這些憑證可以是根憑證或中繼憑證。 根憑證一律會自我簽署 (或自行簽署) 。 中繼憑證不是自我簽署的憑證，而且是由簽署授權單位簽署。
 
@@ -324,7 +324,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
         ![匯入憑證3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
 
  
-4. 選取 [完成]  。 顯示匯入成功的結果訊息。
+4. 選取 [完成]。 顯示匯入成功的結果訊息。
 
 ### <a name="export-certificates-as-pfx-format-with-private-key"></a>使用私密金鑰將憑證匯出為 .pfx 格式
 
@@ -366,11 +366,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![匯出憑證7](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-7.png)
   
-8. 選取 [完成]  。
+8. 選取 [完成]。
 
     ![匯出憑證8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 您會收到已成功匯出的訊息。 選取 [確定]。
+9. 您會收到已成功匯出的訊息。 選取 [確定]  。
 
     ![匯出憑證9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -393,7 +393,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![匯出憑證 DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
-4. 選取 [完成]  。
+4. 選取 [完成]。
 
     ![匯出憑證 DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 

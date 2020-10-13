@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667874"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的資料模型
@@ -54,7 +54,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的實例 **建立**�
 
     [![透過 JSON 大量上傳實例。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
 
-1. 選取 [上傳]  。
+1. 選取 [上傳] 。
 
 ### <a name="edit-a-single-instance"></a>編輯單一執行個體
 
@@ -105,7 +105,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**�
 
 1. 選取 [上傳 JSON]****。
 1. 選取包含階層承載的檔案。
-1. 選取 [上傳]  。
+1. 選取 [上傳] 。
 
     [![大量上傳階層的選項。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png#lightbox)
 
@@ -124,7 +124,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器內的階層 **建立**�
 
 1. 選取 [ **刪除**] 以確認刪除。
 
-## <a name="types"></a>類型
+## <a name="types"></a>型別
 
 Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**、 **讀取**、 **更新**和 **刪除** 作業。
 
@@ -148,7 +148,7 @@ Azure 時間序列深入解析 explorer 支援瀏覽器中的類型 **建立**�
 
 1. 選取 [上傳 JSON]****。
 1. 選取包含類型承載的檔案。
-1. 選取 [上傳]  。
+1. 選取 [上傳] 。
 
     [![大量類型上傳選項。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png#lightbox)
 

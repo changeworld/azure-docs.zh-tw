@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299743"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>可供使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派
@@ -43,7 +43,7 @@ ms.locfileid: "91299743"
 7. 「連接器」會使用從 AD 接收的 Kerberos 權杖，將原始要求傳送至應用程式伺服器。
 8. 應用程式會傳送回應至「連接器」，然後再傳回至「應用程式 Proxy」服務，最後再傳回給使用者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 開始使用 IWA 應用程式的單一登入之前，請確定您的環境已完成下列設定和組態︰
 
 * 您的應用程式 (例如 SharePoint Web 應用程式) 已設為使用「整合式 Windows 驗證」。 如需詳細資訊，請參閱 [啟用 Kerberos 驗證的支援](https://technet.microsoft.com/library/dd759186.aspx)，或針對 SharePoint 參閱 [sharepoint 2013 中的 kerberos 驗證計畫](https://technet.microsoft.com/library/ee806870.aspx)。

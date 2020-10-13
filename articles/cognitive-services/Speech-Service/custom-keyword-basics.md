@@ -12,17 +12,17 @@ ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667688"
 ---
 # <a name="get-started-with-custom-keyword"></a>開始使用自訂關鍵字
 
 在本快速入門中，您將瞭解使用「語音 Studio」和「語音 SDK」來處理自訂關鍵字的基本概念。 關鍵字是可讓您的產品啟用語音的單字或簡短片語。 您可以在「語音 Studio」中建立關鍵字模型，然後在您的應用程式中匯出與「語音 SDK」搭配使用的模型檔案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文中的步驟需要語音訂用帳戶和語音 SDK。 如果您還沒有訂用帳戶，請 [免費試用語音服務](overview.md#try-the-speech-service-for-free)。 若要取得 SDK，請參閱適用于您平臺的 [安裝指南](quickstarts/setup-platform.md) 。
 

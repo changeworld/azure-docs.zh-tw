@@ -4,10 +4,10 @@ description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的�
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667787"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257816"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767278"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
@@ -25,7 +25,7 @@ ms.locfileid: "91257816"
 
 ## <a name="prerequisites"></a>必要條件
 
-本快速入門需要 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2)。
+本快速入門需要 [.NET Core 3.1](https://www.microsoft.com/net/download/dotnet-core)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
@@ -48,12 +48,12 @@ ms.locfileid: "91257816"
 >
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-> 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
+> 1. 藉由在 Azure 入口網站搜尋列中搜尋**應用程式註冊**，瀏覽至開發人員[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的 Microsoft 身分識別平台。
 > 1. 選取 [新增註冊]。
 > 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊。
 > 1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，`Daemon-console`)，然後選取 [註冊] 以建立應用程式。
 > 1. 註冊之後，請選取 [憑證和祕密] 功能表。
-> 1. 在 [用戶端密碼] 底下，選取 [+ 新增用戶端密碼]。 為其提供名稱，然後選取 [新增]。 將祕密複製到安全的位置。 程式碼會需要用到它。
+> 1. 在 [用戶端密碼] 底下，選取 [+ 新增用戶端密碼]。 為其提供名稱，然後選取 [新增]。 將祕密複製到安全的位置。 您需要將其用於程式碼中，而且其不會再次顯示在入口網站中。
 > 1. 現在，選取 [API 權限] 功能表，選取 [+ 新增權限] 按鈕，選取 [Microsoft Graph]。
 > 1. 選取 [應用程式權限]。
 > 1. 在 [使用者] 節點底下，選取 [User.Read.All]，然後選取 [新增權限]
@@ -73,6 +73,11 @@ ms.locfileid: "91257816"
 
 > [!div renderon="docs"]
 > [下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+
+> [!div renderon="docs"]
+> > [!NOTE]
+> > 您可以在 Visual Studio 或 Visual Studio for Mac 中執行所提供的專案
+
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Visual Studio 2019 執行專案。
@@ -115,7 +120,7 @@ ms.locfileid: "91257816"
 ##### <a name="global-tenant-administrator"></a>全域租用戶管理員
 
 > [!div renderon="docs"]
-> 如果您是全域租用戶管理員，請移至 Azure 入口網站「應用程式註冊 (預覽)」中的 [API 權限] 頁面，然後選取 [代表 {租用戶名稱} 授與管理員同意] (其中，{租用戶名稱} 是您的目錄名稱)。
+> 如果您是全域租用戶系統管理員，請在 Azure 入口網站中瀏覽至 [企業應用程式] > 按一下您的應用程式註冊 > 從左側瀏覽窗格的 [安全性] 區段中選擇 [權限]。 按一下標示為 [代表 {Tenant Name} 授與管理員同意] (其中 {Tenant Name} 是您目錄的名稱) 的大按鈕。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 如果您是全域管理員，請移至 [API 權限] 頁面，選取 [代表 Enter_the_Tenant_Name_Here 授與管理員同意]
@@ -144,10 +149,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>步驟 5：執行應用程式
 
-如果您是使用 Visual Studio，請按 **F5** 來執行應用程式，否則請透過命令提示字元或主控台執行應用程式：
+如果您是使用 Visual Studio 或 Visual Studio for Mac，請按 **F5** 來執行應用程式，否則請透過命令提示字元、主控台或終端機執行應用程式：
 
 ```console
-cd {ProjectFolder}\daemon-console\1-Call-Graph
+cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 

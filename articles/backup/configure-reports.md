@@ -4,10 +4,10 @@ description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure �
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567429"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
@@ -83,7 +83,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
    ![備份項目索引標籤](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-##### <a name="usage"></a>使用方式
+##### <a name="usage"></a>使用量
 
 您可以使用此索引標籤來查看備份的重要帳單參數。 此索引標籤上顯示的資訊屬於計費實體 (受保護的容器) 層級。 例如，如果 DPM 服務器要備份至 Azure，您可以查看受保護實例的趨勢，以及 DPM 服務器所耗用的雲端儲存體。 同樣地，如果您在 Azure 備份中使用 SQL 或在 Azure 備份中使用 SAP HANA，此索引標籤會在內含這些資料庫的虛擬機器層級提供使用量相關資訊。
 

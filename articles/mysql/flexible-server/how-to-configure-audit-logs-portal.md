@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
 ms.openlocfilehash: cadd384bc7d3222cbc5d1179271f7b4624c9224a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565813"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站為適用於 MySQL 的 Azure 資料庫彈性的伺服器設定及存取 audit 記錄
@@ -20,7 +20,7 @@ ms.locfileid: "91565813"
 
 您可以從 Azure 入口網站設定適用於 MySQL 的 Azure 資料庫彈性的伺服器 [審核記錄](concepts-audit-logs.md) 和診斷設定。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本文中的步驟需要您擁有有 [彈性的伺服器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-audit-logging"></a>設定 audit 記錄

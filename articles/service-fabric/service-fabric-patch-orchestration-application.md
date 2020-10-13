@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445898"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>修補 Service Fabric 叢集中的 Windows 作業系統
@@ -166,7 +166,7 @@ POA 需要在叢集上啟用修復管理員服務。
 | WURescheduleCount     | Int <br> 預設 (： *5*)                   | 如果作業持續失敗，服務會重新排定 Windows update 的最大次數。          |
 | WURescheduleTimeInMinutes | Int <br> (預設值： *30*)  | 如果失敗持續發生，服務會重新排定 Windows 更新的間隔。 |
 | WUFrequency           | 以逗號分隔的字串 (預設： *每週、星期三、7:00:00*)      | 安裝 Windows 更新的頻率。 格式與可能的值如下： <br>-每月、DD、HH： MM： SS (範例： *每月，5，12:22:32*) 。 欄位 _DD_ (day) 允許的值是從1到28和 _最後_的數位。 <br>-每週、日、HH： MM： SS (範例： *每週、星期二、12:22:32*)   <br>-每天，HH： MM： SS (範例： *每日、12:22:32*)   <br>-Week，Day，HH： MM： SS (範例： *2，星期五，21:00:00* 表示每個月第2周的星期五下午 9:00 PM UTC)  <br>- [*無*] 表示不應執行 Windows update。  <br><br> 時間是以 UTC 為限。|
-| AcceptWindowsUpdateEula | Boolean <br> (預設值： *true*)  | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
+| AcceptWindowsUpdateEula | 布林值 <br> (預設值： *true*)  | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
 
 > [!TIP]
 > 如果您想要讓 Windows update 立即發生，請設定 `WUFrequency` [相對於應用程式部署時間]。 例如，假設您的測試叢集有五個節點，計劃於大約下午 5:00 UTC 部署應用程式。 如果您假設應用程式升級或部署最多需要30分鐘的時間，請將 Wufrequency 設定設定為 *每日 17:30:00*。
@@ -439,7 +439,7 @@ POA 也會在下列案例中，針對節點代理程式服務或協調器服務�
 
 ## <a name="disclaimers"></a>免責聲明
 
-- POA 會代表使用者接受 Windows Update 的使用者授權合約。 可在應用程式的設定中選擇性地將此設定關閉。
+- POA 會代表使用者接受 Windows Update 的 End-User 授權合約。 可在應用程式的設定中選擇性地將此設定關閉。
 
 - POA 會收集遙測來追蹤使用狀況和效能。 應用程式的遙測會遵循 Service Fabric 執行階段遙測設定 (預設為開啟) 的設定。
 

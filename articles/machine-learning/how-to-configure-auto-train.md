@@ -12,10 +12,10 @@ ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
 ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709082"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
@@ -37,7 +37,7 @@ ms.locfileid: "91709082"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。

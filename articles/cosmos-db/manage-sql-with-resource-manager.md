@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 7dfd6bddd19e5559918889da5f6ef38dbe6eef15
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767509"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB Core (SQL) API 資源

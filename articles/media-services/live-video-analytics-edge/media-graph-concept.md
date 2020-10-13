@@ -4,10 +4,10 @@ description: Media graph 可讓您定義媒體的捕獲來源、處理方式，�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567073"
 ---
 # <a name="media-graph"></a>媒體圖表

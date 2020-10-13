@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9468b9c2c906ffe26bae400dc9e4746630a66e0e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401090"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970311"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
@@ -32,7 +32,7 @@ ms.locfileid: "89401090"
 
 或者，如果您有適用于集中式防火牆的特定使用案例，也可以使用 Azure 防火牆來滿足這些需求。
 
-* [Azure 中的虛擬網路和虛擬機器](../windows/network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../network-overview.md)
 
 * [如何建立虛擬網路](../../virtual-network/quick-create-portal.md)
 
@@ -64,7 +64,7 @@ ms.locfileid: "89401090"
 
 * [使用 Azure 入口網站建立包含 Web 應用程式防火牆的應用程式閘道](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-* [Azure 中的虛擬網路和虛擬機器](../windows/network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../network-overview.md)
 
 * [網路安全性群組的資訊](../../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -82,7 +82,7 @@ ms.locfileid: "89401090"
 
 * [如何部署 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](../../security-center/threat-protection.md)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../../security-center/azure-defender.md)
 
 * [瞭解 Azure 資訊安全中心適應性網路強化](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -148,7 +148,7 @@ ms.locfileid: "89401090"
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](../../governance/policy/samples/built-in-policies.md#network)
 
 * [如何建立 Azure 藍圖](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -182,7 +182,7 @@ ms.locfileid: "89401090"
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -306,7 +306,7 @@ ms.locfileid: "89401090"
 
 **指導**方針：在 Linux OS 內部，您將需要協力廠商工具來偵測反惡意程式碼弱點。
 
-* [將 Linux 伺服器上架到 Azure 安全性中心的指示](../../security-center/quick-onboard-linux-computer.md)
+* [將 Linux 伺服器上架到 Azure 安全性中心的指示](../../security-center/quickstart-onboard-machines.md)
 
 * [下列連結提供 Microsoft 建議的安全性指導方針，可作為所選弱點軟體的準則清單](./security-recommendations.md)
 
@@ -514,7 +514,7 @@ ms.locfileid: "89401090"
 
 * [如何建立額外的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../../governance/management-groups/create.md)
+* [如何建立管理群組](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
@@ -616,7 +616,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導**方針：在 Linux OS 內部，您將需要協力廠商工具來偵測反惡意程式碼弱點。
 
-* [將 Linux 伺服器上架到 Azure 安全性中心的指示](../../security-center/quick-onboard-linux-computer.md)
+* [將 Linux 伺服器上架到 Azure 安全性中心的指示](../../security-center/quickstart-onboard-machines.md)
 
 * [Microsoft 建議的安全性指導方針](./security-recommendations.md)
 
@@ -700,7 +700,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何建立額外的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../../governance/management-groups/create.md)
+* [如何建立管理群組](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
@@ -784,7 +784,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](../../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -824,13 +824,13 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導**方針：在 azure 環境中部署的高風險應用程式可能會使用虛擬網路、子網、訂用帳戶、管理群組進行隔離，並使用 Azure 防火牆、Web 應用程式防火牆 (WAF) 或網路安全性群組 (NSG) 來充分保護這些應用程式。
 
-* [Azure 中的虛擬網路和虛擬機器](../windows/network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../network-overview.md)
 
 * [Azure 防火牆概觀](../../firewall/overview.md)
 
 * [Web 應用程式防火牆概觀](../../web-application-firewall/overview.md)
 
-* [網路安全性概觀](../../virtual-network/security-overview.md)
+* [網路安全性概觀](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虛擬網路總覽](../../virtual-network/virtual-networks-overview.md)
 

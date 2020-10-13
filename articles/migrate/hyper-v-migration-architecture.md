@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362192"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-v 複寫的運作方式為何？
@@ -80,7 +80,7 @@ I
 如果您有備用的頻寬可進行複寫，並且想要增加上傳，您可以增加為上傳工作配置的執行緒數目，如下所示：
 
 1. 使用 Regedit 開啟登錄。
-2. 流覽至 key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+2. 流覽至機碼 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
 3. 針對每個複寫 VM 的資料上傳所用的執行緒數目增加值。 預設值為4，而最大值為32。 
 
 

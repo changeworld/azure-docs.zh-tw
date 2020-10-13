@@ -4,19 +4,24 @@ description: 了解 Azure Migrate 服務中的新功能和最新更新。
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a46519d434061ebfdedbabe70a3e044cb69ca552
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322218"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667073"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
 [Azure Migrate](migrate-services-overview.md) 可協助您探索及評定內部部署伺服器、應用程式與資料，並將其移轉至 Microsoft Azure 雲端。 此文章摘要說明 Azure Migrate 中的新版本及新功能。
+
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
-- Azure Migrate 現在可讓您將伺服器遷移至可用性區域。
-- Azure Migrate 現在可讓您將 UEFI 型 VM 和實體伺服器遷移至 Azure 第 2 代 VM。 
+- 現在支援將伺服器移轉至可用性區域。
+- 現在支援將 UEFI 型 VM 和實體伺服器移轉至 Azure 第 2 代 VM
+- 新的 Azure Migrate Power BI 評量儀表板可協助您比較不同評量設定的成本。 儀表板隨附 PowerShell 公用程式，其會自動建立可插入至 Power BI 儀表板的評量。 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- 相依性分析 (無代理程式) 現在可以同時在 1000 個 VM 上執行。
+- 現在可以使用 PowerShell 指令碼，大規模地啟用或停用相依性分析 (無代理程式)。 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- 使用利用相依性分析 (無代理程式) 收集的資料，將 Power BI 中的網路連線視覺化 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 
@@ -24,9 +29,10 @@ ms.locfileid: "91322218"
 - 從入口網站下載 OVA/VHD 檔案或安裝程式指令碼，以便分別設定 VMware 和 Hyper-V 設備的選項。
 - 以增強的使用者體驗，重新整理了設備設定管理員。
 - 用於 Hyper-V VM 探索的多個認證支援。
-- 已改善新增認證和探索來源的搜尋、排序和篩選功能。
-- 單一項目輸入、多個項目輸入和匯入 CSV 選項，可讓使用者新增 Hyper-V 主機/叢集和實體伺服器的探索來源。
-- 針對資料表中每個新增的來源進行驗證和探索作業的狀態更新，進而增強錯誤體驗。 
+
+## <a name="update-july-2020"></a>更新 (2020 年 7 月)
+
+- 無代理程式 VMware 移轉現在支援每個 vCenter 並行複寫 300 個 VM
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 
