@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b439dcfc755f0113ffabf792850a2bd0fbcf322e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935801"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996517"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 應用程式中的例外狀況偵錯快照集
 發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](./app-insights-overview.md)中的快照偵錯工具會監視來自您 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含 [快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ，並選擇性地設定 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)中的集合參數。快照集會出現在 Application Insights 入口網站中的 [例外](./asp-net-exceptions.md) 狀況。
 
-您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 若要使用原始程式碼取得更強大的偵錯工具經驗，請使用 Visual Studio 2019 Enterprise 開啟快照集。 在 Visual Studio 中，您也可以[設定貼齊點以互動方式建立快照集](https://aka.ms/snappoint)，而不需等待例外狀況。
+您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 若要使用原始程式碼取得更強大的偵錯工具經驗，請使用 Visual Studio 2019 Enterprise 開啟快照集。 在 Visual Studio 中，您也可以[設定貼齊點以互動方式建立快照集](/visualstudio/debugger/debug-live-azure-applications)，而不需等待例外狀況。
 
 偵錯工具快照集會儲存15天。 此保留原則會就個別的應用程式而設定。 如果您需要增加此值，您可以在 Azure 入口網站中建立支援案例，以提出增加的要求。
 
@@ -142,4 +142,3 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 * [在您的程式碼中設定 Snappoint](/visualstudio/debugger/debug-live-azure-applications) 以取得快照集，而不需等待例外狀況。
 * [診斷 Web Apps 中的例外狀況](./asp-net-exceptions.md)說明如何讓 Application Insights 看見更多的例外狀況。
 * [智慧型偵測](./proactive-diagnostics.md)會自動探索效能異常。
-

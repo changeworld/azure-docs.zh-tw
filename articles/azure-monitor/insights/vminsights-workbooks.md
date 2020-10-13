@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996380"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用活頁簿建立適用於 VM 的 Azure 監視器互動式報表
 
-活頁簿會將文字、 [記錄查詢](../log-query/query-language.md)、計量和參數結合成豐富的互動式報表。 活頁簿可以由具有相同 Azure 資源存取權的其他小組成員編輯。
+活頁簿會將文字、 [記錄查詢](/azure/data-explorer/kusto/query/)、計量和參數結合成豐富的互動式報表。 活頁簿可以由具有相同 Azure 資源存取權的其他小組成員編輯。
 
 活頁簿在下列案例中很有用：
 
@@ -26,7 +26,7 @@ ms.locfileid: "91449794"
 
 下表摘要說明適用於 VM 的 Azure 監視器包含的活頁簿，以協助您開始著手。
 
-| 活頁簿 | 描述 | 影響範圍 |
+| 活頁簿 | 說明 | 影響範圍 |
 |----------|-------------|-------|
 | 效能 | 提供在單一活頁簿中使用您已啟用之所有 Log Analytics 效能計數器的可自訂版本的前 N 個清單和圖表。| 大規模 |
 | 效能計數器 | 橫跨一組廣泛效能計數器的前 N 個圖表視圖。 | 大規模 |
@@ -240,7 +240,7 @@ Perf
 2. 按一下您想要釘選之活頁簿旁邊的 [...] 按鈕
 3. 按一下 [釘選到儀表板]****。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要識別限制和整體 VM 效能，請參閱 [View AZURE VM performance](vminsights-performance.md)。
 

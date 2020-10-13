@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893759"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994672"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
-這個 Microsoft 常見問題集是關於 Azure 監視器的常見問題清單。 如果您有任何其他問題，請前往 [討論論壇](https://docs.microsoft.com/answers/questions/topics/single/24223.html) 並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
+這個 Microsoft 常見問題集是關於 Azure 監視器的常見問題清單。 如果您有任何其他問題，請前往 [討論論壇](/answers/questions/topics/single/24223.html) 並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
 
 
 ## <a name="general"></a>一般

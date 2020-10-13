@@ -1,24 +1,18 @@
 ---
 title: 在 Azure 虛擬機器上部署 Oracle 應用程式的架構 |Microsoft Docs
 description: 用來部署 Oracle 應用程式的應用程式架構（包括電子商務套件、JD Edwards EnterpriseOne 和 PeopleSoft），適用于 Azure 或 Oracle 雲端基礎結構中的資料庫 Microsoft Azure 虛擬機器 (OCI) 。
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 838bd2014f543747a3c3ec7edee7b278f5f4d8df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 6261e2b49eda2aead75d080ca3f6c2304bc49d81
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274597"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996601"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 應用程式的架構
 
@@ -189,7 +183,7 @@ PeopleTools 用戶端是用來執行管理活動，例如開發、遷移和升�
 
 [!INCLUDE [virtual-machines-oracle-applications-identity](../../../../includes/virtual-machines-oracle-applications-identity.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 使用 [Terraform 腳本](https://github.com/microsoft/azure-oracle) ，在 Azure 中設定 Oracle 應用程式，並使用 OCI 建立跨雲端的連線能力。
 

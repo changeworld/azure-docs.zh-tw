@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 5eade0ad48dcdd1f0c18ef6e65e498a7b9c79c15
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951670"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995349"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -127,9 +127,9 @@ ms.locfileid: "91951670"
 
 #### <a name="syntax-details"></a>語法詳細資料
 
-| 屬性 | 描述 | 必要？ |
+| 屬性 | 說明 | 必要？ |
 |:--- |:--- |:--- |
-| 型別 | 若為複製活動，請將設定為 `Copy` | 是 |
+| type | 若為複製活動，請將設定為 `Copy` | 是 |
 | 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
 | 輸出 | 指定您所建立指向接收資料的資料集。 複製活動僅支援單一輸出。 | 是 |
 | typeProperties | 指定要設定複製活動的屬性。 | 是 |
@@ -199,9 +199,9 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 若要以程式設計方式進行設定，請 `additionalColumns` 在複製活動來源中新增屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，並 `value` 指出該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`** -保留變數表示要將來源檔案的相對路徑儲存至資料集內所指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **$ $COLUMN： <source_column_name>** -保留變數模式指出要將指定的來源資料行複製為另一個資料行<br>- **表達**<br>- **靜態值** | 否 |
+| additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，並 `value` 指出該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`** -保留變數表示要將來源檔案的相對路徑儲存至資料集內所指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **`$$COLUMN:<source_column_name>`** -保留變數模式指出要將指定的來源資料行複製為另一個資料行<br>- **表達**<br>- **靜態值** | 否 |
 
 **範例︰**
 
@@ -263,7 +263,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 根據預設，複製活動會在來源資料列與接收資料列不相容時，停止複製資料並傳回失敗。 您可以設定複製活動來略過並記錄不相容的資料列，並只複製相容的資料，以使複製成功。 如需詳細資料，請參閱 [複製活動的容錯](copy-activity-fault-tolerance.md) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 請參閱下列快速入門、教學課程和範例：
 
 - [將資料從一個位置複製到相同 Azure Blob 儲存體帳戶中的另一個位置](quickstart-create-data-factory-dot-net.md)

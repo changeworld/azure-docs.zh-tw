@@ -1,24 +1,18 @@
 ---
 title: 設定和優化已啟用的「已啟用」 H 系列和 N 系列 Azure 虛擬機器
 description: 瞭解如何設定和優化適用于 HPC 的已啟用已啟用 H 系列和 N 系列 Vm。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88006599"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994820"
 ---
 # <a name="configure-and-optimize-vms"></a>設定和最佳化 VM
 
@@ -114,7 +108,7 @@ sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 （選擇性） WALinuxAgent 可能會被停用為預先作業步驟，並針對 HPC 工作負載的最大 VM 資源可用性啟用後置作業。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解如何在已啟用支援的[H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm 上[啟用](enable-infiniband.md)「全像」。
 - 深入瞭解如何在 Vm 上安裝各種 [支援的 MPI 程式庫](setup-mpi.md) 及其最佳設定。

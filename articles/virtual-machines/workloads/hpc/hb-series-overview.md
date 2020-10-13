@@ -1,24 +1,18 @@
 ---
 title: HB 系列 VM 總覽-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中 HB 系列 VM 大小的預覽支援。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7c66af5184c4a943fd4b3185a87623112fe0d954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d11ec99d10d74956c43c24145abbd291d9e2d2a9
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691236"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996249"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虛擬機器總覽
 
@@ -45,7 +39,7 @@ VM 本身並不知道 pNUMA 0 未提供給它。 VM 瞭解 pNUMA 1-15 為 Vnuma 
 | 核心                            | 60 (SMT 已停用)                 |
 | CPU                              | AMD EPYC 7551                    |
 | CPU 頻率 (非 AVX)           | ~ 2.55 GHz (單一 + 所有核心)    |
-| Memory                           | 4 GB/核心 (240 GB 總計)          |
+| 記憶體                           | 4 GB/核心 (240 GB 總計)          |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 |
 | 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC |

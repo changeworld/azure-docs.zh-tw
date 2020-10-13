@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526522"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996352"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -79,7 +79,7 @@ ms.locfileid: "90526522"
    某些觸發程式，例如， **當一或多個訊息抵達佇列 (自動完成) 觸發程式時 ** ，可能會傳回一或多個訊息。 當這些觸發程式引發時，它們會在觸發程式的 [ **最大訊息計數** ] 屬性指定的訊息數目之間傳回。
 
     > [!NOTE]
-    > 自動完成的觸發程式會自動完成訊息，但只有在下一個觸發程式執行時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，請避免變更自動完成觸發程式上的平行存取，因為如果您的邏輯應用程式進入節流狀態，這項變更可能會導致重複的訊息。 變更並行存取控制會建立下列條件：使用程式碼略過節流觸發程式 `WorkflowRunInProgress` 、完成作業不會發生，而且下一個觸發程式執行會在輪詢間隔之後進行。 您必須將服務匯流排鎖定持續時間設定為超過輪詢間隔的值。 不過，儘管這項設定，如果您的邏輯應用程式在下一個輪詢間隔處於節流狀態，仍可能無法完成訊息。
+    > 自動完成的觸發程式會自動完成訊息，但是只會在下一次呼叫服務匯流排時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，請避免變更自動完成觸發程式上的平行存取，因為如果您的邏輯應用程式進入節流狀態，這項變更可能會導致重複的訊息。 變更並行存取控制會建立下列條件：使用程式碼略過節流觸發程式 `WorkflowRunInProgress` 、完成作業不會發生，而且下一個觸發程式執行會在輪詢間隔之後進行。 您必須將服務匯流排鎖定持續時間設定為超過輪詢間隔的值。 不過，儘管這項設定，如果您的邏輯應用程式在下一個輪詢間隔處於節流狀態，仍可能無法完成訊息。
 
 1. 如果您的觸發程式第一次連接到您的服務匯流排命名空間，當邏輯應用程式設計工具提示您輸入連接資訊時，請遵循下列步驟。
 
@@ -162,6 +162,10 @@ ms.locfileid: "90526522"
 當您需要以特定順序傳送相關訊息時，可以使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來使用[*連續*](/azure/architecture/patterns/sequential-convoy)的群組模式。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中 [會話](../service-bus-messaging/message-sessions.md) 的識別碼。
 
 當您建立邏輯應用程式時，您可以 **使用服務匯流排會話** 範本來選取相互關聯的依序傳遞，以實行連續的群組模式。 如需詳細資訊，請參閱依 [序傳送相關訊息](../logic-apps/send-related-messages-sequential-convoy.md)。
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>邏輯應用程式的更新生效延遲
+
+如果服務匯流排觸發程式的輪詢間隔很小（例如10秒），則邏輯應用程式的更新可能不會在最多10分鐘內生效。 若要解決此問題，您可以在更新邏輯應用程式之前，暫時將輪詢間隔增加為較大的值（例如30秒或1分鐘）。 進行更新之後，您可以將輪詢間隔重設為原始值。 
 
 <a name="connector-reference"></a>
 

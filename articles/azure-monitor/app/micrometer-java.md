@@ -6,19 +6,19 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761595"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994035"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何搭配 Azure Application Insights Java SDK 使用 Micrometer
 
 > [!NOTE]
 > Application Insights JAVA SDK 不支援春季 Webflux。 
 >
-> Application Insights 不需要檢測的 [JAVA 3.0 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) 都支援 Webflux 和 Micrometer。 
+> Application Insights 不需要檢測的 [JAVA 3.0 代理程式](./java-on-premises.md) 都支援 Webflux 和 Micrometer。 
 
 Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼的計量，並可讓您將資料匯出到您慣用的監視系統。 這篇文章會教導您如何搭配 Application Insights Spring Boot 和非 Spring Boot 應用程式使用 Micrometer。
 
@@ -275,8 +275,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
     New GuavaCacheMetrics().bind(registry);
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要深入瞭解 Micrometer，請參閱官方 [Micrometer 檔](https://micrometer.io/docs)。
 * 若要深入瞭解 Azure 上的春季，請參閱 [azure 上的官方春季檔](/java/azure/spring-framework/?view=azure-java-stable)。
-

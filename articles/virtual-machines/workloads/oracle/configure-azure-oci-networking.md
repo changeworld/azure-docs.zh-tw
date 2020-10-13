@@ -1,24 +1,18 @@
 ---
 title: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構連線 |Microsoft Docs
 description: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構 (OCI) FastConnect，以啟用跨雲端的 Oracle 應用程式解決方案
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: e932bf7381e1246f4b489e7d564cf5486c3ec635
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776573"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996226"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 與 Oracle 雲端基礎結構之間的直接互連  
 
@@ -66,7 +60,7 @@ ms.locfileid: "91776573"
     * 在 [ **提供者服務金鑰**] 中，貼上 ExpressRoute 服務金鑰。
     * 使用上一個步驟中劃分的第一個/30 私人 IP 位址空間，作為 **主要 BGP Ip 位址** 和 **次要 bgp ip** 位址的第二/30 私人 ip 位址空間。
         * 將 Oracle BGP IP 位址的第一個可用位址指派 (主要和次要) ，並將第二個位址指派給客戶 BGP IP 位址 (從 FastConnect 的觀點) 。 第一個可用的 IP 位址是/30 位址空間中的第二個 IP 位址 (第一個 IP 位址是由 Microsoft) 保留。
-    * 按一下 [建立]。
+    * 按一下頁面底部的 [新增]  。
 1. 使用路由表，透過動態路由閘道，完成將 FastConnect 連結至 Oracle 租使用者下的虛擬雲端網路。
 1. 流覽至 Azure，並確定 ExpressRoute 線路的 **提供者狀態** 已變更為 [已布 **建** ]，且已布建 **Azure 私人** 類型的對等互連。 這是下列步驟的先決條件。
 
@@ -102,7 +96,7 @@ Microsoft 已建立 Terraform 腳本來啟用網路互連的自動部署。 Terr
 
 此時，刪除和取消布建程式已完成。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 OCI 與 Azure 之間跨雲端連線的詳細資訊，請參閱 [Oracle 檔](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)集。
 * 使用 [Terraform 腳本](https://aka.ms/azureociinterconnecttf) ，透過 Azure 為目標 Oracle 應用程式部署基礎結構，並設定網路互連。 

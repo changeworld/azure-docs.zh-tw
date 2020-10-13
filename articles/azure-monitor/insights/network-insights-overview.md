@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d0e8c4806784cf9b00712ad1bf45bca958a7eb1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803801"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995366"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>適用于網路 (預覽) 的 Azure 監視器
-針對所有已部署的網路資源，Azure 監視器 for Network 提供完整的 [健全狀況](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) 和計量觀點，而不需要任何 [設定](../platform/metrics-supported.md) 。  它也可讓您存取所有網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、使用 [分析](../../network-watcher/traffic-analytics.md)，以及其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
+針對所有已部署的網路資源，Azure 監視器 for Network 提供完整的 [健全狀況](../../service-health/resource-health-checks-resource-types.md) 和計量觀點，而不需要任何 [設定](../platform/metrics-supported.md) 。  它也可讓您存取所有網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、使用 [分析](../../network-watcher/traffic-analytics.md)，以及其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
 
 網路的 Azure 監視器是以監視的下列主要元件為結構：
 - [網路健康情況和計量](#networkhealth)
@@ -144,7 +144,7 @@ ms.locfileid: "91803801"
 您可以透過使用編輯模式，編輯在任何側邊面板和詳細計量視圖中看到的活頁簿，然後將您的工作儲存為新的活頁簿，以進行所有新的變更。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解 [什麼是 Azure 網路](../../network-watcher/network-watcher-monitoring-overview.md)監看員的網路監視？。
 - 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援的案例、如何撰寫新報表和自訂現有報表，以及其他資訊。

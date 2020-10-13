@@ -1,25 +1,18 @@
 ---
 title: Azure 環境中的 Oracle 災害復原案例概觀 | Microsoft Docs
 description: Azure 環境中 Oracle Database 12c 資料庫的災害復原案例
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 96bb0892b1bc35d1eef34cffc798cf33c837acdc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976635"
+ms.locfileid: "91996174"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境中 Oracle Database 12c 資料庫的災害復原
 
@@ -103,7 +96,7 @@ ms.locfileid: "91976635"
 - [Oracle 備份和復原](./oracle-overview.md)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
 - [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)

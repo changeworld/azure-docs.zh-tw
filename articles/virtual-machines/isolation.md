@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: sttsinar
-ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: ayshak
+ms.openlocfilehash: 7b1956d704bbdf9475f04efcbdc4b6ee75bb50b2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666835"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996287"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 中的虛擬機器隔離
 
@@ -64,7 +65,7 @@ Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制�
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>問： D15_v2 或 DS15_v2 隔離淘汰的里程碑為何？ 
 **A**： 
  
-| Date | 動作 |
+| 日期 | 動作 |
 |---|---| 
 | 2019 年 11 月 18 日 | D/DS15i_v2 (PAYG，1年 RI) 的可用性 | 
 | 2020月14日 | 購買 D/DS15i_v2 1 年 RI 的最後一天 | 
@@ -72,6 +73,6 @@ Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制�
 | 2021 5 月15日 | 淘汰 D/DS15i_v2 (所有客戶，但在2019年11月18日前購買了3年 RI 的 D/DS15_v2) | 
 | 2022年11月17日 | 若已在2019年11月18日之前購買 DS15_v2 了3年 RI 的客戶，請淘汰 D/DS15i_v2 ()  |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 客戶也可以選擇使用 [Azure 的巢狀虛擬機器支援](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，進一步細分這些隔離虛擬機器的資源。

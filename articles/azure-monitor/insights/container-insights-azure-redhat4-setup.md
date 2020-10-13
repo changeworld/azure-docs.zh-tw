@@ -3,12 +3,12 @@ title: 使用容器 Azure 監視器設定 Azure Red Hat OpenShift v4. x |Microso
 description: 本文說明如何使用 Azure Red Hat OpenShift 第4版或更新版本上裝載的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 63db888419ee691e83ea456fcd7fc28a4d9909fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620319"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994537"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v4. x
 
@@ -41,7 +41,7 @@ ms.locfileid: "91620319"
 
 - [Log Analytics 工作區](../platform/design-logs-deployment.md)。
 
-    適用于容器的 Azure 監視器支援 [依區域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)列示在 Azure 產品的區域中的 Log Analytics 工作區。 若要建立您自己的工作區，您可以透過 [Azure Resource Manager](../platform/template-workspace-configuration.md)、 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)或 [Azure 入口網站](../learn/quick-create-workspace.md)來建立它。
+    適用于容器的 Azure 監視器支援 [依區域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)列示在 Azure 產品的區域中的 Log Analytics 工作區。 若要建立您自己的工作區，您可以透過 [Azure Resource Manager](../samples/resource-manager-workspace.md)、 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)或 [Azure 入口網站](../learn/quick-create-workspace.md)來建立它。
 
 - 若要啟用和存取容器 Azure 監視器的功能，您必須至少擁有 Azure 訂用帳戶中的 Azure *參與者* 角色，以及 log analytics 工作區中的 [*log analytics 參與者*](../platform/manage-access.md#manage-access-using-azure-permissions) 角色（以容器的 Azure 監視器設定）。
 
@@ -164,7 +164,7 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
     您可以在 [叢集**類型**] 欄中尋找**ARO**值，以識別清單中的結果。 當您選取 [ **啟用**] 之後，系統會將您重新導向到這篇文章。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 既然您已啟用監視來收集 RedHat OpenShift 4.x 叢集的健康情況和資源使用量，以及它們上執行的工作負載，請瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
 

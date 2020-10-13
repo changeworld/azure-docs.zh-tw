@@ -1,24 +1,18 @@
 ---
 title: 在 HPC Vm 上啟用 InifinBand-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解如何在 Azure HPC Vm 上啟用不限。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0cbfed307cea1bd98bf864046a8c08edb849226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5f4cbd2fc09b2c42c232eafd63edb1217e4dacb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797980"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996320"
 ---
 # <a name="enable-infiniband"></a>啟用 InfiniBand
 
@@ -70,7 +64,7 @@ sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解如何在 Vm 上安裝各種 [支援的 MPI 程式庫](setup-mpi.md) 及其最佳設定。
 - 請檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)，了解如何以最佳方式設定工作負載以獲得效能和可擴縮性。

@@ -1,25 +1,18 @@
 ---
 title: 在 Azure Linux 虛擬機器上設定 Oracle ASM | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle ASM。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: e82b458487dd4c865013c806447473d25c75017f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2d112db720d8ad5a1cba1ec2f35fbb59670e1e92
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328083"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996735"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上設定 Oracle ASM  
 
@@ -580,7 +573,7 @@ Azure Marketplace 映像上已安裝 Oracle 資料庫軟體。 若要建立資�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [教學課程：設定 Oracle DataGuard](configure-oracle-dataguard.md)
 

@@ -3,12 +3,12 @@ title: 設定容器代理程式資料集合的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何設定容器代理程式的 Azure 監視器，以控制 stdout/stderr 和環境變數記錄收集。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84299276"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994619"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>為容器的 Azure 監視器設定代理程式資料收集
 
@@ -31,14 +31,14 @@ ms.locfileid: "84299276"
 
 以下是可以設定來控制資料收集的設定。
 
-| 機碼 | 資料類型 | 值 | 說明 |
+| 答案 | 資料類型 | 值 | 說明 |
 |--|--|--|--|
 | `schema-version` | 字串 (區分大小寫)  | v1 | 這是代理程式所使用的架構版本<br> 剖析這個 ConfigMap 時。<br> 目前支援的架構版本為 v1。<br> 不支援修改此值，而且將會<br> 在評估 ConfigMap 時拒絕。 |
-| `config-version` | String |  | 支援在您的原始檔控制系統/存放庫中追蹤此設定檔版本的功能。<br> 允許的字元數上限為10，而所有其他字元則會被截斷。 |
+| `config-version` | 字串 |  | 支援在您的原始檔控制系統/存放庫中追蹤此設定檔版本的功能。<br> 允許的字元數上限為10，而所有其他字元則會被截斷。 |
 | `[log_collection_settings.stdout] enabled =` | Boolean | true 或 false | 這會控制是否啟用 stdout 容器記錄收集。 當設定為時 `true` ，不會針對 stdout 記錄檔收集排除任何命名空間<br>  (`log_collection_settings.stdout.exclude_namespaces` 設定如下) ，將會從叢集中所有 pod/節點的所有容器中收集 stdout 記錄檔。 如果未在 ConfigMaps 中指定，<br> 預設值為 `enabled = true` 。 |
-| `[log_collection_settings.stdout] exclude_namespaces =` | String | 逗點分隔陣列 | 將不會收集 stdout 記錄檔的 Kubernetes 命名空間陣列。 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled`<br> 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stdout] exclude_namespaces =` | 字串 | 逗點分隔陣列 | 將不會收集 stdout 記錄檔的 Kubernetes 命名空間陣列。 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled`<br> 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.stderr] enabled =` | Boolean | true 或 false | 這會控制是否啟用 stderr 容器記錄收集。<br> 當設定為時 `true` ，不會針對 stdout 記錄檔收集排除任何命名空間<br>  (`log_collection_settings.stderr.exclude_namespaces` 設定) ，會從叢集中所有 pod/節點的所有容器收集 stderr 記錄檔。<br> 如果未在 ConfigMaps 中指定，則預設值為<br> `enabled = true`. |
-| `[log_collection_settings.stderr] exclude_namespaces =` | String | 逗點分隔陣列 | 將不會收集 stderr 記錄的 Kubernetes 命名空間陣列。<br> 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled` 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stderr] exclude_namespaces =` | 字串 | 逗點分隔陣列 | 將不會收集 stderr 記錄的 Kubernetes 命名空間陣列。<br> 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled` 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` | Boolean | true 或 false | 此設定會控制環境變數集合<br> 在叢集中的所有 pod/節點<br> `enabled = true`如果未指定，則預設為<br> 在 ConfigMaps 中。<br> 如果環境變數的集合是全域啟用的，您可以針對特定容器停用它<br> 藉由設定環境變數<br> `AZMON_COLLECT_ENV`若為 False，則會使用 Dockerfile 設定，或在**env：** 區段下[的 Pod 設定檔](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)中設定為**False** 。<br> 如果環境變數的集合已全域停用，則您無法啟用特定容器的集合 (也就是說，可在容器層級套用的唯一覆寫是在全域啟用時停用集合。 ) 。 |
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boolean | true 或 false | 此設定會控制容器記錄擴充，以填入 Name 和 Image 屬性值<br> 針對針對叢集中的所有容器記錄，寫入 ContainerLog 資料表的每個記錄檔記錄。<br> `enabled = false`如果未在 ConfigMap 中指定，它會預設為。 |
 | `[log_collection_settings.collect_all_kube_events]` | Boolean | true 或 false | 這項設定允許收集所有類型的 Kube 事件。<br> 依預設，不會收集類型為 *Normal* 的 Kube 事件。 當這項設定設定為時 `true` ，就不會再篩選 *一般* 事件，並且會收集所有事件。<br> 根據預設，這項設定為 `false`。 |
@@ -134,7 +134,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 ## <a name="next-steps"></a>接下來的步驟
 
-- 容器的 Azure 監視器不包含一組預先定義的警示。 請參閱 [容器的 Azure 監視器建立效能警示](container-insights-alerts.md) ，以瞭解如何建立高 CPU 和記憶體使用量的建議警示，以支援您的 DevOps 或操作程式和程式。
+- 容器的 Azure 監視器不包含一組預先定義的警示。 請參閱 [容器的 Azure 監視器建立效能警示](./container-insights-log-alerts.md) ，以瞭解如何建立高 CPU 和記憶體使用量的建議警示，以支援您的 DevOps 或操作程式和程式。
 
 - 啟用監視以收集 AKS 或混合式叢集的健康情況和資源使用量，以及在其上執行的工作負載，瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
 

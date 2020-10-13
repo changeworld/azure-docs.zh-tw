@@ -1,26 +1,18 @@
 ---
 title: 常見問題-SAP 解決方案的 Azure 監視器 |Microsoft Docs
 description: 在本文中，您將瞭解有關適用于 SAP 解決方案的 Azure 監視器常見問題)  (常見問題的解答。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: f584601c2dcbea989f1b68d9fbac5a7f53a59d86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987241"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994227"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>適用于 SAP 解決方案的 Azure 監視器常見問題 (預覽版) 
 ## <a name="frequently-asked-questions"></a>常見問題集
@@ -72,11 +64,11 @@ SQL Server 2012 SP4 或更新版本。
 您目前可以監視 HANA 資料庫、基礎結構、高可用性叢集，以及 Microsoft SQL server 的公開預覽。  
 
  - **這種服務會取代 SAP Solution manager 嗎？**  
-否。 客戶仍然可以使用 SAP Solution manager 進行商務程式監視。  
+不可以。 客戶仍然可以使用 SAP Solution manager 進行商務程式監視。  
 
  - **這項服務的價值是傳統解決方案，例如 SAP Hana 環境/Studio 嗎？**  
 適用于 SAP 解決方案的 Azure 監視器不是 HANA 資料庫專屬的。 SAP 解決方案的 Azure 監視器也支援 AnyDB。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 為 SAP 解決方案資源建立您的第一個 Azure 監視器。

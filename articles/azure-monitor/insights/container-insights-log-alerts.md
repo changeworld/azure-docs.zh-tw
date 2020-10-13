@@ -3,12 +3,12 @@ title: 從容器的 Azure 監視器記錄警示 |Microsoft Docs
 description: 本文說明如何從容器 Azure 監視器建立自訂記錄警示，以取得記憶體和 CPU 使用率。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294541"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995260"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器建立記錄警示
 
@@ -303,8 +303,8 @@ InsightsMetrics
 13. 選取現有的 **動作群組** 或建立新的群組。 此步驟可確保在每次觸發警示時都會採取相同的動作。 根據 IT 或 DevOps 作業小組管理事件的方式進行設定。
 14. 選取 [ **建立警示規則** ] 以完成警示規則。 此警示規則會立即開始執行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 查看 [記錄查詢範例](container-insights-log-search.md#search-logs-to-analyze-data) 以查看預先定義的查詢和範例，以評估或自訂警示、視覺化或分析您的叢集。
 
-- 若要深入瞭解 Azure 監視器以及如何監視 Kubernetes 叢集的其他層面，請參閱 [View Kubernetes cluster performance](container-insights-analyze.md) And [view Kubernetes cluster health](container-insights-health.md)。
+- 若要深入瞭解 Azure 監視器以及如何監視 Kubernetes 叢集的其他層面，請參閱 [View Kubernetes cluster performance](container-insights-analyze.md) And [view Kubernetes cluster health](./container-insights-overview.md)。

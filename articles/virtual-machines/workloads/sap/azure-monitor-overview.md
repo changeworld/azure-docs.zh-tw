@@ -1,26 +1,18 @@
 ---
 title: 適用于 SAP 解決方案的 Azure 監視器總覽和架構 |Microsoft Docs
 description: 本文提供適用于 SAP 解決方案的 Azure 監視器常見問題的解答
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 8d97c713dfec574a8ef7f3f0dde4701ddea0e98b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: d9730324b2557c8f0bb203f7badbd00e0e7e704e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994258"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>適用于 SAP 解決方案的 Azure 監視器 (預覽) 
 
@@ -110,7 +102,7 @@ Azure 監視器 SAP 解決方案會收集系統中繼資料，為我們的 Azure
 ## <a name="pricing"></a>定價
 適用于 SAP 解決方案的 Azure 監視器是免費的產品 (不提供授權費用) 。 客戶須負責支付受控資源群組中基礎元件的成本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解提供者，並建立您的第一個 SAP 解決方案資源 Azure 監視器。
  - 深入瞭解 [提供者](./azure-monitor-providers.md)

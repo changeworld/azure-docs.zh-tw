@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961970"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997024"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 
@@ -31,7 +31,7 @@ ms.locfileid: "88961970"
 
 * **可自訂的**，讓您能夠變更想要查看的計量、修改或設定符合限制的閾值，並另存為自己的活頁簿。 活頁簿中的圖表均可釘選到 Azure 儀表板。  
 
-此功能不會要求您啟用或設定任何項目，預設會從您的儲存體帳戶收集儲存體計量。 如果您不熟悉 Azure 儲存體上可用的計量，請藉由檢閱 [Azure 儲存體計量](../../storage/common/monitor-storage.md)來檢視 Azure 儲存體計量中的描述和定義。
+此功能不會要求您啟用或設定任何項目，預設會從您的儲存體帳戶收集儲存體計量。 如果您不熟悉 Azure 儲存體上可用的計量，請藉由檢閱 [Azure 儲存體計量](../../storage/blobs/monitor-blob-storage.md)來檢視 Azure 儲存體計量中的描述和定義。
 
 >[!NOTE]
 >存取此功能不需要付費，您只需要支付所設定或啟用的 Azure 監視器基本功能的費用，如 [Azure 監視器定價詳細資料](https://azure.microsoft.com/pricing/details/monitor/)頁面上所述。
@@ -67,7 +67,7 @@ ms.locfileid: "88961970"
 在 [可用性]、[E2E 延遲]、[伺服器延遲] 與 [交易錯誤類型/錯誤] 資料行中選取一個值，可將您導向至為特定儲存體帳戶類型量身打造的報表，其符合針對該儲存體帳戶所選取的資料行。 如需適用於每個類別之活頁簿的詳細資訊，請參閱以下[詳細的儲存體活頁簿](#detailed-storage-workbooks)一節。 
 
 >[!NOTE]
->如需可在報表中顯示哪些錯誤的詳細資訊，請參閱[回應類型結構描述](../../storage/common/monitor-storage-reference.md#metrics-dimensions)，並尋找 **ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** 之類的回應類型。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三種，所有其他錯誤都會顯示於**其他**類別底下。
+>如需可在報表中顯示哪些錯誤的詳細資訊，請參閱[回應類型結構描述](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)，並尋找 **ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** 之類的回應類型。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三種，所有其他錯誤都會顯示於**其他**類別底下。
 
 預設的**可用性**閾值為：
 
@@ -274,4 +274,3 @@ ms.locfileid: "88961970"
 * 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援、如何撰寫新報表和自訂現有報表等等的案例。
 
 * 如需使用儲存體分析和其他工具來識別、診斷及疑難排解 Azure 儲存體相關問題的深入指南，請參閱 [監視、診斷及疑難排解 Microsoft Azure 儲存體](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
-

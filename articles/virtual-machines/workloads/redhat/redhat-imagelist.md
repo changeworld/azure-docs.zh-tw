@@ -1,23 +1,18 @@
 ---
 title: Azure 中可用的 Red Hat Enterprise Linux 映射
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 628e9098eefa311f3ee5603b9eaf633d67d60c5f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291016"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994347"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux Azure 中提供的 (RHEL) 映射
 Azure 提供各種不同使用案例的 RHEL 映射。
@@ -31,7 +26,7 @@ Azure 提供各種不同使用案例的 RHEL 映射。
 > [!NOTE]
 > 不會再產生原始影像，而是要改用 LVM 分割的影像。 LVM 提供許多優於舊版原始 (非 LVM) 資料分割配置的優點，包括大幅提高彈性的分割區大小選項。
 
-供應項目| SKU | 資料分割 | 佈建 | 注意
+供應項目| SKU | 資料分割 | 佈建 | 附註
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理程式 |
 |             | 6.8      | RAW    | Linux 代理程式 |

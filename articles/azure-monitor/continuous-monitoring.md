@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318125"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996396"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure 監視器持續監視
 
@@ -43,7 +43,7 @@ ms.locfileid: "87318125"
 
 [基礎結構即程式碼](/azure/devops/learn/what-is-infrastructure-as-code)是描述性模型中基礎結構的管理，使用與 DevOps 小組針對原始程式碼所使用的相同版本設定。 它為您的環境增加了可靠性和延展性，並允許您利用針對管理應用程式所使用的類似程序。
 
--  使用 [Resource Manager 範本](platform/template-workspace-configuration.md)啟用對大量資源的監視並設定警示。
+-  使用 [Resource Manager 範本](./samples/resource-manager-workspace.md)啟用對大量資源的監視並設定警示。
 - 使用 [Azure 原則](../governance/policy/overview.md)來對您的資源強制執行不同的規則。 這樣會確保那些資源會符合您的公司標準及服務等級協定規範。 
 
 
@@ -87,4 +87,3 @@ Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服�
 
 - 了解 [Azure 監視器](overview.md)的差異元件。
 - [將連續監視新增至您的發行管線](./app/continuous-monitoring.md)。
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575515"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996333"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
 
@@ -49,7 +49,7 @@ Log Analytics 專用叢集會使用至少 1000 GB/天的容量保留定價模型
 
 1. 叢集 **：在**此案例中 (是預設) ，內嵌資料的計費是在叢集層級進行。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 
 
-2. **工作區**：您叢集的容量保留成本會依叢集內的工作區進行比例化， (在會計入每個工作區 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/) 的每個節點配置。 ) 
+2. **工作區**：您叢集的容量保留成本會依叢集內的工作區進行比例化， (在會計入每個工作區 [Azure 資訊安全中心](../../security-center/index.yml) 的每個節點配置。 ) 
 
 請注意，如果您的工作區使用舊版的每個節點定價層，則在連結至叢集時，將會根據針對叢集容量保留所內嵌的資料進行計費，而且不再是每個節點的費用。 Azure 資訊安全中心的每個節點資料配置都將繼續套用。
 
@@ -321,7 +321,7 @@ Content-type: application/json
 
 - 從回應複製 Azure-AsyncOperation URL 值，並遵循非同步作業狀態檢查。
 
-- 傳送 [工作區– Get](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) 要求並觀察回應。 相關聯的工作區在 [功能] 底下有 clusterResourceId。
+- 傳送 [工作區– Get](/rest/api/loganalytics/workspaces/get) 要求並觀察回應。 相關聯的工作區在 [功能] 底下有 clusterResourceId。
 
 傳送要求看起來如下所示：
 
@@ -404,7 +404,7 @@ Authorization: Bearer <token>
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解 [Log Analytics 專用叢集計費](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - 深入瞭解 [Log Analytics 工作區的正確設計](../platform/design-logs-deployment.md)

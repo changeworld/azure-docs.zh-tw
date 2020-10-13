@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320722"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996409"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>使用 GPU Azure Stack Edge Pro 的系統需求 
 
@@ -32,21 +32,29 @@ Azure Stack Edge Pro 的系統需求包括：
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>支援的儲存體帳戶
+## <a name="supported-azure-storage-accounts"></a>支援的 Azure 儲存體帳戶
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>支援的分層式儲存體帳戶
+## <a name="supported-edge-storage-accounts"></a>支援的 Edge 儲存體帳戶
 
-從 Azure Stack 進行管理時，SMB/NFS/REST 介面支援下列分層式儲存體帳戶。
+裝置的 REST 介面支援下列 Edge 儲存體帳戶。 Edge 儲存體帳戶會建立于裝置上。 如需詳細資訊，請參閱 [Edge 儲存體帳戶](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)。
 
-|類型  |儲存體帳戶  |註解  |
+|類型  |儲存體帳戶  |評價  |
 |---------|---------|---------|
 |標準     |GPv1：區塊 Blob         |         |
-|    |  Blob 儲存體：區塊 Blob       | 僅支援 NAS     |
 
-* Azure Stack 目前不支援分頁 blob 和 Azure 檔案儲存體。
-* * 經常性存取和非經常性存取層不存在於 Azure Stack 中。 當資料上傳之後，請使用 Azure PowerShell 將資料移至封存層。 如需逐步指示，請移至[使用 Azure PowerShell 設定 blob 層]()。
+* 目前不支援分頁 blob 和 Azure 檔案儲存體。
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>支援的本機 Azure Resource Manager 儲存體帳戶
+
+當您連接到本機 Azure Resource Manager 時，會透過裝置本機 Api 建立這些儲存體帳戶。 以下是支援的儲存體帳戶：
+
+|類型  |儲存體帳戶  |評價  |
+|---------|---------|---------|
+|標準     |GPv1：區塊 Blob、分頁 Blob        | SKU 類型為 Standard_LRS       |
+|Premium     |GPv1：區塊 Blob、分頁 Blob        | SKU 類型為 Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>支援的儲存體類型
 

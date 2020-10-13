@@ -3,12 +3,12 @@ title: 設定 Azure Red Hat OpenShift v3. x 與容器的 Azure 監視器 |Micros
 description: 本文說明如何使用 Azure Red Hat OpenShift 第3版和更高版本上託管的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816638"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994565"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3 
 
@@ -34,7 +34,7 @@ ms.locfileid: "88816638"
 
 - [Log Analytics 工作區](../platform/design-logs-deployment.md)。
 
-    適用于容器的 Azure 監視器支援 [依區域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)列示在 Azure 產品的區域中的 Log Analytics 工作區。 若要建立您自己的工作區，您可以透過 [Azure Resource Manager](../platform/template-workspace-configuration.md)、 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)或 [Azure 入口網站](../learn/quick-create-workspace.md)來建立它。
+    適用于容器的 Azure 監視器支援 [依區域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)列示在 Azure 產品的區域中的 Log Analytics 工作區。 若要建立您自己的工作區，您可以透過 [Azure Resource Manager](../samples/resource-manager-workspace.md)、 [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)或 [Azure 入口網站](../learn/quick-create-workspace.md)來建立它。
 
 - 若要啟用和存取容器 Azure 監視器中的功能，您至少必須是 Azure 訂用帳戶中「Azure *參與者* 」角色的成員，以及 log analytics 工作區的 [*log analytics 參與者*](../platform/manage-access.md#manage-access-using-azure-permissions) 角色成員（以容器的 Azure 監視器設定）。
 
@@ -235,7 +235,7 @@ ms.locfileid: "88816638"
     provisioningState       : Succeeded
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 啟用監視以收集 RedHat OpenShift 叢集的健康情況和資源使用量，以及在其上執行的工作負載，瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
 
@@ -244,4 +244,3 @@ ms.locfileid: "88816638"
 - 若要從您的叢集抓取並分析 Prometheus 計量，請參閱 [設定 Prometheus 計量抓取](container-insights-prometheus-integration.md)
 
 - 若要瞭解如何使用容器 Azure 監視器停止監視您的叢集，請參閱 [如何停止監視您的 Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md)叢集。
-
