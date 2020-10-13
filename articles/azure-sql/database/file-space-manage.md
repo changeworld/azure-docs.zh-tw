@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335062"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>在 Azure SQL Database 中管理資料庫的檔案空間
@@ -146,7 +146,7 @@ ORDER BY end_time DESC
 以查詢判斷為集區中的每個資料庫配置的空間所產生的結果，可在加總後用來判斷為彈性集區配置的總空間。 配置的彈性集區空間不應超過彈性集區大小上限。  
 
 > [!IMPORTANT]
-> Azure SQL Database 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組將持續收到錯誤修正，直到2020年12月為止。 Az 模組和 AzureRm 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 PowerShell 指令碼需要 SQL Server PowerShell 模組 – 請參閱[下載 PowerShell 模組](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)以便安裝。
 

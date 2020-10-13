@@ -14,10 +14,10 @@ ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88689794"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
@@ -45,10 +45,10 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 | 核心                            | 44 (HT 已停用)                  |
 | CPU                              | Intel 的頂級白金8168         |
 | CPU 頻率 (非 AVX)           | 3.7 GHz (單一核心) ，2.7-3.4 GHz (所有核心)  |
-| 記憶體                           | 8 GB/核心 (352 總計)             |
+| Memory                           | 8 GB/核心 (352 總計)             |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
-| Network (網路)                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC    |
+| 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC    |
 
 ## <a name="software-specifications"></a>軟體規格
 
@@ -61,7 +61,7 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 | SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 +  |
 | 協調器支援        | CycleCloud，Batch  |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解 Intel 以上的 [SP 架構](https://bit.ly/2RCYkiE)。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。

@@ -4,13 +4,13 @@ description: 說明如何為事件方格自訂事件傳遞選項。 設定無效
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261799"
 ---
-# <a name="set-dead-letter-location-and-retry-policy"></a>設定寄不出的信件位置和重試原則
+# <a name="set-dead-letter-location-and-retry-policy"></a>設定無效信件的位置和重試原則
 
 當建立事件訂用帳戶時，您可以自訂事件傳遞的設定。 本文說明如何設定無效信件位置及自訂重試設定。 如需這些功能的相關資訊，請參閱[事件方格訊息傳遞和重試](delivery-and-retry.md)。
 

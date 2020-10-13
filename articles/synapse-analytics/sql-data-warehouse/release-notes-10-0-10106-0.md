@@ -13,10 +13,10 @@ manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89457986"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊
@@ -45,7 +45,7 @@ ms.locfileid: "89457986"
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
 |**工作負載管理-入口網站體驗**|使用者可以透過 Azure 入口網站來設定及管理其工作負載管理設定。 可以設定[工作群組](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)和具有重要性的[工作負載分類器](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)。|
-|**改進的資料表對應目錄檢視**|新的目錄檢視 [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) 會將永久使用者資料表 **object_ids** 對應至其實體資料表名稱。|
+|**改進的資料表對應目錄檢視**|新的目錄檢視 [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) 會將永久使用者資料表 **object_ids** 對應至其實體資料表名稱。|
 
 ## <a name="july-2020"></a>2020 年 7 月
 

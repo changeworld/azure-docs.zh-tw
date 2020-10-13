@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: af3513c4a4f3b3187e85c65de51ad2e6e2d7279c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983153"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>使用 Azure 入口網站修改區域網路閘道設定
@@ -35,7 +35,7 @@ ms.locfileid: "90983153"
 
 這是具有 FQDN 端點的相同設定頁面：
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="設定局域網路閘道-FQDN":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="設定局域網路閘道-IP 位址":::
 
 ## <a name="modify-the-gateway-ip-address"></a><a name="ip"></a>修改閘道 IP 位址
 
@@ -85,6 +85,6 @@ ms.locfileid: "90983153"
 2. 取消選取 [ **設定 BGP 設定]** 以移除現有的 BGP ASN 和 BGP 對等 IP 位址
 3. 按一下 [Save] **** 儲存您的設定。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您可以驗證閘道連線。 請參閱 [驗證閘道連線](vpn-gateway-verify-connection-resource-manager.md)。

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
 ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263771"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
@@ -76,7 +76,7 @@ Azure 監視器代理程式不會產生任何費用，但您可能會產生資�
 
 Azure 監視器代理程式會將資料傳送至 Azure 監視器計量或支援 Azure 監視器記錄的 Log Analytics 工作區。
 
-| 資料來源 | Destinations | 說明 |
+| 資料來源 | Destinations | 描述 |
 |:---|:---|:---|
 | 效能        | Azure 監視器計量<br>Log Analytics 工作區 | 測量作業系統和工作負載不同層面效能的數值。 |
 | Windows 事件記錄檔 | Log Analytics 工作區 | 傳送至 Windows 事件記錄系統的資訊。 |

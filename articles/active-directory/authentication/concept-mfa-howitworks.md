@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5f8d08f0814ec69719c002ea9efd39bb38b7d16
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718011"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>運作方式：Azure Multi-Factor Authentication
@@ -59,7 +59,7 @@ Azure Multi-Factor Authentication 可協助保護資料和應用程式的存取�
 
 ![條件式存取如何運作以保護登入程序的概觀圖表](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要瞭解授權，請參閱 [Azure Multi-Factor Authentication 的功能和](concept-mfa-licensing.md)授權。
 

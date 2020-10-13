@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256886"
+ms.locfileid: "91873144"
 ---
 # <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
 如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 
@@ -58,7 +58,7 @@ ms.locfileid: "91256886"
     您的應用程式註冊可能是使用此租使用者中不同的使用者帳戶、個人/取用者帳戶或不同的租使用者所建立。 確保您在建立應用程式註冊的租用戶中使用正確的帳戶進行登入。
 
 - **我收到與多重要素驗證相關的錯誤。我該怎麼做？** 
-    請確定已啟用 [多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md) ，且您在此案例中登入的使用者需要此驗證。 例如，MFA 可能是：
+    請確定已啟用 [多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md) ，且您在此案例中登入的使用者 **需要** 此驗證。 例如，MFA 可能是：
     - 您要用來登入的使用者一律需要
     - [Azure 管理的必要元件](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - 您用來登入的[系統管理員類型的必要](../conditional-access/howto-conditional-access-policy-admin-mfa.md)項。
@@ -226,7 +226,9 @@ Microsoft 取用者帳戶不支援此功能。 僅支援 Azure AD 使用者在 A
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-在嘗試將已驗證的發行者新增至應用程式之前，尚未執行多重要素驗證時發生。 如需詳細資訊，請參閱 [常見的問題](#common-issues) 。
+在嘗試將已驗證的發行者新增至應用程式之前，尚未執行多重要素驗證時發生。 如需詳細資訊，請參閱 [常見的問題](#common-issues) 。 注意：嘗試新增已驗證的發行者時，必須在相同的會話中執行 MFA。 如果已啟用 MFA，但不需要在會話中執行，則要求將會失敗。   
+
+顯示的錯誤訊息為：「由於系統管理員所做的設定變更，或是因為您移至新的位置，您必須使用多重要素驗證才能繼續。」
 
 ## <a name="next-steps"></a>後續步驟
 

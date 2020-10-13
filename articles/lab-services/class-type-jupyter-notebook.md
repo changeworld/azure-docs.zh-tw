@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
 ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533515"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 筆記本設定實驗室來教授資料科學
@@ -116,7 +116,7 @@ Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本
      - **登**入： student
      - **SSH 埠**：12345
      - **會話類型**： XFCE
-6. 選取 [確定]。 
+6. 選取 [確定]  。 
 
     > [!NOTE]
      > 建立新的 X2Go 會話時，請務必使用 SSH 埠， **而不** 是 RDP 埠。

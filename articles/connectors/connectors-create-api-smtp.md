@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283940"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure Logic Apps 從您的 SMTP 帳戶傳送電子郵件
@@ -49,7 +49,7 @@ ms.locfileid: "87283940"
 
 1. 出現提示時，請提供這項連線資訊：
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
    | **連接名稱** | 是 | 與 SMTP 伺服器的連線名稱 | 
    | **SMTP 伺服器位址** | 是 | SMTP 伺服器的位址 | 
@@ -65,10 +65,10 @@ ms.locfileid: "87283940"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](/connectors/smtpconnector/)。
+如需此連接器的更多技術詳細資料，如連接器的 Swagger 檔案所述的觸發程式、動作和限制，請參閱 [連接器的參考頁面](/connectors/smtpconnector/)。
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 若為 [整合服務環境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式 (ISE) ，此連接器的 ISE 標記版本會改用 [ise 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
 ## <a name="next-steps"></a>後續步驟
 

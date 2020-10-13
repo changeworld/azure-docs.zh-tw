@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322936"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何從 Java 使用通知中樞
@@ -42,7 +42,7 @@ SDK 目前支援：
 * 定期傳送
 * 排程的傳送
 * 透過 Java NIO 的非同步作業
-* 支援的平臺： APNS （iOS）、FCM （Android）、WNS （Windows Store 應用程式）、MPNS （Windows Phone）、ADM （Amazon Kindle 火災）、百度（不含 Google 服務的 Android）
+* 支援的平臺： APNS (iOS) 、FCM (Android) 、WNS (Windows Store 應用程式) 、MPNS (Windows Phone) 、ADM (Amazon Kindle 火災) 、百度 (沒有 Google 服務的 Android) 
 
 ## <a name="sdk-usage"></a>SDK 的使用方式
 
@@ -377,7 +377,7 @@ hub.sendNotification(n);
 
 ## <a name="next-steps"></a><a name="next-steps"></a>後續步驟
 
-本主題會說明如何為通知中樞建立簡單的 Java REST 用戶端。 從這裡您可以：
+本主題會說明如何為通知中樞建立簡單的 Java REST 用戶端。 從這裡，您可以：
 
 * 下載完整的 [Java SDK]，其中包含完整的 SDK 程式碼。
 * 試用範例：

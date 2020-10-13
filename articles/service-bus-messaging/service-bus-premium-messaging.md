@@ -4,10 +4,10 @@ description: 本文描述 Azure 服務匯流排的標準層和進階層。 比�
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90966788"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服務匯流排進階和標準傳訊層級
@@ -92,7 +92,7 @@ Premium 訊息中不支援分割的佇列和主題。 如需分割的詳細資�
 
 您也可以[使用 Azure Resource Manager 範本建立進階命名空間](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解服務匯流排傳訊，請參閱下列連結：
 

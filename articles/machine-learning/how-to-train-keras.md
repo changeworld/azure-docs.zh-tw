@@ -12,10 +12,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: d7cd452b6d1107f440d952c7db930281f3d86c11
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743793"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 Keras 模型
@@ -170,7 +170,7 @@ dataset = Dataset.get_by_name(ws, 'mnist-dataset')
 dataset.to_path()
 ```
 
-建立 ScriptRunConfig 物件，以指定定型作業的設定詳細資料，包括您的訓練腳本、要使用的環境，以及要執行的計算目標。
+建立 ScriptRunConfig 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。
 
 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。 FileDataset 的 DatasetConsumptionConfig 會作為引數傳遞至定型腳本的引數 `--data-folder` 。 Azure ML 會將此 DatasetConsumptionConfig 解析為支援資料存放區的掛接點，然後可從定型腳本進行存取。
 

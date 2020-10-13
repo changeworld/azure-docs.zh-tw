@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514910"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>針對 StorSimple 上裝載的檔案共用使用 Azure Site Recovery 的自動化災害復原解決方案
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可解決通常與檔案共用關聯之非結構化資料的複雜性問題。 StorSimple 使用雲端儲存體做為內部部署解決方案的擴充功能，以及跨內部部署儲存體和雲端儲存體自動將資料分層。 整合式資料保護 (使用本機和雲端快照集) 不需要擴張的儲存體結構。
 
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 是以 Azure 為基礎的服務，藉由協調虛擬機器的複寫、容錯移轉及復原，提供災害復原 (DR) 功能。 Azure Site Recovery 支援多種複寫技術來持續複寫、保護及順暢地容錯移轉虛擬機器和應用程式至私密/公用或主機服務提供者的雲端。
@@ -37,7 +37,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
 ## <a name="supported-azure-site-recovery-deployment-options"></a>支援的 Azure Site Recovery 部署選項
 客戶可以將檔案伺服器部署為在 Hyper-V 或 VMware 上執行的實體服務或虛擬機器 (VM)，然後從由 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 Azure Site Recovery 可以保護次要站台或 Azure 的實體與虛擬部署。 本文件涵蓋 DR 解決方案的詳細資料，該解決方案使用 Azure 做為 Hyper-V 上裝載之檔案伺服器 VM 的復原網站，並且在 StorSimple 儲存體上使用檔案共用。 檔案伺服器 VM 位於 VMware VM 或實體電腦上的其他案例也可以透過類似方式實作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 實作單鍵災害復原解決方案 (針對 StorSimple 儲存體上裝載的檔案共用使用 Azure Site Recovery) 時，有下列先決條件：
 
    - Hyper-V 或 VMware 或實體電腦上裝載的內部部署 Windows Server 2012 R2 檔案伺服器 VM
@@ -91,7 +91,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
          > [!NOTE]
          > 視版本不同，檔案名稱可能會改變。
       
-1. 按 [下一步] 。
+1. 按一下 [下一步]。
 1. 接受 [合約條款]**** 然後按一下 [下一步]****。
 1. 按一下 [完成] 。
 1. 使用從 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 如需詳細資訊，請參閱 [使用 StorSimple Manager 服務管理磁碟區](storsimple-manage-volumes.md)。
@@ -104,7 +104,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    1. 建立磁碟區容器，然後建立磁碟區。 (這些磁碟區是供檔案伺服器 VM 上的檔案共用使用)。 在您建立磁碟區時，請複製啟動器名稱並為「存取控制記錄」提供適當名稱。
    1. 選取 [組態] **** 索引標籤並記下裝置的 IP 位址。
    1. 在您的內部部署 VM 上，再度移到 [iSCSI 啟動器] **** ，並在 [快速連線] 區段中輸入 IP。 按一下 [快速連線] **** \(裝置現在應該就會連線)。
-   1. 開啟 Azure 入口網站，然後選取 [**磁片區和裝置**] 索引標籤。按一下 [**自動設定**]。 您建立的磁碟區應會出現。
+   1. 開啟 Azure 入口網站，然後選取 [ **磁片區和裝置** ] 索引標籤。按一下 [ **自動設定**]。 您建立的磁碟區應會出現。
    1. 在入口網站中，選取 [裝置]**** 索引標籤，然後選取 [建立新的虛擬裝置]****。 (此虛擬裝置將會在發生容錯移轉時使用)。 這個新的虛擬裝置可以維持在離線狀態以避免產生額外成本。 若要讓虛擬機器離線，請移至入口網站的 [虛擬機器]**** 區段並將它關閉。
    1. 回到內部部署 VM並開啟磁碟管理 (按 Windows 鍵 + X 並選取 [磁碟管理] ****)。
    1. 您將會發現一些額外的磁碟 (視您已經建立的磁碟區數目而定)。 在第一個磁碟上按一下滑鼠右鍵，選取 [初始化磁碟]****，然後選取 [確定]****。 在 [未配置]**** 區段中按一下滑鼠右鍵，選取 [新增簡單磁碟區]****，指派一個磁碟機代號給它，然後結束精靈。
@@ -138,7 +138,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
 
 ![計算和網路](./media/storsimple-disaster-recovery-using-azure-site-recovery/image2.png)
 
-## <a name="create-a-recovery-plan"></a>建立復原計畫
+## <a name="create-a-recovery-plan"></a>建立復原方案
 您可以在 ASR 中建立復原計劃來將檔案共用的容錯移轉程序自動化。 如果發生中斷，您只要按一下就可以在幾分鐘內讓檔案共用重新上線。 若要啟用此自動化功能，您需要 Azure 自動化帳戶。
 
 #### <a name="to-create-an-automation-account"></a>建立自動化帳戶
@@ -170,17 +170,17 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    
 1. 在自動化帳戶中，按一下 [變數]** [加入變數] ** &gt; ****，然後加入下列變數。 您可以選擇將這些資產加密。 這些變數都是復原計劃特定變數。 如果您的復原計劃 (您將會在下一個步驟中建立) 名稱為 TestPlan，您的變數就應該是 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等等。
 
-   - **BaseUrl**：Azure 雲端的資源管理員 URL。 取得使用**get-azenvironment |Select-Object Name，ResourceManagerUrl** Cmdlet。
+   - **BaseUrl**：Azure 雲端的資源管理員 URL。 取得使用 **>get-azenvironment | Select-Object Name，ResourceManagerUrl** Cmdlet。
    - _RecoveryPlanName_**-ResourceGroupName**：具有 StorSimple 資源的 Resource Manager 群組。
-   - _RecoveryPlanName_**-ManagerName**：具有 storsimple 裝置的 storsimple 資源。
-   - _RecoveryPlanName_**-DeviceName**：必須故障切換的 StorSimple 裝置。
+   - _RecoveryPlanName_**->-managername**：具有 storsimple 裝置的 storsimple 資源。
+   - _RecoveryPlanName_**-DeviceName**：必須進行容錯移轉的 StorSimple 裝置。
    - _RecoveryPlanName_**-DeviceIpAddress**：裝置的 IP 位址 (可在 [StorSimple 裝置管理員] 區段 [設定]&gt; ** [網路]** &gt; ** [DNS 設定]** &gt; **** 群組下方的 [裝置]**** 索引標籤中找到此資訊)。
-   - _RecoveryPlanName_**-VolumeContainers**：裝置上的磁片區容器的逗號分隔字串，必須進行故障切換。例如： volcon1、volcon2、volcon3。
-   - _RecoveryPlanName_**-TargetDeviceName**：要故障切換容器的 StorSimple 雲端設備。
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**：目標裝置的 IP 位址（可在 [**虛擬機器**] 區段 [ &gt; **設定**] [群組] [網路功能] 索引標籤中找到 &gt; **Networking** ）。
-   - _RecoveryPlanName_**-StorageAccountName**：將儲存腳本（必須在已故障的 VM 上執行）的儲存體帳戶名稱。 這可以是任何擁有一些空間可暫時儲存指令碼的儲存體帳戶。
+   - _RecoveryPlanName_**->-volumecontainers**：需要容錯移轉之裝置上的磁片區容器的逗點分隔字串;例如： volcon1、volcon2、volcon3。
+   - _RecoveryPlanName_**->-targetdevicename**：即將容錯移轉容器的 StorSimple 雲端設備。
+   - _RecoveryPlanName_**->-targetdeviceipaddress**：目標裝置的 IP 位址 (這可以在 [ **虛擬機器** ] 區段的 [ &gt; **設定** 群組 &gt; **網路** 功能] 索引標籤) 中找到。
+   - _RecoveryPlanName_**-StorageAccountName**：將會儲存在已容錯移轉的 VM 上執行的腳本 (所在的儲存體帳戶名稱) 。 這可以是任何擁有一些空間可暫時儲存指令碼的儲存體帳戶。
    - _RecoveryPlanName_**-StorageAccountKey**：上述儲存體帳戶的存取金鑰。
-   - _RecoveryPlanName_**-VMGUIDS**：在保護 VM 時，AZURE SITE RECOVERY 為每個 VM 指派一個唯一識別碼，以提供已故障 over VM 的詳細資料。 若要取得 VMGUID，請選取 [復原服務] **** 索引標籤，然後按一下 [受保護的項目] ** [保護群組] ** &gt; ** [機器] ** &gt; ** [屬性] ** &gt; ****。 如果您有多個 VM，請透過以逗號區隔的字串方式新增 GUID。
+   - _RecoveryPlanName_**->-vmguids**：在保護 vm 時，AZURE SITE RECOVERY 為每個 VM 指派一個唯一識別碼，以提供已容錯移轉之 VM 的詳細資料。 若要取得 VMGUID，請選取 [復原服務] **** 索引標籤，然後按一下 [受保護的項目] ** [保護群組] ** &gt; ** [機器] ** &gt; ** [屬性] ** &gt; ****。 如果您有多個 VM，請透過以逗號區隔的字串方式新增 GUID。
 
      例如，若復原計劃的名稱是 fileServerpredayRP，您的 [變數]****、[連線]**** 和 [憑證]**** 索引標籤應會在您新增所有資產後顯示如下。
 
@@ -234,7 +234,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    
    匯入 StorSimple 8000 系列模組後，[模組]**** 索引標籤應會如下所示：
    
-      ![單元](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
+      ![模組](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
 1. 移至 [復原服務] **** 區段並選取您之前建立的 Azure Site Recovery 保存庫。
 1. 從 [管理] **** 群組選取 [復原計劃 (站台復原)] **** 群組，然後如下所述建立新的復原計劃：
@@ -262,9 +262,9 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
       - Mount-volumes-after-failover runbook  
       - Uninstall-custom-script-extension runbook  
         
-   - 在相同的 [群組 1：後續步驟] **** 區段中，於上面 4 個指令碼之後，加入一個手動動作。 這個動作是您可以確認所有項目都正確運作的點。 只有在測試容錯移轉時，才需要新增這個動作（所以只選取 [**測試容錯移轉**] 核取方塊）。
+   - 在相同的 [群組 1：後續步驟] **** 區段中，於上面 4 個指令碼之後，加入一個手動動作。 這個動作是您可以確認所有項目都正確運作的點。 這個動作只需要在測試容錯移轉 (中加入，因此只需選取 [ **測試容錯移轉** ] 核取方塊) 。
     
-   - 在手動動作之後，使用您用於其他 runbook 的相同程式來新增**清除**腳本。 儲存**** 復原計劃。
+   - 在手動動作之後，請使用您用於其他 runbook 的相同程式來新增 **清除** 腳本。 儲存**** 復原計劃。
     
    > [!NOTE]
    > 執行測試容錯移轉時，您應該在手動動作步驟中確認所有項目，因為已在目標裝置上複製的 StorSimple 磁碟區，將在手動動作完成之後於清除作業中一併刪除。

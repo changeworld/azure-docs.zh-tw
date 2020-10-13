@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846837"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 區域和記錄的概觀
@@ -24,7 +24,7 @@ ms.locfileid: "85846837"
 
 網域名稱系統是網域階層。 階層從「根」網域開始，其名稱只是 '**.**'。  下面接著最上層網域，例如 'com'、'net'、'org'、'uk' 或 'jp'。  再往下是第二層網域，例如 'org.uk' 或 'co.jp'。 DNS 階層中的網域散佈在全球，裝載在世界各地的 DNS 名稱伺服器上。
 
-網域註冊機構是一種組織，可讓您購買功能變數名稱，例如 `contoso.com` 。  購買功能變數名稱可讓您控制該名稱底下的 DNS 階層，例如，讓您將名稱導向 `www.contoso.com` 公司網站。 可以讓該註冊機構代表您，將網域裝載在其自有的名稱伺服器上；或允許您指定替代的名稱伺服器。
+網域註冊機構是一種組織，可讓您購買功能變數名稱，例如 `contoso.com` 。  購買功能變數名稱可讓您控制該名稱底下的 DNS 階層，例如，可讓您將名稱導向 `www.contoso.com` 公司網站。 可以讓該註冊機構代表您，將網域裝載在其自有的名稱伺服器上；或允許您指定替代的名稱伺服器。
 
 Azure DNS 提供散佈全球、高可用性的名稱伺服器基礎結構，可用來裝載您的網域。 只要將您的網域裝載於 Azure DNS 中，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具、計費方式和支援來管理 DNS 記錄。
 
@@ -82,7 +82,7 @@ CNAME 記錄集不能與其他具有相同名稱的記錄集共存。 例如，�
 
 可以修改 SOA 記錄除了 'Host' 屬性以外的所有屬性，因為依照預先設定，該屬性會參考 Azure DNS 所提供的主要名稱伺服器名稱。
 
-對區域中的記錄進行變更時，不會自動更新 SOA 記錄中的區域序號。 如有需要，可以藉由編輯 SOA 記錄來手動更新。
+當對區域中的記錄進行變更時，SOA 記錄中的區域序號不會自動更新。 如有必要，您可以藉由編輯 SOA 記錄來手動更新。
 
 ### <a name="spf-records"></a>SPF 記錄
 
@@ -107,7 +107,7 @@ DNS 記錄中的多個字串，不應與 TXT 記錄集中的多個 TXT 記錄相
 
 ## <a name="tags-and-metadata"></a>標記和中繼資料
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>標籤
 
 標記是名稱-值組的清單，由 Azure Resource Manager 用來標示資源。  Azure Resource Manager 會使用標記來啟用 Azure 帳單篩選過的檢視，也可讓您設定標記需要的原則。 如需標記的詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
@@ -121,7 +121,7 @@ Azure DNS 支援使用 '中繼資料' 來替代記錄集標記，用以標註記
 
 假設有兩個人或兩個處理序同時嘗試修改 DNS 記錄。 何者獲勝？ 獲勝者知道他已覆寫另一人所做的變更嗎？
 
-Azure DNS 使用 Etag 以安全地處理相同資源的並行變更。 Etag 與[Azure Resource Manager 的「標記](#tags)」不同。 每個 DNS 資源 (區域或記錄集) 都有一個相關聯的 Etag。 每當擷取資源時，也會擷取其 Etag。 更新資源時，您可以選擇傳回 Etag，讓 Azure DNS 可以確認伺服器上的 Etag 相符。 因為每次更新資源都會重新產生 Etag，Etag 不符就表示發生並行變更。 建立新的資源時也可以使用 Etag，以確保該資源尚不存在。
+Azure DNS 使用 Etag 以安全地處理相同資源的並行變更。 Etag 與 Azure Resource Manager 「 [標記](#tags)」分開。 每個 DNS 資源 (區域或記錄集) 都有一個相關聯的 Etag。 每當擷取資源時，也會擷取其 Etag。 更新資源時，您可以選擇傳回 Etag，讓 Azure DNS 可以確認伺服器上的 Etag 相符。 因為每次更新資源都會重新產生 Etag，Etag 不符就表示發生並行變更。 建立新的資源時也可以使用 Etag，以確保該資源尚不存在。
 
 根據預設，Azure DNS PowerShell 會使用 Etag 來禁止對區域和記錄集進行並行變更。 選擇性的 *-Overwrite* 參數可以用來停用 Etag 檢查，在此情況下，會覆寫任何已發生的並行變更。
 
@@ -141,7 +141,7 @@ Azure DNS 使用 Etag 以安全地處理相同資源的並行變更。 Etag 與[
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要開始使用 Azure DNS，請學習如何[建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)和[建立 DNS 記錄](dns-getstarted-create-recordset-portal.md)。
 * 若要移轉現有的 DNS 區域，請學習如何[匯入和匯出 DNS 區域檔案](dns-import-export.md)。

@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600791"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 的強式身分識別基礎進行四個步驟
@@ -131,7 +131,7 @@ Azure AD Connect 在布建過程中扮演著重要的角色。 如果同步伺�
 
 本節列出在您的使用者獲得更順暢的情況下，如何讓您的使用者能夠移除組織中的摩擦的建議。
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>為所有使用者啟用自助式密碼重設
+### <a name="enable-self-service-password-reset-for-all-users"></a>為所有使用者啟用 Self-Service 密碼重設
 
 Azure 的 [自助式密碼重設](../authentication/tutorial-enable-sspr.md) (SSPR) 為 IT 系統管理員提供簡單的方法，讓使用者可以在不需要系統管理員介入的情況下重設及解除鎖定其密碼或帳戶。 系統包含詳細的報告，可追蹤使用者何時存取系統與通知來警示您誤用或濫用。
 
@@ -147,7 +147,7 @@ MFA 登 [入報告](../authentication/howto-mfa-reporting.md) 包含 mfa 使用�
 
 ### <a name="self-service-app-management"></a>自助應用程式管理
 
-您必須先針對您想要允許使用者自行探索和要求存取權的任何應用程式，啟用 [自助應用程式存取](../manage-apps/access-panel-manage-self-service-access.md) 權，您的使用者才能從其存取面板自行探索應用程式。 自助應用程式存取是讓使用者能夠自行探索應用程式，並選擇性地允許商務群組核准存取這些應用程式的絕佳方式。 您可以讓商務群組從其存取面板直接管理指派給這些使用者的 [密碼單一登入應用程式](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) 的認證。
+您必須先針對您想要允許使用者自行探索和要求存取權的任何應用程式，啟用 [自助應用程式存取](../manage-apps/access-panel-manage-self-service-access.md) 權，您的使用者才能從其存取面板自行探索應用程式。 自助應用程式存取是讓使用者能夠自行探索應用程式，並選擇性地允許商務群組核准存取這些應用程式的絕佳方式。 您可以讓商務群組在 [應用程式上](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) ，直接從其存取面板管理指派給這些使用者的認證 Single-Sign。
 
 ### <a name="self-service-group-management"></a>自助式群組管理
 
@@ -212,7 +212,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 *「有了 Cloud App Security，我們可以迅速找出異常狀況並採取動作。」* --- [Eric LePenske，資訊安全，Accenture 資深經理](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 有許多層面可以執行混合式身分識別解決方案，但這四個步驟的檢查清單可協助您快速完成身分識別基礎結構，讓使用者更具生產力且更安全。
 
@@ -229,7 +229,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="today"></a>今天
 
-|完成了嗎？|Item|
+|完成了嗎？|項目|
 |:-|:-|
 ||針對群組 (SSPR) 試驗自助式密碼重設|
 ||使用 Azure AD Connect Health 監視混合式元件|
@@ -239,7 +239,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="next-two-weeks"></a>接下來兩周
 
-|完成了嗎？|Item|
+|完成了嗎？|項目|
 |:-|:-|
 ||讓您的使用者可以使用應用程式|
 ||適用于所選 SaaS 應用程式的試驗 Azure AD 布建|
@@ -249,7 +249,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="next-month"></a>下個月
 
-|完成了嗎？|Item|
+|完成了嗎？|項目|
 |:-|:-|
 ||監視應用程式的使用方式來推動見解|
 ||試驗安全的應用程式遠端存取|
@@ -258,7 +258,7 @@ Azure AD Connect 和 AD FS 是很重要的元件，可能會破壞生命週期�
 
 ### <a name="next-three-months"></a>接下來三個月
 
-|完成了嗎？|Item|
+|完成了嗎？|項目|
 |:-|:-|
 ||啟用自助應用程式管理|
 ||啟用自助式群組管理|

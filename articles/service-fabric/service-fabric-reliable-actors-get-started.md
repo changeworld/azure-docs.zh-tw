@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743755"
 ---
 # <a name="getting-started-with-reliable-actors"></a>開始使用 Reliable Actors
@@ -108,7 +108,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 套件及其所有相依性都安裝在 ActorClient 專案中。
 
-5. 用戶端專案也需要介面專案的參考。  在 ActorClient 專案中，以滑鼠右鍵按一下 [相依性]，然後按一下 [**加入專案參考 ...** **]** 。 選取 [**專案] > 方案** (如果尚未選取 [) ]，然後勾選 [ **HelloWorld**] 旁邊的核取方塊。  按一下 [確定]  。
+5. 用戶端專案也需要介面專案的參考。  在 ActorClient 專案中，以滑鼠右鍵按一下 [相依性]，然後按一下 [**加入專案參考 ...** **]** 。 選取 [**專案] > 方案** (如果尚未選取 [) ]，然後勾選 [ **HelloWorld**] 旁邊的核取方塊。  按一下 [確定]。
     
     ![[加入參考] 對話方塊][7]
 

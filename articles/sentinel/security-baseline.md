@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90020278"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>適用于 Azure Sentinel 的 Azure 安全性基準
@@ -551,7 +551,7 @@ Log Analytics 角色包含 Log Analytics 參與者和 Log Analytics 讀取程式
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：啟用 Key Vault 中的虛刪除，以防止金鑰遭到意外或惡意刪除。 如果使用者撤銷金鑰加密金鑰 (不管是藉由刪除或移除 Azure Sentinel 的存取權)，在一小時內，Azure Sentinel 會接受此變更，而且其行為會如同資料已無法再使用一樣。 此時，將會防止任何使用持續性儲存體資源的作業執行，例如資料擷取、持續性設定變更、事件建立。 先前儲存的資料不會被刪除，但仍將無法存取。 無法存取的資料是由資料保留原則所控管，並會根據該原則加以清除。
+**指導**方針：啟用 Key Vault 中的 Soft-Delete，以防止遭到意外或惡意刪除的金鑰。 如果使用者撤銷金鑰加密金鑰 (不管是藉由刪除或移除 Azure Sentinel 的存取權)，在一小時內，Azure Sentinel 會接受此變更，而且其行為會如同資料已無法再使用一樣。 此時，將會防止任何使用持續性儲存體資源的作業執行，例如資料擷取、持續性設定變更、事件建立。 先前儲存的資料不會被刪除，但仍將無法存取。 無法存取的資料是由資料保留原則所控管，並會根據該原則加以清除。
 
 撤銷或刪除加密金鑰之後，唯一可能的作業就是刪除帳戶。
 

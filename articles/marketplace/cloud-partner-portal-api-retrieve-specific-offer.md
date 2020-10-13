@@ -1,6 +1,6 @@
 ---
-title: 取得特定供應專案 API-Azure Marketplace
-description: 要在發行者命名空間內抓取指定供應專案的 API。
+title: 取出特定供應專案 API-Azure Marketplace
+description: 用來在發行者命名空間內取得指定供應專案的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271836"
 ---
 # <a name="retrieve-a-specific-offer"></a>擷取特定供應項目
 
 > [!NOTE]
-> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
+> Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱 [CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md) 中所列的變更，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
 在發行者命名空間內擷取特定供應項目。  
 
@@ -37,7 +37,7 @@ ms.locfileid: "87271836"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-| **名稱**    | **說明**                                                                          | **Data type** |
+| **名稱**    | **描述**                                                                          | **Data type** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId。 例如 Contoso                                                        | String        |
 | offerId     | 可唯一識別供應項目的 GUID。                                                 | String        |
@@ -46,7 +46,7 @@ ms.locfileid: "87271836"
 | api-version | API 的最新版本                                                                    | Date          |
 |  |  |  |
 
-## <a name="header"></a>頁首
+## <a name="header"></a>標頭
 
 |  **名稱**          |   **ReplTest1**            |
 |  ---------------   |  --------------        |
@@ -171,7 +171,7 @@ ms.locfileid: "87271836"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**       |   **說明**                                                                                                               |
+|  **名稱**       |   **描述**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  offerTypeId    | 指出供應項目類型                                                                                                    |
 |  publisherId    | 發行者的唯一識別碼                                                                                              |
@@ -184,7 +184,7 @@ ms.locfileid: "87271836"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code**  | **說明**                                                                                                                 |
+| **程式碼**  | **描述**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功處理要求，且發行者下的所有供應項目已傳回給用戶端。               |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                                                 |
@@ -194,7 +194,7 @@ ms.locfileid: "87271836"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                   |   **說明**                             |
+|  **名稱**                   |   **描述**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | 供應項目從未發行。               |
 |  NotStarted                 | 供應項目是新的，但未啟動。              |
@@ -202,5 +202,5 @@ ms.locfileid: "87271836"
 |  執行中                    | 正在處理供應項目提交。          |
 |  成功                  | 已完成處理供應項目提交。    |
 |  已取消                   | 已取消供應項目提交。                |
-|  失敗                     | 供應項目提交失敗。                      |
+|  Failed                     | 供應項目提交失敗。                      |
 |  |  |

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 53be638c46685dd46a5afb5ed56f9a76ed7b5fd6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055855"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 系列 Update 2 版本資訊
@@ -64,7 +64,7 @@ Update 2 導入下列新功能：
 ## <a name="issues-fixed-in-update-2"></a>在 Update 2 中修正的問題
 下表提供 Update 2 中修正之問題的摘要。    
 
-| 不會。 | 功能 | 問題 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 否。 | 功能 | 問題 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- |
 | 1 |網路介面 |升級至 Update 1 之後，StorSimple Manager 服務報告在一個控制器上的 Data2 和 Data3 連接埠失敗。 已修正此問題。 |是 |否 |
 | 2 |更新 |升級至 Update 1 之後，在多個裝置上的 Azure 傳統入口網站中發生有聲警報器警示。 已修正此問題。 |是 |否 |
@@ -73,7 +73,7 @@ Update 2 導入下列新功能：
 ## <a name="known-issues-in-update-2"></a>Update 2 中的已知問題
 下表提供此版本的已知問題摘要。
 
-| 不會。 | 功能 | 問題 | 註解 / 因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 否。 | 功能 | 問題 | 註解 / 因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁碟仲裁 |在罕見情況下，如果 8600 裝置的 EBOD 機箱中大部分的磁碟都已中斷連線，而導致沒有磁碟仲裁，那麼將會使存放集區離線。 即使已重新連接磁碟時，它依然會保持離線。 |您必須重新啟動裝置。 如果問題持續發生， 請連絡 Microsoft 支援以進行後續步驟。 |是 |否 |
 | 2 |不正確的控制器識別碼 |進行控制器更換時，控制器 0 可能顯示為控制器 1。 在控制器更換期間從對等節點載入影像時，控制器識別碼一開始可能會顯示為對等控制器的識別碼。 在罕見情況下，可能會在系統重新開機後出現這種行為。 |使用者不必採取任何動作。 控制器更換完成之後，會自行解決這種情況。 |是 |否 |

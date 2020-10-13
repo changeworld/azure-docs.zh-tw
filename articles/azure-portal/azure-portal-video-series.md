@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88522941"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 入口網站操作說明影片系列
@@ -39,6 +39,6 @@ Azure 入口網站的 how-to 影片系列示範如何使用 Azure 入口網站�
 
 探索 [Azure 入口網站操作說明系列](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR) ，以取得如何充分利用 Azure 入口網站的一些絕佳秘訣。 訂閱頻道，以在新增影片時收到通知。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 流覽 [影片庫](https://azure.microsoft.com/resources/videos/index/?tag=microsoft-azure-portal)中的數百個 Azure 服務影片。

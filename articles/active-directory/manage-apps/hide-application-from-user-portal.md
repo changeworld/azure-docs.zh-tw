@@ -13,17 +13,17 @@ ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601134"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中隱藏終端使用者的企業應用程式
 
 如何從終端使用者的 MyApps 面板或 Microsoft 365 啟動器隱藏應用程式的指示。 隱藏應用程式時，使用者仍有應用程式的權限。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 需要應用程式系統管理員許可權，才能從 MyApps 面板和 Microsoft 365 啟動器中隱藏應用程式。
 
@@ -40,7 +40,7 @@ ms.locfileid: "90601134"
 5.  搜尋您想要隱藏的庫應用程式，然後按一下該應用程式。  應用程式的概觀隨即開啟。
 6.  按一下 **[屬性]** 。 
 7.  針對 [是否要向使用者顯示]**** 問題，按一下 [否]****。
-8.  按一下 [檔案] 。
+8.  按一下 **[儲存]** 。
 
 > [!NOTE]
 > 這些指示僅適用于企業應用程式。

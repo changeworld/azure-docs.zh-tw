@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669607"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
@@ -194,7 +194,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
     `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 * **實用**
   * 檢閱輸出/輸入設定
@@ -219,7 +219,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 此檢查清單是防火牆規則的起始點：
 
-   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用方式 |
+   | URL (\* = 萬用字元) | 輸出 TCP 連接埠 | 使用量 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器登錄 |
    | global.azure-devices-provisioning.net  | 443 | DPS 存取 (選用) |
@@ -323,7 +323,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 若要提高 IoT Edge 部署情節的效率，請考量將您的生產環境部署整合至您的測試和 CI/CD 管線。 Azure IoT Edge 支援 Azure DevOps 等多個 CI/CD 平台。 如需詳細資訊，請參閱 [Azure IoT Edge 的持續整合與持續部署](how-to-continuous-integration-continuous-deployment.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [IoT Edge 自動部署](module-deployment-monitoring.md)。
 * 了解 IoT Edge 如何支援[持續整合與持續部署](how-to-continuous-integration-continuous-deployment.md)。

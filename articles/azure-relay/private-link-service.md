@@ -4,10 +4,10 @@ description: 了解如何整合 Azure 轉送與 Azure Private Link 服務
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263831"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>將 Azure 轉送與 Azure Private Link 整合 (預覽)

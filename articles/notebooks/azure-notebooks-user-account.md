@@ -4,10 +4,10 @@ description: 使用 Microsoft 帳戶或公司/學校帳戶，設定您的 Azure 
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85832180"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks 預覽的使用者帳戶
@@ -53,7 +53,7 @@ Microsoft 帳戶可用來登入數目不拘的 Microsoft 產品與服務，例�
 
 ## <a name="work-or-school-accounts"></a>工作或學校帳戶
 
-公司或學校帳戶是由組織的系統管理員所建立，可讓組織成員存取 Microsoft 雲端服務（例如 Microsoft 365），也可以在已加入網域的電腦上登入 Windows 的帳戶。 公司或學校帳戶通常會使用組織的電子郵件地址，例如 any-user@contoso.com。
+公司或學校帳戶是由組織的系統管理員所建立，可讓組織成員存取 Microsoft 雲端服務（例如 Microsoft 365），也可以用來登入已加入網域之電腦上的 Windows 帳戶。 公司或學校帳戶通常會使用組織的電子郵件地址，例如 any-user@contoso.com。
 
 Azure Notebooks 會收集或使用 (但不會揭露) 如帳戶的電子郵件地址與使用者的瀏覽器資訊等資訊，因此使用公司或學校帳戶登入 Azure Notebooks 可能需要系統管理員的同意。 (使用瀏覽器資料，根據最熱門的使用方式將功能最佳化。)
 
@@ -63,7 +63,7 @@ Azure Notebooks 會收集或使用 (但不會揭露) 如帳戶的電子郵件地
 
 若要以系統管理員身分表示同意，請使用[系統管理員同意頁面](https://notebooks.azure.com/account/adminConsent)，引導您完成此程序。
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 > [!div class="nextstepaction"]
 > [編輯您的設定檔與使用者識別碼](azure-notebooks-user-profile.md)

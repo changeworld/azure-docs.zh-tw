@@ -10,10 +10,10 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230104"
 ---
 # <a name="soft-delete-for-blobs"></a>Blob 的虛刪除
@@ -83,7 +83,7 @@ Blob 虛刪除適用于新的和現有的一般用途 v2、一般用途 v1 和 B
 
 下表將詳細說明虛刪除開啟時的預期行為：
 
-| REST API 作業 | 資源類型 | 說明 | 行為變更 |
+| REST API 作業 | 資源類型 | 描述 | 行為變更 |
 |--------------------|---------------|-------------|--------------------|
 | [刪除](/rest/api/storagerp/StorageAccounts/Delete) | 帳戶 | 刪除儲存體帳戶，包括其中包含的所有容器和 Blob。                           | 沒有變更。 已刪除之帳戶中的容器和 Blob 無法復原。 |
 | [刪除容器](/rest/api/storageservices/delete-container) | 容器 | 刪除容器，包括其中包含的所有 Blob。 | 沒有變更。 已刪除之容器中的 Blob 無法復原。 |

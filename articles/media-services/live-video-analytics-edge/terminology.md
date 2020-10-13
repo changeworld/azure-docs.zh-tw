@@ -4,10 +4,10 @@ description: 本文提供 IoT Edge 術語的即時影片分析總覽。
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88690607"
 ---
 # <a name="terminology"></a>詞彙
@@ -38,7 +38,7 @@ IoT Edge 上的即時影片分析可以建立資產及/或將資料新增至現�
 
 ## <a name="rtsp"></a>RTSP
 
-[RTSP](https://tools.ietf.org/html/rfc2326) 指的是即時串流通訊協定。 它是一種應用層級的通訊協定，可讓您控制即時屬性的資料傳遞。 RTSP 提供可延伸的架構，可讓您依需求提供即時資料的受控制、隨選傳遞，例如音訊和影片。 
+[RTSP](https://tools.ietf.org/html/rfc2326) 指的是 Real-Time 的串流通訊協定。 它是一種應用層級的通訊協定，可讓您控制即時屬性的資料傳遞。 RTSP 提供可延伸的架構，可讓您依需求提供即時資料的受控制、隨選傳遞，例如音訊和影片。 
 
 ## <a name="streaming"></a>資料流
 
@@ -50,6 +50,6 @@ IoT Edge 上的即時影片分析可以建立資產及/或將資料新增至現�
 
 [Vm](https://en.wikipedia.org/wiki/Video_management_system) 是指影片管理系統。 這類系統用來設定和控制 CCTV 攝影機、抓住和錄製影片。 這些系統也會提供用戶端應用程式播放錄製的影片
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [媒體圖形](media-graph-concept.md)

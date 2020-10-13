@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86500917"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 的 Windows 重新開機迴圈
@@ -48,7 +48,7 @@ ms.locfileid: "86500917"
 
 這可能是檔案系統損毀所致。 不過，我們很難診斷並找出導致作業系統損毀的變更。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要解決此問題，請[備份 OS 磁碟](../windows/snapshot-copy-managed-disk.md)，並[將 OS 磁碟連結至救援 VM](./troubleshoot-recovery-disks-portal-windows.md)，然後據以執行解決方案選項，或逐一嘗試每個解決方案。
 
@@ -86,7 +86,7 @@ ms.locfileid: "86500917"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. 選取**BROKENSYSTEM**機碼，然後**File**  >  從功能表中選取 [檔案] [卸載**Hive** ]。
+13. 選取**BROKENSYSTEM**機碼，然後**File**  >  從功能表中選取 [檔案卸載**Hive** ]。
 
 14. 從疑難排解中的 VM 卸離 OS 磁碟。
 

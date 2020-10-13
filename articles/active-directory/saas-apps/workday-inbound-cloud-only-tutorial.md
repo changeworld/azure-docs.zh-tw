@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015478"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教學課程：將 Workday 設定為 Azure AD 使用者布建
@@ -206,7 +206,7 @@ ms.locfileid: "90015478"
    > [!div class="mx-imgBorder"]
    > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解輸入布建支援的 Workday 屬性](../app-provisioning/workday-attribute-reference.md)
 * [瞭解如何設定 Workday 回寫](workday-writeback-tutorial.md)

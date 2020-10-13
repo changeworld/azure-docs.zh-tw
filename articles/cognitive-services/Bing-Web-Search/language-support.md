@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262819"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web 搜尋 API 支援的語言和區域
@@ -76,8 +76,8 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|Canada|英文|en-CA|
-|Canada|法文|fr-CA|
+|加拿大|英文|en-CA|
+|加拿大|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
@@ -108,7 +108,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
 |英國|英文|en-GB|
-|美國|英文|en-US|
+|美國|英文|zh-TW|
 |美國|西班牙文|es-US|
 
 ## <a name="next-steps"></a>後續步驟

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054767"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 來建立和管理磁碟區群組
@@ -72,7 +72,7 @@ ms.locfileid: "90054767"
     [建立磁碟區群組]**** 對話方塊隨即出現。
    
     ![建立磁碟區群組對話方塊](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
-3. 輸入下列資訊：
+3. 輸入以下資訊：
    
    1. 在 [名稱]**** 方塊中，輸入新磁碟區群組的唯一名稱。
    2. 在 [應用程式] **** 方塊中，選取與您將新增至磁碟區群組之磁碟區相關聯的應用程式。
@@ -125,7 +125,7 @@ ms.locfileid: "90054767"
    
     刪除的磁碟區群組會從 [結果] **** 窗格中的清單消失，而且所有與該磁碟區群組相關聯的備份都會從備份目錄中刪除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何 [使用 StorSimple Snapshot Manager 建立和管理備份原則](storsimple-snapshot-manager-manage-backup-policies.md)。
 

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90023749"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用工作階段管理 REST API
@@ -79,7 +79,7 @@ $token = $response.AccessToken;
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId： GUID | Success |
+| 202 | -sessionId： GUID | 成功 |
 
 ### <a name="example-script-create-a-session"></a>範例腳本：建立會話
 
@@ -265,7 +265,7 @@ RawContentLength  : 60
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 204 | | Success |
+| 204 | | 成功 |
 
 ### <a name="example-script-stop-a-session"></a>範例腳本：停止會話
 

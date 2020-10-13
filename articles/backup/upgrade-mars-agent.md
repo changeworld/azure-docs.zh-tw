@@ -4,10 +4,10 @@ description: 瞭解如何 Microsoft Azure 復原服務 (MARS) 代理程式升級
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181471"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure 復原服務 (MARS) 代理程式升級

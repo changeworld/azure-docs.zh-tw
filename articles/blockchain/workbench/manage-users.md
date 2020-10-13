@@ -5,17 +5,17 @@ ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263006"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理使用者
 
 Azure Blockchain Workbench 納入了對屬於協會一分子的人員與組織進行使用者管理的功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 需要進行 Blockchain Workbench 部署。 請參閱 [Azure Blockchain Workbench 部署](deploy.md)，以取得部署的詳細資訊。
 
@@ -29,7 +29,7 @@ Blockchain Workbench 使用者必須存在於 Azure AD 租用戶中，才能將�
 1. 在右上角選取帳戶，並切換至與 Blockchain Workbench 相關聯的 Azure AD 租用戶。
 1. 選取 [Azure Active Directory] > [使用者]****。 您會在目錄中看到使用者清單。
 1. 若要將使用者新增至目錄，請選取 [新增使用者]****。 如果是外部使用者，請選取 [新增來賓使用者]****。
-1. 完成新使用者的必要欄位。 選取 [建立]。
+1. 完成新使用者的必要欄位。 選取 [建立]****。
 
 如需如何在 Azure AD 中管理使用者的詳細資訊，請瀏覽 [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) 文件。
 
@@ -53,7 +53,7 @@ Blockchain Workbench 使用者必須存在於 Azure AD 租用戶中，才能將�
     ![新增指派](./media/manage-users/add-user-assignment.png)
 
 1. 確認 [角色]**** 設定為 [系統管理員]****
-1. 選取 [指派]。 新增的使用者會顯示在清單中，並已指派系統管理員角色。
+1. 選取 [指派]****。 新增的使用者會顯示在清單中，並已指派系統管理員角色。
 
     ![Blockchain 用戶端應用程式使用者](./media/manage-users/blockchain-admin-list.png)
 

@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255328"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的計費模型
@@ -49,7 +49,7 @@ Azure Active Directory B2C (Azure AD B2C) 的使用費用會向 Azure 訂用帳�
 
 連結至 Azure AD B2C 租使用者的訂用帳戶可用來計費 Azure AD B2C 使用量或其他 Azure 資源，包括額外的 Azure AD B2C 資源。 它無法用來在 Azure AD B2C 租使用者中新增其他以 Azure 授權為基礎的服務或 Office 365 授權。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 * [Azure 訂用帳戶](https://azure.microsoft.com/free/)
 * 您要連結至訂用帳戶的[Azure AD B2C 租](tutorial-create-tenant.md)使用者
@@ -61,12 +61,12 @@ Azure Active Directory B2C (Azure AD B2C) 的使用費用會向 Azure 訂用帳�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選取包含您想要使用之 Azure 訂用帳戶的目錄， (*不* 是包含 Azure AD B2C 租使用者) 的目錄。
 3. 選取 [ **建立資源**]， `Active Directory B2C` 在 [ **搜尋 Marketplace** ] 欄位中輸入，然後選取 [ **Azure Active Directory B2C**]。
-4. 選取 [建立]  。
+4. 選取 [建立]****。
 5. 選取 [ **將現有的 Azure AD B2C 租使用者連結至我的 Azure 訂**用帳戶]。
 6. 從下拉式清單中選取 **Azure AD B2C 的租** 使用者。 只會顯示您是全域管理員且尚未連結至訂用帳戶的租使用者。 **Azure AD B2C 資源名稱**] 欄位會填入您所選取 Azure AD B2C 租使用者的功能變數名稱。
 7. 選取您是系統管理員的有效 Azure **訂** 用帳戶。
 8. 在 [ **資源群組**] 底下，選取 [ **建立新**的]，然後指定 **資源群組的位置**。 此處的資源群組設定不會影響您的 Azure AD B2C 租使用者位置、效能或計費狀態。
-9. 選取 [建立]  。
+9. 選取 [建立]****。
 
     ![Azure 入口網站中的 Azure AD B2C 資源建立頁面](./media/billing/portal-01-create-b2c-resource-page.png)
 

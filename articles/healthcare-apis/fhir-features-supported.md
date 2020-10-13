@@ -9,13 +9,13 @@ ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
 ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007565"
 ---
-# <a name="features"></a>功能
+# <a name="features"></a>特性
 
 Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的實作為。 本檔列出 FHIR 伺服器的主要功能。
 
@@ -55,7 +55,7 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 
 | 搜尋參數類型 | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
 |-----------------------|-----------|-----------|-----------|---------|
-| Number                | 是       | 是       | 是       |         |
+| 數字                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
 | String                | 是       | 是       | 是       |         |
 | Token                 | 是       | 是       | 是       |         |
@@ -127,11 +127,11 @@ Cosmos DB 是全域散發的多模型 (SQL API、MongoDB API 等 ) 資料庫。 
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 進行存取控制。 具體而言，如果設定參數設定為，則會強制執行以角色為基礎的存取控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 而且除了 `/metadata` FHIR 伺服器) 以外 (的所有要求都必須 `Authorization` 將要求標頭設定為 `Bearer <TOKEN>` 。 權杖必須包含一或多個定義于宣告中的角色 `roles` 。 如果權杖中包含允許指定之資源上指定動作的角色，則會允許要求。
+FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 進行存取控制。 具體而言，如果設定參數設定為，則會強制執行 Role-Based 訪問)  (控制， `FhirServer:Security:Enabled` `true` 而除了 `/metadata` FHIR 伺服器的) 以外的所有 (要求都必須 `Authorization` 將要求標頭設定為 `Bearer <TOKEN>` 。 權杖必須包含一或多個定義于宣告中的角色 `roles` 。 如果權杖中包含允許指定之資源上指定動作的角色，則會允許要求。
 
 目前，針對指定角色所允許的動作會在 API 上 *全域* 套用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Azure API for FHIR 中支援的 FHIR 功能。 接下來，部署 Azure API for FHIR。
  

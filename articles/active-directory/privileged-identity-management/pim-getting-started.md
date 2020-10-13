@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600716"
 ---
 # <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
@@ -27,7 +27,7 @@ ms.locfileid: "90600716"
 
 使用 Privileged Identity Management (PIM) 來管理、控制和監視 Azure Active Directory (Azure AD) 組織內的存取權。 使用 PIM，您可以提供 Azure 資源的隨需和即時存取，Azure AD 資源和其他 Microsoft 線上服務，例如 Microsoft 365 或 Microsoft Intune。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Privileged Identity Management，您必須擁有下列其中一個授權：
 

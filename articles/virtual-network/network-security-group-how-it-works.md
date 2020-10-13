@@ -14,10 +14,10 @@ ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458190"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>網路安全性群組篩選網路流量的方式
@@ -52,7 +52,7 @@ ms.locfileid: "89458190"
 - **VM4**：所有網路流量會允許從 VM4** 輸出，因為網路安全性群組未與連結至虛擬機器的網路介面或 Subnet3** 相關聯。
 
 
-## <a name="intra-subnet-traffic"></a>內部子網流量
+## <a name="intra-subnet-traffic"></a>Intra-Subnet 流量
 
 請務必注意，與子網相關聯之 NSG 中的安全性規則可能會影響其內部 VM 之間的連線能力。 例如，如果將規則新增至拒絕所有輸入和輸出流量的 *NSG1* ， *VM1* 和 *VM2* 將無法再彼此通訊。 您必須特別新增另一個規則，以允許這種情況。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "89458190"
 > [!TIP]
 > 除非您有特定原因，否則建議您將網路安全性群組與子網或網路介面建立關聯，但不能同時與兩者建立關聯。 因為如果與子網路相關聯的網路安全性群組中，以及與網路介面相關聯的網路安全性群組中都存在規則，則這兩個規則可能會發生衝突，您可能會遇到需要進行疑難排解的非預期通訊問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要了解虛擬網路中可部署哪些 Azure 資源，並使這些資源與網路安全性群組產生關聯，請參閱 [Azure 服務的虛擬網路整合](virtual-network-for-azure-services.md)。
 * 如果您從未建立過網路安全性群組，可以完成快速[教學課程](tutorial-filter-network-traffic.md)，以取得一些建立體驗。

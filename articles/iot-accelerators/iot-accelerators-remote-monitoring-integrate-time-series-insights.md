@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536601"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>整合 Azure 時間序列深入解析與遠端監視
@@ -24,7 +24,7 @@ Azure 時間序列深入解析是完全受管理的分析、儲存及視覺化�
 > [!NOTE]
 > Azure China 雲端目前不提供時間序列見解。 Azure China 雲端中新的遠端監視解決方案加速器部署，將 Cosmos DB 用於所有儲存體。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此操作說明，您必須已部署遠端監視解決方案：
 
@@ -51,7 +51,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選取 [**建立資源**]  >  **物聯網**  >  **時間序列深入解析**。
+1. 選取 [**建立資源**]  >  **物聯網**  >  **時間序列深入**解析。
 
     ![新增時間序列深入解析](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -209,13 +209,13 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 1. 在 Azure 入口網站中，按一下左方窗格的 [Azure Active Directory]**** 索引標籤。
 
-1. 按一下 [**應用程式註冊**]。
+1. 按一下 [ **應用程式註冊**]。
 
 1. 搜尋並按一下您的 **ContosoRM** 應用程式。
 
-1. 流覽至 [**設定**] [  >  **金鑰**]，然後為您的應用程式建立新的金鑰。 請確保將金鑰值複製到安全的位置。
+1. 流覽至 [**設定**] 索引鍵  >  **Keys** ，然後為您的應用程式建立新的金鑰。 請確保將金鑰值複製到安全的位置。
 
-1. 使用最新的標記從 GitHub 存放庫提取[最新的 docker 撰寫 yaml](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)檔案。 
+1. 使用最新的標記從 GitHub 存放庫中提取 [最新的 docker 撰寫 yaml](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) 檔案。 
 
 1. 遵循[如何建立及使用 SSH 金鑰](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)中所述的步驟來透過 SSH 連線至 VM。
 
@@ -238,7 +238,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 1. 從 VM 中使用 `sudo ./start.sh` 來重新啟動 Docker 容器。
 
 > [!NOTE]
-> 上述環境變數設定在1.0.2 之前會對遠端監視版本有效
+> 上述的環境變數設定對1.0.2 之前的遠端監視版本有效
 
 ### <a name="standard-deployments"></a>標準部署
 
@@ -296,7 +296,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
             key: telemetry.storage.type
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要深入了解如何在時間序列見解總管中瀏覽資料和診斷警示，請參閱[進行根本原因分析](iot-accelerators-remote-monitoring-root-cause-analysis.md)的教學課程。
 

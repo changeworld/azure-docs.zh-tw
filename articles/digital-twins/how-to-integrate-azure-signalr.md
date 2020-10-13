@@ -8,10 +8,10 @@ ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564401"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>整合 Azure 數位 Twins 與 Azure SignalR Service
@@ -20,7 +20,7 @@ ms.locfileid: "90564401"
 
 本文所述的解決方案可讓您將數位對應項遙測資料推送至連線的用戶端，例如單一網頁或行動應用程式。 如此一來，用戶端就會從 IoT 裝置以即時計量和狀態進行更新，而不需要輪詢伺服器或提交新的 HTTP 要求以進行更新。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下是您在繼續之前應完成的必要條件：
 
@@ -61,7 +61,7 @@ ms.locfileid: "90564401"
 
 1. 選取圖示以複製主要連接字串。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Azure 入口網站的螢幕擷取畫面，其中顯示 SignalR 實例的 [金鑰] 頁面。主要連接字串旁邊的 [複製到剪貼簿] 圖示已反白顯示。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
 接著，啟動 Visual Studio (或您所選擇) 的其他程式碼編輯器，然後在 *Azure_Digital_Twins_samples > ADTSampleApp* 資料夾中開啟程式碼方案。 然後，執行下列步驟以建立函式：
 
@@ -139,11 +139,11 @@ ms.locfileid: "90564401"
 接下來，使用「*連接端對端解決方案*」教學課程的「 [*發行應用程式*」一節](tutorial-end-to-end.md#publish-the-app)所述的步驟，將您的函式發佈至 Azure。 您可以將它發佈至您在端對端教學課程 >prereq 中使用的相同 app service/函式應用程式，或建立新的應用程式，但您可能會想要使用相同的應用程式來將重複項降至最低。 此外，請使用下列步驟來完成應用程式發佈：
 1. 收集 *negotiate* 函數的 **HTTP 端點 URL**。 若要這樣做，請移至 Azure 入口網站的函式 [應用](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) 程式頁面，然後從清單中選取您的函數應用程式。 在 [應用程式] 功能表中選取 [函式]，然後選擇 [ *negotiate* *] 功能。*
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="函數應用程式的 Azure 入口網站視圖，在功能表中反白顯示 [函式]。函式清單會顯示在頁面上，而且也會反白顯示 ' negotiate ' 函式。":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
     點擊 *取得* 函式 URL，然後 **透過 _/api_ 複製值 (不包含最後一個 _/negotiate？_) **。 您稍後將會用到。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="' Negotiate ' 函式 Azure 入口網站視圖。[取得函式 URL] 按鈕會反白顯示，並從開頭到 '/api ' 的 URL 部分":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 1. 最後，使用下列 Azure CLI 命令，將您先前的 Azure SignalR **連接字串** 新增至函式的應用程式設定。 如果您的[電腦上已安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Azure Cloud Shell](https://shell.azure.com)中執行，或在本機執行：
  
@@ -153,7 +153,7 @@ ms.locfileid: "90564401"
 
     此命令的輸出會列印為您的 Azure function 設定的所有應用程式設定。 `AzureSignalRConnectionString`在清單底部尋找，以確認它已加入。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="命令視窗中的輸出摘要，顯示名為 ' AzureSignalRConnectionString ' 的清單專案":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 #### <a name="connect-the-function-to-event-grid"></a>將函式連線至事件方格
 
@@ -163,7 +163,7 @@ ms.locfileid: "90564401"
 
 在 [Azure 入口網站](https://portal.azure.com/)中，導覽至您的事件方格主題，方法是在頂端的搜尋列中搜尋其名稱。 選取 [+ 事件訂用帳戶]。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure 入口網站：事件方格事件訂用帳戶":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 在 [建立事件訂用帳戶] 頁面中，填寫下列欄位 (不會提及依預設填入的欄位)：
 * 「事件訂用帳戶詳細資料」 > [名稱]：命名事件訂用帳戶。
@@ -172,7 +172,7 @@ ms.locfileid: "90564401"
     - 填入您的**訂**用帳戶、**資源群組**、**函數應用程式****和函**式 (*廣播*) 。 在您選取訂用帳戶後，其中有些可能會自動填入。
     - 按 [確認選取項目]。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="建立事件訂閱的 Azure 入口網站視圖。上方的欄位會填入，而 [確認選取專案] 和 [建立] 按鈕會反白顯示。":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 回到「建立事件訂用帳戶」 頁面，按 [建立]。
 
@@ -186,7 +186,7 @@ ms.locfileid: "90564401"
 
 現在，您只需要啟動模擬器專案，它位於 *Azure_Digital_Twins_samples > devicesimulator.exe > devicesimulator.exe .sln*。 如果您是使用 Visual Studio，可以開啟專案，然後在工具列中使用這個按鈕來執行它：
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio 的啟動按鈕 (DeviceSimulator 專案)":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 主控台視窗會開啟並顯示模擬的溫度遙測訊息。 這些是透過您的 Azure 數位 Twins 實例來傳送，然後由 Azure 函式和 SignalR 來挑選。
 
@@ -214,7 +214,7 @@ ms.locfileid: "90564401"
 1. 在 Azure 入口網站的 [ [函數應用程式](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) ] 頁面中，選取您的函式應用程式實例。
 1. 在 [實例] 功能表中向下移動，然後選取 [ *CORS*]。 在 [CORS] 頁面上，將 `http://localhost:3000` 其輸入空白方塊中，以新增為允許的來源。 核取 [ *啟用存取控制-允許認證* ] 和 [點擊 *儲存*] 的核取方塊。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure Function 中的 CORS 設定":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 ### <a name="see-the-results"></a>查看結果
 
@@ -226,7 +226,7 @@ npm start
 
 這會開啟執行範例應用程式的瀏覽器視窗，此視窗會顯示視覺溫度量測計。 應用程式執行之後，您應該會開始看到來自裝置模擬器的溫度遙測值，該模擬器會透過 Azure 數位 Twins 即時反映到 web 應用程式。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="從範例用戶端 web 應用程式摘錄，顯示視覺溫度量測計。溫度反映為67.52":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

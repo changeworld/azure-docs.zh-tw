@@ -17,14 +17,14 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229358"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虛擬機器安全性概觀
-本文提供可與虛擬機器搭配使用的核心 Azure 安全性功能的總覽。
+本文概要說明可搭配虛擬機器使用的核心 Azure 安全性功能。
 
 您可以使用 Azure 虛擬機器靈活地部署各種運算方案。 此服務支援 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服務。 因此，您幾乎可以在所有作業系統上部署任何工作負載和任何語言。
 
@@ -46,12 +46,12 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 適用於 Azure 的 Microsoft Antimalware 是針對應用程式和租用戶環境所提供的單一代理程式解決方案。 其設計可於無人為介入的情況下在背景中執行。 您可依據應用程式工作負載需求，選擇預設的基本安全性或進階的自訂組態 (包括反惡意程式碼監視) 來部署保護。
 
-深入瞭解適用[于 Azure 的 Microsoft Antimalware](antimalware.md)和可用的核心功能。
+深入瞭解適用 [于 Azure 的 Microsoft Antimalware](antimalware.md) 以及可用的核心功能。
 
 深入了解反惡意程式碼軟體以協助保護虛擬機器︰
 
 * [在 Azure 虛擬機器上部署反惡意程式碼解決方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [如何在 Windows VM 上安裝和設定 Trend 微深度安全性即服務](/azure/virtual-machines/windows/classic/install-trend)
+* [如何在 Windows VM 上安裝及設定 Trend 微型深度安全性即服務](/azure/virtual-machines/windows/classic/install-trend)
 * [如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
 * [Azure Marketplace 中的安全性解決方案](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -79,12 +79,12 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 深入了解：
 
-* [什麼是 Azure Key Vault？](/azure/key-vault/key-vault-overview)
+* [什麼是 Azure 金鑰保存庫？](/azure/key-vault/key-vault-overview)
 * [Azure 金鑰保存庫部落格](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>虛擬機器磁碟加密
 
-Azure 磁碟加密是用於加密 Windows 和 Linux 虛擬機器磁碟的新功能。 Azure 磁碟加密使用 Windows 的業界標準[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[dm crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能，為 OS 和資料磁片提供磁片區加密。
+Azure 磁碟加密是用於加密 Windows 和 Linux 虛擬機器磁碟的新功能。 Azure 磁碟加密使用 Windows 的業界標準 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [dm crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，為 OS 和資料磁片提供磁片區加密。
 
 此解決方案與 Azure Key Vault 整合，協助您控制及管理金鑰保存庫訂用帳戶中的磁碟加密金鑰與祕密。 它可確保虛擬機器磁碟上的所有資料都會在 Azure 儲存體中進行待用加密。
 
@@ -99,7 +99,7 @@ Azure 備份是可調式解決方案，可以不需成本地協助保護您的�
 
 深入了解：
 
-* [什麼是 Azure 備份？](/azure/backup/backup-introduction-to-azure-backup)
+* [何謂 Azure 備份？](/azure/backup/backup-introduction-to-azure-backup)
 * [Azure 備份服務常見問題](/azure/backup/backup-azure-backup-faq)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -130,7 +130,7 @@ Azure 虛擬網路是以實體 Azure 網路網狀架構為基礎所建置的邏�
 
 * [Azure 網路安全性概觀](network-overview.md)
 * [虛擬網路概觀](/azure/virtual-network/virtual-networks-overview)
-* [企業案例的網路功能與合作關係](https://azure.microsoft.com/blog/networking-enterprise/)
+* [企業案例的網路功能和合作關係](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>安全性原則管理和報告
 
@@ -158,9 +158,9 @@ Azure 虛擬機器經過 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 及其他重�
 
 ## <a name="confidential-computing"></a>機密運算
 
-雖然機密運算在技術上並不是虛擬機器安全性的一部分，但虛擬機器安全性的主題屬於較高層級的「計算」安全性主旨。 機密運算屬於「計算」安全性類別。
+雖然機密運算在技術上並不是虛擬機器安全性的一部分，但是虛擬機器安全性的主題屬於「計算」安全性的較高層級主體。 機密運算屬於「計算」安全性的類別。
 
-機密計算可確保當資料處於「清楚」狀態時，這是有效率處理所需的資料，而在受信任的執行環境內會受到保護， https://en.wikipedia.org/wiki/Trusted_execution_environment (為記憶體保護區) ，例如下圖所示的範例。  
+機密運算可確保當資料「明確」時（這是有效率的處理所需的資料），資料會在受信任的執行環境內受到保護  https://en.wikipedia.org/wiki/Trusted_execution_environment (也稱為記憶體保護區) ，例如下圖所示的範例。  
 
 TEE 能確保沒有任何方法可以從外部檢視資料或內部作業，就算是使用偵錯工具也一樣。 它們甚至能確保只有獲授權的程式碼可以存取該資料。 如果程式碼被修改或竄改，系統就會拒絕作業並停用環境。 TEE 能在位於其中的程式碼執行期間，強制執行這些保護。
 
@@ -169,6 +169,6 @@ TEE 能確保沒有任何方法可以從外部檢視資料或內部作業，就�
 * [Azure 機密運算簡介](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/) \(英文\)  
 * [Azure 機密運算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-瞭解 Vm 和作業系統的[安全性最佳作法](iaas.md)。
+瞭解 Vm 和作業系統的 [安全性最佳作法](iaas.md) 。

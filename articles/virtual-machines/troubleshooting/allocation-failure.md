@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509353"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
@@ -25,11 +25,11 @@ ms.locfileid: "86509353"
 
 **錯誤碼**：AllocationFailed 或 ZonalAllocationFailed
 
-**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何改善配置成功的可能性，網址為 HTTPs： \/ /aka.ms/allocation-guidance "
+**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何藉由 HTTPs： \/ /aka.ms/allocation-guidance "來提高配置成功的可能性
 
 本文說明一些常見的配置失敗原因，並建議可能的補救方法。
 
-若本文中未提及您的 Azure 問題，請造訪[MSDN 上的 azure 論壇和 Stack Overflow](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇上張貼您的問題，或將問題貼到 Twitter 上的 @AzureSupport。 此外，您也可以在 [Azure 支援](https://azure.microsoft.com/support/options/)網站上選取 [取得支援]，來提出 Azure 支援要求。
+如果本文未解決您的 Azure 問題，請造訪 [MSDN 上的 azure 論壇，並 Stack Overflow](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇上張貼您的問題，或將問題貼到 Twitter 上的 @AzureSupport。 此外，您也可以在 [Azure 支援](https://azure.microsoft.com/support/options/)網站上選取 [取得支援]，來提出 Azure 支援要求。
 
 在您的慣用區域提供您的慣用 VM 類型之前，我們會建議遇到部署問題的客戶考慮採用下表中的指引作為暫時的因應措施。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "86509353"
 
 如果您的配置要求相當大 (超過 500 個核心)，請參閱下列小節中的指引，將要求分解成較小的部署。
 
-請嘗試重新[部署 VM](./redeploy-to-new-node-windows.md)。 重新部署 VM 會將 VM 配置到區域內的新叢集。
+請嘗試重新 [部署 VM](./redeploy-to-new-node-windows.md)。 重新部署 VM 會將 VM 配置到區域內的新叢集。
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>較舊版 VM 大小 (Av1、Dv1、DSv1、D15v2、DS15v2 等) 的配置失敗
 

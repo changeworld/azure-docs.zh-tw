@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
 ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744753"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 SAP Hana 相應放大系統的高可用性 
@@ -84,10 +84,10 @@ ms.locfileid: "91744753"
   * [高可用性附加元件管理](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [高可用性附加元件參考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux 網路功能指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [如何? 在 NFS 共用上使用 HANA 檔案系統在 Pacemaker 叢集中設定 SAP Hana 相應放大系統複寫](https://access.redhat.com/solutions/5423971)
+  * [如何? 在 NFS 共用上使用 HANA 檔案系統在 Pacemaker 叢集中設定 SAP Hana Scale-Out 系統複寫](https://access.redhat.com/solutions/5423971)
 * Azure 專用 RHEL 文件：
   * [在 Red Hat Enterprise Linux 上安裝 SAP HANA 以用於 Microsoft Azure](https://access.redhat.com/public-cloud/microsoft-azure)
-  * [適用于 SAP Hana 相應放大和系統複寫的 Red Hat Enterprise Linux 解決方案](https://access.redhat.com/solutions/4386601)
+  * [適用于 SAP Hana Scale-Out 和系統複寫的 Red Hat Enterprise Linux 解決方案](https://access.redhat.com/solutions/4386601)
 * [使用 Azure NetApp Files 在 Microsoft Azure 上的 NetApp SAP 應用程式][anf-sap-applications-azure]
 * [Azure NetApp Files 文件][anf-azure-doc] 
 
@@ -152,7 +152,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
     d. 選取 [ **網路**]，然後連接網路介面。 在 [ **附加網路介面** ] 下拉式清單中，選取已建立 `inter` 和子網的網路介面 `hsr` 。  
     
-    e. 選取 [儲存]。 
+    e. 選取 [儲存]****。 
  
     f. 針對其餘的虛擬機器重複步驟 b 至 e (在我們的範例中為  **hana-s1-db2**、 **hana-s1-db3**、 **hana-s2-db1**、 **hana-s2-db2** 和 **hana-s2-db3**) 。
  
@@ -836,7 +836,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
    > [!TIP]
-   > 如果您的設定包含其他檔案系統（除了/ `hana/shared` ，也就是裝載 NFS），則包含 `sequential=false` 選項，因此檔案系統之間沒有順序相依性。 所有 NFS 掛接的檔案系統在對應的屬性資源之前都必須先啟動，但不需要以相對於彼此的任何順序啟動。 如需詳細資訊，請參閱 [當 HANA 檔案系統為 NFS 共用時，如何? 在 pacemaker 叢集中設定 SAP Hana 相應放大 HSR](https://access.redhat.com/solutions/5423971)。  
+   > 如果您的設定包含其他檔案系統（除了/ `hana/shared` ，也就是裝載 NFS），則包含 `sequential=false` 選項，因此檔案系統之間沒有順序相依性。 所有 NFS 掛接的檔案系統在對應的屬性資源之前都必須先啟動，但不需要以相對於彼此的任何順序啟動。 如需詳細資訊，請參閱 [當 HANA 檔案系統為 NFS 共用時，如何? 在 pacemaker 叢集中設定 SAP Hana Scale-Out HSR](https://access.redhat.com/solutions/5423971)。  
 
 8. **[1]** 將 pacemaker 置於維護模式，以準備建立 HANA 叢集資源。  
     ```
