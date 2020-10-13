@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744027"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自動化 Runbook 管理 StorSimple 裝置
@@ -194,7 +194,7 @@ ms.locfileid: "91744027"
 
 4. 在新建立的帳戶中，移至 [共用資源] > [模組]**** 並按一下 [+ 新增模組]****。
 
-5. 在 [新增模組]**** 刀鋒視窗中，瀏覽至 ZIP 壓縮模組的位置，然後選取並開啟模組。 按一下 [確定]  。
+5. 在 [新增模組]**** 刀鋒視窗中，瀏覽至 ZIP 壓縮模組的位置，然後選取並開啟模組。 按一下 [確定]。
 
     ![螢幕擷取畫面顯示 [新增模組] 窗格，其中包含上傳檔案值和 [確定]](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 

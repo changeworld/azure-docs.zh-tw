@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871236"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和檔案儲存體傳輸資料 (機器翻譯) 
@@ -342,7 +342,7 @@ AzCopy 會使用 [伺服器對伺服器](https://docs.microsoft.com/rest/api/sto
 
 若要深入瞭解共用快照集，請參閱 [Azure 檔案儲存體的共用快照集總覽](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在這些文章中尋找更多範例：
 

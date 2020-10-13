@@ -5,10 +5,10 @@ ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: c8044ca5a52bb3acf1e154a7b835471d09072083
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372320"
 ---
 1. 若要建立新的應用程式組態存放區，請登入 [Azure 入口網站](https://portal.azure.com)。 在首頁的左上角，選取 [建立資源]  。 在 [搜尋 Marketplace] 方塊中輸入*應用程式組態*，然後選取 <kbd>Enter</kbd> 鍵。

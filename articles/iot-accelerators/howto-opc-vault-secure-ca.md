@@ -9,16 +9,16 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399630"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>安全地執行 OPC 保存庫憑證管理服務
 
 > [!IMPORTANT]
-> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 本文說明如何在 Azure 中安全地執行 OPC 保存庫憑證管理服務，並審查其他應考慮的安全性指導方針。
 

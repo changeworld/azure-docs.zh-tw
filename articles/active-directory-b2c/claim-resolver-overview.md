@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259630"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
@@ -46,16 +46,16 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="culture"></a>文化特性
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 語言的雙字母 ISO 代碼。 | en |
 | {Culture:LCID}   | 語言代碼的 LCID。 | 1033 |
 | {Culture:RegionName} | 區域的雙字母 ISO 代碼。 | 美國 |
-| {Culture:RFC5646} | RFC5646 語言代碼。 | en-US |
+| {Culture:RFC5646} | RFC5646 語言代碼。 | zh-TW |
 
 ### <a name="policy"></a>原則
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信賴憑證者原則名稱。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信賴憑證者原則的租用戶識別碼。 | your-tenant.onmicrosoft.com |
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查詢字串參數。 | N/A |
 | {OIDC:ClientId} |`client_id` 查詢字串參數。 | 00000000-0000-0000-0000-000000000000 |
@@ -81,7 +81,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="context"></a>Context
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
@@ -92,7 +92,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 ### <a name="claims"></a>宣告 
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {索取：宣告類型} | 已在原則檔或父原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。  例如： `{Claim:displayName}` 、或 `{Claim:objectId}` 。 | 宣告類型值。|
 
@@ -101,7 +101,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 
 OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者旅程圖中的宣告。 例如，來自應用程式的要求可能包含名稱為 `app_session`、`loyalty_number` 或任何自訂查詢字串的查詢字串參數。
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查詢字串參數。 | Hawaii |
 | {OAUTH-KV:app_session} | 查詢字串參數。 | A3C5R |
@@ -110,7 +110,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="oauth2"></a>OAuth2
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 存取權杖。 | N/A |
 | {oauth2： refresh_token} | 重新整理權杖。 | N/A |
@@ -118,7 +118,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="saml"></a>SAML
 
-| 宣告 | 說明 | 範例 |
+| 宣告 | 描述 | 範例 |
 | ----- | ----------- | --------|
 | {SAML： AuthnCoNtextClassReferences} | `AuthnContextClassRef`SAML 要求中的元素值。 | urn： oasis： names： tc： SAML：2.0： ac：類別： PasswordProtectedTransport |
 | {SAML： NameIdPolicyFormat} | `Format`從 SAML 要求的元素中的屬性 `NameIDPolicy` 。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
@@ -132,7 +132,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 您可以使用宣告解析程式搭配下列元素：
 
-| 項目 | 項目 | 設定 |
+| 項目 | 元素 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights 技術設定檔 |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|

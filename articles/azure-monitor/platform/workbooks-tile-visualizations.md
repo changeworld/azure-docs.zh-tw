@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 07de9fcd01559e59a1bcd5d8928075aebcf79cc7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663993"
 ---
 # <a name="tile-visualizations"></a>磚視覺效果
@@ -122,7 +122,7 @@ ms.locfileid: "89663993"
 
      ![顯示全尺寸寬度圖格的螢幕擷取畫面](./media/workbooks-tile-visualizations/tiles-full.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 磚也支援複合條形轉譯器。 若要深入瞭解，請造訪 [複合 Bar 檔](workbooks-composite-bar.md)。
 * 若要深入瞭解時間參數，例如 `TimeRange` 造訪活頁 [簿時間參數檔](workbooks-time.md)。

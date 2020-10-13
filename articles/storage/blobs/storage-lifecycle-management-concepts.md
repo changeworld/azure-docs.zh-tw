@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822392"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
@@ -120,7 +120,7 @@ ms.locfileid: "91822392"
    }
    ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. 如需此 JSON 範例的詳細資訊，請參閱 [原則](#policy) 和 [規則](#rules) 區段。
 
@@ -230,8 +230,8 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 | 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | True |
-| `enabled`      | Boolean | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
+| `name`         | 字串 |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | True |
+| `enabled`      | 布林值 | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
 | `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | True |
 | `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
@@ -550,7 +550,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 當 blob 從某個存取層移至另一個存取層時，其上次修改時間並不會變更。 如果您手動將封存的 blob 解除凍結至經常性存取層，則生命週期管理引擎會將它移回封存層。 請暫時停用影響此 blob 的規則，以防止它再次被封存。 當 blob 可以安全地移回封存層時，請重新啟用規則。 如果 blob 需要永久保留在經常性存取層或非經常性存取層，您也可以將它複製到另一個位置。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 了解如何復原意外刪除的資料：
 

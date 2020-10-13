@@ -12,10 +12,10 @@ ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
 ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443810"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>匯出至 BACPAC 檔案-Azure SQL Database 和 Azure SQL 受控執行個體
@@ -44,7 +44,7 @@ ms.locfileid: "91443810"
 目前不支援使用 Azure 入口網站從 [AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 匯出資料庫的 BACPAC。 請改用 SQL Server Management Studio 或 SQLPackage。
 
 > [!NOTE]
-> 處理透過 Azure 入口網站或 PowerShell 提交之匯入/匯出要求的電腦，必須儲存 BACPAC 檔案，以及資料層應用程式架構 (DacFX) 所產生的暫存檔案。 需要的磁碟空間在大小相同的資料庫之間有很大的差異，而且可能需要資料庫大小最多3倍的磁碟空間。 執行匯入/匯出要求的電腦只有450GB 的本機磁碟空間。 因此，某些要求可能會因為錯誤而失敗 `There is not enough space on the disk` 。 在此情況下，因應措施是在具有足夠本機磁碟空間的電腦上執行 sqlpackage.exe。 我們鼓勵使用 [SqlPackage](#sqlpackage-utility) 來匯入/匯出大於150GB 的資料庫，以避免此問題。
+> 處理透過 Azure 入口網站或 PowerShell 提交的匯入/匯出要求的機器，必須儲存 BACPAC 檔案以及資料層應用程式架構 (DacFX) 所產生的暫存檔案。 大小相同的資料庫所需的磁碟空間有很大的差異，且最多可能需要資料庫大小 3 倍的磁碟空間。 執行匯入/匯出要求的電腦只有450GB 的本機磁碟空間。 因此，某些要求可能會失敗，並出現錯誤 `There is not enough space on the disk`。 在此情況下，因應措施是在具有足夠本機磁碟空間的機器上執行 sqlpackage.exe。 我們鼓勵使用 [SqlPackage](#sqlpackage-utility) 來匯入/匯出大於150GB 的資料庫，以避免此問題。
 
 1. 若要使用 [Azure 入口網站](https://portal.azure.com)匯出資料庫，請開啟資料庫頁面，然後按一下工具列上的 [匯出]****。
 

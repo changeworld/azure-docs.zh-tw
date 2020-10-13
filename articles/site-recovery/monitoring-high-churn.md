@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663889"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>監視虛擬機器上的流失模式
@@ -80,6 +80,6 @@ IoStat 是簡單的工具，會收集並顯示系統輸入和輸出儲存裝置�
 
 開啟命令提示字元，然後執行命令 `iostat` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用 [Azure 監視器](monitor-log-analytics.md)進行監視。

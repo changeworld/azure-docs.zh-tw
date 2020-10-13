@@ -4,10 +4,10 @@ description: 瞭解如何設定實驗室的學生人數、讓他們向實驗室�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399664"
 ---
 # <a name="add-and-manage-lab-users"></a>新增和管理實驗室使用者
@@ -30,7 +30,7 @@ ms.locfileid: "91399664"
 
     ![新增使用者的電子郵件地址](./media/how-to-configure-student-usage/add-users-email-addresses.png)
 
-1. 選取 [儲存]。 
+1. 選取 [儲存]****。 
 
     此清單會顯示目前使用者的電子郵件地址和狀態，無論他們是否已向實驗室註冊。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "91399664"
 
     ![來自 CSV 檔案之電子郵件地址的 [新增使用者] 視窗](./media/how-to-configure-student-usage/add-users-window.png)
 
-1. 選取 [儲存]。 
+1. 選取 [儲存]****。 
 
 1. 在 [ **使用者** ] 窗格中，查看已新增的學生清單。 
 

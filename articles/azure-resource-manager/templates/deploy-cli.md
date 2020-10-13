@@ -4,10 +4,10 @@ description: 使用 Azure Resource Manager 和 Azure CLI 將資源部署到 Azur
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372165"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本與 Azure CLI 來部署資源

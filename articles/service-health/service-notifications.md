@@ -4,10 +4,10 @@ description: 在 Azure 入口網站中查看您的服務健康情況通知。 Az
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967767"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 入口網站檢視服務健康情況通知
@@ -32,6 +32,6 @@ Azure 基礎結構會將服務健康狀態通知發佈至 [azure 活動記錄](.
 
 1. 選取 [+新增活動記錄警示]**** 並設定警示，以確保您會在未來收到服務通知。 如需詳細資訊，請參閱[建立服務通知的活動記錄警示](./alerts-activity-log-service-notifications-portal.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解[活動記錄警示](../azure-monitor/platform/activity-log-alerts.md)。

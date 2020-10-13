@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 在 Windows VM 上啟用診斷功能
+title: 使用 Azure PowerShell 在 Windows VM 上啟用診斷
 services: virtual-machines-windows
 documentationcenter: ''
 description: 了解如何使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
 ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837018"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
@@ -44,9 +44,9 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_na
 
 如果診斷組態檔以儲存體帳戶名稱指定 **StorageAccount** 元素，則 *Set-AzVMDiagnosticsExtension* 指令碼會自動設定診斷擴充功能，以將診斷資料傳送至該儲存體帳戶。 若要讓此做法能夠運作，儲存體帳戶必須與 VM 位於相同的訂用帳戶中。
 
-如果您未在診斷組態中指定 **StorageAccount** ，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果指定了*StorageAccountName*參數，則 Cmdlet 一律會使用參數中指定的儲存體帳戶，而不是在診斷設定檔中指定的帳號。
+如果您未在診斷組態中指定 **StorageAccount** ，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果指定了 *StorageAccountName* 參數，則此 Cmdlet 一律會使用參數中指定的儲存體帳戶，而不是在診斷設定檔中指定的儲存體帳戶。
 
-如果診斷儲存體帳戶位於與 VM 不同的訂用帳戶，您就必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳送給 Cmdlet。 當診斷儲存體帳戶位於相同的訂用帳戶中時，不需要*StorageAccountKey*參數，因為 Cmdlet 會在啟用診斷擴充功能時自動查詢並設定金鑰值。 不過，如果診斷儲存體帳戶位於不同的訂用帳戶中，則 Cmdlet 可能無法自動取得金鑰，而您必須透過*StorageAccountKey*參數明確指定金鑰。  
+如果診斷儲存體帳戶位於與 VM 不同的訂用帳戶，您就必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳送給 Cmdlet。 當診斷儲存體帳戶位於相同的訂用帳戶中時，不需要 *StorageAccountKey* 參數，因為 Cmdlet 會在啟用診斷擴充功能時自動查詢並設定金鑰值。 不過，如果診斷儲存體帳戶位於不同的訂用帳戶中，則 Cmdlet 可能無法自動取得金鑰，而您必須透過 *StorageAccountKey* 參數明確指定金鑰。  
 
 ```azurepowershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key

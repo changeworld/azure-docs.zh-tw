@@ -4,10 +4,10 @@ description: 瞭解 Azure 資源健康狀態如何協助您診斷並取得影響
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967870"
 ---
 # <a name="resource-health-overview"></a>資源健康狀態總覽
@@ -94,7 +94,7 @@ Azure 資源健康狀態可協助您診斷並取得影響 Azure 資源的服務�
 
 ![從 [所有服務] 開啟 [資源健康狀態]](./media/resource-health-overview/FromOtherServices.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解資源健康狀態，請參閱下列參考：
 -  [Azure 資源健康狀態中的資源類型和健康情況檢查](resource-health-checks-resource-types.md)

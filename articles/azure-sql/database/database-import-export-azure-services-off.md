@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443748"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>匯入或匯出 Azure SQL Database，但不允許 Azure 服務存取伺服器
@@ -89,7 +89,7 @@ ms.locfileid: "91443748"
 
 4. 選擇工具列上的 [ **新增用戶端 ip** ]，將虛擬機器的公用 ip 位址新增至新的伺服器層級 ip 防火牆規則。 伺服器層級 IP 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
 
-5. 選取 [儲存]。 系統會為您虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在伺服器上開啟埠1433。
+5. 選取 [儲存]****。 系統會為您虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在伺服器上開啟埠1433。
 
 6. 關閉 [防火牆設定] 頁面。
 

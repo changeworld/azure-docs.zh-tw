@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360934"
 ---
 # <a name="what-is-a-voice-assistant"></a>什麼是語音助理？
@@ -51,7 +51,7 @@ ms.locfileid: "91360934"
 |----------|----------|
 |[自訂關鍵字](speech-devices-sdk-create-kws.md) | 使用者可以使用自訂關鍵字（例如 "嗨 Contoso"）開始與助理進行交談。 應用程式會在語音 SDK 中使用自訂關鍵字引擎來進行這項設定， [您](speech-devices-sdk-create-kws.md)可以在此使用自訂關鍵字來設定。 語音助理可以使用服務端關鍵字驗證來改善關鍵字啟用 (與裝置) 的精確度。
 |[語音轉換文字](speech-to-text.md) | 語音助理使用語音服務的 [語音轉換文字](speech-to-text.md) ，將即時音訊轉換成可辨識的文字。 在您的助理執行和用戶端應用程式中，都可以使用此文字轉譯。
-|[文字轉換語音](text-to-speech.md) | 來自您助理的文字回應會使用語音服務的 [文字轉換語音](text-to-speech.md) 合成。 然後，您的用戶端應用程式可以使用此合成作為音訊串流。 Microsoft 提供的功能可讓您建立自己的自訂高品質類神經 TTS 語音，以對您的品牌提供語音。 若要深入瞭解，請 [洽詢我們](mailto:mstts@microsoft.com)。
+|[將文字轉換成語音](text-to-speech.md) | 來自您助理的文字回應會使用語音服務的 [文字轉換語音](text-to-speech.md) 合成。 然後，您的用戶端應用程式可以使用此合成作為音訊串流。 Microsoft 提供的功能可讓您建立自己的自訂高品質類神經 TTS 語音，以對您的品牌提供語音。 若要深入瞭解，請 [洽詢我們](mailto:mstts@microsoft.com)。
 
 ## <a name="getting-started-with-voice-assistants"></a>開始使用語音助理
 

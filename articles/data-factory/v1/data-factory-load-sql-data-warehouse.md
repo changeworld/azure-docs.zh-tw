@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a5bf53597c0706a5ef435d6ab8cc06e14726db8a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89442474"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>使用 Data Factory 在15分鐘內將 1 TB 載入 Azure Synapse Analytics
@@ -141,7 +141,7 @@ ms.locfileid: "89442474"
 
 1. 輸入 **CopyFromBlobToAzureSqlDataWarehouse** 作為 [工作名稱]****
 2. 選取 [立即執行一次]**** 選項。   
-3. 按 [下一步] 。  
+3. 按一下 [下一步]。  
 
     ![複製精靈 - 屬性頁面](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "89442474"
 
 ## <a name="step-4-performance-settings"></a>步驟 4：效能設定
 
-預設會核取 [允許 Polybase]****。  按 [下一步] 。
+預設會核取 [允許 Polybase]****。  按一下 [下一步]。
 
 ![複製精靈 - 結構描述對應頁面](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
@@ -212,6 +212,6 @@ ms.locfileid: "89442474"
 
 如需詳細資訊，請參閱 [Azure Synapse Analytics 的最佳做法](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [Data Factory 複製精靈](data-factory-copy-wizard.md) - 本文提供複製精靈的詳細資料。
 * [複製活動效能和微調指南](data-factory-copy-activity-performance.md) - 本文包含參考效能測量和微調指南。

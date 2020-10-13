@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259368"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Experian 的教學課程
@@ -36,7 +36,7 @@ ms.locfileid: "91259368"
 - 國家/地區
 - 電話號碼
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -58,7 +58,7 @@ Experian 整合包含下列元件：
 
 ![experian 的螢幕擷取畫面-架構-圖表](media/partner-experian/experian-architecture-diagram.png)
 
-|步驟 | 說明 |
+|步驟 | 描述 |
 |:-----| :-----------|
 | 1. | 使用者抵達登入頁面。 使用者選取註冊以建立新的帳戶，並在頁面中輸入資訊。 Azure AD B2C 會收集使用者屬性。
 | 2. | Azure AD B2C 會呼叫中介層 API，並傳遞使用者屬性。

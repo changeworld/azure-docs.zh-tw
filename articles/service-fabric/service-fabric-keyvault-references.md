@@ -4,10 +4,10 @@ description: 本文說明如何使用適用于應用程式秘密的 service fabr
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261136"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference Service Fabric 應用程式的支援 (預覽) 
@@ -20,7 +20,7 @@ ms.locfileid: "91261136"
 > [!NOTE]
 > KeyVault 參考預覽功能僅支援已建立 [版本](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) 的密碼。 不支援無版本秘密。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 應用程式 (MIT) 的受控識別
     

@@ -8,10 +8,10 @@ ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 10674d15a7515b01b0df6cf37bce89f153cb9b0b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870680"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>將 Azure 受控磁片儲存體從標準轉換至 Premium 或 Premium 轉換成標準
@@ -142,6 +142,6 @@ az vm start --ids $vmId
 
 磁片類型的更新會立即生效。 您可以在轉換後重新開機 VM。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 使用 [快照](snapshot-copy-managed-disk.md)集建立 VM 的唯讀複本。

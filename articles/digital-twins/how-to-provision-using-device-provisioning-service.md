@@ -8,10 +8,10 @@ ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90561426"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用裝置布建服務 (DPS) 自動管理 Azure 數位 Twins 中的裝置
@@ -22,7 +22,7 @@ ms.locfileid: "90561426"
 
 如需有關布建和_淘汰__階段的詳細_資訊，並進一步瞭解所有企業 IoT 專案通用的一般裝置管理階段，請參閱 IoT 中樞裝置管理檔的[*裝置生命週期*一節](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您可以設定布建之前，您必須擁有包含模型和 Twins 的 **Azure 數位 Twins 實例** 。 此實例也應該設定為根據資料更新數位對應項資訊。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "90561426"
 
 在本節中，您會將裝置布建服務附加至 Azure 數位 Twins，以透過下列路徑自動布建裝置。 這是稍 [早](#solution-architecture)所示的完整架構摘錄。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="布建流程--解決方案架構圖的摘要，其中包含流程的數位標籤區段。控溫器裝置與 DPS 之間的資料會在裝置和 DPS (> 1 之間來回流動 > 裝置) 的 dps 和5。資料也會從 DPS 流出至 IoT 中樞 (4) ，以及透過標示為「配置」 (2) 之 Azure 函式的 Azure 數位 Twins (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
 
 以下是程式流程的說明：
 1. 裝置會聯繫 DPS 端點，傳遞識別資訊以證明其身分識別。
@@ -287,7 +287,7 @@ node .\adt_custom_register.js
 ```
 
 您應該會看到裝置已註冊並聯機到 IoT 中樞，然後開始傳送訊息。
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="顯示裝置註冊和傳送訊息命令視窗":::
+:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
 
 ### <a name="validate"></a>Validate
 
@@ -298,13 +298,13 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 您應該會看到在 Azure 數位 Twins 實例中找到的裝置對應項。
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="顯示新建立對應項的命令視窗":::
+:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>使用 IoT 中樞生命週期事件自動淘汰裝置
 
 在本節中，您會將 IoT 中樞生命週期事件附加至 Azure 數位 Twins，以透過下列路徑自動淘汰裝置。 這是稍 [早](#solution-architecture)所示的完整架構摘錄。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="淘汰裝置流程--解決方案架構圖表的摘要，其中包含流程的數位標籤區段。控溫器裝置會顯示，且不會連接到圖表中的 Azure 服務。手動「刪除裝置」動作的資料會流經 IoT 中樞 (1) > 事件中樞 (2) > Azure Functions > Azure 數位 Twins (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
 
 以下是程式流程的說明：
 1. 外部或手動進程會觸發在 IoT 中樞內刪除裝置。
@@ -470,7 +470,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 您必須進行此設定的步驟如下：
 1. 建立自訂 IoT 中樞事件中樞端點。 此端點應該以您在 [ [*建立事件中樞*](#create-an-event-hub) ] 區段中建立的事件中樞為目標。
 2. 新增 *裝置生命週期事件* 路由。 使用在上一個步驟中建立的端點。 您可以藉由新增路由查詢來限制裝置生命週期事件，只傳送刪除事件 `opType='deleteDeviceIdentity'` 。
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="新增路由":::
+    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
 
 完成此流程之後，所有專案都會設定為端對端淘汰裝置。
 
@@ -491,7 +491,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 您應該會看到裝置的對應項不再于 Azure 數位 Twins 實例中找到。
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="顯示找不到對應項的命令視窗":::
+:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

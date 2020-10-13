@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306883"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -320,7 +320,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `test-netconnection`
 
 > [!NOTE]
-> 此命令可能無法使用寫入進度 Cmdlet。 作為緩和措施，您可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中執行以停用進度列。
+> Write-Progress Cmdlet 可能無法使用此命令。 作為緩和措施，您可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中執行以停用進度列。
 
 或
 

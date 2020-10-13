@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823600"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>對應資料流程中的視窗轉換
@@ -47,6 +47,6 @@ Over 子句的另一個部分是設定 ```Order By```。 這會設定資料排�
 
 彙總及分析的函式 (可供您在 ADF 資料流程運算式語言透過運算式產生器中使用) 完整清單如下：https://aka.ms/dataflowexpressions。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您要尋找簡單的分組依據匯總，請使用「 [匯總」轉換](data-flow-aggregate.md)

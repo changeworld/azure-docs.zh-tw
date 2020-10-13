@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bc7435fb46d5783cb487038a10709a9e40b0d136
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021641"
 ---
 # <a name="get-started-with-service-bus-topics"></a>開始使用服務匯流排主題
@@ -21,7 +21,7 @@ ms.locfileid: "89021641"
 1. 撰寫 .NET Core 主控台應用程式，以將一組訊息傳送到主題。
 2. 撰寫 .NET Core 主控台應用程式，以從訂用帳戶接收這些訊息。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循快速入門中的步驟 [：使用 Azure 入口網站建立服務匯流排主題和主題的](service-bus-quickstart-topics-subscriptions-portal.md) 訂用帳戶，以執行下列工作：

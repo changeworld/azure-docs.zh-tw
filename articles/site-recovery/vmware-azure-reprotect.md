@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441488"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>從 Azure 移至內部部署來重新保護
@@ -74,7 +74,7 @@ ms.locfileid: "89441488"
     - 重新保護完成後，請勿開啟內部部署 VM。
    
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如果您遇到任何問題，請參閱 [疑難排解文章](vmware-azure-troubleshoot-failback-reprotect.md)。
 - 在保護 Azure Vm 之後，您就可以 [執行容錯回復](vmware-azure-failback.md)。 容錯回復會關閉 Azure VM，並啟動內部部署 VM。 應用程式預期會有一些停機時間，並據以選擇容錯回復時間。

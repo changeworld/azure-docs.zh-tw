@@ -4,10 +4,10 @@ description: 描述從 JSON 中的連續匯出匯出的屬性，並做為篩選�
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324381"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 匯出資料模型
@@ -104,7 +104,7 @@ ms.locfileid: "87324381"
 }
 ```
 
-## <a name="context"></a>內容
+## <a name="context"></a>Context
 所有類型的遙測都會伴隨內容區段。 並非所有的欄位都會連同每個資料點傳輸。
 
 | Path | 類型 | 注意 |
@@ -114,7 +114,7 @@ ms.locfileid: "87324381"
 | context.data.eventTime |字串 |UTC |
 | context.data.isSynthetic |boolean |要求似乎來自 bot 或 web 測試。 |
 | context.data.samplingRate |數字 |由傳送至入口網站之 SDK 所產生的遙測百分比。 範圍 0.0-100.0。 |
-| context.device |object |用戶端裝置 |
+| context.device |物件 (object) |用戶端裝置 |
 | context.device.browser |字串 |IE, Chrome, ... |
 | context.device.browserVersion |字串 |Chrome 48.0, ... |
 | context.device.deviceModel |字串 | |
@@ -124,21 +124,21 @@ ms.locfileid: "87324381"
 | context.device.network |字串 | |
 | context.device.oemName |字串 | |
 | context.device.os |字串 | |
-| context.device.osVersion |字串 |主機 OS |
+| context.device.osVersion |字串 |主機作業系統 |
 | context.device.roleInstance |字串 |伺服器主機的識別碼 |
 | context.device.roleName |字串 | |
 | context.device.screenResolution |字串 | |
 | context.device.type |字串 |PC, Browser, ... |
-| context.location |object |衍生自 `clientip`。 |
-| context.location.city |字串 |衍生自 `clientip` （如果已知） |
+| context.location |物件 (object) |衍生自 `clientip`。 |
+| context.location.city |字串 |衍生自 `clientip` （已知） |
 | context.location.clientip |字串 |最後一個八邊形匿名設定為 0。 |
 | context.location.continent |字串 | |
 | context.location.country |字串 | |
 | context.location.province |字串 |州或省 |
-| context.operation.id |字串 |具有相同的專案 `operation id` 會在入口網站中顯示為相關專案。 通常是 `request id` 。 |
+| context.operation.id |字串 |具有相同專案的專案 `operation id` 會在入口網站中顯示為相關專案。 通常為 `request id` 。 |
 | context.operation.name |字串 |url 或要求名稱 |
 | context.operation.parentId |字串 |允許巢狀的相關項目。 |
-| context.session.id |字串 |`Id`來自相同來源的一組作業。 在 30 分鐘期間沒有發出工作階段結束訊號的作業。 |
+| context.session.id |字串 |`Id` 來自相同來源的一組作業。 在 30 分鐘期間沒有發出工作階段結束訊號的作業。 |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |字串 | |
 | context.user.accountId |字串 | |
@@ -149,14 +149,14 @@ ms.locfileid: "87324381"
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |字串 | |
 | internal.data.documentVersion |字串 | |
-| internal.data.id |字串 | `Unique id`當內嵌專案時指派給 Application Insights |
+| internal.data.id |字串 | `Unique id` 當專案內嵌至 Application Insights 時指派 |
 
 ## <a name="events"></a>事件
 [TrackEvent()](./api-custom-events-metrics.md#trackevent)產生的自訂事件。
 
 | Path | 類型 | 注意 |
 | --- | --- | --- |
-| 事件 [0] 計數 |integer |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
+| 事件 [0] 計數 |整數 |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
 | 事件 [0] 名稱 |字串 |事件名稱。  最大長度 250。 |
 | 事件 [0] url |字串 | |
 | 事件 [0] urlData.base |字串 | |
@@ -168,14 +168,14 @@ ms.locfileid: "87324381"
 | Path | 類型 | 注意 |
 | --- | --- | --- |
 | basicException [0] 組件 |字串 | |
-| basicException [0] 計數 |integer |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
+| basicException [0] 計數 |整數 |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
 | basicException [0] exceptionGroup |字串 | |
 | basicException [0] exceptionType |字串 | |
 | basicException [0] failedUserCodeMethod |字串 | |
 | basicException [0] failedUserCodeAssembly |字串 | |
 | basicException [0] handledAt |字串 | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0]`id` |字串 | |
+| basicException [0] `id` |字串 | |
 | basicException [0] 方法 |字串 | |
 | basicException [0] 訊息 |字串 |例外狀況訊息。 最大長度 10k。 |
 | basicException [0] outerExceptionMessage |字串 | |
@@ -185,8 +185,8 @@ ms.locfileid: "87324381"
 | basicException [0] outerId |字串 | |
 | basicException [0] parsedStack [0] 組件 |字串 | |
 | basicException [0] parsedStack [0] fileName |字串 | |
-| basicException [0] parsedStack [0] 層級 |integer | |
-| basicException [0] parsedStack [0] 列 |integer | |
+| basicException [0] parsedStack [0] 層級 |整數 | |
+| basicException [0] parsedStack [0] 列 |整數 | |
 | basicException [0] parsedStack [0] 方法 |字串 | |
 | basicException [0] 堆疊 |字串 |最大長度 10k |
 | basicException [0] typeName |字串 | |
@@ -209,10 +209,10 @@ ms.locfileid: "87324381"
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |字串 | |
 | remoteDependency [0] commandName |字串 |例如 "home/index" |
-| remoteDependency [0] 計數 |integer |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
+| remoteDependency [0] 計數 |整數 |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
 | remoteDependency [0] dependencyTypeName |字串 |HTTP、SQL、... |
 | remoteDependency [0] durationMetric.value |數字 |從根據相依性呼叫回應完成開始計算的時間 |
-| remoteDependency [0]`id` |字串 | |
+| remoteDependency [0] `id` |字串 | |
 | remoteDependency [0] 名稱 |字串 |Url。 最大長度 250。 |
 | remoteDependency [0] resultCode |字串 |從 HTTP 相依性 |
 | remoteDependency [0] 成功 |boolean | |
@@ -227,11 +227,11 @@ ms.locfileid: "87324381"
 
 | Path | 類型 | 注意 |
 | --- | --- | --- |
-| 要求 [0] 計數 |integer |100/([取樣](./sampling.md) 率)。 例如：4 =&gt; 25%。 |
+| 要求 [0] 計數 |整數 |100/([取樣](./sampling.md) 率)。 例如：4 =&gt; 25%。 |
 | 要求 [0] durationMetric.value |數字 |從要求抵達到回應的時間。 1e7 == 1s |
-| 要求 [0]`id` |字串 |`Operation id` |
+| 要求 [0] `id` |字串 |`Operation id` |
 | 要求 [0] 名稱 |字串 |GET/POST + url 基底。  最大長度 250 |
-| 要求 [0] responseCode |integer |傳送至用戶端的 HTTP 回應 |
+| 要求 [0] responseCode |整數 |傳送至用戶端的 HTTP 回應 |
 | 要求 [0] 成功 |boolean |預設值 == (responseCode &lt; 400) |
 | 要求 [0] url |字串 |不包括主機 |
 | 要求 [0] urlData.base |字串 | |
@@ -245,12 +245,12 @@ ms.locfileid: "87324381"
 
 | Path | 類型 | 注意 |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess.value |integer |從接收 HTML 完成到顯示頁面的時間。 |
+| clientPerformance [0] clientProcess.value |整數 |從接收 HTML 完成到顯示頁面的時間。 |
 | clientPerformance [0] 名稱 |字串 | |
-| clientPerformance [0] networkConnection.value |integer |建立網路連線所需的時間。 |
-| clientPerformance [0] receiveRequest.value |integer |從傳送要求完成至接收回覆中 HTML 的時間。 |
-| clientPerformance [0] sendRequest.value |integer |傳送 HTTP 要求所需的時間。 |
-| clientPerformance [0] total.value |integer |從開始傳送要求到顯示頁面的時間。 |
+| clientPerformance [0] networkConnection.value |整數 |建立網路連線所需的時間。 |
+| clientPerformance [0] receiveRequest.value |整數 |從傳送要求完成至接收回覆中 HTML 的時間。 |
+| clientPerformance [0] sendRequest.value |整數 |傳送 HTTP 要求所需的時間。 |
+| clientPerformance [0] total.value |整數 |從開始傳送要求到顯示頁面的時間。 |
 | clientPerformance [0] url |字串 |此要求的 URL |
 | clientPerformance [0] urlData.base |字串 | |
 | clientPerformance [0] urlData.hashTag |字串 | |
@@ -262,8 +262,8 @@ ms.locfileid: "87324381"
 
 | Path | 類型 | 注意 |
 | --- | --- | --- |
-| 檢視 [0] 計數 |integer |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
-| 檢視 [0] durationMetric.value |integer |在 trackPageView() 中或由 startTrackPage() - stopTrackPage() 選擇性設定的值。 和 clientPerformance 的值不同。 |
+| 檢視 [0] 計數 |整數 |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
+| 檢視 [0] durationMetric.value |整數 |在 trackPageView() 中或由 startTrackPage() - stopTrackPage() 選擇性設定的值。 和 clientPerformance 的值不同。 |
 | 檢視 [0] 名稱 |字串 |頁面標題。  最大長度 250 |
 | 檢視 [0] url |字串 | |
 | 檢視 [0] urlData.base |字串 | |
@@ -277,9 +277,9 @@ ms.locfileid: "87324381"
 | --- | --- | --- |
 | 可用性 [0] availabilityMetric.name |字串 |availability |
 | 可用性 [0] availabilityMetric.value |數字 |1.0 或 0.0 |
-| 可用性 [0] 計數 |integer |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
+| 可用性 [0] 計數 |整數 |100/([取樣](./sampling.md) 率)。 例如 4 =&gt; 25%。 |
 | 可用性 [0] dataSizeMetric.name |字串 | |
-| 可用性 [0] dataSizeMetric.value |integer | |
+| 可用性 [0] dataSizeMetric.value |整數 | |
 | 可用性 [0] durationMetric.name |字串 | |
 | 可用性 [0] durationMetric.value |數字 |測試持續時間。 1e7==1s |
 | 可用性 [0] 訊息 |字串 |失敗診斷 |
@@ -343,7 +343,7 @@ ms.locfileid: "87324381"
 
 其他欄位的目的是允許度量在 SDK 中彙總，以減少入口網站的流量。 例如，您可以在傳送每個度量報告之前平均數個連續的讀數。 然後您會計算 min、max、標準差和彙總值 (sum 或 average)，並將計數設為報告所代表的讀數數目。
 
-在上述表格中，我們省略了很少使用的欄位 count、min、max、stdDev 和 sampledValue。
+在上表中，我們省略了很少使用的欄位 count、min、max、stdDev 和 sampledValue。
 
 除了使用預先彙總的度量，如果您需要減少遙測量，您可以改為使用 [取樣](./sampling.md) 。
 

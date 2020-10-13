@@ -7,10 +7,10 @@ ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021981"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>備份與還原 Reliable Services 和 Reliable Actors
@@ -238,7 +238,7 @@ class MyCustomActorService : ActorService
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>幕後：備份與還原的詳細資料
 以下是備份與還原的詳細資料。
 
-### <a name="backup"></a>備份
+### <a name="backup"></a>Backup
 可靠的狀態管理員能夠建立一致的備份，而不會封鎖任何讀取或寫入作業。 為了達到這個目的，它會利用檢查點和記錄持續性機制。  可靠的狀態管理員會在特定時間點採用模糊 (輕量型) 檢查點，來減輕交易記錄檔的壓力和改善復原時間。  呼叫 `BackupAsync` 時，可靠的狀態管理員會指示所有可靠物件，將其最新檢查點檔案複製到本機備份資料夾。  然後，可靠的狀態管理員會從「開始指標」開始，將所有記錄檔記錄複製到備份資料夾中的最新記錄檔記錄。  因為記錄到最新記錄資料列的所有記錄資料列都會包含於備份中，而且可靠的狀態管理員會保留預寫記錄，所以，可靠的狀態管理員保證所有已認可的交易 (`CommitAsync` 已順利傳回) 都會包含於備份中。
 
 呼叫 `BackupAsync` 之後認可的任何交易，不一定會在備份中。  一旦由平台填入本機備份資料夾 (亦即執行階段完成的本機備份) 之後，即會叫用服務的備份回呼。  此回呼會負責將備份資料夾移到外部位置，例如 Azure 儲存體。

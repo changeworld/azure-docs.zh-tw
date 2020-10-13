@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: 42efc2bee88f073f2a628b1d2041afcc310cb871
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822979"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>建立、變更或刪除網路安全性群組
@@ -59,7 +59,7 @@ ms.locfileid: "91822979"
     | **名稱** | 輸入資源群組內的唯一文字字串。 |
     | **區域** | 選擇您想要的位置。 |
 
-4. 選取 [檢閱 + 建立]。
+4. 選取 [檢閱 + 建立]****。
 
 5. 當您看到 [ **通過驗證** ] 訊息之後，請選取 [ **建立**]。
 
@@ -176,7 +176,7 @@ ms.locfileid: "91822979"
     | **動作** | **允許** 或 **拒絕** | 此設定會指定此規則是否允許或拒絕所提供來源和目的地設定的存取權。 |
     | **優先順序** | 介於100和4096之間的值，在網路安全性群組內的所有安全性規則中都是唯一的。 | Azure 會依優先權連續處理安全性規則。 編號愈低，優先順序愈高。 當您建立規則時，建議您在優先順序數位之間留出間距，例如100、200和300。 留出間距可讓您更輕鬆地在未來新增規則，讓您可以提供比現有規則更高或較低的優先順序。 |
     | **名稱** | 網路安全性群組中規則的唯一名稱 | 此名稱最多可有 80 個字元。 它必須以字母或數位開頭，且必須以字母、數位或底線結尾。 名稱只可包含字母、數位、底線、句點或連字號。 |
-    | **描述** | 文字描述 | 您可以選擇性地指定安全性規則的文字描述。 描述的長度不能超過140個字元。 |
+    | **說明** | 文字描述 | 您可以選擇性地指定安全性規則的文字描述。 描述的長度不能超過140個字元。 |
 
 #### <a name="commands"></a>命令
 
@@ -277,7 +277,7 @@ ms.locfileid: "91822979"
     | **名稱** | 輸入資源群組內的唯一文字字串。 |
     | **區域** | 選擇您想要的位置。 |
 
-5. 選取 [檢閱 + 建立]。
+5. 選取 [檢閱 + 建立]****。
 
 6. 在 [ **審核 + 建立** ] 索引標籤下，當您看到 [ **通過驗證** ] 訊息之後，請選取 [ **建立**]。
 
@@ -355,7 +355,7 @@ ms.locfileid: "91822979"
 
 ### <a name="network-security-group"></a>網路安全性群組
 
-| 動作                                                        |   Name                                                                |
+| 動作                                                        |   名稱                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   取得網路安全性群組                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   建立或更新網路安全性群組                             |
@@ -364,7 +364,7 @@ ms.locfileid: "91822979"
 
 ### <a name="network-security-group-rule"></a>網路安全性群組規則
 
-| 動作                                                        |   Name                                                                |
+| 動作                                                        |   名稱                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/securityRules/read            |   取得規則                                                            |
 | Microsoft.Network/networkSecurityGroups/securityRules/write           |   建立或更新規則                                               |
@@ -372,7 +372,7 @@ ms.locfileid: "91822979"
 
 ### <a name="application-security-group"></a>應用程式安全性群組
 
-| 動作                                                                     | Name                                                     |
+| 動作                                                                     | 名稱                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | 將 IP 設定加入至應用程式安全性群組|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | 將安全性規則加入至應用程式安全性群組    |
@@ -380,7 +380,7 @@ ms.locfileid: "91822979"
 | Microsoft.Network/applicationSecurityGroups/write                          | 建立或更新應用程式安全性群組           |
 | Microsoft.Network/applicationSecurityGroups/delete                         | 刪除應用程式安全性群組                     |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 使用[PowerShell](powershell-samples.md)或[Azure CLI](cli-samples.md)範例腳本或 Azure [Resource Manager 範本](template-samples.md)，建立網路或應用程式安全性群組
 - 建立並指派虛擬網路的[Azure 原則定義](policy-samples.md)

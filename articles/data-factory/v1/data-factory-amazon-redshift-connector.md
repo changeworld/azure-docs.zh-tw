@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443019"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 移動資料
@@ -335,12 +335,12 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 | DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |String |
+| BOOLEAN |字串 |
 | CHAR |String |
 | VARCHAR |String |
-| 日期 |Datetime |
+| DATE |Datetime |
 | timestamp |Datetime |
-| TEXT |String |
+| TEXT |字串 |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
@@ -351,5 +351,5 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)，了解影響複製活動效能的重要因素，以及達到最佳效能的各種方法。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需使用複製活動來建立管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

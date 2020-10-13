@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397958"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>對 Azure 至 Azure VM 的複寫錯誤進行疑難排解
@@ -281,14 +281,14 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 1. 移至**已複寫的專案**  >  _VM 名稱_  >  **磁片**。
 1. 選取未受保護的磁片，然後選取 [ **啟用**複寫]：
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="在 VM 磁片上啟用複寫。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-錯誤。":::
 
 #### <a name="to-dismiss-the-warning"></a>關閉警告
 
 1. 移至 [複寫的**專案**  >  _VM 名稱_]。
 1. 在 [ **總覽** ] 區段中選取警告，然後選取 **[確定]**。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="關閉新磁片的警告。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-錯誤。":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>從保存庫移除的 VM 已完成，並出現資訊 (錯誤碼 150225) 
 
@@ -309,7 +309,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 1. 從 VM 或 VM 資源群組中移除鎖定。 例如，在下圖中，名為的 VM 上的資源鎖定 `MoveDemo` 必須刪除：
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="從 VM 移除鎖定。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-錯誤。":::
 
 1. 下載腳本以 [移除過時的 Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)設定。
 1. 執行腳本， _Cleanup-stale-asr-config-Azure-VM.ps1_。 提供訂用帳戶 **識別碼**、 **vm 資源群組**和 **vm 名稱** 作為參數。
@@ -334,7 +334,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 1. 從 VM 或 VM 資源群組中移除鎖定。 例如，在下圖中，名為的 VM 上的資源鎖定 `MoveDemo` 必須刪除：
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="從 VM 移除鎖定。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-錯誤。":::
 
 1. 下載腳本以 [移除過時的 Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)設定。
 1. 執行腳本， _Cleanup-stale-asr-config-Azure-VM.ps1_。 提供訂用帳戶 **識別碼**、 **vm 資源群組**和 **vm 名稱** 作為參數。
@@ -367,7 +367,7 @@ Site Recovery 目前需要來源區域資源群組和虛擬機器位於相同的
 
 1. 從 VM 或 VM 資源群組中移除鎖定（如果有的話）。 例如，在下圖中，名為的 VM 上的資源鎖定 `MoveDemo` 必須刪除：
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="從 VM 移除鎖定。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-錯誤。":::
 
 1. 下載腳本以 [移除過時的 Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)設定。
 1. 執行腳本， _Cleanup-stale-asr-config-Azure-VM.ps1_。 提供訂用帳戶 **識別碼**、 **vm 資源群組**和 **vm 名稱** 作為參數。
@@ -404,17 +404,17 @@ Site Recovery 目前需要來源區域資源群組和虛擬機器位於相同的
 
 在嚴重損壞修復設定期間，如果來源 VM 屬於虛擬網路的一部分，而且來自相同虛擬網路的另一個 VM 已與目標資源群組中的網路對應，則 [網路選取] 下拉式清單方塊將無法使用 (預設會顯示為暗灰色) 。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="網路挑選清單無法使用。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-錯誤。":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>問題2：您先前已保護 VM，然後停用複寫
 
 停用 VM 的複寫並不會刪除網路對應。 您必須從 VM 受保護的復原服務保存庫中刪除對應。 選取 [復原**服務保存庫**]，然後移至 [**管理**  >  Azure 虛擬機器**Site Recovery Infrastructure**  >  **For Azure virtual machines**  >  **網路對應**Site Recovery 基礎結構]。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="刪除網路對應。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-錯誤。":::
 
 在損毀修復設定期間設定的目標網路，可以在初始設定之後以及在 VM 受到保護之後變更。 若要 **修改網路對應** ，請選取網路名稱：
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="修改網路對應。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-錯誤。":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM + 或 VSS (錯誤碼 151025) 
@@ -437,7 +437,7 @@ Site Recovery extension failed to install.
 1. 在 Windows 中開啟 [服務] 主控台。
 1. 請確定 COM + 系統應用程式和磁碟區陰影複製服務不會設定為 [ **停用** ] 作為 **啟動類型**。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="檢查 COM 的啟動類型加上系統應用程式，並磁碟區陰影複製服務。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-錯誤。":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>不支援的受控磁片大小 (錯誤碼 150172) 
 

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652817"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
-NVv3 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 nvidia GRID 技術提供技術支援， (Broadwell) Cpu 和 Intel 超執行緒技術。 這些虛擬機器專用於 GPU 高速圖形應用程式以及虛擬桌面，客戶可用於將其資料視覺化、將結果模擬到檢視中、運用於 CAD 之上，或是轉譯內容及串流內容。 除此之外，這些虛擬機器可以執行單一的精密工作負載，像是編碼及轉譯。 NVv3 虛擬機器支援進階儲存體並隨附兩倍的系統記憶體 (RAM) 與其前身的 NV 系列相比。  
+NVv3 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 nvidia GRID 技術提供技術支援， (Broadwell) Cpu 和 Intel Hyper-Threading 技術。 這些虛擬機器專用於 GPU 高速圖形應用程式以及虛擬桌面，客戶可用於將其資料視覺化、將結果模擬到檢視中、運用於 CAD 之上，或是轉譯內容及串流內容。 除此之外，這些虛擬機器可以執行單一的精密工作負載，像是編碼及轉譯。 NVv3 虛擬機器支援進階儲存體並隨附兩倍的系統記憶體 (RAM) 與其前身的 NV 系列相比。  
 
 NVv3 實例中的每個 GPU 都有方格授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
 

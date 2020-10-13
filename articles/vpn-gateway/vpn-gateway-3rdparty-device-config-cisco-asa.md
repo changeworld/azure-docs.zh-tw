@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 82e00e0b519040c57fdfd798d8992086c61e5481
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426165"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>範例組態：Cisco ASA 裝置 (IKEv2/無 BGP)
@@ -50,7 +50,7 @@ Azure VPN 閘道會使用標準的 IPsec/IKE 通訊協定組合來建立站對�
 ### <a name="virtual-network-and-vpn-gateway-information"></a>虛擬網路和 VPN 閘道資訊
 本節會列出適用於此範例的參數。
 
-| **參數**                | **值**                    |
+| **參數**                | **ReplTest1**                    |
 | ---                          | ---                          |
 | 虛擬網路位址首碼        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 閘道 IP         | Azure_Gateway_Public_IP      |
@@ -67,7 +67,7 @@ Azure VPN 閘道會使用標準的 IPsec/IKE 通訊協定組合來建立站對�
 ### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE 原則與參數
 下表列出範例中所使用的 IPsec/IKE 演算法與參數。 請參閱您的 VPN 裝置規格，以確認您的 VPN 裝置型號和軔體版本支援的演算法。
 
-| **IPsec/IKEv2**  | **值**                            |
+| **IPsec/IKEv2**  | **ReplTest1**                            |
 | ---              | ---                                  |
 | IKEv2 加密 | AES256                               |
 | IKEv2 完整性  | SHA384                               |
@@ -297,5 +297,5 @@ sysopt connection tcpmss 1350
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要設定主動-主動跨單位和 VNet 對 VNet 連線，請參閱[設定主動-主動 VPN 閘道](vpn-gateway-activeactive-rm-powershell.md)。

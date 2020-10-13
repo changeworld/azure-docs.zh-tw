@@ -6,10 +6,10 @@ ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90561885"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 節點類型與虛擬機器擴展集
@@ -72,10 +72,10 @@ Service Fabric 的虛擬機器擴充功能可用來啟動 Azure 虛擬機器 Ser
 
 以下是屬性描述：
 
-| **Name** | **允許的值** | **指引或簡短描述** |
+| **名稱** | **允許的值** | **指引或簡短描述** |
 | --- | --- | --- | --- |
 | NAME | 字串 | 延伸模組的唯一名稱 |
-| 類型 | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別啟動的作業系統 Service Fabric |
+| type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 識別啟動的作業系統 Service Fabric |
 | autoUpgradeMinorVersion | true 或 false | 啟用 SF Runtime 次要版本的自動升級 |
 | publisher | ServiceFabric | Service Fabric 副檔名發行者的名稱 |
 | clusterEndpont | 字串 | URI：管理端點的埠 |

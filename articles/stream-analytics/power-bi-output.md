@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823002"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure 串流分析的 Power BI 輸出
@@ -71,7 +71,7 @@ FLOAT | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | String | String | Double
 Double | Double | String | String | Double
-String | String | String | String | String 
+String | 字串 | 字串 | 字串 | String 
 Datetime | String | String |  Datetime | String
 
 ## <a name="output-batch-size"></a>輸出批次大小

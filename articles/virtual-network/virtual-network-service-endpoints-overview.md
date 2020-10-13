@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434464"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
@@ -62,7 +62,7 @@ ms.locfileid: "89434464"
 
 - 這項功能僅適用於透過 Azure Resource Manager 部署模型所部署的虛擬網路。
 - 端點會在 Azure 虛擬網路中設定的子網路上啟用。 端點無法用於從您的內部部署到 Azure 服務的流量。 如需詳細資訊，請參閱 [從內部部署安全的 Azure 服務存取](#secure-azure-services-to-virtual-networks)
-- 針對 Azure SQL，服務端點只適用於虛擬網路區域內的 Azure 服務流量。 針對 Azure 儲存體，端點也會擴充為包含配對的區域，您可以在其中部署虛擬網路，以支援讀取權限異地冗余儲存體 (GRS) 和異地冗余儲存體 (GRS) 流量。 如需詳細資訊，請參閱 [Azure 配對區域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
+- 針對 Azure SQL，服務端點只適用於虛擬網路區域內的 Azure 服務流量。 針對 Azure 儲存體，端點也會擴充為包含配對的區域，您可以在其中部署虛擬網路，以支援 Read-Access Geo-Redundant 存放裝置 (GRS) 和 Geo-Redundant 儲存體 (GRS) 流量。 如需詳細資訊，請參閱 [Azure 配對區域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
 - 針對 Azure Data Lake Storage (ADLS) Gen 1，VNet 整合功能只適用于相同區域內的虛擬網路。 另請注意，ADLS Gen1 的虛擬網路整合會使用您虛擬網路與 Azure Active Directory (Azure AD) 之間的虛擬網路服務端點安全性，以在存取權杖中產生額外的安全性宣告。 這些宣告隨後會用來對 Data Lake Storage Gen1 帳戶驗證虛擬網路並允許存取。 服務支援服務端點下所列的 *AzureActiveDirectory* 標籤只會用來 ADLS Gen 1 的支援服務端點。 Azure AD 原本就不支援服務端點。 如需 Azure Data Lake Store Gen 1 VNet 整合的詳細資訊，請參閱 [Azure Data Lake Storage Gen1 中的網路安全性](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>保護虛擬網路的 Azure 服務
@@ -81,7 +81,7 @@ ms.locfileid: "89434464"
 
 ![將 Azure 服務放到虛擬網路保護](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 - 在虛擬網路中的子網上設定服務端點。 端點會使用在子網路內執行之任何類型的計算執行個體。
 - 您可以為所有支援的 Azure 服務設定多個服務端點 (Azure 儲存體或 Azure SQL Database，例如子網上的) 。
@@ -120,7 +120,7 @@ ms.locfileid: "89434464"
 >[!NOTE]
 > 服務端點路由會覆寫 Azure 服務之位址前置詞相符項目的任何 BGP 或 UDR 路由。 如需詳細資訊，請參閱 [使用有效路由進行疑難排解](diagnose-network-routing-problem.md)。
 
-## <a name="provisioning"></a>正在佈建
+## <a name="provisioning"></a>佈建
 
 您可以在具有虛擬網路寫入存取權的使用者之外，在虛擬網路上個別設定服務端點。 若要保護 VNet 的 Azure 服務資源，使用者必須具有所新增子網的 *Microsoft/virtualNetworks/subnet/joinViaServiceEndpoint/action* 許可權。 內建的服務管理員角色預設會包含此許可權。 您可以藉由建立自訂角色來修改許可權。
 
@@ -144,7 +144,7 @@ VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此�
 
 如需常見問題，請參閱 [虛擬網路服務端點常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [設定虛擬網路服務端點](tutorial-restrict-network-access-to-resources.md)
 - [保護虛擬網路的 Azure 儲存體帳戶](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

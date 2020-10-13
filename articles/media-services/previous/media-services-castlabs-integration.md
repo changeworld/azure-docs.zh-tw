@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264482"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 將 Widevine 授權傳遞到 Azure 媒體服務
@@ -71,7 +71,7 @@ castLabs 與 AMS 皆支援使用 JWT (JSON Web Token) 權杖格式進行授權�
 
 下表說明 castLabs 中的 JWT 權杖。 
 
-| Name | 說明 |
+| 名稱 | 描述 |
 | --- | --- |
 | optData |JSON 字串，其中包含您的相關資訊。 |
 | crt |JSON 字串，其中包含資產、其授權資訊與播放權限的相關資訊。 |
