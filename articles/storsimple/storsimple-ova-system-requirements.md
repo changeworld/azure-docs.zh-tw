@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple 虛擬陣列系統需求
+title: Microsoft Azure StorSimple Virtual Array 系統需求
 description: 了解 StorSimple Virtual Array 的軟體和網路功能需求
 author: alkohli
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80298814"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array 系統需求
@@ -114,7 +114,7 @@ ms.locfileid: "80298814"
 > [!NOTE]
 > 
 > * 裝置 (來源) IP 應該一律設定為所有啟用雲端功能的網路介面。 
-> * 目的地 IP 應該設為 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
+> * 目的地 Ip 應設定為 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 > 
 > 
 

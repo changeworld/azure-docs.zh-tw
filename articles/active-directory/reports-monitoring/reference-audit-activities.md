@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231141"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 稽核活動參考
@@ -256,17 +256,17 @@ Azure AD 中的報告架構包含下列元件：
 |目錄管理|取得租用戶資訊|
 |目錄管理|取得租用戶允許的功能|
 |目錄管理|取得 tenantDomains|
-|Key|取得租用戶的類型|
-|Key|驗證是否已啟用 B2C 功能|
-|Key|驗證是否已啟用功能|
-|Key|將夥伴新增至公司|
-|Key|新增未驗證的網域|
-|Key|新增已驗證的網域|
-|Key|建立公司|
-|Key|建立公司設定|
-|Key|刪除公司設定|
-|Key|將夥伴降級|
-|Key|已刪除的目錄|
+|機碼|取得租用戶的類型|
+|機碼|驗證是否已啟用 B2C 功能|
+|機碼|驗證是否已啟用功能|
+|機碼|將夥伴新增至公司|
+|機碼|新增未驗證的網域|
+|機碼|新增已驗證的網域|
+|機碼|建立公司|
+|機碼|建立公司設定|
+|機碼|刪除公司設定|
+|機碼|將夥伴降級|
+|機碼|已刪除的目錄|
 |其他|永久刪除的目錄|
 |其他|排程刪除的目錄|
 |資源|將公司升級為夥伴|

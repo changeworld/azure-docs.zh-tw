@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548330"
 ---
 # <a name="register-a-saas-application"></a>註冊 SaaS 應用程式
@@ -89,7 +89,7 @@ Azure Marketplace 不會在您的 SaaS 服務針對終端使用者使用的驗�
 
 ##### <a name="response"></a>*回應*
 
-|  名稱     |  類型         |  Description |
+|  名稱     |  類型         |  描述 |
 |  ------   |  ---------------  | ------------ |
 |  200 確定   |  TokenResponse    |  要求成功。 |
 
@@ -111,6 +111,6 @@ Azure Marketplace 不會在您的 SaaS 服務針對終端使用者使用的驗�
 
 `"access_token"`回應中的域值是您在 `<access_token>` 呼叫所有 SaaS 履行和 Marketplace 計量 api 時，將作為授權參數傳遞的。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您 Azure AD 保護的應用程式現在可以使用 [SaaS 履行 API 第2版](./pc-saas-fulfillment-api-v2.md)。

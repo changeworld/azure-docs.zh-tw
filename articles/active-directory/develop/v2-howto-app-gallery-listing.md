@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439739"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
@@ -72,7 +72,7 @@ ms.locfileid: "89439739"
 
 下表比較主要標準： Open Authentication 2.0 (OAuth 2.0) 與 OpenID Connect (OIDC) 、安全性聲明標記語言 (SAML) 和 Web 服務同盟 (WS-送出) 。
 
-| 功能| OAuth/OIDC| SAML/WS-饋送 |
+| 功能| OAuth/OIDC| SAML/WS-Fed |
 | - |-|-|
 | Web 單一登入| √| √ |
 | 以 Web 為基礎的單一登出| √| √ |
@@ -96,7 +96,7 @@ OAuth 2.0 是適用于授權的 [業界標準](https://oauth.net/2/) 通訊協�
 **應考慮的事項**
 - 如果您已為您的應用程式執行 SAML 型單一登入，則您可能不想要執行新的標準，以在資源庫中取得您的應用程式。
 
-### <a name="saml-20-or-ws-fed"></a>SAML 2.0 或 WS-送出
+### <a name="saml-20-or-ws-fed"></a>SAML 2.0 或 WS-Fed
 
 SAML 是適用于 web 應用程式的成熟且廣泛採用的 [單一登入標準](https://www.oasis-open.org/standards#samlv2.0) 。 若要深入瞭解 Azure 如何使用 SAML，請參閱 [Azure 如何使用 saml 通訊協定](active-directory-saml-protocol-reference.md)。 
 
@@ -143,8 +143,8 @@ Web 服務同盟 (WS-送) 是一種 [業界標準](https://docs.oasis-open.org/w
 
 Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用的開放原始碼程式庫。
 
-### <a name="implement-ws-fed"></a>執行 WS-饋送
-若要深入瞭解 ASP.NET Core 中的 WS-ADDRESSING，請參閱 [ASP.NET Core 中使用 ws-同盟來驗證使用者](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)。
+### <a name="implement-ws-fed"></a>執行 WS-Fed
+若要深入瞭解 ASP.NET Core 中的 WS-Fed，請參閱 [ASP.NET Core 中使用 WS-Federation 來驗證使用者](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)。
 
 ### <a name="implement-password-vaulting"></a>執行密碼保存庫
 
@@ -238,7 +238,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 如果您想要使用 **saml 2.0** 或 **ws-addressing**將應用程式新增至資源庫中的清單，請選取 [ **Saml 2.0/ws-送** 出]，如下所示。
 
-![在資源庫中列出 SAML 2.0 或 WS 送出的應用程式](./media/howto-app-gallery-listing/saml.png)
+![在資源庫中列出 SAML 2.0 或 WS-Fed 應用程式](./media/howto-app-gallery-listing/saml.png)
 
 如果您想要使用密碼 SSO 將應用程式新增至資源庫中的清單，請選取 [ **密碼 sso** ]，如下所示。
 
@@ -260,7 +260,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ### <a name="timelines"></a>時間表
 
-在資源庫中列出 SAML 2.0 或 WS 送出應用程式的程式時程表是7到10個工作天。
+在資源庫中列出 SAML 2.0 或 WS-Fed 應用程式的程式時程表是7到10個工作天。
 
 ![在資源庫中列出 SAML 應用程式的時程表](./media/howto-app-gallery-listing/timeline.png)
 
@@ -277,6 +277,6 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 Microsoft 合作夥伴網路可讓您立即存取專屬資源、程式、工具和連接。 若要加入網路並建立您的「移至市場」方案，請參閱 [觸及商業客戶](https://partner.microsoft.com/explore/commercial#gtm)。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [建置 SCIM 端點和設定使用者佈建](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Azure AD 的驗證案例](authentication-flows-app-scenarios.md)

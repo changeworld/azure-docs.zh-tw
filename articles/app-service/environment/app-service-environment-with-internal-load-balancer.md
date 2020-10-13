@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962548"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配 App Service 環境使用內部負載平衡器
@@ -68,7 +68,7 @@ ASE 可以使用網際網路可存取的端點或您 Vnet 中的 IP 位址加以
 3. 選取您的訂用帳戶。
 4. 選取或建立資源群組。
 5. 選取或建立 App Service 方案 (ASP)。 如果是建立新的 ASP，請選取您的 ASE 作為位置，並選取您希望在其中建立 ASP 的背景工作角色集區。 當您建立 ASP 時，可以選取您的 ASE 作為位置與背景工作角色集區。 當您指定 app 的名稱時，您會看見您 app 名稱底下的子網域會由您 ASE 的子網域取代。 
-6. 選取 [建立]  。 如果您希望 app 顯示在儀表板上，請務必選取 [釘選到儀表板]**** 核取方塊。 
+6. 選取 [建立]****。 如果您希望 app 顯示在儀表板上，請務必選取 [釘選到儀表板]**** 核取方塊。 
 
 ![顯示如何在 Azure 入口網站的 ILB ASE 中建立應用程式。][2]
 

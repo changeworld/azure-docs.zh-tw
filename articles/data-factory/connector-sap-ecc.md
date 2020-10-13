@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529597"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP ECC 複製資料
@@ -24,7 +24,7 @@ ms.locfileid: "87529597"
 本文概述如何使用 Azure Data Factory 中的複製活動，從 SAP Enterprise Central Component (ECC) 複製資料。 如需詳細資訊，請參閱[複製活動概觀](copy-activity-overview.md)。
 
 >[!TIP]
->若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，以及每個 sap 連接器、comparsion 和指引的詳細介紹。
+>若要瞭解 ADF 對 SAP 資料整合案例的整體支援，請參閱 [使用 Azure Data Factory 白皮書的 sap 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) ，其中包含每個 sap 連接器、比較和指引的詳細簡介。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
@@ -52,7 +52,7 @@ ms.locfileid: "87529597"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要使用此 SAP ECC 連接器，您必須透過 SAP 閘道，經由 OData 服務公開 SAP ECC 實體。 具體而言：
+若要使用此 SAP ECC 連接器，您需要透過 SAP 閘道透過 OData 服務公開 SAP ECC 實體。 具體而言：
 
 - **設定 SAP 閘道**。 如果伺服器使用 7.4 以後的 SAP NetWeaver 版本，則必須已安裝 SAP Gateway。 針對舊版，您必須先安裝內嵌 SAP Gateway 或 SAP Gateway 中樞系統，再透過 OData 服務公開 SAP ECC 資料。 若要安裝 SAP Gateway，請參閱 [Installation Guide](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm) (安裝指南)。
 
@@ -146,8 +146,8 @@ SAP ECC 連結服務支援下列屬性：
 |:--- |:--- |:--- |
 | `type` | 複製活動 `source` 區段的 `type` 屬性必須設定為 `SapEccSource`。 | 是 |
 | `query` | 用來篩選資料的 OData 查詢選項。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 連接器會從以下組合的 URL 複製資料：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>如需詳細資訊，請參閱 [OData URL 元件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
-| `sapDataColumnDelimiter` | 用來當做分隔符號的單一字元，會傳遞給 SAP RFC 以分割輸出資料。 | 否 |
-| `httpRequestTimeout` | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為**00:30:00** （30分鐘）。 | 否 |
+| `sapDataColumnDelimiter` | 用來做為分隔符號的單一字元，可傳遞至 SAP RFC 以分割輸出資料。 | 否 |
+| `httpRequestTimeout` | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為 **00:30:00** (30 分鐘) 。 | 否 |
 
 ### <a name="example"></a>範例
 

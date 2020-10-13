@@ -4,10 +4,10 @@ description: 請使用此檢查清單作為預先部署規劃程式的一部分�
 ms.topic: how-to
 ms.date: 10/02/2020
 ms.openlocfilehash: 51480f72d6de6b1f49aa753e006c4683bbd48cc7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579637"
 ---
 # <a name="azure-vmware-solution-pre-deployment-checklist"></a>Azure VMware 解決方案預先部署檢查清單

@@ -1,6 +1,6 @@
 ---
-title: 透明資料加密（T-sql）
-description: Azure Synapse Analytics （T-sql）中的透明資料加密（TDE）
+title: '透明資料加密 (T-sql) '
+description: '透明資料加密 (TDE) Azure Synapse Analytics (T-sql) '
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 81a28773f8f13cfb8dac75f1c4e11fd773c2c8f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212192"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>開始使用透明資料加密 (TDE)
 
 > [!div class="op_single_selector"]
 >
-> * [安全性總覽](sql-data-warehouse-overview-manage-security.md)
+> * [安全性概觀](sql-data-warehouse-overview-manage-security.md)
 > * [驗證](sql-data-warehouse-authentication.md)
 > * [加密 (入口網站)](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
@@ -33,7 +33,7 @@ ms.locfileid: "85212192"
 
 ## <a name="enabling-encryption"></a>啟用加密
 
-請遵循下列步驟來啟用 TDE：
+遵循下列步驟以啟用 TDE：
 
 1. 使用在 master 資料庫中做為系統管理員或 *dbmanager* 角色成員的登入，連接到裝載資料庫之伺服器上的 **master** 資料庫
 2. 執行下列陳述式來加密資料庫。
@@ -44,7 +44,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ## <a name="disabling-encryption"></a>停用加密
 
-請遵循下列步驟來停用 TDE：
+遵循下列步驟來停用 TDE：
 
 1. 使用在 master 資料庫中做為系統管理員或 *dbmanager* 角色成員的登入，連接到 **master** 資料庫
 2. 執行下列陳述式來加密資料庫。
@@ -58,7 +58,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 
 ## <a name="verifying-encryption"></a>確認加密
 
-若要確認加密狀態，請遵循下列步驟：
+若要驗證加密狀態，請遵循下列步驟：
 
 1. 使用在 master 資料庫中做為系統管理員或 *dbmanager* 角色成員的登入，連接到 **master** 或執行個體資料庫
 2. 執行下列陳述式來加密資料庫。

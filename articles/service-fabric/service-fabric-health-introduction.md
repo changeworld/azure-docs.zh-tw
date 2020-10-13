@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 中的健全狀況監視
+title: Service Fabric 中的健康情況監視
 description: Azure Service Fabric 健康狀態監視模型的簡介，該模型提供對叢集及其應用程式和服務的監視。
 author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258863"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 健康狀態監視簡介
@@ -28,7 +28,7 @@ Service Fabric 元件會使用此健康狀態模型來報告其目前狀態。 �
 ## <a name="health-entities-and-hierarchy"></a>健康狀態實體和階層
 健康狀態實體會在邏輯階層中組合管理，用來擷取不同實體之間的互動和相依性。 健康狀態存放區會依照從 Service Fabric 元件收到的報告，自動建置健康情況實體和階層。
 
-健康狀態實體會鏡像處理 Service Fabric 實體  (例如，**健康狀態應用程式實體**符合部署于叢集中的應用程式實例，而**健康狀態節點實體**符合 Service Fabric 叢集節點。 ) 健康情況階層會捕捉系統實體的互動，而且這是高階健全狀況評估的基礎。 您可以在 [Service Fabric 技術概觀](service-fabric-technical-overview.md)中了解重要的 Service Fabric 概念。 如需應用程式的詳細資訊，請參閱 [Service Fabric 應用程式模型](service-fabric-application-model.md)。
+健康狀態實體會鏡像處理 Service Fabric 實體  (例如， **健康情況應用程式實體** 符合叢集中部署的應用程式實例，而 **健全狀況節點實體** 符合 Service Fabric 叢集節點。 ) 健康情況階層會捕捉系統實體的互動，而這是 advanced health 評估的基礎。 您可以在 [Service Fabric 技術概觀](service-fabric-technical-overview.md)中了解重要的 Service Fabric 概念。 如需應用程式的詳細資訊，請參閱 [Service Fabric 應用程式模型](service-fabric-application-model.md)。
 
 健康狀態實體和階層可讓您有效率地報告、偵錯和監視叢集和應用程式。 健康狀態模型可針對叢集中許多移動的項目提供精確且「細微」 ** 的健康狀態呈現方式。
 
@@ -39,11 +39,11 @@ Service Fabric 元件會使用此健康狀態模型來報告其目前狀態。 �
 
 健康狀態實體包含：
 
-* **Cluster**。 表示 Service Fabric 叢集的健康狀態。 叢集健康情況報告會說明影響整體叢集的條件。 這些條件會影響叢集中的多個實體或叢集本身。 據此條件，此報告無法將問題縮小到一或多個狀況不良的子系。 範例包括因網路分割或通訊問題而造成叢集核心分裂。
-* **Node**。 表示 Service Fabric 節點的健康狀態。 節點健康狀態報告會說明影響節點功能的條件。 它們通常會影響在其上執行的所有已部署的實體。 範例包括節點的磁碟空間不足 (或其他電腦全域屬性，例如記憶體、連線) 以及節點已關閉時。 節點實體將透過節點名稱 (字串) 來識別。
+* **群集**。 表示 Service Fabric 叢集的健康狀態。 叢集健康情況報告會說明影響整體叢集的條件。 這些條件會影響叢集中的多個實體或叢集本身。 據此條件，此報告無法將問題縮小到一或多個狀況不良的子系。 範例包括因網路分割或通訊問題而造成叢集核心分裂。
+* **節點**。 表示 Service Fabric 節點的健康狀態。 節點健康狀態報告會說明影響節點功能的條件。 它們通常會影響在其上執行的所有已部署的實體。 範例包括節點的磁碟空間不足 (或其他電腦全域屬性，例如記憶體、連線) 以及節點已關閉時。 節點實體將透過節點名稱 (字串) 來識別。
 * **應用程式**。 表示叢集中所執行應用程式執行個體的健康狀態。 應用程式健康狀態報告會說明影響應用程式整體健康狀態的條件。 它們不能將範圍縮小至個別的子系 (服務或已部署的應用程式)。 範例包括應用程式中不同服務之間的端對端互動。 應用程式實體將透過應用程式名稱 (URI) 來識別。
 * **服務**。 表示叢集中所執行服務的健康狀態。 服務健康情況報告會說明影響服務整體健康狀態的條件。 此報告無法將問題縮小為狀況不良的磁碟分割或複本。 範例包括造成所有分割區發生問題的服務組態 (例如，連接埠或外部檔案共用)。 服務實體將透過服務名稱 (URI) 來識別。
-* **Partition**。 表示服務資料分割的健康狀態。 資料分割健康狀態報告會說明影響整體複本集的條件。 範例包括當複本的數目低於目標計數以及當分割區發生仲裁遺失時。 分割區實體將透過分割識別碼 (GUID) 來識別。
+* **分割**區： 表示服務資料分割的健康狀態。 資料分割健康狀態報告會說明影響整體複本集的條件。 範例包括當複本的數目低於目標計數以及當分割區發生仲裁遺失時。 分割區實體將透過分割識別碼 (GUID) 來識別。
 * **複本**。 表示具狀態服務複本或無狀態服務執行個體的健康狀態。 複本是看門狗和系統元件可針對應用程式進行報告的最小單位。 針對具狀態服務，範例包括無法將作業複寫至次要資料庫並使複寫變慢的主要複本。 此外，若無狀態的執行個體在執行時資源不足或發生連線問題，則其會進行報告。 複本實體將透過分割識別碼 (GUID) 以及複本或執行個體識別碼 (完整) 來識別。
 * **DeployedApplication**。 表示 *節點上所執行應用程式*的健康狀態。 已部署應用程式健康狀態報告會描述專屬於節點上應用程式的條件，且無法將範圍縮小至部署在相同節點上的服務封裝。 範例包括無法在該節點上下載應用程式套件時，以及在節點上設定應用程式安全性主體時發生問題。 已部署的應用程式將透過應用程式名稱 (URI) 和節點名稱 (字串) 來識別。
 * **DeployedServicePackage**。 表示叢集的節點上所執行的服務封裝的健康狀態。 其會描述專屬於服務封裝的條件，該條件對於相同應用程式之相同節點上的其他服務封裝不會造成影響。 範例包括服務封裝中的程式碼封裝無法啟動，以及無法讀取組態封裝。 已部署的服務套件將透過應用程式名稱 (URI)、節點名稱 (字串) 和服務資訊清單名稱 (字串) 來識別。
@@ -84,7 +84,7 @@ Service Fabric 會使用三種健康狀態來描述實體的健康狀態是否�
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定是否要在健康狀態評估期間將「Warning」健康狀態報告視為錯誤。 預設：false。
 * [MaxPercentUnhealthyApplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications)。 指定在系統將叢集視為「Error」之前，對狀況不良之應用程式的最大容許百分比。
 * [MaxPercentUnhealthyNodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes)。 指定在系統將叢集視為「Error」之前，對狀況不良之節點的最大容許百分比。 在大型叢集中，永遠都有一些節點會關閉或需要修復，因此應設定此百分比來容許這種情形。
-* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 應用程式類型的健康狀態原則對應可以在叢集健康狀態評估期間，用來描述特殊的應用程式類型。 根據預設，所有的應用程式都會放入集區，並使用 MaxPercentUnhealthyApplications 加以評估。 如果某些應用程式類型應該以不同方式處理，則可以從全域集區中取出它們。 反之，則會根據對應中的應用程式類型名稱相關聯的百分比來評估它們。 例如，在叢集中，有數千個不同類型的應用程式，以及某個特殊應用程式類型的數個控制應用程式執行個體。 控制應用程式應該絕對不會發生錯誤。 您可以將全域的 MaxPercentUnhealthyApplications 指定為 20%，以容許一些失敗，但如果應用程式類型為 "ControlApplicationType"，請將 MaxPercentUnhealthyApplications 設為 0。 如此一來，如果這許多應用程式中有一些的狀況不良，但低於全域狀況不良的百分比，則會將叢集評估為 Warning。 Warning 健康狀態並不會影響叢集升級或由 Error 健康狀態觸發的其他監視。 但是，即使一個錯誤的控制應用程式也會使叢集狀況不良，這會觸發復原或暫停叢集升級，視升級設定而定。
+* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 應用程式類型的健康狀態原則對應可以在叢集健康狀態評估期間，用來描述特殊的應用程式類型。 根據預設，所有的應用程式都會放入集區，並使用 MaxPercentUnhealthyApplications 加以評估。 如果某些應用程式類型應該以不同方式處理，則可以從全域集區中取出它們。 反之，則會根據對應中的應用程式類型名稱相關聯的百分比來評估它們。 例如，在叢集中，有數千個不同類型的應用程式，以及某個特殊應用程式類型的數個控制應用程式執行個體。 控制應用程式應該絕對不會發生錯誤。 您可以將全域的 MaxPercentUnhealthyApplications 指定為 20%，以容許一些失敗，但如果應用程式類型為 "ControlApplicationType"，請將 MaxPercentUnhealthyApplications 設為 0。 如此一來，如果這許多應用程式中有一些的狀況不良，但低於全域狀況不良的百分比，則會將叢集評估為 Warning。 Warning 健康狀態並不會影響叢集升級或由 Error 健康狀態觸發的其他監視。 但即使是一個錯誤的控制項應用程式，也會使叢集狀況不良，進而觸發復原或暫停叢集升級（視升級設定而定）。
   對於對應中定義的應用程式類型，所有的應用程式執行個體都是從應用程式的全域集區中所取出。 系統會使用對應的特定 MaxPercentUnhealthyApplications，根據應用程式類型的應用程式總數來評估它們。 所有其他的應用程式都會保留於全域集區中，並使用 MaxPercentUnhealthyApplications 加以評估。
 
 下列範例是來自叢集資訊清單的摘要。 若要定義應用程式類型對應中的項目，請在參數名稱前面加上 "ApplicationTypeMaxPercentUnhealthyApplications-"，後面接著應用程式類型名稱。
@@ -199,7 +199,7 @@ Service Fabric 會使用三種健康狀態來描述實體的健康狀態是否�
 * **描述**。 可讓報告程式提供健康狀態事件相關詳細資訊的字串。 **SourceId**、**Property** 和 **HealthState** 應在報告中完整說明。 說明可增加人們可讀取的報告相關資訊。 文字可讓系統管理員和使用者更容易了解健全狀況報告。
 * **HealthState**。 描述報告健康狀態的 [列舉](service-fabric-health-introduction.md#health-states) 。 接受的值是「OK」、「Warning」和「Error」。
 * **TimeToLive**。 指出健康狀態報告持續有效的時間範圍。 可以搭配 **RemoveWhenExpired**，讓健康狀態資料存放區知道如何評估過期的事件。 根據預設，該值為「Infinite」，代表報告將永遠有效。
-* **RemoveWhenExpired**。 布林值。 若設為 True，則過期的健康狀態報告會自動從健康狀態資料存放區移除，且報告不會影響實體健康狀態評估。 當報表在指定的一段時間內有效時使用，而且報告程式不需要明確地將其清除。它也可用來從健康狀態存放區刪除報告 (例如，監視程式已變更，並停止傳送先前來源和屬性) 的報表。 其傳送的報告可以使用短暫的 TimeToLive 和 RemoveWhenExpired，以便從健康狀態資料存放區清除任何先前的狀態。 若將此值設為 False，則會將過期的報告視為健康狀態評估的錯誤。 False 值示意健康狀態資料存放區，來源應定期報告此屬性。 如果沒有，則一定是看門狗發生了某些錯誤。 看門狗的健康狀態是藉由將事件視為錯誤來擷取。
+* **RemoveWhenExpired**。 布林值。 若設為 True，則過期的健康狀態報告會自動從健康狀態資料存放區移除，且報告不會影響實體健康狀態評估。 當報告在指定的一段時間內有效時使用，而且報告不需要明確地將其清除。它也可用來從健康狀態存放區中刪除報告 (例如，監視程式會變更，並停止傳送先前的來源和屬性) 的報表。 其傳送的報告可以使用短暫的 TimeToLive 和 RemoveWhenExpired，以便從健康狀態資料存放區清除任何先前的狀態。 若將此值設為 False，則會將過期的報告視為健康狀態評估的錯誤。 False 值示意健康狀態資料存放區，來源應定期報告此屬性。 如果沒有，則一定是看門狗發生了某些錯誤。 看門狗的健康狀態是藉由將事件視為錯誤來擷取。
 * **SequenceNumber**。 這個值是必須持續增加的正整數，其表示報告的順序。 健康狀態資料存放區會使用其來偵測因網路延遲或其他問題而較晚收到的陳舊報告。 針對相同的實體、來源和屬性，若序號小於或等於最新套用的數字，則報告會遭到拒絕。 如果未指定，即會自動產生序號。 只有在報告狀態轉換時，才需放入序號。 在此情況下，來源必須記住它所傳送的報告，並保留在容錯移轉復原的資訊。
 
 每個健康狀態報告都需要四種資訊 (SourceId、實體識別碼、Property 和 HealthState)。 不允許 SourceId 字串以前置詞 "**System.**" 開頭，因為這是保留給系統報告。 針對相同的實體，相同的來源和屬性僅能有一個報告。 無論在健康狀態用戶端 (若是批次處理) 或健康狀態資料存放區端，相同來源和屬性的多個報告會互相覆寫。 取代是以序號為根據；較新的報告 (具有較大的序號) 會取代較舊的報告。
@@ -294,7 +294,7 @@ HealthEvents                    :
 
 健康狀態模型常用來監視和診斷，以便評估叢集和應用程式健康狀態，以及監視升級。 其他服務會使用健康狀態資料來執行自動修復、建置叢集健康狀態歷程記錄，以及發出特定情況的警示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [檢視 Service Fabric 健康狀態報告](service-fabric-view-entities-aggregated-health.md)
 
 [使用系統健康狀態報告進行疑難排解](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)

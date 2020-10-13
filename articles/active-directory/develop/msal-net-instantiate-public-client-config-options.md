@@ -1,7 +1,7 @@
 ---
-title: 將公用用戶端應用程式具現化 (MSAL.NET) |Azure
+title: 具現化公用用戶端應用程式 (MSAL.NET) |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用適用于 .NET (MSAL.NET) 的 Microsoft 驗證程式庫，以設定選項具現化公用用戶端應用程式。
+description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) ，以設定選項具現化公用用戶端應用程式。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 349ec8c99bc9e6768e5ec2ded346893da95c1636
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166139"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 以設定選項具現化公用用戶端應用程式
 
-本文說明如何使用適用于 .NET (MSAL.NET) 的 Microsoft 驗證程式庫來具現化[公用用戶端應用程式](msal-client-applications.md)。  應用程式會使用設定檔中定義的設定選項來具現化。
+本文說明如何使用適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 來具現化 [公用用戶端應用程式](msal-client-applications.md) 。  應用程式會使用設定檔中定義的設定選項來具現化。
 
-在初始化應用程式之前，您必須先[註冊](quickstart-register-app.md)它，您的應用程式才能與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊 (可以在 Azure 入口網站) 中找到：
+在初始化應用程式之前，您必須先 [註冊](quickstart-register-app.md) 該應用程式，讓您的應用程式可以與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊 (可在 Azure 入口網站) 中找到：
 
 - 用戶端識別碼 (代表 GUID 的字串) 
-- 識別提供者 URL (名為實例) 和應用程式的登入物件。 這兩個參數統稱為授權單位。
-- 租使用者識別碼，如果您要撰寫僅供組織使用的企業營運應用程式 (也稱為單一租使用者應用程式) 。
-- 對於 web 應用程式，有時也會針對公用用戶端應用程式 (特別是當您的應用程式需要使用訊息代理程式) 時，您也會設定 redirectUri，讓身分識別提供者使用安全性權杖來與您的應用程式連線。
+- 身分識別提供者 URL (名為實例) ，以及您應用程式的登入物件。 這兩個參數統稱為授權單位。
+- 租使用者識別碼（如果您只是針對您的組織撰寫企業營運應用程式） (也命名為單一租使用者應用程式) 。
+- 針對 web 應用程式，有時適用于公用用戶端應用程式 (特別是當您的應用程式需要使用訊息代理程式) 時，您也會設定 redirectUri，讓身分識別提供者使用安全性權杖來與您的應用程式連線。
 
 
-.NET Core 主控台應用程式可能會在設定檔上具有下列*appsettings.js* ：
+.NET Core 主控台應用程式可能會在設定檔上有下列 *appsettings.js* ：
 
 ```json
 {
@@ -90,7 +90,7 @@ public class SampleConfiguration
 }
 ```
 
-下列程式碼會使用設定檔中的設定來建立您的應用程式：
+下列程式碼會使用設定檔案中的設定來建立您的應用程式：
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

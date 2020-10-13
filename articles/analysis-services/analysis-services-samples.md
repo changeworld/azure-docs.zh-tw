@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services 程式碼、專案和資料庫範例 | Microsoft Docs
-description: 本文說明可瞭解 Azure Analysis Services 的程式碼、專案和資料庫範例的資源。
+description: 本文說明可瞭解適用于 Azure Analysis Services 的程式碼、專案和資料庫範例的資源。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2b06a7ee41a69e32f44c44cdec0da6a47ec4b284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82731861"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 範例
@@ -28,7 +28,7 @@ GitHub 上的 [Adventure Works Analysis Services](https://github.com/Microsoft/s
 
 ## <a name="sample-database-on-azure"></a>Azure 上的範例資料庫
 
-Azure Synapse Analytics （SQL 資料倉儲）提供範例 AdventureWorksDW 資料庫，可包含在已布建的資源中。 若要深入瞭解，請參閱[快速入門：建立及查詢 Azure Synapse 分析 SQL 集](/azure/sql-data-warehouse/create-data-warehouse-portal)區。
+Azure Synapse Analytics (SQL 資料倉儲) 提供可包含在已布建資源中的範例 AdventureWorksDW 資料庫。 若要深入瞭解，請參閱 [快速入門：建立和查詢 AZURE SYNAPSE ANALYTICS SQL 集](/azure/sql-data-warehouse/create-data-warehouse-portal)區。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上的範例資料庫
 
@@ -44,7 +44,7 @@ GitHub 上的這些範例資料庫可用來建立和測試您自己的模型。
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [艾德作品教學課程](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Azure 內部部署資料閘道](analysis-services-gateway.md)  

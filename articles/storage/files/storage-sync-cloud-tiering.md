@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5aafaa02f503582bd0050f8a6389d78b52eaa76
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538175"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939148"
 ---
 # <a name="cloud-tiering-overview"></a>雲端階層處理概觀
 雲端階層處理是 Azure 檔案同步的一個選用功能，其中經常存取的檔案會快取到伺服器本機上，而其他的檔案會依原則設定分層處理至 Azure 檔案服務。 當檔案被分層之後，Azure 檔案同步檔案系統篩選器 (StorageSync.sys) 會將本機檔案取代為指標或重新分析點。 重新分析點代表的是針對 Azure 檔案服務中檔案的 URL。 階層式檔案在 NTFS 中具有「離線」屬性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性集，因此協力廠商應用程式可以安全地識別階層式檔案。
@@ -48,9 +48,9 @@ Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名�
 |8 KB (8192)                  | 16 KB   |
 |16 KB (16384)                | 32 KB   |
 |32 KB (32768)                | 64 KB   |
-|64 KB (65536) 和更大    | 128 KB  |
+|64 KB (65536)     | 128 KB  |
 
-使用 Windows Server 2019 和 Azure 檔案同步代理程式版本 12 (未來的代理程式版本) ，也支援最多 2 MB 的叢集大小，並以相同的方式在這些較大的叢集大小上進行階層處理。 較舊的作業系統或代理程式版本支援的叢集大小上限為 64 KB，但除此之外，雲端階層處理無法運作。
+目前支援的叢集大小上限為 64 KB，但針對較大的大小，雲端階層處理無法運作。
 
 Windows 使用的所有檔案系統，會根據叢集大小來組織您的硬碟 (也稱為配置單位大小) 。 叢集大小代表可以用來保存檔案的最小磁碟空間量。 當檔案大小未超過叢集大小的偶數倍數時，必須使用額外的空間將檔案保存到下一個叢集大小的倍數。
 

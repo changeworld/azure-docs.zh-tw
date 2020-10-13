@@ -1,5 +1,5 @@
 ---
-title: 尋找及使用 Azure Marketplace 映射
+title: 尋找和使用 Azure Marketplace 映射
 description: 使用 Azure PowerSHell 來判斷 Marketplace VM 映像的發行者、供應項目、SKU 及版本。
 author: cynthn
 ms.service: virtual-machines
@@ -9,13 +9,13 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288350"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找和使用 VM 映射
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找並使用 VM 映射
 
 本文描述如何使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像。 然後，您可以在建立 VM 時指定 Marketplace 映射。
 
@@ -204,7 +204,7 @@ DataDiskImages   : []
 
 ```
 
-下列範例顯示*資料科學虛擬機器-Windows 2016*映射的類似命令，其具有下列 `PurchasePlan` 屬性： `name` 、 `product` 和 `publisher` 。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
+下列範例顯示 *資料科學虛擬機器-Windows 2016* 映射的類似命令，其中包含下列 `PurchasePlan` 屬性： `name` 、 `product` 和 `publisher` 。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -312,8 +312,8 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 ```
 接著，您會將 VM 設定連同網路設定物件傳遞給 `New-AzVM` Cmdlet。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要使用基本映像資訊透過 `New-AzVM` Cmdlet 快速建立虛擬機器，請參閱[使用 PowerShell 來建立 Windows 虛擬機器](quick-create-powershell.md)。
 
-如需有關使用 Azure Marketplace 映射在共用映射資源庫中建立自訂映射的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](../marketplace-images.md)。
+如需使用 Azure Marketplace 映射在共用映射庫中建立自訂映射的詳細資訊，請參閱在 [建立映射時提供 Azure Marketplace 購買方案資訊](../marketplace-images.md)。

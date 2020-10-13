@@ -9,10 +9,10 @@ ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328100"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>預覽：使用 PowerShell 建立具有 Azure 映射產生器的 Windows VM
@@ -20,9 +20,9 @@ ms.locfileid: "91328100"
 本文示範如何使用 Azure VM 映射產生器 PowerShell 模組來建立自訂的 Windows 映像。
 
 > [!CAUTION]
-> Azure Image Builder 目前處於公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Image Builder 目前處於公開預覽狀態。 所提供的這個預覽版本並沒有服務等級協定。 不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -322,7 +322,7 @@ Azure-Image-Builder-Was-Here
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果不需要在本文中建立的資源，您可以執行下列範例將它們刪除。
+如果不需要本文中建立的資源，您可以執行下列範例將其刪除。
 
 ### <a name="delete-the-image-builder-template"></a>刪除 image builder 範本
 

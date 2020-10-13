@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531672"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
@@ -79,7 +79,7 @@ az login
     
     當您以互動方式登入 Azure 時，如上一節中所述，系統會快取您的認證，因此 Azure CLI 可讓您使用這些相同的認證來登入 Batch 帳戶。 如果您使用服務主體登入 Azure，這些認證也會用來登入您的 Batch 帳戶。
 
-    Azure AD 的優點就是它會提供角色型存取控制 (RBAC)。 使用 RBAC，使用者的存取權取決於他們被指派的角色，而不是他們是否擁有帳戶金鑰。 您可以管理 Azure 角色，而不是管理帳戶金鑰，而是讓 Azure AD 處理存取和驗證。  
+    Azure AD 的優點就是它會提供角色型存取控制 (RBAC)。 使用 RBAC，使用者的存取權取決於他們被指派的角色，而不是他們是否擁有帳戶金鑰。 您可以管理 Azure 角色，並讓 Azure AD 處理存取和驗證，而不是管理帳戶金鑰。  
 
      若要使用 Azure AD 登入 Batch 帳戶，請呼叫 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令： 
 

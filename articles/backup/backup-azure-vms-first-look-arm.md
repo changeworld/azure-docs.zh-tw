@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務來備份
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89667515"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>從 VM 設定備份 Azure VM
@@ -78,7 +78,7 @@ ms.locfileid: "89667515"
 
 遵循 [本文中的指示，藉](backup-azure-arm-vms-prepare.md) 由設定 Azure 備份復原服務保存庫，並在保存庫中啟用備份來啟用 Azure vm 的備份。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如果您對這篇文章中的程序有任何疑問，請參閱[疑難排解指南](backup-azure-vms-troubleshoot.md)。
 - [深入了解](backup-azure-manage-vms.md)管理備份。

@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505608"
 ---
 # <a name="access-the-vfxt-cluster"></a>存取 vFXT 叢集
 
-若要調整叢集設定並監視叢集，請使用 [Avere] 控制台。 Avere 控制台是叢集的瀏覽器型圖形化介面。
+若要調整叢集設定並監視叢集，請使用 Avere 主控台。 Avere 控制台是叢集的瀏覽器型圖形化介面。
 
-由於 vFXT 叢集位於私人虛擬網路內，因此您必須建立 SSH 通道，或使用其他方法來連線到叢集的管理 IP 位址。
+由於 vFXT 叢集位於私人虛擬網路內，因此您必須建立 SSH 通道，或使用其他方法來連接叢集的管理 IP 位址。
 
 有兩個基本步驟：
 
@@ -25,13 +25,13 @@ ms.locfileid: "85505608"
 1. 在網頁瀏覽器中載入叢集的控制台
 
 > [!NOTE]
-> 本文假設您已經在叢集中控制器上，或在叢集虛擬網路內的另一個 VM 上，設定公用 IP 位址。 本文說明如何使用該 VM 作為主機來存取叢集。 如果您使用 VPN 或 ExpressRoute 來存取虛擬網路，請跳至 [連線[至 Avere 控制台]](#connect-to-the-avere-control-panel-in-a-browser)。
+> 本文假設您已經在叢集中控制器上，或在叢集虛擬網路內的另一個 VM 上，設定公用 IP 位址。 本文說明如何使用該 VM 作為主機來存取叢集。 如果您使用 VPN 或 ExpressRoute 來存取虛擬網路，請跳到連線 [到 Avere 主控台](#connect-to-the-avere-control-panel-in-a-browser)。
 
-連線之前，請確定本機電腦上已安裝建立叢集控制器時所使用的 SSH 公開/私密金鑰組。 如果您需要協助，請閱讀 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 適用的 SSH 金鑰文件。 如果您使用的是密碼而不是公開金鑰，當您連線時，系統會提示您輸入密碼。
+連線之前，請確定本機電腦上已安裝建立叢集控制器時所使用的 SSH 公開/私密金鑰組。 如果您需要協助，請閱讀 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 適用的 SSH 金鑰文件。 如果您使用的是密碼而非公開金鑰，則當您連接時，系統會提示您輸入密碼。
 
 ## <a name="create-an-ssh-tunnel"></a>建立 SSH 通道
 
-您可以從 Linux 型或 Windows 10 用戶端系統的命令列建立 SSH 通道。
+您可以從以 Linux 為基礎或 Windows 10 用戶端系統的命令列建立 SSH 通道。
 
 使用具有下列格式的 SSH 通道命令：
 
@@ -55,7 +55,7 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
   您在建立通道時連線到叢集 IP 位址，因此您只需要在瀏覽器中使用 localhost IP 位址。 如果您使用 8443 以外的本機連接埠，請改為使用連接埠號碼。
 
-* 如果您使用 VPN 或 ExpressRoute 連至叢集，請在瀏覽器中瀏覽至叢集管理 IP 位址。 範例：``https://203.0.113.51``
+* 如果您使用 VPN 或 ExpressRoute 連至叢集，請在瀏覽器中瀏覽至叢集管理 IP 位址。 範例： ``https://203.0.113.51``
 
 根據您的瀏覽器，您可能需要按一下 [進階]****，並確認否安全地前往到該頁面。
 
@@ -65,6 +65,6 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 按一下 [登入]****，或按鍵盤上的 Enter 鍵。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-在您登入叢集的控制台之後，請啟用[支援](avere-vfxt-enable-support.md)。
+登入叢集的 [控制台] 之後，請啟用 [支援](avere-vfxt-enable-support.md)。

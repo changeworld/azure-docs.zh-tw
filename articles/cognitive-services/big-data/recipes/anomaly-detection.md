@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691457"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>配方：利用認知服務取得 Big Data 的預測性維護
@@ -100,9 +100,9 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 | timestamp           |   value | deviceId   | 是否異常   |
 |:--------------------|--------:|:-----------|:------------|
-| 2020-05-01 18:33:51 |    3174 | 開發-7      | 否       |
-| 2020-05-01 18:33:52 |    2976 | 開發-7      | 否       |
-| 2020-05-01 18:33:53 |    2714 | 開發-7      | 否       |
+| 2020-05-01 18:33:51 |    3174 | 開發-7      | False       |
+| 2020-05-01 18:33:52 |    2976 | 開發-7      | False       |
+| 2020-05-01 18:33:53 |    2714 | 開發-7      | False       |
 
 
  ## <a name="visualize-anomalies-for-one-of-the-devices"></a>將其中一個裝置的異常視覺化
@@ -149,6 +149,6 @@ plt.show()
 
 ![異常偵測器繪圖](../media/anomaly-output.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 瞭解如何使用 Azure 認知服務、Azure Synapse Analytics 和 Azure CosmosDB 大規模進行預測性維護。 如需詳細資訊，請參閱 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples)上的完整範例。

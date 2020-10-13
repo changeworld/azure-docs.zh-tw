@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743738"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>訓練 scikit-learn-利用 Azure Machine Learning 瞭解大規模模型
@@ -99,7 +99,7 @@ sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path
 ## <a name="configure-and-submit-your-training-run"></a>設定並提交定型回合
 
 ### <a name="create-a-scriptrunconfig"></a>建立 ScriptRunConfig
-建立 ScriptRunConfig 物件，以指定定型作業的設定詳細資料，包括您的訓練腳本、要使用的環境，以及要執行的計算目標。
+建立 ScriptRunConfig 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。
 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。
 
 下列程式碼會設定 ScriptRunConfig 物件，以提交您的作業以便在本機電腦上執行。

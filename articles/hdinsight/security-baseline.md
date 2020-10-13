@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230427"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>適用于 HDInsight 的 Azure 安全性基準
@@ -1198,9 +1198,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
-**指導**方針：如果 Azure Key Vault 與您的 Azure HDInsight 部署搭配使用，請在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
+**指導**方針：如果 Azure Key Vault 與您的 Azure HDInsight 部署搭配使用，請啟用 Key Vault 中的 Soft-Delete，以防止遭到意外或惡意刪除的金鑰。
 
-如何在 Azure Key Vault 中啟用虛刪除：
+如何在 Azure Key Vault 中啟用 Soft-Delete：
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 

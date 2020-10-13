@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967681"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自訂角色的應用程式註冊許可權
@@ -117,7 +117,7 @@ ms.locfileid: "90967681"
 
 ![授與應用程式註冊驗證的存取權，但不支援帳戶類型](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>myOrganization/驗證/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>microsoft.directory/applications.myOrganization/authentication/update
 
 授與與 microsoft 目錄/應用程式/驗證/更新相同的許可權，但僅適用于單一租使用者應用程式。
 
@@ -159,7 +159,7 @@ ms.locfileid: "90967681"
 
 ![此許可權會授與應用程式註冊公開 API 頁面的存取權](./media/roles-custom-available-permissions/app-registration-expose-api.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>myOrganization/許可權/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
 
 授與與 microsoft 目錄/應用程式/許可權/更新相同的許可權，但僅適用于單一租使用者應用程式。
 

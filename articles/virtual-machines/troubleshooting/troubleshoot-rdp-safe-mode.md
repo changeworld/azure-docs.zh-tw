@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: d424cccc0a50198f3ca8c6c040afb87f44282d47
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508894"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因為 VM 開機到安全模式而無法連線到 VM
@@ -24,7 +24,7 @@ ms.locfileid: "86508894"
 此文章說明如何解決因為 VM 設定為開機到安全模式而無法連線到 Azure Windows 虛擬機器 (VM) 的問題進行疑難排解。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您因為 VM 設定為開機到安全模式而無法透過 RDP 連線或其他連線 (例如 HTTP) 連線到 Azure 中的 VM。 當您檢查 Azure 入口網站中[開機診斷](../troubleshooting/boot-diagnostics.md)的螢幕擷取畫面時，您可能會看到該 VM 正常開機，但網路介面無法使用：
 
@@ -35,7 +35,7 @@ ms.locfileid: "86508894"
 在安全模式中，RDP 服務無法使用。 當 VM 開機到安全模式時，只會載入基本系統程式與服務。 這適用於兩個不同版本的安全模式，亦即「安全模式 (基本)」與「安全模式 (含網路功能)」。
 
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "86508894"
     若 VM 已設定為開機到安全模式，您將會在 [Windows 開機載入器]**** 區段下看到稱為 [安全開機]**** 的額外旗標。 若您沒有看到 [安全開機]**** 旗標，表示 VM 並非處於安全模式。 此文章不適用於您的案例。
 
     [安全開機]**** 旗標會隨著下列值出現：
-   - 基本
+   - 最小
    - 網路
 
      在這兩個模式中的任一個模式中，RDP 將不會啟動。 因此，修正方式仍然相同。
@@ -81,7 +81,7 @@ ms.locfileid: "86508894"
 
 1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 啟動復原 VM 的遠端桌面連線。
-3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3. 確定磁片在磁片管理主控台中標示為 [ **線上** ]。 記下指派給已連結 OS 磁碟的磁碟機代號。
 
 #### <a name="enable-dump-log-and-serial-console-optional"></a>啟用傾印記錄檔和序列主控台 (選擇性)
 
@@ -89,7 +89,7 @@ ms.locfileid: "86508894"
 
 若要啟用傾印記錄檔與序列主控台，請執行下列指令碼。
 
-1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
+1. 開啟提升許可權的命令提示字元會話 **， (以系統管理員身分執行**) 。
 2. 執行下列指令碼：
 
     在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
@@ -118,7 +118,7 @@ ms.locfileid: "86508894"
 
 #### <a name="configure-the-windows-to-boot-into-normal-mode"></a>設定 Windows 開機到標準模式
 
-1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
+1. 開啟提升許可權的命令提示字元會話 **， (以系統管理員身分執行**) 。
 2. 檢查開機設定資料。 在下列命令中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
     ```console

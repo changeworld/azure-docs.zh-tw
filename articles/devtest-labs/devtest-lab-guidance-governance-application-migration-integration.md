@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs 中的應用程式遷移與整合
-description: 本文提供在應用程式遷移與整合的內容中，管理 Azure DevTest Labs 基礎結構的指引。
+title: Azure DevTest Labs 中的應用程式遷移和整合
+description: 本文提供在應用程式遷移和整合內容中治理 Azure DevTest Labs 基礎結構的指導方針。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289347"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>治理 Azure DevTest Labs 基礎結構 - 應用程式移轉和整合
@@ -50,12 +50,12 @@ ms.locfileid: "87289347"
 如何設定可輕鬆重複執行的程序，以便將自訂的組織映像帶入 DevTest Labs 環境？
 
 ### <a name="answer"></a>回答
-請參閱[映射 Factory 模式的這段影片](./devtest-lab-faq.md#blog-post)。 此案例是一個進階案例，而提供的指令碼只是範例指令碼。 如果不需要任何變更，則您需要管理和維護環境中所使用的指令碼。
+請參閱這段影片，以瞭解 [Image Factory 模式](./devtest-lab-faq.md#blog-post)。 此案例是一個進階案例，而提供的指令碼只是範例指令碼。 如果不需要任何變更，則您需要管理和維護環境中所使用的指令碼。
 
 在 Azure Pipelines 中，使用 DevTest Labs 建立自訂映像管線：
 
 - [簡介：藉由在 Azure DevTest Labs 中設定映像處理站，在數分鐘內備妥 VM](./devtest-lab-faq.md#blog-post) \(英文\)
-- [映射 Factory –第2部分！設定 Azure Pipelines 和 Factory 實驗室來建立 Vm](./devtest-lab-faq.md#blog-post)
+- [映射處理站-第2部分！設定 Azure Pipelines 和工廠實驗室來建立 Vm](./devtest-lab-faq.md#blog-post)
 - [映像處理站 - 第 3 部分：儲存自訂映像並散發至多個實驗室](./devtest-lab-faq.md#blog-post) \(英文\)
 - [影片：使用 Azure DevTest Labs 自訂映像處理站](./devtest-lab-faq.md#blog-post) \(英文\)
 
@@ -108,7 +108,7 @@ ms.locfileid: "87289347"
 考慮每位使用者或每個實驗室的虛擬機器數目時，有三個主要考量：
 
 - 小組可在實驗室中花費於資源上的**整體成本**。 很容易就能將許多機器向上微調。 若要控制成本，有一種機制是限制每位使用者和/或每個實驗室的 VM 數目
-- 實驗室中的虛擬機器總數會受到可用的[訂用帳戶層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所影響。 其中一個上限是每個訂用帳戶 800 個資源群組。 DevTest Labs 目前會針對每部 VM 建立一個新的資源群組 (除非使用共用的公用 IP)。 如果訂用帳戶中有10個實驗室，實驗室可以在每個實驗室中容納大約79部虛擬機器（800上限為10個實驗室的資源群組） = 每個實驗室79個虛擬機器。
+- 實驗室中的虛擬機器總數會受到可用的[訂用帳戶層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所影響。 其中一個上限是每個訂用帳戶 800 個資源群組。 DevTest Labs 目前會針對每部 VM 建立一個新的資源群組 (除非使用共用的公用 IP)。 如果訂用帳戶中有10個實驗室，實驗室可以容納每個實驗室中大約79部的虛擬機器 (800 個上限–10個實驗室本身的10個資源群組) 79 = 每個實驗室的虛擬機器數。
 - 舉例來說，如果實驗室會透過 Express Route 連線到內部部署，則會針對 VNet/子網路**定義可用的 IP 位址空間**。 若要確保實驗室中的 VM 不會建立失敗 (錯誤：無法取得 IP 位址)，實驗室擁有者可以針對每個已配置可用 IP 位址空間的實驗室指定 VM 的最大數目。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本
@@ -117,7 +117,7 @@ ms.locfileid: "87289347"
 如何在 DevTest Labs 環境中使用 Resource Manager 範本？
 
 ### <a name="answer"></a>回答
-您可以使用[DevTest Labs 中的環境功能](devtest-lab-test-env.md)一文所述的步驟，將您的 Resource Manager 範本部署到 DevTest Labs 環境中。 基本上，您會將 Resource Manager 範本簽入到 Git 存放庫 (Azure Repos 或 GitHub)，並將[適用於範本的私人存放庫](devtest-lab-test-env.md)新增到實驗室。
+您可以使用 [DevTest Labs 文章中的環境功能](devtest-lab-test-env.md) 所述的步驟，將 Resource Manager 範本部署至 DevTest Labs 環境。 基本上，您會將 Resource Manager 範本簽入到 Git 存放庫 (Azure Repos 或 GitHub)，並將[適用於範本的私人存放庫](devtest-lab-test-env.md)新增到實驗室。
 
 如果您使用 DevTest Labs 來裝載開發機器，此案例可能就沒有幫助，但若您要建立代表生產環境的預備環境，則可能會很有用。
 

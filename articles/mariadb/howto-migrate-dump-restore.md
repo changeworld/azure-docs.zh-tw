@@ -1,5 +1,5 @@
 ---
-title: 使用傾印和還原進行遷移-適用於 MariaDB 的 Azure 資料庫
+title: 使用傾印和還原遷移-適用於 MariaDB 的 Azure 資料庫
 description: 此文章將說明兩個常見方法，讓您可在適用於 MariaDB 的 Azure 資料庫中用來備份和還原資料庫，使用如 mysqldump、MySQL Workbench 與 PHPMyAdmin 的工具。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 2/27/2020
 ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118846"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用傾印和還原來將 MariaDB 資料庫移轉至適用於 MariaDB 的 Azure 資料庫
@@ -25,7 +25,7 @@ ms.locfileid: "86118846"
 - MySQL Workbench [MySQL Workbench 下載](https://dev.mysql.com/downloads/workbench/) \(英文\) 或用來執行傾印和還原命令的其他協力廠商 MySQL 工具。
 
 ## <a name="use-common-tools"></a>使用一般工具
-使用常見的公用程式和工具（例如 MySQL 工作臺或 mysqldump），從遠端連線並將資料還原到適用於 MariaDB 的 Azure 資料庫。 在具有網際網路連接的用戶端電腦上使用這類工具，來連線到適用於 MariaDB 的 Azure 資料庫。 如需使用 SSL 加密連接的最佳安全性作法，請參閱[在適用於 MariaDB 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)。 在移轉到適用於 MariaDB 的 Azure 資料庫時，您不需要將傾印檔案移至任何特定的雲端位置。 
+使用常見的公用程式和工具（例如 MySQL 工作臺或 mysqldump），從遠端連線並將資料還原至適用於 MariaDB 的 Azure 資料庫。 在具有網際網路連接的用戶端電腦上使用這類工具，來連線到適用於 MariaDB 的 Azure 資料庫。 如需使用 SSL 加密連接的最佳安全性作法，請參閱[在適用於 MariaDB 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)。 在移轉到適用於 MariaDB 的 Azure 資料庫時，您不需要將傾印檔案移至任何特定的雲端位置。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>傾印和還原的常見用途
 您可以在數個常見案例中使用 MySQL 公用程式 (例如 mysqldump 與 mysqlpump)，將資料庫傾印及載入至適用於 MariaDB 的 Azure 資料庫伺服器。 
@@ -119,8 +119,8 @@ $ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p te
 5. 您可以使用**瀏覽**按鈕來尋找資料庫檔案。 
 6. 按一下 [執行] 按鈕以匯出備份、執行 SQL 命令，並重新建立您的資料庫。
 
-## <a name="next-steps"></a>後續步驟
-- [將應用程式連接到適用於 MariaDB 的 Azure 資料庫](./howto-connection-string.md)。
+## <a name="next-steps"></a>接下來的步驟
+- [將應用程式連線至適用於 MariaDB 的 Azure 資料庫](./howto-connection-string.md)。
  
 <!--
 - For more information about migrating databases to Azure Database for MariaDB, see the [Database Migration Guide](https://aka.ms/datamigration).

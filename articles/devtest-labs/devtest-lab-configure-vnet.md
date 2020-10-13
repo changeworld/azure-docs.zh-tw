@@ -4,10 +4,10 @@ description: 了解如何設定現有的虛擬網路和子網路，並在具備 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283549"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>設定 Azure DevTest Labs 中的虛擬網路
@@ -16,7 +16,7 @@ ms.locfileid: "87283549"
 本文說明如何將現有的虛擬網路加入至實驗室的虛擬網路設定，以在建立 VM 時選擇它。
 
 > [!NOTE]
-> 若要瞭解與 Azure 虛擬網路服務相關聯的成本，請參閱[azure 虛擬網路的定價](../virtual-network/virtual-networks-overview.md#pricing)。
+> 若要瞭解與 Azure 虛擬網路服務相關聯的成本，請參閱 [Azure 虛擬網路的定價](../virtual-network/virtual-networks-overview.md#pricing)。
 
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>使用 Azure 入口網站設定適用於實驗室的虛擬網路
 下列步驟會逐步引導您將現有虛擬網路 (和子網路) 加入至實驗室，以便在同一個實驗室中建立 VM 時加以使用。 
@@ -28,7 +28,7 @@ ms.locfileid: "87283549"
 
     ![存取實驗室的設定與原則](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. 在 [外部資源]**** 區段中，選取 [虛擬網路]****。 隨即顯示針對目前實驗室設定的虛擬網路清單，以及為實驗室所建立的預設虛擬網路。 
-1. 選取 [+ 新增]。
+1. 選取 [+ 新增] 。
    
     ![將現有的虛擬網路加入至您的實驗室](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 1. 在 [虛擬網路]**** 窗格上，選取 [選取虛擬網路]****。
@@ -44,10 +44,10 @@ ms.locfileid: "87283549"
     ![[實驗室的子網路] 窗格](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
    - 指定 [實驗室子網路名稱]****。
-   - 若要允許在實驗室 VM 建立期間使用子網，請選取 [**在虛擬機器建立時使用**]。
+   - 若要允許在實驗室 VM 建立中使用子網，請選取 [ **在虛擬機器建立時使用**]。
    - 若要啟用[共用公用 IP 位址](devtest-lab-shared-ip.md)，請選取 [啟用共用公用 IP]****。
    - 若要允許子網路中使用公用 IP 位址，請選取 [允許建立公用 IP] ****。
-   - 在 [**每位使用者的虛擬機器數上限**] 欄位中，為每個子網指定每位使用者的 vm 數目上限。 如果您想要不限數目的 VM 數，請將此欄位保留空白。
+   - 在 [ **每位使用者的虛擬機器數上限** ] 欄位中，為每個子網指定每位使用者的 vm 數目上限。 如果您想要不限數目的 VM 數，請將此欄位保留空白。
 1. 選取 [確定]**** 以關閉 [實驗室的子網路] 窗格。
 1. 選取 [儲存]**** 以關閉 [虛擬網路] 窗格。
 
@@ -57,5 +57,5 @@ Azure 的[虛擬網路文件](../virtual-network/index.yml)會提供更多有關
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 一旦您在實驗室中加入所需的虛擬網路之後，下一個步驟就是 [將 VM 加入至實驗室](devtest-lab-add-vm.md)。

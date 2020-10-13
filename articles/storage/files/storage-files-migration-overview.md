@@ -8,10 +8,10 @@ ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654254"
 ---
 # <a name="migrate-to-azure-file-shares"></a>遷移至 Azure 檔案共用
@@ -144,7 +144,7 @@ Azure 檔案同步的調整主要是 (檔案和) 資料夾的專案數，而不�
 
 測試的工具版本是4.4.1 版。 它與雲端階層式檔案相容。 此工具不會在其正常操作期間重新叫用階層式檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 1. 建立 Azure 檔案共用部署 (僅限雲端或您想要的混合式) 的方案。
 1. 請參閱可用的遷移指南清單，以尋找符合您的 Azure 檔案共用來源和部署的詳細指南。
@@ -152,5 +152,5 @@ Azure 檔案同步的調整主要是 (檔案和) 資料夾的專案數，而不�
 以下是本文中所述 Azure 檔案儲存體技術的詳細資訊：
 
 * [Azure 檔案共用總覽](storage-files-introduction.md)
-* [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)
+* [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
 * [Azure 檔案同步：雲端分層](storage-sync-cloud-tiering.md)

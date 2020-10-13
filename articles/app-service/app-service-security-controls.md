@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 93e5123e5b61c9013177f7f3c908578b68da52d6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962922"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure App Service 的安全性控制
@@ -49,7 +49,7 @@ ms.locfileid: "88962922"
 | 靜止的伺服器端加密： Microsoft 管理的金鑰 | 是 | 網站檔案內容會儲存在 Azure 儲存體中，這會自動加密待用內容。 <br><br>客戶提供的秘密會在靜止時加密。 密碼會在儲存于 App Service 設定資料庫時待用加密。<br><br>網站 (D:\local 和% TMP% ) 可選擇性地將本機連接的磁片用作暫存儲存體。 本機連接的磁片不會在待用時加密。 | [待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)
 | 靜止的伺服器端加密：客戶管理的金鑰 (BYOK)  | 是 | 客戶可以選擇將應用程式秘密儲存在 Key Vault 中，並在執行時間加以取出。 | [使用 App Service 和 Azure Functions 的 Key Vault 參考 (預覽)](app-service-key-vault-references.md)
 | Azure 資料服務) 的資料行層級加密 (| N/A | |
-| 傳輸中的加密 (例如 ExpressRoute 加密、VNet 加密，以及 VNet VNet 加密 ) | 是 | 客戶可以將網站設定為要求和使用 HTTPS 來輸入流量。  | [如何將 AZURE APP SERVICE HTTPS (的](/archive/blogs/benjaminperkins/how-to-make-an-azure-app-service-https-only) blog 文章) 
+| 傳輸中的加密 (例如 ExpressRoute 加密、VNet 加密，以及 VNet-VNet 加密 ) | 是 | 客戶可以將網站設定為要求和使用 HTTPS 來輸入流量。  | [如何將 AZURE APP SERVICE HTTPS (的](/archive/blogs/benjaminperkins/how-to-make-an-azure-app-service-https-only) blog 文章) 
 | API 呼叫加密| 是 | 設定 App Service 的管理呼叫會透過 HTTPS 的 [Azure Resource Manager](../azure-resource-manager/index.yml) 呼叫進行。 |
 
 ## <a name="configuration-management"></a>設定管理

@@ -7,22 +7,22 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799833"
 ---
-# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 進行 MySQL 驗證
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 來搭配 MySQL 進行驗證
 
 本文將逐步引導您完成如何使用「適用於 MySQL 的 Azure 資料庫」來設定 Azure Active Directory 存取的步驟，以及如何使用 Azure AD 權杖來連線的步驟。
 
 > [!IMPORTANT]
-> Azure Active Directory 驗證僅適用于 MySQL 5.7 和更新版本。
+> Azure Active Directory authentication 僅適用于 MySQL 5.7 和更新版本。
 
 ## <a name="setting-the-azure-ad-admin-user"></a>設定 Azure AD 管理使用者
 
-只有 Azure AD 管理使用者可以建立/啟用 Azure AD 型驗證的使用者。 若要建立 Azure AD 系統管理使用者，請遵循下列步驟
+只有 Azure AD 管理使用者可以建立/啟用 Azure AD 型驗證的使用者。 若要建立 Azure AD 系統管理員使用者，請遵循下列步驟
 
 1. 在 Azure 入口網站中，選取您想要為 Azure AD 啟用的「適用於 MySQL 的 Azure 資料庫」執行個體。
 2. 在 [設定] 下，選取 [Active Directory 管理員]：
@@ -57,19 +57,19 @@ ms.locfileid: "87799833"
 
 使用者/應用程式為了使用 Azure AD 進行驗證所必須執行的步驟如下所述：
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
-您可以依照 Azure Cloud Shell、Azure VM 或本機電腦上的指示進行。 請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+您可以在 Azure Cloud Shell、Azure VM 或本機電腦上執行。 請確定您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="step-1-authenticate-with-azure-ad"></a>步驟 1:使用 Azure AD 進行驗證
 
-一開始請先使用 Azure CLI 工具向 Azure AD 進行驗證。 Azure Cloud Shell 中不需要這個步驟。
+首先，使用 Azure CLI 工具向 Azure AD 進行驗證。 Azure Cloud Shell 不需要此步驟。
 
 ```
 az login
 ```
 
-此命令將會啟動瀏覽器視窗至 Azure AD 驗證頁面。 您需要提供 Azure AD 的使用者識別碼和密碼。
+此命令會啟動 Azure AD authentication 頁面的瀏覽器視窗。 您需要提供 Azure AD 的使用者識別碼和密碼。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>步驟 2:擷取 Azure AD 存取權杖
 
@@ -126,12 +126,12 @@ mysql -h mydb.mysql.database.azure.com \
 
 連接時的重要考慮事項：
 
-* `user@tenant.onmicrosoft.com`這是您嘗試連接的 Azure AD 使用者或群組的名稱
-* 請一律在 Azure AD 的使用者/組名後面附加伺服器名稱 (例如 `@mydb`) 
+* `user@tenant.onmicrosoft.com` 這是您嘗試連接的 Azure AD 使用者或組名
+* 一律在 Azure AD 使用者/組名之後附加伺服器名稱 (例如 `@mydb`) 
 * 請務必使用正確的 Azure AD 使用者或組名的拼寫方式
-* Azure AD 使用者和組名會區分大小寫
+* Azure AD 的使用者和組名會區分大小寫
 * 以群組方式連接時，請只使用組名 (例如 `GroupName@mydb`) 
-* 如果名稱包含空格，請 `\` 在每個空格前面使用來將它取消
+* 如果名稱包含空格，請 `\` 在每個空間之前使用，以將其換用。
 
 請注意，[enable-cleartext-plugin] 設定 – 您需要將類似的設定與其他用戶端搭配使用，以確保權杖傳送至伺服器，而不會進行雜湊處理。
 
