@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
 ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449317"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure 監視器 views 中的篩選
@@ -50,8 +50,8 @@ ms.locfileid: "91449317"
 | 欄位名稱 | 查詢值 | Tag |
 |:--|:--|:--|
 | 電腦   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | 電腦 |
-| EventLevelName | Event &#124; distinct EventLevelName | 嚴重性 |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | 嚴重性 |
+| EventLevelName | Event &#124; distinct EventLevelName | Severity |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

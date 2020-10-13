@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631319"
 ---
 # <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>針對您的 StorSimple 使用 Azure Active Directory (AD) 驗證
@@ -39,7 +39,7 @@ AAD 驗證會在執行 Update 5 或更新版本的 StorSimple 8000 系列裝置�
 
 如果使用的是 StorSimple 8000 系列，請務必在防火牆規則中包含下列 URL：
 
-| URL 模式                         | 雲端 | 元件/功能         |
+| URL 模式                         | Cloud | 元件/功能         |
 |------------------------------------|-------|----------------------------------|
 | `https://login.windows.net`        | Azure 公用 |AAD 驗證服務      |
 | `https://login.microsoftonline.us` | 美國政府 |AAD 驗證服務      |

@@ -4,10 +4,10 @@ description: 在 Azure Container Registry 中執行 az acr check health 診斷�
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565593"
 ---
 # <a name="health-check-error-reference"></a>健康情況檢查錯誤參考

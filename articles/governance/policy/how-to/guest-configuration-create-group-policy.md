@@ -3,12 +3,12 @@ title: 如何從適用于 Windows 的群組原則基準建立來賓設定原則�
 description: 瞭解如何將群組原則從 Windows Server 2019 安全性基準轉換成原則定義。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547763"
+ms.locfileid: "91893368"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>如何從適用于 Windows 的群組原則基準建立來賓設定原則定義
 
@@ -87,7 +87,7 @@ DSC 社區已發佈 [BaselineManagement 模組](https://github.com/microsoft/Bas
 
 ## <a name="create-azure-policy-guest-configuration"></a>建立 Azure 原則來賓設定
 
-下一個步驟是將檔案發佈至 blob 儲存體。 
+下一步是要將檔案發佈至 Azure Blob 儲存體。 
 
 1. 下列指令碼包含可供用來自動執行這項工作的函式。 請注意，函數中使用的命令 `publish` 需要 `Az.Storage` 模組。
 
@@ -145,7 +145,7 @@ DSC 社區已發佈 [BaselineManagement 模組](https://github.com/microsoft/Bas
     $blob = 'Server2019Baseline.zip' 
     ```
 
-1. 使用 publish 函式搭配指派的參數，將來賓設定套件發佈至公用 blob 儲存體。
+1. 使用 publish 函式搭配指派的參數，將來賓設定套件發佈至公用 Blob 儲存體。
 
 
    ```azurepowershell-interactive

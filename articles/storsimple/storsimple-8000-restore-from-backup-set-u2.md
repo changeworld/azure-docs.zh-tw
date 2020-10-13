@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527824"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972011"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>從備份組還原 StorSimple 磁碟區
 
@@ -115,7 +115,7 @@ ms.locfileid: "86527824"
    
 4. 瀏覽回到 [備份類別目錄] **** 索引標籤，並選取備份組。 以滑鼠右鍵按一下，然後從操作功能表中選取 [還原]****。
 
-    ![備份組清單](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![備份組清單2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. 系統將提示您進行確認。 檢閱還原資訊，然後選取 [確認] 核取方塊。
    
@@ -123,7 +123,7 @@ ms.locfileid: "86527824"
 
 7. 按一下 [還原]。 這將會起始還原工作，而您可以存取 [工作]**** 頁面來檢視。
 
-   ![確認電子郵件](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![確認頁面2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 還原完成之後，請確認磁碟區的內容已由備份的磁碟區所取代。
 
@@ -134,7 +134,7 @@ ms.locfileid: "86527824"
 
 若要完成還原作業，請使主機上的磁碟區離線，然後重試還原作業。 請注意，在還原程序期間所執行的磁碟區資料修改將會遺失。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何 [管理 StorSimple 磁碟區](storsimple-8000-manage-volumes-u2.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

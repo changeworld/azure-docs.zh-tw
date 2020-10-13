@@ -4,12 +4,12 @@ description: 本文將逐步解說如何建立 JavaScript 應用程式，以使�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0acceffca79a36ceabf709aa6d7faf1bf79b0c83
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282165"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728942"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript (azure/event-hubs 第 5 版) 將事件傳送至事件中樞或從中接收事件
 本快速入門說明如何使用 **azure/event-hubs 第 5 版** JavaScript 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
@@ -104,8 +104,10 @@ npm install @azure/eventhubs-checkpointstore-blob
 ## <a name="receive-events"></a>接收事件
 在本節中，您會使用 JavaScript 應用程式中的 Azure Blob 儲存體檢查點存放區，從事件中樞接收事件。 其會在 Azure 儲存體 Blob 中，定期對接收的訊息執行中繼資料檢查點檢查。 此方法可在稍後輕鬆地從您離開的地方繼續接收訊息。
 
-> [!NOTE]
-> 如果您在 Azure Stack Hub 上執行，該平台可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 例如，如果您在 [Azure Stack Hub 2002 版](/azure-stack/user/event-hubs-overview)上執行 ，儲存體服務的最高可用版本為 2017-11-09。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2017-11-09 為目標。 如需如何設定特定儲存體 API 版本目標的範例，請參閱 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 範例。 如需 Azure Stack Hub 支援的 Azure 儲存體服務版本詳細資訊，請參閱 [Azure Stack Hub 儲存體：差異與注意事項](/azure-stack/user/azure-stack-acs-differences)。
+> [!WARNING]
+> 如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建所支援的 Azure 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，並在您的程式碼中以該版本作為目標。 
+>
+> 例如，如果您在 Azure Stack Hub 2005 版上執行，儲存體服務的最高可用版本為 2019-02-02。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2019-02-02 為目標。 如需如何設定特定儲存體 API 版本目標的範例，請參閱 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 範例。 
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>建立 Azure 儲存體帳戶和 Blob 容器

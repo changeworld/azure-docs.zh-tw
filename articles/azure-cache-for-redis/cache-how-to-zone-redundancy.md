@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: 33c346fa2e4572799ad6341bd5115cdd6e3b9ec9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569982"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>針對 Azure Cache for Redis (預覽版啟用區域冗余) 
@@ -64,7 +64,7 @@ Azure Cache for Redis Standard 和 Premium 層提供內建的虛擬機器，方�
 
 1. 按一下 [建立]。 
    
-    建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀]  頁面上監視進度。 當 [狀態]  顯示為 [執行中]  時，表示快取已可供使用。
+    建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。
    
     > [!NOTE]
     > 建立快取之後，就無法變更可用性區域。

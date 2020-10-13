@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 06/15/2020
-ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836678"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945985"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>適用于 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 的透明資料加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ TDE 會在分頁層次上執行資料的即時 I/O 加密和解密。 系統會�
 > 預設會使用服務管理的透明資料加密來加密 SQL Database 中的所有新建立的資料庫。 預設不會加密在2017之前建立的現有 SQL 資料庫，以及透過還原、異地複寫和資料庫複本建立的 SQL 資料庫。 依預設，在2019年2月之前建立的現有 SQL 受控執行個體資料庫不會加密。 透過 restore 建立的 SQL 受控執行個體資料庫會繼承來源的加密狀態。
 
 > [!NOTE]
-> TDE 無法用來加密 SQL Database 中的 **master** 資料庫。  **主要**資料庫包含在使用者資料庫上執行 TDE 作業所需的物件。
+> TDE 無法用來加密 Azure SQL Database 和 Azure SQL 受控執行個體中的 **master** 資料庫。 **主要**資料庫包含在使用者資料庫上執行 TDE 作業所需的物件。
 
 ## <a name="service-managed-transparent-data-encryption"></a>服務管理的透明資料加密
 

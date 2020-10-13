@@ -7,17 +7,17 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368884"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
 [OpenFaaS][open-faas] 是一種架構，可透過使用容器來建立無伺服器函式。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 為了要完成本文中的步驟，您需要下列項目。
 

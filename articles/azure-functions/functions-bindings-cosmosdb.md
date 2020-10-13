@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531571"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876034"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 Azure Cosmos DB 繫結
 
@@ -184,7 +184,7 @@ JavaScript 不支援屬性。
 |**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此參數。 |
 |**name** | n/a | 函式程式碼中使用的變數名稱，代表有變更的文件清單。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 應用程式設定的名稱，包含用來連接到要監視之 Azure Cosmos DB 帳戶的連接字串。 |
-|**Database**|**DatabaseName**  | 含有要監視之集合的 Azure Cosmos DB 資料庫名稱。 |
+|**databaseName**|**DatabaseName**  | 含有要監視之集合的 Azure Cosmos DB 資料庫名稱。 |
 |**collectionName** |**CollectionName** | 要監視的集合名稱。 |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (選擇性) 應用程式設定的名稱，包含連至保存租用集合之服務的連接字串。 如果未設定，會使用 `connectionStringSetting` 值。 在入口網站中建立繫結時，會自動設定此參數。 租用集合的連接字串必須具有寫入權限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (選擇性) 保存用來儲存租用之集合的資料庫名稱。 如果未設定，會使用 `databaseName` 設定的值。 在入口網站中建立繫結時，會自動設定此參數。 |
@@ -214,6 +214,8 @@ JavaScript 不支援屬性。
 ## <a name="input"></a>輸入
 
 Azure Cosmos DB 輸入繫結會使用 SQL API 來擷取一或多個 Azure Cosmos DB 文件，並傳遞給函式的輸入參數。 您能以叫用函式的觸發程序作為基礎，來判斷文件識別碼或查詢參數。
+
+## <a name="input---example"></a>輸入 - 範例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1118,7 +1120,7 @@ JavaScript 不支援屬性。
 |**type**     | n/a | 必須設為 `documentdb`。        |
 |**direction**     | n/a | 必須設為 `in`。         |
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
-|**Database** |**DatabaseName** |包含文件的資料庫。        |
+|**databaseName** |**DatabaseName** |包含文件的資料庫。        |
 |**collectionName** |**CollectionName** | 包含文件的集合名稱。 |
 |**id**    | **識別碼** | 要擷取之文件的識別碼。 此屬性支援[繫結運算式](./functions-bindings-expressions-patterns.md)。 請勿同時設定 **id** 和 **sqlQuery** 屬性。 如果您未設定其中一個，就會擷取整個集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用來擷取多份文件的 Azure Cosmos DB SQL 查詢。 屬性會支援執行階段繫結，如此範例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 請勿同時設定 **id** 和 **sqlQuery** 屬性。 如果您未設定其中一個，就會擷取整個集合。|
@@ -1146,6 +1148,8 @@ JavaScript 不支援屬性。
 ## <a name="output"></a>輸出
 
 Azure Cosmos DB 輸出繫結可讓您使用 SQL API，將新的文件寫入 Azure Cosmos DB 資料庫。
+
+## <a name="output---example"></a>輸出 - 範例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1457,7 +1461,7 @@ JavaScript 不支援屬性。
 |**type**     | n/a | 必須設為 `documentdb`。        |
 |**direction**     | n/a | 必須設為 `out`。         |
 |**name**     | n/a | 代表函式中之文件的繫結參數名稱。  |
-|**Database** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
+|**databaseName** | **DatabaseName**|包含其中將建立文件之集合的資料庫。     |
 |**collectionName** |**CollectionName**  | 包含其中將建立文件之集合的名稱。 |
 |**>createifnotexists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/documentdb/)。  |
 |**partitionKey**|**PartitionKey** |當 `CreateIfNotExists` 為 true 時，定義所建立集合的分割區索引鍵路徑。|

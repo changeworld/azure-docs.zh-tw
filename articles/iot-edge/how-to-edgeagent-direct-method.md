@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240352"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972538"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用內建直接方法與 edgeAgent 通訊
 
@@ -69,13 +69,14 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 
 ![在 Azure 入口網站中叫用直接方法 ' RestartModule '](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>實驗方法
+## <a name="diagnostic-direct-methods"></a>診斷直接方法
 
-新的直接方法選項可作為測試的實驗性功能，包括：
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs)：取出直接方法回應中內嵌的模組記錄。
+* [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs)：取出模組記錄，並將它們上傳至 Azure Blob 儲存體。
+* [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)：使用支援配套取得模組記錄，並將 zip 檔案上傳至 Azure Blob 儲存體。
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status)：檢查上傳記錄檔或支援組合要求的狀態。
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md)：取出模組記錄，並將它們上傳至 Azure Blob 儲存體。
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus)：檢查上傳記錄要求的狀態。
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs)：取出直接方法回應中內嵌的模組記錄。
+這些診斷直接方法可從1.0.10 版本取得。
 
 ## <a name="next-steps"></a>後續步驟
 

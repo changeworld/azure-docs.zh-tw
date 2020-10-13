@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447819"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上建立和布建具有 TPM 的 IoT Edge 裝置
 
-本文說明如何使用 (TPM) 的可信賴平臺模組，在 Linux IoT Edge 裝置上測試自動布建。 您可以使用裝置布建 [服務](../iot-dps/index.yml)來自動布建 Azure IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱布建 [總覽，](../iot-dps/about-iot-dps.md#provisioning-process) 再繼續進行。
+本文說明如何使用 (TPM) 的可信賴平臺模組，在 Linux IoT Edge 裝置上測試自動布建。 您可以使用裝置布建 [服務](../iot-dps/index.yml)來自動布建 Azure IoT Edge 裝置。 如果您不熟悉自動佈建程序，請先檢閱[佈建](../iot-dps/about-iot-dps.md#provisioning-process)概觀，再繼續作業。
 
 工作如下所示：
 
@@ -170,13 +170,13 @@ ms.locfileid: "91447819"
 
    6. 視需要將標記值新增至 [初始裝置對應項狀態]****。 您可以使用標記將裝置群組設定為模組部署的目標。 如需詳細資訊，請參閱 [大規模部署 IoT Edge 模組](how-to-deploy-at-scale.md)。
 
-   7. 選取 [儲存]。
+   7. 選取 [儲存]****。
 
 現在此裝置已有註冊，IoT Edge 執行時間可以在安裝期間自動布建裝置。
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 
-IoT Edge 執行階段會部署在所有 IoT Edge 裝置上。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。 在虛擬機器上安裝 IoT Edge 執行階段。
+IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。 在虛擬機器上安裝 IoT Edge 執行階段。
 
 開始閱讀您的裝置類型適用的文章之前，請先了解您的 DPS [識別碼範圍]**** 和裝置的 [註冊識別碼]****。 如果您安裝了範例 Ubuntu Server，請使用 **x64** 指示。 請務必將 IoT Edge 執行階段設定為自動佈建，而不是手動佈建。
 

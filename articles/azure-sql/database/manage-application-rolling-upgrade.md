@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450265"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL Database 主動式異地複寫管理雲端應用程式的輪流升級
@@ -151,7 +151,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需商務持續性的總覽和案例，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+* 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 * 若要瞭解 Azure SQL Database 主動式異地複寫，請參閱 [使用主動式異地複寫建立可讀取的次要資料庫](active-geo-replication-overview.md)。
 * 若要了解 Azure SQL Database 自動容錯移轉群組，請參閱[使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉](auto-failover-group-overview.md)。
 * 若要了解 Azure App Service 中的預備環境，請參閱[在 Azure App Service 中設定預備環境](../../app-service/deploy-staging-slots.md)。

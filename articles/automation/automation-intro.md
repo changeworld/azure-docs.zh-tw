@@ -7,12 +7,12 @@ keywords: azure 自動化, DSC, powershell, 狀態組態, 更新管理, 變更�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448057"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715973"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
 
@@ -64,7 +64,7 @@ Azure 自動化包含一組共用資源，讓您能更輕鬆地自動化，並�
 
 ### <a name="role-based-access-control"></a>角色型存取控制
 
-Azure 自動化支援角色型存取控制 (RBAC)，以控制自動化帳戶和其資源的存取權。 若要深入了解如何在您的自動化帳戶、Runbook 和作業上設定 RBAC，請參閱 [Azure 自動化的角色型存取控制](automation-role-based-access-control.md)。
+Azure 自動化支援 Azure 角色型存取控制 (Azure RBAC)，以控制自動化帳戶和其資源的存取權。 若要深入了解如何在您的 Azure 自動化帳戶、Runbook 和作業上設定 RBAC，請參閱 [Azure 自動化的角色型存取控制](automation-role-based-access-control.md)。
 
 ### <a name="source-control-integration"></a>原始檔控制整合
 
@@ -86,7 +86,7 @@ Azure 自動化可支援透過基礎結構和應用程式的生命週期進行�
 * **尋找變更** - 識別可能造成設定不正確的變更，並且改善作業相容性。
 * **監視** - 隔離造成問題的機器變更，並加以修復或向管理系統呈報。
 * **保護** - 在引發安全性警示時隔離機器。 設定客體需求。
-* **管理** - 設定小組的 RBAC。 復原未使用的資源。
+* **管理** - 設定小組的 Azure RBAC。 復原未使用的資源。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

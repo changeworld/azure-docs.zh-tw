@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87554773"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972351"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的備份和還原選項
 
@@ -32,7 +32,7 @@ ms.locfileid: "87554773"
 
 您可藉由隨選測試容錯移轉來執行災害復原演練，完全不影響生產工作負載或進行中的複寫。 建立復原計劃，對於在多個 VM 上執行的整個應用程式協調容錯移轉和容錯回復。 復原計劃功能會與 Azure 自動化 Runbook 整合。
 
-您可以[複寫虛擬機器](https://aka.ms/a2a-getting-started)來開始進行。 
+您可以[複寫虛擬機器](../site-recovery/azure-to-azure-quickstart.md)來開始進行。 
 
 ## <a name="managed-snapshots"></a>受控快照集 
 

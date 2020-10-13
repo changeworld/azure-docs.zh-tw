@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566783"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis-preview"></a>將複本新增至 Azure Cache for Redis (預覽) 
@@ -60,7 +60,7 @@ Azure Cache for Redis Standard 和 Premium 層提供冗余，方法是將每個�
 
 1. 按一下 [建立]。
    
-    建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀]  頁面上監視進度。 當 [狀態]  顯示為 [執行中]  時，表示快取已可供使用。
+    建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。
 
     > [!NOTE]
     > 快取中的複本數目在建立後即無法變更。

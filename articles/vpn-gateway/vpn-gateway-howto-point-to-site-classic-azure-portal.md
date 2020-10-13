@@ -1,18 +1,18 @@
 ---
-title: 使用點對站將電腦連線至 Azure 虛擬網路︰Azure 入口網站傳統 | Microsoft Docs
+title: 使用點對站和憑證驗證將電腦連線到虛擬網路： Azure 入口網站傳統 |Microsoft Docs
 description: 使用 Azure 入口網站建立傳統的點對站 VPN 閘道連線。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0618c120a7fe572aa55b423d36dce3ef5656da
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984781"
+ms.locfileid: "91876187"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用憑證驗證設定點對站連線 (傳統)
 
@@ -35,7 +35,7 @@ ms.locfileid: "84984781"
 
 ![Point-to-Site-diagram](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 點對站憑證驗證連線需要下列先決條件：
 
@@ -79,31 +79,11 @@ ms.locfileid: "84984781"
 
 ### <a name="part-1-create-a-virtual-network"></a>第 1 部份 - 建立虛擬網路
 
-如果您還沒有虛擬網路 (VNet)，請建立一個。 已提供螢幕擷取畫面做為範例。 請務必將值取代為您自己的值。 若要使用 Azure 入口網站建立 VNet，請使用下列步驟：
+如果您已經有 VNet，請驗證設定是否與您的 VPN 閘道設計相容。 請特別注意任何可能與其他網路重疊的子網路。
 
-1. 在 [Azure 入口網站](https://portal.azure.com) 功能表上，或從 [首頁] 頁面，選取 [建立資源]。 [新增]**** 頁面隨即開啟。
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
 
-2. 在 [搜尋 Marketplace]**** 欄位中，輸入「虛擬網路」**，然後從傳回的清單中選取 [虛擬網路]****。 [虛擬網路]**** 頁面隨即開啟。
-
-3. 從 [選取部署模型]**** 清單，選取 [傳統]****，然後選取 [建立]****。 [建立虛擬網路]**** 頁面隨即開啟。
-
-4. 在 [建立虛擬網路]**** 頁面上進行 VNet 設定。 在此頁面上，您會新增您的第一個位址空間和單一子網路位址範圍。 完成 VNet 建立之後，您可以返回並新增其他子網路和位址空間。
-
-   ![建立虛擬網路頁面](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
-
-5. 從下拉式清單選取您想要使用的 [訂用帳戶]****。
-
-6. 選取現有的 **資源群組**。 或者，選取 [新建]**** 並輸入名稱來建立新的資源群組。 如果您要建立新的資源群組，請根據您計劃的組態值來命名資源群組。 如需有關資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md#resource-groups)。
-
-7. 選取 VNet 的 [位置]****。 此設定會決定您部署到此 VNet 的資源所在的地理位置。
-
-8. 選取 [建立]**** 來建立 VNet。 從 [通知]**** 頁面，您會看到**部署進行中**訊息。
-
-8. 在虛擬網路建立好之後，[通知]**** 頁面上的訊息會變成**部署成功**。 如果您想要輕鬆地在儀表板上找到您的 VNet，請選取 [釘選至儀表板]****。 
-
-10. 新增 DNS 伺服器 (選擇性)。 建立虛擬網路之後，您可以新增 DNS 伺服器的 IP 位址，以便進行名稱解析。 您指定的 DNS 伺服器 IP 位址應該是 DNS 伺服器的位址，其可解析 VNet 中資源的名稱。
-
-    若要新增 DNS 伺服器，請從 VNet 頁面選取 [DNS 伺服器]****。 然後，輸入所要使用 DNS 伺服器的 IP 位址，並選取 [儲存]****。
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>第2部分：建立閘道子網和動態路由閘道
 
@@ -280,7 +260,7 @@ ms.locfileid: "84984781"
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-point-to-site-classic-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 連線完成後，就可以將虛擬機器新增至您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。 
 

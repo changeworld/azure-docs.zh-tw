@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: bceaa8fd2f47476d6b6ea6dafb88576c8bcc9712
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91367881"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>從 Excel 使用 Azure Machine Learning Studio (傳統) Web 服務
 
-**適用于：** ![適用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) 不 ![ 適用。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 Azure Machine Learning Studio (傳統) 可讓您輕鬆地直接從 Excel 呼叫 web 服務，而不需要撰寫任何程式碼。
 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363200"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶
 
 本文說明如何讓使用者能夠從 Azure Active Directory (Azure AD) 來存取開發人員入口網站。 本指南也說明如何新增包含 Azure AD 使用者的外部群組來管理使用者。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
 - 匯入並發佈 Azure API 管理執行個體。 如需詳細資訊，請參閱[匯入和發佈](import-and-publish.md)。
@@ -34,7 +34,7 @@ ms.locfileid: "91363200"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 來授權開發人員帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
-2. 選取 ![箭號圖示。](./media/api-management-howto-aad/arrow.png).
+2. Select ![箭號圖示。](./media/api-management-howto-aad/arrow.png).
 3. 在搜尋方塊中輸入 **api** 。
 4. 選取 [ **API 管理服務**]。
 5. 選取 API 管理服務執行個體。

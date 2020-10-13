@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 617608f382d3331e59ae92c9eb272347c736b768
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828997"
 ---
 Functions 可讓您使用金鑰來提高開發期間存取 HTTP 函式端點的困難度。 除非 HTTP 觸發程序函數的 HTTP 存取層級設定為 `anonymous`，否則要求必須在要求中包含 API 存取金鑰。 

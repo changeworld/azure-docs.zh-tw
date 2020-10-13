@@ -9,10 +9,10 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716098"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
@@ -280,7 +280,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-不可以。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+否。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
@@ -292,7 +292,7 @@ def set_default_acls_for_new_child(parent, child):
 
 - 呼叫端具有「超級使用者」許可權，
 
-Or
+或者
 
 - 父目錄必須具有 [寫入 + 執行] 權限。
 - 要刪除的目錄及其中的每個目錄，都需要 [讀取 + 寫入 + 執行] 權限。

@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺�
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713413"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >您必須具有 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
 
-當您安裝代理程式並將它設定為連接到已啟用 Azure Arc 的伺服器之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+在安裝好代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

@@ -2,7 +2,7 @@
 title: 將 RHEL VM 加入 Azure AD Domain Services |Microsoft Docs
 description: 瞭解如何設定 Red Hat Enterprise Linux 的虛擬機器，並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: ffde2317ea66a15936df75c4fe2455f627ea6e98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005084"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962117"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 Red Hat Enterprise Linux 的虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -24,7 +24,7 @@ ms.locfileid: "87005084"
 
 本文說明如何將 Red Hat Enterprise Linux (RHEL) VM 加入受控網域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -314,7 +314,7 @@ sudo getent passwd contosoadmin
     sudo yum update
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您在將 VM 連接到受控網域或以網域帳戶登入時發生問題，請參閱 [疑難排解網域加入問題](join-windows-vm.md#troubleshoot-domain-join-issues)。
 

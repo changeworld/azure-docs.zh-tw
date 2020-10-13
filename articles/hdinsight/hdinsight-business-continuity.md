@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857770"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893640"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 商務持續性
 
@@ -84,7 +84,7 @@ HDInsight 提供99.9% 的可用性 SLA。 為了在單一部署中提供高可�
 
 ### <a name="hdinsight-metastore"></a>HDInsight 中繼存放區
 
-HDInsight 會使用 [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) 作為中繼存放區，提供99.99% 的 SLA。 有三個數據複本保存在具有非同步複寫的資料中心內。 如果遺失複本，則會順暢地提供替代複本。 預設支援[主動式異地](../azure-sql/database/active-geo-replication-overview.md)複寫，最多可有四個資料中心。 如果有容錯移轉（手動或資料中心），階層中的第一個複本將會自動變成可讀寫功能。 如需詳細資訊，請參閱 [Azure SQL Database 商務持續性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+HDInsight 會使用 [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) 作為中繼存放區，提供99.99% 的 SLA。 有三個數據複本保存在具有同步複寫的資料中心內。 如果遺失複本，則會順暢地提供替代複本。 預設支援[主動式異地](../azure-sql/database/active-geo-replication-overview.md)複寫，最多可有四個資料中心。 如果有容錯移轉（手動或資料中心），階層中的第一個複本將會自動變成可讀寫功能。 如需詳細資訊，請參閱 [Azure SQL Database 商務持續性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 
 ### <a name="hdinsight-storage"></a>HDInsight 儲存體
 
@@ -112,7 +112,7 @@ HDInsight 建議 Azure Data Lake Storage Gen2 作為基礎儲存層。 [Azure �
 |----|------------------------|-----------------------|
 |資料儲存體|複製次要區域中的主要資料/資料表|只複寫策劃資料|
 |資料輸出|輸出跨區域資料傳輸有價格。 檢查頻寬定價指導方針|只複寫策劃資料以縮減區域輸出使用量|
-|叢集計算|次要區域中的其他 HDInsight 叢集|在主要失敗之後使用自動化腳本來部署次要計算。 < \br>< \br>使用自動調整功能，將次要叢集大小維持在最小值。 < \br>< \br>使用較便宜的 VM Sku。 < \br>< \br> 在 VM Sku 可折扣的區域中建立次要資料庫。|
+|叢集計算|次要區域中的其他 HDInsight 叢集|在主要失敗之後，使用自動化腳本來部署次要計算。 使用自動調整，將次要叢集大小保持在最小值。 使用較便宜的 VM Sku。 在 VM Sku 可折扣的區域中建立次要資料庫。|
 |驗證 |次要區域中的多使用者案例將會產生額外的 Azure AD DS|避免次要區域中有多使用者的進行。|
 
 ### <a name="complexity-optimizations"></a>複雜性優化

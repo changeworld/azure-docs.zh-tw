@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440587"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946159"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -129,7 +129,7 @@ ms.locfileid: "89440587"
 
 | 屬性 | 描述 | 必要？ |
 |:--- |:--- |:--- |
-| type | 若為複製活動，請將設定為 `Copy` | 是 |
+| 型別 | 若為複製活動，請將設定為 `Copy` | 是 |
 | 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
 | 輸出 | 指定您所建立指向接收資料的資料集。 複製活動僅支援單一輸出。 | 是 |
 | typeProperties | 指定要設定複製活動的屬性。 | 是 |

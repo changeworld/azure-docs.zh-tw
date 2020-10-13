@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815601"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972521"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的可用性選項
 
@@ -51,7 +51,7 @@ Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 VM。 V
 
 **容錯網域和更新網域**
 
-虛擬機器擴展集藉由調整容錯網域和更新網域，簡化高可用性的設計。 您只需要定義擴展集的容錯網域計數。 擴展集可用的容錯網域數目可能會因區域而異。 請參閱 [在 Azure 中管理虛擬機器的可用性](./windows/manage-availability.md)。
+虛擬機器擴展集藉由調整容錯網域和更新網域，簡化高可用性的設計。 您只需要定義擴展集的容錯網域計數。 擴展集可用的容錯網域數目可能會因區域而異。 請參閱 [在 Azure 中管理虛擬機器的可用性](./manage-availability.md)。
 
 
 ## <a name="availability-sets"></a>可用性設定組
@@ -61,7 +61,7 @@ Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 VM。 V
 
 若 VM 使用 [Azure 受控磁碟](./faq-for-disks.md)，VM 會在使用受管理的可用性設定組時配合使用受控磁碟容錯網域。 此一配合行為可確保連接到 VM 的所有受控磁碟都位於相同的受控磁碟容錯網域。 
 
-在受管理的可用性設定組中只能建立使用受控磁碟的 VM。 受控磁碟容錯網域數目會依區域而異，每個區域會有兩個或三個受控磁碟容錯網域。 閱讀更多適用於 [Linux VM](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) 或 [Windows VM](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) 的這些受控磁碟容錯網域相關資訊。
+在受管理的可用性設定組中只能建立使用受控磁碟的 VM。 受控磁碟容錯網域數目會依區域而異，每個區域會有兩個或三個受控磁碟容錯網域。 閱讀更多適用於 [Linux VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 或 [Windows VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的這些受控磁碟容錯網域相關資訊。
 
 ![受控可用性設定組](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

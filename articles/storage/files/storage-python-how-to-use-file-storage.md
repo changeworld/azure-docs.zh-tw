@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 11c31b9ce3c5a8d8fba18d8e7c46ac38b0559aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856308"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876092"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 開發 Azure 檔案服務
 
@@ -95,7 +95,7 @@ from azure.storage.file import FileService
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-`FileService`物件可讓您使用共用、目錄和檔案。 下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 `FileService` 物件。 以您的帳戶名稱和金鑰取代 `<myaccount>` 和 `<mykey>`。
+[FileService](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true)物件可讓您使用共用、目錄和檔案。 下列程式碼會使用儲存體帳戶名稱和帳戶金鑰來建立 `FileService` 物件。 以您的帳戶名稱和金鑰取代 `<myaccount>` 和 `<mykey>`。
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
@@ -113,7 +113,7 @@ file_service = FileService(account_name='myaccount', account_key='mykey')
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-下列程式碼範例會使用 `FileService` 物件來建立共用（如果不存在的話）。
+下列程式碼範例會使用 [FileService](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) 物件來建立共用（如果不存在的話）。
 
 ```python
 file_service.create_share('myshare')
@@ -153,7 +153,7 @@ file_service.create_directory('myshare', 'sampledir')
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Azure 檔案共用至少包含一個可存放檔案的根目錄。 若要建立檔案並上傳資料，請使用 `create_file_from_path` 、、 `create_file_from_stream` `create_file_from_bytes` 或 `create_file_from_text` 方法。 它們是高階方法，可在資料大小超過 64 MB 時執行必要的區塊化。
+Azure 檔案共用至少包含一個可存放檔案的根目錄。 若要建立檔案並上傳資料，請使用 [create_file_from_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-path-share-name--directory-name--file-name--local-file-path--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object---timeout-none-)、 [create_file_from_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-stream-share-name--directory-name--file-name--stream--count--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--)、 [create_file_from_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-bytes-share-name--directory-name--file-name--file--index-0--count-none--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--)或 [create_file_from_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-text-share-name--directory-name--file-name--text--encoding--utf-8---content-settings-none--metadata-none--validate-content-false--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--) 方法。 它們是高階方法，可在資料大小超過 64 MB 時執行必要的區塊化。
 
 `create_file_from_path` 會從指定的路徑上傳檔案的內容，`create_file_from_stream` 會從已開啟的檔案/串流上傳內容。 `create_file_from_bytes` 會上傳位元組陣列，`create_file_from_text` 會使用指定的編碼 (預設為 UTF-8) 上傳指定的文字值。
 
@@ -181,7 +181,7 @@ file_service.create_file_from_path(
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-若要列出共用中的檔案和目錄，請使用 **list\_directories\_and\_files** 方法。 這個方法會傳回產生器。 下列程式碼會將共用中每個檔案和目錄的 **name** 輸出到主控台。
+若要列出共用中的檔案和目錄，請使用 [list_directories_and_files](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#list-directories-and-files-share-name--directory-name-none--num-results-none--marker-none--timeout-none--prefix-none--snapshot-none-) 方法。 這個方法會傳回產生器。 下列程式碼會將共用中每個檔案和目錄的 **name** 輸出到主控台。
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -203,7 +203,7 @@ for file_or_dir in generator:
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-若要從檔案下載資料，請使用 `get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes` 或 `get_file_to_text`。 它們是高階方法，可在資料大小超過 64 MB 時執行必要的區塊化。
+若要從檔案下載資料，請使用 [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)、 [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)、 [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)或 [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)。 它們是高階方法，可在資料大小超過 64 MB 時執行必要的區塊化。
 
 下列範例示範如何使用 `get_file_to_path` 下載 **myfile** 檔案的內容，並將其儲存至 *out-sunset.png* 檔案。
 
@@ -313,7 +313,7 @@ file_service.delete_share(share_name, snapshot=snapshot_id)
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-若要刪除檔案，請呼叫 `delete_file` 。
+若要刪除檔案，請呼叫 [delete_file](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#delete-file-share-name--directory-name--file-name--timeout-none-)。
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
