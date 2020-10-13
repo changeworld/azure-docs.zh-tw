@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772663"
 ---
 # <a name="monitoring-azure-files"></a>監視 Azure 檔案儲存體
@@ -385,7 +385,7 @@ StorageFileLogs
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 案例 | 用於警示的度量 |
+| 狀況 | 用於警示的度量 |
 |-|-|
 | 檔案共用已進行節流處理。 | 度量：交易<br>維度名稱：回應類型 <br>維度名稱：僅限檔案共用 (premium 檔案共用)  |
 | 檔案共用的大小為80% 的容量。 | 度量：檔案容量<br>維度名稱：僅限檔案共用 (premium 檔案共用)  |

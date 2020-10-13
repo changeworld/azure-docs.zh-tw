@@ -8,15 +8,15 @@ ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892851"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>了解 Azure Spring Cloud 中的應用程式狀態
 
-本文**適用于：** ✔️ JAVA ✔️ C#
+**本文適用於：** ✔️ Java ✔️ C#
 
 Azure 春季雲端 UI 可提供有關執行中應用程式狀態的資訊。  訂用帳戶中的每個資源群組都有 **一個應用程式選項，** 可顯示應用程式類型的一般狀態。  針對每個應用程式類型，會顯示 **應用程式實例**。
 

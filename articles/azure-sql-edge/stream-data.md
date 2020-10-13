@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900560"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Azure SQL Edge 中的資料串流
@@ -60,7 +60,7 @@ T-sql 串流的運作方式完全與 [Azure 串流分析](https://docs.microsoft
 - 當您在 Azure SQL Edge 中停止串流作業時，可能會有一些延遲時間，才能開始下一個串流作業。 因為基礎串流處理常式必須停止以回應停止工作要求，然後重新開機以回應啟動作業要求，所以引進此延遲。 
 - 適用于 kafka 資料流程的 t-sql 串流最多32個數據分割。 嘗試設定較高的資料分割計數將會導致錯誤。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在 Azure SQL Edge 中建立串流分析作業 ](create-stream-analytics-job.md)
 - [在 Azure SQL Edge 中查看與串流作業相關聯的中繼資料 ](streaming-catalog-views.md)

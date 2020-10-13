@@ -8,15 +8,15 @@ ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888475"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季雲端中設定預備環境
 
-本文**適用于：** ✔️ JAVA
+**本文適用於：** ✔️ Java
 
 本文討論如何使用 Azure 春季雲端中的藍綠部署模式來設定預備環境部署。 藍/綠部署是 Azure DevOps 的持續傳遞模式，此模式仰賴在部署新版本 (綠色) 時，仍讓現有版本 (藍色) 持續運作的方式。 本文說明如何將預備環境部署放到生產環境中，而不需要直接變更生產部署。
 
@@ -106,6 +106,6 @@ az spring-cloud app deploy  -g <resource-group-name> -s <service-instance-name> 
 az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-group-name> -s <service-instance-name> --app gateway
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：部署您的第一個 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)

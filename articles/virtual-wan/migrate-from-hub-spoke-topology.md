@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839634"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>移轉移至 Azure 虛擬 WAN
@@ -27,7 +27,7 @@ Azure 虛擬 WAN 可讓公司簡化全球連線能力，以受益于 Microsoft �
 
 本文說明如何將現有客戶管理的中樞和輪輻環境遷移至以 Azure 虛擬 WAN 為基礎的拓撲。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 Contoso 是一家遍及歐洲和亞洲辦公室的全球財務組織。 他們打算將現有的應用程式從內部部署資料中心移至 Azure，並根據客戶管理的中樞和輪輻架構（包括適用于混合式連線的區域中樞虛擬網路）建立基礎設計。 在移至雲端式技術的過程中，網路小組負責確保其連線能力已針對企業向前復原進行優化。
 

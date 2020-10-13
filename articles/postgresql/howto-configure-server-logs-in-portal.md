@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704284"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>從 Azure 入口網站設定和存取適用於 PostgreSQL 的 Azure 資料庫單一伺服器記錄
 
 您可以從 Azure 入口網站設定、列出和下載 [適用於 PostgreSQL 的 Azure 資料庫記錄](concepts-server-logs.md) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本文中的步驟要求您必須有 [適用於 PostgreSQL 的 Azure 資料庫 server](quickstart-create-server-database-portal.md)。
 
 ## <a name="configure-logging"></a>設定記錄

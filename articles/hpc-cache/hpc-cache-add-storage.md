@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611266"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
@@ -244,7 +244,7 @@ NFS 儲存體目標有不同于 Blob 儲存體目標的設定。 使用量模型
   * ``nfs-export`` -要與面向用戶端路徑建立關聯的儲存體系統匯出
   * ``target-path`` (選擇性) -匯出的子目錄（如有需要）
 
-  範例：``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
+  範例： ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
   若要深入瞭解虛擬命名空間功能，請參閱 [設定匯總的命名空間](hpc-cache-namespace.md) 。
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89236617"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964786"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (preview 中混合式 FIDO2 安全性金鑰的部署常見問題 (常見問題) ) 
 
@@ -160,7 +160,7 @@ nltest /dsgetdc:<domain> /keylist /kdc
 
 否，僅限內部部署裝置不支援此功能。 FIDO2 認證提供者將不會顯示。
 
-### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 安全性金鑰登入無法針對我的網域系統管理員或其他高許可權帳戶運作。 為何會這樣？
+### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 安全性金鑰登入無法針對我的網域系統管理員或其他高許可權帳戶運作。 為什麼？
 
 預設安全性原則不會授與在內部部署資源上簽署高許可權帳戶的 Azure AD 許可權。
 

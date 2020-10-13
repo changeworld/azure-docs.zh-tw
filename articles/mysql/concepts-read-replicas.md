@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627562"
+ms.locfileid: "91876544"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -93,11 +93,9 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>監視複寫
 
-適用於 MySQL 的 Azure 資料庫會在 Azure 監視器中提供**複寫延遲 (秒)** 計量。 此計量僅適用於複本。
+適用於 MySQL 的 Azure 資料庫會在 Azure 監視器中提供**複寫延遲 (秒)** 計量。 此計量僅適用於複本。 在計算此計量時，會使用可於 MySQL 的 `SHOW SLAVE STATUS` 命令中取得的 `seconds_behind_master` 計量。 請設定警示，以在複寫延遲時間接近您工作負載無法接受的值時通知您。
 
-在計算此計量時，會使用可於 MySQL 的 `SHOW SLAVE STATUS` 命令中取得的 `seconds_behind_master` 計量。
-
-請設定警示，以在複寫延遲時間接近您工作負載無法接受的值時通知您。
+如果您看到複寫延遲增加，請參閱 [疑難排解複寫延遲](howto-troubleshoot-replication-latency.md) ，以疑難排解並瞭解可能的原因。
 
 ## <a name="stop-replication"></a>停止複寫
 

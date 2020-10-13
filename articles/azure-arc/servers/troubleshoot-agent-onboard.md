@@ -4,10 +4,10 @@ description: 本文說明如何針對在嘗試連線至服務時，已啟用 Azu
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900682"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>針對已連線的機器代理程式連線問題進行疑難排解

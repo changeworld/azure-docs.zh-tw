@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 擴充中實�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87056233"
+ms.locfileid: "91876442"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的計時器
 
@@ -22,7 +22,7 @@ ms.locfileid: "87056233"
 當您建立在下午4:30 到期的計時器時，基礎的長期工作架構會將只有在下午4:30 才會顯示的訊息。 在 Azure Functions 取用方案中執行時，新顯示的計時器訊息可確保函式應用程式會在適當的 VM 上啟用。
 
 > [!NOTE]
-> * 持久計時器目前的限制為7天。 如果需要較長的延遲，您可以在迴圈中使用計時器 Api 來模擬它們 `while` 。
+> * 從長期延伸模組的 [版本 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) 開始，持久計時器是無限制的。 在舊版的延伸模組中，長期計時器的限制為七天。 當您使用較早的版本，且需要超過七天的延遲時，請在迴圈中使用計時器 Api `while` 來模擬此延遲。
 > * 在 `CurrentUtcDateTime` `DateTime.UtcNow` 計算永久性 `currentUtcDateTime` `Date.now` `Date.UTC` 計時器的引發時間時，請一律使用而不是在 .Net 中，或使用 JavaScript。 如需詳細資訊，請參閱協調器函式程式 [代碼條件約束](durable-functions-code-constraints.md) 文章。
 
 ## <a name="usage-for-delay"></a>延遲的使用方式
@@ -177,7 +177,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 如需如何在協調器函式中執行超時的更深入範例，請參閱「 [人為互動 & 超時-電話驗證」一](durable-functions-phone-verification.md) 文。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [了解如何引發和處理外部事件](durable-functions-external-events.md)

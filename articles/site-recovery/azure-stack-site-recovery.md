@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack 
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448972"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>將 Azure Stack VM 複寫至 Azure
@@ -287,7 +287,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 3. 在 [測試容錯移轉]**** 中，選取目標 Azure 網路。
 4. 按一下 [確定] **** 即可開始容錯移轉。
 5. 按一下 VM 開啟其屬性以追蹤進度。 或者在 [保存庫名稱]** >  [設定]**** >  [工作]**** > [Site Recovery 工作]**** 中，按一下 [測試容錯移轉]**** 工作。
-6. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器]  中。 檢查 VM 的大小是否合適、是否連線到正確的網路，而且正常執行中。
+6. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器] 中。 檢查 VM 的大小是否合適、是否連線到正確的網路，而且正常執行中。
 7. 您現在應該能夠連線到 Azure 中複寫的 VM。 [深入了解](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 8. 若要刪除測試容錯移轉期間建立的 Azure VM，請按一下 VM 上的 [清除測試容錯移轉]****。 在 [記事]**** 中，儲存關於測試容錯移轉的任何觀察。
 
@@ -305,7 +305,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 3. 在 [測試容錯移轉]**** 中，選取目標 Azure 網路。
 4. 選取 [Shut down machine before beginning failover] \(先將機器關機再開始容錯移轉)  。 透過此設定，Site Recovery 在開始容錯移轉前會先嘗試將來源機器關機。 然而即使關機失敗，仍會繼續容錯移轉。
 5. 按一下 [確定] **** 即可開始容錯移轉。 您可以 [作業]  頁面上追蹤容錯移轉進度。
-6. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器]  中。 如果您準備在容錯移轉後連線，請檢查 VM 的大小是否合適、是否連線到正確的網路，而且正常執行中。
+6. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器] 中。 如果您準備在容錯移轉後連線，請檢查 VM 的大小是否合適、是否連線到正確的網路，而且正常執行中。
 7. 驗證 VM 後，按一下 [認可]**** 完成容錯移轉。 這會刪除所有可用的復原點。
 
 > [!WARNING]

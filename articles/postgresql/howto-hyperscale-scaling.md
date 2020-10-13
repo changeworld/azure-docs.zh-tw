@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
 ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295709"
 ---
 # <a name="server-group-size"></a>伺服器群組大小
@@ -22,13 +22,13 @@ ms.locfileid: "91295709"
 
 伺服器群組的大小（就節點數目和硬體容量而言）很容易變更 ([請參閱下面](#scale-a-hyperscale-citus-server-group) 的) 。 不過，您仍然需要為新的伺服器群組選擇初始大小。 以下是合理選擇的一些秘訣。
 
-### <a name="multi-tenant-saas-use-case"></a>多租使用者 SaaS 使用案例
+### <a name="multi-tenant-saas-use-case"></a>多租使用者 SaaS Use-Case
 
 針對從現有的單一節點于 postgresql 資料庫實例遷移至超大規模 (Citus) ，我們建議您選擇一個叢集，其中的背景工作虛擬核心和 RAM 的數量總計等於原始實例的數目。 在這類案例中，我們看到了2倍的效能改進，因為分區化能改善資源使用率，並允許較小的索引等。
 
 協調器節點所需的虛擬核心數目取決於您現有的工作負載)  (寫入/讀取輸送量。 協調器節點不需要像背景工作節點一樣多的 RAM，但是 RAM 配置是根據 vCore 計數來決定， (如 [超大規模 (Citus) 設定選項](concepts-hyperscale-configuration-options.md)) 所述，因此 vCore 計數基本上是真正的決策。
 
-### <a name="real-time-analytics-use-case"></a>即時分析使用案例
+### <a name="real-time-analytics-use-case"></a>Real-Time Analytics Use-Case
 
 總虛擬核心：當工作資料適用于 RAM 時，您可預期超大規模 () Citus 的線性效能改進，與背景工作角色的數目成正比。 若要為您的需求判斷正確的虛擬核心數目，請考慮您的單一節點資料庫中的查詢目前延遲，以及超大規模 (Citus) 所需的延遲。 將目前的延遲除以所需的延遲，並將結果四捨五入。
 

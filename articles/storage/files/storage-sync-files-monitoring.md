@@ -8,10 +8,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448057"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
@@ -283,7 +283,7 @@ ms.locfileid: "91448057"
 10. 按一下 [建立警示規則]。 
 
 ## <a name="next-steps"></a>後續步驟
-- [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)
+- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
 - [考量防火牆和 Proxy 設定](storage-sync-files-firewall-and-proxy.md)
 - [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md) \(部分機器翻譯\)
 - [針對 Azure 檔案同步問題進行疑難排解](storage-sync-files-troubleshoot.md) \(部分機器翻譯\)

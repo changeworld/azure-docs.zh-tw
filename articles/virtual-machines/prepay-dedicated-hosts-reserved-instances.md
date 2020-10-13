@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825254"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978589"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>使用 Azure 專用主機保留來節省成本
 
-當您認可至 Azure 專用主機的保留實例時，您可以節省成本。 保留折扣會自動套用至符合保留範圍和屬性的執行中專用主機數目。 您不需要將保留指派給專用主機來取得折扣。 購買的保留實例僅涵蓋您使用量的計算部分，並包含軟體授權成本。 請參閱 [虛擬機器的 Azure 專用主機總覽](./windows/dedicated-hosts.md)。
+當您認可至 Azure 專用主機的保留實例時，您可以節省成本。 保留折扣會自動套用至符合保留範圍和屬性的執行中專用主機數目。 您不需要將保留指派給專用主機來取得折扣。 購買的保留實例僅涵蓋您使用量的計算部分，並包含軟體授權成本。 請參閱 [虛擬機器的 Azure 專用主機總覽](./dedicated-hosts.md)。
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>購買之前，請先決定適當的專用主機 SKU
 
@@ -109,7 +109,7 @@ ms.locfileid: "87825254"
 
 - 數量
 
-- 持續時間
+- Duration
 
 但是，如果您想要進行變更，您可以 *交換*   保留。
 
@@ -129,7 +129,7 @@ ms.locfileid: "87825254"
 
 - [什麼是 Azure 保留項目？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [使用 Azure 專用主機](./windows/dedicated-hosts.md)
+- [使用 Azure 專用主機](./dedicated-hosts.md)
 
 - [專用主機定價](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

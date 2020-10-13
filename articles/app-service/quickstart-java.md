@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532404"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776318"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入門：在 Azure App Service 上建立 Java 應用程式
 
@@ -71,21 +71,24 @@ cd helloworld
 執行下列 Maven 命令來設定部署。 此命令可協助您設定 App Service 作業系統、Java 版本和 Tomcat 版本。
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. 出現提示時，請輸入 `2` 以選取 **windows**。
-2. 按 Enter 鍵，使用預設 Java 版本 1.8。
-3. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
+1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
+1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`。
+1. 出現 [作業系統] 選項的提示時，請輸入 `2` 以選取 **Windows**。
+1. 按 Enter 鍵，使用預設 Java 版本 1.8。
+1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     您的摘要輸出看起來類似如下所示的程式碼片段。
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. 出現提示時，請輸入 `2` 以選取 **windows**。
+1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
+1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`。
+1. 出現 [作業系統] 選項的提示時，請輸入 `2` 以選取 **Windows**。
 1. 按 Enter 鍵，使用預設 Java 版本 1.8。
 1. 按 Enter 鍵，使用預設 Web 容器 Tomcat 8.5。
 1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. 出現提示時，按 Enter 鍵以選取 **linux**。
-2. 按 Enter 鍵，使用預設 Java 版本 1.8。
-3. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
+1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
+1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`。
+1. 出現 [作業系統] 選項的提示時，請按 Enter 鍵以選取 **Linux**。
+1. 按 Enter 鍵，使用預設 Java 版本 1.8。
+1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. 出現提示時，按 Enter 鍵以選取 **linux**。
+1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
+1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`。
+1. 出現 [作業系統] 選項的提示時，請按 Enter 鍵以選取 **Linux**。
 1. 按 Enter 鍵，使用預設 Java 版本 1.8。
 1. 按 Enter 鍵，使用預設 Web 容器 Tomcat 8.5。
 1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -198,6 +210,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 屬性 | 必要 | 描述 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定組態結構描述的版本。 支援的值包括：`v1`、`v2`。 | 1.5.2
+`<subscriptionId>` | false | 指定訂用帳戶識別碼。 | 0.1.0+
 `<resourceGroup>` | true | Web 應用程式的 Azure 資源群組。 | 0.1.0+
 `<appName>` | true | 您的 Web 應用程式名稱。 | 0.1.0+
 `<region>` | true | 指定將裝載 Web 應用程式的區域；預設值為 **westeurope**。 所有有效的區域皆列於[支援的區域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)一節。 | 0.1.0+
@@ -244,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 此命令可能會花一分鐘執行。
 
 ## <a name="next-steps"></a>後續步驟
-> [!div class="nextstepaction"]
-> [使用 Java 連線至 Azure SQL Database](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [使用 Java 連線至適用於 MySQL 的 Azure DB](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [使用 Java 連線至適用於 PostgreSQL 的 Azure DB](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
+> [設定 CI/CD](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [定價資訊](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [彙總記錄和計量](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [相應增加](manage-scale-up.md)
+
+> [!div class="nextstepaction"]
 > [適用於 Java 開發人員的 Azure 資源](/java/azure/)
 
 > [!div class="nextstepaction"]
-> [設定 Java 應用程式](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [使用 Jenkins 的 CI/CD](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [對應自訂網域](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [深入了解 Azure 的 Maven 外掛程式](https://github.com/microsoft/azure-maven-plugins)
+> [設定您的 Java 應用程式](configure-language-java.md)

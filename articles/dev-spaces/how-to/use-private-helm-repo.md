@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: 在 Azure 開發人員空間中使用私用 Helm 存放庫。
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器、Helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960332"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用私人 Helm 存放庫
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Helm][helm] 是 Kubernetes 的套件管理員。 Helm 使用 [圖表][helm-chart] 格式來封裝相依性。 Helm 圖儲存在存放庫中，它可以是公用或私用。 Azure Dev Spaces 在執行您的應用程式時，只會從公用存放庫中取出 Helm 的圖表。 如果 Helm 存放庫是私用或 Azure Dev Spaces 無法存取，則您可以直接從該存放庫將圖表加入至您的應用程式。 直接加入圖表可讓 Azure Dev Spaces 執行您的應用程式，而不需要存取私用 Helm 儲存機制。
 

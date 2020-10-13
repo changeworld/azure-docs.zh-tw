@@ -8,10 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
 ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825769"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
@@ -35,7 +35,7 @@ ms.locfileid: "91825769"
 | | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (WAD)  | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|
 | **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
-| **代理程式需求**  | None | None | None | 需要 Log Analytics 代理程式 |
+| **代理程式需求**  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
 | **收集的資料** | 事件記錄<br>效能 | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<br>檔案型記錄<br>IIS 記錄<br>見解和解決方案<br>其他服務 | 程序相依性<br>網路連接計量 |
 | **傳送至的資料** | Azure 監視器記錄<br>Azure 監視器計量 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄<br>透過 Log Analytics 代理程式 ()  |
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
@@ -45,7 +45,7 @@ ms.locfileid: "91825769"
 | | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (LAD)  | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|:---|
 | **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
-| **代理程式需求**  | None | None | None | None | 需要 Log Analytics 代理程式 |
+| **代理程式需求**  | 無 | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
 | **收集的資料** | syslog<br>效能 | syslog<br>效能 | 效能 | syslog<br>效能| 程序相依性<br>網路連接計量 |
 | **傳送至的資料** | Azure 監視器記錄<br>Azure 監視器計量 | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄<br>透過 Log Analytics 代理程式 ()  |
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
@@ -205,7 +205,7 @@ Azure 診斷擴充功能的限制包括：
 | Debian                          | 9      | 4.9  | 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在下列位置取得每個代理程式的詳細資料：
 

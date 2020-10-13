@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
 ms.openlocfilehash: c2b95108b8c6b1e4db9d5a494e64774609ed5574
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322643"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>將內部部署 SSIS 工作負載移轉至 ADF 中的 SSIS
@@ -53,7 +53,7 @@ DMA 目前支援自**dma 5.0 版**起，儲存在**檔案系統**、**封裝存�
 
 取得 [DMA](https://docs.microsoft.com/sql/dma/dma-overview)，並 [使用它執行您的套件評](https://docs.microsoft.com/sql/dma/dma-assess-ssis)量。
 
-## <a name="migration"></a>移轉
+## <a name="migration"></a>遷移
 
 根據來源 SSIS 封裝的 [儲存體類型](#four-storage-types-for-ssis-packages) 和資料庫工作負載的遷移目的地，遷移  **ssis** 封裝和執行排程 ssis 套件執行 **SQL Server Agent 作業** 的步驟可能會有所不同。 有兩種案例：
 

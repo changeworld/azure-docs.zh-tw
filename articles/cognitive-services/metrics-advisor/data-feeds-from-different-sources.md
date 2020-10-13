@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324462"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971943"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>將來自不同資料來源的資料摘要新增至計量 Advisor
 
@@ -133,7 +133,7 @@ ms.locfileid: "91324462"
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure 資料總管 (Kusto)</span>
 
-* **連接字串**：如需如何從 Azure 資料總管 (Kusto) 取得連接字串的詳細資訊，請參閱 [查看和複製連接字串](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) 。
+* **連接字串**：計量顧問支援使用 Azure AD 應用程式驗證來存取 Azure 資料總管 (Kusto) 。 您將需要建立並註冊 Azure AD 的應用程式，然後授權它存取 Azure 資料總管資料庫。 若要取得您的連接字串，請參閱 [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) 檔。
 
 * **查詢**：請參閱 [Kusto 查詢語言](https://docs.microsoft.com/azure/data-explorer/kusto/query) ，以取得資料並將其制訂成多維度時間序列資料。 您可以 `@StartTime` `@EndTime` 在查詢中使用和變數。 其格式應為： `yyyy-MM-dd HH:mm:ss` 。
 

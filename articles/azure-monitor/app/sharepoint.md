@@ -4,10 +4,10 @@ description: 開始使用新的檢測金鑰監視新的應用程式
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: f07c317a61c91daf7a469c1f9eaf1fb80d4ecc49
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825284"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 監視 SharePoint 網站

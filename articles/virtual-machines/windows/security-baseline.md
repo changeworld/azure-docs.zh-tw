@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400376"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978015"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>適用于 Windows 虛擬機器的 Azure 安全性基準
 
@@ -32,7 +32,7 @@ ms.locfileid: "89400376"
 
 或者，如果您有適用于集中式防火牆的特定使用案例，也可以使用 Azure 防火牆來滿足這些需求。
 
-* [Azure 中的虛擬網路和虛擬機器](./network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../network-overview.md)
 
 * [如何建立虛擬網路](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ ms.locfileid: "89400376"
 
 * [如何部署 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](../../security-center/threat-protection.md)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../../security-center/azure-defender.md)
 
 * [瞭解 Azure 資訊安全中心適應性網路強化](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ ms.locfileid: "89400376"
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](../../governance/policy/samples/built-in-policies.md#network)
 
 * [如何建立 Azure 藍圖](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ ms.locfileid: "89400376"
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -252,7 +252,7 @@ ms.locfileid: "89400376"
 
 **指導**方針：確定用於儲存虛擬機器記錄的任何儲存體帳戶或 log Analytics 工作區都已根據您組織的合規性法規設定記錄保留期限。
 
-* [如何在 Azure 中監視虛擬機器](./monitor.md)
+* [如何在 Azure 中監視虛擬機器](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [如何設定 Log Analytics 工作區保留期限](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ ms.locfileid: "89400376"
 
 * [如何在 Azure 監視器中執行自訂查詢](../../azure-monitor/log-query/get-started-queries.md)
 
-* [如何在 Azure 中監視虛擬機器](./monitor.md)
+* [如何在 Azure 中監視虛擬機器](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -508,7 +508,7 @@ ms.locfileid: "89400376"
 
 * [如何建立額外的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../../governance/management-groups/create.md)
+* [如何建立管理群組](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導**方針：遵循 Azure 資訊安全中心在 Azure 虛擬機器上執行弱點評定的建議。 使用「Azure 安全性建議」或協力廠商解決方案來執行虛擬機器的弱點評定。
 
-* [如何實行 Azure 資訊安全中心弱點評定建議](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [如何實行 Azure 資訊安全中心弱點評定建議](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -692,7 +692,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何建立額外的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../../governance/management-groups/create.md)
+* [如何建立管理群組](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](../../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -817,13 +817,13 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 **指導**方針：在 azure 環境中部署的高風險應用程式可能會使用虛擬網路、子網、訂用帳戶、管理群組等來隔離，並使用 Azure 防火牆、Web 應用程式防火牆 (WAF) 或網路安全性群組 (NSG) 來充分保護這些應用程式。
 
-* [Azure 中的虛擬網路和虛擬機器](./network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../network-overview.md)
 
 * [Azure 防火牆概觀](../../firewall/overview.md)
 
 * [Web 應用程式防火牆概觀](../../web-application-firewall/overview.md)
 
-* [網路安全性概觀](../../virtual-network/security-overview.md)
+* [網路安全性概觀](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虛擬網路總覽](../../virtual-network/virtual-networks-overview.md)
 

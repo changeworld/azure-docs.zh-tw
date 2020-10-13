@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72623d69f9fb0cbc68758a362bb977e5e02d2c00
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637098"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-on-demand-provisioning"></a>Azure AD Connect 雲端布建隨選布建
@@ -45,7 +45,7 @@ Azure AD Connect 雲端布建推出了一項新功能，可讓您藉由將這些
  ![依需求布建](media/how-to-on-demand-provision/on-demand3.png)
 7. 完成之後，您應該會看到成功畫面，以及4個綠色的核取方塊，指出已成功布建。  任何錯誤都會出現在左側。
 
-  ![Success](media/how-to-on-demand-provision/on-demand4.png)
+  ![成功](media/how-to-on-demand-provision/on-demand4.png)
 
 現在您可以查看使用者，並判斷您在設定中所做的變更是否已套用。  本檔的其餘部分將說明在成功同步處理使用者的詳細資料中所顯示的個別區段。
 

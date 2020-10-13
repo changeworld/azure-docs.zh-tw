@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85299002"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971744"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全性精靈和執行階段
 
@@ -117,7 +117,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 >[!NOTE]
 >`-OfflineInstallationPath`參數會在提供的目錄中尋找名為**Microsoft-Azure-IoTEdge.cab**的檔案。 從 IoT Edge 版本 1.0.9-rc4 開始，有兩個 .cab 檔案可供使用，一個用於 AMD64 裝置，另一個用於 ARM32。 為您的裝置下載正確的檔案，然後將檔案重新命名以移除架構尾碼。
 
-如需更新選項的詳細資訊，請使用命令 `Get-Help Update-IoTEdge -full` 或參考 [所有的安裝參數](how-to-install-iot-edge-windows.md#all-installation-parameters)。
+如需更新選項的詳細資訊，請使用命令 `Get-Help Update-IoTEdge -full` 或參考 [Windows 上 IoT Edge 的 PowerShell 腳本](reference-windows-scripts.md)。
 
 ## <a name="update-the-runtime-containers"></a>更新執行階段容器
 
@@ -160,7 +160,7 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
    ![設定執行時間設定](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. 在 [**執行時間設定**] 中，以所需的版本更新**Edge 中樞**的**映射**值。 請不要選取 [ **儲存** ]。
+1. 在 [**執行時間設定**] 中，以所需的版本更新**Edge 中樞**的**映射**值。 不要選取 [ **儲存** ]。
 
    ![更新 Edge 中樞映射版本](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
@@ -213,10 +213,7 @@ IoT Edge 代理程式和中樞模組都有以相同慣例標記的 RC 版本。 
 
 使用本文中的各節，瞭解如何將 IoT Edge 裝置更新為特定版本的安全 daemon 或執行時間模組。
 
-如果您要在新電腦上安裝 IoT Edge，請使用下列連結來瞭解如何根據您的裝置作業系統安裝特定版本：
-
-* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
-* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
+如果您要安裝 IoT Edge，而不是升級現有的安裝，請使用 [離線或特定版本安裝](how-to-install-iot-edge.md#offline-or-specific-version-installation)中的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

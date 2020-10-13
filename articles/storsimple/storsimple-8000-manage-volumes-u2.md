@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86204452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961675"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 裝置管理員服務來管理磁碟區 (Update 3 或更新版本)
 
@@ -155,11 +155,11 @@ StorSimple 磁碟區可以是：
    3. 增加 [佈建的容量]****。 [佈建的容量]**** 只能增加。 您無法在磁碟區建立後予以壓縮。
    4. 在 [已連線的主機]**** 下，您可以修改 ACR。 若要修改 ACR，磁碟區必須處於離線狀態。
 
-       ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![查看讓磁片區離線的影響2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. 按一下 [確定] 儲存變更。 當提示確認時，請按一下 [是]****。 Azure 入口網站將會顯示更新磁碟區訊息。 如果磁碟區已成功更新，即會顯示成功訊息。
 
-    ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看讓磁片區離線的影響3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. 如果您要延伸磁碟區，請在 Windows 主機電腦上完成下列步驟：
    
@@ -215,7 +215,7 @@ StorSimple 磁碟區可以是：
 
 1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 從裝置的表格式清單中，選取您想要修改磁碟區的裝置。 按一下 [設定] > [磁碟區]****。
 
-    ![移至 [磁碟區] 刀鋒視窗](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![移至磁片區 blade 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. 從磁碟區的表格式清單中，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表。 選取 [修改]。
 
@@ -249,7 +249,7 @@ StorSimple 磁碟區可以是：
    
     1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 從裝置的表格式清單中，選取您想要修改磁碟區的裝置。 按一下 [設定] > [磁碟區]****。
 
-        ![移至 [磁碟區] 刀鋒視窗](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![移至磁片區分頁3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. 從磁碟區的表格式清單中，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表。 選取 [離線]****，讓您要修改的磁碟區離線。
 
@@ -257,7 +257,7 @@ StorSimple 磁碟區可以是：
 
 3. 在 [離線]**** 刀鋒視窗中，檢閱讓磁碟區離線的影響，並選取對應的核取方塊。 按一下 [離線]****。 
 
-    ![檢閱讓磁碟區離線的影響](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看讓磁片區離線的影響4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       磁碟區離線時，您會收到通知。 磁碟區狀態也會更新為離線。
       
@@ -277,7 +277,7 @@ StorSimple 磁碟區可以是：
 
 1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 從裝置的表格式清單中，選取您想要修改磁碟區的裝置。 按一下 [設定] > [磁碟區]****。
 
-    ![移至 [磁碟區] 刀鋒視窗](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![前往磁片區磁區4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. 檢查您想要刪除之磁碟區的狀態。 如果您想要刪除的磁碟區未離線，請先讓它離線。 請遵循 [使磁碟區離線](#take-a-volume-offline)中的步驟進行。
 4. 磁碟區離線之後，選取磁碟區，按一下滑鼠右鍵以叫用操作功能表，然後選取 [刪除]****。
@@ -317,7 +317,7 @@ StorSimple 磁碟區可以是：
 
 4. 按一下 [儲存]****，當系統提示您進行確認時，按一下 [是]****。 成功更新磁碟區之後，Azure 入口網站會顯示更新磁碟區的通知，然後出現成功訊息。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 了解如何 [複製 StorSimple 磁碟區](storsimple-8000-clone-volume-u2.md)。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。

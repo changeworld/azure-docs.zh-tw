@@ -2,23 +2,25 @@
 title: 範本函式-物件
 description: 描述在 Azure Resource Manager 範本中用來處理物件的函數。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 632e92bb798a5e8469079ef4693b7f321617f88c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676789"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977879"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 範本的物件函式
 
 Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本中的物件。
 
 * [contains](#contains)
+* [createObject](#createobject)
 * [empty](#empty)
 * [intersection](#intersection)
 * [json](#json)
 * [length](#length) (長度)
+* [null](#null)
 * [union](#union)
 
 ## <a name="contains"></a>contains
@@ -29,7 +31,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
 | itemToFind |是 |字串或整數 |要尋找的值。 |
@@ -102,6 +104,58 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 | arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
+## <a name="createobject"></a>createObject
+
+`createObject(key1, value1, key2, value2, ...)`
+
+從索引鍵和值建立物件。
+
+### <a name="parameters"></a>參數
+
+| 參數 | 必要 | 類型 | 描述 |
+|:--- |:--- |:--- |:--- |
+| key1 |否 |字串 |索引鍵名稱。 |
+| value1 |否 |int、boolean、string、object 或 array |索引鍵的值。 |
+| 其他金鑰 |否 |字串 |索引鍵的其他名稱。 |
+| 其他值 |否 |int、boolean、string、object 或 array |索引鍵的其他值。 |
+
+函數只接受偶數的參數。 每個金鑰都必須有相符的值。
+
+### <a name="return-value"></a>傳回值
+
+具有每個索引鍵和值配對的物件。
+
+### <a name="example"></a>範例
+
+下列範例會從不同類型的值建立物件。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "newObject": {
+            "type": "object",
+            "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
+        }
+    }
+}
+```
+
+上述範例中具有預設值的輸出是以下列值命名的物件 `newObject` ：
+
+```json
+{
+  "intProp": 1,
+  "stringProp": "abc",
+  "boolProp": true,
+  "arrayProp": ["a", "b", "c"],
+  "objectProp": {"key1": "value1"}
+}
+```
+
 ## <a name="empty"></a>empty
 
 `empty(itemToTest)`
@@ -110,7 +164,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |陣列、物件或字串 |要檢查它是否為空的值。 |
 
@@ -175,7 +229,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |要用來尋找共同元素的第一個值。 |
 | arg2 |是 |陣列或物件 |要用來尋找共同元素的第二個值。 |
@@ -237,40 +291,58 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 `json(arg1)`
 
-傳回 JSON 物件。
+將有效的 JSON 字串轉換成 JSON 資料類型。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字串 |要轉換為 JSON 的值。 |
+| arg1 |是 |字串 |要轉換為 JSON 的值。 字串必須是格式正確的 JSON 字串。 |
 
 ### <a name="return-value"></a>傳回值
 
-來自指定字串的 JSON 物件，或指定 **null** 時為空物件。
+指定之字串的 JSON 資料類型，如果指定 **null** 則為空值。
 
 ### <a name="remarks"></a>備註
 
 如果您需要在 JSON 物件中包含參數值或變數，請使用 [concat](template-functions-string.md#concat) 函式來建立傳遞給函式的字串。
 
+您也可以使用 [null ( # B1 ](#null) 來取得 null 值。
+
 ### <a name="example"></a>範例
 
-下列 [範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) 示範如何使用 json 函數。 請注意，您可以傳入代表物件的字串，或在不需要任何值時使用 **null** 。
+下列 [範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) 示範如何使用 json 函數。 請注意，您可以針對空白物件傳遞 **null** 。
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "jsonObject1": {
+        "jsonEmptyObject": {
             "type": "string",
             "defaultValue": "null"
         },
-        "jsonObject2": {
+        "jsonObject": {
             "type": "string",
             "defaultValue": "{\"a\": \"b\"}"
         },
-        "testValue": {
+        "jsonString": {
+            "type": "string",
+            "defaultValue": "\"test\""
+        },
+        "jsonBoolean": {
+            "type": "string",
+            "defaultValue": "true"
+        },
+        "jsonInt": {
+            "type": "string",
+            "defaultValue": "3"
+        },
+        "jsonArray": {
+            "type": "string",
+            "defaultValue": "[[1,2,3 ]"
+        },
+        "concatValue": {
             "type": "string",
             "defaultValue": "demo value"
         }
@@ -278,17 +350,33 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
     "resources": [
     ],
     "outputs": {
-        "jsonOutput1": {
+        "emptyObjectOutput": {
             "type": "bool",
-            "value": "[empty(json(parameters('jsonObject1')))]"
+            "value": "[empty(json(parameters('jsonEmptyObject')))]"
         },
-        "jsonOutput2": {
+        "objectOutput": {
             "type": "object",
-            "value": "[json(parameters('jsonObject2'))]"
+            "value": "[json(parameters('jsonObject'))]"
         },
-        "paramOutput": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[json(parameters('jsonString'))]"
+        },
+        "booleanOutput": {
+            "type": "bool",
+            "value": "[json(parameters('jsonBoolean'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[json(parameters('jsonInt'))]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[json(parameters('jsonArray'))]"
+        },
+        "concatObjectOutput": {
             "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
+            "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
         }
     }
 }
@@ -298,9 +386,13 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| jsonOutput1 | 布林值 | True |
-| jsonOutput2 | Object | {"a": "b"} |
-| paramOutput | Object | {"a": "示範值"}
+| emptyObjectOutput | 布林值 | True |
+| objectOutput | Object | {"a": "b"} |
+| stringOutput | String | test |
+| booleanOutput | 布林值 | True |
+| intOutput | 整數 | 3 |
+| arrayOutput | Array | [ 1, 2, 3 ] |
+| concatObjectOutput | Object | {"a"： "示範值"} |
 
 ## <a name="length"></a>長度
 
@@ -310,7 +402,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列、字串或物件 |用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
@@ -378,6 +470,44 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 | stringLength | Int | 13 |
 | objectLength | Int | 4 |
 
+## <a name="null"></a>null
+
+`null()`
+
+傳回 null。
+
+### <a name="parameters"></a>參數
+
+Null 函數不接受任何參數。
+
+### <a name="return-value"></a>傳回值
+
+一律為 null 的值。
+
+### <a name="example"></a>範例
+
+下列範例會使用 null 函數。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(null())]"
+        },
+    }
+}
+```
+
+前述範例的輸出為：
+
+| 名稱 | 類型 | 值 |
+| ---- | ---- | ----- |
+| emptyOutput | Bool | True |
+
 ## <a name="union"></a>union
 
 `union(arg1, arg2, arg3, ...)`
@@ -386,7 +516,7 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |用來聯結元素的第一個值。 |
 | arg2 |是 |陣列或物件 |用來聯結元素的第二個值。 |
@@ -444,6 +574,6 @@ Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
