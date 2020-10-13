@@ -12,10 +12,10 @@ ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91664846"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>錯誤碼： Azure Active Directory B2C
@@ -101,7 +101,7 @@ Azure Active Directory B2C 服務可能會傳回下列錯誤。
 | `AADB2C90159` | 自我判斷驗證要求失敗，原因為 ' {0} '。 |
 | `AADB2C90161` | 自我判斷的傳送回應失敗，原因為 ' {0} '。 |
 | `AADB2C90165` | 在狀態中找不到識別碼為 ' ' 的 SAML 起始訊息 {0} 。 |
-| `AADB2C90168` | HTTP 重新導向要求未包含已簽署要求的必要參數 ' {0} '。 |
+| `AADB2C90168` | HTTP-Redirect 要求未包含已簽署要求的必要參數 ' {0} '。 |
 | `AADB2C90178` | 簽署憑證 ' {0} ' 沒有私用金鑰。 |
 | `AADB2C90182` | 提供的 code_verifier 不符合相關聯的 code_challenge |
 | `AADB2C90183` | 提供的 code_verifier 無效 |

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906831"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945442"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
@@ -210,6 +210,8 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud 用戶端入門版
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> 請勿 `server.port` 在您的設定中指定。 Azure 春季雲端會將此設定覆寫為固定的埠號碼。 也請遵循這項設定，而不要在您的程式碼中指定伺服器埠。
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>啟用 Azure Spring Cloud 功能的其他建議相依性
 
@@ -227,6 +229,7 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud 用戶端入門版
 ```
 
 Service Registry 伺服器的端點會自動搭配您的應用程式插入為環境變數。 應用程式接著可以向 Service Registry 伺服器註冊自己，並探索其他相依的微服務。
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 註釋
 

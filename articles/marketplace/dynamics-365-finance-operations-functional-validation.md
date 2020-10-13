@@ -8,10 +8,10 @@ author: emuench
 ms.author: navits
 ms.date: 07/17/2020
 ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651151"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 財務和作業功能驗證
@@ -60,7 +60,7 @@ Microsoft 認證小組會審核影片和檔案，然後核准解決方案或您�
     | --- | --- |
     | 套件概觀 | [![顯示 [套件總覽] 視窗的螢幕擷取畫面。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>解決方案核准者</li></ul> | [![封裝總覽畫面](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | 封裝內容<ul><li>型號</li><li>軟體可部署套件</li></ul> | [![封裝內容畫面1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | 封裝內容<ul><li>模型</li><li>軟體可部署套件</li></ul> | [![封裝內容畫面1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER 設定</li><li>資料庫備份</li></ul><br>**GER**設定區段中不需要成品。 | [![封裝內容畫面二](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI 報表模型</li><li>BPM 成品</li></ul><br>**Power BI**區段中不需要成品。 | [![封裝內容畫面三](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>處理資料封裝</li><li>解決方案授權合約和隱私權原則</li></ul><br>[ **GER** 設定] 和 [ **Power BI 報表模型** ] 區段是選擇性的，可納入財務和營運優惠。 | [![封裝內容畫面四](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

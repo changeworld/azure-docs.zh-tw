@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
 ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653548"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
 Mv2 系列提供高輸送量、低延遲的平臺，在超執行緒 Intel®的®白金 GHz 上執行，並以 2.5 GHz 的最大 turbo 頻率和 3.8 GHz 的最大 turbo 頻率 (Skylake) 處理器。 所有的 Mv2 系列虛擬機器大小都可以同時使用標準和 premium 的持續性磁片。 Mv2 系列實例是記憶體優化的 VM 大小，可提供無與倫比的計算效能，以支援大型記憶體內部資料庫和工作負載，且具有高記憶體與 CPU 的比例，適用于關係資料庫伺服器、大型快取，以及記憶體內部分析。
 
-Mv2 系列 VM 的功能 Intel®超執行緒技術
+Mv2 系列 VM 的功能 Intel® Hyper-Threading 技術
 
 [進階儲存體](premium-storage-performance.md)：支援<br>
 [進階儲存體](premium-storage-performance.md)快取：支援<br>

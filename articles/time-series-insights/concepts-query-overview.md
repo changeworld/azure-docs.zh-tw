@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: e9491757852b42faef40c107540e0ce3da3c7f99
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650896"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>查詢 Azure 時間序列深入解析 Gen2 中的資料
@@ -24,7 +24,7 @@ Azure 時間序列深入解析 Gen2 可讓您透過公用介面 Api，在環境�
 Azure 時間序列深入解析 Gen2 中提供三個主要 API 類別：
 
 * **環境 api**：這些 api 會在 Azure 時間序列深入解析 Gen2 環境本身啟用查詢。 這些可用來收集呼叫者有權存取的環境清單和環境中繼資料。
-* **時間序列模型-查詢 (的 TSM-Q) api**：啟用在環境的時間序列模型中儲存之中繼資料的建立、讀取、更新和刪除 (CRUD) 作業。 這些可以用來存取和編輯實例、類型和階層。
+* **時間序列 Model-Query (的 TSM-Q) api**：在環境的時間序列模型中儲存的中繼資料上，啟用建立、讀取、更新和刪除 (CRUD) 作業。 這些可以用來存取和編輯實例、類型和階層。
 * **時間序列查詢 (TSQ) api**：當遙測或事件資料從來源提供者記錄時，可進行抓取，並使用 advanced 純量和彙總函式來啟用資料的效能計算和匯總。
 
 Azure 時間序列深入解析 Gen2 使用以字串為基礎的豐富運算式語言， [ (TSX) 的時間序列運算式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)來表示 [時間序列變數](./concepts-variables.md)中的計算。

@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651831"
 ---
 # <a name="export-your-application"></a>匯出您的應用程式
 
 本文描述如何以解決方案管理員的形式匯出 IoT Central 的應用程式，以便能夠重複使用。
 
-您有兩個選擇：
+您有兩個選項：
 
 - 如果您只需要建立應用程式的複本，就可以建立應用程式的複本。
 - 如果您打算建立多個複本，您可以從應用程式建立應用程式範本。

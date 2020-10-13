@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651423"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>掛接 Azure HPC Cache
@@ -47,7 +47,7 @@ ms.locfileid: "91651423"
 
 在每個用戶端上建立本機目錄路徑，以連接到快取。 針對您想要掛接的每個命名空間路徑建立路徑。
 
-範例：`sudo mkdir -p /mnt/hpc-cache-1/target3`
+範例： `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
 Azure 入口網站中的 [ [掛接指示](#use-the-mount-instructions-utility) ] 頁面包含可供您複製的原型命令。
 

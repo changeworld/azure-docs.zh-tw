@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651628"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>針對儲存體資源刪除錯誤進行疑難排解
@@ -97,7 +97,7 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 
      ![入口網站的螢幕擷取畫面，其中會開啟儲存體 [Blob 中繼資料] 窗格，並反白顯示要刪除之資料磁片的卸離圖示。](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. 選取 [儲存]  。 磁碟現在會與 VM 中斷連結，不再租用 VHD。 釋放租用可能需要幾分鐘的時間。 若要確認租用已釋放，請瀏覽至 Blob 位置；在 [Blob 屬性]**** 窗格中，[租用狀態]**** 值應該會是 [已解除鎖定]**** 或 [可用]****。
+9. 選取 [儲存]****。 磁碟現在會與 VM 中斷連結，不再租用 VHD。 釋放租用可能需要幾分鐘的時間。 若要確認租用已釋放，請瀏覽至 Blob 位置；在 [Blob 屬性]**** 窗格中，[租用狀態]**** 值應該會是 [已解除鎖定]**** 或 [可用]****。
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

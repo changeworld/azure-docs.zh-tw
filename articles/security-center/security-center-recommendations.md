@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314431"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945547"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
 本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
 
-> [!NOTE]
-> 本文件將使用範例部署來介紹服務。  本文件不是一份逐步解說指南。
->
 
 ## <a name="what-are-security-recommendations"></a>有哪些安全性建議？
 
@@ -35,39 +32,36 @@ ms.locfileid: "91314431"
 
 每項建議都會提供：
 
-- 問題的簡短描述。
-- 執行建議所需執行的補救步驟。
-- 受影響的資源。
+- 問題的簡短描述
+- 執行建議所需執行的補救步驟
+- 受影響的資源
 
 ## <a name="monitor-recommendations"></a>監視建議 <a name="monitor-recommendations"></a>
 
-安全性中心會分析您資源的安全性狀態，以找出潛在的弱點。 [ **建議** ] 圖格底下的 [建議] 磚 **會顯示安全性** 中心所識別的建議總數。
+安全性中心會分析您資源的安全性狀態，以找出潛在的弱點。 
 
-![安全性中心總覽](./media/security-center-recommendations/asc-overview.png)
-
-1. 選取 [**總覽**] 下的 [**建議] 磚**。 **建議**清單隨即開啟。
-
-1. 建議會分組為安全性控制項。
+1. 在 [安全性中心] 功能表中，開啟 [ **建議** ] 頁面以查看適用于您環境的建議。 建議會分組為安全性控制項。
 
       ![依安全性控制分組的建議](./media/security-center-recommendations/view-recommendations.png)
 
-1. 展開控制項，然後選取特定建議以查看建議頁面。
+1. 展開控制項，然後選取特定的建議以查看 [建議詳細資料] 頁面。
 
     :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="建議詳細資料頁面。" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
     此頁面包含：
 
-    - 在支援的建議上**強制執行**和**拒絕**按鈕 (請參閱[使用強制/拒絕建議來防止錯誤配置](prevent-misconfigurations.md)) 
-    - **嚴重性指標**
-    - 相關) 的有效**時間間隔** ( 
-    - **描述** -問題的簡短描述
-    - **補救步驟** -在受影響的資源上補救安全性問題時所需的手動步驟的說明。 如需「快速修正」的建議，您可以選取 [ **View 補救邏輯** ]，然後再將建議的修正套用至您的資源。 
-    - **受影響的資源** -您的資源會分組到索引標籤中：
+    1. 在支援的建議上**強制執行**和**拒絕**按鈕 (請參閱[使用強制/拒絕建議來防止錯誤配置](prevent-misconfigurations.md)) 
+    1. **嚴重性指標**
+    1. 相關) 的有效**時間間隔** ( 
+    1. **描述** -問題的簡短描述
+    1. **補救步驟** -在受影響的資源上補救安全性問題時所需的手動步驟的說明。 如需「快速修正」的建議，您可以選取 [ **View 補救邏輯** ]，然後再將建議的修正套用至您的資源。 
+    1. **受影響的資源** -您的資源會分組到索引標籤中：
         - **狀況良好的資源** -可能不會影響或已補救問題的相關資源。
         - **狀況不良的資源** –仍受識別問題影響的資源。
         - **不適用的資源** –建議無法提供明確答案的資源。 [不適用] 索引標籤也包含每個資源的原因。 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="建議詳細資料頁面。":::
+    1. 可補救建議或觸發邏輯應用程式的動作按鈕。
 
 ## <a name="preview-recommendations"></a>預覽建議
 

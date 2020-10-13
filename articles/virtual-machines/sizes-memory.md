@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ea58eeac5a77f2e1eaf2a7756de6d36a3fc0626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f18f830b690acdca67058da6ed6a0907406e66c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825492"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945962"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>記憶體最佳化的虛擬機器大小
 
@@ -36,7 +36,7 @@ ms.locfileid: "87825492"
 
 - [Ev4 和 Esv4 系列](ev4-esv4-series.md)會在第2代的 Intel &reg; &reg; 8272CL 白金級 (串聯 Lake) 處理器的超執行緒設定中，適用于各種需要大量記憶體的企業應用程式和最高 504 GiB RAM 的功能。 其功能為 [intel &reg; Turbo 加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [INTEL &reg; Advanced Vector Extensions 512 (intel AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 Ev4 和 Esv4 系列不包含本機暫存磁片。 如需詳細資訊，請參閱  [沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
 
-- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)會在第2代 Intel &reg; &reg; 8272CL 白金級 (串聯 Lake) 處理器上執行，適用于極大型的資料庫或可受益于高 vCPU 計數和海量儲存體的其他應用程式。 此外，這些 VM 大小包含快速、較大的本機 SSD 儲存體，可讓應用程式受益于低延遲、高速的本機儲存體。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度、[Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
+- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)會在第2代 Intel &reg; &reg; 8272CL 白金級 (串聯 Lake) 處理器上執行，適用于極大型的資料庫或可受益于高 vCPU 計數和海量儲存體的其他應用程式。 此外，這些 VM 大小包含快速、較大的本機 SSD 儲存體，可讓應用程式受益于低延遲、高速的本機儲存體。 它具備 3.4 GHz、 [intel &reg; Turbo 加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [INTEL &reg; Advanced Vector Extensions 512 (Intel AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)的核心 Turbo 頻率速度。
 
 - [M 系列](m-series.md)提供高 vCPU 計數 (最多 128 個 vCPU) 與大量記憶體 (最多 3.8 TiB)。 其也很適合用於受益於高 vCPU 計數與大量記憶體的極大型資料庫或其他應用程式。
 

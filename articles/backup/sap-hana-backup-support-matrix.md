@@ -4,12 +4,12 @@ description: 在本文中，當您使用 Azure 備份在 Azure Vm 上備份 SAP 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: e3bfc5ab9a91ae3aee73d7ed24161acae60211ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ad68fcaaa820daca842d567ecd40f011df729f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022321"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946360"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上 SAP Hana 資料庫 備份的支援矩陣
 
@@ -32,7 +32,7 @@ Azure 備份支援將 SAP HANA 資料庫備份至 Azure。 此文章摘要說明
 | **HANA 資料庫大小**     | 大小 <= 2 TB 的 HANA 資料庫 (這不是 HANA 系統的記憶體大小)                |                                                              |
 | **備份類型**           | 完整、差異和記錄備份                          | 增量、快照                                       |
 | **還原類型**          | 若要了解支援的還原類型，請參閱 SAP Hana Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) |                                                              |
-| **備份限制**          | 每個 SAP HANA 執行個體最多 2 TB 的完整備份大小         |                                                              |
+| **備份限制**          | 每 SAP Hana 實例最多 2 TB 的完整備份大小 (軟限制)          |                                                              |
 | **特殊的組態** |                                                              | SAP HANA + Dynamic Tiering <br>  透過 LaMa 複製        |
 
 ------

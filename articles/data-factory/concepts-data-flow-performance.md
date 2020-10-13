@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370873"
+ms.locfileid: "91874827"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -260,6 +260,10 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 #### <a name="sorting-before-joins"></a>聯結之前的排序
 
 不同於 SSIS 之類工具中的合併聯結，聯結轉換不是必要的合併聯結作業。 聯結索引鍵不需要在轉換之前進行排序。 Azure Data Factory 的小組不建議在對應的資料流程中使用排序轉換。
+
+### <a name="window-transformation-performance"></a>視窗轉換效能
+
+[視窗轉換](data-flow-window.md)會依據您在轉換設定中選取作為子句一部分的資料行中的值來分割您的資料 ```over()``` 。 在 Windows 轉換中會公開一些很受歡迎的匯總和分析函數。 但是，如果您的使用案例是為了排名或資料列數目的目的，在整個資料集上產生一個視窗 ```rank()``` ```rowNumber()``` ，建議您改為使用「 [排名」轉換](data-flow-rank.md) 和「 [代理索引鍵」轉換](data-flow-surrogate-key.md)。 這些轉換將會使用這些函式來執行更好的完整資料集作業。
 
 ### <a name="repartitioning-skewed-data"></a>重新分割扭曲的資料
 

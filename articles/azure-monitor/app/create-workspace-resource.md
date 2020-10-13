@@ -2,13 +2,13 @@
 title: 建立新的 Azure 監視器 Application Insights 以工作區為基礎的資源 | Microsoft Docs
 description: 瞭解啟用新的 Azure 監視器 Application Insights 以工作區為基礎的資源所需的步驟。
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 29fa9f1dc401ac4132d9c6c0d8c054b3f4a154ac
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932425"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945408"
 ---
 # <a name="workspace-based-application-insights-resources"></a>工作區型 Application Insights 資源
 
@@ -204,6 +204,10 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 ## <a name="export-telemetry"></a>匯出遙測
 
 工作區型資源不支援舊版的連續匯出功能。 因此，請從您的 Application Insights 資源內選取 [診斷設定]  >  [新增診斷設定] 。 您可以選取所有資料表或其中一些資料，封存至儲存體帳戶，或串流至 Azure 事件中樞。
+
+> [!NOTE]
+> 遙測匯出目前沒有額外的費用。 這項功能的定價資訊將于 [Azure 監視器定價] 頁面](https://azure.microsoft.com/pricing/details/monitor/)上提供。  在開始計費之前，將會傳送通知。 如果您選擇在 <feature name> 通知期間之後繼續使用，則會以適用的費率向您收費。 
+ 
 
 ## <a name="next-steps"></a>後續步驟
 

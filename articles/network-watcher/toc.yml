@@ -127,6 +127,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure Resource Manager
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: 內建原則
+              href: nsg-flow-logs-policy-portal.md
         - name: 刪除 NSG 流量記錄儲存體 Blob
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: 分析 NSG 流量記錄
