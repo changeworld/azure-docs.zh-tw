@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514003"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array 上的磁碟區
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務，在 StorSimple Virtual Array 上建立和管理磁碟區。
 
@@ -137,7 +137,7 @@ StorSimple 服務摘要刀鋒視窗的 [磁碟區]**** 功能表會顯示給定 
 3. 檢查您想要刪除之磁碟區的狀態。 如果您想要刪除的磁碟區未離線，請先使其離線，請依照 [使磁碟區離線](#take-a-volume-offline)中的步驟執行。
 4. 當 [刪除]**刪除** 刀鋒視窗中提示您確認時，請接受確認並按一下 [刪除]****。 現在將刪除磁碟區，[磁碟區]**** 刀鋒視窗會顯示虛擬陣列內更新的磁碟區清單。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何 [複製 StorSimple 磁碟區](storsimple-virtual-array-clone.md)。
 

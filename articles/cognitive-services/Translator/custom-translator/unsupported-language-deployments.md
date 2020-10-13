@@ -8,53 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964680"
 ---
 # <a name="unsupported-language-deployments"></a>不支援的語言部署
 
 <!--Custom Translator provides the highest-quality translations possible using the latest techniques in neural machine learning. While Microsoft intends to make neural training available in all languages, there are some limitations that prevent us from being able to offer neural machine translation in all language pairs.-->  
 
-隨著 Microsoft Translator Hub 即將淘汰，Microsoft 將會解除部署所有目前透過中樞部署的模型。 其中有許多模型部署在自訂翻譯中不支援其語言配對的中樞。  我們不希望使用者在這種情況下沒有任何要是可以翻譯其內容。
+在即將淘汰的 Microsoft Translator Hub 淘汰之後，Microsoft 將會解除部署目前透過中樞部署的所有模型。 許多人都在中樞部署了自訂翻譯中不支援語言組的模型。  在這種情況下，我們不想讓使用者翻譯其內容的要是。
 
-我們現在有一個程式，可讓您透過自訂翻譯部署不受支援的模型。  此程式可讓您使用最新的 V3 API 繼續翻譯內容。  這些模型將會主控，直到您選擇解除部署它們，或自訂翻譯中的語言組變成可用為止。  本文說明以不支援的語言組來部署模型的程式。
+我們現在有一個可讓您透過自訂翻譯部署不支援模型的進程。  此程式可讓您使用最新的 V3 API 繼續轉譯內容。  這些模型將會被裝載，直到您選擇解除部署這些模型或自訂翻譯中的語言組為止。  本文說明使用不支援的語言組來部署模型的程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 為了讓您的模型成為部署的候選項目，它們必須符合下列準則：
-* 包含模型的專案必須已經從中樞遷移至使用遷移工具的自訂翻譯。  您可以在[這裡](how-to-migrate.md)找到遷移專案和工作區的進程。
-* 當發生遷移時，模型必須處於已部署狀態。  
-* 在自訂翻譯中，模型的語言組必須是不支援的語言組。  語言在語言中支援或來自英文，但配對本身不包含英文，這是不支援的語言部署的候選項目。  例如，法文到德文語言組的中樞模型會被視為不受支援的語言組，即使法文到英文，而且英文至德文也是支援的語言組。
+* 包含模型的專案必須已經使用「遷移工具」從中樞遷移至自訂翻譯。  您可以在 [這裡](how-to-migrate.md)找到遷移專案和工作區的流程。
+* 進行遷移時，模型必須處於已部署狀態。  
+* 模型的語言組必須是自訂翻譯中不受支援的語言組。  語言支援或自英文的語言組，但這組本身不包含英文，是不支援的語言部署的候選項目。  例如，法文至德文語言組的中樞模型會被視為不受支援的語言組，即使法文至英文，以及英文至德文都是支援的語言組。
 
-## <a name="process"></a>程序
-當您從中樞遷移模型作為部署的候選項目之後，您可以移至工作區的 [**設定**] 頁面，然後在頁面結尾處滾動到您將會看到**不支援的 Translator Hub**訓練區段。  只有當您的專案符合上述必要條件時，才會顯示此區段。
+## <a name="process"></a>處理序
+當您從作為部署候選項目的中樞遷移模型之後，您可以移至工作區的 [ **設定** ] 頁面，並將其移至頁面的結尾，您會看到 **不支援的翻譯中樞** 訓練區段。  只有當您的專案符合上述必要條件時，才會出現此區段。
 
 ![如何從中樞移轉](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
-在 [**不支援的翻譯工具中樞**訓練選擇 **] 頁面**中，[未要求的定型] 索引標籤包含適用于部署的模型。  選取您想要部署的模型並提交要求。   在4月30日的部署期限之前，您可以選取您想要部署的多個模型。
+在 [ **不支援的翻譯中樞** 訓練 **選擇] 頁面** 中，[未要求的定型] 索引標籤包含適合部署的模型。  選取您要部署的模型並提交要求。   在4月30日部署期限之前，您可以選取想要部署的任意數量模型。
  
 ![如何從中樞移轉](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
-提交之後，模型就無法再于 [未**要求**的定型] 索引標籤上使用，而會顯示在 [要求的**定型] 索引**標籤上。 您隨時都能觀看所要求的訓練。
+提交之後，將無法 **再于 [** 未要求的訓練] 索引標籤上使用模型，而是會出現在 [ **要求** 的訓練] 索引標籤上。 您可以隨時查看要求的訓練。
 
 ![如何從中樞移轉](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
-## <a name="whats-next"></a>下一步
+## <a name="whats-next"></a>接下來要做什麼？
 
-一旦中樞已解除委任，而且所有模型都已解除部署，您選取要部署的模型就會儲存。  您可以在5月24日前提交要求，以部署不支援的模型。  我們將在6月15日部署這些模型，在這之後，即可透過 Translator V3 來存取。  此外，在7月1日前，將可透過 Translator V2 取得。  
+當中樞已解除委任並解除部署所有模型之後，您選取要部署的模型就會儲存。  您可以在5月24日前提交不支援模型的部署要求。  我們將于6月15日部署這些模型，屆時將可透過 Translator V3 API 存取這些模型。  此外，在7月1日之前，都可以透過 V2 API 使用它們。  
 
-如需有關中樞淘汰中重要日期的詳細資訊，請參閱[這裡](https://www.microsoft.com/translator/business/hub/)。
-部署之後，將會套用一般的裝載費用。  如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。  
+如需有關中樞淘汰的重要日期的詳細資訊，請參閱 [這裡](https://www.microsoft.com/translator/business/hub/)。
+部署之後，將會收取一般裝載費用。  請參閱 [定價](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) 以取得詳細資料。  
 
-不同于標準自訂翻譯模型，中樞模型只會在單一區域中提供，因此不會套用多區域裝載費用。  一旦部署之後，您就能夠隨時透過遷移的自訂翻譯專案，解除部署您的中樞模型。
+不同于標準自訂翻譯模型，中樞模型只會在單一區域中提供，因此不會套用多區域裝載費用。  一旦部署之後，您就可以隨時透過遷移的自訂翻譯專案解除部署中樞模型。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [將模型定型](how-to-train-model.md)。
-- 從[Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)開始使用您已部署的自訂翻譯模型。
+- [定型模型](how-to-train-model.md)。
+- 透過 [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 開始使用您已部署的自訂翻譯模型。

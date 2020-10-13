@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 60bf2034f1e6404f3f09bf25a66c497dbbaf4d05
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361648"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教學課程：設定 Insight4GRC 來自動布建使用者
@@ -31,7 +31,7 @@ ms.locfileid: "91361648"
 > * 在 Insight4GRC 中布建群組和群組成員資格
 > * Insight4GRC (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 

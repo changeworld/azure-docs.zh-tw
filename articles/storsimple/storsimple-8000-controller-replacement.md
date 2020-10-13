@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514073"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的控制器模組
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程說明如何取下並更換 StorSimple 裝置中的一個或兩個控制器模組。 它也會討論單一和雙重控制器更換案例的基礎邏輯。
 
 > [!NOTE]
@@ -62,7 +62,7 @@ ms.locfileid: "85514073"
 當 Microsoft Azure StorSimple 裝置上的兩個控制器之一故障、無法運作或遺漏時，您必須更換單一控制器。
 
 ### <a name="single-controller-replacement-logic"></a>單一控制器更換邏輯
-在單一控制器更換中，您應該先取下故障的控制器。 （裝置中的其餘控制器是作用中的控制器。）當您插入更換控制器時，會發生下列動作：
+在單一控制器更換中，您應該先取下故障的控制器。  (裝置中其餘的控制器是主動控制器 ) 。當您插入取代控制器時，會發生下列動作：
 
 1. 更換控制器立即開始與 StorSimple 裝置進行通訊。
 2. 作用中控制器的虛擬硬碟 (VHD) 快照會複製在更換控制器上。
@@ -195,7 +195,7 @@ ms.locfileid: "85514073"
    > [!NOTE]
    > 最多可能需要 5 分鐘，控制器和 LED 即會啟動。
   
-5. 若要確認更換成功，請在 Azure 入口網站中，移至您的裝置，然後流覽至 [**監視**]  >  [**硬體健康**情況]，並確定控制器0和控制器1皆狀況良好（狀態為綠色）。
+5. 若要確認更換成功，請在 Azure 入口網站中，移至您的裝置，然後流覽至 [**監視**  >  **硬體健康**情況]，並確定 [控制器 0] 和 [控制器 1] 的狀況良好 (狀態為綠色) 。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>識別您裝置上的作用中控制器
 有許多情況，例如第一次裝置註冊或控制器更換，會要求您在 StorSimple 裝置上找出作用中控制器。 作用中控制器會處理所有磁碟韌體和網路作業。 您可以使用下列任一方法來識別作用中控制器：
@@ -207,7 +207,7 @@ ms.locfileid: "85514073"
 接著說明上述各程序。
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>使用 Azure 入口網站來識別作用中控制器
-在 [Azure 入口網站中，流覽至您的裝置，然後**監視**  >  **硬體健全狀況**，並流覽至 [**控制器**] 區段。 在這裡您可以確認哪一個控制站作用中。
+在 Azure 入口網站中，流覽至您的裝置，然後**監視**  >  **硬體健全狀況**，並滾動至 [**控制器**] 區段。 在這裡您可以確認哪一個控制站作用中。
 
 ![識別 Azure 入口網站中的作用中控制器](./media/storsimple-controller-replacement/IC752072.png)
 
@@ -236,6 +236,6 @@ ms.locfileid: "85514073"
 | 1-6 |DATA 0 – 5 個網路連接埠 |
 | 7 |藍色 LED |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解 [StorSimple 硬體元件更換](storsimple-8000-hardware-component-replacement.md)。
 

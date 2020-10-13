@@ -5,15 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 56112107bbd1bb506fcbff615ec524e043d54d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 656113df50936acf6f9a6b7e9cc8cb01a8aec2a8
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653718"
+ms.locfileid: "91931745"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -27,7 +27,7 @@ H 系列 Vm 已針對依核心需求高 CPU 頻率或大型記憶體驅動的應
 [VM 世代支援](generation-2.md)：第1代<br>
 <br>
 
-| 大小 | vCPU | 處理器 | 記憶體 (GiB) | 記憶體頻寬 GB/秒 | 基礎 CPU 頻率 (GHz)  | 所有核心頻率 (GHz，尖峰)  | 單一核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/秒)  | MPI 支援 | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大乙太網路 Nic |
+| 大小 | vCPU | 處理器 | 記憶體 (GiB) | 記憶體頻寬 GB/秒 | 基礎 CPU 頻率 (GHz)  | 所有核心頻率 (GHz，尖峰)  | 單一核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/秒)  | MPI 支援 | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大 Ethernet Vnic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8   | 8  | Intel 至 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-CHAP | 1000 | 32 | 32 x 500 | 2 |
 | Standard_H16  | 16 | Intel 至 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-CHAP | 2000 | 64 | 64 x 500 | 4 |

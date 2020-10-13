@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: ffe368d763ee93d1864f0f807cbe18b8ebfe41c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851667"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB 的效能和規模測試
@@ -35,9 +35,9 @@ ms.locfileid: "85851667"
 ## <a name="run-the-performance-testing-application"></a>執行效能測試應用程式
 若要開始使用，最快的方法就是依以下步驟所述，編譯並執行 .NET 範例。 您也可以檢閱原始程式碼，然後對自己的用戶端應用程式實作類似的組態。
 
-**步驟1：** 從[Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下載專案，或將 GitHub 存放庫派生。
+**步驟1：** 從 [Azure Cosmos DB 效能測試範例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下載專案，或從 GitHub 儲存機制派生。
 
-**步驟2：** 在 App.config 中修改 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate （選擇性）的設定。
+**步驟2：** 修改 App.config 中的 EndpointUrl、AuthorizationKey、CollectionThroughput 和 DocumentTemplate (選擇性) 的設定。
 
 > [!NOTE]
 > 以高輸送量佈建集合之前，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以估算每個集合的成本。 Azure Cosmos DB 會以小時為單位，對儲存體和輸送量分別計價。 您可以藉由在測試後刪除或降低 Azure Cosmos 容器的輸送量來節省成本。
@@ -87,11 +87,11 @@ DocumentDBBenchmark completed successfully.
 Press any key to exit...
 ```
 
-**步驟 4 (如有必要)：** 從工具回報的輸送量 (RU/s) 應該等於或大於佈建的集合或一組集合的輸送量。 如果情況並非如此，向上微調 DegreeOfParallelism 可協助您達到該限制。 如果來自用戶端應用程式的輸送量達持平狀態，請在其他用戶端電腦上啟動多個應用程式執行個體。 如果您需要此步驟的說明，請從[Azure 入口網站](https://portal.azure.com)提出支援票證。
+**步驟 4 (如有必要)：** 從工具回報的輸送量 (RU/s) 應該等於或大於佈建的集合或一組集合的輸送量。 如果情況並非如此，向上微調 DegreeOfParallelism 可協助您達到該限制。 如果來自用戶端應用程式的輸送量達持平狀態，請在其他用戶端電腦上啟動多個應用程式執行個體。 如果您需要此步驟的說明，請向 [Azure 入口網站](https://portal.azure.com)提出支援票證。
 
 讓應用程式處於執行狀態之後，您便可以嘗試不同的[索引編製原則](index-policy.md)和[一致性層級](consistency-levels.md)，以了解它們對輸送量和延遲的影響。 您也可以檢閱原始程式碼，然後對自己的測試套件或實際執行應用程式實作類似的組態。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在這篇文章中，我們探討了如何使用 .NET 主控台應用程式來執行 Azure Cosmos DB 的相關效能和規模測試。 如需詳細資訊，請參閱下列文章：
 

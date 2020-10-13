@@ -2,15 +2,13 @@
 title: Azure 監視器 Application Insights 以工作區為基礎的資源結構描述
 description: 瞭解 Azure 監視器 Application Insights 工作區資源的新資料表結構和架構。
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323174"
+ms.locfileid: "91931048"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>以工作區為基礎的資源變更 (預覽) 
 
@@ -20,7 +18,7 @@ ms.locfileid: "87323174"
 
 ## <a name="table-structure"></a>資料表結構
 
-| 舊版資料表名稱 | 新的資料表名稱 | 說明 |
+| 舊版資料表名稱 | 新的資料表名稱 | 描述 |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  可用性測試的摘要資料。|
 | browserTimings | AppBrowserTimings | 用戶端效能的相關資料，例如處理傳入資料所花費的時間。|
@@ -352,7 +350,7 @@ ms.locfileid: "87323174"
 |customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |duration|real|DurationMs|Real|
-|`id`|字串|`Id`|String|
+|`id`|字串|`Id`|字串|
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
@@ -362,14 +360,14 @@ ms.locfileid: "87323174"
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
 |operation_SyntheticSource|字串|OperationSyntheticSource|字串|
-|performanceBucket|字串|PerformanceBucket|String|
-|ResultCode|字串|ResultCode|String|
+|performanceBucket|字串|PerformanceBucket|字串|
+|ResultCode|字串|ResultCode|字串|
 |sdkVersion|字串|SdkVersion|字串|
 |session_Id|字串|SessionId|字串|
-|source|字串|來源|String|
+|source|字串|來源|字串|
 |成功|字串|成功|Bool|
 |timestamp|Datetime|TimeGenerated|Datetime|
-|url|字串|Url|String|
+|url|字串|Url|字串|
 |user_AccountId|字串|UserAccountId|字串|
 |user_AuthenticatedId|字串|UserAuthenticatedId|字串|
 |user_Id|字串|UserId|字串|

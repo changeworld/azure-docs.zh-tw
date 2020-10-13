@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
 ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320620"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>將受 HSM 保護的金鑰匯入至受控 HSM (BYOK) 
@@ -40,13 +40,13 @@ ms.locfileid: "91320620"
 * 將 BYOK 檔案上傳到受控 HSM 時，受控 HSM 會使用 KEK 私密金鑰來解密目標金鑰內容，並將它匯入為 HSM 金鑰。 這種操作完全是在 HSM 內部執行。 目標金鑰一律會保留在 HSM 保護界限內。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用本文中的 Azure CLI 命名，您必須具有下列項目：
 
 * Microsoft Azure 訂用帳戶。 如果您沒有帳戶，您可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本2.12.0 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
-* 受控 HSM：訂用帳戶中 [支援的 hsm 清單](#supported-hsms) 。 請參閱 [快速入門：使用 Azure CLI 布建和啟動受控 hsm](quick-create-cli.md) ，以布建及啟用受控 hsm。
+* Azure CLI 2.12.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+* 受控 HSM：訂用帳戶中 [支援的 hsm 清單](#supported-hsms) 。 請參閱[快速入門：使用 Azure CLI 佈建並啟動受控 HSM](quick-create-cli.md)，以佈建並啟動受控 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

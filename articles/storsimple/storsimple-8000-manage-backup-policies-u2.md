@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515633"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 入口網站中，使用 StorSimple 裝置管理員服務來管理備份原則
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務的 [備份原則]**** 刀鋒視窗來控制 StorSimple 磁碟區的備份程序和備份保留。 它也會說明如何完成手動備份。
 
@@ -96,7 +96,7 @@ ms.locfileid: "85515633"
 
 [!INCLUDE [storsimple-8000-create-manual-backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Data Lake Storage Gen1 效能調整-PowerShell
-description: 在搭配 Azure Data Lake Storage Gen1 使用 Azure PowerShell 時，如何改善效能的秘訣。
+description: 使用 Azure PowerShell 搭配 Azure Data Lake Storage Gen1 時如何改善效能的秘訣。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504690"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>使用 PowerShell 搭配 Azure Data Lake Storage Gen1 的效能微調指導方針
 
-本文說明您可以微調的屬性，以在使用 PowerShell 來處理 Data Lake Storage Gen1 時取得更佳的效能。
+本文說明您可以微調的屬性，以在使用 PowerShell 來處理 Data Lake Storage Gen1 時獲得更好的效能。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,7 +44,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 您的下一個問題可能是如何判斷要提供給效能相關屬性的值。 以下是一些您可以使用的指引。
 
-* 步驟1：藉由計算要使用的匯流排程計數，來**判斷匯流排程計數**-開始。 一般來說，您應該針對每個實體核心使用六個執行緒。
+* **步驟1：決定匯流排程計數** -從計算要使用的匯流排程計數開始。 一般來說，您應該針對每個實體核心使用六個執行緒。
 
     `Total thread count = total physical cores * 6`
 
@@ -54,7 +54,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = 16 cores * 6 = 96 threads`
 
-* **步驟2：計算 PerFileThreadCount** -我們會根據檔案大小來計算我們的 PerFileThreadCount。 對於小於 2.5 GB 的檔案，不需要變更此參數，因為預設值為 10 就已足夠。 對於大於 2.5 GB 的檔案，您應該使用 10 個執行緒作為第一個 2.5 GB 的基底，並且為每增加額外 256-MB 的檔案大小新增 1 個執行緒。 如果您要複製包含各種檔案大小的資料夾，請考慮將其分組為相似的檔案大小。 檔案大小不相近可能會導致非最佳的效能。 如果不可能分組為相似的檔案大小，您應該根據最大檔案大小設定 PerFileThreadCount。
+* **步驟2：計算 PerFileThreadCount** -我們會根據檔案的大小來計算 PerFileThreadCount。 對於小於 2.5 GB 的檔案，不需要變更此參數，因為預設值為 10 就已足夠。 對於大於 2.5 GB 的檔案，您應該使用 10 個執行緒作為第一個 2.5 GB 的基底，並且為每增加額外 256-MB 的檔案大小新增 1 個執行緒。 如果您要複製包含各種檔案大小的資料夾，請考慮將其分組為相似的檔案大小。 檔案大小不相近可能會導致非最佳的效能。 如果不可能分組為相似的檔案大小，您應該根據最大檔案大小設定 PerFileThreadCount。
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
@@ -96,7 +96,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 * **節流錯誤**︰如果並行處理量太高，您可能會看到節流錯誤。 如果您看到節流錯誤，則應該減少並行處理量或與我們連絡。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Azure Data Lake Storage Gen1 處理巨量資料需求](data-lake-store-data-scenarios.md) 
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)

@@ -9,17 +9,17 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322473"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用企業整合套件將 Azure Logic Apps 的 EDIFACT 訊息解碼
 
 使用 Decode EDIFACT 訊息連接器，您可以驗證 EDI 和夥伴特定的屬性、將交換分割為交易集或保留整個交換，並產生已處理交易的通知。 若要使用此連接器，您必須將連接器新增至邏輯應用程式中的現有觸發程序。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 以下是您所需的項目︰
 

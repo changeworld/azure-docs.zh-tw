@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019261"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>使用 Azure Cosmos DB C# 筆記本 (預覽) 中的內建筆記本命令和功能
@@ -117,12 +117,12 @@ for (int i = 0; i < 5; i++) {
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp 查詢儲存格":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract 資料總管":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Csharp 查詢儲存格":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>使用內建的字典檢視器
 您可以使用內建的字典檢視器來檢視變數。 在儲存格中，將您想要視覺化的變數放在最後一行，當儲存格執行時就會自動顯示該變數。
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="內建的字典檢視器":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Csharp 查詢儲存格":::
 
 ## <a name="upload-json-items-to-a-container"></a>將 JSON 項目上傳至容器
 您可以使用 ``%%upload`` 魔術命令，將 JSON 檔案中的資料上傳至指定的 Azure Cosmos 容器。 請使用下列命令來上傳項目：
@@ -160,7 +160,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>重設筆記本工作區
 若要將筆記本工作區重設為預設設定，請在命令列上選取 [重設工作區]。 這會移除任何已安裝的自訂套件，並重新啟動 Jupyter 伺服器。 您的筆記本、檔案和 Azure Cosmos 資源將不受影響。  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="重設筆記本工作區":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Csharp 查詢儲存格":::
 
 ## <a name="next-steps"></a>後續步驟
 

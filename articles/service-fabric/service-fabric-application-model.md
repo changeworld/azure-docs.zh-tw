@@ -4,10 +4,10 @@ description: 如何使用應用程式和服務資訊清單檔案，在 Azure Ser
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85963728"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中模型化應用程式
@@ -22,7 +22,7 @@ ms.locfileid: "85963728"
 
 應用程式和服務的類別 (或「類型」) 是透過 XML 檔案 (應用程式資訊清單和服務資訊清單) 來說明。  資訊清單可描述應用程式與服務，並且是應用程式可以從叢集的映像存放區具現化的範本。  [應用程式及服務資訊清單](service-fabric-application-and-service-manifests.md)中詳細說明資訊清單。 ServiceManifest.xml 和 ApplicationManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 及工具一起安裝在 C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd**。 XML 結構描述則記載在 [ServiceFabricServiceModel.xsd 結構描述文件](service-fabric-service-model-schema.md)中。
 
-不同應用程式實例的程式碼會當做個別的進程來執行，即使是由相同的 Service Fabric 節點主控時也一樣。 此外，每個應用程式執行個體的生命週期可以獨立進行管理 (例如，升級)。 下圖顯示應用程式類型如何由服務類型組成，依序分別為程式碼、組態和資料套件的組成。 為了簡化此圖，只會顯示 `ServiceType4` 的程式碼/組態/資料套件，但每個服務類型都包含這其中部分或所有的套件類型。
+不同應用程式實例的程式碼會以個別進程的形式執行，即使是由相同的 Service Fabric 節點所裝載。 此外，每個應用程式執行個體的生命週期可以獨立進行管理 (例如，升級)。 下圖顯示應用程式類型如何由服務類型組成，依序分別為程式碼、組態和資料套件的組成。 為了簡化此圖，只會顯示 `ServiceType4` 的程式碼/組態/資料套件，但每個服務類型都包含這其中部分或所有的套件類型。
 
 ![Service Fabric 應用程式類型和服務類型][cluster-imagestore-apptypes]
 
@@ -38,7 +38,7 @@ ms.locfileid: "85963728"
 > 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入了解[應用程式延展性](service-fabric-concepts-scalability.md)。
 - 了解服務[狀態](service-fabric-concepts-state.md)、[分割](service-fabric-concepts-partitioning.md)和[可用性](service-fabric-availability-services.md)。
 - 閱讀[應用程式及服務資訊清單](service-fabric-application-and-service-manifests.md)，以了解應用程式和服務的定義方式。

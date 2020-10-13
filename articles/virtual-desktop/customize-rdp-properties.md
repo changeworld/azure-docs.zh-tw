@@ -3,15 +3,15 @@ title: 使用 PowerShell 自訂 RDP 屬性-Azure
 description: 如何使用 PowerShell Cmdlet 自訂適用于 Windows 虛擬桌面的 RDP 屬性。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462219"
+ms.locfileid: "91930691"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定 (RDP) 屬性
 
@@ -28,8 +28,8 @@ RDP 檔案預設具有下列屬性：
 
 |RDP 屬性|在桌面上|作為 RemoteApp|
 |---|---|---|
-|多重監視器模式|啟用|N/A|
-|磁片磁碟機重新導向已啟用|磁片磁碟機、剪貼簿、印表機、COM 埠、USB 裝置和智慧卡|磁片磁碟機、剪貼簿和印表機|
+|多重監視器模式|已停用|啟用|
+|磁片磁碟機重新導向已啟用|磁片磁碟機、剪貼簿、印表機、COM 埠和智慧卡|磁片磁碟機、剪貼簿和印表機|
 |遠端音訊模式|在本機上播放|在本機上播放|
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -45,8 +45,9 @@ RDP 檔案預設具有下列屬性：
 3. 在 [服務] 下，選取 [ **Windows 虛擬桌面**]。
 4. 在 [Windows 虛擬桌面] 頁面上，選取畫面左側功能表中的 [ **主機** 集區]。
 5. 選取您要更新 **之主機集** 區的名稱。
-6. 選取畫面左側功能表中的 [ **屬性** ]。
-7. 在 [ **內容** ] 索引標籤上，移至 [ **rdp 設定** ] 開始編輯 rdp 屬性。 屬性應該採用分號分隔格式，例如 PowerShell 範例。
+6. 在畫面左側的功能表中，選取 **RDP 屬性** 。
+7. 設定您想要的屬性。
+   - 或者，您可以開啟 [ **Advanced （Advanced** ）] 索引標籤，並以分號分隔的格式（如下列各節中的 PowerShell 範例）新增 RDP 屬性。
 8. 當您完成時，請選取 [ **儲存** ] 以儲存您的變更。
 
 接下來的章節將告訴您如何在 PowerShell 中手動編輯自訂 RDP 屬性。

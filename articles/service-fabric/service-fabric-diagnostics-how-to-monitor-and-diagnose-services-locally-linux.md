@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 523cb0d1a8e8f322c1936f1fe52a954399b2acc5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999762"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視和診斷本機 Linux 電腦開發設定中的服務
@@ -131,6 +131,6 @@ public static TextWriter Out = Console.Out;
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 新增至應用程式的相同追蹤程式碼，也可以用來配合診斷 Azure 叢集上的應用程式。 請參閱下列文章，其中討論各種適用於工具的選項，並說明如何設定它們。
 * [如何利用 Azure 診斷收集記錄](./service-fabric-diagnostics-event-aggregation-lad.md)
