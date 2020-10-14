@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940526"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015150"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 角色型存取控制 (預覽，提供 Key Vault 金鑰、憑證和秘密的存取權) 
 
@@ -37,7 +37,7 @@ Azure RBAC 模型可讓您在不同的範圍層級上設定許可權：管理群
 
 -   需要在各層之間分開存取控制的多層式應用程式
 
--   當應用程式需要存取該金鑰保存庫中的秘密子集時，共用金鑰保存庫與一般秘密
+-   在多個應用程式之間共用個別秘密
 
 如需 Azure Key Vault 管理指導方針的詳細資訊，請參閱：
 

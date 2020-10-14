@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400276"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013690"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
@@ -21,7 +21,7 @@ ms.locfileid: "91400276"
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
-[取得最新的用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
+[取得最新的用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，最新的用戶端程式庫會隨著每月版本安裝或更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Microsoft 365 更新在延遲通道上時。
 
@@ -79,7 +79,7 @@ ms.locfileid: "91400276"
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>從 SQL Server 連接到連結伺服器
 
-SQL Server 可以將 MSOLAP 指定為數據源提供者，以 [連結伺服器](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) 的形式連接至 Azure Analysis Services 資源。 設定連結的伺服器連線之前，請務必安裝最新的 [MSOLAP 用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (提供者) 。 
+SQL Server 可以將 MSOLAP 指定為數據源提供者，以 [連結伺服器](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) 的形式連接至 Azure Analysis Services 資源。 設定連結的伺服器連線之前，請務必安裝最新的 [MSOLAP 用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current) (提供者) 。 
 
 針對與 Azure Analysis Services 的連結伺服器連接，MSOLAP 提供者必須在 SQL Server 進程之外具現化。 設定連結的伺服器選項時，請確定**未選取**[**允許進程進程**] 選項。
 
@@ -100,5 +100,4 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 [使用 Excel 連接](analysis-services-connect-excel.md)    
 [使用 Power BI 連接](analysis-services-connect-pbi.md)   
-[管理您的伺服器](analysis-services-manage.md)   
-
+[管理您的伺服器](analysis-services-manage.md)

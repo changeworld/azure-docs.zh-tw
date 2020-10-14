@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999673"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015919"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -24,6 +24,7 @@ ms.locfileid: "91999673"
 ## <a name="october-2020"></a>2020 年 10 月
 
 * 情感分析 v3. x 的印度文支援（從 `2020-04-01` 模型版本開始）。 
+* `2020-09-01`V3/languages 端點的模型版本，可增加語言偵測和精確度的改進。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -191,9 +192,9 @@ JSON 回應中的下列屬性名稱已變更，適用于：
 
 #### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-* 用來辨識個人資訊實體類型的 [新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) (英文版) 
+* 用來辨識個人資訊實體類型的 [新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) (英文版) 
 
-* 分隔 [實體](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) 辨識和 [實體連結](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的端點。
+* 分隔 [實體](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) 辨識和 [實體連結](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)的端點。
 
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
     * 展開在文字中找到的實體偵測和分類。 
@@ -205,7 +206,7 @@ JSON 回應中的下列屬性名稱已變更，適用于：
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>情感分析 V3 公開預覽
 
-* 用來分析情感的 [新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) 。
+* 用來分析情感的 [新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) 。
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
 
     * API 文字分類和評分的精確度和詳細資料大幅改進。

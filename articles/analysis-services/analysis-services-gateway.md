@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438832"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016088"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用內部部署資料閘道連接至內部部署資料來源
 
@@ -87,15 +87,15 @@ ms.locfileid: "87438832"
 </setting>
 ```
 
-## <a name="next-steps"></a>接下來的步驟 
+## <a name="next-steps"></a>後續步驟 
 
 下列文章包含在內部部署資料閘道的一般內容中，適用于閘道支援的所有服務：
 
-* [內部部署資料閘道常見問題集](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [使用內部部署資料閘道應用程式](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [租用戶層級管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [設定 proxy 設定](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [調整通訊設定](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [設定記錄檔](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [疑難排解](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [監視及最佳化閘道效能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance) \(部分機器翻譯\)
+* [內部部署資料閘道常見問題集](/data-integration/gateway/service-gateway-onprem-faq)   
+* [使用內部部署資料閘道應用程式](/data-integration/gateway/service-gateway-app)   
+* [租用戶層級管理](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [設定 proxy 設定](/data-integration/gateway/service-gateway-proxy)   
+* [調整通訊設定](/data-integration/gateway/service-gateway-communication)   
+* [設定記錄檔](/data-integration/gateway/service-gateway-log-files)   
+* [疑難排解](/data-integration/gateway/service-gateway-tshoot)
+* [監視及最佳化閘道效能](/data-integration/gateway/service-gateway-performance) \(部分機器翻譯\)

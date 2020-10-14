@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077366"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015311"
 ---
 # <a name="automation-with-service-principals"></a>使用服務主體進行自動化
 
@@ -33,8 +33,8 @@ Analysis Services 也支援使用服務主體的受控識別所執行的作業�
 
 服務主體認證和憑證可以安全地儲存在 Azure 自動化中，以進行 Runbook 作業。 若要深入了解，請參閱：
 
-[Azure 自動化中的認證資產](../automation/automation-credentials.md)   
-[Azure 自動化中的憑證資產](../automation/automation-certificates.md)
+[Azure 自動化中的認證資產](../automation/shared-resources/credentials.md)   
+[Azure 自動化中的憑證資產](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>將服務主體新增至伺服器管理員角色
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO 和 ADOMD 
 
-與用戶端應用程式和 Web 應用程式連線時，來自 NuGet 的 [AMO 和 ADOMD 用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 版及更新版本的可安裝套件，會使用下列語法在連接字串中支援服務主體：`app:AppID` 和密碼或 `cert:thumbprint`。 
+與用戶端應用程式和 Web 應用程式連線時，來自 NuGet 的 [AMO 和 ADOMD 用戶端程式庫](/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 版及更新版本的可安裝套件，會使用下列語法在連接字串中支援服務主體：`app:AppID` 和密碼或 `cert:thumbprint`。 
 
 在下列範例中，`appID` 和 `password` 可用來執行模型資料庫重新整理作業：
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure PowerShell 登入](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps)   
 [使用 Logic Apps 重新整理](analysis-services-refresh-logic-app.md)  
 [使用 Azure 自動化重新整理](analysis-services-refresh-azure-automation.md)  
 [將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)  
-[使用服務主體將 Power BI Premium 工作區和資料集工作自動化](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[使用服務主體將 Power BI Premium 工作區和資料集工作自動化](/power-bi/admin/service-premium-service-principal)

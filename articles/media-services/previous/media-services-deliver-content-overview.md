@@ -10,12 +10,12 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266029"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014379"
 ---
 # <a name="deliver-content-to-customers"></a>將內容傳遞給客戶
 
@@ -69,7 +69,7 @@ ms.locfileid: "89266029"
 > 
 > 
 
-若要更新定位器的到期日，請使用 [REST](/rest/api/media/operations/locator#update_a_locator) 或 [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API。 請注意，當您更新 SAS 定位器的到期日，URL 也會隨之變更。
+若要更新定位器的到期日，請使用 [REST](/rest/api/media/operations/locator#update_a_locator) 或 [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) API。 請注意，當您更新 SAS 定位器的到期日，URL 也會隨之變更。
 
 定位器並不是用來控制每個使用者的權限。 您可以使用數位版權管理 (DRM) 方案，給予個別使用者不同的存取權限。 如需詳細資訊，請參閱 [保護媒體](/previous-versions/azure/dn282272(v=azure.100))。
 

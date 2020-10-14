@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729129"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015016"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>整合 Azure 數位 Twins 與其他服務
 
-Azure 數位 Twins 通常會與其他服務搭配使用。 使用 [**事件路由**](concepts-route-events.md)，Azure 數位 Twins 會接收來自上游服務（例如 [IoT 中樞](../iot-hub/about-iot-hub.md) 或 [Logic Apps](../logic-apps/logic-apps-overview.md)）的資料，這些服務是用來傳遞遙測和通知。 
+Azure 數位 Twins 通常會與其他服務搭配使用，以建立有彈性、連線的解決方案，以各種方式使用您的資料。
+
+使用 [**事件路由**](concepts-route-events.md)，Azure 數位 Twins 可以從上游服務（例如 [IoT 中樞](../iot-hub/about-iot-hub.md) 或 [Logic Apps](../logic-apps/logic-apps-overview.md)）接收資料，以用來傳遞遙測和通知。 
 
 Azure 數位 Twins 也可以將資料路由傳送至下游服務，例如 [Azure 地圖服務](../azure-maps/about-azure-maps.md) 和 [時間序列深入](../time-series-insights/time-series-insights-update-overview.md)解析，以便進行儲存體、工作流程整合、分析等等。 
 
@@ -24,7 +26,7 @@ Azure 數位 Twins 也可以將資料路由傳送至下游服務，例如 [Azure
 
 Azure 數位 Twins 可與任何服務中的資料和事件（[IoT 中樞](../iot-hub/about-iot-hub.md)、 [Logic Apps](../logic-apps/logic-apps-overview.md)、您自己的自訂服務等等）進行驅動。 這可讓您從環境中的實體裝置收集遙測資料，並使用雲端中的 Azure 數位 Twins 圖形來處理此資料。
 
-Azure 數位 Twins 沒有內建的 IoT 中樞。 您可以使用目前在生產環境中擁有的現有 IoT 中樞，或部署新的 IoT 中樞。 這可讓您完整存取 IoT 中樞的所有裝置管理功能。
+Azure 數位 Twins 可讓您「自備」 IoT 中樞與服務搭配使用，而不是在幕後有內建的 IoT 中樞。 您可以使用目前在生產環境中擁有的現有 IoT 中樞，或部署要用於此用途的新 IoT 中樞。 這可讓您完整存取 IoT 中樞的所有裝置管理功能。
 
 若要將任何來源的資料內嵌至 Azure 數位 Twins，請使用 [**azure 函數**](../azure-functions/functions-overview.md)。 在 how [*to：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)，或在 Azure 數位 Twins [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)中自行試用，以深入瞭解這種模式。 
 

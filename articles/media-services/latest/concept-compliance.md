@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269721"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015816"
 ---
 # <a name="media-services-regulatory-compliance"></a>媒體服務法規合規性
 
@@ -33,11 +33,11 @@ ms.locfileid: "89269721"
 
 3PAO 和 JAB 的媒體服務審核未規劃2020。
 
-深入瞭解 azure 服務中的 Azure 服務合規性， [依 FedRAMP 和 DOD CC SRG 審核範圍](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) 文章。
+深入瞭解 azure 服務中的 Azure 服務合規性， [依 FedRAMP 和 DOD CC SRG 審核範圍](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) 文章。
 
 ## <a name="azure-compliance-documentation"></a>Azure 合規性文件
 
-如果您的組織需要遵守全球、美國政府、區域、金融服務、健康、媒體和製造的法律或法規標準，請從 [Azure 合規性檔](https://docs.microsoft.com/azure/compliance/)開始。
+如果您的組織需要遵守全球、美國政府、區域、金融服務、健康、媒體和製造的法律或法規標準，請從 [Azure 合規性檔](../../compliance/index.yml)開始。
 
 您也可以找到其他的合規性資源，例如審核報告、隱私權和一般資料保護規定的檢查清單 (GDPR) 、合規性藍圖、國家/地區、區域指導方針、執行和對應，以及白皮書與分析報表。
 

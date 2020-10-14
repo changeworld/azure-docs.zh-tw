@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9b36f4e292eb4bcae424d463f76e8a69eefd2968
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995536"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014540"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Analytics (預覽)？
 
@@ -116,13 +116,13 @@ Azure Cosmos DB 分析存放區是 Azure Cosmos DB 中操作資料的資料行�
 
 ## <a name="limitations"></a>限制
 
-* 適用于 Azure Cosmos DB 的 Azure Synapse 連結支援適用于 MongoDB 的 SQL API 和 Azure Cosmos DB API。 Gremlin API 和資料表 API 不支援此功能。 Cassandra API 的支援處於私人預覽狀態，如需詳細資訊，請洽詢 Azure Synapse 連結小組 cosmosdbsynapselink@microsoft.com 。  
+* 適用于 Azure Cosmos DB 的 Azure Synapse 連結支援適用于 MongoDB 的 SQL API 和 Azure Cosmos DB API。 Gremlin API 和資料表 API 不支援此功能。 Cassandra API 的支援處於私人預覽狀態。如需詳細資訊，請洽詢 [Azure Synapse 連結小組](mailto:cosmosdbsynapselink@microsoft.com)。  
 
 * 目前，只能針對新的容器啟用分析存放區。 若要使用現有容器的分析存放區，請使用 [Azure Cosmos DB 遷移工具](cosmosdb-migrationchoices.md)，將資料從現有容器遷移至新的容器。 您可以在新的和現有的 Azure Cosmos DB 帳戶上啟用 Synapse 連結。
 
-* 使用 Synapse SQL 無伺服器存取 Azure Cosmos DB 分析存放區目前處於有限預覽階段。 若要要求存取，請寄電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
+* 使用 Synapse SQL 無伺服器存取 Azure Cosmos DB 分析存放區目前處於有限預覽階段。 若要要求存取權，請傳送電子郵件給 [Azure Synapse 連結小組](mailto:cosmosdbsynapselink@microsoft.com)。
 
-* 在預覽中，針對已啟用 Synapse 連結的資料庫帳戶，不支援備份和還原容器。 如果您的工作負載需要備份和還原功能，建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
+* 針對已開啟分析存放區的容器，目前不支援在分析存放區中自動備份及還原您的資料。 在資料庫帳戶上啟用 Synapse 連結時，Azure Cosmos DB 將繼續在交易式存放區中自動 [備份](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) 您的資料， (只依排程備份間隔的容器) ，一律如此。 請務必注意，當已開啟分析存放區的容器還原至新的帳戶時，只會使用交易式存放區還原容器，而不會啟用任何分析存放區。 
 
 * 目前無法使用已佈建的 Synapse SQL 存取 Azure Cosmos DB 分析存放區。
 

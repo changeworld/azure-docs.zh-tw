@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331874"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014999"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -80,6 +80,14 @@ Azure 提供下列 Azure 內建角色，以授權存取 Azure 數位 Twins 資�
 ## <a name="encryption-of-data-at-rest"></a>待用資料加密
 
 Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料中心，並在您存取資料中心時將其解密。 這項加密會使用 Microsoft 管理的加密金鑰進行。
+
+## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享 (CORS)
+
+Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS) **。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
+
+若要解決這個錯誤，您可以執行下列其中一項：
+* 從訊息中去除 CORS 標頭 `Access-Control-Allow-Origin` 。 此標頭會指出是否可以共用回應。 
+* 或者，建立 CORS proxy 並透過它來 REST API 要求。 
 
 ## <a name="next-steps"></a>後續步驟
 

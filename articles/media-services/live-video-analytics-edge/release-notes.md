@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250465"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015629"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>模組更新
 
-* 新的圖形擴充功能節點， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可與認知服務中的 [空間分析](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) (預覽版) 模組整合。
+* 新的圖形擴充功能節點， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可與認知服務中的 [空間分析](/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) (預覽版) 模組整合。
 * 已新增 Linux ARM64 裝置的支援-使用 [手動步驟](deploy-iot-edge-device.md) 部署到這類裝置。
 
 ### <a name="documentation-updates"></a>文件更新

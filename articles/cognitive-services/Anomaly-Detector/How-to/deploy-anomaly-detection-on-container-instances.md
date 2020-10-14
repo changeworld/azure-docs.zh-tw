@@ -3,19 +3,19 @@ title: 在 Azure 容器實例中執行異常偵測器容器
 titleSuffix: Azure Cognitive Services
 description: 將異常偵測器容器部署至 Azure 容器實例，並在網頁瀏覽器中進行測試。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.author: aahi
-ms.openlocfilehash: 975efa9fdaff9175317794d8b6df7afbfc73cba8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: c7ce1985f4c7dcd14befce14abe5b913e2c9a67e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83585672"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014730"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>將異常偵測器容器部署至 Azure 容器實例
 
@@ -29,7 +29,7 @@ ms.locfileid: "83585672"
 
 [!INCLUDE [API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 查看 [安裝和執行](../anomaly-detector-container-configuration.md) 容器以提取容器映射並執行容器
 * 檢閱[設定容器](../anomaly-detector-container-configuration.md)以了解組態設定

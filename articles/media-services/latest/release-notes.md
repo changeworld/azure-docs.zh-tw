@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651185"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015697"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -34,7 +34,7 @@ ms.locfileid: "91651185"
 ## <a name="known-issues"></a>已知問題
 
 > [!NOTE]
-> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [實況活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md) 和作業、取得存取 api、加密內容的相關資訊。 針對其他所有管理工作 (例如，管理) 的轉換和作業，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
+> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [實況活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md) 和作業、取得存取 api、加密內容的相關資訊。 針對其他所有管理工作 (例如，管理) 的轉換和作業，請使用 [REST API](/rest/api/media/accountfilters)、 [CLI](/cli/azure/ams)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 >
 > 如需詳細資訊，請參閱： [媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
@@ -174,7 +174,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 我們宣布取代逐漸淘汰的「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 如需淘汰日期，請參閱這篇 [舊版元件](../previous/legacy-components.md) 文章。
 
-如需詳細資訊，請參閱[將 WAME 遷移到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101334)和[將 AME 遷移到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+如需詳細資訊，請參閱[將 WAME 遷移到媒體編碼器標準](../previous/migrate-windows-azure-media-encoder.md)和[將 AME 遷移到媒體編碼器標準](../previous/migrate-azure-media-encoder.md)。
  
 ## <a name="july-2019"></a>2019 年 7 月
 

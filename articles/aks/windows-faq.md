@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 當您在 Azure Kubernetes Service (AKS) 中執行 Windows Server 節點集區和應用程式工作負載時，請參閱常見問題。
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927546"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013962"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 節點集區的常見問題
 
@@ -113,6 +113,49 @@ GMSA 目前無法在 AKS 中使用群組受管理的服務帳戶 () 支援。
 
 具有 Windows 節點的叢集在遇到埠耗盡之前，可以有大約500的服務。
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>我可以搭配 Windows 節點使用 Azure Hybrid Benefit 嗎？
+
+是。 Windows Server Azure Hybrid Benefit 可讓您將內部部署 Windows Server 授權帶到 AKS Windows 節點，以降低營運成本。
+
+Azure Hybrid Benefit 可以在整個 AKS 叢集或個別節點上使用。 針對個別節點，您需要流覽至 [節點資源群組][resource-groups] ，並直接將 Azure Hybrid Benefit 套用至節點。 如需將 Azure Hybrid Benefit 套用至個別節點的詳細資訊，請參閱 [Windows Server Azure Hybrid Benefit][hybrid-vms]。 
+
+若要在新的 AKS 叢集上使用 Azure Hybrid Benefit，請使用 `--enable-ahub` 引數。
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+若要在現有的 AKS 叢集上使用 Azure Hybrid Benefit，請使用引數來更新叢集 `--enable-ahub` 。
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+若要檢查叢集上是否已設定 Azure Hybrid Benefit，請使用下列命令：
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+如果叢集已啟用 Azure Hybrid Benefit，的輸出將如下 `az vmss show` 所示：
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>我可以搭配使用 Kubernetes Web 儀表板與 Windows 容器嗎？
 
 是，您可以使用 [Kubernetes Web 儀表板][kubernetes-dashboard] 來存取 Windows 容器的相關資訊，但此時您無法直接從 Kubernetes Web 儀表板將 *kubectl exec* 執行至執行中的 Windows 容器。 如需有關連接到執行中 Windows 容器的詳細資訊，請參閱 [使用 RDP 連線至 Azure Kubernetes Service (AKS) 叢集 Windows Server 節點以進行維護或疑難排解][windows-rdp]。
@@ -152,3 +195,5 @@ GMSA 目前無法在 AKS 中使用群組受管理的服務帳戶 () 支援。
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

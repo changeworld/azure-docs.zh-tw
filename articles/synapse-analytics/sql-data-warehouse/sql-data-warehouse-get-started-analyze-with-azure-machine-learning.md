@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495703"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015561"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure Machine Learning 分析資料
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Azure Data Lake Storage 中的資料可供使用之後，Azure Machine Learning 中的資料存放區就會用來 [連接到 Azure 儲存體服務](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)。 遵循下列步驟來建立資料存放區和對應的資料集：
 
-1. 從 Azure 入口網站或在 [Azure Machine Learning studio](https://ml.azure.com/)中登入，以啟動 Azure Machine learning studio。
+1. 從 Azure 入口網站啟動 Azure Machine Learning studio，或在 [Azure Machine Learning studio](https://ml.azure.com/)中登入。
 
 1. 在 [**管理**] 區段中，按一下左窗格上的 [**資料存放區**]，然後按一下 [**新增資料**存放區]。
 
@@ -104,7 +104,7 @@ Azure Data Lake Storage 中的資料可供使用之後，Azure Machine Learning 
 
 1. 按一下模組以開啟 [屬性] 窗格。 按一下 [編輯資料行] 以指定您想要捨棄的資料行。
 
-1. 排除兩個資料行：CustomerAlternateKey 和 GeographyKey。 按一下 [儲存]
+1. 排除兩個資料行：CustomerAlternateKey 和 GeographyKey。 按一下 [儲存] 
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Azure Machine Learning 介面左窗格的螢幕擷取畫面":::
 
@@ -157,7 +157,7 @@ Azure Data Lake Storage 中的資料可供使用之後，Azure Machine Learning 
 
 比較資料行 BikeBuyer (實際) 與評分標籤 (預測) ，以查看模型執行的程度。 接下來，您可以使用此模型對新客戶進行預測。 您可以 [將此模型發佈為 web 服務](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) ，或將結果寫回 Azure Synapse。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解 Azure Machine Learning，請參閱 [Azure 上的 Machine Learning 簡介](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)。
 

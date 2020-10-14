@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294523"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013741"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 電腦上安裝 Log Analytics 代理程式
 本文將詳細說明如何使用下列方法，在 Linux 電腦上安裝 Log Analytics 代理程式：
@@ -215,7 +215,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 ## <a name="cache-information"></a>快取資訊
 適用于 Linux 的 Log Analytics 代理程式的資料會在本機電腦上快取（ *% STATE_DIR_WS/out_oms_common*. 緩衝區 *），然後再傳送至 Azure 監視器。 自訂記錄檔資料會以 *% STATE_DIR_WS/out_oms_blob*緩衝 * 緩衝。 某些 [方案和資料類型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)的路徑可能不同。
 
-代理程式每隔20秒會嘗試上傳一次。 如果失敗，則會以指數方式增加持續時間，直到成功為止。 它會在第二次嘗試之前等候30秒，在接下來的60秒之前、120秒，依此類推，直到重試之間最多9分鐘，直到再次成功連接為止。 在捨棄並移至下一個資料區塊之前，代理程式只會重試指定資料區塊的10次。 這會繼續進行，直到代理程式可以成功上傳為止。 表示在捨棄資料之前，可能會將資料緩衝處理到8.5 小時。
+代理程式每隔20秒會嘗試上傳一次。 如果失敗，則會以指數方式增加時間長度，直到第二次嘗試前30秒，第三個120秒之前的60秒 .。。在重試之間，最多可達16分鐘，直到再次成功連接為止。 代理程式會在捨棄並移至下一個資料區塊之前，重試最多6次的資料。 這會繼續進行，直到代理程式可以成功上傳為止。 這表示，資料可能會在捨棄前大約30分鐘內經過緩衝處理。
 
 預設的快取大小為 10 MB，但可以在 [omsagent](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)檔案中修改。
 

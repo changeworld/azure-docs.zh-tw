@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84015497"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014846"
 ---
 # <a name="manage-analysis-services"></a>Azure Analysis Services
 在 Azure 中建立 Analysis Services 伺服器之後，會有一些您必須立即或稍後執行的管理工作。 例如：執行資料重新整理處理作業、控制誰能夠存取您伺服器上的模型，或監視伺服器的健康狀態。 有些管理工作只能在 Azure 入口網站中執行，有些只能在 SQL Server Management Studio (SSMS) 中執行，也有些工作可以在這兩個位置中執行。
@@ -30,7 +30,7 @@ ms.locfileid: "84015497"
 ### <a name="download-and-install-ssms"></a>下載並安裝 SSMS
 若要取得所有最新功能，並在連接到 Azure Analysis Services 伺服器時獲得最順暢的體驗，請確定您使用的是最新版的 SSMS。 
 
-[下載 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+[下載 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 
 ### <a name="to-connect-with-ssms"></a>以 SSMS 連線
@@ -62,8 +62,7 @@ ms.locfileid: "84015497"
 ## <a name="troubleshooting-connection-problems"></a>連接問題的疑難排解
 使用 SSMS 進行連線時，如果遇到問題，您可能需要清除登入快取。 沒有快取到光碟。若要清除快取，請關閉並重新啟動連接程式。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如果您尚未將表格式模型部署到新伺服器，現在正是時候。 若要深入了解，請參閱 [Deploy to Azure Analysis Services](analysis-services-deploy.md) (部署至 Azure Analysis Services)。
 
 如果您已將模型部署至您的伺服器，您便可以透過用戶端或瀏覽器與伺服器連線。 若要深入了解，請參閱 [Get data from Azure Analysis Services server](analysis-services-connect.md) (從 Azure Analysis Services 伺服器取得資料)。
-

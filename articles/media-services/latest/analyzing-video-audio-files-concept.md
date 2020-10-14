@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05994a61b0afd0190e3fc1d4b841d576cec047f5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89320676"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015834"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -42,7 +42,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 |**預設名稱**|**案例**|**詳細資料**|
 |---|---|---|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊|此預設會套用一組預先定義的 AI 型分析作業，包括語音轉譯。 此預設目前支援處理具有單一音訊播放軌 (包含單一語言的語音) 的內容。 您可以使用「語言標記-區域」的 BCP-47 格式，為輸入中的音訊承載指定語言。 支援的語言為英文 ( ' en-us ' 和 ' en-us ' ) 、西班牙文 ( ' es ' 和 ' es-MX ' ) 、法文 ( ' fr-fr ' ) 、義大利 ( ' it-IT ' ) 、日文 ( ' ja-jp ' ) 、葡萄牙文 ( ' pt-BR ' ) 、中文 ( ' zh-CN ' ) 、德文 ( 「de DE」 ) 、阿拉伯文 ( 「ar-例如」和「ar SY」 ) 、俄文 ( 「ru-RU」 ) 、印度文 ( 「hi」 ) 和韓文 ( 「ko-KR」 ) 。<br/><br/> 如果語言未指定或設為 null，自動語言偵測會選擇第一個偵測到的語言，並在檔案持續時間內繼續使用選取的語言。 自動語言偵測功能目前支援英文、簡體中文、法文、德文、義大利文、日文、西班牙文、俄文和葡萄牙文。 它不支援在偵測到第一個語言之後，于不同語言之間動態切換。 搭配語音清晰的錄音時，自動語言偵測功能的效果最好。 如果自動語言偵測找不到語言，轉譯會切換回英文。|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊標準|此預設會套用一組預先定義的 AI 型分析作業，包括語音轉譯。 此預設目前支援處理具有單一音訊播放軌 (包含單一語言的語音) 的內容。 您可以使用「語言標記-區域」的 BCP-47 格式，為輸入中的音訊承載指定語言。 支援的語言為英文 ( ' en-us ' 和 ' en-us ' ) 、西班牙文 ( ' es ' 和 ' es-MX ' ) 、法文 ( ' fr-fr ' ) 、義大利 ( ' it-IT ' ) 、日文 ( ' ja-jp ' ) 、葡萄牙文 ( ' pt-BR ' ) 、中文 ( ' zh-CN ' ) 、德文 ( 「de DE」 ) 、阿拉伯文 ( 「ar-例如」和「ar SY」 ) 、俄文 ( 「ru-RU」 ) 、印度文 ( 「hi」 ) 和韓文 ( 「ko-KR」 ) 。<br/><br/> 如果語言未指定或設為 null，自動語言偵測會選擇第一個偵測到的語言，並在檔案持續時間內繼續使用選取的語言。 自動語言偵測功能目前支援英文、簡體中文、法文、德文、義大利文、日文、西班牙文、俄文和葡萄牙文。 它不支援在偵測到第一個語言之後，于不同語言之間動態切換。 搭配語音清晰的錄音時，自動語言偵測功能的效果最好。 如果自動語言偵測找不到語言，轉譯會切換回英文。|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊基本|「這個模式會執行語音轉換文字轉譯和產生 VTT 的副標題/字幕檔案。 此模式的輸出包含深入解析 JSON 檔案，其中只包含關鍵字、轉譯和計時資訊。 自動語言偵測和說話者 diarization 不會包含在此模式中。」 支援的語言清單可從這裡取得： https://go.microsoft.com/fwlink/?linkid=2109463|
 |[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音訊和視訊|從音訊和視訊擷取見解 (豐富的中繼資料)，並輸出 JSON 格式檔案。 您可以指定在處理視訊檔案時，是否只想擷取音訊見解。 如需詳細資訊，請參閱[分析視訊](analyze-videos-tutorial-with-api.md)。|
 |[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|偵測影片中出現的臉部|描述在分析影片以偵測出所有臉部時要使用的設定。|
 
@@ -74,7 +74,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|行識別碼。|
-|text|文字記錄本身。|
+|文字|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -112,7 +112,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|text|OCR 文字。|
+|文字|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -363,7 +363,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|text|關鍵字。|
+|文字|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|

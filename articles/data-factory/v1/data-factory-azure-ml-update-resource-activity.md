@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Factory 更新 Machine Learning 模型
-description: 說明如何使用 Azure Data Factory 和 Azure Machine Learning 建立預測管線
+description: '說明如何使用 Azure Data Factory v1 和 Azure Machine Learning Studio (傳統來建立預測管線) '
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bed66ab8f3dc3db47b94070cbbeb64fb91163f8c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254917"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014455"
 ---
-# <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning 模型
+# <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning Studio (傳統) 模型
 
 > [!div class="op_single_selector" title1="轉換活動"]
 > * [Hive 活動](data-factory-hive-activity.md) 
@@ -26,8 +26,8 @@ ms.locfileid: "85254917"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -36,10 +36,10 @@ ms.locfileid: "85254917"
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中更新機器學習模型](../update-machine-learning-models.md)。
 
-本文補充主要 Azure Data Factory - Azure Machine Learning 整合文件︰[使用 Azure Machine Learning 和 Azure Data Factory 建立預測管線](data-factory-azure-ml-batch-execution-activity.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。 
+本文補充主要 Azure Data Factory-Azure Machine Learning Studio (傳統) 整合文章： [使用 Azure Machine Learning Studio (傳統) 和 Azure Data Factory 建立預測管線](data-factory-azure-ml-batch-execution-activity.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。 
 
-## <a name="overview"></a>概觀
-經過一段時間，必須使用新的輸入資料集重新訓練 Azure ML 評分實驗中的預測模型。 完成重新訓練之後，您想要使用已重新訓練的 ML 模型來更新評分 Web 服務。 透過 Web 服務啟用重新訓練和更新 Azure ML 模型的一般步驟如下：
+## <a name="overview"></a>總覽
+經過一段時間之後，就必須使用新的輸入資料集重新定型 Azure Machine Learning Studio 中的預測模型 (傳統) 評分實驗。 完成重新訓練之後，您想要使用已重新訓練的 ML 模型來更新評分 Web 服務。 透過 web 服務啟用重新訓練和更新 Studio (傳統) 模型的一般步驟如下：
 
 1. 在 [Azure Machine Learning Studio (傳統) ](https://studio.azureml.net)中建立實驗。
 2. 當您滿意模型時，請使用 Azure Machine Learning Studio (傳統) ，將 web 服務發佈至 **訓練實驗** 和評分/預測性**實驗**。
@@ -49,13 +49,13 @@ ms.locfileid: "85254917"
 - **訓練 Web 服務** - 接收訓練資料並產生已訓練的模型。 重新訓練的輸出是 Azure Blob 儲存體中的 .ilearner 檔案。 當您將訓練實驗發佈為 Web 服務時，系統會自動為您建立 **預設端點** 。 您可以建立多個端點，但此範例僅使用預設端點。
 - **評分 Web 服務** - 接收未標記的資料範例並進行預測。 預測的輸出可能會有各種不同的表單，例如 Azure SQL Database 中的 .csv 檔案或資料列，視實驗的設定而定。 當您將預測實驗發佈為 Web 服務時，系統會自動為您建立預設端點。 
 
-下圖描述 Azure ML 中訓練與評分端點之間的關聯性。
+下圖描述 Azure Machine Learning Studio (傳統) 中定型和評分端點之間的關聯性。
 
 ![Web 服務](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-您可以使用 [AzureML Batch 執行活動]**** 來叫用**訓練 Web 服務**。 叫用訓練 Web 服務與叫用 Azure ML Web 服務 (評分 Web 服務) 以便進行資料評分相同。 上述各節詳細說明如何從 Azure Data Factory 管線叫用 Azure ML Web 服務。 
+您可以使用**Azure Machine Learning Studio (傳統) 批次執行活動**來叫用**定型 web 服務**。 叫用訓練 web 服務的方式，與叫用 Azure Machine Learning Studio (傳統) web 服務 (評分 web 服務) 以評分資料相同。 上述各節涵蓋如何詳細地從 Azure Data Factory 管線叫用 Azure Machine Learning Studio (傳統) web 服務。 
 
-您可以使用 [Azure ML 更新資源活動]**** 來叫用**評分 Web 服務**，進而以新訓練的模型更新 Web 服務。 下列範例提供連結的服務定義︰ 
+您可以使用**Azure Machine Learning Studio (傳統) 更新資源活動**來叫用**評分 web 服務**，以使用新定型的模型來更新 web 服務。 下列範例提供連結的服務定義︰ 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>評分 Web 服務是傳統的 Web 服務
 如果評分 web 服務是傳統的 **web 服務**，請使用 Azure 入口網站建立第二個 **非預設且可更新的端點** 。 如需相關步驟，請參閱[建立端點](../../machine-learning/studio/create-endpoint.md)一文。 建立非預設的可更新端點之後，執行下列步驟：
@@ -88,7 +88,7 @@ ms.locfileid: "85254917"
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-在 [Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)上查詢 Web 服務時，您可以取得 URL 中預留位置的值。 新的更新資源端點類型需要 AAD (Azure Active Directory) 權杖。 在 Azure Machine Learning 連結服務中指定 **servicePrincipalId** 和 **servicePrincipalKey** 。 請參閱[如何建立服務主體及指派權限來管理 Azure 資源](../../active-directory/develop/howto-create-service-principal-portal.md)。 以下是 AzureML 連結服務定義範例︰ 
+您可以在 [Azure Machine Learning Studio (傳統) Web 服務入口](https://services.azureml.net/)網站上查詢 web 服務時，取得 URL 中預留位置的值。 新的更新資源端點類型需要 AAD (Azure Active Directory) 權杖。 在 Studio (傳統) 連結服務中指定 **servicePrincipalId** 和 **servicePrincipalKey** 。 請參閱[如何建立服務主體及指派權限來管理 Azure 資源](../../active-directory/develop/howto-create-service-principal-portal.md)。 以下是 AzureML 連結服務定義範例︰ 
 
 ```json
 {
@@ -108,20 +108,20 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 }
 ```
 
-下列案例提供更多詳細資料， 其中包含從 Azure Data Factory 管線重新訓練和更新 Azure ML 模型的範例。
+下列案例提供更多詳細資料， 它包含從 Azure Data Factory 管線重新定型和更新 Studio (傳統) 模型的範例。
 
-## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>案例：重新訓練和更新 Azure ML 模型
-本節提供使用 **Azure ML 批次執行活動** 來重新訓練模型的範例管線。 管線也會使用 **Azure ML 更新資源活動** 來更新評分 Web 服務中的模型。 本節還會提供範例中所有連結服務、資料集和管線的 JSON 程式碼片段。
+## <a name="scenario-retraining-and-updating-a-studio-classic-model"></a>案例：重新定型和更新 Studio (傳統) 模型
+本節提供的範例管線會使用 **Azure Machine Learning Studio (傳統) 批次執行活動** 來重新定型模型。 管線也會使用 **Azure Machine Learning Studio (傳統) 更新資源活動** ，來更新評分 web 服務中的模型。 本節還會提供範例中所有連結服務、資料集和管線的 JSON 程式碼片段。
 
-以下是範例管線的圖表檢視。 如您所見，Azure ML 批次執行活動會採用訓練輸入並產生訓練輸出 (iLearner 檔案)。 Azure ML 更新資源活動會採用此訓練輸出，並更新評分 Web 服務端點中的模型。 更新資源活動不會產生任何輸出。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
+以下是範例管線的圖表檢視。 如您所見，Studio (傳統) 批次執行活動會採用定型輸入，並 (.Ilearner 檔) 產生定型輸出。 Studio (傳統) 更新資源活動會採用此定型輸出，並更新評分 web 服務端點中的模型。 更新資源活動不會產生任何輸出。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
 
 ![管線圖](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure Blob 儲存體連結服務：
 Azure 儲存體會保留下列資料：
 
-* 訓練資料。 Azure ML 訓練 Web 服務的輸入資料。  
-* iLearner 檔案。 Azure ML 訓練 Web 服務的輸出。 此檔案也是更新資源活動的輸入。  
+* 訓練資料。 Studio (傳統) 訓練 web 服務的輸入資料。  
+* iLearner 檔案。 Studio (傳統) 訓練 web 服務的輸出。 此檔案也是更新資源活動的輸入。  
 
 以下是連結服務的範例 JSON 定義：
 
@@ -138,7 +138,7 @@ Azure 儲存體會保留下列資料：
 ```
 
 ### <a name="training-input-dataset"></a>訓練輸入資料集：
-下列資料集代表 Azure Machine Learning 定型 web 服務的輸入定型資料。 Azure Machine Learning 批次執行活動會將此資料集做為輸入。
+下列資料集代表 Studio (傳統) 訓練 web 服務的輸入定型資料。 Studio (傳統) 批次執行活動會將此資料集做為輸入。
 
 ```JSON
 {
@@ -169,7 +169,7 @@ Azure 儲存體會保留下列資料：
 ```
 
 ### <a name="training-output-dataset"></a>訓練輸出資料集：
-下列資料集代表 Azure ML 訓練 Web 服務的輸出入 iLearner 檔案。 Azure ML 批次執行活動會產生此資料集。 此資料集同時也是 Azure ML 更新資源活動的輸入。
+下列資料集代表 Azure Machine Learning Studio (傳統) 訓練 web 服務的輸出 .Ilearner 檔。 Azure Machine Learning Studio (傳統) 批次執行活動會產生此資料集。 此資料集也是 Azure Machine Learning Studio (傳統) 更新資源活動的輸入。
 
 ```JSON
 {
@@ -192,8 +192,8 @@ Azure 儲存體會保留下列資料：
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Azure Machine Learning 定型端點的連結服務
-下列 JSON 程式碼片段定義的 Azure 機器學習連結服務可指向訓練 Web 服務的預設端點。
+### <a name="linked-service-for-studio-classic-training-endpoint"></a>適用于 Studio (傳統) 定型端點的連結服務
+下列 JSON 程式碼片段會定義 Studio (傳統) 連結服務，以指向定型 web 服務的預設端點。
 
 ```JSON
 {    
@@ -216,8 +216,8 @@ Azure 儲存體會保留下列資料：
 4. 在 **Azure Machine Learning Studio (傳統) **中，按一下 [ **批次執行** ] 連結。
 5. 從 [要求]**** 區段複製 [要求 URI]**** 並將它貼到 Data Factory JSON 編輯器中。   
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure ML 可更新評分端點的連結服務：
-下列 JSON 程式碼片段定義的 Azure 機器學習連結服務可指向評分 Web 服務的非預設可更新端點。  
+### <a name="linked-service-for-studio-classic-updatable-scoring-endpoint"></a>適用于 Studio (傳統) 可更新評分端點的連結服務：
+下列 JSON 程式碼片段會定義 Studio (傳統) 連結服務，以指向評分 web 服務的非預設可更新端點。  
 
 ```JSON
 {
@@ -237,7 +237,7 @@ Azure 儲存體會保留下列資料：
 ```
 
 ### <a name="placeholder-output-dataset"></a>預留位置輸出資料集：
-Azure ML 更新資源活動不會產生任何輸出。 不過，Azure Data Factory 需要輸出資料集來驅動管線的排程。 因此，我們在此範例中使用虛擬/預留位置資料集。  
+Studio (傳統) 更新資源活動不會產生任何輸出。 不過，Azure Data Factory 需要輸出資料集來驅動管線的排程。 因此，我們在此範例中使用虛擬/預留位置資料集。  
 
 ```JSON
 {
@@ -260,7 +260,7 @@ Azure ML 更新資源活動不會產生任何輸出。 不過，Azure Data Facto
 ```
 
 ### <a name="pipeline"></a>管線
-管線有兩個活動：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure ML 批次執行活動會以訓練資料做為輸入並產生 iLearner 檔案做為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
+管線有兩個活動：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure Machine Learning Studio (傳統) 批次執行活動會以定型資料作為輸入，並產生 .Ilearner 檔案作為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
 
 ![管線圖](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

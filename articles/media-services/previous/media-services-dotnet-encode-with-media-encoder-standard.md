@@ -16,12 +16,12 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262393"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014370"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 透過 Media Encoder Standard 為資產編碼
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262393"
 
 編碼工作是媒體服務中最常見的處理作業。 您建立編碼工作以將媒體檔案從一種編碼轉換成另一種編碼。 編碼時，您可以使用媒體服務內建的 Media Encoder。 您也可以使用媒體服務合作夥伴提供的編碼器；第三方編碼器可透過 Azure Marketplace 取得。 
 
-本文說明如何使用 .NET 透過媒體編碼器標準 (MES) 將您的資產編碼。 媒體編碼器標準是使用[這裡](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所描述的其中一個編碼器預設來進行設定。
+本文說明如何使用 .NET 透過媒體編碼器標準 (MES) 將您的資產編碼。 媒體編碼器標準是使用[這裡](./media-services-mes-presets-overview.md)所描述的其中一個編碼器預設來進行設定。
 
 建議一律將來源檔編碼為調適性位元速率 MP4 集，然後使用[動態封裝](media-services-dynamic-packaging-overview.md)將該集合轉換為所要的格式。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "89262393"
 [格式和轉碼器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES 預設值
-媒體編碼器標準是使用[這裡](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所描述的其中一個編碼器預設來進行設定。
+媒體編碼器標準是使用[這裡](./media-services-mes-presets-overview.md)所描述的其中一個編碼器預設來進行設定。
 
 ### <a name="input-and-output-metadata"></a>輸入和輸出中繼資料
 如果您使用 MES 為輸入資產 (或資產) 編碼，在該編碼工作完成時，您便能取得輸出資產。 輸出資產包含視訊、音訊、縮圖、資訊清單等等，依據您所使用的編碼預設格式而定。
@@ -215,4 +215,3 @@ namespace MediaEncoderStandardSample
 ## <a name="next-steps"></a>後續步驟
 [如何使用媒體編碼器標準搭配 .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
  來產生縮圖[媒體服務編碼總覽](media-services-encode-asset.md)
-

@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015267"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013588"
 ---
 # <a name="manage-database-roles-and-users"></a>管理資料庫角色和使用者
 
@@ -26,7 +26,7 @@ ms.locfileid: "87015267"
 *  **處理** - 使用者可以連線到資料庫並對其執行處理作業，以及分析模型資料庫的資料。
 *  **讀取** - 使用者可以使用用戶端應用程式來連接和分析模型資料庫的資料。
 
-建立表格式模型專案時，您可以使用 Visual Studio 中的 [角色管理員] 與 Analysis Services 專案來建立角色，並將使用者或群組新增至這些角色。 部署到伺服器時，請使用 SQL Server Management Studio (SSMS) 、 [Analysis Services PowerShell Cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或 [表格式模型指令碼語言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) ，以新增或移除角色和使用者成員。
+建立表格式模型專案時，您可以使用 Visual Studio 中的 [角色管理員] 與 Analysis Services 專案來建立角色，並將使用者或群組新增至這些角色。 部署到伺服器時，請使用 SQL Server Management Studio (SSMS) 、 [Analysis Services PowerShell Cmdlet](/analysis-services/powershell/analysis-services-powershell-reference)或 [表格式模型指令碼語言](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) ，以新增或移除角色和使用者成員。
 
 新增 **安全性群組**時，請使用 `obj:groupid@tenantid` 。
 
@@ -42,7 +42,7 @@ ms.locfileid: "87015267"
   
 4.  選取下列其中一個權限：  
   
-    |權限|說明|  
+    |權限|描述|  
     |----------------|-----------------|  
     |**None**|成員無法讀取或修改模型架構，也無法查詢資料。|  
     |**讀取**|成員可以查詢資料 (根據資料列篩選條件)，但無法修改模型結構描述。|  
@@ -85,7 +85,7 @@ ms.locfileid: "87015267"
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>使用 TMSL 指令碼新增角色和使用者
 
-您可以在 SSMS 中 或使用 PowerShell，在 XMLA 視窗中執行 TMSL 指令碼。 使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) 物件。
+您可以在 SSMS 中 或使用 PowerShell，在 XMLA 視窗中執行 TMSL 指令碼。 使用 [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) 命令和 [Roles](/analysis-services/tmsl/roles-object-tmsl) 物件。
 
 **TMSL 指令碼範例**
 
@@ -119,13 +119,13 @@ ms.locfileid: "87015267"
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>使用 PowerShell 新增角色和使用者
 
-[SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 模組提供特定工作的資料庫管理 Cmdlet，以及可接受表格式模型指令碼語言 (TMSL) 查詢或指令碼的一般用途 Invoke-ASCmd Cmdlet。 下列 Cmdlet 用來管理資料庫角色和使用者。
+[SqlServer](/analysis-services/powershell/analysis-services-powershell-reference) 模組提供特定工作的資料庫管理 Cmdlet，以及可接受表格式模型指令碼語言 (TMSL) 查詢或指令碼的一般用途 Invoke-ASCmd Cmdlet。 下列 Cmdlet 用來管理資料庫角色和使用者。
   
 |Cmdlet|描述|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|將成員新增到資料庫角色。| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|從資料庫角色移除成員。|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|執行 TMSL 指令碼。|
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|將成員新增到資料庫角色。| 
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|從資料庫角色移除成員。|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|執行 TMSL 指令碼。|
 
 ## <a name="row-filters"></a>資料列篩選  
 
@@ -147,9 +147,8 @@ ms.locfileid: "87015267"
   
  您可以使用 =FALSE()** 篩選條件，拒絕存取整個資料表的所有資料列。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
   [管理伺服器管理員](analysis-services-server-admins.md)   
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  
-  [表格式模型指令碼語言 (TMSL) 參考](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
-
+  [表格式模型指令碼語言 (TMSL) 參考](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)

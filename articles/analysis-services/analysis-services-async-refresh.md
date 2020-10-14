@@ -8,18 +8,18 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507177"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013894"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 進行非同步重新整理
 
 您可以使用任何支援 REST 呼叫的程式設計語言，在 Azure Analysis Services 表格式模型上執行非同步資料重新整理作業。 這包括相應放大查詢的唯讀複本同步處理。 
 
-資料重新整理作業可能需要一些時間，視許多因素而定，包括資料量、使用資料分割的優化層級等等。這些作業傳統上是透過現有的方法來叫用，例如使用 [TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表格式物件模型) 、 [PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) Cmdlet 或 [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (表格式模型指令碼語言) 。 不過，這些方法可能需要通常不太可靠的長時間執行 HTTP 連線。
+資料重新整理作業可能需要一些時間，視許多因素而定，包括資料量、使用資料分割的優化層級等等。這些作業傳統上是透過現有的方法來叫用，例如使用 [TOM](/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表格式物件模型) 、 [PowerShell](/analysis-services/powershell/analysis-services-powershell-reference) Cmdlet 或 [TMSL](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (表格式模型指令碼語言) 。 不過，這些方法可能需要通常不太可靠的長時間執行 HTTP 連線。
 
 Azure Analysis Services 的 REST API 可讓資料重新整理作業以非同步方式進行。 使用 REST API，便不需要來自用戶端應用程式的長時間執行 HTTP 連線。 針對可靠性還有其他內建的功能，例如自動重試次數、批次認可。
 
@@ -100,9 +100,9 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 | 名稱             | 類型  | 描述  |預設  |
 |------------------|-------|--------------|---------|
-| `Type`           | 列舉  | 要執行的處理類型。 Type 對應於 TMSL 的 [refresh 命令](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)類型：full、clearValues、calculate、dataOnly、automatic 和 defragment。 不支援 Add 類型。      |   automatic      |
+| `Type`           | 列舉  | 要執行的處理類型。 Type 對應於 TMSL 的 [refresh 命令](/analysis-services/tmsl/refresh-command-tmsl)類型：full、clearValues、calculate、dataOnly、automatic 和 defragment。 不支援 Add 類型。      |   automatic      |
 | `CommitMode`     | 列舉  | 決定物件要批次認可或只在完成時認可。 CommitMode 包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | Int   | 這個值決定了可以平行執行處理命令的執行緒數目上限。 此值與 MaxParallelism 屬性對應，後者可以在 TMSL 的 [sequence 命令](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl)中設定，或使用其他方法設定。       | 10        |
+| `MaxParallelism` | Int   | 這個值決定了可以平行執行處理命令的執行緒數目上限。 此值與 MaxParallelism 屬性對應，後者可以在 TMSL 的 [sequence 命令](/analysis-services/tmsl/sequence-command-tmsl)中設定，或使用其他方法設定。       | 10        |
 | `RetryCount`     | Int   | 表示作業失敗之前重試的次數。      |     0    |
 | `Objects`        | Array | 要處理的物件陣列。 每個物件包含：「資料表」(處理整份資料表時)，或「資料表」和「分割區」(處理資料分割時)。 如未指定物件，會重新整理整個模型。 |   處理整個模型      |
 
@@ -226,6 +226,4 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 ## <a name="see-also"></a>另請參閱
 
 [樣品](analysis-services-samples.md)   
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
-
-
+[REST API](/rest/api/analysisservices/servers)

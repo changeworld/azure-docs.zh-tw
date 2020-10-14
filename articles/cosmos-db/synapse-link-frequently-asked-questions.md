@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803988"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014557"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -35,7 +35,9 @@ ms.locfileid: "91803988"
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure Synapse Link 啟用的帳戶是否支援備份和還原？
 
-在預覽中，針對已啟用 Azure Synapse 連結的資料庫帳戶，不支援備份和還原容器。 如果您的生產工作負載需要備份和還原功能，建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
+針對已開啟分析存放區的容器，目前不支援在分析存放區中自動備份及還原您的資料。 
+
+在資料庫帳戶上啟用 Synapse 連結時，Azure Cosmos DB 將繼續在交易式存放區中自動 [備份](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) 您的資料， (只依排程備份間隔的容器) ，一律如此。 請務必注意，當已開啟分析存放區的容器還原至新的帳戶時，只會使用交易式存放區還原容器，而不會啟用任何分析存放區。 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>我可以停用 Azure Cosmos DB 帳戶的 Azure Synapse Link 功能嗎？
 

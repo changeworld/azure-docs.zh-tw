@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83701485"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014931"
 ---
 # <a name="setup-diagnostic-logging"></a>設定診斷記錄
 
-在任何 Analysis Services 解決方案中，監視您伺服器的執行方式皆是一大重點功能。 Azure Analysis Services 與 Azure 監視器整合。 透過 [Azure 監視器資源記錄](../azure-monitor/platform/platform-logs-overview.md)，您可以監視記錄並傳送至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)、將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，以及將記錄匯出至 [Azure 監視器記錄](../azure-monitor/azure-monitor-log-hub.md)。
+在任何 Analysis Services 解決方案中，監視您伺服器的執行方式皆是一大重點功能。 Azure Analysis Services 與 Azure 監視器整合。 透過 [Azure 監視器資源記錄](../azure-monitor/platform/platform-logs-overview.md)，您可以監視記錄並傳送至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)、將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，以及將記錄匯出至 [Azure 監視器記錄](../azure-monitor/overview.md)。
 
 ![資源記錄至儲存體、事件中樞或 Azure 監視器記錄](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -28,7 +28,7 @@ ms.locfileid: "83701485"
 
 ### <a name="engine"></a>引擎
 
-選取 [引擎] 記錄所有 [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 您無法選取個別事件。 
+選取 [引擎] 記錄所有 [xEvents](/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 您無法選取個別事件。 
 
 |XEvent 類別 |事件名稱  |
 |---------|---------|
@@ -80,7 +80,7 @@ ms.locfileid: "83701485"
 
     * **名稱**。 輸入要建立之記錄的名稱。
 
-    * **封存至儲存體帳戶**。 若要使用此選項，您需要可以連接的現有儲存體帳戶。 請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。 請依照指示建立資源管理員、一般用途的帳戶，然後在返回入口網站上的此頁面時，選取您的儲存體帳戶。 新建立的儲存體帳戶可能在數分鐘後才會出現在下拉式功能表中。
+    * **封存至儲存體帳戶**。 若要使用此選項，您需要可以連接的現有儲存體帳戶。 請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)。 請依照指示建立資源管理員、一般用途的帳戶，然後在返回入口網站上的此頁面時，選取您的儲存體帳戶。 新建立的儲存體帳戶可能在數分鐘後才會出現在下拉式功能表中。
     * **串流處理至事件中樞**。 若要使用此選項，您需要可以連接的現有事件中樞命名空間和事件中樞。 若想深入了解，請參閱[使用 Azure 入口網站來建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。 然後返回入口網站的此頁面選取事件中樞命名空間和原則名稱。
     * **傳送至 Azure 監視器 (Log Analytics 工作區)** 。 若要使用此選項，請使用現有的工作區，或是在入口網站中[建立新的工作區](../azure-monitor/learn/quick-create-workspace.md)資源。 如需有關如何檢視記錄的詳細資訊，請參閱本文中的[檢視 Log Analytics 工作區中的記錄](#view-logs-in-log-analytics-workspace)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "83701485"
 
 3. 按一下 [檔案] 。
 
-    如果您收到錯誤訊息，指出「無法更新診斷 \<workspace name> 。 訂 \<subscription id> 用帳戶未註冊為使用 microsoft insights。」 請遵循[針對 Azure 診斷進行疑難排解](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)的指示註冊帳戶，然後重試此程序。
+    如果您收到錯誤訊息，指出「無法更新診斷 \<workspace name> 。 訂 \<subscription id> 用帳戶未註冊為使用 microsoft insights。」 請遵循[針對 Azure 診斷進行疑難排解](../azure-monitor/platform/resource-logs.md)的指示註冊帳戶，然後重試此程序。
 
     未來無論何時，如果想要變更資源記錄的儲存方式，您可以返回此頁面來修改設定。
 
@@ -136,11 +136,11 @@ ms.locfileid: "83701485"
 
 ### <a name="rest-api"></a>REST API
 
-了解如何[使用 Azure 監視器 REST API 變更診斷設定](https://docs.microsoft.com/rest/api/monitor/)。 
+了解如何[使用 Azure 監視器 REST API 變更診斷設定](/rest/api/monitor/)。 
 
 ### <a name="resource-manager-template"></a>Resource Manager 範本
 
-了解如何[使用 Resource Manager 範本在建立資源時啟用診斷設定](../azure-monitor/platform/diagnostic-settings-template.md)。 
+了解如何[使用 Resource Manager 範本在建立資源時啟用診斷設定](../azure-monitor/samples/resource-manager-diagnostic-settings.md)。 
 
 ## <a name="manage-your-logs"></a>管理您的記錄
 
@@ -328,4 +328,4 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 深入了解 [Azure 監視器資源記錄](../azure-monitor/platform/platform-logs-overview.md)。
 
-請參閱 PowerShell 說明中的 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)。
+請參閱 PowerShell 說明中的 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)。

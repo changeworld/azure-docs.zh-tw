@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87551943"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014829"
 ---
 # <a name="best-practices-for-long-running-operations"></a>長時間執行作業的最佳做法
 
@@ -50,5 +50,4 @@ REST API 允許這類重新開機，但不允許完整的彈性來建立和刪�
 [使用 REST API 進行非同步重新整理](analysis-services-async-refresh.md)  
 [Azure Analysis Services 擴充](analysis-services-scale-out.md)  
 [Analysis Services 的高可用性](analysis-services-bcdr.md)  
-[Azure 服務的重試指引](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
-
+[Azure 服務的重試指引](/azure/architecture/best-practices/retry-service-specific)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994672"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014234"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -401,7 +401,7 @@ WireData
 
 **目前不支援**將現有的 Application Insights 資源從某個區域移至另一個區域。 您所收集的歷程記錄資料 **無法遷移** 至新的區域。 唯一的部分解決方法是：
 
-1. 在新區域中建立全新的 Application Insights 資源 ([傳統](app/create-new-resource.md) 或以 [工作區為基礎](/app/create-workspace-resource.md) 的) 。
+1. 在新區域中建立全新的 Application Insights 資源 ([傳統](app/create-new-resource.md) 或以 [工作區為基礎](/azure/azure-monitor/app/create-workspace-resource) 的) 。
 2. 重新建立新資源中原始資源專屬的所有唯一自訂。
 3. 修改您的應用程式，以使用新區域資源的 [檢測金鑰](app/create-new-resource.md#copy-the-instrumentation-key) 或 [連接字串](app/sdk-connection-string.md)。  
 4. 測試以使用新的 Application Insights 資源，確認一切都如預期般繼續運作。 
@@ -414,7 +414,7 @@ WireData
 - 重新建立可用性警示。
 - 重新建立任何自訂 Role-Based 存取控制， (您的使用者存取新資源所需的 RBAC) 設定。 
 - 複寫牽涉到內嵌取樣、資料保留、每日上限和自訂計量的設定。 這些設定可透過 [ **使用量和估計成本** ] 窗格來控制。
-- 依賴 API 金鑰的任何整合，例如 [發行注釋](/app/annotations.md)、 [即時計量安全控制通道](app/live-stream.md#secure-the-control-channel) 等等。您將需要產生新的 API 金鑰，並更新相關聯的整合。 
+- 依賴 API 金鑰的任何整合，例如 [發行注釋](/azure/azure-monitor/app/annotations)、 [即時計量安全控制通道](app/live-stream.md#secure-the-control-channel) 等等。您將需要產生新的 API 金鑰，並更新相關聯的整合。 
 - 需要再次設定傳統資源中的連續匯出。
 - 以工作區為基礎的資源中的診斷設定必須重新設定。
 

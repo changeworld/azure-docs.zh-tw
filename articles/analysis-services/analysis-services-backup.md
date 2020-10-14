@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506990"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014047"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services 資料庫備份和還原
 
-在 Azure Analysis Services 中備份表格式模型資料庫與內部部署的 Analysis Services 情況非常類似。 主要的差異在於備份檔案的儲存位置。 備份檔案必須儲存至 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)中的容器。 您可以使用您已經有的儲存體帳戶和容器，或是在為您的伺服器設定儲存體設定時再建立帳戶和容器。
+在 Azure Analysis Services 中備份表格式模型資料庫與內部部署的 Analysis Services 情況非常類似。 主要的差異在於備份檔案的儲存位置。 備份檔案必須儲存至 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)中的容器。 您可以使用您已經有的儲存體帳戶和容器，或是在為您的伺服器設定儲存體設定時再建立帳戶和容器。
 
 > [!NOTE]
 > 建立儲存體帳戶會導致產生新的可計費服務。 若要深入了解，請參閱 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -75,10 +75,10 @@ ms.locfileid: "86506990"
 
 
 ### <a name="powershell"></a>PowerShell
-使用 [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) Cmdlet。
+使用 [Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase) Cmdlet。
 
 ## <a name="restore"></a>還原
-在還原時，您的備份檔案必須位於您為伺服器所設定的儲存體帳戶中。 如果您需要將備份檔案從內部部署位置移至儲存體帳戶，請使用 [Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/common/storage-use-azcopy.md) 命令列公用程式。 
+在還原時，您的備份檔案必須位於您為伺服器所設定的儲存體帳戶中。 如果您需要將備份檔案從內部部署位置移至儲存體帳戶，請使用 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)或 [AzCopy](../storage/common/storage-use-azcopy-v10.md) 命令列公用程式。 
 
 
 
@@ -102,11 +102,11 @@ ms.locfileid: "86506990"
 
 ### <a name="powershell"></a>PowerShell
 
-使用 [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) Cmdlet。
+使用 [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase) Cmdlet。
 
 
 ## <a name="related-information"></a>相關資訊
 
-[Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)  
+[Azure 儲存體帳戶](../storage/common/storage-account-create.md)  
 [高可用性](analysis-services-bcdr.md)      
 [Analysis Services 網路連線常見問題](analysis-services-network-faq.md)

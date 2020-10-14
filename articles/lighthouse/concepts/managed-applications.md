@@ -3,12 +3,12 @@ title: Azure Lighthouse 和 Azure 受控應用程式
 description: 瞭解 Azure Lighthouse 和 Azure 受控應用程式如何協助啟用不同的案例，以及如何搭配使用它們。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970753"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014982"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 受控應用程式
 
@@ -23,7 +23,7 @@ Azure 受控應用程式和 Azure Lighthouse 的運作方式是讓服務提供�
 
 使用 [Azure Lighthouse](../overview.md)，服務提供者可以直接在客戶的訂用帳戶 (或資源群組) 上執行廣泛的管理工作。 這項存取是透過邏輯投射來達成，讓服務提供者能夠登入自己的租使用者，並存取屬於客戶租使用者的資源。 客戶可以決定要將哪些訂用帳戶或資源群組委派給服務提供者，而客戶會維持這些資源的完整存取權。 他們也可以隨時移除服務提供者的存取權。
 
-若要使用 Azure Lighthouse，客戶可透過[部署 ARM 範本](../how-to/onboard-customer.md)或透過[Azure Marketplace 的受控服務供應](managed-services-offers.md)專案，上線[Azure 委派的資源管理](azure-delegated-resource-management.md)。 您可以藉由 [連結您的合作夥伴識別碼](../how-to/partner-earned-credit.md)，來追蹤對客戶參與專案的影響，並獲得合作夥伴所獲得的點數。
+若要使用 Azure Lighthouse，客戶可透過[部署 ARM 範本](../how-to/onboard-customer.md)或透過[Azure Marketplace 的受控服務供應](managed-services-offers.md)專案，上線[Azure 委派的資源管理](azure-delegated-resource-management.md)。 您可以 [連結您的合作夥伴識別碼](../how-to/partner-earned-credit.md)，以追蹤對客戶合作的影響。
 
 當服務提供者持續為客戶執行管理工作時，通常會使用 Azure Lighthouse。
 

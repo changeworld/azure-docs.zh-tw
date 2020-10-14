@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652953"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014098"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒體服務版本資訊
 
@@ -53,8 +53,8 @@ Azure 媒體服務的這些版本資訊彙總了舊版發行後的變更和已�
 
 下列 v2 屬性將不再填入歷程記錄作業進度資料：
 
-* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
-* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+* [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
 
 若要取得工作歷程記錄，您應該透過 webhook 或使用通知端點的佇列訊息來使用 v2 工作通知。 如需詳細資訊，請參閱
 
@@ -81,7 +81,7 @@ Azure 媒體服務的這些版本資訊彙總了舊版發行後的變更和已�
 
 我們宣布淘汰「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 如需淘汰日期，請參閱此[舊版元件](legacy-components.md)主題。
 
-如需詳細資訊，請參閱[將 WAME 移轉到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101334) (機器翻譯) 和[將 AME 移轉到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101335) (機器翻譯)。
+如需詳細資訊，請參閱[將 WAME 移轉到媒體編碼器標準](./migrate-windows-azure-media-encoder.md) (機器翻譯) 和[將 AME 移轉到媒體編碼器標準](./migrate-azure-media-encoder.md) (機器翻譯)。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -198,7 +198,7 @@ Azure Media Redactor 正式運作：此媒體處理器會透過將所選個人�
 
 ## <a name="april-2016-release"></a><a id="apr_changes16"></a>2016 年 4 月版本
 ### <a name="media-analytics"></a>媒體分析
- 媒體服務引進了媒體分析，提供功能強大的視訊智慧。 如需詳細資訊，請參閱[媒體服務分析概觀](media-services-analytics-overview.md)。
+ 媒體服務引進了媒體分析，提供功能強大的視訊智慧。 如需詳細資訊，請參閱[媒體服務分析概觀](./legacy-components.md)。
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (預覽)
 現在，您可以使用媒體服務透過 Apple FairPlay 將您的 HTTP 即時串流 (HLS) 內容動態加密。 您也可以使用媒體服務授權傳遞服務，將 FairPlay 授權傳遞給用戶端。 如需詳細資訊，請參閱「使用 Azure 媒體服務串流處理以 Apple FairPlay 保護的 HLS 內容」。
@@ -275,7 +275,7 @@ Azure SDK 小組已發佈新版的 [Azure SDK for PHP](https://github.com/Azure/
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>2015 年 7 月版本
 * 宣布「媒體編碼器標準」正式運作。 如需詳細資訊，請參閱 [此部落格文章](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)。
   
-    媒體編碼器標準使用[本節](https://go.microsoft.com/fwlink/?LinkId=618336)說明的預設值。 當您使用 4k 編碼的預設時，請取得進階保留單元類型。 如需詳細資訊，請參閱[調整編碼](media-services-scale-media-processing-overview.md)。
+    媒體編碼器標準使用[本節](./media-services-mes-presets-overview.md)說明的預設值。 當您使用 4k 編碼的預設時，請取得進階保留單元類型。 如需詳細資訊，請參閱[調整編碼](media-services-scale-media-processing-overview.md)。
 * 直播即時字幕用於媒體服務和媒體播放器。 如需詳細資訊，請參閱 [此部落格文章](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)。
 
 ### <a name="media-services-net-sdk-updates"></a>媒體服務 .NET SDK 更新

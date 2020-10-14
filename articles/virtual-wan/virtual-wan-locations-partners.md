@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801455"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014016"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虛擬 WAN 夥伴與虛擬中樞位置
 
@@ -40,7 +40,7 @@ Azure 虛擬 WAN 是一種網路服務，透過 Azure 提供最佳且自動化�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-下列合作夥伴會在未來的藍圖中規劃：128技術、Arista、Cisco Systems (Viptela) 、F5 Networks、Oracle SD-WAN 和 SharpLink。
+下列合作夥伴會在我們的藍圖上規劃，這些公司會指出要將夥伴裝置與 Azure 虛擬 WAN VPN 閘道之間的 IPsec 連線能力自動化的工作範圍：128技術、Arista、F5 網路、Oracle SD-WAN (Talari) 和 SharpLink。
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>具有整合式虛擬中樞供應專案的合作夥伴
 除了具有自動化的分公司 IPSec 連線能力之外，某些夥伴還提供 **網路虛擬裝置 (nva) ** ，可直接整合到 AZURE 虛擬 WAN 中樞。  這可讓客戶選擇將其分支連線終止至虛擬中樞內的相容協力廠商應用裝置。  
