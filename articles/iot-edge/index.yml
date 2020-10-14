@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: d3a71cd919660686c77b866b9e7fab461678da96
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 9145d327901835bd6feda8db2e5ac5eacc03b5e5
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89300352"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91971671"
 landingContent:
 - title: 針對 Linux 裝置開發
   linkLists:
@@ -46,18 +46,16 @@ landingContent:
     links:
     - text: 使用 Visual Studio 2017 來開發並偵錯模組
       url: how-to-visual-studio-develop-module.md
-- title: 佈建 IoT Edge 裝置
+- title: 建立 IoT Edge 裝置
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 在 Linux 上安裝 IoT Edge
-      url: how-to-install-iot-edge-linux.md
-    - text: 在 Windows 上安裝 IoT Edge
-      url: how-to-install-iot-edge-windows.md
-    - text: 自動佈建 Linux 裝置
-      url: how-to-auto-provision-simulated-device-linux.md
-    - text: 自動佈建 Windows 裝置
-      url: how-to-auto-provision-simulated-device-windows.md
+    - text: 安裝 IoT Edge 執行階段
+      url: how-to-install-iot-edge.md
+    - text: 註冊和佈建單一裝置
+      url: how-to-manual-provision-symmetric-key.md
+    - text: 大規模註冊和佈建裝置
+      url: how-to-auto-provision-symmetric-keys.md
 - title: 與開放原始碼社群交流
   linkLists:
   - linkListType: get-started
