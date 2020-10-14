@@ -1,14 +1,14 @@
 ---
 title: 快速入門：您的第一個 Go 查詢
 description: 在本快速入門中，您將遵循步驟以啟用 Go 的 Resource Graph 套件，並執行第一個查詢。
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84899389"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057445"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>快速入門：使用 Go 執行您的第一個 Resource Graph 查詢
 

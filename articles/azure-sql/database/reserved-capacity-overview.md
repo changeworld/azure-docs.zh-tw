@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321589"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058262"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>使用保留容量來節省資源成本-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 藉由承諾與隨用隨付價格相較的計算資源保留，來節省 Azure SQL Database 和 SQL 受控執行個體的成本。 使用保留容量時，您可以在一或三年期內 SQL Database 及/或 SQL 受控執行個體使用，以取得計算成本的大量折扣。 若要購買保留容量，您需要指定 Azure 區域、部署類型、效能層級和期限。
 
-您不需要將保留指派給特定的資料庫或受控實例。 比對已在執行中的現有部署，或新部署的現有部署會自動取得權益。 藉由購買保留，您可以在一或三年的期間內認可計算成本的使用量。 當您購買保留專案時，符合保留屬性的計算費用就不會再以隨用隨付費率計費。 保留並未涵蓋與服務相關聯的軟體、網路或儲存體費用。 在保留期限結束時，帳單權益會過期，而資料庫或受控實例會以隨用隨付價格計費。 保留不會自動續約。 如需定價資訊，請參閱 [保留容量](https://azure.microsoft.com/pricing/details/sql-database/managed/)供應專案。
+您不需要將保留指派給特定的資料庫或受控實例。 比對已在執行中的現有部署，或新部署的現有部署會自動取得權益。 藉由購買保留，您可以在一或三年的期間內認可計算成本的使用量。 當您購買保留專案時，符合保留屬性的計算費用就不會再以隨用隨付費率計費。 
+
+保留適用于主要和可計費次要計算複本，但不涵蓋與服務相關聯的軟體、網路或儲存體費用。 在保留期限結束時，帳單權益會過期，而資料庫或受控實例會以隨用隨付價格計費。 保留不會自動續約。 如需定價資訊，請參閱 [保留容量](https://azure.microsoft.com/pricing/details/sql-database/managed/)供應專案。
 
 您可以在 [Azure 入口網站](https://portal.azure.com)中購買保留容量。 保留的付款方式可為[預先付款或每月付款](../../cost-management-billing/reservations/prepare-buy-reservation.md)。 若要購買保留容量：
 
@@ -32,6 +34,9 @@ ms.locfileid: "91321589"
 - 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。 保留容量。
 
 如需企業客戶和隨用隨付客戶如何針對保留購買收費的詳細資訊，請參閱 [瞭解您企業註冊的 azure 保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ，以及 [瞭解隨用隨付訂用帳戶的 azure 保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+
+> [!NOTE]
+> 購買保留容量不會預先配置或保留特定基礎結構資源 (虛擬機器或節點) 供您使用。
 
 ## <a name="determine-correct-size-before-purchase"></a>在購買前判斷正確的大小
 

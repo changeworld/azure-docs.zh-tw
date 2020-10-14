@@ -2,17 +2,18 @@
 title: 概念-將 Azure VMware 解決方案部署整合到中樞和輪輻架構中
 description: 瞭解在 Azure 上現有或新的中樞和輪輻架構中整合 Azure VMware 解決方案部署的建議。
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/14/2020
+ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019216"
+ms.locfileid: "92058466"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案
 
 在本文中，我們會提供建議，以將 Azure VMware 解決方案部署整合到 Azure 上現有或新的 [中樞和輪輻架構](/azure/architecture/reference-architectures/hybrid-networking/shared-services) 中。 
+
 
 中樞和輪輻案例假設有工作負載的混合式雲端環境：
 
@@ -25,6 +26,9 @@ ms.locfileid: "92019216"
 *中樞*是 Azure 虛擬網路，可作為內部部署和 Azure VMware 解決方案私人雲端的連線中心點。 *輪輻*是與中樞對等互連的虛擬網路，可啟用跨虛擬網路通訊。
 
 內部部署資料中心、Azure VMware 解決方案私人雲端和中樞之間的流量會透過 Azure ExpressRoute 連線進行。 輪輻虛擬網路通常包含以 IaaS 為基礎的工作負載，但可以有像是 [App Service 環境](../app-service/environment/intro.md)的 PaaS 服務，其與虛擬網路的直接整合，或是已啟用 [Azure Private Link](../private-link/index.yml) 的其他 paas 服務。
+
+>[!IMPORTANT]
+>您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要從內部部署透過 ExpressRoute 存取 Azure VMware 解決方案，您必須具有 ExpressRoute 全球存取範圍，因為 ExpressRoute 閘道不會在其連線線路之間提供可轉移的路由。
 
 此圖顯示 Azure 中的中樞和輪輻部署範例，並透過 ExpressRoute 全球接觸來連線至內部部署和 Azure VMware 解決方案。
 
@@ -105,14 +109,17 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
 
 
-### <a name="jumpbox-and-azure-bastion"></a>Jumpbox 和 Azure 防禦
+### <a name="jump-box-and-azure-bastion"></a>跳躍箱和 Azure 防禦
 
-使用 Jumpbox 存取 Azure VMware 解決方案環境，這是部署在中樞虛擬網路內共用服務子網中的 Windows 10 或 Windows Server VM。
+使用跳躍方塊存取 Azure VMware 解決方案環境，也就是在中樞虛擬網路內的共用服務子網中部署的 Windows 10 或 Windows Server VM。
 
-作為安全性最佳作法，請在中樞虛擬網路內部署 [Microsoft Azure](../bastion/index.yml) 防禦服務。 Azure 防禦可為部署在 Azure 上的 Vm 提供順暢的 RDP 和 SSH 存取，而不需要將公用 IP 位址布建至這些資源。 布建 Azure 防禦服務之後，您就可以從 Azure 入口網站存取選取的 VM。 建立連線之後，會開啟新的索引標籤，顯示 Jumpbox 桌面，而您可以從該桌面存取 Azure VMware 解決方案的私用雲端管理平面。
+>[!IMPORTANT]
+>Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。  
+
+作為安全性最佳作法，請在中樞虛擬網路內部署 [Microsoft Azure](../bastion/index.yml) 防禦服務。 Azure 防禦可為部署在 Azure 上的 Vm 提供順暢的 RDP 和 SSH 存取，而不需要將公用 IP 位址布建至這些資源。 布建 Azure 防禦服務之後，您就可以從 Azure 入口網站存取選取的 VM。 建立連線之後，新的索引標籤隨即開啟，並顯示跳躍箱桌面，而您可以從該桌面存取 Azure VMware 解決方案私人雲端管理平面。
 
 > [!IMPORTANT]
-> 請勿將公用 IP 位址提供給 Jumpbox VM，或將 3389/TCP 埠公開給公用網際網路。 
+> 請勿將公用 IP 位址提供給跳躍箱 VM，或將 3389/TCP 埠公開至公用網際網路。 
 
 
 :::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::

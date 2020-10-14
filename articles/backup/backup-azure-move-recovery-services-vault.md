@@ -4,12 +4,12 @@ description: 如何跨 Azure 訂用帳戶和資源群組移動復原服務保存
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773360"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056424"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
@@ -34,7 +34,7 @@ ms.locfileid: "91773360"
 - 如果 VM 未跨訂用帳戶或新的資源群組移動復原服務保存庫，則目前的 VM 復原點會在保存庫中保持不變，直到過期為止。
 - 無論 VM 是否隨著保存庫移動，您一律可以從保留在保存庫內的備份記錄還原 VM。
 - Azure 磁碟加密要求金鑰保存庫和 Vm 位於相同的 Azure 區域和訂用帳戶中。
-- 若要移動具有受控磁碟的虛擬機器，請參閱這篇[文章](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)。
+- 若要移動具有受控磁碟的虛擬機器，請參閱這篇[文章](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。
 - 移動透過傳統模型所部署之資源的選項，會根據您是要移動訂用帳戶內的資源還是新的訂用帳戶而有所不同。 如需詳細資訊，請參閱這篇[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 在保存庫跨訂用帳戶或往新的資源群組移動之後，為保存庫所定義的備份原則會保留下來。
 - 您只能移動包含下列任何類型之備份專案的保存庫。 以下未列出之類型的任何備份專案都必須停止，並在移動保存庫之前永久刪除資料。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920971"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951633"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ ms.locfileid: "87920971"
 
 1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 按一下 [取得認證]，以取得您儲存體帳戶相關共用的存取認證。
 
-    ![取得共用認證 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![取得共用認證](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 按一下 [確定]。
     
-    ![取得共用認證 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![取得共用認證 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 databoxe2etest)，請開啟命令視窗。 在命令提示字元中，輸入：
 
@@ -122,7 +122,7 @@ ms.locfileid: "87920971"
 
 4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 按一下 [確定] 以開啟檔案總管。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![透過檔案總管連線至共用](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     您現在應可看到以資料夾形式呈現的共用。
     

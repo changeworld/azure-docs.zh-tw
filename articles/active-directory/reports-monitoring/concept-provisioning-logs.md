@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812551"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056152"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 ## <a name="prerequisites"></a>必要條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
-* 應用程式擁有者
+* 應用程式擁有者可以查看他們所擁有之應用程式的記錄
 * 安全性系統管理員、安全性讀取者、報告讀取者、應用程式系統管理員和雲端應用程式系統管理員角色中的使用者
 * 全域系統管理員
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 布建記錄提供下列問題的答案：
 
 * ServiceNow 中成功建立了哪些群組？
-* 如何從 Amazon Web Services 匯入角色？
+* 從 Amazon Web Services 匯入了哪些角色？
 * 哪些使用者在 DropBox 中建立失敗？
 
 您可以在[Azure 入口網站](https://portal.azure.com)的**Azure Active Directory**分頁的 [**監視**] 區段中選取 [布建**記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
+![詳細資訊](./media/concept-provisioning-logs/steps.png "篩選")
 
 
 ## <a name="filter-provisioning-activities"></a>篩選布建活動
@@ -95,12 +95,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- Date
+- 日期
 - 狀態
 - 動作
 
 
-![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "Filter")
+![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "篩選")
 
 身分 **識別** 篩選器可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 此識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建至 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在識別欄位中。 一律會有一個識別碼。 
 
@@ -191,7 +191,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "Filter")
+![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "篩選")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
@@ -211,7 +211,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ## <a name="what-you-should-know"></a>您應該知道的事項
 
-- 如果您有 premium edition，Azure 入口網站會將回報的布建資料儲存30天，而如果您有免費版本，則會儲存7天。布建記錄可以發佈至 log analytics，以保留超過30天的時間。 
+- 如果您有 premium edition，Azure 入口網站會將回報的布建資料儲存30天，而如果您有免費版本，則會儲存7天。布建記錄可以發佈至 [log analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) ，以保留超過30天的時間。 
 
 - 您可以使用 [變更識別碼] 屬性做為唯一識別碼。 例如，當與產品支援互動時，這會很有説明。
 

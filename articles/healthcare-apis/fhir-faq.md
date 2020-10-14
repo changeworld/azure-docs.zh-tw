@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269704"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056850"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -43,6 +43,10 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 當您執行適用于 Azure 的 FHIR Server 時，您可以直接存取基礎服務。 但是，如果您要儲存 PHI 資料，您也必須負責維護和補救伺服器，以及所有必要的合規性工作。
 
 從開發的觀點來看，每項功能都是先部署到開放原始碼的 Microsoft FHIR Server for Azure。 在開放原始碼中驗證之後，它就會發行至 PaaS Azure API for FHIR 解決方案。 開放原始碼和 PaaS 的發行之間的時間，取決於功能的複雜度和其他藍圖優先權。 
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>我可以在哪裡看到 Azure API for FHIR 的發行內容？
+
+若要查看 Azure API for FHIR 中發行的部分內容，請參閱開放原始碼 FHIR 伺服器的 [版本](https://github.com/microsoft/fhir-server/releases) 。 我們已將專案標記為 FHIR，如果它們將會發行至受控服務，且通常會在兩周內于開放原始碼的發行頁面上推出。 如果您想要在自己的環境中進行測試，我們也包含如何在 [此](https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) 測試組建的指示。 我們正在評估如何以最佳方式共用額外的受控服務更新。
 
 ### <a name="what-is-smart-on-fhir"></a>FHIR 有什麼智慧？
 

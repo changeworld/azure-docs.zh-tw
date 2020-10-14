@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ecc79eb52acbe393ac2777a0ec388e538a7f8fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81728997"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978895"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>什麼是 Azure 物聯網 (IoT)？
 
@@ -74,6 +74,8 @@ Microsoft 提供開放原始碼的[裝置 SDK](../iot-hub/iot-hub-devguide-sdks.
 
 如需組織如何使用 IoT 的實際範例，請參閱 [IoT 的 Microsoft 技術案例研究](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)。 
 
+如需 IoT 架構的深入討論，請參閱 [Microsoft Azure IoT 參考架構](https://aka.ms/iotrefarchitecture)。
+
 ## <a name="next-steps"></a>後續步驟
 
 如需一些實際的商業案例及所使用的架構資訊，請參閱 [Microsoft Azure IoT 技術案例研究](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)。
@@ -81,5 +83,3 @@ Microsoft 提供開放原始碼的[裝置 SDK](../iot-hub/iot-hub-devguide-sdks.
 如需可透過 IoT DevKit 嘗試完成的一些範例專案，請參閱 [IoT DevKit 專案目錄](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)。 
 
 如需不同服務和其使用方式的更完整說明，請參閱 [Azure IoT 服務與技術](iot-services-and-technologies.md)。
-
-如需 IoT 架構的深入討論，請參閱 [Microsoft Azure IoT 參考架構](https://aka.ms/iotrefarchitecture)。

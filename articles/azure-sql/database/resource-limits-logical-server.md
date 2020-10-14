@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618954"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058245"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database 與 Azure Synapse Analytics 伺服器的資源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -82,7 +82,7 @@ ms.locfileid: "91618954"
 - 減少 [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (平行處理原則的最大程度) 設定。
 - 優化查詢工作負載，減少查詢封鎖的出現次數和持續時間。
 
-### <a name="memory"></a>Memory
+### <a name="memory"></a>記憶體
 
 與其他資源不同 (CPU、背景工作、儲存體) ，達到記憶體限制並不會對查詢效能造成負面影響，也不會造成錯誤和失敗。 如 [記憶體管理架構指南](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide)中的詳細說明，SQL Server 資料庫引擎通常會依設計使用所有可用的記憶體。 記憶體主要用於快取資料，以避免更昂貴的儲存體存取。 因此，較高的記憶體使用量通常可改善查詢效能，因為從記憶體讀取的速度較快，而不是從儲存體進行較慢的讀取。
 
@@ -137,11 +137,11 @@ Azure SQL Database 資源治理本質上是階層式的。 從上到下，限制
 
 [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) view 所傳回的 IOPS 和輸送量最小/最大值可作為限制/上限，而不是保證。 此外，資源管理不保證任何特定的儲存體延遲。 指定使用者工作負載最能實現的延遲、IOPS 和輸送量，不僅取決於 IO 資源治理限制，也會混合使用的 IO 大小，以及基礎儲存體的功能。 SQL Database 會使用大小會在 512 KB 和 4 MB 之間變化的 IOs。 基於強制執行 IOPS 限制的目的，每個 IO 都是依其大小來計算，但在 Azure 儲存體中，資料庫的資料檔案除外。 在此情況下，大於 256 KB 的 IOs 會以多個 256-KB IOs 的形式來表示，以配合 Azure 儲存體 IO 帳戶處理。
 
-若為基本、標準和一般用途的資料庫（使用 Azure 儲存體中的資料檔案）， `primary_group_max_io` 如果資料庫沒有足夠的資料檔案可累積提供此數量的 IOPS，或資料未平均分散于檔案，或基礎 blob 的效能層級限制低於資源治理限制的 iops/輸送量，則可能無法達到此值。 同樣地，如果是由頻繁的交易認可所產生的小型記錄 Io， `primary_max_log_rate` 由於基礎 Azure 儲存體 blob 上的 IOPS 限制，工作負載可能無法達到此值。
+若為基本、標準和一般用途的資料庫（使用 Azure 儲存體中的資料檔案）， `primary_group_max_io` 如果資料庫沒有足夠的資料檔案可累積提供此數量的 IOPS，或資料未平均分散于檔案，或基礎 blob 的效能層級限制低於資源治理限制的 iops/輸送量，則可能無法達到此值。 同樣地，如果是由頻繁的交易認可所產生的小型記錄 Io， `primary_max_log_rate` 由於基礎 Azure 儲存體 blob 的 IOPS 限制，工作負載可能無法達到此值。 針對使用 Azure 進階儲存體的資料庫，Azure SQL Database 會使用夠大的儲存體 blob 來取得所需的 IOPS/輸送量，不論資料庫大小為何。 針對較大的資料庫，會建立多個資料檔案，以增加 IOPS/輸送量的總容量。
 
 資源使用率值（例如 `avg_data_io_percent` 和 `avg_log_write_percent` ）會在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) views 中回報，以最大資源治理限制的百分比計算。 因此，當資源治理以外的因素限制 IOPS/輸送量時，即使回報的資源使用率仍低於100%，還是可以看到 IOPS/輸送量簡維和隨著工作負載增加而增加的延遲。
 
-若要查看每個資料庫檔案的讀取和寫入 IOPS、輸送量和延遲，請使用 [sys.dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 函數。 此函式會針對資料庫顯示所有 IO，包括未進行的背景 IO， `avg_data_io_percent` 但會使用基礎儲存體的 IOPS 和輸送量，而且可能會影響觀察到的儲存體延遲。 函式也會在和資料行中，顯示 IO 資源治理針對讀取和寫入所引進的額外延遲 `io_stall_queued_read_ms` `io_stall_queued_write_ms` 。
+若要查看每個資料庫檔案的讀取和寫入 IOPS、輸送量和延遲，請使用 [sys.dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 函數。 此函式會針對資料庫顯示所有 IO，包括未進行的背景 IO， `avg_data_io_percent` 但會使用基礎儲存體的 IOPS 和輸送量，而且可能會影響觀察到的儲存體延遲。 此函式會在和資料行中，顯示 IO 資源治理針對讀取和寫入所引進的額外延遲 `io_stall_queued_read_ms` `io_stall_queued_write_ms` 。
 
 ### <a name="transaction-log-rate-governance"></a>交易記錄速率治理
 
@@ -158,7 +158,7 @@ Azure SQL Database 資源治理本質上是階層式的。 從上到下，限制
 
 記錄速率管理員流量成形是透過下列等候類型來呈現， (在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 視圖中公開) ：
 
-| 等候類型 | 注意 |
+| 等候類型 | 備註 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 資料庫限制 |
 | POOL_LOG_RATE_GOVERNOR | 集區限制 |

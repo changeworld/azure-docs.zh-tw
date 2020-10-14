@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f762ef1fa3a997c01873df02abf87362b8c06f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230563"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055948"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>整合 Azure AD 記錄與 Azure 監視器記錄
 
@@ -46,6 +46,7 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 
 * **稽核記錄**：[稽核記錄活動報告](concept-audit-logs.md)可讓您對每個在租用戶中執行的工作存取歷程記錄。
 * **登入記錄**：透過[登入活動報告](concept-sign-ins.md)，您可以判斷是誰執行了稽核記錄中所報告的工作。
+* 布建**記錄**：透過布建[記錄](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)檔，您可以監視所有協力廠商應用程式中已建立、更新及刪除的使用者。 
 
 > [!NOTE]
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。

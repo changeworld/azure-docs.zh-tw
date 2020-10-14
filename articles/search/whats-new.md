@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0df3c6b1851767616111308ad0bacce227ba1a83
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532222"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948896"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -26,11 +26,11 @@ ms.locfileid: "91532222"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |------------------------------|----------|-------------|---------------|
-| [受控服務識別](search-howto-managed-identities-data-sources.md) | 索引子，安全性 | 在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 RBAC 權限將存取權授與 Azure 資料來源。 這種方法不需要連接字串上的認證。 <br><br>如果 IP 規則不是選項，使用受控服務識別的另一種方式是透過[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)。 | 正式推出。 使用入口網站或[建立資料來源 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (api-version=2020-06-30) 時，請存取此功能。 |
-| [使用私人連結的輸出要求](search-indexer-howto-access-private.md) | 索引子，安全性 | 建立索引子可在存取 Azure 私人連結所保護 Azure 資源時使用的共用私人連結資源。 如需有關您可以保護索引子連線所有方法的詳細資訊，請參閱[使用 Azure 網路安全性功能保護索引子資源](search-indexer-securing-resources.md)。 | 正式推出。 使用入口網站或[共用私人連結資源](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) (api-version=2020-08-01) 時，請存取此功能。 |
-| [管理 REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新的穩定 REST API 新增了建立共用私人連結資源的支援。 | 正式推出。 |
-| [管理 REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新增 Azure Functions 和適用於 MySQL 資料庫的 Azure SQL 的共用私人連結資源。 | 公開預覽。 |
-| [管理 .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 適用於管理 SDK 的 Azure SDK 更新，目標為 REST API 版本 2020-08-01。 | 正式推出。 |
+| [受控服務識別](search-howto-managed-identities-data-sources.md) | 索引子，安全性 | 在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 RBAC 權限將存取權授與 Azure 資料來源。 這種方法不需要連接字串上的認證。 <br><br>如果 IP 規則不是選項，使用受控服務識別的另一種方式是透過[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)。 | 正式推出。 使用入口網站或[建立資料來源 (REST)](/rest/api/searchservice/create-data-source) (api-version=2020-06-30) 時，請存取此功能。 |
+| [使用私人連結的輸出要求](search-indexer-howto-access-private.md) | 索引子，安全性 | 建立索引子可在存取 Azure 私人連結所保護 Azure 資源時使用的共用私人連結資源。 如需有關您可以保護索引子連線所有方法的詳細資訊，請參閱[使用 Azure 網路安全性功能保護索引子資源](search-indexer-securing-resources.md)。 | 正式推出。 使用入口網站或[共用私人連結資源](/rest/api/searchmanagement/sharedprivatelinkresources) (api-version=2020-08-01) 時，請存取此功能。 |
+| [管理 REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | 新的穩定 REST API 新增了建立共用私人連結資源的支援。 | 正式推出。 |
+| [管理 REST API (2020-08-01-Preview)](/rest/api/searchmanagement/management-api-versions) | REST | 新增 Azure Functions 和適用於 MySQL 資料庫的 Azure SQL 的共用私人連結資源。 | 公開預覽。 |
+| [管理 .NET SDK 4.0](/dotnet/api/overview/azure/search/management) | .NET SDK | 適用於管理 SDK 的 Azure SDK 更新，目標為 REST API 版本 2020-08-01。 | 正式推出。 |
 
 ## <a name="august-2020"></a>2020 年 8 月
 

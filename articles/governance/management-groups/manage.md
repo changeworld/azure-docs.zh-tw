@@ -1,14 +1,14 @@
 ---
 title: 如何使用您的管理群組 - Azure 治理
 description: 了解如何檢視、維護、更新及刪除您的管理群組階層。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951939"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058092"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源
 
@@ -119,7 +119,7 @@ az account management-group delete --name 'Contoso'
 
 1. 選取 [所有服務] > [管理群組]。
 
-1. 將會載入管理群組階層頁面。 此頁面是您可以探索所有可存取的管理群組和訂用帳戶的位置。 選取群組名稱即可前往階層中的下一個層級。 瀏覽方式與檔案總管相同。
+1. 將會載入管理群組階層頁面。 此頁面是您可以探索所有可存取的管理群組和訂用帳戶的位置。 選取組名會帶您前往階層中較低的層級。 瀏覽方式與檔案總管相同。
 
 1. 若要查看管理群組的詳細資訊，請選取管理群組標題旁的 **(詳細資料)** 連結。 如果此連結無法使用，表示您沒有檢視該管理群組的權限。
 
@@ -211,7 +211,7 @@ az account management-group show --name 'Contoso' -e -r
 
 **例外狀況**：如果目標或現有父管理群組是根管理群組，則不適用權限需求。 因為根管理群組是所有新管理群組和訂用帳戶的預設登陸點，所以您不需要其權限即可移動項目。
 
-如果訂用帳戶上的擁有者角色繼承自目前的管理群組，則您的移動目標會受到限制。 您只能將訂用帳戶移至具有擁有者角色的另一個管理群組。 因為您會失去訂用帳戶的擁有權，所以無法將其移至您是參與者的管理群組。 如果是直接為您指派訂用帳戶的擁有者角色 (而不是繼承自管理群組)，您可以將其移至您是參與者的任何管理群組。
+如果訂用帳戶上的擁有者角色繼承自目前的管理群組，則您的移動目標會受到限制。 您只能將訂用帳戶移至具有擁有者角色的另一個管理群組。 因為您會失去訂用帳戶的擁有權，所以您無法將訂用帳戶移到您只是參與者的管理群組。 如果您是直接指派給訂用帳戶的「擁有者」角色，則可以將它移至您是參與者的任何管理群組。
 
 若要在 Azure 入口網站中查看您有哪些權限，請選取管理群組，然後選取 [IAM]。 若要深入瞭解 Azure 角色，請參閱 azure [角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 

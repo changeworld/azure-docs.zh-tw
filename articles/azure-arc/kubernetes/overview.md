@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已啟用 Azure Arc 的 Kubernetes 概觀。
 keywords: Kubernetes, Arc, Azure, 容器
 ms.custom: references_regions
-ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540637"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858416"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什麼是已啟用 Azure Arc 的 Kubernetes 預覽？
 
@@ -70,7 +70,7 @@ ms.locfileid: "91540637"
 
 * 我是否需要將在 Azure 上執行的 Azure Kubernetes Service 叢集連線至 Azure Arc？
 
-    否。 在已啟用 Azure Arc 的 Kubernetes 上，諸如 Azure 監視器、Azure 原則 (Gatekeeper) 等各項功能都會透過 AKS (在 Azure 中已有資源表示法) 原生提供。 叢集設定 (GitOps) 也會在 AKS 上原生方式提供，目前屬於個人預覽版。 請使用此[註冊表單](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u)取得這項功能的存取權。
+    否。 在已啟用 Azure Arc 的 Kubernetes 上，諸如 Azure 監視器、Azure 原則 (Gatekeeper) 等各項功能都會透過 AKS (在 Azure 中已有資源表示法) 原生提供。
     
 * 我是否應將 Azure Stack HCI 上的 AKS 叢集連線至 Azure Arc？ 在 Azure Stack Hub 或 Azure Stack Engine 上執行的 Kubernetes 叢集又應如何？
 

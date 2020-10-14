@@ -4,12 +4,12 @@ description: 取得 Azure CLI 中 Batch 命令的快速簡介，以便管理 Azu
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531672"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055506"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
 
@@ -107,7 +107,7 @@ az login
 
 ## <a name="script-examples"></a>指令碼範例
 
-請參閱 [CLI 指令碼範例](cli-samples.md)，以使用 Batch 完成一般工作。 這些範例涵蓋許多 Azure CLI 中可供 Batch 用來建立和管理帳戶、集區、作業及工作的命令。 
+請參閱 [CLI 指令碼範例](./scripts/batch-cli-sample-create-account.md)，以使用 Batch 完成一般工作。 這些範例涵蓋許多 Azure CLI 中可供 Batch 用來建立和管理帳戶、集區、作業及工作的命令。
 
 ## <a name="json-files-for-resource-creation"></a>用於建立資源的 JSON 檔案
 

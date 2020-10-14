@@ -2,19 +2,19 @@
 title: 群組通話 Hero 範例
 titleSuffix: An Azure Communication Services sample overview
 description: 概述使用 Azure 通訊服務的通話 Hero 範例，讓開發人員可以深入了解範例的內部運作。
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460589"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963103"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>開始使用群組通話 Hero 範例
 
@@ -50,9 +50,9 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 
 主要通話畫面的元件：
 
-- **媒體庫**：顯示參與者的主要階段。 如果參與者已啟用其相機，此處會顯示其影片摘要。 每個參與者都有個別圖格，其中顯示他們的顯示名稱和影片串流 (如果有的話)
-- **標頭**：這是主要通話控制項所在的位置，可切換設定和參與者側邊欄、開啟/關閉影片和混合功能、共用畫面及離開通話。
-- **側邊欄**：使用標頭上的控制項進行切換時，此處會顯示參與者和設定資訊。 您可以使用右上角的 [X] 來關閉該元件。 參與者側邊欄會顯示參與者清單，以及邀請更多使用者加入聊天的連結。 [設定] 側邊欄可讓您設定麥克風和相機設定。
+1. **媒體庫**：顯示參與者的主要階段。 如果參與者已啟用其相機，此處會顯示其影片摘要。 每個參與者都有個別圖格，其中顯示他們的顯示名稱和影片串流 (如果有的話)
+2. **標頭**：這是主要通話控制項所在的位置，可切換設定和參與者側邊欄、開啟/關閉影片和混合功能、共用畫面及離開通話。
+3. **側邊欄**：使用標頭上的控制項進行切換時，此處會顯示參與者和設定資訊。 您可以使用右上角的 [X] 來關閉該元件。 參與者側邊欄會顯示參與者清單，以及邀請更多使用者加入聊天的連結。 [設定] 側邊欄可讓您設定麥克風和相機設定。
 
 您可以在下面找到有關設定範例的必要條件及步驟的詳細資訊。
 
@@ -115,6 +115,6 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 
 - [Azure 通訊 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 頁面上尋找更多範例和資訊
 - [Redux](https://redux.js.org/) - 用戶端狀態管理
-- [FluentUI](https://developer.microsoft.com/fluentui#/) - Microsoft 支援的 UI 程式庫
+- [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支援的 UI 程式庫
 - [React](https://reactjs.org/) - 用來建置使用者介面的程式庫
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用來建置 Web 應用程式的架構
