@@ -9,20 +9,20 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085226"
 ---
-建立虛擬網路閘道時，您必須指定想要使用的閘道 SKU。 根據工作負載、輸送量、功能和 SLA 的類型，選取符合您需求的 SKU。 如需 Azure 可用性區域中的虛擬網路閘道 Sku，請參閱[Azure 可用性區域閘道 sku](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)。
+建立虛擬網路閘道時，您必須指定想要使用的閘道 SKU。 根據工作負載、輸送量、功能和 SLA 的類型，選取符合您需求的 SKU。 如需 Azure 可用性區域中的虛擬網路閘道 SKU，請參閱 [Azure 可用性區域閘道 SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)。
 
 ###  <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>依通道、連線和輸送量區分的閘道 SKU
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
 > [!NOTE]
-> 只有 Resource Manager 部署模型支援 VpnGw Sku （VpnGw1、VpnGw1AZ、VpnGw2、VpnGw2AZ、VpnGw3、VpnGw3AZ、VpnGw4、VpnGw4AZ、VpnGw5 和 VpnGw5AZ）。 傳統虛擬網路應該繼續使用舊式 (舊版) SKU。
+> 只有 Resource Manager 部署模型支援 VpnGw SKU (VpnGw1、VpnGw1AZ、VpnGw2、VpnGw2AZ、VpnGw3、VpnGw3AZ、VpnGw4、VpnGw4AZ、VpnGw5 和 VpnGw5AZ)。 傳統虛擬網路應該繼續使用舊式 (舊版) SKU。
 >  * 如需舊版閘道 SKU (基本、標準、高效能) 使用上的相關資訊，請參閱[使用 VPN 閘道 SKU (舊版 SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)。
 >  * 關於 ExpressRoute 閘道 SKU，請參閱 [ExpressRoute 的虛擬網路閘道](../articles/expressroute/expressroute-about-virtual-network-gateways.md)。
 >
@@ -33,21 +33,21 @@ ms.locfileid: "74085226"
 
 | **SKU**| **功能**|
 | ---    | ---         |
-|**基本**（* *）   | **路由式 VPN**：適用於 P2S/連線的 10 個通道；沒有適用於 P2S 的 RADIUS 驗證；沒有適用於 P2S 的 IKEv2<br>**原則式 VPN** (IKEv1)：1 個 S2S/連線通道；沒有 P2S|
-| **基本以外的所有 Generation1.xml 和 Generation2 Sku** | **路由式 VPN**：最多 30 個通道 ( * )，P2S、BGP、主動-主動、自訂 IPsec/IKE 原則、ExpressRoute/VPN 共存 |
+|**基本** (\*\*)   | **路由式 VPN**：適用於 P2S/連線的 10 個通道；沒有適用於 P2S 的 RADIUS 驗證；沒有適用於 P2S 的 IKEv2<br>**原則式 VPN** (IKEv1)：1 個 S2S/連線通道；沒有 P2S|
+| **基本以外的所有 Generation1 和 Generation2 SKU** | **路由式 VPN**：最多 30 個通道 ( * )，P2S、BGP、主動-主動、自訂 IPsec/IKE 原則、ExpressRoute/VPN 共存 |
 |        |             |
 
-(*)您可以設定 "PolicyBasedTrafficSelectors"，將以路由為基礎的 VPN 閘道連線至多個內部部署以原則為基礎的防火牆裝置。 如需詳細資訊，請參閱[使用 PowerShell 將 VPN 閘道連線至多個內部部署原則式 VPN 裝置](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+(*) 您可以設定 "PolicyBasedTrafficSelectors"，將以路由為基礎的 VPN 閘道連線至多個內部部署以原則為基礎的防火牆裝置。 如需詳細資訊，請參閱[使用 PowerShell 將 VPN 閘道連線至多個內部部署原則式 VPN 裝置](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 
 (\*\*) 基本 SKU 被視為舊版 SKU。 基本 SKU 有某些功能限制。 您無法調整使用基本 SKU 的閘道大小來成為新的閘道 SKU，您必須改以變更為新的 SKU，而需要刪除並重新建立 VPN 閘道。
 
-###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>閘道 Sku-生產與開發-測試工作負載
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>閘道 SKU - 生產與開發測試工作負載
 
 由於 SLA 和功能集的差異，我們建議將下列 SKU 用於產生與開發測試：
 
-| **工作負載**                       | **SKU**               |
+| **[工作負載]**                       | **SKU**               |
 | ---                                | ---                    |
-| **生產、重要工作負載** | 基本以外的所有 Generation1.xml 和 Generation2 Sku |
+| **生產、重要工作負載** | 基本以外的所有 Generation1 和 Generation2 SKU |
 | **開發測試或概念證明**   | 基本 (\*\*)                 |
 |                                    |                        |
 

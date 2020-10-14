@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 496ca7edfbfb81d8d8838d704b128701a5960e5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9e489d58b2c4bee0cd9551d15bfa59c3610d959
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974918"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047194"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>使用 DTDL 剖析器程式庫剖析和驗證模型
 
@@ -20,11 +20,11 @@ Azure 數位 Twins 中的[模型](concepts-models.md)是使用以 JSON-LD 為基
 
 為了協助您這樣做，NuGet 上提供 .NET 用戶端 DTDL 剖析程式庫： [**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
 
-您可以直接在 c # 程式碼中使用剖析器程式庫，或使用在剖析器程式庫上建立的語言無關程式碼範例專案： [**DTDL 驗證程式範例**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)。
+您可以直接在 c # 程式碼中使用剖析器程式庫，或使用在剖析器程式庫上建立的語言無關程式碼範例專案： [**DTDL 驗證程式範例**](/samples/azure-samples/dtdl-validator/dtdl-validator)。
 
 ## <a name="use-the-dtdl-validator-sample"></a>使用 DTDL 驗證程式範例
 
-[**DTDL 驗證**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)程式是可驗證模型檔以確保 DTDL 有效的範例專案。 它是以 .NET 剖析器程式庫為基礎，而且與語言無關。 您可以使用範例連結的 [ *下載 ZIP* ] 按鈕來取得它。
+[**DTDL 驗證**](/samples/azure-samples/dtdl-validator/dtdl-validator)程式是可驗證模型檔以確保 DTDL 有效的範例專案。 它是以 .NET 剖析器程式庫為基礎，而且與語言無關。 您可以使用範例連結的 [ *下載 ZIP* ] 按鈕來取得它。
 
 原始程式碼顯示如何使用剖析器程式庫的範例。 您可以使用驗證程式範例作為命令列公用程式，以驗證 DTDL 檔案的目錄樹狀結構。 它也提供互動模式。
 

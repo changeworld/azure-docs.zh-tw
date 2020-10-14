@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297125"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045851"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立 IoT Edge 的 CI/CD 管線
 
@@ -81,7 +81,7 @@ DevOps 入門會在 Azure Repos 中為您的專案建立 Git 存放庫。 在這
 
    ![在 Azure Repos 中開啟 module.json 檔案](./media/how-to-devops-starter/open-module-json.png)
 
-3. 請注意，此檔案會使用 **version** 參數中的 [Azure DevOps 組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) (英文)。 此設定可確保每次執行新組建時，都會建立新版本的模組。
+3. 請注意，此檔案會使用 **version** 參數中的 [Azure DevOps 組建變數](/azure/devops/pipelines/build/variables?view=vsts#build-variables) (英文)。 此設定可確保每次執行新組建時，都會建立新版本的模組。
 
 ## <a name="examine-the-cicd-pipeline"></a>檢查 CI/CD 管線
 

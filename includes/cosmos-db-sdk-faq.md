@@ -5,33 +5,33 @@ ms.topic: include
 ms.date: 8/12/2020
 ms.author: sngun
 ms.openlocfilehash: 42d1e0f056457ba54e0102a4d23f42a81ebea08d
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068725"
 ---
-**如何收到即將淘汰 SDK 的通知？**
+**我如何獲知 SDK 將要停用？**
 
-Microsoft 將在淘汰 SDK 結束支援之前，先提供12個月的事先通知，以協助順利轉換至支援的 SDK。 我們會透過各種通道通知您： Azure 入口網站、Azure 更新，以及指派服務系統管理員的直接通訊。
+Microsoft 會在停用 SDK 支援結束的 12 個月前事先通知，以利順暢轉換至支援的 SDK。 我們會透過各種通訊管道通知您：Azure 入口網站、Azure 更新，以及直接與受指派服務系統管理員通訊。
 
-**我可以在12個月期間內使用即將淘汰的 Azure Cosmos DB SDK 來撰寫應用程式嗎？** 
+**在 12 個月的期間內，我是否可以使用「即將」停用的 Azure Cosmos DB SDK 來撰寫應用程式？** 
 
-是的，您將能夠在12個月的通知期間，使用已淘汰的 Azure Cosmos DB SDK 來撰寫、部署及修改應用程式。 建議您視需要在12個月的通知期間，遷移至較新支援的 Azure Cosmos DB SDK 版本。 
+可以，在 12 個月的通知期內，您可以使用即將停用的 Azure Cosmos DB SDK 來完整撰寫、部署及修改應用程式。 建議您在 12 個月的通知期內，視情況遷移至較新支援的 Azure Cosmos DB SDK 版本。 
 
-**淘汰日期之後，使用不支援的 Azure Cosmos DB SDK 的應用程式會發生什麼事？** 
+**在停用日期之後，使用不受支援的 Azure Cosmos DB SDK 的應用程式會發生什麼情況？** 
 
-淘汰日期之後，Azure Cosmos DB 將不再進行錯誤修正、新增功能，或提供對已淘汰 SDK 版本的支援。 如果您不想要升級，Azure Cosmos DB 服務會繼續提供從已淘汰版本的 SDK 傳送的要求。 
+在停用日期之後，Azure Cosmos DB 不再進行錯誤 (bug) 修正、新增功能，或對已停用的 SDK 版本提供支援。 如果您不想升級，從已停用的 SDK 版本傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。 
 
 **哪些 SDK 版本會有最新的功能和更新？**
 
-新功能和更新僅會新增至最新支援之主要 SDK 版本的最新次要版本。 建議您一律使用最新版本，以利用新功能、效能改進和 bug 修正。 如果您使用舊版的非淘汰版本的 SDK，您對 Azure Cosmos DB 的要求仍會運作，但您將無法存取任何新功能。  
+新的功能和更新只會新增至最新支援主要 SDK 版本的最新次要版本。 我們建議您一律使用最新版本，以利用新功能、效能改進和錯誤 (bug) 修正。 如果您使用的是未停用的舊版 SDK，您的 Azure Cosmos DB 要求仍會執行，但是您無法存取任何新功能。  
 
-**如果我無法在截止日期之前更新應用程式，該怎麼辦？**
+**如果我在截止日前無法更新應用程式，該怎麼辦？**
 
-我們建議您盡早升級至最新的 SDK。 將 SDK 標記為停用之後，您將會有12個月的時間來更新您的應用程式。 如果您無法在淘汰日期前進行更新，Azure Cosmos DB 將會繼續提供從已淘汰版本的 SDK 傳送的要求，讓您執行中的應用程式仍可正常運作。 但 Azure Cosmos DB 將不再進行錯誤修正、新增功能，或提供對已淘汰 SDK 版本的支援。 
+我們建議您盡早升級至最新的 SDK。 在 SDK 標記為停用之後，您有 12 個月的時間可以更新應用程式。 如果您無法在停用日期前進行更新，從已停用的 SDK 版本傳送的要求會繼續由 Azure Cosmos DB 提供服務，因此您執行中的應用程式會繼續運作。 但是 Azure Cosmos DB 不再進行錯誤 (bug) 修正、新增功能，或對已停用的 SDK 版本提供支援。 
 
-如果您有支援方案並需要技術支援，請提出支援票證來 [與我們聯絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) 。
+如果您有支援方案並需要技術支援，請藉由提出支援票證來[與我們連絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
     
 
 

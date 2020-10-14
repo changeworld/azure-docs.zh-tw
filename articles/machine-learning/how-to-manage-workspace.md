@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0b5d3678c3d9c7e55eede13c630510df89d5128
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631236"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045562"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 
@@ -46,9 +46,6 @@ ms.locfileid: "91631236"
    訂用帳戶 |選取您要使用的 Azure 訂用帳戶。
    資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml**。 您需要 *參與者* 或 *擁有* 者角色，才能使用現有的資源群組。  如需存取的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
    區域 | 選取最接近您的使用者與資料資源的 Azure 區域，以建立您的工作區。
-   工作區版本 | 選取 [ **基本** ] 或 [ **企業**]。  此工作區版本會決定您將擁有存取權和定價的功能。 深入瞭解 [Azure Machine Learning](overview-what-is-azure-ml.md)。 
-
-    ![設定您的工作區](./media/how-to-manage-workspace/select-edition.png)
 
 1. 當您完成工作區的設定時，請選取 [ **審核 + 建立**]。 （選擇性）使用 [ [網路](#networking) ] 和 [ [Advanced](#advanced) ] 區段來設定工作區的更多設定。
 
@@ -61,7 +58,7 @@ ms.locfileid: "91631236"
  
  1. 若要檢視新的工作區，選取 [前往資源]****。
 
-### <a name="networking"></a>網路功能  
+### <a name="networking"></a>網路  
 
 > [!IMPORTANT]  
 > 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-enable-virtual-network.md)。
@@ -81,7 +78,7 @@ ms.locfileid: "91631236"
     >   
     > 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取包含工作區的資源群組。 然後選取名為 __privatelink.api.azureml.ms__的私人 DNS 區域資源。    
     > 2. 在 [ __設定__] 中，選取 [ __虛擬網路連結__]。 
-    > 3. 選取 [新增]。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。    
+    > 3. 選取 [新增]  。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。    
     >   
     > 如需詳細資訊，請參閱 [Azure 私人端點 DNS](/azure/private-link/private-endpoint-dns)設定。   
 

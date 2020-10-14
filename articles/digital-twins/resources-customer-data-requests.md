@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522341"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047687"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure 數位 Twins 客戶資料要求功能
 
@@ -35,7 +35,7 @@ Azure 數位 Twins 會儲存具有環境存取權之使用者的 [Azure Active D
 
 ## <a name="deleting-customer-data"></a>刪除客戶資料
 
-Azure 數位 Twins 系統管理員可以使用 Azure 入口網站來刪除與使用者相關的資料。 您也可以使用 Azure 數位 Twins REST Api，在個別的數位 twins 上執行刪除作業。 如需可用 Api 的詳細資訊，請參閱 [Azure 數位 TWINS REST api 檔](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
+Azure 數位 Twins 系統管理員可以使用 Azure 入口網站來刪除與使用者相關的資料。 您也可以使用 Azure 數位 Twins REST Api，在個別的數位 twins 上執行刪除作業。 如需可用 Api 的詳細資訊，請參閱 [Azure 數位 TWINS REST api 檔](/rest/api/azure-digitaltwins/)。
 
 ## <a name="exporting-customer-data"></a>匯出客戶資料
 
@@ -45,4 +45,4 @@ Azure 數位 Twins 會儲存與數位 Twins 相關的資料。 使用者可以�
 
 ## <a name="links-to-additional-documentation"></a>其他文件的連結
 
-如需 Azure 數位 Twins 服務 Api 的完整清單，請參閱 [Azure 數位 TWINS REST api 檔](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
+如需 Azure 數位 Twins 服務 Api 的完整清單，請參閱 [Azure 數位 TWINS REST api 檔](/rest/api/azure-digitaltwins/)。

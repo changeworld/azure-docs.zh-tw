@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 95dc5b70174cd738104260aac2e175c0657d9c90
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966197"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046038"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上建立和布建具有 TPM 的 IoT Edge 裝置
 
@@ -31,9 +31,9 @@ ms.locfileid: "91966197"
 >
 > 如果您使用的是實體裝置，可以直接跳到本文中的 [從實體裝置取出](#retrieve-provisioning-information-from-a-physical-device) 布建資訊一節。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* [已啟用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 開發機器。 本文使用執行 Ubuntu Server VM 的 Windows 10。
+* [已啟用 Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 開發機器。 本文使用執行 Ubuntu Server VM 的 Windows 10。
 * 使用中的 IoT 中樞。
 
 > [!NOTE]
@@ -87,7 +87,7 @@ ms.locfileid: "91966197"
 
 4. 核取 [啟用信賴平台模組]****。
 
-5. 按一下 [確定]。  
+5. 按一下 [確定]  。  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>啟動虛擬機器，並收集 TPM 資料
 

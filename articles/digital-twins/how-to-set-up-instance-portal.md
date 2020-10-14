@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932104"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047398"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -164,7 +164,7 @@ ms.locfileid: "91932104"
 ## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
-* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
 或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：
