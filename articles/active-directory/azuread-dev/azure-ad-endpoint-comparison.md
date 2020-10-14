@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116388"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055285"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>為何要更新至 Microsoft 身分識別平台 (v2.0)？
 
 開發新的應用程式時，請務必瞭解 Microsoft 身分識別平臺 (2.0 版) 和 Azure Active Directory (v1.0) 端點之間的差異。 本文涵蓋端點與 Microsoft 身分識別平臺的一些現有限制之間的主要差異。
-
-> [!NOTE]
-> Microsoft 身分識別平臺端點不支援所有 Azure AD 案例和功能。 若要判斷您是否應該使用 Microsoft 身分識別平臺端點，請閱讀 [microsoft 身分識別平臺限制](#limitations)。
 
 ## <a name="who-can-sign-in"></a>誰可以登入
 
@@ -35,7 +32,7 @@ ms.locfileid: "88116388"
 * Microsoft 身分識別平臺端點允許 Azure AD 的公司和學校帳戶，以及 (MSA) 的個人 Microsoft 帳戶（例如 hotmail.com、outlook.com 和 msn.com）登入。
 * 這兩個端點也會接受針對設定為*[單一租](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 使用者的應用程式，或針對設定為指向租使用者特定端點 () 之*多租*使用者應用程式之 Azure AD 目錄的*[來賓使用者](../external-identities/what-is-b2b.md)* 登入 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
 
-Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶的登入，以及公司和學校帳戶。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](/graph/api/user-list-messages?view=graph-rest-1.0)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
+Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶的登入，以及公司和學校帳戶。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](/graph/api/user-list-messages)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
 
 針對 Microsoft 身分識別平臺端點，您可以使用 Microsoft 驗證程式庫 (MSAL) 來取得取用者、教育和企業世界的存取權。 Azure AD v1.0 端點只接受來自公司和學校帳戶的登入。
 
@@ -114,7 +111,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 Microsoft 身分識別平臺端點預設會在其權杖中發出一組較小的宣告，以保持較小的承載。 如果您的應用程式和服務相依于 v1.0 權杖中的特定宣告，而該宣告在 Microsoft 身分識別平臺權杖中預設為不提供，請考慮使用 [選擇性宣告](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 功能來包含該宣告。
 
 > [!IMPORTANT]
-> v1.0 和 v2.0 權杖都可以由 v1.0 和 v2.0 端點發出！ id_tokens *永遠* 符合要求的端點，而且存取權杖 *一律* 符合用戶端將使用該權杖呼叫的 Web API 所預期的格式。  因此，如果您的應用程式使用 v2.0 端點來取得權杖，以呼叫 Microsoft Graph （預期是 v1.0 格式存取權杖），您的應用程式將會收到 v1.0 格式的權杖。  
+> v1.0 和 v2.0 權杖都可以由 v1.0 和 v2.0 端點發出！ id_tokens *永遠* 符合要求的端點，而且存取權杖 *一律* 符合用戶端將使用該權杖呼叫的 Web API 所預期的格式。  因此，如果您的應用程式使用 v2.0 端點來取得權杖，以呼叫 Microsoft Graph （預期是 v1.0 格式存取權杖），您的應用程式將會收到 v1.0 格式的權杖。
 
 ## <a name="limitations"></a>限制
 
@@ -153,18 +150,22 @@ Microsoft 身分識別平臺端點將會進化，以排除此處所列的限制�
 * 如果您要建立桌面或行動應用程式，可以使用其中一個 Microsoft 驗證程式庫 (MSAL) 。 這些程式庫已正式運作，或在生產環境支援的預覽中，因此可安全地在生產應用程式中使用。 您可以在[驗證程式庫參考](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)中，閱讀更多和預覽條款與可用程式庫相關的詳細資訊。
 * 針對 Microsoft 程式庫未涵蓋的平臺，您可以直接在應用程式程式碼中傳送和接收通訊協定訊息，以與 Microsoft 身分識別平臺端點整合。 OpenID Connect 和 OAuth 通訊協定 [會明確記載](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ，以協助您進行這類整合。
 * 最後，您可以使用開放原始碼 OpenID Connect 和 OAuth 程式庫來與 Microsoft 身分識別平臺端點整合。 Microsoft 身分識別平臺端點應該與許多開放原始碼通訊協定程式庫相容，而不需要變更。 這類的程式庫的可用性會依語言和平台而有所不同。 [OpenID Connect](https://openid.net/connect/) \(英文\) 和 [OAuth 2.0](https://oauth.net/2/) \(英文\) 網站保有一份常用的實作清單。 如需詳細資訊，請參閱 [microsoft 身分識別平臺和驗證程式庫](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以及已使用 microsoft 身分識別平臺端點測試的開放原始碼用戶端程式庫和範例的清單。
-* 如需參考， `.well-known` Microsoft 身分識別平臺通用端點的端點是 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` 。 使用您的租用戶識別碼來取代 `common`，以取得您租用戶特有的資料。  
+* 如需參考， `.well-known` Microsoft 身分識別平臺通用端點的端點是 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` 。 使用您的租用戶識別碼來取代 `common`，以取得您租用戶特有的資料。
 
 ### <a name="protocol-changes"></a>通訊協定變更
 
-Microsoft 身分識別平臺端點不支援 SAML 或 WS-同盟;它僅支援 OpenID Connect 和 OAuth 2.0。  對於 1.0 版端點 OAuth 2.0 通訊協定的重大變更為： 
+Microsoft 身分識別平臺端點不支援 SAML 或 WS-同盟;它僅支援 OpenID Connect 和 OAuth 2.0。  對於 1.0 版端點 OAuth 2.0 通訊協定的重大變更為：
 
-* 如果設定選擇性宣告**或**在要求中指定 scope=email，則會傳回 `email` 宣告。 
-* 現已支援代替 `resource` 參數的 `scope` 參數。  
-* 已修改許多回應，使它們更符合 OAuth 2.0 的規範，例如正確地將 `expires_in` 傳回為 Int 而不是字串。  
+* 如果設定選擇性宣告**或**在要求中指定 scope=email，則會傳回 `email` 宣告。
+* 現已支援代替 `resource` 參數的 `scope` 參數。
+* 已修改許多回應，使它們更符合 OAuth 2.0 的規範，例如正確地將 `expires_in` 傳回為 Int 而不是字串。
 
 若要進一步瞭解 Microsoft 身分識別平臺端點所支援的通訊協定功能範圍，請參閱 [OpenID Connect 和 OAuth 2.0 通訊協定參考](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
-#### <a name="saml-restrictions"></a>SAML 限制
+#### <a name="saml-usage"></a>SAML 使用方式
 
-如果您已在 Windows 應用程式中使用 Active Directory 驗證程式庫 (ADAL) ，您可能已利用 Windows 整合式驗證，它會使用安全性聲明標記語言 (SAML) 判斷提示授與。 有了此授與之後，同盟 Azure AD 租用戶的使用者便可向其內部部署 Active Directory 執行個體以無訊息方式進行驗證，而不需輸入認證。 Microsoft 身分識別平臺端點不支援 SAML 判斷提示授與。
+如果您已在 Windows 應用程式中使用 Active Directory 驗證程式庫 (ADAL) ，您可能已利用 Windows 整合式驗證，它會使用安全性聲明標記語言 (SAML) 判斷提示授與。 有了此授與之後，同盟 Azure AD 租用戶的使用者便可向其內部部署 Active Directory 執行個體以無訊息方式進行驗證，而不需輸入認證。 雖然 [SAML 仍是支援的通訊協定](../develop/active-directory-saml-protocol-reference.md) ，可與企業使用者搭配使用，v2.0 端點只適用于 OAuth 2.0 應用程式。
+
+## <a name="next-steps"></a>後續步驟
+
+若要深入瞭解，請 [參閱 Microsoft 身分識別平臺檔](../develop/index.yml)。

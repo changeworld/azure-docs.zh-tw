@@ -4,16 +4,16 @@ description: 如何向 PowerApps 和 Microsoft Flow 公開 App Service 中裝載
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015080"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054792"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>將 Azure 裝載 API 匯出至 PowerApps 和 Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 是一種服務，可用來建置和使用自訂商務 App，以便跨越平台連接到您的資料和工作。 [Microsoft Flow](/learn/modules/get-started-with-flow/index) 可讓您輕易將最愛的應用程式與服務之間的工作流程和商業程序自動化。 PowerApps 和 Microsoft Flow 隨附資料來源 (如 Office 365、Dynamics 365、Salesforce 等等) 的各種內建連接器。 在某些情況下，應用程式和流程建置者也想要連接他們組織建置的資料來源和 API。
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 是一種服務，可用來建置和使用自訂商務 App，以便跨越平台連接到您的資料和工作。 [Power Automate](/learn/modules/get-started-with-flow/index) 可讓您輕鬆地在您最愛的應用程式與服務之間自動化工作流程和商務程式。 PowerApps 和 Microsoft Flow 隨附資料來源 (如 Office 365、Dynamics 365、Salesforce 等等) 的各種內建連接器。 在某些情況下，應用程式和流程建置者也想要連接他們組織建置的資料來源和 API。
 
 同樣地，想要在組織內廣泛公開 API 的開發人員，可以讓應用程式和流程建置者使用他們的 API。 本文說明如何匯出以 [Azure Functions](../azure-functions/functions-overview.md) 或 [AZURE APP SERVICE](../app-service/overview.md)建立的 API。 匯出的 API 能成為「自訂連接器」**，它在 PowerApps and Microsoft Flow just 中的使用方法就像內建連接器一樣。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87015080"
 
 2. 使用表格中所指定的設定。
 
-    |設定|說明|
+    |設定|描述|
     |--------|------------|
     |**環境**|選取應該儲存自訂連接器的目標環境。 如需詳細資訊，請參閱[環境概觀](https://powerapps.microsoft.com/tutorials/environments-overview/)。|
     |**自訂 API 名稱**|輸入名稱，也就是 PowerApps 和 Microsoft Flow 建置者在連接器清單中看到的名稱。|

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396428"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054758"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常見問題集 (FAQ)
 
@@ -145,11 +145,10 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 選取 **應用程式註冊**，然後選取 [ **所有應用程式** ] 索引標籤。
 1. 刪除您註冊的所有應用程式。
 1. 刪除 **b2c 擴充功能-應用程式**。
-1. 在 [管理] 底下選取 [使用者]。
+1. 在 [管理]  底下選取 [使用者]  。
 1. 依次選取每個使用者 (將您目前登入的 *訂用帳戶系統管理員* 使用者排除為) 。 選取頁面底部的 [ **刪除** ]，然後在出現提示時選取 **[是]** 。
 1. 選取左側功能表上的 **Azure Active Directory** 。
 1. 在 [ **管理**] 底下，選取 [ **使用者設定**]。
-1. 如果存在，請在 [ **LinkedIn 帳戶連接**] 底下選取 [ **否**]，然後選取 [ **儲存**]。
 1. 在 [**管理**] 底下，選取 [**屬性**]
 1. 在[Azure 資源的存取管理] 底下，選取 [是]，然後選取 [儲存]。
 1. 登出 Azure 入口網站然後重新登入以重新整理您的存取權。
@@ -164,7 +163,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 刪除 Azure AD B2C 租 **使用者中)  (原則的所有使用者流程 ** 。
 1. 刪除您在 Azure AD B2C 租使用者中註冊 ** (舊版) 的所有應用程式 ** 。
 1. 選取左側功能表上的 **Azure Active Directory** 。
-1. 在 [管理] 底下選取 [使用者]。
+1. 在 [管理]  底下選取 [使用者]  。
 1. 依次選取每個使用者 (將您目前登入的 *訂用帳戶系統管理員* 使用者排除為) 。 選取頁面底部的 [ **刪除** ]，然後在出現提示時選取 **[是]** 。
 1. 在 [管理] 底下，選取 [應用程式註冊]。
 1. 選取 [ **View all applications** ]
