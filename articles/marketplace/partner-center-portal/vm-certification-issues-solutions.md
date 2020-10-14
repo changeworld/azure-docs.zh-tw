@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 06/16/2020
-ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803461"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044491"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>認證 Azure Marketplace 的虛擬機器映射時常見的問題
 
@@ -46,7 +46,7 @@ ms.locfileid: "91803461"
 1. 選取您的 Linux VM。
 1. 移至 [ **診斷設定**]。
 1. 藉由更新 **儲存體帳戶**來啟用基底矩陣。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
    ![啟用來賓層級監視](./media/vm-certification-issues-solutions-1.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "91803461"
 
 布建問題可能包含下列失敗案例：
 
-|狀況|錯誤|原因|解決方法|
+|狀況|錯誤|原因|解決方案|
 |---|---|---|---|
 |1| (VHD) 的虛擬硬碟無效|如果 VHD 頁尾中指定的 cookie 值不正確，VHD 將會視為無效。|重新建立映射並提交要求。|
 |2|不正確 blob 類型|VM 布建失敗，因為使用的區塊是 blob 類型，而不是頁面類型。|重新建立映射並提交要求。|
@@ -164,7 +164,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 當 Vm 允許存取基礎作業系統時，請確定 VHD 大小對 VHD 而言夠大。 因為磁片無法在沒有停機的情況下展開，所以請使用 30 GB 到 50 GB 的磁片大小。
 
-|VHD 大小|實際佔用的大小|解決方法|
+|VHD 大小|實際佔用的大小|解決方案|
 |---|---|---|
 |>500 tib (TiB) |n/a|請洽詢支援小組以取得例外狀況核准。|
 |250-500 TiB|>200 32,767 gib (GiB) 與 blob 大小的差異|請洽詢支援小組以取得例外狀況核准。|
@@ -264,7 +264,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
     
 請參閱下表，以瞭解當您使用共用存取簽章 (SAS) URL 下載 VM 映射時所發生的任何問題。
 
-|狀況|錯誤|原因|解決方法|
+|狀況|錯誤|原因|解決方案|
 |---|---|---|---|
 |1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。|| 
 |2|使用中的 Blob|VHD 會由另一個內部進程使用。|當您使用 SAS URL 下載 VHD 時，該 VHD 應該會處於使用中狀態。|
@@ -310,7 +310,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 如需與資料磁片相關之錯誤的解決方案，請使用下表：
 
-|錯誤|原因|解決方法|
+|錯誤|原因|解決方案|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|此錯誤的發生原因可能是在提交供應專案時，為邏輯單元編號 (LUN) 指定的號碼無效。|確認資料磁片的 LUN 編號順序合作夥伴中心。|
 |`DataDisk- NotFound:`|發生此錯誤的原因可能是資料磁片不是位於指定的 SAS URL。|確認資料磁片位於要求中所指定的 SAS URL。|
@@ -372,6 +372,61 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
    7. 時間軸-已要求這個例外狀況的日期 
    8.   附件-附加任何重要的辨識項檔。 針對鎖定的 Vm，請附加測試報告和自訂範本，提供自訂的 ARM 範本作為附件。 無法連接已鎖定 Vm 的報告，以及自訂範本的自訂 ARM 範本，將會導致拒絕要求
 
+## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>如何解決 VM 供應專案中的弱點或惡意探索
+
+此常見問題可協助您在使用其中一個 VM 映射發現弱點或惡意探索時，提供虛擬機器 (VM) 映射。 此常見問題僅適用于發佈至 Azure Marketplace 的 Azure 虛擬機器供應專案。
+
+> [!NOTE]
+> 您無法從方案中移除最後一個 VM 映射，也無法停止銷售供應專案的最後一個方案。
+
+執行下列其中一個動作：
+
+1. 如果您有新的 VM 映射來取代易受攻擊的 VM 映射，請移至 [如何提供固定的 vm 映射](#how-to-provide-a-fixed-vm-image)。
+1. 如果您沒有新的 VM 映射來取代方案中的唯一 VM 映射，而且您已完成方案，則可以 [停止銷售方案](update-existing-offer.md#stop-selling-an-offer-or-plan)。
+1. 如果您不打算更換供應專案中的唯一 VM 映射，建議您 [停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案。
+
+### <a name="how-to-provide-a-fixed-vm-image"></a>如何提供固定的 VM 映射
+
+若要提供固定的 VM 映射來取代有弱點或惡意探索的 VM 映射，您必須執行下列動作：
+
+1. 提供新的 VM 映射來解決安全性弱點或惡意探索。
+1. 移除具有安全性弱點或惡意探索的 VM 映射。
+1. 重新發佈供應專案。
+
+#### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>提供新的 VM 映射來解決安全性弱點或惡意探索
+
+若要完成這些步驟，您需要準備要新增之 VM 映射的技術資產。 如需詳細資訊，請參閱 [建立 Azure Marketplace 虛擬機器供應專案的技術資產](create-azure-vm-technical-asset.md) ，並 [取得 VM 映射的 SAS URI](get-sas-uri.md)。
+
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左側導覽功能表中，選取 [**商業 Marketplace**  >  **總覽**]。
+1. 在 [ **供應專案別名** ] 資料行中，選取供應專案。
+1. 在 [ **計畫總覽** ] 索引標籤的 [ **名稱** ] 欄中，選取您要新增 VM 的方案。
+1. 在 [ **技術** 設定] 索引標籤的 [ **VM 映射**] 底下，選取 [ **+ 新增 VM 映射**]。
+   > [!NOTE]
+   > 您一次只能將一個 VM 映射新增至方案。 若要新增多個 VM 映射，請在新增下一個 VM 映射之前，先發佈第一個映射並等候進入 _發行者登出_ 階段。
+1. 在出現的方塊中，提供新的磁片版本和虛擬機器映射。
+1. 選取 [儲存草稿]。
+1. 繼續進行下一節，以移除具有安全性弱點的 VM 映射。
+
+#### <a name="remove-the-vm-image-that-has-the-security-vulnerability-or-exploit"></a>移除具有安全性弱點或惡意探索的 VM 映射
+
+登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左側導覽功能表中，選取 [**商業 Marketplace**  >  **總覽**]。
+1. 在 [ **供應專案別名** ] 資料行中，選取供應專案。
+1. 在 [ **計畫總覽** ] 索引標籤的 [ **名稱** ] 欄中，選取您要移除 VM 的方案。
+1. 在 [ **技術** 設定] 索引標籤的 [ **vm 映射**] 底下，選取您要移除的 vm 映射旁的 [ **移除 vm 映射**]。
+1. 在出現的對話方塊中，選取 [ **繼續**]。
+1. 選取 [儲存草稿]。
+1. 繼續進行下一節以重新發佈供應專案。
+
+#### <a name="republish-the-offer"></a>重新發佈供應專案
+
+移除或取代 VM 映射之後，您必須重新發佈供應專案。
+1. 選取 [ **審核併發布**]。
+1. 如果您需要向認證小組提供任何資訊，請將其新增至 [憑證 **的附注** ] 方塊。
+1. 選取 [發佈]  。
+
+如需有關發佈程式的詳細資訊，請參閱 [如何審核供應專案並將其發佈至商業 marketplace](../review-publish-offer.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

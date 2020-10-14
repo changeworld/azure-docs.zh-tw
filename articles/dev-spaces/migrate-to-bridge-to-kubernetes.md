@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: 描述從 Azure Dev Spaces 到 Bridge 到 Kubernetes 的遷移程式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、Bridge 到 Kubernetes
-ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019931"
+ms.locfileid: "92044695"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>遷移以橋接至 Kubernetes
 
@@ -108,7 +108,6 @@ Kubernetes 可讓您彈性地使用在 Kubernetes 中執行的應用程式，而
 
 1. 將 *azds. yaml* 中的任何自訂專案（例如環境變數設定）手動遷移至專案的 *yml* 檔案。
 1.  (選擇性) 移除 `azds.yaml` 專案中的檔案。
-1. 重新部署應用程式。
 1. 在已部署的應用程式上設定 Bridge 以進行 Kubernetes。 如需使用 Bridge Kubernetes Visual Studio 的詳細資訊，請參閱 [Visual Studio 中的使用 bridge 來 Kubernetes][use-btk-vs]。 如 VS Code，請參閱 [VS Code 中的使用 Bridge Kubernetes][use-btk-vsc]。
 1. 使用新建立的橋接器開始進行調試，以 Kubernetes debug/啟動設定檔。
 1. 您可以視需要重新執行腳本，以重新部署至您的叢集。

@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76511139"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043896"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>透過 IoT Edge 裝置閘道連線 Modbus TCP 裝置
 
@@ -25,7 +25,7 @@ ms.locfileid: "76511139"
 
 本文假設您使用 Modbus TCP 通訊協定。 如需有關如何設定此模組以支援 Modbus RTU 的詳細資訊，請參閱 GitHub 上的 [Azure IoT Edge Modbus 模組](https://github.com/Azure/iot-edge-modbus)專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure IoT Edge 裝置。 如需有關如何設定的逐步解說，請參閱[在 Windows 或 Linux 上部署 Azure IoT Edge](quickstart.md) 。 [Linux](quickstart-linux.md)
 * IoT Edge 裝置的主索引鍵連接字串。
@@ -35,7 +35,7 @@ ms.locfileid: "76511139"
 
 如果您想要測試 Modbus 閘道功能，Microsoft 有可供您使用的範例模組。 您可以從 Azure Marketplace、 [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)或使用映射 URI 來存取模組 `mcr.microsoft.com/azureiotedge/modbus:1.0` 。
 
-如果您想要建立自己的模組並針對您的環境進行自訂，GitHub 上有提供開放原始碼 [Azure IoT Edge Modbus 模組](https://github.com/Azure/iot-edge-modbus)專案。 請遵循該專案中的方針，建立您自己的容器映像。 若要建立容器映射，請參閱 [在 Visual Studio 中開發 c # 模組](how-to-visual-studio-develop-csharp-module.md) ，或 [在 Visual Studio Code 中開發模組](how-to-vs-code-develop-module.md)。 這些文章提供有關建立新模組和將容器映射發佈到登錄的指示。
+如果您想要建立自己的模組並針對您的環境進行自訂，GitHub 上有提供開放原始碼 [Azure IoT Edge Modbus 模組](https://github.com/Azure/iot-edge-modbus)專案。 請遵循該專案中的方針，建立您自己的容器映像。 若要建立容器映射，請參閱 [在 Visual Studio 中開發 c # 模組](./how-to-visual-studio-develop-module.md) ，或 [在 Visual Studio Code 中開發模組](how-to-vs-code-develop-module.md)。 這些文章提供有關建立新模組和將容器映射發佈到登錄的指示。
 
 ## <a name="try-the-solution"></a>試用解決方案
 

@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905264"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042587"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory 中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,20 +37,22 @@ Common Data Model 是以 [內嵌資料集](data-flow-source.md#inline-datasets) 
 
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| [格式] | 格式必須是 `cdm` | 是 | `cdm` | format |
+| 格式 | 格式必須是 `cdm` | 是 | `cdm` | format |
 | 元資料格式 | 資料所在的實體參考。 如果使用 CDM 版本1.0，請選擇 [資訊清單]。 如果使用1.0 之前的 CDM 版本，請選擇 [開啟 model.js]。 | 是 | `'manifest'` 或 `'model'` | manifestType |
-| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | 字串 | fileSystem |
-| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | 字串 | folderPath |
-| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | 字串 | entityPath |
+| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | String | fileSystem |
+| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | String | folderPath |
+| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | String | entityPath |
 | 資訊清單檔：資訊清單名稱 | 資訊清單檔的名稱。 預設值為 ' default '  | 否 | String | manifestName |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore | 
 | 架構連結服務 | 主體所在的連結服務 | 是，如果使用資訊清單 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 實體參考容器 | 容器主體位於 | 是，如果在 ADLS Gen2 中使用資訊清單和主體 | 字串 | adlsgen2_fileSystem |
-| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果使用 GitHub 中的資訊清單和主體 | 字串 | github_repository |
-| 實體參考分支 | GitHub 存放庫分支 | 是，如果使用 GitHub 中的資訊清單和主體 | 字串 |  github_branch |
-| 主體資料夾 | 主體的根位置 | 是，如果使用資訊清單 | 字串 | corpusPath |
-| 主體實體 | 實體參考的路徑 | 是 | 字串 | 實體 |
+| 實體參考容器 | 容器主體位於 | 是，如果在 ADLS Gen2 中使用資訊清單和主體 | String | adlsgen2_fileSystem |
+| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果使用 GitHub 中的資訊清單和主體 | String | github_repository |
+| 實體參考分支 | GitHub 存放庫分支 | 是，如果使用 GitHub 中的資訊清單和主體 | String |  github_branch |
+| 主體資料夾 | 主體的根位置 | 是，如果使用資訊清單 | String | corpusPath |
+| 主體實體 | 實體參考的路徑 | 是 | String | 實體 |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+
+如果您想要在來源轉換中使用的實體定義位於與您的資料檔案夾相同的目錄中，您可以取消選取 [使用主體的實體]，並只輸入您想要做為實體參考之實體的實體。
 
 ### <a name="sink-settings"></a>接收設定
 
@@ -114,21 +116,21 @@ source(output(
 
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| [格式] | 格式必須是 `cdm` | 是 | `cdm` | format |
-| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | 字串 | fileSystem |
-| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | 字串 | folderPath |
-| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | 字串 | entityPath |
+| 格式 | 格式必須是 `cdm` | 是 | `cdm` | format |
+| 根位置：容器 | CDM 資料夾的容器名稱 | 是 | String | fileSystem |
+| 根位置：資料夾路徑 | CDM 資料夾的根資料夾位置 | 是 | String | folderPath |
+| 資訊清單檔：實體路徑 | 根資料夾內實體的資料夾路徑 | 否 | String | entityPath |
 | 資訊清單檔：資訊清單名稱 | 資訊清單檔的名稱。 預設值為 ' default ' | 否 | String | manifestName |
 | 架構連結服務 | 主體所在的連結服務 | 是 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 實體參考容器 | 容器主體位於 | 是，如果 ADLS Gen2 中的主體 | 字串 | adlsgen2_fileSystem |
-| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果是 GitHub 中的主體 | 字串 | github_repository |
-| 實體參考分支 | GitHub 存放庫分支 | 是，如果是 GitHub 中的主體 | 字串 |  github_branch |
-| 主體資料夾 | 主體的根位置 | 是 | 字串 | corpusPath |
-| 主體實體 | 實體參考的路徑 | 是 | 字串 | 實體 |
-| 分割路徑 | 將寫入分割區的位置 | 否 | 字串 | partitionPath |
+| 實體參考容器 | 容器主體位於 | 是，如果 ADLS Gen2 中的主體 | String | adlsgen2_fileSystem |
+| 實體參考存放庫 | GitHub 存放庫名稱 | 是，如果是 GitHub 中的主體 | String | github_repository |
+| 實體參考分支 | GitHub 存放庫分支 | 是，如果是 GitHub 中的主體 | String |  github_branch |
+| 主體資料夾 | 主體的根位置 | 是 | String | corpusPath |
+| 主體實體 | 實體參考的路徑 | 是 | String | 實體 |
+| 分割路徑 | 將寫入分割區的位置 | 否 | String | partitionPath |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | 格式類型 | 選擇指定 parquet 格式 | 否 | `parquet` 如果已指定 | subformat |
-| 資料行分隔符號 | 如果寫入 DelimitedText，如何分隔資料行 | 是，如果寫入 DelimitedText | 字串 | columnDelimiter |
+| 資料行分隔符號 | 如果寫入 DelimitedText，如何分隔資料行 | 是，如果寫入 DelimitedText | String | columnDelimiter |
 | 第一個資料列做為標頭 | 如果使用 DelimitedText，是否要將資料行名稱加入為標頭 | 否 | `true` 或 `false` | columnNamesAsHeader |
 
 ### <a name="cdm-sink-data-flow-script-example"></a>CDM 接收資料流程腳本範例

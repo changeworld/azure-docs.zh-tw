@@ -10,18 +10,18 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b5d2156707d8a4c308ed577b7407d5eae30edc65
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979432"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044193"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>從 IoT Edge 的部署取出記錄
 
 使用 IoT Edge agent 模組中包含的直接方法，從您的 IoT Edge 部署取出記錄，而不需要對裝置進行實體或 SSH 存取。 直接方法會在裝置上執行，然後可以從雲端叫用。 IoT Edge 代理套裝程式含可協助您從遠端監視和管理 IoT Edge 裝置的直接方法。 本文中討論的直接方法已在1.0.10 版本中正式推出。
 
-如需直接方法、如何使用它們，以及如何在自己的模組中執行這些方法的詳細資訊，請參閱 [瞭解並從 IoT 中樞叫用直接方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)。
+如需直接方法、如何使用它們，以及如何在自己的模組中執行這些方法的詳細資訊，請參閱 [瞭解並從 IoT 中樞叫用直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 
 這些直接方法的名稱會以區分大小寫的方式處理。
 
@@ -67,13 +67,13 @@ ms.locfileid: "91979432"
 |-|-|-|
 | schemaVersion | 字串 | 設定為 `1.0` |
 | 項目 | JSON 陣列 | 具有 `id` 和 `filter` 元組的陣列。 |
-| 識別碼 | 字串 | 提供模組名稱的正則運算式。 它可以符合 edge 裝置上的多個模組。 需要[.Net 正則運算式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)格式。 |
+| 識別碼 | 字串 | 提供模組名稱的正則運算式。 它可以符合 edge 裝置上的多個模組。 需要[.Net 正則運算式](/dotnet/standard/base-types/regular-expressions)格式。 |
 | 篩選條件 | JSON 區段 | 要套用至符合 `id` 元組中正則運算式之模組的記錄篩選。 |
 | 尾巴 | 整數 | 過去從最新的開始取出的記錄行數。 選擇性。 |
 | 自 | 整數 | 只會在這段時間之後傳回記錄， (1 d、90 m、2天3小時2分鐘) 、rfc3339 時間戳記或 UNIX 時間戳記。  如果同時 `tail` 指定了和 `since` ，則會先使用值抓取記錄 `since` 。 然後，此 `tail` 值會套用到結果，並傳回最終結果。 選擇性。 |
 | 直到 | 整數 | 只會在指定的時間之前傳回記錄，以 rfc3339 時間戳記、UNIX 時間戳記或持續時間 (1 d、90 m、2天3小時2分鐘) 。 選擇性。 |
 | 記錄層級 | 整數 | 篩選記錄行小於或等於指定的記錄層級。 記錄行應遵循建議的記錄格式，並使用 [Syslog 嚴重性等級](https://en.wikipedia.org/wiki/Syslog#Severity_level) 標準。 選擇性。 |
-| RegEx | 字串 | 使用 [.Net 正則運算式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 格式篩選具有符合指定正則運算式之內容的記錄行。 選擇性。 |
+| RegEx | 字串 | 使用 [.Net 正則運算式](/dotnet/standard/base-types/regular-expressions) 格式篩選具有符合指定正則運算式之內容的記錄行。 選擇性。 |
 | 編碼 | 字串 | `gzip` 或 `none`。 預設值為 `none`。 |
 | ContentType | 字串 | `json` 或 `text`。 預設值為 `text`。 |
 
@@ -82,7 +82,7 @@ ms.locfileid: "91979432"
 
 成功抓取記錄會傳回 **"status"： 200** ，後面接著包含從模組取出之記錄的承載，並依您在要求中指定的設定進行篩選。
 
-例如：
+例如︰
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <
 
 ![在 Azure 入口網站中叫用直接方法 ' GetModuleLogs '](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-您也可以使用管線將 CLI 輸出傳送至 Linux 公用程式（例如 [gzip](https://en.wikipedia.org/wiki/Gzip)）來處理壓縮的回應。 例如：
+您也可以使用管線將 CLI 輸出傳送至 Linux 公用程式（例如 [gzip](https://en.wikipedia.org/wiki/Gzip)）來處理壓縮的回應。 例如︰
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -166,7 +166,7 @@ az iot hub invoke-module-method \
 
 | 名稱 | 類型 | 描述 |
 |-|-|-|
-| sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)簽章 URL。 |
+| sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)簽章 URL。 |
 
 成功的上傳記錄要求會傳回 **"status"： 200** ，後面接著具有下列架構的承載：
 
@@ -184,7 +184,7 @@ az iot hub invoke-module-method \
 | message | 字串 | 如果發生錯誤，則為訊息，否則為空字串。 |
 | correlationId | 字串   | 要查詢上傳要求狀態的識別碼。 |
 
-例如：
+例如︰
 
 下列調用會以壓縮的 JSON 格式，從所有模組上傳最後100的記錄行：
 
@@ -259,7 +259,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 
 ## <a name="upload-support-bundle-diagnostics"></a>上傳支援套件組合診斷
 
-使用 **UploadSupportBundle** 直接方法，將 IoT Edge 模組記錄檔的 zip 檔案組合並上傳至可用的 Azure Blob 儲存體容器。 此直接方法會 [`iotedge support-bundle`](https://docs.microsoft.com/azure/iot-edge/troubleshoot#gather-debug-information-with-support-bundle-command) 在 IoT Edge 裝置上執行命令，以取得記錄。
+使用 **UploadSupportBundle** 直接方法，將 IoT Edge 模組記錄檔的 zip 檔案組合並上傳至可用的 Azure Blob 儲存體容器。 此直接方法會 [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) 在 IoT Edge 裝置上執行命令，以取得記錄。
 
 這個方法會接受具有下列架構的 JSON 承載：
 
@@ -276,7 +276,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 | 名稱 | 類型 | 描述 |
 |-|-|-|
 | schemaVersion | 字串 | 設定為 `1.0` |
-| sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取簽章 URL](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/) |
+| sasURL | 字串 (URI)  | [具有 Azure Blob 儲存體容器之寫入存取權的共用存取簽章 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | 自 | 整數 | 只會在這段時間之後傳回記錄， (1 d、90 m、2天3小時2分鐘) 、rfc3339 時間戳記或 UNIX 時間戳記。 選擇性。 |
 | 直到 | 整數 | 只會在指定的時間之前傳回記錄，以 rfc3339 時間戳記、UNIX 時間戳記或持續時間 (1 d、90 m、2天3小時2分鐘) 。 選擇性。 |
 | edgeRuntimeOnly | boolean | 若為 true，則只會從 Edge 代理程式、Edge 中樞和 Edge 安全性 Daemon 傳回記錄。 預設：false。  選擇性。 |
@@ -300,7 +300,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 | message | 字串 | 如果發生錯誤，則為訊息，否則為空字串。 |
 | correlationId | 字串   | 要查詢上傳要求狀態的識別碼。 |
 
-例如：
+例如︰
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -358,7 +358,7 @@ az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name
 | message | 字串 | 如果發生錯誤，則為訊息，否則為空字串。 |
 | correlationId | 字串   | 要查詢上傳要求狀態的識別碼。 |
 
-例如：
+例如︰
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

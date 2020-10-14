@@ -3,19 +3,19 @@ title: 將您的資料摘要上線至計量 Advisor
 titleSuffix: Azure Cognitive Services
 description: 如何開始將您的資料摘要上線至計量 Advisor。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934687"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043188"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>How to：將您的計量資料上架到計量 Advisor
 
@@ -72,7 +72,7 @@ ms.locfileid: "90934687"
 
 如果省略資料點的時間戳記，則當資料點改為內嵌時，計量審查程式將會使用時間戳。 針對每個資料摘要，您最多可以指定一個資料行做為時間戳記。 如果您收到訊息，指出無法將資料行指定為時間戳記，請檢查您的查詢或資料來源，以及查詢結果中是否有多個時間戳記，而不只是預覽資料。 執行資料內嵌時，計量審查程式每次只能使用一個區塊 (例如一天、一小時-根據特定來源的時間序列資料的資料細微性) 。
 
-|選取項目  |描述  |注意  |
+|選取項目  |描述  |附註  |
 |---------|---------|---------|
 | **顯示名稱** | 要在您的工作區中顯示的名稱，而不是原始資料行名稱。 | |
 |**Timestamp**     | 資料點的時間戳記。 如果省略，則在內嵌資料點時，Metrics Advisor 會使用時間戳記。 針對每個資料摘要，您最多可以指定一個資料行做為時間戳記。        | 選擇性。 最多只能指定一個資料行。 如果您 **無法將資料行指定為時間戳記** 錯誤，請檢查您的查詢或資料來源是否有重複的時間戳記。      |
@@ -82,7 +82,7 @@ ms.locfileid: "90934687"
 
 如果您想要忽略資料行，我們建議您更新查詢或資料來源，以排除這些資料行。 您也可以使用 [略過資料 **行** ] 來略過資料行，然後在特定資料行上 **略** 過。 如果資料行應該是維度，並錯誤地設定為 *忽略*，則計量審查程式最後可能會擷取部分資料。 例如，假設查詢中的資料如下所示：
 
-| 資料列識別碼 | 時間戳記 | 國家/地區 | Language | Income |
+| 資料列識別碼 | 時間戳記 | 國家/地區 | 語言 | Income |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | 中國 | ZH-CN | 10000 |
 | 2 | 2019/11/10 | 中國 | ZH-TW | 1000 |
@@ -109,7 +109,7 @@ ms.locfileid: "90934687"
 
     此選項表示計量建議程式不需要匯總資料，因為資料列已加總。 例如，如果您只選取 [ *Null*]，則下列範例中的第二個數據列會顯示為所有國家/地區和語言 *en-us*的匯總。但是，第四個數據列的 *國家/地區* 有空白值，則會顯示為一般資料列，這可能表示未完成的資料。
     
-    | 國家/地區 | Language | Income |
+    | 國家/地區 | 語言 | Income |
     |---------|----------|--------|
     | 中國   | ZH-CN    | 10000  |
     |  (Null)   | ZH-TW    | 999999 |

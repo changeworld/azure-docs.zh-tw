@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394727"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042400"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!IMPORTANT]
 > **將金鑰保存庫移至另一個訂用帳戶，將會對您的環境造成重大變更。**
@@ -37,6 +37,9 @@ ms.locfileid: "89394727"
 
 ## <a name="limitations"></a>限制
 
+> [!IMPORTANT]
+> **無法移動用於磁片加密的金鑰保存庫** 如果您使用 key vault 搭配 VM 的磁片加密，則在啟用磁片加密時，金鑰保存庫無法移至不同的資源群組或訂用帳戶。 將金鑰保存庫移至新的資源群組或訂用帳戶之前，您必須先停用磁片加密。 
+
 某些服務主體 (使用者和應用程式) 系結至特定的租使用者。 如果您將金鑰保存庫移至另一個租使用者中的訂用帳戶，則有可能無法還原特定服務主體的存取權。 請檢查以確定您要移動金鑰保存庫的租使用者中有所有必要的服務主體。
 
 ## <a name="design-considerations"></a>設計考量
@@ -47,11 +50,11 @@ ms.locfileid: "89394727"
 
 您的應用程式已連線至金鑰保存庫，可建立兩年有效的憑證。 您嘗試移動金鑰保存庫的訂用帳戶具有原則指派，以封鎖建立有效期限超過一年的憑證。 將您的金鑰保存庫移至新的訂用帳戶之後，Azure 原則指派將會封鎖用來建立兩年有效憑證的作業。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 請確定您移至 Azure 入口網站上的 [Azure 原則] 頁面，並查看您目前訂用帳戶的原則指派，以及您要移動的訂用帳戶，並確定沒有任何不符的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 目前訂用帳戶的參與者層級存取權或更高版本，您的金鑰保存庫存在。
 * 參與者層級存取權或更高版本，可存取您想要移動金鑰保存庫的訂用帳戶。

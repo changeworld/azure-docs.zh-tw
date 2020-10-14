@@ -4,17 +4,17 @@ description: 搭配 Azure IoT Tools 使用 Visual Studio Code，將 IoT Edge 模
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/8/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bb3c03b16ae05d3e5e78378e88b9337842e3d98d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ccc87b1b3103e799a5974542de602090df8e1e4b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972623"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048384"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>從 Visual Studio Code 部署 Azure IoT Edge 模組
 
@@ -40,12 +40,15 @@ ms.locfileid: "91972623"
 
 下面以具有一個模組的基本部署資訊清單為例：
 
+>[!NOTE]
+>此範例部署資訊清單會使用 IoT Edge 代理程式和中樞的架構1.1 版。 架構版本1.1 與 IoT Edge 1.0.10 版本一起發行，並啟用模組啟動順序和路由優先順序等功能。
+
    ```json
    {
      "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "runtime": {
              "type": "docker",
              "settings": {
@@ -88,7 +91,7 @@ ms.locfileid: "91972623"
        },
        "$edgeHub": {
          "properties.desired": {
-           "schemaVersion": "1.0",
+           "schemaVersion": "1.1",
            "routes": {
                "route": "FROM /messages/* INTO $upstream"
            },

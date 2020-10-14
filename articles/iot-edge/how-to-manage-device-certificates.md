@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971790"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044134"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 裝置上的憑證
 
@@ -31,7 +31,7 @@ ms.locfileid: "91971790"
 >[!NOTE]
 >本文中使用的「根 CA」一詞是指 IoT 解決方案的憑證鏈最上層授權公開憑證。 您不需要使用同步發佈憑證授權單位單位的憑證根目錄，或組織憑證授權單位單位的根。 在許多情況下，它實際上是中繼 CA 公開憑證。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * IoT Edge 裝置。
 
@@ -68,14 +68,14 @@ ms.locfileid: "91971790"
 
 1. 將三個憑證和金鑰檔案複製到您的 IoT Edge 裝置上。
 
-   您可使用如 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。  如果您在 IoT Edge 裝置本身產生憑證，您可以略過此步驟，並使用工作目錄的路徑。
+   您可使用如 [Azure Key Vault](../key-vault/index.yml) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。  如果您在 IoT Edge 裝置本身產生憑證，您可以略過此步驟，並使用工作目錄的路徑。
 
 1. 開啟 IoT Edge 安全性精靈組態檔。
 
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-1. 將 yaml 中的 **憑證** 內容設定為憑證和金鑰檔案在 IoT Edge 裝置上的檔案 URI 路徑。 移除 `#` 憑證屬性之前的字元，以將四行取消批註。 請確定 [ **憑證：** ] 行沒有先前的空格，而且嵌套的專案是以兩個空格進行縮排。 例如：
+1. 將 yaml 中的 **憑證** 內容設定為憑證和金鑰檔案在 IoT Edge 裝置上的檔案 URI 路徑。 移除 `#` 憑證屬性之前的字元，以將四行取消批註。 請確定 [ **憑證：** ] 行沒有先前的空格，而且嵌套的專案是以兩個空格進行縮排。 例如︰
 
    * Windows：
 

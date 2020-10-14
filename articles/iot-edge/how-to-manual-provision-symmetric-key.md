@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 9e288bcbebe4118bfc8cfa7cff46c79d7075555a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5371539c1b45c14b519729c7c07003bf74847a0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979437"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043862"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-symmetric-key-authentication"></a>使用對稱金鑰驗證設定 Azure IoT Edge 裝置
 
@@ -36,7 +36,7 @@ ms.locfileid: "91979437"
 
 本文將逐步解說使用對稱金鑰驗證的註冊和布建程式。 如果您想要瞭解如何使用 x.509 憑證來設定裝置，請參閱 [使用 x.509 憑證驗證設定 Azure IoT Edge 裝置](how-to-manual-provision-x509.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 遵循本文中的步驟之前，您應該已在其上安裝 IoT Edge 執行時間的裝置。 如果沒有，請依照 [安裝或卸載 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟執行。
 
@@ -141,12 +141,12 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 ### <a name="prerequisites-for-the-azure-cli"></a>Azure CLI 的先決條件
 
 * Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須是2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
+* 您環境中的 [Azure CLI](/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須是2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
 * [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>使用 Azure CLI 建立 IoT Edge 裝置
 
-使用 [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令，在 IoT 中樞中建立新的裝置身分識別。 例如：
+使用 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令，在 IoT 中樞中建立新的裝置身分識別。 例如：
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -162,7 +162,7 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>使用 Azure CLI 檢視 IoT Edge 裝置
 
-使用 [az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令檢視 IoT 中樞內的所有裝置。 例如：
+使用 [az iot hub device-identity list](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令檢視 IoT 中樞內的所有裝置。 例如：
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -172,7 +172,7 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>使用 Azure CLI 擷取連接字串
 
-當您準備好開始設定裝置時，需要連接字串才能利用實體裝置在 IoT 中樞中的身分識別來連結實體裝置。 使用 [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令傳回單一裝置的連接字串：
+當您準備好開始設定裝置時，需要連接字串才能利用實體裝置在 IoT 中樞中的身分識別來連結實體裝置。 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令傳回單一裝置的連接字串：
 
    ```azurecli
    az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]

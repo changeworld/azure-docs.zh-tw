@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959786"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044525"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>監視 Azure App Service 中的應用程式
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 針對 [Azure 入口網站](https://portal.azure.com)中的 web 應用程式、行動和 API 應用程式提供內建的監視功能。
@@ -31,7 +31,7 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 
 免費或共用應用程式的配額如下︰
 
-| Quota | 說明 |
+| Quota | 描述 |
 | --- | --- |
 | **CPU (短期)** | 此應用程式在 5 分鐘間隔內允許的 CPU 數量。 此配額會每 5 分鐘重設一次。 |
 | **CPU (天)** | 此應用程式在 1 天內允許的 CPU 總量。 此配額會每隔 24 小時在午夜 (UTC) 重設一次。 |
@@ -58,7 +58,7 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 ## <a name="understand-metrics"></a>了解計量
 
 > [!NOTE]
-> **檔案系統使用** 方式是全域推出的新計量，除非您已獲得私人預覽的存取權，否則不會有任何資料。
+> **檔案系統使用** 方式是全域推出的新計量，除非您的應用程式裝載在 App Service 環境中，否則不會有任何資料。
 > 
 
 > [!IMPORTANT]

@@ -3,12 +3,12 @@ title: 在小組內建立 Azure 實驗室服務排程
 description: 瞭解如何在小組內建立實驗室服務排程。
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 5578a2f63a4d6f58998a54560299a4356ed65997
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 202b202f99868875a51d13e95fbcac677246cc05
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946622"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042332"
 ---
 # <a name="create-and-manage-lab-services-schedules-within-teams"></a>在小組內建立及管理實驗室服務排程
 
@@ -23,39 +23,9 @@ ms.locfileid: "91946622"
 > [!IMPORTANT]
 > VM 的排程執行時間不會計入分配給使用者的配額中。 該配額用於學生在排程時間以外花費於 VM 上的時間。 
 
-## <a name="createeditdelete-a-schedule-for-the-lab"></a>建立/編輯/刪除實驗室的排程
-
-建立實驗室的排程事件，讓實驗室中的 VM 在特定時間自動啟動/停止。 您稍早指定的使用者配額，便是會在此排程時間以外指派給每位使用者的額外時間。 
-
-1. 切換至 [排程 **] 頁面，** 然後選取工具列上的 [ **加入排程事件** ] (視窗) 的左上角。 
-1. 為排程設定下列參數：
-    1. 確認已為 [事件類型] 選取 [標準]。 您可以選取 [僅啟動]****，以便僅指定 VM 的啟動時間。 您可以選取 [僅停止]****，以便僅指定 VM 的停止時間。 
-    1. 指定 [啟動日期]****。
-    1. 指定您想要讓 VM 啟動的 [啟動時間]****。
-    1. 指定要關閉 VM 的 [停止時間]****。 
-    1. 針對您指定的啟動和停止時間指定 [時區]****。 
-    1. 在 [ **重複** ] 區段中，選取 [ **每週** ] 或 [ **永不**]。 
-    1. 如需 **備註 (選擇性) **，請輸入排程的描述或附注。 
-1. 按一下 **[儲存]** 。 
-
-### <a name="view-schedules-in-calendar"></a>檢視行事曆中的排程
-
-您可以在行事曆中看到已排程的日期和時間。 選取右上角的 [今天]**** 按鈕，可在行事曆中切換至目前的日期。 選取 [向左箭號]**** 可在行事曆中切換至上一週，[向右箭號]**** 則會切換至下一週。 
-
-### <a name="edit-a-schedule"></a>編輯排程
-
-當您在行事曆中選取反白顯示的排程時，您會看到 **編輯** 或 **刪除** 排程的按鈕。 
-
-在 [ **編輯排程事件** ] 頁面上，您可以更新排程，然後選取 [ **儲存**]。 
-
-### <a name="delete-a-schedule"></a>刪除排程
-
-1. 若要刪除排程，請在行事曆中選取反白顯示的排程，然後選取 [回收站] 圖示 (刪除]) 按鈕：
-1. 在 [ **刪除排程事件** ] 對話方塊中，選取 [ **是]** 確認刪除。 
+使用者可以建立、編輯和刪除小組內的實驗室排程，就像在 [實驗室網站](https://labs.azure.com)一樣。 請參閱有關 [建立和管理](how-to-create-schedules-within-teams.md)排程的文章。
 
 ## <a name="automatic-shutdown-and-disconnect-settings"></a>自動關機與中斷連線設定
-
-在頁面頂端，您會看到 **自動關機** 設定的連結。
 
 您可以啟用數個自動關機成本控制功能，以在虛擬機器未主動使用時主動預防額外的成本。 下列三個自動關機和中斷連線功能的組合，會攔截使用者不小心讓虛擬機器執行的大部分情況：
  
@@ -63,14 +33,14 @@ ms.locfileid: "91946622"
 - 當使用者中斷連線時，自動關閉虛擬機器。
 - 自動關閉已啟動但使用者未連接的虛擬機器。
 
-如需詳細資訊，請按一下 [設定] 中 [選項] 旁的 *資訊* 圖示。
+如需詳細資訊，請參閱 [設定實驗室自動關機設定](how-to-enable-shutdown-disconnect.md)的相關文章。
 
 ## <a name="next-steps"></a>後續步驟
 
 查看下列文章：
 
 - [在小組內使用 Azure 實驗室服務總覽](lab-services-within-teams-overview.md)
-- [開始使用並從小組建立實驗室服務實驗室](how-to-get-started-create-lab-within-teams.md)
-- [從小組管理實驗室服務使用者清單](how-to-manage-user-lists-within-teams.md)
-- [從小組管理實驗室服務中的 VM 集區](how-to-manage-vm-pool-within-teams.md)
-- [從小組存取實驗室服務中的 VM (student view) ](how-to-access-vm-for-students-within-teams.md)
+- [開始使用並在小組內建立實驗室](how-to-get-started-create-lab-within-teams.md)
+- [管理小組內的實驗室使用者清單](how-to-manage-user-lists-within-teams.md)
+- [管理小組內實驗室的 VM 集區](how-to-manage-vm-pool-within-teams.md)
+- [存取小組內的 VM –學生版視圖](how-to-access-vm-for-students-within-teams.md)

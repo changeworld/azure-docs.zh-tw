@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613385"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042842"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 隨插即用數位 twins
 
-IoT 隨插即用支援 **取得數位** 對應項和 **更新數位** 對應項作業，以管理數位 twins。 您可以使用 [REST api](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) 或其中一個 [服務 sdk](libraries-sdks.md)。
+IoT 隨插即用支援 **取得數位** 對應項和 **更新數位** 對應項作業，以管理數位 twins。 您可以使用 [REST api](/rest/api/iothub/service/digitaltwin) 或其中一個 [服務 sdk](libraries-sdks.md)。
 
 在撰寫本文時，數位對應項 API 版本是 `2020-09-30` 。
 
@@ -194,5 +194,5 @@ IoT 隨插即用裝置會執行 [數位 Twins 定義語言 v2 ](https://github.c
 現在您已瞭解數位 twins，以下是一些額外的資源：
 
 - [從您的解決方案與裝置互動](quickstart-service-node.md)
-- [IoT 數位對應項 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT 數位對應項 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 總管](howto-use-iot-explorer.md)

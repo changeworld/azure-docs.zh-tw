@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270435"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044066"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 中的查閱活動
 
@@ -31,7 +31,7 @@ ms.locfileid: "91270435"
 
 查閱活動支援下列資料來源。 
 
-查閱活動最多可傳回5000個數據列;如果結果集包含更多記錄，則會傳回前5000個數據列。 查閱活動輸出所支援的大小上限為 4 MB，如果大小超過限制，活動將會失敗。 目前，查閱活動在逾時之前的最長持續時間為一小時。
+查閱活動最多可傳回5000個數據列;如果結果集包含更多記錄，則會傳回前5000個數據列。 查閱活動輸出所支援的大小上限為 4 MB，如果大小超過限制，活動將會失敗。 目前，查閱活動在 timeout 之前的最長持續時間為24小時。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 

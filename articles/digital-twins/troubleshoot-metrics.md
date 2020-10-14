@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db4383526874c98f717c5f166b296d814724184a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322626"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044629"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -70,7 +70,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations |  (預覽) 的計費 API 作業 | Count | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | 計量識別碼 |
 | BillingMessagesProcessed |  (預覽) 處理的帳單訊息 | Count | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。<br><br>若要將帳單視為單一訊息，承載必須不超過 1 KB。 大於此的承載會以 1 KB 的遞增量計算為額外訊息 (因此1到 2 KB 之間的訊息將會計算為2則訊息，介於2到 3 KB 之間將會是3則訊息，依此類推) 。<br>這項限制也適用于回應，因此在回應本文中傳回 1.5 KB 的呼叫將會以2個作業計費。 | 計量識別碼 |
-| BillingQueryUnits | 帳單查詢單位 (預覽)  | Count | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | 計量識別碼 |
+| BillingQueryUnits | 帳單查詢單位 (預覽)  | Count | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | 計量識別碼 |
 
 #### <a name="ingress-metrics"></a>輸入計量
 

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c78cfd2a453a082ce3f352504719a7fb8cc2b8ec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875949"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044100"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -102,7 +102,7 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 
 獨立定價層上的使用量會依內嵌資料量計費。 它會在 **Log Analytics** 服務中報告，且計量會命名為「資料分析」。 
 
-「每一節點」定價層會以小時為單位來針對每一已監視 VM (節點) 收費。 針對每個已監視的節點，工作區每天可獲得 500 MB 資料的配置量，這部分的使用量不會計費。 此配置會在工作區層級彙總。 高於每日資料配置彙總量的擷取資料則會在資料超額時按 GB 計費。 請注意，如果工作區位於「每一節點」定價層，則 Log Analytics 使用量的服務在帳單上會是**深入解析與分析**。 使用量會以三個計量回報：
+「每一節點」定價層會以小時為單位來針對每一已監視 VM (節點) 收費。 針對每個已監視的節點，工作區每天可獲得 500 MB 資料的配置量，這部分的使用量不會計費。 此配置是以每小時的資料細微性計算，並在每天的工作區層級進行匯總。 高於每日資料配置彙總量的擷取資料則會在資料超額時按 GB 計費。 請注意，如果工作區位於「每一節點」定價層，則 Log Analytics 使用量的服務在帳單上會是**深入解析與分析**。 使用量會以三個計量回報：
 
 1. 節點：這是受監視節點數目的使用量， (Vm) 單位為節點 * 月數。
 2. 每個節點的資料超額：這是內嵌超過匯總資料配置的資料 GB 數目。
@@ -125,6 +125,10 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 
 > [!NOTE]
 > 若要使用來自購買 OMS E1套件、OMS E2 套件或 OMS Add-On for System Center 的權利，請選擇 Log Analytics [每個節點] 定價層。
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics 和安全性中心
+
+[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/) 計費與 Log Analytics 計費密切相關。 資訊安全中心會針對一組 [安全性資料類型](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) （ (Windowsevent 進行篩選、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火牆、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) 和 Update 和 UpdateSummary 資料類型），提供 500 MB/節點/天的配置，但不會在工作區上執行更新管理解決方案或啟用目標解決方案。 如果工作區處於舊版的每個節點定價層，則會結合安全性中心和 Log Analytics 配置，並將其套用至所有可計費的內嵌資料。  
 
 ## <a name="change-the-data-retention-period"></a>變更資料保留期
 
@@ -284,6 +288,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>依每個節點的舊版計費的節點定價層
+
+[舊版的每個節點定價層](#legacy-pricing-tiers)會針對具有每小時資料細微性的節點計費，而且也不會計算只傳送一組安全性資料類型的節點。 每日節點的計數會接近下列查詢：
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+帳單上的單位數目是以節點 * 月數為單位，以 `billableNodeMonthsPerDay` 查詢表示。 如果工作區已安裝更新管理方案，請將 Update 和 UpdateSummary 資料類型加入至上述查詢中 where 子句的清單。 最後，當使用未在上述查詢中表示的方案目標時，實際的計費演算法會有一些額外的複雜性。 
+
+
 > [!TIP]
 > 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型 (請參閱下文)。
 
@@ -338,7 +360,7 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000 by Solution, DataType
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
 | sort by Solution asc, DataType asc
 ```
 

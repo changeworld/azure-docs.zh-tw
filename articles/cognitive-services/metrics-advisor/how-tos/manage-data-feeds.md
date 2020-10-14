@@ -3,19 +3,19 @@ title: 管理計量審查程式中的資料摘要
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何管理您已新增至計量審查程式的資料摘要。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: aahi
-ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933984"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043165"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>如何：管理您的資料摘要
 

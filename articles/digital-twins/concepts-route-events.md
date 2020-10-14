@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541351"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044287"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -21,7 +21,7 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
 在預覽期間，傳送 Azure 數位 Twins 資料有兩種主要案例：
 * 將資料從 Azure 數位 Twins 圖形中的一個對應項傳送到另一個對應項。 例如，當某個數位對應項上的屬性變更時，您可能會想要通知並據此更新另一個數位對應項。
 * 將資料傳送至下游資料服務以進行額外的儲存或處理 (也稱為 *資料* 輸出) 。 例如，
-  - 醫院可能會想要將 Azure 數位 Twins 事件資料傳送到 [時間序列深入解析 (TSI) ](../time-series-insights/time-series-insights-update-overview.md)，以記錄大量分析之 handwashing 相關事件的時間序列資料。
+  - 醫院可能會想要將 Azure 數位 Twins 事件資料傳送到 [時間序列深入解析 (TSI) ](../time-series-insights/overview-what-is-tsi.md)，以記錄大量分析之 handwashing 相關事件的時間序列資料。
   - 已在使用 [Azure 地圖服務](../azure-maps/about-azure-maps.md) 的企業可能會想要使用 Azure 數位 Twins 來增強其解決方案。 他們可以在設定 Azure 數位 Twins 之後快速啟用 Azure 地圖、將 Azure 地圖實體納入 Azure 數位 Twins 作為對應項圖形中的 [數位 Twins](concepts-twins-graph.md) ，或是利用其 Azure 地圖服務和 Azure 數位 Twins 資料來執行功能強大的查詢。
 
 這兩種情況都會使用事件路由。

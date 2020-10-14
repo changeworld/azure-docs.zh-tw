@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 118b02ab694d27dbe4e13cbfa1a617a56b052772
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015016"
+ms.locfileid: "92043063"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>整合 Azure 數位 Twins 與其他服務
 
@@ -20,7 +20,7 @@ Azure 數位 Twins 通常會與其他服務搭配使用，以建立有彈性、�
 
 使用 [**事件路由**](concepts-route-events.md)，Azure 數位 Twins 可以從上游服務（例如 [IoT 中樞](../iot-hub/about-iot-hub.md) 或 [Logic Apps](../logic-apps/logic-apps-overview.md)）接收資料，以用來傳遞遙測和通知。 
 
-Azure 數位 Twins 也可以將資料路由傳送至下游服務，例如 [Azure 地圖服務](../azure-maps/about-azure-maps.md) 和 [時間序列深入](../time-series-insights/time-series-insights-update-overview.md)解析，以便進行儲存體、工作流程整合、分析等等。 
+Azure 數位 Twins 也可以將資料路由傳送至下游服務，例如 [Azure 地圖服務](../azure-maps/about-azure-maps.md) 和 [時間序列深入](../time-series-insights/overview-what-is-tsi.md)解析，以便進行儲存體、工作流程整合、分析等等。 
 
 ## <a name="data-ingress"></a>資料輸入
 
@@ -41,7 +41,7 @@ Azure 數位 Twins 可將資料傳送至連線的 **端點**。 支援的端點�
 
 端點會使用管理 Api 或 Azure 入口網站連接至 Azure 數位 Twins。 深入瞭解如何在 how [*to：管理端點和路由*](how-to-manage-routes-apis-cli.md)中，將端點附加至 Azure 數位 Twins。
 
-還有許多其他服務，您可能會想要最終將資料導向，例如 [Azure 儲存體](../storage/common/storage-introduction.md)、 [Azure 地圖服務](../azure-maps/about-azure-maps.md)或 [時間序列深入](../time-series-insights/time-series-insights-update-overview.md)解析。 若要將您的資料傳送給這類服務，請將目的地服務附加至端點。
+還有許多其他服務，您可能會想要最終將資料導向，例如 [Azure 儲存體](../storage/common/storage-introduction.md)、 [Azure 地圖服務](../azure-maps/about-azure-maps.md)或 [時間序列深入](../time-series-insights/overview-what-is-tsi.md)解析。 若要將您的資料傳送給這類服務，請將目的地服務附加至端點。
 
 例如，如果您也使用 Azure 地圖服務，並且想要讓位置與您的 Azure 數位 Twins 對應項 [圖形](concepts-twins-graph.md)相互關聯，您可以使用 Azure Functions 搭配事件方格，在部署中的所有服務之間建立通訊。 深入瞭解 how [ *To：使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖*](how-to-integrate-maps.md)
 

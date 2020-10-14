@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629823"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048452"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -154,7 +154,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `en-CA` | 英文 (加拿大)  | Female | `en-CA-ClaraNeural` | 一般 |
 | `en-GB` | 英文 (英國)  | Female | `en-GB-LibbyNeural` | 一般 |
 | `en-GB` | 英文 (英國)  | Female | `en-GB-MiaNeural` | 一般 |
-| `en-GB` <sup>新增</sup> | 英文 (英國) | Male | `En-GB-RyanNeural` | 一般 |
+| `en-GB` <sup>新增</sup> | 英文 (英國) | Male | `en-GB-RyanNeural` | 一般 |
 | `en-IE` <sup>新增</sup> | 愛爾蘭英文 (愛爾蘭)  | Female | `en-IE-EmilyNeural` | 一般 |
 | `en-IN` | 英文 (印度)  | Female | `en-IN-NeerjaNeural` | 一般 |
 | `en-US` | 美國英語 ()  | Female | `en-US-AriaNeural` | 一般，提供多種語音樣式 |

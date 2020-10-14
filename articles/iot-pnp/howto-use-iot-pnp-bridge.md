@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613470"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042791"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>如何將在 Linux 或 Windows 上執行的 IoT 隨插即用 bridge 範例連線到 IoT 中樞
 
@@ -48,7 +48,7 @@ gcc --version
 
 若要在 Windows 上完成本快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 
@@ -149,7 +149,7 @@ git submodule update --init --recursive
 
 流覽至存放庫目錄中的 *pnpbridge* 資料夾。
 
-若為 Windows，請在 [Visual Studio 的開發人員命令提示字元](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)中執行下列程式：
+若為 Windows，請在 [Visual Studio 的開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)中執行下列程式：
 
 ```cmd
 cd scripts\windows

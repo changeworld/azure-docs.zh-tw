@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296972"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044219"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虛擬機器上執行 Azure IoT Edge
 
@@ -50,7 +50,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
     系統**管理員使用者名稱**：使用者名稱，將會在部署時提供根許可權。
 
-    **裝置連接字串**：在您預定的[IoT 中樞](../iot-hub/about-iot-hub.md)內建立之裝置的[裝置連接字串](how-to-register-device.md)。
+    **裝置連接字串**：在您預定的[IoT 中樞](../iot-hub/about-iot-hub.md)內建立之裝置的[裝置連接字串](./how-to-manual-provision-symmetric-key.md)。
 
     **VM 大小**：要部署的虛擬機器[大小](../cloud-services/cloud-services-sizes-specs.md)
 

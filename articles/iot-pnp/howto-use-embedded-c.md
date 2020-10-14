@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610070"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042808"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>在受限制的裝置上執行 IoT 隨插即用
 
-如果您要針對 *受限制的裝置*進行開發，您可以搭配使用 IoT 隨插即用與 [適用于內嵌 C IoT 用戶端程式庫](https://aka.ms/embeddedcsdk) 或 [azure rto](https://docs.microsoft.com/azure/rtos/overview-rtos)的 azure SDK。 本文包含這些受限案例的連結和資源。
+如果您要針對 *受限制的裝置*進行開發，您可以搭配使用 IoT 隨插即用與 [適用于內嵌 C IoT 用戶端程式庫](https://aka.ms/embeddedcsdk) 或 [azure rto](/azure/rtos/overview-rtos)的 azure SDK。 本文包含這些受限案例的連結和資源。
 
 ## <a name="use-the-sdk-for-embedded-c"></a>使用適用于 Embedded C 的 SDK
 
@@ -39,7 +39,7 @@ ms.locfileid: "91610070"
 
 ## <a name="using-azure-rtos"></a>使用 Azure RTO
 
-Azure RTO 包含可將原生連線能力新增至 Azure IoT 雲端服務的輕量層。 這一層提供簡單的機制，可讓您在使用 Azure RTO 的 advanced 功能時，將受限的裝置連線至 Azure IoT。 若要深入瞭解，請參閱「 [什麼是 MICROSOFT AZURE rto](https://docs.microsoft.com/azure/rtos/overview-rtos)」。
+Azure RTO 包含可將原生連線能力新增至 Azure IoT 雲端服務的輕量層。 這一層提供簡單的機制，可讓您在使用 Azure RTO 的 advanced 功能時，將受限的裝置連線至 Azure IoT。 若要深入瞭解，請參閱「 [什麼是 MICROSOFT AZURE rto](/azure/rtos/overview-rtos)」。
 
 ### <a name="toolchains"></a>工具鏈
 

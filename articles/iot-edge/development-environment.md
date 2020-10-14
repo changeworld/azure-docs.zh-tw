@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300369"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044151"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>準備 IoT Edge 適用的開發和測試環境
 
@@ -49,7 +49,7 @@ Visual Studio Code 的 Azure IoT Edge 擴充功能提供針對程式設計語言
 
 除了 IoT Edge 擴充功能之外，您可能也會發現它在安裝用於開發的其他擴充功能時很有幫助。 例如，您可以使用[適用於 Visual Studio Code 的 Docker 支援](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)來管理映像、容器和登錄。 此外，所有主要支援的語言都有適用於 Visual Studio Code 的擴充功能，可在您開發模組時提供協助。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>先決條件
 
 某些語言和服務的模組範本具備使用 Visual Studio Code 在開發電腦上建置專案資料夾所需的必要條件。
 
@@ -58,7 +58,7 @@ Visual Studio Code 的 Azure IoT Edge 擴充功能提供針對程式設計語言
 | Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
-| Java | <ul><li>[Java SE 開發套件 10](https://aka.ms/azure-jdks) <li> [設定 JAVA_HOME 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
+| Java | <ul><li>[Java SE 開發套件 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [設定 JAVA_HOME 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js 模組產生器](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 

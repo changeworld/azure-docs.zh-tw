@@ -3,22 +3,33 @@ title: 開始使用並建立小組的 Azure 實驗室服務實驗室
 description: 瞭解如何開始使用並建立小組的 Azure 實驗室服務實驗室。
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: b585196fe61a09697cfa203aaa33f08afae2b427
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0604e2934ff6b011acfa9dd4a4b25fa58193e69b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946620"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044440"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-from-teams"></a>開始使用並從小組建立實驗室服務實驗室
 
-本文說明如何將 Azure 實驗室服務應用程式新增至小組。 然後，如何從小組建立實驗室。
+本文說明如何將 **Azure 實驗室服務** 應用程式新增至小組，以及如何在 MS 小組環境中建立實驗室。
 
-## <a name="add-a-lab-services-app-to-teams"></a>將實驗室服務應用程式新增至小組
+## <a name="prerequisites"></a>先決條件
 
-您可以直接在小組頻道中新增實驗室服務，然後讓小組中的每個人都能使用此應用程式。 遵循下列三個步驟：
+在本教學課程中，您會為您的小組設定具有虛擬機器的實驗室。 若要在實驗室帳戶中設定實驗室，您必須是實驗室帳戶中其中一個角色的成員：擁有者、實驗室建立者或參與者。 您用來建立實驗室帳戶的帳戶會自動新增至擁有者角色。 因此，您可以使用您用來建立實驗室帳戶的使用者帳戶來建立實驗室。
 
-1. 流覽至您想要新增應用程式的小組頻道，然後 **+** 按一下 [...]，以選取要新增索引標籤。從右邊視窗的頂端。 
+以下是在小組內使用 Azure 實驗室服務時的一般工作流程
+
+1. 使用者會在 Azure 入口網站上 [建立實驗室帳戶](tutorial-setup-lab-account.md#create-a-lab-account) 。
+1. [實驗室帳戶建立者會將其他使用者新增](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)至**實驗室建立者**角色。 例如，實驗室帳戶建立者/管理員將教師新增至**實驗室建立者**角色，讓這些教師可為其課程建立實驗室。
+1. 然後，教育工作者建立實驗室、預先設定範本 VM，然後發佈實驗室，將 VM 布建到小組的每個人。
+1. 一旦發佈實驗室後，就會在第一次登入 Azure 實驗室服務時，將 VM 指派給小組成員資格清單上的每個人，方法是按一下包含小組內的 **Azure Lab services** 應用程式的索引標籤 (SSO) 或存取 [labs 網站](https://labs.azure.com)。 然後，使用者可以使用 VM 來執行類別工作和作業。
+
+## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>將 Azure 實驗室服務應用程式新增為小組的索引標籤
+
+您（小組擁有者）可以直接在您的小組頻道中新增 **Azure 實驗室服務** 應用程式，而該應用程式可供小組中的每個人使用。 遵循下列三個步驟：
+
+1. 流覽至您想要在其中新增應用程式的 [小組] 頻道，然後選取以新增索引標籤 **+** 。 
 1. 從 [索引標籤選項] 搜尋 **Azure 實驗室服務** ，然後新增此應用程式。 
 
     > [!NOTE]
@@ -30,33 +41,11 @@ ms.locfileid: "91946620"
     系統會顯示與小組位於相同租使用者中的帳戶，以及您 **擁有擁有**者、 **參與者**或建立 **者** 存取權的帳戶。 
 
    ![歡迎使用 ALS](./media/integrate-with-teams/welcome.png) 
-1. 按下 [ **儲存** ]，然後將應用程式加入至 [小組]，然後將索引標籤新增至通道。 
+1. 按下 [ **儲存** ]，然後將索引標籤新增至通道。
 
     現在您可以從通道中選取 [ **Azure 實驗室服務** ] 索引標籤，然後開始管理實驗室，如下列步驟所述。
 
-    一旦有小組成員新增索引標籤，該索引標籤就會對通道中的每個人顯示。 任何具有此應用程式存取權的使用者均可透過其用於 Microsoft Teams 的認證來取得單一登入存取。 任何不具此應用程式存取權的使用者會在 Teams 中看到此索引標籤，但是在您提供內部部署應用程式和應用程式之 Azure 入口網站發佈版本的權限以前，都會遭到封鎖。
-
-## <a name="create-a-classroom-lab"></a>建立教室實驗室
-
 選取實驗室帳戶之後，小組擁有者將能夠為小組建立實驗室。 整個實驗室建立程式和實驗室層級的所有工作都可在小組內執行。 使用者可以選擇在相同的小組內建立多個實驗室，而小組擁有者在實驗室帳戶層級具有適當的存取權，只會看到與特定小組相關聯的實驗室。
-
-## <a name="giving-access-to-users-of-the-lab-account"></a>為實驗室帳戶的使用者提供存取權
-
-您必須在 [Azure](https://ms.portal.azure.com/) 入口網站中，對實驗室帳戶層級的使用者提供存取權。
-
-1. 在 Azure 入口網站中，流覽至您的 Azure 實驗室服務帳戶。 
-1. 在 [實驗室帳戶] 頁面上，選取 [存取控制 (IAM)]，選取工具列上的 [+新增]，然後選取工具列上的 [+新增角色指派]。 
-
-    ![[存取控制] -> [新增角色指派] 按鈕](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. 在 [新增角色指派] 頁面上，針對 [角色] 選取 [實驗室建立者]，選取您要新增到實驗室建立者角色的使用者，然後選取 [儲存]。 
-
-    ![新增實驗室建立者](./media/tutorial-setup-lab-account/add-lab-creator.png)
-
-### <a name="creating-classroom-labs"></a>建立教室實驗室
-
-無論您是從小組或 [實驗室服務網站](https://labs.azure.com)建立實驗室，課堂實驗室建立程式都一樣。 
-
-如需有關設定此文章的詳細資訊，請參閱實驗室建立流程： [管理 Azure 實驗室服務中的教室實驗室](how-to-manage-classroom-labs.md)。
 
 ## <a name="deleting-classroom-labs"></a>正在刪除教室實驗室
 
@@ -77,7 +66,8 @@ ms.locfileid: "91946620"
 另請參閱下列文章：
 
 - [在小組內使用 Azure 實驗室服務總覽](lab-services-within-teams-overview.md)
-- [從小組管理實驗室服務中的 VM 集區](how-to-manage-vm-pool-within-teams.md)
-- [從小組建立實驗室服務排程](how-to-create-schedules-within-teams.md)
-- [從小組存取實驗室服務中的 VM (student view) ](how-to-access-vm-for-students-within-teams.md)
+- [管理小組內的實驗室使用者清單](how-to-manage-user-lists-within-teams.md)
+- [管理小組內實驗室的 VM 集區](how-to-manage-vm-pool-within-teams.md)
+- [建立及管理小組內的實驗室排程](how-to-create-schedules-within-teams.md)
+- [存取小組內的 VM –學生版視圖](how-to-access-vm-for-students-within-teams.md)
 

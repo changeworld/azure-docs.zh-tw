@@ -9,16 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dc059cae927c1aaa057080172313f5720f483bdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972572"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043811"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大規模部署 IoT Edge 模組
 
-您可以使用 Visual Studio Code 來建立 **IoT Edge 的自動部署** ，以同時管理許多裝置的進行中部署。 IoT Edge 的自動部署是 IoT 中樞[自動裝置管理](/azure/iot-hub/iot-hub-automatic-device-management)功能的一部分。 部署是動態程式，可讓您將多個模組部署至多個裝置。 您也可以追蹤模組的狀態和健全狀況，並在必要時進行變更。
+您可以使用 Visual Studio Code 來建立 **IoT Edge 的自動部署** ，以同時管理許多裝置的進行中部署。 IoT Edge 的自動部署是 IoT 中樞[自動裝置管理](../iot-hub/iot-hub-automatic-device-management.md)功能的一部分。 部署是動態程式，可讓您將多個模組部署至多個裝置。 您也可以追蹤模組的狀態和健全狀況，並在必要時進行變更。
 
 如需詳細資訊，請參閱[了解單一裝置或大規模的 IoT Edge 自動部署](module-deployment-monitoring.md)。
 
@@ -60,13 +60,16 @@ ms.locfileid: "91972572"
 
 下面以具有一個模組的基本部署資訊清單為例：
 
+>[!NOTE]
+>此範例部署資訊清單會使用 IoT Edge 代理程式和中樞的架構1.1 版。 架構版本1.1 與 IoT Edge 1.0.10 版本一起發行，並啟用模組啟動順序和路由優先順序等功能。
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -95,7 +98,7 @@ ms.locfileid: "91972572"
           },
           "modules": {
             "SimulatedTemperatureSensor": {
-              "version": "1.0",
+              "version": "1.1",
               "type": "docker",
               "status": "running",
               "restartPolicy": "always",

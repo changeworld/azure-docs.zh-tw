@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949610"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048435"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖形
 
@@ -247,7 +247,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 | 房間    | Room21 | Floor02 | contains | … |
 | 房間    | Room22 | Floor02 | contains | … |
 
-下列程式碼會使用 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/overview) 來讀取試算表，並從結果中建立 Azure 數位 Twins 對應項圖形。
+下列程式碼會使用 [MICROSOFT GRAPH API](/graph/overview) 來讀取試算表，並從結果中建立 Azure 數位 Twins 對應項圖形。
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;

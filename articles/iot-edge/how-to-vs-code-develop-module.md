@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296904"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043726"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 來開發適用於 Azure IoT Edge 的模組，並對其進行偵錯
 
@@ -51,13 +51,13 @@ ms.locfileid: "91296904"
 
 - Node.js： [Node.js](https://nodejs.org)。 您也要安裝 [Yeoman](https://www.npmjs.com/package/yo) 和 [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module)。
 
-- JAVA： [JAVA SE 開發套件 10](https://aka.ms/azure-jdks) 和 [Maven](https://maven.apache.org/)。 您必須[設定 `JAVA_HOME` 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)指向 JDK 安裝。
+- JAVA： [JAVA SE 開發套件 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) 和 [Maven](https://maven.apache.org/)。 您必須[設定 `JAVA_HOME` 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)指向 JDK 安裝。
 
 若要建立及部署您的模組映射，您需要 Docker 來建立模組映射和容器登錄來保存模組映射：
 
 - 開發電腦上的[Docker 社區版](https://docs.docker.com/install/)。
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) 或 [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](../container-registry/index.yml) 或 [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > 您可以使用本機 Docker 登錄作為原型並用於測試，而非使用雲端登錄。

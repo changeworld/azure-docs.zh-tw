@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 24f9b7655398cbd6a2621edb61d67d4fc4edfb52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a916da121c8ffee1729ede6dd700ca4f6872fbf7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332027"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043488"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Google Cloud Storage 複製資料
 
@@ -47,7 +47,11 @@ ms.locfileid: "91332027"
 
 ## <a name="required-permissions"></a>所需的權限
 
-若要從 Google Cloud Storage 複製資料，請確定您已獲得所需的權限。 服務帳戶中定義的許可權可能包含 `storage.buckets.get` `storage.buckets.list` 物件作業的、或 `storage.objects.get` 。
+若要從 Google Cloud Storage 複製資料，請確定您已獲得下列物件作業的許可權： ` storage.objects.get` 和 ` storage.objects.list` 。
+
+如果您使用 Data Factory UI 來撰寫， ` storage.buckets.list` 則作業需要額外的許可權，例如測試與連結服務的連接，以及從根流覽。 如果您不想要授與此許可權，您可以從 UI 選擇 [測試與檔案路徑的連接] 或 [從指定的路徑流覽] 選項。
+
+如需 Google Cloud Storage 角色和相關許可權的完整清單，請參閱 Google Cloud 網站上 [雲端儲存體的 IAM 角色](https://cloud.google.com/storage/docs/access-control/iam-roles) 。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -67,7 +71,7 @@ ms.locfileid: "91332027"
 | serviceUrl | 將自訂 S3 端點指定為 `https://storage.googleapis.com` 。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
-以下為範例：
+以下是範例：
 
 ```json
 {
@@ -143,7 +147,7 @@ ms.locfileid: "91332027"
 | 屬性                 | 描述                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **GoogleCloudStorageReadSettings**。 | 是                                                         |
-| 找到要複製的檔案： |  |  |
+| 尋找要複製的檔案： |  |  |
 | 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製值區或資料夾中的所有檔案，請另外指定 `wildcardFileName` as `*` 。 |  |
 | 選項 2：GCS 前置詞<br>- 前置詞 | 在資料集中設定的指定值區下，GC 金鑰名稱的前置詞，以篩選來源 GC 檔案。 系統會選取其名稱開頭為的 GC 金鑰 `bucket_in_dataset/this_prefix` 。 它會利用 GC 的服務端篩選器，提供比萬用字元篩選器更好的效能。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定值區下，具有萬用字元的資料夾路徑，可篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |

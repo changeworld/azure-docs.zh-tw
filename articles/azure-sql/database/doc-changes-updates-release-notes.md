@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 3950cc16cd8661ee4e509cf14d12f561cb29c4ea
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940700"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043386"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 | 功能 | 詳細資料 |
 | ---| --- |
+| <a href="/azure/azure-sql/database/elastic-transactions-overview">分散式交易</a> | 受控實例之間的分散式交易。 |
 | <a href="/azure/sql-database/sql-database-instance-pools">執行個體集區</a> | 方便且符合成本效益的方式，將較小的 SQL 實例遷移至雲端。 |
 | <a href="https://aka.ms/managed-instance-aadlogins">實例層級 Azure AD 伺服器主體 (登入) </a> | 使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 語句來建立實例層級的登入。 |
 | [異動複寫](../managed-instance/replication-transactional-overview.md) | 將資料表中的變更複寫到 SQL 受控執行個體、SQL Database 或 SQL Server 中的其他資料庫。 或在 SQL 受控執行個體或 SQL Server 的其他實例中變更部分資料列時，更新您的資料表。 如需詳細資訊，請參閱 [在 AZURE SQL 受控執行個體中設定](../managed-instance/replication-between-two-instances-configure-tutorial.md)複寫。 |

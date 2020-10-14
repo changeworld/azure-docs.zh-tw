@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167397"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048401"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>設定 IoT Edge 裝置作為透明閘道
 
@@ -36,7 +36,7 @@ ms.locfileid: "88167397"
 
 若要讓裝置作為閘道，則必須安全地連接到其下游裝置。 Azure IoT Edge 可讓您使用公開金鑰基礎結構 (PKI)，設定這些裝置之間的安全連線。 在此情況下，我們將允許下游裝置連線至作為透明閘道的 IoT Edge 裝置。 為了維持合理的安全性，下游裝置應確認閘道裝置的身分識別。 此身分識別檢查可防止您的裝置連線至可能是惡意的閘道。
 
-下游裝置可以是使用 [Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub)雲端服務建立身分識別的任何應用程式或平台。 這些應用程式通常會使用 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游裝置甚至可以是在 IoT Edge 閘道裝置上執行的應用程式。 不過，IoT Edge 的裝置不能是 IoT Edge 閘道的下游。
+下游裝置可以是使用 [Azure IoT 中樞](../iot-hub/index.yml)雲端服務建立身分識別的任何應用程式或平台。 這些應用程式通常會使用 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游裝置甚至可以是在 IoT Edge 閘道裝置上執行的應用程式。 不過，IoT Edge 的裝置不能是 IoT Edge 閘道的下游。
 
 您可以建立任何憑證基礎結構，來啟用裝置閘道拓撲所需的信任。 在本文中，我們假設您要用來在 IoT 中樞啟用 [X.509 ca 安全性](../iot-hub/iot-hub-x509ca-overview.md) 的相同憑證設定，包括與特定 iot 中樞相關聯的 x.509 CA 憑證 (iot 中樞根 CA) 、一系列使用此 CA 簽署的憑證，以及 IoT Edge 裝置的 ca。
 
@@ -45,7 +45,7 @@ ms.locfileid: "88167397"
 
 下列步驟將逐步引導您建立憑證，並將其安裝在閘道上的適當位置。 您可以使用任何電腦產生憑證，然後再將其複製到您的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 已安裝 IoT Edge 的 Linux 或 Windows 裝置。
 
@@ -117,7 +117,7 @@ ms.locfileid: "88167397"
 
 5. 選取 **[下一步：路由]**。
 
-6. 在 [ **路由** ] 頁面上，確定有路由可處理來自下游裝置的訊息。 例如：
+6. 在 [ **路由** ] 頁面上，確定有路由可處理來自下游裝置的訊息。 例如︰
 
    * 從模組或下游裝置將所有訊息傳送至 IoT 中樞的路由：
        * **名稱**：`allMessagesToHub`

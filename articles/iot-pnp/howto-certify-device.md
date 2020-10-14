@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577640"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042961"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
 IoT 隨插即用裝置認證方案所包含的工具，可檢查裝置是否符合 IoT 隨插即用認證需求。 這些工具也可協助組織為其 IoT 隨插即用裝置的可用性帶來認知。 這些認證裝置專為 IoT 解決方案量身打造，可協助縮短上市時間。
 
-本文將示範下列項目的作法：
+本文示範如何：
 
 - 安裝適用于 Azure CLI 的 Azure IoT 命令列工具擴充功能
 - 在開發階段執行 IoT 隨插即用測試以驗證您的裝置應用程式  
@@ -47,13 +47,13 @@ IoT 隨插即用裝置認證方案所包含的工具，可檢查裝置是否符�
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>使用 Azure IoT 擴充功能 CLI 進行測試
 
-[Azure IOT CLI 擴充](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true)功能可讓您在透過 Azure 認證裝置入口網站提交裝置以進行認證之前，驗證裝置的執行是否符合模型。
+[Azure IOT CLI 擴充](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest)功能可讓您在透過 Azure 認證裝置入口網站提交裝置以進行認證之前，驗證裝置的執行是否符合模型。
 
 下列步驟示範如何使用 CLI 來準備和執行認證測試：
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>安裝適用于 Azure CLI 的 Azure IoT 擴充功能
 
-請參閱安裝指示，以在您的環境中設定 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 。
+請參閱安裝指示，以在您的環境中設定 [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 。
 
 若要安裝 Azure IoT 擴充功能，請執行下列命令：
 
@@ -61,7 +61,7 @@ IoT 隨插即用裝置認證方案所包含的工具，可檢查裝置是否符�
 az extension add --name azure-iot
 ```
 
-若要深入瞭解，請參閱 [適用于 Azure IoT 的 Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true)。
+若要深入瞭解，請參閱 [適用于 Azure IoT 的 Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)。
 
 ### <a name="create-a-new-product-test"></a>建立新的產品測試
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> 當您使用 CLI 時，必須登 [入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) 您的訂用帳戶。
+> 當您使用 CLI 時，必須登 [入](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) 您的訂用帳戶。
 
 命令的 JSON 輸出包含 `primaryKey` 、 `registrationId` 和，以在 `scopeID` 您連接裝置時使用。
 

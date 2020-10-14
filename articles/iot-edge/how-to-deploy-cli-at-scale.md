@@ -5,21 +5,21 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/14/2020
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 5ad4e72f8992c8798ce17faec6c47b753c10cfc4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0a73651b11c9ca6f7cb34deb755543c3b5a6d710
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978827"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042978"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大規模部署與監視 IoT Edge 模組
 
-使用 Azure 命令列介面建立 **IoT Edge 自動部署**，一次管理許多裝置的持續部署。 IoT Edge 的自動部署是 IoT 中樞[自動裝置管理](/azure/iot-hub/iot-hub-automatic-device-management)功能的一部分。 部署是動態程序，可讓您將多個模組部署到多個裝置、追蹤模組的狀態和健康情況，並視需要進行變更。
+使用 Azure 命令列介面建立 **IoT Edge 自動部署**，一次管理許多裝置的持續部署。 IoT Edge 的自動部署是 IoT 中樞[自動裝置管理](../iot-hub/iot-hub-automatic-device-management.md)功能的一部分。 部署是動態程序，可讓您將多個模組部署到多個裝置、追蹤模組的狀態和健康情況，並視需要進行變更。
 
 如需詳細資訊，請參閱[了解單一裝置或大規模的 IoT Edge 自動部署](module-deployment-monitoring.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "91978827"
 
   如果您沒有設定 IoT Edge 裝置，可以在 Azure 虛擬機器中建立一個。 遵循其中一個快速入門文章中的步驟， [建立虛擬 Linux 裝置](quickstart-linux.md) 或 [建立虛擬 Windows 裝置](quickstart.md)。
 
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
+* 您環境中的 [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
 * [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
 
 ## <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
@@ -43,13 +43,16 @@ ms.locfileid: "91978827"
 
 下面以具有一個模組的基本部署資訊清單為例：
 
+>[!NOTE]
+>此範例部署資訊清單會使用 IoT Edge 代理程式和中樞的架構1.1 版。 架構版本1.1 與 IoT Edge 1.0.10 版本一起發行，並啟用模組啟動順序和路由優先順序等功能。
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -78,7 +81,7 @@ ms.locfileid: "91978827"
           },
           "modules": {
             "SimulatedTemperatureSensor": {
-              "version": "1.0",
+              "version": "1.1",
               "type": "docker",
               "status": "running",
               "restartPolicy": "always",

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d81d26c4cf975a20f31b4b4546c1477ed1a630e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970430"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048316"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
@@ -200,7 +200,7 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 ```azurecli 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
-最後，您可以藉由設定環境變數，讓您的 Azure 數位 Twins 實例的 URL 可供您的函式存取。 如需有關設定環境變數的詳細資訊，請參閱 [*環境變數*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。 
+最後，您可以藉由設定環境變數，讓您的 Azure 數位 Twins 實例的 URL 可供您的函式存取。 如需有關設定環境變數的詳細資訊，請參閱 [*環境變數*](/sandbox/functions-recipes/environment-variables)。 
 
 > [!TIP]
 > Azure 數位 Twins 實例的 URL 是藉由將 *HTTPs://* 新增至 Azure 數位 Twins 實例 *主機名稱*的開頭來建立。 若要查看主機名稱，以及實例的所有屬性，您可以執行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
@@ -249,7 +249,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="configure-application-settings-using-azure-portal"></a>使用 Azure 入口網站來設定應用程式設定
 
-您可以藉由設定環境變數，讓您的函式可以存取您的 Azure 數位 Twins 實例的 URL。 如需有關這個的詳細資訊，請參閱 [*環境變數*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。 應用程式設定會公開為環境變數，以存取數位 twins 實例。 
+您可以藉由設定環境變數，讓您的函式可以存取您的 Azure 數位 Twins 實例的 URL。 如需有關這個的詳細資訊，請參閱 [*環境變數*](/sandbox/functions-recipes/environment-variables)。 應用程式設定會公開為環境變數，以存取數位 twins 實例。 
 
 您將需要 ADT_INSTANCE_URL 來建立應用程式設定。
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067700"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044372"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 數位 Twins 中的查詢單位 
 
-Azure 數位 Twins**查詢單位 (QU) **是一種隨選計算單位，可用來執行使用[查詢 API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)的[Azure 數位 Twins 查詢](how-to-query-graph.md)。 
+Azure 數位 Twins**查詢單位 (QU) **是一種隨選計算單位，可用來執行使用[查詢 API](/rest/api/digital-twins/dataplane/query)的[Azure 數位 Twins 查詢](how-to-query-graph.md)。 
 
 它會將執行 Azure 數位 Twins 所支援的查詢作業所需的系統資源（例如 CPU、IOPS 和記憶體）抽象化出來，讓您可以改為追蹤查詢單位的使用量。
 
@@ -28,7 +28,7 @@ Azure 數位 Twins**查詢單位 (QU) **是一種隨選計算單位，可用來�
 
 ## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>在 Azure 數位 Twins 中尋找查詢單位耗用量 
 
-當您使用 Azure 數位 Twins [查詢 API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)執行查詢時，您可以檢查回應標頭來追蹤查詢所耗用的 QUs 數目。 在從 Azure 數位 Twins 送回的回應中尋找「查詢費用」。 
+當您使用 Azure 數位 Twins [查詢 API](/rest/api/digital-twins/dataplane/query)執行查詢時，您可以檢查回應標頭來追蹤查詢所耗用的 QUs 數目。 在從 Azure 數位 Twins 送回的回應中尋找「查詢費用」。 
 
 Azure 數位 Twins [sdk](how-to-use-apis-sdks.md) 可讓您從可分頁回應中解壓縮查詢費用標頭。 本節說明如何查詢數位 twins，以及如何反復查看可分頁回應以解壓縮查詢費用標頭。 
 
@@ -68,6 +68,6 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 若要深入瞭解如何查詢 Azure 數位 Twins，請造訪：
 * [*概念：查詢語言*](concepts-query-language.md)
 * [*How to：查詢對應項圖形*](how-to-query-graph.md)
-* [查詢 API 參考檔](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query/querytwins)
+* [查詢 API 參考檔](/rest/api/digital-twins/dataplane/query/querytwins)
 
 您可以在下列參考中找到 Azure 數位 Twins 查詢相關限制 [*：公開預覽中的服務限制*](reference-service-limits.md)。

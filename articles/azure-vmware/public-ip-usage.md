@@ -3,12 +3,12 @@ title: 如何使用虛擬 WAN 中的公用 IP 功能
 description: 本文說明如何使用 Azure 虛擬 WAN 中的公用 IP 功能。
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744775"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048299"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>如何使用 Azure 虛擬 WAN 中的公用 IP 功能
 
@@ -27,11 +27,11 @@ ms.locfileid: "91744775"
 
 本文將詳細說明如何使用虛擬 WAN 中的公用 IP 功能來使資源（例如 web 伺服器、虛擬機器 (Vm) 和主機）可透過公用網路存取。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
--   Azure VMware 解決方案環境
-
--   在 Azure VMware 解決方案環境中執行的 web 伺服器。
+- Azure VMware 解決方案環境
+- 在 Azure VMware 解決方案環境中執行的 web 伺服器。
+- 虛擬 WAN 中樞部署的新非重迭 IP 範圍，通常是 `/24` 。
 
 ## <a name="reference-architecture"></a>參考架構
 
@@ -62,15 +62,15 @@ Web 服務器會接收要求，並以要求的資訊或頁面回復至防火牆�
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="公用 IP 架構圖表" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-2.  接受預設值或加以變更，然後選取 [ **建立**]。
+1. 接受預設值或加以變更，然後選取 [ **建立**]。
 
-   -  虛擬廣域網路資源群組
+   - 虛擬廣域網路資源群組
 
-   -  虛擬廣域網路名稱
+   - 虛擬廣域網路名稱
 
-   -  虛擬中樞位址區塊
+   - 虛擬中樞位址區塊 (使用新的非重迭 IP 範圍) 
 
-   -   (1-100) 的公用 Ip 數目
+   -  (1-100) 的公用 Ip 數目
 
 需要大約一小時的時間才能完成所有元件的部署。 此部署只需要發生一次，即可支援此 Azure VMware 解決方案環境的所有未來公用 Ip。  
 

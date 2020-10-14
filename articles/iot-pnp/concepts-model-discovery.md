@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577708"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042910"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>在 IoT 解決方案中使用 IoT 隨插即用模型
 
@@ -40,10 +40,10 @@ IoT 中樞會以裝置型號識別碼通知解決方案，作為裝置連接流�
 
 ### <a name="get-device-twin-api"></a>取得裝置對應項 API
 
-解決方案可以使用 [取得裝置](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) 對應項 API 來取出 IoT 隨插即用裝置的模型識別碼。
+解決方案可以使用 [取得裝置](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) 對應項 API 來取出 IoT 隨插即用裝置的模型識別碼。
 
 > [!TIP]
-> 針對模組和 IoT Edge 模組，請使用 [ModuleClient getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true)。
+> 針對模組和 IoT Edge 模組，請使用 [ModuleClient getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable)。
 
 在下列裝置對應項回應片段中， `modelId` 包含 IoT 隨插即用裝置的模型識別碼：
 
@@ -71,7 +71,7 @@ IoT 中樞會以裝置型號識別碼通知解決方案，作為裝置連接流�
 
 ### <a name="get-digital-twin-api"></a>取得數位對應項 API
 
-解決方案可以使用「 [取得數位](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) 對應項 API」來取出 IoT 隨插即用裝置所執行之模型的模型識別碼。
+解決方案可以使用「 [取得數位](/rest/api/iothub/service/digitaltwin/getdigitaltwin) 對應項 API」來取出 IoT 隨插即用裝置所執行之模型的模型識別碼。
 
 在下列數位對應項回應程式碼片段中， `$metadata.$model` 包含 IoT 隨插即用裝置的模型識別碼：
 
@@ -121,7 +121,7 @@ content-encoding:utf-8
 
 在您識別新裝置連線的模型識別碼之後，請遵循下列步驟：
 
-1. 使用模型存放庫中的模型識別碼抓取模型定義。 如需詳細資訊，請參閱 [取得模型](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)。
+1. 使用模型存放庫中的模型識別碼抓取模型定義。 如需詳細資訊，請參閱 [取得模型](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)。
 
 1. 您可以使用連線裝置的模型定義來列舉裝置的功能。
 
@@ -144,5 +144,5 @@ content-encoding:utf-8
 現在您已瞭解如何在 IoT 解決方案中整合 IoT 隨插即用模型，接下來的一些建議步驟如下：
 
 - [從您的解決方案與裝置互動](quickstart-service-node.md)
-- [IoT 數位對應項 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT 數位對應項 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 總管](howto-use-iot-explorer.md)

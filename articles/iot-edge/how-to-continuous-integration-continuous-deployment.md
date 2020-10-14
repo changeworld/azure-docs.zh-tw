@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281621"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048520"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>持續整合和持續部署到 Azure IoT Edge 裝置
 
@@ -21,7 +21,7 @@ ms.locfileid: "91281621"
 
 ![圖表 - 開發和生產的 CI 和 CD 分支](./media/how-to-continuous-integration-continuous-deployment/model.png)
 
-在本文中，您將瞭解如何使用 Azure Pipelines 的內建 [Azure IoT Edge](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) 工作，為您的 IoT Edge 解決方案建立組建和發行管線。 每個新增至管線的 Azure IoT Edge 工作都會執行下列四個動作的其中一個：
+在本文中，您將瞭解如何使用 Azure Pipelines 的內建 [Azure IoT Edge](/azure/devops/pipelines/tasks/build/azure-iot-edge) 工作，為您的 IoT Edge 解決方案建立組建和發行管線。 每個新增至管線的 Azure IoT Edge 工作都會執行下列四個動作的其中一個：
 
  | 動作 | 描述 |
  | --- | --- |
@@ -32,25 +32,25 @@ ms.locfileid: "91281621"
 
 除非另有說明，否則本文中的程式不會探索透過工作參數提供的所有功能。 如需詳細資訊，請參閱下列：
 
-* [工作版本](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [工作版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Advanced** -如果適用，請指定您不想要建立的模組。
-* [控制項選項](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [環境變數](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [輸出變數](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [控制項選項](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [環境變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [輸出變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
-* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](how-to-visual-studio-develop-csharp-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
+* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
+* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](./how-to-visual-studio-develop-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
 
    針對本文，您只需要在 Visual Studio Code 或 Visual Studio 中由 IoT Edge 範本所建立的解決方案資料夾。 在進行之前，您並不需要針對此程式碼進行建置、推送、部署或偵錯。 您將在 Azure Pipelines 中設定這些處理常式。
 
    若您是建立新的解決方案，請先在本機複製您的存放庫。 然後，當您建立解決方案時，您可以選擇直接在存放庫資料夾中建立它。 您可以輕鬆地從該處對新檔案進行認可和推送。
 
-* 可對它推送模組映像的容器登錄。 您可以使用 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) 或協力廠商登錄。
+* 可對它推送模組映像的容器登錄。 您可以使用 [Azure Container Registry](../container-registry/index.yml) 或協力廠商登錄。
 * 使用中的 Azure [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md) ，至少有兩個 IoT Edge 裝置可用來測試個別的測試和生產部署階段。 您可以遵循快速入門文章來在 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 上建立 IoT Edge 裝置
 
-如需使用 Azure Repos 的詳細資訊，請參閱 [Visual Studio 和 Azure Repos 共用您的程式碼](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+如需使用 Azure Repos 的詳細資訊，請參閱 [Visual Studio 和 Azure Repos 共用您的程式碼](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>建立持續整合的組建管線
 
@@ -112,13 +112,13 @@ ms.locfileid: "91281621"
        | --- | --- |
        | 來源資料夾 | 要複製的來源資料夾。 空白是存放庫的根目錄。 如果檔案不在存放庫中，請使用變數。 範例： `$(agent.builddirectory)`.
        | 目錄 | 新增兩行： `deployment.template.json` 和 `**/module.json` 。 |
-       | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 以瞭解描述。 |
+       | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 以瞭解描述。 |
 
    * 工作：**發行組建**成品
 
        | 參數 | 描述 |
        | --- | --- |
-       | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 以瞭解描述。 |
+       | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 以瞭解描述。 |
        | 成品名稱 | 指定預設名稱： `drop` |
        | 成品發行位置 | 使用預設位置： `Azure Pipelines` |
 

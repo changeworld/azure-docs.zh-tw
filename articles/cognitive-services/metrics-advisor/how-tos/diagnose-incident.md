@@ -3,19 +3,19 @@ title: 使用計量顧問診斷事件
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何使用計量建議程式來診斷事件，並取得資料中異常的詳細觀點。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.author: aahi
-ms.openlocfilehash: fb70745cf7773e8caa91b31048af97e8e626bb91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: d1f792859aa5407cfaceda0e3ed1b5c21ee160f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597938"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043369"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>如何：使用計量建議程式診斷事件
 

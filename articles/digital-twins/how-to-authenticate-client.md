@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f2cef34413f46608e8bc35a009a29212af5ddf20
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bb35b81a287179900485c7190a57c492cfc39203
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893589"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043029"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -22,7 +22,7 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 本文說明如何使用 `Azure.Identity` 用戶端程式庫取得認證。 雖然本文說明 c # 中的程式碼範例（例如您針對 [.net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)撰寫的內容），但您可以使用版本的， `Azure.Identity` 不論您使用的 sdk 為何 (如需 azure 數位 Twins 可用 sdk 的詳細資訊，請參閱作法 [*：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
@@ -31,15 +31,15 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 ## <a name="common-authentication-methods-with-azureidentity"></a>使用 Azure 身分識別的常見驗證方法
 
 `Azure.Identity` 是一個用戶端程式庫，提供數個認證取得方法，可讓您用來取得持有人權杖，並使用您的 SDK 進行驗證。 雖然本文提供 c # 的範例，但您可以查看 `Azure.Identity` 數種語言，包括 .。。
-* [.NET (C#)](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)
-* [Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable&preserve-view=true)
-* [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest&preserve-view=true)
-* [Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python&preserve-view=true)
+* [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
+* [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
+* [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
+* [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 中有三種常見的認證取得方法 `Azure.Identity` ：
-* [DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇**。 也可以啟用此功能，以嘗試本文中建議的其他兩種方法;它會包裝 `ManagedIdentityCredential` 和存取設定 `InteractiveBrowserCredential` 變數。
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 適用于您需要 [受控識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md)的情況，而且是使用 Azure Functions 及部署至 Azure 服務的絕佳候選。
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 適用于互動式應用程式，可用於建立已驗證的 SDK 用戶端
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇**。 也可以啟用此功能，以嘗試本文中建議的其他兩種方法;它會包裝 `ManagedIdentityCredential` 和存取設定 `InteractiveBrowserCredential` 變數。
+* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) 適用于您需要 [受控識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md)的情況，而且是使用 Azure Functions 及部署至 Azure 服務的絕佳候選。
+* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) 適用于互動式應用程式，可用於建立已驗證的 SDK 用戶端
 
 下列範例示範如何搭配 .NET (c # ) SDK 來使用上述各項。
 
@@ -60,7 +60,7 @@ using Azure.DigitalTwins.Core;
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential 方法
 
-[DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇**。
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇**。
 
 若要使用預設的 Azure 認證，您將需要 Azure 數位 Twins 實例的 URL ([指示來尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) 。
 
@@ -86,7 +86,7 @@ try
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
 
-[ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)方法適用于您需要[受控識別 (MSI) ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的情況，例如，使用 Azure Functions 時。
+[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet)方法適用于您需要[受控識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md)的情況，例如，使用 Azure Functions 時。
 
 這表示您可以 `ManagedIdentityCredential` 在和或相同的專案中 `DefaultAzureCredential` 使用 `InteractiveBrowserCredential` ，以驗證專案的不同部分。
 
@@ -103,7 +103,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
 
-[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法適用于互動式應用程式，並會啟動網頁瀏覽器以進行驗證。 您可以使用這種方式，而不是 `DefaultAzureCredential` 在需要互動式驗證的情況下使用。
+[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)方法適用于互動式應用程式，並會啟動網頁瀏覽器以進行驗證。 您可以使用這種方式，而不是 `DefaultAzureCredential` 在需要互動式驗證的情況下使用。
 
 若要使用互動式瀏覽器認證，您將需要具有 Azure 數位 Twins Api 許可權的 **應用程式註冊** 。 如需有關如何設定此應用程式註冊的步驟，請參閱*如何：設定實例和驗證*的[*設定用戶端應用程式的存取權限*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications)一節。 一旦設定應用程式註冊，您將需要 .。。
 * 應用程式註冊的 *應用程式 (用戶端) 識別碼*
@@ -142,8 +142,8 @@ try
 請參閱作法 [*：設定 Azure 函式來處理資料*](how-to-create-azure-function.md) ，以取得更完整的範例，以說明函式內容中的一些重要設定選項。
 
 此外，若要在函式中使用驗證，請記得：
-* [啟用受控識別](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
-* 適當地使用[環境變數](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp)
+* [啟用受控識別](../app-service/overview-managed-identity.md?tabs=dotnet)
+* 適當地使用[環境變數](/sandbox/functions-recipes/environment-variables?tabs=csharp)
 * 指派許可權給函式應用程式，讓它能夠存取數位 Twins Api。 如需 Azure Functions 程式的詳細資訊，請參閱 how [*to：設定用來處理資料的 Azure 函數*](how-to-create-azure-function.md)。
 
 ## <a name="other-credential-methods"></a>其他認證方法

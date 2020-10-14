@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548691"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042995"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全性管理員
 
@@ -75,7 +75,7 @@ IoT Edge 的安全 daemon 會利用任何可用的硬體根信任技術來強化
 
 #### <a name="cloud-interface"></a>雲端介面
 
-雲端介面可讓 IoT Edge 的安全性背景程式存取雲端服務，例如雲端補充裝置安全性，例如安全性更新。  例如，IoT Edge 的安全性背景程式目前使用此介面來存取 Azure IoT 中樞裝置布建 [服務](https://docs.microsoft.com/azure/iot-dps/) ，以進行裝置身分識別生命週期管理。  
+雲端介面可讓 IoT Edge 的安全性背景程式存取雲端服務，例如雲端補充裝置安全性，例如安全性更新。  例如，IoT Edge 的安全性背景程式目前使用此介面來存取 Azure IoT 中樞裝置布建 [服務](../iot-dps/index.yml) ，以進行裝置身分識別生命週期管理。  
 
 #### <a name="management-api"></a>管理 API
 
