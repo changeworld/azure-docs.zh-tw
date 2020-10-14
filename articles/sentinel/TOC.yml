@@ -35,6 +35,8 @@
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 將威脅情報匯入 Azure Sentinel
       href: import-threat-intelligence.md
+    - name: 使用外部資料搭配關注清單
+      href: watchlists.md
     - name: 將資料跨資料表正規化
       href: normalization.md
     - name: 安全性

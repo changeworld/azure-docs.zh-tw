@@ -5,21 +5,22 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 10/12/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: a9c9b5081232988cb4ab80bfcbb9f2d92d1d025f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20d80fe1a09d388552b6289f8a9b23c878672f94
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336562"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974275"
 ---
 這些範例說明如何使用 Azure 原則搭配已在 Azure Lighthouse 上線的訂用帳戶。
 
 | **範本** | **說明** |
 |---------|---------|
 | [policy-add-or-replace-tag](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) | 指派原則，以將標籤新增到委派的訂用帳戶，或從委派的訂用帳戶移除標籤 (使用修改效果)。 如需詳細資訊，請參閱[部署可以在委派的訂用帳戶中補救的原則](../articles/lighthouse/how-to/deploy-policy-remediation.md)。 |
+| [policy-allow-certain-managing-tenants](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-allow-certain-managing-tenants) | 指派原則，將 Azure Lighthouse 委派限制於特定的管理租用戶。 |
 | [policy-audit-delegation](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-audit-delegation) | 指派將針對委派指派進行審核的原則。 |
 | [policy-delegate-management-groups](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups) | 指派一個原則以確認管理群組內的訂用帳戶已委派給管理租用戶，如果尚未委派，則建立指派。
 | [policy-enforce-keyvault-monitoring](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) | 指派原則，以在委派的訂用帳戶中診斷 Azure Key Vault 資源 (使用 deployIfNotExists 效果)。 如需詳細資訊，請參閱[部署可以在委派的訂用帳戶中補救的原則](../articles/lighthouse/how-to/deploy-policy-remediation.md)。 |

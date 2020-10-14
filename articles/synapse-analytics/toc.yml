@@ -70,6 +70,8 @@
       href: quickstart-sql-on-demand.md
     - name: 連線到適用於 Cosmos DB 的 Synapse Link
       href: quickstart-connect-synapse-link-cosmos-db.md
+    - name: 連線至 Azure 資料總管
+      href: quickstart-connect-azure-data-explorer.md
 - name: 教學課程
   items:
     - name: 執行 Apache Spark 應用程式
@@ -268,7 +270,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -673,6 +675,8 @@
               items:
                 - name: MongoDB (舊版)
                   href: ../data-factory/connector-mongodb-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: MongoDB Atlas
+              href: ../data-factory/connector-mongodb-atlas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: MySQL
               href: ../data-factory/connector-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Netezza
@@ -947,7 +951,7 @@
       href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

@@ -390,6 +390,8 @@
                       displayName: single sign-on
             - name: UserJourneys
               href: userjourneys.md
+            - name: SubJourneys
+              href: subjourneys.md
             - name: RelyingParty
               href: relyingparty.md
             - name: 宣告解析程式
@@ -511,7 +513,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解決方案與訓練
       href: solution-articles.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支援
       href: support-options.md

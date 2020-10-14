@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: 與 Microsoft Store 用戶端連線
           href: connect-microsoft-store.md
+        - name: 與 Linux 裝置連線
+          href: linux-overview.md
     - name: 設定裝置重新導向
       href: configure-device-redirections.md
     - name: 設定 PowerShell 模組

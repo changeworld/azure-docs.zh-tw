@@ -6,7 +6,7 @@
   items:
     - name: 購買模型
       items:
-        - name: 總覽
+        - name: 概觀
           href: database/purchasing-models.md
         - name: 虛擬核心模型概觀
           href: database/service-tiers-vcore.md
@@ -16,7 +16,7 @@
           href: database/reserved-capacity-overview.md
     - name: 計算和儲存體
       items:
-        - name: 總覽
+        - name: 概觀
           href: database/service-tiers-general-purpose-business-critical.md
           displayName: provisioned compute tier
         - name: 一般目的/標準
@@ -39,7 +39,7 @@
           href: database/read-scale-out.md
         - name: 安全性
           items:
-            - name: 總覽
+            - name: 概觀
               href: database/security-overview.md
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: 最佳作法
@@ -90,6 +90,8 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: 自備金鑰 (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
+            - name: 分散式交易
+              href: database/elastic-transactions-overview.md
         - name: 業務持續性
           displayName: 'Backup, back up, restore, recovery'
           items:
@@ -195,7 +197,7 @@
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
         - name: 開發資料應用程式
           items:
-            - name: 總覽
+            - name: 概觀
               href: database/develop-overview.md
             - name: 使用 JSON 資料
               href: database/json-features.md
@@ -862,6 +864,8 @@
               href: managed-instance/public-endpoint-overview.md
             - name: 稽核
               href: managed-instance/auditing-configure.md
+            - name: 伺服器信任群組
+              href: managed-instance/server-trust-group-overview.md
     - name: 如何
       items:
         - name: 概觀
@@ -1032,7 +1036,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: 必要條件
+                        - name: Prerequisites
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
@@ -1095,7 +1099,7 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: MSDN 論壇
               href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-            - name: 堆疊溢位
+            - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: Linux
       items:
@@ -1196,7 +1200,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: 疑難排解
       items:

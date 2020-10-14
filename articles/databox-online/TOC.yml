@@ -57,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes 工作負載
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: 檢視 Key Vault 整合
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: 如何
       items:
         - name: 部署 IoT Edge 範例
