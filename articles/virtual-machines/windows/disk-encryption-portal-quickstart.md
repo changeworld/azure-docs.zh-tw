@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 69d34b6c50d5a4be728453a34c1c092c63c7b6be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88510609"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977318"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和加密 Windows 虛擬機器
 
@@ -39,7 +39,7 @@ ms.locfileid: "88510609"
     :::image type="content" source="../media/disk-encryption/portal-quickstart-windows-vm-creation.png" alt-text="Windows VM 建立畫面":::
 
     > [!WARNING]
-    > [磁碟] 索引標籤中的 [磁碟選項] 底下具有 [加密類型] 欄位。 此欄位會用來為[受控磁碟](managed-disks-overview.md) + CMK 指定加密選項 (不是用於 Azure 磁碟加密)。
+    > [磁碟] 索引標籤中的 [磁碟選項] 底下具有 [加密類型] 欄位。 此欄位會用來為[受控磁碟](../managed-disks-overview.md) + CMK 指定加密選項 (不是用於 Azure 磁碟加密)。
     >
     > 為了避免混淆，建議您在完成本教學課程時，完全略過 [磁碟] 索引標籤。
 

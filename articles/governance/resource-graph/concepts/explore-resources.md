@@ -1,18 +1,18 @@
 ---
 title: 探索您的 Azure 資源
 description: 了解使用 Resource Graph 查詢語言來瀏覽您的資源，並探索其連線的方式。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056579"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056237"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 探索您的 Azure 資源
 
-Azure Resource Graph 提供了快速且大規模地探索與找出 Azure 資源的功能。 專為快速回應而設計，很適合用來了解您的環境以及組成您的 Azure 資源的屬性。
+Azure Resource Graph 提供了快速且大規模地探索與找出 Azure 資源的功能。 針對快速回應進行設計，是瞭解您的環境，以及 Azure 資源上存在之屬性的絕佳方法。
 
 ## <a name="explore-virtual-machines"></a>探索虛擬機器
 
@@ -104,7 +104,7 @@ JSON 結果的結構類似於下列範例：
 ]
 ```
 
-屬性告訴我們有關虛擬機器資源本身的其他資訊，包括 SKU、作業系統、磁碟，標記以及它所屬的資源群組和訂用帳戶。
+這些屬性會告訴我們虛擬機器資源本身的其他相關資訊。 這些屬性包括：作業系統、磁片、標籤，以及其所屬的資源群組和訂用帳戶。
 
 ### <a name="virtual-machines-by-location"></a>依位置劃分的虛擬機器
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>連線至進階受控磁碟的虛擬機器
 
-如果我們想要取得連結到這些 **Standard_B2s** 虛擬機器的進階受控磁碟詳細資訊，可以展開查詢以提供我們這些受控磁碟的資源識別碼。
+為了取得附加至這些 **Standard_B2s** 虛擬機器之高階受控磁片的詳細資料，我們會展開查詢來傳回這些受控磁片的資源識別碼。
 
 ```kusto
 Resources

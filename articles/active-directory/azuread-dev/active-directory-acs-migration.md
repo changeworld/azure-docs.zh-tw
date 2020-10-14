@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706246"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055356"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>操作說明：從 Azure 存取控制服務遷移
 
@@ -26,7 +26,7 @@ ms.locfileid: "90706246"
 
 Microsoft Azure 存取控制服務 (ACS) 是 Azure Active Directory (Azure AD) 的一項服務，將於 2018 年 11 月 7 日淘汰。 目前使用存取控制的應用程式和服務，必須在淘汰前完全移轉到其他驗證機制。 本文說明給目前客戶的建議移轉選項，協助您規劃汰換存取控制的事宜。 如果您目前未使用存取控制，不需要採取任何動作。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 存取控制是雲端驗證服務，能以簡單的方式驗證和授權使用者，使其得以存取您的 Web 應用程式和服務。 它讓您不需要考慮您的程式碼也能享有許多驗證和授權功能。 存取控制的主要使用者包括 Microsoft .NET 用戶端、ASP.NET Web 應用程式及 Windows Communication Foundation (WCF) Web 服務的開發人員和架構設計師。
 
@@ -199,14 +199,14 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | WIF | 支援 | 支援，但是提供的指示有限 |
 | WS-同盟 | 支援 | 支援 |
 | OAuth 2.0 | 支援 Draft 13 | 支援 RFC 6749 (最新型的規格) |
-| WS-Trust | 支援 | 不支援 |
+| WS-Trust | 支援 | 不受支援 |
 | **權杖格式** | | |
 | JWT | 在搶鮮版 (Beta) 中支援 | 支援 |
 | SAML 1.1 | 支援 | 預覽 |
 | SAML 2.0 | 支援 | 支援 |
-| SWT | 支援 | 不支援 |
+| SWT | 支援 | 不受支援 |
 | **自訂** | | |
-| 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 不支援 |
+| 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 不受支援 |
 | 上傳自訂權杖簽署憑證 | 支援 | 支援 |
 | 在權杖中自訂宣告 |- 從識別提供者傳遞輸入宣告<br />- 從識別提供者取得宣告形式的存取權杖<br />- 根據輸入宣告值簽發輸出宣告<br />- 簽發具有常數值的輸出宣告 |- 無法從同盟識別提供者傳遞宣告<br />- 無法從識別提供者取得宣告形式的存取權杖<br />- 無法根據輸入宣告值簽發輸出宣告<br />- 可以簽發具有常數值的輸出宣告<br />- 可以根據同步至 Azure AD 的使用者屬性簽發輸出宣告 |
 | **自動化** | | |
@@ -214,7 +214,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 如果您決定 Azure AD 是最適合您應用程式和服務的移轉方式，請瞭解以下兩種讓應用程式與 Azure AD 整合。
 
-若要使用 WS-同盟或 WIF 來與 Azure AD 整合，我們建議您依照[為不在資源庫內的應用程式設定同盟單一登入](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)所述的方法執行。 本文說明設定 Azure AD 來使用 SAML 單一登入的方法，但是同樣適用於 WS-同盟。 如欲採用此方法需要 Azure AD Premium 授權。 此方法有兩個優點：
+若要使用 WS-同盟或 WIF 來與 Azure AD 整合，我們建議您依照[為不在資源庫內的應用程式設定同盟單一登入](../manage-apps/configure-saml-single-sign-on.md)所述的方法執行。 本文說明設定 Azure AD 來使用 SAML 單一登入的方法，但是同樣適用於 WS-同盟。 如欲採用此方法需要 Azure AD Premium 授權。 此方法有兩個優點：
 
 - 您有 Azure AD 權杖自訂的完整彈性。 您可以自訂 Azure AD 簽發的宣告，使其符合存取控制簽發的宣告， 尤以使用者識別碼或名稱識別碼宣告最為重要。 若要在變更技術後繼續接收您使用者的一致使用者識別碼，請確認 Azure AD 簽發的使用者識別碼與存取控制簽發的識別碼相符。
 - 您可以為您的應用程式設定專用的權杖簽署憑證與存留期。
@@ -226,7 +226,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 如果您選擇此方法，請參閱並理解 [Azure AD 中的簽署金鑰變換](../develop/active-directory-signing-key-rollover.md)一文。 這個方法會使用 Azure AD 全域簽署金鑰來簽發權杖。 根據預設，WIF 不會自動重新整理簽署金鑰。 當 Azure AD 轉換其全域簽署金鑰時，您的 WIF 實作必須準備好接受變更。 如需詳細資訊，請參閱 [Azure AD 中簽署金鑰變換的相關重要資訊](/previous-versions/azure/dn641920(v=azure.100))。
 
-如果您可以透過 OpenID Connect 或 OAuth 通訊協定與 Azure AD 整合，建議採用該方法。 我們的 [Azure AD 開發人員指南](https://aka.ms/aaddev)有許多關於如何將 Azure AD 整合至 Web 應用程式的文件和指導。
+如果您可以透過 OpenID Connect 或 OAuth 通訊協定與 Azure AD 整合，建議採用該方法。 我們的 [Azure AD 開發人員指南](../develop/index.yml)有許多關於如何將 Azure AD 整合至 Web 應用程式的文件和指導。
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>移轉至 Azure Active Directory B2C
 
@@ -247,15 +247,15 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | 個人用 Microsoft 帳戶 | 支援 | 支援 | 
 | Facebook、Google、Yahoo 帳戶 | 支援 | 原生支援 Facebook 和 Google，Yahoo 則是透過自訂原則建立 OpenID Connect 同盟則可支援 |
 | **通訊協定與 SDK 相容性** | | |
-| Windows Identity Foundation (WIF) | 支援 | 不支援 |
-| WS-同盟 | 支援 | 不支援 |
+| Windows Identity Foundation (WIF) | 支援 | 不受支援 |
+| WS-同盟 | 支援 | 不受支援 |
 | OAuth 2.0 | 支援 Draft 13 | 支援 RFC 6749 (最新型的規格) |
-| WS-Trust | 支援 | 不支援 |
+| WS-Trust | 支援 | 不受支援 |
 | **權杖格式** | | |
 | JWT | 在搶鮮版 (Beta) 中支援 | 支援 |
-| SAML 1.1 | 支援 | 不支援 |
-| SAML 2.0 | 支援 | 不支援 |
-| SWT | 支援 | 不支援 |
+| SAML 1.1 | 支援 | 不受支援 |
+| SAML 2.0 | 支援 | 不受支援 |
+| SWT | 支援 | 不受支援 |
 | **自訂** | | |
 | 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 透過自訂 CSS 可完全自訂 UI |
 | 上傳自訂權杖簽署憑證 | 支援 | 支援透過自訂原則自訂簽署金鑰 (非憑證) |
@@ -332,7 +332,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 如需有關實作伺服器對伺服器案例的指導，請參閱下列資源：
 
-- [Azure AD 開發人員指南](https://aka.ms/aaddev)的服務對服務區段
+- [Azure AD 開發人員指南](../develop/index.yml)的服務對服務區段
 - [使用簡單密碼用戶端認證的精靈程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [使用憑證用戶端認證的精靈程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

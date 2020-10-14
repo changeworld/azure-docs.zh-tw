@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 891b8a5a844691d46c121c254e04b73f2b8c2d62
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6aa0a1bd14072e6ea4ea42004209f332f46a2d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87872730"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856070"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>使用 Azure DevOps 入門版建立適用於 Python 的 CI/CD 管線
 
@@ -129,4 +129,4 @@ DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 當您設定好 CI/CD 程序後，建置和發行管線會自動建立。 您可以修改這些建置和發行管線，以符合小組的需求。 若要深入了解 CI/CD 管線，請參閱：
 
 > [!div class="nextstepaction"]
-> [自訂 CD 程序](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [自訂 CD 程序](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

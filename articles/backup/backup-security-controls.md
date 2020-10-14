@@ -3,12 +3,12 @@ title: 安全性控制
 description: 瞭解 Azure 備份服務中所使用的安全性控制項。 這些控制項可協助服務防止、偵測及回應安全性弱點。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd35bdf83d336aebd37cdda0a0b59164ac9f7a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418750"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055880"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 備份的安全性控制
 
@@ -18,7 +18,7 @@ ms.locfileid: "89418750"
 
 ## <a name="network"></a>網路
 
-| 安全性控制 | 是/否 | 注意 | 文件
+| 安全性控制 | 是/否 | 備註 | 文件
 |---|---|--|--|
 | 服務端點支援| 否 |  |  |
 | VNet 插入支援| 否 |  |  |
@@ -28,22 +28,22 @@ ms.locfileid: "89418750"
 
 ## <a name="monitoring--logging"></a>監視 & 記錄
 
-| 安全性控制 | 是/否 | 注意| 文件
+| 安全性控制 | 是/否 | 備註| 文件
 |---|---|--|--|
-| Azure 監視支援 (例如 Log analytics、App insights) | 是 | 您可以透過資源記錄來支援 Log Analytics。 如需詳細資訊，請參閱 [使用 Log Analytics 監視 Azure 備份受保護的工作負載](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)。 |  |
+| Azure 監視支援 (例如 Log analytics、App insights) | 是 | 您可以透過資源記錄來支援 Log Analytics。 如需詳細資訊，請參閱 [使用 Log Analytics 監視 Azure 備份受保護的工作負載](backup-azure-diagnostics-mode-data-model.md)。 |  |
 | 控制和管理平面記錄和審核| 是 | Azure 入口網站中所有由客戶觸發的動作都會都記錄到活動記錄。 |  |
 | 資料平面記錄和審核| 否 | 無法直接存取 Azure 備份資料平面。  |  |
 
 ## <a name="identity"></a>身分識別
 
-| 安全性控制 | 是/否 | 注意| 文件
+| 安全性控制 | 是/否 | 備註| 文件
 |---|---|--|--|
 | 驗證| 是 | 驗證會透過 Azure Active Directory 進行。 |  |
 | 授權| 是 | 系統會使用已建立的客戶和 Azure 內建角色。 如需詳細資訊，請參閱 [使用 Role-Based 存取控制來管理 Azure 備份復原點](./backup-rbac-rs-vault.md)。 |  |
 
 ## <a name="data-protection"></a>資料保護
 
-| 安全性控制 | 是/否 | 注意 | 文件
+| 安全性控制 | 是/否 | 備註 | 文件
 |---|---|--|--|
 | 靜止的伺服器端加密： Microsoft 管理的金鑰 | 是 | 對儲存體帳戶使用儲存體服務加密。 |  |
 | 靜止的伺服器端加密：客戶管理的金鑰 (BYOK)  | 否 |  |  |
@@ -53,7 +53,7 @@ ms.locfileid: "89418750"
 
 ## <a name="configuration-management"></a>設定管理
 
-| 安全性控制 | 是/否 | 注意| 文件
+| 安全性控制 | 是/否 | 備註| 文件
 |---|---|--|--|
 | 設定管理支援 (設定的版本設定，) | 是|  |  |
 

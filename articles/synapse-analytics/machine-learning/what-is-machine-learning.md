@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543274"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939098"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics 中的機器學習功能 (工作區預覽)
 
@@ -66,7 +66,7 @@ Azure Synapse Analytics 提供各種機器學習功能。 本文概述如何在 
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>使用 Azure Machine Learning AutoML 將模型定型
 
-另一種不需要事先熟悉機器學習即可將機器學習模型定型的方法，是使用 AutoML。 [AutoML](/azure/machine-learning/concept-automated-mls) 是一項功能，可自動定型一組機器學習模型，並可讓使用者根據特定計量來選取最佳模型。 由於與 Azure Synapse Notebooks 的 Azure Machine Learning 緊密整合，使用者可以利用傳遞 Azure Active Directory 驗證，輕鬆地在 Synapse 中運用 AutoML。  這表示您只需要指向您的 Azure Machine Learning 工作區，而不需要輸入任何認證。 以下是 [AutoML 教學課程](../spark/apache-spark-azure-machine-learning-tutorial.md)，會說明如何使用 Synapse Spark 集區上的 Azure Machine Learning AutoML 來定型模型。
+另一種不需要事先熟悉機器學習即可將機器學習模型定型的方法，是使用 AutoML。 [AutoML](/azure/machine-learning/concept-automated-ml) 是一項功能，可自動定型一組機器學習模型，並可讓使用者根據特定計量來選取最佳模型。 由於與 Azure Synapse Notebooks 的 Azure Machine Learning 緊密整合，使用者可以利用傳遞 Azure Active Directory 驗證，輕鬆地在 Synapse 中運用 AutoML。  這表示您只需要指向您的 Azure Machine Learning 工作區，而不需要輸入任何認證。 以下是 [AutoML 教學課程](../spark/apache-spark-azure-machine-learning-tutorial.md)，會說明如何使用 Synapse Spark 集區上的 Azure Machine Learning AutoML 來定型模型。
 
 ### <a name="model-deployment-and-scoring"></a>模型部署和評分
 

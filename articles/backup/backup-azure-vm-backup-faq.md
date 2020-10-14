@@ -4,24 +4,24 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370822"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056713"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
 本文提供使用 [Azure 備份](./backup-overview.md) 服務來備份 Azure vm 的常見問題解答。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>備份
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>當我建立 VM 映射時，可以啟用這些映射以進行備份嗎？
 
 當您建立 VM 時，您可以針對執行 [受支援作業系統](backup-support-matrix-iaas.md#supported-backup-actions)的 vm 啟用備份。
 
-### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>為什麼初次備份需要大量時間才能完成？
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>為何初始備份需要大量的時間才能完成？
 
 初始備份一律是完整備份，而且會取決於資料的大小和處理備份的時間。 <br>
 若要改善備份效能，請參閱 [備份最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [備份考慮](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) 和 [備份效能](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
@@ -79,7 +79,7 @@ ms.locfileid: "91370822"
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure 備份是否支援標準 SSD 受控磁片？
 
-是，Azure 備份支援 [標準 SSD 受控磁片](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
+是，Azure 備份支援 [標準 SSD 受控磁片](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>我們可以備份具有已啟用寫入加速器 (WA) 之磁碟的 VM 嗎？
 
@@ -161,7 +161,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 是的，您可以在還原後存取 VM，因為 VM 與網域控制站之間的關聯性中斷。 如需詳細資訊，請參閱這篇[文章](./backup-azure-arm-restore-vms.md#post-restore-steps)
 
-### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>為什麼還原作業需要很長的時間才能完成？
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>為何還原作業需要很長的時間才能完成？
 
 總還原時間取決於每秒的輸入/輸出作業 (IOPS) 和儲存體帳戶的輸送量。 如果目標儲存體帳戶與其他應用程式讀取和寫入作業一起載入，則總還原時間可能會受到影響。 若要改善還原作業，請選取未與其他應用程式資料一起載入的儲存體帳戶。
 

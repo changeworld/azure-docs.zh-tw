@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316727"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058109"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -31,8 +31,7 @@ ms.locfileid: "91316727"
 * **事件記錄**檔可能會顯示來自其他備份產品（例如 Windows Server backup）的備份失敗，而不是因為 Azure 備份。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
   * 如果事件來源或訊息中的專案 **備份** 發生錯誤，請檢查 AZURE IaaS VM 備份備份是否成功，以及是否以所需的快照集類型建立還原點。
   * 如果 Azure 備份運作中，則問題可能與另一個備份解決方案有關。
-  * 以下是事件檢視器錯誤517的範例，其中 Azure 備份可正常運作，但 "Windows Server Backup" 失敗：<br>
-    ![Windows Server 備份失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * 以下是事件檢視器錯誤517的範例，其中 Azure 備份可正常運作，但 "Windows Server Backup" 失敗： ![ Windows Server Backup 失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * 如果 Azure 備份失敗，請在本文的常見 VM 備份錯誤一節中尋找對應的錯誤碼。
 
 ## <a name="common-issues"></a>常見問題
@@ -106,31 +105,33 @@ ms.locfileid: "91316727"
 發生此錯誤是因為 VSS 寫入器處於不良狀態。 Azure 備份擴充功能會與 VSS 寫入器互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
 
 步驟1：重新開機處於不良狀態的 VSS 寫入器。
-- 從提升權限的命令提示字元，執行 ```vssadmin list writers```。
-- 輸出會包含所有 VSS 寫入器和其狀態。 針對狀態不是 **[1]** 的每個 vss 寫入器，重新開機各自的 vss 寫入器服務。 
-- 若要重新開機服務，請從提高許可權的命令提示字元執行下列命令：
+
+* 從提升權限的命令提示字元，執行 ```vssadmin list writers```。
+* 輸出會包含所有 VSS 寫入器和其狀態。 針對狀態不是 **[1]** 的每個 vss 寫入器，重新開機各自的 vss 寫入器服務。
+* 若要重新開機服務，請從提高許可權的命令提示字元執行下列命令：
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
 
 > [!NOTE]
 > 重新開機某些服務可能會影響您的生產環境。 請確定已遵循核准程式，並在排定的停機時間重新開機服務。
- 
-   
+
 步驟2：如果重新開機 VSS 寫入器並未解決問題，請從提升許可權的命令提示字元中執行下列命令 (系統管理員) ，以防止建立 blob 快照集的執行緒。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+
 步驟3：如果步驟1和2沒有解決問題，可能是因為因為 IOPS 受限而導致 VSS 寫入器超時。<br>
 
 若要確認，請流覽至 [ ***系統] 並事件檢視器應用程式記錄*** 檔，並檢查下列錯誤訊息：<br>
 *陰影複製提供者會在保存要陰影複製之磁片區的寫入時超時。這可能是因為應用程式或系統服務的磁片區上有過多活動。當磁片區上的活動減少時，稍後再試一次。*<br>
 
 解決方案：
-- 檢查是否有可將負載分散到 VM 磁片的可能性。 這會減少單一磁片上的負載。 您可以藉 [由在儲存體層級啟用診斷計量來檢查 IOPs 節流](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)。
-- 將備份原則變更為當 VM 上的負載降到最低時，在離峰時段執行備份。
-- 升級 Azure 磁片以支援更高的 IOPs。 [請於此處深入了解](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+
+* 檢查是否有可將負載分散到 VM 磁片的可能性。 這會減少單一磁片上的負載。 您可以藉 [由在儲存體層級啟用診斷計量來檢查 IOPs 節流](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)。
+* 將備份原則變更為當 VM 上的負載降到最低時，在離峰時段執行備份。
+* 升級 Azure 磁片以支援更高的 IOPs。 [請於此處深入了解](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - 快照集作業失敗，因為 VSS (磁碟區陰影複製) 服務處於不良狀態
 
@@ -140,31 +141,32 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 發生此錯誤的原因是 VSS 服務處於不良狀態。 Azure 備份擴充功能會與 VSS 服務互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
 
 重新開機 VSS (磁片區陰影複製) 服務。
-- 流覽至 services.msc，然後重新開機「磁片區陰影複製服務」。<br>
+
+* 流覽至 services.msc，然後重新開機「磁片區陰影複製服務」。<br>
 (或)<br>
-- 從提升權限的命令提示字元執行下列命令：
+* 從提升權限的命令提示字元執行下列命令：
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
- 
 如果問題仍持續發生，請在排定的停機時間重新開機 VM。
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable-VM 建立失敗，因為選取的 VM 大小無法使用
 
-錯誤碼： UserErrorSkuNotAvailable 錯誤訊息： VM 建立失敗，因為選取的 VM 大小無法使用。 
- 
+錯誤碼： UserErrorSkuNotAvailable 錯誤訊息： VM 建立失敗，因為選取的 VM 大小無法使用。
+
 發生此錯誤的原因是在還原作業期間選取的 VM 大小是不支援的大小。 <br>
 
 若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項。 您可以使用這些磁片，透過[Powershell Cmdlet](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)，從[可用的支援 VM 大小](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support)清單中建立 vm。
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM 建立失敗，因為不存在市場採購申請
 
-錯誤碼： UserErrorMarketPlaceVMNotSupported 錯誤訊息：因為沒有市場採購要求，所以 VM 建立失敗。 
- 
+錯誤碼： UserErrorMarketPlaceVMNotSupported 錯誤訊息：因為沒有市場採購要求，所以 VM 建立失敗。
+
 Azure 備份支援 Azure Marketplace 中可用 Vm 的備份和還原。 當您嘗試使用特定的方案/發行者設定來還原 VM (時，將會發生此錯誤，) 該設定已無法在 Azure Marketplace 中使用，請在 [這裡深入瞭解](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)。
-- 若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項，然後使用 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 或 [AZURE CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) Cmdlet，以與 vm 對應的最新 marketplace 資訊來建立 VM。
-- 如果發行者沒有任何 Marketplace 資訊，您可以使用資料磁片來取出您的資料，並將其連結至現有的 VM。
+
+* 若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項，然後使用 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 或 [AZURE CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) Cmdlet，以與 vm 對應的最新 marketplace 資訊來建立 VM。
+* 如果發行者沒有任何 Marketplace 資訊，您可以使用資料磁片來取出您的資料，並將其連結至現有的 VM。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 備份擴充功能的剖析和設定失敗
 
@@ -244,7 +246,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **步驟 2**：嘗試將備份排程變更為 VM 低於負載 (（例如較少 CPU 或 IOps）的時間) 
 
-**步驟 3**：嘗試 [增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/) ，然後再次嘗試操作
+**步驟 3**：嘗試 [增加 VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) ，然後再次嘗試操作
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-無法執行作業，因為 VM 已不存在/400094、BCMV2VMNotFound-虛擬機器不存在/找不到 Azure 虛擬機器
 
@@ -315,12 +317,12 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 
 ## <a name="restore"></a>還原
 
-#### <a name="disks-appear-offline-after-file-restore"></a>磁片在檔案還原後會離線
+### <a name="disks-appear-offline-after-file-restore"></a>磁片在檔案還原後會離線
 
-在還原之後，您會注意到磁片已離線，然後： 
+在還原之後，您會注意到磁片已離線，然後：
+
 * 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
 * 請確定您不會還原至相同的來源， [深入瞭解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
-
 
 | 錯誤詳細資料 | 因應措施 |
 | --- | --- |

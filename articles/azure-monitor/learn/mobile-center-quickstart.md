@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322137"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993881"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>開始使用 App Center 和 Application Insights 分析您的行動應用程式
 
@@ -124,7 +124,7 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
    1. 在文字編輯器中的查詢上任一處按一下，以選取該查詢。
    2. 按一下 [執行] 來執行查詢。 
 
-   深入了解 [Application Insights 分析](../log-query/log-query-overview.md)以及 [Log Analytics 查詢語言](https://aka.ms/LogAnalyticsLanguageReference) \(英文\)。
+   深入了解 [Application Insights 分析](../log-query/log-query-overview.md)以及 [Log Analytics 查詢語言](/azure/data-explorer/kusto/query/) \(英文\)。
 
 
 2. **分割及篩選您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇目錄中的 [使用者]。
@@ -168,4 +168,3 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
 
 > [!div class="nextstepaction"]
 > [了解客戶如何使用您的應用程式](../app/usage-overview.md)
-

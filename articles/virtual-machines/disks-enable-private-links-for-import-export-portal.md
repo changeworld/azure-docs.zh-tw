@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815856"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979048"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 入口網站，透過 Private Link 限制受控磁碟的匯入/匯出存取
 
@@ -30,12 +30,6 @@ ms.locfileid: "88815856"
 ## <a name="regional-availability"></a>區域可用性
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>必要條件
-
-若要使用私人端點來匯出和匯入受控磁碟，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼，將電子郵件傳送至 mdprivatelinks@microsoft，以啟用訂用帳戶的功能。
-
-請記下磁碟所連接之 VM 的虛擬網路。 設定私人端點時，需要虛擬網路。
 
 ## <a name="create-a-disk-access-resource"></a>建立磁碟存取資源
 
@@ -101,4 +95,4 @@ ms.locfileid: "88815856"
 ## <a name="next-steps"></a>後續步驟
 
 - [Private Link 常見問題集](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [使用 PowerShell 將受控快照集匯出/複製到不同區域的儲存體帳戶當做 VHD](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [使用 PowerShell 將受控快照集匯出/複製到不同區域的儲存體帳戶當做 VHD](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

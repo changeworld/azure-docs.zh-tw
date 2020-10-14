@@ -3,12 +3,12 @@ title: 推斷中繼資料結構描述 - Azure
 description: 在本文中，您將了解推斷中繼資料結構描述。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88701892"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019489"
 ---
 # <a name="inference-metadata-schema"></a>推斷中繼資料結構描述 
 
@@ -123,5 +123,5 @@ ms.locfileid: "88701892"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [gRPC 資料合約](grpc-data-contract.md)
-- [HTTP 資料合約](http-data-contract.md)
+- [gRPC 資料合約](./grpc-extension-protocol.md)
+- [HTTP 資料合約](./http-extension-protocol.md)

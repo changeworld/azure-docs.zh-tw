@@ -2,18 +2,18 @@
 title: 在 Azure 入口網站中建立搜尋索引
 titleSuffix: Azure Cognitive Search
 description: 在本 Azure 入口網站快速入門中，使用「匯入資料」精靈，在 Azure 認知搜尋中建立、載入及查詢您的第一個搜尋索引。
-author: tchristiani
 manager: nitinme
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740918"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056475"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋索引
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 8f9ed14a0bcef346281c38146cbb2d9551633c15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df409af61556dfa113327302be9c1464e1427a14
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421509"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829222"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>查看和編輯範例檔案
 
@@ -111,9 +111,18 @@ ms.locfileid: "89421509"
 
 ### <a name="prepare-to-monitor-events"></a>準備監視事件
 
-以滑鼠右鍵按一下 Live Video Analytics 裝置，然後選取 [開始監視內建事件端點]。 您需要執行此步驟，才能在 Visual Studio Code 的 [輸出] 視窗中監視 IoT 中樞事件。
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
-![開始監視](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
+1. 搜尋並啟用「顯示詳細資訊訊息」。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="延伸模組設定":::
+1. 以滑鼠右鍵按一下 Live Video Analytics 裝置，然後選取 [開始監視內建事件端點]。 您需要執行此步驟，才能在 Visual Studio Code 的 [輸出] 視窗中監視 IoT 中樞事件。
+
+   ![開始監視](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
 
 ### <a name="run-the-sample-program"></a>執行範例程式
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011288"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939197"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -77,7 +77,7 @@ dotnet add package Azure.Storage.Queues
 1. 在編輯器中開啟 Program.cs 檔案
 1. 移除 `Console.WriteLine("Hello World!");` 陳述式
 1. 新增 `using` 指示詞
-1. 更新 `Main` 方法宣告以[支援非同步程式碼](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main)
+1. 更新 `Main` 方法宣告以[支援非同步程式碼](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)
 
 
 

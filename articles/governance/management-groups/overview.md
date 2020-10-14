@@ -4,12 +4,12 @@ description: 了解管理群組及權限如何運作，以及如何使用。
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533800"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951871"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -202,6 +202,6 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 若要深入了解管理群組，請參閱：
 
-- [建立管理群組以組織 Azure 資源](./create.md)
+- [建立管理群組以組織 Azure 資源](./create-management-group-portal.md)
 - [如何變更、刪除或管理您的管理群組](./manage.md)
 - 請參閱[如何保護您的資源階層](./how-to/protect-resource-hierarchy.md)選項

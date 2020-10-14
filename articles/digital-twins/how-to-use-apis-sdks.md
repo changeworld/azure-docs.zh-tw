@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1cf7bd744870b9f0a04d63445268b2ccd3134a66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bfeafdea149cd41ea35562c2ff4b9e67a99b95d0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046752"
+ms.locfileid: "92058517"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -26,12 +26,12 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 
 控制平面 Api 是用來管理整個 Azure 數位 Twins 實例的 [ARM](../azure-resource-manager/management/overview.md) api，因此涵蓋建立或刪除整個實例等作業。 您也會使用這些來建立和刪除端點。
 
-公開預覽的最新控制平面 API 版本是 _**2020-03-01-preview**_。
+公開預覽的最新控制平面 API 版本為 _**2020-10-31**_。
 
 若要使用控制平面 Api：
 * 您可以參考 [控制平面 Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中最新的 Swagger，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
-  - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) 
+  - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) 
   - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) 
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
@@ -47,7 +47,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * **查詢** -查詢類別可讓開發人員在關聯性 [的對應項圖形中尋找數位 twins 的集合](how-to-query-graph.md) 。
 * **EventRoutes** -EventRoutes 類別包含可透過系統和下游服務 [路由資料](concepts-route-events.md)的 api。
 
-公開預覽的最新資料平面 API 版本是 _**2020-05-31-preview**_。 適用于資料平面作業的 _2020-03-01-preview_ API 版本現在已被取代。
+公開預覽的最新資料平面 API 版本為 _**2020-10-31**_。
 
 若要使用資料平面 Api：
 * 您可以直接呼叫 Api，方法是 .。。
@@ -112,8 +112,8 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 // Read a list of models back from the service
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
+AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
+await foreach (ModelData md in modelDataList)
 {
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }

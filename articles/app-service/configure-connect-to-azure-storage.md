@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 18e3f29a90ae2c6c66858e14ee91fb447a4a0045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968645"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057751"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>以網路共用的形式從 App Service 中的容器存取 Azure 儲存體
 
@@ -90,7 +90,7 @@ az webapp config storage-account add --resource-group <group-name> --name <app-n
 
 一旦建立您的 [Azure 儲存體帳戶、檔案共用和目錄](#prerequisites)之後，您現在可以使用 Azure 儲存體來設定您的應用程式。
 
-若要將儲存體帳戶掛接至 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 此範例中使用 AzureFiles。 [掛接路徑] 設定會對應到您想要從 Azure 儲存體掛接的資料夾。 將它設定為 '/' 會裝載整個 Azure 儲存體。
+若要將儲存體帳戶掛接至 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 此範例中使用 AzureFiles。 [掛接路徑] 設定會對應到您想要掛接至 Azure 儲存體的容器內的資料夾。 將它設定為 '/' 會將整個容器掛接至 Azure 儲存體。
 
 
 > [!CAUTION]

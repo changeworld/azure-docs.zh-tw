@@ -1,14 +1,14 @@
 ---
 title: 取得資源變更
 description: 了解如何找出變更資源的時間、取得已變更屬性的清單，以及評估差異。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056562"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057564"
 ---
 # <a name="get-resource-changes"></a>取得資源變更
 
@@ -279,7 +279,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**beforeSnapshot** 和 **afterSnapshot** 分別提供快照集的建立時間，以及當時的屬性。 這項變更會發生在這些快照集之間的某個時間點。 我們可以查看上述範例，看到變更的屬性為 **supportsHttpsTrafficOnly**。
+**beforeSnapshot** 和 **afterSnapshot** 分別提供快照集的建立時間，以及當時的屬性。 這項變更會發生在這些快照集之間的某個時間點。 查看上述範例，我們可以看到變更的屬性已 **>supportsHTTPstrafficonly**。
 
 若要比較結果，請使用 **resourceChanges** 中的**變更**屬性，或評估 **resourceChangeDetails** 中每個快照集的**內容**部分，以判斷差異。 如果您比較快照集，則即使預期，**時間戳記**一律會顯示為差異。
 

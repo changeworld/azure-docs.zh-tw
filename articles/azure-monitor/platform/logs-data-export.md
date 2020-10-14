@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 10/13/2020
-ms.openlocfilehash: 59febbac1a83e45c8b2bf9c233c3772f561eb111
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/14/2020
+ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049724"
+ms.locfileid: "92055931"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -79,7 +79,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 以下是在設定 Log Analytics 資料匯出之前必須完成的必要條件。
 
 - 儲存體帳戶和事件中樞必須已建立，且必須與 Log Analytics 工作區位於相同的區域。 如果您需要將資料複寫至其他儲存體帳戶，您可以使用任何 [Azure 儲存體的冗余選項](../../storage/common/storage-redundancy.md)。  
@@ -254,6 +254,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AADDomainServicesLogonLogoff | |
 | AADDomainServicesPolicyChange | |
 | AADDomainServicesPrivilegeUse | |
+| AADManagedIdentitySignInLogs | |
+| AADNonInteractiveUserSignInLogs | |
+| AADProvisioningLogs | |
+| AADServicePrincipalSignInLogs | |
 | ADAssessmentRecommendation | |
 | ADFActivityRun | |
 | ADFPipelineRun | |
@@ -268,7 +272,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ADXQuery | |
 | AegDeliveryFailureLogs | |
 | AegPublishFailureLogs | |
-| 警示 | 此資料表的部分資料是透過儲存體帳戶內嵌。 目前匯出中缺少此部分。 |
+| 警示 |部分支援。 此資料表的部分資料是透過儲存體帳戶內嵌。 這項資料目前不會匯出。 |
+| 異常 | |
 | ApiManagementGatewayLogs | |
 | AppCenterError | |
 | AppPlatformSystemLogs | |
@@ -277,6 +282,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AppServiceConsoleLogs | |
 | AppServiceFileAuditLogs | |
 | AppServiceHTTPLogs | |
+| AppServiceIPSecAuditLogs | |
 | AppServicePlatformLogs | |
 | AuditLogs | |
 | AutoscaleEvaluationsLog | |
@@ -291,7 +297,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | CommonSecurityLog | |
 | CommonSecurityLog | |
 | ComputerGroup | |
-| ConfigurationData | 某些資料是透過不支援匯出的內部服務所內嵌。 目前匯出中缺少此部分。 |
+| ConfigurationData | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
@@ -312,15 +318,43 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DnsEvents | |
 | DnsInventory | |
 | Dynamics365Activity | |
-| 事件 | 此資料表的部分資料是透過儲存體帳戶內嵌。 目前匯出中缺少此部分。 |
+| 事件 | 部分支援。 此資料表的部分資料是透過儲存體帳戶內嵌。 這項資料目前不會匯出。 |
 | ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |
-| 活動訊號 | 支援 | |
+| HDInsightAmbariClusterAlerts | |
+| HDInsightAmbariSystemMetrics | |
+| HDInsightGatewayAuditLogs | |
+| HDInsightHadoopAndYarnLogs | |
+| HDInsightHadoopAndYarnMetrics | |
+| HDInsightHBaseLogs | |
+| HDInsightHBaseMetrics | |
+| HDInsightHiveAndLLAPLogsSample | |
+| HDInsightKafkaLogs | |
+| HDInsightKafkaMetrics | |
+| HDInsightOozieLogs | |
+| HDInsightSecurityLogs | |
+| HDInsightSparkApplicationEvents | |
+| HDInsightSparkBlockManagerEvents | |
+| HDInsightSparkEnvironmentEvents | |
+| HDInsightSparkEventsLog | |
+| HDInsightSparkExecutorEvents | |
+| HDInsightSparkExtraEvents | |
+| HDInsightSparkJobEvents | |
+| HDInsightSparkLogs | |
+| HDInsightSparkSQLExecutionEvents | |
+| HDInsightSparkStageEvents | |
+| HDInsightSparkStageTaskAccumulables | |
+| HDInsightSparkTaskEvents | |
+| HDInsightStormLogs | |
+| HDInsightStormMetrics | |
+| HDInsightStormTopologyMetrics | |
+| 活動訊號 | |
 | HuntingBookmark | |
-| InsightsMetrics | 某些資料是透過不支援匯出的內部服務所內嵌。 目前匯出中缺少此部分。 |
+| InsightsMetrics | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 目前匯出中缺少此部分。 |
 | IntuneAuditLogs | |
+| IntuneDeviceComplianceOrg | |
 | IntuneOperationalLogs | |
 | KubeEvents | |
 | KubeHealth | |
@@ -329,24 +363,30 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | KubePodInventory | |
 | KubeServices | |
 | KubeServices | |
+| LAQueryLogs | |
 | McasShadowItReporting | |
 | MicrosoftAzureBastionAuditLogs | |
 | MicrosoftDataShareReceivedSnapshotLog | |
 | MicrosoftDataShareSentSnapshotLog | |
 | MicrosoftDataShareShareLog | |
 | MicrosoftHealthcareApisAuditLogs | |
+| NWConnectionMonitorDestinationListenerResult | |
+| NWConnectionMonitorDNSResult | |
+| NWConnectionMonitorPathResult | |
 | NWConnectionMonitorPathResult | |
 | NWConnectionMonitorTestResult | |
-| OfficeActivity | 透過 webhook 從 O365 內嵌至 LA 的部分資料。 目前匯出中缺少此部分。 |
-| 作業 | 某些資料是透過不支援匯出的內部服務所內嵌。 目前匯出中缺少此部分。 |
-| Perf | 支援 | |
-| SCCMAssessmentRecommendation | | 
+| NWConnectionMonitorTestResult | |
+| OfficeActivity | 部分支援。 透過 webhook 從 Office 365 內嵌至 Log Analytics 的部分資料。 這項資料目前不會匯出。 |
+| 作業 | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
+| Perf | 部分支援。 目前只支援 windows 效能資料。 Linux 效能資料目前不會匯出。 |
+| ProtectionStatus | |
+| SCCMAssessmentRecommendation | |
 | SCOMAssessmentRecommendation | |
 | SecurityAlert | |
 | SecurityBaseline | |
 | SecurityBaselineSummary | |
 | SecurityDetection | |
-| SecurityEvent | 支援 | |
+| SecurityEvent | |
 | SecurityIncident | |
 | SecurityIoTRawEvent | |
 | SecurityNestedRecommendation | |
@@ -359,24 +399,29 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SPAssessmentRecommendation | |
 | SQLAssessmentRecommendation | |
 | SucceededIngestion | |
-| syslog |Partial | 此資料表的部分資料是透過儲存體帳戶內嵌。 目前匯出中缺少此部分。 |
+| SynapseGatewayEvents | |
+| SynapseRBACEvents | |
+| syslog | 部分支援。 此資料表的部分資料是透過儲存體帳戶內嵌。 這項資料目前不會匯出。 |
 | ThreatIntelligenceIndicator | |
-| 更新 |Partial | 某些資料是透過不支援匯出的內部服務所內嵌。 目前匯出中缺少此部分。 |
+| 更新 | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
 | UpdateRunProgress | |
 | UpdateSummary | |
 | 使用方式 | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
+| 關注清單 | |
 | Windowsevent 進行篩選 | |
 | WindowsFirewall | |
-| WireData |Partial | 某些資料是透過不支援匯出的內部服務所內嵌。 目前匯出中缺少此部分。 |
+| WireData | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
 | WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
+| WVDAgentHealthStatus | |
 | WVDCheckpoints | |
 | WVDConnections | |
 | WVDErrors | |
 | WVDFeeds | |
 | WVDManagement | |
+
 
 ## <a name="next-steps"></a>後續步驟
 

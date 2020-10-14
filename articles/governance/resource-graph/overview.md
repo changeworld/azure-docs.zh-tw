@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: overview
-ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e61dadc44a2b07066f7bac761c366c746cef1f1
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531678"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057768"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 

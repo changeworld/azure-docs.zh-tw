@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043405"
+ms.locfileid: "92058041"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>跨雲端資料庫的分散式交易 (preview) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -145,14 +145,14 @@ SQL Database 和受控執行個體的彈性資料庫交易也支援協調分散�
     -- Configure the Linked Server
     -- Add one Azure SQL Managed Instance as Linked Server
     EXEC sp_addlinkedserver
-        @server='managedinstance02', -- Linked server name
+        @server='RemoteServer', -- Linked server name
         @srvproduct='',
         @provider='sqlncli', -- SQL Server Native Client
-        @datasrc='sql-managed-instance-02.48ea8fd5ac90.database.windows.net' -- Managed Instance endpoint
+        @datasrc='managed-instance-server.46e7afd5bc81.database.windows.net' -- Managed Instance endpoint
 
     -- Add credentials and options to this Linked Server
     EXEC sp_addlinkedsrvlogin
-        @rmtsrvname = 'managedinstance02', -- Linked server name
+        @rmtsrvname = 'RemoteServer', -- Linked server name
         @useself = 'false',
         @rmtuser = '<login_name>',         -- login
         @rmtpassword = '<secure_password>' -- password
@@ -244,7 +244,7 @@ Azure SQL Database 中的不同伺服器之間支援彈性資料庫交易。 當
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>適用于 Azure SQL 受控執行個體的多部伺服器之間的交易
 
-Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當交易跨越受控執行個體界限時，參與的實例必須先進入相互安全性和通訊關聯性。 這是藉由設定 [伺服器信任群組](https://aka.ms/mitrusted-groups)來完成，這可以在 Azure 入口網站上完成。
+Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當交易跨越受控執行個體界限時，參與的實例必須先進入相互安全性和通訊關聯性。 這是藉由建立 [伺服器信任群組](https://aka.ms/mitrusted-groups)來完成，這可以在 Azure 入口網站上完成。 如果受管理的實例不在相同的虛擬網路上，則必須設定 [虛擬網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ，且網路安全性群組的輸入和輸出規則必須允許所有參與的虛擬網路上的埠5024和11000-12000。
 
   ![Azure 入口網站上的伺服器信任群組][3]
 

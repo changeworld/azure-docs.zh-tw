@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82233783"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856087"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 PHP 的 CI/CD 管線
 
@@ -125,4 +125,4 @@ Azure DevOps Starter 提供簡化的體驗，可建立 Azure 資源，並在 Azu
 當您設定好 CI/CD 程序後，建置和發行管線會自動建立。 您可以修改這些建置和發行管線，以符合小組的需求。 若要深入了解 CI/CD 管線，請參閱此教學課程：
 
 > [!div class="nextstepaction"]
-> [自訂 CD 程序](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [自訂 CD 程序](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

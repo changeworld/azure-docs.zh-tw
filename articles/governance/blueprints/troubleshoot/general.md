@@ -1,14 +1,14 @@
 ---
 title: 常見問題疑難排解
 description: 瞭解如何針對建立、指派和移除藍圖的問題進行疑難排解，例如原則違規和藍圖參數功能。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651323"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058279"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>針對使用 Azure 藍圖發生的錯誤進行疑難排解
 
@@ -43,7 +43,7 @@ ms.locfileid: "89651323"
 - 要建立的資源受到原則所限制 (通常是 SKU 或位置限制)
 - 部署正在設定原則所設定的欄位 (通常會使用標記)
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
 變更藍圖，使其不會與錯誤詳細資料中的原則發生發生衝突。 如果此變更不可行，替代選項就是變更原則指派的範圍，使藍圖不再與原則產生衝突。
 
@@ -57,9 +57,9 @@ ms.locfileid: "89651323"
 
 將使用如 `[resourceGroup().tags.myTag]` 等函式的藍圖參數傳遞至成品，會造成在成品上設定該函式處理過後的結果，而非動態函式。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
-若要將函式作為參數傳遞，請使用 `[` 逸出整個字串，讓藍圖參數看起來像 `[[resourceGroup().tags.myTag]`。 逸出字元會導致「藍圖」在處理藍圖時，將值視為字串。 接著「藍圖」會將函式置於成品上，讓它如預期般地為動態函式。 如需詳細資訊，請參閱 [Azure Resource Manager 範本中的語法和運算式](../../../azure-resource-manager/templates/template-expressions.md)。
+若要將函式作為參數傳遞，請使用 `[` 逸出整個字串，讓藍圖參數看起來像 `[[resourceGroup().tags.myTag]`。 逸出字元會導致「藍圖」在處理藍圖時，將值視為字串。 藍圖服務接著會將函式放在構件上，讓它能夠如預期般動態。 如需詳細資訊，請參閱 [Azure Resource Manager 範本中的語法和運算式](../../../azure-resource-manager/templates/template-expressions.md)。
 
 ## <a name="delete-errors"></a>刪除錯誤
 
@@ -75,7 +75,7 @@ ms.locfileid: "89651323"
 
 #### <a name="resolution"></a>解決方案
 
-處於非終端機狀態的藍圖指派會在_6 小時_的時間內自動標示為**失敗**。 一旦 timeout 調整了藍圖指派的狀態，就可以重試刪除。
+處於非終端機狀態的藍圖指派會在_六小時_的時間內自動標示為**失敗**。 一旦 timeout 調整了藍圖指派的狀態，就可以重試刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

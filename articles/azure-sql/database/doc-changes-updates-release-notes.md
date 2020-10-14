@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ebbdd103350e1de36d45ecf84acf15d477fa34db
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043386"
+ms.locfileid: "92058126"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -98,6 +98,8 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 |問題  |探索日期  |狀態  |解決日期  |
 |---------|---------|---------|---------|
+|[從伺服器信任群組移除受控執行個體之後，可以執行分散式交易](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Sep 2020|有因應措施||
+|[受控執行個體調整作業之後，無法執行分散式交易](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Sep 2020|有因應措施||
 |[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)在 azure SQL 中， `BACKUP` / `RESTORE` 受控執行個體中的語句無法使用 Azure AD 管理身分識別來向 Azure 儲存體進行驗證|Sep 2020|有因應措施||
 |[服務主體無法存取 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020年8月|有因應措施||
 |[還原沒有總和檢查碼的手動備份可能會失敗](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解決|2020 年 6 月|
@@ -127,6 +129,14 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |具有外部 (非 Azure) mail 伺服器使用安全連線的 Database mail 功能||已解決|10月2019|
 |SQL 受控執行個體不支援包含的資料庫||已解決|2019年8月|
 
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>從伺服器信任群組移除受控執行個體之後，可以執行分散式交易
+
+[伺服器信任群組](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) 是用來在受管理的實例（執行 [分散式交易](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)的必要條件）之間建立信任。 從伺服器信任群組移除受控執行個體或刪除群組之後，您仍然可以執行分散式交易。 您可以套用此因應措施，以確保分散式交易已停用，且在受控執行個體上是 [使用者起始的手動容錯移轉](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) 。
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>受控執行個體調整作業之後，無法執行分散式交易
+
+受控執行個體包含變更服務層級或虛擬核心數目的調整作業，會在後端重設伺服器信任群組設定，並停用執行中的 [分散式交易](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 若要解決此問題，請在 Azure 入口網站上刪除並建立新的 [伺服器信任群組](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) 。
+
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT 和備份/還原語句無法使用受控識別來存取 Azure 儲存體
 
 Bulk insert 語句無法使用 `DATABASE SCOPED CREDENTIAL` With 受控識別來向 Azure 儲存體進行驗證。 若要解決此問題，請切換到共用存取簽章驗證。 下列範例將無法在 Azure SQL (資料庫和受控執行個體) 上運作：
@@ -146,7 +156,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 在某些情況下，用來存取 Azure AD 和 Azure Key Vault (AKV) 服務的服務主體可能會有問題。 因此，此問題會影響 Azure AD authentication 和透明資料庫加密 (TDE) 與 SQL 受控執行個體的使用方式。 這可能是間歇性的連線問題，或是無法執行語句，例如從外部提供者建立登入/使用者，或是以登入/使用者身分執行。 在新的 Azure SQL 受控執行個體上使用客戶管理的金鑰來設定 TDE，在某些情況下可能也無法運作。
 
-因應**措施：若**要在執行任何 update 命令之前防止 SQL 受控執行個體發生此問題，或在更新命令之後遇到此問題，請移至 Azure 入口網站，存取 SQL 受控執行個體[Active Directory 系統管理](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)分頁。 確認您是否可以看到錯誤訊息「受控執行個體需要服務主體才能存取 Azure Active Directory。 按一下這裡以建立服務主體」。 如果您遇到這個錯誤訊息，請按一下該訊息，然後依照所提供的逐步指示進行，直到解決此錯誤為止。
+因應**措施：若**要在執行任何 update 命令之前防止 SQL 受控執行個體發生此問題，或在更新命令之後遇到此問題，請移至 Azure 入口網站，存取 SQL 受控執行個體 Active Directory 系統[管理](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)分頁。 確認您是否可以看到錯誤訊息「受控執行個體需要服務主體才能存取 Azure Active Directory。 按一下這裡以建立服務主體」。 如果您遇到這個錯誤訊息，請按一下該訊息，然後依照所提供的逐步指示進行，直到解決此錯誤為止。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>還原沒有總和檢查碼的手動備份可能會失敗
 

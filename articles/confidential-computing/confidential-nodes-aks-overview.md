@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998361"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940764"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes Service 上的機密運算節點 (公開預覽)
 
@@ -40,7 +40,7 @@ Azure Kubernetes Service (AKS) 支援在 Intel SGX 上新增 [DCsv2 的機密運
 
 #### <a name="sgx-device-plugin"></a>SGX 裝置外掛程式 <a id="sgx-plugin"></a>
 
-SGX 裝置外掛程式會實作 EPC 記憶體的 Kubernetes 裝置外掛程式介面。 實際上，此外掛程式會使 EPC 記憶體成為 Kubernetes 中的額外資源類型。 使用者可以指定此資源的限制，就像其他資源一樣。 除了排程函式以外，裝置外掛程式也有助於將 SGX 裝置驅動程式權限指派給機密工作負載容器。 如需 EPC 記憶體型部署 (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) 範例的範例實作，請參閱[這裡](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml)
+SGX 裝置外掛程式會實作 EPC 記憶體的 Kubernetes 裝置外掛程式介面。 實際上，此外掛程式會使 EPC 記憶體成為 Kubernetes 中的額外資源類型。 使用者可以指定此資源的限制，就像其他資源一樣。 除了排程函式以外，裝置外掛程式也有助於將 SGX 裝置驅動程式權限指派給機密工作負載容器。 如需 EPC 記憶體型部署 (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) 範例的範例實作，請參閱[這裡](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)
 
 #### <a name="sgx-quote-helper-service"></a>SGX 引用協助程式服務 <a id="sgx-quote"></a>
 
