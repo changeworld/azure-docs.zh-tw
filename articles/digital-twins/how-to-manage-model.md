@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a7fcd32335b5d9e04986355adeea473cf77b970e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5fd297545e7f07844e28a1f56e724a7f61916bee
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048197"
+ms.locfileid: "92057734"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -148,19 +148,19 @@ client.CreateModels(dtdlStrings);
 // 'client' is a valid DigitalTwinsClient object
 
 // Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
+ModelData md1 = client.GetModel(id);
 
 // Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
+Pageable<ModelData> pmd2 = client.GetModels();
 
 // Get a list of metadata and full model definitions
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(null, true);
+Pageable<ModelData> pmd3 = client.GetModels(null, true);
 
 // Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
+Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 ```
 
-用以取得模型的 API 呼叫會傳回 `DigitalTwinsModelData` 物件。 `DigitalTwinsModelData` 包含 Azure 數位 Twins 實例中所儲存之模型的相關中繼資料，例如模型的名稱、DTMI 和建立日期。 `DigitalTwinsModelData`物件也可以選擇性地包含模型本身。 根據參數，您可以使用抓取呼叫來取出中繼資料 (這在您想要顯示可用工具 UI 清單的情況下很有用，例如) 或整個模型。
+用以取得模型的 API 呼叫會傳回 `ModelData` 物件。 `ModelData` 包含 Azure 數位 Twins 實例中所儲存之模型的相關中繼資料，例如模型的名稱、DTMI 和建立日期。 `ModelData`物件也可以選擇性地包含模型本身。 根據參數，您可以使用抓取呼叫來取出中繼資料 (這在您想要顯示可用工具 UI 清單的情況下很有用，例如) 或整個模型。
 
 `RetrieveModelWithDependencies`呼叫不僅會傳回要求的模型，也會傳回要求的模型所相依的所有模型。
 
@@ -224,7 +224,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 //...
 ```
 
-模型的解除委任狀態會包含在 `DigitalTwinsModelData` 模型抓取 api 所傳回的記錄中。
+模型的解除委任狀態會包含在 `ModelData` 模型抓取 api 所傳回的記錄中。
 
 #### <a name="deletion"></a>刪除
 

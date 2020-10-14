@@ -3,21 +3,21 @@ title: 什麼是異常偵測器 API？
 titleSuffix: Azure Cognitive Services
 description: 使用 Anomaly Detector API 的演算法，在時間序列資料上套用異常偵測。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/22/2020
-ms.author: aahi
+ms.author: mbullwin
 keywords: 異常偵測, 機器學習, 演算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319311"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016598"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
 

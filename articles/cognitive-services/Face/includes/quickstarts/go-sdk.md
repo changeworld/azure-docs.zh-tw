@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322941"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859368"
 ---
 開始使用適用於 Go 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -24,7 +24,6 @@ ms.locfileid: "91322941"
 * [尋找類似臉部](#find-similar-faces)
 * [建立並訓練人員群組](#create-and-train-a-person-group)
 * [識別臉部](#identify-a-face)
-* [取得用於移轉資料的快照集](#take-a-snapshot-for-data-migration)
 
 [參考文件](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK 下載](https://github.com/Azure/azure-sdk-for-go)
 
@@ -109,7 +108,6 @@ touch sample-app.go
 * [尋找類似臉部](#find-similar-faces)
 * [建立並訓練人員群組](#create-and-train-a-person-group)
 * [識別臉部](#identify-a-face)
-* [取得用於移轉資料的快照集](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -246,53 +244,6 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>取得用於移轉資料的快照集
-
-快照集功能可讓您將已儲存的臉部資料 (例如已完成訓練的 **PersonGroup**) 移至不同的 Azure 認知服務臉部訂用帳戶。 舉例來說，如果您已使用免費訂用帳戶建立 **PersonGroup** 物件，而且現在想要將該物件遷移至付費訂用帳戶，就可以使用此功能。 如需快照集功能的廣泛概觀，請參閱[遷移臉部資料](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
-
-在此範例中，您會遷移在[建立並訓練人員群組](#create-and-train-a-person-group)中所建立的 **PersonGroup**。 您可以先完成該區段，也可以使用您自己的臉部資料建構。
-
-### <a name="set-up-target-subscription"></a>設定目標訂用帳戶
-
-首先，您必須擁有第二個臉部資源 Azure 訂用帳戶；若要這麼做，請重複[設定](#setting-up)一節中的步驟。 
-
-接著，在 **main**方法頂端附近建立下列變數。 您還需要為 Azure 帳戶的訂用帳戶識別碼建立新的環境變數，以及為新的 (目標) 帳戶建立金鑰、端點和訂用帳戶識別碼。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-然後，將您的訂用帳戶識別碼值放入陣列中，以供後續步驟使用。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>驗證目標用戶端
-
-之後在指令碼中將原始用戶端物件儲存為來源用戶端，然後向目標訂用帳戶驗證新的用戶端物件。 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>擷取快照集
-
-下一個步驟是使用 **[Take](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** 來取得快照集，這會將原始訂用帳戶的臉部資料儲存至暫存的雲端位置。 此方法會傳回識別碼供您查詢作業的狀態。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-接下來，請查詢識別碼直到作業完成。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>套用快照集
-
-然後使用 **[Apply](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** 作業將新上傳的臉部資料寫入至目標訂用帳戶。 此方法也會傳回識別碼。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-再次查詢識別碼，直到作業完成。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-完成這些步驟後，您可以從新的 (目標) 訂用帳戶存取臉部資料建構。
-
 ## <a name="run-the-application"></a>執行應用程式
 
 使用 `go run <app-name>` 命令，從應用程式目錄執行臉部辨識應用程式。
@@ -308,7 +259,7 @@ go run sample-app.go
 * [入口網站](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-如果您在本快速入門中建立了 **PersonGroup**，但想要將其刪除，請呼叫 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** 方法。 如果您已使用本快速入門中的快照集功能來遷移資料，則還必須刪除已儲存到目標訂用帳戶的 **PersonGroup**。
+如果您在本快速入門中建立了 **PersonGroup**，但想要將其刪除，請呼叫 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** 方法。
 
 ## <a name="next-steps"></a>後續步驟
 

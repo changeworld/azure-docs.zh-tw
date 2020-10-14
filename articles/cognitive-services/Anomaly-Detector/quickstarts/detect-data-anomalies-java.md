@@ -3,20 +3,20 @@ title: 快速入門：使用 Anomaly Detector REST API 與 Java 偵測時間序�
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 Anomaly Detector API 來偵測資料序列中的異常狀況 (以批次或串流資料的形式)。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.custom: devx-track-java
-ms.author: aahi
-ms.openlocfilehash: 6c37ac4a8e43f8e11e37186e2438c4803556339e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: e23e9016b53a1d9f99809d792d710f865918a098
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90905760"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019676"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>快速入門：使用 Anomaly Detector REST API 與 Java 偵測時間序列資料中的異常狀況
 

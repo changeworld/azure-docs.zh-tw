@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319537"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966316"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中帶入並建立 Linux 映像
 
@@ -46,7 +46,7 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 
 ### <a name="generalized-images"></a>一般化映像
 
-一般化映像是一種映像，需要在第一次開機時完成設定。 例如，在第一次開機時，您會設定主機名稱、管理使用者和其他 VM 特定設定。 當您想要多次重複使用映像，以及當您想要在建立期間傳入參數時，這會很有用。 如果一般化映像包含 Azure 代理程式，代理程式將會處理參數，並且將初始設定已完成的訊號傳回平台。 這個程序稱為[佈建](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)。 
+一般化映像是一種映像，需要在第一次開機時完成設定。 例如，在第一次開機時，您會設定主機名稱、管理使用者和其他 VM 特定設定。 當您想要多次重複使用映像，以及當您想要在建立期間傳入參數時，這會很有用。 如果一般化映像包含 Azure 代理程式，代理程式將會處理參數，並且將初始設定已完成的訊號傳回平台。 這個程序稱為[佈建](./provisioning.md)。 
 
 佈建需要映像中包含佈建程式。 有兩個佈建程式：
 - [Azure Linux 代理程式](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 
 ## <a name="hyper-v-generation"></a>Hyper-V 世代
 
-Azure 支援 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)，Gen2 是最新的世代，提供超越 Gen1 的額外功能。 例如：記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。 在內部部署環境執行的第 2 代 VM 擁有一些 Azure 尚未支援的功能。 如需詳細資訊，請參閱「功能」一節。 如需詳細資訊，請參閱[本篇文章](../windows/generation-2.md)。 如果您需要額外的功能，請建立 Gen2 映像。
+Azure 支援 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)，Gen2 是最新的世代，提供超越 Gen1 的額外功能。 例如：記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。 在內部部署環境執行的第 2 代 VM 擁有一些 Azure 尚未支援的功能。 如需詳細資訊，請參閱「功能」一節。 如需詳細資訊，請參閱[本篇文章](../generation-2.md)。 如果您需要額外的功能，請建立 Gen2 映像。
 
 如果您仍然需要建立自己的映像，請確定其符合[映像必要條件](./create-upload-generic.md)，並上傳至 Azure。 發行版本特定需求：
 

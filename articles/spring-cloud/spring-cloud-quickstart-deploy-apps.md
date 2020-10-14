@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280584"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045392"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入門：建置應用程式並將其部署至 Azure Spring Cloud
 
@@ -261,7 +261,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 執行下列命令以複製 Git 存放庫：
 
     ```
-    git clone https://github.com/Azure-Samples/PiggyMetrics
+    git clone https://github.com/Azure-Samples/piggymetrics
     ```
   
 1. 變更目錄，並執行下列命令來建置專案：
@@ -276,7 +276,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 在包含父系 POM 的 PiggyMetrics 根資料夾中執行下列命令，以產生設定。 如果您已使用 Azure CLI 登入，此命令會自動挑選認證。 否則，系統會將您登入並出現提示指示。 如需詳細資訊，請參閱我們的 [Wiki 頁面](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)。
 
     ```
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.3.0:config
     ```
     
     系統會要求您選取：

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad62b59587f5ef7823e601cd8b6b526b75b8fd03
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82233120"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854608"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 Go 的 CI/CD 管線
 
@@ -123,4 +123,4 @@ DevOps 入門版會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏�
 若要深入了解如何修改建置與發行管線以符合小組的需求，請參閱：
 
 > [!div class="nextstepaction"]
-> [定義多階段的持續部署 (CD) 管線](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [定義多階段的持續部署 (CD) 管線](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

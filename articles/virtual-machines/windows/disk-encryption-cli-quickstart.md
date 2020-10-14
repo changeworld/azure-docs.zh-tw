@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3e501cd74d652e6415b6e8f750ddfb3d182a8387
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 08324cc32abdf78cf6ff9ef2d04352eb44f709ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87496129"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974204"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立和加密 Windows 虛擬機器
 
@@ -82,7 +82,7 @@ az vm encryption enable -g MyResourceGroup --name MyVM --disk-encryption-keyvaul
 您可以確認您的 VM 上啟用加密[az vm show](/cli/azure/vm/encryption#az-vm-encryption-show)
 
 ```azurecli-interactive
-az vm show --name MyVM -g MyResourceGroup
+az vm encryption show --name MyVM -g MyResourceGroup
 ```
 
 您也會在傳回的輸出中看到下列文字：

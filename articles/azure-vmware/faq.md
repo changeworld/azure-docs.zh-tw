@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bd75e3d708ddfb9d5545111e7bc4935c8dd50141
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bdfe3956d8c715e391270aab6b3c589430c91593
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045222"
+ms.locfileid: "92058024"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -76,6 +76,11 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 支援 VMware HCX 嗎？
 否。
 
+#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>是否可以使用 Azure 防禦來連接到 AVS Vm？
+Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。
+
+#### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案？
+是，您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要從內部部署透過 ExpressRoute 存取 Azure VMware 解決方案，您必須具有 ExpressRoute 全球存取範圍，因為 ExpressRoute 閘道不會在其連線線路之間提供可轉移的路由。
 
 ## <a name="compute-network-storage-and-backup"></a>計算、網路、儲存體和備份
 
@@ -139,7 +144,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>我是否可以針對試用叢集使用高階主機？
 
-不可以。 高階 ESXi 主機已保留供生產叢集使用。
+否。 高階 ESXi 主機已保留供生產叢集使用。
 
 ## <a name="azure-vmware-solution-and-vmware-software"></a>Azure VMware 解決方案和 VMware 軟體
 

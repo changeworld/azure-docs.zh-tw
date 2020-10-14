@@ -14,18 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6677b6f1103c26bd719a3585800765a029f7fb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77587986"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056833"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>將 Zscaler 網際網路存取連線到 Azure Sentinel
-
-> [!IMPORTANT]
-> Azure Sentinel 中的 Zscaler 資料連線器目前處於公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文說明如何將您的 Zscaler Internet Access 設備連線至 Azure Sentinel。 Zscaler data connector 可讓您輕鬆地將 Zscaler 的網際網路存取 (ZIA) 記錄與 Azure Sentinel，以查看儀表板、建立自訂警示，以及改進調查。 在 Azure Sentinel 上使用 Zscaler，可讓您深入瞭解組織的網際網路使用方式，並將增強其安全性作業功能。 
 

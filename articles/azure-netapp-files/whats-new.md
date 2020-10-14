@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571542"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932408"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files 的新功能
 
@@ -31,7 +31,7 @@ Azure NetApp Files 會定期更新。 本文提供最新功能和增強功能的
 
   Azure NetApp Files 現在支援跨區域複寫。 有了這項新的災害復原功能，您即可利用快速且符合成本效益的方式，將您的 Azure NetApp Files 磁碟區從一個 Azure 區域複寫到另一個 Azure 區域，保護您的資料免於受到無法預見的區域失敗。 Azure NetApp Files 跨區域複寫會利用 NetApp SnapMirror® 技術；只有變更的區塊會以壓縮且有效率的格式透過網路傳送。 這項專屬技術可將跨區域複寫所需的資料量降到最低，因而節省資料傳輸成本。 其也會縮短複寫時間，讓您可以達到較小的復原點目標 (RPO)。
 
-* [手動 QoS 容量集區](manage-manual-qos-capacity-pool.md) (預覽)  
+* [手動 QoS 容量集區](manual-qos-capacity-pool-introduction.md) (預覽)  
 
     在手動 QoS 容量集區中，您可以個別指派磁碟區的容量和輸送量。 以手動 QoS 容量集區建立的所有磁碟區輸送量總計，受限於集區的輸送量總計。 這是由集區大小和服務層級輸送量的組合所決定。 或者，容量集區的 [QoS 類型](azure-netapp-files-understand-storage-hierarchy.md#qos_types) 可以是 [自動 (自動)]，此為預設值。 在自動 QoS 容量集區中，輸送量會自動指派給集區中的磁碟區，並與指派給磁碟區的大小配額成正比。
 

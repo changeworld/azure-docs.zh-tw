@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773381"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825934"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -81,7 +81,7 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="以動作偵測為基礎的 Live Video Analytics":::
-1. <!--In Visual Studio Code-->選取 [檢視] > [Explorer]。 或選取 Ctrl+Shift+E。
+1. 選取 [檢視] > [Explorer]。 或選取 Ctrl+Shift+E。
 1. 在 [總管] 索引標籤的左下角，選取 [Azure IoT 中樞]。
 1. 選取 [其他選項] 圖示，以查看捷徑功能表。 然後選取 [設定 IoT 中樞連接字串]。
 1. 輸入方塊出現時，請輸入您的 IoT 中樞連接字串。 在 Cloud Shell 中，您可以從 *~/clouddrive/lva-sample/appsettings.json* 取得連接字串。

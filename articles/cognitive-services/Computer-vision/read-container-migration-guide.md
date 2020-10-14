@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530454"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973116"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>遷移至 Read v3. x OCR 容器
 
@@ -65,10 +65,10 @@ Read v3.x 容器會使用第 3 版的電腦視覺 API，並具有下列端點：
 >[!NOTE]
 > 在 3.x 版的容器中，已不再支援 MongoDB。 相反地，容器支援 Azure 儲存體和離線檔案系統。
 
-| 實作 |  必要的執行時間引數 |
+| 實作 |    必要的執行時間引數 |
 |---------|---------|
-|檔案層級 (預設)   | 不需要任何執行階段引數。 將使用 `/share` 目錄。 |
-|Azure Blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|檔案層級 (預設)    | 不需要任何執行階段引數。 將使用 `/share` 目錄。 |
+|Azure Blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>佇列實作
 
@@ -78,7 +78,7 @@ Read v3.x 容器會使用第 3 版的電腦視覺 API，並具有下列端點：
 |---------|---------|-------|
 | 在記憶體中 (預設) | 不需要任何執行階段引數。 | 開發與測試 |
 | Azure 佇列 | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | 生產 |
-| RabbitMQ  | [無法使用] | 生產 |
+| RabbitMQ    | [無法使用] | 生產 |
 
 針對新增的備援，Read v3.x 容器會使用可見度計時器，以確保在多容器設定中執行期間發生損毀時成功處理要求。 
 
@@ -86,7 +86,7 @@ Read v3.x 容器會使用第 3 版的電腦視覺 API，並具有下列端點：
 
 | 預設值 | 建議值 |
 |---------|---------|
-| 30000 |   120000 |
+| 30000 |    120000 |
 
 
 ## <a name="next-steps"></a>後續步驟

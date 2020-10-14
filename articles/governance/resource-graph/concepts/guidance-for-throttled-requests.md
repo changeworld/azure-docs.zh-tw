@@ -1,15 +1,15 @@
 ---
 title: 節流要求指引
 description: 了解如何以平行方式分組、錯開、編頁和查詢，以避免要求受到 Azure Resource Graph 的節流。
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006001"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056169"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph 中的節流要求指導方針
 
@@ -132,7 +132,7 @@ Azure Resource Graph 會根據時間範圍，為每個使用者配置配額編�
   |---------------------|-----|------|-------|-------|
   | 時間間隔 (秒) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-以下是在查詢 Azure Resource Graph 時遵循節流標頭的範例：
+以下是查詢 Azure Resource Graph 時遵循節流標頭的範例：
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>以平行方式查詢
 
-雖然建議在平行處理時使用群組，但有時候查詢無法輕鬆地分組。 在這些情況下，您可能會想要以平行方式傳送多個查詢來查詢 Azure Resource Graph。 以下範例說明如何在這類情況下，根據節流標頭來進行輪詢：
+雖然建議在平行處理時使用群組，但有時候查詢無法輕鬆地分組。 在這些情況下，您可能會想要以平行方式傳送多個查詢來查詢 Azure Resource Graph。 以下是 _如何根據這_ 類案例中的節流標頭進行輪詢的範例：
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 - Azure CLI / Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 時，將自動對 Azure Resource Graph 的查詢進行編頁，以擷取最多 5000 個項目。 查詢結果會從所有編頁呼叫傳回結合的項目清單。 在此情況下，視查詢結果中的項目數目而定，單一編頁查詢可能會耗用一個以上的查詢配額。 例如，在下列範例中，查詢的單一執行可能會耗用最多五個查詢配額：
+  使用 Azure CLI 或 Azure PowerShell 時，將自動對 Azure Resource Graph 的查詢進行編頁，以擷取最多 5000 個項目。 查詢結果會從所有編頁呼叫傳回結合的項目清單。 在此情況下，視查詢結果中的項目數目而定，單一編頁查詢可能會耗用一個以上的查詢配額。 例如，在下列範例中，單一執行查詢最多可能耗用五個查詢配額：
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

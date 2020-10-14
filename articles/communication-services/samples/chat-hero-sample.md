@@ -2,19 +2,19 @@
 title: 群組聊天 Hero 範例
 titleSuffix: An Azure Communication Services sample overview
 description: 概述使用 Azure 通訊服務的聊天 Hero 範例，讓開發人員可以深入了解範例的內部運作，並了解如何加以修改。
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460555"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962984"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>開始使用群組聊天 Hero 範例
 
@@ -78,7 +78,6 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 2. `git clone https://github.com/Azure/Communication.git`
 3. 從 Azure 入口網站取得 `Connection String`。 如需連接字串的詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)
 4. 取得 `Connection String` 之後，請將連接字串新增至聊天資料夾下找到的 **Chat/appsettings** 檔案。 在變數中輸入您的連接字串：`ResourceConnectionString`。
-5. 以資源的位置更新 `./Chat/ClientApp/src/constants.tsx` 中的 ENVIRONMENT_URL。 (例如 https://<RESOURCE_NAME>.communication.azure.com)
 
 ### <a name="local-run"></a>本機執行
 
@@ -115,6 +114,6 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 
 - [Azure 通訊 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 頁面上尋找更多範例和資訊
 - [Redux](https://redux.js.org/) - 用戶端狀態管理
-- [FluentUI](https://developer.microsoft.com/fluentui#/) - Microsoft 支援的 UI 程式庫
+- [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支援的 UI 程式庫
 - [React](https://reactjs.org/) - 用來建置使用者介面的程式庫
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用來建置 Web 應用程式的架構

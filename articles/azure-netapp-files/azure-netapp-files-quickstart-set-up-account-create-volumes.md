@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 088961d58cee2f1bb0c6ac042d9d8ee2ad50ba14
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533888"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931341"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入門：設定 Azure NetApp Files 並建立 NFS 磁碟區 
 
@@ -164,7 +164,7 @@ ms.locfileid: "91533888"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-下列程式碼片段示範如何使用 [Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) 資源，在 Azure Resource Manager 範本 (ARM 範本) 中建立 NetApp 帳戶。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+下列程式碼片段示範如何使用 [Microsoft.NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) 資源，在 Azure Resource Manager 範本 (ARM 範本) 中建立 NetApp 帳戶。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -238,7 +238,7 @@ ms.locfileid: "91533888"
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-下列程式碼片段示範如何使用 [Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) 資源，在 Azure Resource Manager 範本 (ARM 範本) 中建立集區。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+下列程式碼片段示範如何使用 [Microsoft.NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) 資源，在 Azure Resource Manager 範本 (ARM 範本) 中建立集區。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -387,7 +387,7 @@ ms.locfileid: "91533888"
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
 
-下列程式碼片段示範如何在 Azure Resource Manager 範本 (ARM 範本) 中設定 VNet 並建立 Azure NetApp Files 磁碟區。 設定 VNet 時會使用 [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) 的資源。 建立磁碟區時會使用 [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) 資源。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+下列程式碼片段示範如何在 Azure Resource Manager 範本 (ARM 範本) 中設定 VNet 並建立 Azure NetApp Files 磁碟區。 設定 VNet 時會使用 [Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) 的資源。 建立磁碟區時會使用 [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) 資源。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -465,4 +465,4 @@ ms.locfileid: "91533888"
 > [!div class="nextstepaction"]
 > [Azure NetApp Files 的儲存體階層](azure-netapp-files-understand-storage-hierarchy.md)   
 > [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)   
-> [建立 NFS 磁碟區](azure-netapp-files-create-volumes.md)   
+> [建立 NFS 磁碟區](azure-netapp-files-create-volumes.md)

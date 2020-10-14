@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b63e1c0bba4d6ac250119c2ac0d9a1cd0e4ee362
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 6dfd63f92b8c420a3c5281ee2962b211b8779dd1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577011"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045052"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-java"></a>快速入門：將在 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (Java)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91577011"
 
 若要在 Windows 上完成此快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中，選取 [長期支援] 下的 [Java 8]。
+* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)中，選取 [長期支援] 下的 [Java 8]。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ## <a name="download-the-code"></a>下載程式碼
@@ -119,4 +119,4 @@ Date since = new Gson().fromJson(jsonRequest, Date.class);
 在本快速入門中，您已了解如何將 IoT 隨插即用裝置連線至 IoT 中樞。 若要深入了解如何建置與 IoT 隨插即用裝置互動的解決方案，請參閱：
 
 > [!div class="nextstepaction"]
-> [操作說明：連線到裝置並與其互動](howto-develop-solution.md)
+> [操作說明：連線到裝置並與其互動](./quickstart-service-node.md)

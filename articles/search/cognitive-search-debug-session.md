@@ -3,17 +3,17 @@ title: " (預覽) 的 Debug 會話概念"
 titleSuffix: Azure Cognitive Search
 description: 透過 Azure 入口網站來存取的偵錯工作階段，提供類似於 IDE 的環境，您可以在其中識別並修正錯誤、驗證變更，以及將變更推送至 AI 擴充管線中的技能。 偵錯工作階段處於預覽狀態。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743177"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057615"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Debug 話
 
