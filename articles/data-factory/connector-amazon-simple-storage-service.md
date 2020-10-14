@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: b010a90929a5eb905f21ebe23aa971f05d210941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: f9907b746c1dceb0b0e847c09ea4a549138f0064
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282692"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047721"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -47,10 +47,9 @@ ms.locfileid: "91282692"
 
 ## <a name="required-permissions"></a>所需的權限
 
-若要從 Amazon S3 複製資料，請確定您已獲得下列許可權：
+若要從 Amazon S3 複製資料，請確定您已授與 Amazon S3 物件作業的下列許可權： `s3:GetObject` 和 `s3:GetObjectVersion` 。
 
-- **針對「複製活動執行**：」 `s3:GetObject` 和「 `s3:GetObjectVersion` Amazon S3 物件作業」。
-- **針對 Data Factory GUI 撰寫**： `s3:ListAllMyBuckets` 和 `s3:ListBucket` / `s3:GetBucketLocation` 適用于 Amazon S3 bucket 作業。 測試連接和流覽檔案路徑等作業也需要許可權。 如果您不想要授與這些許可權，請在 [連結的服務建立] 頁面上略過 [測試連接]，並在 [資料集設定] 中直接指定路徑。
+如果您使用 Data Factory UI 來撰寫，則 `s3:ListAllMyBuckets` `s3:ListBucket` / `s3:GetBucketLocation` 作業需要額外的和許可權，例如測試與連結服務的連接，以及從根流覽。 如果您不想要授與這些許可權，您可以從 UI 選擇 [測試與檔案路徑的連接] 或 [從指定的路徑流覽] 選項。
 
 如需 Amazon S3 許可權的完整清單，請參閱在 AWS 網站上 [指定原則中的許可權](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) 。
 
@@ -77,7 +76,7 @@ ms.locfileid: "91282692"
 >[!TIP]
 >如果您是從與 S3 相容的儲存體（而非官方 Amazon S3 服務）複製資料，請指定自訂 S3 服務 URL。
 
-以下為範例：
+以下是範例：
 
 ```json
 {

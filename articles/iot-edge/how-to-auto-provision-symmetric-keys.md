@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 791aadf349654e1e62c3ac2b98a955de7b46c0b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 10ed546e8f05f4a93e4523c7870f79d41aa1f622
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966112"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045987"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用對稱金鑰證明來建立和布建 IoT Edge 裝置
 
@@ -26,9 +26,9 @@ Azure IoT Edge 裝置可以使用裝置布建 [服務](../iot-dps/index.yml) 來
 * 建立裝置的個別註冊。
 * 安裝 IoT Edge 執行時間，並連接到 IoT 中樞。
 
-對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [x.509 憑證](../iot-dps/concepts-security.md#x509-certificates) 的裝置證明更為安全，而且應該用於更嚴格的安全性需求。
+對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [x.509 憑證](../iot-dps/concepts-x509-attestation.md) 的裝置證明更為安全，而且應該用於更嚴格的安全性需求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 主動 IoT 中樞
 * 實體或虛擬裝置
@@ -81,7 +81,7 @@ Azure IoT Edge 裝置可以使用裝置布建 [服務](../iot-dps/index.yml) 來
 
    1. 選擇當裝置第一次要求布建時， **您要如何在重新布建時處理裝置資料** 。
 
-   1. 視需要將標記值新增至 [初始裝置對應項狀態]****。 您可以使用標記將裝置群組設定為模組部署的目標。 例如：
+   1. 視需要將標記值新增至 [初始裝置對應項狀態]****。 您可以使用標記將裝置群組設定為模組部署的目標。 例如︰
 
       ```json
       {

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a2345dce542f941df0122acd12b4acedd3b49a3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561426"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047229"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用裝置布建服務 (DPS) 自動管理 Azure 數位 Twins 中的裝置
 
@@ -22,7 +22,7 @@ ms.locfileid: "90561426"
 
 如需有關布建和_淘汰__階段的詳細_資訊，並進一步瞭解所有企業 IoT 專案通用的一般裝置管理階段，請參閱 IoT 中樞裝置管理檔的[*裝置生命週期*一節](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您可以設定布建之前，您必須擁有包含模型和 Twins 的 **Azure 數位 Twins 實例** 。 此實例也應該設定為根據資料更新數位對應項資訊。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "90561426"
 * Azure Digital Twins 執行個體**_主機名稱_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure 事件中樞連接字串 **_連接字串_** ([在入口網站中尋找](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal)) 
 
-此範例也會使用 **裝置** 模擬器，其中包含使用裝置布建服務進行布建。 裝置模擬器位於此處： [Azure 數位 Twins 和 IoT 中樞整合範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 流覽至範例連結，然後選取標題底下的 [ *下載 ZIP* ] 按鈕，以取得電腦上的範例專案。 將下載的資料夾解壓縮。
+此範例也會使用 **裝置** 模擬器，其中包含使用裝置布建服務進行布建。 裝置模擬器位於此處： [Azure 數位 Twins 和 IoT 中樞整合範例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 流覽至範例連結，然後選取標題底下的 [ *下載 ZIP* ] 按鈕，以取得電腦上的範例專案。 將下載的資料夾解壓縮。
 
 裝置模擬器是以 **Node.js**10.0. x 版或更新版本為基礎。 [*準備您的開發環境*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) ，說明如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
 
@@ -69,7 +69,7 @@ ms.locfileid: "90561426"
 
 建立將用來布建 IoT 裝置的裝置布建服務實例。 您可以使用下列 Azure CLI 指示，或使用 Azure 入口網站： [*快速入門：設定 IoT 中樞裝置布建服務與 Azure 入口網站*](../iot-dps/quick-setup-auto-provision.md)。
 
-下列 Azure CLI 命令會建立裝置布建服務。 您將需要指定名稱、資源群組和區域。 如果您的[電腦上已安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
+下列 Azure CLI 命令會建立裝置布建服務。 您將需要指定名稱、資源群組和區域。 如果您的[電腦上已安裝](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
 
 ```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -258,7 +258,7 @@ az functionapp config appsettings set --settings "AdtAppId=<Application (client)
 
 ### <a name="set-up-the-device-simulator"></a>設定裝置模擬器
 
-此範例會使用裝置模擬器，其中包含使用裝置布建服務進行布建。 裝置模擬器位於此處： [Azure 數位 Twins 和 IoT 中樞整合範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 如果您尚未下載範例，請流覽至範例連結，然後選取標題底下的 [ *下載 ZIP* ] 按鈕，以立即取得範例。 將下載的資料夾解壓縮。
+此範例會使用裝置模擬器，其中包含使用裝置布建服務進行布建。 裝置模擬器位於此處： [Azure 數位 Twins 和 IoT 中樞整合範例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 如果您尚未下載範例，請流覽至範例連結，然後選取標題底下的 [ *下載 ZIP* ] 按鈕，以立即取得範例。 將下載的資料夾解壓縮。
 
 開啟命令視窗，並流覽至已下載的資料夾，然後流覽至 *裝置* 模擬器目錄。 使用下列命令來安裝專案的相依性：
 
@@ -447,7 +447,7 @@ namespace Samples.AdtIothub
 
 接下來，您必須在您的函數應用程式中設定舊版的環境變數，其中包含您所建立之 Azure 數位 Twins 實例的參考，以及事件中樞。 如果您使用了端對端教學課程 (教學課程 [*：連接端對端解決方案*](./tutorial-end-to-end.md)) ，則會先設定第一個設定。
 
-使用這個 Azure CLI 命令新增設定。 如果您的[電腦上已安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
+使用這個 Azure CLI 命令新增設定。 如果您的[電腦上已安裝](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
 
 ```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -480,7 +480,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 在本文的前半 [部](#auto-provision-device-using-device-provisioning-service)，您已在 IoT 中樞內建立裝置，以及對應的數位對應項。 
 
-現在，移至 IoT 中樞並刪除該裝置 (您可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) 或 [Azure 入口網站](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 來執行此動作。 
+現在，移至 IoT 中樞並刪除該裝置 (您可以使用 [Azure CLI 命令](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) 或 [Azure 入口網站](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)) 來執行此動作。 
 
 裝置將會自動從 Azure 數位 Twins 中移除。 
 
@@ -497,7 +497,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 如果您不再需要本文中建立的資源，請遵循下列步驟來刪除這些資源。
 
-使用 Azure Cloud Shell 或本機 Azure CLI，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組;Azure 數位 Twins 實例;IoT 中樞和中樞裝置註冊;事件方格主題和相關聯的訂閱;事件中樞命名空間和這兩個 Azure Functions apps，包括儲存體等相關聯的資源。
+使用 Azure Cloud Shell 或本機 Azure CLI，您可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組;Azure 數位 Twins 實例;IoT 中樞和中樞裝置註冊;事件方格主題和相關聯的訂閱;事件中樞命名空間和這兩個 Azure Functions apps，包括儲存體等相關聯的資源。
 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 

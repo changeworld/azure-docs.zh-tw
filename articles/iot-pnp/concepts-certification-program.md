@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9580f1c7a29b19bb926a7079b95cb3ed0b314d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579639"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048095"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>什麼是 Azure 認證裝置程式？
 
@@ -102,7 +102,7 @@ _Edge 受控_憑證是 Azure 認證裝置認證的漸進式認證，著重于執
 
 這個階段會與您的裝置互動，並在裝置使用 DPS 連接到 IoT 中樞之後執行一系列的測試。 完成時，您可以使用裝置測試結果來查看一組記錄檔。
 
-認證入口網站有關于如何連線至用於測試的 IoT 中樞實例的指示。 您可以透過任何 [支援的證明方法](https://aka.ms/acdAttestation)來建立 DPS 連接。
+認證入口網站有關于如何連線至用於測試的 IoT 中樞實例的指示。 您可以透過任何 [支援的證明方法](../iot-dps/concepts-service.md#attestation-mechanism)來建立 DPS 連接。
 
 Azure 認證裝置團隊可以聯繫裝置產生器，以進一步手動驗證裝置。
 

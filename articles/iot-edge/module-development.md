@@ -8,12 +8,12 @@ ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fffa227c4b8bb01c736c70d8d2cd30c57f416c4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: eae36f6b4baabdcc9831b084602d340a299a7bac
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876578"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047619"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>開發您自己的 IoT Edge 模組
 
@@ -65,7 +65,7 @@ IoT Edge 中樞會根據[模組資訊清單](module-composition.md)中所述的�
 1. 在您的應用程式中建立 ModuleClient 執行個體。
 2. 請確定您的應用程式接受 IoT Edge 中樞在該裝置上所提供的憑證。
 
-建立 ModuleClient 執行個體，以便將您的模組連接到裝置上執行的 IoT Edge 中樞，這與 DeviceClient 執行個體將 IoT 裝置連接到 IoT 中樞的方式類似。 如需 ModuleClient 類別及其通訊方法的詳細資訊，請參閱您慣用 SDK 語言的 API 參考： [c #](/dotnet/api/microsoft.azure.devices.client.moduleclient)、 [c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、 [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、 [JAVA](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)或 [Node.js](/javascript/api/azure-iot-device/moduleclient)。
+建立 ModuleClient 執行個體，以便將您的模組連接到裝置上執行的 IoT Edge 中樞，這與 DeviceClient 執行個體將 IoT 裝置連接到 IoT 中樞的方式類似。 如需 ModuleClient 類別及其通訊方法的詳細資訊，請參閱您慣用 SDK 語言的 API 參考： [c #](/dotnet/api/microsoft.azure.devices.client.moduleclient)、 [c](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、 [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、 [JAVA](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)或 [Node.js](/javascript/api/azure-iot-device/moduleclient)。
 
 ## <a name="language-and-architecture-support"></a>語言和架構支援
 

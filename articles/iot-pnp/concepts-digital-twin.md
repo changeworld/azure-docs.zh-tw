@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578048"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046463"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>了解 IoT 隨插即用數位分身
 
@@ -230,7 +230,7 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 在此範例中， `3.0` 是裝置所報告之屬性的目前值 `fanSpeed` 。 `2.0` 是解決方案所設定的所需值。 根層級屬性所需的值和同步處理狀態，是在數位對應項的根層級中設定 `$metadata` 。 當裝置上線時，它可以套用此更新，並回報更新的值。
 
-### <a name="components"></a>元件
+### <a name="components"></a>單元
 
 元件可讓您將模型介面建立成其他介面的元件。
 請考慮定義為模型的 [控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) 介面。
@@ -307,7 +307,7 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ## <a name="digital-twin-apis"></a>數位對應項 Api
 
-Azure 數位 Twins 配備了 **取得數位**對應項、 **更新數位**對應項、叫用 **元件命令** ，以及叫用 **命令** 來管理裝置數位對應項。 您可以直接使用 [REST api](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) ，或透過 [服務 SDK](../iot-pnp/libraries-sdks.md)來使用。
+Azure 數位 Twins 配備了 **取得數位**對應項、 **更新數位**對應項、叫用 **元件命令** ，以及叫用 **命令** 來管理裝置數位對應項。 您可以直接使用 [REST api](/rest/api/iothub/service/digitaltwin) ，或透過 [服務 SDK](../iot-pnp/libraries-sdks.md)來使用。
 
 ## <a name="digital-twin-change-events"></a>數位分身變更事件
 
@@ -383,5 +383,5 @@ content-encoding:utf-8
 
 - [如何使用 IoT 隨插即用數位對應項 Api](howto-manage-digital-twin.md)
 - [從您的解決方案與裝置互動](quickstart-service-node.md)
-- [IoT 數位對應項 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT 數位對應項 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 總管](howto-use-iot-explorer.md)

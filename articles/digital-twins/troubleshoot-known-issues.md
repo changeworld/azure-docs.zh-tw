@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290773"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047636"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -30,7 +30,7 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 若要解決此問題，您可以 `az login` 在 Cloud Shell 中重新執行命令，並完成後續的登入步驟。 在此之後，您應該可以重新執行此命令。
 
-替代解決方案是在您 [的電腦上安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ，以便您可以在本機執行 Azure CLI 命令。 本機 CLI 不會遇到此問題。
+替代解決方案是在您 [的電腦上安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ，以便您可以在本機執行 Azure CLI 命令。 本機 CLI 不會遇到此問題。
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -60,7 +60,7 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>互動式瀏覽器驗證的問題
 
-當您在 Azure 數位 Twins 應用程式中使用** [Azure 身分識別](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)程式庫**的版本**1.2.0**來撰寫驗證碼時，您可能會遇到[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法的問題。
+當您在 Azure 數位 Twins 應用程式中使用** [Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet)程式庫**的版本**1.2.0**來撰寫驗證碼時，您可能會遇到[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法的問題。
 
 這不是最新版本的程式庫。 最新版本是 **1.2.2**。
 

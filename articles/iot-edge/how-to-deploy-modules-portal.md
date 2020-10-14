@@ -4,17 +4,16 @@ description: 使用 Azure 入口網站中的 IoT 中樞，將 IoT Edge 模組從
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978793"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048027"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>從 Azure 入口網站部署 Azure IoT Edge 模組
 
@@ -35,6 +34,11 @@ ms.locfileid: "91978793"
 
 Azure 入口網站有一個精靈，可以引導您建立部署資訊清單，而不用手動建置 JSON 文件。 它有三個步驟：**新增模組**、**指定路由**和**檢閱部署**。
 
+>[!NOTE]
+>本文中的步驟反映 IoT Edge 代理程式和中樞的最新架構版本。 架構版本1.1 與 IoT Edge 1.0.10 版本一起發行，並啟用模組啟動順序和路由優先順序功能。
+>
+>如果您要部署至執行1.0.9 或更早版本的裝置，請在嚮導的 [**模組**] 步驟中編輯**執行時間設定**，以使用架構版本1.0。
+
 ### <a name="select-device-and-add-modules"></a>選取裝置並新增模組
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 IoT 中樞。
@@ -43,21 +47,30 @@ Azure 入口網站有一個精靈，可以引導您建立部署資訊清單，�
 1. 在上方列中，選取 [設定模組]。
 1. 在頁面的 [ **容器登錄設定** ] 區段中，提供認證以存取任何包含您模組映射的私人容器登錄。
 1. 在頁面的 [ **IoT Edge 模組** ] 區段中，選取 [ **新增**]。
-1. 從下拉式功能表中查看模組的類型：
+1. 從下拉式功能表中選擇三種類型的模組之一：
 
    * **IoT Edge 模組** -您提供模組名稱和容器映射 URI。 例如，範例 SimulatedTemperatureSensor 模組的映射 URI 為 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` 。 如果模組映射儲存在私人容器登錄中，請在此頁面上新增認證以存取映射。
    * **Marketplace 模組** -主控于 Azure Marketplace 中的模組。 某些 marketplace 模組需要額外的設定，因此請參閱 [Azure Marketplace IoT Edge 模組](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) 清單中的模組詳細資料。
    * **Azure 串流分析模組** -從 Azure 串流分析工作負載產生的模組。
 
-1. 新增模組之後，請從清單中選取模組名稱以開啟模組設定。 視需要填寫選擇性欄位。 如需容器建立選項、重新啟動原則和所需狀態的詳細資訊，請參閱 [EdgeAgent 所需屬性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 如需模組對應項的詳細資訊，請參閱[定義或更新所需屬性](module-composition.md#define-or-update-desired-properties)。
-1. 如有需要，請重複步驟5到8，將其他模組新增至您的部署。
+1. 新增模組之後，請從清單中選取模組名稱以開啟模組設定。 視需要填寫選擇性欄位。
+
+   如需可用模組設定的詳細資訊，請參閱 [模組設定和管理](module-composition.md#module-configuration-and-management)。
+
+   如需模組對應項的詳細資訊，請參閱[定義或更新所需屬性](module-composition.md#define-or-update-desired-properties)。
+
+1. 重複步驟6到步驟8，將其他模組新增至您的部署。
 1. 選取 **[下一步：路由]** 以繼續前往 [路由] 區段。
 
 ### <a name="specify-routes"></a>指定路由
 
-在 [路由] 索引標籤上，請定義要用來在模組與 IoT 中樞之間傳遞訊息的方式。 訊息會使用名稱/值組來構成。 根據預設，路由會呼叫 **route** 並定義為 **從/messages/ \* 到 $upstream**，這表示任何模組輸出的任何訊息都會傳送至您的 IoT 中樞。  
+在 [路由] 索引標籤上，請定義要用來在模組與 IoT 中樞之間傳遞訊息的方式。 訊息會使用名稱/值組來構成。 根據預設，新裝置的第一個部署包含稱為 **route** 的路由，並定義為 **從/messages/ \* 到 $upstream**，這表示任何模組輸出的任何訊息都會傳送至您的 IoT 中樞。  
 
-使用「宣告 [路由](module-composition.md#declare-routes)」中的資訊來新增或更新路由，然後選取 **[下一步：檢查 + 建立** ] 以繼續進行嚮導的下一個步驟。
+**Priority**和**Time to live**參數是選擇性參數，您可以將它們包含在路由定義中。 Priority 參數可讓您選擇應先處理其訊息的路由，或最後處理的路由。 優先順序是藉由設定數位0-9 來決定，其中0是最高優先順序。 [存留時間] 參數可讓您宣告該路由中的訊息在處理或從佇列中移除之前，應保留的時間長度。
+
+如需有關如何建立路由的詳細資訊，請參閱宣告 [路由](module-composition.md#declare-routes)。
+
+設定路由之後，請選取 **[下一步：檢查 + 建立** ] 繼續進行嚮導的下一個步驟。
 
 ### <a name="review-deployment"></a>檢閱部署
 

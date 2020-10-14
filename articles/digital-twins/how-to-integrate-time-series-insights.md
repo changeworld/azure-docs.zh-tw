@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eef56bd19ed9912625c8ddca3cbf9ff46a59309
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822171"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048061"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
 
@@ -20,7 +20,7 @@ ms.locfileid: "91822171"
 
 本文所述的解決方案可讓您收集及分析 IoT 解決方案的歷程記錄資料。 Azure 數位 Twins 非常適合用來將資料摘要到時間序列深入解析，因為它可讓您將多個資料流程相互關聯，並在將資訊傳送到時間序列深入解析之前將資訊標準化。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須要有 **Azure 數位 Twins 實例**，才能設定與時間序列深入解析之間的關聯性。 此實例應設定為根據資料更新數位對應項資訊，因為您需要更新對應項資訊幾次，才能看到時間序列深入解析中所追蹤的資料。 
 
@@ -58,7 +58,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 使用傳送和接收許可權建立 [授權規則](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) 。
+3. 使用傳送和接收許可權建立 [授權規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) 。
 
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
@@ -76,7 +76,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
     >[!NOTE]
     >目前 Cloud Shell 有**已知問題**會影響這些命令群組：`az dt route`、`az dt model`、`az dt twin`。
     >
-    >若要解決此問題，請在執行命令之前，先在 Cloud Shell 中執行 `az login`；或使用[本機 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，而不是 Cloud Shell。 如需這方面的詳細資訊，請參閱[疑難排解：Azure Digital Twins 中的已知問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解決此問題，請在執行命令之前，先在 Cloud Shell 中執行 `az login`；或使用[本機 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)，而不是 Cloud Shell。 如需這方面的詳細資訊，請參閱[疑難排解：Azure Digital Twins 中的已知問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -159,7 +159,7 @@ namespace SampleFunctionsApp
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 使用傳送和接收許可權建立[授權規則](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)
+3. 使用傳送和接收許可權建立[授權規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -203,7 +203,7 @@ namespace SampleFunctionsApp
 
 1. 在 Azure 入口網站中，開始建立時間序列深入解析資源。 
     1. 選取 **PAYG (預覽版) ** 定價層。
-    2. 您將需要為此環境選擇 **時間序列識別碼** 。 您的時間序列識別碼最多可以有三個值，您將在時間序列深入解析中用來搜尋資料。 在本教學課程中，您可以使用 **$dtId**。 在 [*選擇時間序列識別碼的最佳做法中，*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)深入瞭解如何選取識別碼值。
+    2. 您將需要為此環境選擇 **時間序列識別碼** 。 您的時間序列識別碼最多可以有三個值，您將在時間序列深入解析中用來搜尋資料。 在本教學課程中，您可以使用 **$dtId**。 在 [*選擇時間序列識別碼的最佳做法中，*](../time-series-insights/how-to-select-tsid.md)深入瞭解如何選取識別碼值。
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
@@ -213,7 +213,7 @@ namespace SampleFunctionsApp
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>開始將 IoT 資料傳送至 Azure 數位 Twins
 
-若要開始將資料傳送到時間序列深入解析，您必須開始更新 Azure 數位 Twins 中的數位對應項屬性，並變更資料值。 使用 [az dt](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) 對應項 update 命令。
+若要開始將資料傳送到時間序列深入解析，您必須開始更新 Azure 數位 Twins 中的數位對應項屬性，並變更資料值。 使用 [az dt](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) 對應項 update 命令。
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 65462937db4711066bdb8b31cc22de508321d701
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950902"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047058"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>使用 Azure Digital Twins CLI
 
@@ -35,13 +35,13 @@ ms.locfileid: "91950902"
 
 ## <a name="get-the-extension"></a>取得延伸模組
 
-Azure 數位 Twins 命令是 [適用于 Azure CLI 的 Azure IoT 擴充](https://github.com/Azure/azure-iot-cli-extension)功能的一部分。 您可以在命令集的參考檔中，查看命令的完整清單及其使用方式 `az iot` ： [ *az dt*命令參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)。
+Azure 數位 Twins 命令是 [適用于 Azure CLI 的 Azure IoT 擴充](https://github.com/Azure/azure-iot-cli-extension)功能的一部分。 您可以在命令集的參考檔中，查看命令的完整清單及其使用方式 `az iot` ： [ *az dt*命令參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)。
 
-您可以使用下列步驟，確定您擁有最新版本的擴充功能。 您可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 或 [本機 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)中執行這些命令。
+您可以使用下列步驟，確定您擁有最新版本的擴充功能。 您可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 或 [本機 Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)中執行這些命令。
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
 透過參考檔探索 CLI 和其完整的命令集：
-* [*az dt* 命令參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [*az dt* 命令參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

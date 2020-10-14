@@ -3,19 +3,19 @@ title: 如何將來自不同來源的資料摘要新增至計量建議程式
 titleSuffix: Azure Cognitive Services
 description: 將不同的資料摘要新增至計量 Advisor
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: aahi
-ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971943"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046905"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>將來自不同資料來源的資料摘要新增至計量 Advisor
 
@@ -43,7 +43,7 @@ ms.locfileid: "91971943"
 |[**Azure 資料總管 (Kusto)**](#kusto) | 基本<br>ManagedIdentity|
 |[**Azure Data Lake Storage Gen2**](#adl) | 基本<br>DataLakeGen2SharedKey<br>服務主體<br>Key vault 中的服務主體<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | 基本<br>ManagedIdentity<br>服務主體<br>Key vault 中的服務主體<br>AzureSQLConnectionString
-|[**Azure 資料表儲存體**](#table) | 基本 | 
+|[**Azure 表格儲存體**](#table) | 基本 | 
 |[**ElasticSearch**](#es) | 基本 |
 |[**Http 要求**](#http) | 基本 | 
 |[**InfluxDB (InfluxQL) **](#influxdb) | 基本 |
@@ -93,7 +93,7 @@ ms.locfileid: "91971943"
   
   * v1 (預設值) 
 
-      只接受計量 *名稱* 和 *值* 。 例如：
+      只接受計量 *名稱* 和 *值* 。 例如︰
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ ms.locfileid: "91971943"
 
   * v2
 
-      也接受計量 *維度* 和 *時間戳記* 。 例如：
+      也接受計量 *維度* 和 *時間戳記* 。 例如︰
       
       ``` JSON
       [
@@ -159,7 +159,7 @@ ms.locfileid: "91971943"
   * `%h` 為一小時的格式為 `HH`
   * `%M` 是格式化為的分鐘 `mm`
 
-計量建議程式目前支援 JSON 檔案中的資料架構，如下所示。 例如：
+計量建議程式目前支援 JSON 檔案中的資料架構，如下所示。 例如︰
 
 ``` JSON
 [

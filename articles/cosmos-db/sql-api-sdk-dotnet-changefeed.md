@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.openlocfilehash: e4c2969db560ff20cae2ed7b9ffbe0cea206c7a1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611566"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 變更摘要處理器 SDK：下載和版本資訊
@@ -27,14 +27,14 @@ ms.locfileid: "91611566"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
-> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST] (/rest/api
-> * [REST 資源提供者] (/rest/api
+> * [REST](/rest/api
+> * [REST 資源提供者](/rest/api
 > * [SQL](sql-api-query-reference.md)
-> * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [大量執行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [大量執行程式 - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
@@ -52,11 +52,11 @@ ms.locfileid: "91611566"
 ### <a name="v2-builds"></a>v2 組建
 
 ### <a name="232"></a><a id="2.3.2"></a>2.3.2
-* 新增了租用存放區與 [V3 SDK，可啟用熱遷移路徑。 應用程式可以遷移至 V3 SDK 並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
+* 已新增租用存放區與 V3 SDK 的相容性，這可啟用熱移轉路徑。 應用程式可以遷移至 V3 SDK，並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
 
 ### <a name="231"></a><a id="2.3.1"></a>2.3.1
-* 已更正當 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 找不到分割區， `FeedProcessing.IChangeFeedObserver.CloseAsync` 或目標複本與讀取會話不是最新狀態時，所傳送的關閉原因的案例。 在這些情況下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 現在會使用關閉原因。
-* 加入新的關閉原因 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` ，當目標複本與讀取會話不是最新狀態時，就會傳送此關閉原因以關閉變更摘要觀察者。
+* 已更正找不到分割區，或者目標複本並未保持讀取工作階段的最新狀態時，將 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 關閉原因傳送至 `FeedProcessing.IChangeFeedObserver.CloseAsync` 的情況。 在這些情況下，現在會使用 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` 和 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 關閉原因。
+* 已加入新的關閉原因 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable`，而當目標複本並未保持讀取工作階段的最新狀態時，就會傳送該原因以關閉變更摘要觀察者。
 
 ### <a name="230"></a><a id="2.3.0"></a>2.3.0
 * 已新增新方法 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 和對應的公用介面 `ICheckpointPartitionProcessorFactory`。 這可讓 `IPartitionProcessor` 介面進行實作，以使用內建的檢查點機制。 新的處理站與現有的 `IPartitionProcessorFactory` 類似，不同之處在於其 `Create` 方法還會採用 `ILeaseCheckpointer` 參數。
@@ -72,9 +72,9 @@ ms.locfileid: "91611566"
   * 已新增新的公用列舉值：`Monitoring.MonitoredOperation.ReadChangeFeed`。 當 `HealthMonitoringRecord.Operation` 的值設定為 `Monitoring.MonitoredOperation.ReadChangeFeed` 時，表示健康情況問題與讀取變更摘要有關。
 
 ### <a name="227"></a><a id="2.2.7"></a>2.2.7
-* 針對取得所有租用所需的時間比租用到期間隔更長（例如，由於網路問題所致），改善了負載平衡策略的情況：
-  * 在此案例中，用來將租用視為過期的負載平衡演算法，會導致使用中擁有者竊取租用。 這可能會觸發不必要的重新平衡許多租用。
-  * 此版本已修正此問題，方法是避免在取得已過期的租用時重試，而不會變更擁有者，並將取得到期的租用延後至下一個負載平衡反復專案。
+* 已改善取得所有租用的耗時超過租用到期間隔 (例如，因網路問題) 的情況下所適用的負載平衡策略：
+  * 在此情況下，負載平衡演算法過去會誤將租用認定為過期，而導致現行擁有者的租用遭到竊用。 這可能會對許多租用觸發不必要的重新平衡。
+  * 此版本已修正此問題，方法是在取得擁有者並未變更的過期租用時，避免在發生衝突時重試，並取得過期租用的作業延遲到下一次負載平衡反覆運算。
 
 ### <a name="226"></a><a id="2.2.6"></a>2.2.6
 * 改善觀察者例外狀況的處理。
@@ -84,7 +84,7 @@ ms.locfileid: "91611566"
 
 ### <a name="225"></a><a id="2.2.5"></a>2.2.5
 * 新增處理使用共用資料庫輸送量之分割集合的支援。
-  * 此版本修正了當分割結果分割為只建立一個子分割區索引鍵範圍（而不是兩個）的資料分割重新平衡時，在集合中分割時可能會發生的問題。 發生此情況時，變更摘要處理器可能會卡在刪除舊分割區索引鍵範圍的程序中，而無法建立新的租用。 此版本已經修正這個問題。
+  * 此版本會修正可能會在僅建立一個 (而非兩個) 子分割區索引鍵範圍之下，將結果分割為分割區重新平衡時，使用共用資料庫輸送量分割集合之期間發生的問題。 發生此情況時，變更摘要處理器可能會卡在刪除舊分割區索引鍵範圍的程序中，而無法建立新的租用。 此版本已經修正這個問題。
 
 ### <a name="224"></a><a id="2.2.4"></a>2.2.4
 * 已新增 ChangeFeedProcessorOptions.StartContinuation 屬性，以支援從要求接續 Token 啟動變更摘要。 只有在租用集合是空的或租用未設定 ContinuationToken 時，才會使用此屬性。 如果租用集合中的租用已設定 ContinuationToken，則會使用 ContinuationToken 並忽略 ChangeFeedProcessorOptions.StartContinuation。
@@ -100,11 +100,11 @@ ms.locfileid: "91611566"
 * 此版本會修正在處理受監視集合中的分割以及使用已分割之租用集合期間所發生的問題。 在處理已分割之分割區的租用時，可能不會刪除對應至該分割區的租用。 此版本已經修正這個問題。
 
 ### <a name="221"></a><a id="2.2.1"></a>2.2.1
-* 修正具有多個寫入區域和新的會話權杖格式的帳戶估算器計算。
+* 固定式估算程式計算，適用於具有多重寫入區域和新工作階段權杖格式的帳戶。
 
 ### <a name="220"></a><a id="2.2.0"></a>2.2.0
 * 已新增對分割區租用集合的支援。 分割區索引鍵必須定義為 /id。
-* 次要重大變更：已變更 IChangeFeedDocumentClient 介面和 ChangeFeedDocumentClient 類別的方法，以包含 RequestOptions 和 CancellationToken 參數。 IChangeFeedDocumentClient 是先進的擴充點，可讓您提供檔用戶端的自訂執行，以搭配變更摘要處理器使用，例如，裝飾 DocumentClient 並攔截對它的所有呼叫，以執行額外的追蹤、錯誤處理等等。使用此更新時，必須變更執行 IChangeFeedDocumentClient 的程式碼，以在執行時包含新的參數。
+* 次要重大變更：已變更 IChangeFeedDocumentClient 介面和 ChangeFeedDocumentClient 類別的方法，以包含 RequestOptions 和 CancellationToken 參數。 IChangeFeedDocumentClient 是一個進階擴充點，可讓您提供文件用戶端的自訂實作來與變更摘要處理器搭配使用 (例如，裝飾 DocumentClient)，並攔截所有對其呼叫來進行額外追蹤、錯誤處理等等。使用此更新，將必須變更實作 IChangeFeedDocumentClient 的程式碼，以便在實作中包含新參數。
 * 次要診斷改進。
 
 ### <a name="210"></a><a id="2.1.0"></a>2.1.0
@@ -191,14 +191,14 @@ ms.locfileid: "91611566"
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 > [!WARNING]
-> 2022年8月31日之後，Azure Cosmos DB 將不再進行錯誤修正、新增功能，以及為 SQL API 的 Azure Cosmos DB .NET 或 .NET Core SDK 版本提供支援。 如果您不想要進行升級，Azure Cosmos DB 服務會繼續提供從第1.x 版 SDK 傳送的要求。
+> 2022 年 8 月 31 日之後，Azure Cosmos DB 將不再進行錯誤 (bug) 修正、加入新功能，以及對適用於 SQL API 的 1.x 版 Azure Cosmos DB .NET 或 .NET Core SDK 提供支援。 如果您不想升級，從 1.x 版 SDK 傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
 
 <br/>
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
 | [2.3.2](#2.3.2) |2020 年 8 月 11 日 |--- |
-| [2.3.1](#2.3.1) |2020年7月30日 |--- |
+| [2.3.1](#2.3.1) |2020 年 7 月 30 日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |

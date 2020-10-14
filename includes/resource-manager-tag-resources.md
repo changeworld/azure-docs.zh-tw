@@ -9,15 +9,15 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80132216"
 ---
-如果使用者沒有套用標記的必要存取權，您可以將**標記參與者**角色指派給使用者。 如需詳細資訊，請參閱[教學課程：使用 RBAC 和 Azure 入口網站來授與使用者對 Azure 資源的存取權](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。
+如果使用者沒有套用套用標記的必要存取權，您可以將 [標記參與者] 角色指派給使用者。 如需詳細資訊，請參閱[教學課程：使用 RBAC 與 Azure 入口網站為使用者授與 Azure 資源的存取權](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-1. 若要查看資源或資源群組的標記，請在總覽中尋找現有的標記。 如果您先前尚未套用標記，清單就會是空的。
+1. 若要檢視資源或資源群組的標記，請在概觀中尋找現有的標記。 如果您先前尚未套用標記，清單就會是空的。
 
    ![檢視資源或資源群組的標記](./media/resource-manager-tag-resources/view-tags.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "80132216"
 
 將標籤大量指派給多個資源：
 
-1. 從任何資源的清單中，勾選您要指派標記的資源核取方塊。 然後，選取 [**指派**標籤]。
+1. 從任何資源的清單中，勾選您要指派標記的資源核取方塊。 然後，選取 [指派標記]。
 
    ![選取多個資源](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "80132216"
 
 若要檢視具有標記的所有資源：
 
-1. 在 [Azure 入口網站] 功能表上，搜尋**標記**。 從可用的選項中選取它。
+1. 在 Azure 入口網站功能表上，搜尋**標記**。 從可用的選項中進行選取。
 
    ![依標記尋找](./media/resource-manager-tag-resources/find-tags-general.png)
 

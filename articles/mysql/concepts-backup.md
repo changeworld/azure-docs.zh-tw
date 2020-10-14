@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: f64b5a186c026bf752d7975ac4337535ca64458e
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b3cc70eadfaa1295cd67fa3f2b36c97f107b4bad
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876527"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046990"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -19,18 +19,29 @@ ms.locfileid: "91876527"
 
 ## <a name="backups"></a>備份
 
-適用於 MySQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 根據支援的儲存體大小上限，我們會將完整和差異備份 (4 TB 的最大儲存體伺服器) 或快照集備份 (最多 16 TB 的儲存體伺服器) 。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以 [選擇性地將它](howto-restore-server-portal.md#set-backup-configuration) 設定為最多35天。 所有備份皆會使用 AES 256 位元加密進行加密。
+適用於 MySQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以 [選擇性地將它](howto-restore-server-portal.md#set-backup-configuration) 設定為最多35天。 所有備份皆會使用 AES 256 位元加密進行加密。
 
 這些備份檔案不是由使用者公開，無法匯出。 這些備份只能用於適用於 MySQL 的 Azure 資料庫中的還原作業。 您可以使用 [mysqldump](concepts-migrate-dump-restore.md) 來複製資料庫。
 
-### <a name="backup-frequency"></a>備份頻率
+備份類型和頻率取決於伺服器的後端儲存體。
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>具有最多 4 TB 儲存空間的伺服器
+### <a name="backup-type-and-frequency"></a>備份類型和頻率
 
-針對最多支援 4 TB 儲存體的伺服器，完整備份會每週進行一次。 差異備份會一天進行兩次。 交易記錄備份會每五分鐘執行一次。
+#### <a name="basic-storage-servers"></a>基本儲存體伺服器
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>最多 16 TB 儲存體的伺服器
-在 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器最多可支援 16 TB 的儲存體。 這些大型儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。 
+基本的儲存體伺服器是 [基本 SKU 伺服器](concepts-pricing-tiers.md)的後端儲存體。 基本儲存體伺服器上的備份是以快照集為基礎。 每日會執行完整的資料庫快照集。 基本儲存體伺服器不會執行任何差異備份，而且所有快照集備份都只會進行完整資料庫備份。 
+
+交易記錄備份會每五分鐘執行一次。 
+
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>一般用途儲存體伺服器，最多可達 4 TB 的儲存體
+
+針對最多支援 4 TB 的一般用途儲存體的伺服器，完整備份會每週進行一次。 差異備份會一天進行兩次。 交易記錄備份每五分鐘會進行一次。一般用途儲存體上的備份（最多 4 TB 的儲存體）不是以快照集為基礎，而且會在備份時耗用 IO 頻寬。 針對大型資料庫 ( # A0 1TB) 在 4 TB 的儲存體上，建議您考慮 
+
+- 布建更多 IOPs 以考慮備份 IOs  
+- 或者，如果您偏好的 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)中有可用的儲存體，則遷移至一般目的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。 
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途儲存體伺服器，最多可達 16 TB 的儲存空間
+在 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。 
 
 差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程執行。 差異快照集備份會每隔24小時執行一次，除非 MySQL 中的交易記錄 (binlog) 超過上次差異備份之後的 50 GB。 一天內最多允許六個差異快照集。 
 

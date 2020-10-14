@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87115535"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>要求 Azure Active Directory B2C 中的存取權杖
@@ -50,7 +50,7 @@ scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-如果您要求的範圍比針對用戶端應用程式授與的數目多，但至少已授與一個權限，則呼叫會成功。 在產生的存取權杖中，**scp** 宣告只會填入成功授與的權限。 OpenID Connect 標準會指定數個特殊的範圍值。 下列範圍代表存取使用者設定檔的許可權：
+如果您要求的範圍比針對用戶端應用程式授與的數目多，但至少已授與一個權限，則呼叫會成功。 在產生的存取權杖中，**scp** 宣告只會填入成功授與的權限。 OpenID Connect 標準會指定數個特殊的範圍值。 下列範圍代表存取使用者設定檔的權限︰
 
 - **openid** - 要求識別碼權杖。
 - **offline_access** - 使用[授權碼流程](authorization-code-flow.md)要求重新整理權杖。

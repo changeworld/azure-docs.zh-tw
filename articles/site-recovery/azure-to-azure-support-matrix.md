@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: dd4cbf0228bc68fa253f9e7a06b4eaba5157d2bd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 390dba92091a9e419bcd7a8f0e8e83f65597305e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045324"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -245,8 +245,9 @@ ZRS | 不支援 |
 一般用途 V2 儲存體帳戶 (經常性存取層和非經常性存取層) | 支援 | 與一般用途 V1 儲存體帳戶相比，交易成本大幅增加
 第2代 (UEFI 開機) | 支援
 NVMe 磁碟 | 不支援
-Azure 共用磁碟 | 不支援
+Azure 共用磁碟 | 不受支援
 安全傳輸選項 | 支援
+已啟用寫入加速器的磁片 | 不支援
 
 >[!IMPORTANT]
 > 若要避免發生效能問題，請務必遵循 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟可擴縮性和效能目標。 如果您使用預設設定，Site Recovery 會根據來源組態建立必要的磁碟和儲存體帳戶。 如果您自訂並選取您自己的設定，請遵循來源 VM 的磁碟可擴縮性和效能目標。

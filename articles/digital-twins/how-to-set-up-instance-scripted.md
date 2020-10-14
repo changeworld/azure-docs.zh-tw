@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328626"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047415"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328626"
 
 本文涵蓋 **設定新 Azure 數位 Twins 實例**的步驟，包括建立實例和設定驗證。 完成本文之後，您將會有可開始進行程式設計的 Azure 數位 Twins 實例。
 
-這一版的文章會執行可簡化程式的 [**自動化部署腳本** 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) 來完成這些步驟。 
+這一版的文章會執行可簡化程式的 [**自動化部署腳本** 範例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) 來完成這些步驟。 
 * 若要查看腳本在幕後執行的手動 CLI 步驟，請參閱這篇文章的 CLI 版本： [*如何：設定 (cli) 的實例和驗證 *](how-to-set-up-instance-cli.md)。
 * 若要根據 Azure 入口網站來查看手動步驟，請參閱本文的入口網站版本： [*如何：設定實例和驗證 (入口網站) *](how-to-set-up-instance-portal.md)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91328626"
 
 ## <a name="prerequisites-download-the-script"></a>必要條件：下載腳本
 
-範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 範例**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
+範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
 
 這會將範例專案下載到您的電腦，做為 _**Azure_Digital_Twins_samples.zip**_。 流覽至您電腦上的資料夾，並將其解壓縮以解壓縮檔案。
 
@@ -157,7 +157,7 @@ ms.locfileid: "91328626"
 ## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
-* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
 或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：

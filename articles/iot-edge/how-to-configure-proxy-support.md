@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966163"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045953"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-如需 Proxy 參數的詳細資訊，請參閱 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 如需 Windows 安裝參數的詳細資訊，請參閱 [windows 上適用于 IoT Edge 的 PowerShell 腳本](reference-windows-scripts.md)。
+如需 Proxy 參數的詳細資訊，請參閱 [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 如需 Windows 安裝參數的詳細資訊，請參閱 [windows 上適用于 IoT Edge 的 PowerShell 腳本](reference-windows-scripts.md)。
 
 ## <a name="configure-the-daemons"></a>設定精靈
 
@@ -108,7 +108,7 @@ Moby 和 IoT Edge 的守護程式都必須設定為使用 proxy 伺服器來進�
 選擇適用于您 IoT Edge 裝置作業系統的文章：
 
 * [在 Linux 上設定 Docker daemon](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux 裝置上的 Moby daemon 會將名稱保留為 Docker。
-* [在 Windows 上設定 Docker daemon](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows 裝置上的 Moby daemon 稱為 iotedge Moby。 名稱會不同，因為可以在 Windows 裝置上平行執行 Docker Desktop 和 Moby。
+* [在 Windows 上設定 Docker daemon](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows 裝置上的 Moby daemon 稱為 iotedge Moby。 名稱會不同，因為可以在 Windows 裝置上平行執行 Docker Desktop 和 Moby。
 
 ### <a name="iot-edge-daemon"></a>IoT Edge 精靈
 

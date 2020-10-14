@@ -3,18 +3,21 @@ title: Microsoft 小組內的 Azure 實驗室服務
 description: 概述如何在 Microsoft 小組內使用 Azure 實驗室服務。
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 8b70ab3cbf1a342646f6a2897550c4bf8f7601a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946621"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047823"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft 小組內的 Azure 實驗室服務
 
-Azure 實驗室服務擁有者/建立者現在可以在 Microsoft 小組中建立實驗室。
+您可以使用 **Azure 實驗室服務** 小組應用程式，在 Microsoft 小組內利用 Azure 實驗室服務。 擁有實驗室帳戶擁有者/參與者/creator 存取權的任何小組擁有者都可以建立實驗室，並將虛擬機器布建到小組的每個人。
 
-本文將概述小組整合的優點，並提供其他文章的連結，以取得如何在小組內管理 Azure 實驗室服務的指示。 
+本文概述在小組內使用 Azure 實驗室服務的優點，並提供其他文章的連結，以取得如何在小組內建立及管理實驗室的指示。 
+
+> [!NOTE]
+>**Azure 實驗室服務** 小組應用程式只能新增至小組，不能新增至個別聊天或群組聊天室。
 
 ## <a name="benefits"></a>優點
 
@@ -31,8 +34,8 @@ Azure Lab Services 與 Microsoft 團隊的整合可協助教師設定課堂環�
 
 查看下列文章：
 
-- [開始使用並從小組建立實驗室服務實驗室](how-to-get-started-create-lab-within-teams.md)
-- [從小組管理實驗室服務使用者清單](how-to-manage-user-lists-within-teams.md)
-- [從小組管理實驗室服務中的 VM 集區](how-to-manage-vm-pool-within-teams.md)
-- [從小組建立實驗室服務排程](how-to-create-schedules-within-teams.md)
-- [從小組存取實驗室服務中的 VM (student view) ](how-to-access-vm-for-students-within-teams.md)
+- [開始使用並在小組內建立實驗室](how-to-get-started-create-lab-within-teams.md)
+- [管理小組內的實驗室使用者清單](how-to-manage-user-lists-within-teams.md)
+- [管理小組內實驗室的 VM 集區](how-to-manage-vm-pool-within-teams.md)
+- [建立及管理小組內的實驗室排程](how-to-create-schedules-within-teams.md)
+- [存取小組內的 VM –學生版視圖](how-to-access-vm-for-students-within-teams.md)

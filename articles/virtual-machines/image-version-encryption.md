@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dd2d42bb83afa5a97bd5bd71d7b1a4bcc506d93e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976159"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048078"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>預覽：使用客戶管理的金鑰加密映像
 
@@ -23,7 +23,7 @@ ms.locfileid: "91976159"
 
 使用「客戶管理的金鑰」的伺服器端加密，會使用 Azure Key Vault。 您可以將[您的 RSA 金鑰](../key-vault/keys/hsm-protected-keys.md)匯入 Key Vault，或在 Azure Key Vault 中產生新的 RSA 金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文要求您已經有磁片加密集可用於您的映射。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91976159"
 
 - 加密金鑰集是區域資源，因此每個區域都需要不同的加密金鑰集。
 
-- 您無法共用使用「客戶管理的金鑰」的映像。 
+- 您無法複製或共用使用客戶管理金鑰的映射。 
 
 - 一旦您使用自己的金鑰來加密磁碟或映像，就無法回去使用「平台管理的金鑰」來加密這些磁碟或映像。
 

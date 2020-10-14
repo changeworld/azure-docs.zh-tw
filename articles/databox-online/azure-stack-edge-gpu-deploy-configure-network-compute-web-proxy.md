@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893992"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952177"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>教學課程：設定搭配 GPU 的 Azure Stack Edge Pro 網路
 
@@ -78,7 +78,7 @@ ms.locfileid: "90893992"
 
     設定裝置網路後，頁面會更新，如下所示。
 
-    ![本機 Web UI 的 [網路設定] 頁面](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
+    ![本機 Web UI 的 [網路設定] 頁面 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
      >[!NOTE]
@@ -149,7 +149,7 @@ ms.locfileid: "90893992"
 
     4. 若要驗證並套用所設定的 Web Proxy 設定，請選取 [套用]  。
     
-   ![本機 Web UI 的 [Web Proxy 設定] 頁面](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![本機 Web UI 的 [Web Proxy 設定] 頁面 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
 2. 套用設定之後，請選取 [下一步:裝置]。
 

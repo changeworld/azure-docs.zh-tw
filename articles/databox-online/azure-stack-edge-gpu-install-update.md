@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969172"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047075"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新您的 Azure Stack Edge Pro GPU 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91969172"
 本文中所述的程式是使用不同版本的軟體來執行，但程式對於目前的軟體版本會維持不變。
 
 > [!IMPORTANT]
-> - 更新 **2009** 對應于裝置上的 **2.1.1364.2110** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2009-release-notes.md)資訊。
+> - 更新 **2010** 對應于裝置上的 **2.1.1377.2170** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2009-release-notes.md)資訊。
 >
 > - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新需要您依序套用兩個更新。 首先，套用裝置軟體更新，然後 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
 
@@ -163,9 +163,9 @@ ms.locfileid: "91969172"
 
 2. 在 [Microsoft Update 目錄] 的 [搜尋] 方塊中，輸入知識庫 (KB) 您要下載之更新的修正程式號碼或條款。 例如，輸入 **Azure Stack Edge Pro**]，然後按一下 [ **搜尋**]。
    
-    更新清單會顯示為 **Azure Stack Edge Pro 2006**。
+    更新清單會顯示為 **Azure Stack Edge 更新 2010**。
    
-    ![搜尋目錄2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
 4. 選取 [下載]。 有兩個檔案可供下載 *SoftwareUpdatePackage.exe* 和分別對應到裝置軟體更新和 Kubernetes 更新 *Kubernetes_Package.exe* 尾碼。 將檔案下載到本機系統上的資料夾。 您也可以將資料夾複製到裝置可連線的網路共用位置。
 
@@ -198,9 +198,9 @@ ms.locfileid: "91969172"
 
 5. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
    
-6. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 此範例中顯示的軟體版本是 **2.0.1257.1591**。
+6. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 在目前的版本中，顯示的軟體版本應該是 **2.1.1377.2170**。
 
-   ![更新裝置6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
 7. 您現在將更新 Kubernetes 軟體版本。 重複上述步驟。 使用 *Kubernetes_Package.exe* 尾碼提供 Kubernetes 更新檔案的路徑。  
 

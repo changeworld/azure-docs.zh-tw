@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932136"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046718"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>在 Azure IoT 中樞中驗證下游裝置
 
@@ -110,7 +110,7 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
 
 4. 將主要和次要裝置憑證及其金鑰複製到下游裝置上的任何位置。 此外，也請移動同時產生閘道裝置憑證和下游裝置憑證的共用根 CA 憑證複本。
 
-   您將在連線到 IoT 中樞的下游裝置上的任何應用程式中，參考這些憑證檔案。 您可使用如 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。
+   您將在連線到 IoT 中樞的下游裝置上的任何應用程式中，參考這些憑證檔案。 您可使用如 [Azure Key Vault](../key-vault/index.yml) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。
 
 5. 視偏好的語言而定，檢閱如何在 IoT 應用程式中參考 X.509 憑證的範例：
 
@@ -156,7 +156,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 5. 將裝置憑證和金鑰複製到下游裝置上的任何位置。 此外，也請移動同時產生閘道裝置憑證和下游裝置憑證的共用根 CA 憑證複本。
 
-   您將在連線到 IoT 中樞的下游裝置上的任何應用程式中，參考這些檔案。 您可使用如 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。
+   您將在連線到 IoT 中樞的下游裝置上的任何應用程式中，參考這些檔案。 您可使用如 [Azure Key Vault](../key-vault/index.yml) 的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)等功能來移動憑證檔案。
 
 6. 視偏好的語言而定，檢閱如何在 IoT 應用程式中參考 X.509 憑證的範例：
 
@@ -201,7 +201,7 @@ HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-由於有父子式關聯性，您可以直接以連線主機的形式呼叫閘道，以簡化連接字串。 例如：
+由於有父子式關聯性，您可以直接以連線主機的形式呼叫閘道，以簡化連接字串。 例如︰
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

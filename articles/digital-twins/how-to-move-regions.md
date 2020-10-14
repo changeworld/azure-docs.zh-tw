@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328488"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047381"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>將 Azure 數位 Twins 實例移至不同的 Azure 區域
 
@@ -30,7 +30,7 @@ ms.locfileid: "91328488"
     - 重新連結連接的資源。
 4. 清除來源資源：刪除原始實例。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在嘗試重新建立您的 Azure 數位 Twins 實例之前，最好先流覽原始實例的元件，並清楚瞭解所有需要重新建立的部分。
 
@@ -49,18 +49,18 @@ ms.locfileid: "91328488"
     - 裝置布建服務 (DPS) 
 * 我有哪些其他 **個人或公司的應用程式** 連接到我的實例？
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)、 [Azure 數位 Twins api 和 Sdk](how-to-use-apis-sdks.md)、 [azure 數位 Twins CLI 命令](how-to-use-cli.md)或 [azure 數位 Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 範例來收集此資訊。
+您可以使用 [Azure 入口網站](https://portal.azure.com)、 [Azure 數位 Twins api 和 Sdk](how-to-use-apis-sdks.md)、 [azure 數位 Twins CLI 命令](how-to-use-cli.md)或 [azure 數位 Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 範例來收集此資訊。
 
 ## <a name="prepare"></a>準備
 
-在本節中，您將準備從原始實例 **下載原始模型、twins 和圖形** ，以重新建立實例。 本文使用 [Azure 數位 Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 範例來完成這項工作。
+在本節中，您將準備從原始實例 **下載原始模型、twins 和圖形** ，以重新建立實例。 本文使用 [Azure 數位 Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 範例來完成這項工作。
 
 >[!NOTE]
 >您可能已經有檔案，其中包含您實例中的模型和/或圖形。 若是如此，您就不需要再次下載所有專案，只是您所遺漏的部分，或是自從最初上傳這些檔案之後可能已變更的部分 (例如可能已使用新資料) 更新的 twins。
 
 ### <a name="limitations-of-adt-explorer"></a>ADT Explorer 的限制
 
-[Azure 數位 Twins (ADT) Explorer 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)是用戶端應用程式範例，可支援圖表的視覺標記法，並提供與您的實例的視覺化互動。 本文說明如何使用它來下載和稍後重新上傳、您的模型、twins 和圖形。
+[Azure 數位 Twins (ADT) Explorer 範例](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)是用戶端應用程式範例，可支援圖表的視覺標記法，並提供與您的實例的視覺化互動。 本文說明如何使用它來下載和稍後重新上傳、您的模型、twins 和圖形。
 
 不過請注意，這是一個 **範例** ，而不是完整的工具。 它並未經過壓力測試，且不是為了處理大小較大的圖形而設計。 因此，請記住下列的現成範例限制：
 * 此範例目前僅經過圖形大小的測試，最多可達1000節點和2000關聯性
@@ -76,7 +76,7 @@ ms.locfileid: "91328488"
 
 若要繼續使用 ADT Explorer，請先下載範例應用程式程式碼，並將它設定為在您的電腦上執行。 
 
-流覽至此處的範例： [Azure 數位 Twins (ADT) explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 點擊 [下載 ZIP] 按鈕，將此程式碼範例的 .ZIP 檔案下載到您的機器，並命名為 _**ADT_Explorer.zip**_。 將檔案解壓縮。
+流覽至此處的範例： [Azure 數位 Twins (ADT) explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 點擊 [下載 ZIP] 按鈕，將此程式碼範例的 .ZIP 檔案下載到您的機器，並命名為 _**ADT_Explorer.zip**_。 將檔案解壓縮。
 
 接下來，設定 ADT Explorer 在您的電腦上執行的許可權。 若要這樣做，請依照 Azure 數位 Twins 快速入門的 [*SET ADT Explorer 許可權*](quickstart-adt-explorer.md#set-adt-explorer-permissions) 一節中的步驟執行。
 
@@ -219,7 +219,7 @@ ADT Explorer 現在會將您的模型和圖形 (（包括 twins 和) 關聯性�
 若要確認您的新實例是否已正確設定，您可以使用下列工具：
 * [**Azure 入口網站**](https://portal.azure.com) (適合用來確認新的實例存在且位於正確的目的地區域中;也適用于驗證端點和路由，以及其他 Azure 服務的連線) 
 * [Azure 數位 Twins **CLI 命令**](how-to-use-cli.md) (適用于驗證新的實例存在且位於正確的目的地區域中;也可以用來驗證實例資料) 
-* [**ADT Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (適用于驗證實例資料，例如模型、twins 和圖形) 
+* [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (適用于驗證實例資料，例如模型、twins 和圖形) 
 * [Azure 數位 Twins api 和 sdk](how-to-use-apis-sdks.md) (適用于驗證實例資料，例如模型、Twins 和圖形;也適用于驗證端點和路由) 
 
 您也可以嘗試執行任何自訂的應用程式，或是您使用原始實例執行的端對端流程，以協助您確認它們正在正確地使用新的實例。

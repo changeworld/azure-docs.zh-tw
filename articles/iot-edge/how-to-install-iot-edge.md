@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: e5dc5601be5bd6d8003b196b5e7768e66bc48478
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979461"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045681"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>安裝或卸載 Azure IoT Edge 執行時間
 
@@ -24,7 +24,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 本文列出在 Linux 或 Windows 裝置上安裝 Azure IoT Edge 執行時間的步驟。 針對 Windows 裝置，您有其他使用 Linux 容器或 Windows 容器的選項。 目前，Windows 上的 Windows 容器建議用於生產案例。 Windows 上的 Linux 容器適用于開發和測試案例，特別是如果您是在 Windows 電腦上進行開發，以便部署到 Linux 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如需有關生產案例目前支援哪些作業系統的最新資訊，請參閱 [Azure IoT Edge 支援的系統](support.md#operating-systems)
 
@@ -267,7 +267,7 @@ IoT Edge 的安全性背景程式可在 IoT Edge 裝置上提供及維護安全�
 
 4. （選擇性）下載 Visual C++ 可轉散發套件的安裝程式。 例如，PowerShell 腳本會使用這個版本： [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 將安裝程式儲存在 IoT 裝置上與 IoT Edge 檔案相同的資料夾中。
 
-5. 若要安裝離線元件，請使用 [點來源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 
+5. 若要安裝離線元件，請使用 [點來源](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 
 
 6. 使用參數執行 [IoTEdge](reference-windows-scripts.md#deploy-iotedge) 命令 `-OfflineInstallationPath` 。 提供檔案目錄的絕對路徑。 例如，
 

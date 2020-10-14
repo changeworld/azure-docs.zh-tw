@@ -3,19 +3,19 @@ title: 將異常意見反應提供給計量顧問服務
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何針對您的計量顧問實例找到的異常狀況傳送意見反應，以及調整結果。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 11864cb26b76d414aa2efe2643797a2f66fa30e4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934023"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047602"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>使用意見反應來調整異常偵測
 

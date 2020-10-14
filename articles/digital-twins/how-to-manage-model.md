@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be79f7bd6687b2e53e6abe19dc0a20999942071d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7fcd32335b5d9e04986355adeea473cf77b970e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974955"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048197"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -84,7 +84,7 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 建立模型之後，您可以將它們上傳至 Azure 數位 Twins 實例。
 
 > [!TIP]
-> 建議您先離線驗證您的模型，然後再將它們上傳至您的 Azure 數位 Twins 實例。 您可以使用 [DTDL 客戶](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) 端剖析器程式庫和 [DTDL 驗證程式範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) ， [*方法：剖析和驗證模型*](how-to-parse-models.md) 以檢查您的模型，然後再將它們上傳至服務。
+> 建議您先離線驗證您的模型，然後再將它們上傳至您的 Azure 數位 Twins 實例。 您可以使用 [DTDL 客戶](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) 端剖析器程式庫和 [DTDL 驗證程式範例](/samples/azure-samples/dtdl-validator/dtdl-validator) ， [*方法：剖析和驗證模型*](how-to-parse-models.md) 以檢查您的模型，然後再將它們上傳至服務。
 
 當您準備好上傳模型時，您可以使用下列程式碼片段：
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-模型檔案可以包含一個以上的模型。 在此情況下，模型必須放在 JSON 陣列中。 例如：
+模型檔案可以包含一個以上的模型。 在此情況下，模型必須放在 JSON 陣列中。 例如︰
 
 ```json
 [

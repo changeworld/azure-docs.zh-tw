@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91573832"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045477"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
@@ -132,7 +132,7 @@ DTDL
 
 當裝置啟動時，它應該會要求裝置對應項，並檢查是否有任何可寫入的屬性更新。 如果可寫入屬性的版本在裝置離線時增加，則裝置應該傳送回報的屬性回應，以確認它已收到更新。
 
-當裝置第一次啟動時，如果它沒有從中樞收到初始所需的屬性，它就可以傳送報告屬性的初始值。 在此情況下，裝置應該設定 `av` 為 `1` 。 例如：
+當裝置第一次啟動時，如果它沒有從中樞收到初始所需的屬性，它就可以傳送報告屬性的初始值。 在此情況下，裝置應該設定 `av` 為 `1` 。 例如︰
 
 ```json
 "reported": {
@@ -343,6 +343,6 @@ DTDL
 現在您已瞭解 IoT 隨插即用慣例，以下是一些額外的資源：
 
 - [數位分身定義語言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C 裝置 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C 裝置 SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [模型元件](./concepts-components.md)

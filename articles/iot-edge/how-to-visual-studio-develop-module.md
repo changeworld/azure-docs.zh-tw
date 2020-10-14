@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297040"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045715"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 來開發 Azure IoT Edge 的模組並進行偵錯工具
 
@@ -28,11 +28,11 @@ Azure IoT Edge Tools for Visual Studio 提供下列優點：
 
 本文說明如何使用 Visual Studio 2019 的 Azure IoT Edge Tools 來開發 IoT Edge 模組。 您也將學習如何將專案部署到 Azure IoT Edge 裝置。 目前，Visual Studio 2019 提供以 C 和 c # 撰寫之模組的支援。 支援的裝置架構為 Windows X64 和 Linux X64 或 ARM32。 如需有關支援的作業系統、語言和架構的詳細資訊，請參閱 [語言和架構支援](module-development.md#language-and-architecture-support)。
   
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 此文章假設您使用執行 Windows 的電腦或虛擬機器作為開發電腦。 在 Windows 電腦上，您可以開發 Windows 或 Linux 模組。 若要開發 Windows 模組，請使用執行 1809/build 17763 版或更新版本的 Windows 電腦。 若要開發 Linux 模組，請使用符合 [Docker Desktop 需求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 電腦。
 
-因為本文使用 Visual Studio 2019 作為主要開發工具，所以請安裝 Visual Studio。 請確定您在 Visual Studio 2019 安裝中包含**使用 c + +** 工作負載進行**Azure 開發**和桌面開發。 您可以 [修改 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) 來新增所需的工作負載。
+因為本文使用 Visual Studio 2019 作為主要開發工具，所以請安裝 Visual Studio。 請確定您在 Visual Studio 2019 安裝中包含**使用 c + +** 工作負載進行**Azure 開發**和桌面開發。 您可以 [修改 Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019) 來新增所需的工作負載。
 
 當您的 Visual Studio 2019 就緒之後，您也需要下列工具和元件：
 
@@ -62,7 +62,7 @@ Azure IoT Edge Tools for Visual Studio 提供下列優點：
   vcpkg.exe --triplet x64-windows integrate install
   ```
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) 或 [Docker 中樞](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。
+- [Azure Container Registry](../container-registry/index.yml) 或 [Docker 中樞](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。
 
   > [!TIP]
   > 您可以使用本機 Docker 登錄作為原型並用於測試，而非使用雲端登錄。

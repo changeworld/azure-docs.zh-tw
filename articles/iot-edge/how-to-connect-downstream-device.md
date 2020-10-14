@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281451"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045834"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>將下游裝置連線到 Azure IoT Edge 閘道
 
@@ -37,7 +37,7 @@ ms.locfileid: "91281451"
 
 在本文中，*閘道*和 *IoT Edge 閘道*這兩個詞是指設定為透明閘道的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 在設定 IoT Edge 裝置時，擁有用來產生裝置 CA 憑證的根 CA 憑證檔案，作為下游裝置上可用 [的透明閘道](how-to-create-transparent-gateway.md) 。 下游裝置會使用此憑證來驗證閘道裝置的身分識別。 如果您使用了示範憑證，根 CA 憑證就稱為 **azure-iot-test-only.root.ca.cert.pem**。
 * 具有指向閘道裝置的已修改連接字串，如 [驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)所述。
@@ -77,7 +77,7 @@ ms.locfileid: "91281451"
 
 ## <a name="provide-the-root-ca-certificate"></a>提供根 CA 憑證
 
-若要確認閘道裝置的憑證，下游裝置需要自己的根 CA 憑證複本。 如果您使用 IoT Edge git 存放庫中提供的腳本來建立測試憑證，則根 CA 憑證稱為 **azure-iot-test-only.root.ca.cert.pem**。 如果您還沒有其他下游裝置準備步驟的一部分，請將此憑證檔案移至下游裝置上的任何目錄。 您可以使用類似 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 的服務，或像是 [安全複製通訊協定](https://www.ssh.com/ssh/scp/) 的功能來移動憑證檔案。
+若要確認閘道裝置的憑證，下游裝置需要自己的根 CA 憑證複本。 如果您使用 IoT Edge git 存放庫中提供的腳本來建立測試憑證，則根 CA 憑證稱為 **azure-iot-test-only.root.ca.cert.pem**。 如果您還沒有其他下游裝置準備步驟的一部分，請將此憑證檔案移至下游裝置上的任何目錄。 您可以使用類似 [Azure Key Vault](../key-vault/index.yml) 的服務，或像是 [安全複製通訊協定](https://www.ssh.com/ssh/scp/) 的功能來移動憑證檔案。
 
 ## <a name="install-certificates-in-the-os"></a>在 OS 中安裝憑證
 
@@ -98,7 +98,7 @@ sudo update-ca-certificates
 
 下列步驟是如何在 Windows 主機上安裝 CA 憑證的範例。 此範例假設您使用的是必要條件文章中的 **azure-iot-test-only.root.ca.cert.pem** 憑證，而且您已將憑證複製到下游裝置上的位置。
 
-您可以使用 PowerShell 的匯 [入憑證](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) 以系統管理員身分安裝憑證：
+您可以使用 PowerShell 的匯 [入憑證](/powershell/module/pkiclient/import-certificate?view=win10-ps) 以系統管理員身分安裝憑證：
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -113,7 +113,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 您也可以使用 .NET API，以程式設計方式安裝憑證，如本文稍後的 .NET 範例中所示。
 
-應用程式通常會使用 Windows 提供的 TLS 堆疊 (稱為 [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel))，透過 TLS 安全地連線。 Schannel *要求*先安裝 Windows 憑證存放區中的任何憑證，然後再嘗試建立 TLS 連線。
+應用程式通常會使用 Windows 提供的 TLS 堆疊 (稱為 [Schannel](/windows/desktop/com/schannel))，透過 TLS 安全地連線。 Schannel *要求*先安裝 Windows 憑證存放區中的任何憑證，然後再嘗試建立 TLS 連線。
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>使用具有 Azure IoT SDK 的憑證
 
@@ -125,7 +125,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 * 您複製並儲存在下游裝置上某個位置之根 CA 憑證的完整路徑。
 
-    例如： `<path>/azure-iot-test-only.root.ca.cert.pem` 。
+    例如 `<path>/azure-iot-test-only.root.ca.cert.pem`。
 
 ### <a name="nodejs"></a>NodeJS
 

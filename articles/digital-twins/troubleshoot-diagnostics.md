@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723923"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047670"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
 
@@ -57,7 +57,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 
 以下是在設定診斷設定時，可以在 [ **類別目錄詳細資料** ] 底下選取之記錄類別的更多詳細資料。
 
-| 記錄分類 | 說明 |
+| 記錄分類 | 描述 |
 | --- | --- |
 | ADTModelsOperation | 記錄與模型相關的所有 API 呼叫 |
 | ADTQueryOperation | 記錄與查詢相關的所有 API 呼叫 |
@@ -73,7 +73,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 | 刪除 | 刪除 |
 | 動作 | POST |
 
-以下是每個類別中記錄的作業和對應的 [Azure 數位 Twins REST API 呼叫](https://docs.microsoft.com/rest/api/azure-digitaltwins/) 的完整清單。 
+以下是每個類別中記錄的作業和對應的 [Azure 數位 Twins REST API 呼叫](/rest/api/azure-digitaltwins/) 的完整清單。 
 
 >[!NOTE]
 > 每個記錄類別都包含數個作業/REST API 呼叫。 在下表中，每個記錄類別都會對應至其下的所有作業/REST API 呼叫，直到列出下一個記錄類別為止。 
@@ -223,7 +223,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需有關設定診斷的詳細資訊，請參閱 [*收集和取用來自 Azure 資源的記錄資料*](../azure-monitor/platform/platform-logs-overview.md)。
 * 如需 Azure 數位 Twins 計量的詳細資訊，請參閱 [*疑難排解：使用 Azure 監視器來查看計量*](troubleshoot-metrics.md)。

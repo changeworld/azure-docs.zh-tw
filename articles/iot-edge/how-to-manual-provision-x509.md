@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 8cfb7c5a0821bd030252a105b98b1c138b9ef820
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979441"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048180"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>使用 x.509 憑證驗證設定 Azure IoT Edge 裝置
 
@@ -36,7 +36,7 @@ ms.locfileid: "91979441"
 
 本文將逐步解說使用 x.509 憑證驗證的註冊和布建程式。 如果您想要瞭解如何使用對稱金鑰來設定裝置，請參閱 [使用對稱金鑰驗證設定 Azure IoT Edge 裝置](how-to-manual-provision-symmetric-key.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 遵循本文中的步驟之前，您應該已在其上安裝 IoT Edge 執行時間的裝置。 如果沒有，請依照 [安裝或卸載 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟執行。
 
@@ -91,12 +91,12 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 ### <a name="prerequisites-for-the-azure-cli"></a>Azure CLI 的先決條件
 
 * Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
+* 您環境中的 [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
 * [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>使用 Azure CLI 建立 IoT Edge 裝置
 
-使用 [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令，在 IoT 中樞中建立新的裝置身分識別。 例如：
+使用 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令，在 IoT 中樞中建立新的裝置身分識別。 例如：
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -113,7 +113,7 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>使用 Azure CLI 檢視 IoT Edge 裝置
 
-使用 [az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令檢視 IoT 中樞內的所有裝置。 例如：
+使用 [az iot hub device-identity list](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令檢視 IoT 中樞內的所有裝置。 例如：
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -160,10 +160,10 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 1. 更新下欄欄位：
 
-   * **iothub_hostname**：裝置將連接的 IoT 中樞主機名稱。 例如： `{IoT hub name}.azure-devices.net` 。
+   * **iothub_hostname**：裝置將連接的 IoT 中樞主機名稱。 例如 `{IoT hub name}.azure-devices.net`。
    * **device_id**：您在註冊裝置時所提供的識別碼。
-   * **identity_cert**：裝置上身分識別憑證的 URI。 例如： `file:///path/identity_certificate.pem` 。
-   * **identity_pk**：提供的身分識別憑證之私密金鑰檔案的 URI。 例如： `file:///path/identity_key.pem` 。
+   * **identity_cert**：裝置上身分識別憑證的 URI。 例如 `file:///path/identity_certificate.pem`。
+   * **identity_pk**：提供的身分識別憑證之私密金鑰檔案的 URI。 例如 `file:///path/identity_key.pem`。
 
 1. 儲存並關閉檔案。
 
@@ -202,10 +202,10 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 3. 出現提示時，請提供下列資訊：
 
-   * **IotHubHostName**：裝置將連接的 IoT 中樞主機名稱。 例如： `{IoT hub name}.azure-devices.net` 。
+   * **IotHubHostName**：裝置將連接的 IoT 中樞主機名稱。 例如 `{IoT hub name}.azure-devices.net`。
    * **DeviceId**：您在註冊裝置時所提供的識別碼。
-   * **X509IdentityCertificate**：裝置上身分識別憑證的絕對路徑。 例如： `C:\path\identity_certificate.pem` 。
-   * **X509IdentityPrivateKey**：所提供身分識別憑證之私密金鑰檔案的絕對路徑。 例如： `C:\path\identity_key.pem` 。
+   * **X509IdentityCertificate**：裝置上身分識別憑證的絕對路徑。 例如 `C:\path\identity_certificate.pem`。
+   * **X509IdentityPrivateKey**：所提供身分識別憑證之私密金鑰檔案的絕對路徑。 例如 `C:\path\identity_key.pem`。
 
 當您手動布建裝置時，您可以使用其他參數來修改進程，包括：
 

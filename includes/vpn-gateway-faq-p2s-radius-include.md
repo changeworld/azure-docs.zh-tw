@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75752164"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -51,6 +51,6 @@ RADIUS 驗證在閘道上所支援的 SSTP 連線數目上限並未變更。 SST
 
 是，IKEv2 和 SSTP VPN 都支援 RADIUS 驗證。 
 
-### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>RADIUS 驗證是否可與 OpenVPN 用戶端搭配使用？
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>RADIUS 驗證是否可搭配 OpenVPN 用戶端運作？
 
-只有透過 PowerShell，才支援 OpenVPN 通訊協定的 RADIUS 驗證。
+只有透過 PowerShell，OpenVPN 通訊協定才支援 RADIUS 驗證。

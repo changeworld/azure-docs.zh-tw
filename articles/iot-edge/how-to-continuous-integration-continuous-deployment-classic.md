@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447790"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046004"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge 裝置的持續整合和持續部署 (傳統編輯器) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91447790"
 
 ![圖表 - 開發和生產的 CI 和 CD 分支](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
-在本文中，您將瞭解如何使用 Azure Pipelines 的內建 [Azure IoT Edge](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) 工作，為您的 IoT Edge 解決方案建立組建和發行管線。 每個新增至管線的 Azure IoT Edge 工作都會執行下列四個動作的其中一個：
+在本文中，您將瞭解如何使用 Azure Pipelines 的內建 [Azure IoT Edge](/azure/devops/pipelines/tasks/build/azure-iot-edge) 工作，為您的 IoT Edge 解決方案建立組建和發行管線。 每個新增至管線的 Azure IoT Edge 工作都會執行下列四個動作的其中一個：
 
  | 動作 | 描述 |
  | --- | --- |
@@ -32,22 +32,22 @@ ms.locfileid: "91447790"
 
 除非另有說明，否則本文中的程式不會探索透過工作參數提供的所有功能。 如需詳細資訊，請參閱下列：
 
-* [工作版本](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [工作版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Advanced** -如果適用，請指定您不想要建立的模組。
-* [控制項選項](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [環境變數](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [輸出變數](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [控制項選項](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [環境變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [輸出變數](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
-* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](how-to-visual-studio-develop-csharp-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
+* Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
+* 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](./how-to-visual-studio-develop-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
 
    針對本文，您只需要在 Visual Studio Code 或 Visual Studio 中由 IoT Edge 範本所建立的解決方案資料夾。 在進行之前，您並不需要針對此程式碼進行建置、推送、部署或偵錯。 您將在 Azure Pipelines 中設定這些處理常式。
 
    若您是建立新的解決方案，請先在本機複製您的存放庫。 然後，當您建立解決方案時，您可以選擇直接在存放庫資料夾中建立它。 您可以輕鬆地從該處對新檔案進行認可和推送。
 
-* 可對它推送模組映像的容器登錄。 您可以使用 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) 或協力廠商登錄。
+* 可對它推送模組映像的容器登錄。 您可以使用 [Azure Container Registry](../container-registry/index.yml) 或協力廠商登錄。
 * 使用中的 Azure [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md) ，至少有兩個 IoT Edge 裝置可用來測試個別的測試和生產部署階段。 您可以遵循快速入門文章來在 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 上建立 IoT Edge 裝置
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>建立持續整合的組建管線
@@ -84,7 +84,7 @@ ms.locfileid: "91447790"
 
    * 如果您想要在適用于 Linux 容器的 platform amd64 中建立模組，請選擇 **ubuntu-16.04**
 
-   * 如果您想要在 amd64 平台中建置適用於 Windows 1809 容器的模組，您必須[在 Windows 上設定自我裝載的代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts) \(英文\)。
+   * 如果您想要在 amd64 平台中建置適用於 Windows 1809 容器的模組，您必須[在 Windows 上設定自我裝載的代理程式](/azure/devops/pipelines/agents/v2-windows?view=vsts) \(英文\)。
 
    * 如果您想要在適用于 Linux 容器的 platform arm32v7 或 arm64 中建立模組，您必須在 [linux 上設定自我裝載代理程式](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)。
 
@@ -136,14 +136,14 @@ ms.locfileid: "91447790"
     | 顯示名稱 | 使用預設名稱或自訂 |
     | 源資料夾 | 包含要複製之檔案的資料夾。 |
     | 目錄 | 新增兩行： `deployment.template.json` 和 `**/module.json` 。 這兩個檔案可作為輸入，以產生 IoT Edge 部署資訊清單。 |
-    | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 以瞭解描述。 |
+    | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 以瞭解描述。 |
 
 10. 選取 [發行組建成品]**** 工作來編輯它。 提供工作的構件臨時目錄路徑，讓路徑可以發佈至發行管線。
 
     | 參數 | 說明 |
     | --- | --- |
     | 顯示名稱 | 使用預設名稱或自訂。 |
-    | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 若要深入瞭解，請參閱 [建立變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 。 |
+    | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 若要深入瞭解，請參閱 [建立變數](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 。 |
     | 成品名稱 | 使用預設名稱： **drop** |
     | 成品發行位置 | 使用預設位置： **Azure Pipelines** |
 
@@ -160,7 +160,7 @@ ms.locfileid: "91447790"
 >[!NOTE]
 >如果您想要在管線中使用 **分層式部署** ，Azure DevOps 中的 Azure IoT Edge 工作尚未支援分層部署。
 >
->不過，您可以使用 [Azure DevOps 中的 Azure CLI](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) 工作，將部署建立為分層部署。 針對 **內嵌腳本** 值，您可以使用 [az iot edge deployment create 命令](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
+>不過，您可以使用 [Azure DevOps 中的 Azure CLI](/azure/devops/pipelines/tasks/deploy/azure-cli) 工作，將部署建立為分層部署。 針對 **內嵌腳本** 值，您可以使用 [az iot edge deployment create 命令](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

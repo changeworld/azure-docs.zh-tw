@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579982"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046446"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT 隨插即用橋接器
 
@@ -39,7 +39,7 @@ IoT 隨插即用橋接器預設支援下列類型的週邊設備，以及介面�
 >[!Important]
 >開發人員可以透過 **[這裡 IoT 隨插即用 bridge 開發人員檔](https://aka.ms/iot-pnp-bridge-dev-doc)** 中的指示，擴充 IoT 隨插即用橋接器以支援其他裝置通訊協定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="os-platform"></a>作業系統平台
 
@@ -67,7 +67,7 @@ IoT 隨插即用橋接器預設支援下列類型的週邊設備，以及介面�
 
 ### <a name="azure-iot-products-and-tools"></a>Azure IoT 產品和工具
 
-- **Azure IoT 中樞** -您將需要 azure 訂用帳戶中的 [azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/) ，才能將您的裝置連線至。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。 如果您沒有 IoT 中樞，請 [依照下列指示建立一個](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli)。
+- **Azure IoT 中樞** -您將需要 azure 訂用帳戶中的 [azure IoT 中樞](../iot-hub/index.yml) ，才能將您的裝置連線至。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。 如果您沒有 IoT 中樞，請 [依照下列指示建立一個](../iot-hub/iot-hub-create-using-cli.md)。
 
 > [!Note]
 > IoT 隨插即用目前只能在美國中部、北歐和日本東部區域中建立的 IoT 中樞上使用。 基本層 IoT 中樞並未包含 IoT 隨插即用支援。 若要與您的 IoT 隨插即用裝置互動，您可以使用 Azure IoT explorer 工具。 針對您的作業系統[下載並安裝最新版的 Azure IoT 總管](./howto-use-iot-explorer.md)。

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564354"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045120"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
 
@@ -25,7 +25,7 @@ ms.locfileid: "90564354"
 2. 建立 Azure 函數來更新 Azure 地圖服務室內地圖功能 stateset。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * 遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
     * 您將會使用額外的端點和路由來擴充此對應項。 您也會從該教學課程將另一個函式新增至函數應用程式。 
@@ -64,7 +64,7 @@ ms.locfileid: "90564354"
     >[!NOTE]
     >目前 Cloud Shell 有**已知問題**會影響這些命令群組：`az dt route`、`az dt model`、`az dt twin`。
     >
-    >若要解決此問題，請在執行命令之前，先在 Cloud Shell 中執行 `az login`；或使用[本機 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，而不是 Cloud Shell。 如需這方面的詳細資訊，請參閱[疑難排解：Azure Digital Twins 中的已知問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解決此問題，請在執行命令之前，先在 Cloud Shell 中執行 `az login`；或使用[本機 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)，而不是 Cloud Shell。 如需這方面的詳細資訊，請參閱[疑難排解：Azure Digital Twins 中的已知問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ ms.locfileid: "90564354"
 
 您將從端對端教學課程中，在函式應用程式內建立事件方格觸發的函式 ([*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)) 。 此函式會將這些通知解壓縮，並將更新傳送至 Azure 地圖服務的功能 stateset，以更新一個房間的溫度。 
 
-請參閱下列檔以取得參考資訊： [*適用于 Azure Functions 的 Azure 事件方格觸發程式*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
+請參閱下列檔以取得參考資訊： [*適用于 Azure Functions 的 Azure 事件方格觸發程式*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
 以下列程式碼取代函式程式碼。 它只會篩選出空間 twins 的更新、讀取更新的溫度，然後將該資訊傳送至 Azure 地圖服務。
 

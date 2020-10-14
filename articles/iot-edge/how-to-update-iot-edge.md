@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7cde23372f6a3af0320e2d48c78a0d7fe69a2600
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971744"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045698"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全性精靈和執行階段
 
@@ -108,7 +108,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 執行 Update-IoTEdge 命令會從您的裝置移除並更新安全性守護程式，以及兩個執行時間容器映射。 Yaml 檔案會保留在裝置上，以及 Moby 容器引擎的資料 (如果您是使用 Windows 容器) 。 保留設定資訊表示您不需要在更新程式期間，再次提供裝置的連接字串或裝置布建服務資訊。
 
-如果您想要更新為特定版本的安全 daemon，請從 [IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您想要作為目標的版本。 在該版本中，下載 **Microsoft-Azure-IoTEdge.cab** 檔案。 然後，使用 `-OfflineInstallationPath` 參數指向本機檔案位置。 例如：
+如果您想要更新為特定版本的安全 daemon，請從 [IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您想要作為目標的版本。 在該版本中，下載 **Microsoft-Azure-IoTEdge.cab** 檔案。 然後，使用 `-OfflineInstallationPath` 參數指向本機檔案位置。 例如︰
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
@@ -194,7 +194,7 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
 3. 如果您下載的 .cab 檔案中有架構尾碼，請將檔案重新命名為只 **Microsoft-Azure-IoTEdge.cab**。
 
-4. 若要使用離線元件進行更新，請使用 [點來源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 然後，使用 `-OfflineInstallationPath` 參數做為命令的一部分， `Update-IoTEdge` 並提供檔案目錄的絕對路徑。 例如，
+4. 若要使用離線元件進行更新，請使用 [點來源](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 然後，使用 `-OfflineInstallationPath` 參數做為命令的一部分， `Update-IoTEdge` 並提供檔案目錄的絕對路徑。 例如，
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

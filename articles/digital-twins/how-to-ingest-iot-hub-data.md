@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983348"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048044"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
@@ -22,7 +22,7 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 
 此操作說明文件將逐步解說撰寫可從 IoT 中樞內嵌遙測資料的 Azure 函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 繼續進行此範例之前，您必須將下列資源設定為必要條件：
 * **IoT 中樞**。 如需相關指示，請參閱[此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 iot 中樞*一節。
@@ -129,7 +129,7 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 
 ### <a name="update-your-azure-function-code"></a>更新您的 Azure 函式程式碼
 
-既然您已瞭解先前範例中的程式碼，請從 Visual Studio 的 [*必要條件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) 一節中開啟您的 Azure 函數。  (如果您沒有 Azure 函式，請造訪必要條件中的連結立即建立一個) 。
+既然您已瞭解先前範例中的程式碼，請從 Visual Studio 的 [*必要條件*](#prerequisites) 一節中開啟您的 Azure 函數。  (如果您沒有 Azure 函式，請造訪必要條件中的連結立即建立一個) 。
 
 將您的 Azure 函式程式碼取代為此範例程式碼。
 
@@ -193,7 +193,7 @@ namespace IotHubtoTwins
     }
 }
 ```
-儲存您的函式程式碼，並將函數應用程式發佈至 Azure。 若要這麼做，您可以參考[*如何：設定 Azure 函式來處理資料，以瞭解如何*](how-to-create-azure-function.md)發佈函式[*應用程式*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure)一節。
+儲存您的函式程式碼，並將函數應用程式發佈至 Azure。 若要這麼做，您可以參考[*如何：設定 Azure 函式來處理資料，以瞭解如何*](how-to-create-azure-function.md)發佈函式[*應用程式*](./how-to-create-azure-function.md#publish-the-function-app-to-azure)一節。
 
 成功發佈之後，您會在 Visual Studio 命令視窗中看到輸出，如下所示：
 
@@ -214,7 +214,7 @@ namespace IotHubtoTwins
 ## <a name="connect-your-function-to-iot-hub"></a>將您的函式連線到 IoT 中樞
 
 設定中樞資料的事件目的地。
-在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您在 [*必要條件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) 一節中建立的 IoT 中樞實例。 在 [ **事件**] 下，為您的 Azure function 建立訂用帳戶。
+在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您在 [*必要條件*](#prerequisites) 一節中建立的 IoT 中樞實例。 在 [ **事件**] 下，為您的 Azure function 建立訂用帳戶。
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
@@ -242,7 +242,7 @@ namespace IotHubtoTwins
 
 ## <a name="send-simulated-iot-data"></a>傳送模擬的 IoT 資料
 
-若要測試新的輸入函式，請使用教學課程中的裝置模擬器 [*：連接端對端解決方案*](./tutorial-end-to-end.md)。 該教學課程是以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將會在該存放庫中使用 **devicesimulator.exe** 專案。
+若要測試新的輸入函式，請使用教學課程中的裝置模擬器 [*：連接端對端解決方案*](./tutorial-end-to-end.md)。 該教學課程是以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 範例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將會在該存放庫中使用 **devicesimulator.exe** 專案。
 
 在端對端教學課程中，完成下列步驟：
 1. [*向 IoT 中樞註冊模擬裝置*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

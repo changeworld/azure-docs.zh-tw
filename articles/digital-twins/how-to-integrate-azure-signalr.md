@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564401"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048112"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>整合 Azure 數位 Twins 與 Azure SignalR Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "90564401"
 
 本文所述的解決方案可讓您將數位對應項遙測資料推送至連線的用戶端，例如單一網頁或行動應用程式。 如此一來，用戶端就會從 IoT 裝置以即時計量和狀態進行更新，而不需要輪詢伺服器或提交新的 HTTP 要求以進行更新。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 以下是您在繼續之前應完成的必要條件：
 
@@ -39,9 +39,9 @@ ms.locfileid: "90564401"
 ## <a name="download-the-sample-applications"></a>下載範例應用程式
 
 首先，下載所需的範例應用程式。 您將需要下列兩項：
-* [**Azure 數位 Twins 範例**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此範例包含 *AdtSampleApp* ，其中包含兩個 azure 函式，可在 azure 數位 Twins 實例周圍移動資料 (您可以在 [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) 中更詳細地瞭解此案例。 它也包含 *devicesimulator.exe* 範例應用程式，可模擬 IoT 裝置，每秒產生新的溫度值。 
+* [**Azure 數位 Twins 範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此範例包含 *AdtSampleApp* ，其中包含兩個 azure 函式，可在 azure 數位 Twins 實例周圍移動資料 (您可以在 [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) 中更詳細地瞭解此案例。 它也包含 *devicesimulator.exe* 範例應用程式，可模擬 IoT 裝置，每秒產生新的溫度值。 
     - 流覽至範例連結並按 [ *下載 ZIP* ] 按鈕，將範例的複本下載到您的電腦，如 _**Azure_Digital_Twins_samples.zip**_。 將資料夾解壓縮。
-* [**SignalR 整合 web 應用程式範例**](https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：這是範例回應 web 應用程式，會從 azure SignalR 服務取用 Azure 數位 Twins 遙測資料。
+* [**SignalR 整合 web 應用程式範例**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：這是範例回應 web 應用程式，會從 azure SignalR 服務取用 Azure 數位 Twins 遙測資料。
     -  流覽至範例連結並按 [ *下載 ZIP* ] 按鈕，將範例的複本下載到您的電腦，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_。 將資料夾解壓縮。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -145,7 +145,7 @@ ms.locfileid: "90564401"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="在端對端案例中，Azure 服務的觀點。描述從裝置流入 IoT 中樞的資料，透過 Azure 函式 (箭號 B) 至 Azure 數位 Twins 實例 (一節) ，然後透過事件方格移至另一個 Azure 函式來處理 (箭號 C) 。區段 D 會顯示從箭號 C 中的相同事件方格流向標示為「廣播」之 Azure 函式的資料。「廣播」會與標示為「negotiate」的另一個 Azure 函式通訊，而且「廣播」和「協商」會與電腦裝置通訊。":::
 
-1. 最後，使用下列 Azure CLI 命令，將您先前的 Azure SignalR **連接字串** 新增至函式的應用程式設定。 如果您的[電腦上已安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Azure Cloud Shell](https://shell.azure.com)中執行，或在本機執行：
+1. 最後，使用下列 Azure CLI 命令，將您先前的 Azure SignalR **連接字串** 新增至函式的應用程式設定。 如果您的[電腦上已安裝](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI，命令可以在[Azure Cloud Shell](https://shell.azure.com)中執行，或在本機執行：
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -232,7 +232,7 @@ npm start
 
 如果您不再需要本文中建立的資源，請遵循下列步驟來刪除這些資源。 
 
-使用 Azure Cloud Shell 或本機 Azure CLI，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 移除資源群組也會移除 .。。
+使用 Azure Cloud Shell 或本機 Azure CLI，您可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 移除資源群組也會移除 .。。
 * 從端對端教學課程 (的 Azure 數位 Twins 實例) 
 * 從端對端教學課程 (IoT 中樞和中樞裝置註冊) 
 * 事件方格主題和相關聯的訂閱

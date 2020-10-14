@@ -3,19 +3,19 @@ title: 使用入口網站設定您的計量顧問實例
 titleSuffix: Azure Cognitive Services
 description: 如何設定您的計量顧問實例，並微調異常偵測結果。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446349"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048248"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>如何：設定計量並微調偵測設定
 
@@ -136,7 +136,7 @@ ms.locfileid: "91446349"
 |**要擴展的天數**    |  假日之前和之後的受影響天數。        |
 
 
-在某些案例中， **迴圈事件** 區段可以用來協助減少不必要的警示，方法是使用資料中的迴圈模式。 例如： 
+在某些案例中， **迴圈事件** 區段可以用來協助減少不必要的警示，方法是使用資料中的迴圈模式。 例如︰ 
 
 - 具有多個模式或迴圈的計量，例如每週和每月模式。 
 - 沒有明確模式的計量，但資料是一年中的可比較年份 (YoY) 、每月 (MoM) 、一周的每週 (WoW) ，或一天一天 (DoD) 。

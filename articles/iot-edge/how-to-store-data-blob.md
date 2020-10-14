@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287253"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048146"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 使用 Azure Blob 儲存體，以便在邊緣儲存資料
 
-IoT Edge 上的 Azure Blob 儲存體會在邊緣提供 [區塊 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 和 [附加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 儲存體解決方案。 您 IoT Edge 裝置上的 blob 儲存體模組的行為就像 Azure blob 服務，不同之處在于 blob 會儲存在本機 IoT Edge 裝置上。 您可以使用您已經用過的相同 Azure 儲存體 SDK 方法或 blob API 呼叫來存取 blob。 本文說明在 IoT Edge 裝置上執行 Blob 服務的 IoT Edge 容器 Azure Blob 儲存體相關概念。
+IoT Edge 上的 Azure Blob 儲存體會在邊緣提供 [區塊 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 和 [附加 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 儲存體解決方案。 您 IoT Edge 裝置上的 blob 儲存體模組的行為就像 Azure blob 服務，不同之處在于 blob 會儲存在本機 IoT Edge 裝置上。 您可以使用您已經用過的相同 Azure 儲存體 SDK 方法或 blob API 呼叫來存取 blob。 本文說明在 IoT Edge 裝置上執行 Blob 服務的 IoT Edge 容器 Azure Blob 儲存體相關概念。
 
 此模組在案例中很有用：
 
@@ -53,7 +53,7 @@ IoT Edge 上的 Azure Blob 儲存體會在邊緣提供 [區塊 blob](https://doc
 * 以分鐘為單位指定將會自動刪除 blob (deleteAfterMinutes) 時間。
 * 如果 deleteAfterMinutes 值過期，請選擇在上傳 blob 時保留 blob 的功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure IoT Edge 裝置：
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-例如：
+例如︰
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-例如：
+例如︰
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>設定記錄檔
 
-如需為模組設定記錄檔的相關資訊，請參閱這些實際執行的 [最佳作法](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)。
+如需為模組設定記錄檔的相關資訊，請參閱這些實際執行的 [最佳作法](./production-checklist.md#set-up-logs-and-diagnostics)。
 
 ## <a name="connect-to-your-blob-storage-module"></a>連接到您的 Blob 儲存體模組
 
@@ -300,7 +300,7 @@ IoT Edge 上的 Blob 儲存體模組會使用 Azure 儲存體 Sdk，而且會與
 
 您可以在這裡找到 absiotfeedback@microsoft.com
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [在 IoT Edge 上部署 Azure Blob 儲存體](how-to-deploy-blob.md)
 
