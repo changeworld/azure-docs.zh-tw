@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616545"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019013"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>瞭解 Azure 數位 Twins 中的對應項模型
 
@@ -57,7 +57,7 @@ DTDL 模型介面可能包含下列每個欄位中的零個、一個或多個欄
 
 Azure 數位 Twins 模型的屬性和遙測之間的差異如下：
 * **屬性** 預期會有支援儲存體。 這表示您可以隨時讀取屬性，並取得其值。 如果屬性是可寫入的，您也可以將值儲存在屬性中。  
-* **遙測** 更像是事件串流;它是一組具有簡短壽命的資料訊息。 如果您未設定接聽事件，以及在事件發生時所採取的動作，就不會在稍後追蹤事件。 您無法再回來閱讀它。 
+* **遙測** 更像是事件串流;它是一組具有簡短壽命的資料訊息。 如果您未設定接聽事件，以及在事件發生時所採取的動作，就不會在稍後追蹤事件。 您無法再回來閱讀。 
   - 就 c # 而言，遙測就像是 c # 事件。 
   - 在 IoT 方面，遙測通常是裝置所傳送的單一度量。
 

@@ -3,21 +3,21 @@ title: 安裝並執行異常偵測器 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
 description: 使用異常偵測器 API 的演算法，在內部部署中使用 Docker 容器來尋找資料中的異常。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內部部署、Docker、容器、串流、演算法
-ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e20ff5022b9b4a5b601160516f255af991a540c6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91459995"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018605"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>安裝並執行異常偵測器 API 的 Docker 容器 
 
@@ -179,7 +179,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解下載、安裝及執行異常偵測器容器的概念和工作流程。 摘要說明：
 

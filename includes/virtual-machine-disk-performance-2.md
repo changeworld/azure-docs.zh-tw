@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91606066"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016432"
 ---
 ![Dsv3 檔](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -129,4 +129,21 @@ ms.locfileid: "91606066"
 - VM 快取的**頻寬使用量百分比**-以最大快取的虛擬機器輸送量完成的總磁片輸送量所計算的百分比。 如果此數量為100%，則您的應用程式執行將會是 VM 的快取頻寬限制的 IO。
 - VM 未快取的已**耗用 IOPS 百分比**-虛擬機器上的總 IOPS 所計算的百分比，以超過最大未快取的虛擬機器 iops 限制來完成。 如果此數量為100%，則您的應用程式執行將會是 VM 未快取的 IOPS 限制的 IO。
 - VM 未快取的**頻寬百分比**-在虛擬機器上的總磁片輸送量所計算的百分比（以已布建的虛擬機器輸送量上限完成）。 如果此數量為100%，則您的應用程式執行將會是 VM 未快取頻寬限制的 IO。
+
+## <a name="storage-io-utilization-metrics-example"></a>儲存體 IO 使用計量範例
+讓我們來看看如何使用這些新的儲存體 IO 使用量計量的範例，以協助我們在系統中的瓶頸。 系統設定就跟先前的範例一樣，不過這次我們 **並未** 快取附加的 OS 磁片。
+
+設定：
+- Standard_D8s_v3 
+    - 快取的 IOPS：16000
+    - 未快取的 IOPS：12800
+- P30 OS 磁片 
+    - IOPS：5000
+    - 主機快取：已停用
+- 2 P30 資料磁片 X 2
+    - IOPS：5000
+    - 主機快取：讀取/寫入
+- 2 P30 資料磁片 X 2
+    - IOPS：5000
+    - 主機快取：已停用
 

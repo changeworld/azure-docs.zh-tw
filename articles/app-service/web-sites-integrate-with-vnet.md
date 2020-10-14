@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739899"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018622"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 
@@ -149,6 +149,10 @@ VNet 中所定義的路由用於將流量從您的應用程式導向至 VNet。 
 * **VPN 閘道成本**：點對站 VPN 所需的虛擬網路閘道需付費使用。 如需詳細資訊，請參閱 [VPN 閘道定價][VNETPricing]。
 
 ## <a name="troubleshooting"></a>疑難排解
+
+> [!NOTE]
+> App Service 中的 Docker Compose 案例不支援 VNET 整合。
+>
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

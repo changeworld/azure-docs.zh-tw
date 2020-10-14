@@ -1,6 +1,6 @@
 ---
-title: Azure 串流分析與 Azure Machine Learning 整合
-description: 本文說明如何快速設定簡單的 Azure 串流分析作業，以使用使用者定義函數來整合 Azure Machine Learning。
+title: Azure 串流分析與 Azure Machine Learning Studio (傳統) 的整合
+description: 本文說明如何快速設定簡單的 Azure 串流分析作業，以使用使用者定義函數來整合 Azure Machine Learning Studio (傳統) 。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236639"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019455"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>使用 Azure 串流分析和 Azure Machine Learning Studio (傳統) 進行情感分析
 
-本文說明如何設定簡單的 Azure 串流分析作業，以使用 Azure Machine Learning Studio (傳統) 進行情感分析。 您可以使用 Cortana 智慧資源庫中的 Machine Learning 情感分析模型，來分析串流文字資料並判斷情感分數。
+本文說明如何設定簡單的 Azure 串流分析作業，以使用 Azure Machine Learning Studio (傳統) 進行情感分析。 您可以使用來自 Cortana 智慧資源庫的 Studio (傳統) 情感分析模型，來分析串流文字資料並判斷情感分數。
 
 > [!TIP]
 > 強烈建議使用 [Azure Machine Learning UDF](machine-learning-udf.md)，而不是Azure Machine Learning Studio (傳統版) UDF，以改善效能和可靠性。
@@ -79,31 +79,31 @@ ms.locfileid: "88236639"
 
 2. 選取 [ **在 Studio 中開啟] (傳統) **。  
    
-   ![串流分析機器學習服務, 開啟 Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![串流分析 Azure Machine Learning Studio (傳統) 、open Studio (傳統) ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. 登入以移至工作區。 選取位置。
 
 4. 選取頁面底部的 [ **執行** ]。 程序會執行大約一分鐘的時間。
 
-   ![在 Machine Learning Studio 中執行實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![在 Studio (傳統) 中執行實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
 5. 程序成功執行之後，請選取頁面底部的 [部署 Web 服務]****。
 
-   ![在 Machine Learning Studio 中將實驗部署為 Web 服務](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![以 web 服務的形式在 Studio (傳統) 中部署實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. 若要驗證情感分析模型是否已可供使用，請選取 [ **測試** ] 按鈕。 提供文字輸入，例如「我喜歡 Microsoft」。
 
-   ![在 Machine Learning Studio 中測試實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Studio (傳統) 中的測試實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    如果測試成功，您會看到類似以下範例的結果：
 
-   ![Machine Learning Studio 中的測試結果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Studio (傳統) 中的測試結果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. 在 [ **應用程式** ] 欄位中，選取 **excel 2010 或更早** 的活頁簿連結來下載 excel 活頁簿。 活頁簿包含您稍後設定串流分析作業所需的 API 金鑰和 URL。
 
-    ![串流分析機器學習服務, 快速概覽](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![串流分析 Azure Machine Learning Studio (傳統) ，快速概覽](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>建立使用機器學習服務模型的串流分析工作
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>建立使用 Studio (傳統) 模型的串流分析作業
 
 您現在可以建立從 Blob 儲存體的 CSV 檔案中讀取範例推文的串流分析工作。
 
@@ -127,7 +127,7 @@ ms.locfileid: "88236639"
    |容器|選取您在上一個步驟中建立的容器。|
    |事件序列化格式|CSV|
 
-3. 選取 [儲存]****。
+3. 選取 [儲存]。
 
 ### <a name="configure-the-job-output"></a>設定工作輸出
 
@@ -145,11 +145,11 @@ ms.locfileid: "88236639"
    |容器|選取您在上一個步驟中建立的容器。|
    |事件序列化格式|CSV|
 
-3. 選取 [儲存]****。
+3. 選取 [儲存]。
 
-### <a name="add-the-machine-learning-function"></a>新增機器學習服務函數
+### <a name="add-the-studio-classic-function"></a>新增 Studio (傳統) 函數
 
-稍早您將機器學習模型發佈至 Web 服務。 在此案例中，串流分析作業執行時，會將來自輸入的每則範例推文傳送至 Web 服務進行情感分析。 Machine Learning Web 服務會傳回情感 (`positive`、`neutral` 或 `negative`)，以及推文屬於正向的機率。
+稍早您將 Studio (傳統) 模型發佈至 web 服務。 在此案例中，串流分析作業執行時，會將來自輸入的每則範例推文傳送至 Web 服務進行情感分析。 Studio (傳統) web 服務會傳回情感 (`positive` 、 `neutral` 或) ， `negative` 以及推文為正面的機率。
 
 在本節中，您會在串流分析工作中定義函數。 叫用函數，可以將推文傳送至 Web 服務並得到回應。
 
@@ -163,13 +163,13 @@ ms.locfileid: "88236639"
    |---------|---------|
    | 函式別名 | 使用 [名稱] `sentiment` 並選取 [ **提供 Azure Machine Learning**函式設定]，這可讓您選擇輸入 URL 和金鑰。      |
    | URL| 貼上 Web 服務 URL。|
-   |機碼 | 貼上 API 金鑰。 |
+   |答案 | 貼上 API 金鑰。 |
 
 4. 選取 [儲存]。
 
 ### <a name="create-a-query-to-transform-the-data"></a>建立查詢來轉換資料
 
-串流分析使用宣告式、以 SQL 為基礎的查詢來檢查輸入並處理它。 在本節中，您要建立從輸入讀取每則推文的查詢，然後叫用機器學習服務函數來執行情感分析。 查詢接著會將結果傳送至您定義的輸出 (Blob 儲存體)。
+串流分析使用宣告式、以 SQL 為基礎的查詢來檢查輸入並處理它。 在本節中，您會建立從輸入讀取每個推文的查詢，然後叫用 Studio (傳統) 函數來執行情感分析。 查詢接著會將結果傳送至您定義的輸出 (Blob 儲存體)。
 
 1. 返回串流分析作業總覽。
 
@@ -215,18 +215,18 @@ ms.locfileid: "88236639"
 
 3. 開啟產生的 CSV 檔案。 您會看到類似下列範例的畫面：  
 
-   ![串流分析機器學習服務, CSV 檢視](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![串流分析 Azure Machine Learning Studio (傳統) 、CSV 視圖](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>檢視計量
 
-您也能檢視與 Azure Machine Learning 函數相關的度量。 下列與函式相關的度量會顯示在工作總覽的 [ **監視** ] 方塊中：
+您也可以查看 Studio (傳統) 函數相關計量。 下列與函式相關的度量會顯示在工作總覽的 [ **監視** ] 方塊中：
 
-* **函數要求** 指出傳送至 Machine Learning Web 服務的要求數目。  
-* **函數事件** 指出要求中的事件數目。 根據預設，每個對 Machine Learning Web 服務的要求最多可包含 1,000 個事件。
+* **函數要求** 會指出傳送給 Studio (傳統) web 服務的要求數目。  
+* **函數事件** 指出要求中的事件數目。 根據預設，對 Studio (傳統) web 服務提出的每個要求都包含最多1000個事件。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [整合 REST API 與 Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [整合 REST API 和 Machine Learning Studio (傳統) ](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

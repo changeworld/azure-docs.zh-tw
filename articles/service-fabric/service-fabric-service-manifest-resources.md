@@ -3,15 +3,16 @@ title: 指定 Service Fabric 服務端點
 description: 如何在服務資訊清單中描述端點資源，包括如何設定 HTTPS 端點
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq1
+ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354754"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017585"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Service Fabric 的應用程式和服務會使用資訊清單檔案來定義和建立版本。 如需 ServiceManifest.xml 和 ApplicationManifest.xml 的更高層級總覽，請參閱 [Service Fabric 應用程式和服務資訊清單](service-fabric-application-and-service-manifests.md)。
 
 服務資訊清單允許宣告或變更服務所使用的資源，而不需變更已編譯的程式碼。 Service Fabric 支援設定服務的端點資源。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的架構定義會隨 Service Fabric SDK 和工具一起安裝，以 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*，並記載于 [>servicefabricservicemodel.xsd .xsd 架構檔](service-fabric-service-model-schema.md)中。

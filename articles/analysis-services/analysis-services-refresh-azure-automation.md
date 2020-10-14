@@ -6,18 +6,18 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448589"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019132"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
 藉由使用 Azure 自動化和 PowerShell Runbook，您可以在 Azure 分析方格式模型上執行自動化的資料重新整理作業。  
 
-本文中的範例會使用 [SqlServer PowerShell 模組](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。 本文稍後會提供範例 PowerShell Runbook，其中示範重新整理模型。  
+本文中的範例會使用 [SqlServer PowerShell 模組](/powershell/module/sqlserver/?view=sqlserver-ps)。 本文稍後會提供範例 PowerShell Runbook，其中示範重新整理模型。  
 
 ## <a name="authentication"></a>驗證
 
@@ -40,7 +40,7 @@ ms.locfileid: "91448589"
  
     ![匯入模組](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 按一下 [確定]。
+4. 按一下 [確定]  。
  
 ### <a name="create-a-service-principal-spn"></a>建立服務主體 (SPN) 
 
@@ -104,13 +104,13 @@ ms.locfileid: "91448589"
 
     ![設定排程](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. 按一下 [建立]。
+3. 按一下頁面底部的 [新增]  。
 
 4. 填入排程的參數。 這些會在每次 Runbook 觸發時使用。 透過排程執行時， **WEBHOOKDATA** 參數應保留空白。
 
     ![設定參數](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 按一下 [確定]。
+5. 按一下 [確定]  。
 
 ## <a name="consume-with-data-factory"></a>使用 Data Factory
 
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>後續步驟
 
 [範例](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

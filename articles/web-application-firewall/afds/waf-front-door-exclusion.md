@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77925926"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018639"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web 應用程式防火牆 (WAF) 與 Front Door Service 排除清單 
 
@@ -45,6 +45,17 @@ ms.locfileid: "77925926"
 標頭和 cookie 名稱不區分大小寫。
 
 您可以將排除清單套用至受控規則集內的所有規則、特定規則群組的規則，或單一規則（如上述範例所示）。 
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>根據 Web 應用程式防火牆記錄定義排除
+ [Azure Web 應用程式防火牆監視和記錄](waf-front-door-monitor.md) 會顯示已封鎖要求的相符詳細資料。 如果標頭值、cookie 值、post 引數值或查詢引數值產生某些規則的誤報，您可以排除該部分的要求，使其無法被規則考慮。 下表顯示 WAF 記錄的範例值和對應的排除條件。
+
+|從 WAF 記錄 matchVariableName    |入口網站中的規則排除|
+|--------|------|
+|CookieValue： SOME_NAME  |要求 cookie 名稱等於 SOME_NAME|
+|HeaderValue： SOME_NAME  |要求標頭名稱等於 SOME_NAME|
+|PostParamValue： SOME_NAME|  要求主體 post 引數名稱等於 SOME_NAME|
+|QueryParamValue： SOME_NAME| 查詢字串引數名稱等於 SOME_NAME|
+
 
 ## <a name="next-steps"></a>後續步驟
 

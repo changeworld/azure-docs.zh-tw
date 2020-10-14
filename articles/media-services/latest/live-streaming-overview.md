@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0eb814ea0d941ca01d3a21db1cb507ef273a1a18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328338"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019795"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 
@@ -37,7 +37,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 本文提供媒體服務的即時串流總覽和指引，以及其他相關文章的連結。
  
 > [!NOTE]
-> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 V3 [實況活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md)，以及取得存取 api 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 V3 [實況活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md)，以及取得存取 api 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](/cli/azure/ams) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging-and-delivery"></a>動態封裝和傳遞
 

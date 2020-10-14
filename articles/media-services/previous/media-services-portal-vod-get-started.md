@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268378"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018979"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 入口網站開始傳遞點播內容
 
@@ -93,7 +93,7 @@ ms.locfileid: "89268378"
    為了協助您管理資源，您可以編輯輸出資產的名稱和作業的名稱。
    
    ![為資產編碼](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 選取 [建立]****。
+5. 選取 [建立]。
 
 ### <a name="monitor-encoding-job-progress"></a>監視編碼作業進度
 若要監視編碼作業的進度，請按一下 [設定]****，然後選取 [作業]****。
@@ -127,7 +127,7 @@ ms.locfileid: "89268378"
 > 
 > 
 
-若要更新定位器的到期日，您可以使用 [REST API](/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)。 
+若要更新定位器的到期日，您可以使用 [REST API](/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator)。 
 
 > [!NOTE]
 > 當您更新共用存取簽章定位器的到期日時，URL 也會隨之變更。
@@ -137,7 +137,7 @@ ms.locfileid: "89268378"
 2. 選取 **設定** > **資產**。 選取您要發佈的資產。
 3. 選取 [發佈] 按鈕。
 4. 選取定位器類型。
-5. 選取 [新增]。
+5. 選取 [新增]  。
    
     ![發佈影片](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

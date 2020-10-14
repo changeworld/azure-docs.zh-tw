@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842830"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019880"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -79,7 +79,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 
 
-您必須具備 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 許可權，例如 [使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) 或 [擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner)
+您必須具備 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 許可權，例如 [使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) 或 [擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 > [!IMPORTANT]
 > 如果使用者具有金鑰保存庫管理平面的 `Contributor` 權限，就可以透過設定 Key Vault 存取原則，對自己授與資料平面的存取權。 因此，請嚴格控制誰可以有金鑰保存庫的 `Contributor` 角色存取權。 請確定只有獲得授權的人員可以存取和管理您的金鑰保存庫、金鑰、祕密和憑證。

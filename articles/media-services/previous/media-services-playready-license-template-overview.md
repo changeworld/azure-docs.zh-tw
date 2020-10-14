@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdf5915396fc40c12644552bb24a044279ea32d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261039"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019336"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒體服務 PlayReady 授權範本概觀
 
@@ -86,7 +86,7 @@ XML 需符合 PlayReady 授權範本 XML 結構描述，該結構描述定義於
 > 
 > 
 
-如需 Silverlight 支援的保護層級範例，請參閱 [Silverlight 的輸出保護支援](https://go.microsoft.com/fwlink/?LinkId=617318) \(英文\)。
+如需 Silverlight 支援的保護層級範例，請參閱 [Silverlight 的輸出保護支援](/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc838192(v=vs.95)) \(英文\)。
 
 ## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady 授權範本 XML 結構描述
 ```xml

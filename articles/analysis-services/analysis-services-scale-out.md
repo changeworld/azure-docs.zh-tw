@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007684"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019423"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 擴充
 
@@ -46,9 +46,9 @@ ms.locfileid: "90007684"
 
 * 即使查詢集區中沒有任何複本，也允許同步處理。 如果您要從零向外延展到一或多個複本，並在主伺服器上處理作業的新資料，請先執行與查詢集區中沒有複本的同步處理，然後再向外擴充。在相應放大之前進行同步處理，可避免新加入複本的重複序列化。
 
-* 從主伺服器刪除模型資料庫時，不會自動從查詢集區中的複本刪除。 您必須使用 [AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令來執行同步處理作業，此命令會從複本的共用 blob 儲存位置移除該資料庫的檔案，然後在查詢集區中的複本上刪除模型資料庫。 若要判斷模型資料庫是否存在於查詢集區中的複本上，而不是在主伺服器上，請確定 [ **處理伺服器與查詢集** 區] 設定為 **[是]**。 然後使用 SSMS 連接到使用辨識符號的主伺服器， `:rw` 以查看資料庫是否存在。 然後連接到不含辨識符號的查詢集區中的複本 `:rw` ，以查看相同的資料庫是否也存在。 如果資料庫存在於查詢集區中的複本上，而不是在主伺服器上，請執行同步處理作業。   
+* 從主伺服器刪除模型資料庫時，不會自動從查詢集區中的複本刪除。 您必須使用 [AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令來執行同步處理作業，此命令會從複本的共用 blob 儲存位置移除該資料庫的檔案，然後在查詢集區中的複本上刪除模型資料庫。 若要判斷模型資料庫是否存在於查詢集區中的複本上，而不是在主伺服器上，請確定 [ **處理伺服器與查詢集** 區] 設定為 **[是]**。 然後使用 SSMS 連接到使用辨識符號的主伺服器， `:rw` 以查看資料庫是否存在。 然後連接到不含辨識符號的查詢集區中的複本 `:rw` ，以查看相同的資料庫是否也存在。 如果資料庫存在於查詢集區中的複本上，而不是在主伺服器上，請執行同步處理作業。   
 
-* 在主伺服器上重新命名資料庫時，需要額外的步驟，以確保資料庫已正確地同步處理至任何複本。 重新命名之後，請使用 [AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) 命令來指定 `-Database` 具有舊資料庫名稱的參數，以執行同步處理。 此同步處理會從任何複本移除具有舊名稱的資料庫和檔案。 然後使用新的資料庫名稱，執行另一個指定參數的同步 `-Database` 處理。 第二個同步處理會將新命名的資料庫複製到第二組檔案，並產生任何複本。 您無法使用入口網站中的 [同步處理模型] 命令來執行這些同步處理。
+* 在主伺服器上重新命名資料庫時，需要額外的步驟，以確保資料庫已正確地同步處理至任何複本。 重新命名之後，請使用 [AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) 命令來指定 `-Database` 具有舊資料庫名稱的參數，以執行同步處理。 此同步處理會從任何複本移除具有舊名稱的資料庫和檔案。 然後使用新的資料庫名稱，執行另一個指定參數的同步 `-Database` 處理。 第二個同步處理會將新命名的資料庫複製到第二組檔案，並產生任何複本。 您無法使用入口網站中的 [同步處理模型] 命令來執行這些同步處理。
 
 ### <a name="synchronization-mode"></a>同步處理模式
 
@@ -150,11 +150,11 @@ ms.locfileid: "90007684"
 
 使用 PowerShell 之前，請 [安裝或更新最新的 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 
 
-若要執行同步處理，請使用 [同步-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)。
+若要執行同步處理，請使用 [同步-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)。
 
-若要設定查詢複本的數目，請使用 [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定選擇性的 `-ReadonlyReplicaCount` 參數。
+若要設定查詢複本的數目，請使用 [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定選擇性的 `-ReadonlyReplicaCount` 參數。
 
-若要將處理伺服器與查詢集區分開，請使用 [AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定 `-DefaultConnectionMode` 要使用的選擇性參數 `Readonly` 。
+若要將處理伺服器與查詢集區分開，請使用 [AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定 `-DefaultConnectionMode` 要使用的選擇性參數 `Readonly` 。
 
 若要深入瞭解，請參閱 [使用服務主體搭配 Az. microsoft.analysisservices.sharepoint.integration.dll 模組](analysis-services-service-principal.md#azmodule)。
 
@@ -183,4 +183,4 @@ ms.locfileid: "90007684"
 ## <a name="related-information"></a>相關資訊
 
 [監視伺服器計量](analysis-services-monitor.md)   
-[管理 Azure Analysis Services](analysis-services-manage.md) 
+[管理 Azure Analysis Services](analysis-services-manage.md)

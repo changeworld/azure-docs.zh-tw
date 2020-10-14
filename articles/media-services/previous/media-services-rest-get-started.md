@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264465"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019472"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>使用 REST 傳遞點播內容入門
 
@@ -489,7 +489,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 ### <a name="create-a-job"></a>建立作業
 每個工作可以有一或多個工作，視您想要完成的處理類型而定。 透過 REST API，您可以用兩種方式之一建立工作和其相關的工作：工作可以透過 Job 實體上的 Tasks 導覽屬性，或透過 OData 批次處理進行內嵌定義。 媒體服務 SDK 使用批次處理。 不過，為了本文章中程式碼範例的可讀性，工作都是以內嵌定義。 如需批次處理的資訊，請參閱 [開放式資料通訊協定 (OData) 批次處理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
 
-下列範例會示範如何建立和張貼工作，並將一個工作設為在特定的解析度與品質將視訊編碼。 下列文件區段包含媒體編碼器標準處理器支援的所有 [工作預設](/azure/media-services/previous/media-services-mes-presets-overview) 清單。  
+下列範例會示範如何建立和張貼工作，並將一個工作設為在特定的解析度與品質將視訊編碼。 下列文件區段包含媒體編碼器標準處理器支援的所有 [工作預設](./media-services-mes-presets-overview.md) 清單。  
 
 **HTTP 要求**
 

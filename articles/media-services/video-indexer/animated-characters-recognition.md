@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87047491"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018877"
 ---
 # <a name="animated-character-detection-preview"></a>動畫角色偵測 (預覽)
 
@@ -55,7 +55,7 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>只將自訂視覺帳戶連接 (付費帳戶) 
 
-如果您擁有影片索引子付費帳戶，您需要先連接自訂視覺帳戶。 如果您還沒有自訂視覺帳戶，請建立一個帳戶。 如需詳細資訊，請參閱 [自訂視覺](../../cognitive-services/custom-vision-service/home.md)。
+如果您擁有影片索引子付費帳戶，您需要先連接自訂視覺帳戶。 如果您還沒有自訂視覺帳戶，請建立一個帳戶。 如需詳細資訊，請參閱 [自訂視覺](../../cognitive-services/custom-vision-service/overview.md)。
 
 > [!NOTE]
 > 這兩個帳戶都必須位於相同的區域中。 日本區域目前不支援自訂視覺整合。
@@ -160,7 +160,7 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
 1. 連接自訂視覺帳戶。
 
     如果您擁有影片索引子付費帳戶，您需要先連接自訂視覺帳戶。 <br/>
-    如果您還沒有自訂視覺帳戶，請建立一個帳戶。 如需詳細資訊，請參閱 [自訂視覺](../../cognitive-services/custom-vision-service/home.md)。
+    如果您還沒有自訂視覺帳戶，請建立一個帳戶。 如需詳細資訊，請參閱 [自訂視覺](../../cognitive-services/custom-vision-service/overview.md)。
 
     [使用 API 連接您的自訂視覺帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)。
 1. 建立動畫字元模型。
@@ -212,6 +212,6 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
 * 如果影片的品質很差，則可能無法正確識別出現在影片中的字元。
 * 建議您針對每一組動畫字元使用模型 (例如，每個動畫系列) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [影片索引子概觀](video-indexer-overview.md)

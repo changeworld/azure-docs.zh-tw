@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645750"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019727"
 ---
 # <a name="data-encryption-models"></a>資料加密模型
 
@@ -146,11 +146,11 @@ Azure Key Vault 中使用客戶管理之金鑰的伺服器端加密模型，需�
 | 產品、功能或服務 | 使用服務管理金鑰的伺服器端   | 使用 Customer-Managed 機碼 Server-Side | 使用 Client-Managed 機碼 Client-Side  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI 與機器學習**      |                    |                    |                    |
-| Azue 認知搜尋           | 是                | 是                | -                  |
+| Azure 認知搜尋           | 是                | 是                | -                  |
 | Azure 認知服務         | 是                | 是                | -                  |
 | Azure Machine Learning           | 是                | 是                | -                  |
-| Azure Machine Learning Studio    | 是                | 預覽，RSA 2048 位元 | -               |
-| 內容仲裁                | 是                | 是                | -                  |
+| Azure Machine Learning Studio (傳統)  | 是         | 預覽，RSA 2048 位元 | -               |
+| 內容仲裁者                | 是                | 是                | -                  |
 | 臉部                             | 是                | 是                | -                  |
 | Language Understanding           | 是                | 是                | -                  |
 | 個人化工具                     | 是                | 是                | -                  |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438956"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016173"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安裝及設定內部部署資料閘道
 
@@ -20,7 +20,7 @@ ms.locfileid: "87438956"
 
 若要深入瞭解 Azure Analysis Services 如何與閘道搭配運作，請參閱 [連接至內部部署資料來源](analysis-services-gateway.md)。 若要深入瞭解 advanced 安裝案例和閘道的一般資訊，請參閱內部 [部署資料閘道檔](/data-integration/gateway/service-gateway-onprem)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 **最低需求：**
 
@@ -54,7 +54,7 @@ ms.locfileid: "87438956"
 
 2. 選取內部 **部署資料閘道**。
 
-   ![Select](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![選取](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. 選取位置，接受條款，然後按一下 [安裝]****。
 
@@ -132,7 +132,7 @@ ms.locfileid: "87438956"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 [get-azresource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) 來取得閘道 ResourceID。 然後，在[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)或[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)中指定 **-GatewayResourceID** ，將閘道資源連線到現有或新的伺服器。
+使用 [get-azresource](/powershell/module/az.resources/get-azresource) 來取得閘道 ResourceID。 然後，在[AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver)或[AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver)中指定 **-GatewayResourceID** ，將閘道資源連線到現有或新的伺服器。
 
 若要取得閘道資源識別碼：
 
@@ -153,7 +153,7 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 
 就這麼簡單。 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [ Analysis Services](analysis-services-manage.md)   
 * [從 Azure Analysis Services 取得資料](analysis-services-connect.md)   

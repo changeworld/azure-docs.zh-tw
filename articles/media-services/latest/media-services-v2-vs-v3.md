@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651746"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019829"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒體服務 v2 與 v3
 
@@ -74,7 +74,7 @@ ms.locfileid: "91651746"
 
 v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工作。
 
-* [進階編碼器](../previous/media-services-premium-workflow-encoder-formats.md)和舊版[媒體分析處理器](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 Preview、Face Redactor 等) 無法透過 v3 存取。<br/>想要從 Media Indexer 1 或 2 Preview 移轉的客戶可以立即使用 v3 API 中的 AudioAnalyzer 預設值。  相較於舊版的 Media Indexer 1 或 2，這個新的預設值包含更多功能。 
+* [進階編碼器](../previous/media-services-encode-asset.md)和舊版[媒體分析處理器](../previous/legacy-components.md) (Azure Media Services Indexer 2 Preview、Face Redactor 等) 無法透過 v3 存取。<br/>想要從 Media Indexer 1 或 2 Preview 移轉的客戶可以立即使用 v3 API 中的 AudioAnalyzer 預設值。  相較於舊版的 Media Indexer 1 或 2，這個新的預設值包含更多功能。 
 * [V2 api 中媒體編碼器標準的許多先進功能](../previous/media-services-advanced-encoding-with-mes.md)目前無法在 v3 中使用，例如：
   
     * 資產拼接
@@ -119,7 +119,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 |---|---|---|---|
 |媒體服務的儲存體加密|AES-256 加密、媒體服務所管理的金鑰。|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
 |[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|由 Azure 或客戶管理的 Azure 儲存體、金鑰所提供的伺服器端加密。|支援|支援|
-|[儲存體用戶端加密](../../storage/common/storage-client-side-encryption.md)|Azure 儲存體所提供的用戶端加密，Key Vault 中由客戶管理的金鑰。|不支援|不支援|
+|[儲存體用戶端加密](../../storage/common/storage-client-side-encryption.md)|Azure 儲存體所提供的用戶端加密，Key Vault 中由客戶管理的金鑰。|不受支援|不受支援|
 
 <sup>1</sup> 雖然媒體服務支援在純文字/沒有任何形式的加密的情況下處理內容，但不建議這麼做。
 

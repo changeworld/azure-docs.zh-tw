@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922926"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019424"
 ---
 # <a name="manage-server-administrators"></a>管理伺服器管理員
 
@@ -40,13 +40,13 @@ ms.locfileid: "87922926"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-建立新的伺服器時，請使用 [AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) Cmdlet 來指定 Administrator 參數。 <br>
-使用 [AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) 指令程式來修改現有伺服器的系統管理員參數。
+建立新的伺服器時，請使用 [AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) Cmdlet 來指定 Administrator 參數。 <br>
+使用 [AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) 指令程式來修改現有伺服器的系統管理員參數。
 
 ## <a name="rest-api"></a>REST API
 
-使用 [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) 可在建立新的伺服器時，指定 asAdministrator 屬性。 <br>
-使用 [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) 可在修改現有伺服器時，指定 asAdministrator 屬性。 <br>
+使用 [Create](/rest/api/analysisservices/servers/create) 可在建立新的伺服器時，指定 asAdministrator 屬性。 <br>
+使用 [Update](/rest/api/analysisservices/servers/update) 可在修改現有伺服器時，指定 asAdministrator 屬性。 <br>
 
 
 
@@ -54,4 +54,4 @@ ms.locfileid: "87922926"
 
 [驗證和使用者權限](analysis-services-manage-users.md)  
 [管理資料庫角色和使用者](analysis-services-database-users.md)  
-[Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md)

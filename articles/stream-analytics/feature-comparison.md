@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885572"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018282"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 串流分析功能比較
 
@@ -44,7 +44,7 @@ ms.locfileid: "90885572"
 |C # 自訂程式碼函數和還原序列化程式|唯讀模式|是|否|
 |JavaScript UDF 和 UDA     |是         |是         |僅限 Windows         |
 |Machine Learning 服務     |是        |是         |否         |
-|Machine Learning Studio     |是，但無法測試查詢        |是 |否         |
+|Azure Machine Learning Studio (傳統) |是，但無法測試查詢        |是 |否         |
 |相容性層級     |1.0</br>1.1</br>1.2 (預設)          |1.0</br>1.1</br>1.2 (預設)            |1.0</br>1.1</br>1.2 (預設)            |
 |內建以 ML 為基礎的異常偵測功能     |是         |是         |是         |
 |內建地理空間函數     |是         |是         |是         |

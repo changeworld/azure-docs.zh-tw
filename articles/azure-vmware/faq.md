@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 67309aafe5c1bc841399006285a9862f711e4296
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948709"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018554"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -45,7 +45,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>是否可將 vSphere Vm 從內部部署環境遷移至 Azure VMware 解決方案私人雲端？
 
-可以。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/210695) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
+是。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/210695) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>內部部署環境中是否需要特定版本的 vSphere？
 
@@ -66,6 +66,13 @@ Microsoft 和 Red Hat 共用一組整合式共置的支援小組，可針對在 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition 是否可用，若是如此，它會有多少費用？
 
 VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方案做為「預覽」函式/服務。 雖然適用於 Azure VMware 的 VMware HCX EE 解決方案處於「預覽」，但其為免費的函式/服務，並受預覽版服務條款及條件的約束。 一旦 VMware HCX EE 服務正式發行後，您將會收到 30 天的通知，指出帳單將會切換。 您也可以選擇關閉/退出服務。
+
+#### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware 解決方案 Vm 是否可由 VMRC 管理？
+是的，前提是安裝在上的系統可以存取私用雲端 vCenter，並且使用公用 DNS (以便能夠解析) 的 ESXi 主機名稱。
+
+#### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有針對 Azure VMware 解決方案 Vm 安裝和使用 VMRC 的特殊指示？
+否，請使用 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，並滿足這些指示中指定的 VM 必要條件。 
+
 
 ## <a name="compute-network-storage-and-backup"></a>計算、網路、儲存體和備份
 
@@ -139,7 +146,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>我是否可以在私人雲端中使用 VMware NSX-V？
 
-不可以。 NSX-T 是唯一支援的 NSX 版本。
+否。 NSX-T 是唯一支援的 NSX 版本。
 
 #### <a name="is-nsx-required-in-on-premises-environments-or-networks-that-connect-to-a-private-cloud"></a>內部部署環境或連線到私人雲端的網路中是否需要 NSX？
 

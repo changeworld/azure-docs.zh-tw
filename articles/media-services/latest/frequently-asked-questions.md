@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268480"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019608"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 的常見問題
 
@@ -28,7 +28,7 @@ ms.locfileid: "89268480"
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>媒體服務 v3 有哪些 Azure 入口網站限制？
 
-您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 實況活動、查看 v3 資產和作業、取得存取 api、加密內容的相關資訊。 <br/>針對其他所有管理工作 (例如，管理轉換和作業或分析 v3 內容) ，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
+您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 實況活動、查看 v3 資產和作業、取得存取 api、加密內容的相關資訊。 <br/>針對其他所有管理工作 (例如，管理轉換和作業或分析 v3 內容) ，請使用 [REST API](/rest/api/media/accountfilters)、 [CLI](/cli/azure/ams)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 
 如果您的影片先前已使用媒體服務 v3 API 上傳至媒體服務帳戶，或已根據即時輸出產生內容，則不會在 Azure 入口網站中看到 [編碼]、[分析] 或 [加密] 按鈕。 使用媒體服務 v3 API 來執行這些工作。  
 
@@ -163,7 +163,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 * View (不管理) v3 [資產](assets-concept.md)。 
 * [取得存取 api 的相關資訊](./access-api-howto.md)。 
 
-針對其他所有管理工作 (例如， [轉換和作業](transforms-jobs-concept.md) 和 [內容保護](content-protection-overview.md)) ，請使用 [REST API](/rest/api/media/)、 [Azure CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
+針對其他所有管理工作 (例如， [轉換和作業](transforms-jobs-concept.md) 和 [內容保護](content-protection-overview.md)) ，請使用 [REST API](/rest/api/media/)、 [Azure CLI](/cli/azure/ams)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 

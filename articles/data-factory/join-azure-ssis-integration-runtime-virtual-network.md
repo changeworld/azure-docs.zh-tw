@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187807"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018181"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
@@ -151,7 +151,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 如需詳細資訊，請參閱 [使用您自己的 DNS 伺服器的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 
 
 > [!NOTE]
-> 請使用完整功能變數名稱 (FQDN) 作為私用主機名稱（例如 `<your_private_server>.contoso.com` ，使用而非 `<your_private_server>` ），因為 Azure-SSIS IR 不會自動附加您自己的 DNS 尾碼。
+> 請使用完整功能變數名稱 (FQDN) 作為私用主機名稱 (例如，使用 `<your_private_server>.contoso.com` 而非 `<your_private_server>`) 。 或者，您可以在 Azure-SSIS IR 上使用標準自訂安裝程式，以自動附加您自己的 DNS 尾碼 (例如 `contoso.com`) 到任何不合格的單一標籤功能變數名稱，然後將它轉換成 FQDN，然後再將它用於 DNS 查詢中，請參閱 [標準自訂安裝範例](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples)。 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> 設定 NSG
 如果您需要針對 Azure-SSIS IR 所使用的子網執行 NSG，請允許通過下列埠的輸入和輸出流量： 
@@ -597,7 +597,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 此命令約需要 20 到 30 分鐘才能完成。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure-SSIS IR 的詳細資訊，請參閱下列文章： 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供關於 IRs 的一般概念性資訊，包括 Azure-SSIS IR。 

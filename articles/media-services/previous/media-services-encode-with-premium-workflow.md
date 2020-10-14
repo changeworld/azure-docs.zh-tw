@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29a889fc15b1889711d08d3386920652a8bc8f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269041"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017228"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用 Media Encoder Premium Workflow 進行進階編碼
 
@@ -30,12 +30,12 @@ ms.locfileid: "89269041"
 >
 >
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Microsoft Azure 媒體服務推出 **Media Encoder Premium Workflow** 媒體處理器。 此處理器為高階隨選工作流程提供先進的編碼功能。
 
 以下主題說明 **Media Encoder Premium Workflow**的相關詳細資料：
 
-* [Media Encoder Premium Workflow 支援的格式](media-services-premium-workflow-encoder-formats.md) – 討論 **Media Encoder Premium Workflow**支援的檔案格式和轉碼器。
+* [Media Encoder Premium Workflow 支援的格式](./media-services-encode-asset.md) – 討論 **Media Encoder Premium Workflow**支援的檔案格式和轉碼器。
 * [Azure 隨選媒體編碼器的概觀和比較](media-services-encode-asset.md)比較**媒體編碼器高階工作流程**和**媒體編碼器標準**的編碼功能。
 
 本文示範如何使用 .NET 以**媒體編碼器高階工作流程**進行編碼。

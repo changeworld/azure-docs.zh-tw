@@ -2,29 +2,29 @@
 title: 使用 Azure CLI 建立堡壘主機 |Azure 防禦
 description: 在本文中，您將瞭解如何建立和刪除堡壘主機
 services: bastion
-author: mialdrid
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/26/2020
-ms.author: mialdrid
-ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.author: cherylmc
+ms.openlocfilehash: 851ec86feb5244ff43759a7aef2b80876dcfa734
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90024327"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018537"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 建立 Azure 堡壘主機
 
-本文說明如何使用 Azure CLI 建立 Azure 堡壘主機。 當您在虛擬網路中布建 Azure 防禦服務之後，就可以在相同虛擬網路中的所有 Vm 上使用順暢的 RDP/SSH 體驗。 Azure Bastion 部署依虛擬網路來進行，而非以訂用帳戶/帳戶或虛擬機器為依據。
+本文說明如何使用 Azure CLI 建立 Azure 堡壘主機。 部署防禦之後，您可以透過瀏覽器使用 Azure 入口網站，透過其私人 IP 位址連線到 VM。 您的 VM 不需要公用 IP 位址、額外的用戶端或特殊軟體。 Azure Bastion 部署依虛擬網路來進行，而非以訂用帳戶/帳戶或虛擬機器為依據。 在相同虛擬網路中的所有 Vm 皆可使用順暢的 RDP/SSH 體驗。
 
-（選擇性）您可以使用 [Azure 入口網站](bastion-create-host-portal.md)建立 Azure 堡壘主機，或使用 [Azure PowerShell](bastion-create-host-powershell.md)。
+（選擇性）您可以使用 [Azure 入口網站](tutorial-create-host-portal.md)建立 Azure 堡壘主機，或使用 [Azure PowerShell](bastion-create-host-powershell.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用 [MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) 或註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 
-[!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
+[!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>建立 Bastion 主機
 
@@ -53,6 +53,7 @@ ms.locfileid: "90024327"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需其他資訊，請參閱防禦 [常見問題](bastion-faq.md) 。
+* 連接至虛擬機器。
+   * [Linux VM](bastion-connect-vm-ssh.md)
+   * [Windows VM](bastion-connect-vm-rdp.md)
 
-* 若要搭配使用網路安全性群組與 Azure Bastion子網路，請參閱[使用 NSG](bastion-nsg.md)。

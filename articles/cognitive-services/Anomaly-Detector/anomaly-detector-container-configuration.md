@@ -3,19 +3,19 @@ title: 如何設定異常偵測器 API 的容器
 titleSuffix: Azure Cognitive Services
 description: 異常偵測器 API 容器執行時間環境是使用 `docker run` 命令引數進行設定。 此容器有數個必要的設定，和一些選擇性的設定。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.author: aahi
-ms.openlocfilehash: c0bf08ae0b2d26b2f4992181d2e300e9dbeed818
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: ae987a4239f478162e1e1f251e0d6607d63e02c5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903537"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019744"
 ---
 # <a name="configure-anomaly-detector-containers"></a>設定異常偵測器容器
 
@@ -88,10 +88,10 @@ ms.locfileid: "90903537"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](anomaly-detector-container-howto.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。 
 
-|選用| 名稱 | 資料類型 | 描述 |
+|選擇性| 名稱 | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
 |不允許| `Input` | 字串 | 異常偵測器容器不會使用這個。|
-|選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|選用| `Output` | String | 輸出裝載的目標。 預設值為 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令 
 

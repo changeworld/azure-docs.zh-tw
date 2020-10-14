@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7df4df1f7c2fbb600b2350940f910f488827804d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875428"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018044"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -34,7 +34,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 ## <a name="example"></a>範例
 
-讓我們看看下列範例。 稱為股票價格的應用程式會使用稱為股票的外部 API 來顯示股票的目前市場價格。 股票價格應用程式有一個稱為 Stock 頁面的頁面，用戶端網頁瀏覽器會使用這個頁面來開啟 `GET /Home/Stock` 。 應用程式會使用 HTTP 呼叫來查詢股票 API `GET /api/stock/value` 。
+以下舉例說明。 稱為股票價格的應用程式會使用稱為股票的外部 API 來顯示股票的目前市場價格。 股票價格應用程式有一個稱為 Stock 頁面的頁面，用戶端網頁瀏覽器會使用這個頁面來開啟 `GET /Home/Stock` 。 應用程式會使用 HTTP 呼叫來查詢股票 API `GET /api/stock/value` 。
 
 您可以執行查詢來分析產生的遙測︰
 
@@ -147,7 +147,7 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](http
       distributedTracingMode: 2 // DistributedTracingModes.W3C
   ```
 > [!IMPORTANT] 
-> 若要查看啟用相互關聯所需的所有設定，請參閱 [JavaScript 相互關聯檔](/app/javascript.md#enable-correlation)。
+> 若要查看啟用相互關聯所需的所有設定，請參閱 [JavaScript 相互關聯檔](/azure/azure-monitor/app/javascript#enable-correlation)。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遙測相互關聯
 

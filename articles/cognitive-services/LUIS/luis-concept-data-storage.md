@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541878"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018027"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) 認知服務中的資料儲存和移除
 LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure 資料存放區中。 此資料會儲存 30 天。 
@@ -50,9 +50,14 @@ LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>刪除帳戶
-如果您刪除帳戶，系統就會刪除所有應用程式及其範例語句和記錄。 資料會保留 60 天，之後系統就會將帳戶和資料永久刪除。
+如果您未遷移，您可以刪除您的帳戶，您的所有應用程式將會連同其範例語句和記錄一併刪除。 資料會在帳戶和資料永久刪除之前，保留90天。
 
 刪除帳戶時，是從 [Settings] \(設定\)**** 頁面執行刪除。 請選取右上方導覽列中您的帳戶名稱，以移至 [Settings] \(設定\)**** 頁面。
+
+## <a name="delete-an-authoring-resource"></a>刪除撰寫資源
+如果您已 [遷移至撰寫資源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)，從 Azure 入口網站中刪除資源本身將會刪除與該資源相關聯的所有應用程式，以及其範例語句和記錄。 資料在永久刪除之前會保留90天。    
+
+若要刪除您的資源，請移至 [Azure 入口網站](https://ms.portal.azure.com/#home) ，然後選取您的 LUIS 編寫資源。 移至 [ **總覽** ] 索引標籤，然後按一下頁面頂端的 [ **刪除** ] 按鈕。 然後確認您的資源已刪除。 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>資料非作用中狀態視為過期訂用帳戶
 基於資料保留和刪除的目的，非作用中 LUIS 應用程式可能「由 Microsoft 斟酌決定」__ 視為過期的訂用帳戶。 應用程式如果在過去 90 天符合下列條件，即可視為非作用中： 

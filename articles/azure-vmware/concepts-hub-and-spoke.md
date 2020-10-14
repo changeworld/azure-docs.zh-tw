@@ -3,12 +3,12 @@ title: 概念-將 Azure VMware 解決方案部署整合到中樞和輪輻架構�
 description: 瞭解在 Azure 上現有或新的中樞和輪輻架構中整合 Azure VMware 解決方案部署的建議。
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: bfd0da4f03eedaf215ddb55facffc2296a9d0b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579703"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019216"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "91579703"
 
 此圖顯示 Azure 中的中樞和輪輻部署範例，並透過 ExpressRoute 全球接觸來連線至內部部署和 Azure VMware 解決方案。
 
-:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
+:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
 
 架構具有下列主要元件：
 
@@ -65,12 +65,12 @@ ExpressRoute 連線可讓流量在內部部署、Azure VMware 解決方案和 Az
 
 * **內部部署至 Azure VMware 解決方案的流量流程**
 
-  :::image type="content" source="media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware 解決方案至中樞 VNET 流量流程**
 
-  :::image type="content" source="media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解決方案中樞和輪輻整合部署" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 您可以在 [Azure Vmware 解決方案產品檔](./concepts-networking.md)中找到更多有關 Azure vmware 解決方案網路功能和連線能力概念的詳細資料。

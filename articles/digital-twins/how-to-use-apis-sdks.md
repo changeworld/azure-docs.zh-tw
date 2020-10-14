@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 030b41e086d700c527107d2246bc7f7df07e860f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9804eb2af28108572688244d6d7b513454e375b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977709"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018996"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -269,10 +269,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>一般 API/SDK 使用注意事項
 
 > [!NOTE]
-> 請注意，在預覽期間，Azure 數位 Twins 不支援 **跨原始來源資源分享 (CORS) **。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
-> 若要解決這個錯誤，您可以執行下列其中一項：
-> * 從訊息中去除 CORS 標頭 `Access-Control-Allow-Origin` 。 此標頭會指出是否可以共用回應。 
-> * 或者，建立 CORS proxy 並透過它來 REST API 要求。 
+> 請注意，Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS) **。 如需有關影響和解決策略的詳細資訊，請參閱「 [*跨原始資源分享 (CORS) *](concepts-security.md#cross-origin-resource-sharing-cors) *概念： Azure 數位 Twins 解決方案的安全性*」一節。
 
 下列清單提供使用 Api 和 Sdk 的其他詳細資料和一般指導方針。
 

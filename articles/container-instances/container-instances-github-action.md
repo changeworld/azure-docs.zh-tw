@@ -3,13 +3,13 @@ title: 依 GitHub 動作部署容器實例
 description: 設定 GitHub 動作，以自動化建立、推送及部署容器映射至 Azure 容器實例的步驟
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: ''
-ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: github-actions-azure
+ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755002"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019183"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>設定 GitHub 動作以建立容器執行個體
 
@@ -31,7 +31,7 @@ ms.locfileid: "88755002"
 > [!IMPORTANT]
 > Azure 容器實例的 GitHub 動作目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **GitHub 帳戶** -如果您還沒有帳戶，請建立一個帳戶 https://github.com 。
 * **Azure CLI** -您可以使用 Azure CLI 的 Azure Cloud Shell 或本機安裝來完成 Azure CLI 步驟。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
@@ -299,7 +299,7 @@ az group delete \
   --name <resource-group-name>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 流覽 [GitHub Marketplace](https://github.com/marketplace?type=actions) 以取得自動化開發工作流程的其他動作
 

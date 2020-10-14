@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018189"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>將 Analysis Services 移至不同的區域
 
@@ -37,7 +37,7 @@ ms.locfileid: "87050356"
 將伺服器移到不同區域之前，建議您建立詳細的方案。 請考慮額外的資源，例如可能也需要移動的閘道和存放裝置。 有了任何計畫，請務必在移動實際執行伺服器之前，先使用測試伺服器完成一或多個試用移動作業。
 
 > [!IMPORTANT]
-> 用戶端應用程式和連接字串會使用完整伺服器名稱連接到 Analysis Services，這是包含伺服器所在區域的 Uri。 例如： `asazure://westcentralus.asazure.windows.net/advworks01` 。 將伺服器移到不同的區域時，您實際上是在不同的區域中建立新的伺服器資源，在伺服器名稱 Uri 中會有不同的區域。 腳本中使用的用戶端應用程式和連接字串必須使用新的伺服器名稱 Uri 連接到新的伺服器。 使用 [伺服器名稱別名](analysis-services-server-alias.md) 可減輕伺服器名稱 Uri 必須變更的位置數目，但必須在區域移動之前先執行。
+> 用戶端應用程式和連接字串會使用完整伺服器名稱連接到 Analysis Services，這是包含伺服器所在區域的 Uri。 例如，`asazure://westcentralus.asazure.windows.net/advworks01`。 將伺服器移到不同的區域時，您實際上是在不同的區域中建立新的伺服器資源，在伺服器名稱 Uri 中會有不同的區域。 腳本中使用的用戶端應用程式和連接字串必須使用新的伺服器名稱 Uri 連接到新的伺服器。 使用 [伺服器名稱別名](analysis-services-server-alias.md) 可減輕伺服器名稱 Uri 必須變更的位置數目，但必須在區域移動之前先執行。
 
 > [!IMPORTANT]
 > Azure 區域使用不同的 IP 位址範圍。 如果您針對伺服器和/或儲存體帳戶所在的區域設定防火牆例外，可能需要設定不同的 IP 位址範圍。 若要深入瞭解，請參閱 [關於 Analysis Services 網路連線能力](analysis-services-network-faq.md)的常見問題。
@@ -48,7 +48,7 @@ ms.locfileid: "87050356"
 > [!NOTE]
 > 如果使用內部部署資料閘道連接到資料來源，您也必須將閘道資源移至目標伺服器區域。 若要深入瞭解，請參閱 [安裝和設定內部部署資料閘道](analysis-services-gateway-install.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - **Azure 儲存體帳戶**：儲存 .abf 備份檔案所需。
 - **SQL Server Management Studio (SSMS) **：備份和還原模型資料庫的必要參數。
@@ -88,7 +88,7 @@ ms.locfileid: "87050356"
 
 使用 PowerShell 匯出範本：
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ ms.locfileid: "87050356"
 
 #### <a name="regions"></a>區域
 
-若要取得 Azure 區域，請參閱 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 來取得區域，請執行 [>get-azlocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令。
+若要取得 Azure 區域，請參閱 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 來取得區域，請執行 [>get-azlocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令。
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -195,7 +195,7 @@ ms.locfileid: "87050356"
 
 3. 選取 **範本部署**。
 
-4. 選取 [建立]****。
+4. 選取 [建立]。
 
 5. 選取 [在編輯器中組建您自己的範本]。
 
@@ -203,7 +203,7 @@ ms.locfileid: "87050356"
 
 7. 確認範本編輯器顯示新目標伺服器的正確屬性。
 
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 
 9. 輸入或選取屬性值：
 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> 完成區域移動之後，建議新的目標伺服器使用相同區域中的儲存體容器進行備份，而不是來源伺服器區域中的儲存體容器。 
+> 完成區域移動之後，建議新的目標伺服器使用相同區域中的儲存體容器進行備份，而不是來源伺服器區域中的儲存體容器。

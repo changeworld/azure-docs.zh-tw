@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 897df7f07a349457c49929b69993c75345f52241
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297428"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017806"
 ---
 # <a name="media-services-terminology-and-concepts"></a>媒體服務術語和概念
 
@@ -30,7 +30,7 @@ ms.locfileid: "89297428"
 
 > [!NOTE]
 > 目前，您可以使用 [Azure 入口網站](https://portal.azure.com/) 來：管理媒體服務 V3 的 [實況活動](live-events-outputs-concept.md)、觀看 (不管理) v3 [資產](assets-concept.md)，以及 [取得存取 api 的相關資訊](./access-api-howto.md)。
-> 針對其他所有管理工作 (例如， [轉換和作業](transforms-jobs-concept.md) 和 [內容保護](content-protection-overview.md)) ，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
+> 針對其他所有管理工作 (例如， [轉換和作業](transforms-jobs-concept.md) 和 [內容保護](content-protection-overview.md)) ，請使用 [REST API](/rest/api/media/accountfilters)、 [CLI](/cli/azure/ams)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

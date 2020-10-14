@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a562e31a26cc6cf7188dd635273bd9fa8c57213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5b5759f0a7fff0f76e8c65cbf879fcd06337712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269466"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017178"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒體分析修訂臉部
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-## <a name="overview"></a>概觀
-**Azure 媒體修訂器** 是 [Azure 媒體分析](media-services-analytics-overview.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱 [這](https://azure.microsoft.com/blog/azure-media-redactor/) 篇 blog。
+## <a name="overview"></a>總覽
+**Azure 媒體修訂器** 是 [Azure 媒體分析](./legacy-components.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱 [這](https://azure.microsoft.com/blog/azure-media-redactor/) 篇 blog。
 
 本文章提供有關 **Azure 媒體 Redactor** 的詳細資料，並示範如何搭配適用於 .NET 的媒體服務 SDK 來使用它。
 
@@ -38,7 +38,7 @@ ms.locfileid: "89269466"
 ### <a name="combined-mode"></a>結合模式
 這會自動產生修訂的 mp4，而不需要手動輸入。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 附註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MOV 或 MP4 格式的視訊 |
 | 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -53,7 +53,7 @@ ms.locfileid: "89269466"
 ### <a name="analyze-mode"></a>分析模式
 兩段式工作流程的 **分析** 階段會接受視訊輸入，並產生臉部位置的 JSON 檔案和每個偵測到之臉部的 jpg 影像。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 附註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MPV 或 MP4 格式的視訊 |
 | 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -118,7 +118,7 @@ ms.locfileid: "89269466"
 
 分析階段的輸出不包含原始視訊。 視訊必須上傳到修訂模式工作的輸入資產並選取做為主要檔案。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 附註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MPV 或 MP4 格式的視訊。 和步驟 1 相同的視訊。 |
 | 輸入資產 |foo_annotations.json |來自第一個階段的註解中繼資料檔案，並帶有選擇性的修改。 |
@@ -377,7 +377,6 @@ namespace FaceRedaction
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相關連結
-[Azure 媒體服務分析概觀](media-services-analytics-overview.md)
+[Azure 媒體服務分析概觀](./legacy-components.md)
 
 [Azure 媒體分析示範](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-

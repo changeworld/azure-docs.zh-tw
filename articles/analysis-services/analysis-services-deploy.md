@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83697604"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018771"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>從 Visual Studio 部署模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "83697604"
 若要開始，您需要：
 
 * Azure 中的 **Analysis Services 伺服器**。 若要深入了解，請參閱[建立 Azure Analysis Services 伺服器](analysis-services-create-server.md)。
-* Visual Studio 中的**表格式模型專案**，或 1200 或更高相容性層級的現有表格式模型。 未曾建立過？ 嘗試 [Adventure Works 網際網路銷售表格式模型教學課程](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。
+* Visual Studio 中的**表格式模型專案**，或 1200 或更高相容性層級的現有表格式模型。 未曾建立過？ 嘗試 [Adventure Works 網際網路銷售表格式模型教學課程](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。
 * **內部部署閘道** - 如果您組織的網路中有一或多個資料來源為內部部署，您必須安裝[內部部署資料閘道](analysis-services-gateway.md)。 您在雲端中的伺服器必須有閘道，才能連線至您的內部部署資料來源，以處理和重新整理模型中的資料。
 
 > [!TIP]
@@ -63,7 +63,4 @@ ms.locfileid: "83697604"
 
 現在您的伺服器上已部署了表格式模型，您即可連線至該伺服器。 您可以[使用 SQL Server Management Studio (SSMS) 與之連線](analysis-services-manage.md)來進行管理。 此外，您可以[使用用戶端工具連線至該伺服器 ](analysis-services-connect.md) (如 Power BI、Power BI Desktop 或 Excel 等工具)，並開始建立報告。   
 
-若要了解進階的部署方法，請參閱[表格式模型解決方案部署](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current) \(部分機器翻譯\)。
-
-
-
+若要了解進階的部署方法，請參閱[表格式模型解決方案部署](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current) \(部分機器翻譯\)。

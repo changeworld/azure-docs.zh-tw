@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28f414c5eaaea7b987f2c3694cb8fc73b70838e9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050450"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018758"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
 
@@ -46,21 +46,21 @@ SqlServer 模組提供特定工作的資料庫管理 Cmdlet，以及接受「表
 
 |Cmdlet|描述|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|將成員新增到資料庫角色。| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|備份 Analysis Services 資料庫。|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|從資料庫角色移除成員。|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|執行 TMSL 指令碼。|
-|[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|處理資料庫。|  
-|[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|處理資料分割。| 
-|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|處理資料表。|  
-|[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|合併資料分割。|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|還原 Analysis Services 資料庫。| 
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|將成員新增到資料庫角色。| 
+|[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase)|備份 Analysis Services 資料庫。|  
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|從資料庫角色移除成員。|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|執行 TMSL 指令碼。|
+|[Invoke-ProcessASDatabase](/powershell/module/sqlserver/invoke-processasdatabase)|處理資料庫。|  
+|[Invoke-ProcessPartition](/powershell/module/sqlserver/invoke-processpartition)|處理資料分割。| 
+|[Invoke-ProcessTable](/powershell/module/sqlserver/invoke-processtable)|處理資料表。|  
+|[Merge-Partition](/powershell/module/sqlserver/merge-partition)|合併資料分割。|  
+|[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase)|還原 Analysis Services 資料庫。| 
   
 
 ## <a name="related-information"></a>相關資訊
 
-* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
-* [下載 SQL Server PowerShell 模組](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [下載 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SQL Server PowerShell](/sql/powershell/sql-server-powershell)      
+* [下載 SQL Server PowerShell 模組](/sql/ssms/download-sql-server-ps-module)   
+* [下載 SSMS](/sql/ssms/download-sql-server-management-studio-ssms)   
 * [PowerShell 資源庫中的 SqlServer 模組](https://www.powershellgallery.com/packages/SqlServer)    
-* [相容性層級 1200 及以上的表格式模型程式設計](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)
+* [相容性層級 1200 及以上的表格式模型程式設計](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

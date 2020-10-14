@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb5eb3de1723ab75b2585c2fe62c395231455f37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949372"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019948"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -189,7 +189,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_是否對 **strongType** 有效，請使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 **>strongtype** _資源類型_的格式為 `<Resource Provider>/<Resource Type>` 。 例如： `Microsoft.Network/virtualNetworks/subnets` 。
+在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_是否對 **strongType** 有效，請使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 **>strongtype** _資源類型_的格式為 `<Resource Provider>/<Resource Type>` 。 例如，`Microsoft.Network/virtualNetworks/subnets`。
 
 支援部分不是由 **Get-AzResourceProvider** 傳回的_資源類型_。 這些類型包括：
 
@@ -306,6 +306,9 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 - `type`
 - `location`
   - 針對不受特定位置限制的資源，請使用 **global**。
+- `id`
+  - 傳回正在評估之資源的資源識別碼。
+  - 範例： `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - 傳回資源上所啟用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)的類型。
 - `tags`

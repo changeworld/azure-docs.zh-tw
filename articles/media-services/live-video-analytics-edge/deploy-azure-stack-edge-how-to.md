@@ -3,12 +3,12 @@ title: 在 Azure Stack Edge 上部署即時影片分析
 description: 本文列出可協助您在 Azure Stack Edge 上部署即時影片分析的步驟。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933968"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019591"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署即時影片分析
 
@@ -21,27 +21,27 @@ ms.locfileid: "90933968"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 您擁有擁有者 [許可權](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)的 Azure 訂用帳戶。
-* [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep)資源
+* 您擁有擁有者 [許可權](../../role-based-access-control/built-in-roles.md#owner)的 Azure 訂用帳戶。
+* [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)資源
    
-* [IoT 中樞](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* 即時影片分析模組的 [服務主體](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal) 。
+* [IoT 中樞](../../iot-hub/iot-hub-create-through-portal.md)
+* 即時影片分析模組的 [服務主體](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) 。
 
    使用其中一個可用的 IoT 中樞區域：美國東部2、美國中部、美國中北部、日本東部、美國西部2、美國中西部、加拿大東部、英國南部、法國中部、法國南部、瑞士北部、瑞士西部和日本西部。
 * 儲存體帳戶
 
     建議您使用一般用途 v2 (GPv2) 儲存體帳戶。  
-    深入瞭解 [一般用途 v2 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal)。
+    深入瞭解 [一般用途 v2 儲存體帳戶](../../storage/common/storage-account-upgrade.md?tabs=azure-portal)。
 * 開發電腦上有 [Visual Studio Code](https://code.visualstudio.com/)。 請確定您有 [Azure IoT Tools 延伸模組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 * 確定開發電腦所連線的網路允許透過連接埠 5671 的進階訊息佇列通訊協定。 此設定可讓 Azure IoT Tools 與 Azure IoT 中樞通訊。
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>設定使用即時影片分析的 Azure Stack Edge
 
-Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案，以及具備 AI 功能的邊緣計算裝置。 深入瞭解 [Azure Stack Edge 和詳細的安裝指示](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)。 若要開始使用，請遵循下列連結中的指示：
+Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案，以及具備 AI 功能的邊緣計算裝置。 深入瞭解 [Azure Stack Edge 和詳細的安裝指示](../../databox-online/azure-stack-edge-deploy-prep.md)。 若要開始使用，請遵循下列連結中的指示：
 
-* [Azure Stack Edge/資料箱閘道資源建立](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [安裝和設定](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [連接與啟用](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack Edge/資料箱閘道資源建立](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [安裝和設定](../../databox-online/azure-stack-edge-deploy-install.md)
+* [連接與啟用](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>將 IoT 中樞連結至 Azure Stack Edge
 
@@ -59,7 +59,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. 選取 [建立]  。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]  圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算]  圖格上的 [檢視計算]  。
+1. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]  圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算]  圖格上的 [檢視計算]  。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
@@ -80,7 +80,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 * 您已啟用您的 Azure Stack Edge 資源。
 * 您可以存取執行 PowerShell 5.0 或更新版本的 Windows 用戶端系統，以存取 Azure Stack Edge 資源。
-* 若要部署 Kubernetes 叢集，您必須透過其 [本機 WEB UI](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup)來設定您的 Azure Stack Edge 資源。 
+* 若要部署 Kubernetes 叢集，您必須透過其 [本機 WEB UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup)來設定您的 Azure Stack Edge 資源。 
     
     * 若要啟用計算，請在裝置的本機 web UI 中，移至 [計算] 頁面。
     

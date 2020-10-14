@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598289"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016820"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -30,7 +30,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 在媒體服務中，[串流端點](streaming-endpoint-concept.md) (原點) 代表動態 (Just-In-Time) 封裝及原始服務，其可將即時且隨選的內容直接傳遞至用戶端播放應用程式。 它會使用下節中所述的其中一種常見串流媒體通訊協定。 「動態封裝」是隨附於所有串流端點的標準功能。
 
 > [!NOTE]
-> 您可以使用 [Azure 入口網站](https://portal.azure.com/)來管理 v3 [即時活動](live-events-outputs-concept.md)、檢視 v3 [資產](assets-concept.md)、取得存取 API 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用 [Azure 入口網站](https://portal.azure.com/)來管理 v3 [即時活動](live-events-outputs-concept.md)、檢視 v3 [資產](assets-concept.md)、取得存取 API 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](/cli/azure/ams) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>準備來源檔案以進行傳遞
 
@@ -88,7 +88,7 @@ Azure 媒體服務動態封裝僅支援 MP4 容器格式的影片和音訊檔案
 1. [上傳輸入檔](job-input-from-http-how-to.md)，例如 MP4、QuickTime/MOV 或其他支援的檔案格式。 此檔案也稱為夾層檔或來源檔案。 如需支援格式的清單，請參閱[標準編碼器所支援的格式](media-encoder-standard-formats.md)。
 1. 將夾層檔[編碼](#encode-to-adaptive-bitrate-mp4s)為 H.264/AAC MP4 自適性位元速率集。
 
-    如果您已經有編碼的檔案，而只想要複製和串流該檔案，請使用：[CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) 和 [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API。 系統會建立含有串流資訊清單 (.ism 檔案) 的新 MP4 檔案。
+    如果您已經有編碼的檔案，而只想要複製和串流該檔案，請使用：[CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) 和 [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API。 系統會建立含有串流資訊清單 (.ism 檔案) 的新 MP4 檔案。
 1. 發佈包含自適性位元速率 MP4 集的輸出資產。 您會透過建立[串流定位器](streaming-locators-concept.md)來發佈。
 1. 建置以不同格式 (HLS、MPEG-DASH 及 Smooth Streaming) 為目標的 URL。 「串流端點」會負責處理這所有不同格式的正確資訊清單和要求。
     

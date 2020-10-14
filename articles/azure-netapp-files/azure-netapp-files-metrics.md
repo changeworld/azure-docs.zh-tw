@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 80746d7cef4bb0a70c6bb9eb6ff2e053ea6c7a0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824692"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017517"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files 的計量
 
@@ -86,6 +86,9 @@ Azure NetApp Files 可針對配置的儲存體、實際的儲存體使用量、�
 
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>磁片區複寫計量
+
+> [!NOTE] 
+> 網路傳輸大小 (例如，磁片區複寫的 *總傳輸* 計量) 可能不同于跨區域複寫的來源或目的地磁片區。 此行為是因為使用了有效率的複寫引擎來將網路傳輸成本降至最低的結果。
 
 - *磁片區複寫狀態是否狀況良好*   
     複寫關聯性的條件。 狀況良好的狀態是以表示 `1` 。 狀況不良狀態是以表示 `0` 。

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497765768c208354f6d2b47dbdda8c30aaed8423
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490117"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016922"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON 指令碼參考
 > [!NOTE]
@@ -90,7 +90,7 @@ ms.locfileid: "89490117"
 | type |指定活動的類型。 如需了解不同類型的活動，請參閱[資料存放區](#data-stores)和[資料轉換活動](#data-transformation-activities)小節。 |是 |
 | 輸入 |活動所使用的輸入資料表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |對 HDInsightStreaming 和 SqlServerStoredProcedure 活動來說為非必要 <br/> <br/> 對所有其他活動來說為必要 |
 | 輸出 |活動所使用的輸出資料表。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |是 |
-| linkedServiceName |活動所使用的連結服務名稱。 <br/><br/>活動可能會要求您指定可連結至所需計算環境的連結服務。 |對於 HDInsight 活動、Azure Machine Learning 活動和預存程序活動而言為必要。 <br/><br/>否：所有其他 |
+| linkedServiceName |活動所使用的連結服務名稱。 <br/><br/>活動可能會要求您指定可連結至所需計算環境的連結服務。 |是，適用于 HDInsight 活動、Azure Machine Learning Studio (傳統) 活動和預存程式活動。 <br/><br/>否：所有其他 |
 | typeProperties |typeProperties 區段中的屬性會視活動的類型而定。 |否 |
 | 原則 |會影響活動之執行階段行為的原則。 如果未指定，則會使用預設原則。 |否 |
 | scheduler |“scheduler” 屬性用來定義所要的活動排程。 其子屬性與 [資料集中的可用性屬性](data-factory-create-datasets.md#dataset-availability)中的屬性相同。 |否 |
@@ -282,7 +282,7 @@ Azure Data Factory 中的資料集定義如下：
 
 下表描述上述 JSON 的屬性：
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 描述 | 必要 | Default |
 | --- | --- | --- | --- |
 | NAME | 資料集的名稱。 請參閱 [Azure Data Factory - 命名規則](data-factory-naming-rules.md) ，以了解命名規則。 |是 |NA |
 | type | 資料集的類型。 指定 Azure Data Factory 支援的其中一個類型 (例如︰AzureBlob、AzureSqlTable)。 關於 Data Factory 支援的所有資料存放區和資料集類型，請參閱[資料存放區](#data-stores)一節。 |
@@ -314,7 +314,7 @@ structure:
 
 下表描述您可以在 [ **可用性** ] 區段中使用的屬性：
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 描述 | 必要 | Default |
 | --- | --- | --- | --- |
 | frequency |指定資料集配量生產的時間單位。<br/><br/><b>支援的頻率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定頻率的倍數<br/><br/>「頻率 x 間隔」會決定產生配量的頻率。<br/><br/>如果您需要將資料集以每小時為單位來切割，請將 <b>Frequency</b> 設定為 <b>Hour</b>，將 <b>interval</b> 設定為 <b>1</b>。<br/><br/><b>注意</b>：如果您將 Frequency 指定為 Minute，建議您將 interval 設定為不小於 15 |是 |NA |
@@ -334,7 +334,7 @@ structure:
 
 資料集中的 **policy** 區段定義資料集配量必須符合的準則或條件。
 
-| 原則名稱 | 描述 | 適用於 | 必要 | 預設 |
+| 原則名稱 | 描述 | 適用於 | 必要 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |驗證 **Azure Blob** 中的資料是否符合最小的大小需求 (以 MB 為單位)。 |Azure Blob |否 |NA |
 | minimumRows |驗證 **Azure SQL Database** 或 **Azure 資料表** 中的資料是否包含最小的資料列數目。 |<ul><li>Azure SQL Database</li><li>Azure 資料表</li></ul> |否 |NA |
@@ -1279,7 +1279,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 如需詳細資訊，請參閱 [Azure Synapse Analytics 連接器](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) 文章。
 
-## <a name="azure-cognitive-search"></a>Azue 認知搜尋
+## <a name="azure-cognitive-search"></a>Azure 認知搜尋
 
 ### <a name="linked-service"></a>連結的服務
 若要定義 Azure 認知搜尋連結服務，請將連結服務的 **類型** 設為 **AzureSearch**，並在 **>typeproperties** 區段中指定下列屬性：
@@ -1480,7 +1480,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |否。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
+| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |不可以。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 | azureTableSourceIgnoreTableNotFound |指出是否忍受資料表不存在的例外狀況。 |true<br/>false |否 |
 
 #### <a name="example"></a>範例
@@ -2976,7 +2976,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | 查詢 |使用自訂查詢來讀取資料。 |SQL-92 查詢或 CQL 查詢。 請參閱 [CQL 參考資料](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)。 <br/><br/>在使用 SQL 查詢時，指定 **keyspace name.table 名稱** 來代表您想要查詢的資料表。 |否 (如果已定義資料集上的 tableName 和 keyspace)。 |
-| consistencyLevel |一致性層級可指定必須先有多少複本回應讀取要求，才會將資料傳回用戶端應用程式。 Cassandra 會檢查要讓資料滿足讀取要求的指定複本數目。 |ONE、TWO、THREE、QUORUM、ALL、LOCAL_QUORUM、EACH_QUORUM、LOCAL_ONE。 如需詳細資訊，請參閱 [設定資料一致性](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 。 |否。 預設值為 ONE。 |
+| consistencyLevel |一致性層級可指定必須先有多少複本回應讀取要求，才會將資料傳回用戶端應用程式。 Cassandra 會檢查要讓資料滿足讀取要求的指定複本數目。 |ONE、TWO、THREE、QUORUM、ALL、LOCAL_QUORUM、EACH_QUORUM、LOCAL_ONE。 如需詳細資訊，請參閱 [設定資料一致性](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 。 |不可以。 預設值為 ONE。 |
 
 #### <a name="example"></a>範例
 
@@ -3038,7 +3038,7 @@ encryptedCredential | 加密的認證字串。 | 字串 | 否
 | authSource |您想要用來檢查驗證所用之認證的 MongoDB 資料庫名稱。 |選用 (如果使用基本驗證)。 預設值︰使用以 databaseName 屬性指定的系統管理員帳戶和資料庫。 |
 | databaseName |您想要存取之 MongoDB 資料庫的名稱。 |是 |
 | gatewayName |存取資料存放區之閘道的名稱。 |是 |
-| encryptedCredential |由閘道加密的認證。 |選用 |
+| encryptedCredential |由閘道加密的認證。 |選擇性 |
 
 #### <a name="example"></a>範例
 
@@ -3548,7 +3548,7 @@ auto-
 ### <a name="linked-service"></a>連結的服務
 若要定義 FTP 連結服務，請將連結服務的 **type** 設為 **FtpServer**，並在 **typeProperties** 區段中指定下列屬性︰
 
-| 屬性 | 描述 | 必要 | 預設 |
+| 屬性 | 描述 | 必要 | Default |
 | --- | --- | --- | --- |
 | 主機 |FTP 伺服器的名稱或 IP 位址 |是 |&nbsp; |
 | authenticationType |指定驗證類型 |是 |基本或匿名 |
@@ -3867,10 +3867,10 @@ auto-
 | 主機 | SFTP 伺服器的名稱或 IP 位址。 |是 |
 | 連接埠 |SFTP 伺服器所接聽的連接埠。 預設值：21 |否 |
 | authenticationType |指定驗證類型。 允許的值︰**Basic**、**SshPublicKey**。 <br><br> 請參閱使用基本驗證和[使用 SSH 公開金鑰驗證](#using-ssh-public-key-authentication)章節，分別取得更多屬性和 JSON 範例。 |是 |
-| skipHostKeyValidation | 指定是否略過主機金鑰驗證。 | 否。 預設值：false |
+| skipHostKeyValidation | 指定是否略過主機金鑰驗證。 | 不可以。 預設值：false |
 | hostKeyFingerprint | 指定主機金鑰的指紋。 | 如果 `skipHostKeyValidation` 設為 false，則為 [是]。  |
 | gatewayName |要連線至內部部署 SFTP 伺服器的資料管理閘道名稱。 | 如果從內部部署 SFTP 伺服器複製資料，則為 [是]。 |
-| encryptedCredential | 用來存取 SFTP 伺服器的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中指定基本驗證 (使用者名稱 + 密碼) 或 SshPublicKey 驗證 (使用者名稱 + 私密金鑰路徑或內容) 時自動產生。 | 否。 僅當從內部部署 SFTP 伺服器複製資料時才套用。 |
+| encryptedCredential | 用來存取 SFTP 伺服器的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中指定基本驗證 (使用者名稱 + 密碼) 或 SshPublicKey 驗證 (使用者名稱 + 私密金鑰路徑或內容) 時自動產生。 | 不可以。 僅當從內部部署 SFTP 伺服器複製資料時才套用。 |
 
 #### <a name="example-using-basic-authentication"></a>範例：使用基本驗證
 
@@ -4075,7 +4075,7 @@ auto-
 | authenticationType | 指定驗證類型。 允許的值為︰**匿名**、**基本**、**摘要**、**Windows**、**ClientCertificate**。 <br><br> 請分別參閱此關於更多屬性的下列資料表各節以及這些驗證類型的 JSON 範例。 | 是 |
 | enableServerCertificateValidation | 如果來源是 HTTPS Web 服務器，指定是否啟用伺服器 TLS/SSL 憑證驗證 | 否，預設值是 True |
 | gatewayName | 連接至內部部署 HTTP 來源的「資料管理閘道」閘道。 | 如果從內部部署 HTTP 來源複製資料，則為是。 |
-| encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中設定驗證資訊時會自動產生。 | 否。 僅當從內部部署 HTTP 伺服器複製資料時才套用。 |
+| encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或 ClickOnce 快顯對話方塊中設定驗證資訊時會自動產生。 | 不可以。 僅當從內部部署 HTTP 伺服器複製資料時才套用。 |
 
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>範例︰使用基本、摘要或 Windows 驗證
 將 `authenticationType` 設定為 `Basic`、`Digest`或 `Windows`，並指定除了上面介紹的 HTTP 連接器泛用的下列屬性︰
@@ -4160,7 +4160,7 @@ auto-
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)，範例︰`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`。 | 否 |
-| requestMethod | HTTP 方法。 允許的值為 **GET** 或 **POST**。 | 否。 預設值為 `GET`。 |
+| requestMethod | HTTP 方法。 允許的值為 **GET** 或 **POST**。 | 不可以。 預設值為 `GET`。 |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的內文。 | 否 |
 | format | 如果您只想要**從 HTTP 端點依現狀擷取資料**而不剖析它，請略過此格式設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 |否 |
@@ -4215,7 +4215,7 @@ auto-
 
 | 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | HTTP 的逾時 (TimeSpan) 要求取得回應。 逾時會取得回應，而非逾時讀取回應資料。 | 否。 預設值：00:01:40 |
+| httpRequestTimeout | HTTP 的逾時 (TimeSpan) 要求取得回應。 逾時會取得回應，而非逾時讀取回應資料。 | 不可以。 預設值：00:01:40 |
 
 
 #### <a name="example"></a>範例
@@ -4744,7 +4744,7 @@ auto-
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type |資料集的類型。 必須設定為 **WebTable** |是 |
-| path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
+| path |包含資料表之資源的相對 URL。 |不可以。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
 | 索引 |資源中資料表的索引。 如需如何取得 HTML 網頁中資料表索引的步驟，請參閱「取得 HTML 網頁中資料表的索引」一節。 |是 |
 
 #### <a name="example"></a>範例
@@ -4824,7 +4824,7 @@ auto-
 | --- | --- |
 | [隨選 HDInsight 叢集](#on-demand-azure-hdinsight-cluster)或[您自己的 HDInsight 叢集](#existing-azure-hdinsight-cluster) |[.Net 自訂活動](#net-custom-activity)、 [Hive 活動](#hdinsight-hive-activity)、 [Pig 活動](#hdinsight-pig-activity)、 [MapReduce 活動](#hdinsight-mapreduce-activity)、Hadoop 串流活動、 [Spark 活動](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET 自訂活動](#net-custom-activity) |
-| [Azure Machine Learning](#azure-machine-learning) | [Machine Learning 批次執行活動](#machine-learning-batch-execution-activity)、[Machine Learning 更新資源活動](#machine-learning-update-resource-activity) |
+| [Azure Machine Learning Studio (傳統) ](#azure-machine-learning-studio-classic) | [Azure Machine Learning studio (傳統) 批次執行活動](#azure-machine-learning-studio-classic-batch-execution-activity)， [Azure Machine Learning Studio (傳統) 更新資源活動](#azure-machine-learning-studio-classic-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL Database](#azure-sql-database)、 [Azure Synapse Analytics](#azure-synapse-analytics) [SQL Server](#sql-server-stored-procedure) |[預存程序](#stored-procedure-activity) |
 
@@ -4931,11 +4931,11 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 }
 ```
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
-您可建立 Azure Machine Learning 連結服務，以向資料處理站註冊 Machine Learning 批次評分端點。 您可以在此連結服務上執行兩個資料轉換活動︰[Machine Learning 批次執行活動](#machine-learning-batch-execution-activity)、[Machine Learning 更新資源活動](#machine-learning-update-resource-activity)。
+## <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (傳統) 
+您會建立 Azure Machine Learning Studio (傳統) 連結服務，以向 data factory 註冊 Studio (傳統) 批次評分端點。 可以在此連結服務上執行的兩個數據轉換活動： [Azure Machine Learning studio (傳統) 批次執行活動](#azure-machine-learning-studio-classic-batch-execution-activity)， [Azure Machine Learning Studio (傳統) 更新資源活動](#azure-machine-learning-studio-classic-update-resource-activity)。
 
 ### <a name="linked-service"></a>連結的服務
-下表描述 Azure Machine Learning 連結服務的 Azure JSON 定義中所使用的屬性。
+下表提供 Studio (傳統) 連結服務的 Azure JSON 定義中所使用的屬性說明。
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
@@ -5064,8 +5064,8 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 [HDInsight MapReduce 活動](#hdinsight-mapreduce-activity) | Data Factory 管線中的 HDInsight MapReduce 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 MapReduce 程式。
 [HDInsight 串流活動](#hdinsight-streaming-activity) | Data Factory 管線中的 HDInsight 串流活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Hadoop 串流程式。
 [HDInsight Spark 活動](#hdinsight-spark-activity) | Data Factory 管線中的 HDInsight Spark 活動會在您自己的 HDInsight 叢集上執行 Spark 程式。
-[Machine Learning 批次執行活動](#machine-learning-batch-execution-activity) | Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Machine Learning Web 服務進行預測性分析。 在 Azure Data Factory 管線中使用批次執行活動，您可以叫用 Machine Learning Web 服務來對批次中的資料進行預測。
-[Machine Learning 更新資源活動](#machine-learning-update-resource-activity) | 經過一段時間，必須使用新的輸入資料集重新訓練 Machine Learning 評分實驗中的預測模型。 完成重新訓練之後，您想要使用已重新訓練的 Machine Learning 模型來更新評分 Web 服務。 您可以使用更新資源活動，以新訓練的模型更新 Web 服務。
+[Azure Machine Learning Studio (傳統) 批次執行活動](#azure-machine-learning-studio-classic-batch-execution-activity) | Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Studio (傳統) web 服務進行預測性分析。 使用 Azure Data Factory 管線中的批次執行活動，您可以叫用 Studio (傳統) web 服務來對批次中的資料進行預測。
+[Azure Machine Learning Studio (傳統) 更新資源活動](#azure-machine-learning-studio-classic-update-resource-activity) | 經過一段時間之後，就必須使用新的輸入資料集重新定型 Azure Machine Learning Studio 中的預測模型 (傳統) 評分實驗。 完成重新訓練之後，您想要使用重新定型機器學習模型來更新評分 web 服務。 您可以使用更新資源活動，以新訓練的模型更新 Web 服務。
 [預存程序活動](#stored-procedure-activity) | 您可以在 Data Factory 管線中使用預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics，SQL Server 您企業或 Azure VM 中的資料庫。
 [Data Lake Analytics U-SQL 活動](#data-lake-analytics-u-sql-activity) | Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行 U-SQL 指令碼。
 [.NET 自訂活動](#net-custom-activity) | 如果您需要以 Data Factory 不支援的方法轉換資料，可以利用自己的資料處理邏輯建立自訂活動，然後在管線中使用活動。 您可以將自訂 .NET 活動設定為使用 Azure Batch 服務或 Azure HDInsight 叢集來執行。
@@ -5346,14 +5346,14 @@ Azure Data Factory 服務可自動建立以 Windows/Linux 為基礎的隨選 HDI
 
 如需活動的詳細資訊，請參閱 [Spark 活動](data-factory-spark.md)文件。
 
-## <a name="machine-learning-batch-execution-activity"></a>Machine Learning 批次執行活動
-您可以在 Azure Machine Learning studio 批次執行活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**AzureMLBatchExecution**。 您必須先建立 Azure Machine Learning 連結服務，並將其名稱指定為 **linkedServiceName** 屬性的值。 當您將活動類型設為 AzureMLBatchExecution 時，**typeProperties** 區段中支援下列屬性︰
+## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Azure Machine Learning Studio (傳統) 批次執行活動
+您可以在 Azure Machine Learning Studio (傳統) 批次執行活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**AzureMLBatchExecution**。 您必須先建立 Studio (傳統) 連結服務，並將其名稱指定為 **linkedServiceName** 屬性的值。 當您將活動類型設為 AzureMLBatchExecution 時，**typeProperties** 區段中支援下列屬性︰
 
 屬性 | 描述 | 必要
 -------- | ----------- | --------
-webServiceInput | 要傳遞來作為 Azure Machine Learning Studio Web 服務之輸入的資料集。 此資料集也必須包含在活動的輸入中。 |使用 webServiceInput 或 webServiceInputs。 |
-webServiceInputs | 指定要傳遞來作為 Azure Machine Learning Studio Web 服務之輸入的資料集。 如果 Web 服務接受多個輸入，請使用 webServiceInputs 屬性，而不要使用 webServiceInput 屬性。 **webServiceInputs** 所參考的資料集也必須包含在活動的 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
-webServiceOutputs | 指派為 Azure Machine Learning Studio Web 服務之輸出的資料集。 Web 服務會在此資料集中傳回輸出資料。 | 是 |
+webServiceInput | 要傳遞給 Studio (傳統) web 服務之輸入的資料集。 此資料集也必須包含在活動的輸入中。 |使用 webServiceInput 或 webServiceInputs。 |
+webServiceInputs | 指定要傳遞做為 Studio (傳統) web 服務之輸入的資料集。 如果 Web 服務接受多個輸入，請使用 webServiceInputs 屬性，而不要使用 webServiceInput 屬性。 **webServiceInputs** 所參考的資料集也必須包含在活動的 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
+webServiceOutputs | 指派為 Studio (傳統) web 服務之輸出的資料集。 Web 服務會在此資料集中傳回輸出資料。 | 是 |
 globalParameters | 在此區段中指定 Web 服務參數的值。 | 否 |
 
 ### <a name="json-example"></a>JSON 範例
@@ -5397,13 +5397,13 @@ globalParameters | 在此區段中指定 Web 服務參數的值。 | 否 |
 }
 ```
 
-在 JSON 範例中，已部署的 Azure Machine Learning Web 服務使用讀取器和寫入器模組，讀取 Azure SQL Database 的資料，或將資料寫入其中。 此 Web 服務會公開下列 4 個參數：資料庫伺服器名稱、資料庫名稱、伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。
+在 JSON 範例中，已部署的 Studio (傳統) Web 服務會使用讀取器和寫入器模組，從 Azure SQL Database 讀取/寫入資料。 此 Web 服務會公開下列 4 個參數：資料庫伺服器名稱、資料庫名稱、伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。
 
 > [!NOTE]
 > 只有當輸入及輸出屬於 AzureMLBatchExecution 活動時，才可以當做參數傳遞至 Web 服務。 例如，在上面的 JSON 片段中，MLSqlInput 是 AzureMLBatchExecution 活動的輸入，其透過 webServiceInput 參數傳遞至 Web 服務作為輸入。
 
-## <a name="machine-learning-update-resource-activity"></a>Machine Learning 更新資源活動
-您可以在 Azure Machine Learning studio 更新資源活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**AzureMLUpdateResource**。 您必須先建立 Azure Machine Learning 連結服務，並將其名稱指定為 **linkedServiceName** 屬性的值。 當您將活動類型設為 AzureMLUpdateResource 時，**typeProperties** 區段中支援下列屬性︰
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure Machine Learning Studio (傳統) 更新資源活動
+您可以在 Azure Machine Learning Studio (傳統) 更新資源活動 JSON 定義中指定下列屬性。 活動的 type 屬性必須是︰**AzureMLUpdateResource**。 您必須先建立 Studio (傳統) 連結服務，並將其名稱指定為 **linkedServiceName** 屬性的值。 當您將活動類型設為 AzureMLUpdateResource 時，**typeProperties** 區段中支援下列屬性︰
 
 屬性 | 描述 | 必要
 -------- | ----------- | --------
@@ -5411,7 +5411,7 @@ trainedModelName | 重新定型之模型的名稱。 | 是 |
 trainedModelDatasetName | 此資料集指向重新訓練作業所傳回的 iLearner 檔案。 | 是 |
 
 ### <a name="json-example"></a>JSON 範例
-管線有兩個活動：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 「Azure Machine Learning Studio 批次執行」活動會以定型資料作為輸入，然後產生 iLearner 檔案作為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
+管線有兩個活動：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Studio (傳統) 批次執行活動會以定型資料作為輸入，並產生 .Ilearner 檔案作為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
 
 
 ```json

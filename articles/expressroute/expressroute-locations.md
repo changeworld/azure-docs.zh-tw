@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: a99aa53e954fe0b2822628ff91989e0b618028ae
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0611297164f3fe0afb1e18afe3abbbac00fd9c9a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938401"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016360"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線能力合作夥伴和對等互連位置
 
@@ -351,7 +351,7 @@ Azure 國家雲端彼此隔離，也與全球商業 Azure 隔離。 某個 Azure
 | **[FlexManage](https://www.flexmanage.com/cloud)** | 北美洲 |
 | **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | 北美洲 |
 | **[The IT Consultancy Group](https://itconsult.com.au/)** | 澳大利亞 |
-| **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | 澳大利亞 |
+| **[MOQdigital](https://www.moqdigital.com/insights)** | 澳大利亞 |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | 歐洲 (德國) |
 | **[Nelite](https://www.exakis-nelite.com/offres/)** | 歐洲 |
 | **[New Signature](https://newsignature.com/technologies/express-route/)** | 歐洲 |

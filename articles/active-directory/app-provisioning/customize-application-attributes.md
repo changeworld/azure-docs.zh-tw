@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789810240b1a537e8cc3a18351f0b2a066cb4e1
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266695"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018860"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -321,7 +321,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
 ## <a name="next-steps"></a>後續步驟
 
 - [自動化 SaaS 應用程式使用者佈建/解除佈建](user-provisioning.md)
-- [撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)
-- [適用於使用者佈建的範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)
+- [適用於使用者佈建的範圍篩選器](define-conditional-rules-for-provisioning-user-accounts.md)
 - [使用 SCIM 以啟用從 Azure Active Directory 到應用程式的使用者和群組自動佈建](use-scim-to-provision-users-and-groups.md)
 - [如何整合 SaaS 應用程式的教學課程清單](../saas-apps/tutorial-list.md)

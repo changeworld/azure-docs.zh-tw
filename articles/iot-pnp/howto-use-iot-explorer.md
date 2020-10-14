@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577572"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019149"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安裝和使用 Azure IoT explorer
 
 Azure IoT explorer 是一種圖形化工具，可與您的 IoT 隨插即用裝置互動並進行測試。 在本機電腦上安裝此工具之後，您就可以使用它來連線到中樞。 您可以使用此工具來查看裝置正在傳送的遙測資料、使用裝置屬性，以及叫用命令。
 
-本文將示範下列項目的作法：
+本文示範如何：
 
 - 安裝和設定 Azure IoT explorer 工具。
 - 使用工具來與您的裝置互動並進行測試。
@@ -36,7 +36,7 @@ Azure IoT explorer 是一種圖形化工具，可與您的 IoT 隨插即用裝�
 移至 [Azure IoT explorer 版本](https://github.com/Azure/azure-iot-explorer/releases) ，並展開最新版本的資產清單。 下載並安裝最新版本的應用程式。
 
 >[!Important]
->From 0.11.0 版 IoT Explorer 僅支援從2020年9月) 推出的 IoT 隨插即用 GA 版本 (。 若要使用先前預覽版本（2019年8月）中提供的功能，請安裝 0.10. x 版本。
+> 更新至2.x 版，以根據下列任何存放庫解析模型 [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)
 
 ## <a name="use-azure-iot-explorer"></a>使用 Azure IoT explorer
 
@@ -136,4 +136,4 @@ IoT 隨插即用裝置的模型定義會儲存在公用存放庫、連線的裝�
 
 ## <a name="next-steps"></a>後續步驟
 
-在此操作說明文章中，您已瞭解如何安裝和使用 Azure IoT explorer 來與您的 IoT 隨插即用裝置互動。 建議的下一個步驟是瞭解如何使用 [Azure CLI IoT 隨插即用命令](./howto-use-iot-pnp-cli.md)。
+在此操作說明文章中，您已瞭解如何安裝和使用 Azure IoT explorer 來與您的 IoT 隨插即用裝置互動。 建議的下一個步驟是瞭解如何 [安裝和使用 DTDL authoring tools](howto-use-dtdl-authoring-tools.md)。

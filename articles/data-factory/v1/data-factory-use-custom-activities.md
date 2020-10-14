@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997450"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017398"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure Data Factory 第1版管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -31,7 +31,7 @@ ms.locfileid: "88997450"
 您可以在 Azure Data Factory 管線中使用兩種活動。
 
 - 在[支援的來源與接收資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之間移動資料的[資料移動活動](data-factory-data-movement-activities.md)。
-- 使用計算服務（例如 Azure HDInsight、Azure Batch 和 Azure Machine Learning）來轉換資料的[資料轉換活動](data-factory-data-transformation-activities.md)。
+- 使用計算服務（例如 Azure HDInsight、Azure Batch 和 Azure Machine Learning Studio (傳統) ）來轉換資料的[資料轉換活動](data-factory-data-transformation-activities.md)。
 
 如果要移動資料至/自 Data Factory 不支援的資料存放區，利用自己的資料移動邏輯建立**自訂活動**，然後在管線中使用活動。 同樣地，若要以 Data Factory 不支援的方法轉換/處理資料，可以利用自己的資料轉換邏輯建立自訂活動，然後在管線中使用活動。
 
@@ -43,14 +43,14 @@ ms.locfileid: "88997450"
 > - 您不能使用自訂活動中的資料管理閘道來存取內部部署資料來源。 目前在 Data Factory 中，[資料管理閘道](data-factory-data-management-gateway.md)只支援複製活動和預存程序活動。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>逐步解說：建立自訂活動
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 * Visual Studio 2012/2013/2015/2017
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 的必要條件
 在逐步解說中，您會將 Azure Batch 當作計算資源使用來執行自訂 .NET 活動。 **Azure Batch** 是一項平台服務，可用於在雲端有效地執行大規模的平行和高效能運算 (HPC) 應用程式。 Azure Batch 會排定要在受管理 **的虛擬機器集合**上執行的計算密集型工作，並可自動調整計算資源以符合您的作業需求。 請參閱 [Azure Batch 基本知識][batch-technical-overview]文章，以取得 Azure Batch 服務的詳細概觀。
 
-在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 步驟如下：
+在教學課程中，建立含 VM 集區的 Azure Batch 帳戶。 以下是步驟：
 
 1. 使用[Azure 入口網站](https://portal.azure.com)建立**Azure Batch 帳戶**。 請參閱[建立和管理 Azure Batch 帳戶][batch-create-account]一文以取得指示。
 2. 記下 Azure Batch 帳戶名稱、帳戶金鑰、URI，以及集區名稱。 您需要它們來建立 Azure Batch 連結服務。
@@ -1025,7 +1025,7 @@ GitHub 上的 [Azure Data Factory - 本機環境](https://github.com/gbrueckl/Az
 | 範例 | 自訂活動的工作內容 |
 | --- | --- |
 | [HTTP 資料下載程式](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample)。 |使用 Data Factory 的自訂 C# 活動，從 HTTP 端點將資料下載到 Azure Blob 儲存體。 |
-| [Twitter 情感分析範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |叫用 Azure Machine Learning Studio 模型並進行情感分析、評分、預測等。 |
+| [Twitter 情感分析範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |叫用 Azure Machine Learning Studio (傳統) 模型，並進行情感分析、評分、預測等。 |
 | [執行 R 腳本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)。 |在已安裝 R 的 HDInsight 叢集上執行 RScript.exe 來叫用 R 指令碼。 |
 | [跨 AppDomain.NET 活動](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |使用非 Data Factory 啟動器所使用的組件版本 |
 | [重新處理 Azure Analysis Services 中的模型](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  重新處理 Azure Analysis Services 中的模型。 |

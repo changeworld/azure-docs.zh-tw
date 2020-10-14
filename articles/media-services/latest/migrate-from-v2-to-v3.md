@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297719"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017738"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>從媒體服務 v2 移動至 v3 的移轉指導
 
@@ -44,8 +44,8 @@ ms.locfileid: "89297719"
 *  v3 是會統一的 API 表面為基礎，併公開建置於 Azure Resource Manager 上的管理和操作功能。 Azure Resource Manager 範本可用於建立及部署轉換、串流端點、即時事件等等。
 * [OpenAPI 規格 (先前稱為 Swagger) ](https://aka.ms/ams-v3-rest-sdk) 檔。
     公開所有服務元件的結構描述，包括檔案型編碼。
-* SDK 適用於 [.NET](https://aka.ms/ams-v3-dotnet-ref)、.Net Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref) 和 Ruby。
-* [Azure CLI](https://aka.ms/ams-v3-cli-ref) 整合，適用於簡單的指令碼支援。
+* SDK 適用於 [.NET](/dotnet/api/overview/azure/mediaservices/management)、.Net Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](/python/api/overview/azure/mediaservices/management)、[Java](/java/api/overview/azure/mediaservices/management)、[Go](https://aka.ms/ams-v3-go-ref) 和 Ruby。
+* [Azure CLI](/cli/azure/ams) 整合，適用於簡單的指令碼支援。
 
 ### <a name="new-features"></a>新功能
 
@@ -69,7 +69,7 @@ ms.locfileid: "89297719"
     * view (不管理) v3 [資產](assets-concept.md)， 
     * [取得存取 api 的相關資訊](./access-api-howto.md)。 
 
-    針對其他所有管理工作 (例如， [轉換和作業](transforms-jobs-concept.md) 和 [內容保護](content-protection-overview.md)) ，請使用 [REST API](/rest/api/media/)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
+    針對其他所有管理工作 (例如， [轉換和作業](transforms-jobs-concept.md) 和 [內容保護](content-protection-overview.md)) ，請使用 [REST API](/rest/api/media/)、 [CLI](/cli/azure/ams)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 * 您需要在您的帳戶中佈建媒體保留單位 (MRU)，才能控制作業的並行和效能，尤其是與視訊或音訊分析相關的作業。 如需詳細資訊，請參閱[調整媒體處理](../previous/media-services-scale-media-processing-overview.md)。 您可以使用 [適用于媒體服務 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 入口網站](../previous/media-services-portal-scale-media-processing.md)或使用 [v2 api](../previous/media-services-dotnet-encoding-units.md)來管理 mru。 不論您是使用媒體服務 v2 或 v3 API，都需要佈建 MRU。
 * 使用 v3 API 建立的媒體服務實體無法由 v2 API 管理。  
 * 並非 V2 API 中的所有實體都會自動顯示在 V3 API 中。  以下是兩個版本中不相容的實體範例：  

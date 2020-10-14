@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072039"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019506"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒體服務的分散 MP4 即時內嵌規格 
 
@@ -39,7 +39,7 @@ ms.locfileid: "87072039"
 ![內嵌流程][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. 位流格式– ISO 14496-12 分散的
-本文件中所討論即時資料流內嵌的電傳格式是根據 [ISO-14496-12]。 如需分散 MP4 格式、點播視訊檔案及即時串流內嵌的詳細說明，請參閱 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。
+本文件中所討論即時資料流內嵌的電傳格式是根據 [ISO-14496-12]。 如需分散 MP4 格式、點播視訊檔案及即時串流內嵌的詳細說明，請參閱 [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)。
 
 ### <a name="live-ingest-format-definitions"></a>即時內嵌格式定義
 下列清單說明適用於即時內嵌至 Azure 媒體服務的特殊格式定義：
@@ -70,7 +70,7 @@ ms.locfileid: "87072039"
 1. 如果 HTTP POST 要求在資料流結束之前因為出現 TCP 錯誤而終止或逾時，則編碼器「必須」藉由使用新連線發出新的 POST 要求，並遵循上述要求。 此外，編碼器「必須」為資料流中的每個資料軌重新傳送前兩個 MP4 片段，並在不會造成媒體時間軸不連續的情況下繼續運作。 為每個資料軌重新傳送最後兩個 MP4 片段，可確保不會遺失資料。 換句話說，如果資料流包含音訊和視訊播放軌，而且目前的 POST 要求失敗，則編碼器必須重新連線，然後為音訊播放軌重新傳送最後兩個片段 (先前已成功傳送)，為視訊播放軌重新傳送最後兩個片段 (先前已成功傳送)，以確保不會遺失任何資料。 編碼器「必須」維護媒體片段的 “forward” 緩衝區，當重新連線時會重新傳送此緩衝區。
 
 ## <a name="5-timescale"></a>5. 刻度
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述 **SmoothStreamingMedia** (2.2.2.1 節)、**StreamElement** (2.2.2.3 節)、**StreamFragmentElement** (2.2.2.6 節) 和 **LiveSMIL** (2.2.7.3.1 節) 的「時幅」使用方式。 如果沒有時幅值，則使用的預設值為 10,000,000 (10 MHz)。 雖然 Smooth Streaming 格式規格不會封鎖使用其他的時幅值，但大部分的編碼器實作會使用此預設值 (10 MHz) 來產生 Smooth Streaming 內嵌資料。 由於 [Azure 媒體動態封裝](./previous/media-services-dynamic-packaging-overview.md) 功能之故，建議您針對視訊資料流使用 90-KHz 時幅，針對音訊資料流使用 44.1 KHz 或 48.1 KHz。 如果不同的資料流採用不同的時幅值，則「必須」傳送資料流層級時幅。 如需詳細資訊，請參閱 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) 描述 **SmoothStreamingMedia** (2.2.2.1 節)、**StreamElement** (2.2.2.3 節)、**StreamFragmentElement** (2.2.2.6 節) 和 **LiveSMIL** (2.2.7.3.1 節) 的「時幅」使用方式。 如果沒有時幅值，則使用的預設值為 10,000,000 (10 MHz)。 雖然 Smooth Streaming 格式規格不會封鎖使用其他的時幅值，但大部分的編碼器實作會使用此預設值 (10 MHz) 來產生 Smooth Streaming 內嵌資料。 由於 [Azure 媒體動態封裝](./previous/media-services-dynamic-packaging-overview.md) 功能之故，建議您針對視訊資料流使用 90-KHz 時幅，針對音訊資料流使用 44.1 KHz 或 48.1 KHz。 如果不同的資料流採用不同的時幅值，則「必須」傳送資料流層級時幅。 如需詳細資訊，請參閱 [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)。     
 
 ## <a name="6-definition-of-stream"></a>6. "stream" 的定義
 「資料流」是指在撰寫即時簡報、處理資料流容錯移轉和備援案例的即時內嵌中，作業的基本單位。 「資料流」定義為一個唯一的分散 MP4 位元資料流，其中可能包含單一資料軌或多個資料軌。 完整即時簡報可包含一或多個資料流，視即時編碼器組態而定。 以下範例說明各種使用資料流撰寫完整即時簡報的選項。
@@ -98,7 +98,7 @@ ms.locfileid: "87072039"
 
 ![資料流 - 音訊與視訊資料軌][image4]
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>總結
 此並非詳盡清單，僅列出此範例中部分可用的內嵌選項。 事實上，即時內嵌支援將資料軌以任何組合分組到資料流。 客戶和編碼器廠商可以根據工程的複雜性、編碼器的能力，以及備援與容錯移轉考量，來選擇自己的實作。 整個即時簡報只有一個音訊資料軌。 因此，請務必確保包含音訊播放軌的內嵌資料流程資料軌。這項考慮通常會導致將音訊播放軌放入自己的資料流程 (如選項 2) ，或使用最低位元速率的影片播放軌來將它組合 (如選項 3) 。 此外若要有更佳的備援與容錯移轉成效，強烈建議針對嵌入到媒體服務的即時內嵌，將同一個音訊資料軌傳送到兩個不同的資料流 (選項 2 中採用備援音訊資料軌)，或以至少兩個最低位元速率視訊資料軌建置音訊資料軌 (選項 3 中以至少兩個視訊資料流建置)。
 
 ## <a name="7-service-failover"></a>7. 服務容錯移轉

@@ -16,12 +16,12 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256441"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018947"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 編輯媒體檔案索引
 
@@ -48,7 +48,7 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 
 您也可以使用資訊清單檔，一次處理多個媒體檔案。
 
-如需詳細資訊，請參閱 [Azure Media Indexer 的工作預設](./media-services-analytics-overview.md)。
+如需詳細資訊，請參閱 [Azure Media Indexer 的工作預設](./legacy-components.md)。
 
 ## <a name="index-an-asset"></a>編製資產索引
 下列方法會將媒體檔案上傳為資產，並建立工作來編製資產索引。
@@ -161,7 +161,7 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 ## <a name="index-multiple-files"></a>編製多個檔案的索引
 下列方法會將多個媒體檔案上傳為資產，並建立工作來批次編製這些檔案的索引。
 
-會建立 ".lst" 副檔名的資訊清單檔，並上傳到資產。 資訊清單檔案包含所有資產檔案的清單。 如需詳細資訊，請參閱 [Azure Media Indexer 的工作預設](./media-services-analytics-overview.md)。
+會建立 ".lst" 副檔名的資訊清單檔，並上傳到資產。 資訊清單檔案包含所有資產檔案的清單。 如需詳細資訊，請參閱 [Azure Media Indexer 的工作預設](./legacy-components.md)。
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,6 +278,6 @@ Azure Media Indexer 讓您能將媒體檔案的內容變成可搜尋，並產生
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相關連結
-[Azure 媒體服務分析概觀](media-services-analytics-overview.md)
+[Azure 媒體服務分析概觀](./legacy-components.md)
 
-[使用 Azure Media Indexer 2 Preview 編製媒體檔案索引](media-services-process-content-with-indexer2.md)
+[使用 Azure Media Indexer 2 Preview 編製媒體檔案索引](./legacy-components.md)
