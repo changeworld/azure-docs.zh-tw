@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945391"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094002"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -54,7 +54,7 @@ Azure 春季雲端具有下列已知限制：
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>如何提供意見反應和回報問題？
 
-如果您在 Azure 春季雲端遇到任何問題，請建立 [Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 若要提交功能要求或提供意見反應，請前往 [Azure 意見](https://feedback.azure.com/forums/34192--general-feedback)反應。
+如果您在 Azure 春季雲端遇到任何問題，請建立 [Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 若要提交功能要求或提供意見反應，請前往 [Azure 意見](https://feedback.azure.com/forums/34192--general-feedback)反應。
 
 ## <a name="development"></a>部署
 
@@ -70,9 +70,9 @@ Azure Spring Cloud 支援 Java 8 和 11。 請參閱 [JAVA 執行時間和作業
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>我可以在哪裡查看我的春季雲端應用程式記錄和計量？
 
-在 [應用程式概觀] 索引標籤和 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) \(部分機器翻譯\) 索引標籤中尋找計量。
+在 [應用程式概觀] 索引標籤和 [Azure 監視器](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) \(部分機器翻譯\) 索引標籤中尋找計量。
 
-Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring*。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
+Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring*。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支援分散式追蹤？
 
@@ -106,7 +106,7 @@ Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azur
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure 春季雲端支援哪些版本的 JAVA 執行時間？
 
-Azure 春季 Cloud 支援最新組建的 JAVA LTS 版本，目前支援的版本為2020、JAVA 8 build 252 和 JAVA 11 build 7。 請參閱 [安裝適用于 azure 和 Azure Stack 的 JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Azure 春季 Cloud 支援最新組建的 JAVA LTS 版本，目前支援的版本為2020、JAVA 8 build 252 和 JAVA 11 build 7。 請參閱 [安裝適用于 azure 和 Azure Stack 的 JDK](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>哪些人建立了這些 JAVA 執行時間？
 
@@ -118,14 +118,14 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>JAVA 8 和 JAVA 11 LTS 版本有多長的支援？
 
-請參閱 [JAVA 的 azure 和 Azure Stack 長期支援](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+請參閱 [JAVA 的 azure 和 Azure Stack 長期支援](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * 在2030年12月之前，將會支援 JAVA 8 LTS。
 * 在2027年9月之前，將會支援 JAVA 11 LTS。
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>如何下載支援的 JAVA 執行時間以進行本機開發？
 
-請參閱 [安裝適用于 azure 和 Azure Stack 的 JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。
+請參閱 [安裝適用于 azure 和 Azure Stack 的 JDK](/azure/developer/java/fundamentals/java-jdk-install)。
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>舊版 JAVA 執行時間的淘汰原則為何？
 
@@ -136,7 +136,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>如何在 JAVA 執行時間層級取得問題的支援？
 
-您可以使用 Azure 支援服務來開啟支援票證。  瞭解 [如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+您可以使用 Azure 支援服務來開啟支援票證。  瞭解 [如何建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>執行應用程式的作業系統為何？
 

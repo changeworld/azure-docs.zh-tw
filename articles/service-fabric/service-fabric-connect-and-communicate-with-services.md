@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005372"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093322"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>連接至 Service Fabric 中的服務並與其進行通訊
 在 Service Fabric 中，服務會在 Service Fabric 叢集中的某處執行，通常是分散到多個 VM。 它可以由服務擁有者或是 Service Fabric 自動從某個位置移到其他位置。 服務無法以靜態方式繫結至特定電腦或位址。
@@ -30,7 +30,7 @@ Service Fabric 可以幫助管理您的服務的生命週期，但是它不會�
 
 Service Fabric 提供稱為「命名服務」的探索和解析服務。 「命名服務」會維護資料表，該資料表將已命名服務執行個體對應至它們接聽的端點位址。 Service Fabric 中的所有已命名服務執行個體，皆如 URI 擁有唯一的名稱，例如， `"fabric:/MyApplication/MyService"`。 服務的名稱不會隨著服務的存留期變更，當服務移動時，只有端點位址可以變更。 這類似於具有常數 URL 的網站，但 IP 位址可能會變更。 並且類似於 Web 上的 DNS，可解析連接至 IP 位址的網站 URL，Service Fabric 具有註冊機構，會將服務名稱對應至其端點位址。
 
-![服務端點][2]
+![顯示 Service Fabric 有一個註冊機構可將服務名稱對應至其端點位址的圖表。][2]
 
 解析和連接到服務牽涉到在迴圈中執行的下列步驟︰
 
@@ -47,14 +47,14 @@ Service Fabric 提供稱為「命名服務」的探索和解析服務。 「命�
 
 如下圖所示，在 Service Fabric 叢集中執行的 DNS 服務會將 DNS 名稱對應到服務名稱，然後由「命名服務」解析後傳回要連接的端點位址。 服務的 DNS 名稱是在建立時提供的。 
 
-![服務端點][9]
+![此圖顯示 DNS 服務在 Service Fabric 叢集中執行時，如何將 DNS 名稱對應到服務名稱，然後由命名服務解析，以傳回要連接的端點位址。][9]
 
 如需有關如何使用 DNS 服務的更多詳細資料，請參閱 [Azure Service Fabric 中的 DNS 服務](service-fabric-dnsservice.md)一文。
 
 ### <a name="reverse-proxy-service"></a>反向 Proxy服務
 反向 Proxy 可處理叢集中公開 HTTP 端點 (包括 HTTPS) 的服務。 反向 Proxy 藉由採用特定的 URI 格式，以及處理一個服務使用「命名服務」與另一個服務進行通訊所需的解析、連接、重試步驟，將呼叫其他服務及其方法大幅簡化。 換句話說，它會在呼叫其他服務時，透過讓此呼叫就像呼叫 URL 一樣簡單，對您隱藏「命名服務」。
 
-![服務端點][10]
+![此圖顯示反向 proxy 如何定址叢集中公開 HTTP 端點的服務，包括 HTTPS。][10]
 
 如需有關如何使用反向 Proxy 服務的詳細資訊，請參閱 [Azure Service Fabric 中的反向 Proxy](service-fabric-reverseproxy.md) 一文。
 
@@ -153,7 +153,7 @@ Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢�
     ![開啟節點類型上的連接埠][4]
 3. 一旦建立叢集，在叢集的資源群組中設定 Azure 負載平衡器，以轉送連接埠 80 上的流量。 透過 Azure 入口網站建立叢集時，會針對每個已設定的自訂端點連接埠設定這個項目。
 
-    ![轉送 Azure 負載平衡器的流量][5]
+    ![顯示負載平衡規則下 [後端埠] 欄位的螢幕擷取畫面。][5]
 4. Azure 負載平衡器使用探查，來決定是否要將流量傳送到特定節點。 探查會定期檢查每個節點上的端點，以判斷節點是否有回應。 如果探查在設定的次數之後無法接收到回應，負載平衡器會停止將流量傳送到該節點。 透過 Azure 入口網站建立叢集時，會針對每個已設定的自訂端點連接埠自動設定探查。
 
     ![轉送 Azure 負載平衡器的流量][8]

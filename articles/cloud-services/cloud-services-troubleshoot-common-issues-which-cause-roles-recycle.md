@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460281"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075122"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>導致角色回收的常見問題
 本文討論部署問題的常見原因，和可協助您解決這些問題的疑難排解秘訣。 應用程式出現問題的徵候之一，是角色執行個體無法啟動，或是在初始化中、忙碌和停止中狀態之間循環。
@@ -63,11 +63,11 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 若要在 TLS 下執行 web 角色，您必須確定匯出的管理憑證包含私密金鑰。 如果您使用「Windows 憑證管理員」** 匯出憑證，請務必針對 [匯出私密金鑰]**** 選項選取 [是]****。 憑證必須匯出為 PFX 格式，這是目前唯一支援的格式。
 
 ## <a name="next-steps"></a>後續步驟
-檢視更多雲端服務的 [疑難排解文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
+檢視更多雲端服務的 [疑難排解文章](../index.yml?product=cloud-services&tag=top-support-issue) 。
 
-在以下位置檢視多個角色回收案例： [Kevin Williamson 的部落格系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
+在以下位置檢視多個角色回收案例： [Kevin Williamson 的部落格系列](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
 
-[RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[S]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[執行]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
+[OnStart]: /previous-versions/azure/reference/ee772851(v=azure.100)
+[S]: /previous-versions/azure/reference/ee772844(v=azure.100)
+[執行]: /previous-versions/azure/reference/ee772746(v=azure.100)

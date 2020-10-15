@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259306"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091129"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric 搭配 Azure API 管理概觀
 
@@ -29,13 +29,13 @@ ms.locfileid: "86259306"
 
 在此案例中，無狀態 Web 服務會作為進入 Service Fabric 應用程式的閘道。 此方法需要您撰寫一個 Web 服務，此服務必須能夠作為 HTTP 要求的 Proxy 來將這些要求傳送到後端服務，如下圖所示：
 
-![Service Fabric 搭配 Azure API 管理拓撲概觀][sf-web-app-stateless-gateway]
+![此圖顯示無狀態 web 服務如何做為 Service Fabric 應用程式中的閘道。][sf-web-app-stateless-gateway]
 
 隨著應用程式越來越複雜，必須在各式各樣後端服務前呈現 API 的閘道也越來越複雜。 「Azure API 管理」已設計成讓您花費最少的功夫，即可處理具有路由規則、存取控制、速率限制、監視、事件記錄及回應快取功能的複雜 API。 「Azure API 管理」支援 Service Fabric 服務探索、分割區解析及複本選取，能夠以智能方式將要求直接路由傳送到 Service Fabric 中的後端服務，讓您無須撰寫自己的無狀態 API 閘道。 
 
 在此案例中，仍然是透過 Web 服務來提供 Web UI，以及透過「Azure API 管理」來管理和路由傳送 HTTP API 呼叫，如下圖所示：
 
-![Service Fabric 搭配 Azure API 管理拓撲概觀][sf-apim-web-app]
+![此圖顯示如何透過 web 服務來提供 web UI，同時透過 Azure API 管理來管理和路由 HTTP API 呼叫。][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>應用程式案例
 
@@ -51,7 +51,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 在以下案例中，Service Fabric 應用程式包含一個名為 `fabric:/app/fooservice` 的無狀態服務，此服務會公開內部 HTTP API。 此服務執行個體名稱為已知的名稱，可直接以硬式編碼編寫在「API 管理」輸入處理原則中。 
 
-![Service Fabric 搭配 Azure API 管理拓撲概觀][sf-apim-static-stateless]
+![顯示 Service Fabric 應用程式的圖表包含會公開內部 HTTP API 的無狀態服務。][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>將流量傳送到具狀態服務
 
@@ -82,7 +82,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
   - 對 `/api/users/foo` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/foo`
   - 對 `/api/users/bar` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/bar`
 
-![Service Fabric 搭配 Azure API 管理拓撲概觀][sf-apim-dynamic-stateless]
+![此圖顯示一個範例，其中會針對具有動態產生名稱的應用程式的每個使用者建立新的無狀態服務實例。][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>將流量傳送到多個具狀態服務
 
@@ -103,9 +103,9 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 每個服務執行個體也是以 Int64 資料分割配置來分割的，此配置具有兩個分割區及跨 `Int64.MinValue` 到 `Int64.MaxValue` 的索引鍵範圍。 後端原則會透過將 URL 要求路徑中提供的 `id` 值轉換成 64 位元整數，來計算出一個在該範圍內的分割區索引鍵，不過這裡可以使用任何演算法來計算分割區索引鍵。 
 
-![Service Fabric 搭配 Azure API 管理拓撲概觀][sf-apim-dynamic-stateful]
+![顯示每個服務實例也使用 Int64 資料分割配置來分割的圖表，以及橫跨 Int64. MinValue 至 Int64 的索引鍵範圍。][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 依照[教學課程](service-fabric-tutorial-deploy-api-management.md)來設定您第一個搭配「API 管理」的 Service Fabric 叢集，並透過「API 管理」將要求傳送到您的服務。
 

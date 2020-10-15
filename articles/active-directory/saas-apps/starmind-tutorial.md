@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 853c4a9eb08528586d8979cad79e353d6fcc374c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450576"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Starmind 整合

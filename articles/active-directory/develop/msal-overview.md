@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0c4da177644a1cdb648c00e8309c18031a905d7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fbcacf4e3c26f117be4ab5b64b35f670435e6b6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825955"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092744"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 驗證程式庫 (MSAL) 概觀
-Microsoft 驗證程式庫 (MSAL) 可讓開發人員從 Microsoft 身分識別平臺端點取得 [權杖](developer-glossary.md#security-token) ，以便存取安全的 web api。 這些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 web API。 MSAL 適用于 .NET、JavaScript、JAVA、Python、Android 和 iOS，其支援許多不同的應用程式架構和平臺。
+Microsoft 驗證程式庫 (MSAL) 可讓開發人員從 Microsoft 身分識別平臺端點取得 [權杖](developer-glossary.md#security-token) ，以便驗證使用者並存取安全的 web api。 您可以使用它來提供 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 web API 的安全存取。 MSAL 支援許多不同的應用程式架構和平臺，包括 .NET、JavaScript、JAVA、Python、Android 和 iOS。
 
 MSAL 可讓您透過多種平台通用的 API，以不同的方式取得權杖。 使用 MSAL 有下列優點：
 

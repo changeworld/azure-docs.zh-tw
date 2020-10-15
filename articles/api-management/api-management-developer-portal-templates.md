@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430781"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092880"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用範本自訂 Azure API 管理開發人員入口網站。
 
@@ -41,7 +41,7 @@ ms.locfileid: "75430781"
 
 若要存取開發人員入口網站範本，請按一下左側的自訂圖示，顯示 [自訂] 功能表，然後按一下 [範本] ****。
 
-![開發人員入口網站範本][api-management-customize-menu]
+![醒目顯示 [自訂] 圖示以顯示 [自訂] 功能表的螢幕擷取畫面。][api-management-customize-menu]
 
 [範本] 清單會顯示數個範本類別，涵蓋開發人員入口網站的不同頁面。 每個範本各不相同，但是編輯和發佈變更的步驟是一樣的。 若要編輯範本，請按一下範本的名稱。
 
@@ -145,7 +145,7 @@ ms.locfileid: "75430781"
 
 按一下 [是] **** 確認，並讓範本即時顯示在開發人員入口網站中。
 
-![確認發佈][api-management-publish-template-confirm]
+![顯示您選取 [是] 以使範本上線的螢幕擷取畫面。][api-management-publish-template-confirm]
 
 若要發佈目前所有尚未發佈的範本版本，請按一下範本清單的 [發佈]****。 未發佈的範本會在範本名稱後面標記星號。 本例中要發佈**產品清單**和**產品**範本。
 
@@ -160,11 +160,11 @@ ms.locfileid: "75430781"
 ## <a name="to-revert-a-template-to-the-previous-version"></a>將範本還原成先前的版本
 若要將範本還原為先前發佈的版本，請按一下範本編輯器的 [還原]。
 
-![還原範本][api-management-revert-template]
+![醒目顯示您用來還原範本之圖示的螢幕擷取畫面。][api-management-revert-template]
 
 按一下 [是]  確認。
 
-![確認][api-management-revert-template-confirm]
+![顯示您選取 [是] 以確認變更的螢幕擷取畫面。][api-management-revert-template-confirm]
 
 還原作業一完成，先前發佈的範本版本就會立即顯示在開發人員入口網站中。
 

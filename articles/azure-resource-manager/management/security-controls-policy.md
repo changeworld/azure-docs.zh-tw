@@ -8,10 +8,10 @@ ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 7ae41878cb2008c5f237240d37de2a508ea3b5a7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826312"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>適用於 Azure Resource Manager 的 Azure 原則法規合規性控制項

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601379"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093305"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>瞭解安全、受 Azure 管理的工作站
 
@@ -64,7 +64,7 @@ ms.locfileid: "90601379"
 * 高度機密的工作站，例如 SWIFT 付款終端機
 * 工作站處理交易秘密
 
-若要降低風險，您應該針對使用這些帳戶的特殊許可權工作站，執行更高的安全性控制。 如需詳細資訊，請參閱 [Azure Active Directory 功能部署指南](../fundamentals/active-directory-deployment-checklist-p2.md)、 [Microsoft 365 藍圖](https://aka.ms/o365secroadmap)和 [保護特殊許可權存取藍圖](https://aka.ms/sparoadmap)) 。
+若要降低風險，您應該針對使用這些帳戶的特殊許可權工作站，執行更高的安全性控制。 如需詳細資訊，請參閱 [Azure Active Directory 功能部署指南](../fundamentals/active-directory-deployment-checklist-p2.md)、 [Microsoft 365 藍圖](/microsoft-365/security/office-365-security/security-roadmap)和 [保護特殊許可權存取藍圖](/windows-server/identity/securing-privileged-access/securing-privileged-access)) 。
 
 ## <a name="why-use-dedicated-workstations"></a>為何要使用專用工作站？
 

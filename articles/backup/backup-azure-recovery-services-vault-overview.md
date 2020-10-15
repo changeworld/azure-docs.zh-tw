@@ -3,12 +3,12 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫的總覽。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975154"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093662"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -18,7 +18,7 @@ ms.locfileid: "90975154"
 
 - **將您的混合式 IT 環境集中監視**︰透過復原服務保存庫，您不只可以監視 [Azure IaaS VM](backup-azure-manage-vms.md)，還可以從中央入口網站監視[內部部署資產](backup-azure-manage-windows-server.md#manage-backup-items)。 [深入了解](backup-azure-monitoring-built-in-monitor.md)
 
-- **角色型存取控制 (RBAC)**：RBAC 提供 Azure 中的更細緻存取權管理。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 RBAC 相容，且會對一組定義之使用者角色的備份和還原存取權限加以限制。 [深入了解](backup-rbac-rs-vault.md)
+- Azure**角色型存取控制 (AZURE rbac) **： azure rbac 可在 azure 中提供更細緻的存取管理控制。 [Azure 提供各種內建角色](../role-based-access-control/built-in-roles.md)，且 Azure Backup 有三個[內建的角色可用來管理復原點](backup-rbac-rs-vault.md)。 復原服務保存庫與 Azure RBAC 相容，這會限制對所定義使用者角色集的備份和還原存取權。 [深入了解](backup-rbac-rs-vault.md)
 
 - 虛**刪除**：透過虛刪除，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案，而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會產生任何費用。 [深入了解](backup-azure-security-feature-cloud.md)。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230886"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013605"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教學課程：從入口網站新增範例模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "89230886"
 
 - Azure Analysis Services 伺服器。 若要深入了解，請參閱[建立伺服器 - 入口網站](analysis-services-create-server.md)。
 - 伺服器管理員權限
-- [Transact-SQL](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
@@ -74,5 +74,3 @@ ms.locfileid: "89230886"
 
 > [!div class="nextstepaction"]
 > [教學課程：設定伺服器管理員和使用者角色](tutorials/analysis-services-tutorial-roles.md)
-
-

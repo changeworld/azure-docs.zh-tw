@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: db7838224b004d50234586d14e43e77a9c2ce26b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a656ec60fd3cb1e6b94da2122d8f493f426cef07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552726"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>教學課程：Azure Active Directory 與 Ivanti Service Manager (ISM) 整合
 
@@ -100,7 +100,7 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Ivanti Service Manager (ISM) 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
     
@@ -114,7 +114,7 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Ivanti Service Manager (ISM) 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<customer>.saasit.com/`
 

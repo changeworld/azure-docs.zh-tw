@@ -4,12 +4,12 @@ description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立及管理�
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024b7adb254980ec87084b4794a9ced3eaea95eb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563172"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074510"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立和管理叢集的多個節點集區 \(部分機器翻譯\)
 
@@ -148,7 +148,7 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>升級節點集區
 
 > [!NOTE]
-> 叢集或節點集區上的升級和調整作業無法同時發生，如果已嘗試，則會傳回錯誤。 相反地，每個作業類型都必須在目標資源上完成，才能在該相同資源上進行下一個要求。 請參閱我們的 [疑難排解指南](https://aka.ms/aks-pending-upgrade)，以深入瞭解這一點。
+> 叢集或節點集區上的升級和調整作業無法同時發生，如果已嘗試，則會傳回錯誤。 相反地，每個作業類型都必須在目標資源上完成，才能在該相同資源上進行下一個要求。 請參閱我們的 [疑難排解指南](./troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade)，以深入瞭解這一點。
 
 本節中的命令說明如何升級單一特定節點集區。 [下一節](#upgrade-a-cluster-control-plane-with-multiple-node-pools)將說明升級控制平面和節點集區的 Kubernetes 版本之間的關聯性。
 

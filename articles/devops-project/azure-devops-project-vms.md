@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 80a590ff97cc6595f2da6d1e573820324a46c2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce11fe5b65cd49cc880713eb4e47b081b6f3b44f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82231491"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855968"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>教學課程：使用 Azure DevOps 入門版將 ASP.NET 應用程式部署至 Azure 虛擬機器
 
@@ -198,4 +198,4 @@ Azure Application Insights 可讓您輕鬆監視應用程式的效能和使用�
 若要深入了解 CI/CD 管線，請參閱：
 
 > [!div class="nextstepaction"]
-> [定義多階段的持續部署 (CD) 管線](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [定義多階段的持續部署 (CD) 管線](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

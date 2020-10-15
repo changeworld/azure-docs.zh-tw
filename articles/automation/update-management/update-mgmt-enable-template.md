@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: 312457a6220920d550f05e3a1cd1dc5ec2f4449a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148ed0eab3e74d96ea6dbf1f507cd0ea53ad2fdc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327833"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073779"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本啟用更新管理
 
@@ -66,7 +66,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
 
 如果您是 Azure 自動化和 Azure 監視器的新手，請務必了解下列設定詳細資料。 當您嘗試建立、設定和使用連結至新自動化帳戶的 Log Analytics 工作區時，這些詳細資料可以協助您避免錯誤。
 
-* 請檢閱[其他詳細資料](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)，以全面了解工作區設定選項，例如，存取控制模式、定價層、保留和容量保留層級。
+* 請檢閱[其他詳細資料](../../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)，以全面了解工作區設定選項，例如，存取控制模式、定價層、保留和容量保留層級。
 
 * 請參閱[工作區對應](../how-to/region-mappings.md)，以指定內嵌或參數檔案中支援的區域。 只有特定區域支援連結 Log Analytics 工作區以及訂用帳戶中的自動化帳戶。
 

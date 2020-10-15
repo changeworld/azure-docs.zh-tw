@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563891"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093084"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>規劃您的 Azure Active Directory 裝置部署
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) 讓您的組織能以裝置身分識別管理�
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些問題，請 [確定您已吸引適當的專案關係人](https://aka.ms/deploymentplans) ，並且能瞭解專案中的專案關係人角色。 
+當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些問題，請 [確定您已吸引適當的專案關係人](../fundamentals/active-directory-deployment-plans.md) ，並且能瞭解專案中的專案關係人角色。 
 
 針對此方案，請將下列專案關係人加入您的清單：
 

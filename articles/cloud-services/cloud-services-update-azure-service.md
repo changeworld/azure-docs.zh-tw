@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75360339"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075037"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新雲端服務
 
@@ -21,7 +21,7 @@ ms.locfileid: "75360339"
 ## <a name="update-an-azure-service"></a>更新 Azure 服務
 Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯群組。 升級網域 (UD) 是角色執行個體的邏輯集合，會以群組方式進行更新。  Azure 會一次更新一個 UD 的一個雲端服務，讓其他 UD 中的執行個體能夠繼續處理流量。
 
-預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 如需 upgradeDomainCount 屬性的詳細資訊，請參閱 [Azure 雲端服務定義架構 ( ](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)的檔案) 。
+預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 如需 upgradeDomainCount 屬性的詳細資訊，請參閱 [Azure 雲端服務定義架構 ( ](./schema-csdef-file.md)的檔案) 。
 
 當您在服務中執行一或多個角色的就地更新時，Azure 會根據所屬的升級網域來更新角色執行個體集合。 Azure 會更新指定的升級網域中的所有執行個體 (予以停止、更新、重新上線)，然後移到下一個網域。 Azure 只會停止在目前升級網域中執行的執行個體，以確保更新儘可能對執行中的服務造成最小的影響。 如需詳細資訊，請參閱本文後面的 [如何繼續進行更新](#howanupgradeproceeds) 。
 
@@ -99,7 +99,7 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 將服務從單一執行個體升級為多個執行個體時，由於 Azure 升級服務的方式，您的服務將會在執行升級時關閉。 保證服務可用性的服務等級協定僅適用於已部署多個執行個體的服務。 下列清單說明每個 Azure 服務升級案例如何影響每個磁碟機上的資料：
 
-|案例|C 磁碟機|D 磁碟機|E 磁碟機|
+|狀況|C 磁碟機|D 磁碟機|E 磁碟機|
 |--------|-------|-------|-------|
 |VM 重新啟動|保留|保留|保留|
 |入口網站重新啟動|保留|保留|終結|
@@ -182,7 +182,4 @@ Azure 會將角色的執行個體平均分散於一組升級網域，而升級�
 ## <a name="next-steps"></a>後續步驟
 [如何管理雲端服務](cloud-services-how-to-manage-portal.md)  
 [如何監視雲端服務](cloud-services-how-to-monitor.md)  
-[如何設定雲端服務](cloud-services-how-to-configure-portal.md)  
-
-
-
+[如何設定雲端服務](cloud-services-how-to-configure-portal.md)

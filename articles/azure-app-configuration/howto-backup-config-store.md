@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207135"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074850"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自動備份應用程式設定存放區
 
@@ -23,7 +23,7 @@ ms.locfileid: "88207135"
 
 設定自動備份之後，應用程式設定會將事件發佈至 Azure 事件方格，以針對設定存放區中的索引鍵/值所做的任何變更。 事件方格支援各種不同的 Azure 服務，使用者可以從這些服務訂閱索引鍵/值建立、更新或刪除時發出的事件。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本文中，您將使用 Azure 佇列儲存體從事件方格接收事件，並使用 Azure Functions 的計時器觸發程式，以批次方式處理佇列中的事件。 
 
@@ -124,7 +124,7 @@ az eventgrid event-subscription create \
 - Azure Functions 執行階段版本3。x
 - 每隔10分鐘由計時器觸發的函式
 
-為了讓您更輕鬆地開始備份資料，我們已 [測試併發布](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) 可供您使用的函式，而不需要對程式碼進行任何變更。 從 Visual Studio 下載專案檔，並 [將其發佈至您自己的 Azure 函數應用程式](/azure/azure-functions/functions-develop-vs#publish-to-azure)。
+為了讓您更輕鬆地開始備份資料，我們已 [測試併發布](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) 可供您使用的函式，而不需要對程式碼進行任何變更。 從 Visual Studio 下載專案檔，並 [將其發佈至您自己的 Azure 函數應用程式](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
 > [!IMPORTANT]
 > 請勿對您下載的程式碼中的環境變數進行任何變更。 您將在下一節中建立必要的應用程式設定。
@@ -133,13 +133,13 @@ az eventgrid event-subscription create \
 ### <a name="build-your-own-function"></a>建立您自己的函式
 
 如果稍早提供的範例程式碼不符合您的需求，您也可以建立自己的函式。 您的函數必須能夠執行下列工作，才能完成備份：
-- 定期讀取佇列的內容，以查看它是否包含來自事件方格的任何通知。 請參閱 [儲存體佇列 SDK](/azure/storage/queues/storage-quickstart-queues-dotnet) 以取得執行詳細資料。
-- 如果您的佇列包含事件 [方格的事件通知](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)，請 `<key, label>` 從事件訊息中解壓縮所有唯一的資訊。 Key 和 label 的組合是主要存放區中索引鍵/值變更的唯一識別碼。
+- 定期讀取佇列的內容，以查看它是否包含來自事件方格的任何通知。 請參閱 [儲存體佇列 SDK](../storage/queues/storage-quickstart-queues-dotnet.md) 以取得執行詳細資料。
+- 如果您的佇列包含事件 [方格的事件通知](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)，請 `<key, label>` 從事件訊息中解壓縮所有唯一的資訊。 Key 和 label 的組合是主要存放區中索引鍵/值變更的唯一識別碼。
 - 從主要存放區讀取所有設定。 只更新在佇列中有對應事件的次要存放區中的設定。 從存在於佇列但主要存放區中的次要存放區刪除所有設定。 您可以使用 [應用程式設定 SDK](https://github.com/Azure/AppConfiguration#sdks) ，以程式設計方式存取您的設定存放區。
 - 如果在處理期間沒有例外狀況，請從佇列中刪除訊息。
 - 根據您的需求來執行錯誤處理。 請參閱上述的程式碼範例，以查看您可能想要處理的一些常見例外狀況。
 
-若要深入瞭解如何建立函式，請參閱： [在 Azure 中建立由計時器觸發的函數](/azure/azure-functions/functions-create-scheduled-function) ，並 [使用 Visual Studio 開發 Azure Functions](/azure/azure-functions/functions-develop-vs)。
+若要深入瞭解如何建立函式，請參閱： [在 Azure 中建立由計時器觸發的函數](../azure-functions/functions-create-scheduled-function.md) ，並 [使用 Visual Studio 開發 Azure Functions](../azure-functions/functions-develop-vs.md)。
 
 
 > [!IMPORTANT]
@@ -167,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>將存取權授與函數應用程式的受控識別
 
-使用下列命令或 [Azure 入口網站](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) 為您的函數應用程式新增系統指派的受控識別。
+使用下列命令或 [Azure 入口網站](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) 為您的函數應用程式新增系統指派的受控識別。
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> 若要執行必要的資源建立和角色管理，您的帳戶需要 `Owner` 適當範圍內的許可權， (您的訂用帳戶或資源群組) 。 如果您需要有關角色指派的協助，請瞭解 [如何使用 Azure 入口網站來新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-portal)。
+> 若要執行必要的資源建立和角色管理，您的帳戶需要 `Owner` 適當範圍內的許可權， (您的訂用帳戶或資源群組) 。 如果您需要有關角色指派的協助，請瞭解 [如何使用 Azure 入口網站來新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)。
 
-使用下列命令或 [Azure 入口網站](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) ，將函數應用程式的受控識別存取權授與您的應用程式設定存放區。 使用這些角色：
+使用下列命令或 [Azure 入口網站](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) ，將函數應用程式的受控識別存取權授與您的應用程式設定存放區。 使用這些角色：
 - `App Configuration Data Reader`在主要應用程式設定存放區中指派角色。
 - `App Configuration Data Owner`在次要應用程式設定存放區中指派角色。
 
@@ -196,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-使用下列命令或 [Azure 入口網站](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) ，將您的函式應用程式存取權授與您的佇列的受控識別。 指派 `Storage Queue Data Contributor` 佇列中的角色。
+使用下列命令或 [Azure 入口網站](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) ，將您的函式應用程式存取權授與您的佇列的受控識別。 指派 `Storage Queue Data Contributor` 佇列中的角色。
 
 ```azurecli-interactive
 az role assignment create \
@@ -216,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 您已觸發此事件。 在幾分鐘內，事件方格會將事件通知傳送至您的佇列。 *下次排程執行您*的函式之後，請查看次要存放區中的設定，以查看其是否包含主要存放區中更新的索引鍵/值。
 
 > [!NOTE]
-> 您可以在測試和疑難排解期間 [手動觸發](/azure/azure-functions/functions-manually-run-non-http) 函式，而不需等候排程的計時器觸發程式。
+> 您可以在測試和疑難排解期間 [手動觸發](../azure-functions/functions-manually-run-non-http.md) 函式，而不需等候排程的計時器觸發程式。
 
 確定備份函式順利執行之後，您可以看到金鑰現在存在於您的次要存放區中。
 
@@ -243,9 +243,9 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 
 - 請確定在您于主要存放區中建立設定 *之後* ，已觸發備份功能。
 - 事件方格有可能無法及時將事件通知傳送至佇列。 檢查您的佇列是否仍包含來自主要存放區的事件通知。 如果有的話，請再次觸發 backup 函數。
-- 檢查 [Azure Functions 記錄](/azure/azure-functions/functions-create-scheduled-function#test-the-function) 中是否有任何錯誤或警告。
-- 使用 [Azure 入口網站](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) ，以確保 Azure 函數應用程式包含 Azure Functions 嘗試讀取的應用程式設定的正確值。
-- 您也可以使用 [Azure 應用程式 Insights](/azure/azure-functions/functions-monitoring?tabs=cmd)來設定 Azure Functions 的監視和警示。 
+- 檢查 [Azure Functions 記錄](../azure-functions/functions-create-scheduled-function.md#test-the-function) 中是否有任何錯誤或警告。
+- 使用 [Azure 入口網站](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) ，以確保 Azure 函數應用程式包含 Azure Functions 嘗試讀取的應用程式設定的正確值。
+- 您也可以使用 [Azure 應用程式 Insights](../azure-functions/functions-monitoring.md?tabs=cmd)來設定 Azure Functions 的監視和警示。 
 
 
 ## <a name="clean-up-resources"></a>清除資源

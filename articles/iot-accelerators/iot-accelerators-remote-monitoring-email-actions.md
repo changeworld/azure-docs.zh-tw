@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74168358"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074459"
 ---
 # <a name="add-an-email-action"></a>新增電子郵件動作
 
@@ -166,7 +166,7 @@ ms.locfileid: "74168358"
 
 ## <a name="throttling"></a>節流
 
-遠端監視解決方案加速器會使用 Outlook 來傳送電子郵件通知。 Outlook 會將傳送的電子郵件數目限制為[每 1 分鐘 30 封電子郵件](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)。 接收電子郵件的電子郵件用戶端也可能會節流處理每分鐘收到的電子郵件數目。 請向您的特定電子郵件用戶端洽詢相關限制。 當您設定規則的電子郵件通知時，此規則應會計算一段時間 (至少一分鐘) 的平均值，而不會使用即時值：
+遠端監視解決方案加速器會使用 Outlook 來傳送電子郵件通知。 Outlook 會將傳送的電子郵件數目限制為[每 1 分鐘 30 封電子郵件](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)。 接收電子郵件的電子郵件用戶端也可能會節流處理每分鐘收到的電子郵件數目。 請向您的特定電子郵件用戶端洽詢相關限制。 當您設定規則的電子郵件通知時，此規則應會計算一段時間 (至少一分鐘) 的平均值，而不會使用即時值：
 
 ![平均計算](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
