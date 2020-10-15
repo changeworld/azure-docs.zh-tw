@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776284"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078828"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -71,7 +71,7 @@ Azure 自動化中的 Runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 
 ## <a name="security"></a>安全性
 
-Azure 自動化使用 [Azure 資訊安全中心 (ASC)](../security-center/security-center-intro.md) 來確保資源的安全性，並偵測 Linux 系統是否遭到入侵。 無論資源是否在 Azure 中，所有工作負載都受到保護。 請參閱 [Azure 自動化中的驗證簡介](automation-security-overview.md)。
+Azure 自動化使用 [Azure 資訊安全中心 (ASC)](../security-center/security-center-introduction.md) 來確保資源的安全性，並偵測 Linux 系統是否遭到入侵。 無論資源是否在 Azure 中，所有工作負載都受到保護。 請參閱 [Azure 自動化中的驗證簡介](automation-security-overview.md)。
 
 ASC 會限制哪些使用者可在 VM 上執行任何指令碼 (已簽署或未簽署)。 如果您是對 VM 具有 root 存取權的使用者，則必須以數位簽章來明確設定機器或關閉機器。 否則，只有在建立自動化帳戶並啟用適當功能之後，您才能執行指令碼來套用作業系統更新。
 

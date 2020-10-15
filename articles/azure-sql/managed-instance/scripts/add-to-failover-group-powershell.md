@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 07/16/2019
 ms.openlocfilehash: cd954f07d733e4d80054d6f429a748ca59b5747d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273172"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>使用 PowerShell 將受控執行個體新增至容錯移轉群組 

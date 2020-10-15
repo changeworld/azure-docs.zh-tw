@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801024"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070481"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>針對功能部署問題進行疑難排解
 
@@ -82,7 +82,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-這是會由於定價層與訂閱的計費模型不符合而造成的錯誤。 如需詳細資訊，請參閱[在 Azure 監視器中監視使用量和估計成本](https://aka.ms/PricingTierWarning)。
+這是會由於定價層與訂閱的計費模型不符合而造成的錯誤。 如需詳細資訊，請參閱[在 Azure 監視器中監視使用量和估計成本](../../azure-monitor/platform/usage-estimated-costs.md)。
 
 #### <a name="resolution"></a>解決方案
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: a0786c1ce5d3a693dabe422b65af7177e16c20b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3886f82180728bc6f454b1a49b5551bc4831869e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905511"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070889"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的原則
 
@@ -70,7 +70,7 @@ ms.locfileid: "87905511"
 
 ## <a name="policy-samples"></a>原則範例
 
-請參閱[原則範例](policy-samples.md)以取得更多程式碼範例。
+請參閱[原則範例](./policy-reference.md)以取得更多程式碼範例。
 
 ## <a name="examples"></a>範例
 
@@ -119,7 +119,7 @@ ms.locfileid: "87905511"
 
 + [轉換 API](transform-api.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)   
++ [原則範例](./policy-reference.md)   
 
 [Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md

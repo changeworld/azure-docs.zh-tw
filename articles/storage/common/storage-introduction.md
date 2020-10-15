@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714976"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079219"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存體服務簡介
 
@@ -105,7 +105,7 @@ Azure 受控磁碟是虛擬硬碟 (VHD)。 您可以將它視為內部部署伺�
 
 ## <a name="types-of-storage-accounts"></a>儲存體帳戶類型
 
-Azure 儲存體提供數種類型的儲存體帳戶。 每個類型都支援不同的功能，而且都有自己的計價模式。 如需有關儲存體帳戶類型的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
+Azure 儲存體提供數種儲存體帳戶。 每個類型都支援不同的功能，而且都有自己的計價模式。 如需有關儲存體帳戶類型的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
 ## <a name="secure-access-to-storage-accounts"></a>保護對儲存體帳戶的存取
 
@@ -173,8 +173,7 @@ Azure 儲存體的用戶端程式庫會提供方法，以便在透過網路傳�
 - [儲存體的 Azure CLI Cmdlet](https://docs.microsoft.com/cli/azure/storage)
 - [AzCopy Command-Line 公用程式](https://aka.ms/downloadazcopy)
 - [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
-- [Azure 儲存體用戶端工具](../storage-explorers.md)
-- [Azure 開發人員工具](https://azure.microsoft.com/tools/)
+- [適用于 Azure 儲存體的 Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ## <a name="next-steps"></a>後續步驟
 

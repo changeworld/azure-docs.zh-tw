@@ -2,21 +2,21 @@
 title: 在虛擬機器之間複製和貼上： Azure 防禦
 description: 在本文中，瞭解如何使用防禦來複製和貼上 Azure VM。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.author: charwen
-ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cherylmc
+ms.openlocfilehash: 50f7906992aa19daa205a30f71ce21456bafe558
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445342"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079151"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>複製並貼上至虛擬機器： Azure 防禦
 
-本文可協助您在使用 Azure 防禦時，在虛擬機器之間複製及貼上文字。 在使用 VM 之前，請確定您已遵循 [建立堡壘主機](bastion-create-host-portal.md)的步驟。 然後，使用 [RDP](bastion-connect-vm-rdp.md) 或 [SSH](bastion-connect-vm-ssh.md)連接到您想要使用的 VM。
+本文可協助您在使用 Azure 防禦時，在虛擬機器之間複製及貼上文字。 在使用 VM 之前，請確定您已遵循 [建立堡壘主機](./tutorial-create-host-portal.md)的步驟。 然後，使用 [RDP](bastion-connect-vm-rdp.md) 或 [SSH](bastion-connect-vm-ssh.md)連接到您想要使用的 VM。
 
 針對支援「advanced 剪貼簿 API」存取的瀏覽器，您可以在本機裝置和遠端會話之間複製和貼上文字，就像您在本機裝置上的應用程式之間複製並貼上的方式一樣。 若為其他瀏覽器，您可以使用 [防禦剪貼簿存取工具] 選項區。
 

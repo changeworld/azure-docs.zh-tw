@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 6cf77aa41a9a485ba70519fed33c1b6aec736525
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470063"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078573"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式備份
 
@@ -90,7 +90,7 @@ EOF
 
 ## <a name="install-velero-on-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 叢集上安裝 Velero
 
-此步驟會將 velero 安裝到自己的專案，以及使用 Velero 進行備份和還原所需的 [自訂資源定義](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) 。 請確定您已成功登入 Azure Red Hat OpenShift v4 叢集。
+此步驟會將 Velero 安裝到自己的專案，以及使用 Velero 進行備份和還原所需的 [自訂資源定義](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) 。 請確定您已成功登入 Azure Red Hat OpenShift v4 叢集。
 
 
 ```bash
@@ -120,14 +120,34 @@ oc get backups -n velero <name of backup> -o yaml
 
 成功的備份將會輸出 `phase:Completed` ，而物件將會存留在儲存體帳戶的容器中。
 
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>使用 Velero 建立備份以包含快照集
+
+若要使用 Velero 建立應用程式備份以包含應用程式的持續性磁片區，您必須包含應用程式所在的命名空間，以及在 `snapshot-volumes=true` 建立備份時包含旗標。
+
+```bash
+velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
+```
+
+您可以執行下列動作來檢查備份的狀態：
+
+```bash
+oc get backups -n velero <name of backup> -o yaml
+```
+
+具有輸出的成功備份 `phase:Completed` 和物件會存留于儲存體帳戶的容器中。
+
+如需如何使用 Velero 建立備份和還原的詳細資訊，請參閱以 [原生方式備份 OpenShift 資源](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
+
 ## <a name="next-steps"></a>後續步驟
 
 在本文中，Azure Red Hat OpenShift 4 叢集應用程式已備份。 您已了解如何︰
 
 > [!div class="checklist"]
 > * 使用 Velero 建立 OpenShift v4 叢集應用程式備份
+> * 使用 Velero 建立具有快照集的 OpenShift v4 叢集應用程式備份
 
 
 前進到下一篇文章，以瞭解如何建立 Azure Red Hat OpenShift 4 叢集應用程式還原。
 
 * [建立 Azure Red Hat OpenShift 4 叢集應用程式還原](howto-create-a-restore.md)
+* [建立 Azure Red Hat OpenShift 4 叢集應用程式還原，包括快照集](howto-create-a-restore.md)

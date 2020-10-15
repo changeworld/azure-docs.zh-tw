@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317305"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078896"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用功能旗標
 
@@ -27,7 +27,7 @@ ms.locfileid: "91317305"
 
 功能管理程式庫也可在幕後管理功能旗標的生命週期。 例如，這些程式庫會重新整理及快取旗標狀態，或保證旗標的狀態在要求呼叫期間不會變化。 此外，ASP.NET Core 程式庫還提供現成可用的整合，包括 MVC 控制器動作、檢視、路由和中介軟體。
 
-[將功能旗標新增至 ASP.NET Core 應用程式快速入門](./quickstart-feature-flag-aspnet-core.md)會示範數種方法，讓您了解如何在 ASP.NET Core 應用程式中新增功能旗標。 本教學課程會詳細說明這些方法。 如需完整的參考，請參閱 [ASP.NET Core 功能管理文件](https://go.microsoft.com/fwlink/?linkid=2091410)。
+[將功能旗標新增至 ASP.NET Core 應用程式快速入門](./quickstart-feature-flag-aspnet-core.md)會示範數種方法，讓您了解如何在 ASP.NET Core 應用程式中新增功能旗標。 本教學課程會詳細說明這些方法。 如需完整的參考，請參閱 [ASP.NET Core 功能管理文件](/dotnet/api/microsoft.featuremanagement)。
 
 在本教學課程中，您將學會如何：
 
@@ -301,6 +301,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 在本教學課程中，您已了解如何藉由使用 `Microsoft.FeatureManagement` 程式庫在 ASP.NET Core 應用程式中實作功能旗標。 若要進一步了解 ASP.NET Core 和應用程式組態中的功能管理支援，請參閱下列資源：
 
-* [ASP.NET Core 功能旗標程式碼範例](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Microsoft.FeatureManagement 文件](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [ASP.NET Core 功能旗標程式碼範例](./quickstart-feature-flag-aspnet-core.md)
+* [Microsoft.FeatureManagement 文件](/dotnet/api/microsoft.featuremanagement)
 * [編輯功能旗標](./manage-feature-flags.md)
