@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/22/2020
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262241"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教學課程：在 Azure Container Registry 中更新基底映像時自動執行容器映像建置 

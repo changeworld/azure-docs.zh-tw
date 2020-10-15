@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77471324"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951429"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用 Data Box Heavy 匯入資料以作為 Azure 中的受控磁碟
 
@@ -75,11 +75,11 @@ ms.locfileid: "77471324"
     > [!NOTE]
     > 適用於受控磁碟之所有共用的認證均完全相同。
 
-    ![取得共用認證 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![取得共用認證](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. 從 [存取共用及複製資料] 對話方塊中，複製共用的**使用者名稱**和**密碼**。 按一下 [確定]  。
     
-    ![取得共用認證 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![取得共用認證 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. 若要從主機電腦存取與您的資源 (在下列範例中為 *mydbmdrg1*) 相關聯的共用，請開啟命令視窗。 在命令提示字元中，輸入：
 
@@ -101,7 +101,7 @@ ms.locfileid: "77471324"
 
 4. 按 Windows + R。在 [執行]  視窗中，指定 `\\<device IP address>\<ShareName>`。 按一下 [確定]  以開啟檔案總管。
     
-    ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![透過檔案總管連線至共用](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     您現在應該會在每個共用內看到下列預先建立的資料夾。
     
@@ -114,7 +114,7 @@ ms.locfileid: "77471324"
 
 1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製]  頁面。 在 [NFS 設定]  下方，按一下 [NFS 用戶端存取]  。
 
-    ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![設定 NFS 用戶端存取](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]  。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]  。
 

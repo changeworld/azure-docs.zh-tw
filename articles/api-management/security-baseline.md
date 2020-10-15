@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713776"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077434"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
@@ -100,7 +100,7 @@ ms.locfileid: "91713776"
 
 * [如何設定 DDoS 保護標準](../virtual-network/manage-ddos-protection.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -588,7 +588,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 * [如何建立額外的 Azure 訂用帳戶](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1114,7 +1114,7 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
 
-* [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：不適用
 

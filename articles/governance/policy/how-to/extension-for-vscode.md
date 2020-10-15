@@ -1,14 +1,14 @@
 ---
 title: 適用於 Visual Studio Code 的 Azure 原則延伸模組
 description: 瞭解如何使用 Visual Studio Code 的 Azure 原則擴充功能來查閱 Azure Resource Manager 的別名。
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89648335"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077927"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Visual Studio Code 的 Azure 原則擴充功能
 
@@ -82,7 +82,7 @@ Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Cod
 
    - 命令選擇區： 
 
-     從功能表列，移至 [ **View**  >  **命令**選擇區]，然後輸入**Azure： Select**訂用帳戶。
+     從功能表列，移至 [ **View** > **命令**選擇區]，然後輸入 **Azure： Select**訂用帳戶。
 
    - 視窗尾
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326591"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077825"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>教學課程：在 Spring Boot 應用程式中使用功能旗標
 
@@ -185,5 +185,5 @@ public String getOldFeature() {
 
 在本教學課程中，您已了解如何藉由使用 `spring-cloud-azure-feature-management-web` 程式庫在 Spring Boot 應用程式中實作功能旗標。 若要進一步了解 Spring Boot 和應用程式組態中的功能管理支援，請參閱下列資源：
 
-* [Spring Boot 功能旗標範例程式碼](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Spring Boot 功能旗標範例程式碼](./quickstart-feature-flag-spring-boot.md)
 * [編輯功能旗標](./manage-feature-flags.md)

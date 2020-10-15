@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9c9bac20beb415f8bc29ca63d530e5cd8492d2d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8ffb2d2f52e1bdfece7fe1bdcd04dcf9b1b600f3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997001"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077638"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦連接到 Windows 虛擬機器
 
@@ -20,7 +20,7 @@ ms.locfileid: "91997001"
 
 Azure 防禦可為布建所在的虛擬網路中的所有 Vm 提供安全的連線能力。 使用 Azure Bastion 來保護您的虛擬機器免於向外公開 RDP/SSH 連接埠，同時提供使用 RDP/SSH 的安全存取。 如需詳細資訊，請參閱 [什麼是 Azure 防禦？](bastion-overview.md)。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確認您符合下列準則：
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706461"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069716"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>啟用多租使用者應用程式的自動使用者布建
 
@@ -111,7 +111,7 @@ SAML JIT 會使用 SAML 權杖中的宣告資訊，在應用程式中建立和�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [為您的應用程式啟用單一登入](../manage-apps/isv-sso-content.md)
+* [為您的應用程式啟用單一登入](../develop/v2-howto-app-gallery-listing.md)
 
 * [提交您的應用程式清單](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) ，並與 microsoft 合作，以在 microsoft 網站上建立檔。
 

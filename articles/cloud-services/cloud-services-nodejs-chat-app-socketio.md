@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
-ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327522"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077213"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 雲端服務上使用 Socket.IO 建立 Node.js 交談應用程式
 
@@ -139,7 +139,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. 若要將應用程式部署至 Azure，請使用 **Publish-AzureServiceProject** Cmdlet。 例如：
+5. 若要將應用程式部署至 Azure，請使用 **Publish-AzureServiceProject** Cmdlet。 例如︰
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
@@ -169,9 +169,9 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您學到如何建立裝載於 Azure 雲端服務的基本交談應用程式。 若要了解如何在 Azure 網站中裝載此應用程式，請參閱[在 Azure 網站上使用 Socket.IO 建立 Node.js 交談應用程式][chatwebsite]。
 
-如需詳細資訊，也請參閱 [Node.js 開發人員中心](https://docs.microsoft.com/azure/developer/javascript/)。
+如需詳細資訊，也請參閱 [Node.js 開發人員中心](/azure/developer/javascript/)。
 
-[chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
+[chatwebsite]: ./cloud-services-nodejs-develop-deploy-app.md
 
 [Azure SLA]: https://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -191,8 +191,3 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
-
-
-
-
-

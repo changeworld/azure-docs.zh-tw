@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648675"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948947"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>設定 Azure 自訂提供者的 Azure Functions
 
@@ -51,7 +51,7 @@ ms.locfileid: "75648675"
 > [!NOTE]
 > 如果專案目錄中遺漏 C# 專案檔，您可以手動將其加入。 或者，當函式應用程式上安裝 Microsoft.Azure.WebJobs.Extensions.Storage 擴充功能之後，該檔案就會出現。
 
-接下來，更新 C# 專案檔以包含實用的 NuGet 程式庫。 這些程式庫可讓您更輕鬆地剖析來自自訂提供者的傳入要求。 請遵循[從入口網站新增擴充功能](../../azure-functions/install-update-binding-extensions-manual.md)中的步驟，並更新 C# 專案檔以納入下列套件參考：
+接下來，更新 C# 專案檔以包含實用的 NuGet 程式庫。 這些程式庫可讓您更輕鬆地剖析來自自訂提供者的傳入要求。 請遵循[從入口網站新增擴充功能](../../azure-functions/functions-bindings-register.md)中的步驟，並更新 C# 專案檔以納入下列套件參考：
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ ms.locfileid: "75648675"
 在本教學課程中，您已設定 Azure 函式應用程式以作為 Azure 自訂提供者端點使用。
 
 若要了解如何撰寫 RESTful 自訂提供者端點，請參閱[教學課程：撰寫 RESTful 自訂提供者端點](./tutorial-custom-providers-function-authoring.md)。
-

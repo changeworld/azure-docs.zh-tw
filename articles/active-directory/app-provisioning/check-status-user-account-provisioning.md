@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235072"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069801"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教學課程︰關於使用者帳戶自動佈建的報告
 
@@ -24,12 +24,12 @@ Azure Active Directory (Azure AD) 包含 [使用者帳戶](user-provisioning.md)
 
 本文會說明如何在佈建作業設定好之後檢查其狀態，以及如何針對個別使用者和群組的佈建進行疑難排解。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 我們會使用 [Azure 入口網站](https://portal.azure.com)，依照針對支援之應用程式[所提供的文件](../saas-apps/tutorial-list.md)來設定佈建連接器。 在設定好並開始執行之後，您就可以使用下列兩種方法的其中一種來獲得佈建作業的報告：
 
 * **Azure 入口網站** -本文主要說明如何從 [Azure 入口網站](https://portal.azure.com)中取出報告資訊，以提供布建摘要報告，以及指定應用程式的詳細布建審核記錄。
-* **稽核 API** - Azure Active Directory 也會提供稽核 API，以便透過程式擷取詳細的佈建稽核記錄。 如需此 API 專屬的使用說明文件，請參閱 [Azure Active Directory 稽核 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)。 雖然本文未具體說明如何使用 API，但會詳細說明稽核記錄中所記下的佈建事件類型。
+* **稽核 API** - Azure Active Directory 也會提供稽核 API，以便透過程式擷取詳細的佈建稽核記錄。 如需此 API 專屬的使用說明文件，請參閱 [Azure Active Directory 稽核 API 參考](/graph/api/resources/directoryaudit)。 雖然本文未具體說明如何使用 API，但會詳細說明稽核記錄中所記下的佈建事件類型。
 
 ### <a name="definitions"></a>定義
 
