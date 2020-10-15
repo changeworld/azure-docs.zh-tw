@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c88d21c6ad17c613c5d708bf697ae8717c9ec91
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087878"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075258"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
@@ -67,7 +67,7 @@ Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環�
 
 ### <a name="service-tags"></a>服務標籤
 
-Azure 自動化支援 Azure 虛擬網路服務標籤，從服務標記 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)開始。 您可以使用服務標記來定義 [網路安全性群組](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 **GuestAndHybridManagement**  ，您可以允許或拒絕自動化服務的流量。 此服務標籤不支援將 IP 範圍限制為特定區域，以允許更細微的控制。
+Azure 自動化支援 Azure 虛擬網路服務標籤，從服務標記 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)開始。 您可以使用服務標記來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 **GuestAndHybridManagement**  ，您可以允許或拒絕自動化服務的流量。 此服務標籤不支援將 IP 範圍限制為特定區域，以允許更細微的控制。
 
 Azure 自動化服務的服務標籤只會提供用於下列案例的 Ip：
 

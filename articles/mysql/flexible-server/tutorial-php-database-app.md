@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929395"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP (Laravel) 和 MySQL 彈性伺服器 (預覽) 應用程式
@@ -134,7 +134,7 @@ php artisan serve
 
 在瀏覽器中，瀏覽至 `http://localhost:8000` 。 在頁面中新增幾項工作。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 成功連線至 MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
 
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 在頁面中新增幾項工作。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 順利連線至適用於 MySQL 的 Azure 資料庫":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
 
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 瀏覽至 `http://<app-name>.azurewebsites.net` 並將幾項工作新增至清單。
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 中的 PHP Web App":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
 
 恭喜，您正在 Azure App Service 中執行資料驅動的 PHP 應用程式。
 
@@ -534,7 +534,7 @@ php artisan serve
 
 若要查看工作狀態的變更，瀏覽至 `http://localhost:8000`，然後選取核取方塊。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="已將核取方塊新增至工作":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
 
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
@@ -556,7 +556,7 @@ git push azure master
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後測試新功能。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="發佈至 Azure 的模型和資料庫變更":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
 
 如果您新增任何工作，它們會保留在資料庫中。 對資料結構描述進行的更新，現有資料會原封不動。
 
