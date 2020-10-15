@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499631"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961505"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及部署高可用性的虛擬機器
 
@@ -116,5 +116,5 @@ az vm availability-set list-sizes \
 > [建立虛擬機器擴展集](tutorial-create-vmss.md)
 
 * 若要深入了解可用性區域，請造訪[可用性區域文件](../../availability-zones/az-overview.md)。
-* 您也可以在[這裡](./manage-availability.md)取得更多有關可用性設定組和可用性區域的文件。
+* 您也可以在[這裡](../manage-availability.md)取得更多有關可用性設定組和可用性區域的文件。
 * 若要試用可用性區域，請造訪[使用 Azure CLI 在可用性區域中建立 Linux 虛擬機器](./create-cli-availability-zone.md)

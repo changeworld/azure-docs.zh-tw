@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042440"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式
@@ -60,11 +60,11 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 3. 選取您的 **[使用者電子郵件地址]** ，輸入 **[一般名稱]**  值，並確定您已指定 **[儲存至磁碟]** ，然後選取 **[繼續]** 。 請將 **[CA 電子郵件地址]**  留空，因為這不是必要資訊。
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="必要的憑證資訊":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="金鑰鏈存取":::
 
 4. 在 **[另存新檔]** 中輸入 CSR 檔案的名稱，在 **[位置]** 中選取位置，然後選取 **[儲存]** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="選擇檔案名稱":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="金鑰鏈存取":::
 
    此動作會在選取的位置儲存 CSR 檔案。 預設位置是 **[桌面]** 。 請記住為檔案選擇的位置。
 
@@ -76,26 +76,26 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 1. 如果您尚未註冊應用程式，請瀏覽至 Apple Developer Center 上的 [iOS 佈建入口網站](https://go.microsoft.com/fwlink/p/?LinkId=272456) 。 使用您的 Apple ID 登入入口網站，然後選取 **[識別碼]** 。 然後選取 **[+]**  以註冊新的應用程式。
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="應用程式識別碼頁面":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="金鑰鏈存取":::
 
 2. 在 **[註冊新識別碼]**  畫面上，選取 **[應用程式識別碼]**  選項按鈕。 然後選取 **[繼續]** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="註冊新的識別碼頁面":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="金鑰鏈存取":::
 
 3. 將新應用程式的下列三個值予以更新，然後選取 **[繼續]** ：
 
    - **描述**：輸入您應用程式的描述性名稱。
    - **套件組合識別碼**：以 [＜應用程式分發指南＞](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)中所提的 **Organization Identifier.Product Name** 形式輸入套件組合識別碼。 [組織識別碼] **** 和 [產品名稱] ****  值必須符合當您建立 Xcode 專案時使用的組織識別碼和產品名稱。 在下列螢幕擷取畫面中， **NotificationHubs** 值會作為組織識別碼， **GetStarted** 值會作為產品名稱。 請確定 **[套件組合識別碼]**  值符合您 Xcode 專案中的值，好讓 Xcode 使用正確的發行設定檔。
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="註冊應用程式識別碼":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="金鑰鏈存取":::
 
    - **推播通知**：在 **＜功能＞** 一節中，檢查 **[推播通知]**  選項。
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="註冊新的應用程式識別碼":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="金鑰鏈存取":::
 
       此動作會產生您的應用程式識別碼，並要求您確定此資訊。 選取 **[繼續]** ，然後選取 **[註冊]**  以確認新的應用程式識別碼。
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="確認新的應用程式識別碼":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="金鑰鏈存取":::
 
       選取 **[註冊]** 之後，您會在 **[憑證、識別碼與設定檔]**  頁面中看到作為明細項目的新應用程式識別碼。
 
@@ -118,11 +118,11 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 1. 向下瀏覽至已核取的 **[推播通知]**  選項，然後選取 **[設定]**  來建立憑證。
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="應用程式識別碼":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="金鑰鏈存取":::
 
 2.  **[Apple Push Notification Service SSL 憑證]**  視窗隨即出現。 選取 **[開發 SSL 憑證]**  區段中的 **[建立憑證]**  按鈕。
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="建立憑證":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="金鑰鏈存取":::
 
     **[建立新憑證]**  畫面會隨即顯示。
 
@@ -133,11 +133,11 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 4. 在入口網站建立憑證之後，請選取 **[下載]**  按鈕。 儲存憑證，並記住其儲存位置。
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="下載憑證":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="金鑰鏈存取":::
 
    憑證會下載並儲存在您的 **[下載]**  資料夾中。
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="尋找憑證檔案":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="金鑰鏈存取":::
 
    依預設，下載的開發憑證會名為 **aps_development.cer**。
 
@@ -149,7 +149,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 6. 在 Keychain Access 中，以滑鼠右鍵按一下您在 **[憑證]**  類別中建立的新推播憑證。 選取 **[匯出]** 、為檔案命名、選取 **[.p12]**  格式，然後選取 **[儲存]** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="匯出憑證":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="金鑰鏈存取":::
 
    您可以選擇使用密碼來保護憑證，但這是選擇性的。 如果您想要略過密碼建立，請按一下 **[確定]**  。 記下匯出的 .p12 憑證的檔案名稱和位置。 其可用來啟用 APNS 驗證功能。
 
@@ -201,11 +201,11 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 2. 在 **[開發]**  底下，選取 **[iOS 應用程式開發]**  作為佈建設定檔類型，然後選取 **[繼續]** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="佈建設定檔清單":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="金鑰鏈存取":::
 
 3. 接著，從 **[應用程式識別碼]**  下拉式清單選取您建立的應用程式識別碼，然後選取 **[繼續]** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="選取應用程式識別碼":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="金鑰鏈存取":::
 
 4. 在 **[選取憑證]**  視窗中，選取用於程式碼簽署的開發憑證，然後選取 **[繼續]** 。 此憑證不是您建立的推播憑證。 如果沒有憑證存在，您必須加以建立。 如果憑證存在，請跳到下一個步驟。 若要建立開發憑證 (憑證不存在的話)：
 
@@ -224,7 +224,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 8. 最後，在 **[佈建設定檔名稱]** 中為設定檔選擇名稱，然後選取 **[產生]** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="選擇佈建設定檔名稱":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="金鑰鏈存取":::
 
 9. 建立新的佈建設定檔後，請選取 **[下載]** 。 記住其儲存位置。
 
@@ -238,11 +238,11 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 2. 選取左側功能表上的 [所有服務] ****  ，然後選取 [行動裝置] ****  區段中的 [通知中樞] ****  。 選取服務名稱旁邊的星號圖示，將服務新增到左側功能表上的 [我的最愛] ****  區段。 將 **[通知中樞]**  新增至 **[我的最愛]** 之後，在左側功能表上加以選取。
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure 入口網站":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="金鑰鏈存取":::
 
 3. 在 [通知中樞] ****  頁面上，選取工具列上的 ****  [新增]。
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="新增工具列按鈕":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="金鑰鏈存取":::
 
 4. 在 **[通知中樞]**  頁面上，執行下列步驟：
 
@@ -252,18 +252,18 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
    4. 在 **資源群組**中選取現有的資源群組，或建立新的資源群組。
    5. 選取 [建立] **** 。
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="設定屬性":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="金鑰鏈存取":::
 
 5. 選取 [通知] ****  (鈴鐺圖示)，然後選取 **** [前往資源]。 您也可以重新整理 [通知中樞] ****  頁面中的清單，然後選取您的中樞。
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="入口網站通知":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="金鑰鏈存取":::
 
 6. 從清單中選取 ****  [存取原則]。 請記下您可使用的兩個連接字串。 您稍後需要用到這些連接字串來處理推播通知。
 
    > [!IMPORTANT]
    > 請勿在應用程式中使用 **DefaultFullSharedAccessSignature** 原則。 這只能在後端使用。
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="連接字串":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="金鑰鏈存取":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>使用 APNS 資訊設定您的通知中樞
 
@@ -284,7 +284,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 5. 選取 **[沙箱]**  模式。
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="設定":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="金鑰鏈存取":::
 
 6. 選取 [ **儲存**]。
 

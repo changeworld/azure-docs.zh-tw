@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212918"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理為無伺服器 API 建立 OpenAPI 定義
@@ -49,12 +49,12 @@ REST API 通常會使用 OpenAPI 定義來描述。 此定義包含有關 API �
 
 1. 從 **[授權層級](functions-bindings-http-webhook-trigger.md#http-auth)** 下拉式清單中選擇 [函式]，然後選取 [建立函式]。
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="建立適用於 OpenAPI 的 HTTP 函式":::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="建立適用於 OpenAPI 的 HTTP 函式&quot;:::
 
 1. 選取 [程式碼 + 測試]，然後從下拉式清單中選取 [run.csx]。 將 run.csx C# 指令碼檔案的內容取代為下列程式碼，然後選擇 [儲存]：
 
     ```csharp
-    #r "Newtonsoft.Json"
+    #r &quot;Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -115,7 +115,12 @@ REST API 通常會使用 OpenAPI 定義來描述。 此定義包含有關 API �
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="在 Azure 入口網站中測試函式":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="建立適用於 OpenAPI 的 HTTP 函式&quot;:::
+
+1. 選取 [程式碼 + 測試]，然後從下拉式清單中選取 [run.csx]。 將 run.csx C# 指令碼檔案的內容取代為下列程式碼，然後選擇 [儲存]：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     在 [輸出] 索引標籤中會傳回下列輸出：
 
@@ -131,7 +136,12 @@ REST API 通常會使用 OpenAPI 定義來描述。 此定義包含有關 API �
 
 1. 選取函式應用程式，從左側功能表中選擇 [API 管理]，然後選取 [API 管理] 底下的 [新建]。
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="選擇 API 管理":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="建立適用於 OpenAPI 的 HTTP 函式&quot;:::
+
+1. 選取 [程式碼 + 測試]，然後從下拉式清單中選取 [run.csx]。 將 run.csx C# 指令碼檔案的內容取代為下列程式碼，然後選擇 [儲存]：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 
 1. 使用下表中指定的 API 管理設定：
@@ -158,7 +168,12 @@ REST API 通常會使用 OpenAPI 定義來描述。 此定義包含有關 API �
 
 1. 在 [從函式應用程式建立] 頁面上接受預設值，然後選取 [建立]。
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="從函式應用程式建立":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="建立適用於 OpenAPI 的 HTTP 函式&quot;:::
+
+1. 選取 [程式碼 + 測試]，然後從下拉式清單中選取 [run.csx]。 將 run.csx C# 指令碼檔案的內容取代為下列程式碼，然後選擇 [儲存]：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     Azure 會建立函式的 API。
 
@@ -179,7 +194,12 @@ REST API 通常會使用 OpenAPI 定義來描述。 此定義包含有關 API �
 
 1. 選取 [傳送]，然後檢視 **HTTP 回應**。
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="測試函式 API":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="建立適用於 OpenAPI 的 HTTP 函式&quot;:::
+
+1. 選取 [程式碼 + 測試]，然後從下拉式清單中選取 [run.csx]。 將 run.csx C# 指令碼檔案的內容取代為下列程式碼，然後選擇 [儲存]：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 ## <a name="download-the-openapi-definition"></a>下載 OpenAPI 定義
 

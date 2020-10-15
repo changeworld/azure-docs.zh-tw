@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889241"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069840"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>整合遠端監視解決方案與 Azure Data Lake Store
 
@@ -180,4 +180,4 @@ Azure 串流分析會使用類似 SQL 的查詢語言，來指定要串流資料
 
 ## <a name="next-steps"></a>後續步驟
 
-Azure Data Lake Analytics 可用來在您的 Data Lake Store 資料集上執行巨量資料分析。 請參閱 [Data Lake Analytics 文件](https://docs.microsoft.com/azure/data-lake-analytics)以深入了解。
+Azure Data Lake Analytics 可用來在您的 Data Lake Store 資料集上執行巨量資料分析。 請參閱 [Data Lake Analytics 文件](../data-lake-analytics/index.yml)以深入了解。

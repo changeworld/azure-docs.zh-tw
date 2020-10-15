@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588053"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078046"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳作法
 
@@ -42,7 +42,7 @@ ms.locfileid: "88588053"
 
 應用程式設定會將與它一起儲存的所有金鑰視為獨立的實體。 應用程式設定不會嘗試推斷索引鍵之間的任何關聯性，或根據其階層繼承索引鍵值。 不過，您可以在應用程式程式碼中使用加上適當設定堆疊的標籤，來匯總多組索引鍵。
 
-讓我們看看下列範例。 假設您有一個名為 **Asset1**的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為 "開發" 的標籤。 在第一個標籤中，您會放入 **Asset1**的預設值，並在後者放置特定的「開發」值。
+以下舉例說明。 假設您有一個名為 **Asset1**的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為 "開發" 的標籤。 在第一個標籤中，您會放入 **Asset1**的預設值，並在後者放置特定的「開發」值。
 
 在您的程式碼中，您會先取出沒有任何標籤的索引鍵值，然後再次使用「開發」標籤抓取一組相同的索引鍵值。 當您第二次取出值時，就會覆寫先前的索引鍵值。 .NET Core 設定系統可讓您將多組設定資料「堆疊」在彼此之上。 如果索引鍵存在於一個以上的集合中，則會使用包含它的最後一個集合。 使用新式的程式設計架構（例如 .NET Core）時，如果您使用原生設定提供者來存取應用程式設定，則可免費取得此堆疊功能。 下列程式碼片段會示範如何在 .NET Core 應用程式中執行堆疊：
 
@@ -69,7 +69,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 您可以使用下列任何一種方法，為 web 應用程式或功能提供應用程式設定的存取權：
 
 * 透過 Azure 入口網站，在 App Service 的 [應用程式設定] 中，輸入應用程式設定存放區的連接字串。
-* 將連接字串儲存到 Key Vault 中的應用程式設定存放區，並 [從 App Service 加以參考](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)。
+* 將連接字串儲存到 Key Vault 中的應用程式設定存放區，並 [從 App Service 加以參考](../app-service/app-service-key-vault-references.md)。
 * 使用 Azure 受控識別來存取應用程式設定存放區。 如需詳細資訊，請參閱 [整合 Azure 受控](howto-integrate-azure-managed-service-identity.md)識別。
 * 將設定從應用程式設定推送至 App Service。 應用程式設定會在 Azure 入口網站中提供匯出函式 (，以及將資料直接傳送到 App Service 的 Azure CLI) 。 使用這個方法時，您完全不需要變更應用程式程式碼。
 
@@ -85,12 +85,12 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>將設定資料匯入至應用程式設定
 
-應用程式設定提供選項，可讓您使用 Azure 入口網站或 CLI，從目前的設定檔中大容量 [導入](https://aka.ms/azconfig-importexport1) 您的設定。 您也可以使用相同的選項，從應用程式設定匯出值（例如，在相關的存放區之間）。 如果您想要設定與 GitHub 存放庫進行中的同步處理，您可以使用我們的 [Github 動作](https://aka.ms/azconfig-gha2) ，讓您可以繼續使用現有的原始檔控制作法，同時獲得應用程式設定的優點。
+應用程式設定提供選項，可讓您使用 Azure 入口網站或 CLI，從目前的設定檔中大容量 [導入](./howto-import-export-data.md) 您的設定。 您也可以使用相同的選項，從應用程式設定匯出值（例如，在相關的存放區之間）。 如果您想要設定與 GitHub 存放庫進行中的同步處理，您可以使用我們的 [Github 動作](./concept-github-action.md) ，讓您可以繼續使用現有的原始檔控制作法，同時獲得應用程式設定的優點。
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>應用程式設定中的多重區域部署
 
 應用程式設定是區域服務。 針對每個區域具有不同設定的應用程式，將這些設定儲存在一個實例中，可能會產生單一失敗點。 跨區域跨多個區域部署一個應用程式設定實例，可能是較好的選項。 它有助於進列區域嚴重損壞修復、效能和安全性 siloing。 依區域設定也可改善延遲，並使用分開的節流配額，因為節流是針對每個實例。 若要套用嚴重損壞修復的風險降低，您可以使用 [多個](./concept-disaster-recovery.md)設定存放區。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [索引鍵和值](./concept-key-value.md)
