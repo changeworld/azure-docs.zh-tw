@@ -240,6 +240,8 @@
           href: /rest/api/resources/policyassignments
         - name: 原則定義
           href: /rest/api/resources/policydefinitions
+        - name: 原則豁免
+          href: /rest/api/resources/policyexemptions
         - name: 計劃定義
           href: /rest/api/resources/policysetdefinitions
         - name: 已追蹤原則的資源

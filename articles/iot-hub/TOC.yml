@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: 針對 Android 平台開發
               href: iot-hub-how-to-android-things.md
+        - name: 不使用 Azure IoT SDK 進行開發
+          href: iot-hub-devguide-no-sdk.md
         - name: 中樞路由查詢 Avro 資料
           href: iot-hub-query-avro-data.md
         - name: 將事件方格中的裝置連線狀態事件進行排序

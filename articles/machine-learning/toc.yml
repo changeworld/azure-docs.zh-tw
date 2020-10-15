@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: 管理使用者和角色
               href: how-to-assign-roles.md
+            - name: 使用適用於存取控制的受控身分識別
+              href: how-to-use-managed-identities.md
             - name: 在 AKS 部署中使用 Azure AD 身分識別
               href: how-to-use-azure-ad-identity.md
         - name: 網路安全性
@@ -581,7 +583,7 @@
       href: resource-known-issues.md
     - name: 使用者論壇
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比較 ML 產品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context

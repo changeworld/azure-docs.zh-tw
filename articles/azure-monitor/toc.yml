@@ -141,7 +141,7 @@
           href: app/data-retention-privacy.md
     - name: 警示
       items:
-        - name: 總覽
+        - name: 概觀
           href: platform/alerts-overview.md
         - name: 度量警示
           href: platform/alerts-metric-overview.md
@@ -214,6 +214,8 @@
           href: log-query/scope.md
         - name: 簡單記錄體驗
           href: log-query/simple-logs.md
+        - name: 使用 Azure 資料總管查詢
+          href: platform/azure-data-explorer-monitor-proxy.md
         - name: 記錄查詢
           items:
             - name: 標準資料行
@@ -303,6 +305,14 @@
               href: platform/service-providers.md
             - name: 專用叢集
               href: log-query/logs-dedicated-clusters.md
+        - name: 資料匯出
+          items:
+            - name: 工作區資料匯出
+              href: platform/logs-data-export.md
+            - name: 使用 Logic Apps 匯出
+              href: platform/logs-export-logic-app.md
+            - name: 使用資料總管查詢匯出的資料
+              href: platform/azure-data-explorer-query-storage.md
     - name: 計量瀏覽器
       items:
         - name: 開始使用計量瀏覽器
@@ -368,7 +378,7 @@
           href: faq.md#agents
         - name: Azure 監視器代理程式
           items:
-            - name: 總覽
+            - name: 概觀
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
             - name: 資料集合
@@ -430,7 +440,7 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 總覽
+                - name: 概觀
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集計量
                   href: platform/collect-custom-metrics-linux-telegraf.md
@@ -673,7 +683,7 @@
               href: app/remove-application-insights.md
         - name: 無程式碼監視
           items:
-            - name: 總覽
+            - name: 概觀
               href: app/codeless-overview.md
             - name: Azure 虛擬機器和虛擬機器擴展集
               href: app/azure-vm-vmss-apps.md
@@ -986,7 +996,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 總覽
+        - name: 概觀
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers
@@ -1073,7 +1083,7 @@
           href: insights/troubleshoot-workbooks.md
     - name: 方案
       items:
-        - name: 總覽
+        - name: 概觀
           href: insights/solutions.md
           displayName: 'Azure CLI, az monitor log-analytics'
         - name: 目標解決方案
@@ -1265,7 +1275,7 @@
               href: app/web-app-extension-release-notes.md
         - name: 資料模型
           items:
-            - name: 總覽
+            - name: 概觀
               href: app/data-model.md
             - name: 要求
               href: app/data-model-request-telemetry.md

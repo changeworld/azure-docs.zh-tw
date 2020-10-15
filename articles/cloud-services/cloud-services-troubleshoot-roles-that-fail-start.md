@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460111"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076567"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>對無法啟動的雲端服務角色進行疑難排解
 以下是與無法啟動的 Azure 雲端服務角色相關的一些常見問題和解決方案。
@@ -69,7 +69,7 @@ ms.locfileid: "89460111"
 7. 輸入 `IPconfig`。
 8. 記下 IPV4 位址值。
 9. 開啟 Internet Explorer。
-10. 輸入 Web 應用程式的位址和名稱。 例如： `http://<IPV4 Address>/default.aspx` 。
+10. 輸入 Web 應用程式的位址和名稱。 例如 `http://<IPV4 Address>/default.aspx`。
 
 瀏覽至網站現在會傳回更明確的錯誤訊息：
 
@@ -77,7 +77,7 @@ ms.locfileid: "89460111"
 * 說明：執行目前的 Web 要求期間發生未處理的例外狀況。 請檢閱堆疊追蹤，以進一步了解錯誤以及它產生於程式碼中的何處。
 * 例外狀況詳細資料：System.IO.FIleNotFoundException：無法載入檔案或組件 ‘Microsoft.WindowsAzure.StorageClient，Version=1.1.0.0，Culture=neutral，PublicKeyToken=31bf856ad364e35’ 或其相依性之一。 系統找不到指定的檔案。
 
-例如：
+例如︰
 
 !['/' 應用程式中有明確的伺服器錯誤。](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -122,6 +122,6 @@ ms.locfileid: "89460111"
 在確認所有錯誤皆已修正後，即可在未勾選 [為 .NET 4 角色啟用 IntelliTrace] **** 核取方塊的情況下部署服務。
 
 ## <a name="next-steps"></a>後續步驟
-檢視更多雲端服務的 [疑難排解文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
+檢視更多雲端服務的 [疑難排解文章](../index.yml?product=cloud-services&tag=top-support-issue) 。
 
-若要了解如何利用 Azure PaaS 電腦診斷資料對雲端服務角色問題進行疑難排解，請參閱 [Kevin Williamson 的部落格系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
+若要了解如何利用 Azure PaaS 電腦診斷資料對雲端服務角色問題進行疑難排解，請參閱 [Kevin Williamson 的部落格系列](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

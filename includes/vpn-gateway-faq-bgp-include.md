@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91025207"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082246"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>所有的 Azure VPN 閘道 SKU 上是否都支援 BGP？
 除了基本 SKU 以外，所有 Azure VPN 閘道 SKU 都支援 BGP。
@@ -108,3 +108,6 @@ Azure VPN 閘道會通告下列路由至您的內部部署 BGP 裝置︰
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>我應該將什麼加入我的 BGP 對等互連工作階段的內部部署 VPN 裝置？
 您應該在指向 IPsec S2S VPN 通道的 VPN 裝置上加入 Azure BGP 對等互連 IP 位址的主機路由。 例如，如果 Azure VPN 對等互連 IP 是「10.12.255.30」，您應該加入 VPN 裝置上具有比對 IPsec 通道介面的躍點介面的「10.12.255.30」主機路由。
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>針對 BGP 的站對站連線，虛擬網路閘道是否支援雙向轉送偵測 (BFD)？
+否。 雙向轉送偵測 (BFD) 是一種通訊協定，可以用來搭配 BGP，來比使用標準 BGP keepalive 更快偵測到鄰居停機時間。 BFD 會使用專為在區域網路環境中工作而設計的次秒計時器，但無法跨公用網際網路或廣域網路連線使用。 若為透過公用網際網路的連線，有某些封包延遲或甚至遭到捨棄並不尋常，因此引進這些主動計時器可能會增加不穩定的情況，進而導致 BGP 抑制路由。 或者，您可以設定您的內部部署裝置，計時器低於預設的 60 秒 keepalive 間隔和 180 秒的維持計時器，以加快聚合時間。

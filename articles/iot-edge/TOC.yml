@@ -111,28 +111,26 @@
       href: iot-edge-glossary.md
 - name: 操作指南
   items:
-    - name: 註冊 IoT Edge 裝置
-      href: how-to-register-device.md
-    - name: 安裝和管理 IoT Edge
+    - name: 建立 IoT Edge 裝置
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Windows 上的 Linux 容器
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Windows Server VM
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Ubuntu VM
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: 安裝執行階段
+          href: how-to-install-iot-edge.md
+        - name: 註冊並驗證裝置
+          items:
+            - name: 對稱金鑰驗證
+              href: how-to-manual-provision-symmetric-key.md
+            - name: X.509 憑證驗證
+              href: how-to-manual-provision-x509.md
+        - name: 更新執行階段
+          href: how-to-update-iot-edge.md
         - name: 管理裝置憑證
           href: how-to-manage-device-certificates.md
         - name: 建立測試憑證
           href: how-to-create-test-certificates.md
-        - name: 更新執行階段版本
-          href: how-to-update-iot-edge.md
+        - name: Kubernetes 上的 IoT Edge
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: 使用 ARM 範本的 IoT Edge 虛擬機器
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: 使用 DPS 自動佈建
       items:
         - name: TPM 證明
@@ -183,6 +181,10 @@
           href: how-to-monitor-module-twins.md
         - name: EdgeAgent 直接方法
           href: how-to-edgeagent-direct-method.md
+        - name: 擷取 IoT Edge 記錄
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: 存取內建計量
+          href: how-to-access-built-in-metrics.md
     - name: 使用 IoT Edge 裝置作為閘道
       items:
         - name: 設定透明閘道
@@ -225,36 +227,38 @@
           href: troubleshoot-common-errors.md
 - name: 參考
   items:
+    - name: Windows 裝置管理指令碼
+      href: reference-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: 資源
   items:
     - name: 支援和協助選項
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT 服務
       items:
         - name: IoT 中樞
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT 中樞裝置佈建服務
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ./index.yml
         - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT 隨插即用
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure 地圖服務
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: 時間序列深入解析
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服務 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 裝置 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT 範例
       items:
         - name: C# (.NET)

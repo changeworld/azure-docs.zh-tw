@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 8cee2c13386a076f0321619754468cfc1e9fb31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e59aece0be39bf671e3d1e62f1a0e4c2a42a1ec8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442419"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076465"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>根據要求主體的大小進行要求的路由傳送
 
-本文會說明 Azure API 管理原則範例，示範如何根據要求主體的大小進行要求的路由傳送。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-samples.md)。
+本文會說明 Azure API 管理原則範例，示範如何根據要求主體的大小進行要求的路由傳送。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-reference.md)。
 
 ## <a name="policy"></a>原則
 
@@ -35,5 +35,4 @@ ms.locfileid: "75442419"
 深入了解 APIM 原則：
 
 + [轉換原則](../api-management-transformation-policies.md)
-+ [原則範例](../policy-samples.md)
-
++ [原則範例](../policy-reference.md)

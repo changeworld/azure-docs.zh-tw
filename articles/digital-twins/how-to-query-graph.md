@@ -278,17 +278,17 @@ AND Room.$dtId IN ['room1', 'room2']
 
 本節包含撰寫 Azure 數位 Twins 查詢時可用之運算子和函式的參考。
 
-### <a name="operators"></a>運算子
+### <a name="operators"></a>操作員
 
 支援下列運算子：
 
-| 系列 | 運算子 |
+| 系列 | 操作員 |
 | --- | --- |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、！ =、<、>、<=、>= |
 | 包含 | 在中，>NIN |
 
-### <a name="functions"></a>函數
+### <a name="functions"></a>函式
 
 支援下列類型檢查和轉換函數：
 

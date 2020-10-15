@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d68522d92409cfcba38abeb86f2db7c4b78869e6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829980"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045596"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 Java IoT Edge 模組
 
@@ -51,14 +51,14 @@ ms.locfileid: "87829980"
 
 * Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * [執行 Azure IoT Edge 的 Linux 裝置](quickstart-linux.md)
-* 容器登錄，像是 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
+* 容器登錄，像是 [Azure Container Registry](../container-registry/index.yml)。
 * 已設定 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 設定為執行 Linux 容器。
 
 若要以 Java 開發 IoT Edge 模組，請在您的開發機器上安裝下列其他必要條件： 
 
 * 適用於 Visual Studio Code 的 [Java 擴充套件](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) (英文)。
-* [Java SE 開發套件 10](https://aka.ms/azure-jdks) (英文)，並[設定 `JAVA_HOME` 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) (英文) 指向 JDK 安裝。
+* [Java SE 開發套件 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) (英文)，並[設定 `JAVA_HOME` 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) (英文) 指向 JDK 安裝。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -306,7 +306,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立 IoT Edge 模組，其可篩選您 IoT Edge 裝置所產生的原始資料。 當您準備好建置自己的模組時，可以進一步了解如何[開發 IoT Edge 模組](module-development.md)或如何[使用 Visual Studio Code 開發模組](how-to-vs-code-develop-module.md)。 如需程式碼範例 (包括模擬溫度模組)，請參閱 [IoT Edge 模組範例](https://github.com/Azure/iotedge/tree/master/edge-modules)。
+在本教學課程中，您已建立 IoT Edge 模組，其可篩選您 IoT Edge 裝置所產生的原始資料。
 
 繼續進行後續教學課程，以了解 Azure IoT Edge 如何協助您部署 Azure 雲端服務，以在邊緣處理和分析資料。
 
