@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77560215"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教學課程：使用資料複製服務將資料複製到 Azure Data Box Heavy (預覽)
@@ -57,7 +57,7 @@ ms.locfileid: "77560215"
     
     |欄位                          |值    |
     |-------------------------------|---------|
-    |**作業名稱**                       |作業的唯一名稱超過 230 個字元。 作業名稱中不允許以下字元：\<、\>、\|、\?、\*、\\、\:、\/ 及 \\\.         |
+    |**作業名稱**                       |作業的唯一名稱超過 230 個字元。 作業名稱中不允許以下字元：\<, \>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |**來源位置**                |以下列格式提供資料來源的 SMB 路徑：`\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>`。        |
     |**使用者名稱**                       |用以存取資料來源的使用者名稱 (採用 `\\<DomainName><UserName>` 格式)。 如果本機系統管理員正在連線，他們需要明確的安全性權限。 以滑鼠右鍵按一下資料夾，選取 [屬性]  ，然後選取 [安全性]  。 這樣應該會在 [安全性]  索引標籤中新增本機系統管理員。       |
     |**密碼**                       |用以存取資料來源的密碼。           |

@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88941691"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016990"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>教學課程：將 Azure 媒體服務事件儲存在 Azure Log Analytics 中
 
@@ -43,11 +43,11 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
 > * [Azure 訂用帳戶](how-to-set-azure-subscription.md)
 > * [媒體服務](create-account-howto.md)帳戶和資源群組。
 > * 適用於您作業系統的 [FFmpeg](https://ffmpeg.org/download.html) 安裝。
-> * [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 工作區
+> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) 工作區
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>使用邏輯應用程式訂閱媒體服務事件
 
-1. 在 Azure 入口網站中建立 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 工作區 (如果尚未建立)。 您需要工作區識別碼和其中一個金鑰，因此請將該瀏覽器視窗保持開啟。 然後，在另一個索引標籤或視窗中開啟入口網站。
+1. 在 Azure 入口網站中建立 [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) 工作區 (如果尚未建立)。 您需要工作區識別碼和其中一個金鑰，因此請將該瀏覽器視窗保持開啟。 然後，在另一個索引標籤或視窗中開啟入口網站。
 
 1. 瀏覽至您的 Azure 媒體服務帳戶，然後選取 [事件]。 這會顯示訂閱 Azure 媒體服務事件的所有方法。
     > [!div class="mx-imgBorder"]
@@ -140,7 +140,7 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
     > [!div class="mx-imgBorder"]
     > ![確認主體和函式步驟](media/tutorial-events-log-analytics/verify-changes-to-json.png)
 
-1. 當您檢查資源群組中的所有資源時，會列出一個邏輯應用程式和兩個邏輯應用程式 API 連接器，一個用於事件，另一個則用於 Log Analytics。 如需事件方格系統主題的詳細資訊，請參閱[事件方格系統主題](https://docs.microsoft.com/azure/event-grid/system-topics)。
+1. 當您檢查資源群組中的所有資源時，會列出一個邏輯應用程式和兩個邏輯應用程式 API 連接器，一個用於事件，另一個則用於 Log Analytics。 如需事件方格系統主題的詳細資訊，請參閱[事件方格系統主題](../../event-grid/system-topics.md)。
     > [!div class="mx-imgBorder"]
     > ![參閱資源群組中的所有新資源](media/tutorial-events-log-analytics/contoso-rg-listing.png)
 
@@ -231,4 +231,4 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以建立不同的查詢並加以儲存。 這些可以新增至 [Azure 儀表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)。
+您可以建立不同的查詢並加以儲存。 這些可以新增至 [Azure 儀表板](../../azure-monitor/learn/tutorial-logs-dashboards.md)。
