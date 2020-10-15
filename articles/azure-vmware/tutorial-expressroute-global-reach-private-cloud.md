@@ -3,12 +3,12 @@ title: 教學課程 - 將內部部署環境對等互連至私人雲端
 description: 了解如何在 Azure VMware 解決方案中建立與私人雲端對等互連的 ExpressRoute Global Reach。
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9de6cbe177ac8d2ca4957e80c7ca1072a0d7985e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576722"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948301"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教學課程：將內部部署環境對等互連至私人雲端
 
@@ -83,7 +83,7 @@ ExpressRoute Global Reach 可將您的內部部署環境連線至 Azure VMware �
 我們已透過特定詳細資料和範例補強 [CLI 命令](../expressroute/expressroute-howto-set-global-reach-cli.md)，以協助您設定內部部署環境與 Azure VMware 解決方案私人雲端之間的 ExpressRoute Global Reach 對等互連。  
 
 > [!TIP]  
-> 為了簡單起見，在 Azure CLI 的命令輸出中，這些指示可能會使用 [`–query` 引數來執行 JMESPath 查詢，從而只顯示所需的結果](https://docs.microsoft.com/cli/azure/query-azure-cli)。
+> 為了簡單起見，在 Azure CLI 的命令輸出中，這些指示可能會使用 [`–query` 引數來執行 JMESPath 查詢，從而只顯示所需的結果](/cli/azure/query-azure-cli)。
 
 
 1. 使用與內部部署 ExpressRoute 線路相同的訂用帳戶登入 Azure 入口網站，然後開啟 Cloud Shell。 讓殼層保持是 Bash。
