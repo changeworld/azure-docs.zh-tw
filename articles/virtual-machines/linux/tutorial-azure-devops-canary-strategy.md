@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510152"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963477"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>教學課程 - 設定 Azure Linux 虛擬機器的 Canary 部署策略
 
@@ -25,7 +25,7 @@ ms.locfileid: "86510152"
 
 Azure Pipelines 提供了一組功能齊全的 CI/CD 自動化工具，可用來部署至虛擬機器。 您可以從 Azure 入口網站設定 Azure VM 的持續傳遞管線。
 
-本文說明如何設定使用 Canary 策略進行多機器部署的 CI/CD 管線。 Azure 入口網站也支援其他策略，例如[輪流](https://aka.ms/AA7jlh8)和[藍綠](https://aka.ms/AA83fwu)。
+本文說明如何設定使用 Canary 策略進行多機器部署的 CI/CD 管線。 Azure 入口網站也支援其他策略，例如[輪流](./tutorial-devops-azure-pipelines-classic.md)和[藍綠](./tutorial-azure-devops-blue-green-strategy.md)。
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虛擬機器上設定 CI/CD
 
@@ -72,8 +72,8 @@ Canary 部署會慢慢地向一小部分使用者推出變更，以降低風險�
    ![顯示 deployscripts 資料夾中的 deploy.sh 的 [成品] 窗格](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>其他部署策略
-- [設定輪流部署策略](https://aka.ms/AA7jlh8)
-- [設定藍綠部署策略](https://aka.ms/AA83fwu)
+- [設定輪流部署策略](./tutorial-devops-azure-pipelines-classic.md)
+- [設定藍綠部署策略](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 

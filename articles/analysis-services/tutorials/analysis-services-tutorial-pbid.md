@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229305"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018112"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>教學課程 - 使用 Power BI Desktop 進行連線
 
@@ -70,4 +70,4 @@ ms.locfileid: "89229305"
 不再需要報告時請不要加以儲存，或刪除您先前儲存的檔案。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已了解如何使用 Power BI Desktop 連線至伺服器上的資料模型，並建立基本報告。 如果您不熟悉如何建立資料模型，請參閱 SQL Server Analysis Services 文件中的 [Adventure Works 網際網路銷售表格式資料模型教學課程](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) \(部分機器翻譯\)。
+在本教學課程中，您已了解如何使用 Power BI Desktop 連線至伺服器上的資料模型，並建立基本報告。 如果您不熟悉如何建立資料模型，請參閱 SQL Server Analysis Services 文件中的 [Adventure Works 網際網路銷售表格式資料模型教學課程](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) \(部分機器翻譯\)。

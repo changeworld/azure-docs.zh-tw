@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263227"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075700"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的 SQL Server 上建立 Always On 可用性群組的必要條件
 
@@ -54,7 +54,7 @@ ms.locfileid: "91263227"
    ![資源群組](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. 選取 **資源群組**。
-5. 選取 [建立]****。
+5. 選取 [建立]。
 6. 在 [資源群組名稱] 下方，輸入資源群組的名稱。 例如，輸入 **sql-ha-rg**。
 7. 如果您有多個 Azure 訂用帳戶，請確認此訂用帳戶是您要在其中建立可用性群組的 Azure 訂用帳戶。
 8. 選取位置。 此位置是您要建立可用性群組的 Azure 區域。 本文會在一個 Azure 位置建置所有資源。
@@ -99,7 +99,7 @@ Azure 會建立資源群組，並在入口網站中釘選資源群組的捷徑�
 
    此範例會使用子網路名稱 **Admin**。此子網路用於網域控制站。
 
-5. 選取 [建立]****。
+5. 選取 [建立]。
 
    ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -167,7 +167,7 @@ Azure 會讓您回到入口網站儀表板，並在建立完新網路時通知�
 
 若要建立和設定網域控制站，請回到 **SQL-HA-RG** 資源群組。
 
-1. 選取 [新增]。 
+1. 選取 [新增]  。 
 2. 輸入 **Windows Server 2016 資料中心**。
 3. 選取 [ **Windows Server 2016 Datacenter**]。 在 **Windows Server 2016 Datacenter**中，確認部署模型 **Resource Manager**，然後選取 [ **建立**]。 
 
@@ -232,7 +232,7 @@ Azure 會建立虛擬機器。
     ![[新增角色] 對話方塊](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. 選取 **[下一步]** ，直到您到達 [ **確認** ] 區段為止。 選取 [必要時自動重新啟動目的地伺服器] 核取方塊。
-8. 選取 [安裝]。
+8. 選取 [安裝]  。
 9. 功能安裝完畢後，請回到 [伺服器管理員]  儀表板。
 10. 在左側窗格中選取新的 [AD DS]  選項。
 11. 選取黃色警告列上的 [ **更多** ] 連結。
@@ -248,7 +248,7 @@ Azure 會建立虛擬機器。
     | **網域控制站選項** |**DSRM 密碼** = Contoso!0000<br/>**確認密碼** = Contoso!0000 |
 
 14. 選取 **[下一步** ] 以流覽嚮導中的其他頁面。 在 [先決條件檢查] 頁面上，確認是否出現下列訊息：**已順利通過所有先決條件檢查**。 您可以檢閱任何適用的警告訊息，但是仍可以繼續進行安裝。
-15. 選取 [安裝]。 **ad-primary-dc** 虛擬機器會自動重新開機。
+15. 選取 [安裝]  。 **ad-primary-dc** 虛擬機器會自動重新開機。
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>請注意主要網域控制站的 IP 位址
 
@@ -276,7 +276,7 @@ Azure 會建立虛擬機器。
 
 3. 選取 [ **自訂**]，然後輸入網域主控站的私人 IP 位址。
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]。
 
 ### <a name="configure-the-second-domain-controller"></a>設定第二個網域控制站
 
@@ -420,6 +420,10 @@ Azure 會建立虛擬機器。
 7. 當您看到「歡迎使用 corp.contoso.com 網域」訊息時，請選取 **[確定]**。
 8. 選取 [ **關閉**]，然後在快顯視窗中選取 [ **立即重新開機** ]。
 
+## <a name="add-accounts"></a>新增帳戶
+
+將安裝帳戶新增為每部 VM 上的系統管理員、將許可權授與 SQL Server 中的安裝帳戶和本機帳戶，以及更新 SQL Server 服務帳戶。 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>將 Corp\Install 使用者新增為每個叢集 VM 的系統管理員
 
 每個虛擬機器以網域的成員重新啟動之後，新增 **CORP\Install** 作為本機系統管理員群組的成員。
@@ -438,16 +442,6 @@ Azure 會建立虛擬機器。
 7. 選取 **[確定]** 以關閉 [ **系統管理員屬性** ] 對話方塊。
 8. 在 **sqlserver-1** 和 **cluster-fsw** 上重複上述步驟。
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>設定 SQL Server 服務帳戶
-
-在每個 SQL Server VM 上，設定 SQL Server 服務帳戶。 使用您設定網域帳戶時所建立的帳戶。
-
-1. 開啟 **SQL Server 組態管理員**。
-2. 以滑鼠右鍵按一下 SQL Server 服務，然後選取 [ **屬性**]。
-3. 設定帳戶和密碼。
-4. 在其他 SQL Server VM 上重複上述步驟。  
-
-針對 SQL Server 可用性群組，每個 SQL Server VM 必須都以網域帳戶執行。
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>在每個 SQL Server VM 上建立安裝帳戶登入
 
@@ -467,13 +461,54 @@ Azure 會建立虛擬機器。
 
 1. 輸入網域系統管理員網路認證。
 
-1. 使用安裝帳戶。
+1. 使用安裝帳戶 (CORP\install) 。
 
 1. 將登入設定為 [系統管理員 (sysadmin)] 固定伺服器角色的成員。
 
 1. 選取 [確定]  。
 
 在其他 SQL Server VM 上重複上述步驟。
+
+### <a name="configure-system-account-permissions"></a>設定系統帳戶權限
+
+若要為系統帳戶建立帳戶並授與適當權限，請在每個 SQL Server 執行個體上完成下列步驟：
+
+1. 在每個 SQL Server 執行個體上建立適用於 `[NT AUTHORITY\SYSTEM]` 的帳戶。 下列指令碼會建立此帳戶：
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. 在每個 SQL Server 執行個體上，將下列權限授與 `[NT AUTHORITY\SYSTEM]`：
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   下列指令碼會授與這些權限：
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>設定 SQL Server 服務帳戶
+
+在每個 SQL Server VM 上，設定 SQL Server 服務帳戶。 使用您設定網域帳戶時所建立的帳戶。
+
+1. 開啟 **SQL Server 組態管理員**。
+2. 以滑鼠右鍵按一下 SQL Server 服務，然後選取 [ **屬性**]。
+3. 設定帳戶和密碼。
+4. 在其他 SQL Server VM 上重複上述步驟。  
+
+針對 SQL Server 可用性群組，每個 SQL Server VM 必須都以網域帳戶執行。
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>將容錯移轉叢集功能新增至兩個 SQL Server VM
 
@@ -517,42 +552,13 @@ Azure 會建立虛擬機器。
 
    ![SQL 防火牆](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. 選取 [下一步]  。
+5. 選取 [下一步] 。
 6. 在 [ **動作** ] 頁面上，保持選取 **[允許連接** ]，然後選取 **[下一步]**。
 7. 在 [ **設定檔** ] 頁面上，接受預設設定，然後選取 **[下一步]**。
 8. 在 [**名稱**] 頁面上，在 [**名稱**] 文字方塊中指定規則名稱 (例如**Azure LB 探查**) ，然後選取 **[完成]**。
 
 在第二個 SQL Server VM 上重複上述步驟。
 
-## <a name="configure-system-account-permissions"></a>設定系統帳戶權限
-
-若要為系統帳戶建立帳戶並授與適當權限，請在每個 SQL Server 執行個體上完成下列步驟：
-
-1. 在每個 SQL Server 執行個體上建立適用於 `[NT AUTHORITY\SYSTEM]` 的帳戶。 下列指令碼會建立此帳戶：
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. 在每個 SQL Server 執行個體上，將下列權限授與 `[NT AUTHORITY\SYSTEM]`：
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   下列指令碼會授與這些權限：
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>後續步驟
 

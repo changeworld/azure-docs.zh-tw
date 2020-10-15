@@ -10,12 +10,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72439066"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075615"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>使用 Azure 自動化管理 Azure 雲端服務
 本指南將為您介紹 Azure 自動化服務，以及如何使用它來簡化您的 Azure 雲端服務管理。
@@ -39,4 +39,4 @@ Azure 雲端服務可透過 [Azure PowerShell 工具](/powershell/)中提供的 
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure 雲端服務之後，請參考下列連結，以深入了解 Azure 自動化。
 
 * [Azure 自動化總覽](../automation/automation-intro.md)
-* [我的第一個 Runbook](../automation/automation-first-runbook-graphical.md)
+* [我的第一個 Runbook](../automation/learn/automation-tutorial-runbook-graphical.md)
