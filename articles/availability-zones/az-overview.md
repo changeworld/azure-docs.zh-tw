@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773734"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078369"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域 \(部分機器翻譯\)
 
@@ -37,7 +37,7 @@ Microsoft Azure 服務可在全球使用，以達到最佳等級來推動您的�
 
 ## <a name="regions"></a>區域
 
-區域是在延遲定義的周邊內部署的一組資料中心，並透過專用的區域低延遲網路進行連線。 Azure 可讓您彈性地部署需要的應用程式，包括跨多個區域，以提供跨區域復原。 如需詳細資訊，請參閱 [復原要件的總覽](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)。
+區域是在延遲定義的周邊內部署的一組資料中心，並透過專用的區域低延遲網路進行連線。 Azure 可讓您彈性地部署需要的應用程式，包括跨多個區域，以提供跨區域復原。 如需詳細資訊，請參閱 [復原要件的總覽](/azure/architecture/framework/resiliency/overview)。
 
 ## <a name="availability-zones"></a>可用性區域
 
@@ -92,7 +92,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | 基礎 | 主流 | 特製化 |
 > | --- | --- | --- |
 > | 帳戶儲存 | API 管理 | 適用於 FHIR 的 Azure API |
-> | 應用程式閘道 | 應用程式組態 | Azure Analysis Services |
+> | 應用程式閘道 | 應用程式設定 | Azure Analysis Services |
 > | Azure 備份 | App Service 方案 | Azure 區塊鏈服務 |
 > | Azure Cosmos DB | 自動化 | Azure 藍圖 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | 適用於 MariaDB 的 Azure 資料庫 |
@@ -112,13 +112,13 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | 服務匯流排 | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | 資料目錄 |
 > | 虛擬機器擴展集 | Azure IoT 中樞 | Data Factory： Data Factory V1 |
-> | 虛擬機器 | Azure Kubernetes Service (AKS) | 資料湖分析 |
+> | 虛擬機器 | Azure Kubernetes Service (AKS) | Data Lake Analytics |
 > | 虛擬機器： Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (傳統) |
 > | 虛擬機器： Bs-Series | Azure Private Link | Microsoft Genomics |
 > | 虛擬機器： DSv2-Series | Azure Red Hat OpenShift | 遠端轉譯 |
 > | 虛擬機器： DSv3-Series | Azure SignalR 服務 | Spatial Anchors |
 > | 虛擬機器： Dv2-Series | Azure Site Recovery | StorSimple |
-> | 虛擬機器： Dv3-Series | Azure Stack Hub | 影片索引子 |
+> | 虛擬機器： Dv3-Series | Azure Stack Hub | 影片索引器 |
 > | 虛擬機器： ESv3-Series | Azure 串流分析 | 虛擬機器： DASv4-Series |
 > | 虛擬機器： Ev3-Series | Azure Synapse Analytics | 虛擬機器： DAv4-Series |
 > | 虛擬機器： F 系列 | Batch | 虛擬機器： DCsv2 系列 |
@@ -131,7 +131,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > |  | 認知服務： Language Understanding | 虛擬機器： HCv1-Series |
 > |  | 認知服務：QnA Maker | 虛擬機器： H 系列 |
 > |  | 認知服務：語音服務 | 虛擬機器： LS-Series |
-> |  | Container Instances | 虛擬機器： LSv2-Series |
+> |  | 容器執行個體 | 虛擬機器： LSv2-Series |
 > |  | Container Registry | 虛擬機器： Mv2-Series |
 > |  | Data Factory | 虛擬機器： NC-Series |
 > |  | 事件方格 | 虛擬機器： NCv2-Series |
@@ -170,9 +170,9 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 - [建立虛擬機器](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 來新增受控磁碟](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [建立區域備援虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [區域備援儲存體](../storage/common/storage-redundancy-zrs.md)
+- [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [區域備援儲存體](../storage/common/storage-redundancy.md)
 - [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [事件中樞異地災害復原](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服務匯流排異地災害復原](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

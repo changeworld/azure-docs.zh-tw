@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 24229c331d0c7c4b2327e8e609e9d75b6654868f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931969"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078471"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -75,6 +75,64 @@ JOIN LightBulb RELATED LightPanel.contains
 WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
 AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
 AND Room.$dtId IN ['room1', 'room2'] 
+```
+
+### <a name="specify-return-set-with-projections"></a>使用投影指定傳回集
+
+您可以使用投影來選取查詢將傳回的資料行。 
+
+>[!NOTE]
+>此時不支援複雜的屬性。 若要確定投射屬性是否有效，請將投影與檢查合併 `IS_PRIMITIVE` 。 
+
+以下是使用投射來傳回 twins 和關聯性的查詢範例。 下列查詢會從案例中投影取用*者*、*工廠*和*邊緣*，其中識別碼為*ABC*的*factory*透過*factory*的關聯性與取用*者*相關聯，而該關聯性會顯示為*邊緣*。
+
+```sql
+SELECT Consumer, Factory, Edge 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+```
+
+您也可以使用投影來傳回對應項的屬性。 下列查詢會透過*factory*的關聯性，投射與具有*ABC*的*Factory*相關聯之取用*者*的*名稱*屬性。 
+
+```sql
+SELECT Consumer.name 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Consumer.name)
+```
+
+您也可以使用投影來傳回關聯性的屬性。 如同上述範例中所示，下列查詢會透過 Factory 的關聯*性，將與處理站**相關之取用**者*的*名稱*屬性投影至*客戶*;但現在它也會傳回該關聯性的兩個屬性： *prop1*和*this.prop2*。 其方式是將關聯性 *邊緣* 命名並收集其屬性。  
+
+```sql
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
+```
+
+您也可以使用別名來簡化投影的查詢。
+
+下列查詢會執行與上一個範例相同的作業，但它會將屬性名稱的別名設為 `consumerName` 、 `first` `second` 和 `factoryArea` 。 
+ 
+```sql
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
+```
+
+以下是查詢相同集合的類似查詢，但僅將 *Consumer.name* 屬性設定為 `consumerName` ，並將完整 *Factory* 投射為對應項。 
+
+```sql
+SELECT Consumer.name AS consumerName, Factory 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) 
 ```
 
 ### <a name="query-by-property"></a>依屬性查詢
@@ -220,17 +278,17 @@ AND Room.$dtId IN ['room1', 'room2']
 
 本節包含撰寫 Azure 數位 Twins 查詢時可用之運算子和函式的參考。
 
-### <a name="operators"></a>操作員
+### <a name="operators"></a>運算子
 
 支援下列運算子：
 
-| 系列 | 操作員 |
+| 系列 | 運算子 |
 | --- | --- |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、！ =、<、>、<=、>= |
 | 包含 | 在中，>NIN |
 
-### <a name="functions"></a>函式
+### <a name="functions"></a>函數
 
 支援下列類型檢查和轉換函數：
 

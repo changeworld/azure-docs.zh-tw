@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070651"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>檢查會影響 AKS 叢集 (Preview 的資源健康狀態事件) 
 
 
-當您在 AKS 上執行容器工作負載時，您想要確保您可以在問題發生時立即進行疑難排解並修正問題，以將對工作負載可用性的影響降至最低。 [Azure 資源健康狀態](https://docs.microsoft.com/azure/service-health/resource-health-overview) 可讓您查看可能導致 AKS 叢集無法使用的各種健康情況事件。
+當您在 AKS 上執行容器工作負載時，您想要確保您可以在問題發生時立即進行疑難排解並修正問題，以將對工作負載可用性的影響降至最低。 [Azure 資源健康狀態](../service-health/resource-health-overview.md) 可讓您查看可能導致 AKS 叢集無法使用的各種健康情況事件。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ Azure 資源健康狀態可協助您診斷並取得影響 Azure 資源的服務�
 
 - **降級**：當有健康情況問題需要您的動作時，資源健康狀態會將您的叢集回報為 *降級*。
 
-如需每個健全狀況狀態的詳細資訊，請造訪 [資源健康狀態總覽](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status)。
+如需每個健全狀況狀態的詳細資訊，請造訪 [資源健康狀態總覽](../service-health/resource-health-overview.md#health-status)。
 
 ### <a name="view-historical-data"></a>查看歷程記錄資料
 
@@ -57,4 +57,4 @@ Azure 資源健康狀態可協助您診斷並取得影響 Azure 資源的服務�
 
 ## <a name="next-steps"></a>後續步驟
 
-在您的叢集上執行檢查，以使用 [AKS 診斷](https://docs.microsoft.com/azure/aks/concepts-diagnostics)進一步針對叢集問題進行疑難排解。
+在您的叢集上執行檢查，以使用 [AKS 診斷](./concepts-diagnostics.md)進一步針對叢集問題進行疑難排解。

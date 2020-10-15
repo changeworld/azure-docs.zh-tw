@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400512"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070685"
 ---
 # <a name="azure-security-baseline-for-automation"></a>自動化的 Azure 安全性基準
 
@@ -84,7 +84,7 @@ ms.locfileid: "89400512"
 
 * [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 * [瞭解 Azure 資訊安全中心適應性網路強化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ ms.locfileid: "89400512"
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](../governance/policy/samples/built-in-policies.md#network)
 
 * [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ ms.locfileid: "89400512"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -720,7 +720,7 @@ ms.locfileid: "89400512"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ ms.locfileid: "89400512"
 
 * [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-* [Azure 自動化的 Azure 原則內建範例](./policy-samples.md)
+* [Azure 自動化的 Azure 原則內建範例](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -854,7 +854,7 @@ ms.locfileid: "89400512"
 
 * [Azure Web 應用程式防火牆總覽](../web-application-firewall/overview.md)
 
-* [網路安全性群組](../virtual-network/security-overview.md)
+* [網路安全性群組](../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虛擬網路總覽](../virtual-network/virtual-networks-overview.md)
 
@@ -882,7 +882,7 @@ ms.locfileid: "89400512"
 
 * [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure 自動化的 Azure 原則內建範例](./policy-samples.md)
+* [Azure 自動化的 Azure 原則內建範例](./policy-reference.md)
 
 * [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ ms.locfileid: "89400512"
 
 * [使用 Azure Resource Manager 範本部署自動化帳戶](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure 自動化的 Azure 原則內建範例](./policy-samples.md)
+* [Azure 自動化的 Azure 原則內建範例](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -984,7 +984,7 @@ ms.locfileid: "89400512"
 
 * [如何使用別名](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure 自動化的 Azure 原則內建範例](./policy-samples.md)
+* [Azure 自動化的 Azure 原則內建範例](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1014,7 +1014,7 @@ ms.locfileid: "89400512"
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure 自動化的 Azure 原則內建範例](./policy-samples.md)
+* [Azure 自動化的 Azure 原則內建範例](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 

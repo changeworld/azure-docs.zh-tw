@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a737fada3e019029967bc752aaa0dedc354fa880
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848004"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078318"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何設定或編輯 Azure API 管理原則
 
@@ -136,4 +136,4 @@ API 範圍已設定為所選 API 的**所有作業**。
 
 + [轉換 API](transform-api.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)
++ [原則範例](./policy-reference.md)

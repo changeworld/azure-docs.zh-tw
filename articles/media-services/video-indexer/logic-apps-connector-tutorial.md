@@ -9,10 +9,10 @@ ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540399"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教學課程：使用影片索引器與邏輯應用程式和 Power Automate

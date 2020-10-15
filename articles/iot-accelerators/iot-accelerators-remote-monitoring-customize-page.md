@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318393"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070702"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂頁面
 
@@ -155,7 +155,7 @@ npm start
 
 1. 使用 **pcs** CLI 來部署解決方案加速器的**基本**執行個體。 記下部署的名稱以及您為虛擬機器提供的認證。 如需詳細資訊，請參閱[使用 CLI 進行部署](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-1. 使用 Azure 入口網站或 [AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 啟用 SSH 存取，以存取您解決方案中裝載微服務的虛擬機器。 例如：
+1. 使用 Azure 入口網站或 [AZ CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 啟用 SSH 存取，以存取您解決方案中裝載微服務的虛擬機器。 例如︰
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ npm start
 
     您只應該在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH， [您應該儘快將它停用](../security/fundamentals/network-best-practices.md)。
 
-1. 使用 Azure 入口網站或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 來尋找虛擬機器的名稱和公用 IP 位址。 例如：
+1. 使用 Azure 入口網站或 [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 來尋找虛擬機器的名稱和公用 IP 位址。 例如︰
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table
