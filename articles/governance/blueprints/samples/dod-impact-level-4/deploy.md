@@ -4,10 +4,10 @@ description: DoD 影響等級 4 藍圖範例的部署步驟，其中包括藍圖
 ms.date: 09/17/2020
 ms.topic: sample
 ms.openlocfilehash: 7ab2e5967031b52bcad7c1b6f38b546cb8a7eb86
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90978411"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>部署 DoD 影響等級 4 藍圖範例

@@ -9,16 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 4854e61b646c0ca2a2070d676e3efc5cfbac6b9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042797"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044576"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教學課程：使用自訂視覺服務在邊緣執行影像分類
 
-Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解決方案的效率。 這項功能非常適合用於會處理大量資料的服務，例如電腦視覺模型。 [自訂視覺服務](../cognitive-services/custom-vision-service/home.md)可讓您建置自訂影像分類器，並部署至裝置作為容器。 一起使用這兩項服務，您就可以從影像或影片串流中找到深入解析，而不必先將所有資料傳出網站。 自訂視覺所提供的分類器會比較影像與經過訓練的模型，以產生深入解析。
+Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解決方案的效率。 這項功能非常適合用於會處理大量資料的服務，例如電腦視覺模型。 [自訂視覺服務](../cognitive-services/custom-vision-service/overview.md)可讓您建置自訂影像分類器，並部署至裝置作為容器。 一起使用這兩項服務，您就可以從影像或影片串流中找到深入解析，而不必先將所有資料傳出網站。 自訂視覺所提供的分類器會比較影像與經過訓練的模型，以產生深入解析。
 
 例如，IoT Edge 裝置上的自訂視覺無法判斷高速公路的車流量較平常高或低，也無法判斷停車場的某一排是否有停車位。 這些深入解析可與其他服務共用以便採取動作。
 
@@ -46,7 +46,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
 
 * Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * [執行 Azure IoT Edge 的 Linux 裝置](quickstart-linux.md)
-* 容器登錄，像是 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
+* 容器登錄，像是 [Azure Container Registry](../container-registry/index.yml)。
 * 已設定 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 設定為執行 Linux 容器。
 

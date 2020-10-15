@@ -11,10 +11,10 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
 ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979070"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教學課程：使用自動化機器學習來預測需求
@@ -47,7 +47,7 @@ ms.locfileid: "90979070"
 
 1. 選取訂用帳戶與您建立的工作區。
 
-1. 選取 [馬上開始]。
+1. 選取 [馬上開始]。 
 
 1. 在左側窗格中，選取 [撰寫] 區段下的 [自動化 ML]。
 
@@ -125,7 +125,7 @@ ms.locfileid: "90979070"
 
         1. 建立完成後，請從下拉式清單選取新的計算目標。
 
-    1. 選取 [下一步]  。
+    1. 選取 [下一步] 。
 
 ## <a name="select-forecast-settings"></a>選取預測設定
 

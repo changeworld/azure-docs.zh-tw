@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e7d966aa5aa4b5a498c80cab26686411dd586185
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292660"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044593"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -446,7 +446,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 當您不再需要於本教學課程中建立的資源時，請遵循這些步驟加以刪除。 
 
-使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組、Azure Digital Twins 執行個體、IoT 中樞和中樞裝置註冊、事件方格主題和相關聯的訂用帳戶，以及 Azure Functions 應用程式，包括兩個函式和儲存體等相關聯的資源。
+使用 [Azure Cloud Shell](https://shell.azure.com)，您可以使用 [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) 命令刪除資源群組中的所有 Azure 資源。 這會移除資源群組、Azure Digital Twins 執行個體、IoT 中樞和中樞裝置註冊、事件方格主題和相關聯的訂用帳戶，以及 Azure Functions 應用程式，包括兩個函式和儲存體等相關聯的資源。
 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
