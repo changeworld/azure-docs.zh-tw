@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715441"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074952"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
@@ -45,11 +45,11 @@ ms.locfileid: "91715441"
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>應用程式設定中儲存的資料位於何處？ 
 
-儲存在應用程式設定中的客戶資料位於客戶的應用程式設定存放區建立所在的區域。 應用程式設定可能會將資料複寫到 [配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 以進行資料恢復，但不會複寫或移動其地理位置以外的客戶資料，如 [Azure 中的資料](https://azure.microsoft.com/global-infrastructure/data-residency/)落地所定義。 客戶與終端使用者可以從全球任何地點移動、複製或存取其客戶資料。
+儲存在應用程式設定中的客戶資料位於客戶的應用程式設定存放區建立所在的區域。 應用程式設定可能會將資料複寫到 [配對的區域](../best-practices-availability-paired-regions.md) 以進行資料恢復，但不會複寫或移動其地理位置以外的客戶資料，如 [Azure 中的資料](https://azure.microsoft.com/global-infrastructure/data-residency/)落地所定義。 客戶與終端使用者可以從全球任何地點移動、複製或存取其客戶資料。
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>應用程式設定與 Azure App Service 設定有何不同？
 
-Azure App Service 可讓您定義每個 App Service 實例的應用程式設定。 這些設定會以環境變數的形式傳遞至應用程式程式碼。 您可以視需要將設定關聯至特定的部署位置。 如需詳細資訊，請參閱 [設定應用程式設定](/azure/app-service/configure-common#configure-app-settings)。
+Azure App Service 可讓您定義每個 App Service 實例的應用程式設定。 這些設定會以環境變數的形式傳遞至應用程式程式碼。 您可以視需要將設定關聯至特定的部署位置。 如需詳細資訊，請參閱 [設定應用程式設定](../app-service/configure-common.md#configure-app-settings)。
 
 相反地，Azure 應用程式組態可讓您定義可在多個應用程式之間共用的設定。 這包括在 App Service 及其他平臺中執行的應用程式。 您的應用程式程式碼會透過適用于 .NET 和 JAVA 的設定提供者、透過 Azure SDK，或直接透過 REST Api 來存取這些設定。
 

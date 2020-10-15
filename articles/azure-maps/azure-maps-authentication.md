@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036839"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091401"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
@@ -51,7 +51,7 @@ Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 資源和 Azure 地圖服務的受控識別
 
-[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 識別會為 azure 服務提供自動管理的應用程式安全性主體，以 Azure AD 進行驗證。 透過以角色為基礎的存取控制 (RBAC) ，受控識別安全性主體可獲得授權以存取 Azure 地圖服務服務。 受控識別的一些範例包括： Azure App Service、Azure Functions 和 Azure 虛擬機器。 如需受控識別的清單，請參閱 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)識別。
+[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 識別會為 azure 服務提供自動管理的應用程式安全性主體，以 Azure AD 進行驗證。 透過 Azure 角色型存取控制 (Azure RBAC) ，受控識別安全性主體可獲得授權以存取 Azure 地圖服務服務。 受控識別的一些範例包括： Azure App Service、Azure Functions 和 Azure 虛擬機器。 如需受控識別的清單，請參閱 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)識別。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>設定應用程式 Azure AD 驗證
 
@@ -82,7 +82,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 Azure 地圖服務支援 [ (AZURE RBAC) 存取 azure 角色型存取控制 ](https://docs.microsoft.com/azure/role-based-access-control/overview) 的所有主體類型，包括：個別 Azure AD 使用者、群組、應用程式、azure 資源和 azure 受控識別。 主體類型會被授與一組許可權，也稱為角色定義。 角色定義會提供 REST API 動作的許可權。 將存取權套用至一或多個 Azure 地圖服務帳戶稱為「範圍」（scope）。 套用主體、角色定義和範圍時，會建立角色指派。 
 
-下一節將討論 Azure 地圖服務與 Azure AD 角色型存取控制整合的概念和元件。 在設定 Azure 地圖服務帳戶的過程中，Azure AD 目錄會與 Azure 地圖服務帳戶所在的 Azure 訂用帳戶相關聯。 
+下一節將討論 Azure 地圖服務與 Azure RBAC 整合的概念和元件。 在設定 Azure 地圖服務帳戶的過程中，Azure AD 目錄會與 Azure 地圖服務帳戶所在的 Azure 訂用帳戶相關聯。 
 
 當您設定 Azure RBAC 時，您可以選擇安全性主體，並將其套用至角色指派。 若要瞭解如何在 Azure 入口網站上新增角色指派，請參閱 [新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
@@ -104,7 +104,7 @@ Azure 地圖服務支援 [ (AZURE RBAC) 存取 azure 角色型存取控制 ](htt
 | 建立者            | Azure 地圖服務資料參與者 |
 | 空間            | Azure 地圖服務資料參與者 |
 
-如需檢視 RBAC 設定的相關資訊，請參閱[如何設定 Azure 地圖服務的 RBAC](https://aka.ms/amrbac)。
+如需有關觀看 Azure RBAC 設定的詳細資訊，請參閱 [如何設定適用于 Azure 地圖服務的 AZURE rbac](https://aka.ms/amrbac)。
 
 #### <a name="custom-role-definitions"></a>自訂角色定義
 
@@ -131,9 +131,9 @@ Azure 地圖服務支援 [ (AZURE RBAC) 存取 azure 角色型存取控制 ](htt
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 RBAC，請參閱
+若要深入瞭解 Azure RBAC，請參閱
 > [!div class="nextstepaction"]
-> [以角色為基礎的存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Azure 角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview) \(部分機器翻譯\)
 
 若要深入瞭解如何使用 Azure AD 和 Azure 地圖服務驗證應用程式，請參閱
 > [!div class="nextstepaction"]

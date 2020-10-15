@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210356"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093271"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>使用來自 Azure API 管理服務的外部服務
 Azure API 管理服務中可用的原則可純粹根據傳入的要求、傳出的回應及基本組態資訊來進行各式各樣的有用工作。 不過，能夠與來自 API 管理原則的外部服務進行互動，可開啟更多的機會。
@@ -178,7 +178,7 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 ### <a name="making-the-requests"></a>提出要求
 一旦建立作業後，您即可特別針對該作業設定原則。 
 
-![儀表板作業](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![顯示 [原則範圍] 畫面的螢幕擷取畫面。](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 第一個步驟是擷取來自傳入要求的任何查詢參數，以便您可將其轉送至後端。 在此範例中，儀表板會根據一段時間來顯示資訊，因此具有 `fromDate` 和 `toDate` 參數。 您可以使用 `set-variable` 原則來擷取要求 URL 中的資訊。
 

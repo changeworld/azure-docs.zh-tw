@@ -4,12 +4,12 @@ description: '深入瞭解使用長期保留 (預覽版適用於 PostgreSQL 的 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994677"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093883"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>使用長期保留的適用於 PostgreSQL 的 Azure 資料庫備份 (預覽) 
 
@@ -17,7 +17,7 @@ Azure 備份與 Azure 資料庫服務共同建立了企業級的備份解決方�
 
 除了長期保留，此解決方案也有許多其他功能，如下所示：
 
-- 使用 Azure Active Directory 和受控服務身分識別的資料庫的 RBAC 型存取 (MSI) 驗證。
+- Azure 角色型存取控制 (Azure RBAC) 使用 Azure Active Directory 和受控服務識別 (MSI) 驗證的資料庫。
 - 在個別資料庫層級進行客戶控制的排程和隨選備份。
 - 資料庫層級還原至任何 Postgres 伺服器，或直接還原至 blob 儲存體。
 - 長期保留。

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797712"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教學課程：將 Hugo 網站發佈至 Azure 靜態 Web Apps 預覽版
@@ -115,7 +115,7 @@ ms.locfileid: "88797712"
 
 1. 針對 [SKU]，選取 [免費]。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="已填寫的詳細資料":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
 
 1. 按一下 [以 GitHub 登入] 按鈕。
 
@@ -125,7 +125,7 @@ ms.locfileid: "88797712"
 
 1. 針對 [分支]，選取 [主要]。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="已完成的 GitHub 資訊":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
 
 ### <a name="build"></a>Build
 
@@ -149,7 +149,7 @@ ms.locfileid: "88797712"
 
 1. 在 Azure 入口網站中，移至新建立的 Azure 靜態 Web Apps 資源的 [概觀] 視窗，然後按一下 [URL] 連結以開啟已部署的應用程式。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="已部署的應用程式":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

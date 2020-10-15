@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588070"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074612"
 ---
 # <a name="import-or-export-configuration-data"></a>匯入或匯出設定資料
 
 Azure 應用程式組態支援資料匯入和匯出作業。 使用這些作業，在您的應用程式設定存放區和程式碼專案之間大量和交換資料中的設定資料。 例如，您可以設定一個應用程式設定存放區進行測試，另一個用於生產環境。 您可以複製它們之間的應用程式設定，如此一來，您就不需要輸入兩次資料。
 
-本文提供使用應用程式設定匯入和匯出資料的指南。 如果您想要設定與 GitHub 存放庫進行中的同步處理，請查看我們的 [Github 動作](https://aka.ms/azconfig-gha1)。
+本文提供使用應用程式設定匯入和匯出資料的指南。 如果您想要設定與 GitHub 存放庫進行中的同步處理，請查看我們的 [Github 動作](./concept-github-action.md)。
 
 ## <a name="import-data"></a>匯入資料
 
@@ -65,4 +65,4 @@ Export 會將儲存在應用程式設定中的設定資料寫入至另一個目�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [建立 ASP.NET Core Web 應用程式](./quickstart-aspnet-core-app.md)  
+> [建立 ASP.NET Core Web 應用程式](./quickstart-aspnet-core-app.md)

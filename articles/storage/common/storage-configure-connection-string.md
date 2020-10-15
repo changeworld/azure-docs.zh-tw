@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087249"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091605"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>設定 Azure 儲存體連接字串
 
@@ -110,9 +110,10 @@ AccountKey=<account-key>
 
 如果你已將儲存體端點對應至自訂網域，且從連接字串中省略該端點，則無法使用該連接字串，從程式碼中存取該服務中的資料。
 
+如需針對 Azure 儲存體設定自訂網域的詳細資訊，請參閱將 [自訂網域對應至 Azure Blob 儲存體端點](../blobs/storage-custom-domain-name.md)。
+
 > [!IMPORTANT]
-> 連接字串中的服務端點值必須是格式正確的 URI，包括 `https://`(建議) 或 `http://`。 因為 Azure 儲存體還不支援自訂網域的 HTTPS，您必須** 針對任何指向自訂網域的端點 URI，指定 `http://`。
->
+> 連接字串中的服務端點值必須是格式正確的 URI，包括 `https://`(建議) 或 `http://`。
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>建立包含端點尾碼的連接字串
 
@@ -138,7 +139,7 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azurite 模擬器進行本機 Azure 儲存體開發](../common/storage-use-azurite.md)
 * [Azure 儲存體總管](storage-explorers.md)

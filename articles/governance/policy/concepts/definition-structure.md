@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019948"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074255"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -111,7 +111,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 下列資源提供者模式目前支援作為 **預覽**：
 
 - `Microsoft.ContainerService.Data`，用來管理 [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上的許可控制站規則。 使用此資源提供者模式的定義 **必須** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式已被 _取代_。
-- `Microsoft.KeyVault.Data`，用來管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保存庫和憑證。
+- `Microsoft.KeyVault.Data`，用來管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保存庫和憑證。 如需這些原則定義的詳細資訊，請參閱 [整合 Azure Key Vault 與 Azure 原則](../../../key-vault/general/azure-policy.md)。
 
 > [!NOTE]
 > 資源提供者模式僅支援內建原則定義，不支援 [豁免](./exemption-structure.md)。
@@ -189,7 +189,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_是否對 **strongType** 有效，請使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 **>strongtype** _資源類型_的格式為 `<Resource Provider>/<Resource Type>` 。 例如，`Microsoft.Network/virtualNetworks/subnets`。
+在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_是否對 **strongType** 有效，請使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 **>strongtype** _資源類型_的格式為 `<Resource Provider>/<Resource Type>` 。 例如 `Microsoft.Network/virtualNetworks/subnets`。
 
 支援部分不是由 **Get-AzResourceProvider** 傳回的_資源類型_。 這些類型包括：
 
@@ -308,7 +308,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
   - 針對不受特定位置限制的資源，請使用 **global**。
 - `id`
   - 傳回正在評估之資源的資源識別碼。
-  - 範例： `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
+  - 範例：`/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - 傳回資源上所啟用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)的類型。
 - `tags`
@@ -609,8 +609,20 @@ Azure 原則支援下列類型的效果：
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **範圍**： [必要] 字串-指定 IP 位址範圍的字串。
+    - **targetRange**： [必要] 字串-指定 IP 位址範圍的字串。
+
+    傳回指定的 IP 位址範圍是否包含目標 IP 位址範圍。 不允許空的範圍或在 IP 系列之間混用，因此會導致評估失敗。
+
+    支援的格式：
+    - 單一 IP 位址 (範例： `10.0.0.0` 、 `2001:0DB8::3:FFFE`) 
+    - CIDR 範圍 (範例： `10.0.0.0/24` 、 `2001:0DB8::/110`) 
+    - [開始] 和 [結束 IP 位址] 定義的範圍 (範例： `192.168.0.1-192.168.0.9` 、 `2001:0DB8::-2001:0DB8::3:FFFF`) 
+
+
 #### <a name="policy-function-example"></a>原則函式範例
 
 此原則規則範例會使用 `resourceGroup` 資源函式來取得**名稱**屬性，並與 `concat` 陣列和物件函式結合來建置 `like` 條件，以強制資源名稱的開頭使用資源群組名稱。

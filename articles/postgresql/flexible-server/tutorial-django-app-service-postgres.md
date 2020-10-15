@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929359"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>教學課程：使用 App Service 和適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器 (預覽) 部署 Django 應用程式
@@ -270,11 +270,11 @@ python manage.py migrate
 
 在 [Azure 入口網站](https://portal.azure.com)中，搜尋應用程式名稱，然後在結果中選取應用程式。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="瀏覽至您在 Azure 入口網站中的 Python Django 應用程式":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="範例 Django 開發伺服器輸出":::
 
 根據預設，入口網站會顯示您應用程式的 [概觀] 頁面，以提供一般效能檢視。 在此，您也可以執行基本管理工作，例如瀏覽、停止、重新啟動和刪除。 分頁左側的索引標籤會顯示您可開啟的各種設定分頁。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="在 Azure 入口網站的 [概觀] 頁面中管理您的 Python Django 應用程式":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="範例 Django 開發伺服器輸出":::
 
 
 ## <a name="clean-up-resources"></a>清除資源

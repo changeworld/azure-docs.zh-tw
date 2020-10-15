@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723991"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立和設定應用程式閘道以裝載多個網站
@@ -50,7 +50,7 @@ ms.locfileid: "88723991"
    - **資源群組**：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
    - **應用程式閘道名稱**：輸入 myAppGateway  作為應用程式閘道的名稱。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="建立應用程式閘道":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="多網站應用程式閘道":::
 
 2.  Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您可以建立新的虛擬網路，或使用現有的虛擬網路。 在此範例中，您將會在建立應用程式閘道時，同時建立新的虛擬網路。 在不同的子網路中，建立應用程式閘道執行個體。 在此範例中您會建立兩個子網路：一個用於應用程式閘道，另一個用於後端伺服器。
 
@@ -66,7 +66,7 @@ ms.locfileid: "88723991"
 
     選取 [確定]  以關閉 [建立虛擬網路]  視窗並儲存虛擬網路設定。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="建立 VNet":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="多網站應用程式閘道":::
     
 3. 在 [基本]  索引標籤上，接受其他設定的預設值，然後選取 [下一步:  前端]。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88723991"
 
 2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="建立另一個 VNet":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="多網站應用程式閘道":::
 
 3. 完成時，選取 [下一步:  後端]。
 
@@ -96,7 +96,7 @@ ms.locfileid: "88723991"
 3. 在 [新增後端集區]  視窗中，選取 [新增]  以儲存後端集區設定，並返回 [後端]  索引標籤。
 4. 現在新增另一個名為 *fabrikamPool*的後端集區。
 
-    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="建立後端":::
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="多網站應用程式閘道":::
 
 4. 在 [後端]  索引標籤上，選取 [下一步:  設定]。
 
@@ -119,7 +119,7 @@ ms.locfileid: "88723991"
 
    接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
 
-   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="建立路由規則":::
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="多網站應用程式閘道":::
 
 4. 在 [後端目標]  索引標籤上，針對 [後端目標]  選取 [contosoPool]  。
 
@@ -128,7 +128,7 @@ ms.locfileid: "88723991"
 6. 在 [新增路由規則]  視窗上，選取 [新增]  以儲存路由規則，並返回 [設定]  索引標籤。
 7. 選取 [新增規則]  ，然後為 Fabrikam 新增類似的規則、接聽程式、後端目標和 HTTP 設定。
 
-     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 規則":::
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="多網站應用程式閘道":::
 
 7. 完成時，選取 [下一步:  標籤]，然後選取 [下一步:  檢閱 + 建立]。
 

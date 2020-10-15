@@ -9,18 +9,18 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280091"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093288"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
 當從程式碼列出 Blob 時，即可指定數個選項來管理從 Azure 儲存體傳回結果的方式。 您可指定要在每一組結果中傳回的結果數目，然後擷取後續集合。 您可指定前置詞，以傳回名稱開頭為該字元或字串的 Blob。 也可以使用簡單列表結構或以階層方列出 Blob。 階層式清單會傳回 Blob，就好像這些 Blob 已組織成資料夾一樣。
 
-本文說明如何使用[適用於 .NET 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來列出 Blob。  
+本文說明如何使用[適用於 .NET 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)來列出 Blob。  
 
 ## <a name="understand-blob-listing-options"></a>了解 Blob 清單選項
 
@@ -28,10 +28,10 @@ ms.locfileid: "91280091"
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -65,7 +65,7 @@ ms.locfileid: "91280091"
 
 您可以傳回包含結果的 blob 中繼資料。 
 
-- 如果您使用的是 .NET v12 SDK，請指定[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet)列舉的**中繼資料**值。
+- 如果您使用的是 .NET v12 SDK，請指定[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)列舉的**中繼資料**值。
 
 - 如果您使用的是 .NET v11 SDK，請指定[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的**中繼資料**值。 Azure 儲存體會在每個傳回的 Blob 中包含中繼資料，因此不需要在此內容中呼叫其中一個 **FetchAttributes** 方法，即可擷取 Blob 中繼資料。
 
@@ -153,7 +153,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要以階層方式列出 blob，請呼叫 [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)或 [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) 方法。
+若要以階層方式列出 blob，請呼叫 [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)或 [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) 方法。
 
 下列範例會使用階層式清單來列出指定容器中的 blob，並指定選擇性區段大小，並將 blob 名稱寫入主控台視窗。
 
