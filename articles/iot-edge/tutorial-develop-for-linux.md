@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 23ca4be9387754c84dc256dd72b131bd5b76b458
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056222"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876459"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 IoT Edge 模組
 
@@ -177,19 +177,19 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 每個模組都可以在其程式碼中宣告多個「輸入」  和「輸出」  佇列。 在裝置上執行的 IoT Edge 中樞會將訊息從某個模組的輸出路由傳送至一或多個模組的輸入。 用於宣告輸入和輸出的特定程式碼會隨語言而異，但概念在所有模組則都相同。 如需模組之間路由方式的詳細資訊，請參閱[宣告路由](module-composition.md#declare-routes)。
 
-專案範本所隨附的範例 C# 程式碼會使用 IoT Hub SDK for .NET 所提供的 [ModuleClient 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)。
+專案範本所隨附的範例 C# 程式碼會使用 IoT Hub SDK for .NET 所提供的 [ModuleClient 類別](/dotnet/api/microsoft.azure.devices.client.moduleclient)。
 
 1. 開啟 **Program.cs** 檔案，其位於 **modules/SampleModule/** 資料夾內。
 
 2. 在 program.cs 中，尋找 **SetInputMessageHandlerAsync** 方法。
 
-3. [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) 方法可設定用於接收內送訊息的輸入佇列。 檢閱此方法，並查看它如何初始化名為 **input1** 的輸入佇列。
+3. [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) 方法可設定用於接收內送訊息的輸入佇列。 檢閱此方法，並查看它如何初始化名為 **input1** 的輸入佇列。
 
    ![在 SetInputMessageCallback 建構函式中尋找輸入名稱](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
 4. 接著，尋找 **SendEventAsync** 方法。
 
-5. [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) 方法會處理接收的訊息並設定輸出佇列來傳遞它們。 檢閱此方法，並查看它初始化名為 **output1** 的輸出佇列。
+5. [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) 方法會處理接收的訊息並設定輸出佇列來傳遞它們。 檢閱此方法，並查看它初始化名為 **output1** 的輸出佇列。
 
    ![在 SendEventToOutputAsync 中尋找輸出名稱](./media/tutorial-develop-for-linux/declare-output-queue.png)
 

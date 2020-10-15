@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a4c758c1f4dc790e9d5cba1e205956affd58f63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 61241f361be3a9a60c8125f891525a078954afdf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535066"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858076"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Kronos 整合
 
@@ -86,15 +86,15 @@ ms.locfileid: "88535066"
 
 1. Kronos 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
 
     a. 按一下 [**編輯**] 圖示以開啟 [**管理使用者宣告**] 對話方塊。
 
-    ![image](./media/kronos-tutorial/tutorial_usermail.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中已選取 [編輯] 圖示。](./media/kronos-tutorial/tutorial_usermail.png)
 
-    ![image](./media/kronos-tutorial/tutorial_usermailedit.png)
+    ![顯示管理使用者宣告對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](./media/kronos-tutorial/tutorial_usermailedit.png)
 
     b. 從 [轉換]  清單中，選取 [ExtractMailPrefix()]  。
 

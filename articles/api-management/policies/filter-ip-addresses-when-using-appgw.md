@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: joscot
 ms.custom: fasttrack-new
-ms.openlocfilehash: 45e16c9aa9e4b04e7225320951e9f839fae75ba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8249cc543c6334841c8e5152d5d1ceb84d4097dc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75942473"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076108"
 ---
 # <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>使用應用程式閘道時篩選要求 IP 位址
 
-本文說明 Azure API 管理原則範例，示範如何在透過應用程式閘道或其他媒介存取 API 管理實例時，篩選要求 IP 位址。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-samples.md)。
+本文說明 Azure API 管理原則範例，示範如何在透過應用程式閘道或其他媒介存取 API 管理實例時，篩選要求 IP 位址。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-reference.md)。
 
 ## <a name="policy"></a>原則
 
@@ -34,4 +34,4 @@ ms.locfileid: "75942473"
 深入了解 APIM 原則：
 
 + [存取限制原則](../api-management-access-restriction-policies.md)
-+ [原則範例](../policy-samples.md)
++ [原則範例](../policy-reference.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932255"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089310"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -80,9 +80,9 @@ Azure NetApp Files 的金鑰管理是由服務處理。 每個磁片區都會產
 
 否，您目前無法將網路安全性群組套用至 Azure NetApp Files 的委派子網或服務所建立的網路介面。
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>我可以搭配 Azure NetApp Files 使用 Azure IAM 嗎？
+### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>是否可以搭配使用 Azure RBAC 與 Azure NetApp Files？
 
-是，Azure NetApp Files 支援使用 Azure IAM 的 RBAC 功能。
+是，Azure NetApp Files 支援 Azure RBAC 功能。
 
 ## <a name="performance-faqs"></a>效能常見問題集
 

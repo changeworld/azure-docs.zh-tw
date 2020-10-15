@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764004"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089480"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 入口網站中建立和共用儀表板
 
@@ -26,7 +26,7 @@ ms.locfileid: "84764004"
 
 Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預設儀表板。 建立和自訂其他儀表板，以及發佈和共用儀表板，讓其他使用者可以使用這些儀表板。 本文說明如何建立新的儀表板、自訂介面，以及發佈和共用儀表板。
 
-## <a name="create-a-new-dashboard"></a>建立新儀表板
+## <a name="create-a-new-dashboard"></a>建立新的儀表板
 
 在此範例中，我們會建立新的私人儀表板並指派名稱。 請遵循下列步驟來開始進行：
 
@@ -142,7 +142,7 @@ Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預�
 
 ## <a name="publish-and-share-a-dashboard"></a>發佈和共用儀表板
 
-當您建立儀表板時，預設為私用，這表示您是唯一可以看到的儀表板。 若要讓儀表板可供其他人使用，您可以發佈和共用儀表板。 如需詳細資訊，請參閱 [使用 Role-Based 存取控制來共用 Azure 儀表板](azure-portal-dashboard-share-access.md)。
+當您建立儀表板時，預設為私用，這表示您是唯一可以看到的儀表板。 若要讓儀表板可供其他人使用，您可以發佈和共用儀表板。 如需詳細資訊，請參閱 [使用 azure 角色型存取控制來共用 azure 儀表板](azure-portal-dashboard-share-access.md)。
 
 ### <a name="open-a-shared-dashboard"></a>開啟共用儀表板
 
@@ -176,7 +176,7 @@ Azure 入口網站會將預設儀表板提供為起始點。 您可以編輯預�
 
     ![刪除確認的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* [使用角色型存取控制來共用 Azure 儀表板](azure-portal-dashboard-share-access.md)
+* [使用 Azure 角色型存取控制來共用 Azure 儀表板](azure-portal-dashboard-share-access.md)
 * [以程式設計方式建立 Azure 儀表板](azure-portal-dashboards-create-programmatically.md)

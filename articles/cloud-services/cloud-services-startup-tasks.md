@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75360305"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075054"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何設定和執行雲端服務的啟動工作
 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。
@@ -92,7 +92,7 @@ EXIT /B 0
 
 **executionContext** - 指定啟動工作的權限等級。 權限等級可以是 limited (受到限制) 或 elevated (提高權限)：
 
-* **limited**  
+* **有限**  
    啟動工作執行時會使用和角色相同的權限。 當 [Runtime] 項目的 **executionContext** 屬性也是 **limited** 時，就會用到使用者權限。
 * **elevated**  
    啟動工作執行時會使用系統管理員權限。 這可讓啟動工作安裝程式、變更 IIS 組態、執行登錄變更，以及其他系統管理員層級的工作，且不會提高角色本身的權限等級。  
@@ -154,13 +154,10 @@ EXIT /B 0
 [封裝](cloud-services-model-and-package.md) 雲端服務。  
 
 [ServiceDefinition]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[啟動]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[執行階段]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[變數]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-
-
+[Task]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[啟動]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[執行階段]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[環境]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[變數]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)

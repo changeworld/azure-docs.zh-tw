@@ -7,19 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86223681"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076669"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在入口網站中設定雲端服務的自動調整
 
 針對雲端服務背景工作角色設定條件，以觸發相應縮小或相應放大作業。 適用於角色的條件可以 CPU、磁碟或角色的網路負載為根據。 您也可以根據訊息佇列或一些與您訂用帳戶相關聯的其他 Azure 資源的計量來設定條件。
 
 > [!NOTE]
-> 本文著重於雲端服務 web 和背景工作角色。 當您直接建立虛擬機器 (傳統) 時，它會裝載於雲端服務中。 如果要調整標準虛擬機器，您可以將它與[可用性設定組](../virtual-machines/windows/classic/configure-availability-classic.md)產生關聯，還可以手動開啟或關閉它們。
+> 本文著重於雲端服務 web 和背景工作角色。 當您直接建立虛擬機器 (傳統) 時，它會裝載於雲端服務中。 如果要調整標準虛擬機器，您可以將它與[可用性設定組](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic)產生關聯，還可以手動開啟或關閉它們。
 
 ## <a name="considerations"></a>考量
 在設定應用程式的調整之前，您應該先考量下列資訊：
@@ -105,6 +105,3 @@ ms.locfileid: "86223681"
 3. 要調整之角色的執行個體。
 
 當您設定調整規模設定之後，請選取頂端的 [儲存] **** 圖示。
-
-
-
