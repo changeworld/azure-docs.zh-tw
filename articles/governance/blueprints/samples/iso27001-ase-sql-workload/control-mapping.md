@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL 工作負載藍圖範例控制項
 description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例對於 Azure 原則和 Azure RBAC 的控制項對應。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1d537a3447f794c501ac3a33caf6eb01b17bc470
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 662e5dce9c58cec3be36c3e492d7231ed0e83939
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541215"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929314"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作負載藍圖的控制項對應
 
@@ -17,7 +17,7 @@ ms.locfileid: "91541215"
 以下是與 **ISO 27001:2013** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 ISO 27001:2013 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md) \(英文\)。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 權責區分
 
@@ -47,7 +47,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 管理特殊權限的存取權
 
-此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義，用以稽核具有擁有者及/或寫入權限的外部帳戶，和具有擁有者及/或寫入權限、且未啟用多重要素驗證的帳戶，以協助您限制及控制特殊權限的存取權。 Azure 角色型存取控制 (Azure RBAC) 可協助管理有權存取 Azure 資源的人員。 此藍圖也指派了三項 Azure 原則定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此藍圖也指派了一項 Azure 原則定義來稽核自訂 Azure RBAC 規則的使用情形。 了解自訂 Azure RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 Azure RBAC 規則很容易發生錯誤。
+此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義，用以稽核具有擁有者及/或寫入權限的外部帳戶，和具有擁有者及/或寫入權限、且未啟用多重要素驗證的帳戶，以協助您限制及控制特殊權限的存取權。 Azure 角色型存取控制 (Azure RBAC) 可協助管理有權存取 Azure 資源的人員。 此藍圖還指派了三項 Azure 原則定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此藍圖也指派了一項 Azure 原則定義來稽核自訂 Azure RBAC 規則的使用情形。 了解自訂 Azure RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 Azure RBAC 規則很容易發生錯誤。
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA
@@ -181,7 +181,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a1311-network-controls"></a>A.13.1.1 網路控制
 
-此藍圖指派了一項 [Azure 原則](../../../policy/overview.md)定義來監視使用寬鬆規則的網路安全性群組，以協助您管理和控制網路。 太寬鬆的規則可能會允許非預期的網路存取，您應加以檢閱。 此藍圖也指派了三項 Azure 原則定義，以監視未受保護的端點、應用程式和儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
+此藍圖指派了一項 [Azure 原則](../../../policy/overview.md)定義來監視使用寬鬆規則的網路安全性群組，以協助您管理和控制網路。 太寬鬆的規則可能會允許非預期的網路存取，您應加以檢閱。 此藍圖還指派了三項 Azure 原則定義，以監視未受保護的端點、應用程式和儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
 
 - 應限制透過網際網路面向端點存取
 - 儲存體帳戶應限制網路存取

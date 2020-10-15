@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998232"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 Windows Phone

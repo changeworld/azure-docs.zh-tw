@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386039"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077485"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在內部虛擬網路中使用 Azure API 管理服務
 在 Azure 虛擬網路中，Azure API 管理可以管理無法在網際網路上存取的 API。 有許多 VPN 技術可讓您建立連線。 API 管理在虛擬網路內有兩種主要的部署模式：
@@ -39,7 +39,7 @@ ms.locfileid: "87386039"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行本文所述的步驟，您必須具有：
 
@@ -51,7 +51,7 @@ ms.locfileid: "87386039"
 + 在虛擬網路中部署 API 管理服務時，會使用並需要開啟 [埠清單](./api-management-using-with-vnet.md#required-ports) 。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>在內部虛擬網路中建立 API 管理
-內部虛擬網路中的 API 管理服務是 [裝載在內部負載平衡器 (傳統) ](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)的後方。 這是唯一可用的選項，無法變更。
+內部虛擬網路中的 API 管理服務是 [裝載在內部負載平衡器 (傳統) ](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)的後方。 這是唯一可用的選項，無法變更。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 入口網站啟用虛擬網路連線
 
@@ -61,7 +61,7 @@ ms.locfileid: "87386039"
 
     ![用於在內部虛擬網路中設定 Azure API 管理的功能表][api-management-using-internal-vnet-menu]
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]。
 
 部署成功後，您應該會在總覽分頁上看到 API 管理服務的 **私人** 虛擬 ip 位址和 **公用** 虛擬 ip 位址。 **私人**虛擬 ip 位址是 API 管理委派子網內的負載平衡 ip 位址，可透過其 `gateway` `portal` 存取、 `management` 和 `scm` 端點。 **公用**虛擬 IP 位址**僅**適用于透過埠3443對端點的控制平面流量 `management` ，並且可鎖定至[ApiManagement][ServiceTags] servicetag。
 
@@ -143,4 +143,4 @@ ms.locfileid: "87386039"
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

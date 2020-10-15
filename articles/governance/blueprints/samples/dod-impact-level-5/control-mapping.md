@@ -1,24 +1,24 @@
 ---
 title: DoD 影響等級 5 藍圖範例控制
-description: 控制 DoD 影響等級 5 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
+description: 控制 DoD 影響等級 5 藍圖範例的對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540535"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929484"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>控制 DoD 影響等級 5 藍圖範例的對應
 
-下列文章會詳細說明 Azure 藍圖的美國國防部影響等級 5 (DoD IL5) 藍圖範例如何對應至 DoD 影響等級 5 的控制。 如需關於控制的詳細資訊，請參閱 [DoD 雲端運算安全性需求指南 (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)。 國防資訊系統局 (DISA) 是美國國防部 (DoD) 的下轄機構，負責開發和維護 DoD 雲端運算安全性需求指南 (SRG)。 SRG 會針對裝載 DoD 資訊、系統和應用程式的雲端服務提供者 (CSP) 以及 DoD 使用的雲端服務，定義其基準安全性需求。  
+下列文章會詳細說明 Azure 藍圖的美國國防部影響等級 5 (DoD IL5) 藍圖範例如何對應至 DoD 影響等級 5 的控制。 如需關於控制的詳細資訊，請參閱 [DoD 雲端運算安全性需求指南 (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)。
+國防資訊系統局 (DISA) 是美國國防部 (DoD) 的下轄機構，負責開發和維護 DoD 雲端運算安全性需求指南 (SRG)。 SRG 會針對裝載 DoD 資訊、系統和應用程式的雲端服務提供者 (CSP) 以及 DoD 使用的雲端服務，定義其基準安全性需求。  
 
 下列對應是針對 **DoD 影響等級 5** 的控制。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\]：DoD 影響等級 5** 內建原則計畫。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。
-> 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md) \(英文\)。
 
 ## <a name="ac-2-account-management"></a>AC-2 帳戶管理
 
@@ -238,7 +238,8 @@ Azure Site Recovery 會將虛擬機器上執行的工作負載從主要位置複
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 弱點掃描
 
-此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure 資訊安全中心內的作業系統弱點、SQL 弱點與虛擬機器弱點，以協助您管理資訊系統弱點。 Azure 資訊安全中心提供報告功能，可讓您即時深入檢視已部署 Azure 資源的安全性狀態。 此藍圖還指派原則定義，針對 SQL 伺服器稽核並強制套用「進階資料安全性」。 「進階資料安全性」包含弱點評定和進階威脅防護功能，可協助您了解所部署資源的弱點。
+此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure 資訊安全中心內的作業系統弱點、SQL 弱點與虛擬機器弱點，以協助您管理資訊系統弱點。
+Azure 資訊安全中心提供報告功能，可讓您即時深入檢視已部署 Azure 資源的安全性狀態。 此藍圖還指派原則定義，針對 SQL 伺服器稽核並強制套用「進階資料安全性」。 「進階資料安全性」包含弱點評定和進階威脅防護功能，可協助您了解所部署資源的弱點。
 
 - 應在 SQL 受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性
@@ -255,8 +256,7 @@ Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 界限保護
 
-此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義在 Azure 資訊安全中心監視網路安全性群組強化建議，以協助您管理和控制系統界限。 「Azure 資訊安全中心」會分析網際網路面向虛擬機器的流量模式，並提供網路安全群組規則建議，以降低潛在的受攻擊面。
-此外，此藍圖還指派原則定義，以監視未受保護的端點、應用程式與儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
+此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義在 Azure 資訊安全中心監視網路安全性群組強化建議，以協助您管理和控制系統界限。 「Azure 資訊安全中心」會分析網際網路面向虛擬機器的流量模式，並提供網路安全群組規則建議，以降低潛在的受攻擊面。 此外，此藍圖還指派原則定義，以監視未受保護的端點、應用程式與儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
 
 - 應限制透過網際網路面向端點存取
 - 儲存體帳戶應限制網路存取

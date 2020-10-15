@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052373"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069750"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -72,7 +72,7 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 
 **布建間隔是固定的**
 
-布建週期之間的 [時間](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 目前無法設定。 
+布建週期之間的 [時間](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) 目前無法設定。 
 
 **變更不會從目標應用程式移至 Azure AD**
 
