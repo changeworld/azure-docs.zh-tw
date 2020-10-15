@@ -4,10 +4,10 @@ description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例�
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072880"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例
@@ -33,7 +33,7 @@ ms.locfileid: "87072880"
 
 首先，若要實作藍圖範例，請使用範例作為起點，在您的環境中建立新藍圖。
 
-1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]。
+1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
 
 1. 在左側的 [快速入門] 頁面上，選取 [建立藍圖] **下方的 [建立]** 按鈕。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87072880"
 
 您的環境中現已建立了藍圖範例複本。 該複本會以**草稿**模式建立，而且必須先**發佈**，才能進行指派和部署。 您可以根據環境和需求來自訂藍圖範例複本，但是這樣的修改可能會使其不符合 ISO 27001 標準。
 
-1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
+1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]****。
 
 1. 選取左側的 [藍圖定義] 頁面。 使用篩選來尋找您的藍圖範例複本，然後將其選取。
 
@@ -62,7 +62,7 @@ ms.locfileid: "87072880"
 
 成功**發佈**藍圖範例複本後，可以將藍圖定義指派給其所在管理群組中的訂用帳戶。 此步驟用於提供參數，以建立每個專屬的藍圖範例複本部署。
 
-1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
+1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
 
 1. 選取左側的 [藍圖定義] 頁面。 使用篩選來尋找您的藍圖範例複本，然後將其選取。
 

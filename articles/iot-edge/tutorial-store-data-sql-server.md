@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 3d5ca648b149fa85b28f695956a438cdac9e67e8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086618"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047942"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教學課程：使用 SQL Server 資料庫在邊緣儲存資料
 
@@ -42,7 +42,7 @@ ms.locfileid: "90086618"
 * Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * [執行 Azure IoT Edge 的 AMD64 Linux 裝置](quickstart-linux.md)。
   * ARM 裝置 (例如 Raspberry Pi) 無法執行 SQL Server。 如果您想要在 ARM 裝置上使用 SQL，您可以註冊試用 [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) 預覽版。
-* 容器登錄，像是 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
+* 容器登錄，像是 [Azure Container Registry](../container-registry/index.yml)。
 * 已設定 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 設定為執行 Linux 容器。
 
@@ -228,7 +228,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 7. 尋找 [模組] 區段。 您應該會看到三個模組。 SimulatedTemperatureSensor 模組預設會包含在新的解決方案內，並提供測試資料供您與其他模組搭配使用。 sqlFunction 模組就是您一開始所建立，並使用新程式碼加以更新的模組。 最後，sql 模組則是從 Azure Marketplace 匯入的。
 
    >[!Tip]
-   >SQL Server 模組在推出時已在部署資訊清單的環境變數中設定有預設密碼。 每當您在生產環境中建立了 SQL Server 容器時，就應該[變更預設的系統管理員密碼](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)。
+   >SQL Server 模組在推出時已在部署資訊清單的環境變數中設定有預設密碼。 每當您在生產環境中建立了 SQL Server 容器時，就應該[變更預設的系統管理員密碼](/sql/linux/quickstart-install-connect-docker)。
 
 8. 關閉 **deployment.template.json** 檔案。
 
@@ -331,9 +331,9 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>後續步驟
+在本教學課程中，您已建立包含程式碼的 Azure Functions 模組，用以篩選您的 IoT Edge 裝置所產生的原始資料。 當您準備好要建置自己的模組時，您可以進一步了解如何[使用適用於 Visual Studio Code 的 Azure IoT Edge 開發 Azure Functions](./how-to-vs-code-develop-module.md)。
 
-在本教學課程中，您已建立包含程式碼的 Azure Functions 模組，用以篩選您的 IoT Edge 裝置所產生的原始資料。 當您準備好要建置自己的模組時，您可以進一步了解如何[使用適用於 Visual Studio Code 的 Azure IoT Edge 開發 Azure Functions](how-to-develop-csharp-function.md)。
+## <a name="next-steps"></a>後續步驟
 
 如果您想要在邊緣嘗試另一個儲存體方法，請閱讀如何在 IoT Edge 上使用 Azure Blob 儲存體。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c3f3aad08266337756038dfa6ac6ff0c9afe093c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996780"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076975"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -159,7 +159,7 @@ ms.locfileid: "91996780"
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="從 Azure 儀表板開啟自我調整應用程式控制" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
-    > 在所有情況下，檔案類型保護模式設定中的 [ **強制** ] 選項會呈現灰色。 目前沒有任何強制選項可用。 
+    > 在 [檔案類型保護模式] 設定中，[ **強制** ] 選項在 **所有** 案例中會呈現灰色。 目前沒有任何強制選項可用。 
     >
     > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="從 Azure 儀表板開啟自我調整應用程式控制":::
 
@@ -242,7 +242,7 @@ REST API 中提供的部分函數：
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何在 Azure 資訊安全中心中使用自動調整應用程式控制，以定義在 Azure 和非 Azure 電腦上執行之應用程式的允許清單。 若要深入瞭解資訊安全中心的其他雲端工作負載保護功能，請參閱：
 
 * [瞭解 (JIT) VM 存取的即時](just-in-time-explained.md)

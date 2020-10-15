@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002925"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076703"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 入口網站中管理雲端服務
 在 Azure 入口網站的 [雲端服務]**** 區域中，您可以：
@@ -83,7 +83,7 @@ ms.locfileid: "87002925"
 
 **交換是否會產生應用程式的停機時間？我該如何處理它？**
 
-如上一節中所述，部署交換通常很快，因為它只是 Azure 負載平衡器中的設定變更。 在某些情況下，它會花費 10 秒以上的時間，而導致暫時性的連線失敗。 若要限縮對您客戶造成的影響，請考慮實作[用戶端重試邏輯](../best-practices-retry-general.md)。
+如上一節中所述，部署交換通常很快，因為它只是 Azure 負載平衡器中的設定變更。 在某些情況下，它會花費 10 秒以上的時間，而導致暫時性的連線失敗。 若要限縮對您客戶造成的影響，請考慮實作[用戶端重試邏輯](/azure/architecture/best-practices/transient-faults)。
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>刪除部署和雲端服務
 刪除雲端服務之前，您必須先刪除每個現有的部署。
@@ -119,11 +119,8 @@ ms.locfileid: "87002925"
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
 * 設定 [自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
 * 設定 [TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
-
-
-

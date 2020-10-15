@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078943"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047653"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教學課程：在 IoT Edge 上為機器學習設定環境
 
@@ -26,7 +26,7 @@ ms.locfileid: "87078943"
 
 此步驟通常是由雲端開發人員來執行。 某一部分的軟體可能也會對資料科學家有所幫助。
 
-我們已建立一個 PowerShell 指令碼，此指令碼會建立已設定許多必要項目的 Azure 虛擬機器。 我們建立的 VM 必須能處理[巢狀虛擬化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，這也是我們選擇 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 電腦大小的原因。
+我們已建立一個 PowerShell 指令碼，此指令碼會建立已設定許多必要項目的 Azure 虛擬機器。 我們建立的 VM 必須能處理[巢狀虛擬化](../virtual-machines/windows/nested-virtualization.md)，這也是我們選擇 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 電腦大小的原因。
 
 開發 VM 將會搭配下列項目進行設定：
 
@@ -38,7 +38,7 @@ ms.locfileid: "87078943"
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/) \(英文\)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
 * [VS Code 擴充](https://marketplace.visualstudio.com/search?target=VSCode) \(英文\)
   * [Azure IoT 工具組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -82,7 +82,7 @@ ms.locfileid: "87078943"
 
    指令碼會執行下列步驟，這需要花費數分鐘的時間：
 
-    1. 安裝 [Azure PowerShell Az 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
+    1. 安裝 [Azure PowerShell Az 模組](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
     1. 提示您登入 Azure。
     1. 確認建立 VM 的資訊。 按 **y** 或 **Enter** 鍵以繼續作業。
     1. 建立資源群組 (若尚不存在)。
@@ -215,7 +215,7 @@ Azure IoT 中樞會處理 IoT 裝置和雲端之間的安全通訊，因此可�
 
 如需這部分 IoT Edge 上的 Machine Learning 教學課程所涵蓋之步驟的詳細資訊，請參閱：
 
-* [Azure IoT 基礎](https://docs.microsoft.com/azure/iot-fundamentals/)
+* [Azure IoT 基礎](../iot-fundamentals/index.yml)
 * [使用 IoT 中樞設定訊息路由](../iot-hub/tutorial-routing.md)
 * [使用 Azure 入口網站建立 IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)
 

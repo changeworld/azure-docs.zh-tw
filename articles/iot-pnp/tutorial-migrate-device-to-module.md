@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761272"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046331"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>教學課程：如何將 IoT 隨插即用裝置轉換成模組 (C#)
 
 本教學課程說明如何將 IoT 隨插即用裝置程式碼轉換成以一般模組執行。
 
-若裝置在連線到 IoT 中樞，並實作模型識別碼所指定數位分身定義語言 (DTDL) 模型中所述的屬性和方法時，發佈裝置的模型識別碼，則該裝置即為 IoT 隨插即用裝置。 若要深入了解裝置如何使用 DTDL 和模型識別碼，請參閱 [IoT 隨插即用開發人員指南](concepts-developer-guide.md)。 模組會以相同的方式使用模型識別碼和 DTDL 模型。
+若裝置在連線到 IoT 中樞，並實作模型識別碼所指定數位分身定義語言 (DTDL) 模型中所述的屬性和方法時，發佈裝置的模型識別碼，則該裝置即為 IoT 隨插即用裝置。 若要深入了解裝置如何使用 DTDL 和模型識別碼，請參閱 [IoT 隨插即用開發人員指南](./concepts-developer-guide-device-csharp.md)。 模組會以相同的方式使用模型識別碼和 DTDL 模型。
 
 為了示範如何實作 IoT 隨插即用模組，本教學課程將說明如何將控溫器 C# 裝置範例轉換為一般模組。
 
@@ -224,7 +224,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 若要了解如何部署您的容器化模組，請參閱：
 
 * [在 Ubuntu 虛擬機器上執行 Azure IoT Edge](../iot-edge/how-to-install-iot-edge-ubuntuvm.md)。
-* [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge-linux.md)。
+* [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行階段](../iot-edge/how-to-install-iot-edge.md)。
 
 您可以使用 Azure IoT 總管工具來查看：
 
@@ -238,4 +238,4 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 在此教學課程中，您已了解如何將具有模組的 IoT 隨插即用裝置連線至 IoT 中樞。 若要深入了解 IoT 隨插即用裝置模組，請參閱：
 
 > [!div class="nextstepaction"]
-> [IoT 隨插即用模型開發人員指南](concepts-developer-guide.md)
+> [IoT 隨插即用模型開發人員指南](./concepts-developer-guide-device-csharp.md)
