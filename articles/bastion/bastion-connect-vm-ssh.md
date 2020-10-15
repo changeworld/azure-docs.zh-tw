@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: f9bc06e58fcbd93fba0c92e91b51503239b5a951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2af63997f9ea74dfce184639d2fedb42d354fb39
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980772"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077570"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦將 SSH 連接到 Linux 虛擬機器
 
@@ -25,9 +25,9 @@ ms.locfileid: "90980772"
 
 SSH 私密金鑰必須採用開頭為  `"-----BEGIN RSA PRIVATE KEY-----"` 且結尾為的格式 `"-----END RSA PRIVATE KEY-----"` 。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
-請確定您已為 VM 所在的虛擬網路設定 Azure 堡壘主機。 如需詳細資訊，請參閱 [建立 Azure 堡壘主機](bastion-create-host-portal.md)。 在您的虛擬網路中布建並部署防禦服務之後，您就可以使用它來連線到此虛擬網路中的任何 VM。 
+請確定您已為 VM 所在的虛擬網路設定 Azure 堡壘主機。 如需詳細資訊，請參閱 [建立 Azure 堡壘主機](./tutorial-create-host-portal.md)。 在您的虛擬網路中布建並部署防禦服務之後，您就可以使用它來連線到此虛擬網路中的任何 VM。 
 
 當您使用防禦連線時，會假設您使用 RDP 連線至 Windows VM，並使用 SSH 連線到您的 Linux Vm。 如需有關連接到 Windows VM 的詳細資訊，請參閱連線 [到 VM-windows](bastion-connect-vm-rdp.md)。
 
@@ -50,7 +50,7 @@ SSH 私密金鑰必須採用開頭為  `"-----BEGIN RSA PRIVATE KEY-----"` 且�
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 流覽至您要連接的虛擬機器，然後按一下 [連線] **，然後從** 下拉式清單 **中選取 [** 防禦]。
 
    ![螢幕擷取畫面顯示已選取 [連線] Azure 入口網站中的虛擬機器總覽。](./media/bastion-connect-vm-ssh/connect.png)
-1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，請參閱 [設定](bastion-create-host-portal.md)防禦。
+1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，請參閱 [設定](./tutorial-create-host-portal.md)防禦。
 
    ![螢幕擷取畫面顯示已選取防禦的 [連線至虛擬機器] 對話方塊。](./media/bastion-connect-vm-ssh/bastion.png)
 1. 輸入虛擬機器的 SSH 使用者名稱和密碼。
@@ -61,7 +61,7 @@ SSH 私密金鑰必須採用開頭為  `"-----BEGIN RSA PRIVATE KEY-----"` 且�
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 流覽至您要連接的虛擬機器，然後按一下 [連線] **，然後從** 下拉式清單 **中選取 [** 防禦]。
 
    ![螢幕擷取畫面顯示已選取 [連線] Azure 入口網站中的虛擬機器總覽。](./media/bastion-connect-vm-ssh/connect.png)
-1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，請參閱 [設定](bastion-create-host-portal.md)防禦。
+1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，請參閱 [設定](./tutorial-create-host-portal.md)防禦。
 
    ![螢幕擷取畫面顯示已選取防禦的 [連線至虛擬機器] 對話方塊。](./media/bastion-connect-vm-ssh/bastion.png)
 1. 輸入使用者名稱，然後選取 **SSH 私密金鑰**。
@@ -73,7 +73,7 @@ SSH 私密金鑰必須採用開頭為  `"-----BEGIN RSA PRIVATE KEY-----"` 且�
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 流覽至您要連接的虛擬機器，然後按一下 [連線] **，然後從** 下拉式清單 **中選取 [** 防禦]。
 
    ![螢幕擷取畫面顯示已選取 [連線] Azure 入口網站中的虛擬機器總覽。](./media/bastion-connect-vm-ssh/connect.png)
-1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，請參閱 [設定](bastion-create-host-portal.md)防禦。
+1. 按一下 [防禦] 之後，會出現一個具有三個索引標籤的側邊列– RDP、SSH 和防禦。 如果已針對虛擬網路布建防禦功能，則預設會使用 [防禦] 索引標籤。 如果您未布建虛擬網路的防禦，請參閱 [設定](./tutorial-create-host-portal.md)防禦。
 
    ![螢幕擷取畫面顯示已選取防禦的 [連線至虛擬機器] 對話方塊。](./media/bastion-connect-vm-ssh/bastion.png)
 1. 輸入使用者名稱，然後 **從本機檔案選取 SSH 私密金鑰**。

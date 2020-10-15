@@ -10,18 +10,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653735"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078233"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>遷移至新的 Azure 時間序列深入解析 Gen2 API 版本
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-如果您在) 2020 年7月16日之前，建立了 Azure 時間序列深入解析 Gen2 環境 (，請更新 TSI 環境，以使用新正式推出的 Api 版本，方法是遵循本文中所述的步驟。
+如果您在) 2020 年7月16日之前，建立了 Azure 時間序列深入解析 Gen2 環境 (，請更新 TSI 環境，以使用新正式推出的 Api 版本，方法是遵循本文中所述的步驟。 這項變更不會影響任何使用 Gen1 版 Azure 時間序列深入解析的使用者。
+
+> [!IMPORTANT]
+> 本文中所述的更新只會升級 TSI 環境所使用的 API 版本。 這項變更與針對 Gen2 環境引進的新 JSON 簡維 [和轉義規則](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) 無關。
 
 新的 API 版本是 `2020-07-31` ，並使用更新的 [時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 

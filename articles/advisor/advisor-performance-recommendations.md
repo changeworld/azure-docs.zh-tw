@@ -3,12 +3,12 @@ title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 使用 Azure Advisor 中的效能建議來改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405151"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077808"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 來改善 Azure 應用程式的效能
 
@@ -142,22 +142,22 @@ Advisor 偵測到不支援的 Kubernetes 版本。
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>將具有流量的區域新增至您的 Azure Cosmos DB 帳戶
 
-Advisor 會偵測到 Azure Cosmos DB 的帳戶，該帳戶具有來自目前未設定之區域的流量。 建議您新增該區域。 這麼做可改善來自該區域之要求的延遲，並在發生區域中斷時確保可用性。 [深入瞭解使用 Azure Cosmos DB 的全域資料散發。](https://aka.ms/cosmos/globaldistribution)
+Advisor 會偵測到 Azure Cosmos DB 的帳戶，該帳戶具有來自目前未設定之區域的流量。 建議您新增該區域。 這麼做可改善來自該區域之要求的延遲，並在發生區域中斷時確保可用性。 [深入瞭解使用 Azure Cosmos DB 的全域資料散發。](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>使用自訂包含或排除的路徑來設定您的 Azure Cosmos DB 編制索引原則
 
-Advisor 會識別使用預設索引編制原則，但可受益于自訂編制索引原則的 Azure Cosmos DB 容器。 這項決定是根據工作負載模式。 預設索引編制原則會編制所有屬性的索引。 自訂索引編制原則具有在查詢篩選中使用的明確包含或排除路徑，可減少用於編制索引的 ru 和儲存體。 [深入瞭解如何修改索引原則。](https://aka.ms/cosmosdb/modify-index-policy)
+Advisor 會識別使用預設索引編制原則，但可受益于自訂編制索引原則的 Azure Cosmos DB 容器。 這項決定是根據工作負載模式。 預設索引編制原則會編制所有屬性的索引。 自訂索引編制原則具有在查詢篩選中使用的明確包含或排除路徑，可減少用於編制索引的 ru 和儲存體。 [深入瞭解如何修改索引原則。](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>將 Azure Cosmos DB 查詢頁面大小 (MaxItemCount) 設定為-1 
 
-Azure Advisor 識別使用查詢頁面大小100的 Azure Cosmos DB 容器。 建議使用頁面大小-1 以加快掃描速度。 [深入瞭解 MaxItemCount。](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure Advisor 識別使用查詢頁面大小100的 Azure Cosmos DB 容器。 建議使用頁面大小-1 以加快掃描速度。 [深入瞭解 MaxItemCount。](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>考慮使用 HBase 叢集中的加速寫入功能來改善叢集效能
 Azure Advisor 在過去7天內分析系統記錄，並識別您的叢集是否遇到下列情況：
 1. 高 WAL 同步時間延遲 
 2. 高寫入要求計數 (至少 3 個超過 1000 avg_write_requests/second/node 的一小時視窗)
 
-這些條件是您的叢集飽受高寫入延遲所苦的指標。 這可能是因為在您的叢集上執行了繁重的工作負載。若要改善叢集的效能，您可能會想要考慮利用 Azure HDInsight HBase 所提供的加速寫入功能。 HDInsight Apache HBase 叢集的加速寫入功能會將進階 SSD 受控磁碟附加到每個 RegionServer (背景工作節點)，而不是使用雲端儲存體。 因此會為您的應用程式帶來低寫入延遲和更佳的復原能力。 若要[深入瞭解](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)這項功能，請參閱
+這些條件是您的叢集飽受高寫入延遲所苦的指標。 這可能是因為在您的叢集上執行了繁重的工作負載。若要改善叢集的效能，您可能會想要考慮利用 Azure HDInsight HBase 所提供的加速寫入功能。 HDInsight Apache HBase 叢集的加速寫入功能會將進階 SSD 受控磁碟附加到每個 RegionServer (背景工作節點)，而不是使用雲端儲存體。 因此會為您的應用程式帶來低寫入延遲和更佳的復原能力。 若要[深入瞭解](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)這項功能，請參閱
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>查看 Azure 資料總管資料表快取期間 (原則) 以取得較佳的效能 (預覽) 
 這項建議會顯示 Azure 資料總管資料表，其中包含大量查詢，會往回查看已設定的快取期間 (原則) 以外的範圍 (您會看到依據存取快取資料的查詢百分比排列的前 10 個資料表)。 改善叢集效能的建議動作：將此資料表的查詢限制為最小的所需時間範圍 (在定義的原則內)。 或者，如果需要來自整個時間範圍的資料，請將快取期間增加為建議的值。
@@ -169,11 +169,11 @@ Advisor 分析指出由於臨時表參數設定不足，您的 MySQL 伺服器�
 Advisor 會識別未散發資料，但仍留在協調器上的伺服器群組。 根據這一點，Advisor 建議您針對完整超大規模 (Citus) 權益將資料散發至您伺服器群組的背景工作節點。 這會利用伺服器群組中每個節點的資源來改善查詢效能。 [深入了解](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>藉由部署更接近 Windows 虛擬桌面部署位置的 Vm，來改善使用者體驗和連線能力
-使用 Windows 虛擬桌面 (WVD)，我們判斷您的 VM 位置與使用者連線的區域不同或更遠。 這可能會導致連線回應時間變長，並會影響 WVD 的整體使用者體驗。 建立主機集區的 VM 時，您應該嘗試使用更接近使用者的區域。 較近的鄰近性可讓維持使用者對 WVD 服務的滿意度，同時獲得更好的整體體驗品質。 若[要深入瞭解連接延遲](https://docs.microsoft.com/azure/virtual-desktop/connection-latency)，請參閱。
+使用 Windows 虛擬桌面 (WVD)，我們判斷您的 VM 位置與使用者連線的區域不同或更遠。 這可能會導致連線回應時間變長，並會影響 WVD 的整體使用者體驗。 建立主機集區的 VM 時，您應該嘗試使用更接近使用者的區域。 較近的鄰近性可讓維持使用者對 WVD 服務的滿意度，同時獲得更好的整體體驗品質。 若[要深入瞭解連接延遲](../virtual-desktop/connection-latency.md)，請參閱。
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升級到最新版本的沈浸式閱讀程式 SDK
 我們發現此訂用帳戶下的資源使用過時的沈浸式閱讀程式 SDK 版本。 使用最新版本的沈浸式閱讀程式 SDK 可為您提供更新的安全性、效能和擴充的功能集，以便自訂及增強您的整合體驗。
-深入瞭解 [沉浸式讀取器 SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)。
+深入瞭解 [沉浸式讀取器 SDK](../cognitive-services/immersive-reader/index.yml)。
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何存取 Advisor 中的效能建議

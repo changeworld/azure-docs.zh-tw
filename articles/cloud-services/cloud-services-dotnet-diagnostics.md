@@ -11,20 +11,20 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: 397239f92e3b07669a22481b07a67d9859176b7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932333"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077536"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 雲端服務中啟用 Azure 診斷
-如需有關 Azure 診斷的背景資訊，請參閱 [Azure 診斷概觀](../azure-diagnostics.md) 。
+如需有關 Azure 診斷的背景資訊，請參閱 [Azure 診斷概觀](../azure-monitor/platform/diagnostics-extension-overview.md) 。
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在背景工作角色中啟用診斷
 本逐步解說說明如何實作 Azure 背景工作角色，該角色使用 .NET EventSource 類別發出遙測資料。 Azure 診斷可用來收集遙測資料，並將資料儲存在 Azure 儲存體帳戶。 建立背景工作角色時，Visual Studio 會自動啟用診斷 1.0 來作為 Azure SDK for .NET 2.4 及更早版本中解決方案的一部分。 下列指示說明建立背景工作角色、從解決方案停用診斷 1.0，以及將診斷 1.2 或 1.3 部署至背景工作角色的程序。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 本文假設您擁有 Azure 訂用帳戶，並且搭配 Azure SDK 使用 Visual Studio。 如果您沒有 Azure 訂用帳戶，可以註冊 [免費試用版][Free Trial]。 請務必[安裝並設定 Azure PowerShell 0.8.7 版或更新版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-worker-role"></a>步驟 1：建立背景工作角色
@@ -188,20 +188,17 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>組態檔結構描述
-診斷組態檔定義當診斷代理程式啟動時，用來初始化診斷組態設定的值。 如需相關的有效值和範例，請參閱 [最新的結構描述參考](/azure/azure-monitor/platform/diagnostics-extension-schema) 。
+診斷組態檔定義當診斷代理程式啟動時，用來初始化診斷組態設定的值。 如需相關的有效值和範例，請參閱 [最新的結構描述參考](../azure-monitor/platform/diagnostics-extension-versions.md) 。
 
 ## <a name="troubleshooting"></a>疑難排解
-如果您遇到困難，請參閱 [Azure 診斷的疑難排解](../azure-diagnostics-troubleshooting.md) ，以解決常見的問題。
+如果您遇到困難，請參閱 [Azure 診斷的疑難排解](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) ，以解決常見的問題。
 
 ## <a name="next-steps"></a>後續步驟
 [請參閱相關的 Azure 虛擬機器診斷文章清單](../azure-monitor/platform/diagnostics-extension-overview.md)，以變更您收集的資料、為問題進行疑難排解，或深入了解一般的診斷。
 
-[EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
+[EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 
 [Debugging an Azure Application]: https://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
-[Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
+[Collect Logging Data by Using Azure Diagnostics]: /previous-versions/azure/gg433048(v=azure.100)
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: /powershell/azure/
-
-
-

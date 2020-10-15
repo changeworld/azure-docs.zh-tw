@@ -1,18 +1,18 @@
 ---
 title: 設定 ExpressRoute 加密：適用于 Azure 虛擬 WAN 的 IPsec over ExpressRoute
-description: 在本教學課程中，瞭解如何使用 Azure 虛擬 WAN 透過 ExpressRoute 私用對等互連來建立站對站 VPN 連線。
+description: 瞭解如何使用 Azure 虛擬 WAN 透過 ExpressRoute 私用對等互連來建立站對站 VPN 連線。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827951"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079049"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute encryption：透過 ExpressRoute 進行虛擬 WAN 的 IPsec
 
@@ -115,7 +115,7 @@ ms.locfileid: "91827951"
 1. 針對 [ **使用 Azure 私人 IP 位址**]，選取 **[是]**。 此設定會將中樞 VPN 閘道設定為在此連線的閘道上的中樞位址範圍內使用私人 IP 位址，而不是使用公用 IP 位址。 這可確保來自內部部署網路的流量會流經 ExpressRoute 私用對等互連路徑，而不是使用公用網際網路來進行此 VPN 連接。 下列螢幕擷取畫面顯示設定：
 
    :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="透過 ExpressRoute 的 VPN" border="false":::
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 儲存變更之後，中樞 VPN 閘道將會使用 VPN 閘道上的私人 IP 位址，透過 ExpressRoute 與內部部署 VPN 裝置建立 IPsec/IKE 連線。
 

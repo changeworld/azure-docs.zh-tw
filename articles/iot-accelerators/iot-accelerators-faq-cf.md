@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82792372"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078250"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
 
@@ -125,7 +125,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何檢查模擬是否傳送資料至雲端？
 
-使用 [Azure Iot Explorer](https://github.com/Azure/azure-iot-explorer) 或 [Azure iot CLI 擴充功能監視-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) 命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+使用 [Azure Iot Explorer](https://github.com/Azure/azure-iot-explorer) 或 [Azure iot CLI 擴充功能監視-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) 命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 檢查由其中一個發行工具裝置傳送的資料：
 
@@ -190,10 +190,10 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 1. 重新啟動連線的處理站 App Service。
 
-### <a name="next-steps"></a>接下來的步驟
+### <a name="next-steps"></a>後續步驟
 
 您也可以探索 IoT 解決方案加速器的一些其他特性與功能：
 
-* [預測性維護解決方案加速器概觀](iot-accelerators-predictive-overview.md)
+* [預測性維護解決方案加速器概觀](./iot-accelerators-predictive-walkthrough.md)
 * [部署連線的處理站解決方案加速器](quickstart-connected-factory-deploy.md) \(英文\)
-* [從頭建立 IoT 安全性](/azure/iot-fundamentals/iot-security-ground-up)
+* [從頭建立 IoT 安全性](../iot-fundamentals/iot-security-ground-up.md)

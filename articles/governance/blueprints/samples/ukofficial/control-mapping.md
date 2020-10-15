@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL 與 UK NHS 藍圖範例控制項
-description: UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
+description: UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540382"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931267"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應
 
@@ -17,7 +17,7 @@ ms.locfileid: "91540382"
 以下是 **UK OFFICIAL** 和 **UK NHS** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 UK OFFICIAL 和 UK NHS 控制項並部署特定的 VM 擴充功能，以支援稽核需求**內建原則計畫。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md) \(英文\)。
 
 ## <a name="1-data-in-transit-protection"></a>1 傳輸中的資料保護
 
@@ -33,8 +33,7 @@ ms.locfileid: "91540382"
 
 ## <a name="23-data-at-rest-protection"></a>2.3 待用資料保護
 
-此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以強制執行特定的密碼編譯控制項及稽核弱式密碼編譯設定的使用，藉此協助您強制執行密碼編譯控制項的使用原則。
-了解您的 Azure 資源在哪些層面可能使用非最佳化的密碼編譯組態，有助於您採取更正措施，以確保資源會根據您的資訊安全性原則進行設定。 具體而言，此藍圖所指派的原則會要求 Data Lake Storage 帳戶進行加密；SQL 資料庫必須進行透明資料加密；稽核儲存體帳戶、SQL 資料庫、虛擬機器磁碟和自動化帳戶變數是否缺少加密；稽核儲存體帳戶和 Redis 快取的連線是否不安全；稽核弱式虛擬機器密碼加密；稽核未加密的 Service Fabric 通訊。
+此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以強制執行特定的密碼編譯控制項及稽核弱式密碼編譯設定的使用，藉此協助您強制執行密碼編譯控制項的使用原則。 了解您的 Azure 資源在哪些層面可能使用非最佳化的密碼編譯組態，有助於您採取更正措施，以確保資源會根據您的資訊安全性原則進行設定。 具體而言，此藍圖所指派的原則會要求 Data Lake Storage 帳戶進行加密；SQL 資料庫必須進行透明資料加密；稽核儲存體帳戶、SQL 資料庫、虛擬機器磁碟和自動化帳戶變數是否缺少加密；稽核儲存體帳戶和 Redis 快取的連線是否不安全；稽核弱式虛擬機器密碼加密；稽核未加密的 Service Fabric 通訊。
 
 - 應在虛擬機器上套用磁碟加密
 - 應加密自動化帳戶變數
@@ -76,7 +75,8 @@ ms.locfileid: "91540382"
 
 ## <a name="9-secure-user-management"></a>9 安全的使用者管理 
 
-Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure 中資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以稽核具有擁有者及/或讀取/寫入權限的外部帳戶，及具有擁有者、讀取及/或寫入權限且未啟用多重要素驗證的帳戶，藉此協助您限制及控制特殊權限的存取權。
+Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure 中資源的人員。
+您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以稽核具有擁有者及/或讀取/寫入權限的外部帳戶，及具有擁有者、讀取及/或寫入權限且未啟用多重要素驗證的帳戶，藉此協助您限制及控制特殊權限的存取權。
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA
@@ -101,7 +101,8 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 - 應針對 SQL 伺服器佈建 Azure Active Directory 管理員
 - Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證
 
-此藍圖也指派了 Azure 原則定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和外部帳戶。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了兩項 Azure 原則定義來稽核應考慮移除的停用帳戶。
+此藍圖也指派了 Azure 原則定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和外部帳戶。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。
+此藍圖指派了兩項 Azure 原則定義來稽核應考慮移除的停用帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
@@ -137,7 +138,8 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 
 ## <a name="11-external-interface-protection"></a>11 外部介面保護
 
-除了使用超過 25 個原則來進行適當的安全使用者管理以外，此藍圖也指派了 [Azure 原則](../../../policy/overview.md)定義以監視不受限的儲存體帳戶，藉此協助您保護服務介面免於遭受未經授權的存取。 存取不受限制的儲存體帳戶可允許資訊系統內所包含的資訊受到非預期的存取。 此藍圖也指派一個原則，以在虛擬機器上啟用自適性應用程式控制。
+除了使用超過 25 個原則來進行適當的安全使用者管理以外，此藍圖也指派了 [Azure 原則](../../../policy/overview.md)定義以監視不受限的儲存體帳戶，藉此協助您保護服務介面免於遭受未經授權的存取。
+存取不受限制的儲存體帳戶可允許資訊系統內所包含的資訊受到非預期的存取。 此藍圖也指派一個原則，以在虛擬機器上啟用自適性應用程式控制。
 
 - 稽核不受限制的儲存體帳戶網路存取
 - 應在虛擬機器上啟用自適性應用程式控制
@@ -151,7 +153,8 @@ Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure �
 
 ## <a name="13-audit-information-for-users"></a>13 稽核使用者的資訊
 
-此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。 指派的原則也會稽核虛擬機器是否未將記錄傳送至指定的記錄分析工作區。
+此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。
+指派的原則也會稽核虛擬機器是否未將記錄傳送至指定的記錄分析工作區。
 
 - 應在 SQL 伺服器上啟用進階資料安全性
 - 稽核診斷設定

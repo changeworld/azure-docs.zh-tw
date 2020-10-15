@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: e789810240b1a537e8cc3a18351f0b2a066cb4e1
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018860"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069869"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -129,7 +129,7 @@ Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在�
 - **是多重值嗎？** - 屬性是否支援多個值。
 - **大小寫完全相符嗎？** - 是否以區分大小寫的方式評估屬性值。
 - **API 運算式** - 不使用，除非特定佈建連接器 (例如 Workday) 的文件另有指示。
-- **參考的物件屬性** - 如果這是參考類型屬性，則此功能表可讓您在目標應用程式中選取包含屬性相關值的資料表和屬性。 例如，如果您有名為 "Department" 的屬性，且其儲存值參考了個別 "Departments" 資料表中的物件，則您會選取 "Departments.Name"。 支援指定應用程式的參考資料表和主要識別碼欄位都是預先設定的，且目前無法使用 Azure 入口網站加以編輯，但可使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) 來編輯。
+- **參考的物件屬性** - 如果這是參考類型屬性，則此功能表可讓您在目標應用程式中選取包含屬性相關值的資料表和屬性。 例如，如果您有名為 "Department" 的屬性，且其儲存值參考了個別 "Departments" 資料表中的物件，則您會選取 "Departments.Name"。 支援指定應用程式的參考資料表和主要識別碼欄位都是預先設定的，且目前無法使用 Azure 入口網站加以編輯，但可使用 [Microsoft Graph API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) 來編輯。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>將自訂延伸模組屬性佈建至符合 SCIM 規範的應用程式
 SCIM RFC 會定義核心使用者和群組結構描述，同時允許結構描述的延伸，以符合您應用程式的需求。 若要將自訂屬性新增至 SCIM 應用程式：

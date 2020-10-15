@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445861"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078097"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>如何在法規合規性儀表板中自訂一組標準
 
@@ -84,6 +84,31 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
     > 新增的標準可能需要幾個小時的時間，才會出現在合規性儀表板中。
 
     [![顯示舊版和新版 Azure CIS 的法規合規性儀表板](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
+
+
+## <a name="removing-a-standard-from-your-dashboard"></a>從儀表板移除標準
+
+如果任何一項提供的法規標準與您的組織無關，則直接從 UI 中移除它們是簡單的流程。 這可讓您進一步自訂法規合規性儀表板，並僅專注于適用于您的標準。
+
+若要移除標準：
+
+1. 從 [安全性中心] 功能表中，選取 [ **安全性原則**]。
+
+1. 選取您要從中移除標準的相關訂用帳戶。
+
+    > [!NOTE]
+    > 您可以從訂用帳戶中移除標準，但不能從管理群組中移除。 
+
+    [安全性原則] 頁面隨即開啟。 針對選取的訂用帳戶，它會顯示預設原則、產業和法規標準，以及您已建立的任何自訂行動。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="在 Azure 資訊安全中心中從您的法規合規性儀表板移除法規標準":::
+
+1. 針對您想要移除的標準，請選取 [ **停**用]。 確認視窗隨即出現。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="在 Azure 資訊安全中心中從您的法規合規性儀表板移除法規標準":::
+
+1. 選取 [是]。 將會移除標準。 
+
 
 ## <a name="next-steps"></a>後續步驟
 

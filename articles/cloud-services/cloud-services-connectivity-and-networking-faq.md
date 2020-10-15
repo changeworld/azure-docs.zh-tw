@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f57cc16cad4c0b081478932f820c983e4bbdc7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533412"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070022"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之連線能力和網路服務問題：常見問題集 (FAQ)
 
@@ -40,7 +40,7 @@ ms.locfileid: "91533412"
 
 若要測試連線能力，建議您進行連接埠偵測。 當 Ping.exe 使用 ICMP 時，您可以使用諸如 PSPing、Nmap 及 telnet 等其他工具來測試對特定 TCP 通訊埠的連線。
 
-如需詳細資訊，請參閱[使用連接埠偵測而非 ICMP 來測試 Azure VM 連線能力](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)。
+如需詳細資訊，請參閱[使用連接埠偵測而非 ICMP 來測試 Azure VM 連線能力](/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity)。
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>如何避免接收來自未知 IP 位址的成千上萬個叫用，其可能表示對雲端服務的惡意攻擊？
 Azure 會實作多層的網路安全性，可保護其平台服務免於遭受分散式阻斷服務 (DDoS) 攻擊。 Azure DDoS 防禦系統是屬於 Azure 的連續監視流程，會透過滲透測試持續進行改良。 此 DDoS 防禦系統的設計，不僅可承受來自外部的攻擊，還能承受來自其他 Azure 租用戶的攻擊。 如需詳細資訊，請參閱 [Azure 網路安全性](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
@@ -67,7 +67,7 @@ Azure 會實作多層的網路安全性，可保護其平台服務免於遭受�
 
 IIS 的 URL Rewrite 模組可用來將流向雲端服務 (例如，\*.cloudapp.net) 預設 URL 的流量重新導向至某些自訂名稱/URL。 由於預設會在 web 角色上啟用 URL 重寫模組，且其規則是在應用程式的 web.config 中進行設定，因此無論重新開機/映射為何，都一律可在 VM 上使用。如需詳細資訊，請參閱：
 
-- [建立 URL Rewrite 模組的重寫規則](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [建立 URL Rewrite 模組的重寫規則](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [移除預設的連結](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何封鎖/停用我雲端服務的預設 URL 傳入流量？

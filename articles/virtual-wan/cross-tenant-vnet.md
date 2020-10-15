@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571317"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078964"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>將跨租使用者 Vnet 連接到虛擬 Wan 中樞
 
@@ -54,7 +54,7 @@ ms.locfileid: "91571317"
 1. 接下來，將遠端租使用者訂用帳戶和父租使用者訂用帳戶新增至目前的 PowerShell 會話。 執行下列命令。 如果您已登入父系，則只需要執行遠端租使用者的命令。
 
    ```azurepowershell-interactive
-   Add-AzAccount “xxxxx-b34a-4df9-9451-4402dcaecc5b”
+   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. 使用父認證登入 Azure PowerShell，並執行下列命令，以確認角色指派是否成功：
@@ -72,25 +72,25 @@ ms.locfileid: "91571317"
 1. 藉由執行下列命令，確定您是在遠端帳戶的內容中：
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[remote ID]”
+   Select-AzSubscription -SubscriptionId "[remote ID]"
    ```
 
 1. 建立本機變數，以儲存您要連線至中樞之虛擬網路的中繼資料。
 
    ```azurepowershell-interactive
-   $remote = Get-AzVirtualNetwork -Name "[v-net name]" -ResourceGroupName "[resource group name]"
+   $remote = Get-AzVirtualNetwork -Name "[vnet name]" -ResourceGroupName "[resource group name]"
    ```
 
 1. 切換回父帳戶。
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[parent ID]”
+   Select-AzSubscription -SubscriptionId "[parent ID]"
    ```
 
 1. 將 VNet 連線到中樞。
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[Parent Resource Group Name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
    ```
 
 1. 您可以在 PowerShell 或 Azure 入口網站中查看新的連接。

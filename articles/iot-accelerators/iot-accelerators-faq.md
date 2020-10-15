@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462542"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078216"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解決方案加速器的常見問題集
 
@@ -65,7 +65,7 @@ ms.locfileid: "89462542"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>哪裡可以找到舊版遠端監視解決方案的相關資訊？
 
-舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在中找到封存的檔 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 。
+舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在中找到封存的檔 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) 。
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>是否可在與現有解決方案相同的地理區域中使用新的解決方案加速器？
 
@@ -101,13 +101,13 @@ ms.locfileid: "89462542"
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>如何刪除 Azure AD 租用戶？
 
-請參閱 Eric Golpe 的部落格文章：[刪除 Azure AD 租用戶的逐步解說](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)。
+請參閱 Eric Golpe 的部落格文章：[刪除 Azure AD 租用戶的逐步解說](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)。
 
 ### <a name="next-steps"></a>後續步驟
 
 您也可以探索 IoT 解決方案加速器的一些其他特性與功能：
 
 * [探索遠端監視解決方案加速器的功能](quickstart-remote-monitoring-deploy.md)
-* [預測性維護解決方案加速器概觀](iot-accelerators-predictive-overview.md)
+* [預測性維護解決方案加速器概觀](./iot-accelerators-predictive-walkthrough.md)
 * [部署連線的處理站解決方案加速器](quickstart-connected-factory-deploy.md) \(英文\)
-* [從頭建立 IoT 安全性](/azure/iot-fundamentals/iot-security-ground-up)
+* [從頭建立 IoT 安全性](../iot-fundamentals/iot-security-ground-up.md)
