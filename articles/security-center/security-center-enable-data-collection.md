@@ -6,34 +6,39 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5c9540bed34de3cad5c74c7041c8d7e06aef9ca
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447234"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946054"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器 (VM)、虛擬機器擴展集、IaaS 容器和非 Azure (包括內部部署機器) 電腦收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
 
-必須收集資料，才能掌握遺漏的更新、設定錯誤的 OS 安全性設定、端點保護狀態，以及健康情況和威脅防護。 
+必須收集資料，才能掌握遺漏的更新、設定錯誤的 OS 安全性設定、端點保護狀態，以及健康情況和威脅防護。 計算資源 (VM、虛擬機器擴展集、IaaS 容器和非 Azure 電腦) 才需要收集資料。 即使您未佈建代理程式，也可受惠於 Azure 資訊安全中心；不過，您的安全性有限，而且不支援以上所列的功能。  
 
-本文說明如何安裝 Log Analytics 代理程式，以及設定用於儲存所收集資料的 Log Analytics 工作區。 需要執行這兩項作業，才能啟用資料收集。 
+本文說明如何安裝 Log Analytics 代理程式，以及設定用於儲存所收集資料的 Log Analytics 工作區。 需要執行這兩項作業，才能啟用資料收集。 將資料儲存在 Log Analytics 中，不論您使用新的或現有的工作區，都可能會產生額外的資料儲存費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-> [!NOTE]
-> - 計算資源 (VM、虛擬機器擴展集、IaaS 容器和非 Azure 電腦) 才需要收集資料。 即使您未佈建代理程式，也可受惠於 Azure 資訊安全中心；不過，您的安全性有限，而且不支援以上所列的功能。  
-> - 如需支援的平台清單，請參閱 [Azure 資訊安全中心支援的平台](security-center-os-coverage.md)。
-> - 將資料儲存在 Log Analytics 中，不論您使用新的或現有的工作區，都可能會產生額外的資料儲存費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+> [!TIP]
+> 如需支援的平台清單，請參閱 [Azure 資訊安全中心支援的平台](security-center-os-coverage.md)。
 
 ## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a><a name="auto-provision-mma">啟用 Log Analytics 代理程式的自動佈建</a>
+
+> [!NOTE]
+> Azure Sentinel 的使用者：請注意，可以從 Azure 資訊安全中心或 Azure Sentinel (但不能兩者) 設定在單一工作區的內容中收集安全性事件。 如果您打算將 Azure Sentinel 新增至已經收到來自 Azure 資訊安全中心的 Azure Defender 警示並已設定要收集安全性事件的工作區，您有兩個選項：
+> - 讓 Azure 資訊安全中心的 [安全性事件] 收集保持原狀。 您將能夠在 Azure Sentinel 和 Azure Defender 中查詢及分析這些事件。 但是，您將無法在 Azure Sentinel 中監視連接器的連線狀態或變更其組態。 如果這對您很重要，請考慮第二個選項。
+>
+> - 在 Azure 資訊安全中心[停用安全性事件收集](#data-collection-tier)，然後只在 Azure Sentinel 中新增安全性事件連接器。 如同第一個選項，您將能夠同時在 Azure Sentinel 和 Azure Defender/ASC 中查詢及分析事件，但您現在能夠監視連接器的連線狀態，或只在 Azure Sentinel 中變更其組態。
+
 
 若要從機器收集資料，您應該安裝 Log Analytics 代理程式。 代理程式可以自動完成安裝 (建議選項)，您也可以手動安裝代理程式。 預設會關閉自動佈建。
 
 自動佈建開啟時，資訊安全中心會在所有支援的 Azure 虛擬機器和任何新建立的虛擬機器上部署 Log Analytics 代理程式。 建議使用自動布建，但如有必要，您可以手動安裝代理程式 (請參閱 [手動安裝 Log Analytics 代理程式](#manual-agent))。
 
-
+資訊安全中心會利用部署到電腦上的代理程式，提供與系統更新狀態、作業系統安全性組態、端點防護相關的額外建議，以及產生額外的安全性警示。
 
 啟用 Log Analytics 代理程式的自動佈建：
 
@@ -44,20 +49,9 @@ ms.locfileid: "91447234"
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
 
->[!TIP]
-> 如果需要佈建工作區，代理程式安裝最多可能需要 25 分鐘的時間。
+    >[!TIP]
+    > 如果需要佈建工作區，代理程式安裝最多可能需要 25 分鐘的時間。
 
-資訊安全中心會利用部署到電腦上的代理程式，提供與系統更新狀態、作業系統安全性組態、端點防護相關的額外建議，以及產生額外的安全性警示。
-
->[!NOTE]
-> 將自動佈建設為**關閉**不會從已佈建代理程式的 Azure VM 中移除 Log Analytics 代理程式。 停用自動佈建會限制對資源的安全性監視。
-
->[!NOTE]
-> - 如需佈建預先存在的安裝的相關指示，請參閱[在預先存在的代理程式安裝情況下自動佈建](#preexisting)。
-> - 如需手動佈建的指示，請參閱[手動安裝 Log Analytics 代理程式擴充功能](#manual-agent)。
-> - 如需有關關閉自動佈建的指示，請參閱[關閉自動佈建](#offprovisioning)。
-> - 如需有關如何使用 PowerShell 上架資訊安全中心的說明，請參閱[使用 PowerShell 自動化上架 Azure 資訊安全中心](security-center-powershell-onboarding.md)。
->
 
 ## <a name="workspace-configuration"></a>工作區設定
 資訊安全中心收集的資料會儲存在 Log Analytics 工作區。 您可以從 Azure VM 收集資料，並將其儲存於資訊安全中心建立的工作區中，或儲存於您建立的現有工作區中。 
@@ -147,20 +141,16 @@ ms.locfileid: "91447234"
 在 Azure 資訊安全中心中選取 [資料收集層]，只會影響 Log Analytics 工作區中安全性事件的儲存空間。 無論您選擇在 Log Analytics 工作區中儲存哪一層的安全性事件 (如果有的話)，Log Analytics 代理程式仍會收集並分析 Azure 資訊安全中心威脅防護所需的安全性事件。 選擇在工作區中儲存安全性事件，將允許在工作區中調查、搜尋和稽核這些事件。 
 > [!NOTE]
 > 將資料儲存在 Log Analytics 中，可能會產生額外的資料儲存費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
-> 
-> 對於訂用帳戶和工作區，您可以從儲存在您工作區的四組事件中選擇合適的篩選原則： 
 
+對於訂用帳戶和工作區，您可以從儲存在您工作區的四組事件中選擇合適的篩選原則： 
 - **無** – 停用安全性事件的儲存空間。 這是預設值。
 - **最小** – 適合想要將事件數量最小化的客戶，是較小的一組事件。
 - **一般** – 這組事件能滿足大部分客戶的需求，而能讓這些客戶使用完整的稽核記錄。
 - **所有事件** – 適合想要確定已儲存所有事件的客戶。
 
+這些安全性事件集僅適用於 Azure Defender。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
 
-> [!NOTE]
-> 這些安全性事件集僅適用於 Azure Defender。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
 這些集合都是設計用來處理一般情況。 實作之前，請務必評估哪一個適合您的需求。
->
->
 
 為了判定屬於**一般**和**最小**事件集合的事件，我們致力於與客戶合作並配合業界標準，以了解每個事件及其使用方式的未篩選頻率。 此流程中採取下列指導方針：
 
@@ -264,9 +254,8 @@ ms.locfileid: "91447234"
 
 1. 如果您想要使用 Resource Manager 範本在新的 VM 上部署代理程式，請安裝 Log Analytics 代理程式：
 
-   a.  [安裝適用於 Windows 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-windows.md)
-    
-   b.  [安裝適用於 Linux 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-linux.md)
+   - [安裝適用於 Windows 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-windows.md)
+   - [安裝適用於 Linux 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-linux.md)
 
 1. 若要在現有的 VM 上部署擴充功能，請遵循[收集有關 Azure 虛擬機器的資料](../azure-monitor/learn/quick-collect-azurevm.md)中的指示。
 
@@ -277,7 +266,6 @@ ms.locfileid: "91447234"
 1. 若要使用 PowerShell 來部署擴充功能，請使用虛擬機器文件中的指示：
 
     - [Windows 電腦](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
-
     - [Linux 機器](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
 
 
@@ -302,8 +290,8 @@ ms.locfileid: "91447234"
 ## <a name="next-steps"></a>後續步驟
 本文說明資料收集和自動佈建如何在資訊安全中心運作。 若要深入了解資訊安全中心，請參閱下列頁面：
 
-* [Azure 資訊安全中心常見問題集](faq-general.md)-- 尋找有關使用服務的常見問題。
-* [Azure 資訊安全中心的安全性健康狀態監視](security-center-monitoring.md)--了解如何監視 Azure 資源的健康狀態。
+- [Azure 資訊安全中心常見問題集](faq-general.md)-- 尋找有關使用服務的常見問題。
+- [Azure 資訊安全中心的安全性健康狀態監視](security-center-monitoring.md)--了解如何監視 Azure 資源的健康狀態。
 
 
 

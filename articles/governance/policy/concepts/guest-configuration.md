@@ -1,14 +1,14 @@
 ---
 title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974714"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075479"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -18,8 +18,7 @@ Azure 原則可以針對在 Azure 中執行的機器和 [Arc 連接的機器](..
 - 應用程式設定或目前狀態
 - 環境設定
 
-Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
-其不會套用設定。 例外狀況是[下面所參照](#applying-configurations-using-guest-configuration)的內建原則。
+目前，大部分 Azure 原則的來賓設定原則定義只會在機器內審核設定。 其不會套用設定。 例外狀況是[下面所參照](#applying-configurations-using-guest-configuration)的內建原則。
 
 ## <a name="enable-guest-configuration"></a>啟用來賓設定
 
@@ -59,8 +58,7 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 ## <a name="supported-client-types"></a>支援的用戶端類型
 
-「來賓設定」原則包含在新版本中。 如果來賓設定代理程式不相容，則會排除 Azure Marketplace 中可用的舊版作業系統。
-下表顯示 Azure 映像上的支援作業系統清單：
+來賓設定原則定義包含新版本。 如果來賓設定代理程式不相容，則會排除 Azure Marketplace 中可用的舊版作業系統。 下表顯示 Azure 映像上的支援作業系統清單：
 
 |發行者|名稱|版本|
 |-|-|-|
@@ -72,7 +70,7 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 |Red Hat|Red Hat Enterprise Linux|7.4-7。8|
 |Suse|SLES|12 SP3-SP5|
 
-只要自訂虛擬機器映像是上表中的其中一個作業系統，「來賓設定」原則就會提供支援。
+來賓設定原則定義支援自訂虛擬機器映射，只要它們是上述表格中的其中一個作業系統。
 
 ## <a name="network-requirements"></a>網路需求
 
@@ -86,7 +84,7 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 
 ### <a name="communicate-over-private-link-in-azure"></a>透過 Azure 中的私人連結進行通訊
 
-虛擬機器可以使用 [私人連結](../../../private-link/private-link-overview.md) 來與來賓設定服務進行通訊。 套用具有名稱 `EnablePrivateNeworkGC` 和值的標記 `TRUE` 以啟用此功能。 在將來賓設定原則套用至電腦之前或之後，都可以套用標記。
+虛擬機器可以使用 [私人連結](../../../private-link/private-link-overview.md) 來與來賓設定服務進行通訊。 套用具有名稱 `EnablePrivateNeworkGC` 和值的標記 `TRUE` 以啟用此功能。 將來賓設定原則定義套用至電腦之前或之後，都可以套用標記。
 
 使用 Azure [虛擬公用 IP 位址](../../../virtual-network/what-is-ip-address-168-63-129-16.md) 來路由傳送流量，以使用 azure 平臺資源建立安全、已驗證的通道。
 
@@ -111,9 +109,9 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 
-來賓設定原則會使用 **AuditIfNotExists** 效果。 當指派定義時，後端服務會自動處理 `Microsoft.GuestConfiguration` Azure 資源提供者中所有需求的生命週期。
+來賓設定原則定義會使用 **AuditIfNotExists** 效果。 當指派定義時，後端服務會自動處理 `Microsoft.GuestConfiguration` Azure 資源提供者中所有需求的生命週期。
 
-**AuditIfNotExists**原則在電腦上符合所有需求之前，不會傳回合規性結果。 [Azure 虛擬機器的部署需求](#deploy-requirements-for-azure-virtual-machines)一節中會說明這些需求
+**AuditIfNotExists**原則定義在電腦上符合所有需求之前，不會傳回合規性結果。 [Azure 虛擬機器的部署需求](#deploy-requirements-for-azure-virtual-machines)一節中會說明這些需求
 
 > [!IMPORTANT]
 > 在先前的來賓設定版本中，需要有一個方案來結合 **DeployIfNoteExists** 和 **AuditIfNotExists** 定義。 不再需要**DeployIfNotExists**定義。 定義和 intiaitives 會加上標籤， `[Deprecated]` 但現有的指派仍將繼續運作。 如需詳細資訊，請參閱 blog 文章： [針對來賓設定稽核原則所發行的重要變更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
@@ -138,15 +136,15 @@ Azure 原則中的一項計畫可讓您依照「基準」來稽核作業系統�
 指派以 _Configure_ 開頭的定義時，您也必須指派 _Deploy prerequisites to enable Guest Configuration Policy on Windows VMs_ 這項定義。 如果您想要，可以將這些定義合併在計畫中。
 
 > [!NOTE]
-> 內建的時區原則是唯一支援在機器內部設定設定的定義，以及不支援在機器內設定設定的自訂原則。
+> 內建的時區原則是唯一支援在機器內部設定設定的定義，以及不支援在機器內部設定設定的自訂原則定義。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>將原則指派給 Azure 外部的機器
 
-「來賓設定」可用的稽核原則包括 **Microsoft.HybridCompute/machines** 資源類型。 系統會自動包含任何上線至 [適用於伺服器的 Azure Arc](../../../azure-arc/servers/overview.md) 且在原則指派範圍內的機器。
+適用于來賓設定的稽核原則定義包括 **HybridCompute/機器** 資源類型。 系統會自動包含任何上線至 [適用於伺服器的 Azure Arc](../../../azure-arc/servers/overview.md) 且在原則指派範圍內的機器。
 
 ### <a name="multiple-assignments"></a>多重指派
 
-「來賓設定」原則目前僅支援對每部電腦指派相同的來賓指派一次，即使原則指派使用不同的參數也一樣。
+來賓設定原則定義目前僅支援針對每部電腦指派相同的來賓指派一次，即使原則指派使用不同的參數也一樣。
 
 ## <a name="client-log-files"></a>用戶端記錄檔
 
