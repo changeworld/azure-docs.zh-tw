@@ -7,14 +7,14 @@ author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 3b22105486aabe8d79848d7ac621b9543815d106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d771c6dd114b252c070a0e56ba3ab23c597ad5aa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85366980"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088851"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>適用於 Azure 備份的 VM Snapshot Windows 擴充功能
 

@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 657373bdc899cb53c8dd934d18d144fe37eb370b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874324"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071501"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>從頭開始部署 OPC 對應項模組和相依性
 
@@ -25,8 +25,8 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 有幾個選項可以將模組部署到您的 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 閘道
 
-- [從 Azure 入口網站的 IoT Edge blade 部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
-- [使用 AZ CLI 進行部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
+- [從 Azure 入口網站的 IoT Edge blade 部署](../iot-edge/how-to-deploy-modules-portal.md)
+- [使用 AZ CLI 進行部署](../iot-edge/how-to-deploy-cli-at-scale.md)
 
 > [!NOTE]
 > 如需部署詳細資料和指示的詳細資訊，請參閱 GitHub 存放 [庫](https://github.com/Azure/azure-iiot-components)。
@@ -117,7 +117,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 1. 部署 OPC 對應 [項](howto-opc-twin-deploy-dependencies.md) 相依性，並取得產生的檔案 `.env` 。 請注意產生的檔案中已部署的 `hub name` `PCS_IOTHUBREACT_HUB_NAME` 變數 `.env` 。
 
-2. 註冊並啟動 [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 或 [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 閘道，並記下它 `device id` 。
+2. 註冊並啟動 [Linux](../iot-edge/how-to-install-iot-edge-linux.md) 或 [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge 閘道，並記下它 `device id` 。
 
 ### <a name="deploy-to-an-edge-device"></a>部署至 edge 裝置
 
@@ -143,7 +143,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   視需要填寫選擇性欄位。 如需容器建立選項、重新啟動原則和所需狀態的詳細資訊，請參閱 [EdgeAgent 所需屬性](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)。 如需模組對應項的詳細資訊，請參閱[定義或更新所需屬性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。
+   視需要填寫選擇性欄位。 如需容器建立選項、重新啟動原則和所需狀態的詳細資訊，請參閱 [EdgeAgent 所需屬性](../iot-edge/module-edgeagent-edgehub.md#edgeagent-desired-properties)。 如需模組對應項的詳細資訊，請參閱[定義或更新所需屬性](../iot-edge/module-composition.md#define-or-update-desired-properties)。
 
 7. 選取 [ **儲存** ] 並重複步驟 **5**。  
 
@@ -182,7 +182,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
 
 ### <a name="prerequisites"></a>必要條件
 
-1. 從[這裡](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)安裝最新版本的[Azure 命令列介面 (AZ) ](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
+1. 從[這裡](/cli/azure/install-azure-cli?view=azure-cli-latest)安裝最新版本的[Azure 命令列介面 (AZ) ](/cli/azure/?view=azure-cli-latest) 。
 
 ### <a name="quickstart"></a>快速入門
 
@@ -195,7 +195,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
    ```
 
    `device id`參數會區分大小寫。 內容參數會指向您已儲存的部署資訊清單檔案。 
-    ![az IoT Edge 設定模組輸出](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![az IoT Edge 設定模組輸出](/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. 將模組部署至裝置後，您可以使用下列命令檢視所有模組：
 
@@ -203,7 +203,7 @@ OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 裝置對應項和登�
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   裝置識別碼參數會區分大小寫。 ![az iot hub module-identity list 輸出](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   裝置識別碼參數會區分大小寫。 ![az iot hub module-identity list 輸出](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>後續步驟
 

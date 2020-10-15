@@ -8,22 +8,22 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 40e674594c80a076fc9775fd4315aee938a43593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79d9b2a0d706dd2d9861d068de0e4671db1c5158
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888686"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089106"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure 春季雲端的 CI/CD
 
-持續整合與持續傳遞工具可讓您快速地將更新部署至現有的應用程式，並使其具有極大的影響。 Azure DevOps 可協助您組織及控制這些重要工作。 目前，Azure 春季雲端未提供特定的 Azure DevOps 外掛程式。  不過，您可以使用 [Azure CLI](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops&preserve-view=true)工作，將您的春季雲端應用程式與 DevOps 整合。
+持續整合與持續傳遞工具可讓您快速地將更新部署至現有的應用程式，並使其具有極大的影響。 Azure DevOps 可協助您組織及控制這些重要工作。 目前，Azure 春季雲端未提供特定的 Azure DevOps 外掛程式。  不過，您可以使用 [Azure CLI](/azure/devops/pipelines/tasks/deploy/azure-cli?preserve-view=true&view=azure-devops)工作，將您的春季雲端應用程式與 DevOps 整合。
 
 本文說明如何搭配使用 Azure CLI 工作與 Azure 春季雲端來與 Azure DevOps 整合。
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>建立 Azure Resource Manager 服務連接
 
-請閱讀 [這篇文章](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true) ，以瞭解如何建立 Azure DevOps 專案的 Azure Resource Manager 服務連接。 請務必選取您要用於 Azure 春季雲端服務實例的相同訂用帳戶。
+請閱讀 [這篇文章](/azure/devops/pipelines/library/connect-to-azure?preserve-view=true&view=azure-devops) ，以瞭解如何建立 Azure DevOps 專案的 Azure Resource Manager 服務連接。 請務必選取您要用於 Azure 春季雲端服務實例的相同訂用帳戶。
 
 ## <a name="azure-cli-task-templates"></a>Azure CLI 工作範本
 ::: zone pivot="programming-language-csharp"

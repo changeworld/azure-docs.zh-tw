@@ -3,12 +3,12 @@ title: 指導方針和最佳做法
 description: 探索將雲端和內部部署工作負載備份至雲端的最佳做法和指導方針
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985527"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092302"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>將雲端和內部部署工作負載備份到雲端
 
@@ -42,13 +42,13 @@ Azure 備份可在內部部署和雲端)  (各種工作負載的資料保護。 
 
 * **惡意刪除保護–** 透過備份的虛刪除，防止任何意外和惡意的備份刪除備份。 已刪除的備份資料會免費儲存14天，並允許從這個狀態復原。
 
-* **安全加密的備份-** Azure 備份可確保您的備份資料以安全的方式儲存，並利用 Azure 平臺的內建安全性功能，例如 RBAC 和加密。
+* **安全加密的備份-** Azure 備份可確保您的備份資料以安全的方式儲存，並利用 Azure 平臺的內建安全性功能，例如 Azure RBAC 和加密。
 
 * **備份資料生命週期管理-** Azure 備份會自動清除較舊的備份資料，以符合保留原則。 您也可以將資料從操作儲存體分層到保存庫儲存體。
 
 ### <a name="management-plane"></a>管理平面
 
-* **存取控制** -保存庫 (復原服務和備份保存庫) 提供管理功能，並可透過 Azure 入口網站、備份中心、保存庫儀表板、SDK、CLI 和 REST api 來存取。 它也是 RBAC 界限，可讓您選擇只將備份的存取許可權制為已授權的備份管理員。
+* **存取控制** -保存庫 (復原服務和備份保存庫) 提供管理功能，並可透過 Azure 入口網站、備份中心、保存庫儀表板、SDK、CLI 和 REST api 來存取。 它也是 Azure RBAC 界限，可讓您選擇只將備份的存取許可權制為已授權的備份管理員。
 
 * **原則管理** –每個保存庫內的 Azure 備份原則會定義何時應該觸發備份，以及需要保留多久的時間。 您也可以管理這些原則，並將其套用到多個專案。
 

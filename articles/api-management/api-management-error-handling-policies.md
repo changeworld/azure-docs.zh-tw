@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243540"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070940"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理原則中的錯誤處理
 
@@ -80,7 +80,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 發生錯誤並控制跳至 `on-error` 原則區段時，錯誤會儲存在 [內容中。LastError](api-management-policy-expressions.md#ContextVariables) 屬性，可由一節中的原則來存取 `on-error` 。 LastError 具有下列屬性。
 
-| 名稱       | 類型   | 說明                                                                                               | 必要 |
+| 名稱       | 類型   | 描述                                                                                               | 必要 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | 字串 | 發生錯誤之元素的名稱。 可以是原則或內建的管線步驟名稱。      | 是      |
 | `Reason`   | 字串 | 方便電腦理解的錯誤碼，可用於處理錯誤。                                       | 否       |
@@ -183,11 +183,11 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 ![未經授權的錯誤回應](media/api-management-error-handling-policies/error-response.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需使用原則的詳細資訊，請參閱︰
 
 -   [API 管理中的原則](api-management-howto-policies.md)
 -   [轉換 API](transform-api.md)
 -   [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
--   [原則範例](policy-samples.md)
+-   [原則範例](./policy-reference.md)

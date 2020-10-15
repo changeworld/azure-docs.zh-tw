@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400701"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089684"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>設定及驗證虛擬網路或 VPN 連線
 
@@ -64,7 +64,7 @@ Azure VPN 閘道可讓您彈性地在 Azure 中排列幾乎任何一種已連線
 
 ![檢查虛擬網路對等互連設定的選項](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-針對 Azure PowerShell，請執行 [>set-azurermvirtualnetworkpeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) 命令以取得虛擬網路對等互連。 以下為範例：
+針對 Azure PowerShell，請執行 [>set-azurermvirtualnetworkpeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) 命令以取得虛擬網路對等互連。 以下是範例：
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -122,7 +122,7 @@ RemoteVirtualNetworkAddressSpace : null
 
 若要設定傳統虛擬網路與 Resource Manager 虛擬網路之間的連線，請參閱 [使用 Azure 入口網站從不同的部署模型連接虛擬網路](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal)。
 
-![Azure Resource Manager 虛擬網路的傳統虛擬網路連線](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![顯示 Azure Resource Manager 虛擬網路之傳統虛擬網路連線的圖表。](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 若要檢查當您將傳統虛擬網路連線至 Azure Resource Manager 虛擬網路時的設定，請遵循下列指示。
 

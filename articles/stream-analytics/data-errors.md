@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053145"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071994"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 串流分析資料錯誤
 
@@ -211,6 +211,10 @@ ms.locfileid: "88053145"
 ```
 
 ## <a name="output-data-errors"></a>輸出資料錯誤
+
+Azure 串流分析可以根據設定，識別輸出接收的輸出資料錯誤，或不使用 i/o 要求。 例如，  `PartitionKey` 當您使用 Azure 資料表輸出時，如果沒有 i/o 要求，就會遺失必要的資料行（例如）。 不過，SQL 輸出中的條件約束違規需要 i/o 要求。
+
+有幾個資料錯誤只能在呼叫輸出接收器之後偵測到，這可能會使處理速度變慢。 若要解決此問題，請變更作業的設定或造成資料錯誤的查詢。
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
