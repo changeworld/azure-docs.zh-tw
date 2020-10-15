@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017467"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072028"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教學課程：設定從 Azure AD 到 Workday 的屬性回寫
 本教學課程的目的是要說明從 Azure AD 到 Workday 的回寫屬性所需執行的步驟。 Workday 回寫布建應用程式支援將值指派給下列 Workday 屬性：
@@ -26,7 +26,7 @@ ms.locfileid: "90017467"
 * 工作行動電話號碼 (包括國家/地區代碼、區碼、數位) 
 * 工作移動主要旗標
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 將使用 Workday 的輸入布建整合設定為內部 [部署 AD 布建](workday-inbound-tutorial.md) 應用程式或 [workday 來 Azure AD](workday-inbound-cloud-only-tutorial.md) 布建應用程式之後，您可以選擇性地設定 workday 回寫應用程式，以將公司電子郵件和電話號碼等連絡人資訊寫入 Workday。 
 
@@ -144,16 +144,31 @@ ms.locfileid: "90017467"
 
 1. 在 [佈建] 索引標籤中，將 [佈建狀態] 設定為 [開啟]。
 
-2. 按一下 [檔案] 。
+1. 在 [ **領域** ] 下拉式清單中，選取 [ **同步所有使用者和群組**]。 使用這個選項時，回寫應用程式會將所有使用者的對應屬性從 Azure AD 寫回 Workday **，受限於**對應  ->  **來源物件範圍**下定義的範圍規則。 
+
+   > [!div class="mx-imgBorder"]
+   > ![選取回寫範圍](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Workday 回寫布建應用程式不支援 [ **僅同步已指派的使用者和群組**] 選項。
+ 
+
+2. 按一下 [儲存]。
 
 3. 這項作業會啟動初始同步，視來原始目錄中的使用者數目而定，這可能需要幾小時的時間。 您可以檢查進度列，以追蹤同步處理週期的進度。 
 
-4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄] 索引標籤，查看佈建服務執行了哪些動作。 Audit 記錄檔會列出布建服務所執行的所有個別同步事件，例如從來源匯入並匯出至目標應用程式的使用者。  
+4. 您可以隨時檢查 Azure 入口網站中的 [布建 **記錄** ] 索引標籤，查看布建服務已執行的動作。 Audit 記錄檔會列出布建服務所執行的所有個別同步事件，例如從來源匯入並匯出至目標應用程式的使用者。  
 
 5. 初始同步處理完成後，它 **會在 [布建] 索引** 標籤中寫入摘要報告，如下所示。
 
      > [!div class="mx-imgBorder"]
      > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>已知的問題和限制
+
+* 回寫應用程式會使用預先定義的值做為參數 **Communication_Usage_Type_ID** 和 **Phone_Device_Type_ID**。 如果您的 Workday 租使用者針對這些屬性使用不同的值，則回寫作業將不會成功。 建議的解決方法是在 Workday 中更新 Type_IDs。 
+* 當回寫應用程式設定為更新次要電話號碼時，不會取代 Workday 中現有的次要電話號碼。 它會將另一個次要電話號碼新增至背景工作記錄。 此行為沒有解決方法。 
+
 
 ## <a name="next-steps"></a>後續步驟
 

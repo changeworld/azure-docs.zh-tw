@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072266"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 裝置 Sdk 平臺支援
 
@@ -60,7 +60,7 @@ Microsoft 會在 GitHub 上發佈開放原始碼 Sdk，適用于下列語言： 
 | OS                  | 編譯器                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2.7. *、3.5 或更新版本 |
-| MacOS High Sierra   | Python 2.7. *、3.5 或更新版本 |
+| macOS High Sierra   | Python 2.7. *、3.5 或更新版本 |
 | Windows 10 系列   | Python 2.7. *、3.5 或更新版本 |
 
 只有 Python 版本3.5.3 或更新版本支援非同步 Api，我們建議使用3.7 版或更新版本。
@@ -120,7 +120,7 @@ Microsoft 與數個合作夥伴合作，持續擴充 Azure IoT universe 與 Azur
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>不使用 SDK 連接到 IoT 中樞
 
-如果您無法使用其中一個 IoT 中樞裝置 Sdk，您可以從任何能夠傳送和接收 HTTPS 要求和回應的應用程式，使用 [Iot 中樞 REST api](https://docs.microsoft.com/rest/api/iothub/) ，直接連線到 iot 中樞。
+如果您無法使用其中一個 IoT 中樞裝置 Sdk，您可以使用支援的通訊協定，直接連線到 IoT 中樞。 若要深入瞭解，請參閱 [不使用 Azure IOT SDK 進行開發](iot-hub-devguide-no-sdk.md)。
 
 ## <a name="support-and-other-resources"></a>支援和其他資源
 
@@ -144,7 +144,7 @@ Microsoft 與數個合作夥伴合作，持續擴充 Azure IoT universe 與 Azur
 
 **功能要求** –透過產品的 [使用者心聲頁面](https://feedback.azure.com/forums/321918-azure-iot)追蹤 Azure IoT 功能要求。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [裝置與服務 SDK](iot-hub-devguide-sdks.md)
 * [移轉指引](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

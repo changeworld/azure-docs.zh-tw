@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708031"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教學課程：建立 Azure Container Registry 並推送容器映像
@@ -138,7 +138,7 @@ Result
 v1
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您準備了 Azure Container Registry 與 Azure Container Instances 搭配使用，並已將容器映像推送至登錄。 已完成下列步驟：
 

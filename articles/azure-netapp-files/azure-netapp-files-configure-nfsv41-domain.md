@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325618"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072147"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>針對 Azure NetApp Files 設定 NFSv4.1 預設網域
 
@@ -26,11 +26,11 @@ NFSv4 引進驗證網域的概念。 Azure NetApp Files 目前支援從服務到
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>使用者/群組對應的預設行為
 
-根對應預設為 `nobody` 使用者，因為 NFSv4 網域設定為 `localdomain` 。 當您將 Azure NetApp Files Nfsv4.1 4.1 磁片區掛接為根目錄時，您會看到檔案許可權，如下所示：  
+根對應預設為 `nobody` 使用者，因為 NFSv4 網域預設會設定為 `localdomain` 。 當您將 Azure NetApp Files Nfsv4.1 4.1 磁片區掛接為根目錄時，您會看到檔案許可權，如下所示：  
 
 ![Nfsv4.1 4.1 的使用者/群組對應預設行為](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-如上一個範例所示，的使用者 `file1` 應該是 `root` ，但它預設會對應到 `nobody` 。  本文說明如何將 `file1` 使用者設定為 `root` 。  
+如上一個範例所示，的使用者 `file1` 應該是 `root` ，但它預設會對應到 `nobody` 。  本文說明如何將 `file1` `root` 設定變更為，以將使用者設定為 `idmap Domain` `defaultv4iddomain.com` 。  
 
 ## <a name="steps"></a>步驟 
 

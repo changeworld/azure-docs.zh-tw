@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282114"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071637"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>將 OPC 對應項部署至現有的專案
 
@@ -33,7 +33,7 @@ OPC UA 裝置登錄微服務可讓您存取已註冊的 OPC UA 應用程式及�
 
 ## <a name="prerequisites"></a>必要條件
 
-請確定您已安裝 PowerShell 和 [AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 擴充功能。 如果您尚未這麼做，請複製此 GitHub 存放庫。 在 PowerShell 中執行下列命令：
+請確定您已安裝 PowerShell 和 [AzureRM powershell](/powershell/azure/azurerm/install-azurerm-ps) 擴充功能。 如果您尚未這麼做，請複製此 GitHub 存放庫。 在 PowerShell 中執行下列命令：
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

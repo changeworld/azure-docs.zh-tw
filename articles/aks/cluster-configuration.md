@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255293"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072079"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -176,10 +176,10 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 ## <a name="generation-2-virtual-machines-preview"></a>第2代虛擬機器 (預覽) 
 
-Azure 支援 [ (Gen2) 虛擬機器 (vm) 的第2代虛擬機器 ](../virtual-machines/windows/generation-2.md)。 第2代 Vm 支援第1代 Vm 中不支援的主要功能 (Gen1) 。 這些功能包括記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。
+Azure 支援 [ (Gen2) 虛擬機器 (vm) 的第2代虛擬機器 ](../virtual-machines/generation-2.md)。 第2代 Vm 支援第1代 Vm 中不支援的主要功能 (Gen1) 。 這些功能包括記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。
 
 第 2 代 VM 捨棄第 1 代 VM 所使用的 BIOS 架構，改用新式的 UEFI 開機架構。
-只有特定的 Sku 和大小支援 Gen2 Vm。 檢查 [支援的大小清單](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)，以查看您的 SKU 是否支援或需要 Gen2。
+只有特定的 Sku 和大小支援 Gen2 Vm。 檢查 [支援的大小清單](../virtual-machines/generation-2.md#generation-2-vm-sizes)，以查看您的 SKU 是否支援或需要 Gen2。
 
 此外，並非所有的 VM 映射都支援 Gen2，在 AKS Gen2 Vm 上，將會使用新的 [AKS Ubuntu 18.04 映射](#os-configuration)。 此映射支援所有 Gen2 Sku 和大小。
 

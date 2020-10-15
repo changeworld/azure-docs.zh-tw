@@ -1,6 +1,6 @@
 - name: IoT 解決方案加速器文件
   href: index.yml
-- name: 總覽
+- name: 概觀
   items:
     - name: IoT 解決方案加速器是什麼
       href: about-iot-accelerators.md
@@ -198,31 +198,31 @@
 - name: 資源
   items:
     - name: 支援和協助選項
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT 服務
       items:
         - name: IoT 中樞
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT 中樞裝置佈建服務
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
+          href: ./index.yml
         - name: IoT 隨插即用
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure 地圖服務
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: 時間序列深入解析
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服務 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 裝置 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: 遠端監視
       items:
         - name: 開發人員參考指南 (.NET)
@@ -252,7 +252,7 @@
     - name: 預測性維護 GitHub 存放庫
       href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
     - name: 參考架構
-      href: iot-accelerators-architecture-overview.md
+      href: /azure/architecture/reference-architectures/iot
       items:
         - name: 下載
           href: 'https://aka.ms/iotrefarchitecture'
@@ -266,7 +266,7 @@
               href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: 常見問題集
       href: iot-accelerators-faq.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
     - name: 遠端監視 V1
-      href: 'https://docs.microsoft.com/previous-versions/azure/iot-suite/'
+      href: /previous-versions/azure/iot-suite/
