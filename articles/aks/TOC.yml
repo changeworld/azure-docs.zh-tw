@@ -171,7 +171,7 @@
             - name: 使用系統節點集區
               href: use-system-pools.md
         - name: 使用 Terraform 部署 AKS
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
         - name: 使用 Kubernetes 資源檢視器 (預覽)
           href: kubernetes-portal.md
@@ -358,10 +358,10 @@
     - name: DevOps
       items:
         - name: 使用 Ansible 建立 AKS 叢集
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Jenkins 持續部署
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps 專案
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true

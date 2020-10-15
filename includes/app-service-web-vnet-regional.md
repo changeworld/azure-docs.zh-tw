@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255231"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082149"
 ---
 使用區域 VNet 整合可讓您的應用程式存取：
 
@@ -36,7 +36,8 @@ ms.locfileid: "91255231"
 1. 選取 [確定]  。
 1. 選取 [儲存]。
 
-如果您將所有輸出流量路由傳送至您的 VNet，則會受限於套用至您的整合子網的 Nsg 和 Udr。 當您將所有輸出流量路由傳送至您的 VNet 時，您的輸出位址仍是您應用程式屬性中所列的輸出位址，除非您提供路由以將流量傳送到其他地方。
+> [!NOTE]
+> 如果您將所有輸出流量路由傳送至您的 VNet，則會受限於套用至您的整合子網的 Nsg 和 Udr。 當您將所有輸出流量路由傳送至您的 VNet 時，您的輸出位址仍是您應用程式屬性中所列的輸出位址，除非您提供路由以將流量傳送到其他地方。
 
 在相同區域中使用 VNet 與 Vnet 的整合有一些限制：
 

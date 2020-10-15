@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630418"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071433"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 啟用的于 postgresql 超大規模伺服器群組備份和還原
 
@@ -82,7 +82,12 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>進行手動完整備份
 
+
 接下來，進行手動完整備份。
+
+> [!CAUTION]
+> **僅限 Azure Kubernetes Service 的使用者 (AKS) ：** 我們注意到 AZURE KUBERNETES SERVICE (AKS) 上裝載之伺服器群組的備份有問題。 我們已經在努力修正。 在未來的版本/更新中部署更新之前，您必須先刪除伺服器群組的 pod，才能進行備份。 針對您伺服器群組的每個 pod (您可以藉由執行**kubectl 取得 pod-n 來列出 \<namespace name> pod-n**) 執行**kubectl 刪除 Pod \<server group pod name> -n \<namespace name> **來刪除它們。 請勿刪除不屬於您伺服器群組的 pod。 刪除 pod 不會讓您的資料面臨風險。 等候所有 pod 重新上線，並在執行備份之前的狀態 = 正在執行。 上述 kubectl get pod 命令的輸出中會提供 pod 的狀態。
+
 
 若要完整備份您伺服器群組的整個資料和記錄檔資料夾，請執行下列命令：
 
@@ -96,12 +101,12 @@ azdata arc postgres backup create [--name <backup name>] --server-name <server g
 
 此命令會在組成 Azure Arc enabled 于 postgresql 超大規模伺服器群組的所有節點之間協調分散式完整備份。 換句話說，它會備份您的協調器與背景工作節點中的所有資料。
 
-例如：
+例如︰
 ```console
 azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
 ```
 
-當備份完成時，將會傳回備份的識別碼、名稱和狀態。 例如：
+當備份完成時，將會傳回備份的識別碼、名稱和狀態。 例如︰
 ```console
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
@@ -125,7 +130,7 @@ azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name 
 azdata arc postgres backup list --server-name <servergroup name>
 ```
 
-例如：
+例如︰
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
@@ -151,7 +156,7 @@ azdata arc postgres backup restore --server-name <server group name> --backup-id
 - __備份識別碼__ 是清單備份命令中所顯示的備份識別碼 (請參閱步驟 3) 。
 這會協調所有組成 Azure Arc enabled 于 postgresql 超大規模伺服器群組的節點之間的分散式完整還原。 換句話說，它會還原您的協調器和背景工作節點中的所有資料。
 
-例如：
+例如︰
 ```console
 azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```

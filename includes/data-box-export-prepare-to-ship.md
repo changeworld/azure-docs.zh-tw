@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 97491000c63c966c3d8159b9361fcb60e062aa49
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86208767"
 ---
 最後一個步驟是準備寄送裝置。 在此步驟中，裝置的所有共用都會離線。 在您開始此程序後，即無法存取共用。 您也可以選擇清除裝置，從而永久清除裝置上的本機資料。 當步驟完成時，您的電子墨水顯示器會顯示退貨寄送標籤。

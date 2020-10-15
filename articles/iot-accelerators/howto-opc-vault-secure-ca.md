@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399630"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071450"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>安全地執行 OPC 保存庫憑證管理服務
 
@@ -97,7 +97,7 @@ OPC 保存庫微服務會定義下列角色：
 訂閱或實施適當的安全性監視。 例如，訂閱中央監視解決方案 (例如 Azure 資訊安全中心或 Microsoft 365 監視解決方案) ，並適當地進行設定，以確保安全性事件會傳輸到監視解決方案。
 
 > [!IMPORTANT]
-> 根據預設，OPC 保存庫服務會以 [Azure 應用程式見解](https://docs.microsoft.com/azure/azure-monitor/app/devops) 作為監視解決方案來部署。 強烈建議您新增安全性解決方案（例如 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/) ）。
+> 根據預設，OPC 保存庫服務會以 [Azure 應用程式見解](../azure-monitor/app/devops.md) 作為監視解決方案來部署。 強烈建議您新增安全性解決方案（例如 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/) ）。
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>評估開放原始碼軟體元件的安全性
 
@@ -145,7 +145,7 @@ CA 階層檔必須包含所有運作中的 Ca。 這包括所有相關的次級 
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>記錄安全地刪除密碼編譯金鑰的標準作業程式
 
-在 CA 的存留期內，金鑰刪除可能只會很罕見。 這就是為什麼沒有使用者 Key Vault 已指派憑證的許可權，以及為何沒有公開任何 Api 來刪除簽發者 CA 憑證的原因。 安全地刪除憑證授權單位單位密碼編譯金鑰的手動標準作業程式，只能透過直接存取 Azure 入口網站中的 Key Vault 來使用。 您也可以在 Key Vault 中刪除憑證群組。 為確保立即刪除，請停用 [Key Vault 虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 功能。
+在 CA 的存留期內，金鑰刪除可能只會很罕見。 這就是為什麼沒有使用者 Key Vault 已指派憑證的許可權，以及為何沒有公開任何 Api 來刪除簽發者 CA 憑證的原因。 安全地刪除憑證授權單位單位密碼編譯金鑰的手動標準作業程式，只能透過直接存取 Azure 入口網站中的 Key Vault 來使用。 您也可以在 Key Vault 中刪除憑證群組。 為確保立即刪除，請停用 [Key Vault 虛刪除](../key-vault/general/soft-delete-overview.md) 功能。
 
 ## <a name="certificates"></a>憑證
 

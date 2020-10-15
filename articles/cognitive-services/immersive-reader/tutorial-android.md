@@ -12,10 +12,10 @@ ms.date: 06/10/2020
 ms.author: dylankil
 ms.custom: devx-track-java
 ms.openlocfilehash: 637b4d988a4845369a441dce55f0043d873879f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88516430"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-android-java-code-sample"></a>教學課程：使用 Android Java 程式碼範例啟動沈浸式閱讀程式

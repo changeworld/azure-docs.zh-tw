@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: eadbc7e7831805c92fdc13982516f64cdf725dd8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974599"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963715"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教學課程：使用 Azure 資訊安全中心來監視 Linux 虛擬機器
 
@@ -70,7 +70,7 @@ Azure 資訊安全中心可協助您了解 Azure 資源的安全性作法。 資
 
 ## <a name="view-vm-configuration-health"></a>檢視 VM 組態健康狀態
 
-在開啟資料收集功能並設定好安全性原則後，資訊安全中心會開始提供警示和建議。 VM 在部署時就已安裝好資料收集代理程式。 之後，系統就會在資訊安全中心內填入新 VM 的資料。 若要深入了解 VM 組態的健康狀態，請參閱[在資訊安全中心內保護您的 VM](../../security-center/security-center-virtual-machine-protection.md)。 
+在開啟資料收集功能並設定好安全性原則後，資訊安全中心會開始提供警示和建議。 VM 在部署時就已安裝好資料收集代理程式。 之後，系統就會在資訊安全中心內填入新 VM 的資料。 若要深入了解 VM 組態的健康狀態，請參閱[在資訊安全中心內保護您的 VM](../../security-center/asset-inventory.md)。 
 
 隨著資料的收集，系統會彙總每個 VM 和相關 Azure 資源的資源健康狀態。 此資訊會以容易看懂的圖表形式來顯示。 
 
