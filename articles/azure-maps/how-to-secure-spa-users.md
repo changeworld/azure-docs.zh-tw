@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319685"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090279"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>使用使用者登入來保護單一頁面應用程式
 
@@ -67,7 +67,7 @@ ms.locfileid: "91319685"
         </script>   
     ```
 
-7. 為使用者或群組設定 Azure 角色型存取控制。 [若要啟用 RBAC，請參閱下列各節](#grant-role-based-access-for-users-to-azure-maps)。
+7. 為使用者或群組 (Azure RBAC) 設定 Azure 角色型存取控制。 請參閱 [下列各節，以啟用 AZURE RBAC](#grant-role-based-access-for-users-to-azure-maps)。
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

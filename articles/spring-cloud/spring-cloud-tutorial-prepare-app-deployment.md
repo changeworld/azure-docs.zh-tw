@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945442"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092795"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
@@ -23,7 +23,7 @@ Azure 春季 Cloud 提供健全的服務來裝載、監視、調整及更新 Ste
 本文說明在 Azure 春季雲端中執行 .NET Core Steeltoe 應用程式所需的相依性、設定和程式碼。 如需如何將應用程式部署到 Azure 春季雲端的詳細資訊，請參閱 [部署您的第一個 Azure 春季 cloud 應用程式](spring-cloud-quickstart.md)。
 
 >[!Note]
-> Steeltoe 對於 Azure Spring Cloud 的支援目前是以公開預覽版的形式來提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需預覽期間的支援詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+> Steeltoe 對於 Azure Spring Cloud 的支援目前是以公開預覽版的形式來提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需預覽期間的支援詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ##  <a name="supported-versions"></a>支援的版本
 
@@ -99,7 +99,7 @@ using (var client = new HttpClient(discoveryHandler, false))
 
 只有 Spring/Java 應用程式可以在 Azure Spring Cloud 中執行。
 
-Azure Spring Cloud 支援 Java 8 和 Java 11。 裝載環境會包含適用於 Azure 的最新版 Azul Zulu OpenJDK。 如需適用於 Azure 的 Azul Zulu OpenJDK 詳細資訊，請參閱[安裝 JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。
+Azure Spring Cloud 支援 Java 8 和 Java 11。 裝載環境會包含適用於 Azure 的最新版 Azul Zulu OpenJDK。 如需適用於 Azure 的 Azul Zulu OpenJDK 詳細資訊，請參閱[安裝 JDK](/azure/developer/java/fundamentals/java-jdk-install)。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot 和 Spring Cloud 版本
 
@@ -305,9 +305,9 @@ public class GatewayApplication {
  您也需要啟用 Azure Application Insights 執行個體，以搭配您的 Azure Spring Cloud 服務執行個體運作。 如需有關如何搭配 Azure 春季雲端使用 Application Insights 的詳細資訊，請參閱 [分散式追蹤的相關檔](spring-cloud-tutorial-distributed-tracing.md)。
 
 ## <a name="see-also"></a>另請參閱
-* [分析應用程式記錄和計量](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
-* [設定您的 Config Server](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [搭配使用分散式追蹤與 Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [分析應用程式記錄和計量](./diagnostic-services.md)
+* [設定您的 Config Server](./spring-cloud-tutorial-config-server.md)
+* [搭配使用分散式追蹤與 Azure Spring Cloud](./spring-cloud-tutorial-distributed-tracing.md)
 * [Spring 快速入門指南](https://spring.io/quickstart)
 * [Spring Boot 文件](https://spring.io/projects/spring-boot)
 

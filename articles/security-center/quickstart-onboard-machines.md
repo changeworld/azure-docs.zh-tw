@@ -7,27 +7,30 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612212"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993609"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>將您的非 Azure 機器連線至資訊安全中心
 
-資訊安全中心可以監視非 Azure 電腦的安全性狀態，但您需要先上架這些資源。 
+資訊安全中心可以監視非 Azure 電腦的安全性狀態，但您需要先將其連線到 Azure。 
 
-您可以透過下列任何方式新增非 Azure 電腦：
+您可以透過下列任何方式連線非 Azure 電腦：
 
 - 使用 Azure Arc (**建議使用**)
 - 從資訊安全中心在 Azure 入口網站中的頁面 ([開始使用] 和 [清查])
 
-以下說明上述各方式。
+本頁面會說明上述各方式。
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>使用 Azure Arc 新增非 Azure 機器
 
-將非 Azure 機器新增至 Azure 資訊安全中心時，使用 Azure Arc 是慣用的方式。
+將非 Azure 機器新增至 Azure 資訊安全中心時，Azure Arc 是慣用的方式。
 
 已啟用 Azure Arc 的機器會成為 Azure 資源，並連同相關建議 (例如其他 Azure 資源) 出現在資訊安全中心中。 
 
@@ -43,7 +46,11 @@ ms.locfileid: "91612212"
 > [!TIP]
 > 如果您要將 AWS 機器上線，資訊安全中心中適用於 AWS 的連接器會以透明方式為您處理 Azure Arc 部署。 若要深入了解，請參閱[將您的 AWS 帳戶連線到 Azure 資訊安全中心](quickstart-onboard-aws.md)。
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>從資訊安全中心的入口網站頁面新增非 Azure 機器
+::: zone-end
+
+::: zone pivot="azure-portal"
+
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>從 Azure 入口網站新增非 Azure 機器
 
 1. 從資訊安全中心的功能表中，開啟 [開始使用] 頁面。
 1. 選取 [開始使用]  索引標籤。
@@ -114,6 +121,7 @@ ms.locfileid: "91612212"
 
 如需安裝及設定代理程式的詳細資訊，請參閱[連線至 Windows 機器](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 
+::: zone-end
 
 ## <a name="verifying"></a>驗證中
 恭喜！ 現在，您已可在同一位置檢視您的 Azure 機器和非 Azure 機器。 開啟[資產清查](asset-inventory.md) 頁面，並篩選到相關的資源類型。 這些圖示會區分類型：

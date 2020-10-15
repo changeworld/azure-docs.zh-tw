@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385326"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089531"
 ---
 # <a name="secure-your-restful-services"></a>保護您的 RESTful 服務 
 
@@ -312,7 +312,7 @@ Authorization: Bearer <token>
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>新增 OAuth2 持有人權杖原則金鑰
 
-建立原則金鑰來儲存持有人權杖值。
+若要使用 OAuth2 持有人權杖來設定 REST API 技術設定檔，請從 REST API 擁有者取得存取權杖。 然後建立下列密碼編譯金鑰來儲存持有人權杖。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 確定您使用的目錄包含您的 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選擇您的 Azure AD B2C 目錄。

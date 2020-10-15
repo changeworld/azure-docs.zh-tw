@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077859"
+ms.locfileid: "92089361"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以程式設計方式建立 Azure Dashboards
 
@@ -25,7 +25,7 @@ ms.locfileid: "92077859"
 
 ![範例儀表板](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure 入口網站](https://portal.azure.com)中的共用儀表板就像是虛擬機器和儲存體帳戶一樣的[資源](../azure-resource-manager/management/overview.md)。 您可以使用 [AZURE RESOURCE MANAGER REST api](/rest/api/)、 [Azure CLI](/cli/azure)和 [Azure PowerShell 命令](/powershell/azure/get-started-azureps)，以程式設計方式管理資源。
 
@@ -55,7 +55,7 @@ ms.locfileid: "92077859"
 
 ![共用儀表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-選取 [ **共用** ] 會提示您選擇要發佈的訂用帳戶和資源群組。 您必須具有所選訂用帳戶和資源群組的寫入權限。 如需詳細資訊，請參閱 [使用 AZURE RBAC 和 Azure 入口網站來新增或移除角色指派](../role-based-access-control/role-assignments-portal.md)。
+選取 [ **共用** ] 會提示您選擇要發佈的訂用帳戶和資源群組。 您必須具有所選訂用帳戶和資源群組的寫入權限。 如需詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)。
 
 ![進行共用和存取的變更](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

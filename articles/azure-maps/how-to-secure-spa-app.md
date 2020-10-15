@@ -1,7 +1,7 @@
 ---
 title: 如何使用非互動式登入保護單一頁面應用程式
 titleSuffix: Azure Maps
-description: 如何使用非互動式 Azure AD 角色型存取控制和 Azure 地圖服務 Web SDK 來設定單一頁面應用程式。
+description: 如何 (Azure RBAC) 和 Azure 地圖服務 Web SDK，以非互動式 Azure 角色型存取控制設定單一頁面應用程式。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: e49954065f8a4ec03eb54d7333a3fff34bafb143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319651"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090245"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非互動式登入保護單一頁面應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "91319651"
 
 3. 在 Azure 函[式上新增系統指派](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)的身分識別，以允許建立服務主體以驗證 Azure AD。  
 
-4. 將系統指派之身分識別的角色型存取權授與 Azure 地圖服務帳戶。 如需詳細資料，請參閱 [授與角色型存取權](#grant-role-based-access) 。
+4. 將系統指派之身分識別的角色型存取權授與 Azure 地圖服務帳戶。 如需詳細資料，請參閱 [授與以角色為基礎的存取權](#grant-role-based-access) 。
 
 5. 撰寫 Azure 函式的程式碼，以使用系統指派的身分識別，搭配其中一個支援的機制或 REST 通訊協定來取得 Azure 地圖服務存取權杖。 請參閱 [取得 Azure 資源的權杖](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
 

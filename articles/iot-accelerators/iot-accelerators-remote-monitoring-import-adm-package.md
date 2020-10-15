@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443272"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073864"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>將自動裝置管理套件匯入至遠端監視解決方案加速器
 
 自動裝置管理設定會定義要部署至裝置群組的組態變更。 本文假設貴組織的開發人員已經建立自動裝置管理組態。 若要深入了解開發人員如何建立組態，請參閱下列其中一篇 IoT Hub 操作說明文章：
 
-- [使用 Azure 入口網站大規模設定和監視 IoT 裝置](../iot-hub/iot-hub-auto-device-config.md)
-- [使用 Azure CLI 大規模設定和監視 IoT 裝置](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [使用 Azure 入口網站大規模設定和監視 IoT 裝置](../iot-hub/iot-hub-automatic-device-management.md)
+- [使用 Azure CLI 大規模設定和監視 IoT 裝置](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 開發人員會在開發環境中建立及測試自動裝置管理組態。 當您準備就緒時，即可將組態匯入至遠端監視解決方案加速器。
 

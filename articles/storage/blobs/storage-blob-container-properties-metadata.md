@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 115ab9767c23afd5876eb23821bd1283777cdb5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fb77179a00969da7a3dc372dc70c99cfe4220ca
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018921"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090993"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>使用 .NET 管理容器屬性和中繼資料
 
-除了所包含的資料之外，Blob 容器還支援系統屬性和使用者定義的中繼資料。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)，管理系統屬性和使用者定義的中繼資料。
+除了所包含的資料之外，Blob 容器還支援系統屬性和使用者定義的中繼資料。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)，管理系統屬性和使用者定義的中繼資料。
 
 ## <a name="about-properties-and-metadata"></a>關於屬性和中繼資料
 

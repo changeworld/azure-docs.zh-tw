@@ -8,10 +8,10 @@ ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 78f9ac377f1931117f1001d284526a343ca6d966
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825884"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>適用於 Azure 儲存體的 Azure 原則法規合規性控制項

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597848"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073966"
 ---
 # <a name="understand-linked-sign-on"></a>瞭解連結的登入
 
@@ -35,7 +35,7 @@ ms.locfileid: "91597848"
 
 若要快速地快速增加知識，請逐步解說應用程式管理的 [快速入門系列](view-applications-portal.md) 。 在您設定單一登入的快速入門中，您也會找到 **連結** 的選項。 
 
-**連結**的選項不會透過 Azure AD 提供登入功能。 選項只會設定使用者在 [我的應用程式](https://myapps.microsoft.com/) 或 Microsoft 365 應用程式啟動器中選取應用程式時，將傳送至的位置。
+**連結**的選項不會透過 Azure AD 提供登入功能。 選項只會設定使用者在 [我的應用程式](https://myapps.microsoft.com/) 或 Microsoft 365 應用程式啟動器中選取應用程式時，將傳送至的位置。  因為登入不會透過 Azure AD 提供登入功能，所以使用已連結的單一登入設定的應用程式無法使用條件式存取。
 
 > [!IMPORTANT] 
 > 在某些案例中，在**企業應用**程式中，**單一登入**選項不會在應用程式的導覽中。 

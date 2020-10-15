@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d3adc3dd0e0b7e9f964326f5e637b0fefb2cd173
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 306b70fb08622d161ab8f150dc5eec3fdbacaeeb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938454"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072861"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -165,7 +165,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+- [適用于網路的 Azure 原則範例](../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -178,9 +178,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 選擇根據命名空間和具有網路原則的標籤選取器，允許或拒絕叢集中特定的網路路徑。 使用這些命名空間和標籤作為流量設定規則的描述項。 使用 Azure PowerShell 或 Azure 命令列介面 (CLI) 根據其標記查閱或執行資源的動作。
 
-- [使用 CLI Azure 原則](https://docs.microsoft.com/cli/azure/policy?view=azure-cli-latest)
+- [使用 CLI Azure 原則](/cli/azure/policy?view=azure-cli-latest)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -196,7 +196,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 使用 Azure 監視器記錄來啟用和查詢記錄，使其無法 AKS 主要元件，kube-apiserver 和 kube-控制器-管理員。 使用容器執行時間建立和管理執行 kubelet 的節點，並透過受控 Kubernetes API 伺服器部署其應用程式。 
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -322,7 +322,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導**方針：使用 AZURE KUBERNETES SERVICE (AKS) 與「安全性中心」搭配使用，以深入瞭解 AKS 節點。 查看資訊安全中心對主機和叢集層級偵測到的威脅和惡意活動的警示。 安全性中心會持續分析 AKS 叢集中所發生的原始安全性事件，例如網路資料、進程建立及 Kubernetes 審核記錄。 判斷此活動是否為預期的行為，或應用程式是否運作不正常。 使用 Azure 監視器中的計量和記錄來證實您的結果。 
 
-- [瞭解 Azure Kubernetes Services 與 Security Center 的整合](/azure/security-center/azure-kubernetes-service-integration)
+- [瞭解 Azure Kubernetes Services 與 Security Center 的整合](../security-center/defender-for-kubernetes-introduction.md)
 
 - [如何啟用 Azure 資訊安全中心標準層](../security-center/security-center-get-started.md)
 
@@ -380,9 +380,9 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 針對「取得受控 Kubernetes 叢集的存取認證」之類的作業使用 Azure CLI，以協助定期協調存取。 執行此程式以保留更新的服務帳戶清查，也就是 AKS 中的另一個主要使用者類型。 強制執行資訊安全中心的身分識別和存取管理建議。
 
-- [如何整合 AKS 與 Azure AD](/azure/aks/azure-ad-integration)
+- [如何整合 AKS 與 Azure AD](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
@@ -457,7 +457,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導**方針：使用 Azure Active Directory (Azure AD) AZURE AD Azure Kubernetes Service AKS (整合式驗證的安全性報告。 當環境中發生可疑或不安全的活動時，就會產生警示。 使用資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 資訊安全中心中監視使用者身分識別和存取活動](../security-center/security-center-identity-access.md)
 
@@ -487,7 +487,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [Azure 原則概觀](../governance/policy/overview.md)
 
-- [如何整合 Azure AD 與 AKS](/azure/aks/azure-ad-integration) 
+- [如何整合 Azure AD 與 AKS](./azure-ad-integration-cli.md) 
 
 - [整合 AKS 管理的 Azure AD](managed-aad.md)
 
@@ -528,7 +528,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導**方針：整合 AZURE KUBERNETES SERVICE (AKS) 與 Azure Active Directory (Azure AD) 的使用者驗證。 使用 Azure AD 的風險偵測和 Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 將資料內嵌至 Azure Sentinel，以根據商務需求進一步調查。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -555,7 +555,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導**方針：使用 AZURE KUBERNETES SERVICE (AKS) 部署相關資源上的標籤，以協助追蹤儲存或處理機密資訊的 Azure 資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [更新受控叢集的標記](/rest/api/aks/managedclusters/updatetags)
 
@@ -573,7 +573,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 - [瞭解 AKS 中群集隔離的最佳作法](operator-best-practices-cluster-isolation.md)
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
 - [瞭解 AKS 中網路連線能力和安全性的最佳作法](operator-best-practices-network.md)
 
@@ -589,7 +589,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [AKS 功能所需的埠、位址和功能變數名稱清單](limit-egress-traffic.md)
 
-- [如何設定 Azure 防火牆的診斷設定](/azure/firewall/tutorial-diagnostics)
+- [如何設定 Azure 防火牆的診斷設定](../firewall/firewall-diagnostics.md)
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -677,7 +677,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [如何啟用容器的 Azure 監視器](../azure-monitor/insights/container-insights-onboard.md)
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 資訊安全中心監視**：是
 
@@ -695,11 +695,11 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 針對每個弱點，使用「安全性中心」可採取動作的建議。 這些建議包括安全性分類，以及補救的指引。 
 
-- [Azure Kubernetes Services (AKS) 中的容器映像管理與安全性最佳做法](/azure/security-center/azure-container-registry-integration)
+- [Azure Kubernetes Services (AKS) 中的容器映像管理與安全性最佳做法](../security-center/defender-for-container-registries-introduction.md)
 
 - [瞭解 AKS 中容器映射管理和安全性的最佳作法](operator-best-practices-container-image-management.md)
 
-- [瞭解 container Registry 與 Azure 資訊安全中心的整合](/azure/security-center/azure-container-registry-integration)
+- [瞭解 container Registry 與 Azure 資訊安全中心的整合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -735,7 +735,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 使用 PowerShell Cmdlet "AzSecurityTask" 將安全性工作的抓取自動化，讓安全性中心建議您執行這些工作，以加強安全性狀態及補救弱點掃描結果。
 
-- [如何使用 PowerShell 來查看 Azure 資訊安全中心探索到的弱點](https://docs.microsoft.com/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [如何使用 PowerShell 來查看 Azure 資訊安全中心探索到的弱點](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -763,7 +763,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -775,7 +775,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 **指導**方針：使用中繼資料將標記套用至 Azure 資源，以邏輯方式將它們組織成分類法。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -789,11 +789,11 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 污點、標籤或標籤可用來定期協調清查，並確保及時從訂用帳戶中刪除未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用者標記](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用者標記](../azure-resource-manager/management/tag-resources.md)
 
 - [受控叢集-更新標記](/rest/api/aks/managedclusters/updatetags)
 
@@ -894,7 +894,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -927,15 +927,15 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於 AKS 系統管理群組成員的帳戶;定期協調存取。 使用 Azure CLI 來進行作業，例如「取得受控 Kubernetes 叢集的存取認證」。 執行資訊安全中心的身分識別和存取管理建議。
 
-- [使用 Azure CLI 管理 AKS](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest)
+- [使用 Azure CLI 管理 AKS](/cli/azure/aks?view=azure-cli-latest)
 
 - [瞭解 AKS 與 Azure AD 整合](concepts-identity.md)
 
-- [如何整合 AKS 與 Azure AD](/azure/aks/azure-ad-integration)
+- [如何整合 AKS 與 Azure AD](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
@@ -953,9 +953,9 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [瞭解 AKS 中群集隔離的最佳作法](operator-best-practices-cluster-isolation.md)
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [瞭解 AKS 中網路連線能力和安全性的最佳作法](operator-best-practices-network.md)
 
@@ -1055,7 +1055,7 @@ AKS 代理程式節點主機 OS 的安全性強化
 
 security-hardened-vm-host-image.md
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1113,7 +1113,7 @@ security-hardened-vm-host-image.md
 
 **指導**方針：使用 [計算應用程式] 區段下的 [安全性中心] 容器建議 &amp; ，為 Azure Kubernetes Service (AKS) 叢集執行基準掃描。 發現設定問題或弱點時，在 [安全性中心] 儀表板中收到通知。 這需要啟用選用的容器登錄套件組合，讓安全性中心可以掃描映射。  
 
-- [了解 Azure 資訊安全中心容器建議](/azure/security-center/security-center-container-recommendations)
+- [了解 Azure 資訊安全中心容器建議](../security-center/container-security.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1187,7 +1187,7 @@ security-hardened-vm-host-image.md
 
 **指導**方針：預先掃描即將上傳至 AKS 資源的任何檔案。 如果使用 Azure 儲存體帳戶作為資料存放區，或追蹤 AKS 叢集的 Terraform 狀態，請使用資料服務的安全中心威脅偵測來偵測上傳至儲存體帳戶的惡意程式碼。 
 
-- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](/azure/security-center/security-center-alerts-data-services)
+- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1235,7 +1235,7 @@ security-hardened-vm-host-image.md
 
 使用 PowerShell 命令執行 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼的定期自動備份。 
 
-例如：
+例如︰
 
 Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
@@ -1247,7 +1247,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 - [如何備份 Key Vault 秘密](/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret)
 
-- [如何啟用 Azure 備份](/azure/backup)
+- [如何啟用 Azure 備份](../backup/index.yml)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1259,19 +1259,19 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 使用 PowerShell 命令定期執行 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼的資料還原。 
 
-例如：
+例如︰
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 
-- [如何還原 Key Vault 憑證](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+- [如何還原 Key Vault 憑證](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
-- [如何還原 Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何還原 Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 - [如何還原 Key Vault 受控儲存體帳戶](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [如何還原 Key Vault 秘密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
+- [如何還原 Key Vault 秘密](/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
 
-- [如何從 Azure 虛擬機器備份復原檔案](/azure/backup/backup-azure-restore-files-from-vm)
+- [如何從 Azure 虛擬機器備份復原檔案](../backup/backup-azure-restore-files-from-vm.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1285,7 +1285,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 - [瞭解 Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)
 
-- [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1379,5 +1379,5 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906941"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090823"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>整合 Azure Spring Cloud 與 Azure 負載平衡解決方案
 
@@ -28,10 +28,10 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 春季雲端： [如何建立 azure 春季雲端服務](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
-* Azure 流量管理員： [如何建立流量管理員](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure App 閘道： [如何建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Azure Front Door： [如何建立前門](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure 春季雲端： [如何建立 azure 春季雲端服務](./spring-cloud-quickstart.md)
+* Azure 流量管理員： [如何建立流量管理員](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure App 閘道： [如何建立應用程式閘道](../application-gateway/quick-create-portal.md)
+* Azure Front Door： [如何建立前門](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>整合 Azure 春季 Cloud 與 Azure 流量管理員
 
@@ -41,7 +41,7 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
 在流量管理員中新增端點：
 1.  將 **類型** 指定為 *外部端點*。
 1.  輸入每個 Azure 春季雲端公用端點 (FQDN) 的完整功能變數名稱。
-1. 按一下 [確定]。
+1. 按一下 [確定]  。
 
     ![流量管理員 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ 流量管理員2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 
@@ -92,6 +92,6 @@ Azure 已提供不同的負載平衡解決方案。 有三個選項可整合 Azu
     ![Front Door 2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>後續步驟
-* [如何建立流量管理員](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [如何建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [如何建立前門](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [如何建立流量管理員](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [如何建立應用程式閘道](../application-gateway/quick-create-portal.md)
+* [如何建立前門](../frontdoor/quickstart-create-front-door.md)

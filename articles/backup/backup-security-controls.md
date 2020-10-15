@@ -3,12 +3,12 @@ title: 安全性控制
 description: 瞭解 Azure 備份服務中所使用的安全性控制項。 這些控制項可協助服務防止、偵測及回應安全性弱點。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 40bd35bdf83d336aebd37cdda0a0b59164ac9f7a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 96899c0669f3063232c36ad3ae1fec76a90e0a5c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055880"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090857"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 備份的安全性控制
 
@@ -39,7 +39,7 @@ ms.locfileid: "92055880"
 | 安全性控制 | 是/否 | 備註| 文件
 |---|---|--|--|
 | 驗證| 是 | 驗證會透過 Azure Active Directory 進行。 |  |
-| 授權| 是 | 系統會使用已建立的客戶和 Azure 內建角色。 如需詳細資訊，請參閱 [使用 Role-Based 存取控制來管理 Azure 備份復原點](./backup-rbac-rs-vault.md)。 |  |
+| 授權| 是 | 系統會使用已建立的客戶和 Azure 內建角色。 如需詳細資訊，請參閱 [使用 Azure 角色型存取控制來管理 Azure 備份復原點](./backup-rbac-rs-vault.md)。 |  |
 
 ## <a name="data-protection"></a>資料保護
 

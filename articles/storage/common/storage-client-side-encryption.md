@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f54b91ab1ea4521c17a3b40c88214f5637ab47a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021607"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091656"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概觀
-[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)支援在上傳至 Azure 儲存體之前將用戶端應用程式中的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與儲存體帳戶金鑰管理的 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 整合。
+[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)支援在上傳至 Azure 儲存體之前將用戶端應用程式中的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與儲存體帳戶金鑰管理的 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 整合。
 
 如需引導您進行使用用戶端加密和 Azure 金鑰保存庫來加密 Blob 的逐步教學課程，請參閱 [在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)。
 
