@@ -1,17 +1,17 @@
 ---
 title: 建立多服務應用程式並部署到 Service Fabric Mesh
 description: 在本教學課程中，您會建立有 ASP.NET Core 網站可與後端 Web 服務進行通訊的多服務 Azure Service Fabric Mesh 應用程式、在本機加以偵錯，然後將其發佈至 Azure。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653106"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842541"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教學課程：建立、偵錯、部署及升級多服務的 Service Fabric Mesh 應用程式
 

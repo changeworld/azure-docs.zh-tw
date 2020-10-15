@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561596"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072470"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 儀表板結構
 此文件將使用下列儀表板做為範例，逐步說明 Azure 儀表板的結構：
 
 ![範例儀表板](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-因為共用 [Azure 儀表板屬於資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，所以此儀表板能夠以 JSON 的形式呈現。  以下 JSON 所呈現的便是上方視覺化的儀表板。
+因為共用 [Azure 儀表板屬於資源](../azure-resource-manager/management/overview.md)，所以此儀表板能夠以 JSON 的形式呈現。  以下 JSON 所呈現的便是上方視覺化的儀表板。
 
 ```json
 
@@ -303,7 +303,7 @@ Azure 資源識別碼，受限於 [azure 資源的命名慣例](/azure/architect
 所有儀表板均屬於類型 __Microsoft.Portal/dashboards__。
 
 ### <a name="the-location-property"></a>位置屬性
-不同於其他資源，儀表板沒有執行階段元件。  對於儀表板，位置代表的是儲存儀表板的 JSON 表示法所在的主要地理位置。 該值應為可使用[訂用帳戶資源上的位置 API](https://docs.microsoft.com/rest/api/resources/subscriptions) 擷取到的其中一個位置代碼。
+不同於其他資源，儀表板沒有執行階段元件。  對於儀表板，位置代表的是儲存儀表板的 JSON 表示法所在的主要地理位置。 該值應為可使用[訂用帳戶資源上的位置 API](/rest/api/resources/subscriptions) 擷取到的其中一個位置代碼。
 
 ### <a name="the-tags-property"></a>標記屬性
 標記是 Azure 資源的共通功能，可讓您按照任意名稱值組排列您的資源。 至於儀表板，有一個稱為__隱藏標題__的特殊標籤。 如果您的儀表板已填入這個屬性，則會使用該屬性做為儀表板在入口網站的顯示名稱。 Azure 資源識別碼無法重新命名，但是標記可以。 此標籤可讓您的儀表板有可重新命名的顯示名稱。

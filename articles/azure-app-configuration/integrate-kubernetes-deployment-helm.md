@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766863"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074833"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>使用 Helm 與 Kubernetes 部署整合
 
@@ -28,12 +28,12 @@ Helm 提供一種方式來定義、安裝及升級在 Kubernetes 中執行的應
 > * 將應用程式部署至使用 Helm 的 Kubernetes 時，請使用應用程式組態中的值。
 > * 根據應用程式組態中的 Key Vault 參考，建立 Kubernetes 秘密。
 
-本教學課程假設您已具備使用 Helm 管理 Kubernetes 的基本知識。 在 [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/kubernetes-helm) 中使用 Helm 安裝應用程式。
+本教學課程假設您已具備使用 Helm 管理 Kubernetes 的基本知識。 在 [Azure Kubernetes Service](../aks/kubernetes-helm.md) 中使用 Helm 安裝應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- 安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (2.4.0 版或更新版本)
+- 安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (2.4.0 版或更新版本)
 - 安裝 [Helm](https://helm.sh/docs/intro/install/) (2.14.0 版或更新版本)
 - Kubernetes 叢集。
 
@@ -51,7 +51,7 @@ Helm 提供一種方式來定義、安裝及升級在 Kubernetes 中執行的應
     目前先讓 [標籤]  和 [內容類型]  保持空白。
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>將 Key Vault 參考新增至應用程式組態
-1. 登入 [Azure 入口網站](https://portal.azure.com) 並將秘密新增至 [Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)，包括名稱 **Password** 和值 **myPassword**。 
+1. 登入 [Azure 入口網站](https://portal.azure.com) 並將秘密新增至 [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)，包括名稱 **Password** 和值 **myPassword**。 
 2. 選取您上一節中建立的應用程式組態存放區執行個體。
 
 3. 選取 [組態總管]  。
@@ -185,7 +185,7 @@ settings:
 首先，將組態從應用程式組態下載至 myConfig.yaml  檔案。 使用金鑰篩選器，只下載開頭為**設定**的金鑰。 如果您摸金鑰篩選不足以排除 Key Vault 參考的金鑰，可以使用引數 **--skip-keyvault** 將其排除。 
 
 > [!TIP]
-> 深入了解 [export 命令](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)。 
+> 深入了解 [export 命令](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)。 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -225,7 +225,7 @@ else{
 
 ```
 
-存取 [Kubernetes 儀表板](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)，確認已成功設定組態和祕密。 您會看到來自應用程式組態的**色彩**和**訊息**值已填入容器的環境變數中。
+存取 [Kubernetes 儀表板](../aks/kubernetes-dashboard.md)，確認已成功設定組態和祕密。 您會看到來自應用程式組態的**色彩**和**訊息**值已填入容器的環境變數中。
 
 ![快速入門應用程式啟動本機](./media/kubernetes-dashboard-env-variables.png)
 
@@ -242,4 +242,4 @@ else{
 在本教學課程中，您已匯出要透過 Helm Kubernetes 部署中使用的 Azure 應用程式組態資料。 若要深入了解「應用程式組態」的使用方式，請繼續進行 Azure CLI 範例。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

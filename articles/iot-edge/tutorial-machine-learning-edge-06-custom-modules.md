@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997926"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857430"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教學課程：建立和部署自訂 IoT Edge 模組
 
@@ -809,14 +809,6 @@ Avro 寫入器模組在我們的解決方案中有兩個任務，即儲存訊息
 在此文章中，我們在 Visual Studio Code 中建立了 IoT Edge 解決方案，其中包含三個模組：分類器、路由器和檔案寫入器/上傳程式。 我們會設定路由，以允許模組在 Edge 裝置上互相通訊。 我們已修改 Edge 裝置的設定，並更新了 Dockerfile 來安裝相依性，以及將繫結裝載新增至模組的容器。 
 
 接下來，我們更新了 IoT 中樞的設定，根據類型來路由傳送訊息，以及處理檔案上傳。 當一切就緒之後，我們已將模組部署到 IoT Edge 裝置，並確保模組已正確執行。
-
-如需詳細指引，請參閱下列文章：
-
-* [了解如何在 IoT Edge 中部署模組及建立路由](module-composition.md)
-* [IoT 中樞訊息路由查詢語法](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [IoT 中樞訊息路由：現已可依據訊息本文進行路由](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [使用 IoT 中樞上傳檔案](../iot-hub/iot-hub-devguide-file-upload.md)
-* [使用 IoT 中樞將檔案從裝置上傳至雲端](../iot-hub/iot-hub-python-python-file-upload.md)
 
 繼續閱讀下一篇文章，以開始傳送資料，並查看您運作中的解決方案。
 

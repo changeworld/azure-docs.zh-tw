@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327726"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093747"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -287,7 +287,32 @@ Webhook 會使用下列規則來處理
 
 您在動作群組中可以有有限數量的 Webhook 動作。
 
+### <a name="service-tag"></a>服務標記
+服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標籤，將頻繁更新 ActionGroup 的網路安全性規則的複雜性降至最低。
 
+1. 在 Azure 入口網站 [搜尋 *網路安全性群組*] 下的 [Azure 服務] 下。
+2. 按一下 [ **新增** ] 並建立網路安全性群組。
+
+   1. 新增資源組名，然後輸入 *實例詳細資料*。
+   1. 按一下 [ **審核 + 建立** ]，然後按一下 [ *建立*]。
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="如何建立網路安全性群組的範例。"border="true":::
+
+3. 移至 [資源群組]，然後按一下您已建立的 *網路安全性群組* 。
+
+    1. 選取 [ *輸入安全性規則*]。
+    1. 按一下 [ **新增**]。
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
+
+4. 新視窗會在右窗格中開啟。
+    1.  選取來源： **服務標記**
+    1.  來源服務標記： **ActionGroup**
+    1.  按一下 [新增]  。
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
+
+使用 **服務** 標籤進行 ActionGroup 有助於將頻繁更新的 IP 位址複雜性降至最低。
 
 ## <a name="next-steps"></a>後續步驟
 * 進一步了解 [SMS 警示行為](./alerts-sms-behavior.md)。  

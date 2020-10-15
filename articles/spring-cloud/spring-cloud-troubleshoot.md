@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336151"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089038"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>針對常見的 Azure 春季雲端問題進行疑難排解
 
@@ -68,7 +68,7 @@ ms.locfileid: "91336151"
 
 
 
-若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
+若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。
 ::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>我的應用程式遇到高 CPU 使用量或高記憶體使用量
@@ -91,7 +91,7 @@ ms.locfileid: "91336151"
 
 如果所有實例都已啟動且正在執行，請移至 Azure Log Analytics 來查詢您的應用程式記錄，並檢查您的程式碼邏輯。 這可協助您查看是否有任何可能會影響規模分割。 如需詳細資訊，請參閱 [使用診斷設定來分析記錄和計量](diagnostic-services.md)。
 
-若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。 使用 [Kusto 查詢語言](https://docs.microsoft.com/azure/kusto/query/)來查詢記錄。
+若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。 使用 [Kusto 查詢語言](/azure/kusto/query/)來查詢記錄。
 
 ::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>將您的春季應用程式部署到 Azure 春季雲端的檢查清單
@@ -113,14 +113,14 @@ ms.locfileid: "91336151"
 
 當您使用 Azure 入口網站設定 Azure 春季雲端服務實例時，Azure 春季 Cloud 會為您執行驗證。
 
-但是，如果您嘗試使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 或 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/)來設定 Azure 春季 Cloud 服務實例，請確認：
+但是，如果您嘗試使用 [Azure CLI](/cli/azure/get-started-with-azure-cli) 或 [Azure Resource Manager 範本](../azure-resource-manager/index.yml)來設定 Azure 春季 Cloud 服務實例，請確認：
 
 * 訂用帳戶是作用中狀態。
 * Azure 春季雲端 [支援](spring-cloud-faq.md) 此位置。
 * 已經建立執行個體的資源群組。
 * 資源名稱符合命名規則。 它必須只包含小寫字母、數位和連字號。 第一個字元必須是字母。 最後一個字元必須是字母或數位。 值必須包含2到32個字元。
 
-如果您想要使用 Resource Manager 範本來設定 Azure 春季 Cloud 服務實例，請先參閱 [瞭解 Azure Resource Manager 範本的結構和語法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。
+如果您想要使用 Resource Manager 範本來設定 Azure 春季 Cloud 服務實例，請先參閱 [瞭解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md)。
 
 Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數名稱稱 `azureapps.io` ，因此如果此名稱與現有的名稱衝突，則安裝程式將會失敗。 您可能會在活動記錄中找到更多詳細資料。
 
@@ -129,7 +129,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 
 您無法使用 Azure 入口網站或 Resource Manager 範本，為 .NET Core Steeltoe 應用程式上傳 *.zip 檔案。*
 
-當您使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
+當您使用 [Azure CLI](/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
 
 確定您的應用程式是以正確的 *.zip* 檔案格式封裝。 如果未正確封裝，進程將會停止回應，否則您會收到錯誤訊息。
 ::: zone-end
@@ -139,7 +139,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 
 您無法使用 Azure 入口網站或 Resource Manager 範本，將 JAVA 封存檔案 (JAR) /source 封裝上傳。
 
-當您使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
+當您使用 [Azure CLI](/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
 
 如果輪詢中斷，您仍然可以使用下列命令來提取部署記錄：
 
@@ -153,7 +153,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 
 您無法使用 Azure 入口網站或 Resource Manager 範本上傳 JAR/來源套件。
 
-當您使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
+當您使用 [Azure CLI](/cli/azure/get-started-with-azure-cli)部署應用程式封裝時，Azure CLI 會定期輪詢部署進度，最後會顯示部署結果。
 
 如果輪詢中斷，您仍然可以使用下列命令來提取建置和部署記錄：
 
@@ -171,7 +171,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 
 您也可以在 Azure Log Analytics 中檢查 _服務_ 登錄用戶端記錄。 如需詳細資訊，請參閱 [使用診斷設定來分析記錄和計量](diagnostic-services.md)
 
-若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。 使用 [Kusto 查詢語言](https://docs.microsoft.com/azure/kusto/query/)來查詢記錄。
+若要深入瞭解 Azure Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。 使用 [Kusto 查詢語言](/azure/kusto/query/)來查詢記錄。
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>我想要檢查應用程式的環境變數
 
@@ -231,7 +231,7 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 </dependency>
 ```
 
-如果您的應用程式記錄可以封存到儲存體帳戶，但不會傳送至 Azure Log Analytics，請查看您是否 [正確設定工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。 如果您是使用 Azure Log Analytics 的免費層，請注意， [免費層不提供服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)。
+如果您的應用程式記錄可以封存到儲存體帳戶，但不會傳送至 Azure Log Analytics，請查看您是否 [正確設定工作區](../azure-monitor/learn/quick-create-workspace.md)。 如果您是使用 Azure Log Analytics 的免費層，請注意， [免費層不提供服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)。
 ::: zone-end
 
 ## <a name="next-steps"></a>後續步驟

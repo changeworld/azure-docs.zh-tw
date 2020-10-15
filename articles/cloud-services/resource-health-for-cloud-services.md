@@ -7,17 +7,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056044"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072708"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>資源健康狀態檢查 (RHC Azure 雲端服務 (傳統) 的) 支援
 本文討論資源健康狀態檢查 (RHC) [Microsoft Azure 雲端服務 (傳統](https://azure.microsoft.com/services/cloud-services)的支援) 
 
-雲端服務的[Azure 資源健康狀態](https://docs.microsoft.com/azure/service-health/resource-health-overview)可協助您診斷並取得影響雲端服務部署、角色 & 角色實例的服務問題支援。 它會報告部署、角色 & 角色實例層級的雲端服務目前和過去的健康情況。
+雲端服務的[Azure 資源健康狀態](../service-health/resource-health-overview.md)可協助您診斷並取得影響雲端服務部署、角色 & 角色實例的服務問題支援。 它會報告部署、角色 & 角色實例層級的雲端服務目前和過去的健康情況。
 
 Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀態可提供您資源健康狀態的個人化儀表板。 資源健康狀態會顯示您的資源因 Azure 服務問題而無法使用的所有時間。 這種資料可讓您輕鬆查看是否違反 SLA。
 
@@ -30,7 +30,7 @@ Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀
 資源健康狀態檢查僅適用于生產位置部署。 尚未支援預備位置部署。 
 
 ## <a name="does-resource-health-check-also-check-the-health-of-the-application"></a>資源健康狀態檢查是否也會檢查應用程式的健康情況？
-否，健康情況檢查只適用于角色實例，而不會監視應用程式健全狀況。 例如 即使有1個角色實例的狀況不良，仍然可以使用應用程式。 RHC 不使用 [負載平衡器探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) 或來賓代理程式探查。 因此，客戶應該繼續使用負載平衡器探查來監視應用程式的健康情況。 
+否，健康情況檢查只適用于角色實例，而不會監視應用程式健全狀況。 例如 即使有1個角色實例的狀況不良，仍然可以使用應用程式。 RHC 不使用 [負載平衡器探查](../load-balancer/load-balancer-custom-probe-overview.md) 或來賓代理程式探查。 因此，客戶應該繼續使用負載平衡器探查來監視應用程式的健康情況。 
 
 ## <a name="what-are-the-annotations-for-cloud-services"></a>雲端服務的注釋有哪些？
 批註是部署或角色的健全狀況狀態。 根據健康狀態、狀態變更的原因等，有不同的附注。 
@@ -64,7 +64,7 @@ Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀
 | Unknown | 目前無法判斷此虛擬機器的健全狀況 |
 | 已停止和解除配置 | 由於已授權的使用者或程序提出要求，此虛擬機器正在停止並解除配置 |
 | 設定資源健康狀態 | 正在設定此資源的資源健康狀態。 資源健康狀態會監看您的 Azure 資源，以提供受到影響的持續性和過去事件的詳細資料 |
-| [無法使用] | 您的虛擬機器無法使用。 我們正試著自動復原您的虛擬機器，並判斷問題來源。 目前不需要其他動作 |
+| 無法使用 | 您的虛擬機器無法使用。 我們正試著自動復原您的虛擬機器，並判斷問題來源。 目前不需要其他動作 |
 | 已降級 | 您的虛擬機器已降級。 我們正試著自動復原您的虛擬機器，並判斷問題來源。 目前不需要其他動作 |
 | 主機伺服器硬體失敗 | 此虛擬機器受到主機伺服器上嚴重的 {HardwareCategory} 失敗所影響。 Azure 會將您的虛擬機器重新部署到狀況良好的主機伺服器 |
 | 由於硬體降級而排程的遷移 | Azure 發現主機伺服器的 {0} 已降級，短時間內可能會發生失敗。 如果可行，我們會盡快對虛擬機器進行即時移轉，或在 {1} (UTC) 之後重新部署虛擬機器。 若要將您服務的風險降至最低，並在系統起始的遷移發生之前硬體失敗，建議您儘快重新部署虛擬機器 |
@@ -96,7 +96,7 @@ Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀
 | 遠端磁片已中斷連線 | 很抱歉，因為遠端磁碟的連線中斷，您的虛擬機器無法使用。 我們正在努力重建磁碟連線。 目前不需要其他動作 |
 | Azure 服務問題 | 您的虛擬機器受到 Azure 服務問題影響 |
 | 網路問題 | 此虛擬機器受到機架內部網路裝置的影響 |
-| [無法使用] | 您的虛擬機器無法使用。 目前無法判斷此停機時間的原因 |
+| 無法使用 | 您的虛擬機器無法使用。 目前無法判斷此停機時間的原因 |
 | 主機伺服器重新開機 | 很抱歉，因為主機伺服器非預期地重新開機，所以您的虛擬機器無法使用。 主機伺服器發生未預期的問題，導致我們無法自動復原您的虛擬機器 |
 | 因為主機失敗而重新部署 | 很抱歉，因為主機伺服器上發生非預期的失敗，所以您的虛擬機器無法使用。 主機發生未預期的問題，導致我們無法自動復原您的虛擬機器 |
 | 未預期的主機失敗 | 很抱歉，因為主機伺服器上發生非預期的失敗，所以您的虛擬機器無法使用。 主機發生未預期的問題，導致我們無法自動復原您的虛擬機器 |

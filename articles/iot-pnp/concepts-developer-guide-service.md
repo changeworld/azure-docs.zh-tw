@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042417"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093696"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT 隨插即用 service 開發人員指南
 
@@ -30,14 +30,14 @@ IoT 隨插即用可讓您使用已向 IoT 中樞宣告其模型識別碼的裝�
 
 - Iot 中樞服務用戶端。 這項服務會將模型識別碼公開為裝置對應項屬性。
 
-- 數位 Twins 服務用戶端。 新的數位 Twins API 適用于 [數位 Twins 定義語言 (DTDL) ](concepts-digital-twin.md) 模型結構，例如元件、屬性和命令。 數位對應項 Api 可讓解決方案產生器更輕鬆地建立 IoT 隨插即用的解決方案。
+- 數位 Twins 用戶端。 新的數位 Twins API 適用于 [數位 Twins 定義語言 (DTDL) ](concepts-digital-twin.md) 模型結構，例如元件、屬性和命令。 數位對應項 Api 可讓解決方案產生器更輕鬆地建立 IoT 隨插即用的解決方案。
 
-| 平台 | IoT 中樞服務用戶端 | 數位 Twins 服務用戶端 |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [文件](/dotnet/api/microsoft.azure.devices) <br/> [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [文件](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [範例](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [範例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [文件](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [範例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [文件](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [範例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [文件](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [範例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [文件](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [範例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| 平台 | 文件 | 範例 |
+| -------- | ------------- | ------- |
+| .NET     | [參考](/dotnet/api/microsoft.azure.devices) | [服務用戶端](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [Digital Twins](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [參考](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [服務用戶端](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[Digital Twins](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [參考](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [服務用戶端](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [參考](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [服務用戶端](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中樞服務用戶端範例
 
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>數位對應項範例
+## <a name="iot-hub-digital-twin-examples"></a>IoT 中樞數位對應項範例
 
 您可以使用 **DigitalTwinClient** 類別，利用數位 twins 與裝置狀態互動。 裝置的 [DTDL](concepts-digital-twin.md) 模型會定義裝置所執行的屬性和命令。
 
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST API
-
-下列範例會使用 IoT 中樞 REST API 與連線的 IoT 隨插即用裝置互動。 目前的 API 版本為 `2020-09-30` 。 附加 `?api-version=2020-09-30` 至 REST PI 呼叫。
-
-> [!NOTE]
-> API 目前不支援模組 twins `digitalTwins` 。
-
-如果呼叫您的控溫器裝置 `t-123` ，您可以使用 REST API get 呼叫，取得裝置所執行之所有介面上的所有屬性：
-
-```REST
-GET /digitalTwins/t-123
-```
-
-此呼叫會包含 `$metadata.$model` 具有裝置所宣告之模型識別碼的 Json 屬性。
-
-所有介面上的所有屬性都是使用 `GET /DigitalTwin/{device-id}` REST API 範本來存取，其中 `{device-id}` 是裝置的識別碼：
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-您可以直接呼叫 IoT 隨插即用的裝置命令。 如果 `Thermostat` 裝置中的元件 `t-123` 有 `restart` 命令，您可以使用 REST API 的 POST 呼叫來呼叫它：
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-更常見的情況是，您可以透過此 REST API 範本來呼叫命令：
-
-- `device-id`：裝置的識別碼。
-- `component-name`：裝置功能模型中的 [implements] 區段的介面名稱。
-- `command-name`：命令的名稱。
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>讀取裝置遙測
