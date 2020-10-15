@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566415"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077349"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -242,6 +242,9 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>針對連線至 ExpressRoute 線路的虛擬網路，我可以封鎖其網際網路連線嗎？
 
 是。 針對部署於虛擬網路內的虛擬機器，您可以公告預設路由 (0.0.0.0/0)，以封鎖所有的網際網路連線，並將所有流量透過 ExpressRoute 線路路由傳送出去。
+
+> [!NOTE]
+> 如果從通告的路由中提取 0.0.0.0/0 的公告路由 (例如，由於) 發生中斷或設定錯誤，Azure 將會提供 [系統路由](../virtual-network/virtual-networks-udr-overview.md#system-routes) 給已連線的虛擬網路上的資源，以提供網際網路的連線能力。  為了確保封鎖網際網路的輸出流量，建議您將網路安全性群組放在具有網際網路流量輸出拒絕規則的所有子網上。
 
 如果您公告預設路由，針對透過 Microsoft 對等互連 (例如 Azure 儲存體和 SQL DB) 所提供的服務，我們會強制讓流量回到您的內部。 您將必須設定路由器，透過 Microsoft 對等互連路徑或透過網際網路以將流量傳回 Azure。 如果您已啟用服務的服務端點，就不會將服務的流量強制到您的內部部署。 流量會保持在 Azure 中樞網路內。 如需深入了解服務端點，請參閱[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 67b855beae4ea36bf4ef7e6bb396c6b7ae1d89e3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbff4cc067ce831e9d9f69a457f348a94257e86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874317"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076907"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -109,7 +109,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 <a name="required-ports"> </a> 當 API 管理服務執行個體裝載於 VNET 時，會使用下表中的連接埠。
 
-| 來源 / 目的地連接埠 | 方向          | 傳輸通訊協定 |   [服務標記](../virtual-network/security-overview.md#service-tags) <br> 來源 / 目的地   | 目的 (\*)                                                 | 虛擬網路類型 |
+| 來源 / 目的地連接埠 | 方向          | 傳輸通訊協定 |   [服務標記](../virtual-network/network-security-groups-overview.md#service-tags) <br> 來源 / 目的地   | 目的 (\*)                                                 | 虛擬網路類型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80]、443                  | 輸入            | TCP                | INTERNET / VIRTUAL_NETWORK            | 與 API 管理的用戶端通訊                      | 外部             |
 | * / 3443                     | 輸入            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 入口網站和 PowerShell 的管理端點         | 外部和內部  |
@@ -153,7 +153,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 + **Azure Load Balancer**：`Developer` SKU 不需要允許來自服務標籤 `AZURE_LOAD_BALANCER` 的輸入要求，因為我們只會在其後面部署一個計算單位。 但是在調整為較高的 SKU (例如 `Premium`) 時，來自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的輸入會變得很重要，因為來自負載平衡器的健康情況探查失敗會導致部署失敗。
 
-+ **Application Insights**：如果已在 API 管理上啟用 [Azure 應用程式 Insights](api-management-howto-app-insights.md) 監視，則需要允許從虛擬網路到 [遙測端點](/azure/azure-monitor/app/ip-addresses#outgoing-ports) 的輸出連線。 
++ **Application Insights**：如果已在 API 管理上啟用 [Azure 應用程式 Insights](api-management-howto-app-insights.md) 監視，則需要允許從虛擬網路到 [遙測端點](../azure-monitor/app/ip-addresses.md#outgoing-ports) 的輸出連線。 
 
 + **使用 Express Route 或網路虛擬設備，以強制通道將流量傳送至內部部署防火牆**：常見的客戶設定是定義自己的預設路由 (0.0.0.0/0)，以強制所有來自 API 管理委派子網路的流量流經內部部署防火牆或網路虛擬設備。 此流量流程一定會中斷與 Azure API 管理的連線，因為已在內部部署封鎖輸出流量，或者 NAT 至無法再使用各種 Azure 端點的一組無法辨識位址。 解決方案會要求您執行幾項工作：
 
@@ -272,7 +272,7 @@ IP 位址是以 **Azure 環境**分割。 當允許輸入要求以 **Global** �
 * [從不同的部署模型連接虛擬網路](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [如何在 Azure API 管理中使用 API 偵測器來追蹤呼叫](api-management-howto-api-inspector.md)
 * [虛擬網路常見問題集](../virtual-network/virtual-networks-faq.md)
-* [服務標籤](../virtual-network/security-overview.md#service-tags)
+* [服務標籤](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -285,6 +285,6 @@ IP 位址是以 **Azure 環境**分割。 當允許輸入要求以 **Global** �
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

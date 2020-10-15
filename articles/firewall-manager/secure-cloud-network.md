@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: victorh
 ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89535997"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的虛擬中樞
@@ -199,7 +199,7 @@ ms.locfileid: "89535997"
 2. 完成時，選取 [下一步:中樞]。
 3. 在 [中樞] 索引標籤上，選取 [建立虛擬中樞的關聯]。
 4. 選取 **Hub-01**，然後選取 [新增]。
-5. 選取 [檢閱 + 建立]。
+5. 選取 [檢閱 + 建立]  。
 6. 選取 [建立]。
 
 這可能需要大約 5 分鐘或更久的時間才能完成。

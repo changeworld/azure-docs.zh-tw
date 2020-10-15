@@ -3,12 +3,12 @@ title: 使用 Advisor 改進 operational excellency
 description: 使用 Azure Advisor 針對您的 Azure 訂用帳戶將您的卓越營運優化及成熟。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258487"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077383"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure Advisor 達成卓越的營運能力
 
@@ -38,7 +38,7 @@ Azure 區域最多可支援每個訂用帳戶250個儲存體帳戶。 達到該�
 
 ## <a name="repair-invalid-log-alert-rules"></a>修復不正確記錄警示規則
 
-Azure Advisor 會偵測在其條件區段中指定了無效查詢的警示規則。 您可以在 Azure 監視器中建立記錄警示規則，並在指定的間隔使用它們來執行分析查詢。 查詢的結果會決定是否需要觸發警示。 由於參考的資源、資料表或命令的變更，分析查詢可能會在一段時間後變成無效。 Advisor 建議您更正警示規則中的查詢，以防止它自動停用，並確保監視您在 Azure 中的資源。 [深入瞭解警示規則的疑難排解。](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor 會偵測在其條件區段中指定了無效查詢的警示規則。 您可以在 Azure 監視器中建立記錄警示規則，並在指定的間隔使用它們來執行分析查詢。 查詢的結果會決定是否需要觸發警示。 由於參考的資源、資料表或命令的變更，分析查詢可能會在一段時間後變成無效。 Advisor 建議您更正警示規則中的查詢，以防止它自動停用，並確保監視您在 Azure 中的資源。 [深入瞭解警示規則的疑難排解。](../azure-monitor/platform/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>使用 Azure 原則建議
 
@@ -55,7 +55,7 @@ Azure 原則是 Azure 中的一項服務，可讓您用來建立、指派和管�
 **啟用 *從資源群組繼承標記*。** 此原則會在建立或更新任何資源時，從父代資源群組中新增或取代指定的標記和值。 您可以藉由觸發補救工作來補救現有的資源。
 
 ## <a name="no-validation-environment-enabled"></a>未啟用任何驗證環境
-Azure Advisor 判斷您未在目前的訂用帳戶中啟用驗證環境。 建立您的主機集區時，您已在 [內容] 索引標籤 \" 中選取 \" [否進行 \" 驗證環境 \" ]。擁有至少一個已啟用驗證環境的主機集區，可透過早期偵測潛在問題的 Windows 虛擬桌面服務部署，確保商務持續性。 [深入了解](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure Advisor 判斷您未在目前的訂用帳戶中啟用驗證環境。 建立您的主機集區時，您已在 [內容] 索引標籤 \" 中選取 \" [否進行 \" 驗證環境 \" ]。擁有至少一個已啟用驗證環境的主機集區，可透過早期偵測潛在問題的 Windows 虛擬桌面服務部署，確保商務持續性。 [深入了解](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>確保生產 (非驗證) 環境受益於穩定的功能
 Azure Advisor 偵測到太多主機集區已啟用驗證環境。 為了讓驗證環境能以最佳方式提供其用途，您應該至少有一個，但在驗證環境中絕對不能超過一半的主機集區。 藉由在已啟用驗證環境的主機集區和已停用的環境之間取得良好的平衡，您將能夠充分利用 Windows 虛擬桌面提供的多階段部署與特定更新的優點。 若要修正此問題，請開啟主機集區的內容，並 \" \" 在 [ \" 驗證環境] 設定旁邊選取 [否] \" 。

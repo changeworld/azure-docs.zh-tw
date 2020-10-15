@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a7c1f0d207a113b2c12010cbc0a8876edd9269bc
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: fce6477313cb7fb917c0fb81d03a73eec4714915
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577249"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046395"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>教學課程：將範例 IoT 隨插即用多重元件裝置應用程式連線至 IoT 中樞 (Java)
 
@@ -28,7 +28,7 @@ ms.locfileid: "91577249"
 
 若要在 Windows 上完成此教學課程，請在您的本機 Windows 環境上安裝下列軟體：
 
-* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中，選取 [長期支援] 下的 [Java 8]。
+* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)中，選取 [長期支援] 下的 [Java 8]。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ## <a name="download-the-code"></a>下載程式碼

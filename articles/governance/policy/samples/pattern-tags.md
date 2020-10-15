@@ -4,10 +4,10 @@ description: 此 Azure 原則模式提供如何在原則定義中新增參數化
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545551"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure 原則模式：標記

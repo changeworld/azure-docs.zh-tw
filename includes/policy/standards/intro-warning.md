@@ -6,10 +6,10 @@ ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 640a70c2bb419e65620c19f6dc986b0c602bf1e7
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89481682"
 ---
 每個內建原則定義的標題都會連結到 Azure 入口網站中的原則定義。 使用 [原則版本] 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
