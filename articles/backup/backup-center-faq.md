@@ -3,12 +3,12 @@ title: 備份中心-常見問題
 description: 本文將回答有關備份中心的常見問題
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994801"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094036"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>備份中心-常見問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "90994801"
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>我是否需要有任何特殊許可權才能使用備份中心？
 
-這類的備份中心並不需要任何新的許可權。 只要您針對所管理的資源擁有正確的 RBAC 存取層級，您就可以使用這些資源的「備份中心」。 例如，若要查看備份的相關資訊，您需要有您保存庫的 **讀取** 者存取權。 若要設定備份和執行其他備份相關的動作，您將需要「 **備份參與者** 」或「 **備份操作員** 」角色。 深入瞭解 [Azure 備份的 RBAC 角色](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)。
+這類的備份中心並不需要任何新的許可權。 只要您有正確層級的 Azure RBAC 存取權來存取您所管理的資源，您就可以使用備份中心來存取這些資源。 例如，若要查看備份的相關資訊，您需要有您保存庫的 **讀取** 者存取權。 若要設定備份和執行其他備份相關的動作，您將需要「 **備份參與者** 」或「 **備份操作員** 」角色。 深入瞭解 [適用于 Azure 備份的 Azure 角色](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)。
 
 ## <a name="pricing"></a>定價
 

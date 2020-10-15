@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292960"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093713"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -376,7 +376,7 @@ mount [RAID Disk Path] [/mountpath]
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>選取復原點 (可產生指令碼的人員)
 
-指令碼會提供 VM 資料的存取權，因此請務必控管誰可以先產生指令碼。 您必須登入 Azure 入口網站，並獲得 [RBAC 授權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)，才能產生指令碼。
+指令碼會提供 VM 資料的存取權，因此請務必控管誰可以先產生指令碼。 您必須登入 Azure 入口網站，並已 [授權 AZURE RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) 來產生腳本。
 
 檔案復原需要與 VM 還原和磁碟還原所需的相同授權層級。 換句話說，只有獲授權的使用者才可以檢視能夠產生指令碼的 VM 資料。
 

@@ -1,5 +1,6 @@
 ---
 title: 適用于 Android 的 ADAL MSAL 遷移指南 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何將 Azure Active Directory Authentication Library (ADAL) Android 應用程式遷移至 Microsoft 驗證程式庫 (MSAL) 。
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965993"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074663"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>適用于 Android 的 ADAL 至 MSAL 遷移指南
 
@@ -31,7 +32,7 @@ ADAL 適用于 Azure Active Directory v1.0 端點。 Microsoft 驗證程式庫 (
 支援：
   - 組織身分識別 (Azure Active Directory) 
   - 非組織身分識別，例如 Outlook.com、Xbox Live 等
-  -  (B2C 只) Google、Facebook、Twitter 和 Amazon 的同盟登入
+  -  (只 Azure AD B2C Google、Facebook、Twitter 和 Amazon) 同盟登入
 
 - 符合下列標準：
   - OAuth 2.0 版
@@ -67,7 +68,7 @@ MSAL 公用 API 引進重要的變更，包括：
 
 ### <a name="user-consent"></a>使用者同意
 
-使用 ADAL 和 AAD v1 端點時，使用者在第一次使用時，會授與他們所擁有之資源的同意。 透過 MSAL 和 Microsoft 身分識別平臺，您可以以累加方式要求同意。 累加式同意適用于使用者可能會考慮高許可權的許可權，如果未提供許可權的清楚說明，則可能會有問題。 在 ADAL 中，這些許可權可能會導致使用者放棄登入您的應用程式。
+使用 ADAL 和 Azure AD v1 端點時，使用者在第一次使用時，會授與他們所擁有之資源的同意。 透過 MSAL 和 Microsoft 身分識別平臺，您可以以累加方式要求同意。 累加式同意適用于使用者可能會考慮高許可權的許可權，如果未提供許可權的清楚說明，則可能會有問題。 在 ADAL 中，這些許可權可能會導致使用者放棄登入您的應用程式。
 
 > [!TIP]
 > 建議您在需要為您的使用者提供其他內容，以瞭解您的應用程式需要許可權的情況下，使用累加式同意。
@@ -146,7 +147,7 @@ MSAL 沒有啟用或停用授權驗證的旗標。 授權驗證是 ADAL 中的�
 
 就像金融機構的帳戶一樣，Microsoft 身分識別平臺中的帳戶是使用認證來存取。 這些認證可能會向 Microsoft 註冊或發行。 或由 Microsoft 代表組織。
 
-Microsoft 身分識別平臺與金融機構不同之處在于，Microsoft 身分識別平臺所提供的架構，可讓使用者使用一個帳戶與其相關聯的認證，來存取屬於多位個人和組織的資源。 這就像是能夠使用一個銀行所發行的卡片，還有另一個金融機構。 這是因為所有有問題的組織都使用 Microsoft 身分識別平臺，可讓您在多個組織中使用一個帳戶。 以下為範例：
+Microsoft 身分識別平臺與金融機構不同之處在于，Microsoft 身分識別平臺所提供的架構，可讓使用者使用一個帳戶與其相關聯的認證，來存取屬於多位個人和組織的資源。 這就像是能夠使用一個銀行所發行的卡片，還有另一個金融機構。 這是因為所有有問題的組織都使用 Microsoft 身分識別平臺，可讓您在多個組織中使用一個帳戶。 以下是範例：
 
 Sam 適用于 Contoso.com，但會管理屬於 Fabrikam.com 的 Azure 虛擬機器。 為了讓 Sam 管理 Fabrikam 的虛擬機器，他必須獲得授權才能存取。 您可以藉由將 Sam 的帳戶新增至 Fabrikam.com，並授與帳戶可讓他使用虛擬機器的角色，來授與此存取權。 這會透過 Azure 入口網站完成。
 
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>遷移至新的例外狀況
@@ -240,16 +239,27 @@ public interface SilentAuthenticationCallback {
 
 | 例外狀況                                        | 描述                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
-| `MsalException`                                  | MSAL 擲回的預設核取例外狀況。                           |
-| `MsalClientException`                            | 如果錯誤為用戶端，則擲回。                                 |
 | `MsalArgumentException`                          | 如果有一或多個輸入引數無效，則擲回。                 |
-| `MsalServiceException`                           | 如果錯誤為伺服器端，則擲回。                                 |
-| `MsalUserCancelException`                        | 如果使用者取消驗證流程，則擲回。                |
-| `MsalUiRequiredException`                        | 如果無法以無訊息方式重新整理權杖，則會擲回。                    |
+| `MsalClientException`                            | 如果錯誤為用戶端，則擲回。                                 |
 | `MsalDeclinedScopeException`                     | 如果伺服器拒絕一或多個要求的範圍，則會擲回。 |
+| `MsalException`                                  | MSAL 擲回的預設核取例外狀況。                           |
 | `MsalIntuneAppProtectionPolicyRequiredException` | 如果資源已啟用 MAMCA 保護原則則擲回。         |
+| `MsalServiceException`                           | 如果錯誤為伺服器端，則擲回。                                 |
+| `MsalUiRequiredException`                        | 如果無法以無訊息方式重新整理權杖，則會擲回。                    |
+| `MsalUserCancelException`                        | 如果使用者取消驗證流程，則擲回。                |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError 至 MsalException ErrorCode
+### <a name="adalerror-to-msalexception-translation"></a>ADALError 至 MsalException 轉譯
+
+| 如果您要在 ADAL 中攔截這些錯誤 .。。  | ...攔截這些 MSAL 例外狀況：                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *沒有對等的 ADALError* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *沒有對等的 ADALError* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *沒有對等的 ADALError* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *沒有對等的 ADALError* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>ADAL 記錄至 MSAL 記錄
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233205"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854642"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>使用 Azure DevOps 入門版建立適用於 GitHub 存放庫的 CI/CD 管線
 
@@ -118,9 +118,9 @@ Azure DevOps 入門版會在 Azure Pipelines 中自動設定 CI/CD 管線。 瀏
 若要深入了解 CI/CD 管線，請參閱：
 
 > [!div class="nextstepaction"]
-> [定義多階段的持續部署 (CD) 管線](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [定義多階段的持續部署 (CD) 管線](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 若要深入了解應用程式監視，請參閱：
   
  > [!div class="nextstepaction"]
- > [什麼是 Azure 監視器？](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [什麼是 Azure 監視器？](../azure-monitor/overview.md)

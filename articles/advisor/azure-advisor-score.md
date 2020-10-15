@@ -3,12 +3,12 @@ title: 使用 Advisor 分數將 Azure 工作負載優化
 description: 使用 Advisor 分數充分運用 Azure
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335614"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074017"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>使用 Advisor 分數將 Azure 工作負載優化
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335614"
 Azure Advisor 為您的工作負載提供最佳做法建議。 這些建議是個人化且可採取動作的，可協助您：
 * 改善工作負載的狀態，並將您的 Azure 部署優化
 * 遵循最佳作法主動預防最重要的問題
-* 針對[Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)的五個要素來評定您的 Azure 工作負載
+* 針對[Microsoft Azure Well-Architected Framework](/azure/architecture/framework/)的五個要素來評定您的 Azure 工作負載
 
 建議程式 **分數** 是 advisor 的核心功能，可協助您有效且有效率地達成這些目標。 
 
@@ -56,7 +56,7 @@ Advisor 會以百分比顯示您的類別分數和整體建議程式分數。 �
   * 具有長期建議的資源將會依據您的分數計算更多費用。
   * 您在 Advisor 中延期或關閉的資源會完全從分數計算中移除。 
     
-Advisor 會在 Advisor 類別層級套用此模型， (安全性使用 [安全分數](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) 模型) ，為每個類別提供美國建議程式分數，並讓簡單的平均值產生最終的 Advisor 分數。
+Advisor 會在 Advisor 類別層級套用此模型， (安全性使用 [安全分數](../security-center/secure-score-security-controls.md#introduction-to-secure-score) 模型) ，為每個類別提供美國建議程式分數，並讓簡單的平均值產生最終的 Advisor 分數。
 
 
 ## <a name="advisor-score-faq"></a>Advisor 分數常見問題

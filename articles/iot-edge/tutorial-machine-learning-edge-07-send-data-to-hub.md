@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997875"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857243"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教學課程：透過透明閘道傳送資料
 
@@ -238,5 +238,8 @@ ms.locfileid: "88997875"
 
 您可以在下列頁面上找到更多資訊：
 
-* [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)
-* [在 IoT Edge (預覽) 使用 Azure Blob 儲存體，以便在邊緣儲存資料](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)
+
+> [!div class="nextstepaction"]
+> [在 IoT Edge (預覽) 使用 Azure Blob 儲存體，以便在邊緣儲存資料](how-to-store-data-blob.md)

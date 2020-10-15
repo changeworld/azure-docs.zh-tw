@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: f0d1e57c7e212fefc6e17a8170e3b4537b190f60
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211653"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074731"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>與 CI/CD 管線整合
 
@@ -35,9 +35,9 @@ ms.locfileid: "88211653"
 
 ### <a name="prerequisites"></a>必要條件
 
-如果您在本機建置，請下載並安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (如果您還沒有這麼做)。
+如果您在本機建置，請下載並安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (如果您還沒有這麼做)。
 
-若要執行雲端建置 (例如搭配 Azure DevOps)，請確定 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 已安裝在您的建置系統中。
+若要執行雲端建置 (例如搭配 Azure DevOps)，請確定 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 已安裝在您的建置系統中。
 
 ### <a name="export-an-app-configuration-store"></a>匯出應用程式組態存放區
 
@@ -107,4 +107,4 @@ ms.locfileid: "88211653"
 在本教學課程中，您已匯出要在部署管線中使用的 Azure 應用程式組態資料。 若要深入了解「應用程式組態」的使用方式，請繼續進行 Azure CLI 範例。
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

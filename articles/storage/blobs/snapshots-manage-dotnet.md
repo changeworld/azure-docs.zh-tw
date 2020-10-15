@@ -10,16 +10,16 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44ea49d7ed0cec6fc56cb2462a25d38866ce9a76
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226126"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093679"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 Blob 快照集
 
-快照集是在某個點時間取得的唯讀 Blob 版本。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
+快照集是在某個點時間取得的唯讀 Blob 版本。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)來建立和管理 blob 快照集。
 
 如需 Azure 儲存體中 blob 快照集的詳細資訊，請參閱 [blob 快照](snapshots-overview.md)集。
 

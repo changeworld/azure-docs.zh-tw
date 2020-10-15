@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142480"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074221"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>疑難排解在 Azure 中部署雲端服務時發生的配置失敗
 ## <a name="summary"></a>摘要
@@ -43,7 +43,7 @@ Azure 資料中心的伺服器分割成叢集。 在多個叢集中嘗試新的�
 
 > 「Azure 作業 ' {operation id} ' 失敗，程式碼 ConstrainedAllocationFailed。 詳細資料：配置失敗;無法滿足要求中的條件約束。 要求的新服務部署繫結至同質群組，或以虛擬網路為目標，或此託管服務下已經有部署。 任何這些情況會將新的部署侷限於特定的 Azure 資源。 請稍後重試，或嘗試減少 VM 大小或角色執行個體的數量。 或者，可能的話，移除先前提到的條件約束，或嘗試部署至不同的區域。」
 
-### <a name="common-issues"></a>常見的問題
+### <a name="common-issues"></a>常見問題
 以下是造成配置要求釘選到單一叢集的常見配置案例。
 
 * 部署至預備位置 - 如果某個雲端服務在任一位置含有部署，則整個雲端服務都會釘選到特定的叢集。  這表示如果某個部署已存在生產位置，則新的預備部署只能配置在與生產位置相同的叢集中。 如果叢集逼近容量上限，則要求可能會失敗。
@@ -70,4 +70,4 @@ Azure 資料中心的伺服器分割成叢集。 在多個叢集中嘗試新的�
      ```
    * 請遵循上述的 #2，務必在服務的 CSCFG 中指定新 ReservedIP。
 4. 移除新部署中的同質群組 - 不再建議使用同質群組。 請遵循上述 #1 的步驟以部署新的雲端服務。 請確定雲端服務不在同質群組中。
-5. 轉換至區域虛擬網路 - 請參閱 [如何從同質群組移轉至區域虛擬網路 (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
+5. 轉換至區域虛擬網路 - 請參閱 [如何從同質群組移轉至區域虛擬網路 (VNet)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet)。
