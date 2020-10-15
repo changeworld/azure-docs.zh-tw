@@ -1,20 +1,20 @@
 ---
 title: 教學課程 - 建立 Azure Active Directory Domain Services 受控網域 | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站來建立和設定 Azure Active Directory Domain Services 受控網域。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: dc225cef2981bd6307a919d52b75d3e0791e46cf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 53720b19daa436893073b4f40528a49add653ff3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490995"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967234"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：建立並設定 Azure Active Directory Domain Services 受控網域
 
@@ -182,7 +182,7 @@ Azure AD 租用戶必須先[設定為可進行自助式密碼重設][configure-s
 
 1. 在 [設定檔] 頁面上，選取 [變更密碼]。
 1. 在 [變更密碼] 頁面上，輸入您現有 (舊的) 密碼，然後輸入新密碼並加以確認。
-1. 選取 [提交]。
+1. 選取 [提交]  。
 
 變更密碼之後，需要幾分鐘的時間，新密碼才能在 Azure AD DS 中使用，以及成功登入已加入受控網域的電腦。
 

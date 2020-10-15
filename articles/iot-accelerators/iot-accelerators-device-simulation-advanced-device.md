@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261425"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076040"
 ---
 # <a name="create-an-advanced-device-model"></a>建立進階裝置型號
 
@@ -520,4 +520,4 @@ function main(context, state) {
 
 ## <a name="next-steps"></a>後續步驟
 
-在本操作指南中，您會了解在裝置模擬中使用的裝置型號檔案，以如何建立進階裝置型號。 接下來，您可能想要探索如何[使用時間序列深入分析將從裝置模擬解決方案加速器傳送的遙測資料視覺化](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)。
+在本操作指南中，您會了解在裝置模擬中使用的裝置型號檔案，以如何建立進階裝置型號。 接下來，您可能想要探索如何[使用時間序列深入分析將從裝置模擬解決方案加速器傳送的遙測資料視覺化](./iot-accelerators-device-simulation-time-series-insights.md)。

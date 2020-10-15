@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 63d1a08dc588f0303ccb1ae13bd4c28af2a393c7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82207882"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043648"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教學課程：使用入口網站在 Azure Load Balancer 中設定連接埠轉送
 
@@ -40,12 +40,16 @@ ms.locfileid: "82207882"
 
 若要取得本教學課程中的所有步驟，請登入 Azure 入口網站，網址為：[https://portal.azure.com](https://portal.azure.com)。
 
+## <a name="prerequisites"></a>必要條件
+
+* Azure 訂用帳戶。
+
 ## <a name="create-a-standard-load-balancer"></a>建立標準負載平衡器
 
 首先，建立公用標準負載平衡器，以平衡 VM 間的流量負載。 標準負載平衡器只支援標準公用 IP 位址。 當您建立標準負載平衡器時，您也會建立新的標準公用 IP 位址，而該 IP 位址會設定為負載平衡器的前端 (預設的名稱為 **LoadBalancerFrontEnd**)。 
 
 1. 在畫面的左上方，按一下 [建立資源]   > [網路]   > [負載平衡器]  。
-2. 在 [建立負載平衡器]  頁面的 [基本資料]  中，輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [檢閱 + 建立]  ：
+2. 在 [建立負載平衡器] 頁面的 [基本資料] 中，輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [檢閱 + 建立]：
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
@@ -53,8 +57,8 @@ ms.locfileid: "82207882"
     | 資源群組         | 選取 [新建]  ，並在文字方塊中輸入 *MyResourceGroupLB*。|
     | 名稱                   | *myLoadBalancer*                                   |
     | 區域         | 選取 [西歐]  。                                        |
-    | 類型          | 選取 [公用]  。                                        |
-    | SKU           | 選取 [標準]  。                          |
+    | 類型          | 選取 [公用]。                                        |
+    | SKU           | 選取 [標準]。                          |
     | 公用 IP 位址 | 選取 [建立新的]  。 |
     | 公用 IP 位址名稱              | 在文字方塊中輸入 *myPublicIP*。   |
     |可用性區域| 選取 [區域備援]  。    |

@@ -54,6 +54,22 @@
               href: class-type-matlab.md
             - name: SolidWorks 電腦輔助設計 (CAD)
               href: class-type-solidworks.md
+        - name: 使用 Teams 內的 Azure 實驗室服務
+          items:
+            - name: 概觀
+              href: lab-services-within-teams-overview.md
+            - name: 從 Teams 建立實驗室
+              href: how-to-get-started-create-lab-within-teams.md
+            - name: 管理使用者清單
+              href: how-to-manage-user-lists-within-teams.md
+            - name: 管理 VM 集區
+              href: how-to-manage-vm-pool-within-teams.md
+            - name: 刪除實驗室
+              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+            - name: 排程和設定
+              href: how-to-create-schedules-within-teams.md
+            - name: 存取 VM (學生視圖)
+              href: how-to-access-vm-for-students-within-teams.md
 - name: 操作指南
   items:
     - name: 系統管理員指南
