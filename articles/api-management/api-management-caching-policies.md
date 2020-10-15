@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc258a0e790559cb343bfbf2eda0787962e2063e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510176"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071263"
 ---
 # <a name="api-management-caching-policies"></a>API 管理快取原則
-本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
 
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> 快取原則
 
@@ -114,10 +114,10 @@ ms.locfileid: "88510176"
 | 快取類型               | 選擇下列屬性值：<br />- `internal`，使用內建 API 管理快取，<br />- `external`，使用外部快取，如[在 Azure API 管理中使用外部 Azure Redis 快取](api-management-howto-cache-external.md)中所述，<br />- `prefer-external`。如有設定，則使用外部快取；否則使用內部快取。 | 否       | `prefer-external` |
 | downstream-caching-type        | 此屬性必須設為下列其中一個值。<br /><br /> -   none - 不允許下游快取。<br />-   private - 允許下游私人快取。<br />-   public - 允許私人和共用下游快取。                                                                                                          | 否       | 無              |
 | must-revalidate                | 當下游快取啟用時，此屬性會開啟或關閉閘道回應中的 `must-revalidate` 快取控制指示詞。                                                                                                                                                                                                                      | 否       | true              |
-| vary-by-developer              | 若 `true` 為，則會將每個開發人員帳戶的回應快取到要求中所包含的 [訂](./api-management-subscriptions.md) 用帳戶金鑰。                                                                                                                                                                                                                                                                                                  | 是      |         False          |
-| vary-by-developer-groups       | 設定為 `true` 可按照[使用者群組](./api-management-howto-create-groups.md)來快取回應。                                                                                                                                                                                                                                                                                                             | 是      |       False            |
+| vary-by-developer              | 若 `true` 為，則會將每個開發人員帳戶的回應快取到要求中所包含的 [訂](./api-management-subscriptions.md) 用帳戶金鑰。                                                                                                                                                                                                                                                                                                  | 是      |         否          |
+| vary-by-developer-groups       | 設定為 `true` 可按照[使用者群組](./api-management-howto-create-groups.md)來快取回應。                                                                                                                                                                                                                                                                                                             | 是      |       否            |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** inbound
@@ -189,7 +189,7 @@ ms.locfileid: "88510176"
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | duration         | 快取項目的存留時間，以秒為單位進行指定。                                                                                                                                                                                                                                                                                                   | 是      | N/A               |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** 輸出
@@ -235,7 +235,7 @@ ms.locfileid: "88510176"
 | 索引鍵              | 要在查閱中使用的快取索引鍵值。                                                                                                                                                                                                                                                                                                                       | 是      | N/A               |
 | variable-name    | 查閱成功時，要將查閱到的值指派到之[內容變數](api-management-policy-expressions.md#ContextVariables)的名稱。 如果查閱沒有結果，會對變數指派 `default-value` 屬性的值，如果省略 `default-value` 屬性，則會指派 `null`。                                       | 是      | N/A               |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** 輸入、輸出、後端、錯誤
@@ -277,7 +277,7 @@ ms.locfileid: "88510176"
 | duration         | 會針對所提供的持續時間值來快取值，以秒為單位進行指定。                                                                                                                                                                                                                                                                                 | 是      | N/A               |
 | 索引鍵              | 用來做為值儲存依據的快取索引鍵。                                                                                                                                                                                                                                                                                                                   | 是      | N/A               |
 | value            | 要快取的值。                                                                                                                                                                                                                                                                                                                                     | 是      | N/A               |
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** 輸入、輸出、後端、錯誤
@@ -315,7 +315,7 @@ ms.locfileid: "88510176"
 | 快取類型 | 選擇下列屬性值：<br />- `internal`，使用內建 API 管理快取，<br />- `external`，使用外部快取，如[在 Azure API 管理中使用外部 Azure Redis 快取](api-management-howto-cache-external.md)中所述，<br />- `prefer-external`。如有設定，則使用外部快取；否則使用內部快取。 | 否       | `prefer-external` |
 | 索引鍵              | 要從快取中移除之先前快取值的索引鍵。                                                                                                                                                                                                                                                                                        | 是      | N/A               |
 
-#### <a name="usage"></a>使用量
+#### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** 輸入、輸出、後端、錯誤
@@ -328,4 +328,4 @@ ms.locfileid: "88510176"
 + [API 管理中的原則](api-management-howto-policies.md)
 + [轉換 API](transform-api.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)
++ [原則範例](./policy-reference.md)

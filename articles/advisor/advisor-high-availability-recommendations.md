@@ -3,12 +3,12 @@ title: 使用 Advisor 改善應用程式的可靠性
 description: 使用 Azure Advisor 來確保和改善業務關鍵 Azure 部署的可靠性。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405185"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078029"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 來改善應用程式的可靠性
 
@@ -44,7 +44,7 @@ Advisor 可以識別您的虛擬機器是否正在執行某個版本的 Check Po
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>在您的 Azure 儲存體帳戶上使用虛刪除，以在意外覆寫或刪除後儲存及復原資料
 
-在儲存體帳戶上啟用[虛刪除](../storage/blobs/soft-delete-overview.md)，可讓刪除的 Blob 轉換為虛刪除狀態，而不是永久刪除。 當資料遭到覆寫時，系統會產生虛刪除的快照集，以儲存覆寫資料的狀態。 使用虛刪除可讓您從意外刪除或覆寫復原。 Advisor 會識別未啟用虛刪除的 Azure 儲存體帳戶，並建議您加以啟用。
+在儲存體帳戶上啟用[虛刪除](../storage/blobs/soft-delete-blob-overview.md)，可讓刪除的 Blob 轉換為虛刪除狀態，而不是永久刪除。 當資料遭到覆寫時，系統會產生虛刪除的快照集，以儲存覆寫資料的狀態。 使用虛刪除可讓您從意外刪除或覆寫復原。 Advisor 會識別未啟用虛刪除的 Azure 儲存體帳戶，並建議您加以啟用。
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>將您的 VPN 閘道設定為主動-主動以得到連線復原能力
 
@@ -80,23 +80,23 @@ Azure Advisor 會偵測在其條件區段中指定了無效查詢的記錄警示
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>在 Azure Cosmos DB 集合上設定一致的索引模式
 
-使用延遲編制索引模式設定 Azure Cosmos DB 的容器可能會影響查詢結果的有效性。 Advisor 會偵測以這種方式設定的容器，並建議切換至一致模式。 [深入瞭解 Azure Cosmos DB 中的編制索引原則。](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+使用延遲編制索引模式設定 Azure Cosmos DB 的容器可能會影響查詢結果的有效性。 Advisor 會偵測以這種方式設定的容器，並建議切換至一致模式。 [深入瞭解 Azure Cosmos DB 中的編制索引原則。](../cosmos-db/how-to-manage-indexing-policy.md)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>使用分割區索引鍵來設定 Azure Cosmos DB 容器
 
-Azure Advisor 識別已接近其布建儲存體配額 Azure Cosmos DB 非資料分割的集合。 建議您使用分割區索引鍵定義將這些集合遷移至新的集合，讓服務可以自動相應放大。 [深入瞭解如何選擇資料分割索引鍵。](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor 識別已接近其布建儲存體配額 Azure Cosmos DB 非資料分割的集合。 建議您使用分割區索引鍵定義將這些集合遷移至新的集合，讓服務可以自動相應放大。 [深入瞭解如何選擇資料分割索引鍵。](../cosmos-db/partitioning-overview.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>將您的 Azure Cosmos DB .NET SDK 從 NuGet 升級至最新版本
 
-Azure Advisor 識別使用舊版 .NET SDK 的 Azure Cosmos DB 帳戶。 建議您從 NuGet 升級至最新版本，以取得最新修正、效能改進和功能功能。 [深入瞭解 Azure Cosmos DB .NET SDK。](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 識別使用舊版 .NET SDK 的 Azure Cosmos DB 帳戶。 建議您從 NuGet 升級至最新版本，以取得最新修正、效能改進和功能功能。 [深入瞭解 Azure Cosmos DB .NET SDK。](../cosmos-db/sql-api-sdk-dotnet-standard.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>從 Maven 將 Azure Cosmos DB Java SDK 升級為最新版本
 
-Azure Advisor 識別使用舊版 JAVA SDK 的 Azure Cosmos DB 帳戶。 建議您從 Maven 升級至最新版本，以取得最新修正、效能改進和功能功能。 [深入瞭解 Azure Cosmos DB JAVA SDK。](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
+Azure Advisor 識別使用舊版 JAVA SDK 的 Azure Cosmos DB 帳戶。 建議您從 Maven 升級至最新版本，以取得最新修正、效能改進和功能功能。 [深入瞭解 Azure Cosmos DB JAVA SDK。](../cosmos-db/sql-api-sdk-java-v4.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>從 Maven 將您的 Azure Cosmos DB Spark 連接器升級為最新版本
 
-Azure Advisor 識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cosmos DB 帳戶。 建議您從 Maven 升級至最新版本，以取得最新修正、效能改進和功能功能。 [深入瞭解 Azure Cosmos DB Spark 連接器。](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor 識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cosmos DB 帳戶。 建議您從 Maven 升級至最新版本，以取得最新修正、效能改進和功能功能。 [深入瞭解 Azure Cosmos DB Spark 連接器。](../cosmos-db/spark-connector.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>考慮移至 HDInsight 4.0 上的 Kafka 2。1
 
@@ -110,10 +110,10 @@ Azure Advisor 識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cosmos
 未啟用複寫到另一個區域的虛擬機器不會因區域中斷而復原。 複寫虛擬機器可降低 Azure 區域中斷期間任何不利的業務衝擊。 Advisor 會偵測未啟用複寫的 Vm，並建議啟用複寫。 當您啟用複寫時，如果發生中斷，您可以在遠端 Azure 區域中快速啟動您的虛擬機器。 [深入瞭解虛擬機器複寫。](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>升級至最新版的 Azure Connected Machine 代理程式
-[Azure Connected Machine 的代理程式](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent)會定期更新，並提供錯誤修正、穩定性增強功能和新功能。 我們已識別出無法在最新版電腦代理程式上執行的資源，而此 Advisor 建議建議您將代理程式升級至最新版本，以獲得最佳的 Azure Arc 體驗。
+[Azure Connected Machine 的代理程式](../azure-arc/servers/manage-agent.md)會定期更新，並提供錯誤修正、穩定性增強功能和新功能。 我們已識別出無法在最新版電腦代理程式上執行的資源，而此 Advisor 建議建議您將代理程式升級至最新版本，以獲得最佳的 Azure Arc 體驗。
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>請勿覆寫主機名稱以確保網站完整性
-建議程式在設定應用程式閘道時，建議您不要嘗試覆寫主機名稱。 在應用程式閘道前端上擁有的網域，不是用來存取後端的網域時，可能會導致 Cookie 或重新導向 URL 中斷。 請注意，可能並非所有情況都會如此，而且某些類別的後端 (例如 REST API 的) 一般對此較不敏感。 請確定後端能夠處理這種情況，或更新應用程式閘道設定，讓主機名稱不需要覆寫到後端。 搭配 App Service 使用時，請將自訂功能變數名稱附加至 Web 應用程式，並避免對 *後端使用 azurewebsites.net 主機名稱。* [深入瞭解自訂網域](https://aka.ms/appgw-advisor-usecustomdomain)。
+建議程式在設定應用程式閘道時，建議您不要嘗試覆寫主機名稱。 在應用程式閘道前端上擁有的網域，不是用來存取後端的網域時，可能會導致 Cookie 或重新導向 URL 中斷。 請注意，可能並非所有情況都會如此，而且某些類別的後端 (例如 REST API 的) 一般對此較不敏感。 請確定後端能夠處理這種情況，或更新應用程式閘道設定，讓主機名稱不需要覆寫到後端。 搭配 App Service 使用時，請將自訂功能變數名稱附加至 Web 應用程式，並避免對 *後端使用 azurewebsites.net 主機名稱。* [深入瞭解自訂網域](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何存取 Advisor 中的高可用性建議
 

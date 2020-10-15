@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029858"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078165"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
 
@@ -39,7 +39,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 若要完成本教學課程，您必須具備：
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
-* [Azure Cloud Shell 設定](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
+* [Azure Cloud Shell 設定](../cloud-shell/quickstart.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -69,11 +69,11 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 在 [訂用帳戶]**** 底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
     ![新增受控識別](./media/add-managed-identity.png)
 
-1. 選擇性：如果您也想要將存取權授與 Key Vault，請遵循 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)中的指示。
+1. 選擇性：如果您也想要將存取權授與 Key Vault，請遵循 [指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)中的指示。
 
 ## <a name="use-a-managed-identity"></a>建立受控識別
 
@@ -185,7 +185,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     您現在可以存取 Key Vault 參考，就像任何其他應用程式設定金鑰一樣。 設定提供者會使用 `KeyVaultClient` 您設定的來驗證 Key Vault 並取出值的。
 
 > [!NOTE]
-> `ManagedIdentityCredential` 僅支援受控識別驗證。 它無法在本機環境中運作。 如果您想要在本機執行程式碼，請考慮使用 `DefaultAzureCredential` ，它也支援服務主體驗證。 請檢查 [連結](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) 以取得詳細資料。
+> `ManagedIdentityCredential` 僅支援受控識別驗證。 它無法在本機環境中運作。 如果您想要在本機執行程式碼，請考慮使用 `DefaultAzureCredential` ，它也支援服務主體驗證。 請檢查 [連結](/dotnet/api/azure.identity.defaultazurecredential) 以取得詳細資料。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

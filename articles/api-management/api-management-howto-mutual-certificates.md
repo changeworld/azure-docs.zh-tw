@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250187"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071110"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何在 Azure API 管理中使用用戶端憑證驗證來保護後端服務
 
 API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取。 本指南說明如何在 Azure 入口網站中管理 Azure API 管理服務執行個體中的憑證。 此外也會說明如何設定 API 以使用憑證來存取後端服務。
 
-如需使用 API 管理 REST API 來管理憑證的詳細資訊，請參閱 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 憑證實體</a>。
+如需使用 API 管理 REST API 來管理憑證的詳細資訊，請參閱 <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 憑證實體</a>。
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Prerequisites
+## <a name="prerequisites"></a><a name="prerequisites"> </a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -75,7 +75,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 3. 將 [閘道認證]**** 變更為 [用戶端憑證]****，並從下拉式清單中選取您的憑證。
     ![啟用用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. 按一下 **[儲存]** 。
+4. 按一下 [儲存]。
 
 > [!WARNING]
 > 此變更將立即生效，且該 API 之作業的呼叫將使用憑證以在後端伺服器上進行驗證。

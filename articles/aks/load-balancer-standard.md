@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182117"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070498"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的公用 Standard Load Balancer) 
 
@@ -229,7 +229,7 @@ az aks update \
 > [!IMPORTANT]
 > 您必須在自訂*allocatedOutboundPorts*之前[，先計算所需的配額並檢查需求][requirements]，以避免連線或調整問題。
 
-您也可以在 **`load-balancer-outbound-ports`** 建立叢集時使用參數，但也必須指定 **`load-balancer-managed-outbound-ip-count`** 、 **`load-balancer-outbound-ips`** 或 **`load-balancer-outbound-ip-prefixes`** 。  例如：
+您也可以在 **`load-balancer-outbound-ports`** 建立叢集時使用參數，但也必須指定 **`load-balancer-managed-outbound-ip-count`** 、 **`load-balancer-outbound-ips`** 或 **`load-balancer-outbound-ip-prefixes`** 。  例如︰
 
 ```azurecli-interactive
 az aks create \
@@ -322,7 +322,7 @@ spec:
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定負載平衡器是否應為內部負載平衡器。 如果未設定，則會預設為 public。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子網的名稱                    | 指定應系結內部負載平衡器的子網。 如果未設定，則會預設為雲端設定檔中設定的子網。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | 公用 Ip 上的 DNS 標籤名稱   | 指定 **公用** 服務的 DNS 標籤名稱。 如果設定為空字串，將不會使用公用 IP 中的 DNS 專案。
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定應使用可與另一個服務共用的 Azure 安全性規則來公開服務，並針對可公開的服務數目增加，交易明確的規則。 此注釋依賴網路安全性群組的 Azure 增強型 [安全性規則](../virtual-network/security-overview.md#augmented-security-rules) 功能。 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定應使用可與另一個服務共用的 Azure 安全性規則來公開服務，並針對可公開的服務數目增加，交易明確的規則。 此注釋依賴網路安全性群組的 Azure 增強型 [安全性規則](../virtual-network/network-security-groups-overview.md#augmented-security-rules) 功能。 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 資源群組的名稱            | 指定負載平衡器公用 Ip 的資源群組，而這些公用 Ip 與叢集基礎結構 (節點資源群組) 位於相同的資源群組中。
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | 允許的服務標記清單          | 指定允許的 [服務標記][service-tags] 清單（以逗號分隔）。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP 閒置超時（分鐘）          | 指定負載平衡器上發生 TCP 連接閒置超時的時間（以分鐘為單位）。 預設值和最小值為4。 最大值為30。 必須是整數。
@@ -426,4 +426,4 @@ SNAT 耗盡的根本原因通常是一種反模式，說明如何建立、管理
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags
