@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86205889"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071314"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理執行個體的容量
 
@@ -28,7 +28,7 @@ ms.locfileid: "86205889"
 > [!IMPORTANT]
 > 本文將討論如何根據 Azure API 管理實例的容量計量來進行監視和調整。 不過，請務必瞭解當個別的 API 管理實例實際 *達到* 其容量時，會發生什麼事。 Azure API 管理不會套用任何服務層級的節流，以防止實例的實體多載。 當實例達到其實體容量時，其行為會類似于任何無法處理傳入要求的多載 web 伺服器：延遲會增加、中斷連線、將會發生逾時錯誤等。這表示 API 用戶端應該準備好處理這種可能的情況，就像使用任何其他外部服務一樣 (例如藉由套用重試原則) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要依照本文中的步驟進行，您必須有：
 
@@ -104,7 +104,7 @@ ms.locfileid: "86205889"
 >[!TIP]  
 > 如果您可以事先評估流量，請在您預期的工作負載上測試 APIM 執行個體。 您可以逐漸增加租用戶的要求負載，並監視尖峰負載對應的容量計量值。 請遵循上一節的步驟，使用 Azure 入口網站來了解任何特定時刻使用了多少容量。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何調整或升級 Azure API 管理服務執行個體](upgrade-and-scale.md)
-- [優化並節省您的雲端費用](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [優化並節省您的雲端費用](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

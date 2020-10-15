@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851676"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071365"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理進階原則
 
-本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
 
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Advanced 原則
 
@@ -257,7 +257,7 @@ ms.locfileid: "87851676"
 | 緩衝區-要求-主體 = "false &#124; true"       | 當設定為 "true" 時，會緩衝處理要求，並在 [重試](api-management-advanced-policies.md#Retry)時重複使用。                                                                                                                                                                                               | 否       | false   |
 | 失敗-錯誤-狀態-代碼 = "false &#124; true" | 當設為 true 時，會在 [錯誤](api-management-error-handling-policies.md) 區段中觸發回應碼，範圍從400到599（含）。                                                                                                                                                                      | 否       | false   |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -307,7 +307,7 @@ ms.locfileid: "87851676"
 | 索引鍵       | 字串。 允許的運算式。 指定並行範圍。 可由多個原則共用。 | 是      | N/A     |
 | max-count | 整數。 指定允許輸入原則的要求數目上限。           | 是      | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -361,7 +361,7 @@ ms.locfileid: "87851676"
 | partition-id  | 指定訊息傳送目的地的資料分割索引。             | 選擇性。 如果使用 `partition-key`，就不能使用這個屬性。 |
 | partition-key | 指定在傳送訊息時，用來指派資料分割的值。 | 選擇性。 如果使用 `partition-id`，就不能使用這個屬性。  |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -405,7 +405,7 @@ status code and media type. If no example or schema found, the content is empty.
 | status-code  | 指定回應狀態碼，且用來選取對應範例或結構描述。                 | 否       | 200     |
 | Content-Type | 指定 `Content-Type` 回應標頭值，且用來選取對應範例或結構描述。 | 否       | None    |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -473,7 +473,7 @@ status code and media type. If no example or schema found, the content is empty.
 > 當只有指定 `interval` 和 `delta` 時，會使用**線性**的間隔重試演算法，其中，重試之間的等待時間會根據下列公式來進行計算：`interval + (count - 1)*delta`。
 > 當指定了 `interval`、`max-interval` 和 `delta` 時，則會套用**指數**的間隔重試演算法，其中，重試之間的等待時間會根據下列公式，以指數方式從 `interval` 的值增加到 `max-interval` 的值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。 請注意，此原則會繼承子原則的使用方式限制。
 
@@ -523,7 +523,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | 所參考的內容變數名稱，其參考來源為 (舉例來說) 上游 [send-request](api-management-advanced-policies.md#SendRequest) 原則，且包含 `Response` 物件 | 選擇性。 |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -597,7 +597,7 @@ status code and media type. If no example or schema found, the content is empty.
 | NAME          | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
 | exists-action | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -684,7 +684,7 @@ status code and media type. If no example or schema found, the content is empty.
 | NAME                            | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
 | exists-action                   | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -726,7 +726,7 @@ status code and media type. If no example or schema found, the content is empty.
 | username="string" | 用於向 Proxy 驗證的使用者名稱。 | 否       | N/A     |
 | password="string" | 用於向 Proxy 驗證的密碼。 | 否       | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -781,7 +781,7 @@ status code and media type. If no example or schema found, the content is empty.
 | ---------- | ----------------------------------------------------------------- | -------- |
 | set-method | 根元素。 元素的值會指定 HTTP 方法。 | 是      |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -831,7 +831,7 @@ status code and media type. If no example or schema found, the content is empty.
 | code="integer"  | 要傳回的 HTTP 狀態碼。                            | 是      | N/A     |
 | reason="string" | 狀態碼傳回原因的描述。 | 是      | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -869,7 +869,7 @@ status code and media type. If no example or schema found, the content is empty.
 | NAME      | 變數的名稱。                                                | 是      |
 | value     | 變數的值。 此值可為運算式或常值。 | 是      |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -957,7 +957,7 @@ status code and media type. If no example or schema found, the content is empty.
 | NAME      | 屬性的名稱。                                                                                                     | 是      | N/A     |
 | value     | 屬性的值。                                                                                                    | 是      | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -1025,9 +1025,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 屬性 | 描述                                                                                                                                                                                                                                                                                                                                                                                                            | 必要 | 預設 |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
+| 對象       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -1041,4 +1041,4 @@ status code and media type. If no example or schema found, the content is empty.
 -   [API 管理中的原則](api-management-howto-policies.md)
 -   [原則運算式](api-management-policy-expressions.md)
 -   [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
--   [原則範例](policy-samples.md)
+-   [原則範例](./policy-reference.md)

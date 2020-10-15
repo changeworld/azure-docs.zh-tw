@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243710"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071280"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理驗證原則
-本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
 
 ##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> 驗證原則
 
@@ -48,18 +48,18 @@ ms.locfileid: "86243710"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |authentication-basic|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |username|指定「基本驗證」認證的使用者名稱。|是|N/A|
 |密碼|指定「基本驗證」認證的密碼。|是|N/A|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** inbound
@@ -67,7 +67,7 @@ ms.locfileid: "86243710"
 -   **原則範圍：** 所有範圍
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> 使用用戶端憑證進行驗證
- 使用 `authentication-certificate` 原則以利用用戶端憑證向後端服務進行驗證。 憑證必須先[安裝到 API 管理中](https://go.microsoft.com/fwlink/?LinkID=511599)且會以其指紋作為識別。
+ 使用 `authentication-certificate` 原則以利用用戶端憑證向後端服務進行驗證。 憑證必須先[安裝到 API 管理中](./api-management-howto-mutual-certificates.md)且會以其指紋作為識別。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -97,20 +97,20 @@ ms.locfileid: "86243710"
 
 ### <a name="elements"></a>項目  
   
-|名稱|說明|必要|  
+|名稱|描述|必要|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>屬性  
   
-|名稱|說明|必要|預設|  
+|名稱|描述|必要|預設|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|用戶端憑證的指紋。|`thumbprint`或都 `certificate-id` 必須存在。|N/A|
 |憑證識別碼|憑證資源名稱。|`thumbprint`或都 `certificate-id` 必須存在。|N/A|
 |body|以位元組陣列形式提供的用戶端憑證。|否|N/A|
 |密碼|用戶端憑證的密碼。|如果中指定的憑證受到 `body` 密碼保護，則使用。|N/A|
   
-### <a name="usage"></a>使用量  
+### <a name="usage"></a>使用方式  
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。  
   
 -   **原則區段︰** inbound  
@@ -174,30 +174,30 @@ ms.locfileid: "86243710"
 
 ### <a name="elements"></a>項目  
   
-|名稱|說明|必要|  
+|名稱|描述|必要|  
 |----------|-----------------|--------------|  
 |驗證-受控-身分識別 |根元素。|是|  
   
 ### <a name="attributes"></a>屬性  
   
-|名稱|說明|必要|預設|  
+|名稱|描述|必要|預設|  
 |----------|-----------------|--------------|-------------|  
 |resource|字串。 目標 web API 的應用程式識別碼 (Azure Active Directory 中的安全資源) 。|是|N/A|
 |client-id|字串。 Azure Active Directory 中使用者指派之身分識別的應用程式識別碼。|否|系統指派的身分識別|
 |輸出-token-variable 名稱|字串。 將接收權杖值做為物件類型之內容變數的名稱 `string` 。 |否|N/A|  
 |ignore-error|布林值。 如果設定為 `true` ，即使未取得存取權杖，原則管線仍將繼續執行。|否|false|  
   
-### <a name="usage"></a>使用量  
+### <a name="usage"></a>使用方式  
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。  
   
 -   **原則區段︰** inbound  
   
 -   **原則範圍：** 所有範圍
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需使用原則的詳細資訊，請參閱︰
 
 + [API 管理中的原則](api-management-howto-policies.md)
 + [轉換 API](transform-api.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)
++ [原則範例](./policy-reference.md)
