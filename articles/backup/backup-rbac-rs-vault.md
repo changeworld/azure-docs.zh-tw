@@ -1,19 +1,19 @@
 ---
-title: 使用 Role-Based 存取控制來管理備份
-description: 使用角色型存取控制來管理復原服務保存庫中的備份管理作業存取權。
+title: 使用 Azure 角色型存取控制來管理備份
+description: 使用 Azure 角色型存取控制來管理復原服務保存庫中的備份管理作業存取權。
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376123"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090874"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用角色型存取控制來管理 Azure 備份復原點
+# <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用 Azure 角色型存取控制來管理 Azure 備份復原點
 
-Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
+Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 Azure RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
 
 > [!IMPORTANT]
 > Azure 備份提供的角色僅限於可在 Azure 入口網站或透過 REST API 或復原服務保存庫 PowerShell 或 CLI Cmdlet 執行的動作。 在 Azure 備份代理程式用戶端 UI 或 System center Data Protection Manager UI 或 Azure 備份伺服器 UI 中執行的動作不是這些角色的控制權。
@@ -77,9 +77,9 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解 
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
+* [Azure 角色型存取控制 (AZURE rbac) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 azure rbac。
 * 了解如何使用下列各項管理存取權：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [角色型存取控制疑難排解](../role-based-access-control/troubleshooting.md)︰取得修正常見問題的建議。
+* [Azure 角色型存取控制疑難排解](../role-based-access-control/troubleshooting.md)：取得修正常見問題的建議。

@@ -2,15 +2,15 @@
 title: 針對 Azure 自動化更新管理問題進行疑難排解
 description: 本文說明如何針對 Azure 自動化更新管理進行疑難排解及解決問題。
 services: automation
-ms.date: 09/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858399"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070328"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
@@ -59,7 +59,7 @@ Error details: Failed to enable the Update solution
 
 已取代的更新不會在 Windows Server Update Services (WSUS) 中拒絕，因此可視為不適用。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 當被取代的更新變成100% 不適用時，您應該在 WSUS 中將該更新的核准狀態變更為 `Declined` 。 若要變更所有更新的核准狀態：
 
@@ -486,6 +486,8 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 更新的預設維護期間是 120 分鐘。 您可以將維護期間增加到最多 6 小時或 360 分鐘。
 
 ### <a name="resolution"></a>解決方案
+
+若要瞭解在更新執行期間，在更新執行期間發生這種情況，請檢查執行中受影響機器的 [工作輸出](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) 。 您可能可以從電腦找到可供研究和採取動作的特定錯誤訊息。  
 
 編輯任何失敗的排程更新部署，並增加維護期間。
 

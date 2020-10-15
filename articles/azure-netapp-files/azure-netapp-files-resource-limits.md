@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325482"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072776"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -65,7 +65,7 @@ Azure NetApp Files 磁片區有一個稱為 *maxfiles*的限制。 Maxfiles 限�
 |    > 3 TiB 但 <= 4 TiB    |    80000000     |
 |    > 4 TiB                 |    1 億    |
 
-如果您已經為磁片區配置至少 4 TiB 配額，您可以起始 [支援要求](#limit_increase) ，將 maxfiles 限制增加到100000000以上。
+如果您已經為磁片區配置至少 4 TiB 配額，您可以起始 [支援要求](#limit_increase) ，將 maxfiles 限制增加到100000000以上。 針對您 (增加的每個100000000檔案或) 的分數，您必須將對應的磁片區配額增加 4 TiB。  例如，如果您將100000000檔案的 maxfiles 限制增加至200000000個檔案 (或) 之間的任何數位，則必須將磁片區配額從 4 TiB 增加為 8 TiB。
 
 ## <a name="request-limit-increase"></a>要求限制增加 <a name="limit_increase"></a> 
 

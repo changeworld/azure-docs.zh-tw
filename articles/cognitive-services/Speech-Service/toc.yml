@@ -26,10 +26,6 @@
       href: get-started-speech-to-text.md
     - name: 操作指南
       items:
-        - name: 辨識儲存在 Blob 儲存體中的語音
-          href: quickstarts/from-blob.md
-        - name: 選擇語音辨識模式
-          href: how-to-choose-recognition-mode.md
         - name: 變更語音辨識的來源語言
           href: how-to-specify-source-language.md
         - name: 以自訂語音提高精確度
@@ -37,8 +33,6 @@
         - name: 使用壓縮的音訊輸入格式
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
-        - name: 以片語清單提高精確度
-          href: how-to-phrase-lists.md
         - name: 選取特定的麥克風輸入裝置
           href: how-to-select-audio-input-devices.md
         - name: 使用自動來源語言偵測
@@ -47,6 +41,8 @@
           href: batch-transcription.md
     - name: 教學課程
       items:
+        - name: 辨識儲存在 Blob 儲存體中的語音
+          href: quickstarts/from-blob.md
         - name: 以租用戶模型提高精確度
           href: tutorial-tenant-model.md
     - name: 自訂
@@ -299,7 +295,7 @@
           href: index-conversation-scenarios.yml
         - name: 對話轉譯
           items:
-            - name: 總覽
+            - name: 概觀
               items:
                 - name: 什麼是對話轉譯？
                   href: conversation-transcription.md

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888475"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090704"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季雲端中設定預備環境
 
@@ -22,7 +22,7 @@ ms.locfileid: "90888475"
 
 ## <a name="prerequisites"></a>必要條件
 
-本文假設您已在本教學課程中部署 PiggyMetrics 應用程式， [以啟動 Azure 春季 Cloud 應用程式](spring-cloud-quickstart-launch-app-portal.md)。 PiggyMetrics 包含三個應用程式：「閘道」、「帳戶服務」和「驗證服務」。  
+本文假設您已在本教學課程中部署 PiggyMetrics 應用程式， [以啟動 Azure 春季 Cloud 應用程式](./spring-cloud-quickstart.md)。 PiggyMetrics 包含三個應用程式：「閘道」、「帳戶服務」和「驗證服務」。  
 
 如果您想要在此範例中使用不同的應用程式，您必須在應用程式公開的部分中進行簡單的變更。  此變更會將您的預備部署與生產環境區分開來。
 

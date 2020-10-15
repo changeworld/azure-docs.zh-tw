@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073694"
+ms.locfileid: "92091435"
 ---
 # <a name="create-an-azure-support-request"></a>建立 Azure 支援要求
 
@@ -39,7 +39,7 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 
 移至 Azure 入口網站中的 [說明 + 支援]。 您可以從 Azure 入口網站的功能表、全域標頭、或服務的資源功能表前往 [說明 + 支援]。 您必須擁有適當的權限，才能提出支援要求。
 
-### <a name="role-based-access-control"></a>角色型存取控制
+### <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
 若要建立支援要求，您必須是[擁有者](../../role-based-access-control/built-in-roles.md#owner)、[參與者](../../role-based-access-control/built-in-roles.md#contributor)，或是獲派訂用帳戶層級的[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要建立不含訂用帳戶的支援要求，例如 Azure Active Directory 案例，您必須是系統 [管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 

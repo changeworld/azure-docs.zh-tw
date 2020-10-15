@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836729"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091163"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>移轉應用程式之前，先了解「雲端服務」與 Service Fabric 之間的差異。
 Microsoft Azure Service Fabric 為次世代雲端應用程式平台，適用於高度可調整且高度可靠的分散式應用程式。 其中導入了許多封裝、部署、更新及管理分散式雲端應用程式的新功能。 
@@ -69,7 +69,7 @@ Service Fabric 應用程式也可以選擇在完整應用程式中使用同樣�
 
 Service Fabric 提供服務探索機制 (稱為「名稱服務」)，可用來解析服務的端點位置。 
 
-![Service Fabric 直接通訊][6]
+![此圖顯示 Service Fabric 如何提供稱為「命名服務」的服務探索機制，可用來解析服務的端點位址。][6]
 
 ### <a name="queues"></a>佇列
 層與無狀態環境 (如雲端服務) 之間的常見通訊機制是使用外部儲存體佇列持久地儲存各層的工作狀態。 常見的案例是 Web 層將作業傳送到背景工作角色執行個體可以清除佇列並處理作業的 Azure Queue 或服務匯流排。

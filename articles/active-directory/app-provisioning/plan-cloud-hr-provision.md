@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706358"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070379"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
 
@@ -31,7 +31,7 @@ Azure AD 使用這項整合來啟用下列雲端 HR 應用程式 (應用程式) 
 - **回寫到雲端 HR 應用程式：** 將電子郵件地址和使用者名稱屬性從 Azure AD 寫回雲端 HR 應用程式。
 
 > [!NOTE]
-> 此部署計畫說明如何使用 Azure AD 使用者布建來部署雲端 HR 應用程式工作流程。 如需有關如何將自動使用者布建部署到軟體即服務 (SaaS) 應用程式的詳細資訊，請參閱 [規劃自動使用者](https://aka.ms/deploymentplans/provisioning)布建部署。
+> 此部署計畫說明如何使用 Azure AD 使用者布建來部署雲端 HR 應用程式工作流程。 如需有關如何將自動使用者布建部署到軟體即服務 (SaaS) 應用程式的詳細資訊，請參閱 [規劃自動使用者](./plan-auto-user-provisioning.md)布建部署。
 
 ## <a name="enabled-hr-scenarios"></a>啟用的 HR 案例
 
@@ -52,7 +52,7 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 - 需要根據在雲端 HR 應用程式中偵測到的變更資訊，來加入、移動及離開使用者，使其同步至一或多個 Active Directory 的樹系、網域和 Ou。
 - 使用電子郵件的 Microsoft 365。
 
-## <a name="learn"></a>學習
+## <a name="learn"></a>Learn
 
 使用者布建可為進行中的身分識別治理建立基礎。 它能增強依賴授權身分識別資料的商務程式品質。
 
@@ -126,7 +126,7 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，通常會原因，以避免影響、結果和責任的預期。 若要避免這些問題，請 [確定您正參與適當的專案關係人](https://aka.ms/deploymentplans)。 此外，也請確定專案中的專案關係人角色已充分瞭解。 記錄專案關係人及其專案輸入和責任。
+當技術專案失敗時，通常會原因，以避免影響、結果和責任的預期。 若要避免這些問題，請 [確定您正參與適當的專案關係人](../fundamentals/active-directory-deployment-plans.md)。 此外，也請確定專案中的專案關係人角色已充分瞭解。 記錄專案關係人及其專案輸入和責任。
 
 包含 HR 組織的代表，可提供現有 HR 商務程式和背景工作角色身分識別的輸入，以及作業資料處理需求。
 
@@ -257,7 +257,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於雲端 HR 應用程式�
 
 當您起始 Joiners-Leavers 進程時，請收集下列需求。
 
-| 處理序 | 需求 |
+| 處理序 | 規格需求 |
 | - | - |
 | **權變** | 從身分識別生命週期的觀點來看，您要如何處理重新雇用？ 重新雇用要保留舊的員工識別碼嗎？ |
 | | 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？ 這些帳戶會建立為啟用或停用狀態嗎？ |
@@ -276,7 +276,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於雲端 HR 應用程式�
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| 處理序 | 需求 |
+| 處理序 | 規格需求 |
 | - | - |
 | **權變** | Active Directory 帳戶建立程式是手動、自動或部分自動化？ |
 | | 您是否計畫將自訂屬性從雲端 HR 應用程式傳播至 Active Directory？ |
@@ -378,7 +378,7 @@ Azure AD 可以透過審核記錄和報告，為您組織的使用者布建使�
 
 在成功 [初始迴圈](../app-provisioning/how-provisioning-works.md#initial-cycle)之後，Azure AD 布建服務會繼續以每個應用程式專用的教學課程中定義的間隔，無限期地持續執行後端增量更新，直到發生下列其中一個事件為止：
 
-- 已手動停止服務。 使用 [Azure 入口網站](https://portal.azure.com/) 或適當的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 命令觸發新的初始週期。
+- 已手動停止服務。 使用 [Azure 入口網站](https://portal.azure.com/) 或適當的 [Microsoft Graph API](/graph/api/resources/synchronization-overview) 命令觸發新的初始週期。
 - 原因變更屬性對應或範圍篩選準則時，會觸發新的初始週期。
 - 布建程式會因為錯誤率過高而進入隔離。 它會保持隔離狀態超過四周，此時會自動停用。
 
@@ -416,6 +416,6 @@ Azure AD 布建服務不會產生報告、執行分析或提供超過30天的見
 ### <a name="next-steps"></a>後續步驟
 
 - [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)
-- [Azure AD 同步處理 API 概觀](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD 同步處理 API 概觀](/graph/api/resources/synchronization-overview)
 - [略過刪除超出範圍的使用者帳戶](skip-out-of-scope-deletions.md)
 - [Azure AD Connect 布建代理程式：版本發行歷程記錄](provisioning-agent-release-version-history.md)
