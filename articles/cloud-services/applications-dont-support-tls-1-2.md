@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683800"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075666"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>針對不支援 TLS 1.2 的應用程式進行疑難排解
 本文說明如何啟用舊版 TLS 通訊協定 (TLS 1.0 和 1.1)，以及套用舊版加密套件，以支援 Windows Server 2019 雲端服務 Web 和背景工作角色上的其他通訊協定。 
@@ -25,7 +25,7 @@ ms.locfileid: "83683800"
 我們了解雖然我們正在採取步驟來取代 TLS 1.0 和 TLS 1.1，但是我們的客戶可能需要支援舊版通訊協定和加密套件，直到他們可以規劃其淘汰為止。  雖然我們不建議重新啟用這些舊版值，但是我們會提供指引來協助客戶。 我們鼓勵客戶在實作本文中所述的變更之前，先評估迴歸的風險。 
 
 > [!NOTE]
-> 客體作業系統系列 6 版本藉由明確停用 TLS 1.0 和1.1，並定義一組特定的加密套件，來強制執行 TLS 1.2。如需有關客體作業系統系列的詳細資訊，請參閱[客體作業系統發佈新聞](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> 客體作業系統系列 6 版本藉由明確停用 TLS 1.0 和1.1，並定義一組特定的加密套件，來強制執行 TLS 1.2。如需有關客體作業系統系列的詳細資訊，請參閱[客體作業系統發佈新聞](./cloud-services-guestos-update-matrix.md#family-6-releases)
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>捨棄 TLS 1.0、TLS 1.1 和舊版加密套件的支援 
@@ -362,4 +362,3 @@ EXIT /B %ERRORLEVEL%
 
 您可以使用 [SSLLabs](https://www.ssllabs.com/) 來驗證端點的 TLS 狀態 
 
- 

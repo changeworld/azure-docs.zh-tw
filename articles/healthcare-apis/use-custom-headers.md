@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081838"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>使用自訂 HTTP 標頭將資料新增至稽核記錄
@@ -24,7 +24,7 @@ ms.locfileid: "86081838"
 
 您可以在下圖中看到此資料流程：
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="自訂標頭的圖表":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="自訂標頭的圖表&quot;:::
 
 您可以使用自訂標頭來擷取數個類型的資訊。 例如：
 
@@ -47,9 +47,9 @@ ms.locfileid: "86081838"
 然後此資訊會在新增至記錄檔中的屬性資料行時序列化至 JSON。 例如：
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234&quot; }
 ```
  
 就像任何 HTTP 標頭一樣，可以使用不同的值來重複相同的標頭名稱。 例如：
@@ -59,7 +59,7 @@ ms.locfileid: "86081838"
 
 新增至記錄檔時，會使用逗號分隔的清單結合值。 例如：
 
-{ "X-MS-AZUREFHIR-AUDIT-USERLOCATION" :"HospitalA, Emergency" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; :&quot;HospitalA, Emergency" }
  
 您最多可以新增 10 個唯一的標頭 (具有相同標頭但不同值的重複項目只會被計為一個)。 任一個標頭的值最大長度為 2048 個字元。
 

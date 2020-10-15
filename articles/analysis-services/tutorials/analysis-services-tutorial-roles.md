@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018690"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教學課程：設定伺服器管理員和使用者角色
 
- 在本教學課程中，您會使用 SQL Server Management Studio (SSMS) 連線至 Azure 中的伺服器，以設定伺服器管理員和模型資料庫角色。 此外也會介紹[表格式模型指令碼語言 (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)。 TMSL 是 1200 或更高相容性層級的表格式模型所適用的 JSON 型指令碼語言。 它可用來自動化許多表格式模型化工作。 TMSL 常會與 PowerShell 搭配使用，但在本教學課程中，您會使用 SSMS 中的 XMLA 查詢編輯器。 透過本教學課程，您會完成下列工作： 
+ 在本教學課程中，您會使用 SQL Server Management Studio (SSMS) 連線至 Azure 中的伺服器，以設定伺服器管理員和模型資料庫角色。 此外也會介紹[表格式模型指令碼語言 (TMSL)](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)。 TMSL 是 1200 或更高相容性層級的表格式模型所適用的 JSON 型指令碼語言。 它可用來自動化許多表格式模型化工作。 TMSL 常會與 PowerShell 搭配使用，但在本教學課程中，您會使用 SSMS 中的 XMLA 查詢編輯器。 透過本教學課程，您會完成下列工作： 
   
 > [!div class="checklist"]
 > * 從入口網站取得您的伺服器名稱
@@ -33,7 +33,7 @@ ms.locfileid: "89229356"
 - 已在您的訂用帳戶中建立 [Azure Analysis Services 伺服器](../analysis-services-create-server.md)。
 - 具有[伺服器管理員](../analysis-services-server-admins.md)權限。
 - [新增 adventureworks 範例模型](../analysis-services-create-sample-model.md)至您的伺服器。
-- [安裝最新版本的 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
+- [安裝最新版本的 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -82,7 +82,7 @@ ms.locfileid: "89229356"
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>將使用者新增至模型資料庫管理員角色
 
-在此工作中，您會將使用者或群組帳戶新增至已存在於模型中的網際網路銷售管理員角色。 此角色具有 adventureworks 範例模型資料庫的完全控制 (管理員) 權限。 此工作會在為您建立的指令碼中使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL 命令。
+在此工作中，您會將使用者或群組帳戶新增至已存在於模型中的網際網路銷售管理員角色。 此角色具有 adventureworks 範例模型資料庫的完全控制 (管理員) 權限。 此工作會在為您建立的指令碼中使用 [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) TMSL 命令。
 
 1. 在 [物件總管]  中，展開 [資料庫]   > [adventureworks]   > [角色]  。 
 2. 以滑鼠右鍵按一下 [網際網路銷售管理員]  ，然後按一下 [編寫角色的指令碼為]   > [建立或取代為]   > [新增查詢編輯器視窗]  。
@@ -98,7 +98,7 @@ ms.locfileid: "89229356"
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>新增新的模型資料庫角色，並新增使用者或群組
 
-在此工作中，您會在 TMSL 指令碼中使用 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令建立新的網際網路銷售全域角色、指定該角色的*讀取*權限，並從您的 Azure AD 新增使用者或群組帳戶。
+在此工作中，您會在 TMSL 指令碼中使用 [Create](/analysis-services/tmsl/create-command-tmsl) 命令建立新的網際網路銷售全域角色、指定該角色的*讀取*權限，並從您的 Azure AD 新增使用者或群組帳戶。
 
 1. 在 [物件總管]  中，以滑鼠右鍵按一下 **adventureworks**，然後按一下 [新增查詢]   > [XMLA]  。 
 2. 將下列 TMSL 指令碼複製並貼到查詢編輯器中：
@@ -144,4 +144,3 @@ ms.locfileid: "89229356"
 
 > [!div class="nextstepaction"]
 > [教學課程：使用 Power BI Desktop 進行連線](analysis-services-tutorial-pbid.md)
-

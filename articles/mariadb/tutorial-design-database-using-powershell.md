@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 6c17c746dfe0ce81da4cfe486b830837c37cdda4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496027"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>教學課程：使用 PowerShell 來設計適用於 MariaDB 的 Azure 資料庫
@@ -36,9 +36,9 @@ ms.locfileid: "87496027"
 
 > [!IMPORTANT]
 > 雖然 Az.MariaDb PowerShell 模組處於預覽狀態，但您仍必須使用下列命令，將其與 Az PowerShell 模組分開安裝：`Install-Module -Name Az.MariaDb -AllowPrerelease`。
-> 在 Az.MariaDb PowerShell 模組正式推出後，其會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式使用。
+> 在正式推出 Az.MariaDb PowerShell 模組後，其會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式提供。
 
-如果這是您第一次使用適用於 MariaDB 的 Azure 資料庫服務，則必須註冊 **Microsoft.DBforMariaDB** 資源提供者。
+如果這是第一次使用適用於 MariaDB 的 Azure 資料庫服務，您必須註冊 **Microsoft.DBforMariaDB** 資源提供者。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMariaDB
@@ -64,7 +64,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>建立適用於 MariaDB 的 Azure 資料庫伺服器
 
-使用 `New-AzMariaDbServer` Cmdlet 建立適用於 MariaDB 伺服器的 Azure 資料庫。 一部伺服器可以管理多個資料庫。 一般而言，每個專案或每個使用者會使用個別的資料庫。
+使用 `New-AzMariaDbServer` Cmdlet 建立適用於 MariaDB 的 Azure 資料庫伺服器。 一部伺服器可以管理多個資料庫。 一般而言，每個專案或每個使用者會使用個別的資料庫。
 
 下列範例會在 [美國西部] 區域中建立名為 **mydemoserver**的 MariaDB 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin**。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 MariaDB 伺服器系統管理員帳戶的密碼。
 
