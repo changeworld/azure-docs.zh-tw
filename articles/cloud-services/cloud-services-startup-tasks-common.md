@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85920077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075173"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常見的雲端服務啟動工作
 本文提供一些常見的啟動工作範例，做為您在雲端服務中執行的參考。 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。 
@@ -52,7 +52,7 @@ ms.locfileid: "85920077"
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>使用 AppCmd.exe 設定 IIS 啟動
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令列工具可用來管理在 Azure 上啟動時的 IIS 設定。 *AppCmd.exe* 提供方便的命令列，可存取 Azure 上啟動工作所使用的組態設定。 使用 *AppCmd.exe*，即可針對應用程式和網站，新增、修改或移除網站設定。
+[AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) 命令列工具可用來管理在 Azure 上啟動時的 IIS 設定。 *AppCmd.exe* 提供方便的命令列，可存取 Azure 上啟動工作所使用的組態設定。 使用 *AppCmd.exe*，即可針對應用程式和網站，新增、修改或移除網站設定。
 
 不過，使用 *AppCmd.exe* 做為啟動工作時，需要注意幾件事情：
 
@@ -491,7 +491,7 @@ EXIT %ERRORLEVEL%
 ### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>使用本機儲存體儲存必須在角色中存取的檔案
 如果您想要在啟動工作期間複製或建立檔案，然後供您的角色存取，則該檔案必須放在本機儲存體中。 請參閱 [上一節](#create-files-in-local-storage-from-a-startup-task)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 檢視雲端 [服務模型和封裝](cloud-services-model-and-package.md)
 
 深入了解 [工作](cloud-services-startup-tasks.md) 如何運作。
@@ -499,14 +499,14 @@ EXIT %ERRORLEVEL%
 [建立和部署](cloud-services-how-to-create-deploy-portal.md) 雲端服務封裝。
 
 [ServiceDefinition]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[變數]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[端點]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Task]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[環境]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[變數]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[端點]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

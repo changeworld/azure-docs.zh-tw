@@ -3,12 +3,12 @@ title: 使用適用於空間分析的電腦視覺來分析即時影片 - Azure
 description: 本教學課程說明如何使用即時影片分析搭配 Azure 認知服務的電腦視覺空間分析 AI 功能，分析來自 (模擬) IP 攝影機的即時影片摘要。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824138"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015680"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>使用適用於空間分析 (預覽) 的電腦視覺來分析即時影片
 
@@ -32,7 +32,7 @@ ms.locfileid: "91824138"
 * [IoT Edge 上的 Live Video Analytics 術語](terminology.md)
 * [媒體圖表概念](media-graph-concept.md)
 * [發生事件時錄製影片](event-based-video-recording-concept.md)
-* [教學課程：開發 IoT Edge 模組](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [教學課程：開發 IoT Edge 模組](../../iot-edge/tutorial-develop-for-linux.md)
 * [在 Azure Stack Edge 上部署即時影片分析](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -55,12 +55,12 @@ ms.locfileid: "91824138"
 
 MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其會將影片畫面轉換成指定的影像類型。 然後會透過**共用記憶體**將影像轉送至另一個邊緣模組，以在 gRPC 端點後方執行 AI 作業。 在此範例中，該邊緣模組是空間分析模組。 MediaGraphCognitiveServicesVisionExtension 處理器節點會做兩件事：
 
-* 其會收集結果，並將事件發佈至 [IoT 中樞接收](media-graph-concept.md#iot-hub-message-sink)節點。 節點接著會將這些事件傳送至 [IoT Edge 中樞](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub)。 
+* 其會收集結果，並將事件發佈至 [IoT 中樞接收](media-graph-concept.md#iot-hub-message-sink)節點。 節點接著會將這些事件傳送至 [IoT Edge 中樞](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。 
 * 其也會使用[信號閘道處理器](media-graph-concept.md#signal-gate-processor)從 RTSP 來源中擷取 30 秒的影片剪輯，並將其儲存為媒體服務資產。
 
 ## <a name="create-the-computer-vision-resource"></a>建立電腦視覺資源
 
-您必須在 [Azure 入口網站](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)中或透過 Azure CLI 建立電腦視覺類型的 Azure 資源。 一旦您存取容器的要求通過核准，且已註冊 Azure 訂用帳戶識別碼，您就能夠建立資源。 移至 https://aka.ms/csgate 以提交您的使用案例和您的 Azure 訂用帳戶識別碼。  您必須使用已在 [存取要求] 表單上提供的相同 Azure 訂用帳戶來建立 Azure 資源。
+您必須在 [Azure 入口網站](../../iot-edge/how-to-deploy-modules-portal.md)中或透過 Azure CLI 建立電腦視覺類型的 Azure 資源。 一旦您存取容器的要求通過核准，且已註冊 Azure 訂用帳戶識別碼，您就能夠建立資源。 移至 https://aka.ms/csgate 以提交您的使用案例和您的 Azure 訂用帳戶識別碼。  您必須使用已在 [存取要求] 表單上提供的相同 Azure 訂用帳戶來建立 Azure 資源。
 
 ### <a name="gathering-required-parameters"></a>收集必要參數
 
@@ -75,7 +75,7 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 
 ## <a name="set-up-azure-stack-edge"></a>設定 Azure Stack Edge
 
-遵循[這些步驟](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep)來設定 Azure Stack Edge，並繼續遵循下列步驟以部署即時影片分析和空間分析模組。
+遵循[這些步驟](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)來設定 Azure Stack Edge，並繼續遵循下列步驟以部署即時影片分析和空間分析模組。
 
 ## <a name="set-up-your-development-environment"></a>設定開發環境
 
@@ -136,7 +136,7 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 1. LvaEdge 中的 `IpcMode` 和空間分析模組 createOptions 應該相同，而且設定為 [主機]。
 1. 若要讓 RTSP 模擬器正常運作，請確定您已設定磁碟區界限。 如需詳細資訊，請參閱[設定 Docker 磁碟區掛接](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)。
 
-    1. [連線至 SMB 共用](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)，並將[範例 bulldozer 影片檔案](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)複製到本機共用。
+    1. [連線至 SMB 共用](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)，並將[範例 bulldozer 影片檔案](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)複製到本機共用。
     1. 您會看到 rtspsim 模組具有下列設定：
         
         ```json

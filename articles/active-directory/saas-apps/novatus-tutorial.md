@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: aee62046356f9b9c6edfe10722cf53cc24f5f6c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>教學課程：將 Azure Active Directory 與 Novatus 整合
