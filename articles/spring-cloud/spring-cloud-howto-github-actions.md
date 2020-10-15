@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906954"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093968"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>使用 GitHub Actions 的 Azure 春季 Cloud CI/CD
 
 GitHub Actions 支援自動化軟體發展生命週期工作流程。 您可以使用適用于 Azure 春季雲端的 GitHub Actions，在您的存放庫中建立工作流程，以建立、測試、封裝、發行及部署至 Azure。 
 
 ## <a name="prerequisites"></a>必要條件
-此範例需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+此範例需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>設定 GitHub 存放庫並進行驗證
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>使用 Maven 外掛程式部署
-另一個選項是使用 [Maven 外掛程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) 來部署 Jar 和更新應用程式設定。 此命令 `mvn azure-spring-cloud:deploy` 為等冪，並且會在需要時自動建立應用程式。 您不需要事先建立對應的應用程式。
+另一個選項是使用 [Maven 外掛程式](./spring-cloud-quickstart.md) 來部署 Jar 和更新應用程式設定。 此命令 `mvn azure-spring-cloud:deploy` 為等冪，並且會在需要時自動建立應用程式。 您不需要事先建立對應的應用程式。
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ jobs:
 ## <a name="next-steps"></a>後續步驟
 
 * [適用于春季雲端 GitHub 動作的 Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory 服務主體](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Azure Active Directory 服務主體](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [適用於 Azure 的 GitHub Actions](https://github.com/Azure/actions/)

@@ -10,16 +10,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8fa1e258b07ab98040cbbc5217be789e0bb1b783
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17f18f84ac1c1738f8c248bb0071c748e15dacf3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020128"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090925"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 取得儲存體帳戶類型和 SKU 名稱
 
-本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)，取得 blob 的 Azure 儲存體帳戶類型和 SKU 名稱。
+本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)，取得 blob 的 Azure 儲存體帳戶類型和 SKU 名稱。
 
 從2018-03-28 版開始的服務版本有提供帳戶資訊。
 
@@ -27,11 +27,11 @@ ms.locfileid: "89020128"
 
 **帳戶類型**：有效的帳戶類型包括、、、 `BlobStorage` `BlockBlobStorage` `FileStorage` `Storage` 和 `StorageV2` 。 [Azure 儲存體帳戶總覽](storage-account-overview.md) 有詳細資訊，包括各種儲存體帳戶的描述。
 
-**Sku 名稱**：有效的 sku 名稱包括、、、 `Premium_LRS` `Premium_ZRS` 、、 `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` 、 `Standard_RAGZRS` 和 `Standard_ZRS` 。 SKU 名稱會區分大小寫，而且是 [SkuName 類別](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)中的字串欄位。
+**Sku 名稱**：有效的 sku 名稱包括、、、 `Premium_LRS` `Premium_ZRS` 、、 `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` 、 `Standard_RAGZRS` 和 `Standard_ZRS` 。 SKU 名稱會區分大小寫，而且是 [SkuName 類別](/dotnet/api/microsoft.azure.management.storage.models.skuname)中的字串欄位。
 
 ## <a name="retrieve-account-information"></a>取得帳戶資訊
 
-若要取得與 blob 相關聯的儲存體帳戶類型和 SKU 名稱，請呼叫 [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) 或 [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) 方法。
+若要取得與 blob 相關聯的儲存體帳戶類型和 SKU 名稱，請呼叫 [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) 或 [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) 方法。
 
 下列程式碼範例會取出並顯示唯讀帳戶屬性。
 

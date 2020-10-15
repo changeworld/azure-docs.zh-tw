@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546304"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073592"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>遠端監視解決方案加速器概觀
 
@@ -106,7 +106,7 @@ GitHub 提供遠端監視解決方案加速器程式碼：
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-解決方案加速器部署會使用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 來儲存規則、警示、組態設定，以及所有其他非經常性儲存體。
+解決方案加速器部署會使用 [Azure Cosmos DB](../cosmos-db/index.yml) 來儲存規則、警示、組態設定，以及所有其他非經常性儲存體。
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure 串流分析管理員微服務
 
@@ -120,11 +120,11 @@ ASA 作業從連線裝置將遙測資料傳送到 Time Series Insights 進行儲
 
 ### <a name="azure-stream-analytics"></a>Azure 串流分析
 
-[Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)是事件處理引擎，可讓您檢查來自裝置的大量資料流。
+[Azure 串流分析](../stream-analytics/index.yml)是事件處理引擎，可讓您檢查來自裝置的大量資料流。
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-[Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/)會儲存連接到解決方案加速器的裝置之中的遙測資料。 它也可透過解決方案 Web UI 以視覺效果呈現和查詢裝置遙測資料。
+[Azure 時間序列深入解析](../time-series-insights/index.yml)會儲存連接到解決方案加速器的裝置之中的遙測資料。 它也可透過解決方案 Web UI 以視覺效果呈現和查詢裝置遙測資料。
 
 ### <a name="configuration-microservice"></a>設定微服務
 
@@ -136,7 +136,7 @@ ASA 作業從連線裝置將遙測資料傳送到 Time Series Insights 進行儲
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-解決方案加速器部署使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) 作為 OpenID Connect 提供者。 Azure Active Directory 會儲存使用者資訊，並提供憑證來驗證 JWT 權杖簽章。
+解決方案加速器部署使用 [Azure Active Directory](../active-directory/index.yml) 作為 OpenID Connect 提供者。 Azure Active Directory 會儲存使用者資訊，並提供憑證來驗證 JWT 權杖簽章。
 
 ## <a name="presentation"></a>簡報
 

@@ -310,10 +310,10 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure 檔案同步處理版本資訊
       href: storage-files-release-notes.md
-    - name: Microsoft Q&A 上的 Azure 儲存體
+    - name: Microsoft Q&A 上的 Azure 檔案儲存體
       href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
-    - name: Stack Overflow 上的 Azure 儲存體
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Stack Overflow 上的 Azure 檔案儲存體
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
     - name: Azure 檔案的定價
       href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Azure 定價計算機

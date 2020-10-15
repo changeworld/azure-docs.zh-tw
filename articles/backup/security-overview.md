@@ -3,12 +3,12 @@ title: 安全性功能概觀
 description: 了解 Azure 備份中的安全性功能，協助保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012546"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093339"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能概觀
 
@@ -16,7 +16,7 @@ ms.locfileid: "89012546"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>管理與控制身分識別和使用者存取
 
-復原服務保存庫所使用的儲存體帳戶是隔離的，使用者無法存取這些帳戶以進行任何惡意用途。 僅允許透過 Azure 備份管理作業 (例如，還原) 進行存取。 Azure 備份可讓您使用 [azure 角色型存取控制 (AZURE RBAC) ](./backup-rbac-rs-vault.md)，透過更精細的存取權來控制受控作業。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
+復原服務保存庫所使用的儲存體帳戶是隔離的，使用者無法存取這些帳戶以進行任何惡意用途。 僅允許透過 Azure 備份管理作業 (例如，還原) 進行存取。 Azure 備份可讓您使用 [azure 角色型存取控制 (AZURE RBAC) ](./backup-rbac-rs-vault.md)，透過更精細的存取權來控制受控作業。 Azure RBAC 可讓您區隔小組內的職責，並僅授與執行其工作所需的使用者存取權。
 
 Azure 備份提供三種用來控制備份管理作業的[內建角色](../role-based-access-control/built-in-roles.md)：
 
@@ -24,7 +24,7 @@ Azure 備份提供三種用來控制備份管理作業的[內建角色](../role-
 * 備份操作員 - 可執行參與者有權執行的所有動作，但移除備份和管理備份原則除外
 * 備份讀取者 - 有權檢視所有備份管理作業
 
-深入了解[使用角色型存取控制來管理 Azure 備份](./backup-rbac-rs-vault.md)。
+深入瞭解 [Azure 角色型存取控制來管理 Azure 備份](./backup-rbac-rs-vault.md)。
 
 Azure 備份有數個服務內建的安全性控制項，可防止、偵測及回應安全性弱點。 深入了解 [Azure 備份的安全性控制項](./backup-security-controls.md)。
 

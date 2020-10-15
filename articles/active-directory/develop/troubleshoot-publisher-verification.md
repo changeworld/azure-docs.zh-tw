@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873144"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073728"
 ---
 # <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
 如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 
@@ -33,7 +33,7 @@ ms.locfileid: "91873144"
 ## <a name="common-issues"></a>常見的問題
 以下是在此過程中可能發生的一些常見問題。 
 
-- **我不知道我的 Microsoft 合作夥伴網路識別碼 (MPN ID)，或不知道誰是帳戶的主要連絡人** 
+- **我不知道我的 Microsoft 合作夥伴網路識別碼 (MPN 識別碼) 或我不知道該帳戶的主要連絡人是誰** 
     1. 瀏覽至 [MPN 註冊頁面](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. 在組織的主要 Azure AD 租用戶中以使用者帳戶登入 
     1. 如果 MPN 帳戶已經存在，將會加以辨識，而且您會新增至該帳戶 
