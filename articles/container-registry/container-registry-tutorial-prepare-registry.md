@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259528"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
@@ -57,7 +57,7 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 選取 [檢閱+建立]，然後選取 [建立] 來建立登錄執行個體。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 入口網站中設定":::容器登錄
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 入口網站中建立容器登錄":::容器登錄
 
 在本教學課程的其餘部分，我們使用 `<acrName>` 作為您所選容器**登錄名稱**的預留位置。
 
@@ -70,19 +70,19 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取**服務**下方的 [複寫]：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 入口網站的容器登錄 UI 中進行複寫":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
 系統會顯示地圖，並以綠色六邊形代表適用於異地複寫的 Azure 區域：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure 入口網站的區域圖":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
 選取美國東部地區的綠色六邊形，然後選取 [建立複寫] 下方的 [建立]，將登錄複寫到美國東部地區：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="在 Azure 入口網站中建立複寫 UI":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
 完成複寫時，入口網站會將這兩個區域顯示為 [就緒]。 使用 [重新整理] 按鈕，以重新整理複寫的狀態；建立並同步處理複本可能需要一分鐘左右的時間。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure 入口網站中的複寫狀態 UI":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
 
 ## <a name="enable-admin-account"></a>啟用系統管理員帳戶
@@ -91,7 +91,7 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取**設定** 下方的 [存取金鑰]。 在 [管理使用者] 下，選取 [啟用]。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="啟用 Azure 入口網站中的系統管理員帳戶":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
 
 ## <a name="container-registry-login"></a>Container Registry 登入
@@ -110,7 +110,7 @@ az acr login --name <acrName>
 
 本教學課程的範例包含一個由 [ASP.NET Core][aspnet-core] 建置的小型 Web 應用程式。 該應用程式有一個 HTML 網頁，可顯示 Azure Container Registry 部署映像的來源區域。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="在瀏覽器中顯示的教學課程應用程式":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
 使用 git 將此範例下載到本機目錄中，並將 `cd` 下載到目錄中：
 
