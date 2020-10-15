@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297499"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057479"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教學課程：使用 Azure Digital Twins API 撰寫程式碼
 
@@ -181,7 +181,7 @@ Azure Digital Twins 沒有內建的網域詞彙。 您環境中可以在 Azure D
 > 如果在本教學課程中使用 Visual Studio，建議您選取新建立的 JSON 檔案，並將屬性偵測器的「複製到輸出目錄」屬性設定為「有更新時才複製」或「永遠複製」。 當您在本教學課程的其餘部分，使用 **F5** 執行程式時，這可讓 Visual Studio 找到具有預設路徑的 JSON 檔案。
 
 > [!TIP] 
-> 有一種適用各種語言的 [DTDL 驗證程式範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，您可用來檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作說明：剖析與驗證模型](how-to-parse-models.md)。
+> 有一種適用各種語言的 [DTDL 驗證程式範例](/samples/azure-samples/dtdl-validator/dtdl-validator)，您可用來檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作說明：剖析與驗證模型](how-to-parse-models.md)。
 
 接下來，在 *Program.cs* 中新增更多程式碼，以將您剛才建立的模型上傳至您的 Azure Digital Twins 執行個體。
 

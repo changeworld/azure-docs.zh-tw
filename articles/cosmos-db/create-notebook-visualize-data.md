@@ -8,10 +8,10 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961093"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教學課程：在 Azure Cosmos DB 中建立筆記本來分析資料並將其視覺化
@@ -30,11 +30,11 @@ ms.locfileid: "85961093"
 
 1. 移至 [筆記本] 索引標籤，選取 [我的筆記本] 旁邊的 `…`，然後建立 [新筆記本]。 選取 [Python 3]作為預設核心。
 
-   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="建立新的筆記本":::
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="建立新的筆記本&quot;:::
 
 1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
 
-1. 接下來，您將建立名為 "RetailDemo" 的資料庫，以及名為 "WebsiteData" 的容器來存放零售資料。 您可以使用/CartID 作為分割區索引鍵。 將下列程式碼複製並貼到您筆記本中的新儲存格，並加以執行：
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData" 的容器來存放零售資料。 您可以使用/CartID 作為分割區索引鍵。 將下列程式碼複製並貼到您筆記本中的新儲存格，並加以執行：
 
    ```python
    import azure.cosmos
@@ -49,7 +49,11 @@ ms.locfileid: "85961093"
 
    若要執行儲存格，請選取 `Shift + Enter` 或選取儲存格，然後選擇資料總管瀏覽列上的 [執行作用儲存格] 選項。
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="執行作用儲存格":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="建立新的筆記本&quot;:::
+
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
+
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData":::
 
    系統會在您目前的 Azure Cosmos 帳戶中建立資料庫和容器。 此容器會以每秒 400 RU的速率佈建。 建立資料庫和容器之後，您將會看到下列輸出。 
 
@@ -60,23 +64,11 @@ ms.locfileid: "85961093"
 
    您也可以重新整理 [資料] 索引標籤，並查看新建立的資源：
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="重新整理 [資料] 索引標籤以查看新容器":::
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="建立新的筆記本&quot;:::
 
-1. 接下來，您會將範例零售資料匯入 Azure Cosmos 容器中。 以下是來自零售資料的項目格式：
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
 
-   ```json
-    {
-       "CartID":5399,
-       "Action":"Viewed",
-       "Item":"Cosmos T-shirt",
-       "Price":350,
-       "UserName":"Demo.User10",
-       "Country":"Iceland",
-       "EventDate":"2015-06-25T00:00:00",
-       "Year":2015,"Latitude":-66.8673,
-       "Longitude":-29.8214,
-       "Address":"852 Modesto Loop, Port Ola, Iceland",
-       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData"
     }
    ```
 
@@ -135,7 +127,11 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="執行查詢以取得前 10 個項目":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="建立新的筆記本&quot;:::
+
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
+
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>執行查詢及分析您的資料
 
@@ -148,7 +144,11 @@ df_cosmos.head(10)
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="總銷售收益輸出":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="建立新的筆記本&quot;:::
+
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
+
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData":::
 
 * **查詢 2：** 若要取得前五個購買項目的清單，請開啟新的筆記本儲存格，然後執行下列程式碼：
 
@@ -159,7 +159,11 @@ df_cosmos.head(10)
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="前五個購買項目":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="建立新的筆記本&quot;:::
+
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
+
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData":::
 
 ## <a name="visualize-your-data"></a>將您的資料視覺化  
 
@@ -235,7 +239,11 @@ df_cosmos.head(10)
 
    輸出會以不同的色彩顯示世界地圖。 較深到較淺的色彩代表具有最高收益到最低收益的國家/區域。
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="國家/區域收益地圖視覺效果":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="建立新的筆記本&quot;:::
+
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
+
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData":::
 
 1. 讓我們看看另一個資料視覺效果案例。 WebsiteData 容器記錄了已檢視項目、放入其購物車，以及購買項目的使用者。 讓我們繪製所購買項目的轉換率。 在新儲存格中執行下列程式碼，將每個項目的轉換率視覺化：
 
@@ -286,7 +294,11 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="將購買轉換率視覺化":::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="建立新的筆記本&quot;:::
+
+1. 建立新筆記本之後，您可以將它重新命名為 **VisualizeRetailData.ipynb** 之類。
+
+1. 接下來，您將建立名為 &quot;RetailDemo&quot; 的資料庫，以及名為 &quot;WebsiteData":::
 
 ## <a name="next-steps"></a>後續步驟
 

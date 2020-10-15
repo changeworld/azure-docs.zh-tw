@@ -12,10 +12,10 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
 ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844621"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>教學課程：在 Python Web 應用程式中透過 Azure AD B2C 啟用驗證
@@ -162,13 +162,13 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
     請使用有效的電子郵件地址，並使用驗證碼進行驗證。 設定密碼。 輸入要求的屬性值。
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Azure AD B2C 使用者流程所顯示的註冊頁面":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="網頁瀏覽器顯示在本機執行的 Python Flask Web 應用程式":::
 
 1. 選取 [建立]，在 Azure AD B2C 目錄中建立本機帳戶。
 
 當您選取 [建立] 時，應用程式會顯示已登入之使用者的名稱。
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="網頁瀏覽器顯示使用者登入的 Python Flask Web 應用程式":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="網頁瀏覽器顯示在本機執行的 Python Flask Web 應用程式":::
 
 如果想要測試登入，請選取 [登出] 連結，然後選取 [登入]，以您註冊時所輸入的電子郵件地址和密碼登入。
 

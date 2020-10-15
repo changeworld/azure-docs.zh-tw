@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844235"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076856"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理原則運算式
 本文討論 c # 7 中的原則運算式語法。 每個運算式具有存取權以隱含方式提供[內容](api-management-policy-expressions.md#ContextVariables)變數並允許[子集](api-management-policy-expressions.md#CLRTypes)的.NET Framework 型別。
@@ -65,7 +65,7 @@ ms.locfileid: "87844235"
 }
 ```
 
-## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>使用量
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>使用方式
 如果原則參考未另行指定，則可以在任何 API 管理[原則](api-management-policies.md)中，使用運算式作為屬性值或文字值。
 
 > [!IMPORTANT]
@@ -253,4 +253,4 @@ ms.locfileid: "87844235"
 + [API 管理中的原則](api-management-howto-policies.md)
 + [轉換 API](transform-api.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)
++ [原則範例](./policy-reference.md)

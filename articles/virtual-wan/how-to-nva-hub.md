@@ -1,6 +1,6 @@
 ---
 title: 'Azure 虛擬 WAN：在中樞內建立網路虛擬裝置 (NVA) '
-description: 在本教學課程中，您將瞭解如何在虛擬 WAN 中樞中部署網路虛擬裝置。
+description: 瞭解如何在虛擬 WAN 中樞中部署網路虛擬裝置。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773241"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077298"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>如何在 Azure 虛擬 WAN hub 中建立網路虛擬裝置 (預覽版) 
 
-本教學課程說明如何使用虛擬 WAN，透過 **網路虛擬裝置** 在 azure 中連線到您在 azure 中的資源 (NVA) 。 此類型的連線需要位於內部部署的 VPN 裝置，且您已對該裝置指派對外開放的公用 IP 位址。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
+本文說明如何使用虛擬 WAN，透過 **網路虛擬裝置** 在 azure 中連線到您在 azure 中的資源 (NVA) 。 此類型的連線需要位於內部部署的 VPN 裝置，且您已對該裝置指派對外開放的公用 IP 位址。 如需有關虛擬 WAN 的詳細資訊，請參閱 [什麼是虛擬 wan？](virtual-wan-about.md)。
 
 本文中的步驟可協助您在虛擬 WAN 中樞內建立 **Barracuda CLOUDGEN WAN** 網路虛擬裝置。 若要完成此練習，您必須擁有 Barracuda Cloud 部署裝置 (CPE) 以及您在開始之前部署到中樞的 Barracuda CloudGen WAN 設備的授權。
 
 如需 **CISCO SD-wan** 在 AZURE 虛擬 WAN 內的部署檔，請以下列電子郵件地址傳送電子郵件給 cisco： vwan_public_preview@external.cisco.com
 
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 在開始設定之前，請確認您已符合下列條件：
 
@@ -98,5 +98,5 @@ ms.locfileid: "91773241"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解虛擬 WAN，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)頁面。
+* 若要深入瞭解虛擬 WAN，請參閱 [什麼是虛擬 wan？](virtual-wan-about.md) 頁面。
 * 若要深入瞭解虛擬 WAN 中樞內的 Nva，請參閱 [關於虛擬 wan hub 中的網路虛擬裝置 (預覽) ](about-nva-hub.md)。

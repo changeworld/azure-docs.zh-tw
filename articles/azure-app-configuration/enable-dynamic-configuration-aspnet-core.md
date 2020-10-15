@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300284"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076992"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用動態設定
 
@@ -161,7 +161,7 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
     ```
     ---
     > [!Tip]
-    > 若要深入了解讀取組態值時的選項模式，請參閱  [ASP.NET Core 中的選項模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
+    > 若要深入了解讀取組態值時的選項模式，請參閱  [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以新增 `UseAzureAppConfiguration` 中介軟體，讓已註冊要重新整理的組態設定可以進行更新，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 

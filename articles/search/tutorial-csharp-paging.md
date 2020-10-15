@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667226"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950681"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 將分頁新增至搜尋結果
 
@@ -304,7 +304,7 @@ ms.locfileid: "91667226"
     }
     ```
 
-1. 上一課引進的 **RunQueryAsync** 方法，需要修改才能解決語法錯誤。 我們使用 [**SearchOptions**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) 類別的 **Skip**、**Size** 和 **IncludeTotalCount** 欄位，只要求一頁有價值的結果，從 **Skip** 設定開始。 我們也需要針對檢視來計算分頁變數。 使用下列程式碼來取代整個方法。
+1. 上一課引進的 **RunQueryAsync** 方法，需要修改才能解決語法錯誤。 我們使用 [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) 類別的 **Skip**、**Size** 和 **IncludeTotalCount** 欄位，只要求一頁有價值的結果，從 **Skip** 設定開始。 我們也需要針對檢視來計算分頁變數。 使用下列程式碼來取代整個方法。
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
