@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311095"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089446"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>管理 Azure 地圖服務中的驗證
 
@@ -41,7 +41,7 @@ ms.locfileid: "91311095"
 下表概述 Azure 地圖服務中常見的驗證與授權案例。 下表提供每個案例所提供的保護類型比較。
 
 > [!IMPORTANT]
-> Microsoft 建議針對生產應用程式，使用角色型存取控制 (RBAC) 來實行 Azure Active Directory (Azure AD) 。
+> Microsoft 建議使用 Azure 角色型存取控制， (適用于生產環境應用程式的 azure RBAC) ，來實施 Azure Active Directory (Azure AD) 。
 
 | 狀況                                                                                    | 驗證 | 授權 | 開發工作 | 營運工作 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
@@ -63,10 +63,10 @@ ms.locfileid: "91311095"
 
 ## <a name="view-role-assignments"></a>檢視角色指派
 
-若要查看已為 Azure 地圖服務授與 RBAC 的使用者和應用程式，請移至 [ **存取控制] (IAM) **。 然後選取 [ **角色指派**]，然後依 **Azure 地圖服務**篩選。
+若要查看已獲得 Azure 地圖服務存取權的使用者和應用程式，請移至 [ **存取控制] (IAM) **。 然後選取 [ **角色指派**]，然後依 **Azure 地圖服務**篩選。
 
 > [!div class="mx-imgBorder"]
-> ![查看已獲得 RBAC 的使用者和應用程式](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![查看已授與存取權的使用者和應用程式](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>要求 Azure 地圖服務的權杖
 

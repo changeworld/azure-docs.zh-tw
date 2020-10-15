@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
-ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365d38eedd327bb50bbbea01a6847738c482b1bd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667260"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091180"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -410,7 +410,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 針對下列錯誤採取下列動作：
 
-|錯誤  | 解決方案  |
+|錯誤  | 解決方法  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |

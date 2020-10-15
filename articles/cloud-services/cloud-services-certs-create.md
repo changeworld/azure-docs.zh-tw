@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142361"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072419"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 雲端服務的憑證概觀
 在 Azure 中，憑證用於雲端服務 ([服務憑證](#what-are-service-certificates)) 與驗證管理 API ([管理憑證](#what-are-management-certificates))。 本主題提供兩種憑證類型、如何[建立](#create)這些憑證類型，以及如何將其部署到 Azure 的一般概觀。
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > 如果您想要搭配 IP 位址 (而不是網域) 來使用憑證，請在 -DnsName 參數中使用 IP 位址。
 
 
-如果您想要使用這個 [憑證搭配管理入口網站](../azure-api-management-certs.md)，請將它匯出至 **.cer** 檔案：
+如果您想要使用這個 [憑證搭配管理入口網站](/previous-versions/azure/azure-api-management-certs)，請將它匯出至 **.cer** 檔案：
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ## <a name="next-steps"></a>後續步驟
 [將服務憑證上傳到 Azure 入口網站](cloud-services-configure-ssl-certificate-portal.md)。
 
-將[管理 API 憑證](../azure-api-management-certs.md)上傳至 Azure 入口網站。
-
-
-
-
+將[管理 API 憑證](/previous-versions/azure/azure-api-management-certs)上傳至 Azure 入口網站。

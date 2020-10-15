@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015097"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073524"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>從 Webhook 啟動 Runbook
 
@@ -27,7 +27,7 @@ Webhook 可讓外部服務在 Azure 自動化中，透過單一 HTTP 要求啟�
 
 下表描述您必須為 Webhook 設定的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 名稱 |Webhook 的名稱。 您可以提供任何想要的名稱，因為這並不會向用戶端公開。 該名稱僅供您用來識別 Azure 自動化中的 Runbook。 最佳做法是您給予 Webhook 的名稱應該與要使用它的用戶端相關。 |
 | URL |Webhook 的 URL。 這是唯一性的位址，即用戶端用來呼叫 HTTP POST 以啟動連結至 Webhook 的 Runbook。 當您建立 Webhook 時其會自動產生。 您無法指定自訂 URL。 <br> <br> URL 包含可讓協力廠商系統不需進一步驗證即可叫用 Runbook 的安全性權杖。 基於此原因，您應該將 URL 視為密碼。 基於安全性原因，您僅能於 Webhook 建立時在 Azure 入口網站中檢視 URL。 請在安全的位置記下 URL 以供日後使用。 |
@@ -89,7 +89,7 @@ Webhook 的安全性仰賴其 URL 的隱私權，其中包含允許叫用 Webhoo
 
 * 讓 runbook 在收到 webhook 要求時，對外部條件執行一些驗證。 例如，請考慮每當 GitHub 存放庫出現新的認可時，就會由 GitHub 呼叫的 Runbook。 該 Runbook 在繼續執行之前，可能會先連線到 GitHub，以驗證新的認可已經出現。
 
-* Azure 自動化支援 Azure 虛擬網路服務標籤，尤其是 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 您可以使用服務標籤來定義 [網路安全性群組](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md) 上的網路存取控制，並從虛擬網路內觸發 webhook。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 **GuestAndHybridManagement**  ，您可以允許或拒絕自動化服務的流量。 此服務標籤不支援將 IP 範圍限制為特定區域，以允許更細微的控制。
+* Azure 自動化支援 Azure 虛擬網路服務標籤，尤其是 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 您可以使用服務標籤來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md) 上的網路存取控制，並從虛擬網路內觸發 webhook。 當您建立安全性規則時，可以使用服務標記來取代特定的 IP 位址。 藉由在規則的適當來源或目的地欄位中指定服務標記名稱 **GuestAndHybridManagement**  ，您可以允許或拒絕自動化服務的流量。 此服務標籤不支援將 IP 範圍限制為特定區域，以允許更細微的控制。
 
 ## <a name="create-a-webhook"></a>建立 Webhook
 

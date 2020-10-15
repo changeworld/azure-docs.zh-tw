@@ -43,7 +43,19 @@
         - name: Batch 範例存放庫
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: 在 Batch 服務模式中建立 Batch 帳戶
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: 在使用者訂用帳戶模式中建立 Batch 帳戶
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: 將應用程式新增到 Azure Batch 帳戶
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: 建立和管理 Linux 集區
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: 建立和管理 Windows 集區
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: 執行作業和工作
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: 概念
   items:
     - name: 安全性
@@ -294,7 +306,7 @@
       href: /azure/templates/microsoft.batch/batchaccounts
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-batch'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

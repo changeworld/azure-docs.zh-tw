@@ -4,22 +4,22 @@ description: 開始使用 Azure Defender for IoT 服務必要條件所需的所�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
+ms.date: 10/07/2020
+ms.author: rkarlin
 ms.custom: references_regions
-ms.openlocfilehash: 19263f8db58c8d20288d3ae74c24efd85667bc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0913dc48f807c26396a38e31d293877b4561b7d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933988"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089174"
 ---
 # <a name="azure-defender-for-iot-prerequisites"></a>適用于 IoT 的 Azure Defender 必要條件
 
@@ -27,61 +27,23 @@ ms.locfileid: "90933988"
 
 ## <a name="minimum-requirements"></a>最低要求條件
 
-- IoT 中樞標準層
-  - Azure 角色 **擁有** 者層級許可權
-- [Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
-- Azure 資訊安全中心 (建議的) 
-  - 使用 Azure 資訊安全中心是建議，而不是需求。 若沒有 Azure 資訊安全中心，您將無法在 IoT 中樞內查看其他 Azure 資源。
+- IoT 和 OT 裝置的無代理程式監視 (以 CyberX 技術為基礎) 
+    - 透過 SPAN 埠支援流量監視的網路交換器
+    - NTA 感應器的硬體設備，如需詳細資訊，請參閱 [經認證的硬體](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)
+    - Azure 訂用帳戶 **參與者** 角色 (只有在上架定義已認可的裝置時才需要) 
+    - IoT 中樞 (適用于雲端連線管理的免費或標準層) **參與者** 角色 () 
+- 透過 Azure IoT 中樞管理之受管理 IoT 裝置的安全性
+    - IoT 中樞 (標準層) **參與者** 角色
+    - IoT 中樞：應啟用 **適用于 IoT 的 Azure Defender** 功能切換
+    - 裝置層級安全性模組支援  
+        - Defender for IoT 代理程式支援不斷增長的裝置和平臺清單，請參閱 [支援的平臺清單](how-to-deploy-agent.md)
 
-## <a name="working-with-defender-for-iot-service"></a>使用 Defender for IoT 服務
-
-適用于 IoT 見解和報告的 Defender 可使用 Azure IoT 中樞和 Azure 資訊安全中心取得。 若要在您的 Azure IoT 中樞上啟用 Defender for IoT，則需要具有 **擁有** 者層級許可權的帳戶。 在 IoT 中樞中啟用適用于 IoT 的 ASC 之後，適用于 IoT insights 的 Defender 會顯示為 Azure IoT 中樞中的 **安全性** 功能，以及 Azure 資訊安全中心中的  **iot** 。
 
 ## <a name="supported-service-regions"></a>支援的服務區域
 
-Iot 中樞目前支援適用于 IoT 的 Defender 適用于下列 Azure 區域：
-
-- 美國中部
-- 美國東部
-- 美國東部 2
-- 美國中西部
-- 美國西部
-- 美國西部 2
-- 美國中南部
-- 美國中北部
-- 加拿大中部
-- 加拿大東部
-- 北歐
-- 巴西南部
-- 法國中部
-- 英國西部
-- 英國南部
-- 西歐
-- 北歐
-- 日本西部
-- 日本東部
-- 澳大利亞東南部
-- 澳大利亞東部
-- 東亞
-- 東南亞
-- 南韓中部
-- 南韓南部
-- 印度中部
-- 印度南部
+如需詳細資訊，請參閱 [IoT 中樞支援的區域](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub) 。 
 
 適用于 IoT 的 Defender 會將所有歐洲區域的所有流量路由傳送至西歐區域資料中心，並將所有其他區域路由傳送至美國中部區域資料中心。
-
-## <a name="wheres-my-iot-hub"></a>我的 IoT 中樞在哪裡？
-
-在開始之前，請先檢查您的 IoT 中樞位置以確認服務可用性。
-
-1. 開啟 IoT 中樞。
-1. 按一下 [概觀]  。
-1. 確認列出的位置符合其中一個 [支援的服務區域](#supported-service-regions)。
-
-## <a name="supported-platforms-for-agents"></a>代理程式支援的平臺
-
-適用于 IoT 的 Defender 代理程式支援不斷增長的裝置與平臺清單。 請參閱 [支援的平臺清單](how-to-deploy-agent.md) ，以檢查您現有或已規劃的裝置程式庫。
 
 ## <a name="next-steps"></a>後續步驟
 

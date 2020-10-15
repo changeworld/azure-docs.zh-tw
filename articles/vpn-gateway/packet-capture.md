@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441590"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073099"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>設定 VPN 閘道的封包捕獲
 
@@ -318,7 +318,7 @@ ms.locfileid: "89441590"
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>使用 PowerShell 設定封包捕獲
 
-下列範例顯示啟動和停止封包捕獲的 PowerShell 命令。 如需參數選項的詳細資訊，請參閱 [此 PowerShell 檔](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
+下列範例顯示啟動和停止封包捕獲的 PowerShell 命令。 如需參數選項的詳細資訊，請參閱 [AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>啟動 VPN 閘道的封包捕獲
 
@@ -354,6 +354,9 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - 建議的最小封包捕獲持續時間為600秒。 由於路徑上多個元件之間的同步問題，較短的封包捕獲可能無法提供完整的資料。
 - 封包捕獲資料檔案會以 PCAP 格式產生。 使用 Wireshark 或其他常用的應用程式來開啟 PCAP 檔案。
 - 以原則為基礎的閘道不支援封包捕獲。
+- 如果 `SASurl` 未正確設定參數，追蹤可能會因儲存錯誤而失敗。 如需如何正確產生參數的範例 `SASurl` ，請參閱 [AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)。
+
+
 
 ## <a name="next-steps"></a>後續步驟
 

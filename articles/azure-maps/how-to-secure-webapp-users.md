@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319617"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090211"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>使用使用者登入來保護 web 應用程式
 
@@ -59,7 +59,7 @@ ms.locfileid: "91319617"
    * 若為非 AspNetCore 的執行或其他，請參閱 Azure AD 檔中 [的取得應用程式權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) 。
    * 受保護的權杖端點負責傳回已驗證和授權使用者的存取權杖，以呼叫 Azure 地圖服務 REST Api。
 
-8. 為使用者或群組設定 Azure 角色型存取控制。 請參閱 [為使用者授與以角色為基礎的存取權](#grant-role-based-access-for-users-to-azure-maps)。
+8. 為使用者或群組 (Azure RBAC) 設定 Azure 角色型存取控制。 請參閱 [為使用者授與以角色為基礎的存取權](#grant-role-based-access-for-users-to-azure-maps)。
 
 9. 使用 Azure 地圖服務 Web SDK 來設定 web 應用程式頁面，以存取安全權杖端點。 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

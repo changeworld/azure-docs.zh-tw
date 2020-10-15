@@ -3,18 +3,18 @@ title: 如何建立 Azure 自動化更新管理的更新部署
 description: 本文說明如何排程更新部署並檢查其狀態。
 services: automation
 ms.subservice: update-management
-ms.date: 09/16/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: fa5cabd5410f0cbe7382db0289d98bc69d4a01fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f7d86ff668a151bdf83908c3199d01a0a53246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294711"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073745"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和檢查結果
 
-本文說明如何排程更新部署，並在部署完成後檢查程式。 您可以從選取的啟用 Arc 的伺服器，或從所有設定的電腦和伺服器上的自動化帳戶，設定更新部署。 
+本文說明如何排程更新部署，並在部署完成後檢查程式。 您可以從選取的啟用 Arc 的伺服器，或從所有設定的電腦和伺服器上的自動化帳戶，設定更新部署。
 
 在每個案例中，您建立的部署目標為選取的電腦或伺服器，或從您的自動化帳戶建立部署的情況下，您可以將一或多部機器設為目標。 當您從 Azure VM 或啟用 Arc 的伺服器排程更新部署時，這些步驟與從您的自動化帳戶部署的步驟相同，但有下列例外狀況：
 
@@ -59,7 +59,7 @@ ms.locfileid: "91294711"
     > [!NOTE]
     > 如果您選取了 Azure VM 或啟用 Arc 的伺服器，則無法使用此選項。 機器會自動以排程的部署為目標。
 
-6. 在 [要更新的電腦] 中，選取已儲存的搜尋、已匯入的群組，或從下拉式功能表中選擇 [機器]，然後選取個別的機器。 利用此選項，您可以查看每一部機器的 Log Analytics 代理程式的整備狀態。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md)。
+6. 在 [要更新的電腦] 中，選取已儲存的搜尋、已匯入的群組，或從下拉式功能表中選擇 [機器]，然後選取個別的機器。 利用此選項，您可以查看每一部機器的 Log Analytics 代理程式的整備狀態。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md)。 在排程的更新部署中，最多可以包含500部機器。
 
     > [!NOTE]
     > 如果您選取了 Azure VM 或啟用 Arc 的伺服器，則無法使用此選項。 機器會自動以排程的部署為目標。
@@ -89,7 +89,7 @@ ms.locfileid: "91294711"
 
     * 維護時間範圍可控制要安裝的更新數目。
     * 如果維護時間範圍即將結束，更新管理並不會停止安裝新的更新。
-    * 如果超出維護時間範圍，更新管理並不會終止進行中的更新。
+    * 如果超出維護時間範圍，更新管理並不會終止進行中的更新。 系統不會嘗試要安裝的任何其他更新。 如果發生這種情況，您應該重新評估維護時段的持續時間。
     * 如果在 Windows 上超出維護時間範圍，通常是因為 Service Pack 更新需要很長的時間才能安裝完成。
 
     > [!NOTE]

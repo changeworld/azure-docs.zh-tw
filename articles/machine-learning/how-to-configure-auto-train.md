@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709082"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091197"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -343,7 +343,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 如果您使用筆記本，您可以在小工具中或以內嵌方式檢視定型結果。 請參閱[追蹤和評估模型](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)以取得更多詳細資料。
 
-請參閱 [瞭解自動化機器學習結果](how-to-understand-automated-ml.md) 中的定義，以及每次執行所提供的效能圖表和計量範例。 
+請參閱 [評估自動化機器學習實驗的結果](how-to-understand-automated-ml.md) ，以瞭解每次執行所提供的效能圖表和度量的定義和範例。 
 
 若要取得特徵化摘要，並瞭解已新增至特定模型的功能，請參閱 [特徵化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80258289"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072249"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署遠端監視解決方案加速器
 
@@ -73,12 +73,12 @@ pcs login
 | 1     | [Linux 虛擬機器](https://azure.microsoft.com/services/virtual-machines/) | 標準 D1 V2  | 裝載微服務 |
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 – 標準層 | 裝置管理與通訊 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 儲存設定資料、規則、警示和其他冷儲存體 |  
-| 1     | [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 標準        | 適用於 VM 和串流檢查點的儲存體 |
+| 1     | [Azure 儲存體帳戶](../storage/common/storage-introduction.md#types-of-storage-accounts)  | 標準        | 適用於 VM 和串流檢查點的儲存體 |
 | 1     | [Web 應用程式](https://azure.microsoft.com/services/app-service/web/)        |                 | 裝載前端 Web 應用程式 |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理使用者身分識別和安全性 |
 | 1     | [Azure 地圖服務](https://azure.microsoft.com/services/azure-maps/)        | 標準                | 檢視資產位置 |
 | 1     | [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 個單位              | 提供即時分析 |
-| 1     | [Azure 裝置佈建服務](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大規模佈建裝置 |
+| 1     | [Azure 裝置佈建服務](../iot-dps/index.yml)        |       S1          | 大規模佈建裝置 |
 | 1     | [Azure 時間序列深入解析](https://azure.microsoft.com/services/time-series-insights/)        |   S1 - 1 個單位              | 適用於訊息資料的儲存體，並能提供深入遙測分析 |
 
 ### <a name="standard"></a>標準
@@ -94,12 +94,12 @@ pcs login
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| 使用完全受控 Kubernetes 容器協調流程服務，預設為 3 個代理程式|
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 – 標準層 | 裝置管理、命令和控制 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 儲存設定資料，以及規則、警示和訊息等裝置遙測 |
-| 5     | [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 標準        | 4 個用於 VM 儲存體，1 個用於串流檢查點 |
+| 5     | [Azure 儲存體帳戶](../storage/common/storage-introduction.md#types-of-storage-accounts)    | 標準        | 4 個用於 VM 儲存體，1 個用於串流檢查點 |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 標準     | 透過 TLS 的應用程式閘道 |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理使用者身分識別和安全性 |
 | 1     | [Azure 地圖服務](https://azure.microsoft.com/services/azure-maps/)        | 標準                | 檢視資產位置 |
 | 1     | [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 個單位              | 提供即時分析 |
-| 1     | [Azure 裝置佈建服務](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大規模佈建裝置 |
+| 1     | [Azure 裝置佈建服務](../iot-dps/index.yml)        |       S1          | 大規模佈建裝置 |
 | 1     | [Azure 時間序列深入解析](https://azure.microsoft.com/services/time-series-insights/)        |   S1 - 1 個單位              | 適用於訊息資料的儲存體，並能提供深入遙測分析 |
 
 > [!NOTE]

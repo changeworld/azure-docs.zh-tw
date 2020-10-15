@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82981216"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072793"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>如何使用受控識別進行 Azure 應用程式組態
 
@@ -33,7 +33,7 @@ ms.locfileid: "82981216"
 
 - 從 Azure 入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 - 請透過下方每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
-- 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.1 或更新版本) 。
+- 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](/cli/azure/install-azure-cli) (2.1 或更新版本) 。
 
 下列步驟將逐步引導您使用 CLI 來建立應用程式設定存放區，並為其指派身分識別：
 
@@ -66,7 +66,7 @@ ms.locfileid: "82981216"
 
 - 從 Azure 入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 - 請透過下方每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
-- 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 或更新版本)。
+- 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](/cli/azure/install-azure-cli) (2.0.31 或更新版本)。
 
 下列步驟將逐步引導您建立使用者指派的身分識別和應用程式設定存放區，然後使用 CLI 將身分識別指派給存放區：
 
@@ -101,7 +101,7 @@ ms.locfileid: "82981216"
 
 您可以使用 Azure CLI 中的 [az appconfig identity remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) 命令停用此功能，藉以移除系統指派的身分識別。 使用者指派的身分識別可以個別移除。 以這種方式將系統指派的身分識別移除，也會從 AAD 刪除它。 當您刪除應用程式資源時，系統指派的身分識別會自動從 AAD 移除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [使用 Azure 應用程式組態建立 ASP.NET Core 應用程式](quickstart-aspnet-core-app.md)

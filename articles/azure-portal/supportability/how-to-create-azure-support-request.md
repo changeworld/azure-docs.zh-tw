@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851904"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073694"
 ---
 # <a name="create-an-azure-support-request"></a>建立 Azure 支援要求
 
@@ -102,7 +102,7 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 支援工程師會使用您所指定的方法來與您聯繫。 如需初始回應時間的詳細資訊，請參閱 [支援範圍和回應](https://azure.microsoft.com/support/plans/response/)性。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure 中的自助式支援選項，請看這支影片：
 
@@ -114,5 +114,5 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 * [Azure 支援票證 REST API](/rest/api/support)
 * [將您的意見反應和建議傳送給我們](https://feedback.azure.com/forums/266794-support-feedback)
 * 在 [Twitter](https://twitter.com/azuresupport) 上與我們互動
-* 在 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/products/azure)中從同儕獲得幫助
+* 在 [Microsoft 問與答頁面](/answers/products/azure)中從同儕獲得幫助
 * 深入瞭解 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq)

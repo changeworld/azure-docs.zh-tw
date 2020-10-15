@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536601"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072640"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>整合 Azure 時間序列深入解析與遠端監視
 
@@ -24,7 +24,7 @@ Azure 時間序列深入解析是完全受管理的分析、儲存及視覺化�
 > [!NOTE]
 > Azure China 雲端目前不提供時間序列見解。 Azure China 雲端中新的遠端監視解決方案加速器部署，將 Cosmos DB 用於所有儲存體。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此操作說明，您必須已部署遠端監視解決方案：
 
@@ -62,7 +62,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
     | 環境名稱 | 下列螢幕擷取畫面會使用名稱 **contorosrmtsi**。 當您完成此步驟時，請選擇您自己的唯一名稱。 |
     | 訂用帳戶 | 在下拉式清單中選取您的 Azure 訂用帳戶。 |
     | 資源群組 | **使用現有**的。 選取現有遠端監視資源群組的名稱。 |
-    | Location | 我們使用**美國東部**。 如果可能的話，請在與遠端監視解決方案相同的區域中建立環境。 |
+    | 位置 | 我們使用**美國東部**。 如果可能的話，請在與遠端監視解決方案相同的區域中建立環境。 |
     | SKU |**S1** |
     | Capacity | **1** |
 
@@ -80,7 +80,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![檢視事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 按一下 [新增] 。
+1. 按一下 [新增]  。
 
     ![新增事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -126,7 +126,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 1. 選擇 [儲存]**** 以建立角色指派。 在幾分鐘之後，即會在資料存取原則中指派安全性主體的角色。
 
 > [!NOTE]
-> 如果您需要為其他使用者授與存取時間序列深入解析總管的權限，則可以使用下列步驟來[授與資料存取](../time-series-insights/time-series-insights-data-access.md#grant-data-access)。
+> 如果您需要為其他使用者授與存取時間序列深入解析總管的權限，則可以使用下列步驟來[授與資料存取](../time-series-insights/concepts-access-policies.md#grant-data-access)。
 
 ## <a name="configure-azure-stream-analytics"></a>設定 Azure 串流分析 
 
@@ -217,7 +217,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 1. 使用最新的標記從 GitHub 存放庫中提取 [最新的 docker 撰寫 yaml](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) 檔案。 
 
-1. 遵循[如何建立及使用 SSH 金鑰](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)中所述的步驟來透過 SSH 連線至 VM。
+1. 遵循[如何建立及使用 SSH 金鑰](../virtual-machines/linux/ssh-from-windows.md)中所述的步驟來透過 SSH 連線至 VM。
 
 1. 連線後，請鍵入 `cd /app`。
 
@@ -296,8 +296,8 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
             key: telemetry.storage.type
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入了解如何在時間序列見解總管中瀏覽資料和診斷警示，請參閱[進行根本原因分析](iot-accelerators-remote-monitoring-root-cause-analysis.md)的教學課程。
 
-* 若要深入了解如何在時間序列見解總管中探索和查詢資料，請參閱關於 [Azure 時間序列見解總管](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)的文件。
+* 若要深入了解如何在時間序列見解總管中探索和查詢資料，請參閱關於 [Azure 時間序列見解總管](../time-series-insights/time-series-insights-explorer.md)的文件。

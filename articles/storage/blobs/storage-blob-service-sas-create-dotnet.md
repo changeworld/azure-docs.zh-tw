@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab8993a98ce202964ade9fb5deae5c741ac7eb6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758300"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090347"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 建立容器或 blob 的服務 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文說明如何使用儲存體帳戶金鑰，透過 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立容器或 blob 的服務 SAS。
+本文說明如何使用儲存體帳戶金鑰，透過 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)來建立容器或 blob 的服務 SAS。
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>建立 blob 容器的服務 SAS
 

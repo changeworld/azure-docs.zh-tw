@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 71147352c5b75195ed0dff2b05acc5315f3183cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934663"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090789"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>將您的資料從 Defender for IoT 連接至 Azure Sentinel (preview) 
 
-Azure Sentinel 中的適用於 IoT 的 Azure 資訊安全中心資料連線器目前處於公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)。
+Azure Sentinel 中的 Azure Defender for IoT data connector 目前處於公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)。
 
 在本指南中，您將瞭解如何將 Defender for IoT 資料連線到 Azure Sentinel。
 
@@ -32,6 +32,8 @@ Azure Sentinel 中的適用於 IoT 的 Azure 資訊安全中心資料連線器�
 
 連接來自 Defender 的 IoT 警示，並將其直接串流至 Azure Sentinel。
 
+藉由更緊密整合適用于 IoT 的 Azure Defender 與 Azure Sentinel、第一個雲端原生 SIEM，以及原生 IoT 和安全性的第一個 SIEM，Microsoft 提供了更簡單的方法，讓您在 IT 與產業網路之間整合安全性。 相較于 Azure Sentinel 的機器學習服務，這種整合可讓組織快速偵測到經常跨越 IT 和界限的多階段攻擊。 此外，適用于 IoT 的 Azure Defender 與 Azure Sentinel 的安全性協調流程、自動化和回應 (SOAR) 功能，可讓您使用內建的「內建」手冊來進行自動回應和防止。 
+
 ## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有工作區的 **讀取** 和 **寫入** 許可權。
@@ -39,8 +41,6 @@ Azure Sentinel 中的適用於 IoT 的 Azure 資訊安全中心資料連線器�
 - 您必須具有您想要連接之**Azure IoT 中樞**的**讀取**和**寫入**許可權。
 - 您也必須具備**Azure IoT 中樞資源群組**的**讀取**和**寫入**許可權。
 
-> [!NOTE]
-> 您必須在訂用帳戶上執行 Azure 資訊安全中心標準層授權，以傳送一般 Azure 資源警示。 使用適用于 IoT 的 Defender 所需的免費層授權，僅會將適用于 IoT 相關警示的 Defender 轉送至 Azure Sentinel。
 
 ## <a name="connect-to-defender-for-iot"></a>連接到適用于 IoT 的 Defender
 
@@ -53,7 +53,7 @@ Azure Sentinel 中的適用於 IoT 的 Azure 資訊安全中心資料連線器�
 > [!NOTE]
 >進行連線變更之後，可能需要10秒鐘以上的時間才能重新整理中樞清單。
 
-## <a name="log-analytics-alert-display"></a>Log Analytics 警示顯示
+## <a name="using-log-analytics-for-alert-display"></a>使用 Log Analytics 進行警示顯示
 
 若要使用 Log Analytics 中的相關架構來顯示適用于 IoT 的 Defender 警示：
 
