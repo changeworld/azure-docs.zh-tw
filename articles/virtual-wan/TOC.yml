@@ -5,6 +5,7 @@
     - name: 什麼是虛擬 WAN？
       href: virtual-wan-about.md
 - name: 教學課程
+  expanded: true
   items:
     - name: 建立站對站連線
       href: virtual-wan-site-to-site-portal.md

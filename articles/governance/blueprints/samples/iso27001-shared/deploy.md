@@ -4,10 +4,10 @@ description: ISO 27001 共用服務藍圖範例的部署步驟，其中包括藍
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 0f2fa71e56deadba1188ab0fa69898c261861eb5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86521457"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>部署 ISO 27001 共用服務藍圖範例
