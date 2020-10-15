@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903386"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072402"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何將事件記錄到 Azure API 管理中的 Azure 事件中樞
 事件中樞是可高度調整的資料輸入服務，每秒可擷取數百萬個事件，可讓您處理和分析連接的裝置和應用程式所產生的大量資料。 事件中樞能做為事件管線的「大門」，一旦收集的資料進入事件中樞，它可以使用任何即時分析提供者或批次/儲存配接器轉換及儲存資料。 事件中樞能分隔事件串流的生產與這些事件的使用，讓事件消費者依照自己的排程存取事件。
@@ -32,7 +32,7 @@ ms.locfileid: "87903386"
 ## <a name="create-an-api-management-logger"></a>建立 API 管理記錄器
 現在您已經有事件中樞，下一步是在 API 管理服務中設定 [記錄器](/rest/api/apimanagement/2019-12-01/logger) ，以將事件記錄至事件中樞。
 
-可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 如需詳細的要求範例，請參閱 [如何建立記錄器](/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
+可使用 [API 管理 REST API](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)來設定 API 管理記錄器。 如需詳細的要求範例，請參閱 [如何建立記錄器](/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
 
 ## <a name="configure-log-to-eventhub-policies"></a>設定記錄對 eventhub 原則
 

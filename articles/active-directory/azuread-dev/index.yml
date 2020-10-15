@@ -1,6 +1,10 @@
 ### YamlMime:Landing
 title: 開發人員適用的 Azure Active Directory
-summary: Azure Active Directory (Azure AD) 是一項雲端識別服務，可讓開發人員使用 Microsoft 的公司或學校帳戶建置讓使用者安全登入的應用程式。 Azure AD 支援開發人員建置單一租用戶的企業營運 (LOB) 應用程式及開發多租用戶應用程式。 Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 開發人員平台的演化。 對於新的應用程式，建議您使用 Microsoft 身分識別平台 (v2.0) 和 MSAL 來取得權杖及存取安全的 Web API。
+summary: >
+  Azure Active Directory (Azure AD) 是一項雲端識別服務，可讓開發人員使用 Microsoft 的公司或學校帳戶建置讓使用者登入的應用程式。 Azure AD 支援建立單一租用戶的企業營運 (LOB) 應用程式，以及多租用戶應用程式。
+
+
+  重要事項：此內容適用於較舊的 Azure AD v1.0 端點，並針對新專案使用 Microsoft 身分識別平台。
 metadata:
   ms.topic: landing-page
   ms.date: 01/27/2020
@@ -9,12 +13,13 @@ metadata:
   ms.service: active-directory
   ms.subservice: azuread-dev
   ms.workload: identity
-  ms.openlocfilehash: 113a28ca5b4152ca8beedc7bdc3f1027c5acdf17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ROBOTS: NOINDEX
+  ms.openlocfilehash: 9089b944402c31135b32b3304ecf7cf69d86ad93
+  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88116065"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92055115"
 landingContent:
 - title: 開發人員適用的 Azure Active Directory
   linkLists:
@@ -22,33 +27,19 @@ landingContent:
     links:
     - text: 開發人員適用的 Azure Active Directory (v1.0)
       url: v1-overview.md
-    - text: Microsoft 身分識別平台的演化
-      url: ./about-microsoft-identity-platform.md
-    - text: Microsoft 身分識別平台 (v2.0)
-      url: ../develop/v2-overview.md
-  - linkListType: concept
-    links:
-    - text: 為何要更新至 Microsoft 身分識別平台 (v2.0)？
-      url: azure-ad-endpoint-comparison.md
-    - text: 應用程式類型和案例
-      url: app-types.md
-- title: 驗證通訊協定
+- title: 比較平台
   linkLists:
   - linkListType: overview
     links:
-    - text: 驗證基本概念
-      url: v1-authentication-scenarios.md
-  - linkListType: concept
-    links:
-    - text: OAuth 2.0 授權碼流程
-      url: v1-protocols-oauth-code.md
-    - text: OpenID Connect 程式碼流程
-      url: v1-protocols-openid-connect-code.md
-    - text: OAuth 2.0 用戶端認證授與流程
-      url: v1-oauth2-client-creds-grant-flow.md
-- title: 範例
+    - text: Microsoft 身分識別平台的演化
+      url: about-microsoft-identity-platform.md
+    - text: 為何要更新到 v2.0？
+      url: azure-ad-endpoint-comparison.md
+- title: Microsoft 身分識別平台
   linkLists:
-  - linkListType: download
+  - linkListType: overview
     links:
-    - text: 範例應用程式
-      url: sample-v1-code.md
+    - text: 什麼是 Microsoft 身分識別平台？
+      url: ../develop/v2-overview.md
+    - text: 將應用程式從 ADAL 遷移至 MSAL
+      url: ../develop/msal-migration.md
