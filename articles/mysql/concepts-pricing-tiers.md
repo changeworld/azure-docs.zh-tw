@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 7cc19adcc4769baaf34a75ef7217de639d0a357c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171008"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079032"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>適用於 MySQL 的 Azure 資料庫定價層
 
@@ -51,7 +51,7 @@ ms.locfileid: "87171008"
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |
 
 > [!NOTE]
-> 下欄區域支援儲存體最高16TB 和 20000 IOPS：美國東部、美國東部2、美國中部、美國西部、美國中北部、美國中南部、歐洲北部、歐洲西部、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2和美國中西部。
+> 下欄區域支援儲存體最多16TB 和 20000 IOPS：美國東部、美國東部2、美國中部、美國西部、美國中北部、美國中南部、歐洲北部、歐洲西部、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2、美國中西部、加拿大東部以及加拿大中部。
 >
 > 所有其他區域都支援最多4TB 的儲存體，以及最高6000的 IOPS。
 >
@@ -99,7 +99,7 @@ ms.locfileid: "87171008"
 
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/mysql/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.MySQLServer)會根據您選取的選項，在 [定價層]**** 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上選取 [新增項目]****，展開 [資料庫]**** 類別，並選擇 [適用於 MySQL 的 Azure 資料庫]**** 以自訂選項。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解如何[在入口網站中建立 MySQL 伺服器](howto-create-manage-server-portal.md)。
 - 了解[服務限制](concepts-limits.md)。

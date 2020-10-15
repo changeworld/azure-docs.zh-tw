@@ -2,17 +2,17 @@
 title: 設定使用者 VPN 連接的 Azure AD authentication：虛擬 WAN
 description: 瞭解如何為使用者 VPN 設定 Azure Active Directory authentication。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832513"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079168"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory authentication
 
@@ -22,15 +22,14 @@ ms.locfileid: "87832513"
 
 在本文中，您將學會如何：
 
-> [!div class="checklist"]
-> * 建立虛擬 WAN
-> * 建立虛擬中樞
-> * 建立使用者 VPN 設定
-> * 下載虛擬 WAN 使用者 VPN 設定檔
-> * 將使用者 VPN 設定套用至虛擬中樞
-> * 將 VNet 連線到虛擬中樞
-> * 下載並套用使用者 VPN 用戶端設定
-> * 查看您的虛擬 WAN
+* 建立虛擬 WAN
+* 建立虛擬中樞
+* 建立使用者 VPN 設定
+* 下載虛擬 WAN 使用者 VPN 設定檔
+* 將使用者 VPN 設定套用至虛擬中樞
+* 將 VNet 連線到虛擬中樞
+* 下載並套用使用者 VPN 用戶端設定
+* 查看您的虛擬 WAN
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -117,7 +116,7 @@ ms.locfileid: "87832513"
 
    ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
 5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]  。
-6. 按一下 [確認]。
+6. 按一下 [確認]  。
 7. 此作業最多可能需要 30 分鐘的時間才能完成。
 
 ## <a name="download-user-vpn-profile"></a><a name="device"></a>下載使用者 VPN 設定檔

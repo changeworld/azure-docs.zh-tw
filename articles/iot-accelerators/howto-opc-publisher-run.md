@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282131"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078998"
 ---
 # <a name="run-opc-publisher"></a>執行 OPC 發行者
 
@@ -370,7 +370,7 @@ docker run mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubco
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>以 Azure IoT Edge 模組的形式執行
 
-OPC 發行者可以直接作為 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) \(部分機器翻譯\) 模組使用。 當您使用 OPC 發行者作為 IoT Edge 模組時，唯一支援的傳輸通訊協定是 **Amqp_Tcp_Only** 和 **Mqtt_Tcp_Only**。
+OPC 發行者可以直接作為 [Azure IoT Edge](../iot-edge/index.yml) \(部分機器翻譯\) 模組使用。 當您使用 OPC 發行者作為 IoT Edge 模組時，唯一支援的傳輸通訊協定是 **Amqp_Tcp_Only** 和 **Mqtt_Tcp_Only**。
 
 若要將 OPC 發行者作為模組加入您的 IoT Edge 部署，請移至您在 Azure 入口網站中的 IoT 中樞設定，並完成下列步驟：
 

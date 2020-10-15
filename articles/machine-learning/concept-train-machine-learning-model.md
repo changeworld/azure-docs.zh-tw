@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330106"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079066"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -118,11 +118,6 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 + [什麼是設計工具？](concept-designer.md)
 + [教學課程：預測汽車價格](tutorial-designer-automobile-price-train-score.md)
-+ [迴歸：預測價格](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [分類：預測收入](how-to-designer-sample-classification-predict-income.md)
-+ [分類：預測流失、購買意願和向上銷售](how-to-designer-sample-classification-churn.md)
-+ [使用自訂 R 指令碼進行分類：預測航班誤點](how-to-designer-sample-classification-flight-delay.md)
-+ [文字分類：Wikipedia SP 500 資料集](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>多種模型解決方案加速器
 

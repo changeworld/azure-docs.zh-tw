@@ -3,12 +3,12 @@ title: Azure VMware 解決方案上的部署範圍
 description: 瞭解如何在 Azure VMware 解決方案上部署 VMware 的範圍。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729044"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078879"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware 解決方案上的部署範圍 
 
@@ -197,11 +197,14 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 根據標準部署架構，範圍基礎結構 Vm 是由連線伺服器、UAGs、應用程式磁片區管理員所組成，而且會部署在客戶的 Azure 虛擬網路中。 需要額外的 Azure 原生實例，才能在 Azure 上支援高可用性 (HA) 、Microsoft SQL 或 Microsoft Active Directory (AD) 服務。 以下是以 2000-桌面部署範例為基礎的 Azure 實例清單。 
 
+>[!NOTE]
+>若要能夠處理失敗，請部署一部以上的伺服器，而不是 (n + 1) 的連接數目所需的伺服器。 連線伺服器、UAG 和應用程式磁片區管理員的最小建議實例數目為2，而所需的數目將根據環境將支援的使用者數量成長。  單一連線伺服器最多可支援4000個會話，但建議使用2000作為最佳作法。 每個 pod 最多可支援7個連接伺服器，每個 pod 的建議為12000個作用中會話。 如需最新數目的相關資訊，請參閱 vmware [知識庫文章： vmware 趨勢調整限制和建議](https://kb.vmware.com/s/article/2150348)。
+
 | 範圍基礎結構元件 | Azure 實例 | 2000-桌面) 所需的實例數 (    | 註解  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| 連接伺服器                | D4sv3          | 2       | *包含1個 HA 實例*             |    
-| UAG                              | F2sv2          | 2       | *包含1個 HA 實例*             |
-| 應用程式磁片區管理員              | D4sv3          | 2       | *包含1個 HA 實例*             |
+| 連接伺服器                | D4sv3          | 2       | *請參閱上述注意事項*                         |    
+| UAG                              | F2sv2          | 2       | *請參閱上述注意事項*                         |
+| 應用程式磁片區管理員              | D4sv3          | 2       | *請參閱上述注意事項*                         |
 | 雲端連接器                  | D4sv3          | 1       |                                          |
 | AD 控制器                    | D4sv3          | 2       | *使用 Azure 上的 MSFT AD 服務的選項* |
 | MS SQL Database                  | D4sv3          | 2       | *在 Azure 上使用 SQL 服務的選項*     |

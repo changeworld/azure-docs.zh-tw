@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c36a541c9380596884252efcba4a9c0ca2be33f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570040"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92082165"
 ---
 | 資源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -39,7 +39,7 @@ ms.locfileid: "89570040"
 <sup>2</sup>每一單位快取大小取決於定價層。 若要查看定價層及其調整限制，請參閱 [API 管理價格](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>3</sup>除非後端明確關閉連線，否則連線會經過集區化和重複使用。<br/>
 <sup>4</sup>限制是根據基本、標準和進階層的每個單位。 開發人員層的限制為 1024 個。 此限制不適用於使用層。<br/>
-<sup>5</sup>此限制適用於基本、標準和進階層。 在使用層原則中，文件大小限制為 4 KiB。<br/>
+<sup>5</sup>此限制適用於基本、標準和進階層。 在使用層原則中，原則文件大小限制為 16 KiB。<br/>
 <sup>6</sup>只有開發人員和進階層支援多個自訂網域。<br/>
 <sup>7</sup>使用層不支援 CA 憑證。<br/>
 <sup>8</sup>此限制僅適用於使用層。 其他層級的這些類別沒有任何限制。<br/>

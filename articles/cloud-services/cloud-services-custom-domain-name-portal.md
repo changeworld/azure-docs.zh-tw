@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092723"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069920"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>設定 Azure 雲端服務的自訂網域名稱
 當您建立雲端服務時，Azure 會將它指派給 **cloudapp.net**的子網域。 例如，如果您的雲端服務的名稱為 "contoso"，您的使用者可以透過 URL (如 `http://contoso.cloudapp.net`) 存取應用程式。 Azure 也會指派虛擬 IP 位址。
@@ -119,11 +119,11 @@ CNAME 記錄會將 *特定* 網域（例如 **contoso.com** 或 **www \. contoso
 此範例示範建立根網域的 A 記錄。 如果想要建立萬用字元項目來涵蓋所有子網域，請輸入 '*****' 做為子網域。
 
 > [!WARNING]
-> 依預設，Azure 中的 IP 位址是動態的。 您可能想要使用 [保留的 IP 位址](../virtual-network/virtual-networks-reserved-public-ip.md) ，以確保您的 IP 位址不會變更。
+> 依預設，Azure 中的 IP 位址是動態的。 您可能想要使用 [保留的 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ，以確保您的 IP 位址不會變更。
 > 
 > 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [如何管理雲端服務](cloud-services-how-to-manage-portal.md)
 * [如何將 CDN 內容對應至自訂網域](../cdn/cdn-map-content-to-custom-domain.md)
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
@@ -138,6 +138,3 @@ CNAME 記錄會將 *特定* 網域（例如 **contoso.com** 或 **www \. contoso
 [Azure 入口網站]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

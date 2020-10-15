@@ -2,21 +2,21 @@
 title: 使用 Azure 防禦中的 Vm 和 Nsg
 description: 您可以使用網路安全性群組搭配 Azure 防禦。 深入瞭解此設定所需的子網。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.author: charwen
-ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cherylmc
+ms.openlocfilehash: 7853ac3ece01057282bc6cb421018020e15273b5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987705"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079185"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
 
-使用「Azure 防禦」時，您可以使用 (Nsg) 的網路安全性群組。 如需詳細資訊，請參閱 [安全性群組](../virtual-network/security-overview.md)。
+使用「Azure 防禦」時，您可以使用 (Nsg) 的網路安全性群組。 如需詳細資訊，請參閱 [安全性群組](../virtual-network/network-security-groups-overview.md)。
 
 :::image type="content" source="./media/bastion-nsg/figure-1.png" alt-text="NSG":::
 
