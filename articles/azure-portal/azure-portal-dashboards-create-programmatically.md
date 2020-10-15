@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764038"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077859"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以程式設計方式建立 Azure Dashboards
 
@@ -25,7 +25,7 @@ ms.locfileid: "84764038"
 
 ![範例儀表板](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [Azure 入口網站](https://portal.azure.com)中的共用儀表板就像是虛擬機器和儲存體帳戶一樣的[資源](../azure-resource-manager/management/overview.md)。 您可以使用 [AZURE RESOURCE MANAGER REST api](/rest/api/)、 [Azure CLI](/cli/azure)和 [Azure PowerShell 命令](/powershell/azure/get-started-azureps)，以程式設計方式管理資源。
 
@@ -78,13 +78,13 @@ ms.locfileid: "84764038"
 在 Azure 中建立資源的 Api 有兩種方法：
 
 * 命令式 Api 一次建立一項資源。 如需詳細資訊，請參閱[資源](/rest/api/resources/resources)。
-* 以範本為基礎的部署系統，可透過單一 API 呼叫來建立多個相依的資源。 如需詳細資訊，請參閱  [使用 Resource Manager 範本部署資源和 Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)。
+* 以範本為基礎的部署系統，可透過單一 API 呼叫來建立多個相依的資源。 如需詳細資訊，請參閱  [使用 Resource Manager 範本部署資源和 Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)。
 
 以範本為基礎的部署支援參數化和範本化。 我們會在本文中使用此方法。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>以程式設計方式使用範本部署從範本建立儀表板
 
-Azure 可讓您協調多個資源的部署。 您可以建立部署範本，以表示要部署的資源集合，以及它們之間的關聯性。  每個資源的 JSON 格式都相同，就如同您逐一建立這些資源一般。 差異在於，範本語言會加入一些概念，例如變數、參數、基本功能等等。 只有在範本部署的內容中才支援此擴充語法。 如果與稍早所討論的命令式 Api 搭配使用，它將無法運作。 如需詳細資訊，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 可讓您協調多個資源的部署。 您可以建立部署範本，以表示要部署的資源集合，以及它們之間的關聯性。  每個資源的 JSON 格式都相同，就如同您逐一建立這些資源一般。 差異在於，範本語言會加入一些概念，例如變數、參數、基本功能等等。 只有在範本部署的內容中才支援此擴充語法。 如果與稍早所討論的命令式 Api 搭配使用，它將無法運作。 如需詳細資訊，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md)。
 
 參數化應該使用範本的參數語法來完成。  您可以取代我們稍早找到的資源識別碼的所有實例，如下所示。
 
@@ -125,7 +125,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 設定您的範本之後，請使用下列任一種方法來部署它：
 
 * [REST API](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure 入口網站範本部署頁面](https://portal.azure.com/#create/Microsoft.Template)
 

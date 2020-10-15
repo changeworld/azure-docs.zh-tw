@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449619"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045783"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 IoT Edge 模組
 
@@ -87,13 +87,13 @@ IoT Edge 模組會封裝為容器，因此開發機器上必須有容器引擎�
 
 1. 在您的開發電腦上準備 Visual Studio 2019。
 
-   * 如果開發機器上還沒有 Visual Studio，請使用下列工作負載來[安裝 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio)：
+   * 如果開發機器上還沒有 Visual Studio，請使用下列工作負載來[安裝 Visual Studio 2019](/visualstudio/install/install-visual-studio)：
 
       * Azure 開發
       * 使用 C++ 的桌面開發
       * .NET Core 跨平台開發
 
-   * 如果您的開發電腦上已經有 Visual Studio 2019，請依照[修改 Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) 中的步驟來新增必要的工作負載。
+   * 如果您的開發電腦上已經有 Visual Studio 2019，請依照[修改 Visual Studio](/visualstudio/install/modify-visual-studio) 中的步驟來新增必要的工作負載。
 
 2. 下載並安裝適用於 Visual Studio 2019 的 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 擴充功能。
 
@@ -181,17 +181,17 @@ IoT Edge 執行階段需要登錄認證才能將容器映像提取到 IoT Edge �
 
 每個模組都可以在其程式碼中宣告多個「輸入」  和「輸出」  佇列。 在裝置上執行的 IoT Edge 中樞會將訊息從某個模組的輸出路由傳送至一或多個模組的輸入。 用於宣告輸入和輸出的特定程式碼會隨語言而異，但概念在所有模組則都相同。 如需模組之間路由方式的詳細資訊，請參閱[宣告路由](module-composition.md#declare-routes)。
 
-專案範本所隨附的範例 C# 程式碼會使用 IoT Hub SDK for .NET 所提供的 [ModuleClient 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)。
+專案範本所隨附的範例 C# 程式碼會使用 IoT Hub SDK for .NET 所提供的 [ModuleClient 類別](/dotnet/api/microsoft.azure.devices.client.moduleclient)。
 
 1. 在 **program.cs** 檔案中，尋找 **SetInputMessageHandlerAsync** 方法。
 
-2. [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) 方法可設定用於接收內送訊息的輸入佇列。 檢閱此方法，並查看它如何初始化名為 **input1** 的輸入佇列。
+2. [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) 方法可設定用於接收內送訊息的輸入佇列。 檢閱此方法，並查看它如何初始化名為 **input1** 的輸入佇列。
 
    ![在 SetInputMessageHandlserAsync 建構函式中尋找輸入名稱](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
 3. 接著，尋找 **SendEventAsync** 方法。
 
-4. [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) 方法會處理接收的訊息並設定輸出佇列來傳遞它們。 檢閱此方法，並查看它初始化名為 **output1** 的輸出佇列。
+4. [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) 方法會處理接收的訊息並設定輸出佇列來傳遞它們。 檢閱此方法，並查看它初始化名為 **output1** 的輸出佇列。
 
    ![在 SendEventAsync 建構函式中尋找輸出名稱](./media/tutorial-develop-for-windows/declare-output-queue.png)
 

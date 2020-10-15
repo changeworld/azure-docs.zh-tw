@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86249598"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078488"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
-本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
 
 ##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> 轉換原則
 
@@ -69,19 +69,19 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律套用轉換。<br />-   content-type-json - 只有當回應中的 Content-type 標頭指出 JSON 存在時才轉換。|是|N/A|
 |consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 XML，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
 |剖析日期|設定為 `false` 時，只會在轉換期間複製日期值|否|true|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、錯誤
@@ -113,19 +113,19 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |kind|此屬性必須設為下列其中一個值。<br /><br /> -   javascript-friendly - 轉換後的 JSON 有 JavaScript 開發人員熟悉的格式。<br />-   direct -  | 轉換後的 JSON 可反映原始 XML 文件的結構。|是|N/A|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律轉換。<br />-   content-type-xml - 只有當回應中的 Content-type 標頭指出 XML 存在時才轉換。|是|N/A|
 |consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 JSON，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、錯誤
@@ -149,18 +149,18 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |從|要搜尋的字串。|是|N/A|
 |to|取代字串。 指定零長度的取代字串可移除搜尋字串。|是|N/A|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
@@ -187,11 +187,11 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出
@@ -260,13 +260,13 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |base-url|新的後端服務基底 URL。|其中一個 `base-url` 或 `backend-id` 必須存在。|N/A|
 |backend-id|要傳送至的後端識別碼。  (後端實體是透過 [API](/rest/api/apimanagement/2019-12-01/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理。 ) |其中一個 `base-url` 或 `backend-id` 必須存在。|N/A|
@@ -276,7 +276,7 @@ ms.locfileid: "86249598"
 |sf-service-instance-name|僅適用於後端為 Service Fabric 服務時。 允許在執行階段變更服務執行個體。 |否|N/A|
 |sf-listener-name|僅適用於後端為 Service Fabric 服務並使用 ‘backend-id’ 指定時。 Service Fabric Reliable Services 可讓您在服務中建立多個接聽程式。 後端 Reliable Service 有多個接聽程式時，可使用此屬性來選取特定的接聽程式。 如果未指定此屬性，API 管理會嘗試使用沒有名稱的接聽程式。 沒有名稱的接聽程式通常適用於只有一個接聽程式的 Reliable Services。 |否|N/A|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、後端
@@ -396,13 +396,13 @@ ms.locfileid: "86249598"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含本文文字或會傳回本文的運算式。|是|
 
 ### <a name="properties"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |template|用來變更設定本文原則將在其中執行的範本化模式。 目前唯一支援的值為：<br /><br />- liquid - 設定本文原則將會使用 Liquid 範本化引擎 |否||
 
@@ -446,7 +446,7 @@ OriginalUrl.
 
 
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端
@@ -510,19 +510,19 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
 |value|指定要設定之標頭的值。 若多個標頭有相同名稱，請額外加入 `value` 元素。|否|
 
 ### <a name="properties"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有標頭的值。<br />-   skip - 不取代現有的標頭值。<br />-   append - 將值附加至現有標頭值之後。<br />-   delete - 移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。|否|override|
 |NAME|指定要設定之標頭的名稱。|是|N/A|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
@@ -565,19 +565,19 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
 |value|指定要設定之查詢參數的值。 若多個查詢參數有相同名稱，請額外加入 `value` 元素。|是|
 
 ### <a name="properties"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定當已指定查詢參數時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -   override - 取代現有參數的值。<br />-   skip - 不取代現有的查詢參數值。<br />-   append - 將值附加至現有查詢參數值之後。<br />-   delete - 移除要求中的查詢參數。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定查詢參數 (列出多次)；只有列出的值才會設定在結果中。|否|override|
 |NAME|指定要設定之查詢參數的名稱。|是|N/A|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、後端
@@ -644,18 +644,18 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|屬性|說明|必要|預設|
+|屬性|描述|必要|預設|
 |---------------|-----------------|--------------|-------------|
 |template|含有任何查詢字串參數的實際 Web 服務 URL。 使用運算式時，整個值必須是運算式。|是|N/A|
 |copy-unmatched-params|指定當連入要求中查詢參數不存在於原始 URL 範本時，是否要將它新增到由重寫範本所定義的 URL|否|true|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** inbound
@@ -713,23 +713,23 @@ OriginalUrl.
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |參數|用於定義轉換中使用的變數|否|
 |xsl:stylesheet|根樣式表元素。 遵循 [XSLT 規格](https://www.w3.org/TR/xslt)標準定義的所有的元素和屬性|是|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
  此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出
 
 -   **原則範圍：** 所有範圍
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列主題：
 
 + [API 管理中的原則](api-management-howto-policies.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)
++ [原則範例](./policy-reference.md)

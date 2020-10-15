@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763817"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078505"
 ---
 # <a name="region-or-sku-unavailable"></a>無法使用區域或 SKU
 
@@ -80,7 +80,7 @@ Message: This size is currently unavailable in this location for this subscripti
 
 ## <a name="send-us-your-suggestions"></a>請將您的建議傳送給我們
 
-我們歡迎意見反應和建議！ 請將您的 [建議](https://feedback.azure.com/forums/266794-support-feedback)傳送給我們。 此外，您也可以在 [Twitter](https://twitter.com/azuresupport) 或 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/products/azure)中與我們互動。
+我們歡迎意見反應和建議！ 請將您的 [建議](https://feedback.azure.com/forums/266794-support-feedback)傳送給我們。 此外，您也可以在 [Twitter](https://twitter.com/azuresupport) 或 [Microsoft 問與答頁面](/answers/products/azure)中與我們互動。
 
 ## <a name="learn-more"></a>深入了解
 

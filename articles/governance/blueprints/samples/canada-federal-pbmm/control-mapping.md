@@ -1,14 +1,14 @@
 ---
 title: 加拿大聯邦 PBMM 藍圖範例控制項
-description: 加拿大聯邦 PBMM 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
+description: 加拿大聯邦 PBMM 藍圖範例的控制項對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: b3879ee847a0cb7a4cb6d00e842c613de53579e2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c7b7df73d9fd553e9f733f37d7238e4c1c0afed5
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541062"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929552"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大聯邦 PBMM 藍圖範例的控制項對應
 
@@ -17,7 +17,7 @@ ms.locfileid: "91541062"
 以下是**加拿大聯邦 PBMM**控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\]：稽核加拿大聯邦 PBMM 控制項**的內建原則計畫。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md) \(英文\)。
 
 ## <a name="location-constraints"></a>位置限制
 
@@ -46,8 +46,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="ac-4-information-flow-enforcement"></a>AC-4 資訊流程強制
 
-跨原始來源資源共用 (CORS) 允許從外部網域對應用程式服務資源提出要求。 Microsoft 建議您只允許必要網域與 API、功能和 Web 應用程式互動。 此藍圖指派 [Azure 原則](../../../policy/overview.md)定義，協助您在 Azure 資訊安全中心監視 CORS 資源存取限制。
-了解 CORS 實作可協助您確認會實作資訊流程控制措施。
+跨原始來源資源共用 (CORS) 允許從外部網域對應用程式服務資源提出要求。 Microsoft 建議您只允許必要網域與 API、功能和 Web 應用程式互動。 此藍圖指派 [Azure 原則](../../../policy/overview.md)定義，協助您在 Azure 資訊安全中心監視 CORS 資源存取限制。 了解 CORS 實作可協助您確認會實作資訊流程控制措施。
 
 - CORS 不應允許每項資源存取您的 Web 應用程式
 
@@ -123,7 +122,8 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 
 ## <a name="au-12-audit-generation"></a>AU-12 稽核產生
 
-此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。 這些原則定義會稽核並強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，以及設定其他 Azure 資源類型的稽核設定。 這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 此外，會在 SQL 伺服器上設定稽核與「進階資料安全性」。
+此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。
+這些原則定義會稽核並強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，以及設定其他 Azure 資源類型的稽核設定。 這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 此外，會在 SQL 伺服器上設定稽核與「進階資料安全性」。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
 - 稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
@@ -197,7 +197,8 @@ Azure Site Recovery 會將虛擬機器上執行的工作負載從主要位置複
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 弱點掃描
 
-此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure 資訊安全中心內的作業系統弱點、SQL 弱點與虛擬機器弱點，以協助您管理資訊系統弱點。 Azure 資訊安全中心提供報告功能，可讓您即時深入檢視已部署 Azure 資源的安全性狀態。 此藍圖還指派原則定義，針對 SQL 伺服器稽核並強制套用「進階資料安全性」。 「進階資料安全性」包含弱點評定和進階威脅防護功能，可協助您了解所部署資源的弱點。
+此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure 資訊安全中心內的作業系統弱點、SQL 弱點與虛擬機器弱點，以協助您管理資訊系統弱點。
+Azure 資訊安全中心提供報告功能，可讓您即時深入檢視已部署 Azure 資源的安全性狀態。 此藍圖還指派原則定義，針對 SQL 伺服器稽核並強制套用「進階資料安全性」。 「進階資料安全性」包含弱點評定和進階威脅防護功能，可協助您了解所部署資源的弱點。
 
 - 應在 SQL 受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性
@@ -215,8 +216,7 @@ Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 界限保護
 
-此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義在 Azure 資訊安全中心監視網路安全性群組強化建議，以協助您管理和控制系統界限。 「Azure 資訊安全中心」會分析網際網路面向虛擬機器的流量模式，並提供網路安全群組規則建議，以降低潛在的受攻擊面。
-此外，此藍圖還指派原則定義，以監視未受保護的端點、應用程式與儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
+此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義在 Azure 資訊安全中心監視網路安全性群組強化建議，以協助您管理和控制系統界限。 「Azure 資訊安全中心」會分析網際網路面向虛擬機器的流量模式，並提供網路安全群組規則建議，以降低潛在的受攻擊面。 此外，此藍圖還指派原則定義，以監視未受保護的端點、應用程式與儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
 
 - 應在網際網路對應虛擬機器中套用自適性網路強化建議
 - 應限制透過網際網路面向端點存取

@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26fc916a2bacc0f6ae9791a53b642e93bb031466
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117160"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077978"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>標準配額：調高 VM 系列的限制
 
@@ -30,7 +30,7 @@ Azure Resource Manager 針對虛擬機器支援兩種類型的 vCPU 配額：
 
 您可以使用 Azure 入口網站來要求增加 VM 系列的 vCPU 配額限制。 VM 系列配額的增加會自動增加相同數量的總區域 vCPU 限制。
 
-若要深入瞭解標準 vCPU 配額，請參閱 [虛擬機器 vCPU 配額](../../virtual-machines/windows/quotas.md) 和 [Azure 訂用帳戶和服務限制](https://docs.microsoft.com/azure/azure-supportability/classic-deployment-model-quota-increase-requests)。
+若要深入瞭解標準 vCPU 配額，請參閱 [虛擬機器 vCPU 配額](../../virtual-machines/windows/quotas.md) 和 [Azure 訂用帳戶和服務限制](./classic-deployment-model-quota-increase-requests.md)。
 
 若要瞭解如何針對標準配額增加依區域的 vCPU 限制，請參閱 [標準配額：依區域增加限制](regional-quota-requests.md)。
 
