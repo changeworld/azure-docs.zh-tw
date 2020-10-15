@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235690"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070362"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自動使用者布建可簡化此程式，方�
 
 請參閱 [使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建，以進一步瞭解其功能。
 
-## <a name="learn"></a>學習
+## <a name="learn"></a>Learn
 
 使用者布建會建立進行中身分識別治理的基礎，並增強依賴授權身分識別資料的商務程式品質。
 
@@ -129,7 +129,7 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，通常是因為對影響、結果和責任的預期不相符。 若要避免這些錯誤，請 [確定您已吸引適當的專案關係人](https://aka.ms/deploymentplans) ，並且藉由記錄專案關係人和專案的專案輸入和責任，瞭解專案中的專案關係人角色。
+當技術專案失敗時，通常是因為對影響、結果和責任的預期不相符。 若要避免這些錯誤，請 [確定您已吸引適當的專案關係人](../fundamentals/active-directory-deployment-plans.md) ，並且藉由記錄專案關係人和專案的專案輸入和責任，瞭解專案中的專案關係人角色。
 
 ### <a name="plan-communications"></a>規劃通訊
 
@@ -264,7 +264,7 @@ Azure AD 支援直接屬性對屬性的對應、提供常數值，或 [撰寫屬
 
 使用 [Azure 入口網站](https://portal.azure.com/) 來管理使用者帳戶的自動布建和解除布建，以提供支援的應用程式。 遵循[如何? 設定自動布建至應用程式](../app-provisioning/user-provisioning.md)的步驟？
 
-您也可以使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)來設定和管理 Azure AD 使用者佈建服務。
+您也可以使用 [Microsoft Graph API](/graph/api/resources/synchronization-overview)來設定和管理 Azure AD 使用者佈建服務。
 
 ## <a name="manage-automatic-user-provisioning"></a>管理自動使用者布建
 
@@ -274,7 +274,7 @@ Azure AD 支援直接屬性對屬性的對應、提供常數值，或 [撰寫屬
 
 在成功 [初始週期](../app-provisioning/user-provisioning.md)之後，Azure AD 布建服務將會以每個應用程式特定的間隔無限期地執行累加更新，直到發生下列其中一個事件為止：
 
-* 這項服務會以手動方式停止，並使用 [Azure 入口網站](https://portal.azure.com/)或使用適當的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 命令來觸發新的初始週期。
+* 這項服務會以手動方式停止，並使用 [Azure 入口網站](https://portal.azure.com/)或使用適當的 [Microsoft Graph API](/graph/api/resources/synchronization-overview) 命令來觸發新的初始週期。
 
 * 新的初始週期是由屬性對應或範圍篩選準則的變更所觸發。
 
@@ -310,7 +310,7 @@ Azure AD 可以透過審核記錄和報告，為您組織的使用者布建使�
 
 * [撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD 同步處理 API 概觀](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD 同步處理 API 概觀](/graph/api/resources/synchronization-overview)
 
 * [略過刪除超出範圍的使用者帳戶](skip-out-of-scope-deletions.md)
 

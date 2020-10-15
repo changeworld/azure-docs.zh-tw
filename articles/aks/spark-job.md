@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 074e3db3234794aa891d5452b0c19060193c6d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff392b974c5faed99f57e5901fced51ba22ac857
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243965"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078131"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 上執行 Apache Spark 作業
 
 [Apache Spark][apache-spark] 是大規模資料處理的快速引擎。 從 [Spark 2.3.0 版][spark-kubernetes-earliest-version] 開始，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 為了要完成本文中的步驟，您需要下列項目。
 
@@ -330,7 +330,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 > [!WARNING]
 > 引述自 Spark [文件][spark-docs]：「Kubernetes 排程器目前為實驗性。 在未來的版本中，可組態、容器映像和進入點可能會有行為上的變更。」
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資料，請參閱 Spark 文件。
 
@@ -340,7 +340,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: https://aka.ms/azure-jdks
+[java-install]: /azure/developer/java/fundamentals/java-jdk-long-term-support
 [maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html

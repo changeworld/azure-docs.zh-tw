@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ddee5991efd5bde3bd139257ad154f02f5d0371
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86205845"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071297"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自動調整 Azure API 管理執行個體  
 
@@ -27,7 +27,7 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 > [!NOTE]
 > **使用量**層中的 API 管理服務會根據流量自動調整，而不需要任何額外的設定。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要依照本文中的步驟進行，您必須：
 
@@ -127,9 +127,9 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 
     ![Azure 監視器的相應縮小規則](media/api-management-howto-autoscale/07.png)
 
-13. 按一下 **[儲存]** 。 您已設定自動調整。
+13. 按一下 [儲存]。 您已設定自動調整。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何將 Azure API 管理服務執行個體部署到多個 Azure 區域](api-management-howto-deploy-multi-region.md)
-- [優化並節省您的雲端費用](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [優化並節省您的雲端費用](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -7,18 +7,18 @@ ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590025"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078199"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>回應 Azure 應用程式組態事件
 
 Azure 應用程式組態事件可讓應用程式回應索引鍵/值的變更。 這樣做不需要複雜的程式碼或昂貴且無效率的輪詢服務。 相反地，事件會透過 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/) 推送至「訂閱者」，例如 [Azure Functions](https://azure.microsoft.com/services/functions/)、 [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)，甚至是您自己的自訂 HTTP 接聽程式。 嚴格來說，您只需為使用的部分付費。
 
-Azure 應用程式組態事件會傳送至 Azure 事件方格，以透過 rich 重試原則和寄不出的信件傳遞，提供可靠的傳遞服務給您的應用程式。 若要深入瞭解，請參閱 [事件方格訊息傳遞和重試](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)。
+Azure 應用程式組態事件會傳送至 Azure 事件方格，以透過 rich 重試原則和寄不出的信件傳遞，提供可靠的傳遞服務給您的應用程式。 若要深入瞭解，請參閱 [事件方格訊息傳遞和重試](../event-grid/delivery-and-retry.md)。
 
 常見的應用程式設定事件案例包括重新整理應用程式設定、觸發部署或任何設定導向的工作流程。 在變更不常見但情況需要立即回應的情況下，以事件為基礎的架構可能特別有效。
 
@@ -29,7 +29,7 @@ Azure 應用程式組態事件會傳送至 Azure 事件方格，以透過 rich �
 ## <a name="available-azure-app-configuration-events"></a>可用的 Azure 應用程式組態事件
 Event Grid 使用[事件訂閱](../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 Azure 應用程式組態事件訂閱可以包含兩種類型的事件：  
 
-> |活動名稱|說明|
+> |活動名稱|描述|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|在建立或取代索引鍵/值時引發|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|在刪除索引鍵/值時引發|
@@ -82,7 +82,7 @@ Azure 應用程式組態事件包含回應資料變更所需的所有資訊。 �
 > * 使用 [主旨] 欄位來存取已修改的索引鍵/值。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解事件方格，並嘗試 Azure 應用程式組態的事件：
 

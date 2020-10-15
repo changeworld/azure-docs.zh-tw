@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89c2b90b12a4fc16dd48571c00ff46dc62168d42
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87923878"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077876"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>使用角色型存取控制來共用 Azure 儀表板
 
@@ -88,4 +88,4 @@ ms.locfileid: "87923878"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需角色清單，請參閱 [Azure 內建角色](../role-based-access-control/built-in-roles.md)。
-* 若要瞭解如何管理資源，請參閱 [使用 Azure 入口網站管理 Azure 資源](resource-group-portal.md)。
+* 若要瞭解如何管理資源，請參閱 [使用 Azure 入口網站管理 Azure 資源](../azure-resource-manager/management/manage-resources-portal.md)。

@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282896"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 使用 Angular 建置 UI

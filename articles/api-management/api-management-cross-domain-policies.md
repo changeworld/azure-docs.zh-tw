@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499608"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071229"
 ---
 # <a name="api-management-cross-domain-policies"></a>API 管理跨網域原則
-本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
 
 ## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a> 跨網域原則
 
@@ -53,11 +53,11 @@ ms.locfileid: "86499608"
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |cross-domain|根元素。 子元素必須符合 [Adobe 跨網域原則檔案規格](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** inbound
@@ -124,7 +124,7 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |cors|根元素。|是|N/A|
 |allowed-origins|包含可說明跨網域要求之允許來源的 `origin` 元素。 `allowed-origins` 可包含指定了 `*` 以允許任何來源的單一 `origin` 元素，或一或多個包含 URI 的 `origin` 元素。|是|N/A|
@@ -137,12 +137,12 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|`Access-Control-Allow-Credentials`預檢回應中的標頭會設定為這個屬性的值，並影響用戶端在跨網域要求中提交認證的能力。|否|false|
 |preflight-result-max-age|`Access-Control-Max-Age`預檢回應中的標頭會設定為這個屬性的值，並影響使用者代理程式快取預先傳送回應的能力。|否|0|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** inbound
@@ -169,27 +169,27 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 
 ### <a name="elements"></a>項目
 
-|名稱|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
 |jsonp|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|名稱|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|跨網域 JavaScript 函數呼叫，開頭加上函數所在的完整網域名稱。|是|N/A|
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** 輸出
 - **原則範圍：** 所有範圍
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需使用原則的詳細資訊，請參閱︰
 
 + [API 管理中的原則](api-management-howto-policies.md)
 + [轉換 API](transform-api.md)
 + [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
-+ [原則範例](policy-samples.md)
++ [原則範例](./policy-reference.md)

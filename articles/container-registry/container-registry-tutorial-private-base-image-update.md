@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 09b795981c1afe497e6adbb14f4f62d45293f0e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270962"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教學課程：在另一個私人容器登錄中更新基礎映像時自動執行容器映像建置 

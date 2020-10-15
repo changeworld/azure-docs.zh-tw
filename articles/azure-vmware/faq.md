@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bdfe3956d8c715e391270aab6b3c589430c91593
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058024"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078930"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -74,7 +74,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 否，請使用 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，並滿足這些指示中指定的 VM 必要條件。 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 支援 VMware HCX 嗎？
-否。
+否，因為頻寬和延遲需求。
 
 #### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>是否可以使用 Azure 防禦來連接到 AVS Vm？
 Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。

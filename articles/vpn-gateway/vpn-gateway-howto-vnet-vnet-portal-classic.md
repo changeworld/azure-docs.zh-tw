@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875532"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078284"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>設定 VNet 對 VNet 連線 (傳統)
 
@@ -32,8 +32,6 @@ ms.locfileid: "91875532"
 >
 
 ![VNet 對 VNet 連線能力圖表](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>關於 VNet 對 VNet 連線
 
@@ -61,7 +59,7 @@ ms.locfileid: "91875532"
 
 如需 VNet 對 VNet 連接的詳細資訊，請參閱本文結尾處的 [VNet 對 VNet 的考量](#faq)。
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>使用 Azure PowerShell
+## <a name="prerequisites"></a>必要條件
 
 我們使用入口網站來執行大部分的步驟，但是您必須使用 PowerShell 來建立 Vnet 之間的連線。 您無法使用 Azure 入口網站建立連線。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -87,7 +85,7 @@ ms.locfileid: "91875532"
 名稱︰TestVNet1<br>
 位址空間︰10.11.0.0/16、10.12.0.0/16 (選擇性)<br>
 子網路名稱：default<br>
-子網路位址範圍：10.11.0.1/24<br>
+子網路位址範圍：10.11.0.0/24<br>
 資源群組：ClassicRG<br>
 位置：美國東部<br>
 GatewaySubnet：10.11.1.0/27
@@ -155,7 +153,7 @@ Azure 會使用每個區域網路站台中指定的設定，來決定如何路�
 3. 閘道子網路名稱會自動填入必要名稱 'GatewaySubnet'。 [位址範圍]**** 包含配置給 VPN 閘道服務的 IP 位址。 某些組態允許閘道子網路 /29，但是最好是使用 /28 或 /27 以容納未來可能需要更多閘道服務 IP 位址的組態。 在我們的範例設定中，我們會使用 10.11.1.0/27。 調整位址空間，然後按一下 [確定]****。
 4. 設定**閘道大小**。 此設定表示[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 設定**路由類型**。 此組態的路由類型必須是**動態**。 除非您卸除閘道並且建立一個新閘道，否則您無法在稍後變更路由類型。
-6. 按一下 [確定]。
+6. 按一下 [確定]  。
 7. 在 [新增 VPN 連線]**** 頁面上，按一下 [確定]**** 以開始建立虛擬網路閘道。 建立閘道通常可能需要 45 分鐘或更久，視選取的閘道 SKU 而定。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>步驟 5 - 進行 TestVNet4 設定

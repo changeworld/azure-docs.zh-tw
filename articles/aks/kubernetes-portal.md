@@ -6,12 +6,12 @@ author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335597"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070634"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>從 Azure 入口網站 (Preview 存取 Kubernetes 資源) 
 
@@ -20,7 +20,7 @@ Azure 入口網站包含 Kubernetes 資源檢視器 (預覽) ，以便輕鬆存�
 Azure 入口網站中的 Kubernetes 資源檢視會取代 [AKS 儀表板附加][kubernetes-dashboard]元件，該附加元件已設定為取代。
 
 >[!NOTE]
->[私人 Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/private-clusters)叢集目前不支援 capabilty。
+>[私人 Azure Kubernetes Service](./private-clusters.md)叢集目前不支援 capabilty。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

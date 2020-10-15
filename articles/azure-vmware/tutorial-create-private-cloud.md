@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure 中部署 vSphere 叢集
 description: 了解如何使用 Azure VMWare 解決方案在 Azure 中部署 vSphere 叢集
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578306"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952279"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教學課程：在 Azure 中部署 Azure VMware 解決方案私人雲端
 
@@ -43,7 +43,7 @@ Azure VMware 解決方案讓您能夠在 Azure 中部署 vSphere 叢集。 初�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-您可以使用 Azure Cloud Shell 來使用 Azure CLI，而不是使用 Azure 入口網站來建立 Azure VMware 解決方案私人雲端。  如需可用於 Azure VMware 解決方案的命令清單，請參閱 [azure vmware 命令](https://docs.microsoft.com/cli/azure/ext/vmware/vmware)。
+您可以使用 Azure Cloud Shell 來使用 Azure CLI，而不是使用 Azure 入口網站來建立 Azure VMware 解決方案私人雲端。  如需可用於 Azure VMware 解決方案的命令清單，請參閱 [azure vmware 命令](/cli/azure/ext/vmware/vmware)。
 
 #### <a name="open-azure-cloud-shell"></a>開啟 Azure Cloud Shell
 
@@ -96,7 +96,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="azure-vmware-commands"></a>Azure VMware 命令
 
-如需可用於 Azure VMware 解決方案的命令清單，請參閱 [azure vmware 命令](https://docs.microsoft.com/cli/azure/ext/vmware/vmware)。
+如需可用於 Azure VMware 解決方案的命令清單，請參閱 [azure vmware 命令](/cli/azure/ext/vmware/vmware)。
 
 ## <a name="next-steps"></a>後續步驟
 

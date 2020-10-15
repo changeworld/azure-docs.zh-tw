@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281026"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 Android 應用程式

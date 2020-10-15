@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976002"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070906"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 將遠端監視資料視覺化
 
@@ -94,9 +94,9 @@ ms.locfileid: "90976002"
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>發行儀表板並重新整理資料
 
-成功建立儀表板之後，建議您[發行 Power BI 儀表板](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files)以與其他人共用。
+成功建立儀表板之後，建議您[發行 Power BI 儀表板](/power-bi/desktop-upload-desktop-files)以與其他人共用。
 
-您也會想要在發行的儀表板上[重新整理資料](https://docs.microsoft.com/power-bi/refresh-data)，以確定您具有最新的資料集。
+您也會想要在發行的儀表板上[重新整理資料](/power-bi/refresh-data)，以確定您具有最新的資料集。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -107,4 +107,3 @@ ms.locfileid: "90976002"
 * [自訂遠端監視解決方案 UI](iot-accelerators-remote-monitoring-customize.md)
 * [開發人員參考指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [開發人員疑難排解指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-
