@@ -4,10 +4,10 @@ description: 在本教學課程中，您會使用 Azure 入口網站在 Azure De
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324275"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教學課程：使用 Azure DevTest Labs 設定實驗室

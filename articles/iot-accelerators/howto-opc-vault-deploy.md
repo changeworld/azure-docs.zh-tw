@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282018"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071484"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>建立並部署 OPC 保存庫憑證管理服務
 
@@ -31,7 +31,7 @@ ms.locfileid: "91282018"
 
 目前的組建和部署作業僅限 Windows。
 這些範例全都是針對 c # .NET Standard 所撰寫，您必須建立服務和範例以進行部署。
-您 .NET Standard 所需的所有工具都隨附于 .NET Core 工具。 請參閱 [開始使用 .Net Core](https://docs.microsoft.com/dotnet/articles/core/getting-started)。
+您 .NET Standard 所需的所有工具都隨附于 .NET Core 工具。 請參閱 [開始使用 .Net Core](/dotnet/articles/core/getting-started)。
 
 1. [安裝 .Net Core 2.1 +][dotnet-install]。
 2. 只有在需要本機 Docker 組建) 時，才[安裝 Docker][docker-url] (選用。

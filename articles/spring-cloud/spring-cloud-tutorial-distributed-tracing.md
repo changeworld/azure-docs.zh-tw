@@ -8,16 +8,16 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908301"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088630"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>搭配使用分散式追蹤與 Azure Spring Cloud
 
-透過 Azure Spring Cloud 中的分散式追蹤工具，您可以輕鬆地針對複雜問題進行偵錯和監視。 Azure Spring Cloud 可整合 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 與 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 這項整合可讓您從 Azure 入口網站獲得強大的分散式追蹤功能。
+透過 Azure Spring Cloud 中的分散式追蹤工具，您可以輕鬆地針對複雜問題進行偵錯和監視。 Azure Spring Cloud 可整合 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 與 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md)。 這項整合可讓您從 Azure 入口網站獲得強大的分散式追蹤功能。
 
 ::: zone pivot="programming-language-csharp"
 在本文中，您將瞭解如何讓 .NET Core Steeltoe 應用程式使用分散式追蹤。
@@ -144,15 +144,15 @@ spring.sleuth.sampler.probability=0.5
 
 ## <a name="view-the-application-map"></a>檢視應用程式對應
 
-返回 [分散式追蹤] 頁面，並選取 [檢視應用程式對應]。 檢閱您應用程式及監視設定的視覺效果呈現。 若要了解如何使用應用程式對應，請參閱[應用程式對應：將分散式應用程式分級](https://docs.microsoft.com/azure/azure-monitor/app/app-map)。
+返回 [分散式追蹤] 頁面，並選取 [檢視應用程式對應]。 檢閱您應用程式及監視設定的視覺效果呈現。 若要了解如何使用應用程式對應，請參閱[應用程式對應：將分散式應用程式分級](../azure-monitor/app/app-map.md)。
 
 ## <a name="use-search"></a>使用搜尋
 
-使用搜尋功能來查詢其他特定的遙測項目。 在 [分散式追蹤] 頁面上，選取 [搜尋]。 如需如何使用搜尋功能的詳細資訊，請參閱 [在 Application Insights 中使用搜尋](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)。
+使用搜尋功能來查詢其他特定的遙測項目。 在 [分散式追蹤] 頁面上，選取 [搜尋]。 如需如何使用搜尋功能的詳細資訊，請參閱 [在 Application Insights 中使用搜尋](../azure-monitor/app/diagnostic-search.md)。
 
 ## <a name="use-application-insights"></a>使用 Application Insights
 
-除了應用程式對應和搜尋功能之外，Application Insights 也提供監視功能。 在 Azure 入口網站中搜尋您應用程式的名稱，然後開啟 Application Insights 頁面以尋找監視資訊。 如需如何使用這些工具的詳細指引，請參閱 [Azure 監視器記錄查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)。
+除了應用程式對應和搜尋功能之外，Application Insights 也提供監視功能。 在 Azure 入口網站中搜尋您應用程式的名稱，然後開啟 Application Insights 頁面以尋找監視資訊。 如需如何使用這些工具的詳細指引，請參閱 [Azure 監視器記錄查詢](/azure/data-explorer/kusto/query/)。
 
 ## <a name="disable-application-insights"></a>停用 Application Insights
 

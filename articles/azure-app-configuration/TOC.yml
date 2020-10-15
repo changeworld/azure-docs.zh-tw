@@ -125,9 +125,9 @@
     - name: 組態
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
+          href: /cli/azure/appconfig?view=azure-cli-latest
         - name: .NET Core 提供者
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+          href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework 建立器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
         - name: 適用於 .NET 的 Azure SDK
@@ -145,15 +145,15 @@
     - name: 功能管理
       items:
         - name: .NET Core 程式庫
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+          href: /dotnet/api/microsoft.featuremanagement
         - name: .NET Core 篩選程式庫
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+          href: /dotnet/api/microsoft.featuremanagement.featurefilters
     - name: 設定存放區管理
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+          href: /rest/api/appconfiguration/
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.appconfiguration/'
+          href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
     - name: Azure 原則內建

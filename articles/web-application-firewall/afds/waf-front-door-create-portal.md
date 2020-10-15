@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: victorh
 ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602212"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在 Azure Front Door 上建立 Web 應用程式防火牆原則

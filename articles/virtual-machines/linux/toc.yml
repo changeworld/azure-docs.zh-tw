@@ -212,7 +212,7 @@
               href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 計算最佳化
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Fsv2 系列
               href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -247,7 +247,7 @@
               href: storage-performance.md
         - name: GPU - 加速計算
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -493,6 +493,8 @@
                   items:
                     - name: 一般化
                       href: ../vm-generalized-image-version-cli.md
+                    - name: 特製化
+                      href: ../vm-specialized-image-version-cli.md
                 - name: 更新影像資源
                   href: ../update-image-resources-cli.md
                 - name: 註冊應用程式以共用
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: 下載現有磁碟
           href: download-vhd.md
+        - name: 來自映像版本的受控磁碟
+          href: ../managed-disk-from-image-version.md
     - name: 保護 VM
       items:
         - name: 建議
@@ -724,7 +728,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -1180,7 +1184,7 @@
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'

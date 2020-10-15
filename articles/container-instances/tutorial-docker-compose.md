@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708253"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>教學課程：使用 Docker Compose 部署多容器群組 
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 若要查看雲端中正在執行的應用程式，請在本機網頁瀏覽器中輸入顯示的 IP 位址。 在此範例中，請輸入 `52.179.23.131`。 系統會載入範例應用程式，如下列範例所示：
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="ACI 中的投票應用程式影像":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="投票應用程式的影像":::
 
 若要查看前端容器的記錄，請執行 [docker logs](https://docs.docker.com/engine/reference/commandline/logs) 命令。 例如：
 

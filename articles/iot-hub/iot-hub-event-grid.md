@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056161"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072300"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>使用事件方格來觸發動作以回應 IoT 中樞事件
 
@@ -73,6 +73,8 @@ Azure IoT 中樞與 Azure 事件格線整合，讓您可以將事件通知傳送
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>裝置遙測架構
 
@@ -163,6 +165,10 @@ Azure IoT 中樞與 Azure 事件格線整合，讓您可以將事件通知傳送
   "metadataVersion": "1"
 }]
 ```
+
+
+> [!WARNING]
+> 與裝置建立事件相關聯的對應項*資料*是預設設定，不*應該*依賴 `authenticationType` 新建立裝置中的實際和其他裝置屬性。 針對 `authenticationType` 與新建立裝置中的其他裝置屬性，請使用 Azure IoT sdk 中提供的註冊管理員 API。
 
 如需每個屬性的詳細說明，請參閱 [適用于 IoT 中樞的 Azure 事件方格事件架構](../event-grid/event-schema-iot-hub.md)。
 
