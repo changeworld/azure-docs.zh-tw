@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777253"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教學課程：將個人化工具新增至 .NET Web 應用程式

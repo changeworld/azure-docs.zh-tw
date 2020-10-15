@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186651"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071756"
 ---
 # <a name="manage-connections-in-azure-automation"></a>管理 Azure 自動化中的連線
 
@@ -54,7 +54,7 @@ Azure 自動化可提供下列內建連線類型：
 
 |內部 Cmdlet|描述|
 |---|---|
-|`Get-AutomationConnection` | 擷取連線中不同欄位的值，並將其當做[雜湊表](https://go.microsoft.com/fwlink/?LinkID=324844)傳回。 然後，您可以在 Runbook 或 DSC 組態中使用此雜湊表搭配適當的命令。|
+|`Get-AutomationConnection` | 擷取連線中不同欄位的值，並將其當做[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)傳回。 然後，您可以在 Runbook 或 DSC 組態中使用此雜湊表搭配適當的命令。|
 
 >[!NOTE]
 >您應該避免搭配 `Get-AutomationConnection` 的 `Name` 參數使用變數。 在此情況下使用變數，可能會在設計階段將 Runbook 或 DSC 組態與連線資產之間的相依性探索變得複雜。

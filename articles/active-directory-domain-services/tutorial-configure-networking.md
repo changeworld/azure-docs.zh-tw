@@ -1,20 +1,20 @@
 ---
 title: 教學課程 - 為 Azure AD Domain Services 設定虛擬網路 | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 入口網站為 Azure Active Directory Domain Services 受控網域建立和設定 Azure 虛擬網路子網路或網路對等互連。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: joflore
+ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024769"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967404"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定虛擬網路
 

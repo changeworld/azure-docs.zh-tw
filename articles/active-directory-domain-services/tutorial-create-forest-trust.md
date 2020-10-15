@@ -2,20 +2,20 @@
 title: 教學課程 - 在 Azure AD Domain Services 中建立樹系信任 | Microsoft Docs
 description: 了解如何在適用於 Azure AD Domain Services 的 Azure 入口網站中的內部部署 AD DS 網域建立單向輸出樹系
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: cbdcd170e6c6fb768172acfe3eb3c907714cd560
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722716"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967251"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教學課程：在 Azure Active Directory Domain Services 中建立內部部署網域的輸出樹系信任
 

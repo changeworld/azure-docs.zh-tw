@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447679"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952109"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure 資訊安全中心的概觀頁面
 
@@ -38,9 +38,9 @@ ms.locfileid: "91447679"
 
 頁面中央有**四個中央圖格**，分別連結到專用儀表板中的詳細資料：
 - **安全分數** - 資訊安全中心會持續評估資源、訂用帳戶、組織的安全性問題。 然後將所有的發現彙總成一個分數，讓您可以立即得知目前的安全性情況：分數越高，風險層級越低。 [深入了解](secure-score-security-controls.md)。
-- **合規性** - 資訊安全中心會根據 Azure 環境的持續性評估，提供合規性狀況的深入解析。 資訊安全中心會根據安全性最佳做法，來分析混合式雲端環境中的風險因素。 這些評量會對應到一組所支援標準中的合規性控制項。[深入了解](security-center-compliance-dashboard.md)。
+- **合規性** - 資訊安全中心會根據 Azure 環境的持續性評估，提供合規性狀況的深入解析。 資訊安全中心會根據安全性最佳做法，來分析混合式雲端環境中的風險因素。 這些評量會對應到一組所支援標準中的合規性控制項。 [深入了解](security-center-compliance-dashboard.md)。
 - **Azure Defender** - 這是整合於資訊安全中心的雲端工作負載保護平台 (CWPP)，可為您的 Azure 和混合式工作負載提供進階的智慧型保護功能。 此圖格會顯示連線資源的涵蓋範圍 (針對目前選取的訂用帳戶)，以及最近的警示 (依嚴重性以不同色彩標示)。 [深入了解](azure-defender.md)。
-- **清查** - 此圖格會顯示未受監視的 VM 數目，以及由 Security CenterBen 監視之資源的簡單指標。 [深入了解](asset-inventory.md)。
+- **清查** - 此圖格會顯示未受監視的 VM 數目，以及由 Security Center 監視之資源的簡單指標。 [深入了解](asset-inventory.md)。
 
 
 [深入解析] 窗格會為您的環境提供自訂項目，包括：
