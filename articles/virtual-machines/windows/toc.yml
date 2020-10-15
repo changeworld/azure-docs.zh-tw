@@ -555,6 +555,8 @@
           href: client-images.md
         - name: 下載現有磁碟
           href: download-vhd.md
+        - name: 來自映像版本的受控磁片
+          href: ../managed-disk-from-image-version.md
     - name: 保護 VM
       items:
         - name: 建議

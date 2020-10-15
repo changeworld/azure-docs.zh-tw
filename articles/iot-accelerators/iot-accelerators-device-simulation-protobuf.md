@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012325"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075955"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用 Protocol Buffers 將遙測資料序列化
 
@@ -40,7 +40,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 * .NET Core。 您可以下載[適用於 Mac、Linux 和 Windows 的 .NET Code](https://www.microsoft.com/net/download)。
 * Postman。 您可以下載[適用於 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署至 Azure 訂用帳戶的 IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。 您需要 IoT 中樞的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
-* [部署到 Azure 訂用帳戶的 Cosmos DB 資料庫](../cosmos-db/create-sql-api-dotnet.md#create-account)，其必須使用 SQL API，並已針對[強式一致性](../cosmos-db/manage-account.md)進行設定。 您需要 Cosmos DB 資料庫的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
+* [部署到 Azure 訂用帳戶的 Cosmos DB 資料庫](../cosmos-db/create-sql-api-dotnet.md#create-account)，其必須使用 SQL API，並已針對[強式一致性](../cosmos-db/how-to-manage-database-account.md)進行設定。 您需要 Cosmos DB 資料庫的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
 * [部署到 Azure 訂用帳戶的 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。 您需要儲存體帳戶的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
 
 ## <a name="prepare-your-development-environment"></a>準備您的開發環境
@@ -174,7 +174,7 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 
 1. [從 GitHub 下載 Protobuf 編譯器](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. 執行編譯器，指定來源目錄、目的地目錄，以及 **proto** 檔案的名稱。 例如：
+1. 執行編譯器，指定來源目錄、目的地目錄，以及 **proto** 檔案的名稱。 例如︰
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 
 根據預設，您的新裝置模型 JSON 和 JS 檔案不會複製到建立的方案中。 您需要明確地包含在內。
 
-針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如：
+針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如︰
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">

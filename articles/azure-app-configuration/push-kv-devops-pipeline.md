@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719650"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075870"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 將設定推送到應用程式設定
 
 [Azure 應用程式組態 Push](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push)工作會將設定檔中的索引鍵/值推送到您的應用程式設定存放區。 這項工作會啟用管線內的完整圓形功能，因為您現在可以從應用程式設定存放區提取設定，以及將設定推送到應用程式設定存放區。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - 應用程式設定資源-在 [Azure 入口網站](https://portal.azure.com)中免費建立一個。
@@ -56,7 +56,7 @@ ms.locfileid: "88719650"
 
 本節將說明如何在 Azure DevOps 組建管線中使用 Azure 應用程式組態 Push 工作。
 
-1. 按一下 [**管線**管線]，流覽至組建管線頁面  >  ** **。 您可以在 [這裡](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)找到組建管線的檔。
+1. 按一下 [**管線**管線]，流覽至組建管線頁面  >  ** **。 您可以在 [這裡](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)找到組建管線的檔。
       - 如果您要建立新的組建管線，請選取管線右側的 [ **顯示** 小幫手]，然後搜尋 **Azure 應用程式組態推送** 工作。
       - 如果您要使用現有的組建管線， **請在編輯** 管線時流覽至 [工作] 索引標籤，然後搜尋 Azure 應用程式組態的 **推送** 工作。
 2. 設定工作的必要參數，以將索引鍵/值從設定檔推送到應用程式設定存放區。 **設定檔路徑**參數是從檔案存放庫的根目錄開始。
@@ -66,10 +66,10 @@ ms.locfileid: "88719650"
 
 本節將說明如何在 Azure DevOps 發行管線中使用 Azure 應用程式組態 Push 工作。
 
-1. 選取**管線**版本，以流覽至發行管線頁面  >  ** **。 您可以在 [這裡](https://docs.microsoft.com/azure/devops/pipelines/release?view=azure-devops)找到發行管線的檔。
+1. 選取**管線**版本，以流覽至發行管線頁面  >  ** **。 您可以在 [這裡](/azure/devops/pipelines/release?view=azure-devops)找到發行管線的檔。
 1. 選擇現有的發行管線。 如果您沒有帳戶，請選取 [ **+ 新增** ] 來建立一個新的。
 1. 選取右上角的 [ **編輯** ] 按鈕，以編輯發行管線。
-1. 選擇要加入工作的 **階段** 。 您可以在 [這裡](https://docs.microsoft.com/azure/devops/pipelines/release/environments?view=azure-devops)找到更多有關階段的資訊。
+1. 選擇要加入工作的 **階段** 。 您可以在 [這裡](/azure/devops/pipelines/release/environments?view=azure-devops)找到更多有關階段的資訊。
 1. **+** 針對該工作選取，然後在 [**部署**] 索引標籤下新增**Azure 應用程式組態推送**工作。
 1. 在工作中設定必要的參數，以將您的金鑰值從設定檔推送到您的應用程式設定存放區。 參數的說明可在下方的 [ **參數** ] 區段中取得，並在每個參數旁的工具提示中取得。
 1. 儲存並將發行排在佇列中。 發行記錄檔將會顯示工作執行期間發生的任何失敗。

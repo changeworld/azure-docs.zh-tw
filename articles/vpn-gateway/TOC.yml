@@ -5,6 +5,7 @@
     - name: 什麼是 VPN 閘道？
       href: vpn-gateway-about-vpngateways.md
 - name: 教學課程
+  expanded: true
   items:
     - name: 建立和管理 VPN 閘道
       href: vpn-gateway-tutorial-create-gateway-powershell.md
