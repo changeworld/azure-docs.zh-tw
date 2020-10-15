@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000102"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093390"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 偵錯 Service Fabric 應用程式
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "89000102"
 1. 遵循 [設定 Service Fabric 開發環境](service-fabric-get-started.md)中的步驟來啟動本機開發叢集。
 2. 按 **F5** 或按一下 [偵錯]**** >  [開始偵錯]****。
    
-    ![開始偵錯應用程式][startdebugging]
+    ![顯示 [偵錯工具] 功能表的螢幕擷取畫面。][startdebugging]
 3. 透過按一下 [偵錯] **** 功能表中的命令，在您的程式碼中設定中斷點並逐步執行應用程式。
    
    > [!NOTE]

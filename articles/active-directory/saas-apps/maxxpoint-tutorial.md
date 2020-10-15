@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 50cc53e7e8a5f39b53d6dcd39de61894cbbb3842
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d325eb0dbd5d30e94df07ebad21ff30316bcbb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518878"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>教學課程：Azure Active Directory 與 MaxxPoint 整合
 
@@ -99,11 +99,11 @@ ms.locfileid: "88518878"
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，則不需要執行任何步驟，因為應用程式已預先整合到 Azure。
 
-    ![MaxxPoint 網域與 URL 單一登入資訊](common/preintegrated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面。](common/preintegrated.png)
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![MaxxPoint 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 

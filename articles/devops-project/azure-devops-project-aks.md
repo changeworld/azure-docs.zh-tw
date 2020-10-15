@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233324"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855447"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>使用 Azure DevOps 入門版將 ASP.NET Core 應用程式部署至 Azure Kubernetes Service
 
@@ -24,7 +24,7 @@ DevOps 入門版也能夠：
 * 自動建立 Azure 資源，例如 Azure Kubernetes Service (AKS)。
 * 在設定 CI/CD 組建和發行管線的 Azure DevOps 中建立並設定發行管線。
 * 建立用於監視的 Azure Application Insights 資源。
-* 啟用[適用於容器的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)，以監視 AKS 叢集上容器工作負載的效能
+* 啟用[適用於容器的 Azure 監視器](../azure-monitor/insights/container-insights-overview.md)，以監視 AKS 叢集上容器工作負載的效能
 
 在本教學課程中，您將：
 
@@ -171,4 +171,4 @@ DevOps 入門版會自動建立並設定必要的步驟，以從 Azure DevOps �
 若要深入了解如何使用 Kubernetes 儀表板，請參閱：
 
 > [!div class="nextstepaction"]
-> [使用 Kubernetes 儀表板](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [使用 Kubernetes 儀表板](../aks/kubernetes-dashboard.md)

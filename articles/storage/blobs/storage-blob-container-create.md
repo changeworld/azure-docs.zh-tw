@@ -9,16 +9,16 @@ ms.date: 07/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a17ab97dbfa1819154695f4c287b59db90f34334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3035e0036e5d35729637e35ad8cb1412a0da959f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018989"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091027"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 儲存體中建立或刪除容器
 
-Azure 儲存體中的 blob 會組織成容器。 在您可以上傳 blob 之前，您必須先建立一個容器。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和刪除容器。
+Azure 儲存體中的 blob 會組織成容器。 在您可以上傳 blob 之前，您必須先建立一個容器。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)來建立和刪除容器。
 
 ## <a name="name-a-container"></a>命名容器
 

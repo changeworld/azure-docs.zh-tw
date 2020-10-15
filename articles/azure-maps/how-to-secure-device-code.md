@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319753"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090432"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>使用 Azure AD 和 Azure 地圖服務 REST Api 來保護輸入限制裝置
 
@@ -55,7 +55,7 @@ ms.locfileid: "91319753"
     > [!div class="mx-imgBorder"]
     > ![選取應用程式 API 許可權](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. 為使用者或群組設定 Azure 角色型存取控制。 請參閱 [將使用者的角色型存取權授與 Azure 地圖服務](#grant-role-based-access-for-users-to-azure-maps)。
+6. 為使用者或群組 (Azure RBAC) 設定 Azure 角色型存取控制。 請參閱 [將角色型存取權授與使用者，以 Azure 地圖服務](#grant-role-based-access-for-users-to-azure-maps)。
 
 7. 新增在應用程式中取得權杖流程的程式碼，如需執行詳細資料，請參閱 [裝置程式碼流程](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow)。 取得權杖時，請參考範圍： `user_impersonation` 在先前的步驟中選取的範圍。
 
@@ -110,7 +110,7 @@ Access-Control-Expose-Headers: Location
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

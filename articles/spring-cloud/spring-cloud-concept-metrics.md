@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892649"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094053"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>瞭解 Azure 春季雲端的計量
 
@@ -92,7 +92,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >[!div class="mx-tdCol2BreakAll"]
 >| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|----|----|----|------------|
->| tomcat。錯誤 | tomcat。錯誤 | Count | 已處理的要求中發生的錯誤數目 |
+>| tomcat。錯誤 | tomcat。錯誤 | 計數 | 已處理的要求中發生的錯誤數目 |
 
 ### <a name="performance"></a>效能
 >[!div class="mx-tdCol2BreakAll"]
@@ -107,7 +107,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| jvm. 資料大小 | jvm. 資料大小 | 位元組 | 完整 GC 之後的舊世代記憶體集區大小。 |
 >| jvm. gc。已升級 | jvm. gc。已升級 | 位元組 | 在 GC 到 gc 之後，舊世代記憶體集區大小的正增加計數。 |
 >| jvm. 已配置的記憶體 | jvm. 已配置的記憶體 | 位元組 | 在一個 GC 到下一個 GC 之後，將年輕世代記憶體集區的大小增加增加。 |
->| jvm. pause. total. count | jvm. gc. pause (total-count)  | Count | 此 JMV 開始之後的 GC 總數總計，包括年輕和舊 GC。 |
+>| jvm. pause. total. count | jvm. gc. pause (total-count)  | 計數 | 此 JMV 開始之後的 GC 總數總計，包括年輕和舊 GC。 |
 >| jvm. gc. pause. total. time | jvm. gc. pause (total time)  | 毫秒 | 此 JMV 開始後所耗用的 GC 時間總計，包括年輕和舊的 GC。 |
 
 ::: zone pivot="programming-language-csharp"
@@ -119,21 +119,21 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >| CPU 使用量       | cpu-使用量      | 毫秒 | 進程使用 CPU 的時間量。 |
 >| 工作集     | 工作集    | MB    | 進程使用的工作集量。 |
 >| GC 堆積大小    | gc-堆積-大小   | MB    | 垃圾收集行程所報告的總堆積大小。 |
->| Gen 0 GC 計數  | gen-0-gc-計數 | Count        | 每秒層代0垃圾收集數目。 |
->| Gen 1 GC 計數  | gen-1-gc-計數 | Count        | 每秒層代1垃圾收集數目。 |
->| Gen 2 GC 計數  | gen-2-gc-計數 | Count        | 每秒層代2垃圾收集數目。 |
+>| Gen 0 GC 計數  | gen-0-gc-計數 | 計數        | 每秒層代0垃圾收集數目。 |
+>| Gen 1 GC 計數  | gen-1-gc-計數 | 計數        | 每秒層代1垃圾收集數目。 |
+>| Gen 2 GC 計數  | gen-2-gc-計數 | 計數        | 每秒層代2垃圾收集數目。 |
 >| Gen 0 堆積大小 | gen-0-大小     | 位元組        | 層代0堆積大小。 |
 >| 層代 1 堆積大小 | gen-1-大小     | 位元組        | 第1代堆積大小。 |
 >| 層代 2 堆積大小 | gen-2-大小     | 位元組        | 層代2堆積大小。 |
 >| LOH 堆積大小   | loh-大小       | 位元組        | 大型物件堆積堆積大小。 |
 >| 配置速率 | 分配速率     | 位元組        | 每秒配置的位元組數目。 |
->| 元件計數  | 元件計數 | Count        | 載入的元件數目。 |
->| 例外狀況計數 | 例外狀況-計數 | Count       | 每秒的例外狀況數目。 |
->| 執行緒集區執行緒計數      | threadpool-執行緒計數              | Count | 執行緒集區執行緒的數目。 |
->| 監視鎖定爭用計數 | 監視-鎖定-爭用計數        | Count | 嘗試取得監視器鎖定時，每秒發生爭用的次數。 |
->| 執行緒集區佇列長度      | threadpool-佇列-長度              | Count | 執行緒集區工作專案佇列長度。 |
->| 執行緒集區已完成的專案計數 | threadpool-已完成-專案-計數 | Count | 執行緒集區已完成工作專案計數。 |
->| 作用中計時器計數               | 主動-計時器-計數               | Count | 目前作用中的計時器數目。 作用中的計時器是在未來某個時間點已註冊要進行滴答的活動計時器，但尚未取消。 |
+>| 元件計數  | 元件計數 | 計數        | 載入的元件數目。 |
+>| 例外狀況計數 | 例外狀況-計數 | 計數       | 每秒的例外狀況數目。 |
+>| 執行緒集區執行緒計數      | threadpool-執行緒計數              | 計數 | 執行緒集區執行緒的數目。 |
+>| 監視鎖定爭用計數 | 監視-鎖定-爭用計數        | 計數 | 嘗試取得監視器鎖定時，每秒發生爭用的次數。 |
+>| 執行緒集區佇列長度      | threadpool-佇列-長度              | 計數 | 執行緒集區工作專案佇列長度。 |
+>| 執行緒集區已完成的專案計數 | threadpool-已完成-專案-計數 | 計數 | 執行緒集區已完成工作專案計數。 |
+>| 作用中計時器計數               | 主動-計時器-計數               | 計數 | 目前作用中的計時器數目。 作用中的計時器是在未來某個時間點已註冊要進行滴答的活動計時器，但尚未取消。 |
 
 如需詳細資訊，請參閱 [dotnet 計數器](/dotnet/core/diagnostics/dotnet-counters)。
 ::: zone-end
@@ -144,7 +144,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >|----|----|----|------------|
 >| tomcat. global. 已傳送 | tomcat. global. 已傳送 | 位元組 | 已傳送的資料 Tomcat web 伺服器數量 |
 >| tomcat. global. received | tomcat. global. received | 位元組 | 已接收的資料 Tomcat web 伺服器數量 |
->| tomcat. total. count | tomcat. 要求 (總數)  | Count | Tomcat web 伺服器處理的要求總數 |
+>| tomcat. total. count | tomcat. 要求 (總數)  | 計數 | Tomcat web 伺服器處理的要求總數 |
 >| tomcat. 要求數上限 | tomcat. 要求數上限 | 毫秒 | Tomcat web 伺服器處理要求的最長時間 |
 
 ::: zone pivot="programming-language-csharp"
@@ -153,10 +153,10 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >[!div class="mx-tdCol2BreakAll"]
 >| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|------|-----------------------------|------|---------|
->| 每秒要求 | 每秒要求數 | Count | 要求速率。 |
->| 要求總數 | 要求總數 | Count | 要求數總計。 |
->| 目前的要求 | 目前要求 | Count | 目前要求的數目。 |
->| 失敗的要求 | 失敗-要求 | Count | 失敗的要求數目。 |
+>| 每秒要求 | 每秒要求數 | 計數 | 要求速率。 |
+>| 要求總數 | 要求總數 | 計數 | 要求數總計。 |
+>| 目前的要求 | 目前要求 | 計數 | 目前要求的數目。 |
+>| 失敗的要求 | 失敗-要求 | 計數 | 失敗的要求數目。 |
 
 如需詳細資訊，請參閱 [dotnet 計數器](/dotnet/core/diagnostics/dotnet-counters)。
 ::: zone-end
@@ -165,23 +165,23 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >[!div class="mx-tdCol2BreakAll"]
 >| 名稱 | 彈簧傳動標準名稱 | Unit | 詳細資料 |
 >|----|----|----|------------|
->| tomcat。作用中。最大值 | tomcat。作用中。最大值 | Count | 同時處於作用中狀態的會話數上限 |
+>| tomcat。作用中。最大值 | tomcat。作用中。最大值 | 計數 | 同時處於作用中狀態的會話數上限 |
 >| tomcat。最大值 | tomcat。最大值 | 毫秒 | 過期的會話處於作用中的最長時間 (秒)  |
->| tomcat. 會話。已建立 | tomcat. 會話。已建立 | Count | 已建立的會話數目 |
->| tomcat. 會話已過期 | tomcat. 會話已過期 | Count | 已過期的會話數目 |
->| tomcat. 會話。已拒絕 | tomcat. 會話。已拒絕 | Count | 因為已達到作用中會話的最大數目，而未建立的會話數目。 |
->| tomcat。現行 | tomcat。現行 | Count | Tomcat 會話使用中計數 |
+>| tomcat. 會話。已建立 | tomcat. 會話。已建立 | 計數 | 已建立的會話數目 |
+>| tomcat. 會話已過期 | tomcat. 會話已過期 | 計數 | 已過期的會話數目 |
+>| tomcat. 會話。已拒絕 | tomcat. 會話。已拒絕 | 計數 | 因為已達到作用中會話的最大數目，而未建立的會話數目。 |
+>| tomcat。現行 | tomcat。現行 | 計數 | Tomcat 會話使用中計數 |
 
 ## <a name="see-also"></a>另請參閱
 
 * [快速入門：使用記錄、計量和追蹤來監視 Azure Spring Cloud 應用程式](spring-cloud-quickstart-logs-metrics-tracing.md)
 
-* [開始使用 Azure 計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)
 
-* [使用診斷設定來分析記錄和計量](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [使用診斷設定來分析記錄和計量](./diagnostic-services.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：使用警示和動作群組監視春季雲端資源](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
+* [教學課程：使用警示和動作群組監視春季雲端資源](./spring-cloud-tutorial-alerts-action-groups.md)
 
-* [Azure 春季雲端的配額和服務方案](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
+* [Azure 春季雲端的配額和服務方案](./spring-cloud-quotas.md)

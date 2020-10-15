@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892565"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093033"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用診斷設定來分析記錄和計量
 
@@ -27,7 +27,7 @@ ms.locfileid: "90892565"
 選擇您想要監視的記錄類別和度量類別。
 
 > [!TIP]
-> 只想要串流您的記錄嗎？ 請查看此 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)！
+> 只想要串流您的記錄嗎？ 請查看此 [Azure CLI 命令](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)！
 
 ## <a name="logs"></a>記錄
 
@@ -38,7 +38,7 @@ ms.locfileid: "90892565"
 
 ## <a name="metrics"></a>計量
 
-如需計量的完整清單，請參閱 [春季雲端計量](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)。
+如需計量的完整清單，請參閱 [春季雲端計量](./spring-cloud-concept-metrics.md#user-metrics-options)。
 
 若要開始使用，請啟用其中一項服務以接收資料。 若要瞭解如何設定 Log Analytics，請參閱 [Azure 監視器中的開始使用 Log analytics](../azure-monitor/log-query/get-started-portal.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "90892565"
     * **傳送至 Log Analytics**
 
 1. 選擇您想要監視的記錄類別和計量類別，然後將保留時間指定 (天數) 。 保留時間僅適用于儲存體帳戶。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 > [!NOTE]
 > 1. 當記錄或計量發出時，以及它們出現在您的儲存體帳戶、事件中樞或 Log Analytics 時，可能會有最多15分鐘的間隔時間。
@@ -110,7 +110,7 @@ ms.locfileid: "90892565"
 > [!NOTE]
 > `==` 區分大小寫，但不區分大小寫 `=~` 。
 
-若要深入瞭解 Log Analytics 中使用的查詢語言，請參閱 [Azure 監視器記錄查詢](../azure-monitor/log-query/query-language.md)。
+若要深入瞭解 Log Analytics 中使用的查詢語言，請參閱 [Azure 監視器記錄查詢](/azure/data-explorer/kusto/query/)。
 
 ### <a name="use-your-storage-account"></a>使用您的儲存體帳戶
 
@@ -131,7 +131,7 @@ ms.locfileid: "90892565"
 1. 若要檢查應用程式記錄，請搜尋名為 **insights-logs-applicationconsole**的事件中樞。
 1. 若要檢查應用程式計量，請搜尋名為 insights 的事件中樞- **計量-pt1m**。
 
-若要深入瞭解如何將診斷資訊傳送至事件中樞，請參閱 [使用事件中樞在最忙碌路徑中串流 Azure 診斷資料](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs)。
+若要深入瞭解如何將診斷資訊傳送至事件中樞，請參閱 [使用事件中樞在最忙碌路徑中串流 Azure 診斷資料](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
 
 ## <a name="analyze-the-logs"></a>分析記錄
 
