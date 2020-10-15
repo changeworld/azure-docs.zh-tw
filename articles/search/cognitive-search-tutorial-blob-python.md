@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530998"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 Python 和 AI 從 Azure Blob 產生可搜尋的內容
@@ -315,7 +315,7 @@ print(r.status_code)
 
 此練習會使用下列欄位和欄位類型：
 
-| 欄位名稱： | ID         | content   | languageCode | keyPhrases         | 組織     |
+| 欄位名稱： | 識別碼         | content   | languageCode | keyPhrases         | 組織     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | 欄位類型： | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

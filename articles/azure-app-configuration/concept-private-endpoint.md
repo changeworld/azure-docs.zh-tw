@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a29c8c02093f47807ec71ffcc01e26514976ce79
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042123"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071705"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>使用私人端點進行 Azure 應用程式組態
 
@@ -61,7 +61,7 @@ Azure 依賴 DNS 解析，透過私人連結將 VNet 的連線路由至設定存
 
 啟用私人端點需要 [標準層](https://azure.microsoft.com/pricing/details/app-configuration/) 應用程式設定存放區。  若要深入瞭解 private link 定價詳細資料，請參閱 [Azure Private Link 定價](https://azure.microsoft.com/pricing/details/private-link)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何為您的應用程式設定存放區建立私人端點，請參閱下列文章：
 
@@ -71,5 +71,5 @@ Azure 依賴 DNS 解析，透過私人連結將 VNet 的連線路由至設定存
 
 瞭解如何使用私人端點設定您的 DNS 伺服器：
 
-- [Azure 虛擬網路中的資源名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [私人端點的 DNS 設定](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 虛擬網路中的資源名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [私人端點的 DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration)

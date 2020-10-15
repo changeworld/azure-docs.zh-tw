@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363149"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071025"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教學課程：管理已連線的大量裝置
 
@@ -59,7 +59,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 * 請確定 [IoT DevKit 裝置上的開機載入器為 1.4.0 版或更高版本](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)。
 * 請確定 IoT DevKit SDK 與開機載入器的版本相同。 您可以在 VS Code 中使用 Azure IoT Workbench 來更新 IoT DevKit SDK。 開啟命令選擇區，並輸入 **[Arduino:** Board Manager]。 如需詳細資訊，請參閱[準備開發環境](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment)。
 
-您也需要將至少一個 IoT DevKit 裝置連線到遠端監視解決方案加速器。 如果您尚未連線到 IoT DevKit 裝置，請參閱[將 MXChip IoT DevKit AZ3166 連線到 IoT 遠端監視解決方案加速器](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)。
+您也需要將至少一個 IoT DevKit 裝置連線到遠端監視解決方案加速器。 如果您尚未連線到 IoT DevKit 裝置，請參閱[將 MXChip IoT DevKit AZ3166 連線到 IoT 遠端監視解決方案加速器](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)。
 
 ## <a name="navigate-to-the-dashboard"></a>瀏覽至儀表板
 
@@ -274,4 +274,4 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ## <a name="next-steps"></a>後續步驟
 
-本教學課程示範了如何為已連線到您解決方案的裝置群組更新韌體。 為了更新裝置，您的解決方案會使用自動裝置管理。 若要深入了解您解決方案的基礎 IoT 中樞內的自動裝置管理功能，請參閱[使用 Azure 入口網站大規模設定及監視 IoT 裝置](../iot-hub/iot-hub-auto-device-config.md)。
+本教學課程示範了如何為已連線到您解決方案的裝置群組更新韌體。 為了更新裝置，您的解決方案會使用自動裝置管理。 若要深入了解您解決方案的基礎 IoT 中樞內的自動裝置管理功能，請參閱[使用 Azure 入口網站大規模設定及監視 IoT 裝置](../iot-hub/iot-hub-automatic-device-management.md)。

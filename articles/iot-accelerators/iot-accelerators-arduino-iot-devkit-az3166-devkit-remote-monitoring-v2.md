@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337665"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071671"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>將 IoT DevKit 裝置連線到遠端監視解決方案加速器
 
@@ -28,7 +28,7 @@ ms.locfileid: "87337665"
 
 若要完成本教學課程中的步驟，請先執行下列工作：
 
-* 遵循[將 IoT DevKit AZ3166 連線到雲端中的 Azure IoT 中樞](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)中的步驟來準備您的 DevKit。
+* 遵循[將 IoT DevKit AZ3166 連線到雲端中的 Azure IoT 中樞](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)中的步驟來準備您的 DevKit。
 
 ## <a name="open-sample-project"></a>開啟範例專案
 
@@ -128,5 +128,5 @@ ms.locfileid: "87337665"
 
 現在您已了解如何將 DevKit 裝置連線到遠端監視解決方案加速器，以下是一些建議的後續步驟：
 
-* [Azure IoT 解決方案加速器概觀](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Azure IoT 解決方案加速器概觀](./index.yml)
 * [自訂 UI](iot-accelerators-remote-monitoring-customize.md)

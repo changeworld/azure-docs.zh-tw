@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 13d5be5b1e0bcdf84001f21a45364296d67a5da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7742267f5ce199f3a5bffc52200374d2323f0622
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87013892"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072453"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 啟用 Azure 雲端服務中角色的遠端桌面連線
 
@@ -30,7 +30,7 @@ ms.locfileid: "87013892"
 ## <a name="configure-remote-desktop-from-powershell"></a>從 PowerShell 設定遠端桌面
 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet 可讓您在雲端服務部署的指定角色或所有角色上啟用遠端桌面。 此 Cmdlet 可讓您透過可接受 PSCredential 物件的 *Credential* 參數，指定遠端桌面使用者的使用者名稱和密碼。
 
-如果您以互動方式使用 PowerShell，您可以呼叫 [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet，輕鬆地設定 PSCredential 物件。
+如果您以互動方式使用 PowerShell，您可以呼叫 [Get-Credentials](/powershell/module/microsoft.powershell.security/get-credential) Cmdlet，輕鬆地設定 PSCredential 物件。
 
 ```powershell
 $remoteusercredentials = Get-Credential
@@ -38,7 +38,7 @@ $remoteusercredentials = Get-Credential
 
 此命令會顯示對話方塊，可讓您以安全的方式輸入遠端使用者的使用者名稱和密碼。
 
-由於 PowerShell 在自動化案例中非常實用，您也可以透過不需要使用者互動的方式設定 **PSCredential** 物件。 您必須先設定安全的密碼。 首先，指定純文字密碼，然後使用 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)轉換成安全字串。 接下來，您需要使用 [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx)，將這個安全字串轉換成加密的標準字串。 現在，您可以使用 [Set-Content](https://technet.microsoft.com/library/ee176959.aspx)，將此加密的標準字串儲存到檔案。
+由於 PowerShell 在自動化案例中非常實用，您也可以透過不需要使用者互動的方式設定 **PSCredential** 物件。 您必須先設定安全的密碼。 首先，指定純文字密碼，然後使用 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)轉換成安全字串。 接下來，您需要使用 [ConvertFrom-SecureString](/powershell/module/microsoft.powershell.security/convertfrom-securestring)，將這個安全字串轉換成加密的標準字串。 現在，您可以使用 [Set-Content](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176959(v=technet.10))，將此加密的標準字串儲存到檔案。
 
 您也可以建立安全的密碼檔案，這樣就不需要每次都要輸入密碼。 此外，安全的密碼檔案也比純文字檔案安全。 使用下列 PowerShell 來建立安全的密碼檔案：
 
@@ -47,9 +47,9 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 ```
 
 > [!IMPORTANT]
-> 設定密碼時，請確定您符合 [複雜性需求](https://technet.microsoft.com/library/cc786468.aspx)。
+> 設定密碼時，請確定您符合 [複雜性需求](/previous-versions/windows/it-pro/windows-server-2003/cc786468(v=ws.10))。
 
-若要從安全的密碼檔案建立認證物件，您必須讀取檔案內容，並使用 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)將它們轉換回安全字串。
+若要從安全的密碼檔案建立認證物件，您必須讀取檔案內容，並使用 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring)將它們轉換回安全字串。
 
 [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet 也接受 *Expiration* 參數，它可指定使用者帳戶到期的 **日期時間** 。 例如，您可以設定帳戶在目前日期和時間的幾天後到期。
 
@@ -101,5 +101,3 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>其他資源
 
 [如何設定雲端服務](cloud-services-how-to-configure-portal.md)
-
-

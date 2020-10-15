@@ -64,6 +64,8 @@
       href: ./deploy-vm-content-library.md
     - name: 設定 GitHub Enterprise 伺服器
       href: github-enterprise-server.md
+    - name: 公用 IP 使用量
+      href: public-ip-usage.md
     - name: 建立 IPSec 通道
       href: create-ipsec-tunnel.md
     - name: Azure 原生整合
@@ -84,8 +86,6 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: 流量管理員
           href: deploy-traffic-manager-balance-workloads.md
-        - name: 公用 IP 使用量
-          href: public-ip-usage.md
     - name: VMware 解決方案
       items:
         - name: 設定 vRealize 作業

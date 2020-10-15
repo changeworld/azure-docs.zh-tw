@@ -1,15 +1,18 @@
 - name: 開發人員適用的 Azure Active Directory
   href: index.yml
 - name: 概觀
-  href: v1-overview.md
-- name: 範例
-  href: sample-v1-code.md
-- name: 概念
+  expanded: true
   items:
+    - name: 概觀
+      href: v1-overview.md
     - name: Microsoft 身分識別平台的演化
       href: about-microsoft-identity-platform.md
     - name: 為何要更新到 v2.0
       href: azure-ad-endpoint-comparison.md
+- name: 範例
+  href: sample-v1-code.md
+- name: 概念
+  items:
     - name: 應用程式類型
       items:
         - name: 應用程式類型
