@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540569"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076244"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用時間序列深入分析將從裝置模擬解決方案加速器傳送的遙測資料視覺化
 
@@ -68,7 +68,7 @@ ms.locfileid: "91540569"
     | 環境名稱 | 下列螢幕擷取畫面會使用名稱 **Contoso-TSI**。 當您完成此步驟時，請選擇您自己的唯一名稱。 |
     | 訂用帳戶 | 在下拉式清單中選取您的 Azure 訂用帳戶。 |
     | 資源群組 | **contoso-simulation**。 使用解決方案加速器的名稱。 |
-    | Location | 此範例使用**美國東部**。 在和裝置模擬加速器相同的區域中建立環境。 |
+    | 位置 | 此範例使用**美國東部**。 在和裝置模擬加速器相同的區域中建立環境。 |
     | SKU |**S1** |
     | Capacity | **1** |
 
@@ -113,7 +113,7 @@ ms.locfileid: "91540569"
 1. 按一下 [建立]。
 
 > [!NOTE]
-> 您可以[對其他使用者授與存取權](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)，使其能夠存取時間序列深入解析總管。
+> 您可以[對其他使用者授與存取權](../time-series-insights/concepts-access-policies.md#grant-data-access)，使其能夠存取時間序列深入解析總管。
 
 ## <a name="start-a-simulation"></a>啟動模擬
 

@@ -3,13 +3,13 @@ title: 檢視 Azure Kubernetes Service (AKS) 控制器記錄
 description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 Kubernetes 主要節點的記錄
 services: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.openlocfilehash: 4d4485848bb81f9b745081bd999b3cd3e8101b41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299066"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076380"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
@@ -30,8 +30,16 @@ Azure 監視器記錄會在 Azure 入口網站中啟用和管理。 若要在 AK
 1. 選取您的 AKS 叢集（例如 *myAKSCluster*），然後選擇 **新增診斷設定**。
 1. 輸入名稱 (例如 myAKSClusterLogs**)，然後選取 [傳送至 Log Analytics]**** 選項。
 1. 選取現有的工作區，或建立一個新的工作區。 如果您建立工作區，請提供工作區名稱、資源群組和位置。
-1. 在可用的記錄清單中，選取想要啟用的記錄。 在此範例中，請啟用 *kube-audit* 記錄檔。 常見的記錄包括 *kube-apiserver*、 *kube-controller*和 *kube*排程器。 您可以在啟用 Log Analytics 工作區之後返回這裡並變更收集的記錄。
+1. 在可用的記錄清單中，選取想要啟用的記錄。 在此範例中，請啟用 *kube-audit* and *kube-audit-admin* 記錄。 常見的記錄包括 *kube-apiserver*、 *kube-controller*和 *kube*排程器。 您可以在啟用 Log Analytics 工作區之後返回這裡並變更收集的記錄。
 1. 準備好後，請選取 [儲存]**** 以啟用所選取記錄的收集。
+
+## <a name="log-categories"></a>記錄類別
+
+除了 Kubernetes 撰寫的專案之外，您專案的 audit 記錄也有來自 AKS 的專案。
+
+Audit 記錄會記錄到兩個類別中： *kube-audit-admin* 和 *kube-audit*。 *Kube-audit*類別包含每個 audit 事件的所有審核記錄資料，包括*get*、 *list*、 *create*、 *update*、 *delete*、 *patch*和*post*。
+
+*Kube-audit-admin*類別是*kube-audit*記錄類別的子集。 *kube-audit-系統管理員* 會從記錄檔中排除 *get* 和 *list* audit 事件，以大幅減少記錄檔的數目。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 叢集上對測試 Pod 進行排程
 
@@ -67,7 +75,12 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>檢視收集的記錄
 
-可能需要幾分鐘的時間，才會啟用並顯示診斷記錄。 在 Azure 入口網站中，流覽至您的 AKS 叢集，然後選取左側的 [ **記錄** 檔]。 如果出現 [ *查詢範例* ] 視窗，請加以關閉。
+可能需要幾分鐘的時間，才會啟用並顯示診斷記錄。
+
+> [!NOTE]
+> 如果您需要所有的 audit 記錄資料以符合規範或其他用途，請將其收集並儲存在低成本的儲存體中，例如 blob 儲存體。 使用 *kube-audit-admin* 記錄類別來收集和儲存一組有意義的 audit 記錄資料，以供監視和警示之用。
+
+在 Azure 入口網站中，流覽至您的 AKS 叢集，然後選取左側的 [ **記錄** 檔]。 如果出現 [ *查詢範例* ] 視窗，請加以關閉。
 
 選擇左邊的 [記錄]****。 若要查看 *kube-audit* 記錄檔，請在文字方塊中輸入下列查詢：
 
@@ -85,6 +98,24 @@ AzureDiagnostics
 | where log_s contains "nginx"
 | project log_s
 ```
+
+若要查看 *kube-audit-admin* 記錄，請在文字方塊中輸入下列查詢：
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| project log_s
+```
+
+在此範例中，查詢會顯示 *kube-audit-admin*中的所有建立作業。傳回的結果可能有很多，若要將查詢範圍縮小以查看在上一個步驟中建立的 NGINX pod 記錄，請新增其他 *where* 語句來搜尋 *NGINX* ，如下列範例查詢所示。
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| where log_s contains "nginx"
+| project log_s
+```
+
 
 如需有關如何查詢及篩選記錄資料的詳細資訊，請參閱 [查看或分析使用 log analytics 記錄搜尋所收集的資料][analyze-log-analytics]。
 

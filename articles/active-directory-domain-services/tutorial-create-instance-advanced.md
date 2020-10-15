@@ -1,20 +1,20 @@
 ---
 title: 教學課程 - 建立自訂 Azure Active Directory Domain Services 受控網域 | Microsoft Docs
 description: 在此教學課程中，您將了解如何使用 Azure 入口網站建立和設定自訂 Azure Active Directory Domain Services 受控網域並指定進階設定選項。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491132"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967337"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教學課程：使用進階設定選項建立並設定 Azure Active Directory Domain Services 受控網域
 

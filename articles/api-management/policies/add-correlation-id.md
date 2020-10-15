@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 922565d26274aee12c9397c08c19330b4fce00e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75422242"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076295"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>新增包含相互關聯識別碼的標頭
 
-本文會說明 Azure API 管理原則範例，示範如何將包含相互關聯識別碼的標頭新增至輸入要求。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-samples.md)。
+本文會說明 Azure API 管理原則範例，示範如何將包含相互關聯識別碼的標頭新增至輸入要求。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-reference.md)。
 
 ## <a name="policy"></a>原則
 
@@ -35,5 +35,4 @@ ms.locfileid: "75422242"
 深入了解 APIM 原則：
 
 + [轉換原則](../api-management-transformation-policies.md)
-+ [原則範例](../policy-samples.md)
-
++ [原則範例](../policy-reference.md)
