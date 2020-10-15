@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 05ca16ad828525f2b09e4adf8f75be4667254614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711a973f13c8e292578703518df4c4302c31eb57
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535180"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071382"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理存取限制原則
 
-本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> 存取限制原則
 
@@ -74,7 +74,7 @@ ms.locfileid: "91535180"
 | header-name                | 要檢查的 HTTP 標頭名稱。                                                                                                                                  | 是      | N/A     |
 | ignore-case                | 可以設定為 True 或 False。 如果設定為 True，則會在標頭值與一組可接受的值進行比較時，忽略大小寫。                                    | 是      | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -137,7 +137,7 @@ ms.locfileid: "91535180"
 | calls          | 在 `renewal-period` 中指定的時間週期內允許的呼叫總數上限。 | 是      | N/A     |
 | renewal-period | 重設配額的時間週期 (以秒為單位)。                                              | 是      | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -204,7 +204,7 @@ ms.locfileid: "91535180"
 | increment-condition | 此布林運算式指定要求是否應該計入配額 (`true`)。        | 否       | N/A     |
 | renewal-period      | 重設配額的時間週期 (以秒為單位)。                                              | 是      | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -251,7 +251,7 @@ ms.locfileid: "91535180"
 | address-range from="位址" to="位址" | 允許或拒絕存取的 IP 位址範圍。                                        | 使用 `address-range` 元素時必要。 | N/A     |
 | ip-filter action="allow &#124; forbid"    | 指定允許或不允許指定的 IP 位址和範圍進行呼叫。 | 是                                                | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -311,7 +311,7 @@ ms.locfileid: "91535180"
 | calls          | 在 `renewal-period` 中指定的時間週期內允許的呼叫總數上限。     | 必須指定 `calls`、`bandwidth`，或同時指定兩者。 | N/A     |
 | renewal-period | 重設配額的時間週期 (以秒為單位)。                                                  | 是                                                              | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -375,7 +375,7 @@ ms.locfileid: "91535180"
 | increment-condition | 此布林運算式指定要求是否應該計入配額 (`true`)。             | 否                                                               | N/A     |
 | renewal-period      | 重設配額的時間週期 (以秒為單位)。                                                  | 是                                                              | N/A     |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -544,7 +544,7 @@ ms.locfileid: "91535180"
 | url                             | 可從中取得 Open ID 設定中繼資料的 Open ID 設定端點 URL。 回應應該根據 URL 所定義的規格：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 對於 Azure Active Directory，使用下列 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` 代替您的目錄租用戶名稱，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | N/A                                                                               |
 | 輸出-token-variable 名稱      | 字串。 當 [`Jwt`](api-management-policy-expressions.md) 權杖驗證成功時，將會以類型物件的形式接收權杖值的內容變數名稱                                                                                                                                                                                                                                                                                     | 否                                                                               | N/A                                                                               |
 
-### <a name="usage"></a>使用量
+### <a name="usage"></a>使用方式
 
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
@@ -558,4 +558,4 @@ ms.locfileid: "91535180"
 -   [API 管理中的原則](api-management-howto-policies.md)
 -   [轉換 API](transform-api.md)
 -   [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
--   [原則範例](policy-samples.md)
+-   [原則範例](./policy-reference.md)
