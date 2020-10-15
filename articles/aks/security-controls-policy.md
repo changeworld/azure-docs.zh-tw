@@ -8,10 +8,10 @@ ms.author: lahugh
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 525da36618c5280374e3e3fadb8ef98510fd2e2e
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821727"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性控制措施

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851506"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073983"
 ---
 # <a name="use-service-management-from-python"></a>從 Python 使用服務管理
 本指南說明如何以程式設計方式，從 Python 執行一般服務管理工作。 [適用於 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) \(英文\) 中的 **ServiceManagementService** 類別支援以程式設計方式存取 [Azure 入口網站][management-portal]中提供的大部分服務管理相關功能。 您可以使用此功能來建立、更新和刪除雲端服務、部署、資料管理服務，以及虛擬機器。 建置需要透過程式設計方式存取服務管理的應用程式時，此功能十分實用。
@@ -194,7 +194,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>建立儲存體服務
-[儲存體服務](../storage/common/storage-create-storage-account.md)可讓您存取 Azure [blob](../storage/blobs/storage-python-how-to-use-blob-storage.md)、[資料表](../cosmos-db/table-storage-how-to-use-python.md)和[佇列](../storage/queues/storage-python-how-to-use-queue-storage.md)。 若要建立儲存服務，您必須要有服務的名稱 (3 到 24 個小寫字元，且在 Azure 中是唯一的)。 此外，您還需要描述、標籤 (最多 100 個字元，會自動編碼為 base64) 及位置。 下列範例說明如何藉由指定位置來建立儲存服務：
+[儲存體服務](../storage/common/storage-account-create.md)可讓您存取 Azure [blob](../storage/blobs/storage-quickstart-blobs-python.md)、[資料表](../cosmos-db/table-storage-how-to-use-python.md)和[佇列](../storage/queues/storage-python-how-to-use-queue-storage.md)。 若要建立儲存服務，您必須要有服務的名稱 (3 到 24 個小寫字元，且在 Azure 中是唯一的)。 此外，您還需要描述、標籤 (最多 100 個字元，會自動編碼為 base64) 及位置。 下列範例說明如何藉由指定位置來建立儲存服務：
 
 ```python
 from azure import *
@@ -446,9 +446,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-若要深入了解如何在傳統部署模型中擷取 Linux 虛擬機器，請參閱[擷取 Linux 虛擬機器](../virtual-machines/linux/classic/capture-image-classic.md)。
+若要深入了解如何在傳統部署模型中擷取 Linux 虛擬機器，請參閱[擷取 Linux 虛擬機器](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic)。
 
-若要深入了解如何在傳統部署模型中擷取 Windows 虛擬機器，請參閱[擷取 Windows 虛擬機器](../virtual-machines/windows/classic/capture-image-classic.md)。
+若要深入了解如何在傳統部署模型中擷取 Windows 虛擬機器，請參閱[擷取 Windows 虛擬機器](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic)。
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>後續步驟
 現在您已瞭解服務管理的基本概念，您可以存取 [Azure PYTHON SDK 的完整 API 參考檔](https://azure-sdk-for-python.readthedocs.org/) ，並輕鬆地執行複雜的工作來管理您的 Python 應用程式。
@@ -474,7 +474,7 @@ sms.create_virtual_machine_deployment(service_name=name,
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/

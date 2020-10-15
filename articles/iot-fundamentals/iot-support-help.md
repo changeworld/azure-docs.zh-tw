@@ -5,16 +5,16 @@ author: philmea
 ms.author: phil
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: ea4ecbbeaa4ad016e32aa9301d6f6ac49a6d342e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23381a45d045e8f96e989bce9f52d627f5a88255
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330174"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979065"
 ---
-# <a name="azure-iot-support-and-help-options"></a>Azure IoT 支援和協助選項
+# <a name="what-are-the-azure-iot-support-and-help-options"></a>Azure IoT 支援和協助選項有哪些？
 
 以下建議可讓您在開發 Azure IoT 解決方案時取得相關協助。
 
@@ -101,5 +101,4 @@ Azure IoT 的相關新聞和資訊會發佈於 [Azure 部落格](https://azure.m
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [什麼是 Azure IoT？](iot-introduction.md)
+[什麼是 Azure IoT？](iot-introduction.md)

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc245fa02f57a433a76a316caac67ed5d884fe9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264604"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072742"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 kubenet 網路與您自己的 IP 位址範圍
 
@@ -56,7 +56,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 * 不同于 Azure CNI 叢集，多個 kubenet 叢集無法共用子網。
 * **Kubenet 上不支援的**功能包括：
    * [Azure 網路原則](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支援 Calico 網路原則
-   * [Windows 節點集區](windows-node-limitations.md)
+   * [Windows 節點集區](./windows-faq.md)
    * [虛擬節點附加元件](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP 位址可用性與耗盡

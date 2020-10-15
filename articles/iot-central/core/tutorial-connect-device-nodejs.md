@@ -12,10 +12,10 @@ ms.custom:
 - device-developer
 - devx-track-js
 ms.openlocfilehash: 87284b88076cbd205a5d8ae388fe0b37c35cf6f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328542"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Node.js)
