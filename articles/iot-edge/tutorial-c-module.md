@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 9676b9f5c1cc8d1768aaf6e83e1b4e363e3e6ece
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c2505f210b1a2b52b64c25b4ffa0c26bb30d7ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320654"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044678"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 C IoT Edge 模組
 
@@ -50,7 +50,7 @@ ms.locfileid: "91320654"
 
 * Azure 中的免費或標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * [執行 Azure IoT Edge 的 Linux 裝置](quickstart-linux.md)
-* 容器登錄，像是 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
+* 容器登錄，像是 [Azure Container Registry](../container-registry/index.yml)。
 * 已設定 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 設定為執行 Linux 容器。
 
@@ -364,7 +364,7 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立包含程式碼的 IoT Edge 模組，可篩選您 IoT Edge 裝置所產生的原始資料。 當您準備好建置自己的模組時，可以進一步了解如何[開發自己的 IoT Edge 模組](module-development.md)或如何[使用 Visual Studio Code 開發模組](how-to-vs-code-develop-module.md)。 如需 IoT Edge 模組 (包括模擬溫度模組) 的範例，請參閱 [IoT Edge 模組範例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT C SDK 範例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)。
+在本教學課程中，您已建立包含程式碼的 IoT Edge 模組，可篩選您 IoT Edge 裝置所產生的原始資料。
 
 您可以繼續進行後續教學課程，以了解 Azure IoT Edge 如何協助您部署 Azure 雲端服務，以在邊緣處理和分析資料。
 
