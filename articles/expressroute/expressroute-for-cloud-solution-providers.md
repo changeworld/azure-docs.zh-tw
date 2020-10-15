@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653633"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097332"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
 Microsoft 為傳統的轉銷商和經銷商 (CSP) 提供超大規模的服務，以便為您的客戶快速佈建新的服務和解決方案，而不需要投資開發這些新服務。 若要讓雲端解決方案提供者 (CSP) 能夠直接管理這些新服務，Microsoft 提供了一些程式和 API，讓 CSP 可以代表您的客戶管理 Microsoft Azure 資源。 其中一個資源是 ExpressRoute。 ExpressRoute 可讓 CSP 將現有的客戶資源連接到 Azure 服務。 ExpressRoute 是 Azure 中服務的高速私人通訊連結。 
@@ -21,7 +21,7 @@ Microsoft 為傳統的轉銷商和經銷商 (CSP) 提供超大規模的服務，
 ExpressRoute 是由一對適用于高可用性的線路所組成，其會附加至單一客戶的訂用帳戶 () ，且不能由多個客戶共用。 每個電路應在不同的路由器中終止，以維持高可用性。
 
 > [!NOTE]
-> ExpressRoute 有頻寬和連接端點，這表示大型/複雜的實作需要單一客戶有多個 ExpressRoute 電路。
+> 每個 ExpressRoute 線路上的頻寬和連線數目可能有所限制。 如果單一客戶的需求超過這些限制，則需要多個 ExpressRoute 線路以進行混合式網路的執行。
 > 
 > 
 
@@ -75,30 +75,30 @@ ExpressRoute 支援從 50 Mb/s 到 10 Gb/s 的網路速度。 這可讓客戶購
 ExpressRoute 支援多個 vNet 至單一 ExpressRoute 電路的連線，以便更加妥善利用高速連線。 同一個客戶所擁有的多個 Azure 訂用帳戶可以共用單一 ExpressRoute 電路。
 
 ## <a name="configuring-expressroute"></a>設定 ExpressRoute
-ExpressRoute 可設定為透過單一 ExpressRoute 電路支援三種類型的流量 ([路由網域](#expressroute-routing-domains))。 此流量可以分成 Microsoft 對等、Azure 公用對等和私用對等。 視 ExpressRoute 電路的大小和您的客戶所需的隔離而定，您可以選擇透過單一 ExpressRoute 電路傳送一個或所有類型的流量，或使用多個 ExpressRoute 電路。 您的客戶的安全狀態可能不允許公用流量和私用流量透過相同的電路周遊。
+ExpressRoute 可設定為透過單一 ExpressRoute 電路支援三種類型的流量 ([路由網域](#expressroute-routing-domains))。 此流量會隔離到私人對等互連、Microsoft 對等互連，以及 (淘汰) 的公用對等互連。 視 ExpressRoute 電路的大小和您的客戶所需的隔離而定，您可以選擇透過單一 ExpressRoute 電路傳送一個或所有類型的流量，或使用多個 ExpressRoute 電路。 您的客戶的安全狀態可能不允許公用流量和私用流量透過相同的電路周遊。
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
-在連線設定中，您將負責所有的網路結構性支援，以將您的客戶資料中心資源連接到裝載于 Azure 中的訂用帳戶。 每個想要使用 Azure 功能的客戶都需有自己的 ExpressRoute 連線 (將由您管理)。 您將使用客戶用來購買 ExpressRoute 電路的相同方法。 您將依照 [ExpressRoute 電路佈建和電路狀態工作流程](expressroute-workflows.md) 一文中所述的相同步驟執行。 接著，您將設定邊界閘道協定 (BGP) 路由來控制在內部部署網路與 Azure vNet 之間流動的流量。
+在連線設定中，您將負責將客戶的資料中心資源連接到裝載于 Azure 中的訂用帳戶的所有網路結構性支援。 每個想要使用 Azure 功能的客戶都需要自己的 ExpressRoute 連線，這會由您管理。 您將使用客戶用來購買 ExpressRoute 線路的相同方法。 您將遵循《 [ExpressRoute](expressroute-workflows.md) workflow for 線路布建和線路狀態」一文所述的相同步驟。 接著，您將設定邊界閘道協定 (BGP) 路由，以控制在內部部署網路與 Azure vNet 之間流動的流量。
 
 ### <a name="connect-to-model"></a>Connect-To 模型
-在 Connect-To 組態中，您的客戶已經有 Azure 連線，或者會起始對網際網路服務提供者的連線，以將 ExpressRoute 從您的客戶擁有的資料中心直接連結至 Azure，而不是您的資料中心。 若要開始佈建程序，您的客戶將依照上面 Connect-Through 模型中所述的步驟執行。 一旦建立電路，您的客戶必須設定內部部署路由器，才能存取您的網路和 Azure vNnet。
+在 [連線到設定] 中，您的客戶已經有 Azure 的現有連線，或會起始與網際網路服務提供者的連線，將 ExpressRoute 從自己的資料中心直接連結到 Azure，而不是您的資料中心。 若要開始佈建程序，您的客戶將依照上面 Connect-Through 模型中所述的步驟執行。 一旦建立線路之後，您的客戶就必須設定內部部署路由器，以存取您的網路和 Azure Vnet。
 
 您可以設定連接及設定路由，允許您資料中心的資源與您資料中心的用戶端資源進行通訊，或與 Azure 中裝載的資源進行通訊。
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute 路由網域
-ExpressRoute 提供三種路由網域︰公用、私用和 Microsoft 對等。 在主動-主動設定中，每個路由網域都會設定為具有相同的路由器，以提供高可用性。 如需 ExpressRoute 路由網域的詳細資訊，請參閱 [這裡](expressroute-circuit-peerings.md)。
+ExpressRoute 提供兩個路由網域給新線路：私用對等互連和 Microsoft 對等互連。 在主動-主動設定中，每個路由網域都會設定為具有相同的路由器，以提供高可用性。 如需 ExpressRoute 路由網域的詳細資訊，請參閱 [這裡](expressroute-circuit-peerings.md)。
 
 您可以定義自訂路由篩選器，只允許您想允許或需要的路由。 如需詳細資訊或了解如何進行這些變更，請參閱以下文章︰ [使用 PowerShell 建立和修改 ExpressRoute 電路的路由](expressroute-howto-routing-classic.md) ，以取得路由篩選器的詳細資訊。
 
 > [!NOTE]
-> 若為 Microsoft 和公用對等，連線必須是客戶或 CSP 所擁有的公用 IP 位址，而且必須遵守所有定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md) 頁面。  
+> 針對 Microsoft 對等互連，連線必須是客戶或 CSP 所擁有的公用 IP 位址，且必須遵守所有已定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md) 頁面。  
 > 
 > 
 
 ## <a name="routing"></a>路由
 ExpressRoute 會透過 Azure 虛擬網路閘道連接到 Azure 網路。 網路閘道提供 Azure 虛擬網路的路由。
 
-建立 Azure 虛擬網路時，也會建立 vNet 的預設路由表，以便從 vNet 的子網路雙向導引流量。 如果預設路由表不敷解決方案使用，可以建立自訂路由，將連出流量路由傳送至自訂應用裝置，或封鎖對特定子網路或外部網路的路由。
+建立 Azure 虛擬網路時，也會建立 vNet 的預設路由表，以便從 vNet 的子網路雙向導引流量。 如果預設路由表對解決方案而言不足，則可以建立自訂路由，將連出流量路由傳送至自訂設備，或封鎖特定子網或外部網路的路由。
 
 ### <a name="default-routing"></a>預設路由
 預設路由表包含下列路由：

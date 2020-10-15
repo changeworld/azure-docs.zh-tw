@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203447"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096210"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -202,11 +202,13 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 | 設定. showSignupLink <sup>2</sup>| 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
 | 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示忘記的密碼連結。 可能的值： `AfterInput` (預設值) 連結會顯示在頁面底部，或 `None` 移除 [忘記密碼] 連結。|
 | 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 可能的值： `true` 或 `false` (預設) 。 |
+| 設定. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 藉由等待使用者停止輸入，然後驗證值，來改善使用者體驗。 預設值為2000毫秒。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值： `true` 或 `false`   (預設) 。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 注意：
 1. 適用于內容定義 [DataUri](contentdefinitions.md#datauri) 類型的 `unifiedssp` 或 `unifiedssd` 。
 1. 適用于內容定義 [DataUri](contentdefinitions.md#datauri) 類型的 `unifiedssp` 或 `unifiedssd` 。 1.1.0 和更新[版本的頁面配置](page-layout.md)。
+1. 適用于1.2.0 和更新 [版本的頁面配置](page-layout.md) 。
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 

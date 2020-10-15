@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
-ms.openlocfilehash: 0c3fa3e61f3e35bcd29e923b87ddf68f0860486e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17831f06d4176ae6666bbc7b05a11ee689b842fc
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483128"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096686"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime 上內建和預先安裝的元件
 
@@ -29,7 +29,7 @@ ms.locfileid: "89483128"
 
 | 類型 | 名稱 - 版本 - 平台 |
 |------|---------------------------|
-| **內建用戶端/驅動程式/提供者** | *Access 資料庫引擎 2016 可轉散發套件* - RTM - X64<br/><br/>*Microsoft 分析管理物件* - 15.0.1000.81 - X64<br/><br/>*Microsoft Analysis Services OLEDB 提供者* - 15.0.1000.81 - X64<br/><br/>*Microsoft ODBC Driver 13 for SQL Server* - 14.0.900.902 - X64<br/><br/>*Microsoft OLEDB Driver 18 for SQL Server* - 18.1.0.0 - X64<br/><br/>*Microsoft OLEDB Provider for DB2* - 6.0 - X64<br/><br/>*SharePoint Online 用戶端元件 SDK* - 15.4711.1001 - X64 |
+| **內建用戶端/驅動程式/提供者** | *Access 資料庫引擎 2016 可轉散發套件* - RTM - X64<br/><br/>*Microsoft 分析管理物件* - 15.0.1000.81 - X64<br/><br/>*Microsoft Analysis Services OLEDB 提供者* - 15.0.1000.81 - X64<br/><br/>*Microsoft SQL Server 2012 Native Client* -11.4.7462.6-X64<br/><br/>*Microsoft ODBC Driver 13 for SQL Server* - 14.0.900.902 - X64<br/><br/>*Microsoft OLEDB Driver 18 for SQL Server* - 18.1.0.0 - X64<br/><br/>*Microsoft OLEDB Provider for DB2* - 6.0 - X64<br/><br/>*SharePoint Online 用戶端元件 SDK* - 15.4711.1001 - X64 |
 
 ## <a name="built-in-and-preinstalled-connection-managers-on-azure-ssis-ir"></a>Azure-SSIS IR 上內建和預先安裝的連線管理員
 

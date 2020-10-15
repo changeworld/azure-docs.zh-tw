@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0eacddfa56e46363c926aa1e8b35865676209577
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: baa8b1f302c0d8a7355f74b686ffedfb45ac22d3
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058483"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096040"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -438,7 +438,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon`元素至少包含一個 `lexeme` 元素。 每個 `lexeme` 元素都至少包含一個專案， `grapheme` 以及一個或多個 `grapheme` 、 `alias` 和 `phoneme` 元素。 `grapheme`元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的文字。 `alias`元素用來表示縮寫或縮寫詞彙的發音。 專案 `phoneme` 會提供描述發音方式的文字 `lexeme` 。
 
-請務必注意，您無法使用自訂字典直接設定片語的發音。 如果您需要設定縮寫或縮寫詞彙的發音，請先提供 `alias` ，然後將 `phoneme` 與關聯 `alias` 。 例如︰
+請務必注意，您無法使用自訂字典直接設定片語的發音。 如果您需要設定縮寫或縮寫詞彙的發音，請先提供 `alias` ，然後將 `phoneme` 與關聯 `alias` 。 例如：
 
 ```xml
   <lexeme>
@@ -451,7 +451,7 @@ speechConfig!.setPropertyTo(
   </lexeme>
 ```
 
-您也可以直接提供所需的 `alias` 縮寫或縮寫字詞。 例如︰
+您也可以直接提供所需的 `alias` 縮寫或縮寫字詞。 例如：
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -534,8 +534,8 @@ speechConfig!.setPropertyTo(
 
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如，600 Hz。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選擇性 |
-| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如︰ <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
+| `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如： `<prosody pitch="600Hz">some text</prosody>` 。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如：`<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul> | 選擇性 |
+| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
 | `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
 | `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
 | `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 持續時間僅支援標準語音。| 選擇性 |
@@ -716,7 +716,7 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值為 `1`。 | 選擇性 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
 | `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 | `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 

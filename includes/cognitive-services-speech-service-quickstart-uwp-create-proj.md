@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 134c9996690d629ad8acb348d1928904741b6b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df9dbdf61dbc7d83f1cf74871ddc864488ed9d47
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654459"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097213"
 ---
 若要建立適用於通用 Windows 平台 (UWP) 開發的 Visual Studio 專案，您必須設定 Visual Studio 開發選項、建立專案、選取目標架構、設定音訊擷取，以及安裝語音 SDK。
 

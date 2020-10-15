@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631336"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096329"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -40,13 +40,13 @@ ms.locfileid: "91631336"
 >[!IMPORTANT]
 > Site Recovery 不支援使用經過驗證的 Proxy 來控制網路連線能力，而且無法啟用複寫。
 
+>[!NOTE]
+> 不應執行以 IP 位址為基礎的篩選，以控制輸出連線能力。
+> Azure Site Recovery IP 位址不應新增至 Azure 路由表以控制輸出連線能力。
 
 ## <a name="outbound-connectivity-for-urls"></a>URL 的輸出連線能力
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許這些 Site Recovery URL：
-
->[!NOTE]
-> 不應執行以 IP 位址為基礎的篩選，以控制輸出連線能力。
 
 **URL** | **詳細資料**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服務標記的輸出連線能力
 
-如果您使用 NSG 來控制輸出連線能力，則必須允許這些服務標記。
+使用 NSG 來控制輸出連線能力時，必須允許這些服務標記。
 
 - 針對來源區域中的儲存體帳戶：
     - 為這個來源地區建立[儲存體服務標記](../virtual-network/security-overview.md#service-tags)型 NSG 規則。

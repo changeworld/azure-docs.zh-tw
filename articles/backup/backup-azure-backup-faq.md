@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 50cbd1d28ca3f04b8963c58b443765d4280b14ed
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058075"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096618"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -18,7 +18,7 @@ ms.locfileid: "92058075"
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>每個 Azure 訂用帳戶中可以建立的保存庫數目是否有任何限制？
 
-是。 您可以為每個訂用帳戶的 Azure 備份支援區域，最多建立 500 個復原服務保存庫。 如果您需要其他保存庫，請建立其他訂用帳戶。
+可以。 您可以為每個訂用帳戶的 Azure 備份支援區域，最多建立 500 個復原服務保存庫。 如果您需要其他保存庫，請建立其他訂用帳戶。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>針對每個保存庫註冊的伺服器/電腦具有數目限制嗎？
 
@@ -39,7 +39,7 @@ ms.locfileid: "92058075"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>我是否可以在訂用帳戶之間移動保存庫？
 
-是。 若要移動復原服務保存庫，請參閱此[文章](backup-azure-move-recovery-services-vault.md)
+可以。 若要移動復原服務保存庫，請參閱此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>我是否可以將備份資料移至另一個保存庫？
 
@@ -58,6 +58,10 @@ ms.locfileid: "92058075"
 - 由 Azure VM 備份所備份的 Azure VM 支援 Azure VM。 如需詳細資訊，請參閱[文章](backup-azure-restore-files-from-vm.md)
 - Azure 備份伺服器 (MABS) 或 System Center DPM 所備份的內部部署 Vm 線上復原點不支援 ILR。
 
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>如何將資料從復原服務保存庫移至內部部署？
+
+不支援使用資料箱將資料直接從復原服務保存庫匯出至內部部署。 資料必須還原至儲存體帳戶，然後可以透過 [資料箱](https://docs.microsoft.com/azure/databox/data-box-overview) 或匯 [入/匯出](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)移至內部部署。
+
 ## <a name="azure-backup-agent"></a>Azure 備份代理程式
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>哪裡可以找到有關適用於 Azure VM 備份之 Azure 備份代理程式的常見問題？
@@ -69,7 +73,7 @@ ms.locfileid: "92058075"
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>在備份排程方面是否有任何限制？
 
-是。
+可以。
 
 - 您一天最多可以備份 Windows Server 或 Windows 機器三次。 您可以將排程原則設定為每天或每週排程。
 - 您一天最多可以備份 DPM 兩次。 您可以將排程原則設定為每天、每週、每月及每年。
@@ -205,11 +209,11 @@ Azure 備份的復原數量沒有任何限制。
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>傳送至 Azure 的資料會經過加密嗎？
 
-是。 資料會在內部部署機器上以 AES256 加密。 資料會透過安全的 HTTPS 連結來傳送。 在雲端中傳輸的資料僅受到儲存體和復原服務之間的 HTTPS 連結保護。 iSCSI 通訊協定保護復原服務和使用者電腦之間傳輸的資料。 安全通道用於保護 iSCSI 通道。
+可以。 資料會在內部部署機器上以 AES256 加密。 資料會透過安全的 HTTPS 連結來傳送。 在雲端中傳輸的資料僅受到儲存體和復原服務之間的 HTTPS 連結保護。 iSCSI 通訊協定保護復原服務和使用者電腦之間傳輸的資料。 安全通道用於保護 iSCSI 通道。
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>位於 Azure 的備份資料也會經過加密嗎？
 
-是。 在 Azure 中的資料會進行靜態加密。
+可以。 在 Azure 中的資料會進行靜態加密。
 
 - 針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。
 - 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。

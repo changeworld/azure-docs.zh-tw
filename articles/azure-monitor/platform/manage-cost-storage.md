@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0f71b1e75ecb60a53a004b7bf1bf0bd0c7522cc9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044100"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096516"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -46,9 +46,9 @@ Log Analytics 的預設定價是**隨用隨付**模型 (會以所擷取的資料
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics 專用叢集
 
-Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資料總管叢集，以支援[客戶管理的金鑰](customer-managed-keys.md)等進階案例。  Log Analytics 專用叢集使用的容量保留定價模型必須設定為至少 1000 GB/天。 相較于隨用隨付定價，此容量層級有25% 的折扣。 高於保留層級的使用量則會以隨用隨付費率計費。 在保留層級提高後，叢集的容量保留會有 31 天的承諾用量期間。 在承諾用量期間，您無法降低容量保留層級，但可以隨時提高。 當工作區與叢集相關聯時，會使用設定的容量保留層級，在叢集層級完成這些工作區的資料內嵌計費。 深入了解如何[建立 Log Analytics 叢集](customer-managed-keys.md#create-cluster-resource)並[將工作區與其關聯](customer-managed-keys.md#workspace-association-to-cluster-resource)。 容量保留定價資訊可在 [Azure 監視器定價] 頁面]( https://azure.microsoft.com/pricing/details/monitor/)取得。  
+Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資料總管叢集，以支援[客戶管理的金鑰](customer-managed-keys.md)等進階案例。  Log Analytics 專用叢集使用的容量保留定價模型必須設定為至少 1000 GB/天。 相較于隨用隨付定價，此容量層級有25% 的折扣。 高於保留層級的使用量則會以隨用隨付費率計費。 在保留層級提高後，叢集的容量保留會有 31 天的承諾用量期間。 在承諾用量期間，您無法降低容量保留層級，但可以隨時提高。 當工作區與叢集相關聯時，會使用設定的容量保留層級，在叢集層級完成這些工作區的資料內嵌計費。 深入了解如何[建立 Log Analytics 叢集](customer-managed-keys.md#create-cluster)並[將工作區與其關聯](customer-managed-keys.md#link-workspace-to-cluster)。 容量保留定價資訊可在 [Azure 監視器定價] 頁面]( https://azure.microsoft.com/pricing/details/monitor/)取得。  
 
-叢集容量保留層級是使用中的參數，以程式設計方式透過 Azure Resource Manager 來設定 `Capacity` `Sku` 。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。 這詳述于 [Azure 監視器客戶管理的金鑰](customer-managed-keys.md#create-cluster-resource)。 如果您的叢集需要「2000 GB/天」以上的保留量，請透過以下信箱與我們連絡：[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
+叢集容量保留層級是使用中的參數，以程式設計方式透過 Azure Resource Manager 來設定 `Capacity` `Sku` 。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。 這詳述于 [Azure 監視器客戶管理的金鑰](customer-managed-keys.md#create-cluster)。 如果您的叢集需要「2000 GB/天」以上的保留量，請透過以下信箱與我們連絡：[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
 
 叢集上的使用量有兩種計費模式。 設定叢集時，參數可以指定這些 `billingType` 參數。 [configuring your cluster](customer-managed-keys.md#cmk-management) 兩種模式為： 
 

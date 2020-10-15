@@ -3,12 +3,12 @@ title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護資源。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744010"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095989"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -39,7 +39,7 @@ ms.locfileid: "91744010"
 
 ### <a name="assign-at-management-group"></a>指派于管理群組
 
-防止訂用帳戶擁有者移除藍圖指派的另一個選項是將藍圖指派給管理群組。 在此案例中， **只有管理群組的擁有者** 具有移除藍圖指派所需的許可權。
+防止訂用帳戶擁有者移除藍圖指派的唯一選項，就是將藍圖指派給管理群組。 在此案例中， **只有管理群組的擁有者** 具有移除藍圖指派所需的許可權。
 
 為了將藍圖指派給管理群組，而不是訂用帳戶，REST API 呼叫的變更如下所示：
 

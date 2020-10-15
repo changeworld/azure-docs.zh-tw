@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 911f819343f675ebe0a2604d912e6e26aa646eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533037"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096754"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 憑證證明
 
-本文概述使用 x.509 憑證證明布建裝置時所牽涉到的概念。 本文與為裝置進行部署準備工作的所有角色相關。
+本文概述使用 x.509 憑證證明布建裝置時所涉及的裝置布建服務 (DPS) 相關概念。 本文與為裝置進行部署準備工作的所有角色相關。
 
 X.509 憑證可以存放在硬體安全性模組 HSM 中。
 
@@ -44,6 +44,12 @@ X.509 憑證可以存放在硬體安全性模組 HSM 中。
 
 中繼憑證是根憑證 (或其鏈結中具有根憑證的另一個中繼憑證) 簽署的一種 X.509 憑證。 鏈結中的最後一個中繼憑證會用來簽署分葉憑證。 中繼憑證也可以稱為中繼 CA 憑證。
 
+##### <a name="why-are-intermediate-certs-useful"></a>為什麼中繼憑證很有用？
+中繼憑證的使用方式有許多種。 例如，中繼憑證可以用來依產品線、購買裝置、公司部門或工廠的客戶來分組裝置。 
+
+假設 Contoso 是一家大型公司，其專屬的公開金鑰基礎結構 (PKI) 使用名為 *ContosoRootCert*的根憑證。 Contoso 的每個子公司都有自己的中繼憑證，其是由 *ContosoRootCert*所簽署。 接著，每個子公司都會使用其中繼憑證來簽署每個裝置的分葉憑證。 在此案例中，Contoso 可以使用單一 DPS 實例，其中 *ContosoRootCert* 已驗證 [擁有權證明](./how-to-verify-certificates.md)。 每個子公司可以有一個註冊群組。 如此一來，每個個別的子公司都不需要擔心驗證憑證。
+
+
 ### <a name="end-entity-leaf-certificate"></a>終端實體「分葉」憑證
 
 分葉憑證 (或終端實體憑證) 會識別憑證持有者。 它在其憑證鏈結中有根憑證，以及零或多個中繼憑證。 分葉憑證無法用來簽署其他任何憑證。 它會唯一識別裝置來佈建服務，且有時稱為裝置憑證。 在驗證期間，裝置會使用與此憑證相關聯的私密金鑰，回應以證明來自服務的持有挑戰。
@@ -54,12 +60,42 @@ X.509 憑證可以存放在硬體安全性模組 HSM 中。
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>使用 X.509 憑證控制對於佈建服務的裝置存取
 
-佈建服務會公開兩種類型的註冊項目，您可以用來控制對於使用 X.509 證明機制之裝置的存取：  
+布建服務會公開兩種註冊類型，您可以使用 x.509 證明機制來控制裝置存取：  
 
 - [個別註冊](./concepts-service.md#individual-enrollment)項目是以與特定裝置相關聯的裝置憑證來設定的。 這些項目會控制特定裝置的註冊。
 - [註冊群組](./concepts-service.md#enrollment-group)項目是與特定的中繼或根 CA 憑證相關聯的。 這些項目會控制所有裝置的註冊，這些裝置在其憑證鏈結中具有中繼或根憑證。 
 
-當裝置連線到佈建服務時，服務會給予更特定註冊項目比起較不特定註冊項目更高的優先順序。 也就是說，如果有裝置的個別註冊存在，佈建服務會套用該項目。 如果沒有裝置的任何個別註冊，且裝置的憑證鏈結中有第一個中繼憑證的註冊群組存在，則服務會套用該項目，依此類推到根目錄鏈結。 服務會套用它所找到的第一個適用項目，例如：
+#### <a name="dps-device-chain-requirements"></a>DPS 裝置鏈需求
+
+當裝置使用註冊群組嘗試透過 DPS 註冊時，裝置必須將憑證鏈從分葉憑證傳送到已驗證 [擁有權證明](how-to-verify-certificates.md)的憑證。 否則，驗證將會失敗。
+
+例如，如果只驗證根憑證，並將中繼憑證上傳到註冊群組，則裝置應該會從分葉憑證將憑證鏈呈現給驗證的根憑證。 此憑證鏈會在其間包含任何中繼憑證。 如果 DPS 無法將憑證鏈到已驗證的憑證，驗證將會失敗。
+
+例如，針對裝置使用下列裝置鏈，請考慮使用公司。
+
+![範例裝置憑證鏈](./media/concepts-x509-attestation/example-device-cert-chain.png) 
+
+只會驗證根憑證，並在註冊群組上上傳 *intermediate2* 憑證。
+
+![驗證根範例](./media/concepts-x509-attestation/example-root-verified.png) 
+
+如果裝置在布建期間只傳送下列裝置鏈，驗證將會失敗。 因為 DPS 無法嘗試驗證（假設 *intermediate1* 憑證的有效性）
+
+![失敗的憑證鏈範例](./media/concepts-x509-attestation/example-fail-cert-chain.png) 
+
+如果裝置在布建期間以如下方式傳送完整的裝置鏈，則 DPS 可以嘗試驗證裝置。
+
+![範例裝置憑證鏈](./media/concepts-x509-attestation/example-device-cert-chain.png) 
+
+
+
+
+> [!NOTE]
+> 中繼憑證也可以驗證擁有權 [證明](how-to-verify-certificates.md)。
+
+
+#### <a name="dps-order-of-operations-with-certificates"></a>使用憑證的 DPS 作業順序
+當裝置連線到佈建服務時，服務會給予更特定註冊項目比起較不特定註冊項目更高的優先順序。 也就是說，如果有裝置的個別註冊存在，佈建服務會套用該項目。 如果裝置沒有個別註冊，且裝置的憑證鏈中有第一個中繼憑證的註冊群組存在，則服務會將該專案套用至根節點，依此類推。 服務會套用它所找到的第一個適用項目，例如：
 
 - 如果找到的第一個註冊項目已啟用，則服務會佈建裝置。
 - 如果找到的第一個註冊項目已停用，則服務不會佈建裝置。  

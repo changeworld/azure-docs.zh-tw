@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005373"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095893"
 ---
 # <a name="localization-element"></a>當地語系化元素
 
@@ -39,13 +39,13 @@ ms.locfileid: "87005373"
 
 **Localization** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 啟用 | 否 | 可能的值：`true` 或 `false`。 |
 
 **Localization** 元素包含下列 XML 元素
 
-| 元素 | 發生次數 | 說明 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1:n | 支援語言清單。 |
 | LocalizedResources | 0:n | 當地語系化資源的清單。 |
@@ -54,7 +54,7 @@ ms.locfileid: "87005373"
 
 **SupportedLanguages** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用來做為當地語系化資源的預設語言。 |
 | MergeBehavior | 否 | 列舉值，這些值是與具有相同識別碼之父代原則中存在的 ClaimType 合併的值。 在覆寫基本原則中指定的宣告時，請使用這個屬性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定應該在父代原則中指定的集合結尾後，附加上存在的資料集合。 `Prepend` 值指定應該在父代原則中指定的集合之前，新增存在的資料集合。 `ReplaceAll` 值指定應該忽略父代原則中定義的資料集合，而改用目前原則中定義的資料。 |
@@ -63,7 +63,7 @@ ms.locfileid: "87005373"
 
 **SupportedLanguages** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1:n | 根據 RFC 5646 顯示符合語言標記的內容 - 識別語言的標記。 |
 
@@ -71,13 +71,13 @@ ms.locfileid: "87005373"
 
 **LocalizedResources** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用來唯一識別當地語系化資源的識別碼。 |
 
 **LocalizedResources** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0:n | 定義不同文化中的整個集合。 對於不同的文化特性，集合可以有不同數量的項目和不同的字串。 集合範例會包含宣告類型中出現的列舉。 例如在下拉式清單中，會向使用者顯示國家/地區清單。 |
 | LocalizedStrings | 0:n | 定義各種文化特性中的所有字串，出現在集合中的字串除外。 |
@@ -86,7 +86,7 @@ ms.locfileid: "87005373"
 
 **LocalizedCollections** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1:n | 支援語言清單。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "87005373"
 
 **LocalizedCollection** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 參考原則檔中的 ClaimType 元素或使用者介面元素。 |
 | ElementId | 是 | 此字串包含對 ClaimsSchema 區段中已定義的宣告類型，如果 **ElementType** 設為 ClaimType，則會使用該字串。 |
@@ -102,13 +102,13 @@ ms.locfileid: "87005373"
 
 **LocalizedCollection** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | Item | 0:n | 定義在使用者介面中可供使用者選取的某個宣告選項，例如下拉式清單中的值。 |
 
 **Item** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Text | 是 | 此選項應會在使用者介面中向使用者顯示的易記顯示字串。 |
 | 值 | 是 | 與選取此選項相關聯的字串宣告值。 |
@@ -138,13 +138,13 @@ ms.locfileid: "87005373"
 
 **LocalizedStrings** 元素包含下列元素：
 
-| 元素 | 發生次數 | 說明 |
+| 項目 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1:n | 當地語系化的字串。 |
 
 **LocalizedString** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 可能的值： [ClaimsProvider](#claimsprovider)、 [ClaimType](#claimtype)、 [ErrorMessage](#errormessage)、GetLocalizedStringsTransformationClaimType [、述](#predicate)詞、 [InputValidation](#inputvalidation)或[UxElement](#uxelement)。 [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)   | 
 | ElementId | 是 | 如果 **ElementType** 設定為 `ClaimType` 、 `Predicate` 或，則 `InputValidation` 此元素會包含 ClaimsSchema 區段中已定義之宣告類型的參考。 |
@@ -163,6 +163,7 @@ ms.locfileid: "87005373"
 |述詞使用者訊息|`Predicate`|述詞的名稱| 要當地語系化之述詞的屬性。 可能的值： `HelpText` 。|
 |述詞群組使用者訊息|`InputValidation`|PredicateValidation 元素的識別碼。|PredicateGroup 元素的識別碼。 述詞群組必須是述詞驗證專案的子系，如 ElementId 中所定義。|
 |使用者介面元素 |`UxElement` | | 要當地語系化的使用者介面元素的識別碼。|
+|[顯示控制項](display-controls.md) |`DisplayControl` |顯示控制項的識別碼。 | 要當地語系化的使用者介面元素的識別碼。|
 
 ## <a name="examples"></a>範例
 
@@ -332,7 +333,24 @@ UxElement 值是用來當地語系化其中一個使用者介面元素。 下列
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+### <a name="displaycontrol"></a>DisplayControl
+
+顯示控制項值是用來當地語系化其中一個 [顯示控制項](display-controls.md) 使用者介面元素。 下列範例顯示如何將 [傳送] 和 [驗證] 按鈕當地語系化。 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+在自我判斷技術設定檔的中繼資料區段中，參考的 ContentDefinition 必須將 DataUri 設為 [頁面配置](page-layout.md) 2.1.0 或更高版本。 例如：
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
+```
+
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列文章以取得當地語系化範例：
 

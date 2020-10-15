@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: ea62592ed155215b14666d0d56e09dbb1a83ed6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093458"
+ms.locfileid: "92096312"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>適用于 IoT 的 Azure Defender 架構
 
@@ -29,12 +29,19 @@ ms.locfileid: "92093458"
 適用于 IoT 的 Defender 可連接到 Azure 雲端以及內部部署元件。 解決方案是針對具有多個遠端位置的大型和地理位置分散式環境中的擴充性而設計的。 此解決方案可依國家/地區、區域、業務單位或區域，啟用多層的分散式架構。 
 
 適用于 IoT 的 Azure Defender 包含下列元件： 
-- 適用于 IoT 的 Azure Defender 感應器
-- 管理主控台：
-    - 感應器主控台
-    - 內部部署管理主控台
-    - Azure 入口網站
-- Embedded security agent (安全性模組和 IoT SDK) 
+
+**雲端連線部署**
+
+- 適用于 IoT 的 Azure Defender 感應器 VM 或設備
+- Azure 入口網站雲端管理和整合至 Azure Sentinel
+- 本機網站管理的內部部署管理主控台
+- 內嵌的安全性代理程式 (選擇性) 
+
+** (離線) 部署的空調**
+
+- 適用于 IoT 的 Azure Defender 感應器 VM 或設備
+- 本機網站管理的內部部署管理主控台
+
 
 ![適用于 IoT 的 Defender 架構](./media/architecture/defender-iot-security-architecture.png)
 

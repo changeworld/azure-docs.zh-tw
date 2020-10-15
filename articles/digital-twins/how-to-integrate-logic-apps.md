@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045290"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097519"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -93,9 +93,9 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 接下來，您將設定您所建立的連接器，以連線到 Azure 數位 Twins。
 
-首先，下載已修改為使用 Logic Apps 的自訂 Azure 數位 Twins Swagger。 藉由按下 [*下載 ZIP* ] 按鈕，從此[**連結**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下載**Azure 數位 Twins 自訂 swagger**範例。 流覽至下載的 *Azure_Digital_Twins_Custom_Swaggers.zip* 資料夾並解壓縮。 
+首先，下載已修改為使用 Logic Apps 的自訂 Azure 數位 Twins Swagger。 藉由按下 [*下載 ZIP* ] 按鈕，從此[**連結**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下載**Azure 數位 Twins 自訂 swagger (Logic Apps connector) **範例。 流覽至下載的 *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* 資料夾並解壓縮。 
 
-本教學課程的自訂 Swagger 位於 _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ ] 資料夾中。 此資料夾包含名為 [ *穩定* ] 和 [ *預覽*] 的子資料夾，其中包含依日期組織的不同版本的 Swagger。 具有最新日期的資料夾會包含 Swagger 的最新複本。 無論您選取哪一個版本，Swagger 檔案都會命名為 _**digitaltwins.js開啟**_。
+本教學課程的自訂 Swagger 位於 _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps **_ 資料夾中。此資料夾包含名為 [ *穩定* ] 和 [ *預覽*] 的子資料夾，其中包含依日期組織的不同版本的 Swagger。具有最新日期的資料夾會包含 Swagger 的最新複本。無論您選取哪一個版本，Swagger 檔案都會** 在 * * _ 上命名為 _digitaltwins.js。
 
 > [!NOTE]
 > 除非您使用的是預覽功能，否則通常建議使用最新 *穩定* 版本的 Swagger。 不過，仍支援較早版本和預覽版本的 Swagger。 
@@ -108,7 +108,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 * **自訂連接器**
     - API 端點： REST (保留預設值) 
     - 匯入模式： OpenAPI 檔案 (保留預設) 
-    - 檔案：這會是您稍早下載的自訂 Swagger 檔案。 點擊 [匯 *入*]，在您的電腦上找出 (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.js) 上* 的檔案，然後按 [ *開啟*]。
+    - 檔案：這會是您稍早下載的自訂 Swagger 檔案。 點擊 [匯 *入*]，在您的電腦上找出 (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps \...\digitaltwins.js) 上* 的檔案，然後按 [ *開啟*]。
 * **一般資訊**
     - 圖示：上傳您喜歡的圖示
     - 圖示背景色彩：輸入格式為 ' #xxxxxx ' 的十六進位代碼，以供您的色彩。

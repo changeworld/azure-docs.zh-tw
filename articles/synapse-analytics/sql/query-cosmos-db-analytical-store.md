@@ -9,25 +9,22 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057802"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097247"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 SQL 無伺服器查詢 Azure Cosmos DB 資料 (預覽) 
 
 Synapse SQL 無伺服器 (先前的 SQL 隨選) 可讓您以近乎即時的方式，在已啟用 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 的 Azure Cosmos DB 容器中分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
 
-> [!NOTE]
-> 支援使用 SQL 無伺服器查詢 Azure Cosmos DB 分析存放區目前處於閘道預覽狀態。 Open public preview 將在 [Azure 服務更新](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) 頁面上宣佈。
-
 若要查詢 Azure Cosmos DB，可透過[OPENROWSET](develop-openrowset.md)函式（包括大部分的[SQL 函數和運算子](overview-features.md)）支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)介面區。 您也可以儲存查詢的結果，此查詢會使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)，從 Azure Cosmos DB 中讀取資料，以及 Azure Blob 儲存體中的資料和 Azure Data Lake Storage。 您目前無法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)將 SQL 無伺服器查詢結果儲存至 Azure Cosmos DB。
 
 在本文中，您將瞭解如何使用 SQL 無伺服器來撰寫查詢，該查詢將會從已啟用 Synapse 連結的 Azure Cosmos DB 容器中查詢資料。 然後，您可以在 [本](./tutorial-data-analyst.md) 教學課程中深入瞭解如何透過 Azure Cosmos DB 容器建立 SQL 無伺服器，並將其連接到 Power BI 模型。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 為了支援查詢及分析 Azure Cosmos DB 分析存放區中的資料，SQL 無伺服器會使用下列 `OPENROWSET` 語法：
 
@@ -262,6 +259,15 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 
 - 在**MUST**函式 `OPENROWSET` (（例如) ）之後，必須指定別名 `OPENROWSET (...) AS function_alias` 。 省略別名可能會導致連線問題，而且 Synapse 無伺服器 SQL 端點可能暫時無法使用。 此問題將在2020年11月解決。
 - Synapse 無伺服器 SQL 目前不支援 [Azure Cosmos DB 的完整精確度架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)。 只使用 Synapse 無伺服器 SQL 來存取 Cosmos DB 定義完善的架構。
+
+下表列出可能的錯誤和疑難排解動作清單：
+
+| 錯誤 | 根本原因 |
+| --- | --- |
+| 語法錯誤：<br/> -' Openrowset ' 附近的語法不正確<br/> - `...` 不是可辨識的大量 OPENROWSET 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因<br/> -不使用 ' CosmosDB ' 做為第一個參數，<br/> -使用字串常值，而不是第三個參數中的識別碼，<br/> -未指定第三個參數 (容器名稱)  |
+| CosmosDB 連接字串中發生錯誤 | -未指定帳戶、資料庫、金鑰 <br/> -無法辨識的連接字串中有一些選項。<br/> -分號 `;` 放置於連接字串的結尾 |
+| 解析 CosmosDB 路徑失敗，錯誤為「帳戶/資料庫名稱不正確」 | 找不到指定的帳號名稱或資料庫名稱。 |
+| 解析 CosmosDB 路徑失敗，並出現錯誤「不正確的秘密值 ' ' 秘密為 null 或空白」 | 帳戶金鑰無效或遺失。 |
 
 您可以在 [Azure Synapse 意見反應頁面](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)上報告建議和問題。
 

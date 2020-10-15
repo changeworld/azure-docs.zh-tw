@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610053"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095886"
 ---
 # <a name="initiate-a-storage-account-failover"></a>起始儲存體帳戶容錯移轉
 
@@ -51,7 +51,7 @@ ms.locfileid: "91610053"
 
 1. 確認您的儲存體帳戶已進行異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS) 的設定。 若未設定，請選取 [設定]**** 下方的 [組態]****，將您的帳戶更新為異地備援。
 1. [上次同步時間]**** 屬性會指出次要複本與主要複本相差了多久的時間。 [上次同步時間]**** 可讓您預估在容錯移轉完成後發生資料遺失的程度。 如需有關檢查 [ **上次同步處理時間** ] 屬性的詳細資訊，請參閱 [檢查儲存體帳戶的上次同步時間屬性](last-sync-time-get.md)。
-1. 選取 [ **準備進行容錯移轉**]。
+1. 選取 [準備容錯移轉]。
 1. 檢閱確認對話方塊。 在您準備就緒後，輸入**是**加以確認，並起始容錯移轉。
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="顯示異地複寫和容錯移轉狀態的螢幕擷取畫面":::
@@ -107,6 +107,8 @@ az storage account failover \ --name accountName
 當您為儲存體帳戶起始帳戶容錯移轉時，次要端點的 DNS 記錄將會更新，使次要端點成為主要端點。 在起始容錯移轉之前，請確實了解儲存體帳戶可能會受到的影響。
 
 若要在您起始容錯移轉之前，估計可能遺失資料的程度，請檢查 [ **上次同步處理時間** ] 屬性。 如需有關檢查 [ **上次同步處理時間** ] 屬性的詳細資訊，請參閱 [檢查儲存體帳戶的上次同步時間屬性](last-sync-time-get.md)。
+
+在起始之後，容錯移轉所花費的時間可能會因為通常不到一小時而有所差異。
 
 容錯移轉之後，您的儲存體帳戶類型在新的主要區域中會自動轉換為本地備援儲存體 (LRS)。 您可以為帳戶重新啟用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 請注意，從 LRS 轉換為 GRS 或 RA-GRS 時，會產生額外的費用。 如需詳細資訊，請參閱[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。
 

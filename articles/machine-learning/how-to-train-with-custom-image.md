@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537611"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095937"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
 
@@ -29,7 +29,7 @@ ms.locfileid: "91537611"
 在下列任一環境中執行此程式碼：
 * Azure Machine Learning 計算執行個體 - 不需要下載或安裝
     * 完成 [教學課程：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md) ，以建立使用 SDK 預先載入的專用筆記本伺服器和範例存放庫。
-    * 在 Azure Machine Learning [範例存放庫](https://github.com/Azure/azureml-examples)中，流覽至下列目錄以尋找已完成的筆記本： **如何使用 azureml > ml-架構 > fastai > 定型-自訂-docker** 
+    * 在 Azure Machine Learning [範例存放庫](https://github.com/Azure/azureml-examples)中，流覽至下列目錄以尋找已完成的筆記本： **筆記本 > fastai > resnet34. .ipynb** 
 
 * 您自己的 Jupyter Notebook 伺服器
     * 建立[工作區組態檔](how-to-configure-environment.md#workspace)。

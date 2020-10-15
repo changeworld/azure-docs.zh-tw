@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978623"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096652"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中適用於虛擬機器的 cloud-init 支援
 此文章說明針對 [cloud-init](https://cloudinit.readthedocs.io) \(英文\) 存在的支援，以便在 Azure 中於佈建階段設定虛擬機器 (VM) 或虛擬機器擴展集。 一旦 Azure 佈建資源，這些 cloud-init 設定就會在初次開機時執行。  
@@ -97,10 +97,10 @@ cloud-init 也可在不同的發行版本上運作。 例如，您不使用 **ap
 ### <a name="debian"></a>Debian
 | 發行者 / 版本 | 供應項目 | SKU | 版本 | 映像 cloud-init 就緒 | Azure 上的 cloud-init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| debian (Gen1)  |debian-10 | 10-于 cloudinit |cloud-init-preview| 是 (僅限預覽)  | 否，處於預覽狀態。 |
-| debian (Gen2)  |debian-10 | 10-于 cloudinit-gen2 |cloud-init-preview| 是 (僅限預覽)  | 否，處於預覽狀態。 |
-
-
+| debian (Gen1)  |debian-10 | 10-于 cloudinit |cloud-init-preview| 是 (注意：這是預覽映射 **，不能再使用** ，這將于2021年1月1日移除)  | 否，處於預覽狀態。 |
+| debian (Gen2)  |debian-10 | 10-于 cloudinit-gen2 |cloud-init-preview| 是 (注意：這是預覽映射 **，不能再使用** ，這將于2021年1月1日移除)  | 否，處於預覽狀態。 |
+| debian (Gen1)  |debian-10 | 10-于 cloudinit |10：0.20201013.422| 是 | 是-套件版本的支援： `20.2-2~deb10u1` |
+| debian (Gen2)  |debian-10 | 10-于 cloudinit-gen2 |0.20201013.422| 是 | 是-套件版本的支援： `20.2-2~deb10u1` |
 
 
 目前 Azure Stack 將會支援已啟用 cloud-init 之映像的佈建。

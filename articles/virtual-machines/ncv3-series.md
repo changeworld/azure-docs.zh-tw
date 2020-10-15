@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ab08d23fe7448e50db42ea126e8158ad284b3320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 854c988346bce9be06811d386b3798d2d0427dd7
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653463"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095920"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -25,8 +25,9 @@ NCv3 系列 VM 是由 NVIDIA Tesla V100 GPU 提供技術支援。 這些 GPU 可
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
 
 > [!IMPORTANT]
-> 針對此 VM 系列，訂用帳戶中的 vCPU (core) 配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+> 針對此 VM 系列，訂用帳戶中的 vCPU (core) 配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。 這些 Sku 無法供試用或 Visual Studio 訂閱者 Azure 訂用帳戶使用。 您的訂用帳戶層級可能不支援選取或部署這些 Sku。 
 >
+
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|
 | Standard_NC6s_v3    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |

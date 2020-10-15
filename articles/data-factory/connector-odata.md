@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 146f9ea918f75e0521209d9db712bdcab76a8e7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845760"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096584"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 OData 來源複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,7 +59,8 @@ ms.locfileid: "87845760"
 |:--- |:--- |:--- |
 | type | **type** 屬性必須設為 **OData**。 |是 |
 | url | OData 服務的根 URL。 |是 |
-| authenticationType | 用來連線到 OData 來源的驗證類型。 允許的值為 [ **匿名**]、[ **基本**]、[ **Windows**] 和 [ **>aadserviceprincipal**]。 不支援以使用者為基礎的 OAuth。 | 是 |
+| authenticationType | 用來連線到 OData 來源的驗證類型。 允許的值為 [ **匿名**]、[ **基本**]、[ **Windows**] 和 [ **>aadserviceprincipal**]。 不支援以使用者為基礎的 OAuth。 您可以另外設定屬性中的驗證標頭 `authHeader` 。| 是 |
+| authHeaders | 用於驗證的其他 HTTP 要求標頭。<br/> 例如，若要使用 API 金鑰驗證，您可以選取驗證類型為「匿名」，並在標頭中指定 API 金鑰。 | 否 |
 | userName | 如果使用基本或 Windows 驗證，請指定 **userName**。 | 否 |
 | 密碼 | 針對您指定 **userName** 的使用者帳戶指定 **password**。 將此欄位標記為 **SecureString** 類型，將它安全地儲存在 Data Factory 中。 您也可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 應用程式的用戶端識別碼。 | 否 |
@@ -193,6 +194,31 @@ ms.locfileid: "87845760"
     "connectVia": {
         "referenceName": "<name of Integration Runtime>",
         "type": "IntegrationRuntimeReference"
+    }
+}
+```
+
+**範例6：使用 API 金鑰驗證**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of OData source>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "APIKey": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
     }
 }
 ```
