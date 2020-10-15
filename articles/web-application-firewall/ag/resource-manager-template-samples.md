@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 09/28/2019
 ms.author: victorh
 ms.openlocfilehash: f82603fa33d3fa72191bb17632772541ce5e4ab7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075457"
 ---
 # <a name="azure-resource-manager-templates-for-azure-web-application-firewall"></a>適用於 Azure Web 應用程式防火牆的 Azure Resource Manager 範本

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092740"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070005"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之設定和管理問題：常見問題集 (FAQ)
 
@@ -77,7 +77,7 @@ ms.locfileid: "87092740"
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>為什麼我的雲端服務 TLS/SSL 憑證的憑證鏈未完成？
     
-我們建議客戶安裝完整的憑證鏈結而不是分葉憑證 (分葉憑證、中繼憑證、和根憑證)。 當您安裝分葉憑證時，會依賴 Windows 透過查核 CTL 來建置憑證鏈結。 如果當 Windows 嘗試驗證憑證時，在 Azure 或 Windows Update 中發生間歇性網路或 DNS 問題，就可能會將憑證視為無效。 藉由安裝完整的憑證鏈結，就可以避免這個問題。 [如何安裝鏈結的 SSL 憑證](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)中的部落格會示範如何執行這項操作。
+我們建議客戶安裝完整的憑證鏈結而不是分葉憑證 (分葉憑證、中繼憑證、和根憑證)。 當您安裝分葉憑證時，會依賴 Windows 透過查核 CTL 來建置憑證鏈結。 如果當 Windows 嘗試驗證憑證時，在 Azure 或 Windows Update 中發生間歇性網路或 DNS 問題，就可能會將憑證視為無效。 藉由安裝完整的憑證鏈結，就可以避免這個問題。 [如何安裝鏈結的 SSL 憑證](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate)中的部落格會示範如何執行這項操作。
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>「Windows Azure Tools 擴充功能的加密憑證」用途為何？
 
@@ -111,11 +111,11 @@ Get-AzurePublishSettingsFile
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>「適用於 MachineKey 的 Microsoft Azure 服務管理」憑證的用途為何？
 
-此憑證用來加密 Azure Web 角色上的電腦金鑰。 若要深入瞭解，請參閱 [此諮詢](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此憑證用來加密 Azure Web 角色上的電腦金鑰。 若要深入瞭解，請參閱 [此諮詢](/security-updates/securityadvisories/2018/4092731)。
 
 如需詳細資訊，請參閱下列文章：
-- [如何設定和執行雲端服務的啟動工作](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [常見的雲端服務啟動工作](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [如何設定和執行雲端服務的啟動工作](./cloud-services-startup-tasks.md)
+- [常見的雲端服務啟動工作](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>監視和記錄
 
@@ -139,16 +139,16 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 增加本機資源的配額限制。
 
 如需詳細資訊，請參閱下列文件：
-* [在 Azure 儲存體中儲存和檢視診斷資料](/azure/storage/common/storage-introduction)
-* [IIS 記錄會停止在雲端服務中寫入](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [在 Azure 儲存體中儲存和檢視診斷資料](../storage/common/storage-introduction.md)
+* [IIS 記錄會停止在雲端服務中寫入](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何為雲端服務啟用 WAD 記錄？
 您可以透過下列選項來啟用 Windows Azure 診斷 (WAD) 記錄：
-1. [從 Visual Studio 啟用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [透過 .NET 程式碼啟用](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [透過 PowerShell 啟用](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [從 Visual Studio 啟用](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [透過 .NET 程式碼啟用](./cloud-services-dotnet-diagnostics.md)
+3. [透過 PowerShell 啟用](./cloud-services-diagnostics-powershell.md)
 
-若要取得雲端服務的目前 WAD 設定，您可以使用 [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd 或您可以從入口網站的 [雲端服務] --> [延伸模組] 刀鋒視窗中檢視它。
+若要取得雲端服務的目前 WAD 設定，您可以使用 [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) ps cmd 或您可以從入口網站的 [雲端服務] --> [延伸模組] 刀鋒視窗中檢視它。
 
 
 ## <a name="network-configuration"></a>網路組態
@@ -248,7 +248,7 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 
 有關如何將 Azure 診斷與雲端服務的 Application Insights 整合的詳細資訊，請參閱[傳送雲端服務、虛擬機器或 Service Fabric 診斷資料至 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
-有關啟用雲端服務 Application Insights 的詳細資訊，請參閱 [Azure 雲端服務的 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+有關啟用雲端服務 Application Insights 的詳細資訊，請參閱 [Azure 雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md)
 
 有關如何啟用雲端服務 Azure 診斷記錄的詳細資訊，請參閱[為 Azure 雲端服務和虛擬機器設定診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
@@ -313,7 +313,7 @@ Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-如[這裡](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可能是如下所示其中一個值：
+如[這裡](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10))所述，$sslFlags 可能是如下所示其中一個值：
 
 |值|意義|
 ------|------
@@ -324,7 +324,7 @@ New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddr
  
 **方法 2：使用程式碼**
 
-也可以透過角色啟動中的程式碼來設定 SNI 繫結，如這個[部落格文章](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)所述：
+也可以透過角色啟動中的程式碼來設定 SNI 繫結，如這個[部落格文章](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service)所述：
 
 ```csharp
 //<code snip> 
@@ -356,7 +356,6 @@ Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Whe
 
 以下方法可以降低您的計費，而不會遺失服務的 IP 位址：
 
-1. 在刪除部署之前[保留 IP 位址](../virtual-network/virtual-networks-reserved-public-ip.md)。  只會針對此 IP 位址計費。 如需 IP 位址計費的詳細資訊，請參閱 [IP 位址定價](https://azure.microsoft.com/pricing/details/ip-addresses/)。
+1. 在刪除部署之前[保留 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)。  只會針對此 IP 位址計費。 如需 IP 位址計費的詳細資訊，請參閱 [IP 位址定價](https://azure.microsoft.com/pricing/details/ip-addresses/)。
 2. 刪除部署。 請勿刪除 xxx.cloudapp.net，以便您未來繼續使用。
 3. 如果想要使用您在訂用帳戶中保留的同一保留 IP 來重新部署雲端服務，請參閱[雲端服務和虛擬機器的保留 IP 位址](https://azure.microsoft.com/blog/reserved-ip-addresses/)。
-
