@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334832"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093356"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -486,7 +486,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 - [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [使用角色型存取控制來管理 Azure 備份復原點](./backup-rbac-rs-vault.md)
+- [使用 Azure 角色型存取控制來管理 Azure 備份復原點](./backup-rbac-rs-vault.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
