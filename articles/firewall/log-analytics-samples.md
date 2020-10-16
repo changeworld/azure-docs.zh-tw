@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d4ed76e849385c4edecb7bd97d58087c8e5b4b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023868"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132783"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Azure 防火牆的 Azure 監視器記錄
 
@@ -28,7 +28,7 @@ ms.locfileid: "90023868"
 
 1. 在 Azure 入口網站中開啟 Log Analytics 工作區。
 2. 開啟位於 [一般]**** 底下的 [檢視設計工具]****。
-3. 按一下 [匯入] 。
+3. 按一下 [匯入]  。
 4. 瀏覽並選取您之前所下載的 **AzureFirewall.omsview** 檔案。
 5. 按一下 **[儲存]** 。
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 下列記錄範例顯示記錄專案中包含的資料。
 
-![記錄專案一](media/log-analytics-samples/log1.png)
+:::image type="content" source="media/log-analytics-samples/log1.png" alt-text="記錄專案的螢幕擷取畫面。可以看到多個值，例如時間戳記、通訊協定、埠號碼、動作、規則集合和規則。" border="false":::
 
-![記錄專案二 ](media/log-analytics-samples/log2.png)
+:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="記錄專案的螢幕擷取畫面。可以看到多個值，例如時間戳記、通訊協定、埠號碼、動作、規則集合和規則。" border="false":::
 
-![記錄專案三](media/log-analytics-samples/log3.png)
+:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="記錄專案的螢幕擷取畫面。可以看到多個值，例如時間戳記、通訊協定、埠號碼、動作、規則集合和規則。" border="false":::
 ## <a name="next-steps"></a>後續步驟
 
 若要了解 Azure 防火牆監視與診斷，請參閱[教學課程：監視 Azure 防火牆記錄和計量](tutorial-diagnostics.md)。

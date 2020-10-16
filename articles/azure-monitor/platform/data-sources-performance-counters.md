@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955483"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131185"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 和 Linux 效能資料來源
 Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業系統及應用程式的效能。  Azure 監視器可收集效能計數器，以頻繁間隔進行接近即時 (NRT) 的分析，並彙總較長期分析和報告所需的效能資料。
@@ -25,7 +25,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 對於 Windows 效能計數器，您可以選擇每個效能計數器的特定執行個體。 對於 Linux 效能計數器，您選擇的每個計數器的執行個體會套用至父計數器的所有子計數器。 下表顯示可用於 Linux 和 Windows 效能計數器的常見執行個體。
 
-| 執行個體名稱 | 說明 |
+| 執行個體名稱 | 描述 |
 | --- | --- |
 | \_總計 |所有執行個體的總數 |
 | \* |所有執行個體 |
@@ -75,7 +75,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 下表說明此元素中的參數。
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--|:--|
 | object\_name | 收集的物件名稱。 |
 | instance\_regex |  此「規則運算式」** 定義要收集的執行個體。 值 `.*` 指定所有執行個體。 若只要收集 \_Total 執行個體的處理器計量，您可以指定 `_Total`。 若只要收集 crond 或 sshd 執行個體的程序計量，您可以指定： `(crond\|sshd)`。 |
@@ -98,17 +98,17 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | 邏輯磁碟 | Disk Writes/sec |
 | 邏輯磁碟 | Free Megabytes |
 | 邏輯磁碟 | Logical Disk Bytes/sec |
-| Memory | % Available Memory |
-| Memory | % Available Swap Space |
-| Memory | % Used Memory |
-| Memory | % Used Swap Space |
-| Memory | Available MBytes Memory |
-| Memory | Available MBytes Swap |
-| Memory | Page Reads/sec |
-| Memory | Page Writes/sec |
-| Memory | Pages/sec |
-| Memory | Used MBytes Swap Space |
-| Memory | Used Memory MBytes |
+| 記憶體 | % Available Memory |
+| 記憶體 | % Available Swap Space |
+| 記憶體 | % Used Memory |
+| 記憶體 | % Used Swap Space |
+| 記憶體 | Available MBytes Memory |
+| 記憶體 | Available MBytes Swap |
+| 記憶體 | Page Reads/sec |
+| 記憶體 | Page Writes/sec |
+| 記憶體 | Pages/sec |
+| 記憶體 | Used MBytes Swap Space |
+| 記憶體 | Used Memory MBytes |
 | 網路 | Total Bytes Transmitted |
 | 網路 | Total Bytes Received |
 | 網路 | Total Bytes |
@@ -136,7 +136,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | 系統 | Free Physical Memory |
 | 系統 | Free Space in Paging Files |
 | 系統 | Free Virtual Memory |
-| 系統 | 處理程序 |
+| 系統 | 處理序 |
 | 系統 | Size Stored In Paging Files |
 | 系統 | Uptime |
 | 系統 | 使用者 |
@@ -156,7 +156,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +164,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
@@ -220,7 +220,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [從 Linux 應用程式收集效能計數器](data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。  
 * 將收集的資料匯出至 [Power BI](powerbi.md) 以進行其他視覺效果和分析。

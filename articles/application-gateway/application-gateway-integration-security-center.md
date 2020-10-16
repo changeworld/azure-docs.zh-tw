@@ -9,12 +9,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277196"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131202"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>應用程式閘道與 Azure 資訊安全中心整合概觀
 
@@ -44,7 +44,7 @@ ms.locfileid: "76277196"
 
 如果您有現有的應用程式閘道，您可以在 [使用現有的解決方案]**** 中選擇它。
 
-![新增 web 應用程式防火牆的頁面][4]
+![[新增 Web 應用程式防火牆] 頁面的螢幕擷取畫面。 在 [使用現有解決方案] 下，可以看到應用程式閘道。][4]
 
 透過資訊安全中心將 Web 應用程式新增至應用程式閘道，不會將此資源新增為後端集區成員。 這必須在應用程式閘道資源上直接設定。
 
@@ -62,7 +62,7 @@ ms.locfileid: "76277196"
 
 資訊安全中心會追蹤已新增至應用程式閘道成為受保護資源的應用程式。  它會監視此資源的健康情況，確保它受到應用程式閘道的保護。 下一個步驟是將虛耗網路的私人 IP、公用 IP 或 NIC 新增至應用程式閘道的後端集區。 若不這麼做，會顯示另一個 [完成應用程式保護]**** 建議，直到新增資源。
 
-![新增 web 應用程式防火牆的頁面][5]
+![[完成應用程式保護] 頁面的螢幕擷取畫面，其中會顯示一個應用程式。 文字說明保護應用程式所要採取的步驟。][5]
 
 ## <a name="security-alerts"></a>安全性警示
 

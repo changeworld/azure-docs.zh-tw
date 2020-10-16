@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 4ef53b2249f8ce57255c13126c9310f1c889d64f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94a84220b276edf8eaf539151964715675693dec
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855050"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131372"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -46,9 +46,9 @@ Data Lake Storage Gen2 使用支援角色型存取控制的存取控制模型 (R
 
 RBAC 會使用角色指派，有效地將許可權集套用至 Azure 資源的使用者、群組和服務主體。 一般而言，這些 Azure 資源會限制為最上層資源 (例如，Azure Blob 儲存體帳戶) 。 針對 Azure Blob 儲存體，也 Data Lake Storage Gen2，此機制已擴充至檔案系統資源。
 
-如需有關 RBAC 檔案許可權的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
+如需有關 RBAC 檔案許可權的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)。
 
-如需有關 Acl 的檔案許可權的詳細資訊，請參閱檔案 [和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)。
+如需有關 Acl 的檔案許可權的詳細資訊，請參閱檔案 [和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md)。
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>如何? 在 Data Lake Storage Gen2 中控制資料的存取權嗎？
 

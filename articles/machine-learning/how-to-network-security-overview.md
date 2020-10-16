@@ -1,5 +1,5 @@
 ---
-title: 虛擬網路隔離和隱私權總覽
+title: 虛擬網路隔離和安全性總覽
 titleSuffix: Azure Machine Learning
 description: 使用隔離的 Azure 虛擬網路與 Azure Machine Learning 來保護工作區資源和計算環境。
 services: machine-learning
@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825505"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131933"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -43,7 +43,7 @@ ms.locfileid: "91825505"
 
 下表比較服務如何存取 Azure Machine Learning 網路的不同部分，以及 VNet 和沒有 VNet。
 
-| 狀況 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
+| 案例 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
 |-|-|-|-|-|-|
 |**沒有虛擬網路**| 公用 IP | 公用 IP | 公用 IP | 公用 IP |
 |**保護虛擬網路中的資源**| 私人 IP (私人端點)  | 公用 IP (服務端點)  <br> **等於** <br> 私人 IP (私人端點)  | 私人 IP | 私人 IP  | 

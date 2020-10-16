@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564807"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132069"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義識別碼權杖提示技術設定檔
 
@@ -87,13 +87,13 @@ Id_token_hint 必須是有效的 JWT 權杖。 下表列出必要的宣告。 �
 | 簽發者 | 是 | 識別 (權杖簽發者) 的安全性權杖服務。 此值必須與 JWT 權杖宣告內的宣告相同 `iss` 。 | 
 | IdTokenAudience | 是 | 識別權杖的預定接收者。 必須與 JWT 權杖宣告的宣告 `aud` 遷移相同。 | 
 
-以下是使用對稱金鑰時的相關中繼資料。 
+以下是使用非對稱金鑰時的相關中繼資料。 
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | METADATA| 是 | 指向權杖簽發者設定檔的 URL，也稱為 OpenID 知名設定端點。   |
 | 簽發者 | 否 | 識別 (權杖簽發者) 的安全性權杖服務。 這個值可以用來覆寫中繼資料中設定的值，而且必須與 JWT 權杖宣告內的宣告相同 `iss` 。 |  
-| IdTokenAudience | 否 | 識別權杖的預定接收者。 這個值可以用來覆寫中繼資料中設定的值，而且必須與 JWT 權杖宣告內的宣告相同 `aud` 。 |  
+| IdTokenAudience | 否 | 識別權杖的預定接收者。 必須與 JWT 權杖宣告的宣告 `aud` 遷移相同。 |  
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -219,7 +219,7 @@ New-SelfSignedCertificate `
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <!-- <Item Key="IdTokenAudience">your_optional_audience_override</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

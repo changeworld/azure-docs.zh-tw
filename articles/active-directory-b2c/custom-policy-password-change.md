@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/13/2018
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6faf9fb3d15709d3897db9a77bf14ebf238e8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116365"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131746"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更
 
@@ -24,7 +24,7 @@ ms.locfileid: "87116365"
 
 在 Azure Active Directory B2C (Azure AD B2C) ，您可以讓以本機帳戶登入的使用者變更其密碼，而不需要透過電子郵件驗證來證明其真實性。 如果在使用者進入密碼變更流程時工作階段到期，系統會提示他們重新登入。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼變更。 此外，您也可以為使用者流程設定[自助式密碼重設](user-flow-self-service-password-reset.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -38,7 +38,7 @@ ms.locfileid: "87116365"
         <ClaimType Id="oldPassword">
           <DisplayName>Old Password</DisplayName>
           <DataType>string</DataType>
-          <UserHelpText>Enter password</UserHelpText>
+          <UserHelpText>Enter your old password</UserHelpText>
           <UserInputType>Password</UserInputType>
         </ClaimType>
       </ClaimsSchema>
@@ -179,8 +179,8 @@ ms.locfileid: "87116365"
 
 1. 開啟您所變更的原則。 例如 *B2C_1A_profile_edit_password_change*。
 2. 針對**應用程式**，請選取您先前註冊的應用程式。 若要查看權杖，[回覆 URL]**** 應該顯示 `https://jwt.ms`。
-3. 按一下 [立即執行] ****。 使用您先前建立的帳戶進行登入。 您現在應該有機會變更密碼。
+3. 按一下 [立即執行] ****。 使用您先前建立的帳戶登入。 您現在應該有機會變更密碼。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[在 Azure Active Directory B2C 中使用自訂原則來設定密碼複雜度](custom-policy-password-complexity.md)。

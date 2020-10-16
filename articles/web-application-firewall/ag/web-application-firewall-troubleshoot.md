@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82983069"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131831"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>針對 Azure 應用程式閘道的 Web 應用程式防火牆 (WAF) 進行疑難排解
 
@@ -174,7 +174,7 @@ WAF 記錄的目的是要顯示 WAF 符合或封鎖的每個要求。 它是所�
 
 在此範例中，您可以看到輸入 *1 = 1* 字串的欄位稱為 **text1**。
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="進度 Telerik Fiddler Web 偵錯工具的螢幕擷取畫面。在 [原始] 索引標籤中，您可以在名稱 text1 之後看到 1 = 1。" border="false":::
 
 這是您可以排除的欄位。 若要深入瞭解排除清單，請參閱 [Web 應用程式防火牆要求大小限制與排除清單](application-gateway-waf-configuration.md#waf-exclusion-lists)。 在此情況下，您可以藉由設定下列排除來排除評估：
 
@@ -299,7 +299,7 @@ WAF 記錄的目的是要顯示 WAF 符合或封鎖的每個要求。 它是所�
 
 Fiddler 是一次可用的工具，可尋找要求標頭名稱。 在以下螢幕擷取畫面中，您可以看到此 GET 要求的標頭，其中包含 *內容類型*、 *使用者代理程式*等等。
 
-![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="進度 Telerik Fiddler Web 偵錯工具的螢幕擷取畫面。[原始] 索引標籤會列出要求標頭詳細資料，例如連接、內容類型和使用者代理程式。" border="false":::
 
 另一個查看要求和回應標頭的方式，就是查看 Chrome 的開發人員工具。 您可以按 F12 鍵或按一下滑鼠右鍵 >**檢查**  ->  **開發人員工具**]，然後選取 [**網路**] 索引標籤。載入網頁，然後按一下您要檢查的要求。
 
@@ -334,6 +334,6 @@ Fiddler 是一次可用的工具，可尋找要求標頭名稱。 在以下螢�
      
 若要啟用計量，請在入口網站中選取 [ **計量** ] 索引標籤，然後選取三個計量中的其中一個。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解 [如何在應用程式閘道上設定 web 應用程式防火牆](tutorial-restrict-web-traffic-powershell.md)。

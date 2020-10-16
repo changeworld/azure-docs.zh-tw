@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047415"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132511"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -28,11 +28,11 @@ ms.locfileid: "92047415"
 
 ## <a name="prerequisites-download-the-script"></a>必要條件：下載腳本
 
-範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
+範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 端對端範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
 
-這會將範例專案下載到您的電腦，做為 _**Azure_Digital_Twins_samples.zip**_。 流覽至您電腦上的資料夾，並將其解壓縮以解壓縮檔案。
+這會將範例專案下載到您的電腦，做為 _**Azure_Digital_Twins_end_to_end_samples.zip**_。 流覽至您電腦上的資料夾，並將其解壓縮以解壓縮檔案。
 
-在解壓縮的資料夾中，部署腳本位於_Azure_Digital_Twins_samples > 腳本 > **deploy.ps1** _。
+在解壓縮的資料夾中，部署腳本位於_Azure_Digital_Twins_end_to_end_samples > 腳本 > **deploy.ps1** _。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -55,7 +55,7 @@ ms.locfileid: "92047415"
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選 PowerShell 版本的 Cloud Shell 視窗":::
 
-    流覽至您電腦上的_**deploy.ps1**_ 檔案 (_Azure_Digital_Twins_samples > 腳本 > **deploy.ps1** _) 並點擊 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
+    流覽至您電腦上的_**deploy.ps1**_ 檔案 (_Azure_Digital_Twins_end_to_end_samples > 腳本 > **deploy.ps1** _) 並點擊 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
 
 4. `./deploy.ps1`在 Cloud Shell 視窗中傳送命令，以執行腳本。  (回想一下，若要貼到 Cloud Shell，您可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 您也可以使用滑鼠右鍵功能表。 ) 
 

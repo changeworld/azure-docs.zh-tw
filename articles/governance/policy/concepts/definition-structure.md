@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074255"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132477"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -189,7 +189,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_是否對 **strongType** 有效，請使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 **>strongtype** _資源類型_的格式為 `<Resource Provider>/<Resource Type>` 。 例如 `Microsoft.Network/virtualNetworks/subnets`。
+在 `metadata` 屬性內，您可以使用 **strongType** 在 Azure 入口網站內提供可複選的選項清單。 **strongType** 可以是支援的_資源類型_或允許的值。 若要判斷_資源類型_是否對 **strongType** 有效，請使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 **>strongtype** _資源類型_的格式為 `<Resource Provider>/<Resource Type>` 。 例如： `Microsoft.Network/virtualNetworks/subnets` 。
 
 支援部分不是由 **Get-AzResourceProvider** 傳回的_資源類型_。 這些類型包括：
 
@@ -589,8 +589,8 @@ Azure 原則支援下列類型的效果：
 下列函式僅適用於原則規則：
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime**： [必要] 字串-採用通用 ISO 8601 dateTime 格式的字串 `yyyy-MM-ddTHH:mm:ss.fffffffZ` 。
-  - **numberOfDaysToAdd**： [必要] 整數-要加入的天數。
+  - **dateTime**： [必要] 字串-採用通用 ISO 8601 dateTime 格式 ' Yyyy-mm-dd-ddTHH： MM： ss。SS.FFFFFFFZ
+  - **numberOfDaysToAdd**：[必要] 整數 - 要新增的天數
 - `field(fieldName)`
   - **fieldName**：[必要] 字串 - 要擷取的 [field](#fields) 名稱
   - 從要由 If 條件評估的資源傳回該欄位的值。

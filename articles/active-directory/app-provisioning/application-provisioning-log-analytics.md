@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 4e14bd6365ce53d98d6e0b0d1f2601ff3b3e59b4
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d3fd553e6903951de64c301df94ea9f2fc3eb471
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997213"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132086"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>瞭解布建如何與 Azure 監視器記錄整合
 
@@ -115,7 +115,7 @@ Azure 監視器可讓您設定自訂警示，讓您可以收到與布建相關�
 
 我們會針對應用程式布建查詢和儀表板，採用開放原始碼和以社區為基礎的方法。 如果您已建立您認為其他人會覺得有用的查詢、警示或活頁簿，請務必將它發佈至 [AzureMonitorCommunity GitHub](https://github.com/microsoft/AzureMonitorCommunity)存放庫。 然後讓我們以連結傳送電子郵件。 我們會檢查並將其發佈至服務，讓其他人也能受益。 您可以透過 provisioningfeedback@microsoft.com 來與我們連絡。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Log analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
 - [開始使用 Azure 監視器記錄中的查詢](../../azure-monitor/log-query/get-started-queries.md)

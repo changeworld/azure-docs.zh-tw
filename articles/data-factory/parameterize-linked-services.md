@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276440"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131389"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>在 Azure Data Factory 中將連結服務參數化
 
@@ -38,6 +38,7 @@ ms.locfileid: "91276440"
 在 UI 上撰寫連結服務時，Data Factory 會針對下列類型的連接器提供內建的參數化體驗。 在 [連結服務建立/編輯] 分頁中，您可以找到新參數的選項，並新增動態內容。
 
 - Amazon Redshift
+- Amazon S3
 - Azure Cosmos DB (SQL API) 
 - 適用於 MySQL 的 Azure 資料庫
 - Azure SQL Database

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993164"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132052"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 記錄
 
@@ -26,7 +26,7 @@ ms.locfileid: "91993164"
 此處所述的詳細活動記錄應該 **只** 在開發自訂原則期間啟用。
 
 > [!WARNING]
-> 請勿在生產環境中啟用開發模式。 記錄會收集所有與身分識別提供者一起傳送的宣告。 身為開發人員，您必須負責 Application Insights 記錄中收集的任何個人資料。 只有當原則是以 **開發人員模式**放置時，才會收集這些詳細的記錄檔。
+> 請勿 `DeploymentMode` `Developer` 在生產環境中將設定為。 記錄會收集所有與身分識別提供者一起傳送的宣告。 身為開發人員，您必須負責 Application Insights 記錄中收集的任何個人資料。 只有當原則是以 **開發人員模式**放置時，才會收集這些詳細的記錄檔。
 
 ## <a name="set-up-application-insights"></a>設定 Application Insights
 
@@ -58,7 +58,7 @@ ms.locfileid: "91993164"
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * `DeveloperMode="true"` 告知 ApplicationInsights 透過處理管線加速遙測。 適用于開發，但限制于大量的磁片區。
+    * `DeveloperMode="true"` 告知 ApplicationInsights 透過處理管線加速遙測。 適用于開發，但限制于大量的磁片區。 在生產環境中，將設定 `DeveloperMode` 為 `false` 。
     * `ClientEnabled="true"` 傳送 ApplicationInsights 用戶端腳本，以追蹤頁面流覽和用戶端錯誤。 您可以在 Application Insights 入口網站的 **browserTimings** 資料表中加以查看。 藉由設定 `ClientEnabled= "true"` ，您可以將 Application Insights 新增至頁面腳本，並取得頁面載入和 ajax 呼叫、計數、瀏覽器例外狀況和 ajax 失敗詳細資料，以及使用者和會話計數的時間。 這個欄位是 **選擇性**欄位，預設會設定為 `false` 。
     * `ServerEnabled="true"` 會將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。
 
@@ -103,7 +103,32 @@ ms.locfileid: "91993164"
 
 如需查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](../azure-monitor/log-query/log-query-overview.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="configure-application-insights-in-production"></a>在生產環境中設定 Application Insights
+
+若要改善生產環境的效能和更佳的使用者體驗，請務必設定您的原則，以忽略不重要的訊息。 使用下列設定，只將嚴重的錯誤訊息傳送到您的 Application Insights。 
+
+1. 將 `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) 的屬性設定為 `Production` 。 
+
+   ```xml
+   <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+   TenantId="yourtenant.onmicrosoft.com"
+   PolicyId="B2C_1A_signup_signin"
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin"
+   DeploymentMode="Production"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+   ```
+
+1. 將 `DeveloperMode` [JourneyInsights](relyingparty.md#journeyinsights) 的設定為 `false` 。
+
+   ```xml
+   <UserJourneyBehaviors>
+     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="false" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   </UserJourneyBehaviors>
+   ```
+   
+1. 上傳並測試您的原則。
+
+## <a name="next-steps"></a>後續步驟
 
 該社群已開發了使用者旅程圖檢視器，可協助身分識別開發人員。 它會讀取您的 Application Insights 執行個體，並提供結構良好的使用者旅程圖事件檢視。 請取得原始碼，並將它部署在您自己的解決方案中。
 

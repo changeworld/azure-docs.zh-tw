@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048044"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131491"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
@@ -22,7 +22,7 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 
 此操作說明文件將逐步解說撰寫可從 IoT 中樞內嵌遙測資料的 Azure 函式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 繼續進行此範例之前，您必須將下列資源設定為必要條件：
 * **IoT 中樞**。 如需相關指示，請參閱[此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 iot 中樞*一節。
@@ -242,7 +242,7 @@ namespace IotHubtoTwins
 
 ## <a name="send-simulated-iot-data"></a>傳送模擬的 IoT 資料
 
-若要測試新的輸入函式，請使用教學課程中的裝置模擬器 [*：連接端對端解決方案*](./tutorial-end-to-end.md)。 該教學課程是以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 範例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將會在該存放庫中使用 **devicesimulator.exe** 專案。
+若要測試新的輸入函式，請使用教學課程中的裝置模擬器 [*：連接端對端解決方案*](./tutorial-end-to-end.md)。 該教學課程是以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 端對端範例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將會在該存放庫中使用 **devicesimulator.exe** 專案。
 
 在端對端教學課程中，完成下列步驟：
 1. [*向 IoT 中樞註冊模擬裝置*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

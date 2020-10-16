@@ -10,16 +10,16 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503934"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131593"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案，以及 ACL
 
-本文介紹如何使用 [Azure 命令列介面 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)，在具有階層命名空間的儲存體帳戶，建立並管理目錄、檔案以及權限。 
+本文介紹如何使用 [Azure 命令列介面 (CLI)](https://docs.microsoft.com/cli/azure/)，在具有階層命名空間的儲存體帳戶，建立並管理目錄、檔案以及權限。 
 
 [範例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  | [提供意見](https://github.com/Azure/azure-cli-extensions/issues)反應
 
@@ -32,14 +32,14 @@ ms.locfileid: "87503934"
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>請確保您已安裝正確版本的 Azure CLI
 
-1. 開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或如果您已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
+1. 開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，或如果您已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI，請開啟命令主控台應用程式，例如 Windows PowerShell。
 
 2. 使用下列命令，確認已安裝的 Azure CLI 版本為 `2.6.0` 或更高版本。
 
    ```azurecli
     az --version
    ```
-   如果您的 Azure CLI 版本低於 `2.6.0`，請安裝較新的版本。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+   如果您的 Azure CLI 版本低於 `2.6.0`，請安裝較新的版本。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="connect-to-the-account"></a>連線到帳戶
 
@@ -216,7 +216,7 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-permissions"></a>管理權限
+## <a name="manage-access-control-lists-acls"></a> (Acl) 管理存取控制清單
 
 您可以取得、設定及更新目錄和檔案的存取權限。
 
@@ -273,7 +273,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 下圖顯示設定檔案的 ACL 之後的輸出。
 
-![取得 ACL 輸出](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![取得 ACL 輸出2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
 在此範例中，擁有使用者和擁有群組只有讀取和寫入權限。 所有其他使用者具備寫入和執行權限。 如需存取控制清單的詳細資訊，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](data-lake-storage-access-control.md)。
 

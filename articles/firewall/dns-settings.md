@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610637"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132001"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure 防火牆 DNS 設定 (預覽) 
 
@@ -30,7 +30,7 @@ DNS 伺服器會維護並將功能變數名稱解析為 IP 位址。 根據預�
 
 1. 在 [Azure 防火牆 **設定**] 下，選取 [ **DNS 設定**]。
 2. 在 [ **DNS 伺服器**] 下，您可以輸入或新增先前在虛擬網路中指定的現有 DNS 伺服器。
-3. 選取 [儲存]****。
+3. 選取 [儲存]。
 4. 防火牆現在會將 DNS 流量導向至指定的 DNS 伺服器 (s) 以進行名稱解析。
 
 :::image type="content" source="media/dns-settings/dns-servers.png" alt-text="DNS 伺服器":::
@@ -56,7 +56,8 @@ DNS Proxy 設定需要三個步驟：
 2. 選取 [設定] 底下的 [DNS 伺服器]。
 3. 選取 [ **DNS 伺服器**] 下的 [**自訂**]。
 4. 輸入防火牆的私人 IP 位址。
-5. 選取 [儲存]****。
+5. 選取 [儲存]。
+6. 將連線到虛擬網路的 VM 重新啟動，讓這些 VM 獲得新的 DNS 伺服器設定。 這些 VM 會繼續使用其目前的 DNS 設定，直到您將其重新啟動。
 
 #### <a name="enable-dns-proxy-preview"></a>啟用 DNS proxy (預覽) 
 
@@ -64,10 +65,10 @@ DNS Proxy 設定需要三個步驟：
 2. 在 [ **設定**] 底下，選取 [ **DNS 設定**]。
 3. 預設會停用 **DNS Proxy** 。 啟用時，防火牆會接聽埠53，並將 DNS 要求轉送至設定的 DNS 伺服器。
 4. 請檢查 **DNS 伺服器** 設定，以確定設定適用于您的環境。
-5. 選取 [儲存]****。
+5. 選取 [儲存]。
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS 伺服器":::
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [網路規則中的 FQDN 篩選](fqdn-filtering-network-rules.md)

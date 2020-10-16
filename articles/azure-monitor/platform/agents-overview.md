@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: de9623eb0eb14957c1554b7b0f74baa256a15d47
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 8ca6794024d3a6327b918eb1c369a627837e0bd0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108383"
+ms.locfileid: "92131015"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -148,9 +148,9 @@ Azure 診斷擴充功能的限制包括：
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br> (包括多會話) 和 Pro  | X | X | X | X |
-| Windows 8 企業版和專業版                             |   | X | X |   |
-| Windows 7 SP1                                            |   | X | X |   |
+| Windows 10 Enterprise<br> (包括多會話) 和 Pro<br> (伺服器案例僅)   | X | X | X | X |
+| Windows 8 企業版和專業版<br> (伺服器案例僅)   |   | X | X |   |
+| Windows 7 SP1<br> (伺服器案例僅)                  |   | X | X |   |
 
 
 ### <a name="linux"></a>Linux

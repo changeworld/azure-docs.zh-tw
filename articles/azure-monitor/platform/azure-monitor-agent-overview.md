@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263771"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132698"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
 Azure 監視器代理程式 (AMA) 會從虛擬機器的客體作業系統收集監視資料，並將其傳遞至 Azure 監視器。 本文概述 Azure 監視器代理程式，包括如何安裝，以及如何設定資料收集。
@@ -84,7 +84,7 @@ Azure 監視器代理程式會將資料傳送至 Azure 監視器計量或支援 
 
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
-請參閱 [支援的作業系統](agents-overview.md#supported-operating-systems) ，以取得 Log Analytics 代理程式目前支援的 Windows 和 Linux 作業系統版本清單。
+請參閱 [支援的作業系統](agents-overview.md#supported-operating-systems) ，以取得 Azure 監視器代理程式目前支援的 Windows 和 Linux 作業系統版本清單。
 
 
 
@@ -99,7 +99,7 @@ Azure 監視器代理程式會實作為 [AZURE VM 擴充](../../virtual-machines
 
 | 屬性 | Windows | Linux |
 |:---|:---|:---|
-| 發行者 | Microsoft Azure 監視器  | Microsoft Azure 監視器 |
+| Publisher | Microsoft Azure 監視器  | Microsoft Azure 監視器 |
 | 類型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
 | TypeHandlerVersion  | 1.0 | 1.5 |
 

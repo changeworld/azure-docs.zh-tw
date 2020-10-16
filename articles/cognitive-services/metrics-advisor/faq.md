@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046803"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131678"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>計量顧問常見問題
 
@@ -31,7 +31,7 @@ ms.locfileid: "92046803"
 
 :::image type="content" source="media/pricing.png" alt-text="F0 資源已存在時的訊息":::
 
-在公開預覽期間，只允許在單一區域中的訂用帳戶下建立一個計量建議程式實例。
+在公開預覽期間，只能在訂用帳戶下的每個區域中建立一個計量建議程式實例。
 
 如果您已經有使用相同訂用帳戶在相同區域中建立的實例，您可以嘗試不同的區域或不同的訂用帳戶來建立新的實例。 您也可以刪除現有的實例，以建立一個新的實例。
 
@@ -108,6 +108,40 @@ ms.locfileid: "92046803"
 
 如果您的資料通常很不穩定，而且您想要在它變得太穩定或甚至變成平坦線時收到警示，您可以設定「變更臨界值」，以便在變更太小時偵測這類資料點。
 請參閱 [異常偵測](how-tos/configure-metrics.md#anomaly-detection-methods) 設定以取得詳細資料。
+
+## <a name="advanced-concepts"></a>進階概念
+
+### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>計量審查程式如何建立多維度計量的事件樹狀結構？
+
+度量可以依維度分割成多個時間序列。 例如， `Response latency` 會針對小組擁有的所有服務監視度量。 `Service`類別目錄可以用來做為擴充計量的維度，因此我們會 `Response latency` 依 `Service1` 、等來分割 `Service2` 。 每個服務都可以部署在多個資料中心的不同電腦上，因此度量可以進一步依 `Machine` 和分割 `Data center` 。
+
+|服務| 資料中心| 電腦  | 
+|----|------|----------------   |
+| S1 |  DC1 |   M1 |
+| S1 |  DC1 |   M2 |
+| S1 |  DC2 |   M3 |
+| S1 |  DC2 |   M4 |
+| S2 |  DC1 |   M1 |
+| S2 |  DC1 |   M2 |
+| S2 |  DC2 |   M5 |
+| S2 |  DC2 |   M6 |
+| ...|      |      |
+
+從總計開始 `Response latency` ，我們可以依、和來向下切入 `Service` 度量 `Data center` `Machine` 。 不過，可能更適合服務擁有者使用路徑 `Service`  ->  `Data center`  ->  `Machine` ，或可能更適合基礎結構工程師使用此路徑 `Data Center`  ->  `Machine`  ->  `Service` 。 這完全取決於使用者的個別商務需求。 
+
+在計量建議程式中，使用者可以指定想要從階層式拓撲的一個節點向下切入或匯總的任何路徑。 更精確地說，階層式拓撲是有向非迴圈的圖形，而不是樹狀結構。 有完整的階層式拓撲，其中包含所有可能的維度組合，如下所示： 
+
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="F0 資源已存在時的訊息" lightbox="media/dimension-combinations-view.png":::
+
+理論上，如果維度 `Service` 有 `Ls` 相異的值、維度 `Data center` 有 `Ldc` 相異的值，而且維度 `Machine` 有相異的值 `Lm` ，則階層式拓撲中可能會有 `(Ls + 1) * (Ldc + 1) * (Lm + 1)` 維度組合。 
+
+但通常並非所有的維度組合都有效，這可以大幅降低複雜度。 目前，如果使用者匯總了度量本身，就不會限制維度的數目。 如果您需要使用計量審查程式所提供的匯總功能，維度數目不應超過6。 不過，我們會將計量的時間序列數目限制為小於10000的維度。
+
+[診斷] 頁面中的 [ **事件樹狀結構** ] 工具只會顯示偵測到異常的節點，而不是整個拓撲。 這是為了協助您專注于目前的問題。 它也可能不會顯示度量內的所有異常，而是會根據投稿顯示最高的異常。 如此一來，我們可以快速找出異常資料的影響、範圍和散佈路徑。 這可大幅減少我們必須專注的異常數量，並協助使用者瞭解並找出其主要問題。 
+ 
+例如，在發生異常狀況時 `Service = S2 | Data Center = DC2 | Machine = M5` ，異常的偏差會影響同時偵測到異常的父節點 `Service= S2` ，但異常情況並不會影響上的整個資料中心 `DC2` 和上的所有服務 `M5` 。 事件樹狀結構的建立方式如下列螢幕擷取畫面所示，最常見的異常是在上捕捉， `Service = S2` 而根本原因可在兩個路徑中進行分析 `Service = S2 | Data Center = DC2 | Machine = M5` 。
+
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5個標示為頂點的頂點，其中有兩個不同的路徑以邊緣與標示 S2 的一般節點連接。最常見的異常是在服務 = S2 上所捕捉，而根本原因可以由兩個路徑來分析，而這兩個路徑會導致服務 = S2 |資料中心 = DC2 |電腦 = M5" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>後續步驟
 - [Metrics Advisor 概觀](overview.md)

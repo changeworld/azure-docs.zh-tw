@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a54c77844498beb4fd052153cbcf8cbe498cdb75
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037179"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132205"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>對 AzCopy 進行設定、最佳化及疑難排解
 
@@ -23,7 +23,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 > 如果您要尋找可協助您開始使用 AzCopy 的內容，請參閱下列文章：
 > - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 > - [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
-> - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
+> - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 > - [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>進行 Proxy 設定
