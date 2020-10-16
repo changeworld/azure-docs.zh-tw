@@ -4,12 +4,12 @@ description: 如何為 Azure Batch 集區中的計算節點選取可用的 VM �
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271302"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107499"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
 
@@ -24,7 +24,7 @@ ms.locfileid: "91271302"
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虛擬機器組態中的集區
 
-虛擬機器設定中的 Batch 集區支援幾乎所有 VM 大小 ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md))。 請參閱下表，以深入了解支援的大小和限制。
+虛擬機器設定中的 Batch 集區支援幾乎所有 VM 大小 ([Linux](../virtual-machines/sizes.md)、[Windows](../virtual-machines/sizes.md))。 請參閱下表，以深入了解支援的大小和限制。
 
 | VM 系列  | 支援的大小 |
 |------------|---------|

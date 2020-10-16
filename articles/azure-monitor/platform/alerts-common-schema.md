@@ -4,12 +4,12 @@ description: 瞭解常見的警示架構、使用它的原因，以及如何加�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539477"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108825"
 ---
 # <a name="common-alert-schema"></a>一般警示結構描述
 
@@ -39,7 +39,7 @@ ms.locfileid: "86539477"
 
 新的架構也可讓您在未來的 Azure 入口網站和 Azure 行動應用程式之間提供更豐富的警示耗用量體驗。 
 
-[深入瞭解 Webhook/Logic Apps/Azure Functions/Automation Runbook 的架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
+[深入瞭解 Webhook/Logic Apps/Azure Functions/Automation Runbook 的架構定義。](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > 下列動作不支援一般警示架構： ITSM 連接器。
@@ -118,7 +118,7 @@ ms.locfileid: "86539477"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [Webhook/Logic Apps/Azure Functions/Automation Runbook 的一般警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
-- [瞭解如何建立邏輯應用程式，以利用一般警示架構來處理您所有的警示。](./alerts-common-schema-integrations.md) 
+- [Webhook/Logic Apps/Azure Functions/Automation Runbook 的一般警示架構定義。](./alerts-common-schema-definitions.md)
+- [瞭解如何建立邏輯應用程式，以利用一般警示架構來處理您所有的警示。](./alerts-common-schema-integrations.md)

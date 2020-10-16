@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48336b65ec564f834ef8a1e8f4911c89b1a37f31
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802053"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107941"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure 監視器的監視資料來源
 Azure 監視器是以包含[記錄](data-platform-logs.md)和[計量](data-platform-metrics.md)的[一般監視資料平臺](data-platform.md)為基礎。 將資料收集到這個平臺，可讓您使用 Azure 監視器中的一組通用工具來分析多個資源的資料。 您也可以將監視資料傳送至其他位置以支援特定案例，而某些資源可能會在收集到記錄檔或計量之前，寫入至其他位置。
@@ -20,7 +20,7 @@ Azure 監視器是以包含[記錄](data-platform-logs.md)和[計量](data-platf
 
 ## <a name="application-tiers"></a>應用程式層
 
-來自 Azure 應用程式的監視資料來源可以組織成各層，最高層級是您的應用程式本身，而較低層是 Azure 平臺的元件。 存取每一層資料的方法會有所不同。 下表將摘要說明應用層，而每一層中的監視資料來源會在下列各節中顯示。 請參閱 [Azure 中的監視資料位置](data-locations.md) ，以取得每個資料位置的說明，以及您可以如何存取其資料。
+來自 Azure 應用程式的監視資料來源可以組織成各層，最高層級是您的應用程式本身，而較低層是 Azure 平臺的元件。 存取每一層資料的方法會有所不同。 下表將摘要說明應用層，而每一層中的監視資料來源會在下列各節中顯示。 請參閱 [Azure 中的監視資料位置](../monitor-reference.md) ，以取得每個資料位置的說明，以及您可以如何存取其資料。
 
 
 ![監視層級](../media/overview/overview.png)
@@ -208,4 +208,4 @@ Azure 中的其他服務會將資料寫入 Azure 監視器資料平臺。 這可
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Azure 監視器所收集的監視資料類型](data-platform.md)，以及如何檢視及分析這項資料。
-- 列出 [Azure 資源儲存資料的不同位置](data-locations.md) ，以及您可以存取的方式。 
+- 列出 [Azure 資源儲存資料的不同位置](../monitor-reference.md) ，以及您可以存取的方式。

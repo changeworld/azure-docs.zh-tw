@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372658"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108451"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的規模調整和主控
 
@@ -26,7 +26,7 @@ ms.locfileid: "91372658"
 
 Premium 方案提供額外的功能，例如高階計算實例、可讓實例無限期地保留，以及 VNet 連線能力。
 
-App Service 方案可讓您利用您管理的專用基礎結構。 您的函數應用程式不會根據事件進行調整，這表示永遠不會相應縮小為零。  (需要啟用 [ [永遠開啟](#always-on) ]。 ) 
+App Service 方案可讓您利用您管理的專用基礎結構。 您的函數應用程式不會根據事件進行調整，這表示它永遠不會相應縮小為零。  (需要啟用 [ [永遠開啟](#always-on) ]。 ) 
 
 如需各種主控方案之間的詳細比較 (包括以 Kubernetes 為基礎的裝載) ，請參閱「 [主控方案比較」一節](#hosting-plans-comparison)。
 
@@ -45,7 +45,7 @@ App Service 方案可讓您利用您管理的專用基礎結構。 您的函數�
 
 若要深入瞭解如何在取用方案中執行時預估成本，請參閱 [瞭解使用量方案成本](functions-consumption-costs.md)。
 
-## <a name="premium-plan"></a><a name="premium-plan"></a>進階方案
+## <a name="premium-plan"></a><a name="premium-plan"></a>Premium 方案
 
 當您使用高階方案時，會根據傳入事件的數目（如同取用方案）來新增和移除 Azure Functions 主機的實例。  Premium 方案支援下列功能：
 
@@ -168,7 +168,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 
 函數應用程式中有多個面向會影響其調整規模的效果，包括主機設定、執行階段耗用量和資源效率。  如需詳細資訊，請參閱[效能考量文章中的延展性一節](functions-best-practices.md#scalability-best-practices)。 您也應了解在縮放函式應用程式後，連線會如何運作。 如需詳細資訊，請參閱[如何管理 Azure Functions 中的連線](manage-connections.md)。
 
-如需在 Python 和 Node.js 中進行調整的詳細資訊，請參閱 [Azure Functions python 開發人員指南-調整規模和並行](functions-reference-python.md#scaling-and-concurrency) 存取和 [Azure Functions Node.js 開發人員指南-調整規模和並行](functions-reference-node.md#scaling-and-concurrency)存取。
+如需在 Python 和 Node.js 中進行調整的詳細資訊，請參閱 [Azure Functions python 開發人員指南-調整規模和並行](functions-reference-python.md#scaling-and-performance) 存取和 [Azure Functions Node.js 開發人員指南-調整規模和並行](functions-reference-node.md#scaling-and-concurrency)存取。
 
 ### <a name="billing-model"></a>計費模式
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD 應用程式 Proxy 的常見問題 |Microsoft Docs
+title: Azure Active Directory 應用程式 Proxy 常見問題
 description: 瞭解常見問題的解答 (常見問題) 有關使用 Azure AD 應用程式 Proxy 將內部內部部署應用程式發佈至遠端使用者的常見問題。
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589158"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104558"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 常見問題
 
@@ -57,7 +57,7 @@ ms.locfileid: "88589158"
 應用程式 Proxy 連接器會對 Azure 執行以憑證為基礎的驗證。 TLS 終止 (TLS/HTTPS 檢查或加速) 會中斷此驗證方法，而且不受支援。 從連接器到 Azure 的流量，必須略過任何正在執行 TLS 終止的裝置。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>所有連接都需要 TLS 1.2 嗎？
-是。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
+可以。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>我可以在連接器伺服器 (s) 和後端應用程式伺服器之間放置轉寄 proxy 裝置嗎？
 是，從連接器版本1.5.1526.0 開始支援此案例。 請參閱使用 [現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -83,7 +83,6 @@ ms.locfileid: "88589158"
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
-
 
 ## <a name="application-configuration"></a>應用程式設定
 
@@ -124,6 +123,12 @@ ms.locfileid: "88589158"
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM 驗證是否與 Azure AD 的應用程式 Proxy 搭配運作？
 
 NTLM 驗證無法用作預先驗證或單一登入方法。 只有當您可以直接在用戶端和已發佈的 web 應用程式之間進行協商時，才可以使用 NTLM 驗證。 使用 NTLM 驗證通常會導致登入提示出現在瀏覽器中。
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>是否可以在 B2B IWA 單一登入案例中使用登入身分識別「內部部署使用者主體名稱」或「內部部署 SAM 帳戶名稱」？
+
+否，這無法運作，因為 Azure AD 中的來賓使用者沒有上述任何登入身分識別所需的屬性。
+
+在此情況下，會有「使用者主體名稱」的回復。 如需 B2B 案例的詳細資訊，請參閱 [授與 b2b 使用者 Azure AD 存取內部部署應用程式的許可權](../external-identities/hybrid-cloud-to-on-premises.md)。
 
 ## <a name="pass-through-authentication"></a>傳遞驗證
 
@@ -185,7 +190,7 @@ Windows Admin Center (WAC) 或遠端桌面 Web 用戶端 (HTML5) 中 (檢視、P
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用連結轉譯會影響效能嗎？
 
-是。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中的硬式編碼連結，並將其取代為其各自發布的外部 Url，然後再呈現給使用者。 
+可以。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中的硬式編碼連結，並將其取代為其各自發布的外部 Url，然後再呈現給使用者。 
 
 為了達到最佳效能，建議您設定 [自訂網域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)，以使用相同的內部和外部 url。 如果無法使用自訂網域，您可以在行動裝置上使用我的應用程式安全登入延伸模組或 Microsoft Edge 瀏覽器，以改善連結轉譯效能。 請參閱 [針對使用 Azure AD 應用程式 Proxy 發佈的應用程式重新導向硬式編碼連結](application-proxy-configure-hard-coded-link-translation.md)。
 
@@ -198,5 +203,5 @@ Windows Admin Center (WAC) 或遠端桌面 Web 用戶端 (HTML5) 中 (檢視、P
 1. 使用萬用字元以個別的應用程式發佈 HTTP 和 HTTPS Url，但為每個 Url 提供不同的自訂網域。 這種設定將會運作，因為它們具有不同的外部 URL。
 
 2. 透過萬用字元應用程式發佈 HTTPS URL。 使用下列應用程式 Proxy PowerShell Cmdlet 來分開發布 HTTP 應用程式：
-   - [應用程式 Proxy 應用程式管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [應用程式 Proxy 連接器管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [應用程式 Proxy 應用程式管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [應用程式 Proxy 連接器管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

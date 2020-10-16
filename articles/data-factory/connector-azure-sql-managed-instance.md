@@ -1,6 +1,6 @@
 ---
-title: 將資料複製到 Azure SQL 受控執行個體或從中複製資料
-description: 瞭解如何使用 Azure Data Factory 將資料移入和移出 Azure SQL 受控執行個體。
+title: 在 Azure SQL 受控執行個體中複製和轉換資料
+description: 瞭解如何使用 Azure Data Factory 在 Azure SQL 受控執行個體中複製和轉換資料。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,31 +10,30 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 3a9216c665cfdcdaf07980ace0399fd927885262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: a8b79cea8d502222d08dd3f1f0fb40d1982f565d
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332112"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107737"
 ---
-# <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure SQL 受控執行個體或從中複製資料
+# <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure SQL 受控執行個體中的資料
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料複製到 Azure SQL 受控執行個體或從中複製資料。 它是以「 [複製活動」總覽](copy-activity-overview.md) 文章為基礎，提供複製活動的一般總覽。
+本文概述如何使用 Azure Data Factory 中的複製活動，將資料從 Azure SQL 受控執行個體複製和複製到 Azure SQL，並使用資料流程來轉換 Azure SQL 受控執行個體中的資料。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
 下列活動支援此 SQL 受控執行個體連接器：
 
 - 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
+- [對應資料流程](concepts-data-flow-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [GetMetadata 活動](control-flow-get-metadata-activity.md)
 
-您可以將資料從 SQL 受控執行個體複製到任何支援的接收資料存放區。 您也可以將資料從任何支援的來源資料存放區複製到 SQL 受控執行個體。 如需複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
-
-具體來說，這個 SQL 受控執行個體連接器支援：
+針對複製活動，此 Azure SQL Database 連接器支援下列功能：
 
 - 使用 SQL 驗證和 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配服務主體或適用于 Azure 資源的受控識別來複製資料。
 - 作為來源，使用 SQL 查詢或預存程式來抓取資料。 您也可以選擇從 SQL MI 來源進行平行複製，如需詳細資料，請參閱 [SQL mi 的平行複製](#parallel-copy-from-sql-mi) 一節。
@@ -638,9 +637,77 @@ END
     }
     ```
 
+## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
+
+在對應資料流程中轉換資料時，您可以從 Azure SQL 受控執行個體讀取和寫入資料表。 如需詳細資訊，請參閱對應資料流程中的[來源轉換](data-flow-source.md)和[接收轉換](data-flow-sink.md)。
+
+> [!NOTE]
+> Azure SQL 受控執行個體 connector in Mapping 資料流程目前以公開預覽形式提供。 您可以連線到 SQL 受控執行個體公用端點，但尚未連接到私人端點。
+
+### <a name="source-transformation"></a>來源轉換
+
+下表列出 Azure SQL 受控執行個體來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
+
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Table | 如果您選取資料表做為輸入，資料流程就會從資料集所指定的資料表中提取所有資料。 | 否 | - |- |
+| 查詢 | 如果您選取 [查詢為輸入]，請指定要從來源提取資料的 SQL 查詢，這會覆寫您在資料集中指定的任何資料表。 使用查詢是減少測試或查閱資料列的絕佳方法。<br><br>不支援**Order By**子句，但您可以設定完整的 SELECT FROM 語句。 您也可使用使用者定義的資料表函數。 **select * From udfGetData ( # B1 ** 是 SQL 中的 UDF，會傳回您可以在資料流程中使用的資料表。<br>查詢範例： `Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | String | 查詢 |
+| 批次大小 | 指定批次大小以將大型資料區塊為讀取。 | 否 | 整數 | batchSize |
+| 隔離等級 | 選擇下列其中一個隔離等級：<br>-讀取認可<br>-讀取未認可的 (預設) <br>-可重複讀取<br>-Serializable<br>-無 (忽略隔離等級)  | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>沒有</small> |isolationLevel |
+
+#### <a name="azure-sql-managed-instance-source-script-example"></a>Azure SQL 受控執行個體來源腳本範例
+
+當您使用 Azure SQL 受控執行個體作為來源類型時，相關聯的資料流程腳本為：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SQLMISource
+```
+
+### <a name="sink-transformation"></a>接收轉換
+
+下表列出 Azure SQL 受控執行個體接收所支援的屬性。 您可以在 [ **接收選項** ] 索引標籤中編輯這些屬性。
+
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update 方法 | 指定您的資料庫目的地允許哪些作業。 預設僅允許插入。<br>若要更新、upsert 或刪除資料列，則需要 [Alter row 轉換](data-flow-alter-row.md) 來標記這些動作的資料列。 | 是 | `true` 或 `false` | 刪除 <br/>插入 <br/>更新 <br/>upsertable |
+| 索引鍵資料行 | 針對更新、upsert 和刪除，必須設定索引鍵資料行 (s) ，以決定要改變的資料列。<br>您選擇做為索引鍵的資料行名稱將會用來做為後續更新、upsert、刪除的一部分。 因此，您必須挑選存在於接收對應中的資料行。 | 否 | Array | 金鑰 |
+| 略過寫入索引鍵資料行 | 如果您不想將值寫入至索引鍵資料行，請選取 [略過寫入索引鍵資料行]。 | 否 | `true` 或 `false` | skipKeyWrites |
+| 資料表動作 |決定在寫入之前，是否要重新建立或移除目的地資料表中的所有資料列。<br>- **None**：不會對資料表執行任何動作。<br>- **重新**建立：資料表將被捨棄並重新建立。 如果要動態建立新的資料表，則為必要。<br>- **截斷**：目標資料表中的所有資料列都會被移除。 | 否 | `true` 或 `false` | 重建<br/>truncate |
+| 批次大小 | 指定每個批次中寫入的資料列數目。 較大的批次大小會改善壓縮和記憶體優化，但會導致在快取資料時發生記憶體例外狀況的風險。 | 否 | 整數 | batchSize |
+| 前置和後置 SQL 腳本 | 指定將在 (前置) 處理之前執行的多行 SQL 腳本，以及 (後置處理) 資料寫入至您的接收資料庫。 | 否 | String | preSQLs<br>postSQLs |
+
+#### <a name="azure-sql-managed-instance-sink-script-example"></a>Azure SQL 受控執行個體接收器腳本範例
+
+當您使用 Azure SQL 受控執行個體作為接收類型時，相關聯的資料流程腳本為：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SQLMISink
+```
+
+## <a name="lookup-activity-properties"></a>查閱活動屬性
+
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata 活動屬性
+
+若要了解關於屬性的詳細資料，請參閱 [GetMetadata 活動](control-flow-get-metadata-activity.md) 
+
 ## <a name="data-type-mapping-for-sql-managed-instance"></a>SQL 受控執行個體的資料類型對應
 
-當資料在 SQL 受控執行個體之間複製時，會使用下列從 SQL 受控執行個體資料類型的對應來 Azure Data Factory 過渡期資料類型。 若要了解複製活動如何將來源結構描述和資料類型對應至接收，請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)。
+使用複製活動將資料複製到 SQL 受控執行個體或從中複製資料時，會使用下列從 SQL 受控執行個體資料類型對應的對應來 Azure Data Factory 過渡期資料類型。 若要了解複製活動如何將來源結構描述和資料類型對應至接收，請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)。
 
 | SQL 受控執行個體資料類型 | Azure Data Factory 過渡期資料類型 |
 |:--- |:--- |
@@ -668,25 +735,17 @@ END
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Int16 |
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |字串 |
+| Xml |String |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您的資料需要大於 28 個有效位數，請考慮轉換成 SQL 查詢中的字串。
-
-## <a name="lookup-activity-properties"></a>查閱活動屬性
-
-若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
-
-## <a name="getmetadata-activity-properties"></a>GetMetadata 活動屬性
-
-若要了解關於屬性的詳細資料，請參閱 [GetMetadata 活動](control-flow-get-metadata-activity.md) 
 
 ## <a name="using-always-encrypted"></a>使用 Always Encrypted
 

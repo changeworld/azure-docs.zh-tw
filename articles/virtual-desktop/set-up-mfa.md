@@ -3,15 +3,15 @@ title: 設定適用于 Windows 虛擬桌面的 Azure Multi-Factor Authentication
 description: 如何在 Windows 虛擬桌面中設定 Azure Multi-Factor Authentication 以提高安全性。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089916"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108978"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>為 Windows 虛擬桌面啟用 Azure Multi-Factor Authentication
 
@@ -64,6 +64,8 @@ ms.locfileid: "90089916"
 
    >[!IMPORTANT]
    > 請勿選取名為 Windows Virtual Desktop Azure Resource Manager Provider (50e95039-b200-4007-bc97-8d5790743a63) 的應用程式。 此應用程式僅用於抓取使用者摘要，不應具有 MFA。
+   > 
+   > 如果您使用 Windows 虛擬桌面 (傳統) ，如果條件式存取原則會封鎖所有存取，而且只會排除 Windows 虛擬桌面應用程式識別碼，您可以在原則中新增應用程式識別碼9cdead84-a844-4324-93f2-b2e6bb768d07 來修正此問題。 若未新增此應用程式識別碼，將會封鎖 Windows 虛擬桌面 (傳統) 資源的摘要探索。
 
 10. 移至 [**條件**  >  **用戶端應用程式**]，然後選取您要套用原則的位置：
     

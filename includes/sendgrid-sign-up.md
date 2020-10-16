@@ -4,12 +4,12 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377202"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116806"
 ---
 Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些25000的每月免費電子郵件可讓您存取先進的報告和分析，以及 [所有 api][all APIs] (WEB、SMTP、事件、剖析，以及其他) 。 如需 SendGrid 所提供其他服務的相關資訊，請參閱 [SendGrid 解決方案 (英文)][SendGrid Solutions] 頁面。
 
@@ -69,7 +69,7 @@ Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些25000
 ### <a name="to-find-your-sendgrid-credentials"></a>尋找您的 SendGrid 認證
 1. 按一下金鑰圖示來尋找您的**使用者名稱**。
 
-    ![ContosoSendGrid 帳戶] 頁面的螢幕擷取畫面，其中已醒目提示 [金鑰] 圖示。][金鑰]
+    ![ContosoSendGrid 帳戶頁面的螢幕擷取畫面，其中已醒目提示 [金鑰] 圖示。][key]
 2. 密碼是您在安裝期間所選擇的密碼。 您可以選取 [變更密碼]**** 或 [重設密碼]**** 來進行任何變更。
 
 若要管理電子郵件傳遞能力設定，按一下 [管理]**** 按鈕。 這將會重新導向至您的 SendGrid 儀表板。

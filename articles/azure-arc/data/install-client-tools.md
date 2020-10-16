@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3eb41b868aba7e7350f54594fa43f01eeeabebc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936742"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108213"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安裝用戶端工具，以部署和管理已啟用 Azure Arc 的資料服務
 
@@ -32,7 +32,7 @@ ms.locfileid: "90936742"
 | 工具 | 必要 | 描述 | 安裝 |
 |---|---|---|---|
 | Azure Data CLI (azdata)  | 是 | 用於安裝和管理巨量資料叢集的命令列工具。 Azure Data CLI 也包含命令列公用程式，可使用命令 `azdata sql query` (從命令列執行單一查詢) 、 `azdata sql shell` (互動式 shell) 和，來連線至 azure SQL 和 SQL Server 實例和 Postgres 伺服器並加以查詢 `azdata postgres query` `azdata postgres shell` 。 | [安裝](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
-| Azure Data Studio | 是 | 豐富的體驗工具，可用於連接和查詢各種不同的資料庫，包括 Azure SQL、SQL Server、PostrgreSQL 和 MySQL。 Azure Data Studio 的延伸模組可提供 Azure Arc 啟用的資料服務的系統管理體驗。 | [安裝](https://aka.ms/getazuredatastudio) |
+| Azure Data Studio | 是 | 豐富的體驗工具，可用於連接和查詢各種不同的資料庫，包括 Azure SQL、SQL Server、PostrgreSQL 和 MySQL。 Azure Data Studio 的延伸模組可提供 Azure Arc 啟用的資料服務的系統管理體驗。 | [安裝](/sql/azure-data-studio/download-azure-data-studio) |
 | 適用于 Azure Data Studio 的 Azure Data CLI 擴充功能 | 是 | 如果您還沒有適用于 Azure Data Studio 的延伸模組，將會安裝 Azure 資料 CLI。| 從 Azure Data Studio 中的擴充功能庫安裝。|
 | Azure Data Studio 的 Azure Arc 擴充功能 | 是 | Azure Data Studio 的擴充功能，可為 Azure Arc 啟用的資料服務提供管理體驗。 適用于 Azure Data Studio 的 Azure Data CLI 擴充功能相依。 | 從 Azure Data Studio 中的擴充功能庫安裝。|
 | Azure Data Studio 中的于 postgresql 延伸模組 | 否 | 提供于 postgresql 管理功能之 Azure Data Studio 的于 postgresql 延伸模組。 | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> 從 Azure Data Studio 中的擴充功能庫安裝。|

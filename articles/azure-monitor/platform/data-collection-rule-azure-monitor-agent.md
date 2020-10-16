@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968405"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108009"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>設定 Azure 監視器代理程式 (預覽的資料收集) 
 資料收集規則 (DCR) 定義進入 Azure 監視器的資料，並指定應該傳送的位置。 本文說明如何使用 Azure 監視器代理程式建立資料收集規則，以收集虛擬機器的資料。
@@ -64,8 +64,8 @@ ms.locfileid: "90968405"
 ## <a name="createusingrestapi"></a>使用 REST API 建立
 遵循下列步驟，使用 REST API 建立 DCR 和關聯。 
 1.使用 [範例 DCR](data-collection-rule-overview.md#sample-data-collection-rule)中所示的 JSON 格式，手動建立 DCR 檔案。
-2.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)建立規則。
-3.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)為每個虛擬機器建立資料集合規則的關聯。
+2.使用 [REST API](/rest/api/monitor/datacollectionrules/create#examples)建立規則。
+3.使用 [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples)為每個虛擬機器建立資料集合規則的關聯。
 
 ## <a name="next-steps"></a>後續步驟
 

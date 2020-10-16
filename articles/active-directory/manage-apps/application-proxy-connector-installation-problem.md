@@ -1,37 +1,32 @@
 ---
-title: 安裝應用程式 Proxy 代理程式連接器時遇到問題 | Microsoft Docs
-description: 如何針對在安裝應用程式 Proxy 代理程式連接器時可能遇到的問題進行疑難排解
+title: 安裝應用程式 Proxy 代理程式連接器時遇到問題
+description: 如何針對 Azure Active Directory 安裝應用程式 Proxy 代理程式連接器時，對可能遇到的問題進行疑難排解。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764684"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108196"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安裝應用程式 Proxy 代理程式連接器時遇到問題
 
-Microsoft AAD 應用程式 Proxy 連接器是內部網域元件，它會使用輸出連線來建立雲端可用端點至內部網域的連線。
+Microsoft Azure Active Directory 應用程式 Proxy 連接器是內部網域元件，它會使用輸出連線來建立從雲端可用端點到內部網域的連線能力。
 
 ## <a name="general-problem-areas-with-connector-installation"></a>連接器安裝的一般問題區域
 
 連接器安裝失敗時，根本原因通常是下列其中一個區域：
 
-1.  **連線**：若要成功完成安裝，新的連接器必須註冊並建立未來信任內容。 這是透過連線至 AAD 應用程式 Proxy 雲端服務來完成。
+1.  **連線**：若要成功完成安裝，新的連接器必須註冊並建立未來信任內容。 這是藉由連接到 Azure Active Directory 應用程式 Proxy 雲端服務來完成。
 
 2.  **信任建立**：新的連接器會建立自我簽署憑證，並向雲端服務註冊。
 
@@ -42,7 +37,7 @@ Microsoft AAD 應用程式 Proxy 連接器是內部網域元件，它會使用�
 
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>確認與雲端應用程式 Proxy 服務和 Microsoft 登入頁面之間連線
 
-**目標：** 確認連接器電腦可以連線到 AAD 應用程式 Proxy 註冊端點以及 Microsoft 登入頁面。
+**目標：** 確認連接器電腦可以連接至應用程式 Proxy 註冊端點以及 Microsoft 登入頁面。
 
 1.  在連接器伺服器上，使用 [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) 或其他埠測試控管來執行埠測試，以確認埠443和80已開啟。
 
@@ -67,7 +62,7 @@ Microsoft AAD 應用程式 Proxy 連接器是內部網域元件，它會使用�
 
 **確認用戶端憑證：**
 
-確認目前用戶端憑證的指紋。 您可以在%ProgramData%\microsoft\Microsoft AAD 應用程式 Proxy 中找到憑證存放區 Connector\Config\TrustSettings.xml
+確認目前用戶端憑證的指紋。 您可以在中找到憑證存放區 `%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml` 。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,23 +74,17 @@ Microsoft AAD 應用程式 Proxy 連接器是內部網域元件，它會使用�
 </ConnectorTrustSettingsFile>
 ```
 
-以下是可能的 **IsInUserStore** 值和意義：
+可能的 **IsInUserStore** 值為 **true** 和 **false**。 **True**值表示自動更新的憑證會儲存在 Network Service 的使用者憑證存放區中的個人容器內。 **False**值表示用戶端憑證是在安裝期間建立的，或是 Register-AppProxyConnector 命令起始的註冊期間所建立，並儲存在本機電腦憑證存放區的個人容器中。
 
-- **false** -用戶端憑證是在安裝期間或 Register-AppProxyConnector 命令起始的註冊期間建立。 它會儲存在本機電腦憑證存放區的個人容器中。 
-
-遵循下列步驟來確認憑證：
-
-1. 執行 **certlm.msc services.msc**
-2. 在管理主控台中，展開 [個人] 容器，然後按一下 [憑證]。
-3. 找出**connectorregistrationca.msappproxy.net**發出的憑證
-
-- **true** -自動更新的憑證會儲存在 Network Service 的使用者憑證存放區中的個人容器內。 
-
-遵循下列步驟來確認憑證：
-
+如果值為 **true**，請遵循下列步驟來確認憑證：
 1. 下載 [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
 2. 從封裝中解壓縮 [psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，然後從提升許可權的命令提示字元執行 **psexec-i-u "nt authority\network service" cmd.exe** 。
 3. 在新出現的命令提示字元中執行**certmgr.msc**
+4. 在管理主控台中，展開 [個人] 容器，然後按一下 [憑證]。
+5. 找出**connectorregistrationca.msappproxy.net**發出的憑證
+
+如果值為 **false**，請遵循下列步驟來確認憑證：
+1. 執行 **certlm.msc services.msc**
 2. 在管理主控台中，展開 [個人] 容器，然後按一下 [憑證]。
 3. 找出**connectorregistrationca.msappproxy.net**發出的憑證
 

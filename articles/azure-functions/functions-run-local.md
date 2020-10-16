@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88929479"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108485"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> JAVA 使用 Maven 原型來建立本機函式專案，以及您的第一個 HTTP 觸發函式。 使用下列命令來建立您的 JAVA 專案： `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` 。 如需使用 Maven 原型的範例，請參閱 [命令列快速入門](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。  
+> JAVA 使用 Maven 原型來建立本機函式專案，以及您的第一個 HTTP 觸發函式。 使用下列命令來建立您的 JAVA 專案： `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` 。 如需使用 Maven 原型的範例，請參閱 [命令列快速入門](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)。  
 
 當您提供專案名稱時，系統會建立具有該名稱的新資料夾，並將其初始化。 否則，會將目前的資料夾初始化。  
 在3.x 版或2.x 版中，當您執行命令時，必須為您的專案選擇執行時間。 

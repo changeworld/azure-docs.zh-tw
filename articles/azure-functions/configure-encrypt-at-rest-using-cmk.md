@@ -3,12 +3,12 @@ title: 加密您的應用程式來源
 description: 在 Azure 儲存體中加密您的應用程式資料，並將其部署為封裝檔案。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282325"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108026"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密您的應用程式資料
 
@@ -22,7 +22,7 @@ ms.locfileid: "87282325"
 
 ### <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
-首先， [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md) ，並 [使用客戶管理的金鑰進行加密](../storage/common/encryption-customer-managed-keys.md)。 建立儲存體帳戶之後，請使用 [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 來上傳封裝檔案。
+首先， [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md) ，並 [使用客戶管理的金鑰進行加密](../storage/common/customer-managed-keys-overview.md)。 建立儲存體帳戶之後，請使用 [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 來上傳封裝檔案。
 
 接下來，使用儲存體總管來 [產生 SAS](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)。 
 
@@ -117,7 +117,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 - 不支援 TAR 和 GZIP 格式。
 - 這項功能與本機快取不相容。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [App Service 的 Key Vault 參考](../app-service/app-service-key-vault-references.md)
 - [待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)

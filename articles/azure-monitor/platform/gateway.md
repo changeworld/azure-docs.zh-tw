@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305205"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107771"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 閘道連接電腦，而不需要網際網路存取
 
@@ -141,7 +141,7 @@ Log Analytics 閘道僅支援傳輸層安全性 (TLS) 1.0、1.1 和1.2。  它�
    ![閘道 proxy 設定的螢幕擷取畫面](./media/gateway/gateway-wizard02.png)
 
 1. 如果您未啟用 Microsoft Update，則會出現 [Microsoft Update] 頁面，而且您可以選擇啟用它。 進行選取，然後選取 **[下一步]**。 否則，請繼續下一個步驟。
-1. 在 [ **目的地資料夾** ] 頁面上，保留預設資料夾 [C:\Program files\oms gateway gateway] 或輸入您要安裝閘道的位置。 然後選取 [下一步]。
+1. 在 [ **目的地資料夾** ] 頁面上，保留預設資料夾 [C:\Program files\oms gateway gateway] 或輸入您要安裝閘道的位置。 然後選取 [下一步]  。
 1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝**]。 如果 [使用者帳戶控制] 要求安裝的許可權，請選取 **[是]**。
 1. 安裝程式完成之後，請選取 **[完成]**。 若要確認服務是否正在執行，請開啟 services.msc 嵌入式管理單元，並確認 **OMS 閘道** 出現在服務清單中，且其狀態為 [ **正在**執行]。
 
@@ -153,7 +153,7 @@ Log Analytics 閘道僅支援傳輸層安全性 (TLS) 1.0、1.1 和1.2。  它�
  
 下表強調安裝程式所支援的參數。
 
-|參數| 注意|
+|參數| 備註|
 |----------|------| 
 |PORTNUMBER | 要接聽之閘道的 TCP 埠號碼 |
 |代理 | Proxy 伺服器的 IP 位址 |
@@ -206,7 +206,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 若要瞭解如何設計和部署 Azure Load Balancer，請參閱 [什麼是 Azure Load Balancer？](../../load-balancer/load-balancer-overview.md)。 若要部署基本負載平衡器，請遵循本 [快速入門](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 中所述的步驟，但不包括 **建立後端伺服器**一節中所述的步驟。   
 
 > [!NOTE]
-> 使用 **基本 SKU**設定 Azure Load Balancer，需要 Azure 虛擬機器屬於可用性設定組。 若要深入瞭解可用性設定組，請參閱 [在 Azure 中管理 Windows 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md)。 若要將現有的虛擬機器新增至可用性設定組，請參閱 [設定 AZURE RESOURCE MANAGER VM 可用性設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)組。
+> 使用 **基本 SKU**設定 Azure Load Balancer，需要 Azure 虛擬機器屬於可用性設定組。 若要深入瞭解可用性設定組，請參閱 [在 Azure 中管理 Windows 虛擬機器的可用性](../../virtual-machines/manage-availability.md)。 若要將現有的虛擬機器新增至可用性設定組，請參閱 [設定 AZURE RESOURCE MANAGER VM 可用性設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)組。
 > 
 
 建立負載平衡器之後，必須建立後端集區，將流量分散到一或多個閘道伺服器。 遵循快速入門文章一節中所述的步驟， [建立負載平衡器的資源](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。  
@@ -305,13 +305,13 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 如果您的電腦已自動註冊為混合式 Runbook 背景工作角色，例如，如果有一或多部 Vm 已啟用更新管理解決方案，請遵循下列步驟：
 
-1. 將作業執行階段資料服務 URL 新增到 Log Analytics 閘道上的「允許的主機」清單。 例如： `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. 將作業執行階段資料服務 URL 新增到 Log Analytics 閘道上的「允許的主機」清單。 例如：`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. 使用以下 PowerShell Cmdlet 重新啟動 Log Analytics 閘道服務：`Restart-Service OMSGatewayService`
 
 如果您的電腦已使用「混合式 Runbook 背景工作角色註冊」 Cmdlet 加入 Azure 自動化，請遵循下列步驟：
 
-1. 將代理程式服務註冊 URL 新增到 Log Analytics 閘道上的「允許的主機」清單。 例如： `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-1. 將作業執行階段資料服務 URL 新增到 Log Analytics 閘道上的「允許的主機」清單。 例如： `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. 將代理程式服務註冊 URL 新增到 Log Analytics 閘道上的「允許的主機」清單。 例如：`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
+1. 將作業執行階段資料服務 URL 新增到 Log Analytics 閘道上的「允許的主機」清單。 例如：`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. 重新啟動 Log Analytics 閘道服務。
     `Restart-Service OMSGatewayService`
 
@@ -327,9 +327,9 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 步驟3中的錯誤表示未匯入模組。 當 PowerShell 找不到模組時，可能會發生此錯誤。 您可以在 OMS 閘道的安裝路徑中找到此模組： *C:\Program FILES\MICROSOFT oms Gateway\PowerShell\OmsGateway*。
 
-| **Cmdlet** | **參數** | **描述** | **範例** |
+| **Cmdlet** | **參數** | **說明** | **範例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |機碼 |取得服務的組態 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |答案 |取得服務的組態 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |索引鍵 (必要) <br> 值 |變更服務的組態 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |取得轉送 (上游) Proxy 的位址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |位址<br> 使用者名稱<br> 密碼 (安全字串)  |設定轉送 (上游) Proxy 的位址 (與認證) |1. 設定轉送 proxy 和認證：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 設定不需要驗證的轉送 proxy： `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除轉送 proxy 設定：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -350,7 +350,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 下表顯示 Log Analytics 閘道記錄事件的事件識別碼和描述。
 
-| **識別碼** | **描述** |
+| **識別碼** | **說明** |
 | --- | --- |
 | 400 |沒有特定識別碼的任何應用程式錯誤。 |
 | 401 |錯誤組態。 例如，listenPort = "text"，而不是整數。 |
@@ -370,7 +370,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 以下表格顯示可供 Log Analytics 閘道使用的效能計數器。 使用效能監視器來新增計數器。
 
-| **名稱** | **描述** |
+| **名稱** | **說明** |
 | --- | --- |
 | Log Analytics 閘道/使用中用戶端連線 |使用中用戶端網路 (TCP) 連線數目 |
 | Log Analytics 閘道/錯誤計數 |錯誤數目 |
@@ -386,7 +386,6 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 ![新支援要求的螢幕擷取畫面](./media/gateway/support.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [新增資料來源](./agent-data-sources.md) 以從連接的來源收集資料，並將資料儲存在您的 Log Analytics 工作區中。
-

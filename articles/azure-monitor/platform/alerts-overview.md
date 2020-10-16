@@ -4,12 +4,12 @@ description: Azure 中的警示概觀。 警示、傳統警示和警示介面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317135"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108791"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警示概觀 
 
@@ -84,7 +84,7 @@ ms.locfileid: "91317135"
 
 *警示狀態*與*監視條件*不同且無關。 警示狀態是由使用者所設定的。 監視條檢是由系統所設定的。 當警示引發時，警示的監視條件會設定為「已 *引發*」，當引發警示的基礎條件清除時，監視條件會設定為「 *已解決*」。 
 
-警示狀態需等到使用者變更它之後才會變更。 了解[如何變更警示與智慧群組的狀態](https://aka.ms/managing-alert-smart-group-states)。
+警示狀態需等到使用者變更它之後才會變更。 了解[如何變更警示與智慧群組的狀態](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
 
 ## <a name="alerts-experience"></a>警示體驗 
 [預設警示] 頁面會提供在特定時間範圍內建立之警示的摘要。 它會顯示每個嚴重性的警示總數，其中的資料行會指出每個嚴重性的每個狀態的警示總數。 選取任何嚴重性以開啟依照該嚴重性篩選的 [所有警示](#all-alerts-page) 頁面。
@@ -181,7 +181,7 @@ ms.locfileid: "91317135"
 
 您可能會想要以程式設計方式查詢針對您的訂用帳戶所產生的警示。 查詢可能是在 Azure 入口網站之外建立自訂的視圖，或是用來分析您的警示以找出模式和趨勢。
 
-您可以使用 [警示管理 REST API](https://aka.ms/alert-management-api) ，或使用 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和 [資源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)，查詢針對您的訂用帳戶所產生的警示。
+您可以使用 [警示管理 REST API](/rest/api/monitor/alertsmanagement/alerts) ，或使用 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和 [資源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)，查詢針對您的訂用帳戶所產生的警示。
 
 資源的 Resource Graph REST API 可讓您大規模查詢警示實例。 當您必須管理跨多個訂用帳戶所產生的警示時，建議使用 Resource Graph。 
 
@@ -200,16 +200,16 @@ ms.locfileid: "91317135"
 
 您可以查詢警示中的 [重要](alerts-common-schema-definitions.md#essentials) 欄位。
 
-使用 [警示管理 REST API](https://aka.ms/alert-management-api) 取得特定警示的詳細資訊，包括其 [警示內容](alerts-common-schema-definitions.md#alert-context) 欄位。
+使用 [警示管理 REST API](/rest/api/monitor/alertsmanagement/alerts) 取得特定警示的詳細資訊，包括其 [警示內容](alerts-common-schema-definitions.md#alert-context) 欄位。
 
 ## <a name="smart-groups"></a>智慧群組
 
-智慧群組是以機器學習演算法為基礎的警示匯總，有助於減少警示雜訊並協助進行疑難排解。 [深入了解智慧群組](https://aka.ms/smart-groups)和[如何管理智慧群組](https://aka.ms/managing-smart-groups)。
+智慧群組是以機器學習演算法為基礎的警示匯總，有助於減少警示雜訊並協助進行疑難排解。 [深入了解智慧群組](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)和[如何管理智慧群組](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入了解智慧群組](https://aka.ms/smart-groups)
+- [深入了解智慧群組](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [深入了解動作群組](./action-groups.md)
-- [在 Azure 中管理警示](https://aka.ms/managing-alert-instances)
-- [管理智慧群組](https://aka.ms/managing-smart-groups)
+- [在 Azure 中管理警示](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [管理智慧群組](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [深入瞭解 Azure 警示定價](https://azure.microsoft.com/pricing/details/monitor/)

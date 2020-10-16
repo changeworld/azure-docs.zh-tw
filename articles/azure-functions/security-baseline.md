@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394086"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107516"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>適用于 Azure Functions 的 Azure 安全性基準
 
@@ -90,7 +90,7 @@ ms.locfileid: "89394086"
 
 - [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
+- [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 - [瞭解 Azure 資訊安全中心適應性網路強化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -545,7 +545,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合來監�
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -649,7 +649,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 - [如何將持續安全性驗證新增至 CI/CD 管線](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -727,7 +727,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -1087,7 +1087,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 - [Azure 儲存體待用加密](../storage/common/storage-service-encryption.md)
 
-- [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 

@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048112"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108349"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>整合 Azure 數位 Twins 與 Azure SignalR Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "92048112"
 
 本文所述的解決方案可讓您將數位對應項遙測資料推送至連線的用戶端，例如單一網頁或行動應用程式。 如此一來，用戶端就會從 IoT 裝置以即時計量和狀態進行更新，而不需要輪詢伺服器或提交新的 HTTP 要求以進行更新。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 以下是您在繼續之前應完成的必要條件：
 
@@ -195,7 +195,7 @@ ms.locfileid: "92048112"
 ### <a name="configure-the-sample-client-web-app"></a>設定範例用戶端 web 應用程式
 
 接下來，使用下列步驟來設定 **SignalR 整合 web 應用程式範例** ：
-1. 使用 Visual Studio 或您選擇的任何程式碼編輯器，開啟您在[*必要條件*](#prerequisites)一節中下載的解壓縮_**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ 資料夾。
+1. 使用 Visual Studio 或您選擇的任何程式碼編輯器，開啟您在[*下載範例應用程式*](#download-the-sample-applications)一節中下載的解壓縮_**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ 資料夾。
 
 1. 開啟 *src/App.js* 檔案，然後將中的 URL 取代 `HubConnectionBuilder` 為您稍早儲存的 **NEGOTIATE** 函式的 HTTP 端點 URL：
 

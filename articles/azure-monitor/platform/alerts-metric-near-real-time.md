@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578099"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108808"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -119,7 +119,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 ## <a name="payload-schema"></a>承載結構描述
 
 > [!NOTE]
-> 您也可以使用 [常見的警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您能夠在 Azure 監視器中的所有警示服務上擁有單一可延伸和整合的警示承載，以供您的 webhook 整合使用。 [深入瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
+> 您也可以使用 [常見的警示架構](./alerts-common-schema.md)，讓您能夠在 Azure 監視器中的所有警示服務上擁有單一可延伸和整合的警示承載，以供您的 webhook 整合使用。 [深入瞭解常見的警示架構定義。](./alerts-common-schema-definitions.md)
 
 
 當使用已適當設定的[動作群組](./action-groups.md)時，POST 作業會針對所有新版計量警示，包含下列 JSON 承載和結構描述：
@@ -180,4 +180,3 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 * 深入了解新的[警示體驗](./alerts-overview.md)。
 * 了解 [Azure 中的記錄警示](./alerts-unified-log.md)。
 * 瞭解 [Azure 中的警示](./alerts-overview.md)。
-

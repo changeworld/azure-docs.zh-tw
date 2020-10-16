@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957173"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104541"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>適用于 Azure Functions 的 Azure 事件方格系結
 
@@ -36,7 +36,7 @@ Event Grid 是一項 Azure 服務，會傳送 HTTP 要求通知您「發行者�
 
 使用觸發程式和系結會要求您參考適當的封裝。 NuGet 套件適用于 .NET 類別庫，而擴充功能配套則用於所有其他應用程式類型。
 
-| Language                                        | 加入者 .。。                                   | 備註 
+| 語言                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝 [NuGet 套件]2.x 版 | |
 | C # 腳本、JAVA、JavaScript、Python、PowerShell | 註冊[延伸]模組套件組合          | 建議搭配使用 [Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 功能與 Visual Studio Code。 |
@@ -44,14 +44,14 @@ Event Grid 是一項 Azure 服務，會傳送 HTTP 要求通知您「發行者�
 
 [core tools]: ./functions-run-local.md
 [延伸模組套件組合]: ./functions-bindings-register.md#extension-bundles
-[Nuget 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid
-[更新您的延伸模組]: ./install-update-binding-extensions-manual.md
+[NuGet 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid
+[更新您的延伸模組]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
 
 函式1.x 應用程式會自動 [參考 Nuget.exe NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) 套件2.x 版。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [在事件方格事件分派時執行函數](./functions-bindings-event-grid-trigger.md)
 * [分派事件方格事件](./functions-bindings-event-grid-trigger.md)

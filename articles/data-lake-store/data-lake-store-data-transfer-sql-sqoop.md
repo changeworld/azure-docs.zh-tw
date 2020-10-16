@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323072"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109182"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL Database 之間複製資料
 
@@ -24,14 +24,14 @@ ms.locfileid: "87323072"
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) 是一個專門設計來在關聯式資料庫和巨量資料儲存機制 (例如 Azure Data Lake Storage Gen1) 之間傳送資料的工具。 您可以使用它從像是 Azure SQL Database 這類的關聯式資料庫管理系統 (RDBMS)，匯入資料至 Azure Data Lake Storage Gen1。 然後，您可以使用大型資料工作負載來轉換和分析資料，然後將資料匯出回 RDBMS。 在本文中，您會使用 Azure SQL Database 中的資料庫作為要匯入/匯出來源的關係資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您必須具備下列條件：
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立帳戶的指示，請參閱 [開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 本文假設您已使用 Azure Data Lake Storage Gen1 存取 HDInsight Linux 叢集。
-* **Azure SQL Database**。 如需有關如何在 Azure SQL Database 中建立資料庫的指示，請參閱 [在 Azure SQL Database 中建立資料庫](../sql-database/sql-database-get-started.md)
+* **Azure SQL Database**。 如需有關如何在 Azure SQL Database 中建立資料庫的指示，請參閱 [在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)
 
 ## <a name="create-sample-tables-in-the-database"></a>在資料庫中建立範例資料表
 
@@ -156,9 +156,9 @@ HDInsight 叢集已有可用的 Sqoop 套件。 如果您已將 HDInsight 叢集
 
 ## <a name="performance-considerations-while-using-sqoop"></a>使用 Sqoop 時的效能考量
 
-如需效能調整 Sqoop 作業以將資料複製到 Data Lake Storage Gen1 的詳細資訊，請參閱 [Sqoop 效能的 blog 文章](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。
+如需效能調整 Sqoop 作業以將資料複製到 Data Lake Storage Gen1 的詳細資訊，請參閱 [Sqoop 效能的 blog 文章](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)

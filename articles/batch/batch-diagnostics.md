@@ -4,12 +4,12 @@ description: 記錄並分析 Azure Batch 帳戶資源 (如集區和工作) 的�
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848682"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108094"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用於診斷評估和監視的 Batch 計量、警示和記錄
 
@@ -105,7 +105,7 @@ ms.locfileid: "91848682"
 6. 選取 [ **ServiceLog**]、[ **AllMetrics**] 或 [兩者]。
 7. 選取 [ **儲存** ] 以建立診斷設定。
 
-您也可以 [透過 Azure 入口網站中的 Azure 監視器啟用集合](../azure-monitor/platform/diagnostic-settings.md) ，以使用 [Resource Manager 範本](../azure-monitor/platform/diagnostic-settings-template.md)或搭配 Azure PowerShell 或 Azure CLI 來設定診斷設定。 如需詳細資訊，請參閱 [Azure 平臺記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
+您也可以 [透過 Azure 入口網站中的 Azure 監視器啟用集合](../azure-monitor/platform/diagnostic-settings.md) ，以使用 [Resource Manager 範本](../azure-monitor/samples/resource-manager-diagnostic-settings.md)或搭配 Azure PowerShell 或 Azure CLI 來設定診斷設定。 如需詳細資訊，請參閱 [Azure 平臺記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>存取儲存體中的診斷記錄
 

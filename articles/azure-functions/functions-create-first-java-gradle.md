@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322171"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104864"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 JAVA 和 Gradle 建立函式並將其發佈至 Azure
 
@@ -20,11 +20,11 @@ ms.locfileid: "87322171"
 > [!NOTE]
 > 如果 Gradle 不是您慣用的開發工具，請參閱使用 [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、 [IntelliJ 概念](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)的 JAVA 開發人員類似教學課程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用 Java 開發函式，您必須安裝下列項目：
 
-- [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 第 8 版
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 版或更新版本
 - [Gradle](https://gradle.org/)，4.10 版和更新版本

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045681"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108995"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>安裝或卸載 Azure IoT Edge 執行時間
 
@@ -24,7 +24,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 本文列出在 Linux 或 Windows 裝置上安裝 Azure IoT Edge 執行時間的步驟。 針對 Windows 裝置，您有其他使用 Linux 容器或 Windows 容器的選項。 目前，Windows 上的 Windows 容器建議用於生產案例。 Windows 上的 Linux 容器適用于開發和測試案例，特別是如果您是在 Windows 電腦上進行開發，以便部署到 Linux 裝置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如需有關生產案例目前支援哪些作業系統的最新資訊，請參閱 [Azure IoT Edge 支援的系統](support.md#operating-systems)
 
@@ -83,6 +83,12 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 Azure IoT Edge 依賴 [OCI 相容](https://www.opencontainers.org/) 的容器引擎。 請確定您的裝置可以支援容器。
 
 如果您要在虛擬機器上安裝 IoT Edge，請啟用嵌套虛擬化，並配置至少 2 GB 的記憶體。 針對 Hyper-v，第2代虛擬機器預設會啟用嵌套虛擬化。 針對 VMware，有一個切換功能可以在您的虛擬機器上啟用此功能。
+
+如果您要在 IoT 核心裝置上安裝 IoT Edge，請在 [遠端 PowerShell 會話](/windows/iot-core/connect-your-device/powershell) 中使用下列命令，以檢查您的裝置是否支援 Windows 容器：
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -160,6 +166,9 @@ IoT Edge 的安全性背景程式可在 IoT Edge 裝置上提供及維護安全�
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
+>[!TIP]
+>針對 IoT 核心裝置，我們建議使用遠端 PowerShell 會話來執行安裝命令。 如需詳細資訊，請參閱 [使用適用于 Windows IoT 的 PowerShell](/windows/iot-core/connect-your-device/powershell)。
+
 1. 以系統管理員身分執行 PowerShell。
 
    使用 PowerShell 的 AMD64 會話，而不是 PowerShell (x86) 。 如果您不確定所使用的是哪一種會話類型，請執行下列命令：
@@ -186,7 +195,7 @@ IoT Edge 的安全性背景程式可在 IoT Edge 裝置上提供及維護安全�
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. 此時，輸出可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。
+3. 此時，IoT 核心裝置可能會自動重新開機。 Windows 10 或 Windows Server 裝置可能會提示您重新開機。 若是如此，請立即重新開機您的裝置。
 
 當您在裝置上安裝 IoT Edge 時，您可以使用其他參數來修改進程，包括：
 
@@ -321,6 +330,8 @@ sudo apt-get remove --purge moby-engine
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
+
+`Uninstall-IoTEdge`命令無法在 Windows IoT Core 上運作。 若要移除 IoT Edge，您需要重新部署 Windows IoT Core 映射。
 
 如需卸載選項的詳細資訊，請使用命令 `Get-Help Uninstall-IoTEdge -full` 。
 

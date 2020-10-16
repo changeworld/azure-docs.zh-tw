@@ -4,12 +4,12 @@ description: 智慧群組是警示的彙總，可協助您減少警示干擾
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77665488"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108774"
 ---
 # <a name="smart-groups"></a>智慧群組
 
@@ -33,7 +33,7 @@ ms.locfileid: "77665488"
 | 已認可 | 系統管理員已檢閱智慧群組，並已開始處理。 |
 | 封閉式 | 已解決問題。 關閉智慧群組之後，您可以將警示變更為另一個狀態以重新開啟它。 |
 
-[了解如何變更智慧群組的狀態。](https://aka.ms/managing-alert-smart-group-states)
+[了解如何變更智慧群組的狀態。](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 
 > [!NOTE]
 >  變更智慧群組的狀態不會變更個別成員警示的狀態。
@@ -58,7 +58,5 @@ ms.locfileid: "77665488"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [管理智慧群組](https://aka.ms/managing-smart-groups)
-- [變更警示與智慧群組狀態](https://aka.ms/managing-alert-smart-group-states)
-
-
+- [管理智慧群組](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [變更警示與智慧群組狀態](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)

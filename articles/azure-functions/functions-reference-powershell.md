@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071154"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108468"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 開發人員指南
 
@@ -143,7 +143,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 * `PipelineVariable`
 * `OutVariable` 
 
-如需詳細資訊，請參閱 [關於 CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
+如需詳細資訊，請參閱 [關於 CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters)。
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding 範例： HTTP 回應
 
@@ -560,7 +560,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 您可以在函數應用程式的 [應用程式](functions-app-settings.md) 設定中設定這些環境變數。
 
-視您的使用案例而定，Durable Functions 可能會大幅改善擴充性。 若要深入瞭解，請參閱 [Durable Functions 應用程式模式](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)。
+視您的使用案例而定，Durable Functions 可能會大幅改善擴充性。 若要深入瞭解，請參閱 [Durable Functions 應用程式模式](./durable/durable-functions-overview.md?tabs=powershell#application-patterns)。
 
 >[!NOTE]
 > 您可能會收到「因為沒有可用的空間，所以要求已排入佇列」警告，請注意這不是錯誤。 這則訊息會告知您，要求已排入佇列，並會在先前的要求完成時處理。

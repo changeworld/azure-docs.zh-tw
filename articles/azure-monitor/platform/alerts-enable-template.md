@@ -6,12 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb44b7133e5644991d7413f4f824a8b55ffdd75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87849014"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108366"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立傳統計量警示
 
@@ -400,6 +400,5 @@ ms.locfileid: "87849014"
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解警示](alerts-overview.md)
-* [將診斷設定新增](./diagnostic-settings-template.md) 至您的 Resource Manager 範本
+* [將診斷設定新增](../samples/resource-manager-diagnostic-settings.md) 至您的 Resource Manager 範本
 * 如需 JSON 語法和屬性的相關資訊，請參閱 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 範本參考。
-
