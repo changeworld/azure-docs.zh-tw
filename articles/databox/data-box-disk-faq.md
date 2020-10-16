@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9305ff5904588241ff8319f28eab2ce20ad77876
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826135"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125110"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題集
 
@@ -66,7 +66,7 @@ A. 資料箱磁碟僅支援在與目的地相同的國家/地區內內嵌資料�
 
 ### <a name="option-1"></a>選項 1： 
 
-使用[azure 匯入/匯出服務](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)，從加拿大的來源位置將包含資料的[支援磁片](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks)傳送到 azure WestUS 資料中心。
+使用[azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)，從加拿大的來源位置將包含資料的[支援磁片](../storage/common/storage-import-export-requirements.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#supported-disks)傳送到 azure WestUS 資料中心。
 
 ### <a name="option-2"></a>選項 2：
 
@@ -77,7 +77,7 @@ A. 資料箱磁碟僅支援在與目的地相同的國家/地區內內嵌資料�
 3. 然後，您可以使用 AzCopy 之類的工具，將資料複製到 WestUS 中的儲存體帳戶。 此步驟會產生不包含在資料箱磁碟帳單中的 [標準儲存體](https://azure.microsoft.com/pricing/details/storage/) 和 [頻寬費用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. 如果遇到任何資料箱磁碟方面的問題，該與誰連絡？
-A. 如果您遇到任何資料箱磁碟方面的問題，請[連絡 Microsoft 支援服務](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)。
+A. 如果您遇到任何資料箱磁碟方面的問題，請[連絡 Microsoft 支援服務](./data-box-disk-contact-microsoft-support.md)。
 
 ## <a name="configure-and-connect"></a>設定和連線
  
@@ -147,7 +147,7 @@ A.  若要加快複製程序：
 - 使用多個資料複製串流。 例如，採用 Robocopy 時，請使用多執行緒選項。 如需與使用之確切命令有關的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱磁碟並確認](data-box-disk-deploy-copy-data.md#copy-data-to-disks)。
 - 使用多個工作階段。
 - 不透過網路共用進行複製 (此方式可能會受限於網路速度)，而是一律將資料放置在磁碟所連線到的本機電腦上。
-- 確定您的整個複製程序均使用 USB 3.0 或更新版本。 請下載並使用 [USBView 工具](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)，以識別連線至電腦的 USB 控制器和 USB 裝置。
+- 確定您的整個複製程序均使用 USB 3.0 或更新版本。 請下載並使用 [USBView 工具](/windows-hardware/drivers/debugger/usbview)，以識別連線至電腦的 USB 控制器和 USB 裝置。
 - 對用來複製資料的電腦建立效能的基準。 請下載並使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)，以建立伺服器硬體效能的基準。 選取最新的 x86 或 x64 組建，選取 [成品] 索引標籤，然後下載 MSI。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>Q. 如果來源資料具有小型檔案 (KB 或 MB)，應如何加快資料傳輸速度？

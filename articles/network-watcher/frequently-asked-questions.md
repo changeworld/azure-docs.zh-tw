@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471851"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123522"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有關 Azure 網路監看員 (常見問題) 的常見問題
 [Azure 網路](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)監看員服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文將回答有關此服務的常見問題。
@@ -80,6 +80,14 @@ ms.locfileid: "77471851"
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>如何管理網路監看員資源？ 
 網路監看員資源代表網路監看員的後端服務，完全由 Azure 管理。 客戶不需要管理它。 資源不支援移動等作業。 不過，您 [可以刪除資源](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)。 
+
+## <a name="service-availability-and-redundancy"></a>服務可用性和冗余 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>網路監看員服務區域是否可復原？ 
+是。 網路監看員服務預設為區域復原。 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>如何? 將網路監看員服務設定為具備區域復原能力？ 
+不需要客戶設定即可啟用區域復原。 網路監看員資源的區域復原預設為可用，且由服務本身管理。 
 
 ## <a name="nsg-flow-logs"></a>NSG 流量記錄
 

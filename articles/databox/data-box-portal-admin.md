@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611651"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123710"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 入口網站來管理您的 Azure 資料箱和 Azure Data Box Heavy
 
@@ -55,7 +55,7 @@ ms.locfileid: "91611651"
 
     ![複製訂單 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]。
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]  。
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
@@ -222,8 +222,8 @@ ms.locfileid: "91611651"
 |已收到     | 您的裝置已由 Azure 資料中心收到並掃描。 <br> 確認裝置之後，裝置上傳便會開始。      |
 |資料複製     | 資料複製進行中。 在 Azure 入口網站中追蹤您訂單的複製進度。 <br> 等候資料複製完成。 |
 |已完成       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
-|已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 [當上傳完成但發生錯誤時，請參閱複製記錄檔的範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
-|已完成，但出現警告| 資料複製已完成，但您的資料已修改。 資料有不重要的 blob 或檔案名錯誤，這些錯誤是藉由變更檔案或 blob 名稱來修正。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 記下您的資料中所做的修改。 [當上傳完成但出現警告時，請參閱複製記錄檔的範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
+|已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 [當上傳完成但發生錯誤時，請參閱複製記錄檔的範例](./data-box-logs.md#upload-completed-with-errors)。   |
+|已完成，但出現警告| 資料複製已完成，但您的資料已修改。 資料有不重要的 blob 或檔案名錯誤，這些錯誤是藉由變更檔案或 blob 名稱來修正。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 記下您的資料中所做的修改。 [當上傳完成但出現警告時，請參閱複製記錄檔的範例](./data-box-logs.md#upload-completed-with-warnings)。   |
 |已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。 如果無法在 90 天內完成訂單，系統也將會取消該訂單並通知您。     |
 |清除 | 裝置上的資料已清除。 當訂單記錄在 Azure 入口網站中可供下載時，即視為已完成裝置清除。|
 
@@ -238,9 +238,9 @@ ms.locfileid: "91611651"
 |已處理     | 訂單處理已完成。 根據您的訂單，裝置會針對資料中心內的資料複製做好準備。 建立裝置共用。         |
 |正在複製資料     | 從指定的 Azure 儲存體帳戶複製到裝置的資料正在進行中。 在 Azure 入口網站中追蹤您訂單的複製進度。 <br> 等候資料複製完成。 |
 |複製已完成     | 從指定的 Azure 儲存體帳戶複製到裝置的資料已完成。 詳細資訊記錄檔 (如果依序) 啟用選項，且在您的儲存體帳戶中建立複製記錄檔。 詳細資訊記錄檔包含所有檔案的相關資訊， (名稱、路徑、計算總和檢查碼) 複製到裝置。 複製記錄檔包含複製程式的摘要，包括因任何錯誤而無法複製的檔案清單。<br> 儲存體帳戶資料會維持不變。 |
-|複製已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站提供的路徑，檢查 Azure 儲存體帳戶中的複製記錄檔。 [當下載完成但發生錯誤時，請參閱複製記錄檔的範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
-|複製已完成，但出現警告| Azure 儲存體帳戶的資料複製已完成，但資料有非重大錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 記下非重大錯誤。 [當下載完成但出現警告時，請參閱複製記錄檔的範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
-|複製失敗，發生錯誤| Azure 儲存體帳戶的資料複製失敗，且訂單已結束。 將不會寄送裝置。<br> 使用 Azure 入口網站提供的路徑，檢查 Azure 儲存體帳戶中的複製記錄檔。 [當下載失敗且發生錯誤時，請參閱複製記錄檔的範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
+|複製已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站提供的路徑，檢查 Azure 儲存體帳戶中的複製記錄檔。 [當下載完成但發生錯誤時，請參閱複製記錄檔的範例](./data-box-logs.md#upload-completed-with-errors)。   |
+|複製已完成，但出現警告| Azure 儲存體帳戶的資料複製已完成，但資料有非重大錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 記下非重大錯誤。 [當下載完成但出現警告時，請參閱複製記錄檔的範例](./data-box-logs.md#upload-completed-with-warnings)。   |
+|複製失敗，發生錯誤| Azure 儲存體帳戶的資料複製失敗，且訂單已結束。 將不會寄送裝置。<br> 使用 Azure 入口網站提供的路徑，檢查 Azure 儲存體帳戶中的複製記錄檔。 [當下載失敗且發生錯誤時，請參閱複製記錄檔的範例](./data-box-logs.md#upload-completed-with-errors)。   |
 |已分派     |訂單已出貨。 在入口網站中使用顯示在訂單上的追蹤識別碼來追蹤運輸狀態。        |
 |已傳遞     |裝置已寄送至訂單中指定的地址。        |
 |已取貨     |您寄回的裝置已經由快遞公司收取並掃描。         |
@@ -265,6 +265,6 @@ ms.locfileid: "91611651"
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何針對 [資料箱和 Data Box Heavy 問題進行疑難排解](data-box-troubleshoot.md)。

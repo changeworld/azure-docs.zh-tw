@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999751"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123778"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解決方案中的屬性
 
@@ -40,7 +40,7 @@ ms.locfileid: "91999751"
 | 語意類型   | 屬性的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。                                                                       |
 | 結構描述          | 屬性的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。                                               |
 | 可寫入       | 如果屬性無法寫入，則裝置可以向 Azure IoT Central 報告屬性值。 如果屬性為可寫入，則裝置可以向 Azure IoT Central 報告屬性值。 然後 Azure IoT Central 可以將屬性更新傳送至裝置。 |
-| Severity        | 僅適用於事件語意類型。 嚴重性為 [錯誤]****、[資訊]**** 或 [警告]****。                                                                                                                         |
+| 嚴重性        | 僅適用於事件語意類型。 嚴重性為 [錯誤]****、[資訊]**** 或 [警告]****。                                                                                                                         |
 | 狀態值    | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。                                                                                   |
 | Unit            | 屬性值的單位，例如 **>mph**、 **%** 或** &deg; C**。                                                                                                                                                              |
 | 顯示單位    | 要在儀表板和表單上使用的顯示單位。                                                                                                                                                                                    |
@@ -152,7 +152,7 @@ ms.locfileid: "91999751"
 
 依預設，屬性為唯讀。 唯讀屬性表示裝置會向您的 Azure IoT Central 應用程式報告屬性值更新。 您的 Azure IoT Central 應用程式無法設定唯讀屬性的值。
 
-Azure IoT Central 會使用裝置 twins 來同步處理裝置與 Azure IoT Central 應用程式之間的屬性值。 裝置屬性值會使用裝置對應項報告屬性。 如需詳細資訊，請參閱 [裝置 twins](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)。
+Azure IoT Central 會使用裝置 twins 來同步處理裝置與 Azure IoT Central 應用程式之間的屬性值。 裝置屬性值會使用裝置對應項報告屬性。 如需詳細資訊，請參閱 [裝置 twins](../../iot-hub/tutorial-device-twins.md)。
 
 下列來自裝置功能模型的程式碼片段會顯示唯讀屬性類型的定義：
 
@@ -250,7 +250,7 @@ hubClient.getTwin((err, twin) => {
 | `'ac': 5xx` | 錯誤 | 裝置處理要求的變更時，發生未預期的錯誤。 |
 
 
-如需裝置 twins 的詳細資訊，請參閱 [從後端服務設定您的裝置](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins)。
+如需裝置 twins 的詳細資訊，請參閱 [從後端服務設定您的裝置](../../iot-hub/tutorial-device-twins.md)。
 
 當操作員在 Azure IoT Central 應用程式中設定可寫入的屬性時，應用程式會使用裝置對應項所需的屬性將值傳送至裝置。 裝置接著會使用裝置對應項報告屬性來回應。 當 Azure IoT Central 收到回報的屬性值時，它會以 [已 **接受**] 的狀態更新屬性視圖。
 
@@ -260,7 +260,7 @@ hubClient.getTwin((err, twin) => {
 
 ![顯示 [已接受] 屬性的螢幕擷取畫面。](./media/howto-use-properties/accepted.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何在 Azure IoT Central 應用程式中使用屬性，請參閱：
 

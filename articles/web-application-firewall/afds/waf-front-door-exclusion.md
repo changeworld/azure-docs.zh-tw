@@ -4,15 +4,15 @@ description: 本文提供 Azure 中的排除清單設定的相關資訊，包括
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 02/25/2020
+ms.date: 10/05/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 73372f3c38e12d0d4ac972a569da36a04ad533da
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018639"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125810"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web 應用程式防火牆 (WAF) 與 Front Door Service 排除清單 
 
@@ -57,6 +57,6 @@ ms.locfileid: "92018639"
 |QueryParamValue： SOME_NAME| 查詢字串引數名稱等於 SOME_NAME|
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 設定 WAF 設定之後，請瞭解如何查看您的 WAF 記錄。 如需詳細資訊，請參閱 [Front Door 診斷](../afds/waf-front-door-monitor.md)。

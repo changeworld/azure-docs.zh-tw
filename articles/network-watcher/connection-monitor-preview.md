@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408802"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123727"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>使用連線監視器 (預覽) 的網路連線能力監視
 
@@ -143,9 +143,7 @@ ms.locfileid: "91408802"
 * 每個區域每個訂用帳戶的連線監視器上限：100
 * 每個連接監視器的測試群組上限：20
 * 每個連線監視的來源和目的地上限：100
-* 每個連線監視的測試設定上限： 
-    * 20 via ARMClient
-    * 2 via Azure 入口網站
+* 每個連線監視的測試設定上限：20
 
 ## <a name="analyze-monitoring-data-and-set-alerts"></a>分析監視資料並設定警示
 

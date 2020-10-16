@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203526"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124164"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure 資料箱磁碟限制
 
@@ -35,9 +35,9 @@ ms.locfileid: "86203526"
 
 如需與 Azure 儲存體服務限制以及命名共用、容器和檔案的最佳作法有關的最新資訊，請移至：
 
-- [命名和參考容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [命名和參考共用](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [區塊 blob 和分頁 blob 慣例](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [命名和參考容器](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [命名和參考共用](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [區塊 blob 和分頁 blob 慣例](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > 如果有任何檔案或目錄超出 Azure 儲存體服務限制，或不符合 Azure 檔案/Blob 命名慣例，則不會透過資料箱服務將這些檔案或目錄擷取到 Azure 儲存體中。
@@ -64,7 +64,7 @@ ms.locfileid: "86203526"
 
 | 資料類型             | 預設限制          |
 |--------------------------|------------------------|
-| 區塊 blob、分頁 blob    | 如需這些限制的最新資訊，請參閱 [Azure Blob 儲存體規模調整](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)目標、 [azure 標準儲存體調整](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)目標和 [Azure 檔案儲存體調整目標](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。 <br /><br /> 這些限制包括來自所有來源的資料，包括資料箱磁碟。|
+| 區塊 blob、分頁 blob    | 如需這些限制的最新資訊，請參閱 [Azure Blob 儲存體規模調整](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)目標、 [azure 標準儲存體調整](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)目標和 [Azure 檔案儲存體調整目標](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets)。 <br /><br /> 這些限制包括來自所有來源的資料，包括資料箱磁碟。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure 物件大小限制
@@ -81,7 +81,7 @@ ms.locfileid: "86203526"
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure 區塊 Blob、分頁 Blob 和檔案命名慣例
 
-| 實體                                       | 慣例                                                                                                                                                                                                                                                                                                               |
+| 單位                                       | 慣例                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 區塊 Blob 和分頁 Blob 的容器名稱 <br> Azure 檔案儲存體的檔案共用名稱 | 必須是長度介於 3 到 63 個字元的有效 DNS 名稱。 <br>  必須以字母或數字開頭。 <br> 只能包含小寫字母、數字和連字號 (-)。 <br> 每個連字號 (-) 的前後都必須緊鄰字母或數字。 <br> 名稱中不允許連續的連字號。 |
 | Azure 檔案的目錄和檔案名稱     |<li> 保留大小寫、不區分大小寫而且長度不得超過 255 個字元。 </li><li> 不能以正斜線 (/) 結尾。 </li><li>如果有的話，則會自動移除。 </li><li> 不允許使用下列字元： <code>" \\ / : \| < > * ?</code></li><li> 保留的 URL 字元必須正確逸出。 </li><li> 不允許使用不合法的 URL 路徑字元。 UE000 等程式碼點 \\ 不是有效的 Unicode 字元。 也不允許某些 ASCII 或 Unicode 字元，例如控制字元 (0x00 0x1F、 \\ ) u0081 等。 如需在 HTTP/1.1 中控管 Unicode 字串的規則，請參閱 RFC 2616 第 2.2 節：基本規則和 RFC 3987。 </li><li> 不允許下列檔案名稱：LPT1、LPT2、LPT3、LPT4、LPT5、LPT6、LPT7、LPT8、LPT9、COM1、COM2、COM3、COM4、COM5、COM6、COM7、COM8、COM9、PRN、AUX、NUL、CON、CLOCK$、點字元 (.) 和雙點字元 (..)。</li>|
@@ -89,10 +89,10 @@ ms.locfileid: "86203526"
 
 ## <a name="managed-disk-naming-conventions"></a>受控磁片命名慣例
 
-| 實體 | 慣例                                             |
+| 單位 | 慣例                                             |
 |-------------------|-----------------------------------------------------------|
 | 受控磁片名稱       | <li> 名稱的長度必須介於1到80個字元之間。 </li><li> 名稱必須以字母或數位開頭，以字母、數位或底線結尾。 </li><li> 名稱只可包含字母、數位、底線、句點或連字號。 </li><li>   名稱不能有空格或 `/` 。                                              |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 審核 [資料箱磁碟系統需求](data-box-disk-system-requirements.md)

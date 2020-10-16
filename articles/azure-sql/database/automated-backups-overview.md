@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728653"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124181"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -50,7 +50,7 @@ SQL Database 和 SQL 受控執行個體使用 SQL Server 技術來每週建立 [
 > 區域-多餘的儲存體目前僅適用于 [某些區域](../../storage/common/storage-redundancy.md#zone-redundant-storage)。 
 
 > [!NOTE]
-> 適用于 Azure SQL Database 的可設定備份儲存體冗余目前僅適用于東南亞 Azure 區域中的公開預覽。 超大規模層尚無法使用這項功能。 
+> 適用于 Azure SQL Database 的可設定備份儲存體複本目前已在東南亞 Azure 區域中正式推出。 超大規模層尚無法使用這項功能。 
 
 ### <a name="backup-usage"></a>備份使用量
 
@@ -453,7 +453,7 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 瞭解如何使用[Azure 入口網站](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)或[Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)指派原則
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 資料庫備份可保護資料免於意外損毀或刪除，是商務持續性和災害復原策略中不可或缺的一部分。 若要瞭解其他 SQL Database 商務持續性解決方案，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 - 取得有關如何 [使用 Azure 入口網站將資料庫還原至某個時間點](recovery-using-backups.md)的詳細資訊。

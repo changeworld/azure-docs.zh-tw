@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434940"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123744"
 ---
 # <a name="managed-identity-for-data-factory"></a>適用於 Data Factory 的受控身分識別
 
@@ -57,7 +57,7 @@ Data Factory 的受控識別產生方式如下：
 
 ### <a name="generate-managed-identity-using-powershell"></a>使用 PowerShell 產生受控識別
 
-再次呼叫 **Set->set-azdatafactoryv2** 命令，您會看到新產生的 "Identity" 欄位：
+呼叫 **>set-azdatafactoryv2** 命令之後，您會看到新產生的「身分識別」欄位：
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -246,7 +246,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 請參閱下列主題，這些主題會介紹使用 data factory 受控識別的時機和方式：
 
 - [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)

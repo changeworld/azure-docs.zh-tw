@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.date: 10/15/2020
+ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939829"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123284"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -43,7 +43,7 @@ ms.locfileid: "91939829"
 ### <a name="universal-replica-regions"></a>全球的複本區域
 您一律可以在下列任何區域中建立讀取複本，而不論您的主伺服器所在位置為何。 這些是通用複本區域：
 
-澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
+澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
 ### <a name="paired-regions"></a>配對的區域
 除了通用複本區域，您可以在主伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
@@ -192,6 +192,6 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ### <a name="deleted-primary-and-standalone-servers"></a>已刪除主要和獨立伺服器
 刪除主伺服器時，其所有讀取複本都會變成獨立伺服器。 這些複本將會重新啟動以反映此變更。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 了解如何[在 Azure 入口網站中建立及管理讀取複本](howto-read-replicas-portal.md)。
 * 瞭解如何 [在 Azure CLI 和 REST API 中建立及管理讀取複本](howto-read-replicas-cli.md)。

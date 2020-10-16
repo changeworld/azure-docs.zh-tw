@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: e0ac1ec93dba23eb6ab3380e342141618a1ab6e4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069650"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123247"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫定價層 - 單一伺服器
 
@@ -51,7 +51,7 @@ ms.locfileid: "92069650"
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |
 
 > [!NOTE]
-> 下欄區域支援儲存體最多16TB 和 20000 IOPS：美國東部、美國東部2、美國中部、美國西部、美國中北部、美國中南部、歐洲北部、歐洲西部、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2、美國中西部、加拿大東部以及加拿大中部。
+> 下欄區域支援儲存體最高16TB 和 20000 IOPS：美國東部、美國東部2、巴西南部、美國中部、美國西部、美國中北部、美國中南部、歐洲北部、歐洲西部、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2、美國中西部、加拿大東部和加拿大中部。
 >
 > 所有其他區域都支援最高4TB 的儲存體和 6000 IOPS。
 >
@@ -104,7 +104,7 @@ ms.locfileid: "92069650"
 
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [定價層]**** 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 [新增項目]**** 展開 [資料庫]**** 類別，然後選擇 [適用於 PostgreSQL 的 Azure 資料庫]**** 以自訂選項。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何 [在入口網站中建立于 postgresql 伺服器](tutorial-design-database-using-azure-portal.md)。
 - 了解[服務限制](concepts-limits.md)。

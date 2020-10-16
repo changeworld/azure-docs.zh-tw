@@ -6,18 +6,25 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710442"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123264"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中設定 TLS 連線能力
 
 適用於 PostgreSQL 的 Azure 資料庫偏好將用戶端應用程式連接到使用傳輸層安全性 (TLS) （先前稱為安全通訊端層 (SSL) ）的于 postgresql 服務。 在您的資料庫伺服器與用戶端應用程式之間強制執行 TLS 連線，可透過加密伺服器和應用程式之間的資料流程，來防止「攔截式」攻擊。
 
 根據預設，于 postgresql 資料庫服務會設定為需要 TLS 連接。 如果您的用戶端應用程式不支援 TLS 連接，您可以選擇停用需要 TLS。
+
+>[!NOTE]
+> 根據客戶的意見反應，我們已在2021年2月15日之前，為現有的巴爾的摩根 CA 延伸根憑證取代， (02/15/2021) 。
+
+> [!IMPORTANT] 
+> 自2021年2月15日起，SSL 根憑證已設定為過期 (02/15/2021) 。 請更新您的應用程式以使用 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要深入瞭解，請參閱 [規劃的憑證更新](concepts-certificate-rotation.md)
+
 
 ## <a name="enforcing-tls-connections"></a>強制執行 TLS 連接
 
@@ -104,7 +111,7 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 *   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 *   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [針對適用於 PostgreSQL 的 Azure 資料庫查看連接程式庫中的](concepts-connection-libraries.md)各種應用程式連線選項。
 

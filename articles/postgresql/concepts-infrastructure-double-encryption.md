@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3a3582891ab3d3e4bfb53cbba0c0b2826cba56b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537900"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123349"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>適用於 PostgreSQL 的 Azure 資料庫基礎結構雙重加密
 
@@ -20,7 +20,7 @@ ms.locfileid: "91537900"
 基礎結構雙重加密會使用服務管理的金鑰來新增第二層的加密。 它使用 FIPS 140-2 驗證的密碼編譯模組，但使用不同的加密演算法。 這可為您的待用資料提供額外一層保護。 基礎結構雙重加密中使用的金鑰也是由適用於 PostgreSQL 的 Azure 資料庫服務所管理。 預設不會啟用基礎結構雙重加密，因為額外的加密層級可能會對效能造成影響。
 
 > [!NOTE]
-> 這項功能適用于所有 Azure 區域，其中適用於 PostgreSQL 的 Azure 資料庫支援「一般用途」和「記憶體優化」定價層。
+> 只有適用於 PostgreSQL 的 Azure 資料庫中的「一般用途」和「記憶體優化」定價層才支援這項功能。
 
 基礎結構層加密具有在最接近存放裝置或網路線路的層級上執行的優點。 適用於 PostgreSQL 的 Azure 資料庫使用服務管理的金鑰來執行兩層加密。 雖然在技術上仍是服務層級，但很接近儲存待用資料的硬體。 您仍然可以選擇使用 [客戶管理的金鑰](concepts-data-encryption-postgresql.md) ，為布建的于 postgresql 伺服器啟用資料加密。  
 
@@ -71,6 +71,6 @@ ms.locfileid: "91537900"
     > - 上述區域中所建立的所有 **新** 于 postgresql 伺服器也支援使用客戶管理金鑰進行資料加密。 在此情況下，透過時間點還原所建立的伺服器 (PITR) 或讀取複本不符合「新增」的資格。
     > - 若要驗證您布建的伺服器是否支援最多 16 TB 的功能，您可以移至入口網站中的 [定價層] 分頁，並查看儲存體滑杆是否可移至 16 TB。 如果您只能將滑杆移至 4 TB，則您的伺服器可能不支援使用客戶管理的金鑰進行加密;不過，資料會隨時使用服務管理的金鑰進行加密。 AskAzureDBforPostgreSQL@service.microsoft.com如果您有任何問題，請與您聯繫。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何 [設定適用于于 postgresql 的 Azure 資料庫的基礎結構雙重加密](howto-double-encryption.md)。

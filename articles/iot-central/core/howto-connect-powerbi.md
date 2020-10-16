@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080993"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123332"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>視覺化與分析 Power BI 儀表板中的 Azure IoT Central 資料
 
@@ -27,9 +27,9 @@ ms.locfileid: "87080993"
 - 篩選至特定裝置所傳送的資料
 - 查看資料表中最新的遙測資料
 
-此解決方案會設定管線，以從您的 [連續資料匯出](howto-export-data-blob-storage.md) Azure Blob 儲存體帳戶讀取資料。 管線會使用 Azure Functions、Azure Data Factory 和 Azure SQL Database 來處理和轉換資料。 您可以在您下載為 .PBIX 檔案的 Power BI 報表中，將資料視覺化並加以分析。 所有資源都是在您的 Azure 訂用帳戶中建立的，因此您可以自訂每個元件以符合您的需求。
+此解決方案會設定管線，以從您的 [連續資料匯出](./howto-export-data.md) Azure Blob 儲存體帳戶讀取資料。 管線會使用 Azure Functions、Azure Data Factory 和 Azure SQL Database 來處理和轉換資料。 您可以在您下載為 .PBIX 檔案的 Power BI 報表中，將資料視覺化並加以分析。 所有資源都是在您的 Azure 訂用帳戶中建立的，因此您可以自訂每個元件以符合您的需求。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此操作指南中的步驟，您必須具備有效的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "87080993"
 - 如果您想要與其他) 共用儀表板，Power BI Pro (。
 
 > [!NOTE]
-> 如果您使用第2版 IoT Central 應用程式，請參閱舊版檔網站上 [Power BI 儀表板中的視覺化及分析 Azure IoT Central 資料](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi) 。
+> 如果您使用第2版 IoT Central 應用程式，請參閱舊版檔網站上 [Power BI 儀表板中的視覺化及分析 Azure IoT Central 資料](/previous-versions/azure/iot-central/core/howto-connect-powerbi) 。
 
 ## <a name="install"></a>安裝
 
@@ -83,6 +83,6 @@ Azure Data Factory 會產生一組用於 Power BI 的分析資料表。 您可�
 
 Microsoft AppSource 網站上 [Azure IoT Central V3 的 Power BI 解決方案](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) 會針對您部署的資源，包含成本估算器的連結。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何在 Power BI 中將資料視覺化，建議的下一個步驟是瞭解如何 [管理裝置](howto-manage-devices.md)。

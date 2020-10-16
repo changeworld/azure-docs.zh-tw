@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053448"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124669"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>針對與 Azure 資料箱和 Azure Data Box Heavy 相關的問題進行疑難排解
 
@@ -56,7 +56,7 @@ ms.locfileid: "90053448"
     - 有效名稱的範例： `my-folder-1` 、 `my-really-extra-long-folder-111`
     - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、 `myfolder!`
 
-    如需詳細資訊，請參閱 Azure 命名慣例的 [容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) 和 [共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+    如需詳細資訊，請參閱 Azure 命名慣例的 [容器名稱](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) 和 [共用名稱](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
@@ -75,7 +75,7 @@ ms.locfileid: "90053448"
     - 有效名稱的範例： `my-folder-1` 、 `my-really-extra-long-folder-111`
     - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、 `myfolder!`
 
-    如需詳細資訊，請參閱 Azure 命名慣例的 [容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) 和 [共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+    如需詳細資訊，請參閱 Azure 命名慣例的 [容器名稱](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) 和 [共用名稱](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
@@ -93,7 +93,7 @@ ms.locfileid: "90053448"
     - 有效名稱的範例： `my-folder-1` 、 `my-really-extra-long-folder-111`
     - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、 `myfolder!`
 
-    如需詳細資訊，請參閱 Azure 命名慣例的 [容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) 和 [共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+    如需詳細資訊，請參閱 Azure 命名慣例的 [容器名稱](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) 和 [共用名稱](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
     
 ### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
@@ -104,7 +104,7 @@ ms.locfileid: "90053448"
 - 在本機 web UI 的 [連線並複製] 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。 
 - 重新命名目錄或容器，以確保它們符合 Azure 命名慣例的規範。
 
-如需詳細資訊，請參閱 [目錄](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名慣例。
+如需詳細資訊，請參閱 [目錄](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   和[容器](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名慣例。
 
 ## <a name="container-or-share-size-limit-errors"></a>容器或共用大小限制錯誤
 
@@ -190,7 +190,7 @@ ms.locfileid: "90053448"
 在本機 web UI 的 [連線 **並複製]** 頁面上，下載並檢查錯誤檔案。
 移除或重新命名檔案，以移除不支援的字元。
 
-如需詳細資訊，請參閱 Azure [blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的命名慣例。
+如需詳細資訊，請參閱 Azure [blob 名稱](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的命名慣例。
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
@@ -201,7 +201,7 @@ ms.locfileid: "90053448"
 在本機 web UI 的 [連線 **並複製]** 頁面上，下載並檢查錯誤檔案。
 移除或重新命名檔案，以移除不支援的字元。
 
-如需詳細資訊，請參閱 Azure [blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的命名慣例。
+如需詳細資訊，請參閱 Azure [blob 名稱](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的命名慣例。
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
@@ -213,7 +213,7 @@ ms.locfileid: "90053448"
 在本機 web UI 的 [連線 **並複製]** 頁面上，下載並檢查錯誤檔案。
 移除或重新命名檔案，以移除不支援的字元。
 
-如需詳細資訊，請參閱 Azure [blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的命名慣例。
+如需詳細資訊，請參閱 Azure [blob 名稱](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的命名慣例。
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
@@ -223,7 +223,7 @@ ms.locfileid: "90053448"
 **建議的解決方式：** 您複製的 blob 或檔案超過路徑區段的最大數目。 路徑區段是連續分隔符號之間的字串，例如正斜線/。
 
 - 在本機 web UI 的 [連線 **並複製]** 頁面上，下載並檢查錯誤檔案。
-- 請確定 [blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 符合 Azure 命名慣例。
+- 請確定 [blob 名稱](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 符合 Azure 命名慣例。
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
@@ -244,7 +244,7 @@ ms.locfileid: "90053448"
 **建議的解決方式：** Blob 或檔案名中的其中一個路徑區段超過最大字元數。 路徑區段是連續分隔符號之間的字串，例如正斜線/。
 
 - 在本機 web UI 的 [連線 **並複製]** 頁面上，下載並檢查錯誤檔案。
-- 請確定 [blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 符合 Azure 命名慣例。
+- 請確定 [blob 名稱](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) 和 [檔案名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 符合 Azure 命名慣例。
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
@@ -260,6 +260,6 @@ ms.locfileid: "90053448"
 如需詳細資訊，請參閱 [複製到受控磁片](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解 [資料箱 Blob 儲存體系統需求](data-box-system-requirements-rest.md)。

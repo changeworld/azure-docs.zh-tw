@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653344"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123108"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>從 CSP 入口網站建立和管理 Azure IoT Central 應用程式
 
@@ -63,7 +63,7 @@ Azure IoT Central 會列為可供系統管理員使用的服務。 選取頁面�
 
 Azure Active Directory 租用戶包含使用者身分識別、認證和其他組織資訊。 多個 Azure 訂用帳戶可與單一 Azure Active Directory 租用戶產生關聯。
 
-若要深入了解，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)。
+若要深入了解，請參閱 [Azure Active Directory](../../active-directory/index.yml)。
 
 ## <a name="azure-subscription"></a>Azure 訂用帳戶
 
@@ -71,7 +71,7 @@ Azure 訂用帳戶可讓您建立 Azure 服務執行個體。 Azure IoT Central 
 
 如果您沒有 Azure 訂用帳戶，您可以在 Microsoft 合作夥伴中心中建立一個訂用帳戶。 建立 Azure 訂用帳戶之後，請瀏覽回到 [建立應用程式]**** 頁面。 新的訂用帳戶會出現在 [Azure 訂用帳戶]**** 下拉式清單中。
 
-若要深入了解，請參閱 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)。
+若要深入了解，請參閱 [Azure 訂用帳戶](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。
 
 ## <a name="location"></a>Location
 
@@ -81,7 +81,7 @@ Azure 訂用帳戶可讓您建立 Azure 服務執行個體。 Azure IoT Central 
 
 選擇您想要用於應用程式的應用程式範本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 您現在已了解如何以 CSP 的身分建立 Azure IoT Central 應用程式，以下是建議的後續步驟：
 

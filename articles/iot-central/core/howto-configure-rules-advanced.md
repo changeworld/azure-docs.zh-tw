@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398573"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123315"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流程將您的 Azure IoT Central 應用程式與其他雲端服務整合
 
@@ -32,7 +32,7 @@ ms.locfileid: "91398573"
 設定解決方案需要第3版 IoT Central 應用程式。 若要瞭解如何檢查您的應用程式版本，請參閱 [應用程式的相關資訊](./howto-get-app-info.md)。 若要瞭解如何建立 IoT Central 應用程式，請參閱 [建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)。
 
 > [!NOTE]
-> 如果您使用第2版 IoT Central 應用程式，請參閱舊版檔網站 [Azure Logic Apps 中的 IoT Central 連接器組建工作流程](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) ，並使用 Azure IoT Central V2 連接器
+> 如果您使用第2版 IoT Central 應用程式，請參閱舊版檔網站 [Azure Logic Apps 中的 IoT Central 連接器組建工作流程](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) ，並使用 Azure IoT Central V2 連接器
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>從規則引發工作流程
 
