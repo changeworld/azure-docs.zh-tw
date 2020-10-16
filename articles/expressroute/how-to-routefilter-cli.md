@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2a72e22b600f7dd7737a877e2fdf5d34c4dd4b4c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876085"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975989"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>教學課程：針對 Microsoft 對等互連設定路由篩選：Azure CLI
 
@@ -51,7 +51,7 @@ Microsoft 365 服務 (例如 Exchange Online、SharePoint Online 和商務用 Sk
 > 在 2017 年 8 月 1 日以前設定之 ExpressRoute 線路的 Microsoft 對等互連，會透過 Microsoft 對等互連公告所有服務首碼，即使未定義路由篩選也一樣。 在 2017 年 8 月 1 日當日或以後設定之 ExpressRoute 線路的 Microsoft 對等互連，不會公告任何首碼，直到路由篩選連結至線路為止。
 > 
 
-## <a name="prerequisites"></a><a name="workflow"></a>必要條件
+## <a name="prerequisites"></a>必要條件
 
 若要成功透過 Microsoft 對等互連連線到服務，您必須完成下列設定步驟：
 
@@ -143,7 +143,7 @@ az network route-filter rule update --filter-name MyRouteFilter -n CRM -g Expres
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-## <a name="clean-up-resources"></a><a name="delete"></a>清除資源
+## <a name="clean-up-resources"></a>清除資源
 
 您只能在路由篩選尚未連結至任何線路時刪除路由篩選。 請在嘗試刪除之前，確認路由篩選尚未連結至任何線路。 您可以使用下列命令來刪除路由篩選：
 

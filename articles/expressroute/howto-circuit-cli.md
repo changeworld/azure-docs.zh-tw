@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757566"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969053"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>快速入門：使用 Azure CLI 建立和修改 ExpressRoute 線路
 
@@ -112,7 +112,7 @@ az network express-route list-service-providers
 
 請檢查回應以查看是否列出您的連線提供者。 記下下列資訊，當您建立線路時將會用到：
 
-* 名稱
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -210,7 +210,7 @@ az network express-route list -h
 "circuitProvisioningState": "Enabled"
 ```
 
-若要使用 ExpressRoute 線路，其必須處於下列狀態：
+若要使用 ExpressRoute 線路，它必須處於下列狀態：
 
 ```output
 "serviceProviderProvisioningState": "Provisioned"
@@ -347,7 +347,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 * 如果 ExpressRoute 線路服務提供者佈建狀態為 **Provisioning** 或 **Provisioned**，您就必須與服務提供者一起合作，取消佈建他們那邊的線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
 * 若服務提供者已取消佈建線路，表示服務提供者佈建狀態設定為 [未佈建]，則您可以刪除線路。 線路的計費將會停止。
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
+## <a name="clean-up-resources"></a>清除資源
 
 您可以執行下列命令來刪除 ExpressRoute 線路：
 

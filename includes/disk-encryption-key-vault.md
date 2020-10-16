@@ -1,5 +1,5 @@
 ---
-title: 包含檔案
+title: Include 檔案
 description: 包含檔案
 services: virtual-machines
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81314105"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989615"
 ---
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -120,7 +120,7 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 1. 選取金鑰保存庫，移至 [存取原則]，然後**按一下以顯示進階存取原則**。
 2. 選取標示為**為磁碟區加密啟用對 Azure 磁碟加密的存取**的方塊。
 3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]**** 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]****。 
-4. 按一下 [儲存]。
+4. 按一下 **[儲存]** 。
 
     ![Azure 金鑰保存庫進階存取原則](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 
@@ -148,7 +148,7 @@ Azure 磁碟加密不支援將連接埠號碼指定為金鑰保存庫密碼和 K
 使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) 命令以產生新的 KEK，並且將其儲存在您的金鑰保存庫中。
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
 您可以改為使用 Azure CLI [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) 命令來匯入私密金鑰：
