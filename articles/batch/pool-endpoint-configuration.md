@@ -3,12 +3,12 @@ title: 在 Azure Batch 集區中設定節點端點
 description: 如何設定或停用 Azure Batch 集區內之計算節點上的 SSH 或 RDP 連接埠存取權。
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7df7da539be75ef1befdff4b4e1fe5244c1702
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83780299"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109301"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>設定或停用 Azure Batch 集區內計算節點的遠端存取權
 
@@ -19,7 +19,7 @@ ms.locfileid: "83780299"
 ## <a name="about-the-pool-endpoint-configuration"></a>關於集區端點設定
 端點設定包含一或多個前端連接埠的[網路位址轉譯 (NAT) 集區](/rest/api/batchservice/pool/add#inboundnatpool)。 (請勿將 NAT 集區與計算節點的 Batch 集區混淆。)您可設定每個 NAT 集區以覆寫集區計算節點上的預設連線設定。 
 
-每個 NAT 集區設定都包含一或多個[網路安全性群組 (NSG) 規則](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每個 NSG 規則皆會允許或拒絕通往端點的特定網路流量。 您可選擇要允許或拒絕所有流量、以[服務標籤](../virtual-network/security-overview.md#service-tags) (例如「網際網路」) 識別的網路流量，或來自特定 IP 位址或子網路的流量。
+每個 NAT 集區設定都包含一或多個[網路安全性群組 (NSG) 規則](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每個 NSG 規則皆會允許或拒絕通往端點的特定網路流量。 您可選擇要允許或拒絕所有流量、以[服務標籤](../virtual-network/network-security-groups-overview.md#service-tags) (例如「網際網路」) 識別的網路流量，或來自特定 IP 位址或子網路的流量。
 
 ### <a name="considerations"></a>考量
 * 集區端點設定是屬於集區[網路設定](/rest/api/batchservice/pool/add#networkconfiguration)的一部分。 網路設定可選擇性地包含將集區加入 [Azure 虛擬網路](batch-virtual-network.md)的設定。 如果您在虛擬網路中設定集區，您可以建立使用虛擬網路中位址設定的 NSG 規則。
@@ -121,4 +121,4 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
-- 如需 Azure 中 NSG 規則的相關詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/security-overview.md)。
+- 如需 Azure 中 NSG 規則的相關詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/network-security-groups-overview.md)。

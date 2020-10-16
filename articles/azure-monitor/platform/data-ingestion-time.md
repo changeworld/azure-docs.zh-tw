@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bfe1109640f158b92f54b945d314ac65a93ddc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403546"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107907"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure 監視器中的記錄資料擷取時間
 Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 而在收集記錄資料後，資料需要多久時間方能轉為可用狀態，是經常受到詢問的問題。 本文會說明影響這種延遲的不同因素。
@@ -57,7 +57,7 @@ Azure 監視器是一種大規模的資料服務，服務對象為每月需傳�
 請參閱每個解決方案的文件以確定其收集頻率。
 
 ### <a name="pipeline-process-time"></a>管理處理程序時間
-一旦將記錄檔記錄內嵌至 [_TimeReceived](log-standard-properties.md#_timereceived) 屬性) 中所識別的 Azure 監視器管線 (，它們就會寫入暫存儲存體，以確保租使用者隔離，並確保資料不會遺失。 此程序通常會增加 5-15 秒。 某些管理解決方案會實作更繁重的演算法以彙總資料，並在資料流入時獲得見解。 例如，網路效能監控會每 3 分鐘彙總傳入資料，有效地增加 3 分鐘的延遲。 另一個會增加延遲的程序是處理自訂記錄的程序。 在某些情況下，對於代理程式收集自檔案的記錄，此程序可能會增加數分鐘的延遲。
+一旦將記錄檔記錄內嵌至 [_TimeReceived](./log-standard-columns.md#_timereceived) 屬性) 中所識別的 Azure 監視器管線 (，它們就會寫入暫存儲存體，以確保租使用者隔離，並確保資料不會遺失。 此程序通常會增加 5-15 秒。 某些管理解決方案會實作更繁重的演算法以彙總資料，並在資料流入時獲得見解。 例如，網路效能監控會每 3 分鐘彙總傳入資料，有效地增加 3 分鐘的延遲。 另一個會增加延遲的程序是處理自訂記錄的程序。 在某些情況下，對於代理程式收集自檔案的記錄，此程序可能會增加數分鐘的延遲。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自訂資料類型佈建
 從 [自訂記錄](data-sources-custom-logs.md) 檔或 [資料收集器 API](data-collector-api.md)建立新類型的自訂資料時，系統會建立專用的儲存體容器。 這是一次性的額外負荷，僅在第一次出現此資料類型時發生。
@@ -77,8 +77,8 @@ Azure 監視器的首要任務是確保不會遺失客戶資料，因此系統�
 
 | 步驟 | 屬性或函數 | 註解 |
 |:---|:---|:---|
-| 在資料來源建立的記錄 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果資料來源未設定此值，則會將它設定為 _TimeReceived 的相同時間。 |
-| Azure 監視器內嵌端點所收到的記錄 | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| 在資料來源建立的記錄 | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>如果資料來源未設定此值，則會將它設定為 _TimeReceived 的相同時間。 |
+| Azure 監視器內嵌端點所收到的記錄 | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | 儲存在工作區中並可用於查詢的記錄 | [ingestion_time ( # B1 ](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>擷取延遲
@@ -143,4 +143,3 @@ Heartbeat
 
 ## <a name="next-steps"></a>後續步驟
 * 請閱讀 Azure 監視器的[服務等級協定 (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/)。
-

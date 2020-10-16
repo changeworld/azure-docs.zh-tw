@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358958"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104796"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警示與智慧群組狀態
 
-Azure 監視器中的警示現在有[警示的狀態和監視條件](https://aka.ms/azure-alerts-overview)，同樣地，智慧群組也有[智慧型群組狀態](https://aka.ms/smart-groups)。 對狀態所作的變更，現在會擷取到與個別警示或智慧群組相關聯的歷程記錄。 這篇文章會引導您完成變更警示和智慧群組兩者狀態的程序。
+Azure 監視器中的警示現在有[警示的狀態和監視條件](./alerts-overview.md)，同樣地，智慧群組也有[智慧型群組狀態](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。 對狀態所作的變更，現在會擷取到與個別警示或智慧群組相關聯的歷程記錄。 這篇文章會引導您完成變更警示和智慧群組兩者狀態的程序。
 
 ## <a name="change-the-state-of-an-alert"></a>變更警示的狀態
 
@@ -46,4 +46,3 @@ Azure 監視器中的警示現在有[警示的狀態和監視條件](https://aka
 
 1. 完成之後，狀態變更會記錄到個別智慧群組的歷程記錄中。 開啟個別的 [詳細資料] 頁面並查看歷程記錄區段，即可檢視這些資料。     
 ![螢幕擷取畫面：顯示智慧群組的變更歷程記錄。](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

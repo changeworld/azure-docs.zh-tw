@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: fe5940083d04c1b5cc60b21834adf609e523e059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666240"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109114"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的高可用性和嚴重損壞修復指導方針
 
@@ -21,8 +21,8 @@ Data Lake Storage Gen1 提供本機冗余的儲存體 (LRS) 。 因此，您 Dat
 
 您必須準備嚴重損壞修復計畫。 請參閱本文中的資訊和這些額外的資源，以協助您建立自己的計畫。
 
-* [Azure 應用程式的災害復原和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Azure 復原技術指導](../resiliency/resiliency-technical-guidance.md)
+* [Azure 應用程式的災害復原和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Azure 復原技術指導](/azure/architecture/framework/resiliency/overview)
 
 ### <a name="best-practice-recommendations"></a>最佳做法建議
 

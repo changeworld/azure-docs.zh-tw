@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134474"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108961"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>疑難排解遠端桌面用戶端
 
@@ -83,6 +83,20 @@ nslookup rdweb.wvd.microsoft.com
 3. 清除瀏覽器 cookie。 如需詳細資訊，請參閱 [如何在 Internet Explorer 中刪除 cookie](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)檔。
 4. 清除瀏覽器快取。 如需詳細資訊，請參閱清除瀏覽器 [的瀏覽器](https://binged.it/2RKyfdU)快取。
 5. 以私用模式開啟瀏覽器。
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows 用戶端會封鎖 Windows 虛擬桌面 (傳統) 摘要
+
+如果 Windows 用戶端摘要不會顯示 Windows 虛擬桌面 (傳統) 應用程式，請遵循下列指示：
+
+1. 檢查條件式存取原則是否包含與 Windows 虛擬桌面 (傳統) 相關聯的應用程式識別碼。
+2. 檢查條件式存取原則是否封鎖除了 Windows 虛擬桌面 (傳統) 應用程式識別碼以外的所有存取。 若是如此，您必須將應用程式識別碼 **9cdead84-a844-4324-93f2-b2e6bb768d07** 新增至原則，以允許用戶端探索摘要。
+
+如果您在清單中找不到 [應用程式識別碼] 9cdead84-a844-4324-93f2-b2e6bb768d07，您將需要註冊 Windows 虛擬桌面資源提供者。 註冊資源提供者：
+
+1. 登入 Azure 入口網站。
+2. 移至 [ **訂**用帳戶]，然後選取您的訂用帳戶。
+3. 在頁面左側的功能表中，選取 [ **資源提供者**]。
+4. 尋找並選取 [ **DesktopVirtualization**]，然後選取 [ **重新註冊**]。
 
 ## <a name="next-steps"></a>後續步驟
 

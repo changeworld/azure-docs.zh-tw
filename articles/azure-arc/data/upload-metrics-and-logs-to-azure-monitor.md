@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952245"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108162"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>將使用方式資料、計量和記錄上傳至 Azure 監視器
 
@@ -95,7 +95,7 @@ az provider register -n Microsoft.AzureData --wait
 若要建立服務主體，請執行下列命令：
 
 > [!NOTE]
-> 建立服務主體需要 [Azure 中的特定許可權](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)。
+> 建立服務主體需要 [Azure 中的特定許可權](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

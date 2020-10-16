@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016088"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107601"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用內部部署資料閘道連接至內部部署資料來源
 
@@ -29,22 +29,6 @@ ms.locfileid: "92016088"
 - 在**azure 中建立閘道資源**-在此步驟中，您會在 azure 中建立閘道資源。
 
 - 將**閘道資源連接到伺服器**-一旦擁有閘道資源之後，您就可以開始將伺服器連接到該資源。 您可以將多部伺服器和其他資源連接在相同的區域中。
-
-
-
-## <a name="how-it-works"></a>運作方式
-您在組織的電腦上安裝的閘道會以 Windows 服務 (**內部部署資料閘道**) 的形式執行。 此本機服務已透過 Azure 服務匯流排向閘道雲端服務註冊。 然後，您會建立 Azure 訂用帳戶的內部部署資料閘道資源。 然後，您的 Azure Analysis Services 伺服器會連線到您的 Azure 閘道資源。 當您伺服器上的模型需要連線到內部部署資料來源進行查詢或處理時，查詢和資料流程會周遊閘道資源、Azure 服務匯流排、本機內部部署資料閘道服務以及您的資料來源。 
-
-![運作方式](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-查詢和資料流程：
-
-1. 雲端服務使用內部部署資料來源的加密認證建立查詢。 查詢接著傳送至佇列供閘道處理。
-2. 閘道雲端服務會分析該查詢，並將要求推送至 [Azure 服務匯流排](https://azure.microsoft.com/documentation/services/service-bus/)。
-3. 內部部署資料閘道會輪詢 Azure 服務匯流排是否有待處理的要求。
-4. 閘道收到查詢、解密認證，並使用這些認證連接至資料來源。
-5. 閘道將查詢傳送至資料來源執行。
-6. 結果會從資料來源傳送回閘道，然後再到雲端服務和您的伺服器。
 
 ## <a name="installing"></a>安裝
 
@@ -76,16 +60,6 @@ ms.locfileid: "92016088"
 | *.msftncsi.com |443 |如果 Power BI 服務無法連接至閘道，則用來測試網際網路連線能力。 |
 | *.microsoftonline-p.com |443 |用於驗證 (視設定而定)。 |
 | dc.services.visualstudio.com    |443 |供 AppInsights 用來收集遙測。 |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>強制使用 Azure 服務匯流排進行 HTTPS 通訊
-
-您可以強制閘道使用 HTTPS 取代直接 TCP 來與 Azure 服務匯流排通訊；但這樣會大幅降低效能。 您可以修改 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* 檔案，方法是將值從 `AutoDetect` 變更為 `Https`。 這個檔案通常位於 *C:\Program Files\On-premises data gateway*。
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>後續步驟 
 

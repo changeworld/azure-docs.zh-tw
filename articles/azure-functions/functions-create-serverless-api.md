@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083016"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104745"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自訂 HTTP 端點
 
 在本文中，您將瞭解 Azure Functions 如何讓您建立可高度擴充的 Api。 Azure Functions 隨附內建 HTTP 觸發程式和系結的集合，可讓您以各種語言輕鬆撰寫端點，包括 Node.js、c # 等。 在本文中，您將自訂 HTTP 觸發程式來處理 API 設計中的特定動作。 您也將藉由與 Azure Functions Proxy 整合，並設定模擬 Api，為您的 API 做好準備。 這些工作是在函式無伺服器計算環境的最上層完成，因此您不需要擔心調整資源-您可以只專注于您的 API 邏輯。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "87083016"
 
     您未 `/api` 在路由範本中包含基底路徑前置詞，因為它是由全域設定所處理。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 如需自訂 HTTP 函式的詳細資訊，請參閱 [AZURE FUNCTIONS HTTP](./functions-bindings-http-webhook.md)系結。
 
@@ -75,7 +75,7 @@ ms.locfileid: "87083016"
 Proxy 可以指向任何 HTTP 資源，例如︰
 - Azure Functions 
 - [Azure App Service](../app-service/overview.md) 中的 API 應用程式
-- [Linux 上的 App Service](../app-service/containers/app-service-linux-intro.md) 中的 Docker 容器
+- [Linux 上的 App Service](../app-service/overview.md#app-service-on-linux) 中的 Docker 容器
 - 其他任何裝載 API
 
 若要深入了解 Proxy，請參閱[使用 Azure Functions Proxy]。
@@ -95,7 +95,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
     > [!NOTE] 
     > 建議使用應用程式設定作為主機設定，以避免 Proxy 依賴硬式編碼的環境。 使用應用程式設定表示您可以在不同環境之間移動 Proxy 設定，將會套用環境特定的應用程式設定。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>在前端建立 Proxy
 
@@ -184,7 +184,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 使用瀏覽器或您最愛的 REST 用戶端呼叫 `<YourProxyApp>.azurewebsites.net/api/users/{username}` 端點，以測試您的模擬 API。 請務必以代表使用者名稱的字串值取代 _{username}_。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何在 Azure Functions 上建立和自訂 API。 您也學到如何將多個 API (包括模擬) 組合成統一的 API 介面。 不論多麼複雜的 API 都可以使用這些技術來建置，而且都在 Azure Functions 提供的無伺服器計算模型上執行。
 

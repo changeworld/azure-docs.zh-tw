@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449328"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107924"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可針對 azure 資源及其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，並通常儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定，以將平臺計量和平臺記錄傳送至不同目的地的詳細資料。
@@ -46,8 +46,8 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 | Destination | 描述 |
 |:---|:---|
 | [Log Analytics 工作區](design-logs-deployment.md) | 將記錄和計量傳送至 Log Analytics 工作區，可讓您使用強大的記錄查詢來分析 Azure 監視器所收集的其他監視資料，也可以利用其他 Azure 監視器功能，例如警示和視覺效果。 |
-| [事件中樞](/azure/event-hubs/) | 將記錄和計量傳送至事件中樞，可讓您將資料串流至外部系統，例如協力廠商 Siem 和其他 log analytics 解決方案。  |
-| [Azure 儲存體帳戶](/azure/storage/blobs/) | 將記錄和計量封存至 Azure 儲存體帳戶有助於進行審核、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保留。  |
+| [事件中樞](../../event-hubs/index.yml) | 將記錄和計量傳送至事件中樞，可讓您將資料串流至外部系統，例如協力廠商 Siem 和其他 log analytics 解決方案。  |
+| [Azure 儲存體帳戶](../../storage/blobs/index.yml) | 將記錄和計量封存至 Azure 儲存體帳戶有助於進行審核、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保留。  |
 
 
 ### <a name="destination-requirements"></a>目的地需求
@@ -128,7 +128,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將 *WorkflowRuntime* 的保留原則設定為180天，然後將其設定為365天，則在這前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄將會在365天后自動刪除。 稍後變更保留原則時，不會讓前24小時的記錄保留大約365天。
 
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案] 。
 
 經過幾分鐘之後，新的設定就會出現在此資源的設定清單中，並在產生新的事件資料時，將記錄串流處理至指定的目的地。 當事件發出和 [記錄在 Log Analytics 工作區中出現](data-ingestion-time.md)時，最多可能需要15分鐘的時間。
 
@@ -137,7 +137,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 使用 [>set-azdiagnosticsetting 指令程式](/powershell/module/az.monitor/set-azdiagnosticsetting) ，以 [Azure PowerShell](../samples/powershell-samples.md)建立診斷設定。 請參閱此 Cmdlet 的說明文件，以瞭解其參數的描述。
 
 > [!IMPORTANT]
-> 您無法將此方法用於 Azure 活動記錄。 相反地，請使用 [Resource Manager 範本 Azure 監視器中的 [建立診斷設定](diagnostic-settings-template.md) ]，以建立 Resource Manager 範本並使用 PowerShell 進行部署。
+> 您無法將此方法用於 Azure 活動記錄。 相反地，請使用 [Resource Manager 範本 Azure 監視器中的 [建立診斷設定](../samples/resource-manager-diagnostic-settings.md) ]，以建立 Resource Manager 範本並使用 PowerShell 進行部署。
 
 以下是範例 PowerShell Cmdlet，可使用三個目的地建立診斷設定。
 
@@ -150,7 +150,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令，以 [Azure CLI](/cli/azure/monitor?view=azure-cli-latest)建立診斷設定。 請參閱此命令的檔，以瞭解其參數的描述。
 
 > [!IMPORTANT]
-> 您無法將此方法用於 Azure 活動記錄。 相反地，請使用 [Resource Manager 範本 Azure 監視器中的 [建立診斷設定](diagnostic-settings-template.md) ]，以建立 Resource Manager 範本並使用 CLI 來部署它。
+> 您無法將此方法用於 Azure 活動記錄。 相反地，請使用 [Resource Manager 範本 Azure 監視器中的 [建立診斷設定](../samples/resource-manager-diagnostic-settings.md) ]，以建立 Resource Manager 範本並使用 CLI 來部署它。
 
 以下是使用三個目的地建立診斷設定的 CLI 命令範例。
 

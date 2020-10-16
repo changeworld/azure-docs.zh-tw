@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441046"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109250"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 處理巨量資料需求
 
@@ -48,9 +48,9 @@ ms.locfileid: "89441046"
 
 以下是您可以使用的工具︰
 
-* [Azure 串流分析](../stream-analytics/stream-analytics-data-lake-output.md) - 內嵌到「事件中樞」的事件可以透過使用 Azure Data Lake Storage Gen1 輸出寫入到 Azure Data Lake Storage Gen1。
+* [Azure 串流分析](../stream-analytics/stream-analytics-define-outputs.md) - 內嵌到「事件中樞」的事件可以透過使用 Azure Data Lake Storage Gen1 輸出寫入到 Azure Data Lake Storage Gen1。
 * [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) - 您可以從 Storm 叢集將資料直接寫入 Data Lake Storage Gen1 中。
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) - 您可以從「事件中樞」接收事件，然後使用 [Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) 將事件寫入到 Data Lake Storage Gen1。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) - 您可以從「事件中樞」接收事件，然後使用 [Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) 將事件寫入到 Data Lake Storage Gen1。
 
 ### <a name="relational-data"></a>關聯式資料
 您也可以從關聯式資料庫取得資料。 每經過一段時間，關聯式資料庫就會收集大量資料，在經過巨量資料管線處理後，這些資料將可提供重要情資。 您可以使用下列工具，將此類資料移動到 Data Lake Storage Gen1。
@@ -131,4 +131,4 @@ ms.locfileid: "89441046"
 ![視覺化 Data Lake Storage Gen1 中的資料](./media/data-lake-store-data-scenarios/visualize-data.png "視覺化 Data Lake Storage Gen1 中的資料")
 
 * 您可以從使用 Azure Data Factory 開始，將 [資料從 Data Lake Storage Gen1 移至先前的 SQL 資料倉儲 Azure Synapse Analytics () ](../data-factory/copy-activity-overview.md)
-* 之後，您可以將 [Power BI 與 Azure Synapse Analytics 整合](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) ，以建立資料的視覺標記法。
+* 之後，您可以將 [Power BI 與 Azure Synapse Analytics 整合](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) ，以建立資料的視覺標記法。

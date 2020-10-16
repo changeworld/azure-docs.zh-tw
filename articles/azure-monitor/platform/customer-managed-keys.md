@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
-ms.openlocfilehash: 667ca4701ed8e781a2270b42802bab31e6e9c8ee
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 532d96163e2ec66730dc3fdf87f10904fd584224
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096227"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107992"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -304,7 +304,7 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 > [!NOTE]
 > 您可以根據所使用的案例，將 Log Analytics 查詢儲存在不同的存放區。 無論 CMK 設定： Azure 監視器、Azure 儀表板、Azure 邏輯應用程式、Azure Notebooks 和自動化 Runbook 中的活頁簿，在下列案例中，查詢仍會以 Microsoft key (MMK) 加密。
 
-當您將自己的儲存體 (BYOS) 並將其連結至您的工作區時，服務會將 *已儲存的搜尋* 和 *記錄警示* 查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來將 Log Analytics 叢集中的資料加密的相同金鑰或不同的金鑰，來控制儲存體帳戶和 [靜態加密原則](../../storage/common/encryption-customer-managed-keys.md) 。 不過，您將負責處理與該儲存體帳戶相關聯的成本。 
+當您將自己的儲存體 (BYOS) 並將其連結至您的工作區時，服務會將 *已儲存的搜尋* 和 *記錄警示* 查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來將 Log Analytics 叢集中的資料加密的相同金鑰或不同的金鑰，來控制儲存體帳戶和 [靜態加密原則](../../storage/common/customer-managed-keys-overview.md) 。 不過，您將負責處理與該儲存體帳戶相關聯的成本。 
 
 **針對查詢設定 CMK 之前的考慮**
 * 您必須具有您的工作區和儲存體帳戶的「寫入」許可權
@@ -374,7 +374,7 @@ Content-type: application/json
 
 在 Azure 監視器中，您可以控制連結至 Log Analytics 專用叢集之工作區中的資料。 加密密碼控制適用于儲存在 Log Analytics 專用叢集中的資料，其會在您的加密箱保護的訂用帳戶下，保持隔離在叢集的儲存體帳戶中。  
 
-深入瞭解 [Microsoft Azure 的客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+深入瞭解 [Microsoft Azure 的客戶加密箱](../../security/fundamentals/customer-lockbox-overview.md)
 
 ## <a name="cmk-management"></a>CMK 管理
 

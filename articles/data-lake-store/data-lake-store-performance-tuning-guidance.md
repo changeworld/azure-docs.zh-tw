@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c9cb1d0496fe05c208cfd446a51cbf4ef8e8d4e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190245"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108604"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>調整效能 Azure Data Lake Storage Gen1
 
@@ -39,15 +39,15 @@ Data Lake Storage Gen1 可以調整以提供所有分析情節的必要輸送量
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>設定最大平行處理的資料擷取工具
 
-解決來源硬體和網路連線瓶頸之後，您就可以開始設定您的內嵌工具。 下表摘要說明數個熱門擷取工具的關鍵設定，並且提供它們的深入效能微調文章。 若要深入了解哪一個工具適用於您的案例，請參閱這篇[文章](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios)。
+解決來源硬體和網路連線瓶頸之後，您就可以開始設定您的內嵌工具。 下表摘要說明數個熱門擷取工具的關鍵設定，並且提供它們的深入效能微調文章。 若要深入了解哪一個工具適用於您的案例，請參閱這篇[文章](./data-lake-store-data-scenarios.md)。
 
 | 工具          | 設定 | 其他詳細資訊                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount | [連結](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics units | [連結](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (mapper) | [連結](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount | [連結](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics units | [連結](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapper) | [連結](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [連結](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (mapper) | [連結](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size、-m (mapper) | [連結](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>結構化您的資料集
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093747"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104388"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -67,7 +67,7 @@ ms.locfileid: "92093747"
 
     c. **詳細資料**：根據選取的通知類型，輸入電子郵件地址、電話號碼等等。
     
-    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](https://aka.ms/commonAlertSchemaDocs)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
+    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](./alerts-common-schema.md)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
 
     ![[通知] 索引標籤](./media/action-groups/action-group-2-notifications.png)
     
@@ -83,7 +83,7 @@ ms.locfileid: "92093747"
 
     c. **詳細資料**：根據動作類型，輸入 webhook URI、Azure 應用程式、ITSM 連線或自動化 runbook。 針對 ITSM 動作，請額外指定 [工作項目] 與您 ITSM 工具所需的其他欄位。
     
-    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](https://aka.ms/commonAlertSchemaDocs)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
+    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](./alerts-common-schema.md)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
     
     ![[動作] 索引標籤](./media/action-groups/action-group-3-actions.png)
 
@@ -321,4 +321,3 @@ Webhook 會使用下列規則來處理
 * 深入了解警示的[速率限制](./alerts-rate-limiting.md)。
 * 取得[活動記錄警示的概觀](./alerts-overview.md)，並了解如何收到警示。  
 * 了解如何[設定每當服務健康狀態通知公佈時的警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。
-

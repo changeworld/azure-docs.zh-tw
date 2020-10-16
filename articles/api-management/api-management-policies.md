@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076890"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107584"
 ---
 # <a name="api-management-policies"></a>API 管理原則
 本節提供下列「API 管理」原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](api-management-howto-policies.md)。
@@ -79,7 +79,7 @@ ms.locfileid: "92076890"
     -   [使用 XSLT 轉換 XML](api-management-transformation-policies.md#XSLTransform) - 將 XSL 轉換套用至要求或回應本文中的 XML。
 - [Dapr 整合原則](api-management-dapr-policies.md)
     - 將[要求傳送至服務](api-management-dapr-policies.md#invoke)-使用 Dapr 執行時間來尋找並可靠地與 Dapr 微服務通訊。
-    -  [將訊息傳送至 Pub/Sub 主題](api-management-dapr-policies.md#pubsub) -使用 Dapr runtime 將訊息發佈到發佈/訂閱主題。發佈-訂閱訊息/讀我檔案) ，以深入瞭解 Dapr 中的發佈/訂閱訊息。
+    -  [將訊息傳送至 Pub/Sub 主題](api-management-dapr-policies.md#pubsub) -使用 Dapr runtime 將訊息發行至發佈/訂閱主題。
     -  [觸發程式輸出](api-management-dapr-policies.md#bind) 系結-使用 Dapr 執行時間透過輸出系結叫用外部系統。
 
 ## <a name="next-steps"></a>後續步驟

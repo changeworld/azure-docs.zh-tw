@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeafe41888163c27f583529bed1998f067e107f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819387"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107618"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
 
@@ -43,7 +43,7 @@ ms.locfileid: "91819387"
 - **透過內部部署目錄中 B2B 使用者物件的授權**。 應用程式必須能夠執行使用者存取權檢查，並授與正確資源的存取權。 IWA 和 KCD 需要內部部署 Windows Server Active Directory 中的使用者物件才能完成此授權。 如[使用 KCD 單一登入的運作方式](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)所述，應用程式 Proxy 需要這個使用者物件，以模擬使用者並將 Kerberos 權杖交給應用程式。 
 
    > [!NOTE]
-   > 當您設定 Azure AD 應用程式 Proxy 時，請確定已將 [ **委派的登** 入身分識別] 設定為 [ **使用者主體名稱** ] ([IWA 單一登入的預設) 。
+   > 當您設定 Azure AD 應用程式 Proxy 時，請確定整合式 Windows 驗證 (IWA) 的單一登入設定中，已將 [ **委派的登** 入身分識別] 設定為 [ **使用者主體名稱** ] (預設) 。
 
    B2B 使用者案例提供兩種方法，供您建立在內部部署目錄中進行授權所需的來賓使用者物件：
 

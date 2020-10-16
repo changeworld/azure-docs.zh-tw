@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d8f3985bc9a726735ebc0af0a3d3422f4fca54a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87055810"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108859"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Functions 總覽的 Azure 佇列儲存體觸發程式和系結
 
@@ -28,7 +28,7 @@ Azure Functions 可以在建立新的 Azure 佇列儲存體訊息時執行，而
 
 使用觸發程式和系結會要求您參考適當的封裝。 NuGet 套件適用于 .NET 類別庫，而擴充功能配套則用於所有其他應用程式類型。
 
-| Language                                        | 加入者 .。。                                   | 備註 
+| 語言                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝 [NuGet 套件]3.x 版 | |
 | C # 腳本、JAVA、JavaScript、Python、PowerShell | 註冊[延伸]模組套件組合          | 建議搭配使用 [Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 功能與 Visual Studio Code。 |
@@ -36,8 +36,8 @@ Azure Functions 可以在建立新的 Azure 佇列儲存體訊息時執行，而
 
 [core tools]: ./functions-run-local.md
 [延伸模組套件組合]: ./functions-bindings-register.md#extension-bundles
-[Nuget 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
-[更新您的延伸模組]: ./install-update-binding-extensions-manual.md
+[NuGet 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
+[更新您的延伸模組]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
@@ -46,7 +46,7 @@ Azure Functions 可以在建立新的 Azure 佇列儲存體訊息時執行，而
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [以佇列儲存體資料變更的形式執行函數 (觸發程式) ](./functions-bindings-storage-queue-trigger.md)
 - [將佇列儲存體訊息寫入 (輸出系結) ](./functions-bindings-storage-queue-output.md)

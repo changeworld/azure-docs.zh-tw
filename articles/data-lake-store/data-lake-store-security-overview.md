@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192835"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106819"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
 
@@ -31,7 +31,7 @@ ms.locfileid: "88192835"
 每個 Azure 訂用帳戶都可與 Azure Active Directory 的執行個體相關聯。 只有 Azure Active Directory 服務中所定義的使用者和服務身分識別可以存取 Data Lake Storage Gen1 帳戶，方法是使用 Azure 入口網站、命令列工具，或透過您的組織使用 Data Lake Storage Gen1 SDK 所建立的用戶端應用程式。 使用 Azure Active Directory 做為集中式存取控制機制的主要優點如下︰
 
 * 簡化的身分識別生命週期管理。 只要刪除或停用目錄中的帳戶，即可快速建立及快速撤銷使用者或服務的身分識別 (服務主體身分識別)。
-* 多因素驗證。 [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) 可為使用者登入和交易提供額外的安全性。
+* 多因素驗證。 [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) 可為使用者登入和交易提供額外的安全性。
 * 可透過標準的開放通訊協定 (例如 OAuth 或 OpenID) 從任何用戶端進行驗證。
 * 可與企業目錄服務和雲端識別提供者同盟。
 

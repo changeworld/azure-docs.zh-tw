@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534194"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107873"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
 
@@ -91,7 +91,7 @@ Log Analytics 工作區提供：
     > - Service Fabric
     > - Application Insights
     >
-    > 您可以藉由執行查詢並檢查您感興趣的記錄，來測試記錄是否已正確與資源相關聯。 如果 [_ResourceId](log-standard-properties.md#_resourceid) 屬性中有正確的資源識別碼，則資料可供以資源為中心的查詢使用。
+    > 您可以藉由執行查詢並檢查您感興趣的記錄，來測試記錄是否已正確與資源相關聯。 如果 [_ResourceId](./log-standard-columns.md#_resourceid) 屬性中有正確的資源識別碼，則資料可供以資源為中心的查詢使用。
 
 Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的模式。 範圍一律會顯示在 Log Analytics 的左上方區段中。
 
@@ -164,4 +164,3 @@ Azure 監視器是一種大規模的資料服務，可提供數千個客戶每�
 ## <a name="next-steps"></a>後續步驟
 
 若要執行本指南中所建議的安全性許可權和控制項，請參閱 [記錄管理的存取權](manage-access.md)。
-

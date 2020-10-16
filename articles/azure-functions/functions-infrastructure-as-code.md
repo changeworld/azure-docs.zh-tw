@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180638"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107720"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -30,7 +30,7 @@ Azure Functions 部署通常包含下列資源：
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
 | 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
 | [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選用    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
 | [主控方案](./functions-scale.md)                                             | 選用<sup>1</sup>    | [Microsoft. Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup>只有當您選擇在 [Premium 方案](./functions-premium-plan.md) 或 [App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
@@ -516,7 +516,7 @@ Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。
 }
 ```
 
-如果您要 [部署自訂的容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來加以指定， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如 [用於容器的 Web App](../app-service/containers/index.yml)中所示。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
+如果您要 [部署自訂的容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來加以指定， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如 [用於容器的 Web App](../app-service/index.yml)中所示。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
 
 ```json
 {

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957455"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107465"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 轉譯功能
 
@@ -75,7 +75,7 @@ Arnold 2017 命令列|kick.exe|ARNOLD_2017_EXEC|
 
 如同其他工作負載，轉譯應用程式系統需求不盡相同，而且對於作業和專案的效能需求也有所不同。  Azure 中根據您的需求提供各種不同的 VM 系列：最低成本、最優惠的價格/效能、最佳效能等。
 某些轉譯應用程式 (例如 Arnold) 是以 CPU 為基礎；其他像是 V-ray 和 Blender Cycles 的轉譯應用程式則可使用 CPU 和/或 GPU。
-如需可用 VM 系列和 VM 大小的說明，請參閱 [VM 類型和大小](../virtual-machines/windows/sizes.md)。
+如需可用 VM 系列和 VM 大小的說明，請參閱 [VM 類型和大小](../virtual-machines/sizes.md)。
 
 ### <a name="low-priority-vms"></a>低優先順序的 VM
 

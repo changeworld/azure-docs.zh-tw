@@ -1,6 +1,6 @@
 ---
-title: 使用現有的內部部署 Proxy 伺服器與 Azure AD | Microsoft Docs
-description: 涵蓋如何使用現有的內部部署 Proxy 伺服器。
+title: 使用現有的內部部署 proxy 伺服器和 Azure Active Directory
+description: 涵蓋如何使用 Azure Active Directory 來使用現有的內部部署 proxy 伺服器。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2311b905aeeaacb6c445f441d5268d06a150de64
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077504"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107635"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用現有的內部部署 Proxy 伺服器
 
@@ -117,12 +116,12 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 連接器會使用這些 URL 來驗證憑證 |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
 
-如果防火牆或 Proxy 可供設定 DNS 允許清單，則可允許連往 \*.msappproxy.net 和 \*.servicebus.windows.net 的連線。 如果沒有，您需要允許存取 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 範圍會每週更新。
+如果防火牆或 Proxy 可供設定 DNS 允許清單，則可允許連往 \*.msappproxy.net 和 \*.servicebus.windows.net 的連線。
 
 如果您不允許 FQDN 連線且需要改為指定 IP 範圍，請使用下列選項：
 
 * 允許連接器輸出存取所有目的地。
-* 允許連接器輸出存取全部的 [Azure 資料中心 IP 範圍](https://www.microsoft.com//download/details.aspx?id=41653)。 Azure 資料中心 IP 範圍清單在使用上的麻煩在於此清單是每週更新。 您必須制定程序，以確保存取規則會跟著更新。 僅使用 IP 位址的子集可能會導致您的組態中斷。
+* 允許連接器輸出存取全部的 Azure 資料中心 IP 範圍。 Azure 資料中心 IP 範圍清單在使用上的麻煩在於此清單是每週更新。 您必須制定程序，以確保存取規則會跟著更新。 僅使用 IP 位址的子集可能會導致您的組態中斷。 若要下載最新的 Azure 資料中心 IP 範圍，請流覽至「 [https://download.microsoft.com](https://download.microsoft.com) AZURE IP 範圍和服務標籤」並進行搜尋。 請務必選取相關的雲端。 例如，您可以使用「Azure IP 範圍和服務標籤–公用雲端」來找到公用雲端 IP 範圍。 您可以藉由搜尋「Azure IP 範圍和服務標籤– US 政府雲端」來找到 US 政府雲端。
 
 #### <a name="proxy-authentication"></a>Proxy 驗證
 

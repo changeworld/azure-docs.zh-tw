@@ -3,12 +3,12 @@ title: 建立和使用資源檔
 description: 了解如何從各種輸入來源建立 Batch 資源檔。 此文章涵蓋一些常見的方法，說明如何建立並將其放置在 VM 上。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230937"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109284"
 ---
 # <a name="creating-and-using-resource-files"></a>建立和使用資源檔
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-產生 SAS URL 的替代方式是，針對 Azure Blob 儲存體中的容器及其 Blob 啟用匿名與公用讀取權限。 如此您就可以將這些資源的唯讀存取權限授與他人，而無須共用您的帳戶金鑰，也無須使用 SAS。 公用讀取權限通常用於您想要某些 Blob 永遠可供匿名讀取存取的狀況。 如果此案例適合您的解決方案，請參閱[匿名存取 Blob](../storage/blobs/storage-manage-access-to-resources.md) 一文，以深入了解如何管理 Blob 資料的存取權。
+產生 SAS URL 的替代方式是，針對 Azure Blob 儲存體中的容器及其 Blob 啟用匿名與公用讀取權限。 如此您就可以將這些資源的唯讀存取權限授與他人，而無須共用您的帳戶金鑰，也無須使用 SAS。 公用讀取權限通常用於您想要某些 Blob 永遠可供匿名讀取存取的狀況。 如果此案例適合您的解決方案，請參閱[匿名存取 Blob](../storage/blobs/anonymous-read-access-configure.md) 一文，以深入了解如何管理 Blob 資料的存取權。
 
 ### <a name="storage-container-name"></a>儲存體容器名稱
 

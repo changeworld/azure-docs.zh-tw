@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328848"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107754"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全匯出將 Azure 連接至 ITSM 工具
 
@@ -51,7 +51,7 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 * **更好的驗證**： Azure AD 提供更安全的驗證，而不會發生 ITSMC 中經常發生的超時狀況。
 * **ITSM 工具中已解決的警示**：計量警示會執行「已引發」和「已解決」狀態。 符合條件時，警示狀態會是「已引發」。 當條件不再符合時，警示狀態會是「已解決」。 在 ITSMC 中，無法自動解決警示。 使用「安全匯出」時，已解決狀態會流向 ITSM 工具，因此會自動更新。
-* **[常見的警示架構](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**：在 ITSMC 中，警示承載的架構會根據警示類型而有所不同。 在安全匯出中，所有警示類型都有一個通用的架構。 此通用架構包含所有警示類型的 CI。 所有警示類型都能夠將其 CI 系結至 CMDB。
+* **[常見的警示架構](./alerts-common-schema.md)**：在 ITSMC 中，警示承載的架構會根據警示類型而有所不同。 在安全匯出中，所有警示類型都有一個通用的架構。 此通用架構包含所有警示類型的 CI。 所有警示類型都能夠將其 CI 系結至 CMDB。
 
 使用下列步驟開始使用 ITSM 連接器工具：
 
@@ -63,19 +63,19 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 請遵循下列步驟，向 Azure AD 註冊應用程式：
 
-1. 遵循 [使用 Microsoft 身分識別平臺註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)中的步驟。
+1. 遵循 [使用 Microsoft 身分識別平臺註冊應用程式](../../active-directory/develop/quickstart-register-app.md)中的步驟。
 1. 在 Azure AD 中，選取 [ **公開應用程式**]。
 1. 選取 [**應用程式識別碼 URI**的**設定**]。
 
    [![設定我的應用程式 U R I D 的選項螢幕擷取畫面。](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 ## <a name="create-a-secure-webhook-action-group"></a>建立安全 Webhook 動作群組
 
 在您的應用程式註冊 Azure AD 之後，您可以使用動作群組中的安全 Webhook 動作，根據 Azure 警示在 ITSM 工具中建立工作專案。
 
 動作群組提供模組化且可重複使用的方式來觸發 Azure 警示的動作。 您可以在 Azure 入口網站中使用具有計量警示、活動記錄警示和 Azure Log Analytics 警示的動作群組。
-若要深入了解動作群組，請參閱[在 Azure 入口網站中建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+若要深入了解動作群組，請參閱[在 Azure 入口網站中建立和管理動作群組](./action-groups.md)。
 
 在 BMC Helix 環境中使用下列程式：
 
@@ -140,4 +140,4 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立 Azure 警示的 ITSM 工作項目](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [建立 Azure 警示的 ITSM 工作項目](./itsmc-overview.md)

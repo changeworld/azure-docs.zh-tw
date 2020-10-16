@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108230"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 持續傳遞
 
@@ -256,7 +256,7 @@ Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應�
 
     - 您必須是 Azure DevOps 中的專案系統管理員。
 
-    - 您必須擁有建立 GitHub 個人存取權杖的許可權， (PAT) 具有足夠的許可權。 如需詳細資訊，請參閱 [GITHUB PAT 許可權需求。](https://aka.ms/azure-devops-source-repos)
+    - 您必須擁有建立 GitHub 個人存取權杖的許可權， (PAT) 具有足夠的許可權。 如需詳細資訊，請參閱 [GITHUB PAT 許可權需求。](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
     - 您必須擁有在 GitHub 存放庫中認可至主要分支的許可權，才能認可自動產生的 YAML 檔案。
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 6beab6f470a39c281020bfdfb7d43c4b6c5e3b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c1afaa7d2d7971b2570914aa7c69fa7c666ae46
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756495"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107839"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>使用適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 來瞭解商務持續性
 
@@ -55,9 +55,9 @@ ms.locfileid: "91756495"
 | **案例** | **復原進程 [非 HA]** | **復原程式 [HA]** |
 | :---------- | ---------- | ------- |
 | **資料庫伺服器失敗** | 如果資料庫伺服器因為某些基礎硬體錯誤而關閉，則會中斷使用中的連接，而且會中止任何傳遞交易。 Azure 會嘗試重新開機資料庫伺服器。 如果成功，則會執行資料庫復原。 如果重新開機失敗，資料庫伺服器將會嘗試在另一個實體節點上重新開機。  <br /> <br /> 復原時間 (RTO) 取決於各種因素，包括發生錯誤時的活動（例如大型交易），以及資料庫伺服器啟動程式期間要執行的復原量。 <br /> <br /> 使用 MySQL 資料庫的應用程式必須以其偵測和重試中斷的連接和失敗交易的方式來建立。  當應用程式重試時，連接會導向至新建立的資料庫伺服器。 | 如果偵測到資料庫伺服器失敗，則會啟動待命資料庫伺服器，從而減少停機時間。 如需詳細資訊，請參閱「 [HA 概念」頁面](concepts-high-availability.md) 。 RTO 應為60-120 秒，RPO = 0 |
-| **儲存體失敗** | 應用程式不會看到任何儲存體相關問題的影響，例如磁片故障或實體區塊損毀。 當資料儲存在3個複本中時，資料複本會由存活的儲存區提供服務。 封鎖損毀會自動校正。 如果遺失資料複本，則會自動建立新的資料複本。 | 若為無法復原的錯誤，彈性伺服器會容錯移轉到待命複本，以減少停機時間。 如需詳細資訊，請參閱「 [HA 概念」頁面](../concepts-high-availability.md) 。 |
-| **邏輯/使用者錯誤** | 從使用者錯誤（例如不小心卸載的資料表或不正確的資料）復原，牽涉到在發生錯誤之前的時間之前，藉由還原和復原資料，來執行 [時間點恢復](https://docs.microsoft.com/azure/MySQL/concepts-backup) (PITR) 。<br> <br>  如果您只想要還原一部分的資料庫或特定的資料表，而不是資料庫伺服器中的所有資料庫，您可以在新的實例中還原資料庫伺服器，) 透過 [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)將資料表匯出 (s，然後使用 [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) 將這些資料表還原至您的資料庫。 | 由於所有使用者作業也會複寫到待命，所以這些使用者錯誤不會受到高可用性的保護。 |
-| **可用性區域失敗** | 雖然這是罕見的事件，但如果您想要從區域層級的失敗中復原，您可以使用備份來執行時間點復原，然後選擇 [自訂還原點] 以取得最新的資料。 新的彈性伺服器將會部署在另一個區域中。 還原所需的時間取決於先前的備份和要復原的交易記錄數目。 | 彈性的伺服器會執行自動容錯移轉至待命網站。 如需詳細資訊，請參閱「 [HA 概念」頁面](../concepts-high-availability.md) 。 |
+| **儲存體失敗** | 應用程式不會看到任何儲存體相關問題的影響，例如磁片故障或實體區塊損毀。 當資料儲存在3個複本中時，資料複本會由存活的儲存區提供服務。 封鎖損毀會自動校正。 如果遺失資料複本，則會自動建立新的資料複本。 | 若為無法復原的錯誤，彈性伺服器會容錯移轉到待命複本，以減少停機時間。 如需詳細資訊，請參閱「 [HA 概念」頁面](./concepts-high-availability.md) 。 |
+| **邏輯/使用者錯誤** | 從使用者錯誤（例如不小心卸載的資料表或不正確的資料）復原，牽涉到在發生錯誤之前的時間之前，藉由還原和復原資料，來執行 [時間點恢復](concepts-backup-restore.md) (PITR) 。<br> <br>  如果您只想要還原一部分的資料庫或特定的資料表，而不是資料庫伺服器中的所有資料庫，您可以在新的實例中還原資料庫伺服器，) 透過 [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)將資料表匯出 (s，然後使用 [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) 將這些資料表還原至您的資料庫。 | 由於所有使用者作業也會複寫到待命，所以這些使用者錯誤不會受到高可用性的保護。 |
+| **可用性區域失敗** | 雖然這是罕見的事件，但如果您想要從區域層級的失敗中復原，您可以使用備份來執行時間點復原，然後選擇 [自訂還原點] 以取得最新的資料。 新的彈性伺服器將會部署在另一個區域中。 還原所需的時間取決於先前的備份和要復原的交易記錄數目。 | 彈性的伺服器會執行自動容錯移轉至待命網站。 如需詳細資訊，請參閱「 [HA 概念」頁面](./concepts-high-availability.md) 。 |
 | **區域失敗** | 預覽版尚未支援跨區域複本和異地還原功能。 | |
 
 

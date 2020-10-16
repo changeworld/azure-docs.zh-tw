@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446174"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108842"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>為 Azure 監視器中的記錄建立計量警示
 
@@ -62,7 +62,7 @@ Azure 監視器支援的[計量警示類型](./alerts-metric-near-real-time.md)�
 
  您可以使用 Azure 入口網站、Resource Manager 範本、REST API、PowerShell 與 Azure CLI 來建立及管理計量警示。 由於記錄的計量警示是計量警示變體，所以完成必要條件之後，可為指定的 Log Analytics 工作區建立記錄的計量警示。 [計量警示](./alerts-metric-near-real-time.md)的所有特性與功能同樣都適用於記錄的計量警示；包括承載結構描述、適用的配額限制及計費價格。
 
-如需逐步詳細資料與範例，請參閱[建立及管理計量警示](https://aka.ms/createmetricalert)。 具體就記錄的計量警示而言，請依照指示來管理計量警示，並確定下列各項：
+如需逐步詳細資料與範例，請參閱[建立及管理計量警示](./alerts-metric.md)。 具體就記錄的計量警示而言，請依照指示來管理計量警示，並確定下列各項：
 
 - 計量警示的目標是有效的「Log Analytics 工作區」**
 - 為所選取「Log Analytics 工作區」** 的計量警示選擇的訊號是 [計量]**** 類型
@@ -685,9 +685,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解[計量警示](alerts-metric.md)。
 - 了解 [Azure 中的記錄警示](./alerts-unified-log.md)。
 - 瞭解 [Azure 中的警示](alerts-overview.md)。
-

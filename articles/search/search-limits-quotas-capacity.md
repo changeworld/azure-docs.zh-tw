@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949845"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107822"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -101,10 +101,9 @@ ms.locfileid: "91949845"
 > [!NOTE]
 > 如[索引限制](#index-limits)所述，從支援複雜類型的 GA API 版本 (`2019-05-06`) 開始，索引子也會在每個文件的所有複雜集合中，執行 3000 個元素的上限。 這表示如果您已使用先前的 API 版本建立索引子，則不會受限於此限制。 為了保持最大的相容性，如果索引子是使用先前的 API 版本建立的，然後使用 API 版本 `2019-05-06` 或更高版本更新，仍會**排除**在限制之外。 客戶應該注意擁有非常龐大的複雜集合的負面影響 (如先前所述)，而且我們強烈建議使用最新的 GA API 版本來建立任何新的索引子。
 
-### <a name="shared-private-link-resource-limits"></a>共用的私人連結資源限制
+## <a name="shared-private-link-resource-limits"></a>共用的私人連結資源限制
 
-> [!NOTE]
-> 索引子可以在透過[共用 private link 資源 API](/rest/api/searchmanagement/sharedprivatelinkresources)管理的私人端點上安全地存取資源，如[本操作指南](search-indexer-howto-access-private.md)中所述。
+索引子可以透過透過[共用 private link 資源 API](/rest/api/searchmanagement/sharedprivatelinkresources)管理的[私人端點](search-indexer-howto-access-private.md)來存取其他 Azure 資源。 本節說明與這項功能相關聯的限制。
 
 | 資源 | 免費 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -113,7 +112,7 @@ ms.locfileid: "91949845"
 | 私人端點上限 | N/A | 10或30 | 100 | 400 | 400 | N/A | 20 | 20 |
 | 最大相異資源類型<sup>2</sup> | N/A | 4 | 7 | 15 | 15 | N/A | 4 | 4 |
 
-<sup>1</sup> AI 擴充和影像分析需要大量運算，而且會耗用不相稱的可用處理能力，因此針對較低的搜尋服務層級，將其設定為在私人環境中執行，可能會對搜尋服務的效能和穩定性造成負面影響。
+<sup>1</sup> 個 AI 擴充和影像分析會耗用大量運算，並耗用不相稱的可用處理能力。 基於這個理由，在較低層級停用私人連線，以避免對搜尋服務本身的效能和穩定性造成負面影響。
 
 <sup>2</sup> 相異資源類型的數目會計算為 `groupId` 指定搜尋服務的所有共用私用連結資源上使用的唯一值數目，而不論資源的狀態為何。
 

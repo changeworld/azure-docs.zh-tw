@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723855"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107958"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的資料收集規則) 
 資料收集規則 (DCR) 定義進入 Azure 監視器的資料，並指定應該傳送或儲存資料的位置。 本文概述資料收集規則，包括其內容和結構，以及您可以如何建立和使用它們。
@@ -26,7 +26,7 @@ ms.locfileid: "88723855"
 ## <a name="components-of-a-data-collection-rule"></a>資料集合規則的元件
 資料收集規則包含下列元件。
 
-| 元件 | 說明 |
+| 元件 | 描述 |
 |:---|:---|
 | 資料來源 | 監視資料的唯一來源，其本身的格式和公開其資料的方法。 資料來源的範例包括 Windows 事件記錄檔、效能計數器和 syslog。 每個資料來源都符合如下所述的特定資料來源類型。 |
 | 串流 | 唯一的控制碼，描述將轉換並架構化為一種類型的一組資料來源。 每個資料來源都需要一個或多個資料流程，而一個資料流程可能會由多個資料來源使用。 資料流程中的所有資料來源都會共用一個通用的架構。 例如，當您想要將特定資料來源傳送到相同 Log Analytics 工作區中的多個資料表時，請使用多個資料流程。 |
@@ -40,7 +40,7 @@ ms.locfileid: "88723855"
 ### <a name="data-source-types"></a>資料來源類型
 每個資料來源都有一種資料來源類型。 每個類型都會定義一組唯一的屬性，這些屬性必須針對每個資料來源指定。 下表顯示目前可用的資料來源類型。
 
-| 資料來源類型 | 說明 | 
+| 資料來源類型 | 描述 | 
 |:---|:---|
 | 擴充功能 | 以 VM 延伸模組為基礎的資料來源 |
 | performanceCounters | 適用于 Windows 和 Linux 的效能計數器 |
@@ -68,7 +68,7 @@ ms.locfileid: "88723855"
 目前有兩種方法可用來建立 DCR：
 
 - [使用 Azure 入口網站](data-collection-rule-azure-monitor-agent.md) 建立資料集合規則，並將其與一或多部虛擬機器相關聯。
-- 在 JSON 中直接編輯資料收集規則，並 [使用 REST API 提交](https://docs.microsoft.com/rest/api/monitor/datacollectionrules)。
+- 在 JSON 中直接編輯資料收集規則，並 [使用 REST API 提交](/rest/api/monitor/datacollectionrules)。
 
 ## <a name="sample-data-collection-rule"></a>範例資料收集規則
 以下的範例資料收集規則適用于具有 Azure 管理代理程式的虛擬機器，且具有下列詳細資料：
@@ -196,6 +196,6 @@ ms.locfileid: "88723855"
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 使用 Azure 監視器代理程式，從虛擬機器[建立資料收集規則](data-collection-rule-azure-monitor-agent.md)和其關聯。

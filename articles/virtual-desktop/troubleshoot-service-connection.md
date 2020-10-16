@@ -3,15 +3,15 @@ title: 針對服務連線 Windows 虛擬桌面進行疑難排解 - Azure
 description: 如何在 Windows 虛擬桌面租使用者環境中設定服務連接時解決問題。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089899"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108944"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 
@@ -45,6 +45,13 @@ ms.locfileid: "90089899"
 當使用者將訂用帳戶從一個 Azure AD 租使用者移至另一個租使用者時，通常會出現此錯誤。 如此一來，服務就會失去其使用者指派的追蹤，因為它們仍系結至舊的 Azure AD 租使用者。
 
 若要解決此問題，您只需將使用者重新指派給其應用程式群組。
+
+如果 CSP 提供者已建立訂用帳戶，然後傳送給客戶，也可能會發生這種情況。 若要解決此問題，請重新註冊資源提供者。
+
+1. 登入 Azure 入口網站。
+2. 移至 [ **訂**用帳戶]，然後選取您的訂用帳戶。
+3. 在頁面左側的功能表中，選取 [ **資源提供者**]。
+4. 尋找並選取 [ **DesktopVirtualization**]，然後選取 [ **重新註冊**]。
 
 ## <a name="next-steps"></a>後續步驟
 

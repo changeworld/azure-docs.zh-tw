@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b6f4e50cac2f809172c2525ea9136a63e6bd9066
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979465"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107006"
 ---
 # <a name="access-built-in-metrics"></a>存取內建計量
 
 IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 [Prometheus 展示格式](https://prometheus.io/docs/instrumenting/exposition_formats/)產生內建的度量。 從遠端存取這些計量，以監視及瞭解 IoT Edge 裝置的健康情況。
 
-從 release 1.0.10，計量預設會自動在**edgeHub**和**edgeAgent**模組的**埠 9600**上公開 (`http://edgeHub:9600/metrics` 和 `http://edgeAgent:9600/metics`) 。 預設不會將埠對應到主機。
+從 release 1.0.10，計量預設會自動在**edgeHub**和**edgeAgent**模組的**埠 9600**上公開 (`http://edgeHub:9600/metrics` 和 `http://edgeAgent:9600/metrics`) 。 預設不會將埠對應到主機。
 
 藉由公開並對應模組的計量埠，從主機存取計量 `createOptions` 。 下列範例會將預設計量埠對應至主機上的埠9601：
 
@@ -62,7 +62,7 @@ IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 
 
 **EdgeHub**模組會產生下列計量：
 
-| Name | 維度 | 描述 |
+| 名稱 | 維度 | 描述 |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (操作來源) <br> `id` (模組識別碼)  | 類型：計數器<br> GetTwin 呼叫總數 |
 | `edgehub_messages_received_total` | `route_output` (傳送訊息的輸出) <br> `id` | 類型：計數器<br> 從用戶端接收的訊息總數 |
@@ -85,7 +85,7 @@ IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 
 
 **EdgeAgent**模組會產生下列計量：
 
-| Name | 維度 | 描述 |
+| 名稱 | 維度 | 描述 |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | 類型：量測計<br> 模組在部署中指定的時間量，且處於執行中狀態 |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | 類型：量測計<br> 模組在部署中指定的時間量 |

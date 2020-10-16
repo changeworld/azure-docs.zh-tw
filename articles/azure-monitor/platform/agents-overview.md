@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de9623eb0eb14957c1554b7b0f74baa256a15d47
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825769"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108383"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -60,7 +60,7 @@ ms.locfileid: "91825769"
 - 將資料傳送至 Azure 監視器記錄和 Azure 監視器計量，以 Azure 監視器進行分析。 
 - 將資料傳送至 Azure 儲存體以便封存。
 - 使用 [Azure 事件中樞](diagnostics-extension-stream-event-hubs.md)將資料傳送至協力廠商工具。
-- 使用 [Azure 資訊安全中心](../../security-center/security-center-intro.md)  或 [Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。  (無法在預覽中使用。 ) 
+- 使用 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)  或 [Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。  (無法在預覽中使用。 ) 
 
 Azure 監視器代理程式的限制包括：
 
@@ -81,7 +81,7 @@ Azure 監視器代理程式的限制包括：
 * 從 Azure 內部或外部的虛擬或實體機器收集記錄和效能資料。 
 * 將資料傳送至 Log Analytics 工作區，以利用 [Azure 監視器記錄](data-platform-logs.md) 檔（例如 [記錄查詢](../log-query/log-query-overview.md)）所支援的功能。
 * 使用 [適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md) 可讓您大規模監視虛擬機器，並監視其進程和其他資源和外部進程的相依性。  
-* 使用 [Azure 資訊安全中心](../../security-center/security-center-intro.md)  或 [Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。
+* 使用 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)  或 [Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。
 * 使用 [Azure 自動化的更新管理](../../automation/update-management/update-mgmt-overview.md)、 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md)或 [Azure 自動化變更追蹤和清查](../../automation/change-tracking.md) ，以提供 Azure vm 的全方位管理
 * 使用不同的 [解決方案](../monitor-reference.md#insights-and-core-solutions) 來監視特定的服務或應用程式。
 
@@ -212,4 +212,3 @@ Azure 診斷擴充功能的限制包括：
 - [Log Analytics 代理程式總覽](log-analytics-agent.md)
 - [Azure 診斷延伸模組概觀](diagnostics-extension-overview.md)
 - [使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量](collect-custom-metrics-linux-telegraf.md)
-

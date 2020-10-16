@@ -6,15 +6,15 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578507"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106615"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 資料目錄中從 Azure Data Lake Storage Gen1 註冊資料
-在此文章中，您將了解如何使用 Azure 資料目錄來整合 Azure Data Lake Storage Gen1，使您的資料與資料目錄整合，讓使用者可在組織中進行搜尋。 如需編目資料的詳細資訊，請參閱 [Azure 資料目錄](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解您可以使用資料目錄的案例，請參閱 [Azure 資料目錄常見案例](../data-catalog/data-catalog-common-scenarios.md)。
+在此文章中，您將了解如何使用 Azure 資料目錄來整合 Azure Data Lake Storage Gen1，使您的資料與資料目錄整合，讓使用者可在組織中進行搜尋。 如需編目資料的詳細資訊，請參閱 [Azure 資料目錄](../data-catalog/overview.md)。 若要了解您可以使用資料目錄的案例，請參閱 [Azure 資料目錄常見案例](../data-catalog/data-catalog-common-scenarios.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 開始進行本教學課程之前，您必須具備下列條件：
@@ -43,7 +43,7 @@ ms.locfileid: "91578507"
     ![選取資料來源](./media/data-lake-store-with-data-catalog/select-source.png "選取資料來源")
 1. 在下一個頁面上，提供您想要在資料目錄中註冊的 Data Lake Storage Gen1 帳戶名稱。 其他選項保留為預設值，然後按一下 [連線] ****。
 
-    ![連接到資料來源](./media/data-lake-store-with-data-catalog/connect-to-source.png "連接到資料來源")
+    ![連線至資料來源](./media/data-lake-store-with-data-catalog/connect-to-source.png "連線至資料來源")
 1. 下一個頁面可以分成下列區段。
 
     a. [伺服器階層]**** 方塊代表 Data Lake Storage Gen1 帳戶資料夾結構。 [$Root]**** 代表 Data Lake Storage Gen1 帳戶根目錄，而 [AmbulanceData]**** 則代表在 Data Lake Storage Gen1 帳戶的根目錄中建立的資料夾。

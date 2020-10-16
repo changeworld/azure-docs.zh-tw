@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ac3c0809c08719d77457c59ef311ad43ef99cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458207"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108332"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比較 Azure Data Lake Storage Gen1 和 Azure Blob 儲存體
 
@@ -26,11 +26,11 @@ ms.locfileid: "89458207"
 | 重要概念 |Data Lake Storage Gen1 帳戶包含資料夾，其中又包含儲存為檔案的資料 |儲存體帳戶包含容器，其中又包含 Blob 形式的資料 |
 | 結構 |階層式檔案系統 |具有扁平命名空間的物件存放區 |
 | API |透過 HTTPS 的 REST API |透過 HTTP/HTTPS 的 REST API |
-| 伺服器端 API |[WebHDFS 相容的 REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob 儲存體 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| 伺服器端 API |[WebHDFS 相容的 REST API](/rest/api/datalakestore/) |[Azure Blob 儲存體 REST API](/rest/api/storageservices/Blob-Service-REST-API) |
 | Hadoop 檔案系統用戶端 |是 |是 |
-| 資料作業 - 驗證 |採用 [Azure Active Directory 身分識別](../active-directory/develop/authentication-scenarios.md) |採用共用密碼 - [帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)和[共用存取簽章金鑰](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
+| 資料作業 - 驗證 |採用 [Azure Active Directory 身分識別](../active-directory/develop/authentication-vs-authorization.md) |採用共用密碼 - [帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)和[共用存取簽章金鑰](../storage/common/storage-sas-overview.md)。 |
 | 資料作業 - 驗證通訊協定 |[OpenID Connect](https://openid.net/connect/)。 呼叫必須包含有效的 JWT (JSON web 權杖) 由 Azure Active Directory 發出。|以雜湊為基礎的訊息驗證碼 (HMAC) 。 呼叫必須包含透過 HTTP 要求之一部分的 Base64 編碼 SHA-256 雜湊。 |
-| 資料作業 - 授權 |POSIX 存取控制清單 (ACL)  ACL 採用 Azure Active Directory 身分識別，可設為檔案或資料夾層級。 |針對帳戶層級授權 – 使用[帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)<br>針對帳戶、容器或 Blob 授權 - 使用[共用存取簽章金鑰](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| 資料作業 - 授權 |POSIX 存取控制清單 (ACL)  ACL 採用 Azure Active Directory 身分識別，可設為檔案或資料夾層級。 |針對帳戶層級授權 – 使用[帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)<br>針對帳戶、容器或 Blob 授權 - 使用[共用存取簽章金鑰](../storage/common/storage-sas-overview.md) |
 | 資料作業 - 稽核 |可用。 請參閱 [這裡](data-lake-store-diagnostic-logs.md) 以取得相關資訊。 |可用 |
 | 待用資料加密 |<ul><li>透明、伺服器端</li> <ul><li>使用服務管理的金鑰</li><li>在 Azure KeyVault 中使用客戶管理的金鑰</li></ul></ul> |<ul><li>透明、伺服器端</li> <ul><li>使用服務管理的金鑰</li><li>在 Azure KeyVault 中使用客戶管理的金鑰 (預覽)</li></ul><li>用戶端加密</li></ul> |
 | 管理作業 (例如，帳戶建立)  |[Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以進行帳戶管理 |[Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以進行帳戶管理 |

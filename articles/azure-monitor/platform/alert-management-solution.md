@@ -6,25 +6,25 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322392"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108400"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警示管理方案
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure 監視器現在支援 [大規模管理警示](https://aka.ms/azure-alerts-overview)的增強功能，包括由 [System Center Operations Manager、Zabbix 或 Nagios 等監視工具](https://aka.ms/managing-alerts-other-monitoring-services)所產生的警示。
+>  Azure 監視器現在支援 [大規模管理警示](./alerts-overview.md)的增強功能，包括由 [System Center Operations Manager、Zabbix 或 Nagios 等監視工具](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json)所產生的警示。
 >  
 
 
 警示管理解決方案可協助您分析 Log Analytics 儲存機制中的所有警示。  這些警示可能來自各種來源，包括[由 Log Analytics 所建立](./alerts-overview.md)或[從 Nagios 或 Zabbix 匯入](../learn/quick-collect-linux-computer.md)的來源。 此解決方案也會從所有[連線的 System Center Operations Manager 管理群組](./om-agents.md)匯入警示。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 此解決方案將會使用 Log Analytics 中類型為**警示**的所有記錄，因此您必須執行收集這些記錄所需的所有設定。
 
 - 針對 Log Analytics 警示，[建立警示規則](./alerts-overview.md)，以直接在儲存機制中建立警示記錄。
@@ -41,11 +41,11 @@ ms.locfileid: "87322392"
 
 如需有關方案管理組件如何更新的詳細資訊，請參閱 [將 Operations Manager 連接到 Log Analytics](./om-agents.md)。
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 ### <a name="agents"></a>代理程式
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援 | 說明 |
+| 連接的來源 | 支援 | 描述 |
 |:--- |:--- |:--- |
 | [Windows 代理程式](agent-windows.md) | 否 |直接的 Windows 代理程式不會產生警示。  您可以從收集自 Windows 代理程式的事件和效能資料建立 Log Analytics 警示。 |
 | [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 |直接的 Linux 代理程式不會產生警示。  您可以從收集自 Linux 代理程式的事件和效能資料建立 Log Analytics 警示。  您可以從需要 Linux 代理程式的伺服器收集 Nagios 和 Zabbix 警示。 |
@@ -80,7 +80,7 @@ ms.locfileid: "87322392"
 
 解決方案會從 System Center Operations Manager 匯入警示，並針對類型為**警示**且 SourceSystem 為 **OpsManager** 的每個警示建立對應的記錄。  這些記錄具有下表中的屬性：  
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | `Type` |*警示* |
 | `SourceSystem` |*OpsManager* |
@@ -118,6 +118,5 @@ ms.locfileid: "87322392"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 如需有關從 Log Analytics 產生的警示的詳細資料，請深入了解 [Log Analytics 中的警示](./alerts-overview.md) 。
-

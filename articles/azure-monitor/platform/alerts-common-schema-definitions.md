@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330871"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105986"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 
-本文說明 Azure 監視器的[通用警示結構描述定義](https://aka.ms/commonAlertSchemaDocs)，包括用於 Webhook、Azure Logic Apps、Azure Functions 和 Azure 自動化 Runbook 的警示結構描述定義。 
+本文說明 Azure 監視器的[通用警示結構描述定義](./alerts-common-schema.md)，包括用於 Webhook、Azure Logic Apps、Azure Functions 和 Azure 自動化 Runbook 的警示結構描述定義。 
 
 任何警示執行個體都會描述受影響的資源，以及警示的原因。 這些執行個體會在下列各節的通用結構描述中說明：
 * **基本資訊**：一組標準化欄位，通用於所有警示類型，其中描述警示所在的資源，以及其他通用的警示中繼資料 (例如，嚴重性或描述)。 
@@ -541,5 +541,5 @@ ms.locfileid: "91330871"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[通用警示結構描述](https://aka.ms/commonAlertSchemaDocs)。
-- 了解[如何建立邏輯應用程式，以使用通用警示結構描述來處理所有警示](./alerts-common-schema-integrations.md)。 
+- 深入了解[通用警示結構描述](./alerts-common-schema.md)。
+- 了解[如何建立邏輯應用程式，以使用通用警示結構描述來處理所有警示](./alerts-common-schema-integrations.md)。

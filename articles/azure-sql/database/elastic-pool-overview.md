@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330778"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107890"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>彈性集區可協助您管理及調整 Azure SQL Database 中的多個資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
    ![適合某個集區的單一資料庫](./media/elastic-pool-overview/one-database.png)
 
-針對上述的五分鐘期間，DB1 尖峰最高達 90 個 DTU，但其整體平均使用量小於 5 個 DTU。 需要 S3 計算大小，才能在單一資料庫中執行此工作負載，但這會在活動較少的期間保留大多數的資源未使用。
+此圖表說明從12:00 到1:00 的1小時時間內的 DTU 使用量，其中每個資料點都有1分鐘的資料細微性。 在 12:10 DB1 尖峰高達 90 Dtu，但其整體平均使用量低於五個 Dtu。 需要 S3 計算大小，才能在單一資料庫中執行此工作負載，但這會在活動較少的期間保留大多數的資源未使用。
 
 集區可讓這些未使用的 DTU 跨多個資料庫共用，並因此減少需要的 DTU 和整體成本。
 

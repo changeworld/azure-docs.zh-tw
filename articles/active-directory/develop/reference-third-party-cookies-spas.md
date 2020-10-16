@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87311750"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104575"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>處理 Safari 中的 ITP，以及其他會封鎖協力廠商 Cookie 的瀏覽器
 
@@ -49,7 +49,7 @@ SPA 有兩個額外的限制：
 * [重新導向 URI 必須標示為類型 `spa`](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps)，才能在登入端點上啟用 CORS。
 * 透過授權碼流程發出至 `spa` 重新導向 URI 的重新整理權杖會有 24 小時的存留期，而不是 90 天的存留期。
 
-![SPA 應用程式的程式碼流程](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="此圖顯示單一頁面應用程式和安全性權杖服務端點之間的 OAuth 2 授權碼流程。" border="false":::
 
 ## <a name="performance-and-ux-implications"></a>效能與 UX 的影響
 

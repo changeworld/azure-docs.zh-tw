@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 716e3766fdd7c1999efa12456346862a9902d7a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855716"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108706"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 的虛擬網路整合
 
@@ -33,7 +33,7 @@ Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active D
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的虛擬網路整合案例
 
-透過 Data Lake Storage Gen1 虛擬網路整合，您可以限制特定虛擬網路和子網路對 Data Lake Storage Gen1 帳戶的存取動作。 將帳戶鎖定至指定虛擬網路子網路後，就無法存取 Azure 中的其他虛擬網路/VM。 在功能上，Data Lake Storage Gen1 虛擬網路整合可支援與[虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)相同的案例。 下列各節會詳述其間的一些主要差異。 
+透過 Data Lake Storage Gen1 虛擬網路整合，您可以限制特定虛擬網路和子網路對 Data Lake Storage Gen1 帳戶的存取動作。 將帳戶鎖定至指定虛擬網路子網路後，就無法存取 Azure 中的其他虛擬網路/VM。 在功能上，Data Lake Storage Gen1 虛擬網路整合可支援與[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)相同的案例。 下列各節會詳述其間的一些主要差異。 
 
 ![Data Lake Storage Gen1 虛擬網路整合的案例圖](media/data-lake-store-network-security/scenario-diagram.png)
 
@@ -42,9 +42,9 @@ Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active D
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>Data Lake Storage Gen1 虛擬網路整合的最佳路由
 
-虛擬網路服務端點的主要優點是您的虛擬網路具有[最佳路由](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits)。 您可以對 Data Lake Storage Gen1 帳戶執行相同的路由最佳化操作。 請使用下列[使用者定義的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) (從虛擬網路至 Data Lake Storage Gen1 帳戶)。
+虛擬網路服務端點的主要優點是您的虛擬網路具有[最佳路由](../virtual-network/virtual-network-service-endpoints-overview.md#key-benefits)。 您可以對 Data Lake Storage Gen1 帳戶執行相同的路由最佳化操作。 請使用下列[使用者定義的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined) (從虛擬網路至 Data Lake Storage Gen1 帳戶)。
 
-**Data Lake Storage 公用 IP 位址** – 使用目標 Data Lake Storage Gen1 帳戶的公用 IP 位址。 若要識別 Data Lake Storage Gen1 帳戶的 IP 位址，請[解析帳戶的 DNS 名稱](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)。 請為每個位址建立個別的項目。
+**Data Lake Storage 公用 IP 位址** – 使用目標 Data Lake Storage Gen1 帳戶的公用 IP 位址。 若要識別 Data Lake Storage Gen1 帳戶的 IP 位址，請[解析帳戶的 DNS 名稱](./data-lake-store-connectivity-from-vnets.md#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)。 請為每個位址建立個別的項目。
 
 ```azurecli
 # Create a route table for your resource group.
@@ -65,7 +65,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 請在虛擬網路中使用防火牆解決方案，以根據目的地帳戶 URL 來篩選輸出流量。 僅允許存取已核准的 Data Lake Storage Gen1 帳戶。
 
 可用的選項包括：
-- [Azure 防火牆](https://docs.microsoft.com/azure/firewall/overview)：為虛擬網路[部署及設定 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。 保護輸出的 Data Lake Storage 流量，並將流量鎖定到已知且經過核准的帳戶 URL。
+- [Azure 防火牆](../firewall/overview.md)：為虛擬網路[部署及設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)。 保護輸出的 Data Lake Storage 流量，並將流量鎖定到已知且經過核准的帳戶 URL。
 - [網路虛擬設備](https://azure.microsoft.com/solutions/network-appliances/)防火牆：系統管理員可以只允許使用某些商業防火牆廠商。 使用 Azure Marketplace 中所提供的網路虛擬設備防火牆解決方案，來執行相同的功能。
 
 > [!NOTE]
@@ -77,7 +77,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
  
 - 在已啟用虛擬網路整合的狀況下，當您建立新的 HDInsight 叢集並選取 Data Lake Storage Gen1 帳戶，程序將會失敗。 請先停用虛擬網路規則。 或在 Data Lake Storage 帳戶的 [防火牆與虛擬網路]**** 刀鋒視窗中，選取 [允許來自所有網路和服務的存取]****。 然後，在最後重新啟用虛擬網路規則或取消選取 [允許來自所有網路和服務的存取]**** 之前，請建立 HDInsight 叢集。 如需詳細資訊，請參閱[例外狀況](#exceptions)一節。
 
-- Data Lake Storage Gen1 虛擬網路整合無法與 [Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)搭配運作。
+- Data Lake Storage Gen1 虛擬網路整合無法與 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)搭配運作。
   
 - 對於已啟用虛擬網路的 Data Lake Storage Gen1 帳戶，其中的檔案和資料夾資料並無法從入口網站存取。 此限制包括從虛擬網路內的 VM 存取，以及諸如使用資料總管的活動。 帳戶管理活動會繼續運作。 對於已啟用虛擬網路的 Data Lake Storage 帳戶，其中的檔案和資料夾資料則可透過非入口網站資源來存取。 這些資源包括 SDK 存取權、PowerShell 指令碼和其他 Azure 服務，但前提是這些資源不能來自入口網站。 
 
@@ -87,7 +87,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
 1.  移至 Azure 入口網站，然後登入帳戶。
  
-2.  在訂用帳戶中[建立新的虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 或者，也可以移至現有虛擬網路。 虛擬網路必須位於與 Data Lake Storage Gen1 帳戶相同的區域中。
+2.  在訂用帳戶中[建立新的虛擬網路](../virtual-network/quick-create-portal.md)。 或者，也可以移至現有虛擬網路。 虛擬網路必須位於與 Data Lake Storage Gen1 帳戶相同的區域中。
  
 3.  在 [虛擬網路]**** 刀鋒視窗上，選取 [服務端點]****。
  
@@ -99,7 +99,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
      ![選取 Microsoft.AzureActiveDirectory 服務端點](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  選取要允許連線的子網路。 選取 [新增]。
+6.  選取要允許連線的子網路。 選取 [新增]  。
 
     ![選取子網路](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -124,11 +124,11 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
     ![新增現有的虛擬網路](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  選取要允許連線的虛擬網路和子網路。 選取 [新增]。
+5.  選取要允許連線的虛擬網路和子網路。 選取 [新增]  。
 
     ![選擇虛擬網路和子網路](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  確定虛擬網路和子網路正確顯示於清單中。 選取 [儲存]****。
+6.  確定虛擬網路和子網路正確顯示於清單中。 選取 [儲存]。
 
     ![儲存新規則](media/data-lake-store-network-security/config-adls-4.png)
 

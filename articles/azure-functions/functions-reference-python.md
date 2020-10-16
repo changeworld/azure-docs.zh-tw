@@ -4,12 +4,12 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642192"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108417"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -295,21 +295,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 同樣地，您可以在傳回的 [HttpResponse] 物件中設定回應訊息的 `status_code` 和 `headers`。
 
-## <a name="scaling-and-concurrency"></a>調整和並行
+## <a name="scaling-and-performance"></a>調整和效能
 
-根據預設，Azure Functions 會自動監視應用程式上的負載，並視需要為 Python 建立其他主機執行個體。 Functions 會針對不同的觸發程序類型使用內建 (不是使用者可設定的) 閾值，以決定何時新增執行個體，例如訊息的存留期和 QueueTrigger 的佇列大小。 如需詳細資訊，請參閱[耗用量和進階方案的運作方式](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+請務必瞭解函式的執行方式，以及該效能如何影響函數應用程式的調整方式。 在設計高效能應用程式時，這一點特別重要。 以下是設計、撰寫及設定函數應用程式時要考慮的幾個因素。
 
-這種調整行為足以適用於許多應用程式。 不過，具有下列任何特性的應用程式可能無法有效地進行調整：
+### <a name="horizontal-scaling"></a>水平調整規模
+根據預設，Azure Functions 會自動監視應用程式上的負載，並視需要為 Python 建立其他主機執行個體。 函數會針對不同的觸發程式類型使用內建閾值，以決定何時要加入實例，例如訊息的存留期和 QueueTrigger 的佇列大小。 這些閾值不是使用者可設定的。 如需詳細資訊，請參閱[耗用量和進階方案的運作方式](functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
-- 應用程式必須處理許多並行叫用。
-- 應用程式處理大量 I/O 事件。
-- 應用程式是 I/O 繫結的。
+### <a name="improving-throughput-performance"></a>改善輸送量效能
 
-在這類情況下，您可以藉由採用非同步模式和使用多個語言背景工作處理序，進一步改善效能。
+改善效能的關鍵是瞭解您的應用程式如何使用資源，並據以設定您的函數應用程式。
 
-### <a name="async"></a>非同步處理
+#### <a name="understanding-your-workload"></a>瞭解您的工作負載
 
-因為 Python 是單一執行緒執行階段，所以 Python 的主機執行個體一次只能處理一個函式叫用。 對於處理大量 I/O 事件和/或 I/O 繫結的應用程式，您可以透過非同步方式執行函式來改善效能。
+預設設定適用于大部分的 Azure Functions 應用程式。 不過，您可以根據您的工作負載設定檔來採用設定，以改善應用程式輸送量的效能。 第一個步驟是瞭解您正在執行的工作負載類型。
+
+|| I/o 系結工作負載 | CPU 系結的工作負載 |
+|--| -- | -- |
+|函數應用程式特性| <ul><li>應用程式需要處理許多並行調用。</li> <li> 應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。</li> </ul>| <ul><li>應用程式會執行長時間執行的計算，例如調整大小的影像。</li> <li>應用程式會進行資料轉換。</li> </ul> |
+|範例| <ul><li>Web API</li><ul> | <ul><li>資料處理</li><li> 機器學習推斷</li><ul>|
+
+ 
+> [!NOTE]
+>  因為真實世界的函式工作負載通常會混合使用 i/o 和 CPU，所以建議您在實際的生產負載下分析工作負載。
+
+
+#### <a name="performance-specific-configurations"></a>效能特定設定
+
+瞭解函數應用程式的工作負載設定檔之後，您可以使用下列設定來改善函式的輸送量效能。
+
+##### <a name="async"></a>非同步處理
+
+因為 [python 是單一執行緒的運行](https://wiki.python.org/moin/GlobalInterpreterLock)時間，所以 python 的主控制項實例一次只能處理一個函式呼叫。 針對處理大量 i/o 事件和/或 i/o 系結的應用程式，您可以透過非同步方式執行函式來大幅改善效能。
 
 若要以非同步方式執行函式，請使用 `async def` 陳述式，這會搭配 [asyncio](https://docs.python.org/3/library/asyncio.html) 直接執行函式：
 
@@ -317,6 +334,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+以下是使用 HTTP 觸發程式（使用 [>aioHTTP](https://pypi.org/project/aiohttp/) HTTP 用戶端）的函式範例：
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 沒有 `async` 關鍵字的函式會在 asyncio 執行緒集區中自動執行：
 
@@ -327,11 +359,25 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>使用多個語言背景工作處理序
+為了達到以非同步方式執行函式的完整優點，程式碼中使用的 i/o 作業/程式庫也需要非同步實作為。 在定義為非同步函式中使用同步 i/o 作業， **可能會** 影響整體效能。
+
+以下是一些已實作為非同步模式的用戶端程式庫範例：
+- [>aioHTTP](https://pypi.org/project/aiohttp/) -asyncio 的 Http 用戶端/伺服器 
+- [串流 API](https://docs.python.org/3/library/asyncio-stream.html) -高階非同步/等候就緒的基本專案，以搭配網路連接使用
+- [Janus 佇列](https://pypi.org/project/janus/) -適用于 Python 的安全線程 asyncio 感知佇列
+- [pyzmq](https://pypi.org/project/pyzmq/) -適用于 ZeroMQ 的 Python 系結
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>使用多個語言背景工作處理序
 
 根據預設，每個 Functions 主機執行個體都有單一語言背景工作處理序。 您可以使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 應用程式設定，來增加每個主機的背景工作處理序數目 (最多10個)。 Azure Functions 接著會嘗試在這些背景工作中平均散發同時函式叫用。
 
+針對受 CPU 限制的應用程式，您應該將語言背景工作角色的數目設定為與每個函數應用程式可用的核心數目相同或更高。 若要深入瞭解，請參閱 [可用的實例 sku](functions-premium-plan.md#available-instance-skus)。 
+
+I/o 系結應用程式可能也會因為增加的工作者進程數目超過可用的核心數目而受益。 請記住，將工作者數目設定過高可能會影響整體效能，因為所需的內容切換數目已增加。 
+
 FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符合需求時所建立的每個主機。
+
 
 ## <a name="context"></a>Context
 

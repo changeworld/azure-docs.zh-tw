@@ -4,12 +4,12 @@ description: 了解預設的 Azure Batch 配額、限制和條件約束，以及
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84417271"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107533"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服務配額和限制
 
@@ -125,7 +125,7 @@ Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas
 
 部署於 Azure 虛擬網路之虛擬機器設定中的 Batch 集區會自動配置額外的 Azure 網路資源。 針對虛擬網路中每 50 個集區節點，將會需要下列資源：
 
-- 一個[網路安全性群組](../virtual-network/security-overview.md#network-security-groups)
+- 一個[網路安全性群組](../virtual-network/network-security-groups-overview.md#network-security-groups)
 - 一個[公用 IP 位址](../virtual-network/public-ip-addresses.md)
 - 一個[負載平衡器](../load-balancer/load-balancer-overview.md)
 

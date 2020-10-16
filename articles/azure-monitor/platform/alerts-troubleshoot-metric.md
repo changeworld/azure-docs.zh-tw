@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715322"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102148"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -77,14 +77,14 @@ ms.locfileid: "91715322"
 > 如果您已將來賓計量設定為傳送至 Log Analytics 工作區，計量會出現在 Log Analytics 工作區資源下，而且只會在建立監視這些計量的警示規則之後， **才** 會開始顯示資料。 若要這麼做，請遵循步驟來[設定記錄的計量警示](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
 
 > [!NOTE] 
-> 目前的計量警示不支援監視多部虛擬機器的來賓計量（具有單一警示規則）。 您可以使用 [記錄警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)來達成此目的。 若要這樣做，請確定系統會將來賓計量收集到 Log Analytics 工作區，並在工作區上建立記錄警示規則。
+> 目前的計量警示不支援監視多部虛擬機器的來賓計量（具有單一警示規則）。 您可以使用 [記錄警示規則](./alerts-unified-log.md)來達成此目的。 若要這樣做，請確定系統會將來賓計量收集到 Log Analytics 工作區，並在工作區上建立記錄警示規則。
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到要警示的度量
 
-如果您想要針對特定的計量發出警示，但在建立警示規則時看不到它，請檢查下列各項：
-- 如果您看不到資源的任何計量，請 [檢查計量警示是否支援該資源類型](./alerts-metric-near-real-time.md)。
-- 如果您可以看到資源的一些計量，但找不到特定的計量，請 [檢查該計量是否可用](./metrics-supported.md)，如果是，請查看度量描述，以檢查其是否僅適用于特定版本的資源。
-- 如果資源無法使用計量，它可能會出現在資源記錄中，而且可以使用記錄警示進行監視。 如需如何 [從 Azure 資源收集及分析資源記錄](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)的詳細資訊，請參閱這裡。
+如果您想要針對特定計量發出警示，但在建立警示規則時看不到該計量，請檢查下列事項：
+- 如果您看不到該資源的任何計量，請[檢查計量警示是否支援該資源類型](./alerts-metric-near-real-time.md)。
+- 如果您可以看到該資源的某些計量，但找不到特定計量，請[檢查該計量是否可供使用](./metrics-supported.md)，如果是，請參閱計量描述，以檢查其是否僅適用於資源的特定版本。
+- 如果計量不適用於該資源，可能可用於資源記錄中，並且可以使用記錄警示來加以監視。 請在此參閱[如何從 Azure 資源收集和分析資源記錄](../learn/tutorial-resource-logs.md)的詳細資訊。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>找不到要警示的度量維度
 
