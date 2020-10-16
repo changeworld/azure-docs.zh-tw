@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: 部署 VMware Horizon
           href: azure-vmware-solution-horizon.md
+    - name: VMware 生態系統
+      items:
+        - name: VM 的備份解決方案
+          href: ecosystem-back-up-vms.md
 - name: 資源
   items:
     - name: 疑難排解

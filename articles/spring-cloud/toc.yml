@@ -40,7 +40,7 @@
     - name: 使用 Terraform 佈建 Azure Spring Cloud 執行個體
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: 使用 Jenkins 的 CI/CD
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/developer/jenkins/deploy-to-azure-spring-cloud-using-azure-cli
     - name: 使用受控識別將 Key Vault 連線至 Azure Spring Cloud 應用程式
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: 在虛擬網路中部署 Azure Spring Cloud
@@ -114,15 +114,15 @@
 - name: 參考
   items:
     - name: Azure CLI 外掛程式
-      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+      href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
+      href: /powershell/module/az.springcloud
     - name: 資源
       href: spring-cloud-resources.md
     - name: 常見問題集
       href: spring-cloud-faq.md
     - name: REST API 參考資料
-      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+      href: /rest/api/azurespringclould/
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

@@ -1,22 +1,22 @@
 ---
-title: 從 Google Maps 遷移 Web 服務 | Microsoft Azure 地圖服務
-description: 如何將 Web 服務從 Google Maps 遷移至 Microsoft Azure 地圖服務
+title: 教學課程 - 從 Google Maps 遷移 Web 服務 | Microsoft Azure 地圖服務
+description: 如何從 Google Maps 將 Web 服務遷移至 Microsoft Azure 地圖服務的教學課程
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319566"
+ms.locfileid: "91874453"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>從 Google Maps 遷移 Web 服務
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 服務
 
 Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間 API 的功能。 這些平台的 API 介面會執行類似的功能。 但是，其各自使用不同的命名慣例和回應物件。
 

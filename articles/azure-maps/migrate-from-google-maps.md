@@ -1,22 +1,22 @@
 ---
-title: 從 Google 地圖遷移至 Azure 地圖服務 | Microsoft Azure 地圖服務
-description: 如何從 Google Maps 遷移至 Microsoft Azure 地圖服務。 此指引會引導您切換至 Azure 地圖服務 API 和 SDK。
+title: 教學課程 - 從 Google 地圖遷移至 Azure 地圖服務 | Microsoft Azure 地圖服務
+description: 如何從 Google 地圖遷移至 Microsoft Azure 地圖服務的教學課程。 此指引會引導您切換至 Azure 地圖服務 API 和 SDK。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/23/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264162"
+ms.locfileid: "91876306"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>從 Google 地圖遷移至 Azure 地圖服務
+# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>教學課程 - 從 Google 地圖遷移至 Azure 地圖服務
 
 本文將深入解析如何將 Web、行動裝置和伺服器應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務平台。 本教學課程包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/13/2019
 ms.author: glenga
 ms.openlocfilehash: 85c107451c8199f981ca742b998c6a4bdf15c366
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72303564"
 ---
 > [!NOTE]  
-> 用來執行 CRON 運算式的預設時區是國際標準時間（UTC）。 若要根據另一個時區來執行 CRON 運算式，請為您的函數應用程式建立名為 WEBSITE_TIME_ZONE 的應用程式設定。 若要深入瞭解，請參閱[NCRONTAB 時區](../articles/azure-functions/functions-bindings-timer.md#ncrontab-time-zones)。
+> 用來執行 CRON 運算式的預設時區是國際標準時間 (UTC)。 若要讓 CRON 運算式以另一個時區為基礎，請為名為 WEBSITE_TIME_ZONE 的函式應用程式建立應用程式設定。 若要深入了解，請參閱 [NCRONTAB 時區](../articles/azure-functions/functions-bindings-timer.md#ncrontab-time-zones)。

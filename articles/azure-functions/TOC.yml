@@ -494,7 +494,16 @@
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: 表格儲存體
-          href: functions-bindings-storage-table.md
+          items:
+            - name: 概觀
+              href: functions-bindings-storage-table.md
+              displayName: Table storage
+            - name: 輸入
+              href: functions-bindings-storage-table-input.md
+              displayName: Table storage
+            - name: 輸出
+              href: functions-bindings-storage-table-output.md
+              displayName: Table storage
         - name: 計時器
           href: functions-bindings-timer.md
         - name: Twilio

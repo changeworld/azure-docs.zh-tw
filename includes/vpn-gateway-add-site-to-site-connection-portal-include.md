@@ -9,14 +9,14 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68780266"
 ---
-1. 開啟虛擬網路閘道的頁面。 瀏覽的方法有好幾種。 若要流覽至閘道，請移至**VNet 的名稱-> 總覽-> 已連線的裝置-閘道的 > 名稱**。
-2. 在閘道的頁面上，按一下 [**連接**]。 在 [連線] 頁面的頂部，按一下 [+新增]**** 以開啟 [新增連線]**** 頁面。
+1. 開啟虛擬網路閘道的頁面。 瀏覽的方法有好幾種。 您可以藉由移至**您的 VNet 的名稱 -> 概觀 -> 已連線的裝置 -> 您的閘道的名稱**以瀏覽至閘道。
+2. 在閘道的頁面上，按一下 [連線]。 在 [連線] 頁面的頂部，按一下 [+新增]**** 以開啟 [新增連線]**** 頁面。
 
    ![建立站對站連線](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
 3. 在 [新增連線]**** 頁面上，設定您連線的值。
@@ -29,4 +29,4 @@ ms.locfileid: "68780266"
    - **訂用帳戶**、**資源群組**和**位置**的其餘值是固定的。
 
 4. 按一下 [確定] **** 來建立連線。 您會看到畫面上閃爍「正在建立連線」 ** 。
-5. 您可以在虛擬網路閘道**的 [連線**] 頁面中，查看連接。 狀態會從 [*未知*]*連接*到 [已連線]，然後設為 [*成功*]。
+5. 您可以在虛擬網路閘道的 [連線] 頁面中檢視連線。 狀態將會從 [未知] 變成 [連線中]，然後變成 [成功]。

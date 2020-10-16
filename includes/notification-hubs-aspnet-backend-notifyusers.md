@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530161"
 ---
 ## <a name="create-the-webapi-project"></a>建立 WebAPI 專案
@@ -30,7 +30,7 @@ ms.locfileid: "86530161"
 >
 >若要檢查版本，請啟動 Visual Studio。 在 [工具]  功能表上，選取 [擴充功能和更新]  。 搜尋您的 Visual Studio 版本中的 **NuGet Package Manager**，然後確定您已安裝最新版本。 如果您的版本不是最新版本，請將它解除安裝，然後重新安裝 NuGet 套件管理員。
 
-![[擴充功能和更新] 對話方塊的螢幕擷取畫面，其中已醒目提示 [針對 Visual 工作室管理] 套件的 NuGet 套件。][B4]
+![[擴充功能和更新] 對話方塊的螢幕擷取畫面，其中已醒目提示適用於 Visual Studios 套件的 NuGet 套件管理。][B4]
 
 > [!NOTE]
 > 確定您已安裝 Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) 以供網站部署。
@@ -386,17 +386,17 @@ ms.locfileid: "86530161"
 
 1. 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]****。
 
-2. 選取 [ **Microsoft Azure] App Service**作為發佈目標，然後選取 [發佈]。 [建立 App Service] 視窗隨即開啟。 您可以在此建立在 Azure 中執行 ASP.NET Web 應用程式所需的所有 Azure 資源。
+2. 選取 [Microsoft Azure App Service] 作為發佈目標，然後選取 [發佈]。 [建立 App Service] 視窗隨即開啟。 您可以在此建立在 Azure 中執行 ASP.NET Web 應用程式所需的所有 Azure 資源。
 
     ![[Microsoft Azure App Service] 圖格][B15]
 
-3. 在 [建立 App Service]**** 視窗中，選取您的 Azure 帳戶。 選取 [**變更類型**] [  >  **Web 應用程式**]。 保留預設 [Web 應用程式名稱]****，然後選取 [訂用帳戶]****、[資源群組]**** 和 [App Service 方案]****。
+3. 在 [建立 App Service]**** 視窗中，選取您的 Azure 帳戶。 選取 [變更類型] > [Web 應用程式]。 保留預設 [Web 應用程式名稱]****，然後選取 [訂用帳戶]****、[資源群組]**** 和 [App Service 方案]****。
 
-4. 選取 [建立]。
+4. 選取 [建立]****。
 
 5. 記下 [摘要]**** 區段中的 [網站 URL]**** 屬性。 此 URL 是您在本教學課程中稍後使用的「後端端點」**。
 
-6. 選取 [發佈]。
+6. 選取 [發佈]  。
 
 精靈完成後，它會將 ASP.NET Web 應用程式發佈至 Azure，然後在預設瀏覽器中開啟應用程式。  您的應用程式可在 Azure App Service 中檢視。
 

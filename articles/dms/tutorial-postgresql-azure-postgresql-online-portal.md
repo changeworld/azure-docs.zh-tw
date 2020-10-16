@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 1f8f7c4ea051ff583b3e8f88e0331642cdf9f19a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e424d41a7b4c1d9394e789c60b60a6fa86a69c5
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291535"
+ms.locfileid: "91893776"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教學課程：透過 Azure 入口網站使用 DMS 將 PostgreSQL 線上移轉至適用於 PostgreSQL 的 Azure DB
 
@@ -281,7 +281,7 @@ ms.locfileid: "91291535"
 
     ![完成完全移轉畫面](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. 當資料庫移轉狀態顯示為 [已完成] 時，請將應用程式連線至適用於 PostgreSQL 的 Azure 資料庫的新目標執行個體。
+3. 當資料庫移轉狀態顯示 [已完成] 時，請[重新建立序列](https://wiki.postgresql.org/wiki/Fixing_Sequences) (如果適用)，然後將應用程式連線至適用於 PostgreSQL 的 Azure 資料庫的新目標執行個體。
 
 ## <a name="next-steps"></a>後續步驟
 

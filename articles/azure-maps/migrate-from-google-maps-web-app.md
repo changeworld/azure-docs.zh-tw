@@ -1,20 +1,20 @@
 ---
-title: 從 Google Maps 遷移 Web 應用程式 | Microsoft Azure 地圖服務
-description: 如何將 Web 應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務。
+title: 教學課程 - 從 Google Maps 遷移 Web 應用程式 | Microsoft Azure 地圖服務
+description: 如何從 Google Maps 將 Web 應用程式遷移至 Microsoft Azure 地圖服務的教學課程
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/18/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319668"
+ms.locfileid: "91876493"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>從 Google Maps 遷移 Web 應用程式
 

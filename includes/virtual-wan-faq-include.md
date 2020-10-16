@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570111"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91859745"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虛擬 WAN 是否正式發行？
+
+是，Azure 虛擬 WAN 已正式發行 (GA)。 不過，虛擬 WAN 是由數個功能和情節所組成。 虛擬 WAN 中有一些功能或情節，Microsoft 會在其中套用預覽標記。 在這些情況下，特定功能或情節本身會處於預覽狀態。 如果您不使用特定的預覽功能，則適用一般 GA 支援。 如需有關預覽版支援的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
 虛擬 WAN 提供內建在單一窗格中的許多功能，例如站對站 VPN 連線、使用者/P2S 連線、ExpressRoute 連線、虛擬網路連線、VPN ExpressRoute 相互連線、VNet 對 VNet 的可轉移連線、集中式路由、Azure 防火牆和防火牆管理員安全性、監視、ExpressRoute 加密，以及許多其他功能。 您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 只要一個使用案例即可開始使用。 虛擬 WAN 架構是中樞與輪輻架構，具有內建的規模和效能，其中分支 (VPN/SD-WAN 裝置)、使用者 (Azure VPN 用戶端、openVPN 或 IKEv2 用戶端)、ExpressRoute 線路和虛擬網路都會作為虛擬中樞的輪輻。 所有中樞都會在標準虛擬 WAN 中以完整網格連線，讓使用者可以輕鬆地使用 Microsoft 骨幹進行任意點對任意點 (任何輪輻) 的連線。 針對具有 SD-WAN/VPN 裝置的中樞與輪輻，使用者可以在 Azure 虛擬 WAN 入口網站中手動設定，或使用虛擬 WAN 合作夥伴 CPE (SD-WAN/VPN) 來設定與 Azure 的連線。 虛擬 WAN 合作夥伴提供自動連線功能，可將裝置資訊匯出至 Azure、下載 Azure 設定，以及建立與 Azure 虛擬 WAN 中樞的連線。 針對點對站/使用者 VPN 連線能力，我們支援 [Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 用戶端。 

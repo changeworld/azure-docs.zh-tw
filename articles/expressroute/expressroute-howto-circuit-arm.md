@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 ExpressRoute 建立和修改線路-Azure PowerShell
+title: 快速入門：使用 ExpressRoute 建立和修改線路 - Azure PowerShell
 description: 建立、佈建、驗證、更新、刪除和取消佈建 ExpressRoute 線路。
 services: expressroute
 author: duongau
@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761901"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立和修改 ExpressRoute 線路
@@ -34,7 +34,7 @@ ms.locfileid: "91761901"
 ### <a name="get-the-list-of-supported-providers-locations-and-bandwidths"></a>取得支援的提供者、位置和頻寬清單
 建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。
 
-PowerShell Cmdlet **AzExpressRouteServiceProvider** 會傳回這項資訊，您將在稍後的步驟中使用這些資訊：
+PowerShell Cmdlet **Get-AzExpressRouteServiceProvider** 會傳回此資訊，在稍後的步驟中將會用到：
 
 ```azurepowershell-interactive
 Get-AzExpressRouteServiceProvider
@@ -42,7 +42,7 @@ Get-AzExpressRouteServiceProvider
 
 請檢查是否列出您的連線服務提供者。 記下下列資訊，稍後當您建立線路時將會用到：
 
-* Name
+* 名稱
 * PeeringLocations
 * BandwidthsOffered
 
@@ -55,7 +55,7 @@ Get-AzExpressRouteServiceProvider
 New-AzResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
 
-以下示範如何透過矽谷的 Equinix 建立 200-Mbps ExpressRoute 線路。 如果您要使用不同的提供者和不同的設定，請在提出要求時取代該資訊。 使用下列範例來要求新服務金鑰：
+以下示範如何透過矽谷的 Equinix 建立 200-Mbps ExpressRoute 線路。 如果您使用不同的提供者和不同的設定，請在您提出要求時取代成該資訊。 使用下列範例來要求新服務金鑰：
 
 ```azurepowershell-interactive
 New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
@@ -63,8 +63,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 請確定您指定正確的 SKU 層和 SKU 系列：
 
-* SKU 層會決定 ExpressRoute 線路為 [本機](expressroute-faqs.md#expressroute-local)、標準或 [Premium](expressroute-faqs.md#expressroute-premium)。 您可以指定 *Local*、* Standard 或 *Premium*。 您無法將 SKU 從 *Standard/Premium* 變更為 *Local*。
-* SKU 系列決定計費類型。 您可以針對計量付費資料方案指定 *[metereddata* ，並針對無限制的資料方案指定 *UnlimitedData* 。 您可以將計費類型從 *[metereddata* 變更為 *UnlimitedData*，但無法將類型從 *UnlimitedData* 變更為 *[metereddata*。 *本機*電路一律會*UnlimitedData*。
+* SKU 層會決定 ExpressRoute 線路是[本機](expressroute-faqs.md#expressroute-local)、標準或[進階](expressroute-faqs.md#expressroute-premium)。 您可以指定「本機」、「*標準」或「進階」。 您無法將 SKU 從「標準/進階」變更為「本機」。
+* SKU 系列決定計費類型。 您可以指定 [Metereddata] 以採用計量付費數據傳輸方案，選取 [Unlimiteddata] 以採用無限行動數據方案。 您可以將計費類型從 [MeteredData] 變更為 [UnlimitedData]，但無法將類型從 [UnlimitedData] 變更為 [MeteredData]。 「本機」線路一律為 [UnlimitedData]。
 
 > [!IMPORTANT]
 > ExpressRoute 線路會從發出服務金鑰時開始收費。 請確定在連線提供者準備好佈建線路之後，再執行這項作業。
@@ -78,7 +78,7 @@ get-help New-AzExpressRouteCircuit -detailed
 
 
 ### <a name="list-all-expressroute-circuits"></a>列出所有 ExpressRoute 循環
-若要取得您已建立之所有 ExpressRoute 線路的清單，請執行 **AzExpressRouteCircuit** 命令：
+若要取得您已建立的所有 ExpressRoute 線路清單，請執行 **Get-AzExpressRouteCircuit** 命令：
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -143,7 +143,7 @@ Peerings                         : []
 ```
 
 ### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>將服務金鑰傳送給連線提供者以進行佈建
-*ServiceProviderProvisioningState* 會提供服務提供者端目前的布建狀態相關資訊。 [狀態] 會提供 Microsoft 端的狀態。 如需線路佈建狀態的詳細資訊，請參閱[工作流程](expressroute-workflows.md#expressroute-circuit-provisioning-states)。
+「ServiceProviderProvisioningState」提供服務提供者端目前的佈建狀態相關資訊。 狀態會提供您 Microsoft 端的狀態。 如需線路佈建狀態的詳細資訊，請參閱[工作流程](expressroute-workflows.md#expressroute-circuit-provisioning-states)。
 
 當您建立新的 ExpressRoute 線路時，線路會是下列狀態：
 
@@ -152,14 +152,14 @@ ServiceProviderProvisioningState : NotProvisioned
 CircuitProvisioningState         : Enabled
 ```
 
-當連線提供者目前為您啟用線路時，線路會變更為下列狀態：
+當連線提供者目前為您啟用線路時，此線路會變更為下列狀態：
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioning
 Status                           : Enabled
 ```
 
-若要使用 ExpressRoute 線路，它必須處於下列狀態：
+若要使用 ExpressRoute 線路，其必須處於下列狀態：
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioned
@@ -167,7 +167,7 @@ CircuitProvisioningState         : Enabled
 ```
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>定期檢查線路金鑰的情況和狀態
-當您的提供者布建線路時，檢查服務金鑰的狀態和狀態將可讓您知道。 設定線路之後，[ServiceProviderProvisioningState]** 會顯示為 [Provisioned]**，如下列範例所示：
+檢查服務金鑰的情況和狀態將能讓您得知提供者是否已佈建您的線路。 設定線路之後，[ServiceProviderProvisioningState]** 會顯示為 [Provisioned]**，如下列範例所示：
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -210,7 +210,7 @@ Peerings                         : []
 接下來，將虛擬網路連結到 ExpressRoute 線路。 當使用 Resource Manager 部署模型時，使用[將虛擬網路連結到 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)文章。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>取得 ExpressRoute 線路的狀態
-您可以使用 **AzExpressRouteCircuit** 指令程式，隨時取得此資訊。 執行呼叫時，若未指定任何參數，將會列出所有線路。
+您可以隨時使用 **Get-AzExpressRouteCircuit** Cmdlet 來擷取此資訊。 執行呼叫時，若未指定任何參數，將會列出所有線路。
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit
@@ -285,9 +285,9 @@ get-help Get-AzExpressRouteCircuit -detailed
 
 您可以執行下列工作，而無需中途停機：
 
-* 啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。 不支援將 SKU 從 *Standard/Premium* 變更為 *Local* 。
-* 如果埠上有可用的容量，請增加 ExpressRoute 線路的頻寬。 不支援將線路的頻寬降級。
-* 將計量方案從 [計量付費] 變更為 [無限制]。 不支援將計量方案從 [無限制資料] 變更為 [計量付費資料]。
+* 啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。 不支援將 SKU 從「標準/進階」變更為「本機」。
+* 只要連接埠有可用的容量，即增加 ExpressRoute 線路的頻寬。 不支援將線路的頻寬降級。
+* 將計量方案從 [計量付費] 變更為 [無限制]。 不支援將計量方案從無限制資料變更為已計量資料。
 * 您可以啟用和停用 [允許傳統作業] **。
 
 如需限制的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
@@ -314,8 +314,8 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 請注意下列資訊︰
 
 * 從進階降級為標準之前，您必須確定連結至線路的虛擬網路數目小於 10。 如果您不這樣做，更新要求就會失敗，且我們會以進階費率計費。
-* 其他地緣政治區域中的所有虛擬網路都必須先取消連結。 如果您未移除此連結，更新要求將會失敗，並會繼續以 premium 費率計費。
-* 就私用對等設定而言，路由表必須少於 4000 個路由。 如果您的路由表大小大於4000路由，BGP 會話將會下降。 在通告的首碼數目低於4000時，不會重新啟用 BGP 會話。
+* 其他地理政治區域中的所有虛擬網路都必須先取消連結。 如果您未移除連結，更新要求就會失敗，且我們會以進階費率計費。
+* 就私用對等設定而言，路由表必須少於 4000 個路由。 如果您的路由資料表大小大於 4000 個路由，BGP 工作階段會卸除。 直到已公告的前置詞數目低於 4000 之前，不會重新啟用 BGP 工作階段。
 
 您可以使用下列 PowerShell Cmdlet，為現有的線路停用 ExpressRoute 進階附加元件：
 
@@ -347,7 +347,7 @@ $ckt.ServiceProviderProperties.BandwidthInMbps = 1000
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-您的線路將在 Microsoft 端升級。 接下來，您必須連絡連線提供者，將他們的設定更新為符合這項變更。 完成此通知之後，我們會開始以更新的頻寬選項計費。
+您的線路會在 Microsoft 端升級。 接下來，您必須連絡連線提供者，將他們的設定更新為符合這項變更。 通知之後，我們會開始以更新的頻寬選項計費。
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>將 SKU 從計量移動為無限
 您可以使用下列 PowerShell 程式碼片段變更 ExpressRoute 循環的 SKU：
@@ -364,12 +364,12 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>控制對傳統和 Resource Manager 環境的存取
 請檢閱 [將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](expressroute-howto-move-arm.md)中的指示。
 
-## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>解除布建 ExpressRoute 線路
+## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>取消佈建 ExpressRoute 線路
 請注意下列資訊︰
 
 * 所有虛擬網路都必須從 ExpressRoute 線路取消連結。 如果此作業失敗，請確認是否有任何虛擬網路連結至循環。
 * 如果 ExpressRoute 線路服務提供者佈建狀態為 **Provisioning** 或 **Provisioned**，您就必須與服務提供者一起合作，取消佈建他們那邊的線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
-* 如果服務提供者已取消布建線路，表示服務提供者布建狀態設定為 [ **未布建**]，您可以刪除線路。 線路的計費將會停止。
+* 若服務提供者已取消佈建線路，表示服務提供者佈建狀態設定為 [未佈建]，則您可以刪除線路。 線路的計費將會停止。
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 
@@ -381,7 +381,7 @@ Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Nam
 
 ## <a name="next-steps"></a>後續步驟
 
-當您建立線路並布建到您的提供者之後，請繼續進行下一個步驟來設定對等互連：
+當您建立線路並與您的提供者進行佈建之後，請繼續進行下一個步驟來設定對等互連：
 
 > [!div class="nextstepaction"]
 > [建立和修改 ExpressRoute 線路的路由](expressroute-howto-routing-arm.md)

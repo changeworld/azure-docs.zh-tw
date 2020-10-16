@@ -168,6 +168,7 @@
         - name: 作業的準備與完成工作
           href: batch-job-prep-release.md
         - name: 並行節點工作
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: 作業相依性
           href: batch-task-dependencies.md

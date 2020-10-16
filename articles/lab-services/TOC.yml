@@ -65,7 +65,7 @@
             - name: 管理 VM 集區
               href: how-to-manage-vm-pool-within-teams.md
             - name: 刪除實驗室
-              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+              href: how-to-delete-lab-within-teams.md
             - name: 排程和設定
               href: how-to-create-schedules-within-teams.md
             - name: 存取 VM (學生視圖)

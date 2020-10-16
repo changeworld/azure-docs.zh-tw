@@ -7,12 +7,12 @@ ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586061"
+ms.locfileid: "91875511"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>整合 Azure Key Vault 與 Azure 原則
 
@@ -148,7 +148,10 @@ Key Vault 已建立一組原則，您可以在常見案例中指派這些原則�
 指派具有「拒絕」效用的原則最多可能需要 30 分鐘 (平均案例) 和 1 小時 (最差案例)，才能開始拒絕建立不符合規範的資源。 保存庫中現有元件的原則評估最多可能需要1小時 (平均案例) 和 2 小時 (最差案例)，才能在入口網站 UI 中可看到合規性結果。 如果合規性結果顯示為「未啟動」，則可能是下列原因所造成：
 - 原則評估尚未完成。 在最糟的情況下，初始評估的延遲可能會多達 2 小時。 
 - 原則指派的範圍中沒有任何金鑰保存庫。
-- 原則指派的範圍中沒有任何包含憑證的金鑰保存庫。 
+- 原則指派的範圍中沒有任何包含憑證的金鑰保存庫。
+
+> [!NOTE]
+> Azure 原則[資源提供者模式](../../governance/policy/concepts/definition-structure.md#resource-provider-modes) (例如適用於 Azure Key Vault 的項目) 會提供[元件合規性](../../governance/policy/how-to/get-compliance-data.md#component-compliance)頁面上合規性的相關資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

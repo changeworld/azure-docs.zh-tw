@@ -1,7 +1,7 @@
 ---
-title: 教學課程：將 MongoDB 線上遷移至適用于 MongoDB 的 Azure Cosmos DB API
+title: 教學課程：將 MongoDB 線上遷移至適用於 MongoDB 的 Azure Cosmos DB API
 titleSuffix: Azure Database Migration Service
-description: 瞭解如何使用 Azure 資料庫移轉服務，從內部部署的 MongoDB 遷移至 Azure Cosmos DB API for MongoDB online。
+description: 了解如何使用 Azure 資料庫移轉服務，在線上狀態下從內部部署 MongoDB 移轉至 Azure Cosmos DB 的 Mongo 版 API。
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -13,13 +13,13 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 09/25/2019
 ms.openlocfilehash: 0dbab7db45a9f97db48bbf97aba55b5943f623a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282437"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教學課程：使用 DMS 在線上將 MongoDB 遷移至 Azure Cosmos DB 的 MongoDB API
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教學課程：使用 DMS 在線上狀態下將 MongoDB 移轉至 Azure Cosmos DB 的 MongoDB 版 API
 
 您可以使用 Azure 資料庫移轉服務，在線上狀態下 (以最短的停機時間) 將資料庫從內部部署或雲端的 MongoDB 執行個體移轉至 Azure Cosmos DB 的 Mongo 版 API。
 
@@ -50,10 +50,10 @@ ms.locfileid: "91282437"
 
 * [完成移轉前](../cosmos-db/mongodb-pre-migration.md)步驟，例如估計輸送量、選擇分割索引鍵和索引編製原則。
 * [建立 Azure Cosmos DB 的 Mongo 版 API 帳戶](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
-* 使用 Azure Resource Manager 部署模型來建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，這會使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。
 
     > [!NOTE]
-    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務 [端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 新增至將布建服務的子網：
+    > 在虛擬網路設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將佈建服務的子網路：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -61,7 +61,7 @@ ms.locfileid: "91282437"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確定您的虛擬網路網路安全性群組 (NSG) 規則不會封鎖下列通訊埠：53、443、445、9354和10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱文章 [使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
+* 確定您的虛擬網路網路安全性群組 (NSG) 規則不會封鎖下列通訊連接埠：53、443、445、9354 及 10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 MongoDB 伺服器 (依預設會使用 TCP 連接埠 27017)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
 
@@ -93,16 +93,16 @@ ms.locfileid: "91282437"
 
 4. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的位置。
 
-5. 選取現有的虛擬網路，或建立一個新的虛擬網路。
+5. 選取現有的虛擬網路或建立新的虛擬網路。
 
-   虛擬網路可讓 Azure 資料庫移轉服務存取來源 MongoDB 實例和目標 Azure Cosmos DB 帳戶。
+   虛擬網路會為 Azure 資料庫移轉服務提供來源 MongoDB 執行個體和目標 Azure Cosmos DB 帳戶的存取權。
 
-   如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱 [使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)的文章。
+   如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
 6. 從「進階」定價層選取 SKU。
 
     > [!NOTE]
-    > 只有在使用「進階」層的情況下，才支援線上移轉。 如需成本和定價層的詳細資訊，請參閱 [定價頁面](https://aka.ms/dms-pricing)。
+    > 只有在使用「進階」層的情況下，才支援線上移轉。 如需成本和定價層的詳細資訊，請參閱[定價分頁](https://aka.ms/dms-pricing)。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-mongodb-to-cosmosdb-online/dms-settings3.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "91282437"
      https://blobnameurl/container?SASKEY
      ```
 
-     此外，根據 Azure 儲存體中的型別傾印資訊，請記住下列詳細資料。
+     此外，根據 Azure 儲存體中的類型傾印資訊，請留意下列詳細資料。
 
      * 就 BSON 傾印而言，Blob 容器內的資料必須採用 bsondump 格式，使資料檔案以 collection.bson 的格式放入依所屬資料庫命名的資料夾中。 中繼資料檔案 (如果有的話) 則應使用 *collection*.metadata.json 的格式命名。
 
