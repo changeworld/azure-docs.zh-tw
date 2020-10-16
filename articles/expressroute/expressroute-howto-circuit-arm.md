@@ -1,18 +1,18 @@
 ---
 title: 快速入門：使用 ExpressRoute 建立和修改線路 - Azure PowerShell
-description: 建立、佈建、驗證、更新、刪除和取消佈建 ExpressRoute 線路。
+description: 本快速入門說明如何建立、佈建、驗證、更新、刪除和取消佈建 ExpressRoute 線路。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5397dd2745a0d4e61804cf631014846ae15ec4e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761901"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971535"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立和修改 ExpressRoute 線路
 
@@ -42,7 +42,7 @@ Get-AzExpressRouteServiceProvider
 
 請檢查是否列出您的連線服務提供者。 記下下列資訊，稍後當您建立線路時將會用到：
 
-* 名稱
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -159,7 +159,7 @@ ServiceProviderProvisioningState : Provisioning
 Status                           : Enabled
 ```
 
-若要使用 ExpressRoute 線路，其必須處於下列狀態：
+若要使用 ExpressRoute 線路，它必須處於下列狀態：
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioned
@@ -371,7 +371,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 * 如果 ExpressRoute 線路服務提供者佈建狀態為 **Provisioning** 或 **Provisioned**，您就必須與服務提供者一起合作，取消佈建他們那邊的線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
 * 若服務提供者已取消佈建線路，表示服務提供者佈建狀態設定為 [未佈建]，則您可以刪除線路。 線路的計費將會停止。
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
+## <a name="clean-up-resources"></a>清除資源
 
 您可以執行下列命令來刪除 ExpressRoute 線路：
 
