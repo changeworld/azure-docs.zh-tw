@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018177"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126751"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
 
-本操作指南會示範如何以解決方案開發人員的身分，使用自訂規則和通知擴充您的 IoT Central 應用程式。 此範例顯示當裝置停止傳送遙測時，傳送通知給操作員。 解決方案會使用 [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/) 查詢來偵測裝置何時停止傳送遙測。 串流分析作業會使用 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) ，透過 [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)傳送通知電子郵件。
+本操作指南會示範如何以解決方案開發人員的身分，使用自訂規則和通知擴充您的 IoT Central 應用程式。 此範例顯示當裝置停止傳送遙測時，傳送通知給操作員。 解決方案會使用 [Azure 串流分析](../../stream-analytics/index.yml) 查詢來偵測裝置何時停止傳送遙測。 串流分析作業會使用 [Azure Functions](../../azure-functions/index.yml) ，透過 [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)傳送通知電子郵件。
 
 本操作指南會示範如何將 IoT Central 延伸到超出內建規則和動作所能執行的作業。
 
@@ -157,7 +157,7 @@ ms.locfileid: "90018177"
 1. 選取 [ **整合**]，選擇輸出 **HTTP ($return) **，然後選取 [ **刪除**]。
 1. 選擇 [ **+ 新增輸出**]，然後選擇 [ **SendGrid**]，再選擇 [ **選取**]。 選擇 [ **安裝** ] 以安裝 SendGrid 延伸模組。
 1. 當安裝完成時，請選取 [ **使用函數傳回值**]。 新增有效的 **位址** 以接收電子郵件通知。  新增有效 **的發** 件人位址，以做為電子郵件寄件者使用。
-1. 選取 [ **SENDGRID API 金鑰應用程式設定**] 旁的 [**新增**]。 輸入 **SendGridAPIKey** 做為金鑰，並輸入您先前記下的 SendGrid API 金鑰作為值。 然後選取 [建立]。
+1. 選取 [ **SENDGRID API 金鑰應用程式設定**] 旁的 [**新增**]。 輸入 **SendGridAPIKey** 做為金鑰，並輸入您先前記下的 SendGrid API 金鑰作為值。 然後選取 [建立]  。
 1. 選擇 [ **儲存** ] 以儲存您函式的 SendGrid 系結。
 
 整合設定看起來會像下列螢幕擷取畫面：
@@ -300,7 +300,7 @@ test-device-3    2019-05-02T14:24:28.919Z
         RightSide.deviceid2 is NULL
     ```
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 1. 若要啟動串流分析作業，請選擇 [總覽]，然後依序選擇 **[****開始**]、[開始 **]，然後****開始**：
 
     ![串流分析](media/howto-create-custom-rules/stream-analytics.png)
@@ -347,7 +347,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 您可以從應用程式內的 **管理** 頁面刪除 IoT Central 應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在此操作指南中，您已了解如何：
 

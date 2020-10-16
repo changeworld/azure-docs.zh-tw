@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396853"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127109"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>使用 Azure Data Box Heavy 將檔案共用內容遷移至 SharePoint Online
 
@@ -21,9 +21,9 @@ ms.locfileid: "91396853"
 
 Microsoft Azure 資料箱服務可讓您從 Microsoft Azure 入口網站訂購裝置。 然後，您就可以將數 TB 的資料從伺服器複製到裝置。 將裝置寄回 Microsoft 後，資料便會複製到 Azure 中。 根據您想要傳輸的資料大小，可供選擇的項目如下：
 
-- [資料箱磁碟](https://docs.microsoft.com/azure/databox/data-box-disk-overview)，每筆訂單會有 35 TB 的可用容量，適用於中小型資料集。
-- [資料箱](https://docs.microsoft.com/azure/databox/data-box-overview)，每個裝置會有 80 TB 的可用容量，適用於中大型資料集。
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview)，每個裝置會有 770 TB 的可用容量，適用於大型資料集。
+- [資料箱磁碟](./data-box-disk-overview.md)，每筆訂單會有 35 TB 的可用容量，適用於中小型資料集。
+- [資料箱](./data-box-overview.md)，每個裝置會有 80 TB 的可用容量，適用於中大型資料集。
+- [Data Box Heavy](./data-box-heavy-overview.md)，每個裝置會有 770 TB 的可用容量，適用於大型資料集。
 
 本文會專門探討如何使用 Data Box Heavy 將檔案共用內容遷移至 SharePoint Online。
 
@@ -37,7 +37,7 @@ Microsoft Azure 資料箱服務可讓您從 Microsoft Azure 入口網站訂購�
 
 ### <a name="for-sharepoint-online"></a>針對 SharePoint Online
 
-- 請檢閱 [SharePoint 移轉工具 (SPMT) 的最低需求](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
+- 請檢閱 [SharePoint 移轉工具 (SPMT) 的最低需求](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
 
 ## <a name="workflow-overview"></a>工作流程概觀
 
@@ -84,7 +84,7 @@ Microsoft Azure 資料箱服務可讓您從 Microsoft Azure 入口網站訂購�
 3. [下載 SharePoint 移轉工具](https://spmtreleasescus.blob.core.windows.net/install/default.htm)並將其安裝在 Azure VM 上。
 4. 啟動 SharePoint 移轉工具。 按一下 [登 **入** ]，然後輸入您的工作或學校帳戶的使用者名稱和密碼。
 5. 出現**您的資料在哪？** 提示時，選取 [檔案共用]  。 輸入資料所在 Azure 檔案共用的路徑。
-6. 和平常一樣遵循其餘的提示來進行，包括您的目標位置。 如需詳細資訊，請移至[如何使用 SharePoint 移轉工具](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
+6. 和平常一樣遵循其餘的提示來進行，包括您的目標位置。 如需詳細資訊，請移至[如何使用 SharePoint 移轉工具](/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
 
 > [!IMPORTANT]
 > - 無論資料是否已位於 Azure 中，將資料擷取到 SharePoint Online 的速度會受到許多因素影響。 了解這些因素將有助於您規劃移轉效率並將其最大化。  如需詳細資訊，請移至 [SharePoint Online 和 OneDrive 移轉速度](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)。

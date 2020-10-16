@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7c708268eaeade1cfb625c73ff8758a1941ff5b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3e006f717ed1c66c7db29dbd70c226d2d75ea8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157444"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127211"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>了解如何使用 Azure IoT Central 和 Dynamics 365 Field Service 建置端對端解決方案 
 
@@ -32,7 +32,7 @@ ms.locfileid: "80157444"
 * 您可以使用相關的服務和排程資訊來更新 Azure IoT Central 裝置儀表板。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 深入了解 [IoT Central 政府機關範本](./overview-iot-central-government.md)
-* 深入了解 [IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)。
-* 深入了解 [Dynamics 365 Field Services](https://docs.microsoft.com/dynamics365/field-service/cfs-iot-overview)
+* 深入了解 [IoT Central](../core/overview-iot-central.md)。
+* 深入了解 [Dynamics 365 Field Services](/dynamics365/field-service/cfs-iot-overview)

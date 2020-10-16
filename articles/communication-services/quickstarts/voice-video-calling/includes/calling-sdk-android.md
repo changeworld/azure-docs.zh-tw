@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126787"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -138,13 +138,13 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 
 ## <a name="push-notifications"></a>推送通知
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 行動推播通知是您在行動裝置上看到的快顯通知。 為了進行呼叫，我們將著重于 VoIP (語音 over 網際網路通訊協定) 推播通知。 我們會註冊推播通知、處理推播通知，然後取消註冊推播通知。
 
 ### <a name="prerequisites"></a>必要條件
 
-若要完成本節，請建立 Firebase 帳戶，並啟用雲端通訊 (FCM) 。 確定 Firebase 雲端通訊已連線到 Azure 通知中樞 (ANH) 實例。 如需相關指示，請參閱 [將 Firebase 連線至 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
-本節也會假設您使用 Android Studio 3.6 版或更高版本來建立您的應用程式。
+使用雲端通訊 (FCM 設定的 Firebase 帳戶，會在已連線到 Azure 通知中樞實例的 Firebase 雲端通訊服務) 啟用。 如需詳細資訊，請參閱 [通訊服務通知](https://docs.microsoft.com/azure/communication-services/concepts/notifications) 。
+此外，本教學課程假設您使用 Android Studio 3.6 版或更高版本來建立您的應用程式。
 
 Android 應用程式需要一組許可權，才能接收來自 Firebase 雲端通訊的通知訊息。 在您的檔案中 `AndroidManifest.xml` ，將下列許可權集加入 *<資訊清單 ... >* 或在 *</application>* 標記下方
 
@@ -195,21 +195,21 @@ import com.google.firebase.iid.InstanceIdResult;
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 向呼叫服務用戶端程式庫註冊註冊推播通知的裝置註冊權杖：
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -226,16 +226,16 @@ catch(Exception e) {
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +252,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-在抓取承載之後，您可以在實例上呼叫方法，將它傳遞至通訊服務用戶端程式庫以進行處理 `handlePushNotification` `CallAgent` 。
+- 一旦抓取承載之後，您就可以在*CallAgent*實例上呼叫*handlePushNotification*方法，將它傳遞至*通訊服務*用戶端程式庫以進行處理。 藉 `CallAgent` 由 `createCallAgent(...)` 在類別上呼叫方法來建立實例 `CallClient` 。
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }

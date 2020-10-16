@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225599"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127092"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>適用于 Azure 資料箱的 Azure 安全性基準
 
 適用于 Azure 資料箱的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱[安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -70,9 +70,9 @@ ms.locfileid: "89225599"
 
 **指導**方針：指導方針： Azure 資料箱所使用的端點都是由 Microsoft 管理。 您必須負責任何您想要部署到內部部署系統的其他控制項。
 
-* [瞭解 Azure 資料箱安全性](https://docs.microsoft.com/azure/databox/data-box-security)
+* [瞭解 Azure 資料箱安全性](./data-box-security.md)
 
-* [Azure 資料箱的埠資訊](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [Azure 資料箱的埠資訊](./data-box-system-requirements.md#port-requirements)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -120,7 +120,7 @@ ms.locfileid: "89225599"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱[安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -134,7 +134,7 @@ ms.locfileid: "89225599"
 
 **指導**方針：對應到您的資料箱訂單中的每個步驟，您可以採取多個動作來控制訂單的存取權、審核事件、追蹤訂單，以及解讀產生的各種記錄。
 
-* [瞭解 Azure 資料箱的追蹤和事件記錄](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [瞭解 Azure 資料箱的追蹤和事件記錄](./data-box-logs.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -144,7 +144,7 @@ ms.locfileid: "89225599"
 
 **指導**方針：對應到您的資料箱訂單中的每個步驟，您可以採取多個動作來控制訂單的存取權、審核事件、追蹤訂單，以及解讀產生的各種記錄。
 
-* [瞭解 Azure 資料箱的追蹤和事件記錄](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [瞭解 Azure 資料箱的追蹤和事件記錄](./data-box-logs.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -170,7 +170,7 @@ ms.locfileid: "89225599"
 
 **指導**方針：對應到您的資料箱訂單中的每個步驟，您可以採取多個動作來控制訂單的存取權、審核事件、追蹤訂單，以及解讀產生的各種記錄。
 
-* [瞭解 Azure 資料箱的追蹤和事件記錄](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [瞭解 Azure 資料箱的追蹤和事件記錄](./data-box-logs.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -180,7 +180,7 @@ ms.locfileid: "89225599"
 
 **指導**方針：對應到您的資料箱訂單中的每個步驟，您可以採取多個動作來控制訂單的存取權、審核事件、追蹤訂單，以及解讀產生的各種記錄。
 
-* [瞭解 Azure 資料箱的追蹤和事件記錄](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [瞭解 Azure 資料箱的追蹤和事件記錄](./data-box-logs.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -212,17 +212,17 @@ ms.locfileid: "89225599"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
 **指導**：維護具有您 Azure 資料箱之系統管理存取權的使用者帳戶清查。 您可以使用訂用帳戶 Azure 入口網站中的身分識別和存取控制 (IAM) 窗格，來設定 Azure 角色型存取控制 (Azure RBAC) 。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。您可以在訂單首次建立時，控制可存取訂單的人員。 在不同範圍設定 Azure 角色，以控制資料箱訂單的存取權。 Azure 角色可決定存取權的類型–讀寫、唯讀、讀寫作業的子集。
 
-* [瞭解自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [瞭解自訂角色](../role-based-access-control/custom-roles.md)
 
-* [如何設定活頁簿的 Azure RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [如何設定活頁簿的 Azure RBAC](../sentinel/quickstart-get-visibility.md)
 
-* [瞭解如何設定順序的存取控制](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [瞭解如何設定順序的存取控制](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure 資訊安全中心監視**：否
 
@@ -245,9 +245,9 @@ ms.locfileid: "89225599"
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 
-* [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](../security-center/security-center-identity-access.md)
 
-* [如何使用 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -273,9 +273,9 @@ ms.locfileid: "89225599"
 
 **指導**方針：使用具特殊許可權的存取工作站 (PAW) 搭配 Azure MULTI-FACTOR AUTHENTICATION (MFA) 啟用以登入和設定您的 Azure 資料箱訂單。
 
-* [特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [規劃雲端式 Azure Multi-Factor Authentication 部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) \(部分機器翻譯\)
+* [規劃雲端式 Azure Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) \(部分機器翻譯\)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -287,9 +287,9 @@ ms.locfileid: "89225599"
 
 此外，使用 Azure AD 風險偵測來檢視有風險的使用者行為相關警示和報告。
 
-* [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -299,7 +299,7 @@ ms.locfileid: "89225599"
 
 **指引**：使用條件式存取具名位置，只允許從 IP 位址範圍或國家/區域的特定邏輯群組存取 Azure 入口網站。
 
-* [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -309,7 +309,7 @@ ms.locfileid: "89225599"
 
 **指導**方針：在適用的情況下，使用 AZURE ACTIVE DIRECTORY (AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-* [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -321,9 +321,9 @@ ms.locfileid: "89225599"
 
 若為數據箱設備，將不會即時支援這項功能。 您可以在作業結束時檢查記錄。
 
-* [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-* [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -339,9 +339,9 @@ ms.locfileid: "89225599"
 
 Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
-* [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -351,11 +351,11 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指導**方針：對於控制項平面上的帳戶登入行為偏差 (例如 Azure 入口網站) ，請使用 Azure AD Identity Protection 和風險偵測功能，來設定偵測到與使用者身分識別相關的可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-* [如何查看 Azure AD 具風險的登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何查看 Azure AD 具風險的登入](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -365,7 +365,7 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指導**方針： Azure 資料箱目前不支援客戶加密箱。
 
-* [客戶加密箱支援的服務清單](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [客戶加密箱支援的服務清單](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -373,7 +373,7 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
@@ -389,7 +389,7 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 在資料上傳至 Azure 期間，資料箱設備和用來上傳資料的服務會進行隔離。
 
-* [如何開始使用 Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [如何開始使用 Azure 資料箱](./data-box-quickstart-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -399,7 +399,7 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指導**方針： Microsoft 管理 Azure 資料箱的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。 當資料箱位於客戶網站時，請遵循最佳作法，以確保傳輸的機密資料受到保護。
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -409,9 +409,9 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指導**方針： Microsoft 管理 Azure 資料箱的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。 當資料箱位於客戶網站時，請遵循最佳作法，以確保傳輸的機密資料受到保護。
 
-* [瞭解 Azure 資料箱中的資料移轉](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [瞭解 Azure 資料箱中的資料移轉](./data-box-faq.md)
 
-* [資料箱安全性總覽](https://docs.microsoft.com/azure/databox/data-box-security)
+* [資料箱安全性總覽](./data-box-security.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -421,7 +421,7 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指導**方針：目前無法使用;Azure 資料箱的資料識別、分類和遺失防護功能尚未提供。 Microsoft 會管理 Azure 資料箱的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -431,9 +431,9 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指導**方針：確定您擁有訂用帳戶的擁有者或參與者存取權，才能建立資料箱訂單。 您也可以在資源層級定義資料箱讀者和資料箱參與者角色。
 
-* [瞭解如何開始使用 Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [瞭解如何開始使用 Azure 資料箱](./data-box-quickstart-portal.md)
 
-* [瞭解如何設定存取控制](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [瞭解如何設定存取控制](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -443,7 +443,7 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 **指引**：不適用，這項建議主要用於計算資源。 Microsoft 管理 Azure 資料箱的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-* [Azure 客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -455,9 +455,9 @@ Azure 資料箱服務記錄不會寫入 Log Analytics 工作區。
 
 Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資料箱會保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，此金鑰是用來透過加密金鑰來鎖定裝置。 根據預設，會使用 Microsoft 管理的金鑰來加密資料箱訂單的裝置解除鎖定金鑰。 若要進一步控制裝置解除鎖定金鑰，您也可以提供客戶管理的金鑰。 客戶管理的金鑰必須建立並儲存在 Azure Key Vault 中。
 
-* [瞭解資料箱資料保護](https://docs.microsoft.com/azure/databox/data-box-security)
+* [瞭解資料箱資料保護](./data-box-security.md)
 
-* [在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -467,7 +467,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指導**方針：使用 Azure 監視器搭配 Azure 活動記錄檔，以建立 Azure 資料箱和其他重要或相關資源發生變更時的警示。
 
-* [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -475,7 +475,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱[安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -519,7 +519,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -605,7 +605,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指引**：設定 Azure 條件式存取，以藉由對「Microsoft Azure 管理」應用程式設定「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
-* [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -629,7 +629,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱[安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -715,7 +715,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指導**方針：必須建立客戶管理的金鑰，並將其儲存在 Azure Key Vault 中。
 
-* [如何在 Azure 資料箱的 Azure Key Vault 中使用客戶管理的金鑰](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [如何在 Azure 資料箱的 Azure Key Vault 中使用客戶管理的金鑰](./data-box-customer-managed-encryption-key-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -725,7 +725,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指導**方針：不適用;Azure 資料箱不會利用受控識別。
 
-* [支援受控識別的 Azure 服務](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [支援受控識別的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -743,7 +743,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -773,7 +773,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -809,7 +809,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱[安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -831,9 +831,9 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 此外，使用標記清楚地標示訂用帳戶 (例如， 生產、非生產) 並建立命名系統，以清楚地識別及分類 Azure 資源，尤其是處理敏感性資料的資源。 您需負責根據發生事件的 Azure 資源和環境的重要性，設定警示的補救優先順序。
 
-* [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-* [使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -853,7 +853,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-* [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -863,9 +863,9 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心警示和建議，協助找出 Azure 資源的風險。 「連續匯出」可讓您以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Azure Sentinel。
 
-* [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何設定連續匯出](../security-center/continuous-export.md)
 
-* [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -875,7 +875,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 **指導**方針：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」安全性警示和建議來自動觸發回應，以保護您的 Azure 資源。
 
-* [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -883,7 +883,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
@@ -899,5 +899,5 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

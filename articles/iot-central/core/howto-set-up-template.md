@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fb60a4b549a7203057dd60298d2ae0540450d6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803784"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122648"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 裝置類型
 
@@ -45,7 +45,7 @@ ms.locfileid: "91803784"
 - 使用 Visual Studio Code 建立裝置功能模型。 從模型實作您的裝置程式碼。 手動將裝置功能模型匯入您的 IoT Central 應用程式中，然後新增您的 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板。
 - 使用 Visual Studio Code 建立裝置功能模型。 從模型實作裝置程式碼，並使用裝置優先連線將實際的裝置連線至 IoT Central 應用程式。 IoT Central 會從公用存放庫中為您尋找並匯入裝置功能模型。 然後，您便可以將 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板新增至裝置範本中。
 
-您也可以使用 [REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) 或 [CLI](howto-manage-iot-central-from-cli.md)將裝置範本新增至 IoT Central 應用程式。
+您也可以使用 [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) 或 [CLI](howto-manage-iot-central-from-cli.md)將裝置範本新增至 IoT Central 應用程式。
 
 某些 [應用程式範本](concepts-app-templates.md) 已包含在應用程式範本支援的案例中很有用的裝置範本。 例如，請參閱 [店內分析架構](../retail/store-analytics-architecture.md)。
 
@@ -127,7 +127,7 @@ ms.locfileid: "91803784"
 | 功能類型 | 遙測。 |
 | 語意類型 | 遙測的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。 |
 | 結構描述 | 遙測的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。 |
-| Severity | 僅適用於事件語意類型。 嚴重性為 [錯誤]****、[資訊]**** 或 [警告]****。 |
+| 嚴重性 | 僅適用於事件語意類型。 嚴重性為 [錯誤]****、[資訊]**** 或 [警告]****。 |
 | 狀態值 | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。 |
 | Unit | 遙測值的單位，例如 **>mph**、 **%** 或** &deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |
@@ -148,7 +148,7 @@ ms.locfileid: "91803784"
 | 語意類型 | 屬性的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。 |
 | 結構描述 | 屬性的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。 |
 | 可寫入 | 如果屬性無法寫入，裝置可以向 IoT Central 報告屬性值。 如果屬性可寫入，則裝置可以向 IoT Central 報告屬性值，IoT Central 也可以向裝置傳送屬性更新。
-| Severity | 僅適用於事件語意類型。 嚴重性為 [錯誤]****、[資訊]**** 或 [警告]****。 |
+| 嚴重性 | 僅適用於事件語意類型。 嚴重性為 [錯誤]****、[資訊]**** 或 [警告]****。 |
 | 狀態值 | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。 |
 | Unit | 屬性值的單位，例如 **>mph**、 **%** 或** &deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |
@@ -274,6 +274,6 @@ ms.locfileid: "91803784"
 
 在您發佈裝置範本後，操作員便可移至 [裝置]**** 頁面，並新增會使用裝置範本的實際或模擬裝置。 當您進行變更時，您可以繼續修改並儲存裝置範本。 當您要將這些變更推送給操作員，以在 [裝置]**** 頁面之下檢視時，您每次都必須選取 [發佈]****。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您是裝置開發人員，建議的下一個步驟是閱讀 [裝置範本版本](./howto-version-device-template.md)設定的相關資訊。

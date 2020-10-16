@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317322"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127228"
 ---
 # <a name="storage-configuration"></a>儲存體組態
 
@@ -166,7 +166,7 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 > [!NOTE]
 > 其中有些參數正在開發中，將會在 `azdata arc sql mi create` `azdata arc postgres server create` 即將推出的版本中提供。
 
-|參數名稱、簡短名稱|用途|
+|參數名稱、簡短名稱|用於|
 |---|---|
 |`--storage-class-data`, `-scd`|用來指定所有資料檔案的儲存類別，包括交易記錄檔|
 |`--storage-class-logs`, `-scl`|用來指定所有記錄檔的儲存類別|
@@ -238,6 +238,6 @@ Microsoft 及其 OEM、OS 和 Kubernetes 合作夥伴正在處理 Azure Arc 資�
 
 |公用雲端服務|建議|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) 有兩種類型的儲存體 Azure 檔案儲存體和 Azure 磁片。 每種類型的儲存體都有兩個定價/效能層級-標準 (HDD) 和 premium (SSD) 。 因此，AKS 中提供的四個儲存體類別 `azurefile` (Azure 檔案儲存體標準層) 、 `azurefile-premium` (Azure 檔案儲存體進階層) 、 `default` (azure 磁片標準層) ，以及 (`managed-premium` azure 磁片進階層) 。 預設的儲存類別是 `default`)  (Azure 磁片標準層。 類型和階層之間有顯著的 **[定價差異](https://azure.microsoft.com/en-us/pricing/details/storage/)** ，這些類型和階層應納入您的決定。 針對具有高效能需求的生產工作負載，建議您 `managed-premium` 針對所有儲存類別使用。 針對開發/測試工作負載、概念證明等，其中成本是考慮因素，則 `azurefile` 是最便宜的選項。 所有的四個選項都可用於需要遠端共用儲存體的情況，因為它們都是 Azure 中所有網路連接的儲存裝置。 深入瞭解 [AKS 儲存體](../../aks/concepts-storage.md)。|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) 有兩種類型的儲存體 Azure 檔案儲存體和 Azure 受控磁碟。 每種類型的儲存體都有兩個定價/效能層級-標準 (HDD) 和 premium (SSD) 。 因此，AKS 中提供的四個儲存體類別 `azurefile` (Azure 檔案儲存體標準層) 、 `azurefile-premium` (Azure 檔案儲存體進階層) 、 `default` (azure 磁片標準層) ，以及 (`managed-premium` azure 磁片進階層) 。 預設的儲存類別是 `default`)  (Azure 磁片標準層。 類型和階層之間有顯著的 **[定價差異](https://azure.microsoft.com/en-us/pricing/details/storage/)** ，這些類型和階層應納入您的決定。 針對具有高效能需求的生產工作負載，建議您 `managed-premium` 針對所有儲存類別使用。 針對開發/測試工作負載、概念證明等，其中成本是考慮因素，則 `azurefile` 是最便宜的選項。 所有的四個選項都可用於需要遠端共用儲存體的情況，因為它們都是 Azure 中所有網路連接的儲存裝置。 深入瞭解 [AKS 儲存體](../../aks/concepts-storage.md)。|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon 的彈性 Kubernetes 服務有一個主要儲存類別，以 [EBS CSI 儲存驅動程式](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)為基礎。 建議用於生產工作負載。 有新的儲存體驅動程式- [EFS CSI 儲存體驅動程式](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) -可以新增至 EKS 叢集，但它目前處於 Beta 階段，可能會變更。 雖然 AWS 指出此儲存體驅動程式支援生產環境，但我們不建議您使用它，因為它仍處於 Beta 階段，可能會變更。 EBS 儲存類別是預設值，而且會呼叫 `gp2` 。 深入瞭解 [EKS 儲存體](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)。|
 |**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) 只會有一個稱為的儲存類別， `standard` 用來 [GCE 持續性磁片](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)。 這是唯一的，也是預設值。 雖然有適用于 GKE 的 [本機靜態磁片區布建程式](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) 可讓您與直接連結 ssd 搭配使用，但我們不建議您使用它，因為它不是由 Google 維護或支援。 深入瞭解 [GKE 儲存體](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)。

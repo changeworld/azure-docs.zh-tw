@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322444"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127364"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>針對裝置中的資料未顯示在 Azure IoT Central 的原因進行疑難排解
 
@@ -34,9 +34,9 @@ ms.locfileid: "89322444"
 
 如果您尚未這麼做，請安裝 `az cli` 工具和擴充功能 `azure-iot` 。
 
-若要瞭解如何安裝 `az cli` ，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+若要瞭解如何安裝 `az cli` ，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-若[install](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation)要安裝 `azure-iot` 擴充功能，請執行下列命令：
+若[install](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation)要安裝 `azure-iot` 擴充功能，請執行下列命令：
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -155,7 +155,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 | 401 | 無法驗證授權權杖。 例如，它已過期或不適用於要求的 URI。 此錯誤碼也會傳回給裝置，作為 TPM 證明流程的一部分。 | 確定您的裝置具有正確的認證。 |
 | 404 | 裝置布建服務實例或資源（例如註冊）不存在。 | 提出[客戶支援的票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 |
 | 412 | `ETag`要求中的不符合 `ETag` 現有資源的，如每個 >rfc7232。 | 提出[客戶支援的票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 |
-| 429 | 服務正在節流作業。 如需特定服務限制，請參閱 [IoT 中樞裝置布建服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)。 | 減少訊息頻率，在更多裝置上分割責任。 |
+| 429 | 服務正在節流作業。 如需特定服務限制，請參閱 [IoT 中樞裝置布建服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)。 | 減少訊息頻率，在更多裝置上分割責任。 |
 | 500 | 發生內部錯誤。 | 向[客戶支援提出票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)，以查看是否能進一步協助您。 |
 
 ## <a name="payload-shape-issues"></a>裝載圖形問題
@@ -209,7 +209,7 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 如果您選擇建立可正確建立資料模型的新範本，請從舊範本將裝置遷移至新的範本。 若要深入瞭解，請參閱 [在您的 Azure IoT Central 應用程式中管理裝置](howto-manage-devices.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您需要更多協助，您可以聯繫 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家。 或者，您也可以提出 [Azure 支援的票證](https://portal.azure.com/#create/Microsoft.Support)。
 

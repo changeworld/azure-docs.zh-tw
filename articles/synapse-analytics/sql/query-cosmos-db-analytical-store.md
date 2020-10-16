@@ -1,5 +1,5 @@
 ---
-title: '使用 Azure Synapse 連結中的 SQL 無伺服器查詢 Azure Cosmos DB 資料 (預覽) '
+title: '使用 Azure Synapse 連結中的無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料 (預覽) '
 description: 在本文中，您將瞭解如何在 Azure Synapse Link 中使用 SQL 隨選查詢 Azure Cosmos DB (preview) 。
 services: synapse analytics
 author: jovanpop-msft
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102352"
+ms.locfileid: "92122716"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 SQL 無伺服器查詢 Azure Cosmos DB 資料 (預覽) 
+# <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料 (預覽) 
 
-Synapse SQL 無伺服器 (先前的 SQL 隨選) 可讓您以近乎即時的方式，在已啟用 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 的 Azure Cosmos DB 容器中分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
+ (先前的 SQL 隨選) Synapse 無伺服器 SQL 集區，可讓您以近乎即時的方式分析 Azure Cosmos DB 容器中使用 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 啟用的資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
 
-若要查詢 Azure Cosmos DB，可透過[OPENROWSET](develop-openrowset.md)函式（包括大部分的[SQL 函數和運算子](overview-features.md)）支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)介面區。 您也可以儲存查詢的結果，此查詢會使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)，從 Azure Cosmos DB 中讀取資料，以及 Azure Blob 儲存體中的資料和 Azure Data Lake Storage。 您目前無法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)將 SQL 無伺服器查詢結果儲存至 Azure Cosmos DB。
+若要查詢 Azure Cosmos DB，可透過[OPENROWSET](develop-openrowset.md)函式（包括大部分的[SQL 函數和運算子](overview-features.md)）支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)介面區。 您也可以儲存查詢的結果，此查詢會使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)，從 Azure Cosmos DB 中讀取資料，以及 Azure Blob 儲存體中的資料和 Azure Data Lake Storage。 您目前無法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)將無伺服器 SQL 集區查詢結果儲存至 Azure Cosmos DB。
 
-在本文中，您將瞭解如何使用 SQL 無伺服器來撰寫查詢，該查詢將會從已啟用 Synapse 連結的 Azure Cosmos DB 容器中查詢資料。 然後，您可以在 [本](./tutorial-data-analyst.md) 教學課程中深入瞭解如何透過 Azure Cosmos DB 容器建立 SQL 無伺服器，並將其連接到 Power BI 模型。 
+在本文中，您將瞭解如何使用無伺服器 SQL 集區來撰寫查詢，該查詢將會從已啟用 Synapse 連結的 Azure Cosmos DB 容器中查詢資料。 然後，您可以深入瞭解如何在 Azure Cosmos DB 容器上建立無伺服器的 SQL 集區，並在 [本](./tutorial-data-analyst.md) 教學課程中將它們連接到 Power BI 模型。 
 
 ## <a name="overview"></a>概觀
 
-為了支援查詢及分析 Azure Cosmos DB 分析存放區中的資料，SQL 無伺服器會使用下列 `OPENROWSET` 語法：
+若要支援查詢及分析 Azure Cosmos DB 分析存放區中的資料，無伺服器 SQL 集區會使用下列 `OPENROWSET` 語法：
 
 ```sql
 OPENROWSET( 
@@ -49,7 +49,7 @@ Azure Cosmos DB 連接字串會指定 Azure Cosmos DB 帳戶名稱、資料庫�
 在語法中，指定了不含引號的 Azure Cosmos DB 容器名稱 `OPENROWSET` 。 如果容器名稱具有任何特殊字元 (例如，虛線 '-' ) ，則應該將名稱包裝在 `[]` 語法中 (方括弧) 內 `OPENROWSET` 。
 
 > [!NOTE]
-> SQL 無伺服器不支援查詢 Azure Cosmos DB 交易式存放區。
+> 無伺服器 SQL 集區不支援查詢 Azure Cosmos DB 交易式存放區。
 
 ## <a name="sample-data-set"></a>範例資料集
 
@@ -57,14 +57,14 @@ Azure Cosmos DB 連接字串會指定 Azure Cosmos DB 帳戶名稱、資料庫�
 
 您可以查看這些頁面上的授權和資料結構，以及下載 [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) 和 [Cord19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) 資料集的範例資料。
 
-若要遵循本文展示如何使用 SQL 無伺服器查詢 Cosmos DB 資料，請確定您已建立下列資源：
+若要遵循本文展示如何使用無伺服器 SQL 集區來查詢 Cosmos DB 資料，請確定您已建立下列資源：
 * 已[啟用 Synapse 連結](../../cosmos-db/configure-synapse-link.md)的 Azure Cosmos DB 資料庫帳戶
 * 名為的 Azure Cosmos DB 資料庫 `covid`
 * 有兩個名為 `EcdcCases` 和且已 `Cord19` 載入上述範例資料集的 Azure Cosmos DB 容器。
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>使用自動架構推斷探索 Azure Cosmos DB 資料
 
-若要在 Azure Cosmos DB 中探索資料，最簡單的方式就是利用自動架構推斷功能。 藉由省略 `WITH` 語句中的子句 `OPENROWSET` ，您可以指示 SQL 無伺服器自動偵測 (推斷) Azure Cosmos DB 容器分析存放區的架構。
+若要在 Azure Cosmos DB 中探索資料，最簡單的方式就是利用自動架構推斷功能。 藉由省略 `WITH` 語句中的子句 `OPENROWSET` ，您可以指示無伺服器 SQL 集區自動偵測 (推斷) Azure Cosmos DB 容器分析存放區的架構。
 
 ```sql
 SELECT TOP 10 *
@@ -73,7 +73,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-在上述範例中，我們會指示 SQL 無伺服器連接到 `covid` `MyCosmosDbAccount` 使用 Azure Cosmos DB (金鑰驗證的 Azure Cosmos DB 帳戶中的資料庫) 。 接著，我們會 `EcdcCases` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
+在上述範例中，我們會指示無伺服器 SQL 集區，以 `covid` 在 `MyCosmosDbAccount` 上述範例中使用 Azure Cosmos DB 金鑰 (虛設的 Azure Cosmos DB 帳戶連接到資料庫) 。 接著，我們會 `EcdcCases` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
 
 如果您需要流覽相同 Azure Cosmos DB 資料庫中其他容器的資料，您可以使用相同的連接字串和參考所需的容器做為第三個參數：
 
@@ -120,7 +120,7 @@ FROM OPENROWSET(
 
 ## <a name="querying-nested-objects-and-arrays"></a>查詢嵌套的物件和陣列
 
-Azure Cosmos DB 可讓您將更複雜的資料模型組合成嵌套物件或陣列，以表示更複雜的資料模型。 Azure Cosmos DB 的 [Synapse] 連結的 [自動同步功能] 會管理現成的分析存放區中的架構標記法，包括處理可從 SQL 無伺服器進行豐富查詢的嵌套資料類型。
+Azure Cosmos DB 可讓您將更複雜的資料模型組合成嵌套物件或陣列，以表示更複雜的資料模型。 Azure Cosmos DB 的 [Synapse] 連結的 [自動同步功能] 會管理現成的分析存放區中的架構標記法，包括處理可從無伺服器 SQL 集區進行豐富查詢的嵌套資料類型。
 
 例如， [電源線-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 資料集具有遵循下列結構的 JSON 檔：
 
@@ -172,7 +172,7 @@ FROM
     ) AS docs;
 ```
 
-深入瞭解如何在[SQL 無伺服器](query-parquet-nested-types.md)中分析 Synapse 連結和嵌套結構中的[複雜資料類型](../how-to-analyze-complex-schema.md)。
+深入瞭解如何在[無伺服器 SQL 集](query-parquet-nested-types.md)區中分析 Synapse 連結和嵌套結構中的[複雜資料類型](../how-to-analyze-complex-schema.md)。
 
 > [!IMPORTANT]
 > 如果您在文字中看到非預期的字元（例如，而不是）， `MÃƒÂ©lade` `Mélade` 則您的資料庫定序不會設定為 [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 定序。 
@@ -181,7 +181,7 @@ FROM
 
 ## <a name="flattening-nested-arrays"></a>簡維的嵌套陣列
 
-Azure Cosmos DB 的資料可能會有嵌套的子陣列，例如來自 [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 資料集的作者陣列：
+Azure Cosmos DB 的資料可能會有像是來自 [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 資料集之作者陣列的嵌套 subarrays：
 
 ```json
 {
@@ -203,7 +203,7 @@ Azure Cosmos DB 的資料可能會有嵌套的子陣列，例如來自 [Cord19](
 }
 ```
 
-在某些情況下，您可能需要「聯結」最上層專案的屬性， (中繼資料) ，以及陣列 (作者) 的所有元素。 SQL 無伺服器可讓您在 `OPENJSON` 嵌套的陣列上套用函式來壓平合併的結構：
+在某些情況下，您可能需要「聯結」最上層專案的屬性， (中繼資料) ，以及陣列 (作者) 的所有元素。 無伺服器 SQL 集區可讓您在嵌套的陣列上套用函式來壓平合併的結構 `OPENJSON` ：
 
 ```sql
 SELECT
@@ -238,7 +238,7 @@ Epidemi 的補充資訊 .。。 | `[{"first":"Nicolas","last":"4#","suffix":"","
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB 至 SQL 類型對應
 
-請務必先注意，雖然 Azure Cosmos DB 的交易式存放區與架構無關，但架構化分析存放區以優化分析查詢效能。 利用 Synapse 連結的自動同步功能，Azure Cosmos DB 管理現成的分析存放區中的架構標記法，包括處理嵌套的資料類型。 由於 SQL 無伺服器會查詢分析存放區，因此請務必瞭解如何將 Azure Cosmos DB 輸入資料類型對應到 SQL 資料類型。
+請務必先注意，雖然 Azure Cosmos DB 的交易式存放區與架構無關，但架構化分析存放區以優化分析查詢效能。 利用 Synapse 連結的自動同步功能，Azure Cosmos DB 管理現成的分析存放區中的架構標記法，包括處理嵌套的資料類型。 由於無伺服器 SQL 集區會查詢分析存放區，因此請務必瞭解如何將 Azure Cosmos DB 輸入資料類型對應到 SQL 資料類型。
 
 SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、null、嵌套物件或陣列的 JSON 屬性類型。 如果您在中使用子句，則需要選擇符合這些 JSON 類型的 SQL 類型 `WITH` `OPENROWSET` 。 請參閱下列 SQL 資料行類型，以用於 Azure Cosmos DB 中的不同屬性類型。
 
@@ -258,9 +258,9 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 ## <a name="known-issues"></a>已知問題
 
 - 在**MUST**函式 `OPENROWSET` (（例如) ）之後，必須指定別名 `OPENROWSET (...) AS function_alias` 。 省略別名可能會導致連線問題，而且 Synapse 無伺服器 SQL 端點可能暫時無法使用。 此問題將在2020年11月解決。
-- Synapse 無伺服器 SQL 目前不支援 [Azure Cosmos DB 的完整精確度架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)。 只使用 Synapse 無伺服器 SQL 來存取 Cosmos DB 定義完善的架構。
+- 無伺服器 SQL 集區目前不支援 [Azure Cosmos DB 的完整精確度架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)。 請使用無伺服器 SQL 集區，以存取 Cosmos DB 定義完善的架構。
 
-下表列出可能的錯誤和疑難排解動作清單：
+下表列出可能的錯誤和疑難排解動作：
 
 | 錯誤 | 根本原因 |
 | --- | --- |

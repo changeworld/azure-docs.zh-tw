@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 95c9b6dee402bc0c2dd2cab8ef3200cfd9213d61
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042876"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126819"
 ---
 # <a name="device-model-repository"></a>裝置模型存放庫
 
@@ -30,7 +30,7 @@ Microsoft 裝載具有下列特性的公用 DMR：
 
 ## <a name="custom-device-model-repository"></a>自訂裝置模型存放庫
 
-您可以在任何儲存媒體（例如本機檔案系統或自訂 HTTP 網頁伺服器）中使用相同的 DMR 模式，以建立自訂 DMR。 您可以藉由變更用來存取 DMR 的基底 URL，從自訂 DMR 中取出模型，就像從公用 DRM 中的方式一樣。
+您可以在任何儲存媒體（例如本機檔案系統或自訂 HTTP 網頁伺服器）中使用相同的 DMR 模式，以建立自訂 DMR。 您可以藉由變更用來存取 DMR 的基底 URL，從自訂 DMR 中取出模型，方式就像從公用 DMR 中取得。
 
 > [!NOTE]
 > 用來驗證公用 DMR 中之模型的工具可以重複使用於自訂存放庫中。
@@ -127,6 +127,6 @@ Microsoft 將會在三個工作天內回應具有所有檢查的 PR。
 
 您可以執行 [DTDL 驗證範例](https://github.com/Azure-Samples/DTDL-Validator) ，在本機驗證您的模型。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 建議的下一個步驟是複習 [IoT 隨插即用架構](concepts-architecture.md)。

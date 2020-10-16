@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337138"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126168"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT 中心架構
 
@@ -104,7 +104,7 @@ Azure IoT 中心使用 Azure IoT 中樞作為裝置連線的雲端閘道。 IoT 
 - 裝置管理。
 - 安全的裝置連線能力。
 
-若要深入了解 IoT 中樞，請參閱 [Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)。
+若要深入了解 IoT 中樞，請參閱 [Azure IoT 中樞](../../iot-hub/index.yml)。
 
 若要深入了解 Azure IoT 中心的裝置連線能力，請參閱[裝置連線能力](concepts-get-connected.md)。
 
@@ -170,6 +170,6 @@ UI Shell 是現代化、回應式、HTML5 瀏覽器型應用程式。
 
 操作員可以建立個人化的應用程式儀表板。 您可以具有多個顯示不同資料的儀表板，並在它們之間進行切換。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 既然您已瞭解 Azure IoT Central 的架構，建議的下一個步驟是瞭解 Azure IoT Central 中的 [裝置連線能力](concepts-get-connected.md) 。

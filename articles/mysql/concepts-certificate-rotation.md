@@ -6,16 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 437fe4636fd5b93656758c9fa55f2b18d64a4b6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d36fe791e34544a4d6132a49fc5ec3f2aa334654
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540688"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127279"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫的根 CA 變更變更
 
-適用於 MySQL 的 Azure 資料庫將會變更以 SSL 啟用之用戶端應用程式/驅動程式的根憑證，用來 [連接到資料庫伺服器](concepts-connectivity-architecture.md)。 目前可用的根憑證已設定為在2020年10月26日到期， (10/26/2020) 作為標準維護和安全性最佳作法的一部分。 本文提供更多有關即將進行的變更、將受影響的資源，以及確保您的應用程式維持資料庫伺服器連線所需的步驟等詳細資料。
+適用於 MySQL 的 Azure 資料庫將會變更以 SSL 啟用之用戶端應用程式/驅動程式的根憑證，用來 [連接到資料庫伺服器](concepts-connectivity-architecture.md)。 目前可用的根憑證已設定為在2021年2月15日到期， (02/15/2021) 作為標準維護和安全性最佳作法的一部分。 本文提供更多有關即將進行的變更、將受影響的資源，以及確保您的應用程式維持資料庫伺服器連線所需的步驟等詳細資料。
+
+>[!NOTE]
+> 根據客戶的意見反應，我們已從2020年10月15日到2021年10月15日之前，為現有的巴爾的摩根 CA 延伸根憑證取代。 我們希望此延伸模組可提供足夠的前置時間，讓使用者在受到影響時，執行用戶端變更。
 
 ## <a name="what-update-is-going-to-happen"></a>即將發生什麼更新？
 
@@ -23,12 +26,12 @@ ms.locfileid: "91540688"
 
 根據產業的合規性需求，CA 廠商會開始撤銷不符合規範之 Ca 的 CA 憑證，要求伺服器使用符合規範的 Ca 所發行的憑證，並由這些符合規範的 Ca 的 CA 憑證簽署。 由於適用於 MySQL 的 Azure 資料庫目前會使用其中一個不符合規範的憑證（用戶端應用程式會使用這些憑證來驗證其 SSL 連線），因此我們需要確保採取適當的動作，如下所述 () 將 MySQL 伺服器的潛在影響降到最低。
 
-新憑證將于2020年10月26日 (10/26/2020) 開始使用。從 MySQL 用戶端連線時，如果您使用 CA 驗證或伺服器憑證的完整驗證 (sslmode = verify-CA 或 sslmode = verify-full) ，您必須在2020年10月26日 (10/26/2020) 之前更新您的應用程式設定。
+新憑證將在2021年2月15日 (02/15/2021) 開始使用。從 MySQL 用戶端連線時，如果您使用 CA 驗證或伺服器憑證的完整驗證 (sslmode = verify-CA 或 sslmode = verify-full) ，您必須在2021年2月15日 (03/15/2021) 之前更新您的應用程式設定。
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>如何? 知道我的資料庫是否會受到影響？
 
 使用 SSL/TLS 並確認根憑證的所有應用程式都需要更新根憑證。 您可以藉由檢查您的連接字串來識別您的連接是否驗證根憑證。
--   如果您的連接字串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，則需要更新憑證。
+-   如果您的連接字串包含 `sslmode=verify-ca` 或 `sslmode=verify-identity` ，則需要更新憑證。
 -   如果您的連接字串包含 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，就不需要更新憑證。 
 -  如果使用 JAVA 連接器，而您的連接字串包含 useSSL = false 或 requireSSL = false，您就不需要更新憑證。
 -   如果您的連接字串未指定 sslmode，您就不需要更新憑證。
@@ -84,6 +87,9 @@ ms.locfileid: "91540688"
 *   不正確憑證/撤銷憑證
 *   連線逾時
 
+> [!NOTE]
+> 在進行 cert 變更之前，請勿捨棄或修改 **巴爾的摩 certificate** 。 變更完成之後，我們會傳送通訊，在這之後，就可以安全地捨棄巴爾的摩憑證。 
+
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 ### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. 如果我未使用 SSL/TLS，是否仍需要更新根 CA？
@@ -92,8 +98,8 @@ ms.locfileid: "91540688"
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. 如果我使用 SSL/TLS，是否需要重新開機我的資料庫伺服器來更新根 CA？
 否，您不需要重新開機資料庫伺服器，就能開始使用新的憑證。 這個根憑證是用戶端的變更，而連入的用戶端連線必須使用新的憑證，以確保它們可以連接到資料庫伺服器。
 
-### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. 如果我未在2020年10月26日之前更新根憑證， (10/26/2020) 會發生什麼事？
-如果您未在2020年10月26日之前更新根憑證，則透過 SSL/TLS 連線並驗證根憑證的應用程式將無法與 MySQL 資料庫伺服器通訊，而且應用程式將會遇到 MySQL 資料庫伺服器的連線問題。
+### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-february-15-2021-02152021"></a>3. 如果我未在2021年2月15日之前更新根憑證， (02/15/2021) 會發生什麼事？
+如果您在) 02/15/2021 (2021 年2月15日之前未更新根憑證，則透過 SSL/TLS 連接的應用程式以及根憑證的驗證，將無法與 MySQL 資料庫伺服器通訊，而且應用程式將會遇到 MySQL 資料庫伺服器的連線問題。
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. 使用 App Service 搭配適用於 MySQL 的 Azure 資料庫會有什麼影響？
 針對 Azure 應用程式服務，連接到適用於 MySQL 的 Azure 資料庫，我們可以有兩個可能的案例，而這取決於您在應用程式中使用 SSL 的方式。
@@ -111,11 +117,11 @@ ms.locfileid: "91540688"
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
 否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. 如果我無法在2021年2月15日之前，于年2月15日之前變更排程的停機時間， (02/15/2021) ？
 由於用來連接到伺服器的用戶端必須更新憑證資訊，如 [此處](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修正一節所述，在此情況下，伺服器不需要停機。
 
-### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. 如果我在2020年10月26日之後建立新的伺服器，將會受到影響嗎？
-針對在2020年10月26日之後建立的伺服器 (10/26/2020) ，您可以使用新發行的憑證，讓您的應用程式使用 SSL 進行連接。
+### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. 如果我在2021年2月15日之後建立新的伺服器 (02/15/2021) 會受到影響嗎？
+針對在2021年2月15日之後建立的伺服器 (02/15/2021) ，您可以使用新發行的憑證，讓您的應用程式使用 SSL 進行連接。
 
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft 更新其憑證的頻率，或到期原則是什麼？
 適用於 MySQL 的 Azure 資料庫所使用的憑證是由受信任的憑證授權單位單位 (CA) 提供。 因此，這些憑證在適用於 MySQL 的 Azure 資料庫上的支援系結至 CA 支援這些憑證。 不過，在這種情況下，這些預先定義的憑證可能會有未預期的錯誤，這些都必須儘早修正。

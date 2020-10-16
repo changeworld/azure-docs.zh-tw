@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 6b717fd15b25ae4abd2af3520dba2e72f8f9f3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556249"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122597"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>將檔案從您的裝置上傳至雲端
 
@@ -38,7 +38,7 @@ IoT Central 可讓您將媒體和其他檔案從已連線的裝置上傳至雲�
 
 1. 如有必要，請調整上傳時間的上傳時間，以設定上傳要求的有效時間長度。 有效的值為1到24小時。
 
-1. 選取 [儲存]****。 當狀態顯示為 **已設定**時，您就可以從裝置上傳檔案。
+1. 選取 [儲存]。 當狀態顯示為 **已設定**時，您就可以從裝置上傳檔案。
 
 :::image type="content" source="media/howto-configure-file-uploads/file-upload-configuration.png" alt-text="在應用程式中設定檔案上傳":::
 
@@ -50,13 +50,13 @@ IoT Central 可讓您將媒體和其他檔案從已連線的裝置上傳至雲�
 
 1. 選取 **裝置檔案上傳**。
 
-1. 選取 [刪除]  。
+1. 選取 [刪除]。
 
 ## <a name="upload-a-file-from-a-device"></a>從裝置上傳檔案
 
-IoT Central 使用 IoT 中樞的檔案上傳功能，讓裝置可上傳檔案。 如需說明如何從裝置上傳檔案的範例程式碼，請參閱 [IoT Central 檔案上傳裝置範例](https://docs.microsoft.com/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)。
+IoT Central 使用 IoT 中樞的檔案上傳功能，讓裝置可上傳檔案。 如需說明如何從裝置上傳檔案的範例程式碼，請參閱 [IoT Central 檔案上傳裝置範例](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何在 IoT Central 中設定和執行裝置檔案上傳，建議的下一個步驟是深入瞭解裝置檔案上傳：
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449746"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127519"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
@@ -206,7 +206,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
 根據預設，您的 web UI 使用者在 SMB 共用上有備份操作員許可權。 如果您不想要這樣做，請使用 **Enable Back 操作員許可權** 來停用或啟用許可權。
 
-如需詳細資訊，請參閱 [Active Directory 安全性群組](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)中的備份操作員。
+如需詳細資訊，請參閱 [Active Directory 安全性群組](/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)中的備份操作員。
 
 若要在您的 Azure 裝置中啟用備份操作員許可權：
 
@@ -265,6 +265,6 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 4. 在本機 Web UI 中，移至 [關機或重新啟動]****。
 5. 選取 [重新啟動]****。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何透過 [Azure 入口網站管理資料箱及 Data Box Heavy](data-box-portal-admin.md)。

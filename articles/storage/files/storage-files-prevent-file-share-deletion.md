@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50dbca7e32548380c6dbf338260b98ce59cda715
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527807"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122410"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>防止意外刪除 Azure 檔案共用
 
@@ -37,7 +37,7 @@ Azure 檔案共用的虛刪除 (預覽版) 適用于所有儲存層、所有的�
 
 ### <a name="enabling-or-disabling-soft-delete"></a>啟用或停用虛刪除
 
-檔案共用的虛刪除是在儲存體帳戶層級啟用的，因此，虛刪除設定會套用至儲存體帳戶內的所有檔案共用。 您可以隨時啟用或停用虛刪除。 當您建立新的儲存體帳戶時，預設會停用檔案共用的虛刪除。 針對現有的儲存體帳戶，虛刪除也預設為停用。 如果您已針對 Azure 檔案共用設定 [azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md) ，則會自動在該共用的儲存體帳戶上啟用 azure 檔案共用的虛刪除。
+檔案共用的虛刪除是在儲存體帳戶層級啟用的，因此，虛刪除設定會套用至儲存體帳戶內的所有檔案共用。 您可以隨時啟用或停用虛刪除。 當您建立新的儲存體帳戶時，依預設會停用檔案共用的虛刪除功能，而此功能處於公開預覽狀態。 當虛刪除功能正式推出後，預設會啟用。 針對現有的儲存體帳戶，虛刪除預設會保持停用。 如果您已針對 Azure 檔案共用設定 [azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md) ，則會自動在該共用的儲存體帳戶上啟用 azure 檔案共用的虛刪除。
 
 如果您啟用檔案共用的虛刪除，請刪除一些檔案共用，然後停用虛刪除，如果已在該期間內儲存共用，您仍然可以存取及復原這些檔案共用。 當您啟用虛刪除時，也需要設定保留期限。
 

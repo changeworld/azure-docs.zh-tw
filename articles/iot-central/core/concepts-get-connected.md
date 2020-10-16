@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714260"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126836"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -185,7 +185,7 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>個別註冊型裝置連線能力
 
-如果客戶連接的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用從實體或虛擬的可信賴平臺模組 (的 x.509 分葉憑證或 SAS 權杖，) 作為證明機制。 個別註冊中的裝置識別碼 (也稱為註冊識別碼) ，其為英數位元、小寫字母，而且可能包含連字號。 如需詳細資訊，請參閱 [DPS 個別註冊](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
+如果客戶連接的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用從實體或虛擬的可信賴平臺模組 (的 x.509 分葉憑證或 SAS 權杖，) 作為證明機制。 個別註冊中的裝置識別碼 (也稱為註冊識別碼) ，其為英數位元、小寫字母，而且可能包含連字號。 如需詳細資訊，請參閱 [DPS 個別註冊](../../iot-dps/concepts-service.md#individual-enrollment)。
 
 > [!NOTE]
 > 當您建立裝置的個別註冊時，它會優先于 IoT Central 應用程式中的預設群組註冊選項。
@@ -204,7 +204,7 @@ IoT Central 支援個別註冊的下列證明機制：
     > [!TIP]
     > 若要進行測試，您可以使用適用于 [Node.js的 Azure IoT 裝置布建裝置 SDK 工具 ](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) 來產生自我簽署憑證： `node create_test_cert.js device "mytestdevice"`
 
-- **信賴平臺模組 (TPM) 證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全模組。 使用 TPM 是連接裝置最安全的方式之一。 本文假設您使用的是獨立、固件或整合式 TPM。 軟體模擬 Tpm 適用于原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同的安全性層級。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [ **裝置** 連線] 頁面，選取 [ **個別註冊** ] 作為連線方法，然後選取 [ **TPM** ] 作為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
+- **信賴平臺模組 (TPM) 證明：**[TPM](../../iot-dps/concepts-tpm-attestation.md)是一種硬體安全模組。 使用 TPM 是連接裝置最安全的方式之一。 本文假設您使用的是獨立、固件或整合式 TPM。 軟體模擬 Tpm 適用于原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同的安全性層級。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [ **裝置** 連線] 頁面，選取 [ **個別註冊** ] 作為連線方法，然後選取 [ **TPM** ] 作為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
 
 ## <a name="automatically-associate-with-a-device-template"></a>自動與裝置範本建立關聯
 

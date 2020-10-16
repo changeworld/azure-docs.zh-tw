@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575566"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122461"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
 
@@ -164,7 +164,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 2. 選取 [ **+ 容器** ] 以建立容器。
     ![[容器] 區段的螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. 在從 Azure 入口網站右側彈出的 [ **新增容器** ] 索引標籤中，新增容器的名稱。 名稱必須是小寫，而且您可以包含數位和虛線 '-'。 然後從下拉式清單方塊中選取 [ **公用存取層級** ]。 我們建議您選擇 **私用 (非匿名存取) ** ，以防止其他人存取您的資料。 如需有關容器存取層級的詳細資訊，請參閱 [容器存取權限](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
+3. 在從 Azure 入口網站右側彈出的 [ **新增容器** ] 索引標籤中，新增容器的名稱。 名稱必須是小寫，而且您可以包含數位和虛線 '-'。 然後從下拉式清單方塊中選取 [ **公用存取層級** ]。 我們建議您選擇 **私用 (非匿名存取) ** ，以防止其他人存取您的資料。 如需有關容器存取層級的詳細資訊，請參閱 [容器存取權限](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)。
 
    ![[新增容器] 索引標籤的螢幕擷取畫面，其中顯示 [私人 (沒有選取 [匿名存取]) 選項。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 

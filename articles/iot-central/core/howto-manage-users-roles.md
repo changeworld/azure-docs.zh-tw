@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80365507"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122972"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>在 IoT Central 應用程式中管理使用者和角色
 
@@ -25,7 +25,7 @@ ms.locfileid: "80365507"
 
 每個使用者都必須具有使用者帳戶，才能登入並存取 Azure IoT Central 應用程式。 Azure IoT Central 支援 Microsoft 帳戶和 Azure Active Directory 帳戶。 Azure IoT Central 目前不支援 Azure Active Directory 群組。
 
-如需詳細資訊，請參閱 [Microsoft 帳戶說明](https://support.microsoft.com/products/microsoft-account?category=manage-account)和[快速入門：將使用者新增至 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)。
+如需詳細資訊，請參閱 [Microsoft 帳戶說明](https://support.microsoft.com/products/microsoft-account?category=manage-account)和[快速入門：將使用者新增至 Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md)。
 
 1. 若要將使用者新增至 IoT Central 應用程式，請前往 [管理]**** 區段中的 [使用者]**** 頁面。
     
@@ -261,6 +261,6 @@ ms.locfileid: "80365507"
 | 刪除 | 檢視   |
 | 完全控制 | View、Create、Delete |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何在 Azure IoT Central 應用程式中管理使用者和角色，建議的下一個步驟是瞭解如何 [管理您的帳單](howto-view-bill.md)。

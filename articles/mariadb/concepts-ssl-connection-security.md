@@ -6,18 +6,21 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: b23783080e976f70ba8c5e02f67dcee36bbc9c34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eb4ad48554b8ca2ce6af9f89652fad685998a2a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444955"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126049"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 SSL/TLS 連線能力
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將資料庫伺服器連接至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
+>[!NOTE]
+> 根據客戶的意見反應，我們已在2021年2月15日之前，為現有的巴爾的摩根 CA 延伸根憑證取代， (02/15/2021) 。
+
 > [!IMPORTANT] 
-> SSL 根憑證設定為從2020年10月26日起算過期 (10/26/2020) 。 請更新您的應用程式以使用 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要深入瞭解，請參閱 [規劃的憑證更新](concepts-certificate-rotation.md)
+> 自2021年2月15日起，SSL 根憑證已設定為過期 (02/15/2021) 。 請更新您的應用程式以使用 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要深入瞭解，請參閱 [規劃的憑證更新](concepts-certificate-rotation.md)
 
 ## <a name="default-settings"></a>預設設定
 根據預設，資料庫服務應該會設定為在連線到 MariaDB 時需要 SSL 連接。  建議盡可能地避免停用 SSL 選項。
@@ -68,7 +71,7 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 *   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 *   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 深入了解[伺服器防火牆規則](concepts-firewall-rules.md)
 - 瞭解如何 [設定 SSL](howto-configure-ssl.md)
 - 瞭解如何 [設定 TLS](howto-tls-configurations.md)

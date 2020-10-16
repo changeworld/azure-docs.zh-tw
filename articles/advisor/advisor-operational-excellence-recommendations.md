@@ -3,12 +3,12 @@ title: 使用 Advisor 改進 operational excellency
 description: 使用 Azure Advisor 針對您的 Azure 訂用帳戶將您的卓越營運優化及成熟。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077383"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122614"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure Advisor 達成卓越的營運能力
 
@@ -54,6 +54,12 @@ Azure 原則是 Azure 中的一項服務，可讓您用來建立、指派和管�
 
 **啟用 *從資源群組繼承標記*。** 此原則會在建立或更新任何資源時，從父代資源群組中新增或取代指定的標記和值。 您可以藉由觸發補救工作來補救現有的資源。
 
+Advisor 建議一些個別的 Azure 原則，藉由採用最佳作法，協助客戶達成卓越的營運。 如果客戶決定指派建議的原則，則會隱藏建議。 如果客戶決定稍後移除原則，則 Advisor 將繼續隱藏建議，因為我們會將它的移除動作解讀為下列的強大信號：
+
+1.  客戶已移除原則，因為儘管建議程式的建議，它並不適用于其特定使用案例。 
+2.  客戶在指派和移除該原則之後，就會察覺並熟悉該原則，而且在稍後與使用案例相關的情況下，他們可以視需要再次指派或移除該原則。 如果客戶以最感興趣的方式再次指派相同的原則，他們就可以在 Azure 原則中這麼做，而不需要在 Advisor 中提出建議。 請注意，這項邏輯特別適用于卓越營運類別中的原則建議。 這些規則不適用於安全性建議。  
+
+
 ## <a name="no-validation-environment-enabled"></a>未啟用任何驗證環境
 Azure Advisor 判斷您未在目前的訂用帳戶中啟用驗證環境。 建立您的主機集區時，您已在 [內容] 索引標籤 \" 中選取 \" [否進行 \" 驗證環境 \" ]。擁有至少一個已啟用驗證環境的主機集區，可透過早期偵測潛在問題的 Windows 虛擬桌面服務部署，確保商務持續性。 [深入了解](../virtual-desktop/create-validation-host-pool.md)
 
@@ -64,7 +70,7 @@ Azure Advisor 偵測到太多主機集區已啟用驗證環境。 為了讓驗�
 流量分析是一個雲端式解決方案，可顯示 Azure 中的使用者和應用程式活動。 流量分析可分析網路監看員網路安全性群組 (NSG) 流量記錄，讓您深入了解流量。 透過流量分析，您可以檢視 Azure 和非 Azure 部署間的熱門 IP、調查環境中的開放連接埠、通訊協定和惡意流程，並將您的網路部署最佳化以提升效能。 您可以用 10 分鐘和 60 分鐘的處理間隔來處理流量記錄，以更快速地分析流量。 為您的 Azure 資源啟用流量分析是很好的作法。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解 Advisor 建議，請參閱：
 * [Advisor 簡介](advisor-overview.md)

@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660121"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123040"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 以自訂分析擴充 Azure IoT Central
 
-本操作指南會示範如何以解決方案開發人員的身分，使用自訂分析和視覺效果擴充您的 IoT Central 應用程式。 此範例會使用 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) 工作區來分析 IoT Central 遙測串流，以及產生視覺效果（例如 [盒狀繪圖](https://wikipedia.org/wiki/Box_plot)）。
+本操作指南會示範如何以解決方案開發人員的身分，使用自訂分析和視覺效果擴充您的 IoT Central 應用程式。 此範例會使用 [Azure Databricks](/azure/azure-databricks/) 工作區來分析 IoT Central 遙測串流，以及產生視覺效果（例如 [盒狀繪圖](https://wikipedia.org/wiki/Box_plot)）。
 
 本操作指南會示範如何將 IoT Central 延伸到超出 [內建分析工具](./howto-create-custom-analytics.md)的功能。
 
@@ -27,7 +27,7 @@ ms.locfileid: "84660121"
 * 使用 *連續資料匯出*從 IoT Central 應用程式串流遙測資料。
 * 建立 Azure Databricks 環境來分析和繪製裝置遙測。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此操作指南中的步驟，您必須具備有效的 Azure 訂用帳戶。
 
@@ -224,7 +224,7 @@ ms.locfileid: "84660121"
 
 您可以從應用程式內的 **管理** 頁面刪除 IoT Central 應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在此操作指南中，您已了解如何：
 

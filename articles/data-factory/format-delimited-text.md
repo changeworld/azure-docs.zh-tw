@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ac6540dfd86430aab518b145ed391d1d6283219e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c491a0b5e4c4fc517368c5947fa6181201a5b5fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276572"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127262"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory 中的分隔文字格式
 
@@ -34,8 +34,8 @@ ms.locfileid: "91276572"
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。  | 是      |
 | columnDelimiter  |  (s 的字元) 用來分隔檔案中的資料行。 <br>預設值為**逗號 `,` **。 當資料行分隔符號定義為空字串時（亦即沒有分隔符號），會將整行當作單一資料行來取得。<br>目前，只支援對應資料流程，而不支援將資料行分隔符號作為空白字串或多字元的複製活動。  | 否       |
 | rowDelimiter     | 單一字元或 "\r\n" 用來分隔檔案中的資料列。 <br>預設值是讀取時的下列任何值 **： ["\r\n"、"\r"、"\n"]** 和 **"\n" 或 "\r\n"** （依對應的資料流程和複製活動）。 <br>當資料列分隔符號設定為沒有分隔符號 (空白字串) 時，也必須將資料行分隔符號設為空字串)  (空白字串，這表示將整個內容視為單一值。<br>目前，僅支援對應資料流程，但不支援將資料列分隔符號作為空白字串。 | 否       |
-| quoteChar        | 如果資料行的值包含資料行分隔符號，則為其引號的單一字元。 <br>預設值為 **雙引號** `"` 。 <br>針對對應資料流程， `quoteChar` 不可以是空字串。 <br>若為複製活動，當 `quoteChar` 定義為空字串時，即表示沒有引號字元和資料行值未加上引號，而且 `escapeChar` 會用來將資料行分隔符號和本身換行。 | 否       |
-| escapeChar       | 要在加上引號的值內換用引號的單一字元。<br>預設值為**反斜線 `\` **。 <br>針對對應資料流程， `escapeChar` 不可以是空字串。 <br/>若為複製活動，當 `escapeChar` 定義為空字串時， `quoteChar` 也必須將設為空字串，在此情況下，請確定所有資料行值都不包含分隔符號。 | 否       |
+| quoteChar        | 如果資料行的值包含資料行分隔符號，則為其引號的單一字元。 <br>預設值為 **雙引號** `"` 。 <br>當 `quoteChar` 定義為空字串時，這表示沒有引號字元，而且資料行值未加上引號，而且 `escapeChar` 會用來將資料行分隔符號和本身換行。 | 否       |
+| escapeChar       | 要在加上引號的值內換用引號的單一字元。<br>預設值為**反斜線 `\` **。 <br>當 `escapeChar` 定義為空字串時， `quoteChar` 也必須將設為空字串，在此情況下，請確定所有資料行值都不包含分隔符號。 | 否       |
 | firstRowAsHeader | 指定是否將第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。<br>當第一個資料列做為標頭時，請注意 UI 資料預覽和查閱活動輸出會自動產生資料行名稱做為 Prop_ {n} (從 0) 開始，複製活動需要從來源到接收的 [明確對應](copy-activity-schema-and-type-mapping.md#explicit-mapping) ，並依 (序數從 1) 開始找出資料行，並從 1 Column_ 開始找出名稱為 ({n}) 的資料行。  | 否       |
 | nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。<br>注意：對應資料流程不支援 UTF-7 編碼。 | 否       |
@@ -152,10 +152,10 @@ ms.locfileid: "91276572"
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
-| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | 字串 | partitionRootPath |
+| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
 | 多行資料列 | 來源檔案是否包含跨多行的資料列。 多行值必須以引號括住。 | 否 `true` 或 `false` | multiLineRow |
-| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | 字串 | rowUrlColumn |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | String | rowUrlColumn |
 | 完成後 | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否 | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
@@ -202,7 +202,7 @@ CSVSource sink(allowSchemaDrift: true,
     skipDuplicateMapOutputs: true) ~> CSVSink
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [複製活動概觀](copy-activity-overview.md)
 - [對應資料流程](concepts-data-flow-overview.md)

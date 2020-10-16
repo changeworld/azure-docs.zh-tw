@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 6174d108fd80df9725ca5ef0fb9296dfffaf4a64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10de2a4a00b716656626082a24ecbd56d0fcc3a4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89301616"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127296"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立公用 IP 位址
 
@@ -106,7 +106,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
-使用[>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在**myResourceGroup**中建立名為**MYSTANDARDPUBLICIP**的基本靜態公用 IP 位址。  基本公用 Ip 沒有可用性區域的概念。
+使用[>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在**myResourceGroup**中建立名為**MYBASICPUBLICIP**的基本靜態公用 IP 位址。  基本公用 Ip 沒有可用性區域的概念。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -126,7 +126,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 如需上列個別變數的詳細資訊，請參閱 [管理公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 將[公用 IP 位址與虛擬機器](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)產生關聯
 - 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 深入了解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)。

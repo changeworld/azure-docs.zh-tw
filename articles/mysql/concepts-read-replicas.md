@@ -1,17 +1,17 @@
 ---
-title: 讀取複本 - 適用於 MySQL 的 Azure 資料庫。
+title: 讀取複本-適用於 MySQL 的 Azure 資料庫
 description: 了解「適用於 MySQL 的 Azure 資料庫」中的讀取複本：選擇區域、建立複本、連線到複本、監視複寫和停止複寫。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876544"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126649"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -24,7 +24,7 @@ ms.locfileid: "91876544"
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
+> Microsoft 支援多元和包容性的環境。 本文包含 _slave_ 單字的參考。 Microsoft [無偏差通訊的樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這個單字辨識為排他性的單字。 本文中會使用這個單字來保持一致性，因為這個單字是目前出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新以保持一致。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
@@ -38,7 +38,7 @@ ms.locfileid: "91876544"
 讀取複本功能會使用 MySQL 非同步複寫。 此功能不適用於同步複寫案例。 來源與複本之間會有可測量的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
 
 > [!IMPORTANT]
-> 適用於 MySQL 的 Azure 資料庫使用以資料 **列** 為基礎的二進位記錄。 如果您的資料表缺少主鍵，則會掃描資料表中的所有資料列是否有 DML 作業。 這會導致複寫延遲增加。 為了確保複本能夠跟上來源的變更，我們通常會建議您在來源伺服器中的資料表上新增主鍵，然後再建立複本伺服器，或重新建立複本伺服器（如果您已經有的話）。
+> 適用於 MySQL 的 Azure 資料庫會使用以**資料列**為基礎的二進位記錄。 如果您的資料表缺少主索引鍵，則會掃描資料表中的所有資料列是否有 DML 作業。 這會導致複寫延遲增加。 為了確保複本能夠跟上來源的變更，我們通常建議您在建立複本伺服器之前，先在來源伺服器的資料表上新增主索引鍵，或者如果已經有複本伺服器，則予以重新建立。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
 您可以在來源伺服器的不同區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。
@@ -50,7 +50,7 @@ ms.locfileid: "91876544"
 ### <a name="universal-replica-regions"></a>全球的複本區域
 您可以在下列任何區域中建立讀取複本，而不論來源伺服器的所在位置為何。 支援的全球複本區域包括：
 
-澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
+澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
 ### <a name="paired-regions"></a>配對的區域
 除了通用複本區域，您也可以在來源伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。

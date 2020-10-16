@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994841"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122198"
 ---
 # <a name="confidential-containers"></a>機密容器
 
@@ -67,7 +67,7 @@ SCONE 可將現有的大部分二進位檔轉換成在記憶體保護區內執�
 
 ### <a name="anjuna"></a>Anjuna
 
-[Anjuna](https://www.anjuna.io/) 提供 SGX 平臺軟體，可讓您在 AKS 上執行未修改的容器。 深入瞭解**即將推出**的功能和[使用者流程。](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)
+[Anjuna](https://www.anjuna.io/) 提供 SGX 平臺軟體，可讓您在 AKS 上執行未修改的容器。 若要深入瞭解這些功能，請參閱 [這裡](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)的範例應用程式。
 
 在[這裡](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)開始使用範例 Redis 快取和 Python 自訂應用程式
 

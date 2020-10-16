@@ -7,12 +7,12 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66f0846ab8fcfc316c4b40ad9e51b402a37e874d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001896"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122904"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>監視連線到 IoT Central 應用程式之裝置的整體健全狀況
 
@@ -46,7 +46,7 @@ ms.locfileid: "87001896"
 
 ## <a name="iot-central-metrics"></a>IoT Central 計量
 
-如需 IoT Central 目前可用計量的清單，請參閱 [支援的計量 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps)。
+如需 IoT Central 目前可用計量的清單，請參閱 [支援的計量 Azure 監視器](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps)。
 
 ### <a name="metrics-and-invoices"></a>計量和發票
 
@@ -58,6 +58,6 @@ ms.locfileid: "87001896"
 
 - 雖然計量可能會顯示裝置到雲端通訊的子集，裝置與雲端之間的所有通訊都 [會計為計費的訊息](https://azure.microsoft.com/pricing/details/iot-central/)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何使用應用程式範本，建議的下一個步驟是瞭解如何 [從 Azure 入口網站管理 IoT Central](howto-manage-iot-central-from-portal.md)

@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974419"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126732"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地
 
@@ -63,7 +63,7 @@ ms.locfileid: "90974419"
 
 如果您沒有要匯出的現有 Azure 儲存體帳戶，請遵循下列步驟：
 
-1. [在 Azure 入口網站中建立新儲存體帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 您可以深入瞭解如何建立新的 [Azure Blob 儲存體帳戶](https://aka.ms/blobdocscreatestorageaccount) 或 [Azure Data Lake Storage v2 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 資料匯出只能將資料寫入支援區塊 blob 的儲存體帳戶。 下列清單顯示已知的相容儲存體帳戶類型：
+1. [在 Azure 入口網站中建立新儲存體帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 您可以深入瞭解如何建立新的 [Azure Blob 儲存體帳戶](../../storage/blobs/storage-quickstart-blobs-portal.md) 或 [Azure Data Lake Storage v2 儲存體帳戶](../../storage/common/storage-account-create.md)。 資料匯出只能將資料寫入支援區塊 blob 的儲存體帳戶。 下列清單顯示已知的相容儲存體帳戶類型：
 
     |效能層級|帳戶類型|
     |-|-|
@@ -113,7 +113,7 @@ ms.locfileid: "90974419"
 
 7. 在 [ **要匯出的資料**] 底下，將 [類型] 設定為 [ **開啟**]，選擇要匯出的資料類型。
 
-8. 若要開啟資料匯出，請確定已**開啟****啟用**的切換。 選取 [儲存]****。
+8. 若要開啟資料匯出，請確定已**開啟****啟用**的切換。 選取 [儲存]。
 
 9. 幾分鐘後，您的資料就會出現在您選擇的目的地。
 
@@ -156,7 +156,7 @@ ms.locfileid: "90974419"
 
 此訊息不包含傳送裝置的裝置識別碼。
 
-若要從 Azure 串流分析查詢中的訊息資料取得裝置識別碼，請使用 [>getmetadatapropertyvalue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) 函數。 如需範例，請參閱 [使用串流分析、Azure Functions 和 SendGrid，利用自訂規則擴充 Azure IoT Central](./howto-create-custom-rules.md)中的查詢。
+若要從 Azure 串流分析查詢中的訊息資料取得裝置識別碼，請使用 [>getmetadatapropertyvalue](/stream-analytics-query/getmetadatapropertyvalue) 函數。 如需範例，請參閱 [使用串流分析、Azure Functions 和 SendGrid，利用自訂規則擴充 Azure IoT Central](./howto-create-custom-rules.md)中的查詢。
 
 若要取出 Azure Databricks 或 Apache Spark 工作區中的裝置識別碼，請使用 [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)。 如需範例，請參閱 [使用 Azure Databricks 使用自訂分析擴充 Azure IoT Central](./howto-create-custom-analytics.md)中的 Databricks 工作區。
 
@@ -557,7 +557,7 @@ ms.locfileid: "90974419"
 
 如果您在預覽應用程式中有現有的資料匯出，且已開啟 *裝置* 和 *裝置範本* 資料流程，請將您的匯出更新為 **2020 年6月30日**。 這項需求適用于匯出至 Azure Blob 儲存體、Azure 事件中樞和 Azure 服務匯流排。
 
-自2020年2月3日起，在啟用裝置和裝置範本的應用程式中，所有新的匯出都會有上述的資料格式。 在此日期之前建立的所有匯出都會維持舊的資料格式，直到2020年6月30日為止，屆時這些匯出會自動遷移至新的資料格式。 新的資料格式符合 IoT Central 公用 API 中的 [裝置](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、 [裝置屬性](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、 [裝置雲端屬性](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)和 [裝置範本](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) 物件。
+自2020年2月3日起，在啟用裝置和裝置範本的應用程式中，所有新的匯出都會有上述的資料格式。 在此日期之前建立的所有匯出都會維持舊的資料格式，直到2020年6月30日為止，屆時這些匯出會自動遷移至新的資料格式。 新的資料格式符合 IoT Central 公用 API 中的 [裝置](/rest/api/iotcentral/devices/get)、 [裝置屬性](/rest/api/iotcentral/devices/getproperties)、 [裝置雲端屬性](/rest/api/iotcentral/devices/getcloudproperties)和 [裝置範本](/rest/api/iotcentral/devicetemplates/get) 物件。
 
 針對 **裝置**，舊的資料格式與新的資料格式之間有顯著的差異，包括：
 - `@id` 移除裝置時， `deviceId` 會重新命名為 `id` 
@@ -750,7 +750,7 @@ ms.locfileid: "90974419"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何將資料匯出至 Azure 事件中樞、Azure 服務匯流排和 Azure Blob 儲存體，請繼續進行下一個步驟：
 
