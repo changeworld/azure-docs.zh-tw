@@ -3,12 +3,12 @@ title: '從小組存取 Azure 實驗室中的 VM (student view) '
 description: 瞭解如何從小組存取 Azure 實驗室中的 VM (student view) 。
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 346f4bcd75356b0466b1eea46e1da74aa2c63784
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c786a8b3fcee57cefb551a61087d4b49ee5e93c0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043440"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102403"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>從小組存取 Azure 實驗室中的 VM (student view) 
 
@@ -16,7 +16,7 @@ ms.locfileid: "92043440"
 
 ## <a name="view-labs"></a>View labs
 
-如果實驗室尚未發佈，或尚未在將其新增至小組之後觸發同步處理，則會向學生顯示類似的訊息。 若為「如果實驗室尚未發佈，或尚未在將其加入至小組之後觸發同步處理，則會向小組成員顯示類似的訊息。
+如果實驗室尚未發佈，或尚未在將其加入至小組之後觸發同步處理，則會向小組成員顯示類似的訊息。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure 實驗室服務實驗室":::

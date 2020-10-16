@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256751"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103147"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 身分識別平台的應用程式類型
 
@@ -46,7 +46,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 下流程圖示範 OAuth 2.0 授權碼授與 (，其中包含 PKCE 省略) 的詳細資料，其中應用程式會從 Microsoft 身分識別平臺端點接收程式碼 `authorize` ，並使用跨網站 web 要求贖回權杖和重新整理權杖。 重新整理權杖會每 24小時到期，而且應用程式必須要求另一個代碼。 除了存取權杖之外， `id_token` 表示用戶端應用程式登入使用者的通常也會透過相同的流程和/或個別的 OpenID Connect 要求（ (此處未顯示) ）要求。
 
-![SPA 應用程式的程式碼流程](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="此圖顯示單一頁面應用程式和安全性權杖服務端點之間的 OAuth 2 授權碼流程。" border="false":::
 
 若要查看此案例的執行狀況，請參閱[教學課程：使用授權碼流程來登入使用者，並從 JavaScript SPA 呼叫 Microsoft Graph API](tutorial-v2-javascript-auth-code.md)。
 

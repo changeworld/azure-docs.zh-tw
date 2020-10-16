@@ -3,12 +3,12 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761408"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102301"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "91761408"
 
 ### <a name="security-center"></a>資訊安全中心
 
-資訊安全中心會在入口網站中與您的函式應用程式整合。 其免費提供可能與設定相關之安全性弱點的快速評量。 在專用方案中執行的函式應用程式也可以使用資訊安全中心的即時安全性功能，但需支付額外費用。 若要深入了解，請參閱[保護您的 Azure App Service Web 應用程式和 API](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)。 
+資訊安全中心會在入口網站中與您的函式應用程式整合。 其免費提供可能與設定相關之安全性弱點的快速評量。 在專用方案中執行的函式應用程式也可以使用資訊安全中心的即時安全性功能，但需支付額外費用。 若要深入了解，請參閱[保護您的 Azure App Service Web 應用程式和 API](../security-center/defender-for-app-service-introduction.md)。 
 
 ### <a name="log-and-monitor"></a>記錄和監視
 

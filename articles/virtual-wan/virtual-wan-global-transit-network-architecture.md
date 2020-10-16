@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212709"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102318"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -43,7 +43,7 @@ Azure 虛擬 WAN 允許全域傳輸網路架構，方法是在 Vnet、分支網�
 
 **圖2：全域傳輸網路和虛擬 WAN**
 
-在 Azure 虛擬 WAN 架構中，會在 Azure 區域中布建虛擬 WAN 中樞，讓您可以選擇將分支、Vnet 和遠端使用者連線。 實體分支網站會透過高階 ExpressRoute 或站對站 Vpn 連線至中樞、Vnet 會透過 VNet 連線連線到中樞，而遠端使用者可以直接使用使用者 VPN (點對站 Vpn) 連線到中樞。 虛擬 WAN 也支援跨區域 VNet 連線，其中一個區域中的 VNet 可以連接到不同區域中的虛擬 WAN 中樞。
+在 Azure 虛擬 WAN 架構中，會在 Azure 區域中布建虛擬 WAN 中樞，讓您可以選擇將分支、Vnet 和遠端使用者連線。 實體分支網站會依高階、標準 ExpressRoute 或站對站 Vpn 連線至中樞、Vnet 會透過 VNet 連線連線到中樞，而遠端使用者可以使用使用者 VPN (點對站 Vpn) ，直接連線到中樞。 虛擬 WAN 也支援跨區域 VNet 連線，其中一個區域中的 VNet 可以連接到不同區域中的虛擬 WAN 中樞。
 
 您可以建立虛擬 WAN，方法是在具有最多輪輻 (分支、Vnet、使用者) ，然後將其他區域中的輪輻連接至中樞的區域中建立單一虛擬 WAN 中樞。 當企業使用量大多在具有一些遠端輪輻的區域中時，這是個不錯的選擇。  
   
@@ -87,7 +87,7 @@ Azure 虛擬 WAN 支援下列全域傳輸連接路徑。 括弧中的字母會�
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute 全球接觸和虛擬 WAN
 
-ExpressRoute 是將內部部署網路連線到 Microsoft 雲端的私用和具彈性的方式。 虛擬 WAN 支援 Express Route 線路連接。 使用 Express Route 將分支網站連接至虛擬 WAN 時，需要 1) Premium 線路 2) 電路位於全球觸達啟用的位置。
+ExpressRoute 是將內部部署網路連線到 Microsoft 雲端的私用和具彈性的方式。 虛擬 WAN 支援 Express Route 線路連接。 使用 Express Route 將分支網站連接至虛擬 WAN 時，需要 1) Premium 或標準電路 2) 電路位於全球觸達啟用的位置。
 
 ExpressRoute Global 觸及是適用于 ExpressRoute 的附加元件功能。 透過全球接觸，您可以將 ExpressRoute 線路連結在一起，以在內部部署網路之間建立私人網路。 使用 ExpressRoute 連線到 Azure 虛擬 WAN 的分支，需要 ExpressRoute 全球連線才能彼此通訊。
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707623"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101857"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的預設使用者權限是什麼？
 在 Azure Active Directory (Azure AD) 中，所有使用者都會獲得一組預設權限。 使用者的存取權包含使用者類型、其[角色指派](active-directory-users-assign-role-azure-portal.md)，以及個別物件的擁有權。 本文說明這些預設權限，並包含成員與來賓使用者預設值的比較。 只能在 Azure AD 中的使用者設定中變更預設使用者權限。
@@ -26,22 +26,22 @@ ms.locfileid: "90707623"
 ## <a name="member-and-guest-users"></a>成員和來賓使用者
 使用者所收到的預設權限集取決於使用者是租用戶的原生成員 (成員使用者)，還是來自另一個目錄的 B2B 共同作業來賓 (來賓使用者)。 如需新增來賓使用者的詳細資訊，請參閱[什麼是 Azure AD B2B 共同作業？](../external-identities/what-is-b2b.md)。
 * 成員使用者可以註冊應用程式、管理自己的設定檔相片和行動電話號碼、變更自己的密碼，以及邀請 B2B 來賓。 此外，使用者還可讀取所有目錄資訊 (但有一些例外狀況)。 
-* 來賓使用者具有受限的目錄權限。 他們可以管理自己的設定檔、變更自己的密碼，以及取得其他使用者、群組和應用程式的一些相關資訊，但他們無法讀取所有目錄資訊。 例如，來賓使用者無法列舉使用者、群組和其他目錄物件。 您可將來賓新增至系統管理員角色，將角色內含的完整讀取和寫入權限授予他們。 來賓也可以邀請其他來賓。
+* 來賓使用者具有受限的目錄權限。 他們可以管理自己的設定檔、變更自己的密碼，以及取得其他使用者、群組和應用程式的一些相關資訊，但他們無法讀取所有目錄資訊。 例如，來賓使用者無法列舉所有使用者、群組和其他目錄物件的清單。 您可將來賓新增至系統管理員角色，將角色內含的完整讀取和寫入權限授予他們。 來賓也可以邀請其他來賓。
 
 ## <a name="compare-member-and-guest-default-permissions"></a>比較成員與來賓預設的權限
 
 **領域** | **成員使用者權限** | **預設來賓使用者權限** | **受限制的來賓使用者權限 (預覽) **
 ------------ | --------- | ---------- | ----------
-使用者和連絡人 | <ul><li>讀取使用者和連絡人的所有公用屬性</li><li>邀請來賓<li>變更自己的密碼<li>管理自己的行動電話號碼<li>管理自己的相片<li>使自己的重新整理權杖失效</li></ul> | <ul><li>讀取自己的屬性<li>讀取顯示名稱、電子郵件、登入名稱、相片、使用者主體名稱，以及其他使用者和連絡人的使用者類型屬性<li>變更自己的密碼<li>依顯示名稱、使用者主體名稱或 ObjectId (搜尋其他使用者（如果允許）) <li>讀取其他使用者的管理員和直屬報告資訊</li></ul> | <ul><li>讀取自己的屬性<li>變更自己的密碼</li></ul>
-群組 | <ul><li>建立安全性群組<li>建立 Microsoft 365 群組<li>讀取群組的所有屬性<li>讀取非隱藏的群組成員資格<li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>管理使用者擁有之群組的屬性、擁有權及成員資格<li>將來賓新增至擁有的群組<li>管理動態成員資格設定<li>刪除擁有的群組<li>還原擁有的 Microsoft 365 群組</li></ul> | <ul><li>讀取所有非隱藏群組的屬性，包括成員資格和擁有權 (甚至未加入的群組) <li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>依顯示名稱或 ObjectId (搜尋群組（如果允許）) </li></ul> | 沒有權限
-應用程式 | <ul><li>註冊 (建立) 新的應用程式<li>讀取已註冊和企業應用程式的屬性<li>管理擁有之應用程式的應用程式屬性、指派及認證<li>建立或刪除使用者的應用程式密碼<li>刪除擁有的應用程式<li>還原擁有的應用程式</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性
-裝置</li></ul> | <ul><li>讀取裝置的所有屬性<li>管理擁有之裝置的所有屬性</li></ul> | 沒有權限 | 沒有權限
+使用者和連絡人 | <ul><li>列舉所有使用者和連絡人的清單<li>讀取使用者和連絡人的所有公用屬性</li><li>邀請來賓<li>變更自己的密碼<li>管理自己的行動電話號碼<li>管理自己的相片<li>使自己的重新整理權杖失效</li></ul> | <ul><li>讀取自己的屬性<li>讀取顯示名稱、電子郵件、登入名稱、相片、使用者主體名稱，以及其他使用者和連絡人的使用者類型屬性<li>變更自己的密碼<li>依顯示名稱、使用者主體名稱或 ObjectId (搜尋其他使用者（如果允許）) <li>讀取其他使用者的管理員和直屬報告資訊</li></ul> | <ul><li>讀取自己的屬性<li>變更自己的密碼</li></ul>
+群組 | <ul><li>建立安全性群組<li>建立 Microsoft 365 群組<li>列舉所有群組的清單<li>讀取群組的所有屬性<li>讀取非隱藏的群組成員資格<li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>管理使用者擁有之群組的屬性、擁有權及成員資格<li>將來賓新增至擁有的群組<li>管理動態成員資格設定<li>刪除擁有的群組<li>還原擁有的 Microsoft 365 群組</li></ul> | <ul><li>讀取非隱藏群組的屬性，包括成員資格和擁有權 (甚至未加入的群組) <li>讀取已加入群組的隱藏 Microsoft 365 群組成員資格<li>依顯示名稱或 ObjectId (搜尋群組（如果允許）) </li></ul> | <ul><li>讀取已加入群組的物件識別碼<li>如果允許，請在部分 Microsoft 365 應用程式 (中，讀取已加入群組的成員資格和擁有權) </li></ul>
+應用程式 | <ul><li>註冊 (建立) 新的應用程式<li>列舉所有應用程式的清單<li>讀取已註冊和企業應用程式的屬性<li>管理擁有之應用程式的應用程式屬性、指派及認證<li>建立或刪除使用者的應用程式密碼<li>刪除擁有的應用程式<li>還原擁有的應用程式</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性</li></ul> | <ul><li>讀取已註冊和企業應用程式的屬性
+裝置</li></ul> | <ul><li>列舉所有裝置的清單<li>讀取裝置的所有屬性<li>管理擁有之裝置的所有屬性</li></ul> | 沒有權限 | 沒有權限
 目錄 | <ul><li>讀取所有公司資訊<li>讀取所有網域<li>讀取所有夥伴合約</li></ul> | <ul><li>讀取公司顯示名稱<li>讀取所有網域</li></ul> | <ul><li>讀取公司顯示名稱<li>讀取所有網域</li></ul>
 角色和範圍 | <ul><li>讀取所有系統管理角色和成員資格<li>讀取系統管理單元的所有屬性和成員資格</li></ul> | 沒有權限 | 沒有權限
 訂用帳戶 | <ul><li>讀取所有訂用帳戶<li>啟用服務方案成員</li></ul> | 沒有權限 | 沒有權限
 原則 | <ul><li>讀取原則的所有屬性<li>管理擁有之原則的所有屬性</li></ul> | 沒有權限 | 沒有權限
 
-## <a name="to-restrict-the-default-permissions-for-member-users"></a>限制成員使用者的預設權限
+## <a name="restrict-member-users-default-permissions"></a>限制成員使用者的預設許可權 
 
 成員使用者的預設許可權可透過下列方式加以限制：
 
@@ -55,18 +55,18 @@ ms.locfileid: "90707623"
 讀取其他使用者的能力 | 此設定僅在 PowerShell 中可用。 將此旗標設定為 $false 可防止所有非系統管理員讀取目錄中的使用者資訊。 此旗標不會防止讀取其他 Microsoft 服務（例如 Exchange Online）中的使用者資訊。 這項設定適用于特殊情況，因此不建議將此旗標設定為 $false。
 
 
-## <a name="to-restrict-the-default-permissions-for-guest-users"></a>限制來賓使用者的預設許可權
+## <a name="restrict-guest-users-default-permissions"></a>限制來賓使用者的預設許可權
 
 來賓使用者的預設許可權可透過下列方式受到限制：
 
 >[!NOTE] 
->來賓使用者存取限制設定取代了「 **來賓使用者」許可權** 的設定限制。 如需使用這項功能的指引，請參閱 [Azure Active Directory 中的限制來賓存取許可權 (預覽) ](../users-groups-roles/users-restrict-guest-permissions.md)。
+>**來賓使用者存取限制**設定取代了「**來賓使用者」許可權**的設定限制。 如需使用這項功能的指引，請參閱 [Azure Active Directory 中的限制來賓存取許可權 (預覽) ](../users-groups-roles/users-restrict-guest-permissions.md)。
 
 權限 | 設定說明
 ---------- | ------------
-來賓使用者存取限制 (預覽)  | 將此選項設定為來賓使用者時，與成員相同的存取權是依預設將所有成員使用者權限授與來賓使用者。<p>將此選項設定為 [來賓使用者存取權] 會限制為其本身目錄物件的屬性和成員資格，預設只會限制來賓存取自己的使用者設定檔。 即使是依使用者主體名稱或 objectId 進行搜尋，也不再允許存取其他使用者。 也不再允許存取包含群組成員資格的群組。 這項設定不會防止存取其他 Microsoft 服務（例如 Microsoft 小組）中的群組。 若要深入瞭解，請參閱 [Microsoft 團隊的來賓存取權]() 。<p>無論此許可權設定為何，來賓使用者仍可新增至系統管理員角色。
+來賓使用者存取限制 (預覽)  | 將此選項設定為 **來賓使用者時，與成員相同的存取權** 是依預設將所有成員使用者權限授與來賓使用者。<p>將此選項設定為 **[來賓使用者存取權] 會限制為其本身目錄物件的屬性和成員資格** ，預設只會限制來賓存取自己的使用者設定檔。 即使是依使用者主體名稱、ObjectId 或顯示名稱進行搜尋，也不再允許存取其他使用者。 也不再允許存取包含群組成員資格的群組資訊。<p>**注意**：此設定不會防止存取某些 Microsoft 365 服務（例如 Microsoft 小組）中加入的群組。 若要深入瞭解，請參閱 [Microsoft 團隊的來賓存取權]() 。<p>無論此許可權設定為何，來賓使用者仍可新增至系統管理員角色。
 來賓可邀請 | 將此選項設定為 [是] 可讓來賓邀請其他來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) 。
-成員可邀請 | 成員可以邀請將此選項設為 [是] 可讓您目錄的非系統管理員成員邀請來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) 。
+成員可邀請 | 將此選項設定為 [是] 可讓您目錄的非系統管理員成員邀請來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) 。
 系統管理員和來賓邀請者角色中的使用者可邀請 | 將此選項設定為 [是] 可讓「來賓邀請者」角色中的系統管理員和使用者邀請來賓。 若設定為 [是]，則不論成員是否可以邀請設定，來賓邀請者角色中的使用者仍然可以邀請來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) 。
 
 ## <a name="object-ownership"></a>物件擁有權

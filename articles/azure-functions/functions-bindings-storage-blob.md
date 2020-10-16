@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: eead2d6ae2860bf06f1b878c1bb1692d74c06df6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e56d1add36d4296526348d12d7c0b6eb03108f27
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87055965"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104354"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>適用于 Azure Functions 總覽的 Azure Blob 儲存體系結
 
@@ -28,7 +28,7 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 使用觸發程式和系結會要求您參考適當的封裝。 NuGet 套件適用于 .NET 類別庫，而擴充功能配套則用於所有其他應用程式類型。
 
-| Language                                        | 加入者 .。。                                   | 備註 
+| 語言                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝 [NuGet 套件]3.x 版 | |
 | C # 腳本、JAVA、JavaScript、Python、PowerShell | 註冊[延伸]模組套件組合          | 建議搭配使用 [Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 功能與 Visual Studio Code。 |
@@ -36,8 +36,8 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 [core tools]: ./functions-run-local.md
 [延伸模組套件組合]: ./functions-bindings-register.md#extension-bundles
-[Nuget 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
-[更新您的延伸模組]: ./install-update-binding-extensions-manual.md
+[NuGet 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
+[更新您的延伸模組]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
@@ -46,7 +46,7 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 blob 儲存體資料變更時執行函數](./functions-bindings-storage-blob-trigger.md)
 - [在函數執行時讀取 blob 儲存體資料](./functions-bindings-storage-blob-input.md)

@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275280"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102688"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>使用受控識別設定與 Cosmos DB 資料庫的索引子連接
 
 此頁面描述如何使用受控識別來設定 Azure Cosmos DB 資料庫的索引子連線，而不是在資料來源物件連接字串中提供認證。
 
 在深入了解此功能之前，建議您先了解索引子是什麼，以及如何設定資料來源的索引子。 您可以在下列連結找到更多資訊：
+
 * [索引子概觀](search-indexer-overview.md)
 * [Azure Cosmos DB 索引子](search-howto-index-cosmosdb.md)
 
@@ -143,9 +144,8 @@ api-key: [admin key]
 
 1. 如果您最近輪替 Cosmos DB 帳戶金鑰，則需要等候15分鐘，受控識別連接字串才能運作。
 
-1. 請檢查 Cosmos DB 帳戶是否受限於選取網路的存取權。 如果有，請參閱 [使用 Azure 網路安全性功能來存取資料來源的索引子](search-indexer-securing-resources.md)。
+1. 請檢查 Cosmos DB 帳戶是否受限於選取網路的存取權。 如果有，請參閱 [索引子存取受 Azure 網路安全性功能保護的內容](search-indexer-securing-resources.md)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-深入了解 Cosmos DB 索引子：
 * [Azure Cosmos DB 索引子](search-howto-index-cosmosdb.md)

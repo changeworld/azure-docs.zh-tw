@@ -1,23 +1,23 @@
 ---
-title: 選擇定價層或 SKU
+title: 選擇定價層
 titleSuffix: Azure Cognitive Search
-description: 您可以在下列 Sku 中布建 Azure 認知搜尋：免費、基本和標準，以及標準適用于各種資源設定和容量層級。
+description: 您可以在下列層級布建 Azure 認知搜尋：免費、基本和標準，以及標準適用于各種資源設定和容量層級。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948080"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101268"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
-當您建立 Azure 認知搜尋服務時，會在服務存留期內固定的定價層 (或 SKU) 上 [建立資源](search-create-service-portal.md) 。 層級包括免費、基本、標準和儲存體優化。 標準和儲存體優化可透過數個設定和容量提供。
+當您建立 Azure 認知搜尋服務時，會在服務存留期內固定的定價層 [建立資源](search-create-service-portal.md) 。 層級包括免費、基本、標準和儲存體優化。 標準和儲存體優化可透過數個設定和容量提供。
 
 大部分的客戶都是從免費層開始，以便評估服務。 評估之後，在開發和生產部署的其中一個較高層級建立第二個服務是很常見的。
 
@@ -25,17 +25,17 @@ ms.locfileid: "91948080"
 
 下表說明階層相關的功能條件約束。
 
-| 特徵 | 限制 |
+| 功能 | 限制 |
 |---------|-------------|
-| [索引](search-indexer-overview.md) | S3 HD 上無法使用索引子。 |
+| [索引](search-indexer-overview.md) | S3 HD 上無法使用索引子。  |
 | [AI 擴充](search-security-manage-encryption-keys.md) | 在免費層上執行，但不建議使用。 |
 | [客戶管理的加密金鑰](search-security-manage-encryption-keys.md) | 無法在免費層上使用。 |
 | [IP 防火牆存取](service-configure-firewall.md) | 無法在免費層上使用。 |
-| [與 Azure Private Link 整合](service-create-private-endpoint.md) | 無法在免費層上使用。 |
+| [私人端點 (與 Azure Private Link) 整合 ](service-create-private-endpoint.md) | 針對搜尋服務的輸入連線，在免費層中無法使用。 針對其他 Azure 資源的索引子的輸出連線，在免費或 S3 HD 上無法使用。 適用于使用技能集的索引子，不適用於 Free、Basic、S1 或 S3 HD。|
 
 大部分的功能都可在每個層級上使用，包括免費，但需要大量資源的功能才能正常運作，除非您提供足夠的容量。 例如，除非資料集很小，否則 [AI 擴充](cognitive-search-concept-intro.md) 具有長時間執行的技能，可在免費服務上運作。
 
-## <a name="tiers-skus"></a> (Sku 的層級) 
+## <a name="tiers"></a>階層
 
 層級的差異如下：
 
@@ -158,7 +158,7 @@ SU 是服務*所用**複本*和資料分割的乘積： ** (R x P = SU) **。
 針對全文檢索搜尋，主要資料結構是 [反向索引](https://en.wikipedia.org/wiki/Inverted_index) 結構，其具有與來源資料不同的特性。 對於反向索引，大小和複雜度是由內容所決定，而不一定是您饋送至其中的資料量。 具有高冗余性的大型資料來源可能會產生比包含高度變數內容的較小資料集更小的索引。 因此很少可以根據原始資料集的大小推斷索引大小。
 
 > [!NOTE] 
-> 雖然預估索引和儲存空間的未來需求可能會像是猜測，但還是值得一試。 如果層的容量太低，您將需要在較高的層級布建新的服務，然後 [重載您的索引](search-howto-reindex.md)。 沒有將服務從一個 SKU 就地升級到另一個 SKU。
+> 雖然預估索引和儲存空間的未來需求可能會像是猜測，但還是值得一試。 如果層的容量太低，您將需要在較高的層級布建新的服務，然後 [重載您的索引](search-howto-reindex.md)。 沒有將服務從一個階層就地升級到另一個層級。
 >
 
 ### <a name="estimate-with-the-free-tier"></a>使用免費層進行評估

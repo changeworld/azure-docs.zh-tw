@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006512"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103334"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火牆設定 Azure HDInsight 叢集的輸出網路流量
 
@@ -23,11 +23,11 @@ ms.locfileid: "87006512"
 
 HDInsight 叢集通常會部署在虛擬網路中。 叢集在該虛擬網路外部的服務上具有相依性。
 
-有數個需要輸入流量的相依性。 輸入的管理流量不能透過防火牆裝置傳送。 此流量的來源位址是已知的，而且會在[這裡](hdinsight-management-ip-addresses.md)發佈。 您也可以使用此資訊來建立網路安全性群組 (NSG) 規則，以保護叢集的輸入流量。
+無法透過防火牆傳送輸入管理流量。 您可以 [針對輸入流量](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)使用 NSG 服務標籤，如下所述。 
 
-HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面沒有靜態 IP 位址。 缺少靜態位址表示網路安全性群組 (NSG) 無法鎖定來自叢集的輸出流量。 這些位址經常變更，使得無法根據目前的名稱解析和用法來設定規則。
+HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面沒有靜態 IP 位址。 缺少靜態位址表示網路安全性群組 (NSG) 無法鎖定來自叢集的輸出流量。 IP 位址的變更通常會有足夠的變更，無法根據目前的名稱解析和使用來設定規則。
 
-使用防火牆來保護輸出位址，以根據網域名稱來控制輸出流量。 Azure 防火牆會根據目的地的 FQDN 或 [FQDN 標記](../firewall/fqdn-tags.md)來限制輸出流量。
+使用防火牆保護輸出位址，可根據 Fqdn 控制輸出流量。 Azure 防火牆會根據目的地的 FQDN 或 [FQDN 標記](../firewall/fqdn-tags.md)來限制輸出流量。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>使用 HDInsight 設定 Azure 防火牆
 
@@ -79,7 +79,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允許 Windows 登入活動 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允許 Windows 登入活動 |
-    | Rule_4 | * | https:443,http:80 | storage_account_name.blob.core.windows.net | 以您實際的儲存體帳戶名稱取代 `storage_account_name`。 如果您的叢集是由 WASB 支援，請為 WASB 新增規則。 若只要使用 https 連線，請務必在儲存體帳戶上啟用 [[需要安全傳輸]](../storage/common/storage-require-secure-transfer.md)。 |
+    | Rule_4 | * | https:443,http:80 | storage_account_name.blob.core.windows.net | 以您實際的儲存體帳戶名稱取代 `storage_account_name`。 若只要使用 https 連線，請務必在儲存體帳戶上啟用 [[需要安全傳輸]](../storage/common/storage-require-secure-transfer.md)。 如果您使用私人端點來存取儲存體帳戶，則不需要此步驟，而且儲存體流量不會轉送到防火牆。|
 
    ![標題：輸入應用程式規則集合的詳細資料](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -99,23 +99,14 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
     |---|---|
     |名稱| FwNetRule|
     |優先順序|200|
-    |動作|Allow|
-
-    **IP 位址區段**
-
-    | 名稱 | 通訊協定 | 來源位址 | 目的地位址 | 目的地連接埠 | 注意 |
-    | --- | --- | --- | --- | --- | --- |
-    | Rule_1 | UDP | * | * | 123 | 時間服務 |
-    | Rule_2 | 任意 | * | DC_IP_Address_1、DC_IP_Address_2 | * | 如果您使用企業安全性套件 (ESP)，請在 [IP 位址] 區段中新增網路規則，以允許 ESP 叢集與 AAD-DS 通訊。 您可以在入口網站的 [AAD-DS] 區段中找到網域控制站的 IP 位址 |
-    | Rule_3 | TCP | * | Data Lake Storage 帳戶的 IP 位址 | * | 如果您使用 Azure Data Lake Storage，則可以在 [IP 位址] 區段中新增網路規則，以解決 ADLS Gen1 和 Gen2 的 SNI 問題。 此選項會將流量路由至防火牆。 這可能會產生較高的大量資料載入成本，但流量會記錄下來，並且可以在防火牆記錄中進行稽核。 判斷 Data Lake Storage 帳戶的 IP 位址。 您可以使用 PowerShell 命令 (例如 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")`)，將 FQDN 解析為 IP 位址。|
-    | Rule_4 | TCP | * | * | 12000 | (選擇性) 如果您使用的是 Log Analytics，請在 [IP 位址] 區段中建立網路規則，以允許與 Log Analytics 工作區進行通訊。 |
+    |動作|允許|
 
     **服務標記區段**
 
     | 名稱 | 通訊協定 | 來源位址 | 服務標記 | 目的地連接埠 | 注意 |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_7 | TCP | * | SQL | 1433 | 在 SQL 的 [服務標記] 區段中設定網路規則，讓您可以記錄和稽核 SQL 流量。 除非您已在 HDInsight 子網路上設定 SQL Server 的服務端點 (這麼做將會略過防火牆)。 |
-    | Rule_8 | TCP | * | Azure 監視器 | * | (選擇性) 計畫使用「自動調整」功能的客戶應新增此規則。 |
+    | Rule_5 | TCP | * | SQL | 1433 | 如果您使用 HDInsight 提供的預設 sql server，請在 SQL 的 [服務標記] 區段中設定網路規則，以允許您記錄和審核 SQL 流量。 除非您已在 HDInsight 子網路上設定 SQL Server 的服務端點 (這麼做將會略過防火牆)。 如果您使用自訂 SQL server 來進行 Ambari、Oozie、Ranger 和 Hive metastroes，則只需要允許您自訂 SQL server 的流量。|
+    | Rule_6 | TCP | * | Azure 監視器 | * | (選擇性) 計畫使用「自動調整」功能的客戶應新增此規則。 |
     
    ![標題：輸入應用程式規則集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
@@ -125,9 +116,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 建立包含下列項目的路由表：
 
-* [健康情況和管理服務：所有區域](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions)中的所有 IP 位址，並以**網際網路**作為下一個躍點類型。
-
-* 叢集建立所在區域的兩個 IP 位址 (如[健康情況和管理服務：特定區域](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions)) 中所述，並以**網際網路**作為下一個躍點類型。
+* 來自 [健康情況和管理服務](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) 的所有 IP 位址，下一個躍點類型為 [ **網際網路**]。 其中應該包含四個一般區域的 Ip，以及適用于您特定區域的2個 ip。 只有在 ResourceProviderConnection 設定為 [ *輸入*] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。 
 
 * IP 位址 0.0.0.0/0 的其中一個虛擬設備路由，並且以 Azure 防火牆私人IP 位址作為下一個躍點。
 

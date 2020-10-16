@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848852"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102994"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>以 DTU 為基礎的購買模式的服務層
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "91848852"
 |**執行時間 SLA**|99.99%|99.99%|99.99%|
 |**備份保留期上限**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**IOPS (大約) **\* |每個 DTU 1-5 IOPS| 每個 DTU 1-5 IOPS | 每個 DTU 25 個 IOPS|
+|**IOPS (大約) **\* |每個 DTU 1-4 IOPS| 每個 DTU 1-4 IOPS | 每個 DTU 25 個 IOPS|
 |**IO 延遲 (大約)**|5 毫秒 (讀取)，10 毫秒 (寫入)|5 毫秒 (讀取)，10 毫秒 (寫入)|2 毫秒 (讀取/寫入)|
 |**資料行存放區索引** |N/A|S3 和更新版本|支援|
 |**記憶體內部 OLTP**|N/A|N/A|支援|

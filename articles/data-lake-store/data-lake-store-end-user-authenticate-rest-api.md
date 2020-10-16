@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85984846"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103742"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 向 Azure Data Lake Storage Gen1 驗證終端使用者
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "85984846"
 
 在本文中，您會了解如何使用 REST API 向 Azure Data Lake Storage Gen1 驗證終端使用者。 如需使用 REST API 向 Data Lake Storage Gen1 進行服務對服務驗證，請參閱[使用 REST API 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-rest-api.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "85984846"
 
 讓終端使用者登入的結果，是系統會提供一個存取權杖和一個重新整理權杖給您的應用程式。 存取權杖會附加到每個對 Data Lake Storage Gen1 或 Data Lake Analytics 提出的要求，預設的有效期是一小時。 重新整理權杖可用來取得新的存取權杖，預設的有效期是二小時，如果定期使用則最多兩週。 您可以使用兩種不同方法讓終端使用者登入。
 
-在此案例中，應用程式會提示使用者登入，且會在使用者的內容中執行所有作業。 請執行下列步驟：
+在此案例中，應用程式會提示使用者登入，且會在使用者的內容中執行所有作業。 執行下列步驟：
 
 1. 透過您的應用程式，將使用者重新導向至下列 URL：
 
@@ -82,11 +82,10 @@ ms.locfileid: "85984846"
          -F refresh_token=<REFRESH-TOKEN>
     ```
 
-如需互動使用者驗證的詳細資料，請參閱 [授權碼授與流程](https://msdn.microsoft.com/library/azure/dn645542.aspx)。
+如需互動使用者驗證的詳細資料，請參閱 [授權碼授與流程](/previous-versions/azure/dn645542(v=azure.100))。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本文中，您已了解如何使用 REST API，使用服務對服務驗證向 Azure Data Lake Storage Gen1 驗證。 您現在可以查看下列文章，了解如何搭配使用 REST API 與 Azure Data Lake Storage Gen1。
 
 * [使用 REST API 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-rest-api.md)
 * [使用 REST API 在 Data Lake Storage Gen1 上進行資料作業](data-lake-store-data-operations-rest-api.md)
-

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5fd297545e7f07844e28a1f56e724a7f61916bee
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057734"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102488"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-模型檔案可以包含一個以上的模型。 在此情況下，模型必須放在 JSON 陣列中。 例如︰
+模型檔案可以包含一個以上的模型。 在此情況下，模型必須放在 JSON 陣列中。 例如：
 
 ```json
 [
@@ -174,10 +174,7 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 #### <a name="model-versioning"></a>模型版本設定
 
-若要建立現有模型的新版本，請從原始模型的 DTDL 開始。 更新您想要變更的欄位。
-
->[!NOTE]
->在預覽期間，前進模型版本只會讓您加入新的欄位，而不會移除現有的欄位。 若要移除欄位，您應該只 [建立全新的模型](#create-models)。
+若要建立現有模型的新版本，請從原始模型的 DTDL 開始。 更新、新增或移除您想要變更的欄位。
 
 接下來，藉由更新模型的欄位，將此標示為較新版本的模型 `id` 。 模型識別碼的最後一個區段（在之後） `;` 表示模型編號。 若要指出這現在是此模型的更新版本，請將值結尾的數位遞增 `id` 到大於目前版本號碼的任何數位。
 

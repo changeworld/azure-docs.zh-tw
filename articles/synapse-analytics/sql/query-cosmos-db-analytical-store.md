@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097247"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102352"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 SQL 無伺服器查詢 Azure Cosmos DB 資料 (預覽) 
 
@@ -266,8 +266,10 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | --- | --- |
 | 語法錯誤：<br/> -' Openrowset ' 附近的語法不正確<br/> - `...` 不是可辨識的大量 OPENROWSET 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因<br/> -不使用 ' CosmosDB ' 做為第一個參數，<br/> -使用字串常值，而不是第三個參數中的識別碼，<br/> -未指定第三個參數 (容器名稱)  |
 | CosmosDB 連接字串中發生錯誤 | -未指定帳戶、資料庫、金鑰 <br/> -無法辨識的連接字串中有一些選項。<br/> -分號 `;` 放置於連接字串的結尾 |
-| 解析 CosmosDB 路徑失敗，錯誤為「帳戶/資料庫名稱不正確」 | 找不到指定的帳號名稱或資料庫名稱。 |
-| 解析 CosmosDB 路徑失敗，並出現錯誤「不正確的秘密值 ' ' 秘密為 null 或空白」 | 帳戶金鑰無效或遺失。 |
+| 解析 CosmosDB 路徑失敗，錯誤為「帳戶名稱不正確」或「資料庫名稱不正確」 | 找不到指定的帳號名稱、資料庫名稱或容器，或尚未啟用指定集合的分析儲存體|
+| 解析 CosmosDB 路徑失敗，錯誤為「密碼值不正確」或「秘密為 null 或空白」 | 帳戶金鑰無效或遺失。 |
+| `column name`類型的 `type name` 資料行與外部資料類型不相容`type name` | 在子句中指定的資料行類型 `WITH` 與 Cosmos DB 容器中的類型不相符。 請嘗試變更資料行類型，如「 [SQL 類型](#azure-cosmos-db-to-sql-type-mappings) 對應」或「使用類型 Azure Cosmos DB 一節中所述 `VARCHAR` 。 |
+| 資料行包含 `NULL` 所有資料格中的值。 | 可能是錯誤的資料行名稱或路徑運算式在 `WITH` 子句中。 在資料行類型) in 子句之後，資料行名稱 (或路徑運算式 `WITH` 必須符合 Cosmos DB 集合中的某些屬性名稱。 比較會區分 **大小寫**  (例如， `productCode` 和 `ProductCode` 是不同的屬性) 。 |
 
 您可以在 [Azure Synapse 意見反應頁面](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)上報告建議和問題。
 

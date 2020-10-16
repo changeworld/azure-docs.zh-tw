@@ -1,5 +1,5 @@
 ---
-title: 將 API 連接器新增至使用者流程
+title: '將 API 連接器新增至使用者流程 (預覽版) '
 description: 設定要在使用者流程中使用的 API 連接器。
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854353"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102267"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>將 API 連接器新增至註冊使用者流程
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>將 API 連接器新增至註冊使用者流程 (預覽版) 
 
 若要使用 [api 連接器](api-connectors-overview.md)，請先建立 api 連接器，然後在使用者流程中啟用它。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91854353"
    - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的「虛擬」使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
 
    ![設定新的 API 連接器](./media/add-api-connector/api-connector-config.png)
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 
 ## <a name="the-request-sent-to-your-api"></a>傳送給 API 的要求
 API 連接器具體化為 **HTTP POST** 要求，會將使用者屬性 ( ' 宣告 ' ) 作為 JSON 主體中的機碼值組。 屬性的序列化方式類似于 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) 使用者屬性。 
@@ -96,7 +96,7 @@ Content-type: application/json
 
    ![將 Api 新增至使用者流程](./media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]。
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 
@@ -238,8 +238,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | 動作                                             | String            | 是      | 值必須為 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值選取為要在 API 連接器設定中 **接收** 的宣告，以及使用者流程的 **使用者屬性** ，則這些值可以儲存在目錄中。 如果選取做為 **應用程式**宣告，則可在權杖中傳回值。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 傳回的宣告不需要包含 `_<extensions-app-id>_` 。 如果值選取為要在 API 連接器設定中 **接收** 的宣告和使用者流程的 **使用者屬性** ，則這些值會儲存在目錄中。 自訂屬性不能在權杖中傳送回來。 |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 傳回的值會覆寫從使用者收集的值。 如果選取做為 **應用程式**宣告，也可以在權杖中傳回。                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 宣告不需要包含 `_<extensions-app-id>_` 。 傳回的值會覆寫從使用者收集的值。 如果選取做為 **應用程式**宣告，也可以在權杖中傳回。  |
 
 ### <a name="example-of-a-blocking-response"></a>封鎖回應的範例
 
@@ -267,6 +267,8 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>驗證錯誤回應的範例
 
+
+
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -285,6 +287,8 @@ Content-type: application/json
 | 動作      | String  | 是      | 值必須為 `ValidationError`。                                           |
 | status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
+
+*注意：* 除了回應主體中的「狀態」值之外，HTTP 狀態碼必須是 "400"。
 
 **使用驗證錯誤回應的使用者體驗**
 

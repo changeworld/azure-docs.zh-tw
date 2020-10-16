@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300097"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104133"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
 
@@ -106,7 +106,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 下列活動也需要 Azure 權限︰
 
-|動作 |所需的 Azure 權限 |注意 |
+|動作 |所需的 Azure 權限 |備註 |
 |-------|-------------------------|------|
 | 新增和移除監視解決方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 必須在資源群組或訂用帳戶層級授與這些權限。 |
 | 變更定價層 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -243,7 +243,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 **資料表層級 RBAC** 除了其他許可權之外，還可讓您對 Log Analytics 工作區中的資料定義更細微的控制。 此控制項可讓您定義只有一組特定的使用者才能存取的特定資料類型。
 
-您可以使用 [Azure 自訂角色](../../role-based-access-control/custom-roles.md) 來執行資料表存取控制，以將存取權授與工作區中的特定 [資料表](../log-query/logs-structure.md) 。 無論使用者的[存取模式](design-logs-deployment.md#access-mode)為何，這些角色都會套用至具有工作區內容或資源內容[存取控制模式](design-logs-deployment.md#access-control-mode)的工作區。
+您可以使用 [Azure 自訂角色](../../role-based-access-control/custom-roles.md) 來執行資料表存取控制，以將存取權授與工作區中的特定 [資料表](./data-platform-logs.md) 。 無論使用者的[存取模式](design-logs-deployment.md#access-mode)為何，這些角色都會套用至具有工作區內容或資源內容[存取控制模式](design-logs-deployment.md#access-control-mode)的工作區。
 
 建立具有下列動作的 [自訂角色](../../role-based-access-control/custom-roles.md) ，以定義資料表存取控制的存取權。
 

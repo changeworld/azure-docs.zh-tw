@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842575"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102926"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支援的高可用性服務
 
@@ -62,7 +62,7 @@ Microsoft 會在 HDInsight 叢集的下表中提供四種 Apache 服務的支援
 | Apache Livy | 主動前端節點 | Spark | 可透過 REST 介面輕鬆與 Spark 叢集互動 |
 
 >[!Note]
-> HDInsight 企業安全性套件 (ESP) 叢集目前僅提供 Ambari 伺服器高可用性。
+> HDInsight 企業安全性套件 (ESP) 叢集目前僅提供 Ambari 伺服器高可用性。 應用程式時間軸伺服器、作業歷程記錄伺服器和 Livy 都只會在 headnode0 上執行，而且當 Ambari failsover 時，不會容錯移轉至 headnode1。 應用程式時間軸資料庫也是在 headnode0，而不是在 Ambari SQL server 上。
 
 ### <a name="architecture"></a>架構
 

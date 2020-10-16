@@ -4,12 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257520"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103861"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -135,18 +135,8 @@ az aks update \
 
 > [!IMPORTANT]
 > 叢集自動調整程式設定檔會影響所有使用叢集自動調整程式的節點集區。 無法為每個節點集區設定一個自動調整程式設定檔。
-
-### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 擴充功能
-
-若要設定叢集自動調整程式設定設定檔，您需要 aks-preview CLI 擴充功能版本 0.4.30 或以後版本。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+>
+> 叢集自動調整程式設定檔需要版本 *2.11.1* 或更高的 Azure CLI。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>在現有的 AKS 叢集上設定叢集自動調整程式設定檔
 

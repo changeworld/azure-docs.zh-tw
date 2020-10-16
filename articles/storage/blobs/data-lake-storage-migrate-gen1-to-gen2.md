@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716148"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102637"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
@@ -122,7 +122,7 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
  
 ### <a name="lift-and-shift-pattern"></a>隨即轉移模式
 
-這是最簡單的模式。
+這是最簡單的模式。 
 
 1. 停止所有寫入 Gen1。
 
@@ -131,6 +131,8 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 3. 將內嵌作業和工作負載指向 Gen2。
 
 4. 解除委任 Gen1。
+
+請參閱我們的範例程式碼，以取得隨即轉移模式的隨即轉移 [範例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md)。
 
 > [!div class="mx-imgBorder"]
 > ![隨即轉移模式](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 4. 解除委任 Gen1。
 
+請參閱我們的增量複製模式的範例程式碼，以取得累加 [式複製遷移範例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)。
+
+
 > [!div class="mx-imgBorder"]
 > ![增量複製模式](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 4. 停止所有寫入 Gen1，然後解除委任 Gen1。
 
+請參閱我們的 [雙重管線遷移範例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md)中雙重管線模式的範例程式碼。
+
 > [!div class="mx-imgBorder"]
 > ![雙重管線模式](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -192,6 +199,8 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 3. 當所有移動都完成時，請停止所有寫入 Gen1 並關閉雙向複寫。
 
 4. 解除委任 Gen1。
+
+請參閱我們的 [雙向同步遷移範例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md)中雙向同步處理模式的範例程式碼。
 
 > [!div class="mx-imgBorder"]
 > ![雙向模式](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)

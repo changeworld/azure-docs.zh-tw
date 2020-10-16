@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191399"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104031"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>從 Azure VNET 內的虛擬機器存取 Azure Data Lake Storage Gen1
 Azure Data Lake Storage Gen1 是公用網際網路 IP 位址上執行的 PaaS 服務。 可以連線到公用網際網路的任何伺服器，通常也可以連線到 Azure Data Lake Storage Gen1 端點。 根據預設，Azure VNET 中的所有虛擬機器皆可存取網際網路，因此，可以存取 Azure Data Lake Storage Gen1。 不過，也可以將 VNET 中的 VM 設定為無法存取網際網路。 對於這類虛擬機器，也會限制對 Azure Data Lake Storage Gen1 的存取。 封鎖 Azure VNET 中 VM 的公用網際網路存取，可以使用下列任一個方法來完成：
@@ -46,7 +46,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>使用 NSG 從受限制的 VM 啟用連線
-使用 NSG 規則來封鎖對網際網路的存取時，您接著可以建立允許存取 Data Lake Storage Gen1 IP 位址的另一個 NSG。 如需有關 NSG 規則的詳細資訊，請參閱[網路安全性群組概觀](../virtual-network/security-overview.md)。 如需如何建立 NSG 的指示，請參閱[如何建立網路安全性群組](../virtual-network/tutorial-filter-network-traffic.md)。
+使用 NSG 規則來封鎖對網際網路的存取時，您接著可以建立允許存取 Data Lake Storage Gen1 IP 位址的另一個 NSG。 如需有關 NSG 規則的詳細資訊，請參閱[網路安全性群組概觀](../virtual-network/network-security-groups-overview.md)。 如需如何建立 NSG 的指示，請參閱[如何建立網路安全性群組](../virtual-network/tutorial-filter-network-traffic.md)。
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>使用 UDR 或 ExpressRoute 從受限制的 VM 啟用連線
 路由時會使用 UDR 或 BGP 交換路由來封鎖對網際網路的存取，必須設定特殊的路由，才能使這類子網路中的 VM 可以存取 Data Lake Storage Gen1 端點。 如需詳細資訊，請參閱[使用者定義路由概觀](../virtual-network/virtual-networks-udr-overview.md)。 如需建立 UDR 的指示，請參閱[在 Resource Manager 中建立 UDR](../virtual-network/tutorial-create-route-table-powershell.md)。
@@ -57,4 +57,3 @@ Aliases:  mydatastore.azuredatalakestore.net
 ## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [保護儲存在 Azure Data Lake Storage Gen1 中的資料](data-lake-store-security-overview.md)
-

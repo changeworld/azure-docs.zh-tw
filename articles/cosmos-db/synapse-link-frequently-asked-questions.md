@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014557"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104099"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -97,6 +97,10 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>我可以在分析存放區中，自訂或覆寫交易資料轉換成單欄式格式的方式嗎？
 
 目前您無法在資料項目從交易存放區自動傳播到分析存放區時，轉換這些資料項目。 如果您有被此限制所封鎖的案例，請傳送電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
+
+### <a name="is-analytical-store-supported-by-terraform"></a>Terraform 是否支援分析存放區？
+
+目前 Terraform 不支援分析存放區容器。 如需詳細資訊，請參閱 [Terraform GitHub 問題](https://github.com/hashicorp/terraform/issues) 。
 
 ## <a name="analytical-time-to-live-ttl"></a>分析存留時間 (TTL)
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273308"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101778"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 沙箱來自動佈建使用者
 
@@ -73,15 +73,15 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 若要取得您的 Salesforce 沙箱安全性權杖，請開啟新索引標籤並登入相同的 Salesforce 沙箱管理帳戶。 在頁面右上角，按一下您的名稱，然後按一下 [設定]****。
 
-     ![啟用自動使用者佈建](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
+     ![螢幕擷取畫面顯示選取的設定連結。](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
 
 1. 在左方導覽窗格上，按一下 [我的個人資訊]**** 以展開相關的區段，然後按一下 [重設我的安全性權杖]****。
   
-    ![啟用自動使用者佈建](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
+    ![螢幕擷取畫面顯示從我的個人資訊中選取了 [重設我的安全性權杖]。](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
 
 1. 在 [重設安全性權杖]**** 頁面上，按一下 [重設安全性權杖]**** 按鈕。
 
-    ![啟用自動使用者佈建](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "啟用自動使用者佈建")
+    ![顯示 Rest 安全性權杖頁面的螢幕擷取畫面，其中包含解說文字和重設安全性權杖的選項](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "啟用自動使用者佈建")
 
 1. 檢查與此系統管理員帳戶相關聯的電子郵件收件匣。 尋找來自 Salesforce Sandbox.com，包含新安全性權杖的電子郵件。
 

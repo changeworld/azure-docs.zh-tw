@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 01c0b6f280b8179760c6ecc55fd7feca3ddf2080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039005"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104235"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure 監視器記錄中的標準資料行
-Azure 監視器記錄檔中的資料會 [儲存為 Log Analytics 工作區或 Application Insights 應用程式中的一組記錄](../log-query/logs-structure.md)，每個資料類型都有一組唯一的資料行。 許多資料類型會有多個類型之間常見的標準資料行。 本文描述這些資料行，並提供如何在查詢中使用它們的範例。
+Azure 監視器記錄檔中的資料會 [儲存為 Log Analytics 工作區或 Application Insights 應用程式中的一組記錄](./data-platform-logs.md)，每個資料類型都有一組唯一的資料行。 許多資料類型會有多個類型之間常見的標準資料行。 本文描述這些資料行，並提供如何在查詢中使用它們的範例。
 
 Application Insights 中的工作區應用程式會將其資料儲存在 Log Analytics 工作區中，並使用與工作區中其他其他資料表相同的標準資料行。 傳統應用程式會個別儲存其資料，並具有不同的標準資料行，如本文中所指定。
 
@@ -212,4 +212,3 @@ union withsource = tt *
 - 深入了解 [Azure 監視器記錄資料的儲存方式](../log-query/log-query-overview.md)。
 - 參與[撰寫記錄查詢](../log-query/get-started-queries.md)的課程。
 - 參與[在記錄查詢中聯結資料表](../log-query/joins.md)的課程。
-

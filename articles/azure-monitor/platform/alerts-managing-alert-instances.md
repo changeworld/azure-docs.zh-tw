@@ -4,16 +4,16 @@ description: 管理整個 Azure 中的警示執行個體
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77667613"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102865"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>使用統一警示管理警示實例
 
-透過 Azure 監視器中的 [整合警示體驗](https://aka.ms/azure-alerts-overview) ，您可以在 Azure 中查看所有不同類型的警示。 這會跨越單一窗格中的多個訂用帳戶。 本文說明如何查看您的警示實例，以及如何尋找特定的警示實例以進行疑難排解。
+透過 Azure 監視器中的 [整合警示體驗](./alerts-overview.md) ，您可以在 Azure 中查看所有不同類型的警示。 這會跨越單一窗格中的多個訂用帳戶。 本文說明如何查看您的警示實例，以及如何尋找特定的警示實例以進行疑難排解。
 
 > [!NOTE]
 > 您只能存取過去30天內產生的警示。
@@ -54,5 +54,4 @@ ms.locfileid: "77667613"
 
 選取任何警示實例會開啟 [ **警示詳細資料** ] 頁面，可讓您查看更多有關該特定警示實例的詳細資料。   
 
-![警示詳細資料頁面的螢幕擷取畫面](media/alerts-managing-alert-instances/alert-details.jpg)  
-
+![警示詳細資料頁面的螢幕擷取畫面](media/alerts-managing-alert-instances/alert-details.jpg)

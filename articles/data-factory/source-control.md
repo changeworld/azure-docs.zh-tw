@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595069"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101897"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -162,6 +162,8 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 - 早於 2.14.0 的 GitHub Enterprise 版本不適用於 Microsoft Edge 瀏覽器。
 
 - 僅可以在正式推出的 Data Factory 版本中，使用 GitHub 與 Data Factory 視覺化撰寫工具的整合。
+
+- Azure Data Factory 不支援 GitHub 組織帳戶
 
 - 針對每個資源類型 (例如管線和資料集)，最多可以從單一 GitHub 分支擷取 1,000 個實體。 若達到此限制，則建議您將資源分割成不同處理站。 Azure DevOps Git 沒有此限制。
 

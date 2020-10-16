@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d898d3825fa40cbfd13337067c24cf14f9a544
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78184243"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102012"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>適用于 Azure AD B2C 的 Microsoft Graph 作業
 
@@ -33,6 +33,15 @@ ms.locfileid: "78184243"
 - [刪除使用者](https://docs.microsoft.com/graph/api/user-delete)
 
 如需使用 Microsoft Graph API 管理 Azure AD B2C 使用者帳戶的詳細資訊，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](manage-user-accounts-graph-api.md)。
+
+## <a name="user-phone-number-management"></a>使用者電話號碼管理
+
+- [加入](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
+- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
+- [更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
+- [刪除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+
+如需使用 Microsoft Graph API 來管理使用者登入電話號碼的詳細資訊，請參閱 [B2C 驗證方法](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)。
 
 ## <a name="identity-providers-user-flow"></a>身分識別提供者 (使用者流程) 
 
@@ -98,7 +107,7 @@ Microsoft Graph API 中原則金鑰的最上層資源是 [受信任的架構索�
 
 - [清單延伸模組屬性](https://docs.microsoft.com/graph/api/application-list-extensionproperty)
 
-Azure AD B2C 提供一個目錄，可為每個使用者保存 100 個自訂屬性。 針對使用者流程，這些擴充屬性是 [使用 Azure 入口網站來管理](custom-policy-custom-attributes.md)。 在自訂原則中，Azure AD B2C 第一次將值寫入擴充屬性時，會為您建立屬性。
+Azure AD B2C 提供一個目錄，可為每個使用者保存 100 個自訂屬性。 針對使用者流程，這些擴充屬性是 [使用 Azure 入口網站來管理](custom-policy-custom-attributes.md)。 在自訂原則中，Azure AD B2C 會在您第一次將值寫入擴充屬性時為您建立屬性。
 
 ## <a name="audit-logs"></a>稽核記錄
 

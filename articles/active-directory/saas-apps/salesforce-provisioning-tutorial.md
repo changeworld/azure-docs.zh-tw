@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273291"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101761"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 來進行自動佈建使用者
 
@@ -77,15 +77,15 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 6. 若要取得您的 Salesforce 安全性權杖，請開啟新索引標籤並登入相同的 Salesforce 系統管理員帳戶。 在頁面右上角，按一下您的名稱，然後按一下 [設定]****。
 
-    ![啟用自動使用者佈建](./media/salesforce-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
+    ![螢幕擷取畫面顯示選取的設定連結。](./media/salesforce-provisioning-tutorial/sf-my-settings.png "啟用自動使用者佈建")
 
 7. 在左方導覽窗格上，按一下 [我的個人資訊]**** 以展開相關的區段，然後按一下 [重設我的安全性權杖]****。
   
-    ![啟用自動使用者佈建](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
+    ![螢幕擷取畫面顯示從我的個人資訊中選取了 [重設我的安全性權杖]。](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "啟用自動使用者佈建")
 
 8. 在 [重設安全性權杖]**** 頁面上，按一下 [重設安全性權杖]**** 按鈕。
 
-    ![啟用自動使用者佈建](./media/salesforce-provisioning-tutorial/sf-reset-token.png "啟用自動使用者佈建")
+    ![顯示 Rest 安全性權杖頁面的螢幕擷取畫面，其中包含解說文字和重設安全性權杖的選項](./media/salesforce-provisioning-tutorial/sf-reset-token.png "啟用自動使用者佈建")
 
 9. 檢查與此系統管理員帳戶相關聯的電子郵件收件匣。 尋找來自 Salesforce.com，包含新安全性權杖的電子郵件。
 
