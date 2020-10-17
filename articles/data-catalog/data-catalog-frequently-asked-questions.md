@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397295"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151965"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 資料目錄的常見問題集
 這篇文章提供與 Azure 資料目錄服務相關的常見問題集解答。
@@ -87,7 +87,7 @@ ms.locfileid: "91397295"
 >
 
 > [!NOTE]
-> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為 *內部部署* SQL Server 缺少第一級 **Description** 屬性的關係資料庫，資料目錄資料源註冊工具會從物件和資料行的 **ms_description** 擴充屬性中，解壓縮出值。 SQL Azure 不支援這個屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為 *內部部署* SQL Server 缺少第一級 **Description** 屬性的關係資料庫，資料目錄資料源註冊工具會從物件和資料行的 **ms_description** 擴充屬性中，解壓縮出值。 SQL Azure 不支援這個屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))。
 >
 >
 
@@ -122,7 +122,7 @@ ms.locfileid: "91397295"
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>我是否可以從我所註冊的資料來源中擷取更多或更豐富的中繼資料？
 我們正積極擴充資料目錄的功能。 如果您希望在註冊期間從資料來源擷取其他中繼資料，請在 [Azure 意見論壇 - 資料目錄](https://feedback.azure.com/forums/906052-data-catalog)提出建議 (如果已有人建議，請投票支持)。 
 
-針對資料來源註冊工具未擷取此中繼資料的資料來源，如果您想要包含資料行/結構描述中繼資料、預覽或資料設定檔，可以使用資料目錄 API 來新增此中繼資料。 如需詳細資訊，請參閱 [Azure 資料目錄 REST API](https://docs.microsoft.com/rest/api/datacatalog/)。
+針對資料來源註冊工具未擷取此中繼資料的資料來源，如果您想要包含資料行/結構描述中繼資料、預覽或資料設定檔，可以使用資料目錄 API 來新增此中繼資料。 如需詳細資訊，請參閱 [Azure 資料目錄 REST API](/rest/api/datacatalog/)。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>如何限制已註冊之資料資產的可見性，以限制只有特定人員才能探索它們？
 在資料目錄中選取資料資產，然後按一下 [取得擁有權]**** 按鈕。 資料目錄中的資料資產擁有者可以變更可見性設定，可能變更為允許所有使用者探索擁有的資產，或限定只有特定使用者才能看見。 如需詳細資訊，請參閱[在 Azure 資料目錄中管理資料資產](data-catalog-how-to-manage.md)。

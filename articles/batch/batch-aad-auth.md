@@ -4,12 +4,12 @@ description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 了解兩種�
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d84086e3fa59c1e04df5b2717738da44f5c14b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533507"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144818"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
@@ -103,7 +103,7 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD) 進行�
 若要驗證自動執行的應用程式，您可以使用服務主體。 註冊您的應用程式之後，請在 Azure 入口網站中遵循下列步驟來設定服務主體：
 
 1. 要求應用程式的祕密。
-1. 將角色型存取控制 (RBAC) 指派給應用程式。
+1. 將 azure 角色型存取控制 (Azure RBAC) 指派給您的應用程式。
 
 ### <a name="request-a-secret-for-your-application"></a>要求應用程式的祕密
 
@@ -119,15 +119,15 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD) 進行�
 
     ![建立祕密金鑰](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-rbac-to-your-application"></a>將 RBAC 指派給應用程式
+### <a name="assign-azure-rbac-to-your-application"></a>將 Azure RBAC 指派給您的應用程式
 
-若要使用服務主體進行驗證，您需要將 RBAC 指派給應用程式。 請遵循下列步驟：
+若要使用服務主體進行驗證，您必須將 Azure RBAC 指派給您的應用程式。 請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至應用程式所使用的 Batch 帳戶。
 1. 在 Batch 帳戶的 [設定] 區段中，選取 [存取控制 (IAM)]。
 1. 選取 [角色指派] 索引標籤。
 1. 選取 [新增角色指派]。
-1. 從 [角色] 下拉式清單中，選擇應用程式的 [參與者] 或 [讀者] 角色。 如需這些角色的詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
+1. 從 [角色] 下拉式清單中，選擇應用程式的 [參與者] 或 [讀者] 角色。 如需這些角色的詳細資訊，請參閱 [Azure 入口網站中的開始使用 Azure 角色型存取控制](../role-based-access-control/overview.md)。
 1. 在 [選取] 欄位中，輸入應用程式的名稱。 從清單中選取您的應用程式，然後選取 [儲存]。
 
 您的應用程式現在應該會出現在已獲指派 Azure 角色的存取控制設定中。
@@ -138,7 +138,7 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD) 進行�
 
 自訂角色將細微權限授與使用者，以提交作業、工作等等。 這樣可以防止使用者執行的作業影響成本，例如建立集區或修改節點。
 
-您可以使用自訂角色，將下列 RBAC 作業的權限授與 Azure AD 使用者、群組或服務主體：
+您可以使用自訂角色，將許可權授與下列 Azure RBAC 作業的 Azure AD 使用者、群組或服務主體：
 
 - Microsoft.Batch/batchAccounts/pools/write
 - Microsoft.Batch/batchAccounts/pools/delete

@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84430674"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147886"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>建立示範憑證來測試 IoT Edge 裝置功能
 
@@ -32,11 +32,11 @@ IoT Edge 裝置需要憑證，才能在執行時間、模組和任何下游裝�
 1. 在您的裝置上設定產生憑證的[腳本](#set-up-scripts)。
 2. 建立用來為您的案例簽署所有其他憑證的[根 CA 憑證](#create-root-ca-certificate)。
 3. 針對您想要測試的案例產生您需要的憑證：
-   * [建立 IoT Edge 的裝置身分識別憑證](#create-iot-edge-device-identity-certificates) ，以使用 IoT 中樞裝置布建服務測試自動布建。
-   * [建立 IoT Edge 的裝置 CA 憑證](#create-iot-edge-device-ca-certificates) 以測試生產案例或閘道案例。
-   * [建立下游裝置憑證](#create-downstream-device-certificates) ，以在閘道案例中測試將下游裝置驗證至 IoT 中樞。
+   * [建立 IoT Edge 的裝置身分識別憑證](#create-iot-edge-device-identity-certificates) ，以使用 IoT 中樞裝置布建服務進行自動布建。
+   * 在閘道案例中，為 IoT Edge 裝置[建立 IoT Edge 的裝置 CA 憑證](#create-iot-edge-device-ca-certificates)。
+   * [建立下游裝置憑證](#create-downstream-device-certificates) 來驗證閘道案例中的下游裝置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 已安裝 Git 的開發電腦。
 
@@ -53,7 +53,7 @@ GitHub 上的 IoT Edge 存放庫包含可供您用來建立示範憑證的憑證
 #### <a name="install-openssl"></a>安裝 OpenSSL
 
 在您用來產生憑證的電腦上，安裝 Windows 適用的 OpenSSL。
-如果您已在 Windows 裝置上安裝 OpenSSL，則可以略過此步驟，但請確定您的 PATH 環境變數中有可用的 openssl.exe。
+如果您已在 Windows 裝置上安裝 OpenSSL，請確定您的 PATH 環境變數中有可用的 openssl.exe。
 
 有幾種方式可安裝 OpenSSL，包括下列選項：
 
@@ -183,7 +183,7 @@ Azure IoT Edge 的 git 存放庫包含可供您用來產生測試憑證的腳本
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>建立 IoT Edge 的裝置身分識別憑證
 
-裝置身分識別憑證可用來透過 Azure IoT 中樞裝置布建 [服務（ (DPS) ](../iot-dps/index.yml)）布建 IoT Edge 裝置。
+裝置身分識別憑證可用來透過 Azure IoT 中樞裝置布建服務（ (DPS) ）布建 IoT Edge 裝置。
 
 裝置身分識別憑證會進入 IoT Edge 裝置上 yaml**檔案的布建區段。**
 
@@ -247,8 +247,6 @@ New-CACertsEdgeDeviceIdentity "<name>"
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
 傳遞至 **CACertsEdgeDevice** 命令的名稱不應與 yaml 中的 hostname 參數或 IoT 中樞內的裝置識別碼相同。
-此腳本可協助您避免任何問題，方法是將 "ca" 字串附加至憑證名稱，以避免在使用者使用相同名稱在兩個位置中設定 IoT Edge 時發生名稱衝突。
-不過，最好避免使用相同的名稱。
 
 ### <a name="linux"></a>Linux
 
@@ -266,8 +264,6 @@ New-CACertsEdgeDeviceIdentity "<name>"
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
 傳遞給 **create_edge_device_certificate** 命令的名稱不應與 yaml 中的 hostname 參數或 IoT 中樞內的裝置識別碼相同。
-此腳本可協助您避免任何問題，方法是將 "ca" 字串附加至憑證名稱，以避免在使用者使用相同名稱在兩個位置中設定 IoT Edge 時發生名稱衝突。
-不過，最好避免使用相同的名稱。
 
 ## <a name="create-downstream-device-certificates"></a>建立下游裝置憑證
 

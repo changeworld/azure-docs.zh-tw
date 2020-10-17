@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265930"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145266"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證工作階段管理
 
@@ -134,9 +134,8 @@ Azure Active Directory 的 (Azure AD) 使用者登入頻率的預設設定是90�
 
 ## <a name="policy-deployment"></a>原則部署
 
-若要確定您的原則會如預期般運作，建議的最佳做法是先測試，再推出到生產環境。 在理想情況下，可以使用測試租用戶來驗證您的新原則是否如預期般運作。 如需詳細資訊，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
+若要確定您的原則會如預期般運作，建議的最佳做法是先測試，再推出到生產環境。 在理想情況下，可以使用測試租用戶來驗證您的新原則是否如預期般運作。 如需詳細資訊，請參閱 [一文規劃條件式存取部署](plan-conditional-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如果您想要知道如何設定條件式存取原則，請參閱本文 [需要具有 Azure Active Directory 條件式存取的特定應用程式的 MFA](../authentication/tutorial-enable-azure-mfa.md)。
-* 如果您已準備好設定環境的條件式存取原則，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
+* 如果您已準備好設定環境的條件式存取原則，請參閱 [一文規劃條件式存取部署](plan-conditional-access.md)。

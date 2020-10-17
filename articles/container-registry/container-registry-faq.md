@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570505"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148524"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
@@ -37,7 +37,7 @@ ms.locfileid: "91570505"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中的映像是否有安全性弱點掃描？
 
-是。 請參閱 [Azure 資訊安全中心](../security-center/azure-container-registry-integration.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文件。
+是。 請參閱 [Azure 資訊安全中心](../security-center/defender-for-container-registries-introduction.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文件。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure Container Registry 設定 Kubernetes？
 
@@ -259,7 +259,7 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何啟用匿名提取存取？
 
-設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您在登錄中 [ (使用者) 或權杖資源的任何範圍對應](https://aka.ms/acr/repo-permissions) ，請先將其刪除再提出支援票證， (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您在登錄中 [ (使用者) 或權杖資源的任何範圍對應](./container-registry-repository-scoped-permissions.md) ，請先將其刪除再提出支援票證， (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
 > [!NOTE]
 > 您只能以匿名方式存取提取已知映射所需的 Api。 您可以匿名存取標記清單或存放庫清單等作業的其他 Api。
@@ -443,7 +443,7 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>為什麼我的提取或推送要求失敗，且不允許作業？
 
 以下是可能不允許作業的一些案例：
-* 已不再支援傳統登錄。 請使用 [az acr update](/cli/azure/acr#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
+* 已不再支援傳統登錄。 請使用 [az acr update](/cli/azure/acr#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](./container-registry-skus.md)。
 * 映像或存放庫可能已鎖定，所以無法刪除或更新。 您可以使用 [az acr show repository](./container-registry-image-lock.md) 命令來查看目前的屬性。
 * 如果映像處於隔離中，則不允許某些作業。 深入瞭解[隔離](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 * 您的登錄可能已達其 [儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。

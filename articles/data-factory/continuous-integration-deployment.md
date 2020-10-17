@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616885"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147447"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -656,7 +656,7 @@ ms.locfileid: "91616885"
     - 資料處理站實體彼此相依。 例如，觸發程序取決於管線，而管線取決於資料集和其他管線。 選擇性發佈資源子集可能會導致非預期的行為和錯誤。
     - 在少數情況下，當您需要選擇性發佈時，請考慮使用 Hotfix。 如需詳細資訊，請參閱 [修復生產環境](#hotfix-production-environment)。
 
-- Azure Data Factory 小組不建議將 RBAC 控制項指派給資料處理站中 (管線、資料集等) 的個別實體。 例如，如果開發人員有管線或資料集的存取權，就應該能夠存取 data factory 中的所有管線或資料集。 如果您認為您需要在資料處理站內執行許多 RBAC 角色，請查看部署第二個 data factory。
+- Azure Data Factory 團隊不建議將 Azure RBAC 控制項指派給資料處理站中 (管線、資料集等) 的個別實體。 例如，如果開發人員有管線或資料集的存取權，就應該能夠存取 data factory 中的所有管線或資料集。 如果您認為您需要在資料處理站內執行許多 Azure 角色，請查看部署第二個 data factory。
 
 -   您無法從私人分支發佈。
 

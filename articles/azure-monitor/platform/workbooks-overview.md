@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932391"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143630"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
@@ -97,7 +97,7 @@ ms.locfileid: "91932391"
 
 ![基礎 Kusto 查詢的螢幕擷取畫面](./media/workbooks-overview/kusto.png)
 
-按一下右側的其他 [ **編輯** ] 按鈕，即可顯示組成活頁簿的一些核心元件，例如以 markdown 為基礎的 [文字方塊](workbooks-visualizations.md#text)、 [參數選取](workbooks-parameters.md) UI 元素，以及其他 [圖表/視覺效果類型](workbooks-visualizations.md)。 
+按一下右側的其他 [ **編輯** ] 按鈕，即可顯示組成活頁簿的一些核心元件，例如以 markdown 為基礎的 [文字方塊](workbooks-text-visualizations.md)、 [參數選取](workbooks-parameters.md) UI 元素，以及其他 [圖表/視覺效果類型](#visualizations)。 
 
 在編輯模式中探索預先建立的範本，然後加以修改以符合您的需求，並儲存您自己的自訂活頁簿，是開始學習 Azure 監視器活頁簿有哪些可能的絕佳方法。
 
@@ -129,5 +129,5 @@ ms.locfileid: "91932391"
 
 ## <a name="next-step"></a>後續步驟
 
-* [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
+* [開始深入](#visualizations) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

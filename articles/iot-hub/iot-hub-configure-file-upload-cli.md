@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302520"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142619"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 來設定 IoT 中樞檔案上傳
 
@@ -25,17 +25,17 @@ ms.locfileid: "78302520"
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用此[ `az iot hub create` 命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 iot 中樞](iot-hub-create-through-portal.md)。
+* Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用此[ `az iot hub create` 命令](/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 iot 中樞](iot-hub-create-through-portal.md)。
 
-* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，您可以使用 Azure CLI 建立一個帳戶。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，您可以使用 Azure CLI 建立一個帳戶。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登入並設定 Azure 帳戶
 
 登入您的 Azure 帳戶並選取您的訂用帳戶。
 
-1. 在命令提示字元中，執行[登入命令](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)：
+1. 在命令提示字元中，執行[登入命令](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)：
 
     ```azurecli
     az login
@@ -43,7 +43,7 @@ ms.locfileid: "78302520"
 
     依照指示使用程式碼進行驗證，並透過網頁瀏覽器登入 Azure 帳戶。
 
-2. 如果您有多個 Azure 訂用帳戶，則登入 Azure 會授予您所有與認證相關聯之 Azure 帳戶的存取權。 使用下列[命令列出 Azure 帳戶](https://docs.microsoft.com/cli/azure/account) \(英文\) 以供您使用：
+2. 如果您有多個 Azure 訂用帳戶，則登入 Azure 會授予您所有與認證相關聯之 Azure 帳戶的存取權。 使用下列[命令列出 Azure 帳戶](/cli/azure/account) \(英文\) 以供您使用：
 
     ```azurecli
     az account list
@@ -144,5 +144,5 @@ az iot hub show --name {your iot hub name}
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
 * [IoT 中樞開發人員指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)
 * [徹底保護您的 IoT 解決方案](../iot-fundamentals/iot-security-ground-up.md)

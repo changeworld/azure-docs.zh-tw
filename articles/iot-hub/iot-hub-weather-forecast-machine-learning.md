@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777151"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145770"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>使用 Azure Machine Learning Studio 中 IoT 中樞的感應器資料進行氣象預報 (傳統) 
 
@@ -46,7 +46,7 @@ ms.locfileid: "91777151"
   - 位於您訂用帳戶中的 Azure IoT 中樞。
   - 將訊息傳送到您 Azure IoT 中樞的用戶端應用程式。
 - [Azure Machine Learning Studio (傳統版)](https://studio.azureml.net/) 帳戶。
-- 慣用的 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts)（ **一般用途 v2** 帳戶），但任何支援 Azure Blob 儲存體的 Azure 儲存體帳戶也可以運作。
+- 慣用的 [Azure 儲存體帳戶](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts)（ **一般用途 v2** 帳戶），但任何支援 Azure Blob 儲存體的 Azure 儲存體帳戶也可以運作。
 
 > [!Note]
 > 本文使用 Azure 串流分析和數個其他付費服務。 必須在 Azure 區域之間傳輸資料時，Azure 串流分析中會產生額外費用。 基於這個理由，確定您的資源群組、IoT 中樞和 Azure 儲存體帳戶，以及稍後在本教學課程中新增的 Machine Learning Studio (傳統) 工作區和 Azure 串流分析作業，都位於相同的 Azure 區域。 您可以在 [ [依區域的 Azure 產品可用性] 頁面](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)上，查看 Azure Machine Learning Studio (傳統) 和其他 azure 服務的區域支援。
@@ -189,7 +189,7 @@ ms.locfileid: "91777151"
 
    ![在 Azure 中將輸出新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-output-stream-analytics-job.png)
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>將功能新增至串流分析作業，以呼叫您所部署的 Web 服務
 
