@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84634364"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146776"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 將 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -140,9 +140,9 @@ ms.locfileid: "84634364"
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>建立及發佈 Power BI 報告，以將資料視覺化。
 
-下列步驟示範如何使用 Power BI 服務建立和發行報表。 如果您想要使用 Power BI 中的「新外觀」，可以遵循這些步驟，並進行一些修改。 若要瞭解差異以及如何在「新外觀」中流覽，請參閱 [Power BI 服務的「新外觀](https://docs.microsoft.com/power-bi/consumer/service-new-look)」。
+下列步驟示範如何使用 Power BI 服務建立和發行報表。 如果您想要使用 Power BI 中的「新外觀」，可以遵循這些步驟，並進行一些修改。 若要瞭解差異以及如何在「新外觀」中流覽，請參閱 [Power BI 服務的「新外觀](/power-bi/consumer/service-new-look)」。
 
-1. 確保範例應用程式正在您的裝置上執行。 如果沒有，您可以參考[設定您的裝置](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)下的教學課程。
+1. 確保範例應用程式正在您的裝置上執行。 如果沒有，您可以參考[設定您的裝置](./iot-hub-raspberry-pi-kit-node-get-started.md)下的教學課程。
 
 2. 登入您的 [Power BI](https://powerbi.microsoft.com/en-us/) 帳戶。
 
@@ -195,7 +195,7 @@ ms.locfileid: "84634364"
 
 Microsoft 也會提供 [Power BI 行動應用程式](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/)，以供檢視並與您行動裝置上的 Power BI 儀表板和報告互動。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您已成功使用 Power BI 將 Azure IoT 中樞的即時感應器資料視覺化。
 

@@ -80,6 +80,10 @@
           href: redirect-overview.md
         - name: 重新撰寫 HTTP 標頭和 URL
           href: rewrite-http-headers-url.md
+        - name: 安全性
+          items:
+            - name: 安全性基準
+              href: security-baseline.md
     - name: SSL
       items:
         - name: SSL 終止和端對端 SSL
@@ -298,5 +302,5 @@
       href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-application-gateway'

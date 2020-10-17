@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766977"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147689"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>建立及讀取 IoT 中樞訊息
 
@@ -24,7 +24,7 @@ ms.locfileid: "91766977"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT 中樞使用串流訊息模式實作裝置到雲端傳訊。 IoT 中樞的裝置到雲端訊息與[事件中樞](/azure/event-hubs/)事件較為相似 (而不像[服務匯流排](/azure/service-bus-messaging/)訊息) 因為會有大量的事件傳遞給該服務，並可由多個讀取器讀取。
+IoT 中樞使用串流訊息模式實作裝置到雲端傳訊。 IoT 中樞的裝置到雲端訊息與[事件中樞](../event-hubs/index.yml)事件較為相似 (而不像[服務匯流排](../service-bus-messaging/index.yml)訊息) 因為會有大量的事件傳遞給該服務，並可由多個讀取器讀取。
 
 IoT 中樞訊息包含：
 

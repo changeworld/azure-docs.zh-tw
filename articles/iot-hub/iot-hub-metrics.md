@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49ecf753b1dd547eab251222a6c2709d96e9c89b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767621"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146530"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
 # <a name="understand-iot-hub-metrics"></a>了解 IoT 中樞計量
@@ -46,7 +46,7 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 
 |計量|計量顯示名稱|Unit|彙總類型|描述|維度|
 |---|---|---|---|---|---|
-|RoutingDeliveries | 路由傳送嘗試 (預覽)  | Count | 總計 |這是路由傳遞度量。 使用維度來識別特定端點或特定路由來源的傳遞狀態。| Id<br>Result,<br>RoutingSource,<br>EndpointType<br>FailureReasonCategory,<br>EndpointName<br>*[**這裡**](#dimensions)的維度有更多詳細資料*。 |
+|RoutingDeliveries | 路由傳送嘗試 (預覽)  | 計數 | 總計 |這是路由傳遞度量。 使用維度來識別特定端點或特定路由來源的傳遞狀態。| Id<br>Result,<br>RoutingSource,<br>EndpointType<br>FailureReasonCategory,<br>EndpointName<br>*[**這裡**](#dimensions)的維度有更多詳細資料*。 |
 |RoutingDeliveryLatency|  (預覽版的路由延遲)  | 毫秒 | Average |這是路由傳遞延遲度量。 使用維度來識別特定端點或特定路由來源的延遲。| Id<br>RoutingSource,<br>EndpointType<br>EndpointName<br>*[**這裡**](#dimensions)的維度有更多詳細資料*。|
 |RoutingDataSizeInBytesDelivered| 路由傳送資料大小（以位元組為單位） (預覽) | 位元組 | 總計 |IoT 中樞路由至自訂端點和內建端點的總位元組數。 使用維度來識別路由至特定端點或特定路由來源的資料大小。| Id<br>RoutingSource,<br>EndpointType<br>EndpointName<br>*[**這裡**](#dimensions)的維度有更多詳細資料*。|
 |d2c。<br>allProtocol|遙測訊息傳送嘗試|Count|總計|要嘗試傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
@@ -139,4 +139,4 @@ IoT 中樞提供數個度量，以讓您概略了解中樞的健全狀況和所�
 
 * [IoT 中樞開發人員指南](iot-hub-devguide.md)
 
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)

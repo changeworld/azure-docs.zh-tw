@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983004"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147749"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
 ## <a name="overview"></a>概觀
-本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
+本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](./overview.md) 中的應用程式進行偵錯，方法是以[偵錯模式](/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
 您將了解：
 
@@ -49,7 +49,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
    >
    >
 
-    如需從 Visual Studio 連線至 Azure 資源的詳細資訊，請參閱 [管理帳戶、訂閱和系統管理角色](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)。
+    如需從 Visual Studio 連線至 Azure 資源的詳細資訊，請參閱 [管理帳戶、訂閱和系統管理角色](../role-based-access-control/role-assignments-portal.md)。
 2. 在 [伺服器總管]**** 中，展開 [Azure]****，然後展開 [App Service]****。
 3. 展開包含應用程式的資源群組 (該應用程式是您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中建立的)，然後使用滑鼠右鍵按一下應用程式節點，然後按一下 [檢視設定]****。
 
@@ -125,7 +125,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     }
     ```
 
-1. [在 `ViewBag.Message`這行設定中斷點](https://docs.microsoft.com/visualstudio/debugger/)。
+1. [在 `ViewBag.Message`這行設定中斷點](/visualstudio/debugger/)。
 
 1. 在 **方案總管**中，以滑鼠右鍵按一下專案，然後按一下 [ **發佈**]。
 
@@ -176,7 +176,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 2. 在 ContosoAdsWebJob 專案中，開啟 *Functions.cs*。
 
-3. 在 `GnerateThumbnail` 方法的第一個陳述式上[設定中斷點](https://docs.microsoft.com/visualstudio/debugger/)。
+3. 在 `GnerateThumbnail` 方法的第一個陳述式上[設定中斷點](/visualstudio/debugger/)。
 
     ![設定中斷點](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -241,7 +241,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* 如果您發現偵錯工具不會逐步執行您要進行偵錯的程式碼，可能需要變更 [Just My Code] 設定。  如需詳細資訊，請參閱[指定是否使用 Visual Studio 中的 Just My Code 只對使用者程式碼進行偵錯](https://docs.microsoft.com/visualstudio/debugger/just-my-code)。
+* 如果您發現偵錯工具不會逐步執行您要進行偵錯的程式碼，可能需要變更 [Just My Code] 設定。  如需詳細資訊，請參閱[指定是否使用 Visual Studio 中的 Just My Code 只對使用者程式碼進行偵錯](/visualstudio/debugger/just-my-code)。
 * 當您啟用遠端偵錯功能時，伺服器上會啟動計時器，並在 48 小時後自動關閉此功能。 此 48 小時的限制是為了安全性與效能起見而設計的功能。 若需要，您可以輕鬆開啟這項功能，次數不限。 當您不需要偵錯時，建議您將其保持為停用。
 * 您可以手動將偵錯工具附加至任何處理序，不僅止於應用程式處理序 (w3wp.exe)。 如需如何在 Visual Studio 中使用偵錯模式的詳細資訊，請參閱 [Visual Studio 偵錯](/visualstudio/debugger/debugging-in-visual-studio)。
 
@@ -330,7 +330,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     ```
 
 `WebPageTraceListener` 可讓您藉由瀏覽至 `/trace.axd` 來檢視追蹤輸出。
-1. 在 Web.config 檔案的 `<system.web>` 下方，加入<a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">追蹤元素</a>，如以下範例所示：
+1. 在 Web.config 檔案的 `<system.web>` 下方，加入<a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">追蹤元素</a>，如以下範例所示：
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -505,7 +505,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -624,7 +624,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 如需特定疑難排解問題的說明，請在下列任一個論壇中開啟一段討論串：
 
 * [ASP.NET 網站上的 Azure 論壇](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [Microsoft Q&上的 Azure 論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+* [Microsoft Q&上的 Azure 論壇](/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio 偵錯

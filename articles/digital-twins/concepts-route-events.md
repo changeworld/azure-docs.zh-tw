@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 瞭解如何將 Azure 數位 Twins 內的事件路由傳送至其他 Azure 服務。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044287"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145980"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -91,6 +91,20 @@ await client.CreateEventRoute("routeName", er);
 > 所有 SDK 函式都有同步和非同步版本。
 
 您也可以使用 [Azure 數位 TWINS CLI](how-to-use-cli.md)來建立路由。
+
+## <a name="dead-letter-events"></a>無效信件事件
+當端點無法在某段時間內或在嘗試傳遞事件一段特定的次數之後傳遞事件時，它可以將未傳遞的事件傳送至儲存體帳戶。 此處理程式稱為無效**信件。** 當符合 **下列其中一個** 條件時，Azure 數位 Twins 將會寄不出信件給您的事件。 
+
+- 事件不會在存留時間期間傳遞
+- 嘗試傳遞事件的次數已超過限制
+
+如果符合其中一個條件，就會捨棄事件或寄不出的信件。  依預設，每個端點都 **不會開啟無效** 信件。 若要啟用它，您必須在建立端點時指定儲存體帳戶來保存未傳遞的事件。 您可從這個儲存體帳戶提取事件，以解析傳遞項目。
+
+在設定無效信件位置之前，您必須先有具備容器的儲存體帳戶。 建立端點時，您會提供此容器的 URL。 寄不出的信件是以具有 SAS 權杖的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+
+若要深入瞭解 SAS 權杖，請參閱： [*使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源) *](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+
+若要瞭解如何設定寄不出的信件，請參閱作法 [*：在 Azure 數位 Twins 中管理端點和路由 (api 和 CLI) *](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
 
 ### <a name="types-of-event-messages"></a>事件訊息的類型
 

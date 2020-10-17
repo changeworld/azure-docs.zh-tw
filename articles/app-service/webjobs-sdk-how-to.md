@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962004"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148074"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -986,7 +986,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` 物件會設定[調適型取樣](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)。 這表示在某些高容量的情況下，Application Insights 會傳送所選取的遙測資料子集至伺服器。
+`SamplingPercentageEstimatorSettings` 物件會設定[調適型取樣](../azure-monitor/app/sampling.md)。 這表示在某些高容量的情況下，Application Insights 會傳送所選取的遙測資料子集至伺服器。
 
 建立遙測中心之後，您會將其傳遞給 Application Insights 記錄提供者：
 

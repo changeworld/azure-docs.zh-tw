@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327458"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145866"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>將 Raspberry Pi 連接至 Azure IoT Hub (C)
 
@@ -154,7 +154,7 @@ BME280 感應器可以收集溫度和溼度資料。 而如果裝置與雲端之
 | SDI (針腳 23F)            | SPI0 MOSI (針腳 19)     | 綠色纜線   |
 | CS (針腳 24F)             | SPI0 CS (針腳 24)       | 藍色纜線    |
 
-按一下以檢視 [Raspberry Pi 2 和 3 針腳對應](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi)進行參考。
+按一下以檢視 [Raspberry Pi 2 和 3 針腳對應](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi)進行參考。
 
 將 BME280 成功連接至 Raspberry Pi 之後，應該如下圖所示。
 
@@ -236,7 +236,7 @@ BME280 感應器可以收集溫度和溼度資料。 而如果裝置與雲端之
 
 如需更多處理裝置所傳送資料的方式，請繼續下一節。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您已執行範例應用程式收集感應器資料並傳送至 IoT 中樞。
 

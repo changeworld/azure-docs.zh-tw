@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 709ebacc66382d75b79cd41edf88cad962dfd7c2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029829"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147719"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中樞的身分識別登錄
 
@@ -84,7 +84,7 @@ IoT 方案通常具有不同的方案專屬存放區，其中包含應用程式�
 
 如需有關匯入和匯出 API 的詳細資訊，請參閱 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource)。 若要深入了解如何執行匯入和匯出作業，請參閱[大量管理 IoT 中樞的裝置身分識別](iot-hub-bulk-identity-mgmt.md)。
 
-您也可以透過服務 API，透過 [REST API](/rest/api/iothub/service/jobs/createimportexportjob) 或其中一個 IoT 中樞 [服務 Sdk](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)，從 IoT 中樞匯出和匯入裝置身分識別。
+您也可以透過服務 API，透過 [REST API](/rest/api/iothub/service/jobs/createimportexportjob) 或其中一個 IoT 中樞 [服務 Sdk](./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)，從 IoT 中樞匯出和匯入裝置身分識別。
 
 ## <a name="device-provisioning"></a>裝置佈建
 
@@ -112,7 +112,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 
 裝置的通知訊息：
 
-| 名稱 | 值 |
+| Name | 值 |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  傳送通知的時間 |
@@ -148,7 +148,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 ```
 模組的通知訊息：
 
-| 名稱 | 值 |
+| Name | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  傳送通知的時間 |
@@ -188,7 +188,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 裝置身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項。 | 描述 |
+| 屬性 | 選項 | 描述 |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
@@ -212,7 +212,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 模組身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項。 | 描述 |
+| 屬性 | 選項 | 描述 |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
 | moduleId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356062"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147907"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>搖一搖以獲取推文 -- 使用 Azure Functions 擷取 Twitter 訊息
 
@@ -23,7 +23,7 @@ ms.locfileid: "91356062"
 
 ## <a name="what-you-need"></a>您需要什麼
 
-完成[使用者入門指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)以便：
+完成[使用者入門指南](./iot-hub-arduino-iot-devkit-az3166-get-started.md)以便：
 
 * 讓 DevKit 連線至 Wi-Fi。
 * 準備開發環境。
@@ -207,4 +207,4 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
 
 您已了解如何將 DevKit 裝置連線至 Azure IoT 遠端監視解決方案加速器並擷取推文，以下是建議的後續步驟：
 
-* [Azure IoT 遠端監視解決方案加速器概觀](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT 遠端監視解決方案加速器概觀](/azure/iot-suite/)

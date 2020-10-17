@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: c51b99ed04357cdebaabbde2b2bd0400adcfef30
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134135"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147911"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -56,7 +56,7 @@ Private Link （預設為停用）需要廣泛的網路知識，才能在建立�
 
 當 `privateLink` 設定為 [ *啟用*] 時，系統就會建立 (SLB) 的內部 [標準負載平衡](../load-balancer/load-balancer-overview.md) 器，並為每個 SLB 布建 Azure Private Link 服務。 Private Link 服務可讓您從私人端點存取 HDInsight 叢集。
 
-標準負載平衡器不會自動提供公用輸出 NAT，例如基本負載平衡器。 您必須提供自己的 NAT 解決方案，例如 [虛擬網路 NAT](../virtual-network/nat-overview.md) 或 [防火牆](./hdinsight-restrict-outbound-traffic.md)，以提供輸出相依性。 您的 HDInsight 叢集仍然需要存取其輸出相依性。 如果不允許這些輸出相依性，叢集建立可能會失敗。
+標準負載平衡器不會自動提供 [公用輸出 NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) ，例如基本負載平衡器。 您必須提供自己的 NAT 解決方案，例如 [虛擬網路 NAT](../virtual-network/nat-overview.md) 或 [防火牆](./hdinsight-restrict-outbound-traffic.md)，以提供輸出相依性。 您的 HDInsight 叢集仍然需要存取其輸出相依性。 如果不允許這些輸出相依性，叢集建立可能會失敗。
 
 ### <a name="prepare-your-environment"></a>準備您的環境
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494480"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147953"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure 資料箱和 Azure Data Box Heavy 匯出訂單的追蹤和事件記錄
 
@@ -25,7 +25,7 @@ ms.locfileid: "87494480"
 
 | 資料箱匯出訂單階段       | 追蹤和審核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 建立訂單               | [透過 RBAC 設定訂單上的存取控制](#set-up-access-control-on-the-order) <br> [依序啟用詳細資訊記錄](#enable-verbose-log-in-the-order)                                                    |
+| 建立訂單               | [透過 Azure RBAC 設定訂單的存取控制](#set-up-access-control-on-the-order) <br> [依序啟用詳細資訊記錄](#enable-verbose-log-in-the-order)                                                    |
 | 訂單處理            | [追蹤順序](#track-the-order) <ul><li> Azure 入口網站 </li><li> 貨運承運商網站 </li><li>電子郵件通知</ul> |
 | 設定裝置              | 記錄在[活動記錄](#query-activity-logs-during-setup)中的裝置認證存取              |
 | 從裝置複製資料        | [審核複製記錄](#copy-log) <br> 複製資料之前，請先[參閱詳細資訊記錄](#verbose-log)            |
@@ -46,7 +46,7 @@ ms.locfileid: "87494480"
 - 指派訂單層級的角色。 使用者只具有角色所定義的許可權，才能與特定的資料箱訂單互動，而不是其他任何專案。
 - 在資源群組層級指派角色，使用者即可存取資源群組內的所有資料箱訂單。
 
-如需有關建議使用 RBAC 的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../role-based-access-control/best-practices.md)。
+如需有關建議使用的 Azure RBAC 的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../role-based-access-control/best-practices.md)。
 
 ## <a name="enable-verbose-log-in-the-order"></a>依序啟用詳細資訊記錄
 
@@ -303,6 +303,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [針對資料箱和 Data Box Heavy 的問題進行疑難排解](data-box-troubleshoot.md)。

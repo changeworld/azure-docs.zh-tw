@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: da108e5f4832b1b72f252803ca0f4bc93c011c9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28b82c87442257124f286a5e7c949afe7f001019
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327628"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146935"
 ---
 # <a name="get-started-with-device-management-java"></a>開始使用裝置管理 (Java)
 
@@ -54,7 +54,7 @@ ms.locfileid: "87327628"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [Java SE 開發套件 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 請務必選取 [長期支援] 下的 [Java 8]，以取得 JDK 8 的下載。
+* [Java SE 開發套件 8](/java/azure/jdk/?view=azure-java-stable)。 請務必選取 [長期支援] 下的 [Java 8]，以取得 JDK 8 的下載。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

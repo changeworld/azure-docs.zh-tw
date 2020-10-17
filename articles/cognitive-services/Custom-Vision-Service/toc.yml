@@ -39,7 +39,7 @@
       href: use-prediction-api.md
     - name: 使用智慧型 Labeler
       href: suggested-tags.md
-    - name: 角色型存取控制
+    - name: Azure 角色型存取控制
       href: role-based-access-control.md
     - name: 匯出模型
       items:
@@ -87,7 +87,7 @@
       href: limits-and-quotas.md
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498798"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147933"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>您 Azure 資料箱和 Azure Data Box Heavy 匯入順序的追蹤和事件記錄
 
@@ -23,7 +23,7 @@ ms.locfileid: "87498798"
 
 | 資料箱匯入順序階段       | 追蹤和審核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 建立訂單               | [透過 RBAC 設定訂單上的存取控制](#set-up-access-control-on-the-order)                                                    |
+| 建立訂單               | [透過 Azure RBAC 設定訂單的存取控制](#set-up-access-control-on-the-order)                                                    |
 | 訂單處理            | [追蹤順序](#track-the-order) <ul><li> Azure 入口網站 </li><li> 貨運承運商網站 </li><li>電子郵件通知</ul> |
 | 設定裝置              | 記錄在[活動記錄](#query-activity-logs-during-setup)中的裝置認證存取                                              |
 | 將資料複製到裝置        | [查看*error.xml* ](#view-error-log-during-data-copy)資料複製的error.xml檔案                                                             |
@@ -47,7 +47,7 @@ ms.locfileid: "87498798"
 - 指派訂單層級的角色。 使用者只具有角色所定義的許可權，才能與特定的資料箱訂單互動，而不是其他任何專案。
 - 在資源群組層級指派角色，使用者即可存取資源群組內的所有資料箱訂單。
 
-如需有關建議使用 RBAC 的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../role-based-access-control/best-practices.md)。
+如需有關建議使用的 Azure RBAC 的詳細資訊，請參閱 [AZURE rbac 的最佳做法](../role-based-access-control/best-practices.md)。
 
 ## <a name="track-the-order"></a>追蹤訂單狀態
 
@@ -76,7 +76,7 @@ ms.locfileid: "87498798"
 
 ### <a name="errorxml-file"></a>Error.xml 檔案
 
-請確定複製作業已完成，且沒有任何錯誤。 如果複製流程中發生錯誤，請從 [連線並複製]**** 頁面中下載記錄。
+請確定複製作業已完成，且沒有任何錯誤。 如果複製流程中發生錯誤，請從 [連線並複製]  頁面中下載記錄。
 
 - 如果您複製的檔案與資料箱上的受控磁片資料夾不是512位元組，該檔案就不會以分頁 blob 的形式上傳至您的暫存儲存體帳戶。 您將在記錄中看到錯誤。 移除檔案，並複製 512 位元組規格的檔案。
 - 如果您複製了 VHDX、動態 VHD 或差異 VHD (不支援這些檔案) ，您將會在記錄中看到錯誤。
@@ -411,6 +411,6 @@ Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [針對資料箱和 Data Box Heavy 的問題進行疑難排解](data-box-troubleshoot.md)。

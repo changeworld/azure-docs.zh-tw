@@ -4,19 +4,19 @@ description: 使用 Azure IoT Edge 裝置作為可處理來自下游裝置之資
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/12/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048401"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147849"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>設定 IoT Edge 裝置作為透明閘道
 
@@ -31,8 +31,8 @@ ms.locfileid: "92048401"
 設定成功的透明閘道連線有三個一般步驟。 本文涵蓋第一個步驟：
 
 1. **將閘道裝置設定為伺服器，讓下游裝置可以安全地連接到該裝置。設定閘道以接收來自下游裝置的訊息，並將其路由傳送至適當的目的地。**
-2. 建立下游裝置的裝置身分識別，使其可以向 IoT 中樞進行驗證。 設定下游裝置以透過閘道裝置傳送訊息。 如需詳細資訊，請參閱 [驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)。
-3. 將下游裝置連線到閘道裝置，並開始傳送訊息。 如需詳細資訊，請參閱[將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
+2. 建立下游裝置的裝置身分識別，使其可以向 IoT 中樞進行驗證。 設定下游裝置以透過閘道裝置傳送訊息。 如需這些步驟，請參閱 [驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)。
+3. 將下游裝置連線到閘道裝置，並開始傳送訊息。 如需這些步驟，請參閱 [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
 
 若要讓裝置作為閘道，則必須安全地連接到其下游裝置。 Azure IoT Edge 可讓您使用公開金鑰基礎結構 (PKI)，設定這些裝置之間的安全連線。 在此情況下，我們將允許下游裝置連線至作為透明閘道的 IoT Edge 裝置。 為了維持合理的安全性，下游裝置應確認閘道裝置的身分識別。 此身分識別檢查可防止您的裝置連線至可能是惡意的閘道。
 
@@ -45,9 +45,11 @@ ms.locfileid: "92048401"
 
 下列步驟將逐步引導您建立憑證，並將其安裝在閘道上的適當位置。 您可以使用任何電腦產生憑證，然後再將其複製到您的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 已安裝 IoT Edge 的 Linux 或 Windows 裝置。
+
+如果您沒有裝置可供使用，您可以在 Azure 虛擬機器中建立一個。 遵循將您的 [第一個 IoT Edge 模組部署至虛擬 Linux 裝置](quickstart-linux.md) 的步驟，以建立 IoT 中樞、建立虛擬機器，以及設定 IoT Edge 執行時間。 
 
 ## <a name="set-up-the-device-ca-certificate"></a>設定裝置 CA 憑證
 
@@ -68,24 +70,27 @@ ms.locfileid: "92048401"
 
 針對生產案例，您應該使用您自己的憑證授權單位單位來產生這些檔案。 針對開發和測試案例，您可以使用示範憑證。
 
-1. 如果您使用的是示範憑證，請使用下列一組步驟來建立您的檔案：
-   1. [建立根 CA 憑證](how-to-create-test-certificates.md#create-root-ca-certificate)。 在這些指示的結尾，您將會有根 CA 憑證檔案：
-      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+1. 如果您使用示範憑證，請使用 [建立示範憑證中的指示來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md) ，以建立您的檔案。 在該頁面上，您必須執行下列步驟：
 
-   2. [建立 IoT Edge 的裝置 CA 憑證](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates)。 在這些指示的結尾，您將會有兩個檔案，也就是裝置 CA 憑證及其私密金鑰：
+   1. 若要開始，請在您的裝置上設定用來產生憑證的腳本。
+   2. 建立根 CA 憑證。 在這些指示的結尾，您將會有根 CA 憑證檔案：
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+   3. 建立 IoT Edge 的裝置 CA 憑證。 在這些指示的結尾，您將會有裝置 CA 憑證和其私密金鑰：
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`和
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. 如果您在不同的電腦上建立這些檔案，請將它們複製到您的 IoT Edge 裝置。
+2. 如果您在不同的電腦上建立憑證，請將它們複製到您的 IoT Edge 裝置。
 
 3. 在您的 IoT Edge 裝置上，開啟安全 daemon 設定檔案。
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-4. 尋找檔案的 **憑證** 區段，並提供檔案 uri 給您的三個檔案，作為下列屬性的值：
+4. 尋找檔案的 **憑證設定** 區段。 將開頭為 **憑證** 的四行取消批註，並提供檔案 uri 給您的三個檔案，作為下列屬性的值：
    * **device_ca_cert**：裝置 ca 憑證
    * **device_ca_pk**：裝置 ca 私密金鑰
    * **trusted_ca_certs**：根 ca 憑證
+
+   請確定 [ **憑證：** ] 行上沒有任何先前的空格，而其他行則以兩個空格縮排。
 
 5. 儲存並關閉檔案。
 
@@ -117,7 +122,7 @@ ms.locfileid: "92048401"
 
 5. 選取 **[下一步：路由]**。
 
-6. 在 [ **路由** ] 頁面上，確定有路由可處理來自下游裝置的訊息。 例如︰
+6. 在 [ **路由** ] 頁面上，確定有路由可處理來自下游裝置的訊息。 例如：
 
    * 從模組或下游裝置將所有訊息傳送至 IoT 中樞的路由：
        * **名稱**：`allMessagesToHub`
@@ -146,14 +151,6 @@ ms.locfileid: "92048401"
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="enable-extended-offline-operation"></a>啟用擴充離線操作
-
-從 IoT Edge 執行時間的 [1.0.4 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) 開始，連線到該閘道的閘道裝置和下游裝置可設定為擴充離線作業。
-
-使用這項功能時，本機模組或下游裝置可以視需要向 IoT Edge 裝置重新驗證，並使用訊息和方法彼此通訊，即使是從 IoT 中樞中斷連線時也一樣。 如需詳細資訊，請參閱[了解適用於 IoT Edge 裝置、模組及子裝置的擴充離線功能](offline-capabilities.md)。
-
-若要啟用擴充的離線功能，您可以在 IoT Edge 閘道裝置與將連接到該裝置的下游裝置之間建立父子式關聯性。 本系列的下一篇文章會更詳細地說明這些步驟，並將 [下游裝置驗證至 Azure IoT 中樞](how-to-authenticate-downstream-device.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

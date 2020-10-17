@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106819"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146322"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
 
@@ -42,7 +42,7 @@ ms.locfileid: "92106819"
 * [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 以進行帳戶管理
 * 適用於存取存放區資料的 POSIX ACL
 
-### <a name="rbac-for-account-management"></a>用於帳戶管理的 RBAC
+### <a name="azure-rbac-for-account-management"></a>適用于帳戶管理的 Azure RBAC
 
 預設會為 Data Lake Storage Gen1 定義四種基本角色。 這些角色允許透過 Azure 入口網站、PowerShell Cmdlet 和 REST API，在 Data Lake Storage Gen1 帳戶上執行不同的作業。 [擁有者] 和 [參與者] 角色可在帳戶上執行各種管理功能。 您可以將「讀取者」角色指派給只檢視帳戶管理資料的使用者。
 
@@ -99,7 +99,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如需帳戶管理稽核線索，請檢視並選擇您想要記錄的資料行。 您也可以將活動記錄匯出至 Azure 儲存體。
 
-![活動記錄檔](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
+![活動記錄](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
 
 如需使用活動記錄的詳細資訊，請參閱[檢視活動記錄以稽核對資源的動作](../azure-resource-manager/management/view-activity-logs.md)。
 

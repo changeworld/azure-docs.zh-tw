@@ -7,15 +7,15 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958247"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147506"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解
-本文可協助您針對 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中應用程式效能變慢的問題進行疑難排解。
+本文可協助您針對 [Azure App Service](./overview.md) 中應用程式效能變慢的問題進行疑難排解。
 
 如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/) ，然後按一下 **取得支援**。
 

@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b762b77788c3df05fbd0db349457abadcbe39b51
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766938"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147705"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點
 
@@ -59,7 +59,7 @@ IoT 中樞支援將資料以 [Apache Avro](https://avro.apache.org/) 格式和 J
 
 只有在設定 blob 儲存體端點時，才可以設定編碼格式;無法編輯現有的端點。 若要切換現有端點的編碼格式，您必須刪除並重新建立具有所需格式的自訂端點。 其中一個實用的策略可能是使用您想要的編碼格式來建立新的自訂端點，並將平行路由新增至該端點。 如此一來，您就可以在刪除現有的端點之前驗證您的資料。
 
-您可以使用 IoT 中樞的 [建立] 或 [更新] REST API （特別是 [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
+您可以使用 IoT 中樞的 [建立] 或 [更新] REST API （特別是 [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或 [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
 
 ![Blob 儲存體端點編碼](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -71,7 +71,7 @@ IoT 中樞支援將資料以 [Apache Avro](https://avro.apache.org/) 格式和 J
 
 您可以使用任何檔案命名慣例，不過，必須使用所有列出的語彙基元。 如果沒有資料可供寫入，IoT 中樞會寫入空的 Blob。
 
-建議您列出 blob 或檔案，然後逐一查看它們，以確保讀取所有 blob 或檔案，而不會對磁碟分割做任何假設。 分割範圍可能會在 [Microsoft 起始的容錯移轉](iot-hub-ha-dr.md#microsoft-initiated-failover)或 IoT 中樞[手動容錯移轉](iot-hub-ha-dr.md#manual-failover)期間變更。 您可以使用「 [清單 BLOB API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 」來列舉檔案清單中的 Blob 或 [清單 ADLS Gen2 api](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 清單。 請參閱下列範例中的指引。
+建議您列出 blob 或檔案，然後逐一查看它們，以確保讀取所有 blob 或檔案，而不會對磁碟分割做任何假設。 分割範圍可能會在 [Microsoft 起始的容錯移轉](iot-hub-ha-dr.md#microsoft-initiated-failover)或 IoT 中樞[手動容錯移轉](iot-hub-ha-dr.md#manual-failover)期間變更。 您可以使用「 [清單 BLOB API](/rest/api/storageservices/list-blobs) 」來列舉檔案清單中的 Blob 或 [清單 ADLS Gen2 api](/rest/api/storageservices/datalakestoragegen2/path/list) 清單。 請參閱下列範例中的指引。
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
@@ -115,12 +115,12 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 * 從[服務匯流排佇列](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)讀取
 
-* 從[服務匯流排主題](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)讀取
+* 從[服務匯流排主題](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)讀取
 
 
 ## <a name="fallback-route"></a>後援路由
 
-後援路由會將與任何現有路由查詢條件不符的所有訊息，傳送至與[事件中樞](/azure/event-hubs/)相容的內建事件中樞 (**訊息/事件**)。 如果訊息路由已開啟，您即可啟用後援路由功能。 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
+後援路由會將與任何現有路由查詢條件不符的所有訊息，傳送至與[事件中樞](../event-hubs/index.yml)相容的內建事件中樞 (**訊息/事件**)。 如果訊息路由已開啟，您即可啟用後援路由功能。 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
 
 您可以啟用/停用 Azure 入口網站 >訊息路由分頁中的回溯路由。 您也可以對於 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 使用 Azure 資源管理員來使用後援路由的自訂端點。
 
@@ -140,7 +140,7 @@ IoT 中樞訊息路由保證會經過排序，且至少會將訊息傳遞至端�
 
 若要處理訊息重複，建議您在來源（通常是裝置或模組）之訊息的應用程式屬性中，標記唯一的識別碼。 取用訊息的服務可以使用此識別碼來處理重複的訊息。
 
-## <a name="latency"></a>Latency
+## <a name="latency"></a>延遲
 
 當您使用內建端點來路由傳送裝置到雲端的遙測訊息時，在建立第一個路由之後，端對端延遲會稍微增加。
 
@@ -148,7 +148,7 @@ IoT 中樞訊息路由保證會經過排序，且至少會將訊息傳遞至端�
 
 ## <a name="monitoring-and-troubleshooting"></a>監視與疑難排解
 
-IoT 中樞提供數個與路由和端點相關的計量，讓您瞭解中樞的健康情況和傳送的訊息。 [IoT 中樞計量](iot-hub-metrics.md)列出對於 IoT 中樞預設啟用的所有計量。 使用 Azure 監視器[診斷設定](../iot-hub/iot-hub-monitor-resource-health.md)中的**路由**診斷記錄，您可以追蹤在評估路由查詢和端點健全狀況時所發生的錯誤，如 IoT 中樞所察覺。 您可以使用 REST API [取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 來取得端點的 [健康情況狀態](iot-hub-devguide-endpoints.md#custom-endpoints) 。 
+IoT 中樞提供數個與路由和端點相關的計量，讓您瞭解中樞的健康情況和傳送的訊息。 [IoT 中樞計量](iot-hub-metrics.md)列出對於 IoT 中樞預設啟用的所有計量。 使用 Azure 監視器[診斷設定](../iot-hub/iot-hub-monitor-resource-health.md)中的**路由**診斷記錄，您可以追蹤在評估路由查詢和端點健全狀況時所發生的錯誤，如 IoT 中樞所察覺。 您可以使用 REST API [取得端點健全狀況](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 來取得端點的 [健康情況狀態](iot-hub-devguide-endpoints.md#custom-endpoints) 。 
 
 如需詳細資料和疑難排解路由的支援，請使用 [疑難排解指南進行路由](troubleshoot-message-routing.md) 。
 

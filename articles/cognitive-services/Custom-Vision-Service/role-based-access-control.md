@@ -1,7 +1,7 @@
 ---
-title: 以角色為基礎的存取控制-自訂視覺
+title: Azure 角色型存取控制-自訂視覺
 titleSuffix: Azure Cognitive Services
-description: 本文將說明如何為您的自訂視覺專案設定角色型存取控制。
+description: 本文將說明如何為您的自訂視覺專案設定 Azure 角色型存取控制。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826931"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146361"
 ---
-# <a name="role-based-access-control"></a>角色型存取控制
+# <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
-自訂視覺支援 Azure 角色型存取控制 (Azure RBAC) 授權系統，可用於管理 Azure 資源的個別存取權。 使用 RBAC，您可以為不同的小組成員指派自訂視覺專案的不同許可權層級。 如需 RBAC 的詳細資訊，請參閱 [AZURE rbac 檔](https://docs.microsoft.com/azure/role-based-access-control/)。
+自訂視覺支援 Azure 角色型存取控制 (Azure RBAC) 授權系統，可用於管理 Azure 資源的個別存取權。 使用 Azure RBAC，您可以為不同的小組成員指派自訂視覺專案的不同許可權層級。 如需有關 Azure RBAC 的詳細資訊，請參閱 [AZURE rbac 檔](https://docs.microsoft.com/azure/role-based-access-control/)。
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>將角色指派新增至自訂視覺資源
 
@@ -27,7 +27,7 @@ ms.locfileid: "91826931"
 1. 在 [Azure 入口網站](https://ms.portal.azure.com/)中，選取 [所有服務]。 
 1. 然後選取 **認知服務**，並流覽至您特定的自訂視覺訓練資源。
    > [!NOTE]
-   > 您也可以為整個資源群組、訂用帳戶或管理群組設定 RBAC。 若要這麼做，請選取所需的範圍層級，然後流覽至所需的專案 (例如，選取 **資源群組** ，然後按一下您想要的資源群組) 。
+   > 您也可以為整個資源群組、訂用帳戶或管理群組設定 Azure RBAC。 若要這麼做，請選取所需的範圍層級，然後流覽至所需的專案 (例如，選取 **資源群組** ，然後按一下您想要的資源群組) 。
 1. 選取左側流覽窗格中的 [ **存取控制] (IAM) ** 。
 1. 選取 [ **角色指派** ] 索引標籤，以查看此領域的角色指派。
 1. 選取 [**新增**  ->  **新增角色指派**]。

@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327560"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146681"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>使用 Web 應用程式，將來自 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>將取用者群組新增至 IoT 中樞
 
-[取用者群組](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)可提供事件資料流的獨立檢視，讓應用程式和 Azure 服務能夠獨立取用來自相同事件中樞端點的資料。 在本節中，您會將取用者群組新增至 IoT 中樞的內建端點，以供 Web 應用程式讀取資料。
+[取用者群組](../event-hubs/event-hubs-features.md#event-consumers)可提供事件資料流的獨立檢視，讓應用程式和 Azure 服務能夠獨立取用來自相同事件中樞端點的資料。 在本節中，您會將取用者群組新增至 IoT 中樞的內建端點，以供 Web 應用程式讀取資料。
 
 執行下列命令，將取用者群組新增至 IoT 中樞的內建端點：
 
@@ -156,11 +156,11 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="host-the-web-app-in-app-service"></a>在 App Service 中裝載 Web 應用程式
 
-[Azure App Service 中的 Web Apps 功能](https://docs.microsoft.com/azure/app-service/overview)提供用來裝載 Web 應用程式的平台即服務 (PAAS)。 當將 Web 應用程式裝載於 Azure App Service 中時可獲得強大的 Azure 功能獲益，例如額外的安全性、負載平衡、可擴縮性，以及 Azure 和合作夥伴的 DevOps 解決方案 (例如持續部署、套件管理等)。 Azure App Service 支援以多種熱門語言開發並部署在 Windows 或 Linux 基礎結構上的 Web 應用程式。
+[Azure App Service 中的 Web Apps 功能](../app-service/overview.md)提供用來裝載 Web 應用程式的平台即服務 (PAAS)。 當將 Web 應用程式裝載於 Azure App Service 中時可獲得強大的 Azure 功能獲益，例如額外的安全性、負載平衡、可擴縮性，以及 Azure 和合作夥伴的 DevOps 解決方案 (例如持續部署、套件管理等)。 Azure App Service 支援以多種熱門語言開發並部署在 Windows 或 Linux 基礎結構上的 Web 應用程式。
 
-在本節中，您會使用 Azure CLI 命令在 App Service 中佈建 Web 應用程式，並將程式碼部署至其中。 [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) 文件包含所使用命令的詳細資料。 開始之前，請確認已完成[將資源群組新增至 IoT 中樞](#add-a-consumer-group-to-your-iot-hub)、[取得 IoT 中樞的服務連接字串](#get-a-service-connection-string-for-your-iot-hub)，以及[從 GitHub 下載 Web 應用程式](#download-the-web-app-from-github)的步驟。
+在本節中，您會使用 Azure CLI 命令在 App Service 中佈建 Web 應用程式，並將程式碼部署至其中。 [az webapp](/cli/azure/webapp?view=azure-cli-latest) 文件包含所使用命令的詳細資料。 開始之前，請確認已完成[將資源群組新增至 IoT 中樞](#add-a-consumer-group-to-your-iot-hub)、[取得 IoT 中樞的服務連接字串](#get-a-service-connection-string-for-your-iot-hub)，以及[從 GitHub 下載 Web 應用程式](#download-the-web-app-from-github)的步驟。
 
-1. [App Service 方案](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)會定義一組計算資源以供裝載於 App Service 中的應用程式執行。 在本教學課程中，我們會使用開發人員/免費層來裝載 Web 應用程式。 使用免費層時， Web 應用程式會和其他 App Service 應用程式一起在共用的 Windows 資源上執行，包括其他客戶的應用程式。 Azure 也提供可在 Linux 計算資源上部署 Web 應用程式的 App Service 方案。 如果已有想要使用的 App Service 方案，則可略過此步驟。
+1. [App Service 方案](../app-service/overview-hosting-plans.md)會定義一組計算資源以供裝載於 App Service 中的應用程式執行。 在本教學課程中，我們會使用開發人員/免費層來裝載 Web 應用程式。 使用免費層時， Web 應用程式會和其他 App Service 應用程式一起在共用的 Windows 資源上執行，包括其他客戶的應用程式。 Azure 也提供可在 Linux 計算資源上部署 Web 應用程式的 App Service 方案。 如果已有想要使用的 App Service 方案，則可略過此步驟。
 
    若要使用 Windows 免費層來建立 App Service 方案，請執行下列命令。 使用 IoT 中樞所在的相同資源群組。 服務方案可包含大小寫字母、數字與連字號。
 
@@ -187,7 +187,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. 若要將程式碼部署至 App Service，請利用[使用者層級部署認證](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。 使用者層級部署認證可用於 Web 應用程式的 Git 本機和 FTP 部署，其與 Azure 認證不同。 一旦設定使用者層級部署認證之後，該認證在 Azure 帳戶中每個訂用帳戶的所有 App Service 應用程式均有效。 如果先前已設定使用者層級部署認證，則可直接使用。
+5. 若要將程式碼部署至 App Service，請利用[使用者層級部署認證](../app-service/deploy-configure-credentials.md)。 使用者層級部署認證可用於 Web 應用程式的 Git 本機和 FTP 部署，其與 Azure 認證不同。 一旦設定使用者層級部署認證之後，該認證在 Azure 帳戶中每個訂用帳戶的所有 App Service 應用程式均有效。 如果先前已設定使用者層級部署認證，則可直接使用。
 
    如果先前尚未設定使用者層級部署認證，或不記得密碼，請執行下列命令。 部署使用者名稱在 Azure 中必須是唯一名稱，且不得包含 ‘@’ 符號才能用於本機 Git 推送。 收到系統提示時，請輸入新密碼並確認。 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。
 

@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 總覽
+    - name: 概觀
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
@@ -954,6 +954,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 虛擬網路架構
           href: ./hdinsight-virtual-network-architecture.md
+        - name: 私人連結
+          href: ./hdinsight-private-link.md
         - name: 傳輸層安全性
           href: ./transport-layer-security.md
         - name: 規劃適用於 HDInsight 的 VNET

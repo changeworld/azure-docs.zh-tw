@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: e0466aa3497edf5f271c01944438c033bba152f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e25b9d6cbe8446fb2f10150f17f7e2b0ccf85d3c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327662"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147629"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>使用 IoT 中樞傳送裝置到雲端與雲端到裝置訊息
 
@@ -23,7 +23,7 @@ IoT 中樞能夠與您的裝置進行雙向通訊。 使用 IoT 中樞傳訊來�
 
 ## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>將裝置到雲端訊息傳送到 IoT 中樞
 
-IoT 中樞具有內建的服務端點，可供後端服務用於從您的裝置讀取遙測訊息。 此端點與[事件中樞](https://docs.microsoft.com/azure/event-hubs/)相容，而您可以使用標準 IoT 中樞 SDK，[從此內建端點讀取](iot-hub-devguide-messages-read-builtin.md)。
+IoT 中樞具有內建的服務端點，可供後端服務用於從您的裝置讀取遙測訊息。 此端點與[事件中樞](../event-hubs/index.yml)相容，而您可以使用標準 IoT 中樞 SDK，[從此內建端點讀取](iot-hub-devguide-messages-read-builtin.md)。
 
 IoT 中樞也支援[自訂端點](iot-hub-devguide-endpoints.md#custom-endpoints)，可由使用者定義來使用[訊息路由](iot-hub-devguide-messages-d2c.md)，以將裝置遙測資料與事件傳送到 Azure 服務。
 
@@ -39,11 +39,11 @@ IoT 中樞傳訊功能的核心屬性是訊息的可靠性和持久性。 這些
 
 使用裝置到雲端訊息可傳送裝置應用程式所傳來的時間序列遙測和警示，使用雲端到裝置訊息則可用來傳送單向通知給您的裝置應用程式。
 
-* 請參閱[裝置到雲端通訊指導方針](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance)，以便在裝置到雲端訊息、回報的屬性或檔案上傳之間進行選擇。
+* 請參閱[裝置到雲端通訊指導方針](./iot-hub-devguide-d2c-guidance.md)，以便在裝置到雲端訊息、回報的屬性或檔案上傳之間進行選擇。
 
-* 請參閱[雲端到裝置通訊指導方針](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)，以便在雲端到裝置訊息、預期屬性或直接方法之間進行選擇。
+* 請參閱[雲端到裝置通訊指導方針](./iot-hub-devguide-c2d-guidance.md)，以便在雲端到裝置訊息、預期屬性或直接方法之間進行選擇。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 了解 IoT 中樞[訊息路由](iot-hub-devguide-messages-d2c.md)。
 

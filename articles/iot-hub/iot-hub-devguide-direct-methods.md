@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: f68705309d15548dc9728686e2e0ecd6aaad3fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334101"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147805"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -55,7 +55,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 裝置上的直接方法引動過程是 HTTPS 呼叫，由下列項目組成︰
 
-* 特定裝置的*要求 URI* 與 [API 版本](https://docs.microsoft.com/rest/api/iothub/service/devices/invokemethod)：
+* 特定裝置的*要求 URI* 與 [API 版本](/rest/api/iothub/service/devices/invokemethod)：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

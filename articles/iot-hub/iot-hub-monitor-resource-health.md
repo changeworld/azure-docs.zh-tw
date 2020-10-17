@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fec74938adea4058041766a5c28c5a5200aa189e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438393"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146548"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>監視 Azure IoT 中樞的健康情況並快速診斷問題
 
@@ -36,7 +36,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 「Azure 監視器」提供 Azure 資源的診斷資訊，這意謂著您可以監視在 IoT 中樞內進行的作業。
 
-若要深入了解「Azure 監視器」所監視的特定計量和事件，請參閱 [Azure 監視器支援的計量](../azure-monitor/platform/metrics-supported.md)和[Azure 診斷記錄支援的服務、結構描述和類別](../azure-monitor/platform/diagnostic-logs-schema.md)。
+若要深入了解「Azure 監視器」所監視的特定計量和事件，請參閱 [Azure 監視器支援的計量](../azure-monitor/platform/metrics-supported.md)和[Azure 診斷記錄支援的服務、結構描述和類別](../azure-monitor/platform/resource-logs-schema.md)。
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -122,7 +122,7 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 #### <a name="routes"></a>路由
 
-[訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)類別會追蹤訊息路由評估期間發生的錯誤，以及 IoT 中樞所察覺的端點健康情況。 此類別包括下列事件，例如：
+[訊息路由](./iot-hub-devguide-messages-d2c.md)類別會追蹤訊息路由評估期間發生的錯誤，以及 IoT 中樞所察覺的端點健康情況。 此類別包括下列事件，例如：
 
 * 規則評估為「未定義」、
 * IoT 中樞將端點標示為無效，或
@@ -388,8 +388,8 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | 字串 | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
-| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
+| **isRoutingEnabled** | String | 可為 true 或 false，會指出 IoT 中樞是否已啟用訊息路由 |
+| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 D2C 訊息追蹤 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中樞輸出記錄
 
@@ -420,11 +420,11 @@ Azure 資源健康情況可協助您進行診斷，並在 Azure 問題影響您�
 
 | 屬性 | 類型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **點** | 字串 | 路由端點的名稱 |
-| **endpointType** | 字串 | 路由端點的類型 |
-| **parentSpanId** | 字串 | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
+| **點** | String | 路由端點的名稱 |
+| **endpointType** | String | 路由端點的類型 |
+| **parentSpanId** | String | 父代訊息的[範圍識別碼](https://w3c.github.io/trace-context/#parent-id)，在此案例中會是 IoT 中樞輸入訊息追蹤 |
 
-#### <a name="configurations"></a>組態
+#### <a name="configurations"></a>設定
 
 IoT 中樞設定記錄會追蹤自動裝置管理功能集的事件和錯誤。
 
@@ -478,7 +478,7 @@ IoT 中樞設定記錄會追蹤自動裝置管理功能集的事件和錯誤。
 
 下表顯示用於不同 Azure IoT Sdk 的 SDK 名稱：
 
-| SdkVersion 屬性中的 SDK 名稱 | Language |
+| SdkVersion 屬性中的 SDK 名稱 | 語言 |
 |----------|----------|
 | .NET | .NET (C#) |
 | microsoft azure. 裝置 | .NET (c # ) service SDK |

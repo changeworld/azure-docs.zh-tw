@@ -22,6 +22,13 @@
       href: data-lake-store-get-started-powershell.md
     - name: 使用 Azure CLI
       href: data-lake-store-get-started-cli-2.0.md
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 如何
   items:
     - name: 載入和移動資料

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81680710"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146636"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>搭配連接 IoT 中樞和信箱的 Azure Logic Apps 進行 IoT 遠端監視和通知
 
@@ -22,7 +22,7 @@ ms.locfileid: "81680710"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) 可協助您在內部部署和雲端服務、一或多個企業，以及各種不同的通訊協定之間協調工作流程。 邏輯應用程式是以觸發程式為開頭，後面接著一個或多個可使用內建控制項（例如條件和反覆運算器）排序的動作。 這種彈性讓 Logic Apps 適用于 IoT 監視案例的理想 IoT 解決方案。 例如，來自 IoT 中樞端點之裝置的遙測資料抵達，可以起始邏輯應用程式工作流程，以將資料倉儲至 Azure 儲存體 blob、傳送電子郵件警示以警告資料異常、排程技術人員造訪裝置回報失敗的原因等等。
+[Azure Logic Apps](../logic-apps/index.yml) 可協助您在內部部署和雲端服務、一或多個企業，以及各種不同的通訊協定之間協調工作流程。 邏輯應用程式是以觸發程式為開頭，後面接著一個或多個可使用內建控制項（例如條件和反覆運算器）排序的動作。 這種彈性讓 Logic Apps 適用于 IoT 監視案例的理想 IoT 解決方案。 例如，來自 IoT 中樞端點之裝置的遙測資料抵達，可以起始邏輯應用程式工作流程，以將資料倉儲至 Azure 儲存體 blob、傳送電子郵件警示以警告資料異常、排程技術人員造訪裝置回報失敗的原因等等。
 
 ## <a name="what-you-learn"></a>您學到什麼
 
@@ -104,7 +104,7 @@ ms.locfileid: "81680710"
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>將自訂端點和路由規則新增至 IoT 中樞
 
-將服務匯流排佇列的自訂端點新增至您的 IoT 中樞，並建立訊息路由規則，以將包含溫度警示的訊息導向至該端點，您的邏輯應用程式會在該處挑選它們。 路由規則會使用路由查詢， `temperatureAlert = "true"` 根據 `temperatureAlert` 裝置上執行的用戶端程式代碼所設定的應用程式屬性值來轉送訊息。 若要深入瞭解，請參閱以 [訊息屬性為基礎的訊息路由查詢](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties)。
+將服務匯流排佇列的自訂端點新增至您的 IoT 中樞，並建立訊息路由規則，以將包含溫度警示的訊息導向至該端點，您的邏輯應用程式會在該處挑選它們。 路由規則會使用路由查詢， `temperatureAlert = "true"` 根據 `temperatureAlert` 裝置上執行的用戶端程式代碼所設定的應用程式屬性值來轉送訊息。 若要深入瞭解，請參閱以 [訊息屬性為基礎的訊息路由查詢](./iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-properties)。
 
 ### <a name="add-a-custom-endpoint"></a>新增自訂端點
 
@@ -142,7 +142,7 @@ ms.locfileid: "81680710"
 
    ![在 Azure 入口網站中新增路由規格](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
-1. 選取 [儲存]****。 您可以關閉 [ **訊息路由** ] 窗格。
+1. 選取 [儲存]。 您可以關閉 [ **訊息路由** ] 窗格。
 
 ## <a name="create-and-configure-a-logic-app"></a>建立並設定邏輯應用程式
 
@@ -249,7 +249,7 @@ ms.locfileid: "81680710"
    > [!NOTE]
    > 您的電子郵件服務提供者可能需要驗證寄件者身分，確定是您傳送電子郵件。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您已成功建立連接 IoT 中樞的邏輯應用程式，以及溫度監視和通知的信箱。
 

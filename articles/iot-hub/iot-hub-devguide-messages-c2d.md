@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
-ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daf4fb2ab9650c3a68b8862fd391817d5ff626b0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81730003"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147759"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>從 IoT 中樞傳送雲端到裝置訊息
 
@@ -85,7 +85,7 @@ IoT 中樞上的 [ **最大傳遞計數** ] 屬性會決定訊息可在已加入
 
 如 [端點](iot-hub-devguide-endpoints.md)中所述，IoT 中樞會透過面向服務的端點（ */messages/servicebound/feedback*），以訊息形式提供意見反應。 接收意見反應的語意與雲端到裝置訊息的接收語意相同。 可能的話，訊息意見反應會放入單一訊息中，其格式如下：
 
-| 屬性     | 說明 |
+| 屬性     | 描述 |
 | ------------ | ----------- |
 | EnqueuedTime | 指出中樞收到意見反應訊息的時間戳記 |
 | UserId       | `{iot hub name}` |
@@ -93,12 +93,12 @@ IoT 中樞上的 [ **最大傳遞計數** ] 屬性會決定訊息可在已加入
 
 主體是記錄的 JSON 序列化陣列，而每筆記錄都具有下列屬性︰
 
-| 屬性           | 說明 |
+| 屬性           | 描述 |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | 指出訊息結果發生的時間戳記 (例如，中樞收到意見反應訊息或原始訊息已過期)  |
 | OriginalMessageId  | 此意見反應資訊相關之雲端到裝置訊息的*MessageId* |
 | StatusCode         | 在 IoT 中樞所產生的意見反應訊息中使用的必要字串： <br/> 「成功」 <br/> *已到期* <br/> *DeliveryCountExceeded* <br/> *已拒絕* <br/> *清除* |
-| 說明        | *StatusCode*的字串值 |
+| 描述        | *StatusCode*的字串值 |
 | DeviceId           | 與此意見反應相關之雲端到裝置訊息的目標裝置*DeviceId* |
 | DeviceGenerationId | 此意見反應相關之雲端到裝置訊息的目標裝置*DeviceGenerationId* |
 
@@ -133,7 +133,7 @@ IoT 中樞上的 [ **最大傳遞計數** ] 屬性會決定訊息可在已加入
 
 每個 IoT 中樞都會針對雲端到裝置傳訊公開下列設定選項：
 
-| 屬性                  | 說明 | 範圍和預設值 |
+| 屬性                  | 描述 | 範圍和預設值 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | 雲端到裝置訊息的預設 TTL | ISO_8601 間隔最多2天 (最少1分鐘) ;預設值：1小時 |
 | maxDeliveryCount          | 適用于雲端到裝置的每個裝置佇列的最大傳遞計數 | 1至 100;預設值：10 |
@@ -147,7 +147,7 @@ IoT 中樞上的 [ **最大傳遞計數** ] 屬性會決定訊息可在已加入
 
     ![在入口網站中設定雲端到裝置訊息的設定選項](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**：使用 [az iot hub update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) 命令：
+* **Azure CLI**：使用 [az iot hub update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) 命令：
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \
@@ -166,7 +166,7 @@ IoT 中樞上的 [ **最大傳遞計數** ] 屬性會決定訊息可在已加入
         --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需您可以用來接收雲端到裝置訊息之 Sdk 的相關資訊，請參閱 [Azure IoT sdk](iot-hub-devguide-sdks.md)。
 

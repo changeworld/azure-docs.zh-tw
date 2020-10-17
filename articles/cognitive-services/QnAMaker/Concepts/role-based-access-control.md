@@ -5,28 +5,28 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 967fdae49f904f6c1cb450b637a8dbc5c481b135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776879"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147528"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>與其他作者和編輯者共同作業
 
-使用角色型存取控制 (RBAC) 放置在 QnA Maker 資源上，與其他作者和編輯人員共同作業。
+使用 Azure 角色型存取控制 (Azure RBAC) 放置在 QnA Maker 資源上，與其他作者和編輯者共同作業。
 
 ## <a name="access-is-provided-on-the-qna-maker-resource"></a>QnA Maker 資源上提供存取權
 
 擁有權限都是由 QnA Maker 資源上所放置的許可權所控制。 這些許可權符合讀取、寫入、發行和完整存取權。
 
-此 RBAC 功能包括：
-* Azure Active Directory (AAD) 與擁有者和參與者的金鑰型驗證具有回溯相容性100%。 客戶可在其要求中使用以金鑰為基礎的驗證或 RBAC 型驗證。
+此 Azure RBAC 功能包括：
+* Azure Active Directory (AAD) 與擁有者和參與者的金鑰型驗證具有回溯相容性100%。 客戶可在其要求中使用以金鑰為基礎的驗證或 Azure RBAC 型驗證。
 * 快速新增作者和編輯器至資源中的所有知識庫，因為控制項是在資源層級，而不是在知識庫層級。
 
 ## <a name="access-is-provided-by-a-defined-role"></a>存取是由已定義的角色提供
 
-[!INCLUDE [RBAC permissions table](../includes/role-based-access-control.md)]
+[!INCLUDE [Azure RBAC permissions table](../includes/role-based-access-control.md)]
 
 ## <a name="authentication-flow"></a>驗證流程
 
