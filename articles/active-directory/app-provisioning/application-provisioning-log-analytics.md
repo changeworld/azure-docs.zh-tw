@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d3fd553e6903951de64c301df94ea9f2fc3eb471
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132086"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145584"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>瞭解布建如何與 Azure 監視器記錄整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "92132086"
 
 您應該已熟悉 Azure 監視和 Log Analytics。 如果沒有，請跳至瞭解它們，然後再回來瞭解應用程式布建記錄。 若要深入瞭解 Azure 監視，請參閱 [Azure 監視器總覽](../../azure-monitor/overview.md)。 若要深入瞭解 Azure 監視器記錄和 Log Analytics 的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](../../azure-monitor/log-query/log-query-overview.md)。
 
-在 Azure 監視上設定好之後，您可以啟用應用程式布建的記錄。 選項位於 [ **診斷設定** ] 頁面上。
+設定 Azure 監視之後，您可以啟用應用程式布建的記錄。 選項位於 [ **診斷設定** ] 頁面上。
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="存取診斷設定" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 

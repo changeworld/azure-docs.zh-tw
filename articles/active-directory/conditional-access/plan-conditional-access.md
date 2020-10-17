@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992863"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145280"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -291,11 +291,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 ### <a name="plan-your-policy-deployment"></a>規劃您的原則部署
 
-針對您的環境準備好新原則時，請確保在發布每個原則之前先對其進行檢閱，以避免產生不想要的結果。 請參閱下列文件，以了解有關如何套用原則以及如何避免問題的重要資訊
-
-* [您應該知道的事情](best-practices.md) \(部分機器翻譯\)
-
-* [您應該避免做的事](best-practices.md) \(部分機器翻譯\)
+針對您的環境準備好新原則時，請確保在發布每個原則之前先對其進行檢閱，以避免產生不想要的結果。
 
 ## <a name="common-policies"></a>常用原則
 
@@ -462,10 +458,6 @@ CA 原則的位置條件可讓您將存取控制設定和使用者的網路位�
 ### <a name="terms-of-use"></a>使用規定
 
 在存取您環境中的特定雲端應用程式之前，您可以藉由讓使用者接受您的使用規定 (ToU) 來取得其同意。 遵循此[快速入門，以建立使用規定](require-tou.md)。
-
-### <a name="classic-policies"></a>傳統原則
-
-在 [Azure 入口網站](https://portal.azure.com/)中，您可以在 [Azure Active Directory] > [安全性] > [條件式存取] 下找到您的 CA 原則。 您的組織可能也會有非使用此頁面建立的舊版 CA 原則。 這些原則也稱為「傳統原則」。 我們建議您[考慮在 Azure 入口網站中移轉這些傳統原則](best-practices.md) \(部分機器翻譯\)。
 
 ## <a name="troubleshoot-conditional-access"></a>條件式存取的疑難排解
 

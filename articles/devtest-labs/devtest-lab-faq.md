@@ -3,12 +3,12 @@ title: Azure DevTest Labs 常見問題集 | Microsoft Docs
 description: 本文提供一些 Azure DevTest Labs 相關常見問題集 (FAQ) 的解答。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289370"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144583"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
@@ -145,7 +145,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 -   DevTest Labs 會為屬於相同大小的共用 IP 機器建立資源群組。
 
 通用資源群組案例：
--   所有虛擬機器都會在您指定的通用資源群組中啟動。 深入了解[實驗室的資源群組配置](https://aka.ms/RGControl)。
+-   所有虛擬機器都會在您指定的通用資源群組中啟動。 深入了解[實驗室的資源群組配置](./resource-group-control.md)。
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>如何在 DevTest Labs 環境中維護命名慣例？
 您可能想要將目前的企業命名慣例擴充到 Azure 作業，並使其在整個 DevTest Labs 環境中保持一致。 部署 DevTest Labs 時，我們建議您具備特定的起始原則。 您可以透過中央指令碼和 JSON 範本來部署這些原則，以強制保持一致性。 命名原則可透過在訂用帳戶層級套用的 Azure 原則來實作。 如需適用於 Azure 原則的 JSON 範例，請參閱 [Azure 原則範例](../governance/policy/samples/index.md)。
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 是，您可以將多個磁碟連結至 VM。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs 是否支援 Gen 2 映像？
-是。 DevTest Labs 服務支援 [第2代映射](../virtual-machines/windows/generation-2.md)。 不過，如果第1代和第2代都可供映射使用，DevTest Labs 只會在建立 VM 時顯示映射的 Gen 1 版本。 如果只有可用的 Gen 2 版本，您會看到映射。 
+是。 DevTest Labs 服務支援 [第2代映射](../virtual-machines/generation-2.md)。 不過，如果第1代和第2代都可供映射使用，DevTest Labs 只會在建立 VM 時顯示映射的 Gen 1 版本。 如果只有可用的 Gen 2 版本，您會看到映射。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果我想要使用 Windows 作業系統映像進行測試，是否應購買 MSDN 訂用帳戶？
 若要對 Azure 中的開發或測試使用 Windows 用戶端 OS 映像 (Windows 7 或更新版本)，請執行下列其中一個步驟：

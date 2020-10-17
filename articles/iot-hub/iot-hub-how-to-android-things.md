@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673388"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151732"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 針對 Android Things 平台進行開發
 
-[Azure IoT 中樞 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 為 Windows、Linux、OSX、MBED 等常用平台及行動裝置平台 (例如 Android 和 iOS) 提供第一層支援。  我們的承諾是在 IoT 部署中提供更優質的選擇和彈性，Java SDK 也提供 [Android Things](https://developer.android.com/things/) 平台。  開發人員可以利用 Android Things 作業系統在裝置端的優點，同時使用 [Azure IoT 中樞](about-iot-hub.md)作為訊息集中中樞，將同時連線的裝置擴充至數百萬個。
+[Azure IoT 中樞 SDK](./iot-hub-devguide-sdks.md) 為 Windows、Linux、OSX、MBED 等常用平台及行動裝置平台 (例如 Android 和 iOS) 提供第一層支援。  我們的承諾是在 IoT 部署中提供更優質的選擇和彈性，Java SDK 也提供 [Android Things](https://developer.android.com/things/) 平台。  開發人員可以利用 Android Things 作業系統在裝置端的優點，同時使用 [Azure IoT 中樞](about-iot-hub.md)作為訊息集中中樞，將同時連線的裝置擴充至數百萬個。
 
 本教學課程說明使用 Azure IoT Java SDK 在 Android Things 上建置裝置端應用程式的步驟。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 支援 Android Things 的硬體，且可執行 Android Things OS。  您可以依循 [Android Things 文件](https://developer.android.com/things/get-started/kits#flash-at)，以了解如何刷新 Android Things OS。  請確定您的 Android Things 裝置已連接必要週邊設備 (例如鍵盤、顯示器和滑鼠) 並已連線到網際網路。  本教學課程使用 Raspberry Pi 3。
 

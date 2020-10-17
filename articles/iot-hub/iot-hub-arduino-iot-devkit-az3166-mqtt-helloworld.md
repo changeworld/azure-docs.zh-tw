@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356021"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151754"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>將訊息傳送至 MQTT 伺服器
 
@@ -31,7 +31,7 @@ ms.locfileid: "91356021"
 
 ## <a name="what-you-need"></a>您需要什麼
 
-完成[使用者入門指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)以便：
+完成[使用者入門指南](./iot-hub-arduino-iot-devkit-az3166-get-started.md)以便：
 
 * 讓 DevKit 連線至 Wi-Fi
 * 準備開發環境
@@ -88,4 +88,4 @@ ms.locfileid: "91356021"
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已瞭解如何將 MXChip Iot DevKit 設定為 MQTT 用戶端，並使用 MQTT 用戶端程式庫將訊息傳送至 MQTT 訊息代理程式，以下是建議的下一個步驟： [Azure Iot 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)
+現在您已瞭解如何將 MXChip Iot DevKit 設定為 MQTT 用戶端，並使用 MQTT 用戶端程式庫將訊息傳送至 MQTT 訊息代理程式，以下是建議的下一個步驟： [Azure Iot 遠端監視解決方案加速器總覽](/azure/iot-suite/)

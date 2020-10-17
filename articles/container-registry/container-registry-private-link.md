@@ -3,12 +3,12 @@ title: 設定私人連結
 description: 在容器登錄上設定私人端點，並透過本機虛擬網路中的私人連結來啟用存取。 Private link 存取是 Premium 服務層級的功能。
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bea4b2a6bedeac9dd0ff36631ba46adf4be4f8f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743636"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148485"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 私下連接到 Azure container registry
 
@@ -375,7 +375,7 @@ az acr private-endpoint-connection list \
   --registry-name $REGISTRY_NAME 
 ```
 
-當您使用本文中的步驟來設定私人端點連線時，登錄會自動接受來自具有登錄之 RBAC 權限的用戶端和服務連線。 您可以設定端點以要求手動核准連線。 如需有關如何核准及拒絕私人端點連線的詳細資訊，請參閱[管理私人端點連線](../private-link/manage-private-endpoint.md)。
+當您使用本文中的步驟設定私人端點連線時，登錄會自動接受來自用戶端的連線，以及在登錄上具有 Azure RBAC 許可權的服務。 您可以設定端點以要求手動核准連線。 如需有關如何核准及拒絕私人端點連線的詳細資訊，請參閱[管理私人端點連線](../private-link/manage-private-endpoint.md)。
 
 ## <a name="add-zone-records-for-replicas"></a>新增複本的區域記錄
 

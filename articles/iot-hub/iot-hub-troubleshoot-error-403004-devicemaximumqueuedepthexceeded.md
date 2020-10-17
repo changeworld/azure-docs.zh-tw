@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fc5029f26e5d615502925c4def4e2973c118f38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421066ef30e23a79b26f97939cdfffb5be83afb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029982"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148243"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
@@ -32,10 +32,10 @@ ms.locfileid: "90029982"
 
 您遇到這項限制的最可能原因是因為您使用 HTTPS 來接收訊息（這會導致使用持續輪詢 `ReceiveAsync` ），而導致 IoT 中樞節流要求。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 使用 HTTPS 時，針對雲端到裝置訊息支援的模式是裝置以間歇方式連接而不常檢查訊息 (低於每 25 分鐘一次)。 若要降低進入佇列限制的可能性，請切換至 AMQP 或 MQTT，以取得雲端到裝置的訊息。
 
 或者，您也可以增強裝置端邏輯，以快速完成、拒絕或放棄佇列的訊息、縮短存留時間，或考慮傳送較少的訊息。 請參閱 [C2D 訊息存留時間](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live)。
 
-最後，請考慮使用 [清除佇列 API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) ，在達到限制之前定期清除擱置中的訊息。
+最後，請考慮使用 [清除佇列 API](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) ，在達到限制之前定期清除擱置中的訊息。

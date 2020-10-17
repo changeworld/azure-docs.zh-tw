@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085904"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145393"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -129,7 +129,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
     自訂條件式存取原則可對特定雲端應用程式或使用者群組啟用細微的使用規定。 如需詳細資訊，請參閱 [快速入門：在存取雲端應用程式之前，必須先接受使用](require-tou.md)規定。
 
-1. 按一下 [建立]。
+1. 按一下 [建立]  。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -392,4 +392,3 @@ A：是。 目前有108種不同的語言，系統管理員可以設定單一使
 ## <a name="next-steps"></a>後續步驟
 
 - [快速入門：必須接受使用規定才可存取雲端應用程式](require-tou.md)
-- [Azure Active Directory 中條件式存取的最佳作法](best-practices.md)

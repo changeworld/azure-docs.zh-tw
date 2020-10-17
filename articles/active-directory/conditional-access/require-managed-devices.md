@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c650c2b828e2742df5dd92657003460bcda66a0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258637"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145112"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>作法：透過條件式存取要求受管理的裝置進行雲端應用程式存取
 
@@ -126,4 +126,4 @@ ms.locfileid: "91258637"
 
 ## <a name="next-steps"></a>後續步驟
 
-在您的環境中設定裝置型條件式存取原則之前，您應該先看看 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
+[評估條件式存取原則的影響，然後廣泛地啟用僅限報表模式](concept-conditional-access-report-only.md)。

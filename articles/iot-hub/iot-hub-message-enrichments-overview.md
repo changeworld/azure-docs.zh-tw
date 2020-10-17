@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767191"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146592"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>裝置到雲端 IoT 中樞訊息的訊息擴充
 
@@ -63,8 +63,8 @@ Message 擴充有三個主要元素：
 | **方法** | **命令** |
 | ----- | -----| 
 | 入口網站 | [Azure 入口網站](https://portal.azure.com) | 請參閱[message 擴充教學](tutorial-message-enrichments.md)課程 | 
-| Azure CLI   | [az iot hub message-擴充](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
+| Azure CLI   | [az iot hub message-擴充](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 新增 message 擴充不會將延遲新增至訊息路由。
 

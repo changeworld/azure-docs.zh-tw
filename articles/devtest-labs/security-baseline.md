@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398317"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151873"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -264,7 +264,7 @@ DevTest Labs 沒有預設密碼的概念。
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 **指導方針：** 使用標籤協助追蹤儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](../azure-resource-manager/resource-group-using-tags.md)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視：** 不適用
 
@@ -273,10 +273,10 @@ DevTest Labs 沒有預設密碼的概念。
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 **指導方針：** 針對開發、測試和生產環境執行個別的訂用帳戶或管理群組。 Azure DevTest Labs 實例應以虛擬網路/子網分隔並適當地標記。 
 
-- [如何建立額外的 Azure 訂閱](../billing/billing-create-subscription.md)
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 - [如何設定 DevTest Labs 的虛擬網路](devtest-lab-configure-vnet.md)
-- [如何建立和使用標籤](../azure-resource-manager/resource-group-using-tags.md)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 - [如何建立和使用 DevTest Labs 的標記](devtest-lab-add-tag.md)
 
 **Azure 資訊安全中心監視：** 目前無法使用
@@ -380,7 +380,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 **指導方針：** 使用 Azure 更新管理，以確保在裝載于 DevTest Labs 中的 Windows 和 Linux Vm 上安裝最新的安全性更新。 針對 Windows Vm，請確定已啟用 Windows Update，並將其設定為自動更新。 這項設定目前無法透過 DevTest Labs 進行設定，但實驗室系統管理員/訂用帳戶管理員可以在其訂用帳戶中的基礎計算 Vm 上設定此設定。 
 
 - [如何在 Azure 中設定 Vm 的更新管理](../automation/update-management/update-mgmt-overview.md)
-- [瞭解由安全性中心監視的 Azure 安全性原則](../security-center/security-center-policy-definitions.md)
+- [瞭解由安全性中心監視的 Azure 安全性原則](../security-center/policy-reference.md)
 
 **Azure 資訊安全中心監視：** 不適用
 
@@ -444,7 +444,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 **指導方針：** 您可以使用標記、管理群組和個別的訂用帳戶，並在適當時使用個別的實驗室，來組織及追蹤實驗室和實驗室相關的資源。 定期協調清查，並確保從訂用帳戶快速刪除未經授權的資源。
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 - [如何使用 DevTest Labs 建立實驗室](devtest-lab-create-lab.md)
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 - [如何設定實驗室的標記](devtest-lab-add-tag.md)
@@ -517,7 +517,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 
 請參閱下列文章： 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
-- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/not-allowed-resource-types.md)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視：** 是的
 
@@ -559,7 +559,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 - [設定 DevTest Labs 的虛擬網路](devtest-lab-configure-vnet.md)
 - [Azure 防火牆概觀](../firewall/overview.md)
 - [Web 應用程式防火牆概觀](../web-application-firewall/overview.md)
-- [網路安全性概觀](../virtual-network/security-overview.md)
+- [網路安全性概觀](../virtual-network/network-security-groups-overview.md)
 - [Azure 虛擬網路總覽]()
 - [使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md)
 - [訂用帳戶決策指南](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 
 此外，microsoft 發佈的 Azure Marketplace 虛擬機器映射是由 Microsoft 所管理和維護。
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration 概觀](../automation/automation-dsc-overview.md)
 - [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [如何在 DevTest Labs 中建立映射 factory](image-factory-create.md)
@@ -629,8 +629,8 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 **指導方針：** 使用 Azure DevOps 來安全地儲存和管理您的程式碼，例如自訂 Azure 原則、Azure Resource Manager 範本和 Desired State Configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組許可權。
 
-- [Azure Repos Git 教學課程](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [關於許可權和群組](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git 教學課程](/azure/devops/repos/git/gitworkflow)
+- [關於許可權和群組](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Azure DevTest Labs 與 Azure DevOps 工作流程之間的整合](devtest-lab-dev-ops.md)
 
 **Azure 資訊安全中心監視：** 不適用
@@ -681,7 +681,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 **指導方針：** 使用 Azure 資訊安全中心對容器的 OS 和 Docker 設定執行基準掃描。
 
-- [了解 Azure 資訊安全中心容器建議](../security-center/security-center-container-recommendations.md)
+- [了解 Azure 資訊安全中心容器建議](../security-center/container-security.md)
 
 **Azure 資訊安全中心監視：** 不適用
 
@@ -692,7 +692,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 
 - [設定受控識別，以在 DevTest Labs 中部署 Azure Resource Manager 環境](use-managed-identities-environments.md)
 - [設定受控識別在 DevTest Labs 中部署虛擬機器](enable-managed-identities-lab-vms.md)
-- [如何建立金鑰保存庫](../key-vault/quick-create-portal.md)
+- [如何建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md)
 - [如何驗證 Key Vault](../key-vault/general/authentication.md)
 - [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 

@@ -3,12 +3,12 @@ title: 防火牆存取規則
 description: 設定可以從防火牆後方存取 Azure 容器登錄的規則，方法是允許存取 (「白名單」) REST API 和資料端點網域名稱或服務特定的 IP 位址範圍。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246974"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148507"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>設定可以從防火牆後方存取 Azure 容器登錄的規則
 
@@ -113,7 +113,7 @@ ms.locfileid: "86246974"
 
 ## <a name="allow-access-by-service-tag"></a>依據服務標記允許存取
 
-在 Azure 虛擬網路中，使用網路安全性規則來篩選從資源 (例如虛擬機器) 至容器登錄的流量。 為了簡化 Azure 網路規則的建立，請使用 **AzureContainerRegistry** [服務標記](../virtual-network/security-overview.md#service-tags)。 服務標記代表一組 IP 位址首碼，用於存取全球或個別 Azure 區域的 Azure 服務。 當位址變更時，標記會自動更新。 
+在 Azure 虛擬網路中，使用網路安全性規則來篩選從資源 (例如虛擬機器) 至容器登錄的流量。 為了簡化 Azure 網路規則的建立，請使用 **AzureContainerRegistry** [服務標記](../virtual-network/network-security-groups-overview.md#service-tags)。 服務標記代表一組 IP 位址首碼，用於存取全球或個別 Azure 區域的 Azure 服務。 當位址變更時，標記會自動更新。 
 
 例如，建立目的地 **AzureContainerRegistry** 的輸出網路安全性群組規則，來允許 Azure 容器登錄的流量。 若只要在特定區域中允許存取服務標記，請以下列格式指定區域：**AzureContainerRegistry**.[區域名稱]。
 
@@ -183,7 +183,7 @@ az acr show-endpoints --name myregistry
 
 * 了解[適用於網路安全性的 Azure 最佳做法](../security/fundamentals/network-best-practices.md)
 
-* 了解 Azure 虛擬網路中的[安全性群組](../virtual-network/security-overview.md)
+* 了解 Azure 虛擬網路中的[安全性群組](../virtual-network/network-security-groups-overview.md)
 
 * 了解如何設定容器登錄的[私人連結](container-registry-private-link.md)
 

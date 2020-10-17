@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470131"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152267"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中保存檔案
 Cloud Shell 會運用 Azure 檔案儲存體在工作階段間保存檔案。 在初始啟動時，Cloud Shell 會提示您關聯新的或現有的檔案共用，以在工作階段間保存檔案。
@@ -55,7 +55,7 @@ Cloud Shell 會運用 Azure 檔案儲存體在工作階段間保存檔案。 在
 ![資源群組設定](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>保護儲存體存取
-為了安全起見，每位使用者都應該佈建自己的儲存體帳戶。  若要進行角色型存取控制 (RBAC)，使用者在儲存體帳戶層級必須具備參與者權限或更高的存取權限。
+為了安全起見，每位使用者都應該佈建自己的儲存體帳戶。  若要 (Azure RBAC) 的 Azure 角色型存取控制，使用者必須在儲存體帳戶層級上具有參與者存取權或更高的許可權。
 
 Cloud Shell 在指定的訂用帳戶內使用儲存體帳戶中的 Azure 檔案共用。 由於繼承的許可權，對訂用帳戶具有足夠存取權的使用者將能夠存取訂用帳戶中包含的所有儲存體帳戶和檔案共用。
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361830"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151688"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 角色指派
 
@@ -140,14 +140,9 @@ ms.locfileid: "85361830"
 
 ![存取控制-新增角色指派警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="download-role-assignments-preview"></a> (預覽版下載角色指派) 
+## <a name="download-role-assignments"></a>下載角色指派
 
 您可以在 CSV 或 JSON 格式的範圍下載角色指派。 如果您需要檢查試算表中的清單，或在遷移訂用帳戶時進行清查，這會很有説明。
-
-> [!IMPORTANT]
-> 下載角色指派目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 當您下載角色指派時，請記住下列準則：
 
@@ -163,7 +158,7 @@ ms.locfileid: "85361830"
 
 1. 按一下 [存取控制 (IAM)]。
 
-1. 按一下 [ **下載角色指派 (預覽]) ** 以開啟 [下載角色指派] 窗格。
+1. 按一下 [ **下載角色指派** ] 以開啟 [下載角色指派] 窗格。
 
     ![存取控制-下載角色指派](./media/role-assignments-list-portal/download-role-assignments.png)
 

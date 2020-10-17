@@ -3,12 +3,12 @@ title: 管理已簽署的映像
 description: 了解如何為您的 Azure 容器登錄啟用內容信任，並推送及提取已簽署的映像。 內容信任會實作為 Docker 內容信任，且是 Premium 服務層的功能。
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409159"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148576"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry 中的內容信任
 
@@ -115,7 +115,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服務主體的 **appId**、**objectId**，或其 **servicePrincipalNames** 之一。 如需使用服務主體與 Azure Container Registry 的詳細資訊，請參閱[使用服務主體進行 Azure Container Registry 驗證](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需有關驗證身分識別角色的詳細資訊，請參閱 [使用 RBAC 管理 azure 資源的存取權和 Azure CLI](../role-based-access-control/role-assignments-cli.md) 以及針對 [Azure RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
+> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需有關驗證身分識別角色的詳細資訊，請參閱 [使用 Azure CLI 新增或移除 azure 角色指派](../role-based-access-control/role-assignments-cli.md) 和針對 [Azure RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送信任的映像
 

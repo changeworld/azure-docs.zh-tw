@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81767021"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152230"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>適用於 C 的 Azure IoT 裝置 SDK - 深入了解序列化程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "81767021"
 
 本文中描述的所有內容都是根據「序列化程式」**** SDK 範例。 如果您想要依照這些內容，請參閱包含在「適用於 C 的 Azure IoT 裝置 SDK」中的 **simplesample\_amqp** 和 **simplesample\_http** 應用程式。
 
-您可以尋找[**適用於 C 的 Azure IoT 裝置 SDK**](https://github.com/Azure/azure-iot-sdk-c) GitHub 儲存機制，然後在 [C API 參考資料](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)中檢視 API 的詳細資料。
+您可以尋找[**適用於 C 的 Azure IoT 裝置 SDK**](https://github.com/Azure/azure-iot-sdk-c) GitHub 儲存機制，然後在 [C API 參考資料](/azure/iot-hub/iot-c-sdk-ref/)中檢視 API 的詳細資料。
 
 ## <a name="the-modeling-language"></a>模型化語言
 
@@ -65,7 +65,7 @@ END_NAMESPACE(WeatherStation);
 
 利用 **序列化程式** 程式庫建立的模型支援下列資料類型：
 
-| 類型 | 說明 |
+| 類型 | 描述 |
 | --- | --- |
 | double |雙精確度浮點數 |
 | int |32 位元整數 |
@@ -662,7 +662,7 @@ serializer_deinit();
 
 除此之外，上面列出的所有其他功能在「序列化程式」**** 程式庫中的運作方式，皆與在 **IoTHubClient** 程式庫中的運作方式相同。 如需有關任何這些主題的詳細資訊，請參閱本系列中的 [前一篇文章](iot-hub-device-sdk-c-iothubclient.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文詳細說明**適用于 C 的 Azure IoT 裝置 SDK**中包含的**序列化程式**程式庫的獨特層面。透過提供的資訊，您應該充分瞭解如何使用模型來傳送事件，以及從 IoT 中樞接收訊息。
 
@@ -670,4 +670,4 @@ serializer_deinit();
 
 若要深入了解如何開發 IoT 中樞，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-若要進一步探索 IoT 中樞的功能，請參閱[使用 Azure IoT 中樞將 AI 部署到邊緣裝置](../iot-edge/tutorial-simulate-device-linux.md)。
+若要進一步探索 IoT 中樞的功能，請參閱[使用 Azure IoT 中樞將 AI 部署到邊緣裝置](../iot-edge/quickstart-linux.md)。

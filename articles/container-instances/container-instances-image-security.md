@@ -4,12 +4,12 @@ description: 針對 Azure 容器實例保護映射與秘密的建議，以及任
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922229"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148671"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器實例的安全性考慮
 
@@ -34,7 +34,7 @@ ms.locfileid: "87922229"
 
 利用解決方案來掃描私人登錄中的容器映射，並找出潛在的弱點。 請務必瞭解不同解決方案所提供的威脅偵測深度。
 
-例如，Azure Container Registry 選擇性地 [與 Azure 資訊安全中心整合](../security-center/azure-container-registry-integration.md) ，以自動掃描推送至登錄的所有 Linux 映射。 Azure 資訊安全中心的整合式 Qualys 掃描器會偵測映射弱點、將其分類，並提供補救指導方針。
+例如，Azure Container Registry 選擇性地 [與 Azure 資訊安全中心整合](../security-center/defender-for-container-registries-introduction.md) ，以自動掃描推送至登錄的所有 Linux 映射。 Azure 資訊安全中心的整合式 Qualys 掃描器會偵測映射弱點、將其分類，並提供補救指導方針。
 
 安全性監視和映射掃描解決方案（例如 [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) 和青色 [安全性](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) ）也可透過 Azure Marketplace 取得。  
 
@@ -138,7 +138,7 @@ ms.locfileid: "87922229"
 
 維護對容器生態系統的系統管理存取權的精確審核線索，包括您的 Kubernetes 叢集、容器登錄和容器映射。 這些記錄可能是為了進行審核，而且在任何安全性事件之後可作為法庭辨識項的用途。 Azure 解決方案包括：
 
-* [Azure Kubernetes Service 與 Azure 資訊安全中心整合](../security-center/azure-kubernetes-service-integration.md) ，以監視叢集環境的安全性設定並產生安全性建議
+* [Azure Kubernetes Service 與 Azure 資訊安全中心整合](../security-center/defender-for-kubernetes-introduction.md) ，以監視叢集環境的安全性設定並產生安全性建議
 * [Azure 容器監視解決方案](../azure-monitor/insights/containers.md)
 * [Azure 容器實例](container-instances-log-analytics.md)和[Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)的資源記錄
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fd68f720f372ee61f7c441ea83bd365bc2a6f36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15026c378c4c399915e99b0910f1e6518f5adfc8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032736"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151854"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>適用于 Azure 監視器的 Azure 安全性基準
 
@@ -22,7 +22,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -80,7 +80,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 - [在 Azure 監視器中使用 Log Analytics 閘道連接電腦，而不需要網際網路存取](platform/gateway.md) 
 
-- [請參閱開始使用 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
+- [請參閱開始使用 Application Insights](./app/app-insights-overview.md#get-started)
 
 - [如何設定可用性 web 測試](app/monitor-web-app-availability.md)
 
@@ -92,7 +92,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指導**方針：使用 Azure 活動記錄來監視資源設定，以及偵測與 Azure 監視器相關的網路資源變更。 在 Azure 監視器中建立警示，這些警示會在這些重要網路資源的變更發生時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](./platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](platform/alerts-activity-log.md)
 
@@ -102,7 +102,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -178,15 +178,15 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
 **指導**方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -242,7 +242,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指導**方針：使用 Azure Active Directory 安全性報告和監視，來偵測環境中發生可疑或不安全的活動時。 使用 Azure 資訊安全中心來監視身分識別和存取活動。 
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
@@ -274,7 +274,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -286,7 +286,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指引**：您可以存取 Azure AD 登入活動、稽核和風險事件記錄檔來源，讓您可以與任何 SIEM/監視工具整合。 若要簡化此流程，您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將稽核記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 資訊安全中心監視**：未設定。 請在工作專案中提供值。
 
@@ -296,7 +296,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指引**：使用 Azure AD 風險和身分識別保護功能設定自動回應，以偵測與使用者身分識別相關的可疑動作。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -308,13 +308,13 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
 **指導**方針：可能的話，請使用標記來協助追蹤儲存或處理敏感資訊的 Azure 監視器資源，例如 Log Analytics 工作區。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [管理 Azure 監視器中記錄資料和工作區的存取](platform/manage-access.md)
 
@@ -326,11 +326,11 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制對您的應用程式和企業環境要求的 Azure 監視器和相關資源的存取層級。 您可以透過 Azure Active Directory 角色型存取控制來控制對 Azure 監視器的存取。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -399,7 +399,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
@@ -411,15 +411,15 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
 **指導**方針：使用 Azure CLI 來查詢及探索訂用帳戶中 Azure 監視器資源。 確保您的租用戶中有適當的 (讀取) 權限，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
 
-- [Azure 監視器 CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)
+- [Azure 監視器 CLI](/cli/azure/monitor?view=azure-cli-latest)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -433,7 +433,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 **指導**方針：將標記套用至 Azure 監視器資源，以邏輯方式將這些資源組織成分類法。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -443,11 +443,11 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 **指導**方針：使用標記、管理群組和個別的訂用帳戶（如果適當）來組織和追蹤 Azure 監視器的相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -491,7 +491,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md) 
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -509,7 +509,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](../security/benchmarks/security-control-secure-configuration.md)設定。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -523,7 +523,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [保護 APM 即時計量資料流](app/live-stream.md#secure-the-control-channel)
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,7 +553,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 **指導**方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則和 Azure Resource Manager 範本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
@@ -591,9 +591,9 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [支援適用於 Azure 資源的受控識別服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-- [如何建立 Key Vault](/azure/key-vault/quick-create-portal)
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/managed-identity)
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -621,7 +621,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
@@ -633,7 +633,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [瞭解 Azure 雲端服務和虛擬機器的 Microsoft 反惡意程式碼](../security/fundamentals/antimalware.md)
 
-- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](/azure/security-center/security-center-alerts-data-services)
+- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -641,13 +641,13 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](/azure/security/benchmarks/security-control-data-recovery)復原。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](../security/benchmarks/security-control-data-recovery.md)復原。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確定定期自動備份
 
 **指導**方針：使用 Azure Resource Manager，在 JAVASCRIPT 物件標記法 (JSON) 範本中匯出 Azure 監視器和相關的資源，此範本可用來做為 Azure 監視器和相關設定的備份。  使用 Azure 自動化自動執行備份腳本。 
 
-- [使用 Azure Resource Manager 範本管理 Log Analytics 工作區](/azure/azure-monitor/platform/template-workspace-configuration)
+- [使用 Azure Resource Manager 範本管理 Log Analytics 工作區](./samples/resource-manager-workspace.md)
 
 - [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -661,11 +661,11 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 **指導**方針：使用 Azure Resource Manager，在 JAVASCRIPT 物件標記法 (JSON) 範本中匯出 Azure 監視器和相關的資源，此範本可用來做為 Azure 監視器和相關設定的備份。  如果 Azure 監視器相關資源使用客戶管理的金鑰，請在 Azure Key Vault 中備份客戶管理的金鑰。 
 
-- [使用 Azure Resource Manager 範本管理 Log Analytics 工作區](/azure/azure-monitor/platform/template-workspace-configuration)
+- [使用 Azure Resource Manager 範本管理 Log Analytics 工作區](./samples/resource-manager-workspace.md)
 
 - [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -675,9 +675,9 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 **指導**方針：確定能夠使用 Azure Resource Manager 支援的範本檔案定期執行還原。  測試已備份之客戶管理金鑰的還原。
 
-- [使用 Azure Resource Manager 範本管理 Log Analytics 工作區](/azure/azure-monitor/platform/template-workspace-configuration)
+- [使用 Azure Resource Manager 範本管理 Log Analytics 工作區](./samples/resource-manager-workspace.md)
 
-- [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -689,13 +689,13 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 此外，請在 Key Vault 中啟用 Soft-Delete 和清除保護，以防止金鑰遭到意外或惡意刪除。 如果使用 Azure 儲存體儲存 Azure Resource Manager 範本備份，請在刪除 blob 或 blob 快照集時，啟用虛刪除來儲存及復原您的資料。 
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
-- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Azure 儲存體 Blob 的虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure 儲存體 Blob 的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -703,7 +703,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -727,7 +727,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -777,7 +777,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
@@ -793,5 +793,5 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

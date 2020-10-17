@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86f9f227c0ea92b7b52a3037759426cc87f6d937
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816445"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152046"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>設定 Azure 入口網站中的 App Service 應用程式
 
@@ -292,7 +292,7 @@ ms.locfileid: "91816445"
 [Azure 入口網站]: https://portal.azure.com/
 [在 Azure App Service 中設定自訂網域名稱]: ./app-service-web-tutorial-custom-domain.md
 [在 Azure App Service 中設定預備環境]: ./deploy-staging-slots.md \(部分機器翻譯\)
-[How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
+[How to: Monitor web endpoint status]: ./web-sites-monitor.md
 [在 Azure App Service 中監視基本概念]: ./web-sites-monitor.md
 [管線模式]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [在 Azure App Service 中調整應用程式規模]: ./manage-scale-up.md

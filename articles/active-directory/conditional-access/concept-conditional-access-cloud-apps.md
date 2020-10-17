@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f65a43cf5730f56b43d79388a0e73ea93e3225b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801982"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145522"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
@@ -121,8 +121,7 @@ Microsoft Azure 管理應用程式包含多項基礎服務。
 - 使用以[密碼為基礎的單一登入](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)的應用程式
 
 > [!NOTE]
-> 由於條件式存取原則會訂定服務存取需求，因此無法將之套用到用戶端 (公用/原生) 應用程式。 換句話說，並不會直接在用戶端 (公用/原生) 應用程式上設定原則，而是在用戶端呼叫服務時套用。 例如，在 SharePoint 服務上設定的原則會套用至呼叫 SharePoint 的用戶端。 使用 Outlook 用戶端嘗試存取電子郵件時，會套用 Exchange 上設定的原則。 因此無法在雲端應用程式選擇器中選取用戶端 (公用/原生) 應用程式，且在您租用戶中註冊的用戶端 (公用/原生) 應用程式設定中，無法使用 [條件式存取] 選項。 
-
+> 由於條件式存取原則會設定存取服務的需求，因此您無法將它套用至 (公用/原生) 應用程式的用戶端。 換句話說，並不會直接在用戶端 (公用/原生) 應用程式上設定原則，而是在用戶端呼叫服務時套用。 例如，在 SharePoint 服務上設定的原則會套用至呼叫 SharePoint 的用戶端。 使用 Outlook 用戶端嘗試存取電子郵件時，會套用 Exchange 上設定的原則。 因此無法在雲端應用程式選擇器中選取用戶端 (公用/原生) 應用程式，且在您租用戶中註冊的用戶端 (公用/原生) 應用程式設定中，無法使用 [條件式存取] 選項。 
 
 ## <a name="user-actions"></a>使用者動作
 

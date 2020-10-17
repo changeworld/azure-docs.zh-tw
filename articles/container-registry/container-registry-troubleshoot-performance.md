@@ -3,12 +3,12 @@ title: 針對登錄效能進行疑難排解
 description: 登錄效能問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 414e3a92b8ebd4ff58528fc5e9ec4794471bd775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227108"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148417"
 ---
 # <a name="troubleshoot-registry-performance"></a>針對登錄效能進行疑難排解
 
@@ -115,7 +115,5 @@ nslookup myregistry.azurecr.io
   * [針對登錄登入進行疑難排解](container-registry-troubleshoot-login.md)
   * [針對登錄的網路問題進行疑難排解](container-registry-troubleshoot-access.md)
 * [社區支援](https://azure.microsoft.com/support/community/) 選項
-* [Microsoft 問與答](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [開啟支援票證](https://azure.microsoft.com/support/create-ticket/)
-
-

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948159"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144996"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>How to：使用條件式存取要求從不受信任的網路存取 MFA   
 
@@ -24,12 +24,9 @@ Azure Active Directory (Azure AD) 可讓使用者從任何位置單一登入到�
 
 本文提供您設定條件式存取原則所需的資訊，而此原則需要 MFA 才能從不受信任的網路進行存取。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-本文假設您已熟悉以下各項： 
-
-- Azure AD 條件式存取的[基本概念](overview.md) 
-- 在 Azure 入口網站中設定條件式存取原則的[最佳做法](best-practices.md)
+本文假設您已熟悉條件式存取的 [基本概念](overview.md) 。 
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -65,8 +62,8 @@ Azure Active Directory (Azure AD) 可讓使用者從任何位置單一登入到�
 
 ## <a name="policy-deployment"></a>原則部署
 
-使用本文所述的方法，您現在可以設定不受信任位置的條件式存取原則。 若要確定您的原則會如預期般運作，建議的最佳做法是先測試，再推出到生產環境。 在理想情況下，可以使用測試租用戶來驗證您的新原則是否如預期般運作。 如需詳細資訊，請參閱[如何部署新原則](best-practices.md#how-should-you-deploy-a-new-policy)。 
+使用本文所述的方法，您現在可以設定不受信任位置的條件式存取原則。 若要確定您的原則會如預期般運作，建議的最佳做法是先測試，再推出到生產環境。 在理想情況下，可以使用測試租用戶來驗證您的新原則是否如預期般運作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要深入瞭解條件式存取，請參閱 [什麼是 Azure Active Directory 中的條件式存取？](./overview.md)

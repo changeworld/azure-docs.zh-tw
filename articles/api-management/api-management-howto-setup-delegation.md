@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460995"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148769"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派使用者註冊和產品訂閱
 
@@ -61,21 +61,19 @@ ms.locfileid: "87460995"
    * 根據 **returnUrl** 和 **salt** 查詢參數，計算字串的 HMAC-SHA512 雜湊 ([以下提供範例程式碼])：
      
      > HMAC(**salt** + '\n' + **returnUrl**)
-     > 
-     > 
+
    * 比較以上計算的雜湊和 **sig** 查詢參數的值。 如果兩個雜湊相符，則繼續下一步，否則拒絕要求。
 3. 確認您收到登入/註冊的要求：**operation** 查詢參數會設為 "**SignIn**"。
 4. 向使用者顯示用於登入或註冊的 UI
 5. 如果使用者要註冊，您必須在 API 管理中為他們建立對應的帳戶。 使用 API Management REST API [建立使用者]。 這樣做時，請確定您所設定的使用者識別碼與使用者存放區中的值相同，或設為您可追蹤的識別碼。
 6. 成功驗證使用者之後：
    
-   * [要求單一登入 (SSO) 權杖]
-   * 將 returnUrl 查詢參數附加至您從上述 API 呼叫收到的 SSO URL：
+   * 透過 API 管理[要求共用存取權杖]REST API
+   * 將 returnUrl 查詢參數附加至您從上述 API 呼叫所收到的 SSO URL：
      
-     > 例如，`https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * 將使用者重新導向至以上產生的 URL
+     > 例如，`https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * 將使用者重新導向至上述產生的 URL
 
 除了 **SignIn** 作業之外，您也可以遵循上述步驟來執行帳戶管理，並使用以下其中一項作業：
 
@@ -186,7 +184,7 @@ var signature = digest.toString('base64');
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[要求單一登入 (SSO) 權杖]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[要求共用存取權杖]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [建立使用者]: /rest/api/apimanagement/2019-12-01/user/createorupdate
 [呼叫適用於訂閱的 REST API]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps

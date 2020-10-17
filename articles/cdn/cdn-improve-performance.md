@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358282"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148753"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>在 Azure CDN 中壓縮檔案以改善效能
 檔案壓縮是簡單且有效的方法，可提升檔案傳輸速度，並且在檔案從伺服器傳送出去之前先減少其大小，以增加頁面載入效能。 檔案壓縮可降低頻寬成本，並提供回應速度更快的體驗給使用者。
@@ -113,6 +113,8 @@ ms.locfileid: "91358282"
 
 當資產的要求指定 gzip 壓縮且快取中的要求結果遺失時，Azure CDN 會在原始伺服器上對資產執行 gzip 壓縮。 之後會從快取提供壓縮的檔案。
 
+如果來源使用區塊傳輸編碼 (CTE) 將壓縮的資料傳送到 CDN POP，則不支援大於8MB 的回應大小。 
+
 ### <a name="azure-cdn-from-verizon-profiles"></a>來自 Verizon 的 Azure CDN 設定檔
 
 若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，只會壓縮合格的檔案。 若要符合壓縮，檔案必須︰
@@ -149,7 +151,7 @@ ms.locfileid: "91358282"
 | 未壓縮 |不快取 |未壓縮 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已啟用壓縮且檔案適合進行壓縮
-| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 注意 |
+| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備註 |
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed |支援格式之間的 CDN 轉碼。 |
 | Compressed |未壓縮 |Compressed |CDN 執行壓縮。 |

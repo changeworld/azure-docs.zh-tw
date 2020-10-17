@@ -8,18 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75976613"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144391"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure Resource Manager 範本建立 IoT 中樞 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-瞭解如何使用 Azure Resource Manager 範本來建立 IoT 中樞和取用者群組。 Resource Manager 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Azure Resource Manager 檔](https://docs.microsoft.com/azure/azure-resource-manager/)。
+瞭解如何使用 Azure Resource Manager 範本來建立 IoT 中樞和取用者群組。 Resource Manager 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Azure Resource Manager 檔](../azure-resource-manager/index.yml)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "75976613"
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-此範本會建立具有三個端點的 Azure Iot 中樞 (eventhub、雲端到裝置、訊息) 和取用者群組。 如需更多範本範例，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)。 您可以在  [這裡](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)找到 Iot 中樞範本架構。
+此範本會建立具有三個端點的 Azure Iot 中樞 (eventhub、雲端到裝置、訊息) 和取用者群組。 如需更多範本範例，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)。 您可以在  [這裡](/azure/templates/microsoft.devices/iothub-allversions)找到 Iot 中樞範本架構。
 
 有幾種方法可以部署範本。  您會在本教學課程中使用 Azure PowerShell。
 
@@ -71,11 +71,11 @@ New-AzResourceGroupDeployment `
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
-[lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
+[lnk-rest-api]: /rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/management/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-iotedge]: ../iot-edge/quickstart-linux.md

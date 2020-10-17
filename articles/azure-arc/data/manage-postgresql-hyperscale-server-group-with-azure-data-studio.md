@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a073df78adbf0104d81a96eb92ea427f60e53b01
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936796"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151842"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>使用 Azure Data Studio 來管理已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組
 
@@ -61,9 +61,8 @@ Azure data studio 會顯示您的 Arc 資料控制器。 將它展開，並顯�
 
 這項功能會在該窗格的左邊列出數個儀表板：
 
-- **總覽：** 顯示有關您的實例的摘要資訊，例如名稱、Azure 訂用帳戶識別碼、設定、資料庫引擎版本、Grafana 和 Kibana 的端點 .。。
+- **總覽：** 顯示有關您的實例的摘要資訊，例如名稱、于 postgresql 管理員使用者名稱、Azure 訂用帳戶識別碼、設定、資料庫引擎的版本、Grafana 和 Kibana 的端點 .。。
 - **連接字串：** 顯示您可能需要連接至於 postgresql 實例的各種連接字串，例如 psql、Node.js、PHP、Ruby .。。
-- **屬性：** 顯示各種屬性，例如陰影資源的于 postgresql 管理使用者名稱、相關聯的資源群組 .。。
 - **診斷並解決問題：** 是登陸頁面，您可以在其中找到各種資源，以協助您在擴充疑難排解筆記本時對實例進行疑難排解
 - **新的支援要求：** 是登陸頁面，您可以從此處取得支援服務的協助，從公開預覽公告開始。
 

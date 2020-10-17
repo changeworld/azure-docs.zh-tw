@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044525"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148126"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>監視 Azure App Service 中的應用程式
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 針對 [Azure 入口網站](https://portal.azure.com)中的 web 應用程式、行動和 API 應用程式提供內建的監視功能。
+[Azure App Service](./overview.md) 針對 [Azure 入口網站](https://portal.azure.com)中的 web 應用程式、行動和 API 應用程式提供內建的監視功能。
 
 在 Azure 入口網站中，您可以查看應用程式的 *配額* 和 *計量* ，並 App Service 方案，並設定 *警示* 和自動 *調整規則型* 計量。
 

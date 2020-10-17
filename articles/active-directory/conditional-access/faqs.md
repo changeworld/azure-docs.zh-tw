@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258620"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145223"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 條件式存取常見問題
 
@@ -63,4 +63,4 @@ Microsoft Teams 在核心產能情節中非常依賴 Exchange Online 和 SharePo
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要為您的環境設定條件式存取原則，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。 
+- 若要為您的環境設定條件式存取原則，請參閱 [一文規劃條件式存取部署](plan-conditional-access.md)。 

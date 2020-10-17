@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: 登入頻率和瀏覽器持續性控制項
       href: howto-conditional-access-session-lifetime.md
-    - name: 最佳作法
-      href: best-practices.md
     - name: 疑難排解
       items:
         - name: 對登入問題進行疑難排解
@@ -126,7 +124,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

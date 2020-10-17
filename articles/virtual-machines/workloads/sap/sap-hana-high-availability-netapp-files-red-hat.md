@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/30/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: ce24bf541c5a71c50bb34f5e42aa3452f01b871c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8800adae73de2672dd89678a6346fe6b0df755ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978164"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144199"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>SAP Hana Red Hat Enterprise Linux 上的 Azure NetApp Files 向上擴充的高可用性
 
@@ -227,6 +227,13 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
 5.  建立虛擬機器 1 (**hanadb1**) 。 
 6.  建立虛擬機器 2 (**hanadb2**) 。  
 7.  建立虛擬機器時，我們將不會新增任何磁片，因為所有的掛接點都是來自 Azure NetApp Files 的 NFS 共用。 
+
+> [!IMPORTANT]
+> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。    
+
+> [!NOTE] 
+> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。
+
 8.  如果使用標準負載平衡器，請遵循下列設定步驟：
     1.  首先，建立前端 IP 集區：
         1.  開啟負載平衡器，選取 [前端 IP 集區]，然後選取 [新增]。
@@ -255,8 +262,6 @@ Azure NetApp Files 磁片區的輸送量是磁片區大小和服務層級的功�
         1.  務必**啟用浮動 IP**。
         1.  選取 [確定]。
 
-> [!NOTE] 
-> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) 標準 Azure 負載平衡器的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性情節中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。
 
 9. 或者，如果您的情節要求使用基本負載平衡器，請遵循下列設定步驟：
     1.  設定負載平衡器。 首先，建立前端 IP 集區：

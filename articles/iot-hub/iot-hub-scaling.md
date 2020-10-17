@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 725fc422bc11a19bebcbb8895cc0a9bedd58afed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c82f6eb37d542f80b6cb79ffb1fae6fe0cf0c233
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577759"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144271"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>選擇適合您解決方案的 IoT 中樞層
 
@@ -77,37 +77,37 @@ IoT 中樞的基本和標準層之間的支援功能差異，代表某些 API �
 
 | API | 基本層 | 免費/標準層 |
 | --- | ---------- | ------------- |
-| [刪除裝置](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | 是 | 是 |
-| [取得裝置](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | 是 | 是 |
-| [刪除模組](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) (機器翻譯) | 是 | 是 |
-| [取得模組](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) (機器翻譯) | 是 | 是 |
-| [取得登錄統計資料](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | 是 | 是 |
-| [取得服務統計資料](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | 是 | 是 |
-| [建立或更新裝置](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) (機器翻譯) | 是 | 是 |
-| [建立或更新模組](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) (機器翻譯) | 是 | 是 |
-| [查詢 IoT 中樞](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | 是 | 是 |
-| [建立檔案上傳 SAS URI](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
-| [接收裝置繫結通知](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
-| [傳送裝置事件](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
+| [刪除裝置](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | 是 | 是 |
+| [取得裝置](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | 是 | 是 |
+| [刪除模組](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) (機器翻譯) | 是 | 是 |
+| [取得模組](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) (機器翻譯) | 是 | 是 |
+| [取得登錄統計資料](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | 是 | 是 |
+| [取得服務統計資料](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | 是 | 是 |
+| [建立或更新裝置](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) (機器翻譯) | 是 | 是 |
+| [建立或更新模組](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) (機器翻譯) | 是 | 是 |
+| [查詢 IoT 中樞](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | 是 | 是 |
+| [建立檔案上傳 SAS URI](/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
+| [接收裝置繫結通知](/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
+| [傳送裝置事件](/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
 | 傳送模組事件 | 僅限 AMQP 和 MQTT | 僅限 AMQP 和 MQTT |
-| [更新檔案上傳狀態](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
-| [大量裝置作業](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | 是，IoT Edge 功能除外 | 是 |
-| [取消匯入匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobs/cancelimportexportjob) (機器翻譯) | 是 | 是 |
-| [建立匯入匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobs/createimportexportjob) (機器翻譯) | 是 | 是 |
-| [取得匯入匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjob) | 是 | 是 |
-| [取得匯入匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) (機器翻譯) | 是 | 是 |
-| [清除命令佇列](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | 是 |
-| [取得裝置對應項](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | 是 |
-| [取得模組對應項](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) (機器翻譯) |   | 是 |
-| [叫用裝置方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods) |   | 是 |
-| [更新裝置對應項](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) |   | 是 |
-| [更新模組對應項](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) (機器翻譯) |   | 是 |
-| [放棄裝置繫結通知](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | 是 |
-| [完成裝置繫結通知](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | 是 |
-| [取消作業](https://docs.microsoft.com/rest/api/media/jobs/canceljob) |   | 是 |
-| [建立作業](https://docs.microsoft.com/rest/api/media/jobs/create) |   | 是 |
-| [取得作業](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | 是 |
-| [查詢作業](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | 是 |
+| [更新檔案上傳狀態](/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
+| [大量裝置作業](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | 是，IoT Edge 功能除外 | 是 |
+| [取消匯入匯出作業](/rest/api/iothub/service/jobs/cancelimportexportjob) (機器翻譯) | 是 | 是 |
+| [建立匯入匯出作業](/rest/api/iothub/service/jobs/createimportexportjob) (機器翻譯) | 是 | 是 |
+| [取得匯入匯出作業](/rest/api/iothub/service/jobs/getimportexportjob) | 是 | 是 |
+| [取得匯入匯出作業](/rest/api/iothub/service/jobs/getimportexportjobs) (機器翻譯) | 是 | 是 |
+| [清除命令佇列](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | 是 |
+| [取得裝置對應項](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | 是 |
+| [取得模組對應項](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) (機器翻譯) |   | 是 |
+| [叫用裝置方法](./iot-hub-devguide-direct-methods.md) |   | 是 |
+| [更新裝置對應項](./iot-hub-devguide-device-twins.md) |   | 是 |
+| [更新模組對應項](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) (機器翻譯) |   | 是 |
+| [放棄裝置繫結通知](/rest/api/iothub/device/abandondeviceboundnotification) |   | 是 |
+| [完成裝置繫結通知](/rest/api/iothub/device/completedeviceboundnotification) |   | 是 |
+| [取消作業](/rest/api/media/jobs/canceljob) |   | 是 |
+| [建立作業](/rest/api/media/jobs/create) |   | 是 |
+| [取得作業](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | 是 |
+| [查詢作業](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | 是 |
 
 ## <a name="message-throughput"></a>訊息輸送量
 

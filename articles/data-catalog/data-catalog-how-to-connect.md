@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081248"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151898"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何連接到資料來源
 ## <a name="introduction"></a>簡介
@@ -40,7 +40,7 @@ ms.locfileid: "87081248"
 | Power Query |.xlsx |安裝了 Power Query for Excel 增益集的 Excel 2016、Excel 2010 或 Excel 2013 |
 | Power BI Desktop |.pbix |Power BI Desktop 2016 年 7 月或更新版本 |
 | SQL Server Data Tools |vsweb:// |安裝了 SQL Server 工具的 Visual Studio 2013 Update 4 或更新版本 |
-| 報表管理員 |http:// |請參閱 [SQL Server Reporting Services 的瀏覽器需求](https://technet.microsoft.com/library/ms156511.aspx) |
+| 報表管理員 |http:// |請參閱 [SQL Server Reporting Services 的瀏覽器需求](/sql/reporting-services/browser-support-for-reporting-services-and-power-view) |
 
 ## <a name="your-data-your-tools"></a>您的資料與工具
 功能表中可用的選項取決於目前選取的資料資產的類型。 當然，並非所有可能的工具都將包含於 [開啟於...] 功能表中，但仍能使用任何用戶端工具輕鬆連接至資料來源。 在 **Azure 資料目錄**入口網站中選取資料資產時，完整的位置會顯示於屬性窗格中。

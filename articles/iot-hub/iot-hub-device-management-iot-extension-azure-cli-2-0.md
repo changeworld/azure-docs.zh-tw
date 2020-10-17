@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aded49b5b9509a75e61612e44ffa19ff377d1712
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239650"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148318"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>使用適用於 Azure CLI 的 IoT 擴充功能來管理 Azure IoT 中樞裝置
 
@@ -23,7 +23,7 @@ ms.locfileid: "80239650"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[適用于 Azure CLI 的 iot 延伸](https://github.com/Azure/azure-iot-cli-extension) 模組是開放原始碼 iot 擴充功能，可新增至 [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)的功能。 Azure CLI 包含與 Azure Resource Manager 和管理端點互動的命令。 例如，您可以使用 Azure CLI 來建立 Azure VM 或 IoT 中樞。 CLI 擴充功能可讓 Azure 服務強化 Azure CLI，讓您能存取其他服務專屬的功能。 IoT 擴充功能可讓 IoT 開發人員對所有 IoT 中樞、IoT Edge 和 IoT 中樞裝置布建服務功能的命令列存取。
+[適用于 Azure CLI 的 iot 延伸](https://github.com/Azure/azure-iot-cli-extension) 模組是開放原始碼 iot 擴充功能，可新增至 [Azure CLI](/cli/azure/overview?view=azure-cli-latest)的功能。 Azure CLI 包含與 Azure Resource Manager 和管理端點互動的命令。 例如，您可以使用 Azure CLI 來建立 Azure VM 或 IoT 中樞。 CLI 擴充功能可讓 Azure 服務強化 Azure CLI，讓您能存取其他服務專屬的功能。 IoT 擴充功能可讓 IoT 開發人員對所有 IoT 中樞、IoT Edge 和 IoT 中樞裝置布建服務功能的命令列存取。
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "80239650"
 
 * [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI。 如果您需要安裝它，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az –version` 進行驗證。
+* Azure CLI。 如果您需要安裝它，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az –version` 進行驗證。
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

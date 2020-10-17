@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072266"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152212"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 裝置 Sdk 平臺支援
 
@@ -74,7 +74,7 @@ Microsoft 會在 GitHub 上發佈開放原始碼 Sdk，適用于下列語言： 
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 桌面和伺服器 Sku   | .NET Core 2.1、.NET Framework 4.5.1 或 .NET Framework 4。7 |
 
-.NET SDK 也可以搭配 [Azure 裝置代理](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) 程式與 Windows IoT Core 搭配使用，或可 [使用 RPC 與 UWP 應用程式通訊的自訂 NTService](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/)。
+.NET SDK 也可以搭配 [Azure 裝置代理](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) 程式與 Windows IoT Core 搭配使用，或可 [使用 RPC 與 UWP 應用程式通訊的自訂 NTService](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/)。
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
@@ -124,7 +124,7 @@ Microsoft 與數個合作夥伴合作，持續擴充 Azure IoT universe 與 Azur
 
 ## <a name="support-and-other-resources"></a>支援和其他資源
 
-如果您在使用 Azure IoT 裝置 Sdk 時遇到問題，有幾種方式可搜尋以下摘要說明的支援。 如需所有支援選項的完整資訊，請參閱 [Azure IoT 支援和協助選項](https://aka.ms/iothelp)。 
+如果您在使用 Azure IoT 裝置 Sdk 時遇到問題，有幾種方式可搜尋以下摘要說明的支援。 如需所有支援選項的完整資訊，請參閱 [Azure IoT 支援和協助選項](../iot-fundamentals/iot-support-help.md)。 
 
 **報告錯誤** ：裝置 sdk 中的錯誤可以在相關 GitHub 專案的 [問題] 頁面上報告。 我們也會快速地從專案中找出修正方式，並加入產品更新中。
 
@@ -138,7 +138,7 @@ Microsoft 與數個合作夥伴合作，持續擴充 Azure IoT universe 與 Azur
 
 * [Azure IoT 中樞 Python SDK 問題](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**技術問題**：您可以在[Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)上詢問技術問題，並使用*azure-iot-sdk*的標記來[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) 。
+**技術問題**：您可以在[Microsoft Q&A](/answers/topics/azure-iot-sdk.html)上詢問技術問題，並使用*azure-iot-sdk*的標記來[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) 。
 
 **Microsoft 客戶支援小組** –具有 [支援方案](https://azure.microsoft.com/support/plans/) 的使用者可以直接從 [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)建立新的支援要求，以與 microsoft 客戶支援小組接洽。
 

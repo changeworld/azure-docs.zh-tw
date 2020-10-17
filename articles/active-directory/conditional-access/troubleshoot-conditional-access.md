@@ -5,22 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032963"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145088"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>對使用條件式存取的登入問題進行疑難排解
 
 本文中的資訊可用來針對與條件式存取相關的非預期登入結果，使用錯誤訊息和 Azure AD 登入記錄進行疑難排解。
+
+## <a name="select-all-consequences"></a>選取 [所有] 結果
+
+條件式存取架構可為您提供絕佳的設定彈性。 不過，絕佳的彈性也表示您應該在釋出每個設定原則之前仔細檢查，以避免產生非預期的結果。 在此情況下，您應該特別注意影響整個集合的指派，例如 **all users / groups / cloud apps**。
+
+組織應避免下列設定：
+
+**針對所有使用者、所有雲端應用程式：**
+
+- **封鎖存取** -此設定會封鎖您的整個組織。
+- **要求裝置必須標示為符合規範** -針對尚未註冊其裝置的使用者，此原則會封鎖所有存取權，包括對 Intune 入口網站的存取權。 如果您是沒有已註冊裝置的系統管理員，此原則會阻擋您回到 Azure 入口網站來變更此原則。
+- **需要混合式 Azure AD 加入網域的裝置** -此原則封鎖存取也有可能封鎖組織中所有使用者的存取權（如果他們沒有已加入混合式 Azure AD 的裝置）。
+- **需要應用程式保護原則** -如果您沒有 Intune 原則，此原則封鎖存取也有可能封鎖您組織中所有使用者的存取權。 如果您的系統管理員沒有具有 Intune 應用程式保護原則的用戶端應用程式，此原則會封鎖您回到 Intune 和 Azure 等入口網站。
+
+**針對所有使用者、所有雲端應用程式、所有裝置平台：**
+
+- **封鎖存取** -此設定會封鎖您的整個組織。
 
 ## <a name="conditional-access-sign-in-interrupt"></a>條件式存取登入中斷
 
@@ -82,8 +99,14 @@ ms.locfileid: "88032963"
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>如果您被鎖定 Azure 入口網站，該怎麼辦？
+
+如果您因為條件式存取原則中的設定不正確而遭到鎖定 Azure 入口網站：
+
+- 確認您的組織中是否有其他系統管理員尚未遭到封鎖。 具有 Azure 入口網站存取權的系統管理員可以停用影響您登入的原則。 
+- 如果組織中沒有任何系統管理員可以更新原則，請提交支援要求。 Microsoft 支援人員可以在確認更新導致無法存取的條件式存取原則時，進行審查。
+
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 入口網站中的登入活動報告](../reports-monitoring/concept-sign-ins.md)
 - [使用 What If 工具對條件式存取進行疑難排解](troubleshoot-conditional-access-what-if.md)
-- [Azure Active Directory 中條件式存取](best-practices.md)的最佳作法

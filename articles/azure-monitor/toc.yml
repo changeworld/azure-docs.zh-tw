@@ -293,7 +293,7 @@
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
                 - name: Resource Manager 範本
-                  href: platform/template-workspace-configuration.md
+                  href: ./samples/resource-manager-workspace.md
             - name: 刪除並復原工作區
               href: platform/delete-workspace.md
             - name: 管理存取權

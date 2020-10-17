@@ -3,12 +3,12 @@ title: 登錄驗證選項
 description: 私用 Azure container registry 的驗證選項，包括使用 Azure Active Directory 身分識別登入、使用服務主體，以及使用選擇性的系統管理員認證。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1747dfa0664778283d0cea06940ea95982c269a2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048010"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148562"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>向 Azure Container Registry 進行驗證 | Microsoft Docs
 
@@ -20,7 +20,7 @@ ms.locfileid: "92048010"
 
 下表列出可用的驗證方法和一般案例。 如需詳細資料，請參閱連結的內容。
 
-| 方法                               | 如何驗證                                           | 案例                                                            | 角色型存取控制 (RBAC)                             | 限制                                |
+| 方法                               | 如何驗證                                           | 案例                                                            | Azure 角色型存取控制 (Azure RBAC)                             | 限制                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [個別 AD 身分識別](#individual-login-with-azure-ad)                | `az acr login` 在 Azure CLI                             | 開發人員、測試人員的互動式推送/提取                                    | 是                              | 必須每3小時更新一次 AD 權杖     |
 | [AD 服務主體](#service-principal)                  | `docker login`<br/><br/>在 Azure CLI 中的 `az acr login`<br/><br/> Api 或工具中的登錄登入設定<br/><br/> [Kubernetes 提取秘密](container-registry-auth-kubernetes.md)                                           | 從 CI/CD 管線自動推入<br/><br/> 自動提取至 Azure 或外部服務  | 是                              | SP 密碼預設過期期限為1年       |                                                           
@@ -98,7 +98,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 > 管理帳戶是專為讓單一使用者存取登錄而設計，主要用於測試。 我們不建議在多位使用者之間共用系統管理員帳號憑證。 所有使用管理帳戶進行驗證的使用者會顯示為單一使用者，此使用者具備登錄的推送和提取存取權。 變更或停用此帳戶時，會將所有使用其認證之使用者的登錄存取權都停用。 針對遠端控制案例的使用者和服務主體，建議使用個人身分識別。
 >
 
-管理帳戶隨附兩個密碼，兩個密碼都可以重新產生。 兩個密碼可讓您在重新產生其中一個密碼時，使用另一個密碼來維持與登錄的連線。 如果已啟用管理帳戶，即可在系統提示時將使用者名稱和其中一個密碼傳遞給 `docker login` 命令，向登錄進行基本驗證。 例如︰
+管理帳戶隨附兩個密碼，兩個密碼都可以重新產生。 兩個密碼可讓您在重新產生其中一個密碼時，使用另一個密碼來維持與登錄的連線。 如果已啟用管理帳戶，即可在系統提示時將使用者名稱和其中一個密碼傳遞給 `docker login` 命令，向登錄進行基本驗證。 例如：
 
 ```
 docker login myregistry.azurecr.io 

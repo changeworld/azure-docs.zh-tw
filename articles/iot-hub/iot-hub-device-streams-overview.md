@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327679"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152167"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中樞裝置串流 (預覽)
 
@@ -103,7 +103,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
+> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>允許對裝置串流端點的輸出連線能力
@@ -119,7 +119,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
+> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
 >
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>透過裝置串流活動記錄進行疑難排解
@@ -156,7 +156,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT 中樞裝置串流範例
 
-IoT 中樞頁面上有兩個 [快速入門範例](/azure/iot-hub) 可供使用。 這些會示範應用程式使用裝置串流的方式。
+IoT 中樞頁面上有兩個 [快速入門範例](./index.yml) 可供使用。 這些會示範應用程式使用裝置串流的方式。
 
 * *Echo*範例示範如何透過呼叫 SDK API 的直接) ，以程式設計方式使用裝置串流 (。
 
@@ -194,7 +194,7 @@ IoT 中樞頁面上有兩個 [快速入門範例](/azure/iot-hub) 可供使用�
 
 4. 服務本機 Proxy 會在等候來自使用者之新 SSH 連線的指定連接埠上進行接聽 (範例中使用連接埠 2222，但可以設定成任何其他可用的連接埠)。 使用者將 SSH 用戶端指向 localhost 上的服務本機 Proxy 連接埠。
 
-### <a name="notes"></a>注意
+### <a name="notes"></a>備註
 
 * 上述步驟會完成 SSH 用戶端 (右側) 到 SSH 精靈 (左側) 之間的端對端通道。 這個端對端連線能力中有部分牽涉到將流量透過裝置資料流傳送給「IoT 中樞」。
 
@@ -212,7 +212,7 @@ IoT 中樞頁面上有兩個 [快速入門範例](/azure/iot-hub) 可供使用�
 
 * [C 裝置程式](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您可以使用下列連結來深入瞭解裝置串流。
 

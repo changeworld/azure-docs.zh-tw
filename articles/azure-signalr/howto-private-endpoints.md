@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84302140"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152344"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>使用私人端點進行 Azure SignalR Service
 
@@ -82,8 +82,8 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 
 如需有關設定您自己的 DNS 伺服器以支援私人端點的詳細資訊，請參閱下列文章：
 
-- [Azure 虛擬網路中的資源名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [私人端點的 DNS 設定](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 虛擬網路中的資源名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [私人端點的 DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="create-a-private-endpoint"></a>建立私人端點
 
@@ -93,7 +93,7 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 
     ![建立 Azure SignalR Service-[網路] 索引標籤](media/howto-private-endpoints/portal-create-blade-networking-tab.png)
 
-1. 按一下 [新增] 。 填入新私人端點的訂用帳戶、資源群組、位置和名稱。 選擇虛擬網路和子網。
+1. 按一下 [新增]  。 填入新私人端點的訂用帳戶、資源群組、位置和名稱。 選擇虛擬網路和子網。
 
     ![建立 Azure SignalR Service-新增私人端點](media/howto-private-endpoints/portal-create-blade-add-private-endpoint.png)
 
@@ -198,8 +198,8 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有私人端點的子網路所適用的網路安全性群組規則
 
-您目前無法設定 [網路安全性群組](../virtual-network/security-overview.md) (NSG) 規則和私人端點的使用者定義路由。 套用至裝載私人端點之子網的 NSG 規則會套用至私人端點。 此問題的有限因應措施是針對來源子網上的私人端點實行存取規則，但是這種方法可能需要較高的管理負荷。
+您目前無法設定 [網路安全性群組](../virtual-network/network-security-groups-overview.md) (NSG) 規則和私人端點的使用者定義路由。 套用至裝載私人端點之子網的 NSG 規則會套用至私人端點。 此問題的有限因應措施是針對來源子網上的私人端點實行存取規則，但是這種方法可能需要較高的管理負荷。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [設定網路存取控制](howto-network-access-control.md)

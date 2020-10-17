@@ -176,15 +176,15 @@
         - name: 安全性基準
           href: security-baseline.md
         - name: 建議
-          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc
         - name: 從頭建立安全性
-          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-ground-up.md?context=azure%252fiot-hub%252frc%252frc
         - name: 安全性最佳做法
-          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-best-practices.md?context=azure%252fiot-hub%252frc%252frc
         - name: 安全性架構
-          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-architecture.md?context=azure%252fiot-hub%252frc%252frc
         - name: 保護您的 IoT 部署
-          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+          href: ../iot-fundamentals/iot-security-deployment.md?context=azure%252fiot-hub%252frc%252frc
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -431,33 +431,33 @@
     - name: .NET (服務)
       href: /dotnet/api/microsoft.azure.devices
     - name: .NET (管理)
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
+      href: /dotnet/api/overview/azure/iot/management
     - name: Java (裝置)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (服務)
       href: /java/api/com.microsoft.azure.sdk.iot.service
     - name: Node.js (裝置)
-      href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
+      href: /javascript/api/azure-iot-device/
     - name: Node.js (服務)
-      href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+      href: /javascript/api/azure-iothub/
     - name: Node.js (管理)
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+      href: /javascript/api/overview/azure/iothub/management
     - name: Python (裝置)
-      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+      href: /python/api/azure-iot-device
     - name: Python (服務)
-      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+      href: /python/api/azure-iot-hub
     - name: Python (管理)
-      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
+      href: /python/api/azure-mgmt-iothub
     - name: C 裝置 SDK
-      href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
+      href: /azure/iot-hub/iot-c-sdk-ref/
     - name: REST (裝置)
-      href: 'https://docs.microsoft.com/rest/api/iothub/device'
+      href: /rest/api/iothub/device
     - name: REST (服務)
-      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
+      href: /rest/api/iothub/service/configuration
     - name: REST (IoT 中樞資源)
-      href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
+      href: /rest/api/iothub/iothubresource
     - name: REST (憑證)
-      href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
+      href: /rest/api/iothub/certificates
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.devices/iothub-allversions
     - name: Azure 原則內建
@@ -474,31 +474,31 @@
 - name: 資源
   items:
     - name: 支援和協助選項
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT 服務
       items:
         - name: IoT 中樞
-          href: /azure/iot-hub
+          href: ./index.yml
         - name: IoT 中樞裝置佈建服務
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ../iot-edge/index.yml
         - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT 隨插即用
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure 地圖服務
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: 時間序列深入解析
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服務 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 裝置 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT 範例
       items:
         - name: C# (.NET)

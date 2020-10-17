@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309484"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151986"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
 Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的詞彙。
@@ -96,7 +96,7 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的�
 
 ## <a name="collaborator"></a>共同作業者
 
-共同作業者的概念與 [參與者](#contributor)的概念相同。 當擁有者將共同作業者的電子郵件地址新增至未受 Azure 角色型存取控制 (Azure RBAC) 控制的應用程式時，會授與共同作業者的存取權。 如果您仍在使用共同作業者，則應該遷移您的 LUIS 帳戶，並使用 LUIS 撰寫資源來管理 RBAC 的參與者。
+共同作業者的概念與 [參與者](#contributor)的概念相同。 當擁有者將共同作業者的電子郵件地址新增至未受 Azure 角色型存取控制 (Azure RBAC) 控制的應用程式時，會授與共同作業者的存取權。 如果您仍在使用共同作業者，則應該遷移您的 LUIS 帳戶，並使用 LUIS 撰寫資源來管理 Azure RBAC 的參與者。
 
 ## <a name="contributor"></a>參與者
 
@@ -109,7 +109,7 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的�
 
 描述項是先前用於機器學習 [功能](#features)的詞彙。
 
-## <a name="domain"></a>網域
+## <a name="domain"></a>Domain
 
 在 LUIS 的脈絡中，領域是一個知識的範圍。 您的網域是您的案例所特有的。 不同的網域會使用在網域內容中具有意義的特定語言和術語。 例如，如果您要建立應用程式來播放音樂，則您的應用程式會有音樂專屬的條款和語言–例如「歌曲、曲目、專輯、歌詞、b 邊、演出者」。 如需網域的範例，請參閱 [預建網域](#prebuilt-domain)。
 
@@ -127,7 +127,7 @@ LUIS 預測端點 URL 是您在撰寫併發布 [LUIS 應用程式](#application-
 
 您對預測端點的存取權會獲得 LUIS 預測金鑰的授權。
 
-## <a name="entity"></a>實體
+## <a name="entity"></a>單位
 
 [實體](luis-concept-entity-types.md) 是語句中的單字，可描述用來滿足或識別意圖的資訊。 如果您的實體很複雜，而且您想要模型識別特定部分，您可以將模型分成子實體。 例如，您可能會想要讓模型預測位址，以及子實體街道、city、state 和 zipcode。 實體也可以當做模型的功能使用。 您從 LUIS 應用程式的回應將會包含預測的意圖和所有實體。
 
@@ -287,7 +287,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 |--|--|
 |小型| 小一，8盎司|
 |中| 標準、12盎司|
-|大型| 大型、16盎司|
+|大| 大型、16盎司|
 |Xtra 大型| 最大一，24盎司|
 
 當輸入中出現任何同義字時，此模型會傳回實體的標準化值。

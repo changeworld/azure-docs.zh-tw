@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601998"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145533"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -37,10 +37,7 @@ Microsoft 身分識別安全性總監 Alex Weinert 在 2020 年 3 月 12 日發�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假設您已熟悉以下各項： 
-
-- Azure AD 條件式存取的[基本概念](overview.md) 
-- 在 Azure 入口網站中設定條件式存取原則的[最佳做法](best-practices.md)
+本文假設您已熟悉 Azure AD 條件式存取的 [基本概念](overview.md) 。
 
 ## <a name="scenario-description"></a>案例描述
 

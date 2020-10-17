@@ -5,28 +5,47 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016122"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145369"
 ---
 # <a name="building-a-conditional-access-policy"></a>建立條件式存取原則
 
 如同 [條件式存取](overview.md)文章中所述，條件式存取原則是 if-then 語句、 **指派** 和 **存取控制**。 條件式存取原則會將信號結合在一起，以進行決策並強制執行組織原則。
 
-組織如何建立這些原則？ 需要什麼？
+組織如何建立這些原則？ 需要什麼？ 它們的套用方式為何？
 
 ![條件式存取 (信號 + 決策 + 強制 = 原則) ](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-## <a name="assignments"></a>作業
+您可以隨時將多個條件式存取原則套用至個別使用者。 在此情況下，您必須滿足所有套用的原則。 例如，如果某個原則需要 (MFA) 的多重要素驗證，而另一個原則需要符合規範的裝置，您必須完成 MFA，並使用符合規範的裝置。 所有指派邏輯上都會使用 **AND** 運算子。 如果您已設定多個指派，必須滿足所有的指派才能觸發原則。
+
+所有的原則都會在兩個階段強制執行：
+
+- 第1階段：收集會話詳細資料 
+   - 收集需要進行原則評估的會話詳細資料，例如網路位置和裝置身分識別。 
+   - 原則評估的第1階段是在 [僅限報表模式下](concept-conditional-access-report-only.md)啟用的原則和原則進行。
+- 第2階段：強制 
+   - 使用階段1中收集的會話詳細資料，以找出任何未符合的需求。 
+   - 如果有設定為封鎖存取權的原則，則會在此處停止強制執行，而且會封鎖使用者。 
+   - 系統會提示使用者完成下列順序的第1階段未滿足的額外授與控制需求，直到符合原則為止：  
+      - Multi-Factor Authentication 
+      - 核准的用戶端應用程式/應用程式保護原則 
+      - 受管理的裝置 (符合規範或混合式 Azure AD 聯結)  
+      - 使用規定 
+      - 自訂控制項  
+   - 滿足所有 grant 控制項之後，請將會話控制項套用 (應用程式強制執行、Microsoft Cloud App Security 和權杖存留期)  
+   - 原則評估的第2階段會針對所有啟用的原則進行。 
+
+## <a name="assignments"></a>指派
 
 指派部分可控制條件式存取原則的使用者、內容和位置。
 
@@ -115,7 +134,7 @@ Grant 控制項可以觸發一或多個控制項的強制執行。
 條件式存取原則必須至少包含下列各項才能強制執行：
 
 - 原則的**名稱**。
-- **作業**
+- **指派**
    - 要套用原則的**使用者和/或群組**。
    - 要套用原則的**雲端應用程式或動作**。
 - **存取控制**

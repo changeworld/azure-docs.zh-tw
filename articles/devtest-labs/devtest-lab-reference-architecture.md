@@ -4,12 +4,12 @@ description: 本文提供企業內 Azure DevTest Labs 的參考架構指引。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367745"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144543"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs 企業的參考架構
 本文提供的參考架構可協助您根據企業中的 Azure DevTest Labs 來部署解決方案。 其中包括下列各項：
@@ -30,7 +30,7 @@ ms.locfileid: "91367745"
     - 您有無法移至雲端的內部部署資料。
     - 您偏好將實驗室的虛擬機器加入內部部署網域。
     - 您想要透過內部部署防火牆，在安全性/合規性中強制進出雲端環境的所有網路流量。
-- **網路安全性群組**：根據來源和目的地 IP 位址，將流量限制在雲端環境 (或雲端環境) 的常見方式是使用 [網路安全性群組](../virtual-network/security-overview.md)。 例如，您只想要允許源自公司網路的流量進入實驗室的網路。
+- **網路安全性群組**：根據來源和目的地 IP 位址，將流量限制在雲端環境 (或雲端環境) 的常見方式是使用 [網路安全性群組](../virtual-network/network-security-groups-overview.md)。 例如，您只想要允許源自公司網路的流量進入實驗室的網路。
 - **遠端桌面閘道**：企業通常會封鎖公司防火牆上的連出遠端桌面連線。 有幾個選項可讓您在 DevTest Labs 中連線到雲端式環境，包括：
   - 使用 [遠端桌面閘道](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)，並允許閘道負載平衡器的靜態 IP 位址。
   - 透過 ExpressRoute/站對站 VPN 連線將[所有連入的 RDP 流量](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)導向。 這項功能是企業規劃 DevTest Labs 部署的一般考慮。

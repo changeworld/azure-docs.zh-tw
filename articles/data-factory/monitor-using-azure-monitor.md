@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6862fa6c9dfa3e8ba26d6f07dc1d9096cf16f092
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563546"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151914"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure 監視器監視和警示 Data Factory
 
@@ -40,7 +40,7 @@ Data Factory 只會在45天內儲存管線執行資料。 如果您想要將資�
   * 您想要針對由 Data Factory 所發行的一組豐富的計量，撰寫複雜的查詢來進行監視。 您可以透過「監視」來建立這些查詢的自訂警示。
   * 您想要監視所有資料處理站。 您可以將多個資料處理站的資料路由傳送至單一監視器工作區。
 
-您也可以使用不在發出記錄的資源訂用帳戶中的儲存體帳戶或事件中樞命名空間。 設定此設定的使用者必須具有適當的角色型存取控制 (RBAC) 存取這兩個訂用帳戶。
+您也可以使用不在發出記錄的資源訂用帳戶中的儲存體帳戶或事件中樞命名空間。 設定此設定的使用者必須具有適當的 Azure 角色型存取控制 (Azure RBAC) 存取這兩個訂用帳戶。
 
 ## <a name="configure-diagnostic-settings-and-workspace"></a>設定診斷設定和工作區
 
@@ -82,7 +82,7 @@ Data Factory 只會在45天內儲存管線執行資料。 如果您想要將資�
     > [!NOTE]
     > 因為 Azure 記錄資料表不能有超過500個數據行，所以 **強烈建議** 您選取 _資源特定模式_。 如需詳細資訊，請參閱 [Log Analytics 的已知限制](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 經過幾分鐘之後，新的設定就會出現在此 data factory 的設定清單中。 一旦產生新的事件資料，就會將診斷記錄串流處理至該工作區。 當事件發出和記錄在 Log Analytics 中出現時，最多可能會有15分鐘的時間。
 
@@ -146,14 +146,14 @@ Data Factory 只會在45天內儲存管線執行資料。 如果您想要將資�
 | TriggerCancelledRuns                  | 已取消的觸發程序執行計量            | Count    | 總計                | 在分鐘時間範圍內取消的觸發程式執行總數。 |
 | TriggerFailedRuns                    | 失敗的觸發程序執行計量              | Count    | 總計                | 在分鐘時間範圍內失敗的觸發程式執行總數。 |
 | TriggerSucceededRuns                 | 成功的觸發程序執行計量           | Count    | 總計                | 在分鐘時間範圍內成功執行的觸發程式執行總數。 |
-| SSISIntegrationRuntimeStartCancelled  | 已取消 SSIS integration runtime 開始計量           | Count    | 總計                | 在一分鐘時間範圍內已取消的 SSIS integration runtime 啟動總數。 |
-| SSISIntegrationRuntimeStartFailed    | 失敗的 SSIS 整合執行時間啟動計量             | Count    | 總計                | 在一分鐘的時間範圍內，SSIS 整合執行時間的啟動失敗總數。 |
-| SSISIntegrationRuntimeStartSucceeded | 成功的 SSIS 整合執行時間開始計量          | Count    | 總計                | 在一分鐘時間範圍內成功啟動的 SSIS integration runtime 總數。 |
-| SSISIntegrationRuntimeStopStuck      | 停滯 SSIS integration runtime 停止計量               | Count    | 總計                | 在一分鐘時間範圍內停滯的 SSIS integration runtime 停止總數。 |
-| SSISIntegrationRuntimeStopSucceeded  | 成功的 SSIS 整合執行時間停止計量           | Count    | 總計                | 在一分鐘內成功的 SSIS integration runtime 停止總數。 |
-| SSISPackageExecutionCancelled         | 已取消 SSIS 套件執行計量  | Count    | 總計                | 在一分鐘時間範圍內取消的 SSIS 封裝執行總數。 |
-| SSISPackageExecutionFailed           | 失敗的 SSIS 套件執行計量    | Count    | 總計                | 在一分鐘時間範圍內失敗的 SSIS 封裝執行總數。 |
-| SSISPackageExecutionSucceeded        | 成功的 SSIS 套件執行計量 | Count    | 總計                | 在分鐘時間範圍內成功執行的 SSIS 封裝執行總數。 |
+| SSISIntegrationRuntimeStartCancelled  | 已取消 SSIS integration runtime 開始計量           | 計數    | 總計                | 在一分鐘時間範圍內已取消的 SSIS integration runtime 啟動總數。 |
+| SSISIntegrationRuntimeStartFailed    | 失敗的 SSIS 整合執行時間啟動計量             | 計數    | 總計                | 在一分鐘的時間範圍內，SSIS 整合執行時間的啟動失敗總數。 |
+| SSISIntegrationRuntimeStartSucceeded | 成功的 SSIS 整合執行時間開始計量          | 計數    | 總計                | 在一分鐘時間範圍內成功啟動的 SSIS integration runtime 總數。 |
+| SSISIntegrationRuntimeStopStuck      | 停滯 SSIS integration runtime 停止計量               | 計數    | 總計                | 在一分鐘時間範圍內停滯的 SSIS integration runtime 停止總數。 |
+| SSISIntegrationRuntimeStopSucceeded  | 成功的 SSIS 整合執行時間停止計量           | 計數    | 總計                | 在一分鐘內成功的 SSIS integration runtime 停止總數。 |
+| SSISPackageExecutionCancelled         | 已取消 SSIS 套件執行計量  | 計數    | 總計                | 在一分鐘時間範圍內取消的 SSIS 封裝執行總數。 |
+| SSISPackageExecutionFailed           | 失敗的 SSIS 套件執行計量    | 計數    | 總計                | 在一分鐘時間範圍內失敗的 SSIS 封裝執行總數。 |
+| SSISPackageExecutionSucceeded        | 成功的 SSIS 套件執行計量 | 計數    | 總計                | 在分鐘時間範圍內成功執行的 SSIS 封裝執行總數。 |
 
 若要存取度量，請完成 [Azure 監視器資料平臺](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)中的指示。
 
@@ -221,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>headers
+##### <a name="headers"></a>標題
 
 * 將 `{api-version}` 取代為 `2016-09-01`。
 * 取代為 `{resource-id}` 您要編輯診斷設定之資源的識別碼。 如需詳細資訊，請參閱 [使用資源群組來管理您的 Azure 資源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
@@ -271,14 +271,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性 | 類型 | 描述 |
 | --- | --- | --- |
-| **storageAccountId** |字串 | 您要將診斷記錄傳送至其中之儲存體帳戶的資源識別碼。 |
-| **serviceBusRuleId** |字串 | 服務匯流排命名空間的服務匯流排規則識別碼，您想要在此命名空間中建立事件中樞以進行串流診斷記錄。 規則識別碼的格式為 `{service bus resource ID}/authorizationrules/{key name}` 。|
+| **storageAccountId** |String | 您要將診斷記錄傳送至其中之儲存體帳戶的資源識別碼。 |
+| **serviceBusRuleId** |String | 服務匯流排命名空間的服務匯流排規則識別碼，您想要在此命名空間中建立事件中樞以進行串流診斷記錄。 規則識別碼的格式為 `{service bus resource ID}/authorizationrules/{key name}` 。|
 | **workspaceId** | 複雜類型 | 度量時間粒紋的陣列及其保留原則。 這個屬性的值是空的。 |
 |**指標**| 要傳遞給已叫用之管線的管線執行參數值| 將參數名稱對應到引數值的 JSON 物件。 |
 | **日誌**| 複雜類型| 資源類型之診斷記錄類別的名稱。 若要取得資源的診斷記錄類別清單，請執行「取得診斷設定」作業。 |
-| **類別**| 字串| 記錄類別的陣列及其保留原則。 |
-| **timeGrain** | 字串 | 計量的細微性，以 ISO 8601 持續時間格式來捕捉。 屬性值必須是 `PT1M` ，指定一分鐘。 |
-| **啟用**| 布林值 | 指定是否為此資源啟用度量或記錄類別的收集。 |
+| **類別**| String| 記錄類別的陣列及其保留原則。 |
+| **timeGrain** | String | 計量的細微性，以 ISO 8601 持續時間格式來捕捉。 屬性值必須是 `PT1M` ，指定一分鐘。 |
+| **啟用**| Boolean | 指定是否為此資源啟用度量或記錄類別的收集。 |
 | **retentionPolicy**| 複雜類型| 描述計量或記錄類別的保留原則。 這個屬性只會用於儲存體帳戶。 |
 |**天**| Int| 要保留計量或記錄的天數。 如果屬性值為0，則會永遠保留記錄。 這個屬性只會用於儲存體帳戶。 |
 
@@ -341,7 +341,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>headers
+##### <a name="headers"></a>標題
 
 * 將 `{api-version}` 取代為 `2016-09-01`。
 * 取代為 `{resource-id}` 您要編輯診斷設定之資源的識別碼。 如需詳細資訊，請參閱 [使用資源群組來管理您的 Azure 資源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
@@ -444,19 +444,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性 | 類型 | 描述 | 範例 |
 | --- | --- | --- | --- |
-| **Level** |字串 | 診斷記錄的層級。 針對活動執行記錄，將屬性值設定為4。 | `4` |
-| **correlationId** |字串 | 用來追蹤特定要求的唯一識別碼。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | 字串 | 事件的時間，以 timespan UTC 格式為限 `YYYY-MM-DDTHH:MM:SS.00000Z` 。 | `2017-06-28T21:00:27.3534352Z` |
-|**activityRunId**| 字串| 活動執行的識別碼。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|**pipelineRunId**| 字串| 管線執行的識別碼。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**resourceId**| 字串 | 與 data factory 資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**類別**| 字串 | 診斷記錄的類別。 將屬性 (Property) 值設定為 `ActivityRuns`。 | `ActivityRuns` |
-|**level**| 字串 | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
-|**operationName**| 字串 | 活動的名稱及其狀態。 如果活動是啟動的信號，則屬性值為 `MyActivity -` 。 如果活動是結束信號，則屬性值為 `MyActivity - Succeeded` 。 | `MyActivity - Succeeded` |
-|**pipelineName**| 字串 | 管線名稱。 | `MyPipeline` |
-|**activityName**| 字串 | 活動名稱。 | `MyActivity` |
-|**開始**| 字串 | 活動的開始時間以 timespan UTC 格式執行。 | `2017-06-26T20:55:29.5007959Z`|
-|**end**| 字串 | 活動的結束時間以 timespan UTC 格式執行。 如果診斷記錄顯示活動已啟動但尚未結束，則屬性值為 `1601-01-01T00:00:00Z` 。 | `2017-06-26T20:55:29.5007959Z` |
+| **Level** |String | 診斷記錄的層級。 針對活動執行記錄，將屬性值設定為4。 | `4` |
+| **correlationId** |String | 用來追蹤特定要求的唯一識別碼。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | String | 事件的時間，以 timespan UTC 格式為限 `YYYY-MM-DDTHH:MM:SS.00000Z` 。 | `2017-06-28T21:00:27.3534352Z` |
+|**activityRunId**| String| 活動執行的識別碼。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|**pipelineRunId**| String| 管線執行的識別碼。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| String | 與 data factory 資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**類別**| String | 診斷記錄的類別。 將屬性 (Property) 值設定為 `ActivityRuns`。 | `ActivityRuns` |
+|**level**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
+|**operationName**| String | 活動的名稱及其狀態。 如果活動是啟動的信號，則屬性值為 `MyActivity -` 。 如果活動是結束信號，則屬性值為 `MyActivity - Succeeded` 。 | `MyActivity - Succeeded` |
+|**pipelineName**| String | 管線名稱。 | `MyPipeline` |
+|**activityName**| String | 活動名稱。 | `MyActivity` |
+|**開始**| String | 活動的開始時間以 timespan UTC 格式執行。 | `2017-06-26T20:55:29.5007959Z`|
+|**end**| String | 活動的結束時間以 timespan UTC 格式執行。 如果診斷記錄顯示活動已啟動但尚未結束，則屬性值為 `1601-01-01T00:00:00Z` 。 | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-log-attributes"></a>管線執行記錄屬性
 
@@ -490,18 +490,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性 | 類型 | 描述 | 範例 |
 | --- | --- | --- | --- |
-| **Level** |字串 | 診斷記錄的層級。 針對活動執行記錄，將屬性值設定為4。 | `4` |
-| **correlationId** |字串 | 用來追蹤特定要求的唯一識別碼。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | 字串 | 事件的時間，以 timespan UTC 格式為限 `YYYY-MM-DDTHH:MM:SS.00000Z` 。 | `2017-06-28T21:00:27.3534352Z` |
-|**runId**| 字串| 管線執行的識別碼。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**resourceId**| 字串 | 與 data factory 資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**類別**| 字串 | 診斷記錄的類別。 將屬性 (Property) 值設定為 `PipelineRuns`。 | `PipelineRuns` |
-|**level**| 字串 | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
-|**operationName**| 字串 | 管線的名稱及其狀態。 管線執行完成之後，屬性值為 `Pipeline - Succeeded` 。 | `MyPipeline - Succeeded`. |
-|**pipelineName**| 字串 | 管線名稱。 | `MyPipeline` |
-|**開始**| 字串 | 活動的開始時間以 timespan UTC 格式執行。 | `2017-06-26T20:55:29.5007959Z`. |
-|**end**| 字串 | 活動的結束時間以 timespan UTC 格式執行。 如果診斷記錄顯示活動已啟動但尚未結束，則屬性值為 `1601-01-01T00:00:00Z` 。  | `2017-06-26T20:55:29.5007959Z` |
-|**status**| 字串 | 管線執行的最終狀態。 可能的屬性值為 `Succeeded` 和 `Failed` 。 | `Succeeded`|
+| **Level** |String | 診斷記錄的層級。 針對活動執行記錄，將屬性值設定為4。 | `4` |
+| **correlationId** |String | 用來追蹤特定要求的唯一識別碼。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | String | 事件的時間，以 timespan UTC 格式為限 `YYYY-MM-DDTHH:MM:SS.00000Z` 。 | `2017-06-28T21:00:27.3534352Z` |
+|**runId**| String| 管線執行的識別碼。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| String | 與 data factory 資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**類別**| String | 診斷記錄的類別。 將屬性 (Property) 值設定為 `PipelineRuns`。 | `PipelineRuns` |
+|**level**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
+|**operationName**| String | 管線的名稱及其狀態。 管線執行完成之後，屬性值為 `Pipeline - Succeeded` 。 | `MyPipeline - Succeeded`. |
+|**pipelineName**| String | 管線名稱。 | `MyPipeline` |
+|**開始**| String | 活動的開始時間以 timespan UTC 格式執行。 | `2017-06-26T20:55:29.5007959Z`. |
+|**end**| String | 活動的結束時間以 timespan UTC 格式執行。 如果診斷記錄顯示活動已啟動但尚未結束，則屬性值為 `1601-01-01T00:00:00Z` 。  | `2017-06-26T20:55:29.5007959Z` |
+|**status**| String | 管線執行的最終狀態。 可能的屬性值為 `Succeeded` 和 `Failed` 。 | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>觸發程式-執行記錄屬性
 
@@ -533,19 +533,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性 | 類型 | 描述 | 範例 |
 | --- | --- | --- | --- |
-| **Level** |字串 | 診斷記錄的層級。 針對活動執行記錄，將屬性值設定為4。 | `4` |
-| **correlationId** |字串 | 用來追蹤特定要求的唯一識別碼。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | 字串 | 事件的時間，以 timespan UTC 格式為限 `YYYY-MM-DDTHH:MM:SS.00000Z` 。 | `2017-06-28T21:00:27.3534352Z` |
-|**triggerId**| 字串| 觸發程式執行的識別碼。 | `08587023010602533858661257311` |
-|**resourceId**| 字串 | 與 data factory 資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**類別**| 字串 | 診斷記錄的類別。 將屬性 (Property) 值設定為 `PipelineRuns`。 | `PipelineRuns` |
-|**level**| 字串 | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
-|**operationName**| 字串 | 觸發程式的名稱及其最終狀態，指出是否已成功引發觸發程式。 如果信號成功，則屬性值為 `MyTrigger - Succeeded` 。 | `MyTrigger - Succeeded` |
-|**triggerName**| 字串 | 觸發程序的名稱。 | `MyTrigger` |
-|**triggerType**| 字串 | 觸發程序的類型。 可能的屬性值為 `Manual Trigger` 和 `Schedule Trigger` 。 | `ScheduleTrigger` |
-|**triggerEvent**| 字串 | 觸發程式的事件。 | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|**開始**| 字串 | 觸發程式的開始時間以 timespan UTC 格式引發。 | `2017-06-26T20:55:29.5007959Z`|
-|**status**| 字串 | 顯示是否成功引發觸發程式的最終狀態。 可能的屬性值為 `Succeeded` 和 `Failed` 。 | `Succeeded`|
+| **Level** |String | 診斷記錄的層級。 針對活動執行記錄，將屬性值設定為4。 | `4` |
+| **correlationId** |String | 用來追蹤特定要求的唯一識別碼。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **time** | String | 事件的時間，以 timespan UTC 格式為限 `YYYY-MM-DDTHH:MM:SS.00000Z` 。 | `2017-06-28T21:00:27.3534352Z` |
+|**triggerId**| String| 觸發程式執行的識別碼。 | `08587023010602533858661257311` |
+|**resourceId**| String | 與 data factory 資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**類別**| String | 診斷記錄的類別。 將屬性 (Property) 值設定為 `PipelineRuns`。 | `PipelineRuns` |
+|**level**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
+|**operationName**| String | 觸發程式的名稱及其最終狀態，指出是否已成功引發觸發程式。 如果信號成功，則屬性值為 `MyTrigger - Succeeded` 。 | `MyTrigger - Succeeded` |
+|**triggerName**| String | 觸發程序的名稱。 | `MyTrigger` |
+|**triggerType**| String | 觸發程序的類型。 可能的屬性值為 `Manual Trigger` 和 `Schedule Trigger` 。 | `ScheduleTrigger` |
+|**triggerEvent**| String | 觸發程式的事件。 | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|**開始**| String | 觸發程式的開始時間以 timespan UTC 格式引發。 | `2017-06-26T20:55:29.5007959Z`|
+|**status**| String | 顯示是否成功引發觸發程式的最終狀態。 可能的屬性值為 `Succeeded` 和 `Failed` 。 | `Succeeded`|
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>SSIS integration runtime 記錄屬性
 
@@ -570,16 +570,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性                   | 類型   | 描述                                                   | 範例                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **time**                   | 字串 | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | 字串 | SSIS IR 操作的名稱                            | `Start/Stop/Maintenance` |
-| **類別**               | 字串 | 診斷記錄的類別                               | `SSISIntegrationRuntimeLogs` |
-| **correlationId**          | 字串 | 追蹤特定作業的唯一識別碼             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
-| **dataFactoryName**        | 字串 | ADF 的名稱                                          | `MyADFv2` |
-| **integrationRuntimeName** | 字串 | SSIS IR 的名稱                                      | `MySSISIR` |
-| **level**                  | 字串 | 診斷記錄層級                                  | `Informational` |
-| **resultType**             | 字串 | SSIS IR 操作的結果                          | `Started/InProgress/Succeeded/Failed` |
-| **message**                | 字串 | SSIS IR 操作的輸出訊息                  | `The stopping of your SSIS integration runtime has succeeded.` |
-| **resourceId**             | 字串 | ADF 資源的唯一識別碼                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **time**                   | String | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | String | SSIS IR 操作的名稱                            | `Start/Stop/Maintenance` |
+| **類別**               | String | 診斷記錄的類別                               | `SSISIntegrationRuntimeLogs` |
+| **correlationId**          | String | 追蹤特定作業的唯一識別碼             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
+| **dataFactoryName**        | String | ADF 的名稱                                          | `MyADFv2` |
+| **integrationRuntimeName** | String | SSIS IR 的名稱                                      | `MySSISIR` |
+| **level**                  | String | 診斷記錄層級                                  | `Informational` |
+| **resultType**             | String | SSIS IR 操作的結果                          | `Started/InProgress/Succeeded/Failed` |
+| **message**                | String | SSIS IR 操作的輸出訊息                  | `The stopping of your SSIS integration runtime has succeeded.` |
+| **resourceId**             | String | ADF 資源的唯一識別碼                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS 事件訊息內容記錄檔屬性
 
@@ -610,22 +610,22 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性                   | 類型   | 描述                                                          | 範例                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | 字串 | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | 字串 | 這會設定為 `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
-| **類別**               | 字串 | 診斷記錄的類別                                      | `SSISPackageEventMessageContext` |
-| **correlationId**          | 字串 | 追蹤特定作業的唯一識別碼                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | 字串 | ADF 的名稱                                                 | `MyADFv2` |
-| **integrationRuntimeName** | 字串 | SSIS IR 的名稱                                             | `MySSISIR` |
-| **level**                  | 字串 | 診斷記錄層級                                         | `Informational` |
-| **operationId**            | 字串 | 用於追蹤 SSISDB 中特定作業的唯一識別碼          | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的作業)  |
-| **coNtextDepth**           | 字串 | 事件訊息內容的深度                              | `0` (0 表示封裝執行開始之前的內容，1表示發生錯誤時的內容，而且會隨著錯誤的內容而增加)  |
-| **packagePath**            | 字串 | 封裝物件的路徑，做為您的事件訊息內容來源      | `\Package` |
-| **coNtextType**            | 字串 | 封裝物件的類型，做為您的事件訊息內容來源      | `60` (查看 [更多內容類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks))  |
-| **coNtextSourceName**      | 字串 | 封裝物件的名稱，做為您的事件訊息內容來源      | `MyPackage` |
-| **coNtextSourceId**        | 字串 | 封裝物件的唯一識別碼，做為您的事件訊息內容來源 | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
-| **propertyName**           | 字串 | 事件訊息內容來源的封裝屬性名稱   | `DelayValidation` |
-| **propertyValue**          | 字串 | 事件訊息內容來源的封裝屬性值  | `False` |
-| **resourceId**             | 字串 | ADF 資源的唯一識別碼                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **time**                   | String | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | String | 這會設定為 `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **類別**               | String | 診斷記錄的類別                                      | `SSISPackageEventMessageContext` |
+| **correlationId**          | String | 追蹤特定作業的唯一識別碼                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | String | ADF 的名稱                                                 | `MyADFv2` |
+| **integrationRuntimeName** | String | SSIS IR 的名稱                                             | `MySSISIR` |
+| **level**                  | String | 診斷記錄層級                                         | `Informational` |
+| **operationId**            | String | 用於追蹤 SSISDB 中特定作業的唯一識別碼          | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的作業)  |
+| **coNtextDepth**           | String | 事件訊息內容的深度                              | `0` (0 表示封裝執行開始之前的內容，1表示發生錯誤時的內容，而且會隨著錯誤的內容而增加)  |
+| **packagePath**            | String | 封裝物件的路徑，做為您的事件訊息內容來源      | `\Package` |
+| **coNtextType**            | String | 封裝物件的類型，做為您的事件訊息內容來源      | `60` (查看 [更多內容類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks))  |
+| **coNtextSourceName**      | String | 封裝物件的名稱，做為您的事件訊息內容來源      | `MyPackage` |
+| **coNtextSourceId**        | String | 封裝物件的唯一識別碼，做為您的事件訊息內容來源 | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
+| **propertyName**           | String | 事件訊息內容來源的封裝屬性名稱   | `DelayValidation` |
+| **propertyValue**          | String | 事件訊息內容來源的封裝屬性值  | `False` |
+| **resourceId**             | String | ADF 資源的唯一識別碼                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS 事件訊息記錄屬性
 
@@ -660,26 +660,26 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性                   | 類型   | 描述                                                        | 範例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                   | 字串 | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | 字串 | 這會設定為 `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
-| **類別**               | 字串 | 診斷記錄的類別                                    | `SSISPackageEventMessages` |
-| **correlationId**          | 字串 | 追蹤特定作業的唯一識別碼                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | 字串 | ADF 的名稱                                               | `MyADFv2` |
-| **integrationRuntimeName** | 字串 | SSIS IR 的名稱                                           | `MySSISIR` |
-| **level**                  | 字串 | 診斷記錄層級                                       | `Informational` |
-| **operationId**            | 字串 | 用於追蹤 SSISDB 中特定作業的唯一識別碼        | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的作業)  |
-| **messageTime**            | 字串 | 以 UTC 格式建立事件訊息的時間          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | 字串 | 事件訊息的類型                                     | `70` (查看 [更多訊息類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
-| **messageSourceType**      | 字串 | 事件訊息來源的類型                              | `20` (查看 [更多訊息來源類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
-| **message**                | 字串 | 事件訊息的文字                                     | `MyPackage:Validation has started.` |
-| **packageName**            | 字串 | 您所執行封裝檔案的名稱                             | `MyPackage.dtsx` |
-| **名稱**              | 字串 | 相關運行時間事件的名稱                                 | `OnPreValidate` |
-| **messageSourceName**      | 字串 | 封裝元件的名稱，做為您的事件訊息來源         | `Data Flow Task` |
-| **messageSourceId**        | 字串 | 封裝元件的唯一識別碼，做為您的事件訊息來源    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
-| **subcomponentName**       | 字串 | 作為事件訊息來源的資料流程元件名稱       | `SSIS.Pipeline` |
-| **packagePath**            | 字串 | 封裝物件的路徑，做為您的事件訊息來源            | `\Package\Data Flow Task` |
-| **executionPath**          | 字串 | 從父封裝到執行之元件的完整路徑            | `\Transformation\Data Flow Task` (此路徑也會捕捉元件反覆運算)  |
-| **threadId**               | 字串 | 記錄事件訊息時所執行之執行緒的唯一識別碼 | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **time**                   | String | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | String | 這會設定為 `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **類別**               | String | 診斷記錄的類別                                    | `SSISPackageEventMessages` |
+| **correlationId**          | String | 追蹤特定作業的唯一識別碼                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | String | ADF 的名稱                                               | `MyADFv2` |
+| **integrationRuntimeName** | String | SSIS IR 的名稱                                           | `MySSISIR` |
+| **level**                  | String | 診斷記錄層級                                       | `Informational` |
+| **operationId**            | String | 用於追蹤 SSISDB 中特定作業的唯一識別碼        | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的作業)  |
+| **messageTime**            | String | 以 UTC 格式建立事件訊息的時間          | `2017-06-28T21:00:27.3534352Z` |
+| **messageType**            | String | 事件訊息的類型                                     | `70` (查看 [更多訊息類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
+| **messageSourceType**      | String | 事件訊息來源的類型                              | `20` (查看 [更多訊息來源類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
+| **message**                | String | 事件訊息的文字                                     | `MyPackage:Validation has started.` |
+| **packageName**            | String | 您所執行封裝檔案的名稱                             | `MyPackage.dtsx` |
+| **名稱**              | String | 相關運行時間事件的名稱                                 | `OnPreValidate` |
+| **messageSourceName**      | String | 封裝元件的名稱，做為您的事件訊息來源         | `Data Flow Task` |
+| **messageSourceId**        | String | 封裝元件的唯一識別碼，做為您的事件訊息來源    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **subcomponentName**       | String | 作為事件訊息來源的資料流程元件名稱       | `SSIS.Pipeline` |
+| **packagePath**            | String | 封裝物件的路徑，做為您的事件訊息來源            | `\Package\Data Flow Task` |
+| **executionPath**          | String | 從父封裝到執行之元件的完整路徑            | `\Transformation\Data Flow Task` (此路徑也會捕捉元件反覆運算)  |
+| **threadId**               | String | 記錄事件訊息時所執行之執行緒的唯一識別碼 | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 可執行檔統計資料記錄檔屬性
 
@@ -709,21 +709,21 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性                   | 類型   | 描述                                                      | 範例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **time**                   | 字串 | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | 字串 | 這會設定為 `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
-| **類別**               | 字串 | 診斷記錄的類別                                  | `SSISPackageExecutableStatistics` |
-| **correlationId**          | 字串 | 追蹤特定作業的唯一識別碼                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | 字串 | ADF 的名稱                                             | `MyADFv2` |
-| **integrationRuntimeName** | 字串 | SSIS IR 的名稱                                         | `MySSISIR` |
-| **level**                  | 字串 | 診斷記錄層級                                     | `Informational` |
-| **executionId**            | 字串 | 用於追蹤 SSISDB 中特定執行的唯一識別碼      | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的執行)  |
-| **executionPath**          | 字串 | 從父封裝到執行之元件的完整路徑          | `\Transformation\Data Flow Task` (此路徑也會捕捉元件反覆運算)  |
-| **startTime**              | 字串 | 可執行檔以 UTC 格式進入執行前階段的時間  | `2017-06-28T21:00:27.3534352Z` |
-| **endTime**                | 字串 | 可執行檔以 UTC 格式進入執行後階段的時間 | `2017-06-28T21:00:27.3534352Z` |
-| **executionDuration**      | 字串 | 可執行檔的執行時間（以毫秒為單位）                   | `1,125` |
-| **executionResult**        | 字串 | 執行可執行檔的結果                                 | `0` (0 表示成功，1表示失敗，2表示完成，3表示取消)  |
-| **>executionvalue**         | 字串 | 執行可執行檔所傳回的使用者定義值            | `1` |
-| **resourceId**             | 字串 | ADF 資源的唯一識別碼                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **time**                   | String | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | String | 這會設定為 `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **類別**               | String | 診斷記錄的類別                                  | `SSISPackageExecutableStatistics` |
+| **correlationId**          | String | 追蹤特定作業的唯一識別碼                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | String | ADF 的名稱                                             | `MyADFv2` |
+| **integrationRuntimeName** | String | SSIS IR 的名稱                                         | `MySSISIR` |
+| **level**                  | String | 診斷記錄層級                                     | `Informational` |
+| **executionId**            | String | 用於追蹤 SSISDB 中特定執行的唯一識別碼      | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的執行)  |
+| **executionPath**          | String | 從父封裝到執行之元件的完整路徑          | `\Transformation\Data Flow Task` (此路徑也會捕捉元件反覆運算)  |
+| **startTime**              | String | 可執行檔以 UTC 格式進入執行前階段的時間  | `2017-06-28T21:00:27.3534352Z` |
+| **endTime**                | String | 可執行檔以 UTC 格式進入執行後階段的時間 | `2017-06-28T21:00:27.3534352Z` |
+| **executionDuration**      | String | 可執行檔的執行時間（以毫秒為單位）                   | `1,125` |
+| **executionResult**        | String | 執行可執行檔的結果                                 | `0` (0 表示成功，1表示失敗，2表示完成，3表示取消)  |
+| **>executionvalue**         | String | 執行可執行檔所傳回的使用者定義值            | `1` |
+| **resourceId**             | String | ADF 資源的唯一識別碼                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 執行元件階段記錄屬性
 
@@ -754,22 +754,22 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性                   | 類型   | 描述                                                         | 範例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | 字串 | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | 字串 | 這會設定為 `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
-| **類別**               | 字串 | 診斷記錄的類別                                     | `SSISPackageExecutionComponentPhases` |
-| **correlationId**          | 字串 | 追蹤特定作業的唯一識別碼                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | 字串 | ADF 的名稱                                                | `MyADFv2` |
-| **integrationRuntimeName** | 字串 | SSIS IR 的名稱                                            | `MySSISIR` |
-| **level**                  | 字串 | 診斷記錄層級                                        | `Informational` |
-| **executionId**            | 字串 | 用於追蹤 SSISDB 中特定執行的唯一識別碼         | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的執行)  |
-| **packageName**            | 字串 | 您所執行封裝檔案的名稱                              | `MyPackage.dtsx` |
-| **taskName**               | 字串 | 執行的資料流程工作的名稱                                 | `Data Flow Task` |
-| **subcomponentName**       | 字串 | 資料流程元件的名稱                                     | `Derived Column` |
-| **相**                  | 字串 | 執行階段的名稱                                         | `AcquireConnections` |
-| **startTime**              | 字串 | 執行時間的開始時間（UTC 格式）                  | `2017-06-28T21:00:27.3534352Z` |
-| **endTime**                | 字串 | 執行時間的結束時間（UTC 格式）                    | `2017-06-28T21:00:27.3534352Z` |
-| **executionPath**          | 字串 | 資料流程工作的執行路徑                            | `\Transformation\Data Flow Task` |
-| **resourceId**             | 字串 | ADF 資源的唯一識別碼                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **time**                   | String | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | String | 這會設定為 `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **類別**               | String | 診斷記錄的類別                                     | `SSISPackageExecutionComponentPhases` |
+| **correlationId**          | String | 追蹤特定作業的唯一識別碼                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**        | String | ADF 的名稱                                                | `MyADFv2` |
+| **integrationRuntimeName** | String | SSIS IR 的名稱                                            | `MySSISIR` |
+| **level**                  | String | 診斷記錄層級                                        | `Informational` |
+| **executionId**            | String | 用於追蹤 SSISDB 中特定執行的唯一識別碼         | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的執行)  |
+| **packageName**            | String | 您所執行封裝檔案的名稱                              | `MyPackage.dtsx` |
+| **taskName**               | String | 執行的資料流程工作的名稱                                 | `Data Flow Task` |
+| **subcomponentName**       | String | 資料流程元件的名稱                                     | `Derived Column` |
+| **相**                  | String | 執行階段的名稱                                         | `AcquireConnections` |
+| **startTime**              | String | 執行時間的開始時間（UTC 格式）                  | `2017-06-28T21:00:27.3534352Z` |
+| **endTime**                | String | 執行時間的結束時間（UTC 格式）                    | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**          | String | 資料流程工作的執行路徑                            | `\Transformation\Data Flow Task` |
+| **resourceId**             | String | ADF 資源的唯一識別碼                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 執行資料統計資料記錄屬性
 
@@ -802,24 +802,24 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | 屬性                     | 類型   | 描述                                                        | 範例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                     | 字串 | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**            | 字串 | 這會設定為 `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
-| **類別**                 | 字串 | 診斷記錄的類別                                    | `SSISPackageExecutionDataStatistics` |
-| **correlationId**            | 字串 | 追蹤特定作業的唯一識別碼                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**          | 字串 | ADF 的名稱                                               | `MyADFv2` |
-| **integrationRuntimeName**   | 字串 | SSIS IR 的名稱                                           | `MySSISIR` |
-| **level**                    | 字串 | 診斷記錄層級                                       | `Informational` |
-| **executionId**              | 字串 | 用於追蹤 SSISDB 中特定執行的唯一識別碼        | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的執行)  |
-| **packageName**              | 字串 | 您所執行封裝檔案的名稱                             | `MyPackage.dtsx` |
-| **taskName**                 | 字串 | 執行的資料流程工作的名稱                                | `Data Flow Task` |
-| **dataflowPathIdString**     | 字串 | 追蹤資料流程路徑的唯一識別碼                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
-| **dataflowPathName**         | 字串 | 資料流程路徑的名稱                                         | `ADO NET Source Output` |
-| **sourceComponentName**      | 字串 | 傳送資料的資料流程元件名稱                    | `SQLDB Table3` |
-| **destinationComponentName** | 字串 | 接收資料的資料流程元件名稱                 | `Derived Column` |
-| **rowsSent**                 | 字串 | 來源元件傳送的資料列數目                        | `500` |
-| **createdTime**              | 字串 | 以 UTC 格式取得資料列值的時間                | `2017-06-28T21:00:27.3534352Z` |
-| **executionPath**            | 字串 | 資料流程工作的執行路徑                           | `\Transformation\Data Flow Task` |
-| **resourceId**               | 字串 | ADF 資源的唯一識別碼                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **time**                     | String | 事件的時間，以 UTC 格式： `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**            | String | 這會設定為 `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **類別**                 | String | 診斷記錄的類別                                    | `SSISPackageExecutionDataStatistics` |
+| **correlationId**            | String | 追蹤特定作業的唯一識別碼                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
+| **dataFactoryName**          | String | ADF 的名稱                                               | `MyADFv2` |
+| **integrationRuntimeName**   | String | SSIS IR 的名稱                                           | `MySSISIR` |
+| **level**                    | String | 診斷記錄層級                                       | `Informational` |
+| **executionId**              | String | 用於追蹤 SSISDB 中特定執行的唯一識別碼        | `1` (1 表示與 **未** 儲存在 SSISDB/透過 t-sql 叫用的封裝相關的執行)  |
+| **packageName**              | String | 您所執行封裝檔案的名稱                             | `MyPackage.dtsx` |
+| **taskName**                 | String | 執行的資料流程工作的名稱                                | `Data Flow Task` |
+| **dataflowPathIdString**     | String | 追蹤資料流程路徑的唯一識別碼                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
+| **dataflowPathName**         | String | 資料流程路徑的名稱                                         | `ADO NET Source Output` |
+| **sourceComponentName**      | String | 傳送資料的資料流程元件名稱                    | `SQLDB Table3` |
+| **destinationComponentName** | String | 接收資料的資料流程元件名稱                 | `Derived Column` |
+| **rowsSent**                 | String | 來源元件傳送的資料列數目                        | `500` |
+| **createdTime**              | String | 以 UTC 格式取得資料列值的時間                | `2017-06-28T21:00:27.3534352Z` |
+| **executionPath**            | String | 資料流程工作的執行路徑                           | `\Transformation\Data Flow Task` |
+| **resourceId**               | String | ADF 資源的唯一識別碼                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="log-analytics-schema"></a>Log Analytics 架構
 

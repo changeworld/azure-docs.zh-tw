@@ -3,12 +3,12 @@ title: 針對登錄的網路問題進行疑難排解
 description: 存取虛擬網路或防火牆後方的 Azure container registry 時，常見問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743364"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148458"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>針對登錄的網路問題進行疑難排解
 
@@ -103,17 +103,17 @@ ContainerRegistryLoginEvents 資料表中的登錄資源記錄檔可協助診斷
 
 ### <a name="configure-service-access"></a>設定服務存取
 
-目前，Azure 資訊安全中心無法在登錄中執行 [映射弱點掃描](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) ，以限制對私人端點、選取的子網或 IP 位址的存取。 此外，下列服務的資源無法存取具有網路限制的容器登錄：
+目前，Azure 資訊安全中心無法在登錄中執行 [映射弱點掃描](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) ，以限制對私人端點、選取的子網或 IP 位址的存取。 此外，下列服務的資源無法存取具有網路限制的容器登錄：
 
 * Azure DevOps Services 
-* Azure Container Instances
+* Azure 容器執行個體
 * Azure Container Registry 工作
 
 如果需要將這些 Azure 服務與您的容器登錄進行存取或整合，請移除網路限制。 例如，移除登錄的私人端點，或移除或修改登錄的公用存取規則。
 
 相關連結：
 
-* [Azure Container Registry 由安全中心掃描影像](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry 由安全中心掃描影像](../security-center/defender-for-container-registries-introduction.md)
 * 提供[意見](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)反應
 * [設定公用 IP 網路規則](container-registry-access-selected-networks.md)
 * [使用 Azure Private Link 私下連接到 Azure container registry](container-registry-private-link.md)
@@ -138,7 +138,5 @@ ContainerRegistryLoginEvents 資料表中的登錄資源記錄檔可協助診斷
   * [針對登錄登入進行疑難排解](container-registry-troubleshoot-login.md) 
   * [針對登錄效能進行疑難排解](container-registry-troubleshoot-performance.md)
 * [社區支援](https://azure.microsoft.com/support/community/) 選項
-* [Microsoft 問與答](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [開啟支援票證](https://azure.microsoft.com/support/create-ticket/)
-
-

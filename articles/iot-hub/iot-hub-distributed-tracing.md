@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462031"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152153"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>透過分散式追蹤來追蹤 Azure IoT 裝置到雲端的訊息 (預覽)
 
@@ -93,7 +93,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 ### <a name="clone-the-source-code-and-initialize"></a>複製原始程式碼並初始化
 
-1. 安裝 Visual Studio 2019 的「 [使用 c + + 的桌面開發」工作負載](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) 。 也支援 Visual Studio 2017 和2015。
+1. 安裝 Visual Studio 2019 的「 [使用 c + + 的桌面開發」工作負載](/cpp/build/vscpp-step-0-installation?view=vs-2019) 。 也支援 Visual Studio 2017 和2015。
 
 1. 安裝 [CMake](https://cmake.org/)。 在命令提示字元中輸入 `cmake -version`，確定它位於您的 `PATH` 中。
 
@@ -115,7 +115,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
     cmake ..
     ```
 
-    如果 `cmake` 找不到 C++ 編譯器，您在執行上述命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)中執行此命令。 
+    如果 `cmake` 找不到 C++ 編譯器，您在執行上述命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)中執行此命令。 
 
     建置成功後，最後幾行輸出會類似於下列輸出：
 
@@ -234,7 +234,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 ### <a name="bulk-update-for-multiple-devices"></a>大量更新多個裝置
 
-若要更新多個裝置的分散式追蹤取樣組態，請使用[自動裝置組態](iot-hub-auto-device-config.md)。 務必遵循此對應項結構描述：
+若要更新多個裝置的分散式追蹤取樣組態，請使用[自動裝置組態](./iot-hub-automatic-device-management.md)。 務必遵循此對應項結構描述：
 
 ```json
 {
@@ -260,7 +260,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 ### <a name="query-using-log-analytics"></a>使用 Log Analytics 查詢
 
-如果您已設定[具有診斷記錄的 Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md)，請藉由尋找 `DistributedTracing` 類別中的記錄進行查詢。 例如，此查詢會顯示已記錄的所有追蹤：
+如果您已設定[具有診斷記錄的 Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)，請藉由尋找 `DistributedTracing` 類別中的記錄進行查詢。 例如，此查詢會顯示已記錄的所有追蹤：
 
 ```Kusto
 // All distributed traces 
@@ -282,7 +282,7 @@ Log Analytics 所顯示的範例記錄：
 
 ### <a name="application-map"></a>應用程式對應
 
-若要以視覺化方式呈現 IoT 訊息的流程，請設定應用程式對應範例應用程式。 範例應用程式會使用 Azure 函式和事件中樞，將分散式追蹤記錄傳送到[應用程式對應](../application-insights/app-insights-app-map.md)。
+若要以視覺化方式呈現 IoT 訊息的流程，請設定應用程式對應範例應用程式。 範例應用程式會使用 Azure 函式和事件中樞，將分散式追蹤記錄傳送到[應用程式對應](../azure-monitor/app/app-map.md)。
 
 > [!div class="button"]
 > <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">在 GitHub 上取得範例</a>
@@ -295,11 +295,11 @@ Log Analytics 所顯示的範例記錄：
 
 ### <a name="context"></a>Context
 
-許多 IoT 解決方案 (包括我們自己的[參考架構](https://aka.ms/iotrefarchitecture) (僅限英文)) 通常都會遵循[微服務架構](https://docs.microsoft.com/azure/architecture/microservices/)的變體。 隨著 IoT 解決方案日益複雜，您終究會使用數十個或更多微服務。 這些微服務或許來自 Azure。 指出 IoT 訊息卸除或變慢的位置可能變得很有挑戰性。 例如，您有使用 5 個不同 Azure 服務和 1500 個作用中裝置的 IoT 解決方案。 每個裝置每秒會傳送 10 則裝置到雲端的訊息 (總計每秒 15,000 則訊息)，但您會注意到您的 Web 應用程式每秒只看到 10,000 則訊息。 問題出在哪裡？ 如何找到罪魁禍首？
+許多 IoT 解決方案 (包括我們自己的[參考架構](https://aka.ms/iotrefarchitecture) (僅限英文)) 通常都會遵循[微服務架構](/azure/architecture/microservices/)的變體。 隨著 IoT 解決方案日益複雜，您終究會使用數十個或更多微服務。 這些微服務或許來自 Azure。 指出 IoT 訊息卸除或變慢的位置可能變得很有挑戰性。 例如，您有使用 5 個不同 Azure 服務和 1500 個作用中裝置的 IoT 解決方案。 每個裝置每秒會傳送 10 則裝置到雲端的訊息 (總計每秒 15,000 則訊息)，但您會注意到您的 Web 應用程式每秒只看到 10,000 則訊息。 問題出在哪裡？ 如何找到罪魁禍首？
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>微服務架構中的分散式追蹤模式
 
-若要跨越不同的服務重新建構 IoT 訊息的流程，則每項服務都應該傳播可唯一識別訊息的「相互關聯識別碼」**。 收集到集中式系統後，相互關聯識別碼即可讓您查看訊息流程。 這種方法稱為[分散式追蹤模式](https://docs.microsoft.com/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
+若要跨越不同的服務重新建構 IoT 訊息的流程，則每項服務都應該傳播可唯一識別訊息的「相互關聯識別碼」**。 收集到集中式系統後，相互關聯識別碼即可讓您查看訊息流程。 這種方法稱為[分散式追蹤模式](/azure/architecture/microservices/logging-monitoring#distributed-tracing)。
 
 為了支持更廣泛的分散式追蹤採用，Microsoft 一直致力於提供[分散式追蹤的 W3C 標準提案](https://w3c.github.io/trace-context/)。
 
@@ -328,5 +328,5 @@ Log Analytics 所顯示的範例記錄：
 ## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解微服務中的一般分散式追蹤模式，請參閱[微服務架構模式：分散式追蹤](https://microservices.io/patterns/observability/distributed-tracing.html)。
-- 若要設定可將分散式追蹤設定套用至大量裝置的組態，請參閱[設定和監視大規模的 IoT 裝置](iot-hub-auto-device-config.md)。
+- 若要設定可將分散式追蹤設定套用至大量裝置的組態，請參閱[設定和監視大規模的 IoT 裝置](./iot-hub-automatic-device-management.md)。
 - 若要深入了解 Azure 監視器，請參閱[什麼是 Azure 監視器？](../azure-monitor/overview.md)。

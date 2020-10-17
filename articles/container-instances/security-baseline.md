@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393423"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148632"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器實例的 Azure 安全性基準
 
@@ -73,7 +73,7 @@ ms.locfileid: "89393423"
 
 * [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 * [瞭解 Azure 資訊安全中心適應性網路強化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ ms.locfileid: "89393423"
 
 * [瞭解和使用服務標記](../virtual-network/service-tags-overview.md) 
 
-* [瞭解及使用應用程式安全性群組](../virtual-network/security-overview.md#application-security-groups)
+* [瞭解及使用應用程式安全性群組](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [在虛擬網路中部署-Azure 容器實例](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ ms.locfileid: "89393423"
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [適用于網路的 Azure 原則範例](/azure/governance/policy/samples/#network)
+* [適用于網路的 Azure 原則範例](../governance/policy/samples/built-in-policies.md#network)
 
 * [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ ms.locfileid: "89393423"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ ms.locfileid: "89393423"
 
 * [Azure 容器實例的安全性考慮](./container-instances-image-security.md)
 
-* [Azure Container Registry 與安全性中心整合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry 與安全性中心整合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -652,7 +652,7 @@ ms.locfileid: "89393423"
 
 * [Azure 容器實例的安全性考慮](./container-instances-image-security.md)
 
-* [Azure Container Registry 與安全性中心整合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry 與安全性中心整合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -664,7 +664,7 @@ ms.locfileid: "89393423"
 
 * [Azure 容器實例的安全性考慮](./container-instances-image-security.md)
 
-* [Azure Container Registry 與安全性中心整合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry 與安全性中心整合](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -707,7 +707,7 @@ ms.locfileid: "89393423"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ ms.locfileid: "89393423"
 * [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
 * [Azure 容器實例的安全性考慮](./container-instances-image-security.md)
-* [Azure Container Registry 與安全性中心整合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry 與安全性中心整合](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ ms.locfileid: "89393423"
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -825,7 +825,7 @@ ms.locfileid: "89393423"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [在虛擬網路中部署-Azure 容器實例](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ ms.locfileid: "89393423"
 
 * [Azure 容器實例的容器監視和掃描安全性建議](./container-instances-image-security.md)
 
-* [Azure Container Registry 與安全性中心整合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry 與安全性中心整合](../security-center/defender-for-container-registries-introduction.md)
 * [關於 Azure Container Registry 工作的基底映射更新](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ ms.locfileid: "89393423"
 
 **指導**方針：您可以在 Azure Key Vault 中啟用 Soft-Delete，以防止金鑰遭到意外或惡意刪除。
 
-* [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：目前無法使用
 

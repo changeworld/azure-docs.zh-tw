@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326808"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152291"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
 
@@ -33,7 +33,7 @@ ms.locfileid: "91326808"
 
 ## <a name="authentication"></a>驗證
 
-討論驗證時，有幾個常見的誤解。 驗證和授權通常會彼此混淆。 身分識別也是安全性中的主要元件。 身分識別是關於<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主體 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的資訊集合。 身分識別提供者 (IdP) 提供驗證服務的身分識別。 驗證是驗證使用者身分識別的動作。 授權是指定身分識別之資源的存取權限和許可權規格。 許多認知服務供應專案，包括角色型存取控制 (RBAC) 。 RBAC 可用來簡化與手動管理主體相關的部分工作。 如需詳細資訊，請參閱 [適用于 Azure 資源的角色型存取控制](../role-based-access-control/overview.md)。
+討論驗證時，有幾個常見的誤解。 驗證和授權通常會彼此混淆。 身分識別也是安全性中的主要元件。 身分識別是關於<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主體 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的資訊集合。 身分識別提供者 (IdP) 提供驗證服務的身分識別。 驗證是驗證使用者身分識別的動作。 授權是指定身分識別之資源的存取權限和許可權規格。 許多認知服務供應專案，包括 Azure 角色型存取控制 (Azure RBAC) 。 Azure RBAC 可用來簡化與手動管理主體相關的部分工作。 如需詳細資訊，請參閱 azure [資源的 azure 角色型存取控制](../role-based-access-control/overview.md)。
 
 如需有關使用訂用帳戶金鑰進行驗證、存取權杖和 Azure Active Directory (AAD) 的詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">驗證對 Azure <span class="docon docon-navigate-external x-hidden-focus"></span> 認知服務的要求</a>。
 
@@ -201,7 +201,7 @@ NSString* value =
 
 客戶加密箱適用于此認知服務：
 
-* 轉譯程式
+* Translator
 
 針對下列服務，Microsoft 工程師不會存取 E0 層中的任何客戶資料： 
 

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552895"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145411"
 ---
 # <a name="conditional-access-users-and-groups"></a>條件式存取：使用者和群組
 
-條件式存取原則必須包含使用者指派作為決策流程中的其中一個信號。 您可以在條件式存取原則中包含或排除使用者。 
+條件式存取原則必須包含使用者指派作為決策流程中的其中一個信號。 您可以在條件式存取原則中包含或排除使用者。 Azure Active Directory 會評估所有原則，並確保在授與使用者存取權之前符合所有需求。
 
 ![使用者作為條件式存取所做的決策中的信號](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -73,6 +73,8 @@ ms.locfileid: "87552895"
 原則預設會提供選項，以從原則中排除目前的使用者，但系統管理員可以覆寫此預設值，如下圖所示。 
 
 ![警告，不要鎖定自己！](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[如果您被鎖定 Azure 入口網站，該怎麼辦？](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>後續步驟
 

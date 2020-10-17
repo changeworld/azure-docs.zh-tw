@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f47e201f0fe6f44eb33916b2b3ed71ef963d5a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531204"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148137"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "87531204"
    3. **資源群組**：在其中建立帳戶的 Azure 資源群組。 
    4. **位置**：Data Lake Analytics 帳戶的 Azure 資料中心。 
    5. **Data Lake Store**：Data Lake Analytics 帳戶所要使用的預設存放區。 Azure Data Lake Store 帳戶和 Data Lake Analytics 帳戶必須位於相同位置。
-4. 按一下 [建立]。 
+4. 按一下 [建立]  。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>刪除 Data Lake Analytics 帳戶
 
@@ -58,7 +58,7 @@ Data Lake Analytics 支援下列資料來源：
 
 您可以使用 [資料總管] 來瀏覽資料來源和執行基本檔案管理作業。 
 
-### <a name="add-a-data-source"></a>新增資料來源
+### <a name="add-a-data-source"></a>加入資料來源
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 **[資料來源]** 。
@@ -87,13 +87,13 @@ Data Lake Analytics 支援下列資料來源：
 3. 選取使用者，然後按一下 [選取]****。
 4. 選取角色，然後按一下 [選取]****。 若要設定新的開發人員以使用 Azure Data Lake，請選取 [Data Lake Analytics 開發人員]**** 角色。
 5. 選取 U-SQL 資料庫的存取控制清單 (ACL)。 當您對您的選擇感到滿意時，請按一下 [選取]****。
-6. 選取檔案的 ACL。 對於預設存放區，請不要變更根資料夾 "/" 和 /system 資料夾的 ACL。 按一下 [選取]。 
+6. 選取檔案的 ACL。 對於預設存放區，請不要變更根資料夾 "/" 和 /system 資料夾的 ACL。 按一下 [選取]。
 7. 檢閱您選取的所有變更，然後按一下 [執行]****。
 8. 當精靈完成時，按一下 [完成]****。
 
-## <a name="manage-role-based-access-control"></a>管理角色型存取控制
+## <a name="manage-azure-role-based-access-control"></a>管理 Azure 角色型存取控制
 
-如同其他 Azure 服務，您可以使用角色型存取控制 (RBAC) 來控制使用者與服務互動的方式。
+如同其他 Azure 服務，您可以使用 Azure 角色型存取控制 (Azure RBAC) 來控制使用者與服務的互動方式。
 
 標準 Azure 角色具有下列功能：
 * **擁有者**：可以提交、監視、取消任何使用者的作業，以及設定帳戶。
@@ -159,7 +159,7 @@ Data Lake Analytics 支援下列資料來源：
 2. 按一下 [作業深入解析]****。 預設會開啟 [所有作業] 索引標籤，其中顯示執行中、已佇列和已結束的作業清單。
 3. 按一下 [ **週期性工作** ] 索引標籤。週期性作業清單隨即顯示，並列出每個週期性作業的匯總統計資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)

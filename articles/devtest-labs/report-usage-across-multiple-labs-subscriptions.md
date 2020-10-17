@@ -3,16 +3,16 @@ title: 跨多個實驗室和訂用帳戶 Azure DevTest Labs 使用量
 description: 瞭解如何報告跨多個實驗室和訂用帳戶的 Azure DevTest Labs 使用量。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287273"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152208"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>報告跨多個實驗室和訂用帳戶的 Azure DevTest Labs 使用量
 
-大部分的大型組織想要藉由將使用量中的趨勢和極端值視覺化，來追蹤資源使用量，以更有效地使用這些資源。 根據資源的使用方式，實驗室擁有者或管理員可以自訂實驗室，以 [改善資源的使用和成本](../cost-management-billing/manage/getting-started.md)。 在 Azure DevTest Labs 中，您可以下載每個實驗室的資源使用量，讓您更深入瞭解使用模式的歷程記錄。 這些使用模式有助於找出變更，以提升效率。 大部分的企業都想要在 [多個實驗室和](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)訂用帳戶中使用個別的實驗室和整體使用方式。 
+大部分的大型組織想要藉由將使用量中的趨勢和極端值視覺化，來追蹤資源使用量，以更有效地使用這些資源。 根據資源的使用方式，實驗室擁有者或管理員可以自訂實驗室，以 [改善資源的使用和成本](../cost-management-billing/cost-management-billing-overview.md)。 在 Azure DevTest Labs 中，您可以下載每個實驗室的資源使用量，讓您更深入瞭解使用模式的歷程記錄。 這些使用模式有助於找出變更，以提升效率。 大部分的企業都想要在 [多個實驗室和](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)訂用帳戶中使用個別的實驗室和整體使用方式。 
 
 本文討論如何跨多個實驗室和訂用帳戶處理資源使用量資訊。
 

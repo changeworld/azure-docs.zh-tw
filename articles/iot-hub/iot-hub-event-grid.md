@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072300"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152131"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>使用事件方格來觸發動作以回應 IoT 中樞事件
 
 Azure IoT 中樞與 Azure 事件格線整合，讓您可以將事件通知傳送到其他服務，並觸發下游處理程序。 將您的商務應用程式設定為接聽 IoT 中樞事件，讓您能夠以可靠、可擴充且安全的方式回應重大事件。例如，建置一個應用程式，此應用程式可更新資料庫、建立工作票證，並在每次有新的 IoT 裝置向 IoT 中樞註冊時，傳遞電子郵件通知。
 
-[Azure 事件方格](../event-grid/overview.md)是一個完全受控的事件路由服務，其使用發佈-訂閱模型。 「事件格線」針對 Azure 服務 (例如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)) 內建支援，並可使用 Webhook 將事件警示傳遞給非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](../event-grid/overview.md)。
+[Azure 事件方格](../event-grid/overview.md)是一個完全受控的事件路由服務，其使用發佈-訂閱模型。 「事件格線」針對 Azure 服務 (例如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)) 內建支援，並可使用 Webhook 將事件警示傳遞給非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](../event-grid/overview.md)。
 
 ![Azure 事件格線架構](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -184,13 +184,13 @@ IoT 中樞事件訂閱可以根據事件種類、資料內容和主體（也就�
 devices/{deviceId}
 ```
 
-事件方格也可以篩選每個事件的屬性，包括資料內容。 這可讓您根據遙測訊息的內容，選擇要傳遞的事件。 請參閱 [advanced 篩選](../event-grid/event-filtering.md#advanced-filtering) 以查看範例。 若要篩選遙測訊息本文，您必須在訊息[系統屬性](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)中將 contentType 設為**application/json**並 contentEncoding 為**utf-8** 。 這兩個屬性都不區分大小寫。
+事件方格也可以篩選每個事件的屬性，包括資料內容。 這可讓您根據遙測訊息的內容，選擇要傳遞的事件。 請參閱 [advanced 篩選](../event-grid/event-filtering.md#advanced-filtering) 以查看範例。 若要篩選遙測訊息本文，您必須在訊息[系統屬性](./iot-hub-devguide-routing-query-syntax.md#system-properties)中將 contentType 設為**application/json**並 contentEncoding 為**utf-8** 。 這兩個屬性都不區分大小寫。
 
 針對 DeviceConnected、DeviceDisconnected、DeviceCreated 和 DeviceDeleted 等非遙測事件，可在建立訂用帳戶時使用事件方格篩選。 針對遙測事件，除了事件方格中的篩選之外，使用者也可以透過訊息路由查詢來篩選裝置 twins、訊息屬性和主體。 
 
 當您透過事件方格訂閱遙測事件時，IoT 中樞會建立預設的訊息路由，將資料來源類型裝置訊息傳送至事件方格。 如需有關訊息路由的詳細資訊，請參閱 [IoT 中樞訊息路由](iot-hub-devguide-messages-d2c.md)。 此路由會顯示在入口網站的 [IoT 中樞] > 訊息路由。 無論為遙測事件建立的例如訂用帳戶數目為何，都只會建立一個事件方格的路由。 因此，如果您需要多個具有不同篩選準則的訂用帳戶，您可以在相同路由上的這些查詢中使用 OR 運算子。 建立和刪除路由是透過事件方格的遙測事件訂用帳戶來控制。 您無法使用 IoT 中樞訊息路由來建立或刪除事件方格的路由。
 
-若要在傳送遙測資料之前篩選訊息，您可以更新您的 [路由查詢](iot-hub-devguide-routing-query-syntax.md)。 請注意，只有在主體是 JSON 時，才可以將路由查詢套用至訊息主體。 您也必須在訊息[系統屬性](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)中將 contentType 設定為**application/json** ，並將 contentEncoding 設定為**utf-8** 。
+若要在傳送遙測資料之前篩選訊息，您可以更新您的 [路由查詢](iot-hub-devguide-routing-query-syntax.md)。 請注意，只有在主體是 JSON 時，才可以將路由查詢套用至訊息主體。 您也必須在訊息[系統屬性](./iot-hub-devguide-routing-query-syntax.md#system-properties)中將 contentType 設定為**application/json** ，並將 contentEncoding 設定為**utf-8** 。
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>裝置連線和裝置中斷連線事件的限制
 

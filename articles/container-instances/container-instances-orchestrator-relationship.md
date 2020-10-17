@@ -4,12 +4,12 @@ description: 了解 Azure 容器執行個體與容器 Orchestrator 的互動方�
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74533669"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148594"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器執行個體和容器 Orchestrator
 
@@ -54,7 +54,7 @@ Orchestrator 可以直接排程使用 Azure 容器執行個體的其他容器，
 
 若要快速調整 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) 叢集中的應用程式工作負載，您可以使用在 Azure 容器執行個體中動態建立的「虛擬節點」**。 虛擬節點能夠進行在 ACI 與 AKS 叢集中執行的 pod 之間的網路通訊。 
 
-虛擬節點目前支援 Linux 容器執行個體。 使用 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2047545)，開始使用虛擬節點。
+虛擬節點目前支援 Linux 容器執行個體。 使用 [Azure CLI](../aks/virtual-nodes-cli.md) 或 [Azure 入口網站](../aks/virtual-nodes-portal.md)，開始使用虛擬節點。
 
 虛擬節點會藉由註冊為無限容量的節點，進而使用開放原始碼 [Virtual Kubelet][aci-connector-k8s] 來模擬 Kubernetes [kubelet][kubelet-doc]。 Virtual Kubelet 會將 [pod][pod-doc] 的建立分派為 Azure 容器執行個體中的容器群組。
 

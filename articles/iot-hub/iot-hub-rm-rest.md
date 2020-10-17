@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe143b1c172c5d89a7dba33731a378df988b4a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014603"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144438"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用資源提供者 REST API 建立 IoT 中樞 (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-您可透過程式設計方式，使用 [IoT 中樞資源提供者 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 建立和管理 Azure IoT 中樞。 本教學課程說明如何使用「IoT 中樞資源提供者 REST API」從 C# 程式建立 IoT 中樞。
+您可透過程式設計方式，使用 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource) 建立和管理 Azure IoT 中樞。 本教學課程說明如何使用「IoT 中樞資源提供者 REST API」從 C# 程式建立 IoT 中樞。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "89014603"
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
 
-* [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或更新版本。
+* [Azure PowerShell 1.0](/powershell/azure/install-Az-ps) 或更新版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -78,7 +78,7 @@ ms.locfileid: "89014603"
 
 ## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>使用資源提供者 REST API 建立 IoT 中樞
 
-使用 [IoT 中樞資源提供者 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 在資源群組中建立 IoT 中樞。 您也可以使用資源提供者 REST API 變更現有的 IoT 中樞。
+使用 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource) 在資源群組中建立 IoT 中樞。 您也可以使用資源提供者 REST API 變更現有的 IoT 中樞。
 
 1. 將下列方法新增至 Program.cs：
 
@@ -175,7 +175,7 @@ ms.locfileid: "89014603"
 
 現在您已經使用資源提供者 REST API 部署 IoT 中樞，您可以進一步探索：
 
-* 閱讀 [IoT 中樞資源提供者 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 功能的相關資訊。
+* 閱讀 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource) 功能的相關資訊。
 
 * 如需 Azure Resource Manager 功能的詳細資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)。
 
@@ -187,4 +187,4 @@ ms.locfileid: "89014603"
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)

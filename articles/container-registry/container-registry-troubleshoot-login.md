@@ -3,12 +3,12 @@ title: 針對登錄登入進行疑難排解
 description: 登入 Azure container registry 時常見問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253349"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148437"
 ---
 # <a name="troubleshoot-registry-login"></a>針對登錄登入進行疑難排解
 
@@ -95,7 +95,7 @@ az acr login --name myregistry
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>確認認證已獲得存取登錄的授權
 
-確認與認證相關聯的登入權利，例如 `AcrPull` 從登錄提取映射的 RBAC 角色，或用 `AcrPush` 來推送映射的角色。 
+確認與認證相關聯的登入權利，例如 `AcrPull` 從登錄提取映射的 Azure 角色，或用 `AcrPush` 來推送映射的角色。 
 
 若要在入口網站中存取登錄或使用 Azure CLI 的登錄管理，至少需要 `Reader` 執行 Azure Resource Manager 作業的角色。
 
@@ -103,7 +103,7 @@ az acr login --name myregistry
 
 相關連結：
 
-* [RBAC 角色和許可權-Azure Container Registry](container-registry-roles.md)
+* [Azure 角色和許可權-Azure Container Registry](container-registry-roles.md)
 * [使用存放庫範圍的權杖登入](container-registry-repository-scoped-permissions.md)
 * [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)
 * [使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ az acr login --name myregistry
   * [針對登錄的網路問題進行疑難排解](container-registry-troubleshoot-access.md)
   * [針對登錄效能進行疑難排解](container-registry-troubleshoot-performance.md)
 * [社區支援](https://azure.microsoft.com/support/community/) 選項
-* [Microsoft 問與答](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [開啟支援票證](https://azure.microsoft.com/support/create-ticket/) -根據您提供的資訊，可能會在您的登錄中針對驗證失敗執行快速診斷
-
-

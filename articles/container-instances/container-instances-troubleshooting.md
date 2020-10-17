@@ -4,12 +4,12 @@ description: 瞭解如何針對您部署、執行或管理 Azure 容器實例時
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260756"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148607"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>在 Azure 容器執行個體中針對常見問題進行疑難排解
 
@@ -198,7 +198,7 @@ Azure 容器實例會使用快取機制，以協助加速建立于通用 [Window
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>無法連線到基礎 Docker API 或執行具有特殊權限的容器
 
-Azure 容器執行個體不會公開基礎結構 (其中裝載容器群組) 的直接存取。 這包括 Docker API 的存取權，Docker API 可在容器主機上執行，並且可執行具有特殊權限的容器。 如果您需要 Docker 互動，請查閱 [REST 參考文件](https://aka.ms/aci/rest)，以了解 ACI API 支援的內容。 如果有遺漏的項目，請在 [ACI 意見反應論壇](https://aka.ms/aci/feedback)上提交要求。
+Azure 容器執行個體不會公開基礎結構 (其中裝載容器群組) 的直接存取。 這包括 Docker API 的存取權，Docker API 可在容器主機上執行，並且可執行具有特殊權限的容器。 如果您需要 Docker 互動，請查閱 [REST 參考文件](/rest/api/container-instances/)，以了解 ACI API 支援的內容。 如果有遺漏的項目，請在 [ACI 意見反應論壇](https://aka.ms/aci/feedback)上提交要求。
 
 ### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>容器群組 IP 位址可能因為連接埠不相符而無法存取
 
@@ -223,7 +223,7 @@ Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果�
     az container delete --resource-group myResourceGroup --name mycontainer
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [取得容器記錄和事件](container-instances-get-logs.md) ，以協助您進行容器的調試。
 

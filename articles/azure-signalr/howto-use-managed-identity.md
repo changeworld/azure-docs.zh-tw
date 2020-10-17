@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094070"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152297"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR Service 的受控識別
 
@@ -62,20 +62,20 @@ Azure SignalR Service 是完全受控的服務，所以您無法使用受控識�
     - Empty
     - 服務主體的應用程式 (用戶端) 識別碼
     - 服務主體的應用程式識別碼 URI
-    - [Azure 服務的資源識別碼](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [Azure 服務的資源識別碼](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
     > 如果您在服務中自行驗證存取權杖，您可以選擇任何一種資源格式。 請確定**驗證**設定中的**資源**值和驗證都一致。 如果您使用 Azure 角色型存取控制 (適用于資料平面的 Azure RBAC) ，您必須使用服務提供者要求的資源。
 
 ### <a name="validate-access-tokens"></a>驗證存取權杖
 
-標頭中的權杖 `Authorization` 是 [Microsoft 身分識別平臺存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens)。
+標頭中的權杖 `Authorization` 是 [Microsoft 身分識別平臺存取權杖](../active-directory/develop/access-tokens.md#validating-tokens)。
 
 若要驗證存取權杖，您的應用程式也應該驗證物件和簽署權杖。 這些都需要對 OpenID 探索文件中的值進行驗證。 例如，請參閱 [租使用者獨立版本的檔](https://login.microsoftonline.com/common/.well-known/openid-configuration)。
 
-Azure Active Directory (Azure AD) 中介軟體具有可驗證存取權杖的內建功能。 您可以流覽我們的 [範例](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) ，以您選擇的語言尋找一個。
+Azure Active Directory (Azure AD) 中介軟體具有可驗證存取權杖的內建功能。 您可以流覽我們的 [範例](../active-directory/develop/sample-v2-code.md) ，以您選擇的語言尋找一個。
 
-我們提供示範如何處理權杖驗證的程式庫和程式碼範例。 另外還有數個開放原始碼夥伴程式庫可供 JSON Web 權杖 (JWT) 驗證。 幾乎每個平臺和語言都有至少一個選項。 如需 Azure AD 驗證程式庫和程式碼範例的詳細資訊，請參閱 [Microsoft 身分識別平臺驗證程式庫](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries)。
+我們提供示範如何處理權杖驗證的程式庫和程式碼範例。 另外還有數個開放原始碼夥伴程式庫可供 JSON Web 權杖 (JWT) 驗證。 幾乎每個平臺和語言都有至少一個選項。 如需 Azure AD 驗證程式庫和程式碼範例的詳細資訊，請參閱 [Microsoft 身分識別平臺驗證程式庫](../active-directory/develop/reference-v2-libraries.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
