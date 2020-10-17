@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: 2c5ce219e40117a2b656b7acab6dd68a1d20dffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251927"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151440"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>排程及廣播工作 ( # A0) 
 
@@ -300,4 +300,4 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 若要繼續開始使用「IoT 中樞」和裝置管理模式（例如透過無線固件更新進行遠端），請參閱 [教學課程：如何執行固件更新](tutorial-firmware-update.md)。
 
-若要繼續開始使用 IoT 中樞，請參閱[開始使用 Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)。
+若要繼續開始使用 IoT 中樞，請參閱[開始使用 Azure IoT Edge](../iot-edge/quickstart-linux.md)。

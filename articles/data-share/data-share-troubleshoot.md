@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/02/2020
-ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761526"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151368"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>針對 Azure Data Share 的常見問題進行疑難排解 
 
@@ -61,12 +61,20 @@ ms.locfileid: "91761526"
 以 SQL 為基礎的共用需要額外的許可權。 如需必要條件的詳細清單，請參閱 [SQL 來源的共用](how-to-share-from-sql.md) 。
 
 ## <a name="snapshot-failed"></a>快照集失敗
-快照集可能會因為各種原因而失敗。 您可以按一下快照集的開始時間，然後按一下每個資料集的狀態，以找到詳細的錯誤訊息。 以下是快照失敗的原因：
+快照集可能會因為各種原因而失敗。 您可以按一下快照集的開始時間，然後按一下每個資料集的狀態，以找到詳細的錯誤訊息。 以下是快照失敗的常見原因：
 
 * Data Share 沒有從來源資料存放區讀取或寫入目標資料存放區的許可權。 如需詳細許可權需求，請參閱 [角色和需求](concepts-roles-permissions.md) 。 如果這是您第一次拍攝快照集，則可能需要幾分鐘的時間，才會將 Azure 資料存放區的存取權授與 Data Share 資源。 請稍候幾分鐘，然後再試一次。
 * 防火牆會封鎖來源或目標資料存放區的 Data Share 連接。
 * 共用資料集或來源或目標資料存放區會被刪除。
-* 若為 SQL 共用，快照集進程或目標資料存放區不支援資料類型。 請參閱 [SQL 來源的共用](how-to-share-from-sql.md#supported-data-types) 以取得詳細資料。
+
+針對 SQL 來源，以下是快照集失敗的額外原因。 
+
+* 要授與 Data Share 許可權的來源或目標 SQL 腳本不會執行，或使用 SQL 驗證而非 Azure Active Directory 驗證來執行。  
+* 來源或目標 SQL 資料存放區已暫停。
+* 快照集進程或目標資料存放區不支援 SQL 資料類型。 請參閱 [SQL 來源的共用](how-to-share-from-sql.md#supported-data-types) 以取得詳細資料。
+* 來源或目標 SQL 資料存放區已被其他進程鎖定。 Azure Data Share 不會將鎖定套用到來源和目標 SQL 資料存放區。 不過，來源和目標 SQL 資料存放區上的現有鎖定會導致快照集失敗。
+* 目標 SQL 資料表是由 foreign key 條件約束所參考。 在快照集期間，如果存在具有相同名稱的目標資料表，Azure Data Share 會卸載資料表，並建立新的資料表。 如果 foreign key 條件約束參考目標 SQL 資料表，則無法卸載資料表。
+* 會產生目標 CSV 檔案，但無法在 Excel 中讀取資料。 當來源 SQL 資料表包含非英文字元的資料時，就可能發生這種情況。 在 Excel 中，選取 [取得資料] 索引標籤並選擇 CSV 檔案，然後選取 [檔案來源] 為65001： Unicode (UTF-8) 並載入資料。
 
 ## <a name="next-steps"></a>後續步驟
 

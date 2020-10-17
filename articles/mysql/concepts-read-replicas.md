@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126649"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151188"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -128,6 +128,26 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
     
 一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 當您偵測到問題並完成上述步驟1和2時，您的應用程式所經歷的停機時間將會取決於您的情況。
 
+## <a name="global-transaction-identifier-gtid"></a>全域交易識別碼 (GTID) 
+
+全域交易識別碼 (GTID) 是在來源伺服器上使用每個認可的交易建立的唯一識別碼，而且在適用於 MySQL 的 Azure 資料庫中預設為關閉。 只有在支援儲存體上限為 16 TB 的伺服器上，才支援 GTID 5.7 和8.0 版。 若要深入瞭解 GTID 及其在複寫中的使用方式，請參閱 MySQL [與 GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) 相關的複寫檔。
+
+MySQL 支援兩種類型的交易：使用 GTID) 和匿名交易 (識別的 GTID 交易 (沒有配置 GTID) 
+
+下列伺服器參數適用于設定 GTID： 
+
+|**伺服器參數**|**說明**|**預設值**|**值**|
+|--|--|--|--|
+|`gtid_mode`|指出是否使用 GTIDs 來識別交易。 模式之間的變更一次只能以遞增順序完成一個步驟 (例如， `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`：新的和複寫交易都必須是匿名的 <br> `OFF_PERMISSIVE`：新的交易是匿名的。 複寫的交易可以是匿名或 GTID 交易。 <br> `ON_PERMISSIVE`：新交易是 GTID 交易。 複寫的交易可以是匿名或 GTID 交易。 <br> `ON`：新的和複寫的交易都必須是 GTID 交易。|
+|`enforce_gtid_consistency`|藉由只允許執行可以交易安全方式記錄的語句，來強制執行 GTID 一致性。 在啟用 GTID 複寫之前，必須將此值設定為 `ON` 。 |`OFF`|`OFF`：允許所有交易違反 GTID 一致性。  <br> `ON`：不允許交易違反 GTID 一致性。 <br> `WARN`：允許所有交易違反 GTID 一致性，但會產生警告。 | 
+
+> [!NOTE]
+> 啟用 GTID 之後，您就無法將它關閉。 如果您需要關閉 GTID，請聯絡支援人員。 
+
+若要啟用 GTID 並設定一致性行為，請 `gtid_mode` `enforce_gtid_consistency` 使用 [Azure 入口網站](howto-server-parameters.md)、 [Azure CLI](howto-configure-server-parameters-using-cli.md)或 [PowerShell](howto-configure-server-parameters-using-powershell.md)來更新和伺服器參數。
+
+如果在來源伺服器上啟用 GTID (`gtid_mode` = on) ，新建立的複本也會啟用 GTID 並使用 GTID 複寫。 若要讓複寫保持一致，您無法 `gtid_mode` 在來源或複本伺服器 (s) 上更新。
+
 ## <a name="considerations-and-limitations"></a>考量與限制
 
 ### <a name="pricing-tiers"></a>定價層
@@ -178,9 +198,18 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 若要更新來源伺服器上的上述其中一個參數，請刪除複本伺服器，更新主機上的參數值，然後重新建立複本。
 
+### <a name="gtid"></a>GTID
+
+支援的 GTID：
+- MySQL 版本5.7 和8。0 
+- 支援儲存體最多 16 TB 的伺服器。 請參閱 [定價層](concepts-pricing-tiers.md#storage) 文章，以取得支援 16 TB 儲存體之區域的完整清單。 
+
+GTID 預設為關閉。 啟用 GTID 之後，您就無法將它關閉。 如果您需要關閉 GTID，請聯絡支援人員。 
+
+如果來源伺服器上已啟用 GTID，則新建立的複本也會啟用 GTID 並使用 GTID 複寫。 若要讓複寫保持一致，您無法 `gtid_mode` 在來源或複本伺服器 (s) 上更新。
+
 ### <a name="other"></a>其他
 
-- 不支援全域交易識別碼 (GTID)。
 - 不支援建立複本的複本。
 - 記憶體內資料表可能會導致複本不同步。這是 MySQL 複寫技術的限制。 如需詳細資訊，請參閱 [MySQL 參考文件](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) \(英文\)。
 - 確定來源伺服器資料表具有主鍵。 缺少主鍵可能會導致來源與複本之間的複寫延遲。

@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018622"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150136"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 
-此文章說明 Azure App Service VNet 整合功能，以及如何使用 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式來加以設定。 使用 [Azure 虛擬網路][VNETOverview] (VNet)，您可以將許多 Azure 資源放在非網際網路可路由的網路中。 VNet 整合功能可讓您的應用程式透過 VNet 存取中的資源。 VNet 整合無法讓您私下存取您的應用程式。
+此文章說明 Azure App Service VNet 整合功能，以及如何使用 [Azure App Service](./overview.md) 中的應用程式來加以設定。 使用 [Azure 虛擬網路][VNETOverview] (VNet)，您可以將許多 Azure 資源放在非網際網路可路由的網路中。 VNet 整合功能可讓您的應用程式透過 VNet 存取中的資源。 VNet 整合無法讓您私下存取您的應用程式。
 
 Azure App Service 在 VNet 整合功能上有兩種變化：
 

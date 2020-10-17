@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85131958"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151056"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR Service 的資源記錄
 
@@ -20,8 +20,8 @@ ms.locfileid: "85131958"
 ## <a name="prerequisites"></a>必要條件
 若要啟用資源記錄，您將需要儲存記錄資料的地方。 本教學課程使用 Azure 儲存體和 Log Analytics。
 
-* [Azure 儲存體](../azure-monitor/platform/resource-logs-collect-storage.md) -保留原則審核、靜態分析或備份的資源記錄。
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) -彈性的記錄搜尋和分析工具，可讓您分析 Azure 資源所產生的原始記錄。
+* [Azure 儲存體](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) -保留原則審核、靜態分析或備份的資源記錄。
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) -彈性的記錄搜尋和分析工具，可讓您分析 Azure 資源所產生的原始記錄。
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>設定 Azure SignalR Service 的資源記錄
 
@@ -68,7 +68,7 @@ Azure SignalR Service 會在一個類別中捕捉資源記錄：
 
 **格式**
 
-名稱 | 描述
+Name | 描述
 ------- | -------
 time | 記錄檔事件時間
 等級 | 記錄事件層級
@@ -81,7 +81,7 @@ properties | 與此記錄事件相關的詳細屬性。 如需詳細資訊，請
 
 **Properties 資料表**
 
-名稱 | 描述
+Name | 描述
 ------- | -------
 type | 記錄檔事件的類型。 目前，我們會提供與 Azure SignalR Service 的連接相關資訊。 只有 `ConnectivityLogs` 類型可供使用
 collection | 記錄檔事件的集合。 允許的值為 `Connection` ： `Authorization` 和。 `Throttling`
@@ -128,7 +128,7 @@ userId | 使用者的身分識別
 
 封存記錄資料行包含下表所列的元素：
 
-名稱 | 描述
+Name | 描述
 ------- | ------- 
 TimeGenerated | 記錄檔事件時間
 集合 | 記錄檔事件的集合。 允許的值為 `Connection` ： `Authorization` 和。 `Throttling`

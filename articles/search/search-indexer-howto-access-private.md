@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102722"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150409"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>透過私人端點 (Azure 認知搜尋) 的索引子連接
 
@@ -33,7 +33,7 @@ ms.locfileid: "92102722"
 
 某些資源的私人端點連線只能使用搜尋管理 API 的預覽版本來建立 (`2020-08-01-Preview` 或更新版本的) （以下表中的 "preview" 標記表示）。 您可以使用預覽或正式運作的 API 版本 (或更新版本的) 來建立沒有「預覽」標籤的資源 `2020-08-01` 。
 
-以下是可從 Azure 認知搜尋建立輸出私人端點的 Azure 資源清單。 `groupId` 下表中所列的，必須完全使用 (區分大小寫的 API) ，才能建立共用的私人連結資源。
+以下是可從 Azure 認知搜尋建立輸出私人端點的 Azure 資源清單。 `groupId`下表中所列的值必須完全依照 API 中的寫入 (區分大小寫的) 來建立共用的私人連結資源。
 
 | Azure 資源 | 群組識別碼 |
 | --- | --- |
@@ -47,7 +47,7 @@ ms.locfileid: "92102722"
 
 您也可以使用 [清單支援的 API](/rest/api/searchmanagement/privatelinkresources/listsupported)來查詢支援輸出私人端點連線的 Azure 資源清單。
 
-在本文中，混合使用 [ARMClient](https://github.com/projectkudu/ARMClient) 和 [Postman](https://www.postman.com/) 來示範 REST API 的呼叫。
+本文的其餘部分會使用 [ARMClient](https://github.com/projectkudu/ARMClient) 和 [Postman](https://www.postman.com/) 的組合來示範 REST API 的呼叫。
 
 > [!NOTE]
 > 在本文中，假設搜尋服務的名稱是__contoso-搜尋__，其存在於訂用帳戶識別碼為__00000000-0000-0000-0000-000000000000__之訂用帳戶的資源群組__contoso__中。 這項搜尋服務的資源識別碼將是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`

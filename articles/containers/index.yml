@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure 容器服務文件 | Microsoft Docs
   description: 了解如何使用 Azure 容器服務來管理和開發以雲端為基礎的容器應用程式。
   ms.topic: hub-page
-  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: d62fbbd19c56e64f254037574c69ce6c949239ef
+  ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88080842"
+  ms.lasthandoff: 10/17/2020
+  ms.locfileid: "92151283"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -44,10 +44,10 @@ conceptualContent:
     - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: 本機處理序與 Kubernetes 搭配使用的方式
-    - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+    - url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
       itemType: how-to-guide
       text: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用
-    - url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
+    - url: /visualstudio/containers/bridge-to-kubernetes
       itemType: how-to-guide
       text: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用
   - title: 建立 Web 和行動裝置的雲端應用程式
@@ -64,10 +64,10 @@ conceptualContent:
     - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: 執行自訂 Windows 容器
-    - url: ../app-service/containers/quickstart-docker.md
+    - url: ../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux
       itemType: quickstart
       text: 執行自訂的 Linux 容器
-    - url: ../app-service/containers/quickstart-multi-container.md
+    - url: ../app-service/quickstart-multi-container.md
       itemType: quickstart
       text: 建立 Linux 多容器應用程式
     footerLink:
@@ -144,7 +144,7 @@ conceptualContent:
       itemType: tutorial
       text: 建立 Azure Red Hat OpenShift 叢集
     footerLink:
-      url: /azure/openshift/
+      url: ../openshift/index.yml
       text: 查看更多
   - title: 無伺服器應用程式開發
     links:

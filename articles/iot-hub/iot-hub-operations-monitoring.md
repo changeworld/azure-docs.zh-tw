@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 9d9824be536ca657d9213a47898ad19b0c39d8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022015"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139324"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中樞作業監視 (已淘汰)
 
@@ -191,7 +191,7 @@ IoT 中樞會監視六個類別的事件：
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>連線至監視端點
 
-IoT 中樞上的監視端點是相容於事件中樞的端點。 您可以使用可搭配「事件中樞」使用的任何機制從此端點讀取監視訊息。 下列範例會建立的基本讀取器不適合用於高輸送量部署。 如需有關如何處理來自「事件中樞」之訊息的詳細資訊，請參閱 [開始使用事件中樞](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) 教學課程。
+IoT 中樞上的監視端點是相容於事件中樞的端點。 您可以使用可搭配「事件中樞」使用的任何機制從此端點讀取監視訊息。 下列範例會建立的基本讀取器不適合用於高輸送量部署。 如需有關如何處理來自「事件中樞」之訊息的詳細資訊，請參閱 [開始使用事件中樞](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) 教學課程。
 
 若要連線至監視端點，您需要連接字串和端點名稱。 下列步驟顯示如何在入口網站中尋找需要的值：
 
@@ -271,4 +271,4 @@ class Program
 
 * [IoT 中樞開發人員指南](iot-hub-devguide.md)
 
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)

@@ -7,16 +7,16 @@ author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bcb7a8e040a8e32a8513e5e0e73d6c124e04563a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66b74fd8fe326666d3c34b59acba383fd4205e17
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816279"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151337"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>適用於 Azure IoT 中樞的 Azure 原則內建定義
 
-如需示範如何執行常見 IoT 案例的 IoT 中樞範例程式碼，請參閱 [IoT 中樞快速入門](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-cli)。 其中有多個程式設計語言的快速入門，包括 C、Node.js 和 Python。
+如需示範如何執行常見 IoT 案例的 IoT 中樞範例程式碼，請參閱 [IoT 中樞快速入門](./quickstart-send-telemetry-cli.md)。 其中有多個程式設計語言的快速入門，包括 C、Node.js 和 Python。
 
 此頁面是適用於 Azure IoT 中樞的 [Azure 原則](../governance/policy/overview.md)內建原則定義索引。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。
 

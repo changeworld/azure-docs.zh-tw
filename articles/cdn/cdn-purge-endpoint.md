@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192536"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148986"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 端點
 ## <a name="overview"></a>概觀
@@ -69,7 +69,7 @@ Azure CDN 邊緣節點會快取資產，直到資產的存留時間 (TTL) 到期
     ![清除按鈕](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 使用 **來自 Microsoft 的 AZURE cdn**大約需要10分鐘的時間來處理清除要求， **從 Verizon** (standard 和 premium) 的 azure cdn 大約需要10分鐘，而 **Akamai 的 azure cdn**大約為10秒。  Azure CDN 隨時都有在設定檔層級 50 個並行清除要求的限制。 
+> 使用 **來自 Microsoft 的 AZURE cdn**大約需要10分鐘的時間來處理清除要求， **從 Verizon** (standard 和 premium) 的 azure cdn 大約需要10分鐘，而 **Akamai 的 azure cdn**大約為10秒。  Azure CDN 在設定檔層級的任何指定時間都有100個並行清除要求的限制。 
 > 
 > 
 

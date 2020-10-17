@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49496dbf1355ceee7619d93bcb0676892b7a212d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906918"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150574"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>適用于 Azure IoT 中樞的 Azure 安全性基準
 
@@ -33,9 +33,9 @@ IoT 中樞功能 (包括訊息路由、檔案上傳和大量裝置匯入/匯出)
 將裝置上的開啟硬體埠維持在最少的最小值，以避免不必要的存取。 此外，也會建立防止或偵測裝置實體篡改的機制。
 
 - [IoT 虛擬網路支援](virtual-network-support.md)
-- [大量網路的最佳作法](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc#networking)
+- [大量網路的最佳作法](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
 - [Azure Private Link 總覽](../private-link/private-link-overview.md)
-- [Azure 網路安全性群組](../virtual-network/security-overview.md)
+- [Azure 網路安全性群組](../virtual-network/network-security-groups-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -75,7 +75,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 - [管理 Azure DDoS 保護基本](../virtual-network/ddos-protection-overview.md)
 
-- [Azure 資訊安全中心內的威脅防護](../security-center/threat-protection.md)
+- [Azure 資訊安全中心內的威脅防護](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -138,7 +138,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導**方針：針對與您 Azure IoT 中樞部署相關聯的網路資源使用標籤，以便以邏輯方式將它們組織成分類法。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -148,7 +148,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導**方針：使用 Azure 活動記錄監視網路資源設定，並偵測與 Azure IoT 中樞相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -274,9 +274,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導**方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 azure IoT 中樞的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。 
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -296,7 +296,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 您也可以使用 Azure AD Privileged Identity Management 和 Azure Resource Manager 來啟用系統管理帳戶的即時存取。
 
-- [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [深入瞭解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 資訊安全中心監視**：是
 
@@ -340,7 +340,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導**方針：使用 Azure Active Directory 安全性報告和監視，來偵測環境中發生可疑或不安全的活動時。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
@@ -376,9 +376,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 當環境中發生可疑或不安全的活動時，請使用 Azure AD Privileged Identity Management (PIM) 來產生記錄和警示。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 - [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
-- [部署 Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -392,7 +392,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 使用者 Azure 監視器診斷記錄，以監視連接類別中的未授權連接嘗試。
 
-- [如何整合 Azure 活動記錄與 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [設定 IoT 中樞的診斷記錄](iot-hub-monitor-resource-health.md)
 
@@ -404,7 +404,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導**方針：使用 Azure AD Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
   
-- [ 如何查看 Azure AD 具風險的登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [ 如何查看 Azure AD 具風險的登入](../active-directory/identity-protection/overview-identity-protection.md)
   
 - [ 如何設定及啟用 Identity Protection 風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
   
@@ -430,7 +430,7 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
  
-- [ 如何建立和使用標記](/azure/azure-resource-manager/resource-group-using-tags)
+- [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -440,9 +440,9 @@ Azure DDoS 保護 Basic 已啟用，且在 IoT 中樞內不會有額外成本。
 
 **指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure RBAC 來控制對 Azure 資源的存取。
   
-- [ 如何建立額外的 Azure 訂用帳戶](/azure/billing/billing-create-subscription)
-- [ 如何建立管理群組](/azure/governance/management-groups/create)
-- [ 如何建立和使用標記](/azure/azure-resource-manager/resource-group-using-tags)
+- [ 如何建立額外的 Azure 訂用帳戶](../cost-management-billing/manage/create-subscription.md)
+- [ 如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
+- [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -593,7 +593,7 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 **指導**方針：將標記套用至 Azure 資源 (並非所有資源都支援標籤，但大部分的) 會以邏輯方式將它們組織成分類法。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -603,11 +603,11 @@ Azure IoT 中樞提供待用資料和傳輸中資料的加密，因為它會寫�
 
 **指導**方針：在適當的情況下使用標記、管理群組和個別訂用帳戶來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
   
-- [ 如何建立額外的 Azure 訂用帳戶](/azure/billing/billing-create-subscription)
+- [ 如何建立額外的 Azure 訂用帳戶](../cost-management-billing/manage/create-subscription.md)
   
-- [ 如何建立管理群組](/azure/governance/management-groups/create)
+- [ 如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
   
-- [ 如何建立和使用標記](/azure/azure-resource-manager/resource-group-using-tags)
+- [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -725,7 +725,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 您也可以使用 Azure 資訊安全中心中的建議作為 Azure 資源的安全設定基準。
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
 
@@ -769,8 +769,8 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 **指導**方針：如果您 Azure IoT 中樞或相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -830,8 +830,8 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 - [IoT 中樞安全性權杖](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [如何使用適用于 IoT 中樞的受控識別](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
-- [如何建立金鑰保存庫](/azure/key-vault/quick-create-portal)
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/managed-identity)
+- [如何建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md)
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -940,7 +940,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
  
  
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
-- [Azure Blob 儲存體的虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -973,7 +973,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
   
 - [ Azure 資訊安全中心中的安全性警示](../security-center/security-center-alerts-overview.md)
   
-- [ 使用標記來組織您的 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [ 使用標記來組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1039,5 +1039,5 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

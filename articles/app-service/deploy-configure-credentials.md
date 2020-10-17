@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715407"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149015"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳戶認證不同。
+[Azure App Service](./overview.md) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳戶認證不同。
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -96,11 +96,11 @@ az resource update --resource-group <resource-group> --name ftp --namespace Micr
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-若要確認 WebDeploy 上的發行設定檔認證遭到封鎖，請嘗試 [使用 Visual Studio 2019 發佈 web 應用程式](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)。
+若要確認 WebDeploy 上的發行設定檔認證遭到封鎖，請嘗試 [使用 Visual Studio 2019 發佈 web 應用程式](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)。
 
 ### <a name="disable-access-to-the-api"></a>停用對 API 的存取
 
-上一節中的 API 是 azure RBAC)  (azure 角色型存取控制，這表示您可以 [建立自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ，並將較低 priveldged 的使用者指派給角色，讓他們無法在任何網站上啟用基本驗證。 若要設定自訂角色，請 [遵循下列指示](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
+上一節中的 API 是 azure RBAC)  (azure 角色型存取控制，這表示您可以 [建立自訂角色](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) ，並將較低 priveldged 的使用者指派給角色，讓他們無法在任何網站上啟用基本驗證。 若要設定自訂角色，請 [遵循下列指示](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
 
 您也可以使用 [Azure 監視器](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 來審核任何成功的驗證要求，並使用 [Azure 原則](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 對訂用帳戶中的所有網站強制執行此設定。
 

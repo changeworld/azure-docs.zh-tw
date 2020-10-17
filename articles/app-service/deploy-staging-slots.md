@@ -5,17 +5,17 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962157"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150337"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>在 Azure App Service 中設定預備環境
 <a name="Overview"></a>
 
-當您將 web 應用程式、Linux 上的 web 應用程式、行動後端或 API 應用程式部署至 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)時，您可以使用個別的部署位置，而不是在 **Standard**、 **Premium**或 **隔離** 的 App Service 方案層中執行時的預設生產位置。 部署位置是具有自己主機名稱的即時應用程式。 兩個部署位置 (包括生產位置) 之間的應用程式內容與設定項目可以互相交換。 
+當您將 web 應用程式、Linux 上的 web 應用程式、行動後端或 API 應用程式部署至 [Azure App Service](./overview.md)時，您可以使用個別的部署位置，而不是在 **Standard**、 **Premium**或 **隔離** 的 App Service 方案層中執行時的預設生產位置。 部署位置是具有自己主機名稱的即時應用程式。 兩個部署位置 (包括生產位置) 之間的應用程式內容與設定項目可以互相交換。 
 
 將應用程式部署至非生產位置具有下列優點：
 
@@ -238,7 +238,7 @@ ms.locfileid: "88962157"
 
 1. 移至您應用程式的資源頁面，然後選取 [ **部署**位置]。
 
-2. 針對您要路由到的位置，在其 [流量百分比]**** 資料行中指定百分比 (介於 0 到 100 之間)，以代表您要路由的總流量。 選取 [儲存]****。
+2. 針對您要路由到的位置，在其 [流量百分比]**** 資料行中指定百分比 (介於 0 到 100 之間)，以代表您要路由的總流量。 選取 [儲存]。
 
     ![設定流量百分比](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -262,7 +262,7 @@ ms.locfileid: "88962157"
 
 字串 `x-ms-routing-name=self` 會指定生產位置。 用戶端瀏覽器存取連結之後，會將其重新導向至生產位置。 每個後續要求都有將 `x-ms-routing-name=self` 會話釘選到生產位置的 cookie。
 
-若要讓使用者加入宣告您的 Beta 應用程式，請將相同的查詢參數設定為非生產位置的名稱。 以下為範例：
+若要讓使用者加入宣告您的 Beta 應用程式，請將相同的查詢參數設定為非生產位置的名稱。 以下是範例：
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging

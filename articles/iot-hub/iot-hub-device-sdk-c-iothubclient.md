@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732610"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149148"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>適用於 C 的 Azure IoT 裝置 SDK - 深入了解 IoTHubClient
 
@@ -28,7 +28,7 @@ ms.locfileid: "81732610"
 
 我們將使用 **IoTHubClient** SDK 範例來說明這些主題。 如果您想要依照這些內容，請參閱「適用於 C 的 Azure IoT 裝置 SDK」中隨附的 **iothub\_client\_sample\_http** 和 **iothub\_client\_sample\_amqp** 應用程式。這些範例會示範下列各節中所述的所有內容。
 
-您可以尋找[**適用於 C 的 Azure IoT 裝置 SDK**](https://github.com/Azure/azure-iot-sdk-c) GitHub 儲存機制，然後在 [C API 參考資料](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)中檢視 API 的詳細資料。
+您可以尋找[**適用於 C 的 Azure IoT 裝置 SDK**](https://github.com/Azure/azure-iot-sdk-c) GitHub 儲存機制，然後在 [C API 參考資料](/azure/iot-hub/iot-c-sdk-ref/)中檢視 API 的詳細資料。
 
 ## <a name="the-lower-level-apis"></a>較低層級的 API
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 我們從呼叫 **IoTHubMessage\_Properties** 開始著手，然後將訊息的控制代碼傳遞給它。 我們得到的回應是 **MAP\_HANDLE** 參考，這可讓我們開始新增屬性。 後者可透過呼叫 **Map\_AddOrUpdate** 來完成，這會參考 MAP\_HANDLE、屬性名稱和屬性值。 利用此 API，我們可以依意願新增應用程式。
 
-從「事件中樞」**** 讀取事件時，接收者可以列舉屬性並擷取其對應的值。 例如，在 .NET 中，這可藉由存取 [EventData 物件上的屬性集合](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx)來完成。
+從「事件中樞」**** 讀取事件時，接收者可以列舉屬性並擷取其對應的值。 例如，在 .NET 中，這可藉由存取 [EventData 物件上的屬性集合](/dotnet/api/microsoft.servicebus.messaging.eventdata)來完成。
 
 在上述範例中，我們會將屬性附加至我們傳送至 IoT 中樞的事件。 屬性也可以附加至從 IoT 中樞接收的訊息。 如果我們想要從訊息擷取屬性，可以在訊息回呼函式中使用如下的程式碼：
 
@@ -271,10 +271,10 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 此批次處理選項極為重要。 根據預設，程式庫會個別輸入事件 (單一事件是您傳遞給 **IoTHubClient\_LL\_SendEventAsync** 的任何內容)。 如果批次處理選項為 **true**，程式庫會盡可能從緩衝區收集事件 (上限為 IoT 中樞將接受的最大訊息大小)。  事件批次會在單一 HTTPS 呼叫中傳送到「IoT 中樞」(個別事件會統合至 JSON 陣列中)。 啟用批次處理通常會大幅提升效能，因為您要減少網路往返。 它也會大幅減少頻寬，因為您是利用事件批次傳送一組 HTTPS 標頭，而不是針對每個個別事件傳送一組標頭。 除非您有特定原因要這麼做，否則您通常會想要啟用批次處理。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文詳細說明在**適用于 C 的 Azure IoT 裝置 SDK**中找到的 **>iothubclient**程式庫行為。有了這項資訊，您應該對 **>iothubclient**程式庫的功能有充分的瞭解。 這個系列的第二篇文章[適用於 C 的 Azure IoT 裝置 SDK - 序列化程式](iot-hub-device-sdk-c-serializer.md)提供了關於 **** 程式庫的相似詳細資料。
 
 若要深入了解如何開發 IoT 中樞，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-若要進一步探索 IoT 中樞的功能，請參閱[使用 Azure IoT 中樞將 AI 部署到邊緣裝置](../iot-edge/tutorial-simulate-device-linux.md)。
+若要進一步探索 IoT 中樞的功能，請參閱[使用 Azure IoT 中樞將 AI 部署到邊緣裝置](../iot-edge/quickstart-linux.md)。

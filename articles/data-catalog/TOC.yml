@@ -68,7 +68,7 @@
     - name: Azure 資料目錄的鍵盤快速鍵
       href: data-catalog-keyboard-shortcuts.md
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
+      href: /answers/topics/azure-data-catalog.html
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: 定價計算機

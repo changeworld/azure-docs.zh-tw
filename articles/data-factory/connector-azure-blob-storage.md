@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 38f3aaeddbdedb073d83a64a508eb9f4578f1c97
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7aef08f4ba1948c32fe83a2d0064a21459c003b4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948420"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148957"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -223,7 +223,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
     - 應用程式金鑰
     - 租用戶識別碼
 
-2. 在 Azure Blob 儲存體中授與服務主體適當權限。 如需有關角色的詳細資訊，請參閱 [使用 RBAC 管理 Azure 儲存體資料的存取權限](../storage/common/storage-auth-aad-rbac.md)。
+2. 在 Azure Blob 儲存體中授與服務主體適當權限。 如需有關角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](../storage/common/storage-auth-aad-rbac-portal.md)。
 
     - **作為來源**， ** (IAM) 的存取控制 **中，請至少授與 **儲存體 Blob 資料讀取** 者角色。
     - **作為接收**，在 **存取控制 (IAM) **中，請至少授與 **儲存體 Blob 資料參與者** 角色。
@@ -280,7 +280,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 1. 藉由複製隨 Factory 產生的受控識別物件識別碼值，來抓取[Data Factory 受控識別資訊](data-factory-service-identity.md#retrieve-managed-identity)。
 
-2. 授與 Azure Blob 儲存體中的受控識別許可權。 如需有關角色的詳細資訊，請參閱 [使用 RBAC 管理 Azure 儲存體資料的存取權限](../storage/common/storage-auth-aad-rbac.md)。
+2. 授與 Azure Blob 儲存體中的受控識別許可權。 如需有關角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](../storage/common/storage-auth-aad-rbac-portal.md)。
 
     - **作為來源**， ** (IAM) 的存取控制 **中，請至少授與 **儲存體 Blob 資料讀取** 者角色。
     - **作為接收**，在 **存取控制 (IAM) **中，請至少授與 **儲存體 Blob 資料參與者** 角色。

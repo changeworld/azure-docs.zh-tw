@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996762"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139370"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -27,38 +27,19 @@ ms.locfileid: "91996762"
 ### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK for Python v 1.16。0
 + **Bug 修正和改善**
   + **azure-cli-ml**
-    + >akswebservice 和 AKSEndpoints 現在支援 pod 層級的 CPU 和記憶體資源限制。 您可以透過1定義這些選擇性的限制。 `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` 和方法2中的設定和參數 `AKSWebservice.deploy_configuration()` 。 `--cpu-cores-limit` `--memory-gb-limit` 適用 CLI 呼叫3中的設定和旗標。 設定 `cpuLimit` 部署設定中的和 `memoryInGBLimit` `containerResourceRequirements` 。如需 Kubernetes 資源和限制的詳細資訊，請參閱 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml-contrib-interpret**
-    + 修正針對 azureml （解讀、azureml-解釋--contrib-解讀和 azureml） pypi 造成上傳錯誤的套件描述
-  + **azureml-contrib-k8s**
-    + 已新增附加 ArcKubernetes 計算的支援
-  + **azureml-contrib-mir**
-    + >akswebservice 和 AKSEndpoints 現在支援 pod 層級的 CPU 和記憶體資源限制。 您可以透過1定義這些選擇性的限制。 `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` 和方法2中的設定和參數 `AKSWebservice.deploy_configuration()` 。 `--cpu-cores-limit` `--memory-gb-limit` 適用 CLI 呼叫3中的設定和旗標。 設定 `cpuLimit` 部署設定中的和 `memoryInGBLimit` `containerResourceRequirements` 。如需 Kubernetes 資源和限制的詳細資訊，請參閱 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml-contrib-伺服器**
-    + >akswebservice 和 AKSEndpoints 現在支援 pod 層級的 CPU 和記憶體資源限制。 您可以透過1定義這些選擇性的限制。 `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` 和方法2中的設定和參數 `AKSWebservice.deploy_configuration()` 。 `--cpu-cores-limit` `--memory-gb-limit` 適用 CLI 呼叫3中的設定和旗標。 設定 `cpuLimit` 部署設定中的和 `memoryInGBLimit` `containerResourceRequirements` 。如需 Kubernetes 資源和限制的詳細資訊，請參閱 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + >akswebservice 和 AKSEndpoints 現在支援 pod 層級的 CPU 和記憶體資源限制。 `--cpu-cores-limit` `--memory-gb-limit` 在適用的 CLI 呼叫中，設定和旗標可以使用這些選擇性限制
   + **azureml-core**
     + 釘選 azureml 核心直接相依性的主要版本
-    + >akswebservice 和 AKSEndpoints 現在支援 pod 層級的 CPU 和記憶體資源限制。 如需 Kubernetes 資源和限制的詳細資訊，請參閱 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + >akswebservice 和 AKSEndpoints 現在支援 pod 層級的 CPU 和記憶體資源限制。 [Kubernetes 資源和限制](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)的詳細資訊
     + 已更新 run.log_table，以允許記錄個別資料列。
-    + 已新增靜態方法 `Run.get(workspace, run_id)` ，以使用工作區新增的實例方法取出執行， `Workspace.get_run(run_id)` 以抓取工作區內的回合
+    + 已新增靜態方法 `Run.get(workspace, run_id)` ，以只使用工作區取出執行 
+    + 已新增實例方法 `Workspace.get_run(run_id)` 以取得工作區中的執行
     + 執行設定中的命令屬性，可讓使用者提交命令，而不是腳本 & 引數。
-  + **azureml-dataprep-原生**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支援 Python 3.8。
-  + **azureml-說明-模型**
-    + 修正針對 azureml （解讀、azureml-解釋--contrib-解讀和 azureml） pypi 造成上傳錯誤的套件描述
   + **azureml-interpret**
     + 修正了 azureml 中用戶端 is_raw 旗標行為的說明-解讀
-    + 修正針對 azureml （解讀、azureml-解釋--contrib-解讀和 azureml） pypi 造成上傳錯誤的套件描述
-  + **azureml-pipeline-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支援 Python 3.8。
   + **azureml-sdk**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支援 Python 3.8。
-  + **azureml-tensorboard**
-    + 修正針對 azureml （解讀、azureml-解釋--contrib-解讀和 azureml） pypi 造成上傳錯誤的套件描述
-  + **azureml-定型**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支援 Python 3.8。
+    + `azureml-sdk` 正式支援 Python 3.8。
   + **azureml-train-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支援 Python 3.8。
     + 新增 TensorFlow 2.3 策劃環境
     + 執行設定中的命令屬性，可讓使用者提交命令，而不是腳本 & 引數。
   + **azureml-widgets**
@@ -720,7 +701,7 @@ ms.locfileid: "91996762"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
     
-| 以 Web 為基礎的工具  |     說明  |
+| 以 Web 為基礎的工具  |     描述  |
 |---|---|
 | Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 
 
@@ -1232,7 +1213,7 @@ ms.locfileid: "91996762"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
 
-| 以 Web 為基礎的工具 | 說明 | 
+| 以 Web 為基礎的工具 | 描述 | 
 |-|-|-|
 | 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 
 | [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | 
@@ -2103,6 +2084,6 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + 新記錄檔檢視器
   + [活動] 索引標籤中的實驗執行、計算、模型、映射和部署的連結
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 閱讀 [Azure Machine Learning](overview-what-is-azure-ml.md) 概觀。

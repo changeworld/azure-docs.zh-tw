@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613895"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149095"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -224,7 +224,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命�
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>輸出連線到儲存體帳戶以進行檔案上傳
 
-IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲存體帳戶。 若要讓檔案上傳正常運作，裝置和 IoT 中樞都必須具有與儲存體帳戶的連線。 如果儲存體帳戶上有防火牆限制，裝置就必須使用任何支援的儲存體帳戶機制 (包括[私人端點](../private-link/create-private-endpoint-storage-portal.md)、[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火牆設定](../storage/common/storage-network-security.md)) 來取得連線。 同樣地，如果儲存體帳戶上有防火牆限制，IoT 中樞就必須設定為透過信任的 Microsoft 服務例外來存取儲存體資源。 基於此目的， IoT 中樞必須具有受控識別。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取儲存體帳戶。
+IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲存體帳戶。 若要讓檔案上傳正常運作，裝置和 IoT 中樞都必須具有與儲存體帳戶的連線。 如果儲存體帳戶上有防火牆限制，裝置就必須使用任何支援的儲存體帳戶機制 (包括[私人端點](../private-link/tutorial-private-endpoint-storage-portal.md)、[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火牆設定](../storage/common/storage-network-security.md)) 來取得連線。 同樣地，如果儲存體帳戶上有防火牆限制，IoT 中樞就必須設定為透過信任的 Microsoft 服務例外來存取儲存體資源。 基於此目的， IoT 中樞必須具有受控識別。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取儲存體帳戶。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -252,7 +252,7 @@ IoT 中樞支援在客戶提供的儲存體 blob 中大量[匯入/匯出](./iot-
 
 3. 巡覽至儲存體帳戶中的 [防火牆和虛擬網路] 索引標籤，然後啟用 [允許從選取的網路存取] 選項。 在 [例外] 清單下，核取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。 按一下 [儲存]  按鈕。
 
-如需如何使用大量匯入/匯出功能的資訊，則現在可使用 Azure IoT REST API 來[建立匯入/匯出作業](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs)。 您必須在要求本文中提供 `storageAuthenticationType="identityBased"`，並分別使用 `inputBlobContainerUri="https://..."` 和 `outputBlobContainerUri="https://..."` 作為儲存體帳戶的輸入和輸出 URL。
+如需如何使用大量匯入/匯出功能的資訊，則現在可使用 Azure IoT REST API 來[建立匯入/匯出作業](/rest/api/iothub/service/jobs/getimportexportjobs)。 您必須在要求本文中提供 `storageAuthenticationType="identityBased"`，並分別使用 `inputBlobContainerUri="https://..."` 和 `outputBlobContainerUri="https://..."` 作為儲存體帳戶的輸入和輸出 URL。
 
 Azure IoT 中樞 SDK 也會在服務用戶端的登錄管理員中支援這項功能。 下列程式碼片段示範如何使用 C# SDK 來啟動匯入作業或匯出作業。
 
@@ -295,4 +295,4 @@ await registryManager.ExportDevicesAsync(
 
 * [訊息路由](./iot-hub-devguide-messages-d2c.md)
 * [檔案上傳](./iot-hub-devguide-file-upload.md)
-* [大量裝置匯入/匯出](./iot-hub-bulk-identity-mgmt.md) 
+* [大量裝置匯入/匯出](./iot-hub-bulk-identity-mgmt.md)

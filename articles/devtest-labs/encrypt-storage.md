@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中加密實驗室所使用的 Azure 儲存體帳�
 description: 瞭解如何在 Azure DevTest Labs 中設定實驗室所使用的 Azure 儲存體加密
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433545"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149315"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>加密 Azure DevTest Labs 中的實驗室所使用的 Azure 儲存體
 在 Azure DevTest Labs 中建立的每個實驗室都會使用相關聯的 Azure 儲存體帳戶建立。 儲存體帳戶用於下列用途： 
@@ -36,13 +36,13 @@ ms.locfileid: "87433545"
 ## <a name="encrypt-the-lab-storage-account"></a>加密實驗室儲存體帳戶
 Azure 儲存體將資料保存到雲端時，會自動加密資料。 Azure 儲存體加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 如需詳細資訊，請參閱[待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)。
 
-實驗室儲存體帳戶中的資料會使用 **Microsoft 管理的金鑰**進行加密。 您可以依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您選擇使用自己的金鑰來管理實驗室儲存體帳戶的加密，您可以使用 Azure Key Vault 來指定 **客戶管理的金鑰** ，以用來加密/解密 Blob 儲存體和 Azure 檔案儲存體中的資料。 如需客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰搭配 Azure Key Vault 管理 Azure 儲存體加密](../storage/common/encryption-customer-managed-keys.md)。
+實驗室儲存體帳戶中的資料會使用 **Microsoft 管理的金鑰**進行加密。 您可以依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您選擇使用自己的金鑰來管理實驗室儲存體帳戶的加密，您可以使用 Azure Key Vault 來指定 **客戶管理的金鑰** ，以用來加密/解密 Blob 儲存體和 Azure 檔案儲存體中的資料。 如需客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰搭配 Azure Key Vault 管理 Azure 儲存體加密](../storage/common/customer-managed-keys-overview.md)。
 
 若要瞭解如何為 Azure 儲存體加密設定客戶管理的金鑰，請參閱下列文章： 
 
-- [Azure 入口網站](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
+- [Azure 入口網站](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 
 ## <a name="manage-the-azure-blob-storage-life-cycle"></a>管理 Azure Blob 儲存體生命週期
@@ -98,11 +98,9 @@ Azure 儲存體將資料保存到雲端時，會自動加密資料。 Azure 儲�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要瞭解如何為 Azure 儲存體加密設定客戶管理的金鑰，請參閱下列文章： 
 
-- [Azure 入口網站](../storage/common/storage-encryption-keys-portal.md)
-- [Azure PowerShell](../storage/common/storage-encryption-keys-powershell.md)
-- [Azure CLI](../storage/common/storage-encryption-keys-cli.md)
-
-
+- [Azure 入口網站](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure PowerShell](../storage/common/customer-managed-keys-configure-key-vault.md)
+- [Azure CLI](../storage/common/customer-managed-keys-configure-key-vault.md)

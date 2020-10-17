@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/02/2020
-ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761918"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150386"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
 
@@ -264,20 +264,36 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Int16 |
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |字串 |
+| Xml |String |
 
 >[!NOTE]
 > 1. 針對對應至 Decimal 過渡類型的資料類型，目前快照集最多可支援最多28的精確度。 如果您的資料需要的精確度大於28，請考慮轉換成字串。 
 > 1.  如果您要將資料從 Azure SQL database 共用到 Azure Synapse Analytics，則不支援所有資料類型。 如需詳細資料，請參閱 [SYNAPSE SQL 集區中的資料表資料類型](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) 。 
 
+## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted 或動態資料遮罩
+目前，Azure Data Share 不支援已設定 Always Encrypted 的 Azure SQL 資料庫。 
+
+針對具有動態資料遮罩的來源 SQL 資料表，資料會顯示在收件者端的遮罩。
+
+## <a name="sql-snapshot-performance"></a>SQL 快照集效能
+SQL 快照集效能受到許多因素所影響。 一律建議進行您自己的效能測試。 以下是影響效能的一些範例因素。
+
+* 硬體設定 (例如，來源與目標 SQL 資料存放區的虛擬核心、記憶體、DWU) 。 
+* 平行存取來源和目標資料存放區。 如果您要從相同的 SQL 資料存放區共用多個資料表和觀點，或將多個資料表和資料列接收到相同的 SQL 資料存放區，則會影響效能。   
+* 來源和目標資料存放區的位置。 
+
+## <a name="troubleshoot-sql-snapshot-failure"></a>針對 SQL 快照集失敗進行疑難排解
+快照集失敗最常見的原因是 Data Share 沒有來源或目標資料存放區的許可權。 為了將 Data Share 許可權授與來源或目標 SQL 資料存放區，您必須在使用 Azure Active Directory 驗證連接到 SQL database 時，執行所提供的 SQL 腳本。 若要針對其他 SQL 快照集失敗進行疑難排解，請參閱 [疑難排解快照集失敗](data-share-troubleshoot.md#snapshot-failed)。
 
 ## <a name="next-steps"></a>後續步驟
-您已瞭解如何使用 Azure Data Share 服務，從儲存體帳戶共用及接收資料。 若要深入瞭解如何從其他資料來源共用，請繼續進行 [支援的資料存放區](supported-data-stores.md)。
+您已瞭解如何使用 Azure Data Share 服務，從 SQL 來源共用及接收資料。 若要深入瞭解如何從其他資料來源共用，請繼續進行 [支援的資料存放區](supported-data-stores.md)。
+
+
 

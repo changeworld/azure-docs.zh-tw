@@ -28,6 +28,7 @@
     - name: 靜態 HTML 網站
       href: quickstart-html.md
     - name: ARM 範本
+      displayName: Resource Manager
       href: quickstart-arm-template.md
     - name: 自訂容器
       href: quickstart-custom-container.md

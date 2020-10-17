@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893351"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150285"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署到 App Service
 
@@ -33,7 +33,7 @@ ms.locfileid: "91893351"
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
 - 適用于容器的工作容器登錄和 Azure App Service 應用程式。 這個範例會使用 Azure Container Registry。 
-    - [瞭解如何使用 Docker 建立容器化的 Node.js 應用程式、將容器映射推送至登錄，然後將映射部署到 Azure App Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [瞭解如何使用 Docker 建立容器化的 Node.js 應用程式、將容器映射推送至登錄，然後將映射部署到 Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
 ## <a name="generate-deployment-credentials"></a>產生部署認證
 

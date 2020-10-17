@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86221131"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150299"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>將雲端資料夾的內容同步處理到 Azure App Service
-本文說明如何將您的內容從 Dropbox 和 OneDrive 同步處理到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)。 
+本文說明如何將您的內容從 Dropbox 和 OneDrive 同步處理到 [Azure App Service](./overview.md)。 
 
 隨選內容同步處理部署是由 App Service 的 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki) 所提供。 您可以使用您的應用程式程式碼和指定的雲端資料夾中的內容，然後按一下按鈕來同步處理 App Service。 內容同步處理會使用 Kudu 組建伺服器。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "86221131"
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [從本機 Git 存放庫部署](deploy-local-git.md)

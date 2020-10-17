@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875728"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150240"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment 的網路考量 #
 
@@ -53,7 +53,7 @@ ASE 部署之後，就無法變更用來裝載 ASE 的子網路大小。  每個
 
 ASE 需要開啟下列埠，才能運作 ASE：
 
-| 使用 | 寄件者 | 收件者 |
+| 用途 | 寄件者 | 收件者 |
 |-----|------|----|
 | 管理性 | App Service 管理位址 | ASE 子網路：454、455 |
 |  ASE 內部通訊 | ASE 子網路：所有連接埠 | ASE 子網路：所有連接埠
@@ -69,7 +69,7 @@ ASE 需要開啟下列埠，才能運作 ASE：
 
 您需要關注的其他埠是應用程式埠：
 
-| 使用 | 連接埠 |
+| 用途 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21、990、10001-10020 |
@@ -169,7 +169,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
 一般的應用程式存取連接埠為：
 
-| 使用 | 連接埠 |
+| 用途 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21、990、10001-10020 |
@@ -203,7 +203,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 
 3. 從您的路由表 UI 內，選取 [**路由**  >  **新增**]。
 
-4. 將 [下一個躍點類型]**** 設為 [網際網路]****，將 [位址首碼]**** 設為 **0.0.0.0/0**。 選取 [儲存]****。
+4. 將 [下一個躍點類型]**** 設為 [網際網路]****，將 [位址首碼]**** 設為 **0.0.0.0/0**。 選取 [儲存]。
 
     您就會看到類似以下的畫面：
 
@@ -241,7 +241,7 @@ NSG 中的必要專案（為了讓 ASE 運作）是允許流量：
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793279"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150590"
 ---
 # <a name="troubleshooting-message-routing"></a>疑難排解訊息路由
 
@@ -42,7 +42,7 @@ ms.locfileid: "84793279"
 請觀察**路由**[診斷記錄](iot-hub-monitor-resource-health.md#routes)，以取得路由和端點[作業](#operation-names)的詳細資訊，或找出錯誤和相關[錯誤碼](#common-error-codes)以進一步瞭解問題。 例如，在記錄檔中 **RouteEvaluationError** 的作業名稱表示無法評估路由，因為訊息格式有問題。 使用針對特定作業 [名稱](#operation-names) 提供的秘訣來緩和問題。 當事件記錄為錯誤時，記錄檔也會提供評估失敗原因的詳細資訊。 例如，如果作業名稱是 **EndpointUnhealthy**， [錯誤碼](#common-error-codes) 403004 表示端點的空間不足。
 
 #### <a name="the-health-of-the-endpoint"></a>端點的健康情況
-使用 REST API [取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 來取得端點的 [健康情況狀態](iot-hub-devguide-endpoints.md#custom-endpoints) 。 *取得端點健康*情況 API 也會提供最後一次成功將訊息傳送至端點、最後一個已知的[錯誤](#last-known-errors-for-iot-hub-routing-endpoints)、最後一個已知的錯誤時間，以及上次對此端點發出傳送時的相關資訊。 使用針對特定 [上一個已知錯誤](#last-known-errors-for-iot-hub-routing-endpoints)所提供的可能緩和措施。
+使用 REST API [取得端點健全狀況](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 來取得端點的 [健康情況狀態](iot-hub-devguide-endpoints.md#custom-endpoints) 。 *取得端點健康*情況 API 也會提供最後一次成功將訊息傳送至端點、最後一個已知的[錯誤](#last-known-errors-for-iot-hub-routing-endpoints)、最後一個已知的錯誤時間，以及上次對此端點發出傳送時的相關資訊。 使用針對特定 [上一個已知錯誤](#last-known-errors-for-iot-hub-routing-endpoints)所提供的可能緩和措施。
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>我突然停止在內建端點取得訊息
 
@@ -52,9 +52,9 @@ ms.locfileid: "84793279"
 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。 為確保在新增路由時，訊息會持續流向內建端點，請設定 *事件* 端點的路由。 
 
 #### <a name="was-the-fallback-route-disabled"></a>是否已停用 Fallback 路由？
-如果有與[事件中樞](https://docs.microsoft.com/azure/event-hubs/)相容的內建事件中樞 (訊息/事件) ，則回溯路由會將所有不符合查詢準則的訊息傳送至[內建事件中樞](iot-hub-devguide-messages-read-builtin.md)。 如果訊息路由已開啟，您即可啟用後援路由功能。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
+如果有與[事件中樞](../event-hubs/index.yml)相容的內建事件中樞 (訊息/事件) ，則回溯路由會將所有不符合查詢準則的訊息傳送至[內建事件中樞](iot-hub-devguide-messages-read-builtin.md)。 如果訊息路由已開啟，您即可啟用後援路由功能。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
 
-您可以啟用/停用 Azure 入口網站 >訊息路由分頁中的回溯路由。 您也可以對於 [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 使用 Azure 資源管理員來使用後援路由的自訂端點。
+您可以啟用/停用 Azure 入口網站 >訊息路由分頁中的回溯路由。 您也可以對於 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 使用 Azure 資源管理員來使用後援路由的自訂端點。
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>IoT 中樞路由端點的最後已知錯誤
 
@@ -75,6 +75,6 @@ ms.locfileid: "84793279"
 
 [!INCLUDE [iot-hub-diagnostics-error-codes](../../includes/iot-hub-diagnostics-error-codes.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您需要更多協助，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

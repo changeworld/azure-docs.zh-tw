@@ -4,12 +4,12 @@ description: 如何設定 Azure 區塊鏈服務的交易節點
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530381"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150881"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>設定 Azure 區塊鏈服務的交易節點
 
@@ -37,7 +37,7 @@ ms.locfileid: "90530381"
 
     | 設定 | 描述 |
     |---------|-------------|
-    | 名稱 | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如： `newnode-myblockchainmember.blockchain.azure.com` 。 節點名稱在建立後即無法變更。 |
+    | Name | 交易節點名稱。 該名稱會用來建立交易節點端點的 DNS 位址。 例如： `newnode-myblockchainmember.blockchain.azure.com` 。 節點名稱在建立後即無法變更。 |
     | 密碼 | 設定強式密碼。 使用密碼可透過基本驗證來存取交易節點端點。
 
 1. 選取 [建立]****。
@@ -71,11 +71,11 @@ Azure 區塊鏈服務的交易節點端點支援 Azure Active Directory (Azure A
     |---------|-------------|
     | 角色 | 選取 [ **擁有**者]、[ **參與者**] 或 [ **讀者**]。
     | 存取權指派對象 | 選取 **Azure AD 使用者、群組或服務主體**。
-    | Select | 搜尋您想要新增的使用者、群組或服務主體。
+    | 選取 | 搜尋您想要新增的使用者、群組或服務主體。
 
 1. 選取 [ **儲存** ] 以新增角色指派。
 
-如需有關 Azure AD 存取控制的詳細資訊，請參閱 [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-portal.md)
+如需有關 Azure AD 存取控制的詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)
 
 如需如何使用 Azure AD authentication 連接的詳細資訊，請參閱 [使用 AAD 驗證連接到您的節點](configure-aad.md)。
 

@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883088"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151643"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>使用 Azure IoT SDK 開發行動裝置
 
-物聯網中的物是指各式各樣功能不同的裝置，例如感應器、微控制器、智慧型裝置、工業閘道，甚至是行動裝置。  行動裝置可以是 IoT 裝置，不斷從傳送裝置遙測資料到雲端，並且受到雲端管理；  也可以是另一種裝置，負責執行管理其他 IoT 裝置的後端服務應用程式。  在這兩種情況下，[Azure IoT 中樞 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 皆可用來開發適用於行動裝置的應用程式。  
+物聯網中的物是指各式各樣功能不同的裝置，例如感應器、微控制器、智慧型裝置、工業閘道，甚至是行動裝置。  行動裝置可以是 IoT 裝置，不斷從傳送裝置遙測資料到雲端，並且受到雲端管理；  也可以是另一種裝置，負責執行管理其他 IoT 裝置的後端服務應用程式。  在這兩種情況下，[Azure IoT 中樞 SDK](./iot-hub-devguide-sdks.md) 皆可用來開發適用於行動裝置的應用程式。  
 
 ## <a name="develop-for-native-ios-platform"></a>開發原生 iOS 平台
 
@@ -52,5 +52,5 @@ Azure IoT 中樞 Java SDK 支援 Android 平台。  如需特定已測試 API �
 
 ## <a name="next-steps"></a>後續步驟
 
-* [IoT 中樞 REST API 參考](https://docs.microsoft.com/rest/api/iothub/)
+* [IoT 中樞 REST API 參考](/rest/api/iothub/)
 * [Azure IoT C SDK 原始程式碼](https://github.com/Azure/azure-iot-sdk-c)

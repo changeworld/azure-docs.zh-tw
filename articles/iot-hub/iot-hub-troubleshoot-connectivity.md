@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: b22573fc98d4647c2b05763d9b67c37f6f023f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322715"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150780"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>使用 Azure IoT 中樞來監視、診斷和排解連線中斷問題
 
@@ -109,7 +109,7 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 * 如果您的裝置使用 MQTT 通訊協定，請確認連接埠 8883 已開啟。 如需詳細資訊，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-* 從 [Microsoft 的 Azure IoT 中樞問與答頁面](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) 或 [Azure 支援](https://azure.microsoft.com/support/options/)取得協助。
+* 從 [Microsoft 的 Azure IoT 中樞問與答頁面](/answers/topics/azure-iot-hub.html)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) 或 [Azure 支援](https://azure.microsoft.com/support/options/)取得協助。
 
 為了協助每個人改善文件，如果此指南對您沒有幫助，請在下方的意見反應區段中留下意見。
 

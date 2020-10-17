@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75429160"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151655"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何將 Azure IoT 中樞複製到另一個區域
 
@@ -107,7 +107,7 @@ ms.locfileid: "75429160"
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>尋找原始中樞，並將它匯出至資源範本。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
 1. 移至 [ **資源群組** ]，然後選取包含您想要移動之中樞的資源群組。 您也可以移至 [ **資源** ]，並以該方式尋找中樞。 選取中樞。
 
@@ -347,13 +347,13 @@ ms.locfileid: "75429160"
 
 使用範本在新的位置建立新的中樞。 如果您有要移動的路由資源，則應該在新位置中設定資源，並更新範本中的參考以符合。 如果您不移動路由資源，它們應該位於具有更新金鑰的範本中。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 1. 選取 [建立資源]。 
 
 1. 在 [搜尋] 方塊中，放入 [範本部署]，然後選取 [輸入]。
 
-1. 選取 **範本部署 (使用) 的自訂範本進行部署 **。 這會帶您前往範本部署的畫面。 選取 [建立]  。 您會看到這個畫面：
+1. 選取 **範本部署 (使用) 的自訂範本進行部署 **。 這會帶您前往範本部署的畫面。 選取 [建立]****。 您會看到這個畫面：
 
    ![顯示建立您自己的範本命令的螢幕擷取畫面](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -385,7 +385,7 @@ ms.locfileid: "75429160"
 
 現在您已啟動並執行您的複製，您必須將所有裝置從原始中樞複製到複製。 
 
-有多種方式可以完成這項工作。 您原本使用的是裝置布建 [服務 (DPS) ](/azure/iot-dps/about-iot-dps)來布建裝置，或您沒有這麼做。 如果您這樣做，這並不難。 如果您沒有這麼做，這可能會很複雜。 
+有多種方式可以完成這項工作。 您原本使用的是裝置布建 [服務 (DPS) ](../iot-dps/about-iot-dps.md)來布建裝置，或您沒有這麼做。 如果您這樣做，這並不難。 如果您沒有這麼做，這可能會很複雜。 
 
 如果您未使用 DPS 來布建您的裝置，您可以略過下一節，並從 [使用匯入/匯出開始，將裝置移至新的中樞](#using-import-export-to-move-the-devices-to-the-new-hub)。
 
@@ -601,4 +601,4 @@ ms.locfileid: "75429160"
 
 * [IoT 中樞裝置管理總覽](iot-hub-device-management-overview.md)
 
-* 如果您想要部署範例應用程式，請參閱 [.Net Core 應用程式部署](https://docs.microsoft.com/dotnet/core/deploying/index)。
+* 如果您想要部署範例應用程式，請參閱 [.Net Core 應用程式部署](/dotnet/core/deploying/index)。

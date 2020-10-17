@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080193"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150156"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
-本文說明在 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上執行的所有 Windows 應用程式可用的一般基礎作業系統功能。 此功能包含檔案、網路、登錄存取、診斷記錄和事件。 
+本文說明在 [Azure App Service](./overview.md)上執行的所有 Windows 應用程式可用的一般基礎作業系統功能。 此功能包含檔案、網路、登錄存取、診斷記錄和事件。 
 
 > [!NOTE] 
 > App Service 中的 [Linux 應用程式](overview.md#app-service-on-linux)會在自己的容器中執行。 不允許存取主機作業系統，但您擁有根容器的存取權。 同樣地，對於 [Windows 容器中執行的應用程式](quickstart-custom-container.md?pivots=container-windows)，您擁有容器的系統管理存取權，但沒有主機作業系統存取權。 
@@ -126,4 +126,3 @@ App Service 並未提供對 VM 執行個體的遠端桌面存取。
 ## <a name="more-information"></a>詳細資訊
 
 [Azure App Service 沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - 有關 App Service 執行環境的最新資訊。 本頁面由 App Service 開發團隊直接維護。
-

@@ -4,16 +4,16 @@ description: 如何向 IoT 中樞驗證下游裝置或分葉裝置，然後透�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046718"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151392"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>在 Azure IoT 中樞中驗證下游裝置
 
@@ -21,13 +21,13 @@ ms.locfileid: "92046718"
 
 設定成功的透明閘道連線有三個一般步驟。 本文將涵蓋第二個步驟：
 
-1. 將閘道裝置設定為伺服器，讓下游裝置可以安全地連接到該裝置。 設定閘道以接收來自下游裝置的訊息，並將其路由傳送至適當的目的地。 如需詳細資訊，請參閱[設定 IoT Edge 裝置作為透明閘道](how-to-create-transparent-gateway.md)。
+1. 將閘道裝置設定為伺服器，讓下游裝置可以安全地連接到該裝置。 設定閘道以接收來自下游裝置的訊息，並將其路由傳送至適當的目的地。 如需這些步驟，請參閱 [設定 IoT Edge 裝置作為透明閘道](how-to-create-transparent-gateway.md)。
 2. **建立下游裝置的裝置身分識別，使其可以向 IoT 中樞進行驗證。設定下游裝置以透過閘道裝置傳送訊息。**
-3. 將下游裝置連線到閘道裝置，並開始傳送訊息。 如需詳細資訊，請參閱[將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
+3. 將下游裝置連線到閘道裝置，並開始傳送訊息。 如需這些步驟，請參閱 [將下游裝置連線到 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
 
 下游裝置可使用下列三種方法的其中一種向 IoT 中樞進行驗證：對稱金鑰 (有時稱為共用存取金鑰)、X.509 自我簽署憑證或 X.509 憑證授權單位 (CA) 簽署憑證。 這些驗證步驟與用來向 IoT 中樞設定任何非 IoT Edge 裝置的步驟很類似，但稍微不同，那就是必須宣告閘道關聯性。
 
-本文中的步驟顯示手動裝置布建。 不支援使用 Azure IoT 中樞裝置布建服務 (DPS) 自動布建下游裝置。
+不支援使用 Azure IoT 中樞裝置布建服務 (DPS) 自動布建下游裝置。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,10 +42,16 @@ ms.locfileid: "92046718"
 選擇您要讓下游裝置向 IoT 中樞進行驗證的方式：
 
 * [對稱金鑰驗證](#symmetric-key-authentication)： IoT 中樞會建立您放置在下游裝置上的金鑰。 當裝置進行驗證時，IoT 中樞會檢查兩個金鑰是否相符。 您不需要建立其他憑證來使用對稱金鑰驗證。
+
+  如果您要在開發或測試案例中測試閘道，則可以更快速地開始使用這個方法。
+
 * [X.509 自我簽署驗證](#x509-self-signed-authentication)：有時稱為指紋驗證，因為您會與 IoT 中樞共用裝置的 x.509 憑證指紋。
+
+  建議在生產案例中針對裝置使用憑證驗證。
+
 * [X.509 CA 簽署的驗證](#x509-ca-signed-authentication)：將根 CA 憑證上傳至 IoT 中樞。 當裝置出示其 x.509 憑證進行驗證時，IoT 中樞會檢查它是否屬於相同根 CA 憑證所簽署的信任鏈。
 
-使用這三種方法的其中一種來註冊您的裝置之後，請繼續下一節，以抓取 [和修改下游裝置的連接字串](#retrieve-and-modify-connection-string) 。
+  建議在生產案例中針對裝置使用憑證驗證。
 
 ### <a name="symmetric-key-authentication"></a>對稱金鑰驗證
 
@@ -59,17 +65,15 @@ ms.locfileid: "92046718"
 
 * 選取 [對稱金鑰] 作為 [驗證類型]。
 
-* 選取 [ **設定父裝置** ]，然後選取此下游裝置將連線的 IoT Edge 閘道裝置。 此步驟會啟用下游裝置的 [離線功能](offline-capabilities.md) 。 您稍後可以隨時變更父系。
+* 選取 [ **設定父裝置** ]，然後選取此下游裝置將連線的 IoT Edge 閘道裝置。 您稍後可以隨時變更父系。
 
    ![在入口網站中使用對稱金鑰驗證來建立裝置識別碼](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-您也可以使用 [Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的操作。 下列範例會使用對稱金鑰驗證來建立新的 IoT 裝置，然後指派父裝置：
+您也可以使用 [Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的操作。 下列範例會使用 [az iot hub device identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令來建立具有對稱金鑰驗證的新 iot 裝置，並指派父裝置：
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
-
-如需用於裝置建立和父子式管理的 Azure CLI 命令詳細資訊，請參閱 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令的參考內容。
 
 接下來，[擷取並修改連接字串](#retrieve-and-modify-connection-string)，讓裝置知道透過其閘道進行連線。
 
@@ -104,7 +108,7 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
    * 提供符合裝置憑證主體名稱的 [裝置識別碼]。
    * 選取 [X.509 自我簽署] 作為 [驗證類型]。
    * 貼上從裝置的主要和次要憑證所複製十六進位字串。
-   * 選取 [設定父裝置]，然後選擇此下游裝置連線所要透過的 IoT Edge 閘道裝置。 需要父裝置才能進行下游裝置的 X.509 驗證。
+   * 選取 [設定父裝置]，然後選擇此下游裝置連線所要透過的 IoT Edge 閘道裝置。 您稍後可以隨時變更父系。
 
    ![在入口網站中使用 X.509 自我簽署驗證來建立裝置識別碼](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
@@ -120,13 +124,11 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
    * Java：[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-您也可以使用 [適用于 Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的裝置建立操作。 下列範例會使用 X.509 自我簽署驗證來建立新的 IoT 裝置，然後指派父裝置：
+您也可以使用 [適用于 Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的裝置建立操作。 下列範例會使用 [az iot hub device identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令，以 x.509 自我簽署驗證來建立新的 iot 裝置，並指派父裝置：
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
-
-如需用於裝置建立、憑證產生和父子式管理的 Azure CLI 命令詳細資訊，請參閱 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令的參考內容。
 
 接下來，[擷取並修改連接字串](#retrieve-and-modify-connection-string)，讓裝置知道透過其閘道進行連線。
 
@@ -150,7 +152,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
    1. 新增裝置。 為 [裝置識別碼] 提供小寫名稱，然後選擇 [X.509 CA 簽署] 驗證類型。
 
-   2. 設定父裝置。 針對下游裝置，選取 [設定父裝置]，然後選擇將提供 IoT 中樞連線的 IoT Edge 閘道裝置。
+   2. 設定父裝置。 選取 [ **設定父裝置** ]，然後選擇將提供 IoT 中樞連線的 IoT Edge 閘道裝置。
 
 4. 為下游裝置建立憑證鏈結。 使用上傳至 IoT 中樞的相同根 CA 憑證來建立此鏈結。 使用在入口網站中為裝置身分識別所提供的相同小寫裝置識別碼。
 
@@ -166,13 +168,11 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
    * Java：[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-您也可以使用 [適用于 Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的裝置建立操作。 下列範例會使用 X.509 CA 簽署驗證來建立新的 IoT 裝置，然後指派父裝置：
+您也可以使用 [適用于 Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的裝置建立操作。 下列範例會使用 [az iot hub device identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令來建立具有 x.509 CA 簽署驗證的新 iot 裝置，並指派父裝置：
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
-
-如需詳細資訊，請參閱 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令的參考內容。
 
 接下來，[擷取並修改連接字串](#retrieve-and-modify-connection-string)，讓裝置知道透過其閘道進行連線。
 
@@ -201,7 +201,7 @@ HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-由於有父子式關聯性，您可以直接以連線主機的形式呼叫閘道，以簡化連接字串。 例如︰
+由於有父子式關聯性，您可以直接以連線主機的形式呼叫閘道，以簡化連接字串。 例如：
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
@@ -213,4 +213,4 @@ HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 
 此時，您會有向 IoT 中樞註冊的 IoT Edge 裝置，並已設定為透明閘道。 您也有向 IoT 中樞註冊的下游裝置，並指向其閘道裝置。
 
-本文中的步驟會設定您的下游裝置以向 IoT 中樞進行驗證。 接下來，您必須設定下游裝置以信任閘道裝置，並安全地連線到該裝置。 繼續進行透明閘道系列中的下一篇文章、 [將下游裝置連線至 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。
+接下來，您必須設定下游裝置以信任閘道裝置，並安全地連線到該裝置。 繼續進行透明閘道系列中的下一篇文章、 [將下游裝置連線至 Azure IoT Edge 閘道](how-to-connect-downstream-device.md)。

@@ -1,5 +1,5 @@
 - name: Azure 資料箱文件 - 離線傳輸
-  href: /azure/databox
+  href: ./index.yml
   items:
     - name: 資料箱
       items:
@@ -103,7 +103,7 @@
             - name: 遷移
               items:
                 - name: 至 SharePoint Online
-                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%252fazure%252fdatabox%252fcontext%252fcontext
                 - name: 至 Azure 檔案同步
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: 從 HDFS 存放區

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574138"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149273"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保護儲存在 Azure Data Lake Storage Gen1 中的資料
-保護儲存在 Azure Data Lake Storage Gen1 中的資料，其方法有三步驟。  必須設定角色型存取控制 (RBAC) 和存取控制清單 (ACL) 都，才能完整啟用使用者和安全性群組之資料的存取權。
+保護儲存在 Azure Data Lake Storage Gen1 中的資料，其方法有三步驟。  Azure 角色型存取控制 (Azure RBAC) 和存取控制清單 (Acl) 必須設定為完全啟用使用者和安全性群組的資料存取權。
 
 1. 首先，在 Azure Active Directory (Azure AD) 中建立安全性群組。 這些安全性群組是用來在 Azure 入口網站中 (Azure RBAC) 來執行 Azure 角色型存取控制。 如需詳細資訊，請參閱 [AZURE RBAC](../role-based-access-control/role-assignments-portal.md)。
 2. 將 Azure AD 安全性群組指派給 Data Lake Storage Gen1 帳戶。 這麼做可控制從入口網站存取 Data Lake Storage Gen1 帳戶，以及來自入口網站或 API 的管理作業。
@@ -68,7 +68,7 @@ ms.locfileid: "91574138"
     針對資料作業，個別的檔案系統權限會定義使用者的使用範圍。 因此，擁有 [讀取器] 角色的使用者僅可檢視與帳戶相關的管理設定，但是可依指派給該使用者的檔案系統權限來讀取和寫入資料。 有關 Data Lake Storage Gen1 檔案系統權限的相關資訊，請參閱[將安全性群組以 ACL 型式指派給 Azure Data Lake Storage Gen1 檔案系統](#filepermissions)。
 
     > [!IMPORTANT]
-    > 只有 [擁有者]**** 角色會自動啟用檔案系統存取權。 [參與者]****、[讀者]**** 和其他所有角色都需要 ACL，才能啟用資料夾和檔案的任何存取層級。  [擁有者]**** 角色提供進階使用者檔案和資料夾權限，這些權限無法透過 ACL 覆寫。 如需有關 RBAC 原則如何對應到資料存取的詳細資訊，請參閱[用於帳戶管理的 RBAC](data-lake-store-security-overview.md#rbac-for-account-management)。
+    > 只有 [擁有者]**** 角色會自動啟用檔案系統存取權。 [參與者]****、[讀者]**** 和其他所有角色都需要 ACL，才能啟用資料夾和檔案的任何存取層級。  [擁有者]**** 角色提供進階使用者檔案和資料夾權限，這些權限無法透過 ACL 覆寫。 如需 Azure RBAC 原則如何對應至資料存取的詳細資訊，請參閱 [適用于帳戶管理的 AZURE rbac](data-lake-store-security-overview.md#azure-rbac-for-account-management)。
 
 4. 如果您想要新增未列於 [新增權限]**** 刀鋒視窗中的群組/使用者，您可以藉由在 [選取]**** 文字方塊中輸入他們的電子郵件地址，然後從清單中選取來邀請他們。
    
@@ -102,7 +102,7 @@ ms.locfileid: "91574138"
 4. 按一下 [新增]**** 圖示，以開啟 [指派權限]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，搜尋您稍早在 Azure Active Directory 中建立的安全性群組。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
     ![新增群組](./media/data-lake-store-secure-data/adl.acl.3.png "新增群組")
-5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]。
+5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]  。
    
     ![[指派許可權] 分頁的螢幕擷取畫面，其中已呼叫 [選取許可權] 選項，以及已呼叫 [確定] 選項的 [選取許可權] 分頁。](./media/data-lake-store-secure-data/adl.acl.4.png "將權限指派至群組")
    

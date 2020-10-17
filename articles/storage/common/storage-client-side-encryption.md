@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091656"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151139"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -53,7 +53,7 @@ ms.locfileid: "92091656"
 儲存體用戶端程式庫會使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 來加密使用者資料。 具體來說，就是 [加密區塊鏈結 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式搭配 AES。 每個服務的運作方式稍有不同，我們將在這裡討論每個服務。
 
 ### <a name="blobs"></a>Blob
-用戶端程式庫目前僅支援整個 Blob 的加密。 具體而言，當使用者使用 **>uploadfrom** 方法或 **>file.openwrite** 方法時，就會支援加密。 針對下載，則皆支援完整與範圍下載。
+用戶端程式庫目前僅支援整個 Blob 的加密。 針對下載，則皆支援完整與範圍下載。
 
 在加密期間，用戶端程式庫會產生 16 位元組的隨機初始化向量 (IV)，以及 32 位元組的隨機內容加密金鑰 (CEK)，並使用這項資訊執行 blob 資料的信封加密。 然後，已包裝的 CEK 和一些其他加密中繼資料會儲存為 blob 中繼資料，並連同加密的 blob 一起儲存在服務上。
 
@@ -62,9 +62,9 @@ ms.locfileid: "92091656"
 > 
 > 
 
-下載加密的 blob 牽涉到使用 **>downloadto** / **BlobReadStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
+下載整個 blob 時，包裝的 CEK 會在此情況下解除包裝，並與儲存為 blob 中繼資料的 IV (一起使用，) 將解密的資料傳回給使用者。
 
-在加密的 blob 中)  (**>downloadrange** 方法下載任意範圍，需要調整使用者所提供的範圍，以便取得可用於成功解密所要求範圍的少量額外資料。
+在加密的 blob 中下載任意範圍，需要調整使用者所提供的範圍，以便取得可用於成功解密所要求範圍的少量額外資料。
 
 所有 Blob 類型 (區塊 Blob、頁面 Blob 和附加 Blob) 都可以使用此機制進行加密/解密。
 
@@ -77,9 +77,14 @@ ms.locfileid: "92091656"
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-在解密期間，從佇列訊息中擷取已包裝的金鑰，並解除包裝。 IV 也會從佇列訊息中擷取，並與未包裝的金鑰一起用來解密佇列訊息資料。 請注意，加密中繼資料很小 (小於 500 位元組)，雖然計入佇列訊息的 64KB 限制內，但影響仍在可掌控的範圍內。
+在解密期間，從佇列訊息中擷取已包裝的金鑰，並解除包裝。 IV 也會從佇列訊息中擷取，並與未包裝的金鑰一起用來解密佇列訊息資料。 請注意，加密中繼資料很小 (小於 500 位元組)，雖然計入佇列訊息的 64KB 限制內，但影響仍在可掌控的範圍內。 請注意，加密的訊息將會以 base64 編碼，如上述程式碼片段所示，這也會擴充傳送的訊息大小。
 
 ### <a name="tables"></a>資料表
+> [!NOTE]
+> 只有2.x 版的 Azure 儲存體用戶端程式庫支援表格服務。
+> 
+> 
+
 用戶端程式庫支援在插入和取代作業時進行實體屬性的加密。
 
 > [!NOTE]
@@ -111,22 +116,34 @@ ms.locfileid: "92091656"
 ## <a name="azure-key-vault"></a>Azure 金鑰保存庫
 Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用 Azure 金鑰保存庫時，使用者可以使用受硬體安全模組 (HSM) 保護的金鑰來加密金鑰和密碼 (例如驗證金鑰、儲存體帳戶金鑰、資料加密金鑰、.PFX 檔案和密碼)。 如需詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)。
 
-儲存體用戶端程式庫會使用金鑰保存庫核心程式庫，以提供整個 Azure 的通用架構來管理金鑰。 使用者也享有使用金鑰保存庫延伸模組程式庫的額外好處。 延伸模組程式庫提供實用的功能，包括簡單又完善的對稱/RSA 本機和雲端金鑰提供者，以及彙總和快取。
+儲存體用戶端程式庫會使用核心程式庫中的 Key Vault 介面，以提供跨 Azure 的通用架構來管理金鑰。 使用者可以利用 Key Vault 程式庫來取得其所提供的所有其他權益，例如簡單、無縫對稱/RSA 本機和雲端金鑰提供者的實用功能，以及匯總和快取的協助。
 
 ### <a name="interface-and-dependencies"></a>介面和相依性
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+Key Vault 整合有兩個必要的套件：
+
+* Azure Core 包含 `IKeyEncryptionKey` 和 `IKeyEncryptionKeyResolver` 介面。 適用于 .NET 的儲存體用戶端程式庫已將其定義為相依性。
+* KeyVault (v4. x) 包含 Key Vault REST 用戶端，以及搭配用戶端加密使用的密碼編譯用戶端。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 有三個金鑰保存庫封裝：
 
 * Microsoft.Azure.KeyVault.Core 包含 IKey 和 IKeyResolver。 這是不具有相依性的小型封裝。 .NET 的儲存體用戶端程式庫會將其定義為相依。
-* Microsoft.Azure.KeyVault 包含金鑰保存庫 REST 用戶端。
-* Microsoft.Azure.KeyVault.Extensions 包含延伸模組程式碼，其中包含密碼編譯演算法的實作及 RSAKey 和 SymmetricKey。 它依賴 Core 和 KeyVault 命名空間，並提供功能來定義彙總解析程式 (當使用者想要使用多個金鑰提供者時) 和快取金鑰解析程式。 儲存體用戶端程式庫不直接依賴這個封裝，如果使用者想要使用 Azure 金鑰保存庫來儲存其金鑰，或使用金鑰保存庫延伸模組來取用本機和雲端密碼編譯提供者，則需要此封裝。
+* KeyVault (v3. x) 包含 Key Vault REST 用戶端。
+*  (KeyVault) 包含延伸模組程式碼，其中包含密碼編譯演算法的執行，以及 RSAKey 和 SymmetricKey。 它依賴 Core 和 KeyVault 命名空間，並提供功能來定義彙總解析程式 (當使用者想要使用多個金鑰提供者時) 和快取金鑰解析程式。 儲存體用戶端程式庫不直接依賴這個封裝，如果使用者想要使用 Azure 金鑰保存庫來儲存其金鑰，或使用金鑰保存庫延伸模組來取用本機和雲端密碼編譯提供者，則需要此封裝。
+
+如需有關 v11 Key Vault 使用方式的詳細資訊，請參閱 [v11 加密程式碼範例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
+
+---
 
 金鑰保存庫是專為高價值的主要金鑰而設計，個別金鑰保存庫的節流限制都以此為設計重點。 使用金鑰保存庫執行用戶端加密時，慣用的模型是使用在金鑰保存庫中儲存為密碼且在本機快取的對稱主要金鑰。 使用者必須執行下列動作：
 
 1. 離線建立密碼，再上載至金鑰保存庫。
 2. 使用密碼的基底識別碼做為參數，解析用於加密的目前密碼版本，並在本機快取這項資訊。 使用 CachingKeyResolver 進行快取。使用者不需要實作自己的快取邏輯。
 3. 建立加密原則時，使用快取解析程式做為輸入。
-
-如需有關 Key Vault 使用方式的詳細資訊，請參閱 [加密程式碼範例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
 
 ## <a name="best-practices"></a>最佳作法
 只有 .NET 的儲存體用戶端程式庫才支援加密。 Windows Phone 和 Windows 執行階段目前不支援加密。
@@ -138,45 +155,175 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 > * 對於資料表，存在類似的條件約束。 請小心在未更新加密中繼資料時即更新加密的內容。
 > * 如果您在加密 Blob 上設定中繼資料，您可能會覆寫加密所需的加密相關中繼資料，因為設定中繼資料不是加總解密。 快照集也是如此。在為加密的 Blob 建立快照集時，請避免指定中繼資料。 如果必須設定中繼資料，請務必先呼叫 **FetchAttributes** 方法，以取得目前的加密中繼資料，並避免在設定中繼資料時並行寫入。
 > * 在預設的要求選項中啟用 **RequireEncryption** 屬性，使用者就應該只能使用加密的資料。 如需詳細資訊請參閱下方內容。
-> 
-> 
+>
+>
 
 ## <a name="client-api--interface"></a>用戶端 API / 介面
-使用者在建立 EncryptionPolicy 物件時，可以只提供金鑰 (實作 IKey)、只提供者解析程式 (實作 IKeyResolver)，或兩者都提供。 IKey 是以金鑰識別碼來識別的基本金鑰類型，且提供包裝/解除包裝的邏輯。 IKeyResolver 在解密程序期間用來解析金鑰。 它定義 ResolveKey 方法，可根據金鑰識別碼傳回 IKey。 這可讓使用者從多個位置中管理的多個金鑰之中選擇。
+使用者只能提供一個金鑰、一個解析程式或兩者。 金鑰是使用金鑰識別碼來識別，並提供包裝/解除包裝的邏輯。 解析程式是用來在解密過程中解析金鑰。 它會定義一個解析方法，以傳回指定金鑰識別碼的金鑰。 這可讓使用者從多個位置中管理的多個金鑰之中選擇。
 
 * 加密時一律使用金鑰，缺少金鑰將會導致錯誤。
 * 解密：
+  * 如果指定索引鍵，且其識別碼符合所需的金鑰識別碼，則會使用該金鑰來解密。 否則，就會嘗試解析程式。 如果沒有此嘗試的解析程式，則會擲回錯誤。
   * 叫用金鑰解析程式 (如果指定) 以取得金鑰。 如果已指定解析程式，但沒有金鑰識別碼的對應，則會擲回錯誤。
-  * 如果未指定解析程式但指定了金鑰，則如果其識別項符合所需的金鑰識別項，就會使用該金鑰。 如果識別項不符合，則會擲回錯誤。
 
-本文中的程式碼範例會示範設定加密原則以及使用加密的資料，但不會示範使用 Azure Key Vault。 GitHub 上的[加密範例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)會針對 Blob、佇列和資料表以及金鑰保存庫的整合，示範更詳細的端對端情節。
-
-### <a name="requireencryption-mode"></a>RequireEncryption 模式
+### <a name="requireencryption-mode-v11-only"></a>>requireencryption 模式 (v11) 
 使用者可以針對所有上傳和下載都必須加密的作業模式，從中選擇啟用。 在此模式中，在用戶端上嘗試上傳沒有加密原則的資料或下載未在服務上加密的資料將會失敗。 要求選項物件的 **RequireEncryption** 屬性會控制此行為。 如果您的應用程式會將所有儲存在 Azure 儲存體中的物件加密，則您可以在服務用戶端服務的預設要求選項上，設定 **RequireEncryption** 屬性。 例如，將 **CloudBlobClient.DefaultRequestOptions.RequireEncryption** 設為 **true**，要求加密透過該用戶端物件所執行的所有 Blob 作業。
 
 
 ### <a name="blob-service-encryption"></a>Blob 服務加密
+
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+建立 **ClientSideEncryptionOptions** 物件，並在使用 **SpecializedBlobClientOptions**建立用戶端時進行設定。 您無法以每個 API 為基礎設定加密選項。 其他一切由用戶端程式庫在內部處理。
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+BlobClientOptions options = new SpecializedBlobClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your blob client with client-side encryption enabled.
+// Client-side encryption options are passed from service to container clients, and container to blob clients.
+// Attempting to construct a BlockBlobClient, PageBlobClient, or AppendBlobClient from a BlobContainerClient
+// with client-side encryption options present will throw, as this functionality is only supported with BlobClient.
+BlobClient blob = new BlobServiceClient(connectionString, options).GetBlobContainerClient("myContainer").GetBlobClient("myBlob");
+
+// Upload the encrypted contents to the blob.
+blob.Upload(stream);
+
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadTo(outputStream);
+```
+
+**BlobServiceClient**不需要套用加密選項。 它們也可以傳遞至**BlobContainerClient** / 接受**BlobClientOptions**物件的 BlobContainerClient **>blobclient**函式。
+
+如果所需的 **>blobclient** 物件已經存在，但沒有用戶端加密選項，就會有擴充方法，以指定的 **ClientSideEncryptionOptions**建立該物件的複本。 這個擴充方法可避免從頭開始建立新的 **>blobclient** 物件時所產生的額外負荷。
+
+```csharp
+using Azure.Storage.Blobs.Specialized;
+
+// Your existing BlobClient instance and encryption options
+BlobClient plaintextBlob;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextBlob that uses client-side encryption
+BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 建立 **BlobEncryptionPolicy** 物件，並在要求選項中加以設定 (透過 API 或在用戶端層級使用 **DefaultRequestOptions**)。 其他一切由用戶端程式庫在內部處理。
 
 ```csharp
 // Create the IKey used for encryption.
- RsaKey key = new RsaKey("private:key1" /* key identifier */);
+RsaKey key = new RsaKey("private:key1" /* key identifier */);
 
- // Create the encryption policy to be used for upload and download.
- BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
+// Create the encryption policy to be used for upload and download.
+BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
 
- // Set the encryption policy on the request options.
- BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
+// Set the encryption policy on the request options.
+BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
 
- // Upload the encrypted contents to the blob.
- blob.UploadFromStream(stream, size, null, options, null);
+// Upload the encrypted contents to the blob.
+blob.UploadFromStream(stream, size, null, options, null);
 
- // Download and decrypt the encrypted contents from the blob.
- MemoryStream outputStream = new MemoryStream();
- blob.DownloadToStream(outputStream, null, options, null);
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadToStream(outputStream, null, options, null);
 ```
 
+---
+
 ### <a name="queue-service-encryption"></a>佇列服務加密
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+建立 **ClientSideEncryptionOptions** 物件，並在使用 **SpecializedQueueClientOptions**建立用戶端時進行設定。 您無法以每個 API 為基礎設定加密選項。 其他一切由用戶端程式庫在內部處理。
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+QueueClientOptions options = new SpecializedQueueClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your queue client with client-side encryption enabled.
+// Client-side encryption options are passed from service to queue clients.
+QueueClient queue = new QueueServiceClient(connectionString, options).GetQueueClient("myQueue");
+
+// Send an encrypted queue message.
+queue.SendMessage("Hello, World!");
+
+// Download queue messages, decrypting ones that are detected to be encrypted
+QueueMessage[] queue.ReceiveMessages(); 
+```
+
+**QueueServiceClient**不需要套用加密選項。 它們也可以傳遞至接受**QueueClientOptions**物件的**QueueClient**函式。
+
+如果所需的 **QueueClient** 物件已經存在，但沒有用戶端加密選項，就會有擴充方法，以指定的 **ClientSideEncryptionOptions**建立該物件的複本。 這個擴充方法可避免從頭開始建立新的 **QueueClient** 物件時所產生的額外負荷。
+
+```csharp
+using Azure.Storage.Queues.Specialized;
+
+// Your existing QueueClient instance and encryption options
+QueueClient plaintextQueue;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextQueue that uses client-side encryption
+QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+有些使用者可能會有佇列，其中並非所有收到的訊息都可以成功解密，而金鑰或解析程式必須擲回。 在此情況下，上述範例的最後一行將會擲回，而且將無法存取任何接收的訊息。 在這些案例中，可以使用子類別 **QueueClientSideEncryptionOptions** 來提供加密選項給用戶端。 它會公開事件 **DecryptionFailed** ，以便在佇列訊息解密時觸發，只要至少有一個調用加入至事件即可。 您可以用這種方式處理個別失敗的訊息，並將它們從 **>receivemessages**傳回的最終**QueueMessage []** 中篩選掉。
+
+```csharp
+// Create your encryption options using the sub-class.
+QueueClientSideEncryptionOptions encryptionOptions = new QueueClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Add a handler to the DecryptionFailed event.
+encryptionOptions.DecryptionFailed += (source, args) => {
+   QueueMessage failedMessage = (QueueMessage)source;
+   Exception exceptionThrown = args.Exception;
+   // do something
+};
+
+// Use these options with your client objects.
+QueueClient queue = new QueueClient(connectionString, queueName, new SpecializedQueueClientOptions()
+{
+   ClientSideEncryption = encryptionOptions
+});
+
+// Retrieve 5 messages from the queue.
+// Assume 5 messages come back and one throws during decryption.
+QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
+Debug.Assert(messages.Length == 4)
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 建立 **QueueEncryptionPolicy** 物件，並在要求選項中加以設定 (透過 API 或在用戶端層級使用 **DefaultRequestOptions**)。 其他一切由用戶端程式庫在內部處理。
 
 ```csharp
@@ -194,7 +341,9 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
  CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 ```
 
-### <a name="table-service-encryption"></a>資料表服務加密
+---
+
+### <a name="table-service-encryption-v11-only"></a>表格服務加密 (v11) 
 除了建立加密原則並在要求選項上加以設定之外，您必須在 **TableRequestOptions** 中指定 **EncryptionResolver**，或在實體上設定 [EncryptProperty] 屬性。
 
 #### <a name="using-the-resolver"></a>使用解析程式

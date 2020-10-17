@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736282"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151448"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 資料目錄術語
 
@@ -39,7 +39,7 @@ Azure 資料目錄是以雲端為基礎的中繼資料儲存機制，其中可�
 
 ## <a name="descriptive-metadata"></a>描述性中繼資料
 
-描述性中繼資料是描述資料資產的用途或意圖的中繼資料。 描述性中繼資料通常由目錄使用者利用 Azure 資料目錄入口網站來加入，但也可以在註冊期間從資料來源擷取。 例如，Azure 資料目錄註冊工具將會從 SQL Server Analysis Services 和 SQL Server Reporting Services 中的 Description 屬性擷取描述，以及從 SQL Server 資料庫中的 [ms_description 擴充屬性](https://technet.microsoft.com/library/ms190243.aspx)擷取描述 (如果這些屬性已填入值)。
+描述性中繼資料是描述資料資產的用途或意圖的中繼資料。 描述性中繼資料通常由目錄使用者利用 Azure 資料目錄入口網站來加入，但也可以在註冊期間從資料來源擷取。 例如，Azure 資料目錄註冊工具將會從 SQL Server Analysis Services 和 SQL Server Reporting Services 中的 Description 屬性擷取描述，以及從 SQL Server 資料庫中的 [ms_description 擴充屬性](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))擷取描述 (如果這些屬性已填入值)。
 
 ## <a name="request-access"></a>要求存取
 
@@ -86,4 +86,4 @@ Azure 資料目錄中的資料設定檔是資料表層級的快照集和及資�
 
 ## <a name="next-steps"></a>後續步驟
 
-[快速入門：建立 Azure 資料目錄](data-catalog-get-started.md) 
+[快速入門：建立 Azure 資料目錄](data-catalog-get-started.md)

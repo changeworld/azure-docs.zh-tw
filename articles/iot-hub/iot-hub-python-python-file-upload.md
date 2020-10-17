@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 988077a8a14339dea51bc36fdf6405b0f2f549ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019456"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139313"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞將檔案從裝置上傳至雲端 (Python) 
 
@@ -109,7 +109,7 @@ ms.locfileid: "90019456"
             return (False, ex)
     ```
 
-    此函數會剖析傳入的 *blob_info* 結構，以建立用來初始化 [>blobclient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)的 URL。 然後，它會使用此用戶端將檔案上傳至 Azure blob 儲存體。
+    此函數會剖析傳入的 *blob_info* 結構，以建立用來初始化 [>blobclient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)的 URL。 然後，它會使用此用戶端將檔案上傳至 Azure blob 儲存體。
 
 1. 新增下列程式碼以連接用戶端並上傳檔案：
 
@@ -209,6 +209,6 @@ ms.locfileid: "90019456"
 
 若要深入瞭解 Azure Blob 儲存體，請使用下列連結：
 
-* [Azure Blob 儲存體檔](https://docs.microsoft.com/azure/storage/blobs/)
+* [Azure Blob 儲存體檔](../storage/blobs/index.yml)
 
-* [Python API 的 Azure Blob 儲存體檔](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Python API 的 Azure Blob 儲存體檔](/python/api/overview/azure/storage-blob-readme?view=azure-python)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 030a69c7eca70c081a1d9392bfa527f3386d7c2b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019720"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150604"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教學課程：使用 Azure IoT 中樞 message 擴充
 
@@ -77,7 +77,7 @@ ms.locfileid: "89019720"
 
 以下是腳本所建立的資源。 擴充*表示資源*適用于具有擴充的訊息。 *原始* 表示資源適用于未擴充的訊息。
 
-| 名稱 | 值 |
+| Name | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名稱 | 原始  |
@@ -259,7 +259,7 @@ az iot hub route create \
 
 2. 將這些值新增至 ContosoStorageEndpointEnriched 端點的清單。
 
-   | 機碼 | 值 | 端點 (下拉式清單)  |
+   | Key | 值 | 端點 (下拉式清單)  |
    | ---- | ----- | -------------------------|
    | >myiothub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin 的標籤。位置 | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -297,7 +297,7 @@ az iot hub route create \
 
    以下是載入範本所建立的資源。 擴充**表示資源**適用于具有擴充的訊息。 **原始** 表示資源適用于未擴充的訊息。 這些是 Azure CLI 腳本中使用的相同值。
 
-   | 名稱 | 值 |
+   | Name | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名稱 | 原始  |
@@ -310,7 +310,7 @@ az iot hub route create \
    | 路由名稱1 | ContosoStorageRouteOriginal |
    | 路由名稱2 | ContosoStorageRouteEnriched |
 
-1. 選取 [儲存]****。 [ **自訂部署** ] 窗格隨即出現，並顯示範本所使用的所有參數。 唯一需要設定的欄位是 **資源群組**。 請建立一個新的，或從下拉式清單中選取一個。
+1. 選取 [儲存]。 [ **自訂部署** ] 窗格隨即出現，並顯示範本所使用的所有參數。 唯一需要設定的欄位是 **資源群組**。 請建立一個新的，或從下拉式清單中選取一個。
 
    以下是 **自訂部署** 窗格的上半部。 您可以看到填入資源群組的位置。
 
@@ -386,7 +386,7 @@ az iot hub route create \
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 來清除資源
 
-若要移除資源群組，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 回想一下， `$resourceGroup` 在本教學課程的開頭已設定為 **ContosoResourcesMsgEn** 。
+若要移除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 回想一下， `$resourceGroup` 在本教學課程的開頭已設定為 **ContosoResourcesMsgEn** 。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

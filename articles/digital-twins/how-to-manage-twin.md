@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282369"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150406"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -54,21 +54,7 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 若未使用任何自訂 helper 類別，您可以在中表示對應項的屬性 `Dictionary<string, object>` ，其中 `string` 是屬性的名稱，而 `object` 是代表屬性和其值的物件。
 
-```csharp
-// Define the model type for the twin to be created
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:com:contoso:Room;1" }
-};
-// Initialize the twin properties
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", temperature},
-    { "Humidity", humidity},
-};
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
 #### <a name="create-twins-with-the-helper-class"></a>使用 helper 類別建立 twins
 
@@ -166,7 +152,7 @@ object result = await client.GetDigitalTwin(id);
 數位對應項的已定義屬性會傳回為數字對應項上的最上層屬性。 不是 DTDL 定義一部分的中繼資料或系統資訊會以前置詞傳回 `$` 。 中繼資料屬性包括：
 * 此 Azure 數位 Twins 實例中數位對應項的識別碼，如下所示 `$dtId` 。
 * `$etag`，由 web 伺服器指派的標準 HTTP 欄位
-* 區段中的其他屬性 `$metadata` 。 其中包括：
+* 區段中的其他屬性 `$metadata` 。 它們包括：
     - 數位對應項之模型的 DTMI。
     - 每個可寫入屬性的同步處理狀態。 這最適用于裝置，在這種情況下，服務和裝置有可能具有發散狀態 (例如，當裝置離線時) 。 此屬性目前僅適用于連線到 IoT 中樞的實體裝置。 有了中繼資料區段中的資料之後，就可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需同步處理狀態的詳細資訊，請參閱關於同步處理裝置狀態的 [IoT 中樞教學](../iot-hub/tutorial-device-twins.md) 課程。
     - 服務特定的中繼資料，例如來自 IoT 中樞或 Azure 數位 Twins。 

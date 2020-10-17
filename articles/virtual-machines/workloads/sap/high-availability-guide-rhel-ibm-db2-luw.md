@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d613da4d9abdfe22fc20f1b74da41e4a65cbff33
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077387"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151567"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
 
@@ -33,7 +33,7 @@ IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和嚴重損壞修�
 
 開始安裝之前，請參閱下列 SAP 附注和檔：
 
-| SAP 附注 | 說明 |
+| SAP 附注 | 描述 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
 | [2015553] | Azure 上的 SAP：支援必要條件 |
@@ -403,6 +403,8 @@ sudo pcs property set maintenance-mode=false</pre></code>
 > [!NOTE]
 > Standard Load Balancer SKU 具有從 Load Balancer 下的節點存取公用 IP 位址的限制。 在 [SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公開端點](./high-availability-guide-standard-load-balancer-outbound-connections.md) 連線檔，說明如何啟用這些節點來存取公用 IP 位址的方法
 
+> [!IMPORTANT]
+> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。  
 
 
 1. 建立前端 IP 集區：
@@ -495,7 +497,7 @@ j2ee/dbhost = db-virt-hostname
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. 選取 [新增]。
+1. 選取 [新增]  。
 1. 若要儲存變更，請選取左上方的磁片圖示。
 1. 關閉設定工具。
 1. 重新開機 JAVA 實例。
@@ -815,7 +817,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [SAP NetWeaver 的高可用性架構和案例](./sap-high-availability-architecture-scenarios.md)
 - [在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker][rhel-pcs-azr]
 

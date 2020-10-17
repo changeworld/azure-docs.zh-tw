@@ -3,12 +3,12 @@ title: Azure DevTest Labs 中的網路隔離
 description: 瞭解 Azure DevTest Labs 中的網路隔離。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875658"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149155"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs 中的網路隔離
 
@@ -57,7 +57,7 @@ ms.locfileid: "88875658"
  
    > [!div class="mx-imgBorder"]
    > ![Contoso 測試](./media/network-isolation/contoso-test.png)
-1. 在儲存體帳戶上，移至 [防火牆和虛擬網路]，並確定已核取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。 因為 [DevTest Labs 是受信任的 Microsoft 服務](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)，所以此選項可讓實驗室以網路隔離模式正常運作。 
+1. 在儲存體帳戶上，移至 [防火牆和虛擬網路]，並確定已核取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊。 因為 [DevTest Labs 是受信任的 Microsoft 服務](../storage/common/storage-network-security.md#trusted-microsoft-services)，所以此選項可讓實驗室以網路隔離模式正常運作。 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso 實驗室防火牆](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ ms.locfileid: "88875658"
 
 您也可以選擇將這些步驟自動化，以針對多個實驗室設定此設定。 
 
-[深入瞭解如何使用 PowerShell 和 CLI 來管理 Azure 儲存體的預設網路存取規則](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[深入瞭解如何使用 PowerShell 和 CLI 來管理 Azure 儲存體的預設網路存取規則](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>在網路隔離模式中使用實驗室時要記住的事項
 
@@ -82,7 +82,7 @@ ms.locfileid: "88875658"
 
 在網路隔離的實驗室中，如需將 VHD 上傳至實驗室的儲存體帳戶來建立自訂映射的動作，實驗室擁有者必須明確地啟用從允許的端點存取儲存體帳戶。 您可以建立虛擬機器，並從該虛擬機器安全地存取實驗室的儲存體帳戶。 
 
-[深入瞭解如何從虛擬機器私下存取儲存體帳戶](../private-link/create-private-endpoint-storage-portal.md)
+[深入瞭解如何從虛擬機器私下存取儲存體帳戶](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>從實驗室匯出使用量資料 
 

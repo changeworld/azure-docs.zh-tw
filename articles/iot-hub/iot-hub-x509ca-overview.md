@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 2289ff37a0e524bc765163047608eb604c02372e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019796"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150707"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 憑證進行裝置驗證
 
@@ -90,4 +90,4 @@ X.509 CA 憑證的擁有者可以透過密碼編譯方式簽署中繼 CA，此 C
 
 了解 IoT 中 [X.509 CA 驗證的價值](iot-hub-x509ca-concept.md)。
 
-開始使用「IoT 中樞」[裝置佈建服務](https://docs.microsoft.com/azure/iot-dps/)。
+開始使用「IoT 中樞」[裝置佈建服務](../iot-dps/index.yml)。

@@ -89,6 +89,8 @@
       href: ./policy-reference.md
 - name: 資源
   items:
+    - name: 支援和說明選項
+      href: cognitive-services-support-options.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: 定價
@@ -97,8 +99,6 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 支援和說明選項
-      href: cognitive-services-support-options.md
     - name: 服務等級協定 (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: 影片
