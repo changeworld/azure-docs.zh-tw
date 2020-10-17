@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514809"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143259"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR Service 中的服務模式
 
@@ -51,11 +51,11 @@ Azure SignalR Service 目前支援三種服務模式： **預設**、 **無伺�
 > [!NOTE]
 > SignalR service [MANAGEMENT SDK](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md)都支援 REST API 和 websocket 的方式。 如果您要使用 .NET 以外的語言，您也可以手動叫用遵循此 [規格](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)的 REST api。
 >
-> 如果您使用 Azure Functions，則可以使用稱為函數系結 [的 Azure Functions (以下的 SignalR 服務](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) 系結) 將訊息傳送為輸出系結。
+> 如果您使用 Azure Functions，則可以使用稱為函數系結 [的 Azure Functions (以下的 SignalR 服務](../azure-functions/functions-bindings-signalr-service.md) 系結) 將訊息傳送為輸出系結。
 
 您的伺服器應用程式也可能會接收來自用戶端的訊息和連接事件。 服務會將訊息和連接事件傳遞給預先設定的端點， (使用 webhook 呼叫上游) 。 相較于預設模式，不保證任何的情況下，HTTP 要求的效率可能會比 websocket 連接更低。
 
-如需有關如何設定上游的詳細資訊，請 [參閱此檔](https://docs.microsoft.com/azure/azure-signalr/concept-upstream)。
+如需有關如何設定上游的詳細資訊，請 [參閱此檔](./concept-upstream.md)。
 
 以下是說明無伺服器模式運作方式的圖表：
 

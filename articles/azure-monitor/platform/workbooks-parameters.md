@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 5751223697638128d86675badf7ec15abc36ef4e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dccf8a11691ed02d50b88afc481ec0612fe15b9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932374"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143602"
 ---
 # <a name="workbook-parameters"></a>活頁簿參數
 
@@ -81,5 +81,5 @@ _In Text_區段使用參數的， `label` 而不是其值。 參數會根據其�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
+* [開始深入](./workbooks-overview.md#visualizations) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

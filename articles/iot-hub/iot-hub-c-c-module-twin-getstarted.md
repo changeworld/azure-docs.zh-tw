@@ -11,12 +11,12 @@ ms.author: menchi
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3cd4277603b96dd1aa07682dd01a6d0e9c61bd82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cc874b4df7052c76fa58388bc982b8ffe3acc23
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81733447"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142918"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>開始使用 IoT 中樞模組身分識別和模組對應項 (C) 
 
@@ -386,9 +386,9 @@ int main(void)
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要繼續開始使用 IoT 中樞並瀏覽其他 IoT 案例，請參閱︰
 
 * [開始使用裝置管理](iot-hub-node-node-device-management-get-started.md)
-* [開始使用 IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [開始使用 IoT Edge](../iot-edge/quickstart-linux.md)

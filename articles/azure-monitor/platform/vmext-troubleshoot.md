@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024fa2f86890c6e8e791b5cf66a4e67328f62f63
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710102"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143881"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>針對 Azure 監視器中的 Log Analytics VM 延伸模組進行疑難排解
 本文可協助您針對在使用執行 Microsoft Azure 之 Windows 與 Linux 虛擬機器的 Log Analytics VM 擴充功能時可能遇到的錯誤進行疑難排解，並建議可能的解決方法。
 
 若要確認擴充功能的狀態，請從 Azure 入口網站執行下列步驟。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中，輸入**虛擬機器**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [虛擬機器]。
 3. 在虛擬機器清單中，尋找目標虛擬機器並加以選取。
 3. 在虛擬機器上，按一下 [擴充功能]****。
@@ -52,7 +52,7 @@ ms.locfileid: "91710102"
 
 1. 如果擴充狀態是「未知」**，請檢閱 VM 代理程式記錄檔 `/var/log/waagent.log`，以檢查 Azure VM 代理程式是否已安裝且正常運作
    * 如果記錄檔不存在，則表示未安裝 VM 代理程式。
-   * [在 Linux VM 上安裝 Azure VM 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#installation)
+   * [在 Linux VM 上安裝 Azure VM 代理程式](../../virtual-machines/extensions/agent-linux.md#installation)
 2. 若是其他不良狀態，請檢閱 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 Log Analytics Linux 代理程式 VM 擴充功能記錄
 3. 如果擴充狀態良好，但資料未上傳，請檢閱 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 Log Analytics Linux 代理程式記錄檔
 
@@ -60,5 +60,4 @@ ms.locfileid: "91710102"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需與在 Azure 外部電腦上所裝載的 Log Analytics Linux 代理程式相關的其他疑難排解指引，請參閱[針對 Azure Log Analytics Linux 代理程式進行疑難排解](agent-linux-troubleshoot.md)。  
-
+如需與在 Azure 外部電腦上所裝載的 Log Analytics Linux 代理程式相關的其他疑難排解指引，請參閱[針對 Azure Log Analytics Linux 代理程式進行疑難排解](agent-linux-troubleshoot.md)。

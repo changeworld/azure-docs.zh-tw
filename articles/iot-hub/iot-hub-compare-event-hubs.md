@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322749"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142773"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>將 IoT 裝置連接到 Azure：IoT 中樞和事件中樞
 
@@ -26,7 +26,7 @@ Azure 提供專為不同連線和通訊類型所開發的服務，協助您連�
 
 Azure IoT 中樞是雲端閘道，可連線 IoT 裝置來收集資料，並促進商業見解和自動化。 此外，IoT 中樞的功能還能讓裝置與後端系統之間的關係更豐富。 雙向通訊功能表示，當您從裝置接收資料時，您也可以將命令和原則傳送回裝置。 例如，使用雲端到裝置訊息來更新屬性或叫用裝置管理動作。 雲端到裝置的通訊也可讓您使用 Azure IoT Edge 將雲端智慧傳送至邊緣裝置。 IoT 中樞提供的獨特裝置層級身分識別，有助於進一步保護 IoT 解決方案，預防潛在攻擊。 
 
-[Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)是 Azure 的巨量資料串流服務。 它是專為高輸送量資料串流情節所設計的服務，允許客戶每天傳送數十億筆要求。 事件中樞使用分割取用者模型來相應放大您的串流，並且已融入 Azure 的巨量資料和分析服務當中，如 Databricks、串流分析、ADLS 及 HDInsight。 該服務提供像事件中樞擷取和自動擴充之類的功能，能支援您的巨量資料應用程式和解決方案。 此外，IoT 中樞會使用事件中樞作為其遙測流程路徑，因此您的 IoT 解決方案也可受益于事件中樞的強大功能。
+[Azure 事件中樞](../event-hubs/event-hubs-about.md)是 Azure 的巨量資料串流服務。 它是專為高輸送量資料串流情節所設計的服務，允許客戶每天傳送數十億筆要求。 事件中樞使用分割取用者模型來相應放大您的串流，並且已融入 Azure 的巨量資料和分析服務當中，如 Databricks、串流分析、ADLS 及 HDInsight。 該服務提供像事件中樞擷取和自動擴充之類的功能，能支援您的巨量資料應用程式和解決方案。 此外，IoT 中樞會使用事件中樞作為其遙測流程路徑，因此您的 IoT 解決方案也可受益于事件中樞的強大功能。
 
 總而言之，這兩種解決方案都是針對大規模的資料內嵌所設計。 只有 IoT 中樞提供豐富的 IoT 專屬功能，其設計可讓您將 IoT 裝置連接到 Azure 雲端的商業價值最大化。  如果您剛踏上 IoT 之旅，入手 IoT 中樞來支援資料擷取情節，將能確保當您需要 IoT 功能來滿足商業和技術需求時，可立即取用完備的 IoT 功能。
 
@@ -47,7 +47,7 @@ Azure IoT 中樞是雲端閘道，可連線 IoT 裝置來收集資料，並促�
 
 即使唯一的使用案例是裝置到雲端資料擷取，仍強烈建議您使用「IoT 中樞」，因為它可提供專為 IoT 裝置連線設計的服務。 
 
-### <a name="next-steps"></a>接下來的步驟
+### <a name="next-steps"></a>後續步驟
 
 若要進一步探索「IoT 中樞」的功能，請參閱 [IoT 中樞開發人員指南](iot-hub-devguide.md)。
 

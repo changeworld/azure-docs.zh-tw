@@ -6,19 +6,19 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3179daec361aa287b79c5e9a468908d0ccdd2982
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759422"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143953"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure 監視器 view designer to 活頁簿轉換指南
 [View designer](view-designer.md) 是 Azure 監視器的功能，可讓您建立自訂視圖，以協助您在 Log Analytics 工作區中以圖表、清單和時程表來視覺化資料。 它們已轉換成活頁簿，以提供彈性的畫布，讓您在 Azure 入口網站內分析和建立豐富的視覺效果報表。 本文可協助您將 View designer 轉換成活頁簿。 
 
 
 ## <a name="workbooks-overview"></a>活頁簿總覽
-活頁[簿](../insights/vminsights-workbooks.md)會將文字、 [記錄查詢](../log-query/query-language.md)、計量和參數結合成豐富的互動式報表。 具有相同 Azure 資源存取權的小組成員也可以編輯活頁簿。
+活頁[簿](../insights/vminsights-workbooks.md)會將文字、 [記錄查詢](/azure/data-explorer/kusto/query/)、計量和參數結合成豐富的互動式報表。 具有相同 Azure 資源存取權的小組成員也可以編輯活頁簿。
 
 活頁簿在下列案例中很有用：
 

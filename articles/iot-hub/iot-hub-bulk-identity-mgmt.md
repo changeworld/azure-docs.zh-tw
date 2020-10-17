@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53e0cb92ead0d60ae335e95903cd69ae2700140
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003859"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142811"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>大量匯入和匯出 IoT 中樞裝置身分識別
 
@@ -27,7 +27,7 @@ ms.locfileid: "89003859"
 
 **RegistryManager** 類別包含使用**作業**架構的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 這些方法可讓您匯出、匯入和同步處理整個 IoT 中樞身分識別登錄。
 
-本主題討論如何使用 **RegistryManager** 類別和 **作業** 系統，在 IoT 中樞的身分識別登錄中執行大量匯入和匯出裝置。 您也可以使用 Azure IoT 中樞裝置佈建服務，以無須人為介入的方式對一或多個 IoT 中樞進行 Just-In-Time 自動佈建。 若要深入了解，請參閱[佈建服務文件](/azure/iot-dps)。
+本主題討論如何使用 **RegistryManager** 類別和 **作業** 系統，在 IoT 中樞的身分識別登錄中執行大量匯入和匯出裝置。 您也可以使用 Azure IoT 中樞裝置佈建服務，以無須人為介入的方式對一或多個 IoT 中樞進行 Just-In-Time 自動佈建。 若要深入了解，請參閱[佈建服務文件](../iot-dps/index.yml)。
 
 ## <a name="what-are-jobs"></a>什麼是作業？
 
@@ -399,7 +399,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>取得容器 SAS URI
 
-下列程式碼範例示範如何產生具有 Blob 容器之讀取、寫入和刪除權限的 [SAS URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md)：
+下列程式碼範例示範如何產生具有 Blob 容器之讀取、寫入和刪除權限的 [SAS URI](../storage/common/storage-sas-overview.md)：
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -438,8 +438,8 @@ static string GetContainerSasUri(CloudBlobContainer container)
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
 * [IoT 中樞開發人員指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)
 
 若要探索使用 IoT 中樞裝置佈建服務進行 Just-In-Time 自動佈建，請參閱： 
 
-* [Azure IoT 中樞裝置佈建服務](/azure/iot-dps)
+* [Azure IoT 中樞裝置佈建服務](../iot-dps/index.yml)

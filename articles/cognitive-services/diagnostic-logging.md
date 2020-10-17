@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9660aa3923964392f1789570d26dd825e0fef350
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71827907"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143198"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>啟用 Azure 認知服務的診斷記錄
 
@@ -24,7 +24,7 @@ ms.locfileid: "71827907"
 
 若要啟用診斷記錄，您需要儲存記錄資料的地方。 本教學課程使用 Azure 儲存體和 Log Analytics。
 
-* [Azure 儲存體](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) -保留用於原則審核、靜態分析或備份的診斷記錄。 儲存體帳戶不一定要和資源發出記錄屬於相同的訂用帳戶，只要使用者有適當的設定可 RBAC 存取這兩個訂用帳戶即可。
+* [Azure 儲存體](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) -保留用於原則審核、靜態分析或備份的診斷記錄。 儲存體帳戶不一定要和資源發出記錄位於相同的訂用帳戶中，只要進行設定的使用者具有適用于這兩個訂用帳戶的適當 Azure RBAC 存取權即可。
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) -彈性的記錄搜尋和分析工具，可讓您分析 Azure 資源所產生的原始記錄。
 
 > [!NOTE]
@@ -43,7 +43,7 @@ ms.locfileid: "71827907"
 4. 輸入設定的名稱。 然後，選取 [封存 **至儲存體帳戶** ] 並 **傳送至 log Analytics**。
 5. 當系統提示您設定時，請選取您想要用來儲存診斷記錄的儲存體帳戶和 OMS 工作區。 **注意**：如果您沒有儲存體帳戶或 OMS 工作區，請依照提示建立一個。
 6. 選取 **Audit**、 **要求回應**和 **AllMetrics**。 然後設定診斷記錄資料的保留期限。 如果保留原則設定為零，則會無限期地儲存該記錄類別的事件。
-7. 按一下 [儲存]。
+7. 按一下 **[儲存]** 。
 
 最多可能需要兩個小時的時間，記錄資料才可供查詢及分析。 如果您沒有立即看到任何事情，請不要擔心。
 

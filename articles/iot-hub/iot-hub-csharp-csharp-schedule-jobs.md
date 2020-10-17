@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018496"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142463"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>排程及廣播作業 (.NET)
 
@@ -261,7 +261,7 @@ ms.locfileid: "89018496"
     ```
 
     > [!NOTE]
-    > 如需有關查詢語法的詳細資訊，請參閱 [IoT 中樞查詢語言](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)。
+    > 如需有關查詢語法的詳細資訊，請參閱 [IoT 中樞查詢語言](./iot-hub-devguide-query-language.md)。
     >
 
 1. 最後，將下列幾行新增至 **Main** 方法：
@@ -311,4 +311,4 @@ ms.locfileid: "89018496"
 
 * 若要繼續開始使用 IoT 中樞和裝置管理模式 (例如遠端無線韌體更新)，請參閱[教學課程：如何進行韌體更新](tutorial-firmware-update.md)。
 
-* 若要深入了解將 AI 部署到具有 Azure IoT Edge 的邊緣裝置，請參閱[開始使用 IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)。
+* 若要深入了解將 AI 部署到具有 Azure IoT Edge 的邊緣裝置，請參閱[開始使用 IoT Edge](../iot-edge/quickstart-linux.md)。

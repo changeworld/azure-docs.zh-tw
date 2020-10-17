@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890594"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142374"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 New-AzIotHub Cmdlet 建立 IoT 中樞
 
@@ -41,7 +41,7 @@ Login-AzAccount
 
 您需要一個資源群組來部署 IoT 中樞。 您可以使用現有的資源群組，或建立一個新的群組。
 
-若要建立 IoT 中樞的資源群組，請使用 [>new-azresourcegroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 命令。 此範例會在**美國東部**區域中建立一個稱為 **MyIoTRG1** 的資源群組：
+若要建立 IoT 中樞的資源群組，請使用 [>new-azresourcegroup](/powershell/module/az.Resources/New-azResourceGroup) 命令。 此範例會在**美國東部**區域中建立一個稱為 **MyIoTRG1** 的資源群組：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
@@ -49,7 +49,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
-若要在您于上一個步驟中建立的資源群組中建立 IoT 中樞，請使用 [AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) 命令。 此範例會在**美國東部**區域中建立一個稱為 **MyTestIoTHub** 的 **S1** 中樞：
+若要在您于上一個步驟中建立的資源群組中建立 IoT 中樞，請使用 [AzIotHub](/powershell/module/az.IotHub/New-azIotHub) 命令。 此範例會在**美國東部**區域中建立一個稱為 **MyTestIoTHub** 的 **S1** 中樞：
 
 ```azurepowershell-interactive
 New-AzIotHub `
@@ -63,7 +63,7 @@ IoT 中樞名稱必須是全域唯一的。
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-您可以使用 [AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) 命令來列出訂用帳戶中的所有 IoT 中樞：
+您可以使用 [AzIotHub](/powershell/module/az.IotHub/Get-azIotHub) 命令來列出訂用帳戶中的所有 IoT 中樞：
 
 ```azurepowershell-interactive
 Get-AzIotHub
@@ -71,7 +71,7 @@ Get-AzIotHub
 
 此範例會顯示您在上一個步驟中建立的 S1 標準 IoT 中樞。
 
-您可以使用 [AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) 命令刪除 IoT 中樞：
+您可以使用 [AzIotHub](/powershell/module/az.iothub/remove-aziothub) 命令刪除 IoT 中樞：
 
 ```azurepowershell-interactive
 Remove-AzIotHub `
@@ -79,7 +79,7 @@ Remove-AzIotHub `
     -Name MyTestIoTHub
 ```
 
-或者，您可以使用 [>new-azresourcegroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) 命令來移除資源群組及其包含的所有資源：
+或者，您可以使用 [>new-azresourcegroup](/powershell/module/az.Resources/Remove-azResourceGroup) 命令來移除資源群組及其包含的所有資源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyIoTRG1
@@ -89,9 +89,9 @@ Remove-AzResourceGroup -Name MyIoTRG1
 
 現在您已經使用 PowerShell Cmdlet 部署 IoT 中樞，若要進一步探索，請參閱下列文章︰
 
-* [搭配 IoT 中樞使用的 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/)。
+* [搭配 IoT 中樞使用的 PowerShell Cmdlet](/powershell/module/az.iothub/)。
 
-* [IoT 中樞資源提供者 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)。
+* [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource)。
 
 若要深入了解如何開發 IoT 中樞，請參閱以下文章︰
 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name MyIoTRG1
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/quickstart-linux.md)

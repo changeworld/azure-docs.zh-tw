@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 352da24b36124ff0446a81c1ecbc584da545bb16
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84976569"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142207"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>使用 IoT 中樞客戶管理的金鑰來加密待用資料
 
@@ -22,8 +22,8 @@ IoT 中樞支援使用客戶管理的金鑰來加密待用資料 (CMK) ，也稱
 這項功能需要 (基本或標準層) 建立新的 IoT 中樞。 若要試用這項功能，請透過 [Microsoft 支援服務](https://azure.microsoft.com/support/create-ticket/)來洽詢我們。 聯繫 Microsoft 支援服務時，請共用您的公司名稱和訂用帳戶識別碼。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* [深入瞭解 IoT 中樞](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)
+* [深入瞭解 IoT 中樞](./about-iot-hub.md)
 
-* [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [深入瞭解 Azure Key Vault](../key-vault/general/overview.md)

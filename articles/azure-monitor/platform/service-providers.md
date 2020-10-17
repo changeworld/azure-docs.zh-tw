@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92dd191c8bfe590f6dab392ff679e5d7712ae6c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921081"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143851"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>服務提供者的 Azure 監視器記錄
 
@@ -35,7 +35,7 @@ Log Analytics 工作區提供一個方法，讓系統管理員控制 [記錄](da
 
 有兩種方式可讓服務提供者系統管理員取得客戶租使用者中 Log Analytics 工作區的存取權：
 
-- 客戶可以將個別使用者從服務提供者新增為 [ (B2B) 的 Azure Active Directory 來賓使用者 ](../../active-directory/b2b/what-is-b2b.md)。 服務提供者系統管理員必須登入 Azure 入口網站中的每個客戶目錄，才能存取這些工作區。 這也需要客戶為每個服務提供者系統管理員管理個別的存取權。
+- 客戶可以將個別使用者從服務提供者新增為 [ (B2B) 的 Azure Active Directory 來賓使用者 ](../../active-directory/external-identities/what-is-b2b.md)。 服務提供者系統管理員必須登入 Azure 入口網站中的每個客戶目錄，才能存取這些工作區。 這也需要客戶為每個服務提供者系統管理員管理個別的存取權。
 - 為了提供更大的擴充性和彈性，服務提供者可以使用[Azure Lighthouse](../../lighthouse/overview.md)的[Azure 委派資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)功能來存取客戶的租使用者。 使用這個方法時，服務提供者系統管理員會包含在服務提供者租使用者的 Azure AD 使用者群組中，而且會在每個客戶的上執行緒序期間，將存取權授與此群組。 然後，這些系統管理員可以從自己的服務提供者租使用者中存取每個客戶的工作區，而不需要個別登入每個客戶的租使用者。 以這種方式存取客戶的 Log Analytics 工作區資源，可減少用戶端所需的工作，並可讓您更輕鬆地透過 [Azure 監視器活頁簿](./workbooks-overview.md)之類的工具，在相同服務提供者所管理的多個客戶上收集及分析資料。 如需詳細資訊，請參閱 [大規模監視客戶資源](../../lighthouse/how-to/monitor-at-scale.md)。
 
 分散式架構的優點如下：
@@ -81,7 +81,7 @@ Log Analytics 工作區提供一個方法，讓系統管理員控制 [記錄](da
 
 ## <a name="next-steps"></a>後續步驟
 
-* 使用 [Resource Manager 範本](template-workspace-configuration.md)建立和設定工作區
+* 使用 [Resource Manager 範本](../samples/resource-manager-workspace.md)建立和設定工作區
 
 * 使用 [PowerShell](./powershell-workspace-configuration.md)自動建立工作區
 

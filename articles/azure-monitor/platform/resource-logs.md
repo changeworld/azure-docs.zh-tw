@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800495"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143929"
 ---
 # <a name="azure-resource-logs"></a>Azure 資源記錄
 Azure 資源記錄是 [平臺記錄](platform-logs-overview.md) ，可讓您深入瞭解在 Azure 資源中執行的作業。 資源記錄的內容會依 Azure 服務和資源類型而有所不同。 預設不會收集資源記錄。 您必須為每個 Azure 資源建立診斷設定，以將其資源記錄傳送至 Log Analytics 工作區，以搭配 [Azure 監視器記錄](data-platform-logs.md)、Azure 事件中樞在 Azure 外部轉送，或用於封存的 Azure 儲存體。
@@ -27,7 +27,7 @@ Azure 資源記錄是 [平臺記錄](platform-logs-overview.md) ，可讓您深�
 - 使用記錄查詢來執行複雜的分析，並深入瞭解記錄資料。
 - 使用具有複雜警示邏輯的記錄警示。
 
-[建立診斷設定](diagnostic-settings.md) ，以將資源記錄傳送至 Log Analytics 工作區。 這項資料會儲存在資料表中，如 [Azure 監視器記錄結構](../log-query/logs-structure.md)中所述。 資源記錄所使用的資料表取決於資源所使用的集合類型：
+[建立診斷設定](diagnostic-settings.md) ，以將資源記錄傳送至 Log Analytics 工作區。 這項資料會儲存在資料表中，如 [Azure 監視器記錄結構](./data-platform-logs.md)中所述。 資源記錄所使用的資料表取決於資源所使用的集合類型：
 
 - Azure 診斷-所有寫入的資料都是 _AzureDiagnostics_ 資料表。
 - 資源特有的資料會針對資源的每個類別目錄寫入個別的資料表。

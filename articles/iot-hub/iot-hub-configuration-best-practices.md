@@ -7,12 +7,12 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024773"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142661"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解決方案內的裝置設定最佳做法
 
@@ -20,17 +20,17 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **IoT 硬體製造商/整合者**：IoT 硬體的製造商、組裝不同廠牌硬體的整合者，或針對 IoT 部署提供硬體 (由其他供應商製造或整合) 的供應商。 參與韌體、內嵌的作業系統和內嵌軟體的開發和整合。
 
-* **IoT 解決方案開發人員：** IoT 解決方案的開發通常是由解決方案開發人員所完成。 此開發人員可能是內部團隊的成員，或是專精於此活動的系統整合者。 IoT 解決方案開發人員可從頭開始開發 IoT 解決方案的各種元件、整合各種標準或開放原始碼元件，或自訂 [IoT 解決方案加速器](/azure/iot-accelerators/)。
+* **IoT 解決方案開發人員：** IoT 解決方案的開發通常是由解決方案開發人員所完成。 此開發人員可能是內部團隊的成員，或是專精於此活動的系統整合者。 IoT 解決方案開發人員可從頭開始開發 IoT 解決方案的各種元件、整合各種標準或開放原始碼元件，或自訂 [IoT 解決方案加速器](../iot-accelerators/index.yml)。
 
 * **IoT 解決方案操作員：** 部署 IoT 解決方案之後，需要長期作業、監視、升級及維護。 這些工作都可由內部團隊來完成，而內部團隊是由資訊技術專家、硬體作業及維護團隊，以及負責監督整體 IoT 基礎結構是否正確運作的網域專家所組成。
 
 ## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>了解大規模設定 IoT 裝置所適用的自動裝置管理
 
-自動裝置管理具有[裝置對應項](iot-hub-devguide-device-twins.md)和[模組對應項](iot-hub-devguide-module-twins.md)方面的多項優點，可雲端與裝置之間同步處理所需和報告的狀態。 [自動裝置](iot-hub-auto-device-config.md) 設定會自動更新大量的 twins，並摘要說明進度和合規性。 下列主要步驟說明如何開發和使用自動裝置管理：
+自動裝置管理具有[裝置對應項](iot-hub-devguide-device-twins.md)和[模組對應項](iot-hub-devguide-module-twins.md)方面的多項優點，可雲端與裝置之間同步處理所需和報告的狀態。 [自動裝置](./iot-hub-automatic-device-management.md) 設定會自動更新大量的 twins，並摘要說明進度和合規性。 下列主要步驟說明如何開發和使用自動裝置管理：
 
 * **IoT 硬體製造商/整合者**使用[裝置對應項](iot-hub-devguide-device-twins.md)在內嵌的應用程式中實作裝置管理功能。 這些功能可包括韌體更新、軟體安裝與更新，以及設定管理。
 
-* **IoT 解決方案開發人員**使用[裝置對應項](iot-hub-devguide-device-twins.md)和[自動裝置設定](iot-hub-auto-device-config.md)實作裝置管理作業的管理層。 解決方案中應定義用以執行裝置管理工作的操作員介面。
+* **IoT 解決方案開發人員**使用[裝置對應項](iot-hub-devguide-device-twins.md)和[自動裝置設定](./iot-hub-automatic-device-management.md)實作裝置管理作業的管理層。 解決方案中應定義用以執行裝置管理工作的操作員介面。
 
 * **IoT 解決方案操作員**使用 IoT 解決方案執行裝置管理工作，尤其是將裝置分組、起始組態變更 (例如韌體更新)、監視進度，以及對產生的問題進行疑難排解。
 
@@ -64,7 +64,7 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **使用裝置對應項標記來組織裝置：** 解決方案應讓操作員能夠根據不同的部署策略 (例如 Canary) 定義裝置的品質群集或其他集合。 裝置組織可以使用裝置對應項標記和[查詢](iot-hub-devguide-query-language.md)在您的解決方案中實作。 必須仰賴裝置組織，才能安全且精確地推出設定。
 
-* **實作[自動裝置設定](iot-hub-auto-device-config.md)：** 自動裝置設定可透過裝置對應項來部署和監視大量 IoT 裝置的組態變更。
+* **實作[自動裝置設定](./iot-hub-automatic-device-management.md)：** 自動裝置設定可透過裝置對應項來部署和監視大量 IoT 裝置的組態變更。
 
    自動裝置設定可透過**目標條件** (這是對裝置對應項標記或報告屬性的查詢) 將多組裝置對應項設為目標。 **目標內容**是將在目標裝置對應項內設定的一組所需屬性。 目標內容應與 IoT 硬體製造商/整合者所定義的裝置對應項結構相一致。 **計量**是針對裝置對應項報告屬性的查詢，也應該與 IoT 硬體製造商/整合者所定義的裝置對應項結構一致。
 
@@ -78,16 +78,16 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **組織裝置以進行管理：** IoT 解決方案應根據不同的部署策略 (例如 Canary) 定義或允許建立裝置的品質群集或其他集合。 這些裝置集合將用來推出組態變更，以及執行其他大規模的裝置管理作業。
 
-* **使用階段式推出來執行組態變更：** 階段式推出是一個整體程序，操作員可藉以將變更部署至更大範圍的 IoT 裝置集合。 目標是逐漸進行變更，以降低進行大規模重大變更的風險。操作員應使用解決方案的介面來建立[自動裝置設定](iot-hub-auto-device-config.md)，且目標條件應以初始的裝置集合 (例如 Canary 群組) 為目標。 接著，操作員應驗證初始裝置集合中的組態變更。
+* **使用階段式推出來執行組態變更：** 階段式推出是一個整體程序，操作員可藉以將變更部署至更大範圍的 IoT 裝置集合。 目標是逐漸進行變更，以降低進行大規模重大變更的風險。操作員應使用解決方案的介面來建立[自動裝置設定](./iot-hub-automatic-device-management.md)，且目標條件應以初始的裝置集合 (例如 Canary 群組) 為目標。 接著，操作員應驗證初始裝置集合中的組態變更。
 
    驗證完成後，操作員將更新自動裝置設定，以納入更大的裝置集合。 操作員也應為該組態設定比目前用於這些裝置的其他組態更高的優先順序。 推出的情形可使用自動裝置設定所報告的計量來監視。
 
 * **在發生錯誤或設定不當時執行復原：** 導致錯誤或不當設定的自動裝置設定，可藉由變更**目標條件**而使裝置不再符合目標條件來復原。 請確定優先順序較低的另一個自動裝置設定仍以這些裝置為目標。 您可以檢視計量以確認復原是否成功：已復原的組態應該不會再顯示非目標裝置的狀態，而第二個組態的計量此時應該會包含仍作為目標的裝置計數。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 在[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)中了解如何實作裝置對應項。
 
-* 逐步執行[大規模設定和監視 IoT 裝置](iot-hub-auto-device-config.md)中用來建立、更新或刪除自動裝置設定的步驟。
+* 逐步執行[大規模設定和監視 IoT 裝置](./iot-hub-automatic-device-management.md)中用來建立、更新或刪除自動裝置設定的步驟。
 
 * 使用[教學課程：實作裝置韌體更新程序](tutorial-firmware-update.md)中的裝置對應項和自動裝置設定來實作韌體更新模式。

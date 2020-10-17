@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: 049a7348b803d12b66974bb9a9b50c12059171a2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931116"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143730"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 
@@ -109,6 +109,6 @@ JSON 提供者可讓您從靜態 JSON 內容建立查詢結果。 它最常用�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
+* [開始深入](./workbooks-overview.md#visualizations) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。
 * [Log Analytics 查詢優化秘訣](../log-query/query-optimization.md)

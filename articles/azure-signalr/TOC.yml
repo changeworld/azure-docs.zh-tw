@@ -105,7 +105,7 @@
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
-      href: 'https://docs.microsoft.com/aspnet/core/signalr'
+      href: /aspnet/core/signalr
     - name: Azure SignalR Service 通訊協定
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
     - name: Azure 原則內建
@@ -114,7 +114,7 @@
 - name: 資源
   items:
     - name: 方案
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: 客戶案例
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
     - name: SignalR 藍圖
@@ -126,7 +126,7 @@
     - name: 常見問題集
       href: signalr-resource-faq.md
     - name: SignalR 服務訂用帳戶層級限制
-      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: 影片

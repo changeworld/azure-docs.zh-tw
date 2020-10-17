@@ -4,12 +4,12 @@ description: 了解如何建立私人 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4ebc5e44f491b5ff5950a13771fe3d7179b6fc9f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078148"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143091"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私人 Azure Kubernetes Service 叢集
 
@@ -21,7 +21,8 @@ ms.locfileid: "92078148"
 
 私人叢集可在 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公用區域中使用。
 
-目前不支援 US Gov 德克薩斯州，因為缺少 Private Link 支援。
+> [!NOTE]
+> 支援 Azure Government 網站，但因為缺少 Private Link 支援，所以目前不支援 US Gov 德克薩斯州。
 
 ## <a name="prerequisites"></a>Prerequisites
 
