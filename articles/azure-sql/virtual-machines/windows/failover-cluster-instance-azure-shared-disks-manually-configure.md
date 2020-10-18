@@ -1,5 +1,5 @@
 ---
-title: '使用 Azure 共用磁片建立 FCI (預覽版) '
+title: 使用 Azure 共用磁片建立 FCI
 description: 使用 Azure 共用磁片，在 Azure 虛擬機器上使用 SQL Server (FCI) 來建立容錯移轉叢集實例。
 services: virtual-machines
 documentationCenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6e32f183709aca8a78f8448f2d6e6b63a77f2133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272645"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168234"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "91272645"
 - Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - [兩部或多部 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。 同時支援 (Ppg) 的[可用性設定](../../../virtual-machines/windows/tutorial-availability-sets.md)組和[鄰近位置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)。 如果您使用 PPG，所有節點都必須存在於相同的群組中。
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
-- [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)的最新版本。 
+- [PowerShell](/powershell/azure/install-az-ps)的最新版本。 
 
 
 ## <a name="add-azure-shared-disk"></a>新增 Azure 共用磁片
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>設定連線能力 
 
-若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL SERVER 2019 CU2 + 和 Windows Server 2016 (或更新版本) 您可以改為預覽 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) 功能。 
+若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL SERVER 2019 CU2 (或更新版本的) 和 Windows Server 2016 (或更新版本) ，則可以改用 [分散式網路名稱](failover-cluster-instance-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 
@@ -221,12 +221,13 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](hadr-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
+如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](failover-cluster-instance-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
+
 
 如果 Azure 共用磁片不是適合您的 FCI 儲存體解決方案，請考慮使用 [premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 或 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 來建立 FCI。 
 
 若要深入瞭解，請參閱 [使用 Azure vm](failover-cluster-instance-overview.md) 和叢集設定 [最佳作法](hadr-cluster-best-practices.md)SQL Server 的 FCI 總覽。
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

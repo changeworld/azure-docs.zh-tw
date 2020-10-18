@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797933"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168285"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>針對 Azure FarmBeats 進行疑難排解
 
@@ -174,7 +174,7 @@ ms.locfileid: "88797933"
 
 如果您是在已獲得存取權的情況下遇到此錯誤，請重新整理頁面，然後再試一次。 若錯誤持續發生，請與我們連絡，並提供錯誤訊息/記錄。
 
-![FarmBeats 專案](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![顯示授權錯誤的螢幕擷取畫面。](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>加速器問題  
 
@@ -293,7 +293,7 @@ ms.locfileid: "88797933"
 6. 在左側窗格中，選取 [Blob 容器]，然後針對 Azure Data Factory 記錄選取 [job-logs]，或針對 App Service 選取 [appinsights-logs]。
 7. 選取 [下載]，並將記錄下載到您機器上的本機資料夾。
 
-    ![FarmBeats 專案](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![顯示已下載記錄檔的螢幕擷取畫面。](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>收集加速器的 Azure Data Factory 作業記錄或 App Service 記錄
 
@@ -327,26 +327,26 @@ ms.locfileid: "88797933"
 > [!NOTE]
 > 若要在資源群組內查看服務的標記，請按一下 [編輯資料行]，並將 [標籤] 新增至資源群組視圖
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats 專案":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
 3. 在 Data factory 的 [總覽] 頁面上，按一下 [ **撰寫和監視**]。 您的瀏覽器會開啟新的索引標籤。 按一下 [**監視**]
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats 專案":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
 4. 您會看到屬於氣象工作執行一部分的管線執行清單。 按一下您要收集記錄的作業
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats 專案":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
 5. 在 [管線總覽] 頁面上，您會看到活動執行清單。 記下您要收集記錄的活動執行識別碼
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats 專案":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
 6. 返回至 Azure 入口網站中的 FarmBeats 資源群組，然後按一下名為**datahublogs**的儲存體帳戶
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats 專案":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
 7. 按一下 [**容器**]  ->  **adfjobs**。 在 [搜尋] 方塊中，輸入您在上述步驟5中記下的工作執行識別碼。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats 專案":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
 8. 搜尋結果將包含包含與工作相關之記錄檔的資料夾。 下載記錄並將其傳送至，以 farmbeatssupport@microsoft.com 協助您進行問題的偵錯工具。

@@ -6,16 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87033508"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168574"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
-Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)指南。
+Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/configure-monitoring.md#enable-application-insights-integration)指南。
 
 如需函數執行階段版本的詳細資訊，請參閱 [這裡](../../azure-functions/functions-versions.md)。
 
@@ -47,7 +47,7 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
 | **可設定**                      |                   |                   |           
-| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | 是                   | 
+| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱所有選項的 [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 。               |                   | 是                   | 
 
 
 ## <a name="performance-counters"></a>效能計數器
@@ -61,7 +61,7 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 
 ## <a name="sampling"></a>取樣
 
-Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](../../azure-functions/functions-monitoring.md#configure-sampling)。
+Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](../../azure-functions/configure-monitoring.md#configure-sampling)。
 
 如果您的專案相依于 Application Insights SDK 以進行手動的遙測追蹤，而您的取樣設定與函數的取樣設定不同，您可能會遇到奇怪的行為。 
 

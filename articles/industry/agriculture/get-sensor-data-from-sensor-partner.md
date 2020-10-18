@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649154"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168523"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器夥伴取得感應器資料
 
@@ -178,7 +178,7 @@ FarmBeats 目前支援下列裝置：
 1. 在首頁上，從功能表中選取 [ **感應器** ] 以查看 [ **感應器** ] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [ **刪除** ]。
 
-    ![刪除按鈕](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![醒目顯示 [感應器刪除] 頁面和 [刪除] 按鈕的螢幕擷取畫面。](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
 確認訊息會顯示已成功刪除感應器。
 
@@ -191,6 +191,6 @@ FarmBeats 目前支援下列裝置：
 
     ![刪除按鈕](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在已將感應器資料流程入您的 Azure FarmBeats 實例。 現在，瞭解如何為您的伺服器陣列 [產生對應](generate-maps-in-azure-farmbeats.md#generate-maps) 。

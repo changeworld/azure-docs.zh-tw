@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514910"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168013"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>針對 StorSimple 上裝載的檔案共用使用 Azure Site Recovery 的自動化災害復原解決方案
 
@@ -37,7 +37,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
 ## <a name="supported-azure-site-recovery-deployment-options"></a>支援的 Azure Site Recovery 部署選項
 客戶可以將檔案伺服器部署為在 Hyper-V 或 VMware 上執行的實體服務或虛擬機器 (VM)，然後從由 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 Azure Site Recovery 可以保護次要站台或 Azure 的實體與虛擬部署。 本文件涵蓋 DR 解決方案的詳細資料，該解決方案使用 Azure 做為 Hyper-V 上裝載之檔案伺服器 VM 的復原網站，並且在 StorSimple 儲存體上使用檔案共用。 檔案伺服器 VM 位於 VMware VM 或實體電腦上的其他案例也可以透過類似方式實作。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 實作單鍵災害復原解決方案 (針對 StorSimple 儲存體上裝載的檔案共用使用 Azure Site Recovery) 時，有下列先決條件：
 
    - Hyper-V 或 VMware 或實體電腦上裝載的內部部署 Windows Server 2012 R2 檔案伺服器 VM
@@ -91,9 +91,9 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
          > [!NOTE]
          > 視版本不同，檔案名稱可能會改變。
       
-1. 按一下 [下一步]。
+1. 按 [下一步]  。
 1. 接受 [合約條款]**** 然後按一下 [下一步]****。
-1. 按一下 [完成] 。
+1. 按一下 [完成]  。
 1. 使用從 StorSimple 儲存體劃分出來的磁碟區建立檔案共用。 如需詳細資訊，請參閱 [使用 StorSimple Manager 服務管理磁碟區](storsimple-manage-volumes.md)。
    
    1. 在您的內部部署 VM 上，按 Windows 鍵 +Q 並搜尋 **iSCSI**。
@@ -234,7 +234,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
    
    匯入 StorSimple 8000 系列模組後，[模組]**** 索引標籤應會如下所示：
    
-      ![模組](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
+      ![單元](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
 1. 移至 [復原服務] **** 區段並選取您之前建立的 Azure Site Recovery 保存庫。
 1. 從 [管理] **** 群組選取 [復原計劃 (站台復原)] **** 群組，然後如下所述建立新的復原計劃：
@@ -294,7 +294,7 @@ Microsoft Azure StorSimple 是一個混合式雲端儲存體解決方案，可�
 1. 在 Azure 入口網站中，選取 [復原服務]**** 保存庫  [復原計劃 (站台復原)] &gt; ** [recoveryplan_name] ** &gt; ****，以建立檔案伺服器 VM。
 1. 在 [復原計劃] 刀鋒視窗上，按一下 [更多] ** [計劃性容錯移轉] ** &gt;  ****。
 
-   ![復原計畫](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![醒目顯示已規劃的容錯移轉和容錯移轉選項的螢幕擷取畫面。](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. 在 [確認計劃性容錯移轉] **** 刀鋒視窗上，選擇來源位置和目標位置，然後選取目標網路並按一下核取圖示 ✓ 來啟動容錯移轉程序。
 1. 建立複本虛擬機器之後，它們即會處於認可擱置中的狀態。 請按一下 **[認可]** 認可容錯移轉。
 1. 完成複寫之後，即會在次要位置上啟動虛擬機器。

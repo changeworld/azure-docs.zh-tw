@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131660"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167809"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>疑難排解：無法在 Azure 中刪除虛擬網路
 
@@ -48,7 +48,7 @@ ms.locfileid: "86131660"
 
 如果是虛擬網路，請移至虛擬網路的 [概觀] 頁面。 檢查虛擬網路閘道的 [連線的裝置]。
 
-![檢查連線的裝置](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Azure 入口網站中虛擬網路連線裝置清單的螢幕擷取畫面。 虛擬網路閘道會在清單中反白顯示。](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 先移除閘道中的任何**連線**物件，然後才能移除閘道。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "86131660"
 
 移至虛擬網路的 [概觀] 頁面。 檢查應用程式閘道的 [連線的裝置]。
 
-![檢查連線的裝置](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Azure 入口網站中虛擬網路連線裝置清單的螢幕擷取畫面。 應用程式閘道會在清單中反白顯示。](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 如果有應用程式閘道，您必須先移除它，才能刪除虛擬網路。
 
@@ -64,7 +64,7 @@ ms.locfileid: "86131660"
 
 如果 Active Directory 網域服務已啟用並連線到虛擬網路，您就無法刪除此虛擬網路。 
 
-![檢查連線的裝置](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Azure 入口網站中 Azure AD Domain Services 畫面的螢幕擷取畫面。 [虛擬網路/子網] 欄位中的 [可用] 會反白顯示。](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 若要停用服務，請參閱[使用 Azure 入口網站停用 Azure Active Directory Domain Services](../active-directory-domain-services/delete-aadds.md)。
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: f91cdaa81e18105eb39af442ab6152bfd2888ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319702"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168136"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>在 Azure 中診斷 Durable Functions
 
@@ -99,7 +99,7 @@ Azure Functions 長期延伸模組也會發出「追蹤事件」**，可讓您�
 ```
 
 > [!NOTE]
-> 根據預設，Application Insights 遙測是由 Azure Functions 執行階段取樣，以避免過於頻繁發出資料。 這會在短期內發生太多生命週期事件時，造成追蹤資訊遺失。 [Azure Functions 監視文章](../functions-monitoring.md#configure-sampling)會說明如何設定這個行為。
+> 根據預設，Application Insights 遙測是由 Azure Functions 執行階段取樣，以避免過於頻繁發出資料。 這會在短期內發生太多生命週期事件時，造成追蹤資訊遺失。 [Azure Functions 監視文章](../configure-monitoring.md#configure-sampling)會說明如何設定這個行為。
 
 ### <a name="single-instance-query"></a>單一執行個體查詢
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992877"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168268"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析 (preview) 
 
@@ -187,9 +187,11 @@ foreach ($webapp in $webapp_list)
 - **這所花費的時間超出預期**。 這則訊息表示註冊所花費的時間超過2分鐘。 這是不尋常的，但不一定表示發生錯誤。 您可以前往 [ **訂閱] |** 要檢查 **Microsoft ChangeAnalysis** 資源提供者註冊狀態的資源提供者。 您可以嘗試使用 UI 來取消註冊、重新註冊或重新整理，以查看是否有説明。 如果問題持續發生，請洽詢 changeanalysishelp@microsoft.com 支援人員。
     ![針對 RP 註冊花費太長時間進行疑難排解](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
+![診斷和解決問題工具的螢幕擷取畫面，其中已選取疑難排解工具的虛擬機器。](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
+![針對虛擬機器 [分析最近的變更疑難排解] 工具的磚螢幕擷取畫面。](./media/change-analysis/analyze-recent-changes.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 啟用 [Azure App 服務應用程式](azure-web-apps.md)的 Application Insights。
 - 針對 [AZURE VM 和 azure 虛擬機器擴展集 IIS 裝載的應用程式](azure-vm-vmss-apps.md)啟用 Application Insights。

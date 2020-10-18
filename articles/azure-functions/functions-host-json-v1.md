@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 1.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v1 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757526"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167710"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 host.json 參考
 
@@ -230,7 +230,7 @@ ms.locfileid: "81757526"
 
 ## <a name="logger"></a>logger
 
-控制 [ILogger 物件](functions-monitoring.md#write-logs-in-c-functions)或 [context.log](functions-monitoring.md#write-logs-in-javascript-functions) 所寫入記錄的篩選。
+控制項篩選 [ILogger](functions-dotnet-class-library.md#ilogger) 物件或 [內容](functions-reference-node.md#contextlog-method)所寫入的記錄。
 
 ```json
 {
@@ -340,7 +340,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 
 *1\.x 版*
 
-使用 `TraceWriter` 物件所建立記錄的組態設定。 請參閱 [C# 記錄](functions-reference-csharp.md#logging)和 [Node.js 記錄](functions-reference-node.md#writing-trace-output-to-the-console)。
+使用 `TraceWriter` 物件所建立記錄的組態設定。 若要深入瞭解，請參閱 [c # 記錄]。
 
 ```json
 {
@@ -366,7 +366,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [了解如何更新 host.json 檔案](functions-reference.md#fileupdate)

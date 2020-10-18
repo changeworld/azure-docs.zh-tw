@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667688"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166449"
 ---
 # <a name="get-started-with-custom-keyword"></a>開始使用自訂關鍵字
 
@@ -54,7 +54,7 @@ ms.locfileid: "91667688"
 
 1. 入口網站會建立關鍵字的候選發音。 按一下 [播放] 按鈕，並移除任何不正確發音旁的檢查，以聆聽每個候選。 只要勾選了良好的發音，請按一下 [ **定型** ] 開始產生關鍵字模型。 
 
-    ![檢查關鍵字](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![顯示您選擇正確 pronounciations 的螢幕擷取畫面。](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. 產生模型最多可能需要30分鐘的時間。 當模型完成時，關鍵字清單會從 **處理** 變更為「 **成功** 」。 然後您就可以下載檔案。
 

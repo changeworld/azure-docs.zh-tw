@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207162"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168183"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>針對輸入控制器的常見問題或問題進行疑難排解
 
@@ -85,15 +85,15 @@ EOF
 取得具有 [Cloud Shell](https://shell.azure.com/)的 pod 清單： `kubectl get pods -o wide` 。
 我們預期已建立名為 ' agic-pod ' 的 pod。 它會有一個 IP 位址。 此位址必須在與 AKS 搭配使用的應用程式閘道的 VNET 內。
 
-![豆莢](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Azure Cloud Shell 中 Bash 視窗的螢幕擷取畫面，其中顯示清單中包含測試 agic-pod 的 pod 清單。](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 取得服務清單： `kubectl get services -o wide` 。 我們預期會看到名為 ' agic-app-service ' 的服務。
 
-![豆莢](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Azure Cloud Shell 中 Bash 視窗的螢幕擷取畫面，其中顯示清單中包含測試 agic-應用程式-pod 的服務清單。](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 取得 ingresses 的清單： `kubectl get ingress` 。 我們預期已建立名為 ' agic-應用程式-輸入 ' 的輸入資源。 資源將會有主機名稱 ' test.agic.contoso.com '。
 
-![豆莢](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Azure Cloud Shell 中 Bash 視窗的螢幕擷取畫面，其中顯示清單中包含測試 agic 應用程式輸入的 ingresses 清單。](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
 其中一個 pod 將會 AGIC。 `kubectl get pods` 會顯示 pod 清單，其中一個會以 ' 輸入-azure ' 開頭。 取得該 pod 的所有記錄檔， `kubectl logs <name-of-ingress-controller-pod>` 以確認已成功部署。 成功的部署會將下列幾行新增至記錄：
 ```
@@ -120,7 +120,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 1. 用 `kubectl get ingress` 來取得應用程式閘道的公用 IP 位址
 2. 使用`curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>`
 
-![豆莢](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Azure Cloud Shell 中 Bash 視窗的螢幕擷取畫面，其中顯示捲曲命令已成功建立與測試應用程式的 HTTP 連線。](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 結果 `HTTP/1.1 200 OK` 表示應用程式閘道 + AKS + AGIC 系統正如預期般運作。
 
@@ -236,7 +236,7 @@ AGIC 有3個記錄層級。 層級1是預設值，而且會顯示最少的記錄
 Kubernetes 社區已為 [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) 工具建立9個記錄層級。 在此存放庫中，我們會利用類似的語法來使用其中的3個：
 
 
-| 詳細程度 | 說明 |
+| 詳細程度 | 描述 |
 |-----------|-------------|
 |  1        | 預設記錄層級;顯示啟動詳細資料、警告和錯誤 |
 |  3        | 有關事件和變更的擴充資訊;已建立物件的清單 |

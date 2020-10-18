@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317016"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167945"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>叢集設定最佳做法 (Azure VM 上的 SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,8 +45,6 @@ ms.locfileid: "91317016"
 ||[磁碟見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)  |[檔案共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**支援的 OS**| 全部 |Windows Server 2016+| 全部|
-
-
 
 
 ### <a name="disk-witness"></a>磁碟見證
@@ -84,26 +82,27 @@ ms.locfileid: "91317016"
 
 ## <a name="connectivity"></a>連線能力
 
-在傳統內部部署網路環境中，SQL Server 容錯移轉叢集實例似乎是單一電腦上所執行 SQL Server 的單一實例。 由於容錯移轉叢集實例會從節點容錯移轉到節點，因此實例的虛擬網路名稱 (VNN) 會提供統一的連接點，並允許應用程式在不知道目前作用中的節點的情況下，連接到 SQL Server 實例。 發生容錯移轉時，會在新的使用中節點啟動後，將虛擬網路名稱註冊到該節點。 此程式對連接至 SQL Server 的用戶端或應用程式而言是透明的，這會將用戶端或應用程式在失敗期間所遇到的停機時間降到最低。 
+在傳統內部部署網路環境中，SQL Server 容錯移轉叢集實例似乎是單一電腦上所執行 SQL Server 的單一實例。 由於容錯移轉叢集實例會從節點容錯移轉到節點，因此實例的虛擬網路名稱 (VNN) 會提供統一的連接點，並允許應用程式在不知道目前作用中的節點的情況下，連接到 SQL Server 實例。 發生容錯移轉時，會在新的使用中節點啟動後，將虛擬網路名稱註冊到該節點。 此程式對連接至 SQL Server 的用戶端或應用程式而言是透明的，這會將用戶端或應用程式在失敗期間所遇到的停機時間降到最低。 同樣地，可用性群組接聽程式會使用 VNN 將流量路由傳送至適當的複本。 
 
-使用具有 Azure Load Balancer 的 VNN 或分散式網路名稱 (DNN) ，將流量路由至容錯移轉叢集實例的 VNN，並在 Azure Vm 上 SQL Server。 DNN 功能目前僅適用于 Windows Server 2016 (或更新版本) 虛擬機器上的 SQL Server 2019 CU2 和更新版本。 
+使用具有 Azure Load Balancer 的 VNN 或分散式網路名稱 (DNN) ，將流量路由至容錯移轉叢集實例的 VNN，並使用 Azure Vm 上的 SQL Server，或取代可用性群組中的現有 VNN 接聽程式。 
+
 
 下表將比較 HADR 連接的可支援性： 
 
 | |**虛擬網路名稱 (VNN)**  |**分散式網路名稱 (DNN)**  |
 |---------|---------|---------|
-|**作業系統最低版本**| 全部 | 全部 |
-|**最低 SQL Server 版本** |全部 |SQL Server 2019 CU2|
-|**支援的 HADR 解決方案** | 容錯移轉叢集執行個體 <br/> 可用性群組 | 容錯移轉叢集執行個體|
+|**作業系統最低版本**| 全部 | Windows Server 2016 |
+|**最低 SQL Server 版本** |全部 |適用于 FCI 的 SQL Server 2019 CU2 () <br/> AG ) 的 SQL Server 2019 CU8 (|
+|**支援的 HADR 解決方案** | 容錯移轉叢集執行個體 <br/> 可用性群組 | 容錯移轉叢集執行個體 <br/> 可用性群組|
 
 
 ### <a name="virtual-network-name-vnn"></a>虛擬網路名稱 (VNN)
 
-由於虛擬 IP 存取點在 Azure 中的運作方式不同，因此您必須設定 [Azure Load Balancer](../../../load-balancer/index.yml) ，以將流量路由傳送至 FCI 節點的 IP 位址。 在 Azure 虛擬機器中，負載平衡器會保存叢集 SQL Server 資源所依賴的 VNN IP 位址。 負載平衡器會分散抵達前端的輸入流量，然後將該流量路由傳送至後端集區所定義的實例。 您可以使用負載平衡規則和健康情況探查來設定流量流程。 使用 SQL Server FCI，後端集區實例是執行 SQL Server 的 Azure 虛擬機器。 
+由於虛擬 IP 存取點在 Azure 中的運作方式不同，因此您必須設定 [Azure Load Balancer](../../../load-balancer/index.yml) ，以將流量路由傳送至 FCI 節點或可用性群組接聽程式的 IP 位址。 在 Azure 虛擬機器中，負載平衡器會保存叢集 SQL Server 資源所依賴的 VNN IP 位址。 負載平衡器會分散抵達前端的輸入流量，然後將該流量路由傳送至後端集區所定義的實例。 您可以使用負載平衡規則和健康情況探查來設定流量流程。 使用 SQL Server FCI，後端集區實例是執行 SQL Server 的 Azure 虛擬機器。 
 
 使用負載平衡器時，會有輕微的容錯移轉延遲，因為健康狀態探查預設會每隔10秒執行一次運作檢查。 
 
-若要開始使用，請瞭解如何 [設定 FCI 的 Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)。 
+若要開始使用，請瞭解如何設定[容錯移轉叢集實例](failover-cluster-instance-vnn-azure-load-balancer-configure.md)或[可用性群組](availability-group-vnn-azure-load-balancer-configure.md)的 Azure Load Balancer
 
 **支援的 OS**：全部   
 **支援的 SQL 版本**：全部   
@@ -112,22 +111,22 @@ ms.locfileid: "91317016"
 
 ### <a name="distributed-network-name-dnn"></a>分散式網路名稱 (DNN)
 
-分散式網路名稱是適用于 SQL Server 2019 CU2 的新 Azure 功能。 DNN 提供另一種方式，讓 SQL Server 用戶端連線至 SQL Server 容錯移轉叢集實例，而不需使用負載平衡器。 
+分散式網路名稱是適用于 SQL Server 2019 的新 Azure 功能。 DNN 提供另一種方式，讓 SQL Server 用戶端連接到 SQL Server 容錯移轉叢集實例或可用性群組，而不需要使用負載平衡器。 
 
-建立 DNN 資源時，叢集會將 DNS 名稱系結至叢集中所有節點的 IP 位址。 SQL 用戶端會嘗試連接到此清單中的每個 IP 位址，以找出容錯移轉叢集實例目前執行所在的節點。 您可以藉由 `MultiSubnetFailover=True` 在連接字串中指定來加速此程式。 這項設定會指示提供者以平行方式嘗試所有 IP 位址，讓用戶端可以立即連接到 FCI。 
+建立 DNN 資源時，叢集會將 DNS 名稱系結至叢集中所有節點的 IP 位址。 SQL 用戶端會嘗試連線到此清單中的每個 IP 位址，以找出要連接的資源。  您可以藉由 `MultiSubnetFailover=True` 在連接字串中指定來加速此程式。 這項設定會指示提供者以平行方式嘗試所有 IP 位址，讓用戶端可以立即連接到 FCI 或接聽程式。 
 
 在可能的情況下，建議您在負載平衡器上使用分散式網路名稱，原因是： 
 - 端對端解決方案更健全，因為您不再需要維護負載平衡器資源。 
 - 刪除負載平衡器探查可將容錯移轉持續時間降至最低。 
-- DNN 可透過 Azure Vm 上的 SQL Server，簡化容錯移轉叢集實例的布建和管理。 
+- DNN 可透過 Azure Vm 上的 SQL Server，簡化容錯移轉叢集實例或可用性群組接聽程式的布建和管理。 
 
-大部分的 SQL Server 功能都能以透明的方式與 FCI 搭配運作。 在這些情況下，您可以只將現有的 VNN DNS 名稱取代為 DNN DNS 名稱，或將 DNN 值設定為現有的 VNN DNS 名稱。 不過，某些伺服器端元件需要將 VNN 名稱對應至 DNN 名稱的網路別名。 特定案例可能需要明確使用 DNN DNS 名稱，例如，當您在伺服器端設定中定義特定 Url 時。 
+在使用 DNN 時，大部分的 SQL Server 功能都會以透明的方式與 FCI 和可用性群組搭配運作，但有些功能可能需要特別考慮。 若要深入瞭解，請參閱 [FCI 和 DNN 互通性](failover-cluster-instance-dnn-interoperability.md) 和 [AG 和 DNN 互通性](availability-group-dnn-interoperability.md) 。 
 
-若要開始使用，請瞭解如何 [設定 FCI 的 DNN 資源](hadr-distributed-network-name-dnn-configure.md)。 
+若要開始使用，請瞭解如何為[容錯移轉叢集實例](failover-cluster-instance-distributed-network-name-dnn-configure.md)或[可用性群組](availability-group-distributed-network-name-dnn-listener-configure.md)設定分散式網路名稱資源
 
 **支援的 OS**：Windows Server 2016 及更新版本   
-**支援的 SQL 版本**： SQL Server 2019 和更新版本   
-**支援的 HADR 解決方案**：僅限容錯移轉叢集實例
+**支援的 SQL 版本**： SQL SERVER 2019 CU2 (FCI) 和 SQL SERVER 2019 CU8 (AG)    
+**支援的 HADR 解決方案**：容錯移轉叢集實例和可用性群組   
 
 
 ## <a name="limitations"></a>限制
@@ -146,5 +145,5 @@ Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure
 
 ## <a name="next-steps"></a>後續步驟
 
-確定您的解決方案有適當的最佳作法之後，請先 [準備 SQL SERVER VM 以進行 FCI](failover-cluster-instance-prepare-vm.md)。 您也可以使用 [Azure CLI](availability-group-az-cli-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來建立可用性群組。 
+確定您的解決方案有適當的最佳作法之後，請開始 [準備 SQL SERVER VM 以進行 FCI](failover-cluster-instance-prepare-vm.md) ，或使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、 [Azure CLI/PowerShell](availability-group-az-cli-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來建立可用性群組。 
 

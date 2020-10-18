@@ -3,12 +3,12 @@ title: 估計 Azure Functions 中的耗用量方案成本
 description: 瞭解如何在 Azure 的取用方案中執行函數應用程式時，更有效地評估可能產生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207768"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168101"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估計取用方案成本
 
@@ -16,7 +16,7 @@ ms.locfileid: "88207768"
 
 | 規劃 | 說明 |
 | ---- | ----------- |
-| [**耗用量**](functions-scale.md#consumption-plan) | 您只需針對函數應用程式執行的時間付費。 此方案包含每個訂用帳戶的[免費授]與[定價頁面]。|
+| [**消費**](functions-scale.md#consumption-plan) | 您只需針對函數應用程式執行的時間付費。 此方案包含每個訂用帳戶的[免費授]與[定價頁面]。|
 | [**Premium**](functions-scale.md#premium-plan) | 提供您與取用方案相同的功能和調整機制，但具備增強的效能和 VNET 存取權。 成本是以您選擇的定價層為基礎。 若要深入瞭解，請參閱 [Azure Functions Premium 方案](functions-premium-plan.md)。 |
 | [**專用 (App Service) **](functions-scale.md#app-service-plan) <br/> (基本層或更高)  | 當您需要在專用 Vm 或隔離中執行時，請使用自訂映射，或想要使用超出 App Service 的方案容量。 使用 [定期 App Service 方案計費](https://azure.microsoft.com/pricing/details/app-service/)。 成本是以您選擇的定價層為基礎。|
 
@@ -50,7 +50,7 @@ Durable Functions 也可以在取用方案中執行。 若要深入瞭解使用 
 | 相關成本 | 描述 |
 | ------------ | ----------- |
 | **儲存體帳戶** | 每個函式應用程式都需要您有相關聯的一般用途 [Azure 儲存體帳戶](../storage/common/storage-introduction.md#types-of-storage-accounts)，此帳戶會 [另外計費](https://azure.microsoft.com/pricing/details/storage/)。 函式執行時間會在內部使用此帳戶，但是您也可以將它用於儲存體觸發程式和系結。 如果您沒有儲存體帳戶，則會在建立函數應用程式時為您建立一個儲存體帳戶。 若要深入了解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。|
-| **Application Insights** | 函式依賴 [Application Insights](../azure-monitor/app/app-insights-overview.md) 為您的函式應用程式提供高效能的監視體驗。 雖然並非必要，但您應該 [啟用 Application Insights 整合](functions-monitoring.md#enable-application-insights-integration)。 每個月都會包含遙測資料的免費授與。 若要深入瞭解，請參閱 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 |
+| **Application Insights** | 函式依賴 [Application Insights](../azure-monitor/app/app-insights-overview.md) 為您的函式應用程式提供高效能的監視體驗。 雖然並非必要，但您應該 [啟用 Application Insights 整合](configure-monitoring.md#enable-application-insights-integration)。 每個月都會包含遙測資料的免費授與。 若要深入瞭解，請參閱 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 |
 | **網路頻寬** | 您不需支付相同區域中的 Azure 服務之間的資料傳輸費用。 不過，您可能會因為將資料傳輸到另一個區域或 Azure 外部而產生費用。 若要深入瞭解，請參閱 [頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。 |
 
 ## <a name="behaviors-affecting-execution-time"></a>影響執行時間的行為
@@ -61,13 +61,15 @@ Durable Functions 也可以在取用方案中執行。 若要深入瞭解使用 
 
 + **非同步執行**：當您的函式等候非同步要求的結果時， (`await` c # ) 會計算為執行時間。 GB 秒計算是以函式的開始和結束時間以及該期間內的記憶體使用量為基礎。 在這段時間內，在 CPU 活動方面所發生的情況並不會納入計算中。 您可以使用 [Durable Functions](durable/durable-functions-overview.md)，在非同步作業期間降低成本。 在協調器函式中等候花費的時間並不計費。
 
-## <a name="view-execution-data"></a>查看執行資料
+## <a name="viewing-cost-related-data"></a>查看成本相關資料
 
 在 [您的發票](../cost-management-billing/understand/download-azure-invoice.md)中，您可以查看總執行的成本相關資料（函 **式** 和 **執行時間函數**），以及實際計費成本。 不過，此發票資料是過去發票期間的每月匯總。 
 
+### <a name="function-app-level-metrics"></a>函數應用層級計量
+
 若要進一步瞭解函式的成本影響，您可以使用 Azure 監視器來查看函式應用程式目前產生的成本相關計量。 您可以使用[Azure 入口網站]或 REST api 中的[Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)來取得此資料。
 
-### <a name="monitor-metrics-explorer"></a>監視計量瀏覽器
+#### <a name="monitor-metrics-explorer"></a>監視計量瀏覽器
 
 使用 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md) ，以圖形格式針對您的耗用量方案函式應用程式來查看成本相關資料。 
 
@@ -101,7 +103,7 @@ Durable Functions 也可以在取用方案中執行。 若要深入瞭解使用 
 
 此圖表顯示 `Function Execution Units` 在兩小時期間內耗用的1110000000總計（以 MB 為單位）。 若要轉換為 GB 秒，請除以1024000。 在此範例中，函式應用程式已耗用 `1110000000 / 1024000 = 1083.98` GB 秒。 您可以採用此值並乘以 [函式 [定價頁面][定價] 頁面]上目前的執行時間價格，這可為您提供這兩個小時的費用，假設您已使用任何免費的執行時間授與。 
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/)具有可用於抓取計量的命令。 您可以從本機命令環境使用 CLI，或直接從入口網站使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 例如，下列 [az monitor 計量清單](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令會傳回過去使用的相同時間週期內的每小時資料。
 
@@ -192,47 +194,13 @@ az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resour
 ```
 此特定回應顯示從 `2019-09-11T21:46` 到 `2019-09-11T23:18` ，應用程式耗用 1110000000 MB-毫秒 (1083.98 GB 秒) 。
 
-## <a name="determine-memory-usage"></a>判斷記憶體使用量
+### <a name="function-level-metrics"></a>函數層級計量
 
 函式執行單位是執行時間和記憶體使用量的組合，因此是瞭解記憶體使用量的困難度量。 記憶體資料不是目前可透過 Azure 監視器取得的度量。 但是，如果您想要將應用程式的記憶體使用量優化，可以使用 Application Insights 所收集的效能計數器資料。  
 
-如果您尚未這麼做，請 [在您的函數應用程式中啟用 Application Insights](functions-monitoring.md#enable-application-insights-integration)。 啟用此整合之後，您可以 [在入口網站中查詢此遙測資料](functions-monitoring.md#query-telemetry-data)。  
+如果您尚未這麼做，請 [在您的函數應用程式中啟用 Application Insights](configure-monitoring.md#enable-application-insights-integration)。 啟用此整合之後，您可以 [在入口網站中查詢此遙測資料](analyze-telemetry-data.md#query-telemetry-data)。 
 
-在 [ **監視**] 底下，選取 [ **記錄 (分析]) **，然後複製下列遙測查詢並貼到查詢視窗中，然後選取 [ **執行**]。 此查詢會傳回每個取樣時間的總記憶體使用量。
-
-```
-performanceCounters
-| where name == "Private Bytes"
-| project timestamp, name, value
-```
-
-結果看起來如下列範例所示：
-
-| 時間戳記 \[ UTC\]          | NAME          | value       |
-|----------------------------|---------------|-------------|
-| 9/12/2019，1:05:14 \. 947 AM | 私用位元組 | 209932288 |
-| 9/12/2019，1:06:14 \. 994 AM | 私用位元組 | 212189184 |
-| 9/12/2019、1:06:30 \. 010 AM | 私用位元組 | 231714816 |
-| 9/12/2019，1:07:15 \. 040 AM | 私用位元組 | 210591744 |
-| 9/12/2019，1:12:16 \. 285 AM | 私用位元組 | 216285184 |
-| 9/12/2019，1:12:31 \. 376 AM | 私用位元組 | 235806720 |
-
-## <a name="function-level-metrics"></a>函數層級計量
-
-Azure 監視器會追蹤資源層級的計量，而函式是函數應用程式。 Application Insights 整合會以每個函式為基礎發出度量。 以下是取得函數平均持續時間的範例分析查詢：
-
-```
-customMetrics
-| where name contains "Duration"
-| extend averageDuration = valueSum / valueCount
-| summarize averageDurationMilliseconds=avg(averageDuration) by name
-```
-
-| NAME                       | averageDurationMilliseconds |
-|----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16 \. 087                     |
-| QueueTrigger MaxDurationMs | 90 \. 249                     |
-| QueueTrigger MinDurationMs | 8 \. 522                      |
+[!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

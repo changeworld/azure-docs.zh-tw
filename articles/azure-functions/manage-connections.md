@@ -4,12 +4,12 @@ description: 了解如何使用靜態連線用戶端來避免 Azure Functions �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106088"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168302"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 
@@ -21,11 +21,11 @@ ms.locfileid: "92106088"
 
 這是每個實例的限制。 當 [調整控制器新增函數應用程式實例](functions-scale.md#how-the-consumption-and-premium-plans-work) 來處理更多要求時，每個實例都有獨立的連接限制。 這表示沒有全域連線限制，而且您可以在所有使用中的實例上擁有超過600個使用中的連接。
 
-進行疑難排解時，請確定您已為函數應用程式啟用 Application Insights。 Application Insights 可讓您查看函式應用程式（例如執行）的計量。 如需詳細資訊，請參閱 [Application Insights 中的查看遙測](functions-monitoring.md#view-telemetry-in-application-insights)。  
+進行疑難排解時，請確定您已為函數應用程式啟用 Application Insights。 Application Insights 可讓您查看函式應用程式（例如執行）的計量。 如需詳細資訊，請參閱 [Application Insights 中的查看遙測](analyze-telemetry-data.md#view-telemetry-in-application-insights)。  
 
 ## <a name="static-clients"></a>靜態用戶端
 
-若要避免保有超過所需的連線，請重複使用用戶端執行個體，而不是在每次函式引動過程建立新的執行個體。 建議您針對可能撰寫函數的任何語言重複使用用戶端連接。 例如，如果您使用單一靜態用戶端，例如 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)、 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)和 Azure 儲存體用戶端的 .net 用戶端就可以管理連接。
+若要避免保有超過所需的連線，請重複使用用戶端執行個體，而不是在每次函式引動過程建立新的執行個體。 建議您針對可能撰寫函數的任何語言重複使用用戶端連接。 例如，如果您使用單一靜態用戶端，例如 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true)、 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)和 Azure 儲存體用戶端的 .net 用戶端就可以管理連接。
 
 以下是當您在 Azure Functions 應用程式中使用服務特定用戶端時，應遵循的一些指導方針：
 
@@ -39,7 +39,7 @@ ms.locfileid: "92106088"
 
 ### <a name="httpclient-example-c"></a>HttpClient 範例 (C#)
 
-以下是 c # 函式程式碼的範例，可建立靜態 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 實例：
+以下是 c # 函式程式碼的範例，可建立靜態 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) 實例：
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-在 .NET 中 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) 的常見問題是「我應該處置我的用戶端嗎？」 一般而言，您會處置使用完成時所執行的物件 `IDisposable` 。 但是您不會處置靜態用戶端，因為當函式結束時，不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
+在 .NET 中 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) 的常見問題是「我應該處置我的用戶端嗎？」 一般而言，您會處置使用完成時所執行的物件 `IDisposable` 。 但是您不會處置靜態用戶端，因為當函式結束時，不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
 
 ### <a name="http-agent-examples-javascript"></a> (JavaScript) 的 HTTP 代理程式範例
 
@@ -143,10 +143,10 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 連線
 
-您的函式程式碼可以使用 .NET Framework Data Provider SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) ，以連接到 SQL 關係資料庫。 這也是依賴 ADO.NET 的資料架構的基礎提供者，例如 [Entity Framework](/ef/ef6/)。 不同於 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) \(英文\) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但因為您仍然可以用完連接，所以您應該將資料庫的連接優化。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
+您的函式程式碼可以使用 .NET Framework Data Provider SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) ，以連接到 SQL 關係資料庫。 這也是依賴 ADO.NET 的資料架構的基礎提供者，例如 [Entity Framework](/ef/ef6/)。 不同於 [HttpClient](/dotnet/api/system.net.http.httpclient) \(英文\) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但因為您仍然可以用完連接，所以您應該將資料庫的連接優化。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
 
 > [!TIP]
-> 某些資料框架（例如 Entity Framework）通常會從設定檔的 **ConnectionStrings** 區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) 的實例，您應該在 **應用程式設定** 中將連接字串值與其他連接一起儲存。
+> 某些資料框架（例如 Entity Framework）通常會從設定檔的 **ConnectionStrings** 區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的實例，您應該在 **應用程式設定** 中將連接字串值與其他連接一起儲存。
 
 ## <a name="next-steps"></a>後續步驟
 

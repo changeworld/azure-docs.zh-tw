@@ -2,28 +2,26 @@
 title: 在 Linux 上設定您的開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
-ms.date: 2/23/2018
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249989"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168404"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
-若要在 Linux 開發機器上部署和執行 [Azure Service Fabric 應用程式](service-fabric-application-model.md) ，請安裝執行階段和通用 SDK。 您也可以安裝 Java 和 .NET Core 開發的選擇性 SDK。 
+若要在您的 Linux 開發電腦上部署和執行 (Azure Service Fabric 應用程式) [service-fabric-application-model.md]，請安裝執行時間和通用 SDK。 您也可以安裝 Java 和 .NET Core 開發的選擇性 SDK。 
 
-本文中的步驟假設您要在 Linux 上進行原生安裝，或使用 Service Fabric OneBox 容器映像 `mcr.microsoft.com/service-fabric/onebox:latest`。
+本文中的步驟假設您在 Linux 上以原生方式安裝，或使用 (Service Fabric OneBox 容器映射) []，也就是 https://hub.docker.com/_/microsoft-service-fabric-onebox `mcr.microsoft.com/service-fabric/onebox:u18` 。
 
-不支援在適用於 Linux 的 Windows 子系統上安裝 Service Fabric 執行階段。 您可以使用支援的 Azure Service Fabric 命令列介面 (CLI)，管理裝載於雲端或內部部署中其他地方的 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
+您可以使用 Azure Service Fabric 命令列介面 (CLI) ，管理裝載于雲端或內部部署環境 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -42,9 +40,17 @@ ms.locfileid: "91249989"
 
 ## <a name="installation-methods"></a>安裝方法
 
-### <a name="script-installation-ubuntu"></a>指令碼安裝 (Ubuntu)
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 
-為了方便起見，提供的指令碼會隨著 **sfctl** CLI 安裝 Service Fabric 執行階段和 Service Fabric 通用 SDK。 請執行下一節中的手動安裝步驟。 您會看到安裝的內容和相關聯的授權。 執行指令碼，即表示您同意所要安裝之所有軟體的授權。
+# <a name="ubuntu"></a>[Ubuntu](#tab/sdksetupubuntu)
+
+## <a name="update-your-apt-sources"></a>更新 APT 來源
+若要透過 apt-get 命令列工具安裝 SDK 和相關聯的執行階段套件，您必須先更新 Advanced Packaging Tool (APT) 來源。
+
+## <a name="script-installation"></a>指令碼安裝
+
+為了方便起見，會提供腳本來安裝 Service Fabric 執行時間和 Service Fabric 通用 SDK 以及[ **sfctl** CLI](service-fabric-cli.md)。 執行指令碼，即表示您同意所要安裝之所有軟體的授權。 或者，您可以在下一節中執行 [手動安裝](#manual-installation) 步驟，這會顯示相關聯的授權以及所安裝的元件。
 
 指令碼執行成功之後，您可以跳到[設定本機叢集](#set-up-a-local-cluster)。
 
@@ -52,13 +58,8 @@ ms.locfileid: "91249989"
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="manual-installation"></a>手動安裝
+## <a name="manual-installation"></a>手動安裝
 若要手動安裝 Service Fabric 執行階段和通用 SDK，請遵循本指南的其餘部分。
-
-## <a name="update-your-apt-sources-or-yum-repositories"></a>更新 APT 來源或 Yum 存放庫
-若要透過 apt-get 命令列工具安裝 SDK 和相關聯的執行階段套件，您必須先更新 Advanced Packaging Tool (APT) 來源。
-
-### <a name="ubuntu"></a>Ubuntu
 
 1. 開啟終端機。
 
@@ -100,8 +101,30 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo apt-get update
     ```
 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>針對本機叢集安裝和設定 Service Fabric SDK
 
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric 預覽支援)
+在您更新來源後，就可以安裝 SDK。 安裝 Service Fabric SDK 套件、確認安裝，並接受授權合約。
+
+### <a name="ubuntu"></a>Ubuntu
+
+```bash
+sudo apt-get install servicefabricsdkcommon
+```
+
+> [!TIP]
+>   下列命令會自動接受 Service Fabric 套件的授權︰
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
+>   ```
+
+# <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
+
+## <a name="update-your-yum-repositories"></a>更新您的 Yum 存放庫
+若要透過 yum 命令列工具安裝 SDK 和相關聯的執行時間套件，您必須先更新您的套件來源。
+
+## <a name="manual-installation-rhel"></a>手動安裝 (RHEL) 
+若要手動安裝 Service Fabric 執行階段和通用 SDK，請遵循本指南的其餘部分。
 
 1. 開啟終端機。
 2. 下載並安裝 Extra Packages for Enterprise Linux (EPEL)。
@@ -129,50 +152,69 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-6. 安裝 .NET SDK。
-
-    ```bash
-    yum install rh-dotnet20 -y
-    ```
-
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>針對本機叢集安裝和設定 Service Fabric SDK
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>安裝並設定 Service Fabric SDK，以供本機叢集 (RHEL) 
 
 在您更新來源後，就可以安裝 SDK。 安裝 Service Fabric SDK 套件、確認安裝，並接受授權合約。
-
-### <a name="ubuntu"></a>Ubuntu
-
-```bash
-sudo apt-get install servicefabricsdkcommon
-```
-
-> [!TIP]
->   下列命令會自動接受 Service Fabric 套件的授權︰
->   ```bash
->   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
->   ```
-
-### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric 預覽支援)
 
 ```bash
 sudo yum install servicefabricsdkcommon
 ```
 
+---
+
+## <a name="included-packages"></a>內含套件
 SDK 安裝程式隨附的 Service Fabric 執行階段包含下表中的套件。 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.0 | AzulJDK 1.8 | 內含於 npm | 最新 |
+**Ubuntu** | 2.0.7 | AzulJDK 1.8 | 內含於 npm | 最新 |
 **RHEL** | - | OpenJDK 1.8 | 內含於 npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>設定本機叢集
-在安裝完成之後，請啟動本機叢集。
+1. 啟動本機 Service Fabric 叢集以進行開發。
+
+# <a name="container-based-local-cluster"></a>[以容器為基礎的本機叢集](#tab/localclusteroneboxcontainer)
+
+啟動以容器為基礎的 [單一 box Service Fabric 叢集中](https://hub.docker.com/r/microsoft/service-fabric-onebox/)。
+
+1. 安裝 Moby，以便能夠部署 Docker 容器。
+    ```bash
+    sudo apt-get install moby-engine moby-cli -y
+    ```
+2. 使用下列設定來更新您主機上的 Docker daemon 設定，並重新啟動 Docker daemon。 詳細資料： [啟用 IPv6 支援](https://docs.docker.com/config/daemon/ipv6/)
+
+    ```json
+    {
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/64"
+    }
+    ```
+
+3. 啟動叢集。<br/>
+    <b>Ubuntu 18.04 LTS：</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
+    ```
+
+    <b>Ubuntu 16.04 LTS：</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定的修訂，請造訪 [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 頁面。
+
+# <a name="local-cluster"></a>[本機叢集](#tab/localcluster)
+
+使用上述步驟安裝 SDK 之後，請啟動本機叢集。
 
 1. 執行叢集安裝指令碼。
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
+---
 
 2. 開啟網頁瀏覽器並移至 **Service Fabric Explorer** (`http://localhost:19080/Explorer`) 。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
@@ -217,9 +259,9 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 在您安裝產生器後，請分別執行 `yo azuresfguest` 或 `yo azuresfcontainer`，以建立來賓可執行檔或容器服務。
 
-## <a name="set-up-net-core-20-development"></a>設定 .NET Core 2.0 開發
+## <a name="set-up-net-core-31-development"></a>設定 .NET Core 3.1 開發
 
-安裝 [.NET Core 2.0 SDK for Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) 以開始[建立 C# Service Fabric 應用程式](service-fabric-create-your-first-linux-application-with-csharp.md)。 NuGet.org 會裝載 .NET Core 2.0 Service Fabric 應用程式的套件 (目前處於預覽狀態)。
+安裝 [適用于 Ubuntu 的 .Net Core 3.1 SDK](https://www.microsoft.com/net/core#linuxubuntu) 以開始 [建立 c # Service Fabric 應用程式](service-fabric-create-your-first-linux-application-with-csharp.md)。 適用于 .NET Core Service Fabric 應用程式的套件裝載于 NuGet.org 上。
 
 ## <a name="set-up-java-development"></a>設定 Java 開發
 
@@ -262,7 +304,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 3. 在 [ **工作** ] 方塊中，輸入 **HTTPs： \/ /dl.microsoft.com/eclipse**。
 
-4. 選取 [新增]。
+4. 選取 [新增]  。
 
     ![可用的軟體頁面][sf-eclipse-plugin]
 

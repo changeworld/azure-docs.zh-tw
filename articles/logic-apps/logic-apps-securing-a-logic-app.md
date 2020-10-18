@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2020
-ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: b25cac502a4e9a0cc5582134cb9601b75672ffd1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269160"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168489"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -316,14 +316,14 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在 [存取控制設定] > [允許的輸入 IP 位址] 底下，選取 [特定 IP 範圍]。
 
-1. 在 [觸發程序的 IP 範圍] 底下，指定觸發程序可接受的 IP 位址範圍。
+1. 出現 [ **觸發程式的 ip 範圍** ] 方塊時，指定觸發程式可接受的 ip 位址範圍。 有效的 IP 範圍使用這些格式：*x.x.x.x/x* 或 *x.x.x.x-x.x.x.x*
 
-   有效的 IP 範圍使用這些格式：*x.x.x.x/x* 或 *x.x.x.x-x.x.x.x*
+   例如，若要讓邏輯應用程式只能透過 HTTP 動作以嵌套邏輯應用程式的方式來呼叫，請使用 [ **特定 IP 範圍** ] 選項 (不是唯一) 的 [ **Logic Apps** ] 選項，並輸入父邏輯應用程式的 [輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
 
-如果希望邏輯應用程式只以巢狀邏輯應用程式的形式觸發，請從 [允許的輸入 IP 位址] 清單中，選取 [只有其他 Logic Apps]。 此選項會將空陣列寫入邏輯應用程式資源。 如此一來，只有來自 Logic Apps 服務 (父代邏輯應用程式) 的呼叫，才能觸發巢狀邏輯應用程式。
+   不過，若要讓邏輯應用程式只能透過內建的 [Azure Logic Apps 動作](../logic-apps/logic-apps-http-endpoint.md)作為嵌套邏輯應用程式來呼叫，請改為選取 **其他 Logic Apps** 選項。 此選項會將空的陣列寫入您的邏輯應用程式資源，並要求只有來自其他「父系」邏輯應用程式的呼叫，才能透過內建的 **Azure Logic Apps** 動作來觸發嵌套邏輯應用程式。
 
-> [!NOTE]
-> 無論 IP 位址為何，您仍然可以使用 [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run) 要求或使用 API 管理，來執行具有要求型觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
+   > [!NOTE]
+   > 無論您指定的任何 IP 位址為何，您仍然可以使用 [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run) 要求或使用 API 管理，來執行具有要求型觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
 
 <a name="restrict-inbound-ip-template"></a>
 

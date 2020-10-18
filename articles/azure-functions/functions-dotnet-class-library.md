@@ -4,12 +4,12 @@ description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206203"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167741"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -139,7 +139,7 @@ public static class BindingExpressionsExample
 
 此檔案的目的是要提供資訊給調整控制器，以用於調整取用 [方案的決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
 
-產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下為範例：
+產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下是範例：
 
 ```json
 {
@@ -164,18 +164,7 @@ public static class BindingExpressionsExample
 
 Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1.x 專案與 2.x 專案可依目標架構來區分。 以下是 *.csproj* 檔案的相關部分，顯示不同的目標架構和相同的 `Sdk` 套件：
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2. x +](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -186,6 +175,19 @@ Functions 執行階段的 1.x 版和 2.x 版都是使用同一個套件。 1.x �
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 在 `Sdk` 套件相依性中的是觸發程序和繫結。 1.x 專案指的是1.x 觸發程式和系結，因為這些觸發程式和系結的目標是 .NET Framework，而2.x 觸發程式和系結則以 .NET Core 為目標。
 
@@ -259,25 +261,6 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>記錄
-
-若要使用 C# 將輸出記錄至串流記錄，請包含 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 類型的引數。 建議您將它命名為 `log`，如下列範例所示：  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-避免在 Azure Functions 中使用 `Console.Write`。 如需詳細資訊，請參閱**監視 Azure Functions** 文章中的在 [C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
-
 ## <a name="async"></a>非同步處理
 
 若要讓函式變成[非同步](/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
@@ -327,6 +310,237 @@ public static class CancellationTokenExample
     }
 }
 ```
+
+## <a name="logging"></a>記錄
+
+在您的函式程式碼中，您可以將輸出寫入 Application Insights 中顯示為追蹤的記錄。 寫入記錄檔的建議方式是包含 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)類型的參數，通常會命名為 `log` 。 使用1.x 版的函式執行時間 `TraceWriter` ，這也會寫入 Application Insights，但不支援結構化記錄。 請勿使用 `Console.Write` 寫入您的記錄檔，因為這項資料不是由 Application Insights 所捕捉。 
+
+### <a name="ilogger"></a>ILogger
+
+在函式定義中，包含支援[結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)的[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)參數。
+
+利用 `ILogger` 物件，您可以呼叫 `Log<level>` [擴充方法 (位於 ILogger)](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) \(英文\) 來建立記錄。 下列程式碼會 `Information` 使用類別目錄來寫入記錄 `Function.<YOUR_FUNCTION_NAME>.User.` ：
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+### <a name="structured-logging"></a>結構化記錄
+
+預留位置的順序 (而不是名稱) 會決定要在記錄訊息中使用的參數。 假設您有下列程式碼：
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+如果您保留相同的訊息字串並反轉參數的順序，則產生的訊息文字值會處於錯誤的位置上。
+
+您可以使用這種方式來處理預留位置，讓您能夠執行結構化記錄。 Application Insights 會儲存參數名稱/值組和訊息字串。 結果就是訊息引數會變成您可以查詢的欄位。
+
+如果您的記錄器方法呼叫看起來類似上述範例，則您可以查詢 `customDimensions.prop__rowKey` 欄位。 `prop__` 前置詞已新增，以確保執行階段新增的欄位與您函式程式碼新增的欄位之間沒有衝突。
+
+您也可以藉由參考欄位 `customDimensions.prop__{OriginalFormat}`，在原始訊息字串上進行查詢。  
+
+以下是 `customDimensions` 資料的範例 JSON 表示法：
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函式中記錄自訂遙測
+
+有一個 Functions 特定版本的 Application Insights SDK，可讓您將自訂遙測資料從函式傳送到 Application Insights：[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights) \(英文\)。 從命令提示字元中，使用下列命令來安裝此套件：
+
+# <a name="command"></a>[命令](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+在此命令中，將 `<VERSION>` 取代為此套件的版本，以支援您已安裝的 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/) \(英文\) 版本。 
+
+下列 C# 範例會使用[自訂遙測 API](../azure-monitor/app/api-custom-events-metrics.md)。 此範例適用於 .NET 類別庫，但 Application Insights 程式碼同樣適用於 C# 指令碼。
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+2\.x 版和更新版本的執行階段會使用 Application Insights 中的新功能，自動將遙測與目前作業相互關聯。 不需要手動設定作業 `Id`、`ParentId` 或 `Name` 欄位。
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+在此範例中，自訂度量資料會在傳送至 customMetrics 資料表之前，由主機進行匯總。 若要深入瞭解，請參閱 Application Insights 中的 [>getmetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) 檔。 
+
+在本機執行時，您必須將 `APPINSIGHTS_INSTRUMENTATIONKEY` 具有 Application Insights 金鑰的設定新增至檔案 [local.settings.js](functions-run-local.md#local-settings-file) 。
+
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+                {
+                    Name = "GET api/planets/1/",
+                    Target = "swapi.co",
+                    Data = "https://swapi.co/api/planets/1/",
+                    Timestamp = start,
+                    Duration = DateTime.UtcNow - start,
+                    Success = true
+                };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+不要呼叫 `TrackRequest` 或 `StartOperation<RequestTelemetry>`，因為您將會看到對某個函式引動過程所做的重複要求。  Functions 執行階段會自動追蹤要求。
+
+請勿設定 `telemetryClient.Context.Operation.Id`。 當許多函式同時執行時，此全域設定會導致不正確的相互關聯。 請改為建立新的遙測執行個體 (`DependencyTelemetry`、`EventTelemetry`)，並修改其 `Context` 屬性。 接著，將遙測執行個體傳入至 `TelemetryClient` 上對應的 `Track` 方法 (`TrackDependency()`、`TrackEvent()`、`TrackMetric()`)。 此方法可確保遙測具有目前函式引動過程的正確相互關聯詳細資料。
+
 
 ## <a name="environment-variables"></a>環境變數
 

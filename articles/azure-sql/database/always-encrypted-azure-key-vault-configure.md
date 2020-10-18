@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26bac8115a64d78ce64bc400f98fb26cb929ba4d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444832"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164494"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 設定 Always Encrypted 
 
@@ -149,7 +149,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 1. 展開 [**資料庫**課程  >  **Clinic**  >  **] 資料表**。
 2. 在 [Patients]**** 資料表上按一下滑鼠右鍵，然後選取 [加密資料行]**** 以開啟「一律加密精靈」：
 
-    ![加密資料行](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
+    ![醒目顯示 [加密資料行] 的螢幕擷取畫面 .。。功能表選項。](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
 「一律加密」精靈包含下列區段︰[資料行選取]****、主要金鑰組態****、[驗證]**** 及 [摘要]****。
 
@@ -159,7 +159,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 請加密每個病患的 **SSN** 和 **BirthDate** 資訊。 SSN 資料行將使用決定性加密，這可支援等式查閱、聯結及群組依據。 BirthDate 資料行將使用不支援操作的隨機加密。
 
-將 SSN 資料行的 [加密類型]**** 設定為 [決定性]****，並將 BirthDate 資料行設定為 [隨機化]****。 按一下 [下一步]。
+將 SSN 資料行的 [加密類型]**** 設定為 [決定性]****，並將 BirthDate 資料行設定為 [隨機化]****。 按 [下一步]  。
 
 ![加密資料行](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,7 +171,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 1. 選取 [Azure 金鑰保存庫] ****。
 2. 從下拉式清單中選取想要的金鑰保存庫。
-3. 按一下 [下一步]。
+3. 按 [下一步]  。
 
 ![主要金鑰組態](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 
@@ -574,7 +574,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 您可以看到加密的資料行不包含任何純文字資料。
 
-   ![新的主控台應用程式](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
+   ![顯示加密資料行未包含任何純文字資料的螢幕擷取畫面。](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
 若要使用 SSMS 來存取純文字資料，您必須先確定使用者有 Azure Key Vault 的適當權限：*get*、*unwrapKey* 與 *verify*。 如需詳細資訊，請參閱[建立和儲存資料行主要金鑰 (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)。
 
@@ -584,7 +584,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 2. 按一下 [**連接**  >  **資料庫引擎**] 以開啟 [**連接到伺服器**] 視窗，然後按一下 [**選項**]。
 3. 按一下 [其他連接參數]**** 並輸入 **Column Encryption Setting=enabled**。
 
-    ![新的主控台應用程式](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
+    ![顯示 [其他修正參數] 索引標籤的螢幕擷取畫面。](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 
 4. 在 Clinic 資料庫上執行下列查詢。
 

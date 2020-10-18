@@ -4,12 +4,12 @@ description: 瞭解如何使用 Visual Studio Code 的 Azure Functions 擴充功
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104065"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167894"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 來開發 Azure Functions
 
@@ -384,15 +384,13 @@ HTTP 觸發程式的要求 URL 會顯示在終端機的輸出中。 當專案在
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> 串流記錄只支援函數主機的單一實例。 當您的函式調整為多個實例時，其他實例的資料不會顯示在記錄資料流程中。 Application Insights 中的[即時計量資料流](../azure-monitor/app/live-stream.md)支援多個實例。 串流分析在近乎即時的情況下也會以取樣的 [資料](functions-monitoring.md#configure-sampling)為基礎。
+> 串流記錄只支援函數主機的單一實例。 當您的函式調整為多個實例時，其他實例的資料不會顯示在記錄資料流程中。 Application Insights 中的[即時計量資料流](../azure-monitor/app/live-stream.md)支援多個實例。 串流分析在近乎即時的情況下也會以取樣的 [資料](configure-monitoring.md#configure-sampling)為基礎。
 
 ### <a name="application-insights"></a>Application Insights
 
-建議您將函數應用程式與 Application Insights 整合，來監視函式的執行。 當您在 Azure 入口網站中建立函數應用程式時，預設會進行這項整合。 當您在 Visual Studio 發佈期間建立函數應用程式時，您必須自行整合 Application Insights。
+建議您將函數應用程式與 Application Insights 整合，來監視函式的執行。 當您在 Azure 入口網站中建立函數應用程式時，預設會進行這項整合。 當您在 Visual Studio 發佈期間建立函數應用程式時，您必須自行整合 Application Insights。 若要瞭解作法，請參閱 [啟用 Application Insights 整合](configure-monitoring.md#enable-application-insights-integration)。
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-若要深入了解，請參閱[監視 Azure Functions](functions-monitoring.md)。
+若要深入瞭解如何使用 Application Insights 進行監視，請參閱 [監視 Azure Functions](functions-monitoring.md)。
 
 ## <a name="c-script-projects"></a>C \# 腳本專案
 

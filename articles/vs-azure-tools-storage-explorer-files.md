@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456606"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167877"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>搭配使用儲存體總管與 Azure 檔案儲存體
 
@@ -73,7 +73,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1. 主窗格會顯示檔案共用的內容。
     
-    ![檔案共用的內容](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![顯示共用內容的儲存體總管中，檔案共用主窗格的螢幕擷取畫面。](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>刪除檔案共用
 
@@ -117,7 +117,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 ## <a name="get-the-sas-for-a-file-share"></a>取得檔案共用的 SAS
 
-[共用存取簽章 (SAS)](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1) 可提供您儲存體帳戶中資源的委派存取。 這表示您可以在無需分享您帳戶存取金鑰的情況下，將您儲存體帳戶中的物件有限權限授與用戶端，該用戶端便可在指定的時間期間內及使用指定的權限集來進行存取。
+[ (SAS) 的共用存取](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1)簽章可提供您儲存體帳戶中資源的委派存取權。 這表示您可以在無需分享您帳戶存取金鑰的情況下，將您儲存體帳戶中的物件有限權限授與用戶端，該用戶端便可在指定的時間期間內及使用指定的權限集來進行存取。
 
 下列步驟說明如何建立檔案共用的 SAS：
 
@@ -191,7 +191,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 1.  主窗格會顯示檔案共用的內容。
 
-    ![檔案共用的內容](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![[檔案共用] 儲存體總管 myazurefileshare 主窗格的螢幕擷取畫面，其中顯示已選取第一個資料夾的共用內容。](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  主窗格會顯示檔案共用的內容。
 

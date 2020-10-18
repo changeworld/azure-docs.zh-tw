@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272492"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164239"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -101,14 +101,14 @@ ms.locfileid: "91272492"
 
 在每部虛擬機器上，開啟 SQL Server 使用的 Windows 防火牆 TCP 埠。 根據預設，這是埠1433。 但是，您可以變更 Azure VM 部署上的 SQL Server 埠，因此請開啟 SQL Server 在您的環境中使用的埠。 此埠會在從 Azure Marketplace 部署 SQL Server 映射上自動開啟。 
 
-如果您使用 [負載平衡器](hadr-vnn-azure-load-balancer-configure.md)，您也必須開啟健康情況探查所使用的埠。 根據預設，這是埠59999。 但它可以是您在建立負載平衡器時所指定的任何 TCP 埠。 
+如果您使用 [負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，您也必須開啟健康情況探查所使用的埠。 根據預設，這是埠59999。 但它可以是您在建立負載平衡器時所指定的任何 TCP 埠。 
 
 下表詳細說明您可能需要開啟的埠，取決於您的 FCI 設定： 
 
-   | 目的 | 連接埠 | 注意
+   | 目的 | Port | 注意
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者**：所有 FCI 設定。 |
-   | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由**： FCI 與負載平衡器搭配使用。 |
+   | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由**： FCI 與負載平衡器搭配使用。 |
    | 檔案共用 | UDP 445 | 檔案共用服務使用的埠。 </br> </br> **消費者**： FCI 與 Premium 檔案共用。 |
 
 ## <a name="join-the-domain"></a>加入網域

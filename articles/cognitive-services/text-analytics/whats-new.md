@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a85c129dd11e587a0714e92c850315101df103f0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015919"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166177"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -25,6 +25,7 @@ ms.locfileid: "92015919"
 
 * 情感分析 v3. x 的印度文支援（從 `2020-04-01` 模型版本開始）。 
 * `2020-09-01`V3/languages 端點的模型版本，可增加語言偵測和精確度的改進。
+* 推出印度中部和阿拉伯聯合大公國北部的 v3。
 
 ## <a name="september-2020"></a>2020 年 9 月
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361461"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167911"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>當無法存取 Azure 序列主控台，而磁片配置使用 LVM (邏輯磁片區管理員時，針對 Linux VM 進行疑難排解) 
 
@@ -71,7 +71,7 @@ Azure 入口網站-> 選取 **修復** VM-> **磁片**
 
 `lsblk`
 
-![執行 lsblk](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![顯示 lsblk 命令輸出的螢幕擷取畫面。](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
 確認是否顯示受影響 VM 的 LVMs。
@@ -198,11 +198,11 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 所有 Lvs) 都應該顯示為已載入的資料分割
 
-![進階](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![顯示 Lvs) 為已載入之分割區的螢幕擷取畫面。](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 查詢已安裝的 **核心**
 
-![進階](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![顯示如何查詢已安裝核心的螢幕擷取畫面。](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 如有需要，請移除或升級**核心** 
  ![ Advanced](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

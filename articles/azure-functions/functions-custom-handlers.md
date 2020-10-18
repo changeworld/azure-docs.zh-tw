@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294589"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164545"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自訂處理常式 (預覽) 
 
@@ -566,7 +566,7 @@ func azure functionapp publish $functionAppName
 
 在本機上，會將記錄檔列印到主控台。
 
-在 Azure 中， [查詢 Application Insights 追蹤](functions-monitoring.md#query-telemetry-data) 以查看記錄訊息。 如果您的應用程式會產生大量的記錄，則只會將一部分的記錄檔訊息傳送至 Application Insights。 [停用取樣](functions-monitoring.md#configure-sampling) ，以確保記錄所有訊息。
+在 Azure 中， [查詢 Application Insights 追蹤](analyze-telemetry-data.md#query-telemetry-data) 以查看記錄訊息。 如果您的應用程式會產生大量的記錄，則只會將一部分的記錄檔訊息傳送至 Application Insights。 [停用取樣](configure-monitoring.md#configure-sampling) ，以確保記錄所有訊息。
 
 ### <a name="test-custom-handler-in-isolation"></a>獨立測試自訂處理常式
 

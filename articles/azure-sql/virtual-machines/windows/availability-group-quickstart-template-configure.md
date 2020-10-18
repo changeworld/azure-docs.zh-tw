@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 207ee67c207f028b5f4bd45d99a7ef431429debb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5c3f7d854081c7306a038cc452b620d1af00d0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293561"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167981"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速入門範本在 Azure VM 上設定 SQL Server 的可用性群組
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,6 +33,8 @@ ms.locfileid: "91293561"
    | &nbsp; | &nbsp; |
 
 可用性群組設定的其他部分必須手動完成，例如建立可用性群組，以及建立內部負載平衡器。 本文提供自動和手動步驟的順序。
+
+雖然本文使用 Azure 快速入門範本來設定可用性群組環境，但也可以使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、 [PowerShell 或 Azure CLI](availability-group-az-commandline-configure.md)，或 [手動](availability-group-manually-configure-tutorial.md) 方式進行。 
  
 
 ## <a name="prerequisites"></a>必要條件 
@@ -102,6 +104,9 @@ ms.locfileid: "91293561"
 > 此時請勿建立接聽程式，因為 **101-sql-vm-aglistener-setup** 快速入門範本會在步驟 4 中自動執行此動作。 
 
 ## <a name="create-load-balancer"></a>建立負載平衡器
+
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行個體。 內部負載平衡器會為可用性群組接聽程式提供「浮動」IP 位址，以加快容錯移轉和重新連線的速度。 如果可用性群組中的 SQL Server VM 屬於相同可用性設定組，則可使用基本的負載平衡器。 否則，即須使用標準負載平衡器。 
 
 > [!IMPORTANT]

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5decd3e222af11c402cbff4585532a0cf22282e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543328"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168047"
 ---
 # <a name="azure-operational-security"></a>Azure 作業安全性
 ## <a name="introduction"></a>簡介
@@ -81,7 +81,7 @@ Azure 監視器記錄的核心功能是由在 Azure 中執行的一組服務所�
 這個方法可讓您合併各種來源的資料，以便結合來自 Azure 服務與現有內部部署環境的資料。 它也可清楚劃分資料的收集與對該資料採取的動作，而讓所有類型的資料可以使用所有的動作。
 
 
-![Azure 監視器記錄](./media/operational-security/azure-operational-security-fig2.png)
+![此圖表會顯示來自各種來源的資料匯總，因此您可以結合來自 Azure 服務的資料與現有的內部部署環境。](./media/operational-security/azure-operational-security-fig2.png)
 
 Azure 監視器服務會使用下列方法安全地管理您的雲端式資料：
 -   資料隔離

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317171"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164817"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -204,8 +204,8 @@ module.exports = (context) => {
 | 屬性名稱  | 類型  | 描述 |
 |---------|---------|---------|
 | `invocationId` | String | 提供特定函式呼叫的唯一識別碼。 |
-| `functionName` | 字串 | 提供正在執行之函式的名稱 |
-| `functionDirectory` | 字串 | 提供函數應用程式目錄。 |
+| `functionName` | String | 提供正在執行之函式的名稱 |
+| `functionDirectory` | String | 提供函數應用程式目錄。 |
 
 下列範例顯示如何傳回 `invocationId` 。
 
@@ -290,49 +290,17 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-可讓您寫入預設追蹤層級的資料流函式記錄。 `context.log` 上有其他可用的記錄方法，可讓您在其他追蹤層級寫入函式記錄︰
+可讓您寫入預設追蹤層級的串流函式記錄，以及其他可用的記錄層級。 下一節將詳細說明追蹤記錄。 
 
+## <a name="write-trace-output-to-logs"></a>將追蹤輸出寫入至記錄
 
-| 方法                 | 描述                                |
-| ---------------------- | ------------------------------------------ |
-| **_訊息_ (錯誤) **   | 寫入錯誤層級或更低層級的記錄。   |
-| **warn(_message_)**    | 寫入警告層級或更低層級的記錄。 |
-| **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
-| **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
+在函式中，您可以使用方法，將 `context.log` 追蹤輸出寫入至記錄檔和主控台。 當您呼叫時 `context.log()` ，您的訊息會寫入預設追蹤層級的記錄，也就是 _資訊_ 追蹤層級。 函數會與 Azure 應用程式 Insights 整合，以更妥善地捕捉您的函式應用程式記錄。 Application Insights （Azure 監視器的一部分）提供收集、視覺化轉譯以及分析應用程式遙測和追蹤輸出的功能。 若要深入瞭解，請參閱 [監視 Azure Functions](functions-monitoring.md)。
 
-下列範例會依警告追蹤層級寫入記錄︰
+下列範例會在 info 追蹤層級寫入記錄，包括調用識別碼：
 
 ```javascript
-context.log.warn("Something has happened."); 
+context.log("Something has happened. " + context.invocationId); 
 ```
-
-您可以在 host.json 檔案中[設定用於記錄的追蹤層級閾值](#configure-the-trace-level-for-console-logging)。 如需寫入記錄的詳細資訊，請參閱以下的[寫入追蹤輸出](#writing-trace-output-to-the-console)。
-
-參閱[監視 Azure Functions](functions-monitoring.md) 深入了解如何檢視和查詢函式記錄。
-
-## <a name="writing-trace-output-to-the-console"></a>將追蹤輸出寫入主控台中 
-
-在 Functions 中，您可以使用 `context.log` 方法，將追蹤輸出寫入主控台中。 在 Functions v2.x 中，會在函式應用程式層級擷取使用 `console.log` 的追蹤輸出。 這表示的輸出 `console.log` 不會系結至特定的函式調用，也不會顯示在特定函式的記錄檔中。 不過，這些輸出會傳播至 Application Insights。 在 Functions v1.x 中，您不能使用 `console.log` 來寫入主控台中。
-
-當您呼叫 `context.log()` 時，會在預設追蹤層級 (也就是「資訊」__ 追蹤層級) 將您的訊息寫入主控台中。 下列程式碼會依資訊追蹤層級寫入主控台中︰
-
-```javascript
-context.log({hello: 'world'});  
-```
-
-此程式碼相當於上述程式碼：
-
-```javascript
-context.log.info({hello: 'world'});  
-```
-
-此程式碼會依錯誤層級寫入主控台中︰
-
-```javascript
-context.log.error("An error has occurred.");  
-```
-
-因為 _error_ 是最高追蹤層級，所以只要啟用記錄，這項追蹤就會寫入所有追蹤層級的輸出。
 
 所有 `context.log` 方法都與 Node.js [util.format 方法 (英文)](https://nodejs.org/api/util.html#util_util_format_format) 支援相同的參數格式。 請考慮下列程式碼，它會使用預設追蹤層級寫入函式記錄︰
 
@@ -348,9 +316,39 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', 
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>設定用於主控台記錄的追蹤層級
+> [!NOTE]  
+> 請勿使用 `console.log` 寫入追蹤輸出。 因為的輸出 `console.log` 是在函式應用層級所捕捉，所以它不會系結至特定的函式調用，也不會顯示在特定函式的記錄檔中。 此外，1.x 版的函式執行時間不支援使用 `console.log` 來寫入主控台。
 
-Functions 1.x 讓您定義寫入至主控台的閾值追蹤層級，這可讓您輕鬆地控制追蹤從函式寫入主控台的方式。 若要設定寫入至主控台之所有追蹤的閾值，請使用 host.json 檔案中的 `tracing.consoleLevel` 屬性。 這個設定會套用到函式應用程式中的所有函式。 下列範例會設定追蹤閾值來啟用詳細資訊記錄︰
+### <a name="trace-levels"></a>追蹤層級
+
+除了預設層級，下列記錄方法可讓您在特定的追蹤層級撰寫函數記錄。
+
+| 方法                 | 描述                                |
+| ---------------------- | ------------------------------------------ |
+| **_訊息_ (錯誤) **   | 在記錄檔中寫入錯誤層級事件。   |
+| **warn(_message_)**    | 將警告層級事件寫入記錄檔。 |
+| **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
+| **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
+
+下列範例會在警告追蹤層級寫入相同的記錄，而不是在資訊層級上：
+
+```javascript
+context.log.warn("Something has happened. " + context.invocationId); 
+```
+
+因為 _error_ 是最高追蹤層級，所以只要啟用記錄，這項追蹤就會寫入所有追蹤層級的輸出。
+
+### <a name="configure-the-trace-level-for-logging"></a>設定記錄的追蹤層級
+
+函數可讓您定義寫入至記錄檔或主控台的閾值追蹤層級。 特定閾值設定取決於您的函數執行時間版本。
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+若要設定寫入記錄檔之追蹤的臨界值，請使用 `logging.logLevel` host.json 檔案中的屬性。 此 JSON 物件可讓您定義函式應用程式中所有函式的預設臨界值，還可以定義個別函式的特定臨界值。 若要深入瞭解，請參閱 [如何設定 Azure Functions 的監視](configure-monitoring.md)。
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+若要設定寫入至記錄檔和主控台之所有追蹤的閾值，請使用 `tracing.consoleLevel` host.json 檔案中的屬性。 這個設定會套用到函式應用程式中的所有函式。 下列範例會設定追蹤閾值來啟用詳細資訊記錄︰
 
 ```json
 {
@@ -360,7 +358,65 @@ Functions 1.x 讓您定義寫入至主控台的閾值追蹤層級，這可讓您
 }  
 ```
 
-**consoleLevel** 的值對應至 `context.log` 方法的名稱。 若要停用主控台的所有追蹤記錄，請將 **consoleLevel** 設為 _off_。 如需詳細資訊，請參閱 [host.json 參考](functions-host-json-v1.md)。
+**consoleLevel** 的值對應至 `context.log` 方法的名稱。 若要停用主控台的所有追蹤記錄，請將 **consoleLevel** 設為 _off_。 如需詳細資訊，請參閱 [ v1. x 參考上的host.js](functions-host-json-v1.md)。
+
+---
+
+### <a name="log-custom-telemetry"></a>記錄自訂遙測
+
+根據預設，函式會將輸出做為追蹤寫入 Application Insights。 如需更多控制，您可以改為使用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) 將自訂遙測資料傳送至您的 Application Insights 實例。 
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+# <a name="v1x"></a>[v1.x](#tab/v1)
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+---
+
+`tagOverrides` 參數會將 `operation_Id` 設為函式的引動過程識別碼。 此設定能夠讓指定的函式引動過程中所有自動產生和自訂的遙測相互關聯。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP 觸發程序和繫結
 

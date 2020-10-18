@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964684"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166621"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure Active Directory 設定及啟用使用者的 SMS 型驗證 (預覽)
 
@@ -96,13 +96,17 @@ ms.locfileid: "91964684"
 1. 搜尋並選取 [Azure Active Directory]。
 1. 從 Azure Active Directory 視窗左側的導覽功能表中，選取 [使用者]。
 1. 選取您在上一節中啟用 SMS 型驗證的使用者，例如「Contoso 使用者」，然後選取 [驗證方法]。
-1. 輸入使用者的電話號碼，包括國家/地區代碼，例如「+1 xxxxxxxxx」。 Azure 入口網站會驗證電話號碼的格式是否正確。
+1. 選取 [ **+ 新增驗證方法**]，然後在 [ *選擇方法* ] 下拉式功能表中，選擇 [ **電話號碼**]。
 
-    ![在 Azure 入口網站中設定使用者的電話號碼，與 SMS 型驗證搭配使用](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    輸入使用者的電話號碼，包括國家/地區代碼，例如「+1 xxxxxxxxx」。 Azure 入口網站會驗證電話號碼的格式是否正確。
+
+    然後，在 [ *電話類型* ] 下拉式功能表 *中，視需要選取 [* 行動裝置]、[ *替代*行動裝置] 或 [ *其他* ]。
+
+    :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="在 Azure 入口網站中設定使用者的電話號碼，與 SMS 型驗證搭配使用":::
 
     電話號碼在您的租用戶中必須是唯一的。 如果您嘗試為多個使用者使用相同的電話號碼，則會顯示錯誤訊息。
 
-1. 若要將電話號碼套用至使用者的帳戶，請選取 [儲存]。
+1. 若要將電話號碼套用至使用者的帳戶，請選取 [ **新增**]。
 
 成功佈建時，會顯示「SMS 登入已啟用」的核取記號。
 

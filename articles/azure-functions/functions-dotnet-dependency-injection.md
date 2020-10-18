@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715937"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167690"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -131,8 +131,8 @@ Azure Functions 應用程式提供與 [ASP.NET 相依性插入](/aspnet/core/fun
 Azure Functions 會自動新增 Application Insights。
 
 > [!WARNING]
-> - 請勿將 `AddApplicationInsightsTelemetry()` 新增至服務集合，因為這會註冊與環境所提供服務衝突的服務。
-> - 如果使用內建 Application Insights 功能，請勿註冊自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果需要設定自己的 `TelemetryClient` 執行個體，請透過插入的 `TelemetryConfiguration` 建立一個，如[監視 Azure Functions](./functions-monitoring.md#version-2x-and-later-2) 中所示。
+> - 請勿新增 `AddApplicationInsightsTelemetry()` 至服務集合，該集合會註冊與環境所提供之服務衝突的服務。
+> - `TelemetryConfiguration` `TelemetryClient` 如果您使用內建的 Application Insights 功能，請不要註冊您自己的。 如果您需要設定自己 `TelemetryClient` 的實例，請透過插入， `TelemetryConfiguration` 如 c # 函式 [中記錄自訂遙測](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)所示，建立一個實例。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
 
@@ -287,7 +287,7 @@ namespace MyNamespace
 }
 ```
 
-將設定提供者加入的 `ConfigurationBuilder` 屬性 `IFunctionsConfigurationBuilder` 。 如需使用設定提供者的詳細資訊，請參閱 [ASP.NET Core 中](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)的設定。
+將設定提供者加入的 `ConfigurationBuilder` 屬性 `IFunctionsConfigurationBuilder` 。 如需使用設定提供者的詳細資訊，請參閱 [ASP.NET Core 中](/aspnet/core/fundamentals/configuration/#configuration-providers)的設定。
 
 `FunctionsHostBuilderContext`從取得 `IFunctionsConfigurationBuilder.GetContext()` 。 使用此內容可取得目前的環境名稱，並解析函數應用程式資料夾中的設定檔位置。
 

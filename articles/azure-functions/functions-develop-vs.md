@@ -4,12 +4,12 @@ description: 瞭解如何使用適用于 Visual Studio 2019 的 Azure Functions 
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612804"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167792"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 來開發 Azure Functions  
 
@@ -27,7 +27,7 @@ Visual Studio 可讓您開發、測試 c # 類別庫函數，並將其部署至 
 
 除非另有說明，否則顯示的程式和範例適用于 Visual Studio 2019。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure Functions 工具。 若要新增 Azure 函數工具，請在您的 Visual Studio 安裝中包含 **azure 開發** 工作負載。 從 Visual Studio 2017 開始，Azure 開發工作負載中有 Azure Functions 工具可供使用。
 
@@ -229,13 +229,11 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ## <a name="monitoring-functions"></a>監視函式
 
-若要監視您的函式的執行情況，建議您整合您的函式應用程式與 Azure Application Insights。 當您在 Azure 入口網站中建立函式應用程式時，系統會依預設為您完成這項整合。 不過，當您在 Visual Studio 發佈期間建立函式應用程式時，則不會完成您的函式應用程式在 Azure 中的整合。
+若要監視您的函式的執行情況，建議您整合您的函式應用程式與 Azure Application Insights。 當您在 Azure 入口網站中建立函式應用程式時，系統會依預設為您完成這項整合。 不過，當您在 Visual Studio 發佈期間建立函式應用程式時，則不會完成您的函式應用程式在 Azure 中的整合。 若要瞭解如何將 Application Insights 連接到您的函數應用程式，請參閱 [啟用 Application Insights 整合](configure-monitoring.md#enable-application-insights-integration)。
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+若要深入瞭解如何使用 Application Insights 進行監視，請參閱 [監視 Azure Functions](functions-monitoring.md)。
 
-若要深入了解，請參閱[監視 Azure Functions](functions-monitoring.md)。
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure Functions Core Tools 的詳細資訊，請參閱使用 [Azure Functions Core Tools](functions-run-local.md)。
 

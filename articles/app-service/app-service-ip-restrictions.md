@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962956"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168217"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 存取限制
 
@@ -36,7 +36,7 @@ ms.locfileid: "88962956"
 
 從存取限制 UI，您可以查看為您的應用程式定義的存取限制規則清單。
 
-![列出存取限制](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Azure 入口網站中 [存取限制] 畫面的螢幕擷取畫面，其中顯示針對所選應用程式定義的存取限制規則清單。](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 此清單會顯示您應用程式上目前的所有限制。 如果您的應用程式上有 VNet 限制，則資料表會顯示是否已啟用 Microsoft 的服務端點。 當您的應用程式沒有定義的限制時，您的應用程式就可以從任何地方存取。  
 
@@ -68,11 +68,11 @@ ms.locfileid: "88962956"
 
 您可以按一下任何資料列，以編輯現有的存取限制規則。 編輯內容與優先順序的變更都會立即生效。
 
-![編輯存取限制規則](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![[編輯 IP 限制] 對話方塊的螢幕擷取畫面，其中 Azure 入口網站顯示現有存取限制規則的欄位。](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 當您編輯規則時，無法在 IP 位址規則與虛擬網路規則之間變更類型。 
 
-![編輯存取限制規則](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![[編輯 IP 限制] 對話方塊的螢幕擷取畫面，顯示虛擬網路規則的設定 Azure 入口網站。](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 若要刪除規則，請按一下規則上的 [ **...** ]，然後按一下 [ **移除**]。
 
@@ -90,7 +90,7 @@ ms.locfileid: "88962956"
 
 除了能夠控制對您應用程式的存取，您也可以限制對您應用程式所使用的 scm 網站的存取。 Scm 網站是 web deploy 端點，也是 Kudu 主控台。 您可以從應用程式將存取限制分開指派給 scm 網站，或針對應用程式和 scm 網站使用相同的集合。 當您核取此方塊與您的應用程式具有相同的限制時，所有專案都會遮蔽。如果您取消核取此方塊，則會套用先前在 scm 網站上的任何設定。 
 
-![列出存取限制](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![Azure 入口網站中 [存取限制] 畫面的螢幕擷取畫面，顯示未針對 scm 網站或應用程式設定任何存取限制。](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>以程式設計方式操作存取限制規則 ##
 
@@ -133,7 +133,7 @@ management.azure.com/subscriptions/**subscription ID**/resourceGroups/**resource
 
 存取限制也適用于具有 App Service 方案相同功能的函式應用程式。 啟用存取限制將會停用任何不允許的 Ip 的入口網站程式碼編輯器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [Azure Functions 的存取限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [應用程式閘道與服務端點的整合](networking/app-gateway-with-service-endpoints.md)

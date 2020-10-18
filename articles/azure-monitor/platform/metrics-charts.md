@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079548"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168557"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階功能
 
@@ -77,15 +77,15 @@ ms.locfileid: "87079548"
 
 2. 選取您要篩選的維度 (屬性)
 
-   ![計量影像](./media/metrics-charts/00006.png)
+   ![顯示您可以篩選)  (屬性維度的螢幕擷取畫面。](./media/metrics-charts/00006.png)
 
 3. 選取當繪製圖表時要包括的維度值 (此範例會顯示篩選出成功的交易)：
 
-   ![計量影像](./media/metrics-charts/00007.png)
+   ![顯示從成功的儲存體交易中篩選的螢幕擷取畫面。](./media/metrics-charts/00007.png)
 
 4. 選取篩選器值之後，請按一下 [篩選器選取器] 以外的位置以將它關閉。 現在圖表會顯示失敗的儲存體交易數目：
 
-   ![計量影像](./media/metrics-charts/00008.png)
+   ![顯示失敗的儲存體交易數目的螢幕擷取畫面](./media/metrics-charts/00008.png)
 
 5. 您可以重複步驟 1-4 以將多個篩選器套用到相同的圖表。
 
@@ -104,11 +104,11 @@ ms.locfileid: "87079548"
 
 2. 選擇要據以將圖表分割為不同區段的維度：
 
-   ![計量影像](./media/metrics-charts/00010.png)
+   ![螢幕擷取畫面：顯示您分割圖表的選定維度。](./media/metrics-charts/00010.png)
 
    現在圖表會顯示多行，每個維度區段一行：
 
-   ![計量影像](./media/metrics-charts/00012.png)
+   ![顯示多行的螢幕擷取畫面，每個維度區段各行一個。](./media/metrics-charts/00012.png)
 
 3. 按一下 [分組選取器]**** 以外的位置以將它關閉。
 
@@ -125,7 +125,7 @@ ms.locfileid: "87079548"
 
 若要控制 y 軸範圍，請使用 [...] 圖表功能表，然後選取**編輯圖表**存取進階圖表設定。 修改 [y 軸範圍] 區段中的值，或使用**自動**按鈕還原為預設值。
 
-![計量影像](./media/metrics-charts/00014-manually-set-granularity.png)
+![醒目顯示 [編輯圖表] 選項的螢幕擷取畫面。](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > 鎖定圖表的 y 軸界限可追蹤一段時間的各種計算或加總，因此 (使用計數、加總、最小或最大彙總) 通常需要指定固定時間細微性，而不依賴自動預設值。 因為使用者調整瀏覽器視窗的大小，或從一個螢幕解析度變換為另一個螢幕解析度時，時間細微性經過修改，會導致圖表上的值變更，因此這有其必要性。 時間細微性中產生的變更會影響圖表的外觀，導致目前選取的 y 軸範圍無效。
@@ -138,7 +138,7 @@ ms.locfileid: "87079548"
 
 設定圖表色彩之後，當您將圖表釘選到儀表板時，它們會維持不變。 下一節將說明如何釘選圖表。
 
-![計量影像](./media/metrics-charts/018.png)
+![顯示如何釘選圖表的螢幕擷取畫面。](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>將圖表釘選到儀表板
 
@@ -174,6 +174,6 @@ ms.locfileid: "87079548"
 
 * 如果您依據計量上未定義的屬性區分圖表，則圖表上不會有任何資料。 請嘗試清除分割 (分割)，或選擇不同的屬性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
   閱讀[建立自訂 KPI 儀表板](../learn/tutorial-app-dashboards.md)以了解使用計量建立可採取動作之儀表板的最佳做法。

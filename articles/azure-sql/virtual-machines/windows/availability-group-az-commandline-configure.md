@@ -13,19 +13,21 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c591bfa911663503b3e8a9101910034c91a8251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298774"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168251"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>在 Azure VM 上設定 SQL Server 的可用性群組 (PowerShell & Az CLI) 
+# <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 為 Azure VM 上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文說明如何使用 [PowerShell](/powershell/scripting/install/installing-powershell) 或 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) 部署 Windows 容錯移轉叢集、將 SQL Server vm 新增至叢集，以及建立 Always On 可用性群組的內部負載平衡器和接聽程式。 
+本文說明如何使用 [PowerShell](/powershell/scripting/install/installing-powershell) 或 [Azure CLI](/cli/azure/sql/vm) 部署 Windows 容錯移轉叢集、將 SQL Server vm 新增至叢集，以及建立 Always On 可用性群組的內部負載平衡器和接聽程式。 
 
 可用性群組的部署仍會透過 SQL Server Management Studio (SSMS) 或 Transact-sql (T-sql) 手動完成。 
+
+雖然本文使用 PowerShell 和 Az CLI 來設定可用性群組環境，但您也可以從 [Azure 入口網站](availability-group-azure-portal-configure.md)、使用 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)，或 [手動](availability-group-manually-configure-tutorial.md) 方式進行。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -62,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> 如果您使用過期的 Azure CLI 版本，則可能會看到錯誤 `az sql: 'vm' is not in the 'az sql' command group`。 請下載 [Azure CLI 的最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)以解決這個錯誤。
+> 如果您使用過期的 Azure CLI 版本，則可能會看到錯誤 `az sql: 'vm' is not in the 'az sql' command group`。 請下載 [Azure CLI 的最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli-windows)以解決這個錯誤。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -82,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>定義叢集中繼資料
 
-Azure CLI 的 [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) 命令群組可管理可用性群組裝載所在 Windows Server 容錯移轉叢集 (WSFC) 服務的中繼資料。 叢集中繼資料包括 Active Directory 網域、叢集帳戶、用來作為雲端見證的儲存體帳戶，以及 SQL Server 版本。 請使用 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) 來定義 WSFC 的中繼資料，如此一來，在新增第一個 SQL Server VM 時就會依照定義來建立叢集。 
+Azure CLI 的 [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group) 命令群組可管理可用性群組裝載所在 Windows Server 容錯移轉叢集 (WSFC) 服務的中繼資料。 叢集中繼資料包括 Active Directory 網域、叢集帳戶、用來作為雲端見證的儲存體帳戶，以及 SQL Server 版本。 請使用 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) 來定義 WSFC 的中繼資料，如此一來，在新增第一個 SQL Server VM 時就會依照定義來建立叢集。 
 
 下列程式碼片段會定義叢集的中繼資料：
 
@@ -127,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>將 Vm 新增至叢集
 
-將第一個 SQL Server VM 新增至叢集便會建立叢集。 [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-add-to-group) 命令會以先前指定的名稱建立叢集、將叢集角色安裝到 SQL Server VM 上，再將這些 VM 新增至叢集。 後續使用 `az sql vm add-to-group` 命令時，則會將更多 SQL Server VM 新增至新建立的叢集。 
+將第一個 SQL Server VM 新增至叢集便會建立叢集。 [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) 命令會以先前指定的名稱建立叢集、將叢集角色安裝到 SQL Server VM 上，再將這些 VM 新增至叢集。 後續使用 `az sql vm add-to-group` 命令時，則會將更多 SQL Server VM 新增至新建立的叢集。 
 
 下列程式碼片段會建立叢集，並於其中新增第一個 SQL Server VM： 
 
@@ -204,6 +206,8 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 
 ## <a name="create-internal-load-balancer"></a>建立內部負載平衡器
 
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Always On 可用性群組接聽程式需要 Azure Load Balancer 的內部執行個體。 內部負載平衡器會為可用性群組接聽程式提供「浮動」IP 位址，以加快容錯移轉和重新連線的速度。 如果可用性群組中的 SQL Server VM 屬於相同可用性設定組，則可使用基本的負載平衡器。 否則，即須使用標準負載平衡器。  
 
 > [!NOTE]
@@ -240,7 +244,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 ## <a name="create-listener"></a>建立接聽程式
 
-在您手動建立可用性群組之後，您可以使用 [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) 建立接聽程式。 
+在您手動建立可用性群組之後，您可以使用 [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) 建立接聽程式。 
 
 *子網路資源識別碼*是附加至虛擬網路資源識別碼的 `/subnets/<subnetname>` 值。 若要識別子網路資源識別碼：
    1. 在 [Azure 入口網站](https://portal.azure.com)中移至您的資源群組。 
@@ -294,7 +298,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="modify-number-of-replicas"></a>修改複本數目 
-當您要將可用性群組部署至 Azure 中裝載的 SQL Server VM 時，複雜程度會更高。 資源提供者和虛擬機器群組現在會管理資源。 因此，當您在可用性群組中新增或移除複本時，需要再進行一個步驟來使用 SQL Server VM 的相關資訊更新接聽程式的中繼資料。 當您要修改可用性群組中的複本數目時，您還必須使用 [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-2018-03-01-hybrid#az-sql-vm-group-ag-listener-update) 命令，以使用 SQL Server VM 的中繼資料更新接聽程式。 
+當您要將可用性群組部署至 Azure 中裝載的 SQL Server VM 時，複雜程度會更高。 資源提供者和虛擬機器群組現在會管理資源。 因此，當您在可用性群組中新增或移除複本時，需要再進行一個步驟來使用 SQL Server VM 的相關資訊更新接聽程式的中繼資料。 當您要修改可用性群組中的複本數目時，您還必須使用 [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-update) 命令，以使用 SQL Server VM 的中繼資料更新接聽程式。 
 
 
 ### <a name="add-a-replica"></a>新增複本

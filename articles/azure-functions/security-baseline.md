@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f22473d4a865e2925ecbfe74d68811c12f7c26d7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107516"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168081"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>適用于 Azure Functions 的 Azure 安全性基準
 
@@ -315,7 +315,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合來監�
 
 - [如何啟用 Azure Functions 的診斷設定](./functions-monitor-log-analytics.md)
 
-- [如何啟用 Azure Functions 的 Application Insights](./functions-monitoring.md#enable-application-insights-integration)
+- [如何啟用 Azure Functions 的 Application Insights](./configure-monitoring.md#enable-application-insights-integration)
 
 - [如何在 Azure 中建立警示](../azure-monitor/learn/tutorial-response.md)
 
@@ -369,7 +369,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合來監�
 
 **指導**方針： Azure Functions 的控制平面存取權是透過 AZURE ACTIVE DIRECTORY (AD) 來控制。 Azure AD 沒有預設密碼的概念。
 
-您可以透過數種方式來控制資料平面存取，包括授權金鑰、網路限制，以及驗證 AAD 身分識別。 連接至您 Azure Functions HTTP 端點的用戶端會使用授權金鑰，而且可以隨時重新產生。 預設會為新的 HTTP 端點產生這些金鑰。
+您可以透過數種方式來控制資料平面存取，包括授權金鑰、網路限制，以及驗證 Azure AD 身分識別。 連接至您 Azure Functions HTTP 端點的用戶端會使用授權金鑰，而且可以隨時重新產生。 預設會為新的 HTTP 端點產生這些金鑰。
 
 函數應用程式可使用多個部署方法，其中一些可利用一組產生的認證。 檢查將用於您應用程式的部署方法。
 
@@ -463,7 +463,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合來監�
 
 - [如何設定您的 Azure Functions 應用程式以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何建立和設定 AAD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
