@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cba2517f536c9044ad15c628c793529f93b988ce
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966486"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164989"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>預先填入使用者驗證連絡人資訊，以 Azure Active Directory 自助式密碼重設 (SSPR) 
 
@@ -48,16 +48,14 @@ ms.locfileid: "91966486"
 
 ## <a name="authentication-contact-info"></a>驗證聯絡資訊
 
-在 Azure 入口網站中 Azure AD 使用者的 [ **驗證方法** ] 頁面上，全域管理員可以手動設定驗證連絡人資訊，如下列範例螢幕擷取畫面所示：
+在 Azure 入口網站中 Azure AD 使用者的 [ **驗證方法** ] 頁面上，全域管理員可以手動設定驗證連絡人資訊。 您可以在 [可使用的 *驗證方法* ] 區段中，或在 [ **+ 新增驗證方法**] 下查看現有的方法，如下列範例螢幕擷取畫面所示：
 
-![Azure AD 中的使用者驗證連絡人資訊][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="從 Azure 入口網站管理驗證方法":::
 
 下列考慮適用于此驗證連絡人資訊：
 
 * 如果 [ *電話* ] 欄位已填入，且已在 SSPR 原則中啟用 *行動電話* ，則使用者會在密碼重設註冊頁面上及密碼重設工作流程期間看到該號碼。
-* *替代電話*欄位不會用來重設密碼。
 * 如果 [ *電子郵件* ] 欄位已填入，且已在 SSPR 原則中啟用 *電子郵件* ，則使用者會在密碼重設註冊頁面上及密碼重設工作流程期間看到該電子郵件。
-* 如果 [ *替代電子郵件* ] 欄位已填入，且 SSPR 原則中的 *電子郵件* 已啟用，則使用者將不會在密碼重設註冊頁面上看到該電子郵件，但會在密碼重設工作流程中看到此電子郵件。
 
 ## <a name="security-questions-and-answers"></a>安全性問題和答案
 
@@ -169,5 +167,3 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 > [!div class="nextstepaction"]
 > [啟用 Azure AD 自助式密碼重設](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "全域系統管理員可以修改使用者的驗證連絡人資訊"

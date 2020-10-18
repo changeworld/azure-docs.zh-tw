@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure、kinect、感應器、檢視器、視覺效果、深度、rgb、色彩、imu、音訊、麥克風、點雲端
-ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85276470"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166100"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect 檢視器
 
@@ -36,7 +36,7 @@ Azure Kinect 檢視器是 [開放原始](https://github.com/microsoft/Azure-Kine
 
 執行以啟動應用程式 `k4aviewer.exe` 。
 
-![使用檢視器檢查裝置固件版本](./media/how-to-guides/open-viewer.png)
+![顯示啟動的檢視器應用程式的螢幕擷取畫面。](./media/how-to-guides/open-viewer.png)
 
 ### <a name="use-the-viewer-with-live-data"></a>搭配使用檢視器與即時資料
 

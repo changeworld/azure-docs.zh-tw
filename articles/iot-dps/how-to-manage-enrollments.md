@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbcacd7f2094f9b0b9dcea3fea4d804fd96923e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74974933"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165310"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何透過 Azure 入口網站管理裝置註冊
 
@@ -24,7 +24,7 @@ ms.locfileid: "74974933"
 
 有兩種方式可供您向佈建服務註冊裝置：
 
-* **註冊群組**是裝置群組項目，這些裝置會共用由相同簽署憑證 ([根憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中繼憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)) 所簽署之 X.509 憑證的通用證明機制，用以在實體裝置上產生裝置憑證。 對於共用所需初始設定的大量裝置，或是全都要進入同一個租用戶的裝置，建議您使用註冊群組。 請注意，您只能將使用 X.509 證明機制的裝置註冊為「註冊群組」**。 
+* **註冊群組**是裝置群組項目，這些裝置會共用由相同簽署憑證 ([根憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中繼憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)) 所簽署之 X.509 憑證的通用證明機制，用以在實體裝置上產生裝置憑證。 對於共用所需初始設定的大量裝置，或是全都要進入同一個租用戶的裝置，建議您使用註冊群組。 
 
     您可以使用下列步驟在入口網站中為裝置群組建立註冊群組：
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683900"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164205"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats 的嚴重損壞修復
 
@@ -45,18 +45,18 @@ FarmBeats 會將資料儲存在三個 Azure 第一方服務，也就是 **azure 
 複製已還原 Cosmos DB 的存取金鑰，並更新新的 FarmBeats Datahub Key Vault。
 
 
-  ![災害復原](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![醒目顯示存取金鑰複本之位置的螢幕擷取畫面。](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > 複製已還原 Cosmos DB 的 URL，並在新的 FarmBeats Datahub App Service 設定中加以更新。 您現在可以在新的 FarmBeats 部署中刪除 Cosmos DB 帳戶。
 
-  ![災害復原](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![螢幕擷取畫面，顯示覆制已還原 Cosmos DB 的 URL 的位置。](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>設定儲存體帳戶
 
 複製已還原之儲存體帳戶的存取金鑰，並在新的 FarmBeats Datahub Key Vault 中加以更新。
 
-![災害復原](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![顯示要在哪裡複製已還原之儲存體帳戶的存取金鑰的螢幕擷取畫面。](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > 請務必更新新 FarmBeats 批次 VM 設定檔中的儲存體帳戶名稱。

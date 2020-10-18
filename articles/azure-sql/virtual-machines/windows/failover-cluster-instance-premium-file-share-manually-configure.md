@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298706"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164392"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 premium 檔案共用 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
 - [可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)或不同[可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)中的[兩個或多個已準備的 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。
 - 根據資料檔案的資料庫儲存配額，將[進階檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md)作為叢集磁碟機使用。
-- [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)的最新版本。 
+- [PowerShell](/powershell/azure/install-az-ps)的最新版本。 
 
 ## <a name="mount-premium-file-share"></a>掛接 premium 檔案共用
 
@@ -194,7 +194,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>設定連線能力 
 
-若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL Server 2019 和 Windows Server 2016 (或更新版本) ，則可以改為預覽 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) 功能。 
+若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL SERVER 2019 CU2 (或更新版本的) 和 Windows Server 2016 (或更新版本) ，則可以改用 [分散式網路名稱](failover-cluster-instance-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 
@@ -204,7 +204,8 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](hadr-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
+如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](failover-cluster-instance-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
+
 
 如果 premium 檔案共用不是適合您的 FCI 儲存體解決方案，請考慮使用 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 或 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 來建立 FCI。 
 

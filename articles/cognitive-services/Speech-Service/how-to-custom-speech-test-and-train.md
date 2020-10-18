@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628061"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165327"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
@@ -59,7 +59,7 @@ ms.locfileid: "84628061"
 
 若要上傳您的資料，請流覽至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 從入口網站中，按一下 [ **上傳資料** ] 啟動精靈，並建立您的第一個資料集。 在允許您上傳資料之前，系統會要求您選取資料集的語音資料類型。
 
-![從語音入口網站選取音訊](./media/custom-speech/custom-speech-select-audio.png)
+![顯示語音入口網站中音訊上傳選項的螢幕擷取畫面。](./media/custom-speech/custom-speech-select-audio.png)
 
 您上傳的每個資料集都必須符合您所選擇之資料類型的需求。 您的資料必須在上傳之前正確格式化。 正確格式化的資料可確保自訂語音服務會正確地處理資料。 下列各節會列出需求。
 
@@ -186,7 +186,7 @@ ms.locfileid: "84628061"
 
 自訂的發音提供英文 (`en-US`) 和德文 (`de-DE`) 。 下表顯示支援的字元（依語言）：
 
-| Language | 地區設定 | Characters |
+| 語言 | 地區設定 | 字元 |
 |----------|--------|------------|
 | 英文 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | 德文 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
@@ -199,7 +199,7 @@ ms.locfileid: "84628061"
 | 每行的發音數 | 1 |
 | 檔案大小上限 | 免費層) 1 MB (1 KB |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [檢查您的資料](how-to-custom-speech-inspect-data.md)
 * [評估您的資料](how-to-custom-speech-evaluate-data.md)

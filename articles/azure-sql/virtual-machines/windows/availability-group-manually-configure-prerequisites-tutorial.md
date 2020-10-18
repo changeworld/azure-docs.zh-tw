@@ -14,18 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea9c8b91237f4590d1999c99fbb356d78994390d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075700"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166891"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的 SQL Server 上建立 Always On 可用性群組的必要條件
+# <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教學課程：在 Azure 虛擬機器上的 SQL Server 上建立可用性群組的必要條件
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本教學課程說明如何完成在 [Azure 虛擬機器上建立 SQL Server Always On 可用性群組的必要條件， (vm) ](availability-group-manually-configure-tutorial.md)。 當您完成必要條件之後，您將會在單一資源群組中有一個網域控制站、兩個 SQL Server Vm 和一部見證伺服器。
+
+雖然這篇文章會手動設定可用性群組環境，但也可以使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、 [PowerShell 或 Azure CLI](availability-group-az-commandline-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md) 來這麼做。 
 
 **估計時間**：可能需要幾個小時的時間才能完成必要條件。 這個時間大部分都是花在建立虛擬機器。
 
@@ -35,7 +37,7 @@ ms.locfileid: "92075700"
 
 ## <a name="review-availability-group-documentation"></a>檢閱可用性群組文件
 
-本教學課程假設您對 SQL Server Always On 可用性群組有基本的了解。 如果您不熟悉這項技術，請參閱 [Always On 可用性群組概觀 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
+本教學課程假設您對 SQL Server Always On 可用性群組有基本的了解。 如果您不熟悉這項技術，請參閱 [Always On 可用性群組 (SQL Server) ](https://msdn.microsoft.com/library/ff877884.aspx)。
 
 
 ## <a name="create-an-azure-account"></a>建立 Azure 帳戶
@@ -54,13 +56,13 @@ ms.locfileid: "92075700"
    ![資源群組](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. 選取 **資源群組**。
-5. 選取 [建立]。
+5. 選取 [建立]****。
 6. 在 [資源群組名稱] 下方，輸入資源群組的名稱。 例如，輸入 **sql-ha-rg**。
 7. 如果您有多個 Azure 訂用帳戶，請確認此訂用帳戶是您要在其中建立可用性群組的 Azure 訂用帳戶。
 8. 選取位置。 此位置是您要建立可用性群組的 Azure 區域。 本文會在一個 Azure 位置建置所有資源。
 9. 確認已核取 [釘選到儀表板] 。 這個選擇性設定會在 Azure 入口網站儀表板上放置資源群組的捷徑。
 
-   ![資源群組](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
+   ![Azure 入口網站的資源群組快捷方式](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
 
 10. 選取 [ **建立** ] 以建立資源群組。
 
@@ -99,7 +101,7 @@ Azure 會建立資源群組，並在入口網站中釘選資源群組的捷徑�
 
    此範例會使用子網路名稱 **Admin**。此子網路用於網域控制站。
 
-5. 選取 [建立]。
+5. 選取 [建立]****。
 
    ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -118,13 +120,13 @@ Azure 會讓您回到入口網站儀表板，並在建立完新網路時通知�
 
     請注意您已建立的子網路。
 
-   ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
+   ![請注意您已建立的子網](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
 
 5. 若要建立第二個子網，請選取 [ **+ 子網**]。
 6. 在 [新增子網路] 上，於 [名稱] 下方輸入 **sqlsubnet** 來設定子網路。 Azure 會自動指定有效的 [位址範圍] 。 確認此位址範圍中至少有 10 個位址。 在生產環境中，您可能需要更多位址。
 7. 選取 [確定]  。
 
-    ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
+    ![設定子網](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
 下表摘要說明網路組態設定︰
 

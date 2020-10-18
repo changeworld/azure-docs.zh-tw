@@ -4,12 +4,12 @@ description: 瞭解如何使用已在訂用帳戶中部署之容器的 Azure 監
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994510"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165395"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用監視已部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -132,12 +132,10 @@ provisioningState       : Succeeded
 2. 在資源清單中，開始輸入**容器**。  清單會根據您輸入的文字進行篩選。
 
 3. 選取 [Kubernetes 服務]****。
+    
+4. 在 Kubernetes 服務清單中，選取服務。
 
-    ![[Kubernetes 服務] 連結](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. 在容器清單中，選取容器。
-
-5. 在容器概觀頁面上，選取 [監視容器]****。
+5. 在 Kubernetes 服務的 [總覽] 頁面上，選取 [ **監視-深入**解析]。
 
 6. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請在下拉式清單中選取。
     清單會預先選取訂用帳戶中已部署 AKS 容器的預設工作區和位置。
@@ -378,7 +376,7 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
   }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如果您在試著將解決方案上線時遇到問題，請檢閱[疑難排解指南](container-insights-troubleshoot.md)
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4922d8855173ab2539c3960aacf54c89aaf1b7b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148255"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164596"
 ---
 # <a name="create-an-external-app-service-environment"></a>建立外部 App Service 環境
 
@@ -61,7 +61,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**建立資源**  >  **web + Mobile**  >  **Web 應用程式**]。
 
-    ![建立 Web 應用程式][1]
+    ![Azure 入口網站的螢幕擷取畫面，其中顯示在 Azure Marketplace 中選取的 Web + 行動裝置，並在右側開啟建立新 Web 應用程式的畫面。][1]
 
 2. 選取您的訂用帳戶。 會在相同的訂用帳戶中建立應用程式和 ASE。
 
@@ -71,7 +71,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 5. 選取 App Service 方案，然後選取 [新建]****。 Linux Web 應用程式和 Windows Web 應用程式不能在相同的 App Service 方案中，但可位於相同的 App Service Environment 中。 
 
-    ![新增 App Service 方案][2]
+    ![Azure 入口網站的螢幕擷取畫面，其中顯示 [Web 應用程式] 窗格、[App service 方案] 窗格和 [新增 App Service 方案] 窗格已開啟。][2]
 
 6. 在 [位置]**** 下拉式清單中，選取您需要建立 ASE 的區域。 如果您選取現有的 ASE，就不會建立新的 ASE。 會在您選取的 ASE 中建立 App Service 方案。 
 
@@ -99,7 +99,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [建立資源]**** > [Web + 行動]**** > [適用於容器的 Web 應用程式]。**** 
 
-    ![建立 Web 應用程式][7]
+    ![Azure 入口網站的螢幕擷取畫面，顯示在 Azure Marketplace 中選取的 Web + 行動裝置，並在右側開啟用於容器的 Web App 窗格。][7]
 
 1. 選取您的訂用帳戶。 會在相同的訂用帳戶中建立應用程式和 ASE。
 
@@ -107,7 +107,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 1. 選取 App Service 方案，然後選取 [新建]****。 Linux Web 應用程式和 Windows Web 應用程式不能在相同的 App Service 方案中，但可位於相同的 App Service Environment 中。 
 
-    ![新增 App Service 方案][8]
+    ![Azure 入口網站的螢幕擷取畫面，其中顯示 [用於容器的 Web App] 窗格、[App service 方案] 窗格和 [新增 App Service 方案] 窗格已開啟。][8]
 
 1. 在 [位置]**** 下拉式清單中，選取您需要建立 ASE 的區域。 如果您選取現有的 ASE，就不會建立新的 ASE。 會在您選取的 ASE 中建立 App Service 方案。 
 

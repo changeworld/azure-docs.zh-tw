@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca6b39852668e1b545ce576ac0d04a208e2058e8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965415"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165499"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
@@ -36,7 +36,7 @@ ms.locfileid: "91965415"
 
 如果使用者不想在目錄中顯示其行動電話號碼，但想要用於密碼重設，系統管理員便不應將電話號碼填入目錄。 使用者反而應該透過合併安全性資訊註冊 (位於 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo))，填入其**驗證電話**屬性。 管理員可以在使用者的設定檔中看到此資訊，但該資訊不會發佈在其他地方。
 
-![Azure 入口網站的螢幕擷取畫面，其中顯示已填入電話號碼的驗證方法](media/concept-authentication-methods/user-authentication-methods.png)
+:::image type="content" source="media/concept-authentication-methods/user-authentication-methods.png" alt-text="Azure 入口網站的螢幕擷取畫面，其中顯示已填入電話號碼的驗證方法":::
 
 Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-Factor Authentication 即時交付。 為了使用者的利益，我們可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短代碼。 Microsoft 不支援美國和加拿大以外之國家/區域的簡短代碼。
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005938"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164785"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "83005938"
 
 如果您要從 *試用版* 移至 *付費* 影片索引子帳戶，您可以選擇將所有的影片和模型自訂複製到新的帳戶，如 [從試用帳戶匯入內容](#import-your-content-from-the-trial-account) 一節中所述。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。
 
@@ -47,7 +47,7 @@ ms.locfileid: "83005938"
 
     當您將影片索引器帳戶連線到 Azure 時，會用到此成員。
 
-    此使用者應該是Azure 訂用帳戶中具有「擁有者」**** 角色或同時有「參與者」**** 和「使用者存取系統管理員」**** 角色的成員。 使用者可以使用兩個角色新增兩次。 一次使用「參與者」角色，另一次使用「使用者存取系統管理員」角色。
+    此使用者應該是Azure 訂用帳戶中具有「擁有者」**** 角色或同時有「參與者」**** 和「使用者存取系統管理員」**** 角色的成員。 使用者可以使用兩個角色新增兩次。 一次使用「參與者」角色，另一次使用「使用者存取系統管理員」角色。 如需詳細資訊，請參閱 [查看使用者對 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/check-access)。
 
     ![存取控制](./media/create-account/access-control-iam.png)
 
@@ -144,7 +144,7 @@ ms.locfileid: "83005938"
 
 在對話方塊中，提供下列資訊︰
 
-|設定|說明|
+|設定|描述|
 |---|---|
 |影片索引器帳戶區域|影片索引器帳戶區域的名稱。 為了獲得更佳的效能和較低的成本，強烈建議您指定 Azure 媒體服務資源和 Azure 儲存體帳戶所在區域的名稱。 |
 |Azure AD 租用戶|Azure AD 租用戶的名稱，例如 "contoso.onmicrosoft.com"。 租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。 尋找**網域**右邊的名稱。|
@@ -184,7 +184,7 @@ ms.locfileid: "83005938"
 
 * 如果您連接到現有的媒體服務帳戶，影片索引子不會變更預設的串流端點設定。 如果沒有執行中的 **串流端點**，您就無法從此媒體服務帳戶或影片索引子中觀看影片。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您可以遵循中的指示，以程式設計方式與連線到 Azure 的試用帳戶和/或您的影片索引子帳戶互動： [使用 api](video-indexer-use-apis.md)。
 

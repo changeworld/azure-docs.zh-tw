@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293637"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165140"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Windows 10 的設計助理體驗
 
@@ -70,7 +70,7 @@ Windows 10 會根據裝置內容推斷客戶內容的啟用體驗。 下列摘�
 當小幫手應用程式具有焦點時，客戶意圖很清楚地與應用程式互動，因此所有語音啟動體驗都應由主要應用程式視圖處理。 客戶可以調整此視圖的大小。 為了協助說明助理 shell 互動，本檔的其餘部分會使用名為 Contoso 的金融服務助理的具體範例。 在這個和後續的圖表中，客戶所說的內容會顯示在左側的卡通語音反升圖中，並在右側的卡通反升圖中顯示助理回應。
 
 **應用程式內視圖。語音啟用開始時的初始狀態：** 
- ![ 啟用前 Windows 上的語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/initial_state.png)
+ ![ 顯示 Contoso 財務助理應用程式的螢幕擷取畫面，其為預設的畫布。 右側的卡通語音反升會顯示「Contoso」。](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
 **應用程式內視圖。成功啟用語音之後，接聽體驗開始：** ![ 當語音助理正在接聽時，Windows 上的語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/listening.png)
 
@@ -108,9 +108,9 @@ Windows 10 會根據裝置內容推斷客戶內容的啟用體驗。 下列摘�
 - 如果應用程式正在 &quot; 使用中 &quot; ，它可能會繼續鎖定。 &quot;使用中的 &quot; 構成任何輸入或輸出。 例如，串流音樂或影片時，應用程式可能會繼續鎖定。 &quot;繼續進行 &quot; ，並允許其他多回合對話步驟，讓應用程式保持在鎖定的上方。
 - 若要**關閉應用程式**，請參閱[上述「鎖定執行指南」中](windows-voice-assistants-implementation-guide.md#closing-the-application)的「執行」詳細資料。
 
-![啟用前 Windows 上的語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
+![顯示 Contoso 財務助理應用程式上方鎖定視圖的螢幕擷取畫面。](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
-![啟用前 Windows 上的語音助理螢幕擷取畫面](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
+![桌面上顯示 Windows 鎖定畫面的螢幕擷取畫面。](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;高於鎖定的隱私權安全性考慮
 

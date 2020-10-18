@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b81d3f74c20f42620ceeae08bec5d484909377a7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150409"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167469"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>透過私人端點 (Azure 認知搜尋) 的索引子連接
 
@@ -23,7 +23,7 @@ ms.locfileid: "92150409"
 
 + 提供內容或程式碼的 Azure 資源，必須先前已向 [Azure Private Link 服務](https://azure.microsoft.com/services/private-link/)註冊。
 
-+ Azure 認知搜尋服務必須是基本或更高版本 (無法在免費層) 上使用。 此外，對於具有技能集的索引子，搜尋服務必須是 S2 或更高的版本。 如需詳細資訊，請參閱 [服務限制](search-limits-quotas-capacity.md#shared-private-link-resource-limits)。
++ Azure 認知搜尋服務必須是基本或更高版本 (無法在免費層) 上使用。 此外，如果您的索引子具有技能集，層級必須是標準 2 (S2) 或更高版本。 如需詳細資訊，請參閱 [服務限制](search-limits-quotas-capacity.md#shared-private-link-resource-limits)。
 
 ## <a name="shared-private-link-resources-management-apis"></a>共用 Private Link 資源管理 Api
 

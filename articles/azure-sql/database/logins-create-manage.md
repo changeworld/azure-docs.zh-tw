@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334900"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167112"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>授權資料庫存取 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "91334900"
 - [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
 
   使用此驗證方法時，使用者會提交使用者帳戶名稱和相關聯的密碼以建立連線。 此密碼會儲存在 master 資料庫中，以用於連結至登入的使用者帳戶，或儲存在包含 *未* 連結至登入之使用者帳戶的資料庫中。
-- [Azure Active Directory Authentication](authentication-aad-overview.md)
+- [Azure Active Directory 驗證](authentication-aad-overview.md)
 
   使用此驗證方法，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory (Azure AD) 中的認證資訊。
 
@@ -65,7 +65,7 @@ ms.locfileid: "91334900"
 
 ![SQL Server 系統管理員](./media/logins-create-manage/sql-admins.png)
 
-![SQL Server 系統管理員](./media/logins-create-manage/sql-admins2.png)
+![醒目顯示 [屬性] 功能表選項的螢幕擷取畫面。](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
 > 系統管理員登入名稱在建立後即無法變更。 若要重設伺服器管理員的密碼，請移至 [Azure 入口網站](https://portal.azure.com)、按一下 [SQL Server]****、從清單中選取伺服器，然後按一下 [重設密碼]****。 若要重設 SQL 受控執行個體的密碼，請移至 [Azure 入口網站]，按一下該實例，然後按一下 [ **重設密碼**]。 您也可以使用 PowerShell 或 Azure CLI。

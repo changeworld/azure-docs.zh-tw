@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978487"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167333"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>使用 SAP ASCS/SCS 的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構
 
@@ -201,6 +201,9 @@ ms.locfileid: "91978487"
 
 SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要 [負載平衡器](../../../load-balancer/load-balancer-overview.md) 才能使用虛擬 IP 位址。 我們強烈建議使用 [標準負載平衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
 
+> [!IMPORTANT]
+> 負載平衡案例中的 NIC 次要 IP 設定不支援浮動 IP。 如需詳細資訊，請參閱 [Azure 負載平衡器的限制](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。 如果您需要 VM 的其他 IP 位址，請部署第二個 NIC。    
+
 
 下列清單顯示) SCS/ERS 負載平衡器 (的設定。 在相同的 Azure 負載平衡器中執行的 SAP ASCS 和 ERS2 設定。  
 
@@ -261,7 +264,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 - KeepAliveTime
 - KeepAliveInterval
 
-| Path| 變數名稱 | 變數類型  | 值 | 文件 |
+| 路徑| 變數名稱 | 變數類型  | 值 | 文件 |
 | --- | --- | --- |---| ---|
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (十進位) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (十進位) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |

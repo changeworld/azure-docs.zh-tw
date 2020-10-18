@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076686"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164159"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何建立和部署雲端服務
 Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快速建立」** 和「自訂建立」**。
@@ -56,7 +56,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下 [建立資源] > [計算]****，然後向下捲動至 [雲端服務]**** 並按一下。
 
-    ![發佈您的雲端服務](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![顯示 [建立資源 > 計算] 下的 [雲端服務] 選項的螢幕擷取畫面。](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 在新的 [雲端服務]**** 窗格中，輸入 [DNS 名稱]**** 的值。
 4. 建立新的 **資源群組** ，或選取現有的資源群組。
 5. 選取 [位置] 。
@@ -74,7 +74,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 2. 按一下 [附加憑證]****，然後按一下 [新增憑證]**** 窗格中的 [確定]****。
 3. 按一下 [雲端服務]**** 窗格中的 [建立]****。 當部署達到了 [就緒] **** 狀態時，您可以繼續進行接下來的步驟。
 
-    ![發佈您的雲端服務](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![醒目顯示上傳憑證程式的螢幕擷取畫面。](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>確認部署是否成功完成
 1. 按一下雲端服務執行個體。

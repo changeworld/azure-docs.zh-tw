@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 31c9f9d94acab7322cf11d084e4010f2defd6f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a8f44831f1af13158261bedb19a254c6a565a6
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261693"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165293"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>在使用 Azure Functions 的 Cosmos DB 觸發程序時如何設定和讀取記錄
 
@@ -25,7 +25,7 @@ Azure Functions 的 Cosmos DB 觸發程序會在內部使用[變更摘要處理�
 
 ## <a name="enabling-logging"></a>啟用記錄
 
-若要在使用 Azure Functions 的 Cosmos DB 觸發程序時啟用記錄，請找出您的 Azure Functions 專案或 Azure 函式應用程式中的 `host.json` 檔案，然後[設定所需的記錄層級](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson)。 您必須啟用 `Host.Triggers.CosmosDB` 的追蹤功能，如下列範例所示：
+若要在使用 Azure Functions 的 Cosmos DB 觸發程序時啟用記錄，請找出您的 Azure Functions 專案或 Azure 函式應用程式中的 `host.json` 檔案，然後[設定所需的記錄層級](../azure-functions/configure-monitoring.md#configure-log-levels)。 您必須啟用 `Host.Triggers.CosmosDB` 的追蹤功能，如下列範例所示：
 
 ```js
 {

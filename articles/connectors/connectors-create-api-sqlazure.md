@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2fb2180acfe8fed5701ae4320ea0d1424ed9e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326774"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166279"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將 SQL database 的工作流程自動化
 
@@ -66,6 +66,9 @@ ms.locfileid: "91326774"
 <a name="connect-azure-sql-db"></a>
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>連接到 Azure SQL Database 或受控執行個體
+
+若要在不使用內部部署資料閘道或整合服務環境的情況下存取 Azure SQL 受控執行個體，您必須 [在 AZURE SQL 受控執行個體上設定公用端點](../azure-sql/managed-instance/public-endpoint-configure.md)。 公用端點會使用埠3342，因此當您從邏輯應用程式建立連線時，請確定您指定此埠號碼。
+
 
 當您第一次新增 [sql 觸發](#add-sql-trigger) 程式或 [sql 動作](#add-sql-action)，但您尚未建立與資料庫的連線時，系統會提示您完成這些步驟：
 
@@ -248,6 +251,18 @@ ms.locfileid: "91326774"
 
 1. 若要參考 JSON 內容屬性，請在您想要參考這些屬性的編輯方塊內按一下，以顯示動態內容清單。 在清單中的 [ [**剖析 json**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 標題下，選取您要的 JSON 內容屬性的資料標記。
 
+## <a name="troubleshoot-problems"></a>問題疑難排解
+
+遇到連線問題是很常見的情況。 下列是錯誤訊息的範例：
+
+> `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+>
+> `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+>
+> `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+
+請遵循 [解決連線錯誤 SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) 以針對問題進行疑難排解。
+
 ## <a name="connector-specific-details"></a>連接器特定的詳細資料
 
 如需有關此連接器觸發程式、動作和限制的技術資訊，請參閱從 Swagger 描述產生的 [連接器參考頁面](/connectors/sql/)。
@@ -255,4 +270,3 @@ ms.locfileid: "91326774"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解 [Azure Logic Apps 的其他連接器](../connectors/apis-list.md)
-

@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076669"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165480"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在入口網站中設定雲端服務的自動調整
 
@@ -53,7 +53,7 @@ ms.locfileid: "92076669"
 
 將 [調整規模依據]**** 選項設定為 [排程及效能規則]****。
 
-![具有設定檔與規則的雲端服務調整規模設定](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![顯示 [排程和效能規則] 選項的螢幕擷取畫面。](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. 現有的設定檔。
 2. 新增父設定檔的規則。

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444773"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164511"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>使用 Windows 憑證存放區設定 Always Encrypted
 
@@ -97,7 +97,7 @@ SSMS 提供一個精靈，可為您設定 CMK、CEK 及加密的資料行，來�
 1. 展開 [**資料庫**課程  >  **Clinic**  >  **] 資料表**。
 2. 在 [Patients]**** 資料表上按一下滑鼠右鍵，然後選取 [加密資料行]**** 以開啟「一律加密精靈」：
 
-    ![加密資料行](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![顯示 [加密 Colunns ...] 的螢幕擷取畫面功能表選項。](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
 「一律加密」精靈包含下列區段︰[資料行選取]****、[主要金鑰組態]**** \(CMK)、[驗證]**** 及 [摘要]****。
 
@@ -107,7 +107,7 @@ SSMS 提供一個精靈，可為您設定 CMK、CEK 及加密的資料行，來�
 
 請加密每個病患的 **SSN** 和 **BirthDate** 資訊。 **SSN** 資料行將使用決定性加密，這可支援等式查閱、聯結及群組依據。 **BirthDate** 資料行將使用不支援操作的隨機加密。
 
-將 **SSN** 資料行的 [加密類型]**** 設定為 [決定性]****，並將 **BirthDate** 資料行設定為 [隨機化]****。 按一下 [下一步]。
+將 **SSN** 資料行的 [加密類型]**** 設定為 [決定性]****，並將 **BirthDate** 資料行設定為 [隨機化]****。 按 [下一步]  。
 
 ![加密資料行](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -149,7 +149,7 @@ SSMS 提供一個精靈，可為您設定 CMK、CEK 及加密的資料行，來�
 1. 開啟 Visual Studio，建立新的 C# 主控台應用程式。 請確定您的專案設定為 **.NET Framework 4.6** 或更新版本。
 2. 將專案命名為 **AlwaysEncryptedConsoleApp**，並按一下 [確定]****。
 
-![新的主控台應用程式](./media/always-encrypted-certificate-store-configure/console-app.png)
+![顯示新名稱 AlwaysEncryptedConsoleApp 專案的螢幕擷取畫面。](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>修改連接字串，以啟用 [一律加密]
 
@@ -510,7 +510,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 您可以看到加密的資料行不包含任何純文字資料。
 
-   ![新的主控台應用程式](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![顯示加密資料行中加密資料的螢幕擷取畫面。](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 若要使用 SSMS 來存取純文字資料，您可以將 **Column Encryption Setting=enabled** 參數新增到連線中。
 
@@ -518,7 +518,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 2. 按一下 [**連接**  >  **資料庫引擎**] 以開啟 [**連接到伺服器**] 視窗，然後按一下 [**選項**]。
 3. 按一下 [其他連接參數]**** 並輸入 **Column Encryption Setting=enabled**。
 
-    ![新的主控台應用程式](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![顯示 [其他連接參數] 索引標籤的螢幕擷取畫面，其中包含 [資料行加密設定 = 已啟用] 方塊中輸入的](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. **在實務資料庫上**執行下列查詢。
 
     ```tsql

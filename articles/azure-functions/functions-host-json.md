@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321844"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167641"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 
 
@@ -138,7 +138,7 @@ ms.locfileid: "91321844"
 
 此設定是 [logging](#logging) 的子系。
 
-控制 Application Insights 的選項，包括 [取樣選項](./functions-monitoring.md#configure-sampling)。
+控制 Application Insights 的選項，包括 [取樣選項](./configure-monitoring.md#configure-sampling)。
 
 如需完整的 JSON 結構，請參閱先前的 [範例 host.json file](#sample-hostjson-file)。
 
@@ -310,7 +310,7 @@ ms.locfileid: "91321844"
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定義已啟用何種檔案記錄層級。  選項為 `never`、`always`、`debugOnly`。 |
-|logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 2.x 版和更新版本會依照記錄類別篩選的 ASP.NET Core 配置。 此設定可讓您篩選特定功能的記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 2.x 版和更新版本會依照記錄類別篩選的 ASP.NET Core 配置。 此設定可讓您篩選特定功能的記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)。 |
 |console|n/a| [主控台](#console)記錄設定。 |
 |applicationInsights|n/a| [applicationInsights](#applicationinsights) 設定。 |
 

@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af59c473d5c3f55bef059905500496adf060c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224055"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165905"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web 應用程式防火牆和 Azure 原則
 
@@ -44,7 +44,7 @@ Azure Web 應用程式防火牆 (WAF) 結合 Azure 原則有助於強制執行�
 3.  在 [指派] 頁面上，選取頂端的 [ **指派原則** ] 圖示。
 
 [!div class="mx-imgBorder"]
-![Azure web 應用程式防火牆](../media/waf-azure-policy/assign-policy.png)
+![在 [指派原則] 頁面上顯示 [基本] 索引標籤的螢幕擷取畫面。](../media/waf-azure-policy/assign-policy.png)
 
 4.  在 [指派原則] 頁面的 [基本] 索引標籤上，更新下欄欄位：
     1.  **範圍**：選取應受 Azure 原則影響的 Azure 訂用帳戶和資源群組。
@@ -52,7 +52,7 @@ Azure Web 應用程式防火牆 (WAF) 結合 Azure 原則有助於強制執行�
     3.  **原則定義**：選取要套用至包含排除專案之範圍的 Azure 原則。 在搜尋列中輸入「Web 應用程式防火牆」，以選擇相關的 Web 應用程式防火牆 Azure 原則。
 
 [!div class="mx-imgBorder"]
-![Azure web 應用程式防火牆](../media/waf-azure-policy/policy-listing.png)
+![顯示可用原則定義的螢幕擷取畫面。](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  選取 [ **參數** ] 索引標籤，並更新原則參數。 若要進一步闡明參數的功能，請將滑鼠停留在參數名稱旁邊的資訊圖示，以進行進一步的澄清。

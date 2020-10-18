@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995680"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164477"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>啟用適用於 VM 的 Azure 監視器概觀
 
@@ -37,30 +38,42 @@ ms.locfileid: "91995680"
 >[!NOTE]
 >本節所述的下列資訊也適用于 [服務對應的解決方案](service-map.md)。  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Log Analytics 工作區
 
 適用於 VM 的 Azure 監視器支援下欄區域中的 Log Analytics 工作區：
 
-- 美國中西部
-- 美國西部
-- 美國西部 2
-- 美國中南部
-- 美國東部
-- 美國東部 2
-- 美國中部
-- 美國中北部
-- US Gov Az
-- US Gov Va
-- 加拿大中部
-- 英國南部
-- 北歐
-- 西歐
-- 東亞
-- 東南亞
-- 印度中部
-- 日本東部
-- 澳大利亞東部
-- 澳大利亞東南部
+- 非洲
+  - 南非北部
+- 亞太地區
+  - 東亞
+  - 東南亞
+- 澳大利亞
+  - 澳大利亞東部
+  - 澳大利亞東南部
+- Azure Government
+  - US Gov Az
+  - US Gov Va
+- Canada
+  - 加拿大中部
+- 歐洲
+  - 北歐
+  - 西歐
+- 印度
+  - 印度中部
+- 日本
+  - 日本東部
+- 英國
+  - 英國南部
+- 美國
+  - 美國中部
+  - 美國東部
+  - 美國東部 2
+  - 美國中北部
+  - 美國中南部
+  - 美國中西部
+  - 美國西部
+  - 美國西部 2
+
 
 >[!NOTE]
 >您可以監視任何區域中的 Azure Vm。 Vm 本身不限於 Log Analytics 工作區支援的區域。
@@ -136,6 +149,6 @@ ms.locfileid: "91995680"
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何使用效能監視功能，請參閱 [View 適用於 VM 的 Azure 監視器 performance](vminsights-performance.md)。 若要檢視探索到的應用程式相依性，請參閱[檢視適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。

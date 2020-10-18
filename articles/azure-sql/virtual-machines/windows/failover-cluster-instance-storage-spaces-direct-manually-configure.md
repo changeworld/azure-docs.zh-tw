@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272519"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165229"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有儲存空間直接存取 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "91272519"
 - Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - 一個[可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)中的[兩個或多個備妥的 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
-- [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)的最新版本。 
+- [PowerShell](/powershell/azure/install-az-ps)的最新版本。 
 
 
 ## <a name="add-the-windows-cluster-feature"></a>新增 Windows 叢集功能
@@ -164,7 +164,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. [建立磁碟區](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
 
-   儲存空間直接存取會在啟用時自動建立儲存集區。 您現在可開始建立磁碟區。 PowerShell Cmdlet `New-Volume` 會自動化磁碟區的建立流程。 此套裝程式含格式化、將磁片區新增至叢集，以及建立 CSV。 本範例會建立 800 GB 的 CSV：
+   儲存空間直接存取會在啟用時自動建立儲存集區。 您現在可開始建立磁碟區。 PowerShell Cmdlet `New-Volume` 會自動化磁碟區的建立流程。 此套裝程式含格式化、將磁片區新增至叢集，以及建立 CSV。 此範例會建立 800 gb (GB) CSV：
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -233,7 +233,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>設定連線能力 
 
-若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL Server 2019 和 Windows Server 2016 (或更新版本) ，則可以改為預覽 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) 功能。 
+若要將流量適當地路由傳送到目前的主要節點，請設定適用于您環境的連線選項。 您可以建立 [Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ，或者，如果您使用 SQL SERVER 2019 CU2 (或更新版本的) 和 Windows Server 2016 (或更新版本) ，則可以改用 [分散式網路名稱](failover-cluster-instance-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 
@@ -243,12 +243,12 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](hadr-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
+如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](failover-cluster-instance-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
 
 如果儲存空間直接存取不是適合您的 FCI 儲存體解決方案，請考慮改為使用 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 或 [Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 來建立 FCI。 
 
 若要深入瞭解，請參閱 [使用 Azure vm](failover-cluster-instance-overview.md) 和叢集設定 [最佳作法](hadr-cluster-best-practices.md)SQL Server 的 FCI 總覽。 
 
-如需相關資訊，請參閱： 
+如需詳細資訊，請參閱 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205432"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164834"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 指令碼 (.csx) 開發人員參考
 
@@ -249,7 +249,17 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> 如需您可使用之較新記錄架構 (而非 `TraceWriter`) 的資訊，請參閱**監視 Azure Functions** 一文中的[在 C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
+> 如需您可以使用的較新記錄架構的詳細資訊 `TraceWriter` ，請參閱《 .net 類別庫開發人員指南》中的 [ILogger](functions-dotnet-class-library.md#ilogger) 檔。
+
+### <a name="custom-metrics-logging"></a>自訂計量記錄
+
+您可以使用 `LogMetric` 中的擴充方法 `ILogger` ，在 Application Insights 中建立自訂計量。 以下是範例方法呼叫：
+
+```csharp
+logger.LogMetric("TestMetric", 1234);
+```
+
+此程式碼是使用適用於 .NET 的 Application Insights API 來呼叫 `TrackMetric` 的替代方法。
 
 ## <a name="async"></a>非同步處理
 

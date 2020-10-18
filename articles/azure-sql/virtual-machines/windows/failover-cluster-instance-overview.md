@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272502"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165226"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -140,7 +140,7 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 ## <a name="connectivity"></a>連線能力
 
-Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體使用[分散式網路名稱 (DNN)](hadr-distributed-network-name-dnn-configure.md) 或[虛擬網路名稱 (VNN) 搭配 Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) 來將流量路由傳送至 SQL Server 執行個體 (不論目前擁有叢集資源的節點為何)。 對 SQL Server FCI 使用特定功能和 DNN 時有另外的考量。 若要深入了解，請參閱 [DNN 與 SQL Server FCI 的互通性](failover-cluster-instance-dnn-interoperability.md)。 
+Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體使用[分散式網路名稱 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) 或[虛擬網路名稱 (VNN) 搭配 Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 來將流量路由傳送至 SQL Server 執行個體 (不論目前擁有叢集資源的節點為何)。 對 SQL Server FCI 使用特定功能和 DNN 時有另外的考量。 若要深入了解，請參閱 [DNN 與 SQL Server FCI 的互通性](failover-cluster-instance-dnn-interoperability.md)。 
 
 如需叢集連線選項的詳細資訊，請參閱[將 HADR 連線路由傳送至 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
 

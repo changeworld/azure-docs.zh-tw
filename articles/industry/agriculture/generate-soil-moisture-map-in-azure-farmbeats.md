@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482565"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165548"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>產生泥土濕度熱度圖
 
@@ -54,7 +54,7 @@ ms.locfileid: "75482565"
 2.  選取 [ **MyFarm**  >  **新增裝置**]。
 3.  [ **新增裝置** ] 視窗隨即顯示。 選取連結至您的伺服陣列的上料濕度感應器的任何裝置。
 
-    ![專案 FarmBeats](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![顯示 [新增裝置] 畫面的螢幕擷取畫面。](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. 選取 [ **新增裝置**]。     
 
@@ -70,7 +70,7 @@ ms.locfileid: "75482565"
 6.  在 [**選取上料濕度****感應器] 量值**中，輸入您想要用於地圖的量值。
     若要找出感應器量值，請在 [ **感應器**] 中選取任何的泥土濕度感應器。 在 [ **感應器屬性**] 中，使用 [ **量值名稱** ] 值。
 
-    ![專案 FarmBeats](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![顯示中料濕度畫面的螢幕擷取畫面。](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  選取 [ **產生對應**]。

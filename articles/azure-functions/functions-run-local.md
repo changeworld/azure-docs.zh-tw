@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108485"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164853"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -574,15 +574,11 @@ func deploy
 
 ### <a name="application-insights-integration"></a>Application Insights 整合
 
-當您在 Azure 中建立函數應用程式時，應該啟用 Application Insights 整合。 如果您的函式應用程式因為某些原因而未連接到 Application Insights 實例，那麼在 Azure 入口網站中進行這項整合很簡單。 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+當您在 Azure 中建立函數應用程式時，應該啟用 Application Insights 整合。 如果您的函式應用程式因為某些原因而未連接到 Application Insights 實例，那麼在 Azure 入口網站中進行這項整合很簡單。 若要深入瞭解，請參閱 [啟用 Application Insights 整合](configure-monitoring.md#enable-application-insights-integration)。
 
 ### <a name="enable-streaming-logs"></a>啟用串流記錄
 
 您可以在本機電腦上的命令列會話中，查看您的函式所產生的記錄檔串流。 
-
-#### <a name="native-streaming-logs"></a>原生串流記錄
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
