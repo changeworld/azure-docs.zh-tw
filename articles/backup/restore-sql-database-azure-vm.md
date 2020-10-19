@@ -3,12 +3,12 @@ title: 還原 Azure VM 上的 SQL Server 資料庫
 description: 本文說明如何還原在 Azure VM 上執行，並使用 Azure 備份備份的 SQL Server 資料庫。 您也可以使用跨區域還原，將資料庫還原到次要區域。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985399"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172163"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>在 Azure VM 上還原 SQL Server 資料庫
 
@@ -30,7 +30,7 @@ Azure 備份可以還原在 Azure Vm 上執行的 SQL Server 資料庫，如下�
 - 您可以將資料庫還原至相同 Azure 區域中的 SQL Server 執行個體。
 - 目的地伺服器必須註冊到和來源相同的保存庫。
 - 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將 [憑證還原至目的地伺服器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。
-- 啟用[CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)的資料庫應該使用 [[還原為](#restore-as-files)檔案] 選項來還原。
+- 啟用[CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)的資料庫應該使用 [[還原為](#restore-as-files)檔案] 選項來還原。
 - 在還原 "master" 資料庫之前，請使用啟動選項 **-m AzureWorkloadBackup**，在單一使用者模式中啟動 SQL Server 實例。
   - **-M**的值是用戶端的名稱。
   - 只有指定的用戶端名稱可以開啟連接。
@@ -150,7 +150,7 @@ Azure 備份可以還原在 Azure Vm 上執行的 SQL Server 資料庫，如下�
     ![開啟行事曆](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 選取日期之後，時間軸圖表會顯示連續範圍中可用的復原點。
-1. 在時間軸圖形上指定復原的時間，或選取時間。 然後選取 [確定]。
+1. 在時間軸圖形上指定復原的時間，或選取時間。 然後選取 [確定]  。
 
 ### <a name="restore-to-a-specific-restore-point"></a>還原至特定還原點
 

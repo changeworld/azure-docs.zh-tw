@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 6da91248c197eae12fbc59f2da8c5294d95117b6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169365"
+ms.locfileid: "92173831"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -129,9 +129,9 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 解決方案：
 
-* 檢查是否有可將負載分散到 VM 磁片的可能性。 這會減少單一磁片上的負載。 您可以藉 [由在儲存體層級啟用診斷計量來檢查 IOPs 節流](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)。
+* 檢查是否有可將負載分散到 VM 磁片的可能性。 這會減少單一磁片上的負載。 您可以藉 [由在儲存體層級啟用診斷計量來檢查 IOPs 節流](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)。
 * 將備份原則變更為當 VM 上的負載降到最低時，在離峰時段執行備份。
-* 升級 Azure 磁片以支援更高的 IOPs。 [請於此處深入了解](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+* 升級 Azure 磁片以支援更高的 IOPs。 [請於此處深入了解](../virtual-machines/disks-types.md)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - 快照集作業失敗，因為 VSS (磁碟區陰影複製) 服務處於不良狀態
 
@@ -157,15 +157,15 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 發生此錯誤的原因是在還原作業期間選取的 VM 大小是不支援的大小。 <br>
 
-若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項。 您可以使用這些磁片，透過[Powershell Cmdlet](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)，從[可用的支援 VM 大小](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support)清單中建立 vm。
+若要解決此問題，請在還原作業期間使用 [ [復原磁碟](./backup-azure-arm-restore-vms.md#restore-disks) ] 選項。 您可以使用這些磁片，透過[Powershell Cmdlet](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks)，從[可用的支援 VM 大小](./backup-support-matrix-iaas.md#vm-compute-support)清單中建立 vm。
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported-VM 建立失敗，因為不存在市場採購申請
 
 錯誤碼： UserErrorMarketPlaceVMNotSupported 錯誤訊息：因為沒有市場採購要求，所以 VM 建立失敗。
 
-Azure 備份支援 Azure Marketplace 中可用 Vm 的備份和還原。 當您嘗試使用特定的方案/發行者設定來還原 VM (時，將會發生此錯誤，) 該設定已無法在 Azure Marketplace 中使用，請在 [這裡深入瞭解](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)。
+Azure 備份支援 Azure Marketplace 中可用 Vm 的備份和還原。 當您嘗試使用特定的方案/發行者設定來還原 VM (時，將會發生此錯誤，) 該設定已無法在 Azure Marketplace 中使用，請在 [這裡深入瞭解](/legal/marketplace/participation-policy#offering-suspension-and-removal)。
 
-* 若要解決此問題，請在還原作業期間使用 [ [復原磁碟](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) ] 選項，然後使用 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 或 [AZURE CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) Cmdlet，以與 vm 對應的最新 marketplace 資訊來建立 VM。
+* 若要解決此問題，請在還原作業期間使用 [ [復原磁碟](./backup-azure-arm-restore-vms.md#restore-disks) ] 選項，然後使用 [PowerShell](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 或 [AZURE CLI](./tutorial-restore-disk.md) Cmdlet，以與 vm 對應的最新 marketplace 資訊來建立 VM。
 * 如果發行者沒有任何 Marketplace 資訊，您可以使用資料磁片來取出您的資料，並將其連結至現有的 VM。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 備份擴充功能的剖析和設定失敗
@@ -321,8 +321,8 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 
 在還原之後，您會注意到磁片已離線，然後：
 
-* 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
-* 請確定您不會還原至相同的來源， [深入瞭解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
+* 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](./backup-azure-restore-files-from-vm.md#system-requirements)。  
+* 請確定您不會還原至相同的來源， [深入瞭解](./backup-azure-restore-files-from-vm.md#original-backed-up-machine-versus-another-machine)。
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound-還原失敗，因為找不到 VM 的快照集
 

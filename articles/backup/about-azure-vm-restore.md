@@ -3,12 +3,12 @@ title: 關於 Azure 虛擬機器還原程式
 description: 瞭解 Azure 備份服務如何還原 Azure 虛擬機器
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985341"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171762"
 ---
 # <a name="about-azure-vm-restore"></a>關於 Azure VM 還原
 
@@ -32,13 +32,13 @@ ms.locfileid: "90985341"
 - **可用性 (複寫類型) **： Azure 備份提供兩種複寫類型，以保持儲存體/資料的高可用性：
   - [本地備援儲存體 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 會將資料複寫至資料中心的儲存體縮放單位三次 (建立三個資料複本)。 此資料的所有複本都存在於相同的區域內。 LRS 是保護資料免於本機硬體失敗的低成本選項。
   - [異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是預設且建議使用的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
-  - [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。 ZRS 不會停機。 因此，您需要[資料落地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必須沒有停機時間的重要工作負載，可以在 ZRS 中備份。
+  - [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](../availability-zones/az-overview.md#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。 ZRS 不會停機。 因此，您需要[資料落地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必須沒有停機時間的重要工作負載，可以在 ZRS 中備份。
 
 - **跨區域還原 (crr) **：作為其中一個 [還原選項](./backup-azure-arm-restore-vms.md#restore-options)、跨區域還原 (CRR) 可讓您在次要區域（也就是 [Azure 配對的區域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中還原 azure vm。
 
-## <a name="restore-scenarios"></a>還原案例
+## <a name="restore-scenarios"></a>還原實例
 
-![還原案例 ](./media/about-azure-vm-restore/recovery-scenarios.png)
+![還原實例 ](./media/about-azure-vm-restore/recovery-scenarios.png)
 
 | **案例**                                                 | **完成的工作**                                             | **使用時機**                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |

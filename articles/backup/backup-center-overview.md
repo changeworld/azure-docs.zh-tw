@@ -3,12 +3,12 @@ title: 備份中心總覽
 description: 本文提供 Azure 備份中心的總覽。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614272"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173731"
 ---
 # <a name="overview-of-backup-center"></a>備份中心總覽
 
@@ -16,9 +16,9 @@ ms.locfileid: "91614272"
 
 備份中心的一些主要優點包括：
 
-* **管理備份的單一管理平臺** –「備份中心」是設計成可在大型且分散的 Azure 環境中運作。 您可以使用備份中心，有效率地管理跨越多個工作負載類型、保存庫、訂用帳戶、區域和 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 租使用者的備份。
+* **管理備份的單一管理平臺** –「備份中心」是設計成可在大型且分散的 Azure 環境中運作。 您可以使用備份中心，有效率地管理跨越多個工作負載類型、保存庫、訂用帳戶、區域和 [Azure Lighthouse](../lighthouse/overview.md) 租使用者的備份。
 * 以**資料來源為中心的管理**–「備份中心」提供以您要備份的資料來源為中心的視圖和篩選 (例如，vm 和資料庫) 。 這可讓資源擁有者或備份管理員監視和操作專案的備份，而不需要將焦點放在要備份專案的保存庫上。 這項設計的主要功能是能夠依據資料來源的特定屬性（例如 datasource 訂用帳戶、datasource 資源群組和 datasource 標記）篩選 views。 例如，如果您的組織遵循將不同的標籤指派給屬於不同部門的 Vm，您可以使用 [備份中心] 根據要備份之基礎 Vm 的標記來篩選備份資訊，而不需要將焦點放在保存庫的標籤上。
-* **連線體驗** –「備份中心」提供對現有 Azure 服務的原生整合，以大規模進行管理。 例如，「備份中心」會使用 [Azure 原則](https://docs.microsoft.com/azure/governance/policy/overview) 體驗來協助您管理您的備份。 它也會利用 [Azure 活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) 和 [Azure 監視器記錄](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) 來協助您查看有關備份的詳細報告。 因此，您不需要學習任何新的原則，就能使用備份中心所提供的各種功能。
+* **連線體驗** –「備份中心」提供對現有 Azure 服務的原生整合，以大規模進行管理。 例如，「備份中心」會使用 [Azure 原則](../governance/policy/overview.md) 體驗來協助您管理您的備份。 它也會利用 [Azure 活頁簿](../azure-monitor/platform/workbooks-overview.md) 和 [Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md) 來協助您查看有關備份的詳細報告。 因此，您不需要學習任何新的原則，就能使用備份中心所提供的各種功能。
 
 ## <a name="supported-scenarios"></a>支援的案例
 

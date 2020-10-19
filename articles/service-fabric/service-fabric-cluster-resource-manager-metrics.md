@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005644"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173007"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用度量管理資源耗用量和負載
 *計量*是您的服務所關切的資源，且是由叢集中的節點提供。 計量就是任何您想要管理，以便改善或監視服務效能的項目。 例如，您可能會監看記憶體耗用量以得知您的服務是否為多載。 另一個用法是，了解服務是否能夠移至記憶體限制較小的其他位置，以取得更佳的效能。
@@ -138,12 +138,13 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="load"></a>載入
 定義計量的整個重點在於代表某個負載。 「負載」** 係指特定節點上的某個服務執行個體或複本取用的特定計量數量。 隨時可以設定負載。 例如：
 
-  - 建立服務時，可以定義負載。 這稱為_預設負載_。
-  - 計量資訊，包括建立服務之後服務可以更新的預設負載。 這稱為_更新服務_。 
-  - 指定資料分割的負載可以重設為該服務的預設值。 這稱為_重設資料分割負載_。
-  - 負載可以每個服務物件為基礎，在執行階段以動態方式報告。 這稱為_報告負載_。 
-  
-這些策略全部可以在相同服務的存留期內使用。 
+  - 建立服務時，可以定義負載。 這種類型的負載設定稱為 _預設負載_。
+  - 服務建立之後，就可以更新服務的計量資訊（包括預設負載）。 此計量更新是藉由 _更新服務_來完成。
+  - 指定資料分割的負載可以重設為該服務的預設值。 此計量更新稱為 _重設分割區載入_。
+  - 您可以在執行時間以動態方式報告每個服務物件的負載。 此計量更新稱為 _報告負載_。
+  - 資料分割的複本或實例的載入也可以透過網狀架構 API 呼叫來透過報告載入值來更新。 此計量更新稱為資料 _分割的報告負載_。
+
+這些策略全部可以在相同服務的存留期內使用。
 
 ## <a name="default-load"></a>預設負載
 預設負載** 係指此服務的每個服務物件 (無狀態執行個體或具狀態複本) 取用的計量數量。 叢集資源管理員會將這個數字用於服務物件的負載，直到它接收其他資訊，例如動態負載報告。 針對簡單服務，預設負載是靜態定義。 預設負載永遠不會更新，並且在服務的存留期使用。 預設負載非常適用於簡單的容量規劃案例，其中特定數量的資源是供不同的工作負載專用，不會變更。
@@ -175,6 +176,67 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 ```
 
 服務可以報告在建立時為它定義的任何計量。 如果服務報告的計量負載並非設定為使用，Service Fabric 會忽略該報告。 如果相同時間有其他報告的有效計量，系統就會接受這些報告。 服務程式碼可以測量並報告它知道的所有計量，而操作員則可以指定要使用的的計量設定，而不需變更服務程式碼。 
+
+## <a name="reporting-load-for-a-partition"></a>報告資料分割的載入
+上一節描述服務複本或實例如何報告載入本身。 另外還有一個可使用 FabricClient 動態報告負載的選項。 報告分割區的負載時，您可以一次報告多個分割區。
+
+這些報表的使用方式與來自複本或實例本身的載入報表完全相同。 報告值將會是有效的，直到報告新的載入值（由複本或實例或報告資料分割的新載入值）。
+
+使用此 API 時，有多種方法可更新叢集中的負載：
+
+  - 具狀態服務分割區可以更新其主要複本負載。
+  - 無狀態和具狀態服務都可以更新其所有次要複本或實例的負載。
+  - 無狀態和具狀態服務都可以更新節點上特定複本或實例的負載。
+
+您也可以同時合併每個分割區的任何更新。
+
+您可以透過單一 API 呼叫來更新多個分割區的負載，在這種情況下，輸出會包含每個資料分割的回應。 如果因為任何原因而未成功套用磁碟分割更新，將會略過該分割區的更新，並提供目標資料分割的對應錯誤碼：
+
+  - PartitionNotFound-指定的資料分割識別碼不存在。
+  - ReconfigurationPending-目前正在重新設定磁碟分割。
+  - InvalidForStatelessServices-嘗試變更屬於無狀態服務之分割區的主要複本負載。
+  - ReplicaDoesNotExist-次要複本或實例不存在於指定的節點上。
+  - InvalidOperation-可能發生在兩種情況下：為屬於系統應用程式的資料分割更新負載，或未啟用更新預測的負載。
+
+如果傳回其中一些錯誤，您可以更新特定資料分割的輸入，然後重試特定資料分割的更新。
+
+程式碼：
+
+```csharp
+Guid partitionId = Guid.Parse("53df3d7f-5471-403b-b736-bde6ad584f42");
+string metricName0 = "CustomMetricName0";
+List<MetricLoadDescription> newPrimaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 100)
+};
+
+string nodeName0 = "NodeName0";
+List<MetricLoadDescription> newSpecificSecondaryReplicaLoads = new List<MetricLoadDescription>()
+{
+    new MetricLoadDescription(metricName0, 200)
+};
+
+OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
+    await this.FabricClient.UpdatePartitionLoadAsync(
+        new UpdatePartitionLoadQueryDescription
+        {
+            PartitionMetricLoadDescriptionList = new List<PartitionMetricLoadDescription>()
+            {
+                new PartitionMetricLoadDescription(
+                    partitionId,
+                    newPrimaryReplicaLoads,
+                    new List<MetricLoadDescription>(),
+                    new List<ReplicaMetricLoadDescription>()
+                    {
+                        new ReplicaMetricLoadDescription(nodeName0, newSpecificSecondaryReplicaLoads)
+                    })
+            }
+        },
+        this.Timeout,
+        cancellationToken);
+```
+
+在此範例中，您將針對資料分割 _53df3d7f-5471-403b-b736-bde6ad584f42_執行最後報告的負載更新。 度量 _CustomMetricName0_ 的主要複本負載將會以100值更新。 同時，針對位於節點 _NodeName0_之特定次要複本的相同計量載入，將會更新為值200。
 
 ### <a name="updating-a-services-metric-configuration"></a>更新服務的計量設定
 與服務相關聯的計量清單和這些計量的屬性，可以在服務存留時動態地更新。 這樣可以進行實驗並具有彈性。 非常有用的某些範例為：

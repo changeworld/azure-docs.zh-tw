@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448536"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174168"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>刪除和復原 Azure Log Analytics 工作區
 
@@ -112,6 +112,9 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 * 如果您在建立工作區時收到錯誤訊息「此工作區名稱已在使用中」或「衝突」，可能是因為：
   * 工作區名稱無法使用，組織中的某人或其他客戶正在使用中。
   * 工作區已在最近 14 天內刪除，而其名稱已針對虛刪除期間保留起來。 若要覆寫虛刪除並永久刪除工作區以使用相同名稱建立新的工作區，請遵循下列步驟先復原工作區，然後執行永久刪除：<br>
-     1. [復原](#recover-workspace)您的工作區。
-     2. [永久刪除](#permanent-workspace-delete)您的工作區。
-     3. 使用相同工作區名稱建立新的工作區。
+    1. [復原](#recover-workspace)您的工作區。
+    2. [永久刪除](#permanent-workspace-delete)您的工作區。
+    3. 使用相同工作區名稱建立新的工作區。
+* 如果您看到204回應碼顯示 *找不到資源*，原因可能是連續嘗試使用「刪除工作區」作業。 204是空回應，這通常表示資源不存在，所以刪除完成，而不執行任何動作。
+  在後端成功完成刪除呼叫之後，您可以還原工作區，並在先前建議的其中一個方法中完成永久刪除作業。
+

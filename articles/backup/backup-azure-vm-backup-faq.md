@@ -4,18 +4,18 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056713"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172833"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
 本文提供使用 [Azure 備份](./backup-overview.md) 服務來備份 Azure vm 的常見問題解答。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>當我建立 VM 映射時，可以啟用這些映射以進行備份嗎？
 
@@ -24,7 +24,7 @@ ms.locfileid: "92056713"
 ### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>為何初始備份需要大量的時間才能完成？
 
 初始備份一律是完整備份，而且會取決於資料的大小和處理備份的時間。 <br>
-若要改善備份效能，請參閱 [備份最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [備份考慮](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) 和 [備份效能](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+若要改善備份效能，請參閱 [備份最佳做法](./backup-azure-vms-introduction.md#best-practices); [備份考慮](./backup-azure-vms-introduction.md#backup-and-restore-considerations) 和 [備份效能](./backup-azure-vms-introduction.md#backup-performance)<br>
 雖然增量備份的備份時間總計小於 24 小時，但是可能不適合第一次備份。
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中是否包含備份成本？
@@ -109,7 +109,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在備份期間發生租使用者變更時，是否保留受控識別？
 
-如果發生 [租使用者變更](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) ，您就必須停用並重新啟用 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 識別，才能讓備份再次運作。
+如果發生 [租使用者變更](/azure/devops/organizations/accounts/change-azure-ad-connection) ，您就必須停用並重新啟用 [受控](../active-directory/managed-identities-azure-resources/overview.md) 識別，才能讓備份再次運作。
 
 ## <a name="restore"></a>還原
 
@@ -207,6 +207,6 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
 目前，您可以根據指派給 VM 的備份原則，在 (VM) 層級的備份專案上，查看保留設定。
 
-若要查看備份的保留設定，其中一種方式是在 Azure 入口網站中流覽至 VM 的 [備份專案] [儀表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 選取備份原則的連結，可協助您查看與 VM 相關聯的每日、每週、每月和每年保留點的保留時間。
+若要查看備份的保留設定，其中一種方式是在 Azure 入口網站中流覽至 VM 的 [備份專案] [儀表板](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) 。 選取備份原則的連結，可協助您查看與 VM 相關聯的每日、每週、每月和每年保留點的保留時間。
 
-您也可以使用 [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 來查看單一窗格內所有 vm 的保留設定。 從任何復原服務保存庫流覽至 Backup Explorer，移至 [ **備份專案** ] 索引標籤，然後選取 [Advanced View] 以查看每個 VM 的詳細保留資訊。
+您也可以使用 [Backup Explorer](./monitor-azure-backup-with-backup-explorer.md) 來查看單一窗格內所有 vm 的保留設定。 從任何復原服務保存庫流覽至 Backup Explorer，移至 [ **備份專案** ] 索引標籤，然後選取 [Advanced View] 以查看每個 VM 的詳細保留資訊。

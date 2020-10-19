@@ -4,12 +4,12 @@ description: '深入瞭解使用長期保留 (預覽版適用於 PostgreSQL 的 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093883"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173588"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>使用長期保留的適用於 PostgreSQL 的 Azure 資料庫備份 (預覽) 
 
@@ -244,7 +244,7 @@ Azure 備份遵循嚴格的安全性指導方針。 雖然它是原生的 Azure 
 
 在您想要備份或還原的 PG 伺服器上，授與備份保存庫 MSI **讀取** 許可權：
 
-若要建立與于 postgresql 資料庫的安全連線，Azure 備份使用 [受控服務識別 (MSI) ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 驗證模型。 這表示備份保存庫只會存取使用者已明確授與許可權的資源。
+若要建立與于 postgresql 資料庫的安全連線，Azure 備份使用 [受控服務識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md) 驗證模型。 這表示備份保存庫只會存取使用者已明確授與許可權的資源。
 
 系統會在建立時自動將系統 MSI 指派給保存庫。 您必須將您想要備份資料庫之于 postgresql 伺服器的存取權授與此保存庫 MSI。
 
@@ -308,7 +308,7 @@ Azure 備份遵循嚴格的安全性指導方針。 雖然它是原生的 Azure 
 
     ![指派儲存體 Blob 資料參與者角色](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. 或者，您也可以使用 Azure CLI [az role 指派 create](https://docs.microsoft.com/cli/azure/role/assignment) 命令，為您要還原的特定容器提供細微許可權。
+1. 或者，您也可以使用 Azure CLI [az role 指派 create](/cli/azure/role/assignment) 命令，為您要還原的特定容器提供細微許可權。
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

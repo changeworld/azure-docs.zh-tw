@@ -4,12 +4,12 @@ description: 提供使用 Azure 備份服務在 Azure Vm 中備份 SQL Server �
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946343"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174058"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure Vm 中 SQL Server 備份的支援矩陣
 
@@ -41,7 +41,7 @@ ms.locfileid: "91946343"
 * 所有備份類型 (完整/差異/記錄) 和復原模式，都支援 (簡單/完整/大量記錄) 。
 * **唯讀**資料庫支援完整和僅複製完整備份類型。
 * 如果使用者在備份原則中明確啟用，則支援 SQL 原生壓縮。 Azure 備份會使用壓縮/NO_COMPRESSION 子句來覆寫實例層級的預設值，這取決於使用者設定的這個控制項值。
-* 支援啟用 TDE 的資料庫備份。 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將 [憑證還原至目的地伺服器](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 SQL Server 2016 和更新版本之已啟用 TDE 資料庫的備份壓縮可供使用，但以較低的傳輸大小為限[，如下所述。](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)
+* 支援啟用 TDE 的資料庫備份。 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將 [憑證還原至目的地伺服器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 SQL Server 2016 和更新版本之已啟用 TDE 資料庫的備份壓縮可供使用，但以較低的傳輸大小為限[，如下所述。](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)
 * 不支援鏡像資料庫和資料庫快照集的備份和還原作業。
 * 不支援 SQL Server **容錯移轉叢集實例 (FCI) ** 。
 * 使用多個備份解決方案來備份獨立 SQL Server 實例或 SQL Always on 可用性群組可能會導致備份失敗。 避免這樣做。 使用相同或不同的解決方案來備份可用性群組的兩個節點，也可能導致備份失敗。

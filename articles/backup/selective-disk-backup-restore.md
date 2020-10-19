@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 虛擬機器備份解決方
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271370"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174107"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的選擇性磁片備份和還原
 
@@ -240,6 +240,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 入口網站
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 使用 Azure 入口網站，您可以從 [VM 備份詳細資料] 窗格和 [備份作業詳細資料] 窗格中，查看包含和排除的磁片。  在還原期間，當您選取要從中還原的復原點時，可以在該復原點中查看備份的磁片。
 

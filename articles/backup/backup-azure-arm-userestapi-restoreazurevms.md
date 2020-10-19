@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure �
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506672"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174028"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
@@ -122,7 +122,7 @@ X-Powered-By: ASP.NET
 ***備份專案上的所有還原作業都是使用相同的 *POST* API 來執行。只有要求主體會隨著還原案例而變更。***
 
 > [!IMPORTANT]
-> [這裡](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)提及各種還原選項及其相依性的所有詳細資料。 請先參閱，再繼續觸發這些作業。
+> [這裡](./backup-azure-arm-restore-vms.md#restore-options)提及各種還原選項及其相依性的所有詳細資料。 請先參閱，再繼續觸發這些作業。
 
 觸發還原作業是 *POST* 要求。 若要深入瞭解 API，請參閱「 [觸發程式還原」 REST API](/rest/api/backup/restores/trigger)。
 
@@ -246,7 +246,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="restore-disks-selectively"></a>選擇性地復原磁碟
 
-如果您 [選擇備份磁片](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)，則會在 [復原點摘要](#select-recovery-point) 和 [詳細回應](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)中提供目前的備份磁片清單。 您也可以選擇性地復原磁碟，也可以在 [這裡](selective-disk-backup-restore.md#selective-disk-restore)提供更多詳細資料。 若要在備份的磁片清單中選擇性地復原磁碟，請從復原點回應中找出磁片的 LUN，然後將 **restoreDiskLunList** 屬性新增至 [上面的要求主體](#example-request) ，如下所示。
+如果您 [選擇備份磁片](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)，則會在 [復原點摘要](#select-recovery-point) 和 [詳細回應](/rest/api/backup/recoverypoints/get)中提供目前的備份磁片清單。 您也可以選擇性地復原磁碟，也可以在 [這裡](selective-disk-backup-restore.md#selective-disk-restore)提供更多詳細資料。 若要在備份的磁片清單中選擇性地復原磁碟，請從復原點回應中找出磁片的 LUN，然後將 **restoreDiskLunList** 屬性新增至 [上面的要求主體](#example-request) ，如下所示。
 
 ```json
 {

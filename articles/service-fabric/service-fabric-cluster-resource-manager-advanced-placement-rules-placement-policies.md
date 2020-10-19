@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005746"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172802"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服務的放置原則
 放置原則是在一些較罕見的特定情況下可用來掌管服務放置的額外規則。 這些情況的一些例子如下︰
@@ -20,6 +20,7 @@ ms.locfileid: "89005746"
 - 您的環境跨越多個地緣政治或法定管制區，或是在其他一些情況下，您有需要強制執行的政策界限
 - 由於距離很大，或是使用較慢或較不可靠的網路連結，而有通訊效能或延遲考量
 - 您需要盡最大努力確保特定工作負載與其他工作負載共置，或放置在客戶附近
+- 您需要在單一節點上有多個資料分割的無狀態實例
 
 上述大部分需求會與叢集的實體配置 (以叢集的容錯網域表示) 一致。 
 
@@ -29,6 +30,7 @@ ms.locfileid: "89005746"
 2. 所需的網域
 3. 慣用的網域
 4. 不允許封裝複本
+5. 允許節點上有多個無狀態實例
 
 以下大部分控制可透過節點屬性和放置條件約束來設定，但其中有一些比較複雜。 為了簡化起見，Service Fabric 叢集資源管理員提供這些額外的放置原則。 放置原則可以依個別具名服務執行個體來設定， 還可以動態更新。
 
@@ -122,6 +124,42 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 現在，是否可針對未跨越地理區域的叢集中的服務使用這些組態？ 可以，但也沒有充分的理由。 除非情況要求，否則請避免所需、無效和慣用的網域設定。 如果試著強制在單一機架中執行指定的工作負載，或偏好本機叢集的某些區段而不是其他區段，這樣並沒有任何意義。 不同的硬體設定應該分散至容錯網域，並透過一般放置條件約束和節點屬性來處理。
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>在單一節點上放置分割區的多個無狀態實例
+**AllowMultipleStatelessInstancesOnNode**放置原則允許在單一節點上放置分割區的多個無狀態實例。 依預設，單一分割區的多個實例不能放在節點上。 即使使用-1 服務，也無法針對指定的已命名服務，將叢集的節點數目調整為超過叢集中的節點數目。 此放置原則會移除此限制，並允許指定的 InstanceCount 高於節點計數。
+
+如果您曾看過類似「`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion`」的健康狀態訊息，表示您已遇到此狀況或類似的情況。 
+
+藉由在 `AllowMultipleStatelessInstancesOnNode` 服務上指定原則，InstanceCount 可以設定為超過叢集中的節點數目。
+
+程式碼：
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+PowerShell：
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> 放置原則目前為預覽狀態，且位於叢集 `EnableUnsupportedPreviewFeatures` 設定後方。 由於這是目前的預覽功能，因此設定預覽設定可防止叢集升級為/來自。 換句話說，您將需要建立新的叢集來試用此功能。
+>
+
+> [!NOTE]
+> 目前只有具有 ExclusiveProcess [服務套件啟用模式](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)的無狀態服務支援此原則。
+>
+
+> [!WARNING]
+> 搭配靜態埠端點使用時，不支援此原則。 同時使用兩者可能會導致狀況不良的叢集，因為相同節點上的多個實例嘗試系結至相同的埠，而且無法啟動。 
+>
+
+> [!NOTE]
+> 使用高價值的 [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) 搭配此放置原則可能會導致應用程式無法升級。 例如，如果您有五個節點的叢集，並設定 InstanceCount = 10，您將會在每個節點上有兩個實例。 如果您設定 MinInstanceCount = 9，嘗試的應用程式升級可能會停滯;若使用 MinInstanceCount = 8，則可以避免此情況。
+>
 
 ## <a name="next-steps"></a>後續步驟
 - 如需服務設定的詳細資訊，請[深入了解設定服務](service-fabric-cluster-resource-manager-configure-services.md)

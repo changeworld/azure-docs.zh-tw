@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563341"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173685"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽中設定自訂網域
 
@@ -29,11 +29,11 @@ ms.locfileid: "87563341"
 
 有幾種不同類型的 DNS 組態可供應用程式使用。
 
-| 如果要                                 | 結果為                                                |
-| -----------------------------------------------| --------------------------------------------------- |
-| 支援 `www.example.com` 或 `blog.example.net`| [對應 CNAME 記錄](#map-a-cname-record)           |
-| 支援 `example.com`                          | [設定根網域](#configure-a-root-domain) |
-| 將所有子網域指向 `www.example.com`      | [對應萬用字元](#map-a-wildcard-domain)            |
+| 如果要 | 結果為 |
+|--|--|
+| 支援 `www.example.com` 或 `blog.example.net` | [對應 CNAME 記錄](#map-a-cname-record) |
+| 支援 `example.com` | [設定根網域](#configure-a-root-domain) |
+| 將所有子網域指向 `www.example.com` | [對應萬用字元](#map-a-wildcard-domain) |
 
 ## <a name="map-a-cname-record"></a>對應 CNAME 記錄
 
@@ -47,13 +47,15 @@ CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 
 
 1. 按一下功能表中的 [自訂網域]。
 
+1. 按一下 [ **新增** ] 按鈕
+
 1. 在 [自訂網域] 視窗中，複製 [值] 欄位中的 URL。
 
 ### <a name="configure-dns-provider"></a>設定 DNS 提供者
 
 1. 登入網域提供者的網站。
 
-2. 尋找管理 DNS 記錄的頁面。 每個網域提供者有自己的 DNS 記錄介面，請查閱您的提供者文件。 在網站中尋找標示為 [網域名稱]、[DNS] 或 [名稱伺服器管理] 的區域。
+2. 尋找管理 DNS 記錄的頁面。 每個網域提供者有自己的 DNS 記錄介面，請查閱您的提供者文件。 在網站中尋找標示為 [網域名稱]  、[DNS]  或 [名稱伺服器管理]  的區域。
 
 3. 通常可透過檢視您的帳戶資訊，然後尋找 [我的網域] 之類的連結，來找到 DNS 記錄分頁。 移至該頁面，然後尋找名為**區域檔案**、**DNS 記錄**或**進階設定**之類的連結。
 
@@ -98,7 +100,7 @@ CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 
 
 1. 登入網域提供者的網站。
 
-2. 尋找管理 DNS 記錄的頁面。 每個網域提供者有自己的 DNS 記錄介面，請查閱您的提供者文件。 在網站中尋找標示為 [網域名稱]、[DNS] 或 [名稱伺服器管理] 的區域。
+2. 尋找管理 DNS 記錄的頁面。 每個網域提供者有自己的 DNS 記錄介面，請查閱您的提供者文件。 在網站中尋找標示為 [網域名稱]  、[DNS]  或 [名稱伺服器管理]  的區域。
 
 3. 通常可透過檢視您的帳戶資訊，然後尋找 [我的網域] 之類的連結，來找到 DNS 記錄分頁。 移至該頁面，然後尋找名為**區域檔案**、**DNS 記錄**或**進階設定**之類的連結。
 

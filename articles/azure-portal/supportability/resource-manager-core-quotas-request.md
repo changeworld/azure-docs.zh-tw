@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7fd04428edc28315e714b9e81af0bea0e9344e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7486cee351880dc0465a43b1259a5f07ef31c77b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763800"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173285"
 ---
 # <a name="quota-increase-requests"></a>增加配額要求
 
@@ -22,6 +22,9 @@ ms.locfileid: "84763800"
 您可以從 Azure 入口網站要求增加 VM 系列的個 vcpu 配額限制。 VM 系列配額的增加會自動增加相同數量的總區域個 vcpu 限制。
 
 建立新的訂用帳戶時，預設的區域總個 vcpu 可能不會等於所有個別 VM 系列之預設 vCPU 配額的總和。 這項事實可能會導致訂用帳戶具有足夠的配額來容納您想要部署的每個個別 VM 系列。 它可能會有足夠的配額可供所有部署的區域總個 vcpu。 在此情況下，您必須提交要求以明確地增加區域個 vcpu 限制。 區域個 vcpu 限制總計不得超過區域所有 VM 系列的已核准配額總和。
+
+> [!NOTE]
+> 如果您想要將限制或配額提高到超過預設限制，請免費 [開啟線上客戶支援要求](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution)。
 
 如需有關配額的詳細資訊，請參閱 [虛擬機器 vCPU 配額](../../virtual-machines/windows/quotas.md) 和 [Azure 訂用帳戶和服務限制、配額和條件約束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 

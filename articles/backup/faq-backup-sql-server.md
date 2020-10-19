@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461218"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172377"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -104,7 +104,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>我是否可以保護 TDE (透明資料加密的資料庫) 開啟，資料庫是否會透過整個備份程式保持加密狀態？
 
-是的，Azure 備份支援啟用 TDE 的 SQL Server 資料庫或伺服器的備份。 備份支援使用 Azure 所管理的金鑰進行 [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) ，或使用客戶管理的金鑰 (BYOK) 。  備份不會在備份過程中執行任何 SQL 加密，因此資料庫會在備份時保持加密狀態。
+是的，Azure 備份支援啟用 TDE 的 SQL Server 資料庫或伺服器的備份。 備份支援使用 Azure 所管理的金鑰進行 [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) ，或使用客戶管理的金鑰 (BYOK) 。  備份不會在備份過程中執行任何 SQL 加密，因此資料庫會在備份時保持加密狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

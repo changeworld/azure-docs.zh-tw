@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 9b57a1f3dc1f2d86b992ce2480acd9c44df8d1e7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 65357642d940453b5bbfabf2fbb726ca909ce6f5
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122495"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173121"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的根 CA 變更變更
 
@@ -104,7 +104,7 @@ ms.locfileid: "92122495"
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4. 使用 App Service 搭配適用於 PostgreSQL 的 Azure 資料庫會有什麼影響？
 針對 Azure 應用程式服務，連接到適用於 PostgreSQL 的 Azure 資料庫，我們可以有兩個可能的案例，而這取決於您在應用程式中使用 SSL 的方式。
 *   此新憑證已新增至平台層級的 App Service。 如果您在應用程式中使用包含在 App Service 平臺上的 SSL 憑證，則不需要採取任何動作。
-*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。
+*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)中所共用
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-postgresql"></a>5. 使用 Azure Kubernetes Services (AKS) 搭配適用於 PostgreSQL 的 Azure 資料庫時的影響為何？
 如果您嘗試使用 Azure Kubernetes Services (AKS) 來連線至適用於 PostgreSQL 的 Azure 資料庫，其類似于從專用客戶主機環境進行存取。 請參閱 [此處](../aks/ingress-own-tls.md)的步驟。

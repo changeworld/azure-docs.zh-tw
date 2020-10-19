@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 0d36a09b67e110551470f3908800e77c35b1e3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843802"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173605"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>準備 Azure Stack Edge Pro GPU 裝置失敗
 
@@ -66,7 +66,8 @@ ms.locfileid: "91843802"
 | 協力廠商軟體           | 解決方案的參考                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | https://www.cohesity.com/solution/cloud/azure/ <br> 如需詳細資訊，請聯絡 Cohesity。          |
-| Veritas                        | 如需詳細資訊，請洽詢 Veritas。   |
+| Commvault                      | https://www.commvault.com/azure <br> 如需詳細資訊，請聯絡 Commvault。          |
+| Veritas                        | http://veritas.com/azure <br> 如需詳細資訊，請洽詢 Veritas。   |
 
 
 ## <a name="protect-files-and-folders-on-vms"></a>保護 Vm 上的檔案和資料夾
@@ -78,7 +79,8 @@ Azure Stack Edge 可與 Azure 備份和其他協力廠商資料保護解決方�
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure 備份 Microsoft Azure 復原服務 (MARS) 代理程式 | Windows        | [關於 MARS 代理程式](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows、Linux | [Microsoft Azure 整合、備份和修復解決方案簡介](https://www.cohesity.com/solution/cloud/azure) <br>如需詳細資訊，請聯絡 Cohesity。                          |
-| Veritas                 | Windows、Linux | 如需詳細資訊，請洽詢 Veritas。                    |
+| Commvault               | Windows、Linux | https://www.commvault.com/azure <br>如需詳細資訊，請聯絡 Commvault。                          |
+| Veritas                 | Windows、Linux | http://veritas.com/azure <br> 如需詳細資訊，請洽詢 Veritas。                    |
 
 
 

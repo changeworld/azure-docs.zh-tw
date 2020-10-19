@@ -4,12 +4,12 @@ description: 如何跨 Azure 訂用帳戶和資源群組移動復原服務保存
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056424"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171606"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
@@ -178,7 +178,7 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
   - 您只能針對舊保存庫中未到期的復原點還原已備份的資料。
   - 您必須在新的保存庫上建立資料的新初始複本。
 
-- 針對 Azure VM，您可以 [停止保護以保留](backup-azure-manage-vms.md#stop-protecting-a-vm) 舊保存庫中 vm 的資料，將 vm 移至另一個資源群組，然後在新的保存庫中保護 vm。 請參閱將 VM 移至另一個資源群組的 [指導方針和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) 。
+- 針對 Azure VM，您可以 [停止保護以保留](backup-azure-manage-vms.md#stop-protecting-a-vm) 舊保存庫中 vm 的資料，將 vm 移至另一個資源群組，然後在新的保存庫中保護 vm。 請參閱將 VM 移至另一個資源群組的 [指導方針和限制](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) 。
 
   虛擬機器一次只能在一個保存庫中受到保護。 不過，新的資源群組中的 VM 可以在新的保存庫上受到保護，因為它被視為不同的 VM。
 

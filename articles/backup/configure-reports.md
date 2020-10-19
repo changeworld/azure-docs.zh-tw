@@ -3,12 +3,12 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure 備份的報告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567429"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172462"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
@@ -30,6 +30,8 @@ ms.locfileid: "91567429"
 - 如果您是 [Azure Lighthouse](../lighthouse/index.yml) 使用者並擁有客戶訂用帳戶的委派存取權，即可使用這些報告搭配 Azure Lighthouse 來檢視所有租用戶的報告。
 - 目前，可以在備份報告中檢視最多 100 個 Log Analytics 工作區 (跨租用戶) 的資料。
 - 記錄備份作業的資料目前不會顯示在報告中。
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="get-started"></a>開始使用
 
@@ -71,7 +73,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
 此報告包含各種索引標籤：
 
-##### <a name="summary"></a>摘要
+##### <a name="summary"></a>總結
 
 您可以使用此索引標籤來取得備份資產的概要說明。 您可以快速概覽備份項目總數、已取用的雲端儲存體總量、受保護的執行個體數目，以及每個工作負載類型的作業成功率。 如需特定備份成品類型的詳細資訊，請移至個別的索引標籤。
 
@@ -83,7 +85,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
    ![備份項目索引標籤](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-##### <a name="usage"></a>使用量
+##### <a name="usage"></a>使用方式
 
 您可以使用此索引標籤來查看備份的重要帳單參數。 此索引標籤上顯示的資訊屬於計費實體 (受保護的容器) 層級。 例如，如果 DPM 服務器要備份至 Azure，您可以查看受保護實例的趨勢，以及 DPM 服務器所耗用的雲端儲存體。 同樣地，如果您在 Azure 備份中使用 SQL 或在 Azure 備份中使用 SAP HANA，此索引標籤會在內含這些資料庫的虛擬機器層級提供使用量相關資訊。
 

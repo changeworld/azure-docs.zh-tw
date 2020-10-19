@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613997"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173284"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份的架構與元件
 
@@ -45,7 +45,7 @@ Azure 備份會將備份的資料儲存在保存庫-復原服務保存庫和備�
 - 您可以指定如何複寫保存庫中的資料以提供備援性：
   - **本機冗余儲存體 (LRS) **：為了防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](../storage/common/storage-redundancy.md#locally-redundant-storage)。
   - **異地冗余儲存體 (GRS) **：若要防止整個區域的中斷，您可以使用 GRS。 GRS 會將您的資料複寫到次要區域。 [深入了解](../storage/common/storage-redundancy.md#geo-redundant-storage)。
-  - **區域冗余儲存體 (ZRS) **：複寫 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中的資料，保證相同區域中的資料存放區和復原。 [深入了解](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **區域冗余儲存體 (ZRS) **：複寫 [可用性區域](../availability-zones/az-overview.md#availability-zones)中的資料，保證相同區域中的資料存放區和復原。 [深入了解](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - 根據預設，復原服務保存庫會使用 GRS。
 
 復原服務保存庫具有下列額外功能：

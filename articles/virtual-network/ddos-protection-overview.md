@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087964ab64c94d5dfe223ce4e47355784003b627
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371179"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173338"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
 
@@ -26,7 +26,7 @@ ms.locfileid: "91371179"
 
 DDoS 保護「標準」層級很容易啟用，而且不需要變更應用程式。 保護原則會透過專用的流量監視和機器學習演算法進行調整。 原則會套用至與虛擬網路中所部署資源相關聯的公用 IP 位址，例如 Azure Load Balancer、Azure 應用程式閘道和 Azure Service Fabric 執行個體，但是此保護功能不適用於 App Service Environments。在攻擊期間，可透過 Azure 監視器檢視取得即時遙測與歷史記錄。 透過診斷設定可以獲得豐富的攻擊風險降低分析。 透過 [Azure 應用程式閘道 Web 應用程式防火牆](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或者從 Azure Marketplace 安裝第 3 方防火牆，可以加上應用程式層保護。 針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
 
-![DDoS Protection 基本與標準](./media/ddos-protection-overview/ddoscomparison.png)
+![DDoS Protection 基本與標準](./media/ddos-protection-overview/ddosfeatures.png)
 
 Azure DDoS 保護不會儲存客戶資料。
 
@@ -41,8 +41,6 @@ DDoS 保護標準層可降低下列攻擊類型的風險：
 DDoS Protection Standard 可保護虛擬網路中的資源，包括與虛擬機器相關聯的公用 IP 位址、內部負載平衡器，以及應用程式閘道。 當與應用程式閘道 web 應用程式防火牆搭配使用，或在具有公用 IP 的虛擬網路中部署協力廠商 web 應用程式防火牆時，DDoS 保護標準可提供完整的第3層至第7層風險降低功能。
 
 ## <a name="ddos-protection-standard-features"></a>DDoS Protection Standard 功能
-
-![DDoS 功能](./media/ddos-protection-overview/ddosfeatures.png)
 
 DDoS Protection Standard 功能包括：
 

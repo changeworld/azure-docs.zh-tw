@@ -4,16 +4,18 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377398"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174011"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
 Azure 備份會根據 (內部部署與 Azure) 的備份需求和基礎結構拓撲，提供多個備份解決方案。 任何備份使用者或系統管理員應該會看到所有解決方案的內容，而且可能會在重要案例中收到通知。 本文詳細說明 Azure 備份服務所提供的監視和通知功能。
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>復原服務保存庫中的備份作業
 
@@ -36,6 +38,9 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 > Azure Vm 中的 azure 工作負載（例如 SQL 和 SAP Hana 備份）具有大量的備份作業。 例如，記錄備份可每隔15分鐘執行一次。 因此針對這類資料庫工作負載，只會顯示使用者觸發的作業。 未顯示已排程的備份作業。
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>復原服務保存庫中的備份警示
+
+> [!NOTE]
+> 備份中心目前不支援跨保存庫查看警示。 您需要流覽至個別保存庫以查看該保存庫的警示。
 
 警示的主要案例是通知使用者，讓他們可以採取相關動作。 [ **備份警示** ] 區段會顯示 Azure 備份服務產生的警示。 這些警示是由服務所定義，而使用者無法自訂建立任何警示。
 

@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務 (MARS) 代理程式之電腦的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53034d058e0cd2e1623acc6629da0a694b35e60b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332673"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173523"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -67,14 +67,14 @@ MARS 伺服器需要存取這些 URL：
 
 存取上述所有 Url 和 IP 位址時，會使用埠443上的 HTTPS 通訊協定。
 
-使用 MARS 代理程式從 Azure Vm 備份檔案和資料夾時，也需要設定 Azure 虛擬網路以允許存取。 如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
+使用 MARS 代理程式從 Azure Vm 備份檔案和資料夾時，也需要設定 Azure 虛擬網路以允許存取。 如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 2. 選取 [設定] 底下的 [輸出安全性規則]。
-3. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
+3. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
 4. 選取 [ **新增** ] 以儲存新建立的輸出安全性規則。
 
-同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。 如需服務標記的詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。 如需服務標記的詳細資訊，請參閱這篇[文章](../virtual-network/service-tags-overview.md)。
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 

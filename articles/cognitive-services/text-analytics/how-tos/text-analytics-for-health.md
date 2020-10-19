@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309195"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173956"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>How to：使用文字分析的健全狀況 (預覽) 
 
@@ -227,7 +227,11 @@ docker-compose up
 
 
 ## <a name="example-api-request"></a>API 要求範例
-容器會提供以 REST 為基礎的查詢預測端點 API。
+容器會提供以 REST 為基礎的查詢預測端點 API。  我們也提供容器中的視覺效果工具，可透過將 **示範** 附加至容器端點來存取，例如：
+
+```bash
+http://<serverURL>:5000/demo
+```
 
 使用下面的範例捲曲要求，將查詢提交至您已部署的容器， `serverURL` 並將變數取代為適當的值。
 

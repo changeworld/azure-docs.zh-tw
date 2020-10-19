@@ -3,12 +3,12 @@ title: Azure 備份診斷事件的資料模型
 description: 此資料模型參考將診斷事件傳送至 Log Analytics (LA) 的資源特定模式。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569591"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173969"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 備份診斷事件的資料模型
 
@@ -84,7 +84,7 @@ ms.locfileid: "91569591"
 | BackupItemUniqueId             | Text          | 與警示相關聯之備份專案的唯一識別碼 |
 | BackupManagementServerUniqueId | Text          | 用以唯一識別備份管理伺服器的欄位（如果適用的話） |
 | BackupManagementType           | Text          | 執行備份作業的伺服器提供者類型，例如 IaaSVM、Filefolder)  |
-| CountOfAlertsConsolidated      | 數字        | 合併警示時合併的警示數目  |
+| CountOfAlertsConsolidated      | Number        | 合併警示時合併的警示數目  |
 | ProtectedContainerUniqueId     | Text          | 與警示相關聯之受保護伺服器的唯一識別碼 |
 | RecommendedAction              | Text          | 建議用來解決警示的動作                      |
 | schemaVersion                  | Text          | 結構描述的目前版本，例如 **V2**            |
@@ -208,8 +208,8 @@ ms.locfileid: "91569591"
 | ProtectedContainerUniqueId     | Text          | 與備份專案相關聯之受保護容器的唯一識別碼 |
 | schemaVersion                  | Text          | 架構的版本。 例如， **V2**                   |
 | State                          | Text          | 備份專案物件的狀態。 例如，使用中、已刪除 |
-| StorageAllocatedInMBs          | 數字        | 對應的備份專案在類型磁片的對應儲存體中所配置的儲存體大小 |
-| StorageConsumedInMBs           | 數字        | 對應儲存體中對應的備份專案所耗用的儲存體大小 |
+| StorageAllocatedInMBs          | Number        | 對應的備份專案在類型磁片的對應儲存體中所配置的儲存體大小 |
+| StorageConsumedInMBs           | Number        | 對應儲存體中對應的備份專案所耗用的儲存體大小 |
 | StorageName                    | Text          | 儲存體實體的名稱。 例如，E:\                      |
 | StorageTotalSizeInGBs          | Text          | 儲存體實體所耗用的儲存體大小總計 (以 GB 為單位)     |
 | StorageType                    | Text          | 儲存體的類型，例如雲端、磁碟區、磁碟             |
@@ -239,7 +239,7 @@ ms.locfileid: "91569591"
 | AddonAzureBackupPolicy | 原則 |  表示記錄，其中包含備份和保留原則的所有詳細資料。 例如，識別碼、名稱、保留設定等等。 |
 | AddonAzureBackupPolicy | PolicyAssociation | 代表備份專案與其套用的備份原則之間的對應。 |   
 
-通常，您必須在不同的資料表以及屬於相同資料表的不同記錄集之間執行聯結， (由作業名稱) 區分，以取得分析所需的所有欄位。 請參閱 [範例查詢](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) 以開始使用。 
+通常，您必須在不同的資料表以及屬於相同資料表的不同記錄集之間執行聯結， (由作業名稱) 區分，以取得分析所需的所有欄位。 請參閱 [範例查詢](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries) 以開始使用。 
 
 ## <a name="next-steps"></a>後續步驟
 

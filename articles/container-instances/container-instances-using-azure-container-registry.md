@@ -5,12 +5,12 @@ services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657004"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173648"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
@@ -22,19 +22,18 @@ ms.locfileid: "89657004"
 
 **Azure CLI**：本文中的命令列範例使用 [Azure CLI](/cli/azure/)，並使用 Bash 殼層適用的格式。 您可以在本機[安裝 Azure CLI](/cli/azure/install-azure-cli)，或使用 [Azure Cloud Shell][cloud-shell-bash]。
 
+## <a name="limitations"></a>限制
+
+* 您無法使用在相同容器群組中設定的 [受控識別](container-instances-managed-identity.md) ，向 Azure Container Registry 進行驗證，以在容器群組部署期間提取映射。
+* 您目前無法從部署至 Azure 虛擬網路的 [Azure Container Registry](../container-registry/container-registry-vnet.md) 提取映射。
+
 ## <a name="configure-registry-authentication"></a>設定登錄驗證
 
 在您提供「無周邊」服務和應用程式存取權的生產案例中，建議使用 [服務主體](../container-registry/container-registry-auth-service-principal.md)來設定登錄存取。 服務主體可讓您將 [azure 角色型存取控制 (AZURE RBAC) ](../container-registry/container-registry-roles.md) 提供給您的容器映射。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
 
 Azure Container Registry 提供其他 [驗證選項](../container-registry/container-registry-authentication.md)。
 
-> [!NOTE]
-> 您無法使用在相同容器群組中設定的 [受控識別](container-instances-managed-identity.md) ，向 Azure Container Registry 進行驗證，以在容器群組部署期間提取映射。
-
-> [!NOTE]
-> 您目前無法從部署至 Azure 虛擬網路的 [Azure Container Registry](../container-registry/container-registry-vnet.md) 提取映射。
-
-在下一節中，您會建立 Azure 金鑰保存庫和服務主體，並將服務主體的認證儲存在保存庫中。 
+在下一節中，您會建立 Azure 金鑰保存庫和服務主體，並將服務主體的認證儲存在保存庫中。
 
 ### <a name="create-key-vault"></a>建立金鑰保存庫
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 5d17fb9bee77aae9945c12d45a5ffff316f9d639
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144250"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171466"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -224,7 +224,7 @@ ms.locfileid: "92144250"
     ```
 
 > [!NOTE]
-> 針對筆記本內的封裝管理，使用 **% pip** 或 **% conda** 魔術函式會將套件自動安裝到目前執行中的 **核心** ，而不是代表所有套件的 **！ pip** 或 **！ conda** ， (包括目前執行中核心以外的套件) 
+> 針對筆記本內的套件管理，請使用 **% pip** 或 **% conda** 魔術函式將套件自動安裝 **到目前**執行中的核心，而不是代表所有套件的 **！ pip** 或 **！ conda** ， (包括目前執行中核心以外的套件) 
 
 您可以安裝任何[可用的 Jupyter 核心程序](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 。
 

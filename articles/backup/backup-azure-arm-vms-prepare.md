@@ -3,12 +3,12 @@ title: 備份復原服務保存庫中的 Azure VM
 description: 說明如何使用 Azure 備份將 Azure VM 備份到備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986499"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172753"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
 
@@ -37,6 +37,8 @@ ms.locfileid: "90986499"
 
 * **在 VM 上安裝 VM 代理程式**：為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果您的 VM 是從 Azure Marketplace 映像建立，則代理程式已安裝且正在執行。 如果您建立自訂 VM，或遷移內部部署機器，您可能需要[手動安裝代理程式](#install-the-vm-agent)。
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>修改儲存體複寫
@@ -45,7 +47,7 @@ ms.locfileid: "90986499"
 
 * 如果保存庫是您的主要備份機制，則建議使用 GRS。
 * 您可以使用 [本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage) 提供更便宜的選項。
-* [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。
+* [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](../availability-zones/az-overview.md#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。
 
 修改儲存體複寫類型，如下所示：
 
@@ -81,7 +83,7 @@ ms.locfileid: "90986499"
 
       ![新增虛擬機器](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. [選取虛擬機器] 窗格隨即開啟。 使用原則來選取您想要備份的 Vm。 然後選取 [確定]。
+1. [選取虛擬機器] 窗格隨即開啟。 使用原則來選取您想要備份的 Vm。 然後選取 [確定]  。
 
    * 選取的 VM 會經過驗證。
    * 您只能選取與保存庫位於相同區域中的 VM。
@@ -129,7 +131,7 @@ ms.locfileid: "90986499"
 2. 在 [ **備份專案**] 中，選取 [ **Azure 虛擬機器**]。
 3. 在 [ **備份專案** ] 清單中，選取省略號 ( ... ) 。
 4. 選取 [ **立即備份**]。
-5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後選取 [確定]。
+5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後選取 [確定]  。
 6. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的 VM 大小，建立初始備份可能需要花一點時間。
 
 ## <a name="verify-backup-job-status"></a>驗證備份作業狀態

@@ -4,12 +4,12 @@ description: Azure 立即還原功能和 VM 備份堆疊、Azure Resource Manage
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000374"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173929"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>透過 Azure 備份的立即還原功能取得改良的備份和還原效能
 
@@ -60,6 +60,8 @@ ms.locfileid: "89000374"
 ## <a name="configure-snapshot-retention"></a>設定快照集保留期
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 在 Azure 入口網站中，您可以在 [**立即還原**] 區段下的 [ **VM 備份原則**] 窗格中看到新增的欄位。 您可以針對與特定備份原則相關聯的所有 Vm，從 **VM 備份原則** 窗格變更快照集保留持續時間。
 

@@ -3,12 +3,12 @@ title: 使用備份中心管理您的備份資產
 description: 瞭解如何管理您的 Azure 環境，以確保您的所有資源都符合備份中心的備份觀點。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614309"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173803"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>使用備份中心管理您的備份資產
 
@@ -26,15 +26,15 @@ ms.locfileid: "91614309"
 
 ## <a name="azure-policies-for-backup"></a>適用于備份的 Azure 原則
 
-若要查看所有可用於備份的 [Azure 原則](https://docs.microsoft.com/azure/governance/policy/overview) ，請選取 [ **備份的 azure 原則** ] 功能表項目。 這會顯示適用于備份的所有內建和自訂 [Azure 原則定義](policy-reference.md) ，這些定義可以指派給您的訂用帳戶和資源群組。
+若要查看所有可用於備份的 [Azure 原則](../governance/policy/overview.md) ，請選取 [ **備份的 azure 原則** ] 功能表項目。 這會顯示適用于備份的所有內建和自訂 [Azure 原則定義](policy-reference.md) ，這些定義可以指派給您的訂用帳戶和資源群組。
 
-選取任何定義，可讓您 [將原則指派](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) 給某個範圍。
+選取任何定義，可讓您 [將原則指派](../governance/policy/tutorials/create-and-manage.md#assign-a-policy) 給某個範圍。
 
 ![選取 Azure 原則定義](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
 ## <a name="backup-compliance"></a>備份合規性
 
-按一下 [備份合規性] 功能表項目，可協助您根據已指派給 Azure 環境的各種內建原則，來查看資源的 [合規性](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) 。 您可以查看所有原則都符合規範的資源百分比，以及有一或多個不符合規範之資源的原則。
+按一下 [備份合規性] 功能表項目，可協助您根據已指派給 Azure 環境的各種內建原則，來查看資源的 [合規性](../governance/policy/how-to/get-compliance-data.md) 。 您可以查看所有原則都符合規範的資源百分比，以及有一或多個不符合規範之資源的原則。
 
 ![查看備份合規性](./media/backup-center-govern-environment/azure-policy-compliance.png)
 

@@ -3,12 +3,12 @@ title: 備份 MABS 伺服器
 description: 瞭解如何備份 Microsoft Azure 備份 Server (MABS) 。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946705"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172126"
 ---
 # <a name="back-up-the-mabs-server"></a>備份 MABS 伺服器
 
@@ -184,15 +184,15 @@ and servername like '%dpmsqlservername%' --netbios name of server hosting DPMDB
 
 您可以使用原生 SQL Server 備份，將 MABS 資料庫備份至本機磁片，而不需要 MABS。
 
-- 取得 SQL Server 備份的[概觀](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)。
+- 取得 SQL Server 備份的[概觀](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)。
 
-- [深入了解](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)如何將 SQL Server 備份至雲端。
+- [深入了解](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)如何將 SQL Server 備份至雲端。
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>備份至受 MABS 保護的共用
 
 此備份選項使用原生 SQL 將 MABS 資料庫備份至共用、使用 MABS 保護共用，以及使用舊版 Windows VSS 來加速還原。
 
-### <a name="before-you-start"></a>開始之前
+### <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 1. 在 SQL Server 上，讓磁片磁碟機上的資料夾具有足夠的可用空間，以容納單一備份複本。 例如： `C:\MABSBACKUP` 。
 
@@ -238,9 +238,9 @@ and servername like '%dpmsqlservername%' --netbios name of server hosting DPMDB
 
 您可以使用 SQL Server 原生備份來備份 MABS 資料庫，就像使用任何其他 SQL Server 資料庫一樣。
 
-- 取得 SQL Server 備份的[概觀](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)。
+- 取得 SQL Server 備份的[概觀](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)。
 
-- [深入了解](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)如何將 SQL Server 備份至雲端。
+- [深入了解](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)如何將 SQL Server 備份至雲端。
 
 ### <a name="recover-the-mabs-database"></a>復原 MABS 資料庫
 

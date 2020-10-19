@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568229"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172910"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 儲存體中的變更摘要支援
 
@@ -139,7 +139,7 @@ ms.locfileid: "89568229"
 變更摘要會產生數個中繼資料和記錄檔。 這些檔案位於儲存體帳戶的 **$blobchangefeed** 容器中。 
 
 > [!NOTE]
-> 在目前的版本中，Azure 儲存體總管或 Azure 入口網站中看不到 **$blobchangefeed** 的容器。 當您呼叫 ListContainers API 時，您目前無法看到 $blobchangefeed 容器，但您可以直接在容器上呼叫 ListBlobs API 來查看 blob。
+> 在目前的版本中，$blobchangefeed 的容器只會在 Azure 入口網站中顯示，但無法在 Azure 儲存體總管中顯示。 當您呼叫 ListContainers API 時，您目前無法看到 $blobchangefeed 容器，但您可以直接在容器上呼叫 ListBlobs API 來查看 blob
 
 您的用戶端應用程式可以使用變更摘要處理器 SDK 隨附的 blob 變更摘要處理器程式庫來取用變更摘要。 
 

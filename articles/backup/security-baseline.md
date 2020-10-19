@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09066d9e51f12923772758b3aebcebd347a59380
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093356"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174118"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -436,7 +436,7 @@ ms.locfileid: "92093356"
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -612,7 +612,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -818,9 +818,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 - [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [如何驗證 Key Vault](../key-vault/general/authentication.md)
 
-* [如何指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+* [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -868,7 +868,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 - [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/threat-protection.md)
+- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -924,7 +924,7 @@ Azure Key Vault 內備份客戶管理的金鑰。
 
 **指導**方針：針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。 您可以在 Key Vault 中啟用虛刪除，以防止遭到意外或惡意刪除的金鑰。
 
-- [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 

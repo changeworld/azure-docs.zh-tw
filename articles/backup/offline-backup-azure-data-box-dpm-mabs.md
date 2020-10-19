@@ -3,12 +3,12 @@ title: 使用 DPM 和 MABS 的 Azure 資料箱進行離線備份
 description: 您可以使用 Azure 資料箱從 DPM 與 MABS 離線植入初始備份資料。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271489"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172227"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (Preview) 的 Azure 資料箱進行離線植入
 
@@ -18,7 +18,7 @@ ms.locfileid: "91271489"
 
 本文說明如何使用 Azure 資料箱將初始備份資料從 DPM 離線並 MABS 至 Azure 復原服務保存庫。
 
-您可以使用 [Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-overview) ，在離線的情況下將大型初始 DPM/MABS 備份植入 (，而不需要使用網路) 復原服務保存庫。 此程序可節省在透過高延遲網路線上移動大量備份資料時使會取用的時間和網路頻寬。 此功能目前為預覽狀態。
+您可以使用 [Azure 資料箱](../databox/data-box-overview.md) ，在離線的情況下將大型初始 DPM/MABS 備份植入 (，而不需要使用網路) 復原服務保存庫。 此程序可節省在透過高延遲網路線上移動大量備份資料時使會取用的時間和網路頻寬。 此功能目前為預覽狀態。
 
 相較於[基於 Azure 匯入/匯出服務的離線備份](backup-azure-backup-server-import-export.md)，基於 Azure 資料箱的離線備份能提供兩個不同的優點：
 
@@ -39,8 +39,8 @@ ms.locfileid: "91271489"
 
 | 每一伺服器的 MARS) 壓縮之後 (的備份資料大小 \* | 支援的 Azure 資料箱 SKU |
 | --- | --- |
-| \<= 7.2 TB | [Azure 資料箱磁碟](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7.2 TB 和 <= 80 TB\*\* | [Azure 資料箱 (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| \<= 7.2 TB | [Azure 資料箱磁碟](../databox/data-box-disk-overview.md) |
+| > 7.2 TB 和 <= 80 TB\*\* | [Azure 資料箱 (100 TB)](../databox/data-box-overview.md) |
 
 \*一般的壓縮比率會有 10% 到 20% 的變動 <br>
 \*\*如果您預計單一資料來源的初始備份資料會超過 80 TB，請與 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) 連絡。
@@ -64,7 +64,7 @@ ms.locfileid: "91271489"
 
 ### <a name="order-and-receive-the-data-box-device"></a>訂購和接收資料箱裝置
 
-請先確定所需的資料箱裝置處於已 *傳遞* 狀態，再觸發離線備份。 請參閱[備份資料大小和支援的資料箱 SKU](#backup-data-size-and-supported-data-box-skus) 以訂購最適合您需求的 SKU。 請遵循[這篇文章](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)中的步驟，訂購並接收您的資料箱裝置。
+請先確定所需的資料箱裝置處於已 *傳遞* 狀態，再觸發離線備份。 請參閱[備份資料大小和支援的資料箱 SKU](#backup-data-size-and-supported-data-box-skus) 以訂購最適合您需求的 SKU。 請遵循[這篇文章](../databox/data-box-disk-deploy-ordered.md)中的步驟，訂購並接收您的資料箱裝置。
 
 > [!IMPORTANT]
 > 請勿選取**帳戶種類**的*BlobStorage* 。 DPM/MABS 伺服器需要支援頁面 Blob 的帳戶，但在選取 *BlobStorage* 時不支援此選項。 在建立 Azure 資料箱作業的目標儲存體帳戶時，選取  **儲存體 v2 (一般用途 V2) ** 作為 **帳戶類型** 。
@@ -77,14 +77,14 @@ ms.locfileid: "91271489"
 
 ### <a name="setup-azure-data-box-disk"></a>設定 Azure 資料箱磁碟
 
-如果您已訂購一或多個 Azure 資料箱磁碟 (每個磁碟高達 8 TB)，請遵循[此處](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)所述的步驟，將您的資料箱磁碟開箱、連接及解除鎖定。
+如果您已訂購一或多個 Azure 資料箱磁碟 (每個磁碟高達 8 TB)，請遵循[此處](../databox/data-box-disk-deploy-set-up.md)所述的步驟，將您的資料箱磁碟開箱、連接及解除鎖定。
 
 > [!NOTE]
 > DPM/MABS 伺服器可能沒有 USB 埠。 在這種情況下，您可以將 Azure 資料箱磁碟連接到另一個伺服器/用戶端，並將裝置的根目錄公開為網路共用。
 
 ## <a name="setup-azure-data-box"></a>設定 Azure 資料箱
 
-如果您訂購的 Azure 資料箱 (高達 100 TB 的) ，請依照 [此處](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) 所述的步驟來設定您的資料箱。
+如果您訂購的 Azure 資料箱 (高達 100 TB 的) ，請依照 [此處](../databox/data-box-deploy-set-up.md) 所述的步驟來設定您的資料箱。
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>將您的 Azure 資料箱掛接為本機系統
 
@@ -100,7 +100,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
    ```
 
 4. 以上述命令的結果開啟的命令視窗是在本機系統內容中。 請使用此命令視窗來執行步驟，以將 Azure 分頁 Blob 共用掛接為 Windows Server 上的網路磁碟機。
-5. 遵循 [此處](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) 的步驟，透過 NFS 將 DPM/MABS 伺服器連線至資料箱裝置，並在本機系統命令提示字元上執行下列命令，以掛接 Azure 分頁 blob 共用：
+5. 遵循 [此處](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) 的步驟，透過 NFS 將 DPM/MABS 伺服器連線至資料箱裝置，並在本機系統命令提示字元上執行下列命令，以掛接 Azure 分頁 blob 共用：
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
@@ -110,7 +110,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>將初始備份資料傳輸至 Azure 資料箱裝置
 
-1. 在您的 DPM/MABS 伺服器上，依照下列步驟 [建立新的保護群組](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)。 如果您要將線上保護新增至現有的保護群組，請以滑鼠右鍵按一下現有的保護群組，然後選取 [ **新增線上保護** ]，然後從 **步驟 8**開始。
+1. 在您的 DPM/MABS 伺服器上，依照下列步驟 [建立新的保護群組](/system-center/dpm/create-dpm-protection-groups)。 如果您要將線上保護新增至現有的保護群組，請以滑鼠右鍵按一下現有的保護群組，然後選取 [ **新增線上保護** ]，然後從 **步驟 8**開始。
 2. 在 [選取群組成員] 頁面上，指定您想要備份的電腦和來源。
 3. 在 [選取資料保護方法] 頁面上，指定短期與長期備份的處理方式。 請務必選取 [我想要線上保護]。
 
@@ -149,7 +149,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
           - Azure.Storage       *4.6.1*<br>
      >  - Azure AD 應用程式會註冊為 *AzureOfflineBackup_\<object GUID of the user>* 。
 
-13. 選取您已解除封裝、連線並解除鎖定資料箱磁片的正確資料箱訂單。 選取 [下一步]  。
+13. 選取您已解除封裝、連線並解除鎖定資料箱磁片的正確資料箱訂單。 選取 [下一步] 。
 
     ![選取資料箱](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -163,9 +163,9 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
     > ![USB 磁碟機](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
     > 例如，如果磁片的路徑是 `\\mydomain\myserver\disk1\` 且 *disk1* 包含名為 *PageBlob*的目錄，則 DPM/MABS Server wizard 上提供的路徑為 `\\mydomain\myserver\disk1\` 。
-    > 如果您[設定 Azure 資料箱 100 TB 裝置](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，請提供下列路徑作為裝置的網路路徑 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`。
+    > 如果您[設定 Azure 資料箱 100 TB 裝置](./offline-backup-azure-data-box.md#set-up-azure-data-box)，請提供下列路徑作為裝置的網路路徑 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`。
 
-15. 選取 [下一步]  。 在 [ **摘要** ] 頁面上，檢查您的設定，然後選取 [ **建立群組**]。
+15. 選取 [下一步] 。 在 [ **摘要** ] 頁面上，檢查您的設定，然後選取 [ **建立群組**]。
 
     ![偵測資料箱](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -193,8 +193,8 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
 
 一旦成功將資料備份到 Azure 資料箱磁碟後，請遵循下列步驟。
 
-- 遵循[本文](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)中的步驟，將 Azure 資料箱磁碟寄送至 Azure。 如果您使用 Azure 資料箱 100 TB 裝置，請遵循[這些步驟](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)將 Azure 資料箱寄送到 Azure。
-- 在 Azure 入口網站中[監視資料箱作業](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)。 Azure 資料箱作業 *完成*之後，DPM/MABS 伺服器會在下一次排程備份時，自動將資料從儲存體帳戶移至復原服務保存庫。 如果成功建立復原點，其便會將備份作業標示為 [作業完成]。
+- 遵循[本文](../databox/data-box-disk-deploy-picked-up.md)中的步驟，將 Azure 資料箱磁碟寄送至 Azure。 如果您使用 Azure 資料箱 100 TB 裝置，請遵循[這些步驟](../databox/data-box-deploy-picked-up.md)將 Azure 資料箱寄送到 Azure。
+- 在 Azure 入口網站中[監視資料箱作業](../databox/data-box-disk-deploy-upload-verify.md)。 Azure 資料箱作業 *完成*之後，DPM/MABS 伺服器會在下一次排程備份時，自動將資料從儲存體帳戶移至復原服務保存庫。 如果成功建立復原點，其便會將備份作業標示為 [作業完成]。
 
   > [!NOTE]
   > DPM/MABS 伺服器會在保護群組建立期間，于排程的時間觸發備份。 不過，這些作業會標示為 [等候 Azure 資料箱作業完成]，直到作業完成為止。

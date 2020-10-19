@@ -4,12 +4,12 @@ description: 在本文中，探索 Microsoft Azure 備份 Server (MABS) 和 DPM 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324938"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172575"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 備份伺服器和 DPM-常見問題
 
@@ -39,7 +39,7 @@ ms.locfileid: "91324938"
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>是否有設定防毒軟體排除專案的建議？
 
-是，建議您設定防毒軟體排除。 針對 DPM 的排除專案，請參閱 [在 dpm 伺服器上執行防毒軟體](https://docs.microsoft.com/system-center/dpm/run-antivirus-server)。 如需 MABS 的排除專案，請參閱 [設定 MABS 伺服器的防毒軟體](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)。
+是，建議您設定防毒軟體排除。 針對 DPM 的排除專案，請參閱 [在 dpm 伺服器上執行防毒軟體](/system-center/dpm/run-antivirus-server)。 如需 MABS 的排除專案，請參閱 [設定 MABS 伺服器的防毒軟體](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 備份
 

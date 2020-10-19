@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何建立及設定復原服務保存�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981514"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171628"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>建立和設定復原服務保存庫
 
@@ -35,7 +35,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
    - 如果您使用 Azure 作為主要的備份儲存體端點，建議您繼續使用預設的 **地理區域冗余** 設定。
    - 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。
    - 深入瞭解 [地理](../storage/common/storage-redundancy.md#geo-redundant-storage) 和 [本機](../storage/common/storage-redundancy.md#locally-redundant-storage) 冗余。
-   - 如果您需要在區域中沒有停機的資料可用性，請保證資料存放區，然後選擇 [區域多餘的儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)。
+   - 如果您需要在區域中沒有停機的資料可用性，請保證資料存放區，然後選擇 [區域多餘的儲存體](../storage/common/storage-redundancy.md#zone-redundant-storage)。
 
 >[!NOTE]
 >保存庫的儲存體複寫設定與 Azure 檔案共用備份無關，因為目前的解決方案是以快照集為基礎，而且沒有任何資料傳輸至保存庫。 快照集會儲存在與備份檔案共用相同的儲存體帳戶中。

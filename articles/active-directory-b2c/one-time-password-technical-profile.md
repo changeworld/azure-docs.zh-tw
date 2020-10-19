@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418903"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172670"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義一次性密碼技術設定檔
 
@@ -73,13 +73,15 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | 否 | 程式碼到期前的時間（以秒為單位）。 最小值： `60` ;最大值： `1200` ;預設值： `600` 。 |
-| CodeLength | 否 | 程式碼的長度。 預設值是 `6`。 |
+| CodeExpirationInSeconds | 否 | 程式碼到期前的時間（以秒為單位）。 最小值： `60` ;最大值： `1200` ;預設值： `600` 。 每次提供程式碼 (使用相同的程式碼或) 新的程式碼時 `ReuseSameCode` ，就會延長程式碼到期時間。  |
+| CodeLength | 否 | 程式碼的長度。 預設值為 `6`。 |
 | CharacterSet | 否 | 針對正則運算式中使用的程式碼字元集。 例如，`a-z0-9A-Z`。 預設值為 `0-9`。 字元集必須在指定的集合中包含至少10個不同的字元。 |
-| NumRetryAttempts | 否 | 在程式碼被視為無效之前的驗證嘗試次數。 預設值是 `5`。 |
+| NumRetryAttempts | 否 | 在程式碼被視為無效之前的驗證嘗試次數。 預設值為 `5`。 |
 | NumCodeGenerationAttempts | 否 | 每個識別碼的程式碼產生嘗試次數上限。 如果未指定，預設值為10。 |
 | 作業 | 是 | 要執行的作業。 可能的值： `GenerateCode` 。 |
-| ReuseSameCode | 否 | 是否應提供重複的程式碼，而不是在指定的程式碼尚未過期時產生新的程式碼，而且仍然有效。 預設值是 `false`。 |
+| ReuseSameCode | 否 | 是否應該提供相同的程式碼，而不是在指定的程式碼尚未過期時產生新的程式碼，而且仍然有效。 預設值為 `false`。  |
+
+
 
 ### <a name="example"></a>範例
 

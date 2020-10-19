@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、啟動
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506622"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171449"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -437,7 +437,7 @@ X-Powered-By: ASP.NET
 > [!IMPORTANT]
 > 上述要求主體一律是要排除或納入的資料磁片的最終複本。 這不會 *新增* 至先前的設定。 例如：如果您第一次將保護更新為「排除資料磁片1」，然後重複「排除資料磁片2」，則只會在後續的備份中 *排除資料磁片 2* ，並包含資料磁片1。 這一律是將在後續備份中包含/排除的最終清單。
 
-若要取得已排除或包含的目前磁片清單，請取得受保護的專案資訊，[如下所述。](https://docs.microsoft.com/rest/api/backup/protecteditems/get) 回應會提供資料磁片 Lun 的清單，並指出是否要包含或排除它們。
+若要取得已排除或包含的目前磁片清單，請取得受保護的專案資訊，[如下所述。](/rest/api/backup/protecteditems/get) 回應會提供資料磁片 Lun 的清單，並指出是否要包含或排除它們。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>停止保護，但保留現有資料
 

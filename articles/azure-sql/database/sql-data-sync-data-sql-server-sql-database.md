@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057887"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173566"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -26,7 +26,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 > Azure SQL 資料同步目前不支援 Azure SQL 受控執行個體。
 
 
-## <a name="overview"></a>總覽 
+## <a name="overview"></a>概觀 
 
 資料同步是以同步處理群組的概念為基礎。 同步處理群組是您想要同步處理的資料庫群組。
 
@@ -137,6 +137,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 - [資料庫]、[資料表] 和 [資料行] (的物件名稱) 不能包含可列印的字元期間 (. ) 、左方括弧 ( [) ] 或右方括弧 (] ) 。
 - 不支援 Azure Active Directory 驗證。
 - 如果有相同名稱但架構不同的資料表 (例如 dbo. customers 和 sales。客戶) 只有其中一個資料表可以加入同步。
+- 資料表名稱不能有 ASCII 值小於或等於 '-' 的字元。
 - 不支援具有 User-Defined 資料類型的資料行
 - 不支援在不同的訂用帳戶之間移動伺服器。 
 
@@ -149,7 +150,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 #### <a name="unsupported-column-types"></a>不支援的資料行類型
 
-資料同步無法同步處理唯讀或系統產生的資料行。 例如︰
+資料同步無法同步處理唯讀或系統產生的資料行。 例如：
 
 - 計算資料行。
 - 適用於時態表的系統所產生的資料行。
