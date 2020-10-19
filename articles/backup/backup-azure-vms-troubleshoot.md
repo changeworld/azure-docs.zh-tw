@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058109"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169365"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -324,6 +324,16 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 * 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
 * 請確定您不會還原至相同的來源， [深入瞭解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
 
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound-還原失敗，因為找不到 VM 的快照集
+
+錯誤碼： UserErrorInstantRpNotFound <br>
+錯誤訊息：還原失敗，因為找不到 VM 的快照集。 快照集可能已刪除，請檢查。<br>
+
+當您嘗試從未傳送至保存庫且已在快照集階段刪除的復原點還原時，就會發生此錯誤。 
+<br>
+若要解決此問題，請嘗試從不同的還原點還原 VM。<br>
+
+#### <a name="common-errors"></a>常見錯誤 
 | 錯誤詳細資料 | 因應措施 |
 | --- | --- |
 | 還原失敗，發生雲端內部錯誤。 |<ol><li>您嘗試還原的雲端服務是使用 DNS 設定所設定。 您可以檢查： <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**。<br>如果已設定 [位址]，則 DNS 設定便已設定。<br> <li>您嘗試還原到其中的雲端服務是使用 **ReservedIP** 所設定，而雲端服務中的現有 VM 目前處於停止狀態。 您可以使用下列 PowerShell Cmdlet 來檢查雲端服務是否已保留 IP： **$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName**。 <br><li>您嘗試將具有下列特殊網路組態的虛擬機器還原至相同的雲端服務： <ul><li>負載平衡器設定下的虛擬機器，內部與外部。<li>具有多個保留 IP 的虛擬機器。 <li>具有多個 NIC 的虛擬機器。 </ul><li>在 UI 中選取新的雲端服務，或參閱適用於具有特殊網路組態之 VM 的[還原考量](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)。</ol> |

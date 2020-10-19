@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02ea65748928fda7142ce17532999e1a069f6eb0
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828035"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169401"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,17 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
   
    ![儲存體選項](./media/auditing-overview/auditing-select-destination.png)
 
+### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft 支援服務作業 (預覽) 的審核
+
+Azure SQL Server 的 Microsoft 支援服務作業 (預覽) 的審核功能，可讓您在支援要求期間，于 Microsoft 支援工程師的作業需要存取您的伺服器時，對其進行審核。 使用這項功能以及您的審核功能，可讓您的員工擁有更多的透明度，並可進行異常偵測、趨勢視覺效果和資料遺失防護。
+
+若要啟用 Microsoft 支援服務作業的 (預覽) 流覽至 [ **AZURE SQL server** ] 窗格中 [安全性] 標題下的 [**審核**]，並將 [**預覽] (預覽) **切換至 [**開啟**]。
+
+  > [!IMPORTANT]
+  >  (預覽版的 Microsoft 支援作業審核) 不支援儲存體帳戶目的地。 若要啟用此功能，必須設定 Log Analytics 工作區或事件中樞目的地。
+
+![Microsoft 支援服務作業的螢幕擷取畫面](./media/auditing-overview/support-operations.png)
+
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>對儲存體目的地進行審核
 
 若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]****，然後開啟 [儲存體詳細資料]****。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定] 。 比保留期間舊的記錄會遭到刪除。
@@ -111,7 +122,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 - 您可以將 audit 記錄寫入至 VNet 或防火牆後方的 Azure 儲存體帳戶。 如需特定指示，請參閱將 [Audit 寫入至 VNet 和防火牆後方的儲存體帳戶](audit-write-storage-account-behind-vnet-firewall.md)。
 - 設定您的稽核設定之後，您可以開啟新的威脅偵測功能，並設定電子郵件以接收安全性警示。 使用威脅偵測時，您會接收與指示潛在安全性威脅的異常資料庫活動相關的主動式警示。 如需詳細資訊，請參閱[開始使用威脅偵測](threat-detection-overview.md)。
 - 如需有關記錄格式、儲存體資料夾階層和命名慣例的詳細資訊，請參閱 [Blob 稽核記錄格式參考](https://go.microsoft.com/fwlink/?linkid=829599)。
-- 使用 AAD 驗證時，失敗的登入記錄「不會」** 顯示在 SQL 稽核記錄中。 若要檢視失敗的登入稽核記錄，您需要瀏覽 [Azure Active Directory 入口網站](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，其中會記錄這些事件的詳細資料。
+- 使用 Azure AD 驗證時，失敗的登入記錄將 *不* 會出現在 SQL audit 記錄檔中。 若要檢視失敗的登入稽核記錄，您需要瀏覽 [Azure Active Directory 入口網站](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，其中會記錄這些事件的詳細資料。
 - [唯讀複本](read-scale-out.md)上的審核會自動啟用。 如需有關儲存體資料夾階層、命名慣例和記錄格式的進一步詳細資訊，請參閱 [SQL Database Audit 記錄檔格式](audit-log-format.md)。
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Audit 至 Log Analytics 目的地
