@@ -180,7 +180,7 @@
           href: basic-age-gating.md
         - name: 定義自訂屬性
           href: user-flow-custom-attributes.md
-        - name: API 連接器
+        - name: API 連接器 (預覽)
           items:
             - name: 總覽
               href: api-connectors-overview.md

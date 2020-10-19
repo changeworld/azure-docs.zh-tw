@@ -23,6 +23,10 @@
 - name: 快速入門
   expanded: true
   items:
+    - name: 準備您的網路
+      href: quickstart-prepare-network-for-defender-for-iot.md
+    - name: 上線感應器
+      href: quickstart-onboard-sensors.md
     - name: 設定 Azure RTOS 的安全性模組
       href: quickstart-azure-rtos-security-module.md
     - name: 在 IoT 中樞上架適用於 IoT 的 Azure Defender
@@ -63,6 +67,10 @@
       href: concept-pricing.md
 - name: 操作指南
   items:
+    - name: 檢視和管理感應器
+      href: how-to-deploy-view-sensors.md
+    - name: 部署內部部署管理主控台
+      href: how-to-deploy-management-console-appliance.md
     - name: 使用 Azure RTOS 的安全性模組
       href: how-to-azure-rtos-security-module.md
     - name: 我應該部署哪個代理程式？
@@ -95,14 +103,16 @@
       href: how-to-investigate-device.md
     - name: 連線到 Azure Sentinel
       href: how-to-configure-with-sentinel.md
-    - name: 自訂您的解決方案
+    - name: 自訂您的代理程式
       href: how-to-customize-solution.md
 - name: 參考資料
   items:
     - name: Azure RTOS 安全性模組 API
       href: azure-rtos-security-module-api.md
-    - name: 常見問題集
+    - name: 常見問題集 - 服務
       href: resources-frequently-asked-questions.md
+    - name: 常見問題集 - 代理程式
+      href: resources-agent-frequently-asked-questions.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: 資源

@@ -116,7 +116,7 @@
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: 保護索引子資源
+        - name: 存取受保護的內容
           href: search-indexer-securing-resources.md
         - name: 安全性基準
           href: security-baseline.md
@@ -472,7 +472,7 @@
       items:
         - name: 內建技能
           items:
-            - name: 總覽
+            - name: 概觀
               href: cognitive-search-predefined-skills.md
             - name: 條件式
               href: cognitive-search-skill-conditional.md

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2477bab244b8864fa9c82b52d5577d42fa47a7e0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588798"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124146"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>更新 Azure Key Vault 憑證
 
@@ -25,12 +25,20 @@ ms.locfileid: "88588798"
 
 本文討論如何更新您的 Azure Key Vault 憑證。
 
-## <a name="get-notified-about-certificate-expirations"></a>取得憑證到期的通知
-若要在憑證即將到期時收到通知，請執行下列動作：
+## <a name="get-notified-about-certificate-expiration"></a>取得憑證到期的通知
+若要取得憑證生命事件的通知，您需要新增憑證連絡人。 憑證連絡人中包含連絡資訊，用來傳送由憑證存留期事件觸發的通知。 連絡人資訊會由金鑰保存庫中的所有憑證共用。 若金鑰保存庫中發生任何憑證事件，系統會將通知傳送給所有指定的連絡人。
 
-首先，使用 PowerShell Cmdlet [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) 將憑證連絡人新增至您的金鑰保存庫。
+### <a name="steps-to-set-certificate-notifications"></a>設定憑證通知的步驟：
+首先，將憑證連絡人新增至您的金鑰保存庫。 您可以使用 Azure 入口網站或 PowerShell Cmdlet [`Add-AzureKeyVaultCertificateContact`](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) 來新增。
 
 再來，設定您想收到憑證到期通知的時間。 若要設定憑證的生命週期屬性，請參閱 [Key Vault 中的設定憑證自動輪替](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)。
+
+如果將憑證的原則設定為自動更新，則發生下列事件時會傳送通知。
+
+- 憑證更新之前
+- 在憑證更新之後，指出是否已成功更新憑證，或是如果發生錯誤，需要手動更新憑證。  
+
+  如果憑證的原則設定為以手動方式更新 (僅限電子郵件)，則會在需更新憑證時傳送通知。  
 
 在 Key Vault 中，有三種憑證類別：
 -   使用整合式憑證授權單位 (CA) 建立的憑證，例如 DigiCert 或透過 GlobalSign

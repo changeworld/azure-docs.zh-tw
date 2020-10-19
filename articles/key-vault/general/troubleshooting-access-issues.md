@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595983"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125247"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>針對 Azure Key Vault 存取原則問題進行疑難排解
 
@@ -52,6 +52,8 @@ ms.locfileid: "89595983"
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>如何使用 ARM 範本重新部署 Key Vault，而不需要刪除現有的存取原則？
 
 目前只要重新部署 Key Vault，就會刪除 Key Vault 中的任何存取原則，並將其取代為 ARM 範本中的存取原則。 Key Vault 存取原則沒有累加選項。 若要在 Key Vault 中保留存取原則，您必須在 Key Vault 中讀取現有的存取原則，並以這些原則填入 ARM 範本，以避免任何存取中斷。
+
+另一個有助於此案例的選項是使用 RBAC 角色做為存取原則的替代方案。 使用 RBAC，您可以重新部署金鑰保存庫，而不需要再次指定原則。 您可以在[這裡](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)深入閱讀此解決方案。
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>下列錯誤類型的建議疑難排解步驟
 

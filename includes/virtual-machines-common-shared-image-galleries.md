@@ -4,15 +4,15 @@ description: 包含檔案
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494269"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116818"
 ---
 共用映像庫服務可協助您圍繞映像來建置結構和組織。 共用映像資源庫提供：
 
@@ -56,19 +56,36 @@ ms.locfileid: "89494269"
 
 這三個映像定義都擁有唯一的值組。 格式類似於您目前可以如何在 Azure PowerShell 中針對 [Azure Marketplace 映像](../articles/virtual-machines/windows/cli-ps-findimage.md)指定發行者、供應項目和 SKU，以取得最新版本的 Marketplace 映像。 每個映像定義都需要有由這些值組成的唯一值組。
 
+下列參數會決定其可以包含哪些類型的映像版本：
+
+- 作業系統狀態 - 您可以將 OS 狀態設定為[一般化或特殊化](#generalized-and-specialized-images)。 此為必要欄位。
+- 作業系統 - 可以是 Windows 或 Linux。 此為必要欄位。
+-   Hyper-V 世代 - 指定映像是從第 1 代還是[第 2 代](../articles/virtual-machines/generation-2.md) Hyper-V VHD 建立。 預設值為第 1 代。
+
+
 以下是可在映像定義上設定的其他參數，讓您可以更輕鬆地追蹤您的資源：
 
-* 作業系統狀態 - 您可以將 OS 狀態設定為[一般化或特殊化](#generalized-and-specialized-images)。
-* 作業系統 - 可以是 Windows 或 Linux。
-* 描述 - 使用描述以提供有關映像定義為何存在的詳細資訊。 例如，您的前端伺服器可能會有預先安裝應用程式的映像定義。
-* Eula - 可用來指向映像定義特有的使用者授權合約。
-* 隱私權聲明和版本資訊 - 將版本資訊和隱私權聲明儲存在 Azure 儲存體中，並提供 URI 供您作為映像定義的一部分來存取這些聲明。
-* 生命週期結束日期 - 將生命週期結束日期附加至映像定義，以便使用自動化來刪除舊的映像定義。
-* 標記 - 您可以在建立映像定義時新增標記。 如需標記的詳細資訊，請參閱[使用標記來組織您的資源](../articles/azure-resource-manager/management/tag-resources.md)
-* vCPU 和記憶體最小值和最大值建議 - 如果您的映像有 vCPU 和記憶體建議，您可以將該資訊附加至映像定義。
-* 不允許的磁碟類型 - 您可以提供 VM 儲存體需求的相關資訊。 例如，如果映像不適合標準 HDD 磁碟，您可以將其新增至不允許清單。
-* Hyper-V 產生 - 您可以指定映像是從 Gen 1 或 Gen 2 Hyper-V VHD 建立。
-* Marketplace 映像的購買方案資訊 - `-PurchasePlanPublisher `、`-PurchasePlanName`和 `-PurchasePlanProduct`。 如需購買方案資訊的詳細資訊，請參閱[在 Azure Marketplace 中尋找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在建立映像時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
+- 描述 - 使用描述以提供有關映像定義為何存在的詳細資訊。 例如，您的前端伺服器可能會有預先安裝應用程式的映像定義。
+- Eula - 可用來指向映像定義特有的使用者授權合約。
+- 隱私權聲明和版本資訊 - 將版本資訊和隱私權聲明儲存在 Azure 儲存體中，並提供 URI 供您作為映像定義的一部分來存取這些聲明。
+- 生命週期結束日期 - 將生命週期結束日期附加至映像定義，以便使用自動化來刪除舊的映像定義。
+- 標記 - 您可以在建立映像定義時新增標記。 如需標記的詳細資訊，請參閱[使用標記來組織您的資源](../articles/azure-resource-manager/management/tag-resources.md)
+- vCPU 和記憶體最小值和最大值建議 - 如果您的映像有 vCPU 和記憶體建議，您可以將該資訊附加至映像定義。
+- 不允許的磁碟類型 - 您可以提供 VM 儲存體需求的相關資訊。 例如，如果映像不適合標準 HDD 磁碟，您可以將其新增至不允許清單。
+- Marketplace 映像的購買方案資訊 - `-PurchasePlanPublisher`、`-PurchasePlanName`和 `-PurchasePlanProduct`。 如需購買方案資訊的詳細資訊，請參閱[在 Azure Marketplace 中尋找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在建立映像時提供 Azure Marketplace 購買方案資訊](../articles/virtual-machines/marketplace-images.md)。
+
+
+## <a name="image-versions"></a>映像版本
+
+**映像版本**是您用來建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。
+
+映像版本的屬性如下：
+
+- 版本號碼。 這會用作映像版本的名稱。 其格式一律如下：MajorVersion.MinorVersion.Patch。 若您指定在建立 VM 時使用**最新**，系統會依序根據最高的 MajorVersion、MinorVersion、Patch 來選擇最新的映像。 
+- 來源。 來源可以是 VM、受控磁碟、快照集、受控映像或其他映像版本。 
+- 從最新中排除。 您可以保留某個版本，以免用作最新的映像版本。 
+- 生命週期結束日期。 在此日期之後，就無法從這個映像建立 VM。
+
 
 ## <a name="generalized-and-specialized-images"></a>一般化和特殊化映像
 

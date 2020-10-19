@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 9f64d6da399285b82d1222a768b344dfdf6a317b
-  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+  ms.openlocfilehash: 546cde760946c2cd63bef539180395160acf3608
+  ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92047037"
+  ms.lasthandoff: 10/16/2020
+  ms.locfileid: "92131661"
 landingContent:
 - title: 關於 Azure Digital Twins
   linkLists:
@@ -71,7 +71,7 @@ landingContent:
     links:
     - text: 撰寫應用程式驗證碼
       url: how-to-authenticate-client.md
-- title: API 參考資料
+- title: 檢視 API 參考
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -85,3 +85,29 @@ landingContent:
     links:
     - text: REST API
       url: /rest/api/azure-digitaltwins/
+- title: 探索程式碼範例
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: 端對端範例
+      url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Azure Digital Twins 總管 (範例)
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explore
+  - linkListType: sample
+    links:
+    - text: DTDL 驗證程式 (範例)
+      url: /samples/azure-samples/dtdl-validator/dtdl-validator/
+  - linkListType: sample
+    links:
+    - text: DPS 和 IoT 中樞的整合範例
+      url: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
+  - linkListType: sample
+    links:
+    - text: SignalR 整合範例
+      url: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: 適用於 Logic Apps 連接器的自訂 Swagger
+      url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/

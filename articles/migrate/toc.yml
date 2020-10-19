@@ -52,10 +52,12 @@
           items:
             - name: 有關 VMware VM 適用的移轉選項
               href: server-migrate-overview.md
-            - name: 使用無代理程式移轉來遷移 VMware VM
+            - name: 使用無代理程式移轉來遷移 VMware VM - Azure 入口網站
               href: tutorial-migrate-vmware.md
             - name: 使用代理程式移轉來遷移 VMware VM
               href: tutorial-migrate-vmware-agent.md
+            - name: 使用無代理程式移轉來遷移 VMware VM - PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: 遷移 Hyper-V VM
           href: tutorial-migrate-hyper-v.md
         - name: 遷移實體伺服器

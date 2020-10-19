@@ -180,8 +180,10 @@
               href: manage/pay-by-invoice.md
             - name: 建立其他訂用帳戶
               href: manage/create-subscription.md
-            - name: 以程式設計方式建立訂用帳戶
+            - name: 使用最新 API 以程式設計方式建立訂用帳戶
               href: manage/programmatically-create-subscription.md
+            - name: 使用預覽 API 以程式設計方式建立訂用帳戶
+              href: manage/programmatically-create-subscription-preview.md
             - name: 授與存取權以建立 EA 訂用帳戶
               href: manage/grant-access-to-create-subscription.md
             - name: 匯出訂用帳戶資訊
@@ -338,6 +340,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: 疑難排解
       items:
+        - name: 用量檔案的 EA 計費問題
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: 用量檔案的 MCA 計費問題
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: 用量檔案的 CSP 計費問題
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: 找不到訂用帳戶
           href: manage/no-subscriptions-found.md
         - name: 付款問題

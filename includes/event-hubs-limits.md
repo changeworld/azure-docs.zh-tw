@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371711"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116758"
 ---
 下表提供 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)的特定配額與限制。 如需事件中樞價格的相關資訊，請參閱[事件中樞價格](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "91371711"
 | 每個結構描述的大小 (位元組) | 1 MB |   
 | 每個結構描述群組的屬性數目 | 1024 |
 | 每個群組屬性金鑰的大小 (位元組) | 256 | 
-| 每個群組屬性金鑰的大小 (位元組) | 1024 | 
+| 每個群組屬性值的大小 (位元組) | 1024 | 
 
 
 #### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>**標準**和**專用**層的限制不同 

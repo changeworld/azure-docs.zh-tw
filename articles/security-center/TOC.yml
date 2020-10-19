@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: 適用於 Kubernetes 的 Azure Defender
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: 適用於容器登錄的 Azure Defender
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: 其他威脅防護
           href: other-threat-protections.md
     - name: 資訊安全中心的容器安全性功能
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: 定價
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: 使用 PowerShell 進行自動上線
       href: security-center-powershell-onboarding.md
+    - name: 啟用管理群組的資訊安全中心
+      href: onboard-management-group.md
     - name: 設定資料收集
       href: security-center-enable-data-collection.md
     - name: 設定電子郵件通知
@@ -140,8 +142,6 @@
             - name: 自動回應建議
               displayName: workflow
               href: workflow-automation.md
-            - name: 匯出建議
-              href: continuous-export.md
             - name: 讓資源豁免建議
               href: exempt-resource.md
     - name: Azure Defender 警示
@@ -169,17 +169,20 @@
           href: update-regulatory-compliance-packages.md
     - name: 使用適用於伺服器的 Azure Defender
       items:
-        - name: VM 的弱點掃描
+        - name: 弱點掃描
           items:
-            - name: 使用整合式 VA 解決方案掃描您的 VM
-              displayName: 'qualys, vulnerability'
+            - name: 適用於機器的整合式 VA 掃描器
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: 使用 BYOL VA 解決方案掃描您的 VM
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: 檢閱並修復 VM 上的弱點
+            - name: 檢閱和修復弱點
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: 停用特定的弱點結果
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: 使用 Just-In-Time VM 存取來保護管理連接埠
           items:
             - name: Just-In-Time VM 存取的概觀
@@ -213,6 +216,15 @@
     - name: 使用適用於容器登錄的 Azure Defender
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: 匯出警示和建議
+      items:
+        - name: 匯出至 SIEM、SOAR 或 ITSM
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: 匯出至 Log Analytics 工作區或 Azure 事件中樞
+          href: continuous-export.md
+        - name: 下載所有警示的 CSV 報告
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: 處理 Azure Defender 警示
       items:
         - name: 管理安全性警示
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: 產生威脅情報報告
           href: security-center-threat-report.md
-        - name: 驗證警示設定 (EICAR 測試檔案)
+        - name: 驗證警示設定
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: 自動回應警示
           displayName: workflow
           href: workflow-automation.md
-        - name: 匯出警示
-          displayName: continuous
-          href: continuous-export.md
     - name: 保護 Kubernetes 工作負載
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: 管理調查使用者資料
       href: security-center-investigation-user-data.md

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ffc9c2ee17862497d3fd986da8e003f7a497056
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855348"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107278"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>教學課程：使用入口網站將虛擬網路連線到 ExpressRoute 線路
 
@@ -63,11 +63,19 @@ ms.locfileid: "91855348"
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/express-route-circuit.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
-2. 您現在可以開始佈建將虛擬網路閘道連結至 ExpressRoute 線路的連線。 選取 [連線]  >  [新增] 開啟 [新增連線] 頁面，然後設定值。
+1. 您現在可以開始佈建將虛擬網路閘道連結至 ExpressRoute 線路的連線。 選取 [連線] > [新增] 以開啟 [新增連線] 頁面。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/add-connection.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
-3. 順利設定連線後，您的連線物件就會顯示連接資訊。
+1. 輸入連線的名稱，然後選取 [下一步:設定 >]。
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-basic.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
+
+1. 選取屬於虛擬網路的閘道，您想要將此虛擬網路連結至線路，然後選取 [檢閱 + 建立]。 驗證完成後，請選取 [建立]。
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-connection-settings.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
+
+1. 順利設定連線後，您的連線物件就會顯示連接資訊。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-object.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
@@ -109,7 +117,13 @@ ms.locfileid: "91855348"
 
 **刪除連線授權**
 
-您可以選取連線頁面上的 [刪除]**** 圖示來刪除連線。
+您可以針對連線的授權金鑰選取 [刪除] 圖示來刪除連線。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
+
+如果您想要刪除連線，但仍要保留授權金鑰，則可以從線路的連線頁面中刪除該連線。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
 ### <a name="circuit-user-operations"></a>循環使用者作業
 
@@ -117,33 +131,33 @@ ms.locfileid: "91855348"
 
 **兌換連線授權**
 
-1. 選取 [+ 新增] 按鈕。
+1. 選取 [+ 建立資源] 按鈕。 搜尋 [連線]，然後選取 [建立]。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/create-new-resources.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
-2. 在 Marketplace 中搜尋**連線**、選取該項目，然後選取 [建立]。
+1. 確定 [連線類型] 設定為 [ExpressRoute]。 選取 [資源群組] 和 [位置]，然後在 [基本] 頁面中選取 [確定]。
 
-    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/search-connection.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
-
-3. 確定 [連線類型]**** 設定為 [ExpressRoute]。
-4. 填入詳細資料，然後在 [基本] 頁面中選取 [確定]。
+    > [!NOTE]
+    > 位置「必須」 符合您為其建立連線的虛擬網路閘道位置。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-basics.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
-5. 在 [設定]**** 頁面中選取 [虛擬網路閘道]****，並選取 [兌換授權]**** 核取方塊。
-6. 輸入**授權金鑰**和**對等線路 URI**，並提供連線名稱。 選取 [確定]  。 **對等互連線路 URI** 是 ExpressRoute 線路的資源識別碼 (您可以在 ExpressRoute 線路的 [屬性設定] 窗格底下找到)。
+1. 在 [設定]**** 頁面中選取 [虛擬網路閘道]**，並選取 [兌換授權]**** 核取方塊。 輸入*授權金鑰*和*對等線路 URI*，並提供連線名稱。 選取 [確定]  。 
+ 
+    > [!NOTE]
+    > *對等互連線路 URI* 是 ExpressRoute 線路的資源識別碼 (您可以在 ExpressRoute 線路的 [屬性設定] 窗格底下找到)。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-settings.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
-7. 在 [摘要] 頁面中檢閱資訊，然後選取 [確定]。
+1. 在 [摘要] 頁面中檢閱資訊，然後選取 [確定]。
 
-**釋出連線授權**
-
-您可以藉由刪除將 ExpressRoute 線路連結到虛擬網路的連線來釋出授權。
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
 您可以選取連線頁面上的 [刪除]**** 圖示，來刪除連線並取消 VNet 與 ExpressRoute 線路的連結。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection.png" alt-text="刪除 ExpressRoute 線路螢幕擷取畫面":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: 將所有的應用程式與 Azure AD 整合
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: 驗證與佈建通訊協定
+          items:
+            - name: 概觀
+              href: auth-sync-overview.md
+            - name: 標頭型驗證
+              href: auth-header-based.md
+            - name: LDAP 驗證
+              href: auth-ldap.md
+            - name: OAuth 2.0 驗證
+              href: auth-oauth2.md
+            - name: Open ID Connect 驗證
+              href: auth-oidc.md
+            - name: 密碼式驗證
+              href: auth-password-based-sso.md
+            - name: RADIUS 驗證
+              href: auth-radius.md
+            - name: 遠端桌面閘道驗證
+              href: auth-remote-desktop-gateway.md
+            - name: SAML 驗證
+              href: auth-saml.md
+            - name: Windows 驗證 - KCD
+              href: auth-kcd.md
+            - name: 目錄同步作業
+              href: sync-directory.md
+            - name: LDAP 同步處理
+              href: sync-ldap.md
+            - name: SCIM 同步處理
+              href: sync-scim.md
     - name: 部署指南
       items:
         - name: 部署 30、90 及更多

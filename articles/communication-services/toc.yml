@@ -34,6 +34,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: 使用通話用戶端程式庫
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: 將您的通話應用程式加入至小組會議
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: 教學課程
   expanded: false
   items:
@@ -62,6 +64,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 語音和視訊概念
           href: concepts/voice-video-calling/about-call-types.md
+        - name: 小組互通性
+          href: concepts/voice-video-calling/teams-interop.md
     - name: 用戶端與伺服器架構
       href: concepts/client-and-server-architecture.md
     - name: 通話流程

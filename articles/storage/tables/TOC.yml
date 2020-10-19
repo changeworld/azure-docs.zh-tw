@@ -164,10 +164,10 @@
   items:
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Microsoft Q&A 上的 Azure 儲存體
+    - name: Microsoft Q&A 上的資料表儲存體
       href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Stack Overflow 上的 Azure 儲存體
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Stack Overflow 上的資料表儲存體
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: 資料表儲存體的定價
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Azure 定價計算機

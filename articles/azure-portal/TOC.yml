@@ -21,7 +21,7 @@
           href: quick-create-template.md
 - name: 概念
   items:
-    - name: 使用角色型存取控制來共用儀表板
+    - name: 使用 Azure 角色型存取控制來共用儀表板
       href: azure-portal-dashboard-share-access.md
     - name: 以程式設計方式建立 Azure 儀表板
       href: azure-portal-dashboards-create-programmatically.md

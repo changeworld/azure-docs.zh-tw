@@ -24,26 +24,14 @@
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: 使用 Azure Bot Service 建立常見問題 Bot
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: 使用批次檔進行測試
-      href: Quickstarts/batch-testing.md
 - name: 概念
   items:
     - name: 規劃您的知識庫
       href: Concepts/plan.md
     - name: 規劃 QnA Maker 資源
       href: Concepts/azure-resources.md
-    - name: 設計知識庫
-      items:
-        - name: 針對語言
-          href: Concepts/design-language-culture.md
-        - name: 針對用戶端應用程式
-          href: Concepts/integration-with-other-applications.md
     - name: 資料來源和內容
-      items:
-        - name: 從資料來源匯入
-          href: Concepts/knowledge-base.md
-        - name: 已匯入內容類型
-          href: Concepts/content-types.md
+      href: Concepts/data-sources-and-content.md
     - name: 排名工具處理程序
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -58,22 +46,14 @@
 - name: 操作指南
   items:
     - name: 管理 Azure 資源
-      items:
-        - name: 管理資源
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: 共同作業
-          href: How-To/collaborate-knowledge-base.md
-        - name: 開啟主動式學習
-          href: How-To/use-active-learning.md
-        - name: 變更預設答案
-          href: How-To/change-default-answer.md
+      href: How-To/set-up-qnamaker-service-azure.md
+      displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: 管理 QnA Maker 應用程式
+      href: How-To/manage-qna-maker-app.md
     - name: 管理知識庫
       items:
         - name: 建立知識庫
           href: How-To/manage-knowledge-bases.md
-        - name: 語言選擇
-          href: How-To/language-knowledge-base.md
         - name: 新增閒聊
           href: How-to/chit-chat-knowledge-base.md
         - name: 遷移至新的知識庫
@@ -102,7 +82,7 @@
       href: Overview/language-support.md
     - name: 限制
       href: limits.md
-    - name: 角色型存取控制 (RBAC)
+    - name: Azure 角色型存取控制 (Azure RBAC)
       href: Concepts/role-based-access-control.md
     - name: 主動學習
       href: Concepts/active-learning-suggestions.md
@@ -115,6 +95,8 @@
     - name: 新增受保護的 SharePoint 檔案
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: 變更預設答案
+      href: How-To/change-default-answer.md
     - name: 服務設定
       href: reference-app-service.md
     - name: 內容和資料格式
@@ -189,7 +171,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 價格和限制
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'

@@ -92,6 +92,8 @@
     - name: 自我診斷並解決問題
       href: spring-cloud-howto-self-diagnose-solve.md
     - name: 監視
+    - name: 建立角色與權限
+      href: spring-cloud-howto-permissions.md
       items:
         - name: 分散式追蹤和 App Insights
           href: spring-cloud-tutorial-distributed-tracing.md

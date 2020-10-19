@@ -230,12 +230,8 @@
               href: application-sign-in-problem-application-error.md
             - name: 登入 Microsoft 應用程式時發生問題
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: 同盟單一登入問題 - 非資源庫應用程式
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: 同盟單一登入問題 - 資源庫應用程式
+            - name: 與單一登入有關的問題
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: 自訂開發應用程式問題
-              href: application-sign-in-problem-custom-dev.md
         - name: 針對內部部署應用程式進行疑難排解
           items:
             - name: 應用程式 Proxy 疑難排解
@@ -270,7 +266,7 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: 應用程式 Proxy 中的 CORS 問題
               href: application-proxy-understand-cors-issues.md
-- name: 參考資料
+- name: 參考
   items:
     - name: 應用程式 Proxy 常見問題集
       href: application-proxy-faq.md
@@ -288,7 +284,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

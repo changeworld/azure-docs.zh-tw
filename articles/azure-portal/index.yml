@@ -12,12 +12,12 @@ metadata:
   author: mblythe
   ms.author: mblythe
   ms.date: 08/05/2020
-  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 4a491a2924af90afc43ddb4aa097f9967c8f156a
+  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88212091"
+  ms.lasthandoff: 10/15/2020
+  ms.locfileid: "92089276"
 landingContent:
 - title: 關於 Azure 入口網站
   linkLists:
@@ -43,13 +43,13 @@ landingContent:
     links:
     - text: Azure 入口網站 URL 安全清單
       url: azure-portal-safelist-urls.md
-    - text: 適用於儀表板的角色型存取控制
+    - text: 適用於儀表板的 Azure 角色型存取控制
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
     - text: 在 Azure 中管理資源
       url: /learn/paths/manage-resources-in-azure/
-    - text: 使用角色型存取控制 (RBAC) 保護 Azure 資源
+    - text: 使用 Azure 角色型存取控制 (Azure RBAC) 保護 Azure 資源
       url: /learn//modules/secure-azure-resources-with-rbac/
 - title: 開始使用
   linkLists:

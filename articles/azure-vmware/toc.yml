@@ -6,10 +6,8 @@
       href: introduction.md
 - name: 快速入門
   items:
-    - name: 前置部署程序
+    - name: 0 - 規劃部署
       href: production-ready-deployment-steps.md
-    - name: 前置部署檢查清單
-      href: pre-deployment-checklist.md
     - name: 1 - 部署 Azure VMware 解決方案
       href: deploy-azure-vmware-solution.md
     - name: 2 - 連線至內部部署
@@ -104,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: 常見問題集
       href: faq.md
+- name: 參考
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware

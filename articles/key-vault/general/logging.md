@@ -10,27 +10,27 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a51e9a628f67269357d42bd1d3af10c1d86f301a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739777"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131168"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-在建立一或多個金鑰保存庫之後，您可能會想要監視金鑰保存庫的存取方式、時間和存取者。 想要做到這點，您可以啟用 Azure Key Vault 記錄，以在您提供的 Azure 儲存體帳戶中儲存這方面的資訊。 系統會自動為您指定的儲存體帳戶建立名為 **insights-logs-auditevent** 的新容器。 您可以使用此相同儲存體帳戶來收集多個金鑰保存庫的記錄。
+在建立一或多個金鑰保存庫之後，您可能會想要監視金鑰保存庫的存取方式、時間和存取者。 想要做到這點，您可以啟用 Azure Key Vault 記錄，以在您提供的 Azure 儲存體帳戶中儲存這方面的資訊。 如需設定這項操作的逐步指引，請參閱[如何啟用 Key Vault 記錄](howto-logging.md)。
 
 在金鑰保存庫作業 10 分鐘 (最多) 後，您就可以存取記錄資訊。 但大多不用這麼久。  儲存體帳戶中的記錄由您全權管理：
 
 * 請使用標準的 Azure 存取控制方法限制可存取記錄的人員，藉此來保護記錄。
 * 刪除不想繼續保留在儲存體帳戶中的記錄。
 
-如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md))。 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。 如需使用[適用於 Key Vault 的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)相關資訊。
+如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md) 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。 如需使用[適用於 Key Vault 的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)相關資訊。
 
 ## <a name="interpret-your-key-vault-logs"></a>解譯金鑰保存庫記錄
+
+當您啟用記錄時，系統會自動為您指定的儲存體帳戶建立稱為 **insights-logs-auditevent** 的新容器。 您可以使用此相同儲存體帳戶來收集多個金鑰保存庫的記錄。
 
 各個 blob 皆會儲存為文字，並格式化為 JSON blob。 讓我們看看記錄項目範例。 
 
@@ -122,16 +122,15 @@ ms.locfileid: "91739777"
 | **CertificateNearExpiryEventGridNotification** |已發佈憑證即將過期事件 |
 | **CertificateExpiredEventGridNotification** |已發佈憑證已過期事件 |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>使用 Azure 監視器記錄
+## <a name="use-azure-monitor-logs"></a>使用 Azure 監視器記錄
 
 您可以使用 Azure 監視器記錄中的 Key Vault 解決方案來檢閱 Key Vault 的 `AuditEvent` 記錄。 在 Azure 監視器記錄中，您可以使用記錄查詢來分析資料，並取得所需的資訊。 
 
 如需詳細資訊 (包括如何進行此設定)，請參閱 [Azure 監視器中的 Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md)。
 
-## <a name="next-steps"></a><a id="next"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 
-如需在 .NET Web 應用程式中使用 Azure Key Vault 的教學課程，請參閱[從 Web 應用程式使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
-
-如需程式設計參考，請參閱 [Azure 金鑰保存庫開發人員指南](developers-guide.md)。
-
-如需 Azure 金鑰保存庫的 Azure PowerShell 1.0 Cmdlet 清單，請參閱 [Azure 金鑰保存庫 Cmdlet](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。
+- [如何啟用 Key Vault 記錄](howto-logging.md)
+- 如需在 .NET Web 應用程式中使用 Azure Key Vault 的教學課程，請參閱[從 Web 應用程式使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
+- 如需程式設計參考，請參閱 [Azure 金鑰保存庫開發人員指南](developers-guide.md)。
+- 如需 Azure 金鑰保存庫的 Azure PowerShell 1.0 Cmdlet 清單，請參閱 [Azure 金鑰保存庫 Cmdlet](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。
