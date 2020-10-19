@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: 通知
       href: concepts/notifications.md
+    - name: 記錄和診斷
+      href: concepts/logging-and-diagnostics.md
+    - name: 計量
+      href: concepts/metrics.md
 - name: 範例
   items:
     - name: 群組通話 Hero 範例

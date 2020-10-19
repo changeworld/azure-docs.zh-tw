@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863ab9b600b81006cdeb670811c61ed961e8c623
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983705"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170251"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -46,7 +46,7 @@ ms.locfileid: "90983705"
 | **ApiManagement** | Azure API 管理專用部署的管理流量。 <br/><br/>*注意：* 此標籤代表各區域控制平面的 Azure API 管理服務端點。 這可讓客戶對設定於 API 管理服務上的 API、作業、原則、NamedValues 執行管理作業。  | 輸入 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |
 | **AppConfiguration** | 應用程式組態。 | 輸出 | 否 | 否 |
-| **AppService**    | Azure App Service。 對於 Web 應用程式前端的輸出安全性規則，建議使用此標籤。 | 輸出 | 是 | 是 |
+| **AppService**    | Azure App Service。 針對 web 應用程式和函式應用程式，建議將此標記用於輸出安全性規則。  | 輸出 | 是 | 是 |
 | **AppServiceManagement** | App Service 環境專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **AzureActiveDirectory** | Azure Active Directory。 | 輸出 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services 專用部署的管理流量。 | 兩者 | 否 | 是 |

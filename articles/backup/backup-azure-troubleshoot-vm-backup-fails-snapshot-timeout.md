@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1711652434be3d9937c8199bc1999273ef58e4d0
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182032"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170282"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -103,7 +103,6 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態或未�
 
 當其中一個延伸模組失敗而導致 VM 布建失敗狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > 延伸模組 > 擴充狀態** ，並檢查所有延伸模組是否處於布建 **成功** 狀態。 若要深入瞭解，請參閱布建 [狀態](../virtual-machines/states-lifecycle.md#provisioning-states)。
 
-- 如果 VMSnapshot 延伸模組處於失敗狀態，請以滑鼠右鍵按一下失敗的延伸模組，並將它移除。 觸發隨選備份。 此動作會重新安裝擴充功能，並執行備份作業。  <br>
 - 如果有任何其他延伸模組處於失敗狀態，則可能會干擾備份。 請確認已解決這些擴充功能問題，然後重試備份作業。
 - 如果 VM 布建狀態處於「正在更新」狀態，它可能會干擾備份。 請確認其狀況良好，然後重試備份作業。
 
@@ -220,7 +219,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
@@ -270,7 +269,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 下列狀況可能導致快照集工作失敗：
 
-| 原因 | 解決方法 |
+| 原因 | 解決方案 |
 | --- | --- |
 | 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，請使用 VM 儀表板上的 [ **關機** ] 選項來關閉入口網站中的 VM。 |
 | VM 無法從 DHCP 取得主機或網狀架構位址。 | 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果 VM 無法從 DHCP 回應 245 取得主機或網狀架構位址，則無法下載或執行任何延伸模組。 如果您需要靜態私人 IP，您應該透過 **Azure 入口網站** 或 **PowerShell** 進行設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) 如何使用 PowerShell 設定靜態 IP 位址。

@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999885"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170315"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用適用于 IoT Central 應用程式 Node.js 裝置 SDK，將裝置與 x.509 憑證連線
 
@@ -50,12 +50,15 @@ IoT Central 支援共用存取簽章 (SAS) 和 x.509 憑證來保護裝置與應
     npm install
     ```
 
-1. 建立根憑證，然後藉由執行腳本來衍生裝置憑證。 請務必只針對憑證名稱使用小寫英數位元和連字號：
+1. 建立根憑證，然後藉由執行腳本來衍生裝置憑證：
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > 裝置識別碼可以包含字母、數位及 `-` 字元。
 
 這些命令會針對根目錄和裝置憑證產生三個檔案
 

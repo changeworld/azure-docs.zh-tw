@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3fc10c9601deb66c8fb6182d5943011f1ef185ce
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126836"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170046"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -113,7 +113,7 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
 ### <a name="register-and-connect-devices"></a>註冊並連接裝置
 
-若要使用 x.509 憑證大量連接裝置，請先使用 CSV 檔案匯 [入裝置識別碼和裝置名稱](howto-manage-devices.md#import-devices)，以在您的應用程式中註冊裝置。 裝置識別碼應該全部都是小寫。
+若要使用 x.509 憑證大量連接裝置，請先使用 CSV 檔案匯 [入裝置識別碼和裝置名稱](howto-manage-devices.md#import-devices)，以在您的應用程式中註冊裝置。 裝置識別碼可以包含字母、數位及 `-` 字元。
 
 使用您上傳至 x.509 註冊群組的根或中繼憑證，為您的裝置產生 x.509 分葉憑證。 使用 **裝置識別碼** 做為分 `CNAME` 葉憑證中的值。 您的裝置程式碼需要您應用程式的 **識別碼範圍** 值、 **裝置識別碼**和對應的裝置憑證。
 
@@ -149,7 +149,7 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="新增 x.509 註冊群組螢幕擷取畫面":::
 
-1. 使用 `az iot central device compute-device-key` 命令來產生裝置 SAS 金鑰。 使用上一個步驟中的群組主要金鑰。 裝置識別碼必須是小寫：
+1. 使用 `az iot central device compute-device-key` 命令來產生裝置 SAS 金鑰。 使用上一個步驟中的群組主要金鑰。 裝置識別碼可以包含字母、數位和 `-` 字元：
 
     ```azurecli
     az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
@@ -170,7 +170,7 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
 1. [建立註冊群組](#create-an-enrollment-group) ，然後在您的 IoT Central 應用程式中 [新增並驗證根或中繼 x.509 憑證](#add-and-verify-a-root-or-intermediate-x509-certificate) 。
 
-1. 使用您新增至 IoT Central 應用程式的根或中繼憑證，為您的裝置產生分葉憑證。 使用小寫裝置識別碼做為分 `CNAME` 葉憑證中的。
+1. 使用您新增至 IoT Central 應用程式的根或中繼憑證，為您的裝置產生分葉憑證。 使用裝置識別碼做為分 `CNAME` 葉憑證中的。 裝置識別碼可以包含字母、數位及 `-` 字元。
 
 1. OEM 會使用裝置識別碼、產生的分葉 x.509 憑證和應用程式 **識別碼範圍** 值來閃爍每部裝置。
 
@@ -185,7 +185,7 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>個別註冊型裝置連線能力
 
-如果客戶連接的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用從實體或虛擬的可信賴平臺模組 (的 x.509 分葉憑證或 SAS 權杖，) 作為證明機制。 個別註冊中的裝置識別碼 (也稱為註冊識別碼) ，其為英數位元、小寫字母，而且可能包含連字號。 如需詳細資訊，請參閱 [DPS 個別註冊](../../iot-dps/concepts-service.md#individual-enrollment)。
+如果客戶連接的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用從實體或虛擬的可信賴平臺模組 (的 x.509 分葉憑證或 SAS 權杖，) 作為證明機制。 裝置識別碼 (在個別註冊中也稱為註冊識別碼) ，裝置識別碼可以包含字母、數位和 `-` 字元。 如需詳細資訊，請參閱 [DPS 個別註冊](../../iot-dps/concepts-service.md#individual-enrollment)。
 
 > [!NOTE]
 > 當您建立裝置的個別註冊時，它會優先于 IoT Central 應用程式中的預設群組註冊選項。

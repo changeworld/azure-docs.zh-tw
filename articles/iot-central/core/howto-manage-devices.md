@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperfq2
-ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850093"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170348"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中管理裝置
 
@@ -52,7 +52,7 @@ ms.locfileid: "91850093"
 
 1. **開啟或****關閉****模擬**切換。 真實裝置是您連線至 Azure IoT Central 應用程式的實體裝置。 模擬裝置具有由 Azure IoT Central 為您產生的範例資料。
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 1. 此裝置現在會出現在此範本的裝置清單中。 選取裝置以查看包含裝置所有視圖的裝置詳細資料頁面。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91850093"
 
 若要將大量裝置連接至您的應用程式，您可以從 CSV 檔案中大量匯入裝置。 CSV 檔案應該具有下列資料行及標頭：
 
-* **IOTC_DeviceID**：裝置識別碼應該是全部小寫。
+* **IOTC_DeviceID** -裝置識別碼可以包含字母、數位及 `-` 字元。
 * **IOTC_DeviceName**：此資料行是選擇性的。
 
 在應用程式中大量註冊裝置：

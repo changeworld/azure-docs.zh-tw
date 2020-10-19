@@ -686,11 +686,10 @@
           items:
             - name: 安全性建議
               href: security-recommendations.md
-            - name: 存取控制 (目錄和檔案)
+            - name: 存取控制模型
+              href: data-lake-storage-access-control-model.md
+            - name: 存取控制清單
               href: data-lake-storage-access-control.md
-            - name: Azure 原則的安全性控制
-              displayName: 'regulatory, compliance, standards, domains'
-              href: ./security-controls-policy.md
         - name: 相容性
           items:
             - name: 多重通訊協定存取
