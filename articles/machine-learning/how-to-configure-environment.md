@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613708"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203087"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 
@@ -223,7 +223,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 建立 [Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)叢集。 只有當您在 Databricks 上安裝適用于自動化機器學習的 SDK 時，才適用某些設定。
 **建立叢集將需要幾分鐘的時間。**
 
-使用下列設定：
+使用這些設定：
 
 | 設定 |適用於| 值 |
 |----|---|---|
@@ -276,7 +276,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 如果使用 Databricks 非 ML runtime 7.1 或更高版本建立叢集，請在筆記本的第一個資料格中執行下列命令，以安裝 AML SDK。
 
 ```
-%pip install -r https://aka.ms/automl_linux_requirements.txt
+%pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
 ```
 針對 Databricks 非 ML 執行時間7.0 和更低版本，請使用 [init 腳本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)來安裝 AML SDK。
 

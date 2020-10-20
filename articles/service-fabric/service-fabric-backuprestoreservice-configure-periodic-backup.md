@@ -3,12 +3,12 @@ title: 了解定期備份組態
 description: 使用 Service Fabric 的定期備份與還原功能，設定可靠具狀態服務或 Reliable Actors 的定期備份。
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538614"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205688"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>在 Azure Service Fabric 中了解定期備份設定
 
@@ -23,6 +23,9 @@ ms.locfileid: "91538614"
 備份原則由下列設定組成：
 
 * **在資料遺失時自動還原**：指定是否要在分割區發生資料遺失事件時，使用最新可用的備份來自動觸發還原。
+> [!NOTE]
+> 建議不要在生產叢集中設定自動還原
+>
 
 * **最大增量備份**：定義要在兩個完整備份之間採用的最大增量備份。 最大增量備份可指定上限。 在下列其中一種情況下完成指定的增量備份數目之前，可以採取完整備份：
 
@@ -86,6 +89,9 @@ ms.locfileid: "91538614"
             "ContainerName": "BackupContainer"
         }
         ```
+> [!NOTE]
+> 備份還原服務無法使用 v1 Azure 儲存體
+>
 
     2. 檔案**共用**：當需求是在內部部署環境中儲存資料備份時，應該為_獨立_叢集選取此儲存體類型。 此儲存體類型的描述需要必須上傳備份的檔案共用路徑。 您可以使用下列其中一個選項，設定檔案共用的存取權：
         1. 整合式 Windows 驗證__，可對屬於 Service Fabric 叢集的所有電腦提供檔案共用的存取權。 在此情況下，設定下列欄位，以設定以「檔案共用」__ 為基礎的備份儲存體。
@@ -129,6 +135,10 @@ ms.locfileid: "91538614"
 
 ## <a name="enable-periodic-backup"></a>啟用定期備份
 定義可滿足資料備份需求的備份原則之後，應該將該備份原則與應用程式__、服務__ 或分割區__ 建立適當關聯。
+
+> [!NOTE]
+> 在啟用備份之前，請確定沒有任何正在升級的應用程式
+>
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>備份原則的階層式傳播
 在 Service Fabric 中，應用程式、服務和分割區之間具有階層式關聯性，如[應用程式模型](./service-fabric-application-model.md)中所說明。 備份原則可以與階層中的應用程式__、服務__ 或分割區__ 建立關聯。 備份原則會以階層方式傳播到下一個層級。 假設只建立了一個備份原則並與應用程式__ 相關聯，則會使用備份原則來備份屬於該應用程式__ 的所有可靠具狀態服務__ 和 Reliable Actors__ 的所有具狀態分割區。 而如果備份原則與可靠具狀態服務__ 相關聯，則會使用備份原則來備份其所有分割區。
@@ -186,6 +196,9 @@ ms.locfileid: "91538614"
         "CleanBackup": true 
     }
     ```
+> [!NOTE]
+> 在停用備份之前，請確定沒有任何正在進行的應用程式升級
+>
 
 ## <a name="suspend--resume-backup"></a>暫止與繼續備份
 有些情況可能會要求暫時擱置資料的定期備份。 在這種情況下，根據需求而定，可能會在應用程式__、服務__ 或分割區__ 使用暫止備份 API。 定期備份擱置可從其套用點透過應用程式階層的樹狀子目錄轉移。 
@@ -213,6 +226,10 @@ ms.locfileid: "91538614"
 服務分割區可能因為非預期的失敗而遺失資料。 例如，分割區的三分之二複本 (包括主要複本) 的磁碟損毀或抹除。
 
 當 Service Fabric 偵測到分割區遺失資料時，它會在分割區上叫用 `OnDataLossAsync` 介面方法，並預期分割區會採取必要的動作來擺脫資料遺失。 在此情況下，如果分割區的有效備份原則將其 `AutoRestoreOnDataLoss` 旗標設為 `true`，則會使用此分割區的最新可用備份自動觸發還原。
+
+> [!NOTE]
+> 建議不要在生產叢集中設定自動還原
+>
 
 ## <a name="get-backup-configuration"></a>取得備份組態
 已提供不同的 API，以便取得應用程式__、服務__ 和分割區__ 範圍的備份組態資訊。 這些 API 分別是[取得應用程式備份組態資訊](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)、[取得服務備份組態資訊](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)，以及[取得分割區備份組態資訊](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo)。 這些 API 主要傳回適用的備份原則，此備份原則的套用範圍，以及備份擱置詳細資料。 以下是這些 API 所傳回結果的簡短說明。

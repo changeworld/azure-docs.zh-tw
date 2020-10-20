@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 52bfd76a12f431576d4fc3cc7a51c6e58c7551ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442746"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204213"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>設定可呼叫 web Api 的行動應用程式
 
@@ -160,7 +160,7 @@ var pca = PublicClientApplicationBuilder
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>針對 Android 啟用 broker for MSAL
 
-如需有關在 Android 上啟用 broker 的詳細資訊，請參閱 [android 上](brokered-auth.md)的代理驗證。
+如需有關在 Android 上啟用 broker 的詳細資訊，請參閱 [android 上](msal-android-single-sign-on.md)的代理驗證。
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>啟用適用于 iOS 和 macOS 的 MSAL 訊息代理程式
 
@@ -218,7 +218,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 。 傳入您將使用之物件視窗的參考。 以下為範例：
+1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 。 傳入您將使用之物件視窗的參考。 以下是範例：
 
     在 `App.cs` 中：
     ```csharp

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 306b70fb08622d161ab8f150dc5eec3fdbacaeeb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 303720cf50b5eabf22319e1eeae7423c4f1d94bb
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072861"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201693"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -854,7 +854,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 - [如何使用檔案完整性監視](../security-center/security-center-file-integrity-monitoring.md)
 
-- [瞭解 Azure 變更追蹤](../automation/change-tracking.md)
+- [瞭解 Azure 變更追蹤](../automation/change-tracking/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1235,7 +1235,7 @@ security-hardened-vm-host-image.md
 
 使用 PowerShell 命令執行 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼的定期自動備份。 
 
-例如︰
+例如：
 
 Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
@@ -1259,7 +1259,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 使用 PowerShell 命令定期執行 Key Vault 憑證、金鑰、受控儲存體帳戶和密碼的資料還原。 
 
-例如︰
+例如：
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 

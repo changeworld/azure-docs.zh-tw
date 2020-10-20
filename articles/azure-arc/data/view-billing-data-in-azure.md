@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108145"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206447"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>將帳單資料上傳至 Azure，並在 Azure 入口網站中加以查看
 
@@ -117,7 +117,7 @@ azdata arc dc upload -p usage.json
 1. 按一下視圖頂端的 [ **依資源的成本** ] 按鈕。
 1. 請確定您的範圍已設定為您的資料服務資源建立所在的訂用帳戶。
 1. 在接近視圖頂端的範圍選取器旁邊的 [View] 下拉式清單中，選取 [ **依資源的成本** ]。
-1. 請確定日期篩選準則設定為 **本月** 或某個其他時間範圍，以在您建立資料服務資源時的時機合理。
+1. 請確定日期篩選準則設定為 **本月** 或其他時間範圍，以在您建立資料服務資源時的時機提供合理意義。
 1. **Add filter** **Resource type**  =  `microsoft.azuredata/<data service type>` 如果您只想要篩選至一種啟用 Azure Arc 的資料服務，請按一下 [加入篩選]，依資源類型新增篩選。
 1. 您現在會看到已建立並上傳至 Azure 的所有資源清單。 由於計費計量是 $0，因此您會看到成本一律是 $0。
 
@@ -135,11 +135,11 @@ azdata arc dc upload -p usage.json
 
 請遵循下列步驟來設定帳單匯出作業：
 
-1. 按一下左邊的 [匯出]。
-1. 按一下 [新增]。
+1. 按一下左邊的 [ **匯出** ]。
+1. 按一下 [新增]  。
 1. 輸入名稱和匯出頻率，然後按 [下一步]。
-1. 選擇建立新的儲存體帳戶，或建立新的儲存體帳戶，填寫表單以指定要匯出帳單資料檔案的儲存體帳戶、容器和目錄路徑，然後按 [下一步]。
-1. 按一下 [建立]。
+1. 選擇建立新的儲存體帳戶或使用現有的儲存體帳戶，並填妥表單，以指定要匯出帳單資料檔案的儲存體帳戶、容器和目錄路徑，然後按 [下一步]。
+1. 按一下 [建立]  。
 
 帳單資料匯出檔案大約會在4小時內提供，並會依您在建立帳單匯出作業時所指定的排程匯出。
 
@@ -156,7 +156,7 @@ azdata arc dc upload -p usage.json
 5. 按一下您在上面建立帳單匯出作業時所指定的容器。
 6. 按一下您在上面建立帳單匯出工作時所指定的資料夾。
 7. 向下切入到產生的資料夾和檔案，然後按一下其中一個產生的 .csv 檔案。
-8. 按一下 [下載] 按鈕，將檔案儲存到您的本機下載資料夾。
+8. 按一下 [ **下載** ] 按鈕，將檔案儲存到您的本機下載資料夾。
 9. 使用 .csv 檔案檢視器（例如 Excel）來開啟檔案。
 10. 篩選結果，只顯示具有**資源類型**的資料列  =  `Microsoft.AzureData/<data service resource type` 。
 11. 您將會在 UsageQuantity 資料行中的目前24小時內，看到實例使用的時數。

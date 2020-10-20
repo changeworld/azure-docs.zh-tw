@@ -4,15 +4,15 @@ description: 瞭解在 Azure 中針對 HPC 和 GPU VM 大小的已知問題進�
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 52050066aceef50e64c5887efb7b99da0b03f140
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f69c39992b5c3826eb0126414a44c009a20e03cd
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996267"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207371"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知問題
 
@@ -39,9 +39,9 @@ Ubuntu VM 映射上的雲端初始化有一個已知的問題，因為它會嘗�
     ```console
     sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
     network:
-        ethernets:
+      ethernets:
         eth0:
-            dhcp4: true
+          dhcp4: true
         version: 2
     EOF
     ```
@@ -105,7 +105,7 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 請檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)，了解如何以最佳方式設定工作負載以獲得效能和可擴縮性。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0dfc86503f1b3aa648cb8c7cefe14fbd123f1459
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047500"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207762"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和驗證 (CLI) 
 
@@ -24,7 +24,9 @@ ms.locfileid: "92047500"
 * 若要使用 Azure 入口網站手動完成這些步驟，請參閱本文的入口網站版本： [*如何：設定實例和驗證 (入口網站) *](how-to-set-up-instance-portal.md)。
 * 若要使用部署腳本範例來執行自動安裝，請參閱本文的腳本版本： [*如何：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>設定 Cloud Shell 工作階段
@@ -86,67 +88,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
 
-您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。 接下來，您將設定用戶端應用程式存取的許可權。
-
-## <a name="set-up-access-permissions-for-client-applications"></a>設定用戶端應用程式的存取權限
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-若要建立應用程式註冊，您需要提供 Azure 數位 Twins Api 的資源識別碼，以及 API 的基準許可權。
-
-在您的工作目錄中，建立新的檔案，並輸入下列 JSON 程式碼片段來設定這些詳細資料： 
-
-```json
-[{
-    "resourceAppId": "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-    "resourceAccess": [
-     {
-       "id": "4589bd03-58cb-4e6c-b17f-b580e39652f8",
-       "type": "Scope"
-     }
-    ]
-}]
-``` 
-
-將此檔案儲存為 _**manifest.js**_。
-
-> [!NOTE] 
-> 有一些地方是「易記」的人可讀取的字串， `https://digitaltwins.azure.net` 可用於 Azure 數位 Twins 資源應用程式識別碼，而非 GUID `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` 。 例如，本檔集內的許多範例都會使用 MSAL 程式庫的驗證，而且可以使用好記的字串。 不過，在建立應用程式註冊的這個步驟中，會需要識別碼的 GUID 格式，如上所示。 
-
-接下來，您會將此檔案上傳至 Cloud Shell。 在 Cloud Shell 視窗中，按一下 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗":::
-流覽至您剛剛建立的 *manifest.js* ，然後按 [開啟]。
-
-接下來，執行下列命令以建立應用程式註冊，並使用 *公用用戶端/原生 (mobile & desktop) * 的回復 URL `http://localhost` 。 視需要取代預留位置：
-
-```azurecli
-az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
-```
-
-以下是此命令的輸出摘要，顯示您已建立之註冊的相關資訊：
-
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗":::
-
-### <a name="verify-success"></a>確認是否成功
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
-
-接下來，確認已上傳 *manifest.js* 的設定已在註冊上正確設定。 若要這樣做，請從功能表列選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗的底部，並在下方尋找您 *manifest.js* 的欄位 `requiredResourceAccess` ：
-
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
-
-### <a name="collect-important-values"></a>收集重要值
-
-接下來，從功能表列選取 [ *總覽* ]，以查看應用程式註冊的詳細資料：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗":::
-
-記下**您**頁面上顯示的*應用程式 (用戶端) 識別碼*和*目錄 (租使用者) 識別碼*。 稍後將需要這些值，以 [針對 Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，則必須與將會與人共用這些值。
-
-### <a name="other-possible-steps-for-your-organization"></a>您組織的其他可能步驟
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -154,5 +96,5 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 * [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
-或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：
+或者，請參閱如何使用驗證碼將用戶端應用程式連接到您的實例：
 * [*How to：撰寫應用程式驗證碼*](how-to-authenticate-client.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bb35b81a287179900485c7190a57c492cfc39203
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d71a7535c40d240b6c9bf53cff906f12b4b8b5df
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043029"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204294"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -22,7 +22,7 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 本文說明如何使用 `Azure.Identity` 用戶端程式庫取得認證。 雖然本文說明 c # 中的程式碼範例（例如您針對 [.net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)撰寫的內容），但您可以使用版本的， `Azure.Identity` 不論您使用的 sdk 為何 (如需 azure 數位 Twins 可用 sdk 的詳細資訊，請參閱作法 [*：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
@@ -105,9 +105,9 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)方法適用于互動式應用程式，並會啟動網頁瀏覽器以進行驗證。 您可以使用這種方式，而不是 `DefaultAzureCredential` 在需要互動式驗證的情況下使用。
 
-若要使用互動式瀏覽器認證，您將需要具有 Azure 數位 Twins Api 許可權的 **應用程式註冊** 。 如需有關如何設定此應用程式註冊的步驟，請參閱*如何：設定實例和驗證*的[*設定用戶端應用程式的存取權限*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications)一節。 一旦設定應用程式註冊，您將需要 .。。
-* 應用程式註冊的 *應用程式 (用戶端) 識別碼*
-* 應用程式註冊的 *目錄 (租使用者) 識別碼*
+若要使用互動式瀏覽器認證，您將需要具有 Azure 數位 Twins Api 許可權的 **應用程式註冊** 。 如需有關如何設定此應用程式註冊的步驟，請參閱 [*如何：建立應用程式註冊*](how-to-create-app-registration.md)。 一旦設定應用程式註冊，您將需要 .。。
+* 應用程式註冊的 *應用程式 (用戶端) 識別碼* ([要尋找的指示](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
+* 應用程式註冊的 *目錄 (租使用者) 識別碼* ([要尋找的指示](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
 * Azure 數位 Twins 實例的 URL (尋找) 的[指示](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)
 
 以下是使用建立已驗證之 SDK 用戶端的程式碼範例 `InteractiveBrowserCredential` 。

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
-ms.openlocfilehash: 365d38eedd327bb50bbbea01a6847738c482b1bd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d214a746a4eb5035e007136da80f4c69ae1dd1c8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091180"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204451"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -306,20 +306,20 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
  
 * **未定義 NameError (名稱) ，AttributeError (物件沒有屬性) **：此例外狀況應來自您的定型腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義特定名稱或屬性錯誤的詳細資訊。 您可以從 SDK 使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 重新提交您的執行之前，請務必先查看您的訓練腳本並修正錯誤。 
 
-* **Horovod 已關閉**：在大部分情況下，如果您遇到「AbortedError： Horovod 已關閉」這個例外狀況，就表示其中一個處理常式的基礎例外狀況導致 Horovod 關機。 MPI 作業中的每個排名都會在 Azure ML 中取得專屬的記錄檔。 這些記錄會命名為 `70_driver_logs` 。 在分散式訓練的情況下，記錄檔名稱會加上尾碼， `_rank` 以方便區分記錄檔。 若要找出造成 Horovod 關機的確切錯誤，請流覽所有記錄檔，然後 `Traceback` 在 driver_log 檔案的結尾尋找。 其中一個檔案將提供實際的根本例外狀況。 
+* **Horovod 已關閉**：在大部分情況下，如果您遇到「AbortedError： Horovod 已關閉」這個例外狀況，就表示其中一個處理常式的基礎例外狀況導致 Horovod 關機。 MPI 作業中的每個排名在 Azure ML 中都會有其本身的專用記錄檔。 這些記錄檔的名稱為 `70_driver_logs`。 在分散式定型的情況下，記錄檔名稱的結尾會加上 `_rank`，以便區分記錄檔。 若要找出造成 Horovod 關機的確切錯誤，請流覽所有記錄檔，然後 `Traceback` 在 driver_log 檔案的結尾尋找。 其中一個檔案將提供實際的根本例外狀況。 
 
 * **執行或實驗刪除**：您可以使用 [實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) 封存方法來封存實驗，或從 Azure Machine Learning Studio 用戶端的實驗索引標籤中，透過 [封存實驗] 按鈕來封存實驗。 此動作會從清單查詢和 views 中隱藏實驗，但不會將其刪除。
 
     目前不支援永久刪除個別實驗或執行。 如需有關刪除工作區資產的詳細資訊，請參閱 [匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。
 
-* 計量**檔太大**： Azure Machine Learning 具有可從定型執行一次記錄的計量物件大小的內部限制。 如果您在記錄清單值計量時遇到「度量檔太大」錯誤，請嘗試將清單分割成較小的區塊，例如：
+* 計量**檔太大**： Azure Machine Learning 具有可從定型執行一次記錄的計量物件大小的內部限制。 如果在記錄清單值計量時發生「計量文件太大」錯誤，請嘗試將清單分割為較小的區塊，例如：
 
     ```python
     run.log_list("my metric name", my_metric[:N])
     run.log_list("my metric name", my_metric[N:])
     ```
 
-    就內部而言，Azure ML 會將具有相同計量名稱的區塊串連成連續的清單。
+    在內部，Azure ML 會將具有相同計量名稱的區塊串連為連續清單。
 
 ## <a name="automated-machine-learning"></a>自動化機器學習
 
@@ -365,7 +365,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
 * **automl_setup 失敗**： 
-    * 在 Windows 上，從 Anaconda 提示字元執行 automl_setup。 若要安裝 Miniconda，請按一下 [這裡](https://docs.conda.io/en/latest/miniconda.html)。
+    * 在 Windows 上，從 Anaconda 提示字元執行 automl_setup。 使用此連結來 [安裝 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。
     * 執行命令，確定已安裝 conda 64 位，而不是32位 `conda info` 。 `platform` `win-64` 適用于 Windows 或 `osx-64` Mac。
     * 確定已安裝 conda 4.4.10 或更新版本。 您可以使用命令來檢查版本 `conda -V` 。 如果您已安裝先前的版本，您可以使用下列命令來更新它： `conda update conda` 。
     * 轉銷商 `gcc: error trying to exec 'cc1plus'`
@@ -373,17 +373,17 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       * 傳遞新名稱做為 automl_setup 的第一個參數，以建立新的 conda 環境。 使用來查看現有的 conda 環境 `conda env list` ，並將其移除 `conda env remove -n <environmentname>` 。
       
 * **automl_setup_linux. sh 失敗**：如果 Ubuntu linux 上的 automl_setup_linus sh 失敗，並出現下列錯誤： `unable to execute 'gcc': No such file or directory`-
-  1. 請確定已啟用輸出埠53和80。 在 Azure VM 上，您可以在 Azure 入口網站中選取 VM，然後按一下 [網路]，來進行這項操作。
+  1. 請確定已啟用輸出埠53和80。 在 Azure VM 上，您可以從 Azure 入口網站選取 VM，然後按一下 [網路]，來進行這項作業。
   2. 執行命令：`sudo apt-get update`
   3. 執行命令：`sudo apt-get install build-essential --fix-missing`
   4. `automl_setup_linux.sh`重新執行
 
 * **.ipynb 失敗**：
   * 若為本機 conda，請先確定 automl_setup 已成功執行。
-  * 請確定 subscription_id 正確。 選取 [所有服務]，然後選取 [訂用帳戶]，以在 Azure 入口網站中尋找 subscription_id。 字元 "<" 和 ">" 不應包含在 subscription_id 值中。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
+  * 請確定 subscription_id 正確。 選取 [所有服務]，然後選取 [訂用帳戶]，以找出 Azure 入口網站中的 subscription_id。 字元 "<" 和 ">" 不應包含在 subscription_id 值中。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
   * 確定訂用帳戶的參與者或擁有者存取權。
   * 檢查區域是否為其中一個支援的區域： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` 、、、 `australiaeast` `westus2` `southcentralus` 。
-  * 使用 Azure 入口網站來確定存取區域。
+  * 使用 Azure 入口網站確定存取區域。
   
 * 匯**入 AutoMLConfig 失敗**：自動化機器學習版1.0.76 中有套件變更，需要先卸載舊版本，然後再更新為新版本。 如果在 `ImportError: cannot import name AutoMLConfig` v 1.0.76 至 v 1.0.76 或更新版本之前從 SDK 版本升級之後遇到，請執行下列程式來解決錯誤： `pip uninstall azureml-train automl` `pip install azureml-train-auotml` Automl_setup .cmd 腳本會自動執行此工作。 
 
@@ -481,6 +481,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 您可以使用 Azure 角色型存取控制來限制可使用 Azure Machine Learning 執行的動作。 這些限制可以防止使用者介面專案顯示在 Azure Machine Learning studio 中。 例如，如果您被指派無法建立計算實例的角色，則建立計算實例的選項不會出現在 studio 中。
 
 如需詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
+
+## <a name="compute-cluster-wont-resize"></a>計算叢集不會調整大小
+
+如果您的 Azure Machine Learning 計算叢集出現在調整大小 (0-> 0) 節點狀態時，可能是因為 Azure 資源鎖定所造成。
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

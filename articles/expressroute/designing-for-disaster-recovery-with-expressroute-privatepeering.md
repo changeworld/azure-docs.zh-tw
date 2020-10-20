@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
-ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397996"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202408"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 私用對等互連設計災難復原
 
@@ -80,7 +80,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 下圖說明如何使用連接權數來影響 ExpressRoute 路徑選取專案。 預設連接權數為0。 在下列範例中，ExpressRoute 1 的連線權數設定為100。 當 VNet 收到透過多個 ExpressRoute 線路所通告的路由首碼時，VNet 會偏好最高權數的連接。
 
-[![4]][4]
+[![億]][4]
 
 如果 ExpressRoute 1 的兩個連線都停止運作，則 VNet 只會透過 ExpressRoute 2 查看 10.1.11.0/24 路由公告;因此，此失敗狀態會使用待命電路。
 
@@ -118,7 +118,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 您可以使用連線權數來設計案例，以對內部部署網路系結流量的本機對等互連位置 ExpressRoute 進行 Vnet 影響。 若要完成此解決方案，您必須確保對稱的反向流量。 您可以在 BGP 路由器之間的 iBGP 會話使用本機喜好設定 (在內部部署端) 的 ExpressRoute 線路，以優先使用 ExpressRoute 線路。 下圖說明此解決方案。 
 
-[![八角]][8]
+[![8]][8]
 
 ### <a name="scenario-2"></a>案例 2
 
@@ -151,13 +151,8 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 [10 個]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "主動-主動 ExpressRoute 線路解決方案 2"
 
 <!--Link References-->
-[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
+[HA]: ./designing-for-high-availability-with-expressroute.md
 [Enterprise DR]: https://azure.microsoft.com/solutions/architecture/disaster-recovery-enterprise-scale-dr/
 [SMB DR]: https://azure.microsoft.com/solutions/architecture/disaster-recovery-smb-azure-site-recovery/
-[con wgt]: https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection
-[AS Path Pre]: https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending
-
-
-
-
-
+[con wgt]: ./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection
+[AS Path Pre]: ./expressroute-optimize-routing.md#solution-use-as-path-prepending
