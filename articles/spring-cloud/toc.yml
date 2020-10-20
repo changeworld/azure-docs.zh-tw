@@ -94,25 +94,24 @@
     - name: 監視
     - name: 建立角色與權限
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: 分散式追蹤和 App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: 分析記錄和計量
-          href: diagnostic-services.md
-        - name: 即時串流記錄
-          href: spring-cloud-howto-log-streaming.md
-    - name: DevOps 部署
-      items:
-        - name: 使用 Azure DevOps 的 CI/CD
-          href: spring-cloud-howto-cicd.md
-        - name: 使用 GitHub 動作的 CI/CD
-          href: spring-cloud-howto-github-actions.md
-        - name: 在 GitHub Actions 中使用 Key Vault 進行驗證
-          href: spring-cloud-github-actions-key-vault.md
-    - name: 疑難排解
-      items:
-        - name: 疑難排解指南
-          href: spring-cloud-troubleshoot.md
+    - name: 分散式追蹤和 App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: 分析記錄和計量
+      href: diagnostic-services.md
+    - name: 即時串流記錄
+      href: spring-cloud-howto-log-streaming.md
+- name: DevOps 部署
+  items:
+    - name: 使用 Azure DevOps 的 CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: 使用 GitHub 動作的 CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: 在 GitHub Actions 中使用 Key Vault 進行驗證
+      href: spring-cloud-github-actions-key-vault.md
+- name: 疑難排解
+  items:
+    - name: 疑難排解指南
+      href: spring-cloud-troubleshoot.md
 - name: 參考
   items:
     - name: Azure CLI 外掛程式

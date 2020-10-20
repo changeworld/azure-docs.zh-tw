@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552545"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>教學課程：Azure Active Directory 與 N2F - Expense reports 整合
 
@@ -99,11 +99,11 @@ N2F - Expense reports 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，則使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合。
 
-    ![N2F - Expense reports 網域及 URL 單一登入資訊](common/preintegrated.png)
+    ![顯示 [SAML 型登入] 頁面及 [基本 SAML 設定] 的螢幕擷取畫面。](common/preintegrated.png)
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![N2F - Expense reports 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![此螢幕擷取畫面顯示您可以在其中新增 Azure AD 單一登入的 [整合] 頁面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://www.n2f.com/app/`
 
@@ -127,23 +127,23 @@ N2F - Expense reports 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [設定]  ，然後選取下拉式清單中的 [進階設定]  。
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/configure1.png)
+    ![顯示已選取 [進階設定] 的螢幕擷取畫面。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. 選取 [帳戶設定]  索引標籤。
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/configure2.png)
+    ![顯示已選取 [帳戶設定] 的螢幕擷取畫面。](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. 選取 [驗證]  ，然後選取 [+ 新增驗證方法]  索引標籤。
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示您可以在其中新增驗證方法的帳戶設定驗證。](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. 選取 [SAML Microsoft Office 365]  作為驗證方法。
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/configure4.png)
+    ![此螢幕擷取畫面顯示已選取 [SAML Microsoft Office 365] 的驗證方法。](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. 在 [驗證方法]  區段上，執行下列步驟：
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/configure5.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的驗證方法。](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. 在 [Entity ID] \(實體識別碼\)  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
@@ -212,19 +212,19 @@ N2F - Expense reports 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [設定]  ，然後選取下拉式清單中的 [進階設定]  。
 
-    ![N2F-費用的新增使用者](./media/n2f-expensereports-tutorial/configure1.png)
+    ![顯示已選取 [進階設定] 的螢幕擷取畫面。](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. 從左側導覽面板中，選取 [使用者]  索引標籤。
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/user1.png)
+    ![顯示已選取 [使用者] 的螢幕擷取畫面。](./media/n2f-expensereports-tutorial/user1.png)
 
 4. 選取 [+ 新增使用者]  索引標籤。
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/user2.png)
+    ![顯示 [新增使用者] 選項的螢幕擷取畫面。](./media/n2f-expensereports-tutorial/user2.png)
 
 5. 在 [使用者]  區段中，執行下列步驟：
 
-    ![N2F - Expense reports 組態](./media/n2f-expensereports-tutorial/user3.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的區段。](./media/n2f-expensereports-tutorial/user3.png)
 
     a. 在 [Email address] \(電子郵件地址\)  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
 

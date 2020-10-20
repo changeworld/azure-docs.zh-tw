@@ -1,30 +1,30 @@
 ---
-title: 針對 Azure Cosmos DB 更新 SQL (Core) API 資料庫和容器的 RU/秒
-description: 針對 Azure Cosmos DB 更新 SQL (Core) API 資料庫和容器的 RU/秒
+title: Azure Cosmos DB Core (SQL) API 資源輸送量 (RU/秒) 作業的 Azure CLI 指令碼
+description: Azure Cosmos DB Core (SQL) API 資源輸送量 (RU/秒) 作業的 Azure CLI 指令碼
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 23b18d903bfd4e9d723524924e6c31db45c14d62
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 5ad1e40f12609e708a2bb818175146967b7dccf2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429898"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91839447"
 ---
-# <a name="update-rus-for-a-sql-core-api-database-and-container-for-azure-cosmos-db-using-azure-cli"></a>使用 Azure CLI 針對 Azure Cosmos DB 更新 SQL (Core) API 資料庫和容器的 RU/秒
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>使用 Azure CLI 對 Azure Cosmos DB Core (SQL) API 的資料庫或容器執行輸送量 (RU/秒) 作業
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.12.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>範例指令碼
 
-此指令碼會建立具有共用輸送量的 SQL (Core) API 資料庫，以及具有專用輸送量的 SQL (Core) API 容器，然後更新資料庫和容器的輸送量。
+此指令碼會建立具有共用輸送量的 Core (SQL) API 資料庫，以及具有專用輸送量的 Core (SQL) API 容器，然後更新資料庫和容器的輸送量。 接著，指令碼會從標準遷移至自動調整輸送量，然後在遷移之後讀取自動調整輸送量的值。
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Update RU/s for a SQL database and container.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/sql/throughput.sh "Throughput operations for a SQL database and container.")]
 
 ## <a name="clean-up-deployment"></a>清除部署
 
@@ -42,10 +42,12 @@ az group delete --name $resourceGroupName
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 建立 Azure Cosmos DB 帳戶。 |
-| [az cosmosdb sql database create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | 建立 Azure Cosmos SQL (Core) 資料庫。 |
-| [az cosmosdb sql container create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | 建立 Azure Cosmos SQL (Core) 容器。 |
-| [az cosmosdb sql database throughput update](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | 更新 Azure Cosmos SQL (Core) 資料庫的 RU/秒。 |
-| [az cosmosdb sql container throughput update](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | 更新 Azure Cosmos SQL (Core) 容器的 RU/秒。 |
+| [az cosmosdb sql database create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | 建立 Azure Cosmos Core (SQL) 資料庫。 |
+| [az cosmosdb sql container create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | 建立 Azure Cosmos Core (SQL) 容器。 |
+| [az cosmosdb sql database throughput update](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-update) | 更新 Azure Cosmos Core (SQL) 資料庫的輸送量。 |
+| [az cosmosdb sql container throughput update](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-update) | 更新 Azure Cosmos Core (SQL) 容器的輸送量。 |
+| [az cosmosdb sql database throughput migrate](/cli/azure/cosmosdb/sql/database/throughput#az-cosmosdb-sql-database-throughput-migrate) | 遷移 Azure Cosmos Core (SQL) 資料庫的輸送量。 |
+| [az cosmosdb sql container throughput migrate](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-migrate) | 遷移 Azure Cosmos Core (SQL) 容器的輸送量。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟

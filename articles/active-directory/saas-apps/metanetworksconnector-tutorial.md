@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 941218f9a35a0a242612ae1d6230c642129c8259
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528840"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>教學課程：Azure Active Directory 與 Meta Networks Connector 整合
 
@@ -101,7 +101,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Meta Networks Connector 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
@@ -109,7 +109,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Meta Networks Connector 網域及 URL 單一登入資訊](common/both-advanced-urls.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/both-advanced-urls.png)
 
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
@@ -120,7 +120,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
 6. Meta Networks Connector 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。 
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
     
 7. 除了以上屬性外，Meta Networks Connector 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
     
@@ -134,9 +134,9 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示使用者宣告的螢幕擷取畫面，其中具有新增新宣告的選項。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![顯示管理使用者宣告對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -173,19 +173,19 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
     
 2. 移至 [系統管理員]  ，然後選取 [設定]  。
     
-    ![設定單一登入](./media/metanetworksconnector-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示從 [系統管理] 功能表選取的設定。](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. 確定 [記錄網際網路流量]  和 [強制執行 VPN MFA]  已設定為關閉。
     
-    ![設定單一登入](./media/metanetworksconnector-tutorial/configure1.png)
+    ![顯示關閉這些設定的螢幕擷取畫面。](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. 移至 [系統管理員]  ，然後選取 [SAML]  。
     
-    ![設定單一登入](./media/metanetworksconnector-tutorial/configure4.png)
+    ![此螢幕擷取畫面顯示從 [系統管理] 功能表選取的 SAML。](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. 在 [詳細資料]  頁面上，執行下列步驟：
     
-    ![設定單一登入](./media/metanetworksconnector-tutorial/configure2.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的 [詳細資料] 區段。](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. 複製 [SSO URL] 值並將它貼至 [Meta Networks Connector 網域和 URL] 區段的 [登入 URL] 文字方塊。
     
@@ -197,7 +197,7 @@ Meta Networks Connector 與 Azure AD 整合提供下列優點：
     
 6. 在 [一般]  索引標籤上，執行下列步驟：
 
-    ![設定單一登入](./media/metanetworksconnector-tutorial/configure5.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的 [一般] 區段。](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. 在 [識別提供者單一登入 URL]  中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 

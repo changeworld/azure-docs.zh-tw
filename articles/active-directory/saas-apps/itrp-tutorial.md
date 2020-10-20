@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552785"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教學課程：Azure Active Directory 與 ITRP 整合
 
@@ -94,7 +94,7 @@ ms.locfileid: "88552785"
 
 3. 在 [以 SAML 設定單一登入]  頁面上選取 [編輯]  圖示，以開啟 [基本 SAML 組態]  對話方塊：
 
-    ![編輯圖示](common/edit-urls.png)
+    ![此螢幕擷取畫面顯示已選取 [編輯] 圖示的 [以 SAML 設定單一登入] 頁面。](common/edit-urls.png)
 
 4. 在 [基本 SAML 設定]  對話方塊中，採取下列步驟。
 
@@ -113,7 +113,7 @@ ms.locfileid: "88552785"
 
 5. 在 [SAML 簽署憑證]  區段中，選取 [編輯]  圖示以開啟 [SAML 簽署憑證]  對話方塊：
 
-    ![編輯圖示](common/edit-certificate.png)
+    ![此螢幕擷取畫面顯示已選取 [編輯] 圖示的 [SAML 簽署憑證] 頁面。](common/edit-certificate.png)
 
 6. 在 [SAML 簽署憑證]  對話方塊中，複製 [指紋]  值並加以儲存：
 
@@ -143,9 +143,9 @@ ms.locfileid: "88552785"
 
 1. 在 [單一登入]  設定區段中，採取下列步驟。
 
-    ![[單一登入] 區段](./media/itrp-tutorial/ic775572.png "[單一登入] 區段")
+    ![此螢幕擷取畫面顯示已選取 [已啟用] 的 [單一登入] 區段。](./media/itrp-tutorial/ic775572.png "[單一登入] 區段")
 
-    ![[單一登入] 區段](./media/itrp-tutorial/ic775573.png "[單一登入] 區段")
+    ![顯示 [單一登入] 區段的螢幕擷取畫面，您可以在其中新增此步驟所述的資訊。](./media/itrp-tutorial/ic775573.png "[單一登入] 區段")
 
     1. 選取 [啟用]  。
 

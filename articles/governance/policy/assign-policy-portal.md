@@ -1,14 +1,14 @@
 ---
 title: 使用入口網站進行新原則指派
 description: 在本快速入門中，您會使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
-ms.openlocfilehash: 956ec05b5a7fac862eeea86cf96a2db37f1c0536
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 51ca2f9e5d3f3df9304804ba3da2c5c5ceb0c19b
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651962"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875303"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>建立原則指派以識別不符合規範的資源。
 
@@ -58,7 +58,7 @@ ms.locfileid: "89651962"
 1. [指派名稱]**** 會自動填入您選取的原則名稱，但您可加以變更。 在此範例中，請保留「稽核未使用受控磁碟的 VM」__。 您也可以新增選擇性的 [描述]****。 描述會提供有關此原則指派的詳細資料。
    **指派者**將根據登入者自動填入。 這是選擇性欄位，因此可以輸入自訂值。
 
-1. 讓 [建立受控識別]**** 保持未選取狀態。 但是，當要原則或計畫包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 效果的原則時，_必須_核取此方塊。 由於本快速入門所使用的原則並未包含該效果，因此請將其保留為空白。 如需詳細資訊，請參閱[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)和[補救安全性的運作方式](./how-to/remediate-resources.md#how-remediation-security-works)。
+1. 讓 [建立受控識別]**** 保持未選取狀態。 但是，當原則或計畫包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 或 [modify](./concepts/effects.md#modify) 效果的原則時，「必須」勾選此方塊。 由於本快速入門所使用的原則並未包含該效果，因此請將其保留為空白。 如需詳細資訊，請參閱[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)和[補救安全性的運作方式](./how-to/remediate-resources.md#how-remediation-security-works)。
 
 1. 選取 [指派]****。
 
@@ -74,15 +74,15 @@ ms.locfileid: "89651962"
 
 根據現有資源評估條件，而且結果為 true 時，這些資源都會標示為不符合原則規範。 下表顯示不同的原則效果如何與結果合規性狀態的條件評估搭配使用。 雖然您在 Azure 入口網站中沒有看到評估邏輯，但是會顯示合規性狀態結果。 合規性狀態結果是符合規範和不符合規範其中之一。
 
-| **資源狀態** | **效果** | **原則評估** | **合規性狀態** |
+| 資源狀態 | 效果 | 原則評估 | 相容性狀態 |
 | --- | --- | --- | --- |
-| Exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合規範 |
-| Exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 相容 |
-| 新增 | 稽核、AuditIfNotExist\* | True | 不符合規範 |
-| 新增 | 稽核、AuditIfNotExist\* | False | 相容 |
+| 新功能或更新功能 | Audit、Modify、AuditIfNotExist | True | 不符合規範 |
+| 新功能或更新功能 | Audit、Modify、AuditIfNotExist | False | 相容 |
+| Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | True | 不符合規範 |
+| Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | False | 相容 |
 
-\* Append、DeployIfNotExist 和 AuditIfNotExist 效果需要 IF 陳述式為 TRUE。
-這些效果也需要存在條件為 FALSE，以呈現不符合規範。 若為 TRUE，IF 條件會觸發相關資源的存在條件評估。
+> [!NOTE]
+> DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 陳述式為 TRUE 且存在條件為 FALSE，才不符合規範。 若為 TRUE，IF 條件會觸發相關資源的存在條件評估。
 
 ## <a name="clean-up-resources"></a>清除資源
 

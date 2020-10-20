@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553903"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教學課程：Azure Active Directory 與 Periscope Data 整合
 
@@ -123,7 +123,7 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 
 2. 開啟左下角的齒輪功能表，然後開啟 [計費]   > [安全性]  功能表，並執行下列步驟。 只有系統管理員可以存取這些設定。
 
-    ![Periscope Data 設定資訊](./media/periscope-data-tutorial/configure01.png)
+    ![此螢幕擷取畫面顯示已選取設定的 [安全性] 對話方塊。](./media/periscope-data-tutorial/configure01.png)
 
     a. 從步驟 #5 **SAML 簽署憑證**中複製**應用程式同盟中繼資料 URL**，並在瀏覽器中將其開啟。 這將會開啟 XML 文件。
 
@@ -143,7 +143,7 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 
     i. 最後，按一下 [儲存]  ，然後輸入 **Logout** 來**確認** SSO 設定的變更。
 
-    ![Periscope Data 設定資訊](./media/periscope-data-tutorial/configure02.png)
+    ![顯示 [更新 S S O 設定] 對話方塊的螢幕擷取畫面，其中已在文字方塊中輸入 "logout"，並已選取 [確認] 按鈕。](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -206,7 +206,7 @@ Periscope Data 與 Azure AD 整合提供下列優點：
 
 2. 按一下功能表左下角的 [設定]  圖示，然後瀏覽至 [權限]  。
 
-    ![Periscope Data 設定資訊](./media/periscope-data-tutorial/configure03.png)
+    ![顯示 [設定] 功能表的螢幕擷取畫面，其中已選取 [權限]。](./media/periscope-data-tutorial/configure03.png)
 
 3. 按一下 [新增使用者]  ，然後執行下列步驟：
 

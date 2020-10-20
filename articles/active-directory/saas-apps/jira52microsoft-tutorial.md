@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547523"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教學課程：Azure Active Directory 與 JIRA SAML SSO by Microsoft (V5.2) 整合
 
@@ -146,23 +146,23 @@ JIRA SAML SSO by Microsoft (V5.2) 與 Azure AD 整合提供下列優點：
 
 2. 將滑鼠停留在 cog 上，然後按一下 [附加元件]  。
 
-    ![設定單一登入](./media/jira52microsoft-tutorial/addon1.png)
+    ![此螢幕擷取畫面顯示已從 [設定] 功能表中選取附加元件。](./media/jira52microsoft-tutorial/addon1.png)
 
 3. 在 [附加元件] 索引標籤區段下，按一下 [管理附加元件]  。
 
-    ![設定單一登入](./media/jira52microsoft-tutorial/addon7.png)
+    ![此螢幕擷取畫面顯示在 [附加元件] 索引標籤中選取的 [管理附加元件]。](./media/jira52microsoft-tutorial/addon7.png)
 
 4. 從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=56521)下載外掛程式。 使用 [上傳附加元件]  功能表來手動上傳 Microsoft 所提供的外掛程式。 外掛程式下載受到 [Microsoft 服務合約](https://www.microsoft.com/servicesagreement/)的規範。
 
-    ![設定單一登入](./media/jira52microsoft-tutorial/addon12.png)
+    ![此螢幕擷取畫面顯示 [管理附加元件] 並指出上傳附加元件的連結。](./media/jira52microsoft-tutorial/addon12.png)
 
 5. 安裝外掛程式之後，它會出現在 [使用者安裝的附加元件]  區段中。 按一下 [設定]  來設定新的外掛程式。
 
-    ![設定單一登入](./media/jira52microsoft-tutorial/addon13.png)
+    ![此螢幕擷取畫面顯示已選取 [設定] 的 [適用於 Jira 的 Azure AD SAML 單一登入] 區段。](./media/jira52microsoft-tutorial/addon13.png)
 
 6. 在設定頁面上執行下列步驟：
 
-    ![設定單一登入](./media/jira52microsoft-tutorial/addon52.png)
+    ![此螢幕擷取畫面顯示 Microsoft Jira SSO 連接器的設定頁面。](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > 請確定只有一個對應至應用程式的憑證，解析中繼資料時就不會發生錯誤。 如果有多個憑證，則解析中繼資料時，管理員會遇到錯誤。
@@ -251,19 +251,19 @@ JIRA SAML SSO by Microsoft (V5.2) 與 Azure AD 整合提供下列優點：
 
 2. 將滑鼠停留在 cog 上，然後按一下 [使用者管理]  。
 
-    ![新增員工](./media/jira52microsoft-tutorial/user1.png)
+    ![顯示已從 [設定] 功能表選取 [使用者管理] 的螢幕擷取畫面。](./media/jira52microsoft-tutorial/user1.png)
 
 3. 系統會將您重新導向至 [系統管理員存取] 頁面，以輸入**密碼**，然後按一下 [確認]  按鈕。
 
-    ![新增員工](./media/jira52microsoft-tutorial/user2.png)
+    ![此螢幕擷取畫面顯示您在其中輸入認證的 [系統管理員] 存取頁面。](./media/jira52microsoft-tutorial/user2.png)
 
 4. 在 [使用者管理]  索引標籤區段下，按一下 [建立使用者]  。
 
-    ![新增員工](./media/jira52microsoft-tutorial/user3.png) 
+    ![此螢幕擷取畫面顯示您可以在其中建立使用者的 [使用者管理] 索引標籤。](./media/jira52microsoft-tutorial/user3.png) 
 
 5. 在 [建立新的使用者]  對話方塊中，執行下列步驟：
 
-    ![新增員工](./media/jira52microsoft-tutorial/user4.png)
+    ![此螢幕擷取畫面顯示您可以在此步驟中輸入資訊的 [建立新使用者] 對話方塊。](./media/jira52microsoft-tutorial/user4.png)
 
     a. 在 [電子郵件地址]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件地址。
 

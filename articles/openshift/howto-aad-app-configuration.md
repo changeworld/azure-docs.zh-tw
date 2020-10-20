@@ -6,14 +6,20 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee8613d0300a941f80577c98be106173d5d3ced1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470080"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220698"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>適用于 Azure Red Hat OpenShift 的 Azure Active Directory 整合
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 將于2022年6月30日淘汰。 支援建立新的 Azure Red Hat OpenShift 3.11 叢集會繼續到2020年11月30日。 淘汰之後，剩餘的 Azure Red Hat OpenShift 3.11 叢集將會關閉以防止安全性弱點。
+> 
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](tutorial-create-cluster.md)叢集。
+> 如果您有特定問題， [請洽詢我們](mailto:arofeedback@microsoft.com)。
 
 如果您尚未建立 Azure Active Directory (Azure AD) 租使用者，請遵循 [建立 Azure Red Hat OpenShift 的 Azure AD 租](howto-create-tenant.md) 使用者中的指示，再繼續進行這些指示。
 

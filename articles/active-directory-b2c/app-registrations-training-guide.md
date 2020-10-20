@@ -11,18 +11,18 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433903"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214918"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新應用程式註冊體驗
 
 Azure Active Directory B2C (Azure AD B2C) 的新 **[應用程式註冊](https://aka.ms/b2cappregistrations)** 體驗現已正式推出。 如果您更熟悉用來註冊應用程式的 **應用程式** 體驗 Azure AD B2C，在此稱為「舊版體驗」，本指南將協助您開始使用新的體驗。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 先前，您必須使用舊版體驗，與應用程式的其餘部分分開管理 Azure AD B2C 取用者面向應用程式。 這表示不同的應用程式在 Azure 中的不同位置之間的建立體驗。
 
 新體驗會顯示所有 Azure AD B2C 應用程式註冊，並在單一位置 Azure AD 應用程式註冊，並提供一致的方式來管理它們。 從建立客戶面向的應用程式，到以 Microsoft Graph 的資源管理許可權來管理應用程式，您只需要學習一種方法來進行工作。
@@ -53,13 +53,13 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 ## <a name="new-supported-account-types"></a>新支援的帳戶類型
 
 在新的體驗中，您可以從下列選項中選取支援帳戶類型：
-- 僅限此組織目錄中的帳戶。
-- 任何組織目錄中的帳戶 (任何 Azure AD 目錄–多租使用者) 。
-- 任何組織目錄或任何身分識別提供者中的帳戶。 用於驗證具有 Azure AD B2C 的使用者。
+- 僅此組織目錄中的帳戶
+- 任何組織目錄中的帳戶 (任何 Azure AD 目錄–多租使用者) 
+- 任何身分識別提供者或組織目錄 (中的帳戶，用來驗證使用者流程的使用者) 
 
 若要瞭解不同的帳戶類型，請選取 [ **協助我** 在建立體驗中選擇]。
 
-在舊版體驗中，應用程式一律會建立為面向客戶的應用程式。 針對這些應用程式，帳戶類型會設定為 **任何組織目錄或任何身分識別提供者中的帳戶。用於驗證具有 Azure AD B2C 的使用者**。
+在舊版體驗中，應用程式一律會建立為面向客戶的應用程式。 針對這些應用程式，帳戶類型會設定為 **任何身分識別提供者或組織目錄中的帳戶， (用於驗證具有使用者流程) 的使用者 **。
 > [!NOTE]
 > 需要此選項才能執行 Azure AD B2C 使用者流程，以驗證此應用程式的使用者。 瞭解 [如何註冊應用程式以用於使用者流程。](tutorial-register-applications.md)
 
@@ -96,13 +96,12 @@ Azure AD B2C 的應用程式註冊體驗是以任何 Azure AD 租使用者的一
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C 租使用者中不適用的功能
 下列 Azure AD 應用程式註冊功能不適用於 Azure AD B2C 租使用者或可供使用：
-- **角色和系統管理員** -這需要目前無法供 Azure AD B2C 使用的 Azure AD Premium P1 或 P2 授權。
+- **角色和系統管理員** -目前不適用於 Azure AD B2C。
 - **商標** -UI/UX 自訂是在 **公司商標** 體驗中設定，或做為使用者流程的一部分。 瞭解如何 [在 Azure Active Directory B2C 中自訂使用者介面](customize-ui-overview.md)。
 - **發行者網域驗證** -您的應用程式已在 *onmicrosoft.com*上註冊，這不是經過驗證的網域。 此外，「發行者」網域主要是用來授與使用者同意，這不適用於使用者驗證 Azure AD B2C 應用程式。 [深入瞭解發行者網域](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain)。
 - **權杖** 設定-權杖會設定為使用者流程的一部分，而不是應用程式的一部分。
 - Azure AD B2C 的租使用者目前無法使用 **快速入門** 體驗。
-- Azure AD B2C 租使用者目前無法使用 [ **整合助理** ] 分頁。
-
+<!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>限制
 新的體驗具有下列限制：

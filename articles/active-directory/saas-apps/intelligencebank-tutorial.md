@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535572"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850539"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 IntelligenceBank 整合
 
@@ -137,11 +137,11 @@ ms.locfileid: "88535572"
 
 1. 按一下 [驗證器]，然後按一下 [新增]
 
-    ![IntelligenceBank 設定](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![此螢幕擷取畫面顯示已選取的 [系統管理員] 索引標籤和 [新增] 圖示。](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. 執行下列步驟：
 
-    ![IntelligenceBank 設定](./media/intelligencebank-tutorial/urls.PNG)
+    ![此螢幕擷取畫面顯示在此步驟中用來輸入資訊的欄位。](./media/intelligencebank-tutorial/urls.PNG)
 
     a. 在 [名稱] 文字方塊中輸入名稱，例如 `azureadsso`。
 
@@ -165,11 +165,11 @@ ms.locfileid: "88535572"
 
 1. 移至 [系統管理員] -> [使用者]，並選取 [新增使用者] 圖示來新增**使用者**。
 
-    ![IntelligenceBank 設定](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![此螢幕擷取畫面顯示已在 [使用者] 索引標籤中選取的使用者圖示。](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. 依據您的組織需求填入必要欄位，然後按一下 [儲存]。
 
-    ![IntelligenceBank 設定](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![顯示 [新增使用者] 頁面的螢幕擷取畫面，您會在其中輸入使用者資訊。](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>測試 SSO 
 

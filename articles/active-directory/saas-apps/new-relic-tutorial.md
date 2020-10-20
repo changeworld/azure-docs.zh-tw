@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554453"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic (依帳戶) 整合
 
@@ -134,7 +134,7 @@ ms.locfileid: "88554453"
 
 2. 在頂端的功能表中，按一下 [帳戶設定]  。
    
-    ![帳戶設定](./media/new-relic-tutorial/ic797036.png "帳戶設定")
+    ![此螢幕擷取畫面顯示已選取 [帳戶設定] 的 [歡迎使用] 頁面。](./media/new-relic-tutorial/ic797036.png "帳戶設定")
 
 3. 按一下 [安全性及驗證]  索引標籤，然後再按一下 [單一登入]  索引標籤。
    
@@ -158,11 +158,11 @@ ms.locfileid: "88554453"
 
 2. 在頂端的功能表中，按一下 [帳戶設定]  。
    
-    ![帳戶設定](./media/new-relic-tutorial/ic797040.png "帳戶設定")
+    ![顯示從 [歡迎使用] 頁面選取 [帳戶設定] 的螢幕擷取畫面。](./media/new-relic-tutorial/ic797040.png "帳戶設定")
 
 3. 在左邊的**帳戶**窗格中按一下 [摘要]  ，然後按一下 [新增使用者]  。
    
-    ![帳戶設定](./media/new-relic-tutorial/ic797041.png "帳戶設定")
+    ![此螢幕擷取畫面顯示您可以在其中選取 [新增使用者] 的 [摘要] 窗格。](./media/new-relic-tutorial/ic797041.png "帳戶設定")
 
 4. 在 [作用中使用者]  對話方塊上，執行下列步驟：
    

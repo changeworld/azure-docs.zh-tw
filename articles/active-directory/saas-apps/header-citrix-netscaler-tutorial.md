@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540572"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944184"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>教學課程：Azure Active Directory 單一登入與 Citrix NetScaler (標頭型驗證) 整合
 
@@ -392,7 +392,7 @@ ms.locfileid: "88540572"
 
 1. 在 [負載平衡虛擬伺服器]  窗格的 [進階設定]  底下，選取 [原則]  。 針對 NetScaler 執行個體設定的所有原則都會出現在清單中。
  
-    ![Citrix NetScaler 設定 - 負載平衡虛擬伺服器窗格](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![顯示 [設定] 索引標籤的螢幕擷取畫面，其中已醒目提示 [名稱]、[動作] 和 [運算式] 欄位，並已選取 [建立] 按鈕。](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Citrix NetScaler 設定 - 負載平衡虛擬伺服器窗格](./media/header-citrix-netscaler-tutorial/header06.png)
 

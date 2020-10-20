@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037837"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873297"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Intel NUC)
 
@@ -35,7 +35,7 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
 
 ## <a name="prerequisites"></a>先決條件
 
-* 開始之前，您應該先完成先前的[在 Azure IoT Central 中建立即時影片分析應用程式](./tutorial-video-analytics-create-app.md)教學課程。
+* 開始之前，您應該先完成先前的[在 Azure IoT Central 中建立即時影片分析應用程式 (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) 或[在 Azure IoT Central 中建立影片分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) 教學課程。
 * 執行 Linux 的裝置，且可執行 Docker 容器並具有足夠處理能力來執行影片分析，例如 Intel NUC。
 * [裝置上已安裝並執行 IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)。
 * 若要從您的 Windows 電腦連線到 IoT Edge 裝置，您需要 [PuTTY SSH 用戶端](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)或同等的公用程式。
@@ -57,7 +57,7 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
     sudo iotedge --version
     ```
 
-1. 使用下列命令建立部署搭配所需權限使用的的資料夾：
+1. 使用下列命令建立部署搭配所需權限使用的資料夾：
 
     ```bash
     sudo mkdir -p /data/storage

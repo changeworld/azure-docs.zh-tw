@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 入口網站快速建立 Kubernetes 叢集、部署應用程式，以及監視 Azure Kubernetes Service (AKS) 的效能。
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2331f2a9dc4ca0e94b251a03e7917547f360af4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459790"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850429"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -37,15 +37,15 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 3. 在 [基本資料] 頁面上設定下列選項：
     - **專案詳細資料**：選取 Azure [訂用帳戶]，然後選取或建立 Azure [資源群組]，例如 *myResourceGroup*。
-    - **叢集詳細資料**：輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster。 選取 AKS 叢集的 [區域]、[Kubernetes 版本] 及 [DNS 名稱前置詞]。
-    - **主要節點集區**：選取 AKS 節點的 VM [節點大小]。 VM 大小「無法」在 AKS 叢集部署完畢後變更。 
+    - **叢集詳細資料**：輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster。 選取 AKS 叢集的 [區域] 和 [Kubernetes 版本]。
+    - **主要節點集區**：選取 AKS 節點的 VM [節點大小]。 VM 大小「無法」在 AKS 叢集部署完畢後變更。
             - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數] 設為「1」。 節點計數*可以*在叢集部署完畢後調整。
     
     ![建立 AKS 叢集 - 提供基本資訊](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    完成時，選取 [下一步:調整]。
+    完成時，選取 [下一步:節點集區]。
 
-4. 在 [調整] 頁面上，保留預設選項。 按一下畫面底部的 [下一步:驗證]。
+4. 在 [節點集區] 頁面上，保留預設選項。 按一下畫面底部的 [下一步:驗證]。
     > [!CAUTION]
     > 建立新的 AAD 服務主體可能需要數分鐘的時間才能傳播並變成可用，導致 Azure 入口網站中找不到服務主體的錯誤和驗證失敗。 如果您遇到這種情況，請造訪[這裡](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)以取得緩和措施。
 

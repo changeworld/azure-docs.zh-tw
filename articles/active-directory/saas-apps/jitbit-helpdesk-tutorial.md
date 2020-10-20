@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5d4900713cd8d96180bf74b300a738a8b676421e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bd47a528b6c9aef354df8e52da63409002f6fb32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547149"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教學課程：Azure Active Directory 與 Jitbit Helpdesk 整合
 
@@ -137,7 +137,7 @@ Jitbit Helpdesk 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [一般設定]  。
 
-    ![使用者、公司和權限](./media/jitbit-helpdesk-tutorial/ic777680.png "使用者、公司和權限")
+    ![顯示 [一般設定] 連結的螢幕擷取畫面。](./media/jitbit-helpdesk-tutorial/ic777680.png "使用者、公司和權限")
 
 1. 在 [驗證設定]  組態區段中，執行下列步驟：
 

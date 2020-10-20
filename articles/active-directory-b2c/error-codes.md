@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664846"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215428"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>錯誤碼： Azure Active Directory B2C
 
@@ -61,6 +61,7 @@ Azure Active Directory B2C 服務可能會傳回下列錯誤。
 | `AADB2C90055` | {0}要求中提供的範圍 ' ' 必須指定資源，例如 ' https://example.com/calendar.read '。 |
 | `AADB2C90057` | 提供的應用程式未設定為允許 OAuth 隱含流程。 |
 | `AADB2C90058` | 提供的應用程式未設定為允許公開用戶端。 |
+| `AADB2C99059` | 提供的要求必須顯示 code_challenge。 使用授權碼流程的單一頁面應用程式所需。| 
 | `AADB2C90067` | Post 登出重新導向 URI ' {0} ' 的格式無效。 指定以 HTTPs 為基礎的 URL （例如 ' '）， https://example.com/return 或針對原生用戶端使用 IETF native CLIENT URI ' urn： ietf： wg： oauth：2.0： oob '。 |
 | `AADB2C90068` | 提供的應用程式識別碼 ' {0} ' 對此服務無效。 請使用透過 B2C 入口網站建立的應用程式，然後再試一次。 |
 | `AADB2C90075` | {0}在步驟 ' ' 中指定的宣告交換 ' ' {1} 傳回 HTTP 錯誤回應，代碼為 ' {2} '，原因為 ' {3} '。 |

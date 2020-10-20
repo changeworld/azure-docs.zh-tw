@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c1b8874d8813d6200c915778841c26e77b02e434
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 764f01fa5966a6620612405b4df37fc5ff44f33a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554846"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857889"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>教學課程：Azure Active Directory 與 Marketo 整合
 
@@ -130,15 +130,15 @@ Marketo 與 Azure AD 整合提供下列優點：
    
     b. 按一下頂端瀏覽窗格中的 [管理]  按鈕。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![顯示在瀏覽窗格中選取 [管理] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
     c. 瀏覽至 [整合] 功能表，然後按一下 [Munchkin]  連結。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_11.png)
+    ![顯示從 [整合] 中選取 [Munchkin] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_11.png)
    
     d. 複製螢幕上顯示的 Munchkin 識別碼，完成 Azure AD 設定精靈中的回覆 URL。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_12.png) 
+    ![此螢幕擷取畫面顯示您可以在其中複製帳戶識別碼的 [Munchkin] 頁面。](./media/marketo-tutorial/tutorial_marketo_12.png) 
 
 2. 若要設定應用程式中的 SSO，請遵循下列步驟︰
    
@@ -146,15 +146,15 @@ Marketo 與 Azure AD 整合提供下列優點：
    
     b. 按一下頂端瀏覽窗格中的 [管理]  按鈕。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![顯示在瀏覽窗格中選取 [管理] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
     c. 瀏覽至 [整合] 功能表，然後按一下 [單一登入]  。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_07.png) 
+    ![顯示從 [整合] 選取 [單一登入] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_07.png) 
    
     d. 若要啟用 SAML 設定，按一下 [編輯]  按鈕。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_08.png) 
+    ![此螢幕擷取畫面顯示您可以在其中選取 [編輯] 的 SSO 設定。](./media/marketo-tutorial/tutorial_marketo_08.png) 
    
     e. **已啟用**單一登入設定。
    
@@ -164,7 +164,7 @@ Marketo 與 Azure AD 整合提供下列優點：
    
     h. 選取 [使用者識別碼位置] 做為 [名稱識別碼元素]  。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_09.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [編輯 SAML 設定]。](./media/marketo-tutorial/tutorial_marketo_09.png)
    
     > [!NOTE]
     > 如果您的使用者識別碼不是 UPN 值，則至 [屬性] 索引標籤中變更其值。
@@ -179,7 +179,7 @@ Marketo 與 Azure AD 整合提供下列優點：
    
     m. 在 [錯誤 URL]  中，複製您的 **Marketo 執行個體 URL**，並按一下 [儲存]  按鈕以儲存設定。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_10.png)
+    ![顯示 [編輯重新導向頁面] 對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](./media/marketo-tutorial/tutorial_marketo_10.png)
 
 3. 若要啟用使用者的 SSO，完成下列動作：
    
@@ -187,15 +187,15 @@ Marketo 與 Azure AD 整合提供下列優點：
    
     b. 按一下頂端瀏覽窗格中的 [管理]  按鈕。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![顯示在瀏覽窗格中選取 [管理] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
     c. 瀏覽至 [安全性]  功能表，然後按一下 [登入設定]  。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_13.png)
+    ![顯示從 [安全性] 選取 [登入設定] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_13.png)
    
     d. 勾選 [需要 SSO]  選項，並 [儲存]  設定。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_14.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [需要 SSO] 的 [密碼強度] 設定。](./media/marketo-tutorial/tutorial_marketo_14.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -256,21 +256,21 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 2. 按一下頂端瀏覽窗格中的 [管理]  按鈕。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_06.png) 
+    ![顯示在瀏覽窗格中選取 [管理] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_06.png) 
 
 3. 瀏覽至 [安全性]  功能表，然後按一下 [使用者與角色] 
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_19.png)  
+    ![顯示從 [安全性] 選取 [使用者與角色] 的螢幕擷取畫面。](./media/marketo-tutorial/tutorial_marketo_19.png)  
 
 4. 按一下 [使用者] 索引標籤上的 [邀請新使用者]  連結
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_15.png) 
+    ![此螢幕擷取畫面顯示 [使用者] 索引標籤中的 [邀請新使用者]。](./media/marketo-tutorial/tutorial_marketo_15.png) 
 
 5. 在 [邀請新使用者] 精靈中填寫下列資訊。
    
     a. 在 [電子郵件]  文字方塊中輸入使用者的電子郵件地址。
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_16.png)
+    ![此螢幕擷取畫面顯示 [邀請新使用者] 精靈的第一個步驟，您可以在其中輸入使用者資訊。](./media/marketo-tutorial/tutorial_marketo_16.png)
    
     b. 在 [名字]  文字方塊中輸入名字。
    
@@ -280,10 +280,10 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 6. 在 [權限]  索引標籤中選取 [userRoles]  ，然後按一下 [下一步] 
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_17.png)
+    ![此螢幕擷取畫面顯示 [邀請新使用者] 精靈的第一個步驟，您可以在其中輸入權限。](./media/marketo-tutorial/tutorial_marketo_17.png)
 7. 按一下 [傳送]  按鈕，傳送使用者邀請
    
-    ![設定單一登入](./media/marketo-tutorial/tutorial_marketo_18.png)
+    ![此螢幕擷取畫面顯示 [邀請新使用者] 精靈的第一個步驟，您可以在其中輸入您的訊息。](./media/marketo-tutorial/tutorial_marketo_18.png)
 
 8. 使用者會收到電子郵件通知，他必須按一下連結，並變更密碼才能啟動帳戶。 
 

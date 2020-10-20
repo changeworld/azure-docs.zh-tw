@@ -1,30 +1,30 @@
 ---
-title: 針對 Azure Cosmos DB 更新 Cassandr Keyspace 和資料表的 RU/秒
-description: 針對 Azure Cosmos DB 更新 Cassandr Keyspace 和資料表的 RU/秒
+title: Azure Cosmos DB Cassandra API 資源輸送量 (RU/秒) 作業的 Azure CLI 指令碼
+description: Azure Cosmos DB Cassandra API 資源輸送量 (RU/秒) 作業的 Azure CLI 指令碼
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: c0026202e8f110123a7360a5fda521947ed8e9ee
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.date: 10/07/2020
+ms.openlocfilehash: 09ea092afcfee6223330b1ad887d73ea2f78db59
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803614"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843017"
 ---
-# <a name="update-rus-for-a-cassandra-keyspace-and-table-using-azure-cli"></a>使用 Azure CLI 更新 Cassandra Keyspace 和資料表的 RU/秒
+# <a name="throughput-rus-operations-with-azure-cli-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>使用 Azure CLI 對 Azure Cosmos DB - Cassandra API 的 keyspace 或資料表執行輸送量 (RU/秒) 作業
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.12.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>範例指令碼
 
-此指令碼會建立具有共用輸送量的 Gremlin Keyspace，以及具有專用輸送量的 Gremlin 資料表，然後更新 Keyspace 和資料表的輸送量。
+此指令碼會建立具有共用輸送量的 Gremlin Keyspace，以及具有專用輸送量的 Gremlin 資料表，然後更新 Keyspace 和資料表的輸送量。 接著，指令碼會從標準遷移至自動調整輸送量，然後在遷移之後讀取自動調整輸送量的值。
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/cassandra/throughput.sh "Update RU/s for Cassandra keyspace and table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/cassandra/throughput.sh "Throughput operations for Cassandra keyspace and table.")]
 
 ## <a name="clean-up-deployment"></a>清除部署
 
@@ -44,8 +44,10 @@ az group delete --name $resourceGroupName
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 建立 Azure Cosmos DB 帳戶。 |
 | [az cosmosdb cassandra keyspace create](/cli/azure/cosmosdb/cassandra/keyspace#az-cosmosdb-cassandra-keyspace-create) | 建立 Azure Cosmos Cassandra Keyspace。 |
 | [az cosmosdb cassandra table create](/cli/azure/cosmosdb/cassandra/table#az-cosmosdb-cassandra-table-create) | 建立 Azure Cosmos Cassandra 資料表。 |
-| [az cosmosdb cassandra keyspace throughput update](/cli/azure/cosmosdb/cassandra/keyspace/throughput?view=azure-cli-latest&preserve-view=true#az-cosmosdb-cassandra-keyspace-throughput-update) | 更新 Azure Cosmos Cassandra Keyspace 的 RU/秒。 |
+| [az cosmosdb cassandra keyspace throughput update](/cli/azure/cosmosdb/cassandra/keyspace/throughput#az-cosmosdb-cassandra-keyspace-throughput-update) | 更新 Azure Cosmos Cassandra Keyspace 的 RU/秒。 |
 | [az cosmosdb cassandra table throughput update](/cli/azure/cosmosdb/cassandra/table/throughput#az-cosmosdb-cassandra-table-throughput-update) | 更新 Azure Cosmos Cassandra 資料表的 RU/秒。 |
+| [az cosmosdb cassandra keyspace throughput migrate](/cli/azure/cosmosdb/cassandra/keyspace/throughput#az_cosmosdb_cassandra_keyspace_throughput_migrate) | 遷移 Azure Cosmos Cassandra keyspace 的輸送量。 |
+| [az cosmosdb cassandra table throughput migrate](/cli/azure/cosmosdb/cassandra/table/throughput#az_cosmosdb_cassandra_table_throughput_migrate) | 遷移 Azure Cosmos Cassandra 資料表的輸送量。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟

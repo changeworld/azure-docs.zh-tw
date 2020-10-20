@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 93b418a2bc4e1b03370b1bb86bd7da95255db0b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fb8374802e7ec2596dc5f65a2acaf739b12dc164
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 People 整合
 
@@ -142,11 +142,11 @@ ms.locfileid: "88552383"
    
 4. 在左側功能表中，按一下 [設定]  。
 
-    ![設定單一登入](./media/people-tutorial/tutorial_people_001.png)
+    ![顯示左側功能表的螢幕擷取畫面，其中已選取 [設定]。](./media/people-tutorial/tutorial_people_001.png)
 
 5. 按一下 [公司]  。
 
-    ![設定單一登入](./media/people-tutorial/tutorial_people_002.png)
+    ![顯示已從 [設定] 功能表中選取 [公司] 的螢幕擷取畫面。](./media/people-tutorial/tutorial_people_002.png)
 
 6. 在 [上傳單衣登入 SAML 中繼資料檔案]  上，按一下 [瀏覽]  上傳下載的中繼資料檔案。
 

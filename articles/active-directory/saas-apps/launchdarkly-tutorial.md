@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78f9217ea7288bac56b008911f7b39c73bba7771
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519651"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856529"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>教學課程：Azure Active Directory 與 LaunchDarkly 整合
 
@@ -100,7 +100,7 @@ LaunchDarkly 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![LaunchDarkly 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，鍵入 URL：`app.launchdarkly.com`
 
@@ -113,7 +113,7 @@ LaunchDarkly 與 Azure AD 整合提供下列優點：
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://app.launchdarkly.com`
 
-    ![LaunchDarkly 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -135,19 +135,19 @@ LaunchDarkly 與 Azure AD 整合提供下列優點：
 
 2. 從左側瀏覽面板中，選取 [帳戶設定]  。
 
-    ![LaunchDarkly 設定](./media/launchdarkly-tutorial/configure1.png)
+    ![此螢幕擷取畫面顯示在 [生產] 底下選取的 [帳戶設定] 項目。](./media/launchdarkly-tutorial/configure1.png)
 
 3. 按一下 [安全性]  索引標籤。
 
-    ![LaunchDarkly 設定](./media/launchdarkly-tutorial/configure2.png)
+    ![此螢幕擷取畫面顯示帳戶設定的 [安全性] 索引標籤。](./media/launchdarkly-tutorial/configure2.png)
 
 4. 依序按一下 [啟用 SSO]  和 [編輯 SAML 設定]  。
 
-    ![LaunchDarkly 設定](./media/launchdarkly-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示您可以在其中啟用 SSO 並編輯 SAML 設定的 [單一登入] 頁面。](./media/launchdarkly-tutorial/configure3.png)
 
 5. 在 [編輯您的 SAML 設定]  區段上，執行下列步驟：
 
-    ![LaunchDarkly 設定](./media/launchdarkly-tutorial/configure4.png)
+    ![此螢幕擷取畫面顯示您可以在此處進行所述變更的 [編輯您的 SAML 設定] 區段。](./media/launchdarkly-tutorial/configure4.png)
 
     a. 複製執行個體的 **SAML 取用者伺服器 URL**，並將它貼到 Azure 入口網站上 [LaunchDarkly 網域及 URL]  區段中的 [回覆 URL] 文字方塊。
 

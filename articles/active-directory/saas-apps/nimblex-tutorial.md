@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554369"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>教學課程：Azure Active Directory 與 Nimblex 整合
 
@@ -132,19 +132,19 @@ Nimblex 與 Azure AD 整合提供下列優點：
 
 2. 按一下頁面右上方的 [設定]  標誌。
 
-    ![Nimblex 設定](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![顯示 [設定] 圖示的螢幕擷取畫面。](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. 在 [控制台]  頁面的 [安全性]  區段下，按一下 [單一登入]  。
 
-    ![Nimblex 設定](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![顯示從 [安全性] 功能表選取 [單一登入] 的螢幕擷取畫面。](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. 在 [管理單一登入]  頁面上，選取您的執行個體名稱，然後按一下 [編輯]  。
 
-    ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [編輯] 的 [管理單一登入]。](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. 在 [Edit SSO Provider] \(編輯 SSO 提供者\)  頁面上，執行下列步驟：
 
-    ![Nimblex saml](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [SSO 提供者]。](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. 在 [描述]  文字方塊中，鍵入您的執行個體名稱。
 

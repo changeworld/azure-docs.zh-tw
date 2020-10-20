@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 7c647ba9a89fedf0d43bd8b10460fed101d166b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1ce0368bb86134bd52473b80eabbfaf87e36148d
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801390"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939642"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -62,7 +62,7 @@ Azure Private Link 提供下列優點：
 |Azure 服務匯流排 | 所有公用區域<br/>所有政府區域  | Azure 服務匯流排的進階層級支援。 [選取以取得層級](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [了解如何建立 Azure 服務匯流排的私人端點。](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure 轉送 | 所有公用區域      |  | 預覽 <br/> [了解如何建立 Azure 轉送的私人端點。](https://docs.microsoft.com/azure/azure-relay/private-link-service)  |
 |Azure Event Grid| 所有公用區域<br/> 所有政府區域       |  | GA   <br/> [了解如何建立 Azure Event Grid 的私人端點。](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | 所有公用區域      | 支援 PremiumV2 Windows 和 Linux 及 Elastic Premium 函式  | 預覽   <br/> [了解如何建立 Azure Web Apps 的私人端點。](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
+|Azure Web Apps | 所有公用區域      | 支援 PremiumV2、PremiumV3 或 Function Premium 方案  | GA   <br/> [了解如何建立 Azure Web Apps 的私人端點。](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
 |Azure Machine Learning | 所有公用區域    |  | GA   <br/> [了解如何建立 Azure Machine Learning 的私人端點。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure 自動化  | 所有公用區域 |  | 預覽 </br> [了解如何建立 Azure 自動化的私人端點。](https://docs.microsoft.com/azure/automation/how-to/private-link-security)| |
 | Azure IoT 中樞 | 所有公用區域    |  | GA   <br/> [了解如何建立 Azure IoT 中樞的私人端點。](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |

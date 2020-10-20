@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9b2c5b24b88dd51596dfb5bd8b5f397419ca6e4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505456"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215190"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來管理 SSO 和權杖自訂
 
@@ -87,6 +87,9 @@ ms.locfileid: "88505456"
     ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
+
+> [!NOTE]
+> 使用授權碼流程與 PKCE 的單一頁面應用程式一律會有24小時的重新整理權杖存留期。 [深入瞭解在瀏覽器中重新整理權杖的安全性含意](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,17 +1,15 @@
 ---
 title: 使用 Azure CLI 管理 Azure Data Lake Analytics
 description: 本文說明如何使用 Azure CLI 入口網站來管理 Data Lake Analytics 作業、資料來源和使用者。
-services: data-lake-analytics
-ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320841"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220919"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令列介面 (CLI) 管理 Azure Data Lake Analytics
 
@@ -19,18 +17,17 @@ ms.locfileid: "91320841"
 
 了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和工作。 若要使用其他工具查看管理主題，請按一下上方的索引標籤選取器。
 
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前，您必須具備下列資源：
 
-* Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Azure CLI。 請參閱 [安裝和設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure CLI。 請參閱 [安裝和設定 Azure CLI](/cli/azure/install-azure-cli)。
 
-  * 下載並安裝 **Azure CLI 工具** [發行前版本](https://github.com/MicrosoftBigData/AzureDataLake/releases) ，才能完成這個示範。
+  - 下載並安裝 **Azure CLI 工具** [發行前版本](https://github.com/MicrosoftBigData/AzureDataLake/releases) ，才能完成這個示範。
 
-* 使用 `az login` 命令進行驗證，並且選取您想要使用的訂用帳戶。 如需使用公司或學校帳戶驗證的詳細資訊，請參閱 [從 Azure CLI 連線至 Azure 訂用帳戶](/cli/azure/authenticate-azure-cli)。
+- 使用 `az login` 命令進行驗證，並且選取您想要使用的訂用帳戶。 如需使用公司或學校帳戶驗證的詳細資訊，請參閱 [從 Azure CLI 連線至 Azure 訂用帳戶](/cli/azure/authenticate-azure-cli)。
 
    ```azurecli
    az login
@@ -46,11 +43,11 @@ ms.locfileid: "91320841"
 
 ## <a name="manage-accounts"></a>管理帳戶
 
-您必須擁有 Data Lake Analytics 帳戶，才能執行任何 Data Lake Analytics 工作。 與 Azure HDInsight 不同的是，分析帳戶未執行工作時，您無需支付該帳戶的費用。 您只需支付執行工作時的費用。  如需詳細資訊，請參閱 [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)。  
+您必須擁有 Data Lake Analytics 帳戶，才能執行任何 Data Lake Analytics 工作。 與 Azure HDInsight 不同的是，分析帳戶未執行工作時，您無需支付該帳戶的費用。 您只需支付執行工作時的費用。  如需詳細資訊，請參閱 [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)。
 
 ### <a name="create-accounts"></a>建立帳戶
 
-執行下列命令來建立 Data Lake 帳戶。 
+執行下列命令來建立 Data Lake 帳戶。
 
    ```azurecli
    az dla account create --account "<Data Lake Analytics account name>" --location "<Location Name>" --resource-group "<Resource Group Name>" --default-data-lake-store "<Data Lake Store account name>"
@@ -88,10 +85,10 @@ ms.locfileid: "91320841"
 
 Data Lake Analytics 目前支援以下兩個資料來源：
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure 儲存體](../storage/common/storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure 儲存體](../storage/common/storage-introduction.md)
 
-當您建立分析帳戶時，必須指定 Azure Data Lake 儲存體帳戶作為預設的儲存體帳戶。 預設的 Data Lake 儲存體帳戶是用來儲存作業中繼資料與作業稽核記錄。 建立分析帳戶後，就可以新增其他 Azure Data Lake 儲存體帳戶和/或 Azure 儲存體帳戶。 
+當您建立分析帳戶時，必須指定 Azure Data Lake 儲存體帳戶作為預設的儲存體帳戶。 預設的 Data Lake 儲存體帳戶是用來儲存作業中繼資料與作業稽核記錄。 建立分析帳戶後，就可以新增其他 Azure Data Lake 儲存體帳戶和/或 Azure 儲存體帳戶。
 
 ### <a name="find-the-default-data-lake-store-account"></a>尋找預設的 Data Lake Store 帳戶
 
@@ -127,7 +124,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
    az dla account blob-storage update --access-key "<New Blob Storage Account Key>" --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-### <a name="list-data-sources"></a>列出資料來源：
+### <a name="list-data-sources"></a>列出資料來源
 
 若要列出 Data Lake Store 帳戶：
 
@@ -143,7 +140,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 
 ![顯示 Azure C L I 並醒目提示 [dataLakeStoreAccounts：] 資訊的螢幕擷取畫面。](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### <a name="delete-data-sources"></a>刪除資料來源：
+### <a name="delete-data-sources"></a>刪除資料來源
 
 刪除 Data Lake Store 帳戶：
 
@@ -185,6 +182,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 >    ```
 
 ### <a name="cancel-jobs"></a>取消工作
+
 使用 list 命令來尋找作業識別碼，然後使用 [取消] 來取消作業。
 
    ```azurecli
@@ -212,7 +210,8 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
-* [使用 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)
-* [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+- [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
+- [使用 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)
+- [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
+- [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

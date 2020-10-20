@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265267"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996529"
 ---
 # <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
@@ -113,6 +113,8 @@ Identity Protection 要求使用者必須是安全性讀取者、安全性操作
 | 通知 | 偵測到具風險使用者的警示  | 否 | 否 |是 |
 | 通知 | 每週提要| 否 | 否 | 是 | 
 | | MFA 註冊原則 | 否 | 否 | 是 |
+
+如需這些豐富報告的詳細資訊，請參閱下列文章：[如何：調查風險](howto-identity-protection-investigate-risk.md#navigating-the-reports)。
 
 ## <a name="next-steps"></a>後續步驟
 

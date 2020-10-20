@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 230613cc103cc851d1173f867b551af028ea898b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b22bb16c583c0385b31bde89f30763cd4fb478a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546839"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>教學課程：Azure Active Directory 與 Kantega SSO for JIRA 整合
 
@@ -99,7 +99,7 @@ Kantega SSO for JIRA 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Kantega SSO for JIRA 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中已反白顯示 [識別碼] 和 [回覆 U R L] 文字方塊，並已選取 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,83 +134,83 @@ Kantega SSO for JIRA 與 Azure AD 整合提供下列優點：
 
 1. 將滑鼠停留在 cog 上，然後按一下 [附加元件]  。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon1.png)
+    ![顯示已選取 [齒輪] 圖示，並已從下拉式清單中選取 [附加元件] 的螢幕擷取畫面。](./media/kantegassoforjira-tutorial/addon1.png)
 
 1. 在附加元件索引標籤區段下，按一下 [尋找新的附加元件]  。 搜尋 **Kantega SSO for JIRA (SAML & Kerberos)** ，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon2.png)
+    ![顯示 [尋找新的附加元件] 區段的螢幕擷取畫面，其中包含搜尋方塊中的 [Kantego S S O for JIRA (S A M L & Kerberos)]，並已選取 [安裝] 按鈕。](./media/kantegassoforjira-tutorial/addon2.png)
 
 1. 外掛程式會開始安裝。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon3.png)
+    ![顯示外掛程式 [安裝中] 對話方塊的螢幕擷取畫面。](./media/kantegassoforjira-tutorial/addon3.png)
 
 1. 當安裝完成時。 按一下 [關閉]  。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon33.png)
+    ![顯示 [已安裝並準備就緒!] 對話方塊的螢幕擷取畫面， 其中已選取「關閉」動作。](./media/kantegassoforjira-tutorial/addon33.png)
 
-1.  按一下 [管理]  。
+1.  按一下 [管理] ****。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon34.png)
+    ![顯示 [Kantega S S O] 應用程式頁面的螢幕擷取畫面，其中已選取 [管理] 按鈕。](./media/kantegassoforjira-tutorial/addon34.png)
     
-1. [整合]  下會列出新的外掛程式。 按一下 [設定]  來設定新的外掛程式。
+1. [整合]**** 下會列出新的外掛程式。 按一下 [設定] 來設定新的外掛程式。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon35.png)
+    ![顯示已在左側導覽功能表中反白顯示 [整合]，並已在 [管理附加元件] 區段中選取 [設定] 按鈕的螢幕擷取畫面。](./media/kantegassoforjira-tutorial/addon35.png)
 
-1. 在 [SAML]  區段中。 從 [新增識別提供者] 下拉式清單中，選取 [Azure Active Directory]\(Azure AD\)。
+1. 在 [SAML]**** 區段中。 從 [新增識別提供者]**** 下拉式清單中，選取 [Azure Active Directory]\(Azure AD\)****。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon4.png)
+    ![顯示 [新增識別提供者] 下拉式清單的螢幕擷取畫面，其中已選取 [Azure Active Directory (Azure A D)]。](./media/kantegassoforjira-tutorial/addon4.png)
 
-1. 選取 [基本]  作為訂用帳戶層級。
+1. 選取 [基本]**** 作為訂用帳戶層級。
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon5.png)       
+    ![顯示 [準備 Azure A D] 區段的螢幕擷取畫面，其中已選取 [基本]。](./media/kantegassoforjira-tutorial/addon5.png)     
 
-1. 在 [應用程式屬性]  區段中，執行下列步驟： 
+1. 在 [應用程式屬性]**** 區段中，執行下列步驟： 
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon6.png)
+    ![顯示 [應用程式屬性] 區段的螢幕擷取畫面，其中已反白顯示 [應用程式 I D U R L] 文字方塊和 [複製] 按鈕，並已選取 [下一步] 按鈕。](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. 複製 [應用程式識別碼 URI] 值，然後在 Azure 入口網站的 [基本 SAML 設定] 區段上，使用此 URI 作為 [識別碼]、[回覆 URL] 和 [登入 URL]。
-
-    b. 按 [下一步]  。
-
-1. 在 [中繼資料匯入]  區段中，執行下列步驟： 
-
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon7.png)
-
-    a. 選取 [我的電腦上的中繼資料檔案]  ，上傳您從 Azure 入口網站下載的中繼資料檔案。
+    a. 複製 [應用程式識別碼 URI]**** 值，然後在 Azure 入口網站的 [基本 SAML 設定]**** 區段上，使用此 URI 作為 [識別碼]、[回覆 URL] 和 [登入 URL]****。
 
     b. 按 [下一步]  。
 
-1. 在 [名稱和 SSO 位置]  區段中，執行下列步驟：
+1. 在 [中繼資料匯入]**** 區段中，執行下列步驟： 
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon8.png)
+    ![顯示 [中繼資料匯入] 區段的螢幕擷取畫面，其中已選取 [我的電腦上的中繼資料檔案]。](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. 在 [識別提供者名稱]  文字方塊中，新增識別提供者的名稱 (例如 Azure AD)。
-
-    b. 按 [下一步]  。
-
-1. 確認簽署憑證，然後按 [下一步]  。
-
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon9.png)
-
-1. 在 [JIRA 使用者帳戶]  區段中，執行下列步驟：
-
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon10.png)
-
-    a. 選取 [如果需要，在 JIRA 的內部目錄中建立使用者]  ，然後輸入使用者群組的適當名稱 (可以是多個 群組，以逗號分隔)。
+    a. 選取 [我的電腦上的中繼資料檔案]****，上傳您從 Azure 入口網站下載的中繼資料檔案。
 
     b. 按 [下一步]  。
 
-1. 按一下 [完成]  。
+1. 在 [名稱和 SSO 位置]**** 區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforjira-tutorial/addon11.png)
+    ![顯示 [名稱和 S S O 位置] 的螢幕擷取畫面，其中已反白顯示 [識別提供者名稱] 文字方塊，並已選取 [下一步] 按鈕。](./media/kantegassoforjira-tutorial/addon8.png)
 
-1. 在 [Azure AD 的已知網域]  區段中，執行下列步驟：
+    a. 在 [識別提供者名稱]**** 文字方塊中，新增識別提供者的名稱 (例如 Azure AD)。
+
+    b. 按 [下一步]  。
+
+1. 確認簽署憑證，然後按 [下一步]****。
+
+    ![顯示 [簽章驗證] 區段的螢幕擷取畫面，其中已選取 [下一步] 按鈕。](./media/kantegassoforjira-tutorial/addon9.png)
+
+1. 在 [JIRA 使用者帳戶]**** 區段中，執行下列步驟：
+
+    ![顯示 [JIRA 使用者帳戶] 的螢幕擷取畫面，其中已反白顯示 [在 JIRA 的內部目錄中建立使用者] 選項，並已選取 [下一步] 按鈕。](./media/kantegassoforjira-tutorial/addon10.png)
+
+    a. 選取 [如果需要，在 JIRA 的內部目錄中建立使用者]****，然後輸入使用者群組的適當名稱 (可以是多個 群組，以逗號分隔)。
+
+    b. 按 [下一步] 。
+
+1. 按一下 [完成] 。
+
+    ![顯示 [摘要] 區段的螢幕擷取畫面，其中已選取 [完成] 按鈕。](./media/kantegassoforjira-tutorial/addon11.png)
+
+1. 在 [Azure AD 的已知網域]**** 區段中，執行下列步驟：
 
     ![設定單一登入](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. 從頁面的左面板中，選取 [已知網域]  。
+    a. 從頁面的左面板中，選取 [已知網域]****。
 
-    b. 在 [已知網域]  文字方塊中，輸入網域名稱。
+    b. 在 [已知網域]**** 文字方塊中，輸入網域名稱。
 
     c. 按一下 [檔案]  。
 
@@ -236,17 +236,17 @@ Kantega SSO for JIRA 與 Azure AD 整合提供下列優點：
 
     c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Kantega SSO for JIRA 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Kantega SSO for JIRA]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Kantega SSO for JIRA]****。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Kantega SSO for JIRA]  。
+2. 在應用程式清單中，選取 [Kantega SSO for JIRA]****。
 
     ![應用程式清單中的 Kantega SSO for JIRA 連結](common/all-applications.png)
 
@@ -274,11 +274,11 @@ Kantega SSO for JIRA 與 Azure AD 整合提供下列優點：
 
 1. 將滑鼠停留在 cog 上，然後按一下 [使用者管理]  。
 
-    ![新增員工](./media/kantegassoforjira-tutorial/user1.png) 
+    ![顯示已選取 [齒輪] 圖示，並已從下拉式清單中選取 [使用者管理] 的螢幕擷取畫面。](./media/kantegassoforjira-tutorial/user1.png) 
 
-1. 在 [使用者管理]  索引標籤區段下，按一下 [建立使用者]  。
+1. 在 [使用者管理] 索引標籤區段下，按一下 [建立使用者]。
 
-    ![新增員工](./media/kantegassoforjira-tutorial/user2.png) 
+    ![顯示 [使用者管理] 區段的螢幕擷取畫面，其中已選取 [建立使用者] 按鈕。](./media/kantegassoforjira-tutorial/user2.png) 
 
 1. 在 [建立新的使用者]  對話方塊中，執行下列步驟：
 
@@ -286,7 +286,7 @@ Kantega SSO for JIRA 與 Azure AD 整合提供下列優點：
 
     a. 在 [電子郵件地址]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件地址。
 
-    b. 在 [全名]  文字方塊中，輸入像是 Britta Simon 的使用者全名。
+    b. 在 [全名]**** 文字方塊中，輸入像是 Britta Simon 的使用者全名。
 
     c. 在 [使用者名稱]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件。
 

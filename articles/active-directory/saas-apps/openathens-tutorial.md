@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543936"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OpenAthens 整合
 
@@ -134,37 +134,37 @@ ms.locfileid: "88543936"
 
 1. 在 [管理]  索引標籤下方的清單選取 [連線]  。
 
-    ![設定單一登入](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![顯示 "OpenAthens" 公司網站頁面的螢幕擷取畫面，其中包含從 [管理] 索引標籤中選取的 [連線]。](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. 選取 [SAML 1.1/2.0]  ，然後選取 [設定]  按鈕。
 
-    ![設定單一登入](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![顯示 [選取本機驗證系統類型] 對話方塊的螢幕擷取畫面， 其中已選取 [S A M L 1.1/2.0] 和 [設定] 按鈕。](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
-1. 若要新增設定，請選取 [瀏覽]  按鈕以上傳您從 Azure 入口網站下載的中繼資料 .xml 檔案，然後選取 [新增]  。
+1. 若要新增設定，請選取 [瀏覽]**** 按鈕以上傳您從 Azure 入口網站下載的中繼資料 .xml 檔案，然後選取 [新增]****。
 
-    ![設定單一登入](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![顯示 [新增 S A M L 驗證系統] 對話方塊的螢幕擷取畫面， 其中已選取 [瀏覽] 動作和 [新增] 按鈕。](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-1. 在 [詳細資料]  索引標籤下方執行以下步驟。
+1. 在 [詳細資料]**** 索引標籤下方執行以下步驟。
 
     ![設定單一登入](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. 在 [顯示名稱對應]  中，選取 [使用屬性]  。
+    a. 在 [顯示名稱對應]**** 中，選取 [使用屬性]****。
 
-    b. 在 [顯示名稱屬性]  文字方塊中，輸入 `http://schema.microsoft.com/identity/claims/displayname` 值。
+    b. 在 [顯示名稱屬性]**** 文字方塊中，輸入 `http://schema.microsoft.com/identity/claims/displayname` 值。
 
-    c. 在 [唯一使用者對應]  中，選取 [使用屬性]  。
+    c. 在 [唯一使用者對應]**** 中，選取 [使用屬性]****。
 
-    d. 在 [唯一使用者屬性]  文字方塊中，輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 值。
+    d. 在 [唯一使用者屬性]**** 文字方塊中，輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 值。
 
-    e. 在 [狀態]  中，勾選三個核取方塊。
+    e. 在 [狀態]**** 中，勾選三個核取方塊。
 
-    f. 在 [建立本機帳戶]  中，選取 [自動]  。
+    f. 在 [建立本機帳戶]**** 中，選取 [自動]****。
 
     g. 選取 [儲存變更]  。
 
-    h. 從 [</> 信賴憑證者]  索引標籤，複製 [中繼資料 URL]  ，並在瀏覽器中開啟此 URL 以下載 **SP 中繼資料 XML** 檔案。 在 Azure AD 中的 [基本 SAML 組態]  區段上，上傳此 SP 中繼資料檔案。
+    h. 從 [</> 信賴憑證者]**** 索引標籤，複製 [中繼資料 URL]**** ，並在瀏覽器中開啟此 URL 以下載 **SP 中繼資料 XML** 檔案。 在 Azure AD 中的 [基本 SAML 組態]**** 區段上，上傳此 SP 中繼資料檔案。
 
-    ![設定單一登入](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![顯示已選取 [信賴憑證者] 索引標籤，並已反白顯示 [中繼資料 U R L] 的螢幕擷取畫面。](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>建立 OpenAthens 測試使用者
 

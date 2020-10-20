@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554510"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940781"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教學課程：整合 Azure AD 單一登入 (SSO) 與 NetSuite
 
@@ -96,7 +96,7 @@ NetSuite 支援：
 
     * 您將會在 Netsuite 組態區段中取得 **<`Instance ID`>** 值，本教學課程稍後會在 [Netsuite 組態] 下的步驟 8 中加以說明。 您會發現確切的網域 (例如在此案例中為 system.na0.netsuite.com)。
 
-        ![設定單一登入](./media/NetSuite-tutorial/domain-value.png)
+        ![此螢幕擷取畫面顯示您可以在其中取得網域的 [SAML 設定] 頁面。](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > 上述 URL 中的值不是真實的值。 請使用實際的 [回覆 URL] 來更新這些值。 請連絡 [NetSuite 客戶支援小組](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)以取得此值。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  區段所示的格式。
@@ -164,31 +164,31 @@ NetSuite 支援：
 
 2. 在上方導覽列中選取 [設定]  ，然後選取 [公司]   > [啟用功能]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![顯示從 [公司] 選取 [啟用功能] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. 在頁面中間的工具列中，選取 [SuiteCloud]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![顯示已選取 [Suitecloud] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. 在 [管理驗證]  底下選取 [SAML 單一登入]  核取方塊，以在 NetSuite 中啟用 [SAML 單一登入] 選項。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [SAML 單一登入] 的 [管理驗證]。](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. 在上方導覽列中選取 [設定]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-setup.png)
+    ![顯示從 NETSUITE 導覽列選取 [設定] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-setup.png)
 
 6. 在 [設定工作]  清單中，選取 [整合]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-integration.png)
+    ![顯示從 [設定工作] 選取 [整合] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-integration.png)
 
 7. 在 [管理驗證]  底下選取 [SAML 單一登入]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-saml.png)
+    ![顯示從 [設定工作] 中 [整合] 項目選取 [SAML 單一登入] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-saml.png)
 
 8. 在 [SAML 設定]  窗格中的 [NetSuite 組態]  底下，執行下列動作：
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的 [SAML 設定]。](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. 選取 [主要驗證方法]  核取方塊。
 
@@ -198,9 +198,9 @@ NetSuite 支援：
 
 9. 在 NetSuite 的上方導覽列中選取 [設定]  ，然後選取 [公司]   > [公司資訊]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-com.png)
+    ![顯示從 [公司] 選取 [公司資訊] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-com.png)
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-account-id.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的窗格。](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. 在右側資料行上的 [公司資訊]  窗格上，複製 [帳戶識別碼]  值。
 
@@ -210,23 +210,23 @@ NetSuite 支援：
 
     a. 在上方導覽列中選取 [設定]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-setup.png)
+    ![顯示從 NETSUITE 導覽列選取 [設定] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-setup.png)
 
     b. 在左側窗格中選取 [使用者/角色]  ，然後選取 [管理角色]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [新增角色] 的 [管理角色] 窗格。](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. 選取 [新增角色]  。
 
     d. 輸入新角色的**名稱**。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-new-role.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入角色名稱的 [設定管理員]。](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. 選取 [儲存]  。
 
     f. 在上方導覽列中選取 [權限]  。 然後選取 [設定]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-sso.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的 [設定] 索引標籤。](./media/NetSuite-tutorial/ns-sso.png)
 
     g. 選取 [SAML 單一登入]  ，然後選取 [新增]  。
 
@@ -234,19 +234,19 @@ NetSuite 支援：
 
     i. 在上方導覽列中選取 [設定]  ，然後選取 [設定管理員]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-setup.png)
+    ![顯示從 NETSUITE 導覽列選取 [設定] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-setup.png)
 
     j. 在左側窗格中選取 [使用者/角色]  ，然後選取 [管理使用者]  。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取套件示範小組的 [管理使用者] 窗格。](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. 選取測試使用者並選取 [編輯]  ，然後選取 [存取]  索引標籤。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [編輯] 的 [管理使用者] 窗格。](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. 在 [角色]  窗格中，指派您已建立的適當角色。
 
-    ![設定單一登入](./media/NetSuite-tutorial/ns-add-role.png)
+    ![顯示從 [員工] 選取 [管理員] 的螢幕擷取畫面。](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. 選取 [儲存]  。
 

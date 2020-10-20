@@ -1,14 +1,14 @@
 ---
 title: 教學課程：建立自訂原則定義
 description: 在本教學課程中，針對 Azure 原則製作自訂原則定義，以在您的 Azure 資源上強制執行自訂商務規則。
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649826"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876289"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教學課程：建立自訂原則定義
 
@@ -66,12 +66,15 @@ ms.locfileid: "89649826"
 
 ### <a name="arm-templates"></a>ARM 範本
 
-對於包含您所要管理屬性的 [Resource Manager 範本](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)，其查看方式有好幾種。
+對於包含您所要管理屬性的 [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)，其查看方式有好幾種。
 
 #### <a name="existing-resource-in-the-portal"></a>入口網站中的現有資源
 
 若要尋找屬性，最簡單的方式是查看相同類型的現有資源。 已使用所要強制執行的設定進行設定的資源，也會提供可用來比較的值。
 在 Azure 入口網站中，查看該項資源的 [匯出範本] 頁面 (在 [設定] 下方)。
+
+> [!WARNING]
+> Azure 入口網站所匯出的 ARM 範本無法直接插入至 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 原則定義中 ARM 範本的 `deployment` 屬性。
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure 入口網站中現有資源的匯出範本頁面的螢幕擷取畫面。" border="false":::
 

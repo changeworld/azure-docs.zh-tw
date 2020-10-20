@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552459"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>教學課程：將 Azure Active Directory 與 Namely 整合
 
@@ -128,19 +128,19 @@ ms.locfileid: "88552459"
 
 2. 在頂端的工具列中，按一下 [公司]  。
    
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![顯示已選取 [公司] 值的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. 按一下 [設定]  索引標籤。
    
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![顯示已選取 [公司設定] 索引標籤的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. 按一下 [SAML]  。
    
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![顯示已選取 [SAML] 的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. 在 [SAML設定]  頁面上，執行下列步驟：
    
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_09.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [SAML 設定]。](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. 按一下 [啟用 SAML]  。 
 
@@ -211,15 +211,15 @@ ms.locfileid: "88552459"
 
 2. 在頂端工具列中，按一下 [人員]  。
    
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![顯示已選取 [人員] 值的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. 按一下 [目錄]  索引標籤。
    
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![顯示已選取 [人員目錄] 索引標籤的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. 按一下 [ **新增人員**]。
 
-    ![設定單一登入](./media/namely-tutorial/tutorial_namely_12.png)
+    ![顯示 [新增人員] 選項的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. 在 [ **新增人員** ] 對話方塊上，執行下列步驟：
 

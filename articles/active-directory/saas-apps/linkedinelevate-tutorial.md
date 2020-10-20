@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549791"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856400"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 LinkedIn Elevate 整合
 
@@ -144,11 +144,11 @@ ms.locfileid: "88549791"
 
 1. 在 [帳戶中心]  中，按一下 [設定]  底下的 [全域設定]  。 此外，從下拉式清單選取 [提升 - 提升 AAD 測試]  。
 
-    ![設定單一登入](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [提升 AAD 測試] 的 [全域設定]。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. 按一下**或按一下這裡以從表單載入和複製個別欄位**，然後執行下列步驟：
 
-    ![設定單一登入](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的單一登入。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. 複製 [實體識別碼]  並將其貼到 Azure 入口網站中 [基本 SAML 組態]  中的 [識別碼]  文字方塊內。
 
@@ -156,11 +156,11 @@ ms.locfileid: "88549791"
 
 1. 移至 [LinkedIn 系統管理員設定]  區段。 按一下 [上傳 XML 檔案] 選項，將您從 Azure 入口網站下載的 XML 檔案上傳。
 
-    ![設定單一登入](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![此螢幕擷取畫面顯示設定您可以用來上傳 XML 檔案的 LinkedIn 服務提供者 SSO 設定。](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. 按一下 [開啟]  以啟用 SSO。 SSO 狀態將會從 [未連線]  變更為 [已連線] 
 
-    ![設定單一登入](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [自動指派授權] 的單一登入。](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>建立 LinkedIn Elevate 測試使用者
 

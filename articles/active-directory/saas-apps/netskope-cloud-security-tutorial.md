@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 081c61610c4134917ffa90cf45fb096f3df4bcbe
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534807"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Netskope 系統管理員主控台整合
 
@@ -148,19 +148,19 @@ ms.locfileid: "88534807"
 
 1. 從左側瀏覽面板中，按一下 [設定]  索引標籤。
 
-    ![Netskope 系統管理員主控台設定](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![顯示在瀏覽窗格中選取 [設定] 的螢幕擷取畫面。](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. 按一下 [系統管理]  索引標籤。
 
-    ![Netskope 系統管理員主控台設定](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![顯示從 [設定] 選取 [系統管理] 的螢幕擷取畫面。](./media/netskope-cloud-security-tutorial/config-administration.png)
 
 1. 按一下 [SSO]  索引標籤。
 
-    ![Netskope 系統管理員主控台設定](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![顯示在 [系統管理] 中選取 [SSO] 的螢幕擷取畫面。](./media/netskope-cloud-security-tutorial/config-sso.png)
 
 1. 在 [網路設定]  區段上，執行下列步驟：
     
-    ![Netskope 系統管理員主控台設定](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [網路設定]。](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
 
     a. 複製 [判斷提示取用者服務 URL]  值，並將其貼至 Azure 入口網站中 [基本 SAML 組態]  區段中的 [回覆 URL]  文字方塊內。
 
@@ -168,11 +168,11 @@ ms.locfileid: "88534807"
 
 1. 按一下 [SSO/SLO 設定]  區段下的 [編輯設定]  。
 
-    ![Netskope 系統管理員主控台設定](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [編輯設定] 的 [SSO/SLO 設定]。](./media/netskope-cloud-security-tutorial/config-editsettings.png)
 
 1. 在 [設定]  快顯示窗中，執行下列步驟：
 
-    ![Netskope 系統管理員主控台設定](./media/netskope-cloud-security-tutorial/configuration.png)
+    ![此螢幕擷取畫面顯示您可在其中輸入資訊的 [設定] 對話方塊。](./media/netskope-cloud-security-tutorial/configuration.png)
 
     a. 選取 [啟用 SSO]  。
 
@@ -194,23 +194,23 @@ ms.locfileid: "88534807"
 
 1. 從左側瀏覽面板中，按一下 [設定]  索引標籤。
 
-    ![Netskope 系統管理員主控台的使用者建立](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![顯示已選取 [設定] 的螢幕擷取畫面。](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. 按一下 [作用中的平台]  索引標籤。
 
-    ![Netskope 系統管理員主控台的使用者建立](./media/netskope-cloud-security-tutorial/user1.png)
+    ![顯示從 [設定] 中選取 [作用中的平台] 的螢幕擷取畫面。](./media/netskope-cloud-security-tutorial/user1.png)
 
 1. 按一下 [使用者]  索引標籤。
 
-    ![Netskope 系統管理員主控台的使用者建立](./media/netskope-cloud-security-tutorial/add-user.png)
+    ![顯示從 [作用中的平台] 選取 [使用者] 的螢幕擷取畫面。](./media/netskope-cloud-security-tutorial/add-user.png)
 
 1. 按一下 [加入使用者]  。
 
-    ![Netskope 系統管理員主控台的使用者建立](./media/netskope-cloud-security-tutorial/user-add.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [新增使用者] 的 [使用者] 對話方塊。](./media/netskope-cloud-security-tutorial/user-add.png)
 
 1. 輸入您要新增的使用者電子郵件地址，然後按一下 [新增]  。
 
-    ![Netskope 系統管理員主控台的使用者建立](./media/netskope-cloud-security-tutorial/add-user-popup.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入使用者清單的 [新增使用者]。](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>測試 SSO
 

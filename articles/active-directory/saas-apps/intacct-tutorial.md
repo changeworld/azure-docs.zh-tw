@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535816"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850569"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 
@@ -189,7 +189,7 @@ ms.locfileid: "88535816"
 
 1. 在 [使用者資訊]  區段中，執行下列步驟：
 
-    ![使用者資訊](./media/intacct-tutorial/ic790043.png "使用者資訊")
+    ![顯示 [使用者資訊] 區段的螢幕擷取畫面，您可以在其中輸入此步驟中的資訊。](./media/intacct-tutorial/ic790043.png "使用者資訊")
 
     a. 在 [使用者資訊] 區段中，為您要佈建的 Azure AD 帳戶輸入 [使用者識別碼]、[姓氏]、[名字]、[電子郵件地址]、[職稱] 和 [電話]。
 
@@ -204,7 +204,7 @@ ms.locfileid: "88535816"
 
 1. 按一下 [單一登入] 索引標籤，並確定下方螢幕擷取畫面中的**同盟 SSO 使用者識別碼**等同 Azure 入口網站中 [使用者屬性] 區段中與 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 對應的**來源屬性**值。
 
-    ![使用者資訊](./media/intacct-tutorial/ic790044.png "使用者資訊")
+    ![此螢幕擷取畫面顯示用來輸入同盟 SSO 使用者識別碼的 [使用者資訊] 區段。](./media/intacct-tutorial/ic790044.png "使用者資訊")
 
 > [!NOTE]
 > 若要佈建 Azure AD 使用者帳戶，您可以使用 Sage Intacct 所提供的其他 Sage Intacct 使用者帳戶建立工具或 API。

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50717c7e8a7b0f748df98c1896e1b7eb64cd7be3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287887"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819352"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>連線至適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -36,7 +36,7 @@ ms.locfileid: "91287887"
 
 ## <a name="navigate-to-synapse-studio"></a>瀏覽至 Synapse Studio
 
-從您的 Synapse 工作區中，選取 [啟動 Synapse Studio]。 在 Synapse Studio 首頁上選取 [**資料]，這會使您進入**資料物件總管**。
+從您的 Synapse 工作區中，選取 [啟動 Synapse Studio]。 在 Synapse Studio 首頁上，選取 [資料]，這會使您進入 [資料物件總管]。
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>將 Azure Cosmos DB 資料庫連線至 Synapse 工作區
 

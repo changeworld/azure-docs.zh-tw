@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756737"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976924"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入門：處理 SMS 事件
 
@@ -86,19 +86,19 @@ ms.locfileid: "91756737"
 若要檢視事件觸發程序，我們必須先產生事件。
 
 - 當通訊服務電話號碼收到文字訊息時，會產生 `SMS Received` 事件。 若要觸發事件，只需從您的電話傳送訊息到附加至通訊服務資源的電話號碼即可。
-- 當您使用通訊服務電話號碼將 SMS 傳送給使用者時，將會產生 `SMS Delivery Report Received` 事件。 若要觸發和事件，您必須在[已傳送 SMS](../telephony-sms/send.md) 的選項中啟用 `Delivery Report`。 嘗試使用 `Delivery Report` 將訊息傳送至您的電話。 完成此動作後，您的 Azure 帳戶中會產生幾美分的少許費用。
+- 當您使用通訊服務電話號碼將 SMS 傳送給使用者時，將會產生 `SMS Delivery Report Received` 事件。 若要觸發事件，您必須在[已傳送簡訊](../telephony-sms/send.md)的選項中啟用 `Delivery Report`。 嘗試使用 `Delivery Report` 將訊息傳送至您的電話。 完成此動作後，您的 Azure 帳戶中會產生幾美分的少許費用。
 
 查看 [Azure 通訊服務支援的事件](../../concepts/event-handling.md)的完整清單。
 
 ### <a name="receiving-sms-events"></a>接收 SMS 事件
 
-當您完成上述任一動作後，您會看到有 `SMS Received` 和 `SMS Delivery Report Received` 事件傳送至您的端點。 這些事件會顯示在我們一開始設定的 [Azure 事件方格檢視器範例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)中。 您可以按事件旁的眼睛圖示，以查看整個承載。 事件會顯示如下：
+當您完成上述任一動作後，您會看到有 `SMS Received` 和 `SMS Delivery Report Received` 事件傳送至您的端點。 這些事件會顯示在我們一開始設定的 [Azure 事件方格檢視器範例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)中。 您可以按事件旁的眼睛圖示，以查看整個承載。 事件顯示如下：
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
-深入了解[事件結構描述和其他事件處理概念](../../concepts/event-handling.md)
+深入了解[事件結構描述和其他事件處理概念](../../concepts/event-handling.md)。
 
 ## <a name="clean-up-resources"></a>清除資源
 

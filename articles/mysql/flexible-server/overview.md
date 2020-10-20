@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759640"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993743"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫 - 彈性伺服器 (預覽)
 
@@ -117,8 +117,19 @@ ms.locfileid: "91759640"
 - **傾印和還原** - 供離線移轉使用，使用者使用 mysqldump/mydumper 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱使用傾印和還原遷移以取得詳細資料。 
 - **Azure 資料庫移轉服務** - 可使用 [Azure 資料庫移轉服務](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 
 
+## <a name="azure-regions"></a>Azure 區域
+
+在 Azure 中執行工作負載的其中一個優點是觸及全球。 「適用於 MySQL 的 Azure 資料庫」的彈性伺服器目前可在下列 Azure 區域中使用：
+
+- 北歐
+- 東南亞
+- 美國東部 2
+- 美國西部 2
+
+我們一直努力盡快加入新的伺服器。
+
 ## <a name="contacts"></a>連絡人
-若您對適用於 MySQL 的 Azure 資料庫有任何疑問或需要建議，請傳送電子郵件給適用於 MySQL 的 Azure 資料庫小組 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此電子郵件地址不是技術支援的別名。
+若您對「適用於 MySQL 的 Azure 資料庫」彈性伺服器有任何疑問或建議，請傳送電子郵件給適用於 MySQL 的 Azure 資料庫小組 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此電子郵件地址不是技術支援的別名。
 
 此外，請根據您的情況考量下列連絡要點：
 

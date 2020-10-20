@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e385b40911e1adf4e5142de4fb627334baee4a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08d9c2f1676c0a04e9cd191b64c41af276521b3d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543732"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教學課程：Azure Active Directory 與 Peakon 整合
 
@@ -110,7 +110,7 @@ Peakon 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Peakon 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示選取了 [設定其他 U R L] 的螢幕擷取畫面，其中已反白顯示 [登入 U R L] 文字方塊。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL] 文字方塊中，輸入 URL：`https://app.peakon.com/login`
 

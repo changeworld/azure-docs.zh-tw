@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 表單處理, 自動化資料處理
-ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b024b3fac76e51264e89100e63a3cdc477443157
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318881"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963026"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>快速入門：使用表單辨識器用戶端程式庫
 
-以您選擇的語言開始使用表單辨識器用戶端程式庫。 Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術來建置自動化的資料處理軟體。 從表單文件中識別並擷取索引鍵/值組和資料表資料&mdash;原始檔案中包含關聯性的輸出結構化資料。 請遵循下列步驟來安裝 SDK 套件，並試用基本工作的程式碼範例。
+以您選擇的語言開始使用表單辨識器用戶端程式庫。 Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術來建置自動化的資料處理軟體。 從表單文件中識別並擷取索引鍵/值組和資料表資料&mdash;原始檔案中包含關聯性的輸出結構化資料。 請遵循下列步驟來安裝 SDK 套件，並試用基本工作的程式碼範例。 表單辨識器用戶端程式庫目前鎖定的目標是表單辨識器服務 2.0 版。
 
 使用表單辨識器用戶端程式庫執行下列動作：
 

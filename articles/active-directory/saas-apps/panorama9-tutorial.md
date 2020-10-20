@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bf3afef81c70355326ed9341f2dd8a39d542b54
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554091"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>教學課程：Azure Active Directory 與 Panorama9 整合
 
@@ -210,7 +210,7 @@ Panorama9 需以手動的方式佈建。
 
 2. 在頂端的功能表中，按一下 [管理]  ，然後按一下 [使用者]  。
    
-    ![使用者](./media/panorama9-tutorial/ic790027.png "使用者")
+    ![顯示已選取 [管理] 和 [使用者] 索引標籤的螢幕擷取畫面。](./media/panorama9-tutorial/ic790027.png "使用者")
 
 3. 在 [使用者] 區段中，按一下 **+** 來新增使用者。
 

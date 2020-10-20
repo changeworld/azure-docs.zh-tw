@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899661"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976062"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>教學課程：設定搭配 GPU 的 Azure Stack Edge Pro 裝置設定
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>教學課程：設定搭配 GPU 的 Azure Stack Edge Pro 的裝置設定
 
 本教學課程說明如何為搭配上線 GPU 的 Azure Stack Edge Pro 裝置設定裝置相關設定。 您可以透過本機 Web UI 來設定裝置名稱、更新伺服器和時間伺服器。
 
@@ -67,7 +67,7 @@ ms.locfileid: "90899661"
 
     5. 套用設定之後，請選取 [下一步:更新伺服器]。
 
-        ![本機 Web UI 的「裝置」頁面](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![本機 Web UI 的「裝置」頁面 3](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>設定更新
 
@@ -79,7 +79,7 @@ ms.locfileid: "90899661"
 
         也可以選擇從 **Windows Server Update Services** (WSUS) 部署更新。 提供 WSUS 伺服器的路徑。
         
-        ![本機 Web UI 的「更新伺服器」頁面](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![本機 Web UI 的「更新伺服器」頁面 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > 如果已設定個別的 Windows Update 伺服器，而且您選擇透過 https (而不是 http) 連線，則需要用來連線到更新伺服器的簽署鏈結憑證。 如需如何建立和更新憑證的詳細資訊，請移至[管理憑證](azure-stack-edge-j-series-manage-certificates.md)。 

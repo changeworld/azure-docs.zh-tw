@@ -1,24 +1,22 @@
 ---
 title: Azure Data Lake 的 U-SQL 可程式性指南
 description: 深入了解在 Azure Data Lake Analytics 可讓您建立雲端型巨量資料平台的服務集。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0e914b5f36d58ec3aab24099c8b3787f0cf648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288936"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215445"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可程式性指南
 
 U-SQL 是為巨量資料類型的工作負載所設計的查詢語言。 U-SQL 的其中一項獨特功能是，可將類 SQL 的宣告式語言與 C# 所提供的擴充性和可程式性結合在一起。 在本指南中，我們將著重於介紹由 C# 所實現的 U-SQL 語言之擴充性和可程式性。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 下載及安裝 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)。
 
@@ -121,7 +119,7 @@ CREATE ASSEMBLY MyDB.[MyAssembly]
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-請參閱更詳細涵蓋此主題的[組件註冊指示](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/)。
+請參閱更詳細涵蓋此主題的[組件註冊指示](/archive/blogs/azuredatalake/how-to-register-u-sql-assemblies-in-your-u-sql-catalog)。
 
 
 ### <a name="use-assembly-versioning"></a>使用組件版本控制

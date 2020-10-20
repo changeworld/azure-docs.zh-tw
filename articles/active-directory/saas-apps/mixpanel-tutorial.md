@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554704"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940690"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>教學課程：Azure Active Directory 與 Mixpanel 整合
 
@@ -130,15 +130,15 @@ Mixpanel 與 Azure AD 整合提供下列優點：
 
 3. 按一下 [存取安全性]  索引標籤，然後按一下 [變更設定]  。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![此螢幕擷取畫面顯示您可以在其中變更設定的 [存取安全性] 索引標籤。](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. 在 [變更您的憑證]  對話方塊頁面上，按一下 [選擇檔案]  來上傳您下載的憑證，然後按 [下一步]  。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![此螢幕擷取畫面顯示您可以在其中選擇憑證檔案的 [變更您的憑證] 對話方塊。](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  在 [變更驗證 URL]  對話方塊頁面上的 [驗證 URL] 文字方塊中，貼上您從 Azure 入口網站複製過來的 [登入 URL]  值，然後按 [下一步]  。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![此螢幕擷取畫面顯示您可以在其中複製登入 URL 的 [變更驗證 URL] 窗格。](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. 按一下 [完成]  。
 
@@ -205,7 +205,7 @@ Mixpanel 與 Azure AD 整合提供下列優點：
 
 4. 在 [小組成員]  文字方塊中，輸入 Britta 在 Azure 中的電子郵件地址。
    
-    ![Mixpanel 設定](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![此螢幕擷取畫面顯示可用來將地址加入 [邀請] 的 [小組] 索引標籤。](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. 按一下 [邀請]  。 
 

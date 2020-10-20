@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b24d3aa9b5071a69e3e3fb866dc5ba2ac3e57b19
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266520"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950936"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教學課程：訂購 Azure 資料箱磁碟
 
@@ -72,7 +72,7 @@ Azure 資料箱磁碟是一項混合式雲端解決方案，可讓您以快速�
   
 4. 選取 [資料箱磁碟]。 在 5 個磁碟的單一訂單中，解決方案的容量上限為 35 TB。 您可以建立多份訂單以訂購更大的資料大小。
 
-     ![選取 [資料箱磁碟] 選項](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
+     ![選取資料箱磁碟選項 2](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
 5. 在 [訂單] 中，指定 [訂單詳細資料]。 輸入或選取下列資訊。
 

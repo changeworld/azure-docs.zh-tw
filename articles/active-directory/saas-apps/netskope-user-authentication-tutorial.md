@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62d6d5527cd917304e4c8bc0c4740f4edb772218
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544021"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939145"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Netskope 使用者驗證整合
 
@@ -136,15 +136,15 @@ ms.locfileid: "88544021"
 
 1. 按一下 [作用中的平台]  索引標籤。
 
-    ![Netskope 使用者驗證組態](./media/netskope-user-authentication-tutorial/user1.png)
+    ![顯示從 [設定] 中選取 [作用中的平台] 的螢幕擷取畫面。](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. 向下捲動至 [正向 Proxy]  ，然後選取 [SAML]  。
 
-    ![Netskope 使用者驗證組態](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![顯示從 [作用中的平台] 選取 [SAML] 的螢幕擷取畫面。](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. 在 [SAML設定]  頁面上，執行下列步驟：
 
-    ![Netskope 使用者驗證組態](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [SAML 設定]。](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. 複製 [SAML 實體識別碼]  值，並貼至 Azure 入口網站中 [基本 SAML 設定]  區段中的 [識別碼]  文字方塊內。
 
@@ -152,11 +152,11 @@ ms.locfileid: "88544021"
 
 1. 按一下 [新增帳戶]  。
 
-    ![Netskope 使用者驗證組態](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![顯示在 [SAML] 窗格中選取 [新增帳戶] 的螢幕擷取畫面。](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. 在 [新增SAML 帳戶]  頁面上，執行下列步驟：
 
-    ![Netskope 使用者驗證組態](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [新增 SAML 帳戶]。](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. 在 [名稱]  文字方塊中，提供類似 Azure AD 的名稱。
 
@@ -174,23 +174,23 @@ ms.locfileid: "88544021"
 
 1. 從左側瀏覽面板中，按一下 [設定]  索引標籤。
 
-    ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![顯示已選取 [設定] 的螢幕擷取畫面。](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. 按一下 [作用中的平台]  索引標籤。
 
-    ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/user1.png)
+    ![顯示從 [設定] 中選取 [作用中的平台] 的螢幕擷取畫面。](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. 按一下 [使用者]  索引標籤。
 
-    ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![顯示從 [作用中的平台] 選取 [使用者] 的螢幕擷取畫面。](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. 按一下 [加入使用者]  。
 
-    ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [新增使用者] 的 [使用者] 對話方塊。](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. 輸入您要新增的使用者電子郵件地址，然後按一下 [新增]  。
 
-    ![Netskope 使用者驗證使用者建立](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入使用者清單的 [新增使用者]。](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>測試 SSO
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665186"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977862"
 ---
 # <a name="calling-client-library-overview"></a>通話用戶端程式庫概觀
 
@@ -34,7 +34,8 @@ ms.locfileid: "91665186"
 |                   | 與兩個以上使用者 (最多 350 個使用者) 進行群組通話                                                       | ✔️   | ✔️            | ✔️ 
 |                   | 將兩個使用者的一對一通話提升為兩個以上使用者的群組通話                                 | ✔️   | ✔️            | ✔️ 
 |                   | 在群組通話開始之後加入                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | 邀請另一個 VoIP 參與者加入進行中的群組通話                                                       | ✔️   | ✔️            | ✔️ 
+|                   | 邀請另一個 VoIP 參與者加入進行中的群組通話                                                       | ✔️   | ✔️            | ✔️
+|                   | 開啟/關閉您的影片                                                         | ✔️   | ✔️            | ✔️ 
 |                   | 靜音/取消靜音麥克風                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | 在相機之間切換                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | 本機保留/取消保留                                                                                                  | ✔️   | ✔️            | ✔️           

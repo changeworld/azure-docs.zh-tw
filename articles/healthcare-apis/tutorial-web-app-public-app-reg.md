@@ -9,19 +9,20 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c4f6124227f5dd5c7735d300f71d5ae7d0c06b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852968"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975768"
 ---
 # <a name="client-application-registration"></a>用戶端應用程式註冊
 在上一個教學課程中，您已部署並設定您的 Azure API for FHIR。 既然您已設定 Azure API for FHIR，我們將註冊公用用戶端應用程式。 如需更多詳細資料或進行疑難排解，您可以閱讀完整的[註冊公用用戶端應用程式](register-public-azure-ad-client-app.md)操作指南，但我們已針對此教學課程擷取了下列主要步驟。
 
 1. 瀏覽至 Azure Active Directory
 1. 選取 [應用程式註冊]  -->  [新增註冊]。
-1. 命名您的應用程式，並將重新導向 URI 設定為 https://www.getpostman.com/oauth2/callback
+1. 為您的應用程式命名
+1. 選取 [公用用戶端/原生 (行動和桌面)]，並將重新導向 URL 設定為 https://www.getpostman.com/oauth2/callback 。
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="[註冊應用程式] 窗格的螢幕擷取畫面，以及範例應用程式名稱和重新導向 URL。":::
 
@@ -29,7 +30,7 @@ ms.locfileid: "87852968"
 
 一旦註冊了用戶端應用程式，請從 [概觀] 頁面複製應用程式 (用戶端) 識別碼和租用戶識別碼。 稍後在存取用戶端時會需要這兩個值。
 
-:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="[用戶端應用程式設定] 窗格的螢幕擷取畫面，其中已醒目提示應用程式和目錄識別碼。":::
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="[註冊應用程式] 窗格的螢幕擷取畫面，以及範例應用程式名稱和重新導向 URL。":::
 
 ### <a name="connect-with-web-app"></a>使用 Web 應用程式連線
 
@@ -43,7 +44,7 @@ ms.locfileid: "87852968"
 
 1. 選取 [存取權杖] 和 [識別碼權杖] 核取方塊。
 
-   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="[應用程式驗證設定] 刀鋒視窗的螢幕擷取畫面，並已醒目提示新增平台步驟。":::
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="[註冊應用程式] 窗格的螢幕擷取畫面，以及範例應用程式名稱和重新導向 URL。":::
 
 ## <a name="add-api-permissions"></a>新增 API 權限
 
@@ -53,7 +54,7 @@ ms.locfileid: "87852968"
 1. 在 [我的組織使用的 API] 底下，搜尋 Azure 醫療保健 API。
 1. 選取 **user_impersonation**，然後按一下 [新增權限]。
 
-:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="[新增 API 權限] 刀鋒視窗的螢幕擷取畫面，其中已醒目提示新增 API 權限的步驟。":::
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="[註冊應用程式] 窗格的螢幕擷取畫面，以及範例應用程式名稱和重新導向 URL。":::
 
 ## <a name="next-steps"></a>後續步驟
 您現在有一個公用用戶端應用程式。 在下一個教學課程中，我們將逐步解說如何透過 Postman 來測試及取得此應用程式的存取權。

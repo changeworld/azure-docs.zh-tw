@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549087"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Mimecast Personal Portal 整合
 
@@ -155,23 +155,23 @@ ms.locfileid: "88549087"
 
 1. 瀏覽至 [系統管理] > [服務] > [應用程式]。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/services.png)
+    ![此螢幕擷取畫面顯示已選取 [應用程式] 的 Mimecast 視窗。](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. 按一下 [驗證設定檔] 索引標籤。
     
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![此螢幕擷取畫面顯示已選取 [驗證設定檔] 的 [應用程式] 索引標籤。](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. 按一下 [新驗證設定檔] 索引標籤。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![顯示已選取 [新驗證設定檔] 的螢幕擷取畫面。](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. 在 [描述] 文字方塊中提供有效的描述，然後選取 [強制執行 Mimecast Personal Portal 的 SAML 驗證] 核取方塊。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![顯示已選取 [新驗證設定檔] 的螢幕擷取畫面。](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. 在 [Mimecast Personal Portal 的 SAML 組態] 頁面上，執行下列步驟：
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![此螢幕擷取畫面顯示要為 Administration Console 選取強制執行 SAML 驗證的位置。](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. 針對 [提供者]，從下拉式清單中選取 [Azure Active Directory]。
 
@@ -189,19 +189,19 @@ ms.locfileid: "88549087"
 
 1. 瀏覽至 [系統管理] > [目錄] > [內部目錄]。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![此螢幕擷取畫面顯示 Mimecast Personal Portal 的 SAML 設定，您可以在其中輸入所述的值。](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. 選取您的網域 (如果網域如下所述)，否則請按一下 [新增網域] 來建立新網域。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![此螢幕擷取畫面顯示已選取內部目錄的 Mimecast 視窗。](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. 按一下 [新增位址] 索引標籤。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![顯示已選取網域的螢幕擷取畫面。](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. 在下列頁面上提供必要的使用者資訊：
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的頁面。](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. 在 [電子郵件地址] 文字方塊中，輸入 `B.Simon@yourdomainname.com` 之類的使用者電子郵件地址。
 
@@ -215,7 +215,7 @@ ms.locfileid: "88549087"
 
     f. 若要將角色指派給使用者，請按一下 [角色編輯]，然後依據您的組織需求，將所需的角色指派給使用者。
 
-    ![Mimecast Personal Portal 設定](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [角色編輯] 的位址設定。](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>測試 SSO 

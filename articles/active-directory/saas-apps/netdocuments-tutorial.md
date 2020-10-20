@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549036"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 NetDocuments 整合
 
@@ -136,7 +136,7 @@ ms.locfileid: "88549036"
 
 3. 選取 [資訊安全中心]  。
    
-    ![存放庫](./media/netdocuments-tutorial/security-center.png "資訊安全中心")
+    ![顯示從法律文件選取 [資訊安全中心] 的螢幕擷取畫面。](./media/netdocuments-tutorial/security-center.png "資訊安全中心")
 
 4. 選取 [進階驗證]  。
     
@@ -166,7 +166,7 @@ ms.locfileid: "88549036"
 
 3. 選取 [使用者和群組]  。
    
-    ![存放庫](./media/netdocuments-tutorial/users-groups.png "Repository")
+    ![顯示從法律文件選取 [使用者和群組] 的螢幕擷取畫面。](./media/netdocuments-tutorial/users-groups.png "Repository")
 
 4. 在 [電子郵件地址]  文字方塊中輸入您想要佈建的有效 Azure Active Directory 帳戶電子郵件地址，然後按一下 [新增使用者]  。
    

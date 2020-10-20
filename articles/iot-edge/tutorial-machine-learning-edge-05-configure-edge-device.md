@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448509"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974544"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教學課程：設定 IoT Edge 裝置
 
@@ -96,7 +96,7 @@ ms.locfileid: "91448509"
 
 若要將 Azure IoT Edge 裝置連線到 IoT 中樞，首先我們要在中樞中建立裝置的身分識別。 我們會從雲端中的裝置身分識別取得連接字串，並使用它來設定 IoT Edge 裝置上的執行階段。 一旦已設定好的裝置連線到中樞，我們就可以部署模組並傳送訊息。 我們還可以透過變更實體 IoT Edge 裝置在 IoT 中樞中的對應裝置身分識別，來變更其設定。
 
-在此教學課程中，我們會使用 Visual Studio Code 建立新的裝置身分識別。 您也可以使用 [Azure 入口網站](how-to-register-device.md#register-in-the-azure-portal)或 [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) 來完成這些步驟。
+在此教學課程中，我們會使用 Visual Studio Code 建立新的裝置身分識別。 您也可以使用 Azure 入口網站或 Azure CLI 來完成這些步驟。
 
 1. 在您的開發電腦上，開啟 Visual Studio Code。
 
@@ -294,12 +294,9 @@ IoT Edge 執行階段會使用檔案 `/etc/iotedge/config.yaml` 來保存其設�
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-
 ## <a name="next-steps"></a>後續步驟
 
 我們剛剛將 Azure VM 設定為 Azure IoT Edge 透明閘道。 我們首先產生測試憑證，然後將其上傳至 Azure Key Vault。 接下來，我們使用指令碼和 Resource Manager 範本從 Azure Marketplace 部署具有 "Ubuntu Server 16.04 LTS + Azure IoT Edge 執行階段" 映像的 VM。 當我們透過 SSH 所連線的 VM 啟動並執行時，我們便登入到 Azure，並從 Key Vault 下載了憑證。 我們已藉由更新 config.yaml 檔案，對 IoT Edge 執行階段的設定進行了數項更新。
-
-如需詳細資訊，請參閱[如何使用 IoT Edge 裝置作為閘道](iot-edge-as-gateway.md)和[設定 IoT Edge 裝置作為透明閘道](how-to-create-transparent-gateway.md)。
 
 請前往下一篇文章以建置 IoT Edge 模組。
 

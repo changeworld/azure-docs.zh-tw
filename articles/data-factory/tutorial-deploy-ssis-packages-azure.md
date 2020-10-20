@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 24ae71206188dc6d60f6a37629ad55ae4d4c1567
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185514"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015357"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中佈建 Azure-SSIS 整合執行階段
 
@@ -176,6 +176,9 @@ Azure-SSIS IR 套件存放區可讓您透過 SSMS (類似於[舊版 SSIS 套件�
    1. 針對 [套件存放區名稱]，輸入套件存放區的名稱。 
 
    1. 針對 [套件存放區連結的服務]，選取現有的連結服務，其儲存您的套件部署所在檔案系統/Azure 檔案儲存體/Azure SQL 受控執行個體的存取資訊，或選取 [新增] 來建立新的服務。 在 [新增連結服務] 窗格上，完成下列步驟。 
+
+      > [!NOTE]
+      > 您可以使用 [Azure 檔案儲存體] 或 [檔案系統] 連結服務來存取 Azure 檔案儲存體。 如果您使用 [Azure 檔案儲存體] 連結服務，則 Azure-SSIS IR 套件存放區目前僅支援 [基本] (不支援 [帳戶金鑰] 和 [SAS URI]) 驗證方法。 若要在 [Azure 檔案儲存體] 連結服務上使用 [基本] 驗證，您可以在瀏覽器中將 `?feature.upgradeAzureFileStorage=false` 附加至 ADF 入口網站 URL。 或者，您可以改用 [檔案系統] 連結服務來存取 Azure 檔案儲存體。 
 
       ![連結服務的部署設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 

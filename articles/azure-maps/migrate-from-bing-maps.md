@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319600"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873739"
 ---
-# <a name="migrate-from-bing-maps-to-azure-maps"></a>從 Bing 地圖服務遷移至 Azure 地圖服務
+# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>教學課程 - 從 Bing 地圖服務遷移至 Azure 地圖服務
 
 本指南將深入解析如何將 Web、行動裝置和伺服器應用程式從 Bing 地圖服務遷移至 Azure 地圖服務平台。 本指南包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。
 

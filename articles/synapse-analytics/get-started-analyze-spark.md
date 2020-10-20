@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017909"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893535"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 進行分析
 
@@ -22,7 +22,7 @@ ms.locfileid: "90017909"
 
 在本教學課程中，您將了解使用適用於 Azure Synapse 的 Apache Spark 來載入和分析資料的基本步驟。
 
-1. 在 [連結] 下的 [資料] 中樞中，以滑鼠右鍵按一下 [Azure Blob 儲存體 > 範例資料集 > nyc_tlc_yellow] 並選取 [選取新筆記本]
+1. 在 [資料] 中樞內，按一下 [新增資源] (**已連結**上方的加號按鈕) >> [瀏覽範例]。 尋找 **NYC 計程車和禮車委員會 - 黃色計程車路線記錄**，然後在其上方按一下。 在頁面底部按 [繼續]，然後**新增資料集**。 現在，在 [已連結] 底下的 [資料] 中樞內，以滑鼠右鍵按一下 [Azure Blob 儲存體 >> 範例資料集 >> nyc_tlc_yellow] 並選取 [新增筆記本]
 1. 這會使用下列程式碼建立新的 Notebook：
     ```
     from azureml.opendatasets import NycTlcYellow
@@ -119,6 +119,6 @@ df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [分析儲存體中的資料](get-started-analyze-storage.md)
+> [使用隨選 SQL 來分析資料](get-started-analyze-sql-on-demand.md)
 
 

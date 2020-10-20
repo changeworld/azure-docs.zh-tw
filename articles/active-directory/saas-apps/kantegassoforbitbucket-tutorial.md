@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 36d843e80f024408747c1f94512a3ccc04c6709b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6acb5f30268f0e771d80489dff52f03eb58234a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546885"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教學課程：Azure Active Directory 與 Kantega SSO for Bitbucket 整合
 
@@ -99,7 +99,7 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Kantega SSO for Bitbucket 網域與 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -107,7 +107,7 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Kantega SSO for Bitbucket 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,39 +134,39 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 1. 按一下齒輪，然後按一下 [尋找新的附加元件]  。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon1.png)
+    ![此螢幕擷取畫面顯示已選取 [尋找新的附加元件] 的 BitBucket 系統管理。](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
 1. 搜尋 **Kantega SSO for Bitbucket SAML & Kerberos**，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon2.png)
+    ![此螢幕擷取畫面顯示 Kantega SSO for Bitbucket SAML & Kerberos 及要安裝的選項。](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
 1. 外掛程式會開始安裝。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon31.png)
+    ![此螢幕擷取畫面顯示安裝進度。](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
 1. 當安裝完成時。 按一下 [關閉]  。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon33.png)
+    ![顯示 [關閉] 按鈕的螢幕擷取畫面。](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
 1. 按一下 [管理]  。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon34.png)
+    ![顯示 [管理] 按鈕的螢幕擷取畫面。](./media/kantegassoforbitbucket-tutorial/addon34.png)
 
 1. 按一下 [設定]  來設定新的外掛程式。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon35.png)
+    ![此螢幕擷取畫面顯示已選取 [設定] 的使用者安裝附加元件。](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
 1. 在 [SAML]  區段中。 從 [新增識別提供者] 下拉式清單中，選取 [Azure Active Directory]\(Azure AD\)。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon4.png)
+    ![此螢幕擷取畫面顯示已選取 Azure AD 作為身分識別提供者的 Kantega 單一登入。](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
 1. 選取 [基本]  作為訂用帳戶層級。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon5.png)
+    ![此螢幕擷取畫面顯示已選取 [基本] 的 [準備 Azure AD]。](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
 1. 在 [應用程式屬性]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon6.png)
+    ![此螢幕擷取畫面顯示用來在此步驟中提供資訊的 [應用程式屬性] 區段。](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
     a. 複製 [應用程式識別碼 URI] 值，然後在 Azure 入口網站的 [基本 SAML 設定] 區段上，使用此 URI 作為 [識別碼]、[回覆 URL] 和 [登入 URL]。
 
@@ -174,7 +174,7 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 1. 在 [中繼資料匯入]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon7.png)
+    ![此螢幕擷取畫面顯示您可以在其中瀏覽至中繼資料檔案的 [中繼資料匯入] 區段。](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
     a. 選取 [我的電腦上的中繼資料檔案]  ，上傳您從 Azure 入口網站下載的中繼資料檔案。
 
@@ -182,7 +182,7 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 1. 在 [名稱和 SSO 位置]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon8.png)
+    ![此螢幕擷取畫面顯示其中 Azure AD 是身分識別提供者名稱的 [名稱和 SSO 位置]。](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
     a. 在 [識別提供者名稱]  文字方塊中，新增識別提供者的名稱 (例如 Azure AD)。
 
@@ -190,11 +190,11 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 1. 確認簽署憑證，然後按 [下一步]  。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon9.png)
+    ![此螢幕擷取畫面會顯示簽章驗證。](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
 1. 在 [Bitbucket 使用者帳戶]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon10.png)
+    ![此螢幕擷取畫面顯示其中具有建立使用者選項的 BitBucket 使用者帳戶。](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
     a. 選取 [如果需要，在 Bitbucket 的內部目錄中建立使用者]  ，然後輸入使用者群組的適當名稱 (可以是多個 群組，以逗號分隔)。
 
@@ -202,11 +202,11 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [完成]  。
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon11.png)
+    ![顯示 [摘要] 頁面的螢幕擷取畫面。](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
 1. 在 [Azure AD 的已知網域]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforbitbucket-tutorial/addon12.png)
+    ![此螢幕擷取畫面顯示您可以在其中執行這些步驟的 Azure AD 已知網域。](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
     a. 從頁面的左面板中，選取 [已知網域]  。
 
@@ -275,19 +275,19 @@ Kantega SSO for Bitbucket 與 Azure AD 整合提供下列優點：
 
 1. 按一下設定圖示。
 
-    ![新增員工](./media/kantegassoforbitbucket-tutorial/user1.png) 
+    ![顯示 [設定] 圖示的螢幕擷取畫面。](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
 1. 在 [管理]  索引標籤區段下，按一下 [使用者]  。
 
-    ![新增員工](./media/kantegassoforbitbucket-tutorial/user2.png)
+    ![此螢幕擷取畫面顯示已選取 [使用者] 的 BitBucket 系統管理。 ](./media/kantegassoforbitbucket-tutorial/user2.png)
 
 1. 按一下 [建立使用者]  。
 
-    ![新增員工](./media/kantegassoforbitbucket-tutorial/user3.png)   
+    ![此螢幕擷取畫面顯示已選取 [建立使用者] 的 BitBucket 系統管理。](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
 1. 在 [建立使用者]  對話頁面上，執行下列步驟：
 
-    ![新增員工](./media/kantegassoforbitbucket-tutorial/user4.png) 
+    ![此螢幕擷取畫面顯示您可以在其中執行這些步驟的 [建立使用者] 對話方塊。](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
     a. 在 [使用者名稱]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件。
 

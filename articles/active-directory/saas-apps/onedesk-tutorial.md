@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c3eb3706858bd2bfd2160e58698c0f5136c41f3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3e8ed59783a6a714434b17a1d1abbb22fbe30939
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547901"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944001"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OneDesk 整合
 
@@ -141,7 +141,7 @@ ms.locfileid: "88547901"
 
 1. 按一下 [整合]  索引標籤。
 
-    ![[設定] 索引標籤](./media/onedesk-tutorial/img-integration.png)
+    ![顯示已選取 [整合] 索引標籤的螢幕擷取畫面。](./media/onedesk-tutorial/img-integration.png)
 
 1. 按一下 [單一登入]  ，選取 [上傳中繼資料檔案]  並按一下 [選擇檔案]  以上傳您從 Azure 入口網站下載的中繼資料檔案。
 

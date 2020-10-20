@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c9c4cef07bf1de64bcb14bc4487e0f56d2a40dfc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bdeec23b6b0a0ef2884fa35bd0a576ef57bb7853
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518536"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>教學課程：Azure Active Directory 與 Mozy Enterprise 整合
 
@@ -126,11 +126,11 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
 
 2. 在 [組態]  區段中，按一下 [驗證原則]  。
    
-    ![驗證原則](./media/mozy-enterprise-tutorial/ic777314.png "驗證原則")
+    ![顯示從設定中選取 [驗證原則] 的螢幕擷取畫面。](./media/mozy-enterprise-tutorial/ic777314.png "驗證原則")
 
 3. 在 [驗證原則]  區段中，執行下列步驟：
    
-    ![驗證原則](./media/mozy-enterprise-tutorial/ic777315.png "驗證原則")
+    ![此螢幕擷取畫面顯示可以在其中輸入所述值的 [驗證原則] 區段。](./media/mozy-enterprise-tutorial/ic777315.png "驗證原則")
    
     a. 選取 [目錄服務]  做為**提供者**。
    

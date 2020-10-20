@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e1e966595422f353067d66483defa0b880874415
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535334"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>教學課程：Azure Active Directory 與 Kintone 整合
 
@@ -145,7 +145,7 @@ Kintone 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [啟用 SAML 驗證]  。
 
-    ![SAML 驗證](./media/kintone-tutorial/ic785882.png "SAML 驗證")
+    ![顯示已選取 [使用者與系統管理] 的螢幕擷取畫面。](./media/kintone-tutorial/ic785882.png "SAML 驗證")
 
 1. 在 [SAML 驗證] 區段中，執行下列步驟：
 
@@ -232,7 +232,7 @@ Kintone 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [新使用者]  。
 
-    ![新增使用者](./media/kintone-tutorial/ic785889.png "新增使用者")
+    ![顯示 [使用者] 區段的螢幕擷取畫面，其中已選取 [新增使用者] 動作。](./media/kintone-tutorial/ic785889.png "新增使用者")
 
 1. 在 [新增使用者]  區段中，執行下列步驟：
 

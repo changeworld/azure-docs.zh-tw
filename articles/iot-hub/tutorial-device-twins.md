@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251876"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842762"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -191,11 +191,11 @@ node ServiceClient.js "{your service connection string}"
 
 下列螢幕擷取畫面顯示模擬裝置應用程式的輸出，並醒目提示它如何處理 **maxTemperature** 所需屬性的更新。 您可以看到最上層處理常式和氣候元件處理常式的執行情形：
 
-![模擬裝置](./media/tutorial-device-twins/SimulatedDevice1.png)
+![此螢幕擷取畫面顯示最上層處理常式和氣候元件處理常式的執行情形。](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 下列螢幕擷取畫面顯示後端應用程式的輸出，並醒目提示它如何傳送 **maxTemperature** 所需屬性的更新：
 
-![後端應用程式](./media/tutorial-device-twins/BackEnd1.png)
+![此螢幕擷取畫面顯示後端應用程式的輸出，並醒目提示其傳送更新的方式。](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>接收狀態資訊
 

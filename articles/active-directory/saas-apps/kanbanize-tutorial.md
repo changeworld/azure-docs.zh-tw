@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546826"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Kanbanize 整合
 
@@ -153,7 +153,7 @@ ms.locfileid: "88546826"
 
 5. 從功能表左側的 [系統管理面板] 頁面上，按一下 [整合]  ，然後再啟用 [單一登入]  。
 
-    ![Kanbanize 整合](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![此螢幕擷取畫面顯示已選取整合的 [系統管理] 面板。](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
 6. 在 [整合] 區段下，按一下 [設定]  來開啟 [單一登入整合]  頁面。
 
@@ -161,7 +161,7 @@ ms.locfileid: "88546826"
 
 7. 在 [單一登入整合]  頁面的 [設定]  底下，執行下列步驟：
 
-    ![Kanbanize 整合](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![此螢幕擷取畫面顯示用來在此步驟中輸入值的 [單一登入整合] 頁面。](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. 在 [Idp 實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 

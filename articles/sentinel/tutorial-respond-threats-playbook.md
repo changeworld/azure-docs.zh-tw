@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053485"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840195"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教學課程：在 Azure Sentinel 中設定自動化威脅回應
 
@@ -72,7 +72,7 @@ ms.locfileid: "88053485"
 
 5. 在[**邏輯應用程式設計工具**](../logic-apps/logic-apps-overview.md)中，選取您想要使用的範本。 如果您選取需要認證的範本，就必須提供它們。 或者，可從頭開始建立新的空白劇本。 選取 [空白邏輯應用程式]。 
 
-   ![邏輯應用程式設計工具](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![顯示空白邏輯應用程式面板的螢幕擷取畫面。](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. 您會前往邏輯應用程式設計工具，您可以在其中建立新的或編輯範本。 請深入了解如何使用 [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md) 建立劇本。
 

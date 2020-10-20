@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 藍圖範例控制項
-description: ISO 27001 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
+description: ISO 27001 藍圖範例的控制項對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: a0d5b1118e1e063f7b4f8757e7d1b3935dc1a37c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6e72f8ca25939b1cad8b2a5dc5bd3fc5fc286027
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535758"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931949"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 藍圖範例的控制項對應
 
@@ -17,7 +17,7 @@ ms.locfileid: "91535758"
 以下是與 **ISO 27001:2013** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 ISO 27001:2013 控制項並部署特定的 VM 延伸模組，以支援稽核需求**內建原則方案。
 
 > [!IMPORTANT]
-> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md) \(英文\)。
+> 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md) \(英文\)。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 權責區分
 
@@ -108,8 +108,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 使用密碼編譯控制項的原則
 
-此藍圖指派了 13 項 [Azure 原則](../../../policy/overview.md)定義，據以強制執行特定的密碼編譯控制項及稽核弱式密碼編譯設定的使用，以協助您強制執行密碼編譯控制項的使用原則。
-了解您的 Azure 資源在哪些層面可能使用非最佳化的密碼編譯組態，有助於您採取更正措施，以確保資源會根據您的資訊安全性原則進行設定。 具體而言，此藍圖所指派的原則會要求 Blob 儲存體帳戶和 Data Lake Storage 帳戶必須加密；SQL 資料庫必須進行透明資料加密；稽核儲存體帳戶、SQL 資料庫、虛擬機器磁碟和自動化帳戶變數是否缺少加密；稽核儲存體帳戶、函式應用程式、Web 應用程式、API 應用程式和 Redis 快取的連線是否不安全；稽核弱式虛擬機器密碼加密；稽核未加密的 Service Fabric 通訊。
+此藍圖指派了 13 項 [Azure 原則](../../../policy/overview.md)定義，據以強制執行特定的密碼編譯控制項及稽核弱式密碼編譯設定的使用，以協助您強制執行密碼編譯控制項的使用原則。 了解您的 Azure 資源在哪些層面可能使用非最佳化的密碼編譯組態，有助於您採取更正措施，以確保資源會根據您的資訊安全性原則進行設定。 具體而言，此藍圖所指派的原則會要求 Blob 儲存體帳戶和 Data Lake Storage 帳戶必須加密；SQL 資料庫必須進行透明資料加密；稽核儲存體帳戶、SQL 資料庫、虛擬機器磁碟和自動化帳戶變數是否缺少加密；稽核儲存體帳戶、函式應用程式、Web 應用程式、API 應用程式和 Redis 快取的連線是否不安全；稽核弱式虛擬機器密碼加密；稽核未加密的 Service Fabric 通訊。
 
 - 函式應用程式應只可經由 HTTPS 存取
 - Web 應用程式應只可經由 HTTPS 存取

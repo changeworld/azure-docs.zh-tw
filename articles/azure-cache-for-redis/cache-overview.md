@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ec2a302226e3dc44701209a8cbb47b7814a5a2c
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631371"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874844"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis 會根據開放原始碼軟體 [Redis](https://redis.io/) 提供記憶體中的資料存放區。 針對在後端資料存放區上重度使用的應用程式，Redis 可改善其效能和可擴縮性。 其可以處理大量的應用程式要求，方法是將經常存取的資料保留在伺服器記憶體中，以供快速地寫入和讀取。 Redis 將重要的低延遲和高輸送量資料儲存解決方案帶入到現代化的應用程式。
@@ -70,7 +70,7 @@ Azure Cache for Redis 可在以下層級使用：
 * **記憶體**：「基本」層和「標準」層提供 250 MB – 53 GB。 進階層最多可提供 1.2 TB (作為叢集) 或 120 GB (非叢集)。 如需詳細資訊，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/pricing/details/cache/)。
 * **網路效能**：如果您的工作負載需要高輸送量，與「標準」層或「基本」層相比，「進階」層可提供更大的頻寬。 此外，因為每一層內有裝載快取的基礎 VM，較大型快取還有更大頻寬。 如需詳細資訊，請參閱 [Azure Cache for Redis 效能](cache-planning-faq.md#azure-cache-for-redis-performance)。
 * **輸送量**：「進階」層提供最大的可用輸送量。 如果快取伺服器或用戶端達到頻寬限制，您在用戶端可能會收到逾時。 如需詳細資訊，請參閱下列表格。
-* **高可用性**：根據我們的 [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)，Azure Cache for Redis 會保證標準/進階快取的可用性。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
+* **高可用性**：Azure Cache for Redis 提供多個[高可用性](cache-high-availability.md)選項。 根據我們的 [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)，其保證標準/進階快取的可用性。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
 * **Redis 資料永續性**：高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在基本/標準快取中，所有資料都只儲存在記憶體中。 基礎結構發生問題，可能會導致資料遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 「Azure Redis 快取」在 Redis 持續性中提供 RDB 和 AOF (預覽) 選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
 * **Redis 叢集**：若要建立大於 120 GB 的快取，或要跨多個 Redis 節點將資料分區，您可以使用「進階」層所提供的 Redis 叢集功能。 每個節點均包含一個主要/複本快取組以提供高可用性。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
 * **增強的安全性與網路隔離**：「Azure 虛擬網路」(VNET) 部署除了為「Azure Redis 快取」提供子網路、存取控制原則及其他可進一步限制存取的功能之外，也提供增強的安全性與隔離環境。 如需詳細資訊，請參閱[如何設定進階 Azure Cache for Redis 的虛擬網路支援](cache-how-to-premium-vnet.md)。

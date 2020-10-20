@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006341"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215598"
 ---
 # <a name="table-design-patterns"></a>資料表設計模式
 本文將說明一些適用於表格服務方案的模式。 此外，您會了解如何有效處理其他表格儲存體設計文章中討論的一些問題和取捨。 下圖摘要說明不同模式之間的關聯性：  
@@ -34,7 +34,7 @@ ms.locfileid: "89006341"
 
 如果您也想能夠根據其他屬性 (例如電子郵件地址) 的值尋找員工實體，您必須使用效率較低的資料分割掃描來尋找相符項目。 這是因為資料表服務不會提供次要索引。 此外，您無法要求以 **RowKey** 順序以外的不同順序來排序的員工清單。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本分別使用不同 **RowKey** 值。 如果您使用如下所示的結構來儲存實體，就能夠根據電子郵件地址或員工識別碼，有效率地擷取員工實體。 **RowKey**"empid_" 和 "email_" 的前置詞值可讓您使用一系列的電子郵件地址或員工識別碼，來查詢單一員工或某個範圍的員工。  
 
 ![員工實體](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
@@ -89,7 +89,7 @@ ms.locfileid: "89006341"
 
 您預期這些實體會有大量的交易，而且想要將資料表服務對用戶端進行節流的風險降至最低。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本分別使用不同的 **PartitionKey** 和 **RowKey** 值。 如果您使用如下所示的結構來儲存實體，就能夠根據電子郵件地址或員工識別碼，有效率地擷取員工實體。 **PartitionKey**、"empid_" 及 "email_" 的前置詞值可讓您識別想要用於查詢的索引。  
 
 ![主要索引和次要索引](media/storage-table-design-guide/storage-table-design-IMAGE10.png)
@@ -191,7 +191,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 如果您也想能夠根據其他非唯一屬性 (例如其姓氏) 的值擷取員工實體清單，您必須使用效率較低的資料分割掃描來尋找相符項目，而不要使用索引直接加以查閱。 這是因為資料表服務不會提供次要索引。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 若要依照上述實體結構啟用依姓氏查閱，您必須維護員工識別碼的清單。 如果您想要取出具有特定姓氏 (例如 Jones) 的員工實體，則必須先針對姓氏為 Jones 的員工，找出員工識別碼清單，然後取出這些員工實體。 有三個主要的選項可儲存員工識別碼清單：  
 
 * 使用 Blob 儲存體。  
@@ -294,7 +294,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 假設您要使用下列結構在資料表服務中儲存員工實體：  
 
-![員工實體結構](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![顯示如何將員工實體儲存在資料表服務中的螢幕擷取畫面。](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
 您也需要儲存該員工在組織中工作各年度的考核和績效相關歷史資料，而且您必須能夠依年份存取這項資訊。 建立另一個資料表來儲存具有下列結構的實體，是可行選項之一：  
 
@@ -302,7 +302,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 請注意，使用此方法時，您可以選擇在新的實體中重複某些資訊 (例如名字和姓氏)，以便透過單一要求擷取您的資料。 不過，您無法維護強式一致性，因為您無法使用 EGT 自動更新兩個實體。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 使用具有下列結構的實體，在您的原始資料表中儲存新的實體類型：  
 
 ![員工實體結構的解決方案](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
@@ -336,7 +336,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 常見的需求是能夠抓取最近建立的實體，例如員工所提交的10個最新的支出宣告。 資料表查詢支援 **$top** 查詢作業，以從某個集合中傳回前 *n* 個實體：沒有對等的查詢作業可傳回某個集合中的最後 n 個實體。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 儲存使用可自然以反向的日期/時間順序排序的 **RowKey** 的實體，使最新的項目一律排在資料表中的首位。  
 
 例如，若要能夠取出員工所提交的10個最新的費用宣告，您可以使用衍生自目前日期/時間的反向刻度值。 下列 C# 程式碼範例說明如何針對從最新排序到最舊的 **RowKey** 建立適當的「反向刻度」值：  
@@ -437,7 +437,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 個別實體可以擁有超過 252 個 (不含必要的系統屬性) 屬性，而且無法儲存總計超過 1 MB 的資料。 在關聯式資料庫中，您會通常可藉由新增資料表並對其施行一對一關聯性，來解決任何資料列的大小限制。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 使用資料表服務，可讓您儲存多個實體來代表具有超過 252 個屬性的單一大型商業物件。 例如，如果您想要儲存每個員工在 365 天內傳送的 IM 訊息計數，您可以採用下列設計，使用兩個具有不同結構描述的實體：  
 
 ![多個實體](media/storage-table-design-guide/storage-table-design-IMAGE24.png)
@@ -464,7 +464,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 ### <a name="context-and-problem"></a>內容和問題
 個別實體無法儲存總計超過 1 MB 的資料。 如果有一或多個屬性所儲存的值會導致您的實體大小總計超過此值，您將無法在資料表服務中儲存整個實體。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 如果您的實體因為一或多個屬性包含大量資料而使大小超過 1 MB，您可以將資料儲存在 Blob 服務，然後將 Blob 的位址儲存在實體的屬性中。 比方說，您可以在 Blob 儲存體中儲存員工的相片，並將相片的連結儲存在員工實體的 **Photo** 屬性中：  
 
 ![相片屬性](media/storage-table-design-guide/storage-table-design-IMAGE25.png)
@@ -494,7 +494,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 
 ![實體結構](media/storage-table-design-guide/storage-table-design-IMAGE26.png)
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 下列替代實體結構可在應用程式記錄事件時避免在任何特定資料分割上產生熱點：  
 
 ![替代的實體結構](media/storage-table-design-guide/storage-table-design-IMAGE27.png)
@@ -533,7 +533,7 @@ $filter = (PartitionKey eq ' Sales ' ) and (RowKey ge ' empid_000123 ' ) and (Ro
 
 不過，此結構描述的問題是，若要擷取特定時間範圍內的所有記錄訊息，您必須在資料表中搜尋每個資料分割。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 上一節加強說明了嘗試使用資料表服務來儲存記錄項目的問題，並提供了兩個無法令人滿意的設計。 一個方案會導致熱點資料分割，且具有寫入記錄檔訊息效能不佳的風險；另一個方案會導致查詢效能不佳，因為必須要掃描資料表中的每個資料分割，才能擷取特定時間範圍內的記錄訊息。 Blob 儲存體可為這種類型的案例提供更好的方案，Azure Storage Analytics 就是以此方式來儲存它所收集到的記錄資料。  
 
 本節概述 Storage Analytics 將記錄資料儲存在 Blob 儲存體中的方式，以說明如何以此方法儲存您常會依範圍查詢的資料。  

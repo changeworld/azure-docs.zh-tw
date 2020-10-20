@@ -4,83 +4,199 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28bcaa898bbf6621295bc5096a924d39073e727e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 8286c0d45700eb976825403ae4321878f87f00ad
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604947"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989667"
 ---
-本指南提供指示和範例程式碼，可協助您開始使用適用於 C# 的自訂視覺用戶端程式庫來建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
+開始使用適用於 .NET 的自訂視覺用戶端程式庫。 請遵循下列步驟來安裝套件，並試用建立影像分類模型的程式碼範例。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
 > [!NOTE]
-> 如果您想要在「不用」撰寫程式碼的情況下，建立和訓練分類模型，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+> 如果您想要在「不用」撰寫程式碼的情況下建立和定型分類模型，請參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
 
-## <a name="prerequisites"></a>先決條件：
+使用適用於 .NET 的自訂視覺用戶端程式庫可執行下列作業：
 
-- [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 的任何版本
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* 建立新的自訂視覺專案
+* 將標記新增至專案
+* 上傳和標記影像
+* 為專案定型
+* 發佈目前的反覆項目
+* 測試預測端點
 
-## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
+[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | 程式庫原始程式碼 [(定型)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(預測)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | 套件 (NuGet) [(定型)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(預測)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision)
 
-若要使用適用於 .NET 的自訂視覺來撰寫影像分析應用程式，您將需要自訂視覺 NuGet 套件。 這些套件包含在您將會下載的專案範例內，但您可以在此個別存取這些套件。
 
-- [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
-- [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
+## <a name="prerequisites"></a>必要條件
 
-複製或下載[認知服務 .NET 範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)專案。 在 Visual Studio 中瀏覽至 **CustomVision/ImageClassification** 資料夾並開啟 _ImageClassification.csproj_。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或目前版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="建立自訂視覺資源"  target="_blank">建立自訂視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以建立定型和預測資源及取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至自訂視覺。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
-此 Visual Studio 專案會建立名為__我的新專案__的新自訂視覺專案，而此專案可透過[自訂視覺網站](https://customvision.ai/)來存取。 然後上傳影像以便為分類器定型並加以測試。 在此專案中，分類器會用來判斷影像是「鐵杉」____ 還是「日本櫻」____。
+## <a name="setting-up"></a>設定
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
-## <a name="examine-the-code"></a>檢查程式碼
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-開啟 _Program.cs_ 檔案，並檢查程式碼。 分別為您名為 `CUSTOM_VISION_TRAINING_KEY` 和 `CUSTOM_VISION_PREDICTION_KEY` 的定型和預測金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 指令碼會尋找這些變數。
+使用 Visual Studio，建立新的 .NET Core 應用程式。 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
+### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-此外，請從自訂視覺網站的 [設定] 頁面取得您的 [端點 URL]。 將它儲存到名為 `CUSTOM_VISION_ENDPOINT` 的環境變數。 指令碼會將它的參考儲存在類別的根目錄。
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` 和 `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction`。 選取最新版本，然後選取 [安裝]。 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_endpoint)]
+#### <a name="cli"></a>[CLI](#tab/cli)
 
-以下幾行程式碼會執行專案的主要功能。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `custom-vision-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*program.cs*。 
 
-## <a name="create-a-new-custom-vision-service-project"></a>建立新的自訂視覺服務專案
+```console
+dotnet new console -n custom-vision-quickstart
+```
 
-所建立的專案會顯示在您稍早瀏覽過的[自訂視覺網站](https://customvision.ai/)上。 當您建立專案時，請參閱 [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) 方法來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。   
+將目錄變更為新建立的應用程式資料夾。 您可以使用下列命令來建置應用程式：
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
+```console
+dotnet build
+```
 
-## <a name="create-tags-in-the-project"></a>在專案中建立標記
+建置輸出應該不會有警告或錯誤。 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_tags)]
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
+
+### <a name="install-the-client-library"></a>安裝用戶端程式庫 
+
+在應用程式目錄中，使用下列命令安裝適用於 .NET 的自訂視覺用戶端程式庫：
+
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training --version 2.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction --version 2.0.0
+```
+
+---
+
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs) 上找到該檔案，其中包含本快速入門中的程式碼範例。
+
+從專案目錄中中開啟 program.cs 檔案，並新增下列 `using` 指示詞：
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_imports)]
+
+
+在應用程式的 **Main** 方法中，為資源的金鑰和端點建立變數。 您也會宣告一些要在稍後使用的基本物件。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_creds)]
+
+> [!IMPORTANT]
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的自訂視覺資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 您必須同時取得定型和預測金鑰。
+>
+> 切記，完成時從程式碼中移除金鑰，且切勿公開發佈金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+
+在應用程式的 **Main** 方法中，針對本快速入門中使用的方法新增呼叫。 您稍後會實作這些呼叫。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_maincalls)]
+
+## <a name="object-model"></a>物件模型
+
+|名稱|描述|
+|---|---|
+|[CustomVisionTrainingClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-dotnet) | 此類別會處理模型的建立、定型和發佈。 |
+|[CustomVisionPredictionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)| 此類別會處理您的模型查詢，以進行影像分類預測。|
+|[PredictionModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet-preview)| 此類別會定義單一影像上的單一預測。 其中包含物件識別碼和名稱的屬性，以及信賴分數。|
+
+## <a name="code-examples"></a>程式碼範例
+
+這些程式碼片段說明如何使用適用於 .NET 的自訂視覺用戶端程式庫來執行下列工作：
+
+* [驗證用戶端](#authenticate-the-client)
+* [建立新的自訂視覺專案](#create-a-new-custom-vision-project)
+* [將標記新增至專案](#add-tags-to-the-project)
+* [上傳和標記影像](#upload-and-tag-images)
+* [為專案定型](#train-the-project)
+* [發佈目前的反覆項目](#publish-the-current-iteration)
+* [測試預測端點](#test-the-prediction-endpoint)
+
+
+## <a name="authenticate-the-client"></a>驗證用戶端
+
+在新方法中，使用您的端點和金鑰來具現化定型和預測用戶端。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_auth)]
+
+## <a name="create-a-new-custom-vision-project"></a>建立新的自訂視覺專案
+
+此下一段程式碼會建立影像分類專案。 所建立的專案會顯示在[自訂視覺網站](https://customvision.ai/)上。 當您建立專案時，請參閱 [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) 方法來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。  
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
+
+
+## <a name="add-tags-to-the-project"></a>將標記新增至專案
+
+此方法會定義您將用來定型模型的標記。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_addtags)]
 
 ## <a name="upload-and-tag-images"></a>上傳和標記影像
 
-此專案的影像會包含在其中。 它們會在 _Program.cs_ 的 **LoadImagesFromDisk** 方法中受到參考。 您最多可以在單一批次中上傳 64 個影像。
+首先，下載此專案的範例影像。 將[範例影像資料夾](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的內容儲存到您的本機裝置。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
+然後定義 Helper 方法，以在此目錄中上傳影像。 您可能需要編輯 **GetFiles** 引數，以指向您影像的儲存位置。
 
-## <a name="train-the-classifier-and-publish"></a>訓練分類器並發佈
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_loadimages)]
 
-此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 您可以使用反覆項目的名稱來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
+接下來，定義方法來上傳影像，並根據其資料夾位置來套用標記 (影像已經排序)。 您可以反覆地或以批次 (每個批次最多 64 個) 方式上傳和標記影像。 此程式碼片段包含兩者的範例。 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
-## <a name="set-the-prediction-endpoint"></a>設定預測端點
 
-預測端點可作為參考供您用來提交影像給目前的模型，並取得分類預測。
+## <a name="train-the-project"></a>為專案定型
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction_endpoint)]
+此方法會建立專案中的第一個定型反覆運算。 其會查詢服務，直到定型完成為止。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
+
+> [!TIP]
+> 使用選取的標記進行訓練
+>
+> 您可以選擇只在已套用的標記子集上進行訓練。 您可以在尚未套用足夠的特定標記，但其他套用的標記已足夠時執行此操作。 在 [TrainProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) 呼叫中，使用 *trainingParameters* 參數。 建構 [TrainingParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters?view=azure-dotnet&preserve-view=true)，並將其 **SelectedTags** 屬性設定為您要使用的標記識別碼清單。 此模型將訓練為僅辨識該清單上的標記。
+
+## <a name="publish-the-current-iteration"></a>發佈目前的反覆項目
+
+此方法會讓模型的目前反覆運算可供查詢。 您可以使用模型名稱作為參考，以傳送預測要求。 您必須針對 `predictionResourceId` 輸入自己的值。 您可以在 Azure 入口網站中資源的 [概觀] 索引標籤上找到預測資源識別碼，該識別碼列為 [訂用帳戶識別碼]。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_publish)]
+
 
 ## <a name="test-the-prediction-endpoint"></a>測試預測端點
 
-在此指令碼中，會以 **LoadImagesFromDisk** 方法載入測試影像，且會在主控台中顯示模型的預測輸出。 `publishedModelName` 變數的值應該對應至位在自訂視覺入網站 [效能] 索引標籤上的 [發行形式] 值。 
+這部分的指令碼會載入測試影像、查詢模型端點，並將預測資料輸出至主控台。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_test)]
+
 
 ## <a name="run-the-application"></a>執行應用程式
+
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
+
+按一下 IDE 視窗頂端的 [偵錯] 按鈕，以執行應用程式。
+
+#### <a name="cli"></a>[CLI](#tab/cli)
+
+使用 `dotnet run` 命令從您的應用程式目錄執行應用程式。
+
+```dotnet
+dotnet run
+```
+
+---
 
 應用程式在執行時，應會開啟主控台視窗並寫入下列輸出：
 

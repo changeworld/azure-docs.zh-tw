@@ -2,17 +2,17 @@
 title: 教學課程 - 使用適用於 Node.js 的 Azure Batch 用戶端程式庫
 description: 了解 Azure Batch 的基本概念和使用 Node.js 建置簡單的解決方案。
 ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 10/08/2020
+ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780169"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850603"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>開始使用適用於 Node.js 的 Batch SDK
 
-了解如何使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中建置 Batch 用戶端的基本概念。 我們會逐步了解批次應用程式的案例，然後使用 Node.js 用戶端加以設定。  
+了解如何使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中建置 Batch 用戶端的基本概念。 我們會逐步了解批次應用程式的案例，然後使用 Node.js 用戶端加以設定。
 
 ## <a name="prerequisites"></a>Prerequisites
 本文假設您已具備 Node.js 的使用知識並熟悉 Linux。 同時假設您的 Azure 帳戶設有存取權限，可建立 Batch 和儲存體服務。
@@ -174,7 +174,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,7 +241,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
@@ -252,7 +252,7 @@ Azure Batch 作業是相似工作的邏輯群組。 在我們的案例中，這�
 這些工作會以平行方式執行並且部署於多個節點 (由 Azure Batch 服務協調)。
 
 > [!Tip]
-> 您可以使用 [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 屬性來指定可以在單一節點上同時執行的工作數目上限。
+> 您可以使用 [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 屬性來指定可以在單一節點上同時執行的工作數目上限。
 >
 >
 
@@ -317,7 +317,7 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +325,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,7 +339,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-此程式碼會將多個工作新增至集區。 而每項工作會在所建立 VM 集區中的節點上執行。 如果工作數目超過集區或 maxTasksPerNode 屬性中的 VM 數目，工作會等到節點可用為止。 Azure Batch 會自動處理此協調流程。
+此程式碼會將多個工作新增至集區。 而每項工作會在所建立 VM 集區中的節點上執行。 如果工作數目超過集區或 taskSlotsPerNode 屬性中的 VM 數目，工作會等到節點可用為止。 Azure Batch 會自動處理此協調流程。
 
 入口網站有工作與作業狀態的詳細檢視。 您也可以使用此清單並取得 Azure 節點 SDK 中的函式。 文件[連結](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)中會提供詳細資料。
 

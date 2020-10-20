@@ -3,12 +3,12 @@ title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
 ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91614252"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892722"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 
@@ -25,7 +25,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 ## <a name="how-its-different-from-arm-templates"></a>與 ARM 範本有何不同
 
-服務的設計目的是協助進行「環境設定」。 此設定通常包含一組資源群組、原則、角色指派和 ARM 範本部署。 藍圖是一種套件，可讓這些「成品」類型集合在一起，並可讓您撰寫及控制該套件的版本，包括透過 CI/CD 管線。 最終，每個成品都可在單一可稽核且可追蹤的作業中指派給訂用帳戶。
+服務的設計目的是協助進行「環境設定」。 此設定通常包含一組資源群組、原則、角色指派和 ARM 範本部署。 藍圖是一種套件，可讓這些「成品」類型集合在一起，並可讓您撰寫及控制該套件的版本，包括透過持續整合和持續傳遞 (CI/CD) 管線。 最終，每個成品都可在單一可稽核且可追蹤的作業中指派給訂用帳戶。
 
 您想要在 Azure 藍圖中為部署所納入的一切，幾乎都可使用 ARM 範本來完成。 不過，ARM 範本並非原生存在於 Azure 中的文件，而是分別儲存在本機或原始檔控制中。 範本可用來部署一或多個 Azure 資源，但是一旦部署那些資源之後，就會失去與範本間的有效聯繫和關聯性。
 

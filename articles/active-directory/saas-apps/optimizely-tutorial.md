@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b963e0b4797af8269b87f704edca231f000c9372
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543970"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教學課程：Azure Active Directory 與 Optimizely 整合
 
@@ -110,7 +110,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
 5. Optimizely 應用程式會預期要有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。 
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 對話方塊的螢幕擷取畫面，其中已選取右上方的 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了以上屬性之外，Optimizely 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -120,7 +120,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
     
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 對話方塊的螢幕擷取畫面，其中已反白顯示 [新增宣告] 和 [儲存] 動作。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -164,7 +164,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
 4. 按一下您在右上角的帳戶名稱，然後按 [帳戶設定]  。
 
-    ![Azure AD 單一登入](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![顯示已在右上角選取帳戶名稱，並已從功能表中選取 [帳戶設定] 的螢幕擷取畫面。](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. 在 [帳戶] 索引標籤的 [概觀] 區段中，選取 [單一登入] 下的 [啟用 SSO] 方塊。
   
@@ -231,7 +231,7 @@ Optimizely 與 Azure AD 整合提供下列優點：
 
 2. 若要將新的共同作業者加入專案，請按一下 [新增共同作業者]  。
    
-    ![建立 Azure AD 測試使用者](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![顯示 Optimizely 首頁的螢幕擷取畫面，其中包含 [共同作業者] 索引標籤，並已選取 [新增共同作業者] 按鈕。](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. 填寫電子郵件地址，並為其指派角色。 按一下 [邀請]  。
 

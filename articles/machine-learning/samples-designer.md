@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889746"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074595"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的範例管線和資料集
 
@@ -67,8 +67,8 @@ ms.locfileid: "90889746"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| [迴歸 - 汽車價格預測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | 使用線性回歸來預測汽車價格。 |
-| [迴歸 - 汽車價格預測 (進階)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | 使用決策樹系和推進式決策樹迴歸輸入變數來預測汽車價格。 比較這兩個模型找出最佳的演算法。
+| [迴歸 - 汽車價格預測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) | 使用線性回歸來預測汽車價格。 |
+| [迴歸 - 汽車價格預測 (進階)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | 使用決策樹系和推進式決策樹迴歸輸入變數來預測汽車價格。 比較這兩個模型找出最佳的演算法。
 
 ## <a name="classification"></a>分類
 
@@ -76,19 +76,17 @@ ms.locfileid: "90889746"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| [具有特徵選取的二元分類 - 收入預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 使用二元推進式決策樹來預測收入的高或低。 使用皮爾森相關來選取功能。
-| [具有自訂 Python 指令碼的二元分類 - 信用風險預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | 將信用應用程式分類為高或低風險。 使用執行 Python 指令碼模組來為資料加權。
-| [二元分類 - 客戶關係預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 使用二元推進式決策樹來預測客戶流失。 使用 SMOTE 來取樣偏差資料。
-| [文字分類 - 維基百科 SP 500 資料集](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 使用多元羅吉斯迴歸將維基百科文章的公司類型分類。 |
+| [具有特徵選取的二元分類 - 收入預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | 使用二元推進式決策樹來預測收入的高或低。 使用皮爾森相關來選取功能。
+| [具有自訂 Python 指令碼的二元分類 - 信用風險預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | 將信用應用程式分類為高或低風險。 使用執行 Python 指令碼模組來為資料加權。
+| [二元分類 - 客戶關係預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | 使用二元推進式決策樹來預測客戶流失。 使用 SMOTE 來取樣偏差資料。
+| [文字分類 - 維基百科 SP 500 資料集](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | 使用多元羅吉斯迴歸將維基百科文章的公司類型分類。 |
 | 多元分類 - 字母辨識 | 建立完善的二元分類器將寫好的字母分類。 |
 
 ## <a name="computer-vision"></a>電腦視覺
 
 探索這些內建的電腦視覺範例。 您可以開啟範例並改為檢視模組註解，以深入了解沒有文件連結的範例。
 
-| 範例標題 | 描述 | 
-| --- | --- |
-| 以 Wide & Deep 為基礎的建議 - 餐廳評等預測 | 從餐廳/使用者特徵和評等建立餐廳推薦程式引擎。|
+| 使用 DenseNet 進行影像分類 | 使用電腦視覺模組來建立以 PyTorch DenseNet 為基礎的影像分類模型。| 
 
 ## <a name="recommender"></a>推薦程式
 
@@ -96,7 +94,8 @@ ms.locfileid: "90889746"
 
 | 範例標題 | 描述 | 
 | --- | --- |
-| 使用 DenseNet 進行影像分類 | 使用電腦視覺模組來建立以 PyTorch DenseNet 為基礎的影像分類模型。| 
+| 以 Wide & Deep 為基礎的建議 - 餐廳評等預測 | 從餐廳/使用者特徵和評等建立餐廳推薦程式引擎。|
+| 建議 - 電影分級推文 | 根據電影/使用者特徵和評等建置電影推薦引擎。|
 
 ## <a name="utility"></a>公用程式
 
@@ -105,7 +104,7 @@ ms.locfileid: "90889746"
 | 範例標題 | 描述 | 
 | --- | --- |
 | 使用 Vowpal Wabbit 模型的二元分類 - 成人收入預測 | Vowpal Wabbit 是一個機器學習系統，其會使用像是線上、雜湊，allreduce、簡化、learning2search、主動和互動式學習的技術，來擴展機器學習的應用。 此範例會示範如何使用 Vowpal Wabbit 模型來建立二元分類模型。 
-| [使用自訂 R 指令碼 - 航班延遲預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | 使用自訂的 R 指令碼來預測排定的客機是否會誤點超過 15 分鐘。
+| [使用自訂 R 指令碼 - 航班延遲預測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | 使用自訂的 R 指令碼來預測排定的客機是否會誤點超過 15 分鐘。
 | 二元分類的交叉驗證 - 成人收入預測 | 使用交叉驗證為成人收入建立二元分類器。
 | 排列功能重要性 | 使用排列功能重要性來計算測試資料集的重要性分數。 
 | 二元分類的參數調整 - 成人收入預測 | 使用調整模型超參數來尋找最佳的超參數，以建置二元分類器。 |
@@ -119,7 +118,7 @@ ms.locfileid: "90889746"
 | 資料集&nbsp;名稱&nbsp;&nbsp;&nbsp;&nbsp;| 資料集說明 |
 |-------------|:--------------------|
 | 成人收入普查二進位分類資料集 | 1994 年普查資料的子集，使用年齡 16 歲以上的成年工作者，和 > 100 的調整收入指數。<br/>**使用量**：使用人口統計來將人口分類，以預測個人年收入是否超過 5 萬元。<br/> **相關研究**：Kohavi, R., Becker, B. (1996)。 [UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml)。 Irvine, CA:University of California, School of Information and Computer Science|
-|汽車價格資料 (原始)|依構造和型號分類的汽車相關資訊，包括價格、性能 (例如汽缸數和油耗)，以及保險風險評分。<br/> 風險分數一開始與自動價格相關聯。 然後它會在精算師稱為符號化的程序中根據實際風險進行調整。 若值為 +3，表示該汽車屬於高風險，若值為 -3，表示大致而言很安全。<br/>**使用方式**：</b>使用迴歸或多變量分類，依特性預測風險評分。<br/>**相關研究**：</b>Schlimmer, J.C. (1987 年)。 [UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml)。 Irvine, CA:University of California, School of Information and Computer Science。 |
+|汽車價格資料 (原始)|依構造和型號分類的汽車相關資訊，包括價格、性能 (例如汽缸數和油耗)，以及保險風險評分。<br/> 風險分數一開始與自動價格相關聯。 然後它會在精算師稱為符號化的程序中根據實際風險進行調整。 若值為 +3，表示該汽車屬於高風險，若值為 -3，表示大致而言很安全。<br/>**使用量**：使用迴歸或多變量分類，依特性預測風險評分。<br/>**相關研究**：Schlimmer, J.C. (1987 年)。 [UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml)。 Irvine, CA:University of California, School of Information and Computer Science。 |
 | 共用 CRM Appetency 標籤 |KDD Cup 2009 客戶關係預測挑戰 ([orange_small_train_appetency.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)) 中的標籤。|
 |共用 CRM 流失標籤|KDD Cup 2009 客戶關係預測挑戰 ([orange_small_train_churn.labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)) 中的標籤。|
 |共用 CRM 資料集 | 此資料來自 KDD Cup 2009 客戶關係預測挑戰 ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip))。 <br/>資料集包含來自法國電信公司 Orange 的 50K 個客戶。 每個客戶都有 230 項不具名的特性，其中有 190 項數值特性和 40 項類別特性。 這些特性非常稀疏。 |
@@ -130,7 +129,9 @@ ms.locfileid: "90889746"
 |電影分級|資料集是 Movie Tweetings 資料集的擴充版本。 資料集包含 17 萬個影片的分級，擷取自 Twitter 上結構良好的推文。 每個執行個體代表推文，並且是 Tuple：使用者識別碼、IMDB 影片識別碼、分級、時間戳記、推文的收藏數，以及這個推文的轉推數。 資料集是由 A. Said、S. Dooms、B. Loni 和 D. Tikk 為 Recommender Systems Challenge 2014 提供。|
 |天氣資料集|NOAA 提供的每小時起降天候觀測值 ([將 201304 的資料合併至 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv))。<br/>天氣資料涵蓋從機場天候觀測站進行的觀測，涵蓋期間為 2013 年 4 月至 10 月。 上傳至設計工具之前，資料集已經過下列處理：    <br/> - 天候觀測站識別碼已對應至相對應的機場識別碼    <br/> - 已篩選掉與 70 個最繁忙的機場沒有關聯的天候觀測站    <br/> - Date 資料行已分割為個別的 Year、Month 和 Day 資料行    <br/> - 已選取下列資料行：AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter|
 |Wikipedia SP 500 資料集|資料是從 Wikipedia (https://www.wikipedia.org/) ) 上每家 S&P 500 公司的文章衍生而來 (儲存為 XML 資料)。    <br/>上傳至設計工具之前，資料集已經過下列處理：    <br/> - 擷取每家特定公司的文字內容    <br/> - 移除 wiki 格式    <br/> - 移除非英數字元    <br/> - 將所有文字轉換為小寫    <br/> - 新增了知名公司類別    <br/>請注意，對某些公司而言，找不到某篇文章，所以記錄筆數小於 500 筆。|
-
+|餐廳特色資料| 一組關於餐廳及其特色的中繼資料，例如食物類型、用餐風格和地點等。 <br/>**使用量**：將此資料集與其他兩個餐廳資料集搭配使用，以將推薦系統定型並進行測試。<br/> **相關研究**：Bache, K. 和 Lichman, M.(2013 年)。 [UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml)。 Irvine, CA:University of California, School of Information and Computer Science。|
+|餐廳評等| 包含使用者給予餐廳的評等，最低為 0，最高為 2。<br/>**使用量**：將此資料集與其他兩個餐廳資料集搭配使用，以將推薦系統定型並進行測試。 <br/>**相關研究**：Bache, K. 和 Lichman, M.(2013 年)。 [UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml)。 Irvine, CA:University of California, School of Information and Computer Science。|
+|餐廳顧客資料| 一組關於顧客的中繼資料，包括人口統計和喜好。 <br/>**使用量**：將此資料集與其他兩個餐廳資料集搭配使用，以將推薦系統定型並進行測試。 <br/> **相關研究**：Bache, K. 和 Lichman, M.(2013 年)。 [UCI Machine Learning 存放庫](https://archive.ics.uci.edu/ml) Irvine, CA：University of California, School of Information and Computer Science。|
 
 ## <a name="clean-up-resources"></a>清除資源
 

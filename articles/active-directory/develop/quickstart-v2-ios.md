@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b171688fa4dbff8d05b3ba03e4e4bd29028983be
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613453"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016139"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -180,7 +180,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > |其中： | 描述 |
 > |---------|---------|
 > | `clientId` | 來自在 *portal.azure.com* 中註冊之應用程式的應用程式識別碼 |
-> | `authority` | Microsoft 身分識別平台端點。 在大部分情況下，這會是 *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Microsoft 身分識別平台端點。 在大多數情況下，這會是 `https://login.microsoftonline.com/common` |
 > | `redirectUri` | 應用程式的重新導向 URI。 您可以傳遞 'nil' 來使用預設值或您自訂的重新導向 URI。 |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>其他應用程式需求 (僅限於 iOS)
@@ -274,3 +274,4 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > [!div class="nextstepaction"]
 > [教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-ios.md)
+

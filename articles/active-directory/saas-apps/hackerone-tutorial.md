@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544174"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教學課程：Azure Active Directory 與 HackerOne 整合
 
@@ -126,11 +126,11 @@ HackerOne 與 Azure AD 整合提供下列優點：
 
 2. 在頂端的功能表中，按一下 [設定]  。
 
-    ![設定單一登入](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![顯示已在功能表中選取 [設定] 的螢幕擷取畫面。](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. 瀏覽至 [驗證]  並按一下 [新增 SAML 設定]  。
 
-    ![設定單一登入](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![顯示 [驗證設定] 頁面的螢幕擷取畫面，其中已選取 [新增 S A M L 設定] 按鈕。](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. 在 [SAML設定]  頁面上，執行下列步驟：
 
@@ -146,7 +146,7 @@ HackerOne 與 Azure AD 整合提供下列優點：
 
 5. 在 [驗證設定] 對話方塊上，執行下列步驟：
 
-    ![設定單一登入](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![顯示 [驗證設定] 對話方塊的螢幕擷取畫面，其中已選取 [執行測試] 按鈕。](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. 按一下 [執行測試]  。
 

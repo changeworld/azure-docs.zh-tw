@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: cfd5cf77b9df8cdd5b856a0b36b9010077a7078a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52fa21e5f881c7811f1f3e61f51d0c5a374a9f77
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68562466"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971283"
 ---
 藉由選取 [檔案] > [組建設定] 來開啟 [組建設定]。
 
@@ -17,7 +17,7 @@ ms.locfileid: "68562466"
 
 選取 [切換平台]  ，將平台變更為 [iOS]  。 Unity 可能會提示您安裝 iOS 支援元件 (如果元件遺失的話)。
 
-![Unity 組建設定視窗](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Unity 組建設定視窗的螢幕擷取畫面。](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 關閉 [組建設定]  視窗。
 

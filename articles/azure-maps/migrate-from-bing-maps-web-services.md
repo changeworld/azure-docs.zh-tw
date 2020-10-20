@@ -1,6 +1,6 @@
 ---
 title: 教學課程：從 Bing 地圖服務遷移 Web 服務 | Microsoft Azure 地圖服務
-description: 如何從 Bing 地圖服務將 Web 服務遷移至 Microsoft Azure 地圖服務。
+description: 如何從 Bing 地圖服務將 Web 服務遷移至 Microsoft Azure 地圖服務的教學課程。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 462befd505333902bd4560f8f1dafeecceffd27f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741664"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873773"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>從 Bing 地圖服務遷移 Web 服務
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>教學課程 - 從 Bing 地圖服務遷移 Web 服務
 
 Azure 地圖服務和 Bing 地圖服務都提供透過 REST Web 服務來存取空間 API 的功能。 這些平台的 API 介面所執行的功能很類似，但所使用的命名慣例和回應物件則不同。
 
