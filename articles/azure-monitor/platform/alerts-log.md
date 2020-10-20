@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299367"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217553"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
 
@@ -201,7 +201,7 @@ ms.locfileid: "91299367"
     > [!NOTE]
     > 記錄警示規則目前為 [無狀態且無法解析](alerts-unified-log.md#state-and-resolving-alerts)。
 
-1. 選取頂端列上的 [ **管理規則** ] 按鈕以編輯規則：
+1. 選取頂端列上的 [ **管理警示規則** ] 按鈕，以編輯規則：
 
     ![ 管理警示規則](media/alerts-log/manage-alert-rules.png)
 

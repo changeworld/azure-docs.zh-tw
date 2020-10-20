@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268820"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218936"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -72,15 +72,15 @@ ms.locfileid: "89268820"
 > 影片名稱不得超過 80 個字元。
 
 1. 登入 [Video Indexer](https://www.videoindexer.ai/) 網站。
-2. 若要上傳影片，請按 [上傳]**** 按鈕或連結。
+1. 若要上傳影片，請按 [上傳]**** 按鈕或連結。
 
-    ![上傳](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="上傳":::
+1. 上傳您的影片後，Video Indexer 會開始編製索引及分析影片。
 
-    上傳您的影片後，Video Indexer 會開始編製索引及分析影片。
-
-    ![已上傳](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer 完成分析後，您會收到通知，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="上傳":::
+1. 影片索引子分析完成後，您會收到一封電子郵件，其中包含您的影片連結，以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>使用 API 上傳和編制索引
 

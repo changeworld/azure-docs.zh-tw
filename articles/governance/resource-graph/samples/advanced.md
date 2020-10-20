@@ -1,14 +1,14 @@
 ---
 title: 進階查詢範例
 description: 使用 Azure Resource Graph 執行某些進階查詢，包括使用資料行、列出使用的標籤，以及使用規則運算式比對資源。
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425289"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057139"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>進階 Resource Graph 查詢範例
 
@@ -625,9 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>查詢來賓設定指派報告的詳細資料
 
-顯示[來賓設定指派原因](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)詳細資料 中的報告。
-在下列範例中，查詢只會傳回來賓指派名稱為 `installed_application_linux` 的結果，而輸出包含字串 `Python` 以列出已安裝套件的所有 Linux 電腦，其中包含 **Python** 這個名稱。
-若要查詢特定指派的所有電腦合規性，請移除第二個 `where` 子句。
+顯示[來賓設定指派原因](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)詳細資料 中的報告。 在下列範例中，查詢只會傳回來賓指派名稱為 `installed_application_linux` 的結果，而輸出包含字串 `Python` 以列出已安裝套件的所有 Linux 電腦，其中包含 **Python** 這個名稱。 若要查詢特定指派的所有電腦合規性，請移除第二個 `where` 子句。
 
 ```kusto
 GuestConfigurationResources
@@ -666,8 +664,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>尋找電腦不符合來賓設定指派規範的所有原因
 
-顯示特定電腦的所有[來賓設定指派原因](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)。
-移除第一個 `where` 子句，同時包含電腦符合規範的稽核。
+顯示特定電腦的所有[來賓設定指派原因](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)。 移除第一個 `where` 子句，同時包含電腦符合規範的稽核。
 
 ```kusto
 GuestConfigurationResources

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281186"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216669"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用應用程式閘道重寫 HTTP 標頭和 URL
 
@@ -50,7 +50,7 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 
 若要瞭解如何使用 Azure 入口網站來以應用程式閘道重寫 URL，請參閱 [這裡](rewrite-url-portal.md)。
 
-![img](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![描述以應用程式閘道重寫 URL 之程式的圖表。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > URL 重寫功能目前為預覽狀態，僅適用于應用程式閘道的 Standard_v2 和 WAF_v2 SKU。 不建議在實際執行環境中使用。 若要深入瞭解預覽，請參閱 [這裡的使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
@@ -257,7 +257,7 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 - 標頭名稱可以包含任何英數位元和特定符號，如 [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)中所定義。 我們目前不支援底線 (_) 標頭名稱中的特殊字元。
 - 無法重寫連接和升級標頭
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解如何使用 Azure 入口網站來重寫具有應用程式閘道的 HTTP 標頭](rewrite-http-headers-portal.md)
 - [瞭解如何使用 Azure 入口網站來以應用程式閘道重寫 URL](rewrite-url-portal.md)

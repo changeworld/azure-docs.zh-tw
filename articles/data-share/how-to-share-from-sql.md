@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150386"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217536"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
 
@@ -39,7 +39,7 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。
 * 存取資料倉儲的資料共用權限。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站中，流覽至 SQL server，並將您自己設定為 Azure Active Directory 系統管理員。
-    1. 使用 [查詢編輯器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 或 SQL Server Management Studio 搭配 Azure Active Directory 驗證連接到 Azure SQL Database/資料倉儲。 
+    1. 使用 [查詢編輯器](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) 或 SQL Server Management Studio 搭配 Azure Active Directory 驗證連接到 Azure SQL Database/資料倉儲。 
     1. 執行下列腳本，將 Data Share 資源受控識別新增為 db_datareader。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
     
         ```sql
@@ -54,7 +54,7 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
     1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
     1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
-    1. 按一下 **[儲存]** 。 
+    1. 按一下 [儲存]。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -144,7 +144,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 ### <a name="prerequisites-for-target-storage-account"></a>目標儲存體帳戶的必要條件
 如果您選擇接收資料到 Azure 儲存體，以下是必要條件清單。
 
-* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)。 
 * 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。 
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。  
 
@@ -154,7 +154,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。 
 * 資料共用資源的受控識別用來存取 Azure SQL Database 或 Azure Synapse Analytics 的權限。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站中，流覽至 SQL server，並將您自己設定為 Azure Active Directory 系統管理員。
-    1. 使用 [查詢編輯器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 或 SQL Server Management Studio 搭配 Azure Active Directory 驗證連接到 Azure SQL Database/資料倉儲。 
+    1. 使用 [查詢編輯器](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) 或 SQL Server Management Studio 搭配 Azure Active Directory 驗證連接到 Azure SQL Database/資料倉儲。 
     1. 執行下列腳本，將 Data Share 受控識別新增為 ' db_datareader、db_datawriter db_ddladmin '。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
 
         ```sql
@@ -169,7 +169,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
     1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
     1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
-    1. 按一下 **[儲存]** 。 
+    1. 按一下 [儲存]。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -275,7 +275,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 >[!NOTE]
 > 1. 針對對應至 Decimal 過渡類型的資料類型，目前快照集最多可支援最多28的精確度。 如果您的資料需要的精確度大於28，請考慮轉換成字串。 
-> 1.  如果您要將資料從 Azure SQL database 共用到 Azure Synapse Analytics，則不支援所有資料類型。 如需詳細資料，請參閱 [SYNAPSE SQL 集區中的資料表資料類型](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) 。 
+> 1.  如果您要將資料從 Azure SQL database 共用到 Azure Synapse Analytics，則不支援所有資料類型。 如需詳細資料，請參閱 [SYNAPSE SQL 集區中的資料表資料類型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) 。 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted 或動態資料遮罩
 目前，Azure Data Share 不支援已設定 Always Encrypted 的 Azure SQL 資料庫。 
@@ -294,6 +294,3 @@ SQL 快照集效能受到許多因素所影響。 一律建議進行您自己的
 
 ## <a name="next-steps"></a>後續步驟
 您已瞭解如何使用 Azure Data Share 服務，從 SQL 來源共用及接收資料。 若要深入瞭解如何從其他資料來源共用，請繼續進行 [支援的資料存放區](supported-data-stores.md)。
-
-
-

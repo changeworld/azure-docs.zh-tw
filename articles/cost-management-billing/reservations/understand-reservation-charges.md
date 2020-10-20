@@ -6,18 +6,18 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 06/11/2020
+ms.date: 10/13/2020
 ms.author: banders
-ms.openlocfilehash: 1df60eedfb776164be7e78f2994027b8d111828b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 054641d8136d121e611182c8d8b104aefcbc6481
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681952"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057870"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>保留折扣套用至 Azure SQL Database 的方式
 
-購買 Azure SQL Database 保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 SQL Database。 保留會涵蓋 SQL Database 的計算成本。 您必須依標準費率支付軟體、儲存體和網路的費用。 您可以利用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 來涵蓋 SQL Database 的授權成本。
+購買 Azure SQL Database 保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的 SQL Database。 保留會套用至 SQL Database 的計算成本，包括主要複本和任何可計費的次要複本。 您必須依標準費率支付軟體、儲存體和網路的費用。 您可以利用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 來涵蓋 SQL Database 的授權成本。
 
 請注意，保留折扣並不適用於 Azure SQL Database 無伺服器。
 
@@ -31,7 +31,7 @@ ms.locfileid: "88681952"
 
 ## <a name="discount-applied-to-running-sql-databases"></a>適用於執行 SQL Database 的折扣
 
- SQL Database 保留容量折扣會套用至執行中的 SQL Database (以小時計算)。 您所購買的保留會與對應到執行中 SQL Database 所發出的計算使用量進行比對。 對於未執行滿一個小時的 SQL Database，此保留會自動套用至其他與保留屬性相符的 SQL Database。 此折扣可以同時套用至各個執行中的 SQL Database。 如果沒有既符合保留屬性又執行滿一個小時的 SQL Database，您就無法獲得該小時的完整保留折扣權益。
+SQL Database 保留容量折扣會套用至執行中的 SQL Database (以小時計算)。 您所購買的保留會與對應到執行中 SQL Database 所發出的計算使用量進行比對。 對於未執行滿一個小時的 SQL Database，此保留會自動套用至其他與保留屬性相符的 SQL Database。 此折扣可以同時套用至各個執行中的 SQL Database。 如果沒有既符合保留屬性又執行滿一個小時的 SQL Database，您就無法獲得該小時的完整保留折扣權益。
 
 下列範例說明根據所購買的核心數目，以及在您執行時，SQL Database 保留容量折扣的套用方式。
 
@@ -42,6 +42,7 @@ ms.locfileid: "88681952"
 - 案例 2：您執行了兩個各有 8 核心的 SQL Database 達一小時。 16 核心的保留折扣會套用至這兩個 8 核心 SQL Database 的計算使用量。
 - 案例 3：您執行了一個 16 核心的 SQL Database，時間從下午 1 點到下午 1:30。 您執行了另一個 16 核心的 SQL Database，時間從下午 1:30 到下午 2 點。 兩者都在保留折扣的涵蓋範圍內。
 - 案例 4：您執行了一個 16 核心的 SQL Database，時間從下午 1 點到下午 1:45。 您執行了另一個 16 核心的 SQL Database，時間從下午 1:30 到下午 2 點。 您需要就 15 分鐘的重疊時間支付隨用隨付價格的費用。 保留折扣會套用至其餘時間的計算使用量。
+- 案例 5：您執行一個 4 核心的 SQL 超大規模資料庫資料庫，具有三個次要複本，每個複本各有 4 個核心。 保留會套用至主要複本和所有次要複本的計算使用量。
 
 若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](understand-reserved-instance-usage-ea.md)。
 

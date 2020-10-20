@@ -3,12 +3,12 @@ title: Azure VMware 解決方案 Vm 的生命週期管理
 description: 瞭解如何使用 Microsoft Azure 原生工具來管理 Azure VMware 解決方案 Vm 生命週期的所有層面。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950358"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216244"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解決方案 Vm 的生命週期管理
 
@@ -53,8 +53,8 @@ Microsoft Azure 原生工具可讓您監視和管理 Azure 環境中 (Vm) 的虛
 Azure 自動化中的**Azure 更新管理**會在混合式環境中管理 Windows 和 Linux 電腦的作業系統更新。 它會監視修補合規性，並將修補偏差警示轉送到 Azure 監視器以進行補救。 Azure 更新管理必須連接到您的 Log Analytics 工作區，才能使用儲存的資料來評估 Vm 上的更新狀態。
 - 若要將 Log Analytics 新增至 Azure 更新管理，您必須先 [建立 Azure 自動化帳戶](../automation/automation-create-standalone-account.md)。
 - 若要將您的 Log Analytics 工作區與您的自動化帳戶連結，請參閱 [Log analytics 工作區和自動化帳戶](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
-- 若要為您的 Vm 啟用 Azure 更新管理，請參閱 [從自動化帳戶啟用更新管理](../automation/update-management/update-mgmt-enable-automation-account.md)。
-- 將 Vm 新增至 Azure 更新管理之後，您可以 [在 vm 上部署更新，並查看結果](../automation/update-management/update-mgmt-deploy-updates.md)。 
+- 若要為您的 Vm 啟用 Azure 更新管理，請參閱 [從自動化帳戶啟用更新管理](../automation/update-management/enable-from-automation-account.md)。
+- 將 Vm 新增至 Azure 更新管理之後，您可以 [在 vm 上部署更新，並查看結果](../automation/update-management/deploy-updates.md)。 
 
 **Azure 資訊安全中心** 在雲端和內部部署的混合式工作負載之間提供先進的威脅防護。 它會評估 Azure VMware 解決方案 Vm 的弱點，並視需要提出警示。 這些安全性警示可以轉送到 Azure 監視器以進行解析。
 - Azure 資訊安全中心不需要部署。 如需詳細資訊，請參閱 [虛擬機器支援的功能](../security-center/security-center-services.md)清單。

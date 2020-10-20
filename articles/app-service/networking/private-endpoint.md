@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873093"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217060"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>使用 Azure Web 應用程式的私人端點
 
@@ -91,7 +91,7 @@ ms.locfileid: "91873093"
 
 |名稱 |類型 |值 |備註 |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure 會在 Azure 公用 DNS 中建立此專案，以將 app service 指向 privatelink，而這是由我們管理|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<--您會在 DNS 系統中管理此專案，以指向您的私人端點 IP 位址|
 
 在此 DNS 設定之後，您就可以使用預設名稱 mywebappname.azurewebsites.net，私下連線至您的 Web 應用程式。 您必須使用這個名稱，因為預設憑證是針對 *. azurewebsites.net 發出。

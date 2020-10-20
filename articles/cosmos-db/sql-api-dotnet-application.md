@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bd659ebd74b67a036c189cae763205e6b0371f7c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051284"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058160"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式
 
@@ -71,7 +71,7 @@ ms.locfileid: "89051284"
 
 1. 在 [建立新專案] 中，針對 C# 尋找並選取 [ASP.NET Core Web 應用程式]。 選取 [下一步] 以繼續操作。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="建立新的 ASP.NET Core Web 應用程式專案":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
 1. 在 [設定新的專案] 中，將專案命名為 *todo*，然後選取 [建立]。
 
@@ -89,7 +89,7 @@ ms.locfileid: "89051284"
 
 1. 在 [NuGet 套件管理員] 中，搜尋並選取 [Microsoft.Azure.Cosmos]。 選取 [安裝]。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="安裝 NuGet 套件":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
    Visual Studio 會下載和安裝 Azure Cosmos DB 套件及其相依性。
 
@@ -139,7 +139,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
    * 選取 [使用版面配置頁面]，然後輸入 *~/Views/Shared/_Layout.cshtml*。
    * 選取 [新增]。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="顯示 [新增 MVC 檢視] 對話方塊的螢幕擷取畫面":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
 1. 接下來選取 [新增]，並讓 Visual Studio 建立新的範本檢視。 使用下列內容取代已產生檔案中的程式碼：
 
@@ -214,19 +214,19 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>宣告並初始化服務
 
-首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDBService` 的類別和名為 `ICosmosDBService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
+首先，我們會新增一個類別，其中包含連線至及使用 Azure Cosmos DB 的邏輯。 在本教學課程中，我們會將此邏輯封裝到名為 `CosmosDbService` 的類別和名為 `ICosmosDbService` 的介面中。 此服務會執行 CRUD 作業。 也會讀取摘要作業，例如列出未完成的項目，以及建立、編輯和刪除項目。
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下專案，然後選取 [新增] > [新增資料夾]。 將資料夾命名為 *Services*。
 
-1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *CosmosDBService*，然後選取 [新增]。
+1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *CosmosDbService*，然後選取 [新增]。
 
-1. 以下列程式碼取代 *CosmosDBService.cs* 的內容：
+1. 以下列程式碼取代 *CosmosDbService.cs* 的內容：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *ICosmosDBService*，然後選取 [新增]。
+1. 以滑鼠右鍵按一下 [Services] 資料夾，選取 [新增] > [類別]。 將新的類別命名為 *ICosmosDbService*，然後選取 [新增]。
 
-1. 將下列程式碼新增至 *ICosmosDBService* 類別：
+1. 將下列程式碼新增至 *ICosmosDbService* 類別：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
@@ -262,7 +262,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 在 [新增 Scaffold] 中，選取 [MVC 控制器 - 空的]，然後選取 [新增]。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="在 [新增 Scaffold] 中選取 [MVC 控制器 - 空的]":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
 1. 將新的控制器命名為 *ItemController*。
 
@@ -280,7 +280,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 在 Visual Studio 中按 F5，即可在偵錯模式下建置應用程式。 這樣應該可以建置應用程式，並啟動含有先前所看過之空白方格頁面的瀏覽器：
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="本教學課程所建立待辦事項清單 Web 應用程式的螢幕擷取畫面":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
    
    如果應用程式改為在開啟後進入首頁，請將 `/Item` 附加至 URL。
 
@@ -288,11 +288,11 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 選取 [建立]。 應用程式會讓您回到 [索引] 檢視，且您的項目會出現在清單中。 您可以再將一些項目新增至 [待辦事項] 清單。
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="[索引] 檢視的螢幕擷取畫面":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
   
 1. 選取清單上 [項目] 旁邊的 [編輯]。 應用程式會開啟 [編輯] 檢視，您可在此更新物件的任何屬性，包括 [已完成] 旗標。 如果您選取 [已完成] 並選取 [儲存]，應用程式會在清單中將 [項目] 顯示為 [已完成]。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="[索引] 檢視的螢幕擷取畫面，其中已勾選 [已完成] 方塊":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
 1. 使用 [Cosmos 總管](https://cosmos.azure.com) 或 Azure Cosmos DB 模擬器的資料總管，驗證 Azure Cosmos DB 服務中的資料狀態。
 
@@ -312,7 +312,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 尋找您的設定檔，然後選取 [確定]。 接著搜尋所需的 Azure App Service，然後選取 [確定]。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Visual Studio 中的 [App Service] 對話方塊":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
 另一個選項是建立新的設定檔：
 
@@ -324,7 +324,7 @@ Azure Cosmos DB 使用 JSON 來移動和儲存資料。 您可以使用 `JsonPro
 
 1. 在 [App Service] 中，輸入您的 Web 應用程式名稱和適當的訂用帳戶、資源群組和主控方案，然後選取 [建立]。
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Visual Studio 中的 [建立 App Service] 對話方塊":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="本教學課程所建立待辦事項清單 MVC Web 應用程式的螢幕擷取畫面 - ASP NET Core MVC 教學課程逐步解說":::
 
 幾秒後，Visual Studio 便會發佈 Web 應用程式並啟動瀏覽器，您可以在瀏覽器中看到您的專案已在 Azure 中執行！
 

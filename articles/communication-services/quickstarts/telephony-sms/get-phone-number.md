@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756854"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044763"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站取得電話號碼
 
@@ -103,7 +103,7 @@ ms.locfileid: "91756854"
 > [!NOTE]
 > 可能需要幾分鐘的時間，已佈建的號碼才會顯示在此頁面上。
 
-### <a name="customizing-phone-number-plans"></a>自訂電話號碼方案
+### <a name="customizing-phone-number-features"></a>自訂電話號碼功能
 在 `Numbers` 頁面上，您可以按一下您想要自訂方案的號碼來選取電話號碼。
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::

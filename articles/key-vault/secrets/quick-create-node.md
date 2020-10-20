@@ -1,6 +1,6 @@
 ---
-title: 快速入門 - 適用於 Node.js 的 Azure Key Vault 用戶端程式庫 (v4)
-description: 了解如何使用 Node.js 用戶端程式庫，從 Azure Key Vault 建立、擷取和刪除秘密
+title: 快速入門 - 適用於 JavaScript (v4) 的 Azure Key Vault 用戶端程式庫
+description: 了解如何使用 JavaScript 用戶端程式庫從 Azure Key Vault 建立、擷取和刪除秘密
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
@@ -8,36 +8,43 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 96826cbd7ea021f3596b3f92a484a05089aa9318
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 045589d3b1f0e376eaf854562d271a4483702997
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336661"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047891"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>快速入門：適用於 Node.js 的 Azure Key Vault 用戶端程式庫 (v4)
+# <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>快速入門：適用於 JavaScript (v4) 的 Azure Key Vault 用戶端程式庫
 
-開始使用適用於 Node.js 的 Azure Key Vault 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
+開始使用適用於 JavaScript 的 Azure Key Vault 秘密用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
-Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用適用於 Node.js 的 Key Vault 用戶端程式庫來：
-
-- 提高金鑰和密碼的安全性和控制權。
-- 在幾分鐘內建立和匯入加密金鑰。
-- 透過雲端規模和全域備援減少延遲。
-- 簡化 TLS/SSL 憑證的工作並將其自動化。
-- 使用經 FIPS 140-2 Level 2 驗證的 HSM。
-
-[API 參考文件](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [套件 (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API 參考文件](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [套件 (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 適用於您作業系統的 [Node.js](https://nodejs.org) 目前版本。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-本快速入門假設您是在 Linux 終端機視窗中執行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+本快速入門假設您是在 Linux 終端機視窗中執行 [Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="setting-up"></a>設定
+本快速入門會使用 Azure 身分識別程式庫搭配 Azure CLI，向 Azure 服務驗證使用者。 開發人員也可以使用 Visual Studio 或 Visual Studio Code 來驗證其呼叫。如需詳細資訊，請參閱[使用 Azure 身分識別用戶端程式庫驗證用戶端](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)。
+
+### <a name="sign-in-to-azure"></a>登入 Azure
+
+1. 執行 `login` 命令。
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入 Azure 登入頁面。
+
+    否則，請在 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 中開啟瀏覽器頁面，並輸入顯示在終端機中的授權碼。
+
+2. 請在瀏覽器中使用您的帳戶認證登入。
 
 ### <a name="install-the-package"></a>安裝套件
 
@@ -57,23 +64,35 @@ npm install @azure/identity
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>建立服務主體
+#### <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+建立金鑰保存庫的存取原則，將祕密權限授與服務主體。
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>對服務主體授與金鑰保存庫的存取權
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+```
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+#### <a name="set-environment-variables"></a>設定環境變數
 
-#### <a name="set-environmental-variables"></a>設定環境變數
+此應用程式使用金鑰保存庫名稱作為稱為 `KEY_VAULT_NAME` 的環境變數。
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
+```
+
+macOS 或 Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>物件模型
 
-適用於 Node.js 的 Azure Key Vault 用戶端程式庫可讓您管理金鑰和相關資產，例如憑證和祕密。 以下的程式碼範例會示範如何建立用戶端、設定祕密、擷取祕密，以及刪除秘密。
-
-整個主控台應用程式可於 https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app 取得。
+適用於 JavaScript 的 Azure Key Vault 秘密用戶端程式庫可讓您管理秘密。 以下的程式碼範例會示範如何建立用戶端、設定祕密、擷取祕密，以及刪除秘密。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -88,9 +107,9 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 ### <a name="authenticate-and-create-a-client"></a>驗證並建立用戶端
 
-根據上述[設定環境變數](#set-environmental-variables)步驟中的環境變數以及 [SecretClient 建構函式](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-)，驗證您的金鑰保存庫並建立金鑰保存庫用戶端。 
+在本快速入門中，已登入的使用者是用來向金鑰保存庫進行驗證，這是本機開發的慣用方法。 針對部署至 Azure 的應用程式，應將受控識別指派給 App Service 或虛擬機器。如需詳細資訊，請參閱[受控識別概觀](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-金鑰保存庫的名稱會以 `https://<your-key-vault-name>.vault.azure.net` 格式，擴充至金鑰保存庫 URI。 
+在下列範例中，金鑰保存庫的名稱會以 "https://\<your-key-vault-name\>.vault.azure.net" 格式，擴充至金鑰保存庫 URI。 這個範例會使用 ['DefaultAzureCredential()'](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) 類別，允許在各種不同的環境中使用相同的程式碼，搭配不同的選項來提供身分識別。 如需詳細資訊，請參閱[預設 Azure 認證驗證](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)。 
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -102,13 +121,13 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>儲存秘密
 
-既然應用程式已經過驗證，您可以使用 [client.setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-)，將祕密放入金鑰保存庫中。這需要秘密的名稱，在此範例中，我們將使用 "mySecret"。  
+既然應用程式已經過驗證，您可以使用 [client.setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-)，將祕密放入金鑰保存庫中。這需要秘密的名稱，我們在此範例中使用 "mySecret"。  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
 ```
 
-您可以確認祕密是否已使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令來加以設定：
+您可以確認祕密是否已使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) 命令來加以設定：
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -116,7 +135,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>擷取祕密
 
-您現在可以使用 [client.getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-)擷取先前設定的值。
+您現在可以使用 [client.getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-)擷取先前設定的值。
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
@@ -126,13 +145,13 @@ const retrievedSecret = await client.getSecret(secretName);
 
 ### <a name="delete-a-secret"></a>刪除祕密
 
-最後，讓我們使用 [client.beginDeleteSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-)，從您的金鑰保存庫中刪除秘密。
+最後，讓我們使用 [client.beginDeleteSecret method](/javascript/api/@azure/keyvault-secrets/secretclient?#begindeletesecret-string--begindeletesecretoptions-)，從您的金鑰保存庫中刪除秘密。
 
 ```javascript
 await client.beginDeleteSecret(secretName)
 ```
 
-您可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令，確認祕密是否已經消失：
+您可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) 命令，確認祕密是否已經消失：
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -212,5 +231,6 @@ main()
 在本快速入門中，您已建立金鑰保存庫、儲存秘密，並擷取該秘密。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
+- 如何[針對金鑰保存庫的存取進行保護](../general/secure-your-key-vault.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
 - 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)

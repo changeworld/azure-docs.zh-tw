@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89079076"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057972"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>快速入門：建立具有多個公用 IP 位址的 Azure 防火牆 - ARM 範本
 
-在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 部署具有多個公用 IP 位址的 Azure 防火牆和 IP 群組。 已部署的防火牆具有 NAT 規則集合規則，可允許 RDP 連線到兩部 Windows Server 2019 虛擬機器。
+在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本)，從公用 IP 位址前置詞部署具有多個公用 IP 位址的 Azure 防火牆。 已部署的防火牆具有 NAT 規則集合規則，可允許 RDP 連線到兩部 Windows Server 2019 虛擬機器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -42,6 +42,7 @@ ms.locfileid: "89079076"
 範本中定義了多個 Azure 資源：
 
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
@@ -65,7 +66,7 @@ ms.locfileid: "89079076"
    - 管理員使用者名稱：輸入系統管理員使用者帳戶的使用者名稱 
    - 管理員密碼：輸入管理員密碼或金鑰
 
-3. 選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 部署可能需要 10 分鐘或更久的時間才能完成。
+3. 選取 [我同意上方所述的條款及條件]  ，然後選取 [購買]  。 部署可能需要 10 分鐘或更久的時間才能完成。
 
 ## <a name="validate-the-deployment"></a>驗證部署
 

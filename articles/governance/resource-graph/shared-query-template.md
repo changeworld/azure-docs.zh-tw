@@ -1,15 +1,15 @@
 ---
 title: 快速入門：使用範本建立共用查詢
 description: 在本快速入門中，您可以使用 Azure Resource Manager 範本 (ARM 範本) 來建立 Resource Graph 共用查詢，以便依 OS 來計算虛擬機器的數量。
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88685522"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057003"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立共用查詢
 
@@ -53,9 +53,9 @@ Resource Graph 查詢可以儲存為_私人查詢_或_共用查詢_。 私人查
    | 訂用帳戶 | 選取 Azure 訂用帳戶。 |
    | 資源群組 | 選取 [新建]指定名稱，然後選取 [確定]。 |
    | Location | 選取區域。 例如，**美國中部**。 |
-   | 查詢名稱 | 保留預設值**依 OS 計算 VM 數量**。 |
-   | 查詢程式碼 | 保留預設值 `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
-   | 查詢說明 | 保留預設值**此共用查詢會計算所有虛擬機器資源的數量並依 OS 類型摘要列出。** |
+   | 查詢名稱 | 保留預設值：**依 OS 計算 VM**。 |
+   | 查詢程式碼 | 保留預設值：`Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | 查詢說明 | 保留預設值：**此共用查詢會計算所有虛擬機器資源的數量並依 OS 類型摘要列出。** |
    | 我同意上方所述的條款及條件 | (選取) |
 
 1. 選取 [購買]。
@@ -75,7 +75,7 @@ Resource Graph 查詢可以儲存為_私人查詢_或_共用查詢_。 私人查
 
 1. 選取名為**依 OS 計算 VM 數量**的共用查詢，然後選取 [概觀] 頁面上的 [結果] 索引標籤。
 
-或者，您也可以從 Resource Graph 總管開啟共用查詢：
+您也可以從 Resource Graph 總管開啟共用查詢：
 
 1. 從入口網站的搜尋列中，搜尋 **Resource Graph 總管**並加以選取。
 
@@ -83,7 +83,7 @@ Resource Graph 查詢可以儲存為_私人查詢_或_共用查詢_。 私人查
 
 1. 將 [類型] 變更為 [共用查詢]。 如果您在清單中沒看到**依 OS 計算 VM 數量**，請使用篩選方塊來限制結果。 一旦看到**依 OS 計算 VM 數量**共用查詢，請選取其名稱。
 
-1. 查詢載入之後，請選取 [執行查詢] 按鈕。 結果會顯示在下面的 [結果] 索引標籤中。
+1. 查詢載入之後，請選取 [執行查詢] 按鈕。 結果會顯示在 [結果] 索引標籤中。
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070328"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217213"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
@@ -45,7 +45,7 @@ Error details: Failed to enable the Update solution
 
 * 請移至[網路設定](../automation-hybrid-runbook-worker.md#network-planning)，了解必須允許哪些位址和連接埠，才能進行更新管理。  
 
-* 檢查範圍設定問題。 [範圍設定](../update-management/update-mgmt-scope-configuration.md)會判斷哪些電腦已針對更新管理進行設定。 如果您的電腦顯示在您的工作區中，但不在更新管理中，您必須將範圍設定設為以機器為目標。 若要了解範圍設定，請參閱[在工作區中啟用電腦](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
+* 檢查範圍設定問題。 [範圍設定](../update-management/scope-configuration.md)會判斷哪些電腦已針對更新管理進行設定。 如果您的電腦顯示在您的工作區中，但不在更新管理中，您必須將範圍設定設為以機器為目標。 若要了解範圍設定，請參閱[在工作區中啟用電腦](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
 * 依照[從內部部署 Windows 電腦移除混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[從內部部署 Linux 電腦移除混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步驟，來移除背景工作角色設定。
 
@@ -63,13 +63,13 @@ Error details: Failed to enable the Update solution
 
 當被取代的更新變成100% 不適用時，您應該在 WSUS 中將該更新的核准狀態變更為 `Declined` 。 若要變更所有更新的核准狀態：
 
-1. 在自動化帳戶中，選取 [更新管理] 來檢視電腦狀態。 請參閱[檢視更新評估](../update-management/update-mgmt-view-update-assessments.md)。
+1. 在自動化帳戶中，選取 [更新管理] 來檢視電腦狀態。 請參閱[檢視更新評估](../update-management/view-update-assessments.md)。
 
 2. 檢查已取代的更新，確定其為 100% 不適用。
 
 3. 在電腦報告的 WSUS 伺服器上， [拒絕更新](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates)。
 
-4. 選取 [電腦]，然後在 [合規性] 資料行中，強制重新掃描合規性。 請參閱 [管理 vm 的更新](../update-management/update-mgmt-manage-updates-for-vm.md)。
+4. 選取 [電腦]，然後在 [合規性] 資料行中，強制重新掃描合規性。 請參閱 [管理 vm 的更新](../update-management/manage-updates-for-vm.md)。
 
 5. 針對其他已取代的更新重複上述步驟。
 
@@ -112,9 +112,9 @@ Error details: Failed to enable the Update solution
 
 4. 如果您在查詢結果中看不到您的電腦，則其最近未簽入。 可能是本機設定問題，您應該[重新安裝代理程式](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
-5. 如果您的電腦顯示在查詢結果中，請檢查是否有範圍設定問題。 [範圍設定](../update-management/update-mgmt-scope-configuration.md)會判斷哪些電腦已針對更新管理進行設定。
+5. 如果您的電腦顯示在查詢結果中，請檢查是否有範圍設定問題。 [範圍設定](../update-management/scope-configuration.md)會判斷哪些電腦已針對更新管理進行設定。
 
-6. 如果您的電腦顯示在您的工作區中，但是不在更新管理中，您必須將範圍設定設為以電腦為目標。 若要了解如何執行這項操作，請參閱[在工作區中啟用電腦](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
+6. 如果您的電腦顯示在您的工作區中，但是不在更新管理中，您必須將範圍設定設為以電腦為目標。 若要了解如何執行這項操作，請參閱[在工作區中啟用電腦](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
 7. 在您的工作區中，執行此查詢。
 
@@ -190,11 +190,11 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>執行排程時電腦無法使用或未正確標記
 
-如果您的訂用帳戶已針對自動化資源提供者進行設定，但是以指定[動態群組](../update-management/update-mgmt-groups.md)執行更新排程時遺漏一些電腦，請使用下列程序。
+如果您的訂用帳戶已針對自動化資源提供者進行設定，但是以指定[動態群組](../update-management/configure-groups.md)執行更新排程時遺漏一些電腦，請使用下列程序。
 
 1. 在 Azure 入口網站中，開啟自動化帳戶，然後選取 [更新管理]。
 
-2. 檢查[更新管理歷程記錄](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment)，以判斷執行更新部署的確切時間。
+2. 檢查[更新管理歷程記錄](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)，以判斷執行更新部署的確切時間。
 
 3. 對於您懷疑遭到更新管理遺漏的電腦，請使用 Azure Resource Graph (ARG) [尋找電腦變更](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)。
 
@@ -230,7 +230,7 @@ Azure 入口網站只會顯示您在給定範圍中具有寫入存取權的電�
 
 請遵循下列步驟來找出您的查詢是否正確運作。
 
-1. 在 Azure 入口網站的 [Resource Graph 總管] 刀鋒視窗中，執行格式如下的 ARG 查詢。 當您在更新管理中建立動態群組時，此查詢會模擬您選取的篩選。 請參閱[搭配更新管理使用動態群組](../update-management/update-mgmt-groups.md)。
+1. 在 Azure 入口網站的 [Resource Graph 總管] 刀鋒視窗中，執行格式如下的 ARG 查詢。 當您在更新管理中建立動態群組時，此查詢會模擬您選取的篩選。 請參閱[搭配更新管理使用動態群組](../update-management/configure-groups.md)。
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -303,7 +303,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>封鎖與自動化帳戶的通訊
 
-請移至[網路規劃](../update-management/update-mgmt-overview.md#ports)，了解必須允許哪些位址和連接埠，才能進行更新管理。
+請移至[網路規劃](../update-management/overview.md#ports)，了解必須允許哪些位址和連接埠，才能進行更新管理。
 
 #### <a name="duplicate-computer-name"></a>重複的電腦名稱
 
@@ -389,9 +389,9 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="resolution"></a>解決方案
 
-適用時，請針對您的更新部署使用[動態群組](../update-management/update-mgmt-groups.md)。 此外，您可以執行下列步驟。
+適用時，請針對您的更新部署使用[動態群組](../update-management/configure-groups.md)。 此外，您可以執行下列步驟。
 
-1. 確認您的電腦或伺服器符合 [需求](../update-management/update-mgmt-overview.md#client-requirements)。
+1. 確認您的電腦或伺服器符合 [需求](../update-management/overview.md#client-requirements)。
 2. 使用混合式 Runbook 背景工作角色代理程式疑難排解員驗證與混合式 Runbook 背景工作角色的連線。 若要深入了解疑難排解員，請參閱[針對更新代理程式問題進行疑難排解](update-agent-issues.md)。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>案例：在未部署的情況下安裝更新
@@ -487,11 +487,11 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="resolution"></a>解決方案
 
-若要瞭解在更新執行期間，在更新執行期間發生這種情況，請檢查執行中受影響機器的 [工作輸出](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) 。 您可能可以從電腦找到可供研究和採取動作的特定錯誤訊息。  
+若要瞭解在更新執行期間，在更新執行期間發生這種情況，請檢查執行中受影響機器的 [工作輸出](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) 。 您可能可以從電腦找到可供研究和採取動作的特定錯誤訊息。  
 
 編輯任何失敗的排程更新部署，並增加維護期間。
 
-如需維護期間的詳細資訊，請參閱[安裝更新](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)。
+如需維護期間的詳細資訊，請參閱[安裝更新](../update-management/deploy-updates.md#schedule-an-update-deployment)。
 
 ## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>案例：電腦顯示為 [未評估] 並顯示 HRESULT 例外狀況
 
@@ -522,7 +522,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |例外狀況  |解決方案或動作  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | 在 [Windows 更新錯誤碼清單](https://support.microsoft.com/help/938205/windows-update-error-code-list)中搜尋相關的錯誤碼，以尋找有關例外狀況原因的額外詳細資料。        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 這些項目指出是網路連線問題。 請確定您的電腦有網路連線能力來連線到「更新管理」。 如需必要連接埠和位址清單，請參閱[網路規劃](../update-management/update-mgmt-overview.md#ports)一節。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 這些項目指出是網路連線問題。 請確定您的電腦有網路連線能力來連線到「更新管理」。 如需必要連接埠和位址清單，請參閱[網路規劃](../update-management/overview.md#ports)一節。        |
 |`0x8024001E`| 更新作業未完成，因為正在關閉服務或系統。|
 |`0x8024002E`| Windows Update 服務已停用。|
 |`0x8024402C`     | 如果您使用 WSUS 伺服器，請確定 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 登錄機碼底下 `WUServer` 和 `WUStatusServer` 的登錄值指定正確的 WSUS 伺服器。        |
@@ -556,9 +556,9 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="resolution"></a>解決方案
 
-如果在更新執行成功開始後，於更新執行期間發生失敗，請從來自該執行中受影響電腦[檢查作業輸出](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment)。 您可能可以從電腦找到可供研究和採取動作的特定錯誤訊息。 「更新管理」必須在套件管理員狀況良好的情況下，才能進行成功的更新部署。
+如果在更新執行成功開始後，於更新執行期間發生失敗，請從來自該執行中受影響電腦[檢查作業輸出](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)。 您可能可以從電腦找到可供研究和採取動作的特定錯誤訊息。 「更新管理」必須在套件管理員狀況良好的情況下，才能進行成功的更新部署。
 
-如果在作業失敗之前立即看到特定的修補程式、套件或更新，您可以嘗試從下一個更新部署中[排除](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)這些項目。 若要從 Windows Update 收集記錄資訊，請參閱 [Windows Update 記錄檔](/windows/deployment/update/windows-update-logs)。
+如果在作業失敗之前立即看到特定的修補程式、套件或更新，您可以嘗試從下一個更新部署中[排除](../update-management/deploy-updates.md#schedule-an-update-deployment)這些項目。 若要從 Windows Update 收集記錄資訊，請參閱 [Windows Update 記錄檔](/windows/deployment/update/windows-update-logs)。
 
 如果您無法解決修補問題，請在下一次更新部署開始之前，建立 **/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log** 檔案的複本，並且保留以供疑難排解之用。
 
@@ -568,7 +568,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 請嘗試直接在機器上執行更新。 如果電腦無法套用更新，請參閱[疑難排解指南中的潛在錯誤清單](#hresult)。
 
-如果在本機執行更新，請遵循[從更新管理中移除 VM](../update-management/update-mgmt-remove-vms.md) 的指引，來嘗試移除電腦上的代理程式，並將其重新安裝。
+如果在本機執行更新，請遵循[從更新管理中移除 VM](../update-management/remove-vms.md) 的指引，來嘗試移除電腦上的代理程式，並將其重新安裝。
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>我知道有可用的更新，但在我的電腦上並未顯示為可用更新
 
@@ -588,7 +588,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="installing-updates-by-classification-on-linux"></a>依分類在 Linux 上安裝更新
 
-依分類 (「重大與安全性更新」) 將更新部署至 Linux 時有重要事項須留意，尤其是針對 CentOS。 這些限制記載在[更新管理概觀頁面](../update-management/update-mgmt-overview.md#linux)上。
+依分類 (「重大與安全性更新」) 將更新部署至 Linux 時有重要事項須留意，尤其是針對 CentOS。 這些限制記載在[更新管理概觀頁面](../update-management/overview.md#linux)上。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 持續遺漏
 

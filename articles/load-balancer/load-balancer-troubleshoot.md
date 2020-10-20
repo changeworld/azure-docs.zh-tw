@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801915"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217383"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 
@@ -30,6 +30,12 @@ ms.locfileid: "85801915"
 - 負載平衡器後方的 VM 未回應設定連接埠的流量
 
 當後端 VM 的外部用戶端通過負載平衡器時，用戶端的 IP 位址將會用於通訊。 請確定用戶端的 IP 位址已新增至 NSG 允許清單。 
+
+## <a name="symptom-no-outbound-connectivity-from-standard-internal-load-balancers-ilb"></a>徵兆：沒有來自標準內部負載平衡器 (ILB) 的輸出連線能力
+
+**驗證和解決方式**
+
+標準 Ilb **預設是安全**的。 基本 Ilb 允許 *透過隱藏* 的公用 IP 位址連接到網際網路。 這不會針對生產工作負載建議您使用，因為 IP 位址不是靜態，也不會透過您所擁有的 Nsg 鎖定。 如果您最近從基本 ILB 移至標準 ILB，您應該透過 [僅限輸出](egress-only.md) 的設定（透過 NSG 鎖定 IP）來明確建立公用 IP。 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>徵兆：負載平衡器後方的 VM 未回應健康狀態探查
 如果後端伺服器要參與負載平衡器集合，就必須通過探查檢查。 如需健康狀態探查的詳細資訊，請參閱[了解負載平衡器探查](load-balancer-custom-probe-overview.md)。 

@@ -3,19 +3,19 @@ title: 快速入門：Metrics Advisor 入口網站
 titleSuffix: Azure Cognitive Services
 description: 了解如何開始使用 Metrics Advisor 入口網站。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048231"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入門：使用入口網站監視您的第一個計量
 
@@ -41,7 +41,7 @@ ms.locfileid: "91631356"
 
 ## <a name="sign-in-to-your-workspace"></a>登入您的工作區
 
-部署和建立您的資源之後，請登入 [Metrics Advisor 入口網站](https://go.microsoft.com/fwlink/?linkid=2143774)。 選取您的工作區以開始監視您的計量。 
+建立您的資源之後，請登入 [Metrics Advisor 入口網站](https://go.microsoft.com/fwlink/?linkid=2143774)。 選取您的工作區以開始監視您的計量。 
  
 目前，您可以在每個可用的區域建立一個 Metrics Advisor 資源。 您可以隨時在 Metrics Advisor 入口網站中切換工作區。
 

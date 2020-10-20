@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 15609435c7bc099d0ffe40759ea0f323b58a4545
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee7c1c57c271a6173f4ee978a10ff37526c04c33
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89087515"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047840"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 來建立內部負載平衡器以平衡 VM 的負載
 
@@ -1066,8 +1066,8 @@ Remove-AzResourceGroup -Name $rg
 * 設定了負載平衡器流量規則和健康情況探查。
 * 測試了負載平衡器。
 
-如需 Azure Load Balancer 的詳細資訊，請繼續參閱[什麼是 Azure Load Balancer？](load-balancer-overview.md)和 [Load Balancer 常見問題集](load-balancer-faqs.md)。
-
-* 深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
+若要深入了解 Azure Load Balancer，請繼續...
+> [!div class="nextstepaction"]
+> [什麼是 Azure Load Balancer？](load-balancer-overview.md)
 
 

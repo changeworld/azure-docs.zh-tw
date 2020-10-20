@@ -3,18 +3,18 @@ title: 開始使用並在小組內建立 Azure 實驗室服務實驗室
 description: 瞭解如何開始使用，並在小組內建立 Azure 實驗室服務實驗室。
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092132"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217077"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>開始使用並在小組內建立實驗室服務實驗室
 
 本文說明如何將 **Azure 實驗室服務** 應用程式新增至小組，以及如何在 MS 小組環境中建立實驗室。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本教學課程中，您會為您的小組設定具有虛擬機器的實驗室。 若要在實驗室帳戶中設定實驗室，您必須是實驗室帳戶中其中一個角色的成員：擁有者、實驗室建立者或參與者。 您用來建立實驗室帳戶的帳戶會自動新增至擁有者角色。 因此，您可以使用您用來建立實驗室帳戶的使用者帳戶來建立實驗室。
 
@@ -24,6 +24,9 @@ ms.locfileid: "92092132"
 1. [實驗室帳戶建立者會將其他使用者新增](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)至**實驗室建立者**角色。 例如，實驗室帳戶建立者/管理員將教師新增至**實驗室建立者**角色，讓這些教師可為其課程建立實驗室。
 1. 然後，教育工作者建立實驗室、預先設定範本 VM，然後發佈實驗室，將 VM 布建到小組的每個人。
 1. 一旦發佈實驗室後，就會在第一次登入 Azure 實驗室服務時，將 VM 指派給小組成員資格清單上的每個人，方法是按一下包含小組內的 **Azure Lab services** 應用程式的索引標籤 (SSO) 或存取 [labs 網站](https://labs.azure.com)。 然後，使用者可以使用 VM 來執行類別工作和作業。
+
+> [!IMPORTANT]
+> 只有在實驗室帳戶是在與小組相同的租使用者中建立時，才能在小組內使用 Azure 實驗室服務。
 
 ## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>將 Azure 實驗室服務應用程式新增為小組的索引標籤
 

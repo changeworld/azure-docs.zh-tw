@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 使用 Azure 虛擬 WAN 來建立 ExpressRoute 連線
+title: 教學課程：使用 Azure 虛擬 WAN 建立 ExpressRoute 連線
 description: 在本教學課程中，深入了解如何使用 Azure 虛擬 WAN 建立與 Azure 和內部部署環境的 ExpressRoute 連線。
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821879"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054809"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯
 
@@ -30,7 +30,7 @@ ms.locfileid: "91821879"
 > * 變更閘道大小
 > * 公告預設路由
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 在開始設定之前，請確認您已符合下列條件：
 
@@ -40,7 +40,7 @@ ms.locfileid: "91821879"
 
 * 取得中樞區域的 IP 位址範圍。 中樞是虛擬 WAN 建立和使用的虛擬網路。 您為中樞區域指定的位址範圍不能與任何連線的現有虛擬網路重疊。 也不能與連線至內部部署的位址範圍重疊。 如果您不熟悉位於內部部署網路設定的 IP 位址範圍，請與能夠提供那些詳細資料的人員協調。
 
-* ExpressRoute 線路必須是進階/標準線路，才能連線至中樞閘道。
+* ExpressRoute 線路必須是進階或標準線路，才能連線至中樞閘道。
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -153,6 +153,17 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
    ![傳播預設路由](./media/virtual-wan-expressroute-portal/defaultroute2.png "傳播預設路由")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
+
+您可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解虛擬 WAN，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)頁面。
+接著，若要深入了解虛擬 WAN，請參閱：
+
+> [!div class="nextstepaction"]
+> * [虛擬 WAN 常見問題集](virtual-wan-faq.md)

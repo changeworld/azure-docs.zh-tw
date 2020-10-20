@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 範本 (ARM 範本) 建立內部負載平衡器
-description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立內部 Azure 負載平衡器。
+title: 快速入門：使用範本建立內部負載平衡器
+description: 本快速入門說明如何使用 Azure Resource Manager 範本 (ARM 範本) 建立內部 Azure 負載平衡器。
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 287afc51aa15ed4cadba7e2d6cd389e4869d7d61
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532825"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047755"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立內部負載平衡器以平衡 VM 的負載
 

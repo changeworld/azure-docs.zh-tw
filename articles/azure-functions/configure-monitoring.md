@@ -3,12 +3,13 @@ title: 設定 Azure Functions 的監視
 description: 瞭解如何將您的函數應用程式連接至 Application Insights 進行監視，以及如何設定資料收集。
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.openlocfilehash: 4b2c4e23bf54dc87325af7068b287fad2f9314a0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: contperfq2
+ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168826"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217179"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何設定 Azure Functions 的監視
 

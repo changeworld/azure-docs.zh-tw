@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虛擬 WAN 來與 Azure 建立點對站連線 | Microsoft Docs
+title: 教學課程：使用 Azure 虛擬 WAN 與 Azure 建立點對站連線
 description: 在本教學課程中，了解如何使用 Azure 虛擬 WAN 來與 Azure 建立點對站 VPN 連線。
 services: virtual-wan
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84f8563a6b03f10f4cbc647426c350d9fac52780
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 3d03d0267ff4fb16042d5cc2016e87139b88281a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812654"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056577"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
@@ -30,7 +30,7 @@ ms.locfileid: "91812654"
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [Before beginning](../../includes/virtual-wan-before-include.md)]
 
@@ -82,4 +82,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解虛擬 WAN，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)頁面。
+接著，若要深入了解虛擬 WAN，請參閱：
+
+> [!div class="nextstepaction"]
+> * [虛擬 WAN 常見問題集](virtual-wan-faq.md)

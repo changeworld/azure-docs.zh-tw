@@ -12,16 +12,16 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a631a80e7ac5eed3c3239cb79e35b87c70ab1b0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88117765"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055455"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 身分識別平台的演化
 
-Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 開發人員平台的演化。 它可讓開發人員建置可登入使用者的應用程式，並取得權杖以呼叫 Microsoft Graph 等 API，或開發人員所建置的 API。 它是由驗證服務、開放原始碼程式庫、應用程式註冊與設定 (透過開發人員平台與應用程式 API)、完整開發人員文件、快速入門範例、程式碼範例、教學課程、操作說明指南與其他開發人員內容所組成。 Microsoft 身分識別平台支援業界標準通訊協定，例如 OAuth 2.0 與 OpenID Connect。
+[Microsoft 身分識別平台](../develop/index.yml)是 Azure Active Directory (Azure AD) 開發人員平台的演化。 它可讓開發人員建置可登入使用者的應用程式，並取得權杖以呼叫 Microsoft Graph 等 API，或開發人員所建置的 API。 它是由驗證服務、開放原始碼程式庫、應用程式註冊與設定 (透過開發人員平台與應用程式 API)、完整開發人員文件、快速入門範例、程式碼範例、教學課程、操作說明指南與其他開發人員內容所組成。 Microsoft 身分識別平台支援業界標準通訊協定，例如 OAuth 2.0 與 OpenID Connect。
 
 許多開發人員以前會藉由向 Azure AD v1.0 端點要求權杖 (使用 Azure AD 驗證程式庫 (ADAL)、用於應用程式註冊與設定的 Azure 入口網站，以及用於程式化應用程式設定的 Microsoft Graph API)，以使用 Azure AD v1.0 平台來驗證公司與學校帳戶 (由 Azure AD 所佈建)。
 
@@ -49,7 +49,7 @@ Azure 入口網站 **[應用程式註冊](https://go.microsoft.com/fwlink/?linki
 
 若要與 Azure AD B2C 整合 (在驗證社交或本機身分識別時)，您必須在 Azure AD B2C 租用戶中註冊您的應用程式。 這項體驗也是 Azure 入口網站的一部分。
 
-使用[應用程式 API](/graph/api/resources/application?view=graph-rest-1.0) 可讓您以程式設計方式設定與 Microsoft 身分識別平台整合的應用程式，以驗證任何 Microsoft 身分識別。
+使用[應用程式 API](/graph/api/resources/application) 可讓您以程式設計方式設定與 Microsoft 身分識別平台整合的應用程式，以驗證任何 Microsoft 身分識別。
 
 ### <a name="msal-libraries"></a>MSAL 程式庫
 
@@ -57,15 +57,10 @@ Azure 入口網站 **[應用程式註冊](https://go.microsoft.com/fwlink/?linki
 
 您也可以使用 MSAL 程式庫將您的應用程式與 Azure AD B2C 整合。
 
-用來建置 Web 應用程式和 Web API 的伺服器端程式庫已正式運作：[ASP.NET](/aspnet/overview) 和 [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
-
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點
 
-Microsoft 身分識別平台 (v2.0) 端點現已通過 OIDC 認證。 它可與 Microsoft 驗證程式庫 (MSAL) 或任何其他符合標準的程式庫搭配運作。 它會根據業界標準實作人類可讀的範圍。
+Microsoft 身分識別平台 (v2.0) 端點已通過 OIDC 認證。 它可與 Microsoft 驗證程式庫 (MSAL) 或任何其他符合標準的程式庫搭配運作。 它會根據業界標準實作人類可讀的範圍。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 v1.0 與 v2.0。
-
-* [Microsoft 身分識別平台 (v2.0)](../develop/v2-overview.md) 概觀
-* [開發人員適用的 Azure Active Directory (v1.0)](v1-overview.md) 概觀
+如需深入了解，請參閱 [Microsoft 身分識別平台文件](../develop/index.yml)。

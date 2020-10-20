@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171466"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221414"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -108,6 +108,16 @@ ms.locfileid: "92171466"
 當計算實例正在執行時，您也可以在任何 Python 筆記本中使用 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense)支援的程式碼完成。
 
 您也可以從 [筆記本] 工具列啟動 Jupyter 或 JupyterLab。  Azure Machine Learning 不會提供 Jupyter 或 JupyterLab 的更新和修正錯誤，因為它們是 Microsoft 支援服務界限外的開放原始碼產品。
+
+### <a name="focus-mode"></a>焦點模式
+
+使用焦點模式來展開目前的視圖，讓您可以將焦點放在使用中的索引標籤上。 焦點模式會隱藏 [筆記本檔案瀏覽器]。
+
+1. 在終端機視窗工具列中，選取 [ **焦點模式]**   以開啟焦點模式。 視您的視窗寬度而定，這可能位於工具列的 [ **...** ] 功能表項目底下。
+1. 在焦點模式中，選取 [ **標準] view**以返回標準視圖。
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="建立新檔案":::
+
 
 ### <a name="use-intellisense"></a>使用 IntelliSense
 

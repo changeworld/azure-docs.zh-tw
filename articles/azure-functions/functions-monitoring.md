@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Application Insights 搭配 Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit
-ms.openlocfilehash: bb6f2769ef675ac18fe8d2b58e17f9c10f457a6f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: devx-track-csharp, fasttrack-edit, contperfq2
+ms.openlocfilehash: 85851c896d32d2e15efa0a39260af4331f99f862
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164896"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217145"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 

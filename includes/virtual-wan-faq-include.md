@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859745"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038584"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虛擬 WAN 是否正式發行？
 
@@ -228,7 +228,7 @@ ms.locfileid: "91859745"
 如果虛擬中樞從多個遠端中樞學習相同的路由，其所決定的順序如下所示：
 
 1. 最長前置詞比對。
-2. 透過 interhub 的本機路由。
+2. 透過 interhub 的本機路由 (虛擬中樞會將 65520-65520 指派給 interhub AS)
 3. 透過 BGP 的靜態路由：這是由虛擬中樞路由器所進行決策產生的內容。 不過，如果決策者是透過 BGP 公告路由的 VPN 閘道，或提供靜態位址前置詞，則靜態路由可能會優先於 BGP 路由。
 4. 透過 VPN 的 ExpressRoute (ER)：當內容為本機中樞時，ER 偏好為透過 VPN。 ExpressRoute 線路之間的傳輸連線只能透過全域範圍提供。 因此，在 ExpressRoute 線路連線到一個中樞，而且有另一個 ExpressRoute 線路連線到具有 VPN 連線的不同中樞的情況下，中樞間案例可能會偏好使用 VPN。
 5. AS 路徑長度。

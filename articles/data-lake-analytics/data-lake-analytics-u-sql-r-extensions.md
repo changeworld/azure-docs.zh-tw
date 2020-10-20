@@ -1,17 +1,16 @@
 ---
 title: 在 Azure Data Lake Analytics 中使用 R 擴充 U-SQL 指令碼
 description: 瞭解如何使用 Azure Data Lake Analytics 在雙 SQL 腳本中執行 R 程式碼。 內嵌 R 程式碼內嵌或從檔案參考。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab28ba1bb6185f5f0ab90df99f0abea7895b1bf4
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127395"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217995"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 程式碼擴充 U-SQL 指令碼
 
@@ -208,8 +207,8 @@ USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix")
 OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Data Lake Tools for Visual Studio 開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)
-* [針對 Azure 資料湖分析工作使用 U-SQL 視窗函式](data-lake-analytics-use-window-functions.md)
+* [針對 Azure 資料湖分析工作使用 U-SQL 視窗函式](./data-lake-analytics-u-sql-get-started.md)

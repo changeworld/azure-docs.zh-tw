@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802203"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055081"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
@@ -104,7 +104,7 @@ Azure VMware 解決方案、您現有的 Azure 環境，以及內部部署環境
 來自 Azure VMware 解決方案的 ExpressRoute 電路會連線到您在此步驟中定義的 Azure 虛擬網路中的 ExpressRoute 閘道。  
 
 >[!IMPORTANT]
->如果您選擇現有的虛擬網路，則必須選取不具有預先存在閘道子網路的虛擬網路。  
+>您可以使用現有的 ExpressRoute 閘道連線至 Azure VMware 解決方案，前提是不可超過每個虛擬網路四個 ExpressRoute 線路的限制。  不過，若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，則必須要有 ExpressRoute Global Reach，因為 ExpressRoute 閘道不會在其連線的線路之間提供可轉移的路由。  
 
 如果您想要將 ExpressRoute 電路從 Azure VMware 解決方案連線到現有的 ExpressRoute 閘道，您可以在部署之後執行此動作。  
 

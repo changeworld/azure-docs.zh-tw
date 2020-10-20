@@ -1,22 +1,20 @@
 ---
 title: 'Azure Data Lake U-SQL 作業的 Debug c # 程式碼'
 description: 本文說明如何使用 Azure Data Lake Tools for Visual Studio 針對 U-SQL 失敗的頂點進行偵錯。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131866"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218012"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>對 U-SQL 失敗作業的使用者定義 C# 程式碼進行偵錯
 
-U-SQL 提供使用 C# 的擴充性模型。 在 U-SQL 指令碼中，可以輕鬆地呼叫 C# 函式，以及執行類 SQL 宣告式語言不支援的分析函式。 若要深入了解 U-SQL 擴充性，請參閱 [U-SQL 程式設計指南](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)。 
+U-SQL 提供使用 C# 的擴充性模型。 在 U-SQL 指令碼中，可以輕鬆地呼叫 C# 函式，以及執行類 SQL 宣告式語言不支援的分析函式。 若要深入了解 U-SQL 擴充性，請參閱 [U-SQL 程式設計指南](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf)。 
 
 在實務上，任何程式碼可能都需要偵錯，但很難透過受限的記錄檔，針對雲端上使用自訂程式碼的分散式工作進行偵錯。 [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) 提供了一個稱為「頂點失敗偵錯」**** 的功能，該功能可協助您更輕鬆地針對您的自訂程式碼中發生的錯誤進行偵錯。 當 U-SQL 作業失敗時，服務會保留失敗狀態，而工具會協助您將雲端失敗環境下載至本機電腦進行偵錯。 本機下載會擷取整個雲端環境，包括任何輸入資料和使用者程式碼。
 
@@ -103,7 +101,7 @@ U-SQL 提供使用 C# 的擴充性模型。 在 U-SQL 指令碼中，可以輕�
 
 3. 重新提交 U-SQL 作業。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [U-SQL 可程式性指南](data-lake-analytics-u-sql-programmability-guide.md)
 - [針對 Azure Data Lake Analytics 作業開發 U-SQL 使用者定義運算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)

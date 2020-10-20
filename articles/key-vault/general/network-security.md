@@ -7,19 +7,63 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bc25a2ada3052689bc9dc4585c238fe19cb2a341
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c375defe5fd8356d64879a65d6f09f40ea30271d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087386"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042451"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>設定 Azure Key Vault 防火牆和虛擬網路
 
-本文提供設定 Azure Key Vault 防火牆和虛擬網路的逐步指示，以限制金鑰保存庫的存取權。 [Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)可讓您將存取權限制為指定的虛擬網路和 IPv4 (網際網路通訊協定第 4 版) 位址範圍集合。
+本文將為您提供如何設定 Azure Key Vault 防火牆的指引。 本文件將詳細說明 Key Vault 防火牆的不同設定，並提供如何設定 Azure Key Vault 以與其他應用程式和 Azure 服務搭配使用的逐步指示。
+
+## <a name="firewall-settings"></a>防火牆設定
+
+本節將說明可設定 Azure Key Vault 防火牆的不同方式。
+
+### <a name="key-vault-firewall-disabled-default"></a>停用 Key Vault 防火牆 (預設值)
+
+根據預設，當您建立新的金鑰保存庫時，將會停用 Azure Key Vault 防火牆。 所有應用程式和 Azure 服務都可以存取金鑰保存庫，並將要求傳送至金鑰保存庫。 請注意，這項設定並不表示任何使用者都能對您的金鑰保存庫執行作業。 金鑰保存庫仍會藉由要求 Azure Active Directory 驗證和存取原則權限，來限制儲存在金鑰保存庫中的秘密、金鑰和憑證。 若要深入了解金鑰保存庫驗證，請參閱[這裡](https://docs.microsoft.com/azure/key-vault/general/authentication-fundamentals)的金鑰保存庫驗證基本概念文件。
+
+### <a name="key-vault-firewall-enabled-trusted-services-only"></a>啟用 Key Vault 防火牆 (僅限信任的服務)
+
+當您啟用 Key Vault 防火牆時，將會有 [允許受信任的 Microsoft 服務略過此防火牆] 的選項。 信任的服務清單不包含每個單一 Azure 服務。 例如，Azure DevOps 就不在信任的服務清單中。 **這並不表示信任的服務清單中未列出的服務就不受信任或不安全。** 信任的服務清單包含執行於服務上的所有程式碼完全受 Microsoft 控制的服務。 由於使用者可在 Azure 服務 (例如 Azure DevOps) 中撰寫自訂程式碼，因此 Microsoft 不會提供為服務建立總括核准的選項。 此外，服務出現在信任的服務清單上，並不表示在任何情況下都允許使用該服務。
+
+若要確認您嘗試使用的服務是否位於信任的服務清單上，請參閱[這裡](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)的文件。
+
+### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>啟用 Key Vault 防火牆 (IPv4 位址和範圍 - 靜態 IP)
+
+如果您想要授權讓特定服務可透過 Key Vault 防火牆存取金鑰保存庫，您可以將其 IP 位址新增至金鑰保存庫防火牆的允許清單中。 這種設定最適用於使用靜態 IP 位址或已知範圍的服務。
+
+若要允許 Azure 資源 (例如 Web 應用程式或邏輯應用程式) 的 IP 位址或範圍，請執行下列步驟。
+
+1. 登入 Azure 入口網站
+1. 選取資源 (服務的特定執行個體)
+1. 按一下 [設定] 底下的 [屬性] 刀鋒視窗
+1. 尋找 [IP 位址] 欄位。
+1. 複製此值或範圍，並將其輸入金鑰保存庫防火牆允許清單中。
+
+若要允許整個 Azure 服務通過 Key Vault 防火牆，請在[這裡](https://www.microsoft.com/download/details.aspx?id=41653)使用針對 Azure 公開記載的資料中心 IP 位址清單。 在您想要的區域中，尋找與您要使用的服務相關聯的 IP 位址，並使用上述步驟將這些 IP 位址新增至金鑰保存庫防火牆。
+
+### <a name="key-vault-firewall-enabled-virtual-networks---dynamic-ips"></a>啟用 Key Vault 防火牆 (虛擬網路 - 動態 IP)
+
+如果您嘗試允許虛擬機器之類的 Azure 資源存取金鑰保存庫，您可能無法使用靜態 IP 位址，且您可能不想要讓 Azure 虛擬機器的所有 IP 位址都能存取金鑰保存庫。
+
+在此情況下，您應在虛擬網路中建立資源，然後允許來自特定虛擬網路和子網路的流量存取您的金鑰保存庫。 若要這樣做，請執行下列步驟。
+
+1. 登入 Azure 入口網站
+1. 選取您要設定的金鑰保存庫
+1. 選取 [網路] 刀鋒視窗
+1. 選取 [+ 新增現有的虛擬網路]
+1. 選取您想要允許其通過金鑰保存庫防火牆的虛擬網路和子網路。
+
+### <a name="key-vault-firewall-enabled-private-link"></a>啟用 Key Vault 防火牆 (私人連結)
+
+若要了解如何在金鑰保存庫上設定私人連結連線，請參閱[這裡](https://docs.microsoft.com/azure/key-vault/general/private-link-service)的文件。
 
 > [!IMPORTANT]
 > 防火牆規則生效後，使用者只能在其要求源自允許的虛擬網路或 IPV4 位址範圍時，才可以執行 Key Vault [資料平面](secure-your-key-vault.md#data-plane-access-control)作業。 這也適用於從 Azure 入口網站存取 Key Vault。 雖然使用者可以從 Azure 入口網站瀏覽金鑰保存庫，但是如果其用戶端電腦不在允許的清單中，他們就無法列出金鑰、祕密或憑證。 這也會影響其他 Azure 服務的 [金鑰保存庫選擇器]。 使用者可以看到金鑰保存庫清單，但是如果防火牆規則阻止其用戶端電腦，則不會列出金鑰。

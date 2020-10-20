@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003842"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044661"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
 
@@ -38,13 +38,13 @@ ms.locfileid: "89003842"
 * 模型會定義實體之間的語義**關聯性**，讓您可以將對應項 連線至反映其互動的知識圖表。 您可以在現實環境的描述中，將模型視為名詞，並將關聯性視為動詞。
 * 您也可以使用模型繼承將對應項加以特殊化。 一個模型可以繼承自另一個。
 
-DTDL 是其他 Azure IoT 服務中全程使用的資料模型，包括 [IoT 隨插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 和 [時間序列深入解析 (TSI)](../time-series-insights/time-series-insights-update-overview.md)。 這可協助您保持 Azure Digital Twins 解決方案的連線，並與 Azure 生態系統的其他部分相容。
+DTDL 是其他 Azure IoT 服務中全程使用的資料模型，包括 [IoT 隨插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 和 [時間序列深入解析 (TSI)](../time-series-insights/overview-what-is-tsi.md)。 這可協助您保持 Azure Digital Twins 解決方案的連線，並與 Azure 生態系統的其他部分相容。
 
 ### <a name="live-execution-environment"></a>即時執行環境
 
 Azure Digital Twins 中的數位模型是現實環境即時的最新表示。 您可以使用自訂 DTDL 模型中的關聯性，將對應項連線至代表您環境的**即時圖表**。
 
-您可以透過範例應用程式 ([**Azure Digital Twins 總管**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)) 的說明，檢視 Azure Digital Twins 圖表的視覺效果。
+您可以透過範例應用程式 ([**Azure Digital Twins 總管**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)) 的說明，檢視 Azure Digital Twins 圖表的視覺效果。
 
 範例視覺效果看起來就像這樣：
 
@@ -84,7 +84,7 @@ Azure Digital Twins 通常會與其他 Azure 服務搭配使用，以做為大�
 * 一或多個用戶端應用程式，可透過設定模型、建立拓撲，以及從對應項圖表中擷取深入解析，藉此驅動 Azure Digital Twins 執行個體。
 * 一或多個外部計算資源，用來處理 Azure Digital Twins 所產生的事件，或連線的資料來源 (例如裝置)。 提供計算資源的常見方式之一是透過 [Azure Functions](../azure-functions/functions-overview.md)。
 * 提供裝置管理和 IoT 資料流功能的 IoT 中樞。
-* 下游服務，用來處理工作流程整合之類的工作 (例如 [Logic Apps](../logic-apps/logic-apps-overview.md)、冷儲存體、時間序列整合或分析)。 
+* 下游服務，用來處理工作流程整合之類的工作 (例如 [Logic Apps](../logic-apps/logic-apps-overview.md)、冷儲存體、時間序列整合或分析)。
 
 下圖顯示 Azure Digital Twins 位於大行 Azure IoT 解決方案的內容中。
 

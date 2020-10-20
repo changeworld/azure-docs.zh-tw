@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a532418ebc5cab08b06f8dde87e8126bf8e96ffe
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577827"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217162"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -118,7 +118,7 @@ ms.locfileid: "91577827"
 
 1. 警示是設計成獨立的，其中每一項都有詳細的補救步驟和調查資訊。 您可以使用其他 Azure 資訊安全中心和 Azure Sentinel 功能進一步調查，以取得更廣泛的觀點：
 
-    * 啟用 SQL Server 的審核功能，以進行進一步的調查。 如果您是 Azure Sentinel 使用者，您可以將來自 Windows 安全性記錄檔事件的 SQL 審核記錄上傳至 Sentinel，並享受豐富的調查體驗。 [深入瞭解 SQL Server 的審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15)。
+    * 啟用 SQL Server 的審核功能，以進行進一步的調查。 如果您是 Azure Sentinel 使用者，您可以將來自 Windows 安全性記錄檔事件的 SQL 審核記錄上傳至 Sentinel，並享受豐富的調查體驗。 [深入瞭解 SQL Server 的審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15&preserve-view=true)。
     * 若要改善您的安全性狀態，請針對每個警示中指出的主機電腦使用安全中心的建議。 這會降低未來攻擊的風險。 
 
     [深入瞭解如何管理及回應警示](security-center-managing-and-responding-alerts.md)。

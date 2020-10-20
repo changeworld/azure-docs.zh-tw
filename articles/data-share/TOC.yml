@@ -8,6 +8,7 @@
     - name: 支援的資料存放區
       href: supported-data-stores.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 共用資料 - Azure 入口網站
       href: share-your-data-portal.md
@@ -15,7 +16,6 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: 教學課程
-  expanded: true
   items:
     - name: 共用資料
       href: share-your-data.md
@@ -31,8 +31,6 @@
       href: concepts-pricing.md
 - name: 範例
   items:
-    - name: 程式碼範例
-      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: 操作指南
@@ -69,15 +67,15 @@
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+      href: /powershell/module/az.datashare/?view=azps-2.6.0
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
+      href: /cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest
 - name: 資源
   items:
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+      href: /answers/topics/azure-data-share.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: 部落格

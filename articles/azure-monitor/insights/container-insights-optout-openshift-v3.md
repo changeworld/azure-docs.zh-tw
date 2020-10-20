@@ -3,16 +3,25 @@ title: 如何停止監視您的 Azure Red Hat OpenShift v3 叢集 |Microsoft Doc
 description: 本文說明如何使用適用于容器的 Azure 監視器來停止監視您的 Azure Red Hat OpenShift 叢集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815431"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216519"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止監視您的 Azure Red Hat OpenShift v3 叢集 
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止監視您的 Azure Red Hat OpenShift v3 叢集
 
-在您啟用 Azure Red Hat OpenShift 3.x 版叢集的監視之後，如果您決定不想再監視叢集，可以使用容器的 Azure 監視器停止監視叢集。 本文說明如何使用提供的 Azure Resource Manager 範本來完成這項工作。 
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 將于6月2022日淘汰。
+>
+> 從2020年10月起，您將無法再建立新的3.11 叢集。
+> 現有的3.11 叢集將會繼續運作到6月2022，但在該日期之後將不再受到支援。
+>
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](../../openshift/tutorial-create-cluster.md)叢集。
+> 如果您有特定問題， [請洽詢我們](mailto:aro-feedback@microsoft.com)。
+
+在您啟用 Azure Red Hat OpenShift 3.x 版叢集的監視之後，如果您決定不想再監視叢集，可以使用容器的 Azure 監視器停止監視叢集。 本文說明如何使用提供的 Azure Resource Manager 範本來完成這項工作。  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 
@@ -126,6 +135,6 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 ProvisioningState       : Succeeded
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱 [刪除 Azure Log Analytics 工作區](../platform/delete-workspace.md)。

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 了解如何使用 Anomaly Detector API 和 Azure Databricks 來監視資料中的異常狀況。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245599"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017653"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教學課程：使用 Azure Databricks 對串流資料進行異常情況偵測
 
@@ -63,7 +63,7 @@ ms.locfileid: "88245599"
 
 1. 在 Azure 入口網站中，選取 [建立資源] > [分析] > [Azure Databricks]。
 
-    ![Azure 入口網站上的 Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 入口網站上的 Databricks")
+    ![入口網站上的 Azure Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 入口網站上的 Databricks")
 
 3. 在 [Azure Databricks 服務] 下方提供下列值，以建立 Databricks 工作區：
 
@@ -115,7 +115,7 @@ ms.locfileid: "88245599"
 
 3. 在應用程式頁面上，選取 [金鑰和存取權杖] 索引標籤，並複製 [取用者金鑰] 和 [取用者秘密] 的值。 此外，請選取 [建立我的存取權杖] 來產生存取權杖。 複製 [存取權杖] 和 [存取權杖祕密] 的值。
 
-    ![Twitter 應用程式詳細資料](../media/tutorials/twitter-app-key-secret.png "Twitter 應用程式詳細資料")
+    ![Twitter 應用程式詳細資料 2](../media/tutorials/twitter-app-key-secret.png "Twitter 應用程式詳細資料")
 
 儲存您所擷取的 Twitter 應用程式值。 在本教學課程後續的內容中，您會需要這些值。
 
@@ -193,7 +193,7 @@ ms.locfileid: "88245599"
 
 2. 在 [建立 Notebook] 對話方塊中，輸入 **SendTweetsToEventHub** 作為名稱，選取 [Scala] 作為語言，然後選取您先前建立的 Spark 叢集。
 
-    ![在 Databricks 中建立筆記本](../media/tutorials/databricks-notebook-details.png "在 Databricks 中建立筆記本")
+    ![筆記本詳細資料](../media/tutorials/databricks-notebook-details.png "在 Databricks 中建立筆記本")
 
     選取 [建立]。
 

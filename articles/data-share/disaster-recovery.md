@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 61804aaf65a97485e2b2b5bb4869c335a14ce812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7c9935d7e0d6bb2d457aa4c08f9b2b3e5fa910
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513553"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218692"
 ---
 # <a name="disaster-recovery-for-azure-data-share"></a>Azure Data Share 的嚴重損壞修復
 
@@ -29,13 +29,9 @@ ms.locfileid: "87513553"
 
 ## <a name="related-information"></a>相關資訊
 
-- [商務持續性和嚴重損壞修復](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-- [在您的 BCDR 策略中加入高可用性](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
+- [商務持續性和嚴重損壞修復](../best-practices-availability-paired-regions.md)
+- [在您的 BCDR 策略中加入高可用性](/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
 ## <a name="next-steps"></a>後續步驟
 
 若要了解如何開始共用資料，請繼續進行[共用資料](share-your-data.md)教學課程。
-
-
-
-

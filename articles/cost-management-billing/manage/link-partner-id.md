@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772714"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017007"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
@@ -134,7 +134,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 合作夥伴識別碼與帳戶之間的連結必須對個別的客戶租用戶建立。 在每個客戶租用戶中連結合作夥伴識別碼。
 
-不過，如果您要透過 Azure Lighthouse 管理客戶資源，應該使用可存取客戶資源的帳戶，在服務提供者租用戶中建立連結。 如需詳細資訊，請參閱[連結您的合作夥伴識別碼，讓合作夥伴取得委派資源的點數](../../lighthouse/how-to/partner-earned-credit.md)。
+不過，如果您要透過 Azure Lighthouse 管理客戶資源，應該使用可存取客戶資源的帳戶，在服務提供者租用戶中建立連結。 如需詳細資訊，請參閱[連結您的合作夥伴識別碼，以追蹤已委派的資源受到的影響](../../lighthouse/how-to/partner-earned-credit.md)。
 
 **其他合作夥伴或客戶是否可編輯或移除合作夥伴識別碼的連結？**
 
@@ -164,7 +164,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 如果您[將受管理的服務供應項目發佈至 Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md)，將客戶上線至 Azure 委派的資源管理，您的 MPN 識別碼會自動產生關聯。
 
-如果您[部署 Azure Resource Manager 範本將客戶上線](../../lighthouse/how-to/onboard-customer.md)，則必須將 MPN 識別碼與至少一個可存取每個已上線訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業，而不是在每個客戶租用戶中執行。 為了簡化作業，建議您在租用戶中建立服務主體帳戶並將其與 MPN ID 相關聯，再授與上線的每位客戶[可取得合作夥伴獲得之點數的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。 如需詳細資訊，請參閱[連結您的合作夥伴識別碼，讓合作夥伴取得委派資源的點數](../../lighthouse/how-to/partner-earned-credit.md)。
+如果您[部署 Azure Resource Manager 範本將客戶上線](../../lighthouse/how-to/onboard-customer.md)，則必須將 MPN 識別碼與至少一個可存取每個已上線訂用帳戶的使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此作業，而不是在每個客戶租用戶中執行。 為了簡化作業，建議您在租用戶中建立服務主體帳戶並將其與 MPN ID 相關聯，再授與上線的每位客戶[可取得合作夥伴獲得之點數的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。 如需詳細資訊，請參閱[連結您的合作夥伴識別碼，以追蹤已委派的資源受到的影響](../../lighthouse/how-to/partner-earned-credit.md)。
 
 **如何向客戶說明合作夥伴管理連結 (PAL)？**
 

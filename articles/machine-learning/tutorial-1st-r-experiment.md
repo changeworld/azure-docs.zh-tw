@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906733"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019370"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教學課程：使用 R 建立機器學習模型 (預覽)
 
@@ -68,11 +68,11 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>複製範例片段 
 
-複製 https://github.com/azure/azureml-sdk-for-r GitHub 存放庫，以取得您將在本教學課程中執行的片段檔案複本。
+複製 https://github.com/Azure/azureml-sdk-for-r GitHub 存放庫，以取得您將在本教學課程中執行的片段檔案複本。
 
 1. 在 RStudio 中，瀏覽至「終端機」索引標籤，並將其放入您要複製存放庫的目錄中。
 
-1. 在終端機中執行 "git clone https://github.com/Azure/azureml-sdk-for-r" 以複製存放庫。
+1. 在終端機中執行 `git clone https://github.com/Azure/azureml-sdk-for-r` 以複製存放庫。
 
 1. 在 RStudio 中，瀏覽至複製 azureml-sdk-for-r 資料夾的「片段」資料夾。  在「片段」下，選取 train-and-deploy-first-model.Rmd 檔案，以尋找本教學課程中使用的片段。 用於片段的其他檔案位於 train-and-deploy-first-model 子資料夾中。 開啟片段之後，請透過 **工作階段 > 設定工作目錄 > 至來源檔案位置**，將工作目錄設定至檔案的位置。 
 

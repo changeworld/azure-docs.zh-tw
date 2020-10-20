@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048146"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219729"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 使用 Azure Blob 儲存體，以便在邊緣儲存資料
 
@@ -53,7 +53,7 @@ IoT Edge 上的 Azure Blob 儲存體會在邊緣提供 [區塊 blob](/rest/api/s
 * 以分鐘為單位指定將會自動刪除 blob (deleteAfterMinutes) 時間。
 * 如果 deleteAfterMinutes 值過期，請選擇在上傳 blob 時保留 blob 的功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure IoT Edge 裝置：
 
@@ -92,7 +92,7 @@ Azure 中的標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)�
 | 屬性 | 可能的值 | 說明 |
 | ----- | ----- | ---- |
 | deleteOn | true、false | 預設會設定為 `false` 。 如果您想要開啟此功能，請將此欄位設定為 `true` 。 <br><br> 環境變數：`deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | 指定時間（以分鐘為單位）。 當這個值過期時，模組會自動從本機儲存體刪除您的 blob。 <br><br> 環境變數：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| deleteAfterMinutes | `<minutes>` | 指定時間（以分鐘為單位）。 當這個值過期時，模組會自動從本機儲存體刪除您的 blob。 目前允許的最大分鐘數為35791。 <br><br> 環境變數：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
 | retainWhileUploading | true、false | 依預設，它會設定為 `true` ，而且如果 deleteAfterMinutes 過期，則會保留 blob，並在其上傳至雲端儲存體。 您可以將它設定為 `false` ，它會在 deleteAfterMinutes 到期時立即刪除資料。 注意：若要讓此屬性運作，uploadOn 應該設定為 true。  <br><br> **注意**：如果您使用附加 blob，此設定將會在值過期時，從本機儲存體刪除附加 blob，而且這些 blob 的任何未來附加區塊作業都會失敗。 您可能會想要確保到期值夠大，以滿足應用程式所執行的附加作業預期頻率。<br><br> 環境變數：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共用作為本機儲存體
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-例如︰
+例如：
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-例如︰
+例如：
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -195,7 +195,7 @@ Azure Blob 儲存體檔包含數種語言的快速入門範例程式碼。 您�
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>使用 Azure 儲存體總管連接到您的本機儲存體
 
-您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 連接到您的本機儲存體帳戶。
+您可以使用 [Azure 儲存體總管](https://github.com/microsoft/AzureStorageExplorer/releases/tag/v1.14.2) 連接到您的本機儲存體帳戶。
 
 1. 下載並安裝 Azure 儲存體總管
 

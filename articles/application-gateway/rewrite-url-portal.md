@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
-ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083152"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215768"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>使用 Azure 應用程式閘道重寫 URL-Azure 入口網站 (Preview) 
 
@@ -118,6 +118,6 @@ ms.locfileid: "87083152"
 
 如需存取記錄中所有欄位的詳細資訊，請參閱 [這裡](application-gateway-diagnostics.md#for-application-gateway-and-waf-v2-sku)。
 
-##  <a name="next-steps"></a>接下來的步驟
+##  <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何針對一些常見的使用案例設定重寫，請參閱 [常見的重寫案例](rewrite-http-headers.md)。

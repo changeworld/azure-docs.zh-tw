@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 34aa805e6af68933326325587c0a442fe5e3652c
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 8e4c0174e9f5e1a15fe85d5744ddcb6ee21c4a86
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420647"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048265"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 VPN 閘道
 
@@ -28,7 +28,7 @@ Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 �
 
 ![VNet 和 VPN 閘道](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>使用 Azure Cloud Shell 和 Azure PowerShell
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -184,9 +184,7 @@ Remove-AzResourceGroup -Name $RG1
 > * 調整 VPN 閘道的大小
 > * 重設 VPN 閘道
 
-請繼續進行下列教學課程，以了解 S2S、VNet 對 VNet 和 P2S 連線。
+接著，繼續進行下列教學課程：
 
 > [!div class="nextstepaction"]
-> * [建立 S2S 連線](vpn-gateway-tutorial-vpnconnection-powershell.md)
-> * [建立 VNet 對 VNet 連線](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [建立 P2S 連線](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [建立連線](vpn-gateway-tutorial-vpnconnection-powershell.md)

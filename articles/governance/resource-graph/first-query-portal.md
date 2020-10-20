@@ -1,14 +1,14 @@
 ---
 title: 快速入門：您的第一個入口網站查詢
 description: 遵循此快速入門中的步驟，以使用 Azure Resource Graph Explorer 從 Azure 入口網站執行您的第一個查詢。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056375"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057377"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢
 
@@ -51,7 +51,7 @@ Azure Resource Graph 的功能可直接透過 Azure Resource Graph Explorer 在 
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>從 Resource Graph 查詢建立圖表
 
-在執行上述最後一個查詢後，如果您選取 [圖表] 索引標籤，就會收到「結果集與圓形圖視覺效果不相容」的訊息。 列出結果的查詢不能製成圖表，但提供資源計數的查詢可以。 讓我們使用[查詢範例 - 依 OS 類型計算虛擬機器數目](./samples/starter.md#count-os)，從 Resource Graph 查詢建立視覺效果。
+在執行前一個查詢之後，如果您選取 [圖表] 索引標籤，就會收到「結果集與圓形圖視覺效果不相容」的訊息。 列出結果的查詢不能製成圖表，但提供資源計數的查詢可以。 讓我們使用[查詢範例 - 依 OS 類型計算虛擬機器數目](./samples/starter.md#count-os)，從 Resource Graph 查詢建立視覺效果。
 
 1. 在視窗的 [查詢 1] 部分輸入下列查詢，然後選取 [執行查詢]。
 
@@ -67,7 +67,7 @@ Azure Resource Graph 的功能可直接透過 Azure Resource Graph Explorer 在 
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>將查詢視覺效果釘選到儀表板
 
-當您從可視覺化的查詢獲得結果時，便可將該資料視覺效果釘選到您的其中一個儀表板。 在執行上述查詢後，請遵循下列步驟：
+當您從可視覺化的查詢獲得結果時，便可將該資料視覺效果釘選到您的其中一個儀表板。 在執行前一個查詢之後，請遵循下列步驟：
 
 1. 選取 [儲存]，然後提供名稱「依 OS 類型的 VM」。 然後，選取右窗格底部的 [儲存]。
 

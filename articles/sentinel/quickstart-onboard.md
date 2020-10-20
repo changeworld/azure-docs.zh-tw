@@ -8,13 +8,14 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/14/2020
+ms.custom: references_regions
+ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889026"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057513"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入門：使 Azure Sentinel 上線
 
@@ -26,7 +27,6 @@ ms.locfileid: "90889026"
 
 >[!IMPORTANT] 
 > 如需使用 Azure Sentinel 時所產生費用的相關資訊，請參閱 [Azure Sentinel 定價](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
-  
 
 ## <a name="global-prerequisites"></a>全域必要條件
 
@@ -38,7 +38,24 @@ ms.locfileid: "90889026"
 - 若要使用 Azure Sentinel，您需要工作區所屬資源群組的參與者或讀者權限。
 - 連線特定資料來源可能需要其他權限。
 - Azure Sentinel 是付費服務。 如需價格相關資訊，請參閱[關於 Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058)。
- 
+
+### <a name="geographical-availability-and-data-residency"></a>地理可用性與資料落地
+
+- Azure Sentinel 可以在任何 [Log Analytics 的 GA 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作區上執行，中國和德國 (主權) 區域除外。 
+
+- Azure Sentinel 所產生的資料 (例如事件、書簽和分析規則) 可能包含源自客戶 Log Analytics 工作區的一些客戶資料。 根據工作區所在的地理位置，此 Azure Sentinel 產生的資料會儲存在下表所列的地理位置中：
+
+    | 工作區地理位置 | Azure Sentinel 產生的資料地理位置 |
+    | --- | --- |
+    | 美國<br>印度<br>巴西<br>非洲<br>南韓 | 美國 |
+    | 歐洲<br>法國<br>瑞士 | 歐洲 |
+    | 澳大利亞 | 澳大利亞 |
+    | United Kingdom | United Kingdom |
+    | Canada | Canada |
+    | 亞太地區 | 亞太地區 (新加坡) |
+    | 日本 | 日本 |
+    |
+
 ## <a name="enable-azure-sentinel"></a>啟用 Azure Sentinel<a name="enable"></a>
 
 1. 登入 Azure 入口網站。 請確定已選取 Azure Sentinel 建立所在的訂用帳戶。
@@ -55,7 +72,7 @@ ms.locfileid: "90889026"
 
    >[!NOTE] 
    > - Azure 資訊安全中心所建立的預設工作區不會出現在清單中；您無法在其上安裝 Azure Sentinel。
-   > - Azure Sentinel 可以在任何 [Log Analytics 的 GA 區域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作區上執行，中國和德國 (主權) 區域除外。 Azure Sentinel 所產生的資料 (例如事件、書籤和警示規則，其中可能包含來自這些工作區的一些客戶資料) 會儲存在歐洲 (適用於位於歐洲的工作區)、澳洲 (適用於位於澳洲的工作區) 或美國東部 (適用於位於任何其他區域的工作區)。
+   >
 
    >[!IMPORTANT]
    >
@@ -67,19 +84,21 @@ ms.locfileid: "90889026"
 
 ## <a name="connect-data-sources"></a>連線資料來源
 
-Azure Sentinel 藉由連線到服務並將事件和記錄轉送至 Azure Sentinel，來建立與服務和應用程式的連線。 針對電腦和虛擬機器，您可以安裝 Azure Sentinel 代理程式，代理程式會收集記錄然後轉送至 Azure Sentinel。 對於防火牆和 Proxy，Azure Sentinel 利用 Linux Syslog 伺服器。 代理程式會安裝在伺服器上、從該伺服器收集記錄檔，並將其轉送至 Azure Sentinel。 
+Azure Sentinel 藉由連線到服務並將事件和記錄轉送至 Azure Sentinel，從服務和應用程式擷取資料。 針對實體和虛擬機器，您可以安裝 Log Analytics 代理程式，該代理程式會收集記錄然後轉送至 Azure Sentinel。 對於防火牆和 Proxy，Azure Sentinel 會在 Linux Syslog 伺服器上安裝 Log Analytics 代理程式，該代理程式會從中收集記錄檔並將其轉送至 Azure Sentinel。 
  
-1. 按一下 [資料連接器]。
-1. 您可以連線的每個資料來源都有一個圖格。<br>
-例如，按一下 [Azure Active Directory]。 如果與此資料來源連線，您可以將 Azure AD 的所有記錄串流至 Azure Sentinel。 您可以選取想要取得的記錄類型 - 登入記錄及/或稽核記錄。 <br>
-在底部，Azure Sentinel 會建議您應該為每個連接器安裝哪些活頁簿，讓您可以立即取得資料的相關深入解析。 <br> 依照安裝指示或[參閱相關的連線指南](connect-data-sources.md)以取得詳細資訊。 如需資料連接器的詳細資訊，請參閱[連線 Microsoft 服務](connect-data-sources.md)。
+1. 從主功能表中，選取 [資料連接器]。 這會開啟資料連接器資源庫。
 
-與資料來源連線之後，您的資料就會開始串流至 Azure Sentinel，並準備好讓您開始使用。 您可以在[內建儀表板](quickstart-get-visibility.md)中檢視記錄，並且開始在 Log Analytics 中建置查詢以[調查資料](tutorial-investigate-cases.md)。
+1. 此資源庫是您可連線的所有資料來源清單。 選取資料來源，然後選取 [開啟連接器頁面] 按鈕。
 
+1. 連接器頁面會顯示設定連接器的相關指示，以及任何可能需要的其他指示。<br>
+例如，若您選取 [Azure Active Directory] 資料來源，其可讓您將記錄從 Azure AD 串流至 Azure Sentinel，則可選取您要取得的記錄類型 (登入記錄及/或稽核記錄)。 <br> 依照安裝指示或[參閱相關的連線指南](connect-data-sources.md)以取得詳細資訊。 如需資料連接器的詳細資訊，請參閱[連線 Microsoft 服務](connect-data-sources.md)。
 
+1. 連接器頁面上的 [後續步驟] 索引標籤會顯示相關的內建活頁簿、範例查詢，以及資料連接器隨附的分析規則範本。 您可以依現況使用範本或加以修改 - 無論哪種方式，您都可以立即取得資料的相關見解。 <br>
+
+與資料來源連線之後，您的資料就會開始串流至 Azure Sentinel，並準備好讓您開始使用。 您可以在[內建活頁簿](quickstart-get-visibility.md)中檢視記錄，並且開始在 Log Analytics 中建置查詢以[調查資料](tutorial-investigate-cases.md)。
 
 ## <a name="next-steps"></a>後續步驟
-在本文件中，您已了解如何將資料來源連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本文件中，您已了解如何將資料來源上線和連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
 - 從[常見的事件格式設備](connect-common-event-format.md)將資料串流至 Azure Sentinel。

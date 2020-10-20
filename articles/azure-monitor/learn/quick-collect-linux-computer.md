@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020383"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057496"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入門：使用 Azure 監視器從混合式環境中的 Linux 電腦收集資料
 
@@ -62,11 +62,9 @@ ms.locfileid: "89020383"
 
 2. 在 Log Analytics 工作區清單中，選取您稍早建立的工作區 (您可能已經將它命名為 **DefaultLAWorkspace**)。
 
-3. 選取 [進階設定]：
-
-    ![Azure 入口網站中的 Log Analytics 進階設定功能表](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. 選取 [代理程式管理]：
  
-4. 選取 [連接的來源]，然後選取 [Linux 伺服器]。
+4. 然後選取 [Linux 伺服器]。
 
 5. [工作區識別碼] 和 [主要金鑰] 右邊的值。 將兩者複製並貼到您最愛的編輯器。
 
@@ -125,7 +123,7 @@ Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於
 
 5. 選取頁面頂端的 [儲存] 來儲存設定。
 
-6. 選取 [Linux 效能資料] 以啟用 Linux 電腦上的效能計數器收集。 
+6. 選取 [Linux 效能資料]  以啟用 Linux 電腦上的效能計數器收集。 
 
 7. 當您第一次為新的 Log Analytics 工作區設定 Linux 效能計數器時，系統會提供選項，讓您快速建立數個常用的計數器。 這些計數器旁邊皆會列出核取方塊。
 
@@ -133,7 +131,7 @@ Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於
 
     選取 [將下列設定套用至我的機器]，然後選取 [新增選取的效能計數器]。 隨即會新增且收集取樣間隔時間的預設值為 10 秒。  
 
-8. 選取頁面頂端的 [儲存] 來儲存設定。
+8. 選取頁面頂端的 [儲存]  來儲存設定。
 
 ## <a name="view-data-collected"></a>檢視收集的資料
 
@@ -141,7 +139,7 @@ Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於
 
 1. 在選取的工作區中，從左側窗格中選取 [記錄]。
 
-2. 在記錄查詢頁面的查詢編輯器中輸入 `Perf`，然後選取 [執行]。
+2. 在記錄查詢頁面的查詢編輯器中輸入 `Perf`，然後選取 [執行]  。
  
     ![Log Analytics 記錄搜尋](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 

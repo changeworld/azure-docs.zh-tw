@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617055"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058211"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教學課程：設定兩個受控執行個體之間的複寫
 
@@ -48,7 +48,7 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 
 要將 SQL 受控執行個體設定作為發行者和 (或) 散發者，有下列必要條件：
 
-- 發行者受控執行個體位於與散發者與訂閱者相同的虛擬網路上，或是這三個實體的虛擬網路之間已設定[虛擬網路對等互連](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
+- 發行者受控執行個體位於與散發者與訂閱者相同的虛擬網路上，或是這三個實體的虛擬網路之間已設定 [VPN 閘道](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。 
 - 連線會在複寫參與者之間使用 SQL 驗證。
 - 複寫工作目錄的 Azure 儲存體帳戶共用。
 - NSG 的安全性規則中應開啟連接埠 445 (TCP 輸出)，讓受控執行個體能夠存取 Azure 檔案共用。  如果發生 `failed to connect to azure storage \<storage account name> with os error 53` 錯誤，則必須將輸出規則新增至適當 SQL 受控執行個體子網路的 NSG。

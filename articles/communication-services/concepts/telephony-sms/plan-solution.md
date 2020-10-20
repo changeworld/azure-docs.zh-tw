@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767145"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048214"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>規劃您的電話語音和 SMS 解決方案
 
@@ -74,7 +74,9 @@ Azure 通訊服務可讓您使用電話號碼撥打語音電話，並透過公�
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure 訂用帳戶資格
 
-若要取得電話號碼，您必須是付費的 Azure 訂用帳戶。 試用帳戶無法取得電話號碼。 
+若要取得電話號碼，您必須是付費的 Azure 訂用帳戶。 試用帳戶或 Azure 免費點數無法取得電話號碼。 
+
+目前，電話號碼的可用性僅限於在美國有帳單位址的 Azure 訂用帳戶。
 
 ## <a name="next-steps"></a>下一步
 

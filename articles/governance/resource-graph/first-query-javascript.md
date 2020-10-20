@@ -1,15 +1,15 @@
 ---
 title: 快速入門：您的第一個 JavaScript 查詢
 description: 在本快速入門中，您將遵循步驟以啟用 JavaScript 的 Resource Graph 程式庫，並執行第一個查詢。
-ms.date: 06/23/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91251961"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057411"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>快速入門：使用 JavaScript 執行您的第一個 Resource Graph 查詢
 
@@ -23,11 +23,11 @@ ms.locfileid: "91251961"
 
 - **Node.js**：需要 [Node.js](https://nodejs.org/) 12 版或更新版本。
 
-## <a name="application-setup"></a>應用程式設定
+## <a name="application-initialization"></a>應用程式初始化
 
-若要啟用 JavaScript 來查詢 Azure Resource Graph，必須設定環境。 此設定適用於可以使用 JavaScript 的任何位置，包括 [Windows 10 上的 Bash](/windows/wsl/install-win10)。
+若要啟用 JavaScript 來查詢 Azure Resource Graph，則必須設定環境。 此設定適用於可以使用 JavaScript 的任何位置，包括 [Windows 10 上的 Bash](/windows/wsl/install-win10)。
 
-1. 執行下列命令以設定新的 Node.js 專案。
+1. 執行下列命令以初始化新的 Node.js 專案。
 
    ```bash
    npm init -y

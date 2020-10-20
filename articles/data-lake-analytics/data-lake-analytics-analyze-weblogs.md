@@ -1,18 +1,16 @@
 ---
 title: 使用 Azure Data Lake Analytics 來分析網站記錄
 description: 瞭解如何使用 Azure Data Lake Analytics 來分析網站記錄，以執行 SQL 函數和查詢。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132631"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219389"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 來分析網站記錄
 了解如何使用資料湖分析來分析網站記錄，特別是找出哪些訪客來源在嘗試瀏覽網站時遇到錯誤。
@@ -180,9 +178,9 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
 3. 按兩下 **UnsuccessfulResponses.log**。
 4. 您也可以按兩下工作的圖形檢視內的輸出檔，直接瀏覽至輸出。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要使用不同的工具開始使用資料湖分析，請參閱：
 
 * [使用 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)
 * [透過 Azure PowerShell 開始使用 Data Lake Analytics](data-lake-analytics-get-started-powershell.md)
-* [使用 .NET SDK 開始使用資料湖分析](data-lake-analytics-get-started-net-sdk.md)
+* [使用 .NET SDK 開始使用資料湖分析](./data-lake-analytics-get-started-cli.md)
