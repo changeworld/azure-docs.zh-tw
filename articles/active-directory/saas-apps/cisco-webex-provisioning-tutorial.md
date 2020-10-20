@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 069c8a8e2a595248afe45bbb90de877b3b6fc87d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647967"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849284"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>教學課程：設定 Cisco Webex 來自動佈建使用者
 
@@ -87,25 +87,25 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 3. 選取 [佈建]  索引標籤。
 
-    ![Cisco Webex 佈建](common/provisioning.png)
+    :::image type="content" source="common/provisioning.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
 
 4. 將 [佈建模式]  設定為 [自動]  。
 
-    ![Cisco Webex 佈建](common/provisioning-automatic.png)
+    :::image type="content" source="common/provisioning-automatic.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
 
 5. 在 [管理員認證]  區段下，輸入 Cisco Webex 帳戶的 [租用戶 URL]  和 [祕密權杖]  。
 
-    ![Cisco Webex 佈建](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
 
 6.  在 [租用戶 URL]  欄位中，以 `https://api.ciscospark.com/v1/scim/[OrgId]` 的格式輸入值。 若要取得 `[OrgId]`，請登入您的 [Cisco Webex 控制中樞](https://admin.webex.com/login)。 按一下左下方的 [組織名稱]，然後從 [組織識別碼]  複製值。 
 
     * 若要取得**祕密權杖**的值，請瀏覽至此 [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)。 在出現的 [Webex 登入] 頁面中，使用您組織的完整 Cisco Webex 系統管理帳戶登入。 此時會出現錯誤頁面，指出無法連線到網站，但這是正常情況。
 
-        ![Cisco Webex 佈建](./media/cisco-webex-provisioning-tutorial/test.png)
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
  
     * 從 URL 複製產生的持有人權杖值，如下所示。 此權杖的有效期限為 365 天。
         
-        ![Cisco Webex 佈建](./media/cisco-webex-provisioning-tutorial/test1.png)
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
 
 7. 填入步驟 5 所示的欄位後，按一下 [測試連線]  以確定 Azure AD 可以連線到 Cisco Webex。 如果連線失敗，請確定您的 Cisco Webex 帳戶具有系統管理員權限，然後再試一次。
 
@@ -119,11 +119,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 10. 在 [對應]  區段下，選取 [將 Azure Active Directory 使用者同步至 Cisco Webex]  。
 
-    ![Cisco Webex 佈建](./media/cisco-webex-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
 
 11. 在 [屬性對應]  區段中，檢閱從 Azure AD 同步至 Cisco Webex 的使用者屬性。 選取為 [比對]  屬性的屬性會用來比對 Cisco Webex 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
-    ![Cisco Webex 佈建](./media/cisco-webex-provisioning-tutorial/usermappingattributes.png)
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Azure 入口網站中的功能表螢幕擷取畫面。醒目提示 [管理] 底下的 [佈建]。" border="false":::
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

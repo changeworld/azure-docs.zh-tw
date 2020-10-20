@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006409"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045341"
 ---
 # <a name="move-vms-to-another-azure-region"></a>將 VM 移至另一個 Azure 區域
 
@@ -100,8 +100,8 @@ ms.locfileid: "90006409"
 1. 在 [名稱]  中，指定易記名稱 [ContosoVMVault]  。 如果您有多個訂用帳戶，請選取適當的一個。
 1. 建立資源群組 **ContosoRG**。
 1. 指定 Azure 區域。 若要查看支援的區域，請參閱 [Azure Site Recovery 定價詳細資料](https://azure.microsoft.com/pricing/details/site-recovery/)。
-1. 在 [復原服務保存庫] 中，選取 [概觀] > [ContosoVMVault] > [複寫的項目] > [+複寫]。
-1. 在 [來源]  中，選取 [Azure]  。
+1. 在 [復原服務保存庫] 中，選取 [ContosoVMVault] > [複寫的項目] > [+複寫]。
+1. 在下拉式清單中，選取 [Azure 虛擬機器]。
 1. 在 [來源位置]  中，選取 VM 目前執行所在的來源 Azure 區域。
 1. 選取 Resource Manager 部署模型。 然後，選取 [來源訂用帳戶]  和 [來源資源群組]  。
 1. 選取 [確定]  來儲存設定。

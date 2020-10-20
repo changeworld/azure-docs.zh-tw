@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903680"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951786"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教學課程：使用 Azure Stack Edge Pro 轉換資料以進行進階部署
 
@@ -58,7 +58,7 @@ ms.locfileid: "90903680"
 
 2. 在 [設定 Edge 計算] 圖格上，選取 [設定計算]。
 
-    ![開始使用計算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
+    ![開始使用計算 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
 3. 在 [設定 Edge 計算] 刀鋒視窗上，輸入下列資訊：
 
@@ -68,11 +68,11 @@ ms.locfileid: "90903680"
     |IoT 中樞     | 選擇 [新增] 或 [現有]。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。 <br> 在每個案例中，IoT 中樞資源會使用 Azure Stack Edge 資源所用的相同訂用帳戶和資源群組。     |
     |名稱     |輸入 IoT 中樞資源的名稱。         |
 
-    ![開始使用計算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
+    ![開始使用計算 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
 4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定 Edge 計算] 圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算] 圖格上的 [檢視設定]。
     
-    ![開始使用計算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
+    ![開始使用計算 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
     在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。
 
@@ -136,17 +136,17 @@ ms.locfileid: "90903680"
     |觸發程序類型     | 選取 [檔案] 觸發程序。 每當發生檔案事件 (例如檔案寫入至輸入共用) 時，就會引發檔案觸發程序。 另一方面，排定的觸發程序會根據您所定義的排程引發。 在本例中，我們需要檔案觸發程序。    |
     |輸入共用     | 選取輸入共用。 在此情況下，Edge 本機共用是輸入共用。 此處使用的模組會將檔案從 Edge 本機共用移到 Edge 共用，以便上傳至雲端。        |
 
-    ![新增觸發程序](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
+    ![新增觸發程序 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
 3. 觸發程序建立後，您會收到通知。 觸發程序清單會更新，以顯示新建立的觸發程序。 選取您剛剛建立的觸發程序。
 
-    ![新增觸發程序](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
+    ![新增觸發程序 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
 4. 複製並儲存範例路由。 您將修改此範例路由，且稍後會在 IoT 中樞加以使用。
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
-    ![新增觸發程序](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
+    ![新增觸發程序 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
 ## <a name="add-a-module"></a>新增模組
 
@@ -213,7 +213,7 @@ ms.locfileid: "90903680"
  
     4. 視需要設定進階 Edge 執行階段設定，然後按 [下一步]。
 
-        ![新增自訂模組](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
+        ![新增自訂模組 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
 5. 在 [指定路由] 下方，設定模組之間的路由。  
    
@@ -229,11 +229,11 @@ ms.locfileid: "90903680"
 
 6. 在 [檢閱部署] 下方檢閱所有設定，然後選取 [提交] 以提交模組進行部署。
 
-   ![[設定模組] 頁面](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![設定模組頁面 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     此動作會啟動模組部署。 部署完成後，模組的**執行階段狀態**將是**執行中**。
 
-    ![新增自訂模組](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
+    ![新增自訂模組 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 
 ## <a name="verify-data-transform-transfer"></a>確認資料轉換和傳輸
 
@@ -247,15 +247,15 @@ ms.locfileid: "90903680"
  
 1. 將資料新增至本機共用。
 
-   ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![確認資料轉換 2](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     資料會移至雲端共用。
 
-    ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
+    ![確認資料轉換 3](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
     然後將資料從雲端共用推送至儲存體帳戶。 若要檢視資料，請移至您的儲存體帳戶，然後選取 [儲存體總管]。 您可以在儲存體帳戶中檢視已上傳的資料。
 
-    ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
+    ![確認資料轉換 4](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
 您已完成驗證流程。
 

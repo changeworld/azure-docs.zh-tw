@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554289"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Nuclino 整合
 
@@ -155,15 +155,15 @@ ms.locfileid: "88554289"
 
 4. 按一下 [圖示]  。
 
-    ![Nuclino 組態](./media/nuclino-tutorial/configure1.png)
+    ![顯示已在 [Azure A D S O] 旁選取 [功能表] 圖示的螢幕擷取畫面。](./media/nuclino-tutorial/configure1.png)
 
 5. 按一下 [Azure AD SSO]  ，然後從下拉式清單中選取 [小組設定]  。
 
-    ![Nuclino 組態](./media/nuclino-tutorial/configure2.png)
+    ![顯示 [Azure A D S S O] 下拉式清單的螢幕擷取畫面，其中已選取 [小組設定]。](./media/nuclino-tutorial/configure2.png)
 
 6. 從左側導覽面板中，選取 [驗證]  。
 
-    ![Nuclino 組態](./media/nuclino-tutorial/configure3.png)
+    ![顯示已選取 [驗證] 的螢幕擷取畫面。](./media/nuclino-tutorial/configure3.png)
 
 7. 在 [驗證]  區段中，執行下列步驟：
 

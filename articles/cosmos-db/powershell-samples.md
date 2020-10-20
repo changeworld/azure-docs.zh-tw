@@ -4,14 +4,14 @@ description: 取得 Azure PowerShell 範例，以在 Azure Cosmos DB 中執行�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/30/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 678e9490fe52a329365174e1a2283a475f3312e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0c2d13ef49676917bc48dd5a2e682471558567f3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505011"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842966"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>適用於 Azure Cosmos DB 的 Azure PowerShell 範例
 
@@ -37,8 +37,7 @@ ms.locfileid: "87505011"
 |[使用大型分割區索引鍵建立容器](scripts/powershell/sql/create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用大型分割區索引鍵建立容器。 |
 |[建立沒有索引原則的容器](scripts/powershell/sql/create-index-none.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立關閉索引原則的 Azure Cosmos 容器。|
 |[列出或取得資料庫或容器](scripts/powershell/sql/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或取得資料庫或容器。 |
-|[取得輸送量](scripts/powershell/sql/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 取得資料庫或容器的輸送量。 |
-|[更新輸送量](scripts/powershell/sql/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更新資料庫或容器的輸送量。 |
+|[輸送量作業](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 資料庫或容器的輸送量作業，包括自動調整和標準輸送量之間的取得、更新和遷移。 |
 |[鎖定資源避免刪除](scripts/powershell/sql/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用資源鎖定避免刪除資源。 |
 |||
 
@@ -49,8 +48,7 @@ ms.locfileid: "87505011"
 |[建立帳戶、keyspace 和資料表](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos 帳戶、keyspace 和資料表。 |
 |[建立具有自動調整功能的帳戶、keyspace 和資料表](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立具有自動調整功能的 Azure Cosmos 帳戶、keyspace 和資料表。 |
 |[列出或取得 keyspace 或資料表](scripts/powershell/cassandra/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或取得 keyspace 或資料表。 |
-|[取得輸送量](scripts/powershell/cassandra/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 取得 keyspace 或資料表的輸送量。 |
-|[更新輸送量](scripts/powershell/cassandra/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更新 keyspace 或資料表的輸送量。 |
+|[輸送量作業](scripts/powershell/cassandra/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Keyspace 或資料表的輸送量作業，包括自動調整和標準輸送量之間的取得、更新和遷移。 |
 |[鎖定資源避免刪除](scripts/powershell/cassandra/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用資源鎖定避免刪除資源。 |
 |||
 
@@ -61,8 +59,7 @@ ms.locfileid: "87505011"
 |[建立帳戶、資料庫和集合](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos 帳戶、資料庫和集合。 |
 |[建立具有自動調整功能的帳戶、資料庫和集合](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立具有自動調整功能的 Azure Cosmos 帳戶、資料庫和集合。 |
 |[列出或取得資料庫或集合](scripts/powershell/mongodb/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或取得資料庫或集合。 |
-|[取得輸送量](scripts/powershell/mongodb/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 取得資料庫或集合的輸送量。 |
-|[更新輸送量](scripts/powershell/mongodb/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更新資料庫或集合的輸送量。 |
+|[輸送量作業](scripts/powershell/mongodb/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 資料庫或集合的輸送量作業，包括自動調整和標準輸送量之間的取得、更新和遷移。 |
 |[鎖定資源避免刪除](scripts/powershell/mongodb/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用資源鎖定避免刪除資源。 |
 |||
 
@@ -73,8 +70,7 @@ ms.locfileid: "87505011"
 |[建立帳戶、資料庫和圖表](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos 帳戶、資料庫和圖表。 |
 |[建立具有自動調整功能的帳戶、資料庫和圖表](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立具有自動調整功能的 Azure Cosmos 帳戶、資料庫和圖表。 |
 |[列出或取得資料庫或圖表](scripts/powershell/gremlin/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或取得資料庫或圖表。 |
-|[取得輸送量](scripts/powershell/gremlin/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 取得資料庫或圖表的輸送量。 |
-|[更新輸送量](scripts/powershell/gremlin/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更新資料庫或圖表的輸送量。 |
+|[輸送量作業](scripts/powershell/gremlin/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 資料庫或圖表的輸送量作業，包括自動調整和標準輸送量之間的取得、更新和遷移。 |
 |[鎖定資源避免刪除](scripts/powershell/gremlin/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用資源鎖定避免刪除資源。 |
 |||
 
@@ -85,7 +81,6 @@ ms.locfileid: "87505011"
 |[建立帳戶和資料表](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos 帳戶和資料表。 |
 |[建立具有自動調整功能的帳戶和資料表](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure Cosmos 帳戶和資料表自動調整。 |
 |[列出或取得資料表](scripts/powershell/table/list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或取得資料表 |
-|[取得輸送量](scripts/powershell/table/throughput-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 取得資料表的輸送量。 |
-|[更新輸送量](scripts/powershell/table/throughput-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更新資料表的輸送量。 |
+|[輸送量作業](scripts/powershell/table/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 資料表的輸送量作業，包括自動調整和標準輸送量之間的取得、更新和遷移。 |
 |[鎖定資源避免刪除](scripts/powershell/table/lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用資源鎖定避免刪除資源。 |
 |||

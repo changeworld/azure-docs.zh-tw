@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: contperfq1
 ms.topic: overview
-ms.date: 08/21/2020
-ms.openlocfilehash: 2cbe0b520156e77308f61a725937ac415cb80473
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 09/21/2020
+ms.openlocfilehash: f581f7bc2f67093afc26dd2c2f15916841a106e9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88756940"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854336"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Spark
 
-Apache Spark 是一個平行處理架構，可支援記憶體內部處理，以大幅提升巨量資料分析應用程式的效能。 Azure HDInsight 中的 Apache Spark 是 Microsoft 在雲端的 Apache Spark 實作。 HDInsight 讓您能夠更輕鬆地在 Azure 中建立並設定 Spark 叢集。 HDInsight 中的 Spark 叢集也能與 Azure 儲存體和 Azure Data Lake Storage 相容。 因此，您可以使用 HDInsight Spark 叢集來處理儲存於 Azure 的資料。 如需元件和版本資訊，請參閱 [Azure HDInsight 中的 Apache Hadoop 元件和版本](../hdinsight-component-versioning.md)。
+Apache Spark 是一個平行處理架構，可支援記憶體內部處理，以大幅提升巨量資料分析應用程式的效能。 Azure HDInsight 中的 Apache Spark 是 Microsoft 在雲端的 Apache Spark 實作。 HDInsight 讓您能夠更輕鬆地在 Azure 中建立並設定 Spark 叢集。 HDInsight 中的 Spark 叢集與 [Azure Blob 儲存體](../../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md) 或 [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) 相容。 因此，您可以使用 HDInsight Spark 叢集來處理儲存於 Azure 的資料。 如需元件和版本資訊，請參閱 [Azure HDInsight 中的 Apache Hadoop 元件和版本](../hdinsight-component-versioning.md)。
 
 ![Spark：統一架構](./media/apache-spark-overview/hdinsight-spark-overview.png)
 
@@ -34,7 +34,7 @@ HDInsight 中的 Spark 叢集可提供完全受控的 Spark 服務。 以下列�
 | 輕鬆建立 |您可以使用 Azure 入口網站、Azure PowerShell 或 HDInsight .NET SDK，在幾分鐘內便能於 HDInsight 中建立新的 Spark 叢集。 請參閱[開始使用 HDInsight 中的 Apache Spark 叢集](apache-spark-jupyter-spark-sql-use-portal.md)。 |
 | 容易使用 |HDInsight 中的 Spark 叢集包含 Jupyter 和 Apache Zeppelin Notebook。 您可以使用這些 Notebook 來進行互動式的資料處理和視覺化。 請參閱[搭配使用 Apache Zeppelin 筆記本與 Apache Spark](apache-spark-zeppelin-notebook.md) 和[在 Apache Spark 叢集上載入資料和執行查詢](apache-spark-load-data-run-query.md)。|
 | REST API |HDInsight 中的 Spark 叢集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是 REST-API 型 Spark 作業伺服器，可用來遠端提交及監視作業。 請參閱[使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集](apache-spark-livy-rest-interface.md)。|
-| 支援 Azure Data Lake Storage | HDInsight 中的 Spark 叢集可以使用 Azure Data Lake Storage 作為主要儲存體或額外的儲存體。 如需有關 Data Lake Storage 的詳細資訊，請參閱 [Azure Data Lake Storage 概觀](../../data-lake-store/data-lake-store-overview.md)。 |
+| Azure 儲存體的支援 | HDInsight 中的 Spark 叢集可以使用 Azure Data Lake Storage Gen1/Gen2 作為主要儲存體或額外的儲存體。 如需 Data Lake Storage Gen1 的詳細資訊，請參閱 [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md)。 如需 Data Lake Storage Gen2 的詳細資訊，請參閱 [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。|
 | Azure 服務整合 |HDInsight 中的 Spark 叢集隨附連至 Azure 事件中樞的連接器。 您可以使用事件中樞建立串流應用程式。 包括 Apache Kafka (已是 Spark 的一部分)。 |
 | ML Server 的支援 | 在 HDInsight 中會以 **ML 服務**叢集類型的形式提供 ML Server 的支援。 您可以設定 ML 服務叢集，以 Spark 叢集所承諾的速度來執行分散式 R 運算。 如需詳細資訊，請參閱[什麼是 Azure HDInsight 中的 ML 服務](../r-server/r-server-overview.md)。 |
 | 第三方 IDE 整合 | HDInsight 提供數個 IDE 外掛程式，以用來建立應用程式，並將應用程式提交至 HDInsight Spark 叢集。 如需詳細資訊，請參閱[使用 Azure Toolkit for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)、[使用 Spark & Hive Tools for VSCode](../hdinsight-for-vscode.md) 和[使用 Azure Toolkit for Eclipse](apache-spark-eclipse-tool-plugin.md)。|
@@ -42,7 +42,7 @@ HDInsight 中的 Spark 叢集可提供完全受控的 Spark 服務。 以下列�
 | SSD 快取 |您可以選擇將資料快取在記憶體中，或快取在連接叢集節點的 SSD 中。 記憶體快取能提供最高的查詢效能，但可能所費不貲。 SSD 快取提供改善查詢效能的絕佳選項，而且您不需要建立大小可讓整個資料集納入記憶體的叢集。 請參閱[使用 Azure HDInsight IO 快取改進 Apache Spark 工作負載效能](apache-spark-improve-performance-iocache.md)。 |
 | BI 工具整合 |HDInsight 中的 Spark 叢集會為資料分析提供 BI 工具 (例如 Power BI) 的連接器。 |
 | 預先載入的 Anaconda 程式庫 |HDInsight 中的 Spark 叢集隨附預先安裝的 Anaconda 程式庫。 [Anaconda](https://docs.continuum.io/anaconda/) 為機器學習、資料分析、視覺化等主題提供將近 200 個程式庫。 |
-| 適應性 | HDInsight 可讓您使用自動調整功能來動態變更叢集節點的數目。 請參閱[自動調整 Azure HDInsight 叢集規模](../hdinsight-autoscale-clusters.md)。 此外，由於所有資料都儲存在 Azure 儲存體或 Data Lake Storage 內，因此您可以在不遺失資料的情況下卸除 Spark 叢集。 |
+| 適應性 | HDInsight 可讓您使用自動調整功能來動態變更叢集節點的數目。 請參閱[自動調整 Azure HDInsight 叢集規模](../hdinsight-autoscale-clusters.md)。 此外，由於所有資料都儲存在 Azure Blob 儲存體、[Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md) 或 [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) 中，因此您可以在不遺失資料的情況下卸除 Spark 叢集。 |
 | SLA |HDInsight 中的 Spark 叢集隨附全天候支援，以及保證正常運作時間達 99.9% 的 SLA。 |
 
 依預設，HDInsight 中的 Apache Spark 叢集能經由叢集提供下列元件。
@@ -63,7 +63,7 @@ HDInsight Spark 叢集會納入一個 [ODBC 驅動程式](https://go.microsoft.c
 
 Spark 應用程式在叢集上是以獨立的多組程序在執行。 由主要程式 (稱為驅動程式) 中的 SparkContext 物件協調。
 
-SparkContext 可以連線到數種類型的叢集管理員，而叢集管理員可以給予各個應用程式資源。 這些叢集管理員包括 Apache Mesos、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 或 Spark 叢集管理員。 在 HDInsight 中，使用 YARN 叢集管理員可執行 Spark。 一旦連線之後，Spark 就會取得叢集中背景工作節點上的執行程式，也就是為應用程式執行運算和儲存資料的處理序。 接下來，它會將您的應用程式程式碼 (由傳遞到 SparkContext 的 JAR 或 Python 檔案所定義) 傳送到執行程式。 最後，SparkContext 會將工作傳送到執行程式來執行。
+SparkContext 可以連線到數種類型的叢集管理員，而叢集管理員可以給予各個應用程式資源。 這些叢集管理員包括 Apache Mesos、Apache Hadoop YARN 或 Spark 叢集管理員。 在 HDInsight 中，使用 YARN 叢集管理員可執行 Spark。 一旦連線之後，Spark 就會取得叢集中背景工作節點上的執行程式，也就是為應用程式執行運算和儲存資料的處理序。 接下來，它會將您的應用程式程式碼 (由傳遞到 SparkContext 的 JAR 或 Python 檔案所定義) 傳送到執行程式。 最後，SparkContext 會將工作傳送到執行程式來執行。
 
 SparkContext 會執行使用者的主要函式，並在背景工作節點上執行各種平行作業。 然後，SparkContext 會收集作業的結果。 背景工作節點會在 Hadoop 分散式檔案系統中讀取和寫入資料。 背景工作節點也會將記憶體內部已轉換的資料快取為彈性分散式資料集 (RDD)。
 
@@ -75,7 +75,7 @@ HDInsight 中的 Spark 叢集適用於下列重要案例：
 
 ### <a name="interactive-data-analysis-and-bi"></a>互動式資料分析和 BI
 
-HDInsight 中的 Apache Spark 會將資料儲存在 Azure 儲存體或 Azure Data Lake Storage 中。 商務專家和關鍵決策者可以就該資料分析並建立報告。 並且使用 Microsoft Power BI 從分析的資料建立互動式報表。 分析師可以從叢集儲存體中的非結構化/半結構化資料著手、使用 Notebook 來定義資料的結構描述，然後再使用 Microsoft Power BI 來建置資料模型。 HDInsight 中的 Spark 叢集也支援許多協力廠商 BI 工具。 例如 Tableau，可讓資料分析師、商務專家、重要決策者更輕鬆。
+HDInsight 中的 Apache Spark 會將資料儲存在 Azure 儲存體、Azure Data Lake Gen1 或 Azure Data Lake Storage Gen2 中。 商務專家和關鍵決策者可以就該資料分析並建立報告。 並且使用 Microsoft Power BI 從分析的資料建立互動式報表。 分析師可以從叢集儲存體中的非結構化/半結構化資料著手、使用 Notebook 來定義資料的結構描述，然後再使用 Microsoft Power BI 來建置資料模型。 HDInsight 中的 Spark 叢集也支援許多協力廠商 BI 工具。 例如 Tableau，可讓資料分析師、商務專家、重要決策者更輕鬆。
 
 * [教學課程：使用 Power BI 將 Spark 資料視覺化](apache-spark-use-bi-tools.md)
 
@@ -93,19 +93,12 @@ HDInsight 上的 Spark 叢集提供豐富的支援供您建置即時分析解決
 * [Apache Spark 串流概觀](apache-spark-streaming-overview.md)
 * [Apache Spark 結構化串流的概觀](apache-spark-structured-streaming-overview.md)
 
-## <a name="where-do-i-start"></a>我該從哪裡開始？
-
-您可以使用下列文章來深入了解 HDInsight 中的 Apache Spark：
-
-* [快速入門：在 HDInsight 中建立 Apache Spark 叢集並利用 Jupyter 執行互動式查詢](./apache-spark-jupyter-spark-sql-use-portal.md)
-* [教學課程：使用 Jupyter 執行 Apache Spark 作業](./apache-spark-load-data-run-query.md)
-* [教學課程：使用 BI 工具分析資料](./apache-spark-use-bi-tools.md)
-* [教學課程：使用 Apache Spark 進行機器學習](./apache-spark-ipython-notebook-machine-learning.md)
-* [教學課程：使用 IntelliJ 建立 Scala Maven 應用程式](./apache-spark-create-standalone-application.md)
-
 ## <a name="next-steps"></a>後續步驟
 
-在本概觀中，您已對 Azure HDInsight 中的 Apache Spark 有了一些基本了解。 了解如何建立 HDInsight Spark 叢集以及執行某些 Spark SQL 查詢：
+在本概觀中，您已對 Azure HDInsight 中的 Apache Spark 有了基本了解。  您可以使用下列文章來深入瞭解 HDInsight 中的 Apache Spark，也可以建立 HDInsight Spark 叢集並進一步執行一些範例 Spark 查詢：
 
-* [在 HDInsight 中建立 Apache Spark 叢集](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [快速入門：在 HDInsight 中建立 Apache Spark 叢集並利用 Jupyter 執行互動式查詢](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [教學課程：在 Apache Spark 叢集上使用 Jupyter 載入資料和執行查詢](./apache-spark-load-data-run-query.md)
+* [教學課程：使用 Power BI 將 Spark 資料視覺化](apache-spark-use-bi-tools.md)
+* [教學課程：利用 HVAC 資料來預測建築物的溫度](apache-spark-ipython-notebook-machine-learning.md)
 * [最佳化 Spark 作業的效能](apache-spark-perf.md)

@@ -1,20 +1,17 @@
 ---
-title: PowerShell 腳本：監視 Azure Data Share 的使用方式 |Microsoft Docs
+title: PowerShell 腳本：監視 Azure Data Share 的使用量
 description: 此 PowerShell 腳本會抓取已傳送資料共用的使用計量。
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9ff7a29cba9b8e9ca058bfe742f484c5b495cd7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307196"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221310"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 來監視已傳送資料共用的使用量
 
@@ -44,12 +41,12 @@ Get-AzDataShareSynchronizationDetails -ResourceGroupName $resourceGroupName -Acc
 
 | Command | 注意 |
 |---|---|
-| [AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | 列出共用上的同步處理。 |
-| [AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | 取得共用同步處理的同步處理詳細資料。 |
+| [AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization) | 列出共用上的同步處理。 |
+| [AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail) | 取得共用同步處理的同步處理詳細資料。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/)。
 
 您可以在 [azure Data Share powershell 範例](../../samples-powershell.md)中找到其他 Azure Data Share powershell 腳本範例。

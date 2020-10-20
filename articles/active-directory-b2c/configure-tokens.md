@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f86d194c5c70f2de0ab6502893e228800b1bdf
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389559"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215462"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的權杖
 
@@ -40,6 +40,9 @@ ms.locfileid: "85389559"
     ![Azure 入口網站中的權杖存留期屬性設定](./media/configure-tokens/token-lifetime.png)
 
 8. 按一下 [檔案] 。
+
+> [!NOTE]
+> 使用授權碼流程與 PKCE 的單一頁面應用程式一律會有24小時的重新整理權杖存留期。 [深入瞭解在瀏覽器中重新整理權杖的安全性含意](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
 
 ## <a name="configure-jwt-token-compatibility"></a>設定 JWT 權杖相容性
 

@@ -11,25 +11,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
+ms.date: 10/11/2020
 ms.author: memildin
-ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3108dd32b9d7338e418a1d10684115ad7265702e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895817"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951191"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教學課程：改善法規合規性
----
 
-Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化達到法規合規性需求的程序。 在儀表板中，資訊安全中心會根據 Azure 環境的連續評估，提供合規性狀況的深入解析。 資訊安全中心會根據安全性最佳做法，來分析混合式雲端環境中的風險因素。 這些評量會對應到一組所支援標準中的合規性控制項。 在法規合規性儀表板中，您可以看到環境內所有這些評估在特定標準或法規下的狀態。 當您採取建議動作並降低環境中的風險因素後，您的合規性狀況便已改善。
+Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化達到法規合規性需求的程序。 在儀表板中，資訊安全中心會根據 Azure 環境的連續評估，提供合規性狀況的深入解析。 資訊安全中心會根據安全性最佳做法，來分析混合式雲端環境中的風險因素。 這些評量會對應到一組所支援標準中的合規性控制項。 在法規合規性儀表板中，您可以看到環境內所有這些評量在特定標準或法規下的狀態。 當您採取建議動作並降低環境中的風險因素後，您的合規性狀況便已改善。
 
-在本教學課程中，您將學會如何：
+在本教學課程中，您將了解如何：
 
--   使用法規合規性儀表板評估您的法規合規性
-
--   採取建議動作來改善您的合規性狀況
+> [!div class="checklist"]
+> * 使用法規合規性儀表板評估您的法規合規性
+> * 採取建議動作來改善您的合規性狀況
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/) 。
 
@@ -48,20 +47,20 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 >
 > [動態相容性套件 (預覽)](update-regulatory-compliance-packages.md) 功能可讓您將法規合規性儀表板中顯示的標準升級至新的*動態*套件。 您也可以使用相同的預覽功能來新增合規性套件，並監視其他標準的合規性。 
 
-1.  在資訊安全中心主功能表中的 [原則與合規性]  底下，選取 [法規合規性]  。 <br>
+1. 從資訊安全中心的功能表中，選取 [法規合規性]。 <br>
 在畫面頂端，您會看到合規性狀態的概觀和一組支援的合規性規章顯示在儀表板上。 您可以看到整體的合規性分數，以及每個標準評量的成功和失敗數目。
 
-    ![電腦描述高信賴度](./media/security-center-compliance-dashboard/compliance-dashboard.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法規合規性儀表板":::
 
-2.  選取與您相關的合規性標準索引標籤。 您會看到該標準的所有控制項清單。 對於適用的控制項，您可以檢視與該控制項相關的成功和失敗評量詳細資料。 有些控制項呈現灰色。這些控制項沒有任何相關聯的資訊安全中心評量。 請檢查這些控制項的需求，並自行在環境中對其進行評估。 其中有些項目可能與處理程序相關，而非技術性項目。
+1. 選取與您相關的合規性標準索引標籤 (1)。 您會看到套用標準的訂用帳戶 (2)，以及該標準的所有控制項清單 (3)。 對於適用的控制項，您可以檢視與該控制項相關聯的成功和失敗評量詳細資料 (4)，以及受影響的資源數目 (5)。 有些控制項呈現灰色。這些控制項沒有任何相關聯的資訊安全中心評量。 請檢查這些控制項的需求，並自行在環境中對其進行評估。 其中有些項目可能與處理程序相關，而非技術性項目。
 
-    ![合規性索引標籤](./media/security-center-compliance-dashboard/compliance-pci.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="法規合規性儀表板":::
 
 1. 若要產生並下載內有目前特殊標準合規性狀態摘要的 PDF 報告，請按一下 [下載報告]  。
 
     此報告會根據資訊安全中心的評估資料來為所選定的標準提供合規性狀態高階摘要，並且會根據該特殊標準的控制來加以組織。 此報告可與利害關係人共用，且可作為證據來提供給內部和外部稽核員。
 
-    ![下載這篇文章](./media/security-center-compliance-dashboard/download-report.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="法規合規性儀表板":::
 
 ## <a name="improve-your-compliance-posture"></a>改善您的合規性狀況
 
@@ -69,37 +68,33 @@ Azure 資訊安全中心會利用**法規合規性儀表板**，協助您簡化�
 
 1.  按一下儀表板上顯示的任何失敗評量，即可檢視該項建議的詳細資料。 每項建議都包含一組應遵循著來解決問題的補救步驟。
 
-1.  您可以選取特定資源以檢視更多詳細資料，並處理該資源的建議。 <br>例如，在 [Azure CIS 標準]  索引標籤上，您可以按一下建議：**需要安全傳輸至儲存體帳戶**。
+1.  您可以選取特定資源以檢視更多詳細資料，並處理該資源的建議。 <br>例如，在 [Azure CIS 1.1.0 (新版) 標準] 中，您可以選取**應在虛擬機器上套用磁碟加密**建議。
 
-    ![選取**需要對儲存體帳戶進行安全傳輸**的建議](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="法規合規性儀表板":::
 
-1. 當您按一下建議資訊並選取狀況不良的資源後，系統會直接將您引導至 Azure 入口網站中啟用**安全儲存體傳輸**的體驗。
+1. 在此範例中，當您從建議詳細資料頁面中選取 [採取動作] 時，將會進入 Azure 入口網站的 [Azure 虛擬機器] 頁面，您可以在此處開啟 [安全性] 索引標籤，並啟用加密：
+
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="法規合規性儀表板":::
 
     如需有關如何套用建議的詳細資訊，請參閱[實作 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
-
-    ![儲存體帳戶組態](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  在您採取行動來處理建議之後，您會看到合規性儀表板報告中產生了影響，因為合規性分數已改善。
 
     > [!NOTE]
-    > 系統大約會每隔 12 小時執行一次評量，因此您只會在評量執行後看到合規性資料上的影響。
+    > 系統大約會每隔 12 小時執行一次評量，因此您必須在下次執行相關評量後，才會看到合規性資料受到的影響。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何使用資訊安全中心的法規合規性儀表板來執行下列動作：
 
 -   檢視及監視與重要標準和法規相關的合規性狀況。
-
 -   藉由處理相關建議來改善合規性狀態，並觀看合規性分數的改善。
 
 法規合規性儀表板可以大幅簡化合規性程序，並大幅減少為 Azure 和混合式環境收集合規性辨識項所需的時間。
 
-若要深入了解，請參閱：
+若要深入了解，請參閱下列相關文章：
 
 -   [在法規合規性儀表板 (預覽) 中更新為動態合規性套件](update-regulatory-compliance-packages.md) - 了解這項預覽版功能如何讓您將法規合規性儀表板中顯示的標準更新為新的*動態*套件。 您也可以使用相同的預覽功能來新增合規性套件，並監視其他標準的合規性。 
-
 -   [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。
-
 -   [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)了解如何使用 Azure 資訊安全中心的建議來協助您保護 Azure 資源。
-
 -   [改善 Azure 資訊安全中心的安全分數](secure-score-security-controls.md) - 了解要如何設定弱點與安全性建議的優先順序，才最能改善安全性狀況。

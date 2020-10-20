@@ -1,6 +1,6 @@
 ---
 title: 教學課程：從 Bing 地圖服務遷移 Web 應用程式 | Microsoft Azure 地圖服務
-description: 如何將 Web 應用程式從 Bing 地圖服務遷移至 Microsoft Azure 地圖服務。
+description: 如何從 Bing 地圖服務 將 Web 應用程式遷移至 Microsoft Azure 地圖服務的教學課程。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319727"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876510"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>從 Bing 地圖服務遷移 Web 應用程式
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>教學課程 - 從 Bing 地圖服務遷移 Web 應用程式
 
 使用 Bing 地圖服務的 Web 應用程式通常會使用 Bing 地圖服務 V8 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂顯示在 Web 或行動應用程式中的互動式地圖。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
 

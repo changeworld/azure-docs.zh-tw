@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299983"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945204"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>教學課程：Azure Active Directory SSO 與 Kemp LoadMaster Azure AD 整合
 
@@ -145,7 +145,7 @@ ms.locfileid: "91299983"
 
 1. 指定虛擬服務的參數。
 
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-1.png)
+    ![顯示 [請指定虛擬服務的參數] 頁面的螢幕擷取畫面，其中包含方塊中的範例值。](./media/kemp-tutorial/kemp-1.png)
 
     a. 虛擬位址
     
@@ -161,7 +161,7 @@ ms.locfileid: "91299983"
 
 1. 指定 Real Server 的參數。
     
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-2.png)
+    ![顯示 [請指定實際伺服器的參數] 頁面的螢幕擷取畫面，其中包含方塊中的範例值。](./media/kemp-tutorial/kemp-2.png)
 
     a. 選取 [允許遠端位址]
     
@@ -203,7 +203,7 @@ ms.locfileid: "91299983"
 
 1. 按一下 [SSL 屬性] (在第 7 層運作)。
     
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-3.png)
+    ![顯示 [S S L 屬性] 區段螢幕擷取畫面，其中已選取 [S S L 加速 - 已啟用] 和範例憑證。](./media/kemp-tutorial/kemp-3.png)
     
     a. 在 SSL 加速中按一下 [已啟用]。
     
@@ -222,7 +222,7 @@ ms.locfileid: "91299983"
 
 1. 按一下 [憑證和授權] 下的 [中繼憑證]。
 
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-6.png)
+    ![顯示 [目前已安裝的中繼憑證] 區段的螢幕擷取畫面，其中已選取範例憑證。](./media/kemp-tutorial/kemp-6.png)
 
     a. 按一下 [新增新中繼憑證] 中的 [選擇檔案]。
     
@@ -238,7 +238,7 @@ ms.locfileid: "91299983"
  
 移至 [虛擬服務] 下的 [管理 SSO]。
 
-   ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-7.png)
+   ![顯示 [管理 S S O] 頁面的螢幕擷取畫面。](./media/kemp-tutorial/kemp-7.png)
    
    a. 在提供名稱後，按一下 [新增用戶端組態] 下的 [新增]。
 
@@ -268,7 +268,7 @@ ms.locfileid: "91299983"
 
 1. 按一下 [修改] 並瀏覽至 [ESP 選項]。
     
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-8.png)
+    ![顯示 [檢視/修改服務] 頁面的螢幕擷取畫面，其中已展開 [ESP 選項] 和 [實際伺服器] 區段。](./media/kemp-tutorial/kemp-8.png)
 
     a. 按一下 [啟用 ESP]。
     
@@ -286,7 +286,7 @@ ms.locfileid: "91299983"
 
 您應該會看到租用戶登入頁面，而不是先前未驗證的存取。 
 
-![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-9.png)
+![顯示 [租用戶登入] 頁面的螢幕擷取畫面。](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>設定 Kerberos 式驗證 
  
@@ -294,7 +294,7 @@ ms.locfileid: "91299983"
 
 1. 建立使用者帳戶 (在此範例中為 AppDelegation)。
     
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-10.png)
+    ![顯示 [kcd 使用者屬性] 視窗的螢幕擷取畫面，其中已選取 [帳戶] 索引標籤。](./media/kemp-tutorial/kemp-10.png)
 
 
     a. 選取 [屬性編輯器] 索引標籤。
@@ -311,7 +311,7 @@ ms.locfileid: "91299983"
 
 1. 選取 [委派] 索引標籤。
 
-    ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-11.png)
+    ![顯示 [kcd 使用者屬性] 視窗的螢幕擷取畫面，其中已選取 [委派] 索引標籤。](./media/kemp-tutorial/kemp-11.png)
 
     a. 選取 [信任這個使用者，但只委派指定的服務]。
 
@@ -332,7 +332,7 @@ ms.locfileid: "91299983"
 
 移至 Kemp LoadMaster Azure AD 整合 Web 主控台 > 虛擬服務 > 管理 SSO。
 
-![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-12.png)
+![顯示 [管理 S S O - 管理網域] 頁面的螢幕擷取畫面。](./media/kemp-tutorial/kemp-12.png)
 
 a. 瀏覽至 [伺服器端單一登入組態]。
 

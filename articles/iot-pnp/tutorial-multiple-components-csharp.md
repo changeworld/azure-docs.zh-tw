@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575379"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945527"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>教學課程：將在 Windows 上執行的 IoT 隨插即用多個元件裝置應用程式連線至 IoT 中樞 (C#)
 
@@ -33,7 +33,7 @@ ms.locfileid: "91575379"
 
 如果您已完成[快速入門：將在 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (C#)](quickstart-connect-device-csharp.md)，您已經複製了存放庫。
 
-複製 Microsoft Azure IoT SDK for .NET GitHub 存放庫中的範例。 在您選擇的資料夾中開啟命令提示字元。 執行下列命令以複製[適用於 .NET 的 Microsoft Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存放庫：
+從 C# GitHub 存放庫的 Azure IoT 範例複製範例。 在您選擇的資料夾中開啟命令提示字元。 執行下列命令以複製[適用於 .NET 的 Microsoft Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存放庫：
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git

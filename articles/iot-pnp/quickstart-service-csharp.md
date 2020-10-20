@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759164"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945371"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (C#)
 
@@ -34,7 +34,7 @@ IoT 隨插即用讓您無須具備基礎裝置實作的知識，即可與裝置�
 
 如果您已完成[快速入門：將在 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (C#)](quickstart-connect-device-csharp.md)，您已經複製了存放庫。
 
-複製 Microsoft Azure IoT SDK for .NET GitHub 存放庫中的範例。 在您選擇的資料夾中開啟命令提示字元。 執行下列命令以複製[適用於 .NET 的 Microsoft Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存放庫：
+從 C# GitHub 存放庫的 Azure IoT 範例複製範例。 在您選擇的資料夾中開啟命令提示字元。 執行下列命令以複製[適用於 .NET 的 Microsoft Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存放庫：
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -55,7 +55,6 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | IOTHUB_DEVICE_DPS_ID_SCOPE | 您完成[設定環境](set-up-environment.md)時所記下的值 |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
     | IOTHUB_DEVICE_DPS_DEVICE_KEY | 您完成[設定環境](set-up-environment.md)時所記下的值 |
-
 
 1. 您現在可以在 Visual Studio 中建置範例，並於偵錯模式中執行。
 
@@ -81,9 +80,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. 您現在可以在 Visual Studio 中建置範例，並於偵錯模式中執行。
 
-### <a name="get-digital-twin"></a>取得數位分身
+### <a name="get-device-twin"></a>取得裝置對應項
 
-下列程式碼片段會顯示服務應用程式如何擷取數位對應項：
+下列程式碼片段會顯示服務應用程式如何擷取裝置對應項：
 
 ```C#
 // Get a Twin and retrieves model Id set by Device client
@@ -92,7 +91,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> 這個範例會使用 **IoT 中樞服務用戶端** 中的 **Microsoft.Azure.Devices.Client;** 命名空間。 若要深入了解如何擷取模型識別碼，請參閱[開發人員指南](concepts-developer-guide-service.md)。
+> 這個範例會使用 **IoT 中樞服務用戶端** 中的 **Microsoft.Azure.Devices.Client** 命名空間。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
 
 這會程式碼產生下列輸出：
 
@@ -101,7 +100,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
       Model Id of this Twin is: dtmi:com:example:Thermostat;1
 ```
 
-下列程式碼片段會示範如何使用「修補程式」，透過數位對應項來更新屬性：
+下列程式碼片段會示範如何使用「修補程式」，透過裝置對應項來更新屬性：
 
 ```C#
 // Update the twin

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bc820eb282d08c248b588aa926eb3fd837fe51c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549929"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858110"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>教學課程：整合 Knowledge Anywhere LMS 與 Azure Active Directory
 
@@ -111,19 +111,19 @@ ms.locfileid: "88549929"
 
 4. 在 [網站]  索引標籤上進行選取。
 
-    ![Knowledge Anywhere LMS 設定](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![顯示 [網站] 索引標籤的螢幕擷取畫面。](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. 在 [SAML 設定]  索引標籤上進行選取。
 
-    ![Knowledge Anywhere LMS 設定](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![螢幕擷取畫面顯示已選取 [SAML 設定] 的 [Knowledge Anywhere] 頁面。](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. 按一下 [新增]  。
 
-    ![Knowledge Anywhere LMS 設定](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示 [服務提供者設定] 中的 [新增] 按鈕。](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. 在 [新增/更新 SAML設定]  頁面上，執行下列步驟：
 
-    ![Knowledge Anywhere LMS 設定](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![此螢幕擷取畫面顯示您可以在這裡進行所述變更的 [新增/更新 SAML 設定] 頁面。](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. 根據您的組織輸入 IDP 名稱。 例如：- `Azure`。
 

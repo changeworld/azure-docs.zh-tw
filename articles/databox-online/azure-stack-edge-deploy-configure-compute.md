@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904596"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951616"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>教學課程：使用 Azure Stack Edge Pro 轉換資料
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>教學課程：使用 Azure Stack Edge Pro 轉換資料
 
 本教學課程說明如何在 Azure Stack Edge Pro 裝置上設定計算角色。 當您設定計算角色之後，Azure Stack Edge Pro 就能先轉換資料，然後再將資料傳送至 Azure。
 
@@ -55,11 +55,11 @@ ms.locfileid: "90904596"
     |IoT 中樞     | 選擇 [新增]  或 [現有]  。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。 <br> 在每個案例中，IoT 中樞資源會使用 Azure Stack Edge 資源所用的相同訂用帳戶和資源群組。     |
     |名稱     |輸入 IoT 中樞資源的名稱。         |
 
-    ![開始使用計算](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+    ![開始使用計算 2](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
 4. 選取 [建立]  。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算]  圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算]  圖格上的 [檢視計算]  。
     
-    ![開始使用計算](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
+    ![開始使用計算 3](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
     > 如果在 [設定計算] 對話方塊關閉後，IoT 中樞才與 Azure Stack Edge Pro 裝置相關聯，則會建立 IoT 中樞，但不會顯示在計算設定中。 
@@ -138,19 +138,19 @@ ms.locfileid: "90904596"
  
 1. 在 [檔案總管] 中，連線到您先前建立的 Edge 本機共用和 Edge 共用。
 
-    ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
+    ![確認資料轉換 2](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
 1. 將資料新增至本機共用。
 
-    ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
+    ![確認資料轉換 3](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
     資料會移至雲端共用。
 
-    ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
+    ![確認資料轉換 4](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
 
     然後將資料從雲端共用推送至儲存體帳戶。 若要檢視資料，請移至 [儲存體總管]。
 
-    ![確認資料轉換](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
+    ![確認資料轉換 5](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
  
 您已完成驗證流程。
 

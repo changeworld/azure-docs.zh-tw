@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521476"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856818"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SignalFx 整合
 
@@ -159,7 +159,7 @@ ms.locfileid: "88521476"
         * 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 * 您可以從存取面板或透過指派給組織的自訂登入頁面，存取 SignalFx 應用程式。 測試使用者應該從這些位置的其中一個開始測試整合。
-    * 測試使用者可以使用稍早在此流程中針對 **b.simon@contoso.com** 所建立的認證。
+    * 測試使用者可以使用稍早在此流程中針對 **b.simon\@contoso.com** 所建立的認證。
 
 ### <a name="first-time-logins"></a>第一次登入
 

@@ -1,19 +1,19 @@
 ---
-title: Azure 虛擬 WAN：建立站對站連線
+title: 教學課程：使用 Azure 虛擬 WAN 建立站對站連線
 description: 在本教學課程，您可了解如何使用 Azure 虛擬 WAN 來與 Azure 建立站對站的 VPN 連線。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 07/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 5f39f5a8f758f390536e5d113629b185252c05d9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8a25ead5983e56f56ba0daea23c2775b3332fb8b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439365"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057904"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
@@ -37,7 +37,7 @@ ms.locfileid: "91439365"
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan.png)
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="prerequisites"></a>必要條件
 
 在開始設定之前，請確認您已符合下列條件：
 
@@ -242,6 +242,17 @@ ms.locfileid: "91439365"
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="此螢幕擷取畫面顯示箭頭指向 [檢視/設定] 動作的 [VPN (網台對網站)] 頁面。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
+
+您可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解虛擬 WAN，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)頁面。
+接著，若要深入了解虛擬 WAN，請參閱：
+
+> [!div class="nextstepaction"]
+> * [虛擬 WAN 常見問題集](virtual-wan-faq.md)

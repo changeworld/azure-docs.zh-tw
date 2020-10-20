@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 9b712c1b2e8ac33ec189542bf6f60929ac59858d
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 61e03f539f000b55ae00d90afa769ca9c1c30dc1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420552"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048282"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 S2S VPN 連線
 
@@ -33,7 +33,7 @@ Azure S2S VPN 連線提供客戶組織內部與 Azure 之間的跨單位安全�
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-## <a name="requirements"></a>需求
+## <a name="prerequisites"></a>必要條件
 
 請完成第一個教學課程：[使用 Azure PowerShell 建立 VPN 閘道](vpn-gateway-tutorial-create-gateway-powershell.md)，以建立下列資源：
 
@@ -242,8 +242,7 @@ Remove-AzResourceGroup -Name $RG1
 > * 新增更多 VPN 連線
 > * 刪除 VPN 連線
 
-請繼續進行下列教學課程，以了解 S2S、VNet 對 VNet 和 P2S 連線。
+接著，您可以新增 P2S 連線：
 
 > [!div class="nextstepaction"]
-> * [建立 VNet 對 VNet 連線](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [建立 P2S 連線](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

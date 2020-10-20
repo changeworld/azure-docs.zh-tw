@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 826ce780fd9196d67adba5bb148a795d3fe4f0f2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552594"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850348"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>教學課程：整合 JFrog Artifactory 與 Azure Active Directory
 
@@ -92,15 +92,15 @@ ms.locfileid: "88552594"
 
 1. JFrog Artifactory 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已呼叫編輯控制項。](common/edit-attribute.png)
 
 1. 除了以上屬性之外，JFrog Artifactory 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
     a. 按一下 [宣告中傳回的群組]  旁的**筆**。
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中已選取 [編輯] 圖示。](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![此螢幕擷取畫面顯示已選取所有群組的群組宣告區段。](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. 選取選項按鈕清單中的 [所有群組]  。
 

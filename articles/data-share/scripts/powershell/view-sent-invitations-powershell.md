@@ -1,20 +1,17 @@
 ---
-title: PowerShell 腳本：列出傳送給取用者的 Azure Data Share 邀請 |Microsoft Docs
+title: PowerShell 腳本：列出傳送給取用者的 Azure Data Share 邀請
 description: 瞭解這個 PowerShell 腳本如何取得傳送給取用者的邀請，並查看您可以使用的腳本範例。
-services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 3f0374ba5b98c145359d18143584e23fc543c552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f75894094fa2a15dbc9e2809ed6c3631df96c3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985615"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221208"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>使用 PowerShell 取得 data share 邀請
 
@@ -40,11 +37,11 @@ Get-AzDataShareInvitation -location -invitationId
 
 | Command | 注意 |
 |---|---|
-| [AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | 取得並列出已傳送的資料共用邀請。 |
+| [AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | 取得並列出已傳送的資料共用邀請。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/)。
 
 您可以在 [azure Data Share powershell 範例](../../samples-powershell.md)中找到其他 Azure Data Share powershell 腳本範例。

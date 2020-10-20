@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852043"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214901"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>開發人員在 Azure Active Directory B2C 中使用自訂原則的注意事項
 
@@ -66,7 +66,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 此設�
 | 功能 | 部署 | 預覽 | GA | 注意 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 授權碼](authorization-code-flow.md) |  |  | X |  |
-| 使用 PKCE 的 OAuth2 授權碼 |  |  | X | 僅限行動應用程式  |
+| 使用 PKCE 的 OAuth2 授權碼 |  |  | X | [公用用戶端和單一頁面應用程式](authorization-code-flow.md)  |
 | [OAuth2 隱含流程](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 資源擁有者密碼認證](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537981"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220868"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>將中樞工作區和專案移轉至自訂翻譯工具
 
@@ -55,7 +55,7 @@ ms.locfileid: "86537981"
 
 3. 按一下適當專案的 [移轉] 連結。
 
-    ![如何從中樞移轉](media/how-to/how-to-migrate-from-hub.png)
+    ![反白顯示所選取專案的 [遷移] 按鈕的螢幕擷取畫面。](media/how-to/how-to-migrate-from-hub.png)
 
 4. 按下移轉連結後，您將會看到可讓您執行下列動作的表單：
    * 指定要移轉至自訂翻譯工具的工作區
@@ -76,7 +76,7 @@ ms.locfileid: "86537981"
 
 3. 在 [設定] 頁面上，按一下 [將工作區資料移轉至自訂翻譯工具]。
 
-    ![如何從中樞移轉](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![醒目顯示 [將工作區資料移轉至自訂翻譯] 選項的螢幕擷取畫面。](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. 在下一個頁面上，選取下列兩個選項之一：
 
@@ -143,7 +143,7 @@ ms.locfileid: "86537981"
 
 如果您是在建立 Translator 的新語言系統時所使用的社區或組織，請洽詢以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 取得詳細資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [定型模型](how-to-train-model.md)。
 - 透過 [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)開始使用您已部署的自訂翻譯模型。

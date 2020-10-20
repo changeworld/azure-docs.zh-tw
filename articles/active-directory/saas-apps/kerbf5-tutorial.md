@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266016"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944271"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
 
@@ -72,15 +72,15 @@ ms.locfileid: "91266016"
 
 2. 在 [引導式設定] 頁面上，按一下左上角的 [升級引導式設定]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure14.png) 
+    ![顯示 [引導式設定] 頁面的螢幕擷取畫面，其中已選取 [升級引導式設定] 動作。](./media/kerbf5-tutorial/configure14.png) 
 
 3. 在 [升級引導式設定] 快顯畫面中，選取 [選擇檔案] 以上傳已下載的使用案例套件，然後按一下 [上傳並安裝] 按鈕。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure15.png) 
+    ![顯示 [升級引導式設定] 快顯畫面的螢幕擷取畫面，其中已選取 [選擇檔案] 和 [上傳並安裝]。](./media/kerbf5-tutorial/configure15.png) 
 
 4. 在升級完成後，按一下 [繼續] 按鈕。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure16.png)
+    ![顯示 [引導式設定更新已完成] 對話方塊的螢幕擷取畫面，其中已選取 [繼續] 按鈕。](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -213,60 +213,60 @@ ms.locfileid: "91266016"
 
 1. 瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]。 從右下角選取 [匯入]。 指定 [憑證名稱] (稍後將在設定中參考)。 在 [憑證來源] 中，選取 [上傳檔案]，指定在設定 SAML 單一登入時從 Azure 下載的憑證。 按一下 [匯入] 。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure01.png) 
+    ![顯示 [S S L 憑證/金鑰來源] 頁面的螢幕擷取畫面，其中已反白顯示 [憑證名稱]，並已選取 [上傳檔案] 和 [匯入] 按鈕。](./media/kerbf5-tutorial/configure01.png) 
 
 1. 此外，您將需要**應用程式主機名稱的 SSL 憑證。瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]** 。 從右下角選取 [匯入]。 [匯入類型] 將是 [PKCS 12(IIS)]。 指定 [金鑰名稱] (稍後將在設定中參考)，並指定 PFX 檔案。 指定 PFX 的 [密碼]。 按一下 [匯入] 。
 
     >[!NOTE]
     >在此範例中，我們的應用程式名稱為 `Kerbapp.superdemo.live`，並使用萬用字元憑證，金鑰名稱則為 `WildCard-SuperDemo.live`
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure02.png) 
+    ![顯示 [S S L 憑證/金鑰來源] 頁面的螢幕擷取畫面，其中已輸入值，並已選取 [匯入] 按鈕。](./media/kerbf5-tutorial/configure02.png) 
  
 1. 我們將使用引導式體驗來設定 Azure AD 同盟和應用程式存取。 移至 – F5 BIG-IP [主要]，然後選取 [存取] > [引導式設定] > [同盟] > [SAML 服務提供者]。 按 [下一步]，然後按 [下一步] 開始設定。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure03.png) 
+    ![顯示 [引導式設定] 頁面的螢幕擷取畫面，其中已反白顯示 [同盟] 圖示，並已選取 [S A M L 服務提供者]。](./media/kerbf5-tutorial/configure03.png) 
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure04.png)
+    ![顯示 [引導式設定 - S A M L 服務提供者] 頁面的螢幕擷取畫面，其中已選取 [下一步] 按鈕。](./media/kerbf5-tutorial/configure04.png)
 
 1. 提供 [設定名稱]。 指定 [實體識別碼] (與您在 Azure AD 應用程式設定中設定的識別碼相同)。 指定 [主機名稱]。 新增參考的 [描述]。 接受其餘的預設項目，然後選取並按一下 [儲存並繼續下一步]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure05.png) 
+    ![顯示 [服務提供者屬性] 的螢幕擷取畫面，其中已反白顯示 [主機名稱] 和 [描述] 文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure05.png) 
 
 1. 在此範例中，我們會建立新的虛擬伺服器 192.168.30.200，並使用連接埠 443。 在 [目的地位址] 中，指定虛擬伺服器 IP 位址。 選取 [用戶端 SSL 設定檔]，然後選取 [新建]。 指定先前上傳的應用程式憑證 (在此範例中為萬用字元憑證) 和相關聯的金鑰，然後按一下 [儲存並繼續下一步]。
 
     >[!NOTE]
     >在此範例中，我們的內部 Web 伺服器會在連接埠 80 上執行，而我們想要使用 443 加以發佈。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure06.png)
+    ![顯示 [虛擬伺服器屬性] 頁面的螢幕擷取畫面，其中已反白顯示 [目的地位址] 文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure06.png)
 
 1. 在 [選取設定 IdP 連接器的方法] 底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的**名稱**。 選擇先前上傳的 [中繼資料簽署憑證]。 按一下 [儲存並繼續下一步]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure07.png)  
+    ![顯示 [外部識別提供者連接器設定] 頁面的螢幕擷取畫面，其中已反白顯示 [名稱] 文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure07.png)  
 
 1. 在 [選取集區] 中，指定 [新建] (或選取已存在的集區)。 讓其他值保留為預設值。    在 [集區伺服器] 下的 [IP 位址/節點名稱] 底下，輸入 IP 位址。 指定 [連接埠]。 按一下 [儲存並繼續下一步]。
  
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure08.png)
+    ![顯示 [集區屬性] 頁面的螢幕擷取畫面，其中已反白顯示 [IP 位址/節點名稱] 和 [連接埠] 文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure08.png)
 
 1. 在 [單一登入設定] 畫面上，選取 [啟用單一登入]。 在 [選取的單一登入類型] 底下，選擇 [Kerberos]。 在 [使用者名稱來源] 底下，將 **session.saml.last.Identity** 取代為 **session.saml.last.attr.name.Identity** (此變數會使用 Azure AD 中的宣告對應來設定)。 選取 [顯示進階設定]。 在 [Kerberos 領域] 底下，輸入 [網域名稱]。 在 [帳戶名稱/帳戶密碼] 底下，指定 [APM 委派帳戶] 和 [密碼]。 在 [KDC] 欄位中指定 [網域控制站 IP]。 按一下 [儲存並繼續下一步]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure09.png)   
+    ![顯示 [單一登入設定] 的螢幕擷取畫面，其中已反白顯示文字方塊，並已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure09.png)   
 
 1. 基於本指引的目的，我們將略過端點檢查。  請參閱 F5 文件以取得詳細資訊。  在畫面上選取 [儲存並繼續下一步]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure10.png) 
+    ![顯示 [端點檢查屬性] 頁面的螢幕擷取畫面，其中已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure10.png) 
 
 1. 接受預設值，然後按一下 [儲存並繼續下一步]。 如需關於 SAML 工作階段管理設定的詳細資訊，請參閱 F5 文件。
 
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure11.png) 
+    ![顯示 [逾時設定] 頁面的螢幕擷取畫面，其中已選取 [儲存並繼續下一步] 按鈕。](./media/kerbf5-tutorial/configure11.png) 
  
 1. 檢閱摘要畫面，然後選取 [部署] 以設定 BIG-IP。
  
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure12.png)
+    ![顯示 [您的應用程式已做好部署準備] 頁面的螢幕擷取畫面，其中已反白顯示 [摘要] 區段，並已選取 [部署] 按鈕。](./media/kerbf5-tutorial/configure12.png)
 
 1. 在應用程式設定後，按一下 [完成]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure13.png)
+    ![顯示 [您的應用程式已部署] 頁面的螢幕擷取畫面，其中已選取 [完成] 按鈕。](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>進階設定
 
@@ -317,27 +317,27 @@ ms.locfileid: "91266016"
 
 15. 按一下 [完成]。 新的伺服器會顯示在清單上。 這會將新的 Active Directory 伺服器新增至 [Active Directory 伺服器] 清單。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure17.png)
+    ![顯示 [一般屬性] 和 [設定] 區段的螢幕擷取畫面。](./media/kerbf5-tutorial/configure17.png)
 
 ### <a name="saml-configuration"></a>SAML 設定
 
 1. 您必須將中繼資料憑證匯入至稍後將在設定程序中使用的 F5。 瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]。 從右下角選取 [匯入]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure18.png)
+    ![顯示 [匯入 S S L 憑證/金鑰來源] 頁面的螢幕擷取畫面，其中已選取 [匯入] 按鈕。](./media/kerbf5-tutorial/configure18.png)
 
 2. 若要設定 SAML IDP，請**瀏覽至 [存取] > [同盟] > [SAML：服務提供者] > [外部 Idp 連接器]** ，然後按一下 [建立] > [從中繼資料]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure19.png)
+    ![顯示 [S A M L 服務提供者] 頁面的螢幕擷取畫面，其中已從 [建立] 下拉式清單中選取 [從中繼資料]。](./media/kerbf5-tutorial/configure19.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure20.png)
+    ![顯示 [建立新的 S A M L I d P 連接器] 對話方塊的螢幕擷取畫面。](./media/kerbf5-tutorial/configure20.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure21.png)
+    ![顯示 [編輯 S A M L I d P 連接器] 視窗的螢幕擷取畫面，其中已選取 [一般設定]。](./media/kerbf5-tutorial/configure21.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure22.png)
+    ![顯示 [編輯 S A M L I d P 連接器] 視窗的螢幕擷取畫面，其中已選取 [單一登入服務設定]。](./media/kerbf5-tutorial/configure22.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure23.png)
+    ![顯示 [編輯 S A M L I d P 連接器] 視窗的螢幕擷取畫面，其中已選取 [安全性設定]。](./media/kerbf5-tutorial/configure23.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure24.png)
+    ![顯示 [編輯 S A M L I d P 連接器] 視窗的螢幕擷取畫面，其中已選取 [S L O 服務設定]。](./media/kerbf5-tutorial/configure24.png)
 
 1. 若要設定 SAML SP，請瀏覽至 [存取] > [同盟] > [SAML 服務提供者] > [本機 SP 服務]，然後按一下 [建立]。 完成下列資訊，然後按一下 [確定]。
 
@@ -348,17 +348,17 @@ ms.locfileid: "91266016"
     * 主機：kerbapp200.superdemo.live
     * 描述：kerbapp200.superdemo.live
 
-     ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure25.png)
+     ![顯示 [編輯 S A M L S P 服務] 視窗的螢幕擷取畫面，其中已選取 [一般設定]。](./media/kerbf5-tutorial/configure25.png)
 
      b. 選取 SP 設定 KerbApp200SAML，然後按一下 [繫結/取消繫結 IdP 連接器]。
 
-     ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure26.png)
+     ![顯示 [S A M L 服務提供者 - 本機 S P 服務] 頁面的螢幕擷取畫面，其中已選取 [KerbAPP200 S A M L]。](./media/kerbf5-tutorial/configure26.png)
 
-     ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure27.png)
+     ![顯示已選取 [繫結/解除繫結 I d P 連接器] 按鈕的螢幕擷取畫面。](./media/kerbf5-tutorial/configure27.png)
 
      c. 按一下 [新增資料列]，並選取在先前的步驟中建立的 [外部 IdP 連接器]，按一下 [更新]，然後按一下 [確定]。
 
-     ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure28.png)
+     ![顯示 [編輯使用此 S P 的 S A M L I d P] 視窗的螢幕擷取畫面，其中已選取 [新增資料列] 按鈕。](./media/kerbf5-tutorial/configure28.png)
 
 1. 若要設定 Kerberos SSO，請瀏覽至 [存取] > [單一登入] > [Kerberos]，並在完成資訊後按一下 [完成]。
 
@@ -369,7 +369,7 @@ ms.locfileid: "91266016"
 
     * **使用者領域來源**：session.logon.last.domain
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure29.png)
+        ![顯示 [單一登入 - 屬性] 頁面的螢幕擷取畫面，其中已反白顯示 [使用者名稱來源] 和 [使用者領域來源] 文字方塊。](./media/kerbf5-tutorial/configure29.png)
 
 1. 若要設定存取設定檔，請瀏覽至 [存取] > [設定檔/原則] > [存取設定檔 (遵循工作階段原則)]，按一下 [建立]，並在完成下列資訊後按一下 [完成]。
 
@@ -378,38 +378,38 @@ ms.locfileid: "91266016"
     * 設定檔範圍：設定檔
     * 語言：英文
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure30.png)
+        ![顯示 [設定檔/原則 - 屬性] 頁面的螢幕擷取畫面，其中已反白顯示 [名稱]、[設定檔類型] 和 [語言] 文字方塊。](./media/kerbf5-tutorial/configure30.png)
 
 1. 按一下名稱 KerbApp200，並在完成下列資訊後按一下 [更新]。
 
     * 網域 Cookie：superdemo.live
     * SSO 設定：KerAppSSO_sso
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure31.png)
+        ![顯示 [S S D/驗證網域] 頁面的螢幕擷取畫面，其中已反白顯示 [網域 Cookie] 文字方塊和 [S S O 設定] 下拉式清單，並已選取 [更新] 按鈕。](./media/kerbf5-tutorial/configure31.png)
 
 1. 按一下 [存取原則]，然後針對設定檔 "KerbApp200" 按一下 [編輯存取原則]。
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure32.png)
+    ![顯示 [存取原則] 頁面的螢幕擷取畫面，其中已選取 [編輯設定檔 KerbApp200 的存取原則] 動作。](./media/kerbf5-tutorial/configure32.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure33.png)
+    ![顯示 [存取原則] 頁面和 [S A M L 驗證 S P] 對話方塊的螢幕擷取畫面。](./media/kerbf5-tutorial/configure33.png)
 
-    ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure34.png)
+    ![顯示 [存取原則] 頁面和 [變數指派] 對話方塊的螢幕擷取畫面，其中已反白顯示 [指派] 文字方塊。](./media/kerbf5-tutorial/configure34.png)
 
     * **session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}**
 
     * **session.ad.lastactualdomain  TEXT superdemo.live**
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure35.png)
+        ![顯示 [存取原則] 頁面和 [Active Directory] 對話方塊的螢幕擷取畫面，其中已反白顯示 [SearchFilter] 文字方塊。](./media/kerbf5-tutorial/configure35.png)
 
     * **(userPrincipalName=%{session.logon.last.usernameUPN})**
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure36.png)
+        ![顯示 [存取原則] 頁面的螢幕擷取畫面，其中包含 [A D 查詢 - 分支規則] 對話方塊。](./media/kerbf5-tutorial/configure36.png)
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure37.png)
+        ![顯示已反白顯示 [自訂變數] 和 [自訂運算式] 文字方塊的螢幕擷取畫面。](./media/kerbf5-tutorial/configure37.png)
 
     * **session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }**
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure38.png)
+        ![顯示已反白顯示的 [登入頁面中的使用者名稱] 文字方塊的螢幕擷取畫面。](./media/kerbf5-tutorial/configure38.png)
 
     * **mcget {session.logon.last.username}**
     * **mcget {session.logon.last.password**
@@ -420,7 +420,7 @@ ms.locfileid: "91266016"
     * 描述：KerbApp200
     * 位址：192.168.20.200
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure39.png)
+        ![顯示 [新增節點] 頁面的螢幕擷取畫面，其中已反白顯示 [名稱]、[描述] 和 [位址] 文字方塊，並已選取 [已完成] 按鈕。](./media/kerbf5-tutorial/configure39.png)
 
 1. 若要建立新的集區，請瀏覽至 [本機流量] > [集區] > [集區清單]，按一下 [建立]，並在完成下列資訊後按一下 [完成]。
 
@@ -430,7 +430,7 @@ ms.locfileid: "91266016"
     * 位址：192.168.20.200
     * 服務連接埠：81
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure40.png)
+        ![顯示 [新增集區] 頁面的螢幕擷取畫面，其中已輸入值，並已選取 [已完成] 按鈕。](./media/kerbf5-tutorial/configure40.png)
 
 1. 若要建立虛擬伺服器，請瀏覽至 [本機流量] > [虛擬伺服器] > [虛擬伺服器清單] > [+]，並在完成下列資訊後按一下 [完成]。
 
@@ -440,9 +440,9 @@ ms.locfileid: "91266016"
     * 存取設定檔：KerbApp200
     * 指定在先前的步驟中建立的存取設定檔
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure41.png)
+        ![顯示 [虛擬伺服器清單] 頁面的螢幕擷取畫面，其中已反白顯示 [名稱]、[目的地位址/遮罩] 和 [服務連接埠] 文字方塊。](./media/kerbf5-tutorial/configure41.png)
 
-        ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure42.png)
+        ![顯示 [虛擬伺服器清單] 頁面的螢幕擷取畫面，其中已反白顯示 [存取設定檔] 下拉式清單。](./media/kerbf5-tutorial/configure42.png)
 
 ### <a name="setting-up-kerberos-delegation"></a>設定 Kerberos 委派 
 

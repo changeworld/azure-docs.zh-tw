@@ -1,20 +1,18 @@
 ---
-title: PowerShell 腳本：將 blob 資料集新增至 Azure Data Share |Microsoft Docs
+title: PowerShell 腳本：將 blob 資料集新增至 Azure Data Share
 description: 此 PowerShell 腳本會將 blob 資料集新增至現有的共用。
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2a2dded0b9c817e0700f4f93782d3b5c11ac3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307307"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221378"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>使用 PowerShell 在 Azure 中建立資料共用
 
@@ -44,11 +42,11 @@ New-AzDataShareDataSet -ResourceGroupName $resourceGroupName -AccountName $dataS
 
 | Command | 注意 |
 |---|---|
-| [新 AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | 將資料集新增至資料共用。 |
+| [新 AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset) | 將資料集新增至資料共用。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/)。
 
 您可以在 [azure Data Share powershell 範例](../../samples-powershell.md)中找到其他 Azure Data Share powershell 腳本範例。

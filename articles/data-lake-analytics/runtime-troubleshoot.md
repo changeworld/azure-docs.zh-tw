@@ -1,18 +1,16 @@
 ---
 title: 如何針對 Azure Data Lake Analytics 的 U-SQL 執行時間失敗進行疑難排解
 description: 瞭解如何針對 U-SQL 執行時間失敗進行疑難排解。
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
-ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87475255"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216261"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>瞭解如何針對執行時間變更所造成的非 SQL 執行時間失敗進行疑難排解
 

@@ -3,15 +3,15 @@ title: 管理 Windows 虛擬桌面的應用程式群組 (入口網站) - Azure
 description: 如何使用 Azure 入口網站管理 Windows 虛擬桌面應用程式群組。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320212"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930266"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教學課程：使用 Azure 入口網站管理應用程式群組
 
@@ -124,7 +124,7 @@ ms.locfileid: "91320212"
 - 根據您的設定建立 Azure Resource Manager 範本的連結，以便您稍後下載並儲存。
 
 >[!IMPORTANT]
->您只能為每個 Azure Active Directory 租用戶建立 50 個應用程式群組。 我們因為服務限制而新增了此限制，以便為我們的使用者擷取摘要。 此限制不適用於在 Windows 虛擬桌面 (傳統) 中建立的應用程式群組。
+>您只能為每個 Azure Active Directory 租用戶建立 200 個應用程式群組。 我們因為服務限制而新增了此限制，以便為我們的使用者擷取摘要。 此限制不適用於在 Windows 虛擬桌面 (傳統) 中建立的應用程式群組。
 
 ## <a name="next-steps"></a>後續步驟
 

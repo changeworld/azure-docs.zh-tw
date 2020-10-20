@@ -3,17 +3,17 @@ title: 與連線至 Azure IoT 解決方案的 IoT 隨插即用裝置互動 (Node
 description: 使用 Node.js 連線至已連接 Azure IoT 解決方案的 IoT 隨插即用裝置，並與其互動。
 author: elhorton
 ms.author: elhorton
-ms.date: 08/11/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574988"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946122"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 若要深入了解範例設定，請參閱[範例讀我檔案](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md)。
 
-在本快速入門中，您可以使用以 Node.js 撰寫的範例控溫器裝置，作為 IoT 隨插即用裝置。 若要執行範例裝置：
+在本快速入門中，您可使用以 Node.js 撰寫的範例控溫器裝置，作為 IoT 隨插即用裝置。 若要執行範例裝置：
 
 1. 開啟終端機視窗，並瀏覽至本機資料夾，此資料夾中包含從 GitHub 複製的適用於 Node.js 存放庫的 Microsoft Azure IoT SDK。
 
@@ -94,48 +94,103 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 1. 移至**服務**終端機，並使用下列命令執行範例以讀取裝置資訊：
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. 在**服務**終端機輸出中，請注意數位分身的回應。 您會看到已回報裝置的模型識別碼和相關聯的屬性：
+1. 在**服務**終端機輸出中，請注意裝置對應項的回應。 您會看到已回報裝置的模型識別碼和相關聯的屬性：
 
     ```json
-    "$dtId": "mySimpleThermostat",
-    "serialNumber": "123abc",
-    "maxTempSinceLastReboot": 51.96167432818655,
-    "$metadata": {
-      "$model": "dtmi:com:example:Thermostat;1",
-      "serialNumber": { "lastUpdateTime": "2020-07-09T14:04:00.6845182Z" },
-      "maxTempSinceLastReboot": { "lastUpdateTime": "2020-07-09T14:04:00.6845182" }
+    Model Id: dtmi:com:example:Thermostat;1
+    {
+      "deviceId": "my-pnp-device",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "Njc3MDMxNDcy",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00Z",
+      "connectionState": "Connected",
+      "lastActivityTime": "0001-01-01T00:00:00Z",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "modelId": "dtmi:com:example:Thermostat;1",
+      "version": 4,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:19.4574755Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "maxTempSinceLastReboot": 31.343640523762232,
+          "serialNumber": "123abc",
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:23.7339042Z",
+            "maxTempSinceLastReboot": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            },
+            "serialNumber": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            }
+          },
+          "$version": 3
+        }
+      },
+      "capabilities": {
+        "iotEdge": false
+      },
+      "tags": {}
     }
     ```
 
-1. 下列程式碼片段顯示 get_digital_twin.js 中的程式碼，可取出裝置分身的模型識別碼：
+1. 下列程式碼片段顯示 twin.js 中的程式碼，可取出裝置分身的模型識別碼：
 
     ```javascript
-    console.log("Model Id: " + inspect(digitalTwin.$metadata.$model))
+    var registry = Registry.fromConnectionString(connectionString);
+    registry.getTwin(deviceId, function(err, twin) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log('Model Id: ' + twin.modelId);
+        //...
+      }
+      //...
+    }
     ```
 
 在此案例中，會輸出 `Model Id: dtmi:com:example:Thermostat;1`。
 
+> [!NOTE]
+> 這些服務範例會使用 **IoT 中樞服務用戶端**中的 **Registry** 類別。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
+
 ### <a name="update-a-writable-property"></a>更新可寫入屬性
 
-1. 在程式碼編輯器中開啟檔案 update_digital_twin.js。
+1. 在程式碼編輯器中開啟檔案 twin.js。
 
-1. 檢閱範例程式碼。 您可以了解如何建立 JSON 修補程式，以更新裝置的數位分身。 在此範例中，程式碼會以值 42 取代控溫器的溫度：
+1. 請參閱範例程式碼，其中會顯示兩種更新裝置對應項的方式。 若要使用第一種方式，請修改 `twinPatch` 變數，如下所示：
 
     ```javascript
-    const patch = [{
-        op: 'add',
-        path: '/targetTemperature',
-        value: '42'
-      }]
+    var twinPatch = {
+      tags: {
+        city: "Redmond"
+      },
+      properties: {
+        desired: {
+          targetTemperature: 42
+        }
+      }
+    };
     ```
+
+    `targetTemperature` 屬性會在控溫器裝置型號中定義為可寫入的屬性。
 
 1. 在**服務**終端機，使用下列命令執行範例以更新屬性：
 
     ```cmd/sh
-    node update_digital_twin.js
+    node twin.js
     ```
 
 1. 在您的**裝置**終端機中，您會看到裝置已接收更新：
@@ -151,44 +206,54 @@ git clone https://github.com/Azure/azure-iot-sdk-node
       }
     }
     updated the property
-    Properties have been reported for component
     ```
 
 1. 在您的 **服務**終端機中，執行下列命令以確認屬性已更新：
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. 在**服務**終端機輸出中，在 `thermostat1` 元件下的數位分身回應中，您會看到回報的更新目標溫度。 裝置可能需要一段時間才能完成更新。 重複此步驟，直到裝置處理屬性更新為止：
+1. 在**服務**終端機輸出中，您會在 ¬reported` 屬性區段中看到回報的更新目標溫度。 裝置可能需要一段時間才能完成更新。 重複此步驟，直到裝置處理屬性更新為止：
 
     ```json
-    targetTemperature: 42,
+    "reported": {
+      //...
+      "targetTemperature": {
+        "value": 42,
+        "ac": 200,
+        "ad": "Successfully executed patch for targetTemperature",
+        "av": 4
+      },
+      //...
+    }
     ```
 
 ### <a name="invoke-a-command"></a>叫用命令
 
-1. 開啟檔案 invoke_command.js 並且檢閱程式碼。
+1. 開啟檔案 device_method.js 並檢閱程式碼。
 
 1. 移至**服務**終端機。 使用下列命令來執行範例，以叫用命令：
 
     ```cmd/sh
-    set IOTHUB_COMMAND_NAME=getMaxMinReport
-    set IOTHUB_COMMAND_PAYLOAD=commandpayload
-    node invoke_command.js
+    set IOTHUB_METHOD_NAME=getMaxMinReport
+    set IOTHUB_METHOD_PAYLOAD=commandpayload
+    node device_method.js
     ```
 
 1. **服務**終端機中的輸出應該會顯示下列確認：
 
     ```cmd/sh
+    getMaxMinReport on my-pnp-device:
     {
-        xMsCommandStatuscode: 200,  
-        xMsRequestId: 'ee9dd3d7-4405-4983-8cee-48b4801fdce2',  
-        connection: 'close',  'content-length': '18',  
-        'content-type': 'application/json; charset=utf-8',  
-        date: 'Thu, 09 Jul 2020 15:05:14 GMT',  
-        server: 'Microsoft-HTTPAPI/2.0',  vary: 'Origin',  
-        body: 'min/max response'
+      "status": 200,
+      "payload": {
+        "maxTemp": 23.460596940801928,
+        "minTemp": 23.460596940801928,
+        "avgTemp": 23.460596940801928,
+        "endTime": "2020-10-05T12:48:08.562Z",
+        "startTime": "2020-10-05T12:47:54.450Z"
+      }
     }
     ```
 

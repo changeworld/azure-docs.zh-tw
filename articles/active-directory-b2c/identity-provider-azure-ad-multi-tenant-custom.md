@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 645a0d21fc25cb45914eed02e023a0076c457ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4343a5e185fdfe96e1e3298b0fc3fe6719f3a4a2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116305"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215836"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定多租用戶 Azure Active Directory 的登入
 
@@ -37,7 +37,7 @@ ms.locfileid: "87116305"
 1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [應用程式註冊]。
 1. 選取 [新增註冊]。
 1. 輸入應用程式的**名稱**。 例如： `Azure AD B2C App` 。
-1. 為此應用程式選取 **任何組織目錄中的帳戶** 。
+1. 選取 **任何組織目錄中的帳戶 (任何 Azure AD 目錄– ** 此應用程式的多租使用者) 。
 1. 針對 [重新 **導向 URI**]，接受 [ **Web**] 的值，並以所有小寫字母輸入下列 URL，其中以 `your-B2C-tenant-name` 您 Azure AD B2C 租使用者的名稱取代。
 
     ```
@@ -166,7 +166,7 @@ ms.locfileid: "87116305"
 
 ## <a name="register-the-claims-provider"></a>註冊宣告提供者
 
-目前，識別提供者已設定，但還未出現在任何註冊/登入畫面中。 若要讓它可供使用，您必須建立現有範本使用者旅程圖的複本，然後修改它，讓它也包含 Azure AD 識別提供者。
+此時，身分識別提供者已設定，但在任何註冊/登入畫面中都無法使用。 若要讓它可供使用，您必須建立現有範本使用者旅程圖的複本，然後修改它，讓它也包含 Azure AD 識別提供者。
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
 2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
@@ -224,7 +224,7 @@ ms.locfileid: "87116305"
 
 若要測試多租使用者登入功能，請使用存在另一個 Azure AD 租使用者的使用者認證，執行最後兩個步驟。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用自訂原則時，您有時可能需要在其開發期間針對原則進行疑難排解時需要額外的資訊。
 

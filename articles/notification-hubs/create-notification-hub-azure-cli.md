@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024111"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875017"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 Azure 通知中樞
 
@@ -32,17 +32,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> 通知中樞需要 Azure CLI 的 2.0.67 版或更新版本。 執行 `az --version` 以尋找已安裝的版本和相依程式庫。 若要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
-
-## <a name="install-the-azure-cli-extension"></a>安裝 Azure CLI 擴充功能
-
-當搭配 Azure CLI 的延伸模組參考一起使用時，您必須先安裝延伸模組。 Azure CLI 擴充功能可讓您存取核心 CLI 尚未隨附的實驗性與發行前版本命令。 若要深入了解延伸模組 (包括更新及解除安裝)，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview) (英文)。
-
-安裝適用於通知中樞的 Azure CLI 擴充功能。
-
-```azurecli
-az extension add --name notification-hub
-```
+> 通知中樞需要 Azure CLI 的 2.0.67 版或更新版本。 執行 [az version](/cli/azure/reference-index?#az_version) 以尋找已安裝的版本和相依程式庫。 若要升級至最新版本，請執行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

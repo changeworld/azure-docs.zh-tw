@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328579"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047007"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
@@ -22,12 +22,10 @@ ms.locfileid: "91328579"
 
 在此快速入門中，您將了解如何：
 
-> [!div class="checklist"]
->
-> * 建立 IoT 中樞。
-> * 向 IoT 中樞註冊 IoT Edge 裝置。
-> * 在虛擬裝置上安裝並啟動 IoT Edge 執行階段。
-> * 將模組從遠端部署至 IoT Edge 裝置，並將遙測資料傳送至 IoT 中樞。
+* 建立 IoT 中樞。
+* 向 IoT 中樞註冊 IoT Edge 裝置。
+* 在虛擬裝置上安裝並啟動 IoT Edge 執行階段。
+* 將模組從遠端部署至 IoT Edge 裝置，並將遙測資料傳送至 IoT 中樞。
 
 ![圖表 - 裝置和雲端的快速入門架構](./media/quickstart/install-edge-full.png)
 
@@ -76,11 +74,11 @@ IoT Edge 裝置：
   使用您以 `az vm create`命令指定的系統管理員名稱和密碼，用遠端桌面連線連線到您的 Windows 虛擬機器，以開啟此檔案。
 
 > [!NOTE]
-> 您的 Windows 虛擬機器會從 Windows 1809 版 (組建 17763) 啟動，這是最新的 [Windows 長期支援組建](https://docs.microsoft.com/windows/release-information/)。 Windows 預設會每隔 22 小時自動檢查更新。 在虛擬機器上檢查過後，Windows 就會推送與 Windows 版 IoT Edge 不相容的版本更新，以防止進一步使用 Windows 版 IoT Edge 的功能。 建議您將虛擬機器的使用限制在 22 小時內，或[暫時暫停 Windows 更新](https://support.microsoft.com/help/4028233/windows-10-manage-updates)。
+> 您的 Windows 虛擬機器會從 Windows 1809 版 (組建 17763) 啟動，這是最新的 [Windows 長期支援組建](/windows/release-information/)。 Windows 預設會每隔 22 小時自動檢查更新。 在虛擬機器上檢查過後，Windows 就會推送與 Windows 版 IoT Edge 不相容的版本更新，以防止進一步使用 Windows 版 IoT Edge 的功能。 建議您將虛擬機器的使用限制在 22 小時內，或[暫時暫停 Windows 更新](https://support.microsoft.com/help/4028233/windows-10-manage-updates)。
 >
 > 為了簡單起見，本快速入門使用的是 Windows 桌面虛擬機器。 如需正式生產情境下一般何種 Windows 作業系統可供使用的資訊，請參閱 [Azure IoT Edge 支援系統](support.md)。
 >
-> 如果您已經準備好為 IoT Edge 設定自己的 Windows 裝置，包括執行 IoT 核心版的裝置，請遵循[在 Windows 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-windows.md)中的步驟。
+> 如果您想要針對 IoT Edge 設定自己的 Windows 裝置，請遵循[安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge.md)中的步驟。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -144,9 +142,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
 
 使用 PowerShell 下載並安裝 IoT Edge 執行階段。 使用從 IoT 中樞擷取到的裝置連接字串來設定裝置。
 
-1. 如果您尚未註冊，請依照[註冊新的 Azure IoT Edge 裝置](how-to-register-device.md)中的步驟註冊您的裝置，並擷取裝置連接字串。
-
-2. 在虛擬機器中，以系統管理員身分執行 PowerShell。
+1. 在虛擬機器中，以系統管理員身分執行 PowerShell。
 
    >[!NOTE]
    >使用 PowerShell 的 AMD64 工作階段來安裝 IoT Edge，而不是使用 PowerShell (x86)。 如果您不確定正在使用的工作階段類型，請執行下列命令：
@@ -155,25 +151,25 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-IoTEdge** 命令會檢查您的 Windows 電腦目前為支援的版本、開啟容器功能、下載 Moby 執行階段，然後下載 IoT Edge 執行階段。
+2. **Deploy-IoTEdge** 命令會檢查您的 Windows 電腦目前為支援的版本、開啟容器功能、下載 Moby 執行階段，然後下載 IoT Edge 執行階段。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. 您的電腦可能會自動重新啟動。 如果 Deploy-IoTEdge 提示您重新啟動，請立即重新啟動。
+3. 您的電腦可能會自動重新啟動。 如果 Deploy-IoTEdge 提示您重新啟動，請立即重新啟動。
 
-5. 再次以系統管理員身分執行 PowerShell。
+4. 再次以系統管理員身分執行 PowerShell。
 
-6. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。
+5. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 此命令預設為 Windows 容器的手動佈建。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. 當系統提示您提供 **DeviceConnectionString** 時，請提供上一節所複製的字串。 請勿在連接字串兩側加上引號。
+6. 當系統提示您提供 **DeviceConnectionString** 時，請提供上一節所複製的字串。 請勿在連接字串兩側加上引號。
 
 ### <a name="view-the-iot-edge-runtime-status"></a>檢視 IoT Edge 執行階段狀態
 

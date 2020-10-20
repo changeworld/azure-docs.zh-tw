@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e49fc29f03269096bfc7d6bb6e905187bb8788ff
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551382"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Harness 整合
 
@@ -138,15 +138,15 @@ ms.locfileid: "88551382"
 
 4. 在頁面右上方，按一下 [持續安全性]   > [存取管理]   > [驗證設定]  。
 
-    ![Harness 組態](./media/harness-tutorial/configure01.png)
+    ![此螢幕擷取畫面顯示已選取 [存取管理] 和 [驗證設定] 的 [連續安全性] 功能表。](./media/harness-tutorial/configure01.png)
 
 5. 在 [SSO 提供者]  區段上，按一下 [+ 新增 SSO 提供者]   > [SAML]  。
 
-    ![Harness 組態](./media/harness-tutorial/configure03.png)
+    ![此螢幕擷取畫面顯示已選取 [+ 新增 SSO 提供者 - SAML] 的 [SSO 提供者]。](./media/harness-tutorial/configure03.png)
 
 6. 在 [SAML 提供者]  快顯視窗上，執行下列步驟：
 
-    ![Harness 組態](./media/harness-tutorial/configure02.png)
+    ![顯示 [SAML 提供者] 快顯視窗的螢幕擷取畫面，其中已醒目提示 [URL] 和 [顯示名稱] 欄位，並已選取 [選擇檔案] 和 [提交] 按鈕。](./media/harness-tutorial/configure02.png)
 
     a. 複製 [在您的 SSO 提供者中，請啟用 SAML 型登入，然後輸入下列 URL]  執行個體，並將其貼到 Azure 入口網站上的 [基本 SAML 組態]  區段的 [回覆 URL] 文字方塊中。
 
@@ -166,11 +166,11 @@ ms.locfileid: "88551382"
 
 1. 在頁面右上方，按一下 [持續安全性]   > [存取管理]   > [使用者]  。
 
-    ![Harness 組態](./media/harness-tutorial/configure04.png)
+    ![此螢幕擷取畫面顯示已選取 [存取管理] 和 [使用者] 的 [連續安全性] 功能表。](./media/harness-tutorial/configure04.png)
 
 1. 在頁面右側，按一下 [+ 新增使用者]  。
 
-    ![Harness 組態](./media/harness-tutorial/configure05.png)
+    ![顯示 [使用者] 頁面的螢幕擷取畫面，其中已選取 [+ 新增使用者] 動作。](./media/harness-tutorial/configure05.png)
 
 1. 在 [新增使用者]  快顯視窗上，執行下列步驟：
 

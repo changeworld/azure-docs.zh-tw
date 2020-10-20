@@ -2,14 +2,14 @@
 title: 已啟用 Azure Arc 的伺服器概觀
 description: 了解如何使用已啟用 Azure Arc 的伺服器來管理裝載於 Azure 外部的伺服器，如同 Azure 資源一樣。
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 9fcac35f943eefb15a200e9b148b22ce67cc3941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90887534"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818742"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什麼是已啟用 Azure Arc 的伺服器？
 
@@ -21,7 +21,7 @@ ms.locfileid: "90887534"
 
 當您將機器連線到已啟用 Azure Arc 的伺服器時，其可讓您執行下列組態管理和監視工作：
 
-- 使用與 Azure 虛擬機器原則指派相同的體驗來指派 [Azure 原則客體設定](../../governance/policy/concepts/guest-configuration.md)。
+- 使用與 Azure 虛擬機器原則指派相同的體驗來指派 [Azure 原則客體設定](../../governance/policy/concepts/guest-configuration.md)。 現今，大部分「來賓設定」原則不會套用設定，這些原則只會稽核機器內的設定。 若要了解搭配已啟用 Arc 的伺服器使用 Azure 原則來賓設定原則的成本，請參閱 Azure 原則[定價指南](https://azure.microsoft.com/pricing/details/azure-policy/)。
 
 - 使用 Azure 自動化[變更追蹤和詳細目錄](../../automation/change-tracking.md)，報告已安裝軟體、Microsoft 服務、Windows 登錄和檔案以及受監視伺服器上之 Linux 精靈的組態變更。
 

@@ -3,12 +3,12 @@ title: 部署 SWIFT CSP-CSCF v2020 藍圖範例
 description: SWIFT CSP-CSCF v2020 藍圖範例的部署步驟，其中包括藍圖成品參數的詳細資料。
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: b65dc9cdd601f9fd2d7972b74435702a00244e8e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 973cd0076ae03fd32db5fc9be262b2c5300fdf16
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612719"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949406"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 藍圖範例
 
@@ -93,7 +93,7 @@ ms.locfileid: "88612719"
 
 |成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
-|\[預覽\]：稽核 SWIFT CSP-CSCF v2020 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。|
+|\[預覽\]：稽核 SWIFT CSP-CSCF v2020 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器資源記錄類別](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)中找到可接受的值。|
 |\[預覽\]：稽核 SWIFT CSP-CSCF v2020 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|已連線的工作區識別碼|Log Analytics 代理程式應連線的工作區識別碼清單 (以分號分隔)|
 |\[預覽\]：稽核 SWIFT CSP-CSCF v2020 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|應納入 Windows VM 系統管理員群組中的使用者清單|應納入系統管理員本機群組中之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |\[預覽\]：稽核 SWIFT CSP-CSCF v2020 控制項並部署特定的 VM 延伸模組，以支援稽核需求|原則指派|網域名稱 (FQDN)|應加入 Windows VM 的完整網域名稱 (FQDN)|

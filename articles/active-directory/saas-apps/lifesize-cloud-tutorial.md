@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b462dff45263ba3f5e533cd6bd7c4ce089933f66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540044"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>教學課程：Azure Active Directory 與 Lifesize Cloud 整合
 
@@ -137,15 +137,15 @@ Lifesize Cloud 與 Azure AD 整合提供下列優點：
 
 2. 在右上角按一下您的名稱，然後按一下 [進階設定]。
 
-    ![設定單一登入](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![顯示 [進階設定] 功能表項目的螢幕擷取畫面。](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 3. 在 [進階設定] 中，現在按一下 [SSO 組態] 連結。 這會開啟您的執行個體的 [SSO 設定] 頁面。
 
-    ![設定單一登入](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![此螢幕擷取畫面顯示可用來選取 SWO 設定的 [進階設定]。](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 4. 現在設定 SSO 組態 UI 中的下列值。
 
-    ![設定單一登入](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![此螢幕擷取畫面顯示可以在其中輸入所述值的 [SSO 設定] 頁面。](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
     a. 在 [識別提供者簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 

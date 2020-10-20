@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823024"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Litmus 整合
 
@@ -129,11 +129,11 @@ ms.locfileid: "91823024"
 
 1. 從左邊的導覽面板按一下 [安全性]  。
 
-    ![Litmus 組態](./media/litmus-tutorial/security-img.png)
+    ![顯示已選取 [安全性] 項目的螢幕擷取畫面。](./media/litmus-tutorial/security-img.png)
 
 1. 在 [設定SAML 驗證]  區段中，執行下列步驟：
 
-    ![Litmus 組態](./media/litmus-tutorial/configure1.png)
+    ![此螢幕擷取畫面顯示可以在其中輸入所述值的 [設定 SAML 驗證] 區段。](./media/litmus-tutorial/configure1.png)
 
     a. 在 [啟用 SAML]  切換上進行切換。
 
@@ -143,7 +143,7 @@ ms.locfileid: "91823024"
 
 1. 執行下列步驟：
 
-    ![Litmus 組態](./media/litmus-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的區段。](./media/litmus-tutorial/configure3.png)
 
     a. 在 [SAML 2.0 端點 (HTTP)]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -157,15 +157,15 @@ ms.locfileid: "91823024"
 
 1. 從左側導覽面板按一下 [帳戶]  。
 
-    ![Litmus 組態](./media/litmus-tutorial/accounts-img.png)
+    ![此螢幕擷取畫面顯示已選取的 [帳戶] 項目。](./media/litmus-tutorial/accounts-img.png)
 
 1. 按一下 [新增使用者]  索引標籤。
 
-    ![Litmus 組態](./media/litmus-tutorial/add-new-user.png)
+    ![顯示已選取 [新增使用者] 項目的螢幕擷取畫面。](./media/litmus-tutorial/add-new-user.png)
 
 1. 在 [新增使用者]  區段中，執行下列步驟：
 
-    ![Litmus 組態](./media/litmus-tutorial/user-profile.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的 [新增使用者] 區段。](./media/litmus-tutorial/user-profile.png)
 
     a. 在 [電子郵件] 文字方塊中，輸入像是 **B.Simon\@contoso.com** 的使用者電子郵件地址
 

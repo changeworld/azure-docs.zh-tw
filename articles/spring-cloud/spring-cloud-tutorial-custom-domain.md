@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326145"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945765"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>將現有的自訂網域對應至 Azure Spring Cloud
 
@@ -28,9 +28,53 @@ ms.locfileid: "91326145"
 * 來自第三方提供者的私人憑證 (也就是您的自我簽署憑證)。 此憑證必須符合網域。
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的已部署執行個體
 
-## <a name="import-certificate"></a>匯入憑證 
-匯入憑證的程序要求將 PEM 或 PFX 編碼的檔案放在磁碟上，而且您必須擁有私密金鑰。 
+## <a name="import-certificate"></a>匯入憑證
+### <a name="prepare-your-certificate-file-in-pfx-optional"></a>準備 PFX 格式的憑證檔案 (選擇性)
+Azure Key Vault 支援匯入 PEM 和 PFX 格式的私人憑證。 如果憑證提供者為您提供的 PEM 檔案無法在下列章節中使用：[將憑證儲存在 Key Vault 中](#save-certificate-in-key-vault)，請依照此處的步驟產生適用於 Azure Key Vault 的 PFX。
 
+#### <a name="merge-intermediate-certificates"></a>合併中繼憑證
+
+如果憑證授權單位在憑證鏈結中提供多個憑證，您需要依序合併憑證。
+
+若要這樣做，請在文字編輯器中開啟您收到的每個憑證。
+
+為合併的憑證建立一個檔案，並取名為 _mergedcertificate.crt_。 在文字編輯器中，將每個憑證的內容複製到這個檔案中。 憑證的順序應該遵循在憑證鏈結中的順序，開頭為您的憑證，以及結尾為根憑證。 看起來會像下列範例：
+
+```
+-----BEGIN CERTIFICATE-----
+<your entire Base64 encoded SSL certificate>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 1>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded intermediate certificate 2>
+-----END CERTIFICATE-----
+
+-----BEGIN CERTIFICATE-----
+<The entire Base64 encoded root certificate>
+-----END CERTIFICATE-----
+```
+
+#### <a name="export-certificate-to-pfx"></a>將憑證匯出為 PFX
+
+使用與憑證要求共同產生的私密金鑰，將您合併的 TLS/SSL 憑證匯出。
+
+如果您是使用 OpenSSL 產生憑證要求，則已建立私密金鑰檔案。 若要將您的憑證匯出為 PFX，請執行下列命令。 將預留位置 _&lt;private-key-file>_ 和 _&lt;merged-certificate-file>_ 以您的私密金鑰與合併的憑證檔案的路徑取代。
+
+```bash
+openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
+```
+
+請在出現提示時定義一個匯出密碼。 您隨後將 TLS/SSL 憑證上傳至 Azure Key Vault 時將會用到此密碼。
+
+如果您使用 IIS 或 _Certreq.exe_ 產生憑證要求，請將憑證安裝至本機電腦，然後[將憑證匯出為 PFX](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))。
+
+### <a name="save-certificate-in-key-vault"></a>將憑證儲存在金鑰保存庫中
+匯入憑證的程序要求將 PEM 或 PFX 編碼的檔案放在磁碟上，而且您必須擁有私密金鑰。 
+#### <a name="portal"></a>[入口網站](#tab/Azure-portal)
 若要將憑證上傳至金鑰保存庫：
 1. 移至您的金鑰保存庫執行個體。
 1. 在左側瀏覽窗格中，按一下 [憑證]。
@@ -42,7 +86,17 @@ ms.locfileid: "91326145"
 
     ![匯入憑證 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
-若要在匯入憑證之前，向 Azure Spring Cloud 授與您金鑰保存庫的存取權：
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+
+```azurecli
+az keyvault certificate import --file <path to .pfx file> --name <certificate name> --vault-name <key vault name> --password <export password>
+```
+---
+
+### <a name="grant-azure-spring-cloud-access-to-your-key-vault"></a>為 Azure Spring Cloud 授與您金鑰保存庫的存取權
+
+您必須在匯入憑證之前，為 Azure Spring Cloud 授與您金鑰保存庫的存取權：
+#### <a name="portal"></a>[入口網站](#tab/Azure-portal)
 1. 移至您的金鑰保存庫執行個體。
 1. 在左側瀏覽窗格中，按一下 [存取原則]。
 1. 在上層功能表上，按一下 [新增存取原則]。
@@ -54,50 +108,41 @@ ms.locfileid: "91326145"
 
 ![匯入憑證 2](./media/custom-dns-tutorial/import-certificate-b.png)
 
-或者，您也可以使用 Azure CLI 向 Azure Spring Cloud 授與金鑰保存庫的存取權。
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-透過下列命令取得物件識別碼。
+為 Azure Spring Cloud 授與金鑰保存庫的讀取權限，並取代下列命令中的 `<key vault resource group>` 和 `<key vault name>`。
 ```
-az ad sp show --id <service principal id> --query objectId
-```
-
-向 Azure Spring Cloud 授與金鑰保存庫的讀取權限，並取代下列命令中的物件識別碼。
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list --secret-permissions get list
 ``` 
+---
 
-若要將憑證匯入至 Azure Spring Cloud：
+### <a name="import-certificate-to-azure-spring-cloud"></a>將憑證匯入至 Azure Spring Cloud
+#### <a name="portal"></a>[入口網站](#tab/Azure-portal)
 1. 移至您的服務執行個體。 
 1. 從應用程式的左側瀏覽窗格中，選取 [TLS/SSL 設定]。
 1. 然後按一下 [匯入 Key Vault 憑證]。
 
     ![匯入憑證](./media/custom-dns-tutorial/import-certificate.png)
 
-或者，您也可以使用 Azure CLI 來匯入憑證：
+1. 當您成功匯入憑證時，您會在 [私密金鑰憑證] 清單中看到該憑證。
+
+    ![私密金鑰憑證](./media/custom-dns-tutorial/key-certificates.png)
+
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
 ```
 az spring-cloud certificate add --name <cert name> --vault-uri <key vault uri> --vault-certificate-name <key vault cert name>
 ```
 
-> [!IMPORTANT] 
-> 在執行先前的匯入憑證命令之前，請先確定您已向 Azure Spring Cloud 授與您金鑰保存庫的存取權。 如果您還沒有這麼做，則可以執行下列命令來授與存取權限。
-
-```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list
-``` 
-
-當您成功匯入憑證時，您會在 [私密金鑰憑證] 清單中看到該憑證。
-
-![私密金鑰憑證](./media/custom-dns-tutorial/key-certificates.png)
-
-或者，您也可以使用 Azure CLI 來顯示憑證清單：
+若要顯示已匯入的憑證清單：
 
 ```
 az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!IMPORTANT] 
-> 若要使用此憑證保護自訂網域，您仍需要將憑證繫結至特定網域。 請依照本文件中「新增 SSL 繫結」標題之下的步驟操作。
+> 若要使用此憑證保護自訂網域，您仍需要將憑證繫結至特定網域。 請依照本節中的步驟操作：[新增 SSL 繫結](#add-ssl-binding)。
 
 ## <a name="add-custom-domain"></a>新增自訂網域
 您可以使用 CNAME 記錄，將自訂 DNS 名稱對應至 Azure Spring Cloud。 
@@ -113,6 +158,7 @@ az spring-cloud certificate list --resource-group <resource group name> --servic
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>將自訂網域對應至 Azure Spring Cloud 應用程式
 如果您在 Azure Spring Cloud 中沒有任何應用程式，請依照指示操作：[快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master)。
 
+#### <a name="portal"></a>[入口網站](#tab/Azure-portal)
 移至應用程式頁面。
 
 1. 選取 [自訂網域]。
@@ -126,34 +172,38 @@ az spring-cloud certificate list --resource-group <resource group name> --servic
 
     ![新增自訂網域](./media/custom-dns-tutorial/add-custom-domain.png)
 
-或者，您也可以使用 Azure CLI 來新增自訂網域：
-```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
-```
-
 一個應用程式可以有多個網域，但一個網域只能對應到一個應用程式。 將自訂網域成功對應至應用程式時，您會在自訂網域資料表上看到該網域。
 
 ![自訂網域資料表](./media/custom-dns-tutorial/custom-domain-table.png)
 
-或者，您也可以使用 Azure CLI 來顯示自訂網域清單：
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
+```
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
+```
+
+若要顯示自訂網域的清單：
 ```
 az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 > [!NOTE]
 > 自訂網域的 [不安全] 標籤表示其尚未繫結至 SSL 憑證。 任何從瀏覽器到自訂網域的 HTTPS 要求都會收到錯誤或警告。
 
 ## <a name="add-ssl-binding"></a>新增 SSL 繫結
+
+#### <a name="portal"></a>[入口網站](#tab/Azure-portal)
 在自訂網域資料表中，選取 [新增 ssl 繫結]，如上圖所示。  
 1. 選取您的 [憑證] 或將其匯入。
 1. 按一下 [檔案] 。
 
     ![新增 SSL 繫結 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
-或者，您也可以使用 Azure CLI 來**新增 SSL 繫結**：
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> 
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
+---
 
 成功新增 SSL 繫結之後，網域狀態會是安全的：[良好]。 
 
@@ -161,16 +211,16 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 ## <a name="enforce-https"></a>強制使用 HTTPS
 根據預設，任何人仍然可使用 HTTP 存取您的應用程式，但您可以將所有 HTTP 要求重新導向至 HTTPS 連接埠。
-
+#### <a name="portal"></a>[入口網站](#tab/Azure-portal)
 在應用程式頁面的左側導覽中，選取 [自訂網域]。 然後，將 [僅限 HTTPS] 設為 [True]。
 
 ![新增 SSL 繫結 3](./media/custom-dns-tutorial/enforce-http.png)
 
-或者，您也可以使用 Azure CLI 來強制執行 HTTPS：
+#### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 ```
-az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
+az spring-cloud app update -n <app name> --resource-group <resource group name> --service <service name> --https-only
 ```
-
+---
 當作業完成時，瀏覽至指向您的應用程式的任何 HTTPS URL。 請注意，HTTP URL 沒有作用。
 
 ## <a name="see-also"></a>另請參閱

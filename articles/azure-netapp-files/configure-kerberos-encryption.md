@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461473"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217043"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>為 Azure NetApp Files 設定 Nfsv4.1 4.1 Kerberos 加密
 
 Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、krb5i 和 krb5p) 搭配 AES-256 加密。 本文說明搭配 Kerberos 加密使用 Nfsv4.1 4.1 磁片區所需的設定。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 下列需求適用于 Nfsv4.1 4.1 用戶端加密： 
 
@@ -75,7 +75,7 @@ Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、
 * 適用于 SMB 共用的電腦帳戶
 * Nfsv4.1 4.1 的電腦帳戶--您可以使用前置詞來識別此帳戶 `NFS-` 。 
 
-建立第一個 Nfsv4.1 4.1 Kerberos 磁片區之後，請使用下列 PowerShell 命令來設定加密類型或電腦帳戶：
+建立第一個 Nfsv4.1 4.1 Kerberos 磁片區之後，請使用下列 PowerShell 命令來設定電腦帳戶的加密類型：
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ Azure NetApp Files 支援 Kerberos 模式的 NFS 用戶端加密 (krb5.keytab、
 3. 建立新磁片區 (掛接點) 的目錄。  
 
 4. 將電腦帳戶的預設加密類型設定為 AES 256：  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * 您只需針對每個電腦帳戶執行此命令一次。
     * 您可以從網域控制站或安裝了 [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) 的電腦執行此命令。 
-    * `$COMPUTERACCOUNT`變數是當您部署 Kerberos 磁片區時，在 Active Directory 中建立的電腦帳戶。 這是前面加上的帳戶 `NFS-` 。 
+    * `$NFSCOMPUTERACCOUNT`變數是當您部署 Kerberos 磁片區時，在 Active Directory 中建立的電腦帳戶。 這是前面加上的帳戶 `NFS-` 。 
     * `$ANFSERVICEACCOUNT`變數是不具特殊許可權的 Active Directory 使用者帳戶，具有已建立電腦帳戶之組織單位的委派控制項。 
 
 5. 在主機上掛接磁片區： 

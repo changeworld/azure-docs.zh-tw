@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299196"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017721"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
@@ -80,10 +80,8 @@ Standard Load Balancer 在本質上建置於零信任網路安全性模型上。
 訂閱 RSS 摘要，並在 [Azure 更新](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)頁面上檢視最新的 Azure Load Balancer 功能更新。
 
 ## <a name="next-steps"></a>後續步驟
-請參閱[升級 Basic Load Balancer](upgrade-basic-standard.md)，將 Basic Load Balancer 升級為 Standard Load Balancer。
 
-請參閱 [建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
+請參閱[建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) 以開始使用 Load Balancer。
 
 如需 Azure Load Balancer 限制和元件的詳細資訊，請參閱 [Azure Load Balancer 元件](./components.md)和 [Azure Load Balancer 概念](./concepts.md)
 
-如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。

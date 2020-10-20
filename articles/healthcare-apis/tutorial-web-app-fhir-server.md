@@ -10,12 +10,12 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b1dc7d7eee263b781d39c4beccf9388efbaa3d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb183b5c8aff018d4dc73819b938b24ad0daa934
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334132"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975785"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>將 JavaScript 應用程式從 FHIR 服務部署至讀取資料
 在本教學課程中，您將部署小型的 JavaScript 應用程式，以從 FHIR 服務讀取資料。 本教學課程中的步驟如下：
@@ -36,7 +36,7 @@ ms.locfileid: "91334132"
 ## <a name="deploy-azure-api-for-fhir"></a>部署 Azure API for FHIR
 本教學課程的第一個步驟是正確設定 Azure API for FHIR。
 
-1. 部署 [Azure API for FHIR](fhir-paas-portal-quickstart.md)
+1. 部署 [Azure API for FHIR](fhir-paas-portal-quickstart.md) (如果您尚未部署)。
 1. 部署好 Azure API for FHIR 之後，請移至 Azure API for FHIR 並選取 [CORS]，以進行 [CORS](configure-cross-origin-resource-sharing.md) 設定。 
     1. 將 [來源] 設定為 *
     1. 將 [標頭] 設定為 *

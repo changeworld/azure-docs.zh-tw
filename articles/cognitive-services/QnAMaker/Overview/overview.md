@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低程式碼聊天機器人, 多回合交談
-ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776777"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874419"
 ---
 # <a name="what-is-qna-maker"></a>什麼是 QnA Maker？
 
@@ -83,9 +83,9 @@ QnA Maker 提供撰寫、定型及發佈功能以及共同作業權限來整合�
 
 我們會以最熱門的程式設計語言提供快速入門，目的是教您基本的設計模式，並讓您能在 10 分鐘內執行程式碼。 請參閱下列清單，以取得每項功能的快速入門。
 
-* [開始使用 LUIS 用戶端程式庫](../quickstarts/quickstart-sdk.md)
-* [開始使用 LUIS 入口網站](../quickstarts/create-publish-knowledge-base.md)
-* [開始使用 LUIS REST API](../quickstarts/quickstart-rest-curl.md)
+* [開始使用 QnA Maker 用戶端程式庫](../quickstarts/quickstart-sdk.md)
+* [開始使用 QnA Maker 入口網站](../quickstarts/create-publish-knowledge-base.md)
+* [開始使用 QnA Maker REST API](../quickstarts/quickstart-rest-curl.md)
 
 
 ## <a name="next-steps"></a>後續步驟

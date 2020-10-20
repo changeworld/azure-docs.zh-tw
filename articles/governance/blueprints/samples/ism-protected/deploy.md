@@ -3,12 +3,12 @@ title: 部署澳大利亞政府 ISM 受保護藍圖範例
 description: 澳大利亞政府 ISM 受保護藍圖範例的部署步驟，包括藍圖成品參數的詳細資料。
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 13d378132c928dd673cb5cb98b59abcecb321785
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 4d38a5ad6790b8b2ef09476f4779ef596be9734b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038717"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950511"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>部署澳大利亞政府 ISM 受保護藍圖範例
 
@@ -94,7 +94,7 @@ ms.locfileid: "90038717"
 |成品名稱|成品類型|參數名稱|描述|
 |-|-|-|-|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應設定 VM 的 Log Analytics 工作區識別碼|這是應設定 VM 的 Log Analytics 工作區識別碼 (GUID)。|
-|\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。|
+|\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器資源記錄類別](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)中找到可接受的值。|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應從 Windows VM 系統管理員群組中排除的使用者清單|應從系統管理員本機群組中排除之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應納入 Windows VM 系統管理員群組中的使用者清單|應納入系統管理員本機群組中之成員的分號分隔清單。 例如：Administrator; myUser1; myUser2|
 |\[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式|原則指派|Linux VM 擴展集 (VMSS) 的 Log Analytics 工作區|如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。|
@@ -158,7 +158,7 @@ ms.locfileid: "90038717"
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|函式應用程式應只可經由 HTTPS v2 存取  |如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|弱點評量解決方案應修復弱點  |如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|Azure 訂用帳戶應具有用於活動記錄的記錄設定檔  |如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
-|\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器診斷記錄結構描述](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中找到可用值。|
+|\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應啟用診斷記錄的資源類型清單|診斷記錄設定未啟用時，可稽核的資源類型清單。 您可以在 [Azure 監視器資源記錄類別](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type)中找到可接受的值。|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|您應在機器上安裝系統更新|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|App Service 應使用最新的 TLS 版本|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
 |\[預覽\]：稽核澳洲政府 ISM (Australian Government ISM) 的受保護 (PROTECTED) 控制項，並部署特定的 VM 擴充功能，以支援稽核需求|原則指派|應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543902"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OpsGenie 整合
 
@@ -133,15 +133,15 @@ ms.locfileid: "88543902"
 
 3. 若要啟用 SSO，請選取 [啟用]  。
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![顯示已選取 [已啟用] 核取方塊的螢幕擷取畫面。](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. 在 [提供者]  區段中，按一下 [Azure Active Directory]  索引標籤。
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![顯示 [提供者] 區段的螢幕擷取畫面，其中已選取 [Azure Active Directory] 索引標籤。](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. 在 [Azure Active Directory] 對話方塊頁面上，執行下列步驟：
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![顯示 [單一登入] 區段的螢幕擷取畫面，其中包含 [啟用單一登入] 切換按鈕、[S A M L 2.0 端點] 和 [中繼資料 U R L]。](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. 複製 [應用程式識別碼 URI]  值，並將其貼至 Azure 入口網站中 [基本 SAML 設定]  區段中的 [識別碼 (實體識別碼)]  文字方塊內。
 
@@ -169,7 +169,7 @@ ms.locfileid: "88543902"
 
 4. 在 [加入使用者]  對話方塊中，執行下列步驟：
    
-    ![OpsGenie 設定](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![顯示 [新增使用者] 對話方塊的螢幕擷取畫面，其中已反白顯示 [電子郵件] 和 [完整名稱] 文字方塊，並已選取 [儲存] 按鈕。](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. 在 [電子郵件]  文字方塊中，輸入 B.Simon 在 Azure Active Directory 中留下的電子郵件地址。
    

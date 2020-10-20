@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: efe4753e78c6dd16fa0b6ce3e98dd21ceae52577
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446122"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047806"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立內部負載平衡器以平衡 VM 的負載
 
@@ -630,5 +630,6 @@ ms.locfileid: "91446122"
 * 將 2 個 VM 連接至負載平衡器。
 * 設定負載平衡器流量規則、健康情況探查，並測試負載平衡器。 
 
-如需 Azure Load Balancer 的詳細資訊，請繼續參閱[什麼是 Azure Load Balancer？](load-balancer-overview.md)和 [Load Balancer 常見問題集](load-balancer-faqs.md)。
-
+若要深入了解 Azure Load Balancer，請繼續...
+> [!div class="nextstepaction"]
+> [什麼是 Azure Load Balancer？](load-balancer-overview.md) 

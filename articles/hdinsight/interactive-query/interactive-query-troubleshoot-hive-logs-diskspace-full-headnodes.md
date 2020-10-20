@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943959"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220885"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔將會填滿前端節點上的磁碟空間 Azure HDInsight
 
@@ -24,6 +24,7 @@ ms.locfileid: "78943959"
 
 1. SSH 存取失敗，因為前端節點上沒有空格。
 2. Ambari 提供 *HTTP 錯誤：503服務無法使用*。
+3. HiveServer2 Interactive 無法重新開機。
 
 `ambari-agent`當問題發生時，記錄檔會顯示下列各項。
 ```
@@ -35,38 +36,36 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>原因
 
-在 advanced Hive log4j 設定中，會省略參數 *log4j. 附加器. RFA. MaxBackupIndex* 。 它會造成記錄檔的產生不盡。
+在 advanced hive log4j 設定中，會根據上次修改日期，針對超過30天的檔案設定目前的預設刪除排程。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
 1. 流覽至 Ambari 入口網站上的 Hive 元件摘要，然後按一下 [] 索引標籤 `Configs` 。
 
 2. 移至 [ `Advanced hive-log4j` Advanced settings] 中的區段。
 
-3. 將 `log4j.appender.RFA` 參數設定為 RollingFileAppender。 
+3. 將 `appender.RFA.strategy.action.condition.age` 參數設定為您選擇的年齡。 14天的範例： `appender.RFA.strategy.action.condition.age = 14D`
 
-4. 設定 `log4j.appender.RFA.MaxFileSize` ， `log4j.appender.RFA.MaxBackupIndex` 如下所示。
+4. 如果您沒有看到任何相關的設定，請附加下列設定。
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. 將設定 `hive.root.logger` 為， `INFO,RFA` 如下所示。 預設設定為 DEBUG，讓記錄變得非常大。
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. 儲存這些參數，並重新啟動必要的元件。
 

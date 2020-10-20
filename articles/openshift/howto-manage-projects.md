@@ -8,14 +8,20 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0abc086553f5e903a71bcfd0b6322bcee56d2d8b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816434"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216924"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>管理 Azure Red Hat OpenShift 叢集中的專案、範本、影像資料流程
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 將于2022年6月30日淘汰。 支援建立新的 Azure Red Hat OpenShift 3.11 叢集會繼續到2020年11月30日。 淘汰之後，剩餘的 Azure Red Hat OpenShift 3.11 叢集將會關閉以防止安全性弱點。
+> 
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](tutorial-create-cluster.md)叢集。
+> 如果您有特定問題， [請洽詢我們](mailto:arofeedback@microsoft.com)。
 
 在 OpenShift 容器平臺中，專案是用來群組和隔離相關的物件。 如果您是系統管理員，您可以讓開發人員存取特定專案，讓他們建立自己的專案，並將系統管理許可權授與個別專案。
 
@@ -25,7 +31,7 @@ ms.locfileid: "88816434"
 
 提交專案要求時，API 會替代範本中的下列參數：
 
-| 參數               | 說明                                    |
+| 參數               | 描述                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 專案的名稱。 必要。             |
 | PROJECT_DISPLAYNAME     | 專案的顯示名稱。 可以是空的。 |
@@ -124,7 +130,7 @@ ms.locfileid: "88816434"
 
    在命名空間中的任何個別物件 `openshift` 都可以藉由新增批註來從更新程式中移除 `openshift.io/reconcile-protect: "true"` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 試用教學課程：
 > [!div class="nextstepaction"]

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251900"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044950"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過 Standard Load Balancer 來平衡可用性區域內的 VM 負載
 
@@ -39,6 +39,10 @@ ms.locfileid: "78251900"
 
 如果您想要，請使用 [Azure CLI](load-balancer-standard-public-zonal-cli.md) 完成本教學課程。
 
+## <a name="prerequisites"></a>必要條件
+
+* Azure 訂用帳戶
+
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
@@ -56,8 +60,8 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
     | 資源群組         | 選取 [新建]  ，並在文字方塊中輸入 *MyResourceGroupZLB*。|
     | 名稱                   | *myLoadBalancer*                                   |
     | 區域         | 選取 [西歐]  。                                        |
-    | 類型          | 選取 [公用]  。                                        |
-    | SKU           | 選取 [標準]  。                          |
+    | 類型          | 選取 [公用]。                                        |
+    | SKU           | 選取 [標準]。                          |
     | 公用 IP 位址 | 選取 [建立新的]  。 |
     | 公用 IP 位址名稱              | 在文字方塊中輸入 *myPublicIP*。   |
     |可用性區域| 選取 [1]  。    |
@@ -228,5 +232,6 @@ Standard Load Balancer 只支援標準公用 IP 位址。 當您在建立負載�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[標準負載平衡器](load-balancer-standard-overview.md)。
-- [跨越多個可用性區域為虛擬機器進行負載平衡](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
+繼續閱讀下一篇文章，以了解如何跨多個可用性區域為 VM 進行負載平衡。
+> [!div class="nextstepaction"]
+> [跨越多個可用性區域為 VM 進行負載平衡](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

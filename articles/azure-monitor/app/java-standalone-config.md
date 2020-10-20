@@ -4,12 +4,12 @@ description: 針對在任何環境中執行的 JAVA 應用程式無程式碼應�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537652"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215258"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器 Application Insights 的 JAVA 獨立代理程式
 
@@ -164,9 +164,10 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 }
 ```
 
-您也可以使用環境變數來設定 JMX 計量 `APPLICATIONINSIGHTS_JMX_METRICS` 。
+支援數值和布林值 JMX 度量值。 布林值的 JMX 計量會對應至 `0` false 和 `1` true。
 
-此環境變數內容必須是符合上述結構的 json 資料，例如 `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
+[//]: # "注意：此處未記載 APPLICATIONINSIGHTS_JMX_METRICS"
+[//]: # "在 env var 中內嵌的 json 很雜亂，而且只應記載給無程式碼 attach 案例"
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (包括來自彈簧開機傳動) 的計量
 

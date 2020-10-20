@@ -11,18 +11,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83652288"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962440"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密
 
 Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 您也可以安全地儲存金鑰、密碼、憑證和其他祕密。 您可以透過 Azure 入口網站建立和管理 Azure 金鑰保存庫。 在本快速入門中，您會建立金鑰保存庫，然後用它來儲存祕密。 如需 Key Vault 的詳細資訊，您可以檢閱[概觀](../general/overview.md)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如需祕密的詳細資訊，請參 (about-secrets.md)。
+
+## <a name="prerequisites"></a>必要條件
+
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -47,6 +51,9 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 * **保存庫名稱**：在此範例中是 **Contoso-Vault2**。 您將在其他步驟中使用此名稱。
 * **保存庫 URI**：在此範例中是 https://contoso-vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
+您也可使用 Azure CLI 和 PowerShell 來建立 Key Vault：[使用 PowerShell 建立 Key Vault](../general/quick-create-powershell.md)
+[使用 Azure CLI 建立 Key Vault](../general/quick-create-cli.md)
+
 此時，您的 Azure 帳戶是唯一獲得授權在此新保存庫上執行作業的帳戶。
 
 ![Key Vault 建立完成後的輸出](../media/quick-create-portal/vault-properties.png)
@@ -61,7 +68,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
     - **上傳選項**：手動。
     - **Name**：ExamplePassword。
     - **值**：hVFkk965BuUv
-    - 將其他的值保留預設值。 按一下頁面底部的 [新增] 。
+    - 將其他的值保留預設值。 按一下頁面底部的 [新增]  。
 
 一旦收到已成功建立祕密的訊息，即可按一下清單上的祕密。 
 
@@ -90,5 +97,8 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 在本快速入門中，您已建立 Key Vault 並在其中儲存祕密。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
+- 請閱讀[針對金鑰保存庫的存取進行保護](../general/secure-your-key-vault.md)
+- 請參閱[使用 Key Vault 搭配 App Service Web 應用程式](../general/tutorial-net-create-vault-azure-web-app.md)
+- 請參閱[使用 Key Vault 搭配部署至 VM 的應用程式](../general/tutorial-net-virtual-machine.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
 - 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)

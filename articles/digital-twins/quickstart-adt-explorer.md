@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372607"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048503"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入門 - 使用 ADT Explorer 探索 Azure Digital Twins 案例的範例
 
 透過 Azure Digital Twins，您可以建立真實世界環境的即時模型並與之互動。 其完成方式是將個別元素模型化為**數位分身 (digital twins)** ，然後連結到可回應即時活動及查詢資訊的知識**圖形**。
 
-在本快速入門中，您將探索預先建立的 Azure Digital Twins 圖形，並輔以名為 [**Azure Digital Twins (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 的應用程式範例。 ADT Explorer 可讓您上傳案例、檢視分身和圖形的視覺呈現，以及透過瀏覽器型的視覺體驗來執行其他管理活動。
+在本快速入門中，您將探索預先建立的 Azure Digital Twins 圖形，並輔以名為 [**Azure Digital Twins (ADT) Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 的應用程式範例。 ADT Explorer 可讓您上傳環境的數位表示、檢視為了表示 Azure Digital Twins 環境而建立的對應項和圖形視覺影像，並透過瀏覽器型視覺體驗來執行其他管理活動。
 
 此快速入門包含下列主要步驟：
 
@@ -38,8 +38,8 @@ ms.locfileid: "91372607"
 您的機器上也必須要有 **Node.js**。 您可以透過下列連結取得最新版本：[Node.js](https://nodejs.org/).
 
 最後，您還必須下載兩個要在快速入門中使用的範例：
-* **ADT Explorer** 應用程式範例。 此範例包含您在快速入門中用來載入和探索 Azure Digital Twins 案例的主要應用程式。 若要取得應用程式，請瀏覽此處：[Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 點擊 [下載 ZIP] 按鈕，將此程式碼範例的 *.ZIP* 檔案下載到您的機器，並命名為 _**Azure_Digital_Twins__ADT__explorer.zip**_。 將資料夾解壓縮並擷取檔案。
-* **Azure Digital Twins 案例的範例**。 其中包括預先建立的 Azure Digital Twins 圖形，您會將其載入到 ADT Explorer 中使用。 若要取得案例，請瀏覽此處：[Azure Digital Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 點擊 [下載 ZIP] 按鈕，將此程式碼範例的 .ZIP 檔案下載到您的機器，並命名為 **Azure_Digital_Twins_samples.zip**。 將資料夾解壓縮並擷取檔案。
+* **ADT Explorer** 應用程式範例。 此範例包含您在快速入門中用來載入和探索 Azure Digital Twins 案例的主要應用程式。 若要取得應用程式，請瀏覽此處：[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 點擊 [下載 ZIP] 按鈕，將此範例程式碼的 .ZIP 檔案下載到您的電腦。 這會將 .ZIP 資料夾以 _**Azure_Digital_Twins__ADT__explorer.zip**_ 的形式下載至您的電腦。 將資料夾解壓縮並擷取檔案。
+* **Azure Digital Twins 案例的範例**。 其中包括預先建立的 Azure Digital Twins 圖形，您會將其載入到 ADT Explorer 中使用。 若要取得案例，請瀏覽此處：[Azure Digital Twins 範例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 點擊 [下載 ZIP] 按鈕，將此範例程式碼的 .ZIP 檔案下載到您的電腦。 這會將 .ZIP 資料夾以 _**Azure_Digital_Twins_samples.zip**_ 的形式下載至您的電腦。 將資料夾解壓縮並擷取檔案。
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>設定 Azure Digital Twins 和 ADT Explorer
 
@@ -307,7 +307,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 接著，您可以透過下列方式探索圖形...
 1. 使用查詢來回答有關案例的問題。
 2. 編輯數位對應項的屬性。
-    * 再次執行查詢，以查看回應如何因更新而變更。
+3. 再次執行查詢，以查看回應如何因更新而變更。
 
 本練習的目的是要示範如何使用 Azure Digital Twins 圖形來回答有關您環境的問題 (即使環境持續改變)。 
 

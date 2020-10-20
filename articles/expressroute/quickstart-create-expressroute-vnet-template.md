@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Resource Manager 範本 (ARM 範本) 建立 ExpressRoute 線路
-description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 ExpressRoute 線路。
+title: 快速入門：使用 Azure Resource Manager 範本 (ARM 範本) 建立 ExpressRoute 線路
+description: 本快速入門說明如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 ExpressRoute 線路。
 services: expressroute
 author: duongau
 mnager: kumud
 ms.service: expressroute
 ms.topic: quickstart
 ms.custom: subject-armsq
-ms.date: 08/31/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 540d9d5f7ef3815743909a399076c55018f0df40
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759232"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961845"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>快速入門：使用 ARM 範本建立具有私人對等互連的 ExpressRoute 線路
 

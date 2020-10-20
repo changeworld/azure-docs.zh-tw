@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553938"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>教學課程：Azure Active Directory 與 PerformanceCentre 整合
 
@@ -128,19 +128,19 @@ PerformanceCentre 與 Azure AD 整合提供下列優點：
 
 2. 在左側索引標籤中，按一下 [設定]  。
    
-    ![Azure AD 單一登入][10]
+    ![顯示 [PerformanceCenter] 功能表的螢幕擷取畫面，其中已選取 [設定]。][10]
 
 3. 在左側索引標籤中，按一下 [其他]  ，然後按一下 [單一登入]  。
    
-    ![Azure AD 單一登入][11]
+    ![顯示 [設定] 索引標籤的螢幕擷取畫面，其中已從 [其他] 功能表中選取 [單一登入]。][11]
 
 4. 針對 [通訊協定]  ，選取 [SAML]  。
    
-    ![Azure AD 單一登入][12]
+    ![顯示 [單一登入設定] 區段的螢幕擷取畫面，其中已從 [通訊協定] 功能表中選取 [S A M L]。][12]
 
 5. 在記事本中開啟下載的中繼資料檔案，複製其內容，然後貼到 [身分識別提供者中繼資料]  文字方塊，然後按一下 [儲存]  。
    
-    ![Azure AD 單一登入][13]
+    ![顯示 [識別提供者中繼資料] 文字方塊的螢幕擷取畫面。][13]
 
 6. 確認 [實體基礎 URL]  和 [實體識別碼]  的值正確無誤。
     
@@ -207,7 +207,7 @@ PerformanceCentre 與 Azure AD 整合提供下列優點：
 
 2. 在左側功能表中，按一下 [內部關聯]  ，然後按一下 [建立參與者]  。
    
-    ![建立使用者][400]
+    ![顯示 "PerformanceCenter" 公司網站 [內部關聯 - 參與者] 頁面的螢幕擷取畫面，其中已選取 [建立參與者] 按鈕。][400]
 
 3. 在 [內部關聯 - 建立參與者]  對話方塊中，執行下列步驟：
    

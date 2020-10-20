@@ -20,6 +20,12 @@
       items:
         - name: 建立執行計畫
           href: example-terraform-bash.md
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: Windows 使用者適用的 PowerShell Cloud Shell

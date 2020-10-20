@@ -3,12 +3,12 @@ title: 使用服務端點來限制存取
 description: 使用 Azure 虛擬網路中的服務端點來限制對 Azure container registry 的存取。 服務端點存取是 Premium 服務層級的功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488657"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215496"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虛擬網路中的服務端點來限制對容器登錄的存取
 
@@ -49,13 +49,11 @@ ms.locfileid: "89488657"
 
 ## <a name="configure-network-access-for-registry"></a>設定登錄的網路存取
 
-在本節中，請將容器登錄設定為允許從 Azure 虛擬網路中的子網路進行存取。 文中會提供使用 Azure CLI 和 Azure 入口網站時的對等步驟。
+在本節中，請將容器登錄設定為允許從 Azure 虛擬網路中的子網路進行存取。 您可以使用 Azure CLI 來提供步驟。
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>允許從虛擬網路存取 - CLI
+### <a name="add-a-service-endpoint-to-a-subnet"></a>將服務端點新增至子網路
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>將服務端點新增至子網路
-
-當您建立 VM 時，Azure 預設會在相同的資源群組中建立虛擬網路。 虛擬網路的名稱是以虛擬機器的名稱為基礎。 例如，如果您將虛擬機器命名為 *myDockerVM*，預設的虛擬網路名稱會是 *myDockerVMVNET*，子網路名為 *myDockerVMSubnet*。 請在 Azure 入口網站中，或使用 [az network vnet list][az-network-vnet-list] 命令進行確認：
+當您建立 VM 時，Azure 預設會在相同的資源群組中建立虛擬網路。 虛擬網路的名稱是以虛擬機器的名稱為基礎。 例如，如果您將虛擬機器命名為 *myDockerVM*，預設的虛擬網路名稱會是 *myDockerVMVNET*，子網路名為 *myDockerVMSubnet*。 使用 [az network vnet list][az-network-vnet-list] 命令來確認這一點：
 
 ```azurecli
 az network vnet list \
@@ -101,7 +99,7 @@ az network vnet subnet show \
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>變更登錄的預設網路存取
+### <a name="change-default-network-access-to-registry"></a>變更登錄的預設網路存取
 
 根據預設，Azure 容器登錄允許從任何網路上的主機進行連線。 若要限制對所選網路的存取，請將預設動作變更為拒絕存取。 在下列 [az acr update][az-acr-update] 命令中，以您的登錄名稱取代名稱：
 
@@ -109,7 +107,7 @@ az network vnet subnet show \
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>將網路規則新增至登錄
+### <a name="add-network-rule-to-registry"></a>將網路規則新增至登錄
 
 使用 [az acr network-rule add][az-acr-network-rule-add] 命令，在登錄中新增可允許從 VM 子網路進行存取的網路規則。 在下列命令中，替換容器登錄的名稱和子網路的資源識別碼： 
 
@@ -143,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>還原預設的登錄存取
 
-若要將登錄還原為預設允許存取，請移除任何已設定的網路規則。 然後將預設動作設定為允許存取。 文中會提供使用 Azure CLI 和 Azure 入口網站時的對等步驟。
+若要將登錄還原為預設允許存取，請移除任何已設定的網路規則。 然後將預設動作設定為允許存取。 
 
-### <a name="restore-default-registry-access---cli"></a>還原預設的登錄存取 - CLI
-
-#### <a name="remove-network-rules"></a>移除網路規則
+### <a name="remove-network-rules"></a>移除網路規則
 
 若要查看已為登錄設定的網路規則清單，請執行下列 [az acr network-rule list][az-acr-network-rule-list] 命令：
 
@@ -166,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>允許存取
+### <a name="allow-access"></a>允許存取
 
 在下列 [az acr update][az-acr-update] 命令中，以您的登錄名稱取代名稱：
 ```azurecli
@@ -180,8 +176,6 @@ az acr update --name myContainerRegistry --default-action Allow
 ```azurecli
 az group delete --name myResourceGroup
 ```
-
-若要在入口網站中清除資源，請瀏覽至 myResourceGroup 資源群組。 載入資源群組後，按一下 [刪除資源群組] 以移除資源群組及儲存於該處的資源。
 
 ## <a name="next-steps"></a>後續步驟
 

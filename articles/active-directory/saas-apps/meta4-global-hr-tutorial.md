@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
-ms.openlocfilehash: a5d10d776de483919a64ccc46ca4cbb2b633f250
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6b8ea30e9d6c9b4557643d461d39b6375e987784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552566"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>教學課程：Azure Active Directory 與 Meta4 Global HR 整合
 
@@ -103,13 +103,13 @@ Meta4 Global HR 與 Azure AD 整合可提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Meta4 Global HR 網域及 URL 單一登入資訊](common/both-replyurl.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入回覆 URL 以及選取 [儲存]。](common/both-replyurl.png)
 
     在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.meta4globalhr.com/saml.sso/SAML2/POST`
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![Meta4 Global HR 網域及 URL 單一登入資訊](common/both-signonurl.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/both-signonurl.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.meta4globalhr.com`
 

@@ -1,21 +1,19 @@
 ---
 title: 監視及診斷 ASP.NET Core 服務
 description: 在本教學課程中，您會了解如何設定 Azure Service Fabric ASP.NET Core 應用程式的監視和診斷。
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e7fe68c2d0c51ffcc67693da722d9243ea3506f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653123"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840790"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教學課程：使用 Application Insights 監視和診斷 Service Fabric 上的 ASP.NET Core 應用程式
 
-本教學課程是一個系列的第五部分。 其中會逐步設定使用 Application Insights 來監視和診斷 Service Fabric 叢集上執行的 ASP.NET Core 應用程式。 我們將從教學課程第一部分[建置 .NET Service Fabric 應用程式](service-fabric-tutorial-create-dotnet-app.md)中所開發的應用程式收集遙測資料。
+本教學課程是一個系列的第五部分。 其中會逐步說明設定步驟，以使用 Application Insights 來監視和診斷 Service Fabric 叢集上執行的 ASP.NET Core 應用程式。 我們將從教學課程第一部分[建置 .NET Service Fabric 應用程式](service-fabric-tutorial-create-dotnet-app.md)中所開發的應用程式收集遙測資料。
 
 在教學課程系列的第四部分，您將了解如何：
 > [!div class="checklist"]
@@ -52,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 Application Insights 是 Azure 的應用程式效能管理平台，也是 Service Fabric 建議的應用程式監視和診斷平台。
 
-若要建立 Application Insights 資源，請瀏覽至 [Azure 入口網站](https://portal.azure.com)。 在左導覽功能表上按一下 [建立資源]，以開啟 Azure Marketplace。 按一下 [監視 + 管理]，然後按一下 [Application Insights]。
+若要建立 Application Insights 資源，請瀏覽至 [Azure 入口網站](https://portal.azure.com)。 在左導覽功能表上選取 [建立資源]，以開啟 Azure Marketplace。 選取 [監視 + 管理]，然後按一下 [Application Insights]。
 
 ![建立新的 AI 資源](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
@@ -60,23 +58,23 @@ Application Insights 是 Azure 的應用程式效能管理平台，也是 Servic
 
 ![AI 資源屬性](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource-attrib.png)
 
-填寫必要資訊之後，請按一下 [建立] 來佈建資源 - 需要大約一分鐘。
+填寫必要資訊之後，請選取 [建立] 來佈建資源 - 需要大約一分鐘。
 <!-- When completed, navigate to the newly deployed resource, and find the "Instrumentation Key" (visible in the "Essentials" drop down section). Copy it to clipboard, since we will need it in the next step. -->
 
 ## <a name="add-application-insights-to-the-applications-services"></a>將 Application Insights 新增至應用程式的服務
 
-以滑鼠右鍵按一下 [開始] 功能表中的 Visual Studio 圖示，然後選擇 [以系統管理員身分執行]，使用較高的權限啟動 Visual Studio 2019。 按一下 [檔案] >  **[開啟]**  >  **[專案/方案]** ，並瀏覽至投票應用程式 (在教學課程的第一部分中建立，或透過 git 複製)。 開啟 Voting.sln。 如果系統提示您還原應用程式的 NuGet 套件，請按一下 [是]。
+以滑鼠右鍵按一下 [開始] 功能表中的 Visual Studio 圖示，然後選擇 [以系統管理員身分執行]，使用較高的權限啟動 Visual Studio 2019。 選取 [檔案] >  **[開啟]**  >  **[專案/方案]** ，並瀏覽至投票應用程式 (在教學課程的第一部分中建立，或透過 git 複製)。 開啟 Voting.sln。 如果系統提示您還原應用程式的 NuGet 套件，請選取 [是]。
 
 請遵循下列步驟來設定 VotingWeb 和 VotingData 服務的 Application Insights：
 
-1. 以滑鼠右鍵按一下服務名稱，然後按一下 [新增] > [連線服務] > [使用 Application Insights 監視]。
+1. 以滑鼠右鍵按一下服務名稱，然後選取 [新增] > [已連線的服務] > [使用 Application Insights 監視]。
 
     ![設定 AI](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
 >[!NOTE]
->視專案類型而定，當您以滑鼠右鍵按一下服務名稱時，您可能需要按一下 [新增]-> [Application Insights 遙測...]
+>視專案類型而定，當您以滑鼠右鍵選取服務名稱時，您可能需要按一下 [新增] -> [Application Insights 遙測...]
 
-2. 按一下 [開始使用]。
-3. 登入您用來設定 Azure 訂用帳戶的帳戶，並選取您在其中建立 Application Insights 資源的訂用帳戶。 從 [資源] 下拉式清單中，在 [現有的 Application Insights 資源] 下尋找資源。 按一下 [註冊] 將 Application Insights 新增至您的服務。
+2. 選取 [馬上開始]。 
+3. 登入用於 Azure 訂用帳戶的帳戶，並選取您在其中建立 Application Insights 資源的訂用帳戶。 從 [資源] 下拉式清單中，在 [現有的 Application Insights 資源] 下尋找資源。 選取 [註冊] 將 Application Insights 新增至您的服務。
 
     ![註冊 AI](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
 
@@ -88,19 +86,19 @@ Application Insights 是 Azure 的應用程式效能管理平台，也是 Servic
 
 ## <a name="add-the-microsoftapplicationinsightsservicefabricnative-nuget-to-the-services"></a>將 Microsoft.ApplicationInsights.ServiceFabric.Native NuGet 新增至服務
 
-Application Insights 有兩個 Service Fabric 特定的 NuGet，可依情節來使用。 其中一個用於 Service Fabric 的原生服務，另一個用於容器和客體可執行檔。 在此案例中，我們將使用 Microsoft.ApplicationInsights.ServiceFabric.Native NuGet 以深入了解它所提供的服務內容。 若要深入了解 Application Insights SDK 及 Service Fabric 特定的 NuGet，請參閱 [Microsoft Application Insights for Service Fabric](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)。
+Application Insights 有兩個 Service Fabric 特定的 NuGet，可依情節來使用。 其中一個用於 Service Fabric 的原生服務，另一個用於容器和客體可執行檔。 在此案例中，我們將使用 Microsoft.ApplicationInsights.ServiceFabric.Native NuGet 以深入了解它所提供的服務內容。 若要深入了解 Application Insights SDK 及 Service Fabric 特定的 NuGet 套件，請參閱 [Microsoft Application Insights for Service Fabric](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)。
 
 設定 NuGet 套件的步驟如下：
 
-1. 以滑鼠右鍵按一下 [方案總管] 最頂端的 [方案 'Voting']，然後按一下 [管理方案的 NuGet 套件...]。
-2. 在 [NuGet - 方案] 視窗的頂端導覽功能表上，按一下 [瀏覽]，並勾選搜尋列旁邊的 [包含發行前版本] 方塊。
+1. 以滑鼠右鍵按一下 [方案總管] 頂端的 [方案 'Voting']，然後選取 [管理方案的 NuGet 套件...]。
+2. 在 [NuGet - 方案] 視窗的頂端導覽功能表上，選取 [瀏覽]，並勾選搜尋列旁邊的 [包含發行前版本] 方塊。
 >[!NOTE]
 >如果在安裝 Application Insights 套件之前未預先安裝 Microsoft.ServiceFabric.Diagnostics.Internal 套件，您可能需要以類似方式安裝該套件
 
-3. 搜尋 `Microsoft.ApplicationInsights.ServiceFabric.Native`，然後按一下適當的 NuGet 套件。
-4. 在右側，按一下應用程式中兩個服務 (**VotingWeb** 和 **VotingData**) 旁邊的兩個核取方塊，然後按一下 [安裝]。
+3. 搜尋 `Microsoft.ApplicationInsights.ServiceFabric.Native`，然後選取適當的 NuGet 套件。
+4. 在右側，選取應用程式中兩個服務 (**VotingWeb** 和 **VotingData**) 旁邊的兩個核取方塊，然後選取 [安裝]。
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. 按一下所顯示 [檢閱變更] 對話方塊上的 [確定]，然後選擇 [接受授權]。 這會完成將 NuGet 新增至服務。
+5. 選取所顯示 [檢閱變更] 對話方塊上的 [確定]，然後選擇 [接受授權]。 這會完成將 NuGet 新增至服務。
 6. 您現在需要在兩個服務中設定遙測初始設定式。 若要這麼做，請開啟 VotingWeb.cs 和 VotingData.cs。 對這兩者執行下列兩個步驟：
     1. 在每個 *\<ServiceName>.cs* 的頂端，於現有 *using* 陳述式之後新增下列兩個 *using* 陳述式：
 
@@ -163,7 +161,7 @@ ConfigureServices(services => services
 )
 ```
 
-此時，您已經準備好要部署應用程式。 按一下頂端的 [開始] \(或 **F5**)，Visual Studio 會建置並封裝應用程式、設定本機叢集，然後將應用程式部署到此叢集。
+此時，您已經準備好要部署應用程式。 選取頂端的 [開始] \(或 **F5**)，Visual Studio 會建置並封裝應用程式、設定本機叢集，然後將應用程式部署到此叢集。
 
 >[!NOTE]
 >如果您未安裝最新版的 .NET Core SDK，則可能收到建置錯誤。
@@ -178,18 +176,18 @@ ConfigureServices(services => services
 
 在 Azure 入口網站中瀏覽至您的 Application Insights 資源。
 
-按一下 [概觀]，以回到資源的登陸頁面。 然後按一下頂端的 [搜尋]，可看到追蹤開始湧入。 經過幾分鐘，追蹤就會出現在 Application Insights 中。 如果沒有看到任何追蹤，請稍候片刻，然後按一下頂端的 [重新整理] 按鈕。
+選取 [概觀]，以回到資源的登陸頁面。 然後選取頂端的 [搜尋]，可看到追蹤開始湧入。 經過幾分鐘，追蹤就會出現在 Application Insights 中。 如果沒有看到任何追蹤，請稍候片刻，然後按一下頂端的 [重新整理] 按鈕。
 ![AI 查看追蹤](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
 在 [搜尋] 視窗中向下捲動，就會看到 Application Insights 傳入的所有立即可用的遙測資料。 針對您在投票應用程式中執行的每個動作，應該會有一個從 *VotingWeb* 傳出的 PUT 要求 (PUT Votes/Put [name])、一個從 *VotingData* 傳入的 PUT 要求 (PUT VoteData/Put [name])，後面接著一對 GET 要求來重新整理所顯示的資料。 因為這些是 HTTP 要求，所以 localhost 上也會有 HTTP 的相依性追蹤。 以下是如何新增一張選票的範例畫面：
 
 ![AI 範例要求追蹤](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
-您可以按一下其中一個追蹤，以檢視更多詳細資料。 關於 Application Insights 提供的要求，有一些很有用的資訊，包括「回應時間」和「要求 URL」。 此外，因為您已新增 Service Fabric 特定的 NuGet，在下方的「自訂資料」區段中，您也會看到應用程式在 Service Fabric 叢集環境中的相關資料。 這包括服務內容，可讓您查看要求來源的 *PartitionID* 和 *ReplicaId*，在診斷應用程式的錯誤時更準確查明問題所在。
+您可以選取其中一個追蹤，以檢視更多詳細資料。 關於 Application Insights 提供的要求，有一些很有用的資訊，包括「回應時間」和「要求 URL」。 此外，因為您已新增 Service Fabric 特定的 NuGet，在下方的「自訂資料」區段中，您也會看到應用程式在 Service Fabric 叢集環境中的相關資料。 這包括服務內容，可讓您查看要求來源的 *PartitionID* 和 *ReplicaId*，在診斷應用程式的錯誤時更準確查明問題所在。
 
 ![AI 追蹤詳細資料](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-此外，您可以在 [概觀] 頁面的左側功能表上按一下 [應用程式對應]，或按一下 [應用程式對應] 圖示，以導向至會顯示兩個連線服務的 [應用程式對應]。
+此外，您可以在 [概觀] 頁面的左側功能表上選取 [應用程式對應]，或選取 [應用程式對應] 圖示，以導向至會顯示兩個連線服務的 [應用程式對應]。
 
 ![醒目提示左側功能表中應用程式對應的螢幕擷取畫面。](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
@@ -264,7 +262,7 @@ public async Task<IActionResult> Delete(string name)
 > * 使用 Application Insights 中的應用程式對應功能
 > * 使用 Application Insights API 新增自訂事件
 
-現在您已完成設定 ASP.NET 應用程式的監視和診斷，接著請嘗試：
+現在您已設定好 ASP.NET 應用程式的監視和診斷，接著請嘗試：
 
 * [在 Service Fabric 中進一步探索監視和診斷](service-fabric-diagnostics-overview.md)
 * [使用 Application Insights 分析 Service Fabric 事件](service-fabric-diagnostics-event-analysis-appinsights.md)

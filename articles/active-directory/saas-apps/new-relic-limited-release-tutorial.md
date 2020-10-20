@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: a1d74e79f2b375f481c6557c04deb80dcb929b99
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62732f92d0739018863229da0a05646cfa817006
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554399"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941010"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-organization"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic (依組織) 整合
 
@@ -82,15 +82,15 @@ ms.locfileid: "88554399"
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    ![image](common/upload-metadata.png)
+    ![此螢幕擷取畫面顯示具有上傳中繼資料檔案連結的基本 SAML 設定。](common/upload-metadata.png)
 
     b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
 
-    ![image](common/browse-upload-metadata.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取並上傳檔案的對話方塊。](common/browse-upload-metadata.png)
 
     c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定] 區段中自動填入 [識別碼]  和 [回覆 URL]  值：
 
-    ![image](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，請根據您的需求手動填入這些值。

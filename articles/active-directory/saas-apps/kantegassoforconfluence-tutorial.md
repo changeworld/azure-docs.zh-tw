@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bef0b2d0387b82140e9874f837d9464408d78090
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 05fd1fc23afc72174f5454c805dd59a6eb2e9714
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546956"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>教學課程：Azure Active Directory 與 Kantega SSO for Confluence 整合
 
@@ -99,7 +99,7 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Kantega SSO for Confluence 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 區段的螢幕擷取畫面，其中已反白顯示 [識別碼] 和 [回覆 U R L] 欄位，並已選取 [儲存] 按鈕。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,47 +134,47 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 1. 將滑鼠停留在 cog 上，然後按一下 [附加元件]  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon1.png)
+    ![顯示已選取 [齒輪] 功能表圖示和 [附加元件] 的螢幕擷取畫面。](./media/kantegassoforconfluence-tutorial/addon1.png)
 
 1. 在 [ATLASSIAN MARKETPLACE]  索引標籤上，按一下 [尋找新的附加元件]  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon.png)
+    ![顯示 [ATTLASSIAN MARKETPLACE] 索引標籤的螢幕擷取畫面，其中已選取 [尋找新的附加元件]。](./media/kantegassoforconfluence-tutorial/addon.png)
 
 1. 搜尋 **Kantega SSO for Confluence SAML Kerberos**，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon2.png)
+    ![顯示 [尋找新的附加元件] 頁面的螢幕擷取畫面，其中包含搜尋方塊中的 [Kantega S S O for Confluence S A M L Kerberos]，並已選取 [安裝] 按鈕。](./media/kantegassoforconfluence-tutorial/addon2.png)
 
 1. 外掛程式會開始安裝。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon3.png)
+    ![顯示外掛程式 [安裝中] 畫面的螢幕擷取畫面。](./media/kantegassoforconfluence-tutorial/addon3.png)
 
 1. 當安裝完成時。 按一下 [關閉]  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon33.png)
+    ![顯示 [已安裝並準備就緒] 畫面的螢幕擷取畫面，其中已選取 [關閉] 按鈕。](./media/kantegassoforconfluence-tutorial/addon33.png)
 
 1. 按一下 [管理]  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon34.png)
+    ![顯示「使用 Kerberos 和 S A M L 的 Kantega 單一登入」外掛程式的螢幕擷取畫面，其中已選取 [管理] 按鈕。](./media/kantegassoforconfluence-tutorial/addon34.png)
 
 1. 按一下 [設定]  來設定新的外掛程式。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon35.png)
+    ![顯示 [使用 Kerberos 和 S A M L 的 Kantega 單一登入] 頁面的螢幕擷取畫面，其中已選取 [設定] 按鈕。](./media/kantegassoforconfluence-tutorial/addon35.png)
 
 1. 您也可以在 [使用者與安全性]  索引標籤底下找到這個新的外掛程式。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon36.png)
+    ![顯示 [使用者與安全性] 索引標籤的螢幕擷取畫面，其中已選取 [Kantega 單一登入] 動作。](./media/kantegassoforconfluence-tutorial/addon36.png)
 
 1. 在 [SAML]  區段中。 從 [新增識別提供者]  下拉式清單中，選取 [Azure Active Directory]\(Azure AD\)  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon4.png)
+    ![顯示 [S A M L] 區段的螢幕擷取畫面，其中已選取 [新增識別提供者] 和 [Azure Active Directory (Azure AD)]。](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. 選取 [基本]  作為訂用帳戶層級。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon5.png)
+    ![顯示 [準備 Azure AD] 頁面的螢幕擷取畫面，其中已選取 [基本]。](./media/kantegassoforconfluence-tutorial/addon5.png)
 
 1. 在 [應用程式屬性]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon6.png)
+    ![顯示 [應用程式屬性] 區段的螢幕擷取畫面，其中已反白顯示 [應用程式 I D U R L] 欄位和 [複製] 按鈕，並已選取 [下一步] 按鈕。](./media/kantegassoforconfluence-tutorial/addon6.png)
 
     a. 複製 [應用程式識別碼 URI]  值，然後在 Azure 入口網站的 [基本 SAML 設定]  區段上，使用此 URI 作為 [識別碼]、[回覆 URL] 和 [登入 URL]  。
 
@@ -182,7 +182,7 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 1. 在 [中繼資料匯入]  區段中，執行下列步驟： 
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon7.png)
+    ![顯示 [中繼資料匯入] 區段的螢幕擷取畫面，其中已選取 [我的電腦上的中繼資料檔案]。](./media/kantegassoforconfluence-tutorial/addon7.png)
 
     a. 選取 [我的電腦上的中繼資料檔案]  ，上傳您從 Azure 入口網站下載的中繼資料檔案。
 
@@ -190,7 +190,7 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 1. 在 [名稱和 SSO 位置]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon8.png)
+    ![顯示 [名稱和 S S O 位置] 的螢幕擷取畫面，其中已反白顯示 [識別提供者名稱] 文字方塊，並已選取 [下一步] 按鈕。](./media/kantegassoforconfluence-tutorial/addon8.png)
 
     a. 在 [識別提供者名稱]  文字方塊中，新增識別提供者的名稱 (例如 Azure AD)。
 
@@ -198,11 +198,11 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 1. 確認簽署憑證，然後按 [下一步]  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon9.png)
+    ![顯示 [簽章驗證] 區段的螢幕擷取畫面，其中已選取 [下一步] 按鈕。](./media/kantegassoforconfluence-tutorial/addon9.png)
 
 1. 在 [Confluence 使用者帳戶]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon10.png)
+    ![顯示 [Confluence 使用者帳戶] 區段的螢幕擷取畫面，其中包含 [在 Confluence 的內部目錄中建立使用者] 選項，並已選取 [下一步] 按鈕。](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. 選取 [如果需要，在 Confluence 的內部目錄中建立使用者]  ，然後輸入使用者群組的適當名稱 (可以是多個 群組，以逗號分隔)。
 
@@ -210,11 +210,11 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [完成]  。
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon11.png)
+    ![[摘要] 頁面的螢幕擷取畫面，其中已選取 [完成] 按鈕。](./media/kantegassoforconfluence-tutorial/addon11.png)
 
 1. 在 [Azure AD 的已知網域]  區段中，執行下列步驟： 
 
-    ![設定單一登入](./media/kantegassoforconfluence-tutorial/addon12.png)
+    ![顯示 [Azure AD 的已知網域] 頁面的螢幕擷取畫面，其中已反白顯示 [已知網域] 文字方塊，並已選取 [儲存] 按鈕。](./media/kantegassoforconfluence-tutorial/addon12.png)
 
     a. 從頁面的左面板中，選取 [已知網域]  。
 
@@ -283,7 +283,7 @@ Kantega SSO for Confluence 與 Azure AD 整合提供下列優點：
 
 1. 將滑鼠停留在 cog 上，然後按一下 [使用者管理]  。
 
-    ![新增員工](./media/kantegassoforconfluence-tutorial/user1.png)
+    ![顯示已選取 [齒輪] 圖示和 [使用者管理] 的螢幕擷取畫面。](./media/kantegassoforconfluence-tutorial/user1.png)
 
 1. 在 [使用者] 區段下，按一下 [新增使用者]  索引標籤。在 [新增使用者]  對話頁面上，執行下列步驟：
 

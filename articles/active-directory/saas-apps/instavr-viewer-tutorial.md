@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550347"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>教學課程：Azure Active Directory 與 InstaVR Viewer 整合
 
@@ -132,11 +132,11 @@ ms.locfileid: "88550347"
 
 2. 按一下 [使用者圖示]  ，然後選取 [帳戶]  。
 
-    ![InstaVR Viewer 組態](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![此螢幕擷取畫面顯示已選取使用者的 InstaVR Viewer 網站。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. 向下捲動至 [SAML 驗證]  ，然後執行下列步驟：
 
-    ![InstaVR Viewer 組態](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![顯示 SAML 驗證頁面的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. 在 [SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -211,15 +211,15 @@ ms.locfileid: "88550347"
 
 2. 從左瀏覽面板中選取 [封裝]  ，然後選取 [針對 Web 進行封裝]  。
 
-    ![InstaVR Viewer 組態](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![此螢幕擷取畫面顯示已選取 [封裝] 及 [針對 Web 進行封裝] 的 InstaVR Viewer 公司網站。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. 選取 [下載]  。
 
-    ![InstaVR Viewer 組態](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![此螢幕擷取畫面顯示已選取的 [下載] 圖示。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. 選取 [開啟託管頁面]  之後，它會被重新導向至 Azure AD 進行登入。
 
-    ![InstaVR Viewer 組態](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![此螢幕擷取畫面顯示已選取的 [開啟託管] 頁面。](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. 輸入您的 Azure AD 認證以透過 SSO 成功登入 Azure AD。
 

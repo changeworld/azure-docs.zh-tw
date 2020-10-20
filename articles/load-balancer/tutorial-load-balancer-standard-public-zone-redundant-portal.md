@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446094"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048350"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過標準 Load Balancer 將 VM 的負載平均分配至多個可用性區域
 
@@ -41,6 +41,10 @@ ms.locfileid: "91446094"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
+## <a name="prerequisites"></a>必要條件
+
+* Azure 訂用帳戶
+
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
@@ -57,10 +61,10 @@ ms.locfileid: "91446094"
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
     | 資源群組         | 選取 [新建]，並在文字方塊中輸入 *MyResourceGroupLBAZ*。|
     | 名稱                   | *myLoadBalancer*                                   |
-    | 區域         | 選取 [西歐]。                                        |
+    | 區域         | 選取 [西歐]  。                                        |
     | 類型          | 選取 [公用]。                                        |
     | SKU           | 選取 [標準]。                          |
-    | 公用 IP 位址 | 選取 [建立新的]。 |
+    | 公用 IP 位址 | 選取 [建立新的]  。 |
     | 公用 IP 位址名稱              | 在文字方塊中輸入 *myPublicIP*。   |
     |可用性區域| 選取 [區域備援]。    |
    
@@ -231,8 +235,10 @@ ms.locfileid: "91446094"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，可刪除資源群組、負載平衡器和所有相關資源。 若要這樣做，請選取包含負載平衡器的資源群組，然後按一下 [刪除]。
+若不再需要，可刪除資源群組、負載平衡器和所有相關資源。 若要這麼做，請選取包含負載平衡器的資源群組，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[標準負載平衡器](load-balancer-standard-overview.md)。
+深入了解如何在特定可用性區域內為 VM 進行負載平衡。
+> [!div class="nextstepaction"]
+> [在可用性區域內為 VM 進行負載平衡](tutorial-load-balancer-standard-public-zonal-portal.md)

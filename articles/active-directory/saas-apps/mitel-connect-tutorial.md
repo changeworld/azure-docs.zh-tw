@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dae9db6dd20ef4346050be73250c7a10f7a449ec
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552589"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>教學課程：Azure Active Directory 與 Mitel MiCloud Connect 或 CloudLink Platform 整合
 
@@ -112,7 +112,7 @@ ms.locfileid: "88552589"
 
 4. 在 Azure 入口網站中，選取 [基本 SAML 設定] 區段中的 [編輯] 圖示。
    
-    ![image](common/edit-urls.png)
+    ![此螢幕擷取畫面顯示已選取 [編輯] 圖示的 [以 SAML 設定單一登入] 頁面。](common/edit-urls.png)
 
     [基本 SAML 組態] 對話方塊會隨即出現。
 
@@ -120,7 +120,7 @@ ms.locfileid: "88552589"
 
 6. 從 Mitel 帳戶入口網站中的 [回覆 URL (判斷提示取用者服務 URL)]**** 欄位中複製 URL，然後將其貼到 Azure 入口網站中的 [回覆 URL (判斷提示取用者服務 URL)]**** 欄位。
 
-   ![image](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
+   ![此螢幕擷取畫面顯示 Azure 入口網站中的 [基本 SAML 設定]，以及 Mitel 帳戶入口網站中的 [設定識別提供者] 區段，並以線條指出這兩者之間的關聯性。](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
 7. 在 [登入 URL]**** 文字方塊中，輸入下列其中一個 URL：
 
@@ -134,11 +134,11 @@ ms.locfileid: "88552589"
 
 9. 在 Azure 入口網站的 [SAML 型登入] 頁面上，從 [SAML 簽署憑證] 區段中選取 [憑證 (Base64)] 旁的 [下載]，下載 [簽署憑證] 並將其儲存在您的電腦中。
 
-    ![image](./media/mitel-connect-tutorial/azure-signing-certificate.png)
+    ![此螢幕擷取畫面顯示您可以在其中下載憑證的 [SAML 簽署憑證] 窗格。](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
 10. 在文字編輯器中開啟簽署憑證檔案，複製檔案中的所有資料，然後將資料貼到 Mitel 帳戶入口網站中的 [簽署憑證]**** 欄位。 
 
-      ![image](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
+      ![顯示 [簽署憑證] 欄位的螢幕擷取畫面。](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. 在 Azure 入口網站中，於 [SAML 型登入] 頁面上的 [設定 Mitel Connect] 區段：
 
@@ -146,7 +146,7 @@ ms.locfileid: "88552589"
 
      1. 從 [Azure AD 識別碼]**** 欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [實體識別碼]**** 欄位中。
          
-         ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
+         ![此螢幕擷取畫面顯示 Azure 入口網站與 Mitel 帳戶入口網站中 [SAML 型登入] 頁面之間的關聯性。](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
 12. 在 Mitel 帳戶入口網站中的 [Connect 單一登入設定] 對話方塊上選取 [儲存]。
 
@@ -241,7 +241,7 @@ ms.locfileid: "88552589"
     
        [SAML 型登入] 頁面隨即開啟，並顯示 [基本 SAML 設定] 區段。
 
-       ![image](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
+       ![顯示 [SAML 型登入] 頁面及 [基本 SAML 設定] 的螢幕擷取畫面。](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
 2. 若要存取 CloudLink 帳戶入口網站中的 [Azure AD 單一登入] 設定面板：
 
@@ -251,33 +251,33 @@ ms.locfileid: "88552589"
 
     1. 選取 [第三方] 索引標籤。隨即會顯示所支援的第三方應用程式清單。 選取與 [Azure AD 單一登入] 相關聯的 [新增] 按鈕，然後選取 [完成]。
 
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
+       ![此螢幕擷取畫面顯示您可以在其中新增 Azure AD 單一登入的 [整合] 頁面。](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
        客戶的帳戶便會啟用 [Azure AD 單一登入]，並新增至 [帳戶資訊] 頁面的 [整合] 區段中。   
 
    1. 選取 [完成設定]。
     
-      ![image](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
+      ![此螢幕擷取畫面顯示 Azure A D 單一登入的 [完成設定] 選項。](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
       [Azure AD 單一登入] 設定面板隨即開啟。
       
-       ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
+       ![顯示 Azure AD 單一登入設定的螢幕擷取畫面。](./media/mitel-connect-tutorial/mitel-cloudlink-sso-setup.png)
        
        Mitel 建議您不要選取 [選擇性的 Mitel 認證] 區段中的 [啟用 Mitel 認證 (選擇性)] 核取方塊。 只有當您想要讓使用者除了單一登入選項之外也能使用 Mitel 認證來登入 CloudLink 應用程式時，才選取此核取方塊。
 
 3. 在 Azure 入口網站的 [SAML 型登入] 頁面上，選取 [基本 SAML 設定] 區段中的 [編輯] 圖示。 [基本 SAML 設定] 面板隨即開啟。
 
-    ![image](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
+    ![此螢幕擷取畫面顯示已選取 [編輯] 圖示的 [基本 SAML 設定] 窗格。](./media/mitel-connect-tutorial/mitel-azure-saml-basic.png)
  
  4. 從 CloudLink 帳戶入口網站中的 [Mitel 識別碼 (實體識別碼)] 欄位複製 URL，並將其貼到 Azure 入口網站中的 [識別碼 (實體識別碼)] 欄位。
 
  5. 從 CloudLink 帳戶入口網站中的 [回覆 URL (判斷提示取用者服務 URL)] 欄位中複製 URL，然後將其貼到 Azure 入口網站中的 [回覆 URL (判斷提示取用者服務 URL)] 欄位。  
     
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
+    ![此螢幕擷取畫面顯示 CloudLink 帳戶入口網站與 Azure 入口網站頁面之間的關聯性。](./media/mitel-connect-tutorial/mitel-cloudlink-saml-mapping.png) 
 
  6. 在 [登入 URL] 文字方塊中，輸入 URL `https://accounts.mitel.io`，以使用 CloudLink 帳戶入口網站作為預設 Mitel 應用程式。
      
-     ![image](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
+     ![顯示 [登入 URL] 文字方塊的螢幕擷取畫面。](./media/mitel-connect-tutorial/mitel-cloudlink-sign-on-url.png)
   
      > [!NOTE]
      > 預設 Mitel 應用程式是當使用者選取存取面板中的 [Mitel Connect] 圖格時，所開啟的應用程式。 這也是使用者從 Azure AD 進行測試設定時所存取的應用程式。
@@ -286,14 +286,14 @@ ms.locfileid: "88552589"
 
 8. 在 Azure 入口網站的 [SAML 型登入] 頁面上，從 [SAML 簽署憑證] 區段中選取 [憑證 (Base64)] 旁的 [下載]，下載 [簽署憑證]。 將憑證儲存在您的電腦上。
   
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
+    ![此螢幕擷取畫面顯示您可以在其中下載 Base64 憑證的 [SAML 簽署憑證] 區段。](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
 9. 在文字編輯器中開啟簽署憑證檔案，複製檔案中的所有資料，然後將資料貼到 CloudLink 帳戶入口網站中的 [簽署憑證] 欄位。  
 
     > [!NOTE]
     > 如果您有多個憑證，建議您依序貼上。 
        
-    ![image](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
+    ![此螢幕擷取畫面顯示您在其中填入 Azure AD 整合值的程序步驟 2。](./media/mitel-connect-tutorial/mitel-cloudlink-enter-certificate.png)
 
 10. 在 Azure 入口網站中，於 [SAML 型登入] 頁面上的 [設定 Mitel Connect] 區段：
 
@@ -301,7 +301,7 @@ ms.locfileid: "88552589"
 
      1. 從 [Azure AD 識別碼] 欄位複製 URL，並將其貼到 CloudLink 帳戶入口網站的 [IDP 識別碼 (實體識別碼)] 欄位中。
      
-        ![image](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
+        ![此螢幕擷取畫面顯示 Mintel Connect 中所述值的來源。](./media/mitel-connect-tutorial/mitel-cloudlink-copy-settings.png)
 
 11. 在 CloudLink 帳戶入口網站的 [Azure AD 單一登入] 面板上，選取 [儲存]。
 

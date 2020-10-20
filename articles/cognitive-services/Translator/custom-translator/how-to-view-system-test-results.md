@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509631"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220851"
 ---
 # <a name="view-system-test-results"></a>檢視系統測試結果
 
@@ -70,12 +70,12 @@ ms.locfileid: "88509631"
 
 2. 針對成功定型的模型會顯示 [部署] 按鈕 (若尚未部署)。
 
-    ![部署模型](media/how-to/how-to-deploy-model.png)
+    ![醒目顯示部署模型的 [部署] 按鈕的螢幕擷取畫面。](media/how-to/how-to-deploy-model.png)
 
 3.  按一下 [部署]。
 4.  針對您要部署模型的區域選取 [已部署]****，然後按一下 [儲存]。 您可以對多個區域選取 [已部署]****。
 
-    ![部署模型](media/how-to/how-to-deploy-model-regions.png)
+    ![顯示您可以在何處部署或解除部署模型的螢幕擷取畫面。](media/how-to/how-to-deploy-model-regions.png)
 
 5.  您可以在 [狀態] 資料行中檢視模型的狀態。
 
@@ -90,7 +90,7 @@ ms.locfileid: "88509631"
 
 2. 針對成功部署的模型會顯示 [更新]**** 按鈕。
 
-    ![部署模型](media/how-to/how-to-update-undeploy-model.png)
+    ![反白顯示更新部署設定更新按鈕的螢幕擷取畫面。](media/how-to/how-to-update-undeploy-model.png)
 
 3.  選取 [更新]。
 4.  對您想要部署或解除部署模型的區域選取 [已部署]**** 或 [已解除部署]****，然後按一下 [儲存]****。

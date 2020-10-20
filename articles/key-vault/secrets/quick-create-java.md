@@ -8,24 +8,16 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 6c29141a2e255588ffa581b84ffeb4ddd7fdb703
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87324704"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019625"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 用戶端程式庫
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 祕密用戶端程式庫
 
-開始使用適用於 Java 的 Azure Key Vault 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
-
-Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用適用於 Java 的 Key Vault 用戶端程式庫來：
-
-- 提高金鑰和密碼的安全性和控制權。
-- 在幾分鐘內建立和匯入加密金鑰。
-- 透過雲端規模和全域備援減少延遲。
-- 簡化 TLS/SSL 憑證的工作並將其自動化。
-- 使用經 FIPS 140-2 Level 2 驗證的 HSM。
+開始使用適用於 Java 的 Azure Key Vault 秘密用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
 其他資源：
 
@@ -37,13 +29,29 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 開發套件 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 版或更新版本
+- [Java 開發套件 (JDK)](/java/azure/jdk/) 8 版或更新版本
 - [Apache Maven](https://maven.apache.org)
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-本快速入門假設您是在 Linux 終端機視窗中執行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 和 [Apache Maven](https://maven.apache.org)。
+本快速入門假設您是在 Linux 終端機視窗中執行 [Azure CLI](/cli/azure/install-azure-cli) 和 [Apache Maven](https://maven.apache.org)。
 
 ## <a name="setting-up"></a>設定
+
+本快速入門會使用 Azure 身分識別程式庫搭配 Azure CLI，向 Azure 服務驗證使用者。 開發人員也可以使用 Visual Studio 或 Visual Studio Code 來驗證其呼叫。如需詳細資訊，請參閱[使用 Azure 身分識別用戶端程式庫驗證用戶端](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+
+### <a name="sign-in-to-azure"></a>登入 Azure
+
+1. 執行 `login` 命令。
+
+    ```azurecli-interactive
+    az login
+    ```
+
+    如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入 Azure 登入頁面。
+
+    否則，請在 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 中開啟瀏覽器頁面，並輸入顯示在終端機中的授權碼。
+
+2. 請在瀏覽器中使用您的帳戶認證登入。
 
 ### <a name="create-new-java-console-app"></a>建立新的 Java 主控台應用程式
 
@@ -109,21 +117,35 @@ cd akv-java
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>建立服務主體
+#### <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+建立金鑰保存庫的存取原則，將祕密權限授與服務主體
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>對服務主體授與金鑰保存庫的存取權
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+```
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+#### <a name="set-environment-variables"></a>設定環境變數
 
-#### <a name="set-environmental-variables"></a>設定環境變數
+此應用程式使用金鑰保存庫名稱作為稱為 `KEY_VAULT_NAME` 的環境變數。
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME=<your-key-vault-name>
+```
+
+macOS 或 Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>物件模型
 
-適用於 Java 的 Azure Key Vault 用戶端程式庫可讓您管理金鑰和相關資產，例如憑證和祕密。 以下的程式碼範例會示範如何建立用戶端、設定祕密、擷取祕密，以及刪除秘密。
+適用於 Java 的 Azure Key Vault 秘密用戶端程式庫可讓您管理秘密。 以下的[程式碼範例](#code-examples)會示範如何建立用戶端、設定祕密、擷取祕密，以及刪除秘密。
 
 整個主控台應用程式[如下](#sample-code)。
 
@@ -143,7 +165,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 
 ### <a name="authenticate-and-create-a-client"></a>驗證並建立用戶端
 
-根據上述[設定環境變數](#set-environmental-variables)步驟中的環境變數，驗證您的金鑰保存庫並建立金鑰保存庫用戶端。 金鑰保存庫的名稱會以 `https://<your-key-vault-name>.vault.azure.net` 格式，擴充至金鑰保存庫 URI。
+在本快速入門中，已登入的使用者是用來向金鑰保存庫進行驗證，這是本機開發的慣用方法。 針對部署至 Azure 的應用程式，應將受控識別指派給 App Service 或虛擬機器。如需詳細資訊，請參閱[受控識別概觀](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+
+在下列範例中，金鑰保存庫的名稱會以 "https://\<your-key-vault-name\>.vault.azure.net" 格式，擴充至金鑰保存庫 URI。 這個範例會使用 ['DefaultAzureCredential()'](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) 類別，允許在各種不同的環境中使用相同的程式碼，搭配不同的選項來提供身分識別。 如需詳細資訊，請參閱[預設 Azure 認證驗證](https://docs.microsoft.com/java/api/overview/azure/identity-readme)。 
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -163,7 +187,7 @@ SecretClient secretClient = new SecretClientBuilder()
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-您可以確認祕密是否已使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令來加以設定：
+您可以確認祕密是否已使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) 命令來加以設定：
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -187,7 +211,7 @@ KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
 secretClient.beginDeleteSecret(secretName);
 ```
 
-您可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令，確認祕密是否已經消失：
+您可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) 命令，確認祕密是否已經消失：
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -272,4 +296,5 @@ public class App {
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
+- 如何[針對金鑰保存庫的存取進行保護](../general/secure-your-key-vault.md)
 - 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)

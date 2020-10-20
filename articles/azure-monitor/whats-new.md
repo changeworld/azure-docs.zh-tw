@@ -6,16 +6,83 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325652"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842660"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="general"></a>一般
+- [Azure 監視器常見問題集](faq.md) - 新增了 OpenTelemetry 相關章節。
+
+### <a name="agents"></a>代理程式
+- [Azure 監視器代理程式概觀](platform/azure-monitor-agent-overview.md) - 新增了切換至新代理程式的決策因素。
+- [Azure 監視代理程式概觀](platform/agents-overview.md) - 新增了 Windows 10 的支援。
+
+### <a name="alerts"></a>警示
+- [使用 Azure Resource Manager 範本建立記錄警示](platform/alerts-log-create-templates.md) - 新文章。
+- [針對 Azure 計量警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新增了針對計量警示規則匯出 ARM 範本相關章節。
+
+### <a name="application-insights"></a>Application Insights
+- [建立新的 Azure 監視器 Application Insights 以工作區為基礎的資源](app/create-workspace-resource.md) - 移除了預覽指定。
+- [Azure Application Insights 中的資料保留和儲存](app/data-retention-privacy.md) - 針對新支援的 Mac 和 Linux 資料遺失保護新增了詳細資訊。
+- [Application Insights 中的事件計數器](app/eventcounters.md) - 在預設收集的計數器上新增了附註。
+- [Azure Application Insights 中記錄型和預先彙總的計量](app/pre-aggregated-metrics-log-metrics.md) - 移除了預覽指定。
+- [將 Azure 監視器 Application Insights 傳統資源遷移至以工作區為基礎的資源](app/convert-classic-resource.md) - 新文章。
+- [監視任何環境上的 Java 應用程式 - Azure 監視器 Application Insights](app/java-in-process-agent.md) - 已針對代理程式的新預覽版更新。
+- [使用 Azure Application Insights 設定 ASP.NET 的 Web 應用程式分析](app/asp-net.md) - 已重新編寫文章。
+- [Azure Application Insights 中的遙測通道](app/telemetry-channels.md) - 針對新支援的 Mac 和 Linux 資料遺失保護新增了詳細資訊。
+- [針對 Azure Application Insights 快照偵錯工具進行疑難排解](app/snapshot-debugger-troubleshoot.md) - 新增了快照偵錯工具疑難排解的 SSL 章節。
+- [在 Azure 監視器中使用應用程式變更分析來尋找 Web 應用程式問題](app/change-analysis.md) - 新增了虛擬機器和活動記錄。
+
+
+### <a name="containers"></a>容器
+- [使用適用於容器的 Azure 監視器來設定已啟用 Azure Arc 的 Kubernetes 叢集](insights/container-insights-enable-arc-enabled-clusters.md) - 新增了使用服務主體來啟用監視的指引。
+- [適用於容器的 Azure 監視器的部署和 HPA 計量](insights/container-insights-deployment-hpa-metrics.md) - 新文章。
+
+### <a name="insights-and-solutions"></a>見解和解決方案
+- [適用於 Azure Cache for Redis 的 Azure 監視器](insights/redis-cache-insights-overview.md) - 移除了預覽指定。
+- [Azure 網路監視器 (預覽)](insights/network-insights-overview.md) -新增了連線和流量章節。
+- [IT 服務管理連接器 - Azure 監視器中的安全匯出](platform/it-service-management-connector-secure-webhook-connections.md) - 新文章。
+- [Azure 監視器中的 IT 服務管理連接器](platform/itsmc-connections.md) - Cherwell 和 Provance ITSM 整合的相關附註。
+- [使用適用於 Key Vault 的 Azure 監視器來監視 Key Vault](insights/key-vault-insights-overview.md) - 移除了預覽指定。
+
+### <a name="logs"></a>記錄
+- [稽核 Azure 監視器記錄查詢中的查詢](log-query/query-audit.md) - 新文章。
+- [Azure 監視器客戶自控金鑰](platform/customer-managed-keys.md) - 新增了客戶加密箱。
+- [Azure 監視器記錄專用叢集](log-query/logs-dedicated-clusters.md) - 新文章。
+- [設計您的 Azure 監視器記錄部署](platform/design-logs-deployment.md) - 更新了縮放和擷取量速率限制章節。
+- [Azure 監視器 Log Analytics 中的記錄查詢範圍](log-query/scope.md) - 更新為包含以工作區為基礎的應用程式。
+- [Azure 監視器中的記錄](platform/data-platform-logs.md) -更新為包含以工作區為基礎的應用程式。
+- [Azure 監視器記錄檔記錄中的標準資料行](platform/log-standard-columns.md) - 更新為包含以工作區為基礎的應用程式。
+- [Azure 監視器服務限制](service-limits.md) - 更新了使用者查詢節流的限制。
+- [在 Azure 監視器 Log Analytics 中使用客戶管理的儲存體帳戶](platform/private-storage.md) - 已重新編寫文章。
+- [在 Azure Log Analytics 中檢視和分析資料](log-query/logs-structure.md) - 更新為包含以工作區為基礎的應用程式。
+
+
+### <a name="platform-logs"></a>平台記錄
+- [Azure 活動記錄事件結構描述 - Azure 監視器](platform/activity-log-schema.md) 新增了嚴重性層級。
+- [診斷設定的 Resource Manager 範本範例](samples/resource-manager-diagnostic-settings.md) - 新增了 Azure 儲存體帳戶的範例。
+
+### <a name="visualizations"></a>視覺效果
+- [Azure 監視器活頁簿圖表視覺效果](platform/workbooks-chart-visualizations.md) - 新文章。
+- [Azure 監視器活頁簿複合橫條轉譯器](platform/workbooks-composite-bar.md) - 新文章。
+- [Azure 監視器活頁簿圖形視覺效果](platform/workbooks-graph-visualizations.md) - 新文章。
+- [Azure 監視器活頁簿格線視覺效果](platform/workbooks-grid-visualizations.md) - 新文章。
+- [Azure 監視器活頁簿蜂巢視覺效果](platform/workbooks-honey-comb.md) - 新文章。
+- [Azure 監視器活頁簿文字視覺效果](platform/workbooks-text-visualizations.md) - 新文章。
+- [Azure 監視器活頁簿並排顯示視覺效果](platform/workbooks-tile-visualizations.md) - 新文章。
+- [Azure 監視器活頁簿樹狀視覺效果](platform/workbooks-tree-visualizations.md) - 新文章。
+
+
+
 
 ## <a name="august-2020"></a>2020 年 8 月
 

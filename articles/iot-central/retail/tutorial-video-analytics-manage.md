@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575192"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874793"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>教學課程：監視和管理 [影片分析 - 物件和動作偵測] 應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "91575192"
 
 開始之前，您應該先完成：
 
-* [在 Azure IoT Central 中建立即時影片分析應用程式](./tutorial-video-analytics-create-app.md)教學課程。
+* 先前的[在 Azure IoT Central 中建立即時影片分析應用程式](./tutorial-video-analytics-create-app-yolo-v3.md)或[在 Azure IoT Central 中建立影片分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) 教學課程。
 * 其中一個先前的教學課程：[建立適用於即時影片分析的 IoT Edge 執行個體 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md) 或[建立適用於即時影片分析的 IoT Edge 執行個體 (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)。
 
 您應該已在本機電腦上安裝 [Docker](https://www.docker.com/products/docker-desktop)，以執行影片檢視器應用程式。

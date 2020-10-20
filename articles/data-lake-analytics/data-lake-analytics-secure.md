@@ -2,16 +2,15 @@
 title: 為多個使用者保護 Azure Data Lake Analytics
 description: 深入了解如何設定多個使用者，以在 Azure Data Lake Analytics 中執行作業。
 ms.service: data-lake-analytics
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
-ms.openlocfilehash: 9006a22c588a7f1456585d40da0b4345145c6d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52bdd80dba1d5de150f403199fbd5c14d188a410
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132478"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220137"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>設定使用者對於 Azure Data Lake Analytics 中作業資訊的存取權 
 
@@ -42,5 +41,5 @@ ms.locfileid: "87132478"
    - /system/jobservice/jobs/Usql/2018/05/25/11/01
    - /system/jobservice/jobs/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [新增使用者](data-lake-analytics-manage-use-portal.md#add-a-new-user)

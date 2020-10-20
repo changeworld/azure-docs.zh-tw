@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549886"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858090"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 KnowledgeOwl 整合
 
@@ -167,11 +167,11 @@ ms.locfileid: "88549886"
 
 1. 按一下 [設定]  ，然後選取 [安全性]  。
 
-    ![KnowledgeOwl 設定](./media/knowledgeowl-tutorial/configure1.png)
+    ![此螢幕擷取畫面顯示 [設定] 功能表中已選取的安全性。](./media/knowledgeowl-tutorial/configure1.png)
 
 1. 捲動至 [SAML SSO 整合]  ，然後執行下列步驟：
 
-    ![KnowledgeOwl 設定](./media/knowledgeowl-tutorial/configure2.png)
+    ![此螢幕擷取畫面顯示您可以在這裡進行所述變更的 [SAML SSO 整合]。](./media/knowledgeowl-tutorial/configure2.png)
 
     a. 選取 [啟用 SAML SSO]  。
 
@@ -189,7 +189,7 @@ ms.locfileid: "88549886"
 
     h. 按一下 [對應 SAML 屬性]  以對應屬性，然後執行下列步驟：
 
-    ![KnowledgeOwl 設定](./media/knowledgeowl-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示您可以在這裡進行所述變更的 [對應 SAML 屬性]。](./media/knowledgeowl-tutorial/configure3.png)
 
     * 在 [SSO 識別碼]  文字方塊中輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid`。
     * 在 [使用者名稱/電子郵件]  文字方塊中輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
@@ -199,7 +199,7 @@ ms.locfileid: "88549886"
 
     i. 按一下頁面底部的 [儲存]  。
 
-    ![KnowledgeOwl 設定](./media/knowledgeowl-tutorial/configure4.png)
+    ![顯示 [儲存] 按鈕的螢幕擷取畫面。](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>建立 KnowledgeOwl 測試使用者
 

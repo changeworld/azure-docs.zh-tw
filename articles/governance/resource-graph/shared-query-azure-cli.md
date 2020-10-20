@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用 Azure CLI 建立共用查詢
 description: 在本快速入門中，您會依照步驟為 Azure CLI 啟用 Resource Graph 延伸模組，並建立共用查詢。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667515"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057156"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Resource Graph 共用查詢
 
@@ -84,7 +84,7 @@ ms.locfileid: "91667515"
    ```
 
 1. 使用 [az graph query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) 命令中的 `{{shared-query-uri}}` 語法，在 Azure CLI 中執行共用查詢。
-   首先，從上述 `show` 命令的結果複製 `id` 欄位。 以 `id` 欄位中的值取代範例中的 `shared-query-uri` 文字，但是保留周圍的 `{{` 和 `}}` 字元。
+   首先，從前一個 `show` 命令的結果複製 `id` 欄位。 以 `id` 欄位中的值取代範例中的 `shared-query-uri` 文字，但是保留周圍的 `{{` 和 `}}` 字元。
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query

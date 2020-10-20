@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d598017c8b41dffc486bfef4b9af63c6942cef58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fde0bcdb70384e791d7337d212d7353b6ea168bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549784"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 LinkedIn Learning 整合
 
@@ -141,19 +141,19 @@ ms.locfileid: "88549784"
 
 2. 在 [帳戶中心]  中，按一下 [設定]  底下的 [全域設定]  。 此外，從下拉式清單選取 [學習 - 預設]  。
 
-    ![設定單一登入](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [預設] 的 [全域設定]。](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
 3. 按一下 [或按一下這裡以從表單載入和複製個別欄位]  ，並複製 [實體識別碼]  和 [判斷提示取用者服務 (ACS) URL]  ，然後將它貼入 Azure 入口網站中的 [基本 SAML 設定]  區段。
 
-    ![設定單一登入](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的單一登入。](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
 4. 移至 [LinkedIn 系統管理員設定]  區段。 按一下 [上傳 XML 檔案]  選項，將您從 Azure 入口網站下載的 XML 檔案上傳。
 
-    ![設定單一登入](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![此螢幕擷取畫面顯示設定您可以用來上傳 XML 檔案的 LinkedIn 服務提供者 SSO 設定。](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
 5. 按一下 [開啟]  以啟用 SSO。 SSO 狀態會從 [未連線]  變更為 [已連線] 
 
-    ![設定單一登入](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![此螢幕擷取畫面顯示您可以在其中啟用以 SSO 驗證使用者的單一登入。](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-learning-test-user"></a>建立 LinkedIn Learning 測試使用者
 

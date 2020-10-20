@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 修改 IoT Edge 即時影片分析模組
+title: 教學課程 - 修改 Azure IoT Edge 即時影片分析模組
 description: 本教學課程說明如何修改和建置 [影片分析 - 物件和動作偵測] 應用程式範本所使用的即時影片分析閘道模組。
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037900"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873467"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>教學課程：修改並建置即時影片分析閘道模組
 
@@ -50,7 +50,7 @@ git clone https://github.com/Azure/live-video-analytics
 1. 編輯 `LvaEdgeGatewayModule` 模組區段，以在 `env:amsAccountName:value` 中新增您的映像名稱和 AMS 帳戶名稱。
 1. 編輯 `lvaYolov3` 模組區段，並新增您的映像名稱。
 1. 編輯 `lvaEdge` 模組區段，並新增您的映像名稱。
-1. 如需如何完成設定的詳細資訊，請參閱[在 Azure IoT Central 中建立影片分析應用程式](tutorial-video-analytics-create-app.md)。
+1. 如需如何完成設定的詳細資訊，請參閱[在 Azure IoT Central 中建立影片分析應用程式](tutorial-video-analytics-create-app-yolo-v3.md)。
 
 ## <a name="build-the-code"></a>建置程式碼
 

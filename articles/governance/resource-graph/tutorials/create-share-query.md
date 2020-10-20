@@ -1,14 +1,14 @@
 ---
 title: 教學課程：在 Azure 入口網站中管理查詢
 description: 在本教學課程中，您將建立 Resource Graph 查詢，並在 Azure 入口網站中與其他人共用新查詢。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005185"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057921"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中建立和共用 Azure Resource Graph 查詢
 
@@ -60,8 +60,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
 
 ## <a name="create-a-shared-query"></a>建立共用查詢
 
-不同於私人查詢，共用查詢是 Resource Manager 資源。 這表示查詢會儲存至資源群組、可透過 Azure RBAC 來管理和控制，甚至可使用資源鎖定加以保護。 作為資源，任何人只要具有適當的權限，即可加以檢視和使用。
-若要建立新的共用查詢，請執行下列步驟：
+不同於私人查詢，共用查詢是 Resource Manager 資源。 這表示查詢會儲存至資源群組、可透過 Azure RBAC 來管理和控制，甚至可使用資源鎖定加以保護。 作為資源，任何人只要具有適當的權限，即可加以檢視和使用。 若要建立新的共用查詢，請執行下列步驟：
 
 1. 從入口網站功能表中選取 [所有服務]，或使用所有頁面頂端的 Azure 搜尋方塊，來搜尋並選取 [Resource Graph Explorer]。
 
@@ -89,7 +88,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
 
 1. 選取 [儲存查詢] 窗格底部的 [儲存]。 索引標籤標題會從「查詢 1」變更為「依作業系統計算 VM 計數」。 第一次使用 **resource-graph-queries** 資源群組時，建立資源群組所需的儲存時間會比預期還要久。
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="將新的查詢儲存為共用查詢" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="使用儲存按鈕來儲存新的查詢" border="false":::
 
    > [!NOTE] 
    > 如果您想要提供現有資源群組的名稱用以儲存共用查詢，您可以清除 [發佈至 resource-graph-queries 資源群組] 核取方塊。 將具有預設名稱的資源群組用於查詢，可讓共用查詢更易於探索。 此外也可讓該資源群組的用途更為明顯。 不過，基於安全考量，您可以選擇根據現有的權限來選取現有的資源群組。
@@ -98,7 +97,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
 
 1. 選取 [開啟查詢]。 請確認 [類型] 設定為 [共用查詢]，且 [訂用帳戶] 和 [資源群組] 的組合與您儲存查詢之處相符。 此時，已儲存的「依作業系統計算 VM 計數」項目會出現在 [查詢名稱] 清單中。 選取已儲存查詢的標題連結，可將該查詢載入至具有該查詢名稱的新索引標籤中。 該查詢為共用查詢，在索引標籤中的標題旁會顯示一個圖示，指出它是共用的。
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="顯示具有圖示的共用查詢" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="使用儲存按鈕來儲存新的查詢" border="false":::
 
    > [!NOTE] 
    > 當已儲存的查詢開啟，且索引標籤顯示其名稱時，[儲存] 按鈕將會以已進行的任何變更來更新該查詢。 若要建立新儲存的查詢，請選取 [另存新檔] 並繼續操作，如同儲存全新的查詢一般。
@@ -107,7 +106,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
 
 共用查詢是 Resource Manager 資源，因此有數種方式可尋找此類查詢：
 
-- 從 Resource Graph Explorer 選取 [開啟查詢]，並將類型設定為 [共用查詢]。
+- 從 Resource Graph 總管。 選取 [開啟查詢]，並將類型設定為 [共用查詢]。
 - 從 Resource Graph 查詢入口網站頁面。
 - 從共用查詢儲存所在的資源群組。
 - 透過對 Resource Graph 的查詢。

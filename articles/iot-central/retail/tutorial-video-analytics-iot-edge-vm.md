@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526386"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873273"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Linux VM)
 
@@ -34,7 +34,7 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
 
 ## <a name="prerequisites"></a>先決條件
 
-開始之前，您應該先完成先前的[在 Azure IoT Central 中建立影片分析應用程式](./tutorial-video-analytics-create-app.md)教學課程。
+開始之前，您應該先完成先前的[在 Azure IoT Central 中建立影片分析應用程式](./tutorial-video-analytics-create-app-yolo-v3.md)或[在 Azure IoT Central 中建立影片分析 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) 教學課程。
 
 您也需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，則可以在 [Azure 註冊頁面](https://aka.ms/createazuresubscription)上免費建立一個。
 

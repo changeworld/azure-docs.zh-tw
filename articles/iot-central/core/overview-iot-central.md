@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987360"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812432"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -50,14 +50,21 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
 身為解決方案建置者，您會使用 Web 型工具，為連線到您應用程式的裝置建立「裝置範本」。 裝置範本是定義某種裝置之特性和行為的藍圖，例如：
 
-- 它所傳送的遙測。
-- 操作員可以修改的業務屬性。
-- 由裝置設定而且在應用程式中唯讀的裝置屬性。
-- 屬性由操作員所設定，會決定裝置的行為。
+- 它所傳送的遙測。 範例包括溫度和濕度。 遙測屬於串流資料。
+- 操作員可以修改的業務屬性。 範例包括客戶地址和上次服務日期。
+- 由裝置設定而且在應用程式中唯讀的裝置屬性。 例如，閥門的狀態可以是開啟或關閉。
+- 屬性由操作員所設定，會決定裝置的行為。 例如，裝置的目標溫度。
+- 操作員可呼叫以在裝置上執行的命令。 例如，遠端重新啟動裝置的命令。
 
 此[裝置範本](howto-set-up-template.md)包含：
 
-- 一個_裝置功能模型_，說明裝置所應實作的功能，例如它所傳送的遙測資料和它所報告的屬性。
+- 裝置功能模型，可描述裝置應實作的功能。 裝置功能包括：
+
+  - 其串流至 IoT Central 的遙測。
+  - 其用來向 IoT Central 報告狀態的唯讀屬性。
+  - 其從 IoT Central 接收的可寫入屬性，用以設定裝置狀態。
+  - 從 IoT Central 呼叫的命令。
+
 - 未儲存在裝置上的雲端屬性。
 - 屬於 IoT Central 應用程式一部分的自訂、儀表板和表單。
 
@@ -129,7 +136,7 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 
 您可以使用 7 天免費試用版或標準版定價方案來建立 IoT Central 應用程式。
 
-- 使用「免費」方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。
+- 使用「免費」  方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。
 - 您使用「標準」方案建立的應用程式會根據每個裝置來計費，您可以選擇**標準 1** 或**標準 2** 定價方案，而且前兩個裝置免費。 深入了解 [IoT Central 價格](https://aka.ms/iotcentral-pricing)。
 
 ## <a name="quotas"></a>配額
@@ -144,7 +151,6 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 - 不支援陣列結構描述類型。
 - 僅支援 C 裝置 SDK 和 Node.js 裝置與服務 SDK。
 - IoT Central 目前適用於美國、歐洲、亞太地區、澳大利亞、英國及日本地區。
-- 您無法在英國和日本地區中使用**自訂應用程式 (舊版)** 的應用程式範本。
 - 裝置功能模型必須具有在相同檔案中以內嵌方式定義的所有介面。
 
 ## <a name="next-steps"></a>後續步驟

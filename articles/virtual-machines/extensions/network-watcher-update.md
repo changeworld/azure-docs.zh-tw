@@ -12,20 +12,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: e367c348364d03cec6914c99e7ff112803fc58f6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132426"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220568"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>將網路監看員延伸模組更新為最新版本
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [Azure 網路](../../network-watcher/network-watcher-monitoring-overview.md) 監看員是一種網路效能監視、診斷和分析服務，可監視 Azure 網路。  (VM) 擴充功能的網路監看員代理程式虛擬機器，是視需要捕獲網路流量，以及在 Azure Vm 上使用其他 advanced 功能的必要條件。 網路監看員延伸模組是由連線監視器、連線監視器 (預覽) 、連線疑難排解和封包捕獲等功能使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已在 VM 中安裝網路監看員延伸模組。
 
@@ -52,20 +52,22 @@ ms.locfileid: "92132426"
 從 Azure CLI 提示字元執行下列命令：
 
 ```azurecli
-az vm extension list --resource-group  <ResourceGroupName> --vm-name <VMName>
+az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```
+在輸出中找出 **"AzureNetworkWatcherExtension"** ，並從輸出中的 *"TypeHandlerVersion"* 欄位識別版本號碼。  請注意：延伸模組的相關資訊會出現在 JSON 輸出中多次。 請查看「延伸模組」區塊，您應該會看到延伸模組的完整版本號碼。 
 
-在輸出中找出 AzureNetworkWatcher 延伸模組。 識別輸出中 "TypeHandlerVersion" 欄位的版本號碼。  
+您應該會看到如下所示的內容： ![ Azure CLI 的螢幕擷取畫面](./media/network-watcher/azure-cli-screenshot.png)
 
 #### <a name="usepowershell"></a>使用 PowerShell
 
 從 PowerShell 提示字元執行下列命令：
 
 ```powershell
-Get-AzVMExtension -ResourceGroupName <ResourceGroupName> -VMName <VMName>  
+Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 ```
+在輸出中找出 Azure 網路監看員延伸模組，並從輸出中的 *"TypeHandlerVersion"* 欄位識別版本號碼。   
 
-在輸出中找出 AzureNetworkWatcher 延伸模組。 識別輸出中 "TypeHandlerVersion" 欄位的版本號碼。
+您應該會看到如下所示的內容： ![ PowerShell 螢幕擷取畫面](./media/network-watcher/powershell-screenshot.png)
 
 ### <a name="update-your-extension"></a>更新您的延伸模組
 
@@ -81,6 +83,25 @@ Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS"
 
 #Windows command
 Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
+```
+
+如果無法運作。 使用下列步驟，再次移除並安裝擴充功能。 這會自動新增最新版本。
+
+移除擴充功能 
+
+```powershell
+#Same command for Linux and Windows
+Remove-AzVMExtension -ResourceGroupName "SampleRG" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension"
+``` 
+
+再次安裝擴充功能
+
+```powershell
+#Linux command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux" -typeHandlerVersion "1.4"
+
+#Windows command
+Set-AzVMExtension -ResourceGroupName "SampleRG" -Location "centralus" -VMName "Sample-VM" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -typeHandlerVersion "1.4"
 ```
 
 #### <a name="option-2-use-the-azure-cli"></a>選項2：使用 Azure CLI

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631077"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930708"
 ---
 # <a name="tutorial-mock-api-responses"></a>教學課程：模擬 API 回應
 
@@ -107,7 +107,7 @@ API 會公開一或多個作業。 在本節中，將作業新增至您建立的
 1. 選取 [儲存]。
 
     > [!TIP]
-    > 具有 API **已啟用模擬**字樣的黃色列，表示從 API 管理傳回的回應會傳送模擬原則且不是實際的後端回應。
+    > 如果 API 有 [已啟用模擬] 字樣的黃色列，表示從 APIM 傳回的回應會由[模擬原則](api-management-advanced-policies.md#mock-response)進行模擬，而不是由後端產生。
 
 ## <a name="test-the-mocked-api"></a>測試模擬的 API
 

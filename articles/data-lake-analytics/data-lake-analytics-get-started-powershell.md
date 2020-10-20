@@ -3,16 +3,15 @@ title: 建立 & 查詢 Azure Data Lake Analytics-PowerShell
 description: 使用 Azure PowerShell 來建立 Azure Data Lake Analytics 帳戶和提交 U-SQL 作業。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61177d1338be30ae14ccea3ff94c5e0e554aa331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93a05231bc971737a08d74ad04150e5449dfc792
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077308"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220936"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 開始使用 Azure Data Lake Analytics
 
@@ -20,18 +19,18 @@ ms.locfileid: "89077308"
 
 了解如何使用 Azure PowerShell 建立 Azure Data Lake Analytics 帳戶，然後提交和執行 U-SQL 作業。 如需 Data Lake Analytics 的詳細資訊，請參閱 [Azure Data Lake Analytics 總覽](data-lake-analytics-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 開始進行本教學課程之前，您必須具備下列資訊：
 
-* **Azure Data Lake Analytics 帳戶**。 請參閱[開始使用 Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)。
+* **Azure Data Lake Analytics 帳戶**。 請參閱[開始使用 Data Lake Analytics](./data-lake-analytics-get-started-portal.md)。
 * **具有 Azure PowerShell 的工作站**。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
-本教學課程假設您已熟悉如何使用 Azure PowerShell。 特別是，您需要了解如何登入 Azure。 如果您需要協助，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+本教學課程假設您已熟悉如何使用 Azure PowerShell。 特別是，您需要了解如何登入 Azure。 如果您需要協助，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)。
 
 若要使用訂用帳戶名稱登入：
 

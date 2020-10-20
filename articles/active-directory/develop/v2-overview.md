@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e63d2cac97a16674c4e2e880f94373b0af1510de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627120"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056407"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>什麼是 Microsoft 身分識別平台？
 
@@ -74,8 +74,7 @@ Microsoft 身分識別平台由數個元件組成：
 
 [Azure AD B2B](../external-identities/what-is-b2b.md) - 邀請外部使用者成為您 Azure AD 租用戶的「來賓」使用者，並對其指派權限以進行授權，同時他們可使用其現有認證來進行驗證。
 
-> [!TIP]
-> 正在尋找 Azure Active Directory 開發人員平台 (v1.0) 文件嗎？ 請參閱[開發人員適用的 Azure Active Directory (v1.0) 概觀](../azuread-dev/v1-overview.md)。
+[適用於開發人員的 Azure Active Directory (v1.0)](../azuread-dev/v1-overview.md) - 這裡顯示的內容適用於現有應用程式使用舊版 v1.0 端點的開發人員。 **請勿**對新專案使用 v1.0。
 
 ## <a name="next-steps"></a>後續步驟
 

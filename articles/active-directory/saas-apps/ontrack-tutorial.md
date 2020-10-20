@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b2d244fa6ea42a85483b3067cf58fc9384a86dee
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544055"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>教學課程：Azure Active Directory 與 OnTrack 整合
 
@@ -118,7 +118,7 @@ OnTrack 與 Azure AD 整合提供下列優點：
 
 5. OnTrack 應用程式會預期要有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。 
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 對話方塊的螢幕擷取畫面，其中已選取右上方的 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了以上屬性之外，OnTrack 應用程式還預期 SAML 回應中會再多傳回幾個屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -132,7 +132,7 @@ OnTrack 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 對話方塊的螢幕擷取畫面，其中已選取 [新增宣告] 和 [儲存] 動作。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

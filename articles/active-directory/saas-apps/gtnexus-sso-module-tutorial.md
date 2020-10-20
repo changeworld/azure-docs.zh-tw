@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544291"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>教學課程：Azure Active Directory 與 GTNexus SSO 系統整合
 
@@ -101,11 +101,11 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    ![image](common/upload-metadata.png)
+    ![顯示 [基本 S A M L 設定] 頁面的螢幕擷取畫面，其中已選取 [上傳中繼資料檔案] 動作。](common/upload-metadata.png)
 
     b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
 
-    ![image](common/browse-upload-metadata.png)
+    ![顯示 [選取檔案] 欄位的螢幕擷取畫面，其中已選取 [資料夾] 標誌和 [上傳] 按鈕。](common/browse-upload-metadata.png)
 
     c. 當中繼資料檔案成功上傳後，會自動在 [GTNexus SSO 系統] 區段文字方塊中填入 [識別碼]  及 [回覆 URL]  值：
 

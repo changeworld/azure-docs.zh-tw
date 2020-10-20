@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854891"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893810"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解語音 CLI 的基本概念
 
@@ -69,6 +69,51 @@ spx translate --microphone --source en-US --target ru-RU --output file C:\some\f
 
 > [!NOTE]
 > 請參閱[語言和地區設定文章](language-support.md)，其中列出了所有支援的語言及其對應的地區設定代碼。
+
+### <a name="configuration-files-in-the-datastore"></a>資料存放區中的組態檔
+
+語音 CLI 可以在組態檔中讀取和寫入多個設定 (其儲存在本機語音 CLI 資料存放區中)，並使用 @ 符號在語音 CLI 呼叫內命名。 語音 CLI 會嘗試將新的設定儲存於其在目前工作目錄中建立的新 `./spx/data` 子目錄。
+搜尋組態值時，語音 CLI 會在您目前的工作目錄中查看，然後在 `./spx/data` 路徑中查看。
+先前，您已使用資料存放區來儲存 `@key` 和 `@region` 值，因此不需要使用每個命令列呼叫來進行指定。
+您也可以使用組態檔來儲存自己的組態設定，或甚至使用其來傳遞在執行階段產生的 URL 或其他動態內容。
+
+本節說明如何使用本機資料存放區中的組態檔，進而使用 `spx config` 來儲存和擷取命令設定，以及使用 `--output` 選項來儲存語音 CLI 的輸出。
+
+下列範例會清除 `@my.defaults` 組態檔、在檔案中新增 **key** 和 **region** 的索引鍵/值組，並且在對 `spx recognize` 的呼叫中使用此組態。
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+您也可以將動態內容寫入至組態檔。 例如，下列命令會建立自訂語音模型，並將新模型的 URL 儲存在組態檔。中。 下一個命令會等到位於該 URL 的模型可供使用再傳回。
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+下列範例會將兩個 URL 寫入至 `@my.datasets.txt` 組態檔。
+在此案例中，`--output` 可以包含選擇性 **和**  關鍵字，以建立組態檔或附加至現有檔案。
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+如需資料存放區檔案的詳細資訊，包括使用預設組態檔 (`@spx.default`、`@default.config` 和 `@*.default.config` 作為命令特定的預設設定)，請輸入下列命令：
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>批次作業
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554153"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OfficeSpace Software 整合
 
@@ -150,11 +150,11 @@ ms.locfileid: "88554153"
 
 2. 移至 [設定]  ，然後按一下 [連接器]  。
 
-    ![在應用程式端設定單一登入](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![顯示 [設定] 下拉式清單的螢幕擷取畫面，其中已選取 [連接器]。](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. 按一下 [SAML 驗證]  。
 
-    ![在應用程式端設定單一登入](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![顯示 [驗證] 區段的螢幕擷取畫面，其中已選取 [S A M L 驗證] 動作。](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. 在 [SAML 驗證]  區段中，執行下列步驟：
 

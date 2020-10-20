@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447162"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946010"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>快速入門：設定 Azure 資訊安全中心
 
@@ -33,7 +33,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 若要啟用訂用帳戶的 Azure Defender，您必須取得「訂用帳戶擁有者」、「訂用帳戶參與者」或「安全性管理員」角色。
 
 
-## <a name="open-security-center-for-the-first-time"></a>首次開啟資訊安全中心
+## <a name="enable-security-center-on-your-azure-subscription"></a>在 Azure 訂用帳戶上啟用資訊安全中心
 
 1. 登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)。
 
@@ -54,6 +54,8 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 若要充分利用資訊安全中心，您需要完成下列步驟，才能啟用 Azure Defender 並安裝 Log Analytics 代理程式。
 
+> [!TIP]
+> 若要在管理群組內的所有訂用帳戶上啟用資訊安全中心，請參閱[在多個 Azure 訂用帳戶上啟用資訊安全中心](onboard-management-group.md)。
 
 ## <a name="enable-azure-defender"></a>啟用 Azure Defender
 

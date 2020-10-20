@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 50c1cd62f52583a005e6e7fe8fb29ee8eafd1af9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448239"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044457"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定屬性
 
@@ -41,10 +41,7 @@ ms.locfileid: "91448239"
 
 1. 在 Azure AD 入口網站中，選取 [企業應用程式]。 然後尋找並選取您要設定的應用程式。
 2. 在 [管理] 區段中，選取 [屬性] 來開啟 [屬性] 窗格以進行編輯。
-
-    ![[屬性] 畫面的螢幕擷取畫面，其中顯示可編輯的應用程式屬性。](media/add-application-portal/edit-properties.png)
-
-3. 請花點時間了解可供設定的選項：
+3. 請花點時間了解可用的選項。 可用的選項將取決於應用程式與 Azure AD 整合的方式。 例如，使用 SAML 型單一登入的應用程式將具有 [使用者存取 URL] 之類的欄位，而使用 OIDC 型單一登入的應用程式則沒有這類欄位。 另請注意，透過 Azure Active Directory > [應用程式註冊] 新增的應用程式預設為 OIDC 型應用程式。 然而透過 Azure Active Directory > [企業應用程式] 新增的應用程式可以使用任何一種單一登入標準。 所有應用程式都有欄位可供設定應用程式出現並可使用的時機。 這些欄位包括：
     - [為使用者啟用登入？] 可決定指派給應用程式的使用者是否可以登入。
     - [需要使用者指派？] 可決定未指派給應用程式的使用者是否可以登入。
     - [可讓使用者看見？] 可決定指派給應用程式的使用者是否可在[我的應用程式](https://myapps.microsoft.com)和 Microsoft 365 應用程式啟動器中看見應用程式。 (請參閱 Microsoft 365 網站左上角的鬆餅功能表。)

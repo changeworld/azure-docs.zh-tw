@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ac528d1cfb74221a7398e390cedda08df4ea4508
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151404"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220494"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和需求 
 
@@ -61,9 +61,9 @@ Azure Data Share 資源的受控識別必須獲得 Azure 資料存放區的存�
 1. 選取 [ **新增角色指派**]。
 1. 在 [ *角色*] 之下，選取上述角色指派表中的角色 (例如，針對 [儲存體帳戶]，選取 [ *儲存體 Blob 資料讀取器* ]) 。
 1. 在 [ *選取*] 下，輸入您的 Azure Data Share 資源的名稱。
-1. 按一下 *[儲存]* 。
+1. 按一下 [儲存]。
 
-若要深入瞭解角色指派，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。 如果您要使用 REST Api 來共用資料，您可以使用 API 來建立角色指派，方法是參考 [使用 REST API 的 [新增] 或 [移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)]。 
+若要深入瞭解角色指派，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 如果您要使用 REST Api 來共用資料，您可以使用 API 來建立角色指派，方法是參考 [使用 REST API 的 [新增] 或 [移除 Azure 角色指派](../role-based-access-control/role-assignments-rest.md)]。 
 
 針對以 SQL 為基礎的來源，您必須使用與 Azure Data Share 資源相同名稱的 SQL Database 外部提供者建立 SQL 使用者，同時使用 Azure Active Directory 驗證連接到 SQL Database。 此使用者必須獲得 *db_datareader* 許可權。 您可以在 [Azure SQL Database 或 Synapse Analytics](how-to-share-from-sql.md) 教學課程的共用中，找到範例腳本以及 SQL 型共用的其他必要條件。 
 
@@ -81,9 +81,9 @@ Azure Data Share 資源的受控識別必須獲得 Azure 資料存放區的存�
 1. 選取 [ **新增角色指派**]。
 1. 在 [ *角色*] 之下，選取上述角色指派表中的角色 (例如，針對 [儲存體帳戶]，選取 [ *儲存體 Blob 資料讀取器* ]) 。
 1. 在 [ *選取*] 下，輸入您的 Azure Data Share 資源的名稱。
-1. 按一下 *[儲存]* 。
+1. 按一下 [儲存]。
 
-若要深入瞭解角色指派，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。 如果您是使用 REST Api 來接收資料，您可以使用 API 來建立角色指派，方法是參考 [使用 REST API 的 [新增] 或 [移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)]。 
+若要深入瞭解角色指派，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 如果您是使用 REST Api 來接收資料，您可以使用 API 來建立角色指派，方法是參考 [使用 REST API 的 [新增] 或 [移除 Azure 角色指派](../role-based-access-control/role-assignments-rest.md)]。 
 
 若為 SQL 型目標，當使用 Azure Active Directory 驗證連接到 SQL Database 時，必須使用與 Azure Data Share 資源相同名稱 SQL Database 中的外部提供者建立 SQL 使用者。 此使用者必須獲得 *db_datareader、db_datawriter db_ddladmin* 許可權。 您可以在 [Azure SQL Database 或 Synapse Analytics](how-to-share-from-sql.md) 教學課程的共用中，找到範例腳本以及 SQL 型共用的其他必要條件。 
 
@@ -103,7 +103,7 @@ Azure Data Share 資源的受控識別必須獲得 Azure 資料存放區的存�
 1. 搜尋 Microsoft.datashare。
 1. 按一下 [註冊] 。
  
-若要深入瞭解資源提供者，請參閱 [Azure 資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+若要深入瞭解資源提供者，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

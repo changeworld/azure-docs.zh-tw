@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 53a224f53f0270166ce75e718e670780730a10c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e772dc39374b178743a6c8b93e6b48e62b1e2ed
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543647"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Paylocity 整合
 
@@ -106,7 +106,7 @@ ms.locfileid: "88543647"
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，按一下**編輯圖示**。
 
-    ![SAML 簽署憑證編輯](./media/paylocity-tutorial/edit-samlassertion.png)
+    ![顯示 [S A M L 簽署憑證] 的螢幕擷取畫面，其中已針對 [同盟中繼資料 X M L] 選取 [下載] 動作。](./media/paylocity-tutorial/edit-samlassertion.png)
 
 1. 針對 [簽署選項]  選取 [簽署 SAML 回應及判斷提示]  ，然後按一下 [儲存]  。
 
