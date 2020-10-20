@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547098"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850722"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Jive 整合
 
@@ -140,7 +140,7 @@ ms.locfileid: "88547098"
 
 1. 在頂端的功能表中，按一下 [SAML]。
 
-    ![在應用程式端設定單一登入](./media/jive-tutorial/tutorial_jive_002.png)
+    ![此螢幕擷取畫面顯示已選取 [已啟用] 的 [SAML] 索引標籤。](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. 選取 [一般] 索引標籤下的 [已啟用]。
 
@@ -148,7 +148,7 @@ ms.locfileid: "88547098"
 
 1. 瀏覽至 [IDP 中繼資料] 索引標籤。
 
-    ![在應用程式端設定單一登入](./media/jive-tutorial/tutorial_jive_003.png)
+    ![此螢幕擷取畫面顯示已選取 [IDP 中繼資料] 的 SAML 索引標籤。](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. 複製下載的中繼資料 XML 檔案內容，然後貼到 [識別提供者 (IDP) 中繼資料] 文字方塊中。
 
@@ -156,7 +156,7 @@ ms.locfileid: "88547098"
 
 1. 選取 [使用者屬性對應] 索引標籤。
 
-    ![在應用程式端設定單一登入](./media/jive-tutorial/tutorial_jive_004.png)
+    ![此螢幕擷取畫面顯示已選取 [使用者屬性對應] 的 [SAML] 索引標籤。](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. 在 [電子郵件] 文字方塊中，複製並貼上值為 **mail** 的屬性名稱。
 

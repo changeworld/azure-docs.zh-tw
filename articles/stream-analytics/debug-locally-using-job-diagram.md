@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045394"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218250"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>使用 Visual Studio 中的工作圖表在本機進行 Azure 串流分析查詢的調試
 
@@ -87,7 +87,7 @@ Azure 串流分析腳本可用來將輸入資料轉換成輸出資料。 作業�
   
 #### <a name="output-sinks-live-output"></a>輸出接收 (即時輸出) 
 
-![作業圖表區域輸出接收](./media/debug-locally-using-job-diagram/live-output.png)
+![顯示本機輸出接收的作業圖表。](./media/debug-locally-using-job-diagram/live-output.png)
 
 |計量|描述|
 |-|-|
@@ -121,7 +121,7 @@ Azure 串流分析腳本可用來將輸入資料轉換成輸出資料。 作業�
 
 * 只有雲端輸入選項具備[時間原則](stream-analytics-out-of-order-and-late-events.md)支援，而本機輸入選項則沒有。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：使用 Visual Studio 建立串流分析工作](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 檢視 Azure 串流分析工作](stream-analytics-vs-tools.md)

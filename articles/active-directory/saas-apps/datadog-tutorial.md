@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555921"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Datadog 整合
 
@@ -141,6 +141,22 @@ ms.locfileid: "88555921"
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
 當您在存取面板中按一下 [Datadog] 圖格時，應該會自動登入您已設定 SSO 的 Datadog。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>讓您租用戶中所有的使用者都能使用應用程式進行驗證
+
+在本節中，您會讓租用戶內的所有人都能存取 Datadog (如果有一名使用者在 Datadog 端具有帳戶的話)。
+
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在應用程式清單中，選取 [Datadog]  。
+1. 在應用程式概觀頁面的 [管理] 底下，選取 [屬性]。
+
+    ![[屬性] 連結](common/properties.png)
+
+1. 針對 [需要使用者指派?]，選取 [否]。
+
+    ![不需要使用者指派](common/user-assignment-not-required.png)
+
+1. 選取 [儲存]。
 
 ## <a name="additional-resources"></a>其他資源
 

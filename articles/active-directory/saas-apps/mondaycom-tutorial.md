@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2128559d8074281c1019d99e1316da34c7ec6797
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ed3d5de27a2d9ce5060ff4bfe71c595512658e58
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554595"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940611"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 monday.com 整合
 
@@ -88,14 +88,14 @@ ms.locfileid: "88554595"
 
     c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態] 區段中自動填入 [識別碼]  和 [回覆 URL]  值。
 
-    ![image](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請手動填入這些值。 [識別碼]  和 [回覆 URL]  相同，其值模式如下：`https://<your-domain>.monday.com/saml/saml_callback`
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<YOUR_DOMAIN>.monday.com`
 
@@ -104,7 +104,7 @@ ms.locfileid: "88554595"
 
 1. monday.com 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
 
-    ![image](common/default-attributes.png)
+    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有預設值，例如名字 user.givenname 和電子郵件地址 User.mail。](common/default-attributes.png)
 
 1. 除了上述屬性外，monday.com 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
@@ -166,15 +166,15 @@ ms.locfileid: "88554595"
 
 1. 移至頁面右上角的 [設定檔]  ，然後按一下 [管理員]  。
 
-    ![monday.com 組態](./media/mondaycom-tutorial/configuration01.png)
+    ![顯示已選取管理員設定檔的螢幕擷取畫面。](./media/mondaycom-tutorial/configuration01.png)
 
 1. 選取 [安全性]  並且確定按一下 SAML 旁邊的 [開啟]  。
 
-    ![monday.com 組態](./media/mondaycom-tutorial/configuration02.png)
+    ![此螢幕擷取畫面顯示 [安全性] 索引標籤及 [SAML] 旁的 [開啟] 選項。](./media/mondaycom-tutorial/configuration02.png)
 
 1. 從您的 IDP 填寫以下詳細資料。
 
-    ![monday.com 組態](./media/mondaycom-tutorial/configuration03.png)
+    ![此螢幕擷取畫面顯示在您可以其中輸入 IDP 資訊的 SAML 提供者。](./media/mondaycom-tutorial/configuration03.png)
 
     > [!NOTE]
     > 如需詳細資料，請參閱[這篇](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642)文章

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 8e92c893d97ce9fadfa2d40476631c2b9ba5d177
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999260"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018265"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 資訊安全中心資料安全性
 
@@ -57,19 +57,19 @@ Log Analytics 代理程式會掃描各種安全性相關設定，並轉換成 [W
 
 您可以指定從您的電腦收集的資料儲存所在的工作區和區域。 預設是將從您的電腦收集的資料儲存在最近的工作區，如下表所示：
 
-| VM 地區                              | 工作區地區 |
-|-------------------------------------|---------------|
-| 美國、巴西、南非 | 美國 |
-| Canada                              | Canada        |
-| 歐洲 (英國除外)   | 歐洲        |
-| United Kingdom                      | United Kingdom |
-| 亞洲 (印度、日本、韓國、中國除外)   | 亞太地區  |
-| 南韓                              | 亞太地區  |
-| 印度                               | 印度         |
-| 日本                               | 日本         |
-| 中國                               | 中國         |
-| 澳大利亞                           | 澳大利亞     |
-|||
+| VM 地區                                      | 工作區地區  |
+|---------------------------------------------|----------------|
+| 美國、巴西、南非         | 美國  |
+| Canada                                      | Canada         |
+| 歐洲 (英國除外)           | 歐洲         |
+| United Kingdom                              | United Kingdom |
+| 亞洲 (印度、日本、韓國、中國除外) | 亞太地區   |
+| 南韓                                       | 亞太地區   |
+| 印度                                       | 印度          |
+| 日本                                       | 日本          |
+| 中國                                       | 中國          |
+| 澳大利亞                                   | 澳大利亞      |
+|                                             |                |
 
 > [!NOTE]
 > **適用於儲存體的 Azure Defender** 會根據相關 Azure 資源的位置在區域內儲存成品。 請在[適用於儲存體的 Azure Defender 簡介](defender-for-storage-introduction.md)中深入了解。
@@ -80,18 +80,16 @@ Log Analytics 代理程式會掃描各種安全性相關設定，並轉換成 [W
 客戶可以從下列資料流存取資訊安全中心相關資料：
 
 
-|STREAM  |資料類型  |
-|---------|---------|
-|[Azure 活動記錄](../azure-monitor/platform/activity-log.md)| 所有安全性警示、已核准的資訊安全中心 [Just-In-Time](security-center-just-in-time.md) 存取要求，以及[自適性應用程式控制](security-center-adaptive-application.md)產生的所有警示。 |
-|[Azure 監視器記錄](../azure-monitor/platform/data-platform.md)|所有安全性警示。|
-|[Azure Resource Graph](../governance/resource-graph/overview.md)|安全性警示、安全性建議、弱點評量結果、安全分數資訊、合規性檢查的狀態等等。|
-|[Azure 資訊安全中心 REST API](https://docs.microsoft.com/rest/api/securitycenter/)|安全性警示、安全性建議等等。 .|
-|||
+| STREAM                                                                                | 資料類型                                                                                                                                                                                                          |
+|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Azure 活動記錄](../azure-monitor/platform/activity-log.md)                       | 所有安全性警示、已核准的資訊安全中心 [Just-In-Time](security-center-just-in-time.md) 存取要求，以及[自適性應用程式控制](security-center-adaptive-application.md)產生的所有警示。|
+| [Azure 監視器記錄](../azure-monitor/platform/data-platform.md)                      | 所有安全性警示。                                                                                                                                                                                                |
+| [Azure Resource Graph](../governance/resource-graph/overview.md)                      | 安全性警示、安全性建議、弱點評量結果、安全分數資訊、合規性檢查的狀態等等。                                                                       |
+| [Azure 資訊安全中心 REST API](https://docs.microsoft.com/rest/api/securitycenter/) | 安全性警示、安全性建議等等。                                                                                                                                                                |
+|                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>後續步驟
 
 在本文件中，您已了解如何在 Azure 資訊安全中心管理和保護資料。 
 
-若要深入了解 Azure 資訊安全中心，請參閱：
-
-- [什麼是 Azure 資訊安全中心？](security-center-introduction.md)
+若要深入了解 Azure 資訊安全中心，請參閱[什麼是 Azure 資訊安全中心？](security-center-introduction.md)

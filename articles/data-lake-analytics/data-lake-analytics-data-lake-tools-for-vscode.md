@@ -1,18 +1,16 @@
 ---
 title: 使用 Azure Data Lake Tools for Visual Studio Code
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio Code 來建立、測試和執行 U-SQL 指令碼。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126477"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221242"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用 Azure Data Lake Tools for Visual Studio Code
 
@@ -24,7 +22,7 @@ ms.locfileid: "87126477"
 
 Azure Data Lake Tools for VS Code 支援 Windows、Linux 與 macOS。U-SQL 本機執行與本機偵錯僅適用於 Windows。
 
-- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx) \(英文\)
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
 若為 MacOS 和 Linux：
 
@@ -146,7 +144,7 @@ Azure Data Lake Tools 支援多個自訂程式碼。 如需相關指示，請參
 
 ## <a name="work-with-assemblies"></a>使用組件
 
-如需有關開發組件的資訊，請參閱[針對 Azure Data Lake Analytics 作業開發 U-SQL 組件](data-lake-analytics-u-sql-develop-assemblies.md)。
+如需有關開發組件的資訊，請參閱[針對 Azure Data Lake Analytics 作業開發 U-SQL 組件]()。
 
 您可以使用 Data Lake Tools 在 Data Lake Analytics 目錄中註冊自訂程式碼組件。
 
@@ -495,7 +493,7 @@ Data Lake Tools for VSCode 支援下列功能︰
 > [!NOTE]
 > 建議您升級至 Azure Data Lake Tools for Visual Studio 2.3.3000.4 版或更新版本。 舊版目前已淘汰，不再提供下載。  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 VS Code 中使用 Python、R 和 C Sharp 來開發適用於 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [使用 Visual Studio Code 來進行 U-SQL 本機執行和本機偵錯](data-lake-tools-for-vscode-local-run-and-debug.md)

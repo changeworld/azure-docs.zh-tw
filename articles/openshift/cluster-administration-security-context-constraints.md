@@ -7,14 +7,20 @@ ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5c568f056a99187a0e7a78a6f89b206f2d8dec
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80063183"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220239"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>管理 Azure Red Hat OpenShift 中的安全性內容條件約束 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>管理 Azure Red Hat OpenShift 中的安全性內容條件約束
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 將于2022年6月30日淘汰。 支援建立新的 Azure Red Hat OpenShift 3.11 叢集會繼續到2020年11月30日。 淘汰之後，剩餘的 Azure Red Hat OpenShift 3.11 叢集將會關閉以防止安全性弱點。
+> 
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](tutorial-create-cluster.md)叢集。
+> 如果您有特定問題， [請洽詢我們](mailto:arofeedback@microsoft.com)。
 
 安全性內容限制 (SCCs) 允許叢集系統管理員控制 pod 的許可權。 若要深入瞭解此 API 類型，請參閱 [SCCs 的架構檔](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 您可以使用 CLI，將實例中的 SCCs 當作一般 API 物件來管理。
 

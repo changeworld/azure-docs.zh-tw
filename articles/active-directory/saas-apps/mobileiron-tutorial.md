@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554627"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教學課程：Azure Active Directory 與 MobileIron 整合
 
@@ -99,7 +99,7 @@ MobileIron 與 Azure AD 整合提供下列優點：
 
 4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態] 區段執行下列步驟：
 
-    ![MobileIron 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ MobileIron 與 Azure AD 整合提供下列優點：
 
     c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![MobileIron 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ MobileIron 與 Azure AD 整合提供下列優點：
 
 2. 移至 [管理員] > [身分識別]，並且在 [雲端 IDP 設定的相關資訊] 欄位中選取 [AAD] 選項。
 
-    ![設定單一登入管理員按鈕](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![此螢幕擷取畫面顯示 MobileIron 網站上已選取 [身分識別] 的 [管理員] 索引標籤。](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. 複製 [金鑰]  和 [主機]  的值，並貼到 Azure 入口網站的 [基本 SAML 組態]  區段中來補齊 URL。
 
-    ![設定單一登入管理員按鈕](./media/mobileiron-tutorial/key.png)
+    ![顯示 [設定 SAML] 選項與 [金鑰] 和 [主機] 值的螢幕擷取畫面。](./media/mobileiron-tutorial/key.png)
 
 4. 在 [從 AAD 匯出中繼資料檔案並匯入至 MobileIron 雲端]  欄位中，按一下 [選擇檔案]  ，上傳從 Azure 入口網站下載的中繼資料。 上傳之後，按一下 [完成]  。
 

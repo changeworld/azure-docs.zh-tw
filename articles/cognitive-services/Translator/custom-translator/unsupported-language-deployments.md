@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964680"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221191"
 ---
 # <a name="unsupported-language-deployments"></a>不支援的語言部署
 
@@ -35,11 +35,11 @@ ms.locfileid: "85964680"
 ## <a name="process"></a>處理序
 當您從作為部署候選項目的中樞遷移模型之後，您可以移至工作區的 [ **設定** ] 頁面，並將其移至頁面的結尾，您會看到 **不支援的翻譯中樞** 訓練區段。  只有當您的專案符合上述必要條件時，才會出現此區段。
 
-![如何從中樞移轉](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![強調 [不支援的翻譯中樞訓練] 區段的螢幕擷取畫面。](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 在 [ **不支援的翻譯中樞** 訓練 **選擇] 頁面** 中，[未要求的定型] 索引標籤包含適合部署的模型。  選取您要部署的模型並提交要求。   在4月30日部署期限之前，您可以選取想要部署的任意數量模型。
  
-![如何從中樞移轉](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![顯示 [未請求的訓練] 索引標籤的螢幕擷取畫面。](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 提交之後，將無法 **再于 [** 未要求的訓練] 索引標籤上使用模型，而是會出現在 [ **要求** 的訓練] 索引標籤上。 您可以隨時查看要求的訓練。
 
@@ -54,7 +54,7 @@ ms.locfileid: "85964680"
 
 不同于標準自訂翻譯模型，中樞模型只會在單一區域中提供，因此不會套用多區域裝載費用。  一旦部署之後，您就可以隨時透過遷移的自訂翻譯專案解除部署中樞模型。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [定型模型](how-to-train-model.md)。
 - 透過 [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 開始使用您已部署的自訂翻譯模型。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543834"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996547"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教學課程：整合 Oracle Cloud Infrastructure Console 與 Azure Active Directory
 
@@ -101,7 +101,7 @@ ms.locfileid: "88543834"
 
 1. Oracle Cloud Infrastructure Console 應用程式預期應有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
-   ![image](common/edit-attribute.png)
+   ![顯示 [使用者屬性] 對話方塊的螢幕擷取畫面，其中已選取右上方的 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 除了以上屬性外，Oracle Cloud Infrastructure Console 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
@@ -111,9 +111,9 @@ ms.locfileid: "88543834"
  
    1. 按一下 [檔案]  。
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![顯示 [使用者屬性和宣告] 區段的螢幕擷取畫面，其中已反白顯示 [名稱識別碼值] 和 [宣告中傳回的群組] 的 [編輯] 圖示。](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![顯示 [管理使用者宣告] 對話方塊的螢幕擷取畫面，其中已選取 [永續性] 和 [儲存] 按鈕。](./media/oracle-cloud-tutorial/config11.png)
 
    1. 按一下 [宣告中傳回的群組]  旁的**筆**。
 
@@ -173,15 +173,15 @@ ms.locfileid: "88543834"
 
 1. 按一下功能表左側，按一下 [身分識別]  ，然後瀏覽至 [同盟]  。
 
-   ![組態](./media/oracle-cloud-tutorial/config01.png)
+   ![顯示 [Oracle Cloud Infrastructure Console] 的螢幕擷取畫面，其中已從左上方的功能表中選取 [身分識別] 和 [同盟]。](./media/oracle-cloud-tutorial/config01.png)
 
 1. 按一下 [下載此文件]  連結，並且將文件上傳至 Azure 入口網站的 [基本 SAML 組態]  區段，然後按一下 [新增識別提供者]  ，來儲存 [服務提供者中繼資料檔案]  。
 
-   ![組態](./media/oracle-cloud-tutorial/config02.png)
+   ![顯示已從左側功能表中選取 [同盟]，並已選取 [新增識別提供者] 按鈕和 [下載此文件] 動作的螢幕擷取畫面。](./media/oracle-cloud-tutorial/config02.png)
 
 1. 在 [新增識別提供者]  快顯上，執行下列步驟：
 
-   ![組態](./media/oracle-cloud-tutorial/config03.png)
+   ![顯示 [新增識別提供者] 快顯視窗的螢幕擷取畫面。](./media/oracle-cloud-tutorial/config03.png)
 
    1. 在 [名稱]  文字方塊中，輸入您的名稱。
 
@@ -193,7 +193,7 @@ ms.locfileid: "88543834"
 
    1. 按一下 [編輯識別提供者]  區段中的 [繼續]  ，執行下列步驟：
 
-      ![組態](./media/oracle-cloud-tutorial/config09.png)
+      ![顯示 [編輯識別提供者] 區段的螢幕擷取畫面，其中已反白顯示 [識別提供者群組]、[O C I 群組]、[新增對應] 和 [提交] 按鈕。](./media/oracle-cloud-tutorial/config09.png)
 
    1. [識別提供者群組]  應選取為 [自訂群組]。 [群組識別碼] 應為來自 Azure Active Directory 的群組 GUID。 群組必須與 [OCI 群組]  欄位中的對應群組相對應。
 

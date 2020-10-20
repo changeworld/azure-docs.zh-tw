@@ -1,21 +1,18 @@
 ---
 title: 在本機電腦上執行 Azure Data Lake U-SQL 指令碼
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio 在本機電腦上執行 U-SQL 作業。
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 24f1156fa4a97adb500033034bc7396fd1badbeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f9410cc91174420662bb5efc67c8904b5d5e647
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125729"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219678"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>在本機電腦上執行 U-SQL 指令碼
 
@@ -106,7 +103,7 @@ U-SQL 專案會建立本機資料根資料夾，並設定 **Local-project** 帳�
 
 深入了解 [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何設定 Azure Data Lake Analytics 的 CI/CD 管線](data-lake-analytics-cicd-overview.md)。
 - [如何測試 Azure Data Lake Analytics 程式碼](data-lake-analytics-cicd-test.md)。

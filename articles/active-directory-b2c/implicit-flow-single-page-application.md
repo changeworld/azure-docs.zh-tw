@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44300771ce6471c97dcd582884995395daae4995
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201849"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215479"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隱含流程的單一頁面登入
 
@@ -26,7 +26,9 @@ ms.locfileid: "85201849"
 - 許多授權伺服器與識別提供者不支援跨原始來源資源共用 (CORS) 要求。
 - 從應用程式重新導向的整頁瀏覽器可能會侵入使用者體驗。
 
-為了支援這些應用程式，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隱含流程。 如需 OAuth 2.0 授權隱含授權流程的說明，請參閱 [OAuth 2.0 規格的 4.2 節](https://tools.ietf.org/html/rfc6749) 。 在隱含流程中，應用程式會直接從 Azure Active Directory (Azure AD) 授權端點接收權杖，而不需執行任何伺服器對伺服器交換。 所有驗證邏輯和會話處理都是在 JavaScript 用戶端中，透過頁面重新導向或快顯方塊來完成。
+支援單一頁面應用程式的建議方式是 [使用 PKCE) 的 OAuth 2.0 授權碼流程 (](./authorization-code-flow.md)。
+
+某些架構（例如 [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)1.x）只支援隱含授與流程。 在這些情況下，Azure Active Directory B2C (Azure AD B2C) 支援 OAuth 2.0 授權隱含授與流程。 模型下列流程將在 [OAuth 2.0 規格的4.2 節](https://tools.ietf.org/html/rfc6749)中說明。 在隱含流程中，應用程式會直接從 Azure Active Directory (Azure AD) 授權端點接收權杖，而不需執行任何伺服器對伺服器交換。 所有驗證邏輯和會話處理都是在 JavaScript 用戶端中，透過頁面重新導向或快顯方塊來完成。
 
 Azure AD B2C 會擴充標準的 OAuth 2.0 隱含流程，功能更強大，而不僅止於簡單的驗證與授權。 Azure AD B2C 導入了[原則參數](user-flow-overview.md)。 利用原則參數，您可以使用 OAuth 2.0 來為應用程式新增原則，例如註冊、登入和設定檔管理使用者流程。 在本文的範例 HTTP 要求中，會使用 **{tenant}. onmicrosoft** 作為範例。 `{tenant}`如果您有租使用者的名稱，請將它取代為您的租使用者名稱，並同時建立使用者流程。
 
@@ -102,7 +104,7 @@ error=access_denied
 
 | 參數 | 描述 |
 | --------- | ----------- |
-| error | 用來分類所發生錯誤類型的程式碼。 |
+| 錯誤 | 用來分類所發生錯誤類型的程式碼。 |
 | error_description | 可協助您識別驗證錯誤根本原因的特定錯誤訊息。 |
 | State | 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該驗證要求和回應中的 `state` 值完全相同。|
 
@@ -212,7 +214,7 @@ error=user_authentication_required
 
 | 參數 | 描述 |
 | --- | --- |
-| error |可用於將發生的錯誤分類的錯誤碼字串。 您也可以使用此字串對錯誤做出反應。 |
+| 錯誤 |可用於將發生的錯誤分類的錯誤碼字串。 您也可以使用此字串對錯誤做出反應。 |
 | error_description |可協助您識別驗證錯誤根本原因的特定錯誤訊息。 |
 
 如果您在 iframe 要求中收到此錯誤，使用者必須再次以互動方式登入以擷取新的權杖。

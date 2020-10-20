@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372250"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827579"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -151,9 +151,11 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 成本分析、預算和警示可按隨用隨付費率的成本，在訂用帳戶和資源群組 Azure RBAC 範圍中使用。
 
-在 Azure RBAC 範圍中，保留執行個體的攤提檢視和實際成本會將費用顯示為零。 保留執行個體成本只會顯示在進行購買的計費範圍中。
+在 Azure RBAC 範圍中，保留執行個體的攤提檢視和實際成本會將費用顯示為零。 權利的購買成本 (例如保留執行個體和 Marketplace 費用) 只會顯示在合作夥伴租用戶 (購買行為所在位置) 的計費範圍中。
 
 對於所有客戶來說，用於計算檢視中所顯示成本的零售費率，會與 Azure 定價計算機中所顯示的價格相同。 所顯示的成本不包括合作夥伴可能會有的任何折扣或點數，例如合作夥伴獲得的點數、階層折扣和全球服務折扣。
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 

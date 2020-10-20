@@ -5,26 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 010/17/2018
+ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0694003e2eb5005186f5c7ad450533437955d82
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67673254"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217925"
 ---
 在 Azure 入口網站中，您可以瀏覽至連線，以檢視傳統 VNet VPN 閘道的連線狀態。 下列步驟顯示瀏覽至連線並進行驗證的其中一種方式。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，按一下 [所有資源]**** 並瀏覽至您的傳統虛擬網路。
-2. 在虛擬網路刀鋒視窗上，按一下 [概觀]**** 以存取刀鋒視窗的 [VPN 連線]**** 區段。
-3. 在 VPN 連線圖片上，按一下網站。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，按一下 [ **所有資源** ]，然後流覽至您的傳統虛擬網路 (VNet) 。
+1. 在 [虛擬網路] 頁面上，選取您要查看的連線類型。 例如， **站對站**連線。
 
-    ![本機網站](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "本機網站")
-4. 在 [站對站 VPN 連線]**** 刀鋒視窗上，檢視您的網站相關資訊。
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png" alt-text="本機網站" lightbox="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png":::
+1. 在 [ **站對站** 連線] 頁面的 [ **名稱**] 底下，選取您要查看的網站連線。
 
-    ![連線狀態](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "連線狀態")
-5. 若要檢視連線的詳細資訊，請按一下連線名稱以開啟 [站對站 VPN 連線]**** 刀鋒視窗。
-
-    ![連接狀態更多](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "連接狀態詳細資訊")
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/name.png" alt-text="本機網站":::
+1. 在 [ **屬性** ] 頁面上，查看連接的相關資訊。

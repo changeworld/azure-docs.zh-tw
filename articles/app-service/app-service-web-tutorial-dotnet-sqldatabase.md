@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962242"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000314"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>教學課程：使用 Azure SQL Database 將 ASP.NET 應用程式部署至 Azure
 
@@ -65,20 +65,18 @@ ms.locfileid: "88962242"
 
 ![從方案總管發佈](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-確定已選取 [Microsoft Azure App Service]****，然後按一下 [發佈]****。
+選取 **Azure** 作為目標，然後按 [下一步]，並確定已選取 [Azure App Service (Windows)]，然後再按 [下一步]。
 
 ![從專案概觀頁面發佈](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-發佈會開啟 [建立應用程式服務]**** 對話方塊，協助您建立在 Azure 中執行 ASP.NET 應用程式所需的所有 Azure 資源。
-
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
-在 [建立 App Service]**** 對話方塊中，按一下 [新增帳戶]****，然後登入您的 Azure 訂用帳戶。 如果您已登入 Microsoft 帳戶，請確定該帳戶保留您的 Azure 訂用帳戶。 如果登入的 Microsoft 帳戶沒有 Azure 訂用帳戶，請按一下它來新增正確的帳戶。
+在 [發佈] 對話方塊中，從 [帳戶管理員] 下拉式清單中按一下 [新增帳戶]，然後登入您的 Azure 訂用帳戶。 如果您已登入 Microsoft 帳戶，請確定該帳戶保留您的 Azure 訂用帳戶。 如果登入的 Microsoft 帳戶沒有 Azure 訂用帳戶，請按一下它來新增正確的帳戶。
+
+![登入 Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > 如果您已經登入，請勿選取 [建立]****。
-
-![登入 Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>設定 Web 應用程式名稱
 
@@ -112,15 +110,20 @@ ms.locfileid: "88962242"
    |**位置**| 西歐 | [Azure 區域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**大小**| 免費 | [定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
+3. [發佈] 對話方塊會顯示您已設定的資源。 按一下 [完成]  。
+
+   ![您已建立的資源](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+
+
 ### <a name="create-a-server"></a>建立伺服器
 
 建立資料庫之前，您需要[邏輯 SQL 伺服器](../azure-sql/database/logical-servers.md)。 邏輯 SQL 伺服器是邏輯建構，包含一組當作群組管理的資料庫。
 
-1. 按一下 [建立 SQL Database]****。
+1. 在 [已連線的服務] 底下，按一下 SQL Server 資料庫旁的 [設定]。
 
    ![建立 SQL Database](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-2. 在 [設定 SQL Database]**** 對話方塊中，按一下 [SQL Server]**** 旁的 [新增]****。
+2. 在 [Azure SQL Database] 對話方塊中，按一下 [資料庫伺服器] 旁的 [新增]。
 
    唯一的伺服器名稱隨即產生。 這個名稱是作為伺服器預設 URL 的一部分，`<server_name>.database.windows.net`。 它在 Azure SQL 的所有伺服器之間必須是唯一的。 您可以變更伺服器名稱，但是在本教學課程中，請保留產生的值。
 
@@ -128,28 +131,31 @@ ms.locfileid: "88962242"
 
    請記住這個使用者名稱和密碼。 您稍後需要它們來管理伺服器。
 
+   ![建立伺服器](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+
    > [!IMPORTANT]
    > 即使您在連接字串中的密碼已經遮罩處理 (在 Visual Studio 以及 App Service 中)，但是它於某處受到維護的事實增加了您應用程式受到攻擊的可能性。 App Service 可以使用[受控服務識別](overview-managed-identity.md)來降低此風險，方法是完全免除在您的程式碼或應用程式組態中維護祕密的需求。 如需詳細資訊，請參閱[後續步驟](#next-steps)。
 
-   ![建立伺服器](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
-
-4. 按一下 [確定]****。 尚不要關閉 [設定 SQL Database]**** 對話方塊。
+4. 按一下 [確定]。 尚不要關閉 [設定 SQL Database]**** 對話方塊。
 
 ### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料庫
 
-1. 在 [設定 SQL Database]**** 對話方塊中︰
+1. 在 [Azure SQL Database] 對話方塊中︰
 
    * 保留預設產生的**資料庫名稱**。
-   * 在 [連接字串名稱]**** 中，輸入 *MyDbConnection*。 此名稱必須符合 Models/MyDatabaseContext.cs** 中所參考的連接字串。
-   * 選取 [確定]****。
+   * 選取 [建立]。
 
     ![設定資料庫](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. [建立 App Service]**** 對話方塊會顯示您已設定的資源。 按一下 [建立]****。
+2. 在 [資料庫連接字串名稱] 中，輸入 _MyDbConnection_。 此名稱必須符合 Models/MyDatabaseContext.cs__ 中所參考的連接字串。
 
-   ![您已建立的資源](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+3. 在 [資料庫使用者名稱] 和 [資料庫密碼] 中，分別輸入您在[建立伺服器](#create-a-server)的步驟 3 中使用的管理員使用者名稱和密碼。
 
-一旦精靈完成建立 Azure 資源，它會將 ASP.NET 應用程式發佈至 Azure。 預設瀏覽器隨即啟動，瀏覽至部署應用程式的 URL。
+    ![設定資料庫連接字串](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
+
+4. 選取 [完成]。
+
+在精靈完成建立 Azure 資源的作業後，按一下 [發佈] 將您的 ASP.NET 應用程式部署至 Azure。 預設瀏覽器隨即啟動，瀏覽至部署應用程式的 URL。
 
 新增幾個待辦事項項目。
 
@@ -311,7 +317,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 現在，您已在 Azure 應用程式中啟用 Code First 移轉，請發佈您的程式碼變更。
 
-在發佈頁面中，按一下 [發佈]****。
+在發佈頁面中，按一下 [發佈]。
 
 嘗試再次新增待辦事項，然後選取 [完成]****，而它們應該會在您的首頁中顯示為已完成的項目。
 
@@ -353,7 +359,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 再次以滑鼠右鍵按一下您的 Azure 應用程式，然後選取 [檢視設定]****。
 
-在 [應用程式記錄 (檔案系統)]**** 下拉式清單中，選取 [詳細資訊]****。 按一下 [檔案] ****。
+在 [應用程式記錄 (檔案系統)]**** 下拉式清單中，選取 [詳細資訊]****。 按一下 [檔案] 。
 
 ![將追蹤層級變更為詳細資訊](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
@@ -377,7 +383,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ## <a name="manage-your-azure-app"></a>管理您的 Azure 應用程式
 
-請移至 [Azure 入口網站](https://portal.azure.com)，以管理 Web 應用程式。 搜尋並選取 [應用程式服務]****。
+請移至 [Azure 入口網站](https://portal.azure.com)，以管理 Web 應用程式。 搜尋並選取 [應用程式服務]。
 
 ![搜尋 Azure 應用程式服務](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 

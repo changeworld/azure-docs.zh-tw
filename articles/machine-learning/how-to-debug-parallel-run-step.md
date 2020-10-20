@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602babb3544093b7cd7c5b30ce4f4612148591cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315570"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216907"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep 的偵錯和疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "91315570"
 
 ## <a name="testing-scripts-locally"></a>在本機測試指令碼
 
-如需機器學習管線的相關資訊，請參閱[在本機測試指令碼](how-to-debug-pipelines.md#debug-scripts-locally)一節。 您的 ParallelRunStep 會在 ML 管線中以步驟的形式執行，因此相同的答案對這兩種情況均適用。
+如需機器學習管線的相關資訊，請參閱[在本機測試指令碼](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)一節。 您的 ParallelRunStep 會在 ML 管線中以步驟的形式執行，因此相同的答案對這兩種情況均適用。
 
 ## <a name="debugging-scripts-from-remote-context"></a>從遠端內容偵錯指令碼
 
@@ -141,6 +141,8 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
+* 查看 [示範 Azure Machine Learning 管線的這些 Jupyter 筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 * 請參閱 SDK 參考以取得 [azureml 管線-步驟](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) 套件的說明。 ParallelRunStep 類別的視圖參考 [檔](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true) 。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8cf4df682a5c141e39a3860547a5b6130e2a3002
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554817"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>教學課程：Azure Active Directory 與 M-Files 整合
 
@@ -133,11 +133,11 @@ M-Files 與 Azure AD 整合提供下列優點：
 
 1. 開啟 [M-Files 桌面設定]  視窗。 然後按一下 [新增]  。
    
-    ![設定單一登入](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取 [新增] 的 [M-Files 桌面設定]。](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. 在 [文件保存庫連線內容]  視窗中，執行下列步驟︰
    
-    ![設定單一登入](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![此螢幕擷取畫面顯示您可以在其中輸入所述值的 [文件保存庫連線內容]。](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     在 [伺服器] 區段下，輸入以下的值︰  
 

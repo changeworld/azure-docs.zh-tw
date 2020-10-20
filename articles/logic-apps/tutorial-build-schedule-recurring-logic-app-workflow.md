@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574576"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842558"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>教學課程：使用 Azure Logic Apps 建立排程型和週期性自動化工作流程
 
@@ -360,18 +360,18 @@ ms.locfileid: "91574576"
 
 1. 在 Azure 入口網站的搜尋方塊中，輸入您所建立的資源群組名稱。 從結果中，在 [資源群組] 底下，選取資源群組。
 
-   此範例已建立名為 `LA-TravelTime-RG` 的資源群組。 
+   此範例已建立名為 `LA-TravelTime-RG` 的資源群組。
 
    ![此螢幕擷取畫面顯示已輸入 "la-travel-time-rg" 並已選取 **LA-TravelTime-RG** 的 Azure 搜尋方塊。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > 如果 Azure 首頁顯示 [最近的資源] 底下的資源群組，您可以從首頁中選取群組。
 
-1. 在資源群組功能表上，檢查是否已選取 [概觀]。 在 [概觀] 窗格的工具列上，選取 [刪除資源群組]。 
+1. 在資源群組功能表上，檢查是否已選取 [概觀]。 在 [概觀] 窗格的工具列上，選取 [刪除資源群組]。
 
    ![此螢幕擷取畫面顯示資源群組的 [概觀] 窗格，並在窗格的工具列上選取了 [刪除資源群組]。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. 在確認窗格中，輸入資源群組名稱，然後選取 [刪除]。
+1. 在顯示的確認窗格中，輸入資源群組名稱，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

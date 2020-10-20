@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89270048"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219899"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>從 Azure Blob 儲存體和 Azure Data Lake Storage 共用和接收資料
 
@@ -33,7 +33,7 @@ Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔�
 
 ### <a name="prerequisites-for-source-storage-account"></a>來源儲存體帳戶的必要條件
 
-* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)
 * 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。 
 
@@ -124,7 +124,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 ### <a name="prerequisites-for-target-storage-account"></a>目標儲存體帳戶的必要條件
 
-* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)。 
 * 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。 
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。  
 
@@ -194,4 +194,3 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 ## <a name="next-steps"></a>後續步驟
 您已瞭解如何使用 Azure Data Share 服務，從儲存體帳戶共用及接收資料。 若要深入瞭解如何從其他資料來源共用，請繼續進行 [支援的資料存放區](supported-data-stores.md)。
-

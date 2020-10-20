@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0832fe9ba65ac0df5dbff60b01b7a5eb91a2c3a2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535744"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>教學課程：Azure Active Directory 與 LockPath Keylight 整合
 
@@ -133,15 +133,15 @@ LockPath Keylight 與 Azure AD 整合提供下列優點：
 
     b. 在頂端功能表中，按一下 [人員]  ，然後選取 [Keylight 安裝]  。
 
-    ![設定單一登入](./media/keylight-tutorial/401.png)
+    ![顯示已選取 [人員] 圖示，並已從下拉式清單中選取 [Keylight 設定] 的螢幕擷取畫面。](./media/keylight-tutorial/401.png)
 
     c. 在左側樹狀檢視中，按一下 [SAML]  。
 
-    ![設定單一登入](./media/keylight-tutorial/402.png)
+    ![顯示已在樹狀檢視中選取 [S A M L] 的螢幕擷取畫面。](./media/keylight-tutorial/402.png)
 
     d. 在 [SAML 設定]  對話方塊中，按一下 [編輯]  。
 
-    ![設定單一登入](./media/keylight-tutorial/404.png)
+    ![顯示 [S A M L 設定] 視窗的螢幕擷取畫面，其中已選取 [編輯] 按鈕。](./media/keylight-tutorial/404.png)
 
 1. 在 [編輯 SAML 設定]  對話方塊頁面上，執行下列步驟：
 

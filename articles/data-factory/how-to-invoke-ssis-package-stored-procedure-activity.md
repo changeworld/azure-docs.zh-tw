@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2bad99a836da7aab64e8cc0d454423fd56ffce1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067819"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217774"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用預存程序活動執行 SSIS 套件
 
@@ -27,7 +27,7 @@ ms.locfileid: "89067819"
 
 本文描述如何使用預存程序活動，在 Azure Data Factory 管線執行 SSIS 套件。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
 本文中的逐步解說會使用 Azure SQL Database 來裝載 SSIS 目錄。 您也可以使用 Azure SQL 受控執行個體。
@@ -38,7 +38,7 @@ ms.locfileid: "89067819"
 ## <a name="data-factory-ui-azure-portal"></a>資料處理站使用者介面 (Azure 入口網站)
 在本節中，您可以使用資料處理站 UI 以叫用 SSIS 封裝的預存程序活動建立資料處理站管線。
 
-### <a name="create-a-data-factory"></a>建立 Data Factory
+### <a name="create-a-data-factory"></a>建立資料處理站
 第一步是使用 Azure 入口網站建立資料處理站。 
 
 1. 啟動 **Microsoft Edge** 或 **Google Chrome** 網頁瀏覽器。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
@@ -95,7 +95,7 @@ ms.locfileid: "89067819"
     7. 按一下 [測試連接]**** 按鈕以測試資料庫連接。
     8. 按一下 [儲存]**** 按鈕以儲存連結服務。 
 
-        ![Azure SQL Database 的連結服務](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
+        ![顯示加入新連結服務之程式的螢幕擷取畫面。](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. 在 [屬性] 視窗中，從 [ **SQL 帳戶**] 索引標籤切換至 [**預存**程式] 索引標籤，然後執行下列步驟： 
 
     1. 選取 [編輯]。 
@@ -155,7 +155,7 @@ ms.locfileid: "89067819"
 
 依照[如何安裝和設定 Azure PowerShell](/powershell/azure/install-az-ps)中的指示，安裝最新的 Azure PowerShell 模組。 
 
-### <a name="create-a-data-factory"></a>建立 Data Factory
+### <a name="create-a-data-factory"></a>建立資料處理站
 您可以使用具有 Azure SSIS IR 的同一個資料處理站，也可以建立另一個資料處理站。 下列程序提供建立資料處理站的步驟。 您會在此資料處理站中建立具有預存程序活動的管線。 預存程序活動會執行 SSISDB 資料庫中的預存程序來執行 SSIS 套件。 
 
 1. 定義資源群組名稱的變數，以便稍後在 PowerShell 命令中使用。 將下列命令文字複製到 PowerShell，以雙引號指定 [Azure 資源群組](../azure-resource-manager/management/overview.md)的名稱，然後執行命令。 例如： `"adfrg"` 。 

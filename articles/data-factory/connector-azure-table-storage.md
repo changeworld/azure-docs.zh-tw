@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: 5181ceb7d5959436b704202fd3179773c9654679
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417487"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220443"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 資料表儲存體或從該處複製資料
 
@@ -222,7 +222,7 @@ ms.locfileid: "81417487"
 
 針對無結構描述的資料存放區 (如 Azure 資料表)，Data Factory 會以下列一種方式推斷結構描述：
 
-* 如果在複製活動中指定資料行對應，則 Data Factory 會使用來源端資料行清單來擷取資料。 在此情況下，如果資料列的資料行沒有值，系統就會為它提供 null 值。
+* 如果您在複製活動中指定資料行對應，Data Factory 會使用來源端資料行清單來取出資料。 在此情況下，如果資料列的資料行沒有值，系統就會為它提供 null 值。
 * 如果未在複製活動中指定資料行對應，則 Data Factory 會使用資料中的第一個資料列來推斷結構描述。 在此情況下，如果第一個資料列未包含完整的結構描述 (例如某些資料行有 Null 值)，則 複製作業的結果中就會遺失一些資料行。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
@@ -236,7 +236,7 @@ ms.locfileid: "81417487"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為 **AzureTableSource**。 |是 |
-| AzureTableSourceQuery |使用自訂的資料表儲存體查詢來讀取資料。 請參閱下一節中的範例。 |否 |
+| AzureTableSourceQuery |使用自訂的資料表儲存體查詢來讀取資料。<br/>來源查詢是 `$filter` Azure 資料表儲存體所支援查詢選項的直接對應，深入瞭解 [此](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities#supported-query-options)檔中的語法，並參閱下列 [azureTableSourceQuery 範例一節](#azuretablesourcequery-examples)中的範例。 |否 |
 | azureTableSourceIgnoreTableNotFound |指出是否讓資料表例外狀況不存在。<br/>允許的值為 **True** 和 **False** (預設值)。 |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 範例

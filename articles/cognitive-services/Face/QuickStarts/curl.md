@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 8afb6f018e9c01ee42a9e43cc726a442fa4c8965
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cd7d1a476f09a2fbfffa687a28616c8faeaae22c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88539333"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858263"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>快速入門：使用 Face REST API 和 cURL 偵測影像中的臉部
 
@@ -34,9 +34,7 @@ ms.locfileid: "88539333"
  
 您將會使用類似下列的命令來呼叫臉部 API，並從影像中取得臉部屬性資料。 首先，將程式碼複製到文字編輯器 &mdash; 您將需要變更命令的特定部分，才能執行該程式碼。
 
-```shell
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
-```
+:::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" id="detection_model_2":::
 
 ### <a name="subscription-key"></a>訂用帳戶金鑰
 將 `<Subscription Key>` 換成您的有效 Face 訂用帳戶金鑰。
@@ -46,14 +44,6 @@ curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint St
 URL：`https://<My Endpoint String>.com/face/v1.0/detect` 會指出要查詢的 Azure Face 端點。 您必須變更此 URL 的第一個部分，以符合與您訂用帳戶金鑰對應的端點。
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-### <a name="url-query-string"></a>URL 查詢字串
-
-Face 端點 URL 的查詢字串會指定要擷取的臉部屬性。 您可以根據您的用途來變更此字串。
-
-```
-?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
-```
 
 ### <a name="image-source-url"></a>影像來源 URL
 來源 URL 會指出要作為輸入使用的影像。 您可以將此欄位變更為指向任何您要分析的影像。
@@ -65,6 +55,28 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 ## <a name="run-the-command"></a>執行命令
 
 完成變更之後，請開啟命令提示字元並輸入新的命令。 您應該會在主控台視窗中看到顯示為 JSON 資料的臉部資訊。 例如：
+
+```json
+[
+  {
+    "faceId": "49d55c17-e018-4a42-ba7b-8cbbdfae7c6f",
+    "faceRectangle": {
+      "top": 131,
+      "left": 177,
+      "width": 162,
+      "height": 162
+    }
+  }
+]  
+```
+
+## <a name="extract-face-attributes"></a>擷取臉部屬性
+ 
+若要擷取臉部屬性，請使用偵測模型 1 並新增 `returnFaceAttributes` 查詢參數。 此命令現在看起來應該如下所示。 如同前面，插入您的臉部訂用帳戶金鑰和端點。
+
+:::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" id="detection_model_1":::
+
+傳回的臉部資訊現在包含臉部屬性。 例如：
 
 ```json
 [

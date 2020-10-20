@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553974"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教學課程：Azure Active Directory 與 Percolate 整合
 
@@ -103,7 +103,7 @@ ms.locfileid: "88553974"
 
 5. 若要在 SP 起始的模式中設定應用程式，請選取 [設定額外的 URL]  ，然後在 [登入 URL]  方塊中輸入 **https://percolate.com/app/login** ：
 
-   ![Percolate 網域和 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+   ![顯示選取了 [設定其他 U R L] 的螢幕擷取畫面，其中已反白顯示 [登入 U R L] 文字方塊。](common/metadata-upload-additional-signon.png)
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製]  圖示以複製**應用程式同盟中繼資料 URL**。 要儲存此 URL。
 
     ![複製應用程式同盟中繼資料 URL](common/copy-metadataurl.png)
@@ -184,7 +184,7 @@ ms.locfileid: "88553974"
 
 3. 在左窗格中，選取 [使用者和群組]  ：
 
-    ![選取 [使用者和群組]](common/users-groups-blade.png)
+    ![顯示已從左窗格中選取 [使用者和群組] 的螢幕擷取畫面。](common/users-groups-blade.png)
 
 4. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
 

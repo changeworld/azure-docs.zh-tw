@@ -1,18 +1,16 @@
 ---
 title: 安裝 Azure Data Lake Tools for Visual Studio
 description: 本文說明如何安裝 Azure Data Lake Tools for Visual Studio。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: df3bf715f8571659d0e622729562055428ab5c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0183ae229c328588a31c2c0549e7e93fd19b78
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125933"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221038"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>安裝 Data Lake Tools for Visual Studio
 
@@ -49,7 +47,7 @@ Visual Studio 2017 15.3 或更新版本中支援 Azure Data Lake Tools for Visua
 * **伺服器總管**  >  **Azure**節點包含**Data Lake Analytics**節點。
 * [工具]**** 功能表包含 [Data Lake]**** 項目。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要記錄診斷資訊，請參閱 [存取 Azure Data Lake Analytics 的診斷記錄](data-lake-analytics-diagnostic-logs.md)。
 * 若要了解更複雜的查詢，請參閱 [使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。

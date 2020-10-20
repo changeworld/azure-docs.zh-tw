@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 125a823acc79143d9d6556e496f7728c718db089
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332545"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989455"
 ---
 開始使用適用於 .NET 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 NuGet 套件，並試用基本工作的程式碼範例。 
 
@@ -33,19 +33,24 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-* 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或目前版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title="建立 [產品名稱] 資源"  target="_blank">建立 Content Moderator 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Content Moderator。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
-## <a name="create-a-content-moderator-resource"></a>建立 Content Moderator 資源
+## <a name="setting-up"></a>設定
 
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立 Content Moderator 的資源。 您也可以：
+### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
-* 在 [Azure 入口網站](https://portal.azure.com/)上檢視您的資源
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-從資源取得金鑰後，請為名稱分別是 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` 和 `CONTENT_MODERATOR_ENDPOINT` 的金鑰及端點 URL [建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) \(部分機器翻譯\)。
+使用 Visual Studio，建立新的 .NET Core 應用程式。 
 
-## <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
+### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-在您慣用的文字編輯器或 IDE 中，建立新的 .NET Core 應用程式。 
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.ContentModerator`。 選取版本 `2.0.0`，然後 **安裝**。 
+
+#### <a name="cli"></a>[CLI](#tab/cli)
 
 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `content-moderator-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
 
@@ -69,18 +74,7 @@ Build succeeded.
 ...
 ```
 
-從專案目錄，在慣用的編輯器或 IDE 中開啟 *Program.cs* 檔案。 新增下列 `using` 陳述式：
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
-
-在 **Program** 類別中，為資源的端點位置建立變數，並將金鑰建立為環境變數。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
-
-> [!NOTE]
-> 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
-
-## <a name="install-the-client-library"></a>安裝用戶端程式庫
+### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
 在應用程式目錄中，使用下列命令安裝適用於 .NET 的 Content Moderator 用戶端程式庫：
 
@@ -88,7 +82,35 @@ Build succeeded.
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 2.0.0
 ```
 
-如果您使用 Visual Studio IDE，則可以取得可下載 NuGet 套件形式的用戶端程式庫。
+---
+
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs) 上找到該檔案，其中包含本快速入門中的程式碼範例。
+
+從專案目錄，在慣用的編輯器或 IDE 中開啟 *Program.cs* 檔案。 新增下列 `using` 陳述式：
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
+
+在 **Program** 類別中，為資源的金鑰和端點建立變數。
+
+> [!IMPORTANT]
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 Content Moderator 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+>
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
+
+
+在應用程式的 `main()` 方法中，針對本快速入門中使用的方法新增呼叫。 您稍後會建立這些呼叫。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+
 
 ## <a name="object-model"></a>物件模型
 
@@ -112,9 +134,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-在新方法中，使用端點和金鑰來具現化用戶端物件。 在每個案例中不需使用不同的用戶端，但這將有助於維護程式碼的組織性。
+在新方法中，使用端點和金鑰來具現化用戶端物件。
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_auth)]
 
 ## <a name="moderate-text"></a>仲裁文字
 
@@ -129,9 +151,6 @@ Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255,
 Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
-將下列方法呼叫新增至您的 `Main` 方法：
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
 然後，在 **Program** 類別中的某處定義文字仲裁方法：
 
@@ -146,7 +165,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 ### <a name="get-sample-images"></a>取得範例影像
 
-定義您的輸入和輸出檔案：
+在 **Program** 類別的根目錄中，定義輸入和輸出檔案：
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
@@ -156,10 +175,6 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
-
-在 `Main` 方法中，將您的輸入和輸出檔案傳至下列方法呼叫中。 您將在後續步驟中定義此方法。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>定義協助程式類別
 
@@ -189,9 +204,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 您可以使用 Content Moderator .NET 用戶端程式庫將內容送至[審核工具](https://contentmoderator.cognitive.microsoft.com)，讓人力仲裁者加以審核。 若要深入了解審核工具，請參閱[審核工具概念指南](../../review-tool-user-guide/human-in-the-loop.md)。
 
-本節中的方法會使用 [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) 類別建立審核、擷取其識別碼，並在透過審核工具的 Web 入口網站接收人工輸入之後，檢查其詳細資料。 它會將這項資訊完整記錄在輸出文字檔中。 請從您的 `Main` 方法呼叫此方法：
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+本節中的方法會使用 [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) 類別建立審核、擷取其識別碼，並在透過審核工具的 Web 入口網站接收人工輸入之後，檢查其詳細資料。 它會將這項資訊完整記錄在輸出文字檔中。 
 
 ### <a name="get-sample-images"></a>取得範例影像
 
@@ -257,11 +270,19 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ## <a name="run-the-application"></a>執行應用程式
 
+#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
+
+按一下 IDE 視窗頂端的 [偵錯] 按鈕，以執行應用程式。
+
+#### <a name="cli"></a>[CLI](#tab/cli)
+
 使用 `dotnet run` 命令從您的應用程式目錄執行應用程式。
 
 ```dotnet
-dotnet run 
+dotnet run
 ```
+
+---
 
 ## <a name="clean-up-resources"></a>清除資源
 

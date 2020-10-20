@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb53f9a6121ec9329eaec5d8cb554e7f125e058f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89067802"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856648"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入門：授與建立無限制應用程式註冊的權限
 
@@ -60,7 +60,7 @@ ms.locfileid: "89067802"
 有兩種權限可用來授與建立應用程式註冊的能力，兩者各有其不同的行為。
 
 - microsoft.directory/applications/createAsOwner：指派此權限會使建立者新增為已建立之應用程式註冊的第一個擁有者，且已建立的應用程式註冊將計入建立者 250 個的物件建立配額中。
-- microsoft.directory/applicationPolicies/create：指派此權限會使建立者不被新增為已建立之應用程式註冊的第一個擁有者，且已建立的應用程式註冊將不會計入建立者 250 個的物件建立配額中。 請謹慎使用此權限，因為在達到目錄層級配額之前，受託人將可不受限地建立應用程式註冊。 如果同時指派這兩種權限，將優先使用此權限。
+- microsoft.directory/applications/create：指派此權限會使建立者不被新增為已建立之應用程式註冊的第一個擁有者，且已建立的應用程式註冊將不會計入建立者 250 個的物件建立配額中。 請謹慎使用此權限，因為在達到目錄層級配額之前，受託人將可不受限地建立應用程式註冊。 如果同時指派這兩種權限，將優先使用此權限。
 
 ## <a name="create-a-custom-role-in-azure-ad-powershell"></a>在 Azure AD PowerShell 中建立自訂角色
 

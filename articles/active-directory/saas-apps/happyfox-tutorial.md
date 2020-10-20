@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550695"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>教學課程：Azure Active Directory 與 HappyFox 整合
 
@@ -132,19 +132,19 @@ HappyFox 與 Azure AD 整合提供下列優點：
 
 2. 巡覽至 [管理]  ，然後按一下 [整合]  索引標籤。
 
-    ![設定單一登入](./media/happyfox-tutorial/header.png) 
+    ![顯示 [管理] 頁面的螢幕擷取畫面，其中已選取 [整合] 索引標籤。](./media/happyfox-tutorial/header.png) 
 
 3. 在 [整合] 索引標籤中，按一下 [SAML 整合] 下的 [設定] 以開啟 [單一登入設定]。
 
-    ![設定單一登入](./media/happyfox-tutorial/configure.png)
+    ![顯示 [S A M L 整合] 設定的螢幕擷取畫面，其中已選取 [設定] 動作。](./media/happyfox-tutorial/configure.png)
 
 4. 在 [SAML 設定] 區段中，將您從 Azure 入口網站複製的 [登入 URL]  值貼到 [SSO 目標 URL]  文字方塊中。
 
-    ![設定單一登入](./media/happyfox-tutorial/targeturl.png)
+    ![顯示 [S A M L 設定] 區段的螢幕擷取畫面，其中已反白顯示 [S S O 目標 U R L] 文字方塊。](./media/happyfox-tutorial/targeturl.png)
 
 5. 在筆記本中開啟從 Azure 入口網站下載的憑證，然後將其內容貼到 [IdP 簽章]  區段中。
 
-    ![設定單一登入](./media/happyfox-tutorial/cert.png)
+    ![顯示已反白顯示 [I d P 簽章] 區段的螢幕擷取畫面。](./media/happyfox-tutorial/cert.png)
 
 6. 按一下 [儲存設定]  按鈕。
 

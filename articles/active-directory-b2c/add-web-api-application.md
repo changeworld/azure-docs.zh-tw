@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5473730484240f2c813c9ae279e1516ed93a45c5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385955"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214952"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶
 
@@ -34,7 +34,7 @@ ms.locfileid: "85385955"
 1. 選取 [註冊]。
 1. 記錄 **應用程式 (用戶端) 識別碼** ，以便在您的 Web API 程式碼中使用。
 
-如果您的應用程式會執行隱含授與流程，例如以 JavaScript 為基礎的單一頁面應用程式 (SPA) ，您可以遵循下列步驟來啟用流程：
+如果您的應用程式會執行隱含授與流程，例如以 [JavaScript 為基礎的單一頁面應用程式 (SPA) ](tutorial-register-spa.md)，您可以遵循下列步驟來啟用流程：
 
 1. 在 [管理] 底下，選取 [驗證]。
 1. 在 [隱含授與] 底下，同時選取 [存取權杖] 和 [識別碼權杖] 核取方塊。

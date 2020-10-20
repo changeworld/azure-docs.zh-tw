@@ -1,18 +1,16 @@
 ---
 title: 開發 U SQL 使用者定義運算子-Azure Data Lake Analytics
 description: 了解如何開發使用者定義的運算子，以用於和重複用於 Azure Data Lake Analytics 作業中。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 71cb6e026c81b00e475ae3f4e7fc4958a8de82a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11efdb727bacadb674fb49374ef1c70fcc788ecc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131798"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219984"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>開發 U-SQL 使用者定義的運算子 (UDO)
 本文說明如何開發使用者定義的運算子，來處理 U-SQL 作業中的資料。
@@ -124,7 +122,7 @@ ms.locfileid: "87131798"
 
 2. 展開範例、展開輸出，然後按兩下 [Drivers.csv] ****。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用使用者程式碼延伸 U-SQL 運算式](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [使用適用於 Visual Studio 的 Data Lake 工具來開發 U-SQL 應用程式](data-lake-analytics-data-lake-tools-get-started.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761323"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046480"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Java)
 
@@ -27,7 +27,7 @@ IoT 隨插即用讓您無須具備基礎裝置實作的知識，即可與裝置�
 
 若要在 Windows 上完成此快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中，選取 [長期支援] 下的 [Java 8]。
+* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)中，選取 [長期支援] 下的 [Java 8]。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用範例程式碼複製 SDK 存放庫
@@ -76,7 +76,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 在本快速入門中，您會使用以 Java 撰寫的範例 IoT 解決方案，與您剛剛設定的範例裝置進行互動。
 
 > [!NOTE]
-> 這個範例會使用 **IoT 中樞服務用戶端** 中的 **com.microsoft.azure.sdk.iot.service.*;** 命名空間。 若要深入了解如何擷取模型識別碼，請參閱[開發人員指南](concepts-developer-guide-service.md)。
+> 這個範例會使用 **IoT 中樞服務用戶端**中的 **com.microsoft.azure.sdk.iot.service** 命名空間。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
 
 1. 開啟另一個終端機視窗，作為您的**服務**終端機。
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
     mvm exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.service.Thermostat"
     ```
 
-### <a name="get-digital-twin"></a>取得數位分身
+### <a name="get-device-twin"></a>取得裝置對應項
 
 下列程式碼片段示範如何在服務中擷取裝置對應項：
 
@@ -99,9 +99,9 @@ twinClient.getTwin(twin);
 System.out.println("Model Id of this Twin is: " + twin.getModelId());
 ```
 
-### <a name="update-a-digital-twin"></a>更新數位分身
+### <a name="update-a-device-twin"></a>更新裝置對應項
 
-下列程式碼片段示範如何使用「修補程式」，透過數位對應項來更新屬性：
+下列程式碼片段會示範如何使用「修補程式」，透過裝置對應項來更新屬性：
 
 ```java
 String propertyName = "targetTemperature";

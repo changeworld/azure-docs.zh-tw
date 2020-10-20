@@ -3,17 +3,17 @@ title: 與連線至 Azure IoT 解決方案的 IoT 隨插即用裝置互動 (Pyth
 description: 使用 Python 連線至已連線 Azure IoT 解決方案的 IoT 隨插即用裝置，並與其互動。
 author: elhorton
 ms.author: elhorton
-ms.date: 7/13/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: be5ff3e863752dfc187bd91257425af5e8de85c4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574956"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946071"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Python)
 
@@ -73,13 +73,16 @@ pip install azure-iot-hub
 
 在本快速入門中，您會使用 Python 中的範例 IoT 解決方案，與您剛剛設定的範例裝置進行互動。
 
-1. 開啟另一個終端機視窗，作為您的**服務**終端機。 
+1. 開啟另一個終端機視窗，作為您的**服務**終端機。
 
 1. 瀏覽至複製的 Python SDK 存放庫所在的 */azure-iot-sdk-python/azure-iot-hub/samples* 資料夾。
 
-1. 在 samples 資料夾中，有四個範例檔案會示範 Digital Twin Manager 類別的作業：*get_digital_twin_sample.py、update_digitial_twin_sample.py、invoke_command_sample.py 和 invoke_component_command_sample-.py*。  這些範例示範如何使用每個 API 來與 IoT 隨插即用裝置互動：
+1. 開啟 registry_manager_pnp_sample.py 檔案並檢閱程式碼。 這個範例示範如何使用 **IoTHubRegistryManager** 類別來與 IoT 隨插即用裝置互動。
 
-### <a name="get-digital-twin"></a>取得數位分身
+> [!NOTE]
+> 這些服務範例會使用 **IoT 中樞服務用戶端**中的 **IoTHubRegistryManager** 類別。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
+
+### <a name="get-the-device-twin"></a>取得裝置對應項
 
 在 [設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)，您建立了兩個環境變數，以設定連線至 IoT 中樞和裝置的範例：
 
@@ -89,79 +92,77 @@ pip install azure-iot-hub
 在**服務**終端機中使用下列命令來執行此範例：
 
 ```cmd/sh
-python get_digital_twin_sample.py
+set IOTHUB_METHOD_NAME="getMaxMinReport"
+set IOTHUB_METHOD_PAYLOAD="hello world"
+python registry_manager_pnp_sample.py
 ```
 
-輸出會顯示裝置的數位分身，並列印其模型識別碼：
+> [!NOTE]
+> 如果您是在 Linux 上執行此範例，請使用 `export` 來取代 `set`。
+
+輸出會顯示裝置對應項，並列印其模型識別碼：
 
 ```cmd/sh
-{'$dtId': 'mySimpleThermostat', '$metadata': {'$model': 'dtmi:com:example:Thermostat;1'}}
-Model Id: dtmi:com:example:Thermostat;1
+The Model ID for this device is:
+dtmi:com:example:Thermostat;1
 ```
 
-下列程式碼片段顯示來自 get_digital_twin_sample.py 的範例程式碼：
+下列程式碼片段顯示來自 registry_manager_pnp_sample.py 的範例程式碼：
 
 ```python
-    # Get digital twin and retrieve the modelId from it
-    digital_twin = iothub_digital_twin_manager.get_digital_twin(device_id)
-    if digital_twin:
-        print(digital_twin)
-        print("Model Id: " + digital_twin["$metadata"]["$model"])
-    else:
-        print("No digital_twin found")
+    # Create IoTHubRegistryManager
+    iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
+
+    # Get device twin
+    twin = iothub_registry_manager.get_twin(device_id)
+    print("The device twin is: ")
+    print("")
+    print(twin)
+    print("")
+
+    # Print the device's model ID
+    additional_props = twin.additional_properties
+    if "modelId" in additional_props:
+        print("The Model ID for this device is:")
+        print(additional_props["modelId"])
+        print("")
 ```
 
-### <a name="update-a-digital-twin"></a>更新數位分身
+### <a name="update-a-device-twin"></a>更新裝置對應項
 
-這個範例會示範如何使用「修補程式」，透過裝置的數位分身來更新屬性。 下列來自 update_digital_twin_sample.py 的程式碼片段會顯示如何建構修補程式：
+此範例說明如何更新裝置中的 `targetTemperature` 可寫入屬性：
 
 ```python
-# If you already have a component thermostat1:
-# patch = [{"op": "replace", "path": "/thermostat1/targetTemperature", "value": 42}]
-patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
-iothub_digital_twin_manager.update_digital_twin(device_id, patch)
-print("Patch has been succesfully applied")
-```
-
-在**服務**終端機中使用下列命令來執行此範例：
-
-```cmd/sh
-python update_digital_twin_sample.py
+    # Update twin
+    twin_patch = Twin()
+    twin_patch.properties = TwinProperties(
+        desired={"targetTemperature": 42}
+    )  # this is relevant for the thermostat device sample
+    updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
+    print("The twin patch has been successfully applied")
+    print("")
 ```
 
 您可以確認更新已套用在顯示下列輸出的**裝置**終端機中：
 
 ```cmd/sh
 the data in the desired properties patch was: {'targetTemperature': 42, '$version': 2}
-previous values
-42
 ```
 
 **服務**終端機會確認修補程式已成功：
 
 ```cmd/sh
-Patch has been successfully applied
+The twin patch has been successfully applied
 ```
 
 ### <a name="invoke-a-command"></a>叫用命令
 
-若要叫用命令，請執行 invoke_command_sample.py 範例。 這個範例示範如何在簡單的控溫器裝置中叫用命令。 執行此範例之前，請先在**服務**終端機中設定 `IOTHUB_COMMAND_NAME` 和 `IOTHUB_COMMAND_PAYLOAD` 環境變數：
-
-```cmd/sh
-set IOTHUB_COMMAND_NAME="getMaxMinReport" # this is the relevant command for the thermostat sample
-set IOTHUB_COMMAND_PAYLOAD="hello world" # this payload doesn't matter for this sample
-```
-
-在**服務**終端機中使用下列命令來執行範例：
-  
-```cmd/sh
-python invoke_command_sample.py
-```
+範例會接著叫用命令：
 
 **服務**終端機會顯示來自裝置的確認訊息：
 
 ```cmd/sh
-{"tempReport": {"avgTemp": 34.5, "endTime": "13/07/2020 16:03:38", "maxTemp": 49, "minTemp": 11, "startTime": "13/07/2020 16:02:18"}}
+The device method has been successfully invoked
 ```
 
 在**裝置**終端機中，您會看到裝置收到命令：
@@ -172,7 +173,6 @@ hello world
 Will return the max, min and average temperature from the specified time hello to the current time
 Done generating
 {"tempReport": {"avgTemp": 34.2, "endTime": "09/07/2020 09:58:11", "maxTemp": 49, "minTemp": 10, "startTime": "09/07/2020 09:56:51"}}
-Sent message
 ```
 
 ## <a name="next-steps"></a>後續步驟

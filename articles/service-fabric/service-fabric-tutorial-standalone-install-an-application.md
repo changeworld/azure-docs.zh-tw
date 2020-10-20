@@ -1,17 +1,15 @@
 ---
 title: 在獨立叢集上安裝應用程式
 description: 在本教學課程中，您將了解如何將應用程式安裝到獨立 Service Fabric 叢集中。
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245376"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840620"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教學課程：將應用程式部署在 Service Fabric 獨立叢集上
 
@@ -19,7 +17,7 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 本教學課程是一個系列課程的第三部分。  Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在用於 Service Fabric 的「任何 OS、任何雲端」方法中建立叢集。 本教學課程將說明如何建立裝載此獨立叢集所需的 AWS 基礎結構。
 
-在系列的第三部分中，您將了解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 下載範例應用程式
@@ -52,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. 以滑鼠右鍵按一下 [方案總管] 中的 `Voting` 應用程式專案，然後選擇 [發佈]  。
 
-5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 請注意，在 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](../virtual-machines/linux/portal-create-fqdn.md)。
+5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](../virtual-machines/linux/portal-create-fqdn.md)。
 
 6. 開啟您偏好的瀏覽器，並輸入叢集位址 (連線端點，此應用程式部署於連接埠 8080 - 例如 ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080)。
 
@@ -60,7 +58,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="next-steps"></a>後續步驟
 
-在此系列的第三個單元中，您已了解如何將應用程式部署至您的叢集：
+在本文中，您已了解如何將應用程式部署到您的叢集：
 
 > [!div class="checklist"]
 > * 下載範例應用程式

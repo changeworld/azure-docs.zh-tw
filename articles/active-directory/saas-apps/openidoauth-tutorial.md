@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705617"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996610"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>從 Azure AD 應用程式資源庫設定 OpenID/OAuth 應用程式
 
@@ -99,19 +99,19 @@ Graph API 也會提供 Azure AD 中的使用者和群組存取權，以及多個
 
     a. 按一下左側功能表中的 [應用程式註冊]  ，並在搜尋方塊中輸入應用程式名稱以開啟您的應用程式。
 
-    ![圖形 API](./media/openidoauth-tutorial/application.png)
+    ![顯示已從左側功能表中選取 [應用程式註冊]，並已反白顯示 [應用程式識別碼] 搜尋方塊的螢幕擷取畫面。](./media/openidoauth-tutorial/application.png)
 
     b. 按一下 [檢視 API 權限]  。
 
-    ![圖形 API](./media/openidoauth-tutorial/api-permission.png)
+    ![顯示 [呼叫 A P I] 頁面的螢幕擷取畫面，其中已選取 [檢視 A P I 權限] 按鈕。](./media/openidoauth-tutorial/api-permission.png)
 
     c. 按一下 [新增權限]  。
 
-    ![圖形 API](./media/openidoauth-tutorial/add-permission.png)
+    ![顯示 [A P I 權限] 區段的螢幕擷取畫面，其中已選取 [新增權限] 按鈕。](./media/openidoauth-tutorial/add-permission.png)
 
     d. 按一下 [Microsoft Graph]  。
 
-    ![圖形 API](./media/openidoauth-tutorial/microsoft-graph.png)
+    ![顯示 [要求 A P I 權限] 頁面的螢幕擷取畫面，其中包含 [Microsoft A P I] 索引標籤，並已選取 [Microsoft Graph] 圖格。](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. 從 [委派權限]  和 [應用程式權限]  中選取所需的選項。
 

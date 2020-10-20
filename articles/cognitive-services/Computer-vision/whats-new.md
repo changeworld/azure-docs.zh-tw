@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90904091"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976363"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能
 
 了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書籤，以掌握服務的最新狀態。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="computer-vision-api-v31-ga"></a>電腦視覺 API v3.1 GA
+
+正式運作的電腦視覺 API 已升級至 v3.1。
 
 ## <a name="september-2020"></a>2020 年 9 月
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: 276368eaf54ea87dddd2b292b07084e09d97d5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760752094296db52fb1ef353d6143f9153784745
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850397"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093594"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議 - 參考指南
 
@@ -59,22 +59,22 @@ ms.locfileid: "91850397"
 |**應啟用適用於容器登錄的 Azure Defender**|若要建立安全的容器化工作負載，請確定其所依據的映像沒有已知弱點。 適用於容器登錄的 Azure Defender 會掃描您的登錄，以判斷每個推送的容器映像是否有安全性弱點，並公開每個映像的詳細結果。<br>重要：補救此建議會產生保護您 ACR 登錄的費用。 如果您在此訂用帳戶中沒有任何 ACR 登錄，則不會產生任何費用。 如果您未來會在此訂用帳戶上建立任何 ACR 登錄，則這些登錄會自動受到保護，並從該時間開始收費。<br>(相關原則：[應在 Azure Container Registry 登錄上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4))|高|**Y**|訂用帳戶|
 |**應啟用適用於 Kubernetes 的 Azure Defender**|適用於 Kubernetes 的 Azure Defender 可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。<br>重要：補救此建議會產生保護您 AKS 叢集的費用。 如果您在此訂用帳戶中沒有任何 AKS 叢集，則不會產生任何費用。 如果您未來會在此訂用帳戶上建立任何 AKS 叢集，則這些叢集會自動受到保護，並從該時間開始收費。<br>(相關原則：[應在 Azure Kubernetes Service 叢集上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a))|高|**Y**|訂用帳戶|
 |**Kubernetes Services 上應定義授權 IP 範圍**|僅將 API 存取權授與特定範圍內的 IP 位址，以限制對 Kubernetes Service 管理 API 的存取。 建議設定授權 IP 範圍，僅限來自允許網路的應用程式存取叢集。<br>(相關原則：[預覽]：Kubernetes Services 上應定義授權 IP 範圍)|高|N|Kubernetes Service|
-|**您的叢集應安裝及啟用適用於 Kubernetes 的 Azure 原則附加元件 (預覽)**|適用於 Kubernetes 的 Azure 原則附加元件是 Gatekeeper v3 (Gatekeeper v3 是開放原則代理程式 (OPA) 的許可控制器 Webhook) 的延伸，可以統一集中的方式，大規模地對您的叢集實施及施行保護。 <br>資訊安全中心需要附加元件來稽核和強制執行叢集內的安全性功能和合規性。 [深入了解](https://docs.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)。<br>(相關原則：[預覽]：您的叢集應安裝及啟用適用於 Kubernetes 的 Azure 原則附加元件)|高|**Y**|Kubernetes Service|
-|**應強制執行容器 CPU 與記憶體限制 (預覽)**|強制執行 CPU 和記憶體限制可防止資源耗盡攻擊 (一種拒絕服務的攻擊形式)。<br>我們建議您設定容器限制，以確保執行階段會避免容器使用超過設定的資源限制。<br>(相關原則：[預覽]：確保容器 CPU 及記憶體資源限制未超過 Kubernetes 叢集中指定的限制)|中|N|Kubernetes Service|
-|**容器映像只能從信任的登錄部署 (預覽)**|在 Kubernetes 叢集上執行的映像應該來自已知且受監視的容器映像登錄。<br>受信任的登錄會透過限制發生未知弱點、安全性問題及惡意映像的可能性，從而降低您叢集的暴露風險。<br>(相關原則：[預覽]：確保 Kubernetes 叢集中只有允許的容器映像)|高|N|Kubernetes Service|
-|**應避免權限提升的容器 (預覽)**|容器不應以提升到您 Kubernetes 叢集中根使用者的權限執行。<br>AllowPrivilegeEscalation 屬性會控制程序能否取得較其父程序更多的權限。 <br>(相關原則：[預覽]：Kubernetes 叢集不應允許容器提升權限)|中|N|Kubernetes Service|
-|**應避免容器共用敏感性主機命名空間 (預覽)**|若要禁止從容器外部提升權限，請避免 Pod 存取 Kubernetes 叢集中的敏感性主機命名空間 (主機處理序識別碼與主機 IPC)。 <br>(相關原則：[預覽]：Kubernetes 叢集中的容器不得共用主機處理序識別碼或主機 IPC 命名空間)|中| 否|Kubernetes 叢集|
-|**容器只能在允許的連接埠上接聽 (預覽)**|若要縮小 Kubernetes 叢集的受攻擊面，請限制容器對所設定連接埠的存取，藉此限制對叢集的存取。 <br>(相關原則：[預覽]：確保容器只會接聽 Kubernetes 叢集中允許的連接埠)|中|N|Kubernetes Service|
-|**應強制容器使用不可變 (唯讀) 的根檔案系統 (預覽)**|容器應以您 Kubernetes 叢集中唯讀的根檔案系統權限執行。<br>不可變的檔案系統可防止容器在執行階段遭到變更，將惡意二進位檔新增到路徑之中。<br>(相關原則：[預覽]：Kubernetes 叢集中的容器應使用唯讀的根檔案系統執行)|中|N|Kubernetes Service|
-|**應強制容器使用最低權限的 Linux 功能 (預覽)**|若要降低容器遭到攻擊的風險，請限制 Linux 的功能，並只授與容器的特定權限，而不要授與所有根使用者的權限。<br>我們建議您卸除所有功能，然後新增必要的功能。<br>(相關原則：[預覽]：Kubernetes 叢集中的容器只能使用允許的功能)|中|N|Kubernetes Service|
-|**應限制容器 AppArmor 設定檔的覆寫或停用 (預覽)**|在您 Kubernetes 叢集上執行的容器，應限制為只允許 AppArmor 設定檔。<br>AppArmor (Application Armor) 是 Linux 安全性模組，可保護作業系統及其應用程式免於遭受安全性威脅。 若要使用此模組，系統管理員必須讓 AppArmor 安全性設定檔與每個程式產生關聯。 <br>(相關原則：[預覽]：Kubernetes 叢集中的容器只能使用允許的 AppArmor 設定檔)|高|N|Kubernetes Service|
-|**應避免特殊權限容器 (預覽)**|應盡可能避免使用特殊權限容器，以防止未經限制地存取主機。<br>特殊權限容器具有主機機器的所有根功能。 其可作為攻擊的進入點，並對遭入侵的應用程式、主機及網路散播惡意程式碼或惡意軟體。 <br>(相關原則：[預覽]：在 Kubernetes 叢集中不允許特殊權限的容器)|中|N|Kubernetes Service|
+|**您的叢集應安裝及啟用適用於 Kubernetes 的 Azure 原則附加元件**|適用於 Kubernetes 的 Azure 原則附加元件是 Gatekeeper v3 (Gatekeeper v3 是開放原則代理程式 (OPA) 的許可控制器 Webhook) 的延伸，可以統一集中的方式，大規模地對您的叢集實施及施行保護。 <br>資訊安全中心需要附加元件來稽核和強制執行叢集內的安全性功能和合規性。 [深入了解](https://docs.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)。<br>(相關原則：[預覽]：您的叢集應安裝及啟用適用於 Kubernetes 的 Azure 原則附加元件)|高|**Y**|Kubernetes Service|
+|**應強制執行容器 CPU 與記憶體限制**|強制執行 CPU 和記憶體限制可防止資源耗盡攻擊 (一種拒絕服務的攻擊形式)。<br>我們建議您設定容器限制，以確保執行階段會避免容器使用超過設定的資源限制。<br>(相關原則：[預覽]：確保容器 CPU 及記憶體資源限制未超過 Kubernetes 叢集中指定的限制)|中|N|Kubernetes Service|
+|**容器映像只能從信任的登錄部署**|在 Kubernetes 叢集上執行的映像應該來自已知且受監視的容器映像登錄。<br>受信任的登錄會透過限制發生未知弱點、安全性問題及惡意映像的可能性，從而降低您叢集的暴露風險。<br>(相關原則：[預覽]：確保 Kubernetes 叢集中只有允許的容器映像)|高|N|Kubernetes Service|
+|**應避免權限提升的容器**|容器不應以提升到您 Kubernetes 叢集中根使用者的權限執行。<br>AllowPrivilegeEscalation 屬性會控制程序能否取得較其父程序更多的權限。 <br>(相關原則：[預覽]：Kubernetes 叢集不應允許容器提升權限)|中|N|Kubernetes Service|
+|**應避免容器共用敏感性主機命名空間**|若要禁止從容器外部提升權限，請避免 Pod 存取 Kubernetes 叢集中的敏感性主機命名空間 (主機處理序識別碼與主機 IPC)。 <br>(相關原則：[預覽]：Kubernetes 叢集中的容器不得共用主機處理序識別碼或主機 IPC 命名空間)|中| 否|Kubernetes 叢集|
+|**容器只能在允許的連接埠上接聽**|若要縮小 Kubernetes 叢集的受攻擊面，請限制容器對所設定連接埠的存取，藉此限制對叢集的存取。 <br>(相關原則：[預覽]：確保容器只會接聽 Kubernetes 叢集中允許的連接埠)|中|N|Kubernetes Service|
+|**應強制容器使用不可變 (唯讀) 的根檔案系統**|容器應以您 Kubernetes 叢集中唯讀的根檔案系統權限執行。<br>不可變的檔案系統可防止容器在執行階段遭到變更，將惡意二進位檔新增到路徑之中。<br>(相關原則：[預覽]：Kubernetes 叢集中的容器應使用唯讀的根檔案系統執行)|中|N|Kubernetes Service|
+|**應強制容器使用最低權限的 Linux 功能**|若要降低容器遭到攻擊的風險，請限制 Linux 的功能，並只授與容器的特定權限，而不要授與所有根使用者的權限。<br>我們建議您卸除所有功能，然後新增必要的功能。<br>(相關原則：[預覽]：Kubernetes 叢集中的容器只能使用允許的功能)|中|N|Kubernetes Service|
+|**應限制容器 AppArmor 設定檔的覆寫或停用**|在您 Kubernetes 叢集上執行的容器，應限制為只允許 AppArmor 設定檔。<br>AppArmor (Application Armor) 是 Linux 安全性模組，可保護作業系統及其應用程式免於遭受安全性威脅。 若要使用此模組，系統管理員必須讓 AppArmor 安全性設定檔與每個程式產生關聯。 <br>(相關原則：[預覽]：Kubernetes 叢集中的容器只能使用允許的 AppArmor 設定檔)|高|N|Kubernetes Service|
+|**應避免特殊權限容器**|應盡可能避免使用特殊權限容器，以防止未經限制地存取主機。<br>特殊權限容器具有主機機器的所有根功能。 其可作為攻擊的進入點，並對遭入侵的應用程式、主機及網路散播惡意程式碼或惡意軟體。 <br>(相關原則：[預覽]：在 Kubernetes 叢集中不允許特殊權限的容器)|中|N|Kubernetes Service|
 |**應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取**|若要提供使用者可執行動作的細微篩選，請使用角色型存取控制 (RBAC) 來管理 Kubernetes Service 叢集中的權限，並設定相關的授權原則。 如需詳細資訊，請參閱 [Azure 角色型存取控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>(相關原則：[預覽]：應在 Kubernetes Service 上使用角色型存取控制 (RBAC))|中|N|Kubernetes Service|
-|**應避免以根使用者的身分執行容器 (預覽)**|在您的 Kubernetes 叢集中，容器應以根使用者以外的身分執行。 <br>在容器中以根使用者的身分執行程序，也會以根使用者的身分在主機上執行該程序。 <br>萬一遭到入侵，攻擊者將可取得容器的根使用者身分，方便錯誤的設定遭到惡意利用。<br>(相關原則：[預覽]：Kubernetes 叢集容器應以根使用者以外的身分執行)|高|N|Kubernetes Service|
-|**服務只能在允許的連接埠上接聽 (預覽)**|若要縮小 Kubernetes 叢集的受攻擊面，請限制服務對所設定連接埠的存取，藉此限制對叢集的存取。 <br>(相關原則：[預覽]：確保服務只會接聽 Kubernetes 叢集中允許的連接埠)|中|N|Kubernetes Service|
+|**應避免以根使用者的身分執行容器**|在您的 Kubernetes 叢集中，容器應以根使用者以外的身分執行。 <br>在容器中以根使用者的身分執行程序，也會以根使用者的身分在主機上執行該程序。 <br>萬一遭到入侵，攻擊者將可取得容器的根使用者身分，方便錯誤的設定遭到惡意利用。<br>(相關原則：[預覽]：Kubernetes 叢集容器應以根使用者以外的身分執行)|高|N|Kubernetes Service|
+|**服務只能在允許的連接埠上接聽**|若要縮小 Kubernetes 叢集的受攻擊面，請限制服務對所設定連接埠的存取，藉此限制對叢集的存取。 <br>(相關原則：[預覽]：確保服務只會接聽 Kubernetes 叢集中允許的連接埠)|中|N|Kubernetes Service|
 |**應將 Kubernetes Service 升級為最新的 Kubernetes 版本**|將 Azure Kubernetes Service 叢集升級為最新的 Kubernetes 版本，以使用最新的弱點修補程式。 如需特定 Kubernetes 弱點的相關詳細資料，請參閱 [Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>(相關原則：[預覽]：應將 Kubernetes Services 升級為不易受攻擊的 Kubernetes 版本)|高|N|Kubernetes Service|
-|**應限制主機網路與連接埠的使用方式 (預覽)**|限制 Pod 存取 Kubernetes 叢集中的主機網路與允許的主機連接埠範圍。<br>建立的 Pod 如有啟用 hostNetwork 屬性，將會共用節點的網路空間。 為避免遭到入侵的容器探查網路流量，建議您不要將 Pod 置於主機網路上。 若您需要在節點的網路上公開容器連接埠，而使用 Kubernetes 服務節點連接埠不符合您的需求，您可以使用 Pod 規格，為容器指定 hostPort。<br>(相關原則：[預覽]：Kubernetes 叢集中的 Pod 只能使用核准的主機網路及連接埠範圍)|中|N|Kubernetes Service|
-|**Pod HostPath 磁碟區掛接的使用應限制於已知清單 (預覽)**|若要縮小 Kubernetes 叢集的受攻擊面，應將 Kubernetes 叢集中的 Pod HostPath 磁碟區掛接，限制為所設定的允許主機路徑。<br>為避免遭到入侵，應限制容器中的容器節點存取。<br>(相關原則：[預覽]：Kubernetes 叢集中的 Pod hostPath 磁碟區只能使用允許的主機路徑)| 中|N|Kubernetes Service|
+|**應限制主機網路與連接埠的使用方式**|限制 Pod 存取 Kubernetes 叢集中的主機網路與允許的主機連接埠範圍。<br>建立的 Pod 如有啟用 hostNetwork 屬性，將會共用節點的網路空間。 為避免遭到入侵的容器探查網路流量，建議您不要將 Pod 置於主機網路上。 若您需要在節點的網路上公開容器連接埠，而使用 Kubernetes 服務節點連接埠不符合您的需求，您可以使用 Pod 規格，為容器指定 hostPort。<br>(相關原則：[預覽]：Kubernetes 叢集中的 Pod 只能使用核准的主機網路及連接埠範圍)|中|N|Kubernetes Service|
+|**Pod HostPath 磁碟區掛接的使用應限制於已知清單**|若要縮小 Kubernetes 叢集的受攻擊面，應將 Kubernetes 叢集中的 Pod HostPath 磁碟區掛接，限制為所設定的允許主機路徑。<br>為避免遭到入侵，應限制容器中的容器節點存取。<br>(相關原則：[預覽]：Kubernetes 叢集中的 Pod hostPath 磁碟區只能使用允許的主機路徑)| 中|N|Kubernetes Service|
 |**Azure Container Registry 映像中應予補救的弱點 (Qualys 技術提供)**|容器映像弱點評定會掃描您的登錄，以判斷每個推送的容器映像是否有安全性弱點，並公開每個映像的詳細結果。 解決這些弱點可以大幅改善容器的安全性狀態，並保護容器免於遭受攻擊。<br>(無相關原則)|高|N|Container Registry|
 ||||||
 
@@ -160,8 +160,8 @@ ms.locfileid: "91850397"
 |**應限制存取具防火牆與虛擬網路設定的儲存體帳戶**|稽核儲存體帳戶防火牆設定中不受限制的網路存取。 請改為設定網路規則，只允許來自認可之網路的應用程式存取儲存體帳戶。 若要允許來自特定網際網路或內部部署用戶端的連線，可將存取權授與來自特定 Azure 虛擬網路的流量，或授與公用網際網路 IP 位址範圍。<br>(相關原則：稽核不受限制的儲存體帳戶網路存取)|低|N|儲存體帳戶|
 |**應啟用適用於 Azure SQL Database 伺服器的 Azure Defender**|適用於 SQL 的 Azure Defender 是提供了進階 SQL 安全性功能的整合套件。 其中包含的功能可用於找出潛在資料庫弱點並減低其風險、偵測可能指出資料庫遇到威脅的異常活動，以及探索和分類敏感性資料。 <br>重要：補救此建議會產生保護您 Azure SQL Database 伺服器的費用。 如果您在此訂用帳戶中沒有任何 Azure SQL Database 伺服器，則不會產生任何費用。 如果您未來會在此訂用帳戶上建立任何 Azure SQL Database 伺服器，則這些伺服器會自動受到保護，並從該時間開始收費。<br>(相關原則：[Azure SQL Database 伺服器應啟用進階資料安全性](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2))|高|**Y**|訂用帳戶|
 |**應啟用適用於機器上 SQL 伺服器的 Azure Defender**|適用於 SQL 的 Azure Defender 是提供了進階 SQL 安全性功能的整合套件。 其中包含的功能可用於找出潛在資料庫弱點並減低其風險、偵測可能指出資料庫遇到威脅的異常活動，以及探索和分類敏感性資料。 <br>重要：補救此建議會產生保護您機器上 SQL 伺服器的費用。 如果此訂用帳戶中的機器上沒有任何 SQL 伺服器，則不會產生任何費用。 如果您未來會在此訂用帳戶的機器上建立任何 SQL 伺服器，則這些伺服器會自動受到保護，並從該時間開始收費。<br>(相關原則：[應在機器上的 SQL 伺服器啟用進階資料安全性](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b))|高|**Y**|訂用帳戶|
-|**應在受控執行個體上啟用進階資料安全性**|進階資料安全性 (ADS) 是提供進階 SQL 安全性功能的整合套件。 其可探索和分類敏感性資料、找出潛在資料庫弱點並減低其風險，及偵測可能代表資料庫受威脅的異常活動。 ADS 的費用是每個受控執行個體 $15 美元。<br>(相關原則：應在 SQL 受控執行個體上啟用進階資料安全性)|高|**Y**|SQL|
-|**應在 SQL 伺服器上啟用進階資料安全性**|進階資料安全性 (ADS) 是提供進階 SQL 安全性功能的整合套件。 其可探索和分類敏感性資料、找出潛在資料庫弱點並減低其風險，及偵測可能代表資料庫受威脅的異常活動。 ADS 的費用是每個 SQL 伺服器 $15 美元。<br>(相關原則：應在 SQL 伺服器上啟用進階資料安全性)|高|**Y**|SQL|
+|**適用於 SQL 的 Azure Defender 應在您的受控執行個體上啟用**|適用於 SQL 的 Azure Defender 是提供了進階 SQL 安全性功能的整合套件。 其會找出潛在資料庫弱點並減低其風險，及偵測可能代表資料庫受威脅的異常活動。 適用於 SQL 的 Azure Defender 的計費方式如<a href='https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing'>定價頁面</a>所示。<br>(相關原則：應在 SQL 受控執行個體上啟用進階資料安全性)|高|**Y**|SQL|
+|**適用於 SQL 的 Azure Defender 應在您的 SQL Server 上啟用**|適用於 SQL 的 Azure Defender 是提供了進階 SQL 安全性功能的整合套件。 其會找出潛在資料庫弱點並減低其風險，及偵測可能代表資料庫受威脅的異常活動。 適用於 SQL 的 Azure Defender 的計費方式如<a href='https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing'>定價頁面</a>所示。<br>(相關原則：應在 SQL 伺服器上啟用進階資料安全性)|高|**Y**|SQL|
 |**應為 SQL Database 佈建 Azure Active Directory 管理員**|為 SQL Database 佈建 Azure AD 系統管理員，以啟用 Azure AD 驗證。 Azure AD 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。<br>(相關原則：稽核 SQL 伺服器的 Azure Active Directory 管理員佈建)|高|N|SQL|
 |**應該啟用 SQL Database 上的稽核**|啟用 SQL Database 的稽核功能。 <br>(相關原則：應該在伺服器的進階資料安全性設定上啟用 SQL Database 的稽核功能)|低|**Y**|SQL|
 |**應啟用適用於儲存體的 Azure Defender**|適用於儲存體的 Azure Defender 可偵測儲存體帳戶中異常而且可能有害的存取或攻擊意圖。<br>重要：補救此建議會產生保護您 Azure 儲存體帳戶的費用。 如果您在此訂用帳戶中沒有任何 Azure 儲存體帳戶，則不會產生任何費用。 如果您未來會在此訂用帳戶上建立任何 Azure 儲存體帳戶，則這些帳戶會自動受到保護，並從該時間開始收費。<br>(相關原則：[應在 Azure 儲存體帳戶上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa))|高|**Y**|訂用帳戶|

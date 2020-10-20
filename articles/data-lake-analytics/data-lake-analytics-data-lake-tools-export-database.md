@@ -1,18 +1,16 @@
 ---
 title: 匯出 U-SQL database-Azure Data Lake Tools for Visual Studio
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio 匯出 U-SQL 資料庫，並自動將它匯入至本機帳戶。
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a768990a33f0d60a3222bd3ad323edcc53c9ec0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132087"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219083"
 ---
 # <a name="export-a-u-sql-database"></a>匯出 U-SQL 資料庫
 
@@ -76,11 +74,11 @@ ms.locfileid: "87132087"
 1. 將匯出的資源 (包括組件、其他檔案和範例資料) 上傳到要匯入的目標 Data Lake Analytics 帳戶預設的 Azure Data Lake Store 帳戶。 您可以在本機資料根資料夾下尋找匯出的資源資料夾。 將整個資料夾上傳至預設 Data Lake Store 帳戶的根資料夾。
 2. 上傳完成時，將匯出的 U-SQL 指令碼提交至您想要匯入資料庫的目標 Data Lake Analytics 帳戶。
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 目前，如果您在步驟 3 中選取 [結構描述和資料]**** 選項，工具會執行 U-SQL 作業來匯出儲存在資料表中的資料。 因為這個緣故，資料匯出程序可能會變慢，而可能會對您產生費用。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [了解 U-SQL 資料庫](/u-sql/data-definition-language-ddl-statements) 
 * [使用本機執行和 Azure Data Lake U-SQL SDK 對 U-SQL 作業進行測試和偵錯](data-lake-analytics-data-lake-tools-local-run.md)

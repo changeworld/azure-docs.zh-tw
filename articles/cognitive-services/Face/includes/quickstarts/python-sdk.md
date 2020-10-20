@@ -1,20 +1,20 @@
 ---
 title: 臉部 Python 用戶端程式庫快速入門
-description: 使用適用於 Python 的臉部用戶端程式庫來偵測臉部、尋找相似 (依影像進行臉部搜尋)、識別臉部 (臉部辨識搜尋) 及遷移臉部資料。
+description: 使用適用於 Python 的臉部用戶端程式庫來偵測臉部、尋找相似 (依影像進行臉部搜尋)，以及識別臉部 (臉部辨識搜尋)。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/07/2020
 ms.author: pafarley
-ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322940"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859248"
 ---
 開始使用適用於 Python 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -25,7 +25,6 @@ ms.locfileid: "91322940"
 * 建立並訓練人員群組
 * 識別臉部
 * 驗證臉部
-* 取得用於移轉資料的快照集
 
 [參考文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [套件 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
@@ -85,7 +84,6 @@ pip install --upgrade azure-cognitiveservices-vision-face
 * [建立並訓練人員群組](#create-and-train-a-person-group)
 * [識別臉部](#identify-a-face)
 * [驗證臉部](#verify-faces)
-* [取得用於移轉資料的快照集](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -207,52 +205,6 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>取得用於移轉資料的快照集
-
-快照集功能可讓您將已儲存的臉部資料 (例如已完成訓練的 **PersonGroup**) 移至不同的 Azure 認知服務臉部訂用帳戶。 舉例來說，如果您已使用免費訂用帳戶建立 **PersonGroup** 物件，而且現在想要將該物件遷移至付費訂用帳戶，就可以使用此功能。 如需快照集功能的廣泛概觀，請參閱[遷移臉部資料](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
-
-在此範例中，您會遷移在[建立並訓練人員群組](#create-and-train-a-person-group)中所建立的 **PersonGroup**。 您可以先完成該區段，也可以使用您自己的臉部資料建構。
-
-### <a name="set-up-target-subscription"></a>設定目標訂用帳戶
-
-首先，您必須擁有第二個臉部資源 Azure 訂用帳戶；若要這麼做，請遵循[設定](#setting-up)一節中的步驟。 
-
-然後，在指令碼頂端附近建立下列變數。 您還需要為 Azure 帳戶的訂用帳戶識別碼建立新的環境變數，以及為新的 (目標) 帳戶建立金鑰、端點和訂用帳戶識別碼。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
-
-### <a name="authenticate-target-client"></a>驗證目標用戶端
-
-之後在指令碼中將目前的用戶端物件儲存為來源用戶端，然後向目標訂用帳戶驗證新的用戶端物件。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_auth)]
-
-### <a name="use-a-snapshot"></a>使用快照集
-
-其餘快照集作業會在非同步函式中進行。 
-
-1. 第一個步驟是**取得**快照集，這會將原始訂用帳戶的臉部資料儲存至暫存的雲端位置。 此方法會傳回識別碼供您查詢作業的狀態。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
-
-1. 接下來，請查詢識別碼直到作業完成。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
-
-    此程式碼會利用 `wait_for_operation` 函式，請另外定義此函式：
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
-
-1. 返回非同步函式。 使用**套用**作業將臉部資料寫入至目標訂用帳戶。 此方法也會傳回識別碼。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
-
-1. 同樣地，使用 `wait_for_operation` 函式來查詢識別碼直到作業完成。
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
-
-完成這些步驟後，您就可以從新的 (目標) 訂用帳戶存取臉部資料建構。
-
 ## <a name="run-the-application"></a>執行應用程式
 
 使用 `python` 命令，從應用程式目錄執行臉部辨識應用程式。
@@ -271,10 +223,6 @@ python quickstart-file.py
 如果您在本快速入門中建立了 **PersonGroup**，但想要將其刪除，請在指令碼中執行下列程式碼：
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
-
-如果您已使用本快速入門中的快照集功能來遷移資料，則還必須刪除已儲存到目標訂用帳戶的 **PersonGroup**。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
 ## <a name="next-steps"></a>後續步驟
 

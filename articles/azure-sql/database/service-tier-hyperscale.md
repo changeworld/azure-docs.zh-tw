@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 06/03/2020
-ms.openlocfilehash: 3455503570d09daedc5e34cba0bf36d71ddcdcbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 547e56dbc72e283b6c186380a01580982e029a64
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988115"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216635"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -89,15 +89,17 @@ Azure SQL Database 中的超大規模資料庫服務層級提供下列額外功�
 
 ### <a name="compute"></a>計算
 
-計算節點就是關聯式引擎的所在位置，因此會發生所有語言元素、查詢處理等等。 所有與超大規模資料庫的使用者互動都是透過這些計算節點進行。 計算節點具有 SSD 快取 (在上圖中標示為 RBPEX (復原緩衝集區延伸模組))，可減少擷取資料頁面所需的網路來回行程次數。 有一個主要計算節點可以處理所有讀寫工作負載和交易。 有一或多個次要計算節點作為容錯移轉的熱待命節點，以及作為用於卸載讀取工作負載的唯讀計算節點 (如果想要使用此功能)。
+計算節點是關聯式引擎所在的位置。 這是發生語言、查詢和交易處理的地方。 所有與超大規模資料庫的使用者互動都是透過這些計算節點進行。 計算節點具有 SSD 快取 (在上圖中標示為 RBPEX (復原緩衝集區延伸模組))，可減少擷取資料頁面所需的網路來回行程次數。 有一個主要計算節點可以處理所有讀寫工作負載和交易。 有一或多個次要計算節點作為容錯移轉的熱待命節點，以及作為用於卸載讀取工作負載的唯讀計算節點 (如果想要使用此功能)。
+
+在超大規模計算節點上執行的資料庫引擎與其他 Azure SQL Database 服務層級相同。 當使用者與超大規模計算節點上的 database engine 互動時，支援的介面區和引擎行為會與其他服務層級相同，但 [已知的限制](#known-limitations)除外。
 
 ### <a name="page-server"></a>頁面伺服器
 
-頁面伺服器是代表相應放大儲存引擎的系統。  每部頁面伺服器都負責資料庫中的一部分頁面。  名義上，每個頁面伺服器都會控制 128 GB 和 1 TB 的資料。 未在多部頁面伺服器上共用資料 (在保留以獲得備援和可用性的複本外部)。 頁面伺服器的工作是隨需提供計算節點的資料庫頁面，並隨著交易更新資料而更新頁面。 頁面伺服器會從記錄服務播放記錄檔記錄，以保持最新狀態。 頁面伺服器也會維護 SSD 快取以提升效能。 資料頁面的長期儲存體會保存在 Azure 儲存體中，以獲得額外的可靠性。
+頁面伺服器是代表相應放大儲存引擎的系統。  每部頁面伺服器都負責資料庫中的一部分頁面。  名義上，每個頁面伺服器最多可以控制 128 GB 或最多 1 TB 的資料。 在頁面伺服器複本以外的頁面伺服器複本上，不會有任何資料共用 (，而這些複本會保留以提供冗余和可用性) 。 頁面伺服器的工作是隨需提供計算節點的資料庫頁面，並隨著交易更新資料而更新頁面。 頁面伺服器會從記錄服務播放記錄檔記錄，以保持最新狀態。 頁面伺服器也會維護涵蓋以 SSD 為基礎的快取，以增強效能。 資料頁面的長期儲存體會保存在 Azure 儲存體中，以獲得額外的可靠性。
 
 ### <a name="log-service"></a>記錄服務
 
-記錄服務會接受來自主要計算複本的記錄檔記錄，並將它們保存在永久性快取中，然後將記錄檔記錄轉送至其餘的計算複本 (讓它們可以更新其快取) 以及相關的頁面伺服器 () ，以便將資料更新至該處。 如此一來，來自主要計算複本的所有資料變更都會透過記錄服務傳播到所有次要計算複本和頁面伺服器。 最後，記錄檔記錄會推送至 Azure 儲存體的長期儲存空間，這是幾乎無限儲存的儲存機制。 這種機制可免除頻繁記錄截斷的需求。 記錄服務也有本機快取，可加速對記錄檔記錄的存取。
+記錄服務會接受來自主要計算複本的記錄檔記錄，並將它們保存在永久性快取中，然後將記錄檔記錄轉送至其餘的計算複本 (讓它們可以更新其快取) 以及相關的頁面伺服器 () ，以便將資料更新至該處。 如此一來，來自主要計算複本的所有資料變更都會透過記錄服務傳播到所有次要計算複本和頁面伺服器。 最後，記錄檔記錄會推送至 Azure 儲存體的長期儲存空間，這是幾乎無限儲存的儲存機制。 這種機制可免除頻繁記錄截斷的需求。 記錄服務也有本機記憶體和 SSD 快取，以加速存取記錄檔記錄。
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
@@ -105,7 +107,7 @@ Azure 儲存體包含資料庫中的所有資料檔案。 頁面伺服器會將�
 
 ## <a name="backup-and-restore"></a>備份與還原
 
-備份是以檔案快照集為基礎，因此幾乎是瞬間的。 儲存體和計算分隔可讓您將備份/還原作業推送至儲存層，以降低主要計算複本的處理負擔。 因此，資料庫備份不會影響主要計算節點的效能。 同樣地，「時間點復原」 (PITR) 是藉由還原至檔案快照集來完成，因為這不是資料作業的大小。 在相同的 Azure 區域中還原超大規模資料庫是一項固定時間的作業，甚至可以在數分鐘內還原多 tb 的資料庫，而不是數小時或數天的時間。 藉由還原現有的備份來建立新的資料庫也會利用此功能：建立資料庫複本以供開發或測試之用（即使是大小為 tb 的資料庫），在幾分鐘內就會雖可行。
+備份是以檔案快照集為基礎，因此幾乎是瞬間的。 儲存體和計算分隔可讓您將備份/還原作業推送至儲存層，以降低主要計算複本的處理負擔。 因此，資料庫備份不會影響主要計算節點的效能。 同樣地，「時間點復原」 (PITR) 是藉由還原至檔案快照集來完成，因為這不是資料作業的大小。 在相同的 Azure 區域中還原超大規模資料庫是一項固定時間的作業，甚至可以在數分鐘內還原多 tb 的資料庫，而不是數小時或數天的時間。 藉由還原現有的備份來建立新的資料庫也會利用此功能：建立資料庫複本以供開發或測試之用（即使是多 tb 的資料庫），在幾分鐘內就會雖可行。
 
 如需超大規模資料庫的異地還原，請參閱將 [超大規模資料庫還原到不同的區域](#restoring-a-hyperscale-database-to-a-different-region)。
 
@@ -115,7 +117,7 @@ Azure 儲存體包含資料庫中的所有資料檔案。 頁面伺服器會將�
 
 ## <a name="create-a-hyperscale-database"></a>建立超大規模資料庫
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)來建立超大規模資料庫。 超大規模資料庫只適用于以 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
+您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)來建立超大規模資料庫。 超大規模資料庫只適用于以 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
 
 下列 T-SQL 命令會建立超大規模資料庫。 您必須在 `CREATE DATABASE` 陳述式中指定版本和服務目標。 請參閱 [資源限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) 以取得有效服務目標清單。
 
@@ -129,7 +131,7 @@ GO
 
 ## <a name="upgrade-existing-database-to-hyperscale"></a>將現有的資料庫升級至超大規模
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)，將 Azure SQL Database 中的現有資料庫移至超大規模。 這次，這是單向的遷移。 您無法將資料庫從超大規模移至另一個服務層級，而不是藉由匯出和匯入資料。 針對 (Poc) 的概念證明，建議您建立生產資料庫的複本，並將複本遷移至超大規模。 將 Azure SQL Database 中的現有資料庫移轉至超大規模層是資料作業的大小。
+您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)，將 Azure SQL Database 中的現有資料庫移至超大規模。 這次，這是單向的遷移。 您無法將資料庫從超大規模移至另一個服務層級，而不是藉由匯出和匯入資料。 針對 (Poc) 的概念證明，建議您建立生產資料庫的複本，並將複本遷移至超大規模。 將 Azure SQL Database 中的現有資料庫移轉至超大規模層是資料作業的大小。
 
 下列 T-SQL 命令會將資料庫移至超大規模資料庫服務層級。 您必須在 `ALTER DATABASE` 陳述式中指定版本和服務目標。
 
@@ -214,7 +216,7 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 - 美國西部
 - 美國西部 2
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 這些是超大規模服務層級目前在 GA 的限制。  我們正積極地盡可能移除這些限制。
 
@@ -225,11 +227,11 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 | 如果資料庫有一或多個資料檔案大於 1 TB，則遷移會失敗 | 在某些情況下，可能可以藉由將大型檔案壓縮為小於 1 TB 來解決此問題。 如果遷移過程中正在使用的資料庫，請確定沒有任何檔案超過 1 TB。 您可以使用下列查詢來判斷資料庫檔案的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 受控執行個體 | 超大規模資料庫目前不支援 Azure SQL 受控執行個體。 |
 | 彈性集區 |  超大規模目前不支援彈性集區。|
-| 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製、Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入、從 Azure 入口網站使用 [AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)、從 Azure CLI 使用 [az sql db 匯出](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) 和 [az sql db 匯入](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)，以及從 [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) 不受支援。 使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
+| 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製、Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入、從 Azure 入口網站使用 [AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)、從 Azure CLI 使用 [az sql db 匯出](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-export) 和 [az sql db 匯入](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-import)，以及從 [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) 不受支援。 使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
 | 使用 In-Memory OLTP 物件遷移資料庫 | 超大規模支援 In-Memory OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何種類的 In-Memory OLTP 物件時，不支援從高階和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有 In-Memory OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須重新建立為磁片資料表。|
 | 異地複寫  | 您還無法設定 Azure SQL Database 超大規模的異地複寫。 |
 | 資料庫複製 | 超大規模上的資料庫複製現在處於公開預覽狀態。 |
-| TDE/AKV 整合 | 使用 Azure Key Vault (的透明資料庫加密通常稱為「自備金鑰」或 BYOK) ，目前為預覽狀態。 |
+| TDE/AKV 整合 | 使用 Azure Key Vault (的透明資料庫加密通常稱為「自備金鑰」或「BYOK) 」，目前處於公開預覽狀態。 |
 | 智慧型資料庫功能 | 除了 [強制執行計畫] 選項之外，超大規模上還不支援所有其他自動調整選項：可能會顯示選項已啟用，但不會有任何建議或動作。 |
 | 查詢效能深入解析 | 超大規模資料庫目前不支援查詢效能深入解析。 |
 | 壓縮資料庫 | 超大規模資料庫目前不支援 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |

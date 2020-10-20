@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7cb6a9691e1b3186e6493b4ae0b62857fb03f38c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549920"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943981"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>教學課程：整合 Kiteworks 與 Azure Active Directory
 
@@ -100,11 +100,11 @@ ms.locfileid: "88549920"
 
 1. 在頂端的工具列中，按一下 [設定]  。
 
-    ![設定單一登入](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![顯示已在工具列上選取 [設定] 圖示的螢幕擷取畫面。](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. 在 [驗證和授權]  區段中，按一下 [SSO 設定]  。
 
-    ![設定單一登入](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    ![顯示從 [驗證和授權] 區段中選取 [SSO 設定] 的螢幕擷取畫面。](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 1. 在 [SSO 設定] 頁面上，執行下列步驟：
 

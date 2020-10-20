@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9647de255b749e064b94f57c9067aaff7dc3cb7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187246"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219440"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按照排程來啟動和停止 Azure-SSIS Integration Runtime
 
@@ -117,7 +117,7 @@ ms.locfileid: "86187246"
     1. 針對 [角色]****，選取 [參與者]****。 
     2. 在 [存取權指派對象為] 中，選取 [Azure AD 使用者、群組或服務主體]。 
     3. 在 [選取]**** 中，搜尋您的 ADF 名稱並加以選取。 
-    4. 按一下 **[儲存]** 。
+    4. 按一下 [儲存]。
     
    ![ADF 受控識別角色指派](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "86187246"
 
 1. 在管線工具列上選取 [觸發程序]****，然後選取 [新增/編輯]****。 
 
-   ![觸發程序 -> 新增/編輯](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   ![醒目顯示 [觸發程式-> 新增/編輯] 功能表選項的螢幕擷取畫面。](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
 
 2. 在 [新增觸發程序]**** 窗格中，選取 [+ 新增]****。
 
@@ -163,7 +163,7 @@ ms.locfileid: "86187246"
     4. 在 [週期性]**** 中，輸入觸發程序的頻率。 在下列範例中，頻率是**每天**一次。 
     5. 在 [結束]**** 中，選取 [不會結束]****，或在選取 [日期]**** 之後輸入結束日期和時間。 
     6. 選取 [啟動]**** 以在您發佈了整個 ADF 設定之後立即啟動觸發程序。 
-    7. 選取 [下一步]  。
+    7. 選取 [下一步] 。
 
    ![觸發程序 -> 新增/編輯](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
@@ -220,7 +220,7 @@ ms.locfileid: "86187246"
 2. 登入 [Azure 入口網站](https://portal.azure.com/)。    
 3. 在左側功能表上選取 [新增]****，再選取 [監視 + 管理]****，然後選取 [自動化]****。 
 
-   ![新增 -> 監視 + 管理 -> 自動化](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   ![醒目顯示 [監視 + 管理] > 自動化] 選項的螢幕擷取畫面。](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
     
 2. 在 [新增自動化帳戶]**** 窗格中，執行下列動作。
 
@@ -230,7 +230,7 @@ ms.locfileid: "86187246"
     4. 針對 [位置]****，選取 Azure 自動化帳戶的位置。 
     5. 將 [建立 Azure 執行身分帳戶]**** 確認為 [是]****。 Azure Active Directory 中便會建立服務主體，並在 Azure 訂用帳戶中為其指派**參與者**角色。
     6. 選取 [釘選到儀表板]**** 讓其永久顯示於 Azure 儀表板。 
-    7. 選取 [建立]****。 
+    7. 選取 [建立]。 
 
    ![新增 -> 監視 + 管理 -> 自動化](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -262,13 +262,13 @@ ms.locfileid: "86187246"
 
 1. 切換至 [Runbook]**** 索引標籤，然後從工具列中選取 [+ 新增 Runbook]****。 
 
-   ![新增 Runbook 按鈕](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   ![醒目顯示 [+ 新增 runbook] 按鈕的螢幕擷取畫面。](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
    
 2. 選取 [建立新的 Runbook]****，並執行下列動作： 
 
     1. 針對 [名稱]****，輸入 **StartStopAzureSsisRuntime**。
     2. 針對 [Runbook 類型]****，選取 [PowerShell]****。
-    3. 選取 [建立]****。
+    3. 選取 [建立]。
     
    ![新增 Runbook 按鈕](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -345,7 +345,7 @@ ms.locfileid: "86187246"
    
 6. 在 [作業] 視窗中，選取 [輸出]**** 圖格。 在輸出視窗中，在您看到 **##### Starting #####** 之後等待 **##### Completed #####** 訊息顯示。 啟動 Azure-SSIS IR 約需要 20 分鐘。 關閉 [作業]**** 視窗，並回到 [Runbook]**** 視窗。
 
-   ![Azure SSIS IR - 已啟動](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   ![醒目顯示 [輸出] 磚的螢幕擷取畫面。](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
 7. 使用 [STOP]**** 作為 [OPERATION]**** 的值來重複前兩個步驟。 選取工具列上的 [啟動]**** 按鈕以重新啟動 Runbook。 輸入資源群組、ADF 和 Azure-SSIS IR 的名稱。 針對 [OPERATION]****，輸入 **STOP**。 在輸出視窗中，在您看到 **##### Stopping #####** 之後等待 **##### Completed #####** 訊息顯示。 停止 Azure-SSIS IR 不會像啟動時那麼耗時。 關閉 [作業]**** 視窗，並回到 [Runbook]**** 視窗。
 
@@ -367,13 +367,13 @@ ms.locfileid: "86187246"
     4. 在 [啟動]**** 中，輸入比當下時間晚幾分鐘的時間。 
     5. 針對 [週期性]****，選取 [循環]****。 
     6. 在 [重複頻率]**** 中輸入 **1**，然後選取 [天]****。 
-    7. 選取 [建立]****。 
+    7. 選取 [建立]。 
 
    ![啟動 Azure SSIS IR 的排程](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
 3. 切換至 [ **參數] 和 [執行設定** ] 索引標籤。指定您的資源群組、ADF 和 Azure-SSIS IR 名稱。 針對 [OPERATION]****，輸入 **START**，然後選取 [確定]****。 再次選取 [確定]****，以在 Runbook 的 [排程]**** 頁面上檢視排程。 
 
-   ![啟動 Azure SSIS IR 的排程](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   ![醒目顯示 [作業] 欄位的螢幕擷取畫面。](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
 4. 重複前兩個步驟，以建立名為**每日停止 IR** 的排程。 請輸入比**每日啟動 IR** 排程的指定時間至少晚 30 分鐘的時間。 針對 [OPERATION]****，輸入 **STOP**，然後選取 [確定]****。 再次選取 [確定]****，以在 Runbook 的 [排程]**** 頁面上檢視排程。 
 
@@ -383,7 +383,7 @@ ms.locfileid: "86187246"
     
 6. 測試完成後，請編輯排程來將其停用。 選取左側功能表上的 [排程]****，再選取 [每日啟動 IR/每日停止 IR]****，然後針對 [已啟用]**** 選取 [否]****。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱下列部落格文章：
 -   [使用 ADF 管線中的 SSIS 活動來現代化及擴充您的 ETL/ELT 工作流程](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 

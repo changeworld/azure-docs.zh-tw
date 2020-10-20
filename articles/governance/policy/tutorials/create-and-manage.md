@@ -1,14 +1,14 @@
 ---
 title: 教學課程：建立原則來強制執行合規性
 description: 在本教學課程中，您會使用原則來強制執行標準、控制成本、維護安全性，以及強加全企業的設計原則。
-ms.date: 06/15/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: d8dc65d50182b5336a683c2da8e2a5d8ebb9e849
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650083"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876350"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教學課程：建立和管理原則來強制執行相容性
 
@@ -36,11 +36,11 @@ ms.locfileid: "89650083"
 
 1. 選取 Azure 原則分頁左側的 [指派]****。 指派是已指派在特定範圍內發生的原則。
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="從原則總覽頁面選取指派節點的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 從 [原則 - 指派]**** 分頁頂端選取 [指派原則]****。
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="在指派頁面上選取指派原則按鈕的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 在 [指派原則]**** 頁面和 [基本資料]**** 上，選取省略符號並選取管理群組或訂用帳戶來選取 [範圍]****。 選擇性地選取資源群組。 範圍會決定在哪些資源或資源群組上強制執行原則指派。
    然後，選取位於 [範圍]**** 分頁底部的 [選取]****。
@@ -54,7 +54,7 @@ ms.locfileid: "89650083"
 1. 選取 [從資源群組繼承標籤 (若遺漏)]****。 如果未能立即找到此選項，請在搜尋方塊中輸入**繼承標籤**，然後按 ENTER 鍵或選取搜尋方塊外面。
    一旦您找到並選取原則定義後，請選取 [可用的定義]**** 分頁底部的 [選取]****。
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="選取原則定義時的搜尋篩選螢幕擷取畫面。":::
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。":::
 
 1. [指派名稱]**** 會自動填入您選取的原則名稱，但您可加以變更。 在此範例中，請讓 [從資源群組繼承標籤 (若遺漏)]__ 保持不動。 您也可以新增選擇性的 [描述]****。 描述會提供有關此原則指派的詳細資料。
 
@@ -82,7 +82,7 @@ ms.locfileid: "89650083"
 
 1. 選取 Azure 原則分頁左側 [製作]**** 下的 [定義]****。
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="製作群組下定義頁面的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 選取分頁頂端的 [+ 原則定義]****。 這個按鈕會開啟至 [原則定義]**** 頁面。
 
@@ -342,13 +342,13 @@ az policy definition list
 
 1. 選取 Azure 原則分頁左側 [製作]**** 下的 [定義]****。
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="製作群組下定義頁面的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。":::
 
-1. 選取分頁頂端的 [+ 計畫定義]****，可開啟 [計畫定義]**** 分頁。
+1. 選取分頁頂端的 [+ 計畫定義]，可開啟 [計畫定義] 精靈。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="要設定之計畫定義頁面和屬性的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。":::
 
-1. 使用 [定義位置]**** 省略符號，選取要儲存定義的管理群組或訂用帳戶。 如果在上一頁中，已將範圍設為單一管理群組或訂用帳戶，則 [定義位置]**** 會自動填入。 一旦選取，就會填入 [可用的定義]****。
+1. 使用 [計畫位置] 省略符號，選取要儲存定義的管理群組或訂用帳戶。 如果在上一頁中，已將範圍設為單一管理群組或訂用帳戶，則 [計畫位置] 會自動填入。
 
 1. 輸入計畫的 [名稱]**** 和 [說明]****。
 
@@ -356,28 +356,53 @@ az policy definition list
 
 1. 針對 [類別]****，從現有選項進行選擇，或建立新的類別。
 
-1. 瀏覽 [可用定義]**** ([計畫定義]**** 分頁的右半部) 的清單，並選取您想要新增至此計畫的原則定義。 針對 [保障安全]**** 計畫，選取原則定義資訊旁的 [+]****，或選取原則定義資料列，然後選取詳細資料頁面中的 [+ 新增]**** 選項，以新增下列內建原則定義：
+1. 設定計畫的**版本**，例如 1.0。
+
+   > [!NOTE]
+   > 版本值是嚴格的中繼資料，不會用於 Azure 原則服務的更新或任何程序。
+
+1. 選取頁面底部的 [下一步] 或精靈頂端的 [原則] 索引標籤。
+
+1. 選取 [新增原則定義] 按鈕，然後瀏覽清單。 選取您要新增至此計畫的原則定義。 針對 [保障安全] 計畫，請選取原則定義資訊旁的核取方塊，以新增下列內建原則定義：
 
    - 允許的位置
    - 在 Azure 資訊安全中心中監視缺少的 Endpoint Protection
-   - 應強化與虛擬機器互動的網際網路網路安全性群組規則
+   - 應使用網路安全性群組保護非網際網路對應的虛擬機器
    - 應該為虛擬機器啟用 Azure 備份
    - 應在虛擬機器上套用磁碟加密
+   - 新增或取代資源上的標記 (新增此原則定義兩次)
 
-   從清單中選取原則定義之後，每個項目都會新增在 [類別]**** 下方。
+   從清單中選取每個原則定義之後，請選取清單底部的 [新增]。
+   由於新增了兩次，「在資源上新增或取代標記」原則定義會各自取得不同的「參考識別碼」。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="計畫定義頁面上的參數和值定義的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。":::
 
-1. 如果要新增至計畫的原則定義有參數，則會顯示在 [類別]**** 區域中的原則名稱下方。 「值」__ 可以設定為 [設定值] (將此計畫的所有指派硬式編碼) 或 [使用計畫參數] (在每個計畫指派期間設定)。 如果選取 [設定值]，則 [值]__ 右側的下拉式清單會允許輸入或選取值。 如果選取 [使用計畫參數]，則會顯示新的 [計畫參數]**** 區段，讓您定義將在計畫指派期間設定的參數。 此計畫參數的允許值可進一步限制可在計畫指派期間設定的項目。
+   > [!NOTE]
+   > 選取一個或多個新增的原則定義，然後選取 [將選取的原則新增到群組]，即可將選取的原則新增到群組。 群組必須先存在，您才可以在精靈的 [群組] 索引標籤上建立群組。
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="計畫定義頁面上的效果參數允許值選項的螢幕擷取畫面。" border="false":::
+1. 選取頁面底部的 [下一步] 或精靈頂端的 [群組] 索引標籤。 您可以從此索引標籤新增群組。在本教學課程中，我們不會新增任何群組。
+
+1. 選取頁面底部的 [下一步] 或精靈頂端的 [計畫參數] 索引標籤。 如果我們想要讓計畫中有一個用來傳遞至一個或多個內含原則定義的參數，此參數會在這裡定義，然後在 [原則參數] 索引標籤上使用。在本教學課程中，我們不會新增任何計畫參數。
+
+   > [!NOTE]
+   > 一旦將計畫參數儲存到計畫定義，就無法將其從計畫中刪除。 如果不再需要計畫參數，應將其從任何原則定義參數的使用中移除。
+
+1. 選取頁面底部的 [下一步] 或精靈頂端的 [原則參數] 索引標籤。
+
+1. 新增至計畫且具有參數的原則定義會顯示在方格中。 [值類型] 可以是 [預設值]、[設定值] 或 [使用計畫參數]。 如果選取了 [設定值]，則會在 [值] 底下輸入相關的值。 如果原則定義上的參數具有允許值清單，則輸入方塊會是下拉式選取器。 如果選取 [使用計畫參數]，則 [計畫參數] 索引標籤上會提供下拉式選單，而其中具有已建立的計畫參數名稱。
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。":::
 
    > [!NOTE]
    > 就某些 `strongType` 參數而言，值清單是無法自動決定的。 在這些情況下，參數資料列的右側會出現省略符號。 選取省略符號以開啟 [參數範圍 (&lt;參數名稱&gt;)] 分頁。 在此頁面上，請選取要用來提供值選項的訂用帳戶。 此參數範圍只會在建立計畫定義期間使用，且對於原則評估或指派的計畫範圍均無影響。
 
-   將 [允許的位置] 參數設定為 [美國東部 2]，並將其他項目保留為預設 [AuditifNotExists]。
+   將 [允許的位置] 的 [值類型] 設定為 [設定值]，然後從下拉式選單選取 [美國東部 2]。 針對兩個 [新增或取代資源上的標記] 原則定義實例，將**標記名稱**參數設定為 'Env' 和 'CostCenter，並將**標記值**參數設為 'Test' 和 'Lab'，如下所示。 將其他項目保留為 [預設值]。 在計畫中使用相同的定義兩次，但使用不同的參數，這項設定會在指派範圍內的資源上新增 'Test' 和 'Lab' 的值，或以這兩個值分別取代 'Env' 標記和 'CostCenter' 標記。
 
-1. 選取 [儲存]****。
+   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。":::
+
+1. 選取頁面底部或精靈頂端的 [檢閱 + 建立]。
+
+1. 檢閱設定並選取 [建立]。
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>使用 Azure CLI 來建立原則計畫定義
 
@@ -426,11 +451,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 找出您先前建立的 [保障安全]**** 計畫定義並加以選取。 選取頁面頂端的 [指派]**** 以開啟至 [保障安全:**** 指派計畫] 頁面。
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="計畫定義頁面上的「指派」按鈕螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
    您也可以用滑鼠右鍵按一下選取的資料列，或選取資料列結尾的省略符號，以顯示快顯功能表。 然後選取 [指派]****。
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="方案選取指派功能的內容功能表螢幕擷取畫面。" border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 輸入下列範例資訊，以填寫 [保障安全:**** 指派計畫] 頁面。 您可以使用自己的資訊。
 
@@ -455,27 +480,30 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. 選取 Azure 原則分頁左側的 [合規性]****。
 
 1. 找出 [保障安全]**** 計劃。 其 [合規性狀態]__ 可能仍然是 [未啟動]****。
-   選取該計畫可取得指派程序的完整詳細資料。
+   選取該計畫可取得指派的完整詳細資料。
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="計畫合規性頁面的螢幕擷取畫面，顯示處於未啟動狀態的指派評估。" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 當完成計畫指派之後，合規性分頁的 [合規性狀態]__ 會更新為 [符合規範]****。
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="計畫合規性頁面的螢幕擷取畫面，顯示指派評估完成且處於符合規範狀態。" border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 1. 選取計畫合規性頁面上的任何原則，即可開啟該原則的合規性詳細資料頁面。 此分頁提供資源層級上的合規性詳細資料。
 
-## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>使用排除來免除不相容或拒絕的資源
+## <a name="remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion"></a>使用排除來移除範圍中不符合規範或拒絕的資源
 
 指派原則計畫來要求特定位置之後，就會拒絕在不同位置中建立的任何資源。 在本節中，您可藉由在單一資源群組上建立排除項目，以逐步解決建立資源的被拒絕要求。 排除項目會防止對該資源群組強制執行原則 (或計畫)。 在下列範例中，已排除資源群組中允許任何位置。 排除可以套用至訂用帳戶、資源群組，或個別的資源。
 
+> [!NOTE]
+> 您也可以使用[原則豁免](../concepts/exemption-structure.md)來略過資源的評估。 如需詳細資訊，請參閱 [Azure 原則中的範圍](../concepts/scope.md)。
+
 在部署的目標資源群組上，可以檢視指派的原則或計畫所防止的部署：選取頁面左側的 [部署]****，然後選取失敗部署的 [部署名稱]****。 遭拒的資源將會以 [禁止]__ 狀態列出。 若要確認拒絕資源的原則或計畫和指派，請在 [部署概觀] 頁面上選取 [失敗。**** 如需詳細資訊，請按一下這裡 ->]。 視窗會在分頁右側開啟，並附上錯誤資訊。 [錯誤詳細資料]**** 之下會有相關原則物件的 GUID。
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="已由原則指派拒絕之失敗部署的螢幕擷取畫面。" border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 在 Azure 原則頁面上：選取頁面左側的 [合規性]****，並選取 [保障安全]**** 原則計畫。 在此頁面上，已封鎖資源的 [拒絕]**** 計數會增加。 [事件]**** 索引標籤之下是關於嘗試建立或部署原則定義所拒絕資源的詳細資料。
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="計畫合規性頁面上的事件索引標籤和原則事件詳細資料的螢幕擷取畫面。" border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
 在此範例中，Trent Baker 是 Contoso 的其中一名資深虛擬化專家，他正在執行必要的工作。 我們需要針對例外狀況授與 Trent 一個空間。 我們建立了新的資源群組 **SQLServers_Excluded**，接著會授與此群組對此原則指派的例外狀況。
 
@@ -487,7 +515,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 選取省略符號並選取要排除的資源群組 (在此範例中為 LocationsExcluded__)，以設定 [排除]****。 選取 [新增至所選範圍]****，然後選取 [儲存]****。
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="方案指派頁面上排除選項的螢幕擷取畫面，將排除的資源群組新增至原則指派。" border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="在搜尋列中搜尋原則的螢幕擷取畫面。" border="false":::
 
    > [!NOTE]
    > 根據原則定義及其效果，也可將排除授與給指派範圍內資源群組中的特定資源。 由於此教學課程中使用 [拒絕]**** 效果，因此對已經存在的特定資源設定排除將沒有意義。
@@ -504,7 +532,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 搜尋您要移除的新計畫或原則定義 (或指派)。
 
-1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義]**** (或 [刪除指派]****)。
+1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義] (或 [刪除指派])。
 
 ## <a name="review"></a>檢閱
 

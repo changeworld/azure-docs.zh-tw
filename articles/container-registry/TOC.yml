@@ -3,7 +3,7 @@
 - name: 容器登錄
   expanded: true
   items:
-    - name: 概觀
+    - name: 總覽
       expanded: false
       items:
         - name: 關於 Container Registry
@@ -120,6 +120,7 @@
                   href: container-registry-repository-scoped-permissions.md
             - name: Azure 角色型存取控制
               href: container-registry-roles.md
+              displayName: 'permissions, authorization'
             - name: 內容信任
               href: container-registry-content-trust.md
             - name: 使用資訊安全中心掃描影像

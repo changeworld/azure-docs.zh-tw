@@ -2,7 +2,6 @@
 title: Azure 資訊安全中心警示的架構
 description: 本文說明 Azure 資訊安全中心用於安全性警示的不同架構。
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901337"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220664"
 ---
 # <a name="security-alerts-schemas"></a>安全性警示架構
 
@@ -173,7 +172,7 @@ Azure 資訊安全中心會在 Azure 活動記錄中以事件形式來審核產�
 
 Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一的可程式性模型，可讓您用來存取 Microsoft 365、Windows 10 和 Enterprise Mobility + Security 的大量資料。 在 Microsoft Graph 中使用豐富的資料來建立與數百萬個使用者互動之組織和取用者的應用程式。
 
-針對傳送至 MS Graph 的安全性警示，架構和 JSON 標記法可在 [Microsoft Graph 檔](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)中取得。
+針對傳送至 MS Graph 的安全性警示，架構和 JSON 標記法可在 [Microsoft Graph 檔](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true)中取得。
 
 ---
 

@@ -1,17 +1,15 @@
 ---
 title: 安裝 Service Fabric 獨立用戶端
-description: 在本教學課程中，您將了解如何在您於上一篇教學課程文章中建立的叢集上安裝 Service Fabric 獨立用戶端。
-author: dkkapur
+description: 在本教學課程中，您將了解如何在叢集上安裝 Service Fabric 獨立用戶端。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75613936"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840637"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教學課程：安裝和建立 Service Fabric 叢集
 
@@ -19,7 +17,7 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 本教學課程是一個系列的第二部分。 本教學課程將逐步引導您完成建立 Service Fabric 獨立叢集的步驟。
 
-在本系列的第二部分中，您將瞭解如何：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 下載並安裝 Service Fabric 獨立套件
@@ -77,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-您應該會看到如下的輸出： 如果底層欄位 "Passed" 傳回為 `True`，表示已通過例行性檢查，並可根據輸入組態來部署該叢集。
+您應該會看到如下列範例所示的輸出。 如果底層欄位 "Passed" 傳回為 `True`，表示已通過例行性檢查，並可根據輸入組態來部署該叢集。
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -118,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>啟動 Service Fabric Explorer
+### <a name="open-service-fabric-explorer"></a>開啟 Service Fabric Explorer
 
 現在，您可以使用 http:\//localhost:19080/Explorer/index.html 直接從其中一部電腦或使用 http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html 從遠端利用 Service Fabric Explorer 連接到叢集。
 
@@ -128,7 +126,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ## <a name="next-steps"></a>後續步驟
 
-在此系列的第二個部分中，您已學到如何將大量隨機資料平行上傳至儲存體帳戶，例如如何：
+在此文章中，您已學到如何將大量隨機資料平行上傳至儲存體帳戶，例如如何：
 
 > [!div class="checklist"]
 > * 設定連接字串

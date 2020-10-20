@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535094"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>教學課程：Azure Active Directory 與 LearnUpon 整合
 
@@ -130,15 +130,15 @@ LearnUpon 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [設定]  索引標籤。
 
-    ![設定單一登入](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![顯示 [設定] 索引標籤的螢幕擷取畫面。](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. 按一下 [單一登入 - SAML]  ，然後按一下 [一般設定]  以設定 SAML 設定。
    
-    ![設定單一登入](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![此螢幕擷取畫面顯示已選取 [一般設定] 的 [單一登入 - SAML]。](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. 在 [一般設定]  區段中，執行下列步驟：
    
-    ![設定單一登入](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![此螢幕擷取畫面顯示可輸入所述值的 [一般設定] 區段。](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. 選取 [啟用]  。
 
@@ -158,7 +158,7 @@ LearnUpon 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [使用者設定]  ，然後執行下列步驟：
 
-     ![設定單一登入](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![此螢幕擷取畫面顯示可輸入所述值的 [使用者設定] 區段。](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. 在 [名字識別碼格式]  文字方塊中，輸入可告知我們使用者名字在您「SAML 判斷提示」中的所在位置的值，例如：`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
   

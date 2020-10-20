@@ -7,14 +7,20 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78271368"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218862"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 叢集中執行具特殊權限的容器
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 將于2022年6月30日淘汰。 支援建立新的 Azure Red Hat OpenShift 3.11 叢集會繼續到2020年11月30日。 淘汰之後，剩餘的 Azure Red Hat OpenShift 3.11 叢集將會關閉以防止安全性弱點。
+> 
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](tutorial-create-cluster.md)叢集。
+> 如果您有特定問題， [請洽詢我們](mailto:arofeedback@microsoft.com)。
 
 您無法在 Azure Red Hat OpenShift 叢集上執行任意特殊許可權的容器。
 有兩個安全性監視和合規性解決方案可在 ARO 叢集上執行。
@@ -115,7 +121,7 @@ oc get route aqua-web -n aqua-security
 | -------------- | ------------- |
 | 協調器   | OpenShift     |
 | ServiceAccount | 綠色-帳戶  |
-| 專案        | 綠色-安全性 |
+| Project        | 綠色-安全性 |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的產品特定步驟
 
@@ -128,7 +134,7 @@ oc get route aqua-web -n aqua-security
 oc new-project twistlock
 ```
 
-略過選擇性區段「將 Prisma 雲端映射推送至私人登錄」。 它無法在 Azure Red Hat Openshift 上運作。 請改用 online 登錄。
+略過選擇性區段「將 Prisma 雲端映射推送至私人登錄」。 它無法在 Azure Red Hat OpenShift 上運作。 請改用 online 登錄。
 
 您可以遵循正式的檔，並套用以下所述的更正。
 從 [安裝主控台] 區段開始。

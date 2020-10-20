@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.openlocfilehash: 10f31b74b461941b15f13e45f90b5fbc408c90fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d815c27ecc7825f0bc1e6772654b094a799b63d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86108408"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216550"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Azure Data Share 的安全性概觀
 
@@ -23,12 +23,8 @@ Azure Data Share 會利用 Azure 提供的基礎安全性來保護待用資料�
 
 您可以在 Azure Data Share 資源層級設定存取控制，以確保資料存取者有獲得授權。 
 
-Azure Data Share 會利用受控識別 (之前稱為 MSI) ，來存取用於資料共用的資料存放區。 資料提供者與資料取用者之間不會交換認證。 如需受控識別的詳細資訊，請參閱 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)識別。 如需共用資料所需的角色和許可權的詳細資訊，請參閱 [角色和需求](concepts-roles-permissions.md)。
+Azure Data Share 會利用受控識別 (之前稱為 MSI) ，來存取用於資料共用的資料存放區。 資料提供者與資料取用者之間不會交換認證。 如需受控識別的詳細資訊，請參閱 [適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)識別。 如需共用資料所需的角色和許可權的詳細資訊，請參閱 [角色和需求](concepts-roles-permissions.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要了解如何開始共用資料，請繼續進行[共用資料](share-your-data.md)教學課程。
-
-
-
-

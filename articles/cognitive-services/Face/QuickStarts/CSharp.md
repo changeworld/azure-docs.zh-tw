@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1b8bcaf283e612b3ebe6d6b7bb5660e8b3179ad3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323051"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858365"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
@@ -44,14 +44,7 @@ ms.locfileid: "91323051"
 
 在 *Program.cs* 檔案的頂端新增下列 `using` 陳述式。
 
-```csharp
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="dependencies":::
 
 ### <a name="add-essential-fields"></a>新增必要欄位
 
@@ -59,52 +52,13 @@ using System.Text;
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-```csharp
-namespace DetectFace
-{
-    class Program
-    {
-
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
-
-        // replace <myresourcename> with the string found in your endpoint URL
-        const string uriBase =
-            "https://<myresourcename>.cognitiveservices.azure.com/face/v1.0/detect";
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="environment":::
 
 ### <a name="receive-image-input"></a>接收影像輸入
 
 對 **Program** 類別的 **Main** 方法新增下列程式碼。 此程式碼會將提示寫入至主控台，要求使用者輸入其本機影像檔案路徑。 然後呼叫另一種方法：**MakeAnalysisRequest**，以處理該位置上的影像。
 
-```csharp
-        static void Main(string[] args)
-        {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Detect faces:");
-            Console.Write(
-                "Enter the path to an image with faces that you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
-
-            if (File.Exists(imageFilePath))
-            {
-                try
-                {
-                    MakeAnalysisRequest(imageFilePath);
-                    Console.WriteLine("\nWait a moment for the results to appear.\n");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("\n" + e.Message + "\nPress Enter to exit...\n");
-                }
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path.\nPress Enter to exit...\n");
-            }
-            Console.ReadLine();
-        }
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="main":::
 
 ### <a name="call-the-face-detection-rest-api"></a>呼叫臉部偵測 REST API
 
@@ -112,142 +66,47 @@ namespace DetectFace
 
 您將在下列步驟中定義協助程式方法。
 
-```csharp
-        // Gets the analysis of the specified image by using the Face REST API.
-        static async void MakeAnalysisRequest(string imageFilePath)
-        {
-            HttpClient client = new HttpClient();
-
-            // Request headers.
-            client.DefaultRequestHeaders.Add(
-                "Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            // Request parameters. A third optional parameter is "details".
-            string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
-                "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
-                "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
-
-            // Assemble the URI for the REST API Call.
-            string uri = uriBase + "?" + requestParameters;
-
-            HttpResponseMessage response;
-
-            // Request body. Posts a locally stored JPEG image.
-            byte[] byteData = GetImageAsByteArray(imageFilePath);
-
-            using (ByteArrayContent content = new ByteArrayContent(byteData))
-            {
-                // This example uses content type "application/octet-stream".
-                // The other content types you can use are "application/json"
-                // and "multipart/form-data".
-                content.Headers.ContentType =
-                    new MediaTypeHeaderValue("application/octet-stream");
-
-                // Execute the REST API call.
-                response = await client.PostAsync(uri, content);
-
-                // Get the JSON response.
-                string contentString = await response.Content.ReadAsStringAsync();
-
-                // Display the JSON response.
-                Console.WriteLine("\nResponse:\n");
-                Console.WriteLine(JsonPrettyPrint(contentString));
-                Console.WriteLine("\nPress Enter to exit...");
-            }
-        }
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="request":::
 
 ### <a name="process-the-input-image-data"></a>處理輸入影像資料
 
 將下列方法新增至 **Program** 類別。 此方法會將位於指定檔案路徑的影像轉換成位元組陣列。
 
-```csharp
-        // Returns the contents of the specified file as a byte array.
-        static byte[] GetImageAsByteArray(string imageFilePath)
-        {
-            using (FileStream fileStream =
-                new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
-            {
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-        }
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="getimage":::
 
 ### <a name="parse-the-json-response"></a>剖析 JSON 回應
 
 將下列方法新增至 **Program** 類別。 此方法會格式化 JSON 輸入，以便閱讀。 您的應用程式會將此字串資料寫入主控台。 然後您就可以關閉類別和命名空間。
 
-```csharp
-        // Formats the given JSON string by adding line breaks and indents.
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-                return string.Empty;
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\'':
-                        if (quote) ignore = !ignore;
-                        break;
-                }
-
-                if (quote)
-                    sb.Append(ch);
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-            }
-
-            return sb.ToString().Trim();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/rest/detect.cs" id="print":::
 
 ## <a name="run-the-app"></a>執行應用程式
 
 成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如：
+
+```json
+[
+   {
+      "faceId": "f7eda569-4603-44b4-8add-cd73c6dec644",
+      "faceRectangle": {
+         "top": 131,
+         "left": 177,
+         "width": 162,
+         "height": 162
+      }
+   }
+]
+```
+
+## <a name="extract-face-attributes"></a>擷取臉部屬性
+ 
+若要擷取臉部屬性，請使用偵測模型 1 並新增 `returnFaceAttributes` 查詢參數。
+
+```csharp
+string requestParameters = "detectionModel=detection_01&returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+```
+
+回應現在包含臉部屬性。 例如：
 
 ```json
 [

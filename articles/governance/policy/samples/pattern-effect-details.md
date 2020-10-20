@@ -1,14 +1,14 @@
 ---
 title: 模式：原則定義的效果
 description: 此 Azure 原則模式提供如何使用不同原則定義效果的範例。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85565739"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073031"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure 原則模式：效果
 
@@ -24,7 +24,7 @@ Azure 原則有許多[效果](../concepts/effects.md)，可決定服務如何回
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-**modify** 效果需要 **policyRule.then.details** 區塊，以定義 **roleDefinitionIds** 和 **operations**。 這些參數會告知 Azure 原則需要哪些角色才能新增標記並補救資源，以及要執行哪個 **modify** 作業。 在此範例中，**作業**是「新增」  ，而參數則是用來設定標記和其值。
+**modify** 效果需要 **policyRule.then.details** 區塊，以定義 **roleDefinitionIds** 和 **operations**。 這些參數會告知 Azure 原則需要哪些角色才能新增標籤並補救資源，以及要執行哪個 **modify** 作業。 在此範例中，會使用_新增_**作業**和參數來設定標籤和其值。
 
 ## <a name="sample-2-complex-effect"></a>範例 2：複雜效果
 

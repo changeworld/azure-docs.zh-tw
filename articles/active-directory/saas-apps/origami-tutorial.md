@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543783"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>教學課程：Azure Active Directory 與 Origami 整合
 
@@ -126,11 +126,11 @@ Origami 與 Azure AD 整合提供下列優點：
 
 2. 在頂端的功能表中，按一下 [系統管理員]  。
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_51.png)
+    ![顯示 Origami 首頁的螢幕擷取畫面，其中已選取 [管理員]。](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. 在 [單一登入設定] 對話方塊頁面執行下列步驟：
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_531.png)
+    ![顯示 [單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [啟用單一登入]，並已反白顯示文字方塊。](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. 選取 [啟用單一登入]  。
 
@@ -201,19 +201,19 @@ Origami 與 Azure AD 整合提供下列優點：
 
 2. 在頂端的功能表中，按一下 [系統管理員]  。
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_51.png)
+    ![顯示 Origami 帳戶首頁的螢幕擷取畫面，其中已選取 [管理員]。](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. 在 [使用者與安全性]  對話方塊中，按一下 [使用者]  。
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_54.png)
+    ![顯示 [使用者與安全性] 對話方塊的螢幕擷取畫面，其中已選取 [使用者]。](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. 按一下 [新增使用者]  。
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_55.png)
+    ![顯示已選取 [新增使用者] 按鈕的螢幕擷取畫面。](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. 在 [新增使用者] 對話方塊上，執行下列步驟：
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_56.png)
+    ![顯示 [新增使用者] 對話方塊的螢幕擷取畫面，其中已反白顯示 [使用者名稱]、[名字] 和 [姓氏] 文字方塊。](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. 在 [使用者名稱]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
 
@@ -227,7 +227,7 @@ Origami 與 Azure AD 整合提供下列優點：
 
     f. 按一下 [檔案]  。
    
-    ![設定單一登入](./media/origami-tutorial/tutorial_origami_57.png)
+    ![顯示已選取 [儲存] 按鈕的螢幕擷取畫面。](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. 將**使用者角色**和**用戶端存取**指派給使用者。 
    

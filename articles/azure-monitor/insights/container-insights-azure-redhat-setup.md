@@ -3,14 +3,23 @@ title: 設定 Azure Red Hat OpenShift v3. x 與容器的 Azure 監視器 |Micros
 description: 本文說明如何使用 Azure Red Hat OpenShift 第3版和更高版本上託管的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994565"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216363"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3 
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3
+
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 將于6月2022日淘汰。
+>
+> 從2020年10月起，您將無法再建立新的3.11 叢集。
+> 現有的3.11 叢集將會繼續運作到6月2022，但在該日期之後將不再受到支援。
+>
+> 遵循本指南來 [建立 Azure Red Hat OpenShift 4](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)叢集。
+> 如果您有特定問題， [請洽詢我們](mailto:aro-feedback@microsoft.com)。
 
 適用于容器的 Azure 監視器可針對 Azure Kubernetes Service (AKS) 和 AKS 引擎叢集提供豐富的監視體驗。 本文說明如何啟用監視裝載于 [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 第3版和最新支援版本3的 Kubernetes 叢集，以達成類似的監視體驗。
 
@@ -30,7 +39,7 @@ ms.locfileid: "91994565"
 - 即時資料 (預覽) 
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Log Analytics 工作區](../platform/design-logs-deployment.md)。
 
@@ -235,7 +244,7 @@ ms.locfileid: "91994565"
     provisioningState       : Succeeded
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 啟用監視以收集 RedHat OpenShift 叢集的健康情況和資源使用量，以及在其上執行的工作負載，瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
 
