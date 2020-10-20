@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
-description: 在發行者受控執行個體、散發者受控執行個體、Azure VM 上的 SQL Server 訂閱者，以及必要的網路元件 (例如私人 DNS 區域和 VPN 對等互連) 之間設定複寫的教學課程。
+description: 在發行者受控執行個體、散發者受控執行個體、Azure VM 上的 SQL Server 訂閱者，以及必要的網路元件 (例如私人 DNS 區域和 VNet 對等互連) 之間設定複寫的教學課程。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283185"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058551"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教學課程：設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 
 
 > [!NOTE]
-> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 這與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，後者是一種 Azure SQL 受控執行個體功能，可讓您建立個別執行個體的完整可讀取複本。 在設定[容錯移轉群組的異動複寫](replication-transactional-overview.md#with-failover-groups)時，還要考慮其他事項。
+> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](/sql/relational-databases/replication/transactional/transactional-replication)。 這與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，後者是一種 Azure SQL 受控執行個體功能，可讓您建立個別執行個體的完整可讀取複本。 在設定[容錯移轉群組的異動複寫](replication-transactional-overview.md#with-failover-groups)時，還要考慮其他事項。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -48,10 +48,10 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 - 在相同虛擬網路中部署兩個受控執行個體的經驗。
 - 一個 SQL Server 訂閱者 (可以是內部部署或在 Azure VM 上)。 本教學課程使用 Azure VM。  
 - [SQL Server Management Studio (SSMS) 18.0 或更新版本](/sql/ssms/download-sql-server-management-studio-ssms)。
-- 最新版的 [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)。
+- 最新版的 [Azure PowerShell](/powershell/azure/install-az-ps)。
 - 連接埠 445 和 1433 允許 Azure 防火牆和 Windows 防火牆上的 SQL 流量。
 
-## <a name="1---create-the-resource-group"></a>1 - 建立資源群組
+## <a name="create-the-resource-group"></a>建立資源群組
 
 使用下列 PowerShell 程式碼片段建立新的資源群組︰
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2 - 建立兩個受控執行個體
+## <a name="create-two-managed-instances"></a>建立兩個受控執行個體
 
 使用 [Azure 入口網站](https://portal.azure.com)，在這個新的資源群組內建立兩個受控執行個體。
 
@@ -76,9 +76,9 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 如需建立受控執行個體的詳細資訊，請參閱[在入口網站中建立受控執行個體](instance-create-quickstart.md)。
 
   > [!NOTE]
-  > 為了簡單起見，且因為這是最常見的組態，本教學課程建議將散發者受控執行個體放在與發行者相同的虛擬網路中。 不過，您可以在不同的虛擬網路中建立散發者。 若要這麼做，您必須在發行者與散發者的虛擬網路之間設定 VPN 對等互連，然後在散發者與訂閱者的虛擬網路之間設定 VPN 對等互連。
+  > 為了簡單起見，且因為這是最常見的組態，本教學課程建議將散發者受控執行個體放在與發行者相同的虛擬網路中。 不過，您可以在不同的虛擬網路中建立散發者。 若要這麼做，您必須在發行者與散發者的虛擬網路之間設定 VNet 對等互連，然後在散發者與訂閱者的虛擬網路之間設定 VNet 對等互連。
 
-## <a name="3---create-a-sql-server-vm"></a>3 - 建立 SQL Server VM
+## <a name="create-a-sql-server-vm"></a>建立 SQL Server VM
 
 使用 [Azure 入口網站](https://portal.azure.com)建立 SQL Server 虛擬機器。 SQL Server 虛擬機器應具有下列特性：
 
@@ -89,9 +89,9 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 
 如需將 SQL Server VM 部署至 Azure 的詳細資訊，請參閱[快速入門：建立 SQL Server VM](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)。
 
-## <a name="4---configure-vpn-peering"></a>4 - 設定 VPN 對等互連
+## <a name="configure-vnet-peering"></a>設定 VNet 對等互連
 
-設定 VPN 對等互連，以在兩個受控執行個體的虛擬網路與 SQL Server 的虛擬網路之間啟用通訊。 若要這麼做，請使用下列 PowerShell 程式碼片段：
+設定 VNet 對等互連，以在兩個受控執行個體的虛擬網路與 SQL Server 的虛擬網路之間啟用通訊。 若要這麼做，請使用下列 PowerShell 程式碼片段：
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,11 +136,11 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-建立 VPN 對等互連後，請在 SQL Server 上啟動 SQL Server Management Studio (SSMS)，並連線至這兩個受控執行個體，以測試連線能力。 如需使用 SSMS 連線至受控執行個體的詳細資訊，請參閱[使用 SSMS 連線至 SQL 受控執行個體](point-to-site-p2s-configure.md#connect-with-ssms)。
+建立 VNet 對等互連後，請在 SQL Server 上啟動 SQL Server Management Studio (SSMS)，並連線至這兩個受控執行個體，以測試連線能力。 如需使用 SSMS 連線至受控執行個體的詳細資訊，請參閱[使用 SSMS 連線至 SQL 受控執行個體](point-to-site-p2s-configure.md#connect-with-ssms)。
 
 ![測試對受控執行個體的連線能力](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5 - 建立私人 DNS 區域
+## <a name="create-a-private-dns-zone"></a>建立私人 DNS 區域
 
 私人 DNS 區域可讓受控執行個體與 SQL Server 之間進行 DNS 路由。
 
@@ -180,7 +180,7 @@ Get-AzVirtualNetworkPeering `
 1. 選取 [確定] 以連結您的虛擬網路。
 1. 重複上述步驟，為訂閱者虛擬網路新增連結 (具有 `Sub-link` 之類的名稱)。
 
-## <a name="6---create-an-azure-storage-account"></a>6 - 建立 Azure 儲存體帳戶
+## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
 為工作目錄[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，然後在儲存體帳戶內建立[檔案共用](../../storage/files/storage-how-to-create-file-share.md)。
 
@@ -194,7 +194,7 @@ Get-AzVirtualNetworkPeering `
 
 如需詳細資訊，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 
-## <a name="7---create-a-database"></a>7 - 建立資料庫
+## <a name="create-a-database"></a>建立資料庫
 
 在發行者受控執行個體上建立新的資料庫。 若要這樣做，請依照下列步驟執行：
 
@@ -242,7 +242,7 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8 - 設定散發
+## <a name="configure-distribution"></a>設定散發
 
 建立連線並擁有範例資料庫之後，您就可以在 `sql-mi-distributor` 受控執行個體上設定散發。 若要這樣做，請依照下列步驟執行：
 
@@ -277,7 +277,7 @@ GO
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9 - 建立發行集
+## <a name="create-the-publication"></a>建立發行集
 
 設定散發後，您現在就可以建立發行集。 若要這樣做，請依照下列步驟執行：
 
@@ -298,7 +298,7 @@ GO
 1. 在 [完成精靈] 頁面上，將您的發行集命名為 `ReplTest`，然後選取 [下一步] 以建立發行集。
 1. 發行集建立後，請重新整理 [物件總管] 中的 [複寫] 節點，然後展開 [本機發行集]，以查看新的發行集。
 
-## <a name="10---create-the-subscription"></a>10 - 建立訂閱
+## <a name="create-the-subscription"></a>建立訂用帳戶
 
 發行集建立後，您可以建立訂閱。 若要這樣做，請依照下列步驟執行：
 
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11 - 測試複寫
+## <a name="test-replication"></a>測試複寫
 
 設定複寫後，您可以在發行者上插入新項目，並監看這些變更傳播到訂閱者，藉以測試複寫。
 
@@ -393,7 +393,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 - 確認建立訂閱者時使用了 DNS 名稱。
 - 確認您的虛擬網路已在私人 DNS 區域中正確連結。
 - 確認已正確設定您的 A 記錄。
-- 確認您的 VPN 對等互連已正確設定。
+- 確認您的 VNet 對等互連已正確設定。
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>您沒有可訂閱的發行集
 

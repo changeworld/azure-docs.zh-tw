@@ -3,15 +3,14 @@ title: 監視 Azure Data Lake Analytics-Azure 入口網站
 description: 本文說明如何使用 Azure 入口網站對 Azure Data Lake Analytics 作業進行疑難排解。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: troubleshooting
 ms.date: 12/05/2016
-ms.openlocfilehash: 5445ad61295be3637005ead734cc31126c88a440
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132070"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220273"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站監視 Azure Data Lake Analytics 中的作業
 
@@ -46,7 +45,7 @@ ms.locfileid: "87132070"
 
 8. 按一下 [ **提交作業**]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 資料湖分析概觀](data-lake-analytics-overview.md)
 * [使用 Azure PowerShell 開始使用 Azure 資料湖分析](data-lake-analytics-get-started-powershell.md)

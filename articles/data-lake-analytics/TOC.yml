@@ -68,7 +68,7 @@
             - name: 基本概念
               href: data-lake-analytics-u-sql-get-started.md
             - name: 程式設計語言參考
-              href: 'https://docs.microsoft.com/u-sql/'
+              href: /u-sql/
             - name: 目錄
               href: data-lake-analytics-u-sql-catalog.md
             - name: 使用者定義的運算子
@@ -152,33 +152,33 @@
     - name: Node.js
       href: 'https://www.npmjs.com/package/azure-arm-datalake-analytics'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python'
+      href: /python/api/overview/azure/data-lake-analytics
     - name: REST
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.datalakeanalytics/allversions
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/dla'
+      href: /cli/azure/dla
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure Data Lake 部落格
-      href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
+      href: /archive/blogs/azuredatalake/
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: 要求變更
       href: 'https://feedback.azure.com/forums/327234-data-lake'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-lake-analytics.html'
+      href: /answers/topics/azure-data-lake-analytics.html
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=data-lake-analytics'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-lake'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics'
