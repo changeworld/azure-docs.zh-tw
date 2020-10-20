@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: bf600d835e177ce51870ed2a8894adcd667e3901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c44e6c6a7a9af4edc2c711b17ec50aa2bf62c98
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398047"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202442"
 ---
 # <a name="about-expressroute-fastpath"></a>關於 ExpressRoute FastPath
 
 ExpressRoute 虛擬網路閘道的設計目的是要切換式網路路由及路由網路流量。 FastPath 的設計目的是要改善您的內部部署網路與虛擬網路之間的資料路徑效能。 啟用時，FastPath 會將網路流量直接傳送到虛擬網路中的虛擬機器，略過閘道。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 ### <a name="circuits"></a>電路
 
@@ -41,7 +41,7 @@ FastPath 仍然需要建立虛擬網路閘道，以在虛擬網路與內部部�
 
 * VNet 對等互連：如果您有其他虛擬網路與連線到 ExpressRoute 的虛擬網路對等互連，則從內部部署網路到其他虛擬網路的網路流量 (也就是所謂的「輪輻」 Vnet) 將繼續傳送到虛擬網路閘道。 解決方法是直接將所有虛擬網路連線到 ExpressRoute 線路。
 
-* 基本 Load Balancer：如果您在虛擬網路中部署基本內部負載平衡器，或您在虛擬網路中部署的 Azure PaaS 服務使用基本的內部負載平衡器，則從內部部署網路到裝載于基本負載平衡器之虛擬 Ip 的網路流量都會傳送至虛擬網路閘道。 解決方法是將基本負載平衡器升級到 [標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
+* 基本 Load Balancer：如果您在虛擬網路中部署基本內部負載平衡器，或您在虛擬網路中部署的 Azure PaaS 服務使用基本的內部負載平衡器，則從內部部署網路到裝載于基本負載平衡器之虛擬 Ip 的網路流量都會傳送至虛擬網路閘道。 解決方法是將基本負載平衡器升級到 [標準負載平衡器](../load-balancer/load-balancer-overview.md)。
 
 * Private Link：如果您從內部部署網路連線到虛擬網路中的 [私人端點](../private-link/private-link-overview.md) ，連線會通過虛擬網路閘道。
  

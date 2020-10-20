@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 073fab4aee084513db4ca05af6c12087c0a8f911
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360951"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206368"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -75,7 +75,7 @@ ms.locfileid: "91360951"
    * 輸入 **資源群組**的名稱。 我們建議 **SpeechEchoBotTutorial-ResourceGroup**。
    * 從 [ **區域** ] 下拉式清單中，選取 [ **美國西部**]。
 1. 按一下 [檢閱及建立]。 您應該會看到已通過讀取 **驗證**的橫幅。
-1. 按一下 [建立]。 建立資源群組可能需要幾分鐘的時間。
+1. 按一下 [建立]  。 建立資源群組可能需要幾分鐘的時間。
 1. 如同您稍後在本教學課程中建立的資源，建議您將此資源群組釘選到您的儀表板以方便存取。 如果您想要釘選此資源群組，請按一下資源組名右邊的釘選圖示。
 
 ### <a name="choosing-an-azure-region"></a>選擇 Azure 區域
@@ -124,7 +124,7 @@ ms.locfileid: "91360951"
    * 針對 [ **區域**]，請選取 [ **美國西部**]。
    * 針對 [ **定價層**]，請確定已選取 [ **標準 S1** ]。 這應該是預設值。 如果不是，請確定您已如上面所述將 **作業系統** 設定為 **Windows** 。
 5. 按一下 [檢閱及建立]。 您應該會看到已通過讀取 **驗證**的橫幅。
-6. 按一下 [建立]。 建立資源群組可能需要幾分鐘的時間。
+6. 按一下 [建立]  。 建立資源群組可能需要幾分鐘的時間。
 
 此時，請確認您的資源群組 (**SpeechEchoBotTutorial** 資源群組) 有兩個資源：
 
@@ -201,7 +201,7 @@ ms.locfileid: "91360951"
    * 針對 **訂**用帳戶，將其設定為 **免費試用**
    * 針對 **資源群組**，請選取 **SpeechEchoBotTutorial-ResourceGroup**
    * 若為 **主控方案**，請選取 **SpeechEchoBotTutorial-AppServicePlan**
-1. 按一下 [建立]。 在最後的 wizard 畫面上，按一下 **[完成**]。
+1. 按一下 [建立]  。 在最後的 wizard 畫面上，按一下 **[完成**]。
 1. 按一下 [發佈] 畫面右側的 [ **發行** ]。 Visual Studio 將 bot 部署到 Azure。
 1. 您應該會在 Visual Studio 的輸出視窗中看到成功訊息，如下所示：
 
@@ -227,7 +227,7 @@ ms.locfileid: "91360951"
 2. 在左側流覽窗格的 [設定] 底下，**按一下 [****設定**]。
 3. 選取 [ **一般設定** ] 索引標籤。
 4. 找出 **Web 通訊端** 的切換，並將其設定為 [ **開啟**]。
-5. 按一下 **[儲存]** 。
+5. 按一下 [儲存]。
 
 > [!TIP]
 > 您可以使用 Azure App Service 頁面頂端的控制項來停止或重新開機服務。 進行疑難排解時，這可能很有用。
@@ -254,7 +254,7 @@ ms.locfileid: "91360951"
 |------|-------|----------|
 | EchoBot20190805125647 | App Service 方案 | 美國西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service 方案 | 美國西部 |
-| SpeechEchoBotTutorial-BotRegistration-8726 | Bot 通道註冊 | 全域 |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Bot 通道註冊 | 全球 |
 | SpeechEchoBotTutorial-Speech | 認知服務 | 美國西部 |
 
 > [!IMPORTANT]
@@ -291,11 +291,11 @@ ms.locfileid: "91360951"
    * 檢查標題為 [ **設定 Direct Line Speech**] 的頁面上的文字，然後展開 [ **認知服務帳戶** ] 下拉式功能表。
    * 從功能表選取您稍早建立的語音資源 (例如 **SpeechEchoBotTutorial-語音**) ，以將您的 bot 與您的語音訂用帳戶金鑰建立關聯。
    * 略過其餘的選擇性欄位。
-   * 按一下 **[儲存]** 。
+   * 按一下 [儲存]。
 
 1. 從 **Bot 管理** 流覽中，按一下 [ **設定**]。
    * 核取標示為 [ **啟用串流端點**] 的核取方塊。 若要建立以 web 通訊端為基礎的通訊協定，您的 bot 與 Direct Line 語音通道之間必須要有這種情況。
-   * 按一下 **[儲存]** 。
+   * 按一下 [儲存]。
 
 > [!TIP]
 > 如果您想要深入瞭解，請參閱 [將 bot 連線到 Direct Line 語音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此頁面包含其他資訊和已知問題。
@@ -412,7 +412,7 @@ Windows 語音助理用戶端會使用 NuGet 套件 [CognitiveServices](https://
 
 在 Windows 語音助理用戶端原始程式碼中，查看這些檔案以查看用來啟用關鍵字偵測的程式碼：
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) 包含語音 SDK 方法的呼叫 [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) ，這個方法可用來從磁片上的本機檔案具現化模型。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) 包含語音 SDK 方法的呼叫 [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest&preserve-view=true#fromfile-string-) ，這個方法可用來從磁片上的本機檔案具現化模型。
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) 包含語音 SDK 方法的呼叫 [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) ，可啟用連續關鍵字偵測。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a> (選擇性) 變更語言和 bot 語音

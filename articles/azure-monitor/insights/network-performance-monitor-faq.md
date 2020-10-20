@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8c8e7539b888141a22e92378d78282edd1ce6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326132"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208017"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -95,7 +95,7 @@ NPM 使用專用演算法來探索來源和目的地之間的所有路徑和躍�
 NPM 會根據其所屬之狀況不良的路徑數量，運用機率機制將故障機率指派給每個網路路徑、網路區段和組成網路躍點。 由於網路區段和躍點成為更多狀況不良路徑的一部分，與其相關聯的錯誤機率也隨之增加。 當您有許多 NPM 代理程式互相連接的節點時，此演算法的效果最佳，因為這會增加資料點以計算錯誤機率。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中建立警示？
-從 NPM UI 建立警示目前的原因是發生問題。 請手動建立警示。
+目前，由於已知問題，從 NPM UI 建立警示失敗。 請 [手動建立警示](../platform/alerts-log.md)。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>警示的預設 Log Analytics 查詢有哪些
 效能監視器查詢
@@ -297,7 +297,7 @@ NPM 僅會在執行 EnableRules.ps1 Powershell 指令碼的節點上建立本機
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM 能否以微秒為單位報告延遲數？
 NPM 會在 UI 中四捨五入延遲數，並以毫秒為單位。 相同的資料會以較高的細微性儲存 (有時會高達四個小數位)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需深入了解網路效能監控，請參閱 [Azure 中的網路效能監控解決方案](./network-performance-monitor.md)。
 

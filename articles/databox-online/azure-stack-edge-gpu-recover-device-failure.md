@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ef99ff874376e0d76e45e4b0b2c36a78d938130b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843799"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205573"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>從失敗的 Azure Stack Edge Pro GPU 裝置復原 
 
@@ -62,7 +62,8 @@ ms.locfileid: "91843799"
 | 協力廠商軟體           | 解決方案的參考                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> 如需詳細資訊，請聯絡 Cohesity。          |
-| Veritas                        | 如需詳細資訊，請洽詢 Veritas。   |
+| Commvault                      | https://www.commvault.com/azure <br> 如需詳細資訊，請聯絡 Commvault。 |
+| Veritas                        | http://veritas.com/azure <br> 如需詳細資訊，請洽詢 Veritas。   |
 
 完整設定更換裝置之後，請啟用裝置以進行本機儲存體。 
 
@@ -82,7 +83,8 @@ ms.locfileid: "91843799"
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure 備份 Microsoft Azure 復原服務 (MARS) 代理程式 | Windows        | [關於 MARS 代理程式](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows、Linux | [Microsoft Azure 整合、備份和修復解決方案簡介](https://www.cohesity.com/solution/cloud/azure) <br>如需詳細資訊，請聯絡 Cohesity。                          |
-| Veritas                 | Windows、Linux | 如需詳細資訊，請洽詢 Veritas。                    |
+| Commvault               | Windows、Linux | https://www.commvault.com/azure <br> 如需詳細資訊，請聯絡 Commvault。
+| Veritas                 | Windows、Linux | http://veritas.com/azure <br> 如需詳細資訊，請洽詢 Veritas。                    |
 
 完整設定更換裝置之後，您可以使用先前使用的 VM 映射重新部署 Vm。 
 

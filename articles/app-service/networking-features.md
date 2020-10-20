@@ -4,21 +4,21 @@ description: 瞭解 Azure App Service 中的網路功能，以及網路在安全
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743041"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207035"
 ---
 # <a name="app-service-networking-features"></a>App Service 網路功能
 
 Azure App Service 中的應用程式可以透過多種方式進行部署。 根據預設，App Service 裝載的應用程式可直接存取網際網路，而且只能連線至網際網路裝載的端點。 但是，許多客戶應用程式都需要控制輸入和輸出網路流量。 App Service 中有幾項功能可滿足這些需求。 挑戰在於知道應該使用哪一項功能來解決指定的問題。 本檔的目的是協助客戶根據某些範例使用案例來判斷應該使用哪一項功能。
 
-Azure App Service 有兩種主要的部署類型。 有多租使用者公用服務，可在免費、共用、基本、標準、Premium、>premiumv2 和 PremiumV3 定價 Sku 中裝載 App Service 方案。 然後 App Service 環境 (ASE) 的單一租使用者，其會直接在 Azure 虛擬網路 (VNet) 中裝載隔離的 SKU App Service 方案。 如果您在多租使用者服務或 ASE 中，您使用的功能會有所不同。 
+Azure App Service 有兩種主要的部署類型。 有多租使用者公用服務，可在免費、共用、基本、標準、Premium、>premiumv2 和 Premiumv3 定價 Sku 中裝載 App Service 方案。 然後 App Service 環境 (ASE) 的單一租使用者，其會直接在 Azure 虛擬網路 (VNet) 中裝載隔離的 SKU App Service 方案。 如果您在多租使用者服務或 ASE 中，您使用的功能會有所不同。 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>多租使用者 App Service 網路功能 
 
@@ -41,9 +41,9 @@ Azure App Service 是分散式系統。 處理傳入 HTTP/HTTPS 要求的角色�
 | 針對您的應用程式支援以 IP 為基礎的 SSL 需求 | 應用程式指派的位址 |
 | 您的應用程式不是共用的專用輸入位址 | 應用程式指派的位址 |
 | 從一組定義完善的位址限制對您應用程式的存取 | 存取限制 |
-| 從 VNet 中的資源限制對我的應用程式的存取 | 服務端點 </br> ILB ASE </br> 私人端點 (預覽)  |
-| 在我的 VNet 中公開私人 IP 上的應用程式 | ILB ASE </br> 具有服務端點的應用程式閘道上輸入的私人 IP </br> 服務端點 (預覽)  |
-| 使用 WAF 保護我的應用程式 | 應用程式閘道 + ILB ASE </br> 具有服務端點的應用程式閘道 </br> 具有存取限制的 Azure Front Door |
+| 從 VNet 中的資源限制對我的應用程式的存取 | 服務端點 </br> ILB ASE </br> 私人端點 |
+| 在我的 VNet 中公開私人 IP 上的應用程式 | ILB ASE </br> 私人端點 </br> 具有服務端點的應用程式閘道上輸入的私人 IP |
+| 使用 Web 應用程式防火牆保護我的應用程式 (WAF)  | 應用程式閘道 + ILB ASE </br> 具有私人端點的應用程式閘道 </br> 具有服務端點的應用程式閘道 </br> 具有存取限制的 Azure Front Door |
 | 對我的應用程式在不同區域的流量進行負載平衡 | 具有存取限制的 Azure Front Door | 
 | 針對相同區域中的流量進行負載平衡 | [具有服務端點的應用程式閘道][appgwserviceendpoints] | 
 
@@ -62,11 +62,15 @@ Azure App Service 是分散式系統。 處理傳入 HTTP/HTTPS 要求的角色�
 
 ### <a name="default-networking-behavior"></a>預設網路行為
 
-Azure App Service 的縮放單位支援每個部署中的許多客戶。 免費和共用的 SKU 方案會在多租使用者背景工作角色上裝載客戶工作負載。 基本版和以上方案可裝載僅限一個 App Service 方案 (ASP) 專屬的客戶工作負載。 如果您有標準 App Service 方案，則該方案中的所有應用程式都會在相同的背景工作上執行。 如果您相應放大背景工作角色，則該 ASP 中的所有應用程式都會在您 ASP 中的每個實例的新背景工作角色上進行複寫。 用於 >premiumv2 和 PremiumV3 的背景工作角色不同于其他方案所使用的背景工作角色。 每個 App Service 部署都有一個 IP 位址，可用於該 App Service 部署中應用程式的所有輸入流量。 不過，在任何位置都有4到11個用於進行輸出呼叫的位址。 這些位址會由該 App Service 部署中的所有應用程式共用。 輸出位址會根據不同的背景工作類型而有所不同。 這表示 Free、Shared、Basic、Standard 和 Premium Asp 所使用的位址，與 >premiumv2 和 PremiumV3 Asp 的輸出呼叫所使用的位址不同。 如果您查看應用程式的屬性，您可以看到您的應用程式所使用的輸入和輸出位址。 如果您需要鎖定與 IP ACL 之間的相依性，請使用 possibleOutboundAddresses。 
+Azure App Service 的縮放單位支援每個部署中的許多客戶。 免費和共用的 SKU 方案會在多租使用者背景工作角色上裝載客戶工作負載。 基本版和以上方案可裝載僅限一個 App Service 方案 (ASP) 專屬的客戶工作負載。 如果您有標準 App Service 方案，則該方案中的所有應用程式都會在相同的背景工作上執行。 如果您相應放大背景工作角色，則該 ASP 中的所有應用程式都會在您 ASP 中的每個實例的新背景工作角色上進行複寫。 
+
+#### <a name="outbound-addresses"></a>輸出位址
+
+背景工作 Vm 會在 App Service 定價方案的大型部分細分。 免費、共用、基本、標準和 Premium 全都使用相同的背景工作 VM 類型。 >premiumv2 是在另一個 VM 類型上。 Premiumv3 還在另一種 VM 類型上。 每個 VM 系列的變更都有一組不同的輸出位址。 如果您從標準調整為 >premiumv2，您的輸出位址將會變更。 如果您從 >premiumv2 調整為 Premiumv3，您的輸出位址將會變更。 當您從標準級別調整為 >premiumv2 時，有一些較舊的縮放單位會變更輸入和輸出位址。 有幾個位址用於進行輸出呼叫。 您的應用程式用來進行輸出呼叫的輸出位址會列在應用程式的屬性中。 這些位址會由在 App Service 部署的相同背景工作 VM 系列上執行的所有應用程式共用。 如果您想要查看應用程式可能會在該縮放單位中使用的所有可能位址，還有另一個稱為 possibleOutboundAddresses 的屬性會列出它們。 
 
 ![應用程式屬性](media/networking-features/app-properties.png)
 
-App Service 有許多用來管理服務的端點。  這些位址會在個別的檔中發行，而且也會在 AppServiceManagement IP 服務標記中。 AppServiceManagement 標籤只會搭配 App Service 環境 (ASE) （您需要允許這類流量）使用。 App Service 的輸入位址會在 AppService IP 服務標記中進行追蹤。 沒有 IP 服務標記包含 App Service 使用的輸出位址。 
+App Service 有許多用來管理服務的端點。  這些位址會在個別的檔中發行，而且也會在 AppServiceManagement IP 服務標記中。 AppServiceManagement 標記只適用于您需要允許這類流量的 App Service 環境。 App Service 的輸入位址會在 AppService IP 服務標記中進行追蹤。 沒有 IP 服務標記包含 App Service 使用的輸出位址。 
 
 ![App Service 輸入和輸出圖表](media/networking-features/default-behavior.png)
 
@@ -100,7 +104,7 @@ App Service 有許多用來管理服務的端點。  這些位址會在個別的
 
 ### <a name="service-endpoints"></a>服務端點
 
-服務端點可讓您鎖定應用程式的 **輸入** 存取，使來源位址必須來自您所選取的一組子網。 這項功能與 IP 存取限制搭配運作。 服務端點會設定為與 IP 存取限制相同的使用者體驗。 您可以建立包含公用位址以及 Vnet 中子網的存取規則的允許/拒絕清單。 這項功能支援的案例如下：
+服務端點可讓您鎖定應用程式的 **輸入** 存取，使來源位址必須來自您所選取的一組子網。 這項功能與 IP 存取限制搭配運作。 服務端點與遠端偵錯不相容。 若要對您的應用程式使用遠端偵錯程式，您的用戶端不能在啟用服務端點的子網中。 服務端點會設定為與 IP 存取限制相同的使用者體驗。 您可以建立包含公用位址以及 Vnet 中子網的存取規則的允許/拒絕清單。 這項功能支援的案例如下：
 
 ![服務端點](media/networking-features/service-endpoints.png)
 
@@ -111,10 +115,18 @@ App Service 有許多用來管理服務的端點。  這些位址會在個別的
 
 在設定[服務端點存取限制][serviceendpoints]的教學課程中，您可以深入瞭解如何使用您的應用程式來設定服務端點
 
-### <a name="private-endpoint-preview"></a>私人端點 (預覽) 
+### <a name="private-endpoints"></a>私人端點
 
 私人端點是一種網路介面，可透過 Azure Private Link，以私人且安全的方式連線到您的 Web 應用程式。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將 Web 應用程式帶入您的 VNet 中。 這項功能僅適用于 Web 應用程式的 **輸入** 流量。
-[使用 Azure Web 應用程式的私人端點 (預覽)][privateendpoints]
+[使用 Azure Web 應用程式的私人端點][privateendpoints]
+
+私人端點可啟用下列案例：
+
+* 從 VNet 中的資源限制對我的應用程式的存取 
+* 在我的 VNet 中公開私人 IP 上的應用程式 
+* 使用 WAF 保護我的應用程式 
+
+私人端點會防止資料遭到外泄，因為您可以在私人端點上達到唯一的目的，就是它所設定的應用程式。 
  
 ### <a name="hybrid-connections"></a>混合式連線
 
@@ -213,22 +225,58 @@ ASE 提供有關隔離和專用應用程式裝載的最佳案例，但有一些�
 
 ### <a name="create-multi-tier-applications"></a>建立多層式應用程式
 
-多層式應用程式是一種應用程式，只能從前端層存取 API 後端應用程式。 若要建立多層式應用程式，您可以：
+多層式應用程式是一種應用程式，只能從前端層存取 API 後端應用程式。 有兩種方式可建立多層式應用程式。 兩者都是從使用 VNet 整合開始，以將您的前端 web 應用程式與 VNet 中的子網連線。 這可讓您的 web 應用程式對您的 VNet 進行呼叫。 當您的前端應用程式連線到 VNet 之後，您必須選擇如何鎖定對您的 API 應用程式的存取。  您可以：
 
-* 使用 VNet 整合將前端 web 應用程式的後端與 VNet 中的子網連線
-* 使用服務端點來保護 API 應用程式的輸入流量，只來自您的前端 web 應用程式所使用的子網
+* 將前端和 API 應用程式裝載在相同的 ILB ASE 中，並使用應用程式閘道將前端應用程式公開至網際網路
+* 在 ILB ASE 中裝載多租使用者服務和後端的前端
+* 在多租使用者服務中裝載前端和 API 應用程式
 
-![多層式應用程式](media/networking-features/multi-tier-app.png)
+如果您同時裝載多層式應用程式的前端和 API 應用程式，您可以：
 
-您可以讓多個前端應用程式使用相同的 API 應用程式，方法是使用 VNet 整合，從 API 應用程式中的其他前端應用程式和服務端點與其子網。  
+使用 VNet 中的私人端點公開您的 API 應用程式
+
+![私人端點兩層應用程式](media/networking-features/multi-tier-app-private-endpoint.png)
+
+使用服務端點來保護 API 應用程式的輸入流量，只來自您的前端 web 應用程式所使用的子網
+
+![服務端點安全的應用程式](media/networking-features/multi-tier-app.png)
+
+這兩種技術之間的取捨如下：
+
+* 使用服務端點時，您只需要保護將 API 應用程式流向整合子網的流量。 這可保護 API 應用程式，但您仍然可以從前端應用程式將資料遭到外泄到 App Service 中的其他應用程式。
+* 使用私人端點時，您會有兩個子網在播放中。 這會增加複雜度。 此外，私人端點是最上層資源，可增加更多管理。 使用私人端點的好處是，您沒有資料遭到外泄的可能性。 
+
+這兩種技術都可使用多個前端。 就小規模而言，服務端點很容易使用，因為您只需在前端整合子網上啟用 API 應用程式的服務端點。 當您新增更多前端應用程式時，您必須將每個 API 應用程式調整為具有整合子網的服務端點。 使用私人端點時，您會有更複雜的工作，但在設定私人端點之後，您就不需要變更 API apps 上的任何資訊。 
+
+### <a name="line-of-business-applications"></a>企業營運應用程式
+
+企業營運 (LOB) 應用程式是通常不會公開以供網際網路存取的內部應用程式。 這些應用程式是從公司網路內部呼叫，可嚴格控制存取權。 如果您使用 ILB ASE，很容易就能裝載您的企業營運應用程式。 如果您使用多租使用者服務，可以使用私人端點或服務端點與應用程式閘道結合。 使用應用程式閘道與服務端點（而不是私人端點）有兩個原因：
+
+* 您的 LOB 應用程式需要 WAF 保護
+* 您想要對 LOB 應用程式的多個實例進行負載平衡
+
+如果不是這種情況，則您最好使用私用端點。 使用 App Service 中的私人端點時，您可以在 VNet 的私人位址上公開您的應用程式。 您放置在 VNet 中的私人端點可透過 ExpressRoute 和 VPN 連線來達成。 設定私人端點將會在私人位址上公開您的應用程式，但您必須將 DNS 設定為從內部部署連接到該位址。 若要完成此工作，您必須將包含私人端點的 Azure DNS 私人區域轉送至內部部署 DNS 伺服器。 Azure DNS 私人區域不支援區域轉送，但您可以針對該目的使用 DNS 伺服器來支援此功能。 此範本（ [DNS](https://azure.microsoft.com/resources/templates/301-dns-forwarder/)轉寄站）可讓您更輕鬆地將 Azure DNS 私人區域轉寄到內部部署 DNS 伺服器。
+
+## <a name="app-service-ports"></a>App Service 埠
+
+如果您掃描 App Service，將會發現數個針對輸入連線所公開的埠。 無法在多租使用者服務中封鎖或控制對這些埠的存取。 公開的埠如下所示：
+
+| 使用 | 連接埠 |
+|----------|-------------|
+|  HTTP/HTTPS  | 80、443 |
+|  管理性 | 454、455 |
+|  FTP/FTPS    | 21、990、10001-10020 |
+|  Visual Studio 遠端偵錯  |  4020、4022、4024 |
+|  Web Deploy 服務 | 8172 |
+|  基礎結構使用 | 7654、1221 |
 
 <!--Links-->
-[appassignedaddress]: ./configure-ssl-certificate.md
-[iprestrictions]: ./app-service-ip-restrictions.md
-[serviceendpoints]: ./app-service-ip-restrictions.md
-[hybridconn]: ./app-service-hybrid-connections.md
-[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
-[vnetintegration]: ./web-sites-integrate-with-vnet.md
-[networkinfo]: ./environment/network-info.md
-[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
-[privateendpoints]: ./networking/private-endpoint.md
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
+[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
+[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

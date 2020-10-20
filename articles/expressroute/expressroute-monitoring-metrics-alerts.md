@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d92b5685722b8a37de3945caa1305a76b3cabb8a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252624"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206232"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 監視、計量和警示
 
@@ -70,7 +70,7 @@ ms.locfileid: "91252624"
 
 ### <a name="arp-availability---split-by-peering"></a>ARP 可用性-依對等互連分割  
 
-您可以在對等互連和對等 (主要和次要 ExpressRoute 路由器) ，全面觀看 [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) 的即時可用性。 此儀表板會顯示在這兩個對等之間的私用對等 ARP 會話，但會在對等互連之間完成 Microsoft 對等互連。 預設匯總 (平均) 在兩個對等之間使用。  
+您可以在對等互連和對等 (主要和次要 ExpressRoute 路由器) ，全面觀看 [ARP](./expressroute-troubleshooting-arp-resource-manager.md) 的即時可用性。 此儀表板會顯示在這兩個對等之間的私用對等 ARP 會話，但會在對等互連之間完成 Microsoft 對等互連。 預設匯總 (平均) 在兩個對等之間使用。  
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="電路計量":::
 
@@ -162,7 +162,7 @@ ms.locfileid: "91252624"
 |**資料行**|**型別**|**說明**|
 | --- | --- | --- |
 |TimeGrain|字串|每分鐘都會推送 PT1M (度量值) |
-|Count|real|通常等於 2 (每個 MSEE 會每分鐘推送一個度量值) |
+|計數|real|通常等於 2 (每個 MSEE 會每分鐘推送一個度量值) |
 |最低需求|real|這兩個 Msee 推播的兩個度量值的最小值|
 |最大值|real|這兩個 Msee 所推送的兩個度量值上限|
 |平均|real|等於 (最小值 + 最大值) /2|

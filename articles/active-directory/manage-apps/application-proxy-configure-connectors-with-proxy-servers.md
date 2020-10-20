@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2311b905aeeaacb6c445f441d5268d06a150de64
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107635"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208000"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用現有的內部部署 Proxy 伺服器
 
@@ -113,7 +113,7 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 | URL | 使用方式 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 連接器和應用程式 Proxy 雲端服務之間的通訊 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 連接器會使用這些 URL 來驗證憑證 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 連接器會使用這些 URL 來確認憑證。 |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
 
 如果防火牆或 Proxy 可供設定 DNS 允許清單，則可允許連往 \*.msappproxy.net 和 \*.servicebus.windows.net 的連線。

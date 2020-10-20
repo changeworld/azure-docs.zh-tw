@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462372"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206198"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -24,7 +24,7 @@ ms.locfileid: "89462372"
 
 ### <a name="new-features"></a>新功能
 
-* 類**神經 TTS：的 `en-US` 新說話樣式Aria 語音**。 在閱讀新聞時，AriaNeural 聽起來可能像 newscaster。 「Newscast 型」樣式聽起來更嚴重，而「newscast」的樣式比較寬鬆且非正式。 瞭解 [如何在 SSML 中使用說話樣式](speech-synthesis-markup.md)。
+* 類**神經 TTS：的 `en-US` 新說話樣式Aria 語音**。 AriaNeural 在閱讀新聞時可能會像新聞 caster 一樣。 「Newscast 型」樣式聽起來更嚴重，而「newscast」的樣式比較寬鬆且非正式。 瞭解 [如何在 SSML 中使用說話樣式](speech-synthesis-markup.md)。
 
 * **自訂語音：會發行新的功能，以自動檢查定型資料品質**。 當您上傳資料時，系統會檢查音訊和文字記錄資料的各個層面，並自動修正或篩選問題，以改善語音模型的品質。 這涵蓋音訊的音量、雜訊等級、語音的發音精確度、具有正規化文字的語音對齊、音訊的無回應，以及音訊和腳本的格式。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "89462372"
 
     * SSML 檔：連結到 SSML 檔，可協助您檢查如何使用所有微調功能的規則。
 
-* **語音清單 API 已更新為包含使用者易記的顯示名稱，以及針對類神經語音支援的語音樣式**。
+* **語音清單 API 已更新為包含方便使用的顯示名稱和類神經語音支援的語音樣式**。
 
 ### <a name="general-tts-voice-quality-improvements"></a>一般 TTS 語音品質改進
 
@@ -64,7 +64,7 @@ ms.locfileid: "89462372"
 * 使用音訊內容建立工具修正了許多 bug 
     * 已修正自動重新整理的問題。 
     * 修正了 zh 中的語音樣式在南東亞地區的-CN 問題。
-    * 修正穩定性問題，包括具有「中斷」標記的匯出錯誤，以及標點符號中的錯誤。    
+    * 修正穩定性問題，包括具有「中斷」標記的匯出錯誤，以及標點符號中的錯誤。
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>新的語音轉換文字地區設定： 2020-8 月版本
 語音轉換文字已于8月發行26個新的地區設定：2個歐洲語言， `cs-CZ` 以及 `hu-HU` 5 個英文地區設定和19個西班牙文的地區設定，涵蓋大部分的南美洲國家/地區。 以下是新的地區設定清單。 請參閱 [這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)的完整語言清單。
@@ -162,9 +162,9 @@ ms.locfileid: "89462372"
     * 以 `de-DE` 最新的韻律模型方法更新了 Katja，MOS (Mean 意見分數) 增益是 + 0.13。 
     * 以 `ja-JP` 新的音調輔韻律模型更新了 Nanami，MOS (Mean 意見分數) 增益是 + 0.19;  
 
-* 改進5種語言的單字層級發音精確度。
+* 改進了五種語言的單字層級發音精確度。
 
-    | Language | 發音錯誤減少 |
+    | 語言 | 發音錯誤減少 |
     |---|---|
     | `en-GB` | 51% |
     | `ko-KR` | 17% |
@@ -177,7 +177,7 @@ ms.locfileid: "89462372"
 * 貨幣讀取
     * 修正了和的貨幣讀取問題 `es-ES``es-MX`
      
-    | Language | 輸入 | 改進後讀出 |
+    | 語言 | 輸入 | 改進後讀出 |
     |---|---|---|
     | `es-MX` | $1.58 | un 比索 cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |
@@ -205,12 +205,12 @@ ms.locfileid: "89462372"
     -   `spx help csr examples`
 
 **新功能**
--   **C \# ，c + +**：說話者辨識預覽：這項功能可讓說話者識別 (說話？ ) 和說話者驗證 (是他們宣稱的身分？ ) 。 首先 [，請閱讀](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview)「 [說話者辨識基本」文章](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics)或 [API 參考](https://docs.microsoft.com/rest/api/speakerrecognition/)檔。
+-   **C \# ，c + +**：說話者辨識預覽：這項功能可讓說話者識別 (說話？ ) 和說話者驗證 (是他們宣稱的說話者？ ) 。 首先 [，請閱讀](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview)「 [說話者辨識基本」文章](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics)或 [API 參考](https://docs.microsoft.com/rest/api/speakerrecognition/)檔。
 
 **Bug 修正**
 -   **C \# ，c + +**：固定麥克風錄製在1.12 的說話者辨識中無法運作。
 -   **JavaScript**：針對 Firefox 中的文字轉換語音，以及在 MacOS 和 iOS 上的 Safari 進行修正。
--   修正在使用8通道串流時，對交談轉譯時發生的 Windows application verifier 存取違規損毀。
+-   修正在使用八個通道的資料流程時，對交談轉譯的 Windows application verifier 存取違規損毀。
 -   修正多重裝置交談轉譯上的 Windows application verifier 存取違規損毀。
 
 **範例**
@@ -234,13 +234,13 @@ ms.locfileid: "89462372"
 
 **改善 & 優化**
 - **JavaScript**：優化的瀏覽器麥克風實行改善語音辨識精確度。
-- **JAVA**：使用直接 JNI 執行而不 SWIG 重構的系結。 這可減少針對 Windows、Android、Linux 和 Mac 使用的所有 JAVA 套件的系結大小10倍，並簡化語音 SDK JAVA 執行的進一步開發。
+- **JAVA**：使用直接 JNI 執行而不 SWIG 重構的系結。 針對 Windows、Android、Linux 和 Mac 使用的所有 JAVA 封裝，這項變更會減少10倍的系結大小，並簡化語音 SDK JAVA 執行的進一步開發。
 - **Linux**：已更新包含最新 RHEL 7 特定附注的支援 [檔](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux) 。
-- 改善連接邏輯，以便在服務和網路錯誤時嘗試連接多次。
+- 改善連接邏輯，以在發生服務和網路錯誤時嘗試連接多次。
 - 已更新 [Portal.azure.com](https://portal.azure.com) 語音快速入門頁面，協助開發人員在 azure 語音旅程圖中採取下一個步驟。
 
 **Bug 修正**
-- **C #、JAVA**：已修正在 Linux ARM 上載入 SDK 程式庫 (32 和64位) 的 [問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) 。
+- **C #、JAVA**：已修正在 Linux ARM 上載入 SDK 程式庫 (32 位和64位) 的 [問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) 。
 - **C #**：已修正 TranslationRecognizer、IntentRecognizer 和 Connection 物件原生控制碼的明確處置。
 - **C #**：固定 ConversationTranscriber 物件的音訊輸入存留期管理。
 - 修正了 `IntentRecognizer` 從簡單片語辨識意圖時，未正確設定結果原因的問題。
@@ -253,7 +253,7 @@ ms.locfileid: "89462372"
 - **JavaScript**：新增 [文字轉換語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、 [轉譯](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)和 [意圖辨識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入門。
 - [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)和[JAVA](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) 的關鍵字辨識範例。  
 
-**Covid-19-19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動驗證測試。 我們尚未進行任何變更，而且我們的自動化測試全都通過了。 在不太可能發生的情況下，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br>
+**Covid-19-19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動驗證測試。 我們尚未進行任何變更，而且我們的自動化測試全都通過了。 如果我們錯過了某個內容，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br>
 保持狀況良好！
 
 ## <a name="speech-sdk-1110-2020-march-release"></a>語音 SDK 1.11.0： 2020-三月版
@@ -263,22 +263,22 @@ ms.locfileid: "89462372"
 - C #、c + +： `UtteranceId` 在中加入 `ConversationTranscriptionResult` ，在所有中繼和最終語音辨識結果中都是一致的識別碼。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)的詳細資料。
 - Python：已新增的支援 `Language ID` 。 請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)存放庫中的 speech_sample .py。
 - Windows：已針對所有 win32 主控台應用程式，在 Windows 平臺上新增壓縮的音訊輸入格式支援。 詳細 [資訊](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)請參閱。 
-- JavaScript：支援 NodeJS 中的語音合成 (文字轉換語音) 。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)深入了解。 
-- JavaScript：加入新的 API，以啟用所有傳送和接收訊息的檢查。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)深入了解。 
+- JavaScript：支援 NodeJS 中的語音合成 (文字轉換語音) 。 請按一下[這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)進一步了解。 
+- JavaScript：加入新的 API，以啟用所有傳送和接收訊息的檢查。 請按一下[這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)進一步了解。 
         
 **Bug 修正**
 - C #、c + +：已修正問題，因此 `SendMessageAsync` 現在會將二進位訊息傳送為二進位類型。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)的詳細資料。
 - C #、c + +：已修正使用 `Connection MessageReceived` 事件在 `Recognizer` 物件之前處置時可能造成損毀的問題 `Connection` 。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)的詳細資料。
 - Android：來自麥克風的音訊緩衝區大小從800ms 減少為100毫秒，以改善延遲。
 - Android：已修正 Android Studio 中 x86 Android 模擬器的 [問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) 。
-- JavaScript：已新增使用 API 的中國區域支援 `fromSubscription` 。 詳細 [資訊](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-)請參閱。 
+- JavaScript：已新增使用 API 的中國區域支援 `fromSubscription` 。 詳細 [資訊](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-)請參閱。 
 - JavaScript：針對 NodeJS 的連接失敗，新增更多錯誤資訊。
         
 **範例**
 - Unity：意圖辨識公用範例是固定的，其中 LUIS json 匯入失敗。 詳細 [資訊](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369)請參閱。
 - Python：為新增的範例 `Language ID` 。 詳細 [資訊](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)請參閱。
     
-**Covid19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動裝置驗證測試。 其中一個範例是在 Linux、iOS 和 macOS 上測試麥克風輸入和說話者輸出。 我們尚未進行任何變更，因此我們認為這些平臺上的所有內容都不會有任何改變，而且所有的自動化測試都能通過。 在不太可能發生的情況下，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br> 感謝您的持續支援。 如往常一樣，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 或 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731)張貼問題或意見反應。<br>
+**Covid19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動裝置驗證測試。 例如，我們無法測試 Linux、iOS 和 macOS 上的麥克風輸入和說話者輸出。 我們尚未進行任何變更，因此我們認為這些平臺上的所有內容都不會有任何改變，而且所有的自動化測試都能通過。 在不太可能發生的情況下，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br> 感謝您的持續支援。 如往常一樣，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 或 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731)張貼問題或意見反應。<br>
 保持狀況良好！
 
 ## <a name="speech-sdk-1100-2020-february-release"></a>語音 SDK 1.10.0： 2020-二月版
@@ -369,7 +369,7 @@ ms.locfileid: "89462372"
 **重大變更**
 
 - 對話 Transcriber 功能已移至命名空間下 `Microsoft.CognitiveServices.Speech.Transcription` 。
-- 對話 Transcriber 方法的一部分會移至新的 `Conversation` 類別。
+- 對話 Transcriber 方法的元件會移至新的 `Conversation` 類別。
 - 已中斷32位 (ARMv7 和 x86) iOS 的支援
 
 **Bug 修正**
@@ -442,7 +442,7 @@ ms.locfileid: "89462372"
 - 修正 .NET core 應用程式問題，以使用 net461 目標架構在範例中載入核心程式庫
 - 修正將原生程式庫部署至範例中輸出檔案夾的偶爾問題
 - 可靠地關閉 web 通訊端的修正
-- 修正在 Linux 上非常繁重的負載下開啟連線時可能損毀的問題
+- 修正在 Linux 上的負載過重時開啟連線時可能損毀的問題
 - 修正 macOS 架構套件組合中遺失的中繼資料
 - 修正 `pip install --user` Windows 上的問題
 
@@ -657,7 +657,7 @@ ms.locfileid: "89462372"
 穩定性改進及 Bug 修正：
 
 - 已修正處置辨識器時因競爭條件而可能導致的嚴重錯誤
-- 已修正未設定屬性時可能導致的嚴重錯誤。
+- 已修正取消設定屬性時可能發生的嚴重錯誤。
 - 已新增額外的錯誤和參數檢查。
 - Objective-C：已修正因 NSString 中的名稱覆寫而可能導致的嚴重錯誤。
 - Objective-C：已調整 API 的可見性

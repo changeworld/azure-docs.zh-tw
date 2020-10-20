@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 910007109e4751cf2fd509d1d568c66ae2a22cd2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81534460"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200826"
 ---
 # <a name="application-configuration-options"></a>應用程式設定選項
 
@@ -126,7 +126,7 @@ Azure AD cloud 授權單位有兩個部分：
 - `RedirectUriOnIos` = $ "msauth。{配套識別碼}：//auth ";
 
 如需其他 iOS 詳細資料，請參閱 [將使用 Microsoft Authenticator 的 ios 應用程式從 ADAL.NET 遷移至 MSAL.NET](msal-net-migration-ios-broker.md) ，並 [利用 ios 上的訊息代理](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)程式。
-如需其他 Android 詳細資料，請參閱 [android 中](brokered-auth.md)的代理驗證。
+如需其他 Android 詳細資料，請參閱 [android 中](msal-android-single-sign-on.md)的代理驗證。
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>機密用戶端應用程式的重新導向 URI
 
@@ -142,7 +142,7 @@ Azure AD cloud 授權單位有兩個部分：
 
 其他設定選項可啟用記錄和疑難排解。 請參閱 [記錄](msal-logging.md) 文章，以取得如何使用這些專案的詳細資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [使用 MSAL.NET 來具現化用戶端應用程式](msal-net-initializing-client-applications.md)。
 瞭解如何 [使用 MSAL.js來具現化用戶端應用程式 ](msal-js-initializing-client-applications.md)。

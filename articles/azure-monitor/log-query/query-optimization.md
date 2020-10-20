@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327709"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203478"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄使用 [Azure 資料總管 (ADX) ](/azure/data-explorer/) 儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理和維護 ADX 叢集，並針對您的記錄分析工作負載進行優化。 當您執行查詢時，它會進行優化，並路由傳送至儲存工作區資料的適當 ADX 叢集。 Azure 監視器記錄和 Azure 資料總管都會使用許多自動查詢優化機制。 雖然自動優化提供大幅提升，但在某些情況下，您可以大幅改善查詢效能。 本文說明效能考慮，以及用來修正這些問題的幾項技術。
@@ -110,7 +110,7 @@ Syslog
 | count 
 ```
 
-在某些情況下，查詢處理 enine 會隱含地建立評估的資料行，因為篩選只會在欄位上執行：
+在某些情況下，查詢處理引擎會隱含地建立評估的資料行，因為篩選只會在欄位上執行：
 ```Kusto
 //less efficient
 SecurityEvent

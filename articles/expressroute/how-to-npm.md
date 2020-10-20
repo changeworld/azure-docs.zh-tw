@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981329"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201047"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>設定 ExpressRoute 的網路效能監控
 
@@ -54,7 +54,7 @@ ms.locfileid: "90981329"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取有 VNET 對等連至 ExpressRoute 線路的訂用帳戶。 然後搜尋 **Marketplace** 中的服務清單，以找出 [網路效能監控]。 在傳回的結果中，按一下以開啟 [網路效能監視器]**** 頁面。
 
    >[!NOTE]
-   >您可以建立新的工作區，或使用現有的工作區。 如果您想要使用現有的工作區，必須確定工作區已移轉至新的查詢語言。 [詳細資訊 .。。](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >您可以建立新的工作區，或使用現有的工作區。 如果您想要使用現有的工作區，必須確定工作區已移轉至新的查詢語言。 [詳細資訊 .。。](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![入口網站](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ ms.locfileid: "90981329"
 基於備援的因素，建議您在 ExpressRoute 連線的每一端安裝至少兩個代理程式 (例如內部部署、Azure VNET)。 代理程式必須安裝於 Windows Server (2008 SP1 或更新版本) 上。 不支援使用 Windows 桌面版 OS 和 Linux OS 監視 ExpressRoute 線路。 使用下列步驟來安裝代理程式：
    
   >[!NOTE]
-  >SCOM 所推送的代理程式 (包括 [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) 如果裝載在 Azure 中，則可能無法一致地偵測到其位置。 建議您不要在 Azure VNET 中使用這些代理程式來監視 ExpressRoute。
+  >SCOM 所推送的代理程式 (包括 [MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12))) 如果裝載在 Azure 中，則可能無法一致地偵測到其位置。 建議您不要在 Azure VNET 中使用這些代理程式來監視 ExpressRoute。
   >
 
 1. 執行**安裝程式**，以在您想要用於監視 ExpressRoute 的每部伺服器上安裝代理程式。 您用來進行監視的伺服器可以是 VM 或內部部署伺服器，而且必須能夠存取網際網路。 您必須至少在內部部署環境安裝一個代理程式，以及在 Azure 中您需要監視的每個網路區段安裝一個代理程式。
@@ -101,13 +101,13 @@ ms.locfileid: "90981329"
 4. 在 [ **目的地資料夾** ] 頁面上，變更或保留預設的安裝資料夾，然後按 **[下一步]**。
 5. 在 [ **代理程式安裝選項** ] 頁面上，您可以選擇將代理程式連線到 Azure 監視器記錄檔或 Operations Manager。 或者，如果您想要稍後設定代理程式，則可以將選項留白。 進行選擇後，按 [下一步]****。
 
-   * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步] ****。
+   * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步]  。
 
      ![識別碼和金鑰](./media/how-to-npm/8.png)
-   * 如果您選擇連線到 [Operations Manager]****，請在 [管理群組設定]**** 頁面上，輸入 [管理群組名稱]****、[管理伺服器]**** 及 [管理伺服器連接埠]****。 然後按 [下一步] ****。
+   * 如果您選擇連線到 [Operations Manager]****，請在 [管理群組設定]**** 頁面上，輸入 [管理群組名稱]****、[管理伺服器]**** 及 [管理伺服器連接埠]****。 然後按 [下一步]  。
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步] ****。
+   * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步]  。
 
      ![帳戶](./media/how-to-npm/10.png)
 6. 在 [ **安裝準備就緒** ] 頁面上，檢查您的選擇，然後按一下 [ **安裝**]。
@@ -118,7 +118,7 @@ ms.locfileid: "90981329"
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3：設定 Proxy 設定 (選擇性)
 
-如果您要使用 Web Proxy 來存取網際網路，請使用下列步驟來設定 Microsoft Monitoring Agent 的 Proxy 設定。 針對每一部伺服器執行這些步驟。 如果您需要設定許多伺服器，使用指令碼將此程序自動化會比較容易。 如果是這種情況，請參閱[使用指令碼設定 Microsoft Monitoring Agent 的 Proxy 設定](../log-analytics/log-analytics-windows-agent.md)。
+如果您要使用 Web Proxy 來存取網際網路，請使用下列步驟來設定 Microsoft Monitoring Agent 的 Proxy 設定。 針對每一部伺服器執行這些步驟。 如果您需要設定許多伺服器，使用指令碼將此程序自動化會比較容易。 如果是這種情況，請參閱[使用指令碼設定 Microsoft Monitoring Agent 的 Proxy 設定](../azure-monitor/platform/agent-windows.md)。
 
 使用 [控制台] 來設定 Microsoft Monitoring Agent 的 Proxy 設定：
 
@@ -161,7 +161,7 @@ ms.locfileid: "90981329"
 
 若要監視 Azure 中的代理程式伺服器，您必須設定網路安全性群組 (NSG) 規則，才能在 NPM 用來進行綜合交易的連接埠上允許 TCP 流量。 預設連接部是 8084。 這可允許安裝在 Azure VM 上的監視代理程式與內部部署監視代理程式進行通訊。
 
-如需有關 NSG 的詳細資訊，請參閱[網路安全性群組](../virtual-network/virtual-networks-create-nsg-arm-portal.md)。
+如需有關 NSG 的詳細資訊，請參閱[網路安全性群組](../virtual-network/tutorial-filter-network-traffic.md)。
 
 >[!NOTE]
 >繼續進行此步驟之前，請先確定您已安裝代理程式 (包括內部部署伺服器代理程式和 Azure 伺服器代理程式兩者)，並且已執行 PowerShell 指令碼。

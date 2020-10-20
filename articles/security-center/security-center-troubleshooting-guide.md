@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9afc827d1cef4ae1f0ed304b3c1d3cfbfe89b82e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904747"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201795"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
@@ -91,7 +91,7 @@ ms.locfileid: "90904747"
 | 安裝失敗 - 已安裝本機代理程式 | Log Analytics 代理程式安裝失敗。 資訊安全中心發現本機代理程式 (Log Analytics 或 System Center Operations Manager) 已安裝在 VM 上。 為了避免多路連接的設定 (在此設定中，VM 會向兩個不同的工作區回報)，已停止安裝 Log Analytics 代理程式。 | 解決方式有兩種：[手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)並將它連線到您所需的工作區。 或者，將您所需的工作區設定為預設工作區，並啟用代理程式的自動佈建功能。  請參閱[啟用自動佈建](security-center-enable-data-collection.md)。 |
 | 代理程式無法連線到工作區 | 已安裝 Log Analytics 代理程式，但因為網路連線問題而失敗。  請檢查是否有網際網路存取權，或已針對代理程式設定有效的 HTTP Proxy。 | 請參閱「監視代理程式網路需求」。 |
 | 代理程式已連線到遺漏或未知的工作區 | 資訊安全中心發現安裝於 VM 上的 Log Analytics 代理程式已連線到其無權存取的工作區。 | 有兩種情況會發生這種情形。 工作區已遭刪除而不復存在。 重新安裝具有正確工作區的代理程式，或將代理程式解除安裝並允許資訊安全中心完成其自動佈建安裝。 第二種情況是工作區屬於資訊安全中心無權存取的訂用帳戶。 資訊安全中心需有訂用帳戶，才可允許 Microsoft 安全性資源提供者進行存取。 若要啟用這項功能，請向 Microsoft 安全性資源提供者註冊訂用帳戶。 此作業可經由 API、PowerShell、入口網站完成，而在資訊安全中心的 [概觀] 儀表板中直接篩選訂用帳戶亦可完成。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 |
-| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理程式雖回報資料，但遺漏 Azure 資源識別碼，因此無法比對資料與 Azure VM。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |
+| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理程式雖回報資料，但遺漏 Azure 資源識別碼，因此無法比對資料與 Azure VM。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#troubleshoot-and-support)。 |
 | 未安裝代理程式 | 資料收集已啟用。 | 在安全性原則中開啟資料收集，或手動安裝 Log Analytics 代理程式。 |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>對監視代理程式網路需求進行疑難排解<a name="mon-network-req"></a>

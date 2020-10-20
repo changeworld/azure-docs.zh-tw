@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681645"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206538"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>使用 Azure Blob 儲存體進行模型轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "80681645"
 您可以使用下列其中一種工具來建立儲存體帳戶和 blob 容器：
 
 - [Azure 入口網站](https://portal.azure.com)
-- [az 命令列](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az 命令列](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)
 - Sdk (c #、Python ... ) 
 
@@ -46,13 +46,13 @@ Azure 遠端轉譯需要從您的儲存體帳戶取出模型資料，並將資�
 
 儲存的存取簽章 (SAS) 用來授與讀取權限給輸入，以及寫入輸出的存取權。 每次轉換模型時，建議您產生新的 Uri。 因為 Uri 會在一段時間後到期，所以保存它們以持續較長的時間，可能會造成意外中斷應用程式。
 
-Sas [檔](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)中可找到 sas 的詳細資料。
+Sas [檔](../../../storage/common/storage-sas-overview.md)中可找到 sas 的詳細資料。
 
 您可以使用下列其中一種來產生 SAS URI：
 
 - az PowerShell 模組
   - 請參閱 [範例 PowerShell 腳本](../../samples/powershell-example-scripts.md)
-- [az 命令列](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az 命令列](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)
   - 以滑鼠右鍵按一下 [取得共用存取簽章] 容器 (讀取、列出輸入容器的存取權、輸出容器的寫入存取權) 
 - Sdk (c #、Python ... ) 
@@ -64,11 +64,11 @@ Sas [檔](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-
 若要開始轉換模型，您必須使用下列其中一個選項來上傳模型：
 
 - [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) -可在 Azure blob 儲存體上上傳/下載/管理檔案的方便 UI
-- [Azure 命令列](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
-- [Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Azure 命令列](../../../storage/blobs/storage-quickstart-blobs-cli.md)
+- [Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-2.2.0)
   - 請參閱 [範例 PowerShell 腳本](../../samples/powershell-example-scripts.md)
-- [使用儲存體 SDK (Python、c # ... ) ](https://docs.microsoft.com/azure/storage/)
-- [使用 Azure 儲存體 REST Api](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+- [使用儲存體 SDK (Python、c # ... ) ](../../../storage/index.yml)
+- [使用 Azure 儲存體 REST Api](/rest/api/storageservices/blob-service-rest-api)
 
 如需如何上傳資料以進行轉換的範例，請參閱 [Powershell 範例腳本](../../samples/powershell-example-scripts.md#script-conversionps1)的 Conversion.ps1。
 

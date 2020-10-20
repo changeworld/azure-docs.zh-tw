@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a021d658711e77c3e3be0df722223cefe506abba
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566070"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204583"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
 ## <a name="overview"></a>概觀
@@ -146,7 +146,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 透過 Azure，一旦您盡可能地詳細隔離問題之後，就可以檢閱 [Azure 網路文件][Network Docs]，之後如果仍然需要，[請開啟支援票證][Ticket Link]。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 ### <a name="latencybandwidth-expectations"></a>延遲/頻寬期望
 >[!TIP]
 > 您要測試的端點之間的地理延遲 (英哩或公里) 是目前最大的延遲構成要素。 雖然沒有相關的設備延遲 (實體和虛擬構成要素、躍點數目等)，但處理 WAN 連線時，地理位置已經公認是整體延遲的最大構成要素。 同樣重要的是要注意，距離是光纖行程的距離，而不是直線距離或路段圖地圖距離。 這個距離很難準確無誤。 因此，我通常使用網際網路上的城市距離計算機，而且知道這種方法是非常不準確的測量方法，但足以設定一般預期。
@@ -177,7 +177,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 >
 >
 
-| ExpressRoute<br/>Location|Azure<br/>區域 | 預估<br/>距離 (公里) | Latency|1 個工作階段<br/>頻寬 | 最大值<br/>頻寬 |
+| ExpressRoute<br/>Location|Azure<br/>區域 | 預估<br/>距離 (公里) | 延遲|1 個工作階段<br/>頻寬 | 最大值<br/>頻寬 |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | 西雅圖 | 美國西部 2        |    191 公里 |   5 毫秒 | 262.0 Mbits/秒 |  3.74 Gbits/秒 |
 | 西雅圖 | 美國西部          |  1,094 公里 |  18 毫秒 |  82.3 Mbits/秒 |  3.70 Gbits/秒 |
@@ -209,6 +209,6 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
-[Network Docs]: https://docs.microsoft.com/azure/index
+[Network Docs]: ../index.yml
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: https://aka.ms/AzCT

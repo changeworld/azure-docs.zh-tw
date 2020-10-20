@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9468b9c2c906ffe26bae400dc9e4746630a66e0e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ab266e1a94a647c4c1f0c42cc75fe6b6a68d9afa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970311"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205144"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
@@ -760,7 +760,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [Azure 自動化簡介](../../automation/automation-intro.md)
 
-* [瞭解變更追蹤](../../automation/change-tracking.md)
+* [瞭解變更追蹤](../../automation/change-tracking/overview.md)
 
 **Azure 資訊安全中心監視**：無法使用
 

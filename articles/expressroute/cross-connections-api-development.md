@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397843"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202475"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API 開發和整合
 
@@ -30,7 +30,7 @@ ExpressRoute 合作夥伴會針對 expressRouteCrossConnections 資源發出 RES
 
 * ExpressRoute 合作夥伴未來的任何增強功能都將可在 ExpressRouteCrossConnection 資源上取得。
 
-* 合作夥伴可以將 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview) 套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源和新增/更新/刪除對等互連設定。
+* 合作夥伴可以將 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源和新增/更新/刪除對等互連設定。
 
 * ExpressRouteCrossConnection 資源公開的 Api 可能有助於疑難排解 ExpressRoute 連線。 這包括 ARP 資料表、BGP 路由表摘要和 BGP 路由表詳細資料。 傳統部署 Api 不支援此功能。
 
@@ -51,7 +51,7 @@ ExpressRoute 合作夥伴會針對 expressRouteCrossConnections 資源發出 RES
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. 註冊 Dev_Provider 訂用帳戶以存取 expressRouteCrossConnections API
 
-若要存取 expressRouteCrossConnections API，合作夥伴訂用帳戶必須在 **Microsoft 網路資源提供者**中註冊。 遵循 [Azure 資源提供者和類型](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) 一文中的步驟，完成註冊程式。
+若要存取 expressRouteCrossConnections API，合作夥伴訂用帳戶必須在 **Microsoft 網路資源提供者**中註冊。 遵循 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) 一文中的步驟，完成註冊程式。
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. 設定 Azure Resource Manager REST API 呼叫的驗證
 
@@ -59,8 +59,8 @@ ExpressRoute 合作夥伴會針對 expressRouteCrossConnections 資源發出 RES
 
 驗證程式涉及兩個主要步驟：
 
-1. [註冊用戶端](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)。
-2. [建立存取要求](https://docs.microsoft.com/rest/api/azure/#create-the-request)。
+1. [註冊用戶端](/rest/api/azure/#register-your-client-application-with-azure-ad)。
+2. [建立存取要求](/rest/api/azure/#create-the-request)。
 
 ### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. 提供用戶端應用程式的網路參與者許可權
 
@@ -76,12 +76,12 @@ ExpressRoute 合作夥伴會針對 expressRouteCrossConnections 資源發出 RES
 
 ### <a name="5-develop"></a>5. 開發
 
-針對 [EXPRESSROUTECROSSCONNECTIONS API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)進行開發。
+針對 [EXPRESSROUTECROSSCONNECTIONS API](/rest/api/expressroute/expressroutecrossconnections)進行開發。
 
 ## <a name="rest-api"></a>REST API
 
-如需 REST API 檔，請參閱 [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) 。
+如需 REST API 檔，請參閱 [ExpressRoute CrossConnections REST API](/rest/api/expressroute/expressroutecrossconnections) 。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需所有 ExpressRoute REST Api 的詳細資訊，請參閱 [EXPRESSROUTE Rest api](https://docs.microsoft.com/rest/api/expressroute/)。
+如需所有 ExpressRoute REST Api 的詳細資訊，請參閱 [EXPRESSROUTE Rest api](/rest/api/expressroute/)。

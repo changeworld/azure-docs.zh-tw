@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246685"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207388"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中還原備份
 
@@ -23,7 +23,7 @@ ms.locfileid: "86246685"
 - **資料遺失的案例**：服務意外刪除或損毀。 例如，系統管理員錯誤地刪除服務。
 - **資料損毀的情況**：服務中的錯誤會造成資料損毀。 例如，當服務程式碼升級而將錯誤資料寫入「可靠的集合」時，就可能發生資料損毀。 在這種情況下，可能必須將程式碼和資料還原成先前的狀態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 若要觸發還原，必須對叢集啟用還原「錯誤分析服務 (FAS)」__。
 - 「備份還原服務 (BRS)」__ 已建立備份。
@@ -190,6 +190,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 您可以透過 TrackRestoreProgress 追蹤還原的進度。
 
+> [!NOTE]
+> 使用 Powershell 復原磁碟分區時，如果 backuplocation 有 ' $ '，請使用 ' ~ ' 將其取消
+>
+
 ### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
 您可以從 Service Fabric Explorer 觸發還原。 請確定已在 Service Fabric Explorer 設定中啟用 Advanced 模式。
 1. 選取所需的磁碟分割，然後按一下 [動作]。 
@@ -250,6 +254,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ```
 
 您可以使用 TrackRestoreProgress 追蹤還原進度。
+
+> [!NOTE]
+> 使用 Powershell 復原磁碟分區時，如果 backuplocation 有 ' $ '，請使用 ' ~ ' 將其取消
+>
 
 ## <a name="track-restore-progress"></a>追蹤還原進度
 
@@ -323,7 +331,7 @@ $restoreResponse | Format-List
 - [RestorePartition API 參考](/rest/api/servicefabric/sfclient-api-restorepartition)
 - [GetPartitionRestoreProgress API 參考](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [了解定期備份組態](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [備份還原 REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)
 

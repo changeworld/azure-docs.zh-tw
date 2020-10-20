@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097332"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202067"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
 Microsoft 為傳統的轉銷商和經銷商 (CSP) 提供超大規模的服務，以便為您的客戶快速佈建新的服務和解決方案，而不需要投資開發這些新服務。 若要讓雲端解決方案提供者 (CSP) 能夠直接管理這些新服務，Microsoft 提供了一些程式和 API，讓 CSP 可以代表您的客戶管理 Microsoft Azure 資源。 其中一個資源是 ExpressRoute。 ExpressRoute 可讓 CSP 將現有的客戶資源連接到 Azure 服務。 ExpressRoute 是 Azure 中服務的高速私人通訊連結。 
@@ -28,7 +28,7 @@ ExpressRoute 是由一對適用于高可用性的線路所組成，其會附加�
 Microsoft Azure 提供越來越多的服務，您可以將這些服務提供給您的客戶。 ExpressRoute 可提供 Microsoft Azure 環境的高速低延遲存取，協助您和您的客戶利用這些服務。
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure 管理
-Microsoft 提供 Csp Api 來管理 Azure 客戶訂用帳戶，其方式是允許以程式設計方式與您自己的服務管理系統整合。 [這裡](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)可以找到支援的管理功能。
+Microsoft 提供 Csp Api 來管理 Azure 客戶訂用帳戶，其方式是允許以程式設計方式與您自己的服務管理系統整合。 [這裡](/previous-versions/windows/mt844538(v=win.10))可以找到支援的管理功能。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure 資源管理
 您與客戶簽訂的合約將會決定訂用帳戶的管理方式。 CSP 可以直接管理資源的建立和維護，或客戶可以持續控制 Microsoft Azure 訂用帳戶並建立他們所需的 Azure 資源。 如果您的客戶在其 Microsoft Azure 訂用帳戶中管理資源的建立，則會使用兩個模型的其中一種：「連線*到*」模型或「*直接到*」模型。 下列各節會詳細說明這些模型。  
@@ -129,6 +129,6 @@ ExpressRoute 會透過 Azure 虛擬網路閘道連接到 Azure 網路。 網路�
 
 在下列連結中可以找到額外的資訊︰
 
-[Azure 雲端解決方案提供者方案](https://docs.microsoft.com/azure/cloud-solution-provider)。  
+[Azure 雲端解決方案提供者方案](/azure/cloud-solution-provider)。  
 [做好準備以雲端解決方案提供者身分交易](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch)。  
 [Microsoft Cloud 解決方案提供者資源](https://partner.microsoft.com/solutions/cloud-reseller-resources)。

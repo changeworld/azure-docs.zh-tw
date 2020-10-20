@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047398"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205473"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -24,7 +24,8 @@ ms.locfileid: "92047398"
 * 若要使用 CLI 手動完成這些步驟，請參閱這篇文章的 CLI 版本： [*如何：設定 (cli) 的實例和驗證 *](how-to-set-up-instance-cli.md)。
 * 若要使用部署腳本範例來執行自動安裝，請參閱本文的腳本版本： [*如何：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>建立 Azure 數位 Twins 實例
 
@@ -94,72 +95,7 @@ ms.locfileid: "92047398"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
 
-您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。 接下來，您將設定用戶端應用程式存取的許可權。
-
-## <a name="set-up-access-permissions-for-client-applications"></a>設定用戶端應用程式的存取權限
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-首先，流覽至 Azure 入口網站中的 [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) (您可以使用此連結，或使用入口網站搜尋列) 來尋找它。 從 [服務] 功能表中選取 *應用程式註冊* ，然後選取 [ *+ 新增註冊*]。
-
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-在接下來的 [ *註冊應用程式* ] 頁面中，填入要求的值：
-* **名稱**：要與註冊相關聯的 Azure AD 應用程式顯示名稱
-* **支援的帳戶類型**： *僅 (預設目錄-單一租使用者) 中選取此組織目錄中的帳戶 *
-* 重新**導向 URI**： Azure AD 應用程式*Azure AD 應用程式回復 URL* 。 將 *公用用戶端/原生 (mobile & desktop) * 的 URI `http://localhost` 。
-
-當您完成時，請按 [ *註冊* ] 按鈕。
-
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-註冊完成設定之後，入口網站會將您重新導向至其詳細資料頁面。
-
-### <a name="provide-azure-digital-twins-api-permission"></a>提供 Azure 數位 Twins API 許可權
-
-接下來，使用 Azure 數位 Twins Api 的基準許可權，設定您所建立的應用程式註冊。
-
-從應用程式註冊的入口網站頁面，選取功能表中的 [ *API 許可權* ]。 在 [下列許可權] 頁面上，按下 [ *+ 新增許可權* ] 按鈕。
-
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-在接下來的 [ *要求 API 許可權* ] 頁面中，切換至 [ *我的組織使用的 api* ] 索引標籤，並搜尋 *azure 數位 twins*。 從搜尋結果中選取 _**Azure 數位 Twins**_ ，以繼續指派 Azure 數位 Twins api 的許可權。
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
->[!NOTE]
-> 如果您的訂用帳戶在2020年7月) 之前，仍有先前公開預覽版服務 (的 Azure 數位 Twins 實例，則您必須改為搜尋並選取 _**Azure 智慧空間服務**_ 。 這是同一組 Api 的舊名稱 (請注意， *應用程式 (用戶端) 識別碼* 與上述螢幕擷取畫面中的相同) ，而且您的體驗不會在此步驟之外變更。
-> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-接下來，您將選取要為這些 Api 授與的許可權。 展開 [ **讀取 (1]) ** 許可權，然後核取顯示 [ *讀取* ] 的方塊，以授與此應用程式註冊讀取器和寫入器許可權。
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-完成時點擊 *新增許可權* 。
-
-### <a name="verify-success"></a>確認是否成功
-
-回到 [ *API 許可權* ] 頁面，確認現在有 Azure 數位 Twins 的專案反映讀取/寫入權限：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-您也可以在應用程式註冊的 *manifest.js*內確認 Azure 數位 Twins 的連線，這會在您新增 API 許可權時使用 Azure 數位 Twins 資訊自動更新。
-
-若要這樣做，請從功能表中選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗底部，然後在底下尋找這些欄位 `requiredResourceAccess` 。 這些值應該符合以下螢幕擷取畫面中的值：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-### <a name="collect-important-values"></a>收集重要值
-
-接下來，從功能表列選取 [ *總覽* ]，以查看應用程式註冊的詳細資料：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
-
-記下**您**頁面上顯示的*應用程式 (用戶端) 識別碼*和*目錄 (租使用者) 識別碼*。 稍後將需要這些值，以 [針對 Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，您應該將這些值與將會與人共用。
-
-### <a name="other-possible-steps-for-your-organization"></a>您組織的其他可能步驟
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -167,5 +103,5 @@ ms.locfileid: "92047398"
 * [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
-或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：
+或者，請參閱如何使用驗證碼將用戶端應用程式連接到您的實例：
 * [*How to：撰寫應用程式驗證碼*](how-to-authenticate-client.md)

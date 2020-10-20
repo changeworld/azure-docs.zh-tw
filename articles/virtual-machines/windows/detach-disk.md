@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: 361ed04a6448bec18fac94ad90a33fe01a49e595
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974153"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201302"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何從 Windows 虛擬機器卸離資料磁碟
 
@@ -53,8 +53,7 @@ Update-AzVM `
 1. 在左窗格中，選取 [虛擬機器]。
 1. 選取虛擬機器，其具有想要與其中斷連結的資料磁碟。
 1. 在 [設定] 下，選取 [磁碟]。
-1. 在 [磁碟] 窗格頂端，選取 [編輯]。
-1. 在 [磁碟] 窗格中，於想要與其中斷連結的資料磁碟最右側，選取 [中斷連結]。
+1. 在 [ **磁片** ] 窗格中，按一下您想要中斷連結之資料磁片的最右邊，然後按一下 [ **X** 刪除] 按鈕。
 1. 選取頁面頂端的 [儲存] 來儲存變更。
 
 磁碟仍留在儲存體中，但不再連結至虛擬機器。

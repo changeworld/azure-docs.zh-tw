@@ -3,14 +3,14 @@ title: 如何建立 Azure 自動化更新管理的警示
 description: 本文說明如何設定 Azure 警示，以通知更新評估或部署的狀態。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f832f0359bd8f9caf13008939f482b440faa1a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977004"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203172"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>如何建立更新管理的警示
 
@@ -86,3 +86,8 @@ Azure 自動化會建立兩個與更新管理相關的不同平臺計量，這�
 
 ## <a name="next-steps"></a>後續步驟
 
+* 深入瞭解 [Azure 監視器中的警示](../../azure-monitor/platform/alerts-overview.md)。
+
+* 深入瞭解 [記錄查詢](../../azure-monitor/log-query/log-query-overview.md) ，以從 log Analytics 工作區取出和分析資料。
+
+* [使用 Azure 監視器記錄來管理使用量和成本](../../azure-monitor/platform/manage-cost-storage.md)說明如何藉由變更您的資料保留期限來控制成本，以及如何分析和警示您的資料使用量。

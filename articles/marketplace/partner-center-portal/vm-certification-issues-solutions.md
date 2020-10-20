@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/14/2020
-ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/16/2020
+ms.openlocfilehash: 48a044e53602b330e43b35ce2425b4b7a90582bf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044491"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206572"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>認證 Azure Marketplace 的虛擬機器映射時常見的問題
 
@@ -35,7 +35,7 @@ ms.locfileid: "92044491"
 - [Windows 映像](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
 > [!Note]
-> 如果您使用的是不是從 Marketplace 取得的 Linux 基底映射，您可以使用 2048 KB 來位移第一個磁碟分割。 這可讓您使用未格式化的空間來新增計費資訊，並允許 Azure 將您的 VM 發佈至 Marketplace。  
+> 如果您使用的是不是從 Azure Marketplace 取得的 Linux 基底映射，您可以將第一個磁碟分割的 2048 KB 位移。 這可讓您使用未格式化的空間來新增計費資訊，並允許 Azure 將您的 VM 發佈至 Azure Marketplace。  
 
 ## <a name="vm-extension-failure"></a>VM 延伸模組失敗
 
@@ -87,7 +87,7 @@ ms.locfileid: "92044491"
 
 如需選取核准的基礎的詳細資訊，請參閱 [建立您的 Azure 虛擬機器技術資產](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)。
 
-## <a name="tool-kit-test-case-execution-failed"></a>工具套件測試案例執行失敗 
+## <a name="tool-kit-test-case-execution-failed"></a>工具套件測試案例執行失敗
 
 Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD 或映射與 Azure 環境相容。
 
@@ -145,7 +145,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 |16|Windows 網際網路名稱服務|Windows 網際網路名稱服務。 尚未支援此伺服器功能。 應用程式不應該相依于這項功能。|
 |17|無線區域網路服務|無線局域網路服務。 尚未支援此伺服器功能。 應用程式不應該相依于這項功能。|
 
-如果您在上述測試案例中遇到任何失敗，請參閱此方案之表格中的 [ **描述** ] 資料行。 如果您需要詳細資訊，請洽詢支援小組。 
+如果您在上述測試案例中遇到任何失敗，請參閱此方案之表格中的 [ **描述** ] 資料行。 如果您需要詳細資訊，請洽詢支援小組。
 
 ## <a name="data-disk-size-verification"></a>資料磁片大小驗證
 
@@ -199,8 +199,8 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 如果您的映射未安裝下列其中一個核心版本，請使用正確的修補程式加以更新。 使用這些必要的修補程式更新映射之後，請向支援小組要求所需的核准：
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |作業系統系列|版本|核心|
@@ -261,12 +261,12 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 檢查是否已啟用執行自我測試案例的帳戶是否有適當的存取權。 如果未啟用存取，請啟用它來執行測試案例。 如果您不想要啟用存取權，您可能會與支援小組共用自我測試案例的結果。
 
 ## <a name="download-failure"></a>下載失敗
-    
+
 請參閱下表，以瞭解當您使用共用存取簽章 (SAS) URL 下載 VM 映射時所發生的任何問題。
 
 |狀況|錯誤|原因|解決方案|
 |---|---|---|---|
-|1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。|| 
+|1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。||
 |2|使用中的 Blob|VHD 會由另一個內部進程使用。|當您使用 SAS URL 下載 VHD 時，該 VHD 應該會處於使用中狀態。|
 |3|不正確 SAS URL|VHD 的相關聯 SAS URL 不正確。|取得正確的 SAS URL。|
 |4|簽章無效|VHD 的相關聯 SAS URL 不正確。|取得正確的 SAS URL。|
@@ -317,7 +317,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 ## <a name="remote-access-issue"></a>遠端存取問題
 
-如果未啟用 Windows 映像的遠端桌面通訊協定 (RDP) 選項，您將會收到此錯誤。 
+如果未啟用 Windows 映像的遠端桌面通訊協定 (RDP) 選項，您將會收到此錯誤。
 
 請先啟用 Windows 映像的 RDP 存取，然後再提交。
 
@@ -334,11 +334,11 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 命令： "貓/dev/null > ~/.bash_history && 歷程記錄-c" ![ Azure 入口網站上的 bash 歷程記錄命令](./media/vm-certification-issues-solutions-4.png)
 
-步驟 3： 成功執行命令之後，請重新開機 VM。
+步驟3：執行命令成功之後，請重新開機 VM。
 
-步驟 4： 將 VM 一般化，取得映射 VHD 並停止 VM。
+步驟4：將 VM 一般化，取得映射 VHD 並停止 VM。
 
-步驟 5。     Re-Submit 一般化映射。
+步驟 5。 Re-Submit 一般化映射。
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a> (自訂範本) 在選擇性測試的 VM 映射上要求例外狀況
 
@@ -349,7 +349,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 例外狀況的案例
 
-在三種情況下，發行者通常會要求這些例外狀況。 
+在三種情況下，發行者通常會要求這些例外狀況。
 
 * **一或多個測試案例的例外狀況：** 發行者可以與測試案例的 [Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport) 要求例外狀況聯繫。 
 
@@ -357,20 +357,22 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
        在此情況下，發行者可以在此下載已[認證的測試控管](https://aka.ms/AzureCertificationTestTool)，並提供[Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport)的報表
 
 
-* **自訂範本：** 有些發行者會發佈需要自訂 ARM 範本的 VM 映射來部署 Vm。 在此情況下，會要求發行者提供 [Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport) 的自訂範本，讓認證小組可以使用相同的驗證。 
+* **自訂範本：** 有些發行者會發佈需要自訂 ARM 範本的 VM 映射來部署 Vm。
+
+在此情況下，會要求發行者提供 [Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport) 的自訂範本，讓認證小組可以使用相同的驗證。
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>針對例外狀況案例提供的資訊
 
 發行者必須與 [Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport) 要求例外狀況，才能在上述案例中要求例外狀況，並提供額外的下列資訊：
 
-   1.   發行者識別碼–合作夥伴中心入口網站上的發行者識別碼
-   2.   供應專案識別碼/名稱–要求例外狀況的供應專案識別碼/名稱 
-   3.   SKU/方案識別碼–要求例外狀況的 VM 供應專案的方案識別碼/sku
-   4.    版本–要求例外狀況的 VM 供應專案版本
-   5.   例外狀況類型–測試、鎖定的 VM、自訂範本
-   6.   要求的原因-此例外狀況的原因，以及要豁免之測試的相關資訊 
-   7. 時間軸-已要求這個例外狀況的日期 
-   8.   附件-附加任何重要的辨識項檔。 針對鎖定的 Vm，請附加測試報告和自訂範本，提供自訂的 ARM 範本作為附件。 無法連接已鎖定 Vm 的報告，以及自訂範本的自訂 ARM 範本，將會導致拒絕要求
+   1. 發行者識別碼–合作夥伴中心入口網站上的發行者識別碼
+   1. 供應專案識別碼/名稱–要求例外狀況的供應專案識別碼/名稱 
+   1. SKU/方案識別碼–要求例外狀況的 VM 供應專案的方案識別碼/sku
+   1. 版本–要求例外狀況的 VM 供應專案版本
+   1. 例外狀況類型–測試、鎖定的 VM、自訂範本
+   1. 要求的原因-此例外狀況的原因，以及要豁免之測試的相關資訊 
+   1. 時間軸-已要求這個例外狀況的日期 
+   1. 附件-附加任何重要的辨識項檔。 針對鎖定的 Vm，請附加測試報告和自訂範本，提供自訂的 ARM 範本作為附件。 無法連接已鎖定 Vm 的報告，以及自訂範本的自訂 ARM 範本，將會導致拒絕要求
 
 ## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>如何解決 VM 供應專案中的弱點或惡意探索
 
@@ -403,7 +405,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 1. 在 [ **計畫總覽** ] 索引標籤的 [ **名稱** ] 欄中，選取您要新增 VM 的方案。
 1. 在 [ **技術** 設定] 索引標籤的 [ **VM 映射**] 底下，選取 [ **+ 新增 VM 映射**]。
    > [!NOTE]
-   > 您一次只能將一個 VM 映射新增至方案。 若要新增多個 VM 映射，請在新增下一個 VM 映射之前，先發佈第一個映射並等候進入 _發行者登出_ 階段。
+   > 您一次只能將一個 VM 映射新增至方案。 若要新增多個 VM 映射，請在新增下一個 VM 映射之前，先將每個映射發佈。
 1. 在出現的方塊中，提供新的磁片版本和虛擬機器映射。
 1. 選取 [儲存草稿]。
 1. 繼續進行下一節，以移除具有安全性弱點的 VM 映射。
@@ -425,6 +427,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 1. 選取 [ **審核併發布**]。
 1. 如果您需要向認證小組提供任何資訊，請將其新增至 [憑證 **的附注** ] 方塊。
 1. 選取 [發佈]  。
+1. 當發佈狀態達到 [發佈] 階段時， **請選取 [上線]**。
 
 如需有關發佈程式的詳細資訊，請參閱 [如何審核供應專案並將其發佈至商業 marketplace](../review-publish-offer.md)。
 

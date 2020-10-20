@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e61ea423cb94dc1192d6b189a95e5a5da3b38ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d8ff6640f856b3227cead6dc50befca5d5ef3e8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613912"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202764"
 ---
 # <a name="rendering-modes"></a>轉譯模式
 
@@ -74,10 +74,10 @@ async void ExampleConnect(AzureSession session)
 
 ## <a name="api-documentation"></a>API 文件
 
-* [C # AzureSession. ConnectToRuntime ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession.connecttoruntime)
-* [C # ConnectToRuntimeParams 結構](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.connecttoruntimeparams)
-* [C + + AzureSession：： ConnectToRuntime ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession#connecttoruntime)
-* [C + + ConnectToRuntimeParams 結構](https://docs.microsoft.com/cpp/api/remote-rendering/connecttoruntimeparams)
+* [C # AzureSession. ConnectToRuntime ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.azuresession.connecttoruntime)
+* [C # ConnectToRuntimeParams 結構](/dotnet/api/microsoft.azure.remoterendering.connecttoruntimeparams)
+* [C + + AzureSession：： ConnectToRuntime ( # B1 ](/cpp/api/remote-rendering/azuresession#connecttoruntime)
+* [C + + ConnectToRuntimeParams 結構](/cpp/api/remote-rendering/connecttoruntimeparams)
 
 ## <a name="next-steps"></a>後續步驟
 

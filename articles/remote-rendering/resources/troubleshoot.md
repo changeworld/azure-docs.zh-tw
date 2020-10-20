@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803818"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203665"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -88,7 +88,7 @@ ms.locfileid: "91803818"
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>以 MRC 錄製的影片不會反映即時體驗的品質
 
-您可以透過 [混合實境擷取 (MRC) ](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)，在 HoloLens 上記錄影片。 不過，產生的影片品質會比即時體驗差，原因有兩個：
+您可以透過 [混合實境擷取 (MRC) ](/windows/mixed-reality/mixed-reality-capture-for-developers)，在 HoloLens 上記錄影片。 不過，產生的影片品質會比即時體驗差，原因有兩個：
 * 影片的畫面播放速率上限為 30 Hz，而不是 60 Hz。
 * 影片影像不會經過[延遲階段重新投影](../overview/features/late-stage-reprojection.md)處理步驟，因此影片畫質會較為抖動。
 

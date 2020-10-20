@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856427"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207575"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight 商務持續性架構
 
@@ -24,7 +24,7 @@ ms.locfileid: "91856427"
 
 ## <a name="apache-hive-and-interactive-query"></a>Apache Hive 和 Interactive Query
 
-針對 HDInsight Hive 和互動式查詢叢集中的商務持續性，建議使用[Hive 複寫 V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) 。 需要複寫的獨立 Hive 叢集的持續區段是儲存層和 Hive 中繼存放區。 具有企業安全性套件的多重使用者案例中的 Hive 叢集需要 Azure Active Directory Domain Services 和 Ranger 中繼存放區。
+建議您在 HDInsight Hive 和互動式查詢叢集中進行商務持續性的[Hive 複寫 V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) 。 需要複寫的獨立 Hive 叢集的持續區段是儲存層和 Hive 中繼存放區。 具有企業安全性套件的多重使用者案例中的 Hive 叢集需要 Azure Active Directory Domain Services 和 Ranger 中繼存放區。
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Hive 和互動式查詢架構":::
 
@@ -57,6 +57,8 @@ ms.locfileid: "91856427"
 在 *具有待命次要資料庫*的作用中主要區域中，應用程式會寫入至使用中的主要區域，而在唯讀模式中的待命相應減少次要叢集則會在正常作業期間執行。 在正常作業期間，您可以選擇將區域特定的讀取作業卸載至次要。
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive 和互動式查詢架構":::
+
+如需 Hive 複寫和程式碼範例的詳細資訊，請參閱[Azure HDInsight 叢集中的 Apache Hive](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication)複寫
 
 ## <a name="apache-spark"></a>Apache Spark
 

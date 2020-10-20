@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802985"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204022"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 
@@ -163,7 +163,7 @@ Azure Cosmos DB SDK 會持續改善以提供最佳效能。 若要判斷最新�
 對於具有大量建立承載的工作負載，請將 [ `EnableContentResponseOnWrite` 要求] 選項設定為 `false` 。 服務將不會再將已建立或更新的資源傳回至 SDK。 一般來說，因為應用程式具有正在建立的物件，所以不需要服務將它傳回。 標頭值仍可存取，例如要求費用。 停用內容回應有助於改善效能，因為 SDK 不再需要配置記憶體或序列化回應主體。 它也可減少網路頻寬使用量，以進一步協助效能。  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource

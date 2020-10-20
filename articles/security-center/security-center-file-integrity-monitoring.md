@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 45e173f87559368244ab7b0f90af1dbb6fc739d4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946088"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205382"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心中的檔案完整性監視
 瞭解如何使用本逐步解說，在 Azure 資訊安全中心中設定檔案完整性監視 (FIM) 。
@@ -31,7 +31,7 @@ ms.locfileid: "91946088"
 |版本狀態：|正式上市 (GA)|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。|
 |必要的角色和權限：|**工作區擁有** 者可以啟用/停用 FIM (如需詳細資訊，請參閱 [適用于 Log Analytics 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者** 可以看到結果。|
-|雲端：|![是 ](./media/icons/yes-icon.png) 商用雲端<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![沒有 ](./media/icons/no-icon.png) 中國 Gov，其他 Gov<br>只有在 Azure 自動化的變更追蹤解決方案可用的區域中才支援。<br>請參閱 [連結的 Log Analytics 工作區支援的區域](../automation/how-to/region-mappings.md)。<br>[深入瞭解變更追蹤](../automation/change-tracking.md)。|
+|雲端：|![是 ](./media/icons/yes-icon.png) 商用雲端<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![沒有 ](./media/icons/no-icon.png) 中國 Gov，其他 Gov<br>只有在 Azure 自動化的變更追蹤解決方案可用的區域中才支援。<br>請參閱 [連結的 Log Analytics 工作區支援的區域](../automation/how-to/region-mappings.md)。<br>[深入瞭解變更追蹤](../automation/change-tracking/overview.md)。|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>何謂資訊安全中心的 FIM？
@@ -56,7 +56,7 @@ ms.locfileid: "91946088"
 
 藉由比較這些專案目前的狀態與前一次掃描期間的狀態，FIM 會在發生可疑的修改時發出警示。
 
-FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個**方案**類型的**變更追蹤**資源。 如需資料收集頻率的詳細資訊，請參閱 Azure 變更追蹤的[變更追蹤資料收集詳細資料](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
+FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個**方案**類型的**變更追蹤**資源。 如需資料收集頻率的詳細資料，請參閱 [變更追蹤資料收集詳細資料](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)。
 
 > [!NOTE]
 > 如果您移除 **變更追蹤** 資源，也會停用 [安全性中心] 中的 [檔案完整性監視] 功能。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a731962f22985268093c547b09a8cd77c5b92660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395803"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206965"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 將虛擬網路連接到 ExpressRoute 線路 (傳統)
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.locfileid: "89395803"
    * 遵循指示來 [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md) ，並由您的連線提供者來啟用該線路。
    * 確定您已針對循環設定了 Azure 私用對等。 如需路由指示，請參閱 [設定路由](expressroute-howto-routing-classic.md) 文章。
    * 請確定已設定 Azure 私用對等，且已開啟您的網路與 Microsoft 之間的 BGP 對等，讓您可以啟用端對端連線。
-   * 您必須有已建立且完整佈建的虛擬網路和虛擬網路閘道。 請遵循指示 [設定 ExpressRoute 的虛擬網路](expressroute-howto-vnet-portal-classic.md)。
+   * 您必須有已建立且完整佈建的虛擬網路和虛擬網路閘道。 請遵循指示 [設定 ExpressRoute 的虛擬網路](./expressroute-howto-add-gateway-portal-resource-manager.md)。
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>下載最新的 PowerShell Cmdlet
 

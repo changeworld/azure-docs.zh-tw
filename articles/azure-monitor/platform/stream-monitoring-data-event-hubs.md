@@ -7,12 +7,12 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784ecd5c0539ee0dc84c8afd6b85dbc10a154982
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318873"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206878"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>將 Azure 監視資料串流至事件中樞或外部合作夥伴
 
@@ -48,10 +48,10 @@ Azure 監視器針對 Azure、其他雲端和內部部署中的應用程式和�
 
 使用 Azure 監視器將監視資料路由至事件中樞，可讓您輕鬆地與外部 SIEM 和監視工具整合。 具有 Azure 監視器整合的工具範例包括下列各項：
 
-| 工具 | 託管于 Azure | 說明 |
+| 工具 | 託管于 Azure | 描述 |
 |:---|:---| :---|
 |  IBM QRadar | 否 | Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support)下載。 您可以在 [QRADAR DSM](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)設定中深入瞭解與 Azure 的整合。 |
-| Splunk | 否 | [Splunk 的 Azure 監視器 Add-On](https://splunkbase.splunk.com/app/3534/) 是可在從 splunkbase 取得中使用的開放原始碼專案。 您可以在 Splunk 的 [Azure 監視器增益集取得](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)檔。<br><br> 如果您無法在 Splunk 實例中安裝附加元件（例如您使用 proxy 或在 Splunk Cloud 上執行），您可以使用 [Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)將這些事件轉送至 Splunk HTTP 事件收集器，這是由事件中樞中的新訊息所觸發。 |
+| Splunk | 否 | [Splunk 的 Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) 是可在從 splunkbase 取得中使用的開放原始碼專案。 <br><br> 如果您無法在 Splunk 實例中安裝附加元件（例如您使用 proxy 或在 Splunk Cloud 上執行），您可以使用 [Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)將這些事件轉送至 Splunk HTTP 事件收集器，這是由事件中樞中的新訊息所觸發。 |
 | sumologic | 否 | 您可以 [從事件中樞的 Azure Audit 應用程式收集記錄](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中，取得設定 SumoLogic 以取用來自事件中樞之資料的指示。 |
 | ArcSight | 否 | ArcSight Azure 事件中樞智慧型連接器可作為 [ArcSight 智慧型連接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分。 |
 | Syslog 伺服器 | 否 | 如果您想要將 Azure 監視器資料直接串流到 syslog 伺服器，您可以使用以 [Azure 函式為基礎的解決方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。

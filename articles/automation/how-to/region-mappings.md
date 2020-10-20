@@ -1,16 +1,16 @@
 ---
 title: 已連結 Log Analytics 工作區的支援區域
 description: 本文說明自動化帳戶與 Log Analytics 工作區之間的支援區域對應，因為它與 Azure 自動化的特定功能有關。
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440655"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207320"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>已連結 Log Analytics 工作區的支援區域
 
@@ -32,6 +32,7 @@ ms.locfileid: "89440655"
 |**美國**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**加拿大**||
 |CanadaCentral|CanadaCentral|
@@ -44,6 +45,7 @@ ms.locfileid: "89440655"
 |**歐洲**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>2</sup>|USGovArizona|
@@ -86,5 +88,5 @@ ms.locfileid: "89440655"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解[更新管理概觀](../update-management/update-mgmt-overview.md)中的更新管理。
-* 了解[變更追蹤和清查概觀](../change-tracking.md)中的變更追蹤和清查。
+* 了解[變更追蹤和清查概觀](../change-tracking/overview.md)中的變更追蹤和清查。
 * 了解[停機期間啟動/停止 VM 概觀](../automation-solution-vm-management.md)中的停機期間啟動/停止 VM。

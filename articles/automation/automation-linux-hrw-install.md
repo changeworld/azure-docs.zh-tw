@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84f168104be4ba4cb8af2e31be82eed0e2ae83a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776267"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205179"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合式 Runbook 背景工作角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "91776267"
 
 如果您沒有 Azure 監視器 Log Analytics 工作區，請在建立工作區之前，先參閱 [Azure 監視器記錄檔設計指引](../azure-monitor/platform/design-logs-deployment.md) 。
 
-如果您有工作區，但未連結至您的自動化帳戶，則啟用自動化功能會新增 Azure 自動化的功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時（特別是 [更新管理](update-management/update-mgmt-overview.md) 或 [變更追蹤和清查](change-tracking.md)），背景工作元件會自動推送至代理程式電腦。
+如果您有工作區，但未連結至您的自動化帳戶，則啟用自動化功能會新增 Azure 自動化的功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時（特別是 [更新管理](update-management/update-mgmt-overview.md) 或 [變更追蹤和清查](change-tracking/overview.md)），背景工作元件會自動推送至代理程式電腦。
 
 若要將更新管理功能新增至您的工作區，請執行下列 PowerShell Cmdlet：
 

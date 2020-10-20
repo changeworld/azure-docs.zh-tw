@@ -1,18 +1,18 @@
 ---
-title: Azure 角色和許可權
+title: 登錄角色和許可權
 description: 使用 Azure 角色型存取控制 (Azure RBAC) 和身分識別和存取管理 (IAM) ，以提供更細微的許可權給 Azure container registry 中的資源。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661379"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207949"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
 
-Azure Container Registry 服務支援一組 [內建的 azure 角色](../role-based-access-control/built-in-roles.md) ，可對 azure Container Registry 提供不同層級的許可權。 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/index.yml) 將特定許可權指派給需要與登錄互動的使用者、服務主體或其他身分識別。 您也可以針對不同的作業，以更細緻的許可權來定義 [自訂角色](#custom-roles) 。
+Azure Container Registry 服務支援一組 [內建的 azure 角色](../role-based-access-control/built-in-roles.md) ，可對 azure Container Registry 提供不同層級的許可權。 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/index.yml) 將特定許可權指派給需要與登錄互動的使用者、服務主體或其他身分識別，例如提取或推送容器映射。 您也可以針對不同的作業，以更細緻的許可權來定義 [自訂角色](#custom-roles) 。
 
 | 角色/權限       | [存取 Resource Manager](#access-resource-manager) | [建立/刪除登錄](#create-and-delete-registry) | [推送映像](#push-image) | [提取映像](#pull-image) | [刪除映像資料](#delete-image-data) | [變更原則](#change-policies) |   [簽署映像](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -24,13 +24,19 @@ Azure Container Registry 服務支援一組 [內建的 azure 角色](../role-bas
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
+## <a name="assign-roles"></a>指派角色
+
+請參閱 [新增角色指派](../role-based-access-control/role-assignments-steps.md) 以進行高階步驟的步驟，以將角色指派新增至現有的使用者、群組、服務主體或受控識別。 您可以使用 Azure 入口網站、Azure CLI 或其他 Azure 工具。
+
+當您建立服務主體時，您也會設定其對 Azure 資源（例如容器登錄）的存取權和許可權。 如需使用 Azure CLI 的範例腳本，請參閱 [Azure Container Registry 驗證與服務主體](container-registry-auth-service-principal.md#create-a-service-principal)。
+
 ## <a name="differentiate-users-and-services"></a>區分使用者和服務
 
 套用權限時，最佳的做法是提供人員或服務完成工作的最低權限。 下列權限集合代表人員或無周邊服務可使用的一組功能。
 
 ### <a name="cicd-solutions"></a>CI/CD 解決方案
 
-自動執行 CI/CD 解決方案的 `docker build` 命令時，您需要 `docker push` 功能。 對於這些無周邊服務案例，建議指派 **AcrPush** 角色。 此角色不同於更廣泛**參與者**角色，可防止帳戶執行其他登錄作業或存取 Azure Resource Manager。
+自動執行 CI/CD 解決方案的 `docker build` 命令時，您需要 `docker push` 功能。 針對這些無周邊服務案例，建議您指派 **AcrPush** 角色。 此角色不同於更廣泛**參與者**角色，可防止帳戶執行其他登錄作業或存取 Azure Resource Manager。
 
 ### <a name="container-host-nodes"></a>容器主機節點
 
@@ -113,7 +119,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 若要使用 JSON 描述來建立或更新自訂角色，請使用 [Azure CLI](../role-based-access-control/custom-roles-cli.md)、 [Azure Resource Manager 範本](../role-based-access-control/custom-roles-template.md)、 [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)或其他 Azure 工具。 以您管理內建 Azure 角色的角色指派的相同方式，新增或移除自訂角色的角色指派。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解如何使用 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../role-based-access-control/role-assignments-cli.md)或其他 Azure 工具，將 Azure 角色指派給 azure 身分識別。
 

@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a81af14992c8557c245ab3a1073f031a6c505084
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019387"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203038"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理及增加 Azure Machine Learning 資源的配額
 
@@ -47,7 +47,7 @@ Azure 會使用限制和配額來防止因詐騙而無法執行預算，以及�
 + 虛擬機器
 + Azure Machine Learning Compute
 + Azure Machine Learning 管線
-+ 容器執行個體
++ Container Instances
 + 儲存體
 
 > [!IMPORTANT]
@@ -178,11 +178,13 @@ Azure 會使用限制和配額來防止因詐騙而無法執行預算，以及�
     | 問題類型 | 技術 |
     | 服務 | 我的服務。 在下拉式清單中選取 __Machine Learning__ 。 |
     | 問題類型 | 工作區設定、SDK 和 CLI |
-    | 問題子類型 | 佈建或管理工作區時發生問題 |
+    | 問題子類型 | 私人端點和私人 DNS 區域額度要求 |
 
 2. 在 [ __詳細資料__ ] 區段中，使用 [ __描述__ ] 欄位來提供您想要使用的 Azure 區域，以及您打算使用的案例。 如果您需要針對多個訂用帳戶要求增加配額，請同時列出此欄位中的訂用帳戶識別碼。
 
 3. 選取 [ __建立__ ] 以建立要求。
+
+:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="私人端點和私人 DNS 配額增加要求的螢幕擷取畫面":::
 
 ## <a name="next-steps"></a>後續步驟
 

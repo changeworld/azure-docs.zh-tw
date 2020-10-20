@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893198"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205637"
 ---
 # <a name="late-stage-reprojection"></a>延遲階段重新投影
 
@@ -46,7 +46,7 @@ ms.locfileid: "91893198"
 
 ### <a name="configure-planar-lsr-in-unity"></a>在 Unity 中設定平面 LSR
 
-平面參數衍生自所謂的焦點點，您必須透過此 *焦點點*提供每個畫面格 `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` 。 如需詳細資訊，請參閱 [Unity 焦點點 API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 。 如果您未設定焦點點，則會為您選擇一個回復。 不過，自動回復通常會導致不佳的結果。
+平面參數衍生自所謂的焦點點，您必須透過此 *焦點點*提供每個畫面格 `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` 。 如需詳細資訊，請參閱 [Unity 焦點點 API](/windows/mixed-reality/focus-point-in-unity) 。 如果您未設定焦點點，則會為您選擇一個回復。 不過，自動回復通常會導致不佳的結果。
 
 您可以自行計算焦點，但以遠端轉譯主機所計算的端點為基礎，可能有意義。 呼叫 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` 以取得該。 系統會要求您提供座標框架以表示焦點點。 在大部分的情況下，您只想要從這裡提供結果 `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` 。
 

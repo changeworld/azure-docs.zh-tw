@@ -3,14 +3,14 @@ title: 在 Azure 自動化中部署 Windows 混合式 Runbook 背景工作角色
 description: 本文說明如何部署混合式 Runbook 背景工作角色，讓您可以在本機資料中心或雲端環境中，用來在 Windows 電腦上執行 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/20/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a03d14fa272f5f86af1caf0ce9537bbb186d13cc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660507"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204512"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -18,7 +18,7 @@ ms.locfileid: "88660507"
 
 在您成功部署 Runbook 背景工作角色後，請檢閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)，以了解如何設定 Runbook 以將內部部署資料中心或其他雲端環境中的程序自動化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您具有下列各項。
 
@@ -28,7 +28,7 @@ ms.locfileid: "88660507"
 
 如果您沒有 Azure 監視器 Log Analytics 工作區，請在建立工作區之前，先參閱 [Azure 監視器記錄檔設計指引](../azure-monitor/platform/design-logs-deployment.md) 。
 
-如果您有工作區，但未連結至您的自動化帳戶，則啟用自動化功能會新增 Azure 自動化的功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時（特別是 [更新管理](update-management/update-mgmt-overview.md) 或 [變更追蹤和清查](change-tracking.md)），背景工作元件會自動推送至代理程式電腦。
+如果您有工作區，但未連結至您的自動化帳戶，則啟用自動化功能會新增 Azure 自動化的功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時（特別是 [更新管理](update-management/update-mgmt-overview.md) 或 [變更追蹤和清查](change-tracking/overview.md)），背景工作元件會自動推送至代理程式電腦。
 
 > [!NOTE]
 > 啟用更新管理或變更追蹤和清查功能時，Azure 自動化只支援特定區域以連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。 啟用這兩項功能之前，請先參閱 Azure 自動化的 [Azure 定價](https://azure.microsoft.com/pricing/details/automation/) 資訊。
@@ -175,7 +175,7 @@ Heartbeat
 
 在搜尋結果中，您應該會看到機器的心跳記錄，表示它已連線並向服務回報。 根據預設，每個代理程式會將活動訊號記錄轉送至其獲指派的工作區。 使用下列步驟來完成代理程式安裝和設定。
 
-1. 啟用功能以新增代理程式機器。 針對更新管理和 Azure Vm，請參閱 [從自動化帳戶啟用更新管理](update-management/update-mgmt-enable-automation-account.md)、 [流覽 Azure 入口網站以啟用更新管理](update-management/update-mgmt-enable-portal.md)、 [從 runbook 啟用更新管理](update-management/update-mgmt-enable-runbook.md)，或 [從 Azure VM 啟用更新管理](update-management/update-mgmt-enable-vm.md)。 針對變更追蹤和 Azure Vm，請參閱 [啟用 Azure vm](automation-enable-changes-from-auto-acct.md#enable-azure-vms)，而針對非 azure vm，請參閱在 [工作區中啟用電腦](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)。
+1. 啟用功能以新增代理程式機器。 針對更新管理和 Azure Vm，請參閱 [從自動化帳戶啟用更新管理](update-management/update-mgmt-enable-automation-account.md)、 [流覽 Azure 入口網站以啟用更新管理](update-management/update-mgmt-enable-portal.md)、 [從 runbook 啟用更新管理](update-management/update-mgmt-enable-runbook.md)，或 [從 Azure VM 啟用更新管理](update-management/update-mgmt-enable-vm.md)。 針對變更追蹤和 Azure Vm，請參閱 [啟用 Azure vm](change-tracking/enable-from-automation-account.md#enable-azure-vms)，而針對非 azure vm，請參閱在 [工作區中啟用電腦](change-tracking/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
 2. 若要確認混合式 Runbook 背景工作角色的版本，請流覽至， `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` 並記下 **版本** 子資料夾。
 
@@ -214,7 +214,7 @@ Runbook 可以使用 Azure 自動化環境中安裝的模組中定義的任何�
 
 因為「混合式 Runbook 背景工作角色」主要是管理本機資源，您很可能需要安裝支援這些資源的模組，特別是 `PowerShellGet` 模組。 如需安裝 Windows PowerShell 模組的相關資訊，請參閱 [Windows PowerShell](/powershell/scripting/developer/windows-powershell)。
 
-安裝的模組必須位於 `PSModulePath` 環境變數所參考的位置，才能由混合式背景工作角色自動匯入。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
+安裝的模組必須位於 `PSModulePath` 環境變數所參考的位置，才能由混合式背景工作角色自動匯入。 如需詳細資訊，請參閱[在 PSModulePath 中安裝模組](/powershell/scripting/developer/module/installing-a-powershell-module)。
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>從內部部署 Windows 電腦移除混合式 Runbook 背景工作角色
 

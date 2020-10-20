@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
-ms.openlocfilehash: 871af5b767e8cfe10db3a0a1c15c47340e25581f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f14f43fa341df40ecd35340b7311e1acd18004c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395021"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204702"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 需求
 商務用 Skype 具有各種工作負載，其所要求的 QoS 處理方式各有差異。 如果您打算透過 ExpressRoute 取用語音服務，應遵守以下所述的需求。
@@ -24,7 +24,7 @@ ms.locfileid: "89395021"
 > 
 > 
 
-下表提供 Microsoft 小組和商務用 Skype 所使用的 DSCP 標記清單。 如需詳細資訊，請參閱 [管理適用於商務用 Skype 的 QoS](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) 。
+下表提供 Microsoft 小組和商務用 Skype 所使用的 DSCP 標記清單。 如需詳細資訊，請參閱 [管理適用於商務用 Skype 的 QoS](/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) 。
 
 | **傳輸類別** | **處理方式 (DSCP 標示)** | **Microsoft 小組和商務用 Skype 工作負載** |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ ms.locfileid: "89395021"
 | **預設值** |AF11 (10) |檔案傳輸 |
 | |CS0 (0) |任何其他項目 |
 
-* 您應將工作負載分類，並標記正確的 DSCP 值。 遵循 [這裡](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) 所提供的指引，以了解如何在您的網路中設定 DSCP 標示。
+* 您應將工作負載分類，並標記正確的 DSCP 值。 遵循 [這裡](/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) 所提供的指引，以了解如何在您的網路中設定 DSCP 標示。
 * 您應在網路中設定並支援多個 QoS 佇列。 語音必須是獨立類別，並接收 [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt)中指定的 EF 處理方式。 
 * 您可以決定適用於每個流量類別的佇列機制、壅塞偵測原則和頻寬配置。 但是必須保留適用於商務用 Skype 工作負載的 DSCP 標示。 如果您使用以上未列出的 DSCP 標示 (例如 AF31 (26))，就必須先將此 DSCP 值重寫為 0，才能將封包傳送給 Microsoft。 Microsoft 只會傳送使用上表所列之 DSCP 值標記的封包。 
 
@@ -45,4 +45,3 @@ ms.locfileid: "89395021"
   * [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md)
   * [設定路由](expressroute-howto-routing-classic.md)
   * [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-classic.md)
-

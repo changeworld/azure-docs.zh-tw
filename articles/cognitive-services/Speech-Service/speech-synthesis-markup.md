@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: baa8b1f302c0d8a7355f74b686ffedfb45ac22d3
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096040"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207677"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -148,7 +148,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-如需詳細資訊， <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
+如需詳細資訊， <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>請參閱。
 
 ```javascript
 speechConfig.setProperty(
@@ -716,7 +716,7 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
-| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
+| `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值為 `1`。 | 選擇性 |
 | `fadein` | 指定背景音訊「淡入」的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡入。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 | `fadeout` | 指定背景音訊淡出的持續時間（以毫秒為單位）。 預設值為 `0` ，相當於不淡出。 **接受的值**： `0` 至 `10000` 內含。  | 選擇性 |
 

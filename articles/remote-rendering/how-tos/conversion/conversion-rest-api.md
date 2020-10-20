@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87985609"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201778"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型轉換 REST API
 
@@ -54,7 +54,7 @@ ms.locfileid: "87985609"
 #### <a name="request-body"></a>Request body
 
 > [!NOTE]
-> 下的所有專案 `input.folderPath` 都會被抓取，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，將會取得容器的整個內容。 取出的所有 blob 和資料夾都必須有 [有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
+> 下的所有專案 `input.folderPath` 都會被抓取，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，將會取得容器的整個內容。 取出的所有 blob 和資料夾都必須有 [有效的 Windows 檔案名](/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -91,7 +91,7 @@ ms.locfileid: "87985609"
 > 這些 SAS URI 權杖是查詢字串，而不是完整的 URI。 
 
 > [!NOTE]
-> 下的所有專案 `input.folderPath` 都會被抓取，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，將會取得容器的整個內容。 取出的所有 blob 和資料夾都必須有 [有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
+> 下的所有專案 `input.folderPath` 都會被抓取，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，將會取得容器的整個內容。 取出的所有 blob 和資料夾都必須有 [有效的 Windows 檔案名](/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {

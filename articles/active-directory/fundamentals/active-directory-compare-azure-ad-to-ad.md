@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: e71ed9655c7b195fea8a2eeeaa76d8a28717637f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c8cf84aa697512b6d1147bf853d30761792370b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318551"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207303"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>比較 Active Directory 與 Azure Active Directory (機器翻譯)
 
@@ -39,7 +39,7 @@ Azure AD 可為組織提供身分識別即服務， (IDaaS 跨雲端和內部部
 | 傳統和繼承應用程式| 大部分的內部部署應用程式會使用 LDAP、Windows-Integrated 驗證 (NTLM 和 Kerberos) ，或以標頭為基礎的驗證來控制使用者的存取權。| Azure AD 可以使用在內部部署環境中執行 [Azure AD 應用程式 proxy 代理程式](../manage-apps/application-proxy.md) ，來提供這些內部部署應用程式類型的存取權。 使用這個方法 Azure AD 可以在您遷移或需要與繼承應用程式並存時，使用 Kerberos 驗證內部部署 Active Directory 使用者。 |
 | SaaS 應用程式|Active Directory 不會以原生方式支援 SaaS 應用程式，而且需要同盟系統，例如 AD FS。|支援 OAuth2、SAML 和 WS 驗證的 SaaS 應用程式 \* 可以整合以使用 Azure AD 進行驗證。 |
 | 使用新式驗證的 LOB) 應用程式企業營運 (|組織可以搭配使用 AD FS 與 Active Directory 來支援需要新式驗證的 LOB 應用程式。| 需要新式驗證的 LOB 應用程式可以設定為使用 Azure AD 進行驗證。 |
-| 中層/Daemon 服務|在內部部署環境中執行的服務通常會使用 AD 服務帳戶或群組受管理的服務帳戶 (gMSA) 執行。 然後，這些應用程式會繼承服務帳戶的許可權。| Azure AD 提供 [受控](../managed-identities-azure-resources/index.yml) 識別來執行雲端中的其他工作負載。 這些身分識別的生命週期是由 Azure AD 管理，並系結至資源提供者，而不能用於其他用途以取得後門程式存取。|
+| 中層/Daemon 服務|在內部部署環境中執行的服務通常會使用 AD 服務帳戶或群組受管理的服務帳戶 (gMSA) 執行。 然後，這些應用程式會繼承服務帳戶的許可權。| Azure AD 提供 [受控](../managed-identities-azure-resources/index.yml) 識別來執行雲端中的其他工作負載。 這些身分識別的生命週期是由 Azure AD 管理，並系結至資源提供者，因此無法用於其他用途以取得後門程式存取。|
 | **裝置**|||
 | 行動|Active Directory 原本就不支援沒有協力廠商解決方案的行動裝置。| Microsoft 的行動裝置管理解決方案（Microsoft Intune）已與 Azure AD 整合。 Microsoft Intune 會將裝置狀態資訊提供給識別系統，以便在驗證期間進行評估。 |
 | Windows 桌上型電腦|Active Directory 可以讓 Windows 裝置加入網域，以使用群組原則、System Center Configuration Manager 或其他協力廠商解決方案來管理它們。|Windows 裝置可 [聯結至 Azure AD](../devices/index.yml)。 條件式存取可以檢查裝置是否在驗證過程中 Azure AD 加入。 您也可以使用 [Microsoft Intune](/intune/what-is-intune)來管理 Windows 裝置。 在此案例中，條件式存取會考慮裝置是否符合規範 (例如，最新的安全性修補程式和病毒碼) ，然後才允許存取應用程式。|

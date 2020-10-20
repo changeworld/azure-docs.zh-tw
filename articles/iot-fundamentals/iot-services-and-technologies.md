@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977556"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206079"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>您可以使用哪些 Azure 技術和服務來建立 IoT 解決方案？
 
@@ -61,7 +61,7 @@ Azure IoT 解決方案加速器可提升您對 IoT 解決方案的控制能力�
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 可讓您將部分的 IoT 工作負載從 Azure 雲端服務卸載至您的裝置。 IoT Edge 可以減少解決方案中的延遲、減少裝置與雲端交換的資料量，以及啟用離線案例。 您可以從 IoT Central 和一些解決方案加速器來管理 IoT Edge 裝置。
 
-[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) 是安全且高階應用程式平台，搭配可供連網裝置使用的內建通訊及安全性功能。 其包含安全的微控制器單元、自訂的 Linux 型作業系統，以及可提供持續、可更新安全性的雲端式安全性服務。
+[Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) 是安全且高階應用程式平台，搭配可供連網裝置使用的內建通訊及安全性功能。 其包含安全的微控制器單元、自訂的 Linux 型作業系統，以及可提供持續、可更新安全性的雲端式安全性服務。
 
 ### <a name="cloud-connectivity"></a>雲端連線能力
 
@@ -76,7 +76,7 @@ IoT 中樞是解決方案加速器的核心元件，可供您用來因應 IoT �
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>消除實體和數位世界的隔閡
 
-[Azure Digital Twins](../digital-twins/about-digital-twins.md) 是一項 IoT 服務，可讓您建立實體環境的模型。 其會使用空間智慧圖形，以建立人員、空間和裝置之間的關聯性模型。 讓數位世界與實體世界之間的資料相互關聯，您即可建立內容感知的解決方案。
+[Azure Digital Twins](../digital-twins/overview.md) 是一項 IoT 服務，可讓您建立實體環境的模型。 其會使用空間智慧圖形，以建立人員、空間和裝置之間的關聯性模型。 讓數位世界與實體世界之間的資料相互關聯，您即可建立內容感知的解決方案。
 
 Iot Central 使用 Digital Twins 來讓真實世界中的裝置和資料與數位模型保持同步，從而讓使用者能夠監視和管理已連線的裝置。
 
@@ -84,7 +84,7 @@ Iot Central 使用 Digital Twins 來讓真實世界中的裝置和資料與數�
 
 IoT 裝置通常會產生大量的時間序列資料，例如來自感應器的溫度讀數。 [Azure 時間序列深入解析](../time-series-insights/time-series-insights-overview.md)可以連線到 IoT 中樞、從您的裝置讀取遙測串流、儲存該資料，以及讓您查詢該資料並將其視覺化。
 
-[Azure 地圖服務](/azure/azure-maps)是地理空間服務的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供準確的地理內容。 您可以使用 REST API、網頁型 JavaScript 控制項或 Android SDK 來建置應用程式。
+[Azure 地圖服務](../azure-maps/index.yml)是地理空間服務的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供準確的地理內容。 您可以使用 REST API、網頁型 JavaScript 控制項或 Android SDK 來建置應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

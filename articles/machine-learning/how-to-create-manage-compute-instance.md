@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756614"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207082"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 
@@ -256,6 +256,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 * Python：新增安裝程式碼，並在 Jupyter Notebook 儲存格中執行。
 
 或者，您也可以從終端機視窗進行安裝。 將 Python 套件安裝至 **python 3.6-AzureML** 環境。  將 R 套件安裝到 **R** 環境中。
+% pip 和% conda 魔術函數會自動將套件安裝到 Jupyter 筆記本會話中目前執行的核心。
 
 ## <a name="add-new-kernels"></a>加入新的核心程序
 
