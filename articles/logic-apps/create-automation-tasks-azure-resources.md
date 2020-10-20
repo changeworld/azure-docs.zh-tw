@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269721"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201115"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>藉由建立自動化工作 (預覽版來管理 Azure 資源和監視成本) 
 
 > [!IMPORTANT]
-> 這項功能處於公開預覽狀態，提供時沒有服務等級協定，因此不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此公開預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 為協助您更輕鬆地管理 [Azure 資源](../azure-resource-manager/management/overview.md#terminology) ，您可以使用自動化工作範本為特定資源或資源群組建立自動化管理工作，這會根據資源類型而有所不同。 例如，針對 [Azure 儲存體帳戶](../storage/common/storage-account-overview.md)，您可以設定自動化工作，以將該儲存體帳戶的每月費用傳送給您。 針對 [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)，您可以建立自動化工作，以預先定義的排程開啟或關閉該虛擬機器。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91269721"
 
 目前，您只能在資源層級建立自動化工作、查看工作的執行歷程記錄，以及編輯工作的基礎邏輯應用程式工作流程（由 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 服務提供支援）。 自動化工作比 [Azure 自動化](../automation/automation-intro.md)更基本且輕量。
 
-相較之下，Azure 自動化是以雲端為基礎的自動化和設定服務，可在您的 Azure 和非 Azure 環境中支援一致的管理。 此服務包含程式自動化，可使用[runbook](../automation/automation-runbook-execution.md)、設定管理、[變更追蹤和清查](../automation/change-tracking.md)、更新管理、共用功能和異類功能[來協調處理](../automation/automation-intro.md#process-automation)程式。 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
+相較之下，Azure 自動化是以雲端為基礎的自動化和設定服務，可在您的 Azure 和非 Azure 環境中支援一致的管理。 此服務包含程式自動化，可使用[runbook](../automation/automation-runbook-execution.md)、設定管理、[變更追蹤和清查](../automation/change-tracking/overview.md)、更新管理、共用功能和異類功能[來協調處理](../automation/automation-intro.md#process-automation)程式。 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
 
 ## <a name="prerequisites"></a>Prerequisites
 

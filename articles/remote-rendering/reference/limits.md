@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 61085a5d28fcd74bbf6a393ddc0731e36094a63f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b500a3777ee24d6615022dae2571d021bd0d675a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617493"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201166"
 ---
 # <a name="limitations"></a>限制
 
@@ -52,4 +52,4 @@ ms.locfileid: "91617493"
 
 **HoloLens 2**
 
-* 不支援[從 PV 相機轉譯](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in)功能。
+* 不支援[從 PV 相機轉譯](/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in)功能。

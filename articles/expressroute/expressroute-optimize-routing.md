@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653378"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204872"
 ---
 # <a name="optimize-expressroute-routing"></a>最佳化 ExpressRoute 路由
 當您有多個 ExpressRoute 線路時，會有一個以上的路徑來連線到 Microsoft。 因此，可能會產生次佳的路由 - 也就是，您的流量可能會經由較長的路徑連到 Microsoft，而 Microsoft 也可能會經由較長的路徑連到您的網路。 網路路徑愈常，延遲愈久。 延遲對於應用程式效能和使用者體驗有直接的影響。 本文將說明這個問題，並說明如何使用標準路由技術來最佳化路由。
@@ -64,7 +64,7 @@ ms.locfileid: "91653378"
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>從 Microsoft 到客戶的次佳化路由
-在下面的另一個範例中，來自 Microsoft 的連線經由較長的路徑連到您的網路。 在此情況下，您可在 [混合式環境](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx)中使用內部部署 Exchange 伺服器和 Exchange Online。 您的辦公室已連線到 WAN。 您告知兩個辦公室中內部部署伺服器的前置詞，以透過兩個 ExpressRoute 線路連到 Microsoft。 在信箱移轉的情況下，Exchange Online 會起始對內部部署伺服器的連線。 不幸的是，在橫越整個大陸回到西岸之前，洛杉磯辦公室的連線會路由至美國東部的 ExpressRoute 線路。 此問題的原因類似第一個問題。 沒有任何提示，Microsoft 網路無法分辨哪個客戶前置詞接近美國東部，哪個接近美國西部。 有可能會對洛杉磯辦公室挑選錯誤的路徑。
+在下面的另一個範例中，來自 Microsoft 的連線經由較長的路徑連到您的網路。 在此情況下，您可在 [混合式環境](/exchange/exchange-hybrid)中使用內部部署 Exchange 伺服器和 Exchange Online。 您的辦公室已連線到 WAN。 您告知兩個辦公室中內部部署伺服器的前置詞，以透過兩個 ExpressRoute 線路連到 Microsoft。 在信箱移轉的情況下，Exchange Online 會起始對內部部署伺服器的連線。 不幸的是，在橫越整個大陸回到西岸之前，洛杉磯辦公室的連線會路由至美國東部的 ExpressRoute 線路。 此問題的原因類似第一個問題。 沒有任何提示，Microsoft 網路無法分辨哪個客戶前置詞接近美國東部，哪個接近美國西部。 有可能會對洛杉磯辦公室挑選錯誤的路徑。
 
 ![ExpressRoute 案例 2 - 從 Microsoft 到客戶的次佳化路由](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 
