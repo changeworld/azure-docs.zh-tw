@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 928737608ae3e3e44b352724713a284ff9a45da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934514"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202951"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>向 Azure 通訊服務驗證
 
@@ -33,7 +33,7 @@ ms.locfileid: "90934514"
 
 以下是每個授權選項的簡短說明：
 
-- 適用于 SMS 和管理作業的**存取金鑰**驗證。 存取金鑰驗證適用于在信任的服務環境中執行的應用程式。 若要使用存取金鑰進行驗證，用戶端會 [ (HMAC) 產生雜湊型方法驗證程式代碼 ](https://en.wikipedia.org/wiki/HMAC) ，並將它包含在 `Authorization` 每個 HTTP 要求的標頭中。 如需詳細資訊，請參閱 [使用存取金鑰進行驗證](#authenticate-with-an-access-key)。
+- 適用于 SMS 和管理作業的**存取金鑰**驗證。 存取金鑰驗證適用于在信任的服務環境中執行的應用程式。 若要使用存取金鑰進行驗證，用戶端會 [ (HMAC) 產生雜湊式訊息驗證碼 ](https://en.wikipedia.org/wiki/HMAC) ，並將它包含在 `Authorization` 每個 HTTP 要求的標頭中。 如需詳細資訊，請參閱 [使用存取金鑰進行驗證](#authenticate-with-an-access-key)。
 - 用於聊天和通話的**使用者存取權杖**驗證。 使用者存取權杖可讓您的用戶端應用程式直接向 Azure 通訊服務進行驗證。 這些權杖會在您建立的伺服器端權杖布建服務上產生。 然後，這些用戶端裝置會提供使用權杖初始化聊天和呼叫用戶端程式庫的用戶端裝置。 如需詳細資訊，請參閱 [使用使用者存取權杖進行驗證](#authenticate-with-a-user-access-token)。
 
 ## <a name="authenticate-with-an-access-key"></a>使用存取金鑰進行驗證

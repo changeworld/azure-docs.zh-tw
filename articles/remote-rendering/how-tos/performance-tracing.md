@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d4ce68bdda5fbc3dfdb7396141289a58dab5bd1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84021155"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204090"
 ---
 # <a name="create-client-side-performance-traces"></a>建立用戶端效能追蹤
 
@@ -24,7 +24,7 @@ ms.locfileid: "84021155"
 
 ### <a name="installation"></a>安裝
 
-用來追蹤 ARR 的應用程式是可用於所有 Windows 開發的一般用途工具。 它們是透過 [Windows 效能工具](https://docs.microsoft.com/windows-hardware/test/wpt/)組所提供。 若要取得此工具組，請下載 [Windows 評定及部署套件](https://docs.microsoft.com/windows-hardware/get-started/adk-install)。
+用來追蹤 ARR 的應用程式是可用於所有 Windows 開發的一般用途工具。 它們是透過 [Windows 效能工具](/windows-hardware/test/wpt/)組所提供。 若要取得此工具組，請下載 [Windows 評定及部署套件](/windows-hardware/get-started/adk-install)。
 
 ### <a name="terminology"></a>詞彙
 
@@ -35,13 +35,13 @@ ms.locfileid: "84021155"
 * `WPR`
 * `WPA`
 
-**ETW**代表[ **W**>indows 的**E**通風管**T**賽車](https://docs.microsoft.com/windows/win32/etw/about-event-tracing)。 這只是 Windows 內建的有效率核心層級追蹤設備的整體名稱。 這稱為「 *事件* 追蹤」，因為支援 ETW 的應用程式會發出事件，以記錄可能有助於追蹤效能問題的動作。 根據預設，作業系統已針對磁片存取、工作切換等專案發出事件。 ARR 之類的應用程式會額外發出自訂事件，例如，已卸載的框架、網路延遲等等。
+**ETW**代表[ **W**>indows 的**E**通風管**T**賽車](/windows/win32/etw/about-event-tracing)。 這只是 Windows 內建的有效率核心層級追蹤設備的整體名稱。 這稱為「 *事件* 追蹤」，因為支援 ETW 的應用程式會發出事件，以記錄可能有助於追蹤效能問題的動作。 根據預設，作業系統已針對磁片存取、工作切換等專案發出事件。 ARR 之類的應用程式會額外發出自訂事件，例如，已卸載的框架、網路延遲等等。
 
 **ETL** 代表 **E**通風管 **T**競爭 **L**ogging。 這只是表示追蹤已 (記錄) 收集，因此通常做為儲存追蹤資料之檔案的副檔名。 因此，當您進行追蹤時，通常會有 .etl 檔。 \*
 
-**WPR**代表[ **W**>indows **P**效能**R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) ，這是啟動及停止記錄事件追蹤的應用程式名稱。 WPR 會使用設定檔 (\* . wprp) ，設定要記錄的確切事件。 `wprp`ARR SDK 會提供這類檔案。 在桌上型電腦上執行追蹤時，您可以直接啟動 WPR。 在 HoloLens 上進行追蹤時，您通常會改為流覽 web 介面。
+**WPR**代表[ **W**>indows **P**效能**R**ecorder](/windows-hardware/test/wpt/windows-performance-recorder) ，這是啟動及停止記錄事件追蹤的應用程式名稱。 WPR 會使用設定檔 (\* . wprp) ，設定要記錄的確切事件。 `wprp`ARR SDK 會提供這類檔案。 在桌上型電腦上執行追蹤時，您可以直接啟動 WPR。 在 HoloLens 上進行追蹤時，您通常會改為流覽 web 介面。
 
-**WPA**代表[ **W**>indows **P**效能 nalyzer **A** ](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) ，它是 GUI 應用程式的名稱，用來開啟 \* .etl 檔案並透過資料進行流覽，以找出效能問題。 WPA 可讓您依各種準則來排序資料、以數種方式顯示資料、深入探討詳細資料，以及相互關聯資訊。
+**WPA**代表[ **W**>indows **P**效能 nalyzer **A** ](/windows-hardware/test/wpt/windows-performance-analyzer) ，它是 GUI 應用程式的名稱，用來開啟 \* .etl 檔案並透過資料進行流覽，以找出效能問題。 WPA 可讓您依各種準則來排序資料、以數種方式顯示資料、深入探討詳細資料，以及相互關聯資訊。
 
 雖然可以在任何 Windows 裝置上建立 ETL 追蹤 (本機電腦、HoloLens、雲端伺服器等 ) ，但它們通常會儲存至磁片，並在桌上型電腦上使用 WPA 進行分析。 ETL 檔案可以傳送給其他開發人員，讓他們有外觀。 不過請注意，您可以在 ETL 追蹤中捕捉敏感資訊，例如檔案路徑和 IP 位址。 您可以透過兩種方式使用 ETW：記錄追蹤或分析追蹤。 錄製追蹤是很簡單的，而且需要進行基本設定。 另一方面，分析追蹤需要對 WPA 工具和您正在調查的問題有相當的瞭解。 以下將提供學習 WPA 的一般材質，以及如何解讀 ARR 特定追蹤的指導方針。
 
@@ -51,7 +51,7 @@ ms.locfileid: "84021155"
 
 ### <a name="wpr-configuration"></a>WPR 設定
 
-1. [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder)從 [開始]*功能表*啟動。
+1. [:::no-loc text="Windows Performance Recorder":::](/windows-hardware/test/wpt/windows-performance-recorder)從 [開始]*功能表*啟動。
 1. 展開 **更多選項**
 1. 按一下 [**新增設定檔**]。
 1. 選取 *AzureRemoteRenderingNetworkProfiling wprp*。 您可以在 [ *工具/ETLProfiles*] 下的 ARR SDK 中找到此檔案。
@@ -95,7 +95,7 @@ ms.locfileid: "84021155"
 
 Windows Performance Analyzer 是開啟 ETL 檔案並檢查追蹤的標準工具。 說明 WPA 如何運作不在本文的討論範圍內。 若要開始使用，請參閱下列資源：
 
-* 觀看 [簡介](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) 影片，以取得首次總覽。
+* 觀看 [簡介](/windows-hardware/test/wpt/windows-performance-analyzer) 影片，以取得首次總覽。
 * WPA 本身有一個 *消費者入門* 索引標籤，其中說明一般步驟。 查看可用的主題。 尤其是在「查看資料」下，您會看到如何建立特定資料圖形的快速簡介。
 * [本網站上](https://randomascii.wordpress.com/2015/09/24/etw-central/)有絕佳的資訊，但並非全部都與初學者相關。
 
@@ -127,6 +127,6 @@ Windows Performance Analyzer 是開啟 ETL 檔案並檢查追蹤的標準工具�
 
 上圖顯示各種 ARR 特定事件的視圖，以及整體 CPU 使用率的觀點。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [伺服器端效能查詢](../overview/features/performance-queries.md)

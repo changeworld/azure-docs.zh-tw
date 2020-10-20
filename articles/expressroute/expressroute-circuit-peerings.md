@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566495"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202339"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 線路和對等互連
 
@@ -70,7 +70,7 @@ Microsoft 線上服務 (Microsoft 365 和 Azure PaaS 服務的連線會透過 Mi
 
 ## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute 健康情況
 
-您可能會基於可用性、與 VNet 的連線能力及頻寬使用率，使用[網路效能監控](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 來監視 ExpressRoute 線路。
+您可能會基於可用性、與 VNet 的連線能力及頻寬使用率，使用[網路效能監控](../networking/network-monitoring-overview.md) (NPM) 來監視 ExpressRoute 線路。
 
 NPM 會監視 Azure 私用對等互連和 Microsoft 對等互連的健康情況。 如需詳細資訊，請參閱我們的[文章](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) \(英文\)。
 

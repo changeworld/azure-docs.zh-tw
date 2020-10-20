@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d33af7a9c2d48ded84bd675364469dab09a79d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711200"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207116"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>建立 Azure Machine Learning 計算叢集
 
@@ -51,6 +51,8 @@ Azure Machine Learning 計算叢集是受控的計算基礎結構，可讓您輕
 * 本檔中列出的某些案例會標示為 __預覽__。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 * Azure Machine Learning Compute 有預設限制，例如可配置的核心數目。 如需詳細資訊，請參閱[管理和要求 Azure 資源的配額](how-to-manage-quotas.md)。
+
+* Azure 可讓您將 _鎖定_ 放置在資源上，使其無法被刪除或處於唯讀狀態。 __請勿將資源鎖定套用至包含您工作區的資源群組__。 將鎖定套用至包含您工作區的資源群組，將會防止 Azure ML 計算叢集的調整作業。 如需鎖定資源的詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../azure-resource-manager/management/lock-resources.md)。
 
 > [!TIP]
 > 只要有足夠的配額可滿足所需的核心數目，叢集一般可以擴大為 100 個節點。 例如，叢集預設會設定為已在叢集節點之間啟用節點間通訊，以便支援 MPI 作業。 不過，您可以直接 [提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並要求允許列出您的訂用帳戶或工作區，或使用特定叢集來停用節點間通訊，藉此將叢集調整為數千個節點。 

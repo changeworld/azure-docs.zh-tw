@@ -2,15 +2,15 @@
 title: 從自動化帳戶啟用 Azure 自動化更新管理
 description: 此文章說明如何從自動化帳戶啟用更新管理。
 services: automation
-ms.date: 09/09/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b46bd1e30efff81748389ef62c46410479fb4b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669509"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206623"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>從自動化帳戶啟用更新管理
 
@@ -65,12 +65,12 @@ ms.locfileid: "89669509"
 
     ![已儲存的搜尋](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. 若要對所有向工作區報告的可用機器啟用更新管理，請在 [管理電腦] 頁面上選取 [ **在所有可用的電腦上啟用** ]。 此動作會停用個別新增機器的控制項。 此工作會將所有回報給工作區的機器名稱，新增至電腦群組儲存的搜尋查詢 `MicrosoftDefaultComputerGroup` 。 選取時，此動作會停用 [管理機器] 按鈕。
+3. 若要對所有向工作區報告的可用機器啟用更新管理，請在 [管理電腦] 頁面上選取 [ **在所有可用的電腦上啟用** ]。 此動作會停用此控制項來個別新增電腦，並將所有回報至工作區的機器新增至電腦群組儲存的搜尋查詢 `MicrosoftDefaultComputerGroup` 。 選取時，此動作會停用 [ **管理電腦** ] 選項。
 
-4. 若要為所有可用的機器與未來的機器啟用此功能，請選取 [在所有可用及未來的機器上啟用]。 此選項會從工作區中刪除已儲存的搜尋和範圍設定，並允許此功能包含目前或未來的所有 Azure 與非 Azure 機器，向工作區報告。 選取時，此動作會永久停用 [ **管理電腦** ] 按鈕，因為沒有可用的範圍設定。
+4. 若要為所有可用的機器與未來的機器啟用此功能，請選取 [在所有可用及未來的機器上啟用]。 此選項會從工作區中刪除已儲存的搜尋和範圍設定，並允許此功能包含目前或未來的所有 Azure 與非 Azure 機器，向工作區報告。 選取時，此動作會永久停用 [ **管理電腦** ] 選項，因為沒有可用的範圍設定。
 
     > [!NOTE]
-    > 因為此選項會刪除 Log Analytics 內已儲存的搜尋和範圍設定，所以請務必先移除 Log Analytics 工作區上的任何刪除鎖定，然後再選取此選項。 如果沒有，此選項將無法移除設定，您必須手動將其移除。
+    > 因為此選項會刪除 Log Analytics 中儲存的搜尋和範圍設定，所以請務必先移除 Log Analytics 工作區上的任何刪除鎖定，然後再選取此選項。 如果沒有，此選項將無法移除設定，您必須手動將其移除。
 
 5. 如有必要，您可以重新新增初始儲存的搜尋查詢，以新增範圍設定。 如需詳細資訊，請參閱[限制更新管理部署範圍](update-mgmt-scope-configuration.md)。
 

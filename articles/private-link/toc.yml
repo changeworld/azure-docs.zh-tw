@@ -31,6 +31,8 @@
       href: tutorial-private-endpoint-storage-portal.md
     - name: 連線至 Cosmos DB 帳戶
       href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: 連線至 Web 應用程式
+      href: tutorial-private-endpoint-webapp-portal.md
 - name: 概念
   items:
     - name: 私人端點

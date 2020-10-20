@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401413"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206283"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>將公用互連移至 Microsoft 對等互連
 
@@ -31,7 +31,7 @@ Azure 公用對等互連有1個與每個 BGP 會話相關聯的 NAT IP 位址。
 > [!Warning]
 > 向 Microsoft 公告的 NAT IP 集區不得向網際網路公告。 這樣會中斷其他 Microsoft 服務的連線。
 
-設定 Microsoft 對等互連之前，請參閱 [具有多個網路路徑的非對稱式路由](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) ，以瞭解非對稱式路由。
+設定 Microsoft 對等互連之前，請參閱 [具有多個網路路徑的非對稱式路由](./expressroute-asymmetric-routing.md) ，以瞭解非對稱式路由。
 
 * 如果您使用公用對等互連，且目前有用於存取 [Azure 儲存體](../storage/common/storage-network-security.md) 或 [AZURE SQL DATABASE](../azure-sql/database/vnet-service-endpoint-rule-overview.md)之公用 Ip 位址的 IP 網路規則，則必須確定使用 Microsoft 對等互連設定的 NAT ip 集區包含在 Azure 儲存體帳戶或 azure SQL 帳戶的公用 ip 地址清單中。<br>
 * 為了在移至 Microsoft 對等互連時不用停機，請依本文中的出現順序操作步驟。

@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2595c79c024ea7583f6c6a263dcf4f6034ba6df9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 741f1ba60a5824654737558d9d977333d3911f45
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072283"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201676"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -222,6 +222,11 @@ Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬
 ### <a name="troubleshoot"></a>疑難排解
 
 使用 Azure PowerShell，就可以從 Azure 入口網站擷取有關擴充功能部署狀態的資料。 若要查看所指定 VM 的擴充功能部署狀態，請使用 Azure PowerShell 執行下列命令。
+
+### <a name="frequently-asked-questions"></a>常見問題集
+
+* 您可以設定的 observedCertificates 數目是否有限制？
+  否，Key Vault VM 擴充功能沒有 observedCertificates 數目的限制。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell

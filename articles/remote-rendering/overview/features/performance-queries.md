@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd255896d57d6bda60ec8874430fa994eae69f40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613634"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206215"
 ---
 # <a name="server-side-performance-queries"></a>伺服器端效能查詢
 
@@ -175,8 +175,8 @@ void Update()
 
 ## <a name="api-documentation"></a>API 文件
 
-* [C # RemoteManager. QueryServerPerformanceAssessmentAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
-* [C + + RemoteManager：： QueryServerPerformanceAssessmentAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
+* [C # RemoteManager. QueryServerPerformanceAssessmentAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
+* [C + + RemoteManager：： QueryServerPerformanceAssessmentAsync ( # B1 ](/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>後續步驟
 

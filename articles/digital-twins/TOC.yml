@@ -193,7 +193,7 @@
       items:
         - name: 裝置模擬器服務
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Azure Digital Twins 範例
+        - name: Azure Digital Twins 端對端範例
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins 總管 (範例)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
@@ -201,10 +201,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DPS 和 IoT 中樞的整合範例
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: 適用於 Logic Apps 連接器的 Azure Digital Twins 自訂 Swagger
-          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: SignalR 整合範例
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: 適用於 Logic Apps 連接器的 Azure Digital Twins 自訂 Swagger
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell

@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ecd4330381db1f63a40e9ba5ff63108c6fa78fe
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187229"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205603"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>針對變更追蹤和清查問題進行疑難排解
 
-本文說明如何針對 AAzure 自動化的變更追蹤和清查問題進行疑難排解及解決。 如需變更追蹤和清查的一般資訊，請參閱[變更追蹤和清查概觀](../change-tracking.md)。
+本文說明如何針對 AAzure 自動化的變更追蹤和清查問題進行疑難排解及解決。 如需變更追蹤和清查的一般資訊，請參閱[變更追蹤和清查概觀](../change-tracking/overview.md)。
 
 ## <a name="windows"></a>Windows
 
@@ -108,11 +108,11 @@ Heartbeat
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>未正確設定適用於 Linux 的 Log Analytics 代理程式
 
-可能未使用 OMS 記錄收集器工具，針對記錄和命令列輸出收集，正確地設定適用於 Linux 的 Log Analytics 代理程式。 請參閱[變更追蹤和清查概觀](../change-tracking.md)。
+可能未使用 OMS 記錄收集器工具，針對記錄和命令列輸出收集，正確地設定適用於 Linux 的 Log Analytics 代理程式。 請參閱[變更追蹤和清查概觀](../change-tracking/overview.md)。
 
 ##### <a name="fim-conflicts"></a>FIM 衝突
 
-Azure 資訊安全中心的 FIM 功能可能未正確地驗證 Linux 檔案的完整性。 確認 FIM 運作正常並已針對 Linux 檔案監視正確地設定。 請參閱[變更追蹤和清查概觀](../change-tracking.md)。
+Azure 資訊安全中心的 FIM 功能可能未正確地驗證 Linux 檔案的完整性。 確認 FIM 運作正常並已針對 Linux 檔案監視正確地設定。 請參閱[變更追蹤和清查概觀](../change-tracking/overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

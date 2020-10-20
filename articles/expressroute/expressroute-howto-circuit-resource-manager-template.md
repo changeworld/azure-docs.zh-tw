@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566172"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202050"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 ExpressRoute 線路
 
@@ -25,7 +25,7 @@ ms.locfileid: "89566172"
 > * [PowerShell (傳統)](expressroute-howto-circuit-classic.md)
 >
 
-瞭解如何使用 Azure PowerShell 部署 Azure Resource Manager 範本來建立 ExpressRoute 線路。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Resource Manager 文件](/azure/azure-resource-manager/)和[範本參考](/azure/templates/microsoft.network/expressroutecircuits)。
+瞭解如何使用 Azure PowerShell 部署 Azure Resource Manager 範本來建立 ExpressRoute 線路。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Resource Manager 文件](../azure-resource-manager/index.yml)和[範本參考](/azure/templates/microsoft.network/expressroutecircuits)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -63,8 +63,8 @@ ms.locfileid: "89566172"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 層** 會決定 ExpressRoute 線路為 [本機](expressroute-faqs.md#expressroute-local)、標準或 [Premium](expressroute-faqs.md#expressroute-premium)。 您可以指定 *Local*、* Standard 或 *Premium*。 您無法將 SKU 從*標準/進階*變更為*本機*。
-   * **SKU 系列** 決定計費類型。 您可以針對計量付費資料方案指定 *[metereddata* ，並針對無限制的資料方案指定 *Unlimiteddata* 。 您可以將計費類型從 *Metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *Metereddata*。 *本機*電路僅供*Unlimiteddata* 。
+   * **SKU 層** 會決定 ExpressRoute 線路為 [本機](expressroute-faqs.md#expressroute-local)、標準或 [Premium](expressroute-faqs.md#expressroute-premium)。 您可以指定「本機」、「*標準」或「進階」。 您無法將 SKU 從*標準/進階*變更為*本機*。
+   * **SKU 系列** 決定計費類型。 您可以針對計量付費資料方案指定 *[metereddata* ，並針對無限制的資料方案指定 *Unlimiteddata* 。 您可以將計費類型從 *[metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *[metereddata*。 *本機*電路僅供*Unlimiteddata* 。
    * [對等位置]**** 是您與 Microsoft 對等互連的實體位置。
 
      > [!IMPORTANT]

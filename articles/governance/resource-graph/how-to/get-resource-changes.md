@@ -3,12 +3,12 @@ title: 取得資源變更
 description: 了解如何找出變更資源的時間、取得已變更屬性的清單，以及評估差異。
 ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057564"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203461"
 ---
 # <a name="get-resource-changes"></a>取得資源變更
 
@@ -28,7 +28,7 @@ ms.locfileid: "92057564"
 本文說明如何透過 Resource Graph 的 SDK 收集這項資訊。 若要在 Azure 入口網站中查看這項資訊，請參閱 Azure 原則的[變更歷程記錄](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活動記錄[變更歷程記錄](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 如需將應用程式從基礎結構層變更為應用程式部署的詳細資訊，請參閱 Azure 監視器中的[使用應用程式變更分析 (預覽)](../../../azure-monitor/app/change-analysis.md)。
 
 > [!NOTE]
-> Resource Graph 中的變更詳細資料適用於 Resource Manager 屬性。 如需追蹤虛擬機器內部的變更，請參閱 Azure 自動化的[變更追蹤](../../../automation/change-tracking.md)或 Azure 原則的 [VM 來賓組態](../../policy/concepts/guest-configuration.md)。
+> Resource Graph 中的變更詳細資料適用於 Resource Manager 屬性。 如需追蹤虛擬機器內部的變更，請參閱 Azure 自動化的[變更追蹤](../../../automation/change-tracking/overview.md)或 Azure 原則的 [VM 來賓組態](../../policy/concepts/guest-configuration.md)。
 
 > [!IMPORTANT]
 > Azure Resource Graph 中的變更歷程記錄處於公開預覽狀態。

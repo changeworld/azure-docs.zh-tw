@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
-ms.openlocfilehash: 4cc96a8183e07a17ae880549cdc2b8bdca516322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651491"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206320"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>設定 ExpressRoute 和站對站並存連線 (傳統)
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ ms.locfileid: "91651491"
 此程序會引導您建立 VNet，並建立將並存的站對站和 ExpressRoute 連線。
 
 1. 您必須安裝最新版的 Azure PowerShell Cmdlet。 如需如何安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)。 請注意，您將針對此組態使用的 Cmdlet 可能與您熟悉的 Cmdlet 有些微不同。 請務必使用這些指示中指定的 Cmdlet。 
-2. 建立虛擬網路的結構描述。 如需關於組態結構描述的詳細資訊，請參閱 [Azure 虛擬網路組態結構描述](https://msdn.microsoft.com/library/azure/jj157100.aspx)。
+2. 建立虛擬網路的結構描述。 如需關於組態結構描述的詳細資訊，請參閱 [Azure 虛擬網路組態結構描述](/previous-versions/azure/reference/jj157100(v=azure.100))。
    
     當您建立結構描述時，請務必使用下列值：
    
@@ -229,7 +229,7 @@ ms.locfileid: "91651491"
 4. 編輯網路組態檔結構描述，讓閘道器子網路是 /27 或更短的首碼 (例如 /26 或 /25)。 請參閱下列範例。 
    
    > [!NOTE]
-   > 如果您的虛擬網路中沒有足夠的 IP 位址可以增加閘道器子網路大小，您必須新增更多 IP 位址空間。 如需關於組態結構描述的詳細資訊，請參閱 [Azure 虛擬網路組態結構描述](https://msdn.microsoft.com/library/azure/jj157100.aspx)。
+   > 如果您的虛擬網路中沒有足夠的 IP 位址可以增加閘道器子網路大小，您必須新增更多 IP 位址空間。 如需關於組態結構描述的詳細資訊，請參閱 [Azure 虛擬網路組態結構描述](/previous-versions/azure/reference/jj157100(v=azure.100))。
    > 
    > 
    
@@ -253,4 +253,3 @@ ms.locfileid: "91651491"
 
 ## <a name="next-steps"></a>後續步驟
 如需 ExpressRoute 的詳細資訊，請參閱 [EXPRESSROUTE 常見問題](expressroute-faqs.md)
-

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42b86cadefea41bc438c8f2e91c5eaa86af172b0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055209"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204966"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制來賓存取許可權 (預覽) 
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 可讓您限制外部來賓使用者在其組�
 
     ![Azure AD 外部共同作業設定頁面](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. 選取 [儲存]****。 這些變更最多可能需要15分鐘的時間才會對來賓使用者生效。
+1. 選取 [儲存]。 這些變更最多可能需要15分鐘的時間才會對來賓使用者生效。
 
 ## <a name="update-with-the-microsoft-graph-api"></a>使用 Microsoft Graph API 更新
 
@@ -139,15 +139,16 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 - Teams
 - Outlook (OWA) 
 - SharePoint
+- 小組中的規劃工具
+- Planner web 應用程式
 
 ### <a name="services-currently-not-supported"></a>目前不支援的服務
 
 沒有目前支援的服務可能會與新的來賓限制設定有相容性問題。
 
 - 表單
-- 小組中的規劃工具
-- Planner 應用程式
-- 專案
+- Planner 行動裝置應用程式
+- Project
 - Yammer
 
 ## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
@@ -157,7 +158,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 這些許可權的適用位置為何？ | 這些目錄層級許可權會跨 Azure AD 服務和入口網站強制執行，包括 Microsoft Graph、PowerShell v2、Azure 入口網站和我的應用程式入口網站。 利用 Microsoft 365 群組進行共同作業案例的 Microsoft 365 服務，也會受到影響，尤其是 Outlook、Microsoft 小組和 SharePoint。
 這項功能在我的應用程式入口網站中的哪些部分會受到影響？ | 我的應用程式入口網站中的群組功能將採用這些新的許可權。 這包括在我的應用程式中查看群組清單和群組成員資格的所有路徑。 群組磚可用性未進行任何變更。 群組磚可用性仍然受 Azure 系統管理員入口網站中的現有群組設定所控制。
 這些許可權會覆寫 SharePoint 或 Microsoft 團隊的來賓設定嗎？ | 否。 這些現有的設定仍能控制這些應用程式的體驗和存取。 例如，如果您在 SharePoint 中看到問題，請再次檢查您的外部共用設定。
-Planner 和 Yammer 的已知相容性問題有哪些？ | <li>當權限設定為 [受限制] 時，登入 Planner 應用程式或存取 Microsoft 小組中之 Planner 的來賓將無法存取其方案或任何工作。<li>當權限設定為 [受限制] 時，登入 Yammer 的來賓將無法離開群組。
+Planner 和 Yammer 的已知相容性問題有哪些？ | <li>當權限設定為 [受限制] 時，登入 Planner 行動裝置應用程式的來賓將無法存取其方案或任何工作。<li>當權限設定為 [受限制] 時，登入 Yammer 的來賓將無法離開群組。
 我的租使用者中的現有來賓許可權是否會變更？ | 目前的設定未進行任何變更。 我們維持與您現有設定的回溯相容性。 您決定何時要進行變更。
 這些許可權預設會設定嗎？ | 否。 現有的預設許可權會維持不變。 您可以選擇性地將許可權設定為更嚴格的限制。
 這項功能是否有任何授權需求？ | 否，這項功能沒有新的授權需求。

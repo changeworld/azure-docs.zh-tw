@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097519"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207541"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -40,16 +40,15 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 若要將 Azure 數位 Twins 實例連線到本文中的 Logic Apps，您必須已設定 **Azure 數位 Twins 實例** 。 
 
-首先，設定 Azure Digital Twins 執行個體，及其正常運作所需的驗證。 若要這麼做，請依照指示操作：[*操作說明：設定執行個體和驗證*](how-to-set-up-instance-portal.md)。 您可以根據本身偏好的體驗，選擇參閱針對 [Azure 入口網站](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md) 或[自動化 Cloud Shell 部署指令碼範例](how-to-set-up-instance-scripted.md)而提供的設定文章。 各種版本的指示也包含可驗證您已成功完成每個步驟，並已準備好繼續使用新執行個體的步驟。
+首先， **設定 Azure 數位 Twins 實例** 和必要的驗證，以便能夠使用它。 若要這麼做，請依照指示操作：[*操作說明：設定執行個體和驗證*](how-to-set-up-instance-portal.md)。 您可以根據本身偏好的體驗，選擇參閱針對 [Azure 入口網站](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md) 或[自動化 Cloud Shell 部署指令碼範例](how-to-set-up-instance-scripted.md)而提供的設定文章。 各種版本的指示也包含可驗證您已成功完成每個步驟，並已準備好繼續使用新執行個體的步驟。
+* 設定您的 Azure 數位 Twins 實例之後，您將需要實例的 **_主機名稱_** ([在 Azure 入口網站) 中找到](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) 。
 
-在本教學課程中，您將需要設定實例時的數個值。 如果您需要再次收集這些值，請使用下列連結以前往設定文章中的對應章節，以在 [Azure 入口網站](https://portal.azure.com)中找到這些值。
-* Azure Digital Twins 執行個體**_主機名稱_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure AD 應用程式註冊**_應用程式 (用戶端) 識別碼_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#collect-important-values))
-* Azure AD 應用程式註冊**_目錄 (租用戶) 識別碼_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#collect-important-values))
+若要驗證 ADT Explorer 應用程式，您也需要設定 **應用程式註冊**。 遵循 [*如何：建立應用程式註冊*](how-to-create-app-registration.md) 來設定此功能的指示。 
+* 註冊應用程式之後，您將需要註冊的 **_應用程式 (用戶端) 識別碼_** 和 **_目錄 (租使用者) 識別碼_** ([在 Azure 入口網站) 中找到](how-to-create-app-registration.md#collect-client-id-and-tenant-id) 。
 
 ### <a name="get-app-registration-client-secret"></a>取得應用程式註冊用戶端密碼
 
-您也需要建立 Azure AD 應用程式註冊的 **_用戶端密碼_** 。 若要這樣做，請流覽至 Azure 入口網站中的 [ [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列) 中尋找它。 從清單中選取您的註冊，以開啟其詳細資料。 
+您也需要建立 Azure AD 應用程式註冊的 **_用戶端密碼_** 。 若要這樣做，請流覽至 Azure 入口網站中的 [ [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列) 中尋找它。 從清單中選取您在上一節中建立的註冊，以便開啟其詳細資料。 
 
 從註冊的功能表點擊 *憑證和密碼* ，然後選取 [ *+ 新增用戶端密碼*]。
 

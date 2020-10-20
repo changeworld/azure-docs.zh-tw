@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575175"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205314"
 ---
 # <a name="configure-the-model-conversion"></a>設定模型轉換
 
@@ -258,7 +258,7 @@ ms.locfileid: "91575175"
 ### <a name="texture-sizes"></a>材質大小
 
 視案例的類型而定，材質資料量可能會超過用於網格資料的記憶體。 攝影測量模型是候選項目。
-轉換設定不會提供自動縮小紋理的方式。 如有必要，紋理調整必須以用戶端前置處理步驟來完成。 不過，轉換步驟會挑選適當的 [材質壓縮格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
+轉換設定不會提供自動縮小紋理的方式。 如有必要，紋理調整必須以用戶端前置處理步驟來完成。 不過，轉換步驟會挑選適當的 [材質壓縮格式](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
 
 * `BC1` 針對不透明色彩紋理
 * `BC7` 適用于具有 Alpha 色板的來源色彩紋理

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302616"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207932"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -376,6 +376,10 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 如需 Azure 原則的詳細資訊，請參閱 [Azure 原則檔](/azure/governance/policy/overview)。
 
 如需 Azure Machine Learning 特定原則的詳細資訊，請參閱 [使用 Azure 原則來審核和管理合規性](how-to-integrate-azure-policy.md)。
+
+## <a name="resource-locks"></a>資源鎖定
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

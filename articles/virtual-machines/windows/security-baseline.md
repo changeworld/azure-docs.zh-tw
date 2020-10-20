@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5e52c09e6fc3d5e3d4210e213e0eb6af4e473559
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978015"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205023"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>適用于 Windows 虛擬機器的 Azure 安全性基準
 
@@ -750,7 +750,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [Azure 自動化簡介](../../automation/automation-intro.md)
 
-* [使用變更追蹤解決方案來追蹤環境中的變更](../../automation/change-tracking.md)
+* [使用變更追蹤解決方案來追蹤環境中的變更](../../automation/change-tracking/overview.md)
 
 * [Azure 自動化狀態設定總覽](../../automation/automation-dsc-overview.md)
 

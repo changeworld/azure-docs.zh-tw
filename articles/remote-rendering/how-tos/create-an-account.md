@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb321aeeae1f0ef5aaadce22e228024895176143
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318087"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202645"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>建立 Azure 遠端轉譯帳戶
 
@@ -101,7 +101,7 @@ ms.locfileid: "91318087"
 
 如果您已新增這三個角色，您的 Azure 遠端轉譯帳戶就可以使用系統指派的受控服務識別碼存取儲存體帳戶。
 > [!IMPORTANT]
-> Azure 角色指派會由 Azure 儲存體快取，因此當您授與存取權給遠端轉譯帳戶，以及可用來存取您的儲存體帳戶時，可能會有最多30分鐘的延遲。 如需詳細資料，請參閱 [角色基底存取控制檔](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) 。
+> Azure 角色指派會由 Azure 儲存體快取，因此當您授與存取權給遠端轉譯帳戶，以及可用來存取您的儲存體帳戶時，可能會有最多30分鐘的延遲。 如需詳細資料，請參閱 [角色基底存取控制檔](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) 。
 
 ## <a name="next-steps"></a>後續步驟
 

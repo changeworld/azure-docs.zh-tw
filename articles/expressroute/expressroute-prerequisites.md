@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569623"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204787"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 必要條件和檢查清單
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須確認是否符合以下各節中所列的下列需求。
@@ -34,14 +34,14 @@ ms.locfileid: "89569623"
 * **路由**︰根據您連線到 Microsoft Cloud 的方式，您或您的提供者需要設定及管理用於[路由網域](expressroute-circuit-peerings.md)的 BGP 工作階段。 某些乙太網路連線服務提供者或雲端交換服務提供者可能會提供 BGP 管理功能做為附加價值服務。
 * **NAT**：Microsoft 只接受透過 Microsoft 對等互連的公用 IP 位址。 如果您在內部部署網路中使用私人 IP 位址，您或您的提供者必須[使用 NAT](expressroute-nat.md) 將私人 IP 位址轉譯成公用 IP 位址。
 * **QoS**：商務用 Skype 具有各種服務 (例如語音、視訊、文字)，其所要求的 QoS 處理方式各有差異。 您和您的提供者應該遵循 [QoS 需求](expressroute-qos.md)。
-* **網路安全性**︰透過 ExpressRoute 連線到 Microsoft Cloud 時，請考慮[網路安全性](../best-practices-network-security.md)。
+* **網路安全性**︰透過 ExpressRoute 連線到 Microsoft Cloud 時，請考慮[網路安全性](/azure/cloud-adoption-framework/reference/networking-vdc)。
 
 ## <a name="microsoft-365"></a>Microsoft 365
 如果您打算在 ExpressRoute 上啟用 Microsoft 365，請參閱下列檔，以取得有關 Microsoft 365 需求的詳細資訊。
 
 * [適用于 Microsoft 365 的 Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [使用 ExpressRoute 進行 Microsoft 365 的路由](/microsoft-365/enterprise/routing-with-expressroute)
-* [ExpressRoute 的高可用性與容錯移轉](https://aka.ms/erhighavailability)
+* [ExpressRoute 的高可用性與容錯移轉](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [Microsoft 365 Url 和 IP 位址範圍](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Microsoft 365 的網路規劃和效能調整](/microsoft-365/enterprise/network-planning-and-performance)
 * [Microsoft 365 的網路和遷移規劃](/microsoft-365/enterprise/network-and-migration-planning)

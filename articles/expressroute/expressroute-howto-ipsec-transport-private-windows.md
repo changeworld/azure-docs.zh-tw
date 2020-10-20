@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396483"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208238"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>設定 ExpressRoute 私人對等互連的 IPsec 傳輸模式
 
@@ -65,7 +65,7 @@ ms.locfileid: "89396483"
 
 請確保符合下列必要條件︰
 
-* 您必須有正常運作的 Active Directory 組態可用來實作群組原則設定。 如需 GPO 的詳細資訊，請參閱[群組原則物件](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx)。
+* 您必須有正常運作的 Active Directory 組態可用來實作群組原則設定。 如需 GPO 的詳細資訊，請參閱[群組原則物件](/previous-versions/windows/desktop/Policy/group-policy-objects)。
 
 * 您必須擁有作用中的 ExpressRoute 線路。
   * 如需建立 ExpressRoute 線路的相關資訊，請參閱[建立 ExpressRoute 路線](expressroute-howto-circuit-arm.md)。 
@@ -132,7 +132,7 @@ ms.locfileid: "89396483"
 3. 在 [IP 安全性篩選動作精靈]**** 上，按 [下一步]****。
 
    [![17]][17]
-4. 為篩選動作指定直覺式名稱，以方便後續尋找。 在此範例中，篩選動作的名稱為 **myEncryption**。 您也可以新增描述。 然後按 [下一步] ****。
+4. 為篩選動作指定直覺式名稱，以方便後續尋找。 在此範例中，篩選動作的名稱為 **myEncryption**。 您也可以新增描述。 然後按 [下一步]  。
 
    [![18]][18]
 5. **交涉安全性**可讓您定義無法對另一部電腦建立 IPsec 時的行為。 選取 [交涉安全性]****，然後按 [下一步]****。
@@ -170,13 +170,13 @@ ms.locfileid: "89396483"
 5. 指定 IP 流量的來源位址下方的 [IP 位址或子網路：]****，然後按 [下一步]****。
 
    [![28]][28]
-6. 指定 [目的地位址：]**** 下方的 IP 位址或子網路。 然後按 [下一步] ****。
+6. 指定 [目的地位址：]**** 下方的 IP 位址或子網路。 然後按 [下一步]  。
 
    [![29]][29]
-7. 在 [IP 通訊協定類型]**** 上，選取 [TCP]****。 然後按 [下一步] ****。
+7. 在 [IP 通訊協定類型]**** 上，選取 [TCP]****。 然後按 [下一步]  。
 
    [![30]][30]
-8. 在 [IP 通訊協定連接埠]**** 頁面上，選取 [從任何連接埠]**** 和 [到此連接埠：]****。 在文字方塊中輸入 **8080**。 這些設定會指定只有目的地連接埠 8080 的 HTTP 流量會加密。 然後按 [下一步] ****。
+8. 在 [IP 通訊協定連接埠]**** 頁面上，選取 [從任何連接埠]**** 和 [到此連接埠：]****。 在文字方塊中輸入 **8080**。 這些設定會指定只有目的地連接埠 8080 的 HTTP 流量會加密。 然後按 [下一步]  。
 
    [![31]][31]
 9. 檢視 IP 篩選清單。  IP 篩選器清單的組態 **azure-onpremises-HTTP8080** 會對符合下列準則的所有流量觸發加密程序：
@@ -214,7 +214,7 @@ ms.locfileid: "89396483"
 1. 選取與 OU 相關聯的 **Active directory 上的 IP 安全性原則**。 按一下滑鼠右鍵，然後選取 [建立 IP 安全性原則]****。
 
    [![37]][37]
-2. 為安全性原則命名。 例如 **policy-azure-onpremises**。 然後按 [下一步] ****。
+2. 為安全性原則命名。 例如 **policy-azure-onpremises**。 然後按 [下一步]  。
 
    [![38]][38]
 3. 不選取核取方塊而直接按 [下一步]****。

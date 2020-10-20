@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822392"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203767"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -22,8 +22,9 @@ ms.locfileid: "91822392"
 
 生命週期管理原則可達成以下事項：
 
-- 將 Blob 轉換到較少存取的儲存層 (經常性到非經常性、經常性到封存或非經常性到封存)，以最佳化效能和成本
-- 在其生命週期結束時刪除 Blob
+- 如果存取可針對效能進行優化，則將 blob 從非經常性轉換至經常性存取 
+- 將 blob、blob 版本和 blob 快照集轉換成較低的儲存層 (經常性存取、經常性存取封存，或非經常性存取儲存層) 如果未存取或修改了一段時間來優化成本
+- 在生命週期結束時刪除 blob、blob 版本和 blob 快照集
 - 定義每天要在儲存體帳戶層級執行一次的規則
 - 將規則套用至容器或 blob 子集 (使用名稱前置詞或 [blob 索引標記](storage-manage-find-blobs.md) 作為篩選) 
 
@@ -33,7 +34,7 @@ ms.locfileid: "91822392"
 
 ## <a name="availability-and-pricing"></a>可用性和價格
 
-生命週期管理功能適用于一般用途 v2 的所有 Azure 區域 (GPv2) 帳戶、Blob 儲存體帳戶，以及 Premium 區塊 Blob 儲存體帳戶。 在 Azure 入口網站中，您可以將現有的一般用途 (GPv1) 帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
+生命週期管理功能適用于一般用途 v2 的所有 Azure 區域 (GPv2) 帳戶、Blob 儲存體帳戶、高階區塊 Blob 儲存體帳戶，以及 Azure Data Lake Storage Gen2 帳戶。 在 Azure 入口網站中，您可以將現有的一般用途 (GPv1) 帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 生命週期管理功能是免費的。 客戶需支付 [設定 Blob 層](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼叫的一般操作成本。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -120,7 +121,7 @@ ms.locfileid: "91822392"
    }
    ```
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 1. 如需此 JSON 範例的詳細資訊，請參閱 [原則](#policy) 和 [規則](#rules) 區段。
 
@@ -230,10 +231,10 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 | 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | 字串 |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | True |
-| `enabled`      | 布林值 | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
-| `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | True |
-| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | 是 |
+| `enabled`      | Boolean | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
+| `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | 是 |
+| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | 是 |
 
 ## <a name="rules"></a>規則
 
@@ -250,29 +251,41 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 - 在上次修改 30 天後將 Blob 分層到「非經常性」層
 - 在上次修改 90 天後將 Blob 分層到「封存」層
 - 上次修改 2,555 天 (七年) 後刪除 Blob
-- 快照集建立 90 天後刪除 Blob 快照集
+- 在建立後刪除先前的 blob 版本90天
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -299,24 +312,24 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 當符合執行條件時，會將動作套用至篩選的 blob。
 
-生命週期管理可支援對 blob 的分層和刪除，以及刪除 blob 快照集。 在 Blob 或 Blob 快照集上每項規則至少需定義一個動作。
+生命週期管理支援對 blob、舊版 blob 和 blob 快照集進行分層和刪除。 針對基底 blob、先前的 blob 版本或 blob 快照集的每個規則，至少定義一個動作。
 
-| 動作                      | 基底 Blob                                   | 快照式      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | 支援目前在經常性儲存層的 Blob         | 不支援 |
-| enableAutoTierToHotFromCool | 支援目前在非經常性存取層的 blob        | 不支援 |
-| tierToArchive               | 支援目前在經常儲存性或非經常性儲存層的 Blob | 不支援 |
-| [刪除]                      | 和支援 `blockBlob``appendBlob`  | 支援     |
+| 動作                      | 基底 Blob                                  | 快照式      | 版本
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | 支援 `blockBlob`                  | 支援     | 支援     |
+| enableAutoTierToHotFromCool | 支援 `blockBlob`                  | 不支援 | 不支援 |
+| tierToArchive               | 支援 `blockBlob`                  | 支援     | 支援     |
+| delete                      | 和支援 `blockBlob``appendBlob` | 支援     | 支援     |
 
 >[!NOTE]
 >如果在同一個 Blob 上定義多個動作，生命週期管理會將最便宜的動作套用至 Blob。 例如，動作 `delete` 比動作 `tierToArchive` 更便宜。 而動作 `tierToArchive` 比動作 `tierToCool` 更便宜。
 
-執行條件是以 age 為基礎。 基底 Blob 使用上次修改時間來追蹤存在時間，而 Blob 快照集使用快照集建立時間來追蹤存在時間。
+執行條件是以 age 為基礎。 基底 blob 使用上次修改時間、blob 版本使用版本建立時間，而 blob 快照集使用快照集建立時間來追蹤年齡。
 
 | 動作執行條件               | 條件值                          | 描述                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | 表示存在時間的整數值 (以天數為單位) | 基底 blob 動作的條件                                              |
-| daysAfterCreationGreaterThan       | 表示存在時間的整數值 (以天數為單位) | Blob 快照集動作的條件                                          |
+| daysAfterCreationGreaterThan       | 表示存在時間的整數值 (以天數為單位) | Blob 版本和 blob 快照集動作的條件                         |
 | daysAfterLastAccessTimeGreaterThan | 表示存在時間的整數值 (以天數為單位) |  (預覽) 啟用上次存取時間時基底 blob 動作的條件 |
 
 ## <a name="examples"></a>範例
@@ -509,26 +522,35 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 }
 ```
 
-### <a name="delete-old-snapshots"></a>刪除舊的快照集
+### <a name="manage-versions"></a>管理版本
 
-針對在其生命週期內定期修改及存取的資料，通常會使用快照集來追蹤舊版資料。 您可以建立原則，根據快照集存在時間來刪除舊的快照集。 快照集存在時間是透過評估快照集建立時間來判斷。 此原則規則會將快照集建立後超過 90 天 (含) 的容器 `activedata` 內區塊 Blob 快照集刪除。
+對於在其存留期內定期修改和存取的資料，您可以啟用 Blob 儲存體版本設定，以自動維護舊版的物件。 您可以建立原則，以分層或刪除先前的版本。 版本的存留期是藉由評估版本建立時間來決定。 此原則規則 `activedata` 會在版本建立至非經常性存取層之後，于90天或更舊版本的容器內建立舊版，並刪除365天以上的舊版。
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }

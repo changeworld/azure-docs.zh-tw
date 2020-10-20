@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742968"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200843"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service 方案概觀
 
@@ -37,7 +37,7 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> 新的 **PremiumV3** 定價層可保證 [Dv3 系列 vm](../virtual-machines/dv3-dsv3-series.md) 的處理器、SSD 儲存體和四倍的記憶體與核心比率（相較于 **標準** 層）。 **PremiumV3** 也透過增加的實例計數支援更高的規模，同時仍提供在 **標準** 層中找到的所有先進功能。 現有 **>premiumv2** 層中提供的所有功能都包含在 **PremiumV3**中。
+> 新的 **PremiumV3** 定價層可保證具有更快處理器的機器 (每個虛擬 CPU) 的最小 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu) 、SSD 儲存體，以及相較于 **標準** 層的四個記憶體/核心比率。 **PremiumV3** 也透過增加的實例計數支援更高的規模，同時仍提供在 **標準** 層中找到的所有先進功能。 現有 **>premiumv2** 層中提供的所有功能都包含在 **PremiumV3**中。
 >
 > 類似於其他專用層，此層有三個可用的 VM 大小：
 >

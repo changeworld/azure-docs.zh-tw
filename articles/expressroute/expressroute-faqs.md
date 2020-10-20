@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: a862b978d7737d3d1c301d090012576f64a3ddda
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150730"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202203"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -80,12 +80,12 @@ ExpressRoute 針對各種類型的服務支援[三個路由網域](expressroute-
 
 ### <a name="microsoft-peering"></a>Microsoft 對等互連
 
-如果已針對 Azure Microsoft 對等互連啟用您的 ExpressRoute 線路，就可以透過線路存取在 Azure 中使用的[公用 IP 位址範圍](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。 Azure Microsoft 對等互連可讓您存取目前裝載於 Azure 上的服務 (是否有地理限制，視您的線路 SKU 而定)。 若要驗證特定服務的可用性，您可以參閱該服務的文件，以查看是否有針對該服務發佈的保留範圍。 然後，查閱目標服務的 IP 範圍，並與 [Azure IP 範圍和服務標籤 – 公用雲端 XML 檔案](https://www.microsoft.com/download/details.aspx?id=56519)中列出的範圍進行比較。 或者，您也可以針對有問題的服務開啟支援票證，以釐清狀況。
+如果已針對 Azure Microsoft 對等互連啟用您的 ExpressRoute 線路，就可以透過線路存取在 Azure 中使用的[公用 IP 位址範圍](../virtual-network/public-ip-addresses.md#public-ip-addresses)。 Azure Microsoft 對等互連可讓您存取目前裝載於 Azure 上的服務 (是否有地理限制，視您的線路 SKU 而定)。 若要驗證特定服務的可用性，您可以參閱該服務的文件，以查看是否有針對該服務發佈的保留範圍。 然後，查閱目標服務的 IP 範圍，並與 [Azure IP 範圍和服務標籤 – 公用雲端 XML 檔案](https://www.microsoft.com/download/details.aspx?id=56519)中列出的範圍進行比較。 或者，您也可以針對有問題的服務開啟支援票證，以釐清狀況。
 
 **支援：**
 
 * [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
-* Power BI - 可透過 Azure 區域社群取得。請參閱[這裡](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)，以了解如何找出 Power BI 租用戶的區域。
+* Power BI - 可透過 Azure 區域社群取得。請參閱[這裡](/power-bi/service-admin-where-is-my-tenant-located)，以了解如何找出 Power BI 租用戶的區域。
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure 全域服務社群)
 * 適用于 IaaS (虛擬機器、虛擬網路閘道、負載平衡器等 ) 的 Azure 公用 IP 位址  
@@ -118,7 +118,7 @@ Microsoft 會驗證指定的「已公告公用首碼」和「對等互連 ASN」
 Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客戶可以從 Azure 資源的基礎 ExpressRoute 支援獲益。 如果您的路由器篩選條件包含 Dynamics 365/CD 環境裝載所在的 Azure 區域，則您可以連線到其服務端點。
 
 > [!NOTE]
-> 如果 ExpressRoute 線路是部署在相同的[地緣政治區域](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)內，則透過 Azure Expressroute 的 Dynamics 365 連線**不**需要[expressroute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) 。
+> 如果 ExpressRoute 線路是部署在相同的[地緣政治區域](./expressroute-locations-providers.md#expressroute-locations)內，則透過 Azure Expressroute 的 Dynamics 365 連線**不**需要[expressroute Premium](#expressroute-premium) 。
 
 ## <a name="data-and-connections"></a>資料與連線
 
@@ -152,15 +152,15 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>如何在私人對等互連上實作備援？
 
-來自不同對等互連位置的多個 ExpressRoute 線路，或來自相同對等互連位置的四個連線，可以連接到相同的虛擬網路，以在單一線路無法使用時提供高可用性。 然後，您可以 [將較高](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) 的權數指派給其中一個本機連接，以使用特定的線路。 強烈建議客戶至少設定兩個 ExpressRoute 線路，以避免發生單一失敗點。 
+來自不同對等互連位置的多個 ExpressRoute 線路，或來自相同對等互連位置的四個連線，可以連接到相同的虛擬網路，以在單一線路無法使用時提供高可用性。 然後，您可以 [將較高](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection) 的權數指派給其中一個本機連接，以使用特定的線路。 強烈建議客戶至少設定兩個 ExpressRoute 線路，以避免發生單一失敗點。 
 
-如需高可用性的設計，請參閱[這裡](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)，如需災害復原的設計，請參閱[這裡](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)。  
+如需高可用性的設計，請參閱[這裡](./designing-for-high-availability-with-expressroute.md)，如需災害復原的設計，請參閱[這裡](./designing-for-disaster-recovery-with-expressroute-privatepeering.md)。  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>我要如何在 Microsoft 對等互連上實作備援？
 
-當客戶使用 Microsoft 對等互連來存取 Azure 公用服務（例如 Azure 儲存體或 Azure SQL），以及使用 Microsoft 對等互連來 Microsoft 365 的客戶在不同的對等互連位置中執行多個線路，以避免單一失敗點時，強烈建議使用這項功能。 客戶可以在這兩個線路上公告相同的首碼，並使用 [AS PATH 前置](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) 或公告不同的首碼，以判斷內部部署的路徑。
+當客戶使用 Microsoft 對等互連來存取 Azure 公用服務（例如 Azure 儲存體或 Azure SQL），以及使用 Microsoft 對等互連來 Microsoft 365 的客戶在不同的對等互連位置中執行多個線路，以避免單一失敗點時，強烈建議使用這項功能。 客戶可以在這兩個線路上公告相同的首碼，並使用 [AS PATH 前置](./expressroute-optimize-routing.md#solution-use-as-path-prepending) 或公告不同的首碼，以判斷內部部署的路徑。
 
-如需高可用性的設計，請參閱[這裡](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)。
+如需高可用性的設計，請參閱[這裡](./designing-for-high-availability-with-expressroute.md)。
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何確保在連線到 ExpressRoute 之虛擬網路上的高可用性？
 
@@ -170,7 +170,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 您必須在路由器上實作*本機喜好設定*屬性，以確保從內部部署至 Azure 的路徑一律是 ExpressRoute 線路上偏好的路徑。
 
-如需有關 BGP 路徑選擇和常用路由器組態的其他詳細資料，請參閱[這裡](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings)。 
+如需有關 BGP 路徑選擇和常用路由器組態的其他詳細資料，請參閱[這裡](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings)。 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>如果我不要在雲端交換中共置，而我的服務提供者提供點對點連線，我需要在內部部署網路與 Microsoft 之間訂購兩個實體連線嗎？
 
@@ -384,7 +384,7 @@ Microsoft 365 服務需要啟用 premium 附加元件。 請參閱[定價詳細�
 是。 即使已針對您的網路設定 ExpressRoute，仍可透過網際網路連線 Microsoft 365 服務端點。 如果您所在位置的網路設定為透過 ExpressRoute 連線到 Microsoft 365 服務，請洽詢貴組織的網路團隊。
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>如何針對 Azure ExpressRoute 上的 Microsoft 365 網路流量規劃高可用性？
-請參閱 [Azure ExpressRoute 的高可用性和容錯移轉](https://aka.ms/erhighavailability)中的建議事項
+請參閱 [Azure ExpressRoute 的高可用性和容錯移轉](/microsoft-365/enterprise/network-planning-with-expressroute)中的建議事項
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>我是否可以透過 Azure 美國政府 ExpressRoute 電路存取 Office 365 US Government Community (GCC) 服務？
 
@@ -422,5 +422,4 @@ Microsoft 365 服務需要啟用 premium 附加元件。 請參閱[定價詳細�
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute 服務是否會儲存客戶資料？
 
-否。 
-
+否。

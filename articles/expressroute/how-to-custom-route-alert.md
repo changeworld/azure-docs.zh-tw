@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766668"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205552"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>設定自訂警示以監視已公告路由
 
@@ -42,7 +42,7 @@ ms.locfileid: "91766668"
 
 * 您已熟悉 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
 
-* 您已熟悉如何使用 Azure PowerShell。 需要 Azure PowerShell 才能在 ExpressRoute 閘道中收集網路首碼。 如需有關一般 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 檔](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0)。
+* 您已熟悉如何使用 Azure PowerShell。 需要 Azure PowerShell 才能在 ExpressRoute 閘道中收集網路首碼。 如需有關一般 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 檔](/powershell/azure/?view=azps-4.1.0)。
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>注意事項和限制
 
@@ -257,7 +257,7 @@ Write-Output  $jsonResults
 
 * 警示訊息，如需狀態的詳細描述 ([確定]、[警示]、[警告]) 
 
-PowerShell 腳本會將收集的資訊轉換成 JSON 輸出。 Runbook 會使用 PowerShell Cmdlet [寫入輸出](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  作為輸出資料流程，以將資訊傳達給用戶端。
+PowerShell 腳本會將收集的資訊轉換成 JSON 輸出。 Runbook 會使用 PowerShell Cmdlet [寫入輸出](/powershell/module/Microsoft.PowerShell.Utility/Write-Output)  作為輸出資料流程，以將資訊傳達給用戶端。
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. 驗證 runbook
 

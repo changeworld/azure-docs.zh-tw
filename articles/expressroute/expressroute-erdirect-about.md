@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566393"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202140"
 ---
 # <a name="about-expressroute-direct"></a>關於 ExpressRoute Direct
 
@@ -73,7 +73,7 @@ ExpressRoute Direct 支援將大量資料擷取至 Azure 儲存體與其他巨�
     * 必須根據 Microsoft 所指定的 VLAN ID （*僅適用于 QinQ）* ，將外部 VLAN 標記 (STAG) 
     * 必須針對每個埠和裝置 (Vlan) 支援多個 BGP 會話
     * IPv4 和 IPv6 連線能力。 若*為 IPv6，將不會建立其他子介面。IPv6 位址會新增至現有的子介面*。 
-    * 選擇性： [雙向轉送偵測 (BFD) ](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) 支援，其預設設定為 ExpressRoute 線路上的所有私人對等互連
+    * 選擇性： [雙向轉送偵測 (BFD) ](./expressroute-bfd.md) 支援，其預設設定為 ExpressRoute 線路上的所有私人對等互連
 
 ## <a name="vlan-tagging"></a>VLAN 標記
 

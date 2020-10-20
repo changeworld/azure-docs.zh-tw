@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 2ddc15e9da3eaa3609b039f2f92e424b9d9449c1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106309"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204668"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由需求
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須設定和管理路由。 有些連線提供者會以受控服務形式提供路由的設定和管理。 請洽詢您的連線服務提供者，以查看他們是否提供這類服務。 如果沒有，您必須遵循下列需求：
@@ -138,7 +138,7 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 * 您可使用使用者定義的路由，讓需要網際網路連線的每個子網路進行網際網路連線。
 
 > [!NOTE]
-> 公告預設路由會中斷 Windows 和其他 VM 授權啟用。 請依照 [這裡](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) 的指示來解決這個問題。
+> 公告預設路由會中斷 Windows 和其他 VM 授權啟用。 請依照 [這裡](/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) 的指示來解決這個問題。
 > 
 > 
 

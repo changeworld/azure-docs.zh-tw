@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151873"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207286"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -493,7 +493,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 **指導方針：** Azure 自動化可在部署、作業和解除委任工作負載和資源時，提供完整的控制權。 訂用帳戶管理員可以使用變更追蹤來識別 DevTest Labs 中裝載之 Vm 上安裝的所有軟體。 您可以執行自己的處理常式，或使用 Azure 自動化狀態設定來移除未經授權的軟體。
 
 - [Azure 自動化簡介](../automation/automation-intro.md)
-- [使用變更追蹤解決方案來追蹤環境中的變更](../automation/change-tracking.md)
+- [使用變更追蹤解決方案來追蹤環境中的變更](../automation/change-tracking/overview.md)
 - [Azure 自動化狀態設定總覽](../automation/automation-dsc-overview.md)
 
 **Azure 資訊安全中心監視：** 無法使用

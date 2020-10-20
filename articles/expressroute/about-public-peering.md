@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
-ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398081"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202543"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>建立和管理 ExpressRoute 公用對等互連
 
@@ -30,7 +30,7 @@ ms.locfileid: "89398081"
 
 ## <a name="connectivity"></a>連線能力
 
-一律會從您的 WAN 啟動連線到 Microsoft Azure 服務。 Microsoft Azure 服務將無法透過這個路由網域啟動連線到您的網路。 如果您的 ExpressRoute 線路已啟用 Azure 公用對等互連，您可以透過線路存取 [azure 中使用的公用 IP 範圍](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) 。
+一律會從您的 WAN 啟動連線到 Microsoft Azure 服務。 Microsoft Azure 服務將無法透過這個路由網域啟動連線到您的網路。 如果您的 ExpressRoute 線路已啟用 Azure 公用對等互連，您可以透過線路存取 [azure 中使用的公用 IP 範圍](../virtual-network/public-ip-addresses.md#public-ip-addresses) 。
 
 一旦啟用公用對等互連，您就可以連接到大部分的 Azure 服務。 我們不允許您選擇性地選取已通告路由的服務。
 
@@ -60,7 +60,7 @@ ms.locfileid: "89398081"
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Azure 公用對等互連有1個與每個 BGP 會話相關聯的 NAT IP 位址。 針對超過2個 NAT IP 位址，請移至 Microsoft 對等互連。 Microsoft 對等互連可讓您設定自己的 NAT 配置，以及使用選擇性前置詞公告的路由篩選。 如需詳細資訊，請參閱 [移至 Microsoft 對等互連](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)。
+> Azure 公用對等互連有1個與每個 BGP 會話相關聯的 NAT IP 位址。 針對超過2個 NAT IP 位址，請移至 Microsoft 對等互連。 Microsoft 對等互連可讓您設定自己的 NAT 配置，以及使用選擇性前置詞公告的路由篩選。 如需詳細資訊，請參閱 [移至 Microsoft 對等互連](./how-to-move-peering.md)。
 >
 
 ## <a name="custom-route-filters"></a>自訂路由篩選

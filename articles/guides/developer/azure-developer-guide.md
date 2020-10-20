@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17474b4f38ccc6f43e664042b1218a8c253718e5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120570"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203410"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
@@ -64,7 +64,7 @@ Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供�
 
 > **使用**時機：當您將現有的 web 應用程式遷移至 Azure 時，以及當您的 web 應用程式需要完全受控的裝載平臺時，請使用 App Service。 當您需要支援行動用戶端或是使用應用程式公開 REST API 時，也可以使用 App Service。
 >
-> **開始使用**：App Service 可讓您輕鬆地建立和部署第一個 [Web 應用程式](../../app-service/quickstart-dotnetcore.md)、[行動應用程式](../../app-service-mobile/app-service-mobile-ios-get-started.md)或 [API 應用程式](../../app-service/app-service-web-tutorial-rest-api.md)。
+> **開始使用**：App Service 可讓您輕鬆地建立和部署第一個 [Web 應用程式](../../app-service/quickstart-dotnetcore.md)、[行動應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started)或 [API 應用程式](../../app-service/app-service-web-tutorial-rest-api.md)。
 >
 > **立即試用**：App Service 可讓您佈建短期應用程式來嘗試平台，而不需要註冊 Azure 帳戶。 請嘗試平台，並[建立 Azure App Service 應用程式](https://tryappservice.azure.com/)。
 
@@ -72,7 +72,7 @@ Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供�
 
 身為基礎結構即服務 (IaaS) 提供者，Azure 可讓您將應用程式部署或移轉至 Windows 或 Linux VM。 Azure Virtual Machines 與 Azure Virtual Network 搭配使用，可支援將 Windows 或 Linux VM 部署至 Azure。 使用 VM，您可以完整控制電腦的設定。 使用 VM 時，您負責所有伺服器軟體安裝、設定、維護和作業系統修補程式。
 
-基於您對 VM 的控制等級，您可以在 Azure 上執行不符合 PaaS 模型的各種不同伺服器工作負載。 這些工作負載包含資料庫伺服器、Windows Server Active Directory 和 Microsoft SharePoint。 如需詳細資訊，請參閱 [Linux](/azure/virtual-machines/linux/) 或 [Windows](/azure/virtual-machines/windows/) 的 Virtual Machines 文件。
+基於您對 VM 的控制等級，您可以在 Azure 上執行不符合 PaaS 模型的各種不同伺服器工作負載。 這些工作負載包含資料庫伺服器、Windows Server Active Directory 和 Microsoft SharePoint。 如需詳細資訊，請參閱 [Linux](../../virtual-machines/linux/index.yml) 或 [Windows](../../virtual-machines/windows/index.yml) 的 Virtual Machines 文件。
 
 > **使用時機**：當您想要完整控制應用程式基礎結構時，或將內部部署應用程式工作負載移轉至 Azure 而不需要進行變更時，請使用 Virtual Machines。
 >
@@ -100,11 +100,11 @@ Azure Service Fabric 是一種分散式系統平臺。 此平臺可讓您輕鬆�
 
 在共用電腦集區上執行的應用程式可以從小規模著手，然後視需要調整為成千上萬部電腦。
 
-Service Fabric 支援具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 的 WebAPI。 它提供在 Linux 上建置服務的 .NET Core 和 Java SDK。 若要深入了解 Service Fabric，請參閱 [Service Fabric 文件](https://docs.microsoft.com/azure/service-fabric/)。
+Service Fabric 支援具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 的 WebAPI。 它提供在 Linux 上建置服務的 .NET Core 和 Java SDK。 若要深入了解 Service Fabric，請參閱 [Service Fabric 文件](../../service-fabric/index.yml)。
 
 > **使用時機**：當您建立應用程式或重新撰寫現有的應用程式以使用微服務架構時，Service Fabric 是不錯的選擇。 當您需要更充分地控制或直接存取基礎結構時，請使用 Service Fabric。
 >
-> **開始使用** [：建立第一個 Azure Service Fabric 應用程式](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)。
+> **開始使用** [：建立第一個 Azure Service Fabric 應用程式](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md)。
 
 ### <a name="enhance-your-applications-with-azure-services"></a>使用 Azure 服務增強應用程式
 
@@ -124,13 +124,13 @@ Service Fabric 支援具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 
   > **使用時機：** 當您的應用程式儲存非關聯式資料 (例如，鍵值組 (資料表)、Blob、檔案共用或訊息 (佇列)) 時。
   >
-  > **開始**使用：從下列其中一種類型的儲存體中選擇： [blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[資料表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[佇列](../../storage/queues/storage-dotnet-how-to-use-queues.md)[或檔案](../../storage/files/storage-dotnet-how-to-use-files.md)。
+  > **開始**使用：從下列其中一種類型的儲存體中選擇： [blob](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、[資料表](../../cosmos-db/tutorial-develop-table-dotnet.md)、[佇列](../../storage/queues/storage-dotnet-how-to-use-queues.md)[或檔案](../../storage/files/storage-dotnet-how-to-use-files.md)。
 
 - **Azure SQL Database**：Azure 版本的 Microsoft SQL Server 引擎，可將關聯式表格資料儲存在雲端中。 SQL Database 提供可預測的效能、無停機時間的延展性、商務持續性和資料保護功能。
 
   > **使用時機：** 當您的應用程式需要具有參考完整性、交易支援和 TSQL 查詢支援的資料儲存體時。
   >
-  > **開始**使用： [使用 Azure 入口網站在 Azure SQL Database 中建立資料庫（以分鐘](../../sql-database/sql-database-get-started.md)為單位）。
+  > **開始**使用： [使用 Azure 入口網站在 Azure SQL Database 中建立資料庫（以分鐘](../../azure-sql/database/single-database-create-quickstart.md)為單位）。
 
 
 您可以使用 [Azure Data Factory](../../data-factory/introduction.md)，將現有內部部署資料移至 Azure。 如果您還沒準備好將資料移至雲端，Azure App Service 中的 [混合](../../app-service/app-service-hybrid-connections.md) 式連線可讓您將 App Service 裝載的應用程式連線到內部部署資源。 您也可以從內部部署應用程式連接至 Azure 資料和儲存體服務。
@@ -156,7 +156,7 @@ Azure 提供數種方式，以在應用程式中使用容器。
 
   > **使用時機**：在 Linux 上將 Web 應用程式部署至 Docker 映像時。
   >
-  > **開始使用**：[針對 Linux 上的 App Service 使用自訂 Docker 映像](../../app-service/containers/quickstart-docker-go.md)。
+  > **開始使用**：[針對 Linux 上的 App Service 使用自訂 Docker 映像](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux)。
 
 ### <a name="authentication"></a>驗證
 
@@ -186,7 +186,7 @@ Azure 提供數種方式，以在應用程式中使用容器。
 
 -   **Azure 監視器**：一種服務，可協助您對使用 Azure 基礎結構和資源所產生的計量和記錄進行視覺化、查詢、路由、封存，以及採取行動。 監視器是監視 Azure 資源的單一來源，可提供您在 Azure 入口網站中看到的資料檢視。
 
-    >**開始使用**：[開始使用 Azure 監視器](../../monitoring-and-diagnostics/monitoring-get-started.md)。
+    >**開始使用**：[開始使用 Azure 監視器](../../azure-monitor/overview.md)。
 
 ### <a name="devops-integration"></a>DevOps 整合
 
@@ -217,7 +217,7 @@ Azure 是在全球各地許多地區正式推出的全域雲端平台。 當您�
 
 雖然不可能，但是整個資料中心不可能因天然災害或網際網路失敗等事件而離線。 最好將重要商務應用程式裝載在多個資料中心，以提供最大的可用性。 使用多個區域也可以減少全域使用者的延遲，並在更新應用程式時提供彈性的其他機會。
 
-某些服務 (例如 Virtual Machine 和 App Services) 使用 [Azure 流量管理員](../../traffic-manager/traffic-manager-overview.md)來啟用具有區域間之容錯移轉的多區域支援，以支援高可用性企業應用程式。 如需範例，請參閱 [Azure 參考架構︰在多個區域中執行 Web 應用程式](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
+某些服務 (例如 Virtual Machine 和 App Services) 使用 [Azure 流量管理員](../../traffic-manager/traffic-manager-overview.md)來啟用具有區域間之容錯移轉的多區域支援，以支援高可用性企業應用程式。 如需範例，請參閱 [Azure 參考架構︰在多個區域中執行 Web 應用程式](/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
 
 >**使用時機**：當您有受益於容錯移轉和複寫的企業和高可用性應用程式時。
 
@@ -229,9 +229,9 @@ Azure 提供一組豐富的體驗，讓您建立和管理 Azure 資源、應用�
 
 Azure 提供兩種方式來從命令列管理您的應用程式和服務。 您可以使用 Bash、終端機、命令提示字元或您選擇的命令列工具等工具。 通常，您可以從命令列進行與 Azure 入口網站中相同的工作，例如建立和設定虛擬機器、虛擬網路、web 應用程式及其他服務。
 
--   [Azure 命令列介面 (CLI)](../../xplat-cli-install.md)：可讓您連接到 Azure 訂用帳戶，並從命令列對 Azure 資源設計各種工作的程式。
+-   [Azure 命令列介面 (CLI)](/cli/azure/install-azure-cli)：可讓您連接到 Azure 訂用帳戶，並從命令列對 Azure 資源設計各種工作的程式。
 
--   [Azure PowerShell](../../powershell-install-configure.md)：提供一組含 Cmdlet 的模組，可讓您使用 Windows PowerShell 來管理 Azure 資源。
+-   [Azure PowerShell](/powershell/azure/)：提供一組含 Cmdlet 的模組，可讓您使用 Windows PowerShell 來管理 Azure 資源。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -239,25 +239,25 @@ Azure 提供兩種方式來從命令列管理您的應用程式和服務。 您�
 
 * 可設定的儀表板
 * Azure 資源管理工具
-* 存取訂用帳戶設定和帳單資訊。 如需詳細資訊，請參閱 [Azure 入口網站概觀](../../azure-portal-overview.md)。
+* 存取訂用帳戶設定和帳單資訊。 如需詳細資訊，請參閱 [Azure 入口網站概觀](https://azure.microsoft.com/features/azure-portal/)。
 
 ### <a name="rest-apis"></a>REST API
 
-Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支援其中的大部分 REST API，讓您以程式設計方式從任何啟用網際網路的裝置佈建和管理 Azure 資源和應用程式。 如需一組完整 REST API 文件，請參閱 [Azure REST SDK 參考](https://docs.microsoft.com/rest/api/)。
+Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支援其中的大部分 REST API，讓您以程式設計方式從任何啟用網際網路的裝置佈建和管理 Azure 資源和應用程式。 如需一組完整 REST API 文件，請參閱 [Azure REST SDK 參考](/rest/api/)。
 
 ### <a name="apis"></a>API
 
 除了 REST Api 之外，許多 Azure 服務也可讓您以程式設計方式，使用平臺特定的 Azure Sdk 從應用程式管理資源，包括下列開發平臺的 Sdk：
 
--   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
--   [Java](https://docs.microsoft.com/java/azure)
+-   [.NET](/dotnet/api/)
+-   [Node.js](/azure/developer/javascript/)
+-   [Java](/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
--   [Go](https://docs.microsoft.com/azure/go)
+-   [Go](/azure/go)
 
-[Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) 和 [Azure 媒體服務](../../media-services/previous/media-services-dotnet-how-to-use.md) 這類服務提供用戶端 SDK，讓您可以從 Web 和行動用戶端應用程式存取服務。
+[Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library) 和 [Azure 媒體服務](../../media-services/previous/media-services-dotnet-how-to-use.md) 這類服務提供用戶端 SDK，讓您可以從 Web 和行動用戶端應用程式存取服務。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -269,7 +269,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 > **使用時機**：當您想要可使用 REST API、Azure CLI 和 Azure PowerShell 以程式設計方式管理之應用程式的範本部署，請使用 Resource Manager 範本。
 >
-> **開始使用**：若要開始使用範本，請參閱[製作 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)。
+> **開始使用**：若要開始使用範本，請參閱[製作 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>了解帳戶、訂用帳戶和計費
 
@@ -291,7 +291,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 當您佈建新的 Azure 服務時，即可在指定的訂用帳戶中這麼做。 個別 Azure 服務 (也稱為資源) 是在資源群組的內容中建立。 資源群組可讓您更輕鬆地部署和管理應用程式資源。 資源群組應該包含您想要當成一個單位使用之應用程式的所有資源。 您可以在資源群組之間移動資源，甚至移至不同的訂用帳戶。 若要了解如何移動資源，請參閱[將資源移動到新的資源群組或訂用帳戶](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-Azure 資源總管是很棒的工具，可用來以視覺化方式檢視您已經在訂用帳戶中建立的資源。 若要深入了解，請參閱[使用 Azure 資源總管來檢視及修改資源](../../resource-manager-resource-explorer.md)。
+Azure 資源總管是很棒的工具，可用來以視覺化方式檢視您已經在訂用帳戶中建立的資源。 若要深入了解，請參閱[使用 Azure 資源總管來檢視及修改資源](/rest/api/)。
 
 #### <a name="grant-access-to-resources"></a>授與資源的存取權
 
@@ -317,7 +317,7 @@ Azure Resource Manager 可讓您將自訂標記指派給個別資源。 當您�
 * 使用 Azure CLI
 * 使用 PowerShell
 
-您可以將多個標記指派給每個資源。 若要深入了解，請參閱[使用標記來組織 Azure 資源](../../resource-group-using-tags.md)。
+您可以將多個標記指派給每個資源。 若要深入了解，請參閱[使用標記來組織 Azure 資源](../../azure-resource-manager/management/tag-resources.md)。
 
 ### <a name="billing"></a>計費
 
