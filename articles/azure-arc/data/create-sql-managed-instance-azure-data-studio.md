@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4c1d4d83ad3c39bab8058ad29662891fe3678a1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311524"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320307"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>使用 Azure Data Studio 建立 SQL 受控實例-Azure Arc
 
@@ -49,7 +49,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - 在 [連接] 索引標籤上，按一下左上方的三個點，然後選擇 [新增部署]。
 - 從部署選項中，選取 [ **AZURE SQL 受控實例-Azure Arc** 
   > [!NOTE]
-  > 如果目前未安裝 azdata CLI，系統可能會提示您安裝。
+  > 如果目前未安裝，系統可能會提示您安裝 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。
 - 接受隱私權和授權條款，然後按一下底部的 [ **選取** ]
 
 

@@ -3,12 +3,12 @@ title: 從 Apache Kafka 應用程式使用事件中樞 - Azure 事件中樞 | Mi
 description: 本文提供與 Azure 事件中樞所支援的 Apache Kafka 有關的資訊。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 95534d32bdf34d44a11b31c2476c153272717941
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319853"
+ms.locfileid: "92327292"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供與 Apache Kafka 相容的端點，®生產者和取用者 Api，可供大部分現有的 Apache Kafka 用戶端應用程式用來作為執行您自己的 Apache Kafka 叢集的替代方案。 事件中樞支援在1.0 和更新版本的 Apache Kafka 生產者和取用者 Api 用戶端。
@@ -60,7 +60,7 @@ Azure 事件中樞提供多個選項來授權存取您的安全資源。
 - 共用存取簽章 (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-事件中樞與 Azure Active Directory (Azure AD) 整合，其提供符合 **OAuth 2.0** 規範的集中式授權伺服器。 使用 Azure AD 時，您可以使用角色型存取控制 (RBAC) 將更細緻的許可權授與您的用戶端身分識別。 您可以將此功能與 Kafka 用戶端搭配使用，方法是指定該機制的通訊協定和**OAUTHBEARER**的**SASL_SSL** 。 如需有關設定存取範圍之 Azure 角色和層級的詳細資訊，請參閱 [使用 Azure AD 授權存取權](authorize-access-azure-active-directory.md)。
+事件中樞與 Azure Active Directory (Azure AD) 整合，其提供符合 **OAuth 2.0** 規範的集中式授權伺服器。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將更細緻的許可權授與您的用戶端身分識別。 您可以將此功能與 Kafka 用戶端搭配使用，方法是指定該機制的通訊協定和**OAUTHBEARER**的**SASL_SSL** 。 如需有關設定存取範圍之 Azure 角色和層級的詳細資訊，請參閱 [使用 Azure AD 授權存取權](authorize-access-azure-active-directory.md)。
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093

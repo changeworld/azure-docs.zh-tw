@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047636"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311662"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -19,7 +19,7 @@ ms.locfileid: "92047636"
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>Cloud Shell 中的「400用戶端錯誤：不正確的要求」
 
-Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶端錯誤： url 的要求不正確：」， http://localhost:50342/oauth2/token 後面接著完整堆疊追蹤。
+在中執行 Cloud Shell 的命令 *https://shell.azure.com* 可能會間歇性失敗，並出現錯誤「400用戶端錯誤： url 的要求不正確：」 http://localhost:50342/oauth2/token ，後面接著完整堆疊追蹤。
 
 尤其是針對 Azure 數位 Twins，這會影響下列命令群組：
 * `az dt route`
@@ -30,7 +30,11 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 若要解決此問題，您可以 `az login` 在 Cloud Shell 中重新執行命令，並完成後續的登入步驟。 在此之後，您應該可以重新執行此命令。
 
-替代解決方案是在您 [的電腦上安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ，以便您可以在本機執行 Azure CLI 命令。 本機 CLI 不會遇到此問題。
+或者，您可以在 Azure 入口網站中開啟 [Cloud Shell] 窗格，並從該處完成 Cloud Shell 工作：
+
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="醒目提示 [Cloud Shell] 圖示的 Azure 入口網站視圖，而且 Cloud Shell 出現在入口網站視窗的底部":::
+
+最後，另一個解決方法是在您的電腦上 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ，讓您可以在本機執行 Azure CLI 命令。 本機 CLI 不會遇到此問題。
 
 ### <a name="possible-causes"></a>可能的原因
 

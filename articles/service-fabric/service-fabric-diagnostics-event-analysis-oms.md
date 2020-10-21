@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257673"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329554"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>使用 Azure 監視器記錄的事件分析和視覺化
  Azure 監視器記錄會從裝載於雲端的應用程式和服務收集和分析遙測，並提供分析工具來協助您將其可用性和效能最大化。 本文概述如何在 Azure 監視器記錄中執行查詢，以深入瞭解並疑難排解叢集中發生的情況。 我們將討論下列常見的問題：
@@ -42,7 +42,7 @@ Azure 監視器記錄檔收到資料之後，Azure 會有數個 *監視解決方
 
 下圖顯示 Service Fabric 分析解決方案的首頁。 這個首頁提供叢集中目前情況的快照集檢視。
 
-![Service Fabric 解決方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![顯示 Service Fabric 分析方案首頁的螢幕擷取畫面。](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  如果您建立叢集的時候啟用了分析功能，就可以看到以下各項的事件 
 
@@ -100,10 +100,10 @@ Kusto 查詢語言功能很強大。 您可以執行的另一個重要查詢是�
 
 ![每個節點的查詢事件](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要啟用基礎結構監視 (也就是監視效能計數器)，請前往[新增 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)。 這個代理程式會收集效能計數器，並將它們新增至現有的工作區。
 * 針對內部部署叢集，Azure 監視器記錄會提供閘道 (HTTP 轉寄 Proxy) ，可用來將資料傳送至 Azure 監視器記錄。 深入瞭解 [如何使用 Log Analytics 閘道將電腦連線到無網際網路存取 Azure 監視器記錄](../azure-monitor/platform/gateway.md)。
 * 設定[自動化警示](../azure-monitor/platform/alerts-overview.md)，以協助偵測與診斷。
-* 使用 [記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md) 功能（Azure 監視器記錄檔中所提供的功能）取得熟悉。
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能。
 * 深入瞭解 Azure 監視器記錄和其所提供的內容，並閱讀 [Azure 監視器記錄](../azure-monitor/overview.md)檔的內容。

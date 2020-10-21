@@ -75,6 +75,8 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript - 驗證碼流程
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript - 隱含流程
@@ -123,6 +125,9 @@
       href: authentication-flows-app-scenarios.md
     - name: 身分識別平台最佳做法
       href: identity-platform-integration-checklist.md
+    - name: 行動單一登入 (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: 應用程式案例
       displayName: App scenarios
       items:
@@ -291,10 +296,8 @@
           items:
             - name: 帳戶和租用戶設定檔
               href: accounts-overview.md
-            - name: 授權代理程式
-              href: authorization-agents.md
-            - name: 訊息代理程式驗證
-              href: brokered-auth.md
+            - name: 使用 MSAL Android 的 SSO
+              href: msal-android-single-sign-on.md
             - name: 與 Azure AD B2C 整合
               href: msal-android-b2c.md
             - name: 遷移到 MSAL.Android

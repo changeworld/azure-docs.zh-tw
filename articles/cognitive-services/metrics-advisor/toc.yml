@@ -45,6 +45,8 @@
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
 - name: 資源
   items:
+    - name: 支援和說明選項
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
     - name: 定價
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: 區域可用性

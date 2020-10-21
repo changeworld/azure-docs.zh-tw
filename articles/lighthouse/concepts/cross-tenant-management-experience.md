@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 10/12/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970634"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315939"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -69,6 +69,10 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 - [從內部部署工作負載、Azure vm、azure 檔案共用等](../..//backup/backup-overview.md#what-can-i-back-up)備份及還原客戶資料
 - 使用[備份總管](../../backup/monitor-azure-backup-with-backup-explorer.md)可協助您查看備份專案的作業資訊 (包括尚未設定備份的 Azure 資源)，以及委派訂閱的監視資訊 (作業和警示)。 備份總管目前僅適用於 Azure VM 資料。
 - 對多個委派訂用帳戶使用[備份報告](../../backup/configure-reports.md)可追蹤歷程記錄趨勢、分析備份儲存體耗用量，並且稽核備份和還原。
+
+[Azure 藍圖](../../governance/blueprints/index.yml)：
+
+- 使用 Azure 藍圖來協調資源範本和其他成品的部署， (需要 [額外的存取權](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) 才能準備客戶訂用帳戶) 
 
 [Azure 成本管理 + 計費](../../cost-management-billing/index.yml)：
 

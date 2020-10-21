@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893668"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331731"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>使用 Azure 防火牆原則來定義規則階層
 
@@ -21,7 +21,7 @@ ms.locfileid: "88893668"
 Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
 
 - 提供階層式結構，以在子應用程式小組原則之上覆迭中央基底原則。 基底原則的優先順序較高，而且會在子原則之前執行。
-- 使用自訂的角色型存取控制 (RBAC) 定義，以防止意外移除基底原則，並提供訂用帳戶或資源群組內規則集合群組的選擇性存取權。 
+- 使用 Azure 自訂角色定義，以防止意外移除基底原則，並在訂用帳戶或資源群組內提供選擇性存取規則集合群組。 
 
 ## <a name="solution-overview"></a>解決方案概觀
 
@@ -153,7 +153,7 @@ Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
 
 ### <a name="summary"></a>摘要
 
-具有自訂 RBAC 的防火牆原則現在可讓您選擇性地存取防火牆原則規則集合群組。
+具有自訂角色的防火牆原則現在可讓您選擇性地存取防火牆原則規則集合群組。
 
 使用者沒有許可權可執行下列動作：
 - 刪除 Azure 防火牆或防火牆原則。
@@ -162,7 +162,7 @@ Azure 防火牆原則可讓您定義規則階層並強制執行合規性：
 
 安全性系統管理員可以使用基本原則來強制執行護欄，並封鎖特定類型的流量 (例如，其企業要求的 ICMP) 。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [Azure 防火牆原則](policy-overview.md)。
 

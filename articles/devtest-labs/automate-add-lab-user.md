@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中自動新增實驗室使用者 |Microsoft Docs
 description: 本文說明如何使用 Azure Resource Manager 範本、PowerShell 和 CLI，在 Azure DevTest Labs 中自動將使用者新增至實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483817"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327955"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中自動將實驗室使用者新增至實驗室
 Azure DevTest Labs 可讓您使用 Azure 入口網站，快速建立自助開發/測試環境。 但是，如果您有數個小組和數個 DevTest Labs 實例，自動化建立程式可以節省時間。 [Azure Resource Manager 範本](https://github.com/Azure/azure-devtestlab/tree/master/Environments) 可讓您以自動化的方式建立實驗室、實驗室 vm、自訂映射和公式，以及新增使用者。 本文特別著重于將使用者新增至 DevTest Labs 實例。
@@ -123,7 +123,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 您也可以使用 Azure Active Directory PowerShell Cmdlet，其中包括 [set-msoluser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、 [get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)和 [new-msolserviceprincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)。
 
-### <a name="scope"></a>影響範圍
+### <a name="scope"></a>範圍
 範圍指定應套用角色指派的資源或資源群組。 若為資源，範圍的格式為： `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}` 。 此範本會使用函式 `subscription().subscriptionId` 來填滿元件 `subscription-id` ，並使用範本函式 `resourceGroup().name` 來填入 `resource-group-name` 部分。 使用這些函式，表示您要指派角色的實驗室必須存在於目前的訂用帳戶中，以及範本部署所在的相同資源群組。 最後一個部分 `resource-name` 是實驗室的名稱。 此值是透過此範例中的樣板參數來接收。 
 
 範本中的角色範圍： 
@@ -179,7 +179,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 若要指定要授與許可權的資源，可以透過 `ResourceName` 、 `ResourceType` `ResourceGroup` 或參數的組合來指定 `scope` 。 使用任何參數組合時，請提供足夠的資訊給 Cmdlet 來唯一識別 Active Directory 的物件 (使用者、群組或服務主體) 、範圍 (資源群組或資源) ，以及角色定義。
 
 ## <a name="use-azure-command-line-interface-cli"></a>使用 Azure 命令列介面 (CLI) 
-在 Azure CLI 中，您可以使用命令來將實驗室使用者新增至實驗室 `az role assignment create` 。 如需 Azure CLI Cmdlet 的詳細資訊，請參閱 [使用 RBAC 和 Azure CLI 管理 Azure 資源的存取權](../role-based-access-control/role-assignments-cli.md)。
+在 Azure CLI 中，您可以使用命令來將實驗室使用者新增至實驗室 `az role assignment create` 。 如需 Azure CLI Cmdlet 的詳細資訊，請參閱 [使用 Azure CLI 新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-cli.md)。
 
 被授與存取權的物件可以由 `objectId` 、 `signInName` 、 `spn` 參數指定。 物件被授與存取權的實驗室，可以透過 `scope` url 或 `resource-name` 、和參數的組合來識別 `resource-type` `resource-group` 。
 

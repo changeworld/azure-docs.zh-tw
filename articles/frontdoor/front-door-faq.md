@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819037"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282288"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door 的常見問題
 
@@ -71,7 +71,7 @@ Azure Front Door 是全域服務，且未系結至任何特定的 Azure 區域�
 
 ### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front Door 的 POP 位置有哪些？
 
-Azure Front Door 與 Microsoft 的 Azure CDN 具有相同的 POP (點) 位置清單。 如需完整的 Pop 清單，請參閱 [Microsoft 的 AZURE CDN POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。
+Azure Front Door 與 Microsoft 的 Azure CDN 具有相同的 POP (點) 位置清單。 如需完整的 Pop 清單，請參閱 [Microsoft 的 AZURE CDN POP 位置](../cdn/cdn-pop-locations.md)。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door 專用的應用程式部署，還是在客戶間共用？
 
@@ -91,9 +91,9 @@ Azure Front Door 是全域散發的多租使用者服務。 因此，Front Door 
 
 - 為您的後端設定 IP 執行 acl，以接受來自 Azure Front Door 後端 IP 位址空間和 Azure 基礎結構服務的流量。 請參閱下面的 IP 詳細資料，以執行 acl 您的後端：
  
-    - 請參閱[AZURE IP 範圍](https://www.microsoft.com/download/details.aspx?id=56519)中的*AzureFrontDoor 後端*區段和 Front Door 的 IPv4 後端 IP 位址範圍的服務標籤，或者您也可以使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服務標記*AzureFrontDoor。*
+    - 請參閱[AZURE IP 範圍](https://www.microsoft.com/download/details.aspx?id=56519)中的*AzureFrontDoor 後端*區段和 Front Door 的 IPv4 後端 IP 位址範圍的服務標籤，或者您也可以使用[網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules)中的服務標記*AzureFrontDoor。*
     - 在服務標籤中所涵蓋的 Front Door 的 **IPv6** 後端 IP 空間未列在 Azure IP 範圍的 JSON 檔案中。 如果您要尋找明確的 IPv6 位址範圍，它目前的限制為 `2a01:111:2050::/44`
-    - 透過虛擬化主機 IP 位址的 Azure [基本基礎結構服務](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) ： `168.63.129.16` 和 `169.254.169.254`
+    - 透過虛擬化主機 IP 位址的 Azure [基本基礎結構服務](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) ： `168.63.129.16` 和 `169.254.169.254`
 
     > [!WARNING]
     > Front Door 的後端 IP 空間可能會在稍後變更，不過，我們會確保在這之前，我們會將其與 [AZURE IP 範圍和服務標記](https://www.microsoft.com/download/details.aspx?id=56519)整合。 建議您訂閱 [AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519) 標籤，以取得任何變更或更新。
@@ -156,7 +156,7 @@ Azure Front Door (AFD) 需要公用 IP 或可公開解析的 DNS 名稱來路由
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door 有何不同的超時和限制？
 
-瞭解 Azure Front Door 的所有記載的 [超時和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
+瞭解 Azure Front Door 的所有記載的 [超時和限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)。
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>將規則新增至 Front Door 規則引擎之後，規則需要多久的時間才會生效？
 
@@ -179,7 +179,7 @@ Front Door 支援 TLS 版本1.0、1.1 和1.2。 尚不支援 TLS 1.3。
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Front Door 支援哪些憑證？
 
 若要啟用 HTTPS 通訊協定以在 Front Door 自訂網域上安全地傳遞內容，您可以選擇使用由 Azure Front Door 管理的憑證，或使用您自己的憑證。
-Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並儲存在 Front Door 的 Key Vault 中。 如果您選擇使用自己的憑證，則您可以將憑證從支援的 CA 上線，而且可以是標準的 TLS、延伸驗證憑證或甚至是萬用字元憑證。 不支援自我簽署憑證。 瞭解 [如何為自訂網域啟用 HTTPS](https://aka.ms/FrontDoorCustomDomainHTTPS)。
+Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並儲存在 Front Door 的 Key Vault 中。 如果您選擇使用自己的憑證，則您可以將憑證從支援的 CA 上線，而且可以是標準的 TLS、延伸驗證憑證或甚至是萬用字元憑證。 不支援自我簽署憑證。 瞭解 [如何為自訂網域啟用 HTTPS](./front-door-custom-domain-https.md)。
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Front Door 是否支援憑證的 autorotation？
 
@@ -220,7 +220,7 @@ Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並�
 
 ### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以設定 TLS 原則來控制 TLS 通訊協定版本嗎？
 
-您可以透過 Azure 入口網站或 [Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)，在自訂網域 HTTPS 設定的 Azure Front Door 中設定最低的 TLS 版本。 目前，您可以選擇1.0 和1.2。
+您可以透過 Azure 入口網站或 [Azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)，在自訂網域 HTTPS 設定的 Azure Front Door 中設定最低的 TLS 版本。 目前，您可以選擇1.0 和1.2。
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>是否可以將 Front Door 設定為僅支援特定的加密套件？
 
@@ -247,11 +247,11 @@ Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並�
 
 1. **憑證主體名稱不相符**：對於 HTTPS 連線，Front Door 預期您的後端會從主體名稱 (s 的有效 CA 出示憑證，) 符合後端主機名稱。 舉例來說，如果您的後端主機名稱是設定為 `myapp-centralus.contosonews.net` ，而您的後端在 TLS 信號交換期間所呈現的憑證和主體名稱都不相同 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` ，Front Door 將拒絕連線並導致錯誤。 
     1. **解決方案**：雖然不建議從合規性的觀點來看，但您可以藉由停用 Front Door 的憑證主體名稱檢查來解決此錯誤。 這會出現在 Azure 入口網站的設定下，以及在 API 中的 BackendPoolsSettings 下。
-2. **來自無效 ca 的後端裝載憑證**：只有來自 [有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 的憑證可以在具有 Front Door 的後端使用。 不允許來自內部 Ca 或自我簽署憑證的憑證。
+2. **來自無效 ca 的後端裝載憑證**：只有來自 [有效 ca](./front-door-troubleshoot-allowed-ca.md) 的憑證可以在具有 Front Door 的後端使用。 不允許來自內部 Ca 或自我簽署憑證的憑證。
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>我可以搭配 Azure Front Door 使用用戶端/相互驗證嗎？
 
-否。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
+不正確。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 

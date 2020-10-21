@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: b25cac502a4e9a0cc5582134cb9601b75672ffd1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168489"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317560"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -1065,7 +1065,7 @@ Authorization: OAuth realm="Photos",
 
   * [Azure App Service 方案](../app-service/overview-hosting-plans.md)
   * [Azure Functions 網路選項](../azure-functions/functions-networking-options.md)
-  * [適用于虛擬機器的 Azure 專用主機](../virtual-machines/windows/dedicated-hosts.md)
+  * [適用于虛擬機器的 Azure 專用主機](../virtual-machines/dedicated-hosts.md)
   * [Azure 中的虛擬機器隔離](../virtual-machines/isolation.md)
   * [將專用 Azure 服務部署至虛擬網路](../virtual-network/virtual-network-for-azure-services.md)
 

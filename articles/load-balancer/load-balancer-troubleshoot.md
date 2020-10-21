@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217383"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314805"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 
@@ -157,6 +157,17 @@ ms.locfileid: "92217383"
 - 從 VNet 內的其中一個後端 VM 使用 Psping 測試探查連接埠回應 (範例︰psping 10.0.0.4:3389) 並記錄結果。 
 - 如果這些 ping 測試沒有收到任何回應，請在執行 PsPing 時對後端 VM 和 VNet 測試 VM 同時執行 Netsh trace，然後停止 Netsh trace。 
  
+## <a name="symptom-load-balancer-in-failed-state"></a>徵兆： Load Balancer 處於失敗狀態 
+
+**解決方法**
+
+- 一旦您識別處於失敗狀態的資源，請移至 [Azure 資源總管](https://resources.azure.com/) 並識別處於此狀態的資源。 
+- 將右上角的切換開關更新為 [讀取/寫入]。
+- 針對處於失敗狀態的資源，按一下 [編輯]。
+- 依序按一下 PUT 和 GET，以確定布建狀態已更新為 [成功]。
+- 然後，您可以繼續進行其他動作，因為資源已不處於失敗狀態。
+
+
 ## <a name="next-steps"></a>後續步驟
 
 如果上述步驟無法解決問題，請開啟 [支援票證](https://azure.microsoft.com/support/options/)。

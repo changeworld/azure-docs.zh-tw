@@ -1,16 +1,16 @@
 ---
 title: 遷移以橋接至 Kubernetes
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: 描述從 Azure Dev Spaces 到 Bridge 到 Kubernetes 的遷移程式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、Bridge 到 Kubernetes
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044695"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329793"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>遷移以橋接至 Kubernetes
 
@@ -44,16 +44,16 @@ Azure Dev Spaces 和 Bridge Kubernetes 有類似的功能，它們在許多方�
 | 需求  | Azure Dev Spaces  | 橋接至 Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes Service | 在15個 Azure 區域中 | 任何 AKS 服務區域    |
-| **安全性** |
+| **Security** |
 | 叢集所需的安全性存取  | AKS 叢集參與者  | Kubernetes RBAC-部署更新   |
 | 開發電腦上所需的安全性存取權  | N/A  | 本機系統管理員/sudo   |
 | **可用性** |
 | 獨立于 Kubernetes 和 Docker 構件  | 否  | 是   |
 | 自動回復變更，後續的偵錯工具  | 否  | 是   |
-| **環境** |
+| **支援的用戶端工具** |
 | 適用于 Visual Studio 2019  | 是  | 是   |
 | 適用于 Visual Studio Code  | 是  | 是   |
-| 適用于 CLI  | 是  | 否   |
+| 搭配 CLI 使用  | 是  | 否   |
 | **作業系統相容性** |
 | 適用于 Windows 10  | 是  | 是  |
 | 適用于 Linux  | 是  | 是  |

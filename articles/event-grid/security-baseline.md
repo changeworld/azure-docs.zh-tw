@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d027797deee9435127592fc91c21d59ee93fe9b5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2a1396f67c94b34b4fdef0bdaf7e01770da91246
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152248"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331510"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>適用于事件方格的 Azure 安全性基準
 
@@ -287,9 +287,9 @@ Azure 事件方格也支援公用 IP 型存取控制，可用於發佈至主題�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： Azure 事件方格可讓您控制為不同的使用者提供的存取層級，以進行各種管理作業，例如列出事件訂閱、建立新的訂用帳戶，以及產生金鑰。 事件格線會使用 Azure 的角色型存取控制 (RBAC)。 事件方格支援內建角色和自訂角色。
+**指導**方針： Azure 事件方格可讓您控制為不同的使用者提供的存取層級，以進行各種管理作業，例如列出事件訂閱、建立新的訂用帳戶，以及產生金鑰。 事件方格會使用 Azure 角色型存取控制 (Azure RBAC) 。 事件方格支援內建角色和自訂角色。
 
-Azure 角色型存取控制 (RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
+Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
 
 - [授權存取事件方格資源](security-authorization.md)
 
@@ -457,7 +457,7 @@ Azure 角色型存取控制 (RBAC) 可讓您透過角色指派來管理 Azure �
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure Active Directory RBAC 來控制對 Azure 資源的存取。
+**指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure RBAC 來控制對 Azure 資源的存取。
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
@@ -501,7 +501,7 @@ Azure 角色型存取控制 (RBAC) 可讓您透過角色指派來管理 Azure �
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
-**指導**方針： Azure 事件方格支援使用 AZURE ACTIVE DIRECTORY (AD) 來授權事件方格資源的要求。 使用 Azure AD 時，您可以使用角色型存取控制 (RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
+**指導**方針： Azure 事件方格支援使用 AZURE ACTIVE DIRECTORY (AD) 來授權事件方格資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
 
 - [授權存取事件方格資源](security-authorization.md)
 

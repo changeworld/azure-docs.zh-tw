@@ -4,12 +4,12 @@ description: 本文提供的資訊可協助您將成本優化，並在您的環�
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476252"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328261"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>治理 Azure DevTest Labs 基礎結構 - 管理成本和擁有權
 當您考慮建置開發和測試環境時，成本和擁有權是主要考量。 在此節中，您會發現可協助您進行成本最佳化，並在環境中配置擁有權的資訊。
@@ -34,9 +34,9 @@ ms.locfileid: "85476252"
 
 如果您決定使用 DevTest 供應項目，請注意，此項權益專門用於應用程式的開發與測試。 訂用帳戶內的使用量不包含財務支援的 SLA，除了使用 Azure DevOps 及 HockeyApp 之外。
 
-## <a name="define-a-role-based-access-across-your-organization"></a>定義您整個組織內的角色型存取
+## <a name="define-role-based-access-across-your-organization"></a>在整個組織中定義以角色為基礎的存取
 ### <a name="question"></a>問題
-如何為我的 DevTest Labs 環境定義角色型存取控制，以確保 IT 可以治理，而開發人員/測試同時還能執行其工作？ 
+如何? 針對我的 DevTest Labs 環境定義 Azure 角色型存取控制，以確保其可在開發人員/測試可以執行其工作時進行管理？ 
 
 ### <a name="answer"></a>回答
 有一個廣泛的模式，但詳細資料取決於您的組織。
@@ -52,5 +52,5 @@ DevTest Labs 資源應該由接近專案/應用程式小組的擁有者所擁有
 如需詳細資訊，請參閱 [Azure enterprise scaffold-規定的訂](/azure/architecture/cloud-adoption/appendix/azure-scaffold) 用帳戶治理檔。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱[公司原則與合規性](devtest-lab-guidance-governance-policy-compliance.md)。

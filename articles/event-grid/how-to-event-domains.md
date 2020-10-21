@@ -4,12 +4,12 @@ description: 顯示如何使用事件網域管理 Azure 事件方格中的大量
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502030"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330071"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件網域管理主題並發佈事件
 
@@ -79,7 +79,7 @@ New-AzureRmEventGridDomain `
 
 ## <a name="manage-access-to-topics"></a>管理主題的存取權
 
-您可以透過[角色指派](../role-based-access-control/role-assignments-cli.md)來管理主題的存取權。 角色指派會使用角色型存取控制，限制只有特定範圍上的授權使用者可在 Azure 資源上執行作業。
+您可以透過[角色指派](../role-based-access-control/role-assignments-cli.md)來管理主題的存取權。 角色指派使用 Azure 角色型存取控制，將 Azure 資源上的作業限制在特定範圍內的授權使用者。
 
 事件方格有兩個內建角色，可用來將網域中各種主題的存取權指派給特定使用者。 這些角色是 `EventGrid EventSubscription Contributor (Preview)` (可讓您建立和刪除訂閱) 和 `EventGrid EventSubscription Reader (Preview)` (只允許列出事件訂閱)。
 
@@ -209,6 +209,6 @@ Get-AzureRmEventGridDomainKey `
 
 然後使用您慣用的方法，讓 HTTP POST 將您的事件發佈至事件方格網域。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需深入了解事件網域和其為何實用的整體概念，請參閱[事件網域的概觀](event-domains.md)。

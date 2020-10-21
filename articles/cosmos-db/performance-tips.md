@@ -4,15 +4,15 @@ description: 瞭解用戶端設定選項，以改善 Azure Cosmos DB .NET v2 SDK
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802135"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277217"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
 
@@ -69,28 +69,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 **原則︰使用直接連接模式**
 
-用戶端連線至 Azure Cosmos DB 的方式會影響重要的效能，特別是針對觀察到的用戶端延遲。 有兩個重要的設定設定可用於設定用戶端連線原則：連接 *模式* 和連線 *通訊協定*。  兩個可用的模式︰
-
-  * 閘道模式 (預設) 
-      
-    所有 SDK 平臺都支援閘道模式，且是針對 [Microsoft.Azure.DocUMENTDB SDK](sql-api-sdk-dotnet.md)設定的預設值。 如果您的應用程式在有嚴格防火牆限制的公司網路中執行，則閘道模式是最好的選擇，因為它會使用標準 HTTPS 埠和單一 DNS 端點。 不過，效能的取捨在於，每次從 Azure Cosmos DB 讀取或寫入資料時，閘道模式都會涉及額外的網路躍點。 因為網路躍點較少，所以直接模式可提供較佳的效能。 當您在擁有有限數目之通訊端連線的環境中執行應用程式時，也建議使用閘道連線模式。
-
-    當您在 Azure Functions 中使用 SDK 時（特別是在取用 [方案](../azure-functions/functions-scale.md#consumption-plan)中），請注意目前的 [連接限制](../azure-functions/manage-connections.md)。 在這種情況下，如果您也在 Azure Functions 應用程式中使用其他以 HTTP 為基礎的用戶端，則閘道模式可能更好。
-
-  * 直接模式
-
-    Direct 模式支援透過 TCP 通訊協定連接。
-     
-當您在直接模式中使用 TCP 時，除了閘道埠之外，您還必須確定10000與20000之間的埠範圍是開啟的，因為 Azure Cosmos DB 使用動態 TCP 埠。 在 [私人端點](./how-to-configure-private-endpoints.md)上使用直接模式時，必須開啟從0到65535的 TCP 埠的完整範圍。 如果未開啟這些埠，而您嘗試使用 TCP 通訊協定，則會收到503服務無法使用的錯誤。 下表顯示適用于各種 Api 的連線模式，以及用於每個 API 的服務埠：
-
-|連線模式  |支援的通訊協定  |支援的 SDK  |API/服務連接埠  |
-|---------|---------|---------|---------|
-|閘道  |   HTTPS    |  所有 Sdk    |   SQL (443) 、MongoDB (10250、10255、10256) 、資料表 (443) 、Cassandra (10350) 、Graph (443)  <br> 埠10250會對應到預設的 Azure Cosmos DB API for MongoDB 實例，但不含異地複寫。 而埠10255和10256則對應到具有異地複寫的實例。   |
-|直接    |     TCP    |  .NET SDK    | 使用公用/服務端點時：10000到20000範圍中的埠<br>使用私人端點時：0到65535範圍中的埠 |
-
-Azure Cosmos DB 透過 HTTPS 提供簡單的開放 RESTful 程式設計模型。 此外，它可提供有效率的 TCP 通訊協定，此 TCP 通訊協定在通訊模型中也符合 REST 限制，並且可以透過 .NET 用戶端 SDK 取得。 TCP 通訊協定會使用 TLS 進行初始驗證和加密流量。 為了達到最佳效能，儘可能使用 TCP 通訊協定。
-
-針對 Microsoft.Azure.DocumentDB SDK，您可以使用參數在實例的結構期間設定連接模式 `DocumentClient` `ConnectionPolicy` 。 如果您使用直接模式，也可以 `Protocol` 使用參數來設定 `ConnectionPolicy` 。
+.NET V2 SDK 預設連線模式是 gateway。 您可以使用參數，在實例的結構期間設定連接模式 `DocumentClient` `ConnectionPolicy` 。 如果您使用直接模式，您也必須 `Protocol` 使用參數來設定 `ConnectionPolicy` 。 若要深入瞭解不同的連線選項，請參閱連線 [模式](sql-sdk-connection-modes.md) 文章。
 
 ```csharp
 Uri serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -102,10 +81,6 @@ new ConnectionPolicy
    ConnectionProtocol = Protocol.Tcp
 });
 ```
-
-由於 TCP 僅在直接模式中受到支援，因此如果您使用閘道模式，則一律會使用 HTTPS 通訊協定來與閘道通訊，而且 `Protocol` 中的值 `ConnectionPolicy` 會被忽略。
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB 連接原則" border="false":::
 
 **暫時連接埠耗盡**
 
@@ -284,4 +259,4 @@ SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標
 
 如需在少數用戶端電腦上用來評估高效能案例 Azure Cosmos DB 的範例應用程式，請參閱 [Azure Cosmos DB 的效能和規模測試](performance-testing.md)。
 
-若要深入了解如何針對規模和高效能設計您的應用程式，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partition-data.md)。
+若要深入了解如何針對規模和高效能設計您的應用程式，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。

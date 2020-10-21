@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843306"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320516"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上的 Service Fabric 叢集概觀
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 隸屬於叢集的機器或 VM 稱為叢集模式。 叢集可擴充至數千個節點。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的服務資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。
@@ -78,7 +78,7 @@ Service Fabric 也支援存取控制來限制不同使用者群組對特定叢�
 ### <a name="network-security-groups"></a>網路安全性群組 
 網路安全性群組 (NSG) 控制子網路、VM 或特定 NIC 的輸入和輸出流量。  根據預設，當多個 VM 放在相同的虛擬網路上時，它們可以透過任何連接埠彼此通訊。  如果您想要限制機器之間的通訊，可以定義 NSG 來區隔網路或將它們彼此隔離。  如果您在叢集中有多個節點類型，可以將 NSG 套用至子網路，以避免屬於不同節點類型的機器彼此通訊。  
 
-如需詳細資訊，請參閱[安全性群組](../virtual-network/security-overview.md)
+如需詳細資訊，請參閱[安全性群組](../virtual-network/network-security-groups-overview.md)
 
 ## <a name="scaling"></a>調整大小
 

@@ -4,12 +4,12 @@ description: 本文提供的資訊會說明如何使用 Azure Active Directory �
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23fc0a59f9accc70c69c1096c1a15f1313ee2e0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010013"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332445"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別 Azure Active Directory (Azure AD) 驗證。 適用于 Azure 資源的受控識別可以從 Azure 虛擬機器中執行的應用程式（ (Vm) 、函式應用程式、虛擬機器擴展集和其他服務），使用 Azure AD 認證來授權存取事件中樞資源。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -26,7 +26,7 @@ Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-direc
 - [Azure Resource Manager 用戶端程式庫](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>在 Azure AD 中將許可權授與受控識別
-若要在您的應用程式中授權來自受控識別的事件中樞服務要求，請先為該受控身分識別設定 (RBAC) 設定的角色型存取控制。 Azure 事件中樞定義的 Azure 角色包含從事件中樞傳送和讀取的許可權。 當 Azure 角色指派給受控識別時，受控識別會獲得適當範圍內事件中樞資料的存取權。
+若要從您應用程式中的受控識別授權事件中樞服務的要求，請先為該受控識別設定 Azure 角色型存取控制 (Azure RBAC) 設定。 Azure 事件中樞定義的 Azure 角色包含從事件中樞傳送和讀取的許可權。 當 Azure 角色指派給受控識別時，受控識別會獲得適當範圍內事件中樞資料的存取權。
 
 如需指派 Azure 角色的詳細資訊，請參閱 [使用 Azure Active Directory 進行驗證以存取事件中樞資源](authorize-access-azure-active-directory.md)。
 
@@ -60,7 +60,7 @@ Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-direc
 4.  在 [ **新增角色指派** ] 頁面上，選取您要指派的事件中樞角色。 然後搜尋以找出您已註冊的服務身分識別，以指派角色。
     
     ![[新增角色指派] 頁面](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  選取 [儲存]****。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有事件中樞資料擁有者。
+5.  選取 [儲存]。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有事件中樞資料擁有者。
     
     ![指派給角色的身分識別](./media/authenticate-managed-identity/role-assigned.png)
 

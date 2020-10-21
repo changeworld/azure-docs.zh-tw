@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9bd7e7dab5384ecd3e1e87d763d4b8f081b669be
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976873"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329827"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
@@ -25,7 +25,7 @@ ms.locfileid: "91976873"
 
 電腦視覺的 OCR Api 支援數種語言。 您不需要指定語言代碼。 如需詳細資訊，請參閱 [光學字元辨識 (OCR) ](concept-recognizing-text.md) 。
 
-|Language| 語言代碼 | OCR API | 讀取3.1 版 | 讀取 3.1-preview。2 |
+|Language| 語言代碼 | OCR API | 閱讀3.0 和3。1 | 閱讀 3.2-preview. 1 |
 |:-----|:----:|:-----:|:---:|:---:|
 |阿拉伯文 | `ar`|✔ | | |
 |簡體中文 | `zh-Hans`|✔ | |✔ |
@@ -58,7 +58,7 @@ ms.locfileid: "91976873"
 
 [分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可能會以查詢參數指定的其他語言傳回結果 `language` 。 無論指定何種語言，其他動作都會以英文傳回結果，而其他動作則會針對不支援的語言擲回例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數指定的; 請參閱 [總覽](overview.md) ，以取得您可以使用影像分析執行的所有動作清單。
 
-|Language | 語言代碼 | 類別 | 標籤 | 描述 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|Language | 語言代碼 | 類別 | 標籤 | 說明 | 成人 | 品牌 | 色彩 | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

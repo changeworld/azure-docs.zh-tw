@@ -4,12 +4,12 @@ description: 本文提供授權存取 Azure 事件中樞資源之不同選項的
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85323170"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332377"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>授與 Azure 事件中樞的存取權
 每次您發佈或取用事件中樞的事件/資料時，您的用戶端都會嘗試存取事件中樞資源。 每個對安全資源的要求都必須獲得授權，服務才能確保用戶端具有發行/取用資料的必要許可權。 
@@ -23,7 +23,7 @@ Azure 事件中樞提供下列選項來授權存取安全資源：
 > 本文適用于事件中樞和 [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) 案例。 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-事件中樞資源的 Azure Active Directory (Azure AD) 整合提供了角色型存取控制 (RBAC) ，以針對用戶端對資源的存取進行細微的控制。 您可以使用角色型存取控制 (RBAC) 將許可權授與安全性主體，該許可權可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權存取事件中樞資源的要求。
+事件中樞資源的 Azure Active Directory (Azure AD) 整合提供 Azure 角色型存取控制 (Azure RBAC) ，以針對用戶端對資源的存取進行細微控制。 您可以使用 Azure RBAC 來授與安全性主體的許可權，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權存取事件中樞資源的要求。
 
 如需有關使用 Azure AD 進行驗證的詳細資訊，請參閱下列文章：
 
@@ -40,7 +40,7 @@ Azure 事件中樞提供下列選項來授權存取安全資源：
 如需使用 SAS 進行授權的詳細資訊，請參閱 [使用共用存取簽章授權存取事件中樞資源](authorize-access-shared-access-signature.md)。
 
 ## <a name="next-steps"></a>後續步驟
-- 請參閱 GitHub 存放庫中發佈的 [RBAC 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 。 
+- 複習在 GitHub 存放庫中發佈的 [AZURE RBAC 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 。 
 - 請參閱下列文章：
     - [使用 Azure Active Directory 驗證從應用程式 Azure 事件中樞的要求](authenticate-application.md)
     - [使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源](authenticate-managed-identity.md)

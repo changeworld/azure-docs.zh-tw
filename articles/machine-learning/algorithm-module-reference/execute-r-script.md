@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542283"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330388"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
@@ -194,11 +194,11 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 現有的 R 程式碼可能需要在設計工具管線中執行較少的變更。 例如，您以 CSV 格式提供的輸入資料應該先明確轉換成資料集，您才能在程式碼中使用它。 在 R 語言中使用的資料和資料行類型，在設計工具中使用的資料和資料行類型的某些方式也不同。
 
-    如果您的腳本大於 16 KB，請使用 **腳本** 組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
+1. 如果您的腳本大於 16 KB，請使用 **腳本** 組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
     
     1. 將腳本和其他自訂資源組合成 zip 檔案。
     1. 將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 
-    1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *我的資料集* ] 清單，拖曳資料集模組。 
+    1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *資料集* ] 清單，拖曳資料集模組。 
     1. 將資料集模組連接至 [**執行 R 腳本**] 模組的**腳本**組合埠。
     
     以下是在腳本套件組合中使用腳本的範例程式碼：

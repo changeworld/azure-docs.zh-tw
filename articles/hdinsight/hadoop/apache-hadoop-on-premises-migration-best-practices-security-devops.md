@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7deaca67212146881754f785e6dceaa064bde6e7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751290"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329418"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -69,7 +69,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 **資料存取的驗證和授權**
     - 使用 Azure Active Directory Domain Services 建立已加入網域的 HDInsight 叢集。 (企業安全性套件)。
-    - 使用 Ambari 來為 AD 使用者提供對叢集資源的角色型存取。
+    - 使用 Ambari 為 AD 使用者提供對叢集資源的角色型存取。
     - 使用 Apache Ranger 來為 Hive 設定對資料表 / 資料行 / 資料列層級的存取控制原則。
     - 對叢集的 SSH 存取可以僅限於系統管理員。
 
@@ -120,6 +120,6 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 2. **執行測試** - 反覆地執行功能和效能測試。
 3. **最佳化** - 根據上述的測試結果，解決任何效能問題，然後重新測試以確認效能改進。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解 [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)。

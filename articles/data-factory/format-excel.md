@@ -9,25 +9,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65dc9f556a9b7c257273349c056cf997973e942f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331959"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328278"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory 中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 當您想要 **剖析 Excel**檔案時，請遵循這篇文章。 Azure Data Factory 支援 ".xls" 和 ".xlsx"。
 
-下列連接器支援 Excel 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、 [檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。 它支援作為來源，但不支援接收。
+下列連接器支援 Excel 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、 [檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。 它支援作為來源，但不支援接收。 
+
+**注意**：使用 [HTTP](connector-http.md)時，不支援 ".xls" 格式。 
 
 ## <a name="dataset-properties"></a>資料集屬性
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Excel 資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要 |
+| 屬性         | 說明                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設定為 **Excel**。   | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 | 是      |
@@ -71,9 +73,9 @@ ms.locfileid: "91331959"
 
 ### <a name="excel-as-source"></a>Excel 作為來源 
 
-[複製活動*** \* 來源 \* *** ] 區段支援下列屬性。
+複製活動 **_ \_ 來源 \* *** 區段支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的 type 屬性必須設為 **ExcelSource**。 | 是      |
 | storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 | 否       |
@@ -106,12 +108,12 @@ ms.locfileid: "91331959"
 
 下表列出 Excel 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
 
-| 名稱                      | 描述                                                  | 必要 | 允許的值                                            | 資料流程腳本屬性         |
+| Name                      | 說明                                                  | 必要 | 允許的值                                            | 資料流程腳本屬性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 萬用字元路徑           | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否       | String[]                                                  | wildcardPaths                     |
-| 分割區根路徑       | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否       | 字串                                                    | partitionRootPath                 |
+| 分割區根路徑       | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否       | String                                                    | partitionRootPath                 |
 | 檔案清單             | 您的來源是否指向列出要處理之檔案的文字檔 | 否       | `true` 或 `false`                                         | fileList                          |
-| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行       | 否       | 字串                                                    | rowUrlColumn                      |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行       | 否       | String                                                    | rowUrlColumn                      |
 | 完成後          | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否       | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 依上次修改篩選   | 選擇根據上次修改檔案的時間進行篩選 | 否       | 時間戳記                                                 | modifiedAfter <br> modifiedBefore |
 | 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |

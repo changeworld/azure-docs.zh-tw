@@ -3,15 +3,15 @@ title: 透過 Azure Active Directory 授與存取權
 description: 本文提供使用 Azure Active Directory 來授權事件中樞資源存取權的相關資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566256"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332394"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取事件中樞資源
-Azure 事件中樞支援使用 Azure Active Directory (Azure AD) 來授權事件中樞資源的要求。 使用 Azure AD 時，您可以使用角色型存取控制 (RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。 若要深入瞭解角色和角色指派，請參閱 [瞭解不同的角色](../role-based-access-control/overview.md)。
+Azure 事件中樞支援使用 Azure Active Directory (Azure AD) 來授權事件中樞資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。 若要深入瞭解角色和角色指派，請參閱 [瞭解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="overview"></a>概觀
 當安全性主體 (使用者或應用程式) 嘗試存取事件中樞資源時，要求必須獲得授權。 使用 Azure AD，對資源的存取是兩個步驟的程序。 
@@ -39,7 +39,7 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 | [Azure 事件中樞資料寄件者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | 使用此角色來授與事件中樞資源的傳送存取權。 |
 | [Azure 事件中樞資料接收者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | 使用此角色來提供事件中樞資源的取用/接收存取權。 |
 
-如需 Schema Registry 內建角色，請參閱 [架構登錄角色](schema-registry-overview.md#role-based-access-control)。
+如需 Schema Registry 內建角色，請參閱 [架構登錄角色](schema-registry-overview.md#azure-role-based-access-control)。
 
 ## <a name="resource-scope"></a>資源範圍 
 將 Azure 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法的要求是，最好只授與最小的可能範圍。
@@ -73,7 +73,7 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何將 Azure 內建角色指派給安全性主體，請參閱 [使用 Azure Active Directory 驗證事件中樞資源的存取權](authenticate-application.md)。
-- 瞭解 [如何使用 RBAC 建立自訂角色](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole)。
+- 瞭解 [如何使用 AZURE RBAC 建立自訂角色](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole)。
 - 瞭解 [如何搭配使用 Azure Active Directory 與 EH](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
 請參閱下列相關文章：

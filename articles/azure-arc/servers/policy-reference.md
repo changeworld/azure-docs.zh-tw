@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義，適用於已啟用 Azure Arc 的伺服器
 description: 列出 Azure 原則內建原則定義，這些原則定義適用於已啟用 Azure Arc 的伺服器 (預覽)。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 16a2e798d0c49a898dfad8064d7e2075631280de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d771432d146f32c31b275a792ce9556ea8bfd2fa
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826093"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320100"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure 原則已啟用 Azure Arc 之伺服器的內建定義
 

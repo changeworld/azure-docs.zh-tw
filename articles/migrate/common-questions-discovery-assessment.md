@@ -3,12 +3,12 @@ title: Azure Migrate 中探索、評量和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評量和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 074f58a2f6c24f106de6b2b5003ce2dfd428f356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577266"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312926"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評量和相依性分析-常見問題
 
@@ -50,7 +50,7 @@ ms.locfileid: "91577266"
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>為何我的評量信賴評等偏低？
 
-系統會根據計算評量所需的[可用資料點](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)百分比，為「以效能為基礎的」評量計算信賴評等。 以下是評量會獲得低信賴評等的原因：
+系統會根據計算評量所需的[可用資料點](./concepts-assessment-calculation.md#ratings)百分比，為「以效能為基礎的」評量計算信賴評等。 以下是評量會獲得低信賴評等的原因：
 
 - 您未針對正在建立評量的持續時間剖析環境。 例如，如果您要建立將效能持續時間設定為一週的評量，您需要至少等待一週後再開始探索，才能收集到所有資料點。 如果您無法等待該持續時間，請將效能持續時間變更為較短的期間，並「重新計算」評量。
  
@@ -58,7 +58,7 @@ ms.locfileid: "91577266"
 
 - 有少數 VM 是在伺服器評量中的探索啟動後建立的。 例如，如果您要建立過去一個月的效能記錄評量，但是少數虛擬機器在一週前才建立在環境中。 在此情況下，將無法取得新的 VM 在這整段期間內的效能資料，且信賴評等將會偏低。
 
-[深入了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)信賴評等。
+[深入了解](./concepts-assessment-calculation.md#confidence-ratings-performance-based)信賴評等。
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>我在建立 Azure VMware 解決方案 (AVS) 評量時看不到某些群組
 
@@ -142,7 +142,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 --- | --- | ---
 支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支援的作業系統。 | 公開上市 (GA) 。
 代理程式 | 不需要在您想要交叉檢查的機器上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理程式： [Microsoft Monitoring agent (MMA) ](../azure-monitor/platform/agent-windows.md)和 [Dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
-必要條件 | [檢查](concepts-dependency-visualization.md#agentless-analysis) 必要條件和部署需求。 | [檢查](concepts-dependency-visualization.md#agent-based-analysis) 必要條件和部署需求。
+先決條件 | [檢查](concepts-dependency-visualization.md#agentless-analysis) 必要條件和部署需求。 | [檢查](concepts-dependency-visualization.md#agent-based-analysis) 必要條件和部署需求。
 Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案來實現相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
 運作方式 | 在啟用相依性視覺效果的電腦上捕獲 TCP 連接資料。 探索之後，會依五分鐘的間隔收集資料。 | 電腦上安裝的服務對應代理程式會收集有關每個處理常式的 TCP 程式和輸入/輸出連接的資料。
 資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集並提供 Log Analytics 查詢的連線、延遲和資料傳輸資訊的數目。 
@@ -156,7 +156,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>相依性視覺效果需要付費嗎？
 
-否。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+不正確。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>我要針對以代理程式為基礎的相依性視覺效果安裝什麼？
 

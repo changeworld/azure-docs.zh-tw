@@ -1,20 +1,19 @@
 ---
 title: 瞭解數位 Twins 模型剖析器 |Microsoft Docs
-description: 以開發人員身分學習如何使用 DTDL 剖析器來驗證模型
+description: 如果您是開發人員，請瞭解如何使用 DTDL 剖析器來驗證模型。
 author: rido-min
 ms.author: rmpablos
-ms.date: 04/29/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: peterpr
-ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87352187"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331782"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>了解數位分身模型剖析器
 
@@ -28,9 +27,12 @@ ms.locfileid: "87352187"
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
+> [!NOTE]
+> 在撰寫本文時，剖析器版本是 `3.12.5` 。
+
 ## <a name="use-the-parser-to-validate-a-model"></a>使用剖析器來驗證模型
 
-您要驗證的模型可能由 JSON 檔案中描述的一或多個介面所組成。 您可以使用剖析器來載入指定資料夾中的所有檔案，並使用剖析器來整個驗證所有檔案，包括檔案之間的任何參考：
+模型可以由 JSON 檔案中描述的一或多個介面所組成。 您可以使用剖析器來載入指定資料夾中的所有檔案，並使用剖析器來整個驗證所有檔案，包括檔案之間的任何參考：
 
 1. 建立 `IEnumerable<string>` 包含所有模型內容清單的：
 
@@ -57,18 +59,20 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. 檢查驗證錯誤。 如果剖析器發現任何錯誤，就會擲回， `AggregateException` 其中包含詳細的錯誤訊息清單：
+1. 檢查驗證錯誤。 如果剖析器發現任何錯誤，則會擲回， `ParsingException` 並列出錯誤清單：
 
     ```csharp
     try
     {
         IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     }
-    catch (AggregateException ae)
+    catch (ParsingException pex)
     {
-        foreach (var e in ae.InnerExceptions)
+        Console.WriteLine(pex.Message);
+        foreach (var err in pex.Errors)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(err.PrimaryID);
+            Console.WriteLine(err.Message);
         }
     }
     ```
@@ -76,22 +80,13 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
 1. 檢查 `Model` 。 如果驗證成功，您可以使用模型剖析器 API 來檢查模型。 下列程式碼片段顯示如何逐一查看所有剖析的模型，並顯示現有的屬性：
 
     ```csharp
-    foreach (var m in parseResult)
+    foreach (var item in parseResult)
     {
-        Console.WriteLine(m.Key);
-        foreach (var item in m.Value.AsEnumerable<DTEntityInfo>())
-        {
-            var p = item as DTInterfaceInfo;
-            if (p!=null)
-            {
-                Console.WriteLine($"\t{p.Id}");
-                Console.WriteLine($"\t{p.Description.FirstOrDefault()}");
-            }
-            Console.WriteLine("--------------");
-        }
+        Console.WriteLine($"\t{item.Key}");
+        Console.WriteLine($"\t{item.Value.DisplayName?.Values.FirstOrDefault()}");
     }
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文中所討論的模型剖析器 API 可讓許多案例自動化或驗證相依于 DTDL 模型的工作。 例如，您可以從模型中的資訊動態建立 UI。

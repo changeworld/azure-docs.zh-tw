@@ -3,12 +3,12 @@ title: Azure Migrate 中的 Hyper-v 評量支援
 description: 瞭解 Azure Migrate Server 評定的 Hyper-v 評量支援
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 36cc96915380a464f02df5806337a06f022ecbbf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311320"
+ms.locfileid: "92331969"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-v 評量的支援矩陣
 
@@ -46,7 +46,7 @@ ms.locfileid: "92311320"
 | :----------------------------- | :------------------- |
 | **作業系統** | 所有作業系統都可以進行評估以進行遷移。  |
 | **Integration Services**       | [Hyper-v Integration Services](/virtualization/hyper-v-on-windows/reference/integration-services) 必須在您評估的 vm 上執行，才能捕獲作業系統資訊。 |
-| **存放裝置** | 本機磁片、DAS、JBOD、儲存空間、CSV、SMB。 支援儲存 VHD/VHDX 的 Hyper-v 主機存放裝置。 <br/> 支援 IDE 和 SCSI 虛擬控制器| 
+| **Storage** | 本機磁片、DAS、JBOD、儲存空間、CSV、SMB。 支援儲存 VHD/VHDX 的 Hyper-v 主機存放裝置。 <br/> 支援 IDE 和 SCSI 虛擬控制器| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
 
@@ -63,7 +63,7 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 **裝置** | **[連接]**
 --- | ---
 **設備** | TCP 連接埠 3389上的輸入連線，以允許遠端桌面對設備連線。<br/><br/> 連接埠 44368 上的輸入連線，以使用 URL 從遠端存取設備管理應用程式：``` https://<appliance-ip-or-name>:44368 ```<br/><br/> 埠443上的輸出連線 (HTTPS) ，以將探索和效能中繼資料傳送至 Azure Migrate。
-**Hyper-v 主機/叢集** | WinRM 埠5985上的輸入連線 (HTTP) ，以使用通用訊息模型 (CIM) 會話提取 Hyper-v Vm 的中繼資料和效能資料。
+**Hyper-v 主機/叢集** | WinRM 埠5985上的輸入連接 (HTTP) 或 5986 (HTTPS) ，以使用通用訊息模型 (CIM) 會話提取 Hyper-v Vm 的中繼資料和效能資料。
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>代理程式型相依性分析需求
 

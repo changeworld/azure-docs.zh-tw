@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 94a84220b276edf8eaf539151964715675693dec
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131372"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332020"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -42,11 +42,11 @@ Data Lake Storage Gen2 作為儲存體選項，幾乎所有 Azure HDInsight 叢�
 
 ### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Data Lake Storage Gen2 支援哪些種類的權限？
 
-Data Lake Storage Gen2 使用支援角色型存取控制的存取控制模型 (RBAC) 以及類似 POSIX 的存取控制清單 (Acl) 。 Data Lake Storage Gen1 僅支援控制資料存取的存取控制清單。
+Data Lake Storage Gen2 使用支援 Azure 角色型存取控制的存取控制模型 (Azure RBAC) 以及類似 POSIX 的存取控制清單 (Acl) 。 Data Lake Storage Gen1 僅支援控制資料存取的存取控制清單。
 
-RBAC 會使用角色指派，有效地將許可權集套用至 Azure 資源的使用者、群組和服務主體。 一般而言，這些 Azure 資源會限制為最上層資源 (例如，Azure Blob 儲存體帳戶) 。 針對 Azure Blob 儲存體，也 Data Lake Storage Gen2，此機制已擴充至檔案系統資源。
+Azure RBAC 會使用角色指派，有效地將許可權集套用至 Azure 資源的使用者、群組和服務主體。 一般而言，這些 Azure 資源會限制為最上層資源 (例如，Azure Blob 儲存體帳戶) 。 針對 Azure Blob 儲存體，也 Data Lake Storage Gen2，此機制已擴充至檔案系統資源。
 
-如需有關 RBAC 檔案許可權的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)。
+如需有關 Azure RBAC 檔案許可權的詳細資訊，請參閱 azure [rbac)  (的 azure 角色型存取控制 ](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)。
 
 如需有關 Acl 的檔案許可權的詳細資訊，請參閱檔案 [和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md)。
 

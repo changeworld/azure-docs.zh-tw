@@ -4,12 +4,12 @@ description: 本文提供逐步解說，說明如何建立 .NET Core 應用程�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d33ebcabb728cf2fbf43b393de5eec6cb58af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8819a95364bf41c6f9837c3db31a9800968d096c
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010693"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332156"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (EventHubs，將事件傳送至 Azure 事件中樞或從中接收事件) 
 本快速入門說明如何使用 **EventHubs** .net Core 程式庫，將事件傳送到事件中樞，以及從事件中樞接收事件。
@@ -362,7 +362,7 @@ ms.locfileid: "89010693"
 ## <a name="next-steps"></a>後續步驟
 請閱讀下列文章：
 
-- 以[角色為基礎的存取控制 (RBAC) 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+- [Azure 角色型存取控制 (AZURE RBAC) 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
     這些範例會使用舊的 **EventHubs** 程式庫，但您可以輕鬆地將其更新為使用最新的 **EventHubs** 程式庫。 若要將範例從使用舊的程式庫移至新的程式庫，請參閱 [從 EventHubs 遷移至 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 - [EventProcessorHost](event-hubs-event-processor-host.md)

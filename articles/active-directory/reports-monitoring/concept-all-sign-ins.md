@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342757"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319785"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory 登入活動報告-預覽
 
@@ -32,8 +32,8 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
     - 登**入-使用者**、應用程式和受控資源登入以 Azure AD 並存取資源時的相關資訊。
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
 - **安全性** 
-    - 有**風險**的登入：有[風險](concept-risky-sign-ins.md)的登入是指使用者帳戶不是合法擁有者的登入指示。
-    - **標示為有風險的使用者** -有 [風險的使用者](concept-user-at-risk.md) 是指可能遭到盜用的使用者帳戶指標。
+    - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指使用者帳戶不是合法擁有者的登入指示。
+    - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
 Azure Active Directory 中的傳統登入報告提供互動式使用者登入的總覽。此外，您現在可以存取三個現在處於預覽狀態的額外登入報告：
 
@@ -47,7 +47,7 @@ Azure Active Directory 中的傳統登入報告提供互動式使用者登入的
 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始使用這項功能之前，您應該先知道下列問題的答案：
 
@@ -86,7 +86,7 @@ Azure Active Directory 中的傳統登入報告提供互動式使用者登入的
 
 - **服務主體登入** -依應用程式和服務主體登入，而不涉及任何使用者。 在這些登入中，應用程式或服務會代表自己提供認證，以驗證或存取資源。
 
-- **適用于 azure 資源的受控** 識別登入-透過 azure 資源登入，這些資源具有由 azure 管理的秘密。 如需詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+- **適用于 azure 資源的受控** 識別登入-透過 azure 資源登入，這些資源具有由 azure 管理的秘密。 如需詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控識別？](../managed-identities-azure-resources/overview.md) 
 
 
 ![登入報告類型](./media/concept-all-sign-ins/sign-ins-report-types.png)

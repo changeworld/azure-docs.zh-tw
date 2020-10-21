@@ -1,30 +1,31 @@
 ---
-title: 在 Azure Cosmos DB 中尋找要求單位 (RU) 費用
-description: 了解如何尋找對 Azure Cosmos 容器執行的任何作業所產生的要求單位 (RU) 費用。
+title: 在 Azure Cosmos DB 中尋找 SQL 查詢的要求單位 (RU) 費用
+description: 瞭解如何針對針對 Azure Cosmos 容器執行的 SQL 查詢，尋找要求單位 (RU) 費用。 您可以使用 Azure 入口網站、.NET、JAVA、Python 和 Node.js 語言來尋找 RU 費用。
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/01/2019
+ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f334d28ef5045c68bb84fc0bc34e8f847fe0f9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316183"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281837"
 ---
-# <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中尋找要求單位費用
+# <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>找出 Azure Cosmos DB SQL API 中執行之作業的要求單位費用
 
-本文將介紹不同的方法，供您尋找對 Azure Cosmos DB 中的容器執行的任何作業所產生的[要求單位](request-units.md) (RU) 耗用量。 目前，該耗用量只能藉由使用 Azure 入口網站，或藉由查看 Azure Cosmos DB 經任一 SDK 所傳回的回應來測量。
+Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin 和資料表。 每個 API 都有它自己的一組資料庫作業。 這些作業的範圍可從簡單的點讀取和寫入到複雜查詢。 每個資料庫作業都會根據作業的複雜度來取用系統資源。
 
-## <a name="sql-core-api"></a>SQL (Core) API
+所有資料庫作業的成本會由 Azure Cosmos DB 進行正規化，並以要求單位 (簡稱 RU) 表示。 您可以將 ru 視為效能貨幣，以抽象化執行 Azure Cosmos DB 所支援之資料庫作業所需的系統資源（例如 CPU、IOPS 和記憶體）。 無論您使用哪種 API 與 Azure Cosmos 容器互動，成本始終由 RU 測量。 無論資料庫作業是寫入、點讀取或查詢，成本一律會以 ru 來測量。 若要深入瞭解，請參閱 [要求單位和它的考慮](request-units.md) 文章。
 
-如果您使用的是 SQL API，會有多個選項可用來找出對 Azure Cosmos 容器的作業所產生的 RU 耗用量。
+本文提供不同的方式，讓您可以針對 Azure Cosmos DB SQL API 中的容器執行的任何作業，找到 [要求單位](request-units.md) (RU) 耗用量。 如果您使用不同的 API，請參閱 [適用于 MongoDB 的 API](find-request-unit-charge-mongodb.md)、 [CASSANDRA API](find-request-unit-charge-cassandra.md)、 [Gremlin api](find-request-unit-charge-gremlin.md)和 [資料表 API](find-request-unit-charge-table.md) 文章，以找出 RU/s 的費用。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
+目前，該耗用量只能藉由使用 Azure 入口網站，或藉由查看 Azure Cosmos DB 經任一 SDK 所傳回的回應來測量。 如果您使用的是 SQL API，會有多個選項可用來找出對 Azure Cosmos 容器的作業所產生的 RU 耗用量。
 
-目前，在 Azure 入口網站中，您只能找到 SQL 查詢的要求費用。
+## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -40,7 +41,7 @@ ms.locfileid: "91316183"
 
 :::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure 入口網站之中 SQL 查詢要求費用的螢幕擷取畫面":::
 
-### <a name="use-the-net-sdk"></a>使用 .NET SDK
+## <a name="use-the-net-sdk"></a>使用 .NET SDK
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -87,7 +88,7 @@ while (query.HasMoreResults)
 
 ---
 
-### <a name="use-the-java-sdk"></a>使用 Java SDK
+## <a name="use-the-java-sdk"></a>使用 Java SDK
 
 從 [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 傳回的物件會公開 `getRequestCharge()` 方法：
 
@@ -117,7 +118,7 @@ feedResponse.forEach(result -> {
 
 如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 JAVA 應用程式](create-sql-api-java.md)。
 
-### <a name="use-the-nodejs-sdk"></a>使用 Node.js SDK
+## <a name="use-the-nodejs-sdk"></a>使用 Node.js SDK
 
 從 [Java SDK](https://www.npmjs.com/package/@azure/cosmos) 傳回的物件會公開 `headers` 子物件 (用以對應基礎 HTTP API 所傳回的所有標頭)。 要求費用會提供在 `x-ms-request-charge` 索引鍵下方：
 
@@ -152,7 +153,7 @@ while (query.hasMoreResults()) {
 
 如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 Node.js 應用程式](create-sql-api-nodejs.md)。 
 
-### <a name="use-the-python-sdk"></a>使用 Python SDK
+## <a name="use-the-python-sdk"></a>使用 Python SDK
 
 [Python SDK](https://pypi.org/project/azure-cosmos/) 傳回的 `CosmosClient` 物件 會公開 `last_response_headers` 字典 (用以對應基礎 HTTP API 針對最後執行的作業傳回的所有標頭)。 要求費用會提供在 `x-ms-request-charge` 索引鍵下方：
 
@@ -167,143 +168,6 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
 如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 Python 應用程式](create-sql-api-python.md)。 
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
-
-RU 費用可用名為 `getLastRequestStatistics` 的自訂[資料庫命令](https://docs.mongodb.com/manual/reference/command/)公開。 此命令會傳回一份文件，其中包含最後執行的作業名稱，及其要求費用和持續時間。 如果您使用的是 Azure Cosmos DB API for MongoDB，會有多個選項可供擷取 RU 費用。
-
-### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
-
-目前，在 Azure 入口網站中，您只能找到查詢的要求費用。
-
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-
-1. [建立新的 Azure Cosmos 帳戶](create-mongodb-dotnet.md#create-a-database-account)並為其提供資料，或選取已包含資料的現有帳戶。
-
-1. 前往 [資料總管]**** 窗格，然後選取您要處理的容器。
-
-1. 選取 [新增查詢]  。
-
-1. 輸入有效的查詢，然後選取 [執行查詢]****。
-
-1. 選取下 [查詢統計資料]****，以顯示您執行的要求實際的要求費用。
-
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 入口網站之中 SQL 查詢要求費用的螢幕擷取畫面":::
-
-### <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驅動程式
-
-使用[官方的 MongoDB .NET 驅動程式](https://docs.mongodb.com/ecosystem/drivers/csharp/)時，可以對 `IMongoDatabase` 物件呼叫 `RunCommand` 方法來執行命令。 使用此方法時，必須實作 `Command<>` 抽象類別：
-
-```csharp
-class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
-{
-    public override RenderedCommand<Dictionary<string, object>> Render(IBsonSerializerRegistry serializerRegistry)
-    {
-        return new RenderedCommand<Dictionary<string, object>>(new BsonDocument("getLastRequestStatistics", 1), serializerRegistry.GetSerializer<Dictionary<string, object>>());
-    }
-}
-
-Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatisticsCommand());
-double requestCharge = (double)stats["RequestCharge"];
-```
-
-如需詳細資訊，請參閱 [快速入門：使用適用于 MongoDB 的 AZURE COSMOS DB API 建立 .net web 應用程式](create-mongodb-dotnet.md)。
-
-### <a name="use-the-mongodb-java-driver"></a>使用 MongoDB Java 驅動程式
-
-
-使用[官方的 MongoDB Java 驅動程式](https://mongodb.github.io/mongo-java-driver/)時，可以對 `MongoDatabase` 物件呼叫 `runCommand` 方法來執行命令：
-
-```java
-Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
-Double requestCharge = stats.getDouble("RequestCharge");
-```
-
-如需詳細資訊，請參閱 [快速入門：使用適用于 MongoDB 的 AZURE COSMOS DB API 和 JAVA SDK 來建立 web 應用程式](create-mongodb-java.md)。
-
-### <a name="use-the-mongodb-nodejs-driver"></a>使用 MongoDB Node.js 驅動程式
-
-使用[官方的 MongoDB Node.js 驅動程式](https://mongodb.github.io/node-mongodb-native/)時，可以於 `db` 物件呼叫 `command` 方法來執行命令：
-
-```javascript
-db.command({ getLastRequestStatistics: 1 }, function(err, result) {
-    assert.equal(err, null);
-    const requestCharge = result['RequestCharge'];
-});
-```
-
-如需詳細資訊，請參閱 [快速入門：將現有的 MongoDB Node.js web 應用程式遷移至 Azure Cosmos DB](create-mongodb-nodejs.md)。
-
-## <a name="cassandra-api"></a>Cassandra API
-
-對 Azure Cosmos DB 的 Cassandra API 執行作業時，RU 費用會在傳入的裝載中以名為 `RequestCharge` 的欄位傳回。 有多個選項可供擷取 RU 費用。
-
-### <a name="use-the-net-sdk"></a>使用 .NET SDK
-
-使用 [.NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/) 時，可以擷取 `RowSet` 物件的 `Info` 屬性下的傳入承載：
-
-```csharp
-RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
-double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
-```
-
-如需詳細資訊，請參閱 [快速入門：使用 .NET SDK 和 Azure Cosmos DB 來建立 Cassandra 應用程式](create-cassandra-dotnet.md)。
-
-### <a name="use-the-java-sdk"></a>使用 Java SDK
-
-使用 [Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core) 時，可以對 `ResultSet` 物件呼叫 `getExecutionInfo()` 方法來擷取傳入承載：
-
-```java
-ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tables;");
-Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
-```
-
-如需詳細資訊，請參閱 [快速入門：使用 JAVA SDK 和 Azure Cosmos DB 來建立 Cassandra 應用程式](create-cassandra-java.md)。
-
-## <a name="gremlin-api"></a>Gremlin API
-
-如果您使用的是 Gremlin API 時，會有多個選項可用來找出對 Azure Cosmos 容器的作業所產生的 RU 耗用量。 
-
-### <a name="use-drivers-and-sdk"></a>使用驅動程式和 SDK
-
-Gremlin API 所傳回的標頭會對應至目前透過 Gremlin.NET 和 Java SDK 來呈現的自訂狀態屬性。 要求費用會提供在 `x-ms-request-charge` 索引鍵下方。
-
-### <a name="use-the-net-sdk"></a>使用 .NET SDK
-
-使用 [Gremlin.NET SDK](https://www.nuget.org/packages/Gremlin.Net/) 時，狀態屬性會提供在 `ResultSet<>` 物件的 `StatusAttributes` 屬性下方：
-
-```csharp
-ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
-double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
-```
-
-如需詳細資訊，請參閱 [快速入門：使用 Azure Cosmos DB GREMLIN API 帳戶建立 .NET Framework 或 Core 應用程式](create-graph-dotnet.md)。
-
-### <a name="use-the-java-sdk"></a>使用 Java SDK
-
-使用 [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) 時，可以對於 `ResultSet` 物件呼叫 `statusAttributes()` 方法來擷取狀態屬性：
-
-```java
-ResultSet results = client.submit("g.V().count()");
-Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
-```
-
-如需詳細資訊，請參閱 [快速入門：使用 JAVA SDK 在 Azure Cosmos DB 中建立圖形資料庫](create-graph-java.md)。
-
-## <a name="table-api"></a>資料表 API
-
-目前，對於資料表作業傳回 RU 費用的唯一 SDK 是 [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。 `TableResult` 物件會公開您對於 Azure Cosmos DB 資料表 API 使用時由 SDK 填入的 `RequestCharge` 屬性：
-
-```csharp
-CloudTable tableReference = client.GetTableReference("table");
-TableResult tableResult = tableReference.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowKey")));
-if (tableResult.RequestCharge.HasValue) // would be false when using Azure Storage Tables
-{
-    double requestCharge = tableResult.RequestCharge.Value;
-}
-```
-
-如需詳細資訊，請參閱 [快速入門：使用 .NET SDK 和 Azure Cosmos DB 建立資料表 API 應用程式](create-table-dotnet.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 針對驗證和授權問題進行疑難排解-Azure 事件中樞
 description: 本文提供 Azure 事件中樞的驗證和授權問題的疑難排解資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566222"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329605"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>針對驗證和授權問題進行疑難排解-Azure 事件中樞
 [疑難排解連線問題](troubleshooting-guide.md)一文提供針對 Azure 事件中樞的連線問題進行疑難排解的秘訣。 本文提供針對 Azure 事件中樞的驗證和授權問題進行疑難排解的秘訣和建議。 
@@ -21,7 +21,7 @@ ms.locfileid: "91566222"
 - 傳送存取[Azure 事件中樞資料](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)傳送者。
 - 接收存取[Azure 事件中樞資料接收者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)。
 
-如需 Schema Registry 內建角色，請參閱 [架構登錄角色](schema-registry-overview.md#role-based-access-control)。
+如需 Schema Registry 內建角色，請參閱 [架構登錄角色](schema-registry-overview.md#azure-role-based-access-control)。
 
 ### <a name="resource-scopes"></a>資源範圍
 - 取用**者群組**：在此範圍中，角色指派只適用于此實體。 目前，Azure 入口網站不支援將 Azure 角色指派給此層級的安全性主體。 
