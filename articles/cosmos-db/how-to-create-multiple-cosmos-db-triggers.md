@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019975"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279636"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "89019975"
 
 使用 [Azure Functions](../azure-functions/functions-overview.md) 建置無伺服器架構時，[建議](../azure-functions/functions-best-practices.md#avoid-long-running-functions)您建立一起運作的小型函式集，而不是大量長時間執行的函式。
 
-當您使用 [Azure Functions 的 Cosmos DB 觸發程序](./change-feed-functions.md)建置以事件為基礎的無伺服器流程時，您會遇到以下情況：每當特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中有新事件時，您就想執行多個動作。 如果您想要觸發的動作彼此獨立，則理想的解決方式是為您想執行的**每個動作各建立一個 Azure Functions 的 Cosmos DB 觸發程序**，且全都接聽相同 Azure Cosmos 容器的變更。
+當您使用 [Azure Functions 的 Cosmos DB 觸發程序](./change-feed-functions.md)建置以事件為基礎的無伺服器流程時，您會遇到以下情況：每當特定 [Azure Cosmos 容器](./account-databases-containers-items.md#azure-cosmos-containers)中有新事件時，您就想執行多個動作。 如果您想要觸發的動作彼此獨立，則理想的解決方式是為您想執行的**每個動作各建立一個 Azure Functions 的 Cosmos DB 觸發程序**，且全都接聽相同 Azure Cosmos 容器的變更。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>最佳化多個觸發程序的容器
 

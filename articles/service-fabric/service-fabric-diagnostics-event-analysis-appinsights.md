@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932442"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329571"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 進行事件分析和視覺效果
 
@@ -32,7 +32,7 @@ Application Insights 具有許多使用 Service Fabric 時可使用的現成功�
 
 在上方影像的右側面板上，清單中有兩種類型的項目：要求和事件。 在此案例中，要求是指透過 HTTP 要求對應用程式 API 發出的呼叫，而事件是指自訂事件，您可以將其當作遙測資料新增到程式碼中的任何位置。 您可以進一步探索[自訂事件和計量的 Application Insights API](../azure-monitor/app/api-custom-events-metrics.md)，來檢測應用程式。 按一下要求會顯示更多詳細資料，如下圖所示，包括 Application Insights Service Fabric NuGet 套件中所收集 Service Fabric 的特定資料。 此資訊可用於疑難排解及了解應用程式的狀態為何，而所有這些資訊都可在 Application Insights 中搜尋到
 
-![Application Insights 要求詳細資料](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![顯示詳細資料的螢幕擷取畫面，包括 Application Insights Service Fabric NuGet 套件中所收集 Service Fabric 的特定資料。](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights 有用於查詢所有傳入資訊的指定檢視。 選取 [總覽] 頁面頂端的 [計量瀏覽器]，流覽至 Application Insights 入口網站。 在此，您可以使用 Kusto 查詢語言對先前所述的自訂事件、要求、例外狀況、效能計數器和其他計量執行查詢。 下列範例會顯示過去 1 小時內的所有要求。
 
@@ -48,7 +48,7 @@ Application Insights 有用於查詢所有傳入資訊的指定檢視。 選取 
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,7 +65,7 @@ Application Insights 有用於查詢所有傳入資訊的指定檢視。 選取 
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>在 Azure 入口網站中瀏覽 Application Insights 資源
 
-一旦將 Application Insights 設定為事件和記錄的輸出，資訊就會在幾分鐘內開始出現在 Application Insights 資源中。 瀏覽至 Application Insights 資源，它會帶您到 Application Insights 資源儀表板。 選取 Application Insights 工作列中的 [ **搜尋** ]，以查看它所收到的最新追蹤，並能夠進行篩選。
+一旦將 Application Insights 設定為事件和記錄的輸出，資訊就會在幾分鐘內開始出現在 Application Insights 資源中。 瀏覽至 Application Insights 資源，它會帶您到 Application Insights 資源儀表板。 選取 [Application Insights] 工作列中的 [_*搜尋**]，以查看它所收到的最新追蹤，並能夠進行篩選。
 
 *計量瀏覽器*是很有用的工具，它可根據應用程式、服務和叢集可能報告的計量，建立自訂的儀表板。 請參閱[在 Application Insights 中探索計量](../azure-monitor/platform/metrics-charts.md)，根據您所收集的資料自行設定幾個圖表。
 

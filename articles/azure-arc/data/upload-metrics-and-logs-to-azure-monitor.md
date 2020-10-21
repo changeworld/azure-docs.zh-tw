@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108162"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320172"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>將使用方式資料、計量和記錄上傳至 Azure 監視器
 
@@ -23,9 +23,9 @@ ms.locfileid: "92108162"
 > [!NOTE] 
 > 在預覽期間，使用 Azure Arc 啟用的資料服務不會產生任何費用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-您將需要已安裝 Azure CLI (az) 和 Azure Data CLI (azdata) 。  [安裝工具](./install-client-tools.md)。
+您將需要 Azure CLI (az) 和 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 已安裝。  [安裝工具](./install-client-tools.md)。
 
 將資料上傳至 Azure 之前，您必須確定您的 Azure 訂用帳戶已註冊 Microsoft AzureData 資源提供者。
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 您可以透過下列兩個步驟，將使用量資訊（例如清查和資源使用量）上傳至 Azure：
 
-1. 使用命令匯出使用方式資料 ```azdata export``` ，如下所示：
+1. 使用命令匯出使用方式資料 `azdata export` ，如下所示：
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ az provider register -n Microsoft.AzureData --wait
    ```
    此命令會建立一個檔案 `usage.json` ，其中包含所有已啟用 Azure Arc 的資料資源，例如 SQL 受控實例和于 postgresql 超大規模實例等等，這些都是在資料控制器上建立的。
 
-2. 使用命令上傳使用方式資料 ```azdata upload```
+2. 使用命令上傳使用方式資料 `azdata upload`
 
    > [!NOTE]
    > 在執行上傳之前，請先等待至少24小時後再建立 Azure Arc 資料控制器

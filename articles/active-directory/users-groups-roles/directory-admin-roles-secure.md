@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7224f8fe1461727504a85df4a5fd95ba871258a8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055804"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308720"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -302,7 +302,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 
 #### <a name="establish-integrated-monitoring"></a>建立整合式監視
 
-[Azure 資訊安全中心](../../security-center/security-center-intro.md)：
+[Azure 資訊安全中心](../../security-center/security-center-introduction.md)：
 
 * 為所有 Azure 訂用帳戶提供整合式安全性監視和原則管理
 * 協助偵測可能被忽視的威脅

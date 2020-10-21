@@ -59,6 +59,8 @@
       href: cache-best-practices.md
     - name: 安全性
       items:
+        - name: 網路隔離選項
+          href: cache-network-isolation.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

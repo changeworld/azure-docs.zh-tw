@@ -84,6 +84,8 @@
           href: request-limits.md
     - name: 資源
       items:
+        - name: 支援和說明選項
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: GitHub 上的程式碼範例
           href: 'https://aka.ms/TranslatorGitHub'
         - name: 常見問題集
@@ -94,8 +96,6 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 法規遵循
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: 堆疊溢位
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自訂翻譯工具
   items:
     - name: 概觀
@@ -148,6 +148,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: 資源
       items:
+        - name: 支援和說明選項
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: 詞彙
           href: custom-translator/glossary.md
         - name: 常見問題集
@@ -158,5 +160,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 加密
           href: translator-encryption-of-data-at-rest.md
-        - name: 堆疊溢位
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

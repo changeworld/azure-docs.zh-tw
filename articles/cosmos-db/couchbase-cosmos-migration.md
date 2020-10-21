@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366716"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282473"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>從 CouchBase 遷移至 Azure Cosmos DB SQL API
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為
 
 * Azure Cosmos DB 在文件中具有 [識別碼] 欄位，而 Couchbase 具有識別碼作為貯體的一部分。 [識別碼] 欄位在分割之間是唯一的。
 
-* Azure Cosmos DB 使用分割或分區化技術進行調整。 這表示其會將資料分割成多個分區/分割。 系統會根據您提供的分割索引鍵屬性來建立這些分割/分區。 您也可以選取分割索引鍵，以最佳化讀取和寫入作業或讀取/寫入作業。 若要深入了解，請參閱[分割](./partition-data.md)一文。
+* Azure Cosmos DB 使用分割或分區化技術進行調整。 這表示其會將資料分割成多個分區/分割。 系統會根據您提供的分割索引鍵屬性來建立這些分割/分區。 您也可以選取分割索引鍵，以最佳化讀取和寫入作業或讀取/寫入作業。 若要深入了解，請參閱[分割](./partitioning-overview.md)一文。
 
 * 在 Azure Cosmos DB 中，最上層階層不需要表示集合，因為集合名稱已經存在。 這項功能可讓 JSON 結構變得更簡單。 以下範例會顯示 Couchbase 與 Azure Cosmos DB 之間資料模型的差異：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227707"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309144"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>適用于 Service Fabric 的 Azure 安全性基準
 
@@ -78,7 +78,7 @@ ms.locfileid: "89227707"
 
 * [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -488,7 +488,7 @@ ms.locfileid: "89227707"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ ms.locfileid: "89227707"
 
 * [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
-* [如何設定客戶管理的加密金鑰](../storage/common/storage-encryption-keys-portal.md)
+* [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [針對 Windows 中的 Azure Service Fabric 叢集節點啟用磁片加密](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ ms.locfileid: "89227707"
 
 * [在 Service Fabric 叢集中引發受控制的混亂](./service-fabric-controlled-chaos.md)
 
-* [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -698,7 +698,7 @@ ms.locfileid: "89227707"
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](../governance/management-groups/create.md)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 * [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ ms.locfileid: "89227707"
 
 * [Azure 儲存體待用加密](../storage/common/storage-service-encryption.md)
 
-* [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：目前無法使用
 

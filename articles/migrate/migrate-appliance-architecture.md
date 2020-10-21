@@ -3,12 +3,12 @@ title: Azure Migrate 設備架構
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a01932a9e4f72d7ce6747214b53f124d54942894
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322252"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312916"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 設備架構
 
@@ -51,8 +51,8 @@ ms.locfileid: "91322252"
 **動作** | **詳細資料** | **權限**
 --- | --- | ---
 **註冊來源提供者** | 這些資源提供者會在您于設備設定期間選擇的訂用帳戶中註冊： Microsoft.offazure、Microsoft. KeyVault。<br/><br/> 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 | 若要註冊資源提供者，您必須具有訂用帳戶的「參與者」或「擁有者」角色。
-**建立 Azure AD 應用程式-通訊** | Azure Migrate 會在設備上執行的代理程式與在 Azure 上執行的個別服務之間，建立 Azure Active Directory (Azure AD) 應用程式之間進行通訊 (驗證與授權) 。<br/><br/> 此應用程式沒有在任何資源上進行 Azure Resource Manager 呼叫或 RBAC 存取的許可權。 | 您需要 [這些許可權](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps) 才能 Azure Migrate 建立應用程式。
-**建立 Azure AD 應用程式-金鑰保存庫** | 此應用程式僅適用于將 VMware Vm 遷移至 Azure 的無代理程式。<br/><br/> 它是專門用來存取在使用者的訂用帳戶中建立的金鑰保存庫，以進行無代理程式的遷移。<br/><br/> 當您從設備起始探索時，Azure key vault 上的 RBAC 存取 (在客戶的租使用者) 中建立。 | 您需要 [這些許可權](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) 才能 Azure Migrate 建立應用程式。
+**建立 Azure AD 應用程式-通訊** | Azure Migrate 會在設備上執行的代理程式與在 Azure 上執行的個別服務之間，建立 Azure Active Directory (Azure AD) 應用程式之間進行通訊 (驗證與授權) 。<br/><br/> 此應用程式沒有在任何資源上進行 Azure Resource Manager 呼叫或 RBAC 存取的許可權。 | 您需要 [這些許可權](./tutorial-discover-vmware.md#prepare-an-azure-user-account) 才能 Azure Migrate 建立應用程式。
+**建立 Azure AD 應用程式-金鑰保存庫** | 此應用程式僅適用于將 VMware Vm 遷移至 Azure 的無代理程式。<br/><br/> 它是專門用來存取在使用者的訂用帳戶中建立的金鑰保存庫，以進行無代理程式的遷移。<br/><br/> 當您從設備起始探索時，Azure key vault 上的 RBAC 存取 (在客戶的租使用者) 中建立。 | 您需要 [這些許可權](./tutorial-discover-vmware.md#prepare-an-azure-user-account) 才能 Azure Migrate 建立應用程式。
 
 
 
@@ -91,4 +91,3 @@ ms.locfileid: "91322252"
 ## <a name="next-steps"></a>後續步驟
 
 請[參閱](migrate-appliance.md)設備支援矩陣。
-

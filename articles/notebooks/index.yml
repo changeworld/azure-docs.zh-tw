@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Notebooks 預覽文件
-summary: 2020 年 10 月 9 日，Azure Notebooks 公開預覽網站將會淘汰，並取代為 Visual Studio、Azure 和 GitHub 的整合式服務。 在 https://notebooks.azure.com/Content/alternatives.html 了解您的選項和 Microsoft 的其他筆記本體驗。
+summary: 在 2021 年 1 月 15 日，Azure Notebooks 公開預覽網站將會淘汰，並取代為 Visual Studio、Azure 和 GitHub 的整合式服務。 在 https://notebooks.azure.com/Content/alternatives.html 了解您的選項和 Microsoft 的其他筆記本體驗。
 metadata:
   title: Azure Notebooks 預覽文件
   description: 了解如何透過裝載的 Azure Notebooks 預覽服務來建立、執行和共用 Jupyter Notebooks。
@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: cdc98d01a4fae5e4b09af001ec65dd7a29c34c0f
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3f89d249e126cfeb65b141e39d6a6a998e4d1758
+  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88640271"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92207745"
 landingContent:
 - title: 關於 Azure Notebooks
   linkLists:

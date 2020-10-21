@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008687"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280518"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 調整查詢效能
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 提供一個[適用於查詢資料的 SQL API](how-to-sql-query.
 
 ## <a name="about-sql-query-execution"></a>關於 SQL 查詢執行
 
-在 Azure Cosmos DB 中，您會將資料儲存於容器中，其可擴張到任何的[儲存體大小或要求輸送量](partition-data.md)。 Azure Cosmos DB 會在涵蓋範圍內，於實體分割區之間順暢地調整資料，以處理資料成長或提高佈建的輸送量。 您可以使用 REST API 或其中一個支援的 [SQL SDK](sql-api-sdk-dotnet.md)，向任何容器發出 SQL 查詢。
+在 Azure Cosmos DB 中，您會將資料儲存於容器中，其可擴張到任何的[儲存體大小或要求輸送量](partitioning-overview.md)。 Azure Cosmos DB 會在涵蓋範圍內，於實體分割區之間順暢地調整資料，以處理資料成長或提高佈建的輸送量。 您可以使用 REST API 或其中一個支援的 [SQL SDK](sql-api-sdk-dotnet.md)，向任何容器發出 SQL 查詢。
 
 分割的簡短概觀：您定義分割區索引鍵 (例如 "city")，以決定在實體分割區之間分割資料的方式。 屬於單一分割區索引鍵的資料 (例如，"city" == "Seattle") 會儲存於一個實體分割區內，但通常單一實體分割區會具有多個分割區索引鍵。 當分割區達到其儲存體大小時，服務會順暢地將該分割區分割為兩個新的分割區，並在這些分割區之間將分割區索引鍵平均分割。 由於分割區是暫時性的，因此，API 會使用「分割區索引鍵範圍」的抽象概念，來代表分割區索引鍵雜湊的範圍。 
 
@@ -163,7 +163,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 需要查閱所有分割區的查詢需要較高的延遲，而且可以取用較高的 RU。 由於每個分割區都會針對所有屬性自動編製索引，因此，在此情況下，就能有效率地從索引中提供查詢。 您可以使用平行處理原則選項，更快速地進行跨越分割區的查詢。
 
-若要深入了解分割區和分割區索引鍵，請參閱[在 Azure Cosmos DB 中進行資料分割](partition-data.md)。
+若要深入了解分割區和分割區索引鍵，請參閱[在 Azure Cosmos DB 中進行資料分割](partitioning-overview.md)。
 
 ### <a name="sdk-and-query-options"></a>SDK 與查詢選項
 若要了解如何從 Azure Cosmos DB 取得最佳用戶端效能，請參閱[效能祕訣](performance-tips.md)和[效能測試](performance-testing.md)。 這包括使用最新的 SDK、設定平台專屬設定 (例如預設的連線數目)、記憶體回收的頻率，以及使用輕量級連線選項 (例如直接/TCP)。 

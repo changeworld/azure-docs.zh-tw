@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b04bd6975a2ba8824124c769e66da1e4ebe7534a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019880"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309928"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -130,7 +130,7 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 
 ## <a name="private-endpoint-connection"></a>私人端點連接
 
-如果需要完全封鎖公開 Key Vault 的風險，則可以使用 Azure 私人端點。 Azure 私人端點是一種網路介面，可讓您以私人且安全地方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
+如果需要完全封鎖公開 Key Vault 的風險，則可以使用 [Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) 。 Azure 私人端點是一種網路介面，可讓您以私人且安全地方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
 針對 Azure 服務使用 Private Link 的常見案例：
 
@@ -199,11 +199,11 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 
 ## <a name="resources"></a>資源
 
-[關於 Azure Key Vault](overview.md) 
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 
-[Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) 
-[AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 
-[Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [關於 Azure Key Vault](overview.md)
+- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
+- [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [私人連結](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 ## <a name="next-steps"></a>後續步驟
 

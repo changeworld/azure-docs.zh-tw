@@ -1,20 +1,20 @@
 ---
 title: 適用於 Visual Studio Code 的 Azure 原則延伸模組
 description: 瞭解如何使用 Visual Studio Code 的 Azure 原則擴充功能來查閱 Azure Resource Manager 的別名。
-ms.date: 10/14/2020
+ms.date: 10/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077927"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317621"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Visual Studio Code 的 Azure 原則擴充功能
 
-> 適用于 Azure 原則擴充功能版本 **0.0.21** 和更新版本
+> 適用于 Azure 原則擴充功能版本 **0.1.0** 和更新版本
 
-瞭解如何使用 Visual Studio Code 的 Azure 原則擴充功能來查閱 [別名](../concepts/definition-structure.md#aliases) ，以及審核資源和原則。 首先，我們將說明如何在 Visual Studio Code 中安裝 Azure 原則擴充功能。 接著，我們將逐步解說如何查詢別名。
+瞭解如何使用 Visual Studio Code 的 Azure 原則擴充功能來查閱 [別名](../concepts/definition-structure.md#aliases)、審查資源和原則、匯出物件，以及評估原則定義。 首先，我們將說明如何在 Visual Studio Code 中安裝 Azure 原則擴充功能。 接著，我們將逐步解說如何查詢別名。
 
 Visual Studio Code 的 Azure 原則擴充功能可以安裝在 Visual Studio Code 支援的所有平臺上。 這種支援包括 Windows、Linux 和 macOS。
 
@@ -151,6 +151,51 @@ Azure 原則擴充功能會針對選取要顯示在 [ **原則** ] 窗格中的�
 1. 使用篩選器來選取要顯示的原則。 篩選準則適用于原則定義或原則指派的 _displayName_ 。
 
 選取原則或指派時，無論是透過搜尋介面或在 treeview 中選取它，Azure 原則延伸模組都會開啟代表原則或指派的 JSON，以及其所有 Resource Manager 屬性值。 擴充功能可以驗證已開啟的 Azure 原則 JSON 架構。
+
+## <a name="export-objects"></a>匯出物件
+
+您訂用帳戶中的物件可以匯出至本機 JSON 檔案。 在 [ **資源** ] 或 [ **原則** ] 窗格中，將滑鼠停留在上方或選取可匯出的物件。 在反白顯示的資料列結尾選取 [儲存] 圖示，然後選取資料夾來儲存該資源 JSON。
+
+您可以在本機匯出下列物件：
+
+- 資源窗格
+  - 資源群組
+  - 個別資源 (資源群組或資源提供者下) 
+- 原則窗格
+  - 原則指派
+  - 內建原則定義
+  - 自訂原則定義
+  - 計畫
+
+## <a name="on-demand-evaluation-scan"></a>隨選評估掃描
+
+您可以使用 Visual Studio Code 的 Azure 原則擴充功能來啟動評估掃描。 若要開始評估，請選取並釘選下列每個物件：資源、原則定義和原則指派。
+
+1. 若要釘選每個物件，請在 [ **資源** ] 窗格或 [ **原則** ] 窗格中找到它，然後選取 [釘選到編輯索引標籤] 圖示。 釘選物件會將它新增至延伸模組的 **評估** 窗格。
+1. 在 [ **評估** ] 窗格中，選取每個物件的其中一個，然後使用 [選取進行評估] 圖示將它標示為包含在評估中。
+1. 在 [ **評估** ] 窗格的頂端，選取 [執行評估] 圖示。 Visual Studio Code 中的新窗格隨即開啟，並以 JSON 格式產生評估詳細資料。
+
+> [!NOTE]
+> 如果選取的原則定義是 [AuditIfNotExists](../concepts/effects.md#auditifnotexists) 或 [DeployIfNotExists](../concepts/effects.md#deployifnotexists)，請在 [ **評估** ] 窗格中使用加號圖示來選取 _相關_ 資源以進行存在檢查。
+
+評估結果會提供原則定義和原則指派的相關資訊，以及 **policyEvaluations. evaluationResult** 屬性。 輸出看起來類似下列範例：
+
+```json
+{
+    "policyEvaluations": [
+        {
+            "policyInfo": {
+                ...
+            },
+            "evaluationResult": "Compliant",
+            "effectDetails": {
+                "policyEffect": "Audit",
+                "existenceScope": "None"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="sign-out"></a>登出
 

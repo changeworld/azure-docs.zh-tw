@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70279445"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317182"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>評定大量的 Hyper-v Vm 以遷移至 Azure
 
@@ -30,7 +30,7 @@ ms.locfileid: "70279445"
 
 
 > [!NOTE]
-> 如果您想要在大規模評估之前，嘗試評估幾個 Vm，請遵循我們的 [教學課程系列](tutorial-prepare-hyper-v.md)
+> 如果您想要在大規模評估之前，嘗試評估幾個 Vm，請遵循我們的 [教學課程系列](./tutorial-discover-hyper-v.md)
 
 ## <a name="plan-for-assessment"></a>規劃評量
 
@@ -66,7 +66,7 @@ ms.locfileid: "70279445"
 2. 為您的 Azure 帳戶設定許可權，以與 Azure Migrate 互動
 3. 準備 Hyper-v 主機和 Vm
 
-遵循 [本教學](tutorial-prepare-hyper-v.md) 課程中的指示來進行這些設定。
+遵循 [本教學](./tutorial-discover-hyper-v.md) 課程中的指示來進行這些設定。
 
 ## <a name="create-a-project"></a>建立專案
 

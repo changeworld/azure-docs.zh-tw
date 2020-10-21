@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 36e5543f09971d8456e79a59fc2e5457171f710b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 882b492f3041d225b3861ddcfb36934649b3e987
+  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91743993"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92200928"
 highlightedContent:
   items:
   - title: 認知服務是什麼？
@@ -29,21 +29,21 @@ highlightedContent:
   - title: 認知服務和機器學習
     itemType: concept
     url: ./cognitive-services-and-machine-learning.md
+  - title: 認知服務內部部署容器
+    itemType: concept
+    url: ./cognitive-services-container-support.md
+  - title: 具有資料庫的認知服務
+    itemType: concept
+    url: ./big-data/cognitive-services-for-big-data.md
   - title: 語言支援
     itemType: reference
     url: ./language-support.md
-  - title: 建立資源
-    itemType: how-to-guide
-    url: ./cognitive-services-apis-create-account.md
-  - title: 在容器中使用
-    itemType: concept
-    url: ./cognitive-services-container-support.md
-  - title: 在資料庫中使用
-    itemType: concept
-    url: ./big-data/cognitive-services-for-big-data.md
   - title: 安全性
     itemType: concept
     url: cognitive-services-security.md
+  - title: 支援和說明選項
+    itemType: reference
+    url: ./cognitive-services-support-options.md
 conceptualContent:
   items:
   - title: 視覺

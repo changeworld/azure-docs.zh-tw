@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761153"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310443"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>適用于服務匯流排的 Azure 安全性基準
 
@@ -62,7 +62,7 @@ ms.locfileid: "91761153"
 
 - [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
-- [Azure 資訊安全中心整合式威脅情報](/azure/security-center/security-center-alerts-service-layer)
+- [Azure 資訊安全中心整合式威脅情報](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -111,7 +111,7 @@ ms.locfileid: "91761153"
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于服務匯流排命名空間的 Azure 內建原則](/azure/service-bus-messaging/policy-samples#azure-service-bus-messaging)
+- [適用于服務匯流排命名空間的 Azure 內建原則](./policy-reference.md#azure-service-bus-messaging)
 
 - [適用于網路的 Azure 原則範例](../governance/policy/samples/built-in-policies.md#network)
 
@@ -129,7 +129,7 @@ ms.locfileid: "91761153"
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。 
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags) 
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md) 
 
 - [如何建立虛擬網路](../virtual-network/quick-create-portal.md) 
 
@@ -143,7 +143,7 @@ ms.locfileid: "91761153"
 
 **指導**方針：使用 Azure 活動記錄監視網路資源設定，並偵測與 Azure 服務匯流排相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -177,7 +177,7 @@ ms.locfileid: "91761153"
 
 - [如何啟用 Azure 服務匯流排的診斷設定](service-bus-diagnostic-logs.md)
 
-- [如何啟用 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -231,9 +231,9 @@ ms.locfileid: "91761153"
 
 - [Azure 服務匯流排的內建角色](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -311,7 +311,7 @@ ms.locfileid: "91761153"
 
 **指導**方針：使用 Azure Active Directory 安全性報告和監視，來偵測環境中發生可疑或不安全的活動時。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
@@ -347,7 +347,7 @@ ms.locfileid: "91761153"
 
 另外，請定期輪替您的服務匯流排命名空間的共用存取簽章。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -363,7 +363,7 @@ ms.locfileid: "91761153"
 
 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 然後在 Azure 監視器您可以針對記錄檔中發生的特定動作，設定所需的記錄警示。
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [使用 Azure Active Directory 授權存取服務匯流排資源](authenticate-application.md)
 
@@ -375,7 +375,7 @@ ms.locfileid: "91761153"
 
 **指導**方針：使用 Azure Active Directory 的身分識別保護和風險偵測功能，來設定偵測到與已啟用服務匯流排之資源相關的可疑動作的自動回應。 您應該透過 Azure Sentinel 啟用自動回應，以執行您組織的安全性回應。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -403,7 +403,7 @@ ms.locfileid: "91761153"
 
 **指導**方針：在與您的服務匯流排相關的資源上使用標籤，以協助追蹤儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -413,11 +413,11 @@ ms.locfileid: "91761153"
 
 **指導**方針：針對開發、測試和生產環境執行個別的訂用帳戶和管理群組。 服務匯流排命名空間應由已設定並適當標記私人端點的虛擬網路分隔。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立及利用標記](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立及利用標記](../azure-resource-manager/management/tag-resources.md)
 
 - [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
@@ -437,7 +437,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 - [允許透過私人端點存取 Azure 服務匯流排命名空間](private-link-service.md)
 
-- [瞭解網路安全性群組和服務標記](/azure/virtual-network/security-overview)
+- [瞭解網路安全性群組和服務標記](../virtual-network/network-security-groups-overview.md)
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -507,7 +507,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -527,11 +527,11 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 **指導**方針：使用標記、管理群組和個別的訂用帳戶（如果適當）來組織和追蹤 Azure 服務匯流排命名空間和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -574,7 +574,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -603,9 +603,9 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 使用 "node.js" 命名空間中 Azure 原則別名來建立自訂原則，以進行審核或強制執行設定。
 
-- [適用于服務匯流排的 Azure 內建原則 ](/azure/service-bus-messaging/policy-samples)
+- [適用于服務匯流排的 Azure 內建原則 ](./policy-reference.md)
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -653,7 +653,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 - [為服務匯流排設定客戶管理的金鑰](configure-customer-managed-key.md)
 
-- [如何建立 Key Vault](/azure/key-vault/quick-create-portal)
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -731,7 +731,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 - [如何設定客戶管理的金鑰來加密待用 Azure 服務匯流排資料](configure-customer-managed-key.md)
 
-- [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -741,7 +741,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 **指導**方針：啟用 Key Vault 中的虛刪除，以防止金鑰遭到意外或惡意刪除。 Azure 服務匯流排需要客戶管理的金鑰才能進行虛刪除，且不會清除設定。
 
-- [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [使用金鑰設定金鑰保存庫](../event-hubs/configure-customer-managed-key.md)
 
@@ -775,7 +775,7 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md) 
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -843,5 +843,5 @@ Microsoft 管理 Azure 服務匯流排的基礎結構，並已實行嚴格的控
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

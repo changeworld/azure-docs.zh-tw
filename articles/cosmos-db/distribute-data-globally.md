@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570189"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278775"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 來全域散發資料
 
 現今的應用程式需要具有快速回應能力，且一律保持線上狀態。 為了達到低延遲和高可用性，這些應用程式的執行個體必須部署在接近使用者的資料中心內。 這些應用程式通常會部署在多個資料中心內，因此稱為全域散發的應用程式。 全域散發的應用程式需要全域散發的資料庫，這類資料庫可以透明方式複寫世界各地的資料，讓應用程式使用接近其使用者的資料複本。 
 
-Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲性、有彈性的輸送量延展性、妥善定義以保有資料一致性的語法，以及高可用性。 簡單地說，如果您的應用程式需要在世界各地都能獲得快速回應的時間，如果必須永遠保持上線狀態，而且需要無限制且彈性的輸送量和儲存體調整能力，您應該在 Azure Cosmos DB 上建立您的應用程式。
+Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲性、有彈性的輸送量延展性、妥善定義以保有資料一致性的語法，以及高可用性。 簡單地說，如果您的應用程式需要在世界各地都有快速的回應時間，而且必須永遠保持上線狀態，而且需要無限制且彈性的輸送量和儲存體調整能力，您應該在 Azure Cosmos DB 上建立您的應用程式。
 
 您可以將資料庫設定為全域散發，並且在任何可用的 Azure 區域中使用。 若要降低延遲，請將資料放在接近使用者的位置。 選擇所需的區域，取決於您應用程式能夠觸達的全域範圍以及使用者所在的位置。 Cosmos DB 會以透明方式將資料複寫到與您 Cosmos 帳戶相關聯的所有區域。 它會提供全域散發的 Azure Cosmos 資料庫和容器的單一系統映像，使您的應用程式可以在本機讀取和寫入。 
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲�
 
 **建立全域主動-主動應用程式。** 在其新穎多重區域寫入複寫通訊協定的情況下，每個區域都支援寫入和讀取。 多區域寫入功能也可啟用：
 
-- 無限制的彈性寫入和讀取的擴充性。 
+- 無限制的彈性寫入和讀取的擴充性。
 - 在世界各地具有 99.999% 的讀取和寫入可用性。
 - 保證讀取和寫入會以第 99 百分位數且小於 10 毫秒的方式提供服務。
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲�
 
 **在區域性中斷期間維護商務持續性。** Azure Cosmos DB 支援在區域中斷期間[自動容錯移轉](how-to-manage-database-account.md#automatic-failover)。 在區域性中斷期間，Azure Cosmos DB 會繼續維持其延遲性、可用性、一致性和輸送量 SLA。 為了協助確保您的整個應用程式具有高可用性，Cosmos DB 提供手動容錯移轉 API 來模擬區域性中斷。 您可以使用此 API 來進行一般的業務持續性演練。
 
-**全域調整讀取和寫入輸送量。** 您可以讓每個區域都能成為可寫入，並彈性規模讀取和寫入到全球各地。 您的應用程式在 Azure Cosmos 資料庫或容器上設定的輸送量，保證會在與您的 Azure Cosmos 帳戶相關聯的所有區域之間傳遞。 已布建的輸送量是由 [財務支援的 sla](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)保證。
+**全域調整讀取和寫入輸送量。** 您可以讓每個區域都能成為可寫入，並彈性規模讀取和寫入到全球各地。 您的應用程式在 Azure Cosmos 資料庫或容器上設定的輸送量，會布建到與您的 Azure Cosmos 帳戶相關聯的所有區域。 已布建的輸送量是由 [財務支援的 sla](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)保證。
 
 **從數個定義完善的一致性模型中選擇。** Azure Cosmos DB 複寫通訊協定會提供五個定義完善、實用且直覺式的一致性模型。 每個模型都會在一致性與效能之間進行權衡取捨。 使用這些一致性模型來輕鬆建置全域散發的應用程式。
 

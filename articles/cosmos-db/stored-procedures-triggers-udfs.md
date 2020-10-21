@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82509664"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279900"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>預存程序、觸發程序和使用者定義函式
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 使用
 
 * 程式**邏輯：** JavaScript 是高階程式設計語言，可提供豐富且熟悉的介面來表達商務邏輯。 您可以對資料執行一連串的複雜作業。
 
-* 不可部分完成的**交易：** Azure Cosmos DB 可確保在單一預存程式或觸發程式內執行的資料庫作業都是不可部分完成的。 這個不可部分完成的功能可讓應用程式將相關作業合併在單一批次中，讓所有作業不是一起成功就是一起失敗。
+* 不可部分完成的**交易：** Azure Cosmos DB 在單一預存程式或觸發程式內執行的資料庫作業是不可部分完成的。 這個不可部分完成的功能可讓應用程式將相關作業合併在單一批次中，讓所有作業不是一起成功就是一起失敗。
 
 * **效能：** JSON 資料本質上是對應至 JavaScript 語言類型系統。 此對應可提供許多最佳化功能，例如在緩衝集區中對 JSON 文件執行滯後具體化，並讓執行中程式碼可以依需求使用這些文件。 除此之外，還有其他與將商務邏輯傳送至資料庫相關聯的效能優點，包括：
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 使用
 
 ### <a name="scope-of-a-transaction"></a>交易範圍
 
-預存程式會與 Azure Cosmos 容器相關聯，而預存程式執行的範圍則是邏輯分割區索引鍵。 預存程式在執行期間必須包含邏輯分割區索引鍵值，以定義交易範圍的邏輯資料分割。 如需詳細資訊，請參閱 [Azure Cosmos DB 資料分割](partition-data.md)文章。
+預存程式會與 Azure Cosmos 容器相關聯，而預存程式執行的範圍則是邏輯分割區索引鍵。 預存程式在執行期間必須包含邏輯分割區索引鍵值，以定義交易範圍的邏輯資料分割。 如需詳細資訊，請參閱 [Azure Cosmos DB 資料分割](partitioning-overview.md)文章。
 
 ### <a name="commit-and-rollback"></a>認可和回復
 
@@ -91,7 +91,7 @@ Azure Cosmos DB 提供的觸發程序可透過在 Azure Cosmos 項目上執行�
 > [!NOTE]
 > 註冊的觸發程式不會在其對應的作業 (建立/刪除/取代/更新) 發生時自動執行。 您必須在執行這些作業時明確發出呼叫。 若要深入瞭解，請參閱 [如何執行觸發](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) 程式文章。
 
-## <a name="user-defined-functions"></a><a id="udfs"></a>使用者定義函數
+## <a name="user-defined-functions"></a><a id="udfs"></a>使用者自訂函數
 
 [使用者定義函式](sql-query-udfs.md) (udf) 可用來擴充 SQL API 查詢語言語法，並輕鬆地執行自訂商務邏輯。 只能在查詢內呼叫它們。 UDF 無法存取內容物件，只能做為計算用途的 JavaScript。 因此，UDF 可以在次要複本上執行。 如需範例，請參閱[如何撰寫使用者定義函數](how-to-write-stored-procedures-triggers-udfs.md#udfs)文章。
 
@@ -99,7 +99,7 @@ Azure Cosmos DB 提供的觸發程序可透過在 Azure Cosmos 項目上執行�
 
 除了使用 SQL API 查詢語法發出查詢外，[伺服器端 SDK](https://azure.github.io/azure-cosmosdb-js-server) 還可讓您使用 JavaScript 介面執行查詢，不需具備任何 SQL 的知識。 JavaScript 的查詢 API 可讓您將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 查詢由 JavaScript 執行階段剖析，並透過 Azure Cosmos DB 有效地執行。 若要深入了解 JavaScript 查詢 API 支援，請參閱[使用 JavaScript 語言整合式查詢 API](javascript-query-api.md) 文章。 如需範例，請參閱[如何使用 Javascript 查詢 API 寫入預存程序和解發程序](how-to-write-javascript-query-api.md)文章。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 透過下列文章了解如何在 Azure Cosmos DB 中撰寫和使用預存程序、觸發程序和使用者定義函數：
 

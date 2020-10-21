@@ -2,13 +2,13 @@
 title: 設定容器代理程式資料集合的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何設定容器代理程式的 Azure 監視器，以控制 stdout/stderr 和環境變數記錄收集。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994619"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320402"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>為容器的 Azure 監視器設定代理程式資料收集
 
@@ -29,19 +29,27 @@ ms.locfileid: "91994619"
 
 ### <a name="data-collection-settings"></a>資料收集設定
 
-以下是可以設定來控制資料收集的設定。
+下表描述您可以設定來控制資料收集的設定：
 
-| 答案 | 資料類型 | 值 | 說明 |
+| Key | 資料類型 | 值 | 描述 |
 |--|--|--|--|
 | `schema-version` | 字串 (區分大小寫)  | v1 | 這是代理程式所使用的架構版本<br> 剖析這個 ConfigMap 時。<br> 目前支援的架構版本為 v1。<br> 不支援修改此值，而且將會<br> 在評估 ConfigMap 時拒絕。 |
-| `config-version` | 字串 |  | 支援在您的原始檔控制系統/存放庫中追蹤此設定檔版本的功能。<br> 允許的字元數上限為10，而所有其他字元則會被截斷。 |
+| `config-version` | String |  | 支援在您的原始檔控制系統/存放庫中追蹤此設定檔版本的功能。<br> 允許的字元數上限為10，而所有其他字元則會被截斷。 |
 | `[log_collection_settings.stdout] enabled =` | Boolean | true 或 false | 這會控制是否啟用 stdout 容器記錄收集。 當設定為時 `true` ，不會針對 stdout 記錄檔收集排除任何命名空間<br>  (`log_collection_settings.stdout.exclude_namespaces` 設定如下) ，將會從叢集中所有 pod/節點的所有容器中收集 stdout 記錄檔。 如果未在 ConfigMaps 中指定，<br> 預設值為 `enabled = true` 。 |
-| `[log_collection_settings.stdout] exclude_namespaces =` | 字串 | 逗點分隔陣列 | 將不會收集 stdout 記錄檔的 Kubernetes 命名空間陣列。 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled`<br> 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stdout] exclude_namespaces =` | String | 逗點分隔陣列 | 將不會收集 stdout 記錄檔的 Kubernetes 命名空間陣列。 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled`<br> 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.stderr] enabled =` | Boolean | true 或 false | 這會控制是否啟用 stderr 容器記錄收集。<br> 當設定為時 `true` ，不會針對 stdout 記錄檔收集排除任何命名空間<br>  (`log_collection_settings.stderr.exclude_namespaces` 設定) ，會從叢集中所有 pod/節點的所有容器收集 stderr 記錄檔。<br> 如果未在 ConfigMaps 中指定，則預設值為<br> `enabled = true`. |
-| `[log_collection_settings.stderr] exclude_namespaces =` | 字串 | 逗點分隔陣列 | 將不會收集 stderr 記錄的 Kubernetes 命名空間陣列。<br> 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled` 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stderr] exclude_namespaces =` | String | 逗點分隔陣列 | 將不會收集 stderr 記錄的 Kubernetes 命名空間陣列。<br> 只有在下列情況下，此設定才有效<br> `log_collection_settings.stdout.enabled` 設定為 `true`。<br> 如果未在 ConfigMap 中指定，則預設值為<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` | Boolean | true 或 false | 此設定會控制環境變數集合<br> 在叢集中的所有 pod/節點<br> `enabled = true`如果未指定，則預設為<br> 在 ConfigMaps 中。<br> 如果環境變數的集合是全域啟用的，您可以針對特定容器停用它<br> 藉由設定環境變數<br> `AZMON_COLLECT_ENV`若為 False，則會使用 Dockerfile 設定，或在**env：** 區段下[的 Pod 設定檔](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)中設定為**False** 。<br> 如果環境變數的集合已全域停用，則您無法啟用特定容器的集合 (也就是說，可在容器層級套用的唯一覆寫是在全域啟用時停用集合。 ) 。 |
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boolean | true 或 false | 此設定會控制容器記錄擴充，以填入 Name 和 Image 屬性值<br> 針對針對叢集中的所有容器記錄，寫入 ContainerLog 資料表的每個記錄檔記錄。<br> `enabled = false`如果未在 ConfigMap 中指定，它會預設為。 |
 | `[log_collection_settings.collect_all_kube_events]` | Boolean | true 或 false | 這項設定允許收集所有類型的 Kube 事件。<br> 依預設，不會收集類型為 *Normal* 的 Kube 事件。 當這項設定設定為時 `true` ，就不會再篩選 *一般* 事件，並且會收集所有事件。<br> 根據預設，這項設定為 `false`。 |
+
+### <a name="metric-collection-settings"></a>度量收集設定
+
+下表說明您可以設定以控制計量集合的設定：
+
+| Key | 資料類型 | 值 | 描述 |
+|--|--|--|--|
+| `[metric_collection_settings.collect_kube_system_pv_metrics] enabled =` | Boolean | true 或 false | 這項設定可讓您在 kube 系統命名空間中收集永久性磁片區 (PV) 使用計量。 根據預設，不會收集 kube 系統命名空間中持續性磁片區宣告的持續性磁片區的使用計量。 當這項設定設定為時 `true` ，就會收集所有命名空間的 PV 使用計量。 根據預設，這項設定為 `false`。 |
 
 ConfigMaps 是全域清單，而且只能有一個 ConfigMap 套用至代理程式。 您不能有其他 ConfigMaps overruling 集合。
 
@@ -49,10 +57,10 @@ ConfigMaps 是全域清單，而且只能有一個 ConfigMap 套用至代理程�
 
 請執行下列步驟來設定您的 ConfigMap 設定檔，並將其部署至您的叢集。
 
-1. [下載](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) 範本 ConfigMap yaml 檔案，並將它儲存為容器-container.azm.ms-ms-agentconfig. yaml。 
+1. 下載 [範本 CONFIGMAP YAML](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) 檔案，並將它儲存為容器-container.azm.ms-ms-agentconfig. YAML。 
 
-   >[!NOTE]
-   >使用 Azure Red Hat OpenShift 時，不需要執行此步驟，因為 ConfigMap 範本已經存在於叢集上。
+   > [!NOTE]
+   > 使用 Azure Red Hat OpenShift 時，不需要執行此步驟，因為 ConfigMap 範本已經存在於叢集上。
 
 2. 使用您的自訂編輯 ConfigMap yaml 檔案，以收集 stdout、stderr 及/或環境變數。 如果您正在編輯 Azure Red Hat OpenShift 的 ConfigMap yaml 檔案，請先執行命令 `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` 以在文字編輯器中開啟檔案。
 
@@ -132,7 +140,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
                     schema-versions=v1 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 容器的 Azure 監視器不包含一組預先定義的警示。 請參閱 [容器的 Azure 監視器建立效能警示](./container-insights-log-alerts.md) ，以瞭解如何建立高 CPU 和記憶體使用量的建議警示，以支援您的 DevOps 或操作程式和程式。
 

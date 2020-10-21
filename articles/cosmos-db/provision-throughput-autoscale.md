@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9d645a16a59e34d1915cf9febde6b1f8a789355
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570734"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282106"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>使用自動調整輸送量來建立 Azure Cosmos 容器和資料庫
 
@@ -85,6 +85,6 @@ Azure Cosmos DB 可讓您在資料庫和容器上設定標準 (手動) 或自動
 * 檢閱[自動調整常見問題集](autoscale-faq.md)。
 * 了解如何[在手動與自動調整輸送量之間進行選擇](how-to-choose-offer.md)。
 * 了解如何[在 Azure Cosmos 資料庫或容器上佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。
-* 深入了解 Azure Cosmos DB 中的[資料分割](partition-data.md)。
+* 深入了解 Azure Cosmos DB 中的[資料分割](partitioning-overview.md)。
 
 

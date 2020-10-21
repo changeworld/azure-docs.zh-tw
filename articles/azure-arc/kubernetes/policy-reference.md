@@ -1,18 +1,18 @@
 ---
 title: 內建原則定義，適用於已啟用 Azure Arc 的 Kubernetes
 description: 列出 Azure 原則內建原則定義，這些原則定義適用於已啟用 Azure Arc 的 Kubernetes。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c6d8acd03fc84be8c9d4549c94f648199702bfb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 606c737fcec176051d460bc3d0831d59d616506a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824119"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310874"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Azure 原則內建原則定義，這些原則定義適用於已啟用 Azure Arc 的 Kubernetes
 

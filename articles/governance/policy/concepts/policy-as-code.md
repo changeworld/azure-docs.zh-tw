@@ -1,29 +1,29 @@
 ---
-title: 設計原則即程式碼工作流程
+title: 將 Azure 原則設計為程式碼工作流程
 description: 了解如何設計將您的 Azure 原則定義部署為程式碼並自動驗證資源的工作流程。
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598215"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320603"
 ---
-# <a name="design-policy-as-code-workflows"></a>設計原則即程式碼工作流程
+# <a name="design-azure-policy-as-code-workflows"></a>將 Azure 原則設計為程式碼工作流程
 
 透過雲端治理進行旅程時，您會想要從使用 Azure 入口網站或各種 SDK 手動管理每個原則定義，轉換為在企業規模更容易管理且可重複使用的程序。 要在雲端大規模管理系統，主要有兩種方法：
 
 - 基礎結構即程式碼：將定義您的環境內容的做法，從 Azure Resource Manager 範本 (ARM 範本的所有專案，) Azure 原則定義為 Azure 藍圖原始程式碼。
 - DevOps：為我們的使用者持續傳遞價值的人員、程序和產品組合。
 
-原則即程式碼是這些想法的組合。 基本上，請將原則定義保存在原始檔控制中，並在每次進行變更後測試並驗證該變更。 不過，基礎結構即程式碼或 DevOps 的相關原則並不在此範圍內。
+Azure 原則的程式碼是這些構想的組合。 基本上，請將原則定義保存在原始檔控制中，並在每次進行變更後測試並驗證該變更。 不過，基礎結構即程式碼或 DevOps 的相關原則並不在此範圍內。
 
 驗證步驟也應該是其他持續整合或持續部署工作流程的元件。 其範例包括部署應用程式環境或虛擬基礎結構。 藉由讓 Azure 原則驗證成為組建和部署程式的早期元件，應用程式和作業小組會探索其變更是否不符合規範、是否晚于太晚，並嘗試在生產環境中部署。
 
 ## <a name="definitions-and-foundational-information"></a>定義和基本資訊
 
-在取得原則的詳細資料作為程式碼工作流程之前，請先參閱下列定義和範例：
+在取得 Azure 原則的詳細資料作為程式碼工作流程之前，請先參閱下列定義和範例：
 
 - [原則定義](./definition-structure.md)
 - [計畫定義](./initiative-definition-structure.md)
@@ -43,10 +43,10 @@ ms.locfileid: "91598215"
 
 ## <a name="workflow-overview"></a>工作流程概觀
 
-針對原則即程式碼而建議的一般工作流程如下圖所示：
+建議的 Azure 原則一般工作流程為程式碼，如下圖所示：
 
-:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="顯示原則即程式碼工作流程方塊的圖表，從建立到測試要部署。" border="false":::
-   顯示原則即程式碼工作流程方塊的圖表。 建立涵蓋原則和計畫定義的建立。 測試涵蓋已停用強制模式的指派。 相容性狀態的閘道檢查會接著授與指派 M S 許可權，並修復資源。  部署涵蓋更新已啟用強制模式的指派。
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="此圖顯示從 Create 到 Test 以部署的程式碼工作流程方塊 Azure 原則。" border="false":::
+   顯示 Azure 原則為程式碼工作流程方塊的圖表。 建立涵蓋原則和計畫定義的建立。 測試涵蓋已停用強制模式的指派。 相容性狀態的閘道檢查會接著授與指派 M S 許可權，並修復資源。  部署涵蓋更新已啟用強制模式的指派。
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>建立及更新原則定義
@@ -56,22 +56,19 @@ ms.locfileid: "91598215"
 ```text
 .
 |
-|- policies/  ________________________ # Root folder for policies
+|- policies/  ________________________ # Root folder for policy resources
 |  |- policy1/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
-|
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |  |- policy2/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |
 ```
 
@@ -89,17 +86,15 @@ ms.locfileid: "91598215"
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 |  |- init2/ _________________________ # Subfolder for an initiative
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 ```
 
@@ -114,7 +109,7 @@ ms.locfileid: "91598215"
 > [!NOTE]
 > 雖然強制模式很有幫助，但仍應在各種情況下徹底測試原則定義。 原則定義應使用 `PUT` 和 `PATCH` REST API 呼叫、符合規範和不符合規範的資源以及邊緣案例 (例如資源中遺漏的屬性) 進行測試。
 
-部署指派之後，請使用原則 SDK 或 [Azure 原則合規性掃描 GitHub 動作](https://github.com/marketplace/actions/azure-policy-compliance-scan) 來取得新指派的 [合規性資料](../how-to/get-compliance-data.md) 。 用來測試原則和指派的環境應同時具備符合規範和不符合規範的資源。
+部署指派之後，請使用 Azure 原則 SDK、 [Azure 原則合規性掃描 GitHub 動作](https://github.com/marketplace/actions/azure-policy-compliance-scan)，或 [Azure Pipelines 安全性與合規性評估](/azure/devops/pipelines/tasks/deploy/azure-policy) 工作來取得新指派的 [合規性資料](../how-to/get-compliance-data.md) 。 用來測試原則和指派的環境應同時具備符合規範和不符合規範的資源。
 如同程式碼的適當單元測試，您應測試資源是否符合預期，且沒有誤判為真或誤否定。 如果您只針對預期的部分進行測試和驗證，原則可能會有非預期和未辨識的影響。 如需詳細資訊，請參閱[評估新 Azure 原則定義的影響](./evaluate-impact.md)。
 
 ### <a name="enable-remediation-tasks"></a>啟用補救工作
@@ -138,13 +133,13 @@ ms.locfileid: "91598215"
 
 ## <a name="process-integrated-evaluations"></a>程序整合評估
 
-原則即程式碼的一般工作流程可在環境中大規模開發及部署原則和方案。 不過，在 Azure 中部署或建立資源的任何工作流程（例如部署應用程式或執行 ARM 範本以建立基礎結構）的部署程式中，原則評估應該是部署程式的一部分。
+Azure 原則即程式碼的一般工作流程，是為了大規模開發和部署原則和方案。 不過，在 Azure 中部署或建立資源的任何工作流程（例如部署應用程式或執行 ARM 範本以建立基礎結構）的部署程式中，原則評估應該是部署程式的一部分。
 
 在這些情況下，將應用程式或基礎結構部署至測試訂用帳戶或資源群組之後，即應對該範圍執行原則評估，以檢查所有現有原則和方案的有效性。 雖然其 **enforcementMode** 在這類環境中可能設定為 [停用]，但及早了解應用程式或基礎結構部署是否違反原則定義，仍很有幫助。 因此，此原則評估應納入為這些工作流程中的步驟之一，使建立的資源不符合規範的部署失敗。
 
 ## <a name="review"></a>檢閱
 
-本文說明原則即程式碼的一般工作流程，以及應將原則評估納入其他部署工作流程中的階段。 任何環境只要支援指令碼式步驟和以觸發程序為基礎的自動化，都可以使用此工作流程。
+本文涵蓋 Azure 原則程式碼的一般工作流程，也會說明原則評估應屬於其他部署工作流程的一部分。 任何環境只要支援指令碼式步驟和以觸發程序為基礎的自動化，都可以使用此工作流程。 如需在 GitHub 上使用此工作流程的教學課程，請參閱 [教學課程：使用 github 將 Azure 原則當作程式碼來執行](../tutorials/policy-as-code-github.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

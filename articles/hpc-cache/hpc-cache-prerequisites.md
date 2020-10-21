@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39c890e9e6634413947a96b1ddac608ee44bd9a0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612977"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327394"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache 的必要條件
 
@@ -73,7 +73,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 
 * 快取實例必須能夠 (Nic) 建立虛擬網路介面。 建立快取的使用者必須在訂用帳戶中有足夠的許可權，才能建立 Nic。
 
-* 如果使用 Blob 儲存體，Azure HPC Cache 需要授權才能存取您的儲存體帳戶。 使用角色型存取控制 (RBAC) 將您 Blob 儲存體的存取權授與快取。 需要兩個角色：儲存體帳戶參與者和儲存體 Blob 資料參與者。
+* 如果使用 Blob 儲存體，Azure HPC Cache 需要授權才能存取您的儲存體帳戶。 使用 Azure 角色型存取控制 (Azure RBAC) ，為您的 Blob 儲存體提供快取存取權。 需要兩個角色：儲存體帳戶參與者和儲存體 Blob 資料參與者。
 
   遵循 [新增儲存體目標](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) 中的指示來新增角色。
 
@@ -128,7 +128,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 
   * 如果您無法使用 `rpcinfo` 命令，請確定這些常用的埠允許連入和連出流量：
 
-    | 通訊協定 | 連接埠  | 服務  |
+    | 通訊協定 | 連接埠  | Service  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |

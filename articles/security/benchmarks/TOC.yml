@@ -125,6 +125,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: 批次安全性基準
       href: ../../batch/security-baseline.md
+    - name: Cloud Shell 安全性基準
+      href: ../../cloud-shell/security-baseline.md
     - name: 認知服務安全性基準
       href: ../../cognitive-services/security-baseline.md
     - name: 容器執行個體安全性基準

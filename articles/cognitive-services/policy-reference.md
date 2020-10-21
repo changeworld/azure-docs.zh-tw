@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 認知服務的內建原則定義
 description: 列出適用於 Azure 認知服務的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 612c288df1b9329b20088d42843239197e9be8d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c234e0a2b3fe47fd444919ccff6ea38aca77731e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826579"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309341"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>適用於 Azure 認知服務的 Azure 原則內建原則定義
 

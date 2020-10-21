@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801319"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281068"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 
 * 如果您在資料庫上佈建輸送量，所有容器 (例如，該資料庫內的集合/資料表/圖表) 都可以根據負載來共用輸送量。 根據一組特定容器上的工作負載，在資料庫層級保留的輸送量不會平均地共用。
 
-* 如果您在容器上佈建輸送量，系統會根據 SLA 來保證該容器的輸送量。 如果您要將負載平均分配給容器的所有邏輯分割區，邏輯分割區索引鍵的選擇就十分重要。 如需詳細資訊，請參閱[資料分割](partitioning-overview.md)和[水平調整](partition-data.md)文章。
+* 如果您在容器上佈建輸送量，系統會根據 SLA 來保證該容器的輸送量。 如果您要將負載平均分配給容器的所有邏輯分割區，邏輯分割區索引鍵的選擇就十分重要。 如需詳細資訊，請參閱[資料分割](partitioning-overview.md)和[水平調整](partitioning-overview.md)文章。
 
 用來決定佈建輸送量策略的一些指導方針如下：
 

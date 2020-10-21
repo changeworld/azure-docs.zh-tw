@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570821"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314512"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>存取 Azure Kubernetes Service (AKS) 中的 Kubernetes Web 儀表板
 
@@ -102,7 +102,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 ## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>登入 (kubernetes 1.16 +) 的儀表板
 
 > [!IMPORTANT]
-> [從 Kubernetes 儀表板](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1)或 Kubernetes v 1.16 + v 1.10.1 +，服務帳戶 "Kubernetes-儀表板" 無法再用來取得資源[，因為該版本中有安全性修正](https://github.com/kubernetes/dashboard/pull/3400)。 因此，沒有驗證資訊的要求會傳回401未授權錯誤。 從服務帳戶取出的持有人權杖仍然可以像在這個 [Kubernetes 儀表板範例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中使用，但這會影響儀表板附加元件的登入流程（相較于較舊的版本）。
+> [從 Kubernetes 儀表板](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1)或 Kubernetes v 1.16 + v 1.10.1 +，服務帳戶 "Kubernetes-儀表板" 無法再用來取得資源[，因為該版本中有安全性修正](https://github.com/kubernetes/dashboard/pull/3400)。 因此，沒有驗證資訊的要求會傳回 [401 未授權錯誤](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)。 從服務帳戶取出的持有人權杖仍然可以像在這個 [Kubernetes 儀表板範例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中使用，但這會影響儀表板附加元件的登入流程（相較于較舊的版本）。
 >
 >如果您仍要執行1.16 之前的版本，您仍然可以將許可權授與「kubernetes 儀表板」服務帳戶，但 **不建議**您這樣做：
 > ```console

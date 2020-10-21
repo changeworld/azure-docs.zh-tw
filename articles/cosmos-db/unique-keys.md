@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f26dc5214222bb7564c0ba2b199adefad056ed5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132648"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281002"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一索引鍵限制式
 
-唯一索引鍵為 Azure Cosmos 容器加入一層資料完整性。 您會在建立 Cosmos 容器時建立唯一索引鍵原則。 利用唯一索引鍵，您就能確保邏輯分割區內一或多個值是唯一的。 您也可以確保每[分割區索引鍵](partition-data.md)的唯一性。
+唯一索引鍵為 Azure Cosmos 容器加入一層資料完整性。 您會在建立 Cosmos 容器時建立唯一索引鍵原則。 利用唯一索引鍵，您就能確保邏輯分割區內一或多個值是唯一的。 您也可以確保每[分割區索引鍵](partitioning-overview.md)的唯一性。
 
 使用唯一索引鍵原則建立容器之後，就會防止建立新的或更新現有的專案，而導致邏輯資料分割內出現重複的專案，如 unique key 條件約束所指定。 與唯一索引鍵結合的分割區索引鍵可保證項目在容器範圍內的唯一性。
 
@@ -53,7 +53,7 @@ ms.locfileid: "87132648"
 
 * 唯一索引鍵名稱會區分大小寫。 例如，請考慮將 unique key 條件約束設為的容器 `/address/zipcode` 。 如果您的資料中有一個名為的欄位 `ZipCode` ，Azure Cosmos DB 插入 "null" 作為唯一索引鍵，因為與 `zipcode` 不相同 `ZipCode` 。 由於這個區分大小寫的緣故，因此，無法插入包含 ZipCode 的所有其他記錄，因為重複的 "null" 違反唯一索引鍵限制式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 [邏輯分區](partition-data.md)
+* 深入瞭解 [邏輯分區](partitioning-overview.md)
 * 探索如何在建立容器時[定義唯一索引鍵](how-to-define-unique-keys.md)

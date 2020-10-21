@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88604832"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282053"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的要求單位
 
@@ -38,42 +38,50 @@ Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 當您估計工作負載所耗用的 ru 數目時，請考慮下列因素：
 
-* **項目大小**：當項目大小增加時，讀取或寫入項目所耗用的 RU 數目也會增加。
+- **項目大小**：當項目大小增加時，讀取或寫入項目所耗用的 RU 數目也會增加。
 
-* **項目索引**：根據預設，每個項目都會自動編製索引。 如果您選擇不要編製容器中部分項目的索引，則會耗用較少的 RU。
+- **項目索引**：根據預設，每個項目都會自動編製索引。 如果您選擇不要編製容器中部分項目的索引，則會耗用較少的 RU。
 
-* **項目屬性計數**：假設所有屬性上都有預設編製索引，則取用來寫入項目的 RU 數目會隨著項目屬性計數增加而增加。
+- **項目屬性計數**：假設所有屬性上都有預設編製索引，則取用來寫入項目的 RU 數目會隨著項目屬性計數增加而增加。
 
-* **已編製索引的屬性**：每個容器上之索引原則會判定預設要編製哪些索引的屬性。 若要減少寫入作業的 RU 耗用量，請限制已編製索引的屬性數目。
+- **已編製索引的屬性**：每個容器上之索引原則會判定預設要編製哪些索引的屬性。 若要減少寫入作業的 RU 耗用量，請限制已編製索引的屬性數目。
 
-* **資料一致性**：強式和限定過期一致性層級在執行讀取作業時，會耗用大約兩倍以上的 ru （相較于其他寬鬆一致性層級）。
+- **資料一致性**：強式和限定過期一致性層級在執行讀取作業時，會耗用大約兩倍以上的 ru （相較于其他寬鬆一致性層級）。
 
-* **讀取的類型**：點讀取成本明顯比查詢更少的 ru。
+- **讀取的類型**：點讀取成本明顯比查詢更少的 ru。
 
-* **查詢模式**：查詢的複雜性會影響針對作業所耗用的要求單位數目。 影響查詢作業成本的因素包括： 
-    
-    - 查詢結果數目
-    - 述詞數目
-    - 述詞性質
-    - 使用者定義函式數目
-    - 來源資料的大小
-    - 結果集的大小
-    - 投影
+- **查詢模式**：查詢的複雜性會影響針對作業所耗用的要求單位數目。 影響查詢作業成本的因素包括： 
 
-  Azure Cosmos DB 保證相同資料上相同查詢的成本一律會與重複執行上 RU 數目相同。
+  - 查詢結果數目
+  - 述詞數目
+  - 述詞性質
+  - 使用者定義函式數目
+  - 來源資料的大小
+  - 結果集的大小
+  - 投影
 
-* **腳本使用**方式：如同查詢，預存程式和觸發程式會根據所執行作業的複雜度來取用 ru。 開發應用程式時，請檢查[要求費用標頭](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query)，以便進一步了解每個作業要取用多少 RU 容量。
+  相同資料上相同的查詢一律會在重複執行時對相同數目的 ru 進行成本計算。
+
+- **腳本使用**方式：如同查詢，預存程式和觸發程式會根據所執行作業的複雜度來取用 ru。 開發應用程式時，請檢查[要求費用標頭](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query)，以便進一步了解每個作業要取用多少 RU 容量。
+
+## <a name="request-units-and-multiple-regions"></a>要求單位和多個區域
+
+如果您在 Cosmos 容器 (或資料庫) 上布建 *' r '* 個 ru，Cosmos DB 確保與 Cosmos 帳戶相關聯的*每個*區域中都有 *' r '* 個 ru。 您無法選擇性地將 RU 指派給特定區域。 在 Cosmos 容器 (或資料庫) 上布建的 ru 會在與您 Cosmos 帳戶相關聯的所有區域中布建。
+
+假設 Cosmos 容器設定有 *' R '* 個 ru，而且有 *' N '* 個區域與 Cosmos 帳戶相關聯，則在容器上全域可用的 ru 總數 = *R* x *N*。
+
+您所選擇的 [一致性模型](consistency-levels.md) 也會影響輸送量。 相較于較強的一致性層級，您可以取得大約2x 的讀取輸送量， (例如， *會話*、 *一致前置* 詞和 *最終* 一致性) 相較于較強的一致性層級 (例如， *限定過期* 或 *強* 式一致性) 。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解如何[在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)。
-* 深入瞭解 [無伺服器的 Azure Cosmos DB](serverless.md)。
-* 深入了解[邏輯分割區](partition-data.md)。
-* 深入了解如何[全域調整佈建的輸送量](scaling-throughput.md)。
-* 了解如何[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。
-* 了解如何[在 Azure Cosmos 資料庫上佈建輸送量](how-to-provision-database-throughput.md)。
-* 瞭解如何 [找出作業的要求單位費用](find-request-unit-charge.md)。
-* 瞭解如何 [在 Azure Cosmos DB 中將布建的輸送量成本優化](optimize-cost-throughput.md)。
-* 瞭解如何將 [Azure Cosmos DB 中的讀取和寫入成本優化](optimize-cost-reads-writes.md)。
-* 瞭解如何將 [Azure Cosmos DB 中的查詢成本優化](optimize-cost-queries.md)。
-* 瞭解如何 [使用計量來監視輸送量](use-metrics.md)。
+- 深入了解如何[在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)。
+- 深入瞭解 [無伺服器的 Azure Cosmos DB](serverless.md)。
+- 深入了解[邏輯分割區](partition-data.md)。
+- 深入了解如何[全域調整佈建的輸送量](scaling-throughput.md)。
+- 了解如何[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。
+- 了解如何[在 Azure Cosmos 資料庫上佈建輸送量](how-to-provision-database-throughput.md)。
+- 瞭解如何 [找出作業的要求單位費用](find-request-unit-charge.md)。
+- 瞭解如何 [在 Azure Cosmos DB 中將布建的輸送量成本優化](optimize-cost-throughput.md)。
+- 瞭解如何將 [Azure Cosmos DB 中的讀取和寫入成本優化](optimize-cost-reads-writes.md)。
+- 瞭解如何將 [Azure Cosmos DB 中的查詢成本優化](optimize-cost-queries.md)。
+- 瞭解如何 [使用計量來監視輸送量](use-metrics.md)。

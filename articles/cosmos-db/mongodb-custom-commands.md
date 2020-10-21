@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409674"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282464"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 擴充功能命令來管理 Azure Cosmos DB 的 MongoDB API 中儲存的資料 
 
-下列檔包含 Azure Cosmos DB 適用于 MongoDB 的 API 專屬的自訂動作命令。 您可以使用這些命令來建立和取得 [Azure Cosmos DB 容量模型](databases-containers-items.md)專屬的資料庫資源。
+下列檔包含 Azure Cosmos DB 適用于 MongoDB 的 API 專屬的自訂動作命令。 您可以使用這些命令來建立和取得 [Azure Cosmos DB 容量模型](account-databases-containers-items.md)專屬的資料庫資源。
 
 藉由使用適用于 MongoDB 的 Azure Cosmos DB API，您可以享有 Cosmos DB 的優點，例如全域散發、自動分區化、高可用性、延遲保證、自動、待用加密、備份等，同時保留您的 MongoDB 應用程式投資。 您可以使用任何開放原始碼 [MongoDB 用戶端驅動程式](https://docs.mongodb.org/ecosystem/drivers)，與 Azure Cosmos DB 的 mongodb API 進行通訊。 適用于 MongoDB 的 Azure Cosmos DB API 可透過遵循 [MongoDB 網路通訊協定](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)的方式，來使用現有的用戶端驅動程式。
 
@@ -215,7 +215,7 @@ db.runCommand({customAction: "GetDatabase"});
 |---------|---------|---------|---------|
 | `customAction` | `string` | 必要 | 自訂命令的名稱。 必須是 "CreateCollection"。|
 | `collection` | `string` | 必要 | 集合的名稱。 不允許任何特殊字元或空格。|
-| `offerThroughput` | `int` | 選用 | 要在資料庫上設定的布建輸送量。 如果未提供此參數，則會預設為最小 400 RU/秒。 * 若要指定超過 10000 RU/秒的輸送量，則 `shardKey` 需要參數。|
+| `offerThroughput` | `int` | 選擇性 | 要在資料庫上設定的布建輸送量。 如果未提供此參數，則會預設為最小 400 RU/秒。 * 若要指定超過 10000 RU/秒的輸送量，則 `shardKey` 需要參數。|
 | `shardKey` | `string` | 具有大型輸送量的集合所需 | 分區化集合之分區索引鍵的路徑。 如果您在中設定超過 10000 RU/秒，則需要此參數 `offerThroughput` 。  如果已指定，則所有插入的檔都需要此索引鍵和值。 |
 | `autoScaleSettings` | `Object` | 自動調整[模式](provision-throughput-autoscale.md)的必要參數 | 此物件包含與自動調整容量模式相關聯的設定。 您可以設定 `maxThroughput` 值，以描述集合將會以動態方式增加的最高要求單位數量。 |
 

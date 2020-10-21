@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 探索內部部署伺服器上的應用程式、角�
 description: 瞭解如何在內部部署伺服器上，利用 Azure Migrate Server 評量探索應用程式、角色和功能。
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118642"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315202"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>探索機器應用程式、角色和功能
 
@@ -20,7 +20,7 @@ ms.locfileid: "86118642"
 > 應用程式探索目前僅供 VMware Vm 預覽，且僅限探索。 我們尚未提供以應用程式為基礎的評量。 
 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 確認您已：
     - [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
@@ -46,7 +46,7 @@ ms.locfileid: "86118642"
 
 ## <a name="verify-permissions"></a>驗證權限
 
-您已 [建立一個 vCenter Server 唯讀帳戶](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) 以進行探索和評量。 唯讀帳戶需要啟用**虛擬機器**  >  **來賓作業**的許可權，才能與 VM 互動以進行應用程式探索。
+您已 [建立一個 vCenter Server 唯讀帳戶](./tutorial-discover-vmware.md#prepare-vmware) 以進行探索和評量。 唯讀帳戶需要啟用**虛擬機器**  >  **來賓作業**的許可權，才能與 VM 互動以進行應用程式探索。
 
 ### <a name="add-the-user-account-to-the-appliance"></a>將使用者帳戶新增至設備
 
@@ -56,7 +56,7 @@ ms.locfileid: "86118642"
 2. 流覽至 [ **提供 vCenter 詳細資料** ] 面板。
 3. 在 [**探索 vm 上的應用程式和**相依性] 中，按一下 [**新增認證**]
 3. 選擇**作業系統**、提供帳戶的易記名稱和**使用者名稱** / **密碼**
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案]  。
 7. 按一下 [ **儲存並開始探索**]。
 
     ![新增 VM 使用者帳戶](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -77,7 +77,7 @@ ms.locfileid: "86118642"
 
 應用程式清查會以 Excel 格式匯出和下載。 **應用程式清查**工作表會顯示所有機器上探索到的所有應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 為探索到的伺服器[建立評](how-to-create-assessment.md)量。
 - 使用 [Azure Migrate：資料庫評估](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)來評估 SQL Server 資料庫。
