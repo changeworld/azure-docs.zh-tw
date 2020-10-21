@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045392"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092948"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入門：建置應用程式並將其部署至 Azure Spring Cloud
 
@@ -187,10 +187,10 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 ## <a name="prerequisites"></a>先決條件
 
-* [安裝 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [安裝 JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [註冊 Azure 訂用帳戶](https://azure.microsoft.com/free/)
-* (選擇性) [安裝 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，並使用下列命令安裝 Azure Spring Cloud 擴充功能：`az extension add --name spring-cloud`
-* (選擇性) [安裝 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 並[登入](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* (選擇性) [安裝 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，並使用下列命令安裝 Azure Spring Cloud 擴充功能：`az extension add --name spring-cloud`
+* (選擇性) [安裝 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 並[登入](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>部署程序
 
@@ -304,7 +304,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
     ![匯入專案](media/spring-cloud-intellij-howto/revision-import-project-1.png)
 
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>將閘道應用程式部署至 Azure Spring Cloud
-若要部署至 Azure，您必須透過 Azure Toolkit for IntelliJ 使用您的 Azure 帳戶登入，然後選擇您的訂用帳戶。 如需登入詳細資訊，請參閱[安裝和登入](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
+若要部署至 Azure，您必須透過 Azure Toolkit for IntelliJ 使用您的 Azure 帳戶登入，然後選擇您的訂用帳戶。 如需登入詳細資訊，請參閱[安裝和登入](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
 
 1. 在 IntelliJ 專案總管中以滑鼠右鍵按一下專案，然後選取 [Azure] ->  [部署至 Azure Spring Cloud]。
 
@@ -313,7 +313,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 在 [名稱] 欄位中，將 *:gateway* 附加至現有的 [名稱]。
 1. 在 [成品] 文字方塊中，選取 [com.piggymetrics:gateway:1.0-SNAPSHOT]。
 1. 在 [訂用帳戶] 文字方塊中，驗證您的訂用帳戶。
-1. 在 [Spring Cloud] 文字方塊中，選取您在[佈建 Azure Spring Cloud 執行個體](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)中所建立的 Azure Spring Cloud 執行個體。
+1. 在 [Spring Cloud] 文字方塊中，選取您在[佈建 Azure Spring Cloud 執行個體](./spring-cloud-quickstart-provision-service-instance.md)中所建立的 Azure Spring Cloud 執行個體。
 1. 將 [公用端點] 設定為 [啟用]。
 1. 在 [應用程式：] 文字方塊中，選取 [建立應用程式...]。
 1. 輸入 gateway，然後按一下 [確定]。

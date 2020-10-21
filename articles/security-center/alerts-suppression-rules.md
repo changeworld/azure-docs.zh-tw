@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448476"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342088"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>隱藏來自 Azure Defender 的警示
 
@@ -47,7 +47,7 @@ ms.locfileid: "91448476"
 
 :::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="建立警示隱藏規則":::
 
-## <a name="create-a-suppression-rule"></a>建立隱藏專案規則
+## <a name="create-a-suppression-rule"></a>建立歸併規則
 
 您可以使用幾種方式來建立規則以隱藏不必要的安全性警示：
 
@@ -139,7 +139,7 @@ REST API 中歸併規則的相關 HTTP 方法為：
 
 - **DELETE**：刪除現有的規則 (但不會變更其已關閉的警示狀態)。
 
-如需完整詳細資料和使用方式範例，請參閱 [API 文件](https://docs.microsoft.com/rest/api/securitycenter/)。 
+如需完整詳細資料和使用方式範例，請參閱 [API 文件](/rest/api/securitycenter/)。 
 
 
 ## <a name="next-steps"></a>後續步驟

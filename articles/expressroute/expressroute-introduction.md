@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743058"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206946"
 ---
 # <a name="what-is-azure-expressroute"></a>什麼是 Azure ExpressRoute？
 ExpressRoute 可讓您藉由連線提供者的協助，透過私人連線將內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure 和 Microsoft 365。
@@ -36,10 +36,10 @@ ExpressRoute 可讓您藉由連線提供者的協助，透過私人連線將內�
 ## <a name="features"></a>特性
 
 ### <a name="layer-3-connectivity"></a>第 3 層連線能力
-Microsoft 使用 BGP，這是一種業界標準動態路由通訊協定。 用來在內部部署網路、Azure 中的執行個體與 Microsoft 公用位址之間交換路由。 我們會針對不同的流量設定檔，與您的網路建立多個 BGP 工作階段。 如需詳細資訊，請參閱 [ExpressRoute 線路和路由網域](expressroute-circuit-peerings.md) 一文。
+Microsoft 採用BGP (業界標準動態路由通訊協定)，在您的內部部署網路、Azure 中的執行個體和 Microsoft 公用位址之間交換路由。 我們會針對不同的流量設定檔，與您的網路建立多個 BGP 工作階段。 如需詳細資訊，請參閱 [ExpressRoute 線路和路由網域](expressroute-circuit-peerings.md) 一文。
 
 ### <a name="redundancy"></a>備援性
-每個 ExpressRoute 線路有兩條連線，會從連線提供者/您的網路邊緣連線至兩個位於 [ExpressRoute 位置](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations)的 Microsoft Enterprise 邊緣路由器 (MSEE)。 Microsoft 需要有來自連線提供者 / 您網路邊緣的雙重 BGP 連線 – 每個連線皆各自連線至每個 MSEE。 您可以選擇不要在您這端部署備援裝置 / 乙太網路線路。 不過，連線提供者會使用備援裝置，確保以備援方式將您的連線交給 Microsoft。 備援第 3 層連線組態是我們的 [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的條件。
+每個 ExpressRoute 線路有兩條連線，會從連線提供者/您的網路邊緣連線至兩個位於 [ExpressRoute 位置](./expressroute-locations.md#expressroute-locations)的 Microsoft Enterprise 邊緣路由器 (MSEE)。 Microsoft 需要有來自連線提供者 / 您網路邊緣的雙重 BGP 連線 – 每個連線皆各自連線至每個 MSEE。 您可以選擇不要在您這端部署備援裝置 / 乙太網路線路。 不過，連線提供者會使用備援裝置，確保以備援方式將您的連線交給 Microsoft。 備援第 3 層連線組態是我們的 [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的條件。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>連線到 Microsoft 雲端服務
 透過 ExpressRoute 連線可存取下列服務：
@@ -82,7 +82,7 @@ ExpressRoute Direct 提供的主要功能包括但不限於：
 * 實體隔離適用於受規範且需要專用隔離連線的產業，例如：銀行、政府機構及零售業
 * 根據業務單位決定的細微線路分散控制
 
-如需詳細資訊，請參閱[關於 ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973)。
+如需詳細資訊，請參閱[關於 ExpressRoute Direct](./expressroute-erdirect-about.md)。
 
 ### <a name="bandwidth-options"></a>頻寬選項
 您可以購買各種頻寬的 ExpressRoute 線路。 支援的頻寬列示如下。 請務必洽詢您的連線提供者，以判斷他們支援的頻寬。

@@ -4,12 +4,12 @@ description: 取得計量警示有何用途以及其在 Azure 監視器中如何
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578065"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342173"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
@@ -135,7 +135,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 這項功能目前支援平臺計量 (非自訂計量) 適用于下列 Azure 雲端中的下列服務：
 
-| 服務 | 公用 Azure | 政府機關 | 中國 |
+| Service | 公用 Azure | 政府機關 | 中國 |
 |:--------|:--------|:--------|:--------|
 | 虛擬機器<sup>1</sup>  | **是** | 否 | 否 |
 | SQL server 資料庫 | **是** | **是** | **是** |
@@ -179,4 +179,5 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 - [了解如何使用 Azure Resource Manager 範本部署計量警示](./alerts-metric-create-templates.md)
 - [深入瞭解動作群組](action-groups.md)
 - [深入了解動態閾值條件類型](alerts-dynamic-thresholds.md)
+- [深入瞭解如何針對計量警示中的問題進行疑難排解](alerts-troubleshoot-metric.md)
 

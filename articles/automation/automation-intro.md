@@ -7,12 +7,12 @@ keywords: azure 自動化, DSC, powershell, 狀態組態, 更新管理, 變更�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715973"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205331"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
 
@@ -35,7 +35,7 @@ Azure 自動化中的設定管理可讓您存取兩項功能：
 
 ### <a name="change-tracking-and-inventory"></a>變更追蹤與詳細目錄
 
-變更追蹤和清查結合了變更追蹤和清查功能，可讓您追蹤虛擬機器和伺服器基礎結構的變更。 此服務支援跨服務、精靈、軟體、登錄和您環境中的檔案變更追蹤，以協助您診斷不必要的變更並引發警示。 清查支援可讓您查詢客體內的資源，看見已安裝的應用程式和其他設定項目。 如需這項功能的詳細資訊，請參閱[變更追蹤和清查](change-tracking.md)。
+變更追蹤和清查結合了變更追蹤和清查功能，可讓您追蹤虛擬機器和伺服器基礎結構的變更。 此服務支援跨服務、精靈、軟體、登錄和您環境中的檔案變更追蹤，以協助您診斷不必要的變更並引發警示。 清查支援可讓您查詢客體內的資源，看見已安裝的應用程式和其他設定項目。 如需這項功能的詳細資訊，請參閱[變更追蹤和清查](change-tracking/overview.md)。
 
 ### <a name="azure-automation-state-configuration"></a>Azure 自動化狀態設定
 

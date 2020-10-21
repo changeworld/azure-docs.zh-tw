@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763919"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072385"
 ---
 # <a name="azure-portal-overview"></a>Azure 入口網站概觀
 
@@ -54,7 +54,7 @@ Azure 入口網站功能表和 Azure 預設檢視都可以在 [入口網站設�
 
 ## <a name="getting-around-the-portal"></a>輕鬆瀏覽入口網站
 
-了解基本入口網站配置，以及其互動方式很有幫助。 在此，我們將介紹使用者介面的元件，以及我們用來提供指示的一些術語。 如需入口網站的詳細導覽，請參閱[瀏覽入口網站](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal)課程。
+了解基本入口網站配置，以及其互動方式很有幫助。 在此，我們將介紹使用者介面的元件，以及我們用來提供指示的一些術語。 如需入口網站的詳細導覽，請參閱[瀏覽入口網站](/learn/modules/tour-azure-portal/3-navigate-the-portal)課程。
 
 Azure 入口網站功能表和頁首是一律存在的全域元素。 這些持續性功能是與每項個別服務或功能相關聯之使用者介面的「殼層」，而標頭可提供對全域控制項的存取權。 資源的設定頁面 (有時稱為「刀鋒視窗」) 可能也有資源功能表可協助您在各項功能間移動。
 

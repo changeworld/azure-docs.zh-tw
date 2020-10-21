@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 39c890e9e6634413947a96b1ddac608ee44bd9a0
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327394"
+ms.locfileid: "92344010"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache 的必要條件
 
@@ -65,7 +65,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 
 您也可以使用簡單的 DNS 伺服器，在所有可用的快取掛接點之間進行用戶端連線的負載平衡。
 
-深入瞭解 azure 虛擬網路中 [資源的名稱解析中的](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)azure 虛擬網路和 DNS 伺服器設定。
+深入瞭解 azure 虛擬網路中 [資源的名稱解析中的](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)azure 虛擬網路和 DNS 伺服器設定。
 
 ## <a name="permissions"></a>權限
 
@@ -110,7 +110,7 @@ Azure HPC Cache 需要具有下列品質的專用子網：
 
 [疑難排解 NAS 設定和 NFS 儲存體目標問題](troubleshoot-nas.md)的詳細資訊。
 
-* **網路連線能力：** Azure HPC Cache 需要在快取子網和 NFS 系統的資料中心之間進行高頻寬的網路存取。 建議使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或類似的存取。 如果使用 VPN，您可能需要將它設定為在1350上設定 TCP MSS，以確保不會封鎖大型封包。 如需其他協助疑難排解 VPN 設定的詳細說明，請參閱 [vpn 封包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) 。
+* **網路連線能力：** Azure HPC Cache 需要在快取子網和 NFS 系統的資料中心之間進行高頻寬的網路存取。 建議使用[ExpressRoute](../expressroute/index.yml)或類似的存取。 如果使用 VPN，您可能需要將它設定為在1350上設定 TCP MSS，以確保不會封鎖大型封包。 如需其他協助疑難排解 VPN 設定的詳細說明，請參閱 [vpn 封包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) 。
 
 * **埠存取：** 快取需要存取儲存體系統上的特定 TCP/UDP 埠。 不同類型的儲存體具有不同的埠需求。
 

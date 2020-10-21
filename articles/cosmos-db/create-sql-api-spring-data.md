@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0ccab295d39e463d4b6d1e764862678469fba751
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776403"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278380"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 Spring Data Azure Cosmos DB v3 應用程式以管理 Azure Cosmos DB SQL API 資料
 
@@ -52,9 +52,9 @@ ms.locfileid: "91776403"
 
 Cosmos DB 帳戶的結構。 不論是 API 還是程式設計語言，Cosmos DB「帳戶」會包含零個以上的「資料庫」、「資料庫」(DB) 會包含零個以上的「容器」，「容器」則會包含零個以上的項目，如下圖所示：
 
-:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帳戶項目" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帳戶項目" border="false":::
 
-您可以在[這裡](databases-containers-items.md)進一步了解資料庫、容器和項目。 幾個重要的屬性會定義於容器層級，其中包括「佈建的輸送量」和「分割區索引鍵」。 
+您可以在[這裡](account-databases-containers-items.md)進一步了解資料庫、容器和項目。 幾個重要的屬性會定義於容器層級，其中包括「佈建的輸送量」和「分割區索引鍵」。 
 
 佈建的輸送量會以具有貨幣價格的要求單位 (RU) 來進行測量，在決定帳戶的營運成本時，RU 會是一大因素。 佈建的輸送量可依每一容器的細微性或每一資料庫的細微性來加以選取，不過一般來說，最好是指定容器層級的輸送量。 您可以在[這裡](set-throughput.md)進一步了解輸送量佈建。
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272785"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342394"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>規劃您的 Avere vFXT 系統
 
@@ -109,7 +109,7 @@ Avere vFXT 叢集會使用下列 IP 位址：
 
 每個節點的磁碟快取都可以設定，而且範圍可以從 1000 GB 到 8000 GB。 針對 Standard_E32s_v3 節點，建議使用的快取大小為每個節點 4 TB。
 
-如需這些 Vm 的詳細資訊，請參閱 Microsoft Azure 檔： [記憶體優化的虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+如需這些 Vm 的詳細資訊，請參閱 Microsoft Azure 檔： [記憶體優化的虛擬機器大小](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>帳戶配額
 

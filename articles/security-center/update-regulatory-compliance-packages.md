@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106258"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342190"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>如何在法規合規性儀表板中自訂一組標準
 
@@ -41,7 +41,7 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
 
 您可以新增 NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official 和 UK NHS、加拿大聯邦 PBMM 和 Azure CIS 1.1.0 (新版) 等標準，這是更完整的 Azure CIS 1.1.0 表述。 
 
-此外，您可以新增 **Azure 安全性效能評定**，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 ([深入了解 Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/introduction)。)
+此外，您可以新增 **Azure 安全性效能評定**，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 ([深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)。)
 
 當儀表板可供使用時，將會支援其他標準。 
 
@@ -116,6 +116,6 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
 
 如需其他相關資料，請參閱下列文章： 
 
-- [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Azure 安全性效能評定](../security/benchmarks/introduction.md)
 - [資訊安全中心合規性儀表板](security-center-compliance-dashboard.md)
 - [使用安全性原則](tutorial-security-policy.md)

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055425"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078947"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>快速入門：使用 ARM 範本建立自動化帳戶
 
@@ -84,7 +84,7 @@ JSON 範本會針對您的環境中可能用於標準設定的其他參數，指
 
 如果您是 Azure 自動化和 Azure 監視器的新手，請務必了解下列設定詳細資料。 當您嘗試建立、設定和使用連結至新自動化帳戶的 Log Analytics 工作區時，這些詳細資料可以協助您避免錯誤。
 
-* 請檢閱[其他詳細資料](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)，以全面了解工作區設定選項，例如，存取控制模式、定價層、保留和容量保留層級。
+* 請檢閱[其他詳細資料](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)，以全面了解工作區設定選項，例如，存取控制模式、定價層、保留和容量保留層級。
 
 * 請參閱[工作區對應](how-to/region-mappings.md)，以指定內嵌或參數檔案中支援的區域。 只有特定區域支援連結 Log Analytics 工作區以及訂用帳戶中的自動化帳戶。
 

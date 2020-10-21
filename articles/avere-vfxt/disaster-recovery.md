@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966656"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342241"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Avere vFXT for Azure 的嚴重損壞修復指導方針
 
@@ -117,7 +117,7 @@ Avere vFXT for Azure 使用 Azure Blob 核心檔的本機冗余儲存體 (LRS) �
 * 如需自訂 Avere vFXT for Azure 設定的詳細資訊，請參閱叢集 [調整](avere-vfxt-tuning.md)。
 * 深入瞭解嚴重損壞修復和在 Azure 中建立具復原能力的應用程式：
 
-  * [Azure 復原技術指導](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [從全區域服務中斷復原](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
-  * [Azure 應用程式的災害復原和高可用性](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
+  * [Azure 復原技術指導](/azure/architecture/framework/resiliency/overview)
+  * [從全區域服務中斷復原](/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Azure 應用程式的災害復原和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

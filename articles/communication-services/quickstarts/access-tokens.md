@@ -2,20 +2,20 @@
 title: 快速入門 - 建立和管理存取權杖
 titleSuffix: An Azure Communication Services quickstart
 description: 了解如何使用 Azure 通訊服務系統管理用戶端程式庫來管理身分識別和存取權杖。
-author: matthewrobertson
+author: tomaschladek
 manager: jken
 services: azure-communication-services
-ms.author: marobert
+ms.author: tchladek
 ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: a76000ecacdf78196ec1b80a60940484f6421641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e323f1f50fe6c67a841c300fcbec1eed3afc4497
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943884"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074119"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>快速入門：建立和管理存取權杖
 

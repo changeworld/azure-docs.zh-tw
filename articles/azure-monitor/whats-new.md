@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91842660"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151813"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -64,7 +64,7 @@ ms.locfileid: "91842660"
 - [Azure 監視器記錄檔記錄中的標準資料行](platform/log-standard-columns.md) - 更新為包含以工作區為基礎的應用程式。
 - [Azure 監視器服務限制](service-limits.md) - 更新了使用者查詢節流的限制。
 - [在 Azure 監視器 Log Analytics 中使用客戶管理的儲存體帳戶](platform/private-storage.md) - 已重新編寫文章。
-- [在 Azure Log Analytics 中檢視和分析資料](log-query/logs-structure.md) - 更新為包含以工作區為基礎的應用程式。
+- [在 Azure Log Analytics 中檢視和分析資料](./platform/data-platform-logs.md) - 更新為包含以工作區為基礎的應用程式。
 
 
 ### <a name="platform-logs"></a>平台記錄
@@ -194,11 +194,11 @@ ms.locfileid: "91842660"
 - [將 Linux 電腦連線至 Azure 監視器](platform/agent-linux.md)
 - [針對混合式環境啟用 Azure 監視器](insights/vminsights-enable-hybrid.md)
 - [針對 Azure 入口網站中的單一虛擬機器或虛擬機器擴展集啟用 Azure 監視器](insights/vminsights-enable-portal.md)
-- [使用 Azure 原則啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-policy.md)
+- [使用 Azure 原則啟用適用於 VM 的 Azure 監視器](./insights/vminsights-enable-policy.md)
 - [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md)
 - [使用 PowerShell 啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-powershell.md)
 - [使用 Resource Manager 範本啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-resource-manager.md)
-- [使用 PowerShell 或範本啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-powershell.md)
+- [使用 PowerShell 或範本啟用適用於 VM 的 Azure 監視器](./insights/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>視覺效果
@@ -292,7 +292,7 @@ ms.locfileid: "91842660"
 
 - [Azure 監視器常見問題集](faq.md) - 新增計量的區段。
 - [Azure 監視器客戶管理的金鑰](platform/customer-managed-keys.md) - 準備正式發行的各種變更。
-- [Azure 監視器的內建原則定義](samples/policy-samples.md) - 新文章。
+- [Azure 監視器的內建原則定義](./samples/policy-reference.md) - 新文章。
 - [適用於記錄內嵌之客戶擁有的儲存體帳戶](platform/private-storage.md) - 新文章。
 - [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 新增叢集的比例計費。
 - [使用 Azure 私人連結將網路安全地連線到 Azure 監視器](platform/private-link-security.md) - 新文章。
@@ -330,8 +330,8 @@ ms.locfileid: "91842660"
 - [Azure 監視器記錄檔查詢中的 app() 運算式](log-query/app-expression.md)
 - [Azure 監視器 Log Analytics 中的記錄查詢範圍](log-query/scope.md)
 - [藉由 Azure 監視器進行跨資源查詢](log-query/cross-workspace-query.md)
-- [Azure 監視器記錄檔記錄中的標準屬性](platform/log-standard-properties.md)
-- [Azure 監視器記錄的結構](log-query/logs-structure.md)
+- [Azure 監視器記錄檔記錄中的標準屬性](./platform/log-standard-columns.md)
+- [Azure 監視器記錄的結構](./platform/data-platform-logs.md)
 
 
 
@@ -353,7 +353,7 @@ ms.locfileid: "91842660"
 - [使用 Azure CLI](learn/quick-create-workspace-cli.md) 新增的疑難排解區段來建立 Log Analytics 工作區。
 - [刪除並復原 Azure Log Analytics 工作區](platform/delete-workspace.md) - 更新復原已刪除工作區的相關資訊。
 - [Azure 監視器記錄檔查詢中的函式](log-query/functions.md) - 移除不包含其他函式之函式的相關注意事項。
-- [Azure 監視器記錄的結構](log-query/logs-structure.md) - 釐清 Application Insights 資料表的屬性描述。
+- [Azure 監視器記錄的結構](./platform/data-platform-logs.md) - 釐清 Application Insights 資料表的屬性描述。
 - [搭配 Azure Logic Apps 和 Power Automate 使用 Azure 監視器記錄](platform/logicapp-flow-connector.md) - 新增限制一節。
 - [使用 PowerShell 建立和設定 Log Analytics 工作區](platform/powershell-workspace-configuration.md) - 新增疑難排解一節。
 
@@ -578,7 +578,7 @@ ms.locfileid: "91842660"
 #### <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 
 - [設定適用於容器的 Azure 監視器代理程式資料收集](insights/container-insights-agent-config.md) - 已新增在 Azure Red Hat OpenShift 上升級代理程式的詳細資訊，並新增了其他資訊來區分升級代理程式的方法。
-- [為適用於容器的 Azure 監視器建立效能警示](insights/container-insights-alerts.md) - 已修訂資訊及更新步驟，以便使用工作區內容警示，對工作區中儲存的效能資料建立警示。
+- [為適用於容器的 Azure 監視器建立效能警示](./insights/container-insights-log-alerts.md) - 已修訂資訊及更新步驟，以便使用工作區內容警示，對工作區中儲存的效能資料建立警示。
 - [使用適用於容器的 Azure 監視器進行 Kubernetes 監視](insights/container-insights-analyze.md) - 已更新有關 Windows Kubernetes 叢集支援的概觀文章和分析文章。
 - [使用適用於容器的 Azure 監視器來設定 Azure Red Hat OpenShift 叢集](insights/container-insights-azure-redhat-setup.md) - 已新增在 Azure Red Hat OpenShift 上升級代理程式的詳細資訊，並新增了其他資訊來區分升級代理程式的方法。
 - [使用適用於容器的 Azure 監視器來設定混合式 Kubernetes 叢集](insights/container-insights-hybrid-setup.md) - 已更新內容，以反映 Kubelet 的 cAdvisor 新增了安全連接埠 10250 支援。
@@ -598,7 +598,7 @@ ms.locfileid: "91842660"
 
 - [在 Azure 監視器中管理 Log Analytics 工作區](platform/manage-access.md)- 更新無法執行的動作。
 - [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 在「計價模式」一節中新增了資料量計算的詳細說明。
-- [使用 Azure Resource Manager 範本建立和設定 Log Analytics 工作區](platform/template-workspace-configuration.md) - 已使用新定價層來更新範例。
+- [使用 Azure Resource Manager 範本建立和設定 Log Analytics 工作區](./samples/resource-manager-workspace.md) - 已使用新定價層來更新範例。
 
 ### <a name="platform-logs"></a>平台記錄
 
@@ -668,9 +668,9 @@ ms.locfileid: "91842660"
 - [Azure 監視器服務限制](service-limits.md)
 - [在 Log Analytics 工作區中收集和分析 Azure 活動記錄](./platform/activity-log.md)
 - [使用診斷設定收集 Azure 活動記錄 (預覽) - Azure 監視器](./platform/activity-log.md)
-- [跨 Azure 租用戶將 Azure 活動記錄收集到 Log Analytics 工作區中](platform/activity-log-collect-tenants.md)
+- [跨 Azure 租用戶將 Azure 活動記錄收集到 Log Analytics 工作區中](./platform/activity-log.md)
 - [在 Log Analytics 工作區中收集 Azure 資源記錄](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [使用 Resource Manager 範本在 Azure 中建立診斷設定](platform/diagnostic-settings-template.md)
+- [使用 Resource Manager 範本在 Azure 中建立診斷設定](./samples/resource-manager-diagnostic-settings.md)
 - [建立診斷設定以收集 Azure 中的記錄和計量](platform/diagnostic-settings.md)
 - [匯出 Azure 活動記錄](./platform/activity-log.md#legacy-collection-methods)
 - [Azure 平台記錄概觀](platform/platform-logs-overview.md)

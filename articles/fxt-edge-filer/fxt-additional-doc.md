@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: f2f40d2ac6652b2b7c968a428961a9bd7f7b4288
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217502"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342258"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge Filer 的其他檔
 
@@ -19,7 +19,7 @@ ms.locfileid: "92217502"
 
 ## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT for Azure 快取檔
 
-[Avere vFXT for Azure](https://docs.microsoft.com/azure/avere-vfxt/) 是使用 Microsoft Azure 中虛擬節點的類似叢集快取產品。 它是使用 Azure 入口網站所建立，但使用與 Azure FXT Edge Filer 硬體快取相同的控制台設定軟體。
+[Avere vFXT for Azure](../avere-vfxt/index.yml) 是使用 Microsoft Azure 中虛擬節點的類似叢集快取產品。 它是使用 Azure 入口網站所建立，但使用與 Azure FXT Edge Filer 硬體快取相同的控制台設定軟體。
 
 ## <a name="legacy-hardware-documentation"></a>舊版硬體檔
 

@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767714"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076159"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入門：將功能旗標新增至 Azure Functions 應用程式
 
@@ -149,7 +149,7 @@ ms.locfileid: "91767714"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立功能旗標，並透過[應用程式組態提供者](https://go.microsoft.com/fwlink/?linkid=2074664)將其與 Azure Functions 應用程式搭配使用。
+在本快速入門中，您已建立功能旗標，並透過[應用程式組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)將其與 Azure Functions 應用程式搭配使用。
 
 - 深入了解[功能管理](./concept-feature-management.md)。
 - [管理功能旗標](./manage-feature-flags.md)。

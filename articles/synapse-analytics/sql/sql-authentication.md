@@ -4,16 +4,17 @@ description: 了解 Azure Synapse Analytics 中的 SQL 驗證。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: d43c223c0a3e67ff784688255bd75fc61e5c120c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8edf782c03300cf22bd349548da425669f492bc1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288013"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093526"
 ---
 # <a name="sql-authentication"></a>SQL 驗證
 

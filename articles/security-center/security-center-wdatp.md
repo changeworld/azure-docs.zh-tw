@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 026425c78934209a2d258d50a5c7f51feeebd63b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275367"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342139"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -81,7 +81,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
     > [!NOTE]
     > 若要保護已啟用 Azure Arc 的電腦，請使用 [快速入門：將混合式電腦與啟用 Azure Arc 的伺服器連接](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)。
 
-1. 如果您已在伺服器上授權並部署適用于端點的 Microsoft Defender，請使用 [下架 Windows server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)中所述的程式將它移除。
+1. 如果您已在伺服器上授權並部署適用于端點的 Microsoft Defender，請使用 [下架 Windows server](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)中所述的程式將它移除。
 1. 在資訊安全中心功能表中，選取 [定價和設定]。
 1. 選取您想變更的訂用帳戶。
 1. 選取 [威脅偵測]。
@@ -94,11 +94,11 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>存取適用于端點入口網站的 Microsoft Defender
 
-1. 確定使用者帳戶具有必要的許可權。 [深入了解](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)。
+1. 確定使用者帳戶具有必要的許可權。 [深入了解](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)。
 
-1. 檢查您是否擁有封鎖匿名流量的 proxy 或防火牆。 Defender for Endpoint 感應器會從系統內容連接，因此必須允許匿名流量。 若要確保不受妨礙存取端點入口網站的 Defender，請依照在 [proxy 伺服器中啟用服務 url 的存取權](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的指示進行。
+1. 檢查您是否擁有封鎖匿名流量的 proxy 或防火牆。 Defender for Endpoint 感應器會從系統內容連接，因此必須允許匿名流量。 若要確保不受妨礙存取端點入口網站的 Defender，請依照在 [proxy 伺服器中啟用服務 url 的存取權](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的指示進行。
 
-1. 開啟 [Microsoft Defender 資訊安全中心入口網站](https://securitycenter.windows.com/)。 在 [Microsoft Defender 資訊安全中心入口網站總覽](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/portal-overview)中深入瞭解入口網站的功能和圖示。 
+1. 開啟 [Microsoft Defender 資訊安全中心入口網站](https://securitycenter.windows.com/)。 在 [Microsoft Defender 資訊安全中心入口網站總覽](/windows/security/threat-protection/microsoft-defender-atp/portal-overview)中深入瞭解入口網站的功能和圖示。 
 
 ## <a name="send-a-test-alert"></a>傳送測試警示
 
@@ -128,7 +128,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>從協力廠商 EDR 工具如何? 切換？
 
-如需從非 Microsoft 端點解決方案切換的完整指示，請參閱 Microsoft Defender for Endpoint 檔： [遷移總覽](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。
+如需從非 Microsoft 端點解決方案切換的完整指示，請參閱 Microsoft Defender for Endpoint 檔： [遷移總覽](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。
   
 
 

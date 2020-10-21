@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712284"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344027"
 ---
-# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>使用工作流程自動化來建立警示和建議的自動回應
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>使用工作流程自動化建立警示和建議的自動回應
 
 每個安全性程式都包含事件回應的多個工作流程。 這些流程可能包括通知相關的專案利害關係人、啟動變更管理程式，以及套用特定的補救步驟。 安全性專家建議您盡可能自動化這些程式的許多步驟。 自動化可減少額外負荷。 它也可以確保程式步驟能以一致的方式執行，並根據預先定義的需求，來改善您的安全性。
 
-本文描述 Azure 資訊安全中心的工作流程自動化功能。 這項功能可以觸發安全性警示和建議的 Logic Apps。 例如，您可能想要在警示發生時，讓安全性中心以電子郵件傳送特定的使用者。 您也將瞭解如何使用 [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)來建立 Logic Apps。
+本文描述 Azure 資訊安全中心的工作流程自動化功能。 這項功能可以觸發安全性警示和建議的 Logic Apps。 例如，您可能想要在警示發生時，讓安全性中心以電子郵件傳送特定的使用者。 您也將瞭解如何使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)來建立 Logic Apps。
 
 > [!NOTE]
 > 如果您先前已在提要欄位上使用工作手冊 (預覽) 視圖，您將會在 [新工作流程自動化] 頁面中找到相同的功能以及展開的功能。
@@ -32,7 +32,7 @@ ms.locfileid: "91712284"
 |----|:----|
 |版本狀態：|正式上市 (GA)|
 |定價：|免費|
-|必要的角色和權限：|資源群組的**安全性系統管理員角色**或**擁有**者<br>也必須具有目標資源的寫入權限<br><br>若要使用 Azure Logic Apps 工作流程，您也必須具有下列 Logic Apps 角色/許可權：<br> - [邏輯應用程式操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 許可權是必要的或邏輯應用程式讀取/觸發存取 (此角色無法建立或編輯邏輯應用程式;只 *執行* 現有的) <br> - 邏輯應用程式建立和修改需要[邏輯應用程式參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)許可權<br>如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務 (例如，您的 Outlook/團隊/時差實例) |
+|必要的角色和權限：|資源群組的**安全性系統管理員角色**或**擁有**者<br>也必須具有目標資源的寫入權限<br><br>若要使用 Azure Logic Apps 工作流程，您也必須具有下列 Logic Apps 角色/許可權：<br> - [邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator) 許可權是必要的或邏輯應用程式讀取/觸發存取 (此角色無法建立或編輯邏輯應用程式;只 *執行* 現有的) <br> - 邏輯應用程式建立和修改需要[邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor)許可權<br>如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務 (例如，您的 Outlook/團隊/時差實例) |
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
@@ -86,7 +86,7 @@ ms.locfileid: "91712284"
 
 1. 定義邏輯應用程式之後，請返回工作流程自動化定義窗格 ( [新增工作流程自動化] ) 。 按一下 **[** 重新整理] 以確保您的新邏輯應用程式可供選取。
 
-    ![重新整理](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![Refresh](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
 1. 選取您的邏輯應用程式，並儲存自動化。 請注意，[邏輯應用程式] 下拉式清單只會顯示 Logic Apps 上面所述的支援安全中心連接器。
 
@@ -109,9 +109,9 @@ ms.locfileid: "91712284"
 
 如需相關材質，請參閱： 
 
-- [如何使用工作流程自動化將安全性回應自動化的 Microsoft Learn 課程模組](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
+- [如何使用工作流程自動化將安全性回應自動化的 Microsoft Learn 課程模組](/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure 資訊安全中心的安全性建議](security-center-recommendations.md)
 - [Azure 資訊安全中心的安全性警示](security-center-alerts-overview.md)
-- [關於 Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
-- [Logic Apps 連接器](https://docs.microsoft.com/connectors/)
-- [工作流程自動化資料類型架構](https://aka.ms/ASCAutomationSchemas)
+- [關於 Azure Logic Apps](../logic-apps/logic-apps-overview.md)
+- [Logic Apps 連接器](/connectors/)
+- [工作流程自動化資料類型結構描述](https://aka.ms/ASCAutomationSchemas)

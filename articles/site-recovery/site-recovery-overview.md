@@ -4,12 +4,12 @@ description: 提供 Azure Site Recovery 服務的概觀，並摘要說明災難�
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86135231"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281881"
 ---
 # <a name="about-site-recovery"></a>關於 Site Recovery
 
@@ -50,7 +50,7 @@ Site Recovery 可以管理複寫：
 **支援** | **詳細資料**
 --- | ---
 **複寫案例** | 將 Azure VM 從一個 Azure 區域複寫至另一個 Azure 區域。<br/><br/>  將內部部署 VMware VM、Hyper-V VM、實體伺服器 (Windows 和 Linux)、Azure Stack VM 複寫至 Azure。<br/><br/> 將 AWS Windows 執行個體複寫到 Azure。<br/><br/> 將 System Center VMM 管理的內部部署 VMware VM、Hyper-V VM 和實體伺服器複寫至次要站台。
-**區域** | 檢閱 Site Recovery 的[支援區域](https://azure.microsoft.com/regions/services/)。 |
+**區域** | 檢閱 Site Recovery 的[支援區域](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery)。 |
 **複寫的機器** | 檢閱 [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) 複寫、[內部部署 VM 和實體伺服器](vmware-physical-azure-support-matrix.md#replicated-machines)及[內部部署 Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 的複寫需求。
 **工作負載** | 您可以複寫在支援複寫之機器上執行的所有工作負載。 而且，Site Recovery 小組會針對[許多應用程式](site-recovery-workload.md#workload-summary)進行應用程式專屬測試。
 

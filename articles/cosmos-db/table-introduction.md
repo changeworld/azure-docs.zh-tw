@@ -7,19 +7,19 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b3219fe3507af1c6020ad3a7d84782847dbb57ae
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568432"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275088"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 簡介：資料表 API
 
 [Azure Cosmos DB](introduction.md) 提供的表格 API 適用於針對 Azure 資料表儲存體所撰寫、且需要進階功能的應用程式，例如：
 
 * [周全的全域發佈](distribute-data-globally.md)。
-* 全球[專用的輸送量](partition-data.md)。
+* 全球[專用的輸送量](partitioning-overview.md)。
 * 99 百分位數的單一數字毫秒延遲。
 * 保證高可用性。
 * 自動次要索引。

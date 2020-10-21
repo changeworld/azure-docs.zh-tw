@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993743"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167044"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫 - 彈性伺服器 (預覽)
 
@@ -121,10 +121,18 @@ ms.locfileid: "91993743"
 
 在 Azure 中執行工作負載的其中一個優點是觸及全球。 「適用於 MySQL 的 Azure 資料庫」的彈性伺服器目前可在下列 Azure 區域中使用：
 
+- 西歐
 - 北歐
-- 東南亞
+- 英國南部
 - 美國東部 2
 - 美國西部 2
+- 美國中部
+- 美國東部
+- 加拿大中部
+- 東南亞
+- 南韓中部
+- 日本東部
+- 澳大利亞東部
 
 我們一直努力盡快加入新的伺服器。
 

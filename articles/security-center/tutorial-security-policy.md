@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945734"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342275"
 ---
 # <a name="working-with-security-policies"></a>使用安全性原則
 
@@ -33,7 +33,7 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 「安全性中心」提供下列選項來處理安全性原則：
 
-* **查看和編輯內建的預設原則** -當您啟用「安全性中心」時，名為「ASC 預設」的內建方案會自動指派給所有已註冊的「安全性中心」的訂用帳戶。 若要自訂此計畫，您可以啟用或停用其內的個別原則。 請參閱內 [建安全性原則](security-center-policy-definitions.md) 清單，以瞭解現成可用的選項。
+* **查看和編輯內建的預設原則** -當您啟用「安全性中心」時，名為「ASC 預設」的內建方案會自動指派給所有已註冊的「安全性中心」的訂用帳戶。 若要自訂此計畫，您可以啟用或停用其內的個別原則。 請參閱內 [建安全性原則](./policy-reference.md) 清單，以瞭解現成可用的選項。
 
 * **新增您自己的自訂原則** -如果您想要自訂套用至訂用帳戶的安全性計畫，您可以在「安全性中心」內進行。 如果您的電腦未遵循您所建立的原則，您就會收到建議。 如需建立和指派自訂原則的指示，請參閱 [使用自訂安全性原則](custom-security-policies.md)。
 

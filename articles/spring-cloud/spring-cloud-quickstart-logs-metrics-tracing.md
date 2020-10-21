@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326247"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093050"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>快速入門：使用記錄、計量和追蹤來監視 Azure Spring Cloud 應用程式
 
 ::: zone pivot="programming-language-csharp"
-透過 Azure Spring Cloud 內建的監視功能，您就可以對複雜的問題進行偵錯和監視。 Azure Spring Cloud 會整合 Steeltoe [分散式追蹤](https://steeltoe.io/docs/3/tracing/distributed-tracing)與 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 這項整合可讓您從 Azure 入口網站獲得強大的記錄、計量和分散式追蹤功能。
+透過 Azure Spring Cloud 內建的監視功能，您就可以對複雜的問題進行偵錯和監視。 Azure Spring Cloud 會整合 Steeltoe [分散式追蹤](https://steeltoe.io/docs/3/tracing/distributed-tracing)與 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md)。 這項整合可讓您從 Azure 入口網站獲得強大的記錄、計量和分散式追蹤功能。
 
 下列程序說明如何搭配您在先前的快速入門中部署的範例應用程式來使用記錄串流、記錄分析、計量和分散式追蹤。
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. 編輯查詢以移除會將顯示限制為警告和錯誤記錄的 Where 子句。
 
-1. 然後選取 [`Run`]，您就會看到記錄。 如需撰寫查詢的詳細指引，請參閱 [Azure Log Analytics 文件](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)。
+1. 然後選取 [`Run`]，您就會看到記錄。 如需撰寫查詢的詳細指引，請參閱 [Azure Log Analytics 文件](../azure-monitor/log-query/get-started-queries.md)。
 
    [ ![記錄分析查詢 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-透過 Azure Spring Cloud 內建的監視功能，您就可以對複雜的問題進行偵錯和監視。 Azure Spring Cloud 可整合 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 與 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 這項整合可讓您從 Azure 入口網站獲得強大的記錄、計量和分散式追蹤功能。 下列程序說明如何搭配已部署的 PiggyMetrics 應用程式使用記錄串流、記錄分析、計量和分散式追蹤。
+透過 Azure Spring Cloud 內建的監視功能，您就可以對複雜的問題進行偵錯和監視。 Azure Spring Cloud 可整合 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 與 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md)。 這項整合可讓您從 Azure 入口網站獲得強大的記錄、計量和分散式追蹤功能。 下列程序說明如何搭配已部署的 PiggyMetrics 應用程式使用記錄串流、記錄分析、計量和分散式追蹤。
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -165,7 +165,7 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 
    [ ![記錄分析項目](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. 然後您會看到篩選過的記錄。 如需撰寫查詢的詳細指引，請參閱 [Azure Log Analytics 文件](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)。
+1. 然後您會看到篩選過的記錄。 如需撰寫查詢的詳細指引，請參閱 [Azure Log Analytics 文件](../azure-monitor/log-query/get-started-queries.md)。
 
    [ ![記錄分析查詢](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102148"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342122"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -228,7 +228,7 @@ ms.locfileid: "92102148"
 若要建立計量警示規則，您必須具備下列許可權：
 
 - 警示規則的目標資源的讀取權限
-- 建立警示規則之資源群組的寫入權限 (如果您要從 Azure 入口網站建立警示規則，則會在目標資源所在的相同資源群組中建立警示規則) 
+- 建立警示規則之資源群組的寫入權限 (如果您要從 Azure 入口網站建立警示規則，則預設會在目標資源所在的相同資源群組中建立警示規則) 
 - 與警示規則相關聯之任何動作群組的讀取權限 (如果適用) 
 
 

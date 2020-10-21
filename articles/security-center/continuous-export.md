@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ffc74e05d6cbe7722b9bf293c1a1e75a7de1b879
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945261"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342054"
 ---
 # <a name="continuously-export-security-alerts-and-recommendations"></a>持續匯出安全性警示和建議
 
@@ -80,7 +80,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>使用 REST API 設定連續匯出
 
-您可以透過 Azure 資訊安全中心 [自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations)來設定和管理連續匯出。 您可以使用此 API 來建立或更新規則，以匯出到下列任何可能的目的地：
+您可以透過 Azure 資訊安全中心 [自動化 API](/rest/api/securitycenter/automations)來設定和管理連續匯出。 您可以使用此 API 來建立或更新規則，以匯出到下列任何可能的目的地：
 
 - Azure 事件中樞
 - Log Analytics 工作區
@@ -97,7 +97,7 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
     > [!TIP]
     > 如果您已使用 API 來設定多個匯出設定，或您已使用僅限 API 的參數，這些額外的功能將不會顯示在 [安全性中心] UI 中。 相反地，會有橫幅通知您有其他設定存在。
 
-在 [REST API 檔](https://docs.microsoft.com/rest/api/securitycenter/automations)中深入瞭解自動化 API。
+在 [REST API 檔](/rest/api/securitycenter/automations)中深入瞭解自動化 API。
 
 
 
@@ -163,7 +163,7 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>在 Azure 監視器中查看匯出的警示和建議
 
-在某些情況下，您可以選擇在 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)中查看匯出的安全性警示及/或建議。 
+在某些情況下，您可以選擇在 [Azure 監視器](../azure-monitor/platform/alerts-overview.md)中查看匯出的安全性警示及/或建議。 
 
 Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量警示，以及以 Log Analytics 工作區查詢為基礎的自訂警示）提供統一的警示體驗。
 
@@ -173,13 +173,13 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 
     ![Azure 監視器的警示頁面](./media/continuous-export/azure-monitor-alerts.png)
 
-1. 在 [建立規則] 頁面中，以您在 [Azure 監視器) 中設定記錄警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) 的相同方式，設定新的規則 (：
+1. 在 [建立規則] 頁面中，以您在 [Azure 監視器) 中設定記錄警示規則](../azure-monitor/platform/alerts-unified-log.md) 的相同方式，設定新的規則 (：
 
     * 針對 [ **資源**]，選取您匯出安全性警示和建議的 Log Analytics 工作區。
 
     * 針對 [ **條件**]，選取 [ **自訂記錄搜尋**]。 在出現的頁面中，設定查詢、回顧期限和頻率週期。 在搜尋查詢中，您可以輸入 *SecurityAlert* 或 *SecurityRecommendation* ，以查詢當您啟用「連續匯出至 Log Analytics」功能時，「安全性中心」持續匯出的資料類型。 
     
-    * （選擇性）設定您想要觸發的 [動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) 。 動作群組可以觸發電子郵件傳送、ITSM 票證、Webhook 等等。
+    * （選擇性）設定您想要觸發的 [動作群組](../azure-monitor/platform/action-groups.md) 。 動作群組可以觸發電子郵件傳送、ITSM 票證、Webhook 等等。
     ![Azure 監視器警示規則](./media/continuous-export/azure-monitor-alert-rule.png)
 
 您現在會看到新的 Azure 資訊安全中心警示或建議 (根據您設定的連續匯出規則，以及您在 Azure 監視器警示規則中所定義的條件) Azure 監視器警示，並自動觸發動作群組 (（如果有提供) ）。
@@ -214,7 +214,7 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 如需相關材質，請參閱下列檔： 
 
 - 深入瞭解 [工作流程自動化範本](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
-- [Azure 事件中樞文件](https://docs.microsoft.com/azure/event-hubs/)
-- [Azure Sentinel 文件](https://docs.microsoft.com/azure/sentinel/)
-- [Azure 監視器文件](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure 事件中樞文件](../event-hubs/index.yml)
+- [Azure Sentinel 文件](../sentinel/index.yml)
+- [Azure 監視器文件](../azure-monitor/index.yml)
 - [匯出資料類型架構](https://aka.ms/ASCAutomationSchemas)

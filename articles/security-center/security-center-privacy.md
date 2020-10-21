@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585978"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342224"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>在 Azure 資訊安全中心管理使用者資料
 本文提供有關如何在 Azure 資訊安全中心管理使用者資料的資訊。 管理使用者資料包含了存取、刪除或匯出資料的能力。
@@ -87,7 +87,7 @@ ms.locfileid: "80585978"
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-如需詳細資訊，請參閱 [取得安全性警示 (取得集合) ](https://msdn.microsoft.com/library/mt704050.aspx)。
+如需詳細資訊，請參閱 [取得安全性警示 (取得集合) ](/previous-versions/azure/reference/mt704050(v=azure.100))。
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>限制在未經同意下使用個人資料進行分析或行銷
 資訊安全中心使用者可以選擇藉由刪除其[安全性連絡人資料](security-center-provide-security-contact-details.md)來退出。

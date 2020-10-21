@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118785"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151992"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>快速入門：建立 Azure 資料目錄
 
@@ -24,7 +24,7 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料資產�
 ## <a name="prerequisites"></a>Prerequisites
 
 > [!Note]
-> 由於 Azure 安全性需求，Azure 資料目錄已強制使用傳輸層安全性 (TLS) 1.2。 TLS 1.0 和 TLS 1.1 已停用。 如果您的電腦未針對 TLS 1.2 進行更新，您可能會遇到執行註冊工具的錯誤。 請參閱[啟用傳輸層安全性 (1.2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) 以針對 TLS 1.2 更新電腦。
+> 由於 Azure 安全性需求，Azure 資料目錄已強制使用傳輸層安全性 (TLS) 1.2。 TLS 1.0 和 TLS 1.1 已停用。 如果您的電腦未針對 TLS 1.2 進行更新，您可能會遇到執行註冊工具的錯誤。 請參閱[啟用傳輸層安全性 (1.2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2) 以針對 TLS 1.2 更新電腦。
 
 若要開始，您需要：
 

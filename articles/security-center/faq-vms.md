@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436016"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342207"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>常見問題-虛擬機器的相關問題
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支援哪些類型的虛擬機器？
 
-對於使用[傳統與 Resource Manager 部署模型](../azure-classic-rm.md)建立的虛擬機器 (VM)，提供監視和建議。
+對於使用[傳統與 Resource Manager 部署模型](/azure/security-center/./azure-resource-manager/management/deployment-models)建立的虛擬機器 (VM)，提供監視和建議。
 
 如需支援之平台的清單，請參閱 [Azure 資訊安全中心支援的平台](security-center-os-coverage.md)。
 
@@ -51,7 +51,7 @@ Azure 資訊安全中心能辨識透過 Azure 擴充功能安裝的反惡意程�
 「資訊安全中心」通常會每小時掃描一次是否有新資料，並相應地重新整理建議。 
 
 > [!NOTE]
-> 資訊安全中心使用 Log Analytics 代理程式來收集和儲存資料。 如需詳細資訊，請參閱 [Azure 資訊安全中心平台移轉](security-center-platform-migration.md)。
+> 資訊安全中心使用 Log Analytics 代理程式來收集和儲存資料。 如需詳細資訊，請參閱 [Azure 資訊安全中心平台移轉](./security-center-enable-data-collection.md)。
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>為什麼我會收到「VM 代理程式已遺失」訊息？

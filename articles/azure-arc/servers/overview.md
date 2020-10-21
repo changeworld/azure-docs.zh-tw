@@ -4,18 +4,18 @@ description: 了解如何使用已啟用 Azure Arc 的伺服器來管理裝載�
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
 ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818742"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200962"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什麼是已啟用 Azure Arc 的伺服器？
 
 已啟用 Azure Arc 的伺服器可讓您在公司網路或其他雲端提供者上管理裝載於 Azure 外部的 Windows 和 Linux 機器，就如同您管理原生 Azure 虛擬機器一樣。 混合式機器連線到 Azure 時就會變成已連線的機器，並且視為 Azure 中的資源。 每個已連線的機器都有資源識別碼，可在訂用帳戶內作為資源群組的一部分來管理，並可從標準的 Azure 結構中 (例如 Azure 原則和套用標籤) 獲益。 管理客戶內部部署基礎結構的服務提供者可以透過 Azure Arc 使用 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 管理其混合式電腦，就像目前在多個客戶環境中使用原生 Azure 資源一樣。
 
-若要對裝載於 Azure 外部的混合式機器提供這項體驗，您必須在計畫連線到 Azure 的每部機器上安裝 Azure Connected Machine 代理程式。 此代理程式不會提供任何其他功能，也不會取代 Azure [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+若要對裝載於 Azure 外部的混合式機器提供這項體驗，您必須在計畫連線到 Azure 的每部機器上安裝 Azure Connected Machine 代理程式。 此代理程式不會提供任何其他功能，也不會取代 Azure [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-introduction.md))。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
@@ -23,7 +23,7 @@ ms.locfileid: "91818742"
 
 - 使用與 Azure 虛擬機器原則指派相同的體驗來指派 [Azure 原則客體設定](../../governance/policy/concepts/guest-configuration.md)。 現今，大部分「來賓設定」原則不會套用設定，這些原則只會稽核機器內的設定。 若要了解搭配已啟用 Arc 的伺服器使用 Azure 原則來賓設定原則的成本，請參閱 Azure 原則[定價指南](https://azure.microsoft.com/pricing/details/azure-policy/)。
 
-- 使用 Azure 自動化[變更追蹤和詳細目錄](../../automation/change-tracking.md)，報告已安裝軟體、Microsoft 服務、Windows 登錄和檔案以及受監視伺服器上之 Linux 精靈的組態變更。
+- 使用 Azure 自動化[變更追蹤和詳細目錄](../../automation/change-tracking/overview.md)，報告已安裝軟體、Microsoft 服務、Windows 登錄和檔案以及受監視伺服器上之 Linux 精靈的組態變更。
 
 - 監視已連線機器的客體作業系統效能，並探索應用程式元件，以使用[適用於 VM 的 Azure 監視器](../../azure-monitor/insights/vminsights-overview.md)來監視其程序以及與應用程式所通訊的其他資源相依性。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91818742"
 
 - 使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)，來管理 Windows 和 Linux 伺服器的作業系統更新。 先部署[混合式 Runbook 背景工作角色](../../automation/automation-hybrid-runbook-worker.md)角色，然後依照步驟在您的非 Azure Windows 或 Linux 電腦上[啟用更新管理](../../automation/update-management/update-mgmt-enable-portal.md)。
 
-- 納入非 Azure 伺服器以執行威脅偵測，並使用 [Azure 資訊安全中心](../../security-center/security-center-intro.md)主動監視潛在安全性威脅。
+- 納入非 Azure 伺服器以執行威脅偵測，並使用 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)主動監視潛在安全性威脅。
 
 從混合式機器收集並儲存在 Log Analytics 工作區中的記錄資料，現在會包含機器特有的屬性，例如資源識別碼。 這可以用來支援[資源內容](../../azure-monitor/platform/design-logs-deployment.md#access-mode)記錄存取。
 

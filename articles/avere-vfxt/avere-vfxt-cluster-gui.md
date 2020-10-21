@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505608"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342428"
 ---
 # <a name="access-the-vfxt-cluster"></a>存取 vFXT 叢集
 
@@ -27,7 +27,7 @@ ms.locfileid: "85505608"
 > [!NOTE]
 > 本文假設您已經在叢集中控制器上，或在叢集虛擬網路內的另一個 VM 上，設定公用 IP 位址。 本文說明如何使用該 VM 作為主機來存取叢集。 如果您使用 VPN 或 ExpressRoute 來存取虛擬網路，請跳到連線 [到 Avere 主控台](#connect-to-the-avere-control-panel-in-a-browser)。
 
-連線之前，請確定本機電腦上已安裝建立叢集控制器時所使用的 SSH 公開/私密金鑰組。 如果您需要協助，請閱讀 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 適用的 SSH 金鑰文件。 如果您使用的是密碼而非公開金鑰，則當您連接時，系統會提示您輸入密碼。
+連線之前，請確定本機電腦上已安裝建立叢集控制器時所使用的 SSH 公開/私密金鑰組。 如果您需要協助，請閱讀 [Windows](../virtual-machines/linux/ssh-from-windows.md) 或 [Linux](../virtual-machines/linux/mac-create-ssh-keys.md) 適用的 SSH 金鑰文件。 如果您使用的是密碼而非公開金鑰，則當您連接時，系統會提示您輸入密碼。
 
 ## <a name="create-an-ssh-tunnel"></a>建立 SSH 通道
 
@@ -65,6 +65,6 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 按一下 [登入]****，或按鍵盤上的 Enter 鍵。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 登入叢集的 [控制台] 之後，請啟用 [支援](avere-vfxt-enable-support.md)。

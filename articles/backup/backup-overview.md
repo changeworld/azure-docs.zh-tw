@@ -4,12 +4,12 @@ description: 提供 Azure 備份服務的概觀，並說明如何將它提供給
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 537605498fe166b24bd4e24673cfa1542bc449ea
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968342"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172472"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什麼是 Azure 備份服務？
 
@@ -46,7 +46,7 @@ Azure 備份可提供下列主要優點：
 - **多個儲存體選項** - Azure 備份提供兩種類型的複寫，讓您的儲存體/資料保有高可用性。
   - [本地備援儲存體 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 會將資料複寫至資料中心的儲存體縮放單位三次 (建立三個資料複本)。 此資料的所有複本都存在於相同的區域內。 LRS 是保護資料免於本機硬體失敗的低成本選項。
   - [異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是預設且建議使用的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
-  - [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。 ZRS 不會停機。 因此，您需要[資料落地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必須沒有停機時間的重要工作負載，可以在 ZRS 中備份。
+  - [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](../availability-zones/az-overview.md#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。 ZRS 不會停機。 因此，您需要[資料落地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必須沒有停機時間的重要工作負載，可以在 ZRS 中備份。
 
 ## <a name="next-steps"></a>後續步驟
 

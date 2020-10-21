@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688924"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151537"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>使用保留容量來節省 Azure App Service 隔離式方案戳記費用的成本
 
@@ -39,7 +39,7 @@ ms.locfileid: "88688924"
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>購買隔離式方案戳記保留容量
 
-您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)購買隔離式方案戳記保留容量。 保留的付款方式可為[預先付款或每月付款](monthly-payments-reservations.md)。 若要購買保留容量，您必須擁有至少一個企業訂用帳戶的擁有者角色，或具有隨用隨付費率的個別訂用帳戶的擁有者角色。
+您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)購買隔離式方案戳記保留容量。 保留的付款方式可為[預先付款或每月付款](./prepare-buy-reservation.md)。 若要購買保留容量，您必須擁有至少一個企業訂用帳戶的擁有者角色，或具有隨用隨付費率的個別訂用帳戶的擁有者角色。
 
 - 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 [新增保留執行個體]  選項。 或者，如果該設定已停用，則您必須是 EA 系統管理員。
 - 若為雲端解決方案提供者 (CSP) 方案，則只有系統管理員代理人或銷售人員可以購買 Azure Synapse Analytics 保留容量。
