@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bcea36b99ae51da256d6b4fc49a4e3965a8c82c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378590"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279177"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>使用商用 marketplace 計量服務進行 SaaS 的計量計費
 
@@ -153,7 +153,7 @@ ms.locfileid: "89378590"
 - 因為您端的錯誤或錯誤，而需要提升的問題 (例如 ) 的使用事件錯誤。
 - 任何其他與計量付費相關的問題。
 
-若要瞭解發行者支援選項，並向 Microsoft 提出支援票證，請依照 [合作夥伴中心中的「商業 marketplace」方案的支援](./support.md)指示進行。
+若要瞭解發行者支援選項，並向 Microsoft 提出支援票證，請依照 [合作夥伴中心中的「商業 marketplace」方案的支援](../support.md)指示進行。
 
 ## <a name="next-steps"></a>後續步驟
 

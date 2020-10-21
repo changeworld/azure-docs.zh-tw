@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448379"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275969"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 簡介
 
@@ -66,7 +66,7 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可透過 REST API 取得掃描結果？
 是。 結果會存放在[子評量 Rest API](/rest/api/securitycenter/subassessments/list/) 下。 此外，您可以使用 Azure Resource Graph (ARG)，這是適用於所有資源的類 Kusto API：查詢可以擷取特定的掃描。
- 
+
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>掃描的登錄類型為何？ 哪些類型需計費？
 如需適用於容器登錄的 Azure Defender 所支援的容器登錄類型清單，請參閱[可用性](defender-for-container-registries-usage.md#availability)。
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798018"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277456"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>從我的應用程式入口網站執行存取權檢閱
 
@@ -45,7 +45,7 @@ ms.locfileid: "88798018"
 
     [應用程式] 頁面隨即出現，其中顯示您組織所擁有且可供您使用的所有雲端式應用程式。
 
-    ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-home.png)
 
 3. 選取 [存取權檢閱] 圖格來查看等待您核准的存取權檢閱清單。
 

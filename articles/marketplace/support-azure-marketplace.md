@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329749"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275426"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 的支援
 
@@ -45,6 +45,6 @@ ms.locfileid: "91329749"
 ## <a name="next-steps"></a>後續步驟
 
 * 瀏覽[商業市集發行者指南頁面](index.yml)。
-* 深入了解[合作夥伴中心的商業市集計畫支援](partner-center-portal/support.md)。
+* 深入了解[合作夥伴中心的商業市集計畫支援](support.md)。
 
 ---

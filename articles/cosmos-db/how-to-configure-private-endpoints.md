@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9821e53abcdf95c6cf235cb9d39cd310fcfb66f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334424"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279727"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
 
@@ -684,7 +684,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 若要深入了解 Azure Cosmos DB 安全性功能，請參閱下列文章：
 
-* 若要設定 Azure Cosmos DB 的防火牆，請參閱[防火牆支援](firewall-support.md)。
+* 若要設定 Azure Cosmos DB 的防火牆，請參閱[防火牆支援](how-to-configure-firewall.md)。
 
 * 若要了解如何設定 Azure Cosmos 帳戶的虛擬網路服務端點，請參閱[設定從虛擬網路存取](how-to-configure-vnet-service-endpoint.md)。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145980"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282255"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -83,7 +83,7 @@ await client.CreateEventRoute("routeName", er);
 
 1. 首先 `EventRoute` 會建立物件，而此函式會採用端點的名稱。 此 `endpointName` 欄位會識別端點，例如事件中樞、事件方格或服務匯流排。 您必須在訂用帳戶中建立這些端點，並使用控制平面 Api 連接至 Azure 數位 Twins，然後再進行此註冊呼叫。
 
-2. 事件路由物件也有 [**篩選**](./how-to-manage-routes-apis-cli.md#filter-events) 欄位，可用來限制遵循此路由的事件種類。 篩選 `true` 可讓您不進行其他篩選， (篩選準則停用 `false` 路由) 。 
+2. 事件路由物件也有 [**篩選**](how-to-manage-routes-apis-cli.md#filter-events) 欄位，可用來限制遵循此路由的事件種類。 篩選 `true` 可讓您不進行其他篩選， (篩選準則停用 `false` 路由) 。 
 
 3. 此事件路由物件接著會傳遞至 `CreateEventRoute` ，以及路由的名稱。
 
@@ -93,18 +93,19 @@ await client.CreateEventRoute("routeName", er);
 您也可以使用 [Azure 數位 TWINS CLI](how-to-use-cli.md)來建立路由。
 
 ## <a name="dead-letter-events"></a>無效信件事件
+
 當端點無法在某段時間內或在嘗試傳遞事件一段特定的次數之後傳遞事件時，它可以將未傳遞的事件傳送至儲存體帳戶。 此處理程式稱為無效**信件。** 當符合 **下列其中一個** 條件時，Azure 數位 Twins 將會寄不出信件給您的事件。 
 
-- 事件不會在存留時間期間傳遞
-- 嘗試傳遞事件的次數已超過限制
+* 事件不會在存留時間期間傳遞
+* 嘗試傳遞事件的次數已超過限制
 
-如果符合其中一個條件，就會捨棄事件或寄不出的信件。  依預設，每個端點都 **不會開啟無效** 信件。 若要啟用它，您必須在建立端點時指定儲存體帳戶來保存未傳遞的事件。 您可從這個儲存體帳戶提取事件，以解析傳遞項目。
+如果符合其中一個條件，就會捨棄事件或寄不出的信件。 依預設，每個端點都 **不會開啟無效** 信件。 若要啟用它，您必須在建立端點時指定儲存體帳戶來保存未傳遞的事件。 然後，您可以從這個儲存體帳戶提取事件來解析傳遞。
 
 在設定無效信件位置之前，您必須先有具備容器的儲存體帳戶。 建立端點時，您會提供此容器的 URL。 寄不出的信件是以具有 SAS 權杖的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
 若要深入瞭解 SAS 權杖，請參閱： [*使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源) *](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-若要瞭解如何設定寄不出的信件，請參閱作法 [*：在 Azure 數位 Twins 中管理端點和路由 (api 和 CLI) *](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
+若要瞭解如何使用無效信件來設定端點，請參閱作法 [*：在 Azure 數位 Twins 中管理端點和路由 (api 和 CLI) *](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
 
 ### <a name="types-of-event-messages"></a>事件訊息的類型
 

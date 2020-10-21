@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798069"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277469"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在我的應用程式入口網站中更新您的群組資訊
 
-您可以透過 [我的應用程式] Web 入口網站使用工作或學校帳戶，來檢視和啟動貴組織的許多雲端式應用程式、更新您的設定檔和帳戶資訊、查看您的**群組**資訊，以及執行您應用程式和群組的**存取權檢閱**。 如果您沒有 [我的應用程式] 入口網站的存取權，則必須連絡技術服務人員以取得權限。
+您可以使用公司或學校帳戶搭配 web **我的應用程式** 入口網站來查看和啟動許多組織的雲端式應用程式，以更新您的部分設定檔和帳戶資訊，以查看您的 **群組** 資訊，以及執行應用程式和群組的 **存取權審核** 。 如果您沒有 [我的應用程式] 入口網站的存取權，則必須連絡技術服務人員以取得權限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -44,13 +44,11 @@ ms.locfileid: "88798069"
 
     [應用程式] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端式應用程式。
 
-    ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. 選取 [群組] 圖格，以檢視群組相關資訊。
+3. 下拉 [ **我的應用程式** ] 功能表，並選取 [ **我的群組** ] 以查看群組的相關資訊。
 
-    ![具備自有和成員群組的群組頁面](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. 根據您的權限，您可使用 [群組] 頁面來執行下列動作：
+4. 根據您的許可權，您可以使用 [ **我的群組** ] 頁面：
 
     - **檢閱您擁有的群組。** 從 [我擁有的群組] 區域，檢視您在貴組織內擁有的任何群組相關資訊。 選取特定群組名稱，系統就會提供更多關於群組的詳細資料，包括群組類型、成員數目、加入原則和作用中成員清單。
 

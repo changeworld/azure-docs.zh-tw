@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369904"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281411"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -78,7 +78,7 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 | 供應項目類型 <img src="" width=150px>| 移至合作夥伴中心？ <img src="" width=100px>| 後續步驟 |
 | --- | --- | --- |
 | SaaS | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何在 [商業市場中建立新的 SaaS 供應](partner-center-portal/create-new-saas-offer.md)專案。 |
-| 虛擬機器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何在 [Azure Marketplace 上建立 Azure 虛擬機器供應](partner-center-portal/azure-vm-create-offer.md)專案。 |
+| 虛擬機器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何在 [Azure Marketplace 上建立 Azure 虛擬機器供應](azure-vm-create.md)專案。 |
 | Azure 應用程式 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 應用程式供應](partner-center-portal/create-new-azure-apps-offer.md)專案。 |
 | Dynamics 365 Business Central | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
 | Dynamics 365 for Customer Engagement & PowerApps | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Dynamics 365 For Customer Engagement & PowerApps 供應專案](partner-center-portal/create-new-customer-engagement-offer.md)。 |
@@ -155,16 +155,16 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 
 此外，您先前在 **Marketplace** 或 **店面詳細資料**  中提供的資訊 (諮詢服務、Cloud Partner 入口網站中 Power BI 的應用程式) 頁面，現在會在合作夥伴中心中的 **供應專案清單** 頁面上收集：
 
-[![螢幕擷取畫面顯示合作夥伴中心的供應專案清單頁面。](media/cpp-pc-faq/offer-listing.png "顯示合作夥伴中心供應專案清單頁面")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![螢幕擷取畫面顯示合作夥伴中心供應專案清單頁面]。 (媒體/cpp-pc-常見問題/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 您先前在 Cloud Partner 入口網站的單一頁面中提供的 Sku 資訊，現在可能會在合作夥伴中心的數個頁面中收集：
 
-- [計劃設定] 頁面
+- 規劃設定頁面
 - [計劃清單] 頁面
 - 計劃 [可用性] 頁面
 - 規劃技術配置頁面，如下所示：
 
-![![螢幕擷取畫面顯示合作夥伴中心技術配置] 頁面。] (媒體/cpp-pc-常見問題/technical-configuration.png] 顯示合作夥伴中心技術設定頁面] ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![顯示合作夥伴中心技術配置] 頁面。](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 供應專案識別碼現在會顯示在供應專案的左側導覽列中：
 

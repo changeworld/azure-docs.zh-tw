@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320080"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280539"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>計量付費的異常偵測服務
 
@@ -74,7 +74,7 @@ ms.locfileid: "87320080"
     - **商業 Marketplace**  > **計量付費**  > **針對 SaaS 供應專案傳送的使用錯誤**
 3. 在 **下一個步驟**中，選取要導向以登入合作夥伴中心的 [ **審核方案** ] 按鈕，以提交支援票證。
 
-如需更多發行者支援選項，請參閱 [合作夥伴中心中的商業 marketplace 計畫支援](support.md)。
+如需更多發行者支援選項，請參閱 [合作夥伴中心中的商業 marketplace 計畫支援](../support.md)。
 
 ## <a name="next-step"></a>後續步驟
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/14/2020
+ms.date: 08/19/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439739"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275654"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -61,7 +61,7 @@ ms.locfileid: "89439739"
 6. 加入 Microsoft 合作夥伴網路。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -240,7 +240,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 
 ![在資源庫中列出 SAML 2.0 或 WS-Fed 應用程式](./media/howto-app-gallery-listing/saml.png)
 
-如果您想要使用密碼 SSO 將應用程式新增至資源庫中的清單，請選取 [ **密碼 sso** ]，如下所示。
+如果您想要使用密碼 SSO 將應用程式新增至資源庫中的清單，請選取 [ **密碼 sso (使用者名稱 & 密碼) ** 如下所示。
 
 ![在資源庫中列出密碼 SSO 應用程式](./media/howto-app-gallery-listing/passwordsso.png)
 

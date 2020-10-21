@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570009"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320223"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>針對于 postgresql 超大規模伺服器群組進行疑難排解
 本文描述您可以用來疑難排解伺服器群組的一些技巧。 除了本文之外，您還需要閱讀如何使用 [Kibana](monitor-grafana-kibana.md) 來搜尋記錄，或使用 [Grafana](monitor-grafana-kibana.md) 來視覺化伺服器群組的相關度量。 
@@ -51,13 +51,13 @@ azdata arc postgres server create --help
 
 ### <a name="install-tools"></a>安裝工具
 
-安裝 Azure Data Studio， `kubectl` 以及在 `azdata` Azure Data Studio 中用來執行筆記本的用戶端電腦上。 若要這樣做，請依照[安裝用戶端工具](install-client-tools.md)上的指示進行。
+安裝 Azure Data Studio， `kubectl` 以及在 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio 中用來執行筆記本的用戶端電腦上。 若要這樣做，請依照[安裝用戶端工具](install-client-tools.md)上的指示進行。
 
 ### <a name="update-the-path-environment-variable"></a>更新 PATH 環境變數
 
 請確定可以從這部用戶端電腦上的任何位置叫用這些工具。 例如，在 Windows 用戶端電腦上，更新 PATH 系統內容變數，並新增您安裝 kubectl 的資料夾。
 
-### <a name="sign-in-with-azdata"></a>登入 `azdata`
+### <a name="sign-in-with-azure-data-cli-azdata"></a>登入 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 從這部用戶端電腦登入 Arc 資料控制器，然後再啟動 Azure Data Studio。 若要這樣做，請執行類似下列的命令：
 

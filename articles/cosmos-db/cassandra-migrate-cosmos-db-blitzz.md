@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66314155a8de5036009b8e42bf84a8ae8860d0ea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260622"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278947"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 將將資料從 Cassandra 遷移至 Azure Cosmos DB Cassandra API 帳戶
 
@@ -34,7 +34,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
 * Blitzz 將提供大量和平行資料庫複寫。 它可讓來源和目標平臺在遷移期間，使用稱為變更資料-捕獲 (CDC) 的技術進行同步處理。 藉由使用 CDC，Blitzz 將會持續從源資料庫提取 (Apache Cassandra) 的變更串流，並將其套用至目的地資料庫 (Azure Cosmos DB) 。
 
-* 即使在系統中的硬體或軟體失敗時，它仍可容錯且保證只會一次傳遞資料。
+* 它具有容錯能力，即使在系統中的硬體或軟體失敗時，也只會提供一次資料傳遞。
 
 * 它會使用各種安全性方法（例如 TLS、加密）來保護傳輸期間的資料。
 

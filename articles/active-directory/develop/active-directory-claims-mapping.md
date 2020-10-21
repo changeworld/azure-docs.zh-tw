@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601464"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275789"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -419,7 +419,7 @@ ms.locfileid: "90601464"
 
 ### <a name="custom-signing-key"></a>自訂簽署金鑰
 
-您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure PowerShell Cmdlet `new-azureadapplicationkeycredential`，為您的應用程式物件建立對稱金鑰認證。 如需此 Azure PowerShell Cmdlet 的詳細資訊，請參閱 [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure PowerShell Cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) 來建立應用程式物件的憑證金鑰認證。
 
 已啟用宣告對應的應用程式必須將 `appid={client_id}` 附加至其 [OpenID Connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)，以驗證其權杖簽署金鑰。 以下是您應該使用的 OpenID Connect 中繼資料文件格式︰
 

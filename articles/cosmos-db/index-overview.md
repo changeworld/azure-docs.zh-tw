@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35d81d0076c4b29a8b1399331aa0254178720931
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068382"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277823"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
 
-Azure Cosmos DB 是一個無從驗證結構描述的資料庫，可讓您逐一查看應用程式，而不需處理結構描述或索引管理。 根據預設，Azure Cosmos DB 會自動為[容器](databases-containers-items.md#azure-cosmos-containers)中的所有項目編製索引，而不需要界定任何結構描述或設定次要索引。
+Azure Cosmos DB 是一個無從驗證結構描述的資料庫，可讓您逐一查看應用程式，而不需處理結構描述或索引管理。 根據預設，Azure Cosmos DB 會自動為[容器](account-databases-containers-items.md#azure-cosmos-containers)中的所有項目編製索引，而不需要界定任何結構描述或設定次要索引。
 
 本文的目標是要說明 Azure Cosmos DB 如何為資料編製索引，以及如何使用索引來改善查詢效能。 建議您先完成本節，再探索如何自訂[索引編製原則](index-policy.md)。
 

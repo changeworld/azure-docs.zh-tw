@@ -4,27 +4,27 @@ description: 了解如何針對 Azure Cosmos DB SQL 查詢問題進行識別、�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089984"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277173"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>針對使用 Azure Cosmos DB 時發生的查詢問題進行疑難排解
 
-本文會逐步解說針對 Azure Cosmos DB 中查詢進行疑難排解的一般建議方法。 雖然您不應將本文所述的步驟視為潛在查詢問題的完整防禦方法，但我們已在此納入最常見的效能秘訣。 您應該使用本文作為 Azure Cosmos DB 核心 (SQL) API 中查詢緩慢或成本高昂的疑難排解起點。 您也可以使用[診斷記錄](cosmosdb-monitor-resource-logs.md)來識別緩慢或耗用大量輸送量的查詢。
+本文會逐步解說針對 Azure Cosmos DB 中查詢進行疑難排解的一般建議方法。 雖然您不應將本文所述的步驟視為潛在查詢問題的完整防禦方法，但我們已在此納入最常見的效能秘訣。 您應該使用本文作為 Azure Cosmos DB 核心 (SQL) API 中查詢緩慢或成本高昂的疑難排解起點。 您也可以使用[診斷記錄](cosmosdb-monitor-resource-logs.md)來識別緩慢或耗用大量輸送量的查詢。 如果您使用 Azure Cosmos DB 適用于 MongoDB 的 API，則應使用 [Azure Cosmos DB 適用于 mongodb 的 api 查詢疑難排解指南](mongodb-troubleshoot-query.md)
 
-您可以針對 Azure Cosmos DB 中的查詢最佳化，進行廣泛的分類：
+Azure Cosmos DB 中的查詢優化廣泛分類如下：
 
 - 減少查詢要求單位 (RU) 費用的最佳化
 - 只降低延遲的最佳化
 
-如果您降低查詢的 RU 費用，幾乎也等同於降低了延遲。
+如果您減少查詢的 RU 費用，通常也會降低延遲。
 
 本文提供的範例可讓您使用 [營養資料集](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)來重新建立。
 
@@ -191,7 +191,7 @@ WHERE c.description = "Malabar spinach, cooked"
 
 **RU 費用：** 2.98 RU
 
-您可以隨時將屬性新增至索引編製原則，而不會影響寫入可用性或效能。 如果您將新的屬性加入至索引，使用屬性的查詢將會立即使用新的可用索引。 查詢會在新索引建立時即使用該索引。 因此，當索引重建正在進行時，查詢結果可能會不一致。 如果有新的屬性加入索引，則僅使用現有索引的查詢不會在索引重建期間受到影響。 您可以[追蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
+您可以隨時將屬性新增至索引編制原則，而不會影響寫入或讀取可用性。 您可以[追蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
 
 ### <a name="understand-which-system-functions-use-the-index"></a>了解哪些系統函數會使用索引
 
@@ -469,7 +469,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="optimizations-that-reduce-query-latency"></a>減少查詢延遲的最佳化
 
-在許多情況下，RU 費用是可接受的，但查詢延遲仍然太高。 下列各節概述減少查詢延遲的秘訣。 如果您在相同的資料集上多次執行相同查詢，每一次都會有相同的 RU 費用。 但是查詢的延遲可能會因查詢執行不同而有所差異。
+在許多情況下，RU 費用是可接受的，但查詢延遲仍然太高。 下列各節概述減少查詢延遲的秘訣。 如果您在相同的資料集上多次執行相同的查詢，則每次通常會有相同的 RU 費用。 但是查詢的延遲可能會因查詢執行不同而有所差異。
 
 ### <a name="improve-proximity"></a>改善鄰近性
 

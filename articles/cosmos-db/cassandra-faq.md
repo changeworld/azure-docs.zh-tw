@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167601"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278194"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>關於 Cassandra API 的常見問題 Azure Cosmos DB
 
@@ -79,11 +79,11 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>主要索引鍵是否會對應至 Azure Cosmos DB 的資料分割索引鍵概念？
 
-是，資料分割索引鍵是用來將實體放置在正確的位置。 在 Azure Cosmos DB 中，它是用來尋找實體資料分割上所儲存的正確邏輯資料分割。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。 此處的重要重點是邏輯分割區不應超過 20 GB 的限制。
+是，資料分割索引鍵是用來將實體放置在正確的位置。 在 Azure Cosmos DB 中，它是用來尋找實體資料分割上所儲存的正確邏輯資料分割。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partitioning-overview.md)一文。 此處的重要重點是邏輯分割區不應超過 20 GB 的限制。
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>當我收到磁碟分割已滿的通知時，會發生什麼事？
 
-Azure Cosmos DB 是以服務等級協定為基礎的系統， (SLA) 。 它提供無限制的調整，並保證延遲、輸送量、可用性及一致性。 這種無限制的儲存體是以水準相應放大的資料為基礎，使用資料分割作為主要概念。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。
+Azure Cosmos DB 是以服務等級協定為基礎的系統， (SLA) 。 它提供無限制的調整，並保證延遲、輸送量、可用性及一致性。 這種無限制的儲存體是以水準相應放大的資料為基礎，使用資料分割作為主要概念。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partitioning-overview.md)一文。
 
 您應遵循每個邏輯分割區的實體或專案數目的 20 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」** 建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有一個資料分割索引鍵的大量資料 (20 GB 以上的) 。 您可以使用儲存體入口網站來尋找資料的分佈。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要 (分割區索引鍵) ，以便更妥善地散發資料。
 
@@ -169,7 +169,7 @@ Cassandra API 從 Azure Cosmos DB 的全域分散式平臺借用。 為確保您
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Cassandra API 預設會為實體的所有屬性編制索引嗎？
 
-否。 Cassandra API 支援 [次要索引](cassandra-secondary-index.md)，其行為方式與 Apache Cassandra 類似。 根據預設，API 不會編制每個屬性的索引。  
+不正確。 Cassandra API 支援 [次要索引](cassandra-secondary-index.md)，其行為方式與 Apache Cassandra 類似。 根據預設，API 不會編制每個屬性的索引。  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>我可以在本機搭配使用新的 Cassandra API SDK 與模擬器嗎？

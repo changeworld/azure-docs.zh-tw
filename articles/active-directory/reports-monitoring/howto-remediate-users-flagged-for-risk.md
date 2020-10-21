@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600495"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308950"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
 
@@ -60,7 +60,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 採取下列動作來協助改正受影響的帳戶以及保護您的環境：
 
 1.  [驗證正確的資訊](https://aka.ms/MFAValid)，以進行多重要素驗證和自助式密碼重設。 
-2.  對所有使用者[啟用多重要素驗證](https://aka.ms/MFAuth)。 
+2.  對所有使用者[啟用多重要素驗證](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication)。 
 3.  對每個受影響的帳戶使用此[補救指令碼](https://aka.ms/remediate)，以自動執行下列步驟： 
 
     a. 重設密碼以保護帳戶及刪除作用中的工作階段。
@@ -85,8 +85,8 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 此外，您應該：
 
-- 讀取及實作這個[關於處理異常活動的指引](https://aka.ms/fixaccount)。 
-- [啟用稽核管線](https://aka.ms/improvesecurity)可協助您分析租用戶中的活動。 完成後，您的稽核存放區會開始填入活動記錄。 此時，您也能夠運用[安全性和規範中心的搜尋與調查資源](https://aka.ms/sccsearch)。 
+- 讀取及實作這個[關於處理異常活動的指引](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account)。 
+- [啟用稽核管線](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability)可協助您分析租用戶中的活動。 完成後，您的稽核存放區會開始填入活動記錄。 此時，您也能夠運用[安全性和規範中心的搜尋與調查資源](https://aka.ms/sccsearch)。 
 - 檢閱您所有信箱的委派權限和郵件轉寄規則。 您可以使用此 [PowerShell 指令碼](https://aka.ms/delegateforwardrules)來執行此工作。 
 
 ## <a name="next-steps"></a>後續步驟

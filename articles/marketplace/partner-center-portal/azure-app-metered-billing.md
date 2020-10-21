@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320046"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280459"
 ---
 # <a name="managed-application-metered-billing"></a>受控應用程式計量計費 
 
@@ -117,8 +117,8 @@ ms.locfileid: "87320046"
 * 因為您端的錯誤或錯誤，而需要提升的問題 (例如 ) 的使用事件錯誤。
 * 任何其他與計量付費相關的問題。
 
-遵循 [合作夥伴中心中的「商業 marketplace 方案」支援](./support.md) 的指示，瞭解發行者支援選項，並向 Microsoft 提出支援票證。
+遵循 [合作夥伴中心中的「商業 marketplace 方案」支援](../support.md) 的指示，瞭解發行者支援選項，並向 Microsoft 提出支援票證。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需詳細資訊，請參閱 [Marketplace 計量服務 api](./marketplace-metering-service-apis.md) 。

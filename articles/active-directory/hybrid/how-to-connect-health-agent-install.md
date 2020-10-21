@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/24/2020
+ms.date: 10/20/2020
 ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631642"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275641"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
@@ -42,7 +42,7 @@ ms.locfileid: "91631642"
 | 已篩選或停用輸出流量的 TLS 檢查 | 如果網路層有輸出流量的 TLS 檢查或終止，則代理程式註冊步驟或資料上傳作業可能會失敗。 深入瞭解 [如何設定 TLS 檢查](/previous-versions/tn-archive/ee796230(v=technet.10)) |
 | 防火牆連接埠 (位於執行代理程式的伺服器上) |為了讓代理程式能與 Azure AD Health 服務端點進行通訊，代理程式要求開啟下列防火牆連接埠。<br /><br /><li>TCP 通訊埠 443</li><li>TCP 通訊埠 5671</li> <br />請注意，最新版的代理程式不再需要連接埠 5671。 升級到最新版本，因此只需要連接埠 443。 深入了解[啟用防火牆連接埠](/previous-versions/sql/sql-server-2008/ms345310(v=sql.100)) |
 | 如果啟用 IE 增強式安全性，則允許下列網站 |如果啟用 IE 增強式安全性，則在即將安裝代理程式的伺服器上必須允許下列網站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>HTTPs： \/ /aadcdn.msftauth.net</li><li>Azure Active Directory 所信任適用於您組織的同盟伺服器。 例如：https:\//sts.contoso.com</li> 深入瞭解 [如何設定 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)。 如果您的網路內有 proxy，請參閱下面的附注。|
-| 確定已安裝 PowerShell 4.0 版或更新版本 | <li>Windows Server 2008 R2 隨附了 PowerShell 2.0 版，它對代理程式來說並不足夠。 如以下的 [Windows Server 2008 R2 伺服器上的代理程式安裝](#agent-installation-on-windows-server-2008-r2-servers)中所述，更新 PowerShell。</li><li>Windows Server 2012 隨附了 PowerShell 3.0 版，它對代理程式來說並不足夠。</li><li>Windows Server 2012 R2 和更新版本隨附了足夠的 PowerShell 最新版本。</li>|
+| 確定已安裝 PowerShell 4.0 版或更新版本 | <li>Windows Server 2012 隨附了 PowerShell 3.0 版，它對代理程式來說並不足夠。</li><li>Windows Server 2012 R2 和更新版本隨附了足夠的 PowerShell 最新版本。</li>|
 |停用 FIPS|Azure AD Connect Health 代理程式不支援 FIPS。|
 
 > [!IMPORTANT]
@@ -60,7 +60,7 @@ ms.locfileid: "91631642"
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
 | 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
-| Azure 德國 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 
 
@@ -111,17 +111,6 @@ ms.locfileid: "91631642"
 
 ![Azure AD Connect Health AD FS 服務](./media/how-to-connect-health-agent-install/install5.png)
 
-### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>Windows Server 2008 R2 伺服器上的代理程式安裝
-
-適用於 Windows Server 2008 R2 伺服器的步驟：
-
-1. 請確定伺服器在 Service Pack 1 或更高版本上執行。
-2. 關閉 IE ESC 以安裝代理程式：
-3. 在安裝 AD Health 代理程式之前，先在每部伺服器上安裝 Windows PowerShell 4.0。 安裝 Windows PowerShell 4.0：
-   * 使用下列連結下載離線安裝程式，以安裝 [Microsoft.NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=40779) 。
-   * 安裝 PowerShell ISE (從 Windows 功能)
-   * 在伺服器上安裝 Internet Explorer 10 或更新版本。 (Health 服務使用 Azure 系統管理員認證進行驗證時所需)。
-4. 如需有關在 Windows Server 2008 R2 上安裝 Windows PowerShell 4.0 的詳細資訊，請參閱[這裡](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx)的 Wiki 文章。
 
 ### <a name="enable-auditing-for-ad-fs"></a>啟用 AD FS 的稽核
 
@@ -130,20 +119,6 @@ ms.locfileid: "91631642"
 >
 
 若要讓使用情況分析功能收集並分析資料，Azure AD Connect Health 代理程式需要 AD FS 稽核記錄中的資訊。 預設不會啟用這些記錄。 使用下列程序啟用 AD FS 稽核，並在 AD FS 伺服器上找出 AD FS 稽核記錄。
-
-#### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>在 Windows Server 2008 R2 上啟用 AD FS 的稽核
-
-1. 按一下 [開始]****，依序指向 [程式集]**** 和 [系統管理工具]****，然後按一下 [本機安全性原則]****。
-2. 瀏覽至**安全性設定\本機原則\使用者權限指派**資料夾，然後再按兩下 [產生安全性稽核]****。
-3. 在 [本機安全性設定]**** 索引標籤上，確認 AD FS 2.0 服務帳戶已列出。 如果帳戶不存在，請按一下 [新增使用者或群組]**** 並將它加入清單中，然後按一下 [確定]****。
-4. 若要啟用稽核，請使用提高的權限開啟命令提示字元，然後執行下列命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. 關閉 [本機安全性原則]****。
-<br />   -- **只有主要 AD FS 伺服器才需要執行下列步驟。** -- <br />
-6. 開啟 [AD FS 管理]**** 嵌入式管理單元。 若要開啟 [AD FS 管理] 嵌入式管理單元，按一下 [開始]****，依序指向 [程式集]**** 和 [系統管理工具]****，然後按一下 [AD FS 2.0 管理]****。
-7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
-8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
-9. 選取 [成功稽核]**** 和 [失敗稽核]**** 核取方塊。
-10. 按一下 [確定]。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上啟用 AD FS 的稽核
 
@@ -322,7 +297,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 您有下列選項來設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
 > [!NOTE]
-> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行以下命令：<br />
+> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行下列命令：<br />
 > Restart-Service AzureADConnectHealth *
 >
 >

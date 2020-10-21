@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319978"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278012"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace 計量付費 Api
 
@@ -273,8 +273,8 @@ TLS 1.2 版是以 HTTPS 通訊的最基本版本來強制執行。 請務必在�
 
 ## <a name="get-support"></a>取得支援
 
-遵循 [合作夥伴中心中的「商業 marketplace 方案支援](./support.md) 」中的指示，瞭解發行者支援選項，並向 Microsoft 提出支援票證。
+遵循 [合作夥伴中心中的「商業 marketplace 方案支援](../support.md) 」中的指示，瞭解發行者支援選項，並向 Microsoft 提出支援票證。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關計量服務 Api 的詳細資訊，請參閱 [Marketplace 計量服務 API 常見問題](./marketplace-metering-service-apis-faq.md)。

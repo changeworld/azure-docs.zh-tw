@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ae5632f2495ac5916ac8c86666e973c34d1b789
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215224"
+ms.locfileid: "92275283"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授權碼流程
 
@@ -24,7 +24,7 @@ ms.locfileid: "92215224"
 
 如需 OAuth 2.0 授權碼流程的說明，請參閱 [OAuth 2.0 規格的 4.1 節](https://tools.ietf.org/html/rfc6749)。 您可以使用它在大部分的 [應用程式類型](application-types.md)中進行驗證和授權，包括 web 應用程式、單一頁面應用程式，以及原生安裝的應用程式。 您可以使用 OAuth 2.0 授權碼流程，安全地為您的應用程式取得存取權杖和重新整理權杖，而這些存取權杖可用來存取[授權伺服器](protocols-overview.md)所保護的資源。  一旦存取權杖到期 (通常在一小時後)，重新整理權杖即可讓用戶端取得新的存取 (和重新整理) 權杖。
 
-<!-- This article focuses on the **public clients** OAuth 2.0 authorization code flow. A public client is any client application that cannot be trusted to securely maintain the integrity of a secret password. This includes single-page applications, mobile apps, desktop applications, and essentially any application that runs on a device and needs to get access tokens. -->
+本文著重在**公開用戶端** OAuth 2.0 授權碼流程。 公開用戶端是指不可信任會安全地維護密碼完整性的任何用戶端應用程式。 這包括單一頁面應用程式、行動應用程式、桌面應用程式，以及基本上任何未在伺服器上執行的應用程式。
 
 > [!NOTE]
 > 若要使用 Azure AD B2C 將身分識別管理新增至 Web 應用程式，請使用 [OpenID Connect](openid-connect.md)，而不是 OAuth 2.0。
@@ -39,15 +39,9 @@ Azure AD B2C 擴充標準的 OAuth 2.0 流程，功能更強大，而不僅止�
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>單一頁面應用程式所需的重新導向 URI 設定
 
-單頁應用程式的授權碼流程需要一些額外的設定。  請依照指示來 [建立單一頁面應用程式](tutorial-register-spa.md) ，以正確地將您的重新導向 URI 標示為針對 CORS 啟用。 若要更新現有的重新導向 URI 以啟用 CORS，請開啟資訊清單編輯器，並將 `type` 您重新導向 uri 的欄位設定為 `spa` 區段中的 `replyUrlsWithType` 。 您也可以在 [驗證] 索引標籤的 [Web] 區段中，按一下 [重新導向 URI]，然後選取您想要遷移至的 Uri，以使用授權碼流程。
+單頁應用程式的授權碼流程需要一些額外的設定。  請依照指示來 [建立單一頁面應用程式](tutorial-register-spa.md) ，以正確地將您的重新導向 URI 標示為針對 CORS 啟用。 若要更新現有的重新導向 URI 以啟用 CORS，您可以在 **應用程式註冊**的 [ **驗證** ] 索引標籤的 [Web] 區段中，按一下 [遷移] 提示。或者，您也可以開啟 **應用程式註冊資訊清單編輯器** ，並將重新 `type` 導向 URI 的欄位設定為 `spa` 區段中的 `replyUrlsWithType` 。
 
 重新 `spa` 導向類型可回溯相容于隱含流程。 目前使用隱含流程來取得權杖的應用程式可移至重新 `spa` 導向 URI 類型，而不會發生問題，並繼續使用隱含流程。
-
-如果您嘗試使用授權碼流程，並看到此錯誤：
-
-`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
-
-那麼您必須造訪您的應用程式註冊，並更新應用程式的重新導向 URI 為 `spa` 類型。
 
 ## <a name="1-get-an-authorization-code"></a>1. 取得授權碼
 授權碼流程始於用戶端將使用者導向 `/authorize` 端點。 這是使用者在流程中會採取動作的互動部分。 在此要求中，用戶端會在 `scope` 參數中指出必須向使用者索取的權限。 以下三個範例 (插入換行以提高可讀性) 各使用不同的使用者流程。

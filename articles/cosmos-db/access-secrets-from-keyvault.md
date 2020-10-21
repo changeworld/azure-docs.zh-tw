@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262662"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278044"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保護 Azure Cosmos 金鑰 
 
@@ -94,5 +94,5 @@ ms.locfileid: "85262662"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要設定 Azure Cosmos DB 的防火牆，請參閱[防火牆支援](firewall-support.md)一文。
-* 若要設定虛擬網路服務端點，請參閱[使用 VNet 服務端點來保護存取權](vnet-service-endpoint.md)一文。
+* 若要設定 Azure Cosmos DB 的防火牆，請參閱[防火牆支援](how-to-configure-firewall.md)一文。
+* 若要設定虛擬網路服務端點，請參閱[使用 VNet 服務端點來保護存取權](how-to-configure-vnet-service-endpoint.md)一文。

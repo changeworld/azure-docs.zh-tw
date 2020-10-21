@@ -4,12 +4,12 @@ description: 本文會逐步解說使用 PowerShell 來部署 Service Fabric 應
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075183"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309063"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 進行 Service Fabric 應用程式升級
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "89075183"
 透過 Service Fabric 監視輪流升級，應用程式系統管理員即可設定 Service Fabric 用來判斷應用程式健康狀態良好的健康狀態評估原則。 此外，系統管理員可以設定健全狀況評估失敗時要採取的動作 (例如，執行自動回復。 ) 本節會逐步解說使用 PowerShell 的其中一個 SDK 範例的監視升級。 
 
 > [!NOTE]
-> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應先取得參數，並將其傳遞至升級 API 呼叫，如下所示：
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應先取得參數，並將其傳遞至升級 API 呼叫，如下所示：
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -149,4 +149,3 @@ Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 參考 [進階主題](service-fabric-application-upgrade-advanced.md)，以了解如何在升級您的應用程式時使用進階功能。
 
 參考 [疑難排解應用程式升級](service-fabric-application-upgrade-troubleshooting.md)中的步驟，以修正應用程式升級中常見的問題。
-

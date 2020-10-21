@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018964"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282070"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>讀取 Azure Cosmos DB 變更摘要
 
@@ -39,7 +39,7 @@ ms.locfileid: "90018964"
 
 ### <a name="azure-functions"></a>Azure Functions
 
-如果您剛開始使用變更摘要，Azure Functions 就是最簡單的選項。 因其簡潔性之故，其也是大多數變更摘要使用案例的建議選項。 當您建立適用於 Azure Cosmos DB 的 Azure Functions 觸發程序時，您會選取要連線的容器，如此即會在容器中有所變更時觸發 Azure 函式。 由於 Azure Functions 會在幕後使用變更摘要處理器，因此，其會自動跨容器的[分割區](partition-data.md)平行處理變更。
+如果您剛開始使用變更摘要，Azure Functions 就是最簡單的選項。 因其簡潔性之故，其也是大多數變更摘要使用案例的建議選項。 當您建立適用於 Azure Cosmos DB 的 Azure Functions 觸發程序時，您會選取要連線的容器，如此即會在容器中有所變更時觸發 Azure 函式。 由於 Azure Functions 會在幕後使用變更摘要處理器，因此，其會自動跨容器的[分割區](partitioning-overview.md)平行處理變更。
 
 使用 Azure Functions 進行開發是一種簡單的體驗，而且可能為比自行部署變更摘要處理器更快。 您可以使用 Azure Functions 入口網站來建立觸發程序，或使用 SDK 以程式設計方式來建立。 Visual Studio 和 VS Code 提供撰寫 Azure Functions 的支援，您甚至可以使用 Azure Functions CLI 進行跨平台開發。 您可以在電腦上撰寫和偵錯程式碼，然後只需按一下即可部署該功能。 若要深入了解，請參閱[使用 Azure Functions 的無伺服器資料庫計算](serverless-computing-database.md)和[搭配使用變更摘要與 Azure Functions](change-feed-functions.md) 文章。
 

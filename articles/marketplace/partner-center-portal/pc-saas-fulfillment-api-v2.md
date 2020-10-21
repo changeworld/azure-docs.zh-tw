@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6c890e9fbda316bfa7f5f3a42572f35ca73811ea
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931796"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275540"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商業 marketplace 中的 SaaS 履行 Api 第2版
 
@@ -151,7 +151,7 @@ Microsoft 會為客戶提供30天的寬限期，然後再自動取消訂用帳�
 
 SaaS 訂用帳戶可在其生命週期中的任何時間點取消。 一旦取消，就無法重新啟用訂用帳戶。
 
-## <a name="api-reference"></a>API 參考資料
+## <a name="api-reference"></a>應用程式開發介面參考
 
 本節記載 SaaS 訂用帳戶和作業 Api。
 
@@ -953,11 +953,11 @@ Response body:
 
 若要開始開發程式，建議您在發行者端建立虛擬 API 回應。  這些回應可以根據本檔中提供的範例回應。
 
-當發行者準備好進行端對端測試時： 
+當發行者準備好進行端對端測試時：
 
 * 將 SaaS 供應專案發佈至受限的預覽物件，並將其保留在預覽階段。
-* 這份供應專案應該具有0價格的方案，因此不會在測試時觸發實際的計費費用。  另一個選項是設定非零的價格，並在24小時內取消所有測試購買。 
-* 請確定所有流程都會以端對端方式叫用，就像客戶會購買供應專案一樣。 
+* 這份供應專案應該具有0價格的方案，因此不會在測試時觸發實際的計費費用。  另一個選項是設定非零的價格，並在24小時內取消所有測試購買。
+* 請確定所有流程都會以端對端方式叫用，就像客戶會購買供應專案一樣。
 * 如果夥伴想要測試完整的購買和計費流程，請使用價格高於 $0 的供應專案。  購買將會計費，而且會產生發票。
 
 您可以根據供應專案發佈的位置，從 Azure 入口網站或 Microsoft AppSource 的網站觸發購買流程。
@@ -966,8 +966,7 @@ Response body:
 
 ## <a name="get-support"></a>取得支援
 
-如需發行者支援選項，請參閱 [合作夥伴中心中的商業 marketplace 方案支援](support.md) 。
-
+如需發行者支援選項，請參閱 [合作夥伴中心中的商業 marketplace 方案支援](../support.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 

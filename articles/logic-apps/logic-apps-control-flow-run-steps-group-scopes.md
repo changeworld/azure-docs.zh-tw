@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575005"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314850"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure Logic Apps 中，根據群組狀態使用範圍執行動作
 
@@ -31,7 +31,7 @@ ms.locfileid: "91575005"
 
 * 電子郵件帳戶 (來自任何 Logic Apps 所支援的電子郵件提供者)。 此範例使用 Outlook.com。 如果您使用不同的提供者，一般流程維持不變，但您的 UI 會有所不同。
 
-* Bing 地圖金鑰。 若要取得此金鑰，請參閱<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">取得 Bing 地圖金鑰</a>。
+* Bing 地圖金鑰。 若要取得此金鑰，請參閱<a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">取得 Bing 地圖金鑰</a>。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 

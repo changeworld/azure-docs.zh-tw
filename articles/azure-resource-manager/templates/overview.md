@@ -3,12 +3,12 @@ title: 範本概觀
 description: 說明使用 Azure Resource Manager 範本來部署資源的優點。
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119356"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280048"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -54,7 +54,7 @@ ms.locfileid: "86119356"
 
 * 可匯出的程式**代碼**：您可以藉由匯出資源群組的目前狀態，或查看用於特定部署的範本，來取得現有資源群組的範本。 查看 [匯出的範本](export-template-portal.md) 是瞭解範本語法的實用方法。
 
-* **撰寫工具**：您可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和範本工具延伸模組來撰寫範本。 您可以取得 intellisense、語法反白顯示、內嵌說明，以及許多其他語言函數。 除了 Visual Studio 程式碼之外，您也可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
+* **撰寫工具**：您可以使用 [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) 和範本工具延伸模組來撰寫範本。 您可以取得 intellisense、語法反白顯示、內嵌說明，以及許多其他語言函數。 除了 Visual Studio Code 之外，您也可以使用 [Visual Studio](create-visual-studio-deployment-project.md)。
 
 ## <a name="template-file"></a>範本檔案
 

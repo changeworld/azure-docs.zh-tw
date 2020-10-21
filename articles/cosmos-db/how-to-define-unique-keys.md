@@ -1,18 +1,18 @@
 ---
 title: 定義 Azure Cosmos 容器的唯一索引鍵
-description: 瞭解如何使用 Azure 入口網站、PowerShell、.Net、JAVA 和各種其他 Sdk 來定義 Azure Cosmos 容器的唯一索引鍵。
+description: 瞭解如何使用 Azure 入口網站、PowerShell、.NET、JAVA 和各種其他 Sdk 來定義 Azure Cosmos 容器的唯一索引鍵。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: b275703e0f5952be9ab052a789b64d2ea171922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 968ae8e582587564f1e268f16c18cf6d562d4333
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330531"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279552"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>定義 Azure Cosmos 容器的唯一索引鍵
 
@@ -151,5 +151,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [分割](partition-data.md)
+- 深入瞭解 [分割](partitioning-overview.md)
 - 探索[如何為工作編製索引](index-overview.md)

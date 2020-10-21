@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136034"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278409"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料模型
 
@@ -440,6 +440,6 @@ Review documents:
 
 若要深入了解 Azure Cosmos DB，請參閱服務的[文件 (英文)](https://azure.microsoft.com/documentation/services/cosmos-db/)頁面。
 
-若要了解如何跨多個分割將您的資料分區，請參閱[在 Azure Cosmos DB 中分割資料](sql-api-partition-data.md)。
+若要了解如何跨多個分割將您的資料分區，請參閱[在 Azure Cosmos DB 中分割資料](partitioning-overview.md)。
 
 若要瞭解如何使用真實世界範例來建立 Azure Cosmos DB 的資料模型和資料分割，請參閱 [ 資料模型化和資料分割-Real-World 範例](how-to-model-partition-example.md)。

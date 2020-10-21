@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63663d228052934616a59f5d84ff16a6510e46c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361761"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282084"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>瞭解 NoSQL 與關係資料庫之間的差異
 
@@ -95,8 +95,8 @@ NoSQL 檔資料庫中的最佳作法是在「產品檔」中直接反正規化�
 * [如何管理 Azure Cosmos 帳戶](how-to-manage-database-account.md)
 * [全球發佈](distribute-data-globally.md)
 * [一致性層級](consistency-levels.md)
-* [使用 Azure Cosmos 容器和項目](databases-containers-items.md)
-* [Azure Cosmos 帳戶的 VNET 服務端點](vnet-service-endpoint.md)
-* [Azure Cosmos 帳戶的 IP 防火牆](firewall-support.md)
+* [使用 Azure Cosmos 容器和項目](account-databases-containers-items.md)
+* [Azure Cosmos 帳戶的 VNET 服務端點](how-to-configure-vnet-service-endpoint.md)
+* [Azure Cosmos 帳戶的 IP 防火牆](how-to-configure-firewall.md)
 * [如何在 Azure Cosmos 帳戶中新增和移除 Azure 區域](how-to-manage-database-account.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

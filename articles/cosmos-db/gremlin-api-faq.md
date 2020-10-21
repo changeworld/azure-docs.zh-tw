@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82614495"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281551"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中 Gremlin API 的相關常見問題
 
@@ -99,7 +99,7 @@ RU 計費是根據周遊的運作資料庫計算，並不是根據結果集計�
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>圖形資料庫在 Azure Cosmos DB Gremlin API 中可擁有的最大規模為何？
 
-Azure Cosmos DB 使用[水平資料分割](partition-data.md)，自動處理儲存體和輸送量需要增加的問題。 工作負載的輸送量和儲存體容量上限取決於與指定容器相關聯的分割區數目。 不過，Gremlin API 容器有一組特定的指導方針，可確保大規模的適當效能體驗。 如需有關分割的詳細資訊及最佳做法，請參閱[在 Azure Cosmos DB 中進行資料分割](partition-data.md)一文。
+Azure Cosmos DB 使用[水平資料分割](partitioning-overview.md)，自動處理儲存體和輸送量需要增加的問題。 工作負載的輸送量和儲存體容量上限取決於與指定容器相關聯的分割區數目。 不過，Gremlin API 容器有一組特定的指導方針，可確保大規模的適當效能體驗。 如需有關分割的詳細資訊及最佳做法，請參閱[在 Azure Cosmos DB 中進行資料分割](partitioning-overview.md)一文。
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>若是使用 C#/.NET 開發，應該使用 Microsoft.Azure.Graphs 套件或 Gremlin.NET？
 
@@ -144,7 +144,7 @@ Gremlin 連線是透過 WebSocket 連線而產生的。 雖然 WebSocket 連線�
 
 Azure Cosmos DB Gremlin API 尚未支援 Fluent API 呼叫。 Fluent API 呼叫需要稱為位元組程式碼支援的內部格式化功能，目前 Azure Cosmos DB Gremlin API 不支援此功能。 由於相同的原因，最新的 Gremlin-JavaScript 驅動程式目前也不受支援。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Cosmos DB Gremlin 線路通訊協定支援](gremlin-support.md)
 * 使用[Gremlin 主控台](create-graph-gremlin-console.md)建立、查詢 Azure Cosmos DB 圖形資料庫並進行查詢
